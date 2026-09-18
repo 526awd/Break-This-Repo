@@ -1,0 +1,588 @@
+//  Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::atomic::AtomicUsize;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::time::Duration;
+
+use cheetah_string::CheetahString;
+use parking_lot::Mutex;
+use rocketmq_auth::AuthConfig;
+use rocketmq_auth::AuthRuntimeBuilder;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::body::supervised_mutation::{
+    ExpectedMessageRequestMode, ExpectedState, GetMessageRequestModeRequestBody, SetMessageRequestModeCasRequestBody,
+    SupervisedMessageRequestMode, SupervisedSubscriptionGroupConfig, SupervisedSubscriptionGroupConfigCasRequestBody,
+    SupervisedTopicConfig, SupervisedTopicConfigCasRequestBody,
+};
+use rocketmq_runtime::RuntimeConfig;
+use rocketmq_runtime::RuntimeContext;
+use rocketmq_runtime::RuntimeOwner;
+use rocketmq_security_api::AuthenticatedRequestContext;
+use rocketmq_security_api::AuthorizationDecision;
+use rocketmq_security_api::Principal;
+use rocketmq_security_api::RequestPolicy;
+use rocketmq_transport::api::AdmissionController;
+use rocketmq_transport::api::AdmissionLimits;
+use rocketmq_transport::api::AuthorizedCommandDispatcher;
+use rocketmq_transport::api::EmbeddedDispatchOutcome;
+use rocketmq_transport::api::RPCHook;
+use rocketmq_transport::api::RejectRequestDecision;
+use rocketmq_transport::api::RemotingResponse;
+use rocketmq_transport::api::ResponseObservation;
+use rocketmq_transport::api::TransportSecurity;
+use rocketmq_transport::test_support::EmbeddedRequestHarness;
+
+use super::*;
+use crate::config::broker_config::BrokerConfig;
+use crate::latency::broker_fast_failure::FastFailureQueueKind;
+
+const ROUTED_CODE: i32 = 91_501;
+const MUTATED_CODE: i32 = 91_502;
+type ObservedRequest = (i32, i32, i32, i32);
+
+#[derive(Clone)]
+struct ProbeProcessor {
+    calls: Arc<AtomicUsize>,
+    seen: Arc<Mutex<Vec<ObservedRequest>>>,
+    observations: Arc<Mutex<Vec<i32>>>,
+    reject: bool,
+}
+
+impl ProbeProcessor {
+    fn new(reject: bool) -> Self {
+        Self {
+            calls: Arc::new(AtomicUsize::new(0)),
+            seen: Arc::new(Mutex::new(Vec::new())),
+            observations: Arc::new(Mutex::new(Vec::new())),
+            reject,
+        }
+    }
+}
+
+impl RequestProcessor for ProbeProcessor {
+    async fn process(&mut self, request: &mut RemotingRequest) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        self.calls.fetch_add(1, Ordering::SeqCst);
+        self.seen.lock().push((
+            request.original_identity().original_code(),
+            request.command().code(),
+            request.original_identity().original_opaque(),
+            request.command().opaque(),
+        ));
+        request.command_mut().add_ext_field("broker-probe", "mutated");
+        let response = RemotingCommand::create_response_command_with_code(ResponseCode::Success)
+            .set_opaque(request.original_identity().original_opaque());
+        Ok(HandlerOutcome::Reply(
+            RemotingResponse::command(response).expect("probe remoting response"),
+        ))
+    }
+
+    fn reject_request(&self, _code: i32) -> RejectRequestDecision {
+        if !self.reject {
+            return RejectRequestDecision::Proceed;
+        }
+        RejectRequestDecision::Reject(
+            RemotingResponse::command(RemotingCommand::create_response_command_with_code(
+                ResponseCode::SystemBusy,
+            ))
+            .expect("probe rejection plan"),
+        )
+    }
+
+    fn observe_response(&self, observation: ResponseObservation) {
+        self.observations.lock().push(observation.metadata().original_code());
+    }
+}
+
+#[derive(Clone)]
+struct PreMutatingRouter {
+    inner: BrokerRequestProcessor<ProbeProcessor>,
+}
+
+impl RequestProcessor for PreMutatingRouter {
+    async fn process(&mut self, request: &mut RemotingRequest) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        request.command_mut().set_code_mut(MUTATED_CODE);
+        request.command_mut().set_opaque_mut(77_777);
+        RequestProcessor::process(&mut self.inner, request).await
+    }
+
+    fn reject_request(&self, code: i32) -> RejectRequestDecision {
+        RequestProcessor::reject_request(&self.inner, code)
+    }
+
+    fn request_ordering(&self, request: IngressRequestView<'_>) -> RequestOrdering {
+        RequestProcessor::request_ordering(&self.inner, request)
+    }
+
+    fn observe_response(&self, observation: ResponseObservation) {
+        RequestProcessor::observe_response(&self.inner, observation);
+    }
+}
+
+#[derive(Clone)]
+struct OrderingProbeRouter {
+    inner: PreMutatingRouter,
+    observed: Arc<Mutex<Vec<RequestOrdering>>>,
+}
+
+impl RequestProcessor for OrderingProbeRouter {
+    async fn process(&mut self, request: &mut RemotingRequest) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        RequestProcessor::process(&mut self.inner, request).await
+    }
+
+    fn reject_request(&self, code: i32) -> RejectRequestDecision {
+        RequestProcessor::reject_request(&self.inner, code)
+    }
+
+    fn request_ordering(&self, ingress: IngressRequestView<'_>) -> RequestOrdering {
+        let ordering = RequestProcessor::request_ordering(&self.inner, ingress);
+        self.observed.lock().push(ordering);
+        ordering
+    }
+
+    fn observe_response(&self, observation: ResponseObservation) {
+        RequestProcessor::observe_response(&self.inner, observation);
+    }
+}
+
+struct AllowEmbeddedPolicy;
+
+impl RequestPolicy for AllowEmbeddedPolicy {
+    fn evaluate_authenticated(&self, _context: AuthenticatedRequestContext<'_>) -> AuthorizationDecision {
+        AuthorizationDecision::Allow
+    }
+}
+
+struct RouterFixture<P> {
+    owner: RuntimeOwner,
+    harness: EmbeddedRequestHarness<P>,
+}
+
+impl<P> RouterFixture<P>
+where
+    P: RequestProcessor + Clone + Sync + 'static,
+{
+    fn new(router: P, hooks: Vec<Arc<dyn RPCHook>>) -> Self {
+        let owner = RuntimeOwner::plan(RuntimeConfig::server_default("broker-router-test"))
+            .expect("test runtime configuration is valid")
+            .build()
+            .expect("Broker router test runtime");
+        let request_context = owner.root_context().component("broker-router-request");
+        let dispatcher = Arc::new(AuthorizedCommandDispatcher::new(
+            router,
+            hooks,
+            Arc::new(TransportSecurity::secure_enforced(
+                Some(Arc::new(AllowEmbeddedPolicy)),
+                None,
+            )),
+            Arc::new(AdmissionController::new(AdmissionLimits::default())),
+        ));
+        let harness = EmbeddedRequestHarness::new(
+            dispatcher,
+            request_context.task_group().clone(),
+            Principal::new("broker-router-test"),
+        );
+        Self { owner, harness }
+    }
+
+    async fn finish(self) {
+        drop(self.harness);
+        assert!(self.owner.shutdown_tasks().await.is_healthy());
+        assert!(self.owner.shutdown_background().is_healthy());
+    }
+}
+
+#[tokio::test]
+async fn router_selects_by_immutable_original_code_and_forwards_mutable_command() {
+    const ORIGINAL_OPAQUE: i32 = 43;
+    let probe = ProbeProcessor::new(false);
+    let seen = Arc::clone(&probe.seen);
+    let observations = Arc::clone(&probe.observations);
+    let mut router = BrokerRequestProcessor::new();
+    router.set_auth_disabled_by_validated_config();
+    router.register_processor(ROUTED_CODE, probe);
+    let fixture = RouterFixture::new(PreMutatingRouter { inner: router }, Vec::new());
+
+    let outcome = fixture
+        .harness
+        .dispatch(
+            None,
+            RemotingCommand::create_remoting_command(ROUTED_CODE).set_opaque(ORIGINAL_OPAQUE),
+        )
+        .await
+        .expect("formal aggregate dispatch");
+    let EmbeddedDispatchOutcome::Reply(plan) = outcome else {
+        panic!("formal aggregate must produce one reply");
+    };
+
+    assert_eq!(plan.response_code(), ResponseCode::Success as i32);
+    assert_eq!(
+        seen.lock().as_slice(),
+        &[(ROUTED_CODE, MUTATED_CODE, ORIGINAL_OPAQUE, 77_777)]
+    );
+    assert_eq!(observations.lock().as_slice(), &[ROUTED_CODE]);
+    fixture.finish().await;
+}
+
+#[tokio::test]
+async fn router_computes_ordering_before_command_mutation() {
+    let probe = ProbeProcessor::new(false);
+    let seen = Arc::clone(&probe.seen);
+    let mut router = BrokerRequestProcessor::new();
+    router.set_auth_disabled_by_validated_config();
+    router.register_processor(RequestCode::SendMessage as i32, probe.clone());
+    router.register_processor(RequestCode::QueryMessage as i32, probe.clone());
+    router.register_maintenance_processor(RequestCode::MaintenanceGetCapabilities as i32, probe);
+    let observed = Arc::new(Mutex::new(Vec::new()));
+    let fixture = RouterFixture::new(
+        OrderingProbeRouter {
+            inner: PreMutatingRouter { inner: router },
+            observed: Arc::clone(&observed),
+        },
+        Vec::new(),
+    );
+
+    let mut ordered = RemotingCommand::create_remoting_command(RequestCode::SendMessage).set_opaque(61);
+    ordered.add_ext_field("producerGroup", "producer-a");
+    ordered.add_ext_field("topic", "topic-a");
+    ordered.add_ext_field("queueId", "3");
+    let concurrent = RemotingCommand::create_remoting_command(RequestCode::QueryMessage).set_opaque(62);
+    let maintenance = RemotingCommand::create_remoting_command(RequestCode::MaintenanceGetCapabilities).set_opaque(63);
+    let commands = [ordered, concurrent, maintenance];
+    let expected = commands
+        .iter()
+        .map(request_ordering::broker_command_ordering)
+        .collect::<Vec<_>>();
+
+    for command in commands {
+        let outcome = fixture
+            .harness
+            .dispatch(None, command)
+            .await
+            .expect("formal ordering dispatch");
+        assert!(matches!(outcome, EmbeddedDispatchOutcome::Reply(_)));
+    }
+
+    assert_eq!(observed.lock().as_slice(), expected.as_slice());
+    assert!(matches!(expected[0], RequestOrdering::Ordered(_)));
+    assert_eq!(expected[1], RequestOrdering::Concurrent);
+    assert_eq!(expected[2], RequestOrdering::Concurrent);
+    assert_eq!(
+        seen.lock()
+            .iter()
+            .map(|(original_code, mutable_code, _, _)| (*original_code, *mutable_code))
+            .collect::<Vec<_>>(),
+        vec![
+            (RequestCode::SendMessage as i32, MUTATED_CODE),
+            (RequestCode::QueryMessage as i32, MUTATED_CODE),
+            (RequestCode::MaintenanceGetCapabilities as i32, MUTATED_CODE),
+        ]
+    );
+    fixture.finish().await;
+}
+
+#[test]
+fn router_delegates_typed_rejection_and_rejects_unknown_codes() {
+    let mut router = BrokerRequestProcessor::new();
+    router.register_processor(ROUTED_CODE, ProbeProcessor::new(true));
+
+    let RejectRequestDecision::Reject(route_plan) = router.reject_request(ROUTED_CODE) else {
+        panic!("registered leaf rejection must remain affine");
+    };
+    assert_eq!(route_plan.response_code(), ResponseCode::SystemBusy as i32);
+
+    let RejectRequestDecision::Reject(unknown_plan) = router.reject_request(ROUTED_CODE + 1) else {
+        panic!("unknown Broker code must fail before execution");
+    };
+    assert_eq!(
+        unknown_plan.response_code(),
+        ResponseCode::RequestCodeNotSupported as i32
+    );
+}
+
+#[test]
+fn malformed_chosen_rejection_fails_closed_with_an_owned_fallback() {
+    let malformed = RemotingCommand::create_remoting_command(ROUTED_CODE).mark_oneway_rpc();
+
+    let RejectRequestDecision::Reject(plan) = response_rejection(malformed, "malformed test rejection") else {
+        panic!("malformed rejection must not proceed into processor execution");
+    };
+    assert_eq!(plan.response_code(), ResponseCode::SystemBusy as i32);
+    assert_eq!(plan.body_kind(), rocketmq_transport::api::ResponseBodyKind::Empty);
+}
+
+#[tokio::test]
+async fn unconfigured_auth_fails_closed_before_leaf_dispatch() {
+    let probe = ProbeProcessor::new(false);
+    let calls = Arc::clone(&probe.calls);
+    let mut router = BrokerRequestProcessor::new();
+    router.register_processor(ROUTED_CODE, probe);
+    assert!(!router.is_auth_configured());
+    let fixture = RouterFixture::new(router, Vec::new());
+
+    let outcome = fixture
+        .harness
+        .dispatch(None, RemotingCommand::create_remoting_command(ROUTED_CODE))
+        .await
+        .expect("unconfigured auth must produce an owned denial");
+    let EmbeddedDispatchOutcome::Reply(plan) = outcome else {
+        panic!("unconfigured auth must return one denial reply");
+    };
+    assert_eq!(plan.response_code(), ResponseCode::NoPermission as i32);
+    assert_eq!(calls.load(Ordering::SeqCst), 0);
+    fixture.finish().await;
+}
+
+#[tokio::test]
+async fn broker_auth_uses_original_code_after_a_before_hook_mutates_the_command() {
+    let runtime_context = RuntimeContext::from_current("broker-original-auth-code-test");
+    let auth_runtime = Arc::new(
+        AuthRuntimeBuilder::new(
+            AuthConfig {
+                authentication_enabled: true,
+                authentication_whitelist: CheetahString::from(MUTATED_CODE.to_string()),
+                ..AuthConfig::default()
+            },
+            runtime_context.service_context("broker.original-auth-code"),
+        )
+        .build()
+        .await
+        .expect("test auth runtime should initialize"),
+    );
+    let probe = ProbeProcessor::new(false);
+    let calls = Arc::clone(&probe.calls);
+    let mut router = BrokerRequestProcessor::new();
+    router.register_processor(ROUTED_CODE, probe);
+    router.set_auth_runtime(Arc::clone(&auth_runtime));
+    let fixture = RouterFixture::new(PreMutatingRouter { inner: router }, Vec::new());
+
+    let outcome = fixture
+        .harness
+        .dispatch(None, RemotingCommand::create_remoting_command(ROUTED_CODE))
+        .await
+        .expect("Broker auth denial should remain an owned response");
+    let EmbeddedDispatchOutcome::Reply(plan) = outcome else {
+        panic!("Broker auth denial must return one reply");
+    };
+    assert_eq!(plan.response_code(), ResponseCode::NoPermission as i32);
+    assert_eq!(calls.load(Ordering::SeqCst), 0);
+
+    fixture.finish().await;
+    auth_runtime
+        .shutdown()
+        .await
+        .expect("test auth runtime should shut down");
+}
+
+fn supervised_auth_command(code: RequestCode) -> RemotingCommand {
+    let mut command = RemotingCommand::create_remoting_command(code);
+    command.add_ext_field("AccessKey", "operator");
+    match code {
+        RequestCode::UpdateTopicConfigStateCas => {
+            command.add_ext_field("topic", "TopicA");
+            command.set_body(
+                serde_json::to_vec(&SupervisedTopicConfigCasRequestBody {
+                    expected_state: ExpectedState::Absent,
+                    replacement: SupervisedTopicConfig {
+                        read_queue_nums: 4,
+                        write_queue_nums: 4,
+                        perm: 6,
+                        order: false,
+                        message_type: "NORMAL".to_owned(),
+                    },
+                })
+                .expect("Topic body"),
+            )
+        }
+        RequestCode::UpdateSubscriptionGroupConfigStateCas => {
+            command.add_ext_field("group", "GroupA");
+            command.set_body(
+                serde_json::to_vec(&SupervisedSubscriptionGroupConfigCasRequestBody {
+                    expected_state: ExpectedState::Absent,
+                    replacement: SupervisedSubscriptionGroupConfig {
+                        consume_enable: true,
+                        consume_from_min_enable: true,
+                        consume_broadcast_enable: true,
+                        consume_message_orderly: false,
+                        retry_queue_nums: 1,
+                        retry_max_times: 16,
+                        broker_id: 0,
+                        which_broker_when_consume_slowly: 1,
+                        notify_consumer_ids_changed_enable: true,
+                        group_sys_flag: 0,
+                        consume_timeout_minute: 15,
+                    },
+                })
+                .expect("group body"),
+            )
+        }
+        RequestCode::UpdateConsumerOffsetConditional => {
+            command.add_ext_field("consumerGroup", "GroupA");
+            command.add_ext_field("topic", "TopicA");
+            command.add_ext_field("queueId", "0");
+            command.add_ext_field("expectedOffset", "9");
+            command.add_ext_field("newOffset", "4");
+            command
+        }
+        RequestCode::GetBrokerMutationConfig => command,
+        RequestCode::GetMessageRequestMode => command.set_body(
+            serde_json::to_vec(&GetMessageRequestModeRequestBody {
+                topic: "TopicA".to_owned(),
+                consumer_group: "GroupA".to_owned(),
+            })
+            .expect("request-mode query body"),
+        ),
+        RequestCode::SetMessageRequestModeCas => command.set_body(
+            serde_json::to_vec(&SetMessageRequestModeCasRequestBody {
+                topic: "TopicA".to_owned(),
+                consumer_group: "GroupA".to_owned(),
+                expected_state: ExpectedMessageRequestMode::Absent,
+                replacement: SupervisedMessageRequestMode {
+                    mode: "POP".to_owned(),
+                    pop_share_queue_num: 4,
+                },
+            })
+            .expect("request-mode mutation body"),
+        ),
+        other => panic!("unsupported supervised auth test code: {other:?}"),
+    }
+}
+
+#[tokio::test]
+async fn real_authorization_provider_denies_all_six_supervised_codes_before_leaf_dispatch() {
+    let runtime_context = RuntimeContext::from_current("broker-supervised-provider-denial-test");
+    let auth_runtime = Arc::new(
+        AuthRuntimeBuilder::new(
+            AuthConfig {
+                cluster_name: CheetahString::from_static_str("DefaultCluster"),
+                authorization_enabled: true,
+                ..AuthConfig::default()
+            },
+            runtime_context.service_context("broker.supervised-provider-denial"),
+        )
+        .build()
+        .await
+        .expect("test auth runtime should initialize"),
+    );
+    let probe = ProbeProcessor::new(false);
+    let calls = Arc::clone(&probe.calls);
+    let mut router = BrokerRequestProcessor::new();
+    for code in [
+        RequestCode::UpdateTopicConfigStateCas,
+        RequestCode::UpdateSubscriptionGroupConfigStateCas,
+        RequestCode::UpdateConsumerOffsetConditional,
+        RequestCode::GetBrokerMutationConfig,
+        RequestCode::GetMessageRequestMode,
+        RequestCode::SetMessageRequestModeCas,
+    ] {
+        router.register_processor(code.to_i32(), probe.clone());
+    }
+    router.set_auth_runtime(Arc::clone(&auth_runtime));
+    let fixture = RouterFixture::new(router, Vec::new());
+
+    for code in [
+        RequestCode::UpdateTopicConfigStateCas,
+        RequestCode::UpdateSubscriptionGroupConfigStateCas,
+        RequestCode::UpdateConsumerOffsetConditional,
+        RequestCode::GetBrokerMutationConfig,
+        RequestCode::GetMessageRequestMode,
+        RequestCode::SetMessageRequestModeCas,
+    ] {
+        let outcome = fixture
+            .harness
+            .dispatch(None, supervised_auth_command(code))
+            .await
+            .expect("authorization denial should be an owned reply");
+        let EmbeddedDispatchOutcome::Reply(plan) = outcome else {
+            panic!("authorization denial must reply");
+        };
+        assert_eq!(plan.response_code(), ResponseCode::NoPermission as i32);
+    }
+    assert_eq!(calls.load(Ordering::SeqCst), 0);
+    assert!(auth_runtime.metrics_snapshot().authorization_failures >= 6);
+
+    fixture.finish().await;
+    auth_runtime.shutdown().await.expect("auth runtime should shut down");
+    runtime_context
+        .shutdown_tasks(Duration::from_secs(5))
+        .await
+        .assert_no_task_leak()
+        .expect("auth runtime context should drain");
+}
+
+fn fast_failure(max_count: usize) -> BrokerFastFailure {
+    BrokerFastFailure::new(Arc::new(BrokerConfig {
+        broker_fast_failure_enable: true,
+        broker_fast_failure_pending_max_count: max_count,
+        broker_fast_failure_pending_max_bytes: 64 * 1024,
+        wait_time_mills_in_send_queue: 60_000,
+        ..BrokerConfig::default()
+    }))
+}
+
+#[tokio::test]
+async fn router_fast_failure_keeps_response_affine_and_releases_run_resources() {
+    let service = fast_failure(1);
+    let probe = ProbeProcessor::new(false);
+    let calls = Arc::clone(&probe.calls);
+    let mut router = BrokerRequestProcessor::new();
+    router.set_auth_disabled_by_validated_config();
+    router.register_processor(RequestCode::SendMessage as i32, probe);
+    router.set_broker_fast_failure(service.clone());
+    let fixture = RouterFixture::new(router, Vec::new());
+
+    let first = fixture
+        .harness
+        .dispatch(
+            None,
+            RemotingCommand::create_remoting_command(RequestCode::SendMessage).set_opaque(51),
+        )
+        .await
+        .expect("admitted fast-failure dispatch");
+    let EmbeddedDispatchOutcome::Reply(first) = first else {
+        panic!("admitted route must reply");
+    };
+    assert_eq!(first.response_code(), ResponseCode::Success as i32);
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+    assert!(service.pending_count_snapshot().iter().all(|(_, count)| *count == 0));
+
+    let held = fast_failure_dispatch::try_admit(
+        &service,
+        FastFailureQueueKind::Send,
+        fast_failure_dispatch::FastFailureRequestMetadata::from_command(
+            &RemotingCommand::create_remoting_command(RequestCode::SendMessage).set_opaque(52),
+        ),
+    )
+    .expect("fill the single pending fast-failure budget");
+    let rejected = fixture
+        .harness
+        .dispatch(
+            None,
+            RemotingCommand::create_remoting_command(RequestCode::SendMessage).set_opaque(53),
+        )
+        .await
+        .expect("budget rejection remains a typed reply");
+    let EmbeddedDispatchOutcome::Reply(rejected) = rejected else {
+        panic!("budget rejection must own one remoting response");
+    };
+    assert_eq!(rejected.response_code(), ResponseCode::SystemBusy as i32);
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+    drop(held);
+    let budget = service.pending_budget_snapshot();
+    assert_eq!(budget.current_count, 0);
+    assert_eq!(budget.current_bytes, 0);
+
+    fixture.finish().await;
+}

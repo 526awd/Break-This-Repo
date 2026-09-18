@@ -1,0 +1,46 @@
+[package]
+name = "dora-node-api-cxx"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+documentation.workspace = true
+readme = "README.md"
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["staticlib"]
+
+[features]
+default = ["tracing"]
+tracing = ["dora-node-api/tracing"]
+ros2-bridge = [
+    "dep:dora-ros2-bridge",
+    "dep:dora-ros2-bridge-msg-gen",
+    "dep:serde-big-array",
+    "rmw-zenoh",
+]
+rmw-zenoh = ["dora-ros2-bridge/rmw-zenoh"]
+
+[dependencies]
+cxx = "1.0.194"
+dora-node-api = { workspace = true , features = ["arrow-v59"] }
+eyre = { workspace = true }
+dora-ros2-bridge = { workspace = true, optional = true }
+futures-lite = { version = "2.6" }
+futures-timer = "3.0.4"
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde-big-array = { version = "0.5.1", optional = true }
+arrow = { workspace = true, features = ["ffi"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[build-dependencies]
+cxx-build = "1.0.194"
+# ROS2 message formatting goes through `dora_ros2_bridge_msg_gen::format_token_stream`
+# (prettyplease + syn 2, verbatim-enabled), so this crate no longer needs its own
+# `rust-format` / `prettyplease` build-dependency. See dora-rs/dora#2452.
+dora-ros2-bridge-msg-gen = { workspace = true, optional = true }

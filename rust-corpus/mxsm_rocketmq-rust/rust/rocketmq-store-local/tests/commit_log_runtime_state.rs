@@ -1,0 +1,172 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+
+use rocketmq_store_api::StoreComponent;
+use rocketmq_store_api::StoreOperation;
+use rocketmq_store_local::base::memory_lock_manager::MemoryLockCategory;
+use rocketmq_store_local::commit_log::load::LoadStatistics;
+use rocketmq_store_local::commit_log::memory_lock::CommitLogMemoryLockTarget;
+use rocketmq_store_local::commit_log::runtime_state::CommitLogActiveMemoryLock;
+use rocketmq_store_local::commit_log::runtime_state::CommitLogPutMessageLockStats;
+use rocketmq_store_local::commit_log::runtime_state::CommitLogRuntimeState;
+use rocketmq_store_local::StoreResult;
+
+fn test_handle(
+    state: &CommitLogActiveMemoryLock,
+    category: MemoryLockCategory,
+) -> rocketmq_store_local::base::memory_lock_manager::MemoryLockHandle {
+    state
+        .manager()
+        .lock_region_with(category, vec![0u8; 1], |_| Ok::<_, rocketmq_store_api::StoreError>(()))
+        .expect("test lock")
+        .expect("non-empty test handle")
+}
+
+#[test]
+fn put_message_lock_stats_accumulate_totals_and_maxima() {
+    let stats = CommitLogPutMessageLockStats::default();
+    stats.record(7, 11);
+    stats.record(13, 5);
+
+    let snapshot = stats.snapshot();
+    assert_eq!(snapshot.acquire_total, 2);
+    assert_eq!(snapshot.wait_total_millis, 20);
+    assert_eq!(snapshot.wait_max_millis, 13);
+    assert_eq!(snapshot.hold_total_millis, 16);
+    assert_eq!(snapshot.hold_max_millis, 11);
+}
+
+#[test]
+fn active_window_reuses_only_offsets_inside_the_current_region() {
+    let mut state = CommitLogActiveMemoryLock::new(true, 1024);
+    let target = CommitLogMemoryLockTarget {
+        category: MemoryLockCategory::CommitLogActiveWindow,
+        offset: 16,
+        len: 32,
+    };
+    state.set_current(
+        100,
+        target,
+        test_handle(&state, MemoryLockCategory::CommitLogActiveWindow),
+    );
+
+    assert!(state.is_current(100, target));
+    assert!(state.is_current(100, CommitLogMemoryLockTarget { offset: 47, ..target }));
+    assert!(!state.is_current(100, CommitLogMemoryLockTarget { offset: 48, ..target }));
+    assert!(!state.is_current(101, target));
+}
+
+#[test]
+fn active_file_requires_exact_region_and_successful_unlock_removes_identity() -> StoreResult<()> {
+    let mut state = CommitLogActiveMemoryLock::new(true, 1024);
+    let target = CommitLogMemoryLockTarget {
+        category: MemoryLockCategory::CommitLogActiveFile,
+        offset: 0,
+        len: 64,
+    };
+    state.set_current(
+        200,
+        target,
+        test_handle(&state, MemoryLockCategory::CommitLogActiveFile),
+    );
+
+    assert!(state.is_current(200, target));
+    assert!(!state.is_current(200, CommitLogMemoryLockTarget { len: 63, ..target }));
+    assert!(state.unlock_current_with(|manager, handle| { manager.unlock_region_with(handle, |_| Ok(())) })?);
+    assert!(!state.is_current(200, target));
+    assert!(!state.unlock_current_with(|_, _| panic!("cleared state must not invoke unlocker"))?);
+    Ok(())
+}
+
+#[test]
+fn failed_active_unlock_preserves_identity_for_retry() -> StoreResult<()> {
+    let mut state = CommitLogActiveMemoryLock::new(true, 1024);
+    let target = CommitLogMemoryLockTarget {
+        category: MemoryLockCategory::CommitLogActiveFile,
+        offset: 0,
+        len: 64,
+    };
+    state.set_current(
+        200,
+        target,
+        test_handle(&state, MemoryLockCategory::CommitLogActiveFile),
+    );
+
+    let error = state
+        .unlock_current_with(|manager, handle| {
+            manager.unlock_region_with(handle, |_| {
+                Err(rocketmq_store_api::StoreError::new(
+                    &rocketmq_error::STORAGE_BACKEND_UNAVAILABLE,
+                    StoreOperation::Admin,
+                )
+                .in_component(StoreComponent::MappedFile)
+                .with_detail("retry active unlock"))
+            })
+        })
+        .expect_err("failed unlock must remain observable");
+
+    assert_eq!(error.code(), rocketmq_error::STORAGE_BACKEND_UNAVAILABLE.code());
+    assert!(state.is_current(200, target));
+    assert_eq!(state.manager().locked_bytes(), 1);
+
+    assert!(state.unlock_current_with(|manager, handle| { manager.unlock_region_with(handle, |_| Ok(())) })?);
+    assert!(!state.is_current(200, target));
+    assert_eq!(state.manager().locked_bytes(), 0);
+    Ok(())
+}
+
+#[test]
+fn composite_runtime_state_preserves_initial_values_and_updates() {
+    let state = CommitLogRuntimeState::new(true, 1024);
+    assert_eq!(state.confirm_offset(), -1);
+    assert_eq!(state.put_message_lock_runtime_info().acquire_total, 0);
+    assert_eq!(state.begin_time_in_lock().load(Ordering::Acquire), 0);
+    assert!(!state.active_memory_lock_parts().1.load(Ordering::Acquire));
+    assert_eq!(state.load_statistics().total_files, 0);
+
+    state.set_confirm_offset(41);
+    state.record_put_message_lock(3, 5);
+    state.set_begin_time_in_lock(43);
+    let statistics = LoadStatistics {
+        total_files: 7,
+        total_size_bytes: 11,
+        ..LoadStatistics::default()
+    };
+    state.set_load_statistics(statistics);
+
+    assert_eq!(state.confirm_offset(), 41);
+    assert_eq!(state.put_message_lock_runtime_info().wait_total_millis, 3);
+    assert_eq!(state.put_message_lock_runtime_info().hold_total_millis, 5);
+    assert_eq!(state.begin_time_in_lock().load(Ordering::Acquire), 43);
+    assert_eq!(state.load_statistics().total_files, 7);
+    assert_eq!(state.load_statistics().total_size_bytes, 11);
+
+    state.clear_begin_time_in_lock();
+    assert_eq!(state.begin_time_in_lock().load(Ordering::Acquire), 0);
+}
+
+#[test]
+fn shared_runtime_state_arc_observes_confirm_offset_publication() {
+    let owner = Arc::new(CommitLogRuntimeState::new(true, 1024));
+    let reader = Arc::clone(&owner);
+
+    owner.publish_confirm_offset(128);
+    assert_eq!(reader.confirm_offset(), 128);
+
+    reader.publish_confirm_offset(64);
+    assert_eq!(owner.confirm_offset(), 64);
+}

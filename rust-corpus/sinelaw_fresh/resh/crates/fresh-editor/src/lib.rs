@@ -1,0 +1,76 @@
+#![deny(clippy::let_underscore_must_use)]
+
+// Editor library - exposes all core modules for testing
+
+pub mod i18n;
+
+// The data / presentation-primitives layer lives in `fresh-editor-core` and
+// is re-exported here under its original paths, so `fresh::config`,
+// `fresh::model`, `fresh::primitives` and `fresh::widgets` keep resolving for
+// downstream code, plugins and the integration tests.
+pub use fresh_editor_core::config;
+#[cfg(feature = "runtime")]
+pub use fresh_editor_core::config_io;
+pub use fresh_editor_core::config_keys;
+pub use fresh_editor_core::partial_config;
+pub use fresh_editor_core::types;
+
+#[cfg(feature = "runtime")]
+pub mod init_script;
+pub mod plugin_schemas;
+#[cfg(feature = "runtime")]
+pub mod state;
+#[cfg(feature = "runtime")]
+pub mod workspace;
+
+// Core modules - always available (pure Rust, no platform dependencies)
+// Submodules within primitives that need ratatui/syntect are internally gated
+pub use fresh_editor_core::model;
+pub use fresh_editor_core::primitives;
+
+// Runtime-only modules (heavy dependencies, platform-specific)
+#[cfg(feature = "runtime")]
+pub mod app;
+#[cfg(feature = "runtime")]
+pub mod input;
+#[cfg(feature = "runtime")]
+pub mod services;
+
+// Session persistence (client-server architecture)
+#[cfg(feature = "runtime")]
+pub mod client;
+#[cfg(feature = "runtime")]
+pub mod server;
+
+// Local HTTP bridge serving the real Editor to the web UI frontend (no mocks).
+// Opt-in via the `web` feature (implies `runtime`). `fresh --web` hosts the
+// bridge inside the session daemon (`server`), so browsers and `fresh -a`
+// terminals share one editor; `webui::run` is the standalone, editor-owning
+// host used by the example binary and the parity harness.
+#[cfg(feature = "web")]
+pub mod webui;
+
+// View module - available for runtime, WASM, and dev-bins (schema generation)
+// Most submodules are runtime-only, but theme types are always available
+#[cfg(any(feature = "runtime", feature = "wasm", feature = "dev-bins"))]
+pub mod view;
+
+// Plugin widget runtime — declarative widget tree mounted by plugins
+// via MountWidgetPanel/UpdateWidgetPanel/UnmountWidgetPanel. Pure Rust,
+// no UI dependencies, so always available.
+pub use fresh_editor_core::widgets;
+
+// GUI mode - native window with wgpu rendering
+#[cfg(feature = "gui")]
+pub mod gui;
+
+// WASM-specific modules
+#[cfg(feature = "wasm")]
+pub mod wasm;
+
+// Test-only observation API. Compiled with the `runtime` feature so the
+// terminal binary's library form exposes it for integration tests, but
+// never reachable from production call sites — see test_api.rs and
+// docs/internal/e2e-test-migration-design.md.
+#[cfg(feature = "runtime")]
+pub mod test_api;

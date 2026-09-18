@@ -1,0 +1,636 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::Arc;
+
+use rocketmq_error::SharedError;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::header::get_acl_request_header::GetAclRequestHeader;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::RemotingSerializable;
+
+use crate::auth::auth_admin_service::AuthAdminService;
+
+#[derive(Clone)]
+pub struct GetAclRequestHandler {
+    auth_admin_service: Arc<AuthAdminService>,
+}
+
+impl GetAclRequestHandler {
+    pub fn new(auth_admin_service: Arc<AuthAdminService>) -> Self {
+        Self { auth_admin_service }
+    }
+
+    pub async fn get_acl(
+        &self,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let request_header = request.decode_command_custom_header::<GetAclRequestHeader>()?;
+        let response = RemotingCommand::create_java_default_error_response_command();
+
+        if request_header.subject.is_empty() {
+            return Ok(Some(
+                response
+                    .set_code(ResponseCode::InvalidParameter)
+                    .set_remark("The subject is blank"),
+            ));
+        }
+
+        match self.auth_admin_service.get_acl(request_header.subject.as_str()).await {
+            Ok(Some(acl_info)) => Ok(Some(
+                RemotingCommand::create_success_response_command().set_body(acl_info.encode()?),
+            )),
+            Ok(None) => Ok(Some(RemotingCommand::create_success_response_command())),
+            Err(error) => Ok(Some(map_error_response(response, error))),
+        }
+    }
+}
+
+fn map_error_response(response: RemotingCommand, error: SharedError) -> RemotingCommand {
+    super::map_auth_admin_error_response(response, error)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+    use std::time::SystemTime;
+
+    use crate::config::broker_config::BrokerConfig;
+    use cheetah_string::CheetahString;
+    use rocketmq_auth::Acl;
+    use rocketmq_auth::AuthConfig;
+    use rocketmq_auth::Policy;
+    use rocketmq_auth::PolicyDecision;
+    use rocketmq_auth::PolicyResource;
+    use rocketmq_auth::User;
+    use rocketmq_auth::UserStatus;
+    use rocketmq_auth::UserType;
+    use rocketmq_protocol::protocol::body::acl_info::AclInfo;
+    use rocketmq_protocol::protocol::body::acl_info::PolicyEntryInfo;
+    use rocketmq_protocol::protocol::body::acl_info::PolicyInfo;
+    use rocketmq_protocol::protocol::body::user_info::UserInfo;
+    use rocketmq_protocol::protocol::header::create_acl_request_header::CreateAclRequestHeader;
+    use rocketmq_protocol::protocol::header::create_user_request_header::CreateUserRequestHeader;
+    use rocketmq_protocol::protocol::header::delete_acl_request_header::DeleteAclRequestHeader;
+    use rocketmq_protocol::protocol::header::list_acl_request_header::ListAclRequestHeader;
+    use rocketmq_protocol::protocol::header::list_users_request_header::ListUsersRequestHeader;
+    use rocketmq_protocol::protocol::header::update_acl_request_header::UpdateAclRequestHeader;
+    use rocketmq_protocol::protocol::header::update_user_request_header::UpdateUserRequestHeader;
+    use rocketmq_protocol::protocol::RemotingDeserializable;
+    use rocketmq_protocol::protocol::RemotingSerializable;
+    use rocketmq_security_api::Action;
+    use rocketmq_store::MessageStoreConfig;
+
+    use super::*;
+    use crate::auth::auth_admin_service::AuthAdminService;
+    use crate::broker_runtime::BrokerRuntime;
+    use crate::processor::admin_broker_processor::create_acl_request_handler::CreateAclRequestHandler;
+    use crate::processor::admin_broker_processor::create_user_request_handler::CreateUserRequestHandler;
+    use crate::processor::admin_broker_processor::delete_acl_request_handler::DeleteAclRequestHandler;
+    use crate::processor::admin_broker_processor::list_acl_request_handler::ListAclRequestHandler;
+    use crate::processor::admin_broker_processor::list_users_request_handler::ListUsersRequestHandler;
+    use crate::processor::admin_broker_processor::update_acl_request_handler::UpdateAclRequestHandler;
+    use crate::processor::admin_broker_processor::update_user_request_handler::UpdateUserRequestHandler;
+
+    fn temp_test_root(label: &str) -> std::path::PathBuf {
+        let millis = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .expect("time should move forward")
+            .as_millis();
+        std::env::temp_dir().join(format!("rocketmq-rust-admin-acl-{label}-{millis}"))
+    }
+
+    async fn new_test_runtime(label: &str) -> BrokerRuntime {
+        let temp_root = temp_test_root(label);
+        let broker_config = Arc::new(BrokerConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            auth_config_path: temp_root.join("auth.json").to_string_lossy().into_owned().into(),
+            ..BrokerConfig::default()
+        });
+        let message_store_config = Arc::new(MessageStoreConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            ..MessageStoreConfig::default()
+        });
+        let mut runtime = BrokerRuntime::new(broker_config, message_store_config);
+        assert!(runtime.initialize().await.is_ok());
+        runtime
+    }
+
+    fn build_acl_info(resource: &str, actions: &str) -> AclInfo {
+        AclInfo {
+            subject: None,
+            policies: Some(vec![PolicyInfo {
+                policy_type: Some(CheetahString::from_static_str("Custom")),
+                entries: Some(vec![PolicyEntryInfo {
+                    resource: Some(CheetahString::from_string(resource.to_string())),
+                    actions: Some(
+                        actions
+                            .split(',')
+                            .map(str::trim)
+                            .filter(|action| !action.is_empty())
+                            .map(CheetahString::from)
+                            .collect(),
+                    ),
+                    source_ips: None,
+                    decision: Some(CheetahString::from_static_str("Allow")),
+                }]),
+            }]),
+        }
+    }
+
+    #[tokio::test]
+    async fn auth_acl_handlers_round_trip() {
+        let runtime = new_test_runtime("round-trip").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+
+        let mut admin = User::of_with_type("admin", "secret", UserType::Super);
+        admin.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(admin).await.expect("create admin user");
+        let mut alice = User::of_with_type("alice", "secret", UserType::Normal);
+        alice.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(alice).await.expect("create alice user");
+
+        let create_handler = CreateAclRequestHandler::new(auth_admin_service.clone());
+        let update_handler = UpdateAclRequestHandler::new(auth_admin_service.clone());
+        let get_handler = GetAclRequestHandler::new(auth_admin_service.clone());
+
+        let mut create_request = RemotingCommand::create_request_command(
+            RequestCode::AuthCreateAcl,
+            CreateAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        )
+        .set_body(
+            build_acl_info("Topic:topic-a", "Pub")
+                .encode()
+                .expect("encode create acl body"),
+        );
+        create_request.ensure_ext_fields_initialized();
+        create_request.add_ext_field("AccessKey", "admin");
+        create_request.make_custom_header_to_net();
+        let create_response = create_handler
+            .create_acl(RequestCode::AuthCreateAcl, &mut create_request)
+            .await
+            .expect("create acl should succeed")
+            .expect("create acl should return response");
+        assert_eq!(ResponseCode::from(create_response.code()), ResponseCode::Success);
+        assert!(create_response.remark().is_none());
+
+        let mut update_request = RemotingCommand::create_request_command(
+            RequestCode::AuthUpdateAcl,
+            UpdateAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        )
+        .set_body(
+            build_acl_info("Topic:topic-b", "Sub")
+                .encode()
+                .expect("encode update acl body"),
+        );
+        update_request.ensure_ext_fields_initialized();
+        update_request.add_ext_field("AccessKey", "admin");
+        update_request.make_custom_header_to_net();
+        let update_response = update_handler
+            .update_acl(RequestCode::AuthUpdateAcl, &mut update_request)
+            .await
+            .expect("update acl should succeed")
+            .expect("update acl should return response");
+        assert_eq!(ResponseCode::from(update_response.code()), ResponseCode::Success);
+        assert!(update_response.remark().is_none());
+
+        let mut get_request = RemotingCommand::create_request_command(
+            RequestCode::AuthGetAcl,
+            GetAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        );
+        get_request.make_custom_header_to_net();
+        let mut get_response = get_handler
+            .get_acl(RequestCode::AuthGetAcl, &mut get_request)
+            .await
+            .expect("get acl should succeed")
+            .expect("get acl should return response");
+        assert_eq!(ResponseCode::from(get_response.code()), ResponseCode::Success);
+        assert!(get_response.remark().is_none());
+        let body = AclInfo::decode(
+            get_response
+                .take_body()
+                .expect("get acl response should contain body")
+                .as_ref(),
+        )
+        .expect("decode acl body");
+        let entries = body
+            .policies
+            .as_ref()
+            .and_then(|policies| policies.first())
+            .and_then(|policy| policy.entries.as_ref())
+            .expect("entries should exist");
+        assert_eq!(entries.len(), 2);
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn auth_admin_handlers_return_invalid_parameter_for_malformed_body() {
+        let runtime = new_test_runtime("malformed-body").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+        let create_user_handler = CreateUserRequestHandler::new(auth_admin_service.clone());
+        let update_user_handler = UpdateUserRequestHandler::new(auth_admin_service.clone());
+        let create_acl_handler = CreateAclRequestHandler::new(auth_admin_service.clone());
+        let update_acl_handler = UpdateAclRequestHandler::new(auth_admin_service);
+
+        let mut create_user_request = RemotingCommand::create_request_command(
+            RequestCode::AuthCreateUser,
+            CreateUserRequestHeader {
+                username: CheetahString::from_static_str("alice"),
+            },
+        )
+        .set_body(b"{not-json".to_vec());
+        create_user_request.make_custom_header_to_net();
+        let create_user_response = create_user_handler
+            .create_user(RequestCode::AuthCreateUser, &mut create_user_request)
+            .await
+            .expect("malformed user body should return a response")
+            .expect("malformed user body should return a response");
+        assert_eq!(
+            ResponseCode::from(create_user_response.code()),
+            ResponseCode::InvalidParameter
+        );
+
+        let mut update_user_request = RemotingCommand::create_request_command(
+            RequestCode::AuthUpdateUser,
+            UpdateUserRequestHeader {
+                username: CheetahString::from_static_str("alice"),
+            },
+        )
+        .set_body(b"{not-json".to_vec());
+        update_user_request.make_custom_header_to_net();
+        let update_user_response = update_user_handler
+            .update_user(RequestCode::AuthUpdateUser, &mut update_user_request)
+            .await
+            .expect("malformed update user body should return a response")
+            .expect("malformed update user body should return a response");
+        assert_eq!(
+            ResponseCode::from(update_user_response.code()),
+            ResponseCode::InvalidParameter
+        );
+
+        let mut create_acl_request = RemotingCommand::create_request_command(
+            RequestCode::AuthCreateAcl,
+            CreateAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        )
+        .set_body(b"{not-json".to_vec());
+        create_acl_request.make_custom_header_to_net();
+        let create_acl_response = create_acl_handler
+            .create_acl(RequestCode::AuthCreateAcl, &mut create_acl_request)
+            .await
+            .expect("malformed acl body should return a response")
+            .expect("malformed acl body should return a response");
+        assert_eq!(
+            ResponseCode::from(create_acl_response.code()),
+            ResponseCode::InvalidParameter
+        );
+
+        let mut update_acl_request = RemotingCommand::create_request_command(
+            RequestCode::AuthUpdateAcl,
+            UpdateAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        )
+        .set_body(b"{not-json".to_vec());
+        update_acl_request.make_custom_header_to_net();
+        let update_acl_response = update_acl_handler
+            .update_acl(RequestCode::AuthUpdateAcl, &mut update_acl_request)
+            .await
+            .expect("malformed update acl body should return a response")
+            .expect("malformed update acl body should return a response");
+        assert_eq!(
+            ResponseCode::from(update_acl_response.code()),
+            ResponseCode::InvalidParameter
+        );
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn auth_admin_empty_list_responses_match_java_without_body() {
+        let runtime = new_test_runtime("empty-list").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+        let list_users_handler = ListUsersRequestHandler::new(auth_admin_service.clone());
+        let list_acl_handler = ListAclRequestHandler::new(auth_admin_service);
+
+        let mut list_users_request = RemotingCommand::create_request_command(
+            RequestCode::AuthListUsers,
+            ListUsersRequestHeader {
+                filter: CheetahString::from_static_str("missing"),
+            },
+        );
+        list_users_request.make_custom_header_to_net();
+        let list_users_response = list_users_handler
+            .list_users(RequestCode::AuthListUsers, &mut list_users_request)
+            .await
+            .expect("empty user list should return a response")
+            .expect("empty user list should return a response");
+        assert_eq!(ResponseCode::from(list_users_response.code()), ResponseCode::Success);
+        assert!(list_users_response.body().is_none());
+        assert!(list_users_response.remark().is_none());
+
+        let mut list_acl_request = RemotingCommand::create_request_command(
+            RequestCode::AuthListAcl,
+            ListAclRequestHeader {
+                subject_filter: CheetahString::from_static_str("User:missing"),
+                resource_filter: CheetahString::new(),
+            },
+        );
+        list_acl_request.make_custom_header_to_net();
+        let list_acl_response = list_acl_handler
+            .list_acl(RequestCode::AuthListAcl, &mut list_acl_request)
+            .await
+            .expect("empty acl list should return a response")
+            .expect("empty acl list should return a response");
+        assert_eq!(ResponseCode::from(list_acl_response.code()), ResponseCode::Success);
+        assert!(list_acl_response.body().is_none());
+        assert!(list_acl_response.remark().is_none());
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn auth_update_user_rejects_non_super_updating_existing_super_user() {
+        let runtime = new_test_runtime("protect-super-user").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+        let mut admin = User::of_with_type("admin", "admin-secret", UserType::Super);
+        admin.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(admin).await.expect("create admin user");
+        let mut alice = User::of_with_type("alice", "alice-secret", UserType::Normal);
+        alice.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(alice).await.expect("create alice user");
+
+        let handler = UpdateUserRequestHandler::new(auth_admin_service.clone());
+        let mut request = RemotingCommand::create_request_command(
+            RequestCode::AuthUpdateUser,
+            UpdateUserRequestHeader {
+                username: CheetahString::from_static_str("admin"),
+            },
+        )
+        .set_body(
+            UserInfo {
+                username: None,
+                password: Some(CheetahString::from_static_str("downgraded-secret")),
+                user_type: Some(CheetahString::from_static_str("Normal")),
+                user_status: Some(CheetahString::from_static_str("enable")),
+            }
+            .encode()
+            .expect("encode user info"),
+        );
+        request.ensure_ext_fields_initialized();
+        request.add_ext_field("AccessKey", "alice");
+        request.make_custom_header_to_net();
+
+        let response = handler
+            .update_user(RequestCode::AuthUpdateUser, &mut request)
+            .await
+            .expect("update should return response")
+            .expect("update should return response");
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::NoPermission);
+
+        let admin = auth_admin_service
+            .get_user("admin")
+            .await
+            .expect("admin should still be readable")
+            .expect("admin should still exist");
+        assert_eq!(admin.user_type.as_deref(), Some(UserType::Super.name()));
+        assert_eq!(admin.password.as_deref(), Some("admin-secret"));
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn auth_create_and_update_super_user_direct_checks_match_java_system_error() {
+        let runtime = new_test_runtime("direct-super-check").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+        let mut alice = User::of_with_type("alice", "alice-secret", UserType::Normal);
+        alice.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(alice).await.expect("create alice user");
+
+        let create_handler = CreateUserRequestHandler::new(auth_admin_service.clone());
+        let mut create_request = RemotingCommand::create_request_command(
+            RequestCode::AuthCreateUser,
+            CreateUserRequestHeader {
+                username: CheetahString::from_static_str("new-super"),
+            },
+        )
+        .set_body(
+            UserInfo {
+                username: None,
+                password: Some(CheetahString::from_static_str("secret")),
+                user_type: Some(CheetahString::from_static_str("Super")),
+                user_status: Some(CheetahString::from_static_str("enable")),
+            }
+            .encode()
+            .expect("encode user info"),
+        );
+        create_request.ensure_ext_fields_initialized();
+        create_request.add_ext_field("AccessKey", "alice");
+        create_request.make_custom_header_to_net();
+        let create_response = create_handler
+            .create_user(RequestCode::AuthCreateUser, &mut create_request)
+            .await
+            .expect("create super response")
+            .expect("create super response");
+        assert_eq!(ResponseCode::from(create_response.code()), ResponseCode::SystemError);
+        assert_eq!(
+            create_response.remark().map(CheetahString::as_str),
+            Some("The super user can only be create by super user")
+        );
+
+        let update_handler = UpdateUserRequestHandler::new(auth_admin_service);
+        let mut update_request = RemotingCommand::create_request_command(
+            RequestCode::AuthUpdateUser,
+            UpdateUserRequestHeader {
+                username: CheetahString::from_static_str("alice"),
+            },
+        )
+        .set_body(
+            UserInfo {
+                username: None,
+                password: None,
+                user_type: Some(CheetahString::from_static_str("Super")),
+                user_status: None,
+            }
+            .encode()
+            .expect("encode user info"),
+        );
+        update_request.ensure_ext_fields_initialized();
+        update_request.add_ext_field("AccessKey", "alice");
+        update_request.make_custom_header_to_net();
+        let update_response = update_handler
+            .update_user(RequestCode::AuthUpdateUser, &mut update_request)
+            .await
+            .expect("update super response")
+            .expect("update super response");
+        assert_eq!(ResponseCode::from(update_response.code()), ResponseCode::SystemError);
+        assert_eq!(
+            update_response.remark().map(CheetahString::as_str),
+            Some("The super user can only be update by super user")
+        );
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn auth_delete_acl_honors_policy_type_like_java() {
+        let runtime = new_test_runtime("delete-acl-policy-type").await;
+        let broker_config = runtime.broker_config();
+        let auth_admin_service = Arc::new(
+            AuthAdminService::new(
+                AuthConfig {
+                    auth_config_path: broker_config.auth_config_path.clone(),
+                    ..AuthConfig::default()
+                },
+                crate::test_service_context("auth-admin"),
+            )
+            .await
+            .expect("create auth admin service"),
+        );
+        let mut alice = User::of_with_type("alice", "secret", UserType::Normal);
+        alice.set_user_status(UserStatus::Enable);
+        auth_admin_service.create_user(alice).await.expect("create alice user");
+        auth_admin_service
+            .create_acl(Acl::of_with_policies(
+                "alice",
+                rocketmq_auth::SubjectType::User,
+                vec![
+                    Policy::of(
+                        vec![PolicyResource::of_topic("topic-a")],
+                        vec![Action::Pub],
+                        None,
+                        PolicyDecision::Allow,
+                    ),
+                    Policy::of_type(
+                        rocketmq_auth::PolicyType::Default,
+                        vec![PolicyResource::of_topic("topic-a")],
+                        vec![Action::Sub],
+                        None,
+                        PolicyDecision::Allow,
+                    ),
+                ],
+            ))
+            .await
+            .expect("create acl");
+
+        let delete_handler = DeleteAclRequestHandler::new(auth_admin_service.clone());
+        let get_handler = GetAclRequestHandler::new(auth_admin_service);
+        let mut delete_request = RemotingCommand::create_request_command(
+            RequestCode::AuthDeleteAcl,
+            DeleteAclRequestHeader::with_policy_type(
+                CheetahString::from_static_str("User:alice"),
+                Some(CheetahString::from_static_str("Default")),
+                Some(CheetahString::from_static_str("Topic:topic-a")),
+            ),
+        );
+        delete_request.make_custom_header_to_net();
+        let delete_response = delete_handler
+            .delete_acl(RequestCode::AuthDeleteAcl, &mut delete_request)
+            .await
+            .expect("delete acl response")
+            .expect("delete acl response");
+        assert_eq!(ResponseCode::from(delete_response.code()), ResponseCode::Success);
+
+        let mut get_request = RemotingCommand::create_request_command(
+            RequestCode::AuthGetAcl,
+            GetAclRequestHeader {
+                subject: CheetahString::from_static_str("User:alice"),
+            },
+        );
+        get_request.make_custom_header_to_net();
+        let mut get_response = get_handler
+            .get_acl(RequestCode::AuthGetAcl, &mut get_request)
+            .await
+            .expect("get acl response")
+            .expect("get acl response");
+        assert_eq!(ResponseCode::from(get_response.code()), ResponseCode::Success);
+        let body = AclInfo::decode(
+            get_response
+                .take_body()
+                .expect("get acl response should contain body")
+                .as_ref(),
+        )
+        .expect("decode acl body");
+        let policies = body.policies.expect("policies should remain");
+        assert_eq!(policies.len(), 1);
+        assert_eq!(policies[0].policy_type, Some(CheetahString::from_static_str("Custom")));
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+}

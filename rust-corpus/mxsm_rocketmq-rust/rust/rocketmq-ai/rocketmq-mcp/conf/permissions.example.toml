@@ -1,0 +1,46 @@
+[roles.read_only]
+allowed_clusters = ["*"]
+allow_tools = [
+  "rocketmq_get_cluster_overview",
+  "rocketmq_list_topics",
+  "rocketmq_describe_topic",
+  "rocketmq_get_topic_route",
+  "rocketmq_list_consumer_groups",
+  "rocketmq_get_consumer_lag",
+  "rocketmq_describe_broker",
+  "rocketmq_get_broker_config_summary",
+  "rocketmq_list_consumer_connections",
+  "rocketmq_list_producer_connections",
+  "rocketmq_get_message_metadata",
+  "rocketmq_get_topic_config_state",
+  "rocketmq_get_consumer_group_config_state",
+  "rocketmq_get_topic_stats",
+  "rocketmq_get_topic_config",
+  "rocketmq_get_consumer_group_details",
+  "rocketmq_get_consumer_progress",
+  "rocketmq_get_nameserver_config_summary",
+]
+deny_tools = ["*"]
+
+[roles.diagnose]
+include = ["read_only"]
+allowed_clusters = ["*"]
+allow_tools = [
+  "rocketmq_diagnose_consumer_lag",
+  "rocketmq_get_broker_diagnostics",
+  "rocketmq_get_broker_log_filter_state",
+  "rocketmq_get_proxy_drain_state",
+  "rocketmq_get_ha_status",
+  "rocketmq_get_controller_metadata",
+]
+
+[roles.operator]
+include = ["diagnose"]
+allowed_clusters = ["*"]
+allow_tools = [
+  "rocketmq_plan_create_topic",
+  "rocketmq_plan_update_topic_config",
+  "rocketmq_plan_update_topic_permissions",
+  "rocketmq_plan_update_broker_config",
+  "rocketmq_plan_reset_consumer_offset",
+]

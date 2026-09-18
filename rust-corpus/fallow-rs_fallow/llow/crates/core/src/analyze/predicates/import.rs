@@ -1,0 +1,782 @@
+use rustc_hash::FxHashSet;
+
+/// Whether the project uses a React Server Components bundler that honors the
+/// `"use client"` / `"use server"` directive prologue (Next plus the
+/// framework-agnostic RSC bundlers). Used to gate the universal RSC rules
+/// (misplaced-directive, mixed-client-server-barrel) that apply to any RSC
+/// toolchain, NOT the Next-specific rules (invalid-client-export's illegal
+/// names are Next route-segment config; unused-server-action's registration is
+/// Next-specific).
+pub fn project_uses_rsc_directives(declared_deps: &FxHashSet<String>) -> bool {
+    const RSC_BUNDLER_DEPS: &[&str] = &[
+        "next",
+        "waku",
+        "@lazarv/react-server",
+        "react-server-dom-webpack",
+        "react-server-dom-vite",
+        "react-server-dom-parcel",
+        "@vitejs/plugin-rsc",
+    ];
+    RSC_BUNDLER_DEPS
+        .iter()
+        .any(|dep| declared_deps.contains(*dep))
+}
+
+/// Whether the project declares a React-family runtime dependency. Single home
+/// for the gate at the top of the React-only detectors (component intel, render
+/// fan-in, unused component props, thin wrappers, duplicate prop shapes, prop
+/// drilling), which all receive the same `declared_deps` set. The Vue / Svelte /
+/// Angular gates deliberately differ per detector and are NOT part of this
+/// catalogue.
+pub(in crate::analyze) fn declares_react_runtime(declared_deps: &FxHashSet<String>) -> bool {
+    const REACT_RUNTIME_DEPS: &[&str] = &["react", "react-dom", "next", "preact"];
+    REACT_RUNTIME_DEPS
+        .iter()
+        .any(|dep| declared_deps.contains(*dep))
+}
+
+/// Check if an import specifier is a virtual module that does not correspond to a real file.
+///
+/// The `virtual:` prefix is a convention established by Vite and widely adopted across
+/// the JS/TS bundler ecosystem. Plugins create virtual modules with this prefix
+/// (e.g., `virtual:pwa-register`, `virtual:uno.css`, `virtual:generated-pages`).
+/// These should never be flagged as unlisted dependencies or unresolved imports.
+pub fn is_virtual_module(name: &str) -> bool {
+    name.starts_with("virtual:")
+}
+
+const NODE_BUILTINS: &[&str] = &[
+    "assert",
+    "assert/strict",
+    "async_hooks",
+    "buffer",
+    "child_process",
+    "cluster",
+    "console",
+    "constants",
+    "crypto",
+    "dgram",
+    "diagnostics_channel",
+    "dns",
+    "dns/promises",
+    "domain",
+    "events",
+    "fs",
+    "fs/promises",
+    "http",
+    "http2",
+    "https",
+    "inspector",
+    "inspector/promises",
+    "module",
+    "net",
+    "os",
+    "path",
+    "path/posix",
+    "path/win32",
+    "perf_hooks",
+    "process",
+    "punycode",
+    "querystring",
+    "readline",
+    "readline/promises",
+    "repl",
+    "stream",
+    "stream/consumers",
+    "stream/promises",
+    "stream/web",
+    "string_decoder",
+    "sys",
+    "timers",
+    "timers/promises",
+    "tls",
+    "trace_events",
+    "tty",
+    "url",
+    "util",
+    "util/types",
+    "v8",
+    "vm",
+    "wasi",
+    "worker_threads",
+    "zlib",
+];
+
+const NODE_PREFIX_ONLY_BUILTINS: &[&str] = &["sea", "sqlite", "test", "test/reporters"];
+
+/// Check if a package name is a platform built-in module (Node.js, Bun, Deno, Cloudflare Workers).
+pub fn is_builtin_module(name: &str) -> bool {
+    if name == "bun" || name.starts_with("bun:") {
+        return true;
+    }
+    if name.starts_with("cloudflare:") {
+        return true;
+    }
+    if name.starts_with("sass:") {
+        return true;
+    }
+    if name == "std" || name.starts_with("std/") {
+        return true;
+    }
+    if name == "k6" || name.starts_with("k6/") {
+        return true;
+    }
+    if let Some(stripped) = name.strip_prefix("node:") {
+        return NODE_BUILTINS.contains(&stripped) || NODE_PREFIX_ONLY_BUILTINS.contains(&stripped);
+    }
+    NODE_BUILTINS.contains(&name)
+}
+
+/// Dependencies that are used implicitly (not via imports).
+pub(in crate::analyze) fn is_implicit_dependency(name: &str) -> bool {
+    if name.starts_with("@types/") {
+        return true;
+    }
+
+    let implicit_deps = [
+        "react-dom",
+        "react-dom/client",
+        "react-native",
+        "@next/font",
+        "@next/mdx",
+        "@next/bundle-analyzer",
+        "@next/env",
+        "utf-8-validate",
+        "bufferutil",
+    ];
+    implicit_deps.contains(&name)
+}
+
+/// Check if a package name looks like a TypeScript path alias rather than an npm package.
+///
+/// Common patterns: `@/components`, `@app/utils`, `~/lib`, `#internal/module`,
+/// `@Components/Button` (`PascalCase` tsconfig paths).
+/// These are typically defined in tsconfig.json `paths` or package.json `imports`.
+pub(in crate::analyze) fn is_path_alias(name: &str) -> bool {
+    if name.starts_with('#') {
+        return true;
+    }
+    if name.starts_with("~/") || name.starts_with("~~/") || name.starts_with("@@/") {
+        return true;
+    }
+    if name.starts_with("@/") {
+        return true;
+    }
+    if name.starts_with('@') {
+        let scope = name.split('/').next().unwrap_or(name);
+        if scope.len() > 1 && scope.chars().nth(1).is_some_and(|c| c.is_ascii_uppercase()) {
+            return true;
+        }
+    }
+
+    false
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn deps(names: &[&str]) -> FxHashSet<String> {
+        names.iter().map(|s| (*s).to_string()).collect()
+    }
+
+    #[test]
+    fn rsc_bundler_deps_match() {
+        for dep in [
+            "next",
+            "waku",
+            "@lazarv/react-server",
+            "react-server-dom-webpack",
+            "react-server-dom-vite",
+            "react-server-dom-parcel",
+            "@vitejs/plugin-rsc",
+        ] {
+            assert!(
+                project_uses_rsc_directives(&deps(&[dep])),
+                "{dep} should be recognized as an RSC bundler"
+            );
+        }
+    }
+
+    #[test]
+    fn not_rsc_bundler_deps() {
+        assert!(!project_uses_rsc_directives(&deps(&["react"])));
+        assert!(!project_uses_rsc_directives(&deps(&["react-dom"])));
+        assert!(!project_uses_rsc_directives(&deps(&["vite"])));
+        assert!(!project_uses_rsc_directives(&FxHashSet::default()));
+    }
+
+    #[test]
+    fn builtin_module_fs() {
+        assert!(is_builtin_module("fs"));
+    }
+
+    #[test]
+    fn builtin_module_path() {
+        assert!(is_builtin_module("path"));
+    }
+
+    #[test]
+    fn builtin_module_with_node_prefix() {
+        assert!(is_builtin_module("node:fs"));
+        assert!(is_builtin_module("node:path"));
+        assert!(is_builtin_module("node:crypto"));
+    }
+
+    #[test]
+    fn builtin_module_all_known() {
+        let known = [
+            "assert",
+            "buffer",
+            "child_process",
+            "cluster",
+            "console",
+            "constants",
+            "crypto",
+            "dgram",
+            "dns",
+            "domain",
+            "events",
+            "fs",
+            "http",
+            "http2",
+            "https",
+            "module",
+            "net",
+            "os",
+            "path",
+            "perf_hooks",
+            "process",
+            "punycode",
+            "querystring",
+            "readline",
+            "repl",
+            "stream",
+            "string_decoder",
+            "sys",
+            "timers",
+            "tls",
+            "tty",
+            "url",
+            "util",
+            "v8",
+            "vm",
+            "wasi",
+            "worker_threads",
+            "zlib",
+        ];
+        for name in &known {
+            assert!(is_builtin_module(name), "{name} should be a builtin module");
+        }
+    }
+
+    #[test]
+    fn not_builtin_module() {
+        assert!(!is_builtin_module("react"));
+        assert!(!is_builtin_module("lodash"));
+        assert!(!is_builtin_module("express"));
+        assert!(!is_builtin_module("@scope/pkg"));
+    }
+
+    #[test]
+    fn not_builtin_similar_names() {
+        assert!(!is_builtin_module("filesystem"));
+        assert!(!is_builtin_module("pathlib"));
+        assert!(!is_builtin_module("node:react"));
+    }
+
+    /// Regression: npm packages whose name starts with a Node builtin name
+    /// (e.g., "test-utils", "url-parse") must not be classified as builtins.
+    #[test]
+    fn not_builtin_npm_packages_with_builtin_prefix() {
+        assert!(!is_builtin_module("test-utils/helpers"));
+        assert!(!is_builtin_module("url-parse"));
+        assert!(!is_builtin_module("path-browserify"));
+        assert!(!is_builtin_module("stream-browserify"));
+        assert!(!is_builtin_module("events-emitter"));
+        assert!(!is_builtin_module("util-deprecate"));
+        assert!(!is_builtin_module("os-tmpdir"));
+        assert!(!is_builtin_module("net-ping"));
+    }
+
+    #[test]
+    fn builtin_k6_runtime_modules() {
+        assert!(is_builtin_module("k6"));
+        assert!(is_builtin_module("k6/http"));
+        assert!(is_builtin_module("k6/execution"));
+    }
+
+    #[test]
+    fn not_builtin_k6_similar_packages() {
+        assert!(!is_builtin_module("k6-tools"));
+        assert!(!is_builtin_module("k6ish"));
+        assert!(!is_builtin_module("k6x/http"));
+        assert!(!is_builtin_module("@types/k6"));
+    }
+
+    #[test]
+    fn implicit_dep_types_packages() {
+        assert!(is_implicit_dependency("@types/node"));
+        assert!(is_implicit_dependency("@types/react"));
+        assert!(is_implicit_dependency("@types/jest"));
+    }
+
+    #[test]
+    fn not_implicit_dep() {
+        assert!(!is_implicit_dependency("react"));
+        assert!(!is_implicit_dependency("@scope/types"));
+        assert!(!is_implicit_dependency("types"));
+        assert!(!is_implicit_dependency("typescript"));
+        assert!(!is_implicit_dependency("prettier"));
+        assert!(!is_implicit_dependency("eslint"));
+    }
+
+    #[test]
+    fn tooling_dep_prefixes() {
+        assert!(crate::plugins::is_known_tooling_dependency("@types/node"));
+        assert!(crate::plugins::is_known_tooling_dependency("prettier"));
+        assert!(crate::plugins::is_known_tooling_dependency("husky"));
+        assert!(crate::plugins::is_known_tooling_dependency("lint-staged"));
+        assert!(crate::plugins::is_known_tooling_dependency("commitlint"));
+        assert!(crate::plugins::is_known_tooling_dependency(
+            "@commitlint/config-conventional"
+        ));
+        assert!(crate::plugins::is_known_tooling_dependency("stylelint"));
+    }
+
+    #[test]
+    fn tooling_dep_plugin_handled_not_blanket() {
+        assert!(!crate::plugins::is_known_tooling_dependency("eslint"));
+        assert!(!crate::plugins::is_known_tooling_dependency(
+            "eslint-plugin-react"
+        ));
+        assert!(!crate::plugins::is_known_tooling_dependency(
+            "@typescript-eslint/parser"
+        ));
+        assert!(!crate::plugins::is_known_tooling_dependency("postcss"));
+        assert!(!crate::plugins::is_known_tooling_dependency("autoprefixer"));
+        assert!(!crate::plugins::is_known_tooling_dependency("tailwindcss"));
+        assert!(!crate::plugins::is_known_tooling_dependency(
+            "@tailwindcss/forms"
+        ));
+    }
+
+    #[test]
+    fn tooling_dep_exact_matches() {
+        assert!(crate::plugins::is_known_tooling_dependency("typescript"));
+        assert!(crate::plugins::is_known_tooling_dependency("prettier"));
+        assert!(crate::plugins::is_known_tooling_dependency("turbo"));
+        assert!(crate::plugins::is_known_tooling_dependency("concurrently"));
+        assert!(crate::plugins::is_known_tooling_dependency("cross-env"));
+        assert!(crate::plugins::is_known_tooling_dependency("rimraf"));
+        assert!(crate::plugins::is_known_tooling_dependency("npm-run-all"));
+        assert!(crate::plugins::is_known_tooling_dependency("nodemon"));
+        assert!(crate::plugins::is_known_tooling_dependency("ts-node"));
+        assert!(crate::plugins::is_known_tooling_dependency("tsx"));
+    }
+
+    #[test]
+    fn not_tooling_dep() {
+        assert!(!crate::plugins::is_known_tooling_dependency("react"));
+        assert!(!crate::plugins::is_known_tooling_dependency("next"));
+        assert!(!crate::plugins::is_known_tooling_dependency("lodash"));
+        assert!(!crate::plugins::is_known_tooling_dependency("express"));
+        assert!(!crate::plugins::is_known_tooling_dependency(
+            "@emotion/react"
+        ));
+    }
+
+    #[test]
+    fn tooling_dep_testing_frameworks() {
+        assert!(crate::plugins::is_known_tooling_dependency("jest"));
+        assert!(crate::plugins::is_known_tooling_dependency("vitest"));
+        assert!(crate::plugins::is_known_tooling_dependency("@jest/globals"));
+        assert!(crate::plugins::is_known_tooling_dependency(
+            "@vitest/coverage-v8"
+        ));
+        assert!(crate::plugins::is_known_tooling_dependency(
+            "@testing-library/react"
+        ));
+        assert!(crate::plugins::is_known_tooling_dependency(
+            "@testing-library/jest-dom"
+        ));
+        assert!(crate::plugins::is_known_tooling_dependency(
+            "@playwright/test"
+        ));
+    }
+
+    #[test]
+    fn tooling_dep_environments_and_cli() {
+        assert!(crate::plugins::is_known_tooling_dependency("happy-dom"));
+        assert!(crate::plugins::is_known_tooling_dependency("jsdom"));
+        assert!(crate::plugins::is_known_tooling_dependency("knip"));
+    }
+
+    #[test]
+    fn path_alias_at_slash() {
+        assert!(is_path_alias("@/components"));
+    }
+
+    #[test]
+    fn path_alias_tilde() {
+        assert!(is_path_alias("~/lib"));
+    }
+
+    #[test]
+    fn path_alias_hash_imports_map() {
+        assert!(is_path_alias("#internal/module"));
+    }
+
+    #[test]
+    fn path_alias_pascal_case_scope() {
+        assert!(is_path_alias("@Components/Button"));
+    }
+
+    #[test]
+    fn not_path_alias_regular_package() {
+        assert!(!is_path_alias("react"));
+    }
+
+    #[test]
+    fn not_path_alias_scoped_npm_package() {
+        assert!(!is_path_alias("@scope/pkg"));
+    }
+
+    #[test]
+    fn not_path_alias_emotion_react() {
+        assert!(!is_path_alias("@emotion/react"));
+    }
+
+    #[test]
+    fn not_path_alias_lodash() {
+        assert!(!is_path_alias("lodash"));
+    }
+
+    #[test]
+    fn not_path_alias_lowercase_short_scope() {
+        assert!(!is_path_alias("@s/lowercase"));
+    }
+
+    #[test]
+    fn virtual_module_vite_convention() {
+        assert!(is_virtual_module("virtual:pwa-register"));
+        assert!(is_virtual_module("virtual:pwa-register/react"));
+        assert!(is_virtual_module("virtual:uno.css"));
+        assert!(is_virtual_module("virtual:unocss"));
+        assert!(is_virtual_module("virtual:generated-layouts"));
+        assert!(is_virtual_module("virtual:generated-pages"));
+        assert!(is_virtual_module("virtual:icons/mdi/home"));
+        assert!(is_virtual_module("virtual:windi.css"));
+        assert!(is_virtual_module("virtual:windi-devtools"));
+        assert!(is_virtual_module("virtual:svg-icons-register"));
+        assert!(is_virtual_module("virtual:remix/server-build"));
+        assert!(is_virtual_module("virtual:emoji-mart-lang-importer"));
+    }
+
+    #[test]
+    fn not_virtual_module() {
+        assert!(!is_virtual_module("react"));
+        assert!(!is_virtual_module("lodash"));
+        assert!(!is_virtual_module("@scope/pkg"));
+        assert!(!is_virtual_module("node:fs"));
+        assert!(!is_virtual_module("cloudflare:workers"));
+    }
+
+    #[test]
+    fn path_alias_pascal_case_scopes() {
+        assert!(is_path_alias("@Components/Button"));
+        assert!(is_path_alias("@Hooks/useApi"));
+        assert!(is_path_alias("@Services/auth"));
+        assert!(is_path_alias("@Utils/format"));
+        assert!(is_path_alias("@Lib/helpers"));
+    }
+
+    #[test]
+    fn path_alias_hash_imports() {
+        assert!(is_path_alias("#/utils"));
+        assert!(is_path_alias("#subpath"));
+        assert!(is_path_alias("#internal/module"));
+        assert!(is_path_alias("#lib"));
+        assert!(is_path_alias("#components/Button"));
+    }
+
+    #[test]
+    fn path_alias_tilde_imports() {
+        assert!(is_path_alias("~/components"));
+        assert!(is_path_alias("~/lib/helpers"));
+        assert!(is_path_alias("~/utils/format"));
+        assert!(is_path_alias("~/styles/theme"));
+        assert!(is_path_alias("~~/shared/theme"));
+        assert!(is_path_alias("@@/shared/theme"));
+    }
+
+    /// Tilde without slash is NOT a path alias — it's a bare specifier.
+    #[test]
+    fn not_path_alias_bare_tilde() {
+        assert!(!is_path_alias("~some-package"));
+        assert!(!is_path_alias("~"));
+    }
+
+    #[test]
+    fn path_alias_at_slash_subpaths() {
+        assert!(is_path_alias("@/components"));
+        assert!(is_path_alias("@/utils/helpers"));
+        assert!(is_path_alias("@/lib/api/client"));
+        assert!(is_path_alias("@/styles"));
+    }
+
+    #[test]
+    fn not_path_alias_regular_npm_packages() {
+        assert!(!is_path_alias("lodash"));
+        assert!(!is_path_alias("react"));
+        assert!(!is_path_alias("express"));
+        assert!(!is_path_alias("next"));
+        assert!(!is_path_alias("typescript"));
+        assert!(!is_path_alias("zod"));
+    }
+
+    #[test]
+    fn not_path_alias_scoped_npm_packages() {
+        assert!(!is_path_alias("@types/node"));
+        assert!(!is_path_alias("@types/react"));
+        assert!(!is_path_alias("@babel/core"));
+        assert!(!is_path_alias("@babel/preset-env"));
+        assert!(!is_path_alias("@emotion/react"));
+        assert!(!is_path_alias("@emotion/styled"));
+        assert!(!is_path_alias("@tanstack/react-query"));
+        assert!(!is_path_alias("@testing-library/react"));
+        assert!(!is_path_alias("@nestjs/core"));
+        assert!(!is_path_alias("@prisma/client"));
+    }
+
+    /// The PascalCase heuristic checks the second character (after `@`).
+    /// Single-char scope names like `@s/pkg` are lowercase and thus not aliases.
+    #[test]
+    fn not_path_alias_edge_case_scopes() {
+        assert!(!is_path_alias("@s/lowercase"));
+        assert!(!is_path_alias("@a/package"));
+        assert!(!is_path_alias("@x/something"));
+    }
+
+    /// Bare `@` without a slash is not a valid npm scope — but it's also
+    /// not detected as a path alias because `@` alone has no uppercase second char.
+    #[test]
+    fn not_path_alias_bare_at_sign() {
+        assert!(!is_path_alias("@"));
+    }
+
+    /// Subpath imports of builtins should be recognized.
+    #[test]
+    fn builtin_module_subpath_imports() {
+        assert!(is_builtin_module("assert/strict"));
+        assert!(is_builtin_module("dns/promises"));
+        assert!(is_builtin_module("fs/promises"));
+        assert!(is_builtin_module("path/posix"));
+        assert!(is_builtin_module("path/win32"));
+        assert!(is_builtin_module("readline/promises"));
+        assert!(is_builtin_module("stream/consumers"));
+        assert!(is_builtin_module("stream/promises"));
+        assert!(is_builtin_module("stream/web"));
+        assert!(is_builtin_module("timers/promises"));
+        assert!(is_builtin_module("util/types"));
+        assert!(is_builtin_module("inspector/promises"));
+    }
+
+    /// Subpath builtins with `node:` prefix.
+    #[test]
+    fn builtin_module_subpath_with_node_prefix() {
+        assert!(is_builtin_module("node:fs/promises"));
+        assert!(is_builtin_module("node:path/posix"));
+        assert!(is_builtin_module("node:stream/web"));
+        assert!(is_builtin_module("node:timers/promises"));
+        assert!(is_builtin_module("node:util/types"));
+        assert!(is_builtin_module("node:test/reporters"));
+    }
+
+    /// Mandatory-`node:`-prefix builtins are recognized only with the prefix.
+    /// Node documents these as built-in modules that require the `node:` scheme.
+    /// See issue #627.
+    #[test]
+    fn builtin_module_node_prefix_only() {
+        assert!(is_builtin_module("node:sqlite"));
+        assert!(is_builtin_module("node:sea"));
+        assert!(is_builtin_module("node:test"));
+        assert!(is_builtin_module("node:test/reporters"));
+    }
+
+    /// The bare forms of mandatory-`node:`-prefix modules are NOT builtins: Node
+    /// refuses to resolve them without the prefix, and real npm packages share the
+    /// names. npm packages that merely start with one of the names stay deps too.
+    /// See issue #627.
+    #[test]
+    fn not_builtin_module_bare_prefix_only_names() {
+        assert!(!is_builtin_module("sqlite"));
+        assert!(!is_builtin_module("sea"));
+        assert!(!is_builtin_module("test"));
+        assert!(!is_builtin_module("test/reporters"));
+        assert!(!is_builtin_module("sqlite3"));
+        assert!(!is_builtin_module("better-sqlite3"));
+        assert!(!is_builtin_module("node-sqlite3"));
+        assert!(!is_builtin_module("seamless"));
+        assert!(!is_builtin_module("test-utils"));
+        assert!(!is_builtin_module("node:sqlite3"));
+        assert!(!is_builtin_module("node:not-a-builtin"));
+    }
+
+    /// Bun built-in modules.
+    #[test]
+    fn builtin_module_bun() {
+        assert!(is_builtin_module("bun"));
+        assert!(is_builtin_module("bun:sqlite"));
+        assert!(is_builtin_module("bun:test"));
+        assert!(is_builtin_module("bun:ffi"));
+        assert!(is_builtin_module("bun:jsc"));
+    }
+
+    /// npm packages whose names merely start with `bun` are not Bun builtins.
+    #[test]
+    fn not_builtin_module_bun_like_packages() {
+        assert!(!is_builtin_module("bun-types"));
+        assert!(!is_builtin_module("bunyan"));
+        assert!(!is_builtin_module("@types/bun"));
+        assert!(!is_builtin_module("bun-types/path"));
+    }
+
+    /// Cloudflare Workers built-in modules.
+    #[test]
+    fn builtin_module_cloudflare_workers() {
+        assert!(is_builtin_module("cloudflare:workers"));
+        assert!(is_builtin_module("cloudflare:sockets"));
+        assert!(is_builtin_module("cloudflare:email"));
+    }
+
+    /// Deno standard library.
+    #[test]
+    fn builtin_module_deno_std() {
+        assert!(is_builtin_module("std"));
+        assert!(is_builtin_module("std/path"));
+        assert!(is_builtin_module("std/fs"));
+    }
+
+    /// Sass/SCSS built-in modules. Imported via `@use 'sass:math'` etc. and
+    /// provided by the Sass compiler. Never installed via npm. See issue #104.
+    #[test]
+    fn builtin_module_sass() {
+        assert!(is_builtin_module("sass:math"));
+        assert!(is_builtin_module("sass:string"));
+        assert!(is_builtin_module("sass:color"));
+        assert!(is_builtin_module("sass:list"));
+        assert!(is_builtin_module("sass:map"));
+        assert!(is_builtin_module("sass:meta"));
+        assert!(is_builtin_module("sass:selector"));
+    }
+
+    /// npm packages that merely start with `sass` (not the built-in prefix) must
+    /// still be treated as npm dependencies. The guard is the `sass:` prefix, not
+    /// the substring `sass`.
+    #[test]
+    fn not_builtin_module_sass_like_packages() {
+        assert!(!is_builtin_module("sass"));
+        assert!(!is_builtin_module("sass-loader"));
+        assert!(!is_builtin_module("@types/sass"));
+    }
+
+    /// Non-existent subpath builtins should not match.
+    #[test]
+    fn not_builtin_module_fake_subpaths() {
+        assert!(!is_builtin_module("fs/extra"));
+        assert!(!is_builtin_module("path/utils"));
+        assert!(!is_builtin_module("stream/transform"));
+    }
+
+    /// Empty string and prefix-only edge cases.
+    #[test]
+    fn virtual_module_edge_cases() {
+        assert!(is_virtual_module("virtual:"));
+        assert!(!is_virtual_module(""));
+        assert!(!is_virtual_module("Virtual:something"));
+        assert!(!is_virtual_module("VIRTUAL:something"));
+    }
+
+    #[test]
+    fn implicit_dep_react_dom_and_native() {
+        assert!(is_implicit_dependency("react-dom"));
+        assert!(is_implicit_dependency("react-dom/client"));
+        assert!(is_implicit_dependency("react-native"));
+    }
+
+    #[test]
+    fn implicit_dep_next_packages() {
+        assert!(is_implicit_dependency("@next/font"));
+        assert!(is_implicit_dependency("@next/mdx"));
+        assert!(is_implicit_dependency("@next/bundle-analyzer"));
+        assert!(is_implicit_dependency("@next/env"));
+    }
+
+    #[test]
+    fn implicit_dep_websocket_native_addons() {
+        assert!(is_implicit_dependency("utf-8-validate"));
+        assert!(is_implicit_dependency("bufferutil"));
+    }
+
+    /// Packages that look similar to implicit deps but are NOT.
+    #[test]
+    fn not_implicit_dep_similar_names() {
+        assert!(!is_implicit_dependency("react"));
+        assert!(!is_implicit_dependency("react-dom-extra"));
+        assert!(!is_implicit_dependency("@next/swc"));
+        assert!(!is_implicit_dependency("react-native-web"));
+        assert!(!is_implicit_dependency("@types"));
+    }
+
+    #[test]
+    fn path_alias_hash_prefix() {
+        assert!(is_path_alias("#internal/module"));
+        assert!(is_path_alias("#app/utils"));
+    }
+
+    #[test]
+    fn path_alias_tilde_prefix() {
+        assert!(is_path_alias("~/store/auth"));
+    }
+
+    #[test]
+    fn path_alias_at_slash_prefix() {
+        assert!(is_path_alias("@/hooks/useAuth"));
+    }
+
+    #[test]
+    fn path_alias_pascal_case_scope_additional() {
+        assert!(is_path_alias("@Hooks/useAuth"));
+        assert!(is_path_alias("@Components/Button"));
+        assert!(is_path_alias("@Services/api"));
+    }
+
+    #[test]
+    fn not_path_alias_lowercase_scoped_packages() {
+        assert!(!is_path_alias("@angular/core"));
+        assert!(!is_path_alias("@emotion/styled"));
+        assert!(!is_path_alias("@tanstack/react-query"));
+    }
+
+    #[test]
+    fn not_path_alias_bare_packages() {
+        assert!(!is_path_alias("react"));
+        assert!(!is_path_alias("lodash"));
+        assert!(!is_path_alias("express"));
+    }
+
+    #[test]
+    fn virtual_module_prefix() {
+        assert!(is_virtual_module("virtual:pwa-register"));
+        assert!(is_virtual_module("virtual:uno.css"));
+        assert!(is_virtual_module("virtual:generated-pages"));
+    }
+
+    #[test]
+    fn not_virtual_module_non_virtual_imports() {
+        assert!(!is_virtual_module("react"));
+        assert!(!is_virtual_module("@virtual/package"));
+        assert!(!is_virtual_module("./virtual-file"));
+    }
+}

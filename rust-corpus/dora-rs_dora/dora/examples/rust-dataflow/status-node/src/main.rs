@@ -1,0 +1,65 @@
+use dora_node_api::{self, DoraNode, Event, EventStream, IntoArrow, dora_core::config::DataId};
+use eyre::Context;
+
+#[cfg(test)]
+mod tests;
+
+fn main() -> eyre::Result<()> {
+    println!("hello");
+
+    let (node, events) = DoraNode::init_from_env()?;
+    run(node, events)
+}
+
+fn run(mut node: DoraNode, mut events: EventStream) -> eyre::Result<()> {
+    let status_output = DataId::from("status".to_owned());
+
+    let mut ticks = 0;
+    while let Some(event) = events.recv() {
+        match event {
+            Event::Input { id, metadata, data } => match id.as_ref() {
+                "tick" => {
+                    ticks += 1;
+                }
+                "random" => {
+                    let value = u64::try_from(&data).context("unexpected data type")?;
+
+                    let output =
+                        format!("operator received random value {value:#x} after {ticks} ticks");
+                    node.send_output(
+                        status_output.clone(),
+                        metadata.parameters,
+                        output.into_arrow(),
+                    )?;
+                }
+                "fail" => {
+                    // Only crash on the first incarnation so a
+                    // restart_policy can actually recover. Subsequent
+                    // incarnations (restart_count > 0) ignore the
+                    // signal, proving the restart succeeded.
+                    if node.restart_count() == 0 {
+                        panic!("simulated failure as requested");
+                    }
+                }
+                "trigger-exit" => {
+                    println!("trigger-exit received, sending exit signal to sink");
+                    node.send_output_bytes("triggered-exit".into(), metadata.parameters, 0, &[])?
+                }
+                other => eprintln!("ignoring unexpected input {other}"),
+            },
+            Event::Stop(_) => {}
+            Event::InputClosed { id } => {
+                println!("input `{id}` was closed");
+                if *id == "random" {
+                    println!("`random` input was closed -> exiting");
+                    break;
+                }
+            }
+            other => {
+                println!("received unknown event {other:?}");
+            }
+        }
+    }
+
+    Ok(())
+}

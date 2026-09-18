@@ -1,0 +1,592 @@
+// Copyright 2023 Greptime Team
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::io::Write;
+use std::num::{NonZeroU32, NonZeroUsize};
+use std::time::Duration;
+
+use cmd::options::GreptimeOptions;
+use common_base::memory_limit::MemoryLimit;
+use common_base::readable_size::ReadableSize;
+use common_config::{Configurable, DEFAULT_DATA_HOME, ENV_VAR_SEP};
+use common_options::datanode::{ClientOptions, DatanodeClientOptions};
+use common_runtime::global::RuntimeOptions;
+use common_telemetry::logging::{DEFAULT_LOGGING_DIR, DEFAULT_OTLP_HTTP_ENDPOINT, LoggingOptions};
+use common_test_util::temp_dir::create_named_temp_file;
+use common_wal::config::DatanodeWalConfig;
+use common_wal::config::raft_engine::RaftEngineConfig;
+use datanode::config::{DatanodeOptions, RegionEngineConfig, StorageConfig};
+use file_engine::config::EngineConfig as FileEngineConfig;
+use flow::FlownodeOptions;
+use frontend::frontend::FrontendOptions;
+use meta_client::MetaClientOptions;
+use meta_srv::metasrv::MetasrvOptions;
+use meta_srv::selector::SelectorType;
+use metric_engine::config::EngineConfig as MetricEngineConfig;
+use mito2::config::MitoConfig;
+use query::options::QueryOptions;
+use servers::grpc::GrpcOptions;
+use servers::http::HttpOptions;
+use servers::tls::{TlsMode, TlsOption};
+use standalone::options::StandaloneOptions;
+use store_api::path_utils::WAL_DIR;
+
+#[test]
+fn test_load_datanode_runtime_options_from_runtime_section() {
+    let toml = r#"
+        [runtime]
+        global_rt_size = 8
+        compact_rt_size = 4
+        compact_rt_max_blocking_threads = 6
+        ingest_rt_size = 8
+        query_rt_size = 7
+
+        [runtime.experimental_workload_scheduler]
+        enable = true
+        query_weight = 1
+        write_weight = 4
+        sample_every_polls = 32
+    "#;
+
+    let options: GreptimeOptions<DatanodeOptions> = toml::from_str(toml).unwrap();
+
+    assert_eq!(8, options.runtime.global_rt_size);
+    assert_eq!(4, options.runtime.compact_rt_size);
+    assert_eq!(6, options.runtime.compact_rt_max_blocking_threads);
+    assert_eq!(8, options.runtime.ingest_rt_size);
+    assert_eq!(7, options.runtime.query_rt_size);
+    assert!(options.runtime.experimental_workload_scheduler.enable);
+    assert_eq!(
+        NonZeroU32::new(1).unwrap(),
+        options.runtime.experimental_workload_scheduler.query_weight
+    );
+    assert_eq!(
+        NonZeroU32::new(4).unwrap(),
+        options.runtime.experimental_workload_scheduler.write_weight
+    );
+    assert_eq!(
+        NonZeroUsize::new(32).unwrap(),
+        options
+            .runtime
+            .experimental_workload_scheduler
+            .sample_every_polls
+    );
+}
+
+#[test]
+fn test_load_runtime_options_rejects_zero_scheduler_sampling() {
+    let toml = r#"
+        [runtime.experimental_workload_scheduler]
+        sample_every_polls = 0
+    "#;
+
+    let result = toml::from_str::<GreptimeOptions<DatanodeOptions>>(toml);
+    assert!(result.is_err());
+}
+
+#[test]
+fn test_load_runtime_options_rejects_zero_scheduler_weight() {
+    let toml = r#"
+        [runtime.experimental_workload_scheduler]
+        query_weight = 0
+    "#;
+
+    let result = toml::from_str::<GreptimeOptions<DatanodeOptions>>(toml);
+    assert!(result.is_err());
+}
+
+#[test]
+fn test_load_runtime_options_without_max_blocking_threads() {
+    let toml = r#"
+        [runtime]
+        global_rt_size = 8
+        compact_rt_size = 4
+        ingest_rt_size = 8
+        query_rt_size = 7
+    "#;
+
+    let options: GreptimeOptions<DatanodeOptions> = toml::from_str(toml).unwrap();
+
+    assert_eq!(
+        RuntimeOptions::default().compact_rt_max_blocking_threads,
+        options.runtime.compact_rt_max_blocking_threads
+    );
+}
+
+#[allow(deprecated)]
+#[test]
+fn test_load_datanode_example_config() {
+    let example_config = common_test_util::find_workspace_path("config/datanode.example.toml");
+    let options =
+        GreptimeOptions::<DatanodeOptions>::load_layered_options(example_config.to_str(), "")
+            .unwrap();
+
+    let expected = GreptimeOptions::<DatanodeOptions> {
+        component: DatanodeOptions {
+            node_id: Some(42),
+            default_column_prefix: Some("greptime".to_string()),
+            meta_client: Some(MetaClientOptions {
+                metasrv_addrs: vec!["127.0.0.1:3002".to_string()],
+                timeout: Duration::from_secs(3),
+                ddl_timeout: Duration::from_secs(10),
+                connect_timeout: Duration::from_secs(1),
+                tcp_nodelay: true,
+                metadata_cache_max_capacity: 100000,
+                metadata_cache_ttl: Duration::from_secs(600),
+                metadata_cache_tti: Duration::from_secs(300),
+            }),
+            wal: DatanodeWalConfig::RaftEngine(RaftEngineConfig {
+                dir: Some(format!("{}/{}", DEFAULT_DATA_HOME, WAL_DIR)),
+                sync_period: Some(Duration::from_secs(5)),
+                recovery_parallelism: 2,
+                ..Default::default()
+            }),
+            storage: StorageConfig {
+                data_home: DEFAULT_DATA_HOME.to_string(),
+                ..Default::default()
+            },
+            region_engine: vec![
+                RegionEngineConfig::Mito(MitoConfig {
+                    auto_flush_interval: Duration::from_secs(10 * 60),
+                    default_region_write_buffer_size: ReadableSize::mb(0),
+                    write_cache_ttl: Some(Duration::from_secs(60 * 60 * 8)),
+                    scan_memory_limit: MemoryLimit::Unlimited,
+                    ..Default::default()
+                }),
+                RegionEngineConfig::File(FileEngineConfig {}),
+                RegionEngineConfig::Metric(MetricEngineConfig {
+                    flush_metadata_region_interval: Duration::from_secs(30),
+                }),
+            ],
+            query: QueryOptions {
+                memory_pool_size: MemoryLimit::Percentage(50),
+                ..Default::default()
+            },
+            logging: LoggingOptions {
+                level: Some("info".to_string()),
+                dir: format!("{}/{}", DEFAULT_DATA_HOME, DEFAULT_LOGGING_DIR),
+                otlp_endpoint: Some(DEFAULT_OTLP_HTTP_ENDPOINT.to_string()),
+                otlp_export_protocol: Some(common_telemetry::logging::OtlpExportProtocol::Http),
+                tracing_sample_ratio: Some(Default::default()),
+                ..Default::default()
+            },
+            grpc: GrpcOptions::default()
+                .with_bind_addr("127.0.0.1:3001")
+                .with_server_addr("127.0.0.1:3001"),
+            ..Default::default()
+        },
+        ..Default::default()
+    };
+
+    similar_asserts::assert_eq!(options, expected);
+}
+
+#[test]
+fn test_load_frontend_example_config() {
+    let example_config = common_test_util::find_workspace_path("config/frontend.example.toml");
+    let options =
+        GreptimeOptions::<FrontendOptions>::load_layered_options(example_config.to_str(), "")
+            .unwrap();
+    assert!(
+        !options
+            .component
+            .otlp
+            .experimental_enable_exponential_histogram
+    );
+    let expected = GreptimeOptions::<FrontendOptions> {
+        component: FrontendOptions {
+            default_timezone: Some("UTC".to_string()),
+            default_column_prefix: Some("greptime".to_string()),
+            auto_create_table: true,
+            meta_client: Some(MetaClientOptions {
+                metasrv_addrs: vec!["127.0.0.1:3002".to_string()],
+                timeout: Duration::from_secs(3),
+                ddl_timeout: Duration::from_secs(10),
+                connect_timeout: Duration::from_secs(1),
+                tcp_nodelay: true,
+                metadata_cache_max_capacity: 100000,
+                metadata_cache_ttl: Duration::from_secs(600),
+                metadata_cache_tti: Duration::from_secs(300),
+            }),
+            logging: LoggingOptions {
+                level: Some("info".to_string()),
+                dir: format!("{}/{}", DEFAULT_DATA_HOME, DEFAULT_LOGGING_DIR),
+                otlp_endpoint: Some(DEFAULT_OTLP_HTTP_ENDPOINT.to_string()),
+                otlp_export_protocol: Some(common_telemetry::logging::OtlpExportProtocol::Http),
+                tracing_sample_ratio: Some(Default::default()),
+                ..Default::default()
+            },
+            datanode: DatanodeClientOptions {
+                client: ClientOptions {
+                    connect_timeout: Duration::from_secs(10),
+                    tcp_nodelay: true,
+                    ..Default::default()
+                },
+            },
+            grpc: GrpcOptions {
+                bind_addr: "127.0.0.1:4001".to_string(),
+                server_addr: "127.0.0.1:4001".to_string(),
+                ..Default::default()
+            },
+            internal_grpc: Some(GrpcOptions::internal_default()),
+            http: HttpOptions {
+                cors_allowed_origins: vec!["https://example.com".to_string()],
+                ..Default::default()
+            },
+            query: QueryOptions {
+                memory_pool_size: MemoryLimit::Percentage(50),
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+        ..Default::default()
+    };
+    similar_asserts::assert_eq!(options, expected);
+}
+
+#[test]
+fn test_load_metasrv_example_config() {
+    let example_config = common_test_util::find_workspace_path("config/metasrv.example.toml");
+    let options =
+        GreptimeOptions::<MetasrvOptions>::load_layered_options(example_config.to_str(), "")
+            .unwrap();
+    let expected = GreptimeOptions::<MetasrvOptions> {
+        component: MetasrvOptions {
+            selector: SelectorType::default(),
+            data_home: DEFAULT_DATA_HOME.to_string(),
+            grpc: GrpcOptions {
+                bind_addr: "127.0.0.1:3002".to_string(),
+                server_addr: "127.0.0.1:3002".to_string(),
+                ..Default::default()
+            },
+            logging: LoggingOptions {
+                dir: format!("{}/{}", DEFAULT_DATA_HOME, DEFAULT_LOGGING_DIR),
+                level: Some("info".to_string()),
+                otlp_endpoint: Some(DEFAULT_OTLP_HTTP_ENDPOINT.to_string()),
+                otlp_export_protocol: Some(common_telemetry::logging::OtlpExportProtocol::Http),
+                tracing_sample_ratio: Some(Default::default()),
+                ..Default::default()
+            },
+            datanode: DatanodeClientOptions {
+                client: ClientOptions {
+                    timeout: Duration::from_secs(10),
+                    connect_timeout: Duration::from_secs(10),
+                    tcp_nodelay: true,
+                    ..Default::default()
+                },
+            },
+            backend_tls: Some(TlsOption {
+                mode: TlsMode::Prefer,
+                cert_path: String::new(),
+                key_path: String::new(),
+                ca_cert_path: String::new(),
+                watch: false,
+            }),
+            meta_schema_name: Some("greptime_schema".to_string()),
+            ..Default::default()
+        },
+        ..Default::default()
+    };
+    similar_asserts::assert_eq!(options, expected);
+}
+
+#[test]
+fn test_load_metasrv_soft_drop_config() {
+    let config = tempfile::NamedTempFile::new().unwrap();
+    std::fs::write(
+        config.path(),
+        "[gc]\nenable = true\n[gc.experimental_soft_drop]\nenable = true\nretention = \"1d\"\n",
+    )
+    .unwrap();
+
+    let options =
+        GreptimeOptions::<MetasrvOptions>::load_layered_options(config.path().to_str(), "")
+            .unwrap();
+    assert!(options.component.gc.experimental_soft_drop.enable);
+    assert_eq!(
+        Duration::from_secs(24 * 60 * 60),
+        options.component.gc.experimental_soft_drop.retention
+    );
+}
+
+#[test]
+fn test_load_flownode_example_config() {
+    let example_config = common_test_util::find_workspace_path("config/flownode.example.toml");
+    let options =
+        GreptimeOptions::<FlownodeOptions>::load_layered_options(example_config.to_str(), "")
+            .unwrap();
+    let expected = GreptimeOptions::<FlownodeOptions> {
+        component: FlownodeOptions {
+            node_id: Some(14),
+            flow: Default::default(),
+            grpc: GrpcOptions {
+                bind_addr: "127.0.0.1:6800".to_string(),
+                server_addr: "127.0.0.1:6800".to_string(),
+                runtime_size: 2,
+                ..Default::default()
+            },
+            logging: LoggingOptions {
+                dir: format!("{}/{}", DEFAULT_DATA_HOME, DEFAULT_LOGGING_DIR),
+                level: Some("info".to_string()),
+                otlp_endpoint: Some(DEFAULT_OTLP_HTTP_ENDPOINT.to_string()),
+                otlp_export_protocol: Some(common_telemetry::logging::OtlpExportProtocol::Http),
+                tracing_sample_ratio: Some(Default::default()),
+                ..Default::default()
+            },
+            tracing: Default::default(),
+            // flownode deliberately use a slower query parallelism
+            // to avoid overwhelming the frontend with too many queries
+            query: QueryOptions {
+                parallelism: 1,
+                allow_query_fallback: false,
+                memory_pool_size: MemoryLimit::Percentage(50),
+                enable_per_region_metrics: false,
+                ..Default::default()
+            },
+            meta_client: Some(MetaClientOptions {
+                metasrv_addrs: vec!["127.0.0.1:3002".to_string()],
+                timeout: Duration::from_secs(3),
+                ddl_timeout: Duration::from_secs(10),
+                connect_timeout: Duration::from_secs(1),
+                tcp_nodelay: true,
+                metadata_cache_max_capacity: 100000,
+                metadata_cache_ttl: Duration::from_secs(600),
+                metadata_cache_tti: Duration::from_secs(300),
+            }),
+            http: HttpOptions {
+                addr: "127.0.0.1:4000".to_string(),
+                ..Default::default()
+            },
+            memory: Default::default(),
+        },
+        ..Default::default()
+    };
+    similar_asserts::assert_eq!(options, expected);
+}
+
+#[test]
+fn test_load_standalone_example_config() {
+    let example_config = common_test_util::find_workspace_path("config/standalone.example.toml");
+    let options =
+        GreptimeOptions::<StandaloneOptions>::load_layered_options(example_config.to_str(), "")
+            .unwrap();
+    assert!(
+        !options
+            .component
+            .otlp
+            .experimental_enable_exponential_histogram
+    );
+    let expected = GreptimeOptions::<StandaloneOptions> {
+        component: StandaloneOptions {
+            default_timezone: Some("UTC".to_string()),
+            default_column_prefix: Some("greptime".to_string()),
+            auto_create_table: true,
+            wal: DatanodeWalConfig::RaftEngine(RaftEngineConfig {
+                dir: Some(format!("{}/{}", DEFAULT_DATA_HOME, WAL_DIR)),
+                sync_period: Some(Duration::from_secs(5)),
+                recovery_parallelism: 2,
+                ..Default::default()
+            }),
+            region_engine: vec![
+                RegionEngineConfig::Mito(MitoConfig {
+                    auto_flush_interval: Duration::from_secs(10 * 60),
+                    default_region_write_buffer_size: ReadableSize::mb(0),
+                    write_cache_ttl: Some(Duration::from_secs(60 * 60 * 8)),
+                    scan_memory_limit: MemoryLimit::Unlimited,
+                    ..Default::default()
+                }),
+                RegionEngineConfig::File(FileEngineConfig {}),
+                RegionEngineConfig::Metric(MetricEngineConfig {
+                    flush_metadata_region_interval: Duration::from_secs(30),
+                }),
+            ],
+            storage: StorageConfig {
+                data_home: DEFAULT_DATA_HOME.to_string(),
+                ..Default::default()
+            },
+            logging: LoggingOptions {
+                level: Some("info".to_string()),
+                dir: format!("{}/{}", DEFAULT_DATA_HOME, DEFAULT_LOGGING_DIR),
+                otlp_endpoint: Some(DEFAULT_OTLP_HTTP_ENDPOINT.to_string()),
+                otlp_export_protocol: Some(common_telemetry::logging::OtlpExportProtocol::Http),
+                tracing_sample_ratio: Some(Default::default()),
+                ..Default::default()
+            },
+            http: HttpOptions {
+                cors_allowed_origins: vec!["https://example.com".to_string()],
+                ..Default::default()
+            },
+            query: QueryOptions {
+                memory_pool_size: MemoryLimit::Percentage(50),
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+        ..Default::default()
+    };
+    similar_asserts::assert_eq!(options, expected);
+}
+
+#[test]
+fn test_load_otlp_exponential_histogram_option() {
+    let config = tempfile::NamedTempFile::new().unwrap();
+    std::fs::write(
+        config.path(),
+        "[otlp]\nexperimental_enable_exponential_histogram = true\n",
+    )
+    .unwrap();
+
+    let frontend =
+        GreptimeOptions::<FrontendOptions>::load_layered_options(config.path().to_str(), "")
+            .unwrap();
+    assert!(
+        frontend
+            .component
+            .otlp
+            .experimental_enable_exponential_histogram
+    );
+
+    let standalone =
+        GreptimeOptions::<StandaloneOptions>::load_layered_options(config.path().to_str(), "")
+            .unwrap();
+    assert!(
+        standalone
+            .component
+            .otlp
+            .experimental_enable_exponential_histogram
+    );
+    assert!(
+        standalone
+            .component
+            .frontend_options()
+            .otlp
+            .experimental_enable_exponential_histogram
+    );
+}
+
+#[test]
+fn test_load_standalone_user_provider_from_config() {
+    let config = tempfile::NamedTempFile::new().unwrap();
+    let user_provider = "static_user_provider:file:/tmp/greptimedb-users";
+    std::fs::write(
+        config.path(),
+        format!("user_provider = \"{user_provider}\"\n"),
+    )
+    .unwrap();
+
+    let options =
+        GreptimeOptions::<StandaloneOptions>::load_layered_options(config.path().to_str(), "")
+            .unwrap();
+
+    assert_eq!(
+        options.component.user_provider.as_deref(),
+        Some(user_provider)
+    );
+
+    let frontend_options = options.component.frontend_options();
+    assert_eq!(
+        frontend_options.user_provider.as_deref(),
+        Some(user_provider)
+    );
+}
+
+#[test]
+fn test_load_heartbeat_env_vars_from_env() {
+    let env_prefix = "HEARTBEAT_ENV_VARS_UT";
+    let env_key = [env_prefix, "HEARTBEAT_ENV_VARS"].join(ENV_VAR_SEP);
+
+    temp_env::with_var(env_key, Some("AZ,REGION"), || {
+        let expected = vec!["AZ".to_string(), "REGION".to_string()];
+
+        let datanode =
+            GreptimeOptions::<DatanodeOptions>::load_layered_options(None, env_prefix).unwrap();
+        similar_asserts::assert_eq!(datanode.component.heartbeat_env_vars, expected);
+
+        let frontend =
+            GreptimeOptions::<FrontendOptions>::load_layered_options(None, env_prefix).unwrap();
+        similar_asserts::assert_eq!(frontend.component.heartbeat_env_vars, expected);
+
+        let standalone =
+            GreptimeOptions::<StandaloneOptions>::load_layered_options(None, env_prefix).unwrap();
+        similar_asserts::assert_eq!(standalone.component.heartbeat_env_vars, expected);
+    });
+}
+
+#[test]
+fn test_load_event_types_from_env() {
+    let env_prefix = "EVENT_TYPES_UT";
+    let env_key = [env_prefix, "EVENT_RECORDER", "EVENT_TYPES"].join(ENV_VAR_SEP);
+
+    temp_env::with_var(env_key, Some("region_migration"), || {
+        for event_types in [
+            GreptimeOptions::<MetasrvOptions>::load_layered_options(None, env_prefix)
+                .unwrap()
+                .component
+                .event_recorder
+                .event_types,
+            GreptimeOptions::<StandaloneOptions>::load_layered_options(None, env_prefix)
+                .unwrap()
+                .component
+                .event_recorder
+                .event_types,
+            GreptimeOptions::<FrontendOptions>::load_layered_options(None, env_prefix)
+                .unwrap()
+                .component
+                .event_recorder
+                .event_types,
+        ] {
+            assert!(event_types.allows("region_migration"));
+            assert!(!event_types.allows("other_event"));
+        }
+    });
+}
+
+#[test]
+fn test_load_metric_config_with_removed_sparse_primary_key_encoding() {
+    // The `sparse_primary_key_encoding` option was removed from the metric
+    // engine config and is now always-on. Existing user configs that still set
+    // it must be tolerated (ignored), not rejected.
+    let mut file = create_named_temp_file();
+    let toml_str = r#"
+        node_id = 42
+
+        [meta_client]
+        metasrv_addrs = ["127.0.0.1:3002"]
+
+        [[region_engine]]
+        [region_engine.metric]
+        sparse_primary_key_encoding = false
+        flush_metadata_region_interval = "30s"
+    "#;
+    write!(file, "{}", toml_str).unwrap();
+
+    let options =
+        GreptimeOptions::<DatanodeOptions>::load_layered_options(file.path().to_str(), "")
+            .expect("config with removed 'sparse_primary_key_encoding' should load without error");
+
+    // The unknown option is ignored; known metric engine options are still parsed/applied.
+    let metric = options
+        .component
+        .region_engine
+        .iter()
+        .find_map(|c| match c {
+            RegionEngineConfig::Metric(c) => Some(c),
+            _ => None,
+        })
+        .expect("metric engine config should be present");
+    assert_eq!(
+        metric.flush_metadata_region_interval,
+        Duration::from_secs(30)
+    );
+}

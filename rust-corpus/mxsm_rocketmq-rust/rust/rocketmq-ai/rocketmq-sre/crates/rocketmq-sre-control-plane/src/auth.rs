@@ -1,0 +1,464 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::BTreeMap;
+use std::collections::BTreeSet;
+use std::sync::Arc;
+
+use axum::http::HeaderMap;
+use jsonwebtoken::Algorithm;
+use jsonwebtoken::DecodingKey;
+use jsonwebtoken::Validation;
+use jsonwebtoken::decode;
+use jsonwebtoken::decode_header;
+use jsonwebtoken::jwk::JwkSet;
+use rocketmq_sre_contracts::ClusterId;
+use rocketmq_sre_contracts::TenantId;
+use serde::Deserialize;
+use subtle::ConstantTimeEq;
+use tokio::sync::RwLock;
+
+use crate::ControlPlaneConfig;
+use crate::ControlPlaneError;
+use crate::ControlPlaneRequestFailure;
+
+#[derive(Clone, Debug)]
+pub(crate) struct AuthContext {
+    pub tenant_id: TenantId,
+    pub subject: String,
+    pub clusters: BTreeSet<ClusterId>,
+    pub roles: BTreeSet<String>,
+}
+
+#[derive(Clone)]
+pub(crate) struct AuthService {
+    mode: Arc<AuthMode>,
+}
+
+enum AuthMode {
+    Development {
+        token: Arc<str>,
+    },
+    Oidc {
+        issuer: String,
+        audience: String,
+        jwks_url: url::Url,
+        client: reqwest::Client,
+        keys: RwLock<JwkSet>,
+    },
+}
+
+#[derive(Clone, Debug, Deserialize)]
+struct OidcClaims {
+    sub: String,
+    scope: String,
+    #[serde(default)]
+    roles: Vec<String>,
+    #[serde(default)]
+    realm_access: OidcRoleAccess,
+    #[serde(default)]
+    resource_access: BTreeMap<String, OidcRoleAccess>,
+    rocketmq_tenant: String,
+    #[serde(default)]
+    rocketmq_clusters: Vec<String>,
+}
+
+#[derive(Clone, Debug, Default, Deserialize)]
+struct OidcRoleAccess {
+    #[serde(default)]
+    roles: Vec<String>,
+}
+
+impl AuthService {
+    pub(crate) fn development(token: impl Into<Arc<str>>) -> Self {
+        Self {
+            mode: Arc::new(AuthMode::Development { token: token.into() }),
+        }
+    }
+
+    pub(crate) async fn from_config(config: &ControlPlaneConfig) -> Result<Self, ControlPlaneError> {
+        if config.dev_auth_enabled() {
+            return Ok(Self {
+                mode: Arc::new(AuthMode::Development {
+                    token: Arc::<str>::from(config.internal_token()),
+                }),
+            });
+        }
+
+        let issuer = config
+            .oidc_issuer()
+            .ok_or_else(|| ControlPlaneError::configuration("OIDC issuer is required"))?
+            .to_owned();
+        let audience = config
+            .oidc_audience()
+            .ok_or_else(|| ControlPlaneError::configuration("OIDC audience is required"))?
+            .to_owned();
+        let jwks_url = config
+            .oidc_jwks_url()
+            .ok_or_else(|| ControlPlaneError::configuration("OIDC JWKS URL is required"))?
+            .clone();
+        let mut client_builder = reqwest::Client::builder().https_only(true);
+        if let Some(path) = config.oidc_ca_path() {
+            let pem = std::fs::read(path).map_err(|source| {
+                ControlPlaneError::from_source(crate::ControlPlaneFailure::Configuration, "source_unavailable", source)
+            })?;
+            let certificate = reqwest::Certificate::from_pem(&pem).map_err(|source| {
+                ControlPlaneError::from_source(crate::ControlPlaneFailure::Configuration, "source_unavailable", source)
+            })?;
+            client_builder = client_builder.add_root_certificate(certificate);
+        }
+        let client = client_builder.build().map_err(|source| {
+            ControlPlaneError::from_source(crate::ControlPlaneFailure::Configuration, "source_unavailable", source)
+        })?;
+        let keys = fetch_jwks(&client, &jwks_url).await?;
+        Ok(Self {
+            mode: Arc::new(AuthMode::Oidc {
+                issuer,
+                audience,
+                jwks_url,
+                client,
+                keys: RwLock::new(keys),
+            }),
+        })
+    }
+
+    pub(crate) async fn authorize(
+        &self,
+        headers: &HeaderMap,
+        cluster: Option<ClusterId>,
+    ) -> Result<AuthContext, ControlPlaneRequestFailure> {
+        match self.mode.as_ref() {
+            AuthMode::Development { token } => authorize_development(headers, token, cluster),
+            AuthMode::Oidc {
+                issuer,
+                audience,
+                jwks_url,
+                client,
+                keys,
+            } => authorize_oidc(headers, cluster, issuer, audience, jwks_url, client, keys).await,
+        }
+    }
+
+    pub(crate) async fn ready(&self) -> bool {
+        match self.mode.as_ref() {
+            AuthMode::Development { .. } => true,
+            AuthMode::Oidc { keys, .. } => !keys.read().await.keys.is_empty(),
+        }
+    }
+}
+
+fn authorize_development(
+    headers: &HeaderMap,
+    expected_token: &str,
+    cluster: Option<ClusterId>,
+) -> Result<AuthContext, ControlPlaneRequestFailure> {
+    let token = bearer(headers)?;
+    let matches = token.len() == expected_token.len() && bool::from(token.as_bytes().ct_eq(expected_token.as_bytes()));
+    if !matches {
+        return Err(ControlPlaneRequestFailure::unauthorized());
+    }
+    let tenant_id = required_header(headers, "x-rocketmq-tenant")?
+        .parse()
+        .map_err(|_| ControlPlaneRequestFailure::forbidden("tenant_mismatch", "tenant claim must be a UUID"))?;
+    let clusters = parse_clusters(required_header(headers, "x-rocketmq-clusters")?)?;
+    enforce_cluster_scope(&clusters, cluster)?;
+    Ok(AuthContext {
+        tenant_id,
+        subject: header(headers, "x-rocketmq-subject")
+            .unwrap_or("rocketmq-sre-development")
+            .to_owned(),
+        clusters,
+        roles: BTreeSet::from([
+            "diagnose".to_owned(),
+            "operator".to_owned(),
+            "approver".to_owned(),
+            "executor_service".to_owned(),
+            "execution_agent".to_owned(),
+            "model-governance".to_owned(),
+            "rocketmq:diagnose".to_owned(),
+            "rocketmq:onboard".to_owned(),
+        ]),
+    })
+}
+
+async fn authorize_oidc(
+    headers: &HeaderMap,
+    cluster: Option<ClusterId>,
+    issuer: &str,
+    audience: &str,
+    jwks_url: &url::Url,
+    client: &reqwest::Client,
+    keys: &RwLock<JwkSet>,
+) -> Result<AuthContext, ControlPlaneRequestFailure> {
+    let token = bearer(headers)?;
+    let header = decode_header(token).map_err(|_| ControlPlaneRequestFailure::unauthorized())?;
+    if header.alg != Algorithm::RS256 {
+        return Err(ControlPlaneRequestFailure::unauthorized());
+    }
+    let kid = header.kid.ok_or_else(ControlPlaneRequestFailure::unauthorized)?;
+    let mut jwk = keys.read().await.find(&kid).cloned();
+    if jwk.is_none() {
+        let refreshed = fetch_jwks(client, jwks_url).await?;
+        jwk = refreshed.find(&kid).cloned();
+        *keys.write().await = refreshed;
+    }
+    let jwk = jwk.as_ref().ok_or_else(ControlPlaneRequestFailure::unauthorized)?;
+    let decoding_key = DecodingKey::from_jwk(jwk).map_err(|source| {
+        ControlPlaneError::from_source(
+            crate::ControlPlaneFailure::IdentityProvider,
+            "source_unavailable",
+            source,
+        )
+    })?;
+    let mut validation = Validation::new(Algorithm::RS256);
+    validation.set_issuer(&[issuer]);
+    validation.set_audience(&[audience]);
+    let claims = decode::<OidcClaims>(token, &decoding_key, &validation)
+        .map_err(|_| ControlPlaneRequestFailure::unauthorized())?
+        .claims;
+    if !claims.scope.split_ascii_whitespace().any(|scope| {
+        matches!(
+            scope,
+            "rocketmq:read"
+                | "rocketmq:diagnose"
+                | "rocketmq:sre"
+                | "rocketmq:operate"
+                | "rocketmq:approve"
+                | "rocketmq:executor"
+                | "rocketmq:execution-agent"
+                | "rocketmq:model-governance"
+        )
+    }) {
+        return Err(ControlPlaneRequestFailure::forbidden(
+            "unauthorized_scope",
+            "token does not grant RocketMQ SRE read or diagnose scope",
+        ));
+    }
+    let tenant_id = claims
+        .rocketmq_tenant
+        .parse()
+        .map_err(|_| ControlPlaneRequestFailure::forbidden("tenant_mismatch", "tenant claim must be a UUID"))?;
+    let clusters = claims
+        .rocketmq_clusters
+        .iter()
+        .map(|value| {
+            value.parse().map_err(|_| {
+                ControlPlaneRequestFailure::forbidden("cluster_not_allowed", "cluster claim must be a UUID")
+            })
+        })
+        .collect::<Result<BTreeSet<_>, _>>()?;
+    enforce_cluster_scope(&clusters, cluster)?;
+    let mut roles = oidc_roles(&claims, audience);
+    for scope in claims.scope.split_ascii_whitespace() {
+        match scope {
+            "rocketmq:diagnose" | "rocketmq:sre" => {
+                roles.insert(scope.to_owned());
+            }
+            "rocketmq:operate" => {
+                roles.insert("operator".to_owned());
+            }
+            "rocketmq:approve" => {
+                roles.insert("approver".to_owned());
+            }
+            "rocketmq:executor" => {
+                roles.insert("executor_service".to_owned());
+            }
+            "rocketmq:execution-agent" => {
+                roles.insert("execution_agent".to_owned());
+            }
+            "rocketmq:model-governance" => {
+                roles.insert("model-governance".to_owned());
+            }
+            _ => {}
+        }
+    }
+    Ok(AuthContext {
+        tenant_id,
+        subject: claims.sub,
+        clusters,
+        roles,
+    })
+}
+
+fn oidc_roles(claims: &OidcClaims, audience: &str) -> BTreeSet<String> {
+    let audience_roles = claims
+        .resource_access
+        .get(audience)
+        .into_iter()
+        .flat_map(|access| access.roles.iter());
+    let mut roles = BTreeSet::new();
+    for role in claims
+        .roles
+        .iter()
+        .chain(claims.realm_access.roles.iter())
+        .chain(audience_roles)
+    {
+        if role.is_empty() {
+            continue;
+        }
+        roles.insert(role.clone());
+        match role.as_str() {
+            "executor" | "executor-service" => {
+                roles.insert("executor_service".to_owned());
+            }
+            "execution-agent" => {
+                roles.insert("execution_agent".to_owned());
+            }
+            "model_governance" => {
+                roles.insert("model-governance".to_owned());
+            }
+            _ => {}
+        }
+    }
+    roles
+}
+
+async fn fetch_jwks(client: &reqwest::Client, url: &url::Url) -> Result<JwkSet, ControlPlaneError> {
+    client
+        .get(url.clone())
+        .send()
+        .await?
+        .error_for_status()?
+        .json()
+        .await
+        .map_err(ControlPlaneError::from)
+}
+
+fn parse_clusters(value: &str) -> Result<BTreeSet<ClusterId>, ControlPlaneRequestFailure> {
+    value
+        .split(',')
+        .filter(|value| !value.trim().is_empty())
+        .map(|value| {
+            value.trim().parse().map_err(|_| {
+                ControlPlaneRequestFailure::forbidden("cluster_not_allowed", "cluster scope must contain UUIDs")
+            })
+        })
+        .collect()
+}
+
+fn enforce_cluster_scope(
+    clusters: &BTreeSet<ClusterId>,
+    requested: Option<ClusterId>,
+) -> Result<(), ControlPlaneRequestFailure> {
+    if requested.is_some_and(|cluster| !clusters.contains(&cluster)) {
+        return Err(ControlPlaneRequestFailure::forbidden(
+            "cluster_not_allowed",
+            "requested cluster is outside the authenticated scope",
+        ));
+    }
+    Ok(())
+}
+
+fn bearer(headers: &HeaderMap) -> Result<&str, ControlPlaneRequestFailure> {
+    header(headers, axum::http::header::AUTHORIZATION.as_str())
+        .and_then(|value| value.strip_prefix("Bearer "))
+        .filter(|value| !value.is_empty())
+        .ok_or_else(ControlPlaneRequestFailure::unauthorized)
+}
+
+fn required_header<'a>(headers: &'a HeaderMap, name: &str) -> Result<&'a str, ControlPlaneRequestFailure> {
+    header(headers, name).ok_or_else(ControlPlaneRequestFailure::unauthorized)
+}
+
+fn header<'a>(headers: &'a HeaderMap, name: &str) -> Option<&'a str> {
+    headers.get(name).and_then(|value| value.to_str().ok())
+}
+
+#[cfg(test)]
+mod tests {
+    use serde_json::json;
+
+    use super::*;
+
+    #[tokio::test]
+    async fn development_auth_enforces_tenant_and_cluster_scope() {
+        let auth = AuthService {
+            mode: Arc::new(AuthMode::Development {
+                token: Arc::from("secret"),
+            }),
+        };
+        let tenant = TenantId::new();
+        let cluster = ClusterId::new();
+        let mut headers = HeaderMap::new();
+        headers.insert(
+            axum::http::header::AUTHORIZATION,
+            "Bearer secret".parse().expect("header"),
+        );
+        headers.insert("x-rocketmq-tenant", tenant.to_string().parse().expect("header"));
+        headers.insert("x-rocketmq-clusters", cluster.to_string().parse().expect("header"));
+
+        let context = auth.authorize(&headers, Some(cluster)).await.expect("authorized");
+        assert_eq!(context.tenant_id, tenant);
+
+        let denied = auth
+            .authorize(&headers, Some(ClusterId::new()))
+            .await
+            .expect_err("cross-cluster access must fail");
+        let rejection = denied.rejection().expect("scope denial is not an operational failure");
+        assert_eq!(rejection.kind(), crate::error::ControlPlaneRejectionKind::Forbidden);
+        assert_eq!(rejection.code(), "cluster_not_allowed");
+    }
+
+    #[test]
+    fn oidc_roles_accept_standard_realm_and_audience_client_claims() {
+        let claims: OidcClaims = serde_json::from_value(json!({
+            "sub": "sre-operator",
+            "scope": "rocketmq:read",
+            "roles": ["top-level-role"],
+            "realm_access": {
+                "roles": ["operator", "approver", "executor-service"]
+            },
+            "resource_access": {
+                "rocketmq-sre-control-plane": {
+                    "roles": ["execution-agent"]
+                },
+                "unrelated-client": {
+                    "roles": ["admin"]
+                }
+            },
+            "rocketmq_tenant": TenantId::new().to_string(),
+            "rocketmq_clusters": [ClusterId::new().to_string()]
+        }))
+        .expect("standard OIDC claims");
+
+        let roles = oidc_roles(&claims, "rocketmq-sre-control-plane");
+        assert!(roles.contains("top-level-role"));
+        assert!(roles.contains("operator"));
+        assert!(roles.contains("approver"));
+        assert!(roles.contains("executor_service"));
+        assert!(roles.contains("execution_agent"));
+        assert!(!roles.contains("admin"));
+    }
+
+    #[test]
+    fn oidc_role_aliases_are_narrow_and_empty_roles_are_ignored() {
+        let claims: OidcClaims = serde_json::from_value(json!({
+            "sub": "service-identity",
+            "scope": "rocketmq:read",
+            "realm_access": {
+                "roles": ["", "executor", "model_governance", "unknown-role"]
+            },
+            "rocketmq_tenant": TenantId::new().to_string(),
+            "rocketmq_clusters": []
+        }))
+        .expect("OIDC service claims");
+
+        let roles = oidc_roles(&claims, "rocketmq-sre-control-plane");
+        assert!(!roles.contains(""));
+        assert!(roles.contains("executor_service"));
+        assert!(roles.contains("model-governance"));
+        assert!(roles.contains("unknown-role"));
+        assert!(!roles.contains("execution_agent"));
+    }
+}

